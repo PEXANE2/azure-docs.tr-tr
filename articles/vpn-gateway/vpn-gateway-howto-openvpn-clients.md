@@ -1,172 +1,31 @@
 ---
-title: Azure VPN Gateway için OpenVPN Istemcilerini yapılandırma | Microsoft Docs
-description: Azure VPN Gateway için OpenVPN Istemcilerini yapılandırma adımları
+title: Azure VPN Ağ Geçidi için OpenVPN İstemleri nasıl yapılandırılabilen| Microsoft Dokümanlar
+description: Azure VPN Ağ Geçidi için OpenVPN İstemlerini yapılandırma adımları
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 12/12/2019
 ms.author: cherylmc
-ms.openlocfilehash: a45a3412a1ceb8e8a9bd9fd1a34dfdbd10ba1c75
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 09ff3ccebad0baa4148e68995254c818a29d7bd4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79244608"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80066171"
 ---
-# <a name="configure-openvpn-clients-for-azure-vpn-gateway"></a>Azure VPN Gateway için OpenVPN istemcileri yapılandırma
+# <a name="configure-openvpn-clients-for-azure-vpn-gateway"></a>Azure VPN Ağ Geçidi için OpenVPN istemcilerini yapılandırma
 
-Bu makale, **OpenVPN® Protokolü** istemcilerini yapılandırmanıza yardımcı olur.
+Bu makale, **OpenVPN &reg; Protokolü** istemcilerini yapılandırmanıza yardımcı olur.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
+VPN ağ geçidiniz için OpenVPN'i yapılandırma adımlarını tamamladığınızı doğrulayın. Ayrıntılar için Azure [VPN Ağ Geçidi için OpenVPN'i Yapılandır'a](vpn-gateway-howto-openvpn.md)bakın.
 
-
-VPN ağ geçidiniz için OpenVPN yapılandırma adımlarını tamamladığınızdan emin olun. Ayrıntılar için bkz. [Azure Için OpenVPN 'ı yapılandırma VPN Gateway](vpn-gateway-howto-openvpn.md).
-
-## <a name="windows"></a>Windows istemcileri
-
-1. OpenVPN istemcisini (sürüm 2,4 veya üzeri) resmi [OpenVPN Web sitesinden](https://openvpn.net/index.php/open-source/downloads.html)indirip yükleyin.
-2. Ağ geçidinin VPN profilini indirin. Bu, Azure portal ' deki Noktadan siteye Yapılandırma sekmesinden veya PowerShell 'deki ' New-AzVpnClientConfiguration ' öğesinden yapılabilir.
-3. Profilin sıkıştırmasını açın. Ardından, Not defteri 'Ni kullanarak OpenVPN klasöründen *vpnconfig. ovpn* yapılandırma dosyasını açın.
-4. Oluşturduğunuz ve ağ geçidinde P2S yapılandırmanıza yüklediğiniz P2S istemci sertifikasını [dışarı aktarın](vpn-gateway-certificates-point-to-site.md#clientexport) .
-5. Özel anahtarı ve Base64 parmak izini *. pfx*dosyasından ayıklayın. Bunu yapmanın birden çok yolu vardır. Makinenizde OpenSSL kullanmak tek bir yoldur. *ProfileInfo. txt* dosyası, CA ve istemci sertifikası için özel anahtarı ve parmak izini içerir. İstemci sertifikasının parmak izini kullandığınızdan emin olun.
-
-   ```
-   openssl pkcs12 -in "filename.pfx" -nodes -out "profileinfo.txt"
-   ```
-6. Not defteri 'nde *ProfileInfo. txt* dosyasını açın. İstemci (alt) sertifikasının parmak izini almak için, alt sertifika için "-----başlangıç SERTIFIKASı-----" ve "-----son SERTIFIKA-----" gibi metni seçin ve kopyalayın. Konu =/satırına bakarak alt sertifikayı belirleyebilirsiniz.
-7. Adım 3 ' teki Not defteri 'nde açtığınız *vpnconfig. ovpn* dosyasına geçin. Aşağıda gösterilen bölümü bulun ve "CERT" ve "/CERT" arasındaki her şeyi değiştirin.
-
-   ```
-   # P2S client certificate
-   # please fill this field with a PEM formatted cert
-   <cert>
-   $CLIENTCERTIFICATE
-   </cert>
-   ```
-8. Not defteri 'nde *ProfileInfo. txt* dosyasını açın. Özel anahtarı almak için, "özel anahtar----------" ve "-----son özel anahtar-----
-9. Not defteri 'nde vpnconfig. ovpn dosyasına dönün ve bu bölümü bulun. Özel anahtarı, ve "Key" ve "/Key" arasındaki her şeyi değiştirerek yapıştırın.
-
-   ```
-   # P2S client root certificate private key
-   # please fill this field with a PEM formatted key
-   <key>
-   $PRIVATEKEY
-   </key>
-   ```
-10. Başka bir alanı değiştirmeyin. VPN’e bağlanmak için istemci girişinde doldurulmuş yapılandırmayı kullanın.
-11. vpnconfig.ovpn dosyasını C:\Program Files\OpenVPN\config klasörüne kopyalayın.
-12. Sistem tepsisindeki OpenVPN simgesine sağ tıklayın ve Bağlan’a tıklayın.
-
-## <a name="mac"></a>Mac istemcileri
-
-1. [Tunnelblick](https://tunnelblick.net/downloads.html)gibi bir OpenVPN istemcisini indirip yükleyin. 
-2. Ağ geçidinin VPN profilini indirin. Bu, Azure portal Noktadan siteye Yapılandırma sekmesinden veya PowerShell 'de ' New-AzVpnClientConfiguration ' kullanılarak yapılabilir.
-3. Profilin sıkıştırmasını açın. Bir metin düzenleyicisinde OpenVPN klasöründen vpnconfig. ovpn yapılandırma dosyasını açın.
-4. P2S istemci sertifikası bölümünü base64’teki P2S istemci sertifikası genel anahtarı ile doldurun. PEM biçimli bir sertifikada .cer dosyasını açıp base64 anahtarını sertifika üst bilgileri arasına kopyalamanız yeterlidir. Kodlanmış ortak anahtarı almak için bir sertifikanın nasıl dışarı aktarılacağı hakkında bilgi için bkz. [ortak anahtarı dışarı aktarma](vpn-gateway-certificates-point-to-site.md#cer) .
-5. Özel anahtar bölümünü, base64’teki P2S istemci sertifikası özel anahtarı ile doldurun. Özel bir anahtarı ayıklama hakkında bilgi için bkz. [özel anahtarınızı dışarı aktarma](https://openvpn.net/community-resources/how-to/#pki) .
-6. Başka bir alanı değiştirmeyin. VPN’e bağlanmak için istemci girişinde doldurulmuş yapılandırmayı kullanın.
-7. Profili oluşturmak için profil dosyasına çift tıklayın Tunnelblick içinde profil oluşturun.
-8. Uygulamalar klasöründen Tunnelblick başlatın.
-9. Sistem tepsisindeki Tunnelblick simgesine tıklayın ve Bağlan ' ı seçin.
-
-> [!IMPORTANT]
->OpenVPN protokolünde yalnızca iOS 11,0 ve üzeri ve MacOS 10,13 ve üzeri desteklenir.
->
-## <a name="iOS"></a>iOS istemcileri
-
-1. App Store 'dan OpenVPN istemcisini (sürüm 2,4 veya üzeri) yükler.
-2. Ağ geçidinin VPN profilini indirin. Bu, Azure portal Noktadan siteye Yapılandırma sekmesinden veya PowerShell 'de ' New-AzVpnClientConfiguration ' kullanılarak yapılabilir.
-3. Profilin sıkıştırmasını açın. Bir metin düzenleyicisinde OpenVPN klasöründen vpnconfig. ovpn yapılandırma dosyasını açın.
-4. P2S istemci sertifikası bölümünü base64’teki P2S istemci sertifikası genel anahtarı ile doldurun. PEM biçimli bir sertifikada .cer dosyasını açıp base64 anahtarını sertifika üst bilgileri arasına kopyalamanız yeterlidir. Kodlanmış ortak anahtarı almak için bir sertifikanın nasıl dışarı aktarılacağı hakkında bilgi için bkz. [ortak anahtarı dışarı aktarma](vpn-gateway-certificates-point-to-site.md#cer) .
-5. Özel anahtar bölümünü, base64’teki P2S istemci sertifikası özel anahtarı ile doldurun. Özel bir anahtarı ayıklama hakkında bilgi için bkz. [özel anahtarınızı dışarı aktarma](https://openvpn.net/community-resources/how-to/#pki) .
-6. Başka bir alanı değiştirmeyin.
-7. İPhone 'inizdeki posta uygulamasında yapılandırılmış olan e-posta hesabınıza profil dosyasını (. ovpn) e-posta ile gönderin. 
-8. İPhone 'daki posta uygulamasında e-postayı açın ve ekli dosyaya dokunun
-
-    ![E-postayı aç](./media/vpn-gateway-howto-openvpn-clients/ios2.png)
-
-9. **OpenVPN 'e Kopyala** seçeneğini görmüyorsanız, **daha fazla** öğesine dokunun
-
-    ![OpenVPN 'e Kopyala](./media/vpn-gateway-howto-openvpn-clients/ios3.png)
-
-10. **OpenVPN 'e Kopyala** seçeneğine dokunun 
-
-    ![OpenVPN 'e Kopyala](./media/vpn-gateway-howto-openvpn-clients/ios4.png)
-
-11. **Profili Içeri aktar** sayfasında **Ekle** ' ye dokunun
-
-    ![OpenVPN 'e Kopyala](./media/vpn-gateway-howto-openvpn-clients/ios5.png)
-
-12. **Içeri aktarılan profil** sayfasında **Ekle** ' ye dokunun
-
-    ![OpenVPN 'e Kopyala](./media/vpn-gateway-howto-openvpn-clients/ios6.png)
-
-13. OpenVPN uygulamasını başlatın ve anahtarı bağlamak için **profil** sayfasına sağ kaydırın
-
-    ![Bağlan](./media/vpn-gateway-howto-openvpn-clients/ios8.png)
-
-
-## <a name="linux"></a>Linux istemcileri
-
-1. Yeni bir terminal oturumu açın. Aynı anda ' Ctrl + Alt + t ' tuşlarına basarak yeni bir oturum açabilirsiniz.
-2. Gerekli bileşenleri yüklemek için aşağıdaki komutu girin:
-
-   ```
-   sudo apt-get install openvpn
-   sudo apt-get -y install network-manager-openvpn
-   sudo service network-manager restart
-   ```
-3. Ağ geçidinin VPN profilini indirin. Bu, Azure portal Noktadan siteye Yapılandırma sekmesinden yapılabilir.
-4. Oluşturduğunuz ve ağ geçidinde P2S yapılandırmanıza yüklediğiniz P2S istemci sertifikasını [dışarı aktarın](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-certificates-point-to-site#clientexport) . 
-5. Özel anahtarı ve Base64 parmak izini. pfx dosyasından ayıklayın. Bunu yapmanın birden çok yolu vardır. Bilgisayarınızda OpenSSL kullanmak tek bir yoldur.
-
-    ```
-    openssl.exe pkcs12 -in "filename.pfx" -nodes -out "profileinfo.txt"
-    ```
-   *ProfileInfo. txt* dosyası, CA için özel anahtarı ve parmak Izini ve istemci sertifikasını içerir. İstemci sertifikasının parmak izini kullandığınızdan emin olun.
-
-6. *ProfileInfo. txt* dosyasını bir metin düzenleyicisinde açın. İstemci (alt) sertifikasının parmak izini almak için, alt sertifika için "-----başlangıç SERTIFIKASı-----" ve "-----son SERTIFIKA-----" gibi metni seçin ve kopyalayın. Konu =/satırına bakarak alt sertifikayı belirleyebilirsiniz.
-
-7. *Vpnconfig. ovpn* dosyasını açın ve aşağıda gösterilen bölümü bulun. Ve "CERT" ve "/CERT" arasındaki her şeyi değiştirin.
-
-   ```
-   # P2S client certificate
-   # please fill this field with a PEM formatted cert
-   <cert>
-   $CLIENTCERTIFICATE
-   </cert>
-   ```
-8. ProfileInfo. txt dosyasını bir metin düzenleyicisinde açın. Özel anahtarı almak için, "-----başlangıç özel anahtarı-----" ve "-----son özel anahtar-----" dahil olmak üzere metni seçin ve kopyalayın.
-
-9. Vpnconfig. ovpn dosyasını bir metin düzenleyicisinde açın ve bu bölümü bulun. Özel anahtarı, ve "Key" ve "/Key" arasındaki her şeyi değiştirerek yapıştırın.
-
-   ```
-   # P2S client root certificate private key
-   # please fill this field with a PEM formatted key
-   <key>
-   $PRIVATEKEY
-   </key>
-   ```
-
-10. Başka bir alanı değiştirmeyin. VPN’e bağlanmak için istemci girişinde doldurulmuş yapılandırmayı kullanın.
-11. Komut satırını kullanarak bağlanmak için aşağıdaki komutu yazın:
-  
-    ```
-    sudo openvpn –-config <name and path of your VPN profile file>&
-    ```
-12. GUI 'yi kullanarak bağlanmak için sistem ayarları ' na gidin.
-13. Yeni bir VPN bağlantısı eklemek için **+** ' ye tıklayın.
-14. **VPN Ekle**altında **Dosyadan içeri aktar ' ı seçin...**
-15. Profil dosyasına gidin ve çift tıklayın veya **Aç**' ı seçin.
-16. **VPN Ekle** penceresinde **Ekle** ' ye tıklayın.
-  
-    ![Dosyadan içeri aktar](./media/vpn-gateway-howto-openvpn-clients/importfromfile.png)
-17. **Ağ ayarları** sayfasında veya sistem tepsisindeki ağ SIMGESI altında VPN **'yi** açarak bağlanabilirsiniz.
+[!INCLUDE [configuration steps](../../includes/vpn-gateway-vwan-config-openvpn-clients.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-VPN istemcilerinin başka bir sanal ağdaki kaynaklara erişebilmesini istiyorsanız, VNET 'ten VNET 'e bağlantı kurmak için [VNET-VNET](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md) makalesindeki yönergeleri izleyin. Ağ geçitleri ve bağlantılarda BGP 'yi etkinleştirdiğinizden emin olun, aksi takdirde trafik akmaz.
+VPN istemcilerinin başka bir VNet'teki kaynaklara erişebilmesini istiyorsanız, vnet-to-vnet bağlantısı kurmak [için VNet-to-VNet](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md) makalesindeki yönergeleri izleyin. Ağ geçitlerinde ve bağlantılarda BGP'yi etkinleştirdiğinden emin olun, aksi takdirde trafik akmaz.
 
-**"OpenVPN", OpenVPN Inc 'nin ticari markasıdır.**
+**"OpenVPN", OpenVPN Inc. şirketinin ticari markasıdır.**

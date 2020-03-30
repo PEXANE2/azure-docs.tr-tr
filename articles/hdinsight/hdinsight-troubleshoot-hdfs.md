@@ -1,6 +1,6 @@
 ---
-title: Azure HDInsight 'ta sorun giderme
-description: Azure HDInsight ile çalışma hakkında sık sorulan soruların yanıtlarını alın.
+title: Azure HDInsight'ta HDFS sorun giderme
+description: HDFS ve Azure HDInsight ile çalışma yla ilgili sık sorulan soruların yanıtlarını alın.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,25 +9,25 @@ ms.topic: troubleshooting
 ms.date: 09/30/2019
 ms.custom: seodec18
 ms.openlocfilehash: 6b0a81a2f3af10a1e5ad60c6c33357a6e906ee47
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75895243"
 ---
-# <a name="troubleshoot-apache-hadoop-hdfs-by-using-azure-hdinsight"></a>Azure HDInsight 'ı kullanarak Apache Hadoop, sorun giderme
+# <a name="troubleshoot-apache-hadoop-hdfs-by-using-azure-hdinsight"></a>Azure HDInsight kullanarak Apache Hadoop HDFS sorunlarını giderme
 
-Apache ambarı 'nda Hadoop Dağıtılmış Dosya Sistemi (,) yükleriyle çalışırken en üstteki sorunlar ve çözümleri hakkında bilgi edinin. Komutların tam listesi için, bkz... [komut Kılavuzu](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HDFSCommands.html) ve [dosya sistemi kabuğu Kılavuzu](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html).
+Apache Ambari'de Hadoop Distributed File System (HDFS) yükleri ile çalışırken en önemli sorunlar ve bunların çözümleri hakkında bilgi edinin. Komutların tam listesi için [HDFS Komutları Kılavuzu'na](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HDFSCommands.html) ve [Dosya Sistemi Kabuk Kılavuzu'na](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html)bakın.
 
-## <a name="how-do-i-access-local-hdfs-from-inside-a-cluster"></a>Yerel olarak bir küme içinden erişim Nasıl yaparım? mi?
+## <a name="how-do-i-access-the-local-hdfs-from-inside-a-cluster"></a><a name="how-do-i-access-local-hdfs-from-inside-a-cluster"></a>Bir kümenin içinden yerel HDFS'ye nasıl erişebilirim?
 
 ### <a name="issue"></a>Sorun
 
-Azure Blob depolama veya HDInsight kümesinin içinden Azure Data Lake Storage yerine komut satırı ve uygulama kodundan yerel olarak erişin.
+HDInsight kümesinin içinden Azure Blob depolama sını veya Azure Veri Gölü Depolamasını kullanmak yerine komut satırından ve uygulama kodundan yerel HDFS'ye erişin.
 
 ### <a name="resolution-steps"></a>Çözüm adımları
 
-1. Komut isteminde aşağıdaki komutta olduğu gibi `hdfs dfs -D "fs.default.name=hdfs://mycluster/" ...` harfine kullanın:
+1. Komut isteminde, `hdfs dfs -D "fs.default.name=hdfs://mycluster/" ...` aşağıdaki komutta olduğu gibi kelimenin tam anlamıyla kullanın:
 
     ```output
     hdfs dfs -D "fs.default.name=hdfs://mycluster/" -ls /
@@ -37,7 +37,7 @@ Azure Blob depolama veya HDInsight kümesinin içinden Azure Data Lake Storage y
     drwx------   - hdiuser hdfs          0 2016-11-10 22:22 /user
     ```
 
-2. Kaynak koddan aşağıdaki örnek uygulamada olduğu gibi, URL `hdfs://mycluster/` harfine kullanın:
+2. Kaynak kodundan, aşağıdaki `hdfs://mycluster/` örnek uygulamada olduğu gibi URI'yi kelimenin tam anlamıyla kullanın:
 
     ```Java
     import java.io.IOException;
@@ -62,7 +62,7 @@ Azure Blob depolama veya HDInsight kümesinin içinden Azure Data Lake Storage y
     }
     ```
 
-3. Aşağıdaki komutla, HDInsight kümesinde derlenen. jar dosyasını (örneğin, `java-unit-tests-1.0.jar`adlı bir dosya) çalıştırın:
+3. HDInsight kümesinde derlenmiş .jar dosyasını `java-unit-tests-1.0.jar`(örneğin, adlı bir dosya) aşağıdaki komutla çalıştırın:
 
     ```apache
     hadoop jar java-unit-tests-1.0.jar JavaUnitTests
@@ -72,12 +72,12 @@ Azure Blob depolama veya HDInsight kümesinin içinden Azure Data Lake Storage y
     hdfs://mycluster/tmp/hive/hive/a0be04ea-ae01-4cc4-b56d-f263baf2e314/inuse.lck
     ```
 
-## <a name="du"></a>DU
+## <a name="du"></a>Du
 
-[-Du](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html#du) komutu, belirli bir dizinde bulunan dosya ve dizinlerin boyutlarını veya yalnızca bir dosya olması durumunda bir dosyanın uzunluğunu görüntüler.
+[-du](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html#du) komutu, verilen dizinde yer alan dosya ve dizinboyutlarını veya bir dosyanın uzunluğunu görüntüler.
 
-`-s` seçeneği, görüntülenmekte olan dosya uzunluklarının toplam özetini oluşturur.  
-`-h` seçeneği, dosya boyutlarını biçimlendirir.
+Seçenek, `-s` görüntülenen dosya uzunluklarının toplu bir özetini üretir.  
+Seçenek `-h` dosya boyutlarını biçimlendirin.
 
 Örnek:
 
@@ -86,9 +86,9 @@ hdfs dfs -du -s -h hdfs://mycluster/
 hdfs dfs -du -s -h hdfs://mycluster/tmp
 ```
 
-## <a name="rm"></a>'yi
+## <a name="rm"></a>Rm
 
-[-RM](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html#rm) komutu bağımsız değişken olarak belirtilen dosyaları siler.
+[-rm](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html#rm) komutu bağımsız değişken olarak belirtilen dosyaları siler.
 
 Örnek:
 
@@ -98,10 +98,10 @@ hdfs dfs -rm hdfs://mycluster/tmp/testfile
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Sorununuzu görmüyorsanız veya sorununuzu çözemediyseniz, daha fazla destek için aşağıdaki kanallardan birini ziyaret edin:
+Sorununuzu görmediyseniz veya sorununuzu çözemiyorsanız, daha fazla destek için aşağıdaki kanallardan birini ziyaret edin:
 
-* Azure [topluluk desteği](https://azure.microsoft.com/support/community/)aracılığıyla Azure uzmanlarından yanıt alın.
+* [Azure Topluluk Desteği](https://azure.microsoft.com/support/community/)aracılığıyla Azure uzmanlarından yanıtlar alın.
 
-* [@AzureSupport](https://twitter.com/azuresupport) ile bağlanma-müşteri deneyimini iyileştirmek için resmi Microsoft Azure hesabı. Azure Community 'yi doğru kaynaklara bağlama: yanıtlar, destek ve uzmanlar.
+* [@AzureSupport](https://twitter.com/azuresupport) Müşteri deneyimini geliştirmek için resmi Microsoft Azure hesabına bağlanın. Azure topluluğunu doğru kaynaklara bağlama: yanıtlar, destek ve uzmanlar.
 
-* Daha fazla yardıma ihtiyacınız varsa [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **destek** ' i seçin veya **Yardım + Destek** hub 'ını açın. Daha ayrıntılı bilgi için [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)konusunu inceleyin. Abonelik yönetimi ve faturalandırma desteği 'ne erişim Microsoft Azure aboneliğinize dahildir ve [Azure destek planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla teknik destek sağlanır.
+* Daha fazla yardıma ihtiyacınız varsa, [Azure portalından](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **Destek'i** seçin veya **Yardım + destek** merkezini açın. Daha ayrıntılı bilgi için [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)yı gözden geçirin. Abonelik Yönetimi'ne erişim ve faturalandırma desteği Microsoft Azure aboneliğinize dahildir ve Teknik Destek Azure [Destek Planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla sağlanır.

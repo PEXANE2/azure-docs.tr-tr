@@ -8,15 +8,15 @@ ms.service: data-explorer
 ms.topic: overview
 ms.date: 09/24/2018
 ms.openlocfilehash: 02b239922f481240341225ea68d8d0ee7492c48b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "60445830"
 ---
 # <a name="what-is-azure-data-explorer"></a>Azure Veri Gezgini nedir?
 
-Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve üst düzeyde ölçeklenebilir veri keşfetme hizmetidir. Modern yazılımlar tarafından oluşturulan birçok veri akışını işleyerek verileri toplamanıza, depolamanıza ve analiz etmenize yardımcı olur. Azure Veri Gezgini web siteleri, uygulamalar, IoT cihazları ve benzeri veri kaynaklarından gelen yüksek miktarlardaki çeşitli verileri analiz etmek için idealdir. Bu veriler tanılama, izleme, raporlama, makine öğrenmesi ve ek analiz özellikleri için kullanılır. Azure Veri Gezgini, bu verileri almak basit hale getirir ve saniyeler içinde veri üzerinde karmaşık geçici sorgular gerçekleştirmenizi sağlar.
+Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve üst düzeyde ölçeklenebilir veri keşfetme hizmetidir. Modern yazılımlar tarafından oluşturulan birçok veri akışını işleyerek verileri toplamanıza, depolamanıza ve analiz etmenize yardımcı olur. Azure Veri Gezgini web siteleri, uygulamalar, IoT cihazları ve benzeri veri kaynaklarından gelen yüksek miktarlardaki çeşitli verileri analiz etmek için idealdir. Bu veriler tanılama, izleme, raporlama, makine öğrenmesi ve ek analiz özellikleri için kullanılır. Azure Veri Gezgini, bu verileri yutmanızı kolaylaştırır ve veriler üzerinde saniyeler içinde karmaşık geçici sorgular gerçekleştirmenizi sağlar.
 
 ## <a name="what-makes-azure-data-explorer-unique"></a>Azure Veri Gezgini'ni benzersiz yapan nedir?
 
@@ -44,19 +44,19 @@ Aşağıdaki diyagram Azure Veri Gezgini ile çalışmanın farklı yönlerini g
 
 Azure Veri Gezgini'nde çalışma genellikle şu desene uyar:
 
-1. **Veritabanı oluşturun:** Oluşturma bir *küme* ve ardından bir veya daha fazla oluşturun *veritabanları* kümedeki. [Hızlı Başlangıç: Bir Azure Veri Gezgini kümesi ile veritabanı oluşturma](create-cluster-database-portal.md)
+1. **Veritabanı oluşturma:** Bir *küme* oluşturun ve ardından bu kümenin içinde bir veya birden çok *veritabanı* oluşturun. [Hızlı başlangıç: Azure Veri Gezgini kümesi ve veritabanı oluşturma](create-cluster-database-portal.md)
 
-1. **Veri alma:** Böylece karşı sorgular çalıştırabilirsiniz veritabanı tablolarına veri yükleme. [Hızlı Başlangıç: Azure veri Gezgini'ne olay Hub'ından veri alma](ingest-data-event-hub.md)
+1. **Verileri alma:** Veriler üzerinde sorgular çalıştırmak için verileri veritabanı tablolarına yükleyin. [Hızlı başlangıç: Verileri Olay Hub'ından Azure Veri Gezgini'ne alma](ingest-data-event-hub.md)
 
-1. **Veritabanını sorgula:** Web uygulamamızı çalıştırmak, gözden geçirin ve sorgular ve sonuçları paylaşmak için kullanın. Bu uygulama Azure portalında ve tek başına bir uygulama olarak sağlanır. Ayrıca, sorguları program aracılığıyla (SDK kullanarak) veya REST API uç noktasına da gönderebilirsiniz. [Hızlı Başlangıç: Azure veri Gezgini'nde verileri Sorgulama](web-query-data.md)
+1. **Veritabanını sorgulama:** Sorguları ve sonuçlarını çalıştırmak, gözden geçirmek ve paylaşmak için web uygulamamızı kullanın. Bu uygulama Azure portalında ve tek başına bir uygulama olarak sağlanır. Ayrıca, sorguları program aracılığıyla (SDK kullanarak) veya REST API uç noktasına da gönderebilirsiniz. [Hızlı başlangıç: Azure Veri Gezgini'nde verileri sorgulama](web-query-data.md)
 
 ## <a name="query-experience"></a>Sorgu deneyimi
 
-Azure Veri Gezgini'nde sorgu, verileri veya meta verileri değiştirmeden verilerin işlenmesine ve bu işlemenin sonuçlarının döndürülmesine yönelik salt okunur bir istektir. Analizinizi tamamlayana kadar sorgularınızı iyileştirmeye devam edersiniz. Azure Veri Gezgini bu işlemi nedeniyle, çok hızlı geçici sorgu deneyimi kolay hale getirir.
+Azure Veri Gezgini'nde sorgu, verileri veya meta verileri değiştirmeden verilerin işlenmesine ve bu işlemenin sonuçlarının döndürülmesine yönelik salt okunur bir istektir. Analizinizi tamamlayana kadar sorgularınızı iyileştirmeye devam edersiniz. Azure Veri Gezgini, çok hızlı geçici sorgu deneyimi sayesinde bu işlemi kolaylaştırır.
 
 Azure Veri Gezgini çok büyük miktarlarda yapılandırılmış, yarı yapılandırılmış (JSON benzeri iç içe türler) ve yapılandırılmamış (serbest metin) verileri ayırt etmeden iyi bir şekilde işler. Metinde belirli terimleri aramanıza, belirli olayları bulmanıza, yapılandırılmış veriler üzerinde ölçüm stilinde hesaplamalar yapmanıza olanak tanır. Azure Veri Gezgini, çalışma zamanında serbest biçimli metin alanlarındaki değerleri ayıklayarak, yapılandırılmamış metin günlükleri ile yapılandırılmış sayılar ve boyutlar arasında köprü işlevi görür. Hızlı metin dizinleri oluşturma, sütun deposu ve zaman serisi işlemleri birleştirilerek veri keşfi basitleştirilir.
 
-Azure Veri Gezgini özellikleri genişletilmiş yerleşik, güçlü sorgu dili, diğer hizmetler tarafından da dahil olmak üzere [Azure İzleyici günlükleri](/azure/log-analytics/), [Application Insights](/azure/application-insights/), [Time Series Insights ](/azure/time-series-insights/), ve [Windows Defender Gelişmiş tehdit koruması](/windows/security/threat-protection/windows-defender-atp/windows-defender-advanced-threat-protection/).
+Azure Veri Gezgini özellikleri, [Azure Monitor günlükleri,](/azure/log-analytics/) [Uygulama Öngörüleri,](/azure/application-insights/)Zaman [Serisi Öngörüleri](/azure/time-series-insights/)ve Windows [Defender Gelişmiş Tehdit Koruması](/windows/security/threat-protection/windows-defender-atp/windows-defender-advanced-threat-protection/)gibi güçlü sorgu dili üzerine inşa edilen diğer hizmetler tarafından genişletilir.
 
 ## <a name="feedback"></a>Geri Bildirim
 
@@ -70,8 +70,8 @@ Azure Veri Gezgini ve onun sorgu dili ile ilgili geri bildirimlerinizi şu adres
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Hızlı Başlangıç: Bir Azure Veri Gezgini kümesi ile veritabanı oluşturma](create-cluster-database-portal.md)
+[Hızlı başlangıç: Azure Veri Gezgini kümesi ve veritabanı oluşturma](create-cluster-database-portal.md)
 
-[Hızlı Başlangıç: Azure veri Gezgini'ne olay Hub'ından veri alma](ingest-data-event-hub.md)
+[Hızlı başlangıç: Verileri Olay Hub'ından Azure Veri Gezgini'ne alma](ingest-data-event-hub.md)
 
-[Hızlı Başlangıç: Azure veri Gezgini'nde verileri Sorgulama](web-query-data.md)
+[Hızlı başlangıç: Azure Veri Gezgini'nde verileri sorgulama](web-query-data.md)

@@ -1,6 +1,6 @@
 ---
-title: Etkileşimli olmayan kimlik doğrulaması .NET uygulaması-Azure HDInsight
-description: Azure HDInsight 'ta etkileşimli olmayan kimlik doğrulama Microsoft .NET uygulamaları oluşturmayı öğrenin.
+title: Etkileşimli olmayan kimlik doğrulama .NET uygulaması - Azure HDInsight
+description: Azure HDInsight'ta etkileşimli olmayan kimlik doğrulama Microsoft .NET uygulamalarını nasıl oluşturabilirsiniz öğrenin.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,38 +9,38 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/23/2019
 ms.openlocfilehash: 5e6a0586bc750f8972586920c15dbb297295aa20
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79371282"
 ---
 # <a name="create-a-non-interactive-authentication-net-hdinsight-application"></a>Etkileşimli olmayan bir kimlik doğrulama .NET HDInsight uygulaması oluşturma
 
-Microsoft .NET Azure HDInsight uygulamanızı uygulamanın kendi kimliği (etkileşimli olmayan) altında ya da uygulamanın oturum açan kullanıcısının kimliği altında çalıştırın (etkileşimli). Bu makalede, Azure 'a bağlanmak ve HDInsight 'ı yönetmek için etkileşimli olmayan bir kimlik doğrulama .NET uygulaması oluşturma işlemlerinin nasıl yapılacağı gösterilir. Etkileşimli uygulamanın bir örneği için bkz. [Azure HDInsight 'A bağlanma](hdinsight-administer-use-dotnet-sdk.md#connect-to-azure-hdinsight).
+Microsoft .NET Azure HDInsight uygulamanızı uygulamanın kendi kimliği (etkileşimli olmayan) veya uygulamanın oturum açmış kullanıcısı (etkileşimli) kimliği altında çalıştırın. Bu makalede, Azure'a bağlanmak ve HDInsight'ı yönetmek için etkileşimli olmayan bir kimlik doğrulama .NET uygulaması nasıl oluşturulabileceğinizgösterilmektedir. Etkileşimli bir uygulama örneği [için](hdinsight-administer-use-dotnet-sdk.md#connect-to-azure-hdinsight)bkz.
 
 Etkileşimli olmayan .NET uygulamanızdan şunları yapmanız gerekir:
 
-* Azure abonelik kiracı KIMLIĞINIZ ( *DIZIN kimliği*olarak da bilinir). Bkz. [KIRACı kimliği Al](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in).
-* Azure Active Directory (Azure AD) uygulama istemci KIMLIĞI. Bkz. [Azure Active Directory uygulama oluşturma](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) ve [uygulama kimliği edinme](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in).
-* Azure AD uygulama gizli anahtarı. Bkz. [uygulama kimlik doğrulama anahtarını al](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in).
+* Azure abonelik kiracı kimliğiniz *(dizin kimliği*olarak da adlandırılır). Bkz. [Kiracı kimliğini alın.](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)
+* Azure Etkin Dizin (Azure AD) uygulama istemci kimliği. Bkz. [Azure Etkin Dizin uygulaması oluşturun](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) ve uygulama kimliği [alın.](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)
+* Azure AD uygulaması gizli anahtarı. Bkz. [Uygulama kimlik doğrulama anahtarını alın.](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-An HDInsight küme. Kullanmaya başlama [öğreticisine](hadoop/apache-hadoop-linux-tutorial-get-started.md)bakın.
+Bir HDInsight kümesi. Başlangıç [öğretici](hadoop/apache-hadoop-linux-tutorial-get-started.md)bakın.
 
-## <a name="assign-a-role-to-the-azure-ad-application"></a>Azure AD uygulamasına bir rol atama
+## <a name="assign-a-role-to-the-azure-ad-application"></a>Azure AD uygulamasına rol atama
 
-Eylemleri gerçekleştirmek için izin vermek üzere Azure AD uygulamanıza bir [rol](../role-based-access-control/built-in-roles.md)atayın. Kapsamı, abonelik, kaynak grubu veya kaynak düzeyinde ayarlayabilirsiniz. İzinler, daha düşük kapsam düzeylerine devralınır. Örneğin, bir kaynak grubu için okuyucu rolüne bir uygulama eklemek, uygulamanın kaynak grubunu ve içindeki kaynakları okuyabileceği anlamına gelir. Bu makalede, kapsamı kaynak grubu düzeyinde ayarlarsınız. Daha fazla bilgi için bkz. [Azure abonelik kaynaklarınıza erişimi yönetmek için rol atamalarını kullanma](../role-based-access-control/role-assignments-portal.md).
+Azure AD uygulamanıza eylem gerçekleştirme izni vermek için bir [rol](../role-based-access-control/built-in-roles.md)atayın. Kapsamı abonelik, kaynak grubu veya kaynak düzeyinde ayarlayabilirsiniz. İzinler daha düşük kapsam düzeylerine devralınır. Örneğin, bir kaynak grubu için Okuyucu rolüne bir uygulama eklemek, uygulamanın kaynak grubunu ve içinde bulunan tüm kaynakları okuyabileceği anlamına gelir. Bu makalede, kapsamı kaynak grubu düzeyinde ayarlarsınız. Daha fazla bilgi için Azure [abonelik kaynaklarınıza erişimi yönetmek için rol atamalarını kullan'a](../role-based-access-control/role-assignments-portal.md)bakın.
 
-**Azure AD uygulamasına sahip rolünü eklemek için**
+**Azure AD uygulamasına Sahip rolünü eklemek için**
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
-1. Bu makalede daha sonra Hive sorgunuzu çalıştıracağınız HDInsight kümesine sahip kaynak grubuna gidin. Çok sayıda kaynak grubunuz varsa, istediğiniz birini bulmak için filtreyi kullanabilirsiniz.
-1. Kaynak grubu menüsünde, **erişim denetimi (IAM)** seçeneğini belirleyin.
-1. Geçerli rol atamalarını görmek için **rol atamaları** sekmesini seçin.
-1. Sayfanın üst kısmında **+ Ekle**' yi seçin.
-1. Azure AD uygulamanıza sahip rolünü eklemek için yönergeleri izleyin. Rolü başarıyla ekledikten sonra uygulama, sahip rolü altında listelenir.
+1. [Azure portalında](https://portal.azure.com)oturum açın.
+1. Bu makalede daha sonra Kovan sorgunuzu çalıştıracağınız HDInsight kümesine sahip kaynak grubuna gidin. Çok sayıda kaynak grubunuz varsa, istediğinizi bulmak için filtreyi kullanabilirsiniz.
+1. Kaynak grubu menüsünde **Access denetimi (IAM)** seçeneğini belirleyin.
+1. Geçerli rol **atamalarını** görmek için Rol atamaları sekmesini seçin.
+1. Sayfanın üst kısmında **+ Ekle'yi**seçin.
+1. Azure REKLAM uygulamanıza Kurucu rolünü eklemek için yönergeleri izleyin. Rolü başarıyla ekledikten sonra, uygulama Sahibi rolü altında listelenir.
 
 ## <a name="develop-an-hdinsight-client-application"></a>HDInsight istemci uygulaması geliştirme
 
@@ -121,6 +121,6 @@ Eylemleri gerçekleştirmek için izin vermek üzere Azure AD uygulamanıza bir 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure portal Azure Active Directory bir uygulama ve hizmet sorumlusu oluşturun](../active-directory/develop/howto-create-service-principal-portal.md).
-* [Azure Resource Manager ile hizmet sorumlusu için kimlik doğrulaması](../active-directory/develop/howto-authenticate-service-principal-powershell.md)yapmayı öğrenin.
-* [Azure rol tabanlı Access Control (RBAC)](../role-based-access-control/role-assignments-portal.md)hakkında bilgi edinin.
+* [Azure portalında bir Azure Etkin Dizin uygulaması ve hizmet ilkesi oluşturun.](../active-directory/develop/howto-create-service-principal-portal.md)
+* Azure Kaynak Yöneticisi ile bir hizmet yöneticisinin kimliğini nasıl [doğrulayacaä](../active-directory/develop/howto-authenticate-service-principal-powershell.md)ını öğrenin.
+* Azure [Role Tabanlı Erişim Denetimi (RBAC)](../role-based-access-control/role-assignments-portal.md)hakkında bilgi edinin.

@@ -1,6 +1,6 @@
 ---
-title: Azure IoT çözümünüze bağlı IoT Tak ve Kullan önizleme cihazından etkileşime geçin | Microsoft Docs
-description: Azure C# IoT çözümünüze bağlı IoT Tak ve kullan önizleme cihazına bağlanmak ve bunlarla etkileşim kurmak için (.net) kullanın.
+title: Azure IoT çözümünüze bağlı bir IoT Tak ve Çalıştır Önizleme aygıtıyla etkileşimde olun | Microsoft Dokümanlar
+description: Azure IoT çözümünüze bağlı bir IoT Tak ve Çalıştır Önizleme aygıtına bağlanmak ve bunlarla etkileşimde kalmak için C# (.NET) kullanın.
 author: dominicbetts
 ms.author: dobett
 ms.date: 12/30/2019
@@ -9,23 +9,23 @@ ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
 ms.openlocfilehash: 0953f68839217c1c75eb86f8399ce023f3863ab4
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76963980"
 ---
-# <a name="quickstart-interact-with-an-iot-plug-and-play-preview-device-thats-connected-to-your-solution-c"></a>Hızlı başlangıç: çözümünüze bağlı olan IoT Tak ve Kullan önizleme cihazından etkileşim kurma (C#)
+# <a name="quickstart-interact-with-an-iot-plug-and-play-preview-device-thats-connected-to-your-solution-c"></a>Quickstart: Çözümünüze bağlı bir IoT Tak ve Çalıştır Önizleme cihazıyla etkileşimkurun (C#)
 
 [!INCLUDE [iot-pnp-quickstarts-3-selector.md](../../includes/iot-pnp-quickstarts-3-selector.md)]
 
-IoT Tak ve Kullan önizlemesi, temeldeki cihaz uygulamasıyla ilgili bilgi sahibi olmadan bir cihazın özellikleri ile etkileşim kurmanızı sağlayarak IoT 'yi basitleştirir. Bu hızlı başlangıçta, çözümünüze bağlı bir C# IoT Tak ve kullan cihazına bağlanmak ve bunları denetlemek için (.NET ile) nasıl kullanılacağı gösterilmektedir.
+IoT Tak ve Çalıştır Önizleme, altta yatan aygıt uygulaması hakkında bilgi sahibi olmadan bir aygıtın yetenekleriyle etkileşimkurmanızı sağlayarak IoT'yi kolaylaştırır. Bu hızlı başlangıç, çözümünüze bağlı bir IoT Tak ve Çalıştır aygıtına bağlanmak ve bunları kontrol etmek için C# (.NET ile) nasıl kullanacağınızı gösterir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Bu hızlı başlangıcı tamamlayabilmeniz için geliştirme makinenize .NET Core (2. x. x veya 3. x. x) yüklemeniz gerekir. Birden çok platform için .NET Core SDK tercih ettiğiniz sürümünü [.NET Core](https://dotnet.microsoft.com/download/dotnet-core/)' u indirin.
+Bu hızlı başlangıcı tamamlamak için geliştirme makinenize .NET Core (2.x.x veya 3.x.x) yüklemeniz gerekir. .NET Core SDK'nın tercih ettiğiniz sürümünü [download .NET Core'dan](https://dotnet.microsoft.com/download/dotnet-core/)birden fazla platform için indirebilirsiniz.
 
-Bir yerel Terminal penceresinde aşağıdaki komutu çalıştırarak geliştirme makinenize ait .NET sürümünü doğrulayabilirsiniz: 
+Geliştirme makinenizdeki .NET sürümünü yerel bir terminal penceresinde aşağıdaki komutu çalıştırarak doğrulayabilirsiniz: 
 
 ```cmd/sh
 dotnet --version
@@ -35,67 +35,67 @@ dotnet --version
 
 [!INCLUDE [iot-pnp-prepare-iot-hub.md](../../includes/iot-pnp-prepare-iot-hub.md)]
 
-Hub 'ınız için _IoT Hub bağlantı dizesini_ almak için aşağıdaki komutu çalıştırın (daha sonra kullanmak üzere):
+Hub'ınız için _IoT hub bağlantı dizesini_ almak için aşağıdaki komutu çalıştırın (daha sonra kullanmak için not):
 
 ```azurecli-interactive
 az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
 ```
 
-## <a name="run-the-sample-device"></a>Örnek cihazı çalıştırma
+## <a name="run-the-sample-device"></a>Örnek aygıtı çalıştırma
 
-Bu hızlı başlangıçta, IoT Tak ve Kullan cihazı C# olarak yazılmış bir örnek ortam algılayıcısı kullanırsınız. Aşağıdaki yönergelerde, cihazın nasıl yükleneceği ve çalıştırılacağı gösterilmektedir:
+Bu hızlı başlatmada, C# ile IoT Tak ve Çalıştır cihazı olarak yazılmış örnek bir çevre sensörü kullanırsınız. Aşağıdaki yönergeler, aygıtı nasıl yükleyip çalıştıracağınıznızı gösterir:
 
-1. Seçtiğiniz dizinde bir Terminal penceresi açın. [Azure IoT örnekleri C# (.net)](https://github.com/Azure-Samples/azure-iot-samples-csharp) GitHub deposunu bu konuma kopyalamak için aşağıdaki komutu yürütün:
+1. Seçtiğiniz dizinde bir terminal penceresi açın. [C# (.NET)](https://github.com/Azure-Samples/azure-iot-samples-csharp) GitHub deposunu bu konuma klonlamak için aşağıdaki komutu uygulayın:
 
     ```cmd/sh
     git clone https://github.com/Azure-Samples/azure-iot-samples-csharp
     ```
 
-1. Bu terminal penceresi artık _cihaz_ terminalinize göre kullanılacaktır. Klonlanmış deponuzdaki klasöre gidin ve **/Azure-iot-Samples-CSharp/digitaltwin/Samples/Device/EnvironmentalSensorSample** klasörüne gidin.
+1. Bu terminal penceresi artık _aygıt_ terminaliniz olarak kullanılacaktır. Klonlanmış deponuzun klasörüne gidin ve **/azure-iot-samples-csharp/digitaltwin/Sample/device/EnvironmentalSensorSample** klasörüne gidin.
 
-1. _Cihaz bağlantı dizesini_yapılandırın:
+1. _Aygıt bağlantı dizesini_yapılandır:
 
     ```cmd/sh
     set DIGITAL_TWIN_DEVICE_CONNECTION_STRING=<YourDeviceConnectionString>
     ```
 
-1. Gerekli paketleri oluşturun ve örneği aşağıdaki komutla çalıştırın:
+1. Gerekli paketleri oluşturun ve aşağıdaki komutla örneği çalıştırın:
 
     ```cmd\sh
         dotnet run
     ```
 
-1. Cihazın başarıyla kaydedildiğini ve buluttan güncelleştirme beklediğini belirten iletiler görürsünüz. Bu, cihazın artık komutları ve özellik güncelleştirmelerini almaya hazır olduğunu ve hub 'a telemetri verileri göndermeye başlamış olduğunu gösterir. Bu terminali kapatmayın, daha sonra Ayrıca, hizmet örneklerinin da çalıştığını onaylamanız gerekir.
+1. Aygıtın başarıyla kaydolduğunu ve buluttan güncelleştirmeler beklediğini belirten iletiler görürsünüz. Bu, aygıtın artık komutları ve özellik güncelleştirmelerini almaya hazır olduğunu ve hub'a telemetri verilerini göndermeye başladığını gösterir. Bu terminali kapatmayın, servis örneklerinin de çalıştığını doğrulamak için daha sonra ihtiyacınız olacak.
 
-## <a name="run-the-sample-solution"></a>Örnek çözümü çalıştırma
+## <a name="run-the-sample-solution"></a>Örnek çözümçalıştırma
 
-Bu hızlı başlangıçta, örnek cihazla etkileşim kurmak için ' de C# örnek bir IoT çözümü kullanırsınız.
+Bu hızlı başlatmada, örnek aygıtla etkileşim kurmak için C#'da örnek bir IoT çözümü kullanırsınız.
 
-1. Başka bir Terminal penceresi açın (Bu _hizmet_ terminalinize eklenecektir). Klonlanmış deponuzdaki klasöre gidin ve **/Azure-iot-Samples-CSharp/digitaltwin/Samples/Service** klasörüne gidin.
+1. Başka bir terminal penceresi açın (bu sizin _servis_ terminaliniz olacak). Klonlanmış deponuzun klasörüne gidin ve **/azure-iot-samples-csharp/digitaltwin/Samples/service** klasörüne gidin.
 
-1. Hizmetin her ikisine de bağlanmasına izin vermek için _IoT Hub bağlantı dizesini_ ve _cihaz kimliğini_ yapılandırın:
+1. _IoT hub bağlantı dizesini_ ve _aygıt kimliğini,_ hizmetin her ikisine de bağlanmasına izin verecek şekilde yapılandırın:
 
     ```cmd/sh
     set IOTHUB_CONNECTION_STRING=<YourIoTHubConnectionString>
     set DEVICE_ID=<YourDeviceID>
     ```
 
-### <a name="read-a-property"></a>Bir özelliği okuyun
+### <a name="read-a-property"></a>Bir özelliği okuma
 
-1. _Cihazı_ terminalde bağladığınızda, çevrimiçi durumunu belirten aşağıdaki iletiyi gördünüz:
+1. _Aygıtı_ terminaline bağladığınızda, çevrimiçi durumunu belirten aşağıdaki iletiyi gördünuz:
 
     ```cmd/sh
     Waiting to receive updates from cloud...
     ```
 
-1. _Hizmet_ terminaline gidin ve cihaz bilgilerini okumak üzere örneği çalıştırmak için aşağıdaki komutları kullanın:
+1. _Servis_ terminaline gidin ve aygıtın bilgilerini okumak için örneği çalıştırmak için aşağıdaki komutları kullanın:
 
     ```cmd/sh
     cd GetDigitalTwin
     dotnet run
     ```
 
-1. _Hizmet_ terminali çıkışında `environmentalSensor` bileşenine gidin. Cihazın çevrimiçi olup olmadığını göstermek için kullanılan `state` özelliğinin _doğru_olarak raporlandığını görürsünüz:
+1. _Servis_ terminali çıkışında `environmentalSensor` bileşene gidin. Aygıtın `state` çevrimiçi olup olmadığını belirtmek için kullanılan özelliğin _doğru_olarak raporlandığını görüyorsunuz:
 
     ```JSON
     "environmentalSensor": {
@@ -110,23 +110,23 @@ Bu hızlı başlangıçta, örnek cihazla etkileşim kurmak için ' de C# örnek
     }
     ```
 
-### <a name="update-a-writable-property"></a>Yazılabilir bir özelliği güncelleştirme
+### <a name="update-a-writable-property"></a>Yazılabilir özelliği güncelleştirme
 
-1. _Hizmet_ terminaline gidin ve güncelleştirilecek özelliği tanımlamak için aşağıdaki değişkenleri ayarlayın:
+1. _Servis_ terminaline gidin ve hangi özelliğin güncelleştirileni tanımlamak için aşağıdaki değişkenleri ayarlayın:
     ```cmd/sh
     set INTERFACE_INSTANCE_NAME=environmentalSensor
     set PROPERTY_NAME=brightness
     set PROPERTY_VALUE=42
     ```
 
-1. Özelliği güncelleştirmek için örneği çalıştırmak üzere aşağıdaki komutları kullanın:
+1. Özelliği güncelleştirmek için örneği çalıştırmak için aşağıdaki komutları kullanın:
 
     ```cmd/sh
     cd ..\UpdateProperty
     dotnet run
     ```
 
-1. _Hizmet_ terminali çıkışı, güncelleştirilmiş cihaz bilgilerini gösterir. 42 'nin yeni parlaklık değerini görmek için `environmentalSensor` bileşenine gidin.
+1. _Servis_ terminali çıktısı güncelleştirilmiş aygıt bilgilerini gösterir. 42'nin yeni parlaklık değerini görmek için `environmentalSensor` bileşene gidin.
 
     ```json
         "environmentalSensor": {
@@ -146,7 +146,7 @@ Bu hızlı başlangıçta, örnek cihazla etkileşim kurmak için ' de C# örnek
     }
     ```
 
-1. _Cihaz terminalinize_ gidin, cihazın güncelleştirmeyi aldığını görürsünüz:
+1. _Aygıt_ terminalinize gidin, aygıtın güncelleştirmeyi aldığını görürsünüz:
 
     ```cmd/sh
     Received updates for property 'brightness'
@@ -156,13 +156,13 @@ Bu hızlı başlangıçta, örnek cihazla etkileşim kurmak için ' de C# örnek
     Sent pending status for brightness property.
     Sent completed status for brightness property.
     ```
-2. _Hizmet_ terminalinize geri dönüp, özelliğin güncelleştirildiğini onaylamak için cihaz bilgilerini yeniden almak üzere aşağıdaki komutları çalıştırın.
+2. _Hizmet_ terminalinize geri dön ve özelliğin güncelleştirildiğini doğrulamak için cihaz bilgilerini yeniden almak için aşağıdaki komutları çalıştırın.
     
     ```cmd/sh
     cd ..\GetDigitalTwin
     dotnet run
     ```
-3. _Hizmet_ terminali çıkışında, `environmentalSensor` bileşeni altında, güncelleştirilmiş parlaklık değerinin rapor edilmiş olduğunu görürsünüz. Note: cihazın güncelleştirmeyi tamamlaması biraz zaman alabilir. Cihaz özellik güncelleştirmesini gerçekten işleyene kadar bu adımı tekrarlayabilirsiniz.
+3. _Hizmet_ terminali çıkışında, `environmentalSensor` bileşenin altında, güncelleştirilmiş parlaklık değerinin raporlandığını görürsünüz. Not: Aygıtın güncelleştirmeyi tamamlaması biraz zaman alabilir. Aygıt özellik güncelleştirmesini gerçekten işleyene kadar bu adımı yineleyebilirsiniz.
     
     ```json
     "environmentalSensor": {
@@ -192,20 +192,20 @@ Bu hızlı başlangıçta, örnek cihazla etkileşim kurmak için ' de C# örnek
 
 ### <a name="invoke-a-command"></a>Komut çağırma
 
-1. _Hizmet_ terminali ' ne gidin ve çağrılacak komutu tanımlamak için aşağıdaki değişkenleri ayarlayın:
+1. _Servis_ terminaline gidin ve hangi komutu çağıracaklarını belirlemek için aşağıdaki değişkenleri ayarlayın:
     ```cmd/sh
     set INTERFACE_INSTANCE_NAME=environmentalSensor
     set COMMAND_NAME=blink
     ```
 
-1. Komutu çağırmak için örneği çalıştırmak üzere aşağıdaki komutları kullanın:
+1. Komutu çağırmak için örneği çalıştırmak için aşağıdaki komutları kullanın:
 
     ```cmd/sh
     cd ..\InvokeCommand
     dotnet run
     ```
 
-1. _Hizmet_ terminalinde çıktı aşağıdaki onayı göstermelidir:
+1. _Servis_ terminalindeki çıktı aşağıdaki onayı göstermelidir:
 
     ```cmd/sh
     Invoking blink on device <YourDeviceID> with interface instance name environmentalSensor
@@ -215,7 +215,7 @@ Bu hızlı başlangıçta, örnek cihazla etkileşim kurmak için ' de C# örnek
     Enter any key to finish
     ```
 
-1. _Cihaz_ terminali ' ne gidin, komutun kabul edilmiş olduğunu görürsünüz:
+1. _Aygıt_ terminaline gidin, komutun kabul edildiğini görürsünüz:
 
     ```cmd/sh
     Command - blink was invoked from the service
@@ -227,7 +227,7 @@ Bu hızlı başlangıçta, örnek cihazla etkileşim kurmak için ' de C# örnek
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta IoT Tak ve Kullan cihazını IoT çözümüne bağlamayı öğrendiniz. IoT Tak ve Kullan cihazlarınızla etkileşim kuran bir çözüm oluşturma hakkında daha fazla bilgi edinmek için bkz.:
+Bu hızlı başlatmada, bir IoT Tak ve Çalıştır aygıtını IoT çözümüne nasıl bağlayabileceğinizi öğrendiniz. IoT Tak ve Çalıştır aygıtlarınızla etkileşimedebilen bir çözümü nasıl oluşturabilirsiniz hakkında daha fazla bilgi edinmek için bkz:
 
 > [!div class="nextstepaction"]
-> [Nasıl yapılır: bir cihaza bağlanma ve cihazla etkileşim kurma](howto-develop-solution.md)
+> [Nasıl Yapılsın: Aygıta bağlanma ve aygıtla etkileşim kurma](howto-develop-solution.md)

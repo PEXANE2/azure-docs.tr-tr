@@ -1,58 +1,58 @@
 ---
 title: Şablonlar için en iyi uygulamalar
-description: Azure Resource Manager şablonları yazmak için önerilen yaklaşımları açıklar. Şablonları kullanırken yaygın sorunlardan kaçınmak için öneriler sunar.
+description: Azure Kaynak Yöneticisi şablonları yazarken önerilen yaklaşımları açıklar. Şablonları kullanırken sık karşılaşılan sorunları önlemek için öneriler sunar.
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: f623255a64404f0e041173fd29488ded24cd03b3
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 870636d6457d842c89f261c2537644c17a335294
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79248274"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80156421"
 ---
-# <a name="azure-resource-manager-template-best-practices"></a>Azure Resource Manager şablonu en iyi uygulamaları
+# <a name="arm-template-best-practices"></a>ARM şablonu en iyi uygulamalar
 
-Bu makale, Kaynak Yöneticisi şablonunuzun nasıl oluşturulacağı hakkında öneriler sağlar. Bu öneriler, bir çözümü dağıtmak için şablon kullanırken karşılaşılan yaygın sorunlardan kaçınmanıza yardımcı olur.
+Bu makalede, Azure Kaynak Yöneticisi (ARM) şablonunuzu nasıl oluşturacağÝ hakkında öneriler verilmiştir. Bu öneriler, bir çözüm dağıtmak için arm şablonu kullanırken sık karşılaşılan sorunları önlemenize yardımcı olur.
 
-Azure aboneliklerinizi yönetme hakkında öneriler için bkz. [Azure Kurumsal yapı iskelesi: seçkin abonelik](/azure/architecture/cloud-adoption/appendix/azure-scaffold?toc=%2Fen-us%2Fazure%2Fazure-resource-manager%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json)İdaresi.
+Azure aboneliklerinizi nasıl yöneteceğimize ilişkin öneriler için Bkz. [Azure kurumsal iskelesi: Açıklayıcı abonelik yönetimi.](/azure/architecture/cloud-adoption/appendix/azure-scaffold?toc=%2Fen-us%2Fazure%2Fazure-resource-manager%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json)
 
-Tüm Azure bulut ortamlarında çalışan şablonların nasıl oluşturulacağı hakkında öneriler için bkz. [bulut tutarlılığı için Azure Resource Manager şablonları geliştirme](templates-cloud-consistency.md).
+Tüm Azure bulut ortamlarında çalışan şablonların nasıl oluşturulacaklarına ilişkin öneriler için bulut [tutarlılığı için Azure Kaynak Yöneticisi şablonları geliştir'e](templates-cloud-consistency.md)bakın.
 
 ## <a name="template-limits"></a>Şablon sınırları
 
-Şablonunuzun boyutunu 4 MB ve her bir parametre dosyası 64 KB olarak sınırlandırın. 4 MB sınırı, yineleme, yinelemeli kaynak tanımları ve değişkenler ve parametreler için genişletildikten sonra şablonun son durumuna uygulanır. 
+Şablonunuzun boyutunu 4 MB ve her parametre dosyasını 64 KB ile sınırlayın. 4 MB sınırı, yinelemeli kaynak tanımları ve değişkenler ve parametreler için değerlerle genişletildikten sonra şablonun son durumuna uygulanır. 
 
-Şunları da sınırlayabilirsiniz:
+Ayrıca şu ile sınırlısınız:
 
-* 256 parametreleri
-* 256 değişkenleri
+* 256 parametre
+* 256 değişken
 * 800 kaynak (kopya sayısı dahil)
 * 64 çıkış değeri
 * Şablon ifadesinde 24.576 karakter
 
-İç içe geçmiş bir şablon kullanarak bazı şablon sınırlarını aşabilirsiniz. Daha fazla bilgi için bkz. [Azure kaynaklarını dağıtmaya yönelik bağlı şablonları kullanma](linked-templates.md). Parametre, değişken veya çıkış sayısını azaltmak için, birkaç değeri bir nesne içinde birleştirebilirsiniz. Daha fazla bilgi için bkz. [nesneler parametreler olarak](/azure/architecture/building-blocks/extending-templates/objects-as-parameters).
+İç içe bir şablon kullanarak bazı şablon sınırlarını aşabilirsiniz. Daha fazla bilgi için bkz: [Azure kaynaklarını dağıtırken bağlantılı şablonları kullanma.](linked-templates.md) Parametrelerin, değişkenlerin veya çıktıların sayısını azaltmak için, bir nesneye birkaç değer birleştirebilirsiniz. Daha fazla bilgi [için, parametreler olarak Nesneler'e](/azure/architecture/building-blocks/extending-templates/objects-as-parameters)bakın.
 
 ## <a name="resource-group"></a>Kaynak grubu
 
-Kaynakları bir kaynak grubuna dağıttığınızda, kaynak grubu kaynaklarla ilgili meta verileri depolar. Meta veriler, kaynak grubunun konumunda depolanır.
+Kaynakları bir kaynak grubuna dağıtdığınızda, kaynak grubu kaynaklar la ilgili meta verileri depolar. Meta veriler kaynak grubunun konumunda depolanır.
 
-Kaynak grubunun bölgesi geçici olarak kullanılamıyorsa, meta veriler kullanılamadığından kaynak grubundaki kaynakları güncelleştiremezsiniz. Diğer bölgelerdeki kaynaklar beklendiği gibi çalışmaya devam eder, ancak bunları güncelleştiremezsiniz. Riski en aza indirmek için, kaynak grubunuzu ve kaynaklarınızı aynı bölgede bulun.
+Kaynak grubunun bölgesi geçici olarak kullanılamıyorsa, meta veriler kullanılamadığı ndan kaynak grubundaki kaynakları güncelleştiremezsiniz. Diğer bölgelerdeki kaynaklar beklendiği gibi çalışmaya devam eder, ancak bunları güncelleştiremezsiniz. Riski en aza indirmek için kaynak grubunuzu ve kaynaklarınızı aynı bölgede bulun.
 
 ## <a name="parameters"></a>Parametreler
 
-Bu bölümdeki bilgiler, [parametrelerle](template-parameters.md)çalışırken yararlı olabilir.
+Bu bölümdeki bilgiler [parametrelerle](template-parameters.md)çalışırken yararlı olabilir.
 
 ### <a name="general-recommendations-for-parameters"></a>Parametreler için genel öneriler
 
-* Parametrelerin kullanımını en aza indirin. Bunun yerine, dağıtım sırasında belirtilmesi gerekmeyen özellikler için değişkenler veya sabit değerler kullanın.
+* Parametreleri kullanımınızı en aza indirin. Bunun yerine, dağıtım sırasında belirtilmesi gerekmeyen özellikler için değişkenler veya gerçek değerler kullanın.
 
-* Parametre adları için ortası Case kullanın.
+* Parametre adları için deve kılıfı kullanın.
 
-* SKU, boyut veya kapasite gibi ortama göre farklılık gösteren ayarlar için parametreleri kullanın.
+* SKU, boyut veya kapasite gibi ortama göre değişen ayarlar için parametreleri kullanın.
 
 * Kolay tanımlama için belirtmek istediğiniz kaynak adları için parametreleri kullanın.
 
-* Meta verilerdeki her parametre için bir açıklama girin:
+* Meta verilerdeki her parametrenin açıklamasını sağlayın:
 
    ```json
    "parameters": {
@@ -65,7 +65,7 @@ Bu bölümdeki bilgiler, [parametrelerle](template-parameters.md)çalışırken 
    }
    ```
 
-* Gizli olmayan parametreler için varsayılan değerleri tanımlayın. Varsayılan bir değer belirterek, şablonu dağıtmak daha kolaydır ve şablonunuzun kullanıcıları uygun bir değere bir örnek görür. Varsayılan dağıtım yapılandırmasındaki tüm kullanıcılar için bir parametre için herhangi bir varsayılan değer geçerli olmalıdır. 
+* Hassas olmayan parametreler için varsayılan değerleri tanımlayın. Varsayılan bir değer belirterek, şablonu dağıtmak daha kolaydır ve şablonunuzun kullanıcıları uygun bir değer örneğini görür. Bir parametre için varsayılan değer, varsayılan dağıtım yapılandırmasındaki tüm kullanıcılar için geçerli olmalıdır. 
    
    ```json
    "parameters": {
@@ -79,7 +79,7 @@ Bu bölümdeki bilgiler, [parametrelerle](template-parameters.md)çalışırken 
    }
    ```
 
-* İsteğe bağlı bir parametre belirtmek için, varsayılan değer olarak boş bir dize kullanmayın. Bunun yerine, bir değer oluşturmak için bir sabit değer veya dil ifadesi kullanın.
+* İsteğe bağlı bir parametre belirtmek için boş bir dizeyi varsayılan değer olarak kullanmayın. Bunun yerine, bir değer oluşturmak için gerçek bir değer veya dil ifadesi kullanın.
 
    ```json
    "storageAccountName": {
@@ -91,17 +91,17 @@ Bu bölümdeki bilgiler, [parametrelerle](template-parameters.md)çalışırken 
    },
    ```
 
-* Bir kaynak türü için API sürümü için bir parametre kullanmayın. Kaynak özellikleri ve değerleri, sürüm numarasına göre farklılık gösterebilir. API sürümü bir parametreye ayarlandığında, bir kod düzenleyicisinde IntelliSense doğru şemayı belirleyemiyor. Bunun yerine, şablondaki API sürümünü sabit kodlayın.
+* Kaynak türü için API sürümü için parametre kullanmayın. Kaynak özellikleri ve değerleri sürüm numarasına göre değişebilir. Api sürümü bir parametreye ayarlandığında, kod düzenleyicisindeki IntelliSense doğru şemayı belirleyemez. Bunun yerine, şablondaki API sürümünü sabit kodlayın.
 
-* `allowedValues` gelişigüzel kullanın. Yalnızca bazı değerlerin izin verilen seçeneklere dahil edilmediğinden emin olmanız gerektiğinde bunu kullanın. `allowedValues` çok büyük kullanıyorsanız, listenizi güncel tutmamak için geçerli dağıtımları engelleyebilirsiniz.
+* Dikkatli `allowedValues` kullanın. Yalnızca bazı değerlerin izin verilen seçeneklere dahil olmadığından emin olmak istediğinizde kullanın. Çok geniş `allowedValues` kullanım yapıyorsanız, listenizi güncel tutmayarak geçerli dağıtımları engelleyebilirsiniz.
 
-* Şablonunuzda bir parametre adı PowerShell dağıtım komutundaki bir parametreyle eşleştiğinde Kaynak Yöneticisi, bu adlandırma çakışmasını, sonek **FromTemplate** 'i Şablon parametresine ekleyerek çözer. Örneğin, şablonunuza **resourcegroupname** adlı bir parametre eklerseniz, bu, [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) cmdlet 'inin **resourcegroupname** parametresiyle çakışıyor. Dağıtım sırasında, **Resourcegroupnamefromtemplate**için bir değer sağlamanız istenir.
+* Şablonunuzdaki bir parametre adı PowerShell dağıtım komutundaki bir parametreyle eşleştiğinde, Kaynak Yöneticisi şablon parametresine **FromTemplate** postfix'ini ekleyerek bu adlandırma çakışmasını çözer. Örneğin, şablonunuza **ResourceGroupName** adlı bir parametre eklerseniz, [Yeni Kaynak GrubuDağıtım](/powershell/module/az.resources/new-azresourcegroupdeployment) cmdlet'indeki **ResourceGroupName** parametresi ile çakışır. Dağıtım sırasında, **ResourceGroupNameFromTemplate**için bir değer sağlamanız istenir.
 
 ### <a name="security-recommendations-for-parameters"></a>Parametreler için güvenlik önerileri
 
-* Her zaman Kullanıcı adları ve parolalar (veya gizli diziler) için parametreleri kullanın.
+* Her zaman kullanıcı adları ve parolalar (veya sırlar) için parametreleri kullanın.
 
-* Tüm parolalar ve gizlilikler için `securestring` kullanın. Gizli verileri bir JSON nesnesinde geçirirseniz `secureObject` türünü kullanın. Güvenli dize veya güvenli nesne türleri olan şablon parametreleri kaynak dağıtımdan sonra okunamaz. 
+* Tüm `securestring` parolalar ve sırlar için kullanın. Bir JSON nesnesinde hassas verileri geçirirseniz, `secureObject` türü kullanın. Güvenli dize veya güvenli nesne türlerine sahip şablon parametreleri kaynak dağıtımından sonra okuamaz. 
    
    ```json
    "parameters": {
@@ -114,13 +114,13 @@ Bu bölümdeki bilgiler, [parametrelerle](template-parameters.md)çalışırken 
    }
    ```
 
-* Kullanıcı adları, parolalar veya `secureString` türü gerektiren herhangi bir değer için varsayılan değerler sağlamaz.
+* Kullanıcı adları, parolalar veya tür gerektiren herhangi bir değer `secureString` için varsayılan değerler sağlamayın.
 
-* Uygulamanın saldırı yüzeyi alanını artıran özellikler için varsayılan değerler sağlamama.
+* Uygulamanın saldırı yüzey alanını artıran özellikler için varsayılan değerler sağlamayın.
 
-### <a name="location-recommendations-for-parameters"></a>Parametrelerin konum önerileri
+### <a name="location-recommendations-for-parameters"></a>Parametreler için konum önerileri
 
-* Kaynak konumunu belirtmek için bir parametre kullanın ve varsayılan değeri `resourceGroup().location`olarak ayarlayın. Bir konum parametresi sağlamak, şablon kullanıcılarının, dağıtma iznine sahip oldukları bir konum belirtmesini sağlar.
+* Kaynakların konumunu belirtmek için bir parametre kullanın ve `resourceGroup().location`varsayılan değeri . Konum parametresi sağlamak, şablon kullanıcılarının dağıtmak için izin verdikleri bir konum belirtmelerini sağlar.
 
    ```json
    "parameters": {
@@ -134,51 +134,51 @@ Bu bölümdeki bilgiler, [parametrelerle](template-parameters.md)çalışırken 
    },
    ```
 
-* Konum parametresi için `allowedValues` belirtmeyin. Belirttiğiniz konumlar tüm bulutlarda kullanılamayabilir.
+* Konum parametresi için belirtmeyin. `allowedValues` Belirttiğiniz konumlar tüm bulutlarda kullanılamayabilir.
 
-* Büyük olasılıkla aynı konumda olabilecek kaynaklar için konum parametresi değerini kullanın. Bu yaklaşım, kullanıcıların konum bilgilerini sağlaması için kaç kez sorulduğu sayısını en aza indirir.
+* Aynı konumda olması muhtemel kaynaklar için konum parametre değerini kullanın. Bu yaklaşım, kullanıcıların konum bilgilerini sağlamalarının istenme sayısını en aza indirir.
 
-* Tüm konumlarda kullanılamayan kaynaklar için ayrı bir parametre kullanın veya sabit bir konum değeri belirtin.
+* Tüm konumlarda kullanılamayan kaynaklar için ayrı bir parametre kullanın veya gerçek bir konum değeri belirtin.
 
 ## <a name="variables"></a>Değişkenler
 
-Aşağıdaki bilgiler, [değişkenlerle](template-variables.md)çalışırken yararlı olabilir:
+[Değişkenlerle](template-variables.md)çalışırken aşağıdaki bilgiler yararlı olabilir:
 
-* Değişken adları için ortası Case kullanın.
+* Değişken adlar için deve kılıfı kullanın.
 
-* Bir şablonda birden çok kez kullanmanız gereken değerler için değişkenleri kullanın. Bir değer yalnızca bir kez kullanılıyorsa, sabit kodlanmış bir değer şablonunuzun okunmasını kolaylaştırır.
+* Şablonda birden fazla kez kullanmanız gereken değerler için değişkenleri kullanın. Bir değer yalnızca bir kez kullanılırsa, sabit kodlanmış bir değer şablonunuzun okunmasını kolaylaştırır.
 
-* Şablon işlevlerinin karmaşık bir düzenlemesini oluşturduğunuz değerler için değişkenleri kullanın. Karmaşık ifade yalnızca değişkenlerde göründüğünde şablonunuz daha kolay okunabilir.
+* Şablon işlevlerinin karmaşık bir düzenlemesinden oluşturabileceğiniz değerler için değişkenleri kullanın. Karmaşık ifade yalnızca değişkenlerde göründüğünde şablonunuzun okunması daha kolaydır.
 
-* Bir kaynaktaki `apiVersion` için değişkenler kullanmayın. API sürümü, kaynağın şemasını belirler. Genellikle, kaynağın özelliklerini değiştirmeden sürümü değiştiremezsiniz.
+* Bir kaynak `apiVersion` için değişkenler kullanmayın. API sürümü kaynağın şema sını belirler. Genellikle, kaynağın özelliklerini değiştirmeden sürümü değiştiremezsiniz.
 
-* Şablonun **değişkenler** bölümünde [başvuru](template-functions-resource.md#reference) işlevini kullanamazsınız. **Başvuru** işlevi, kaynağın çalışma zamanı durumundan değerini türetir. Ancak, değişkenler, şablonun ilk ayrıştırması sırasında çözümlenir. Şablonun **kaynaklar** veya **çıktılar** bölümünde **başvuru** işlevine ihtiyacı olan değerleri doğrudan oluşturun.
+* Şablonun **değişkenler** [bölümündeki başvuru](template-functions-resource.md#reference) işlevini kullanamazsınız. **Başvuru** işlevi değerini kaynağın çalışma zamanı durumundan türeter. Ancak, değişkenler şablonun ilk ayrışma sırasında çözülür. Başvuru **işlevine** doğrudan şablonun **kaynaklar** veya **çıktılar** bölümünde gereken değerler oluşturma.
 
-* Benzersiz olması gereken kaynak adları için değişkenleri dahil edin.
+* Benzersiz olması gereken kaynak adları için değişkenler ekleyin.
 
-* JSON nesnelerinin tekrarlanmış bir modelini oluşturmak için [değişkenlerde bir kopyalama döngüsü](copy-variables.md) kullanın.
+* JSON nesnelerinin yinelenen bir deseni oluşturmak için [değişkenlerde](copy-variables.md) bir kopyalama döngüsü kullanın.
 
 * Kullanılmayan değişkenleri kaldırın.
 
 ## <a name="resource-dependencies"></a>Kaynak bağımlılıkları
 
-Ayarlanacak [bağımlılıklara](define-resource-dependency.md) karar verirken aşağıdaki yönergeleri kullanın:
+Hangi [bağımlılıkların](define-resource-dependency.md) ayarlanmasına karar verirken aşağıdaki yönergeleri kullanın:
 
-* Bir özelliği paylaşması gereken kaynaklar arasında örtük bir bağımlılık ayarlamak için **başvuru** işlevini kullanın ve kaynak adını geçirin. Örtük bir bağımlılığı zaten tanımladığınız zaman açık bir `dependsOn` öğesi eklemeyin. Bu yaklaşım, gereksiz bağımlılıklara sahip olma riskini azaltır.
+* Bir özelliği paylaşması gereken kaynaklar arasında örtük bir bağımlılık ayarlamak için **kaynak adındaki başvuru** işlevini ve geçişini kullanın. Örtük bir bağımlılık `dependsOn` tanımlamışsanız açık bir öğe eklemeyin. Bu yaklaşım, gereksiz bağımlılıklara sahip olma riskini azaltır.
 
-* Alt kaynağı üst kaynağına bağımlı olarak ayarlayın.
+* Alt kaynağı ana kaynağına bağımlı olarak ayarlayın.
 
-* [Koşul öğesi](conditional-resource-deployment.md) false olarak ayarlanan kaynaklar, bağımlılık siparişinden otomatik olarak kaldırılır. Bağımlılıkları, kaynak her zaman dağıtılır gibi ayarlayın.
+* [Koşul öğesi](conditional-resource-deployment.md) false olarak ayarlanmış kaynaklar bağımlılık siparişinden otomatik olarak kaldırılır. Bağımlılıkları, kaynak her zaman dağıtılmış gibi ayarlayın.
 
-* Bağımlılıkların açıkça Ayarlamasız şekilde basamaklı olmasına izin verin. Örneğin, sanal makineniz sanal bir ağ arabirimine bağlıdır ve sanal ağ arabirimi bir sanal ağ ve genel IP adreslerine bağlıdır. Bu nedenle, sanal makine üç kaynaktan sonra dağıtılır, ancak sanal makineyi tüm üç kaynağa bağımlı olarak açıkça ayarlamazsanız. Bu yaklaşım bağımlılık sırasını açıklar ve şablonu daha sonra değiştirmeyi kolaylaştırır.
+* Bağımlılıkları açıkça ayarlamadan basamaklamasına izin verin. Örneğin, sanal makineniz sanal ağ arabirimine, sanal ağ arabirimi ise sanal ağa ve genel IP adreslerine bağlıdır. Bu nedenle, sanal makine her üç kaynaktan sonra dağıtılır, ancak sanal makineyi açıkça her üç kaynağa bağlı olarak ayarlamayın. Bu yaklaşım, bağımlılık sırasını açıklar ve şablonu daha sonra değiştirmeyi kolaylaştırır.
 
-* Dağıtım öncesinde bir değer belirlenebileceği takdirde, kaynağı bir bağımlılık olmadan dağıtmaya çalışın. Örneğin, bir yapılandırma değeri başka bir kaynağın adına ihtiyaç duyuyorsa, bağımlılığa gerek duymayabilir. Bazı kaynaklar diğer kaynağın varlığını doğrulamadığı için bu kılavuz her zaman çalışmaz. Bir hata alırsanız, bir bağımlılık ekleyin.
+* Dağıtımdan önce bir değer belirlenebiliyorsa, kaynağı bağımlılık olmadan dağıtmayı deneyin. Örneğin, yapılandırma değerinin başka bir kaynağın adına ihtiyacı varsa, bir bağımlıya ihtiyacınız olmayabilir. Bazı kaynaklar diğer kaynağın varlığını doğruladığı için bu kılavuz her zaman çalışmaz. Bir hata alırsanız, bir bağımlılık ekleyin.
 
 ## <a name="resources"></a>Kaynaklar
 
 [Kaynaklarla](template-syntax.md#resources)çalışırken aşağıdaki bilgiler yararlı olabilir:
 
-* Diğer katkı sağlayanlar kaynağın amacını anlamalarına yardımcı olmak için şablondaki her bir kaynak için **açıklamalar** belirtin:
+* Diğer katkıda bulunanların kaynağın amacını anlamalarına yardımcı olmak için, şablondaki her kaynak için **açıklamalar** belirtin:
    
    ```json
    "resources": [
@@ -193,7 +193,7 @@ Ayarlanacak [bağımlılıklara](define-resource-dependency.md) karar verirken a
    ]
    ```
 
-* Şablonunuzda *ortak bir uç nokta* (Azure Blob depolama genel uç noktası gibi) kullanıyorsanız, ad alanını sabit bir şekilde *kodmayın* . Ad alanını dinamik olarak almak için **başvuru** işlevini kullanın. Şablonu şablondaki uç noktayı el ile değiştirmeden farklı genel ad alanı ortamlarına dağıtmak için bu yaklaşımı kullanabilirsiniz. API sürümünü, şablonunuzda depolama hesabı için kullandığınız sürüme ayarlayın:
+* Şablonunuzda ortak bir *bitiş noktası* kullanıyorsanız (Azure Blob depolama ortak bitiş noktası gibi), ad alanını *sabit kodlamayın.* Ad alanını dinamik olarak almak için **başvuru** işlevini kullanın. Şablondaki bitiş noktasını el ile değiştirmeden şablonu farklı ortak ad alanı ortamlarına dağıtmak için bu yaklaşımı kullanabilirsiniz. API sürümünü şablonunuzdaki depolama hesabı için kullandığınız sürümle ayarlayın:
    
    ```json
    "diagnosticsProfile": {
@@ -204,7 +204,7 @@ Ayarlanacak [bağımlılıklara](define-resource-dependency.md) karar verirken a
    }
    ```
    
-   Depolama hesabı oluşturmakta olduğunuz şablona dağıtılmışsa ve depolama hesabının adı şablondaki başka bir kaynakla paylaşılmamışsa, kaynağa başvurduğunuzda sağlayıcı ad alanını veya apiVersion 'ı belirtmeniz gerekmez. Aşağıdaki örnek basitleştirilmiş sözdizimini göstermektedir:
+   Depolama hesabı oluşturduğunuz şablonda dağıtılırsa ve depolama hesabının adı şablondaki başka bir kaynakla paylaşılmazsa, kaynağa başvururken sağlayıcı ad alanını veya apiVersion'u belirtmeniz gerekmez. Aşağıdaki örnekbasitleştirilmiş sözdizimini gösterir:
    
    ```json
    "diagnosticsProfile": {
@@ -215,7 +215,7 @@ Ayarlanacak [bağımlılıklara](define-resource-dependency.md) karar verirken a
    }
    ```
      
-   Farklı bir kaynak grubunda bulunan mevcut bir depolama hesabına de başvurabilirsiniz:
+   Ayrıca, farklı bir kaynak grubunda bulunan varolan bir depolama hesabına da başvuruda bulunabilirsiniz:
 
    ```json
    "diagnosticsProfile": {
@@ -226,17 +226,17 @@ Ayarlanacak [bağımlılıklara](define-resource-dependency.md) karar verirken a
    }
    ```
 
-* Bir sanal makineye yalnızca bir uygulama gerektirdiğinde genel IP adresleri atayın. Hata ayıklama için bir sanal makineye (VM) bağlanmak veya yönetim veya yönetim amaçlarıyla, gelen NAT kuralları, bir sanal ağ geçidi veya bir atlama kutusu kullanın.
+* Genel IP adreslerini yalnızca bir uygulama gerektirdiğinde sanal bir makineye atayın. Hata ayıklama veya yönetim veya yönetim amacıyla sanal bir makineye (VM) bağlanmak için gelen NAT kurallarını, sanal ağ ağ ağ geçidini veya atlama kutusunu kullanın.
    
-     Sanal makinelere bağlanma hakkında daha fazla bilgi için bkz.:
+     Sanal makinelere bağlanma hakkında daha fazla bilgi için bkz:
    
-   * [Azure 'da N katmanlı mimari için VM 'Leri çalıştırma](../../guidance/guidance-compute-n-tier-vm.md)
-   * [Azure Resource Manager VM 'Ler için WinRM erişimi ayarlama](../../virtual-machines/windows/winrm.md)
-   * [Azure portal kullanarak sanal makinenize dış erişime izin verin](../../virtual-machines/windows/nsg-quickstart-portal.md)
-   * [PowerShell kullanarak sanal makinenize dış erişime izin verin](../../virtual-machines/windows/nsg-quickstart-powershell.md)
-   * [Azure CLı kullanarak Linux VM 'nize dışarıdan erişime izin verin](../../virtual-machines/virtual-machines-linux-nsg-quickstart.md)
+   * [Azure'da N katmanlı mimari için VM'ler çalıştırma](../../guidance/guidance-compute-n-tier-vm.md)
+   * [Azure Kaynak Yöneticisi'nde VM'ler için WinRM erişimi ayarlama](../../virtual-machines/windows/winrm.md)
+   * [Azure portalını kullanarak VM'nize harici erişime izin verin](../../virtual-machines/windows/nsg-quickstart-portal.md)
+   * [PowerShell'i kullanarak VM'inize harici erişime izin verin](../../virtual-machines/windows/nsg-quickstart-powershell.md)
+   * [Azure CLI'yi kullanarak Linux VM'nize harici erişime izin verin](../../virtual-machines/virtual-machines-linux-nsg-quickstart.md)
 
-* Genel IP adresleri için **Domainnamelabel** özelliği benzersiz olmalıdır. **Domainnamelabel** değeri 3 ila 63 karakter uzunluğunda olmalı ve bu normal ifade tarafından belirtilen kuralları izlemelidir: `^[a-z][a-z0-9-]{1,61}[a-z0-9]$`. **Uniquestring** işlevi 13 karakter uzunluğunda bir dize oluşturduğundan, **Dnsprefixstring** parametresi 50 karakterle sınırlıdır:
+* Ortak IP adresleri için **domainNameLabel** özelliği benzersiz olmalıdır. **DomainNameLabel** değeri 3 ile 63 karakter uzunluğunda olmalı ve bu normal ifadede belirtilen kurallara uymalıdır: `^[a-z][a-z0-9-]{1,61}[a-z0-9]$`. **uniqueString** işlevi 13 karakter uzunluğunda bir dize oluşturduğundan, **dnsPrefixString** parametresi 50 karakterle sınırlıdır:
 
    ```json
    "parameters": {
@@ -253,7 +253,7 @@ Ayarlanacak [bağımlılıklara](define-resource-dependency.md) karar verirken a
    }
    ```
 
-* Özel bir betik uzantısına bir parola eklediğinizde **Protectedsettings** özelliğindeki **commandtoexecute** özelliğini kullanın:
+* Özel bir komut dosyası uzantısına parola eklediğinizde, **protectedSettings** özelliğindeki **ToExecute özelliğini** kullanın:
    
    ```json
    "properties": {
@@ -273,11 +273,11 @@ Ayarlanacak [bağımlılıklara](define-resource-dependency.md) karar verirken a
    ```
    
    > [!NOTE]
-   > VM 'Ler ve uzantılara parametre olarak geçirildiğinde gizli dizileri şifrelendiğinden emin olmak için ilgili uzantıların **Protectedsettings** özelliğini kullanın.
+   > Sırların VM'lere ve uzantılara parametre olarak aktarıldığında şifrelendiğinden emin olmak için, ilgili uzantıların **protectedSettings** özelliğini kullanın.
    > 
    > 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Kaynak Yöneticisi Şablon dosyasının yapısı hakkında daha fazla bilgi için bkz. [Azure Resource Manager şablonlarının yapısını ve sözdizimini anlayın](template-syntax.md).
-* Tüm Azure bulut ortamlarında çalışan şablonların nasıl oluşturulacağı hakkında öneriler için bkz. [bulut tutarlılığı için Azure Resource Manager şablonları geliştirme](templates-cloud-consistency.md).
+* Şablon dosyasının yapısı hakkında bilgi için [bkz.](template-syntax.md)
+* Tüm Azure bulut ortamlarında çalışan şablonların nasıl oluşturulacaklarına ilişkin öneriler için bulut [tutarlılığı için ARM şablonları geliştir'e](templates-cloud-consistency.md)bakın.

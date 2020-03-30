@@ -1,49 +1,49 @@
 ---
-title: Ruby uygulamalarını Yapılandırma-Azure App Service
-description: Uygulamanız için önceden oluşturulmuş bir Ruby kapsayıcısını nasıl yapılandıracağınızı öğrenin. Bu makalede en sık kullanılan yapılandırma görevleri gösterilmektedir.
+title: Ruby uygulamalarını yapılandırma - Azure Uygulama Hizmeti
+description: Uygulamanız için önceden oluşturulmuş bir Ruby kapsayıcısını nasıl yapılandıracaklarınızı öğrenin. Bu makalede, en yaygın yapılandırma görevleri gösterir.
 ms.topic: quickstart
 ms.date: 03/28/2019
 ms.reviewer: astay; kraigb
-ms.custom: seodec18
-ms.openlocfilehash: 2b096725575598bd44d7da39f77f85dee5b5e40e
-ms.sourcegitcommit: d4a4f22f41ec4b3003a22826f0530df29cf01073
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 8daebba840223d050a14b4b99cb6ae15472ee4f5
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78255829"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80046336"
 ---
-# <a name="configure-a-linux-ruby-app-for-azure-app-service"></a>Azure App Service için Linux Ruby uygulaması yapılandırma
+# <a name="configure-a-linux-ruby-app-for-azure-app-service"></a>Azure Uygulama Hizmeti için bir Linux Ruby uygulamasını yapılandırma
 
-Bu makalede, [Azure App Service](app-service-linux-intro.md) Ruby uygulamalarının nasıl çalıştığı ve gerektiğinde App Service davranışının nasıl özelleştirileceği açıklanır. Ruby uygulamalarının tüm gerekli [Gems 'ler](https://rubygems.org/gems)ile dağıtılması gerekir.
+Bu makalede, [Azure Uygulama Hizmeti'nin](app-service-linux-intro.md) Ruby uygulamalarını nasıl çalıştırdığınız ve gerektiğinde Uygulama Hizmeti'nin davranışını nasıl özelleştirebileceğiniz açıklanmaktadır. Ruby uygulamaları gerekli tüm [taşlar](https://rubygems.org/gems)ile dağıtılmalıdır.
 
-Bu kılavuz, App Service içinde yerleşik bir Linux kapsayıcısı kullanan Ruby geliştiricileri için temel kavramlar ve yönergeler sağlar. Azure App Service hiç kullanmadıysanız, önce [PostgreSQL öğreticisiyle](tutorial-ruby-postgres-app.md) [Ruby hızlı başlangıç](quickstart-ruby.md) ve Ruby 'yi izlemeniz gerekir.
+Bu kılavuz, App Service'de yerleşik bir Linux kapsayıcısı kullanan Ruby geliştiricileri için temel kavramlar ve yönergeler sağlar. Azure Uygulama Hizmeti'ni hiç kullanmadıysanız, önce [PostgreSQL öğreticisiyle](tutorial-ruby-postgres-app.md) [Ruby quickstart](quickstart-ruby.md) ve Ruby'yi takip etmelisiniz.
 
 ## <a name="show-ruby-version"></a>Ruby sürümünü göster
 
-Geçerli Ruby sürümünü göstermek için [Cloud Shell](https://shell.azure.com)aşağıdaki komutu çalıştırın:
+Geçerli Ruby sürümünü göstermek için [Bulut Kabuğu'nda](https://shell.azure.com)aşağıdaki komutu çalıştırın:
 
 ```azurecli-interactive
 az webapp config show --resource-group <resource-group-name> --name <app-name> --query linuxFxVersion
 ```
 
-Desteklenen tüm Ruby sürümlerini göstermek için [Cloud Shell](https://shell.azure.com)aşağıdaki komutu çalıştırın:
+Desteklenen tüm Ruby sürümlerini göstermek için [Bulut Kabuğu'nda](https://shell.azure.com)aşağıdaki komutu çalıştırın:
 
 ```azurecli-interactive
 az webapp list-runtimes --linux | grep RUBY
 ```
 
-Bunun yerine kendi kapsayıcı görüntünüzü oluşturarak desteklenmeyen bir Ruby sürümü çalıştırabilirsiniz. Daha fazla bilgi için bkz. [özel bir Docker görüntüsü kullanma](tutorial-custom-docker-image.md).
+Bunun yerine kendi kapsayıcı resminizi oluşturarak Ruby'nin desteklenmeyen bir sürümünü çalıştırabilirsiniz. Daha fazla bilgi için [bkz.](tutorial-custom-docker-image.md)
 
 ## <a name="set-ruby-version"></a>Ruby sürümünü ayarla
 
-[Cloud Shell](https://shell.azure.com) Ruby sürümünü 2,3 olarak ayarlamak için aşağıdaki komutu çalıştırın:
+Ruby sürümünü 2,3 olarak ayarlamak için [Bulut Kabuğu'nda](https://shell.azure.com) aşağıdaki komutu çalıştırın:
 
 ```azurecli-interactive
 az webapp config set --resource-group <resource-group-name> --name <app-name> --linux-fx-version "RUBY|2.3"
 ```
 
 > [!NOTE]
-> Dağıtım saati sırasında aşağıdakine benzer hatalar görürseniz:
+> Dağıtım sırasında aşağıdakilere benzer hatalar görürseniz:
 > ```
 > Your Ruby version is 2.3.3, but your Gemfile specified 2.3.1
 > ```
@@ -51,89 +51,89 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 > ```
 > rbenv: version `2.3.1' is not installed
 > ```
-> Projenizde yapılandırılan Ruby sürümünün çalıştırdığınız kapsayıcıda yüklü olan sürümden (Yukarıdaki örnekte`2.3.3`) farklı olduğu anlamına gelir. Yukarıdaki örnekte, hem *Gemfile* hem de *. Ruby-Version* ' ı işaretleyin ve Ruby sürümünün ayarlı olmadığını veya çalıştırmakta olduğunuz kapsayıcıda yüklü olan sürüme (Yukarıdaki örnekte`2.3.3`) ayarlandığını doğrulayın.
+> Bu, projenizde yapılandırılan Ruby sürümünün, çalıştırdığınız kapsayıcıya yüklenen sürümden (yukarıdaki`2.3.3` örnekte) farklı olduğu anlamına gelir. Yukarıdaki örnekte, hem *Gemfile'yi* hem de *.ruby sürümünü* denetleyin ve Ruby sürümünün ayarlanmadığını veya çalıştırdığınız kapsayıcıda`2.3.3` (yukarıdaki örnekte) yüklü sürüme ayarlı olduğunu doğrulayın.
 
-## <a name="access-environment-variables"></a>Ortam değişkenlerine erişim
+## <a name="access-environment-variables"></a> Ortam değişkenlerine erişme
 
-App Service, uygulama ayarlarınızı uygulama kodunuzun dışında [ayarlayabilirsiniz](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) . Daha sonra standart [env ['\<Path-name > ']](https://ruby-doc.org/core-2.3.3/ENV.html) modelini kullanarak bunlara erişebilirsiniz. Örneğin, `WEBSITE_SITE_NAME`adlı bir uygulama ayarına erişmek için aşağıdaki kodu kullanın:
+Uygulama Hizmeti'nde, [uygulama ayarlarınızı](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) uygulama kodunuzu dışında ayarlayabilirsiniz. Daha sonra standart [ENV['\<yol adı>']](https://ruby-doc.org/core-2.3.3/ENV.html) deseni kullanarak bunlara erişebilirsiniz. Örneğin, adlı `WEBSITE_SITE_NAME`bir uygulama ayarına erişmek için aşağıdaki kodu kullanın:
 
 ```ruby
 ENV['WEBSITE_SITE_NAME']
 ```
 
-## <a name="customize-deployment"></a>Dağıtımı Özelleştir
+## <a name="customize-deployment"></a>Dağıtımı özelleştir
 
-Bir [Git deposunu](../deploy-local-git.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)veya derleme işlemleri Içeren bir [ZIP paketini](../deploy-zip.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) dağıtırken, dağıtım altyapısı (kudu) varsayılan olarak aşağıdaki dağıtım sonrası adımları otomatik olarak çalıştırır:
+Bir Git [deposu](../deploy-local-git.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)veya yapı işlemlerinin açık olduğu bir [Zip paketi](../deploy-zip.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) dağıttığınızda, dağıtım motoru (Kudu) varsayılan olarak aşağıdaki dağıtım sonrası adımları otomatik olarak çalıştırır:
 
-1. Bir *Gemfile* var olup olmadığını denetleyin.
+1. *Gemfile* olup olmadığını kontrol edin.
 1. `bundle clean` öğesini çalıştırın. 
 1. `bundle install --path "vendor/bundle"` öğesini çalıştırın.
-1. Gems 'yi satıcı/önbellek klasörüne paketlemek için `bundle package` çalıştırın.
+1. Değerli `bundle package` taşlar satıcı/önbellek klasörüne paketleyin.
 
-### <a name="use---without-flag"></a>Bayrak olmadan--kullanın
+### <a name="use---without-flag"></a>Kullanın -bayrak olmadan
 
-[--](https://bundler.io/man/bundle-install.1.html) Bayrağıyla `bundle install` çalıştırmak için, `BUNDLE_WITHOUT` [uygulama ayarını](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) virgülle ayrılmış grupların bir listesine ayarlayın. Örneğin, aşağıdaki komut `development,test`olarak ayarlar.
+[-bayrak olmadan](https://bundler.io/man/bundle-install.1.html) çalıştırmak `bundle install` için, `BUNDLE_WITHOUT` [uygulama ayarını](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) virgülle ayrılmış gruplar listesine ayarlayın. Örneğin, aşağıdaki komut onu `development,test`.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings BUNDLE_WITHOUT="development,test"
 ```
 
-Bu ayar tanımlanmışsa, dağıtım motoru `--without $BUNDLE_WITHOUT``bundle install` çalıştırır.
+Bu ayar tanımlanırsa, dağıtım `bundle install` altyapısı `--without $BUNDLE_WITHOUT`.
 
 ### <a name="precompile-assets"></a>Varlıkları önceden derle
 
-Dağıtım sonrası adımları, varsayılan olarak varlıkları önceden derlemeye yönelik değildir. Varlık ön derlemesini açmak için `ASSETS_PRECOMPILE` [uygulama ayarını](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) `true`olarak ayarlayın. Sonra komut `bundle exec rake --trace assets:precompile`, dağıtım sonrası adımların sonunda çalıştırılır. Örnek:
+Dağıtım sonrası adımlar varsayılan olarak varlıkları önceden derlemez. Varlık ön derlemesini açmak için `ASSETS_PRECOMPILE` uygulama `true` [ayarını](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) ' da . Ardından komut, `bundle exec rake --trace assets:precompile` dağıtım sonrası adımların sonunda çalıştırılır. Örnek:
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings ASSETS_PRECOMPILE=true
 ```
 
-Daha fazla bilgi için bkz. [statik varlıkları](#serve-static-assets)sunma.
+Daha fazla bilgi için [bkz.](#serve-static-assets)
 
 ## <a name="customize-start-up"></a>Başlatmayı özelleştirme
 
-Varsayılan olarak, Ruby kapsayıcısı aşağıdaki sırada bir rayı sunucusunu başlatır (daha fazla bilgi için [Başlangıç betiğine](https://github.com/Azure-App-Service/ruby/blob/master/2.3.8/startup.sh)bakın):
+Varsayılan olarak, Ruby kapsayıcı aşağıdaki sırayla Rails sunucusunu başlatır (daha fazla bilgi için [başlangıç komut dosyasına](https://github.com/Azure-App-Service/ruby/blob/master/2.3.8/startup.sh)bakın):
 
-1. Zaten yoksa bir [secret_key_base](https://edgeguides.rubyonrails.org/security.html#environmental-security) değeri oluşturun. Uygulamanın üretim modunda çalışması için bu değer gereklidir.
-1. `RAILS_ENV` ortam değişkenini `production`olarak ayarlayın.
-1. Daha önce çalışan bir rayla sunucu tarafından bırakılan *tmp/PIDS* dizinindeki tüm *. pid* dosyalarını silin.
-1. Tüm bağımlılıkların yüklü olup olmadığını denetleyin. Aksi takdirde, yerel *satıcı/önbellek* dizininden Gems 'yi yüklemeyi deneyin.
+1. Zaten yoksa, [secret_key_base](https://edgeguides.rubyonrails.org/security.html#environmental-security) bir değer oluşturun. Bu değer, uygulamanın üretim modunda çalışması için gereklidir.
+1. Ortam `RAILS_ENV` değişkenini `production`' ye ayarlama
+1. *Tmp/pids* dizininde daha önce çalışan rails sunucusutarafından bırakılan herhangi bir *.pid* dosyasını silin.
+1. Tüm bağımlılıkların yüklü olup olmadığını denetleyin. Değilse, yerel *satıcı/önbellek* dizininden taşlar yüklemeyi deneyin.
 1. `rails server -e $RAILS_ENV` öğesini çalıştırın.
 
-Başlangıç işlemini aşağıdaki yollarla özelleştirebilirsiniz:
+Başlatma işlemini aşağıdaki şekillerde özelleştirebilirsiniz:
 
-- [Statik varlıkları sunma](#serve-static-assets)
-- [Üretim dışı modda çalıştır](#run-in-non-production-mode)
-- [Secret_key_base el ile ayarla](#set-secret_key_base-manually)
+- [Statik varlıklara hizmet](#serve-static-assets)
+- [Üretim dışı modda çalıştırma](#run-in-non-production-mode)
+- [secret_key_base el ile ayarlama](#set-secret_key_base-manually)
 
-### <a name="serve-static-assets"></a>Statik varlıkları sunma
+### <a name="serve-static-assets"></a>Statik varlıklara hizmet
 
-Ruby kapsayıcısındaki raya sunucusu varsayılan olarak üretim modunda çalışır ve [varlıkların önceden derlenmiş olduğunu ve Web sunucunuz tarafından sunulduğunu varsayar](https://guides.rubyonrails.org/asset_pipeline.html#in-production). Raylar sunucusundan statik varlıklara hizmeti sağlamak için iki şey yapmanız gerekir:
+Ruby kapsayıcısındaki Rails sunucusu varsayılan olarak üretim modunda çalışır ve [varlıkların önceden derlenmiş olduğunu ve web sunucunuz tarafından sunulduğunu varsayar.](https://guides.rubyonrails.org/asset_pipeline.html#in-production) Rails sunucusundan statik varlıklara hizmet vermek için iki şey yapmanız gerekir:
 
-- [Statik varlıkları yerel olarak derlemek](https://guides.rubyonrails.org/asset_pipeline.html#local-precompilation) - **varlıkları önceden derleyin** ve el ile dağıtın. Ya da, bunun yerine dağıtım altyapısının bunu işlemesini sağlayın (bkz. [varlıkları önceden derle](#precompile-assets).
-- **Statik dosyalara hizmet vermeye olanak sağlama** -Ruby kapsayıcısından statik varlıklar sunmak için [`RAILS_SERVE_STATIC_FILES` uygulama ayarını](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) `true`olarak ayarlayın. Örnek:
+- **Varlıkları önceden derleyin** - [Statik varlıkları yerel olarak derleyin](https://guides.rubyonrails.org/asset_pipeline.html#local-precompilation) ve el ile dağıtın. Veya, dağıtım altyapısının bunun yerine işlemesine izin verin (bkz. [Precompile varlıkları.](#precompile-assets)
+- **Statik dosyaların servis edilmesini etkinleştirin** - Ruby kapsayıcısından statik `true`varlıklara hizmet vermek için [uygulama `RAILS_SERVE_STATIC_FILES` ayarını](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) . Örnek:
 
     ```azurecli-interactive
     az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings RAILS_SERVE_STATIC_FILES=true
     ```
 
-### <a name="run-in-non-production-mode"></a>Üretim dışı modda çalıştır
+### <a name="run-in-non-production-mode"></a>Üretim dışı modda çalıştırma
 
-Rayları sunucusu varsayılan olarak üretim modunda çalışır. Geliştirme modunda çalıştırmak için, örneğin `RAILS_ENV` [uygulama ayarını](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) `development`olarak ayarlayın.
+Rails sunucusu varsayılan olarak üretim modunda çalışır. Örneğin, geliştirme modunda çalıştırmak için `RAILS_ENV` `development` [uygulama ayarını](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) .
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings RAILS_ENV="development"
 ```
 
-Ancak, bu ayar tek başına, yalnızca localhost isteklerini kabul eden ve kapsayıcının dışında erişilebilir olmayan bir geliştirme modunda başlatılmasına neden olur. Uzak istemci isteklerini kabul etmek için `APP_COMMAND_LINE` [uygulama ayarını](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) `rails server -b 0.0.0.0`olarak ayarlayın. Bu uygulama ayarı, Ruby kapsayıcısında özel bir komut çalıştırmanızı sağlar. Örnek:
+Ancak, bu ayar tek başına Rails sunucusunun yalnızca yerel barındırma isteklerini kabul eden ve kapsayıcının dışında erişilemeyen geliştirme modunda başlamasına neden olur. Uzak istemci isteklerini kabul `APP_COMMAND_LINE` etmek `rails server -b 0.0.0.0`için uygulama [ayarını](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) ' da . Bu uygulama ayarı, Ruby kapsayıcısında özel bir komut çalıştırmanızı sağlar. Örnek:
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings APP_COMMAND_LINE="rails server -b 0.0.0.0"
 ```
 
-### <a name="set-secret_key_base-manually"></a>Secret_key_base el ile ayarla
+### <a name="set-secret_key_base-manually"></a><a name="set-secret_key_base-manually"></a>secret_key_base el ile ayarlama
 
-Sizin için bir tane App Service oluşturmak yerine kendi `secret_key_base` değerini kullanmak için `SECRET_KEY_BASE` [uygulama ayarını](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) istediğiniz değerle ayarlayın. Örnek:
+App Service'in sizin için bir tane oluşturmasına izin vermek yerine kendi `secret_key_base` değerinizi kullanmak için `SECRET_KEY_BASE` [uygulama ayarını](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) istediğiniz değerle ayarlayın. Örnek:
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings SECRET_KEY_BASE="<key-base-value>"
@@ -143,7 +143,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 [!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-no-h.md)]
 
-## <a name="open-ssh-session-in-browser"></a>SSH oturumunu tarayıcıda aç
+## <a name="open-ssh-session-in-browser"></a>Tarayıcıda SSH oturumunu açma
 
 [!INCLUDE [Open SSH session in browser](../../../includes/app-service-web-ssh-connect-builtin-no-h.md)]
 
@@ -152,7 +152,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Öğretici: PostgreSQL ile raya uygulaması](tutorial-ruby-postgres-app.md)
+> [Öğretici: PostgreSQL ile Rails uygulaması](tutorial-ruby-postgres-app.md)
 
 > [!div class="nextstepaction"]
-> [App Service Linux SSS](app-service-linux-faq.md)
+> [Uygulama Hizmeti Linux SSS](app-service-linux-faq.md)

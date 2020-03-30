@@ -1,101 +1,101 @@
 ---
-title: Azure Kaynak Durumu genel bakış
-description: Azure Kaynak Durumu genel bakış
+title: Azure Kaynak Durumu'na genel bakış
+description: Azure Kaynak Durumu'na Genel Bakış
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: f22b41e66f15dd12d973c5744870969fae795bc1
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 7a1dfe5e93d0e19aeb343d113a24ed882a5b3f69
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79258206"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80159260"
 ---
 # <a name="resource-health-overview"></a>Kaynak Durumu genel bakış
  
-Azure Kaynak Durumu, Azure kaynaklarınızı etkileyen hizmet sorunlarını tanılamanıza ve destek almanıza yardımcı olur. Kaynaklarınızın geçerli ve geçmiş durumunu raporlar.
+Azure Kaynak Durumu, Azure kaynaklarınızı etkileyen hizmet sorunlarını tanılamanıza ve destek almanıza yardımcı olur. Kaynaklarınızın geçerli ve geçmiş sağlık durumunu bildirir.
 
-[Azure durum](https://status.azure.com) , geniş bir Azure müşterisi kümesini etkileyen hizmet sorunları hakkında raporlar. Kaynak Durumu kaynaklarınızın sistem durumunun kişiselleştirilmiş bir panosunu sağlar. Kaynak Durumu, Azure hizmet sorunları nedeniyle kaynaklarınızın kullanılamadığı tüm süreleri gösterir. Bu veriler, bir SLA 'nın ihlal edildiğini görmenizi kolaylaştırır.
+[Azure durumu,](https://status.azure.com) geniş bir Azure müşteri kümesini etkileyen hizmet sorunlarıyla ilgili raporlar. Kaynak Durumu, kaynaklarınızın durumunun kişiselleştirilmiş bir panosunu sağlar. Kaynak Durumu, Azure hizmet sorunları nedeniyle kaynaklarınızın kullanılamadığı tüm zamanları gösterir. Bu veriler, bir SLA'nın ihlal edilip edilemediğinizi görmenizi kolaylaştırır.
 
-## <a name="resource-definition-and-health-assessment"></a>Kaynak tanımı ve sistem durumu değerlendirmesi
+## <a name="resource-definition-and-health-assessment"></a>Kaynak tanımı ve sağlık değerlendirmesi
 
-*Kaynak* , sanal makine, Web UYGULAMASı veya SQL veritabanı gibi belirli bir Azure hizmeti örneğidir. Kaynak Durumu, bir kaynağın sağlıklı olup olmadığını değerlendirmek için farklı Azure hizmetlerinden gelen sinyallere bağımlıdır. Bir kaynak sağlıksız ise, Kaynak Durumu sorunun kaynağını belirlemede ek bilgileri analiz eder. Ayrıca, Microsoft 'un sorunu çözmesi ve bunu ele almak için yapabileceklerinizi tanımladığı eylemleri de raporlar.
+*Kaynak,* sanal makine, web uygulaması veya SQL veritabanı gibi bir Azure hizmetinin belirli bir örneğidir. Kaynak Durumu, kaynağın sağlıklı olup olmadığını değerlendirmek için farklı Azure hizmetlerinden gelen sinyallere dayanır. Kaynak sağlıksızsa, Kaynak Durumu sorunun kaynağını belirlemek için ek bilgileri çözümler. Ayrıca, Microsoft'un sorunu gidermek için gerçekleştirdiği eylemleri raporlar ve sorunu gidermek için yapabileceğiniz şeyleri tanımlar.
 
-Sistem durumunun değerlendirilme hakkında daha fazla bilgi için [Azure Kaynak durumu](resource-health-checks-resource-types.md)adresindeki kaynak türleri ve sistem durumu denetimleri listesine bakın.
+Sağlık durumunun nasıl değerlendirildiği hakkında daha fazla bilgi için [Azure Kaynak Durumu'ndaki](resource-health-checks-resource-types.md)kaynak türleri ve sistem durumu denetimleri listesine bakın.
 
 ## <a name="health-status"></a>Sistem durumu
 
-Bir kaynağın sistem durumu aşağıdaki durumlardan biri olarak görüntülenir.
+Bir kaynağın durumu aşağıdaki durumlardan biri olarak görüntülenir.
 
 ### <a name="available"></a>Kullanılabilir
 
-*Kullanılabilir* , kaynağın sistem durumunu etkileyen bir olay algılanmadığı anlamına gelir. Son 24 saat boyunca kaynağın planlanmamış kapalı kalma süresinden kurtarıldığı durumlarda "son çözümlenmiş" bildirimi görürsünüz.
+*Kullanılabilir,* kaynağın sistem durumunu etkileyen hiçbir olayın algılanmamış olduğu anlamına gelir. Kaynağın son 24 saat içinde planlanmamış kapalı kalma sürelerinden kurtarıldığı durumlarda, "Son çözülmüş" bir bildirim görürsünüz.
 
-!["Son çözümlenmiş" bildirimine sahip bir sanal makine için * kullanılabilir * durumu](./media/resource-health-overview/Available.png)
+!["Son çözümlenmiş" bildirimi olan sanal bir makine için *Kullanılabilir* durumu](./media/resource-health-overview/Available.png)
 
 ### <a name="unavailable"></a>Kullanılamaz
 
-*Kullanılamıyor* , hizmetin, kaynağın sistem durumunu etkileyen devam eden bir platform veya platform olmayan bir olay algıladığı anlamına gelir.
+*Kullanılamayan,* hizmetin kaynağın durumunu etkileyen devam eden bir platform veya platform dışı olay algıladığını zedeledi.
 
-#### <a name="platform-events"></a>Platform olayları
+#### <a name="platform-events"></a>Platform etkinlikleri
 
-Platform olayları, Azure altyapısının birden çok bileşeni tarafından tetiklenir. Zamanlanan eylemleri (örneğin, planlı bakım) ve beklenmeyen olayları (örneğin, belirli bir zaman penceresi sonrasında başarısız olarak tahmin edilen planlanmamış bir ana bilgisayar yeniden başlatma veya düşürülmüş konak donanımı) içerirler.
+Platform olayları, Azure altyapısının birden çok bileşeni tarafından tetiklenir. Bunlar, hem zamanlanmış eylemleri (örneğin, planlı bakım) hem de beklenmeyen olayları (örneğin, planlanmamış bir ana bilgisayar yeniden başlatmaveya belirli bir zaman penceresinden sonra başarısız olması öngörülen bozulmuş ana bilgisayar donanımı) içerir.
 
-Kaynak Durumu olay ve kurtarma işlemi hakkında ek ayrıntılar sağlar. Ayrıca etkin bir destek sözleşmeniz olmasa bile Microsoft Desteği ile iletişim kurabilmenizi sağlar.
+Kaynak Durumu, olay ve kurtarma işlemi hakkında ek ayrıntılar sağlar. Ayrıca, etkin bir destek sözleşmeniz olmasa bile Microsoft Destek'e başvurmanızı da sağlar.
 
-![Bir platform olayı nedeniyle sanal makine için * kullanılamıyor * durumu](./media/resource-health-overview/Unavailable.png)
+![Bir platform olayı nedeniyle sanal bir makine için *Kullanılamaz* durumu](./media/resource-health-overview/Unavailable.png)
 
 #### <a name="non-platform-events"></a>Platform dışı olaylar
 
-Platform dışı olaylar Kullanıcı eylemleri tarafından tetiklenir. Örnek olarak, bir sanal makineyi durdurmayı veya Reda için Azure önbelleğine en fazla bağlantı sayısına ulaşmanız verilebilir.
+Platform dışı olaylar kullanıcı eylemleri tarafından tetiklenir. Bunlara örnek olarak sanal bir makineyi durdurmak veya Redis için Azure Önbelleği'ne maksimum sayıda bağlantıya ulaşmak verilebilir.
 
-![Platform olmayan bir olay nedeniyle sanal makine için "kullanılamıyor" durumu](./media/resource-health-overview/Unavailable_NonPlatform.png)
+![Platform dışı bir olay nedeniyle sanal bir makine için "Kullanılamıyor" durumu](./media/resource-health-overview/Unavailable_NonPlatform.png)
 
 ### <a name="unknown"></a>Bilinmiyor
 
-*Bilinmiyor* , kaynak durumu 10 dakikadan uzun süredir kaynak hakkında bilgi almamış anlamına gelir. Bu durum kaynağın durumunun kesin bir göstergesi olmamasına karşın, sorun giderme için önemli bir veri noktasıdır.
+*Bilinmeyen,* Kaynak Durumu'nun kaynak hakkında 10 dakikadan uzun süredir bilgi almadığı anlamına gelir. Bu durum kaynağın durumunun kesin bir göstergesi olmasa da, sorun giderme için önemli bir veri noktasıdır.
 
-Kaynak beklendiği gibi çalışıyorsa, kaynağın durumu birkaç dakika sonra *kullanılabilir* olarak değişir.
+Kaynak beklendiği gibi çalışıyorsa, kaynağın durumu birkaç dakika sonra *Kullanılabilir* olarak değişir.
 
-Kaynakla ilgili sorunlarla karşılaşırsanız, *Bilinmeyen* sistem durumu, platformda bir olayın kaynağı etkilediği anlamına gelebilir.
+Kaynakla ilgili sorunlarla karşılaşırsanız, *Bilinmeyen* sistem durumu, platformdaki bir olayın kaynağı etkilediği anlamına gelebilir.
 
-![Bir sanal makine için * Unknown * durumu](./media/resource-health-overview/Unknown.png)
+![Sanal bir makine için *Bilinmeyen* durumu](./media/resource-health-overview/Unknown.png)
 
 ### <a name="degraded"></a>Düzeyi düşürüldü
 
-*Düşürülmüş* , kaynağınızın performans kaybı algıladığı, ancak kullanılmaya devam ettiği anlamına gelir.
+*Bozulmuş,* kaynağınızın hala kullanılabilir olmasına rağmen performans kaybı algıladığı anlamına gelir.
 
-Farklı kaynakların, düşürüldüğünü bildirdikleri zaman kendi ölçütleri vardır.
+Farklı kaynakların, bozulduklarını bildirdikleri zaman için kendi ölçütleri vardır.
 
-![Bir sanal makine için * düşürülmüş * durumu](./media/resource-health-overview/degraded.png)
+![Sanal bir makine için *Bozulmuş* durumu](./media/resource-health-overview/degraded.png)
 
-## <a name="reporting-an-incorrect-status"></a>Hatalı durum bildirme
+## <a name="reporting-an-incorrect-status"></a>Yanlış durumu bildirme
 
-Geçerli sistem durumunun yanlış olduğunu düşünüyorsanız bize, **yanlış sistem durumu bildir**' i seçerek bunu söyleyebilirsiniz. Bir Azure sorununun sizi etkilediği durumlarda Kaynak Durumu destek ile iletişim kurmanız önerilir.
+Geçerli sağlık durumunun yanlış olduğunu düşünüyorsanız, **Yanlış Sağlık Durumu Bildir'i**seçerek bize bildirebilirsiniz. Azure sorununun sizi etkilediği durumlarda, Kaynak Durumu Desteği'ne başvurmanızı öneririz.
 
-![Yanlış bir durum hakkında bilgi göndermek için form](./media/resource-health-overview/incorrect-status.png)
+![Yanlış durum hakkında bilgi gönderme formu](./media/resource-health-overview/incorrect-status.png)
 
 ## <a name="history-information"></a>Geçmiş bilgileri
 
-Kaynak Durumu **sistem durumu geçmişi** bölümünde 14 güne geçmiş bir geçmişi erişebilirsiniz.
+Kaynak Sağlığı'nın **Sağlık geçmişi** bölümünde 30 güne kadar geçmişe erişebilirsiniz.
 
-![Son iki hafta içindeki Kaynak Durumu olaylarının listesi](./media/resource-health-overview/history-blade.png)
+![Son iki haftadaki Kaynak Sağlığı olayları listesi](./media/resource-health-overview/history-blade.png)
 
-## <a name="get-started"></a>başlarken
+## <a name="get-started"></a>Kullanmaya başlayın
 
-Bir kaynak için Kaynak Durumu açmak için:
+Kaynak Durumu'nun tek bir kaynak için açılması için:
 
 1. Azure Portal’da oturum açın.
 2. Kaynağınızı bulun.
-3. Sol bölmedeki kaynak menüsünde **kaynak durumu**' nu seçin.
+3. Sol bölmedeki kaynak menüsünde **Kaynak durumu'nu**seçin.
 
-![Kaynak görünümünden Kaynak Durumu açılıyor](./media/resource-health-overview/from-resource-blade.png)
+![Kaynak Görünümünden Kaynak Durumu'nu Açma](./media/resource-health-overview/from-resource-blade.png)
 
-Ayrıca, **tüm hizmetler** ' i seçip filtre metin kutusuna **kaynak durumu** yazarak da kaynak durumu erişebilirsiniz. **Yardım + Destek** bölmesinde [kaynak durumu](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/resourceHealth)' nu seçin.
+Ayrıca, **Tüm hizmetleri** seçerek ve filtre metin kutusuna kaynak durumu yazarak **Kaynak Durumu'na** da erişebilirsiniz. Yardım **+ destek** bölmesinde [Kaynak durumu'nu](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/resourceHealth)seçin.
 
-!["Tüm hizmetler" içinden Kaynak Durumu açılıyor](./media/resource-health-overview/FromOtherServices.png)
+!["Tüm hizmetlerden" Kaynak Sağlığı'nı açma](./media/resource-health-overview/FromOtherServices.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Kaynak Durumu hakkında daha fazla bilgi edinmek için bu başvurulara göz atın:
--  [Azure Kaynak Durumu içindeki kaynak türleri ve durum denetimleri](resource-health-checks-resource-types.md)
+-  [Azure Kaynak Durumu'nda kaynak türleri ve sistem durumu denetimleri](resource-health-checks-resource-types.md)
 -  [Azure Kaynak Durumu hakkında sık sorulan sorular](resource-health-faq.md)

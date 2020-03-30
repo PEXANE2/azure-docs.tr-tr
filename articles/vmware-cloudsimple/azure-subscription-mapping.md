@@ -1,7 +1,7 @@
 ---
-title: Azure abonelik eşlemesi ile kaynak havuzları oluşturma
-description: Azure abonelik eşlemesi aracılığıyla AVS özel bulutunuz için Kaynak havuzlarının nasıl oluşturulacağını açıklar
+title: Azure abonelik eşlemesiyle kaynak havuzları oluşturma
 titleSuffix: Azure VMware Solution by CloudSimple
+description: Azure abonelik eşleme yoluyla Özel Bulut'unuz için kaynak havuzları nın nasıl oluşturuluyorum
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/14/2019
@@ -9,25 +9,25 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: ab7549650e4e20d27d3ad11a96d77ba943797f88
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 474ef03d482288b6bf7b5a8b1c224349a8e2d3a8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77014972"
 ---
-# <a name="create-resource-pools-for-your-avs-private-cloud-with-azure-subscription-mapping"></a>Azure abonelik eşleme ile AVS özel bulutunuz için kaynak havuzları oluşturma
-Azure abonelik eşlemesi, kullanılabilir vSphere kaynak havuzlarından AVS özel bulutunuz için kaynak havuzları oluşturmanıza olanak sağlar. AVS portalında, AVS özel bulutlarınız için Azure aboneliğini görüntüleyebilir ve yönetebilirsiniz.
+# <a name="create-resource-pools-for-your-private-cloud-with-azure-subscription-mapping"></a>Azure abonelik eşlemesiyle Özel Bulut'unuz için kaynak havuzları oluşturun
+Azure abonelik eşleme, kullanılabilir vSphere kaynak havuzlarından Özel Bulut'unuz için kaynak havuzları oluşturmanıza olanak tanır. CloudSimple portalında, Özel Bulutlarınız için Azure aboneliğini görüntüleyebilir ve yönetebilirsiniz.
 
 > [!NOTE]
-> Kaynak havuzunu eşleme, tüm alt kaynak havuzlarını de eşler. Alt kaynak havuzları zaten eşlenmişse bir üst kaynak havuzu eşlenemez.
+> Kaynak havuzueşleme de herhangi bir alt kaynak havuzları eşler. Alt kaynak havuzları zaten eşlenmişse, üst kaynak havuzu eşlenemez.
 
-1. [AVS portalına erişin](access-cloudsimple-portal.md).
-2. **Kaynaklar** sayfasını açın ve **Azure abonelikleri eşleme**' yi seçin.  
-3. **Azure abonelik eşlemesini Düzenle**' ye tıklayın.  
-4. Kullanılabilir kaynak havuzlarını eşlemek için sol tarafta bunları seçin ve sağ oka tıklayın. 
-5. Eşlemeleri kaldırmak için, sağ tarafta seçin ve sola bakan oka tıklayın. 
+1. [CloudSimple portalına erişin.](access-cloudsimple-portal.md)
+2. **Kaynaklar** sayfasını açın ve **Azure abonelikleri eşlemi**seçin.  
+3. **Azure abonelik eşlemi'ni edit'i**tıklatın.  
+4. Kullanılabilir kaynak havuzlarını eşlemek için, soldakileri seçin ve sağa bakan oku tıklatın. 
+5. Eşlemeleri kaldırmak için, sağdakileri seçin ve sola bakan oku tıklatın. 
 
     ![Azure abonelikleri](media/resources-azure-mapping.png)
 
-6. **Tamam**’a tıklayın.
+6. **Tamam**'a tıklayın.

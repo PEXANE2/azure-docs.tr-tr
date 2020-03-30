@@ -1,193 +1,119 @@
 ---
-title: SQL Server veritabanlarını Azure 'a yedekleme
-description: Bu makalede SQL Server Azure 'a nasıl yedekleyeceğiniz açıklanmaktadır. Makalede kurtarma SQL Server de açıklanmaktadır.
+title: SQL Server veritabanlarını Azure'a yedekleme
+description: Bu makalede, SQL Server'ın Azure'a nasıl yedeklenenekadar yedekleneme şekli açıklanmaktadır. Makalede ayrıca SQL Server kurtarma açıklar.
 ms.topic: conceptual
 ms.date: 06/18/2019
-ms.openlocfilehash: 7305a75852deac466028e6278fca76626d8c1820
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.openlocfilehash: 537257733d7693598fd8007da6ce12c28fbeb02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79297501"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79408769"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Azure VM'lerindeki SQL Server Backup hakkında
 
-[Azure Backup](backup-overview.md) , Azure VM 'lerinde çalışan SQL Server yedeklemek için akış tabanlı, özel bir çözüm sunar. Bu çözüm, Azure Backup sıfır altyapı yedeklemesi, uzun süreli saklama ve merkezi yönetim avantajlarıyla birlikte hizalanır. Buna ek olarak, SQL Server için aşağıdaki avantajları da sağlar:
+[Azure Yedekleme,](backup-overview.md) Azure VM'lerde çalışan SQL Server'ı yedeklemek için akış tabanlı, özelleştirilmiş bir çözüm sunar. Bu çözüm, Azure Yedekleme'nin sıfır altyapı yedekleme, uzun süreli saklama ve merkezi yönetim avantajlarıyla uyumludur. Ayrıca, özellikle SQL Server için aşağıdaki avantajları sağlar:
 
-1. Tüm Yedekleme türlerini destekleyen iş yükü uyumlu yedeklemeler-tam, değişiklik ve günlük
-2. en sık kullanılan günlük yedeklemeleri ile 15 dakikalık RPO (kurtarma noktası hedefi)
-3. Bir saniyede en çok bir noktaya kurtarma
-4. Ayrı veritabanı düzeyinde yedekleme ve geri yükleme
+1. Tüm yedekleme türlerini destekleyen iş yüküne duyarlı yedeklemeler - tam, diferansiyel ve günlük
+2. Sık günlük yedeklemeleri ile 15-dk RPO (kurtarma noktası hedefi)
+3. Saniyeye kadar zaman içinde iyileşme
+4. Bireysel veritabanı düzeyi yedekleme ve geri yükleme
 
-Günümüzde destekdiğimiz yedekleme ve geri yükleme senaryolarını görüntülemek için [destek matrisine](backup-azure-sql-database.md#scenario-support)bakın.
+Bugün desteklediğimiz yedekleme ve geri yükleme senaryolarını görüntülemek için [destek matrisine](sql-support-matrix.md#scenario-support)bakın.
 
 ## <a name="backup-process"></a>Yedekleme işlemi
 
-Bu çözüm SQL veritabanlarınızın yedeklerini almak için SQL Native API 'lerden yararlanır.
+Bu çözüm, SQL veritabanlarınızın yedeklerini almak için SQL yerel API'lerinden yararlanır.
 
-* Korumak istediğiniz SQL Server VM ve içindeki veritabanları için sorgulamak üzere belirttikten sonra, Azure Backup hizmet, VM 'ye ad `AzureBackupWindowsWorkload` uzantısı tarafından bir iş yükü yedekleme uzantısı yükler.
-* Bu uzantı, bir düzenleyici ve SQL eklentisi içerir. Düzenleyici, yedekleme, yedekleme ve geri yükleme gibi çeşitli işlemler için iş akışlarını tetiklemeden sorumlu olsa da, eklenti gerçek veri akışından sorumludur.
-* Bu VM 'deki veritabanlarını bulabilmek için Azure Backup hesabı `NT SERVICE\AzureWLBackupPluginSvc`oluşturur. Bu hesap yedekleme ve geri yükleme için kullanılır ve SQL sysadmin izinleri gerektirir. `NT SERVICE\AzureWLBackupPluginSvc` hesabı bir [sanal hizmet hesabıdır](https://docs.microsoft.com/windows/security/identity-protection/access-control/service-accounts#virtual-accounts)ve bu nedenle herhangi bir parola yönetimi gerektirmez. Azure Backup, veritabanı bulma/sorgulama `NT AUTHORITY\SYSTEM` hesabını kullanır, bu nedenle bu hesabın SQL 'de genel oturum açması gerekir. Azure Marketi 'nden SQL Server VM oluşturmadıysanız **Usererrorsqlnosysadminmembership**hatası alabilirsiniz. Bu durum oluşursa, [Bu yönergeleri izleyin](#set-vm-permissions).
-* Seçili veritabanlarında korumayı Yapılandır ' ı etkinleştirdikten sonra, yedekleme hizmeti düzenleyiciyi yedekleme zamanlamaları ve diğer ilke ayrıntıları ile ayarlar; bu da uzantının yerel olarak VM 'de önbelleğe alınır.
-* Zamanlanan zamanda, düzenleyici eklenti ile iletişim kurar ve VDı kullanarak SQL Server 'dan yedekleme verilerini akışa başlar.  
-* Eklenti, verileri doğrudan kurtarma hizmetleri kasasına gönderir ve böylece bir hazırlama konumu gereksinimini ortadan kaldırır. Veriler, depolama hesaplarında Azure Backup hizmeti tarafından şifrelenir ve depolanır.
-* Veri aktarımı tamamlandığında, düzenleyici yedekleme hizmeti ile yürütmeyi onaylar.
+* Korumak istediğiniz SQL Server VM'yi belirttiğinizde ve veritabanıiçin sorgu yaptığınızda, Azure Yedekleme hizmeti ad `AzureBackupWindowsWorkload` uzantısı ile VM'ye bir iş yükü yedekleme uzantısı yükler.
+* Bu uzantı bir koordinatör ve bir SQL eklentisi oluşur. Koordinatör yedekleme, yedekleme ve geri yükleme yapılandırma gibi çeşitli işlemler için iş akışlarını tetiklemekten sorumlu olsa da, eklenti gerçek veri akışından sorumludur.
+* Azure Yedekleme, bu VM'deki veritabanlarını bulabilmek `NT SERVICE\AzureWLBackupPluginSvc`için hesabı oluşturur. Bu hesap yedekleme ve geri yükleme için kullanılır ve SQL sysadmin izinleri gerektirir. Hesap `NT SERVICE\AzureWLBackupPluginSvc` bir [Sanal Hizmet Hesabıdır](https://docs.microsoft.com/windows/security/identity-protection/access-control/service-accounts#virtual-accounts)ve bu nedenle herhangi bir parola yönetimi gerektirmez. Azure Yedekleme veritabanı `NT AUTHORITY\SYSTEM` bulma/sorgulama için hesaptan yararlanır, bu nedenle bu hesabın SQL'de genel oturum açması gerekir. SQL Server VM'yi Azure Marketi'nden oluşturmadıysanız, **usererrorSQLNoSysadminMembership**hatası alabilirsiniz. Bu durumda [bu yönergeleri izleyin.](#set-vm-permissions)
+* Seçili veritabanlarında yapılandırma korumasını tetikledikten sonra, yedekleme hizmeti koordinatörü yedekleme zamanlamaları ve uzantının VM'de yerel olarak önbelleğe aldığı diğer ilke ayrıntılarıyla ayarlar.
+* Planlanan zamanda, koordinatör eklentiile iletişim kurar ve VDI kullanarak yedekleme verilerini SQL sunucusundan aktarmaya başlar.  
+* Eklenti verileri doğrudan kurtarma hizmetleri kasasına gönderir ve böylece bir hazırlama konumuna duyulan gereksinimi ortadan kaldırır. Veriler, Azure Yedekleme hizmeti tarafından şifrelenir ve depolama hesaplarında depolanır.
+* Veri aktarımı tamamlandığında, koordinatör yedekleme hizmetiyle commit onaylar.
 
-  ![SQL yedekleme mimarisi](./media/backup-azure-sql-database/backup-sql-overview.png)
+  ![SQL Yedekleme mimarisi](./media/backup-azure-sql-database/backup-sql-overview.png)
 
 ## <a name="before-you-start"></a>Başlamadan önce
 
-Başlamadan önce, aşağıdakileri doğrulayın:
+Başlamadan önce aşağıdakileri doğrulayın:
 
-1. Azure 'da çalışan bir SQL Server örneğine sahip olduğunuzdan emin olun. Market 'te [hızlıca bir SQL Server örneği oluşturabilirsiniz](../virtual-machines/windows/sql/quickstart-sql-vm-create-portal.md) .
-2. [Özellik değerlendirmesi](#feature-consideration-and-limitations) ve [senaryo desteğini](#scenario-support)gözden geçirin.
-3. Bu senaryoyla ilgili [sık sorulan soruları gözden geçirin](faq-backup-sql-server.md) .
+1. Azure'da çalışan bir SQL Server örneğinin olduğundan emin olun. Pazarda [hızlı bir şekilde bir SQL Server örneği oluşturabilirsiniz.](../virtual-machines/windows/sql/quickstart-sql-vm-create-portal.md)
+2. Özellik [değerlendirmesini](sql-support-matrix.md#feature-consideration-and-limitations) ve [senaryo desteğini](sql-support-matrix.md#scenario-support)gözden geçirin.
+3. Bu senaryoyla ilgili [sık sorulan soruları gözden geçirin.](faq-backup-sql-server.md)
 
-## <a name="scenario-support"></a>Senaryo desteği
+## <a name="set-vm-permissions"></a>VM izinlerini ayarlama
 
-**Destek** | **Ayrıntılar**
---- | ---
-**Desteklenen dağıtımlar** | SQL Market Azure VM 'Leri ve Market olmayan (SQL Server el ile yüklenmiş) VM 'Ler desteklenir.
-**Desteklenen coğrafyalar** | Avustralya Güney Doğu (Ao), Doğu Avustralya (AE), Avustralya Orta (AC), Avustralya Orta 2 (AC) <br> Güney Brezilya (BRS)<br> Kanada Orta (CNC), Kanada Doğu (CE)<br> Güney Doğu Asya (SEA), Doğu Asya (EA) <br> Doğu ABD (EUS), Doğu ABD 2 (EUS2), Orta Batı ABD (WCUS), Batı ABD (WUS); Batı ABD 2 (WUS 2) Orta Kuzey ABD (NCUS) Orta ABD (cu DÜZEYINDE KAPSANıR) Orta Güney ABD (SCUS) <br> Hindistan Orta (ıNC), Hindistan Güney (INS), Hindistan Batı <br> Japonya Doğu (JPE), Japonya Batı (JPW) <br> Kore Orta (KRC), Kore Güney (KRS) <br> Kuzey Avrupa (NE), Batı Avrupa <br> UK Güney (UKS), UK Batı (UKW) <br> US Gov Arizona, US Gov Virginia, US Gov Teksas, US DoD Orta, US DoD Doğu <br> Almanya Kuzey, Almanya Orta Batı <br> İsviçre Kuzey, İsviçre Batı <br> Orta Fransa <br> Çin Doğu, Çin Doğu 2, Çin Kuzey, Çin Kuzey 2
-**Desteklenen işletim sistemleri** | Windows Server 2019, Windows Server 2016, Windows Server 2012, Windows Server 2008 R2 SP1 <br/><br/> Linux Şu anda desteklenmiyor.
-**Desteklenen SQL Server sürümleri** | SQL Server 2019, [ürün yaşam döngüsünü ara](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202017)sayfasında SQL Server 2017 SQL Server 2016 ve SPS 'yi [ürün yaşam döngüsünü ara sayfasında](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202016%20service%20pack)ayrıntılı olarak SQL Server 2014, SQL Server 2012, SQL Server 2008 R2, SQL Server 2008 <br/><br/> Enterprise, Standard, Web, geliştirici, Express.
-**Desteklenen .NET sürümleri** | VM 'de yüklü .NET Framework 4.5.2 veya üzeri
+  Bir SQL Server'da bulma çalıştırdığınızda, Azure Yedekleme aşağıdakileri yapar:
 
-## <a name="feature-consideration-and-limitations"></a>Özellik değerlendirmesi ve sınırlamaları
+* AzureBackupWindowsİş uzantısını ekler.
+* Sanal makinedeki veritabanlarını keşfetmek için bir NT SERVICE\AzureWLBackupPluginSvc hesabı oluşturur. Bu hesap yedekleme ve geri yükleme için kullanılır ve SQL sysadmin izinleri gerektirir.
+* VM üzerinde çalışan veritabanlarını keşfeden Azure Yedekleme, NT AUTHORITY\SYSTEM hesabını kullanır. Bu hesap SQL'de genel oturum açma olmalıdır.
 
-* SQL Server yedekleme Azure portal veya **PowerShell**içinde yapılandırılabilir. CLı 'yi desteklemiyoruz.
-* Çözüm her iki tür [dağıtım](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model) için de desteklenir-Azure Resource Manager VM 'ler ve klasik VM 'ler.
-* SQL Server çalıştıran VM, Azure genel IP adreslerine erişmek için internet bağlantısı gerektirir.
-* SQL Server **Yük devretme kümesi örneği (FCı)** desteklenmiyor.
-* Yansıtma veritabanları ve veritabanı anlık görüntüleri için yedekleme ve geri yükleme işlemleri desteklenmez.
-* Tek başına SQL Server örneğinizi veya SQL Always on kullanılabilirlik grubunu yedeklemek için birden fazla yedekleme çözümü kullanmak yedekleme hatasına neden olabilir; Bunu yapmaktan kaçının.
-* Bir kullanılabilirlik grubunun iki düğümünü aynı veya farklı çözümlerle tek tek yedeklemek, yedekleme hatasına da neden olabilir.
-* Azure Backup **salt okunurdur** veritabanları Için yalnızca tam ve salt kopya tam yedekleme türlerini destekler
-* Çok sayıda dosya içeren veritabanları korunamaz. Desteklenen en fazla dosya sayısı **~ 1000**' dir.  
-* Bir kasadaki **~ 2000** SQL Server veritabanlarını yedekleyebilirsiniz. Daha fazla veritabanınız olması durumunda birden çok kasa oluşturabilirsiniz.
-* Yedeklemeyi tek bir go 'da en fazla **50** veritabanına yapılandırabilirsiniz; Bu kısıtlama, yedekleme yüklerini iyileştirmenize yardımcı olur.
-* Boyutu **2 TB** 'a kadar olan veritabanlarını destekliyoruz; performans sorunlarından daha büyük boyutlarda olabilir.
-* Sunucu başına kaç veritabanının korunduğuna ilişkin bir fikir sahibi olmak için, bant genişliği, VM boyutu, yedekleme sıklığı, veritabanı boyutu vb. gibi faktörleri göz önünde bulundurmanız gerekir. VM kaynaklarına ve yedekleme ilkesine göre sunucu başına sahip olabilirsiniz yaklaşık sayıda veritabanı sağlayan kaynak planlayıcısı 'nı [indirin](https://download.microsoft.com/download/A/B/5/AB5D86F0-DCB7-4DC3-9872-6155C96DE500/SQL%20Server%20in%20Azure%20VM%20Backup%20Scale%20Calculator.xlsx) .
-* Kullanılabilirlik grupları söz konusu olduğunda, yedeklemeler, birkaç etkene göre farklı düğümlerden alınır. Bir kullanılabilirlik grubu için yedekleme davranışı aşağıda özetlenmiştir.
+SQL Server VM'yi Azure Marketi'nde oluşturmadıysanız veya SQL 2008 ve 2008 R2'deyseniz, **UserErrorSQLNoSysadminMembership** hatası alabilirsiniz.
 
-### <a name="back-up-behavior-in-case-of-always-on-availability-groups"></a>Her zaman açık kullanılabilirlik grupları durumunda yedekleme davranışı
+Windows 2008 R2'de çalışan **SQL 2008** ve **2008 R2** durumunda izin vermek için [buraya](#give-sql-sysadmin-permissions-for-sql-2008-and-sql-2008-r2)bakın.
 
-Yedeklemenin yalnızca bir AG düğümünde yapılandırılması önerilir. Yedekleme her zaman birincil düğümle aynı bölgede yapılandırılmalıdır. Diğer bir deyişle, her zaman, yedeklemeyi yapılandırdığınız bölgede bulunan birincil düğümün olması gerekir. AG 'nin tüm düğümleri yedeklemenin yapılandırıldığı bölgede yer alıyorsa sorun yoktur.
+Diğer tüm sürümler için izinleri aşağıdaki adımlarla düzeltin:
 
-#### <a name="for-cross-region-ag"></a>Bölgeler arası AG için
+  1. SQL Server Management Studio 'da (SSMS) oturum açma izni olan bir hesap kullanın. Özel izinlere ihtiyacınız yoksa, Windows kimlik doğrulaması çalışması gerekir.
+  2. SQL Server'da **Security/Logins** klasörünü açın.
 
-* Yedekleme tercihinden bağımsız olarak yedeklemeler, yedeklemenin yapılandırıldığı bölgede yer alan düğümlerden gerçekleşmeyecek. Bunun nedeni, çapraz bölge yedeklemelerinin desteklenmemelidir. Yalnızca iki düğümünüz varsa ve ikincil düğüm diğer bölgedeyse; Bu durumda, yedeklemeler birincil düğümden gerçekleşmeye devam edecektir (yedekleme tercihiniz ' ikincil yalnızca ' değilse).
-* Yük devretme işlemi, yedeklemenin yapılandırıldığı sunucudan farklı bir bölgede gerçekleşdiğinde, yedeklemeler başarısız olan bölgedeki düğümlerde başarısız olur.
+      ![Hesapları görmek için Güvenlik/Giriş klasörünü açın](./media/backup-azure-sql-database/security-login-list.png)
 
-Yedekleme tercihine ve yedeklemeler türlerine (tam/değişiklik/günlük/salt kopya) bağlı olarak, yedeklemeler belirli bir düğümden alınır (birincil/ikincil).
+  3. **Girişler** klasörüne sağ tıklayın ve **Yeni Giriş'i**seçin. **Giriş Yap - Yeni**, **Ara'yı**seçin.
 
-* **Yedekleme tercihi: birincil**
+      ![Giriş - Yeni iletişim kutusunda Ara'yı seçin](./media/backup-azure-sql-database/new-login-search.png)
 
-**Yedekleme türü** | **Node**
-    --- | ---
-    tümünü | Birincil
-    Di | Birincil
-    Günlük |  Birincil
-    Salt kopya tam |  Birincil
+  4. Windows sanal hizmet hesabı **NT SERVICE\AzureWLBackupPluginSvc** sanal makine kaydı ve SQL bulma aşamasında oluşturuldu. 'de gösterildiği gibi hesap **adını girin nesneyin adını seçin.** Adı çözmek için **Adları Denetle'yi** seçin. **Tamam**'a tıklayın.
 
-* **Yedekleme tercihi: yalnızca Ikincil**
+      ![Bilinmeyen hizmet adını çözmek için Adları Denetle'yi seçin](./media/backup-azure-sql-database/check-name.png)
 
-**Yedekleme türü** | **Node**
---- | ---
-tümünü | Birincil
-Di | Birincil
-Günlük |  İkincil
-Salt kopya tam |  İkincil
+  5. **Sunucu**Rolleri'nde, **sysadmin** rolünün seçildiğinden emin olun. **Tamam**'a tıklayın. Gerekli izinler şimdi var olmalıdır.
 
-* **Yedekleme tercihi: Ikincil**
+      ![sysadmin sunucu rolünün seçildiğinden emin olun](./media/backup-azure-sql-database/sysadmin-server-role.png)
 
-**Yedekleme türü** | **Node**
---- | ---
-tümünü | Birincil
-Di | Birincil
-Günlük |  İkincil
-Salt kopya tam |  İkincil
+  6. Şimdi veritabanını Kurtarma Hizmetleri kasasıyla ilişkilendirin. Azure portalında, **Korumalı Sunucular** listesinde, **DB'leri Yeniden Keşfedin'i yeniden >** hata durumundaolan sunucuyu sağ tıklatın.
 
-* **Yedekleme tercihi yok**
+      ![Sunucunun uygun izinlere sahip olduğunu doğrulama](./media/backup-azure-sql-database/check-erroneous-server.png)
 
-**Yedekleme türü** | **Node**
---- | ---
-tümünü | Birincil
-Di | Birincil
-Günlük |  İkincil
-Salt kopya tam |  İkincil
+  7. **Bildirimler** alanında ilerlemeyi denetleyin. Seçili veritabanları bulunduğunda, bir başarı iletisi görüntülenir.
 
-## <a name="set-vm-permissions"></a>VM izinlerini ayarla
-
-  SQL Server bulma işlemini çalıştırdığınızda şunları Azure Backup:
-
-* AzureBackupWindowsWorkload uzantısını ekler.
-* Sanal makinedeki veritabanlarını bulacak bir NT SERVICE\AzureWLBackupPluginSvc hesabı oluşturur. Bu hesap, yedekleme ve geri yükleme için kullanılır ve SQL sysadmin izinleri gerektirir.
-* Bir VM üzerinde çalışan veritabanlarını bulur Azure Backup NT AUTHORITY\SYSTEM hesabını kullanır. Bu hesap, SQL 'de ortak bir oturum açma olmalıdır.
-
-Azure Marketi 'nde SQL Server VM oluşturmadıysanız veya SQL 2008 ve 2008 R2 kullanıyorsanız bir **Usererrorsqlnosysadminmembership** hatası alabilirsiniz.
-
-Windows 2008 R2 'de çalışan **SQL 2008** ve **2008 R2** durumunda izinler vermek için [buraya](#give-sql-sysadmin-permissions-for-sql-2008-and-sql-2008-r2)bakın.
-
-Diğer tüm sürümler için aşağıdaki adımlarla izinleri onarın:
-
-  1. SQL Server Management Studio (SSMS) oturum açmak için SQL Server sysadmin izinlerine sahip bir hesap kullanın. Özel izinlere ihtiyacınız yoksa, Windows kimlik doğrulamasının çalışması gerekir.
-  2. SQL Server, **güvenlik/oturum açma** klasörünü açın.
-
-      ![Hesapları görmek için güvenlik/oturum açmalar klasörünü açın](./media/backup-azure-sql-database/security-login-list.png)
-
-  3. **Oturumlar** klasörüne sağ tıklayıp **yeni oturum açma**' yı seçin. **Oturum aç-yeni**' de **Ara**' yı seçin.
-
-      ![Oturum aç-yeni iletişim kutusunda ara ' yı seçin.](./media/backup-azure-sql-database/new-login-search.png)
-
-  4. Windows sanal hizmet hesabı **NT SERVICE\AzureWLBackupPluginSvc** , sanal makine kaydı ve SQL bulma aşaması sırasında oluşturulmuştur. **Seçilecek nesne adını girin**bölümünde gösterildiği gibi hesap adını girin. Adı çözümlemek için **adları denetle** ' yi seçin. **Tamam** düğmesine tıklayın.
-
-      ![Bilinmeyen hizmet adını çözümlemek için adları denetle ' yi seçin](./media/backup-azure-sql-database/check-name.png)
-
-  5. **Sunucu rolleri**' nde **sysadmin** rolünün seçildiğinden emin olun. **Tamam** düğmesine tıklayın. Gerekli izinler artık var olmalıdır.
-
-      ![Sysadmin sunucu rolünün seçildiğinden emin olun](./media/backup-azure-sql-database/sysadmin-server-role.png)
-
-  6. Şimdi veritabanını kurtarma hizmetleri kasasıyla ilişkilendirin. Azure portal, **korumalı sunucular** listesinde, bir hata durumunda olan sunucuya sağ tıklayıp veritabanlarını **yeniden keşfet**>.
-
-      ![Sunucunun uygun izinlere sahip olduğunu doğrulayın](./media/backup-azure-sql-database/check-erroneous-server.png)
-
-  7. **Bildirimler** alanındaki ilerlemeyi denetleyin. Seçilen veritabanları bulunduğunda, bir başarı iletisi görüntülenir.
-
-      ![Dağıtım başarılı iletisi](./media/backup-azure-sql-database/notifications-db-discovered.png)
+      ![Dağıtım başarı iletisi](./media/backup-azure-sql-database/notifications-db-discovered.png)
 
 > [!NOTE]
-> SQL Server birden çok SQL Server yüklüyse, **NT Service\AzureWLBackupPluginSvc** hesabı için sysadmin IZNINI tüm SQL örneklerine eklemeniz gerekir.
+> SQL Server'ınızda birden çok SQL Server örneği yüklüyse, tüm SQL örneklerine **NT Service\AzureWLBackupPluginSvc** hesabı için sysadmin izni eklemeniz gerekir.
 
-### <a name="give-sql-sysadmin-permissions-for-sql-2008-and-sql-2008-r2"></a>SQL 2008 ve SQL 2008 R2 için SQL sysadmin izinleri verme
+### <a name="give-sql-sysadmin-permissions-for-sql-2008-and-sql-2008-r2"></a>SQL 2008 ve SQL 2008 R2 için SQL sysadmin izinleri verin
 
-SQL Server örneğine **NT AUTHORITY\SYSTEM** ve **NT Service\AzureWLBackupPluginSvc** oturum açmaları ekleyin:
+SQL Server **Instance'a NT AUTHORITY\SYSTEM** ve **NT Service\AzureWLBackupPluginSvc** girişlerini ekleyin:
 
-1. Nesne Gezgini 'ndeki SQL Server örneğine gidin.
-2. Güvenlik-> oturum açma bilgilerine gidin
-3. Oturum açma Işlemlerine sağ tıklayıp *yeni oturum açma...* öğesine tıklayın.
+1. Nesne gezgininde SQL Server Instance'a gidin.
+2. Güvenlik -> Girişlerine Gidin
+3. Girişler'e sağ tıklayın ve *Yeni Giriş'e tıklayın...*
 
-    ![SSMS kullanarak yeni oturum açma](media/backup-azure-sql-database/sql-2k8-new-login-ssms.png)
+    ![SSMS kullanarak Yeni Giriş](media/backup-azure-sql-database/sql-2k8-new-login-ssms.png)
 
-4. Genel sekmesine gidin ve oturum açma adı olarak **NT AUTHORITY\SYSTEM** girin.
+4. Genel sekmesine gidin ve Giriş Adı olarak **NT AUTHORITY\SYSTEM** girin.
 
-    ![SSMS için oturum açma adı](media/backup-azure-sql-database/sql-2k8-nt-authority-ssms.png)
+    ![SSMS için giriş adı](media/backup-azure-sql-database/sql-2k8-nt-authority-ssms.png)
 
-5. *Sunucu rolleri* ' ne gidin ve *genel* ve *sysadmin* rolleri ' ni seçin.
+5. Sunucu *Rolleri'ne* gidin ve *genel* ve *sysadmin* rollerini seçin.
 
-    ![SSMS 'de rol seçme](media/backup-azure-sql-database/sql-2k8-server-roles-ssms.png)
+    ![SSMS'te rolleri seçme](media/backup-azure-sql-database/sql-2k8-server-roles-ssms.png)
 
-6. *Duruma*git. Veritabanı altyapısına bağlanma ve oturum açma Iznini *etkin*olarak *verin* .
+6. *Durum'a*git. Veritabanı altyapısına bağlanma izni ve *Etkinleştirilen*Olarak Giriş 'i *ver.*
 
-    ![SSMS 'de izin verme](media/backup-azure-sql-database/sql-2k8-grant-permission-ssms.png)
+    ![SSMS'de izin verme](media/backup-azure-sql-database/sql-2k8-grant-permission-ssms.png)
 
 7. Tamam'a tıklayın.
-8. SQL Server örneğine NT Service\AzureWLBackupPluginSvc LOGIN eklemek için aynı adım dizisini yineleyin (yukarıdaki 1-7). Oturum açma zaten varsa, bunun sysadmin sunucu rolüne sahip olduğundan ve durum ' un altında, veritabanı motoruna bağlanma ve oturum açma Iznini etkin olarak vermiş olduğundan emin olun.
-9. İzin verdikten sonra, portalda **DB 'Yi yeniden keşfet** : kasa **->** yedekleme altyapısı Azure VM 'de iş yükünü **->** :
+8. SQL Server örneğine NT Service\AzureWLBackupPluginSvc girişi eklemek için aynı adım sırasını (yukarıda 1-7) yineleyin. Oturum açma zaten varsa, sysadmin sunucu rolüne sahip olduğundan emin olun ve Durum altında veritabanı altyapısına bağlanma izni verdive Etkinleştirildikçe Giriş Yapın.
+9. İzin verdikten sonra, PORTALDA **DB'leri Yeniden Keşfedin:** Azure VM'de Vault **->** Backup Infrastructure **->** İş Yükü:
 
-    ![Azure portal 'de DBs 'yi yeniden keşfet](media/backup-azure-sql-database/sql-rediscover-dbs.png)
+    ![Azure portalında DB'leri yeniden keşfedin](media/backup-azure-sql-database/sql-rediscover-dbs.png)
 
-Alternatif olarak, yönetici modunda aşağıdaki PowerShell komutlarını çalıştırarak izinleri vermeyi otomatik hale getirebilirsiniz. Örnek adı varsayılan olarak MSSQLSERVER olarak ayarlanır. Gerekirse, komut dosyasındaki örnek adı bağımsız değişkenini değiştirin:
+Alternatif olarak, aşağıdaki PowerShell komutlarını yönetici modunda çalıştırarak izinleri veren otomatikleştirebilirsiniz. Örnek adı varsayılan olarak MSSQLSERVER olarak ayarlanır. Gerekirse komut dosyasındaki örnek adı bağımsız değişkenini değiştirin:
 
 ```powershell
 param(
@@ -224,6 +150,6 @@ catch
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* SQL Server veritabanlarını yedekleme [hakkında bilgi edinin](backup-sql-server-database-azure-vms.md) .
-* Yedeklenen SQL Server veritabanlarını geri yükleme [hakkında bilgi edinin](restore-sql-database-azure-vm.md) .
-* Yedeklenen SQL Server veritabanlarını yönetme [hakkında bilgi edinin](manage-monitor-sql-database-backup.md) .
+* SQL Server veritabanlarını yedekleme [hakkında bilgi edinin.](backup-sql-server-database-azure-vms.md)
+* Yedeklenen SQL Server veritabanlarını geri alma [hakkında bilgi edinin.](restore-sql-database-azure-vm.md)
+* Yedeklenmiş SQL Server veritabanlarını yönetme [hakkında bilgi edinin.](manage-monitor-sql-database-backup.md)

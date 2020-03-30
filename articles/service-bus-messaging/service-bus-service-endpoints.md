@@ -1,6 +1,6 @@
 ---
-title: Sanal ağ hizmeti uç noktaları-Azure Service Bus
-description: Bu makalede bir sanal ağa Microsoft. ServiceBus hizmet uç noktası ekleme hakkında bilgi sağlanır.
+title: Azure Hizmet Veri Servisi için sanal ağ hizmeti bitiş noktalarını yapılandırma
+description: Bu makalede, sanal ağa Microsoft.ServiceBus hizmet bitiş noktası nasıl ekleyeceğiniz hakkında bilgi verilmektedir.
 services: service-bus
 documentationcenter: ''
 author: axisc
@@ -10,73 +10,80 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/20/2019
 ms.author: aschhab
-ms.openlocfilehash: 212cd96571561362003e7dcbd89efc5d2c54ab48
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 9dbf65522d5c85e1054ed3f1f6ca9f86180e7f7d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980795"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79454990"
 ---
-# <a name="use-virtual-network-service-endpoints-with-azure-service-bus"></a>Azure Service Bus ile sanal ağ hizmeti uç noktalarını kullanma
+# <a name="configure-virtual-network-service-endpoints-for-azure-service-bus"></a>Azure Hizmet Veri Servisi için sanal ağ hizmeti bitiş noktalarını yapılandırma
 
-[Sanal ağ (VNet) hizmet uç noktaları][vnet-sep] ile Service Bus tümleştirmesi, sanal ağlara bağlı sanal makineler gibi iş yüklerinden, her iki uçta da güvenli hale getirilen ağ trafiği yolu ile güvenli erişim sağlar.
+Servis Veri Yolu'nun [Sanal Ağ (VNet) hizmet bitiş noktalarıyla][vnet-sep] tümleştirilmesi, sanal ağlara bağlı sanal makineler gibi iş yüklerinden mesajlaşma yeteneklerine güvenli erişim sağlar ve ağ trafik yolu her iki uçta da güvenli hale gelir.
 
-En az bir sanal ağ alt ağ hizmeti uç noktasına bağlanacak şekilde yapılandırıldıktan sonra, ilgili Service Bus ad alanı artık herhangi bir yerden trafiği kabul etmez, ancak yetkilendirilmiş sanal ağ (ler) i. Sanal ağ perspektifinden bir Service Bus ad alanını bir hizmet uç noktasına bağlamak, sanal ağ alt ağından mesajlaşma hizmetine yalıtılmış bir ağ tüneli yapılandırır.
+En az bir sanal ağ altağ hizmeti bitiş noktasına bağlanacak şekilde yapılandırıldıktan sonra, ilgili Servis Veri Aracı ad alanı artık herhangi bir yerden değil, yetkili sanal ağ(lar) trafiğini kabul eder. Sanal ağ açısından bakıldığında, Hizmet Veri Sitesi ad alanını hizmet bitiş noktasına bağlama, sanal ağ alt ağından mesajlaşma hizmetine yalıtılmış bir ağ tünelini yapılandırır.
 
-Sonuç olarak, alt ağa ve ilgili Service Bus ad alanıyla ilişkili olan iş yükleri arasında özel ve yalıtılmış bir ilişki vardır. Bu, bir genel IP aralığında yer alan mesajlaşma hizmeti uç noktasının observable ağ adresi artma.
-
->[!WARNING]
-> Sanal ağlar tümleştirmesini uygulamak, diğer Azure hizmetlerinin Service Bus etkileşimde olmasını engelleyebilir.
->
-> Sanal ağlar uygulandığında güvenilen Microsoft Hizmetleri desteklenmez.
->
-> Sanal ağlarla çalışmayan yaygın Azure senaryoları ( **listenin ayrıntılı olmadığına** unutmayın)-
-> - Azure Stream Analytics
-> - Azure Event Grid ile tümleştirme
-> - Azure IoT Hub yolları
-> - Azure IoT Device Explorer
->
-> Aşağıdaki Microsoft hizmetlerinin bir sanal ağda olması gerekir
-> - Azure App Service
-> - Azure İşlevleri
+Sonuç, ileti hizmeti bitiş noktasının genel BIR IP aralığında olmasına rağmen, alt ağa bağlı iş yükleri ile ilgili Service Bus ad alanı arasındaki özel ve yalıtılmış bir ilişkidir.
 
 > [!IMPORTANT]
-> Sanal ağlar yalnızca [Premium katmanda](service-bus-premium-messaging.md) Service Bus ad alanlarında desteklenir.
+> Sanal Ağlar yalnızca [Premium katman](service-bus-premium-messaging.md) Hizmet Veri Günü ad alanlarında desteklenir.
+> 
+> Servis Veri Servisi ile VNet hizmet bitiş noktalarını kullanırken, Standart ve Premium katman Hizmet Veri Mes'ü ad alanlarını karıştıran uygulamalarda bu uç noktaları etkinleştirmemelisiniz. Standart katman VNet'leri desteklemediği için. Bitiş noktası yalnızca Premium katman ad alanlarıyla sınırlıdır.
 
-## <a name="enable-service-endpoints-with-service-bus"></a>Service Bus ile hizmet uç noktalarını etkinleştirme
+## <a name="advanced-security-scenarios-enabled-by-vnet-integration"></a>VNet tümleştirmesi tarafından etkinleştirilen gelişmiş güvenlik senaryoları 
 
-VNet hizmet uç noktalarını Service Bus kullandığınızda önemli bir göz önünde bulundurun. bu uç noktaları, standart ve Premium katman Service Bus ad alanlarını karışan uygulamalarda etkinleştirmemelidir. Standart katman VNET 'leri desteklemediğinden, uç nokta yalnızca Premium katman ad alanları ile kısıtlıdır.
+Sıkı ve bölümlere ayrılmış güvenlik gerektiren ve sanal ağ alt ağlarının bölümlere ayrılmış hizmetler arasındaki segmentasyonu sağladığı çözümler, genellikle bu bölmelerde bulunan hizmetler arasında genellikle iletişim yolları gerektirir.
 
-## <a name="advanced-security-scenarios-enabled-by-vnet-integration"></a>VNet tümleştirmesi etkin Gelişmiş Güvenlik senaryoları 
-
-Sıkı ve compartmentalized güvenlik gerektiren ve sanal ağ alt ağları compartmentalized hizmetler arasında ayrılmasını sağlarsınız çözümleri genellikle yine de bu bölmeleri içinde bulunan hizmetler arasındaki iletişim yolları gerekir.
-
-TCP/IP üzerinden HTTPS taşıyan dahil olmak üzere bölmeler arasında anında herhangi IP yönlendirme, güvenlik açıklarına karşı ağ katmanı kötüye kullanılma riskini taşır üzerinde yukarı. Burada iletileri bile, taraflar arasında geçiş olarak diske yazılır, tamamen yalıtılmış iletişim yolları Mesajlaşma hizmetleri sağlar. Aynı Service Bus örneğine bağlanan iki ayrı sanal ağdaki iş yükleri iletiler aracılığıyla verimli ve güvenilir bir şekilde iletişim kurabilir, ancak ilgili ağ yalıtımı sınır bütünlüğü korunur.
+TCP/IP üzerinden HTTPS taşıyanlar da dahil olmak üzere bölmeler arasındaki herhangi bir anlık IP rotası, ağ katmanındaki güvenlik açıklarından yararlanma riski taşır. Mesajlaşma hizmetleri, iletilerin taraflar arasında geçiş sırasında diske bile yazıldığı tamamen yalıtımlı iletişim yolları sağlar. Her ikisi de aynı Hizmet Veri Yolu örneğine bağlı olan iki farklı sanal ağdaki iş yükleri, iletiler aracılığıyla verimli ve güvenilir bir şekilde iletişim kurabilir ve ilgili ağ yalıtımsınır bütünlüğü korunur.
  
-Bu, güvenlik duyarlı bulut çözümlerinizin yalnızca Azure sektör lideri güvenilir ve ölçeklenebilir zaman uyumsuz mesajlaşma özelliklerine erişim elde edemeyeceği anlamına gelir, ancak artık güvenli çözüm bölmeleri arasında iletişim yolları oluşturmak için mesajlaşma kullanabilir , HTTPS ve diğer TLS güvenlikli yuva protokolleri de dahil olmak üzere eşler arası iletişim moduyla ulaşılabilir, doğal olarak daha güvenlidir.
+Bu, güvenliğe duyarlı bulut çözümlerinizin yalnızca Azure endüstri lideri güvenilir ve ölçeklenebilir eşzamanlı mesajlaşma özelliklerine erişmedikleri, aynı zamanda artık mesajlaşmayı güvenli çözüm bölmeleri arasında iletişim yolları oluşturmak için kullanabileceği anlamına gelir. HTTPS ve diğer TLS güvenlikli soket protokolleri de dahil olmak üzere eşler arası iletişim moduyla ulaşılabileceklerden daha güvenlidir.
 
-## <a name="binding-service-bus-to-virtual-networks"></a>Service Bus sanal ağlara bağlama
+## <a name="binding-service-bus-to-virtual-networks"></a>Hizmet Veri Tos'u Sanal Ağlara Bağlama
 
-*Sanal ağ kuralları* , Azure Service Bus sunucunuzun belirli bir sanal ağ alt ağından gelen bağlantıları kabul edip etmediğini denetleyen güvenlik duvarı güvenlik özelliğidir.
+*Sanal ağ kuralları,* Azure Hizmet Veri Servisi sunucunuzun belirli bir sanal ağ alt ağından bağlantıları kabul edip etmediğini kontrol eden güvenlik duvarı güvenlik özelliğidir.
 
-Bir Service Bus ad alanını bir sanal ağa bağlamak iki adımlı bir işlemdir. Önce bir sanal ağ alt ağında bir **sanal ağ hizmeti uç noktası** oluşturmanız ve bunu [hizmet uç noktasına genel bakış][vnet-sep]bölümünde açıklandığı gibi "Microsoft. ServiceBus" için etkinleştirmeniz gerekir. Hizmet uç noktasını ekledikten sonra, Service Bus ad alanını bir *sanal ağ kuralıyla*bağlayın.
+Hizmet Veri Sitesi ad alanını sanal ağa bağlamaiki aşamalı bir işlemdir. Öncelikle bir Sanal **Ağ** alt ağında bir Sanal Ağ hizmet bitiş noktası oluşturmanız ve hizmet bitiş noktasına genel [bakışta][vnet-sep]açıklandığı gibi **Microsoft.ServiceBus** için etkinleştirmeniz gerekir. Hizmet bitiş noktasını ekledikten sonra, Servis Veri Sitesi ad alanını **sanal ağ kuralıyla**ona bağlarsınız.
 
-Sanal ağ kuralı, bir sanal ağ alt ağıyla Service Bus ad alanının bir ilişkidir. Kural var olsa da, alt ağa erişen tüm iş yükleri Service Bus ad alanına erişim izni verilir. Service Bus kendisi hiçbir şekilde giden bağlantı oluşturmaz, erişim elde etmek zorunda değildir ve bu nedenle bu kuralı etkinleştirerek alt ağınız için hiçbir şekilde erişim izni verilmez.
+Sanal ağ kuralı, Hizmet Veri Mesle'nin ad alanının sanal ağ alt ağıyla ilişkisidir. Kural olsa da, alt ağa bağlı tüm iş yüklerine Hizmet Veri Yolundan ad alanına erişim izni verilir. Service Bus'un kendisi hiçbir zaman giden bağlantılar kurmaz, erişim sağlaması gerekmez ve bu nedenle bu kuralı etkinleştirerek alt ağınıza erişim izni verilmez.
 
-### <a name="creating-a-virtual-network-rule-with-azure-resource-manager-templates"></a>Azure Resource Manager şablonlarıyla bir sanal ağ kuralı oluşturma
+## <a name="use-azure-portal"></a>Azure portalı kullanma
+Bu bölümde, sanal ağ hizmeti bitiş noktası eklemek için Azure portalını nasıl kullanacağınızı gösterir. Erişimi sınırlamak için, bu Olay Hub'ları ad alanı için sanal ağ hizmeti bitiş noktasını tümleştirmeniz gerekir.
 
-Aşağıdaki Kaynak Yöneticisi şablonu, var olan bir Service Bus ad alanına bir sanal ağ kuralı eklenmesini sağlar.
+1. [Azure portalındaki](https://portal.azure.com) **Hizmet Veri Servisi ad alanınıza** gidin.
+2. Sol menüde **Ağ seçeneği'ni** seçin. Varsayılan olarak, **Tüm ağlar** seçeneği seçilir. Ad alanınız herhangi bir IP adresinden bağlantıları kabul eder. Bu varsayılan ayar, 0.0.0.0/0 IP adresi aralığını kabul eden bir kurala eşdeğerdir. 
 
-Şablon parametreleri:
+    ![Güvenlik Duvarı - Tüm ağlar seçeneği seçildi](./media/service-endpoints/firewall-all-networks-selected.png)
+1. Sayfanın üst kısmında **seçili ağlar** seçeneğini seçin.
+2. Sayfanın **Sanal Ağ** bölümünde **+Ekle'yi**seçin. 
 
-* **NamespaceName**: Service Bus ad alanı.
-* **virtualNetworkingSubnetId**: tam Resource Manager yolu için sanal ağ alt ağı; Örneğin, `/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` sanal ağ varsayılan alt ağ.
+    ![varolan sanal ağ ekleme](./media/service-endpoints/add-vnet-menu.png)
+3. Sanal ağlar listesinden sanal ağı seçin ve ardından **alt ağı**seçin. Listeye sanal ağı eklemeden önce hizmet bitiş noktasını etkinleştirmeniz gerekir. Hizmet bitiş noktası etkin değilse, portal bunu etkinleştirmenizi ister.
+   
+   ![alt ağı seçin](./media/service-endpoints/select-subnet.png)
+
+4. **Microsoft.ServiceBus**için alt ağ için hizmet bitiş noktası etkinleştirildikten sonra aşağıdaki başarılı iletiyi görmeniz gerekir. Ağı eklemek için sayfanın en altında **Ekle'yi** seçin. 
+
+    ![alt ağı seçin ve bitiş noktasını etkinleştirin](./media/service-endpoints/subnet-service-endpoint-enabled.png)
+
+    > [!NOTE]
+    > Hizmet bitiş noktasını etkinleştiremiyorsanız, Kaynak Yöneticisi şablonu kullanarak eksik sanal ağ hizmeti bitiş noktasını yok sayabilirsiniz. Bu işlevsellik portalda kullanılamaz.
+6. Ayarları kaydetmek için araç çubuğunda **Kaydet'i** seçin. Onayın portal bildirimlerinde gösterilmesi için birkaç dakika bekleyin. **Kaydet** düğmesi devre dışı bırakılmalı. 
+
+    ![Ağı kaydet](./media/service-endpoints/save-vnet.png)
+
+## <a name="use-resource-manager-template"></a>Resource Manager şablonu kullanma
+Aşağıdaki Kaynak Yöneticisi şablonu, varolan bir Hizmet Veri Sitesi ad alanına sanal ağ kuralı eklemeyi sağlar.
+
+Template parameters:
+
+* **namespaceName**: Service Bus namespace.
+* **virtualNetworkingSubnetId**: Sanal ağ alt ağı için tam nitelikli Kaynak Yöneticisi yolu; örneğin, `/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` sanal bir ağın varsayılan alt ağı için.
 
 > [!NOTE]
-> Mümkün olan reddetme kuralları olmadığı sürece, Azure Resource Manager şablonu, bağlantıları kısıtlayameyen **"Izin ver"** olarak ayarlanmış varsayılan eylemi içerir.
-> Sanal ağ veya güvenlik duvarları kuralları yaparken, ***"DefaultAction"*** öğesini değiştirmemiz gerekir
+> İnkar edilen kurallar mümkün olmasa da, Azure Kaynak Yöneticisi şablonu bağlantıları kısıtlamayan varsayılan eylem **kümesine "İzin Ver"** olarak ayarlanır.
+> Sanal Ağ veya Güvenlik Duvarları kurallarını yaparken ***"varsayılan Eylem"i*** değiştirmemiz gerekir
 > 
-> başlangıç
+> Kaynak
 > ```json
 > "defaultAction": "Allow"
 > ```
@@ -178,6 +185,7 @@ Aşağıdaki Kaynak Yöneticisi şablonu, var olan bir Service Bus ad alanına b
             }
           ],
           "ipRules":[<YOUR EXISTING IP RULES>],
+          "trustedServiceAccessEnabled": false,          
           "defaultAction": "Deny"
         }
       }
@@ -186,14 +194,14 @@ Aşağıdaki Kaynak Yöneticisi şablonu, var olan bir Service Bus ad alanına b
   }
 ```
 
-Şablonu dağıtmak için [Azure Resource Manager][lnk-deploy]talimatlarını izleyin.
+Şablonu dağıtmak için Azure [Kaynak Yöneticisi][lnk-deploy]yönergelerini izleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Sanal ağlar hakkında daha fazla bilgi için aşağıdaki bağlantılara bakın:
 
-- [Azure sanal ağ hizmet uç noktaları][vnet-sep]
-- [Azure Service Bus IP filtreleme][ip-filtering]
+- [Azure sanal ağ hizmeti bitiş noktaları][vnet-sep]
+- [Azure Servis Veri Servisi IP filtreleme][ip-filtering]
 
 [vnet-sep]: ../virtual-network/virtual-network-service-endpoints-overview.md
 [lnk-deploy]: ../azure-resource-manager/templates/deploy-powershell.md

@@ -1,18 +1,18 @@
 ---
-title: Tanıtım
-description: Azure App Service ortamların, uygulamalarınızı tamamen yalıtılmış ve ayrılmış bir ortamda ölçeklendirmenize, güvenli hale getirmenize ve iyileştirmenize nasıl yardımcı olduğunu öğrenin.
+title: Giriş
+description: Azure Uygulama Hizmet Ortamları'nın uygulamalarınızı tamamen yalıtılmış ve özel bir ortamda ölçeklendirmenize, güvenli hale getirmenize ve optimize edeyimize nasıl yardımcı olduğunu öğrenin.
 author: ccompy
 ms.assetid: 3c7eaefa-1850-4643-8540-428e8982b7cb
 ms.topic: overview
 ms.date: 04/19/2018
 ms.author: ccompy
-ms.custom: seodec18
-ms.openlocfilehash: 0fc5c32570e5a5920d1616a522120ea5d5b251d8
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 9bc40e71c1da6eb60b62cd08c51df89a7f35af09
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768336"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80057378"
 ---
 # <a name="introduction-to-the-app-service-environments"></a>App Service Ortamlarına giriş #
  
@@ -41,7 +41,7 @@ ASE’ler yalnızca tek bir müşterinin uygulamalarını çalıştırmak üzere
 * Yatay yönde ölçeklendirme için birden çok ASE kullanılabilir. Daha fazla bilgi için bkz. [Coğrafi olarak dağıtılmış bir uygulama ayak izi ayarlama](app-service-app-service-environment-geo-distributed-scale.md).
 * ASE’ler, AzureCon Ayrıntılı Bakışında gösterildiği gibi güvenlik mimarisini yapılandırmak için kullanılabilir. AzureCon Ayrıntılı Bakışında gösterilen güvenlik mimarisinin nasıl yapılandırıldığını görmek için App Service ortamları ile [katmanlı güvenlik mimarisi uygulama makalesine](app-service-app-service-environment-layered-security.md) bakın.
 * ASE’ler üzerinde çalışan uygulamalara erişim, web uygulaması güvenlik duvarları (WAF) gibi yukarı akış cihazları tarafından sağlanabilir. Daha fazla bilgi için bkz. [Web uygulaması güvenlik duvarı (WAF)][AppGW].
-* App Service ortamlar, bölge sabitleme kullanılarak Kullanılabilirlik Alanları (AZ) ile dağıtılabilir.  Daha fazla bilgi için bkz. [Kullanılabilirlik Alanları App Service ortamı desteği][ASEAZ] .
+* Uygulama Hizmet Ortamları, bölge sabitleme kullanılarak Kullanılabilirlik Bölgeleri'ne (AZ) dağıtılabilir.  Daha fazla bilgi [için Kullanılabilirlik Bölgeleri için Uygulama Hizmeti Ortamı Desteği'ne][ASEAZ] bakın.
 
 ## <a name="dedicated-environment"></a>Ayrılmış ortam ##
 
@@ -57,19 +57,19 @@ ASE, ön uçlar ve çalışanlardan oluşur. Ön uçlar HTTP/HTTPS sonlandırmad
 
 Müşterilerin ön uçları ve çalışanları yönetmesi gerekmez. Müşteriler App Service planlarının ölçeğini genişlettikçe tüm altyapı otomatik olarak eklenir. Bir ASE’de App Service planları oluşturulduğunda veya ölçeklendirildiğinde, gerekli altyapı uygun şekilde eklenir veya kaldırılır.
 
-ASE için altyapıya ilişkin ödeme yapan ve ASE’nin boyutuna göre değişmeyen sabit bir aylık fiyat mevcuttur. Ayrıca, App Service planı vCPU’su için bir maliyet mevcuttur. ASE'de barındırılan tüm uygulamalar, Yalıtılmış fiyatlandırma SKU’su içindedir. Bir ASE fiyatlandırması hakkında daha fazla bilgi için, [App Service fiyatlandırma][Pricing] sayfasına bakın ve ASE için kullanılabilir seçenekleri gözden geçirin.
+ASE için altyapıya ilişkin ödeme yapan ve ASE’nin boyutuna göre değişmeyen sabit bir aylık fiyat mevcuttur. Ayrıca, App Service planı vCPU’su için bir maliyet mevcuttur. ASE'de barındırılan tüm uygulamalar, Yalıtılmış fiyatlandırma SKU’su içindedir. ASE fiyatlandırması hakkında bilgi için [App Service fiyatlandırma][Pricing] sayfasına bakın ve ASE’ler için kullanılabilir seçenekleri gözden geçirin.
 
 ## <a name="virtual-network-support"></a>Sanal ağ desteği ##
 
-Ao özelliği, Azure App Service doğrudan bir müşterinin Azure Resource Manager sanal ağına bir dağıtımdır. Azure sanal ağları hakkında daha fazla bilgi için bkz. [Azure sanal ağları ile ilgili SSS](https://azure.microsoft.com/documentation/articles/virtual-networks-faq/). Bir ASE her zaman bir sanal ağda ve daha kesin bir şekilde bir sanal ağın alt ağında bulunur. Uygulamalarınıza ilişkin gelen ve giden ağ iletişimini denetlemek için sanal ağların güvenlik özelliklerini kullanabilirsiniz.
+ASE özelliği, Azure Uygulama Hizmeti'nin doğrudan müşterinin Azure Kaynak Yöneticisi sanal ağına dağıtılmasıdır. Azure sanal ağları hakkında daha fazla bilgi için bkz. [Azure sanal ağları ile ilgili SSS](https://azure.microsoft.com/documentation/articles/virtual-networks-faq/). Bir ASE her zaman bir sanal ağda ve daha kesin bir şekilde bir sanal ağın alt ağında bulunur. Uygulamalarınıza ilişkin gelen ve giden ağ iletişimini denetlemek için sanal ağların güvenlik özelliklerini kullanabilirsiniz.
 
 ASE bir genel IP adresi ile İnternet’e yönelik veya sadece bir Azure iç yük dengeleyici (ILB) adresi ile iç ağa yönelik olabilir.
 
-[Ağ güvenlik grupları][NSGs] , bir AO 'nun bulunduğu alt ağla gelen ağ iletişimini kısıtlar. WAF’ler ve ağ SaaS sağlayıcıları gibi yukarı akış cihazlarının ve hizmetlerinin arkasında uygulamaları çalıştırmak için NSG’leri kullanabilirsiniz.
+[Ağ Güvenlik Grupları][NSGs], bir ASE’nin bulunduğu alt ağa gelen ağ iletişimini kısıtlar. WAF’ler ve ağ SaaS sağlayıcıları gibi yukarı akış cihazlarının ve hizmetlerinin arkasında uygulamaları çalıştırmak için NSG’leri kullanabilirsiniz.
 
 Uygulamalar, iç veritabanları ve web hizmetleri gibi şirket kaynaklarına da sıklıkla erişmelidir. ASE’yi şirket içi ağınızla VPN bağlantısı olan bir sanal ağa dağıtırsanız, ASE’deki uygulamalar şirket içi kaynaklara erişebilir. Bu özellik, VPN’nin [siteden siteye](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-multi-site) veya [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/) VPN olmasından bağımsız olarak geçerli olabilir.
 
-ASE 'lerin sanal ağlarla ve şirket içi ağlarla nasıl çalıştığı hakkında daha fazla bilgi için bkz. [App Service ortamı ağ değerlendirmeleri][ASENetwork].
+ASE’lerin sanal ağlar ve şirket ağlarla nasıl çalıştığı hakkında daha fazla bilgi için bkz. [App Service Ortamı ağ konuları][ASENetwork].
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-Application-Service-Environments-v2-Private-PaaS-Environments-in-the-Cloud/player]
 
@@ -79,7 +79,7 @@ App Service Ortamının iki sürümü vardır: ASEv1 ve ASEv2. Yukarıdaki bilgi
 
 ASEv1’de tüm kaynakları el ile yönetmeniz gerekir. Buna ön uçlar, çalışanlar ve IP tabanlı SSL için kullanılan IP adresleri dahildir. App Service planınızın ölçeğini artırabilmeniz için, öncelikle planınızı barındırmak istediğiniz çalışan havuzunun ölçeğini artırmanız gerekir.
 
-ASEv1, ASEv2’den farklı bir fiyatlandırma modeli kullanır. ASEv1’de ayrılmış her vCPU için ücret ödersiniz. Buna herhangi bir iş yükünü barındırmayan ön uçlar veya çalışanlar için kullanılan vCPU’lar dahildir. ASEv1’de bir ASE’nin varsayılan en büyük ölçek boyutu toplam 55 konaktır. Buna çalışanlar ve ön uçlar dahildir. ASEv1’in bir avantajı, klasik bir sanal ağa ve bir Resource Manager sanal ağına dağıtılabilmesidir. ASEv1 hakkında daha fazla bilgi edinmek için bkz. [App Service ortamı v1 girişi][ASEv1Intro].
+ASEv1, ASEv2’den farklı bir fiyatlandırma modeli kullanır. ASEv1’de ayrılmış her vCPU için ücret ödersiniz. Buna herhangi bir iş yükünü barındırmayan ön uçlar veya çalışanlar için kullanılan vCPU’lar dahildir. ASEv1’de bir ASE’nin varsayılan en büyük ölçek boyutu toplam 55 konaktır. Buna çalışanlar ve ön uçlar dahildir. ASEv1’in bir avantajı, klasik bir sanal ağa ve bir Resource Manager sanal ağına dağıtılabilmesidir. ASEv1 hakkında daha fazla bilgi için bkz. [App Service Ortamı v1’e giriş][ASEv1Intro].
 
 <!--Links-->
 [App Service Environments v2]: https://channel9.msdn.com/Blogs/Azure/Azure-Application-Service-Environments-v2-Private-PaaS-Environments-in-the-Cloud?term=app%20service%20environment

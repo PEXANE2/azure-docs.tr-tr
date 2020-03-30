@@ -1,5 +1,5 @@
 ---
-title: "Azure VPN Gateway VNet 'ten VNet 'e bağlantı kullanarak VNet 'i başka bir sanal ağa bağlama: PowerShell"
+title: "Azure VPN Ağ Geçidi VNet'den VNet'e bağlantı kullanarak bir VNet'i başka bir VNet'e bağlayın: PowerShell"
 description: Sanal ağlar arası bağlantı ve PowerShell kullanarak sanal ağları birbirine bağlayın.
 services: vpn-gateway
 author: cherylmc
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: cherylmc
 ms.openlocfilehash: eebe66ca038b31f23ca864b107816b8cf761b29c
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75860563"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-powershell"></a>PowerShell kullanarak sanal ağlar arası VPN ağ geçidi bağlantısı yapılandırma
@@ -21,14 +21,14 @@ Bu makale, sanal ağlar arası bağlantı türünü kullanarak sanal ağları ba
 Bu makaledeki adımlar Resource Manager dağıtım modeli için geçerlidir ve PowerShell kullanır. Ayrıca aşağıdaki listeden farklı bir seçenek belirtip farklı bir dağıtım aracı veya dağıtım modeli kullanarak da bu yapılandırmayı oluşturabilirsiniz:
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
-> * [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
+> * [Azure portalında](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
+> * [Powershell](vpn-gateway-vnet-vnet-rm-ps.md)
 > * [Azure CLI](vpn-gateway-howto-vnet-vnet-cli.md)
 > * [Azure portal (klasik)](vpn-gateway-howto-vnet-vnet-portal-classic.md)
 > * [Farklı dağıtım modellerini bağlama - Azure portalı](vpn-gateway-connect-different-deployment-models-portal.md)
 > * [Farklı dağıtım modellerini bağlama - PowerShell](vpn-gateway-connect-different-deployment-models-powershell.md)
 
-## <a name="about"></a>Sanal ağları bağlama hakkında
+## <a name="about-connecting-vnets"></a><a name="about"></a>Sanal ağları bağlama hakkında
 
 Sanal ağları bağlamanın birden çok yolu vardır. Aşağıdaki bölümlerde, sanal ağları bağlamak için farklı yollar açıklanmaktadır.
 
@@ -40,11 +40,11 @@ Sanal ağlar arası bağlantı yapılandırma, sanal ağları kolayca bağlaman�
 
 Karmaşık bir ağ yapılandırmasıyla çalışıyorsanız, sanal ağlarınızı, sanal ağlar arası bağlantı adımları yerine [Siteden Siteye](vpn-gateway-create-site-to-site-rm-powershell.md) adımlarını kullanarak bağlamayı tercih edebilirsiniz. Siteden Siteye adımlarını kullandığınızda, yerel ağ geçitlerini kendiniz oluşturup yapılandırırsınız. Her sanal ağa ait yerel ağ geçidi, diğer sanal ağa yerel bir site gibi davranır. Bunun yapılması, trafiği yönlendirmek için yerel ağ geçidine ait ek bir adres alanı belirtmenize olanak sağlar. Bir sanal ağın adres alanı değiştiğinde, değişimi yansıtmak için ona karşılık gelen yerel ağ geçidini güncelleştirmeniz gerekir. Otomatik olarak güncelleştirilmez.
 
-### <a name="vnet-peering"></a>Sanal ağ eşleme
+### <a name="vnet-peering"></a>VNet eşlemesi
 
 Sanal ağlarınızı, Sanal Ağ Eşleme kullanarak bağlamayı düşünebilirsiniz. Sanal ağ eşleme, bir VPN gateway kullanmadığından farklı kısıtlamaları vardır. Ayrıca, [sanal ağ eşleme fiyatlandırması](https://azure.microsoft.com/pricing/details/virtual-network), [Sanal Ağlar Arası VPN Gateway fiyatlandırmasından](https://azure.microsoft.com/pricing/details/vpn-gateway) farklı olarak hesaplanır. Daha fazla bilgi için bkz. [VNet eşlemesi](../virtual-network/virtual-network-peering-overview.md).
 
-## <a name="why"></a>Neden sanal ağdan sanal ağa bağlantı oluşturmalısınız?
+## <a name="why-create-a-vnet-to-vnet-connection"></a><a name="why"></a>Neden sanal ağdan sanal ağa bağlantı oluşturmalısınız?
 
 Sanal ağları şu sebeplerden dolayı sanal ağlar arası bağlantıyı kullanarak bağlamak isteyebilirsiniz:
 
@@ -52,38 +52,38 @@ Sanal ağları şu sebeplerden dolayı sanal ağlar arası bağlantıyı kullana
 
   * Kendi coğrafi çoğaltma veya eşitlemenizi, güvenli bağlantıyla İnternet’te uç noktalara gitmeden ayarlayabilirsiniz.
   * Azure Traffic Manager ve Load Balancer ile birçok Azure bölgesinde coğrafi yedeklilik imkanıyla yüksek oranda kullanılabilir iş yükü oluşturabilirsiniz. Buna önemli bir örnek olarak SQL Always On ile birden fazla Azure bölgesine yayılan Kullanılabilirlik Grupları’nı birlikte kurmak verilebilir.
-* **Yalıtım veya yönetim sınır bölgesel çok katmanlı uygulamalar**
+* **Yalıtım halinde veya yönetici sınırları içerisinde bulunan bölgesel çok katmanlı uygulamalar**
 
   * Yalıtım ve yönetim gereksinimlerinden dolayı aynı bölge içinde birbirlerine bağlı birden fazla sanal ağ ile çok katmanlı uygulamalar kurabilirsiniz.
 
 Hatta Sanal Ağdan Sanal Ağa iletişim çok siteli yapılandırmalarla bile birleştirilebilir. Bu özellik şirket içi ve şirket dışı bağlantıyla ağ içi bağlantıyı birleştiren ağ topolojileri kurabilmenize olanak sağlar.
 
-## <a name="steps"></a>Hangi sanal ağlar arası bağlantı adımlarını kullanmalıyım?
+## <a name="which-vnet-to-vnet-steps-should-i-use"></a><a name="steps"></a>Hangi sanal ağlar arası bağlantı adımlarını kullanmalıyım?
 
 Bu makalede iki farklı adım kümesi görürsünüz. Bir adım kümesi [Aynı abonelikte bulunan sanal ağlar](#samesub), biri ise [Farklı aboneliklerde bulunan sanal ağlar](#difsub) içindir.
 Kümeler arasındaki temel fark, farklı aboneliklerde bulunan sanal ağlar için bağlantıları yapılandırırken ayrı PowerShell oturumları kullanmanızın gerekmesidir. 
 
 Bu alıştırma için, yapılandırmaları birleştirebilir veya yalnızca birlikte çalışmak istediğiniz yapılandırmayı seçebilirsiniz. Tüm yapılandırmalar VNet-VNet bağlantı türünü kullanır. Ağ trafiği, birbirine doğrudan bağlı sanal ağlar arasında akar. Bu alıştırmada TestVNet4 trafiği TestVNet5’e yönlendirilmez.
 
-* [Aynı abonelikte bulunan sanal ağlar:](#samesub) Bu yapılandırmanın adımları TestVNet1 ve TestVNet4’ü kullanır.
+* [Aynı abonelikte bulunan VNet'ler](#samesub): Bu yapılandırmanın adımları TestVNet1 ve TestVNet4'ü kullanır.
 
   ![v2v diyagramı](./media/vpn-gateway-vnet-vnet-rm-ps/v2vrmps.png)
 
-* [Farklı abonelikte bulunan sanal ağlar:](#difsub) Bu yapılandırmanın adımları TestVNet1 ve TestVNet5’i kullanır.
+* [Farklı aboneliklerde bulunan VNet'ler](#difsub): Bu yapılandırmanın adımları TestVNet1 ve TestVNet5'i kullanır.
 
   ![v2v diyagramı](./media/vpn-gateway-vnet-vnet-rm-ps/v2vdiffsub.png)
 
-## <a name="samesub"></a>Aynı abonelikte olan Vnet'ler bağlanma
+## <a name="how-to-connect-vnets-that-are-in-the-same-subscription"></a><a name="samesub"></a>Aynı abonelikte bulunan sanal ağları bağlama
 
 ### <a name="before-you-begin"></a>Başlamadan önce
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-* Bir ağ geçidi oluşturmak için 45 dakika sürdüğü için Azure Cloud Shell bu alıştırma sırasında düzenli aralıklarla zaman aşımına uğrayacaktır. Cloud Shell, terminalin sol üst kısmındaki ' a tıklayarak yeniden başlatabilirsiniz. Terminali yeniden başlattığınızda herhangi bir değişkeni yeniden bildirdiğinizden emin olun.
+* Bir ağ geçidi oluşturmak 45 dakika kadar süreceği için, Azure Cloud Shell bu alıştırma sırasında düzenli aralıklarla zaman alacaktır. Terminalin sol üst kısmını tıklayarak Bulut Kabuğu'nu yeniden başlatabilirsiniz. Terminali yeniden başlattığınızda değişkenleri yeniden beyan ettiğinizden emin olun.
 
-* Azure PowerShell modülünün en son sürümünü yerel olarak yüklemeyi tercih ediyorsanız, bkz. [Azure PowerShell nasıl yüklenir ve yapılandırılır](/powershell/azure/overview).
+* Azure PowerShell modülünün en son sürümünü yerel olarak yüklemeyi tercih ederseniz, [Azure PowerShell'i nasıl yükleyeceğiniz ve yapılandıracağınız](/powershell/azure/overview)bölümüne bakın.
 
-### <a name="Step1"></a>1. adım -, IP adres aralıklarını planlama
+### <a name="step-1---plan-your-ip-address-ranges"></a><a name="Step1"></a>1. Adım - IP adresi aralığınızı planlama
 
 Aşağıdaki adımlarda kendi ağ geçidi alt ağları ve yapılandırmalarıyla birlikte iki sanal ağ oluşturursunuz. Daha sonra iki sanal ağ arasında bir VPN bağlantısı oluşturursunuz. Ağ yapılandırmanız için IP adres aralıklarını planlamanız önemlidir. Sanal ağ aralıklarınızın ya da yerel ağ aralıklarınızın hiçbir şekilde çakışmadığından emin olmalısınız. Bu örneklerde bir DNS sunucusu eklemiyoruz. Sanal ağlarınız için ad çözümlemesi istiyorsanız bkz. [Ad çözümlemesi](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
 
@@ -105,7 +105,7 @@ Aşağıdaki adımlarda kendi ağ geçidi alt ağları ve yapılandırmalarıyla
 * Connection(1to5): VNet1toVNet5 (Farklı aboneliklerde bulunan sanal ağlar için)
 * ConnectionType: VNet2VNet
 
-**Değerler TestVNet4 için:**
+**TestVNet4 için değerler:**
 
 * VNet Name: TestVNet4
 * TestVNet2: 10.41.0.0/16 & 10.42.0.0/16
@@ -121,11 +121,11 @@ Aşağıdaki adımlarda kendi ağ geçidi alt ağları ve yapılandırmalarıyla
 * ConnectionType: VNet2VNet
 
 
-### <a name="Step2"></a>Adım 2 - oluşturma ve TestVNet1 yapılandırma
+### <a name="step-2---create-and-configure-testvnet1"></a><a name="Step2"></a>Adım 2 - oluşturma ve TestVNet1 yapılandırma
 
 1. Abonelik ayarlarınızı doğrulayın.
 
-   Bilgisayarınızda PowerShell 'i yerel olarak çalıştırıyorsanız hesabınıza bağlanın. Azure Cloud Shell kullanıyorsanız, otomatik olarak bağlanırsınız.
+   PowerShell'i bilgisayarınızda yerel olarak çalıştırıyorsanız hesabınıza bağlanın. Azure Bulut Su Şur'u kullanıyorsanız, otomatik olarak bağlısınız.
 
    ```azurepowershell-interactive
    Connect-AzAccount
@@ -166,7 +166,7 @@ Aşağıdaki adımlarda kendi ağ geçidi alt ağları ve yapılandırmalarıyla
    ```azurepowershell-interactive
    New-AzResourceGroup -Name $RG1 -Location $Location1
    ```
-4. TestVNet1 için alt ağ yapılandırmalarını oluşturun. Bu örnekte TestVNet1 adlı bir sanal ağ ve üç alt ağ oluşturulmaktadır. Biri GatewaySubnet, biri FrontEnd, diğeri BackEnd’dir. Kendi değerlerinizi yerleştirirken ağ geçidi alt ağınızı özellikle GatewaySubnet olarak adlandırmanız önem taşır. Başka bir ad kullanırsanız ağ geçidi oluşturma işleminiz başarısız olur. Bu nedenle, aşağıdaki değişken aracılığıyla atanmaz.
+4. TestVNet1 için alt ağ yapılandırmalarını oluşturun. Bu örnekte TestVNet1 adlı bir sanal ağ ve üç alt ağ oluşturulmaktadır. Biri GatewaySubnet, biri FrontEnd, diğeri BackEnd’dir. Kendi değerlerinizi yerleştirirken ağ geçidi alt ağınızı özellikle GatewaySubnet olarak adlandırmanız önem taşır. Başka bir ad kullanırsanız ağ geçidi oluşturma işleminiz başarısız olur. Bu nedenle aşağıdaki değişken üzerinden atanmamıştır.
 
    Aşağıdaki örnekte daha önce belirlediğiniz değişkenler kullanılmaktadır. Bu örnekte ağ geçidi alt ağı bir /27 kullanmaktadır. /29 kadar küçük bir ağ geçidi alt ağı oluşturmak mümkün olsa da en az /28 veya /27’yi seçerek daha fazla adres içeren büyük bir alt ağ oluşturmanızı öneririz. Bu, gelecekte isteyebileceğiniz ek yapılandırmaları da içerecek yeteri kadar adres sağlayacaktır.
 
@@ -203,13 +203,13 @@ Aşağıdaki adımlarda kendi ağ geçidi alt ağları ve yapılandırmalarıyla
    -VpnType RouteBased -GatewaySku VpnGw1
    ```
 
-Komutları tamamladıktan sonra, bu ağ geçidinin oluşturulması 45 dakikaya kadar zaman alır. Azure Cloud Shell kullanıyorsanız, Cloud Shell terminalinin sol üst kısmında bulunan CloudShell oturumunuzu yeniden başlatabilir ve ardından TestVNet4 ' yi yapılandırabilirsiniz. TestVNet1 ağ geçidi tamamlanana kadar beklemeniz gerekmez.
+Komutları tamamladıktan sonra, bu ağ geçidini oluşturmak 45 dakika kadar sürer. Azure Bulut Shell kullanıyorsanız, Cloud Shell terminalinin sol üst kısmını tıklayarak CloudShell oturumunuzu yeniden başlatabilir ve ardından TestVNet4'ü yapılandırabilirsiniz. TestVNet1 ağ geçidi tamamlanana kadar beklemeniz gerekmez.
 
-### <a name="step-3---create-and-configure-testvnet4"></a>3\. Adım - TestVNet4’ü oluşturma ve yapılandırma
+### <a name="step-3---create-and-configure-testvnet4"></a>3. Adım - TestVNet4’ü oluşturma ve yapılandırma
 
 TestVNet1 yapılandırıldıktan sonra TestVNet4’ü oluşturun. Aşağıdaki adımları, verilen değerleri gerektiğinde kendi değerlerinizle değiştirerek takip edin.
 
-1. Değişkenlerinizi bağlayın ve bildirin. Değerleri, yapılandırma için kullanmak istediğiniz değerlerle değiştirdiğinizden emin olun.
+1. Bağlanın ve değişkenlerinizi bildirin. Değerleri, yapılandırma için kullanmak istediğiniz değerlerle değiştirdiğinizden emin olun.
 
    ```azurepowershell-interactive
    $RG4 = "TestRG4"
@@ -266,9 +266,9 @@ TestVNet1 yapılandırıldıktan sonra TestVNet4’ü oluşturun. Aşağıdaki a
    -VpnType RouteBased -GatewaySku VpnGw1
    ```
 
-### <a name="step-4---create-the-connections"></a>4\. Adım - Bağlantıları oluşturma
+### <a name="step-4---create-the-connections"></a>4. Adım - Bağlantıları oluşturma
 
-Her iki ağ geçidinin de tamamlanmasını bekleyin. Azure Cloud Shell oturumunuzu yeniden başlatın ve değerlerini yeniden bildirmek için 2. adımdaki değişkenleri kopyalayıp konsola yapıştırın.
+Her iki ağ geçidi tamamlanana kadar bekleyin. Azure Bulut BulutSu oturumunuzu yeniden başlatın ve değerleri yeniden bildirmek için Adım 2 ve Adım 3'ün başından itibaren değişkenleri kopyalayıp konsola yapıştırın.
 
 1. Her iki sanal ağ geçidini de alın.
 
@@ -292,23 +292,23 @@ Her iki ağ geçidinin de tamamlanmasını bekleyin. Azure Cloud Shell oturumunu
    ```
 4. Bağlantınızı doğrulayın. [Bağlantınızı doğrulama](#verify) bölümüne bakın.
 
-## <a name="difsub"></a>Farklı abonelikleri olan Vnet'ler bağlanma
+## <a name="how-to-connect-vnets-that-are-in-different-subscriptions"></a><a name="difsub"></a>Farklı aboneliklerde bulunan sanal ağlara bağlanma
 
-Bu senaryoda TestVNet1 ve TestVNet5’i bağlarsınız. TestVNet1 ve TestVNet5 farklı aboneliklerde bulunur. Aboneliklerin aynı Active Directory kiracısıyla ilişkilendirilmiş olması gerekmez.
+Bu senaryoda TestVNet1 ve TestVNet5’i bağlarsınız. TestVNet1 ve TestVNet5 farklı aboneliklerde yer eder. Aboneliklerin aynı Active Directory kiracısıyla ilişkilendirilmiş olması gerekmez.
 
 Bu adımlar ve önceki adım kümesi arasındaki fark, yapılandırma adımlarının bir kısmının ikinci abonelik bağlamında farklı bir PowerShell oturumunda tamamlanması gerektiğidir. Bu durum özellikle iki aboneliğin farklı kuruluşlara ait olduğu durumlarda geçerlidir.
 
-Bu alıştırmada değişen abonelik bağlamı nedeniyle, 8. adıma geldiğinizde Azure Cloud Shell kullanmak yerine PowerShell 'i yerel olarak kullanmayı daha kolay bulabilirsiniz.
+Bu alıştırmadaki abonelik bağlamını değiştirmeniz nedeniyle, Adım 8'e geldiğinizde Azure Bulut Kabuğunu kullanmak yerine PowerShell'i bilgisayarınızda yerel olarak kullanmayı daha kolay bulabilirsiniz.
 
-### <a name="step-5---create-and-configure-testvnet1"></a>5\. Adım - TestVNet1'i oluşturma ve yapılandırma
+### <a name="step-5---create-and-configure-testvnet1"></a>5. Adım - TestVNet1'i oluşturma ve yapılandırma
 
-TestVNet1'i ve TestVNet1 için VPN Ağ Geçidini oluşturup yapılandırmak için önceki bölümde bulunan [1. Adımı](#Step1) ve [2. Adımı](#Step2) tamamlamanız gerekir. Bu yapılandırma için önceki bölümdeki TestVNet4'ü oluşturmanız gerekmez, ancak oluştursanız dahi bu adımlarla herhangi bir çakışma ortaya çıkmaz. 1\. Adım'ı ve 2. Adım'ı tamamladıktan sonra 6. Adım'a geçerek TestVNet5'i oluşturun.
+TestVNet1'i ve TestVNet1 için VPN Ağ Geçidini oluşturup yapılandırmak için önceki bölümde bulunan [1. Adımı](#Step1) ve [2. Adımı](#Step2) tamamlamanız gerekir. Bu yapılandırma için önceki bölümdeki TestVNet4’ü oluşturmanız gerekmez, ancak oluşturursanız bu adımlarla çakışmaz. 1. Adım'ı ve 2. Adım'ı tamamladıktan sonra 6. Adım'a geçerek TestVNet5'i oluşturun.
 
-### <a name="step-6---verify-the-ip-address-ranges"></a>6\. Adım - IP adresi aralıklarını doğrulama
+### <a name="step-6---verify-the-ip-address-ranges"></a>6. Adım - IP adresi aralıklarını doğrulama
 
 Yeni sanal ağ olan TestVNet5’in IP adresi alanının kendi Sanal Ağ aralıklarınız veya yerel ağ geçidi aralıkları ile çakışmaması önemlidir. Bu örnekte sanal ağlar farklı kuruluşlara ait olabilir. Bu alıştırmada TestVNet5 için aşağıdaki değerleri kullanabilirsiniz:
 
-**Değerler TestVNet5 için:**
+**TestVNet5 için değerler:**
 
 * VNet Name: TestVNet5
 * Resource Group: TestRG5
@@ -323,7 +323,7 @@ Yeni sanal ağ olan TestVNet5’in IP adresi alanının kendi Sanal Ağ aralıkl
 * Connection: VNet5toVNet1
 * ConnectionType: VNet2VNet
 
-### <a name="step-7---create-and-configure-testvnet5"></a>7\. Adım - TestVNet5'i oluşturma ve yapılandırma
+### <a name="step-7---create-and-configure-testvnet5"></a>7. Adım - TestVNet5'i oluşturma ve yapılandırma
 
 Bu adım, yeni abonelik bağlamında tamamlanmalıdır. Bu kısım, aboneliğin sahibi olan farklı bir kuruluşun yöneticisi tarafından tamamlanabilir.
 
@@ -402,17 +402,17 @@ Bu adım, yeni abonelik bağlamında tamamlanmalıdır. Bu kısım, aboneliğin 
    -IpConfigurations $gwipconf5 -GatewayType Vpn -VpnType RouteBased -GatewaySku VpnGw1
    ```
 
-### <a name="step-8---create-the-connections"></a>8\. Adım - Bağlantıları oluşturma
+### <a name="step-8---create-the-connections"></a>8. Adım - Bağlantıları oluşturma
 
 Bu örnekte ağ geçitleri farklı aboneliklerde olduğundan bu adımı [1. Abonelik] ve [5. Abonelik] olarak iki PowerShell oturumuna ayıracağız.
 
-1. **[1. Abonelik]** 1. Abonelik için sanal ağ geçidini alın. Aşağıdaki örneği çalıştırmadan önce oturum açın ve 1. aboneliğe bağlanın:
+1. **[Abonelik 1]** Abonelik 1 için sanal ağ ağ geçidini alın. Aşağıdaki örneği çalıştırmadan önce oturum açın ve Abonelik 1'e bağlanın:
 
    ```azurepowershell-interactive
    $vnet1gw = Get-AzVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1
    ```
 
-   Aşağıdaki öğelerin çıktısını kopyalayın ve 5. Aboneliğin yöneticisine e-posta veya başka bir yöntemle gönderin.
+   Aşağıdaki öğelerin çıktısını kopyalayın ve 5. Aboneliğin yöneticisine e-posta veya başka bir yöntemle gönderin. 
 
    ```azurepowershell-interactive
    $vnet1gw.Name
@@ -427,7 +427,7 @@ Bu örnekte ağ geçitleri farklı aboneliklerde olduğundan bu adımı [1. Abon
    PS D:\> $vnet1gw.Id
    /subscriptions/b636ca99-6f88-4df4-a7c3-2f8dc4545509/resourceGroupsTestRG1/providers/Microsoft.Network/virtualNetworkGateways/VNet1GW
    ```
-2. **[5. Abonelik]** 5. Abonelik için sanal ağ geçidini alın. Aşağıdaki örneği çalıştırmadan önce oturum açın ve 5. aboneliğe bağlanın:
+2. **[5. Abonelik]** 5. Abonelik için sanal ağ geçidini alın. Aşağıdaki örneği çalıştırmadan önce oturum açın ve Abonelik 5'e bağlanın:
 
    ```azurepowershell-interactive
    $vnet5gw = Get-AzVirtualNetworkGateway -Name $GWName5 -ResourceGroupName $RG5
@@ -471,17 +471,17 @@ Bu örnekte ağ geçitleri farklı aboneliklerde olduğundan bu adımı [1. Abon
    New-AzVirtualNetworkGatewayConnection -Name $Connection51 -ResourceGroupName $RG5 -VirtualNetworkGateway1 $vnet5gw -VirtualNetworkGateway2 $vnet1gw -Location $Location5 -ConnectionType Vnet2Vnet -SharedKey 'AzureA1b2C3'
    ```
 
-## <a name="verify"></a>Nasıl bir bağlantıyı doğrulamak için
+## <a name="how-to-verify-a-connection"></a><a name="verify"></a>Bağlantı doğrulama
 
 [!INCLUDE [vpn-gateway-no-nsg-include](../../includes/vpn-gateway-no-nsg-include.md)]
 
 [!INCLUDE [verify connections powershell](../../includes/vpn-gateway-verify-connection-ps-rm-include.md)]
 
-## <a name="faq"></a>Sanal ağlar arası bağlantılar hakkında SSS
+## <a name="vnet-to-vnet-faq"></a><a name="faq"></a>Sanal ağlar arası bağlantılar hakkında SSS
 
 [!INCLUDE [vpn-gateway-vnet-vnet-faq](../../includes/vpn-gateway-faq-vnet-vnet-include.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Bağlantınız tamamlandıktan sonra sanal ağlarınıza sanal makineler ekleyebilirsiniz. Daha fazla bilgi için bkz. [Virtual Machines belgeleri](https://docs.microsoft.com/azure/).
+* Bağlantınız tamamlandıktan sonra sanal ağlarınıza sanal makineler ekleyebilirsiniz. Daha fazla bilgi için [Sanal Makineler belgelerine](https://docs.microsoft.com/azure/) bakın.
 * BGP hakkında bilgi edinmek için [BGP’ye Genel Bakış](vpn-gateway-bgp-overview.md) ve [BGP’yi yapılandırma](vpn-gateway-bgp-resource-manager-ps.md) makalelerine bakın.

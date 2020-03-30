@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı başlangıç: Python kullanarak Azure Data Factory oluşturma'
+title: "Hızlı başlangıç: Python'u kullanarak Azure Veri Fabrikası Oluşturma"
 description: Azure Blob depolamadaki bir konumdan başka bir konuma veri kopyalamak için bir Azure veri fabrikası oluşturun.
 services: data-factory
 documentationcenter: ''
@@ -14,35 +14,35 @@ ms.topic: quickstart
 ms.date: 01/22/2018
 ms.custom: seo-python-october2019
 ms.openlocfilehash: 3b8edd249b19a61f8c80eb5b8c9df25754d4f070
-ms.sourcegitcommit: 05b36f7e0e4ba1a821bacce53a1e3df7e510c53a
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78399507"
 ---
-# <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>Hızlı başlangıç: Python kullanarak veri fabrikası ve işlem hattı oluşturma
+# <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>Quickstart: Python kullanarak bir veri fabrikası ve ardışık kaynak oluşturma
 
-> [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
+> [!div class="op_single_selector" title1="Kullandığınız Veri Fabrikası hizmetisürümünü seçin:"]
 > * [Sürüm 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Geçerli sürüm](quickstart-create-data-factory-python.md)
 
-Bu hızlı başlangıçta Python kullanarak bir veri fabrikası oluşturursunuz. Bu veri fabrikasındaki işlem hattı, verileri Azure Blob depolama alanındaki bir klasörden başka bir klasöre kopyalar.
+Bu hızlı başlangıçta, Python kullanarak bir veri fabrikası oluşturursunuz. Bu veri fabrikasındaki ardışık işlem, verileri Azure Blob depolama sındaki bir klasörden başka bir klasöre kopyalar.
 
-Azure Data Factory, veri taşıma ve veri dönüştürmeyi düzenlemek ve otomatikleştirmek için veri odaklı iş akışları oluşturmanıza olanak tanıyan bulut tabanlı bir veri tümleştirme hizmetidir. Azure Data Factory kullanarak, işlem hatları olarak adlandırılan veri odaklı iş akışları oluşturabilir ve zamanlayabilirsiniz.
+Azure Veri Fabrikası, veri hareketi ve veri dönüşümlerini düzenlemek ve otomatikleştirmek için veri tabanlı iş akışları oluşturmanıza olanak tanıyan bulut tabanlı bir veri tümleştirme hizmetidir. Azure Veri Fabrikası'nı kullanarak, ardışık işler adı verilen veri tabanlı iş akışları oluşturabilir ve zamanlayabilirsiniz.
 
-İşlem hatları, farklı veri depolarından veri alabilir. İşlem hatları Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics ve Azure Machine Learning gibi işlem hizmetlerini kullanarak verileri işler veya dönüştürür. İşlem hatları, çıktı verilerini iş zekası (BI) uygulamaları için Azure SQL veri ambarı gibi veri depolarında yayımlar.
+Ardışık hatlar birbirinden farklı veri depolarından veri alabilir. Ardışık hatlar, Azure HDInsight Hadoop, Spark, Azure Veri Gölü Analitiği ve Azure Machine Learning gibi bilgi işlem hizmetlerini kullanarak verileri işlenir veya dönüştürür. Ardışık işler, iş zekası (BI) uygulamaları için Azure SQL Veri Ambarı gibi veri depolarına çıktı verileri yayımlar.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* Etkin aboneliği olan bir Azure hesabı. [Ücretsiz bir tane oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+* Etkin bir aboneliği olan bir Azure hesabı. [Ücretsiz bir tane oluşturun.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
 
-* [Python 3.4 +](https://www.python.org/downloads/).
+* [Python 3.4+](https://www.python.org/downloads/).
 
-* [Bir Azure depolama hesabı](../storage/common/storage-account-create.md).
+* [Bir Azure Depolama hesabı](../storage/common/storage-account-create.md).
 
 * [Azure Depolama Gezgini](https://storageexplorer.com/) (isteğe bağlı).
 
-* [Azure Active Directory bir uygulama](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application). Sonraki adımlarda kullanmak için aşağıdaki değerleri unutmayın: **uygulama kimliği**, **kimlik doğrulama anahtarı**ve **Kiracı kimliği**. Aynı makaledeki yönergeleri uygulayarak uygulamayı **katkıda bulunan** rolüne atayın.
+* [Azure Etkin Dizini'nde](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)bir uygulama. Daha sonraki adımlarda kullanılacak aşağıdaki değerlere dikkat edin: **uygulama kimliği,** **kimlik doğrulama anahtarı**ve kiracı **kimliği.** Aynı makalede talimatları izleyerek **Katılımcı** rolüne uygulama atayın.
 
 ## <a name="create-and-upload-an-input-file"></a>Giriş dosyası oluşturma ve yükleme
 
@@ -68,7 +68,7 @@ Azure Data Factory, veri taşıma ve veri dönüştürmeyi düzenlemek ve otomat
     pip install azure-mgmt-datafactory
     ```
 
-    [Data Factory Için Python SDK 'Sı](https://github.com/Azure/azure-sdk-for-python) Python 2,7, 3,3, 3,4, 3,5, 3,6 ve 3,7 'yi destekler.
+    [Veri Fabrikası için Python SDK](https://github.com/Azure/azure-sdk-for-python) Python 2.7, 3.3, 3.4, 3.5, 3.6 ve 3.7 destekler.
 
 ## <a name="create-a-data-factory-client"></a>Veri fabrikası istemcisi oluşturma
 
@@ -231,7 +231,7 @@ Aşağıdaki kodu **bir kopyalama etkinliği ile işlem hattı** oluşturan **Ma
 
 ## <a name="create-a-pipeline-run"></a>İşlem hattı çalıştırması oluşturma
 
-Aşağıdaki kodu **bir işlem hattı çalıştırması tetikleyen** **Main** yöntemine ekleyin.
+Aşağıdaki kodu **bir işlem hattı çalıştırması tetikleyen****Main** yöntemine ekleyin.
 
 ```python
     #Create a pipeline run.

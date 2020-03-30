@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Azure Active Directory ile otomatik Kullanıcı sağlama için 15Beş yapılandırma | Microsoft Docs'
-description: Kullanıcı hesaplarını otomatik olarak sağlamak ve devre dışı bırakmak için Azure Active Directory yapılandırmayı 15 beş 'a öğrenin.
+title: "Öğretici: Azure Active Directory ile otomatik kullanıcı sağlama için 155'i yapılandırın | Microsoft Dokümanlar"
+description: Azure Active Directory'yi otomatik olarak sağlama ve kullanıcı hesaplarını 15Five'a sağlama ve de-provision'ı için nasıl yapılandırıyarıştırmayı öğrenin.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,162 +16,162 @@ ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
 ms.openlocfilehash: f1f66a7b69048180bc41c8f2fa432598f00f7f09
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77059327"
 ---
-# <a name="tutorial-configure-15five-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlama için 15Beş yapılandırma
+# <a name="tutorial-configure-15five-for-automatic-user-provisioning"></a>Öğretici: Otomatik kullanıcı sağlama için 155'i yapılandırın
 
-Bu öğreticinin amacı, Azure AD 'yi, kullanıcıları ve/veya grupları 15Beş ' a otomatik olarak sağlamak ve devre dışı bırakmak üzere yapılandırmak üzere 15 beş ve Azure Active Directory (Azure AD) olarak gerçekleştirilecek adımları göstermektir.
+Bu öğreticinin amacı, Azure AD'yi kullanıcıları ve/veya grupları 15Five'a otomatik olarak sağlama ve sağlamadan çıkarmak üzere yapılandırmak için 15Beş ve Azure Etkin Dizini'nde (Azure AD) gerçekleştirilecek adımları göstermektir.
 
 > [!NOTE]
-> Bu öğreticide, Azure AD Kullanıcı sağlama hizmeti ' nin üzerine oluşturulmuş bir bağlayıcı açıklanmaktadır. Bu hizmetin ne yaptığını, nasıl çalıştığını ve sık sorulan soruları hakkında önemli ayrıntılar için bkz. [Azure Active Directory Ile SaaS uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../app-provisioning/user-provisioning.md).
+> Bu öğretici, Azure AD Kullanıcı Sağlama Hizmeti'nin üzerine inşa edilmiş bir bağlayıcıyı açıklar. Bu hizmetin ne yaptığı, nasıl çalıştığı ve sık sorulan sorular hakkında önemli ayrıntılar [için](../app-provisioning/user-provisioning.md)bkz.
 >
-> Bu bağlayıcı Şu anda genel önizleme aşamasındadır. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Bu bağlayıcı şu anda Genel Önizleme'de. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için, [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları'na](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)bakın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
+Bu öğreticide özetlenen senaryo, aşağıdaki ön koşullara sahip olduğunuzu varsayar:
 
 * Azure AD kiracısı.
-* [15 beş kiracı](https://www.15five.com/pricing/).
-* Yönetici izinlerine sahip 15 beş bir kullanıcı hesabı.
+* [Bir 155 kiracı](https://www.15five.com/pricing/).
+* Yönetici izinleri olan 15Five'daki bir kullanıcı hesabı.
 
-## <a name="assigning-users-to-15five"></a>15 beş 'e Kullanıcı atama
+## <a name="assigning-users-to-15five"></a>15Five'a kullanıcı atama
 
-Azure Active Directory seçili uygulamalara hangi kullanıcıların erişimi alacağını belirleyen *atama* adı verilen bir kavram kullanır. Otomatik Kullanıcı sağlama bağlamında, yalnızca Azure AD 'de bir uygulamaya atanmış olan kullanıcılar ve/veya gruplar eşitlenir.
+Azure Active Directory, hangi kullanıcıların seçili uygulamalara erişmesi gerektiğini belirlemek için *atamalar* adlı bir kavram kullanır. Otomatik kullanıcı sağlama bağlamında, yalnızca Azure AD'deki bir uygulamaya atanan kullanıcılar ve/veya gruplar eşitlenir.
 
-Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, Azure AD 'deki hangi kullanıcıların ve/veya grupların 15Beş 'a erişmesi gerektiğine karar vermeniz gerekir. Karar verdikten sonra buradaki yönergeleri izleyerek bu kullanıcıları ve/veya grupları 15 beş 'e atayabilirsiniz:
-* [Kurumsal uygulamaya Kullanıcı veya Grup atama](../manage-apps/assign-user-or-group-access-portal.md)
+Otomatik kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, Azure AD'deki hangi kullanıcıların ve/veya grupların 15Five'a erişmesi gerektiğine karar vermelisiniz. Karar verildikten sonra, bu kullanıcıları ve/veya grupları buradaki talimatları izleyerek 15Five'a atayabilirsiniz:
+* [Bir kurumsal uygulamaya kullanıcı veya grup atama](../manage-apps/assign-user-or-group-access-portal.md)
 
-## <a name="important-tips-for-assigning-users-to-15five"></a>15 beş 'e Kullanıcı atamaya yönelik önemli ipuçları
+## <a name="important-tips-for-assigning-users-to-15five"></a>15Five'a kullanıcı atamak için önemli ipuçları
 
-* Otomatik Kullanıcı sağlama yapılandırmasını test etmek için tek bir Azure AD kullanıcısının 15 milyon 'e atanması önerilir. Ek kullanıcılar ve/veya grupları daha sonra atanabilir.
+* Otomatik kullanıcı sağlama yapılandırmasını sınamak için tek bir Azure AD kullanıcısının 15Five'a atanması önerilir. Ek kullanıcılar ve/veya gruplar daha sonra atanabilir.
 
-* Bir kullanıcıyı 15Beş 'a atarken atama iletişim kutusunda uygulamaya özgü geçerli herhangi bir rolü (varsa) seçmeniz gerekir. **Varsayılan erişim** rolüne sahip kullanıcılar, sağlanmasından çıkarılır.
+* Bir kullanıcıyı 15Five'a atarken, atama iletişim kutusunda uygulamaya özgü geçerli bir rolü (varsa) seçmeniz gerekir. **Varsayılan Erişim** rolüne sahip kullanıcılar sağlama nın dışında tutulur.
 
-## <a name="setup-15five-for-provisioning"></a>Sağlama için 15 milyon kurulum
+## <a name="setup-15five-for-provisioning"></a>Kurulum 15Sağlama için beş
 
-Azure AD ile otomatik Kullanıcı sağlama için 15Beş yapılandırmadan önce, 15Beş üzerinde SCıM sağlamasını etkinleştirmeniz gerekir.
+Azure AD ile otomatik kullanıcı sağlama için 155'i yapılandırmadan önce, 15Five'da SCIM sağlamayı etkinleştirmeniz gerekir.
 
-1. [15 beş yönetici konsolunda](https://my.15five.com/)oturum açın. **Özellikler > tümleştirmelere**gidin.
+1. [15Five Yönetici Konsolunuzda](https://my.15five.com/)oturum açın. Özellikler **> Tümleştirmelerine**gidin.
 
     ![15Beş Yönetici Konsolu](media/15five-provisioning-tutorial/integration.png)
 
-2.  **SCIM 2,0**' ye tıklayın.
+2.  **SCIM 2.0'a**tıklayın.
 
     ![15Beş Yönetici Konsolu](media/15five-provisioning-tutorial/image00.png)
 
-3.  Bir **OAuth belirteci oluşturmak > SCIM tümleştirmesi**' ne gidin.
+3.  **SCIM tümleştirmesine gidin > OAuth belirteci oluşturun.**
 
-    ![15Beş SCıM Ekle](media/15five-provisioning-tutorial/image02.png)
+    ![155 SCIM ekle](media/15five-provisioning-tutorial/image02.png)
 
-4.  **SCIM 2,0 temel URL 'si** ve **erişim belirtecinin**değerlerini kopyalayın. Bu değer, Azure portal 15Beş uygulamanızın sağlama sekmesinde **kiracı URL 'si** ve **gizli belirteç** alanına girilir.
+4.  **SCIM 2.0 temel URL'si** ve **Access Token**değerlerini kopyalayın. Bu değer, Azure portalındaki 15Beş uygulamanızın Sağlama sekmesinde **Kiracı URL'si** ve Gizli **Belirteç** alanına girilir.
     
-    ![15Beş SCıM Ekle](media/15five-provisioning-tutorial/image03.png)
+    ![155 SCIM ekle](media/15five-provisioning-tutorial/image03.png)
 
-## <a name="add-15five-from-the-gallery"></a>Galeriden 15Beş ekleyin
+## <a name="add-15five-from-the-gallery"></a>Galeriden 15Beş ekle
 
-Azure AD ile otomatik Kullanıcı sağlamak üzere 15Beş yapılandırmak için, Azure AD uygulama galerisinden yönetilen SaaS uygulamaları listenize 15Beş eklemeniz gerekir.
+Azure AD ile otomatik kullanıcı sağlama için 155'i yapılandırmak için, yönetilen SaaS uygulamaları listenize Azure AD uygulama galerisinden 15Beş eklemeniz gerekir.
 
-**Azure AD uygulama galerisinden 15Beş eklemek için aşağıdaki adımları uygulayın:**
+**Azure AD uygulama galerisinden 15Beş eklemek için aşağıdaki adımları gerçekleştirin:**
 
-1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory**' i seçin.
+1. Azure **[portalında,](https://portal.azure.com)** soldaki gezinti panelinde **Azure Etkin Dizin'i**seçin.
 
-    ![Azure Active Directory düğmesi](common/select-azuread.png)
+    ![Azure Etkin Dizin düğmesi](common/select-azuread.png)
 
-2. **Kurumsal uygulamalar**' a gidin ve **tüm uygulamalar**' ı seçin.
+2. Kurumsal **uygulamalara**gidin ve ardından **Tüm uygulamaları**seçin.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+    ![Enterprise uygulamaları bıçak](common/enterprise-applications.png)
 
 3. Yeni bir uygulama eklemek için bölmenin üst kısmındaki **Yeni uygulama** düğmesini seçin.
 
-    ![Yeni Uygulama düğmesi](common/add-new-app.png)
+    ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **15beş**girin, sonuçlar panelinde **15** milyon seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
+4. Arama kutusuna **15Five**girin , sonuç panelinde **15Five'ı** seçin ve ardından uygulamayı eklemek için **Ekle** düğmesini tıklatın.
 
-    ![Sonuç listesinde 15 beş](common/search-new-app.png)
+    ![15Sonuç listesinde beş](common/search-new-app.png)
 
-## <a name="configuring-automatic-user-provisioning-to-15five"></a>Otomatik Kullanıcı sağlamayı 15 beş olarak yapılandırma 
+## <a name="configuring-automatic-user-provisioning-to-15five"></a>Otomatik kullanıcı sağlamayı 15Five'a yapılandırma 
 
-Bu bölümde, Azure AD sağlama hizmeti 'ni, Kullanıcı ve/veya grup atamalarını Azure AD 'de oluşturmak, güncelleştirmek ve devre dışı bırakmak için Azure AD sağlama hizmetini yapılandırma adımlarında kılavuzluk eder.
+Bu bölüm, Azure AD'deki kullanıcı ve/veya grup atamalarına dayalı olarak 15Beş'teki kullanıcıları ve/veya grupları oluşturmak, güncellemek ve devre dışı etmek için Azure AD sağlama hizmetini yapılandırma adımları boyunca size yol göstermektedir.
 
 > [!TIP]
-> Ayrıca, 15 [adet çoklu oturum açma öğreticisinde](15five-tutorial.md)sunulan yönergeleri Izleyerek, 15 mılyon için SAML tabanlı çoklu oturum açmayı etkinleştirmeyi de tercih edebilirsiniz. Çoklu oturum açma, otomatik Kullanıcı sağlamasından bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini karmaşıdirebilirler.
+> Ayrıca [15Five](15five-tutorial.md)Tek oturum açma öğreticisinde verilen talimatları izleyerek 15Five için SAML tabanlı tek oturum açmayı etkinleştirmeyi de seçebilirsiniz. Tek oturum açma, otomatik kullanıcı sağlamadan bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini tamamlar.
 
-### <a name="to-configure-automatic-user-provisioning-for-15five-in-azure-ad"></a>Azure AD 'de 15Beş için otomatik Kullanıcı sağlamayı yapılandırmak için:
+### <a name="to-configure-automatic-user-provisioning-for-15five-in-azure-ad"></a>Azure AD'de 15Beş için otomatik kullanıcı sağlama yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. [Azure portalında](https://portal.azure.com)oturum açın. **Kurumsal Uygulamaları**seçin, ardından **Tüm uygulamaları**seçin.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar bıçak](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **15Beş**' u seçin.
+2. Uygulamalar listesinde **155'i**seçin.
 
-    ![Uygulamalar listesindeki 15 beş bağlantı](common/all-applications.png)
+    ![Uygulamalar listesindeki 15beş bağlantı](common/all-applications.png)
 
 3. **Sağlama** sekmesini seçin.
 
     ![Sağlama sekmesi](common/provisioning.png)
 
-4. **Sağlama modunu** **Otomatik**olarak ayarlayın.
+4. Sağlama **Modunu** **Otomatik**olarak ayarlayın.
 
     ![Sağlama sekmesi](common/provisioning-automatic.png)
 
-5.  Yönetici kimlik bilgileri bölümünde, sırasıyla **kiracı URL 'si** ve **gizli belirteç** ' de bulunan **SCIM 2,0 temel URL 'sini ve erişim belirteci** değerlerini girin. Azure AD 'nin 155 ' e bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, 15 beş hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
+5.  Yönetici Kimlik Bilgileri bölümü altında, sırasıyla **Kiracı URL'sinde** ve **Gizli Belirteç'te** daha önce alınan **SCIM 2.0 temel URL'sini ve Erişim Belirteci** değerlerini girin. Azure AD'nin 15Five'a bağlanabilmesini sağlamak için **Test Bağlantısı'nı** tıklatın. Bağlantı başarısız olursa, 15Five hesabınızda Yönetici izinleri olduğundan emin olun ve yeniden deneyin.
 
-    ![Kiracı URL 'SI + belirteç](common/provisioning-testconnection-tenanturltoken.png)
+    ![Kiracı URL + Belirteç](common/provisioning-testconnection-tenanturltoken.png)
 
-6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder**' i işaretleyin.
+6. Bildirim **E-postası** alanında, sağlama hatası bildirimleri alması gereken bir kişinin veya grubun e-posta adresini girin ve onay kutusunu işaretleyin - **Bir hata oluştuğunda e-posta bildirimi gönderin.**
 
-    ![Bildirim e-postası](common/provisioning-notification-email.png)
+    ![Bildirim E-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet** düğmesine tıklayın.
+7. **Kaydet**'e tıklayın.
 
-8. **Eşlemeler** bölümünde, **Azure Active Directory kullanıcılarını 15 beş ile eşitler**' ı seçin.
+8. **Eşlemeler** bölümünde, **Azure Etkin Dizin Kullanıcılarını 15Beş'e Senkronize Et'i**seçin.
 
-    ![15Beş kullanıcı eşlemesi](media/15five-provisioning-tutorial/usermapping.png)
+    ![15Beş Kullanıcı Eşlemeleri](media/15five-provisioning-tutorial/usermapping.png)
 
-9. **Öznitelik eşleme** bölümünde Azure AD 'Den 15beş 'a eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri için 15 milyon içindeki kullanıcı hesaplarını eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
+9. **Öznitelik Eşleme** bölümünde Azure AD'den 15Five'a eşitlenen kullanıcı özniteliklerini gözden geçirin. **Eşleştirme** özellikleri olarak seçilen öznitelikler, güncelleştirme işlemleri için 15Five'daki kullanıcı hesaplarıyla eşleşecek şekilde kullanılır. Herhangi bir değişiklik yapmak için **Kaydet** düğmesini seçin.
 
-    ![15 beş kullanıcı özniteliği](media/15five-provisioning-tutorial/userattribute.png)
+    ![15Beş kullanıcı öznitelikleri](media/15five-provisioning-tutorial/userattribute.png)
 
-10. **Eşlemeler** bölümünde **Azure Active Directory gruplarını 15Beş olarak eşitler**' ı seçin.
+10. **Eşlemeler** bölümünde, **Azure Etkin Dizin Gruplarını 15Beş'e Senkronize Et'i**seçin.
 
-    ![15Beş grup eşlemesi](media/15five-provisioning-tutorial/groupmapping.png)
+    ![15Beş Grup Eşlemeleri](media/15five-provisioning-tutorial/groupmapping.png)
 
-11. **Öznitelik eşleme** bölümünde Azure AD 'Den 15beş 'a eşitlenen grup özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için 15 beş ' deki grupları eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
+11. **Öznitelik Eşleme** bölümünde Azure AD'den 15Five'a eşitlenen grup özniteliklerini gözden geçirin. **Eşleştirme** özellikleri olarak seçilen öznitelikler, güncelleştirme işlemleri için 15Five'daki grupları eşleştirmek için kullanılır. Herhangi bir değişiklik yapmak için **Kaydet** düğmesini seçin.
 
-    ![15 beş Grup özniteliği](media/15five-provisioning-tutorial/groupattribute.png)
+    ![15Beş Grup Öznitelikleri](media/15five-provisioning-tutorial/groupattribute.png)
 
-12. Kapsam filtrelerini yapılandırmak için, [kapsam filtresi öğreticisinde](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)sunulan aşağıdaki yönergelere bakın.
+12. Kapsam filtrelerini yapılandırmak [için, Kapsam](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)filtresi öğreticisinde sağlanan aşağıdaki yönergelere bakın.
 
-13. Azure AD sağlama hizmeti 'ni 15Beş için etkinleştirmek üzere **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin.
+13. 155 için Azure AD sağlama hizmetini etkinleştirmek **için, Ayarlar** bölümünde **Sağlama Durumunu** **Ayarı** olarak değiştirin.
 
-    ![Sağlama durumu değiştirildi](common/provisioning-toggle-on.png)
+    ![Geçiş Yapılan Sağlama Durumu](common/provisioning-toggle-on.png)
 
-14. **Ayarlar** bölümünde **kapsam** Içindeki Istenen değerleri seçerek 15beş 'a sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
+14. **Ayarlar** bölümünde **Kapsam'ta** istenen değerleri seçerek 15Beş'e sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
 
-    ![Sağlama kapsamı](common/provisioning-scope.png)
+    ![Sağlama Kapsamı](common/provisioning-scope.png)
 
-15. Sağlamaya hazırsanız **Kaydet**' e tıklayın.
+15. Hükmetmeye hazır olduğunuzda **Kaydet'i**tıklatın.
 
-    ![Sağlama yapılandırması kaydediliyor](common/provisioning-configuration-save.png)
+    ![Tasarruf Sağlama Yapılandırması](common/provisioning-configuration-save.png)
 
-    Bu işlem, **Ayarlar** bölümünde **kapsam** içinde tanımlanan tüm kullanıcılar ve/veya grupların ilk eşitlemesini başlatır. İlk eşitlemenin daha sonra, Azure AD sağlama hizmeti çalıştığı sürece yaklaşık 40 dakikada bir oluşan sonraki eşitlemeler yerine gerçekleştirilmesi daha uzun sürer. İlerleme durumunu izlemek için **eşitleme ayrıntıları** bölümünü kullanabilir ve Azure AD sağlama hizmeti tarafından 15 milyon üzerinde gerçekleştirilen tüm eylemleri açıklayan, sağlama etkinlik raporuna ilişkin bağlantıları izleyebilirsiniz.
+    Bu işlem, **Ayarlar** bölümünde **Kapsam'ta** tanımlanan tüm kullanıcıların ve/veya grupların ilk eşitlemisini başlatır. Azure AD sağlama hizmeti nin çalıştırıldığı sürece yaklaşık her 40 dakikada bir gerçekleşen sonraki eşitlemelerden daha uzun süren ilk eşitlemenin gerçeklemi daha uzun sürer. Kaydetme **Ayrıntıları** bölümünü, ilerlemeyi izlemek ve Azure AD sağlama hizmeti tarafından 15Five'ta gerçekleştirilen tüm eylemleri açıklayan sağlama etkinlik raporuna bağlı bağlantıları izlemek için kullanabilirsiniz.
 
-    Azure AD sağlama günlüklerinin nasıl okunduğu hakkında daha fazla bilgi için bkz. [Otomatik Kullanıcı hesabı sağlamayı raporlama](../app-provisioning/check-status-user-account-provisioning.md)
+    Azure AD sağlama günlüklerini nasıl okuyabilirsiniz hakkında daha fazla bilgi için bkz: [Otomatik kullanıcı hesabı sağlama hakkında Raporlama](../app-provisioning/check-status-user-account-provisioning.md)
     
-## <a name="connector-limitations"></a>Bağlayıcı sınırlamaları
+## <a name="connector-limitations"></a>Konektör sınırlamaları
 
-* 15Beş, kullanıcılar için sabit silmeleri desteklemez.
+* 15Five kullanıcılar için sert silmeleri desteklemez.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](../app-provisioning/configure-automatic-user-provisioning-portal.md).
+* [Kurumsal Uygulamalar için kullanıcı hesabı sağlamayı yönetme.](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Günlükleri incelemeyi ve sağlama etkinliğinde rapor almayı öğrenin](../app-provisioning/check-status-user-account-provisioning.md).
+* [Günlükleri nasıl inceleyip sağlama etkinliği yle ilgili raporlar alacağınızı öğrenin.](../app-provisioning/check-status-user-account-provisioning.md)

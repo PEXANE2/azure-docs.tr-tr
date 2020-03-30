@@ -1,5 +1,5 @@
 ---
-title: Azure sanal makine ölçek kümelerine genel bakış
+title: Azure sanal makine ölçeği ne genel bakış ayarlar
 description: Azure sanal makine ölçek kümeleri ve uygulamalarınızın otomatik olarak nasıl ölçeklendirildiği hakkında bilgi edinin
 author: mayanknayar
 tags: azure-resource-manager
@@ -9,10 +9,10 @@ ms.custom: mvc
 ms.date: 09/26/2019
 ms.author: manayar
 ms.openlocfilehash: e6201f9ac2e9b813de5a4622fc7996eb1202a164
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76273699"
 ---
 # <a name="what-are-virtual-machine-scale-sets"></a>Sanal makine ölçek kümeleri nedir?
@@ -38,8 +38,8 @@ Azure sanal makine ölçek kümeleri, birçok sanal makinede çalıştırılan u
     - Bir yandan otomatik ölçeklendirme, talep düşükken uygulamanızı çalıştıran gereksiz sanal makine örneği sayısını en aza indirirken, diğer yandan da talep arttıkça müşteriler kabul edilebilir performans düzeyi elde etmeye devam eder ve otomatik olarak ek sanal makine örnekleri eklenir. Bu yetenek gerektiğinde maliyetlerin düşürülmesine ve etkili şekilde Azure kaynakları oluşturulmasına yardımcı olur.
 
 - **Büyük ölçekte çalışma**
-    - Ölçek kümeleri, 1000 adede kadar sanal makine örneğini destekler. Kendi özel VM görüntülerinizi oluşturur ve karşıya yüklerseniz, sınır 600 sanal makine örnekleridir.
-    - Üretim iş yükleri ile en iyi performansı elde etmek için [Azure yönetilen diskleri](../virtual-machines/windows/managed-disks-overview.md)kullanın.
+    - Ölçek kümeleri, 1000 adede kadar sanal makine örneğini destekler. Kendi özel VM resimlerinizi oluşturup yüklerseniz, sınır 600 VM örneğidir.
+    - Üretim iş yükleriyle en iyi performansı elde etmek için [Azure Yönetilen Diskler'i](../virtual-machines/windows/managed-disks-overview.md)kullanın.
 
 
 ## <a name="differences-between-virtual-machines-and-scale-sets"></a>Sanal makineler ile ölçek kümeleri arasındaki farklar
@@ -56,9 +56,9 @@ Azure sanal makine ölçek kümeleri, birçok sanal makinede çalıştırılan u
 
 ## <a name="how-to-monitor-your-scale-sets"></a>Ölçek kümelerinizi izleme
 
-Basit bir ekleme işlemine sahip [VM'ler için Azure izleyici](../azure-monitor/insights/vminsights-overview.md)kullanın ve ölçek kümesindeki VM 'LERDEN önemli CPU, bellek, disk ve ağ performans sayaçları koleksiyonunu otomatikleştirin. Ayrıca, ölçek kümelerinizin kullanılabilirliği ve performansına odaklanmaya yardımcı olan ek izleme özellikleri ve önceden tanımlanmış görselleştirmeler de içerir.
+Basit bir onboarding işlemi olan ve ölçek setinizdeki VM'lerden önemli CPU, bellek, disk ve ağ performans sayaçlarının koleksiyonunu otomatikleştiren [VM'ler için Azure Monitörünü](../azure-monitor/insights/vminsights-overview.md)kullanın. Ayrıca, ölçek kümelerinizin kullanılabilirliğine ve performansına odaklanmanıza yardımcı olan ek izleme özellikleri ve önceden tanımlanmış görselleştirmeler de içerir.
 
-Sayfa görünümleri, uygulama istekleri ve özel durumlar dahil olmak üzere uygulamanız hakkında ayrıntılı bilgi toplamak için Application Insights ile [sanal makine ölçek kümesi uygulamanız](../azure-monitor/app/azure-vm-vmss-apps.md) için izlemeyi etkinleştirin. Kullanıcı trafiğinin benzetimini yapmak için bir [Kullanılabilirlik testi](../azure-monitor/app/monitor-web-app-availability.md) yapılandırarak uygulamanızın kullanılabilirliğini daha da doğrulayın.
+Sayfa görünümleri, uygulama istekleri ve özel durumlar da dahil olmak üzere uygulamanız hakkında ayrıntılı bilgi toplamak için Application Insights ile [sanal makine ölçeği ayar uygulamanızın](../azure-monitor/app/azure-vm-vmss-apps.md) izlenmesini etkinleştirin. Kullanıcı trafiğini simüle etmek için [kullanılabilirlik testini](../azure-monitor/app/monitor-web-app-availability.md) yapılandırarak uygulamanızın kullanılabilirliğini daha da doğrulayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Başlamak için, Azure portalında ilk sanal makine ölçek kümenizi oluşturun.

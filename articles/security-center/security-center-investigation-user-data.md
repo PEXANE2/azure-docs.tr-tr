@@ -1,6 +1,6 @@
 ---
-title: Azure Güvenlik Merkezi araştırmada bulunan Kullanıcı verilerini yönetme
-description: " Azure Güvenlik Merkezi 'nin araştırma özelliğinde bulunan Kullanıcı verilerini yönetmeyi öğrenin. "
+title: Azure Güvenlik Merkezi soruşturmasında bulunan kullanıcı verilerini yönetme
+description: " Azure Güvenlik Merkezi'nin araştırma özelliğinde bulunan kullanıcı verilerini nasıl yönetebilirsiniz öğrenin. "
 services: operations-management-suite
 documentationcenter: na
 author: memildin
@@ -14,38 +14,38 @@ ms.workload: na
 ms.date: 11/20/2018
 ms.author: memildin
 ms.openlocfilehash: 9e4c6577f0b8b18aff343ac54b31ff292632f5d0
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75979236"
 ---
-# <a name="manage-user-data-found-in-an-azure-security-center-investigation"></a>Azure Güvenlik Merkezi araştırmada bulunan Kullanıcı verilerini yönetme
-Bu makalede, Azure Güvenlik Merkezi 'nin araştırma özelliğinde bulunan Kullanıcı verilerinin nasıl yönetileceği hakkında bilgi verilmektedir. Araştırma verileri [Azure izleyici günlüklerinde](../log-analytics/log-analytics-overview.md) depolanır ve Güvenlik Merkezi 'nde gösterilir. Kullanıcı verilerini yönetmek, verileri silme veya dışa aktarma olanağını içerir.
+# <a name="manage-user-data-found-in-an-azure-security-center-investigation"></a>Azure Güvenlik Merkezi soruşturmasında bulunan kullanıcı verilerini yönetme
+Bu makalede, Azure Güvenlik Merkezi'nin araştırma özelliğinde bulunan kullanıcı verilerinin nasıl yönetilenekadar yönetilene ilişkin bilgiler verilmektedir. Araştırma verileri Azure [Monitor günlüklerinde](../log-analytics/log-analytics-overview.md) depolanır ve Güvenlik Merkezi'nde açığa çıkarır. Kullanıcı verilerini yönetmek, verileri silme veya dışa aktarma olanağı nı içerir.
 
 [!INCLUDE [gdpr-intro-sentence.md](../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="searching-for-and-identifying-personal-data"></a>Kişisel verileri arama ve tanımlama
-Azure portal, güvenlik merkezi 'nin [Araştırma özelliğini](../security-center/security-center-investigation.md) kullanarak kişisel verileri arayabilirsiniz. Araştırma özelliği **güvenlik uyarıları**altında bulunabilir.
+Azure portalında, kişisel verileri aramak için Güvenlik Merkezi'nin [araştırma özelliğini](../security-center/security-center-investigation.md) kullanabilirsiniz. Araştırma özelliği Güvenlik **Uyarıları**altında kullanılabilir.
 
-Araştırma özelliği, **varlıklar** sekmesinde tüm varlıkları, Kullanıcı bilgilerini ve verileri gösterir.
+Araştırma özelliği, **Varlıklar** sekmesi altındaki tüm varlıkları, kullanıcı bilgilerini ve verileri gösterir.
 
 ## <a name="securing-and-controlling-access-to-personal-information"></a>Kişisel bilgilere erişimi güvenli hale getirme ve denetleme
-Okuyucu, sahip, katkıda bulunan veya hesap yöneticisinin rolünü atayan bir güvenlik merkezi kullanıcısına araç içindeki müşteri verilerine erişim sağlayabilir.
+Okuyucu, Sahip, Katkıda Bulunan veya Hesap Yöneticisi rolünü atadığı bir Güvenlik Merkezi kullanıcısı, araç içindeki müşteri verilerine erişebilir.
 
-Okuyucu, sahip ve katkıda bulunan rolleri hakkında daha fazla bilgi edinmek için bkz. [Azure rol tabanlı erişim denetimi Için yerleşik roller](../role-based-access-control/built-in-roles.md) . Hesap Yöneticisi rolü hakkında daha fazla bilgi edinmek için bkz. [Azure abonelik yöneticileri](../cost-management-billing/manage/add-change-subscription-administrator.md) .
+Okuyucu, Sahip ve Katılımcı rolleri hakkında daha fazla bilgi edinmek [için Azure rol tabanlı erişim denetimi için yerleşik rollere](../role-based-access-control/built-in-roles.md) bakın. Hesap Yöneticisi rolü hakkında daha fazla bilgi edinmek için [Azure abonelik yöneticilerine](../cost-management-billing/manage/add-change-subscription-administrator.md) bakın.
 
 ## <a name="deleting-personal-data"></a>Kişisel verileri silme
-Sahip, katkıda bulunan veya hesap yöneticisinin rolünü atayan bir güvenlik merkezi kullanıcısına araştırma bilgileri silinebilir.
+Sahibi, Katılımcısı veya Hesap Yöneticisi rolünü atadığı bir Güvenlik Merkezi kullanıcısı, soruşturma bilgilerini silebilir.
 
-Bir araştırmayı silmek için Azure Resource Manager REST API `DELETE` isteği gönderebilirsiniz:
+Bir araştırmayı silmek için `DELETE` Azure Kaynak Yöneticisi REST API'sine bir istek gönderebilirsiniz:
 
 ```HTTP
 DELETE
 https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/features/security/incidents/{incidentName}
 ```
 
-`incidentName` girişi, tüm olaylar `GET` isteği kullanılarak listelenerek bulunabilir:
+Giriş, `incidentName` bir `GET` istek kullanarak tüm olayları listeleyerek bulunabilir:
 
 ```HTTP
 GET
@@ -53,8 +53,8 @@ https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{reso
 ```
 
 ## <a name="exporting-personal-data"></a>Kişisel verileri dışarı aktarma
-Sahip, katkıda bulunan veya hesap yöneticisinin rolünü atayan bir güvenlik merkezi kullanıcısına araştırma bilgilerini dışarı aktarabilirsiniz. Araştırma bilgilerini dışarı aktarmak için **varlıklar** sekmesine giderek ilgili bilgileri kopyalayıp yapıştırın.
+Sahibi, Katılımcısı veya Hesap Yöneticisi rolünü atadığı bir Güvenlik Merkezi kullanıcısı, araştırma bilgilerini dışa aktarabilir. Soruşturma bilgilerini dışa aktarmak için, ilgili bilgileri kopyalamak ve yapıştırmak için **Varlıklar** sekmesine gidin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Kullanıcı verilerini yönetme hakkında daha fazla bilgi için bkz. [Azure Güvenlik Merkezi 'nde Kullanıcı verilerini yönetme](security-center-privacy.md).
-Azure Izleyici günlüklerinde özel verileri silme hakkında daha fazla bilgi edinmek için bkz. [özel verileri dışarı aktarma ve silme](../azure-monitor/platform/personal-data-mgmt.md#how-to-export-and-delete-private-data).
+Kullanıcı verilerini yönetme hakkında daha fazla bilgi için azure [güvenlik merkezinde kullanıcı verilerini yönet'](security-center-privacy.md)e bakın.
+Azure Monitor günlüklerinde özel verileri silme hakkında daha fazla bilgi edinmek için [özel verileri nasıl dışa aktarıp silebilirsiniz](../azure-monitor/platform/personal-data-mgmt.md#how-to-export-and-delete-private-data)bölümüne bakın.

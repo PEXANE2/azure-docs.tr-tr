@@ -1,6 +1,6 @@
 ---
-title: 'Hızlı başlangıç: Azure kuyruk depolama kitaplığı V12-JavaScript'
-description: Kuyruk oluşturmak ve kuyruğa ileti eklemek için Azure kuyruğu JavaScript V12 kitaplığı 'nı nasıl kullanacağınızı öğrenin. Ardından, sıradaki iletileri okumayı ve silmeyi öğreneceksiniz. Ayrıca, bir kuyruğu silmeyi de öğreneceksiniz.
+title: 'Hızlı başlangıç: Azure Sıra depolama kitaplığı v12 - JavaScript'
+description: Kuyruk oluşturmak ve kuyruğa ileti eklemek için Azure Queue JavaScript v12 kitaplığını nasıl kullanacağınızı öğrenin. Ardından, sıradaki iletileri nasıl okuyup sildiğinizi öğrenirsiniz. Ayrıca bir sırayı nasıl sildiğinizi de öğreneceksiniz.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 12/13/2019
@@ -8,41 +8,41 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
 ms.openlocfilehash: 59a5308d2c0a1fa2e1f38f2fe3da3a2cc29448be
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78199793"
 ---
-# <a name="quickstart-azure-queue-storage-client-library-v12-for-javascript"></a>Hızlı başlangıç: JavaScript için Azure kuyruk depolama istemci kitaplığı V12
+# <a name="quickstart-azure-queue-storage-client-library-v12-for-javascript"></a>Quickstart: JavaScript için Azure Queue depolama istemcisi kitaplığı v12
 
-JavaScript için Azure kuyruk depolama istemci kitaplığı sürüm 12 ile çalışmaya başlayın. Azure kuyruk depolaması, daha sonra almak ve işlemek üzere çok sayıda ileti depolamaya yönelik bir hizmettir. Paketi yüklemek ve temel görevler için örnek kodu denemek üzere bu adımları izleyin.
+JavaScript için Azure Queue depolama istemcisi kitaplığı sürüm 12 ile başlayın. Azure Sıra depolama, daha sonra alma ve işleme için çok sayıda ileti depolamak için bir hizmettir. Paketi yüklemek ve temel görevler için örnek kodu denemek için aşağıdaki adımları izleyin.
 
-JavaScript için Azure kuyruk depolama istemci kitaplığı V12 ' nı kullanarak şunları yapın:
+JavaScript için Azure Kuyruk depolama istemcisi v12'yi kullanın:
 
 * Bir kuyruk oluşturma
-* Bir kuyruğa ileti ekleme
+* Kuyruğa ileti ekleme
 * Kuyruktaki iletilere göz atın
 * Kuyruktaki bir iletiyi güncelleştirme
 * Kuyruktan ileti alma
-* Kuyruktaki iletileri silme
+* İletileri kuyruktan silme
 * Bir kuyruk silme
 
-[API başvuru belgeleri](https://docs.microsoft.com/javascript/api/@azure/storage-queue/) | [kitaplığı kaynak kodu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue) | [paketi (düğüm paketi Yöneticisi)](https://www.npmjs.com/package/@azure/storage-queue) | [örnekleri](https://docs.microsoft.com/azure/storage/common/storage-samples-javascript?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
+[API referans belgeleri](https://docs.microsoft.com/javascript/api/@azure/storage-queue/) | [Kütüphane kaynak kodu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue) | [Paketi (Düğüm Paket Yöneticisi)](https://www.npmjs.com/package/@azure/storage-queue) | [Örnekleri](https://docs.microsoft.com/azure/storage/common/storage-samples-javascript?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
-* Azure depolama hesabı- [depolama hesabı oluşturma](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
-* İşletim sisteminiz için geçerli [Node. js](https://nodejs.org/en/download/) .
+* Azure aboneliği - [ücretsiz bir abonelik oluşturun](https://azure.microsoft.com/free/)
+* Azure depolama hesabı - [bir depolama hesabı oluşturma](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
+* İşletim sisteminiz için geçerli [Düğüm.js.](https://nodejs.org/en/download/)
 
-## <a name="setting-up"></a>Ayarlanıyor
+## <a name="setting-up"></a>Ayarlama
 
-Bu bölümde, bir projeyi, JavaScript için Azure kuyruk depolama istemci kitaplığı V12 ile çalışacak şekilde hazırlama adımları gösterilmektedir.
+Bu bölüm, JavaScript için Azure Queue depolama istemcisi kitaplığı v12 ile çalışmak üzere bir proje hazırlamakonusunda size yol sunar.
 
 ### <a name="create-the-project"></a>Proje oluşturma
 
-Kuyruklar adlı bir Node. js uygulaması oluşturma *-hızlı başlangıç-V12*.
+*Kuyruklar-quickstart-v12*adlı bir Düğüm.js uygulaması oluşturun.
 
 1. Konsol penceresinde (cmd, PowerShell veya Bash gibi), proje için yeni bir dizin oluşturun.
 
@@ -50,13 +50,13 @@ Kuyruklar adlı bir Node. js uygulaması oluşturma *-hızlı başlangıç-V12*.
     mkdir queues-quickstart-v12
     ```
 
-1. Yeni oluşturulan *kuyruklara geç hızlı başlangıç-V12* dizini.
+1. Yeni oluşturulan *kuyruklar-quickstart-v12* dizinine geçin.
 
     ```console
     cd queues-quickstart-v12
     ```
 
-1. *Package. JSON*adlı yeni bir metin dosyası oluşturun. Bu dosya Node. js projesini tanımlar. Bu dosyayı *Kuyruklar-QuickStart-V12* dizinine kaydedin. Dosyanın içeriği aşağıdadır:
+1. *package.json*adlı yeni bir metin dosyası oluşturun. Bu dosya Düğüm.js projesini tanımlar. Bu dosyayı *kuyruklar-quickstart-v12* dizinine kaydedin. İşte dosyanın içeriği:
 
     ```json
     {
@@ -77,27 +77,27 @@ Kuyruklar adlı bir Node. js uygulaması oluşturma *-hızlı başlangıç-V12*.
     }
     ```
 
-    İsterseniz `author` alanı için kendi adınızı yerleştirebilirsiniz.
+    İstersen sahaya kendi adını `author` koyabilirsin.
 
-### <a name="install-the-package"></a>Paketi yükler
+### <a name="install-the-package"></a>Paketi yükleyin
 
-*Kuyruklar-QuickStart-V12* dizininde olmaya devam ederken, `npm install` komutunu kullanarak JavaScript Için Azure kuyruk depolama istemci Kitaplığı ' nı yükleyebilirsiniz.
+Kuyruklarda hala *hızlı başlat-v12* dizinindeyken, komutu kullanarak JavaScript paketi için Azure `npm install` Kuyruk depolama istemcisi kitaplığını yükleyin.
 
 ```console
 npm install
 ```
 
- Bu komut *Package. JSON* dosyasını okur ve JavaScript paketi Için Azure kuyruk depolama istemci kitaplığı V12 ve bağımlı olduğu tüm kitaplıkları kurar.
+ Bu komut *package.json* dosyasını okur ve JavaScript paketi için Azure Queue depolama istemcisi kitaplığını v12'yi ve bağlı olduğu tüm kitaplıkları yükler.
 
 ### <a name="set-up-the-app-framework"></a>Uygulama çerçevesini ayarlama
 
 Proje dizininden:
 
-1. Kod Düzenleyicinizde başka bir yeni metin dosyası açın
-1. Azure ve Node. js modüllerini yüklemek için `require` çağrıları ekleme
-1. Çok temel özel durum işleme dahil olmak üzere programın yapısını oluşturma
+1. Kod düzenleyicinizde başka bir yeni metin dosyası açma
+1. Azure `require` ve Node.js modüllerini yüklemek için arama ekleme
+1. Çok temel özel durum işleme de dahil olmak üzere program için yapı oluşturma
 
-    Kod aşağıdaki gibidir:
+    İşte kod:
 
     ```javascript
     const { QueueClient } = require("@azure/storage-queue");
@@ -112,46 +112,46 @@ Proje dizininden:
 
     ```
 
-1. Yeni dosyayı *Kuyruklar-QuickStart-V12* dizinine *Queues-QuickStart-v12. js* olarak kaydedin.
+1. Yeni dosyayı *kuyruklar-quickstart-v12.js* olarak *sıralar-quickstart-v12* dizininde kaydedin.
 
 [!INCLUDE [storage-quickstart-credentials-include](../../../includes/storage-quickstart-credentials-include.md)]
 
 ## <a name="object-model"></a>Nesne modeli
 
-Azure Kuyruk depolama, çok sayıda iletiyi depolamaya yönelik bir hizmettir. Kuyruk iletisi boyutu 64 KB 'ye kadar olabilir. Bir kuyruk, depolama hesabının toplam kapasite sınırına kadar milyonlarca ileti içerebilir. Kuyruklar genellikle zaman uyumsuz olarak işlenecek iş biriktirme listesi oluşturmak için kullanılır. Kuyruk depolama, üç tür kaynak sunar:
+Azure Kuyruk depolama, çok sayıda iletiyi depolamaya yönelik bir hizmettir. Bir sıra iletisi 64 KB boyutuna kadar olabilir. Bir sıra, bir depolama hesabının toplam kapasite sınırına kadar milyonlarca ileti içerebilir. Kuyruklar genellikle eşzamanlı olarak işlemek için bir çalışma biriktirme listesi oluşturmak için kullanılır. Sıra depolama üç tür kaynak sunar:
 
 * Depolama hesabı
-* Depolama hesabındaki bir kuyruk
-* Kuyruktaki iletiler
+* Depolama hesabında bir sıra
+* Sıra içindeki iletiler
 
 Aşağıdaki diyagramda bu kaynaklar arasındaki ilişki gösterilmektedir.
 
-![Kuyruk depolama mimarisi diyagramı](./media/storage-queues-introduction/queue1.png)
+![Sıra depolama mimarisi diyagramı](./media/storage-queues-introduction/queue1.png)
 
-Şu kaynaklarla etkileşim kurmak için aşağıdaki JavaScript sınıflarını kullanın:
+Bu kaynaklarla etkileşimde kalmak için aşağıdaki JavaScript sınıflarını kullanın:
 
-* [QueueServiceClient](https://docs.microsoft.com/javascript/api/@azure/storage-queue/queueserviceclient): `QueueServiceClient` Depolama hesabınızdaki tüm kuyrukları yönetmenizi sağlar.
-* [Queueclient](https://docs.microsoft.com/javascript/api/@azure/storage-queue/queueclient): `QueueClient` sınıfı, tek bir kuyruğu ve iletilerini yönetmenizi ve düzenlemenizi sağlar.
-* [Queuemessage](https://docs.microsoft.com/javascript/api/@azure/storage-queue/queuemessage): `QueueMessage` sınıfı, bir kuyrukta [receivemessages](https://docs.microsoft.com/javascript/api/@azure/storage-queue/queueclient?view=azure-node-latest#receivemessages-queuereceivemessageoptions-) çağrılırken döndürülen ayrı nesneleri temsil eder.
+* [QueueServiceClient](https://docs.microsoft.com/javascript/api/@azure/storage-queue/queueserviceclient): `QueueServiceClient` Depolama hesabınızdaki tüm kuyrukları yönetmenize olanak tanır.
+* [QueueClient](https://docs.microsoft.com/javascript/api/@azure/storage-queue/queueclient): `QueueClient` Sınıf, tek bir sırayı ve iletilerini yönetmenize ve işlemenize olanak tanır.
+* [QueueMessage](https://docs.microsoft.com/javascript/api/@azure/storage-queue/queuemessage): `QueueMessage` Sınıf, bir sırada [receiveMessage'ları](https://docs.microsoft.com/javascript/api/@azure/storage-queue/queueclient?view=azure-node-latest#receivemessages-queuereceivemessageoptions-) ararken döndürülen tek tek nesneleri temsil eder.
 
 ## <a name="code-examples"></a>Kod örnekleri
 
-Bu örnek kod parçacıkları, JavaScript için Azure kuyruk depolama istemci kitaplığı ile aşağıdaki eylemleri nasıl yapılacağını gösterir:
+Bu örnek kod parçacıkları, JavaScript için Azure Kuyruk depolama istemcisi kitaplığıyla aşağıdaki işlemleri nasıl yapacağınızı gösterir:
 
-* [Bağlantı dizesini al](#get-the-connection-string)
-* [Sıra oluşturma](#create-a-queue)
-* [Bir kuyruğa ileti ekleme](#add-messages-to-a-queue)
+* [Bağlantı dizesini alma](#get-the-connection-string)
+* [Bir kuyruk oluşturma](#create-a-queue)
+* [Kuyruğa ileti ekleme](#add-messages-to-a-queue)
 * [Kuyruktaki iletilere göz atın](#peek-at-messages-in-a-queue)
 * [Kuyruktaki bir iletiyi güncelleştirme](#update-a-message-in-a-queue)
 * [Kuyruktan ileti alma](#receive-messages-from-a-queue)
-* [Kuyruktaki iletileri silme](#delete-messages-from-a-queue)
-* [Kuyruğu silme](#delete-a-queue)
+* [İletileri kuyruktan silme](#delete-messages-from-a-queue)
+* [Bir kuyruk silme](#delete-a-queue)
 
 ### <a name="get-the-connection-string"></a>Bağlantı dizesini alma
 
-Aşağıdaki kod, depolama [bağlantı dizesini yapılandırma](#configure-your-storage-connection-string) bölümünde oluşturulan ortam değişkeninden depolama hesabının bağlantı dizesini alır.
+Aşağıdaki kod, [depolama bağlantı dizesi bölümüyapılanınoluşturulan](#configure-your-storage-connection-string) ortam değişkeninden depolama hesabının bağlantı dizesini alır.
 
-Bu kodu `main` işlevi içine ekleyin:
+Bu kodu işlevin `main` içine ekleyin:
 
 ```javascript
 // Retrieve the connection string for use with the application. The storage
@@ -165,14 +165,14 @@ const AZURE_STORAGE_CONNECTION_STRING = process.env.AZURE_STORAGE_CONNECTION_STR
 
 ### <a name="create-a-queue"></a>Bir kuyruk oluşturma
 
-Yeni sıra için bir ad belirleyin. Aşağıdaki kod, benzersiz olduğundan emin olmak için kuyruk adına bir UUID değeri ekler.
+Yeni sıra için bir ad belirleyin. Aşağıdaki kod, benzersiz olduğundan emin olmak için sıra adına bir UUID değerini ekler.
 
 > [!IMPORTANT]
-> Kuyruk adları yalnızca küçük harf, sayı ve kısa çizgi içerebilir ve bir harf veya sayı ile başlamalıdır. Her kısa çizginin önünde ve arkasında kısa çizgi dışında bir karakter bulunmalıdır. Ad ayrıca 3 ila 63 karakter uzunluğunda olmalıdır. Adlandırma sıraları hakkında daha fazla bilgi için bkz. [adlandırma sıraları ve meta verileri](https://docs.microsoft.com/rest/api/storageservices/naming-queues-and-metadata).
+> Sıra adları yalnızca küçük harfler, sayılar ve tireler içerebilir ve bir harf veya sayıyla başlamalıdır. Her kısa çizginin önünde ve arkasında kısa çizgi dışında bir karakter bulunmalıdır. Ad da 3 ve 63 karakter uzunluğunda olmalıdır. Sıraları adlandırma hakkında daha fazla bilgi için [Bkz.](https://docs.microsoft.com/rest/api/storageservices/naming-queues-and-metadata)
 
-[Queueclient](https://docs.microsoft.com/javascript/api/@azure/storage-queue/queueclient) sınıfının bir örneğini oluşturun. Ardından, depolama hesabınızda kuyruğu oluşturmak için [Create](https://docs.microsoft.com/javascript/api/@azure/storage-queue/queueclient#create-queuecreateoptions-) yöntemini çağırın.
+[QueueClient](https://docs.microsoft.com/javascript/api/@azure/storage-queue/queueclient) sınıfının bir örneğini oluşturun. Ardından, depolama hesabınızdaki sırayı oluşturmak için [oluşturma](https://docs.microsoft.com/javascript/api/@azure/storage-queue/queueclient#create-queuecreateoptions-) yöntemini arayın.
 
-`main` işlevinin sonuna bu kodu ekleyin:
+Bu kodu `main` işlevin sonuna ekleyin:
 
 ```javascript
 // Create a unique name for the queue
@@ -189,11 +189,11 @@ const createQueueResponse = await queueClient.create();
 console.log("Queue created, requestId:", createQueueResponse.requestId);
 ```
 
-### <a name="add-messages-to-a-queue"></a>Bir kuyruğa ileti ekleme
+### <a name="add-messages-to-a-queue"></a>Kuyruğa ileti ekleme
 
-Aşağıdaki kod parçacığı, [SendMessage](https://docs.microsoft.com/javascript/api/@azure/storage-queue/queueclient#sendmessage-string--queuesendmessageoptions-) metodunu çağırarak kuyruğa ileti ekler. Ayrıca, üçüncü `sendMessage` çağrısından döndürülen [Queuemessage](https://docs.microsoft.com/javascript/api/@azure/storage-queue/queuemessage) öğesini de kaydeder. Döndürülen `sendMessageResponse`, programın ilerleyen kısımlarında ileti içeriğini güncelleştirmek için kullanılır.
+Aşağıdaki kod snippet [sendMessage](https://docs.microsoft.com/javascript/api/@azure/storage-queue/queueclient#sendmessage-string--queuesendmessageoptions-) yöntemini çağırarak sıraya iletiekler. Ayrıca üçüncü `sendMessage` çağrıdan döndürülen [QueueMessage'ı](https://docs.microsoft.com/javascript/api/@azure/storage-queue/queuemessage) da kaydeder. Döndürülen `sendMessageResponse` ileti içeriğini daha sonra programda güncelleştirmek için kullanılır.
 
-`main` işlevinin sonuna bu kodu ekleyin:
+Bu kodu `main` işlevin sonuna ekleyin:
 
 ```javascript
 console.log("\nAdding messages to the queue...");
@@ -208,9 +208,9 @@ console.log("Messages added, requestId:", sendMessageResponse.requestId);
 
 ### <a name="peek-at-messages-in-a-queue"></a>Kuyruktaki iletilere göz atın
 
-[PeekMessages](https://docs.microsoft.com/javascript/api/@azure/storage-queue/queueclient#peekmessages-queuepeekmessagesoptions-) yöntemini çağırarak kuyruktaki iletilere göz atın. `peekMessages` yöntemi, sıranın önüne bir veya daha fazla ileti alır ancak iletinin görünürlüğünü değiştirmez.
+PeekMessages yöntemini arayarak kuyruktaki [iletilere göz atın.](https://docs.microsoft.com/javascript/api/@azure/storage-queue/queueclient#peekmessages-queuepeekmessagesoptions-) Yöntem, `peekMessages` sıranın önünden bir veya daha fazla ileti alır, ancak iletinin görünürlüğünü değiştirmez.
 
-`main` işlevinin sonuna bu kodu ekleyin:
+Bu kodu `main` işlevin sonuna ekleyin:
 
 ```javascript
 console.log("\nPeek at the messages in the queue...");
@@ -226,7 +226,7 @@ for (i = 0; i < peekedMessages.peekedMessageItems.length; i++) {
 
 ### <a name="update-a-message-in-a-queue"></a>Kuyruktaki bir iletiyi güncelleştirme
 
-[Updatemessage](https://docs.microsoft.com/javascript/api/@azure/storage-queue/queueclient#updatemessage-string--string--string--undefined---number--queueupdatemessageoptions-) yöntemini çağırarak bir iletinin içeriğini güncelleştirin. `updateMessage` yöntemi bir iletinin görünürlük zaman aşımını ve içeriğini değiştirebilir. İleti içeriği, boyutu 64 KB 'a kadar olan bir UTF-8 kodlu dize olmalıdır. Yeni içerikle birlikte `messageId` geçirin ve kodda daha önce kaydedilen yanıttan `popReceipt`. `sendMessageResponse` Özellikler güncelleştirilecek iletiyi belirler.
+UpdateMessage yöntemini çağırarak iletinin içeriğini [güncelleştirin.](https://docs.microsoft.com/javascript/api/@azure/storage-queue/queueclient#updatemessage-string--string--string--undefined---number--queueupdatemessageoptions-) Yöntem, `updateMessage` iletinin görünürlük zaman anına ve içeriğini değiştirebilir. İleti içeriği 64 KB boyutuna kadar olan UTF-8 kodlanmış bir dize olmalıdır. Yeni içerikle birlikte, `messageId` kodda daha önce kaydedilmiş yanıtı ve yanıtı `popReceipt` iletin. Özellikler `sendMessageResponse` hangi iletiyi güncelleştireceklerini belirler.
 
 ```javascript
 console.log("\nUpdating the third message in the queue...");
@@ -243,9 +243,9 @@ console.log("Message updated, requestId:", updateMessageResponse.requestId);
 
 ### <a name="receive-messages-from-a-queue"></a>Kuyruktan ileti alma
 
-[Receivemessages](https://docs.microsoft.com/javascript/api/@azure/storage-queue/queueclient#receivemessages-queuereceivemessageoptions-) yöntemini çağırarak önceden eklenmiş iletileri indirin.  `numberOfMessages` alanında, bu çağrı için alacak en fazla ileti sayısını geçirin.
+Daha önce eklenen iletileri [receiveMessages](https://docs.microsoft.com/javascript/api/@azure/storage-queue/queueclient#receivemessages-queuereceivemessageoptions-) yöntemini arayarak indirin.  `numberOfMessages` Alanında, bu arama için alınması gereken en fazla ileti sayısını geçirin.
 
-`main` işlevinin sonuna bu kodu ekleyin:
+Bu kodu `main` işlevin sonuna ekleyin:
 
 ```javascript
 console.log("\nReceiving messages from the queue...");
@@ -256,13 +256,13 @@ const receivedMessagesResponse = await queueClient.receiveMessages({ numberOfMes
 console.log("Messages received, requestId:", receivedMessagesResponse.requestId);
 ```
 
-### <a name="delete-messages-from-a-queue"></a>Kuyruktaki iletileri silme
+### <a name="delete-messages-from-a-queue"></a>İletileri kuyruktan silme
 
-İletileri alındıktan ve işlendikten sonra kuyruktan silin. Bu durumda, işleme yalnızca konsolda iletiyi görüntülüyor.
+İletileri alındıktan ve işlendikten sonra kuyruktan silin. Bu durumda, işleme yalnızca konsolda ileti yi görüntüler.
 
-[DeleteMessage](https://docs.microsoft.com/javascript/api/@azure/storage-queue/queueclient#deletemessage-string--string--queuedeletemessageoptions-) yöntemini çağırarak iletileri silin. Açıkça silinmeyen tüm iletiler, daha sonra bu işlemleri işlemek için bir süre sonra sırada görünür hale gelir.
+DeleteMessage yöntemini arayarak iletileri [silin.](https://docs.microsoft.com/javascript/api/@azure/storage-queue/queueclient#deletemessage-string--string--queuedeletemessageoptions-) Açıkça silinmeyen iletiler, bunları işlemek için başka bir şans için kuyrukta tekrar görünür hale gelir.
 
-`main` işlevinin sonuna bu kodu ekleyin:
+Bu kodu `main` işlevin sonuna ekleyin:
 
 ```javascript
 // 'Process' and delete messages from the queue
@@ -283,9 +283,9 @@ for (i = 0; i < receivedMessagesResponse.receivedMessageItems.length; i++) {
 
 ### <a name="delete-a-queue"></a>Bir kuyruk silme
 
-Aşağıdaki kod, [silme](https://docs.microsoft.com/javascript/api/@azure/storage-queue/queueclient#delete-queuedeleteoptions-) yöntemi kullanılarak sırayı silerek uygulamanın oluşturduğu kaynakları temizler.
+Aşağıdaki kod, [sil](https://docs.microsoft.com/javascript/api/@azure/storage-queue/queueclient#delete-queuedeleteoptions-) yöntemini kullanarak sırayı silerek oluşturulan kaynakları temizler.
 
-Bu kodu `main` işlevinin sonuna ekleyin ve dosyayı kaydedin:
+Bu kodu `main` işlevin sonuna ekleyin ve dosyayı kaydedin:
 
 ```javascript
 // Delete the queue
@@ -296,9 +296,9 @@ console.log("Queue deleted, requestId:", deleteQueueResponse.requestId);
 
 ## <a name="run-the-code"></a>Kodu çalıştırma
 
-Bu uygulama, bir Azure kuyruğuna üç ileti oluşturur ve ekler. Kod kuyruktaki iletileri listeler, ardından kuyruğu silmeden önce bunları alır ve siler.
+Bu uygulama, Azure kuyruğuna üç ileti oluşturur ve ekler. Kod, kuyruktaki iletileri listeler, ardından sırayı silmeden önce alır ve siler.
 
-Konsol pencerenizde, *Queues-QuickStart-v12. js* dosyasını içeren dizine gidin, ardından uygulamayı çalıştırmak için aşağıdaki `node` komutunu yürütün.
+Konsol pencerenizde, kuyrukları içeren dizine *gidin-quickstart-v12.js* dosyası, ardından `node` uygulamayı çalıştırmak için aşağıdaki komutu çalıştırın.
 
 ```console
 node queues-quickstart-v12.js
@@ -339,16 +339,16 @@ Queue deleted, requestId: 5c0bca05-6003-011b-1e11-b13d06000000
 Done
 ```
 
-Hata Ayıklayıcıdaki kodda adım adım ilerleyin ve işlem boyunca [Azure Portal](https://portal.azure.com) denetleyin. Kuyruktaki iletilerin oluşturulup silindiğini doğrulamak için depolama hesabınızı kontrol edin.
+Hata ayıklayıcınızdaki kodu gözden geçirin ve işlem boyunca [Azure portalınızı](https://portal.azure.com) kontrol edin. Kuyruktaki iletilerin oluşturulduğunu ve silinip silindiğinden doğrulamak için depolama hesabınızı kontrol edin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, bir sıranın nasıl oluşturulacağını ve JavaScript kodunu kullanarak iletiye nasıl ileti ekleneceğini öğrendiniz. Ardından iletileri göz atmayı, almayı ve silmeyi öğrendiniz. Son olarak, bir ileti sırasının nasıl silineceğini öğrendiniz.
+Bu hızlı başlatmada, JavaScript kodunu kullanarak kuyruk oluşturmayı ve ona ileti eklemeyi öğrendiniz. Ardından iletileri gözetlemeyi, almayı ve silmeyi öğrendiniz. Son olarak, ileti kuyruğunun nasıl silinir öğrenilir.
 
-Öğreticiler, örnekler, hızlı ve diğer belgeler için şu adresi ziyaret edin:
+Öğreticiler, örnekler, hızlı başlangıçlar ve diğer belgeler için şu adresi ziyaret edin:
 
 > [!div class="nextstepaction"]
-> [JavaScript için Azure belgeleri](https://docs.microsoft.com/azure/javascript/)
+> [JavaScript belgeleri için Azure](https://docs.microsoft.com/azure/javascript/)
 
-* Daha fazla bilgi edinmek için bkz. [JavaScript Için Azure depolama kuyruğu istemci kitaplığı](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue).
-* Daha fazla Azure kuyruk depolama örneği uygulaması görmek için [Azure kuyruk depolama istemci kitaplığı V12 JavaScript örnekleri](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue/samples)' ne geçin.
+* Daha fazla bilgi edinmek [için JavaScript için Azure Depolama Kuyruğu istemci kitaplığına](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue)bakın.
+* Daha fazla Azure Kuyruğu depolama örneği uygulaması görmek için [Azure Queue depolama istemcikitapv12 JavaScript örneklerine](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-queue/samples)devam edin.

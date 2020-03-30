@@ -1,5 +1,5 @@
 ---
-title: Azure SignalR hizmeti sunucusuz hızlı başlangıç-Python
+title: Azure SignalR Servisi sunucusuz quickstart - Python
 description: Azure SignalR Hizmetini ve Azure İşlevlerini kullanarak bir sohbet odası oluşturmaya yönelik hızlı başlangıç.
 author: anthonychu
 ms.service: signalr
@@ -8,25 +8,25 @@ ms.topic: quickstart
 ms.date: 12/14/2019
 ms.author: antchu
 ms.openlocfilehash: 0cf8705cf2567a60129681c2db41b0868f8fe182
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75392131"
 ---
-# <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-python"></a>Hızlı başlangıç: Python kullanarak Azure Işlevleri ve SignalR hizmeti ile sohbet odası oluşturma
+# <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-python"></a>Quickstart: Python kullanarak Azure Fonksiyonları ve SignalR Hizmeti ile bir sohbet odası oluşturun
 
 Azure SignalR hizmeti uygulamanıza kolayca gerçek zamanlı işlevsellik eklemenizi sağlar. Azure İşlevleri, herhangi bir altyapı yönetimine gerek kalmadan kodunuzu çalıştırmanıza olanak tanıyan sunucusuz bir platformdur. Bu hızlı başlangıçta, SignalR Hizmeti ve İşlevlerini sunucusuz ve gerçek zamanlı bir sohbet uygulaması oluşturmak için kullanmayı öğrenin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu hızlı başlangıç; macOS, Windows veya Linux üzerinde çalıştırılabilir.
 
 [Visual Studio Code](https://code.visualstudio.com/) gibi bir kod editörünün yüklü olduğundan emin olun.
 
-Python Azure Işlev uygulamalarını yerel olarak çalıştırmak için [Azure Functions Core Tools](https://github.com/Azure/azure-functions-core-tools#installing) (sürüm 2.7.1505 veya üzeri) yüklemesini yapın.
+Python Azure İşlevi uygulamalarını yerel olarak çalıştırmak için [Azure İşlevleri Temel Araçlarını](https://github.com/Azure/azure-functions-core-tools#installing) (sürüm 2.7.1505 veya üzeri) yükleyin.
 
-Azure Işlevleri için [Python 3,6 veya 3,7](https://www.python.org/downloads/)gerekir.
+Azure İşlevleri [Python 3.6 veya 3.7](https://www.python.org/downloads/)gerektirir.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -50,9 +50,9 @@ Azure hesabınızla Azure portalında <https://portal.azure.com/> sayfasında ot
 
     ![SignalR Hizmeti Oluşturma](media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-keys.png)
 
-1. Kod Düzenleyicinizde, kopyalanmış depodaki *src/chat/Python* klasörünü açın.
+1. Kod düzenleyicinizde, klonlanmış depodaki *src/chat/python* klasörünü açın.
 
-1. Python işlevlerini yerel olarak geliştirmek ve test etmek için bir Python 3,6 veya 3,7 ortamında çalışmanız gerekir. `.venv`adlı bir sanal ortam oluşturmak ve etkinleştirmek için aşağıdaki komutları çalıştırın.
+1. Python işlevlerini yerel olarak geliştirmek ve test etmek için Python 3.6 veya 3.7 ortamında çalışmanız gerekir. Adlı sanal bir ortam oluşturmak ve etkinleştirmek için aşağıdaki komutları çalıştırın. `.venv`
 
     **Linux veya macOS:**
 
@@ -70,14 +70,14 @@ Azure hesabınızla Azure portalında <https://portal.azure.com/> sayfasında ot
 
 1. *local.settings.sample.json* dosyasını *local.settings.json* olarak yeniden adlandırın.
 
-1. **local.settings.json** dosyasının içinde, bağlantı dizesini **AzureSignalRConnectionString** ayarının değerine yapıştırın. Dosyayı kaydedin.
+1. **local.settings.json** dosyasının içinde bağlantı dizesini **AzureSignalRConnectionString** ayarının değerine yapıştırın. Dosyayı kaydedin.
 
-1. Python işlevleri klasörler halinde düzenlenir. Her klasörde iki dosya vardır: *function. JSON* işlevde kullanılan bağlamaları tanımlar ve *\_\_init\_\_. Kopyala* işlevinin gövdesidir. Bu işlev uygulamasında iki adet HTTP ile tetiklenen işlev vardır:
+1. Python işlevleri klasörler halinde düzenlenir. Her klasörde iki dosya vardır: *function.json* işlevde kullanılan bağlamaları tanımlar ve * \_ \_\_\_init .py* fonksiyonun gövdesidir. Bu işlev uygulamasında iki adet HTTP ile tetiklenen işlev vardır:
 
     - **negotiate** - Geçerli bağlantı bilgileri döndürmek için *SignalRConnectionInfo* giriş bağlamasını kullanır.
     - **messages** - İstek gövdesinde bir sohbet iletisi alır ve iletiyi bağlı olan tüm istemci uygulamalara yaymak için *SignalR* çıkış bağlamasını kullanır.
 
-1. Sanal ortamı etkinleştirilen terminalde, *src/chat/Python* klasöründe olduğunuzdan emin olun. PıP kullanarak gerekli Python paketlerini yükler.
+1. Sanal ortamın etkinleştirilmiş olduğu terminalde, *src/chat/python* klasöründe olduğundan emin olun. GEREKLI Python paketlerini PIP kullanarak yükleyin.
 
     ```bash
     python -m pip install -r requirements.txt
@@ -89,7 +89,7 @@ Azure hesabınızla Azure portalında <https://portal.azure.com/> sayfasında ot
     func start
     ```
 
-    ![İşlev uygulamasını Çalıştır](media/signalr-quickstart-azure-functions-python/signalr-quickstart-run-application.png)
+    ![İşlev uygulamasını çalıştır](media/signalr-quickstart-azure-functions-python/signalr-quickstart-run-application.png)
 
 [!INCLUDE [Run web application](includes/signalr-quickstart-run-web-application.md)]
 
@@ -97,7 +97,7 @@ Azure hesabınızla Azure portalında <https://portal.azure.com/> sayfasında ot
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, VS Code ' de gerçek zamanlı sunucusuz bir uygulama oluşturup çalıştırdınız. Bir sonraki adımda Azure İşlevlerini nasıl VS Code’dan dağıtacağınızı öğrenin.
+Bu hızlı başlangıçta, VS Code'da gerçek zamanlı sunucusuz bir uygulama oluşturup çalıştırdın. Bir sonraki adımda Azure İşlevlerini nasıl VS Code’dan dağıtacağınızı öğrenin.
 
 > [!div class="nextstepaction"]
 > [VS Code ile Azure İşlevlerini dağıtma](/azure/javascript/tutorial-vscode-serverless-node-01)

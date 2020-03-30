@@ -1,7 +1,7 @@
 ---
-title: Linux 'u keşfet
+title: Linux'u keşfedin
 titleSuffix: Azure Data Science Virtual Machine
-description: Linux Veri Bilimi Sanal Makinesi kullanarak çeşitli yaygın veri bilimi görevlerini tamamlamayı öğrenin.
+description: Linux Veri Bilimi Sanal Makine'yi kullanarak çeşitli yaygın veri bilimi görevlerini nasıl tamamlayısılamayı öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: data-science-vm
@@ -9,106 +9,106 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 07/16/2018
-ms.openlocfilehash: 9883256fc801d37acd4ea10226bd9e541f9135f7
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.openlocfilehash: 9857de0470baa35dcc8005e1622e5e593da95751
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2020
-ms.locfileid: "78268649"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80128358"
 ---
-# <a name="data-science-with-a-linux-data-science-virtual-machine-in-azure"></a>Azure 'da Linux Veri Bilimi Sanal Makinesi veri bilimi
+# <a name="data-science-with-a-linux-data-science-virtual-machine-in-azure"></a>Azure'da Linux Veri Bilimi Sanal Makine ile veri bilimi
 
-Bu kılavuzda, Linux Veri Bilimi Sanal Makinesi (DSVM) kullanarak çeşitli yaygın veri bilimi görevlerinin nasıl tamamlanacağı gösterilmektedir. Linux DSVM, Azure 'da kullanılabilen ve veri analizi ve makine öğrenimi için yaygın olarak kullanılan bir araç koleksiyonuyla önceden yüklenmiş bir sanal makine görüntüsüdür. Temel yazılım bileşenleri, [Linux veri bilimi sanal makinesi sağlama](linux-dsvm-intro.md)bölümünde yer verilir. DSVM görüntüsü, her bir aracının tek tek yüklenip yapılandırılması gerekmeden veri bilimi 'ni dakikalar içinde kullanmaya başlamanızı kolaylaştırır. Gerekirse DSVM 'yi kolayca ölçeklendirebilirsiniz ve kullanımda olmadığında durdurabilirsiniz. DSVM kaynağı esnek ve uygun maliyetli bir yöntemdir.
+Bu walkthrough, Linux Veri Bilimi Sanal Makinesini (DSVM) kullanarak birkaç yaygın veri bilimi görevini nasıl tamamlayabileceğinizi gösterir. Linux DSVM, Azure'da bulunan ve veri analitiği ve makine öğrenimi için yaygın olarak kullanılan araçlar koleksiyonuyla önceden yüklenmiş sanal bir makine görüntüsüdür. Temel yazılım bileşenleri [Hükmü Linux Veri Bilimi Sanal Makine](linux-dsvm-intro.md)ayrıntılı vardır. DSVM görüntüsü, araçların her birini ayrı ayrı yüklemek ve yapılandırmak zorunda kalmadan dakikalar içinde veri bilimi yapmaya başlamayı kolaylaştırır. Gerekirse DSVM'yi kolayca ölçeklendirebilir ve kullanılmadığı zaman durdurabilirsiniz. DSVM kaynağı hem elastik hem de uygun maliyetlidir.
 
-Bu kılavuzda gösterilen veri bilimi görevleri, [ekip veri bilimi işlemi nedir?](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/overview) bölümünde açıklanan adımları izleyin. Ekip veri bilimi süreci, veri bilimcilerinin ekiplerin akıllı uygulamalar oluşturma yaşam döngüsüyle etkili bir şekilde işbirliği yapmasına yardımcı olan veri bilimi için sistematik bir yaklaşımdır. Veri bilimi işlemi ayrıca bir kişi tarafından izlenebilir veri bilimi için yinelemeli bir çerçeve sağlar.
+Bu iznin gösterdiği veri bilimi [görevleri, Ekip Veri Bilimi Süreci nedir?](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/overview) Ekip Veri Bilimi Süreci, veri bilimciekiplerinin akıllı uygulamalar oluşturma yaşam döngüsü üzerinde etkin bir şekilde işbirliği yapmasına yardımcı olan sistematik bir veri bilimi yaklaşımıdır. Veri bilimi süreci aynı zamanda bir birey tarafından takip edilebilen veri bilimi için yinelemeli bir çerçeve sağlar.
 
-Bu izlenecek yolda, [spambase](https://archive.ics.uci.edu/ml/datasets/spambase) veri kümesini çözümliyoruz. Spambase, istenmeyen veya ham (istenmeyen posta değil) olarak işaretlenmiş bir e-posta kümesidir. Spambase, e-postaların içeriğiyle ilgili bazı istatistikler de içerir. Anlatımın ilerleyen kısımlarında yer aldığı istatistikleri konuşuyoruz.
+Bu izbarada, [spambase](https://archive.ics.uci.edu/ml/datasets/spambase) veri kümesini analiz ederiz. Spambase, spam veya jambon (spam değil) olarak işaretlenmiş bir e-posta kümesidir. Spambase ayrıca e-postaların içeriği hakkında bazı istatistikler içerir. Daha sonra iznin içinde istatistikler hakkında konuşacağız.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Bir Linux DSVM kullanabilmeniz için aşağıdaki önkoşullara sahip olmanız gerekir:
+Linux DSVM kullanamadan önce aşağıdaki ön koşullara sahip olmalısınız:
 
-* **Azure aboneliği**. Azure aboneliği almak için, bkz. [ücretsiz Azure hesabınızı hemen oluşturun](https://azure.microsoft.com/free/).
-* [**Linux veri bilimi sanal makinesi**](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm). Sanal makineyi sağlama hakkında daha fazla bilgi için bkz. [Linux veri bilimi sanal makinesi sağlama](linux-dsvm-intro.md).
-* [**X2Go**](https://wiki.x2go.org/doku.php) açık bir XFCE oturumuyla bilgisayarınızda yüklü. Daha fazla bilgi için bkz. [X2Go Istemcisini yükleyip yapılandırma](linux-dsvm-intro.md#x2go).
-* Daha yumuşak bir kaydırma deneyimi için DSVM 'nin Firefox Web tarayıcısında `about:config``gfx.xrender.enabled` bayrağını değiştirin. [Daha fazla bilgi edinin](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/). Ayrıca `mousewheel.enable_pixel_scrolling` `False`olarak ayarlamayı düşünün. [Daha fazla bilgi edinin](https://support.mozilla.org/questions/981140).
-* **Azure Machine Learning hesabı**. Henüz bir hesabınız yoksa, [Azure Machine Learning giriş sayfasında](https://azure.microsoft.com/free/services/machine-learning//)yeni bir hesap için kaydolun.
+* **Azure aboneliği.** Azure aboneliği almak için [bkz.](https://azure.microsoft.com/free/)
+* [**Linux Veri Bilimi Sanal Makine**](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm). Sanal makine sağlama hakkında bilgi için, [Linux Veri Bilimi Sanal Makine Hükmü'ne](linux-dsvm-intro.md)bakın.
+* [**X2Go**](https://wiki.x2go.org/doku.php) bilgisayarınızda açık bir XFCE oturumu ile yüklü. Daha fazla bilgi için [X2Go istemcisini yükleyin ve yapılandırın.](linux-dsvm-intro.md#x2go)
+* Daha yumuşak bir kaydırma deneyimi için, DSVM Firefox web `gfx.xrender.enabled` tarayıcısında, `about:config`bayrağı . [Daha fazla bilgi edinin](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/). Ayrıca ayar `mousewheel.enable_pixel_scrolling` `False`düşünün. [Daha fazla bilgi edinin](https://support.mozilla.org/questions/981140).
+* **Azure Machine Learning hesabı**. Zaten hesabınız yoksa, [Azure Machine Learning ana sayfasında](https://azure.microsoft.com/free/services/machine-learning//)yeni bir hesap için kaydolun.
 
 ## <a name="download-the-spambase-dataset"></a>Spambase veri kümesini indirin
 
-[Spambase](https://archive.ics.uci.edu/ml/datasets/spambase) veri kümesi, 4.601 örnek içeren görece küçük bir veri kümesidir. Veri kümesi, DSVM 'nin bazı önemli özelliklerini gösteren, kaynak gereksinimlerini Modest olarak tutan uygun boyutlarıdır.
+[Spambase](https://archive.ics.uci.edu/ml/datasets/spambase) veri kümesi, 4.601 örnek içeren nispeten küçük bir veri kümesidir. Veri kümesi, kaynak gereksinimlerini mütevazı tuttuğundan DSVM'nin bazı temel özelliklerini göstermek için kullanışlı bir boyuttır.
 
 > [!NOTE]
-> Bu izlenecek yol, D2 v2 boyutlu bir Linux DSVM (CentOS sürümü) kullanılarak oluşturulmuştur. Bu kılavuzda gösterilen yordamları tamamlamak için bu boyutu DSVM kullanabilirsiniz.
+> Bu izim, D2 v2 boyutunda bir Linux DSVM (CentOS Edition) kullanılarak oluşturulmuştur. Bu izbiste gösterilen yordamları tamamlamak için bu boyutta bir DSVM kullanabilirsiniz.
 
-Daha fazla depolama alanı gerekiyorsa, ek diskler oluşturabilir ve bunları DSVM 'nize iliştirebilirsiniz. Diskler kalıcı Azure depolama kullanır, bu nedenle, yeniden boyutlandırma veya kapatma nedeniyle sunucu yeniden sağlansa bile, verileri korunur. Bir disk eklemek ve DSVM 'nize eklemek için bir [LINUX sanal makinesine disk ekleme](../../virtual-machines/linux/add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)bölümündeki adımları uygulayın. Disk ekleme adımları, DSVM 'de zaten yüklü olan Azure CLı 'yi kullanır. Bu adımları tamamen DSVM 'den tamamlayabilirsiniz. Depolamayı arttırmaya yönelik başka bir seçenek de [Azure dosyalarını](../../storage/files/storage-how-to-use-files-linux.md)kullanmaktır.
+Daha fazla depolama alanına ihtiyacınız varsa, ek diskler oluşturabilir ve bunları DSVM'nize ekleyebilirsiniz. Diskler kalıcı Azure depolama sını kullanır, bu nedenle sunucu yeniden boyutlandırma nedeniyle yeniden sağlanmış veya kapatılmış olsa bile verileri korunur. Bir disk eklemek ve DSVM'nize eklemek [için, Linux VM'ye disk ekle'deki](../../virtual-machines/linux/add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)adımları tamamlayın. Disk ekleme adımları, DSVM'de zaten yüklü olan Azure CLI'yi kullanır. Adımları DSVM'nin kendisinden tamamen tamamlayabilirsiniz. Depolamayı artırmak için başka bir seçenek de [Azure Dosyaları'nı](../../storage/files/storage-how-to-use-files-linux.md)kullanmaktır.
 
-Verileri indirmek için bir Terminal penceresi açın ve ardından şu komutu çalıştırın:
+Verileri indirmek için bir terminal penceresi açın ve ardından şu komutu çalıştırın:
 
     wget https://archive.ics.uci.edu/ml/machine-learning-databases/spambase/spambase.data
 
-İndirilen dosyada başlık satırı yok. Üst bilgisine sahip başka bir dosya oluşturalım. Uygun üst bilgilerle bir dosya oluşturmak için şu komutu çalıştırın:
+İndirilen dosyada üstbilgi satırı yok. Üstbilgisi olan başka bir dosya oluşturalım. Uygun üstbilgi içeren bir dosya oluşturmak için bu komutu çalıştırın:
 
     echo 'word_freq_make, word_freq_address, word_freq_all, word_freq_3d,word_freq_our, word_freq_over, word_freq_remove, word_freq_internet,word_freq_order, word_freq_mail, word_freq_receive, word_freq_will,word_freq_people, word_freq_report, word_freq_addresses, word_freq_free,word_freq_business, word_freq_email, word_freq_you, word_freq_credit,word_freq_your, word_freq_font, word_freq_000, word_freq_money,word_freq_hp, word_freq_hpl, word_freq_george, word_freq_650, word_freq_lab,word_freq_labs, word_freq_telnet, word_freq_857, word_freq_data,word_freq_415, word_freq_85, word_freq_technology, word_freq_1999,word_freq_parts, word_freq_pm, word_freq_direct, word_freq_cs, word_freq_meeting,word_freq_original, word_freq_project, word_freq_re, word_freq_edu,word_freq_table, word_freq_conference, char_freq_semicolon, char_freq_leftParen,char_freq_leftBracket, char_freq_exclamation, char_freq_dollar, char_freq_pound, capital_run_length_average,capital_run_length_longest, capital_run_length_total, spam' > headers
 
-Sonra iki dosyayı birlikte birleştirin:
+Ardından, iki dosyayı birleştirin:
 
     cat spambase.data >> headers
     mv headers spambaseHeaders.data
 
 Veri kümesinde her e-posta için çeşitli istatistik türleri vardır:
 
-* Word **\_freq\__Word_**  gibi sütunlar, e- *postadaki kelimeyle*eşleşen sözcüklerin yüzdesini gösterir. Örneğin, **word\_freq\_Make** **1**ise, e-postadaki tüm sözcüklerin %1 ' i *yapmıştı*.
-* Char **\_freq\__char_**  gibi sütunlar, e-postadaki *karakter olan tüm*karakterlerin yüzdesini belirtir.
-* **büyük\_çalıştırma\_uzunluğu en uzun\_** büyük harflerin bir dizisinin en uzun uzunluğudur.
-* **büyük\_çalıştırma\_uzunluğu\_ortalama** , büyük harflerin tüm dizilerinin ortalama uzunluğudur.
-* **büyük\_çalıştırma\_uzunluğu\_toplam** , büyük harflerin tüm dizileri için toplam uzunluktadır.
-* **istenmeyen** posta, e-postanın istenmeyen posta olarak kabul edilip edilmeyeceğini belirtir (1 = istenmeyen posta, 0 = istenmeyen posta değil).
+* **Freq\_\_WORD sözcüğü** gibi sütunlar, WORD ile *eşleşen*e-postadaki sözcüklerin yüzdesini gösterir. Örneğin, **kelime\_freq\_yapmak** **1**ise, o zaman e-postatüm kelimelerin% 1 *yapıldı.*
+* **Char\_freq\_CHAR** gibi sütunlar *CHAR*olan e-postadaki tüm karakterlerin yüzdesini gösterir.
+* **büyük\_\_harf\_** dizisinin en uzun uzunluğudur.
+* **büyük\_\_harf\_uzunluğu ortalaması,** büyük harflerin tüm dizilerinin ortalama uzunluğudur.
+* **büyük\_\_harf\_tüm** dizilerinin toplam uzunluğutoplamıdır.
+* **spam,** e-postanın spam olarak kabul edilip edilmediğini gösterir (1 = spam, 0 = spam değil).
 
-## <a name="explore-the-dataset-by-using-r-open"></a>R Open kullanarak veri kümesini keşfet
+## <a name="explore-the-dataset-by-using-r-open"></a>R Open'ı kullanarak veri kümesini keşfedin
 
-R kullanarak verileri inceleyerek bazı temel makine öğrenimi yapalim. DSVM, [Microsoft R açık](https://mran.revolutionanalytics.com/open/) önceden yüklenmiş olarak gelir. R 'nin önceden yüklenmiş sürümündeki çok iş parçacıklı matematik kitaplıkları, tek iş parçacıklı sürümlerden daha iyi performans sunar. R Open Ayrıca CRAN paket deposunun bir anlık görüntüsü aracılığıyla reproducibility sağlar.
+Verileri inceleyelim ve R kullanarak bazı temel makine öğrenimi yapalım. DSVM, [Microsoft R Open](https://mran.revolutionanalytics.com/open/) önceden yüklenmiş olarak gelir. R'nin önceden yüklenmiş sürümündeki çok iş parçacığı lı matematik kitaplıkları, tek iş parçacığı sürümlerinden daha iyi performans sunar. R Open, CRAN paket deposunun anlık görüntüsü yle de tekrarlanabilirlik sağlar.
 
-Bu izlenecek yolda kullanılan kod örneklerinin kopyalarını almak için, git kullanarak Azure-Machine-Learning-Data-Science deposunu kopyalayın. Git, DSVM 'ye önceden yüklenir. Git komut satırında şunu çalıştırın:
+Bu izbarada kullanılan kod örneklerinin kopyalarını almak için, Azure-Machine-Learning-Data-Science deposunu klonlamak için git'i kullanın. Git, DSVM'ye önceden yüklenmiş. Git komut satırında çalıştırın:
 
     git clone https://github.com/Azure/Azure-MachineLearning-DataScience.git
 
-Bir Terminal penceresi açın ve R etkileşimli konsolunda yeni bir R oturumu başlatın. DSVM 'de önceden yüklenmiş olan RStudio 'yu da kullanabilirsiniz.
+Terminal penceresini açın ve R etkileşimli konsolunda yeni bir R oturumu başlatın. Ayrıca, DSVM'ye önceden yüklenmiş olan RStudio'yu da kullanabilirsiniz.
 
-Verileri içeri aktarmak ve ortamı ayarlamak için:
+Verileri almak ve ortamı ayarlamak için:
 
     data <- read.csv("spambaseHeaders.data")
     set.seed(123)
 
-Her sütun hakkında özet istatistikleri görmek için:
+Her sütunla ilgili özet istatistikleri görmek için:
 
     summary(data)
 
-Verileri farklı bir görünüm için:
+Verilerin farklı bir görünümü için:
 
     str(data)
 
-Bu görünüm, veri kümesindeki her değişkenin ve ilk birkaç değerin türünü gösterir.
+Bu görünüm, her değişkenin türünü ve veri kümesindeki ilk birkaç değeri gösterir.
 
-**İstenmeyen posta** sütunu bir tamsayı olarak okunmıştı, ancak aslında kategorik bir değişkendir (veya faktörü). Türünü ayarlamak için:
+**Spam** sütunu tamsayı olarak okundu, ancak aslında kategorik bir değişken (veya faktör) bulunuyor. Türünü ayarlamak için:
 
     data$spam <- as.factor(data$spam)
 
-Araştırmacı analiz yapmak için, DSVM 'de önceden yüklenmiş R için popüler bir grafik kitaplığı olan [ggplot2](https://ggplot2.tidyverse.org/) paketini kullanın. Daha önce görüntülenmiş Özet verilere bağlı olarak, ünlem işareti karakterinin sıklığıyla ilgili özet istatistikleriz var. Aşağıdaki komutları çalıştırarak bu frekansları buraya çizelim:
+Bazı keşif analizi yapmak için, DSVM'ye önceden yüklenmiş R için popüler bir grafik kitaplığı olan [ggplot2](https://ggplot2.tidyverse.org/) paketini kullanın. Daha önce görüntülenen özet verilere dayanarak, ünlem işareti karakterinin sıklığına ilişkin özet istatistiklerimiz var. Aşağıdaki komutları çalıştırarak bu frekansları burada çizelim:
 
     library(ggplot2)
     ggplot(data) + geom_histogram(aes(x=char_freq_exclamation), binwidth=0.25)
 
-Sıfır çubuk çizimi eğriltiğinden, bunu ortadan kaldıralim:
+Sıfır çubuğu çizimi çarpıttığı için, onu ortadan kaldıralım:
 
     email_with_exclamation = data[data$char_freq_exclamation > 0, ]
     ggplot(email_with_exclamation) + geom_histogram(aes(x=char_freq_exclamation), binwidth=0.25)
 
-İlginç olmayan, 1 ' den fazla önemsiz bir yoğunluk vardır. Yalnızca bu verilere göz atalım:
+İlginç görünen 1'in üzerinde önemsiz bir yoğunluk vardır. Sadece bu verilere bakalım:
 
     ggplot(data[data$char_freq_exclamation > 1, ]) + geom_histogram(aes(x=char_freq_exclamation), binwidth=0.25)
 
-Ardından, e-postaya göre ayırarak ayırın:
+Sonra, spam karşı jambon tarafından bölün:
 
     ggplot(data[data$char_freq_exclamation > 1, ], aes(x=char_freq_exclamation)) +
     geom_density(lty=3) +
@@ -117,14 +117,14 @@ Ardından, e-postaya göre ayırarak ayırın:
     ggtitle("Distribution of spam \nby frequency of !") +
     labs(fill="spam", y="Density")
 
-Bu örnekler, benzer çizimler yapmanıza ve diğer sütunlardaki verileri incelemenize yardımcı olmalıdır.
+Bu örnekler, benzer çizimler yapmak ve diğer sütunlarda verileri keşfetmek yardımcı olmalıdır.
 
-## <a name="train-and-test-a-machine-learning-model"></a>Makine öğrenimi modelini eğitme ve test etme
+## <a name="train-and-test-a-machine-learning-model"></a>Bir makine öğrenme modelini eğitin ve test edin
 
-Veri kümesindeki e-postaları istenmeyen veya ham olarak sınıflandırmak için birkaç makine öğrenimi modeli eğitelim. Bu bölümde, karar ağacı modeli ve rastgele bir orman modeli eğiyoruz. Ardından, tahminlerinin doğruluğunu test ediyoruz.
+Veri setindeki e-postaları spam veya jambon içeren olarak sınıflandırmak için birkaç makine öğrenimi modeli eğitelim. Bu bölümde, bir karar ağacı modeli ve rasgele bir orman modeli eğitiyoruz. Daha sonra, tahminlerin doğruluğunu test ediyoruz.
 
 > [!NOTE]
-> Aşağıdaki kodda kullanılan *rpart* (özyinelemeli bölümlendirme ve regresyon ağaçları) PAKETI dsvm 'de zaten yüklü.
+> Aşağıdaki kodda kullanılan *rpart* (Recursive Partitioning and Regresyon Ağaçları) paketi Zaten DSVM yüklü.
 
 İlk olarak, veri kümesini eğitim kümelerine ve test kümelerine bölelim:
 
@@ -132,32 +132,32 @@ Veri kümesindeki e-postaları istenmeyen veya ham olarak sınıflandırmak içi
     trainSet = subset(data, rnd <= 0.7)
     testSet = subset(data, rnd > 0.7)
 
-Sonra, e-postaları sınıflandırmak için bir karar ağacı oluşturun:
+Ardından, e-postaları sınıflandırmak için bir karar ağacı oluşturun:
 
     require(rpart)
     model.rpart <- rpart(spam ~ ., method = "class", data = trainSet)
     plot(model.rpart)
     text(model.rpart)
 
-Sonuç şu şekildedir:
+İşte sonuç:
 
 ![Oluşturulan karar ağacının diyagramı](./media/linux-dsvm-walkthrough/decision-tree.png)
 
-Eğitim kümesinde ne kadar iyi gerçekleştirdiği belirlemek için aşağıdaki kodu kullanın:
+Eğitim kümesinde ne kadar iyi performans gösterdiğini belirlemek için aşağıdaki kodu kullanın:
 
     trainSetPred <- predict(model.rpart, newdata = trainSet, type = "class")
     t <- table(`Actual Class` = trainSet$spam, `Predicted Class` = trainSetPred)
     accuracy <- sum(diag(t))/sum(t)
     accuracy
 
-Ne kadar iyi belirlemek için test kümesinde gerçekleştirir:
+Test kümesinde ne kadar iyi performans gösterdiğini belirlemek için:
 
     testSetPred <- predict(model.rpart, newdata = testSet, type = "class")
     t <- table(`Actual Class` = testSet$spam, `Predicted Class` = testSetPred)
     accuracy <- sum(diag(t))/sum(t)
     accuracy
 
-Ayrıca bir rastgele orman modeli deneyelim. Rastgele ormanlar çok sayıda karar ağacının eğitei ve tüm bireysel karar ağaçlarından sınıflandırmaların modu olan bir sınıfı çıktı. Bunlar, bir eğitim veri kümesinin fazla olması için bir karar ağacı modelinin kullanımını düzelttiğinden daha güçlü bir makine öğrenimi yaklaşımı sağlar.
+Rastgele bir orman modeli de deneyelim. Rastgele ormanlar karar ağaçları çok sayıda tren ve tüm bireysel karar ağaçlarından sınıflandırmalar modu bir sınıf çıktı. Daha güçlü bir makine öğrenme yaklaşımı sağlarlar, çünkü bir karar ağacı modelinin eğitim veri kümesini aşırı yakışma eğilimini düzeltirler.
 
     require(randomForest)
     trainVars <- setdiff(colnames(data), 'spam')
@@ -172,20 +172,20 @@ Ayrıca bir rastgele orman modeli deneyelim. Rastgele ormanlar çok sayıda kara
     accuracy
 
 
-## <a name="deploy-a-model-to-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio model dağıtma (klasik)
+## <a name="deploy-a-model-to-azure-machine-learning-studio-classic"></a>Azure Machine Learning Studio'ya bir model dağıtma (klasik)
 
-[Azure Machine Learning Studio (klasik)](https://studio.azureml.net/) , tahmine dayalı analiz modelleri oluşturmayı ve dağıtmayı kolaylaştıran bir bulut hizmetidir. Azure Machine Learning Studio (klasik) iyi bir özelliği, bir Web hizmeti olarak herhangi bir R işlevini yayımlayabilmesidir. Azure Machine Learning Studio (klasik) R paketi, DSVM 'deki R oturumunuzla doğrudan dağıtım yapmayı kolaylaştırır.
+[Azure Machine Learning Studio (klasik),](https://studio.azureml.net/) tahmine dayalı analitik modelleri oluşturmayı ve dağıtmayı kolaylaştıran bir bulut hizmetidir. Azure Machine Learning Studio'nun (klasik) güzel bir özelliği, herhangi bir R işlevini bir web hizmeti olarak yayımlama yeteneğidir. Azure Machine Learning Studio (klasik) R paketi, DSVM'deki R oturumunuzdan itibaren dağıtımı kolaylaştırır.
 
-Önceki bölümden karar ağacı kodunu dağıtmak için Azure Machine Learning Studio (klasik) oturum açın. Çalışma alanı Kimliğiniz ve bir yetkilendirme belirteci oturum açmanız gerekir. Bu değerleri bulmak ve Azure Machine Learning değişkenleri ile başlatmak için aşağıdaki adımları uygulayın:
+Karar ağacı kodunu önceki bölümden dağıtmak için Azure Machine Learning Studio'da (klasik) oturum açın. Oturum açabilmek için çalışma alanı kimliğinize ve yetkilendirme belirtecinize ihtiyacınız vardır. Bu değerleri bulmak ve Azure Machine Learning değişkenlerini onlarla birlikte başlatmak için aşağıdaki adımları tamamlayın:
 
-1. Sol menüde **Ayarlar**' ı seçin. **Çalışma alanı kimliği**için değeri aklınızda edin.
+1. Sol menüde **Ayarlar'ı**seçin. WORKSPACE ID değerini not **edin.**
 
-   ![Azure Machine Learning Studio (klasik) çalışma alanı KIMLIĞI](./media/linux-dsvm-walkthrough/workspace-id.png)
+   ![Azure Machine Learning Studio (klasik) çalışma alanı kimliği](./media/linux-dsvm-walkthrough/workspace-id.png)
 
-1. **Yetkilendirme belirteçleri** sekmesini seçin. **birincil yetkilendirme belirtecinin**değerini aklınızda yapın.
+1. Yetkilendirme **Belirteçleri** sekmesini seçin. **Birincil Yetkilendirme Belirteci'nin**değerini not edin.
 
    ![Azure Machine Learning Studio (klasik) birincil yetkilendirme belirteci](./media/linux-dsvm-walkthrough/workspace-token.png)
-1. **AzureML** paketini yükleyin ve ardından, DVM 'deki R oturumunuzda belirteç ve çalışma alanı Kimliğinizle değişkenlerin değerlerini ayarlayın:
+1. **AzureML** paketini yükleyin ve dsvm'deki R oturumunuzdaki belirteç ve çalışma alanı kimliğinizle değişkenlerin değerlerini ayarlayın:
 
         if(!require("devtools")) install.packages("devtools")
         devtools::install_github("RevolutionAnalytics/AzureML")
@@ -194,25 +194,25 @@ Ayrıca bir rastgele orman modeli deneyelim. Rastgele ormanlar çok sayıda kara
         wsAuth = "<authorization-token>"
         wsID = "<workspace-id>"
 
-1. Şimdi bu gösteride uygulamak daha kolay hale getirmek için model basitleştirin. Üç değişkeni köke en yakın karar ağacında seçin ve yalnızca bu üç değişkeni kullanarak yeni bir ağaç oluşturun:
+1. Bu gösterimin uygulanmasını kolaylaştırmak için modeli basitleştirelim. Köke en yakın karar ağacındaki üç değişkeni seçin ve yalnızca bu üç değişkeni kullanarak yeni bir ağaç oluşturun:
 
         colNames <- c("char_freq_dollar", "word_freq_remove", "word_freq_hp", "spam")
         smallTrainSet <- trainSet[, colNames]
         smallTestSet <- testSet[, colNames]
         model.rpart <- rpart(spam ~ ., method = "class", data = smallTrainSet)
 
-1. Özellikleri bir girdi olarak alır ve tahmin edilen değerler döndüren bir tahmin işlevi ihtiyacımız:
+1. Özellikleri girdi olarak alan ve öngörülen değerleri döndüren bir tahmin işlevine ihtiyacımız vardır:
 
         predictSpam <- function(newdata) {
         predictDF <- predict(model.rpart, newdata = newdata)
         return(colnames(predictDF)[apply(predictDF, 1, which.max)])
         }
 
-1. Bu çalışma alanı için bir Settings. JSON dosyası oluşturun:
+1. Bu çalışma alanı için settings.json dosyası oluşturun:
 
         vim ~/.azureml/settings.json
 
-1. Aşağıdaki içeriklerin Settings. JSON içine yerleştirdiğinizden emin olun:
+1. Aşağıdaki içeriğin settings.json içine konulduğundan emin olun:
 
          {"workspace":{
            "id": "<workspace-id>",
@@ -222,51 +222,51 @@ Ayrıca bir rastgele orman modeli deneyelim. Rastgele ormanlar çok sayıda kara
          }
 
 
-1. The **Publishwebservice** Işlevini kullanarak **Predictspam** işlevini AzureML 'da yayımlayın:
+1. PublishWebService işlevini kullanarak **predictSpam** işlevini AzureML'de **yayımlayın:**
 
         ws <- workspace()
         spamWebService <- publishWebService(ws, fun = predictSpam, name="spamWebService", inputSchema = smallTrainSet, data.frame=TRUE)
 
-1. Bu işlev **Predictspam** işlevini alır, tanımlı giriş ve çıkışları olan **spamwebservice** adlı bir Web hizmeti oluşturur ve ardından yeni uç nokta hakkında bilgi döndürür.
+1. Bu işlev **predictSpam** işlevini alır, **spamWebService** adlı, giriş ve çıktıları tanımlayan bir web hizmeti oluşturur ve ardından yeni bitiş noktası hakkında bilgi verir.
 
-    API uç noktası ve erişim anahtarları dahil olmak üzere en son yayınlanan Web hizmetinin ayrıntılarını görüntülemek için bu komutu kullanın:
+    API bitiş noktası ve erişim anahtarları da dahil olmak üzere en son yayınlanan web hizmetinin ayrıntılarını görüntülemek için bu komutu kullanın:
 
         s<-tail(services(ws, name = "spamWebService"), 1)
         ep <- endpoints(ws,s)
         ep
 
-1. İlk denemenin test 10 satır ayarlayın:
+1. Test kümesinin ilk 10 satırında denemek için:
 
         consume(ep, smallTestSet[1:10, ])
 
 <a name="deep-learning"></a>
 
-## <a name="deep-learning-tutorials-and-walkthroughs"></a>Derin öğrenme öğreticileri ve izlenecek yollar
+## <a name="deep-learning-tutorials-and-walkthroughs"></a>Derin öğrenme eğitimleri ve walkthroughs
 
-Çerçeve tabanlı örneklere ek olarak, kapsamlı bir izlenecek yol kümesi de sağlanır. Bu izlenecek yollar, uygulamaları geliştirmeye yönelik ayrıntılı öğrenme görüntü ve metin/language understanding gibi etki alanlarındaki hemen başlayabileceğiniz yardımcı olur.
+Çerçeve tabanlı örneklere ek olarak, kapsamlı bir dizi gözden geçirme de sağlanır. Bu izbolar, görüntü ve metin/dil anlama gibi alanlarda derin öğrenme uygulamaları geliştirmenizi hızlandırarak başlatmanıza yardımcı olur.
 
-- [Farklı çerçeveler arasında sinir ağlarını çalıştırma](https://github.com/ilkarman/DeepLearningFrameworks): kodu bir çerçeveden diğerine geçirmeyi gösteren kapsamlı bir anlatım. Ayrıca, çerçeve genelinde model ve çalışma zamanı performansının nasıl karşılaştırılacağını gösterir. 
+- [Farklı çerçevelerde sinir ağları nın çalıştırılması](https://github.com/ilkarman/DeepLearningFrameworks): Kodu bir çerçeveden diğerine nasıl geçirilenleri gösteren kapsamlı bir gözden geçirme. Ayrıca, model ve çalışma zamanı performansının çerçeveler arasında nasıl karşılaştırılabildiğini de gösterir. 
 
-- [Görüntülerde ürünleri algılamaya yönelik uçtan uca bir çözüm oluşturmak için nasıl yapılır Kılavuzu](https://github.com/Azure/cortana-intelligence-product-detection-from-images): görüntü algılama, görüntüleri içindeki nesneleri bulup sınıflandırmanın bir tekniğidir. Teknoloji, çok sayıda gerçek hayatta iş etki alanında büyük bir rekele sunmayı mümkün hale getirir. Örneğin, Perakendeciler, müşterinin hangi ürünü raftan teslim alındı belirlemek için bu tekniği kullanabilirsiniz. Bu bilgiler sırayla depoları ürün envanterini yönetmenize yardımcı olur. 
+- [Görüntülerdeki ürünleri algılamak için uçtan uca bir çözüm oluşturma kılavuzu](https://github.com/Azure/cortana-intelligence-product-detection-from-images): Görüntü algılama, görüntülerdeki nesneleri bulup sınıflandırabilen bir tekniktir. Teknoloji birçok gerçek iş alanlarında büyük ödüller getirmek için potansiyele sahiptir. Örneğin, perakendeciler bu tekniği, müşterinin raftan hangi ürünü aldığını belirlemek için kullanabilir. Bu bilgiler sırayla, mağazaların ürün envanterini yönetmesine yardımcı olur. 
 
-- [Ses Için derin öğrenme](https://blogs.technet.microsoft.com/machinelearning/2018/01/30/hearing-ai-getting-started-with-deep-learning-for-audio-on-azure/): Bu öğreticide, [kentsel sesler veri kümesinde](https://urbansounddataset.weebly.com/)ses olayı algılaması için derin bir öğrenme modelinin nasıl eğeceği gösterilmektedir. Öğretici, ses verileriyle çalışma hakkında genel bakış sağlar.
+- [Ses için derin öğrenme](https://blogs.technet.microsoft.com/machinelearning/2018/01/30/hearing-ai-getting-started-with-deep-learning-for-audio-on-azure/): Bu öğretici [nasıl kentsel sesler dataset](https://urbansounddataset.weebly.com/)ses olay algılama için derin öğrenme modeli tren gösterir. Öğretici, ses verileriyle nasıl çalışılabilenlere genel bir bakış sağlar.
 
-- [Metin belgelerinin sınıflandırılması](https://github.com/anargyri/lstm_han): Bu kılavuzda iki farklı sinir ağ mimarisi oluşturma ve eğitme gösterilmektedir: hiyerarşik dikkat ağı ve uzun kısa süreli bellek (lstm). Bu sinir ağları metin belgeleri sınıflandırmak için derin öğrenmeye yönelik Keras API'si kullanın. Keras olduğu en popüler derin öğrenme çerçeveleri üçünün bir ön ucuna: Microsoft Bilişsel araç seti, TensorFlow ve Theano.
+- [Metin belgelerinin sınıflandırılması](https://github.com/anargyri/lstm_han): Bu izbis, iki farklı sinir ağı mimarisinin nasıl inşa edilip eğitilenolduğunu gösterir: Hiyerarşik Dikkat Ağı ve Uzun Kısa Süreli Bellek (LSTM). Bu sinir ağları metin belgelerini sınıflandırmak için derin öğrenme için Keras API'yi kullanır. Keras en popüler derin öğrenme çerçeveleri üç bir ön uç: Microsoft Cognitive Toolkit, TensorFlow ve Theano.
 
 ## <a name="other-tools"></a>Diğer araçlar
 
-Kalan bölümler, Linux DSVM 'de yüklü olan araçların bazılarını nasıl kullanacağınızı gösterir. Bu araçları tartıştık:
+Geri kalan bölümler, Linux DSVM'de yüklenen bazı araçların nasıl kullanılacağını gösterir. Biz bu araçları tartışmak:
 
 * XGBoost
 * Python
-* Jupi Terhub
-* Çıngırağı
-* PostgreSQL ve SQUIRREL SQL
-* SQL Server veri ambarı
+* JupyterHub
+* Rattle
+* PostgreSQL ve SQuirreL SQL
+* SQL Server Veri Ambarı
 
 ### <a name="xgboost"></a>XGBoost
 
-[Xgboost](https://xgboost.readthedocs.org/en/latest/) hızlı ve doğru bir şekilde artırılmış ağaç uygulamasını sağlar.
+[XGBoost](https://xgboost.readthedocs.org/en/latest/) hızlı ve doğru artırılmış ağaç uygulaması sağlar.
 
     require(xgboost)
     data <- read.csv("spambaseHeaders.data")
@@ -282,16 +282,16 @@ Kalan bölümler, Linux DSVM 'de yüklü olan araçların bazılarını nasıl k
     accuracy <- 1.0 - mean(as.numeric(pred > 0.5) != testSet$spam)
     print(paste("test accuracy = ", accuracy))
 
-XGBoost, Python veya bir komut satırından da çağırabilir.
+XGBoost ayrıca Python'dan veya bir komut satırından da arayabilir.
 
 ### <a name="python"></a>Python
 
-Python geliştirmesi için, Anaconda Python dağıtımları 3,5 ve 2,7, DSVM 'ye yüklenir.
+Python gelişimi için Anaconda Python dağılımları 3.5 ve 2.7 DSVM'ye yüklenir.
 
 > [!NOTE]
-> Anaconda dağıtımı [Conda](https://conda.pydata.org/docs/index.html)içerir. Farklı sürümlere veya paketlerine yüklenmiş özel Python ortamları oluşturmak için Conda kullanabilirsiniz.
+> Anaconda dağılımı [Conda](https://conda.pydata.org/docs/index.html)içerir. Conda'yı, farklı sürümler veya paketler yüklü özel Python ortamları oluşturmak için kullanabilirsiniz.
 
-Ayrıca, spambase veri kümesinden bazılarını okuyup e-postaları Scikit içindeki destek vektör makinelerle sınıflandıralım-öğrenme:
+Bazı spambase veri kümesini okuyalım ve Scikit-learn'teki destek vektör makineleriyle e-postaları sınıflandıralım:
 
     import pandas
     from sklearn import svm
@@ -301,18 +301,18 @@ Ayrıca, spambase veri kümesinden bazılarını okuyup e-postaları Scikit içi
     clf = svm.SVC()
     clf.fit(X, y)
 
-Tahminde bulunmak için:
+Tahminlerde bulunmak için:
 
     clf.predict(X.ix[0:20, :])
 
-Bir Azure Machine Learning uç noktasının nasıl yayımlanacağını göstermek için, daha basit bir model yapalim. R modelini daha önce yayımladığımızda kullandığımız üç değişkeni kullanacağız:
+Azure Machine Learning bitiş noktasının nasıl yayımlandırış gösteriş yapılacağını göstermek için daha temel bir model yapalım. R modelini daha önce yayınladığımızda kullandığımız üç değişkeni kullanacağız:
 
     X = data[["char_freq_dollar", "word_freq_remove", "word_freq_hp"]]
     y = data.ix[:, 57]
     clf = svm.SVC()
     clf.fit(X, y)
 
-Modeli Azure Machine Learning için yayımlamak için:
+Modeli Azure Machine Learning olarak yayımlamak için:
 
     # Publish the model.
     workspace_id = "<workspace-id>"
@@ -334,85 +334,85 @@ Modeli Azure Machine Learning için yayımlamak için:
 
 
 > [!NOTE]
-> Bu seçenek yalnızca Python 2,7 için kullanılabilir. Henüz Python 3,5 ' de desteklenmemektedir. Çalıştırmak için **/Anaconda/bin/python2.7**kullanın.
+> Bu seçenek yalnızca Python 2.7 için kullanılabilir. Python 3.5'te henüz desteklenmedi. Çalıştırmak için **/anaconda/bin/python2.7**kullanın.
 
-### <a name="jupyterhub"></a>Jupi Terhub
+### <a name="jupyterhub"></a>JupyterHub
 
-DSVM 'deki Anaconda dağıtımı, Python, R veya Julia kodunu ve analizini paylaşmak için platformlar arası bir ortam olan Jupyter Notebook birlikte gelir. Jupyter Notebook Jupyıterhub üzerinden erişilir. Https://\<DSVM DNS adı veya IP adresi\>adresinde yerel Linux Kullanıcı adınızı ve parolanızı kullanarak oturum açın: 8000/. Jupi Terhub için tüm yapılandırma dosyaları/etc/jupi terhubnda bulunur.
+DSVM'deki Anaconda dağılımı, Python, R veya Julia kod ve çözümlemesi paylaşımı için bir çapraz platform ortamı olan Jupyter Notebook ile birlikte gelir. Jupyter Notebook'a JupyterHub üzerinden erişilir. Yerel Linux kullanıcı adınızı ve şifrenizi https://\<DSVM DNS adı\>veya IP adresi :8000/de kullanarak oturum açın. JupyterHub için tüm yapılandırma dosyaları / vb / jupyterhub bulunur.
 
 > [!NOTE]
-> Geçerli çekirdekte bir Jupyter Notebook Python paket yöneticisini (`pip` komutu aracılığıyla) kullanmak için, kod hücresinde bu komutu kullanın:
+> Geçerli çekirdekteki bir Jupyter Notebook'tan Python Paket Yöneticisi'ni `pip` (komut yoluyla) kullanmak için kod hücresinde şu komutu kullanın:
 >
 >   ```python
 >    import sys
 >    ! {sys.executable} -m pip install numpy -y
 >   ```
 > 
-> Geçerli Çekirdekte bulunan bir Jupyter Notebook Conda yükleyicisini (`conda` komutu aracılığıyla) kullanmak için, bir kod hücresinde bu komutu kullanın:
+> Geçerli çekirdekteki bir Jupyter `conda` Notebook'tan Gelen Conda yükleyicisini (komut yoluyla) kullanmak için bu komutu bir kod hücresinde kullanın:
 >
 >   ```python
 >    import sys
 >    ! {sys.prefix}/bin/conda install --yes --prefix {sys.prefix} numpy
 >   ```
 
-DSVM 'de birden çok örnek Not defteri zaten yüklü:
+DSVM'de zaten birkaç örnek dizüstü bilgisayar yüklenmiştir:
 
-* Örnek Python Not defterleri:
-  * [IntroToJupyterPython. ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Data-Science-Virtual-Machine/Samples/Notebooks/IntroToJupyterPython.ipynb)
+* Örnek Python dizüstü bilgisayarlar:
+  * [IntroToJupyterPython.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Data-Science-Virtual-Machine/Samples/Notebooks/IntroToJupyterPython.ipynb)
   * [IrisClassifierPyMLWebService](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Data-Science-Virtual-Machine/Samples/Notebooks/IrisClassifierPyMLWebService.ipynb)
-* Örnek R Not Defteri:
+* Örnek R dizüstü bilgisayar:
   * [IntroTutorialinR](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Data-Science-Virtual-Machine/Samples/Notebooks/IntroTutorialinR.ipynb) 
 
 > [!NOTE]
-> Julia dili, Linux DSVM 'deki komut satırından da kullanılabilir.
+> Julia dili, Linux DSVM'deki komut satırından da kullanılabilir.
 
-### <a name="rattle"></a>Çıngırağı
+### <a name="rattle"></a>Rattle
 
-[Rattle](https://cran.r-project.org/web/packages/rattle/index.html) (*R* *A*Nalitik *T*OOL *T*o *L*kazanmak *)* veri araştırma için bir grafik R aracıdır. Rattle, verileri yüklemeyi, keşfetmenizi ve dönüştürmeyi, modelleri derlemeyi ve değerlendirmeyi kolaylaştıran sezgisel bir arabirime sahiptir. [Rattle: R Için bir veri madenciliği GUI](https://journal.r-project.org/archive/2009-2/RJournal_2009-2_Williams.pdf) , Rattle 'in özelliklerini gösteren bir anlatım sağlar.
+[Çıngırak](https://cran.r-project.org/web/packages/rattle/index.html) *(R* *A*nalytical *T*ool *T*o *L*asily *E*kazanmak) veri madenciliği için grafiksel bir R aracıdır. Rattle, verileri yüklemeyi, keşfetmeyi ve dönüştürmeyi ve modelleri oluşturmayı ve değerlendirmeyi kolaylaştıran sezgisel bir arayüze sahiptir. [Çıngırak: R için Veri Madenciliği GUI](https://journal.r-project.org/archive/2009-2/RJournal_2009-2_Williams.pdf) Rattle özelliklerini gösteren bir walkthrough sağlar.
 
-Aşağıdaki komutları çalıştırarak Rattle 'i yükleyip başlatın:
+Bu komutları çalıştırarak Rattle'ı yükleyin ve başlatın:
 
     if(!require("rattle")) install.packages("rattle")
     require(rattle)
     rattle()
 
 > [!NOTE]
-> DSVM 'ye Rattle yüklemeniz gerekmez. Ancak, Rattle açıldığında ek paketler kurmanız istenebilir.
+> Rattle'ı DSVM'ye yüklemenize gerek yok. Ancak, Rattle açıldığında ek paketler yüklemeniz istenebilir.
 
-Çıngırağı için sekmesinde tabanlı bir arabirim kullanır. Sekmelerin çoğu, veri yükleme veya verileri keşfetme gibi [ekip veri bilimi işlemindeki](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)adımlara karşılık gelir. Veri bilimi işlemi soldan sağa sekmeler arasında akar. Son sekme, Rattle tarafından çalıştırılan R komutlarının günlüğünü içerir.
+Rattle sekme tabanlı bir arayüz kullanır. Sekmelerin çoğu, veri yükleme veya verileri keşfetme gibi [Ekip Veri Bilimi Süreci'ndeki](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)adımlara karşılık gelir. Veri bilimi süreci sekmeler aracılığıyla soldan sağa akar. Son sekme, Rattle tarafından çalıştırılabilen R komutlarının bir günlüğünü içerir.
 
-Yük ve veri kümesini yapılandırmak için:
+Veri kümesini yüklemek ve yapılandırmak için:
 
-1. Dosyayı yüklemek için **veri** sekmesini seçin.
-1. **Dosya adı**' nın yanındaki seçiciyi seçin ve ardından **Spambaseheaders. Data**öğesini seçin.
-1. Dosya yüklenemiyor. **Yürüt**' ü seçin. Tanımlı veri türü de dahil olmak üzere her bir sütunun özetini görmeniz gerekir. bir giriş, hedef ya da başka bir değişken türü olsun; ve benzersiz değer sayısı.
-1. Rattle, **istenmeyen posta** sütununu hedef olarak doğru şekilde tanımladı. **İstenmeyen posta** sütununu seçin ve ardından **hedef veri türünü** **kategoric**olarak ayarlayın.
+1. Dosyayı yüklemek için **Veri** sekmesini seçin.
+1. **Filename'nin**yanındaki seçiciyi seçin ve ardından **spambaseHeaders.data'yı**seçin.
+1. Dosyayı yüklemek için. Yürüt'ün'u seçin. **Execute** Tanımlanan veri türü de dahil olmak üzere her sütunun bir özetini görmeniz gerekir; bir giriş, bir hedef veya başka bir değişken türü olup olmadığı; ve benzersiz değerlerin sayısı.
+1. Rattle **spam** sütunu doğru bir şekilde hedef olarak tanımlamıştır. **İstenmeyen posta** sütununa gidin ve ardından **Hedef Veri Türünü** **Kategorik**olarak ayarlayın.
 
-Verileri araştırmak için:
+Verileri keşfetmek için:
 
 1. **Keşfet** sekmesini seçin.
-1. Değişken türleri ve bazı Özet istatistikleri hakkındaki bilgileri görmek için, **özet** > **Yürüt**' ü seçin.
-1. Her değişkenle ilgili diğer istatistik türlerini görüntülemek için, **açıkla** veya **temel bilgiler**gibi diğer seçenekleri belirleyin.
+1. Değişken türleri ve bazı özet istatistikleri hakkındaki bilgileri görmek için **Özet** > Yürüt'ün'u seçin.**Execute**
+1. Her değişkenle ilgili diğer istatistik türlerini görüntülemek **için, Açıkla** veya **Temel Bilgiler**gibi diğer seçenekleri seçin.
 
-Ayrıca, öngörülü çizimler oluşturmak için **keşfet** sekmesini de kullanabilirsiniz. Verilerin bir histogram çizmek için:
+Anlayışlı çizimler oluşturmak için **Keşfet** sekmesini de kullanabilirsiniz. Verilerin histogramını çizmek için:
 
 1. **Dağıtımları**seçin.
-1. **Word_freq_remove** ve **word_freq_you**için **histogram**' ı seçin.
-1. **Yürüt**’ü seçin. Tek bir grafik penceresinde her iki yoğunluk işaretini de görmeniz gerekir. burada, e-postalardan _Kaldır_' a kadar çok daha sık _gördüğünüz sözcük burada_ görünür.
+1. word_freq_remove **word_freq_remove** ve **word_freq_you**için **Histogram'ı**seçin.
+1. **Yürüt**’ü seçin. Her iki yoğunluk çizimini de tek bir grafik penceresinde görmeniz gerekir, burada _göründüğünüz_ sözcüğün e-postalarda _kaldırmaktan_çok daha sık göründüğü açıktır.
 
-**Bağıntı** çizimleri de ilginç. Bir çizim oluşturmak için:
+**Korelasyon** çizimleri de ilginçtir. Bir çizim oluşturmak için:
 
-1. **Tür**için **bağıntı**' yı seçin.
+1. **Türü**için , **Korelasyon**seçin.
 1. **Yürüt**’ü seçin.
-1. En fazla 40 değişkenler önerir Çıngırağı sizi uyarır. Çizimi görüntülemek için **Evet** ' i seçin.
+1. Rattle en fazla 40 değişken önerdiği konusunda sizi uyarır. Çizimi görüntülemek için **Evet'i** seçin.
 
-Daha fazla ilgi çekici bağıntılı ilişkiler vardır: _teknoloji_ , örneğin, _HP_ ve _Labs_'e özellikle yöneliktir. Ayrıca, veri kümesinin alan kodu 650 olduğundan, _650_ ile de kesinlikle bağıntılı olur.
+Ortaya çıkan bazı ilginç korelasyonlar vardır: _teknoloji_ güçlü _HP_ ve _laboratuvarları_ile ilişkilidir, örneğin. Ayrıca _650_ ile de güçlü bir şekilde ilişkilidir çünkü veri seti bağışçılarının alan kodu 650'dir.
 
-Sözcükler arasındaki eş ilişkilerin sayısal değerleri, **keşfet** penceresinde kullanılabilir. Örneğin, bu _teknolojinin_ ve _paradan_ _olumsuz şekilde bağıntılı_ olduğunu unutmayın.
+Sözcükler arasındaki bağıntılar için sayısal değerler **Keşfet** penceresinde kullanılabilir. Bu, örneğin, _bu teknoloji_ olumsuz _sizin_ ve _para_ile ilişkili olduğunu unutmayın ilginç.
 
-Bazı yaygın sorunlar işlemek için veri kümesi Çıngırağı dönüştürebilirsiniz. Örneğin, özellikleri yeniden düzenleyebilir, ımpute değerlerini eksik, aykırı değerleri işleyebilir ve eksik verileri olan değişkenleri veya gözlemleri kaldırabilir. Rattle, gözlemler ve değişkenler arasındaki ilişki kurallarını da tanımlayabilir. Bu sekmeler, bu giriş anlatımında ele alınmazlar.
+Çıngırak, bazı yaygın sorunları işlemek için veri kümesini dönüştürebilir. Örneğin, özellikleri yeniden ölçeklendirebilir, eksik değerleri impute edebilir, aykırılıkları işleyebilir ve eksik veri içeren değişkenleri veya gözlemleri kaldırabilir. Çıngırak da gözlemler ve değişkenler arasındaki ilişki kurallarını belirleyebilirsiniz. Bu sekmeler bu giriş gözden geçirme de kapsama değildir.
 
-Rattle, küme analizini de çalıştırabilir. Şimdi çıkış okunmasını kolaylaştırmak için bazı özellikler hariç tutun. **Veri** sekmesinde, bu 10 öğe hariç değişkenlerin her birinin yanında **Yoksay** ' ı seçin:
+Çıngırak da küme analizi çalıştırabilirsiniz. Çıktının okunmasını kolaylaştırmak için bazı özellikleri hariç tutalım. **Veri** sekmesinde, bu 10 öğe dışında değişkenlerin her birinin yanında **Yoksay'ı** seçin:
 
 * word_freq_hp
 * word_freq_technology
@@ -423,38 +423,38 @@ Rattle, küme analizini de çalıştırabilir. Şimdi çıkış okunmasını kol
 * word_freq_money
 * capital_run_length_longest
 * word_freq_business
-* istenmeyen posta
+* spam
 
-**Küme** sekmesine dönün. **Kortalamalar**' ı seçin ve ardından **küme sayısını** **4**olarak ayarlayın. **Yürüt**’ü seçin. Sonuçlar, çıkış penceresinde görüntülenir. Bir kümede yüksek düzeyde _George_ ve _HP_vardır ve büyük olasılıkla yasal bir iş e-postadır.
+**Küme** sekmesine dön. **KMeans'i**seçin ve ardından **küme sayısını** **4**olarak ayarlayın. **Yürüt**’ü seçin. Sonuçlar çıktı penceresinde görüntülenir. Bir küme _george_ ve _hp_yüksek frekansa sahiptir , ve muhtemelen meşru bir iş e-posta.
 
-Temel bir karar ağacı makine öğrenimi modeli oluşturmak için:
+Temel bir karar ağacı makine öğrenme modeli oluşturmak için:
 
 1. **Model** sekmesini seçin,
-1. **Tür**için **ağaç**' ı seçin.
-1. Çıkış penceresinde ağacı metin biçiminde göstermek için **Yürüt** ' ü seçin.
-1. Grafik sürümünü görüntülemek için **Çiz** düğmesini seçin. Karar ağacı, daha önce rpart kullanarak elde ettiğimiz ağaca benzer.
+1. **Türü** **için, Ağaç'ı**seçin.
+1. Çıktı **Execute** penceresinde ağacı metin biçiminde görüntülemek için Yürüt'''ün'u seçin.
+1. Grafik bir sürümü görüntülemek için **Çiz** düğmesini seçin. Karar ağacı daha önce rpart kullanarak elde edilen ağaca benzer.
 
-Rattle 'ın yararlı bir özelliği, birkaç makine öğrenimi yöntemi çalıştırma ve bunları hızlı bir şekilde değerlendirme yeteneğidir. Adımlar şunlardır:
+Rattle yararlı bir özelliği çeşitli makine öğrenme yöntemleri çalıştırmak ve hızlı bir şekilde bunları değerlendirmek için yeteneğidir. İşte adımlar şunlardır:
 
-1. **Tür**için **Tümü**' nü seçin.
+1. **Türü**için , **Tümünü**seçin.
 1. **Yürüt**’ü seçin.
-1. Rattle çalışmayı bitirdiğinde, **SVM**gibi herhangi bir **tür** değeri seçebilir ve sonuçları görüntüleyebilirsiniz.
-1. Ayrıca, **değerlendirme** sekmesini kullanarak doğrulama kümesindeki modellerin performansını karşılaştırabilirsiniz. Örneğin, **hata matrisi** seçimi, doğrulama kümesindeki her bir model için karışıklık matrisi, genel hata ve Ortalama sınıf hatası gösterir. Ayrıca, ROC eğrileri çizdirebilirsiniz, duyarlılık analizini çalıştırabilir ve diğer model değerlendirmesi türlerini gerçekleştirebilirsiniz.
+1. Çıngırak çalışırken bittiğinde, **SVM**gibi herhangi bir **Tür** değerini seçebilir ve sonuçları görüntüleyebilirsiniz.
+1. **Ayrıca, Değerlendirme** sekmesini kullanarak doğrulama kümesindeki modellerin performansını karşılaştırabilirsiniz. Örneğin, **Hata Matrisi** seçimi, doğrulama kümesindeki her model için karışıklık matrisini, genel hatayı ve ortalama sınıf hatasını gösterir. Ayrıca ROC eğrilerini çizebilir, duyarlılık çözümlemesi yapabilir ve diğer model değerlendirme türlerini yapabilirsiniz.
 
-Model oluşturma işiniz bittiğinde, oturumunuz sırasında Rattle tarafından çalıştırılan R kodunu görüntülemek için **günlük** sekmesini seçin. **Dışarı aktar** düğmesini seçerek bunu kaydedebilirsiniz.
+Modelleri oluşturmayı bitirdiğinizde, oturumunuz sırasında Rattle tarafından çalıştırılan R kodunu görüntülemek için **Günlük** sekmesini seçin. Kaydetmek için **Dışa** Aktar düğmesini seçebilirsiniz.
 
 > [!NOTE]
-> Geçerli Rattle sürümü bir hata içeriyor. Betiği değiştirmek veya adımları daha sonra tekrarlamak üzere kullanmak için *Bu günlüğü... ' nin önüne bu günlüğü dışarı aktar* ' a **#** bir karakter eklemeniz gerekir.
+> Rattle'ın geçerli sürümünde bir hata var. Komut dosyasını değiştirmek veya adımlarınızı daha sonra yinelemek **#** için kullanmak için, *bu günlük* önüne ... günlüğün metnine bir karakter eklemeniz gerekir.
 
-### <a name="postgresql-and-squirrel-sql"></a>PostgreSQL ve SQUIRREL SQL
+### <a name="postgresql-and-squirrel-sql"></a>PostgreSQL ve SQuirreL SQL
 
-DSVM yüklü PostgreSQL ile birlikte gelir. PostgreSQL, bir karmaşık, açık kaynaklı ilişkisel veritabanı hizmetidir. Bu bölümde, spambase veri kümesinin PostgreSQL 'e nasıl yükleneceği ve sonra sorgulanması gösterilmektedir.
+DSVM, PostgreSQL yüklü olarak gelir. PostgreSQL karmaşık, açık kaynak ilişkisel bir veritabanıdır. Bu bölümde, spambase veri kümesini PostgreSQL'e nasıl yükleyip sorgulayabileceğiniz i
 
-Verileri yükleyebilmeniz için önce localhost 'tan parola kimlik doğrulamasına izin vermeniz gerekir. Bir komut isteminde şunu çalıştırın:
+Verileri yükleyemeden önce, yerel ana bilgisayardan parola kimlik doğrulaması için izin vermelisiniz. Bir komut isteminde şunu çalıştırın:
 
     sudo gedit /var/lib/pgsql/data/pg_hba.conf
 
-Alt yapılandırma dosyası izin verilen bağlantı ayrıntılarını birden fazla satır şunlardır:
+Config dosyasının alt kısmında izin verilen bağlantıları ayrıntılı birkaç satır vardır:
 
     # "local" is only for Unix domain socket connections:
     local   all             all                                     trust
@@ -463,27 +463,27 @@ Alt yapılandırma dosyası izin verilen bağlantı ayrıntılarını birden faz
     # IPv6 local connections:
     host    all             all             ::1/128                 ident
 
-Bir Kullanıcı adı ve parola kullanarak oturum açabilmemiz için **IPv4 yerel bağlantıları** **satırını, yerine** **MD5** kullanacak şekilde değiştirin:
+**IPv4 yerel bağlantı** hattını **ident**yerine **md5** kullanmak için değiştirin, böylece bir kullanıcı adı ve parola kullanarak oturum açabiliriz:
 
     # IPv4 local connections:
     host    all             all             127.0.0.1/32            md5
 
-Sonra PostgreSQL hizmetini yeniden başlatın:
+Ardından, PostgreSQL hizmetini yeniden başlatın:
 
     sudo systemctl restart postgresql
 
-Yerleşik Postgres kullanıcısı olarak *psql* (PostgreSQL için etkileşimli Terminal) başlatmak için şu komutu çalıştırın:
+Yerleşik postgres kullanıcısı olarak *psql* (PostgreSQL için etkileşimli bir terminal) başlatmak için şu komutu çalıştırın:
 
     sudo -u postgres psql
 
-Oturum açmak için kullandığınız Linux hesabının kullanıcı adını kullanarak yeni bir kullanıcı hesabı oluşturun. Parola oluştur:
+Oturum açmak için kullandığınız Linux hesabının kullanıcı adını kullanarak yeni bir kullanıcı hesabı oluşturun. Parola oluşturma:
 
     CREATE USER <username> WITH CREATEDB;
     CREATE DATABASE <username>;
     ALTER USER <username> password '<password>';
     \quit
 
-Psql 'de oturum aç:
+psql'e giriş yapın:
 
     psql
 
@@ -495,75 +495,75 @@ Verileri yeni bir veritabanına aktarın:
     \copy data FROM /home/<username>/spambase.data DELIMITER ',' CSV;
     \quit
 
-Şimdi, verileri keşfedelim ve bir JDBC sürücü aracılığıyla veritabanlarıyla etkileşim kurmak için kullanabileceğiniz bir grafik araç olan SQUIRREL SQL kullanarak bazı sorgular çalıştıralım.
+Şimdi, verileri inceleyelim ve bir JDBC sürücüsü aracılığıyla veritabanlarıyla etkileşimde kalmak için kullanabileceğiniz bir grafik aracı olan SQuirreL SQL'i kullanarak bazı sorguları çalıştıralım.
 
-Başlamak için, **uygulamalar** menüsünde, SQUIRREL SQL ' i açın. Sürücüyü ayarlamak için:
+Başlamak için **Uygulamalar** menüsünde SQuirreL SQL'i açın. Sürücüyü ayarlamak için:
 
-1. **Windows** > **Görünüm sürücülerini**seçin.
-1. **PostgreSQL** öğesine sağ tıklayıp **sürücüyü değiştir**' i seçin.
-1. **Ekle** > **Ek sınıf yolu** ' nu seçin.
-1. **Dosya adı**için **/usr/share/Java/jdbcdrivers/PostgreSQL-9.4.1208.jre6.jar**girin.
+1. **Windows** > **View Sürücüleri'ni**seçin.
+1. **PostgreSQL'e** sağ tıklayın ve **Sürücüyü Değiştir'i**seçin.
+1. **Ekstra Sınıf Yol** > **Ekle'yi**seçin.
+1. **Dosya Adı**için , girin **/usr/share/java/jdbcdrivers/postgresql-9.4.1208.jre6.jar**.
 1. **Aç**'ı seçin.
-1. **Liste sürücülerini**seçin. **Sınıf adı**için, **org. PostgreSQL. Driver**' ı seçin ve ardından **Tamam**' ı seçin.
+1. **Liste Sürücüleri'ni**seçin. **Sınıf Adı**için **org.postgresql.Driver'ı**seçin ve ardından **Tamam'ı**seçin.
 
-Yerel sunucusuyla bağlantıyı ayarlamak için:
+Yerel sunucuya bağlantı kurmak için:
 
-1. **Windows** > **Görünüm diğer adlarını seçin.**
-1. Yeni bir diğer ad oluşturmak için **+** düğmesini seçin. Yeni diğer ad için **Istenmeyen posta veritabanı**girin. 
-1. **Sürücü**Için **PostgreSQL**' i seçin.
-1. URL 'YI **JDBC: PostgreSQL://localhost/spam**olarak ayarlayın.
+1. **Windows** > **Görünüm Takma Adları'nı seçin.**
+1. Yeni **+** bir takma ad oluşturmak için düğmeyi seçin. Yeni takma ad için **Spam veritabanını**girin. 
+1. **Sürücü**için **PostgreSQL'i**seçin.
+1. URL'yi **jdbc:postgresql://localhost/spam**olarak ayarlayın.
 1. Kullanıcı adınızı ve parolanızı girin.
-1. **Tamam**’ı seçin.
-1. **Bağlantı** penceresini açmak Için, **istenmeyen posta veritabanı** diğer adına çift tıklayın.
+1. **Tamam'ı**seçin.
+1. **Bağlantı** penceresini açmak için **Spam veritabanı** takma adını çift tıklatın.
 1. **Bağlan**’ı seçin.
 
-Bazı sorgular çalıştırmak için:
+Bazı sorguları çalıştırmak için:
 
 1. **SQL** sekmesini seçin.
-1. **SQL** sekmesinin üst kısmındaki sorgu kutusuna `SELECT * from data;`gibi temel bir sorgu girin.
-1. Sorguyu çalıştırmak için CTRL + ENTER tuşlarına basın. Varsayılan olarak, SQUIRREL SQL Sorgunuzdaki ilk 100 satırı döndürür.
+1. **SQL** sekmesinin üst kısmındaki sorgu kutusuna, '' `SELECT * from data;`gibi temel bir sorgu girin.
+1. Sorguyu çalıştırmak için Ctrl+Enter tuşuna basın. Varsayılan olarak, SQuirreL SQL sorgunuzdaki ilk 100 satırı döndürür.
 
-Bu verileri araştırmak için çalıştırabileceğiniz birçok sorgu daha vardır. Örneğin *, sözcüğün sıklığı* istenmeyen ve ham nasıl farklıdır?
+Bu verileri keşfetmek için çalıştırabileceğiniz daha birçok sorgu vardır. Örneğin, sözcüğün sıklığı spam *make* ve jambon arasında nasıl farklılık gösterir?
 
     SELECT avg(word_freq_make), spam from data group by spam;
 
-Ya da, genellikle *3B*içeren e-posta özellikleri nelerdir?
+Veya, sık sık *3d*içeren e-posta özellikleri nelerdir?
 
     SELECT * from data order by word_freq_3d desc;
 
-Yüksek *3B* görünüşe sahip e-postaların çoğu istenmeyen postalardır. Bu bilgiler, e-postaları sınıflandırmak için bir tahmine dayalı model oluşturmak için yararlı olabilir.
+*3d* yüksek bir olay var çoğu e-postalar görünüşte spam vardır. Bu bilgiler, e-postaları sınıflandırmak için tahmine dayalı bir model oluşturmak için yararlı olabilir.
 
-Makine öğrenimini bir PostgreSQL veritabanında depolanan verileri kullanarak yapmak istiyorsanız, [Madlib](https://madlib.incubator.apache.org/)kullanmayı düşünün.
+PostgreSQL veritabanında depolanan verileri kullanarak makine öğrenimi yapmak istiyorsanız, [MADlib'i](https://madlib.incubator.apache.org/)kullanmayı düşünün.
 
 ### <a name="sql-data-warehouse"></a>SQL Veri Ambarı
 
-Azure SQL veri ambarı, hem ilişkisel hem de ilişkisel olmayan çok büyük hacimli verileri işleyebilen bulut tabanlı, genişleme veritabanıdır. Daha fazla bilgi için bkz. [Azure SQL veri ambarı nedir?](../../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)
+Azure SQL Veri Ambarı, hem ilişkisel hem de ilişkisel olmayan büyük hacimli verileri işleyebilir bulut tabanlı, ölçeklendirilebilir bir veritabanıdır. Daha fazla bilgi için Azure [SQL Veri Ambarı nedir?](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)
 
-Veri ambarı'na bağlanmak ve tablo oluşturmak için bir komut isteminden aşağıdaki komutu çalıştırın:
+Veri ambarına bağlanmak ve tabloyu oluşturmak için aşağıdaki komutu komut isteminden çalıştırın:
 
     sqlcmd -S <server-name>.database.windows.net -d <database-name> -U <username> -P <password> -I
 
-Sqlcmd isteminde şu komutu çalıştırın:
+sqlcmd komut u komutunu çalıştırın:
 
     CREATE TABLE spam (word_freq_make real, word_freq_address real, word_freq_all real, word_freq_3d real,word_freq_our real, word_freq_over real, word_freq_remove real, word_freq_internet real,word_freq_order real, word_freq_mail real, word_freq_receive real, word_freq_will real,word_freq_people real, word_freq_report real, word_freq_addresses real, word_freq_free real,word_freq_business real, word_freq_email real, word_freq_you real, word_freq_credit real,word_freq_your real, word_freq_font real, word_freq_000 real, word_freq_money real,word_freq_hp real, word_freq_hpl real, word_freq_george real, word_freq_650 real, word_freq_lab real,word_freq_labs real, word_freq_telnet real, word_freq_857 real, word_freq_data real,word_freq_415 real, word_freq_85 real, word_freq_technology real, word_freq_1999 real,word_freq_parts real, word_freq_pm real, word_freq_direct real, word_freq_cs real, word_freq_meeting real,word_freq_original real, word_freq_project real, word_freq_re real, word_freq_edu real,word_freq_table real, word_freq_conference real, char_freq_semicolon real, char_freq_leftParen real,char_freq_leftBracket real, char_freq_exclamation real, char_freq_dollar real, char_freq_pound real, capital_run_length_average real, capital_run_length_longest real, capital_run_length_total real, spam integer) WITH (CLUSTERED COLUMNSTORE INDEX, DISTRIBUTION = ROUND_ROBIN);
     GO
 
-BCP kullanarak verileri kopyalama:
+BCP kullanarak verileri kopyalayın:
 
     bcp spam in spambaseHeaders.data -q -c -t  ',' -S <server-name>.database.windows.net -d <database-name> -U <username> -P <password> -F 1 -r "\r\n"
 
 > [!NOTE]
-> İndirilen dosya Windows stili satır sonları içerir. BCP Aracı, UNIX stili satır sonları bekler. BCP 'ye söylemek için-r bayrağını kullanın.
+> İndirilen dosya, Windows stili satır sonları içerir. bcp aracı Unix tarzı çizgi uçları bekliyor. bcp'yi söylemek için -r bayrağını kullanın.
 
-Ardından, sqlcmd kullanarak sorgulayın:
+Sonra, sqlcmd kullanarak sorgulayın:
 
     select top 10 spam, char_freq_dollar from spam;
     GO
 
-Ayrıca, SQUIRREL SQL kullanarak da sorgulama yapabilirsiniz. SQL Server JDBC sürücüsünü kullanarak PostgreSQL 'e benzer adımları izleyin. JDBC sürücüsü/usr/share/Java/jdbcdrivers/sqljdbc42.jar klasöründedir.
+Ayrıca SQuirreL SQL kullanarak sorgulayabilirsiniz. SQL Server JDBC sürücüsünü kullanarak PostgreSQL'e benzer adımları izleyin. JDBC sürücüsü /usr/share/java/jdbcdrivers/sqljdbc42.jar klasöründedir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure 'daki veri bilimi sürecini oluşturan görevler boyunca size kılavuzluk eden makalelere genel bir bakış için bkz. [Team Data Science Process](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/overview).
+Azure'daki veri bilimi işlemini oluşturan görevlerde size yol gösteren makalelere genel bakış [için, Takım Veri Bilimi Süreci'ne](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/overview)bakın.
 
-Belirli senaryolar için ekip veri bilimi Işlemindeki adımları gösteren uçtan uca izlenecek yolların açıklaması için, bkz. [Team Data Science Process izlenecek yolları](../team-data-science-process/walkthroughs.md). İzlenecek yollar, ayrıca bir iş akışı veya işlem hattı akıllı bir uygulama oluşturmak için bulut ve şirket içi araçları ve Hizmetleri birleştirme işlemini göstermektedir.
+Belirli senaryolar için Ekip Veri Bilimi Süreci'ndeki adımları gösteren uçtan uca gözden geçirmelerin açıklaması [için, Bkz.](../team-data-science-process/walkthroughs.md) İzler ayrıca bulut ve şirket içi araçları ve hizmetleri akıllı bir uygulama oluşturmak için iş akışı veya ardışık yol üzerinde nasıl birleştirilen gösteriş.

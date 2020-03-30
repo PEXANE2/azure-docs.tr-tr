@@ -1,6 +1,6 @@
 ---
-title: 'Sanal bir makineye Kopyala ve buradan Yapıştır: Azure savunma'
-description: Bu makalede, savunma kullanarak bir Azure VM 'ye kopyalamayı ve buradan yapıştırmayı öğrenin.
+title: 'Sanal makineye kopyalayıp yapıştırMa: Azure Kalesi'
+description: Bu makalede, Bastion'u kullanarak azure vm'ye kopyalama ve yapıştırmayı öğrenin.
 services: bastion
 author: cherylmc
 ms.service: bastion
@@ -8,52 +8,52 @@ ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: cherylmc
 ms.openlocfilehash: 0aaf816cdfe7d42fd345eb4f010cf47b1615f462
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76989544"
 ---
-# <a name="copy-and-paste-to-a-virtual-machine-azure-bastion"></a>Sanal makineye Kopyala ve Yapıştır: Azure savunma
+# <a name="copy-and-paste-to-a-virtual-machine-azure-bastion"></a>Sanal makineye kopyalayıp yapıştır: Azure Kalesi
 
-Bu makale, Azure savunma kullanırken sanal makinelere ve sanal makinelere metin kopyalayıp yapıştırmanıza yardımcı olur. Bir VM ile çalışmadan önce, [bir savunma ana bilgisayarı oluşturma](bastion-create-host-portal.md)adımlarını izlediğinizden emin olun. Ardından, [RDP](bastion-connect-vm-rdp.md) veya [SSH](bastion-connect-vm-ssh.md)kullanarak birlikte çalışmak istediğiniz sanal makineye bağlanın.
+Bu makale, Azure Bastion kullanırken sanal makinelere metin kopyalayıp yapıştırmanıza yardımcı olur. Bir VM ile çalışmadan önce, [bir Bastion ana bilgisayar oluşturmak](bastion-create-host-portal.md)için adımları izlediğinden emin olun. Ardından, [RDP](bastion-connect-vm-rdp.md) veya [SSH](bastion-connect-vm-ssh.md)kullanarak çalışmak istediğiniz VM'ye bağlanın.
 
-Gelişmiş Pano API erişimini destekleyen tarayıcılarda, yerel cihazınızdaki uygulamalar arasında kopyalama ve yapıştırma yaptığınız şekilde yerel cihazınız ile uzak oturum arasında metin kopyalayabilir ve yapıştırabilirsiniz. Diğer tarayıcılarda, savunma panosu erişim aracı paleti ' ni kullanabilirsiniz.
+Gelişmiş Pano API erişimini destekleyen tarayıcılar için, yerel aygıtınızdaki uygulamaları kopyalayıp yapıştırdığınız şekilde yerel aygıtınız ile uzak oturum arasındaki metni kopyalayıp yapıştırabilirsiniz. Diğer tarayıcılar için Bastion pano erişim aracı paletini kullanabilirsiniz.
 
    ![Panoya izin ver](./media/bastion-vm-manage/allow.png)
 
-Yalnızca metin kopyalama/yapıştırma desteklenir. Doğrudan kopyalama ve yapıştırma için, tarayıcınız, savunma oturumu başlatıldığında Pano erişimi isteyebilir. Web sayfasının panoya erişmesine **Izin verin** .
+Yalnızca metin kopyalama/yapıştırılar desteklenir. Doğrudan kopyalama ve yapıştırması için tarayıcınız, Bastion oturumu başolarak lanse edilirken pano erişimiiçin sizi isteyebilir. Web sayfasının panoya erişmesine **izin verin.**
 
-## <a name="to"></a>Uzak oturuma Kopyala
+## <a name="copy-to-a-remote-session"></a><a name="to"></a>Uzak bir oturuma kopyalama
 
-[Azure Portal ](https://portal.azure.com)kullanarak sanal makineye bağlandıktan sonra aşağıdaki adımları izleyin:
+[Azure portalını ](https://portal.azure.com)kullanarak sanal makineye bağlandıktan sonra aşağıdaki adımları tamamlayın:
 
-1. Yerel cihazdan metin/içerik ' i yerel panoya kopyalayın.
-1. Uzak oturum sırasında, iki oku seçerek savunma panosu erişim aracı paletini başlatın. Oklar oturumun sol ortasında bulunur.
+1. Yerel aygıttaki metni/içeriği yerel panoya kopyalayın.
+1. Uzak oturum sırasında, iki ok seçerek Bastion pano erişim aracı paletini başlatın. Oklar oturumun sol merkezinde yer alır.
 
-   ![Araç paleti](./media/bastion-vm-manage/left.png)
+   ![takım paleti](./media/bastion-vm-manage/left.png)
 
-   ![yapıştırır](./media/bastion-vm-manage/clipboard.png)
-1. Genellikle, kopyalanmış metin, bir savunma Kopyala Yapıştır paletinde otomatik olarak gösterilir. Metniniz yoksa, metni paletteki metin alanına yapıştırın.
-1. Metin metin alanından olduktan sonra Uzak oturuma yapıştırabilirsiniz.
+   ![pano](./media/bastion-vm-manage/clipboard.png)
+1. Genellikle, kopyalanan metin otomatik olarak Bastion kopyala yapıştır paletinde gösterir. Metniniz orada değilse, metni paletteki metin alanına yapıştırın.
+1. Metin metin alanına girince, metin den uzak oturuma yapıştırabilirsiniz.
 
-   ![masına](./media/bastion-vm-manage/local.png)
+   ![Yapıştır](./media/bastion-vm-manage/local.png)
 
-## <a name="from"></a>Uzak oturumdan Kopyala
+## <a name="copy-from-a-remote-session"></a><a name="from"></a>Uzak bir oturumdan kopyalama
 
-[Azure Portal ](https://portal.azure.com)kullanarak sanal makineye bağlandıktan sonra aşağıdaki adımları izleyin:
+[Azure portalını ](https://portal.azure.com)kullanarak sanal makineye bağlandıktan sonra aşağıdaki adımları tamamlayın:
 
-1. Uzak oturumdaki metin/içeriği uzak Pano 'ya (CTRL-C kullanarak) kopyalayın.
+1. Uzak oturumdaki metni/içeriği uzak panoya (Ctrl-C kullanarak) kopyalayın.
 
-   ![Araç paleti](./media/bastion-vm-manage/remote.png)
-1. Uzak oturum sırasında, iki oku seçerek savunma panosu erişim aracı paletini başlatın. Oklar oturumun sol ortasında bulunur.
+   ![takım paleti](./media/bastion-vm-manage/remote.png)
+1. Uzak oturum sırasında, iki ok seçerek Bastion pano erişim aracı paletini başlatın. Oklar oturumun sol merkezinde yer alır.
 
-   ![yapıştırır](./media/bastion-vm-manage/clipboard2.png)
-1. Genellikle, kopyalanmış metin, bir savunma Kopyala Yapıştır paletinde otomatik olarak gösterilir. Metniniz yoksa, metni paletteki metin alanına yapıştırın.
-1. Metin metin alanından olduktan sonra yerel cihaza yapıştırabilirsiniz.
+   ![pano](./media/bastion-vm-manage/clipboard2.png)
+1. Genellikle, kopyalanan metin otomatik olarak Bastion kopyala yapıştır paletinde gösterir. Metniniz orada değilse, metni paletteki metin alanına yapıştırın.
+1. Metin metin alanına girince, yerel aygıta yapıştırabilirsiniz.
 
-   ![masına](./media/bastion-vm-manage/local2.png)
+   ![Yapıştır](./media/bastion-vm-manage/local2.png)
  
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Savunma [hakkında SSS](bastion-faq.md)makalesini okuyun.
+[Bastion SSS'yi](bastion-faq.md)okuyun.

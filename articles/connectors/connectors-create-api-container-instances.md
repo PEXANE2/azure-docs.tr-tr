@@ -1,6 +1,6 @@
 ---
-title: Dağıtım & Azure Container Instances yönetme
-description: Azure Logic Apps kullanarak Azure Container Instances kapsayıcı dağıtımlarını oluşturan ve yöneten görevleri ve iş akışlarını otomatikleştirin
+title: Azure Kapsayıcı Örneklerini dağıtma & yönetme
+description: Azure Mantıksal Uygulamaları'nı kullanarak Azure Kapsayıcı Örnekleri'nde kapsayıcı dağıtımları oluşturan ve yöneten görevleri ve iş akışlarını otomatikleştirin
 services: logic-apps, container-instances
 ms.service: logic-apps
 ms.suite: integration
@@ -12,66 +12,66 @@ ms.topic: article
 tags: connectors
 ms.date: 01/14/2020
 ms.openlocfilehash: ecb1049d64197f2a60438df7eedfb244907f7327
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76046298"
 ---
-# <a name="deploy-and-manage-azure-container-instances-by-using-azure-logic-apps"></a>Azure Logic Apps kullanarak Azure Container Instances dağıtın ve yönetin
+# <a name="deploy-and-manage-azure-container-instances-by-using-azure-logic-apps"></a>Azure Mantıksal Uygulamaları kullanarak Azure Kapsayıcı Örneklerini dağıtma ve yönetme
 
-Azure Logic Apps ve Azure Container Instance Bağlayıcısı sayesinde, [kapsayıcı grupları](../container-instances/container-instances-container-groups.md)dağıtan ve yöneten otomatik görevleri ve iş akışlarını ayarlayabilirsiniz. Kapsayıcı örneği Bağlayıcısı aşağıdaki eylemleri destekler:
+Azure Mantık Uygulamaları ve Azure Kapsayıcı Örneği bağlayıcısı [ile, kapsayıcı gruplarını](../container-instances/container-instances-container-groups.md)dağıtan ve yöneten otomatik görevler ve iş akışları ayarlayabilirsiniz. Kapsayıcı Örneği bağlayıcısı aşağıdaki eylemleri destekler:
 
 * Kapsayıcı grubu oluşturma veya silme
-* Bir kapsayıcı grubunun özelliklerini al
-* Kapsayıcı gruplarının bir listesini alın
-* Bir kapsayıcı örneğinin günlüklerini al
+* Kapsayıcı grubunun özelliklerini alma
+* Konteyner gruplarının listesini alma
+* Kapsayıcı örneğinin günlüklerini alma
 
-Logic Apps tetikleyicisine yanıt olarak kapsayıcı iş yükü çalıştırma gibi görevler için mantıksal uygulamalarınızda bu eylemleri kullanın. Ayrıca, kapsayıcı örneği eylemlerinden alınan çıktıyı başka eylemlere de kullanabilirsiniz. 
+Mantık Uygulamaları tetikleyicisine yanıt olarak kapsayıcı iş yükünü çalıştırmak gibi görevler için mantık uygulamalarınızda bu eylemleri kullanın. Diğer eylemlerin Kapsayıcı Örneği eylemlerinden çıktı kullanmasını da sağlayabilirsiniz. 
 
-Bu bağlayıcı yalnızca eylemler sağlar, bu nedenle mantıksal uygulamanızı başlatmak için bir kapsayıcı iş yükünü düzenli bir zamanlamaya göre çalıştırmak için **yineleme** tetikleyicisi gibi ayrı bir tetikleyici kullanın. Ya da bir Outlook e-postası gibi bir olaydan sonra kapsayıcı grubu dağıtımı tetiklemeniz gerekebilir. 
+Bu bağlayıcı yalnızca eylemler sağlar, bu nedenle mantık uygulamanızı başlatmak için, kapsayıcı iş yükünü düzenli bir zamanlamada çalıştırmak için **Yineleme tetikleyicisi** gibi ayrı bir tetikleyici kullanın. Veya, Outlook e-postasının gelmesi gibi bir olaydan sonra bir kapsayıcı grubu dağıtımını tetiklemeniz gerekebilir. 
 
-Logic Apps 'e yeni başladıysanız [ne Azure Logic Apps](../logic-apps/logic-apps-overview.md) olduğunu gözden geçirin.
+Mantıksal uygulamalarda yeniyseniz, [Azure Mantık Uygulamaları nedir'yi inceleyin?](../logic-apps/logic-apps-overview.md)
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/). 
 
-* [Mantıksal uygulamalar oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md) ve [kapsayıcı örnekleri oluşturma ve yönetme](../container-instances/container-instances-quickstart.md) hakkında temel bilgi
+* [Mantık uygulamalarının nasıl oluşturulup](../logic-apps/quickstart-create-first-logic-app-workflow.md) oluşturulması ve [konteyner örneklerinin nasıl oluşturulup yönetileceği](../container-instances/container-instances-quickstart.md) hakkında temel bilgiler
 
-* Kapsayıcı örneklerinize erişmek istediğiniz mantıksal uygulama. Bir eylem kullanmak için, mantıksal uygulamanızı başka bir tetikleyici ile başlatın, örneğin **yineleme** tetikleyicisi.
+* Kapsayıcı örneklerinize erişmek istediğiniz mantık uygulaması. Bir eylemi kullanmak için, mantık uygulamanızı başka bir tetikleyiciyle başlatın, **örneğin, Yineleme** tetikleyicisi.
 
-## <a name="add-a-container-instance-action"></a>Kapsayıcı örneği eylemi ekleme
+## <a name="add-a-container-instance-action"></a>Kapsayıcı Örneği eylemi ekleme
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. [Azure Portal](https://portal.azure.com)oturum açın ve daha önce açık değilse mantıksal uygulama Tasarımcısı 'nda mantıksal uygulamanızı açın.
+1. [Azure portalında](https://portal.azure.com)oturum açın ve mantık uygulamanızı zaten açık değilse Mantık Uygulama Tasarımcısı'nda açın.
 
 1. Bir yol seçin: 
 
-   * Eylem eklemek istediğiniz son adım altında **yeni adım**' ı seçin. 
+   * Eylem eklemek istediğiniz son adımaltında Yeni **adımı**seçin. 
 
      -veya-
 
-   * Eylem eklemek istediğiniz adımlar arasında, işaretçinizi adımlar arasındaki oka taşıyın. 
-   Görüntülenen artı işaretini ( **+** ) seçin ve ardından **Eylem Ekle**' yi seçin.
+   * Eylem eklemek istediğiniz adımlar arasında, işaretçinizin üzerine adımların arasında ilerleyin. 
+   Görünen artı işaretini (**+**) seçin ve ardından eylem **ekle'yi**seçin.
 
-1. Arama kutusuna filtreniz olarak "kapsayıcı örneği" yazın. Eylemler listesi altında istediğiniz Azure Container Instance bağlayıcı eylemini seçin.
+1. Arama kutusuna filtreniz olarak "kapsayıcı örneği"ni girin. Eylemler listesinin altında, istediğiniz Azure Kapsayıcı Örneği bağlayıcı eylemini seçin.
 
 1. Bağlantınıza bir ad verin. 
 
-1. Seçtiğiniz eyleminiz için gerekli ayrıntıları sağlayın ve mantıksal uygulamanızın iş akışını oluşturmaya devam edin.
+1. Seçtiğiniz eylem için gerekli ayrıntıları sağlayın ve mantık uygulamanızın iş akışını oluşturmaya devam edin.
 
-  Örneğin, **kapsayıcı grubu oluştur** ' u seçin ve aşağıdaki görüntüde gösterildiği gibi bir kapsayıcı grubu ve gruptaki bir veya daha fazla kapsayıcı örneği için özellikleri girin (kısmi ayrıntı):
+  Örneğin, **kapsayıcı grubu oluştur'u** seçin ve aşağıdaki resimde (kısmi ayrıntı) gösterildiği gibi, bir kapsayıcı grubu ve gruptaki bir veya daha fazla kapsayıcı örneğinin özelliklerini girin:
 
   ![Kapsayıcı grubu oluştur](./media/connectors-create-api-container-instances/logic-apps-aci-connector.png)
 
 ## <a name="connector-reference"></a>Bağlayıcı başvurusu
 
-Bağlayıcının Openapı (eski adıyla Swagger) açıklaması tarafından tanımlanan Tetikleyiciler, Eylemler ve limitlerle ilgili teknik ayrıntılar için bağlayıcının [başvuru sayfasını](/connectors/aci/) veya kapsayıcı grubu [YAML başvurusunu](../container-instances/container-instances-reference-yaml.md)gözden geçirin.
+Bağlayıcının OpenAPI (eski adıyla Swagger) açıklamasıyla açıklanan tetikleyiciler, eylemler ve sınırlar hakkındaki teknik ayrıntılar için bağlayıcının [başvuru sayfasını](/connectors/aci/) veya kapsayıcı grubu [YAML referansını](../container-instances/container-instances-reference-yaml.md)gözden geçirin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* E-posta veya Twitter metninin yaklaşımını çözümlemek için Azure Container Instances bir kapsayıcı çalıştıran [örnek bir mantıksal uygulama](https://github.com/Azure-Samples/aci-logicapps-integration) görüntüleyin
+* E-posta veya Twitter metninin duyarlılığını analiz etmek için Azure Kapsayıcı Örnekleri'nde kapsayıcı çalıştıran örnek bir [mantık uygulamasına](https://github.com/Azure-Samples/aci-logicapps-integration) bakın
 
 * Diğer [Logic Apps bağlayıcıları](../connectors/apis-list.md) hakkında bilgi edinin

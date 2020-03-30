@@ -1,38 +1,38 @@
 ---
-title: ARM ile ıLB ATıCı oluşturma
-description: Azure Resource Manager şablonları kullanarak iç yük dengeleyiciye (ıLB Ao) App Service ortam oluşturmayı öğrenin. Uygulamalarınızı internet 'ten tamamen yalıtın.
+title: ARM ile ILB ASE oluşturma
+description: Azure Kaynak Yöneticisi şablonlarını kullanarak dahili yük dengeleyicisi (ILB ASE) ile Bir Uygulama Hizmeti ortamını nasıl oluşturabilirsiniz öğrenin. Uygulamalarınızı internetten tamamen yalıtın.
 author: ccompy
 ms.assetid: 0f4c1fa4-e344-46e7-8d24-a25e247ae138
 ms.topic: quickstart
 ms.date: 08/05/2019
 ms.author: ccompy
-ms.custom: seodec18
-ms.openlocfilehash: 3bbc2dcc86d50e0a88e2f3e96c426cb317f41dea
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.custom: mvc, seodec18
+ms.openlocfilehash: 98345e8585a3f6653659e0d41eb5c3308a0a6634
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75375041"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80057408"
 ---
-# <a name="create-and-use-an-internal-load-balancer-app-service-environment"></a>Iç Load Balancer App Service Ortamı oluşturma ve kullanma 
+# <a name="create-and-use-an-internal-load-balancer-app-service-environment"></a>Dahili Yük Dengeleyici Uygulaması Servis Ortamı Oluşturma ve Kullanma 
 
-Azure App Service Ortamı, bir Azure sanal ağı 'ndaki (VNet) bir alt ağa Azure App Service dağıtımdır. Bir App Service Ortamı (ASE) iki şekilde dağıtılabilir: 
+Azure Uygulama Hizmet Ortamı, Azure Uygulama Hizmeti'nin bir Azure sanal ağında (VNet) bir alt ağa dağıtımıdır. Bir App Service Ortamı (ASE) iki şekilde dağıtılabilir: 
 
 - Genellikle Dış ASE olarak adlandırılan durumda, bir dış IP adresi üzerindeki VIP ile.
 - Genellikle iç uç nokta bir iç yük dengeleyici (ILB) olduğu için ILB ASE olarak adlandırılan durumda, bir iç IP adresi üzerindeki VIP ile. 
 
-Bu makale bir ILB ASE oluşturma işlemini gösterir. Ao 'ya genel bakış için bkz. [App Service ortamlara giriş][Intro]. Dış Ao oluşturma hakkında bilgi edinmek için bkz. [dış Ao oluşturma][MakeExternalASE].
+Bu makale bir ILB ASE oluşturma işlemini gösterir. ASE’ye genel bakış için bkz. [App Service Ortamlarına giriş][Intro]. Dış ASE oluşturma hakkında bilgi almak için bkz. [Dış ASE Oluşturma][MakeExternalASE].
 
 ## <a name="overview"></a>Genel Bakış 
 
-Bir ASE’yi İnternet’ten erişilebilen bir uç nokta ile ya da sanal ağınızdaki bir IP adresi ile dağıtabilirsiniz. IP adresini bir sanal ağ adresine ayarlamak için, ASE’nin ILB ile dağıtılması gerekir. ATıCı 'nizi bir ıLB ile dağıtırken Ao 'nizin adını sağlamalısınız. Ao 'nizin adı, Ao 'daki uygulamalar için etki alanı son ekinde kullanılır.  ILB ATıCı için etki alanı soneki &lt;Ao adı&gt;. appserviceenvironment.net. ILB Ao 'da yapılan uygulamalar genel DNS 'ye yerleştirmez. 
+Bir ASE’yi İnternet’ten erişilebilen bir uç nokta ile ya da sanal ağınızdaki bir IP adresi ile dağıtabilirsiniz. IP adresini bir sanal ağ adresine ayarlamak için, ASE’nin ILB ile dağıtılması gerekir. ASE'nizi bir ILB ile dağıttığınızda, ASE'nizin adını sağlamanız gerekir. ASE'nizin adı, ASE'nizdeki uygulamaların etki alanı sonekinde kullanılır.  ILB ASE'nizin etki alanı &lt;soneki ASE adıdır&gt;.appserviceenvironment.net. ILB ASE'de yapılan uygulamalar genel DNS'ye konulmaz. 
 
-ILB ASE 'nin önceki sürümleri, bir etki alanı soneki ve HTTPS bağlantıları için varsayılan bir sertifika sağlamanız gerekir. Etki alanı soneki artık ıLB AI oluşturma sırasında toplanmaz ve varsayılan sertifika da artık toplanmaz. Artık bir ıLB AI oluşturduğunuzda, varsayılan sertifika Microsoft tarafından sağlanır ve tarayıcı tarafından güvenilirdir. Ao 'da uygulamalar üzerinde özel etki alanı adları ayarlayabiliyor ve bu özel etki alanı adlarında sertifikalar ayarlamış olabilirsiniz. 
+ILB ASE'nin önceki sürümlerinde, https bağlantıları için bir etki alanı soneki ve varsayılan bir sertifika sağlamanız gerekiyordu. Etki alanı soneki artık ILB ASE oluşturmada toplanmaz ve varsayılan sertifika da artık toplanmaz. Şimdi bir ILB ASE oluşturduğunuzda, varsayılan sertifika Microsoft tarafından sağlanır ve tarayıcı tarafından güvenilir. ASE'nizdeki uygulamalarda özel alan adları belirleyebilir ve bu özel alan adları üzerinde sertifikalar ayarlayabilirsiniz. 
 
-ILB Ao ile şunları yapabilirsiniz:
+Bir ILB ASE ile şunları yapabilirsiniz:
 
--   Siteden siteye veya ExpressRoute aracılığıyla erişebileceğiniz intranet uygulamalarını bulutta güvenli bir şekilde barındırın.
--   Bir WAF cihazındaki uygulamaları koruma
+-   Siteden siteye veya ExpressRoute üzerinden erişebildiğiniz intranet uygulamalarını bulutta güvenli bir şekilde barındırın.
+-   Uygulamaları WAF cihazıyla koruyun
 -   Genel DNS sunucularında listelenmeyen uygulamaları bulutta barındırma.
 -   Ön uç uygulamalarınızın güvenli bir şekilde tümleştirilebileceği, İnternet’ten yalıtılmış arka uç uygulamaları oluşturma.
 
@@ -48,33 +48,33 @@ ILB ASE’yi kullanırken bazı işlemleri yapamazsınız:
 
 ILB ASE oluşturmak için:
 
-1. Azure portalda **Kaynak oluştur** > **Web** > **App Service Ortamı**’nı seçin.
+1. Azure portalında > kaynak**Web** > **Uygulaması Hizmet Ortamı** **Oluştur'u**seçin.
 
 2. Aboneliğinizi seçin.
 
 3. Kaynak grubunu seçin veya oluşturun.
 
-4. App Service Ortamı adını girin.
+4. Uygulama Hizmet Ortamınızın adını girin.
 
-5. Iç sanal IP türünü seçin.
+5. İç sanal IP türünü seçin.
 
     ![ASE oluşturma](media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase.png)
 
-6. Ağ seçin
+6. Ağ'ı Seçin
 
-7. Bir sanal ağ seçin veya oluşturun. Burada yeni bir sanal ağ oluşturursanız, bu adres aralığı 192.168.250.0/23 olacak şekilde tanımlanır. Farklı bir adres aralığına veya ASE 'den farklı bir kaynak grubuna sahip bir VNet oluşturmak için Azure sanal ağ oluşturma portalını kullanın. 
+7. Sanal Ağ seçin veya oluşturun. Burada yeni bir VNet oluşturursanız, 192.168.250.0/23 adres aralığı ile tanımlanır. Farklı bir adres aralığına veya ASE'den farklı bir kaynak grubunda bir VNet oluşturmak için Azure Sanal Ağ oluşturma portalını kullanın. 
 
-8. Boş bir alt ağ seçin veya oluşturun. Bir alt ağ seçmek istiyorsanız, boş ve Temsilcili olmalıdır. ATıCı oluşturulduktan sonra alt ağ boyutu değiştirilemez. 256 adres içeren ve en büyük boyutlu ASE’yi işleyebilen ve ölçeklendirme ihtiyaçlarını karşılayabilen `/24` dosya boyutu önerilir. 
+8. Boş bir alt ağ seçin veya oluşturun. Bir alt ağ seçmek istiyorsanız, boş olmalı ve devralınmamalıdır. ASE oluşturulduktan sonra alt ağ boyutu değiştirilemez. 256 adres içeren ve en büyük boyutlu ASE’yi işleyebilen ve ölçeklendirme ihtiyaçlarını karşılayabilen `/24` dosya boyutu önerilir. 
 
-    ![ATıCı ağı][1]
+    ![ASE ağ][1]
 
-7. **Gözden geçir '** i seçin ve **Oluştur**' u seçin.
+7. **Gözden Geçir'i ve Oluştur'u** seçin ve ardından **Oluştur'u**seçin.
 
 ## <a name="create-an-app-in-an-ilb-ase"></a>ILB ASE'de uygulama oluşturma ##
 
 ILB ASE'de uygulama oluşturma işlemi, normalde bir ASE’de uygulama oluşturma işlemiyle aynıdır.
 
-1. Azure portal **bir kaynak oluştur** > **Web** > **Web uygulaması**' nı seçin.
+1. Azure portalında > kaynak**Web Web** > **Uygulaması** **Oluştur'u**seçin.
 
 1. Uygulamanın adını girin.
 
@@ -82,53 +82,53 @@ ILB ASE'de uygulama oluşturma işlemi, normalde bir ASE’de uygulama oluşturm
 
 1. Kaynak grubunu seçin veya oluşturun.
 
-1. Yayımla, çalışma zamanı yığını ve Işletim sisteminizi seçin.
+1. Yayımla, Çalışma Zamanı Yığını ve İşletim Sisteminizi seçin.
 
-1. Konumun mevcut bir ıLB Ao olduğu bir konum seçin.  Ayrıca, yalıtılmış bir App Service planı seçerek uygulama oluşturma sırasında yeni bir AO da oluşturabilirsiniz. Yeni bir AO oluşturmak istiyorsanız, ATıCı 'in içinde oluşturulmasını istediğiniz bölgeyi seçin.
+1. Konumun varolan bir ILB ASE olduğu bir konum seçin.  Ayrıca, yalıtılmış bir Uygulama Hizmeti planı seçerek uygulama oluşturma sırasında yeni bir ASE oluşturabilirsiniz. Yeni bir ASE oluşturmak istiyorsanız, ASE'nin oluşturulmasını istediğiniz bölgeyi seçin.
 
 1. Bir App Service planı seçin ya da oluşturun. 
 
-1. **Gözden geçir ' i ve Oluştur '** u seçin ve ardından **Oluştur** ' u seçin.
+1. **Gözden Geçir'i ve Oluştur'u** seçin ve hazır olduğunuzda **Oluştur'u** seçin.
 
 ### <a name="web-jobs-functions-and-the-ilb-ase"></a>Web işleri, İşlevler ve ILB ASE 
 
-Hem İşlevler hem de web işleri ILB ASE’de desteklenir, ancak portalın bunlarla çalışabilmesi için SCM sitesine ağ erişiminiz olmalıdır.  Başka bir deyişle, tarayıcınız sanal ağ içinde veya sanal ağa bağlı bir konakta olmalıdır. ILB ASE 'niz *appserviceenvironment.net*'de bitmeyecek bir etki alanı adına sahipse,, SCM siteniz tarafından kullanılan HTTPS sertifikasına güvenmesi için tarayıcınızı almanız gerekir.
+Hem İşlevler hem de web işleri ILB ASE’de desteklenir, ancak portalın bunlarla çalışabilmesi için SCM sitesine ağ erişiminiz olmalıdır.  Başka bir deyişle, tarayıcınız sanal ağ içinde veya sanal ağa bağlı bir konakta olmalıdır. ILB ASE'nizin *appserviceenvironment.net*bitmeyen bir etki alanı adı varsa, tarayıcınızın scm siteniz tarafından kullanılan HTTPS sertifikasına güvenmesi gerekir.
 
 ## <a name="dns-configuration"></a>DNS yapılandırması 
 
-Dış VIP kullandığınızda DNS, Azure tarafından yönetilir. ASE’nizde oluşturulan herhangi bir uygulama, genel bir DNS olan Azure DNS'e otomatik olarak eklenir. ILB ASE'de kendi DNS’inizi yönetmeniz gerekir. ILB as ile kullanılan etki alanı soneki Ao 'nun adına bağlıdır. Etki alanı son eki *&lt;Ao adı&gt;. appserviceenvironment.net*. ILB 'nizin IP adresi, portalda **IP adresleri**altında bulunur. 
+Dış VIP kullandığınızda DNS, Azure tarafından yönetilir. ASE’nizde oluşturulan herhangi bir uygulama, genel bir DNS olan Azure DNS'e otomatik olarak eklenir. ILB ASE'de kendi DNS’inizi yönetmeniz gerekir. ILB ASE ile kullanılan etki alanı soneki ASE'nin adına bağlıdır. Etki alanı soneki * &lt;ASE adı&gt;.appserviceenvironment.net.* ILB'nizin IP adresi IP **adreslerinin**altındaki portaldadır. 
 
-DNS 'nizi yapılandırmak için:
+DNS'nizi yapılandırmak için:
 
-- *&lt;atıcı adı* için bir bölge oluşturun&gt;. appserviceenvironment.net
-- Bu bölgede * ıLB IP adresine işaret eden bir kayıt oluşturun
-- Bu bölgede @ adresli ıLB IP adresine işaret eden bir kayıt oluşturma
-- *&lt;Ao adı&gt;. appserviceenvironment.net* adlı SCM adlı bir bölge oluşturun
-- SCM bölgesinde * ıLB IP adresine işaret eden bir kayıt oluşturun
+- * &lt;ASE adı&gt;için bir bölge oluşturma .appserviceenvironment.net*
+- iLB IP adresine * işaret eden o bölgede bir A kaydı oluşturmak
+- iLB IP adresine @ işaret eden o bölgede bir A kaydı oluşturmak
+- *ASE adında&gt;bir bölge oluşturmak .appserviceenvironment.net adlı scm &lt;*
+- ILB IP adresine * işaret eden scm bölgesinde bir A kaydı oluşturmak
 
 ## <a name="publish-with-an-ilb-ase"></a>ILB ASE ile yayımlama
 
-Oluşturulan her uygulama için iki uç nokta vardır. ILB Ao 'da, *&lt;app name&gt;.&lt;ILB Ao etki alanı&gt;* ve *&lt;uygulama adı&gt;. scm.&lt;ILB ao etki alanı&gt;* . 
+Oluşturulan her uygulama için iki uç nokta vardır. ILB ASE'de * &lt;uygulama adınız&gt;vardır.&lt; ILB ASE&gt; Etki alanı* ve * &lt;uygulama adı&gt;.scm.&lt; ILB ASE&gt;Etki Alanı*. 
 
-SCM site adı sizi Azure portalı içinde **Gelişmiş portal** olarak adlandırılan Kudu konsoluna götürür. Kudu konsolunu kullanarak ortam değişkenlerini görüntüleyebilir, diski keşfedebilir, bir konsolu kullanabilir ve daha fazlasını yapabilirsiniz. Daha fazla bilgi için bkz. [Azure App Service Için kudu konsolu][Kudu]. 
+SCM site adı sizi Azure portalı içinde **Gelişmiş portal** olarak adlandırılan Kudu konsoluna götürür. Kudu konsolunu kullanarak ortam değişkenlerini görüntüleyebilir, diski keşfedebilir, bir konsolu kullanabilir ve daha fazlasını yapabilirsiniz. Daha fazla bilgi için bkz. [Azure App Service için Kudu konsolu][Kudu]. 
 
 GitHub ve Azure DevOps gibi İnternet tabanlı CI sistemleri, derleme aracısına İnternet’ten erişilebiliyorsa ve aracı ILB ASE ile aynı ağdaysa ILB ASE ile çalışmaya devam eder. Bu nedenle, Azure DevOps örneğinde derleme aracısı ILB ASE ile aynı sanal ağda (alt ağın farklı olması sorun yaratmaz) oluşturulursa Azure DevOps git’ten kod çekip ILB ASE’ye dağıtabilir. Kendi derleme aracınızı oluşturmak istemiyorsanız çekme modeli kullanan bir CI sistemi (Dropbox gibi) kullanmanız gerekir.
 
-Bir ILB ASE’deki uygulamalar için yayımlama uç noktaları, ILB ASE oluşturulurken kullanılan etki alanını kullanır. Bu etki alanı uygulamanın yayımlama profilinde ve uygulamanın portal dikey penceresinde görünür (**Genel Bakış** > **Temel Bilgiler** ve ayrıca **Özellikler**). Etki alanı&lt;sonekine sahip bir ıLB Ao *adı&gt;. appserviceenvironment.net*ve *MyTest*adlı BIR uygulama varsa, FTP için *MyTest.&lt;ao adı&gt;. appserviceenvironment.net* ve Web dağıtımı için *MyTest.scm.contoso.net* kullanın.
+Bir ILB ASE’deki uygulamalar için yayımlama uç noktaları, ILB ASE oluşturulurken kullanılan etki alanını kullanır. Bu etki alanı uygulamanın yayın profilinde ve uygulamanın portal bıçak **(Genel Bakış** > **Essentials** ve aynı zamanda **Özellikler)** görünür. Etki alanı soneki * &lt;ASE adı&gt;.appserviceenvironment.net*ile bir ILB ASE ve *mytest*adlı bir uygulama varsa, *mytest kullanın.&lt; FTP&gt;için ASE adı .appserviceenvironment.net* ve web dağıtımı için *mytest.scm.contoso.net.*
 
-## <a name="configure-an-ilb-ase-with-a-waf-device"></a>Bir ıDB ATıCı 'yi WAF cihazından yapılandırma ##
+## <a name="configure-an-ilb-ase-with-a-waf-device"></a>Bir Waf cihazıyla ILB ASE'yi yapılandırma ##
 
-Web uygulaması güvenlik duvarı (WAF) cihazını yalnızca İnternet 'e istediğiniz uygulamaları göstermek ve geri kalanını yalnızca VNet 'ten erişilebilir durumda tutmak için ıLB ASE 'niz ile birleştirebilirsiniz. Bu, diğer şeyler arasında güvenli çok katmanlı uygulamalar oluşturmanıza olanak sağlar.
+Bir web uygulaması güvenlik duvarı (WAF) cihazını ILB ASE'nizle birleştirerek yalnızca internete istediğiniz uygulamaları ortaya çıkarabilir ve geri kalanını yalnızca VNet'ten erişebilirsiniz. Bu, diğer şeylerin yanı sıra güvenli çok katmanlı uygulamalar oluşturmanıza olanak tanır.
 
-ILB ATıCı 'nizi bir WAF cihazından yapılandırma hakkında daha fazla bilgi edinmek için bkz. [App Service ortamınızla Web uygulaması güvenlik duvarını yapılandırma][ASEWAF]. Bu makalede, bir Barracuda sanal gerecinin ASE’nizle nasıl kullanılacağı gösterilir. Bir diğer seçenek ise Azure Application Gateway’in kullanılmasıdır. Application Gateway, arkasına yerleştirilmiş uygulamaların güvenliğini sağlamak için OWASP temel kurallarını kullanır. Application Gateway hakkında daha fazla bilgi için bkz. [Azure Web uygulaması güvenlik duvarı 'Na giriş][AppGW].
+ILB ASE'nizi bir WAF aygıtıyla nasıl yapılandırılabildiğiniz hakkında daha fazla bilgi edinmek için, [Uygulama Hizmeti ortamınızla bir web uygulama güvenlik duvarını yapılandır'a][ASEWAF]bakın. Bu makalede, bir Barracuda sanal gerecinin ASE’nizle nasıl kullanılacağı gösterilir. Bir diğer seçenek ise Azure Application Gateway’in kullanılmasıdır. Application Gateway, arkasına yerleştirilmiş uygulamaların güvenliğini sağlamak için OWASP temel kurallarını kullanır. Application Gateway hakkında daha fazla bilgi için bkz. [Azure web uygulaması güvenlik duvarına giriş][AppGW].
 
-## <a name="ilb-ases-made-before-may-2019"></a>ILB ASEs, 2019 Mayıs 'tan önce yapıldı
+## <a name="ilb-ases-made-before-may-2019"></a>Mayıs 2019'dan önce yapılan ILB'ler
 
-2019 tarihinden önce yapılan ıLB 'ler, ASE oluşturma sırasında etki alanı sonekini ayarlamanıza gerek yoktur. Ayrıca, bu etki alanı sonekine dayalı bir varsayılan sertifikayı karşıya yüklemeniz gerekir. Ayrıca, daha eski bir ıLB ASE ile kudu konsolunda o ıLB ASE 'deki uygulamalarla çoklu oturum açma işlemleri gerçekleştiremezsiniz. Daha eski bir ıLB ASE için DNS yapılandırırken, etki alanı sonekinden eşleşen bir bölgede bir kayıt joker karakterini ayarlamanız gerekir. 
+Mayıs 2019'dan önce yapılan ILB'ler, ASE oluşturma sırasında etki alanı sonekini ayarlamanızı gerektiriyordu. Ayrıca, bu etki alanı sonekine dayalı bir varsayılan sertifika yüklemenizi de istediler. Ayrıca, eski bir ILB ASE ile Bu ILB ASE uygulamaları ile Kudu konsoluna tek oturum açamaz. DNS'yi eski bir ILB ASE için yapılandırırken, etki alanı nız sonekiyle eşleşen bir bölgede Joker A kaydını ayarlamanız gerekir. 
 
-## <a name="get-started"></a>Kullanmaya Başlayın ##
+## <a name="get-started"></a>Kullanmaya başlayın ##
 
-* ASE 'yi kullanmaya başlamak için bkz. [App Service ortamlara giriş][Intro]. 
+* ASE’leri kullanmaya başlamak için bkz. [App Service ortamlarına giriş][Intro]. 
 
 <!--Image references-->
 [1]: ./media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase-network.png

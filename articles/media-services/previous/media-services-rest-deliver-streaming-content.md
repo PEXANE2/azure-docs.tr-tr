@@ -1,6 +1,6 @@
 ---
-title: REST kullanarak Azure Media Services içeriği yayımlama
-description: Akış URL 'SI oluşturmak için kullanılan bir bulucu oluşturmayı öğrenin. Kod REST API kullanır.
+title: REST'i kullanarak Azure Medya Hizmetleri içeriğini yayımlama
+description: Akış URL'si oluşturmak için kullanılan bir bulucu oluşturmayı öğrenin. Kod REST API kullanır.
 author: Juliako
 manager: femila
 editor: ''
@@ -15,54 +15,54 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 787336f00a83d9403e3069754787743b9be6c5b1
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/06/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77050000"
 ---
-# <a name="publish-azure-media-services-content-using-rest"></a>REST kullanarak Azure Media Services içeriği yayımlama 
+# <a name="publish-azure-media-services-content-using-rest"></a>REST'i kullanarak Azure Medya Hizmetleri içeriğini yayımlama 
 > [!div class="op_single_selector"]
 > * [.NET](media-services-deliver-streaming-content.md)
-> * [REST](media-services-rest-deliver-streaming-content.md)
+> * [Geri kalanı](media-services-rest-deliver-streaming-content.md)
 > * [Portal](media-services-portal-publish.md)
 > 
 > 
 
-Bir Ondemandstreaming Locator ve akış URL 'SI oluşturarak bir uyarlamalı bit hızı MP4 kümesini akışla aktarabilirsiniz. [Bir varlık kodlama](media-services-rest-encode-asset.md) makalesi, uyarlamalı bit hızı bir MP4 kümesinin nasıl kodlanacağını gösterir. İçeriğiniz şifrelendiyse, bir bulucu oluşturmadan önce varlık teslim ilkesini ( [Bu](media-services-rest-configure-asset-delivery-policy.md) makalede açıklandığı gibi) yapılandırın. 
+OnDemand akış bulucusu oluşturup akış URL'si oluşturarak uyarlanabilir bithızı MP4 kümesini aktarabilirsiniz. Bir [varlık makalesikodlama,](media-services-rest-encode-asset.md) uyarlanabilir bitrate MP4 kümesine nasıl kodlanır gösterir. İçeriğiniz şifrelenmişse, bir bulucu oluşturmadan önce varlık teslim ilkesini [(bu](media-services-rest-configure-asset-delivery-policy.md) makalede açıklandığı gibi) yapılandırın. 
 
-Ayrıca, aşamalı olarak indirilebilen MP4 dosyalarını işaret eden URL 'Ler oluşturmak için bir OnDemand akış Bulucu de kullanabilirsiniz.  
+Kademeli olarak indirilebilen MP4 dosyalarını gösteren URL'ler oluşturmak için bir OnDemand akış bulucusu da kullanabilirsiniz.  
 
-Bu makalede, varlığınızı yayımlamak ve sorunsuz, MPEG DASH ve HLS akış URL 'Leri derlemek için bir Ondemandstreaming Locator oluşturma gösterilmektedir. Ayrıca, aşamalı indirme URL 'Lerinin nasıl oluşturulacağını gösterir.
+Bu makalede, varlığınızı yayımlamak ve Bir Smooth, MPEG DASH ve HLS akış URL'leri oluşturmak için bir OnDemand akış bulucu oluşturmak için nasıl gösterir. Ayrıca aşamalı indirme URL'leri oluşturmak için nasıl gösterir.
 
-[Aşağıdaki](#types) bölümde, değerleri Rest çağrılarında kullanılan enum türleri gösterilmektedir.   
+[Aşağıdaki](#types) bölümde, REST aramalarında değerleri kullanılan enum türleri gösterilmektedir.   
 
 > [!NOTE]
-> Media Services varlıklara erişirken, HTTP isteklerinizin belirli üstbilgi alanlarını ve değerlerini ayarlamanız gerekir. Daha fazla bilgi için bkz. [Media Services REST API Geliştirme Için kurulum](media-services-rest-how-to-use.md).
+> Medya Hizmetleri'ndeki varlıklara erişirken, HTTP isteklerinizde belirli üstbilgi alanları ve değerleri belirlemeniz gerekir. Daha fazla bilgi için Medya [Hizmetleri REST API Geliştirme kurulumu'na](media-services-rest-how-to-use.md)bakın.
 > 
 
 ## <a name="connect-to-media-services"></a>Media Services’e bağlanmak
 
-AMS API 'sine bağlanma hakkında daha fazla bilgi için bkz. [Azure AD kimlik doğrulamasıyla Azure MEDIA SERVICES API 'Sine erişme](media-services-use-aad-auth-to-access-ams-api.md). 
+AMS API'sine nasıl bağlanabileceğiniz hakkında bilgi için Azure [AD kimlik doğrulaması yla Azure Medya Hizmetleri API'sine eriş'e](media-services-use-aad-auth-to-access-ams-api.md)bakın. 
 
 >[!NOTE]
->https://media.windows.netbaşarıyla bağlandıktan sonra, başka bir Media Services URI belirten 301 yeniden yönlendirme alırsınız. Yeni URI 'ye sonraki çağrıları yapmanız gerekir.
+>Başarılı bir şekilde https://media.windows.netbağlandıktan sonra, başka bir Medya Hizmetleri URI belirten bir 301 yönlendirme alacaksınız. Yeni URI'ye sonraki aramaları yapmalısınız.
 
-## <a name="create-an-ondemand-streaming-locator"></a>Bir Ondemandstreaming Locator oluşturma
-OnDemand akış bulucusu oluşturmak ve URL 'Leri almak için aşağıdakileri yapmanız gerekir:
+## <a name="create-an-ondemand-streaming-locator"></a>OnDemand akış bulucusu oluşturma
+OnDemand akış bulucusu oluşturmak ve URL'leri almak için aşağıdakileri yapmanız gerekir:
 
-1. İçerik şifrelendiyse, bir erişim ilkesi tanımlayın.
-2. Bir Ondemandstreaming Bulucu oluşturun.
-3. Akışı planlıyorsanız, varlığın akış bildirim dosyasını (. ISM) alın. 
+1. İçerik şifrelenmişse, bir erişim ilkesi tanımlayın.
+2. OnDemand akış bulucusu oluşturun.
+3. Akış yapmayı planlıyorsanız, varlıktaki akış bildirimi dosyasını (.ism) alın. 
    
-   Aşamalı olarak indirmeyi planlıyorsanız, varlık içindeki MP4 dosyalarının adlarını alın. 
-4. Bildirim dosyasının veya MP4 dosyalarının URL 'Lerini oluşturun. 
-5. Yazma veya silme izinleri içeren bir AccessPolicy kullanarak akış Bulucu oluşturamazsınız.
+   Aşamalı olarak indirmeyi planlıyorsanız, kıymetteki MP4 dosyalarının adlarını alın. 
+4. URL'leri manifest dosyasına veya MP4 dosyalarına oluşturun. 
+5. Yazma veya silme izinlerini içeren bir AccessPolicy kullanarak akış bulucu oluşturamazsınız.
 
 ### <a name="create-an-access-policy"></a>Erişim ilkesi oluşturma
 
 >[!NOTE]
->Farklı AMS ilkeleri için sınır 1.000.000 ilkedir (örneğin, Bulucu ilkesi veya ContentKeyAuthorizationPolicy için). Aynı gün/erişim izinlerini (örneğin, uzun bir süre (karşıya yükleme olmayan ilkeler) yerinde kalması amaçlanan konum belirleyicilerinin ilkeleri gibi her zaman kullandığınız ilke KIMLIĞINI kullanın. Daha fazla bilgi için [bu makaleye](media-services-dotnet-manage-entities.md#limit-access-policies) bakın.
+>Farklı AMS ilkeleri için sınır 1.000.000 ilkedir (örneğin, Bulucu ilkesi veya ContentKeyAuthorizationPolicy için). Her zaman aynı gün / erişim izinleri kullanıyorsanız, örneğin, uzun bir süre (yükleme olmayan ilkeler) yerinde kalması amaçlanan bulucular için ilkeler kullanıyorsanız aynı ilke kimliği kullanın. Daha fazla bilgi için [bu makaleye](media-services-dotnet-manage-entities.md#limit-access-policies) bakın.
 
 İstek:
 
@@ -99,7 +99,7 @@ Yanıt:
 
     {"odata.metadata":"https://media.windows.net/api/$metadata#AccessPolicies/@Element","Id":"nb:pid:UUID:69c80d98-7830-407f-a9af-e25f4b0d3e5f","Created":"2015-02-18T06:52:09.8862191Z","LastModified":"2015-02-18T06:52:09.8862191Z","Name":"access policy","DurationInMinutes":43200.0,"Permissions":1}
 
-### <a name="create-an-ondemand-streaming-locator"></a>Bir Ondemandstreaming Locator oluşturma
+### <a name="create-an-ondemand-streaming-locator"></a>OnDemand akış bulucusu oluşturma
 Belirtilen varlık ve varlık ilkesi için bulucu oluşturun.
 
 İstek:
@@ -137,39 +137,39 @@ Yanıt:
 
     {"odata.metadata":"https://media.windows.net/api/$metadata#Locators/@Element","Id":"nb:lid:UUID:be245661-2bbd-4fc6-b14f-9cf9a1492e5e","ExpirationDateTime":"2015-03-20T06:34:47.267872+00:00","Type":2,"Path":"https://amstest1.streaming.mediaservices.windows.net/be245661-2bbd-4fc6-b14f-9cf9a1492e5e/","BaseUri":"https://amstest1.streaming.mediaservices.windows.net","ContentAccessComponent":"be245661-2bbd-4fc6-b14f-9cf9a1492e5e","AccessPolicyId":"nb:pid:UUID:1480030d-c481-430a-9687-535c6a5cb272","AssetId":"nb:cid:UUID:cc1e445d-1500-80bd-538e-f1e4b71b465e","StartTime":"2015-02-18T06:34:47.267872+00:00","Name":null}
 
-### <a name="build-streaming-urls"></a>Akış URL 'Leri oluşturun
-Pürüzsüz, HLS ve MPEG DASH URL 'Lerini derlemek için bulucunun oluşturulmasından sonra döndürülen **yol** değerini kullanın. 
+### <a name="build-streaming-urls"></a>Akış URL'leri oluşturma
+Düzgün, HLS ve MPEG DASH URL'lerini oluşturmak için bulucu oluşturulduktan sonra döndürülen **Yol** değerini kullanın. 
 
-Kesintisiz Akış: **yol** + bildirim dosyası adı + "/manifest"
+Düzgün Akış: **Yol** + manifest dosya adı + "/manifest"
 
 örnek:
 
     https://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest
 
-HLS: **yol** + bildirim dosyası adı + "/manifest (format = M3U8-AAPL)"
+HLS: **Yol** + manifesto dosya adı + "/manifest(format=m3u8-aapl)"
 
 örnek:
 
     https://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest(format=m3u8-aapl)
 
 
-DASH: **yol** + bildirim dosyası adı + "/manifest (biçim = MPD-Time-CSF)"
+DASH: **Yol** + manifest dosya adı + "/manifest(format=mpd-time-csf)"
 
 örnek:
 
     https://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest(format=mpd-time-csf)
 
 
-### <a name="build-progressive-download-urls"></a>Aşamalı indirme URL 'Leri oluşturma
-Aşamalı indirme URL 'sini derlemek için bulucunun oluşturulmasından sonra döndürülen **yol** değerini kullanın.   
+### <a name="build-progressive-download-urls"></a>Aşamalı indirme URL'leri oluşturma
+Aşamalı indirme URL'sini oluşturmak için bulucu oluşturulduktan sonra döndürülen **Yol** değerini kullanın.   
 
-URL: **yol** + varlık dosyası MP4 adı
+URL: **Yol** + varlık dosyası mp4 adı
 
 örnek:
 
     https://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4
 
-## <a id="types"></a>Sabit listesi türleri
+## <a name="enum-types"></a><a id="types"></a>Enum türleri
     [Flags]
     public enum AccessPermissions
     {
@@ -187,14 +187,14 @@ URL: **yol** + varlık dosyası MP4 adı
         OnDemandOrigin = 2,
     }
 
-## <a name="media-services-learning-paths"></a>Media Services öğrenme yolları
+## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Geri bildirimde bulunma
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Ayrıca bkz.
-[Media Services işlemler REST API genel bakış](media-services-rest-how-to-use.md)
+[Medya Hizmetleri operasyonları REST API genel bakış](media-services-rest-how-to-use.md)
 
 [Varlık teslim ilkesini yapılandırma](media-services-rest-configure-asset-delivery-policy.md)
 

@@ -1,6 +1,6 @@
 ---
-title: PowerShell kullanarak özel bir araştırma oluşturma-Azure Application Gateway
-description: Klasik dağıtım modelinde PowerShell kullanarak Application Gateway için özel bir araştırma oluşturma hakkında bilgi edinin
+title: PowerShell - Azure Uygulama Ağ Geçidi'ni kullanarak özel bir sonda oluşturma
+description: Klasik dağıtım modelinde PowerShell'i kullanarak Uygulama Ağ Geçidi için özel bir sonda oluşturmayı öğrenin
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -8,27 +8,27 @@ ms.topic: article
 ms.date: 11/13/2019
 ms.author: victorh
 ms.openlocfilehash: e01a1cad98ded9d7ce8683b6adf38b5d53959774
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75966810"
 ---
-# <a name="create-a-custom-probe-for-azure-application-gateway-classic-by-using-powershell"></a>PowerShell kullanarak Azure Application Gateway (klasik) için özel bir araştırma oluşturma
+# <a name="create-a-custom-probe-for-azure-application-gateway-classic-by-using-powershell"></a>PowerShell'i kullanarak Azure Uygulama Ağ Geçidi (klasik) için özel bir sonda oluşturma
 
 > [!div class="op_single_selector"]
-> * [Azure Portal](application-gateway-create-probe-portal.md)
+> * [Azure portalında](application-gateway-create-probe-portal.md)
 > * [Azure Resource Manager PowerShell](application-gateway-create-probe-ps.md)
 > * [Azure Klasik PowerShell](application-gateway-create-probe-classic-ps.md)
 
-Bu makalede, var olan bir Application Gateway 'e PowerShell ile özel bir araştırma eklersiniz. Özel yoklamalar, belirli bir sistem durumu denetimi sayfası veya varsayılan Web uygulamasında başarılı bir yanıt sağlamayan uygulamalar için yararlıdır.
+Bu makalede, PowerShell ile varolan bir uygulama ağ geçidine özel bir sonda eklersiniz. Özel sondalar, belirli bir sistem durumu denetimi sayfası olan uygulamalar veya varsayılan web uygulamasında başarılı bir yanıt sağlamayan uygulamalar için yararlıdır.
 
 > [!IMPORTANT]
-> Azure 'da kaynak oluşturmak ve bunlarla çalışmak için iki farklı dağıtım modeli vardır: [Kaynak Yöneticisi ve klasik](../azure-resource-manager/management/deployment-models.md). Bu makalede, klasik dağıtım modelinin kullanımı ele alınmaktadır. Microsoft, yeni dağıtımların çoğunun Resource Manager modelini kullanmasını önerir. [Bu adımları Resource Manager modeli kullanarak gerçekleştirmeyi](application-gateway-create-probe-ps.md) öğrenin.
+> Azure'un kaynakları oluşturmak ve onlarla çalışmak için iki farklı dağıtım modeli vardır: [Kaynak Yöneticisi ve Klasik.](../azure-resource-manager/management/deployment-models.md) Bu makalede, Klasik dağıtım modeli kullanılarak kapsar. Microsoft, yeni dağıtımların çoğunun Resource Manager modelini kullanmasını önerir. [Bu adımları Resource Manager modeli kullanarak gerçekleştirmeyi](application-gateway-create-probe-ps.md) öğrenin.
 
 [!INCLUDE [azure-ps-prerequisites-include.md](../../includes/azure-ps-prerequisites-include.md)]
 
-## <a name="create-an-application-gateway"></a>Uygulama ağ geçidi oluşturun
+## <a name="create-an-application-gateway"></a>Uygulama ağ geçidi oluşturma
 
 Bir uygulama ağ geçidi oluşturmak için:
 
@@ -36,9 +36,9 @@ Bir uygulama ağ geçidi oluşturmak için:
 2. Bir XML yapılandırma dosyası veya yapılandırma nesnesi oluşturun.
 3. Yapılandırmayı, yeni oluşturulmuş uygulama ağ geçidi kaynağına uygulayın.
 
-### <a name="create-an-application-gateway-resource-with-a-custom-probe"></a>Özel araştırmasına sahip bir uygulama ağ geçidi kaynağı oluşturma
+### <a name="create-an-application-gateway-resource-with-a-custom-probe"></a>Özel bir sonda içeren bir uygulama ağ geçidi kaynağı oluşturma
 
-Ağ geçidini oluşturmak için, `New-AzureApplicationGateway` cmdlet’ini kullanın ve değerleri kendi değerlerinizle değiştirin. Ağ geçidinin faturalanması bu aşamada başlamaz. Daha sonra ağ geçidi başarıyla başlatıldığında faturalama da başlar.
+Ağ geçidini oluşturmak için, `New-AzureApplicationGateway` cmdlet’ini kullanın ve değerleri kendi değerlerinizle değiştirin. Ağ geçidinin faturalanması bu aşamada başlamaz. Daha sonra ağ geçidi başarıyla başlatıldığında faturalama da başlar. 
 
 Aşağıdaki örnek, "testvnet1" adlı sanal ağı ve "subnet-1" aklı alt ağı kullanarak bir uygulama ağ geçidi oluşturur.
 
@@ -53,13 +53,13 @@ Get-AzureApplicationGateway AppGwTest
 ```
 
 > [!NOTE]
-> *InstanceCount* için varsayılan değer 2 ile 10 arasıdır. *GatewaySize* için varsayılan değer Medium’dur. Küçük, orta ve büyük arasında seçim yapabilirsiniz.
+> *InstanceCount* için varsayılan değer 2 ile 10 arasıdır. *GatewaySize* için varsayılan değer Medium’dur. Küçük, Orta ve Büyük arasında seçim yapabilirsiniz.
 > 
 > 
 
-Ağ geçidi daha başlatılmadığından dolayı *VirtualIPs* ve *DnsName* boş görünür. Bu değerler, ağ geçidi çalışır duruma getirildikten sonra oluşturulur.
+Ağ geçidi daha başlatılmadığından dolayı *VirtualIPs* ve *DnsName* boş görünür. Bu değerler, ağ geçidi çalışan duruma geldikten sonra oluşturulur.
 
-### <a name="configure-an-application-gateway-by-using-xml"></a>XML kullanarak uygulama ağ geçidi yapılandırma
+### <a name="configure-an-application-gateway-by-using-xml"></a>XML kullanarak bir uygulama ağ geçidini yapılandırma
 
 Aşağıdaki örnekte, tüm uygulama ağ geçidi ayarlarını yapılandırmak için bir XML dosyası kullanır ve bu ayarları uygulama ağ geçidi kaynağına uygularsınız.  
 
@@ -131,37 +131,37 @@ Aşağıdaki metni Notepad’a kopyalayın.
 
 Parantez içindeki değerleri yapılandırma öğeleri için düzenleyin. Dosyası .xml. uzantısıyla kaydedin.
 
-Aşağıdaki örnek, bir yapılandırma dosyasının genel bağlantı noktası 80 ' deki HTTP trafiğinin yükünü dengelemek ve özel bir araştırma kullanarak iki IP adresi arasında 80 arka uç bağlantı noktasına ağ trafiği göndermek için nasıl kullanılacağını gösterir.
+Aşağıdaki örnek, ortak bağlantı noktası 80'deki HTTP trafiğini yüklemek ve özel bir sonda kullanarak iki IP adresi arasındaki arka uç bağlantı noktası 80'e ağ trafiğini göndermek için uygulama ağ geçidini ayarlamak için bir yapılandırma dosyasının nasıl kullanılacağını gösterir.
 
 > [!IMPORTANT]
 > Http veya Https protokol öğesi büyük/küçük harf duyarlıdır.
 
-Özel araştırmaları yapılandırmak için yeni bir yapılandırma öğesi \<araştırma\> eklenmiştir.
+Özel sondaları yapılandırmak için yeni bir yapılandırma öğesi \<Yoklama\> eklenir.
 
 Yapılandırma parametreleri şunlardır:
 
 |Parametre|Açıklama|
 |---|---|
-|**Adı** |Özel araştırma için başvuru adı. |
-| **Protokol** | Protokol kullanıldı (olası değerler HTTP veya HTTPS 'DIR).|
-| **Ana bilgisayar** ve **yol** | Örnek sistem durumunu öğrenmek için uygulama ağ geçidi tarafından çağrılan URL yolunu doldurun. Örneğin, http:\//contoso.com/Web siteniz varsa, araştırma denetimleri için "http:\//contoso.com/path/custompath.htm" özel araştırması, başarılı bir HTTP yanıtına sahip olacak şekilde yapılandırılabilir.|
-| **Aralık** | Yoklama aralığı denetimlerini saniye cinsinden yapılandırır.|
-| **Zaman Aşımı** | Bir HTTP yanıt denetimi için araştırma zaman aşımını tanımlar.|
-| **Unhealthyıthreshold** | Arka uç örneğini *sağlıksız*olarak işaretlemek için gereken başarısız http yanıtlarının sayısı.|
+|**Adı** |Özel sonda için referans adı. |
+| **Protokolü** | Kullanılan protokol (olası değerler HTTP veya HTTPS'dir).|
+| **Ana Bilgisayar** ve **Yol** | Örneğin durumunu belirlemek için uygulama ağ geçidi tarafından çağrılan tam URL yolu. Örneğin, http:\//contoso.com/ bir web siteniz varsa, özel sonda başarılı\/bir HTTP yanıtı na sahip olmak için sonda denetimleri için "http: /contoso.com/path/custompath.htm" için yapılandırılabilir.|
+| **Interval** | Sonda aralığı denetimlerini saniyeler içinde yapılandırır.|
+| **Zaman aşımı** | HTTP yanıt denetimi için sonda zaman larını tanımlar.|
+| **SağlıksızEşik** | Arka uç örneğini *sağlıksız*olarak işaretlemek için gereken başarısız HTTP yanıtlarının sayısı.|
 
-Hangi arka uç havuzunun özel araştırma ayarlarını kullanacağını atamak için, araştırma adına \<BackendHttpSettings\> yapılandırmasında başvurulur.
+Sonda adı, hangi \<arka uç\> havuzunun özel sonda ayarları kullandığını atamak için BackendHttpSettings yapılandırmasında başvurulmuştur.
 
-## <a name="add-a-custom-probe-to-an-existing-application-gateway"></a>Mevcut bir Application Gateway 'e özel bir araştırma ekleyin
+## <a name="add-a-custom-probe-to-an-existing-application-gateway"></a>Varolan bir uygulama ağ geçidine özel bir sonda ekleme
 
-Bir uygulama ağ geçidinin geçerli yapılandırmasını değiştirmek için üç adım gerekir: geçerli XML yapılandırma dosyasını alın, özel bir araştırmasını olacak şekilde değiştirin ve Application Gateway 'i yeni XML ayarlarıyla yapılandırın.
+Bir uygulama ağ geçidinin geçerli yapılandırmasını değiştirmek için üç adım gerekir: Geçerli XML yapılandırma dosyasını alın, özel bir sondaolacak şekilde değiştirin ve uygulama ağ geçidini yeni XML ayarlarıyla yapılandırın.
 
-1. `Get-AzureApplicationGatewayConfig`kullanarak XML dosyasını alın. Bu cmdlet, araştırma ayarı eklemek için değiştirilecek yapılandırma XML 'sini dışa aktarır.
+1. Kullanarak `Get-AzureApplicationGatewayConfig`XML dosyasını alın. Bu cmdlet, sonda ayarı eklemek için değiştirilecek xml yapılandırmasını dışa aktarım.
 
    ```powershell
    Get-AzureApplicationGatewayConfig -Name "<application gateway name>" -Exporttofile "<path to file>"
    ```
 
-1. XML dosyasını bir metin düzenleyicisinde açın. `<frontendport>`sonra `<probe>` bölümü ekleyin.
+1. XML dosyasını metin düzenleyicisinde açın. 'den `<probe>` sonra `<frontendport>`bölüm ekle.
 
    ```xml
    <Probes>
@@ -177,7 +177,7 @@ Bir uygulama ağ geçidinin geçerli yapılandırmasını değiştirmek için ü
    </Probes>
    ```
 
-   XML 'nin backendHttpSettings bölümüne aşağıdaki örnekte gösterildiği gibi araştırma adını ekleyin:
+   XML'in arka uçHttpSettings bölümünde, aşağıdaki örnekte gösterildiği gibi sonda adını ekleyin:
 
    ```xml
     <BackendHttpSettings>
@@ -192,7 +192,7 @@ Bir uygulama ağ geçidinin geçerli yapılandırmasını değiştirmek için ü
 
    XML dosyasını kaydedin.
 
-1. `Set-AzureApplicationGatewayConfig`kullanarak, yeni XML dosyası ile uygulama ağ geçidi yapılandırmasını güncelleştirin. Bu cmdlet, uygulama ağ geçidinizi yeni yapılandırmayla güncelleştirir.
+1. Yeni XML dosyasıyla uygulama ağ geçidi `Set-AzureApplicationGatewayConfig`yapılandırmasını kullanarak güncelleştirin. Bu cmdlet, uygulama ağ geçidinizi yeni yapılandırmayla güncelleştirir.
 
 ```powershell
 Set-AzureApplicationGatewayConfig -Name "<application gateway name>" -Configfile "<path to file>"
@@ -200,7 +200,7 @@ Set-AzureApplicationGatewayConfig -Name "<application gateway name>" -Configfile
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Güvenli Yuva Katmanı (SSL) yük boşaltma yapılandırmak istiyorsanız bkz. [SSL boşaltması için uygulama ağ geçidi yapılandırma](application-gateway-ssl.md).
+Güvenli Soketkatmanı (SSL) boşaltmasını yapılandırmak istiyorsanız, [Bkz. SSL boşaltma için bir uygulama ağ geçidi yapılandırın.](application-gateway-ssl.md)
 
 İç yük dengeleyiciyle kullanacağınız uygulama ağ geçidi yapılandırmak istiyorsanız, bkz. [İç yük dengeleyici (ILB) ile uygulama ağ geçidi oluşturma](application-gateway-ilb.md).
 

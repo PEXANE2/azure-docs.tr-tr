@@ -1,7 +1,7 @@
 ---
-title: 'Skor SVD öneren: modül başvurusu'
+title: 'Puan SVD Tavsiye: Modül referans'
 titleSuffix: Azure Machine Learning
-description: Bir veri kümesinin öneri tahminlerini öğrenmek için Azure Machine Learning 'de SVD öneren modülünün Puanını nasıl kullanacağınızı öğrenin.
+description: Bir veri kümesi için öneri tahminleri elde etmek için Azure Machine Learning'deki Score SVD Recommender modülünün nasıl kullanılacağını öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,118 +9,118 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/10/2020
-ms.openlocfilehash: a3eafc28dc6d0f44a1f1019cb3393259aa2a698a
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 82c3454ad4c8db3a9b19084f5b6ece988cc86b9a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77920357"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79455987"
 ---
 # <a name="score-svd-recommender"></a>SVD Önerenini Puanlama
 
-Bu makalede Azure Machine Learning tasarımcısında (Önizleme), SVD öneren modülünün Puanını kullanma açıklanmaktadır. Tek değer ayrıştırma (SVD) algoritmasını temel alan eğitilen bir öneri modeli kullanarak tahmin oluşturmak için bu modülü kullanın.
+Bu makalede, Azure Machine Learning tasarımcısında (önizleme) Score SVD Recommender modülünün nasıl kullanılacağı açıklanmaktadır. Tek Değer Ayrıştırma (SVD) algoritmasını temel alan eğitimli bir öneri modeli kullanarak öngörüler oluşturmak için bu modülü kullanın.
 
-SVD öneren iki farklı tahmin türü oluşturabilir:
+SVD tavsiye cihazı iki farklı türde tahmin oluşturabilir:
 
-- [Belirli bir Kullanıcı ve öğe için derecelendirmeleri tahmin etme](#prediction-of-ratings)
-- [Kullanıcılara öğe önerme](#recommendations-for-users)
+- [Belirli bir kullanıcı ve öğe için derecelendirmeleri tahmin etme](#prediction-of-ratings)
+- [Öğeleri kullanıcıya önerme](#recommendations-for-users)
 
-İkinci tahmine dayalı tür oluştururken, şu modlardan birinde işlem yapabilirsiniz:
+İkinci tahmin türünü oluştururken, aşağıdaki modlardan birinde çalışabilirsiniz:
 
-- **Üretim modu** tüm kullanıcıları veya öğeleri dikkate alır. Genellikle bir Web hizmetinde kullanılır.
+- **Üretim modu** tüm kullanıcıları veya öğeleri dikkate alır. Genellikle bir web hizmetinde kullanılır.
 
-  Yalnızca eğitim sırasında görülen kullanıcıları değil, yeni kullanıcılar için puanlar oluşturabilirsiniz. Daha fazla bilgi için [Teknik notlara](#technical-notes)bakın. 
+  Sadece eğitim sırasında görülen kullanıcılar için değil, yeni kullanıcılar için puanlar oluşturabilirsiniz. Daha fazla bilgi için [teknik notlara](#technical-notes)bakın. 
 
-- **Değerlendirme modu** , azaltılan bir kullanıcı veya öğe kümesi üzerinde çalışır. Genellikle işlem hattı işlemleri sırasında kullanılır.
+- **Değerlendirme modu,** değerlendirilebilecek azaltılmış bir kullanıcı kümesi veya öğe üzerinde çalışır. Genellikle boru hattı işlemleri sırasında kullanılır.
 
-SVD öneren algoritması hakkında daha fazla bilgi için bkz. [öneren Systems için](https://datajobs.com/data-science-repo/Recommender-Systems-[Netflix].pdf)Araştırma sayfası matrisi, Teknik İnceleme teknikleri.
+SVD tavsiye algoritması hakkında daha fazla bilgi için, tavsiye sistemleri için araştırma kağıt [Matrix faktörizasyon teknikleri](https://datajobs.com/data-science-repo/Recommender-Systems-[Netflix].pdf)bakın.
 
-## <a name="how-to-configure-score-svd-recommender"></a>Skor SVD öneren 'ı yapılandırma
+## <a name="how-to-configure-score-svd-recommender"></a>Puan SVD Tavsiye Nasıl Yapılandırılır
 
-Bu modül, her biri farklı gereksinimlere sahip iki tür tahmin destekler. 
+Bu modül, her biri farklı gereksinimlere sahip iki tür öngörüyü destekler. 
 
 ###  <a name="prediction-of-ratings"></a>Derecelendirmelerin tahmini
 
-Derecelendirmeleri tahmin ettiğinizde, model kullanıcının eğitim verileri verildiğinde belirli bir öğeye nasıl tepki verdiğini hesaplar. Puanlama için giriş verilerinde hem Kullanıcı hem de bir öğe sağlanmalıdır.
+Derecelendirmeleri tahmin ettiğinizde, model, eğitim verileri göz önüne alındığında, bir kullanıcının belirli bir öğeye nasıl tepki vereceğini hesaplar. Puanlama için giriş verileri hem bir kullanıcı hem de maddeyi derecelendirecek şekilde sağlamalıdır.
 
-1. İşlem hattınızı eğitimli bir öneri modeli ekleyin ve **eğitilen SVD öneren**'e bağlayın. Modeli, [tren SVD öneren](train-SVD-recommender.md) modülünü kullanarak oluşturmanız gerekir.
+1. Boru hattınıza eğitilmiş bir öneri modeli ekleyin ve **eğitimli SVD tavsiyecisine**bağlayın. [Train SVD Recommender](train-SVD-recommender.md) modüllerini kullanarak modeli oluşturmanız gerekir.
 
-2. **Öneren tahmin türü**Için, **Derecelendirme tahmini**' ni seçin. Başka parametre gerekmez.
+2. **Tavsiye tahmin türü** **için, Derecelendirme Tahmini'ni**seçin. Başka bir parametre gerekmez.
 
-3. Tahmine dayalı hale getirmek istediğiniz verileri ekleyin ve **skor olarak veri kümesine**bağlayın.
+3. Tahminde bulunmak istediğiniz verileri ekleyin ve puan lamak için **Veri Kümesi'ne**bağlayın.
 
-   Modelin derecelendirmeleri tahmin edebilmesi için, giriş veri kümesinin Kullanıcı-öğe çiftleri içermesi gerekir.
+   Modelin derecelendirmeleri tahmin edeabilmesi için giriş veri kümesinin kullanıcı öğesi çiftleri içermesi gerekir.
 
-   Veri kümesi, birinci ve ikinci sütunlardaki Kullanıcı öğesi çifti için isteğe bağlı üçüncü bir derecelendirme sütunu içerebilir. Ancak, üçüncü sütun tahmin sırasında yok sayılır.
+   Veri kümesi, birinci ve ikinci sütunlarda kullanıcı öğesi çifti için isteğe bağlı üçüncü bir derecelendirme sütunu içerebilir. Ancak üçüncü sütun tahmin sırasında yoksayılır.
 
-4. İşlem hattını çalıştırma.
+4. Boru hattını gönderin.
 
-### <a name="results-for-rating-predictions"></a>Değerlendirme tahminleri sonuçları 
+### <a name="results-for-rating-predictions"></a>Derecelendirme tahminleri için sonuçlar 
 
-Çıktı veri kümesi üç sütun içerir: kullanıcılar, öğeler ve her giriş kullanıcısı ve öğesi için tahmin edilen derecelendirme.
+Çıktı veri kümesi üç sütun içerir: kullanıcılar, öğeler ve her giriş kullanıcısı ve öğe için öngörülen derecelendirme.
 
 ###  <a name="recommendations-for-users"></a>Kullanıcılar için öneriler 
 
-Kullanıcılara yönelik öğeleri önermek için, giriş olarak Kullanıcı ve öğe listesi sağlarsınız. Bu verilerden, model varolan öğeler ve kullanıcılar hakkında bilgisini kullanarak her bir kullanıcıya çok daha fazla bilgi sahibi olan öğelerin bir listesini oluşturur. Döndürülen önerilerin sayısını özelleştirebilirsiniz. Ve bir öneri oluşturmak için gereken önceki önerilerin sayısı için bir eşik belirleyebilirsiniz.
+Kullanıcılara öğe önermek için, giriş olarak kullanıcıların ve öğelerin bir listesini sağlarsınız. Bu verilerden, model her kullanıcı için olası itiraz ile öğelerin bir listesini oluşturmak için varolan öğeler ve kullanıcılar hakkındaki bilgilerini kullanır. Döndürülen öneri sayısını özelleştirebilirsiniz. Ayrıca, bir öneri oluşturmak için gereken önceki önerilerin sayısı için bir eşik ayarlayabilirsiniz.
 
-1. İşlem hattınızı eğitimli bir öneri modeli ekleyin ve **eğitilen SVD öneren**'e bağlayın.  Modeli, [tren SVD öneren](train-svd-recommender.md) modülünü kullanarak oluşturmanız gerekir.
+1. Boru hattınıza eğitilmiş bir öneri modeli ekleyin ve **eğitimli SVD tavsiyecisine**bağlayın.  [Train SVD Recommender](train-svd-recommender.md) modüllerini kullanarak modeli oluşturmanız gerekir.
 
-2. Bir kullanıcı listesi için öğeleri önermek için, **öneren tahmin türünü** **öğe önerisine**ayarlayın.
+2. Kullanıcı listesi için öğeler önermek **için, Tavsiye Tahmin türünü** **Öğe Önerisi'ne**ayarlayın.
 
-3. **Önerilen öğe seçimi**için üretimde veya model değerlendirmesi için Puanlama modülünü kullanıp kullanmayacağınızı belirtin. Şu değerlerden birini seçin:
+3. **Önerilen madde seçimi**için, puanlama modüllerini üretimde mi yoksa model değerlendirmesi için mi kullandığınızı belirtin. Bu değerlerden birini seçin:
 
-    - **Tüm öğeler**: bir Web hizmetinde veya üretimde kullanmak üzere bir işlem hattı ayarlıyorsanız bu seçeneği belirleyin.  Bu seçenek *üretim moduna*izin vermez. Modül, eğitim sırasında görülen tüm öğelerden öneriler sağlar.
+    - **Tüm Öğelerden**: Bir web hizmetinde veya üretimde kullanmak üzere bir boru hattı kuruyorsanız bu seçeneği belirleyin.  Bu seçenek *üretim modunu*etkinleştirir. Modül, eğitim sırasında görülen tüm öğelerden önerilerde bulunur.
 
-    - **Derecelendirilen öğelerden (model değerlendirmesi için)** : bir modeli geliştirmekte veya test ediyorsanız bu seçeneği belirleyin. Bu seçenek *değerlendirme modunu*sunar. Modül, yalnızca giriş veri kümesindeki öğelerin derecelendirilmesine yönelik öneriler sağlar.
+    - **Puanlı Öğelerden (model değerlendirmesi için)**: Bir model geliştiriyor veya test ediyorsanız bu seçeneği seçin. Bu seçenek *değerlendirme modusağlar.* Modül yalnızca puanlandırılmış giriş veri kümesindeki öğelerden öneriler de yapar.
     
-    - **Derecelendirilmemiş öğelerden (kullanıcılara yeni öğeler önermek için)** : modülün yalnızca eğitim veri kümesindeki öğelerin derecelendirilmemiş olan öğelerden öneriler yapmasını istiyorsanız bu seçeneği belirleyin. 
+    - **Derecelendirilmemiş Öğelerden (kullanıcılara yeni öğeler önermek için)**: Modülün yalnızca eğitim veri kümesinde derecelendirilmemiş öğelerden önerilerde bulunmasını istiyorsanız bu seçeneği belirleyin. 
 
-4. Tahmin yapmak istediğiniz veri kümesini ekleyin ve **skor Için veri kümesine**bağlayın.
+4. Tahminde bulunmak istediğiniz veri kümesini ekleyin ve puan lamak için **Veri Kümesi'ne**bağlayın.
 
-    - **Tüm öğeler**için, giriş veri kümesi bir sütundan oluşmalıdır. Önerilerde bulunan kullanıcıların tanımlayıcılarını içerir.
+    - **Tüm Öğelerden**giriş veri kümesi bir sütundan oluşmalıdır. Önerilerde bulunabilecek kullanıcıların tanımlayıcılarını içerir.
 
-      Veri kümesi, öğe tanımlayıcılarının ve derecelendirmelerin fazladan iki sütununu içerebilir, ancak bu iki sütun yok sayılır. 
+      Veri kümesi, öğe tanımlayıcıları ve derecelendirmeleri fazladan iki sütun içerebilir, ancak bu iki sütun yoksayılır. 
 
-    - **Derecelendirilen öğeler için (model değerlendirmesi için)** , giriş veri kümesi Kullanıcı-öğe çiftlerinden oluşmalıdır. İlk sütun kullanıcı tanımlayıcısını içermelidir. İkinci sütun karşılık gelen öğe tanımlayıcılarını içermelidir.
+    - **Nominal Öğelerden (model değerlendirmesi için)** giriş veri kümesi kullanıcı öğesi çiftlerinden oluşmalıdır. İlk sütun kullanıcı tanımlayıcısı içermelidir. İkinci sütun, ilgili madde tanımlayıcılarını içermelidir.
 
-      Veri kümesi, Kullanıcı-öğe derecelendirmelerinin üçüncü sütununu içerebilir, ancak bu sütun yok sayılır.
+      Veri kümesi, kullanıcı öğesi derecelendirmelerinin üçüncü bir sütununa ekleyebilir, ancak bu sütun yoksayılır.
 
-    - **Derecelendirilmemiş öğelerden (kullanıcılara yeni öğeler önermek için)** , giriş veri kümesi, Kullanıcı-öğe çiftlerinden oluşmalıdır. İlk sütun kullanıcı tanımlayıcısını içermelidir. İkinci sütun karşılık gelen öğe tanımlayıcılarını içermelidir.
+    - **Derecelendirilmemiş Öğelerden (kullanıcılara yeni öğeler önermek için)** giriş veri kümesi kullanıcı öğesi çiftlerinden oluşmalıdır. İlk sütun kullanıcı tanımlayıcısı içermelidir. İkinci sütun, ilgili madde tanımlayıcılarını içermelidir.
 
-     Veri kümesi, Kullanıcı-öğe derecelendirmelerinin üçüncü sütununu içerebilir, ancak bu sütun yok sayılır.
+     Veri kümesi, kullanıcı öğesi derecelendirmelerinin üçüncü bir sütununa ekleyebilir, ancak bu sütun yoksayılır.
 
-5. **Bir kullanıcı için önerilen en fazla öğe sayısı**: her bir kullanıcı için döndürülecek öğe sayısını girin. Varsayılan olarak, modül beş öğe önerir.
+5. **Kullanıcıya önerilen maksimum öğe sayısı**: Her kullanıcı için iade edilen öğe sayısını girin. Varsayılan olarak, modül beş öğe önerir.
 
-6. **Kullanıcı başına öneri havuzunun en küçük boyutu**: önceki önerilerin kaç tane gerektiğini belirten bir değer girin. Varsayılan olarak, bu parametre 2 olarak ayarlanır; Yani, en az iki kullanıcının öğeyi önerdiği anlamına gelir.
+6. **Kullanıcı başına tavsiye havuzunun minimum boyutu**: Kaç tane önceki öneri gerektiğini gösteren bir değer girin. Varsayılan olarak, bu parametre 2 olarak ayarlanır, yani en az iki kullanıcı öğeyi tavsiye etmiş olur.
 
-   Bu seçeneği yalnızca değerlendirme modunda puansanız kullanın. **Tüm öğeler** veya **derecelendirilmemiş öğelerden (kullanıcılara yeni öğeler önermek için)** seçeneğini belirlerseniz seçeneği kullanılamaz.
+   Bu seçeneği yalnızca değerlendirme modunda puanlama yapıyorsanız kullanın. **Tüm Öğelerden** veya **Derecelendirilmemiş Öğelerden (kullanıcılara yeni öğeler önermek için)** seçeneğiniz kullanılamaz.
 
-7.  **Derecelendirilmemiş öğelerin (kullanıcılara yeni öğeler önermek için)** için, tahmin sonuçlarından zaten derecelendirilmiş öğeleri kaldırmak Için **eğitim verileri**adlı üçüncü giriş bağlantı noktasını kullanın.
+7.  **Derecelendirilmemiş Öğelerden (kullanıcılara yeni öğeler önermek için)** tahmin sonuçlarından zaten derecelendirilmiş öğeleri kaldırmak için **Eğitim Verileri**adlı üçüncü giriş bağlantı noktasını kullanın.
 
     Bu filtreyi uygulamak için, özgün eğitim veri kümesini giriş bağlantı noktasına bağlayın.
 
-8. İşlem hattını çalıştırma.
+8. Boru hattını gönderin.
 
-### <a name="results-of-item-recommendation"></a>Öğe önerisi sonuçları
+### <a name="results-of-item-recommendation"></a>Madde önerisinin sonuçları
 
-Skor SVD öneren tarafından döndürülen puanlanmış veri kümesi, her kullanıcı için önerilen öğeleri listeler:
+Score SVD Recommender tarafından döndürülen puanlı veri kümesi, her kullanıcı için önerilen öğeleri listeler:
 
-- İlk sütunda kullanıcı tanımlayıcıları bulunur.
-- **Bir kullanıcı için önerilen en fazla öğe sayısı**için ayarladığınız değere bağlı olarak, bir dizi ek sütun oluşturulur. Her sütunda önerilen bir öğe (tanımlayıcıya göre) bulunur. Öneriler, Kullanıcı öğesi benzeşimi tarafından sıralanır. En yüksek benzeşimi olan öğe, sütun **öğesi 1**' de konur.
+- İlk sütun kullanıcı tanımlayıcıları içerir.
+- Kullanıcıya **önerecek maksimum öğe sayısı**için belirlediğiniz değere bağlı olarak bir dizi ek sütun oluşturulur. Her sütun önerilen bir öğe (tanımlayıcı ya göre) içerir. Öneriler kullanıcı öğesi yakınlığına göre sıralanır. En yüksek yakınlığa sahip öğe **Madde 1**sütununa konur.
 
 > [!WARNING]
-> Bu puanlanmış veri kümesini [değerlendir öneren](evaluate-recommender.md) modülünü kullanarak değerlendiremiyoruz.
+> Bu puanlı veri kümesini [Öneriyi Değerlendir](evaluate-recommender.md) modüllerini kullanarak değerlendiremezsiniz.
 
 
 ##  <a name="technical-notes"></a>Teknik notlar
 
-SVD öneren ile bir işlem hattına sahipseniz ve modeli üretime taşırsanız, değerlendirme modunda öneren kullanma ve üretim modunda kullanma arasında önemli farklar olduğunu unutmayın.
+SVD tavsiye cihazıyla bir ardışık hattınız varsa ve modeli üretime taşıyorsanız, öneriyi değerlendirme modunda kullanmakla üretim modunda kullanmak arasında önemli farklar olduğunu unutmayın.
 
-Tanıma göre değerlendirme, bir test kümesindeki *taban gerçeği* için doğrulanamayan tahminleri gerektirir. Öneren değerlendirirken, yalnızca test kümesinde derecelendirilen öğeleri tahmin etmelidir. Bu, tahmin edilen olası değerleri kısıtlar.
+Değerlendirme, tanımı gereği, bir test kümesinde *zemin gerçeği* ne karşı doğrulanabilir öngörüler gerektirir. Öneriyi değerlendirdiğinizde, yalnızca test kümesinde derecelendirilmiş öğeleri tahmin etmesi gerekir. Bu, öngörülen olası değerleri kısıtlar.
 
-Modeli çalıştırdığınızda, en iyi öngörülere ulaşmak için genellikle tahmin modunu, olası tüm öğelere göre öneriler olacak şekilde değiştirirsiniz. Bu tahminlerden birçoğu için ilgili hiçbir taban gerçeği yoktur. Bu nedenle, işlem hattı işlemleri sırasında, önerinin doğruluğu aynı şekilde doğrulanamaz.
+Modeli işlevsel hale getirdiğinizde, en iyi tahminleri elde etmek için genellikle olası tüm öğeleri temel alan önerilerde bulunmak için tahmin modunu değiştirirsiniz. Bu tahminlerin çoğu için, hiçbir karşılık gelen zemin gerçeği var. Bu nedenle, önerinin doğruluğu boru hattı işlemleri sırasında olduğu gibi doğrulanamıyor.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın. 
+Azure Machine Learning için [kullanılabilen modül ler kümesine](module-reference.md) bakın. 

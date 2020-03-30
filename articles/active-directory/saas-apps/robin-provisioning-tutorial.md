@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Azure Active Directory ile otomatik Kullanıcı sağlama için bir kez deneme yapılandırma | Microsoft Docs'
-description: Kullanıcı hesaplarını otomatik olarak sağlamak ve devre dışı bırakmak için Azure Active Directory yapılandırmayı öğrenin.
+title: "Öğretici: Azure Active Directory ile otomatik kullanıcı sağlama için Robin'i yapılandırın | Microsoft Dokümanlar"
+description: Kullanıcı hesaplarını Robin Powered'e otomatik olarak sağlamak ve sağlamadan çıkarmak için Azure Active Directory'yi nasıl yapılandırabilirsiniz öğrenin.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,155 +16,155 @@ ms.topic: article
 ms.date: 09/12/2019
 ms.author: Zhchia
 ms.openlocfilehash: fabd8a1953bedf6c3db6da443903a6dbd965b01e
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77061022"
 ---
-# <a name="tutorial-configure-robin-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için bir kez deneme yapılandırın
+# <a name="tutorial-configure-robin-for-automatic-user-provisioning"></a>Öğretici: Otomatik kullanıcı sağlama için Robin'i yapılandır
 
-Bu öğreticinin amacı, Azure AD 'yi, kullanıcıları ve/veya grupları bir kez deneme için otomatik olarak sağlamak ve devre dışı bırakmak üzere yapılandırmak üzere bir kez deneme ve Azure Active Directory (Azure AD) olarak gerçekleştirilecek adımları göstermektir.
+Bu öğreticinin amacı, Kullanıcı ve/veya grupları Robin'e otomatik olarak sağlamak ve sağlamadan çıkarmak üzere Azure AD'yi yapılandırmak için Robin ve Azure Etkin Dizini'nde (Azure AD) gerçekleştirilecek adımları göstermektir.
 
 > [!NOTE]
-> Bu öğreticide, Azure AD Kullanıcı sağlama hizmeti ' nin üzerine oluşturulmuş bir bağlayıcı açıklanmaktadır. Bu hizmetin ne yaptığını, nasıl çalıştığını ve sık sorulan soruları hakkında önemli ayrıntılar için bkz. [Azure Active Directory Ile SaaS uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../app-provisioning/user-provisioning.md).
+> Bu öğretici, Azure AD Kullanıcı Sağlama Hizmeti'nin üzerine inşa edilmiş bir bağlayıcıyı açıklar. Bu hizmetin ne yaptığı, nasıl çalıştığı ve sık sorulan sorular hakkında önemli ayrıntılar [için](../app-provisioning/user-provisioning.md)bkz.
 >
-> Bu bağlayıcı Şu anda genel önizleme aşamasındadır. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Bu bağlayıcı şu anda Genel Önizleme'de. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için, [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları'na](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)bakın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
+Bu öğreticide özetlenen senaryo, aşağıdaki ön koşullara sahip olduğunuzu varsayar:
 
-* Bir Azure AD kiracısı
-* [Bir deneme kiracısı](https://robinpowered.com/pricing/)
-* Yönetici izinlerine sahip bir kullanıcı hesabı.
+* Azure AD kiracı
+* [Bir Robin kiracı](https://robinpowered.com/pricing/)
+* Yönetici izinleri olan Robin'deki bir kullanıcı hesabı.
 
-## <a name="assigning-users-to-robin"></a>Kullanıcıları bir kez deneme için atama
+## <a name="assigning-users-to-robin"></a>Kullanıcıları Robin'e atama
 
-Azure Active Directory seçili uygulamalara hangi kullanıcıların erişimi alacağını belirleyen *atama* adı verilen bir kavram kullanır. Otomatik Kullanıcı sağlama bağlamında, yalnızca Azure AD 'de bir uygulamaya atanmış olan kullanıcılar ve/veya gruplar eşitlenir.
+Azure Active Directory, hangi kullanıcıların seçili uygulamalara erişmesi gerektiğini belirlemek için *atamalar* adlı bir kavram kullanır. Otomatik kullanıcı sağlama bağlamında, yalnızca Azure AD'deki bir uygulamaya atanan kullanıcılar ve/veya gruplar eşitlenir.
 
-Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, Azure AD 'deki hangi kullanıcıların ve/veya grupların bir kez deneme için erişim ihtiyacı olduğuna karar vermeniz gerekir. Karar verdikten sonra buradaki yönergeleri izleyerek bu kullanıcıları ve/veya grupları bir kez deneme için atayabilirsiniz:
-* [Kurumsal uygulamaya Kullanıcı veya Grup atama](../manage-apps/assign-user-or-group-access-portal.md)
+Otomatik kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, Azure AD'deki hangi kullanıcıların ve/veya grupların Robin'e erişmesi gerektiğine karar vermelisiniz. Karar verildikten sonra, bu kullanıcıları ve/veya grupları buradaki talimatları izleyerek Robin'e atayabilirsiniz:
+* [Bir kurumsal uygulamaya kullanıcı veya grup atama](../manage-apps/assign-user-or-group-access-portal.md)
 
-## <a name="important-tips-for-assigning-users-to-robin"></a>Kullanıcıları bir kez deneme için atamaya yönelik önemli ipuçları
+## <a name="important-tips-for-assigning-users-to-robin"></a>Kullanıcıları Robin'e atamak için önemli ipuçları
 
-* Otomatik Kullanıcı sağlama yapılandırmasını test etmek için tek bir Azure AD kullanıcısının bir kez deneme için atanması önerilir. Ek kullanıcılar ve/veya grupları daha sonra atanabilir.
+* Otomatik kullanıcı sağlama yapılandırmasını sınamak için Robin'e tek bir Azure AD kullanıcısı atanması önerilir. Ek kullanıcılar ve/veya gruplar daha sonra atanabilir.
 
-* Bir kullanıcıyı bir kez deneme için atarken, atama iletişim kutusunda uygulamaya özgü geçerli herhangi bir rolü (varsa) seçmeniz gerekir. **Varsayılan erişim** rolüne sahip kullanıcılar, sağlanmasından çıkarılır.
+* Kullanıcıyı Robin'e atarken, atama iletişim kutusunda uygulamaya özgü geçerli bir rolü (varsa) seçmeniz gerekir. **Varsayılan Erişim** rolüne sahip kullanıcılar sağlama nın dışında tutulur.
 
-## <a name="set-up-robin-for-provisioning"></a>Sağlama için bir kez deneme ayarlama
+## <a name="set-up-robin-for-provisioning"></a>Sağlama için Robin'i ayarlama
 
-1. Bir [deneme yönetim konsolunda](https://dashboard.robinpowered.com/login)oturum açın. Manage **> tümleştirmelerini yönetme > SCıM >** Yönet ' e gidin.
+1. Robin Admin [Konsolunuzda](https://dashboard.robinpowered.com/login)oturum açın. **SCIM > > > Tümleştirmelerini Yönet'e**gidin.
 
-    ![bir kez desteklenen Yönetici Konsolu](media/robin-provisioning-tutorial/robin-admin.png)
+    ![robin destekli Yönetici Konsolu](media/robin-provisioning-tutorial/robin-admin.png)
 
-2.  Yeni bir kuruluş belirteci oluştur. Bu belirteci kaybederseniz, mevcut kullanıcıları etkilemeden her zaman yeni bir tane yapabilirsiniz.
+2.  Yeni bir kuruluş belirteci oluşturun. Bu belirteci kaybederseniz, her zaman varolan kullanıcıları etkilemeden yeni bir tane yapabilirsiniz.
 
-    ![deneme destekli bir SCıM Ekle](media/robin-provisioning-tutorial/robin-token.png)
+    ![robin güçlü scim ekle](media/robin-provisioning-tutorial/robin-token.png)
 
-3.  **SCIM kimlik doğrulama belirtecini**kopyalayın. Bu değer, Azure portal deneme uygulamanızın sağlama sekmesindeki gizli belirteç alanına girilir.
+3.  **SCIM Kimlik Doğrulama Belirteci'ni**kopyalayın. Bu değer, Azure portalındaki Robin uygulamanızın Sağlama sekmesinde Gizli Belirteç alanına girilir.
 
 
 
-## <a name="add-robin-from-the-gallery"></a>Galeriden bir kez deneme ekleyin
+## <a name="add-robin-from-the-gallery"></a>Galeriden Robin ekle
 
-Azure AD ile otomatik Kullanıcı sağlama için bir kez deneme yapılandırmadan önce Azure AD uygulama galerisindeki yönetilen SaaS uygulamaları listenize bir deneme sürümü eklemeniz gerekir.
+Azure AD ile otomatik kullanıcı sağlama için Robin'i yapılandırmadan önce, Azure AD uygulama galerisinden Robin'i yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-**Azure AD uygulama galerisinden bir kez deneme eklemek için aşağıdaki adımları uygulayın:**
+**Azure AD uygulama galerisinden Robin eklemek için aşağıdaki adımları gerçekleştirin:**
 
-1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory**' i seçin.
+1. Azure **[portalında,](https://portal.azure.com)** soldaki gezinti panelinde **Azure Etkin Dizin'i**seçin.
 
-    ![Azure Active Directory düğmesi](common/select-azuread.png)
+    ![Azure Etkin Dizin düğmesi](common/select-azuread.png)
 
-2. **Kurumsal uygulamalar**' a gidin ve **tüm uygulamalar**' ı seçin.
+2. Kurumsal **uygulamalara**gidin ve ardından **Tüm uygulamaları**seçin.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+    ![Enterprise uygulamaları bıçak](common/enterprise-applications.png)
 
 3. Yeni bir uygulama eklemek için bölmenin üst kısmındaki **Yeni uygulama** düğmesini seçin.
 
-    ![Yeni Uygulama düğmesi](common/add-new-app.png)
+    ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Ara kutusuna bir **kez deneme**yazın, sonuçlar panelinde bir **kez deneme** ' yı seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
+4. Arama kutusuna **Robin**girin , sonuç panelinde **Robin'i** seçin ve ardından uygulamayı eklemek için **Ekle** düğmesini tıklatın.
 
-    ![Sonuçlar listesinde bir kez deneme](common/search-new-app.png)
+    ![Robin sonuç listesinde](common/search-new-app.png)
 
-## <a name="configuring-automatic-user-provisioning-to-robin"></a>Otomatik Kullanıcı sağlamayı bir kez deneme için yapılandırma 
+## <a name="configuring-automatic-user-provisioning-to-robin"></a>Otomatik kullanıcı sağlamayı Robin'e yapılandırma 
 
-Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak Kullanıcı ve/veya grupları Azure AD 'de Kullanıcı ve/veya Grup atamaları temelinde bir kez oluşturmak, güncelleştirmek ve devre dışı bırakmak üzere yapılandırma adımları adım adım kılavuzluk eder.
+Bu bölüm, Azure AD'deki kullanıcı ve/veya grup atamalarına dayalı olarak Robin'deki kullanıcıları ve/veya grupları oluşturmak, güncellemek ve devre dışı etmek için Azure AD sağlama hizmetini yapılandırma adımları boyunca size yol göstermektedir.
 
 > [!TIP]
-> Ayrıca, [Çoklu oturum açma öğreticisinde](https://docs.microsoft.com/azure/active-directory/saas-apps/robin-tutorial)sunulan yönergeleri Izleyerek, tek deneme için SAML tabanlı çoklu oturum açmayı etkinleştirmeyi de tercih edebilirsiniz. Çoklu oturum açma otomatik Kullanıcı sağlamasından bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini karmaşıdirebilse de
+> Ayrıca Robin Tek oturum açma [öğreticisinde](https://docs.microsoft.com/azure/active-directory/saas-apps/robin-tutorial)verilen talimatları izleyerek Robin için SAML tabanlı tek oturum açmayı etkinleştirmeyi de seçebilirsiniz. Tek oturum açma, otomatik kullanıcı sağlamadan bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini birbiriyle dışa
 
-### <a name="to-configure-automatic-user-provisioning-for-robin-in-azure-ad"></a>Azure AD 'de otomatik Kullanıcı sağlamayı bir kez deneme için yapılandırmak için:
+### <a name="to-configure-automatic-user-provisioning-for-robin-in-azure-ad"></a>Azure AD'de Robin için otomatik kullanıcı sağlama yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. [Azure portalında](https://portal.azure.com)oturum açın. **Kurumsal Uygulamaları**seçin, ardından **Tüm uygulamaları**seçin.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar bıçak](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, bir **kez deneme**' yı seçin.
+2. Uygulamalar listesinde **Robin'i**seçin.
 
-    ![Uygulamalar listesindeki bir kez güçlendirilmiş bağlantı](common/all-applications.png)
+    ![Uygulamalar listesindeki robin destekli bağlantı](common/all-applications.png)
 
 3. **Sağlama** sekmesini seçin.
 
     ![Sağlama sekmesi](common/provisioning.png)
 
-4. **Sağlama modunu** **Otomatik**olarak ayarlayın.
+4. Sağlama **Modunu** **Otomatik**olarak ayarlayın.
 
     ![Sağlama sekmesi](common/provisioning-automatic.png)
 
-5. **Yönetici kimlik bilgileri** bölümünün altında, **kiracı URL 'sindeki**`https://api.robinpowered.com/v1.0/scim-2` girin. **Gizli belirteçte**daha önce alınan **SCIM kimlik doğrulama belirteci** değerini girin. Azure AD 'nin bir kez deneme için bağlanabilmesi için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, deneme hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
+5. Yönetici **Kimlik Bilgileri** bölümü `https://api.robinpowered.com/v1.0/scim-2` altında, **Kiracı URL'ye**giriş . **Gizli Belirteç'te**daha önce alınan **SCIM Kimlik Doğrulama Belirteci** değerini girdi. Azure AD'nin Robin'e bağlanabilmesini sağlamak için **Test Bağlantısı'nı** tıklatın. Bağlantı başarısız olursa, Robin hesabınızın Yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
-    ![Kiracı URL 'SI + belirteç](common/provisioning-testconnection-tenanturltoken.png)
+    ![Kiracı URL + Belirteç](common/provisioning-testconnection-tenanturltoken.png)
 
-6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder**' i işaretleyin.
+6. Bildirim **E-postası** alanında, sağlama hatası bildirimleri alması gereken bir kişinin veya grubun e-posta adresini girin ve onay kutusunu işaretleyin - **Bir hata oluştuğunda e-posta bildirimi gönderin.**
 
-    ![Bildirim e-postası](common/provisioning-notification-email.png)
+    ![Bildirim E-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet** düğmesine tıklayın.
+7. **Kaydet**'e tıklayın.
 
-8. **Eşlemeler** bölümünde **Azure Active Directory kullanıcıları bir kez deneme olacak şekilde eşitler**' ı seçin.
+8. **Eşlemeler** bölümünde, **Azure Etkin Dizin Kullanıcılarını Robin'e Senkronize Et'i**seçin.
 
-    ![bir kez desteklenen Kullanıcı eşlemeleri](media/robin-provisioning-tutorial/robin-user-mapping.png)
+    ![robin destekli Kullanıcı Eşlemeleri](media/robin-provisioning-tutorial/robin-user-mapping.png)
 
-9. Azure AD 'den eşitlenen Kullanıcı özniteliklerini **öznitelik eşleme** bölümünde bir kez deneme için gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri için deneme sürümündeki Kullanıcı hesaplarını eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
+9. **Öznitelik Eşleme** bölümünde Azure AD'den Robin'e eşitlenen kullanıcı özniteliklerini gözden geçirin. **Eşleşme** özellikleri olarak seçilen öznitelikler, güncelleştirme işlemi için Robin' deki kullanıcı hesaplarıyla çalışmak için kullanılır. Herhangi bir değişiklik yapmak için **Kaydet** düğmesini seçin.
 
-    ![bir kez desteklenen Kullanıcı öznitelikleri](media/robin-provisioning-tutorial/robin-user-attribute-mapping.png)
+    ![robin destekli Kullanıcı Öznitelikleri](media/robin-provisioning-tutorial/robin-user-attribute-mapping.png)
 
-10. **Eşlemeler** bölümünde **Azure Active Directory gruplarını bir kez deneme olacak şekilde eşitler**' ı seçin.
+10. **Eşlemeler** bölümünde, **Azure Etkin Dizin Gruplarını Robin'e Senkronize Et'i**seçin.
 
-    ![bir kez desteklenen Grup eşlemeleri](media/robin-provisioning-tutorial/robin-group-mapping.png)
+    ![robin destekli Grup Haritalamaları](media/robin-provisioning-tutorial/robin-group-mapping.png)
 
-11. Azure AD 'den eşitlenen grup özniteliklerini **öznitelik eşleme** bölümünde bir kez deneme için gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme işlemleri için, grupları bir kez deneme halinde eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
+11. **Öznitelik Eşleme** bölümünde Azure AD'den Robin'e eşitlenen grup özniteliklerini gözden geçirin. **Eşleşme** özellikleri olarak seçilen öznitelikler, güncelleştirme işlemi için Robin' deki gruplarla çalışmak için kullanılır. Herhangi bir değişiklik yapmak için **Kaydet** düğmesini seçin.
 
-    ![bir kez desteklenen Grup öznitelikleri](media/robin-provisioning-tutorial/robin-group-attribute-mapping.png)
+    ![robin destekli Grup Öznitelikleri](media/robin-provisioning-tutorial/robin-group-attribute-mapping.png)
 
-12. Kapsam filtrelerini yapılandırmak için, [kapsam filtresi öğreticisinde](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)sunulan aşağıdaki yönergelere bakın.
+12. Kapsam filtrelerini yapılandırmak [için, Kapsam](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)filtresi öğreticisinde sağlanan aşağıdaki yönergelere bakın.
 
-13. Azure AD sağlama hizmetini bir kez deneme için etkinleştirmek üzere **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin.
+13. Robin için Azure AD sağlama hizmetini etkinleştirmek **için, Ayarlar** bölümünde **Sağlama Durumunu** **Ayarı** olarak değiştirin.
 
-    ![Sağlama durumu değiştirildi](common/provisioning-toggle-on.png)
+    ![Geçiş Yapılan Sağlama Durumu](common/provisioning-toggle-on.png)
 
-14. **Ayarlar** bölümünde **kapsam** içindeki istenen değerleri seçerek, yeniden deneme için sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
+14. **Ayarlar** bölümünde **Kapsam'ta** istenen değerleri seçerek Robin'e sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
 
-    ![Sağlama kapsamı](common/provisioning-scope.png)
+    ![Sağlama Kapsamı](common/provisioning-scope.png)
 
-15. Sağlamaya hazırsanız **Kaydet**' e tıklayın.
+15. Hükmetmeye hazır olduğunuzda **Kaydet'i**tıklatın.
 
-    ![Sağlama yapılandırması kaydediliyor](common/provisioning-configuration-save.png)
+    ![Tasarruf Sağlama Yapılandırması](common/provisioning-configuration-save.png)
 
-Bu işlem, **Ayarlar** bölümünde **kapsam** içinde tanımlanan tüm kullanıcılar ve/veya grupların ilk eşitlemesini başlatır. İlk eşitlemenin daha sonra, Azure AD sağlama hizmeti çalıştığı sürece yaklaşık 40 dakikada bir oluşan sonraki eşitlemeler yerine gerçekleştirilmesi daha uzun sürer. İlerleme durumunu izlemek için **eşitleme ayrıntıları** bölümünü kullanabilir ve Azure AD sağlama hizmeti tarafından tek bir kez gerçekleştirilen tüm eylemleri açıklayan, sağlama etkinlik raporuna yönelik bağlantıları izleyebilirsiniz.
+Bu işlem, **Ayarlar** bölümünde **Kapsam'ta** tanımlanan tüm kullanıcıların ve/veya grupların ilk eşitlemisini başlatır. Azure AD sağlama hizmeti nin çalıştırıldığı sürece yaklaşık her 40 dakikada bir gerçekleşen sonraki eşitlemelerden daha uzun süren ilk eşitlemenin gerçeklemi daha uzun sürer. Kaydetme **Ayrıntıları** bölümünü, ilerlemeyi izlemek ve Azure AD sağlama hizmeti tarafından Robin'de gerçekleştirilen tüm eylemleri açıklayan sağlama faaliyet raporuna bağlı bağlantıları izlemek için kullanabilirsiniz.
 
-Azure AD sağlama günlüklerinin nasıl okunduğu hakkında daha fazla bilgi için bkz. [Otomatik Kullanıcı hesabı sağlamayı raporlama](../app-provisioning/check-status-user-account-provisioning.md).
+Azure AD sağlama günlüklerini nasıl okuyabilirsiniz hakkında daha fazla bilgi için [bkz.](../app-provisioning/check-status-user-account-provisioning.md)
 
 
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Kurumsal Uygulamalar için kullanıcı hesabı sağlamanın yönetimi](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Günlükleri İnceleme ve sağlama etkinliğinde rapor alma hakkında bilgi edinin](../app-provisioning/check-status-user-account-provisioning.md)
+* [Günlükleri nasıl inceleyip sağlama etkinliği yle ilgili raporları nasıl alacağınızı öğrenin](../app-provisioning/check-status-user-account-provisioning.md)
 

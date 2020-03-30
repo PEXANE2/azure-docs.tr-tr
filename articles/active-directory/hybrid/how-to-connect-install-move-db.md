@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 742bc307c90ad58b83b7d4c92f9546b87c163c3b
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77019290"
 ---
 # <a name="move-azure-ad-connect-database-from-sql-server-express-to-sql-server"></a>Azure AD Connect veritabanını SQL Server Express'ten SQL Server'a taşıma 
@@ -25,28 +25,28 @@ Bu belge, Azure AD Connect veritabanını yerel SQL Server Express'ten uzaktaki 
 ## <a name="about-this-scenario"></a>Bu senaryo hakkında
 Aşağıda bu senaryo hakkında bazı kısa bilgilere yer verilmiştir.  Bu senaryoda Azure AD Connect sürümü (1.1.819.0) tek bir Windows Server 2016 etki alanı denetleyicisine yüklenmiştir.  Veritabanı için yerleşik SQL Server 2012 Express Edition'ı kullanmaktadır.  Veritabanı bir SQL Server 2017 sunucusuna taşınacaktır.
 
-![Senaryo mimarisi](media/how-to-connect-install-move-db/move1.png)
+![senaryo mimarisi](media/how-to-connect-install-move-db/move1.png)
 
 ## <a name="move-the-azure-ad-connect-database"></a>Azure AD Connect veritabanını taşıma
 Azure AD Connect veritabanını uzak SQL Server'a taşımak için aşağıdaki adımları takip edin.
 
 1. Azure AD Connect sunucusunda **Hizmetler**'e gidin ve **Microsoft Azure AD Eşitleme** hizmetini durdurun.
-2. **%ProgramFiles%\Microsoft Azure AD Sync\Data** klasörünü bulun ve **ADSync. mdf** ve **ADSync_log. ldf** dosyalarını uzak SQL Server kopyalayın.
+2. **%ProgramFiles%\Microsoft Azure AD Eşitleme\Veri** klasörünü bulun ve **ADSync.mdf** ve **ADSync_log.ldf** dosyalarını uzak SQL Server'a kopyalayın.
 3. Azure AD Connect sunucusundaki **Microsoft Azure AD Eşitleme** hizmetini yeniden başlatın.
 4. Denetim Masası - - Programlar - Programlar ve Özellikler sayfasından Azure AD Connect'i kaldırın.  Microsoft Azure AD Connect'e ve ardından üst taraftaki Kaldır düğmesine tıklayın.
 5. Uzak SQL sunucusunda SQL Server Management Studio'yu açın.
 6. Veritabanları bölümüne sağ tıklayıp Ekle'yi seçin.
-7. **Veritabanı Ekle** ekranında **Ekle**'ye tıklayıp ADSync.mdf dosyasını gösterin.  **Tamam**’a tıklayın.
-   veritabanı eklemek ![](media/how-to-connect-install-move-db/move2.png)
+7. **Veritabanı Ekle** ekranında **Ekle**'ye tıklayıp ADSync.mdf dosyasını gösterin.  **Tamam**'a tıklayın.
+   ![veritabanı ekleme](media/how-to-connect-install-move-db/move2.png)
 
 8. Veritabanı eklendikten sonra Azure AD Connect sunucusuna gidip Azure AD Connect'i yükleyin.
 9. MSI yüklemesi tamamlandıktan sonra Azure AD Connect sihirbazı Hızlı mod kurulumu açılır. Çıkış simgesine tıklayarak ekranı kapatın.
    ![Hoş geldiniz](./media/how-to-connect-install-move-db/db1.png)
-10. Yeni bir komut istemi veya PowerShell oturumu başlatın. \Program files\Microsoft Azure AD Connect > klasör \<sürücü ' ne gidin. Azure AD Connect sihirbazını "Var olan veritabanını kullan" modunda başlatmak için .\AzureADConnect.exe /useexistingdatabase komutunu çalıştırın.
+10. Yeni bir komut istemi veya PowerShell oturumu başlatın. Klasör \<sürücüsüne gidin>\program dosyaları\Microsoft Azure AD Connect. Azure AD Connect sihirbazını "Var olan veritabanını kullan" modunda başlatmak için .\AzureADConnect.exe /useexistingdatabase komutunu çalıştırın.
     ![PowerShell](./media/how-to-connect-install-move-db/db2.png)
 11. Azure AD Connect'e Hoş Geldiniz ekranı açılır. Lisans koşullarını ve gizlilik bildirimini kabul ettikten sonra **Devam**'a tıklayın.
     ![Hoş geldiniz](./media/how-to-connect-install-move-db/db3.png)
-12. **Gerekli bileşenleri yükleme** ekranında **Mevcut bir SQL Server'ı kullanma** seçeneği etkinleştirilir. AD Eşitleme veritabanını barındıran SQL sunucusunun adını belirtin. AD Eşitleme veritabanını barındırmak için kullanılan SQL altyapısı örneği SQL sunucusundaki varsayılan örnek değilse SQL altyapısı örneği adını belirtmeniz gerekir. Ayrıca SQL göz atma özelliği etkin değilse SQL altyapısı örneği bağlantı noktası numarasını da belirtmeniz gerekir. Örneğin:         
+12. **Gerekli bileşenleri yükleme** ekranında **Mevcut bir SQL Server'ı kullanma** seçeneği etkinleştirilir. AD Eşitleme veritabanını barındıran SQL sunucusunun adını belirtin. AD Eşitleme veritabanını barındırmak için kullanılan SQL altyapısı örneği SQL sunucusundaki varsayılan örnek değilse SQL altyapısı örneği adını belirtmeniz gerekir. Ayrıca SQL göz atma özelliği etkin değilse SQL altyapısı örneği bağlantı noktası numarasını da belirtmeniz gerekir. Örnek:         
     ![Hoş geldiniz](./media/how-to-connect-install-move-db/db4.png)           
 
 13. **Azure AD'ye bağlan** ekranında Azure AD dizininizin genel yöneticisinin kimlik bilgilerini girmeniz gerekir. Varsayılan onmicrosoft.com etki alanındaki bir hesabı kullanmanız önerilir. Bu hesap yalnızca Azure AD'de hizmet hesabı oluşturmak için kullanılır ve sihirbaz tamamlandıktan sonra kullanılmaz.
@@ -60,7 +60,7 @@ Azure AD Connect veritabanını uzak SQL Server'a taşımak için aşağıdaki a
     ![Hoş geldiniz](./media/how-to-connect-install-move-db/db7.png)
  
  
-16. Kimlik bilgileri girildikten sonra kırmızı çarpı işaretinin yerine yeşil onay işareti görünür. **İleri**’ye tıklayın.
+16. Kimlik bilgileri girildikten sonra kırmızı çarpı işaretinin yerine yeşil onay işareti görünür. **İleri**'ye tıklayın.
     ![Hoş geldiniz](./media/how-to-connect-install-move-db/db8.png)
  
  

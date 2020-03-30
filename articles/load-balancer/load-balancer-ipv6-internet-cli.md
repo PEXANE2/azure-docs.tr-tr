@@ -1,11 +1,11 @@
 ---
-title: IPv6 - Azure CLI ile bir genel yük dengeleyici oluşturma
+title: IPv6 ile ortak yük dengeleyicisi oluşturma - Azure CLI
 titleSuffix: Azure Load Balancer
-description: Bu öğrenme yoluyla, Azure CLı kullanarak IPv6 ile genel yük dengeleyici oluşturmaya başlayın.
+description: Bu öğrenme yolu ile Azure CLI'yi kullanarak IPv6 ile ortak yük dengeleyici oluşturmaya başlayın.
 services: load-balancer
 documentationcenter: na
 author: asudbring
-keywords: IPv6, azure yük dengeleyici, ikili yığın, genel IP, yerel IPv6, mobil veya IOT
+keywords: ipv6, azure yük dengeleyici, çift yığın, genel ip, yerli ipv6, mobil, iot
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -15,52 +15,52 @@ ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: allensu
 ms.openlocfilehash: bff6a7ca6eb1a6859ec25d488f564c66946a780b
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76045415"
 ---
-# <a name="create-a-public-load-balancer-with-ipv6-using-azure-cli"></a>Azure CLI kullanarak IPv6 ile genel yük dengeleyici oluşturma
+# <a name="create-a-public-load-balancer-with-ipv6-using-azure-cli"></a>Azure CLI'yi kullanarak IPv6 ile ortak yük dengeleyicisi oluşturma
 
 >[!NOTE] 
->Bu makalede, temel yük dengeleyiciler hem IPv4 hem de IPv6 bağlantısı sağlamasına izin veren bir giriş IPv6 özelliği açıklanır. Artık, sanal ağlarınızla IPv6 bağlantısını tümleştiren ve IPv6 ağ güvenlik grubu kuralları, IPv6 Kullanıcı tanımlı yönlendirme, IPv6 temel ve standart yük dengeleme gibi önemli özellikleri ve daha fazlasını içeren [Azure VNET 'ler için](../virtual-network/ipv6-overview.md) kapsamlı IPv6 bağlantısı kullanılabilir.  Azure sanal ağları için IPv6, Azure 'daki IPv6 uygulamaları için önerilen standarttır. Bkz. [Azure VNET PowerShell dağıtımı Için IPv6](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md) 
+>Bu makalede, Temel Yük Dengeleyicileri hem IPv4 ve IPv6 bağlantısı sağlamak için izin vermek için bir giriş IPv6 özelliği açıklanır. IPv6 bağlantılarını Sanal Ağlarınızla birleştiren ve IPv6 Ağ Güvenlik Grubu kuralları, IPv6 Kullanıcı tanımlı yönlendirme, IPv6 Temel ve Standart yük dengeleme ve daha fazlası gibi temel özellikleri içeren [Azure VNET'ler için](../virtual-network/ipv6-overview.md) IPv6 ile kapsamlı IPv6 bağlantısı artık kullanılabilir.  Azure VNET'ler için IPv6, Azure'daki IPv6 uygulamaları için önerilen standarttır. [Azure VNET Powershell Dağıtımı için IPv6'ya](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md) bakın 
 
-Azure Load Balancer bir Katman 4 (TCP, UDP) yük dengeleyicidir. Yük Dengeleyici, gelen trafiği bulut hizmetlerindeki sağlıklı hizmet örnekleri veya bir yük dengeleyici kümesindeki sanal makineler arasında dağıtarak yüksek kullanılabilirlik sağlar. Yük Dengeleyiciler bu hizmetleri birden çok bağlantı noktası veya birden çok IP adresi veya her ikisini de sunabilir.
+Azure Load Balancer bir Katman 4 (TCP, UDP) yük dengeleyicidir. Yük dengeleyicileri, gelen trafiği bulut hizmetlerinde veya sanal makinelerde bir yük dengeleyici kümesinde sağlıklı hizmet örnekleri arasında dağıtarak yüksek kullanılabilirlik sağlar. Yük dengeleyicileri bu hizmetleri birden çok bağlantı noktası veya birden çok IP adresi veya her ikisi üzerinde de sunabilir.
 
 ## <a name="example-deployment-scenario"></a>Örnek dağıtım senaryosu
 
-Aşağıdaki diyagram, bu makalede açıklanan örnek şablonu kullanılarak dağıtılan çözüm yük dengelemeyi gösterir.
+Aşağıdaki diyagram, bu makalede açıklanan örnek şablonu kullanılarak dağıtılan yük dengeleme çözümlerini göstermektedir.
 
 ![Yük dengeleyici senaryosu](./media/load-balancer-ipv6-internet-cli/lb-ipv6-scenario-cli.png)
 
-Bu senaryoda, aşağıdaki Azure kaynakları oluşturun:
+Bu senaryoda, aşağıdaki Azure kaynaklarını oluşturursunuz:
 
 * İki sanal makine (VM)
-* Atanmış IPv4 ve IPv6 adresleri ile her VM için bir sanal ağ arabirimi
-* Bir genel yük dengeleyiciye bir IPv4 ve IPv6 genel IP adresi
-* İki sanal makine içeren kullanılabilirlik kümesi
-* İki Yük Dengeleme kuralları, genel VIP özel uç noktalar için eşlemek için
+* Hem IPv4 hem de IPv6 adresleri atanmış her VM için sanal ağ arabirimi
+* IPv4 ve IPv6 genel IP adresi ne sahip bir genel yük dengeleyicisi
+* İki VM içeren bir kullanılabilirlik kümesi
+* Kamu VIP'lerini özel uç noktalarıyla eşlemek için iki yük dengeleme kuralı
 
-## <a name="deploy-the-solution-by-using-azure-cli"></a>Çözümü Azure CLI kullanarak dağıtma
+## <a name="deploy-the-solution-by-using-azure-cli"></a>Azure CLI'yi kullanarak çözümü dağıtma
 
-Aşağıdaki adımlarda, Azure CLI kullanarak herkese açık yük dengeleyici oluşturulacağı gösterilmektedir. CLI kullanarak oluşturun ve her nesneyi ayrı ayrı yapılandırın ve ardından bunları bir kaynak oluşturmak için bir araya yerleştirin.
+Aşağıdaki adımlar, Azure CLI'yi kullanarak ortak yük dengeleyicisinin nasıl oluşturulacağımı gösterir. CLI'yi kullanarak, her nesneyi ayrı ayrı oluşturur ve yapılandırır sınız ve sonra bunları bir kaynak oluşturmak için bir araya getirirsiniz.
 
-Yük Dengeleyici dağıtmak için oluşturun ve aşağıdaki nesneleri yapılandırın:
+Bir yük dengeleyicisi dağıtmak için aşağıdaki nesneleri oluşturun ve yapılandırın:
 
-* **Ön uç IP yapılandırmasını**: gelen ağ trafiği için genel IP adreslerini içerir.
-* **Arka uç adres havuzu**: sanal makinelerin yük dengeleyiciden ağ trafiği alması için ağ arabirimlerini (NIC'ler) içerir.
-* **Yük Dengeleme kuralları**: yük dengeleyici üzerindeki bir genel bağlantı noktasını arka uç adres havuzundaki bağlantı noktasına eşleyen kuralları içerir.
-* **Gelen NAT kuralları**: yük dengeleyici üzerindeki bir genel bağlantı noktasını arka uç adres havuzundaki belirli bir sanal makineye ait bağlantı noktasına eşlenen ağ adresi çevirisi (NAT) kuralları içerir.
-* **Araştırmalar**: arka uç adres havuzundaki sanal makine örneklerinin kullanılabilirliğini kontrol etmek için kullanılan durum araştırmalarını içerir.
+* **Ön uç IP yapılandırması**: Gelen ağ trafiği için ortak IP adreslerini içerir.
+* **Arka uç adres havuzu**: Sanal makinelerin yük bakiyesinden ağ trafiği alması için ağ arabirimleri (NIC' ler) içerir.
+* **Yük dengeleme kuralları**: Yük dengeleyicisindeki ortak bağlantı noktasını arka uç adres havuzundaki bir bağlantı noktasına eşleyen kuralları içerir.
+* **Gelen NAT kuralları**: Arka uç adres havuzunda belirli bir sanal makine için yük dengeleyicisindeki ortak bağlantı noktasını bir bağlantı noktasına eşleyen ağ adresi çevirisi (NAT) kurallarını içerir.
+* **Problar**: Arka uç adres havuzundaki sanal makine örneklerinin kullanılabilirliğini denetlemek için kullanılan sistem sondalarını içerir.
 
-## <a name="set-up-azure-cli"></a>Azure CLI'yı ayarlama
+## <a name="set-up-azure-cli"></a>Azure CLI’yı ayarlama
 
-Bu örnekte, bir PowerShell komut penceresinde Azure CLI araçları çalıştırın. Okunabilirlik ve yeniden artırmak için PowerShell'in yetileri, Azure PowerShell cmdlet'lerini kullanın.
+Bu örnekte, PowerShell komut penceresinde Azure CLI araçlarını çalıştırın. Okunabilirliği ve yeniden kullanımı artırmak için Azure PowerShell cmdlets'i değil, PowerShell'in komut dosyası özelliklerini kullanırsınız.
 
-1. [Azure CLI'yi yükleme ve yapılandırma](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) Azure hesabınız için bağlantılı makaledeki adımları ve oturum açma izleyerek.
+1. Bağlı makaledeki adımları izleyerek [Azure CLI'yi yükleyin ve yapılandırın](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) ve Azure hesabınızda oturum açın.
 
-2. Azure CLI komutları ile kullanmak için PowerShell değişkenleri ayarlayın:
+2. Azure CLI komutlarıyla kullanılmak üzere PowerShell değişkenlerini ayarlayın:
 
     ```powershell
     $subscriptionid = "########-####-####-####-############"  # enter subscription id
@@ -76,7 +76,7 @@ Bu örnekte, bir PowerShell komut penceresinde Azure CLI araçları çalıştır
     $lbName = "myIPv4IPv6Lb"
     ```
 
-## <a name="create-a-resource-group-a-load-balancer-a-virtual-network-and-subnets"></a>Bir kaynak grubu, bir yük dengeleyici, sanal ağ ve alt ağlar oluşturun
+## <a name="create-a-resource-group-a-load-balancer-a-virtual-network-and-subnets"></a>Kaynak grubu, yük dengeleyicisi, sanal ağ ve alt ağlar oluşturma
 
 1. Kaynak grubu oluşturun:
 
@@ -84,7 +84,7 @@ Bu örnekte, bir PowerShell komut penceresinde Azure CLI araçları çalıştır
     az group create --name $rgName --location $location
     ```
 
-2. Yük Dengeleyici oluşturma:
+2. Yük dengeleyicisi oluşturun:
 
     ```azurecli
     $lb = az network lb create --resource-group $rgname --location $location --name $lbName
@@ -96,16 +96,16 @@ Bu örnekte, bir PowerShell komut penceresinde Azure CLI araçları çalıştır
     $vnet = az network vnet create  --resource-group $rgname --name $vnetName --location $location --address-prefixes $vnetPrefix
     ```
 
-4. Bu sanal ağda iki alt ağ oluşturun:
+4. Bu sanal ağda, iki alt ağ oluşturun:
 
     ```azurecli
     $subnet1 = az network vnet subnet create --resource-group $rgname --name $subnet1Name --address-prefix $subnet1Prefix --vnet-name $vnetName
     $subnet2 = az network vnet subnet create --resource-group $rgname --name $subnet2Name --address-prefix $subnet2Prefix --vnet-name $vnetName
     ```
 
-## <a name="create-public-ip-addresses-for-the-front-end-pool"></a>Ön uç havuzu için genel IP adresi oluşturma
+## <a name="create-public-ip-addresses-for-the-front-end-pool"></a>Ön uç havuzu için ortak IP adresleri oluşturma
 
-1. PowerShell değişkenleri ayarlayın:
+1. PowerShell değişkenlerini ayarlayın:
 
     ```powershell
     $publicIpv4Name = "myIPv4Vip"
@@ -120,17 +120,17 @@ Bu örnekte, bir PowerShell komut penceresinde Azure CLI araçları çalıştır
     ```
 
     > [!IMPORTANT]
-    > Yük Dengeleyici tam etki alanı adı (FQDN) olarak genel IP'nin etki alanı etiketini kullanır. Bu bulut hizmeti kullanan Klasik dağıtımdan bir değişiklik olarak adlandırın yük dengeleyici FQDN olarak.
+    > Yük dengeleyicisi, tam nitelikli etki alanı adı (FQDN) olarak genel IP'nin etki alanı etiketini kullanır. Bu, yük dengeleyicisi FQDN olarak bulut hizmet adını kullanan klasik dağıtımdan bir değişiklik.
     >
-    > Bu örnekte FQDN: *contoso09152016.southcentralus.cloudapp.azure.com*.
+    > Bu örnekte, FQDN *contoso09152016.southcentralus.cloudapp.azure.com.*
 
-## <a name="create-front-end-and-back-end-pools"></a>Ön uç ve arka uç havuzları oluşturma
+## <a name="create-front-end-and-back-end-pools"></a>Ön ve arka uç havuzları oluşturma
 
-Bu bölümde, aşağıdaki IP havuzlarını oluşturun:
-* Yük dengeleyicideki gelen ağ trafiğini alan ön uç IP havuzu.
-* Burada ön uç havuzunun Yük Dengelemesi yapılmış ağ trafiğini gönderdiği arka uç IP havuzu.
+Bu bölümde, aşağıdaki IP havuzlarını oluşturursunuz:
+* Yük bakiyesi üzerinde gelen ağ trafiğini alan ön uç IP havuzu.
+* Ön uç havuzunun yük dengeli ağ trafiğini gönderdiği arka uç IP havuzu.
 
-1. PowerShell değişkenleri ayarlayın:
+1. PowerShell değişkenlerini ayarlayın:
 
     ```powershell
     $frontendV4Name = "FrontendVipIPv4"
@@ -139,7 +139,7 @@ Bu bölümde, aşağıdaki IP havuzlarını oluşturun:
     $backendAddressPoolV6Name = "BackendPoolIPv6"
     ```
 
-2. Ön uç IP havuzu oluşturun ve yük dengeleyici ve önceki adımda oluşturduğunuz genel IP ile ilişkilendirin.
+2. Bir ön uç IP havuzu oluşturun ve önceki adımda oluşturduğunuz genel IP ve yük dengeleyicisi ile ilişkilendirin.
 
     ```azurecli
     $frontendV4 = az network lb frontend-ip create --resource-group $rgname --name $frontendV4Name --public-ip-address $publicIpv4Name --lb-name $lbName
@@ -148,18 +148,18 @@ Bu bölümde, aşağıdaki IP havuzlarını oluşturun:
     $backendAddressPoolV6 = az network lb address-pool create --resource-group $rgname --name $backendAddressPoolV6Name --lb-name $lbName
     ```
 
-## <a name="create-the-probe-nat-rules-and-load-balancer-rules"></a>NAT kuralları, araştırma oluşturmak ve yük dengeleyici kuralları
+## <a name="create-the-probe-nat-rules-and-load-balancer-rules"></a>Sonda, NAT kuralları ve yük dengeleyici kuralları oluşturma
 
 Bu örnek aşağıdaki nesneleri oluşturur:
 
-* Bağlantı 80 numaralı TCP bağlantı noktasını denetlemek için bir araştırma kuralı.
-* RDP için bağlantı noktası 3389 3389 numaralı bağlantı noktasına gelen tüm trafiği yönlendiren NAT kuralı.\*
-* Uzak Masaüstü Protokolü (RDP) için 3389 numaralı bağlantı noktasına 3391 numaralı bağlantı noktasına gelen tüm trafiği yönlendiren NAT kuralı.\*
-* Bağlantı noktası 80 arka uç havuzundaki adreslerin 80 numaralı bağlantı noktasına gelen tüm trafiği dengelemek için bir yük dengeleyici kuralı.
+* TCP bağlantı noktası 80'e bağlantı olup olmadığını denetlemek için bir sonda kuralı.
+* RdP için 3389 portundaki tüm gelen trafiği 3389 bağlantı noktasına çevirmek için bir NAT kuralı.\*
+* Uzak masaüstü protokolü (RDP) için 3391 bağlantı noktasındaki tüm gelen trafiği bağlantı noktası 3389'a çevirmek için bir NAT kuralı.\*
+* Arka uç havuzundaki adreslerde 80 portundaki tüm gelen trafiği dengelemek için bir yük dengeleyici kuralı.
 
-\* NAT kuralları, yük dengeleyicinin arkasındaki belirli bir sanal makine örneğiyle ilişkilendirilmiş. Belirli bir sanal makine ve NAT kuralıyla ilişkilendirilmiş bağlantı noktası 3389 numaralı bağlantı noktasına ulaşan ağ trafiğini gönderilir. NAT kuralı için bir protokol (UDP veya TCP) belirtmeniz gerekir. Her iki protokolü aynı bağlantı noktasına atayamazsınız.
+\*NAT kuralları, yük dengeleyicisinin arkasındaki belirli bir sanal makine örneğiyle ilişkilidir. 3389 portuna gelen ağ trafiği, NAT kuralıyla ilişkili belirli sanal makine ye ve bağlantı noktasına gönderilir. NAT kuralı için bir protokol (UDP veya TCP) belirtmeniz gerekir. Her iki protokolü de aynı bağlantı noktasına atayamazsınız.
 
-1. PowerShell değişkenleri ayarlayın:
+1. PowerShell değişkenlerini ayarlayın:
 
     ```powershell
     $probeV4V6Name = "ProbeForIPv4AndIPv6"
@@ -169,22 +169,22 @@ Bu örnek aşağıdaki nesneleri oluşturur:
     $lbRule1V6Name = "LBRuleForIPv6-Port80"
     ```
 
-2. Araştırması oluşturun.
+2. Sondayı oluşturun.
 
-    Aşağıdaki örnek, her 15 saniyede denetleyen bir TCP araştırması için arka uç TCP bağlantı noktası 80 bağlantı oluşturur. İki ardışık hatasından sonra arka uç kaynağı kullanılamaz olarak işaretler.
+    Aşağıdaki örnek, arka uç TCP bağlantı noktasına bağlantı için her 15 saniyede 80'i kontrol eden bir TCP sondası oluşturur. Art arda iki hatadan sonra, arka uç kaynağı kullanılamaz olarak işaretler.
 
     ```azurecli
     $probeV4V6 = az network lb probe create --resource-group $rgname --name $probeV4V6Name --protocol tcp --port 80 --interval 15 --threshold 2 --lb-name $lbName
     ```
 
-3. Arka uç kaynaklarına RDP bağlantılarına izin veren gelen NAT kurallarını oluşturun:
+3. RDP bağlantılarının arka uç kaynaklarına bağlanmasına izin veren gelen NAT kuralları oluşturun:
 
     ```azurecli
     $inboundNatRuleRdp1 = az network lb inbound-nat-rule create --resource-group $rgname --name $natRule1V4Name --frontend-ip-name $frontendV4Name --protocol Tcp --frontend-port 3389 --backend-port 3389 --lb-name $lbName
     $inboundNatRuleRdp2 = az network lb inbound-nat-rule create --resource-group $rgname --name $natRule2V4Name --frontend-ip-name $frontendV4Name --protocol Tcp --frontend-port 3391 --backend-port 3389 --lb-name $lbName
     ```
 
-4. Bir istek aldı ön uç bağlı olarak farklı arka uç noktalarına giden trafik bir yük dengeleyici kuralları oluşturun.
+4. İsteği alan ön uca bağlı olarak trafiği farklı arka uç bağlantı noktalarına gönderen yük dengeleyici kuralları oluşturun.
 
     ```azurecli
     $lbruleIPv4 = az network lb rule create --resource-group $rgname --name $lbRule1V4Name --frontend-ip-name $frontendV4Name --backend-pool-name $backendAddressPoolV4Name --probe-name $probeV4V6Name --protocol Tcp --frontend-port 80 --backend-port 80 --lb-name $lbName
@@ -239,9 +239,9 @@ Bu örnek aşağıdaki nesneleri oluşturur:
 
 ## <a name="create-nics"></a>NIC’leri oluşturma
 
-NIC'leri oluşturma ve bunları NAT kuralları, yük dengeleyici kuralları ve araştırmalarla ilişkilendirin.
+NIC'ler oluşturun ve bunları NAT kuralları, yük dengeleyici kuralları ve sondalarla ilişkilendirin.
 
-1. PowerShell değişkenleri ayarlayın:
+1. PowerShell değişkenlerini ayarlayın:
 
     ```powershell
     $nic1Name = "myIPv4IPv6Nic1"
@@ -254,7 +254,7 @@ NIC'leri oluşturma ve bunları NAT kuralları, yük dengeleyici kuralları ve a
     $natRule2V4Id = "/subscriptions/$subscriptionid/resourceGroups/$rgname/providers/Microsoft.Network/loadbalancers/$lbName/inboundNatRules/$natRule2V4Name"
     ```
 
-2. Her arka ucu için bir NIC oluşturup ve IPv6 yapılandırmasını ekleyin:
+2. Her arka uç için bir NIC oluşturun ve bir IPv6 yapılandırması ekleyin:
 
     ```azurecli
     $nic1 = az network nic create --name $nic1Name --resource-group $rgname --location $location --private-ip-address-version "IPv4" --subnet $subnet1Id --lb-address-pools $backendAddressPoolV4Id --lb-inbound-nat-rules $natRule1V4Id
@@ -264,11 +264,11 @@ NIC'leri oluşturma ve bunları NAT kuralları, yük dengeleyici kuralları ve a
     $nic2IPv6 = az network nic ip-config create --resource-group $rgname --name "IPv6IPConfig" --private-ip-address-version "IPv6" --lb-address-pools $backendAddressPoolV6Id --nic-name $nic2Name
     ```
 
-## <a name="create-the-back-end-vm-resources-and-attach-each-nic"></a>Arka uç VM kaynakları oluşturmak ve her NIC ekleme
+## <a name="create-the-back-end-vm-resources-and-attach-each-nic"></a>Arka uç VM kaynaklarını oluşturun ve her NIC
 
-Sanal makineler oluşturmak için bir depolama hesabı olmalıdır. Yük Dengeleme için Vm'leri bir kullanılabilirlik kümesi üyesi olmanız gerekir. Sanal makineleri oluşturma hakkında daha fazla bilgi için bkz. [PowerShell kullanarak bir Azure VM'si oluşturma](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fload-balancer%2ftoc.json).
+VM'ler oluşturmak için bir depolama hesabınız olması gerekir. Yük dengeleme için, VM'lerin bir kullanılabilirlik kümesinin üyeleri olması gerekir. VM oluşturma hakkında daha fazla bilgi için [PowerShell'i kullanarak Azure VM oluştur'a](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fload-balancer%2ftoc.json)bakın.
 
-1. PowerShell değişkenleri ayarlayın:
+1. PowerShell değişkenlerini ayarlayın:
 
     ```powershell
     $availabilitySetName = "myIPv4IPv6AvailabilitySet"
@@ -282,15 +282,15 @@ Sanal makineler oluşturmak için bir depolama hesabı olmalıdır. Yük Dengele
     ```
 
     > [!WARNING]
-    > Bu örnek düz metin olarak sanal makineleri için kullanıcı adı ve parola kullanır. Bu kimlik bilgilerini düz metin olarak kullandığınızda, uygun dikkat edin. Daha güvenli bir yöntem PowerShell kimlik bilgilerini işleme bilgi için bkz: [ `Get-Credential` ](https://technet.microsoft.com/library/hh849815.aspx) cmdlet'i.
+    > Bu örnek, VM'lerin kullanıcı adını ve parolasını açık metin olarak kullanır. Bu kimlik bilgilerini açık metin olarak kullandığınızda uygun özeni göz önünde n için kullanın. PowerShell'de kimlik bilgilerini işlemenin daha [`Get-Credential`](https://technet.microsoft.com/library/hh849815.aspx) güvenli bir yöntemi için cmdlet'e bakın.
 
-2. Kullanılabilirlik kümesi oluşturun:
+2. Kullanılabilirlik kümesini oluşturun:
 
     ```azurecli
     $availabilitySet = az vm availability-set create --name $availabilitySetName --resource-group $rgName --location $location
     ```
 
-3. Sanal makineler ile ilişkili NIC oluşturun:
+3. İlişkili NIC'lerle sanal makineler oluşturun:
 
     ```azurecli
     az vm create --resource-group $rgname --name $vm1Name --image $imageurn --admin-username $vmUserName --admin-password $mySecurePassword --nics $nic1Id --location $location --availability-set $availabilitySetName --size "Standard_A1" 

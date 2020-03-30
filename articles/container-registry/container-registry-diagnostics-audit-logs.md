@@ -1,91 +1,87 @@
 ---
-title: Kaynak günlüklerini toplama & analiz etme
-description: Kimlik doğrulama, görüntü gönderme ve resim çekme gibi Azure Container Registry kaynak günlüğü olaylarını kaydedin ve çözümleyin.
+title: Kaynak günlüklerini toplama & analiz edin
+description: Azure Kapsayıcı Kayıt Defteri için kimlik doğrulama, görüntü itme ve görüntü çekme gibi kaynak günlüğü olaylarını kaydedin ve analiz edin.
 ms.topic: article
 ms.date: 01/03/2020
-ms.openlocfilehash: 72d03149cd24636ba2086dfaaff0dbba16d30f1e
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 00f9468721126bd166051df47cec1596356e9b54
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75748008"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79409652"
 ---
-# <a name="azure-container-registry-logs-for-diagnostic-evaluation-and-auditing"></a>Tanılama değerlendirmesi ve denetimi için Azure Container Registry günlükleri
+# <a name="azure-container-registry-logs-for-diagnostic-evaluation-and-auditing"></a>Tanılama değerlendirme ve denetim için Azure Konteyner Kayıt Defteri günlükleri
 
-Bu makalede, Azure [izleyici](../azure-monitor/overview.md)'nin özellikleri kullanılarak Azure Container Registry için günlük verilerinin nasıl toplanacağı açıklanır. Azure Izleyici, kayıt defterinizde Kullanıcı odaklı olaylar için [kaynak günlüklerini](../azure-monitor/platform/platform-logs-overview.md) (eski adıyla *tanılama günlükleri*olarak adlandırılır) toplar. Bu verileri toplayın ve aşağıdaki gibi gereksinimlerinizi karşılayacak şekilde kullanın:
+Bu makalede, [Azure Monitor](../azure-monitor/overview.md)özelliklerini kullanarak bir Azure kapsayıcı kayıt defteri için günlük verilerinin nasıl toplandığı açıklanmaktadır. Azure Monitor, kayıt defterinizdeki kullanıcı tarafından yönlendirilen olaylar için [kaynak günlükleri](../azure-monitor/platform/platform-logs-overview.md) (eski adıyla *tanılama günlükleri*olarak adlandırılır) toplar. Şu gibi gereksinimleri karşılamak için bu verileri toplayın ve tüketin:
 
-* Güvenlik ve uyumluluk sağlamak için kayıt defteri kimlik doğrulama olaylarını denetleme 
+* Güvenlik ve uyumluluğu sağlamak için denetim kayıt defteri kimlik doğrulama olayları 
 
-* Kayıt defterlerinizle ilgili işlem sorunlarını tanılamanıza olanak tanımak için çekme ve çekme olayları gibi kayıt defteri yapıtlarına yönelik kapsamlı bir etkinlik izi sağlayın 
+* Kayıt defterinizle operasyonel sorunları tanılayabilmeniz için çekme ve çekme olayları gibi kayıt defteri yapıtlarında tam bir etkinlik izi sağlayın 
 
-Azure Izleyici 'yi kullanarak kaynak günlük verilerinin toplanması ek maliyetlere neden olabilir. Bkz. [Azure izleyici fiyatlandırması](https://azure.microsoft.com/pricing/details/monitor/). 
+Azure Monitor kullanarak kaynak günlüğü verilerinin toplanması ek maliyetlere neden olabilir. Bkz. [Azure Monitör fiyatlandırması.](https://azure.microsoft.com/pricing/details/monitor/) 
 
+## <a name="repository-events"></a>Depo olayları
 
-> [!IMPORTANT]
-> Bu özellik şu anda önizleme aşamasındadır ve bazı [sınırlamalar](#preview-limitations) geçerlidir. Önizlemeler, [ek kullanım koşullarını][terms-of-use] kabul etmeniz şartıyla kullanımınıza sunulur. Bu özelliğin bazı yönleri genel kullanıma açılmadan önce değişebilir.
+Görüntüler ve diğer yapılar için aşağıdaki depo düzeyindeki olaylar şu anda günlüğe kaydedilir:
 
-## <a name="preview-limitations"></a>Önizleme sınırlamaları
-
-Görüntüler ve diğer yapıtlar için aşağıdaki depo düzeyi olaylar şu anda günlüğe kaydedilir:
-
-* **Anında iletme olayları**
-* **Çekme olayları**
-* **Olayların etiketini kaldır**
+* **Itme olayları**
+* **Olayları çekme**
+* **Etiketi zıdama olayları**
 * **Olayları silme** (depo silme olayları dahil)
 
-Şu anda günlüğe kayıtlı olmayan depo düzeyi olayları: Temizleme olayları.
+Şu anda günlüğe kaydolmayan depo düzeyindeki olaylar: Olayları temizleme.
 
 ## <a name="registry-resource-logs"></a>Kayıt defteri kaynak günlükleri
 
-Kaynak günlükleri, iç işlemlerini tanımlayan Azure kaynakları tarafından yayılan bilgiler içerir. Azure Container Registry 'de, Günlükler aşağıdaki tablolarda depolanan kimlik doğrulama ve depo düzeyi olaylarını içerir. 
+Kaynak günlükleri, azure kaynakları tarafından yayılan ve kendi iç işleyişini açıklayan bilgiler içerir. Bir Azure kapsayıcı kayıt defteri için günlükler, aşağıdaki tablolarda depolanan kimlik doğrulama ve depo düzeyinde olaylar içerir. 
 
-* **Kapsayıcıregistryloginevents** -kayıt defteri doğrulama olayları ve gelen KIMLIK ve IP adresi dahil olmak üzere durum
-* **Containerregistryhavuzuyevents** -kayıt defteri depolarındaki görüntüler ve diğer yapılar için gönderme ve çekme gibi işlemler
-* Toplu gönderim ve çekme sayıları gibi **AzureMetrics** - [kapsayıcı kayıt defteri ölçümleri](../azure-monitor/platform/metrics-supported.md#microsoftcontainerregistryregistries) .
+* **ContainerRegistryLoginEvents** - Gelen kimlik ve IP adresi de dahil olmak üzere kayıt defteri kimlik doğrulama olayları ve durumu
+* **ContainerRegistryRepositoryEvents** - Kayıt defteri depolarında görüntüler ve diğer yapılar için itme ve çekme gibi işlemler
+* **AzureMetrics** - Toplu itme ve çekme sayıları gibi[kayıt defteri ölçümleri.](../azure-monitor/platform/metrics-supported.md#microsoftcontainerregistryregistries)
 
 İşlemler için günlük verileri şunları içerir:
   * Başarı veya başarısızlık durumu
-  * Başlangıç ve bitiş zaman damgaları
+  * Başlangıç ve bitiş zamanı damgaları
 
-Azure, kaynak günlüklerine ek olarak, bir kapsayıcı kayıt defterinin oluşturulması veya silinmesi gibi Azure Yönetim olaylarının tek abonelik düzeyinde bir kaydı olan bir [etkinlik günlüğü](../azure-monitor/platform/platform-logs-overview.md)sağlar.
+Azure, kaynak günlüklerine ek olarak, bir kapsayıcı kayıt defteri oluşturma veya silme gibi Azure yönetim olaylarının tek bir abonelik düzeyi kaydı olan bir [etkinlik günlüğü](../azure-monitor/platform/platform-logs-overview.md)sağlar.
 
-## <a name="enable-collection-of-resource-logs"></a>Kaynak günlüklerinin toplanmasını etkinleştir
+## <a name="enable-collection-of-resource-logs"></a>Kaynak günlüklerinin toplanmasını etkinleştirme
 
-Bir kapsayıcı kayıt defteri için kaynak günlüklerinin toplanması varsayılan olarak etkin değildir. İzlemek istediğiniz her kayıt defteri için tanılama ayarlarını açık bir şekilde etkinleştirin. Tanılama ayarlarını etkinleştirme seçenekleri için bkz. [Azure 'da platform günlüklerini ve ölçümlerini toplamak için tanılama ayarı oluşturma](../azure-monitor/platform/diagnostic-settings.md).
+Kapsayıcı kayıt defteri için kaynak günlüklerinin toplanması varsayılan olarak etkinleştirilen değildir. İzlemek istediğiniz her kayıt defteri için tanılama ayarlarını açıkça etkinleştirin. Tanılama ayarlarını etkinleştirme seçenekleri için, [Azure'da platform günlüklerini ve ölçümlerini toplamak için tanı ayarını oluştur'a](../azure-monitor/platform/diagnostic-settings.md)bakın.
 
-Örneğin, Azure Izleyici 'de neredeyse gerçek zamanlı bir kapsayıcı kayıt defteri için günlükleri ve ölçümleri görüntülemek için, Log Analytics çalışma alanında kaynak günlüklerini toplayın. Azure portal kullanarak bu tanılama ayarını etkinleştirmek için:
+Örneğin, Azure Monitor'da bir konteyner kayıt defterinin günlüklerini ve ölçümlerini gerçek zamanlı olarak görüntülemek için, bir Log Analytics çalışma alanında kaynak günlüklerini toplayın. Azure portalını kullanarak bu tanılama ayarını etkinleştirmek için:
 
-1. Zaten bir çalışma alanınız yoksa [Azure Portal](../azure-monitor/learn/quick-create-workspace.md)kullanarak bir çalışma alanı oluşturun. Veri koleksiyonundaki gecikme süresini en aza indirmek için, çalışma alanının kapsayıcı kayıt defteriyle **aynı bölgede** olduğundan emin olun.
-1. Portalda, kayıt defteri ' ni seçin ve **izleme > Tanılama ayarları > Tanılama ayarı Ekle**' yi seçin.
-1. Ayar için bir ad girin ve **Log Analytics gönder**' i seçin.
-1. Kayıt defteri tanılama günlükleri için çalışma alanını seçin.
-1. Toplamak istediğiniz günlük verilerini seçin ve **Kaydet**' e tıklayın.
+1. Zaten bir çalışma alanınız yoksa, [Azure portalını](../azure-monitor/learn/quick-create-workspace.md)kullanarak bir çalışma alanı oluşturun. Veri toplamadaki gecikmeyi en aza indirmek için, çalışma alanının kapsayıcı kayıt defterinizle **aynı bölgede** olduğundan emin olun.
+1. Portalda, kayıt defterini seçin ve **Tanılama ayarlarını > İzleme > Tanılama ayarlarını**seçin.
+1. Ayarın adını girin ve **Günlük Analitiğine Gönder'i**seçin.
+1. Kayıt defteri tanıgünlükleri için çalışma alanını seçin.
+1. Toplamak istediğiniz günlük verilerini seçin ve **Kaydet'i**tıklatın.
 
-Aşağıdaki görüntüde, portalı kullanarak bir kayıt defteri için tanılama ayarının oluşturulması gösterilmektedir.
+Aşağıdaki resim, portalı kullanarak bir kayıt defteri için tanılama ayarı oluşturulmasını gösterir.
 
 ![Tanılama ayarlarını etkinleştirme](media/container-registry-diagnostics-audit-logs/diagnostic-settings.png)
 
 > [!TIP]
-> Yalnızca ihtiyacınız olan verileri, ücret maliyetini ve izleme gereksinimlerinizi toplayın. Örneğin, yalnızca kimlik doğrulama olaylarını denetlemeniz gerekiyorsa yalnızca **Containerregistryloginevents** günlüğünü seçin. 
+> Maliyeti ve izleme ihtiyaçlarınızı dengeleyerek yalnızca ihtiyacınız olan verileri toplayın. Örneğin, yalnızca kimlik doğrulama olaylarını denetlemeniz gerekiyorsa, yalnızca **ContainerRegistryLoginEvents** günlüğünü seçin. 
 
-## <a name="view-data-in-azure-monitor"></a>Azure Izleyici 'de verileri görüntüleme
+## <a name="view-data-in-azure-monitor"></a>Azure Monitör'de verileri görüntüleme
 
-Log Analytics tanılama günlüklerini toplamayı etkinleştirdikten sonra, verilerin Azure Izleyici 'de gösterilmesi birkaç dakika sürebilir. Portalda verileri görüntülemek için kayıt defterini seçin ve **> günlüklerini izleme**' yi seçin. Kayıt defteri için veri içeren tablolardan birini seçin. 
+Log Analytics'te tanılama günlüklerinin toplanmasını etkinleştirdikten sonra, verilerin Azure Monitor'da görünmesi birkaç dakika sürebilir. Portaldaki verileri görüntülemek için kayıt defterini seçin ve **İzleme > Günlükleri'ni**seçin. Kayıt defteri için veri içeren tablolardan birini seçin. 
 
-Verileri görüntülemek için sorguları çalıştırın. Birkaç örnek sorgu sağlanır veya kendi kendinize çalıştırılır. Örneğin, aşağıdaki sorgu **Containerregistrydepotoryevents** tablosundan en son 24 saat verileri alır:
+Verileri görüntülemek için sorguları çalıştırın. Birkaç örnek sorgu sağlanır veya kendi sorgunuzu çalıştırın. Örneğin, aşağıdaki sorgu **ContainerYRegistryRepositoryEvents** tablosundan en son 24 saatlik verileri alır:
 
 ```Kusto
 ContainerRegistryRepositoryEvents
 | where TimeGenerated > ago(1d) 
 ```
 
-Aşağıdaki görüntüde örnek çıkış gösterilmektedir:
+Aşağıdaki resimde örnek çıktı gösterilmektedir:
 
 ![Günlük verilerini sorgulama](media/container-registry-diagnostics-audit-logs/azure-monitor-query.png)
 
-Azure portal Log Analytics kullanmaya yönelik bir öğretici için bkz. [Azure izleyici 'yi kullanmaya başlama Log Analytics](../azure-monitor/log-query/get-started-portal.md)veya Log Analytics [demo ortamını](https://portal.loganalytics.io/demo)deneme. 
+Azure portalında Log Analytics'i kullanma hakkında bir eğitim için Azure [MonitörÜ Log Analytics'e başlayın](../azure-monitor/log-query/get-started-portal.md)veya Log Analytics [Demo ortamını](https://portal.loganalytics.io/demo)deneyin. 
 
-Günlük sorguları hakkında daha fazla bilgi için bkz. [Azure izleyici 'de günlük sorgularına genel bakış](../azure-monitor/log-query/log-query-overview.md).
+Günlük sorguları hakkında daha fazla bilgi için [Azure Monitor'daki günlük sorgularına genel bakış](../azure-monitor/log-query/log-query-overview.md)bölümüne bakın.
 
 ### <a name="additional-query-examples"></a>Ek sorgu örnekleri
 
@@ -100,14 +96,12 @@ ContainerRegistryRepositoryEvents
 
 ## <a name="additional-log-destinations"></a>Ek günlük hedefleri
 
-Günlükleri Log Analytics veya alternatif olarak göndermenin yanı sıra, bir Azure Depolama hesabını günlük hedefi olarak seçmek da yaygın bir senaryodur. Azure depolama 'da günlükleri arşivlemek için Tanılama ayarları aracılığıyla arşivlemeyi etkinleştirmeden önce bir depolama hesabı oluşturun.
+Günlükleri Log Analytics'e göndermenin yanı sıra veya alternatif olarak, ortak bir senaryo günlük hedefi olarak bir Azure Depolama hesabı seçmektir. Azure Depolama'da günlükleri arşivlemek için tanılama ayarlarında arşivlemeyi etkinleştirmeden önce bir depolama hesabı oluşturun.
 
-Ayrıca, tanılama günlüğü olaylarını bir [Azure Olay Hub 'ına](../event-hubs/event-hubs-what-is-event-hubs.md)akışla aktarabilirsiniz. Event hubs'ı, sonra dönüştürebilir ve herhangi bir gerçek zamanlı analiz sağlayıcısı kullanarak depolama, saniye başına milyonlarca olayı içe alabilir. 
+Tanılama günlüğü olaylarını bir [Azure Etkinlik Hub'ına](../event-hubs/event-hubs-what-is-event-hubs.md)da aktarabilirsiniz. Olay Hub'ları saniyede milyonlarca olay alabilir ve bu etkinlikleri herhangi bir gerçek zamanlı analiz sağlayıcısını kullanarak dönüştürebilir ve depolayabilirsiniz. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Log Analytics](../azure-monitor/log-query/get-started-portal.md) kullanma ve [günlük sorguları](../azure-monitor/log-query/get-started-queries.md)oluşturma hakkında daha fazla bilgi edinin.
-* Azure 'un farklı katmanlarında kullanılabilen platform günlükleri hakkında bilgi edinmek için bkz. [Azure platform günlüklerine genel bakış](../azure-monitor/platform/platform-logs-overview.md) .
+* [Log Analytics'i](../azure-monitor/log-query/get-started-portal.md) kullanma ve [günlük sorguları](../azure-monitor/log-query/get-started-queries.md)oluşturma hakkında daha fazla bilgi edinin.
+* Azure'un farklı katmanlarında kullanılabilen platform günlükleri hakkında bilgi edinmek için [Azure platform günlüklerine genel bakış](../azure-monitor/platform/platform-logs-overview.md) alameti.
 
-<!-- LINKS - External -->
-[terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/

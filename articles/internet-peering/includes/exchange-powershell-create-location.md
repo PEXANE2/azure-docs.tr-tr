@@ -9,19 +9,19 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 6f5d2dc30ac0f6316587fa0836b87cbd4efc0a8b
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75774399"
 ---
-**Get-AzPeeringLocation** PowerShell cmdlet 'i, sonraki adımlarda kullanacağınız zorunlu parametre `Kind`bir eşleme konumları listesi döndürür:
+PowerShell cmdlet **Get-AzPeeringLocation,** daha sonraki adımlarda kullanacağınız zorunlu parametreye `Kind`sahip görünen konumların listesini döndürür:
 
 ```powershell
 Get-AzPeeringLocation -Kind "Exchange"
 ```
 
-Exchange eşleme konumları aşağıdaki alanları içerir:
+Exchange eşleme Konumları aşağıdaki alanları içerir:
 * ExchangeName
 * PeeringLocation
 * Ülke
@@ -30,9 +30,9 @@ Exchange eşleme konumları aşağıdaki alanları içerir:
 * MicrosoftIPv4Address
 * MicrosoftIPv6Address
 
-[Peeringdb](https://w www.peeringdb.com)'ye başvurarak istenen eşleme özelliğinde mevcut olduğunu doğrulayın.
+[PeeringDB'ye](https://wwww.peeringdb.com)atıfta bulunarak istediğiniz eşleme tesisinde bulunduğunuzu doğrulayın.
 
-Bir eşleme oluşturmak için Seattle 'ın eşleme konumu olarak nasıl kullanılacağını gösteren bir örnek aşağıda verilmiştir:
+Aşağıda, bir eş oluşturmak için Seattle'ın eşleme konumu olarak nasıl kullanılacağını gösteren bir örnek verilmiştir:
 
 ```powershell
 $exchangeLocations = Get-AzPeeringLocation -Kind Exchange

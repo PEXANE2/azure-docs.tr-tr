@@ -1,6 +1,6 @@
 ---
-title: Azure Içeri/dışarı aktarma aracı 'nı kullanma-v1 | Microsoft Docs
-description: İçeri aktarma/dışarı aktarma aracını kullanarak bir içeri aktarma işi için sabit sürücüler hazırlama, bir içeri aktarma işini onarma veya bir dışarı aktarma işini onarma hakkında bilgi edinin.
+title: Azure Alma/Dışa Aktarma Aracını Kullanma - v1 | Microsoft Dokümanlar
+description: Sabit diskleri alma işi için hazırlamak, bir alma işini onarmak veya bir dışa aktarma işini onarmak için Alma/Dışa Aktarma Aracı'nı nasıl kullanacağınızı öğrenin.
 author: twooley
 services: storage
 ms.service: storage
@@ -9,27 +9,27 @@ ms.date: 1/15/2017
 ms.author: twooley
 ms.subservice: common
 ms.openlocfilehash: aaceee65ae91a22dc658d185a874e2040b1e0f04
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75975662"
 ---
-# <a name="using-the-azure-importexport-tool-classic-deployment-model"></a>Azure Içeri/dışarı aktarma aracı 'nı (klasik dağıtım modeli) kullanma
+# <a name="using-the-azure-importexport-tool-classic-deployment-model"></a>Azure İçe Alma/Dışa Aktarma Aracını kullanma (klasik dağıtım modeli)
 
-Azure içeri/dışarı aktarma aracı (Waımportexport. exe), Azure Içeri/dışarı aktarma hizmeti için iş oluşturmak ve yönetmek üzere kullanılır ve bu sayede büyük miktarlardaki verileri Azure Blob depolama alanına veya dışına aktarmanıza olanak tanır.
+Azure İçe Alma/Dışa Aktarma Aracı (WAImportExport.exe), Azure İçe Alma/Dışa Aktarma hizmeti için iş oluşturmak ve yönetmek için kullanılır ve azure Blob Depolama'ya veya bunların dışına büyük miktarda veri aktarımı yapmanızı sağlar.
 
-Bu belge, Azure Içeri/dışarı aktarma aracının klasik dağıtım modeline yöneliktir. Aracın en son sürümünü kullanma hakkında daha fazla bilgi için bkz. [Azure içeri/dışarı aktarma aracını kullanma](../storage-import-export-tool-how-to.md).
+Bu belge, Azure İçe Aktarma/Verme Aracı'nın klasik dağıtım modeli içindir. Aracın en son sürümünü kullanma hakkında bilgi için azure [alma/dışa aktarma aracını kullanma bölümüne](../storage-import-export-tool-how-to.md)bakın.
 
-Aşağıdaki makalelerde nasıl yapılacağı gösterilmektedir:
+Aşağıdaki makaleler size nasıl yapılacağını gösterir:
 
-- Içeri/dışarı aktarma aracını yükleyip kurun.
-- Sürücülerinizdeki verileri Azure Blob depolama alanına aktardığınız bir iş için sabit sürücülerinizi hazırlayın.
-- Günlük dosyalarını Kopyala ile bir işin durumunu gözden geçirin.
-- Bir içeri aktarma işini onarın.
-- Bir dışarı aktarma işini onarın.
-- İşlem sırasında bir sorun olması durumunda Azure Içeri/dışarı aktarma aracı sorunlarını giderin.
+- Alma/Dışa Aktarma Aracı'nı yükleyin ve kurun.
+- Sabit disklerinizi, sürücülerinizden Azure Blob Depolama'ya veri içe aktardığınız bir işe hazırlayın.
+- Copy Log Files ile bir işin durumunu gözden geçirin.
+- Bir alma işini onarın.
+- Bir dışa aktarma işini onarın.
+- İşlem sırasında bir sorun yaşıyorsanız, Azure İçe Aktarma/Dışa Aktarma Aracı'nı sorun giderin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Waımportexport aracını ayarlama](../storage-import-export-tool-how-to.md)
+* [WAImportExport aracının kurulumu](../storage-import-export-tool-how-to.md)

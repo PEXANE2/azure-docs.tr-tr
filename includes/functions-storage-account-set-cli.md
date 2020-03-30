@@ -5,18 +5,18 @@ ms.topic: include
 ms.date: 09/26/2019
 ms.author: glenga
 ms.openlocfilehash: 4ace70abe0112e0fe27d177c02bcb697746c92cc
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78262591"
 ---
-### <a name="set-the-storage-account-connection"></a>Depolama hesabı bağlantısını ayarla
+### <a name="set-the-storage-account-connection"></a>Depolama hesabı bağlantısını ayarlama
 
-Local. Settings. json dosyasını açın ve depolama hesabı bağlantı dizesi olan `AzureWebJobsStorage`değerini kopyalayın. Aşağıdaki Bash komutunu kullanarak `AZURE_STORAGE_CONNECTION_STRING` ortam değişkenini bağlantı dizesine ayarlayın:
+local.settings.json dosyasını açın ve `AzureWebJobsStorage`Depolama hesabı bağlantı dizesi olan değerini kopyalayın. Bu `AZURE_STORAGE_CONNECTION_STRING` Bash komutunu kullanarak ortam değişkenini bağlantı dizesine ayarlayın:
 
 ```bash
 AZURE_STORAGE_CONNECTION_STRING="<STORAGE_CONNECTION_STRING>"
 ```
 
-`AZURE_STORAGE_CONNECTION_STRING` ortam değişkeninde bağlantı dizesini ayarladığınızda, her seferinde kimlik doğrulaması sağlamak zorunda kalmadan depolama hesabınıza erişebilirsiniz.
+Ortam değişkenindeki bağlantı `AZURE_STORAGE_CONNECTION_STRING` dizesini ayarladığınızda, her seferinde kimlik doğrulaması sağlamak zorunda kalmadan Depolama hesabınıza erişebilirsiniz.

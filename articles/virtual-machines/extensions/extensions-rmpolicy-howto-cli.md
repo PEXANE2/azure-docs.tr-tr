@@ -1,6 +1,6 @@
 ---
-title: VM Uzantısı yüklemesini kısıtlamak için Azure Ilkesini kullanma
-description: VM Uzantısı dağıtımlarını kısıtlamak için Azure Ilkesini kullanın.
+title: VM uzantısı yüklemesini kısıtlamak için Azure İlkesi'ni kullanma
+description: VM uzantısı dağıtımlarını kısıtlamak için Azure İlkesi'ni kullanın.
 services: virtual-machines-linux
 documentationcenter: ''
 author: axayjo
@@ -13,32 +13,32 @@ ms.workload: infrastructure-services
 ms.date: 03/23/2018
 ms.author: akjosh
 ms.reviewer: cynthn
-ms.openlocfilehash: 113736198f40510981c80909c862282fa07ac68d
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 3c660f7e05af43c2aad6f7283e32cfc1d85571ab
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073767"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80066840"
 ---
-# <a name="use-azure-policy-to-restrict-extensions-installation-on-linux-vms"></a>Linux VM 'lerinde uzantıları yüklemeyi kısıtlamak için Azure Ilkesini kullanma
+# <a name="use-azure-policy-to-restrict-extensions-installation-on-linux-vms"></a>Linux VM'lerinde uzantıların yüklenmesini kısıtlamak için Azure İlkesi'ni kullanın
 
-Linux sanal makinelerinizdeki belirli uzantıların kullanımını veya yüklenmesini engellemek isterseniz, bir kaynak grubu içindeki VM 'Ler için uzantıları kısıtlamak üzere CLı kullanarak bir Azure ilkesi oluşturabilirsiniz. 
+Linux VM'lerinizde belirli uzantıların kullanılmasını veya yüklenmesini engellemek istiyorsanız, kaynak grubundaki VM uzantılarını kısıtlamak için CLI'yi kullanarak bir Azure ilkesi oluşturabilirsiniz. 
 
-Bu öğretici, en son sürüme sürekli olarak güncellenen Azure Cloud Shell içindeki CLı 'yi kullanır. Azure CLı 'yı yerel olarak çalıştırmak istiyorsanız, sürüm 2.0.26 veya üstünü yüklemeniz gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme]( /cli/azure/install-azure-cli). 
+Bu öğretici, sürekli olarak en son sürüme güncelleştirilen Azure Bulut Kabuğu içindeki CLI'yi kullanır. Azure CLI'yi yerel olarak çalıştırmak istiyorsanız, sürüm 2.0.26 veya sonraki sürümyüklemeniz gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme]( /cli/azure/install-azure-cli). 
 
-## <a name="create-a-rules-file"></a>Bir kural dosyası oluşturma
+## <a name="create-a-rules-file"></a>Kurallar dosyası oluşturma
 
-Hangi uzantıların yüklenebileceğini kısıtlamak için, uzantıyı belirlemek için mantığı sağlamak üzere bir [kuralınız](../../governance/policy/concepts/definition-structure.md#policy-rule) olması gerekir.
+Hangi uzantıların yüklenebileceğini kısıtlamak için, uzantıyı tanımlamak için mantığı sağlamak için bir [kuralınız](../../governance/policy/concepts/definition-structure.md#policy-rule) olması gerekir.
 
-Bu örnekte, Azure Cloud Shell ' de bir kural dosyası oluşturarak ' Microsoft. OSTCExtensions ' tarafından yayımlanan uzantıların yüklenmesini reddetme gösterilmektedir, ancak CLı 'de yerel olarak çalışıyorsanız, yerel bir dosya oluşturabilir ve yolu (~/CloudDrive), makinenizde yerel dosyanın yoluyla değiştirebilirsiniz.
+Bu örnek, Azure Bulut Su Ağıt'ta bir kural dosyası oluşturarak 'Microsoft.OSTCExtensions' tarafından yayınlanan uzantıları yüklemeyi nasıl reddebileceğinizi gösterir, ancak CLI'de yerel olarak çalışıyorsanız, yerel bir dosya oluşturabilir ve yolu (~/clouddrive) makinenizdeki yerel dosyaya giden yolile değiştirebilirsiniz.
 
-[Bash Cloud Shell](https://shell.azure.com/bash)şunu yazın:
+Bir [bash Cloud Shell](https://shell.azure.com/bash)olarak , türü:
 
-```azurecli-interactive 
+```bash
 vim ~/clouddrive/azurepolicy.rules.json
 ```
 
-Aşağıdaki. json dosyasını kopyalayıp dosyaya yapıştırın.
+Aşağıdaki .json dosyaya kopyalayıp yapıştırın.
 
 ```json
 {
@@ -64,22 +64,22 @@ Aşağıdaki. json dosyasını kopyalayıp dosyaya yapıştırın.
 }
 ```
 
-İşiniz bittiğinde **ESC** tuşuna basın ve ardından dosyayı kaydetmek ve kapatmak için **WQ** yazın.
+İşi bittiğinde **Esc** tuşuna basın ve dosyayı kaydetmek ve kapatmak için **:wq** yazın.
 
 
 ## <a name="create-a-parameters-file"></a>Parametre dosyası oluşturma
 
-Ayrıca, engellenecek uzantılar listesini geçirmek için kullanabileceğiniz bir yapı oluşturan [Parametreler](../../governance/policy/concepts/definition-structure.md#parameters) dosyasına ihtiyacınız vardır. 
+Ayrıca, engellemek için uzantıların bir listesini geçmek için kullanmak için bir yapı oluşturan bir [parametre](../../governance/policy/concepts/definition-structure.md#parameters) dosyası gerekir. 
 
-Bu örnek, Cloud Shell Linux VM 'Ler için bir parametre dosyası oluşturmayı gösterir, ancak CLı 'de yerel olarak çalışıyorsanız yerel bir dosya oluşturabilir ve yolu (~/CloudDrive), makinenizde yerel dosyanın yoluyla değiştirebilirsiniz.
+Bu örnek, Cloud Shell'de Linux VM'leri için nasıl bir parametre dosyası oluşturabileceğinizi gösterir, ancak CLI'da yerel olarak çalışıyorsanız, yerel bir dosya oluşturabilir ve yolu (~/clouddrive) makinenizdeki yerel dosyaya giden yol ile değiştirebilirsiniz.
 
-[Bash Cloud Shell](https://shell.azure.com/bash)şunu yazın:
+Bash [Cloud Shell'](https://shell.azure.com/bash)de , yazın:
 
-```azurecli-interactive
+```bash
 vim ~/clouddrive/azurepolicy.parameters.json
 ```
 
-Aşağıdaki. json dosyasını kopyalayıp dosyaya yapıştırın.
+Aşağıdaki .json dosyaya kopyalayıp yapıştırın.
 
 ```json
 {
@@ -94,13 +94,13 @@ Aşağıdaki. json dosyasını kopyalayıp dosyaya yapıştırın.
 }
 ```
 
-İşiniz bittiğinde **ESC** tuşuna basın ve ardından dosyayı kaydetmek ve kapatmak için **WQ** yazın.
+İşi bittiğinde **Esc** tuşuna basın ve dosyayı kaydetmek ve kapatmak için **:wq** yazın.
 
 ## <a name="create-the-policy"></a>İlkeyi oluşturma
 
-İlke tanımı, kullanmak istediğiniz yapılandırmayı depolamak için kullanılan bir nesnedir. İlke tanımı, ilkeyi tanımlamak için kuralları ve parametreler dosyalarını kullanır. [Az Policy Definition Create](/cli/azure/role/assignment?view=azure-cli-latest)kullanarak ilke tanımını oluşturun.
+İlke tanımı, kullanmak istediğiniz yapılandırmayı depolamak için kullanılan bir nesnedir. İlke tanımı, ilketanımlamak için kurallar ve parametreler dosyaları kullanır. [az ilke tanımını](/cli/azure/role/assignment?view=azure-cli-latest)kullanarak ilke tanımını oluşturun.
 
-Bu örnekte, kurallar ve parametreler, oluşturduğunuz ve bulut kabuğunuzda. JSON dosyaları olarak depoladığınız dosyalardır.
+Bu örnekte, kurallar ve parametreler oluşturduğunuz ve bulut kabuğunuzda .json dosyaları olarak depolanan dosyalardır.
 
 ```azurecli-interactive
 az policy definition create \
@@ -113,11 +113,11 @@ az policy definition create \
 ```
 
 
-## <a name="assign-the-policy"></a>İlkeyi ata
+## <a name="assign-the-policy"></a>İlke atama
 
-Bu örnek, [az Policy atama Create](/cli/azure/policy/assignment)kullanılarak ilkeyi bir kaynak grubuna atar. **Myresourcegroup** kaynak grubunda oluşturulan herhangi bir sanal makıne Linux VM erişimini veya Linux Için özel betik uzantılarını yükleyemeyecektir. İlkeyi atamadan önce kaynak grubunun mevcut olması gerekir.
+Bu örnek, [az ilke atama sı](/cli/azure/policy/assignment)kullanılarak bir kaynak grubuna ilke atar. **myResourceGroup** kaynak grubunda oluşturulan herhangi bir VM, Linux VM Access'i veya Linux için Özel Komut Dosyası uzantılarını yükleyemez. İlke atamadan önce kaynak grubunun var olması gerekir.
 
-Abonelik KIMLIĞINIZI örnekteki bir yerde kullanmak üzere almak için [az Account List](/cli/azure/account?view=azure-cli-latest) kullanın.
+Abonelik kimliğinizi örnektekinin yerine kullanmak için [az hesap listesini](/cli/azure/account?view=azure-cli-latest) kullanın.
 
 
 ```azurecli-interactive
@@ -137,7 +137,7 @@ az policy assignment create \
 
 ## <a name="test-the-policy"></a>İlkeyi test etme
 
-Yeni bir VM oluşturup yeni bir kullanıcı eklemeye çalışırken ilkeyi test edin.
+Yeni bir VM oluşturup yeni bir kullanıcı eklemeye çalışarak ilkeyi test edin.
 
 
 ```azurecli-interactive
@@ -148,7 +148,7 @@ az vm create \
     --generate-ssh-keys
 ```
 
-VM erişimi uzantısını kullanarak **yenkullanıcı** adlı yeni bir kullanıcı oluşturmayı deneyin.
+VM Access uzantısını kullanarak **myNewUser** adında yeni bir kullanıcı oluşturmaya çalışın.
 
 ```azurecli-interactive
 az vm user update \
@@ -165,7 +165,7 @@ az vm user update \
 ```azurecli-interactive
 az policy assignment delete --name 'not-allowed-vmextension-linux' --resource-group myResourceGroup
 ```
-## <a name="remove-the-policy"></a>İlkeyi kaldır
+## <a name="remove-the-policy"></a>İlkeyi kaldırma
 
 ```azurecli-interactive
 az policy definition delete --name 'not-allowed-vmextension-linux'

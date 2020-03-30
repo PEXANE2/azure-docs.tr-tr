@@ -1,74 +1,86 @@
 ---
-title: Azure Data Factory eşleme veri akışındaki sütun desenleri
-description: Azure Data Factory eşleme veri akışlarında sütun desenleri kullanarak Genelleştirilmiş veri dönüştürme desenleri oluşturma
+title: Azure Veri Fabrikası haritalama veri akışında sütun desenleri
+description: Azure Veri Fabrikası haritalama veri akışlarında sütun desenlerini kullanarak genelleştirilmiş veri dönüştürme desenleri oluşturun
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/21/2019
-ms.openlocfilehash: 0c9a3c2ef05f4a11933ca7fc81c7c0f87a612293
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: bfb4eeef482c4944e75b7805642bc93c23195208
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79243815"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80065530"
 ---
-# <a name="using-column-patterns-in-mapping-data-flow"></a>Eşleme veri akışında sütun düzenlerini kullanma
+# <a name="using-column-patterns-in-mapping-data-flow"></a>Veri akışını eşlemede sütun desenlerini kullanma
 
-Birçok eşleme veri akışı dönüştürmesi, sabit kodlanmış sütun adları yerine, şablon sütunlarına göre bir düzen ile başvuru yapmanıza olanak sağlar. Bu eşleştirme *sütun desenleri*olarak bilinir. Sütunları ad, veri türü, akış veya konuma göre eşleştirmek için, tam alan adları gerektirmek yerine desenler tanımlayabilirsiniz. Sütun desenlerinin yararlı olduğu iki senaryo vardır:
+Çeşitli eşleme veri akışı dönüşümleri, sabit kodlu sütun adları yerine desenleri temel alan şablon sütunlarına başvurmanızı sağlar. Bu eşleşme *sütun desenleri*olarak bilinir. Tam alan adları gerektirmek yerine sütunları ad, veri türü, akış veya konuma göre eşleşecek desenler tanımlayabilirsiniz. Sütun desenleri yararlı olduğu iki senaryo vardır:
 
-* Gelen kaynak alanları, metin dosyalarındaki veya NoSQL veritabanlarındaki sütunları değiştirme durumu gibi genellikle değiştirilirse. Bu senaryo, [şema dradı](concepts-data-flow-schema-drift.md)olarak bilinir.
-* Büyük bir sütun grubu üzerinde ortak bir işlem yapmak istiyorsanız. Örneğin, sütun adında ' Total ' olan her sütunu Double olarak atama.
+* Gelen kaynak alanları genellikle metin dosyalarında veya NoSQL veritabanlarında sütun değiştirme durumu gibi değişirse. Bu senaryo [şema kayması](concepts-data-flow-schema-drift.md)olarak bilinir.
+* Büyük bir sütun grubunda ortak bir işlem yapmak isterseniz. Örneğin, sütun adında 'toplam' olan her sütunu bir çifte dönüştürmek ister.
 
-Sütun desenleri Şu anda türetilmiş sütunda, toplama, seçme ve havuz dönüşümlerinde kullanılabilir.
+Sütun desenleri şu anda türetilmiş sütun, toplama, seçme ve lavabo dönüşümlerinde kullanılabilir.
 
-## <a name="column-patterns-in-derived-column-and-aggregate"></a>Türetilmiş sütunda ve toplamada sütun desenleri
+## <a name="column-patterns-in-derived-column-and-aggregate"></a>Türemiş sütun ve toplamdaki sütun desenleri
 
-Bir toplama dönüşümünün türetilmiş bir sütuna veya toplamalar sekmesine bir sütun stili eklemek için, varolan bir sütunun sağ tarafındaki artı simgesine tıklayın. **Sütun Ekle deseninin**seçimini yapın. 
+Türetilmiş sütuna veya toplu dönüştürmenin Agregalar sekmesine sütun deseni eklemek için varolan sütunun sağındaki artı simgesini tıklatın. **Sütun deseni ekle'yi**seçin. 
 
 ![sütun desenleri](media/data-flow/columnpattern.png "Sütun Desenleri")
 
-Eşleştirme koşulunu girmek için [ifade oluşturucusunu](concepts-data-flow-expression-builder.md) kullanın. Sütunun `name`, `type`, `stream`ve `position` göre sütunlarla eşleşen bir Boole ifadesi oluşturun. Bu model, koşulun true döndüğü düzeltebilecekler veya tanımlanmış tüm sütunları etkiler.
+Eşleşme koşulunu girmek için [ifade oluşturucuyu](concepts-data-flow-expression-builder.md) kullanın. Sütunlara ve `name`sütuna göre `type` `stream` `position` eşleşen bir boolean ifadesi oluşturun. Desen, koşulun doğru döndüğü herhangi bir sütunu, sürüklenmiş veya tanımlanmış olan herhangi bir sütunu etkiler.
 
-Eşleştirme koşulunun altındaki iki ifade kutusu, etkilenen sütunların yeni adlarını ve değerlerini belirtir. Eşleşen alanın varolan değerine başvurmak için `$$` kullanın. Sol ifade kutusu, adı tanımlar ve sağ ifade kutusu değeri tanımlar.
+Eşleşme koşulunun altındaki iki ifade kutusu, etkilenen sütunların yeni adlarını ve değerlerini belirtir. Eşleşen `$$` alanın varolan değerine başvurmak için kullanın. Sol ifade kutusu adı tanımlar ve sağ ifade kutusu değeri tanımlar.
 
 ![sütun desenleri](media/data-flow/columnpattern2.png "Sütun Desenleri")
 
-Yukarıdaki sütun deseninin Double türü her sütunla eşleşiyor ve eşleşme başına bir toplama sütunu oluşturuyor. Yeni sütunun adı, eşleşen sütun adının ' _total ' ile bitiştirildiği addır. Yeni sütunun değeri, var olan çift değerin yuvarlanmış, toplanmış toplamıdır.
+Yukarıdaki sütun deseni, her bir çift tür sütunuyla eşleşir ve maç başına bir toplam sütun oluşturur. Yeni sütunun adı, '_total' ile eşleşen sütunun adıdır. Yeni sütunun değeri, varolan çift değerin yuvarlatılmış, toplam toplamıdır.
 
-Eşleştirme koşullarınızın doğru olduğunu doğrulamak için **İnceleme** sekmesinde tanımlı sütunların çıktı şemasını doğrulayabilir veya **veri önizleme** sekmesindeki verilerin bir anlık görüntüsünü alabilirsiniz. 
+Eşlediğiniz koşulun doğru olduğunu doğrulamak için, **Denetim** sekmesinde tanımlanan sütunların çıktı şemasını doğrulayabilir veya **Veri önizleme** sekmesindeki verilerin anlık görüntüsünü alabilirsiniz. 
 
 ![sütun desenleri](media/data-flow/columnpattern3.png "Sütun Desenleri")
 
-## <a name="rule-based-mapping-in-select-and-sink"></a>Select ve Sink içinde kural tabanlı eşleme
+## <a name="rule-based-mapping-in-select-and-sink"></a>Seç ve lavaboda kural tabanlı haritalama
 
-Kaynaktaki sütunları eşlerken ve dönüşümleri seçtiğinizde, sabit eşleme veya kural tabanlı eşlemeler ekleyebilirsiniz. Verilerinizin şemasını biliyorsanız ve kaynak veri kümesinden belirli sütunların belirli statik adları her zaman eşleşecek şekilde beklediğinizi, sabit eşleme kullanın. Esnek şemalar ile çalışıyorsanız, sütun `name`, `type`, `stream`ve `position` göre bir kalıp eşleşmesi oluşturmak için kural tabanlı eşleme kullanın. Sabit ve kural tabanlı eşlemelerin herhangi bir birleşimini kullanabilirsiniz. 
+Kaynak ve seçim dönüşümlerindeki sütunları eşleme yaparken, sabit eşleme veya kural tabanlı eşlemeler ekleyebilirsiniz. , `name`, `type` `stream`ve `position` sütunlara göre eşleştirin. Sabit ve kural tabanlı eşlemelerin herhangi bir birleşimine sahip olabilirsiniz. Varsayılan olarak, 50'den fazla sütuna sahip tüm projeksiyonlar, her sütunda eşleşen ve giriş adı olan kural tabanlı bir eşleme için varsayılan olarak. 
 
-Kural tabanlı eşleme eklemek için **eşleme Ekle** ' ye tıklayın ve **kural tabanlı eşleme**' yi seçin.
+Kural tabanlı eşleme eklemek için **eşleme ekle'yi** tıklatın ve **Kural tabanlı eşlemi**seçin.
 
-![kural tabanlı eşleme](media/data-flow/rule2.png "Kural tabanlı eşleme")
+![kural tabanlı haritalama](media/data-flow/rule2.png "Kural tabanlı eşleme")
 
-Sol ifade kutusunda, Boolean eşleşme koşulunuz girin. Sağ ifade kutusunda, eşleşen sütunun ne eşleştirileceği belirtin. Eşleşen alanın mevcut adına başvurmak için `$$` kullanın.
+Her kural tabanlı eşleme iki giriş gerektirir: eşlenen her sütunla eşleşecek koşul ve ne adlandırılabilmek. Her iki değer de [ifade oluşturucu](concepts-data-flow-expression-builder.md)aracılığıyla giriş yapılır. Sol ifade kutusuna boolean maç durumunuzu girin. Sağ ifade kutusunda, eşleşen sütunun eşleneceğini belirtin.
 
-Aşağı köşeli çift ayraç simgesine tıklarsanız, bir Regex eşleme koşulu belirtebilirsiniz.
+![kural tabanlı haritalama](media/data-flow/rule-based-mapping.png "Kural tabanlı eşleme")
 
-Hangi tanımlanmış sütunların eşleştiğini ve ne eşlendiğine bakmak için kural tabanlı eşlemenin yanındaki göz gözlük simgesine tıklayın.
+Eşleşen `$$` bir sütunun giriş adına başvurmak için sözdizimini kullanın. Yukarıdaki resmi örnek olarak kullanarak, bir kullanıcının adları altı karakterden kısa olan tüm dize sütunlarında eşleşmek istediğini söyleyin. Gelen bir sütun adlandırılmışsa, `test`ifade `$$ + '_short'` sütunu `test_short`yeniden adlandıracaktır. Var olan tek eşleme buysa, koşulu karşılamayan tüm sütunlar çıktı edilen verilerden bırakılır.
 
-![kural tabanlı eşleme](media/data-flow/rule1.png "Kural tabanlı eşleme")
+Desenler, sürüklenen ve tanımlanan sütunlar ile eşleşir. Hangi tanımlanmış sütunların bir kuralla eşlenerek eşlendirileni görmek için kuralın yanındaki gözlük simgesini tıklatın. Veri önizlemesini kullanarak çıktınızı doğrulayın.
 
-Yukarıdaki örnekte, iki kural tabanlı eşleme oluşturulur. İlki, ' Movie ' adlı tüm sütunları alır ve bunları mevcut değerleriyle eşler. İkinci kural, ' Movie ' ile başlayan ve bunları ' Movieıd ' sütunuyla eşleyen tüm sütunları eşleştirmek için Regex kullanır.
+### <a name="regex-mapping"></a>Regex haritalama
 
-Kuralınız birden çok özdeş eşleştirmelerle sonuçlanırsa, **yinelenen girişleri atlamayı** etkinleştirin veya **yinelenen çıkışları atlayıp** yinelenenleri önleyin.
+Aşağı köşeli ayraç simgesini tıklattığınızda, bir regex eşleme koşulu belirtebilirsiniz. Regex eşleme koşulu, belirtilen regex koşuluyla eşleşen tüm sütun adlarıyla eşleşir. Bu standart kural tabanlı eşlemeler ile birlikte kullanılabilir.
 
-## <a name="pattern-matching-expression-values"></a>Model eşleştirme ifadesi değerleri.
+![kural tabanlı haritalama](media/data-flow/regex-matching.png "Kural tabanlı eşleme")
 
-* `$$` çalışma zamanında her eşleşmenin adına veya değerine çevirir
-* `name` gelen her sütunun adını temsil eder
-* `type` gelen her sütunun veri türünü temsil eder
-* `stream` her bir akışla veya akışdaki dönüşümle ilişkilendirilen adı temsil eder
-* `position`, veri akışındaki sütunların sıralı konumudur
+Yukarıdaki örnek, regex `(r)` deseni veya küçük harf r içeren herhangi bir sütun adı ile eşleşir. Standart kural tabanlı eşleme benzer şekilde, eşleşen tüm sütunlar sözdizimi kullanılarak `$$` sağdaki koşula göre değiştirilir.
+
+### <a name="rule-based-hierarchies"></a>Kural tabanlı hiyerarşiler
+
+Tanımlı projeksiyonunuzun bir hiyerarşisi varsa, hiyerarşialt sütunlarını eşlemek için kural tabanlı eşleme yi kullanabilirsiniz. Eşlendirme yapmak istediğiniz alt sütunları eşleyen eşleşen bir koşul ve karmaşık sütun belirtin. Eşleşen her alt sütun, sağtarafta belirtilen 'Ad olarak' kuralı kullanılarak çıktılanır.
+
+![kural tabanlı haritalama](media/data-flow/rule-based-hierarchy.png "Kural tabanlı eşleme")
+
+Yukarıdaki örnek karmaşık sütunun `a`tüm alt sütunlarında eşleşir. `a`iki alt `b` sütun `c`içerir ve . Çıkış şeması iki sütun `b` içerecektir `c` ve 'Ad as' `$$`koşulu olarak.
+
+## <a name="pattern-matching-expression-values"></a>Desen eşleşen ifade değerleri.
+
+* `$$`çalışma zamanında her eşleşmenin adına veya değerine çevirir
+* `name`her gelen sütunun adını temsil eder
+* `type`her gelen sütunun veri türünü temsil eder
+* `stream`akışınızdaki her akışla ilişkili adı veya dönüşümü temsil eder
+* `position`veri akışınızdaki sütunların ordinal konumudur
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Veri dönüştürmeleri için eşleme veri akışı [ifade dili](data-flow-expression-functions.md) hakkında daha fazla bilgi edinin
-* [Havuz dönüşümünde](data-flow-sink.md) sütun düzenlerini kullanın ve kural tabanlı eşleme ile [dönüştürme seçeneğini belirleyin](data-flow-select.md)
+* Veri dönüşümleri için veri akışı [ifade dilieşleme](data-flow-expression-functions.md) hakkında daha fazla bilgi edinin
+* [Lavabo dönüşümünde](data-flow-sink.md) sütun desenlerini kullanın ve kural tabanlı eşleme yle [dönüştürmeyi seçin](data-flow-select.md)

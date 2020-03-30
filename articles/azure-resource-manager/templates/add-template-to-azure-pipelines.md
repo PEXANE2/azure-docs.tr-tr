@@ -1,62 +1,62 @@
 ---
-title: Azure Pipelines ve şablonlar ile CI/CD
-description: Kaynak Yöneticisi şablonlarını dağıtmak üzere Visual Studio 'da Azure Kaynak grubu dağıtım projelerini kullanarak Azure Pipelines sürekli tümleştirmenin nasıl ayarlanacağını açıklar.
+title: Azure Ardışık Hatlar ve şablonları ile CI/CD
+description: Kaynak Yöneticisi şablonlarını dağıtmak için Visual Studio'daki Azure Kaynak Grubu dağıtım projelerini kullanarak Azure Altyapı Hatları'nda sürekli tümleştirmenin nasıl ayarlanır olduğunu açıklar.
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.openlocfilehash: 6f5d4846d32b4880ccd3fbd82f062f57948ac15a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7617bf47595fce7baa533b0f7cc94a1803ddd349
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75478272"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80153463"
 ---
-# <a name="integrate-resource-manager-templates-with-azure-pipelines"></a>Kaynak Yöneticisi şablonlarını Azure Pipelines ile tümleştirme
+# <a name="integrate-arm-templates-with-azure-pipelines"></a>ARM şablonlarını Azure Pipelines ile tümleştir
 
-Visual Studio, şablon oluşturmak ve bunları Azure aboneliğinize dağıtmak için Azure Kaynak grubu projesi sağlar. Bu projeyi sürekli tümleştirme ve sürekli dağıtım (CI/CD) için Azure Pipelines ile tümleştirebilirsiniz.
+Visual Studio, Azure Kaynak Yöneticisi (ARM) şablonları oluşturmak ve bunları Azure aboneliğinize dağıtmak için Azure Kaynak Grubu projesini sağlar. Sürekli tümleştirme ve sürekli dağıtım (CI/CD) için bu projeyi Azure Pipelines ile tümleştirebilirsiniz.
 
-Azure Pipelines şablonları dağıtmanın iki yolu vardır:
+Azure Ardışık Hatları ile şablondağıtmanın iki yolu vardır:
 
-* **Azure PowerShell betiği çalıştıran görev ekleyin**. Visual Studio projesinde (Deploy-AzureResourceGroup. ps1) bulunan aynı betiği kullandığınız için, bu seçeneğin geliştirme yaşam döngüsü genelinde tutarlılık sağlama avantajı vardır. Betik aşamaları, projenizdeki Kaynak Yöneticisi erişebileceği bir depolama hesabına ait yapıtlardan oluşur. Yapıtlar, projenizdeki bağlantılı şablonlar, betikler ve uygulama ikilileri gibi öğelerdir. Ardından, komut dosyası şablonu dağıtır.
+* **Azure PowerShell komut dosyası çalıştıran görev ekleyin.** Visual Studio projesinde (Deploy-AzureResourceGroup.ps1) yer alan aynı komut dosyasını kullandığınızdan, bu seçenek geliştirme yaşam döngüsü boyunca tutarlılık sağlama avantajına sahiptir. Komut dosyası, yapıtları projenizden Kaynak Yöneticisi'nin erişebileceği bir depolama hesabına aşamalar. Yapı, bağlı şablonlar, komut dosyaları ve uygulama ikilileri gibi projenizdeki öğelerdir. Ardından, komut dosyası şablonu dağır.
 
-* **Görevleri kopyalamak ve dağıtmak için görevler ekleyin**. Bu seçenek, proje betiğine uygun bir alternatif sağlar. Ardışık düzende iki görev yapılandırırsınız. Bir görev, yapıtları ve diğer görevi şablonu dağıtır.
+* **Görevleri kopyalamak ve dağıtmak için görevler ekleyin.** Bu seçenek, proje komut dosyasına uygun bir alternatif sunar. Ardışık alanda iki görevi yapılandırırsınız. Bir görev yapıları aşamalı olarak, diğer görev şablonu dağıtır.
 
-Bu makalede her iki yaklaşım da gösterilmektedir.
+Bu makalede, her iki yaklaşım gösterir.
 
-## <a name="prepare-your-project"></a>Projenizi hazırlama
+## <a name="prepare-your-project"></a>Projenizi hazırlayın
 
-Bu makalede, Visual Studio projenizin ve Azure DevOps kuruluşunuzun işlem hattını oluşturmaya hazırlanma varsayılmaktadır. Aşağıdaki adımlarda, nasıl hazırlandığınızı nasıl yapacağınız nasıl emin olduğunuz gösterilmektedir:
+Bu makalede, Visual Studio projeniz ve Azure DevOps kuruluşunuzun ardışık yapı oluşturmaya hazır olduğu varsayar. Aşağıdaki adımlar, nasıl hazır olduğunuzdan emin olun:
 
-* Bir Azure DevOps kuruluşunuza sahipsiniz. Yoksa, [ücretsiz olarak bir tane oluşturun](/azure/devops/pipelines/get-started/pipelines-sign-up?view=azure-devops). Takımınızın zaten bir Azure DevOps kuruluşu varsa, kullanmak istediğiniz Azure DevOps projesinin yöneticisi olduğunuzdan emin olun.
+* Bir Azure DevOps kuruluşunuz var. Eğer yoksa, [ücretsiz bir oluşturun.](/azure/devops/pipelines/get-started/pipelines-sign-up?view=azure-devops) Ekibinizin zaten bir Azure DevOps kuruluşu varsa, kullanmak istediğiniz Azure DevOps projesinin yöneticisi olduğunuzdan emin olun.
 
-* Azure aboneliğiniz için bir [hizmet bağlantısı](/azure/devops/pipelines/library/connect-to-azure?view=azure-devops) yapılandırdınız. İşlem hattındaki görevler hizmet sorumlusu kimliği altında yürütülür. Bağlantıyı oluşturma adımları için bkz. [DevOps projesi oluşturma](template-tutorial-use-azure-pipelines.md#create-a-devops-project).
+* Azure aboneliğinize bir [hizmet bağlantısı](/azure/devops/pipelines/library/connect-to-azure?view=azure-devops) yapılandırıldınız. Ardışık işteki görevler, hizmet sorumlusunun kimliği altında yürütülür. Bağlantıyı oluşturmak için adımlar için [bkz.](template-tutorial-use-azure-pipelines.md#create-a-devops-project)
 
-* **Azure Kaynak grubu** Starter şablonundan oluşturulmuş bir Visual Studio projenize sahipsiniz. Bu tür bir projeyi oluşturma hakkında daha fazla bilgi için bkz. [Azure kaynak gruplarını Visual Studio aracılığıyla oluşturma ve dağıtma](create-visual-studio-deployment-project.md).
+* **Azure Kaynak Grubu** başlangıç şablonundan oluşturulmuş bir Visual Studio projeniz var. Bu tür bir proje oluşturma hakkında bilgi için [Visual Studio aracılığıyla Azure kaynak grupları oluşturma ve dağıtma](create-visual-studio-deployment-project.md)bölümüne bakın.
 
-* Visual Studio projeniz [bir Azure DevOps projesine bağlandı](/azure/devops/repos/git/share-your-code-in-git-vs-2017?view=azure-devops).
+* Visual Studio projeniz [bir Azure DevOps projesine bağlıdır.](/azure/devops/repos/git/share-your-code-in-git-vs-2017?view=azure-devops)
 
 ## <a name="create-pipeline"></a>İşlem hattı oluşturma
 
-1. Daha önce bir işlem hattı eklemediyseniz yeni bir işlem hattı oluşturmanız gerekir. Azure DevOps kuruluşunuzdan işlem **hatları** ve **Yeni işlem hattı**' nı seçin.
+1. Daha önce bir ardışık hatlar eklemediyseniz, yeni bir ardışık yol hattı oluşturmanız gerekir. Azure DevOps kuruluşunuzdan, **Boru Hatları** ve **Yeni ardışık hatlar'ı**seçin.
 
-   ![Yeni işlem hattı Ekle](./media/add-template-to-azure-pipelines/new-pipeline.png)
+   ![Yeni ardışık hat lar ekleme](./media/add-template-to-azure-pipelines/new-pipeline.png)
 
-1. Kodunuzun depolanacağı yeri belirtin. Aşağıdaki görüntüde **Git Azure Repos**seçme gösterilmektedir.
+1. Kodunuzun nerede depolandığınızı belirtin. Aşağıdaki resimde Azure **Repos Git'i**seçili görüntüleilmektedir.
 
-   ![Kod kaynağı seç](./media/add-template-to-azure-pipelines/select-source.png)
+   ![Kod kaynağını seçin](./media/add-template-to-azure-pipelines/select-source.png)
 
 1. Bu kaynaktan, projenizin koduna sahip depoyu seçin.
 
    ![Depo seçin](./media/add-template-to-azure-pipelines/select-repo.png)
 
-1. Oluşturulacak işlem hattının türünü seçin. **Başlatıcı işlem hattı**' nı seçebilirsiniz.
+1. Oluşturmak için boru hattı türünü seçin. **Başlangıç ardışık hattını**seçebilirsiniz.
 
-   ![İşlem hattı seçin](./media/add-template-to-azure-pipelines/select-pipeline.png)
+   ![Boru hattını seçin](./media/add-template-to-azure-pipelines/select-pipeline.png)
 
-Azure PowerShell bir görev ya da Dosya Kopyala ve görevleri dağıt 'a hazırsınız.
+Bir Azure PowerShell görevi veya kopyalama dosyası ekleyip görevleri dağıtmaya hazırsınız.
 
-## <a name="azure-powershell-task"></a>Azure PowerShell görev
+## <a name="azure-powershell-task"></a>Azure PowerShell görevi
 
-Bu bölümde, projenizde PowerShell betiğini çalıştıran tek bir görev kullanılarak sürekli dağıtımın nasıl yapılandırılacağı gösterilmektedir. Aşağıdaki YAML dosyası bir [Azure PowerShell görevi](/azure/devops/pipelines/tasks/deploy/azure-powershell?view=azure-devops)oluşturur:
+Bu bölümde, projenizdeki PowerShell komut dosyasını çalıştıran tek bir görev kullanarak sürekli dağıtımı nasıl yapılandırıştırılatırınız gösterilmektedir. Aşağıdaki YAML dosyası bir [Azure PowerShell görevi](/azure/devops/pipelines/tasks/deploy/azure-powershell?view=azure-devops)oluşturur:
 
 ```yaml
 pool:
@@ -72,41 +72,41 @@ steps:
     azurePowerShellVersion: LatestVersion
 ```
 
-Görevi `AzurePowerShell@3`ayarladığınızda, işlem hattı, bağlantının kimliğini doğrulamak için Azurerd modülünden komutlar kullanır. Varsayılan olarak, Visual Studio projesindeki PowerShell betiği Azurerd modülünü kullanır. Komut dosyanızı [az modülünü](/powershell/azure/new-azureps-module-az)kullanacak şekilde güncelleştirdiyseniz, görevi `AzurePowerShell@4`olarak ayarlayın.
+Görevi `AzurePowerShell@3`ayarladığınızda, ardışık iş, bağlantının kimliğini doğrulamak için AzureRM modülünden komutlar kullanır. Varsayılan olarak, Visual Studio projesindeki PowerShell komut dosyası AzureRM modüllerini kullanır. Az [modüllerini](/powershell/azure/new-azureps-module-az)kullanmak için komut dosyanızı güncellediyseniz, görevi ' ye `AzurePowerShell@4`ayarlayın.
 
 ```yaml
 steps:
 - task: AzurePowerShell@4
 ```
 
-`azureSubscription`için, oluşturduğunuz hizmet bağlantısının adını sağlayın.
+Bunun `azureSubscription`için oluşturduğunuz hizmet bağlantısının adını sağlayın.
 
 ```yaml
 inputs:
     azureSubscription: '<your-connection-name>'
 ```
 
-`scriptPath`için, işlem hattı dosyasından betiğe göreli yol belirtin. Yolu görmek için deponuza bakabilirsiniz.
+Bunun `scriptPath`için, komut dosyasına boru hattı dosyasından göreli yolu sağlayın. Yolu görmek için deponuza bakabilirsiniz.
 
 ```yaml
 ScriptPath: '<your-relative-path>/<script-file-name>.ps1'
 ```
 
-Yapıtlar için gerekli değilse, dağıtım için kullanmak üzere bir kaynak grubunun adını ve konumunu geçirmeniz yeterlidir. Visual Studio betiği, zaten mevcut değilse kaynak grubunu oluşturur.
+Yapıtları sahnelemeniz gerekmiyorsa, dağıtım için kullanmak üzere bir kaynak grubunun adını ve konumunu geçirmeniz gerekir. Visual Studio komut dosyası, kaynak grubunu zaten yoksa oluşturur.
 
 ```yaml
 ScriptArguments: -ResourceGroupName '<resource-group-name>' -ResourceGroupLocation '<location>'
 ```
 
-Yapıtları var olan bir depolama hesabına hazırlama gereksinimi varsa şunu kullanın:
+Yapıları varolan bir depolama hesabına aşamalı olarak düzenlemeniz gerekiyorsa, şunları kullanın:
 
 ```yaml
 ScriptArguments: -ResourceGroupName '<resource-group-name>' -ResourceGroupLocation '<location>' -UploadArtifacts -ArtifactStagingDirectory '$(Build.StagingDirectory)' -StorageAccountName '<your-storage-account>'
 ```
 
-Şimdi, görevi nasıl oluşturacağınız hakkında anladığınıza göre, işlem hattını düzenleme adımlarında ilerlim.
+Şimdi, görevin nasıl oluşturulabileceğinizi anladığınıza göre, boru hattını oluşturmak için gereken adımları atalım.
 
-1. İşlem hattınızı açın ve içeriği YAML 'ınızla değiştirin:
+1. Ardışık hattınızı açın ve içeriği YAML'niz ile değiştirin:
 
    ```yaml
    pool:
@@ -122,23 +122,23 @@ ScriptArguments: -ResourceGroupName '<resource-group-name>' -ResourceGroupLocati
        azurePowerShellVersion: LatestVersion
    ```
 
-1. **Kaydet**’i seçin.
+1. **Kaydet'i**seçin.
 
    ![İşlem hattını kaydetme](./media/add-template-to-azure-pipelines/save-pipeline.png)
 
-1. Kayıt için bir ileti sağlayın ve doğrudan **ana öğe**için yürütün.
+1. Commit için bir ileti sağlayın ve doğrudan **ana**söze bağla.
 
-1. **Kaydet**' i seçtiğinizde, derleme işlem hattı otomatik olarak çalıştırılır. Derleme işlem hattınızla ilgili özete dönün ve durumu izleyin.
+1. **Kaydet'i**seçtiğinizde, yapı ardışık hattı otomatik olarak çalıştırılır. Yapı ardınız için özete geri dön ve durumu izleyin.
 
    ![Sonuçları görüntüleme](./media/add-template-to-azure-pipelines/view-results.png)
 
-Görevlerle ilgili ayrıntıları görmek için şu anda çalışan ardışık düzeni seçebilirsiniz. Tamamlandığında, her adımın sonuçlarını görürsünüz.
+Görevlerle ilgili ayrıntıları görmek için şu anda çalışan ardışık hattı seçebilirsiniz. Bittiğinde, her adımIçin sonuçları görürsünüz.
 
-## <a name="copy-and-deploy-tasks"></a>Görevleri Kopyala ve dağıt
+## <a name="copy-and-deploy-tasks"></a>Görevleri kopyalama ve dağıtma
 
-Bu bölümde, yapıtları hazırlamak ve şablonu dağıtmak için iki görevi kullanarak sürekli dağıtımın nasıl yapılandırılacağı gösterilmektedir.
+Bu bölümde, yapıları sahnelemek ve şablonu dağıtmak için iki görev kullanarak sürekli dağıtımı nasıl yapılandırıştırılatırın.
 
-Aşağıdaki YAML, [Azure dosya kopyalama görevini](/azure/devops/pipelines/tasks/deploy/azure-file-copy?view=azure-devops)göstermektedir:
+Aşağıdaki YAML [Azure dosya kopyalama görevini](/azure/devops/pipelines/tasks/deploy/azure-file-copy?view=azure-devops)gösterir:
 
 ```yaml
 - task: AzureFileCopy@3
@@ -154,26 +154,26 @@ Aşağıdaki YAML, [Azure dosya kopyalama görevini](/azure/devops/pipelines/tas
     sasTokenTimeOutInMinutes: '240'
 ```
 
-Bu görevin, ortamınız için gözden geçirmek için birkaç bölümü vardır. `SourcePath`, işlem hattı dosyasına göre yapıtların konumunu gösterir. Bu örnekte, dosyalar, projenin adı olan `AzureResourceGroup1` adlı bir klasörde bulunur.
+Bu görevin ortamınız için gözden geçirilmesi gereken birkaç bölümü vardır. Ardışık `SourcePath` yapı dosyasına göre yapıtların konumunu gösterir. Bu örnekte, dosyalar projenin adı `AzureResourceGroup1` olan bir klasörde bulunur.
 
 ```yaml
 SourcePath: '<path-to-artifacts>'
 ```
 
-`azureSubscription`için, oluşturduğunuz hizmet bağlantısının adını sağlayın.
+Bunun `azureSubscription`için oluşturduğunuz hizmet bağlantısının adını sağlayın.
 
 ```yaml
 azureSubscription: '<your-connection-name>'
 ```
 
-Depolama ve kapsayıcı adı için, yapıtları depolamak üzere kullanmak istediğiniz depolama hesabının ve kapsayıcının adlarını belirtin. Depolama hesabının mevcut olması gerekir.
+Depolama ve kapsayıcı adı için, yapıtları depolamak için kullanmak istediğiniz depolama hesabının ve kapsayıcının adlarını sağlayın. Depolama hesabı nın bulunması gerekir.
 
 ```yaml
 storage: '<your-storage-account-name>'
 ContainerName: '<container-name>'
 ```
 
-Aşağıdaki YAML, [Azure Resource Manager şablonu dağıtım görevini](https://github.com/microsoft/azure-pipelines-tasks/blob/master/Tasks/AzureResourceManagerTemplateDeploymentV3/README.md)göstermektedir:
+Aşağıdaki YAML, [Azure Kaynak Yöneticisi şablon dağıtım görevini](https://github.com/microsoft/azure-pipelines-tasks/blob/master/Tasks/AzureResourceManagerTemplateDeploymentV3/README.md)gösterir:
 
 ```yaml
 - task: AzureResourceGroupDeployment@2
@@ -192,30 +192,30 @@ Aşağıdaki YAML, [Azure Resource Manager şablonu dağıtım görevini](https:
     deploymentMode: 'Incremental'
 ```
 
-Bu görevin, ortamınız için gözden geçirmek için birkaç bölümü vardır.
+Bu görevin ortamınız için gözden geçirilmesi gereken birkaç bölümü vardır.
 
-- `deploymentScope`: `Management Group`, `Subscription` ve `Resource Group`seçeneklerden dağıtım kapsamını seçin. Bu kılavuzda **kaynak grubunu** kullanın. Kapsamlar hakkında daha fazla bilgi edinmek için bkz. [dağıtım kapsamları](deploy-rest.md#deployment-scope).
+- `deploymentScope`: Dağıtım kapsamını seçeneklerden `Management Group`seçin: `Subscription` `Resource Group`, ve . Bu yürüyüşte **Kaynak Grubu'ni** kullanın. Kapsamlar hakkında daha fazla bilgi edinmek için [Dağıtım kapsamlarına](deploy-rest.md#deployment-scope)bakın.
 
-- `ConnectedServiceName`: oluşturduğunuz hizmet bağlantısının adını belirtin.
+- `ConnectedServiceName`: Oluşturduğunuz servis bağlantısının adını sağlayın.
 
     ```yaml
     ConnectedServiceName: '<your-connection-name>'
     ```
 
-- `subscriptionName`: hedef abonelik KIMLIĞINI sağlayın. Bu özellik yalnızca kaynak grubu dağıtım kapsamı ve abonelik Dağıtım kapsamı için geçerlidir.
+- `subscriptionName`: Hedef abonelik kimliğini sağlayın. Bu özellik yalnızca Kaynak Grubu dağıtım kapsamı ve abonelik dağıtım kapsamı için geçerlidir.
 
-- `resourceGroupName` ve `location`: dağıtmak istediğiniz kaynak grubunun adını ve konumunu belirtin. Görev, mevcut değilse kaynak grubunu oluşturur.
+- `resourceGroupName`ve `location`: dağıtmak istediğiniz kaynak grubunun adını ve konumunu sağlayın. Görev, yoksa kaynak grubunu oluşturur.
 
     ```yaml
     resourceGroupName: '<resource-group-name>'
     location: '<location>'
     ```
 
-Dağıtım görevi `WebSite.json` adlı bir şablona ve Web sitesi. Parameters. JSON adlı parametreler dosyasına bağlanır. Şablon ve parametre dosyalarınızın adlarını kullanın.
+Dağıtım görevi, adlı `WebSite.json` şablona ve WebSite.parameters.json adlı bir parametre dosyasına bağlanır. Şablonve parametre dosyalarınızın adlarını kullanın.
 
-Artık görevlerin nasıl oluşturulduğunu anladığınıza göre, işlem hattını düzenleme adımlarını inceleyelim.
+Şimdi, görevleri nasıl oluşturabileceğinizi anladığınıza göre, boru hattını oluşturmak için gereken adımları atalım.
 
-1. İşlem hattınızı açın ve içeriği YAML 'ınızla değiştirin:
+1. Ardışık hattınızı açın ve içeriği YAML'niz ile değiştirin:
 
    ```yaml
    pool:
@@ -249,16 +249,16 @@ Artık görevlerin nasıl oluşturulduğunu anladığınıza göre, işlem hatt�
         deploymentMode: 'Incremental'
    ```
 
-1. **Kaydet**’i seçin.
+1. **Kaydet'i**seçin.
 
-1. Kayıt için bir ileti sağlayın ve doğrudan **ana öğe**için yürütün.
+1. Commit için bir ileti sağlayın ve doğrudan **ana**söze bağla.
 
-1. **Kaydet**' i seçtiğinizde, derleme işlem hattı otomatik olarak çalıştırılır. Derleme işlem hattınızla ilgili özete dönün ve durumu izleyin.
+1. **Kaydet'i**seçtiğinizde, yapı ardışık hattı otomatik olarak çalıştırılır. Yapı ardınız için özete geri dön ve durumu izleyin.
 
    ![Sonuçları görüntüleme](./media/add-template-to-azure-pipelines/view-results.png)
 
-Görevlerle ilgili ayrıntıları görmek için şu anda çalışan ardışık düzeni seçebilirsiniz. Tamamlandığında, her adımın sonuçlarını görürsünüz.
+Görevlerle ilgili ayrıntıları görmek için şu anda çalışan ardışık hattı seçebilirsiniz. Bittiğinde, her adımIçin sonuçları görürsünüz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Kaynak Yöneticisi şablonlarla Azure Pipelines kullanma hakkında adım adım işlemler için bkz. [öğretici: Azure Resource Manager şablonlarının Azure Pipelines sürekli tümleştirilmesi](template-tutorial-use-azure-pipelines.md).
+ARM şablonları ile Azure Ardışık Hatlar'ı kullanma yla ilgili adım adım işlem için [Bkz.](template-tutorial-use-azure-pipelines.md)

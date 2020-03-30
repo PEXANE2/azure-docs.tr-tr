@@ -1,130 +1,130 @@
 ---
 title: Yeni Azure portalı uygulama kaydı eğitim kılavuzu
-description: Yeni Azure portal uygulama kaydı deneyimini tanıtır
+description: Yeni Azure portalı Uygulama kayıt deneyimini sunar
 services: active-directory
-author: archieag
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/25/2019
-ms.author: aragra
+ms.author: marsma
 ms.reviewer: lenalepa, keyam
 ms.custom: aaddev
-ms.openlocfilehash: b110929051098917d7c3f73161ca8694d4698070
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: a437d54dac50be7ddaad899a1cf0a3e93aade8f5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76698229"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80154585"
 ---
 # <a name="new-azure-portal-app-registration-training-guide"></a>Yeni Azure portalı uygulama kaydı eğitim kılavuzu
 
-Azure portal yeni [uygulama kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) deneyiminde birçok geliştirme bulabilirsiniz. Azure portal Uygulama kayıtları (eski) deneyim hakkında bilgi sahibiyseniz, yeni deneyimi kullanmaya başlamak için bu eğitim kılavuzunu kullanın.
+Azure portalında yeni Uygulama [kayıtları](https://go.microsoft.com/fwlink/?linkid=2083908) deneyiminde birçok iyileştirme bulabilirsiniz. Azure portalındaki Uygulama kayıtları (eski) deneyimini biliyorsanız, yeni deneyimi kullanmaya başlamak için bu eğitim kılavuzunu kullanın.
 
-Azure Active Directory, burada açıklanan yeni uygulama kayıt deneyimi genel kullanıma sunulmuştur (GA). Azure Active Directory B2C (Azure AD B2C) ' de bu deneyim önizlemededir.
+Azure Etkin Dizini'nde, burada açıklanan yeni uygulama kaydı deneyimi genellikle kullanılabilir (GA). Azure Etkin Dizin B2C'de (Azure AD B2C) bu deneyim önizlemededir.
 
-## <a name="key-changes"></a>Anahtar değişiklikleri
+## <a name="key-changes"></a>Önemli değişiklikler
 
-- Uygulama kayıtları, bir *Web uygulaması/API 'si* ya da *Yerel* bir uygulama ile sınırlı değildir. İlgili yeniden yönlendirme URI 'Lerini kaydederek bu uygulamalar için aynı uygulama kaydını kullanabilirsiniz.
+- Uygulama kayıtları yalnızca *bir web uygulaması/API* veya *yerel* bir uygulama olmakla sınırlı değildir. İlgili yönlendirme URL'lerini kaydederek tüm bu uygulamalar için aynı uygulama kaydını kullanabilirsiniz.
 
-- Eski deneyim yalnızca kuruluş (Azure AD) hesaplarını kullanarak oturum açmak için desteklenen uygulamalar. Uygulamalar tek kiracılı olarak kaydedildi. Uygulamalar yalnızca uygulamanın kaydedildiği dizinden kurumsal hesapları destekliyordu. Uygulamalar çok kiracılı olacak şekilde değiştirilebilir ve tüm kurumsal hesaplar desteklenir. Yeni deneyim, bu seçeneklerin yanı sıra üçüncü bir seçenek de destekleyebilen uygulamalar kaydetmenizi sağlar: tüm kurumsal hesaplar ve kişisel Microsoft hesapları.
+- Eski deneyim, yalnızca kuruluş (Azure AD) hesaplarını kullanarak oturum açan uygulamaları destekledi. Uygulamalar tek kiracı olarak kaydedildi. Uygulamalar yalnızca uygulamanın kayıtlı olduğu dizindeki kuruluş hesaplarını destekler. Uygulamalar çok kiracı lı olacak ve tüm kuruluş hesaplarını destekleyecek şekilde değiştirilebilir. Yeni deneyim, hem bu seçenekleri hem de üçüncü bir seçeneği desteklenebilen uygulamaları kaydetmenize olanak tanır: tüm kuruluş hesapları nın yanı sıra kişisel Microsoft hesapları.
 
-- Eski deneyim yalnızca kurumsal hesap kullanılarak Azure portal oturum açmışsa kullanılabilir. Yeni deneyimle, bir dizinle ilişkili olmayan kişisel Microsoft hesaplarını kullanabilirsiniz.
+- Eski deneyim yalnızca kurumsal bir hesap kullanılarak Azure portalında oturum açıldığında kullanılabilir. Yeni deneyimle, bir dizinle ilişkili olmayan kişisel Microsoft hesaplarını kullanabilirsiniz.
 
-## <a name="list-of-applications"></a>Uygulama listesi
+## <a name="list-of-applications"></a>Başvuru listesi
 
-Yeni uygulama listesi, Azure portal eski uygulama kayıtları deneyimi aracılığıyla kaydedilmiş uygulamaları gösterir. Bu uygulamalar, Azure AD hesaplarını kullanarak oturum açın. Yeni uygulama listesi ayrıca uygulama kayıt portalı 'nda kayıtlı olan uygulamaları da gösterir. Bu uygulamalar, Azure AD ve kişisel Microsoft hesaplarını kullanarak oturum açın.
+Yeni uygulama listesi, Azure portalındaki eski uygulama kayıtları deneyimi aracılığıyla kaydedilmiş uygulamaları gösterir. Bu uygulamalar Azure AD hesaplarını kullanarak oturum açarak oturum aç. Yeni uygulama listesi, Uygulama Kayıt Portalı'na rağmen kayıtlı uygulamaları da gösterir. Bu uygulamalar Azure AD ve kişisel Microsoft hesaplarını kullanarak oturum açarak oturum aç.00.000.000.000.000.000.000
 
 >[!NOTE]
->Uygulama kayıt portalı kullanım dışı bırakıldı.
+>Başvuru Kayıt Portalı amortismana kaldırıldı.
 
-Tek bir uygulama kaydı birçok türde olabileceğinden, yeni uygulama listesinin bir **uygulama türü** sütunu yoktur. Listede iki ek sütun vardır: **üzerinde oluşturulur** ve **Sertifikalar &** . **Sertifikalar & gizlilikler** , uygulamada kayıtlı olan kimlik bilgilerinin durumunu gösterir. Durumlar arasında **geçerli**, **süresi dolmak üzere**ve **süresi sona erer**.
+Tek bir uygulama kaydı birkaç tür olabileceğinden, yeni uygulama listesinde **Uygulama türü** sütunu yoktur. Listede iki sütun daha vardır: **Üzerinde oluşturulan** ve **Sertifikalar & sırları.** **Sertifikalar & sırları,** uygulamada kayıtlı olan kimlik bilgilerinin durumunu gösterir. Durumlar **Geçerli**, **yakında sona eren**ve Süresi **Dolmuş**içerir.
 
 ## <a name="new-app-registration"></a>Yeni uygulama kaydı
 
-Eski deneyimde, sağlamanız gereken bir uygulamayı kaydetmek için: **ad**, **uygulama türü**ve **oturum açma URL 'SI/yeniden yönlendirme URI 'si**. Oluşturulan uygulamalar Azure AD yalnızca tek kiracılı uygulamalardır. Bunlar yalnızca uygulamanın kaydedildiği dizinden kurumsal hesapları destekliyordu.
+Eski deneyimde, sağlamanız gereken bir uygulamayı kaydetmek için: **Ad,** **Uygulama türü**ve Oturum **Açma URL'si/Uri'yi Yönlendirme**. Oluşturulan uygulamalar Yalnızca tek kiracılı uygulamalar olan Azure AD idi. Yalnızca uygulamanın kayıtlı olduğu dizindeki kuruluş hesaplarını desteklediler.
 
-Yeni deneyimde uygulama için bir **ad** belirtmeniz ve **Desteklenen hesap türlerini**seçmeniz gerekir. İsteğe bağlı olarak bir **yeniden yönlendirme URI 'si**sağlayabilirsiniz. Yeniden yönlendirme URI 'SI sağlarsanız, bunun Web/genel (mobil ve Masaüstü) olup olmadığını belirtmeniz gerekir. Daha fazla bilgi için bkz. [hızlı başlangıç: Microsoft Identity platformu ile uygulama kaydetme](quickstart-register-app.md). Azure AD B2C için bkz. [bir uygulamayı Azure Active Directory B2C kaydetme](../../active-directory-b2c/tutorial-register-applications.md).
+Yeni deneyimde, uygulama için bir **Ad** sağlamalı ve **Desteklenen hesap türlerini**seçmelisiniz. İsteğe bağlı olarak bir **Yönlendirme URI**sağlayabilirsiniz. Uri'yi yeniden yönlendirme sağlıyorsanız, web/herkese açık (mobil ve masaüstü) olup olmadığını belirtmeniz gerekir. Daha fazla bilgi için [Quickstart: Microsoft kimlik platformuna bir uygulama kaydedin.](quickstart-register-app.md) Azure AD B2C için [bkz.](../../active-directory-b2c/tutorial-register-applications.md)
 
-## <a name="differences-between-the-application-registration-portal-and-app-registrations-page"></a>Uygulama kayıt portalı ve Uygulama kayıtları sayfası arasındaki farklar
+## <a name="differences-between-the-application-registration-portal-and-app-registrations-page"></a>Başvuru Kayıt Portalı ve Uygulama kayıtları sayfası arasındaki farklar
 
 ### <a name="the-legacy-properties-page"></a>Eski Özellikler sayfası
 
-Eski deneyim bir **Özellikler** sayfasına sahipti. **Özellikler** aşağıdaki alanlara sahipti:
+Eski **deneyimin** özellikleri sayfası vardı. **Özellikleri** aşağıdaki alanları vardı:
 
-- **Ad**
-- **Nesne KIMLIĞI**
-- **Uygulama Kimliği**
+- **Adı**
+- **Nesne Kimliği**
+- **Başvuru Kimliği**
 - **Uygulama Kimliği URI'si**
 - **Logo**
-- **Giriş sayfası URL 'SI**
-- **Oturum kapatma URL 'SI**
-- **Hizmet koşulları URL 'SI**
+- **Ana sayfa URL'si**
+- **Giriş URL'si**
+- **Hizmet şartları URL'si**
 - **Gizlilik bildirimi URL'si**
 - **Uygulama türü**
-- **Çok kiracılı**
+- **Çok Kiracılı**
 
-Yeni deneyim bu sayfaya sahip değildir. Eşdeğer işlevselliği bulabileceğiniz yer:
+Yeni deneyim bu sayfa yok. Eşdeğer işlevselliği burada bulabilirsiniz:
 
-- **Ad**, **logo**, **giriş sayfası URL**'si, **hizmet koşulları URL 'si**ve **Gizlilik bildirimi URL 'si** artık uygulamanın **marka** sayfasıdır.
-- **Nesne kimliği** ve **uygulama (Istemci) kimliği** **genel bakış** sayfamı.
-- Eski deneyimdeki **çok kiracılı** geçiş tarafından denetlenen Işlevsellik, **kimlik doğrulama** sayfasındaki **Desteklenen hesap türleriyle** değiştirilmiştir. Daha fazla bilgi için bkz. [hızlı başlangıç: bir uygulama tarafından desteklenen hesapları değiştirme](quickstart-modify-supported-accounts.md).
-- **Oturum kapatma URL 'si** Şu anda **kimlik doğrulama** sayfasıdır.
-- **Uygulama türü** artık geçerli bir alan değil. Bunun yerine, **kimlik doğrulama** sayfasında bulabileceğiniz ve hangi uygulama türlerinin desteklendiğini belirleyen URI 'leri yeniden yönlendirin.
-- Uygulama **KIMLIĞI URI** 'Si artık **uygulama kimliği URI 'si** olarak adlandırıldığından **API 'yi açığa çıkarmak**için bulabilirsiniz. Eski deneyimde, bu özellik şu biçim kullanılarak tekrar kaydettirildi: `https://{tenantdomain}/{appID}`, örneğin `https://microsoft.onmicrosoft.com/492439af-3282-44c3-b297-45463339544b`. Yeni deneyimde `api://{appID}`olarak yeniden oluşturulur, ancak açıkça kaydedilmesi gerekir. Azure AD B2C kiracılarda, `https://{tenantdomain}/{appID}` biçimi hala kullanılmaktadır.
+- **Ad,** **Logo,** **Ana sayfa URL'** si, **Hizmet Şartları URL'si**ve Gizlilik bildirimi **URL'si** artık uygulamanın **Markalandırma** sayfasındadır.
+- **Nesne Kimliği** ve **Uygulama (istemci) kimliği** Genel **Bakış** sayfasındadır.
+- Eski deneyimdeki **Çok kiracılı** geçiş tarafından denetlenen işlev, **Kimlik Doğrulama** sayfasında desteklenen **hesap türleri** ile değiştirildi. Daha fazla bilgi için [Bkz. Hızlı Başlangıç: Bir uygulama tarafından desteklenen hesapları değiştirin.](quickstart-modify-supported-accounts.md)
+- **Giriş** URL'si artık **Kimlik Doğrulama** sayfasında.
+- **Uygulama türü** artık geçerli bir alan değildir. Bunun yerine, **Kimlik Doğrulama** sayfasında bulabileceğiniz Yeniden Yönlendirme UUİ'leri, hangi uygulama türlerinin desteklenebileceğini belirleyin.
+- **App ID URI** artık **Uygulama Kimliği URI** denir ve bir **API açığa**üzerinde bulabilirsiniz. Eski deneyimde, bu özellik aşağıdaki biçim kullanılarak `https://{tenantdomain}/{appID}`otomatik olarak `https://microsoft.onmicrosoft.com/492439af-3282-44c3-b297-45463339544b`kaydedildi: , örneğin, . Yeni deneyim, olarak `api://{appID}`otomatik olarak üretilen 's , ama açıkça kaydedilmesi gerekir. Azure AD B2C kiracılarında `https://{tenantdomain}/{appID}` biçim hala kullanılır.
 
-### <a name="reply-urlsredirect-urls"></a>Yanıt URL 'Leri/yeniden yönlendirme URL 'Leri
+### <a name="reply-urlsredirect-urls"></a>YANıT URL'leri/yeniden yönlendirme R'leri
 
-Eski deneyimde bir uygulamada bir **yanıt URL** 'si sayfası vardı. Yeni deneyimde bir uygulamanın **kimlik doğrulama** sayfasında yanıt URL 'leri bulunabilir. Bunlar artık **yeniden yönlendirme URI 'leri**olarak adlandırılır.
+Eski deneyimde, bir uygulamanın **Yanıt URL'leri** sayfası vardı. Yeni deneyimde, yanıt URL'leri bir uygulamanın **Kimlik Doğrulama** sayfasında bulunabilir. Artık **Yönlendirme URI'leri**olarak anılıyorlar.
 
-Yeniden yönlendirme URI 'Leri biçimi değişti. Bunların Web veya ortak bir uygulama türüyle ilişkilendirilmesi gerekir. Güvenlik nedenleriyle, *http://localhost* dışında joker karakterler ve `http://` şemaları desteklenmez.
+Yönlendirme URL'leri biçimi değişti. Web'de veya herkese açık bir uygulama türüyle ilişkilendirilmesi gerekir. Güvenlik nedeniyle, joker `http://` karakterler ve düzenler ilerler *http://localhost*hariç olmak üzere desteklenmez.
 
-### <a name="keyscertificates--secrets"></a>Anahtarlar/sertifikalar & gizli dizileri
+### <a name="keyscertificates--secrets"></a>Anahtarlar/Sertifikalar & sırları
 
-Eski deneyimde bir uygulamada **anahtarlar** sayfası vardı. Yeni deneyimde **sertifikalar & gizli**dizi olarak yeniden adlandırılmıştır.
+Eski deneyimde, bir uygulamanın **Keys** sayfası vardı. Yeni deneyim, bu **sertifikalar & sırları**olarak değiştirildi.
 
-**Ortak anahtarlara** artık **sertifika**denir. **Parolalar** artık **istemci gizli**dizileri olarak adlandırılır.
+**Ortak anahtarlar** artık **Sertifikalar**olarak adlandırılır. **Parolalar** artık **İstemci sırları**olarak adlandırılır.
 
 ### <a name="required-permissionsapi-permissions"></a>Gerekli izinler/API izinleri
 
-Eski deneyimde bir uygulamada **gerekli izinler** sayfası vardı. Yeni deneyimde, **API izinleri**olarak yeniden adlandırılmıştır.
+Eski deneyimde, bir uygulamanın **gerekli izinler** sayfası vardı. Yeni deneyimde, **API izinleri**olarak yeniden adlandırıldı.
 
-Eski deneyimde bir API seçtiğinizde, Microsoft API 'lerinin küçük bir listesinden seçim yapabilirsiniz. Ayrıca, Kiracıdaki hizmet sorumluları arasında arama yapabilirsiniz. Yeni deneyimde birden çok sekmeden birini seçebilirsiniz: **Microsoft API**'leri, **Kuruluşumun kullandığı API 'Ler**veya **API 'lerim**. **API 'lerim** üzerindeki arama çubuğu, Kiracıdaki hizmet sorumluları aracılığıyla sekme aramalarını kullanır.
+Eski deneyimde bir API seçtiğinizde, küçük bir Microsoft API listesinden seçim yapabilirsiniz. Ayrıca kiracı hizmet müdürleri aracılığıyla arama olabilir. Yeni deneyimde, birden çok sekme arasından seçim yapabilirsiniz: **Microsoft API'leri,** **kuruluşumun kullandığı API'ler**veya **API'lerim.** **Kuruluşumdaki API'ler** üzerindeki arama çubuğu, kiracıdaki servis ilkeleri aracılığıyla sekme aramaları kullanır.
 
 > [!NOTE]
-> Uygulamanız bir kiracı ile ilişkili değilse bu sekmeyi görmezsiniz. İzin isteme hakkında daha fazla bilgi için bkz. [hızlı başlangıç: Web API 'lerine erişmek için istemci uygulaması yapılandırma](quickstart-configure-app-access-web-apis.md).
+> Uygulamanız bir kiracıyla ilişkili değilse bu sekmeyi görmezsiniz. İzinleri nasıl isteyeceğihakkında daha fazla bilgi için Bkz. [Quickstart: Web API'lerine erişmek için istemci uygulamasını yapılandırın.](quickstart-configure-app-access-web-apis.md)
 
-Eski deneyim, **istenen izinler** sayfasının en üstünde **izin ver** düğmesine sahipti. Yeni deneyimde, **Izin verme** sayfasında, bir uygulamanın **API izinleri** bölümünde **yönetici izni verme** düğmesi vardır. Düğmeler işlevinin bazı farklılıkları da vardır.
+Eski deneyim, **İstenen izinler** sayfasının üst kısmında bir **Hibe izinleri** düğmesine sahipti. Yeni deneyimde, **Hibe onay** sayfasında bir uygulamanın **API izinleri** bölümünde Grant **yöneticisi onay** düğmesi vardır. Düğmelerin çalışma biçimlerinde de bazı farklılıklar vardır.
 
-Eski deneyimde, mantık oturum açan kullanıcıya ve istenmekte olan izinlere bağlı olarak değişir. Mantık:
+Eski deneyimde, mantık oturum açmış kullanıcıya ve istenen izinlere bağlı olarak değişir. Mantık şuydu:
 
-- Yalnızca Kullanıcı onaylamasına izin isteniyorsa ve oturum açan kullanıcı yönetici değilse, kullanıcı istenen izinler için Kullanıcı izni verebilir.
-- Yönetici onayı gerektiren en az bir izin isteniyorsa ve oturum açan kullanıcı yönetici değilse, Kullanıcı izin vermeye çalışırken bir hata ile karşılaştı.
-- Oturum açmış olan Kullanıcı bir yöneticiydi, istenen tüm izinler için yönetici onayı verildi.
+- Yalnızca kullanıcı nın izinleri isteniyorsa ve oturum açmış kullanıcı bir yönetici değilse, kullanıcı istenen izinler için kullanıcı ya da kullanıcı onayı verebilir.
+- Yönetici onayı gerektiren en az bir izin istenirse ve oturum açmış kullanıcı yönetici değilse, kullanıcı onay vermeye çalışırken bir hata aldı.
+- Oturum açmış kullanıcı bir yönetici ise, istenen tüm izinler için yönetici onayı verilir.
 
-Yeni deneyimde yalnızca bir yönetici izin verebilir. Bir yönetici **yönetici onayı ver**' i seçtiğinde, istenen tüm izinlere yönetici izni verilir.
+Yeni deneyimde, yalnızca bir yönetici izin verebilir. Bir yönetici **Grant admin onayı**seçtiğinde, yönetici onayı istenen tüm izinlere verilir.
 
 ## <a name="deleting-an-app-registration"></a>Uygulama kaydını silme
 
-Eski deneyimde yalnızca tek kiracılı uygulamaları silebilirsiniz. Çok kiracılı uygulamalar için Sil düğmesi devre dışı bırakıldı. Yeni deneyimde, uygulamaları herhangi bir durumda silebilirsiniz, ancak eylemi onaylamanız gerekir. Daha fazla bilgi için bkz. [hızlı başlangıç: Microsoft Identity platformu ile kaydedilmiş bir uygulamayı kaldırma](quickstart-remove-app.md).
+Eski deneyimde, yalnızca tek kiracılı uygulamaları silebilirsiniz. Çok kiracılı uygulamalar için silme düğmesi devre dışı bırakıldı. Yeni deneyimde, uygulamaları herhangi bir durumda silebilirsiniz, ancak eylemi onaylamanız gerekir. Daha fazla bilgi için [Bkz. Quickstart: Microsoft kimlik platformuna kayıtlı bir uygulamayı kaldırın.](quickstart-remove-app.md)
 
 ## <a name="application-manifest"></a>Uygulama bildirimi
 
-Eski ve yeni deneyimler, bildirim düzenleyicisinde JSON biçimi için farklı sürümler kullanır. Daha fazla bilgi için bkz. [uygulama bildirimi Azure Active Directory](reference-app-manifest.md).
+Eski ve yeni deneyimler, manifesto düzenleyicisinde JSON formatı için farklı sürümler kullanır. Daha fazla bilgi için [Azure Active Directory uygulama bildirimine](reference-app-manifest.md)bakın.
 
-## <a name="new-ui"></a>Yeni Kullanıcı arabirimi
+## <a name="new-ui"></a>Yeni UI
 
 Yeni deneyim, aşağıdaki özellikler için UI denetimleri ekler:
 
-- **Kimlik doğrulama** sayfasında **örtük verme akışı** (`oauth2AllowImplicitFlow`) vardır. Eski deneyimden farklı olarak, **erişim belirteçlerini** veya **kimlik belirteçlerini**veya her ikisini de etkinleştirebilirsiniz.
-- **BIR API 'Yi kullanıma** sunma sayfası, bu apı (`oauth2Permissions`) ve **yetkilendirilmiş istemci uygulamaları** (`preAuthorizedApplications`) **tarafından tanımlanan kapsamları** içerir. Bir uygulamayı Web API 'SI olarak yapılandırma ve izinleri/kapsamları kullanıma sunma hakkında daha fazla bilgi için bkz. [hızlı başlangıç: Web API 'leri göstermek için uygulama yapılandırma](quickstart-configure-app-expose-web-apis.md).
-- **Marka** sayfası **Yayımcı etki alanını**içerir. Yayımcı etki alanı kullanıcılara [uygulamanın izin isteminde](application-consent-experience.md)görüntülenir. Daha fazla bilgi için bkz. [nasıl yapılır: uygulamanın yayımcı etki alanını yapılandırma](howto-configure-publisher-domain.md).
+- **Kimlik Doğrulama** sayfasında Örtülü hibe`oauth2AllowImplicitFlow` **akışı** vardır ( ). Eski deneyimin aksine, **Access belirteçlerini** veya **kimlik belirteçlerini**veya her ikisini de etkinleştirebilirsiniz.
+- **Bir API'yi Ortaya Çıkarma** **sayfası, bu API** ( ) tarafından`oauth2Permissions`tanımlanan Kapsamlar ve **Yetkili İstemci uygulamaları** (`preAuthorizedApplications`) içerir. Bir uygulamanın web API'si olarak nasıl yapılandırılabildiğini ve izinleri/kapsamları nasıl açıkhale erdireceğiniz hakkında daha fazla bilgi için Bkz. [Quickstart: Web API'lerini ortaya çıkarmak için bir uygulamayı yapılandırın.](quickstart-configure-app-expose-web-apis.md)
+- **Markalama** sayfası **Publisher etki alanını**içerir. Yayımcı etki [alanı, uygulamanın onay isteminde](application-consent-experience.md)kullanıcılara görüntülenir. Daha fazla bilgi için [bkz: Bir uygulamanın yayımcı etki alanını yapılandırma.](howto-configure-publisher-domain.md)
 
 ## <a name="limitations"></a>Sınırlamalar
 
-Yeni deneyim aşağıdaki sınırlamalara sahiptir:
+Yeni deneyimaşağıdaki sınırlamalar vardır:
 
-- İstemci gizli dizileri (Uygulama parolaları) biçimi, eski deneyimden farklı ve CLı 'yi bozabilir.
-- Desteklenen hesapların değerini değiştirmek Kullanıcı arabiriminde desteklenmez. Azure AD tek kiracılı ve çok kiracılı bir şekilde geçiş yapmadığınız takdirde uygulama bildirimini kullanmanız gerekir.
+- İstemci sırlarının biçimi (uygulama parolaları) eski deneyimden farklıdır ve CLI'yi bozabilir.
+- Desteklenen hesapların değerini değiştirmek UI'de desteklenmez. Azure AD tek kiracılı ve çok kiracılı arasında geçiş yapmadığınız sürece uygulama bildirimini kullanmanız gerekir.

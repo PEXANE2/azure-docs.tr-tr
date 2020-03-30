@@ -1,6 +1,6 @@
 ---
-title: SSS-Azure VMware çözümleri (AVS)
-description: Azure VMware çözümleri (AVS) hakkında sık sorulan sorular
+title: SSS - CloudSimple tarafından Azure VMware Çözümü
+description: CloudSimple tarafından Azure VMware Çözümü için sık sorulan sorular
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/15/2019
@@ -8,159 +8,159 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: c3808491c84f6c76a51c914aac6ee5e5ee370970
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 95d8c2974ea372dd59d15a9f2cc31ed171acd932
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77025070"
 ---
-# <a name="frequently-asked-questions-about-vmware-solution-by-avs"></a>AVS 'ye göre VMware çözümü hakkında sık sorulan sorular
+# <a name="frequently-asked-questions-about-vmware-solution-by-cloudsimple"></a>CloudSimple tarafından VMware Çözümü hakkında sık sorulan sorular
 
-## <a name="avs-service"></a>AVS hizmeti
+## <a name="cloudsimple-service"></a>CloudSimple hizmeti
 
-**Azure VMware çözümleri (AVS) nedir?**
+**CloudSimple tarafından Azure VMware Çözümü nedir?**
 
-Azure VMware çözümleri (AVS), VMware iş yüklerini Azure 'da dakikalar içinde özel, adanmış bulutlara dönüştürür ve genişletir. AVS sağlama, altyapıyı yönetme ve şirket içi ile Azure arasında iş yüklerini düzenleme işlemlerini gerçekleştirir. Uygulamalarınız şirket içinde ve Azure 'da tam olarak aynı çalıştığından, uygulamalarınızın yeniden mimarının karmaşıklığı olmadan bulutun esneklik ve hizmetlerinden yararlanabilirsiniz. AVS, isteğe bağlı sağlama, Kullandıkça öde ve kapasite iyileştirmesi sağlayan bir bulut tüketim modeliyle toplam sahip olma maliyetinizi düşürür. Özellikler, avantajlar ve senaryolar için bkz. [AVS tarafından Azure 'Da VMware çözümü nedir?](cloudsimple-vmware-solutions-overview.md)
+CloudSimple tarafından Azure VMware Solution, VMware iş yüklerini birkaç dakika içinde Azure'daki özel bulutları dönüştürür ve genişletir. CloudSimple, şirket içi ve Azure arasındaki iş yüklerini sağlama, altyapıyı yönetme ve düzenleme ile ilgilenir. Uygulamalarınız şirket içinde ve Azure'da tam olarak aynı şekilde çalıştığı için, uygulamalarınızı yeniden architecta etme karmaşıklığı olmadan bulutun esnekliğinden ve hizmetlerinden yararlanırsınız. CloudSimple, isteğe bağlı sağlama, büyüdükçe öde ve kapasite optimizasyonu sağlayan bir bulut tüketimi modeliyle toplam sahip olma maliyetinizi düşürür.  Özellikler, avantajlar ve senaryolar için [CloudSimple tarafından Azure'da VMware Çözümü nedir](cloudsimple-vmware-solutions-overview.md) bkz.
 
-**AVS özel bulutu nedir?**
+**CloudSimple Özel Bulut nedir?**
 
-Bir AVS özel bulutu, Azure konumlarında Microsoft Azure altyapısına (donanım ve veri merkezi alanı) dağıtılan yüksek performanslı bir işlem, depolama ve ağ ortamından oluşan özel, ayrılmış bir bulutdır. Bir AVS özel bulutu, yerel bir VMware ' hizmet olarak platform ' sağlar. VMware koşullarında, her bir AVS özel bulutu vCenter Server tam olarak bir örneğini içerir. VCenter Server, bir veya daha fazla vSphere kümesinde bulunan birden çok ESXi düğümünü, karşılık gelen sanal SAN (vSAN) depolaması ile birlikte yönetir. Bir AVS hizmeti, Azure aboneliğinizde birden çok AVS özel bulutu içerebilir. Daha ayrıntılı bilgi için bkz. [AVS özel buluta genel bakış](cloudsimple-private-cloud.md).
+CloudSimple Private Cloud, Azure konumlarında Microsoft Azure altyapısında (donanım ve veri merkezi alanı) dağıtılan yüksek performanslı bir bilgi işlem, depolama ve ağ ortamından oluşan özel ve özel bir buluttür.  Özel Bulut, yerel bir VMware 'hizmet olarak platform' sağlar. VMware açısından, her Özel Bulut vCenter Server tam bir örnek içerir. vCenter Server, bir veya daha fazla vSphere Cluster'da bulunan birden çok ESXi düğümlerini ve ilgili Sanal SAN (vSAN) depolama alanını yönetir. CloudSimple hizmeti, Azure aboneliğinizde birden çok Özel Bulut içerebilir.  Daha fazla ayrıntı için [Bkz. Özel Bulut genel bakışı.](cloudsimple-private-cloud.md)
 
-**AVS hizmeti nerede kullanılabilir?**
+**CloudSimple hizmeti nerede kullanılabilir?**
 
-AVS Doğu ABD, Batı ABD ve Batı Avrupa bölgelerinde çok yakında kullanıma sunulacak.
+CloudSimple, Doğu ABD, Batı ABD ve Batı Avrupa bölgelerinde kullanılabilir ve ek bölgeler yakında kullanıma sunulacaktır.
 
-**Nasıl yaparım? AVS için aboneliğimi etkinleştirmek istiyor musunuz?**
+**CloudSimple aboneliğimi nasıl etkinleştirebilirim?**
 
-Microsoft hesabı temsilcinizle, AVS hizmeti aboneliğinizi etkinleştirmek için [azurevmwaresales@microsoft.com](mailto:azurevmwaresales@microsoft.com) başvurabilirsiniz. , AVS hizmetinin etkinleştirilmesini istediğiniz e-postada abonelik KIMLIĞINIZI girin. 
+CloudSimple hizmeti aboneliğinizi [azurevmwaresales@microsoft.com](mailto:azurevmwaresales@microsoft.com) etkinleştirmek için Microsoft hesap temsilcinize başvurabilirsiniz. CloudSimple hizmetinin etkin olmasını istediğiniz e-postada abonelik kimliğinizi sağlayın.  
 
-**AVS portalına erişmek Nasıl yaparım? mı?**
+**CloudSimple portalına nasıl erişebilirim?**
 
-Azure portal AVS portalına erişirsiniz. Ayrıntılar için bkz. [Azure Portal VMware çözümleri (AVS) portalına erişme](access-cloudsimple-portal.md).
+Azure portalından CloudSimple portalına erişebilirsiniz.  Ayrıntılar için Azure [portalından CloudSimple portalıtarafından VMware Çözümüne Eriş'e](access-cloudsimple-portal.md)bakın.
 
-**Bir AVS özel bulutunun kapasitesini artırmak Nasıl yaparım? mı?**
+**Özel Bulut'un kapasitesini nasıl artırabilirim?**
 
-Kapasiteyi artırmak için Azure portal ek düğümler satın alın ve ardından düğümleri kullanarak AVS portalından özel bulutunuzu genişletin. Mevcut bir vSphere kümesine ek düğümler ekleyebilir veya bunları yeni bir vSphere kümesine ekleyebilirsiniz. Ayrıntılar için bkz. [AVS özel bulutunu genişletme](expand-private-cloud.md).
+Kapasiteyi artırmak için Azure portalından ek düğümler satın alın ve ardından Özel Bulut'unuzu CloudSimple portalından genişletmek için düğümleri kullanın.  Varolan bir vSphere kümesine ek düğümler ekleyebilir veya bunları yeni bir vSphere kümesine ekleyebilirsiniz.  Ayrıntılar için bkz: [CloudSimple Private Cloud'u Genişlet.](expand-private-cloud.md)
 
-**Bakım sırasında AVS özel bulutum ne olur?**
+**Bakım sırasında Özel Bulut'uma ne olur?**
 
-AVS zamanlanan bir bakım aralığından önce birkaç gün önce bildirim sağlar. Bakım, AVS özel bulutunuzun kullanılabilirliğini güvence altına almak için kesintiye uğramamış bir şekilde yapılır. Bakım aşağıdaki türlerde olabilir:
+CloudSimple, zamanlanan bir bakım aralığından birkaç gün önce bildirim sağlar.  Bakım, Özel Bulut'unuzun kullanılabilirliğini sağlamak için kesintisiz bir şekilde yapılır.  Bakım aşağıdaki türde olabilir:
 
-* **AVS altyapısı**. AVS altyapısı yüksek oranda kullanılabilir olacak şekilde tasarlanmıştır. Bu tür bakım aralığı sırasında, herhangi bir hizmet kesintisini önlemek için yedekli bileşenler aynı anda güncelleştirilir. AVS özel bulut vCenter, tüm sanal makineler, AVS özel bulutunuzun internet bağlantısı ve şirket içi veya Azure bağlantıları için erişim sağlayabilirsiniz.
-* **AVS portalı**. Bu tür bakım aralığı sırasında, AVS portalındaki bazı özellikler devre dışı bırakılabilir veya erişilemez durumda olabilir. Bakım aralığından önceki bildirim, bakım gerçekleşirken Özellik sınırlamalarıyla ilgili ayrıntıları içerir.
+* **CloudSimple altyapı**.  CloudSimple altyapısı son derece kullanılabilir olacak şekilde tasarlanmıştır.  Bu tür bir bakım aralığı sırasında, yedek bileşenler herhangi bir hizmet kesintisini önlemek için teker teker güncelleştirilir. Özel Bulut vCenter'ınıza, tüm sanal makinelerinize, Özel Bulut'uza internet bağlantısına ve şirket içi veya Azure'a bağlantılara erişiminizi sürdürürsiniz.
+* **CloudSimple portalı**. Bu tür bir bakım aralığı sırasında, CloudSimple portalındaki bazı özellikler devre dışı bırakılmış veya erişilemez olabilir.  Bakım aralığından önceki bildirim, bakım gerçekleşirken özellik sınırlamaları hakkındaki ayrıntıları içerir.
 
 ## <a name="connectivity"></a>Bağlantı
 
-**AVS bölgesi ağına bağlantı seçeneklerim nelerdir?**
+**CloudSimple bölge ağına bağlantı seçeneklerim nelerdir?**
 
-AVS, AVS bölge ağınıza bağlanmak için aşağıdaki bağlantı seçeneklerini sağlar. Aynı anda birden çok seçenek kullanılabilir.
+CloudSimple, CloudSimple bölge ağınıza bağlanmak için aşağıdaki bağlantı seçeneklerini sağlar. Aynı anda birden çok seçenek kullanılabilir.
 
-* Şirket **içi veri MERKEZINIZDEN AVS bölge ağına ExpressRoute bağlantısı**. Bu, şirket içi ExpressRoute bağlantı hattınızı AVS ExpressRoute bağlantı hattına bağlamak için Global Reach kullanan yüksek hızlı, düşük gecikme süreli, güvenli bir özel bağlantıdır. Bağlantıyı ayarlama hakkında yönergeler için bkz. [ExpressRoute kullanarak şirket IÇINDEN AVS 'ye bağlanma](on-premises-connection.md).
-* **Azure sanal AĞıNıZDAN AVS bölge ağınıza ExpressRoute bağlantısı**. Bu, Sanal ağınızı Azure üzerinde AVS ExpressRoute bağlantı hattına bağlamak için sanal ağ geçitleri kullanan yüksek hızlı, düşük gecikme süreli ve güvenli bir özel bağlantıdır. Bağlantıyı ayarlamayla ilgili yönergeler için bkz. [ExpressRoute kullanarak AVS özel bulut ortamınızı Azure sanal ağına bağlama](azure-expressroute-connection.md).
-* Şirket **içi veri MERKEZINIZDEN AVS bölge ağınıza siteden sıteye VPN bağlantısı**. Bu, şirket içi VPN cihazınızdan AVS özel bulut bölgenize olan güvenli bir sanal özel ağ. Ayrıntılar için bkz. [AVS AĞıNDA VPN ağ geçitlerini ayarlama](vpn-gateway.md).
+* **Şirket içi veri merkezinizden CloudSimple bölge ağına ExpressRoute bağlantısı.** Bu, şirket içi ExpressRoute devrenizi CloudSimple ExpressRoute devrenize bağlamak için Global Reach'i kullanan yüksek hızlı, düşük gecikmeli ve güvenli bir özel bağlantıdır. Bağlantıyı kurma yla ilgili talimatlar için [ExpressRoute'u kullanarak şirket içi Connect'ten CloudSimple'a](on-premises-connection.md)bakın.
+* **Azure sanal ağınızdaki ExpressRoute bağlantısı CloudSimple bölge ağınıza.** Bu, Azure'daki sanal ağınızı CloudSimple ExpressRoute devrenize bağlamak için sanal ağ ağ geçitlerini kullanan yüksek hızlı, düşük gecikmeli ve güvenli bir özel bağlantıdır. Bağlantıyı kurma yla ilgili talimatlar için [bkz.](azure-expressroute-connection.md)
+* **Şirket içi veri merkezinizden CloudSimple bölge ağınıza site-to-Site VPN bağlantısı.** Bu, şirket içi VPN aygıtınızdan CloudSimple Private Cloud bölgenize kadar güvenli bir sanal özel ağdır.  Ayrıntılar için bkz: [CloudSimple ağında VPN ağ geçitleri ayarlayın.](vpn-gateway.md)
 
-**Nasıl yaparım? bir AVS özel buluta mı bağlanacak?**
+**Özel Bulut'a nasıl bağlanırım?**
 
-AVS portalında AVS özel bulutunuzun ayrıntılarını görüntüleyebilirsiniz. AVS özel bulutuna karşılık gelen vCenter 'a bağlanmak için önce siteden siteye VPN, Noktadan siteye VPN veya ExpressRoute kullanarak bir ağ bağlantısının yapıldığını doğrulayın. Ardından, Azure portal AVS portalını başlatın ve giriş sayfasında veya AVS özel bulut ayrıntıları sayfasında **vSphere Istemcisini Başlat** ' a tıklayın.
+CloudSimple portalında Özel Bulut'unuzun ayrıntılarını görüntüleyebilirsiniz. Özel Bulut'unuza karşılık gelen vCenter'a bağlanmak için öncelikle Siteden Siteye VPN, Noktadan Siteye VPN veya ExpressRoute kullanarak bir ağ bağlantısı kurulduğunu doğrulayın. Ardından, Azure portalından CloudSimple portalını başlatın ve Giriş sayfasında veya Özel Bulut ayrıntıları sayfasında **vSphere İstemci** Başlat'ı tıklatın.
 
 **ExpressRoute devrelerinin avantajı nedir?**
 
-Azure ExpressRoute bağlantı hattı yüksek hızlı, düşük gecikmeli, güvenli bir bağlantıdır. AVS, her müşteri için bölge başına adanmış bir ExpressRoute devresi sağlar. Bu devreyi kullanarak şirket içi veya Azure aboneliğinizden güvenli bir bağlantı kurabilirsiniz.
+Azure ExpressRoute devresi yüksek hızlı, düşük gecikmeli, güvenli bir bağlantıdır.  CloudSimple, müşteri başına bölge başına özel bir ExpressRoute devresi sağlar.  Bu devreyi kullanarak şirket içinden veya Azure aboneliğinizden güvenli bir bağlantı kurabilirsiniz.
 
-**AVS 'ye bağlanmak için ağ maliyetleri nelerdir? Tüm çıkış ücretleri AVS ve Azure arasında mi yoksa bölgeler arasında mi uygulanır?**
+**CloudSimple'a bağlanmak için ağ maliyetleri nelerdir?  CloudSimple ve Azure arasında veya bölgeler arasında herhangi bir çıkış ücreti geçerli midir?**
 
-Ağ çıkışı için bir AVS ücreti yoktur. Azure Standart ücretleri, sanal ağınızdan veya şirket içi ExpressRoute bağlantı hattınızdan gelen çıkış trafiği için geçerlidir.
+Ağ çıkışları için CloudSimple ücreti yoktur.  Azure standart oranları, sanal ağınızdan veya şirket içi ExpressRoute devrenizden gelen çıkış trafiği için geçerlidir.
 
-## <a name="networking"></a>Networking (Ağ İletişimi)
+## <a name="networking"></a>Ağ Oluşturma
 
-**AVS özel bulutum için hangi ağ özellikleri kullanılabilir?**
+**Özel Bulut'um için hangi ağ özellikleri kullanılabilir?**
 
-VLAN 'Lar (ve alt ağları) ve güvenlik duvarı tabloları sağlayabilir ve AVS özel bulutunuzda çalışan bir sanal makineyle eşlenen genel IP adresleri atayabilirsiniz. Ağ özellikleriyle ilgili ayrıntılar için bkz. [VLAN ve alt ağlara genel bakış](cloudsimple-vlans-subnets.md), [güvenlik duvarı tablolarına genel](cloudsimple-firewall-tables.md)bakış ve [genel IP adresine genel bakış](cloudsimple-public-ip-address.md).
+VUN'lar (ve alt ağları) ve güvenlik duvarı tabloları sağlayabilir ve özel bulutunuzda çalışan sanal bir makineye bu haritayı genel IP adresleri atayabilirsiniz. Ağ özellikleri hakkında ayrıntılı bilgi için [VUN'lara ve alt ağlara genel bakış,](cloudsimple-vlans-subnets.md) [Güvenlik Duvarı tablolarına genel bakış](cloudsimple-firewall-tables.md)ve Genel IP [adresine genel bakış](cloudsimple-public-ip-address.md)alabilirsiniz.
 
-**Nasıl yaparım? AVS özel Bulutumdaki Uygulamalarım için farklı alt ağlar mı ayarlanacak?**
+**Özel Bulut'umdaki uygulamalarım için farklı alt ağlar nasıl ayarlayabilirim?**
 
-AVS portalından, AVS özel bulutunuzda VLAN 'Lar oluşturun. Bir VLAN oluşturduktan sonra, VLAN ' ı kullanarak AVS özel bulut vCenter 'unuzda dağıtılmış bir bağlantı noktası grubu oluşturabilir ve dağıtılmış bağlantı noktası grubuna bağlı sanal makineler oluşturabilirsiniz. VLAN/subnet için güvenlik duvarı tablolarını etkinleştirebilir ve ağ trafiğinin güvenliğini sağlamak için güvenlik duvarı kuralları tanımlayabilirsiniz.
+CloudSimple portalından Özel Bulut'unuzda VLAN'ler oluşturursunuz.  Bir VLAN oluşturduktan sonra, VLAN'ı kullanarak Özel Bulut vCenter'ınızda dağıtılmış bir bağlantı noktası grubu oluşturabilir ve dağıtılmış bağlantı noktası grubuna bağlı sanal makineler oluşturabilirsiniz.  VLAN/alt ağ için güvenlik duvarı tablolarını etkinleştirebilir ve ağ trafiğini güvence altına almak için güvenlik duvarı kurallarını tanımlayabilirsiniz.
 
-**AVS özel bulutlarım için hangi güvenlik duvarı ayarları kullanılabilir?**
+**Özel Bulutlar'ım için hangi güvenlik duvarı ayarları kullanılabilir?**
 
-Kuzey-Güney ve Doğu-Batı trafiği için kurallar yapılandırabilirsiniz. Kurallar bir güvenlik duvarı tablosunda tanımlanır. Güvenlik Duvarı tablosu, AVS özel bulutunuzda VLAN 'Lara eklenebilir. Ayrıntılar için bkz. [AVS özel bulutları için güvenlik duvarı tablolarını ve kurallarını ayarlama](firewall.md).
+Kuzey-güney ve doğu-batı trafiği için kuralları yapılandırabilirsiniz.  Kurallar bir güvenlik duvarı tablosunda tanımlanır.  Güvenlik duvarı tablosu, Özel Bulut'unuzdaki VLAN'lara eklenebilir.  Ayrıntılar için bkz: [Özel Bulutlar için güvenlik duvarı tabloları ve kuralları ayarlayın.](firewall.md)
 
-**AVS özel bulut ortammdaki VM 'lere genel IP adresleri atayabilir miyim?**
+**Özel Bulut ortamımdaki VM'lere genel IP adresleri atayabilir miyim?**
 
-AVS portalında, yeni bir genel IP adresi ayırabilir ve bunu bir sanal makinenin veya bir gerecin özel IP adresiyle ilişkilendirebileceğiniz bir cihaz oluşturabilirsiniz. Ayrıca, portalda belirli bağlantı noktalarından ve IP adreslerinden gelen trafiğe izin vermek için yeni güvenlik duvarı kuralları oluşturabilir veya mevcut güvenlik duvarı kurallarını uygulayabilirsiniz. Ayrıntılar için bkz. [AVS özel bulut ortamı için genel IP adresleri ayırma](public-ips.md).
+CloudSimple portalında, yeni bir genel IP adresi tahsis edebilir ve sanal bir makinenin veya bir cihazın özel IP adresiyle ilişkilendirebilirsiniz.  Ayrıca, portaldaki belirli bağlantı noktalarından ve IP adreslerinden gelen trafiğin trafiğine izin vermek için yeni güvenlik duvarı kuralları oluşturabilir veya varolan güvenlik duvarı kurallarını uygulayabilirsiniz. Ayrıntılar için, [Özel Bulut ortamı için genel IP adreslerini ayırma'ya](public-ips.md)bakın.
 
 ## <a name="security"></a>Güvenlik
 
-**AVS 'deki güvenlik seçeneklerim nelerdir?**
+**CloudSimple'daki güvenlik seçeneklerim nelerdir?**
 
-AVS, AVS özel bulut ortamınızı güvenli hale getirmek için aşağıdaki güvenlik özelliklerini sağlar:
+CloudSimple, Özel Bulut ortamınızı güvence altına almak için aşağıdaki güvenlik özelliklerini sağlar:
 
-* **Bekleyen şifreleme verileri**. AVS özel bulutunuzda vSAN depolamada bulunan bekleyen verileri şifreleyebilirsiniz. vSAN, Azure vNet 'iniz veya şirket içi ortamınızda dağıtılabilecek dış anahtar yönetim sunucularını destekler. Ayrıntılar için bkz. [AVS özel bulutunuz Için vSAN şifrelemesini yapılandırma](vsan-encryption.md).
-* **Ağ güvenliği**. AVS özel bulutunuz ile internet, AVS özel bulutu ve şirket içi ortamınız ya da AVS özel bulutunuzun alt ağları arasında uygulanan güvenlik duvarı kurallarıyla ağ trafiği akışını denetleyin.
-* **Güvenli, özel bağlantı**. Şirket içi ağınız ile Azure aboneliğiniz arasında güvenli, özel bir bağlantı oluşturulur.
+* **Veri istirahat şifreleme**. Özel Bulut'unuzdavSAN depolama alanında bulunan istirahatte verileri şifreleyebilirsiniz. vSAN, Azure vNet'inizde veya şirket içi ortamınızda dağıtılabilen harici anahtar yönetim sunucularını destekler.  Ayrıntılar için [CloudSimple Private Cloud'unuzun vSAN şifrelemesine yapılandırılması](vsan-encryption.md)na bakın.
+* **Ağ güvenliği.** Özel Bulut'unuz ile Internet, Özel Bulut ve şirket içi ortamınız arasında veya Özel Bulut'unuzun alt ağları arasında geçerli olan güvenlik duvarı kurallarıyla ağ trafiği akışını kontrol edin.
+* **Güvenli, özel bağlantı.** Şirket içi ağınızla Azure aboneliğiniz arasında güvenli ve özel bir bağlantı kurulur.
 
-## <a name="compute"></a>Bilgi İşlem
+## <a name="compute"></a>İşlem
 
-**Hangi tür konaklar kullanılabilir?**
+**Ne tür ana bilgisayarlar mevcuttur?**
 
-AVS bu konak türlerini sunar:
+CloudSimple bu ana bilgisayar türlerini sunar:
 
-* **CS28 düğümü:** CPU: 2x 2,2 GHz, toplam 28 çekirdek, 48 HT.  RAM: 256 GB.  Depolama: 1600 GB NVMe önbelleği, 5760 GB veri (tümü-Flash). Ağ: 4x25Gbe NIC
-* **CS36 düğümü:** CPU 2x 2,3 GHz, toplam 36 çekirdek, 72 HT.  RAM: 512 GB.  Depolama: 3200 GB NVMe Cache 11520 GB veri (tümü-Flash).  Ağ: 4x25Gbe NIC
-* **CS36m düğümü:** CPU 2x 2,3 GHz, toplam 36 çekirdek, 72 HT.  RAM: 576 GB.  Depolama: 3200 GB NVMe Cache 13360 GB veri (tümü-Flash).  Ağ: 4x25Gbe NIC
+* **CS28 düğümü:** Cpu:2x 2.2 GHz, toplam 28 çekirdek, 48 HT.  RAM: 256 GB.  Depolama: 1600 GB NVMe önbellek, 5760 GB veri (All-Flash). Ağ: 4x25Gbe NIC
+* **CS36 düğümü:** Cpu 2x 2.3 GHz, toplam 36 çekirdek, 72 HT.  RAM: 512 GB.  Depolama: 3200 GB NVMe önbellek 11520 GB veri (All-Flash).  Ağ: 4x25Gbe NIC
+* **CS36m düğüm:** Cpu 2x 2.3 GHz, toplam 36 çekirdek, 72 HT.  RAM: 576 GB.  Depolama: 3200 GB NVMe önbellek 13360 GB veri (All-Flash).  Ağ: 4x25Gbe NIC
 
-**Donanım hatalarının tümü nasıl işlenir?**
+**Donanım hataları nasıl işlenir?**
 
-Tüm AVS altyapısı, AVS platformu ve hizmet işlemleri takımlarımız tarafından sürekli olarak izlenir. Bir donanım hatası algılanırsa, AVS özel buluta yeni bir düğüm eklenir ve başarısız olan düğüm kaldırılır.
+Tüm CloudSimple altyapısı CloudSimple platformu ve hizmet operasyon ekiplerimiz tarafından sürekli olarak izlenmektedir.  Bir donanım hatası algılanırsa, Özel Bulut'unuza yeni bir düğüm eklenir ve başarısız düğüm kaldırılır.
 
 ## <a name="storage"></a>Depolama
 
-**Bir AVS özel bulutu 'nda ne tür bir depolama destekleniyor?**
+**Özel Bulut'ta ne tür depolama alanı desteklenir?**
 
-AVS, her AVS özel bulutuna sahip tüm-Flash VMware vSAN depolama alanı sunar. Her vSphere kendi vSAN veri deposu ile oluşturulur. Ayrıntılar için bkz. [AVS özel bulut VMware bileşenleri-vSAN depolaması](vmware-components.md#vsan-storage).
+CloudSimple, her Özel Bulut ile tüm flash VMware vSAN depolama alanı sunar.  Her vSphere kendi vSAN veri deposu ile oluşturulur.  Ayrıntılar için [Bkz. Özel Bulut VMware bileşenleri - vSAN depolama](vmware-components.md#vsan-storage).
 
-**Verilerin şifrelenmesi destekleniyor mu?**
-Evet. VNET özel bulutunuzda vSAN depolama alanını, vSAN 'da depolanan verileri şifrelemek için şirket içinde veya Azure 'da dağıtılan bir anahtar yönetim sunucusu (KMS) kullanmak üzere ayarlayabilirsiniz.
+**Verilerin şifrelemesi desteklenir mi?**
+Evet.  VSAN'da depolanan verileri şifrelemek için şirket içinde veya Azure'da dağıtılan önemli bir yönetim sunucusu (KMS) kullanacak şekilde Özel Bulut'unuzdaki vSAN depolama alanını ayarlayabilirsiniz.
 
-**Hatalı diskler nasıl işlenir?**
+**Başarısız diskler nasıl işlenir?**
 
-AVS, AVS özel bulutunun tüm donanım bileşenlerini sürekli olarak izler. Bir disk hatası algılanırsa veya disk başarısız olarak tanımlanmışsa (buluşsal yöntemler temelinde), AVS özel bulutuna yeni bir düğüm otomatik olarak eklenir. Başarısız veya hatalı diski olan düğüm, AVS özel bulutlarından kaldırılır.
+CloudSimple, Private Cloud'un tüm donanım bileşenlerini sürekli olarak izler.  Bir disk hatası algılanırsa veya bir disk başarısız olarak tanımlanırsa (sezgisel olarak temel alınarak), Özel Bulut'a otomatik olarak yeni bir düğüm eklenir.  Başarısız veya başarısız diskile düğüm Özel Bulut kaldırılır.
 
 ## <a name="vmware"></a>VMware
 
-**Şirket içinden uygulamalar ve veriler için büyük ölçekli karşıya yükleme veya geçiş Nasıl yaparım? istiyor musunuz?**
+**Şirket içinde büyük ölçekli yükleme veya uygulama ve veri geçişini nasıl gerçekleştirebilirim?**
 
-AVS, yerel bir VMware vSphere çözümü sağlar. Toplu veri geçişi için tüm VMware araçları, AVS özel bulutuyla birlikte kullanılabilir. Seçeneklere şunlar dahildir:
+CloudSimple yerel bir VMware vSphere çözümü sağlar.  Toplu veri geçişi için tüm VMware araçları Özel Bulut'unuzun yanında kullanılabilir.  Seçeneklere şunlar dahildir:
 
-* Verilerin toplu geçirilmesi için VMware HCX.
-* Şirket içinden AVS 'ye Depolama vMotion kullanılarak verilerin soğuk geçirilmesi.
+* Verilerin toplu geçişi için VMware HCX.
+* Storage vMotion'ı şirket içinde CloudSimple'a kullanarak verilerin soğuk geçişi.
 
-**Herhangi bir VMware aracını yükleyebilir miyim?**
+**Herhangi bir VMware aracı yükleyebilir miyim?**
 
-AVS, yerel bir VMware vSphere çözümü sağlar. Şirket içi vSphere ortamınızı yönetmek için kullanılan tüm VMware araçları, AVS 'de kullanılabilir. AVS, VMware araçlarını yüklemek için kendi lisansını getir (KLG) modelini destekler.
+CloudSimple yerel bir VMware vSphere çözümü sağlar.  Şirket içi vSphere ortamınızı yönetmek için kullanılan tüm VMware araçları CloudSimple'da kullanılabilir.  CloudSimple, VMware araçlarını yüklemek için kendi lisansınızı getir (BYOL) modelini destekler.
 
 **Güncelleştirmeler ve yükseltmeler nasıl yönetilir?**
 
-AVS, AVS özel bulutunuzun tüm altyapı bileşenlerini sorunsuz bir şekilde yönetir ve güncelleştirir. VMware veya altyapı satıcıları tarafından yayınlanan tüm güncelleştirmeler ve güvenlik yamaları, AVS tarafından nitelendirildikleri anda güncelleştirme için zamanlanır.
+CloudSimple, Özel Bulut'unuzun tüm altyapı bileşenlerini kesintisiz kesintisiz bir şekilde yönetir ve günceller.  VMware veya altyapı satıcıları tarafından yayımlanan tüm güncelleştirmeler ve güvenlik yamaları, CloudSimple tarafından uygun oldukları anda güncelleştirilmelidir.
 
-AVS, AVS özel bulutu 'nda yüklü uygulamaların yükseltmelerini veya güncelleştirmelerini gerçekleştirmez.
+CloudSimple, Özel Bulut'ta yüklü uygulamaların yükseltmelerini veya güncelleştirmelerini gerçekleştirmez.
 
-## <a name="azure-integration"></a>Azure tümleştirmesi
+## <a name="azure-integration"></a>Azure Tümleştirmesi
 
-**Hangi Azure hizmetleri destekleniyor?**
+**Hangi Azure hizmetleri desteklenir?**
 
-AVS, Azure 'da Aboneliğinize yönelik bir Azure ExpressRoute bağlantısı sağlar. Aboneliğinizde çalışan tüm hizmetler, AVS özel bulutuna bağlanabilir. Örneğin:
+CloudSimple, Azure'daki aboneliğinize Azure ExpressRoute bağlantısı sağlar.  Aboneliğinizde çalışan tüm hizmetler Özel Bulut'unuza bağlanabilir.  Örneklere şunlar dahildir:
 
-* AVS vCenter için bir kimlik kaynağı olarak **Azure Active Directory** .
-* AVS özel bulutunuzun yedeklerini, görüntülerini ve diğer verilerini depolamak için **Azure depolama** .
-* Ortak ve AVS özel bulutlarını kapsayan bir uygulama mimarisine sahip **karma uygulamalar** . Örneğin, Azure 'da, AVS özel bulutunuzda uygulama ve veritabanı sunucularına erişen Web sunucuları oluşturabilirsiniz.
-* VMware desteği günlüğü, performans ölçümleri ve güvenlik yönetimi üzerinde çalışan iş yükleri için **Azure izleyici** ve **Azure Güvenlik Merkezi** .
+* CloudSimple vCenter'ınız için kimlik kaynağı olarak **Azure Active Directory.**
+* Özel Bulut'unuzdan yedekleme, resim ve diğer verileri depolamak için **azure depolama.**
+* Genel ve Özel Bulutlar'ı kapsayan bir uygulama mimarisine sahip **karma uygulamalar.**  Örneğin, Azure'da Özel Bulut'unuzda uygulama ve veritabanı sunucularıerişen web sunucuları oluşturabilirsiniz.
+* VMware'de çalışan iş yükleri için **Azure monitörü** ve **Azure güvenlik merkezi** günlük, performans ölçümleri ve güvenlik yönetimi sağlar.
 
-**Nasıl yaparım? VMware kiracılarımı Azure 'a eşleyin mi?**
+**VMware kiracılarımı Azure ile nasıl eşlerim?**
 
-AVS, Azure portal AVS özel bulutunda VMware VM 'lerinizi yönetmek için benzersiz bir özellik sağlar. İstenen kaynak kısıtlamalarıyla yapılandırılmış bir vCenter kaynak havuzu, genel yöneticiniz tarafından aboneliğiniz ile eşleştirilebilir. 
+CloudSimple, Azure portalından Özel Bulut'taki VMware VM'lerinizi yönetme ye özgü bir yetenek sağlar.  İstenilen kaynak kısıtlamalarıyla yapılandırılan bir vCenter kaynak havuzu, genel yöneticiniz tarafından aboneliğinize eşlenebilir.  
 
-**Azure ile hangi lisans avantajlarını alabilirim?**
+**Azure ile hangi lisans avantajlarından yararlanırım?**
 
-AVS ile Azure hibrit kullanım avantajı avantajlarından yararlanarak lisanslarda %90 tasarruf edebilirsiniz. Bu avantaj, yatırımınızı Microsoft lisanslarına karşı korur ve diğer bulut çözümlerine göre TCO 'nizi düşürür. Ayrıca Windows Server 2008 ve 2008 Microsoft SQL Server için genişletilmiş güvenlik güncelleştirmeleri de alırsınız. Kendi lisansını getir (KLG) modeli, Veeae ve Zerto gibi ortak uygulamalar için maliyetleri düşük tutmaya yardımcı olur. 
+CloudSimple ile Azure Karma Kullanım Avantajı'ndan yararlanabilir ve lisanslarda %90'a kadar tasarruf edebilirsiniz. Bu avantaj, Microsoft lisanslarına yatırımınızı korur ve TCO'nuzu diğer bulut çözümlerine göre düşürür. Ayrıca Windows Server 2008 ve Microsoft SQL Server 2008 için genişletilmiş güvenlik güncelleştirmeleri alırsınız.  Kendi lisansını getir (BYOL) modeli, Veeam ve Zerto gibi yaygın uygulamaların maliyetlerini düşük tutmanıza yardımcı olur.  

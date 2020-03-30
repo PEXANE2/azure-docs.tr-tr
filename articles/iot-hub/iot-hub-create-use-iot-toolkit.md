@@ -1,6 +1,6 @@
 ---
-title: VS Code için Azure IoT araçlarını kullanarak Azure IoT Hub oluşturma | Microsoft Docs
-description: Bir kaynak grubunda Azure IoT Hub 'ı oluşturmak için Azure IoT araçları 'nı Visual Studio Code nasıl kullanacağınızı öğrenin.
+title: VS Kodu için Azure IoT Araçlarını kullanarak bir Azure IoT Hub'ı oluşturun | Microsoft Dokümanlar
+description: Kaynak grubunda bir Azure IoT hub'ı oluşturmak için Visual Studio Code için Azure IoT araçlarını nasıl kullanacağınızı öğrenin.
 author: formulahendry
 ms.service: iot-hub
 services: iot-hub
@@ -8,60 +8,60 @@ ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: junhan
 ms.openlocfilehash: 668087ae596688e86b7b84a16bc5c0fd0f9fcef6
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75912232"
 ---
-# <a name="create-an-iot-hub-using-the-azure-iot-tools-for-visual-studio-code"></a>Visual Studio Code için Azure IoT araçlarını kullanarak IoT Hub 'ı oluşturma
+# <a name="create-an-iot-hub-using-the-azure-iot-tools-for-visual-studio-code"></a>Visual Studio Code için Azure IoT Araçlarını kullanarak bir IoT hub'ı oluşturma
 
 [!INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
 
-Bu makalede, Azure IoT Hub 'ı oluşturmak için [Visual Studio Code Için Azure IoT araçları 'nın](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) nasıl kullanılacağı gösterilmektedir. 
+Bu makalede, bir Azure IoT hub'ı oluşturmak [için Visual Studio Code için Azure IoT Araçlarını](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) nasıl kullanacağınızı gösterilmektedir. 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Bu makaleyi tamamlayabilmeniz için şunlar gerekir:
+Bu makaleyi tamamlamak için aşağıdakileri yapmanız gerekir:
 
-- Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+- Azure aboneliği. Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
 
 - [Visual Studio Code](https://code.visualstudio.com/)
 
-- Visual Studio Code için [Azure IoT araçları](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) .
+- Visual Studio Code için [Azure IoT Araçları.](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
 
-## <a name="create-an-iot-hub"></a>Bir IoT Hub oluşturma
+## <a name="create-an-iot-hub"></a>IoT hub oluşturma
 
-1. Visual Studio Code'da açmak **Gezgini** görünümü.
+1. Visual Studio Code'da **Explorer** görünümünü açın.
 
-2. Explorer alt kısmında, Genişlet **Azure IOT Hub cihazları** bölümü. 
+2. Explorer'ın alt **kısmında, Azure IoT Hub Aygıtları** bölümünü genişletin. 
 
-   ![Azure IoT Hub cihazlarını Genişlet](./media/iot-hub-create-use-iot-toolkit/azure-iot-hub-devices.png)
+   ![Azure IoT Hub Aygıtlarını Genişletme](./media/iot-hub-create-use-iot-toolkit/azure-iot-hub-devices.png)
 
-3. Tıklayarak **...**  içinde **Azure IOT Hub cihazları** bölüm başlığı. Üç nokta simgesini görmüyorsanız, üst bilgisinin üzerinde gezdirin. 
+3. **Azure IoT Hub Aygıtları** **bölümündeki ...** bölümünü tıklatın. Elipsleri görmüyorsanız, başlığın üzerine gidin. 
 
-4. **IoT Hub oluştur**' a tıklayın.
+4. **IoT Hub oluştur'u**seçin.
 
-5. Bir açılır pencere, Azure 'da ilk kez oturum açmanıza olanak sağlamak için sağ alt köşede görünür.
+5. Azure'da ilk kez oturum açmanıza izin vermek için sağ alt köşede bir açılır pencere açılır.
 
-6. Azure aboneliği ' ni seçin. 
+6. Azure aboneliğini seçin. 
 
-7. Kaynak grubu ' nu seçin.
+7. Kaynak grubunu seçin.
 
-8. Konum seçin.
+8. Konumu seçin.
 
 9. Fiyatlandırma katmanını seçin.
 
-10. IoT Hub için genel olarak benzersiz bir ad girin.
+10. IoT Hub'ınız için genel olarak benzersiz bir ad girin.
 
-11. IoT Hub oluşturuluncaya kadar birkaç dakika bekleyin.
+11. IoT Hub'ı oluşturulana kadar birkaç dakika bekleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Artık Visual Studio Code için Azure IoT araçlarını kullanarak bir IoT Hub 'ı dağıtttınız. Daha fazla bilgi edinmek için aşağıdaki makalelere göz atın:
+Artık Visual Studio Code için Azure IoT Araçlarını kullanarak bir IoT hub'ı dağıttınız. Daha fazla bilgi için aşağıdaki makalelere göz atın:
 
-* [Visual Studio Code Için Azure IoT araçları 'Nı kullanarak cihazınız ile bir IoT Hub arasında ileti gönderin ve alın](iot-hub-vscode-iot-toolkit-cloud-device-messaging.md).
+* [Aygıtınız ve Bir IoT Hub'ı arasında ileti göndermek ve almak için Visual Studio Kodu için Azure IoT Araçlarını kullanın.](iot-hub-vscode-iot-toolkit-cloud-device-messaging.md)
 
-* [Azure IoT Hub cihaz yönetimi için Visual Studio Code Azure IoT araçları 'nı kullanma](iot-hub-device-management-iot-toolkit.md)
+* [Azure IoT Hub aygıt yönetimi için Görsel Stüdyo Kodu için Azure IoT Araçlarını kullanma](iot-hub-device-management-iot-toolkit.md)
 
-* [Bkz. Azure IoT Hub for vs Code wiki sayfası](https://github.com/microsoft/vscode-azure-iot-toolkit/wiki).
+* [VS Code wiki sayfası için Azure IoT Hub'ına bakın.](https://github.com/microsoft/vscode-azure-iot-toolkit/wiki)

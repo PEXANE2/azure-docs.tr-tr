@@ -1,83 +1,83 @@
 ---
-title: Ayrılmış kapasiteye sahip işlem için ön ödeme-MariaDB için Azure veritabanı
-description: Ayrılmış kapasiteye sahip MariaDB işlem kaynakları için Azure veritabanı için ön ödeme
+title: Ayrılmış kapasiteye sahip işlem için ön ödeme - MariaDB için Azure Veritabanı
+description: Ayrılmış kapasiteye sahip MariaDB hesaplama kaynakları için Azure Veritabanı için ön ödeme
 author: kummanish
 ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 5821fb03dcf4331cbab5744f056521468a56d5d2
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: 9a6bd3cab41c69075f5170a8a3aad4f059d970e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74773116"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80159056"
 ---
-# <a name="prepay-for-azure-database-for-mariadb-compute-resources-with-reserved-capacity"></a>Ayrılmış kapasiteye sahip MariaDB işlem kaynakları için Azure veritabanı için ön ödeme
+# <a name="prepay-for-azure-database-for-mariadb-compute-resources-with-reserved-capacity"></a>Ayrılmış kapasiteye sahip MariaDB hesaplama kaynakları için Azure Veritabanı için ön ödeme
 
-MariaDB için Azure veritabanı artık, Kullandıkça Öde fiyatlarına kıyasla işlem kaynakları için ön ödeme yaparak paradan tasarruf etmenize yardımcı olur. MariaDB için Azure veritabanı ile ayrılmış kapasite ile, işlem maliyetlerine göre önemli bir indirim elde etmek üzere MariaDB sunucularında bir yıllık bir dönem için ön taahhüt yaparsınız. MariaDB için Azure veritabanı 'na ayrılmış kapasite satın almak için Azure bölgesini, dağıtım türünü, performans katmanını ve terimi belirtmeniz gerekir. </br>
+MariaDB için Azure Veritabanı artık işlem kaynakları için ön ödeme yaparak, istediğiniz kadar öde fiyatlarıyla karşılaştırıldığında paradan tasarruf etmenizi sağlıyor. MariaDB için Azure Veritabanı ayrılmış kapasite ile, işlem maliyetlerinde önemli bir indirim elde etmek için bir veya üç yıllık bir süre için MariaDB sunucularında ön taahhütte bulunabilirsiniz. MariaDB ayrılmış kapasite için Azure Veritabanı'nı satın almak için Azure bölgesini, dağıtım türünü, performans katmanını ve terimini belirtmeniz gerekir. </br>
 
-Bu ayırmayı, MariaDB sunucuları için belirli Azure veritabanına atamanız gerekmez. MariaDB için Azure veritabanı veya yeni dağıtılan olanlar, ayrılmış fiyatlandırma avantajını otomatik olarak alır. Bir rezervasyon satın alarak, bir yıllık dönem için işlem maliyetleri için ön ödeme yaparsınız. Bir ayırma satın alarak, rezervasyon öznitelikleriyle eşleşen MariaDB işlem ücretleri için Azure veritabanı, artık Kullandıkça Öde tarifelerine göre ücretlendirilir. Bir ayırma, MariaDB veritabanı sunucusuyla ilişkili yazılım, ağ veya depolama ücretlerini kapsamaz. Rezervasyon döneminin sonunda, faturalandırma avantajı sona erer ve MariaDB için Azure veritabanı, Kullandıkça Öde fiyatı üzerinden faturalandırılır. Ayırmalar otomatik olarak yenilemez. Fiyatlandırma bilgileri için bkz. [MariaDB Için Azure veritabanı ayrılmış kapasite teklifi](https://azure.microsoft.com/pricing/details/mariadb/). </br>
+Rezervasyonu MariaDB sunucuları için belirli Azure Veritabanı'na atamanız gerekmez. MariaDB için veya yeni dağıtılanlar için zaten çalışan bir Azure Veritabanı, ayrılmış fiyatlandırmadan otomatik olarak yararlanır. Bir rezervasyon satın alarak, bir veya üç yıllık bir süre için işlem maliyetleri için ön ödeme yapıyorsunuz. Bir rezervasyon satın alır almaz, MariaDB'nin azure veritabanı, rezervasyon öznitelikleriyle eşleşen ödeme ücretleri artık kullandıkça öde fiyatlarıüzerinden ücretlendirilmez. Rezervasyon, MariaDB Veritabanı sunucusuyla ilişkili yazılım, ağ veya depolama ücretlerini kapsamaz. Rezervasyon döneminin sonunda, faturalandırma avantajının süresi doluyor ve MariaDB için Azure Veritabanı size ödeme fiyatından faturalandırılır. Rezervasyonlar otomatik olarak yenilemez. Fiyatlandırma bilgileri [için, MariaDB ayrılmış kapasite teklifi için Azure Veritabanı'na](https://azure.microsoft.com/pricing/details/mariadb/)bakın. </br>
 
-MariaDB için Azure veritabanı ayrılmış kapasitesi [Azure Portal](https://portal.azure.com/)satın alabilirsiniz. Ayrılmış kapasiteyi satın almak için:
+Azure [portalında](https://portal.azure.com/)MariaDB ayrılmış kapasite için Azure Veritabanı'nı satın alabilirsiniz. Ayrılmış kapasiteyi satın almak için:
 
-* Kullandıkça Öde tarifesine sahip en az bir kuruluş veya ayrı bir abonelik için sahip rolünde olmanız gerekir.
-* Kurumsal abonelikler için, [EA portal](https://ea.azure.com/)’da **Ayrılmış Örnek Ekle** seçeneği etkinleştirilmelidir. Ya da bu ayar devre dışı bırakılırsa, abonelikte bir EA yöneticisi olmanız gerekir.
-* Bulut çözümü sağlayıcısı (CSP) programı için, yalnızca yönetici aracıları veya satış aracıları, MariaDB için Azure veritabanı ayrılmış kapasitesi için satın alabilir. </br>
+* Kullandıkça öde oranlarına sahip en az bir Kurumsal veya bireysel abonelik için sahip rolünde olmalısınız.
+* Kurumsal abonelikler için, [EA portal](https://ea.azure.com/)’da **Ayrılmış Örnek Ekle** seçeneği etkinleştirilmelidir. Veya bu ayar devre dışı bırakılmışsa, abonelikte bir EA Yöneticisi olmalısınız.
+* Bulut Çözüm Sağlayıcısı (CSP) programı için, MariaDB ayrılmış kapasite için yalnızca yönetici aracılar veya satış temsilcileri Azure Veritabanı satın alabilir. </br>
 
-Kurumsal müşterilerin ve kullandıkça öde müşterilerinin, rezervasyon satın alma işlemleri için nasıl ücretlendirilildiği hakkındaki ayrıntılar, bkz. [Kurumsal kaydınız Için Azure ayırma kullanımını anlama](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea) ve [Kullandıkça Öde aboneliğiniz için Azure rezervasyon kullanımını anlama](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage).
-
-
-## <a name="determine-the-right-server-size-before-purchase"></a>Satın almadan önce doğru sunucu boyutunu belirle
-
-Ayırma boyutu, belirli bir bölgedeki mevcut veya hemen dağıtılmış veritabanları örneği tarafından kullanılan ve aynı performans katmanını ve donanım üretimini kullanan toplam işlem miktarına bağlı olmalıdır.</br>
-
-Örneğin, bir genel amaç, 5. nesil – 32 vCore MariaDB veritabanı ve iki bellek için iyileştirilmiş, 5. nesil – 16 sanal çekirdek MariaDB veritabanlarını çalıştırdığınızı varsayalım. Ayrıca, bir sonraki ay içinde, ek bir genel amaç, 5. nesil – 32 sanal çekirdek veritabanı sunucusu ve bir bellek için iyileştirilmiş, 5. nesil – 16 sanal çekirdek veritabanı sunucusu arasında dağıtmayı planladığınızı varsayalım. En az 1 yılda bu kaynaklara ihtiyacınız olacağını bildiğinizi varsayalım. Bu durumda, tek veritabanı belleği için iyileştirilmiş-5. nesil için 64 (2x32) sanal çekirdekleri, tek veritabanı için 1 yıl ayırma genel amaçlı-5. nesil ve 48 (2x16 + 16) sanal çekirdek 1 yıl ayırması satın almalısınız
+Kurumsal müşterilerin ve Sizden Önce Öde müşterilerinin rezervasyon satın alımları için nasıl ücretlendirildikine ilişkin ayrıntılar, [Kurumsal kaydınız için Azure rezervasyon kullanımını anlayın](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage-ea) ve [Kullan-Kaç'a Göre Aboneliğiniz için Azure rezervasyon kullanımını anlayın.](https://docs.microsoft.com/azure/billing/billing-understand-reserved-instance-usage)
 
 
-## <a name="buy-azure-database-for-mariadb-reserved-capacity"></a>MariaDB için Azure veritabanı ayrılmış kapasitesi satın alın
+## <a name="determine-the-right-server-size-before-purchase"></a>Satın almadan önce doğru sunucu boyutunu belirleme
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
-2. **Tüm hizmetler** > **Rezervasyonlar**’ı seçin.
-3.  **Ekle** ' yi seçin ve ardından satın alma rezervasyonları bölmesinde, MariaDB veritabanlarınızı Için **Azure veritabanı** ' nı seçin.
-4.  Gerekli alanları doldur. ' Yi seçtiğiniz özniteliklerle eşleşen mevcut veya yeni veritabanları, ayrılmış kapasite indirimi elde etmek için nitelendir ' ı seçin. İndirimi alan MariaDB sunucuları için Azure veritabanınızın gerçek sayısı, seçilen kapsama ve miktara göre değişir.
+Rezervasyonun boyutu, belirli bir bölge içinde varolan veya yakında dağıtılacak veritabanları örneği tarafından kullanılan ve aynı performans katmanı ve donanım oluşturmayı kullanan toplam işlem miktarına dayanmalıdır.</br>
+
+Örneğin, bir genel amaç, Gen5 - 32 vCore MariaDB veritabanı ve iki bellek optimize, Gen5 - 16 vCore MariaDB veritabanları çalıştırdığınızı varsayalım. Ayrıca, önümüzdeki ay içinde ek bir genel amaç, Gen5 - 32 vCore veritabanı sunucusu ve bir bellek optimize, Gen5 - 16 vCore veritabanı sunucusu dağıtmak için plan varsayalım. Bu kaynaklara en az 1 yıl boyunca ihtiyacınız olacağını bildiğinizi varsayalım. Bu durumda, bir 64 (2x32) vCores, tek veritabanı genel amaçlı 1 yıl rezervasyon - Gen5 ve 48 (2x16 + 16) tek veritabanı bellek için 1 yıl rezervasyon optimize - Gen5 satın almalısınız
+
+
+## <a name="buy-azure-database-for-mariadb-reserved-capacity"></a>MariaDB ayrılmış kapasite için Azure Veritabanı satın alın
+
+1. [Azure portalında](https://portal.azure.com/)oturum açın.
+2. **Tüm hizmetler** > **rezervasyonlarını**seçin.
+3.  **Satınalma** rezervasyonları bölmesinde Ekle'yi seçin ve ardından MariaDB veritabanlarınız için yeni bir rezervasyon satın almak **için MariaDB için Azure Veritabanı'nı** seçin.
+4.  Gerekli alanları doldurun. Seçtiğiniz özniteliklerle eşleşen varolan veya yeni veritabanları ayrılmış kapasite indirimini almaya hak kazanır. İndirimalan MariaDB sunucuları için Azure Veritabanınızın gerçek sayısı, seçilen kapsam ve miktara bağlıdır.
 
 
 ![Ayrılmış fiyatlandırmaya genel bakış](media/concepts-reserved-pricing/mariadb-reserved-price.png)
 
 
-Aşağıdaki tablo gerekli alanları açıklar.
+Aşağıdaki tabloda gerekli alanları açıklanmaktadır.
 
 | Alan | Açıklama |
 | :------------ | :------- |
-| Abonelik   | MariaDB için Azure veritabanı ayrılmış kapasite ayırması için ödeme yapmak üzere kullanılan abonelik. Abonelik üzerindeki ödeme yöntemi, MariaDB için Azure veritabanı ayrılmış kapasite rezervasyonu için ön maliyetler üzerinden ücretlendirilir. Abonelik türü bir kurumsal anlaşma (teklif numaraları: MS-AZR-0017P veya MS-AZR-0148P) veya kullandıkça öde fiyatlandırması (teklif numaraları: MS-AZR-0003P veya MS-AZR-0023P) içeren tek bir anlaşma olmalıdır. Kurumsal abonelik için ücretler kaydın maddi işlem bakiyesinden düşülür ve fazla kullanım olarak ücretlendirilir. Kullandıkça Öde fiyatlandırmasına sahip bireysel bir abonelik için ücretler, abonelik üzerindeki kredi kartına veya fatura ödeme yöntemine faturalandırılır.
-| Kapsam | VCore rezervasyonunun kapsamı bir aboneliği veya birden çok aboneliği (paylaşılan kapsamı) kapsayabilir. Şunları seçerseniz: </br></br> **, Sanal**çekirdek ayırma indirimi, faturalandırma bağlamınızın içindeki aboneliklerde çalışan MariaDB sunucuları Için Azure veritabanı 'na uygulanır. Kurumsal müşteriler için, paylaşılan kapsam kayıt içindedir ve kayıt dahilindeki tüm abonelikleri içerir. Kullandıkça Öde müşterileri için paylaşılan kapsam, hesap yöneticisi tarafından oluşturulan tüm Kullandıkça Öde abonelikleridir.</br></br> **Tek abonelik**, sanal çekirdek ayırma indirimi Bu abonelikteki MariaDB sunucuları Için Azure veritabanı 'na uygulanır. </br></br> **Tek kaynak grubu**, rezervasyon indirimi seçili abonelikteki MariaDB sunucuları Için Azure veritabanı ve bu abonelikteki seçili kaynak grubu için geçerlidir.
-| Bölge | MariaDB için Azure veritabanı ayrılmış kapasite rezervasyonu kapsamındaki Azure bölgesi.
-| Dağıtım türü | Ayırmasını satın almak istediğiniz MariaDB için Azure veritabanı kaynak türü.
-| Performans Katmanı | MariaDB sunucuları için Azure veritabanı hizmet katmanı.
+| Abonelik   | MariaDB için Azure Veritabanı için ödeme yapmak için kullanılan abonelik, ayrılmış kapasite rezervasyonu. Abonelikteki ödeme yöntemi, MariaDB için ayrılmış kapasite rezervasyonu için Azure Veritabanı için ön maliyetlerden ücretlendirilir. Abonelik türü bir kurumsal sözleşme (teklif numaraları: MS-AZR-0017P veya MS-AZR-0148P) veya gidilecek kadar öde fiyatlandırması (teklif numaraları: MS-AZR-0003P veya MS-AZR-0023P) ile bireysel bir anlaşma olmalıdır. Kurumsal abonelik için ücretler kaydın maddi işlem bakiyesinden düşülür ve fazla kullanım olarak ücretlendirilir. Gittikçe öde fiyatlandırmasına sahip tek bir abonelik için, ücretler abonelikteki kredi kartına veya fatura ödeme yöntemine faturalandırılır.
+| Kapsam | vCore rezervasyonun kapsamı bir aboneliği veya birden çok aboneliği (paylaşılan kapsamı) kapsayabilir. Seçerseniz: </br></br> **Paylaşılan,** vCore rezervasyon indirimi, faturalandırma bağlamınızdaki tüm aboneliklerde çalışan MariaDB sunucuları için Azure Veritabanı'na uygulanır. Kurumsal müşteriler için paylaşılan kapsam kayıttır ve kayıt içindeki tüm abonelikleri içerir. Kullandıkça Öde müşterileri için paylaşılan kapsam, hesap yöneticisi tarafından oluşturulan tüm Kullandıkça Öde abonelikleridir.</br></br> **Tek abonelik,** vCore rezervasyon indirimi bu abonelikteki MariaDB sunucuları için Azure Veritabanı'na uygulanır. </br></br> **Tek kaynak grubu,** rezervasyon indirimi, seçili abonelikteki MariaDB sunucuları ve bu abonelik içindeki seçili kaynak grubu için Azure Veritabanı'na uygulanır.
+| Bölge | MariaDB için Azure Veritabanı tarafından kapsanan Azure bölgesi, kapasite rezervasyonu için ayrılmıştır.
+| Dağıtım Türü | Rezervasyonu satın almak istediğiniz MariaDB kaynak türü için Azure Veritabanı.
+| Performans Katmanı | MariaDB sunucuları için Azure Veritabanı için hizmet katmanı.
 | Sözleşme Dönemi | Bir yıl
-| Miktar | MariaDB için Azure veritabanı 'nda satın alınan işlem kaynaklarının miktarı ayrılmış kapasite ayırması. Bu miktar, seçili Azure bölgesindeki ve performans katmanındaki, ayrılan ve fatura iskontosunu alacak olan sanal çekirdekler sayısıdır. Örneğin, Doğu ABD bölgesinde 5. nesil 16 sanal çekirdeklerinin toplam işlem kapasitesine sahip MariaDB sunucuları için Azure veritabanı 'nı çalıştırıyorsanız veya çalıştırmayı planlıyorsanız, tüm sunucuların avantajını en üst düzeye çıkarmak için miktarı 16 olarak belirtirsiniz.
+| Miktar | MariaDB için Azure Veritabanı'nda satın alınan işlem kaynaklarının miktarı ayrılmış kapasite rezervasyonu. Miktar, seçili Azure bölgesinde ve Performans katmanında rezerve edilen ve faturalandırma indirimini alacak bir dizi vCore'dur. Örneğin, Doğu ABD bölgesindeki Gen5 16 vCores'un toplam bilgi işlem kapasitesine sahip MariaDB sunucuları için bir Azure Veritabanı çalıştırıyor veya çalıştırmayı planlıyorsanız, tüm sunucuların yararını en üst düzeye çıkarmak için miktarı 16 olarak belirtirsiniz.
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>Rezervasyonları iptal etme, değiştirme veya para iadesi alma
 
 Belirli sınırlamalarla rezervasyonları iptal edebilir, değiştirebilir veya para iadesi alabilirsiniz. Daha fazla bilgi için bkz. [Azure Ayrılmış Sanal Makine Örnekleri için self servis değişimler ve para iadeleri](https://docs.microsoft.com/azure/billing/billing-azure-reservations-self-service-exchange-and-refund).
 
-## <a name="vcore-size-flexibility"></a>vCore boyutu esnekliği
+## <a name="vcore-size-flexibility"></a>vCore boyut esnekliği
 
-vCore boyutu esnekliği, ayrılan kapasite avantajını kaybetmeden bir performans katmanı ve bölgesi içinde ölçeği büyütme veya küçültme olanakları sağlar. 
+vCore boyut esnekliği, ayrılmış kapasite avantajını kaybetmeden bir performans katmanı ve bölge içinde yukarı veya aşağı ölçeklendirmenize yardımcı olur. 
 
-## <a name="need-help-contact-us"></a>Yardım mı gerekiyor? Bize ulaşın
+## <a name="need-help-contact-us"></a>Yardıma mı ihtiyacınız var? Bizimle iletişim kurun
 
-Sorularınız varsa ya da yardıma gereksinim duyuyorsanız [destek isteği oluşturun](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+Sorularınız varsa veya yardıma ihtiyacınız varsa, [bir destek isteği oluşturun.](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-VCore ayırma indirimi, MariaDB için Azure veritabanı için Azure veritabanı 'na ayrılmış kapasite ayırma kapsamı ve öznitelikleri için Azure veritabanı sayısına otomatik olarak uygulanır. MariaDB için Azure veritabanı 'nın kapsamını Azure portal, PowerShell, CLı veya API aracılığıyla ayrılmış kapasite ayırması için güncelleştirebilirsiniz. </br></br>
-MariaDB için Azure veritabanı 'nın ayrılmış kapasitesini yönetme hakkında bilgi edinmek için bkz. MariaDB için Azure veritabanı ayrılmış kapasitesi.
+vCore rezervasyon indirimi, MariaDB için Azure Veritabanı ile eşleşen Ve MariaDB sunucuları için Azure Veritabanı sayısına otomatik olarak uygulanır. MariaDB için Azure veritabanının kapsamını Azure portalı, PowerShell, CLI veya API aracılığıyla güncelleştirebilirsiniz. </br></br>
+MariaDB için Azure Veritabanı'nı nasıl yöneteceğiz öğrenmek için ayrılmış kapasite için Azure Veritabanı'nı yönet'e bakın.
 
 Azure Ayrılmış Sanal Makine Örnekleri hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
 
-* [Azure ayırmaları nelerdir](https://docs.microsoft.com/azure/billing/billing-save-compute-costs-reservations)?
+* [Azure Rezervasyonları nedir?](https://docs.microsoft.com/azure/billing/billing-save-compute-costs-reservations)
 * [Azure Ayırmalarını yönetme](https://docs.microsoft.com/azure/billing/billing-manage-reserved-vm-instance)
 * [Azure Ayrılmış Sanal Makine Örnekleri indirimini anlama](https://docs.microsoft.com/azure/billing/billing-understand-reservation-charges)
 * [Kullandıkça Öde aboneliğiniz için rezervasyon kullanımını anlama](https://docs.microsoft.com/azure/billing/billing-understand-reservation-charges-mariadb)

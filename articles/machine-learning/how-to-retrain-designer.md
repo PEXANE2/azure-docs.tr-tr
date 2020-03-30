@@ -1,7 +1,7 @@
 ---
-title: Azure Machine Learning tasarımcısını kullanarak modelleri yeniden eğitme (Önizleme)
+title: Azure Machine Learning tasarımcısını kullanarak modelleri yeniden eğitin (önizleme)
 titleSuffix: Azure Machine Learning
-description: Azure Machine Learning tasarımcısında yayımlanmış işlem hatlarına sahip modelleri yeniden eğitme hakkında bilgi edinin (Önizleme).
+description: Azure Machine Learning tasarımcısında (önizleme) yayımlanmış ardışık hatlar ile modelleri nasıl yeniden eğitabileceğinizi öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,116 +10,116 @@ ms.author: keli19
 author: likebupt
 ms.date: 02/24/2020
 ms.openlocfilehash: 264b169eefde18880f50feae2554aa3ca7037b1f
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79368171"
 ---
-# <a name="retrain-models-with-azure-machine-learning-designer-preview"></a>Azure Machine Learning Designer ile modelleri yeniden eğitme (Önizleme)
+# <a name="retrain-models-with-azure-machine-learning-designer-preview"></a>Azure Machine Learning tasarımcısı (önizleme) ile modelleri yeniden eğitme
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-Bu nasıl yapılır makalesinde, bir makine öğrenimi modelini yeniden eğitmek için Azure Machine Learning tasarımcısını kullanmayı öğreneceksiniz. Makine öğrenimi iş akışlarını yeniden eğitimlere otomatik hale getirmek için yayınlanmış işlem hatlarını nasıl kullanacağınızı öğrenin.
+Bu nasıl yapılsa makalede, bir makine öğrenme modelini yeniden eğitmek için Azure Machine Learning tasarımcısını nasıl kullanacağınızı öğrenirsiniz. Yeniden eğitim için makine öğrenimi iş akışlarını otomatikleştirmek için yayımlanmış ardışık hatlarınasıl kullanacağız öğrenin.
 
 Bu makalede şunları öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Makine öğrenimi modelini eğitme.
-> * İşlem hattı parametresi oluşturun.
-> * Eğitim işlem hattınızı yayımlayın.
-> * Modelinize yeniden eğitme.
+> * Bir makine öğrenme modeli eğitin.
+> * Bir ardışık parametre oluşturun.
+> * Eğitim boru hattınızı yayınlayın.
+> * Modelinizi yeniden eğitin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://aka.ms/AMLFree) oluşturun.
-* Kurumsal SKU 'SU olan bir Azure Machine Learning çalışma alanı.
+* Azure aboneliği. Azure aboneliğiniz yoksa, ücretsiz bir [hesap](https://aka.ms/AMLFree)oluşturun.
+* Enterprise SKU ile Azure Machine Learning çalışma alanı.
 
-Bu makalede, tasarımcıda işlem hattı oluşturmak için temel bilgiye sahip olduğunuz varsayılır. Tasarımcıya yönelik kılavuzlu bir giriş için [öğreticiyi](tutorial-designer-automobile-price-train-score.md)doldurun. 
+Bu makalede, tasarımcı bina boru hatları temel bilgiye sahip olduğunu varsayar. Tasarımcıya rehberli bir giriş [için, öğreticiyi](tutorial-designer-automobile-price-train-score.md)tamamlayın. 
 
-### <a name="sample-pipeline"></a>Örnek işlem hattı
+### <a name="sample-pipeline"></a>Örnek boru hattı
 
-Bu makalede kullanılan işlem hattı, [örnek 3: gelir tahmini](how-to-designer-sample-classification-predict-income.md)içinde bulunan birinin değiştirilmiş bir sürümüdür. Kendi verilerinizi kullanarak bir modeli nasıl eğitekullanacağınızı göstermek için örnek veri kümesi yerine [verileri Içeri aktarma](algorithm-module-reference/import-data.md) modülünü kullanır.
+Bu makalede kullanılan ardışık hatlar Örnek 3 bulunan bir değiştirilmiş [sürümüdür: Gelir tahmini.](how-to-designer-sample-classification-predict-income.md) Kendi verilerinizi kullanarak bir modeli nasıl eğiteceklerini göstermek için örnek veri kümesi yerine [Veri Alma](algorithm-module-reference/import-data.md) modülünü kullanır.
 
-![Değiştirilen örnek işlem hattını, verileri Içeri aktarma modülünü vurgulama kutusuyla gösteren ekran görüntüsü](./media/how-to-retrain-designer/modified-sample-pipeline.png)
+![İçe Aktarma Verisi modüllerini vurgulayan bir kutuyla değiştirilmiş örnek ardışık ardışık gösteriyi gösteren ekran görüntüsü](./media/how-to-retrain-designer/modified-sample-pipeline.png)
 
-## <a name="train-a-machine-learning-model"></a>Makine öğrenimi modelini eğitme
+## <a name="train-a-machine-learning-model"></a>Bir makine öğrenme modeli eğitin
 
-Bir modeli yeniden eğitmek için bir başlangıç modeline ihtiyacınız vardır. Bu bölümde, Tasarımcıyı kullanarak bir modeli eğitme ve kaydedilmiş modele erişme hakkında bilgi edineceksiniz.
+Bir modeli yeniden eğitmek için, bir başlangıç modeli gerekir. Bu bölümde, tasarımcıyı kullanarak bir modeli nasıl eğiteceklerini ve kaydedilen modele nasıl erişinersiniz.
 
-1. **Veri Içeri aktarma** modülünü seçin.
-1. Özellikler bölmesinde bir veri kaynağı belirtin.
+1. Veri **Alma** modülünü seçin.
+1. Özellikler bölmesine bir veri kaynağı belirtin.
 
-   ![Veri Içeri aktarma modülünün örnek yapılandırmasını gösteren ekran görüntüsü](./media/how-to-retrain-designer/import-data-settings.png)
+   ![Alma Verisi modülünün örnek yapılandırmasını gösteren ekran görüntüsü](./media/how-to-retrain-designer/import-data-settings.png)
 
-   Bu örnekte, veriler bir [Azure veri deposunda](how-to-access-data.md)depolanır. Henüz bir veri deposu yoksa, **Yeni veri deposu**' nu seçerek şimdi bir tane oluşturabilirsiniz.
+   Bu örnekte, veriler bir [Azure veri deposunda](how-to-access-data.md)depolanır. Zaten bir veri mağazanız yoksa, **Yeni veri deposu'nü**seçerek şimdi bir tane oluşturabilirsiniz.
 
-1. Verilerinizin yolunu belirtin. Veri deposuna gözatabilmeniz için, **yolu araştır** ' ı da seçebilirsiniz. 
-1. Tuvalin en üstünde **Çalıştır** ' ı seçin.
+1. Verilerinize giden yolu belirtin. Ayrıca veri mağazanıza göz atmak için **Gözat yolunu** da seçebilirsiniz. 
+1. Tuvalin üst kısmında **Çalıştır'ı** seçin.
     
    > [!NOTE]
-   > Bu ardışık düzen taslağı için zaten varsayılan bir işlem ayarladıysanız, işlem hattı otomatik olarak çalışır. Aksi takdirde, şimdi bir tane ayarlamak için ayarlar bölmesindeki istemler ' i izleyebilirsiniz.
+   > Bu ardışık işlem için varsayılan bir işlem ayarladıysanız, ardışık işlem otomatik olarak çalışır. Aksi takdirde, şimdi bir tane ayarlamak için ayarlar bölmesindeki istemleri izleyebilirsiniz.
 
-### <a name="find-your-trained-model"></a>Eğitilen modelinizi bulun
+### <a name="find-your-trained-model"></a>Eğitimli modelinizi bulun
 
-Tasarımcı, eğitilen modeller dahil olmak üzere tüm işlem hattı çıkışlarını varsayılan depolama hesabına kaydeder. Eğitilen modele doğrudan tasarımcıda de erişebilirsiniz:
+Tasarımcı, eğitimli modeller de dahil olmak üzere tüm boru hattı çıktılarını varsayılan depolama hesabına kaydeder. Ayrıca, eğitimli modele doğrudan tasarımcıdan erişebilirsiniz:
 
-1. İşlem hattının çalışmayı bitirmesini bekleyin.
-1. **Model eğitme** modülünü seçin.
-1. Ayarlar bölmesinde, **çıktılar + Günlükler**' i seçin.
-1. **Çıktıyı görüntüle** simgesini seçin ve eğitilen modeli bulmak için açılır penceredeki yönergeyi izleyin.
+1. Boru hattının çalışmasını bekleyin.
+1. Tren **Modeli** modülünü seçin.
+1. Ayarlar bölmesinde **Çıktılar+günlükleri'ni**seçin.
+1. Görünüm **çıktısimgesini** seçin ve eğitimli modeli bulmak için açılan penceredeki yönergeyi izleyin.
 
-![Eğitilen modelin nasıl indirileceği gösteren ekran görüntüsü](./media/how-to-retrain-designer/trained-model-view-output.png)
+![Eğitilmiş modelin nasıl indirilir olduğunu gösteren ekran görüntüsü](./media/how-to-retrain-designer/trained-model-view-output.png)
 
-## <a name="create-a-pipeline-parameter"></a>İşlem hattı parametresi oluşturma
+## <a name="create-a-pipeline-parameter"></a>Bir boru hattı parametresi oluşturma
 
-Çalışma zamanında değişkenleri dinamik olarak ayarlamak için işlem hattı parametreleri ekleyin. Bu işlem hattı için, modelinizi yeni bir veri kümesi üzerinde yeniden eğitebilmeniz için eğitim verileri yolu için bir parametre ekleyin.
+Çalışma zamanında değişkenleri dinamik olarak ayarlamak için boru hattı parametrelerini ekleyin. Bu ardışık işlem için, yeni bir veri kümesi üzerinde modelinizi yeniden eğitmek için eğitim veri yolu için bir parametre ekleyin.
 
-1. **Veri Içeri aktarma** modülünü seçin.
-1. Ayarlar bölmesinde, **yol** alanının üzerindeki üç nokta simgesini seçin.
-1. **Ardışık düzen parametresine Ekle**' yi seçin.
+1. Veri **Alma** modülünü seçin.
+1. Ayarlar bölmesinde, **Yol** alanının üzerindeki elipsleri seçin.
+1. **Ardışık etki hattına ekle'yi**seçin.
 1. Bir parametre adı ve varsayılan değer sağlayın.
 
    > [!NOTE]
-   > İşlem hattı taslağınız başlığının yanındaki **Ayarlar** dişli simgesini seçerek işlem hattı parametrelerinizi inceleyebilir ve düzenleyebilirsiniz. 
+   > Boru hattı taslağınızın başlığının yanındaki **Ayarlar** dişli simgesini seçerek boru hattı parametrelerinizi inceleyebilir ve düzenlemeyapabilirsiniz. 
 
-![İşlem hattı parametresinin nasıl oluşturulacağını gösteren ekran görüntüsü](media/how-to-retrain-designer/add-pipeline-parameter.png)
+![Bir ardışık parametrenin nasıl oluşturulurulur gösteren ekran görüntüsü](media/how-to-retrain-designer/add-pipeline-parameter.png)
 
-## <a name="publish-a-training-pipeline"></a>Eğitim işlem hattı yayımlama
+## <a name="publish-a-training-pipeline"></a>Eğitim boru hattı yayımlama
 
-Bir işlem hattını yayımladığınızda, bir ardışık düzen uç noktası oluşturur. İşlem hattı uç noktaları, yinelenebilirlik ve otomasyon için işlem hatlarınızı yeniden kullanmanıza ve yönetmenize olanak sağlar Bu örnekte, yeniden eğitim için işlem hattınızı ayarlamış olursunuz.
+Bir ardışık hatlar yayımladığında, bir ardışık nokta bitiş noktası oluşturur. Boru hattı uç noktaları, tekrarlanabilirlik ve otomasyon için ardışık hatlarınızı yeniden kullanmanıza ve yönetmenize izin sağlar. Bu örnekte, yeniden eğitim için ardışık hattınızı kurdunuz.
 
-1. Tasarımcı tuvalinin üzerinde **Yayımla** ' yı seçin.
-1. Ardışık düzen uç noktası seçin veya oluşturun.
+1. Tasarımcı tuvalinin üzerinde **Yayımla'yı** seçin.
+1. Bir ardışık lık bitiş noktası seçin veya oluşturun.
 
    > [!NOTE]
-   > Tek bir uç noktada birden çok işlem hattı yayımlayabilirsiniz. Uç noktadaki her bir işlem hattı, işlem hattı uç noktasını çağırdığınızda belirtebileceğiniz bir sürüm numarası olarak verilir.
+   > Birden çok ardışık hattı tek bir bitiş noktasına yayımlayabilirsiniz. Bitiş noktasındaki her ardışık noktaya, ardışık nokta bitiş noktasını çağırdığınızda belirtebileceğiniz bir sürüm numarası verilir.
 
 1. **Yayımla**’yı seçin.
 
-## <a name="retrain-your-model"></a>Modelinizi yeniden eğitme
+## <a name="retrain-your-model"></a>Modelinizi yeniden eğitin
 
-Artık yayımlanmış bir eğitim işlem hattına sahip olduğunuza göre, yeni verileri kullanarak modelinize yeniden eğitebilmeniz için bunu kullanabilirsiniz. Azure portal bir ardışık düzen uç noktasından çalıştırma gönderebilir veya onları programlı olarak gönderebilirsiniz.
+Artık yayınlanmış bir eğitim ardışık hattınız olduğuna göre, yeni veriler kullanarak modelinizi yeniden eğitmek için kullanabilirsiniz. Azure portalından bir ardışık bitiş noktasından çalıştırma gönderebilir veya bunları programlı olarak gönderebilirsiniz.
 
-### <a name="submit-runs-by-using-the-designer"></a>Tasarımcıyı kullanarak çalıştırma gönderme
+### <a name="submit-runs-by-using-the-designer"></a>Tasarımcıyı kullanarak çalıştırma gönder
 
-Tasarımcıdan bir işlem hattı uç noktası göndermek için aşağıdaki adımları kullanın:
+Tasarımcıdan bir ardışık nokta bitiş noktası çalıştırın: aşağıdaki adımları kullanın:
 
-1. **Uç noktalar** sayfasına gidin.
-1. **Ardışık düzen uç noktaları** sekmesini seçin.
-1. Ardışık düzen uç noktanızı seçin.
-1. Yayınlanan işlem **hatları** sekmesini seçin.
-1. Çalıştırmak istediğiniz işlem hattını seçin.
-1. **Gönder**' i seçin.
-1. Kurulum iletişim kutusunda, giriş veri yolu değeri için yeni bir değer belirtebilirsiniz. Bu değer, yeni veri kümenizi işaret eder.
+1. **Uç Noktalar** sayfasına gidin.
+1. Pipeline **uç noktaları** sekmesini seçin.
+1. Ardışık nokta bitiş noktanızı seçin.
+1. **Yayımlanmış ardışık hatlar** sekmesini seçin.
+1. Çalıştırmak istediğiniz ardışık alanı seçin.
+1. **Gönder**’i seçin.
+1. Kurulum iletişim kutusunda, giriş veri yolu değeri için yeni bir değer belirtebilirsiniz. Bu değer, yeni veri kümenize işaret ediyor.
 
-![Tasarımcıda parametreli bir işlem hattı çalıştırmasının nasıl ayarlanacağını gösteren ekran görüntüsü](./media/how-to-retrain-designer/published-pipeline-run.png)
+![Tasarımcıda parametrelendirilmiş bir ardışık etki hattı nın nasıl ayarlanış yapılacağını gösteren ekran görüntüsü](./media/how-to-retrain-designer/published-pipeline-run.png)
 
-### <a name="submit-runs-by-using-code"></a>Kodu kullanarak çalıştırmaları gönder
+### <a name="submit-runs-by-using-code"></a>Kodu kullanarak çalıştırma gönder
 
-Yayımlanan bir işlem hattının REST uç noktasını genel bakış panelinde bulabilirsiniz. Uç noktayı çağırarak, yayımlanan işlem hattını yeniden eğitebilirsiniz.
+Yayınlanan bir ardışık boru hattının REST bitiş noktasını genel bakış panelinde bulabilirsiniz. Bitiş noktasını arayarak, yayımlanmış ardışık hattı yeniden eğitebilirsiniz.
 
-REST çağrısı yapmak için bir OAuth 2,0 taşıyıcı türü kimlik doğrulama üst bilgisi gerekir. Çalışma alanınıza kimlik doğrulama ayarlama ve parametreli REST çağrısı yapma hakkında bilgi için bkz. [Batch Puanlama için Azure Machine Learning işlem hattı oluşturma](tutorial-pipeline-batch-scoring-classification.md#publish-and-run-from-a-rest-endpoint).
+REST araması yapmak için OAuth 2.0 taşıyıcı tipi kimlik doğrulama üstbilgisine ihtiyacınız vardır. Çalışma alanınızda kimlik doğrulamayı ayarlama ve parametreli REST araması yapma hakkında bilgi için toplu [puanlama için bir Azure Machine Learning ardışık hattı oluşturun'a](tutorial-pipeline-batch-scoring-classification.md#publish-and-run-from-a-rest-endpoint)bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bir regresyon modeli eğitme ve dağıtma için [Tasarımcı öğreticisini](tutorial-designer-automobile-price-train-score.md) izleyin.
+Bir regresyon modelini eğitmek ve dağıtmak için [tasarımcı öğreticisini](tutorial-designer-automobile-price-train-score.md) izleyin.

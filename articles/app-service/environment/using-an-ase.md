@@ -1,218 +1,222 @@
 ---
-title: App Service Ortamı kullanma ve yönetme
-description: Azure App Service ortamında uygulama oluşturma, yayımlama ve ölçekleme. Ortak görevleri tek bir belgede bulabilirsiniz.
+title: Uygulama Hizmeti Ortamını kullanma ve yönetme
+description: Uygulama Hizmeti Ortamında uygulamaları nasıl oluşturup yayınlayacağınızı ve ölçeklendireceklerini öğrenin. Bu makaledeki tüm ortak görevleri bulun.
 author: ccompy
 ms.assetid: a22450c4-9b8b-41d4-9568-c4646f4cf66b
 ms.topic: article
 ms.date: 01/01/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 7be1676c8949cd30d5e1fe93a73afd75a5a9b67f
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.openlocfilehash: 7ca6882aea7225dcb97c9f913267b2543de07fef
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/23/2020
-ms.locfileid: "77565706"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80133134"
 ---
-# <a name="use-an-app-service-environment"></a>App Service ortamı kullanma #
+# <a name="use-an-app-service-environment"></a>App Service Ortamını kullanma
 
-App Service Ortamı (Ao), bir müşterinin Azure sanal ağındaki bir alt ağa Azure App Service bir dağıtımdır. Bir asa aşağıdakilerden oluşur:
+Uygulama Hizmet Ortamı (ASE), Azure Uygulama Hizmeti'nin müşterinin Azure Sanal Ağ örneğinde bir alt ağa dağıtımıdır. Bir ASE oluşur:
 
-- **Ön uçlar**: ön uçlar, http/https 'nin bir App Service ortamında sonlandırmakta olduğu yerdir.
-- **Çalışanlar**: uygulamalarınızı barındıran kaynaklar.
-- **Veritabanı**: veritabanı ortamı tanımlayan bilgileri barındırır.
-- **Depolama**: depolama alanı, müşteri tarafından yayımlanan uygulamaları barındırmak için kullanılır.
+- **Ön uçlar**: Http veya HTTPS'nin Bir Uygulama Hizmet Ortamında sona erdiği yer.
+- **Çalışanlar**: Uygulamalarınızı barındıran kaynaklar.
+- **Veritabanı**: Ortamı tanımlayan bilgileri tutar.
+- **Depolama**: Müşteri tarafından yayınlanan uygulamaları barındırmak için kullanılır.
 
-Uygulama erişimi için bir dış veya iç VIP ile ATıCı dağıtabilirsiniz. Dış VIP ile dağıtım genellikle dış Ao olarak adlandırılır. İç sürüm, iç yük dengeleyici (ıLB) kullandığından ıLB aşırı olarak adlandırılır. ILB Ao hakkında daha fazla bilgi edinmek için bkz. [ILB Ai oluşturma ve kullanma][MakeILBASE].
+Uygulama erişimi için harici veya dahili sanal IP (VIP) içeren bir ASE dağıtabilirsiniz. Harici BIR VIP ile dağıtım genellikle *Harici ASE*denir. Dahili yük dengeleyici (ILB) kullandığından, dahili VIP'li bir dağıtıma *ILB ASE* denir. ILB ASE hakkında daha fazla bilgi edinmek için [bkz.][MakeILBASE]
 
-## <a name="create-an-app-in-an-ase"></a>AS 'de uygulama oluşturma ##
+## <a name="create-an-app-in-an-ase"></a>ASE'de uygulama oluşturma
 
-Ao 'da bir uygulama oluşturmak için, normal olarak oluşturduğunuz ve birkaç küçük farklılık ile aynı süreci kullanırsınız. Yeni bir App Service planı (ASP) oluşturduğunuzda:
+BIR ASE'de bir uygulama oluşturmak için, normalde bir uygulama oluşturduğunuzda, ancak birkaç küçük farkla aynı işlemi kullanırsınız. Yeni bir Uygulama Hizmeti planı oluşturduğunuzda:
 
-- Uygulamanızın dağıtılacağı coğrafi bir konum seçmek yerine konumunuz olarak bir AO seçin.
-- Ao 'da oluşturulan tüm App Service planları yalnızca yalıtılmış bir fiyatlandırma katmanında yer alabilir.
+- Uygulamanızı dağıtabileceğiniz bir coğrafi konum seçmek yerine, konumunuz olarak bir ASE seçersiniz.
+- BIR ASE'de oluşturulan tüm Uygulama Hizmeti planları yalnızca Yalıtılmış bir fiyatlandırma katmanında olabilir.
 
-Ao 'a sahip değilseniz, [App Service ortamı oluşturma][MakeExternalASE]bölümündeki yönergeleri izleyerek bir tane oluşturabilirsiniz.
+BIR ASE'niz yoksa, [Uygulama Hizmeti Ortamı Oluştur'daki][MakeExternalASE]yönergeleri izleyerek bir ase oluşturabilirsiniz.
 
-AS 'de bir uygulama oluşturmak için:
+ASE'de bir uygulama oluşturmak için:
 
-1. **Web uygulaması** > **Web ve mobil** > **kaynak oluştur** ' u seçin.
+1. **Kaynak** > Web +**Mobil** > Web**Uygulaması**Oluştur'u seçin.
 
-2. Uygulama için bir ad girin. Ao 'da zaten bir App Service planı seçtiyseniz, uygulamanın etki alanı adı Ao 'nun etki alanı adını yansıtır.
+1. Uygulama için bir ad girin. Bir ASE'de zaten bir Uygulama Hizmeti planı seçtiyseniz, uygulamanın alan adı ASE'nin etki alanı adını yansıtır:
 
     ![Uygulama adı seçimi][1]
 
 1. Bir abonelik seçin.
 
-1. Yeni bir kaynak grubu için bir ad girin veya **var olanı kullan** ' ı seçin ve açılan listeden birini seçin.
+1. Yeni bir kaynak grubu için bir ad girin veya **varolan kullan'ı** seçin ve açılan listeden birini seçin.
 
-1. İşletim sisteminizi seçin. 
+1. İşletim sisteminizi seçin.
 
-1. AŞIRDE mevcut bir App Service planı seçin veya aşağıdaki adımları izleyerek yeni bir tane oluşturun:
+1. ASE'nizde varolan bir Uygulama Hizmeti planı seçin veya aşağıdaki adımları izleyerek yeni bir plan oluşturun:
 
-    a. Azure portal sol taraftaki menüden **bir kaynak oluştur > Web uygulaması**' nı seçin.
+    a. Azure portalı sol taraftaki **menüsünden, Kaynak Oluştur > Web Uygulaması'nı**seçin.
 
     b. Aboneliği seçin.
-    
+
     c. Kaynak grubunu seçin veya oluşturun.
-    
-    d. Web uygulamanızın adını belirtin.
-    
-    e. Kod veya DockerContainer seçin.
-    
+
+    d. Web uygulamanızın adını girin.
+
+    e. **Kod** veya **DockerContainer'ı**seçin.
+
     f. Çalışma zamanı yığınını seçin.
-    
-    g. Linux veya Windows 'u seçin. 
-    
-    h. **Bölge** açılır listesinden Ao 'nizi seçin. 
-    
-    i. Yeni bir App Service planı seçin veya oluşturun. Yeni bir App Service planı oluşturuyorsanız uygun **yalıtılmış** SKU boyutunu seçin.
-    
+
+    g. **Linux** veya **Windows'u**seçin. 
+
+    h. **Bölge** açılır listesinde ASE'nizi seçin. 
+
+    i. Yeni bir Uygulama Hizmeti planı seçin veya oluşturun. Yeni bir Uygulama Hizmeti planı oluşturuyorsanız, uygun **İzole** SKU boyutunu seçin.
+
     ![Yalıtılmış fiyatlandırma katmanları][2]
 
     > [!NOTE]
-    > Linux uygulamaları ve Windows uygulamaları aynı App Service planında olamaz, ancak aynı App Service Ortamı olabilir. 
+    > Linux uygulamaları ve Windows uygulamaları aynı Uygulama Hizmeti planında olamaz, ancak aynı Uygulama Hizmeti Ortamında olabilir.
     >
 
-2. **Gözden geçir + oluştur** ' u seçin ve bilgiler doğruysa **Oluştur** ' u seçin.
+1. **Gözden Geçir + oluştur'** seçeneğini seçin, bilgilerin doğru olduğundan emin olun ve sonra **Oluştur'u**seçin.
 
-## <a name="how-scale-works"></a>Ölçeklendirmenin çalışması ##
+## <a name="how-scale-works"></a>Ölçek nasıl çalışır?
 
-Her App Service uygulaması bir App Service planında çalışır. App Service ortamlar, App Service planlarını ve App Service planlar uygulamaları tutar. Bir uygulamayı ölçeklendirirseniz, App Service planı ölçeklendirebilirsiniz ve böylece aynı plandaki tüm uygulamaları ölçeklendirebilirsiniz.
+Her App Service uygulaması bir Uygulama Hizmeti planında çalışır. Uygulama Hizmet Ortamları Uygulama Hizmeti planlarını ve Uygulama Hizmeti planlarını tutar. Bir uygulamayı ölçeklendirdiğinizde, Uygulama Hizmeti planını ve aynı plandaki tüm uygulamaları da ölçeklendirin.
 
-Bir App Service planını ölçeklendirirseniz, gerekli altyapı otomatik olarak eklenir. Altyapı eklenirken, işlemleri ölçeklendirmek için zaman gecikmesi vardır. Sırayla birkaç ölçeklendirme işlemi yaparsanız, ilk altyapı ölçeği isteği üzerinde işlem yapılır ve diğerleri kuyruğa alır. İlk ölçeklendirme işlemi tamamlandığında, diğer altyapı istekleri birlikte çalışır. Altyapı eklendiğinde App Service planları uygun şekilde atanır. Yeni bir App Service planının oluşturulması, ek donanım istediğinde bir ölçeklendirme işlemidir. 
+Bir Uygulama Hizmeti planını ölçeklendirdiğinizde, gerekli altyapı otomatik olarak eklenir. Altyapı eklenirken operasyonları ölçeklendirmek için bir zaman gecikmesi var. Sırayla birkaç ölçek işlemi yaparsanız, ilk altyapı ölçeği isteği üzerinde hareket edilir ve diğerleri sıraya alınır. İlk ölçek çalışması bittiğinde, diğer altyapı isteklerinin tümü birlikte çalışır. Altyapı eklendiğinde, Uygulama Hizmeti planları uygun şekilde atanır. Ek donanım istediği için yeni bir Uygulama Hizmeti planı oluşturmak bir ölçek işlemidir.
 
-Çok kiracılı App Service, bir kaynak havuzu bunu destekleyecek şekilde kullanıma hazır olduğundan ölçekleme anında gerçekleşir. Bir Ao 'da bu tür bir arabellek yoktur ve kaynaklar ihtiyaç duymak üzere ayrılır.
+Çok kiracılı Uygulama Hizmeti'nde, bir kaynak havuzu bunu desteklemeye hazır olduğundan ölçekleme hemen gerçekleşir. Bir ASE'de böyle bir arabellek yoktur ve kaynaklar ihtiyaca göre ayrılır.
 
-Bir Ao 'da, bir App Service planı 100 örneğe kadar ölçeklendirebilirsiniz. ATıCı, Ao 'da bulunan tüm App Service planlarında en fazla 201 toplam örneğe sahip olabilir. 
+Bir ASE'de, bir Uygulama Hizmeti planını 100 örneğe kadar ölçeklendirebilirsiniz. Bir ASE, o ASE'deki tüm Uygulama Hizmeti planlarında 201'e kadar toplam örne sahip olabilir.
 
-## <a name="ip-addresses"></a>IP adresleri ##
+## <a name="ip-addresses"></a>IP adresleri
 
-App Service bir uygulamaya adanmış bir IP adresi ayırabilme olanağı vardır. Bir uygulamaya adanmış bir IP ayırma özelliği, [var olan bir özel SSL sertifikasını Azure App Service bağlama][ConfigureSSL]bölümünde açıklandığı gıbı, IP tabanlı bir SSL yapılandırıldıktan sonra kullanılabilir. Bir ıLB Ao 'da, IP tabanlı SSL için kullanılacak ek IP adresleri ekleyemezsiniz.
+Uygulama Hizmeti bir uygulamaya özel bir IP adresi tahsis edebilir. Bu özellik, Bind'de açıklandığı gibi, [VAROLAN Özel SSL sertifikasını Azure Uygulama Hizmeti'ne][ConfigureSSL]göre IP tabanlı SSL yapılandırdıktan sonra kullanılabilir. ILB ASE'de, IP tabanlı SSL için kullanılacak daha fazla IP adresi ekemezsiniz.
 
-Dış bir AO ile, uygulamanız için IP tabanlı SSL 'yi çok kiracılı App Service yaptığınız şekilde yapılandırabilirsiniz. En fazla 30 IP adresine sahip her zaman bir yedek adres vardır. Her birini kullandığınızda bir adres, her zaman kullanıma hazır olacak şekilde eklenir. Başka bir IP adresi ayırmak için zaman gecikmesi gerekir, bu da IP adreslerini hızlı bir şekilde art arda eklemeyi önler.
+Harici BIR ASE ile, uygulamanız için IP tabanlı SSL'yi çok kiracılı Uygulama Hizmeti'nde olduğu gibi yapılandırabilirsiniz. ASE'de her zaman bir yedek adres, en fazla 30 IP adresi vardır. Birini her kullandığınızda, bir adresin her zaman hazır olması için başka bir adres eklenir. Başka bir IP adresi ayırmak için bir zaman gecikmesi gerekir. Bu gecikme, IP adreslerinin hızlı bir şekilde art arda eklenmesini önler.
 
-## <a name="front-end-scaling"></a>Ön uç ölçeklendirme ##
+## <a name="front-end-scaling"></a>Ön uç ölçekleme
 
-App Service planlarınızı ölçeklendirirseniz, çalışanlar onları destekleyecek şekilde otomatik olarak eklenir. Her Ao, iki ön uç ile oluşturulur. Ön uçlar, her toplam 15 App Service plan örneği için bir ön uç hızında otomatik olarak ölçeklendirilir. Beş örnek içeren üç App Service planınız varsa, toplam 15 örneğe ve üç ön uca sahip olursunuz. Toplam 30 örneğe ölçeklendirirseniz, dört ön Uçmış olursunuz ve bu şekilde devam edersiniz. 
+Uygulama Hizmeti planlarınızı ölçeklendirdiğinizde, çalışanlar bunları desteklemek için otomatik olarak eklenir. Her ASE iki ön uçile oluşturulur. Ön uçlar, her 15 Uygulama Hizmeti planı örneği kümesi için otomatik olarak bir ön uç oranında ölçeklendirilir. Örneğin, her biri beş örneği olan üç Uygulama Hizmeti planınız varsa, toplam 15 örnek ve üç ön uç tan tantananız olur. Toplam 30 örnekle ölçeklendirseniz, dört ön ucunuz olur. Bu desen, siz ölçeklendikçe devam eder.
 
-Varsayılan olarak ayrılan ön uçların sayısı, orta düzeyde yük için uygundur. Her beş örnek için, oranı bir ön ucu olarak düşük olarak değiştirebilirsiniz. Ön uçların boyutunu da değiştirebilirsiniz. Varsayılan olarak tek çekirdeklerdir. Portalda ön uçların boyutunu iki veya dört temel boyuta dönüştürebilirsiniz. Oran veya ön uç boyutlarının değiştirilmesi için bir ücret uygulanır. Daha fazla bilgi için bkz. [Azure App Service fiyatlandırması][Pricing]. AP 'nizin yük kapasitesini artırmak istiyorsanız, ölçek oranını ayarlamadan önce iki çekirdekli ön uca ölçeklendirerek daha fazla geliştirme alacaksınız. Ön uçlarınızın çekirdek boyutunu değiştirmek AP 'nizin yükseltmesine neden olur ve normal iş saatleri dışında yapılmalıdır.
+Varsayılan olarak ayrılan ön uç sayısı orta düzeyde bir yük için iyidir. Her beş örnek için oranı bir ön uca kadar düşürebilirsiniz. Ayrıca ön uçların boyutunu değiştirebilirsiniz. Varsayılan olarak, tek çekirdekli. Azure portalında, bunların boyutunu iki veya dört çekirdek olarak değiştirebilirsiniz.
 
-Ön uçlar kaynakları ASE 'nin HTTP/HTTPS uç noktasıdır. Varsayılan ön uç yapılandırmasıyla, ön uç başına bellek kullanımı yaklaşık olarak yüzde 60 ' dir. Ön uçlarınızın ölçeklendirilmesi için birincil neden, genellikle HTTPS trafiği tarafından yönetilen bir CPU olur.
+Oranı veya ön uç boyutlarını değiştirmek için bir ücret var. Daha fazla bilgi için Azure [Uygulama Hizmeti fiyatlandırması'na][Pricing]bakın. ASE'nizin yük kapasitesini artırmak istiyorsanız, ölçek oranını ayarlamadan önce ilk ölçeklendirmeyi iki çekirdekli ön uçlara ölçeklendirerek daha fazla iyileştirme elde elabilirsiniz. Ön uçlarınızın çekirdek boyutunu değiştirmek ASE'nizin yükseltilmesine neden olur ve normal çalışma saatleri dışında yapılmalıdır.
 
-## <a name="app-access"></a>Uygulama erişimi ##
+Ön uç kaynakları ASE için HTTP/HTTPS bitiş noktasıdır. Varsayılan ön uç yapılandırması ile, ön uç başına bellek kullanımı sürekli olarak yüzde 60 civarındadır. Ön uçlarınızı ölçeklendirmenin birincil nedeni, öncelikle HTTPS trafiği tarafından yönlendirilen CPU kullanımıdır.
 
-Bir dış ate, uygulama oluşturma için kullanılan etki alanı soneki *.&lt;asename&gt;. p.azurewebsites.net*. Ao 'niz _External-Ao_ olarak adlandırılmışsa ve _contoso_ ADLı bir uygulamayı bu Ao 'da barındırdıysanız, bu URL 'ye aşağıdaki URL 'lerde ulaşabilirsiniz:
+## <a name="app-access"></a>Uygulama erişimi
+
+Harici BIR ASE'de, uygulama oluşturma için kullanılan etki alanı soneki *.&lt; asename&gt;.p.azurewebsites.net*. ASE'niz _in dış-ase_ olarak adlandırılır ve o ASE'de _contoso_ adlı bir uygulama barındırıyorsanız, bu URL'lerden ulaşırsınız:
 
 - contoso.external-ase.p.azurewebsites.net
 - contoso.scm.external-ase.p.azurewebsites.net
 
-Dış Ao oluşturma hakkında daha fazla bilgi için bkz. [App Service ortam oluşturma][MakeExternalASE]
+Harici ASE nasıl oluşturulacak hakkında bilgi [için][MakeExternalASE]bkz.
 
-ILB Ao 'da, uygulama oluşturma için kullanılan etki alanı soneki *.&lt;asename&gt;. appserviceenvironment.net*. Ao 'niz _ILB-Ao_ olarak adlandırılmışsa ve _contoso_ ADLı bir uygulamayı bu Ao 'da barındırdıysanız, bu URL 'ye Şu URL 'lerden ulaşabilirsiniz:
+ILB ASE'de, uygulama oluşturma için kullanılan etki alanı soneki *.&lt; asename&gt;.appserviceenvironment.net*. ASE'niz _ilb-ase_ olarak adlandırılırve o ASE'de _contoso_ adı verilen bir uygulama barındırıyorsanız, bu URL'lerden ulaşırsınız:
 
 - contoso.ilb-ase.appserviceenvironment.net
 - contoso.scm.ilb-ase.appserviceenvironment.net
 
-ILB ATıCı oluşturma hakkında daha fazla bilgi için, bkz. [ILB Ai oluşturma ve kullanma][MakeILBASE]. 
+ILB ASE nasıl oluşturulacak hakkında bilgi [için][MakeILBASE]bkz.
 
-SCM URL 'SI, kudu konsoluna erişmek veya uygulamanızı Web dağıtımı kullanarak yayımlamak için kullanılır. Kudu Konsolu hakkında daha fazla bilgi için bkz. [Azure App Service kudu konsolu][Kudu]. Kudu konsolu, hata ayıklama, dosyaları karşıya yükleme, dosyaları düzenlemeyle ve çok daha fazlası için bir Web Kullanıcı arabirimi sağlar.
+SCM URL, Kudu konsoluna erişmek veya Web Dağıtımı'nı kullanarak uygulamanızı yayınlamak için kullanılır. Kudu konsolu hakkında daha fazla bilgi için [Azure Uygulama Hizmeti için Kudu konsoluna][Kudu]bakın. Kudu konsolu hata ayıklama, dosya yükleme, dosyaları düzenleme ve çok daha fazlası için bir web arabirimi verir.
 
-## <a name="publishing"></a>Yayımlama ##
+## <a name="publishing"></a>Yayımlama
 
-Çok kiracılı App Service gibi, bir AO 'da ile yayımlayabilirsiniz:
+Bir ASE'de, çok kiracılı Uygulama Hizmetinde olduğu gibi, şu yöntemlerle yayınlayabilirsiniz:
 
-- Web dağıtımı.
-- FTP.
-- Sürekli tümleştirme.
-- Kudu konsoluna sürükleyip bırakın.
-- Visual Studio, tutulma veya IntelliJ fıkrı gibi bir IDE.
+- Web dağıtımı
+- FTP
+- Sürekli entegrasyon (CI)
+- Kudu konsolunda sürükleyin ve bırakın
+- Visual Studio, Eclipse veya IntelliJ IDEA gibi bir IDE
 
-Bir dış Ao ile, bu yayımlama seçeneklerinin hepsi aynı şekilde davranır. Daha fazla bilgi için bkz. [Azure App Service dağıtım][AppDeploy]. 
+Harici ASE ile bu yayımlama seçeneklerinin tümü aynı şekilde çalışır. Daha fazla bilgi için Azure [Uygulama Hizmetinde Dağıtım'a][AppDeploy]bakın.
 
-Yayımlamayla ilgili önemli fark, bir ıLB Ao 'ya göre belirlenir. ILB Ao ile, yayımlama uç noktaları yalnızca ıLB ile kullanılabilir. ILB, sanal ağdaki Ao alt ağında özel bir IP üzerinde yer alır. ILB 'ye ağ erişiminiz yoksa, o Ao 'da herhangi bir uygulama yayımlayamazsınız. [BIR ıLB Ai oluşturma ve kullanma][MakeILBASE]bölümünde belirtildiği gibi, sistemdeki uygulamalar için DNS 'yi yapılandırmanız gerekir. Bu, SCM uç noktasını içerir. Bunlar düzgün tanımlanmamışsa yayımlanamıyor. Ayrıca, doğrudan kendisine yayımlamak için Ides 'in ıLB 'ye ağ erişimi olması gerekir.
+Yayımlama, yayımlama uç noktalarının yalnızca ILB aracılığıyla kullanılabildiği bir ILB ASE ile önemli ölçüde farklıdır. ILB, sanal ağdaki ASE alt ağında ki özel bir IP üzerindedir. ILB'ye ağ erişiminiz yoksa, bu ASE'de herhangi bir uygulama yayınlayamazsınız. [ILB ASE oluştur ve kullan,][MakeILBASE]sistemdeki uygulamalar için DNS yapılandırmanız gerekir. Bu gereksinim SCM bitiş noktasını içerir. Uç noktalar düzgün tanımlanmamışsa, yayımlayamazsınız. IDA'larınızın doğrudan yayınlamak için ILB'ye ağ erişimine de sahip olması gerekir.
 
-Kullanıma hazır olmayan, GitHub ve Azure DevOps gibi Internet tabanlı CI sistemleri, yayımlama uç noktası Internet 'e erişilemediğinden bir ıLB Ao ile çalışmaz. ILB ASE 'yi içeren VNet 'e şirket içinde barındırılan bir yayın Aracısı yükleyerek Azure DevOps 'dan bir ıLB ASE 'ye yayımlamayı etkinleştirebilirsiniz. Alternatif olarak, Dropbox gibi bir çekme modeli kullanan bir CI sistemini de kullanabilirsiniz.
+Ek değişiklikler olmadan, GitHub ve Azure DevOps gibi Internet tabanlı CI sistemleri, yayın bitiş noktası Internet'e erişilemediği için ILB ASE ile çalışmaz. ILB ASE içeren sanal ağa kendi kendine barındırılan bir sürüm aracısı yükleyerek Azure DevOps'ten bir ILB ASE'ye yayımlamayı etkinleştirebilirsiniz. Alternatif olarak, Dropbox gibi çekme modeli kullanan bir CI sistemi de kullanabilirsiniz.
 
-Bir ILB ASE’deki uygulamalar için yayımlama uç noktaları, ILB ASE oluşturulurken kullanılan etki alanını kullanır. Uygulamanın yayımlama profilinde ve uygulamanın Portal dikey penceresinde ( **genel bakış** > **Essentials** ve ayrıca **Özellikler**bölümünde) görebilirsiniz. 
+Bir ILB ASE’deki uygulamalar için yayımlama uç noktaları, ILB ASE oluşturulurken kullanılan etki alanını kullanır. Bunu uygulamanın yayın profilinde ve uygulamanın portal bölmesinde **(Genel Bakış** > **Essentials** ve ayrıca **Özellikler'de)** görebilirsiniz.
 
 ## <a name="storage"></a>Depolama
 
-ATıCı, Ao 'daki tüm uygulamalar için 1 TB depolama alanı içerir. Yalıtılmış bir SKU App Service planı varsayılan olarak 250 GB 'lik bir sınıra sahiptir. Beş veya daha fazla App Service planınız varsa, Ao 'nun 1 TB sınırını aşmamaya dikkat etmeniz gerekir. Bir App Service planında 250 GB sınırından daha fazlasına ihtiyacınız varsa, App Service planı limitini en fazla 1 TB olarak ayarlamak için desteğe başvurun. Plan limiti ayarlandığında, Ao 'daki tüm App Service planlarında hala 1 TB sınırı vardır. 
+Bir ASE, ASE'deki tüm uygulamalar için 1 TB depolama alanına sahiptir. Yalıtılmış fiyatlandırma SKU bir Uygulama Hizmeti planı varsayılan olarak 250 GB sınırı vardır. Beş veya daha fazla Uygulama Hizmeti planınız varsa, ASE'nin 1-TB sınırını aşmamaya dikkat edin. Bir Uygulama Hizmeti planında 250 GB sınırından fazlasına ihtiyacınız varsa, Uygulama Hizmeti planı sınırını en fazla 1 TB olarak ayarlamak için desteğe başvurun. Plan sınırı ayarlandığında, ASE'deki tüm Uygulama Hizmeti planlarında hala 1 TB sınırı vardır.
 
-## <a name="logging"></a>Günlüğe kaydetme ##
+## <a name="logging"></a>Günlüğe Kaydetme
 
-Aşirinizi depolama, Olay Hub 'ı veya Log Analytics ile ilgili günlükleri göndermek için Azure Izleyici ile tümleştirebilirsiniz. Bugün günlüğe kaydedilen öğeler şunlardır:
+ASE ile ilgili günlükleri Azure Depolama, Azure Etkinlik Hub'ları veya Günlük Analitiği'ne göndermek için ASE'nizi Azure Monitörü ile tümleştirebilirsiniz. Bu öğeler bugün günlüğe kaydedilir:
 
-| Olanını | İleti |
+| Durum | İleti |
 |---------|----------|
-| Ao uygun değil | Belirtilen Ao, geçersiz bir sanal ağ yapılandırması nedeniyle uygun değil. Sağlıksız durum devam ederse Ao askıya alınır. Burada tanımlanan yönergelerin izlendiğinden emin olun: https://docs.microsoft.com/azure/app-service/environment/network-info |
-| Ao alt ağında neredeyse yer kalmadı | Belirtilen Ao, neredeyse boş alan olmayan bir alt ağda. Kalan {0} adres var. Bu adresler tükendiğinde Ao, ölçeklendirmeyecektir  |
-| ATıCı toplam örnek sınırına yaklaşıyor | Belirtilen Ao, Ao 'nun toplam örnek sınırına yaklaşıyor. Şu anda en fazla 201 örnek {0} App Service planı örnekleri içerir. |
-| ATıCı bir bağımlılığa ulaşamıyor | Belirtilen ATıCı {0}ulaşamıyor.  Burada tanımlanan yönergelerin izlendiğinden emin olun: https://docs.microsoft.com/azure/app-service/environment/network-info |
-| ATıCı askıya alındı | Belirtilen Ao, askıya alındı. Ao askıya alma, bir hesap kısaltıcı veya geçersiz bir sanal ağ yapılandırmasından kaynaklanıyor olabilir. Ana neden çözümleyin ve trafiğe hizmet vermeye devam etmek için Ao 'yu sürdürün |
-| ALUPGRADE yükseltmesi başlatıldı | Belirtilen asa 'ya bir platform yükseltmesi başladı. Ölçeklendirme işlemlerinde gecikme süreleri bekliyor |
-| ALUPGRADE yükseltmesi tamamlandı | Belirtilen asa 'ya platform yükseltmesi tamamlandı |
-| Ölçeklendirme işlemleri başlatıldı | App Service planı ({0}) ölçeklendirmeye başladı. İstenen durum: {1} I{2} çalışanlar 
-| Ölçeklendirme işlemleri tamamlandı | App Service planı ({0}) ölçeklendirmeyi bitirdi. Geçerli durum: {1} I{2} çalışanlar |
-| Ölçeklendirme işlemleri başarısız oldu | App Service planı ({0}) ölçeklendirilemedi. Geçerli durum: {1} I{2} çalışanlar |
+| ASE sağlıksız | Belirtilen ASE geçersiz bir sanal ağ yapılandırması nedeniyle sağlıksız. Sağlıksız durum devam ederse ASE askıya alınacak. Burada tanımlanan yönergelerin izninizlediğinden emin olun: https://docs.microsoft.com/azure/app-service/environment/network-info. |
+| ASE alt ağı neredeyse uzay dışında | Belirtilen ASE neredeyse uzay dışında bir alt net bulunmaktadır. Kalan {0} adresler var. Bu adresler tükendiğinde, ASE ölçeklendiremez.  |
+| ASE toplam örnek sınırına yaklaşıyor | Belirtilen ASE, ASE'nin toplam örnek sınırına yaklaşıyor. Şu anda en fazla 201 örnekapp Servis Planı örnekleri içerir. {0} |
+| ASE bir bağımlıya ulaşamıyor | Belirtilen ASE'ye ulaşamıyor. {0}  Burada tanımlanan yönergelerin izninizlediğinden emin olun: https://docs.microsoft.com/azure/app-service/environment/network-info. |
+| ASE askıya alındı | Belirtilen ASE askıya alındı. ASE süspansiyonu bir hesap açığından veya geçersiz bir sanal ağ yapılandırmasına bağlı olabilir. Temel nedeni çözümleyin ve hizmet vermeye devam etmek için ASE'yi devam ettirin. |
+| ASE yükseltmesi başladı | Belirtilen ASE için bir platform yükseltmesi başladı. Ölçekleme işlemlerinde gecikmeler bekleyin. |
+| ASE yükseltmesi tamamlandı | Belirtilen ASE'ye bir platform yükseltmesi tamamlandı. |
+| Ölçek işlemleri başladı | Bir Uygulama Hizmeti{0}planı ( ) ölçekleme başladı. İstenilen durum: {1} Ben{2} işçiler.
+| Ölçek işlemleri tamamlandı | Bir Uygulama Hizmeti{0}planı ( ) ölçekleme tamamlandı. Şu anki {1} {2} durum: Ben işçiler. |
+| Ölçek işlemleri başarısız oldu | Bir Uygulama Hizmeti{0}planı ( ) ölçeklendirmeyi başaramadı. Şu anki {1} {2} durum: Ben işçiler. |
 
-AŞIRDE günlüğe kaydetmeyi etkinleştirmek için: 
+ASE'nizde oturum açmayı etkinleştirmek için:
 
-1. Portalda Tanılama Ayarları ' na gidin.  
-1. Tanılama ayarı Ekle ' yi seçin.
-1. Günlük tümleştirmesi için bir ad sağlayın
-1. İstenen günlük hedeflerini denetleyin ve yapılandırın. 
-1. AppServiceEnvironmentPlatformLogs 'u denetleyin
+1. Portalda, **Tanılama ayarlarına**gidin.
+1. **Tanıayar ayarı ekle'yi**seçin.
+1. Günlük tümleştirmesi için bir ad sağlayın.
+1. İstediğiniz günlük hedeflerini seçin ve yapılandırın.
+1. **AppServiceEnvironmentPlatformLogs'u**seçin.
 
-![ATıCı tanılama günlüğü ayarları][4]
+![ASE tanılama günlüğü ayarları][4]
 
-Log Analytics ile tümleştirirseniz, asa portalından Günlükler seçerek ve AppServiceEnvironmentPlatformLogs 'a yönelik bir sorgu oluşturarak günlükleri görebilirsiniz. 
+Log Analytics ile tümleşirseniz, ASE portalından **Günlükler** seçerek ve **AppServiceEnvironmentPlatformLogs'a**karşı bir sorgu oluşturarak günlükleri görebilirsiniz.
 
-## <a name="upgrade-preference"></a>Yükseltme tercihi ##
+## <a name="upgrade-preference"></a>Yükseltme tercihi
 
-Birden çok ASE varsa, diğerlerinden önce bazı ASE 'ler yükseltilmek isteyebilirsiniz. ATıCı HostingEnvironment Kaynak Yöneticisi nesnesi içinde, UpgradePreference için bir değer ayarlayabilirsiniz. UpgradePreference ayarı şablon, ARMClient veya https://resources.azure.comaracılığıyla yapılandırılabilir.  Üç değer seçeneği şunlardır:
+Birden çok ASE'niz varsa, bazı ASE'lerin diğerlerinden önce yükseltilmesini isteyebilirsiniz. ASE **HostingEnvironment Resource Manager** nesnesi içinde **yükseltme Tercihi**için bir değer ayarlayabilirsiniz. **yükseltmeTercih** ayarı bir şablon, ARMClient veya https://resources.azure.com. Üç olası değer şunlardır:
 
-* None-none varsayılandır ve Azure, Ao 'nizi belirli bir toplu iş olmadan yükseltecektir
-* Erken erken, ATıCı 'nizin App Service yükseltmelerin ilk yarısında yükseltileceğini gösterir
-* Geç geç, ATıCı 'nizin App Service yükseltmelerin ikinci yarısında yükseltileceğini gösterir
+- **Yok**: Azure, ASE'nizi belirli bir toplu iş halinde yükseltmez. Bu varsayılan değerdir.
+- **Erken**: ASE'niz, Uygulama Hizmeti yükseltmelerinin ilk yarısında yükseltilir.
+- **Geç**: ASE'niz, Uygulama Hizmeti yükseltmelerinin ikinci yarısında yükseltilir.
 
-https://resources.azure.comkullanıyorsanız, upgradePreferences değerini şu şekilde ayarlayabilirsiniz:
+Kullanıyorsanız, https://resources.azure.com **yükseltmeTercihleri** değerini ayarlamak için aşağıdaki adımları izleyin:
 
-1. Azure hesabınızla resources.azure.com ve oturum açma ile çalışmaya devam edin
-1. Abonelik\/\[abonelik adı\]\/resourceGroups\/\[kaynak grubu adı\]\/sağlayıcıları\/Microsoft. Web\/hostingEnvironments\/\[Ao adı\]
-1. Üstte okuma/yazma seçme
-1. Düzenle 'yi seçin
-1. UpgradePreference değerini, üç seçenekten istediğiniz şekilde değiştirin.
-1. Düzeltme Eki Seç
+1. resources.azure.com gidin ve Azure hesabınızla oturum açın.
+1. \/\[Abonelikler abonelik\]\/adı kaynak\/\[Gruplar kaynak grup\]\/\/adı sağlayıcıları\/Microsoft.Web hostingOrtamlar\/\[ASE adı\]için kaynaklar üzerinden gidin.
+1. En üstte **Oku/Yaz'ı** seçin.
+1. **Edit'i**seçin.
+1. **YükseltmeTercihini** istediğiniz üç değerden hangisine ayarlayın.
+1. **Yama'yı**seçin.
 
-![Kaynak Azure com görüntülemesi][5]
+![kaynaklar azure com ekran][5]
 
-Yükseltme tercihleri özelliği, "erken" yükseltilmiş ASE 'lerin "geç" Atoklarından önce yükseltilene kadar çok zaman sahip olduğunuzda en mantıklı şekilde yararlanacaktır. Birden çok ASE 'niz varsa, geliştirme/test ASEs larınızın "erken" ve üretim Alarınızın "geç" olarak ayarlanması gerekir.
+**UpgradePreferences** özelliği, birden fazla "Erken" KıÇ'ınız "Geç" KıÇ'ınızdan önce yükseltilecektir, çünkü birden fazla KıÇ'ınız olduğunda en anlamlı özelliktir. Birden fazla ASE'niz olduğunda, geliştirme nizi ve test ETTIĞINIZ imar hanenizi "Erken" ve üretim ASE'lerinizi "Geç" olarak ayarlamalısınız.
 
-## <a name="pricing"></a>Fiyatlandırma ##
+## <a name="pricing"></a>Fiyatlandırma
 
-**Yalıtılmış** olarak adlandırılan fiyatlandırma SKU 'SU yalnızca Ao ile kullanım içindir. ASA 'da barındırılan tüm App Service planları yalıtılmış fiyatlandırma SKU 'sunda. Yalıtılmış App Service plan ücretleri bölge başına farklılık gösterebilir. 
+SKU'nun *İzole* olarak adlandırdığı fiyatlandırma yalnızca AS'lerde kullanım içindir. ASE'de barındırılan tüm Uygulama Hizmeti planları İzole fiyatlandırma SKU'dadır. Uygulama Hizmeti planları için yalıtılmış fiyatlar bölgeye göre değişebilir.
 
-App Service planlarınızın fiyatına ek olarak, ASE 'nin kendisi için düz bir ücret vardır. Sabit Fiyat, asa 'nın boyutuyla değişmez ve her 15 App Service plan örneği için bir ek ön uçtaki varsayılan ölçeklendirme hızında Ao altyapısı için ödeme yapar.  
+Uygulama Hizmeti planlarınızın fiyatına ek olarak, ASE'nin kendisi için sabit bir fiyat vardır. Sabit oran ASE boyutu ile değişmez. Ase altyapısı için her 15 App Service planı örneği için bir ek ön uç varsayılan ölçek hızında ödeme yapar.
 
-Her 15 App Service plan örneği için bir ön uçların varsayılan ölçek oranı yeterince hızlı değilse, ön uçların eklenme oranını veya ön uçların boyutunu ayarlayabilirsiniz.  Oranı veya boyutu ayarlarken, varsayılan olarak eklenmemelidir ön uç çekirdekleri için ödeme yaparsınız.  
+Her 15 Uygulama Hizmeti planı örneği için bir ön uç varsayılan ölçek oranı yeterince hızlı değilse, ön uçların eklenme oranını veya ön uçların boyutunu ayarlayabilirsiniz. Oran veya boyutu ayarladığınızda, varsayılan olarak eklenmez ön uç çekirdekleri için ödeme.
 
-Örneğin, ölçek oranını 10 olarak ayarlarsanız App Service planlarınızda her 10 örnek için bir ön uç eklenir. Düz ücret, her 15 örnek için bir ön ucun ölçek oranını içerir. 10 ' un ölçek oranıyla 10 App Service plan örnekleri için eklenen üçüncü ön uç için ücret ödersiniz. Otomatik olarak eklendiğinden, 15 örneğe ulaştığınızda bu ücret için ödeme yapmanız gerekmez.
+Örneğin, ölçek oranını 10 olarak ayarlarsanız, Uygulama Hizmeti planlarınızdaki her 10 örnek için bir ön uç eklenir. Sabit ücret, her 15 örnek için bir ön uç ölçek oranını kapsar. 10 ölçek oranıyla, 10 Uygulama Hizmeti planı örnekleri için eklenen üçüncü ön uç için bir ücret ödenebilirsiniz. Otomatik olarak eklendiğinden, 15 örneğe ulaştığınızda bunun için ödeme yapmanız gerekmez.
 
-Ön uçların boyutunu iki çekirdeğe ayarlarsanız ancak oranı ayarlamadıysanız ek çekirdekler için ödeme yaparsınız.  İki ön uç ile bir ASE oluşturulur. bu nedenle, otomatik ölçeklendirme eşiğinin altında bile, boyutu iki çekirdekli ön uçlara yükselseniz iki ek çekirdek için ödeme yaparsınız.
+Ön uçların boyutunu iki çekirdekle ayarlarsanız ancak oranı ayarlamazsanız, ekstra çekirdekler için ödeme yapamazsınız. Bir ASE iki ön uçları ile oluşturulur, bu yüzden otomatik ölçekleme eşiğinin altında bile iki çekirdek için iki ekstra çekirdek için ödeme yapacak eğer iki çekirdekli ön uçlara boyutu arttı.
 
-Daha fazla bilgi için bkz. [Azure App Service fiyatlandırması][Pricing].
+Daha fazla bilgi için Azure [Uygulama Hizmeti fiyatlandırması'na][Pricing]bakın.
 
-## <a name="delete-an-ase"></a>AS 'yi silme ##
+## <a name="delete-an-ase"></a>BIR ASE silme
 
-ATıCı 'yi silmek için: 
+BIR ASE'yi silmek için:
 
-1. **App Service ortamı** dikey penceresinin üstündeki **Sil** ' i kullanın. 
+1. **App Service Environment** bölmesinin üst kısmında **Sil'i** seçin.
 
-1. Silmek istediğinizi onaylamak için ATıCı 'nizin adını girin. Bir AI 'yi sildiğinizde, içindeki içeriğin tümünü de silersiniz. 
+1. Silmek istediğinizi doğrulamak için ASE'nizin adını girin. Bir ASE'yi sildiğinizde, içindeki tüm içeriği de silersiniz.
 
-    ![ATıCı silme][3]
+    ![ASE silme][3]
+
+1. **Tamam'ı**seçin.
 
 <!--Image references-->
 [1]: ./media/using_an_app_service_environment/usingase-appcreate.png
@@ -221,7 +225,6 @@ ATıCı 'yi silmek için:
 [4]: ./media/using_an_app_service_environment/usingase-logsetup.png
 [4]: ./media/using_an_app_service_environment/usingase-logs.png
 [5]: ./media/using_an_app_service_environment/usingase-upgradepref.png
-
 
 <!--Links-->
 [Intro]: ./intro.md

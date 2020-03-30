@@ -1,10 +1,9 @@
 ---
-title: Tek ve havuza alınmış veritabanlarının VNet uç noktaları ve kuralları için PowerShell
-description: Azure SQL veritabanınız ve Azure SYNAPSE için sanal hizmet uç noktaları oluşturup yönetmek üzere PowerShell betikleri sağlar.
+title: VNet uç noktaları ve tek ve havuzlu veritabanları için kurallar için PowerShell
+description: Azure SQL Veritabanınız ve Azure Synapse'niz için Sanal Hizmet bitiş noktaları oluşturmak ve yönetmek için PowerShell komut dosyaları sağlar.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
-ms.custom: ''
 ms.devlang: PowerShell
 ms.topic: conceptual
 author: rohitnayakmsft
@@ -12,72 +11,72 @@ ms.author: rohitna
 ms.reviewer: genemi, vanto
 ms.date: 03/12/2019
 tags: azure-synapse
-ms.openlocfilehash: f61403ef50af209fdc6e811191d31ccc83f8da73
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 1e8ec394eab1df0aebe394b8acebc74c7ed49e9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78191887"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80124697"
 ---
-# <a name="powershell--create-a-virtual-service-endpoint-and-vnet-rule-for-sql"></a>PowerShell: SQL için sanal hizmet uç noktası ve VNet kuralı oluşturma
+# <a name="powershell--create-a-virtual-service-endpoint-and-vnet-rule-for-sql"></a>PowerShell: SQL için Sanal Hizmet bitiş noktası ve VNet kuralı oluşturun
 
-*Sanal ağ kuralları* , Azure [SQL veritabanı](sql-database-technical-overview.md) 'nda tek veritabanlarınız ve elastik havuzunuz için veritabanı sunucusunun ve Azure [SYNAPSE](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) 'deki belirli alt ağlardan gönderilen iletişimleri kabul edip etmediğini denetleyen bir güvenlik duvarı güvenlik özelliğidir.
+*Sanal ağ kuralları,* Azure [SQL Veritabanı'ndaki](sql-database-technical-overview.md) tek veritabanlarınız ve elastik havuzunuz için veya [Azure Synapse'deki](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) veritabanlarınızın sanal ağlardaki belirli alt ağlardan gönderilen iletişimleri kabul edip etmediğini kontrol eden bir güvenlik duvarı güvenlik özelliğidir.
 
 > [!IMPORTANT]
-> Bu makale, Azure SQL Server 'da ve Azure SQL Server 'da oluşturulan Azure SYNAPSE 'da hem SQL veritabanı hem de veri ambarı için geçerlidir. Basitlik için SQL veritabanı hem SQL veritabanı hem de Azure SYNAPSE 'a başvurulduğunda kullanılır. Bu makale, kendisiyle ilişkili bir hizmet uç noktası olmadığından Azure SQL veritabanı 'nda **yönetilen bir örnek** dağıtımı *için uygulanmıyor.*
+> Bu makale, Azure SQL sunucusu ve Azure Synapse'de oluşturulan SQL Veritabanı ve veri ambarı için geçerlidir. Basitlik için, SQL Veritabanı hem SQL Veritabanı hem de Azure Synapse'ye atıfta bulunularak kullanılır. Bu makale, Azure SQL Veritabanı'nda yönetilen bir **örnek** dağıtımı için geçerli *değildir,* çünkü bununla ilişkili bir hizmet bitiş noktası yoktur.
 
-Bu makalede, aşağıdaki eylemleri alan bir PowerShell betiği sağlanmıştır ve açıklanmaktadır:
+Bu makalede, aşağıdaki eylemleri alan bir PowerShell komut dosyası sağlar ve açıklar:
 
-1. Alt ağınızda Microsoft Azure *sanal hizmet uç noktası* oluşturur.
-2. Bir *sanal ağ kuralı*oluşturmak için uç NOKTAYı Azure SQL veritabanı sunucunuzun güvenlik duvarına ekler.
+1. Alt ağınızda bir Microsoft Azure *Sanal Hizmet bitiş noktası* oluşturur.
+2. *Sanal ağ kuralı*oluşturmak için Azure SQL Veritabanı sunucunuzun güvenlik duvarına bitiş noktası ekler.
 
-Bir kural oluşturmaya yönelik motive, şu şekilde açıklanmıştır: [Azure SQL veritabanı Için sanal hizmet uç noktaları][sql-db-vnet-service-endpoint-rule-overview-735r].
+Bir kural oluşturma motivasyonlarınız şu şekilde açıklanmıştır: [Azure SQL Veritabanı için Sanal Hizmet bitiş noktaları.][sql-db-vnet-service-endpoint-rule-overview-735r]
 
 > [!TIP]
-> Tüm ihtiyacınız varsa, SQL veritabanı için sanal hizmet uç noktası *türü adını* , alt ağınız için değerlendirmek veya eklemek istiyorsanız, daha [doğrudan PowerShell betiğimize](#a-verify-subnet-is-endpoint-ps-100)atlayabilirsiniz.
+> Tek ihtiyacınız olan SQL Veritabanı için Sanal Hizmet uç nokta *türü adını* alt ağınıza eklemekse, daha [doğrudan PowerShell komut dosyamıza](#a-verify-subnet-is-endpoint-ps-100)geçebilirsiniz.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 > [!IMPORTANT]
-> PowerShell Azure Resource Manager modülü Azure SQL veritabanı tarafından hala desteklenmektedir, ancak gelecekteki tüm geliştirmeler az. SQL modülüne yöneliktir. Bu cmdlet 'ler için bkz. [Azurerd. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Az Module ve Azurerd modüllerinde komutların bağımsız değişkenleri önemli ölçüde aynıdır.
+> PowerShell Azure Kaynak Yöneticisi modülü hala Azure SQL Veritabanı tarafından desteklenir, ancak gelecekteki tüm geliştirme az.sql modülü içindir. Bu cmdlets için [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)bakın. Az modülündeki ve AzureRm modüllerinde bulunan komutların bağımsız değişkenleri önemli ölçüde aynıdır.
 
-## <a name="major-cmdlets"></a>Ana cmdlet 'ler
+## <a name="major-cmdlets"></a>Büyük cmdlets
 
-Bu makale, alt ağ uç noktasını Azure SQL veritabanı sunucunuzun erişim denetim listesine (ACL) ekleyen **New-AzSqlServerVirtualNetworkRule** cmdlet 'ini vurgular, böylece bir kural oluşturur.
+Bu makalede, Azure SQL Veritabanı sunucunuzun erişim denetim listesine (ACL) alt uç noktasını ekleyen ve böylece bir kural oluşturan **Yeni-AzSqlServerVirtualNetworkRule** cmdlet vurgulamaktadır.
 
-Aşağıdaki listede, **New-AzSqlServerVirtualNetworkRule**çağrınıza hazırlanmanız için çalıştırmanız gereken diğer *ana* cmdlet 'lerin sırası gösterilmektedir. Bu makalede, [komut dosyası 3 "sanal ağ kuralı"](#a-script-30)içinde bu çağrılar oluşur:
+Aşağıdaki **liste, New-AzSqlServerVirtualNetworkRule'e**çağrınıza hazırlanmak için çalıştırmanız gereken diğer *büyük* cmdletdizisini gösterir. Bu makalede, bu çağrılar [komut dosyası 3 "Sanal ağ kuralı"](#a-script-30)oluşur:
 
-1. [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig): bir alt ağ nesnesi oluşturur.
-2. [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork): Sanal ağınızı, alt ağ vererek oluşturur.
-3. [Set-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/Set-azVirtualNetworkSubnetConfig): alt ağınız Için bir sanal hizmet uç noktası atar.
-4. [Set-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/Set-azVirtualNetwork): sanal ağınızda yapılan güncelleştirmeler devam ettirir.
-5. [New-AzSqlServerVirtualNetworkRule](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlservervirtualnetworkrule): alt ağınız bir uç nokta olduktan sonra, alt ağınızı bir sanal ağ kuralı olarak Azure SQL VERITABANı sunucunuzun ACL 'sine ekler.
-   - Bu cmdlet, Azure RM PowerShell modülü sürüm 5.1.1 'dan başlayarak **-ıgnoremissingvnetserviceendpoint**parametresini sunar.
+1. [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig): Bir alt ağ nesnesi oluşturur.
+2. [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork): Sanal ağınızı oluşturur ve alt ağı verir.
+3. [Set-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/Set-azVirtualNetworkSubnetConfig): Alt ağınıza sanal hizmet bitiş noktası atar.
+4. [Set-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/Set-azVirtualNetwork): Sanal ağınızda yapılan güncellemeleri devam eder.
+5. [New-AzSqlServerVirtualNetworkRule](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlservervirtualnetworkrule): Alt ağınız bir bitiş noktası olduktan sonra, alt ağınızı sanal ağ kuralı olarak Azure SQL Veritabanı sunucunuzun ACL'sine ekler.
+   - Bu cmdlet Azure RM PowerShell Modülü sürüm 5.1.1'den başlayarak **-IgnoreMissingVNetServiceEndpoint**- parametresunar.
 
-## <a name="prerequisites-for-running-powershell"></a>PowerShell çalıştırmaya yönelik önkoşullar
+## <a name="prerequisites-for-running-powershell"></a>PowerShell çalıştırmak için ön koşullar
 
-- [Azure Portal][http-azure-portal-link-ref-477t]gibi Azure 'da zaten oturum açabilirsiniz.
-- PowerShell betiklerini zaten çalıştırabilirsiniz.
+- [Azure portalı][http-azure-portal-link-ref-477t]gibi Azure'da oturum açabilirsiniz.
+- PowerShell komut dosyalarını zaten çalıştırabilirsiniz.
 
 > [!NOTE]
-> Lütfen sunucunuza eklemek istediğiniz VNet/alt ağ için hizmet uç noktalarının açık olduğundan emin olun, aksi takdirde VNet güvenlik duvarı kuralının oluşturulması başarısız olur.
+> Lütfen Sunucunuza eklemek istediğiniz VNet/Subnet için hizmet bitiş noktalarının açık olduğundan emin olun, aksi takdirde VNet Güvenlik Duvarı Kuralı'nın oluşturulması başarısız olur.
 
-## <a name="one-script-divided-into-four-chunks"></a>Dört Öbekle bölünmüş bir betik
+## <a name="one-script-divided-into-four-chunks"></a>Dört parçaya bölünmüş bir komut dosyası
 
-Tanıtım PowerShell betiğimiz, daha küçük betikler dizisine bölünmüştür. Bölüm öğrenimi kolaylaştırır ve esneklik sağlar. Betikler, belirtilen sıralamadaki çalıştırılmalıdır. Artık betikleri çalıştırmak için zaman yoksa, gerçek test çıktımız komut dosyası 4 ' ün ardından görüntülenir.
+Bizim gösteri PowerShell komut küçük komut bir dizi ayrılmıştır. Bölüm öğrenmeyi kolaylaştırır ve esneklik sağlar. Komut dosyaları belirtilen sırayla çalıştırılmalıdır. Komut dosyalarını çalıştırmak için şimdi zamanın yoksa, gerçek test çıktımız komut dosyası 4'ten sonra görüntülenir.
 
 <a name="a-script-10" />
 
-### <a name="script-1-variables"></a>Betik 1: değişkenler
+### <a name="script-1-variables"></a>Komut Dosyası 1: Değişkenler
 
-Bu ilk PowerShell betiği, değişkenlere değerler atar. Sonraki betikler bu değişkenlere bağımlıdır.
+Bu ilk PowerShell komut dosyası değişkenlere değer atar. Sonraki komut dosyaları bu değişkenlere bağlıdır.
 
 > [!IMPORTANT]
-> Bu betiği çalıştırmadan önce, isterseniz değerleri düzenleyebilirsiniz. Örneğin, zaten bir kaynak grubunuz varsa, kaynak grubu adınızı atanan değer olarak düzenlemek isteyebilirsiniz.
+> Bu komut dosyasını çalıştırmadan önce, isterseniz değerleri de yapabilirsiniz. Örneğin, zaten bir kaynak grubunuz varsa, kaynak grup adınızı atanan değer olarak yeniden atamak isteyebilirsiniz.
 >
-> Abonelik adınız betikte düzenlenmelidir.
+> Abonelik adınız komut dosyasında düzenlenmelidir.
 
-### <a name="powershell-script-1-source-code"></a>PowerShell betiği 1 kaynak kodu
+### <a name="powershell-script-1-source-code"></a>PowerShell komut dosyası 1 kaynak kodu
 
 ```powershell
 ######### Script 1 ########################################
@@ -116,14 +115,14 @@ Write-Host 'Completed script 1, the "Variables".';
 
 <a name="a-script-20" />
 
-### <a name="script-2-prerequisites"></a>Betik 2: Önkoşullar
+### <a name="script-2-prerequisites"></a>Komut Dosyası 2: Ön koşullar
 
-Bu betik, uç nokta eyleminin olduğu sonraki betiği hazırlar. Bu betik, yalnızca henüz yoksa, aşağıdaki listelenen öğeler için oluşturulur. Bu öğelerin zaten mevcut olduğundan eminseniz, betik 2 ' i atlayabilirsiniz:
+Bu komut dosyası, bitiş noktası eyleminin olduğu bir sonraki komut dosyası için hazırlanır. Bu komut dosyası, yalnızca zaten yoksa, sizin için aşağıdaki listelenen öğeleri oluşturur. Bu öğelerin zaten var olduğundan eminseniz komut dosyası 2'yi atlayabilirsiniz:
 
 - Azure kaynak grubu
-- Azure SQL veritabanı sunucusu
+- Azure SQL Veritabanı sunucusu
 
-### <a name="powershell-script-2-source-code"></a>PowerShell betiği 2 kaynak kodu
+### <a name="powershell-script-2-source-code"></a>PowerShell komut dosyası 2 kaynak kodu
 
 ```powershell
 ######### Script 2 ########################################
@@ -206,11 +205,11 @@ Write-Host 'Completed script 2, the "Prerequisites".';
 
 <a name="a-script-30" />
 
-## <a name="script-3-create-an-endpoint-and-a-rule"></a>Betik 3: uç nokta ve kural oluşturma
+## <a name="script-3-create-an-endpoint-and-a-rule"></a>Komut Dosyası 3: Bir bitiş noktası ve kural oluşturma
 
-Bu betik, bir alt ağa sahip bir sanal ağ oluşturur. Sonra betik, **Microsoft. SQL** uç noktası türünü alt ağa atar. Son olarak, betik, alt ağını SQL veritabanı sunucunuzun erişim denetim listesine (ACL) ekler ve böylece bir kural oluşturur.
+Bu komut dosyası, bir alt ağ ile sanal ağ oluşturur. Ardından komut **dosyası, microsoft.sql** uç noktası türünü alt ağınıza atar. Son olarak komut dosyası, alt ağınızı SQL Veritabanı sunucunuzun erişim denetim listesine (ACL) ekleyerek bir kural oluşturur.
 
-### <a name="powershell-script-3-source-code"></a>PowerShell betiği 3 kaynak kodu
+### <a name="powershell-script-3-source-code"></a>PowerShell komut dosyası 3 kaynak kodu
 
 ```powershell
 ######### Script 3 ########################################
@@ -292,16 +291,16 @@ Write-Host 'Completed script 3, the "Virtual-Network-Rule".';
 
 <a name="a-script-40" />
 
-## <a name="script-4-clean-up"></a>Betik 4: Temizleme
+## <a name="script-4-clean-up"></a>Komut Dosyası 4: Temizleme
 
-Bu son betik, önceki betiklerin tanıtım için oluşturduğu kaynakları siler. Ancak, komut dosyası aşağıdakileri silmeden önce onay ister:
+Bu son komut dosyası, önceki komut dosyalarının gösteri için oluşturduğu kaynakları siler. Ancak, komut dosyası aşağıdakileri silmeden önce onay ister:
 
-- Azure SQL veritabanı sunucusu
-- Azure kaynak grubu
+- Azure SQL Veritabanı sunucusu
+- Azure Kaynak Grubu
 
-Betik 1 tamamlandıktan sonra istediğiniz zaman betiği 4 ' ü çalıştırabilirsiniz.
+Komut dosyası 4'u komut dosyası 1 tamamlandıktan sonra istediğiniz zaman çalıştırabilirsiniz.
 
-### <a name="powershell-script-4-source-code"></a>PowerShell betiği 4 kaynak kodu
+### <a name="powershell-script-4-source-code"></a>PowerShell komut dosyası 4 kaynak kodu
 
 ```powershell
 ######### Script 4 ########################################
@@ -373,31 +372,31 @@ Write-Host 'Completed script 4, the "Clean-Up".';
 
 <a name="a-verify-subnet-is-endpoint-ps-100" />
 
-## <a name="verify-your-subnet-is-an-endpoint"></a>Alt ağınızın bir uç nokta olduğunu doğrulama
+## <a name="verify-your-subnet-is-an-endpoint"></a>Alt ağınızın bir bitiş noktası olduğunu doğrulayın
 
-Zaten bir sanal hizmet uç noktası olduğu anlamına gelen, **Microsoft. SQL** tür adı atanmış bir alt ağa sahip olabilirsiniz. Uç noktadan bir sanal ağ kuralı oluşturmak için [Azure Portal][http-azure-portal-link-ref-477t] kullanabilirsiniz.
+**Microsoft.Sql** türü adı zaten atanmış bir alt ağınız olabilir, yani zaten sanal hizmet bitiş noktasıdır. Son noktadan bir sanal ağ kuralı oluşturmak için [Azure portalını][http-azure-portal-link-ref-477t] kullanabilirsiniz.
 
-Ya da alt ağınızın **Microsoft. SQL** tür adına sahip olup olmadığından emin olabilirsiniz. Bu işlemleri gerçekleştirmek için aşağıdaki PowerShell betiğini çalıştırabilirsiniz:
+Veya, alt ağınızın **Microsoft.Sql** türü adı olup olmadığından emin olabilirsiniz. Aşağıdaki eylemleri yapmak için aşağıdaki PowerShell komut dosyasını çalıştırabilirsiniz:
 
-1. Alt ağınızın **Microsoft. SQL** tür adına sahip olup olmadığını yokerin.
-2. İsteğe bağlı olarak, varsa tür adını atayın.
-    - Komut dosyası, eksik tür adını uygulamadan önce *onaylamanızı*ister.
+1. Alt ağınızın **Microsoft.Sql** türü adı olup olmadığını sapta.
+2. İsteğe bağlı olarak, yoksa tür adını atayın.
+    - Komut dosyası, yok olan tür adını uygulamadan önce *onaylamanızı*ister.
 
-### <a name="phases-of-the-script"></a>Betiğin aşamaları
+### <a name="phases-of-the-script"></a>Komut dosyasının aşamaları
 
-PowerShell betiğinin aşamaları aşağıda verilmiştir:
+PowerShell komut dosyasının aşamaları şunlardır:
 
-1. Her PS oturumunda yalnızca bir kez gerekli olan Azure hesabınızda oturum açın.  Değişkenler atayın.
-2. Sanal ağınızı ve ardından alt ağınız için arama yapın.
-3. Alt ağınız **Microsoft. SQL** Endpoint Server türü olarak etiketlendi mu?
-4. Alt ağınız üzerinde **Microsoft. SQL**ad türünde bir sanal hizmet uç noktası ekleyin.
+1. PS oturumu başına yalnızca bir kez gereken Azure hesabınıza giriş yapın.  Değişkenleri atayın.
+2. Sanal ağınızı ve ardından alt ağınızı arayın.
+3. Alt ağınız **Microsoft.Sql** uç noktası sunucu türü olarak etiketlendi mi?
+4. Alt netinize **Microsoft.Sql**türü adının Sanal Hizmet bitiş noktası ekleyin.
 
 > [!IMPORTANT]
-> Bu betiği çalıştırmadan önce, komut dosyasının en üstüne yakın olan $-Variables atanan değerleri düzenlemeniz gerekir.
+> Bu komut dosyasını çalıştırmadan önce, komut dosyasının üst kısmında ki $değişkenlerine atanan değerleri yeniden atamalısınız.
 
 ### <a name="direct-powershell-source-code"></a>Doğrudan PowerShell kaynak kodu
 
-Bu PowerShell betiği, sizden onay isterse, yanıt vermediğiniz takdirde hiçbir şeyi güncelleştirmez. Betik, **Microsoft. SQL** tür adını alt ağa ekleyebilir. Ancak, alt ağınız tür adı yoksa, komut dosyası eklemeyi dener.
+Bu PowerShell komut dosyası, onay için sizden sorulması halinde evet yanıtını vermedikçe hiçbir şeyi güncellemez. Komut dosyası, alt ağınıza **Microsoft.Sql** türü adını ekleyebilir. Ancak komut dosyası, yalnızca alt ağınızda tür adı yoksa eklemeyi dener.
 
 ```powershell
 ### 1. LOG into to your Azure account, needed only once per PS session.  Assign variables.

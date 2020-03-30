@@ -1,6 +1,6 @@
 ---
-title: Azure Notification Hubs ve Google Firebase Cloud Messaging (FCM) geçişi
-description: Azure Notification Hubs 'ın Google GCM 'e FCM geçişine nasıl adresleneceğini açıklar.
+title: Azure Bildirim Hub'ları ve Google Firebase Bulut Mesajlaşma (FCM) geçişi
+description: Azure Bildirim Hub'larının Google GCM'den FCM geçişine nasıl hitap ettiği açıklanır.
 services: notification-hubs
 author: sethmanheim
 manager: femila
@@ -14,51 +14,51 @@ ms.date: 04/10/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 04/10/2019
-ms.openlocfilehash: 80eae09240bde61870995468485338db5f0b9c2d
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 2f2ca4b56445b3f399477e396de579d8a8c539e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212309"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80127035"
 ---
-# <a name="azure-notification-hubs-and-the-google-firebase-cloud-messaging-fcm-migration"></a>Azure Notification Hubs ve Google Firebase Cloud Messaging (FCM) geçişi
+# <a name="azure-notification-hubs-and-google-firebase-cloud-messaging-migration"></a>Azure Bildirim Hub'ları ve Google Firebase Bulut Mesajlaşma geçişi
 
 ## <a name="current-state"></a>Geçerli durum
 
-Google, Google Cloud Messaging (GCM) kaynağından Firebase Cloud Messaging 'e (FCM) ait geçişi duyurduğu zaman, bizler gibi anında iletme hizmetleri, bu değişikliğe uyum sağlamak için Android cihazlara nasıl bildirim gönderildiğini ayarlamamız gerekiyordu.
+Google, Google Bulut Mesajlaşma'dan (GCM) Firebase Cloud Messaging'e (FCM) geçişini duyurduğunda, bizimki gibi hizmetler değişikliği karşılamak için Android cihazlara bildirim gönderme şeklimizi ayarlamak zorunda kaldı.
 
-Hizmet arka ucumuzu güncelleştirdik ve gereken güncelleştirmeleri API 'imizde ve SDK 'larda yayımladık. Uygulamamız sayesinde, müşteri etkisini en aza indirmek için mevcut GCM bildirim şemalarıyla uyumluluğu sağlama kararı yaptık. Bu, şu anda FCM eski modda FCM kullanarak Android cihazlara Bildirim gönderdiğimiz anlamına gelir. Son olarak, yeni özellikler ve yük biçimi dahil olmak üzere FCM için gerçek destek eklemek istiyoruz. Bu, daha uzun süreli bir değişiklik ve geçerli geçiş, mevcut uygulamalar ve SDK 'lara uyumlulukla korunmaya odaklanılmıştır. Uygulamanızda GCM veya FCM SDK 'larını (SDK 'umuza birlikte) kullanabilirsiniz ve bildirimin doğru şekilde gönderildiğinden emin olun.
+Hizmet arka uçumuzu güncelledik, ardından gerektiğinde API ve SDK'larımızda güncellemeler yayınladık. Uygulamamızla, müşteri etkisini en aza indirmek için mevcut GCM bildirim şemalarıyla uyumluluğu koruma kararı aldık. Bu, şu anda FCM Eski Modu'nda FCM kullanarak Android cihazlara bildirim gönderdiğimiz anlamına gelir. Sonuç olarak, yeni özellikler ve taşıma biçimi de dahil olmak üzere FCM için gerçek destek eklemek istiyoruz. Bu daha uzun vadeli bir değişikliktir ve mevcut geçiş, varolan uygulamalar ve SDK'larla uyumluluğu korumaya odaklanmıştır. Uygulamanızda (SDK ile birlikte) GCM veya FCM SDK'ları kullanabilirsiniz ve bildirimin doğru bir şekilde gönderilmesini sağlayabiliriz.
 
-Bazı müşteriler son zamanlarda, bildirimler için GCM uç noktası kullanan uygulamalar hakkında Google uyarısında bir e-posta aldı. Bu yalnızca bir uyarıdır ve hiçbir şey yok. uygulamanızın Android bildirimleri işlenmek üzere Google 'a gönderilmeye devam ediyor ve Google hala işliyor. GCM uç noktasını hizmet yapılandırmasında açıkça belirtmiş bazı müşteriler hala kullanım dışı uç noktasını kullanıyor. Bu boşluğu zaten tanımladık ve Google e-postayı gönderdikten sonra sorunu gidermeye çalışıyoruz.
+Bazı müşteriler son zamanlarda Google'dan bildirimler için GCM bitiş noktası kullanan uygulamalar hakkında uyarı bir e-posta aldı. Bu sadece bir uyarıydı ve hiçbir şey kırılmadı – uygulamanızın Android bildirimleri hala işlenmek üzere Google'a gönderilir ve Google hala bunları işler. Hizmet yapılandırmalarında GCM bitiş noktasını açıkça belirten bazı müşteriler hala amortismana hazır bitiş noktasını kullanıyordu. Bu boşluğu zaten belirlemiştik ve Google e-postayı gönderdiğinde sorunu gidermeye çalışıyorduk.
 
-Bu kullanım dışı bitiş noktasını değiştirdik ve düzeltmeler dağıtıldı.
+O azalan bitiş noktasını değiştirdik ve düzeltme dağıtıldı.
 
-## <a name="going-forward"></a>İleri git
+## <a name="going-forward"></a>İleriye gitme
 
-Google 'ın FCM hakkında SSS, herhangi bir şey yapmanız gerekmez. [FCM hakkında SSS](https://developers.google.com/cloud-messaging/faq)bölümünde, Google "Istemci SDK 'LARı ve GCM belirteçleri sürekli olarak çalışmaya devam edecektir. Ancak, FCM 'ye geçmediğiniz müddetçe Android uygulamanızda Google Play Hizmetleri en son sürümünü hedefleyebilirsiniz. "
+Google'ın FCM SSS'si hiçbir şey yapmanız gerekmemektedir. [FCM SSS,](https://developers.google.com/cloud-messaging/faq)Google "istemci SDK'lar ve GCM belirteçleri süresiz çalışmaya devam edeceğini söyledi. Ancak, FCM'ye geçiş yapmadıkça Android uygulamanızda Google Play Hizmetleri'nin en son sürümünü hedef alamazsınız."
 
-Uygulamanız GCM kitaplığını kullanıyorsa, devam edin ve Google 'ın yönergelerini izleyerek uygulamanızdaki FCM kitaplığına yükseltin. SDK 'imiz ile uyumludur, bu nedenle uygulamanızdaki herhangi bir şeyi bizim tarafımızda güncelleştirmeniz gerekmez (SDK sürümümüzle güncel olduğunuz sürece).
+Uygulamanız GCM kitaplığını kullanıyorsa, uygulamanızdaki FCM kitaplığına yükseltmek için Google'ın yönergelerini izleyin. SDK'mız her ikisiyle de uyumludur, bu nedenle uygulamanızda bizim tarafımızdaki hiçbir şeyi güncellemeniz gerekmez (SDK sürümümüzden haberdar olduğunuz sürece).
 
-## <a name="questions-and-answers"></a>Sorular ve yanıtlar
+## <a name="questions-and-answers"></a>Sorular ve cevaplar
 
-Müşterilerin duyduğu yaygın soruların bazı yanıtları aşağıda verilmiştir:
+Müşterilerden duyduğumuz sık sorulan soruların bazı yanıtları aşağıda veda edinebilirsiniz:
 
-**S:** Kesme tarihi ile uyumlu olması için ne yapmam gerekir (Google 'ın geçerli kesme tarihi 29 Mayıs ve değişebilir)?
+**S:** Kesme tarihine göre uyumlu olmak için ne yapmam gerekiyor (Google'ın geçerli kesme tarihi 29 Mayıs'tır ve değişebilir)?
 
-**C:** Yapma. Mevcut GCM bildirim şeması ile uyumluluğu koruyacağız. GCM anahtarınız, uygulamanız tarafından kullanılan tüm GCM SDK 'Ları ve kitaplıkları olacak şekilde normal şekilde çalışmaya devam edecektir.
+**A:** Hiçbir şey. Mevcut GCM bildirim şemasıyla uyumluluğu koruyacağız. GCM anahtarınız, uygulamanız tarafından kullanılan GCM SDK'ları ve kitaplıkları gibi normal çalışmaya devam edecektir.
 
-Yeni özelliklerden yararlanmak için FCM SDK 'larına ve kitaplıklarına yükseltmeye karar verirseniz, GCM anahtarınız çalışmaya devam edecektir. İsterseniz FCM anahtarını kullanarak geçiş yapabilirsiniz, ancak yeni Firebase projesi oluştururken var olan GCM projenize Firebase 'i eklediğinizden emin olabilirsiniz. Bu, uygulamanın GCM SDK 'larını ve kitaplıklarını kullanmaya devam eden eski sürümlerini çalıştıran müşterilerinizle geriye dönük uyumluluğu garanti eder.
+Yeni özelliklerden yararlanmak için FCM SDK'larına ve kitaplıklarına yükseltmeye karar verdiyseniz/ne zaman yeni özelliklerden yararlanırsanız, GCM anahtarınız çalışmaya devam eder. İsterseniz FCM tuşunu kullanmaya geçebilirsiniz, ancak yeni Firebase projesini oluştururken mevcut GCM projenize Firebase eklediğinizden emin olabilirsiniz. Bu, uygulamanın GCM SDK'larını ve kitaplıklarını hala kullanan eski sürümlerini çalıştıran müşterilerinizle geriye dönük uyumluluğu garanti eder.
 
-Yeni bir FCM projesi oluşturuyorsanız ve var olan GCM projesine ekleme yapmadıysanız, yeni FCM gizli anahtarı ile Notification Hubs güncelleştirdikten sonra, yeni FCM anahtarının eski GCM 'ye bağlantısı olmadığından, geçerli uygulama yüklemelerine bildirim gönderme özelliğini kaybedersiniz. Proje.
+Yeni bir FCM projesi oluşturuyorsanız ve mevcut GCM projesine eklenmiyorsanız, Bildirim Hub'larını yeni FCM sırrıyla güncelledikten sonra, yeni FCM anahtarının eski GCM'ye bağlantısı olmadığı için, mevcut uygulama yüklemelerinize bildirim iletme yeteneğini kaybedersiniz Proje.
 
-**S:** Bu e-postayı neden kullanılmakta olan eski GCM uç noktaları hakkında alıyorum? Ne yapmam gerekir?
+**S:** Neden eski GCM uç noktaları kullanılan hakkında bu e-posta alıyorum? Ne yapmam gerekiyor?
 
-**C:** Yapma. Yeni uç noktalara geçiş yaptık ve yakında bitirilecektir, bu nedenle hiçbir değişiklik gerekli değildir. Hiçbir şey yok, kaçırılmış bir uç nokta yalnızca Google 'dan gelen uyarı iletilerine neden oldu.
+**A:** Hiçbir şey. Yeni uç noktalara göç ediyoruz ve yakında bitecek, bu yüzden herhangi bir değişikliğe gerek yok. Hiçbir şey kırık, bizim bir cevapsız bitiş noktası sadece Google'dan uyarı mesajları neden oldu.
 
-**S:** Mevcut kullanıcıları bozmadan yeni FCM SDK 'larına ve kitaplıklarına nasıl geçiş yapabilirim?
+**S:** Mevcut kullanıcıları kırmadan yeni FCM SDK'lara ve kitaplıklara nasıl geçiş yapabilirim?
 
-Y: İstediğiniz zaman yükseltin. Google henüz var olan GCM SDK 'larını ve kitaplıklarını kullanımdan kaldırma hakkında duyurmadı. Mevcut kullanıcılarınıza anında iletme bildirimleri kesmemenizi sağlamak için, var olan GCM projenizle ilişkilendirdiğiniz yeni Firebase projesini oluştururken emin olun. Bu, yeni Firebase gizliliklerin, GCM SDK 'Ları ve kitaplıkları ile uygulamanızın eski sürümlerini çalıştıran kullanıcılar için ve FCM SDK 'Ları ve kitaplıkları ile uygulamanızın yeni kullanıcıları için çalışacaktır.
+C: İstediğinzaman yükseltin. Google henüz mevcut GCM SDK'ların ve kütüphanelerin herhangi bir amortismanı duyurdu değil. Mevcut kullanıcılarınıza yönelik anında iletme bildirimlerini kesmemeniz için, mevcut GCM projenizle ilişkilendirdiğiniz yeni Firebase projesini oluştururken emin olun. Bu, yeni Firebase sırlarının GCM SDK'lar ve kütüphanelerle uygulamanızın eski sürümlerini çalıştıran kullanıcıların yanı sıra FCM SDK'lar ve kitaplıklarla uygulamanızın yeni kullanıcıları için çalışmasını sağlayacaktır.
 
 **S:** Bildirimlerim için yeni FCM özelliklerini ve şemalarını ne zaman kullanabilirim?
 
-**C:** API ve SDK 'larımız için bir güncelleştirme yayımladığımızda, daha sonra gelen aylarda sizin için bir şey olması beklenir.
+**A:** API ve SDK'larımız için bir güncelleme yayınladıktan sonra, bizi izlemeye devam edin – önümüzdeki aylarda sizin için bir şeyler olmasını bekliyoruz.

@@ -1,22 +1,22 @@
 ---
-title: 'Hızlı başlangıç: statik HTML Web uygulaması oluşturma'
-description: İlk HTML Merhaba Dünya Azure App Service dakikalar içinde dağıtın. App Service dağıtmak için birçok yol olan git kullanarak dağıtın.
+title: 'QuickStart: Statik bir HTML web uygulaması oluşturun'
+description: İlk HTML Hello World'ünüzü birkaç dakika içinde Azure Uygulama Hizmetine dağıtın. Uygulama Hizmeti'ne dağıtmanın birçok yollarından biri olan Git'i kullanarak dağıtAbilirsiniz.
 author: msangapu-msft
 ms.assetid: 60495cc5-6963-4bf0-8174-52786d226c26
 ms.topic: quickstart
 ms.date: 08/23/2019
 ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: 1ec8944ea0b4cf44c05efe92d350ae0db66d338b
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.custom: mvc, cli-validate, seodec18
+ms.openlocfilehash: e975708eddad9b9b4a07b49e1f753d604d77ff94
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78247801"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80047564"
 ---
 # <a name="create-a-static-html-web-app-in-azure"></a>Azure'da statik bir HTML web uygulaması oluşturma
 
-[Azure App Service](overview.md), yüksek oranda ölçeklenebilen, kendi kendine düzeltme eki uygulayan bir web barındırma hizmeti sunar. Bu hızlı başlangıçta, Azure App Service için temel bir HTML + CSS sitesinin nasıl dağıtılacağı gösterilmektedir. Bu hızlı başlangıcı [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)'de tamamlayacaksınız ama bu komutları [Azure CLI](/cli/azure/install-azure-cli) ile yerel olarak da çalıştırabilirsiniz.
+[Azure App Service](overview.md), yüksek oranda ölçeklenebilen, kendi kendine düzeltme eki uygulayan bir web barındırma hizmeti sunar. Bu hızlı başlangıç, temel bir HTML+CSS sitesini Azure Uygulama Hizmetine nasıl dağıtılanın gösterir. Bu hızlı başlangıcı [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)'de tamamlayacaksınız ama bu komutları [Azure CLI](/cli/azure/install-azure-cli) ile yerel olarak da çalıştırabilirsiniz.
 
 ![Örnek uygulamanın giriş sayfası](media/app-service-web-get-started-html/hello-world-in-browser-az.png)
 
@@ -84,7 +84,7 @@ Bu komutun çalıştırılması birkaç dakika sürebilir. Çalıştırıldığ�
 
 ## <a name="browse-to-the-app"></a>Uygulamaya göz atma
 
-Bir tarayıcıda uygulama URL 'sine gidin: `http://<app_name>.azurewebsites.net`.
+Bir tarayıcıda, uygulama URL'sine gidin: `http://<app_name>.azurewebsites.net`.
 
 Sayfa bir Azure App Service web uygulaması çalıştırıyor.
 
@@ -110,13 +110,13 @@ Dağıtım tamamlandıktan sonra **Uygulamaya göz atma** adımında açılan ta
 
 ![Güncelleştirilen örnek uygulama giriş sayfası](media/app-service-web-get-started-html/hello-azure-in-browser-az.png)
 
-## <a name="manage-your-new-azure-app"></a>Yeni Azure uygulamanızı yönetin
+## <a name="manage-your-new-azure-app"></a>Yeni Azure uygulamanızı yönetme
 
-Oluşturduğunuz Web uygulamasını yönetmek için [Azure Portal](https://portal.azure.com), **uygulama hizmetleri**' ni arayıp seçin. 
+Oluşturduğunuz web uygulamasını yönetmek için [Azure portalında](https://portal.azure.com) **Uygulama Hizmetlerini**arayın ve seçin. 
 
-![Azure portal uygulama hizmetleri 'ni seçin](./media/app-service-web-get-started-html/portal0.png)
+![Azure portalında Uygulama Hizmetleri'ni seçin](./media/app-service-web-get-started-html/portal0.png)
 
-**Uygulama hizmetleri** sayfasında, Azure uygulamanızın adını seçin.
+Uygulama **Hizmetleri** sayfasında Azure uygulamanızın adını seçin.
 
 ![Azure uygulamasına portal gezintisi](./media/app-service-web-get-started-html/portal1.png)
 
@@ -139,4 +139,4 @@ Bu komutun çalıştırılması bir dakika sürebilir.
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Özel etki alanı eşleme](app-service-web-tutorial-custom-domain.md)
+> [Harita özel etki alanı](app-service-web-tutorial-custom-domain.md)

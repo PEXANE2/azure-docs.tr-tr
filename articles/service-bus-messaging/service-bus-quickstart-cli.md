@@ -1,6 +1,6 @@
 ---
-title: Hızlı Başlangıç - Azure CLI, Service Bus kuyruğuna oluşturmak için kullanın | Microsoft Docs
-description: Bu hızlı başlangıçta, Service Bus kuyruğuna oluşturmak için Azure CLI'yı kullanmayı öğrenin. Ardından, kuyruktan ileti alma ve ileti göndermek için örnek Java uygulamasından kullanın.
+title: Hızlı başlangıç - Hizmet Veri Servisi kuyruğu oluşturmak için Azure CLI'yi kullanın | Microsoft Dokümanlar
+description: Bu hızlı başlangıçta, Hizmet Veri Yolu kuyruğu oluşturmak için Azure CLI'yi nasıl kullanacağınızı öğrenirsiniz. Ardından, sıraya ileti göndermek ve ileti almak için örnek bir Java uygulaması kullanırsınız.
 services: service-bus-messaging
 author: spelluru
 manager: timlt
@@ -10,29 +10,29 @@ ms.topic: quickstart
 ms.date: 04/10/2019
 ms.author: spelluru
 ms.openlocfilehash: e34599b12b8b0c487c6813038951b051d1eaf425
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 05/30/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "66400254"
 ---
-# <a name="quickstart-use-the-azure-cli-to-create-a-service-bus-queue"></a>Hızlı Başlangıç: Service Bus kuyruğuna oluşturmak için Azure CLI'yi kullanma
-Bu hızlı başlangıçta, Azure CLI ve Service Bus Java Kitaplığı'nı kullanarak Service Bus ile ileti alma ve gönderme açıklar. Son olarak, daha teknik ayrıntılarla ilgileniyorsanız örnek kodun temel öğeleriyle ilgili [bir açıklamayı okuyabilirsiniz](#understand-the-sample-code).
+# <a name="quickstart-use-the-azure-cli-to-create-a-service-bus-queue"></a>Hızlı başlatma: Hizmet Veri Servisi kuyruğu oluşturmak için Azure CLI'yi kullanın
+Bu hızlı başlangıç, Azure CLI ve Service Bus Java kitaplığını kullanarak Hizmet Veri Servisi ile ileti göndermenin ve almanın nasıl yapılacağını açıklar. Son olarak, daha teknik ayrıntılarla ilgileniyorsanız örnek kodun temel öğeleriyle ilgili [bir açıklamayı okuyabilirsiniz](#understand-the-sample-code).
 
 [!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
-Azure aboneliğiniz yoksa, oluşturabileceğiniz bir [ücretsiz bir hesap] [ free account] başlamadan önce.
+## <a name="prerequisites"></a>Ön koşullar
+Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap][free account] oluşturabilirsiniz.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
-Kullanırsanız **deneyin** Cloud Shell'i başlatmak için kimlik bilgilerinizi kullanarak Azure'da oturum açın düğmesi. 
+Bulut Kabuğunu başlatmak için **Try It** düğmesini kullanıyorsanız, kimlik bilgilerinizi kullanarak Azure'da oturum açın. 
 
-Cloud Shell ya da doğrudan ya da Azure portalında, geçiş için Web tarayıcınızdaki başlatılan varsa **Bash** görürseniz **PowerShell** Cloud Shell sol üst köşesindeki. 
+Bulut Kabuğu'nu Doğrudan veya Azure portalında Web tarayıcınızda başlattıysanız, Cloud Shell'in sol üst köşesinde **PowerShell'i** görüyorsanız **Bash'e** geçin. 
 
-## <a name="use-the-azure-cli-to-create-resources"></a>Kaynakları oluşturmak için Azure CLI kullanma
-Cloud Shell’de, Service Bus kaynakları sağlamak için Bash komut isteminden aşağıdaki komutları verin. Tüm yer tutucuları uygun değerlerle değiştirdiğinizden emin olun: Java örnek program kuyruk adı değiştirmeyin şekilde BasicQueue olmasını bekliyor. Böylece, çalıştırmadan önce değerleri değiştirebilirsiniz komutları tek tek kopyala/yapıştır isteyebilirsiniz. 
+## <a name="use-the-azure-cli-to-create-resources"></a>Kaynak oluşturmak için Azure CLI'yi kullanın
+Cloud Shell’de, Service Bus kaynakları sağlamak için Bash komut isteminden aşağıdaki komutları verin. Tüm yer tutucuları uygun değerlerle değiştirdiğinden emin olun: Java örnek programı sıra adının BasicQueue olmasını bekler, bu nedenle değiştirmeyin. Değerleri çalıştırmadan önce değiştirebilmeniz için komutları tek tek kopyalamak/yapıştırmak isteyebilirsiniz. 
 
 ```azurecli-interactive
 # Create a resource group
@@ -57,7 +57,7 @@ Son komut çalıştıktan sonra, bağlantı dizesini ve seçtiğiniz kuyruk adı
 
 Ad alanı ve kuyruğun oluşturulmasının ve gerekli kimlik bilgilerine sahip olmanızın ardından ileti gönderip almaya hazırsınız demektir. [Bu GitHub örnek klasöründeki](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/TopicFilters) kodu inceleyebilirsiniz.
 
-1. Kopya [Service Bus GitHub deposu](https://github.com/Azure/azure-service-bus/) bilgisayarınızda aşağıdaki komutu gönderdikten tarafından:
+1. Aşağıdaki komutu vererek bilgisayarınızdaki [Servis Veri Merkezi GitHub deposunu](https://github.com/Azure/azure-service-bus/) klonla:
 
    ```bash
    git clone https://github.com/Azure/azure-service-bus.git
@@ -75,13 +75,13 @@ Ad alanı ve kuyruğun oluşturulmasının ve gerekli kimlik bilgilerine sahip o
    mvn clean package -DskipTests
    ```
 
-1. Programı çalıştırmak için bağlantı dizesini, daha önce kopyaladığınız değeri ile değiştirdikten sonra aşağıdaki komutu yürütün:
+1. Programı çalıştırmak için, bağlantı dizesini daha önce kopyaladığınız değerle değiştirdikten sonra aşağıdaki komutu sorun:
 
    ```bash
    java -jar ./target/queuesgettingstarted-1.0.0-jar-with-dependencies.jar -c "<SERVICE BUS NAMESPACE CONNECTION STRING>" 
    ```
 
-1. Kuyruğa gönderilen 10 iletiyi inceleyin. İletilerin sıralama garanti edilmez, ancak gönderilen, ardından onaylanır ve, birlikte yük verisi alınan iletileri görebilirsiniz:
+1. Kuyruğa gönderilen 10 iletiyi inceleyin. İletilerin sıralanması garanti edilmez, ancak gönderilen, sonra kabul edilen ve alınan iletileri yük verileriyle birlikte görebilirsiniz:
 
     ```
     Message sending: Id = 0
@@ -187,7 +187,7 @@ Ad alanı ve kuyruğun oluşturulmasının ve gerekli kimlik bilgilerine sahip o
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Azure Cloud Shell'de, kaynak grubu, ad alanı ve tüm ilgili kaynakları kaldırmak için aşağıdaki komutu çalıştırın:
+Azure Bulut Kabuğu'nda, kaynak grubunu, ad alanını ve ilgili tüm kaynakları kaldırmak için aşağıdaki komutu çalıştırın:
 
 ```azurecli-interactive
 az group delete --resource-group myResourceGroup
@@ -197,9 +197,9 @@ az group delete --resource-group myResourceGroup
 
 Bu bölümde, örnek kodun temel bölümleri hakkında daha fazla ayrıntı bulunmaktadır. [Burada](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/TopicFilters) GitHub deposunda bulunan koda gözatabilirsiniz.
 
-### <a name="get-connection-string"></a>Bağlantı dizesini alma
+### <a name="get-connection-string"></a>Bağlantı dizesi alın
 
-UygulamaÇalıştır yöntemi, programa bağımsız değişkenlerden bağlantı dizesi değerini okur. 
+runApp yöntemi, bağımsız değişkenlerden programa bağlantı dizesi değerini okur. 
 
 ```java
 public static void main(String[] args) {
@@ -368,11 +368,11 @@ void registerReceiver(QueueClient queueClient, ExecutorService executorService) 
 ```
 
 > [!NOTE]
-> Service Bus kaynakları ile yönetebileceğiniz [hizmet veri yolu Gezgini](https://github.com/paolosalvatori/ServiceBusExplorer/). Hizmet veri yolu Gezgini, bir Service Bus ad alanınıza bağlanın ve mesajlaşma varlıkları kolay bir şekilde yönetmek kullanıcıların sağlar. Araç, içeri/dışarı aktarma işlevleri veya konu, kuyruklar, abonelikler, geçiş hizmetleri, bildirim hub'ları ve olay hub'ları test etme olanağı gibi gelişmiş özellikler sağlar. 
+> [Servis](https://github.com/paolosalvatori/ServiceBusExplorer/)Veri Servisi Explorer ile Servis Veri Servisi kaynaklarını yönetebilirsiniz. Service Bus Explorer, kullanıcıların bir Service Bus ad alanına bağlanmasına ve ileti varlıklarını kolay bir şekilde yönetmesine olanak tanır. Araç, alma/dışa aktarma işlevselliği veya konuyu, kuyrukları, abonelikleri, geçiş hizmetlerini, bildirim hub'larını ve olay hub'larını test etme olanağı gibi gelişmiş özellikler sağlar. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, bir Service Bus alan adı ve bir kuyruktan ileti gönderip almak için gereken diğer kaynakları oluşturdunuz. Öğreticiler, ileti göndermek ve almak için kod yazma hakkında daha fazla bilgi için devam **iletileri gönderip** bölümü. 
+Bu makalede, bir Service Bus alan adı ve bir kuyruktan ileti gönderip almak için gereken diğer kaynakları oluşturdunuz. İleti göndermek ve almak için kod yazma hakkında daha fazla bilgi edinmek **için, İleti gönder ve iletileri al** bölümündeki öğreticilere devam edin. 
 
 > [!div class="nextstepaction"]
 > [İleti alma ve gönderme](service-bus-dotnet-get-started-with-queues.md)

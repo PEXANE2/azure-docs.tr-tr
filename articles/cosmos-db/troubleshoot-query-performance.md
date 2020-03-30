@@ -1,6 +1,6 @@
 ---
 title: Azure Cosmos DB kullanırken sorgu sorunlarını giderme
-description: Azure Cosmos DB SQL sorgu sorunlarını belirlemeyi, tanılamayı ve sorun gidermeyi öğrenin.
+description: Azure Cosmos DB SQL sorgu sorunlarını nasıl tanımlayabildiğini, tanılamayı ve sorun gidermeyi öğrenin.
 author: timsander1
 ms.service: cosmos-db
 ms.topic: troubleshooting
@@ -8,86 +8,91 @@ ms.date: 02/10/2020
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 0dd3cb12c52e23a0a8acd57bf401ba68acfb9925
-ms.sourcegitcommit: 5a71ec1a28da2d6ede03b3128126e0531ce4387d
+ms.openlocfilehash: 852ed8c49eda7f13542eb0bad63d84e1cf770e92
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/26/2020
-ms.locfileid: "77623702"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80131373"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Azure Cosmos DB kullanırken sorgu sorunlarını giderme
 
-Bu makalede, Azure Cosmos DB sorgularda sorun giderme için önerilen genel bir yaklaşım gösterilmektedir. Bu belgede özetlenen adımlar olası sorgu sorunları için "tümünü yakala" olarak düşünülmemelidir, ancak en sık kullanılan performans ipuçlarını buradan sunuyoruz. Bu belgeyi, Azure Cosmos DB Çekirdek (SQL) API 'sindeki yavaş veya pahalı sorguların giderilmesi için bir başlangıç yeri olarak kullanmanız gerekir. [Tanılama günlüklerini](cosmosdb-monitor-resource-logs.md) , yavaş olan veya önemli miktarda üretilen işi kullanan sorguları belirlemek için de kullanabilirsiniz.
+Bu makale, Azure Cosmos DB'deki sorun giderme sorguları için genel olarak önerilen bir yaklaşımdan geçer. Bu makalede özetlenen adımları olası sorgu sorunlarına karşı tam bir savunma olarak düşünmeseniz de, en yaygın performans ipuçlarını buraya dahil ettik. Bu makaleyi, Azure Cosmos DB çekirdeği (SQL) API'sinde yavaş veya pahalı sorguları giderme için başlangıç noktası olarak kullanmalısınız. Yavaş olan veya önemli miktarda iş tükeden sorguları tanımlamak için [tanılama günlüklerini](cosmosdb-monitor-resource-logs.md) de kullanabilirsiniz.
 
-Sorgu iyileştirmelerini büyük ölçüde kategorilere ayırarak Azure Cosmos DB: Istek birimi (RU), sorgu ve gecikme süresini azaltan iyileştirmeler. Bir sorgunun RU ücreti düşürülerek gecikme süresini de neredeyse tamamen azaltabilirsiniz.
+Azure Cosmos DB'de sorgu optimizasyonlarını geniş bir şekilde kategorilere ayırabilirsiniz: 
 
-Bu belge, [beslenme](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json) veri kümesi kullanılarak yeniden oluşturulabilen örnekleri kullanacaktır.
+- Sorgunun İstek Birimi (RU) ücretini azaltan optimizasyonlar
+- Gecikme süresini azaltan optimizasyonlar
+
+Bir sorgunun RU ücretini azaltırsanız, gecikme süresini de neredeyse kesinlikle azaltırsınız.
+
+Bu makalede, [beslenme](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json) veri kümesini kullanarak yeniden oluşturabileceğiniz örnekler verilmektedir.
 
 ## <a name="important"></a>Önemli
 
-- En iyi performansı elde etmek için lütfen [performans ipuçlarını](performance-tips.md)izleyin.
-    > [!NOTE] 
-    > Windows 64 bit ana bilgisayar işleme, gelişmiş performans için önerilir. SQL SDK, sorguları yerel olarak ayrıştırmak ve iyileştirmek için yerel bir Serviceınterop. dll dosyası içerir ve yalnızca Windows x64 platformunda desteklenir. Serviceınterop. dll ' nin kullanılamadığı Linux ve diğer desteklenmeyen platformlar için, iyileştirilmiş sorguyu almak üzere ağ geçidine ek bir ağ çağrısı yapılır. 
-- Cosmos DB sorgu en az öğe sayısını desteklemiyor.
-    - Kod, 0 ile en fazla öğe sayısı arasında herhangi bir sayfa boyutunu işlemelidir
-    - Bir sayfadaki öğelerin sayısı herhangi bir bildirimde bulunmaksızın değişebilir ve değişecektir.
-- Sorgular için boş sayfalar beklenmektedir ve herhangi bir zamanda görünebilirler. 
-    - Boş sayfaların SDK 'larda sunulmasının nedeni, daha fazla fırsatın sorguyu iptal etmesine olanak tanır. Ayrıca, SDK 'nın birden çok ağ çağrısı yaptığını da temizler.
-    - Boş sayfalar, Cosmos DB bir fiziksel bölüm bölündüğü için mevcut iş yüklerinde gösterilebilir. İlk bölümde artık 0 sonuç bulunur ve bu da boş sayfaya neden olur.
-    - Sorgu, belgeyi almak için arka uçta daha fazla sabit miktarda zaman alacağından, boş sayfalar öncelik verme arka ucu tarafından neden olur. Bir sorgu Cosmos DB preempts, sorgunun devam etmesini sağlayacak bir devamlılık belirteci döndürür. 
-- Sorguyu tamamen boşalttığınızdan emin olun. SDK örneklerine bakın ve tüm sorguyu boşaltmak için `FeedIterator.HasMoreResults` bir while döngüsü kullanın.
+- En iyi performans için [Performans ipuçlarını](performance-tips.md)izleyin.
+    > [!NOTE]
+    > Daha iyi performans için Windows 64 bit ana bilgisayar işlemeyi öneririz. SQL SDK, sorguları yerel olarak ayrışdırmak ve optimize etmek için yerel serviceInterop.dll içerir. ServiceInterop.dll yalnızca Windows x64 platformunda desteklenir. Linux ve ServiceInterop.dll'nin kullanılamadığı diğer desteklenmeyen platformlar için, optimize edilmiş sorguyu almak için ağ geçidine ek bir ağ çağrısı yapılır.
+- Azure Cosmos DB sorguları minimum öğe sayısını desteklemez.
+    - Kod, sıfırdan maksimum madde sayısına kadar herhangi bir sayfa boyutunu işlemelidir.
+    - Bir sayfadaki öğelerin sayısı önceden haber alınmaksızın değiştirilebilir ve değişecektir.
+- Boş sayfalar sorgular için beklenir ve herhangi bir zamanda görünebilir.
+    - Boş sayfalar SDK'larda açıkta kalır, çünkü bu pozlama bir sorguyu iptal etmek için daha fazla fırsat sağlar. Ayrıca, SDK'nın birden fazla ağ araması yaptığını da açıkça ortaya koyuyor.
+    - Azure Cosmos DB'de fiziksel bir bölüm bölündüğü için boş sayfalar varolan iş yüklerinde görünebilir. İlk bölüm boş sayfaneden sıfır sonuç olacaktır.
+    - Boş sayfalar, sorgunun belgeleri almak için arka uçta belirli bir süreden fazla zaman aldığı için, sorguyu önleyen arka uçtan kaynaklanır. Azure Cosmos DB bir sorguyu önlerse, sorgunun devam etmesine izin verecek bir devam belirteci döndürecektir.
+- Sorguyu tamamen boşalttın. SDK örneklerine bakın ve `while` tüm `FeedIterator.HasMoreResults` sorguyu boşaltmak için bir döngü kullanın.
 
-### <a name="obtaining-query-metrics"></a>Sorgu ölçümleri alma:
+## <a name="get-query-metrics"></a>Sorgu ölçümlerini alın
 
-Azure Cosmos DB bir sorguyu iyileştirirken, ilk adım her zaman sorgunuzun [sorgu ölçümlerini elde](profile-sql-api-query.md) etmek için kullanılır. Bunlar ayrıca aşağıda gösterildiği gibi Azure portal aracılığıyla da kullanılabilir:
+Azure Cosmos DB'de bir sorguyu en iyi duruma getirdiğinizde, ilk adım her zaman sorgunuzun [sorgu ölçümlerini almaktır.](profile-sql-api-query.md) Bu ölçümler, Azure portalı üzerinden de kullanılabilir:
 
-[sorgu ölçümleri almak ![](./media/troubleshoot-query-performance/obtain-query-metrics.png)](./media/troubleshoot-query-performance/obtain-query-metrics.png#lightbox)
+[![Sorgu ölçümlerini](./media/troubleshoot-query-performance/obtain-query-metrics.png) alma](./media/troubleshoot-query-performance/obtain-query-metrics.png#lightbox)
 
-Sorgu ölçümlerini aldıktan sonra, sorgularınız için çıktı belge sayısıyla alınan belge sayısını karşılaştırın. Aşağıda başvurulacak ilgili bölümleri belirlemek için bu karşılaştırmayı kullanın.
+Sorgu ölçümlerini aldıktan sonra, Alınan Belge Sayısı ile sorgunuzun Çıktı Belge Sayısı'nı karşılaştırın. Bu makalede gözden geçirmek için ilgili bölümleri tanımlamak için bu karşılaştırmayı kullanın.
 
-Alınan belge sayısı sorgunun yüklemesi için gereken belge sayısıdır. Çıktı belgesi sayısı, sorgunun sonuçları için gereken belge sayısıdır. Alınan belge sayısı, çıktı belge sayısından önemli ölçüde daha yüksekse, sorgunuzun dizinini kullanmayan ve tarama yapmak için gereken en az bir bölümü vardı.
+Alınan Belge Sayısı, sorgunun yüklenmesi için gereken belge sayısıdır. Çıktı Belge Sayısı, sorgunun sonuçları için gereken belge sayısıdır. Alınan Belge Sayısı Çıktı Belge Sayısı'ndan önemli ölçüde yüksekse, sorgunuzun dizinkullanamayan ve tarama yapması gereken en az bir bölümü vardı.
 
-Senaryonuza yönelik ilgili sorgu iyileştirmelerini anlamak için aşağıdaki bölüme başvurabilirsiniz:
+Senaryonuzla ilgili sorgu optimizasyonlarını anlamak için aşağıdaki bölümlere bakın.
 
 ### <a name="querys-ru-charge-is-too-high"></a>Sorgunun RU ücreti çok yüksek
 
-#### <a name="retrieved-document-count-is-significantly-greater-than-output-document-count"></a>Alınan belge sayısı, çıktı belge sayısından önemli ölçüde büyük
+#### <a name="retrieved-document-count-is-significantly-higher-than-output-document-count"></a>Alınan Belge Sayısı Çıktı Belge Sayısı'ndan önemli ölçüde daha yüksektir
 
-- [Gerekli yolları dizin oluşturma ilkesine dahil et](#include-necessary-paths-in-the-indexing-policy)
+- [Dizin oluşturma ilkesine gerekli yolları ekleyin.](#include-necessary-paths-in-the-indexing-policy)
 
-- [Hangi sistem işlevlerinin dizinden yararlankullandığını anlayın](#understand-which-system-functions-utilize-the-index)
+- [Dizini hangi sistem işlevlerinin kullandığını anlayın.](#understand-which-system-functions-use-the-index)
 
-- [Hem filtreye hem de ORDER BY yan tümcesine sahip sorgular](#queries-with-both-a-filter-and-an-order-by-clause)
+- [Hem filtre hem de ORDER BY yan tümcesi olan sorguları değiştirin.](#modify-queries-that-have-both-a-filter-and-an-order-by-clause)
 
-- [Alt sorgu kullanarak JOIN ifadelerini iyileştirme](#optimize-join-expressions-by-using-a-subquery)
-
-<br>
-
-#### <a name="retrieved-document-count-is-approximately-equal-to-output-document-count"></a>Alınan belge sayısı, çıktı belge sayısına yaklaşık olarak eşit
-
-- [Çapraz bölüm sorgularının kaçının](#avoid-cross-partition-queries)
-
-- [Birden çok özelliklerde filtreler](#filters-on-multiple-properties)
-
-- [Hem filtreye hem de ORDER BY yan tümcesine sahip sorgular](#queries-with-both-a-filter-and-an-order-by-clause)
+- [Bir alt sorgu kullanarak JOIN ifadelerini optimize edin.](#optimize-join-expressions-by-using-a-subquery)
 
 <br>
 
-### <a name="querys-ru-charge-is-acceptable-but-latency-is-still-too-high"></a>Sorgunun RU ücreti kabul edilebilir ancak gecikme hala çok yüksek
+#### <a name="retrieved-document-count-is-approximately-equal-to-output-document-count"></a>Alınan Belge Sayısı, Çıktı Belge Sayısı'na yaklaşık olarak eşittir
 
-- [Yakınlığı geliştirme](#improve-proximity)
+- [Çapraz bölüm sorgularından kaçının.](#avoid-cross-partition-queries)
 
-- [Sağlanan aktarım hızını artır](#increase-provisioned-throughput)
+- [Birden çok özellikte filtreleri olan sorguları en iyi duruma getirin.](#optimize-queries-that-have-filters-on-multiple-properties)
 
-- [MaxConcurrency 'yi artır](#increase-maxconcurrency)
+- [Hem filtre hem de ORDER BY yan tümcesi olan sorguları değiştirin.](#modify-queries-that-have-both-a-filter-and-an-order-by-clause)
 
-- [MaxBufferedItemCount değerini artır](#increase-maxbuffereditemcount)
+<br>
 
-## <a name="queries-where-retrieved-document-count-exceeds-output-document-count"></a>Alınan belge sayısı, çıkış belgesi sayısını aşarsa sorgular
+### <a name="querys-ru-charge-is-acceptable-but-latency-is-still-too-high"></a>Sorgunun RU ücreti kabul edilebilir ama gecikme si hala çok yüksek
 
- Alınan belge sayısı sorgunun yüklemesi için gereken belge sayısıdır. Çıktı belgesi sayısı, sorgunun sonuçları için gereken belge sayısıdır. Alınan belge sayısı, çıktı belge sayısından önemli ölçüde daha yüksekse, sorgunuzun dizinini kullanmayan ve tarama yapmak için gereken en az bir bölümü vardı.
+- [Yakınlığı geliştirin.](#improve-proximity)
 
- Aşağıda, dizin tarafından tamamen hizmet edilmemiş tarama sorgusunun bir örneği verilmiştir.
+- [Sağlanan iş bilgili iş buzun artirililmesi.](#increase-provisioned-throughput)
+
+- [MaxConcurrency'i artırın.](#increase-maxconcurrency)
+
+- [MaxBufferedItemCount'ı artırın.](#increase-maxbuffereditemcount)
+
+## <a name="queries-where-retrieved-document-count-exceeds-output-document-count"></a>Alınan Belge Sayısının Çıktı Belge Sayısını aştığı sorgular
+
+ Alınan Belge Sayısı, sorgunun yüklenmesi için gereken belge sayısıdır. Çıktı Belge Sayısı, sorgunun sonuçları için gereken belge sayısıdır. Alınan Belge Sayısı Çıktı Belge Sayısı'ndan önemli ölçüde yüksekse, sorgunuzun dizinkullanamayan ve tarama yapması gereken en az bir bölümü vardı.
+
+Dizin tarafından tam olarak sunulmayan bir scan sorgusu örneği aşağıda verilmiştir:
 
 Sorgu:
 
@@ -123,15 +128,15 @@ Client Side Metrics
   Request Charge                         :        4,059.95 RUs
 ```
 
-Alınan belge sayısı (60.951), çıktı belge sayısından (7) çok büyük olduğundan, bu sorgunun bir tarama yapması gerekir. Bu durumda, [Upper ()](sql-query-upper.md) sistem işlevi dizinden kullanmaz.
+Alınan Belge Sayısı (60.951) Çıktı Belge Sayısı'ndan (7) önemli ölçüde daha yüksektir, bu nedenle bu sorgunun taranıyor olması gerekir. Bu durumda, sistem işlevi [UPPER()](sql-query-upper.md) dizini kullanmaz.
 
-## <a name="include-necessary-paths-in-the-indexing-policy"></a>Gerekli yolları dizin oluşturma ilkesine dahil et
+### <a name="include-necessary-paths-in-the-indexing-policy"></a>Dizin oluşturma ilkesine gerekli yolları ekleme
 
-Dizin oluşturma ilkeniz `WHERE` tümceleri, `ORDER BY` yan tümceleri, `JOIN`ve çoğu sistem Işlevlerini içeren özellikleri kapsamalıdır. Dizin ilkesinde belirtilen yol, JSON belgelerindeki özelliği ile eşleşmelidir (büyük/küçük harfe duyarlı).
+Dizin oluşturma ilkeniz yan `WHERE` tümcelerde, `ORDER BY` yan `JOIN`tümcelerde ve çoğu sistem işlevinde yer alan özellikleri kapsamalıdır. Dizin ilkesinde belirtilen yol JSON belgelerindeki özelliği eşleştirmelidir (büyük/küçük harf duyarlıdır).
 
-[Beslenme](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json) veri kümesinde basit bir sorgu çalıştırırsanız, `WHERE` yan tümcesindeki Özellik dizine eklendiğinde daha düşük bir ru ücreti gözlemliyoruz.
+[Beslenme](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json) veri kümesinde basit bir sorgu çalıştırDığınızda, `WHERE` yan tümcedeki özellik dizine eklendiğinde çok daha düşük bir RU ücreti gözlemlersiniz:
 
-### <a name="original"></a>Özgün
+#### <a name="original"></a>Özgün
 
 Sorgu:
 
@@ -158,11 +163,11 @@ Dizin oluşturma ilkesi:
 }
 ```
 
-**Ru ücreti:** 409,51 Rus
+**RU şarj:** 409,51 RUs
 
-### <a name="optimized"></a>İyileştirilmiş
+#### <a name="optimized"></a>İyileştirilmiş
 
-Dizin oluşturma ilkesi güncelleştirildi:
+Güncelleştirilmiş dizin oluşturma ilkesi:
 
 ```json
 {
@@ -177,37 +182,37 @@ Dizin oluşturma ilkesi güncelleştirildi:
 }
 ```
 
-**Ru ücreti:** 2,98 Rus
+**RU şarj:** 2.98 RUs
 
-Herhangi bir zamanda, kullanılabilirlik veya performans yazmak için herhangi bir etkisi olmadan dizin oluşturma ilkesine ek özellikler ekleyebilirsiniz. Dizine yeni bir özellik eklerseniz, bu özelliği kullanan sorgular hemen yeni kullanılabilir dizini kullanır. Sorgu oluşturulurken yeni dizin kullanılır. Sonuç olarak, dizin yeniden oluşturma devam ettiğinden sorgu sonuçları tutarsız olabilir. Yeni bir özellik dizine alınmışsa, dizin yeniden oluşturma işlemi sırasında yalnızca var olan dizinleri kullanan sorgular etkilenmez. [Dizin dönüştürme ilerlemesini izleyebilirsiniz](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-indexing-policy#use-the-net-sdk-v3).
+Dizin oluşturma ilkesine, yazma kullanılabilirliği veya performansı üzerinde hiçbir etkisi olmadan, istediğiniz zaman özellikler ekleyebilirsiniz. Dizin için yeni bir özellik eklerseniz, özelliği kullanan sorgular hemen yeni kullanılabilir dizini kullanır. Sorgu, oluşturulurken yeni dizini kullanır. Bu nedenle, dizin yeniden oluşturma devam ederken sorgu sonuçları tutarsız olabilir. Yeni bir özellik dizine eklenirse, dizin yeniden oluşturma sırasında yalnızca varolan dizinleri kullanan sorgular etkilenmez. [Dizin dönüşüm ilerlemeyi izleyebilirsiniz.](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-indexing-policy#use-the-net-sdk-v3)
 
-## <a name="understand-which-system-functions-utilize-the-index"></a>Hangi sistem işlevlerinin dizinden yararlankullandığını anlayın
+### <a name="understand-which-system-functions-use-the-index"></a>Dizini hangi sistem işlevlerinin kullandığını anlama
 
-İfade, bir dize değerleri aralığına çevrilebiliyorsa dizini kullanabilir; aksi takdirde dizini kullanamaz.
+Bir ifade dize değerleri aralığına çevrilebiliyorsa, dizini kullanabilir. Yoksa olamaz.
 
-Dizini kullanılabilecek dize işlevlerinin listesi aşağıdadır:
+Dizini kullanabilen dize işlevlerinin listesi aşağıda veda edebilirsiniz:
 
 - STARTSWITH(str_expr, str_expr)
 - LEFT(str_expr, num_expr) = str_expr
-- SUBSTRING(str_expr, num_expr, num_expr) = str_expr, but only if first num_expr is 0
+- SUBSTRING(str_expr, num_expr, num_expr) = str_expr, ancak ilk num_expr 0 ise
 
-Dizini kullanmayan ve her bir belgeyi yüklemesi gereken bazı ortak sistem işlevleri aşağıda verilmiştir:
+Dizin kullanmayan ve her belgeyi yüklemesi gereken bazı yaygın sistem işlevleri aşağıda verilmelidir:
 
-| **Sistem Işlevi**                     | **Iyileştirme için fikirler**             |
+| **Sistem fonksiyonu**                     | **Optimizasyon için fikirler**             |
 | --------------------------------------- |------------------------------------------------------------ |
-| CONTAINS                                | Tam metin araması için Azure Search kullan                        |
-| ÜST/ALT                             | Karşılaştırma sırasında her seferinde verileri normalleştirmek için sistem işlevini kullanmak yerine, ekleme sırasında büyük/küçük harfleri normalleştirin. ```SELECT * FROM c WHERE UPPER(c.name) = 'BOB'``` gibi bir sorgu ```SELECT * FROM c WHERE c.name = 'BOB'``` olur. |
-| Matematik işlevleri (toplamasız olmayan) | Sorgunuzun bir değeri sıklıkla hesaplamanız gerekiyorsa, bu değeri JSON belgenizde bir özellik olarak depolamayı düşünün. |
+| CONTAINS                                | Tam metin arama için Azure Arama'yı kullanın.                        |
+| ÜST/ALT                             | Karşılaştırmalar için verileri normalleştirmek için sistem işlevini kullanmak yerine, ekleme üzerine kasanormalleştirin. Gibi ```SELECT * FROM c WHERE UPPER(c.name) = 'BOB'``` bir ```SELECT * FROM c WHERE c.name = 'BOB'```sorgu olur. |
+| Matematiksel fonksiyonlar (toplam dışı) | Sorgunuzda sık sık bir değer hesaplamanız gerekiyorsa, değeri JSON belgenizde bir özellik olarak depolamayı düşünün. |
 
 ------
 
-Sorgunun diğer kısımları, sistem işlevlerinin dizinini kullanmamasına rağmen yine de dizinden yararlanabilir.
+Sorgunun diğer bölümleri, sistem işlevleri olmasa bile dizini kullanmaya devam edebilir.
 
-## <a name="queries-with-both-a-filter-and-an-order-by-clause"></a>Hem filtreye hem de ORDER BY yan tümcesine sahip sorgular
+### <a name="modify-queries-that-have-both-a-filter-and-an-order-by-clause"></a>Hem filtre hem de ORDER BY yan tümcesi olan sorguları değiştirme
 
-Filtre ve bir `ORDER BY` yan tümcesinin bulunduğu sorgular normalde bir Aralık dizinini kullanır, ancak bu, bileşik dizinden sunulabilen daha verimli olacaktır. Dizin oluşturma ilkesini değiştirmenin yanı sıra, bileşik dizindeki tüm özellikleri `ORDER BY` yan tümcesine eklemeniz gerekir. Bu sorgu değişikliği, bileşik dizinden yararlandığından emin olur.  Bir sorgu [çalıştırarak, bu](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json) etkiyi gözlemleyebilirsiniz.
+Filtresi ve `ORDER BY` yan tümcesi olan sorgular normalde bir aralık dizini kullansa da, bileşik dizinden sunulabilirse daha verimli olurlar. Dizin oluşturma ilkesini değiştirmeye ek olarak, bileşik dizindeki tüm `ORDER BY` özellikleri yan tümeceye eklemeniz gerekir. Sorgudaki bu değişiklik, bileşik dizini kullandığından emin olur.  [Beslenme](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json) veri kümesinde bir sorgu çalıştırarak etkisini gözlemleyebilirsiniz:
 
-### <a name="original"></a>Özgün
+#### <a name="original"></a>Özgün
 
 Sorgu:
 
@@ -231,19 +236,19 @@ Dizin oluşturma ilkesi:
 }
 ```
 
-**Ru ücreti:** 44,28 Rus
+**RU şarj:** 44,28 RUs
 
-### <a name="optimized"></a>İyileştirilmiş
+#### <a name="optimized"></a>İyileştirilmiş
 
-Sorgu güncelleştirildi (`ORDER BY` yan tümcesindeki her iki özelliği de içerir):
+Güncelleştirilmiş sorgu `ORDER BY` (yan tümcedeki her iki özelliği de içerir):
 
 ```sql
 SELECT * FROM c
-WHERE c.foodGroup = “Soups, Sauces, and Gravies”
+WHERE c.foodGroup = "Soups, Sauces, and Gravies"
 ORDER BY c.foodGroup, c._ts ASC
 ```
 
-Dizin oluşturma ilkesi güncelleştirildi:
+Güncelleştirilmiş dizin oluşturma ilkesi:
 
 ```json
 {  
@@ -271,12 +276,12 @@ Dizin oluşturma ilkesi güncelleştirildi:
 
 ```
 
-**Ru ücreti:** 8,86 Rus
+**RU şarj:** 8.86 RUs
 
-## <a name="optimize-join-expressions-by-using-a-subquery"></a>Alt sorgu kullanarak JOIN ifadelerini iyileştirme
-Çoklu değer alt sorguları, `WHERE` yan tümcesindeki tüm çapraz birleşimlerden sonra olmak yerine her bir SELECT-many ifadesinden sonra koşullar göndererek `JOIN` ifadelerini en iyileştirebilir.
+### <a name="optimize-join-expressions-by-using-a-subquery"></a>Bir alt sorgu kullanarak JOIN ifadelerini optimize edin
+Çok değerli alt sorgular, `JOIN` `WHERE` tüm çapraz birleştirmeler yerine her seç-çok ifadesinden sonra yüklemleri iterek ifadeleri en iyi duruma getirebilir.
 
-Aşağıdaki sorguyu göz önünde bulundurun:
+Bu sorguyı göz önünde bulundurun:
 
 ```sql
 SELECT Count(1) AS Count
@@ -288,13 +293,13 @@ WHERE t.name = 'infant formula' AND (n.nutritionValue > 0
 AND n.nutritionValue < 10) AND s.amount > 1
 ```
 
-**Ru ücreti:** 167,62 Rus
+**RU şarj:** 167,62 RUs
 
-Bu sorgu için dizin, "Infant Formula", nutritionValue 0 ' dan büyük ve 1 ' den büyük olan bir etikete sahip herhangi bir belgeyle eşleşir. Buradaki `JOIN` ifadesi, herhangi bir filtre uygulanmadan önce, eşleşen her belge için tüm etiket, nutristalar ve servilerler dizilerinin çapraz çarpımını gerçekleştirir. `WHERE` yan tümcesi, her `<c, t, n, s>` kayıt noktasında filtre koşulunu uygular.
+Bu sorgu için dizin, "bebek formülü" adı, nutritionValue Değeri 0'dan büyük ve 1'den büyük hizmet miktarı ile etikete sahip tüm belgelerle eşleşir. Buradaki `JOIN` ifade, herhangi bir filtre uygulanmadan önce her eşleşen belge için etiket, besin ve porsiyon dizilerinin tüm öğelerinin çapraz ürünlerini gerçekleştirecektir. Madde `WHERE` daha sonra her `<c, t, n, s>` tuple üzerinde filtre yüklemi uygular.
 
-Örneğin, eşleşen bir belge üç dizinin her birinde 10 öğe içeriyorsa, 1 x 10 x 10 x 10 (diğer bir deyişle, 1.000) tanımlama gruplarına genişletilir. Burada alt sorguları kullanmak, birleştirilmiş dizi öğelerinin sonraki ifadeyle katılmadan önce filtrelemeye yardımcı olabilir.
+Örneğin, eşleşen bir belgenin üç dizinin her birinde 10 öğesi varsa, bu belge 1 x 10 x 10 x 10 (yani 1.000) tuples'e genişletilir. Burada alt sorguların kullanımı, birsonraki ifadeyle katılmadan önce birleştirilmiş dizi öğelerini filtrelemene yardımcı olabilir.
 
-Bu sorgu, önceki bir ile eşdeğerdir, ancak alt sorgular kullanır:
+Bu sorgu bir öncekine eşdeğerdir, ancak alt sorguları kullanır:
 
 ```sql
 SELECT Count(1) AS Count
@@ -304,35 +309,35 @@ JOIN (SELECT VALUE n FROM n IN c.nutrients WHERE n.nutritionValue > 0 AND n.nutr
 JOIN (SELECT VALUE s FROM s IN c.servings WHERE s.amount > 1)
 ```
 
-**Ru ücreti:** 22,17 Rus
+**RU şarj:** 22.17 RUs
 
-Etiketler dizisindeki yalnızca bir öğe filtreyle eşleşen ve hem nutristalar hem de servi dizileri için beş öğe olduğunu varsayalım. `JOIN` ifadeler, ilk sorgudaki 1.000 öğe aksine, 1 x 1 x 5 x 5 = 25 öğe olacak şekilde genişletilir.
+Etiket dizisindeyalnızca bir öğenin filtreyle eşleştiğini ve hem besin hem de porsiyon dizileri için beş öğe olduğunu varsayalım. İfadeler, `JOIN` ilk sorgudaki 1.000 öğeyerine 1 x 1 x 5 x 5 = 25 öğeye genişletir.
 
-## <a name="queries-where-retrieved-document-count-is-equal-to-output-document-count"></a>Alınan belge sayısı, çıkış belgesi sayısına eşit olan sorgular
+## <a name="queries-where-retrieved-document-count-is-equal-to-output-document-count"></a>Alınan Belge Sayısının Çıktı Belge Sayısına eşit olduğu sorgular
 
-Alınan belge sayısı yaklaşık olarak çıktı belge sayısına eşitse, sorgunun birçok gereksiz belgeyi taramak zorunda olmadığı anlamına gelir. En üstteki anahtar sözcüğü kullananlar gibi birçok sorgu için, alınan belge sayısı, çıkış belgesi sayısını 1 ' den fazla olabilir. Bu sorun için neden olmamalıdır.
+Alınan Belge Sayısı çıktı belge sayısına yaklaşık eşitse, sorgunun çok sayıda gereksiz belgeyi tetmesi gerekmez. TOP anahtar sözcük kullananlar gibi birçok sorgu için, Alınan Belge Sayısı Çıktı Belge Sayısı'nı 1'e kadar aşabilir. Bu konuda endişelenmene gerek yok.
 
-## <a name="avoid-cross-partition-queries"></a>Çapraz bölüm sorgularının kaçının
+### <a name="avoid-cross-partition-queries"></a>Çapraz bölüm sorgularından kaçının
 
-Azure Cosmos DB, Istek birimi ve veri depolama alanı artışına göre bağımsız kapsayıcıları ölçeklendirmek için [bölümleme](partitioning-overview.md) kullanır. Her fiziksel bölümün ayrı ve bağımsız bir dizini vardır. Sorgunuzun, kapsayıcının bölüm anahtarı ile eşleşen bir eşitlik filtresi varsa, yalnızca ilgili bölümün dizinini denetlemeniz gerekir. Bu iyileştirme, sorgunun gerektirdiği toplam RU sayısını azaltır.
+Azure Cosmos DB, İstek Birimi ve veri depolama gereksinimleri arttıkça tek tek kapsayıcıları ölçeklendirmek için [bölümleme](partitioning-overview.md) kullanır. Her fiziksel bölüm ayrı ve bağımsız bir dizin vardır. Sorgunuzun kapsayıcınızın bölüm anahtarıyla eşleşen bir eşitlik filtresi varsa, yalnızca ilgili bölümün dizinini denetlemeniz gerekir. Bu optimizasyon, sorgunun gerektirdiği toplam RUs sayısını azaltır.
 
-Çok sayıda sağlanan RU (30.000 üzerinde) veya büyük miktarda veri (yaklaşık 100 GB 'tan fazla) varsa, sorgu RU ücretlerinde önemli bir düşüş görmeniz için büyük olasılıkla çok sayıda kapsayıcınıza sahip olursunuz.
+Çok sayıda verilen RUs'un (30.000'den fazla) veya depolanan büyük miktarda veriniz (yaklaşık 100 GB'dan fazla) varsa, büyük olasılıkla ru sorgu ücretlerinde önemli bir azalma görecek kadar büyük bir kapsayıcınız vardır.
 
-Örneğin, bölüm anahtarı \ Grup olan bir kapsayıcı oluşturuyoruz, aşağıdaki sorguların yalnızca tek bir fiziksel bölümü denetlemesi gerekir:
+Örneğin, bölüm tuşu foodGroup'a sahip bir kapsayıcı oluşturursanız, aşağıdaki sorguların yalnızca tek bir fiziksel bölümü denetlemesi gerekir:
 
 ```sql
 SELECT * FROM c
 WHERE c.foodGroup = "Soups, Sauces, and Gravies" and c.description = "Mushroom, oyster, raw"
 ```
 
-Bu sorgular, bölüm anahtarı sorguya dahil ederek de iyileştirilir:
+Bu sorgular, sorgudaki bölüm anahtarının eklenmesiyle de en iyi duruma getirilebilir:
 
 ```sql
 SELECT * FROM c
 WHERE c.foodGroup IN("Soups, Sauces, and Gravies", "Vegetables and Vegetable Products") and c.description = "Mushroom, oyster, raw"
 ```
 
-Bölüm anahtarında Aralık filtrelerine sahip olan veya bölüm anahtarında filtre bulunmayan sorgular, "fan" ve sonuçlar için her fiziksel bölümün dizinini denetleyecek.
+Bölüm anahtarında aralık filtreleri olan veya bölüm anahtarında filtre olmayan sorguların sonuçlar için her fiziksel bölümün dizinini denetlemesi gerekir:
 
 ```sql
 SELECT * FROM c
@@ -344,11 +349,11 @@ SELECT * FROM c
 WHERE c.foodGroup > "Soups, Sauces, and Gravies" and c.description = "Mushroom, oyster, raw"
 ```
 
-## <a name="filters-on-multiple-properties"></a>Birden çok özelliklerde filtreler
+### <a name="optimize-queries-that-have-filters-on-multiple-properties"></a>Birden çok özellikte filtreleri olan sorguları en iyi duruma getirin
 
-Birden çok özelliklerde filtreler içeren sorgular normalde bir Aralık dizini kullanır, ancak bu, bileşik dizinden sunulabilen daha verimli olacaktır. Küçük miktarlarda veri için bu iyileştirme önemli bir etkiye sahip olmayacaktır. Ancak, büyük miktarlarda veri için yararlı olabilir. Bileşik dizin başına yalnızca en çok bir eşitlik olmayan filtreyi en iyi hale getirebilirsiniz. Sorgunuzun birden çok eşitlik olmayan filtresi varsa, bileşik dizin kullanacak şekilde bunlardan birini seçmelisiniz. Kalan Aralık dizinleri kullanmaya devam edecektir. Eşitlik olmayan filtrenin en son bileşik dizinde tanımlanması gerekir. [Bileşik dizinler hakkında daha fazla bilgi edinin](index-policy.md#composite-indexes)
+Birden çok özellik üzerinde filtreleri olan sorgular normalde bir aralık dizini kullanacak olsa da, bileşik dizinten sunulabilirse daha verimli olurlar. Küçük miktarda veri için bu optimizasyon önemli bir etkiye sahip olmaz. Ancak, büyük miktarda veri için yararlı olabilir. Bileşik dizin başına en fazla bir eşit olmayan filtreyi en iyi duruma getirebilirsiniz. Sorgunuzda birden çok eşitlik olmayan filtre varsa, bileşik dizini kullanacak bunlardan birini seçin. Geri kalanı aralık dizinleri kullanmaya devam edecektir. Eşitlik süzgecin indekste son olarak tanımlanması gerekir. [Bileşik dizinler hakkında daha fazla bilgi edinin.](index-policy.md#composite-indexes)
 
-Bir bileşik dizin ile iyileştirilen bazı sorgu örnekleri aşağıda verilmiştir:
+Bileşik dizinle en iyi duruma getirilebilen sorgulara bazı örnekler aşağıda verilmiştir:
 
 ```sql
 SELECT * FROM c
@@ -360,7 +365,7 @@ SELECT * FROM c
 WHERE c.foodGroup = "Vegetables and Vegetable Products" AND c._ts > 1575503264
 ```
 
-İlgili bileşik dizin aşağıda verilmiştir:
+İşte ilgili bileşik indeks:
 
 ```json
 {  
@@ -387,29 +392,29 @@ WHERE c.foodGroup = "Vegetables and Vegetable Products" AND c._ts > 1575503264
 }
 ```
 
-## <a name="optimizations-that-reduce-query-latency"></a>Sorgu gecikmesini azaltan iyileştirmeler:
+## <a name="optimizations-that-reduce-query-latency"></a>Sorgu gecikmesüresini azaltan optimizasyonlar
 
-Çoğu durumda RU ücreti kabul edilebilir ancak sorgu gecikmesi hala çok yüksek olabilir. Aşağıdaki bölümlerde sorgu gecikmesini azaltmaya yönelik ipuçlarına genel bir bakış sunulmaktadır. Aynı sorguyu aynı veri kümesinde birden çok kez çalıştırırsanız, her seferinde aynı RU ücretine sahip olur. Ancak sorgu gecikmesi sorgu yürütmeleri arasında farklılık gösterebilir.
+Çoğu durumda, sorgu gecikmesi hala çok yüksek olduğunda RU ücreti kabul edilebilir olabilir. Aşağıdaki bölümler, sorgu gecikmesini azaltmaya yönelik ipuçlarına genel bir bakış sağlar. Aynı sorguyu aynı veri kümesinde birden çok kez çalıştırın, her seferinde aynı RU ücretine sahip olur. Ancak sorgu gecikmesi sorgu yürütmeleri arasında değişebilir.
 
-## <a name="improve-proximity"></a>Yakınlığı geliştirme
+### <a name="improve-proximity"></a>Yakınlığı geliştirin
 
-Azure Cosmos DB hesabından farklı bir bölgeden çalıştırılan sorguların aynı bölge içinde çalıştırıldıklarından daha yüksek bir gecikme süresi olacaktır. Örneğin, masaüstü bilgisayarınızda kod çalıştırıyorsanız, sorgunun aynı Azure bölgesindeki bir sanal makineden Azure Cosmos DB kadar büyük veya yüzlerce (veya daha fazla) milisaniyelik gecikme süresi beklemelisiniz. Verilerinizi uygulamanıza yakın bir şekilde getirebilmeniz için [Azure Cosmos DB verileri küresel olarak dağıtmak](distribute-data-globally.md) basittir.
+Azure Cosmos DB hesabından farklı bir bölgeden çalıştırılan sorgular, aynı bölge içinde çalıştırıldıklarından daha yüksek gecikme sürelerine sahip olur. Örneğin, masaüstü bilgisayarınızda kod çalıştırıyorsanız, sorgunun Azure Cosmos DB ile aynı Azure bölgesinde bulunan sanal bir makineden gelmesinden on veya yüzlerce milisaniye (veya daha fazla) gecikme stoğunun olmasını beklemelisiniz. Verilerinizi uygulamanıza yaklaştırabileceğinizden emin olmak için [Azure Cosmos DB'de verileri](distribute-data-globally.md) genel olarak dağıtmak kolaydır.
 
-## <a name="increase-provisioned-throughput"></a>Sağlanan aktarım hızını artır
+### <a name="increase-provisioned-throughput"></a>Sağlanan iş artış
 
-Azure Cosmos DB, sağlanan aktarım hızı Istek birimleri (RU) cinsinden ölçülür. 5 RU 'ın aktarım hızını tüketen bir sorgunuz olduğunu düşünelim. Örneğin, 1.000 RU 'yi sağlarsanız, bu sorguyu saniye başına 200 kez çalıştırabilirsiniz. Yeterli kullanılabilir üretilen iş olmadığında sorguyu çalıştırmaya çalıştınız, Azure Cosmos DB bir HTTP 429 hatası döndürür. Geçerli çekirdek (SQL) API SDK 'sının herhangi biri, kısa bir süre bekledikten sonra bu sorguyu otomatik olarak yeniden dener. Kısıtlanmış isteklerin süresi daha uzun sürer, bu nedenle sağlanan verimlilik arttırıldığında sorgu gecikmesi iyileştirebilirler. [Toplam kısıtlanmış istek sayısını](use-metrics.md#understand-how-many-requests-are-succeeding-or-causing-errors) Azure Portal ölçüm dikey penceresinde gözlemleyebilirsiniz.
+Azure Cosmos DB'de, sağlanan iş ortası İstek Birimleri (RUs) cinsinden ölçülür. 5 RUs'luk iş gücü tüketen bir sorgunuz olduğunu düşünün. Örneğin, 1.000 RUs sağlarsanız, bu sorguycýsý saniyede 200 kez çalıştırabilirsiniz. Yeterli iş ortası olmadığında sorguyu çalıştırmayı denediyseniz, Azure Cosmos DB bir HTTP 429 hatası döndürdü. Geçerli Core (SQL) API SDK'lardan herhangi biri, kısa bir süre bekledikten sonra bu sorguyu otomatik olarak yeniden dener. Daraltılmış istekler daha uzun sürer, bu nedenle verilen iş taminin artırılması sorgu gecikmeliğini artırabilir. Azure portalının **Ölçümler** bıçak üzerinde [toplam daraltılmış istek sayısını](use-metrics.md#understand-how-many-requests-are-succeeding-or-causing-errors) gözlemleyebilirsiniz.
 
-## <a name="increase-maxconcurrency"></a>MaxConcurrency 'yi artır
+### <a name="increase-maxconcurrency"></a>MaxConcurrency'i artırın
 
-Paralel sorgular birden çok bölümü paralel olarak sorgulayarak çalışır. Ancak, tek bir bölümlenmiş koleksiyondaki veriler, sorguya göre işlem içine alınır. Bu nedenle, MaxConcurrency 'ın bölüm sayısına göre ayarlanması en iyi performansı elde etmek için en yüksek performanslı bir sorgu sağlar, ancak diğer tüm sistem koşulları aynı kalır. Bölüm sayısını bilmiyorsanız, MaxConcurrency (veya daha eski SDK sürümlerindeki Maxdegreesofparalellik) değerini yüksek bir sayı olarak ayarlayabilir ve sistem en az paralellik derecesi olarak en düşük (bölüm sayısını, Kullanıcı tarafından girilen girişi) seçer.
+Paralel sorgular, birden çok bölümü paralel olarak sorgulayarak çalışır. Ancak, tek tek bölümlenmiş koleksiyondaki veriler sorguyla ilgili olarak seri olarak getirilir. Bu nedenle, MaxConcurrency'i bölüm sayısına ayarlarsanız, diğer tüm sistem koşullarının aynı kalması koşuluyla en çok performans gösteren sorguyu elde etme şansınız en yüksek tir. Bölüm sayısını bilmiyorsanız, MaxConcurrency'i (veya eski SDK sürümlerinde MaxDegreesOfParallelism) yüksek bir sayıya ayarlayabilirsiniz. Sistem en az (bölüm sayısı, kullanıcı sağlanan giriş) paralellik maksimum derecesi olarak seçecektir.
 
-## <a name="increase-maxbuffereditemcount"></a>MaxBufferedItemCount değerini artır
+### <a name="increase-maxbuffereditemcount"></a>MaxBufferedItemCount'ı artırın
 
-Sorgular, geçerli sonuç toplu işi istemci tarafından işlendiği sırada sonuçları önceden getirmek üzere tasarlanmıştır. Önceden getirme, bir sorgunun genel gecikme artışında yardımcı olur. MaxBufferedItemCount ayarı, önceden getirilen sonuçların sayısını sınırlar. Bu değeri beklenen sonuç sayısı (veya daha yüksek bir sayı) olarak ayarlayarak, sorgu ön alma işleminden en fazla avantajı alabilir. Bu değerin-1 olarak ayarlanması, sistemin arabelleğe eklenecek öğe sayısını otomatik olarak karar vermesine olanak tanır.
+Geçerli sonuç grubu istemci tarafından işlenirken sorgular sonuçları önceden almak üzere tasarlanmıştır. Ön alma, bir sorgunun genel gecikmesini iyileştirmeye yardımcı olur. MaxBufferedItemCount'in ayarlanması, önceden getirilen sonuç sayısını sınırlar. Bu değeri, döndürülen sonuç sayısına (veya daha yüksek bir sayıya) ayarlarsanız, sorgu ön almadan en fazla faydayı elde edebilir. Bu değeri -1 olarak ayarlarsanız, sistem arabellek için öğe sayısını otomatik olarak belirler.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Sorgu başına ru ölçüsünde aşağıdaki belgelere bakın, sorgularınızı ayarlamak için yürütme istatistiklerini alın ve daha fazlasını yapın:
+Sorgu başına RUs'u nasıl ölçtükçe, sorgularınızı ayarlamak için yürütme istatistiklerini alma ve daha fazlası hakkında bilgi için aşağıdaki makalelere bakın:
 
-* [.NET SDK kullanarak SQL sorgusu yürütme ölçümlerini alma](profile-sql-api-query.md)
+* [.NET SDK kullanarak SQL sorgu yürütme ölçümlerini alın](profile-sql-api-query.md)
 * [Azure Cosmos DB ile sorgu performansını ayarlama](sql-api-sql-query-metrics.md)
 * [.NET SDK’sı için performans ipuçları](performance-tips.md)

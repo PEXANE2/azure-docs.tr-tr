@@ -1,7 +1,7 @@
 ---
 title: Azure Load Balancer nedir?
 titleSuffix: Azure Load Balancer
-description: Azure Load Balancer özelliklerine, mimarisine ve uygulamasına genel bakış. Load Balancer nasıl çalıştığını ve bulutta nasıl kullanacağınızı öğrenin.
+description: Azure Load Balancer özelliklerine, mimarisine ve uygulamasına genel bakış. Yük Dengeleyicisinin nasıl çalıştığını ve bulutta nasıl kullanılacağını öğrenin.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -14,75 +14,75 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/14/2020
 ms.author: allensu
-ms.openlocfilehash: ce8ae7f2f4de3659dc8dde98dc71d39886341498
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.openlocfilehash: 2853b1567618127866a4e9c61d81e599d3100823
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77602179"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80064260"
 ---
 # <a name="what-is-azure-load-balancer"></a>Azure Load Balancer nedir?
 
-*Yük Dengeleme* , bir arka uç kaynak veya sunucu grubu genelinde yük devretme yükünü (gelen ağ trafiği) eşit bir şekilde dağıtmaktadır. 
+*Yük dengeleme,* yükün (gelen ağ trafiği) bir arka uç kaynağı veya sunucu lar grubuna eşit olarak dağıtılması anlamına gelir. 
 
-Azure Load Balancer, açık sistemler arası (OSı) modelin dört katmanında çalışır. Bu, istemcilerle ilgili tek iletişim noktasıdır. Load Balancer yük dengeleyicinin ön ucuna, arka uç havuzu örneklerine ulaşan gelen akışları dağıtır. Bu akışlar, yapılandırılmış Yük Dengeleme kurallarına ve sistem durumu araştırmalara göre yapılır. Arka uç havuzu örnekleri, bir sanal makine ölçek kümesindeki Azure sanal makineleri veya örnekleri olabilir.
+Azure Yük Dengeleyici, Açık Sistemler Ara Bağlantısı (OSI) modelinin dördüncü katmanında çalışır. Müşteriler için tek temas noktası. Yük Dengeleyici, yük bakiyesinin ön ucuna gelen gelen akışları arka uç havuz örneklerine dağıtır. Bu akışlar yapılandırılmış yük dengeleme kurallarına ve sağlık sondalarına göre yapılır. Arka uç havuzu örnekleri, sanal makine ölçeği kümesindeki Azure Sanal Makineleri veya örnekleri olabilir.
 
-**[Ortak yük dengeleyici](./concepts-limitations.md#publicloadbalancer)** , sanal ağınız içindeki sanal makineler (VM) için giden bağlantılar sağlayabilir. Bu bağlantılar, özel IP adresleri genel IP adreslerine çevrilirken gerçekleştirilir. Ortak yük dengeleyiciler, sanal makinelerinize internet trafiğinin yükünü dengelemek için kullanılır.
+**[Genel yük dengeleyicisi,](./concepts-limitations.md#publicloadbalancer)** sanal ağınızdaki sanal makineler (VM' ler) için giden bağlantılar sağlayabilir. Bu bağlantılar, özel IP adreslerini ortak IP adreslerine çevirerek gerçekleştirilir. Kamu Yük Dengeleyicileri, bakiyeli internet trafiğini VM'lerinize yüklemek için kullanılır.
 
-Yalnızca ön uç üzerinde özel IP 'Lerin gerekli olduğu bir **[iç (veya özel) yük dengeleyici](./concepts-limitations.md#internalloadbalancer)** kullanılır. İç yük dengeleyiciler, bir sanal ağ içindeki trafiğin yükünü dengelemek için kullanılır. Bir yük dengeleyici ön uca bir karma senaryoda şirket içi ağdan erişilebilir.
+Yalnızca ön uçta özel IP'lere ihtiyaç duyulduğunda **[dahili (veya özel) bir yük dengeleyici](./concepts-limitations.md#internalloadbalancer)** kullanılır. Dahili yük dengeleyicileri, sanal ağ içindeki bakiye trafiğini yüklemek için kullanılır. Bir yük dengeleyici ön ucuna karma senaryoda şirket içi bir ağdan erişilebilir.
 
 <p align="center">
   <img src="./media/load-balancer-overview/load-balancer.svg" width="512" title="Azure Load Balancer">
 </p>
 
-*Şekil: çok katmanlı uygulamaları hem genel hem de dahili Load Balancer kullanarak Dengeleme*
+*Şekil: Hem genel hem de dahili Yük Dengeleyicisi kullanarak çok katmanlı uygulamaları dengeleme*
 
-Ayrı yük dengeleyici bileşenleri hakkında daha fazla bilgi için bkz. [Azure Load Balancer bileşenleri ve sınırlamaları](./concepts-limitations.md)
+Tek tek yük dengeleyici bileşenleri hakkında daha fazla bilgi için [Azure Yük Dengeleyici bileşenleri ve sınırlamaları](./concepts-limitations.md)
 
 >[!NOTE]
-> Azure, senaryolarınız için tam olarak yönetilen yük dengeleme çözümleri sunar. Yüksek performanslı, düşük gecikmeli, katman 4 yük dengelemeye ihtiyacınız varsa bkz. [Azure Application Gateway nedir?](../application-gateway/overview.md) Küresel DNS yük dengeleyiciyi arıyorsanız bkz. [ne Traffic Manager?](../traffic-manager/traffic-manager-overview.md) Uçtan uca senaryolarınız, bu çözümleri birleştirmenin avantajlarından yararlanabilir.
+> Azure, senaryolarınız için tam olarak yönetilen yük dengeleme çözümleri sunar. Yüksek performanslı, düşük gecikme süresi, Katman-7 yük dengelemesi gerekiyorsa, [bkz.](../application-gateway/overview.md) Global DNS yük dengeleme arıyorsanız, [bkz.](../traffic-manager/traffic-manager-overview.md) Uçtan uca senaryolarınız bu çözümleri birleştirerek yararlanabilir.
 >
-> Azure yük dengeleme seçenekleri karşılaştırması için bkz. [Azure 'da Yük Dengeleme seçeneklerine genel bakış](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview).
+> Azure yük dengeleme seçenekleri karşılaştırması için [Azure'da yük dengeleme seçeneklerine genel bakış'a](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview)bakın.
 
-## <a name="why-use-azure-load-balancer"></a>Neden Azure Load Balancer kullanmalıyım?
-Standart Load Balancer, uygulamalarınızı ölçeklendirebilir ve yüksek oranda kullanılabilir hizmetler oluşturabilirsiniz. Yük dengeleyici hem gelen hem de giden senaryoları destekler. Yük dengeleyici, düşük gecikme süresi ve yüksek aktarım hızı sağlar ve tüm TCP ve UDP uygulamaları için milyonlarca akışa kadar ölçeklendirir.
+## <a name="why-use-azure-load-balancer"></a>Azure Yük Dengeleyicisi neden kullanıyor?
+Standart Yük Dengeleyicisi ile uygulamalarınızı ölçeklendirebilir ve yüksek kullanılabilirhizmetler oluşturabilirsiniz. Yük dengeleyicisi hem gelen hem de giden senaryoları destekler. Yük dengeleyicisi düşük gecikme süresi ve yüksek iş akışı sağlar ve tüm TCP ve UDP uygulamaları için milyonlarca akışa kadar ölçeklenir.
 
-Standart Load Balancer kullanarak gerçekleştirebileceğiniz önemli senaryolar şunlardır:
+Standart Yük Dengeleyicisi'ni kullanarak gerçekleştirebileceğiniz önemli senaryolar şunlardır:
 
-- Azure sanal makinelerine **[iç](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-standard-manage-portal)** ve **[dış](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-standard-internal-portal)** trafik yükünü dengeleyin.
+- Azure sanal makinelerine **[iç](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-standard-manage-portal)** ve **[dış](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-standard-internal-portal)** trafiği yükleyin.
 
-- **[Kaynakları bölgeler](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-standard-public-zonal-portal)** arasında ve bölgeler **[arasında](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-standard-public-zone-redundant-portal)** dağıtarak kullanılabilirliği artırın.
+- Bölgeler **[içinde](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-standard-public-zonal-portal)** ve bölgeler **[arasında](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-standard-public-zone-redundant-portal)** kaynak dağıtarak kullanılabilirliği artırın.
 
 - Azure sanal makineleri için **[giden bağlantıyı](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections)** yapılandırın.
 
-- Yük dengeli kaynakları izlemek için **[sistem durumu araştırmalarını](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)** kullanın.
+- Yük dengeli kaynakları izlemek için **[sistem durumu sondalarını](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)** kullanın.
 
-- Bir sanal ağdaki sanal makinelere genel IP adresi ve bağlantı noktasıyla erişmek için **[bağlantı noktası iletme](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-port-forwarding-portal)** işlemini yapın.
+- Genel IP adresi ve bağlantı noktası tarafından sanal ağdaki sanal makinelere erişmek için **[bağlantı noktası yönlendirmesini](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-port-forwarding-portal)** çalıştırın.
 
-- **[IPv6](https://docs.microsoft.com/azure/virtual-network/ipv6-overview)** **[Yük Dengelemesi](https://docs.microsoft.com/azure/virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell)** için desteği etkinleştirin.
+- **[IPv6'nın](https://docs.microsoft.com/azure/virtual-network/ipv6-overview)** **[yük dengelemesi](https://docs.microsoft.com/azure/virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell)** için desteği etkinleştirin.
 
-- Standart Load Balancer, [Azure izleyici](https://docs.microsoft.com/azure/azure-monitor/overview)aracılığıyla çok boyutlu ölçümler sağlar.  Bu ölçümler, belirli bir boyut için filtrelenebilir, gruplandırılabilir ve parçalanılabilir.  Bu kişiler, hizmetinizin performansı ve durumuyla ilgili güncel ve geçmiş öngörüler sağlar.  Kaynak Durumu de desteklenir. Daha fazla ayrıntı için **[Standart Load Balancer tanılamayı](load-balancer-standard-diagnostics.md)** inceleyin.
+- Standart Yük Dengeleyici, [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview)aracılığıyla çok boyutlu ölçümler sağlar.  Bu ölçümler, belirli bir boyut için filtrelenebilir, gruplandırılabilir ve kırılabilir.  Bunlar, hizmetinizin performansı ve sağlığı hakkında güncel ve tarihi bilgiler sağlar.  Kaynak Durumu da desteklenir. Daha fazla bilgi için **[Standart Yük Dengeleyici Tanılama'yı](load-balancer-standard-diagnostics.md)** gözden geçirin.
 
-- **[Birden çok bağlantı noktası, birden çok IP adresi veya her ikisinde](https://docs.microsoft.com/azure/load-balancer/load-balancer-multivip-overview)** Yük Dengeleme Hizmetleri.
+- Birden çok **[bağlantı noktası, birden çok IP adresi veya her ikisi](https://docs.microsoft.com/azure/load-balancer/load-balancer-multivip-overview)** üzerinde yük dengesi hizmetleri.
 
-- Azure bölgeleri arasında **[iç](https://docs.microsoft.com/azure/load-balancer/move-across-regions-internal-load-balancer-portal)** ve **[dış](https://docs.microsoft.com/azure/load-balancer/move-across-regions-external-load-balancer-portal)** yük dengeleyici kaynaklarını taşıyın.
+- **[Dahili](https://docs.microsoft.com/azure/load-balancer/move-across-regions-internal-load-balancer-portal)** ve **[harici](https://docs.microsoft.com/azure/load-balancer/move-across-regions-external-load-balancer-portal)** yük dengeleyici kaynaklarını Azure bölgeleri boyunca taşıyın.
 
-- Tüm bağlantı noktalarında TCP ve UDP Flow 'u aynı anda **[ha bağlantı noktalarını](https://docs.microsoft.com/azure/load-balancer/load-balancer-ha-ports-overview)** kullanarak yük dengeleyin.
+- **[Ha bağlantı noktalarını](https://docs.microsoft.com/azure/load-balancer/load-balancer-ha-ports-overview)** kullanarak tüm bağlantı noktalarında aynı anda yük dengesi TCP ve UDP akışı.
 
-### <a name="securebydefault"></a>Varsayılan olarak güvenli
+### <a name="secure-by-default"></a><a name="securebydefault"></a>Varsayılan olarak güvenli
 
-Standart Load Balancer, temel alınarak sıfır güvenli ağ güvenlik modelinde oluşturulmuştur. Varsayılan olarak güvenli Standart Load Balancer ve sanal ağınızın bir parçasıdır. Sanal ağ özel ve yalıtılmış bir ağ.  Bu, ağ güvenlik grupları tarafından açılmadığı müddetçe standart yük dengeleyiciler ve standart genel IP adreslerinin gelen akışlara kapalı olması anlamına gelir. NSG 'ler, izin verilen trafiğe açıkça izin vermek için kullanılır.  Sanal makine kaynağınızın bir alt ağda veya NIC 'inde bir NSG 'niz yoksa, trafiğin bu kaynağa erişmesine izin verilmez. NSG 'ler ve senaryonuz için nasıl uygulanacağı hakkında daha fazla bilgi edinmek için bkz. [ağ güvenlik grupları](../virtual-network/security-overview.md).
-Temel Load Balancer varsayılan olarak Internet 'e açıktır.
+Standart Yük Dengeleyici, özünde sıfır güven ağı güvenlik modeli üzerine kurulmuştur. Standart Yük Dengeleyicisi varsayılan olarak güvenlidir ve sanal ağınızın bir parçasıdır. Sanal ağ özel ve yalıtılmış bir ağdır.  Bu, Ağ Güvenlik Grupları tarafından açılmadığı sürece Standart Yük Dengeleyicileri ve Standart Genel IP adreslerinin gelen akışlara kapalı olduğu anlamına gelir. NSG'ler, izin verilen trafiğe açıkça izin vermek için kullanılır.  Sanal makine kaynağınızın bir alt ağına veya NIC'de NSG yoksa, trafiğin bu kaynağa ulaşmasına izin verilmez. NSG'ler ve bunları senaryonuz için nasıl uygulayacağınız hakkında daha fazla bilgi edinmek için [Ağ Güvenlik Grupları'na](../virtual-network/security-overview.md)bakın.
+Temel Yük Dengeleyici varsayılan olarak internete açıktır.
 
 
 ## <a name="pricing-and-sla"></a>Fiyatlandırma ve SLA
 
-Standart Load Balancer fiyatlandırma bilgileri için bkz. [Load Balancer fiyatlandırması](https://azure.microsoft.com/pricing/details/load-balancer/).
+Standart Yük Dengeleyici fiyatlandırma bilgileri [için, Bkz. Yük Dengeleyici fiyatlandırması.](https://azure.microsoft.com/pricing/details/load-balancer/)
 Temel Load Balancer ücretsiz olarak sunulur.
-[Load Balancer Için SLA](https://aka.ms/lbsla)konusuna bakın. Temel Load Balancer SLA 'sı yok.
+[Yük Dengeleyicisi için SLA'ya](https://aka.ms/lbsla)bakın. Temel Yük Dengeleyicisi'nde SLA yoktur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Load Balancer kullanmaya başlamak için bkz. [genel standart Load Balancer oluşturma](quickstart-load-balancer-standard-public-portal.md) .
+Bkz. Yük Dengeleyicisi kullanmaya başlamak için [genel bir Standart Yük Dengeleyicisi Oluşturun.](quickstart-load-balancer-standard-public-portal.md)
 
-Azure Load Balancer sınırlamaları ve bileşenleri hakkında daha fazla bilgi için bkz. [Azure Load Balancer kavramlar ve sınırlamalar](./concepts-limitations.md)
+Azure Yük Dengeleyici sınırlamaları ve bileşenleri hakkında daha fazla bilgi için [Azure Yük Bakiyesi kavramları ve sınırlamaları](./concepts-limitations.md) hakkında bilgi

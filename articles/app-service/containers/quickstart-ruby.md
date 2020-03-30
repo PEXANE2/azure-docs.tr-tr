@@ -1,32 +1,32 @@
 ---
-title: 'Hızlı başlangıç: Linux Ruby uygulaması oluşturma'
-description: İlk Ruby uygulamanızı App Service bir Linux kapsayıcısına dağıtarak Azure App Service Linux uygulamalarını kullanmaya başlayın.
+title: 'Quickstart: Linux Ruby uygulaması oluşturun'
+description: İlk Ruby uygulamanızı App Service'teki bir Linux konteynerine dağıtarak Azure Uygulama Hizmeti'ndeki Linux uygulamalarıyla başlayın.
 keywords: azure app service, linux, oss, ruby, rails
 ms.assetid: 6d00c73c-13cb-446f-8926-923db4101afa
 ms.topic: quickstart
 ms.date: 07/11/2019
-ms.custom: seodec18
-ms.openlocfilehash: 2fcbc40bf78357700e59551b77b7e4d2da1bd82d
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.custom: mvc, cli-validate, seodec18
+ms.openlocfilehash: 33723e6dd8fbcd91d2d5863816786c0f08cdf923
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77524079"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80045842"
 ---
 # <a name="create-a-ruby-on-rails-app-in-app-service-on-linux"></a>Linux üzerinde App Service'te Ruby on Rails uygulaması oluşturma
 
-[Linux’ta App Service](app-service-linux-intro.md) Linux işletim sistemini kullanan yüksek oranda ölçeklenebilir, otomatik olarak düzeltme eki uygulayan bir web barındırma hizmeti sağlar. Bu hızlı başlangıç öğreticisinde, [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)kullanılarak Linux üzerinde Azure App Service bir Ruby on rayın uygulamasının nasıl dağıtılacağı gösterilmektedir.
+[Linux’ta App Service](app-service-linux-intro.md) Linux işletim sistemini kullanan yüksek oranda ölçeklenebilir, otomatik olarak düzeltme eki uygulayan bir web barındırma hizmeti sağlar. Bu hızlı başlangıç öğreticisi, [Cloud Shell'i](https://docs.microsoft.com/azure/cloud-shell/overview)kullanarak Bir Ruby on Rails uygulamasını Linux'taki Azure Uygulama Hizmetine nasıl dağıtılanın gösteriş gösterir.
 
 > [!NOTE]
-> Ruby geliştirme yığını şu anda yalnızca Ruby on Rails'i desteklemektedir. Sinatra gibi farklı bir platform kullanmak istiyorsanız veya [Desteklenmeyen bir Ruby sürümü](app-service-linux-intro.md)kullanmak istiyorsanız, [bunu özel bir kapsayıcıda çalıştırmanız](quickstart-docker-go.md)gerekir.
+> Ruby geliştirme yığını şu anda yalnızca Ruby on Rails'i desteklemektedir. Sinatra gibi farklı bir platform kullanmak istiyorsanız veya [desteklenmeyen](app-service-linux-intro.md)bir Ruby sürümü kullanmak istiyorsanız, [özel bir kapsayıcıda çalıştırmanız](quickstart-docker-go.md)gerekir.
 
 ![Hello-world](./media/quickstart-ruby/hello-world-configured.png)
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* <a href="https://www.ruby-lang.org/en/documentation/installation/#rubyinstaller" target="_blank">Ruby 2,6 veya üstünü yükler</a>
+* <a href="https://www.ruby-lang.org/en/documentation/installation/#rubyinstaller" target="_blank">Ruby 2.6 veya üzeri yükleme</a>
 * <a href="https://git-scm.com/" target="_blank">Git'i yükleyin</a>
 
 ## <a name="download-the-sample"></a>Örneği indirme
@@ -41,7 +41,7 @@ git clone https://github.com/Azure-Samples/ruby-docs-hello-world
 
 Azure'a dağıttığınızda nasıl görüneceğini görmek için uygulamayı yerel olarak çalıştırın. Bir terminal penceresi açın, `hello-world` dizinine geçiş yapın ve sunucuyu başlatmak için `rails server` komutunu kullanın.
 
-İlk adım, gerekli gem'leri yüklemektir. Örneğe eklenen bir `Gemfile` var, bu nedenle yalnızca aşağıdaki komutu çalıştırın:
+İlk adım, gerekli gem'leri yüklemektir. Örnekte bir `Gemfile` tane var, bu yüzden aşağıdaki komutu çalıştırın:
 
 ```bash
 bundle install
@@ -69,7 +69,7 @@ Web tarayıcınızı kullanarak uygulamayı yerel olarak test etmek için `http:
 
 [!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-ruby-linux-no-h.md)] 
 
-Yeni oluşturduğunuz Web uygulamanızı yerleşik görüntüyle görmek için uygulamaya gidin. _&lt;app name>_ değerini kendi web uygulamanızın adıyla değiştirin.
+Yeni oluşturulan web uygulamanızı yerleşik görüntüyle görmek için uygulamaya göz atın. _ &lt;Uygulama adını>_ web uygulama adınız ile değiştirin.
 
 ```bash
 http://<app_name>.azurewebsites.net
@@ -81,7 +81,7 @@ Yeni web uygulamanız aşağıdaki gibi görünmelidir:
 
 ## <a name="deploy-your-application"></a>Uygulamanızı dağıtma
 
-Yerel uygulamayı Azure Web uygulamanıza dağıtmak için aşağıdaki komutları çalıştırın:
+Azure web uygulamanıza yerel uygulamayı dağıtmak için aşağıdaki komutları çalıştırın:
 
 ```bash
 git remote add azure <Git deployment URL from above>
@@ -107,7 +107,7 @@ To https://<app-name>.scm.azurewebsites.net/<app-name>.git
    a6e73a2..ae34be9  master -> master
 ```
 
-Dağıtım tamamlandıktan sonra, Web uygulamasının yeniden başlatılması için 10 saniye bekleyin ve sonra Web uygulamasına gidip sonuçları doğrulayın.
+Dağıtım tamamlandıktan sonra, web uygulamasının yeniden başlatılması için yaklaşık 10 saniye bekleyin ve ardından web uygulamasına gidin ve sonuçları doğrulayın.
 
 ```bash
 http://<app-name>.azurewebsites.net
@@ -116,7 +116,7 @@ http://<app-name>.azurewebsites.net
 ![güncelleştirilen web uygulaması](./media/quickstart-ruby/hello-world-configured.png)
 
 > [!NOTE]
-> Uygulama yeniden başlatılırken, tarayıcıda `Error 503 Server unavailable` HTTP durum kodunu veya varsayılan `Hey, Ruby developers!` sayfasını gözlemleyebilirsiniz. Uygulamanın tam olarak yeniden başlatılması birkaç dakika sürebilir.
+> Uygulama yeniden başlatılırken, tarayıcıdaki HTTP `Error 503 Server unavailable` durum kodunu veya `Hey, Ruby developers!` varsayılan sayfayı gözlemleyebilirsiniz. Uygulamanın tamamen yeniden başlatılması birkaç dakika sürebilir.
 >
 
 [!INCLUDE [Clean-up section](../../../includes/cli-script-clean-up.md)]
@@ -124,7 +124,7 @@ http://<app-name>.azurewebsites.net
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Öğretici: Postgres ile Ruby on rayları](tutorial-ruby-postgres-app.md)
+> [Öğretici: Postgres ile Rails Ruby](tutorial-ruby-postgres-app.md)
 
 > [!div class="nextstepaction"]
-> [Ruby uygulamasını yapılandırma](configure-language-ruby.md)
+> [Ruby uygulamasını yapılandır](configure-language-ruby.md)

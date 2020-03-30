@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Azure Active Directory ile otomatik Kullanıcı sağlama için primi yapılandırma | Microsoft Docs'
-description: Kullanıcı hesaplarını otomatik olarak sağlamak ve yeniden sağlamak üzere Azure Active Directory nasıl yapılandırılacağını öğrenin.
+title: "Öğretici: Azure Active Directory ile otomatik kullanıcı sağlama için Bonus'u yapılandırın | Microsoft Dokümanlar"
+description: Azure Active Directory'yi otomatik olarak sağlama ve kullanıcı hesaplarını Bonusly'ye sağlama ve ödemeden çıkarma için nasıl yapılandırılamayı öğrenin.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -17,153 +17,153 @@ ms.date: 03/27/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7694e441a59680a9b9544d3479100c1f779964ff
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77058964"
 ---
-# <a name="tutorial-configure-bonusly-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için priminin yapılandırın
+# <a name="tutorial-configure-bonusly-for-automatic-user-provisioning"></a>Öğretici: Otomatik kullanıcı sağlama için Bonusly'yi yapılandırın
 
-Bu öğreticinin amacı, Azure AD 'yi, kullanıcıları ve/veya grupları otomatik olarak sağlamak ve devre dışı bırakmak üzere yapılandırmak için Bonor ve Azure Active Directory (Azure AD) içinde gerçekleştirilecek adımları göstermektir.
+Bu öğreticinin amacı, Azure AD'yi kullanıcıları ve/veya grupları Bonusly'ye otomatik olarak sağlamak ve sağlamadan çıkarmak üzere yapılandırmak için Bonusly ve Azure Etkin Dizini'nde (Azure AD) gerçekleştirilecek adımları göstermektir.
 
 > [!NOTE]
-> Bu öğreticide, Azure AD Kullanıcı sağlama hizmeti ' nin üzerine oluşturulmuş bir bağlayıcı açıklanmaktadır. Bu hizmetin ne yaptığını, nasıl çalıştığını ve sık sorulan soruları hakkında önemli ayrıntılar için bkz. [Azure Active Directory Ile SaaS uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../app-provisioning/user-provisioning.md).
+> Bu öğretici, Azure AD Kullanıcı Sağlama Hizmeti'nin üzerine inşa edilmiş bir bağlayıcıyı açıklar. Bu hizmetin ne yaptığı, nasıl çalıştığı ve sık sorulan sorular hakkında önemli ayrıntılar [için](../app-provisioning/user-provisioning.md)bkz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticide özetlenen senaryo, zaten aşağıdakilere sahip olduğunuzu varsayar:
 
-* Bir Azure AD kiracısı
-* [Primi kiracı](https://bonus.ly/pricing)
-* Yönetici izinlerine sahip olan bir kullanıcı hesabı
+* Azure AD kiracı
+* Bonus [ly kiracı](https://bonus.ly/pricing)
+* Yönetici izinleri ile Bonusly bir kullanıcı hesabı
 
 > [!NOTE]
-> Azure AD sağlama tümleştirmesi, pribilen geliştiriciler tarafından kullanılabilen [primi REST API](https://konghq.com/solutions/gateway/)'sine dayanır.
+> Azure AD sağlama tümleştirmesi, Bonusly geliştiricileri tarafından kullanılabilen [Bonusly Rest API'sine](https://konghq.com/solutions/gateway/)dayanır.
 
-## <a name="adding-bonusly-from-the-gallery"></a>Galeriden primi ekleme
+## <a name="adding-bonusly-from-the-gallery"></a>Galeriden Bonusly ekleme
 
-Azure AD ile otomatik Kullanıcı sağlama için priliksiz yapılandırmadan önce Azure AD uygulama galerisindeki yönetilen SaaS uygulamaları listenize primi eklemeniz gerekir.
+Azure AD ile otomatik kullanıcı sağlama için Bonus'u yapılandırmadan önce, Azure AD uygulama galerisinden yönetilen SaaS uygulamaları listenize Bonus olarak eklemeniz gerekir.
 
-**Azure AD uygulama galerisinden primi eklemek için aşağıdaki adımları uygulayın:**
+**Azure AD uygulama galerisinden Bonus eklemek için aşağıdaki adımları gerçekleştirin:**
 
-1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory** simgesine tıklayın.
+1. Sol daki gezinti panelindeki **[Azure portalında](https://portal.azure.com)** **Azure Active Directory simgesini** tıklatın.
 
-    ![Azure Active Directory düğmesi](common/select-azuread.png)
+    ![Azure Etkin Dizin düğmesi](common/select-azuread.png)
 
-2. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar** seçeneğini belirleyin.
+2. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamalar** seçeneğini belirleyin.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+    ![Enterprise uygulamaları bıçak](common/enterprise-applications.png)
 
-3. Yeni uygulama eklemek için, iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesine tıklayın.
+3. Yeni uygulama eklemek için iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesini tıklatın.
 
-    ![Yeni Uygulama düğmesi](common/add-new-app.png)
+    ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **bonikisi**yazın, sonuç panelinden **primi** ' yi seçin, sonra da uygulamayı eklemek için düğme **Ekle** ' ye tıklayın.
+4. Arama kutusuna **Bonusly**yazın , sonuç panelinden **Bonusly'i** seçin ve uygulamayı eklemek için **Ekle** düğmesini tıklatın.
 
-    ![Sonuçlar listesinde](common/search-new-app.png)
+    ![Sonuç listesinde bonus olarak](common/search-new-app.png)
 
-## <a name="assigning-users-to-bonusly"></a>Kullanıcıları primi atama
+## <a name="assigning-users-to-bonusly"></a>Bonusly'ye kullanıcı atama
 
-Azure Active Directory, hangi kullanıcıların seçili uygulamalara erişim alacağını belirleyebilmek için "atamalar" adlı bir kavram kullanır. Otomatik Kullanıcı sağlama bağlamında, yalnızca Azure AD 'de bir uygulamaya "atanmış" olan kullanıcılar ve/veya gruplar eşitlenir. 
+Azure Active Directory, hangi kullanıcıların seçili uygulamalara erişmesi gerektiğini belirlemek için "atamalar" adlı bir kavram kullanır. Otomatik kullanıcı sağlama bağlamında, yalnızca Azure AD'deki bir uygulamaya "atanmış" kullanıcılar ve/veya gruplar eşitlenir. 
 
-Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, Azure AD 'deki hangi kullanıcıların ve/veya grupların Bonor 'a erişmesi gerektiğine karar vermeniz gerekir. Karar verdikten sonra buradaki yönergeleri izleyerek bu kullanıcıları ve/veya grupları primi atayabilirsiniz:
+Otomatik kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, Azure AD'deki hangi kullanıcıların ve/veya grupların Bonusly'ye erişmesi gerektiğine karar vermelisiniz. Karar verildikten sonra, bu kullanıcıları ve/veya grupları bonus olarak buradaki talimatları izleyerek atayabilirsiniz:
 
-* [Kurumsal uygulamaya Kullanıcı veya Grup atama](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+* [Bir kurumsal uygulamaya kullanıcı veya grup atama](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
 
-### <a name="important-tips-for-assigning-users-to-bonusly"></a>Kullanıcıları Priye atamaya yönelik önemli ipuçları
+### <a name="important-tips-for-assigning-users-to-bonusly"></a>Bonusly'ye kullanıcı atamak için önemli ipuçları
 
-* Otomatik Kullanıcı sağlama yapılandırmasını test etmek için tek bir Azure AD kullanıcısının Pride bir şekilde atanması önerilir. Ek kullanıcılar ve/veya grupları daha sonra atanabilir.
+* Otomatik kullanıcı sağlama yapılandırmasını sınamak için bonusa tek bir Azure AD kullanıcısıatanması önerilir. Ek kullanıcılar ve/veya gruplar daha sonra atanabilir.
 
-* Bir kullanıcıyı Pril 'e atarken atama iletişim kutusunda uygulamaya özgü geçerli herhangi bir rolü (varsa) seçmeniz gerekir. **Varsayılan erişim** rolüne sahip kullanıcılar, sağlanmasından çıkarılır.
+* Bonusly'e bir kullanıcı atarken, atama iletişim kutusunda uygulamaya özgü geçerli bir rolü (varsa) seçmeniz gerekir. **Varsayılan Erişim** rolüne sahip kullanıcılar sağlama nın dışında tutulur.
 
-## <a name="configuring-automatic-user-provisioning-to-bonusly"></a>Otomatik Kullanıcı sağlamayı primi olarak yapılandırma
+## <a name="configuring-automatic-user-provisioning-to-bonusly"></a>Otomatik kullanıcı sağlamanın Bonusly olarak yapılandırılma
 
-Bu bölümde, Azure AD sağlama hizmeti 'ni kullanarak Kullanıcı ve/veya grupları Azure AD 'de Kullanıcı ve/veya Grup atamaları temelinde oluşturma, güncelleştirme ve devre dışı bırakma adımları adım adım kılavuzluk eder.
+Bu bölüm, Azure AD'deki kullanıcı ve/veya grup atamalarını temel alarak Bonus'taki kullanıcıları ve/veya grupları oluşturmak, güncellemek ve devre dışı etmek için Azure AD sağlama hizmetini yapılandırma adımları boyunca size yol göstermektedir.
 
 > [!TIP]
-> Ayrıca, primi [Çoklu oturum açma öğreticisinde](bonus-tutorial.md)sunulan yönergeleri izleyerek, her bononun için SAML tabanlı çoklu oturum açmayı etkinleştirmeyi de tercih edebilirsiniz. Çoklu oturum açma, otomatik Kullanıcı sağlamasından bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini karmaşıdirebilirler.
+> Ayrıca Bonusly tek oturum açma [öğreticisinde](bonus-tutorial.md)verilen talimatları izleyerek Bonusly için SAML tabanlı tek oturum açma özelliğini etkinleştirmeyi de seçebilirsiniz. Tek oturum açma, otomatik kullanıcı sağlamadan bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini tamamlar.
 
-### <a name="to-configure-automatic-user-provisioning-for-bonusly-in-azure-ad"></a>Azure AD 'de otomatik Kullanıcı sağlamasını yapılandırmak için:
+### <a name="to-configure-automatic-user-provisioning-for-bonusly-in-azure-ad"></a>Azure AD'de Bonusly için otomatik kullanıcı sağlama yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın ve **Kurumsal uygulamalar**' ı seçin, **tüm uygulamalar**' ı seçin, sonra da **primi**' yi seçin
+1. [Azure portalında](https://portal.azure.com) oturum açın ve **Kurumsal Uygulamalar'ı**seçin, **Tüm uygulamaları**seçin, ardından **Bonusly'yi**seçin.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar bıçak](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, **primi**' yi seçin.
+2. Başvuru listesinde **Bonusly'i**seçin.
 
-    ![Uygulamalar listesindeki primi bağlantısı](common/all-applications.png)
+    ![Uygulamalar listesindeki Bonus bağlantı](common/all-applications.png)
 
 3. **Sağlama** sekmesini seçin.
 
-    ![Primi sağlama](./media/bonusly-provisioning-tutorial/ProvisioningTab.png)
+    ![İkramiye Sağlama](./media/bonusly-provisioning-tutorial/ProvisioningTab.png)
 
-4. **Sağlama modunu** **Otomatik**olarak ayarlayın.
+4. Sağlama **Modunu** **Otomatik**olarak ayarlayın.
 
-    ![Primi sağlama](./media/bonusly-provisioning-tutorial/ProvisioningCredentials.png)
+    ![İkramiye Sağlama](./media/bonusly-provisioning-tutorial/ProvisioningCredentials.png)
 
-5. **Yönetici kimlik bilgileri** bölümünde, adım 6 ' da açıklandığı gibi, primi hesabınızın **gizli belirtecini** girin.
+5. Yönetici **Kimlik Bilgileri** bölümüne, Adım 6'da açıklandığı gibi Bonus hesabınızın **Gizli Belirteci'ni** giriş leyin.
 
-    ![Primi sağlama](./media/bonusly-provisioning-tutorial/secrettoken.png)
+    ![İkramiye Sağlama](./media/bonusly-provisioning-tutorial/secrettoken.png)
 
-6. Primi hesabınız için **gizli anahtar** , **yönetici > Şirket > tümleştirmelerle**bulunur. **Kod eklemek** istiyorsanız, yeni bir gizli belirteç oluşturmak için **API > yeni API erişim belirteci oluştur** ' a tıklayın.
+6. Bonus hesabınız için **Gizli Belirteç,** **Yönetici > Şirketi > Entegrasyonları'nda**bulunmaktadır. Kod **oluşturmak istiyorsanız,** yeni bir Gizli Belirteç oluşturmak için **API > Yeni API Erişim Belirteci Oluştur'u** tıklatın.
 
-    ![Primi sağlama](./media/bonusly-provisioning-tutorial/BonuslyIntegrations.png)
+    ![İkramiye Sağlama](./media/bonusly-provisioning-tutorial/BonuslyIntegrations.png)
 
-    ![Primi sağlama](./media/bonusly-provisioning-tutorial/BonsulyRestApi.png)
+    ![İkramiye Sağlama](./media/bonusly-provisioning-tutorial/BonsulyRestApi.png)
 
-    ![Primi sağlama](./media/bonusly-provisioning-tutorial/CreateToken.png)
+    ![İkramiye Sağlama](./media/bonusly-provisioning-tutorial/CreateToken.png)
 
-7. Aşağıdaki ekranda, erişim belirteci için, girilen metin kutusuna bir ad yazın ve ardından **API anahtarı oluştur**' a basın. Yeni erişim belirteci açılan pencerede birkaç saniye görünür.
+7. Aşağıdaki ekranda, sağlanan metin kutusuna erişim belirteci için bir ad yazın ve ardından **Api Tuşu Oluştur'a**basın. Yeni erişim belirteci bir açılır pencerede birkaç saniye görünür.
 
-    ![Primi sağlama](./media/bonusly-provisioning-tutorial/Token01.png)
+    ![İkramiye Sağlama](./media/bonusly-provisioning-tutorial/Token01.png)
 
-    ![Primi sağlama](./media/bonusly-provisioning-tutorial/Token02.png)
+    ![İkramiye Sağlama](./media/bonusly-provisioning-tutorial/Token02.png)
 
-8. 5\. adımda gösterilen alanları doldurulmaya yönelik olarak, Azure AD 'nin primi 'ya bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, primi hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
+8. Adım 5'te gösterilen alanları doldurarak, Azure AD'nin Bonusly'ye bağlanabilmesini sağlamak için **Test Bağlantısı'nı** tıklatın. Bağlantı başarısız olursa, Bonus hesabınızda Yönetici izinleri olduğundan emin olun ve yeniden deneyin.
 
-    ![Primi sağlama](./media/bonusly-provisioning-tutorial/TestConnection.png)
+    ![İkramiye Sağlama](./media/bonusly-provisioning-tutorial/TestConnection.png)
 
-9. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken kişinin veya grubun e-posta adresini girin ve **bir hata oluştuğunda e-posta bildirimi gönder**onay kutusunu işaretleyin.
+9. Bildirim **E-postası** alanında, sağlama hatası bildirimleri alması gereken bir kişinin veya grubun e-posta adresini girin ve **bir hata oluştuğunda e-posta bildirimi gönder**onay kutusunu işaretleyin.
 
-    ![Primi sağlama](./media/bonusly-provisioning-tutorial/EmailNotification.png)
+    ![İkramiye Sağlama](./media/bonusly-provisioning-tutorial/EmailNotification.png)
 
-10. **Kaydet** düğmesine tıklayın.
+10. **Kaydet**'e tıklayın.
 
-11. **Eşlemeler** bölümünde, **kullanıcıları Azure Active Directory eşitler**' ı seçin.
+11. **Eşlemeler** bölümünde, **Azure Etkin Dizin Kullanıcılarını Bonus olarak senkronize et'i**seçin.
 
-    ![Primi sağlama](./media/bonusly-provisioning-tutorial/UserMappings.png)
+    ![İkramiye Sağlama](./media/bonusly-provisioning-tutorial/UserMappings.png)
 
-12. **Öznitelik eşleme** bölümünde Azure AD 'den pribir şekilde eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri için primi 'daki Kullanıcı hesaplarını eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
+12. Azure AD'den Bonus'a eşitlenen kullanıcı özniteliklerini **Öznitelik Eşleme** bölümünde gözden geçirin. **Eşleştirme** özellikleri olarak seçilen öznitelikler, güncelleştirme işlemleri için Bonus'taki kullanıcı hesaplarıyla eşleştirilmesi için kullanılır. Herhangi bir değişiklik yapmak için **Kaydet** düğmesini seçin.
 
-    ![Primi sağlama](./media/bonusly-provisioning-tutorial/UserAttributeMapping.png)
+    ![İkramiye Sağlama](./media/bonusly-provisioning-tutorial/UserAttributeMapping.png)
 
-13. Kapsam filtrelerini yapılandırmak için, [kapsam filtresi öğreticisinde](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)sunulan aşağıdaki yönergelere bakın.
+13. Kapsam filtrelerini yapılandırmak [için, Kapsam](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)filtresi öğreticisinde sağlanan aşağıdaki yönergelere bakın.
 
-14. Azure AD sağlama hizmetini primi için etkinleştirmek üzere **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin.
+14. Azure AD sağlama hizmetini Bonus için etkinleştirmek **için, Ayarlar** bölümünde **KiSama Durumunu** **Ayarı** olarak değiştirin.
 
-    ![Primi sağlama](./media/bonusly-provisioning-tutorial/ProvisioningStatus.png)
+    ![İkramiye Sağlama](./media/bonusly-provisioning-tutorial/ProvisioningStatus.png)
 
-15. **Ayarlar** bölümünde **kapsam** içinde istenen değerleri seçerek, sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
+15. **Ayarlar** bölümünde **Kapsam'ta** istenen değerleri seçerek Bonus olarak sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
 
-    ![Primi sağlama](./media/bonusly-provisioning-tutorial/ScopeSync.png)
+    ![İkramiye Sağlama](./media/bonusly-provisioning-tutorial/ScopeSync.png)
 
-16. Sağlamaya hazırsanız **Kaydet**' e tıklayın.
+16. Hükmetmeye hazır olduğunuzda **Kaydet'i**tıklatın.
 
-    ![Primi sağlama](./media/bonusly-provisioning-tutorial/SaveProvisioning.png)
+    ![İkramiye Sağlama](./media/bonusly-provisioning-tutorial/SaveProvisioning.png)
 
-Bu işlem, **Ayarlar** bölümünde **kapsam** içinde tanımlanan tüm kullanıcılar ve/veya grupların ilk eşitlemesini başlatır. İlk eşitlemenin daha sonra, Azure AD sağlama hizmeti çalıştığı sürece yaklaşık 40 dakikada bir oluşan sonraki eşitlemeler yerine gerçekleştirilmesi daha uzun sürer. İlerleme durumunu izlemek için **eşitleme ayrıntıları** bölümünü kullanabilir ve Azure AD sağlama hizmeti tarafından gerçekleştirilen tüm işlemleri ayrıntılarıyla açıklayan etkinlik raporuna yönelik bağlantıları izleyebilirsiniz.
+Bu işlem, **Ayarlar** bölümünde **Kapsam'ta** tanımlanan tüm kullanıcıların ve/veya grupların ilk eşitlemisini başlatır. Azure AD sağlama hizmeti nin çalıştırıldığı sürece yaklaşık her 40 dakikada bir gerçekleşen sonraki eşitlemelerden daha uzun süren ilk eşitlemenin gerçeklemi daha uzun sürer. Azure AD sağlama hizmeti tarafından Bonus ly'de gerçekleştirilen tüm eylemleri açıklayan ilerlemeyi izlemek ve sağlama etkinlik raporuna bağlantılar izlemek için **Eşitleme Ayrıntıları** bölümünü kullanabilirsiniz.
 
-Azure AD sağlama günlüklerinin nasıl okunduğu hakkında daha fazla bilgi için bkz. [Otomatik Kullanıcı hesabı sağlamayı raporlama](../app-provisioning/check-status-user-account-provisioning.md).
+Azure AD sağlama günlüklerini nasıl okuyabilirsiniz hakkında daha fazla bilgi için [bkz.](../app-provisioning/check-status-user-account-provisioning.md)
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Kurumsal Uygulamalar için kullanıcı hesabı sağlamanın yönetimi](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Günlükleri İnceleme ve sağlama etkinliğinde rapor alma hakkında bilgi edinin](../app-provisioning/check-status-user-account-provisioning.md)
+* [Günlükleri nasıl inceleyip sağlama etkinliği yle ilgili raporları nasıl alacağınızı öğrenin](../app-provisioning/check-status-user-account-provisioning.md)
 
 <!--Image references-->
 [1]: ./media/bonusly-provisioning-tutorial/tutorial_general_01.png

@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı Başlangıç: Gremlin API Python - Azure Cosmos DB ile'
+title: 'Hızlı başlangıç: Python ile Gremlin API - Azure Cosmos DB'
 description: Bu hızlı başlangıçta Azure portalı ve Python ile konsol uygulaması oluşturmak için Azure Cosmos DB Gremlin API’sinin nasıl kullanılacağı gösterilmektedir
 author: luisbosquez
 ms.service: cosmos-db
@@ -9,13 +9,13 @@ ms.topic: quickstart
 ms.date: 01/22/2019
 ms.author: lbosq
 ms.openlocfilehash: b1286daaa76c71f88d44ea387a92876a8676783c
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77062258"
 ---
-# <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-python-and-the-azure-portal"></a>Hızlı başlangıç: Python ve Azure portal kullanarak Azure Cosmos DB grafik veritabanı oluşturma
+# <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-python-and-the-azure-portal"></a>Hızlı başlatma: Python ve Azure portalını kullanarak Azure Cosmos DB'de grafik veritabanı oluşturma
 
 > [!div class="op_single_selector"]
 > * [Gremlin konsolu](create-graph-gremlin-console.md)
@@ -26,13 +26,13 @@ ms.locfileid: "77062258"
 > * [PHP](create-graph-php.md)
 >  
 
-Bu hızlı başlangıçta, Azure portal bir Azure Cosmos DB Gremlin (Graf) API hesabı oluşturup yönetirsiniz ve GitHub ' dan kopyalanmış bir Python uygulamasını kullanarak veri eklersiniz. Azure Cosmos DB, genel dağıtım ve yatay ölçeklendirme özellikleri ile belge, tablo, anahtar değer ve grafik veritabanlarını hızlıca oluşturmanıza ve sorgulamanızı sağlayan çok modelli bir veritabanı hizmetidir.
+Bu hızlı başlangıçta, Azure portalından bir Azure Cosmos DB Gremlin (grafik) API hesabı oluşturur ve yönetir siniz ve GitHub'dan klonlanmış bir Python uygulamasını kullanarak veri ekleyebilirsiniz. Azure Cosmos DB, belge, tablo, anahtar değeri ve grafik veritabanlarını küresel dağıtım ve yatay ölçek özelliklerine sahip hızlı bir şekilde oluşturmanıza ve sorgulamanıza olanak tanıyan çok modelli bir veritabanı hizmetidir.
 
-## <a name="prerequisites"></a>Önkoşullar
-- Etkin aboneliği olan bir Azure hesabı. [Ücretsiz bir tane oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Veya Azure aboneliği olmadan [ücretsiz Azure Cosmos DB deneyin](https://azure.microsoft.com/try/cosmosdb/) .
-- [PIP](https://pip.pypa.io/en/stable/installing/) paketi yükleyicisi dahil [Python 3.5 +](https://www.python.org/downloads/) .
-- [Gremlin Için Python sürücüsü](https://github.com/apache/tinkerpop/tree/master/gremlin-python).
-- [Git](https://git-scm.com/downloads).
+## <a name="prerequisites"></a>Ön koşullar
+- Etkin bir aboneliği olan bir Azure hesabı. [Ücretsiz bir tane oluşturun.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) Veya Azure aboneliği olmadan [Azure Cosmos DB'yi ücretsiz olarak deneyin.](https://azure.microsoft.com/try/cosmosdb/)
+- [Pip](https://pip.pypa.io/en/stable/installing/) paket yükleyici dahil [Python 3.5+](https://www.python.org/downloads/)
+- [Gremlin için Python Sürücüsü](https://github.com/apache/tinkerpop/tree/master/gremlin-python).
+- [Git.](https://git-scm.com/downloads)
 
 > [!NOTE]
 > Bu hızlı başlangıç için 20 Aralık 2017’den sonra oluşturulmuş bir grafik veritabanı hesabı gerekir. Mevcut hesaplar genel kullanılabilirliğe geçirildikten sonra Python’u destekleyecektir.
@@ -71,9 +71,9 @@ Bir grafik veritabanı oluşturmadan önce Azure Cosmos DB ile bir Gremlin (Graf
 
 ## <a name="review-the-code"></a>Kodu gözden geçirin
 
-Bu adım isteğe bağlıdır. Veritabanı kaynaklarının kodda nasıl oluşturulduğunu öğrenmekle ilgileniyorsanız, aşağıdaki kod parçacıklarını gözden geçirebilirsiniz. Kod parçacıkları, *C:\git-samples\azure-cosmos-db-graph-python-getting-started\\* klasöründeki *Connect.py* dosyasından alınır. Aksi takdirde, [Bağlantı dizenizi güncelleştirme](#update-your-connection-information) bölümüne atlayabilirsiniz. 
+Bu adım isteğe bağlıdır. Veritabanı kaynaklarının kodda nasıl oluşturulduğunu öğrenmekle ilgileniyorsanız, aşağıdaki kod parçacıklarını gözden geçirebilirsiniz. Parçacıklar *c:\git-samples\azure-cosmos-db-graph-python-getting-started\\ * klasöründeki *connect.py* dosyasından alınır. Aksi durumda, [Bağlantı dizenizi güncelleştirme](#update-your-connection-information) bölümüne atlayabilirsiniz. 
 
-* Gremlin `client`, *Connect.py*'de satır 104 ' de başlatılır:
+* Gremlin `client` *connect.py*satır 104 olarak başharflenir:
 
     ```python
     ...
@@ -83,7 +83,7 @@ Bu adım isteğe bağlıdır. Veritabanı kaynaklarının kodda nasıl oluşturu
     ...
     ```
 
-* *Connect.py* dosyasının başlangıcında bir dizi Gremlin adımı bildirilmiştir. Bu adımlar daha sonra `client.submitAsync()` yöntemi kullanılarak yürütülür:
+* *connect.py* dosyasının başında bir dizi Gremlin adımı bildirilir. Bu adımlar daha sonra `client.submitAsync()` yöntemi kullanılarak yürütülür:
 
     ```python
     client.submitAsync(_gremlin_cleanup_graph)
@@ -93,13 +93,13 @@ Bu adım isteğe bağlıdır. Veritabanı kaynaklarının kodda nasıl oluşturu
 
 Şimdi, Azure portalına dönerek bağlantı bilgilerinizi kopyalayıp uygulamaya ekleyin. Bu ayarlar, uygulamanızın barındırılan veritabanıyla iletişim kurmasına olanak tanır.
 
-1. [Azure portal](https://portal.azure.com/)Azure Cosmos DB hesabınızda **anahtarlar**' ı seçin. 
+1. [Azure portalındaki](https://portal.azure.com/)Azure Cosmos DB hesabınızda **Keys'i**seçin. 
 
     URI değerinin ilk parçasını kopyalayın.
 
     ![Azure portalında erişim anahtarı görüntüleme ve kopyalama, Anahtarlar sayfası](./media/create-graph-python/keys.png)
 
-2. *Connect.py* dosyasını açın ve 104. satırdaki urı değerini `<YOUR_ENDPOINT>` üzerine yapıştırın:
+2. *connect.py* dosyasını açın ve satır 104 uri `<YOUR_ENDPOINT>` değerini buraya yapıştırın:
 
     ```python
     client = client.Client('wss://<YOUR_ENDPOINT>.gremlin.cosmosdb.azure.com:443/','g', 
@@ -127,7 +127,7 @@ Bu adım isteğe bağlıdır. Veritabanı kaynaklarının kodda nasıl oluşturu
         password="<YOUR_PASSWORD>")
     ```
 
-4. **Anahtarlar** sayfasında, Kopyala DÜĞMESINI kullanarak birincil anahtarı kopyalayın ve `password=<YOUR_PASSWORD>` parametresindeki `<YOUR_PASSWORD>` üzerine yapıştırın.
+4. **Keys** sayfasında, PRIMARY KEY'i kopyalamak ve `<YOUR_PASSWORD>` `password=<YOUR_PASSWORD>` parametreye yapıştırmak için kopyalama düğmesini kullanın.
 
     Tüm `client` nesne tanımı artık şu kod gibi görünmelidir:
     ```python
@@ -136,7 +136,7 @@ Bu adım isteğe bağlıdır. Veritabanı kaynaklarının kodda nasıl oluşturu
         password="asdb13Fadsf14FASc22Ggkr662ifxz2Mg==")
     ```
 
-6. *Connect.py* dosyasını kaydedin.
+6. *connect.py* dosyasını kaydedin.
 
 ## <a name="run-the-console-app"></a>Konsol uygulamasını çalıştırma
 
@@ -167,27 +167,27 @@ Bu adım isteğe bağlıdır. Veritabanı kaynaklarının kodda nasıl oluşturu
 <a id="add-sample-data"></a>
 ## <a name="review-and-add-sample-data"></a>Örnek verileri inceleme ve ekleme
 
-Köşeler ve kenarlar eklendikten sonra artık Veri Gezgini geri dönüp grafiğe eklenen köşeleri görebilir ve ek veri noktaları ekleyebilirsiniz.
+Tepe noktaları ve kenarlar eklendikten sonra, artık Veri Gezgini'ne geri dönebilir ve grafiğe eklenen vertices'i görebilir ve ek veri noktaları ekleyebilirsiniz.
 
-1. Azure portal Azure Cosmos DB hesabınızda, **Veri Gezgini**, **örnek grafik**' i ve **Graf**' ı seçin ve ardından **Filtre Uygula**' yı seçin. 
+1. Azure portalındaki Azure Cosmos DB hesabınızda **Veri Gezgini'ni**seçin, **örnek grafiği**genişletin, **Grafiği**seçin ve ardından **Filtre Uygula'yı**seçin. 
 
    ![Azure portalındaki Veri Gezgini'nde yeni belge oluşturma](./media/create-graph-python/azure-cosmosdb-data-explorer-expanded.png)
 
-2. **Sonuçlar** listesinde, grafiğe üç yeni kullanıcı eklendiğine dikkat edin. Köşeleri sürükleyip bırakarak hareket ettirebilir, farenizin tekerleğini kaydırarak öğeleri yakınlaştırabilir ve uzaklaştırabilir, ayrıca çift okla grafiğin boyutunu genişletebilirsiniz. 
+2. **Sonuçlar** listesinde, grafiğe üç yeni kullanıcının eklenmiştir. Köşeleri sürükleyip bırakarak hareket ettirebilir, farenizin tekerleğini kaydırarak öğeleri yakınlaştırabilir ve uzaklaştırabilir, ayrıca çift okla grafiğin boyutunu genişletebilirsiniz. 
 
    ![Azure portalında Veri Gezgini'ndeki grafikte yeni köşeler](./media/create-graph-python/azure-cosmosdb-graph-explorer-new.png)
 
-3. Şimdi birkaç yeni kullanıcı ekleyelim. Grafiğinize veri eklemek için **Yeni köşe** düğmesini seçin.
+3. Şimdi birkaç yeni kullanıcı ekleyelim. Grafiğinize veri eklemek için **Yeni Vertex** düğmesini seçin.
 
    ![Azure portalındaki Veri Gezgini'nde yeni belge oluşturma](./media/create-graph-python/azure-cosmosdb-data-explorer-new-vertex.png)
 
 4. *Kişi* etiketi girin.
 
-5. Aşağıdaki özelliklerden her birini eklemek için **Özellik Ekle** ' yi seçin. Graftaki her kişi için benzersiz özellikler oluşturabileceğinizi görürsünüz. Yalnızca kimliği anahtarı gereklidir.
+5. Aşağıdaki özelliklerin her birini eklemek için **özellik ekle'yi** seçin. Graftaki her kişi için benzersiz özellikler oluşturabileceğinizi görürsünüz. Yalnızca kimliği anahtarı gereklidir.
 
-    anahtar|değer|Notlar
+    anahtar|value|Notlar
     ----|----|----
-    ba|/PK| 
+    Pk|/pk| 
     id|ashley|Köşe için benzersiz tanımlayıcı. Kimlik belirtmezseniz, bir kimlik otomatik olarak oluşturulur.
     cinsiyet|kadın| 
     teknoloji | java | 
@@ -195,32 +195,32 @@ Köşeler ve kenarlar eklendikten sonra artık Veri Gezgini geri dönüp grafiğ
     > [!NOTE]
     > Bu hızlı başlangıçta bölümlenmemiş bir koleksiyon oluşturun. Ancak koleksiyon oluşturma sırasında bir bölüm anahtarı belirterek bölümlendirilmiş bir koleksiyon oluşturursanız, daha sonra bölüm anahtarını her yeni köşede anahtar olarak eklemeniz gerekir. 
 
-6. **Tamam**’ı seçin. Ekranın en altındaki **Tamam** seçeneğini görmek için ekranınızı genişletmeniz gerekebilir.
+6. **Tamam'ı**seçin. Ekranın en altındaki **Tamam** seçeneğini görmek için ekranınızı genişletmeniz gerekebilir.
 
-7. **Yeni köşe** ' i yeniden seçin ve ek bir yeni kullanıcı ekleyin. 
+7. **Yeni Vertex'i** yeniden seçin ve ek bir yeni kullanıcı ekleyin. 
 
 8. *Kişi* etiketi girin.
 
-9. Aşağıdaki özelliklerden her birini eklemek için **Özellik Ekle** ' yi seçin:
+9. Aşağıdaki özelliklerin her birini eklemek için **Özellik Ekle'yi** seçin:
 
-    anahtar|değer|Notlar
+    anahtar|value|Notlar
     ----|----|----
-    ba|/PK| 
+    Pk|/pk| 
     id|rakesh|Köşe için benzersiz tanımlayıcı. Kimlik belirtmezseniz, bir kimlik otomatik olarak oluşturulur.
     cinsiyet|erkek| 
     okul|MIT| 
 
-10. **Tamam**’ı seçin. 
+10. **Tamam'ı**seçin. 
 
-11. Grafikteki tüm değerleri göstermek için varsayılan `g.V()` filtresiyle **Filtre Uygula** düğmesini seçin. Tüm kullanıcılar **Sonuç listesinde** gösterilir. 
+11. Grafikteki **Apply Filter** tüm değerleri görüntülemek `g.V()` için varsayılan filtreyle Filtre Uygula düğmesini seçin. Tüm kullanıcılar **Sonuç listesinde** gösterilir. 
 
-    Daha fazla veri ekledikçe sonuçlarınızı sınırlamak için filtreleri kullanabilirsiniz. Veri Gezgini, varsayılan olarak bir grafikteki tüm köşeleri almak için `g.V()` kullanır. JSON biçimindeki bir grafikteki tüm köşelerin sayımını döndürmek için, bu değeri [ gibi farklı bir ](tutorial-query-graph.md)grafik sorgusu`g.V().count()` olarak değiştirebilirsiniz. Filtreyi değiştirdiyseniz, filtreyi geri `g.V()` olarak değiştirin ve tüm sonuçları yeniden göstermek için **Filtreyi Uygula** ' yı seçin.
+    Daha fazla veri ekledikçe sonuçlarınızı sınırlamak için filtreleri kullanabilirsiniz. Veri Gezgini, varsayılan olarak bir grafikteki tüm köşeleri almak için `g.V()` kullanır. JSON biçimindeki bir grafikteki tüm köşelerin sayımını döndürmek için, bu değeri `g.V().count()` gibi farklı bir [grafik sorgusu](tutorial-query-graph.md) olarak değiştirebilirsiniz. Filtreyi değiştirdiyseniz, filtreyi değiştirin ve tüm sonuçları yeniden görüntülemek için `g.V()` **Filtreyi Uygula'yı** seçin.
 
-12. Artık rakesh ve ashley arasında bağlantı kurabiliriz. **Sonuçlar** listesinde **Ashley** ' in seçili olduğundan emin olun, sonra sağ alt köşedeki **hedefler** ' in yanındaki Düzenle düğmesini seçin. **Özellikler** alanını görmek için pencerenizi genişletmeniz gerekebilir.
+12. Artık rakesh ve ashley arasında bağlantı kurabiliriz. **Sonuçlar** listesinde **ashley'nin** seçildiğinden emin olun, ardından sağ alt taki **Hedefler'in** yanındaki edit düğmesini seçin. **Özellikler** alanını görmek için pencerenizi genişletmeniz gerekebilir.
 
     ![Hedef grafikteki bir köşeyi değiştirme](./media/create-graph-python/azure-cosmosdb-data-explorer-edit-target.png)
 
-13. **Hedef** kutusuna *Rakesh*yazın ve **kenar etiketi** kutusuna *bilir*yazın ve ardından denetimi seçin.
+13. **Hedef** kutusu *türünde tırmık,* ve **Edge etiket** kutusu türü *bilir*ve sonra onay seçin.
 
     ![Veri Gezgininde ashley ve rakesh arasında bir bağlantı ekleyin](./media/create-graph-python/azure-cosmosdb-data-explorer-set-target.png)
 
@@ -240,7 +240,7 @@ Bu işlemle birlikte, bu öğreticideki kaynak oluşturma bölümünü tamamlad�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, bir Azure Cosmos DB hesabı oluşturmayı, Veri Gezgini kullanarak bir grafik oluşturmayı ve grafiğe veri eklemek için bir Python uygulaması çalıştırmayı öğrendiniz. Artık daha karmaşık sorgular oluşturabilir ve Gremlin kullanarak güçlü grafik geçişi mantığını kullanabilirsiniz. 
+Bu hızlı başlangıçta, bir Azure Cosmos DB hesabı oluşturmayı, Veri Gezgini'ni kullanarak bir grafik oluşturmayı ve grafiğe veri eklemek için bir Python uygulamasını çalıştırmayı öğrendiniz. Artık daha karmaşık sorgular derleyebilir ve Gremlin kullanarak güçlü grafik geçişi mantığını kullanabilirsiniz. 
 
 > [!div class="nextstepaction"]
 > [Gremlin kullanarak sorgulama](tutorial-query-graph.md)

@@ -1,142 +1,142 @@
 ---
-title: Azure IoT Central verilerinizi dışarı aktarın | Microsoft Docs
-description: Azure IoT Central uygulamanızdan Azure Event Hubs, Azure Service Bus ve Azure Blob depolama 'ya veri aktarma
+title: Azure IoT Merkezi verilerinizi dışa aktarma | Microsoft Dokümanlar
+description: Azure IoT Merkezi uygulamanızdan verileri Azure Etkinlik Hub'larına, Azure Hizmet Veri Veri Stor'una ve Azure Blob Depolamasına nasıl dışa aktarırım?
 services: iot-central
 author: viv-liu
 ms.author: viviali
 ms.date: 01/30/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: iot-central
 manager: corywink
-ms.openlocfilehash: 0386897b6cecc27781626cfecd6f1f5f8a3752e4
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 725c5acf961fffb1fd4cf9bc17e37a5940f871cc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77524392"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80157917"
 ---
-# <a name="export-iot-data-to-destinations-in-azure"></a>Azure 'da IoT verilerini hedeflere dışarı aktarma
+# <a name="export-iot-data-to-destinations-in-azure"></a>IoT verilerini Azure'daki hedeflere dışa aktarma
 
-*Bu konu, Yöneticiler için geçerlidir.*
+*Bu konu yöneticiler için geçerlidir.*
 
-Bu makalede verilerinizi **azure Event Hubs**, **Azure Service Bus**veya **Azure Blob depolama** örneklerine aktarmak için Azure IoT Central sürekli veri dışa aktarma özelliğinin nasıl kullanılacağı açıklanır. Veriler JSON biçiminde verilir ve Telemetriyi, cihaz bilgilerini ve cihaz şablonu bilgilerini içerebilir. İçin, bu verileri kullan:
+Bu makalede, verilerinizi **Azure Etkinlik Hub'larına,** Azure Hizmet Veri Veri Tos'una veya **Azure Blob depolama** örneklerine aktarmak için Azure IoT Central'daki sürekli veri verme özelliğinin nasıl kullanılacağı açıklanmaktadır. **Azure Service Bus** Veriler JSON biçiminde dışa aktarılır ve telemetri, aygıt bilgileri ve aygıt şablonu bilgilerini içerebilir. Dışa aktarılan verileri aşağıdakiler için kullanın:
 
-- Sıcak yol öngörüleri ve analizi. Bu seçenek, Azure Stream Analytics özel kuralların tetiklenmesi, Azure Logic Apps özel iş akışlarını tetiklenmesi veya dönüştürülecek Azure Işlevleri aracılığıyla geçirilmesidir.
-- Microsoft Power BI 'de Azure Machine Learning veya uzun süreli eğilim analizinde eğitim modelleri gibi soğuk yol analizi.
+- Sıcak yol öngörüleri ve analizler. Bu seçenek, Azure Akış Analizi'nde özel kuralları tetikleme, Azure Logic Apps'ta özel iş akışlarını tetikleme veya dönüştürülmek üzere Azure İşlerinden geçirmeyi içerir.
+- Azure Machine Learning'deki eğitim modelleri veya Microsoft Power BI'de uzun vadeli eğilim analizi gibi soğuk yol analitiği.
 
 > [!Note]
-> Sürekli veri dışarı aktarmayı açtığınızda, yalnızca o andan itibaren verileri alırsınız. Şu anda, sürekli veri dışa aktarma kapalı olduğunda veriler bir saat için alınamaz. Daha fazla geçmiş verileri sürdürmek için sürekli veri dışa aktarmayı erken açın.
+> Sürekli veri dışa aktarmayı açtığınızda, yalnızca o andan itibaren verileri alırsınız. Şu anda, sürekli veri dışa aktarmanın kapalı olduğu bir süre için veriler alınamıyor. Daha fazla geçmiş veri tutmak için, sürekli veri dışa aktarmayı erken açın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-IoT Central uygulamanızda yönetici olmanız veya veri dışa aktarma izinlerinizin olması gerekir.
+IoT Central uygulamanızda yönetici olmalısınız veya Veri verme izinleriniz olmalıdır.
 
-## <a name="set-up-export-destination"></a>Dışarı aktarma hedefini ayarla
+## <a name="set-up-export-destination"></a>İhracat hedefini ayarlama
 
-Sürekli veri dışa aktarmayı yapılandırmadan önce dışa aktarma hedefinin mevcut olması gerekir.
+Sürekli veri dışa aktarmayapılınızı yapılandırmadan önce dışa aktarma hedefinizin bulunması gerekir.
 
-### <a name="create-event-hubs-namespace"></a>Event Hubs ad alanı oluştur
+### <a name="create-event-hubs-namespace"></a>Event Hubs ad alanı oluşturma
 
-Uygulamasına dışarı aktarmak için mevcut bir Event Hubs ad alanınız yoksa, aşağıdaki adımları izleyin:
+Dışa aktaracak varolan bir Olay Hub'ı ad alanınız yoksa aşağıdaki adımları izleyin:
 
-1. [Azure Portal yeni bir Event Hubs ad alanı](https://ms.portal.azure.com/#create/Microsoft.EventHub)oluşturun. [Azure Event Hubs docs](../../event-hubs/event-hubs-create.md)'ta daha fazla bilgi edinebilirsiniz.
+1. Azure [portalında yeni bir Etkinlik Hub'ları ad alanı](https://ms.portal.azure.com/#create/Microsoft.EventHub)oluşturun. [Azure Etkinlik Hub'ları dokümanlarında](../../event-hubs/event-hubs-create.md)daha fazla bilgi edinebilirsiniz.
 
-2. Bir abonelik seçin. IoT Central uygulamanızla aynı abonelikte olmayan diğer aboneliklerdeki verileri dışarı aktarabilirsiniz. Bu durumda bir bağlantı dizesi kullanarak bağlanırsınız.
+2. Bir abonelik seçin. Verileri, IoT Central uygulamanızla aynı abonelikte olmayan diğer aboneliklere aktarabilirsiniz. Bu durumda bir bağlantı dizesi kullanarak bağlanırsınız.
 
-3. Event Hubs ad alanında bir olay hub 'ı oluşturun. Ad alanına gidin ve bir olay hub 'ı örneği oluşturmak için en üstteki **+ Olay Hub 'ını** seçin.
+3. Olay Hub'ları ad alanınızda bir olay hub'ı oluşturun. Ad alanınıza gidin ve olay merkezi örneği oluşturmak için en üstte **+ Event Hub'ı** seçin.
 
-### <a name="create-service-bus-namespace"></a>Hizmet Veri Yolu ad alanı oluşturma
+### <a name="create-service-bus-namespace"></a>Hizmet Veri Günü ad alanı oluşturma
 
-Uygulamasına dışarı aktarmak için mevcut bir Service Bus ad alanınız yoksa, aşağıdaki adımları izleyin:
+Dışa aktaracak varolan bir Hizmet Veri Günü ad alanınız yoksa aşağıdaki adımları izleyin:
 
-1. [Azure Portal yeni bir Service Bus ad alanı](https://ms.portal.azure.com/#create/Microsoft.ServiceBus.1.0.5)oluşturun. [Azure Service Bus docs](../../service-bus-messaging/service-bus-create-namespace-portal.md)' de daha fazla bilgi edinebilirsiniz.
-2. Bir abonelik seçin. IoT Central uygulamanızla aynı abonelikte olmayan diğer aboneliklerdeki verileri dışarı aktarabilirsiniz. Bu durumda bir bağlantı dizesi kullanarak bağlanırsınız.
+1. Azure [portalında yeni](https://ms.portal.azure.com/#create/Microsoft.ServiceBus.1.0.5)bir Hizmet Veri Günü ad alanı oluşturun. [Azure Hizmet Veri Yolu dokümanlarında](../../service-bus-messaging/service-bus-create-namespace-portal.md)daha fazla bilgi edinebilirsiniz.
+2. Bir abonelik seçin. Verileri, IoT Central uygulamanızla aynı abonelikte olmayan diğer aboneliklere aktarabilirsiniz. Bu durumda bir bağlantı dizesi kullanarak bağlanırsınız.
 
-3. Service Bus ad alanına gidin ve en üstteki **+ kuyruk** veya **+ Konu** başlığını seçerek dışarı aktarılacak bir kuyruk veya konu oluşturun.
+3. Hizmet Veri Aracı ad alanınıza gidin ve dışa aktarmak için bir kuyruk veya konu oluşturmak için en üstte **+ Sıra** veya **+ Konu'yu** seçin.
 
-Dışarı aktarma hedefi olarak Service Bus seçtiğinizde, kuyruklar ve konuların oturumları veya yinelenen algılama özelliği etkin olmalıdır. Bu seçeneklerden biri etkinleştirilirse, bazı iletiler kuyruğunuza veya konuya ulaşmayacaktır.
+Dışa aktarma hedefi olarak Servis Veri Servisi'ni seçtiğinizde, kuyrukların ve konuların Oturumlar veya Yinelenen Algılama etkin leştirilmiş olmamalıdır. Bu seçeneklerden biri etkinse, bazı iletiler kuyruğa veya konunuza gelmez.
 
 ### <a name="create-storage-account"></a>Depolama hesabı oluştur
 
-' A dışa aktarılacak mevcut bir Azure depolama hesabınız yoksa, aşağıdaki adımları izleyin:
+Dışa aktaracak varolan bir Azure Depolama hesabınız yoksa aşağıdaki adımları izleyin:
 
-1. [Azure Portal yeni bir depolama hesabı](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)oluşturun. Yeni [Azure Blob depolama hesapları](https://aka.ms/blobdocscreatestorageaccount) veya [Azure Data Lake Storage v2 depolama hesapları](../../storage/blobs/data-lake-storage-quickstart-create-account.md)oluşturma hakkında daha fazla bilgi edinebilirsiniz. Veri dışa aktarma, yalnızca blok bloblarını destekleyen depolama hesaplarına veri yazabilir. Aşağıda, bilinen uyumlu depolama hesabı türlerinin bir listesi verilmiştir: 
+1. Azure [portalında yeni](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)bir depolama hesabı oluşturun. Yeni [Azure Blob Depolama hesapları](https://aka.ms/blobdocscreatestorageaccount) veya [Azure Veri Gölü Depolama v2 depolama hesapları](../../storage/blobs/data-lake-storage-quickstart-create-account.md)oluşturma hakkında daha fazla bilgi edinebilirsiniz. Veri dışa aktarma yalnızca blok blobs destekleyen depolama hesaplarına veri yazabilirsiniz. Bilinen uyumlu depolama hesabı türlerinin listesi aşağıda verilmiştir: 
 
-    |Performans katmanı|Hesap türü|
+    |Performans Katmanı|Hesap Türü|
     |-|-|
-    |Standart|Genel Amaçlı v2|
-    |Standart|Genel Amaçlı v1|
-    |Standart|Blob Storage|
-    |Premium|Blob depolamayı engelle|
+    |Standart|Genel Amaçlı V2|
+    |Standart|Genel Amaçlı V1|
+    |Standart|Blob Depolama|
+    |Premium|Blob Depolamayı Engelle|
 
-2. Depolama hesabınızda bir kapsayıcı oluşturun. Depolama hesabınıza gidin. **BLOB hizmeti**altında **bloblara gözatamıyorum**' ı seçin. Yeni bir kapsayıcı oluşturmak için üst kısımdaki **+ kapsayıcı** ' yı seçin.
+2. Depolama hesabınızda bir kapsayıcı oluşturun. Depolama hesabınıza gidin. **Blob Servisi**altında, **Gözat Blobs**seçin. Yeni bir kapsayıcı oluşturmak için üstkısmında **+ Kapsayıcı'yı** seçin.
 
-## <a name="set-up-continuous-data-export"></a>Sürekli veri dışarı aktarma ayarlama
+## <a name="set-up-continuous-data-export"></a>Sürekli veri dışa aktarma ayarlama
 
-Verilerin dışarı aktarılacağı bir hedef olduğuna göre, sürekli veri dışa aktarma ayarlamak için aşağıdaki adımları izleyin.
+Artık veri aktarmak için bir hedef var, sürekli veri dışa aktarmak için aşağıdaki adımları izleyin.
 
 1. IoT Central uygulamanızda oturum açın.
 
-2. Sol bölmede **veri dışa aktar**' ı seçin.
+2. Sol bölmede Veri **Dışa Aktarma'yı**seçin.
 
     > [!Note]
-    > Sol bölmede veri dışa aktarma 'yı görmüyorsanız, uygulamanızda veri dışarı aktarma yapılandırma izniniz yok demektir. Verilerin dışarı aktarılmasını ayarlamak için bir yöneticiye danışın.
+    > Sol bölmede Veri Dışa Aktarma'yı görmüyorsanız, uygulamanızda veri dışa aktarma yapılandırma izniniz yoktur. Veri dışa aktarma ayarlamak için bir yöneticiyle konuşun.
 
-3. Sağ üst köşedeki **+ Yeni** düğmesini seçin. Dışarı aktarmanın hedefi olarak **azure Event Hubs**, **Azure Service Bus**veya **Azure Blob depolamadan** birini seçin. Uygulama başına en fazla dışarı aktarma sayısı beştir.
+3. Sağ üstteki **+ Yeni** düğmesini seçin. Dışa aktarma noktanız olarak **Azure Etkinlik Hub'larından,** **Azure Hizmet Veri Tos'undan**veya **Azure Blob depolama sununuzdan** birini seçin. Uygulama başına en fazla ihracat sayısı beştir.
 
-    ![Yeni sürekli veri dışa aktarma oluştur](media/howto-export-data/new-export-definition.png)
+    ![Yeni sürekli veri dışa aktarma oluşturma](media/howto-export-data/new-export-definition.png)
 
-4. Aşağı açılan liste kutusunda **Event Hubs ad**alanınızı, **Service Bus ad alanını**, **depolama hesabı ad alanını**seçin veya **bir bağlantı dizesi girin**.
+4. Açılan liste kutusunda, **Olay Hub'larınızı,** Hizmet **Veri Tos ad alanınızı,** **Depolama Hesabı ad alanını**veya bağlantı **dizesini girin'** i seçin.
 
-    - Depolama hesapları, Event Hubs ad alanları ve Service Bus ad alanlarını IoT Central uygulamanızla aynı abonelikte görürsünüz. Bu aboneliğin dışında bir hedefe aktarmak istiyorsanız, **bir bağlantı dizesi girin** ' i seçin ve 5. adıma bakın.
-    - Ücretsiz fiyatlandırma planı kullanılarak oluşturulan uygulamalar için sürekli veri vermeyi yapılandırmanın tek yolu bir bağlantı dizesidir. Ücretsiz fiyatlandırma planındaki uygulamalar ilişkili bir Azure aboneliğine sahip değildir.
+    - IoT Central uygulamanızla aynı abonelikte yalnızca Depolama Hesapları, Olay Hub'ları ad alanları ve Hizmet Veri Mes'leri ad alanlarını görürsünüz. Bu aboneliğin dışındaki bir hedefe dışa aktarmak istiyorsanız, **bağlantı dizesi girin** ve adım 5'e bakın' ı seçin.
+    - Ücretsiz fiyatlandırma planı kullanılarak oluşturulan uygulamalar için, sürekli veri dışa aktarma yapılandırmanın tek yolu bir bağlantı dizesi geçer. Ücretsiz fiyatlandırma planındaki uygulamaların ilişkili bir Azure aboneliği yoktur.
 
-    ![Yeni Olay Hub 'ı oluştur](media/howto-export-data/export-event-hub.png)
+    ![Yeni Etkinlik Hub'ı Oluşturma](media/howto-export-data/export-event-hub.png)
 
-5. Seçim **Bir bağlantı dizesi girin**' i seçerseniz, Bağlantı dizenizi yapıştırmanız için yeni bir kutu belirir. İçin bağlantı dizesini almak için:
-    - Event Hubs veya Service Bus, Azure portal ad alanına gidin.
-        - **Ayarlar**altında, **paylaşılan erişim ilkeleri** ' ni seçin.
-        - Varsayılan **RootManageSharedAccessKey** seçin veya yeni bir tane oluşturun
-        - Birincil veya ikincil bağlantı dizesini kopyalayın
-    - Depolama hesabı, Azure portal depolama hesabına gidin:
-        - **Ayarlar**altında **erişim anahtarları** ' nı seçin.
-        - KEY1 bağlantı dizesini veya key2 bağlantı dizesini kopyalayın
+5. (İsteğe bağlı) **Bağlantı dizesi girin'i**seçtiyseniz, bağlantı dizenizi yapıştırmak için yeni bir kutu görüntülenir. Bağlantı dizesini almak için:
+    - Etkinlik Hub'ları veya Hizmet Veri Servisi, Azure portalındaki ad alanına gidin.
+        - **Ayarlar**altında **Paylaşılan Erişim İlkeleri'ni** seçin
+        - Varsayılan **RootManageSharedAccessKey'i** seçin veya yeni bir tane oluşturun
+        - Birincil veya ikincil bağlantı dizesini kopyalama
+    - Depolama hesabı, Azure portalındaki Depolama hesabına gidin:
+        - **Ayarlar**altında **Access tuşlarını** seçin
+        - Key1 bağlantı dizesini veya key2 bağlantı dizesini kopyalama
 
-6. Aşağı açılan liste kutusundan bir olay hub 'ı, kuyruğu, konuyu veya kapsayıcıyı seçin.
+6. Açılan liste kutusundan bir olay hub'ı, sıra, konu veya kapsayıcı seçin.
 
-7. **Dışarı aktarılacak veriler**' in altında, türü **üzerine**ayarlayarak dışarı aktarılacak veri türlerini seçin.
+7. **Dışa aktarmak için Veri**altında, Türü A.C.'ye ayarlayarak dışa aktarılabilmek için veri türlerini seçin. **On**
 
-8. Sürekli veri dışa aktarmayı açmak için **etkin** geçiş özelliğinin **Açık**olduğundan emin olun. **Kaydet**’i seçin.
+8. Sürekli veri dışa aktarmayı açmak **için, Etkin** geçişinin **A'da**olduğundan emin olun. **Kaydet'i**seçin.
 
-9. Birkaç dakika sonra verileriniz seçtiğiniz hedefte görüntülenir.
+9. Birkaç dakika sonra verileriniz seçtiğiniz hedefte görünür.
 
-## <a name="export-contents-and-format"></a>İçeriği ve biçimi dışarı aktar
+## <a name="export-contents-and-format"></a>İçeriği ve biçimi dışa aktarma
 
-İçe aktarılmış telemetri verileri, yalnızca telemetri değerlerinin kendileri değil, cihazlarınızın IoT Central gönderildiği iletinin tamamını içerir. İçe aktarılmış cihazlar verileri tüm cihazların özelliklerine ve meta verilerine yapılan değişiklikleri içerir ve bu cihaz şablonları tüm cihaz şablonlarında değişiklikler içerir.
+Dışa aktarılan telemetri verileri, aygıtlarınızın Yalnızca telemetri değerlerinin değil, IoT Central'a gönderdiği iletinin tamamını içerir. Dışa aktarılan aygıtverileri tüm aygıtların özelliklerinde ve meta verilerinde değişiklikler içerir ve dışa aktarılan aygıt şablonları tüm aygıt şablonlarında değişiklikler içerir.
 
-Event Hubs ve Service Bus için veriler neredeyse gerçek zamanlı olarak verilir. Veriler gövde özelliğinde bulunur ve JSON biçimindedir (örnekler için aşağıya bakın).
+Olay Hub'ları ve Hizmet Veri Servisi için veriler neredeyse gerçek zamanlı olarak dışa aktarılır. Veriler gövde özelliğinde bulunur ve JSON biçimindedir (örnekler için aşağıya bakın).
 
-BLOB depolama için, veriler dakikada bir kez, son içe aktarma dosyasından bu yana yapılan değişiklikleri içeren her bir dosyayla birlikte verilir. Verilen veriler JSON biçiminde üç klasöre yerleştirilir. Depolama hesabınızdaki varsayılan yollar şunlardır:
+Blob Depolama için, veriler dakikada bir dışa aktarılır ve her dosya son dışa aktarılan dosyadan bu yana değişiklik toplu işlerini içeren bir dosyayla birlikte dışa aktarılır. Dışa aktarılan veriler JSON biçiminde üç klasöre yerleştirilir. Depolama hesabınızdaki varsayılan yollar şunlardır:
 
-- Telemetri: _{Container}/{app-id}/telemetry/{yyyy}/{mm}/{dd}/{hh}/{mm}/{filename}_
-- Cihazlar: _{Container}/{app-id}/Devices/{yyyy}/{mm}/{dd}/{ss}/{mm}/{filename}_
-- Cihaz şablonları: _{Container}/{App-ID}/devicetemplates/{yyyy}/{mm}/{dd}/{ss}/{mm}/{filename}_
+- Telemetri: _{container}/{app-id}/telemetri/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}_
+- Cihazlar: _{container}/{app-id}/devices/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}_
+- Cihaz şablonları: _{container}/{app-id}/deviceTemplates/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}_
 
-Dosyaya giderek ve **blobu Düzenle** sekmesini seçerek Azure Portal dışarıya aktarılmış dosyalara gidebilirsiniz.
+Azure portalında dışa aktarılan dosyalara dosyaya göz atarak ve blob sekmesini **düzenlemeyi** seçerek göz atabilirsiniz.
 
 
 ## <a name="telemetry"></a>Telemetri
 
-Event Hubs ve Service Bus için yeni bir ileti bir cihazdan ileti aldıktan IoT Central sonra hızlı bir şekilde verilir ve her bir dışarıya ileti, bir cihazın JSON biçiminde gövde özelliğinde gönderildiği tam iletiyi içerir.
+Olay Hub'ları ve Hizmet Veri Servisi için, IoT Central bir aygıttan iletiyi aldıktan hemen sonra yeni bir ileti dışa aktarılır ve her dışa aktarılan ileti, aygıtın gövde mülkünde JSON biçiminde gönderdiği tam iletiyi içerir.
 
-BLOB depolama için, iletiler toplu ve dakikada bir kez verilir. İçeri aktarılmış dosyalar, blob depolamaya [IoT Hub ileti yönlendirme tarafından içeri](../../iot-hub/tutorial-routing.md) aktarılmış ileti dosyalarıyla aynı biçimi kullanır. 
+Blob Depolama için iletiler toplu olarak paketlenir ve dakikada bir dışa aktarılır. Dışa aktarılan dosyalar, [IoT Hub ileti yönlendirmesi](../../iot-hub/tutorial-routing.md) tarafından blob depolamasına dışa aktarılan ileti dosyalarıyla aynı biçimi kullanır. 
 
 > [!NOTE]
-> BLOB depolama için, cihazlarınızın `contentType: application/JSON` ve `contentEncoding:utf-8` (veya `utf-16`, `utf-32`) sahip iletiler göndermesini sağlayın. Bir örnek için [IoT Hub belgelerine](../../iot-hub/iot-hub-devguide-routing-query-syntax.md#message-routing-query-based-on-message-body) bakın.
+> Blob Depolama için, `contentType: application/JSON` aygıtlarınızın iletigönderen ve `contentEncoding:utf-8` (veya `utf-16` `utf-32`, ) gönderdiğinden emin olun. Bir örnek için [IoT Hub belgelerine](../../iot-hub/iot-hub-devguide-routing-query-syntax.md#message-routing-query-based-on-message-body) bakın.
 
-Telemetriyi Gönderen cihaz, cihaz KIMLIĞI tarafından temsil edilir (aşağıdaki bölümlere bakın). Cihazların adlarını almak için, cihaz verilerini dışarı aktarın ve cihaz iletisinin **DeviceID** 'Siyle eşleşen **connectiondeviceıd** 'yi kullanarak her iletiyi ilişkilendirin.
+Telemetriyi gönderen aygıt aygıt kimliğiyle temsil edilir (aşağıdaki bölümlere bakın). Aygıtların adlarını almak için aygıt verilerini dışa aktarın ve aygıt iletisinin **aygıtKimliği** ile eşleşen **deviceId bağlantısını** kullanarak her iletiyi ilişkilendirin.
 
-Bu, bir olay hub 'ında veya Service Bus kuyruğu veya konusunun aldığı örnek bir iletidir.
+Bu, bir olay hub'ında veya Servis Veri Servisi kuyruğunda veya konusunda alınan örnek bir iletidir.
 
 ```json
 {
@@ -165,7 +165,7 @@ Bu, bir olay hub 'ında veya Service Bus kuyruğu veya konusunun aldığı örne
 }
 ```
 
-Bu, blob depolamaya aktarılmış bir örnek kaydıdır:
+Bu, blob depolamasına dışa aktarılan bir örnek kayıttır:
 
 ```json
 {
@@ -191,24 +191,24 @@ Bu, blob depolamaya aktarılmış bir örnek kaydıdır:
 
 ## <a name="devices"></a>Cihazlar
 
-Anlık görüntüdeki her ileti veya kayıt, bir cihazdaki bir veya daha fazla değişikliği, son dışarıya alınan iletiden bu yana cihaz ve bulut özelliklerini temsil eder. Buna aşağıdakiler dahildir:
+Anlık görüntüdeki her ileti veya kayıt, son dışa aktarılan iletiden bu yana aygıtta ve aygıtında ve bulut özelliklerinde bir veya daha fazla değişikliği temsil eder. Buna aşağıdakiler dahildir:
 
-- IoT Central cihaz `id`
-- Cihazın `displayName`
-- `instanceOf` cihaz şablonu kimliği
-- `simulated` bayrak, cihaz sanal bir cihaz ise doğru
-- `provisioned` bayrak, cihaz sağlandıysa doğru
-- `approved` bayrak, cihaz veri göndermek üzere onaylanmışsa doğru
+- `id`cihazın IoT Central'daki
+- `displayName`cihazın
+- Aygıt şablonu Kimliği içinde`instanceOf`
+- `simulated`bayrak, cihaz simüle edilmiş bir cihazsa doğru
+- `provisioned`bayrak, cihaz sağlanmış sayılsa doğru
+- `approved`bayrak, cihaz veri göndermek için onaylanmışsa doğru
 - Özellik değerleri
-- Cihaz ve bulut özellikleri değerlerini dahil `properties`
+- `properties`aygıt ve bulut özellikleri değerleri de dahil olmak üzere
 
-Silinen cihazlar aktarılmaz. Şu anda, silinen cihazlar için, aktarılmış iletilerde hiçbir gösterge yok.
+Silinen aygıtlar dışa aktarılmaz. Şu anda, silinen aygıtlar için dışa aktarılan iletilerde gösterge yok.
 
-Event Hubs ve Service Bus için, cihaz verilerini içeren iletiler, IoT Central ' de göründüğü gibi, neredeyse gerçek zamanlı olarak olay hub 'ınıza veya Service Bus kuyruğuna veya konusuna gönderilir. 
+Olay Hub'ları ve Servis Veri Servisi için, aygıt verilerini içeren iletiler, IoT Central'da göründüğü gibi olay merkezinize veya Servis Veri Servisi kuyruğunuza veya konuya neredeyse gerçek zamanlı olarak gönderilir. 
 
-BLOB depolama için, en son yazılan son bir dakikada bir kez aktarıldığından, tüm değişiklikleri içeren yeni bir anlık görüntü
+Blob Depolama için, yazılan son dosyadan bu yana tüm değişiklikleri içeren yeni bir anlık görüntü dakikada bir dışa aktarılır.
 
-Bu, Olay Hub 'ında veya Service Bus kuyruğu veya konusunun cihaz ve özellik verileri hakkında örnek bir iletidir:
+Bu, olay hub'ındaki veya Hizmet Veri İşlemi sırası veya konusundaki aygıtlar ve özellikler verileri yle ilgili örnek bir iletidir:
 
 ```json
 {
@@ -262,7 +262,7 @@ Bu, Olay Hub 'ında veya Service Bus kuyruğu veya konusunun cihaz ve özellik v
 }
 ```
 
-Bu, blob depolamada cihazları ve özellik verilerini içeren örnek bir anlık görüntüdür. İçe aktarılmış dosyalar kayıt başına tek bir satır içerir.
+Bu, Blob Depolama'daki aygıtları ve özellikleri içeren örnek bir anlık görüntüdür. Dışa aktarılan dosyalar kayıt başına tek bir satır içerir.
 
 ```json
 {
@@ -303,23 +303,23 @@ Bu, blob depolamada cihazları ve özellik verilerini içeren örnek bir anlık 
 }
 ```
 
-## <a name="device-templates"></a>Cihaz şablonları
+## <a name="device-templates"></a>Aygıt şablonları
 
-Her ileti veya anlık görüntü kaydı, yayımlanan bir cihaz şablonunda yapılan son dışarıya alınan iletiden itibaren bir veya daha fazla değişikliği temsil eder. Her ileti veya kayıtta gönderilen bilgiler şunları içerir:
+Her ileti veya anlık görüntü kaydı, son dışa aktarılan iletiden bu yana yayımlanmış bir aygıt şablonunda bir veya daha fazla değişikliği temsil eder. Her iletide veya kayda gönderilen bilgiler şunları içerir:
 
-- Yukarıdaki cihazlar akışının `instanceOf` eşleşen cihaz şablonu `id`
-- cihaz şablonunun `displayName`
-- Cihaz, `interfaces`ve telemetri, Özellikler ve komut tanımlarını dahil `capabilityModel`.
-- `cloudProperties` tanımları
-- `capabilityModel` satır içi olarak geçersiz kılmalar ve başlangıç değerleri
+- `id`yukarıdaki aygıt akışıyla `instanceOf` eşleşen aygıt şablonunun
+- `displayName`aygıt şablonunun
+- Onun `interfaces` `capabilityModel` ve telemetri, özellikleri ve komut tanımları da dahil olmak üzere cihaz
+- `cloudProperties`Tanım
+- Geçersiz kılar ve ilk değerler, satır satır`capabilityModel`
 
-Silinen cihaz şablonları aktarılmaz. Şu anda, Silinen cihaz şablonları için, aktarılmış iletilerde hiçbir gösterge yok.
+Silinen aygıt şablonları dışa aktarılmaz. Şu anda, silinen aygıt şablonları için dışa aktarılan iletilerde gösterge bulunmamaktadır.
 
-Event Hubs ve Service Bus için, cihaz şablonu verilerini içeren iletiler, IoT Central ' de göründüğü gibi, neredeyse gerçek zamanlı olarak olay hub 'ınıza veya Service Bus kuyruğuna veya konusuna gönderilir. 
+Olay Hub'ları ve Hizmet Veri Servisi için, aygıt şablonu verilerini içeren iletiler, IoT Central'da göründüğü gibi etkinlik merkezinize veya Servis Veri Servisi kuyruğunuza veya konuya neredeyse gerçek zamanlı olarak gönderilir. 
 
-BLOB depolama için, en son yazılan son bir dakikada bir kez aktarıldığından, tüm değişiklikleri içeren yeni bir anlık görüntü
+Blob Depolama için, yazılan son dosyadan bu yana tüm değişiklikleri içeren yeni bir anlık görüntü dakikada bir dışa aktarılır.
 
-Bu, Olay Hub 'ında veya Service Bus kuyruğu veya konusunun cihaz şablonları verileri hakkında örnek bir iletidir:
+Bu, olay hub'ındaki veya Hizmet Veri İşlemi sırası veya konusundaki aygıt şablonları verileriyle ilgili örnek bir iletidir:
 
 ```json
 {
@@ -444,7 +444,7 @@ Bu, Olay Hub 'ında veya Service Bus kuyruğu veya konusunun cihaz şablonları 
 }
 ```
 
-Bu, blob depolamada cihazları ve özellik verilerini içeren örnek bir anlık görüntüdür. İçe aktarılmış dosyalar kayıt başına tek bir satır içerir.
+Bu, Blob Depolama'daki aygıtları ve özellikleri içeren örnek bir anlık görüntüdür. Dışa aktarılan dosyalar kayıt başına tek bir satır içerir.
 
 ```json
 {
@@ -554,27 +554,27 @@ Bu, blob depolamada cihazları ve özellik verilerini içeren örnek bir anlık 
       }
   }
 ```
-## <a name="data-format-change-notice"></a>Veri biçimi değişiklik bildirimi
+## <a name="data-format-change-notice"></a>Veri biçimi değişikliği bildirimi
 
 > [!Note]
-> Telemetri akış veri biçimi bu değişiklikten etkilenmez. Yalnızca cihazlar ve cihaz şablonu veri akışları etkilenir.
+> Telemetri akışı veri biçimi bu değişiklikten etkilenmez. Yalnızca aygıtlar ve aygıt şablonları veri akışları etkilenir.
 
-Önizleme uygulamanızda *cihazlar* ve *cihaz şablonları* akışları açık olan bir veri dışa aktarma Işlemi varsa, **30 Haziran 2020 tarihine**kadar dışarı aktarmayı güncelleştirmeniz gerekir. Bu, Azure Blob depolama, Azure Event Hubs ve Azure Service Bus dışarı aktarmalar için geçerlidir.
+*Önizleme* uygulamanızda Cihazlar ve *Aygıt şablonları* açık olan varolan bir veri dışa aktarımınız varsa, dışa aktarma nızı **30 Haziran 2020'ye**kadar güncelleştirmeniz gerekir. Bu, Azure Blob Depolama, Azure Etkinlik Hub'ları ve Azure Hizmet Veri Tos'una yapılan dışa aktarmalar için geçerlidir.
 
-1 Şubat 2020 ' den başlayarak, cihazlar ve cihaz şablonları etkin olan uygulamalardaki tüm yeni dışarı aktarımlar yukarıda açıklanan veri biçimine sahip olacaktır. Bundan önce oluşturulan tüm dışarı aktarımlar, 30 Haziran 2020 ' e kadar eski veri biçiminde kalır, bu dışarı aktarmalar bu dışarı aktarma işleminden sonra otomatik olarak yeni veri biçimine geçirilir. Yeni veri biçimi, IoT Central ortak API 'sindeki [cihaz](https://docs.microsoft.com/rest/api/iotcentral/devices/get), [cihaz özelliği](https://docs.microsoft.com/rest/api/iotcentral/devices/getproperties), [cihaz bulutu özelliği](https://docs.microsoft.com/rest/api/iotcentral/devices/getcloudproperties) ve [cihaz şablonu](https://docs.microsoft.com/rest/api/iotcentral/devicetemplates/get) nesneleriyle eşleşir. 
+3 Şubat 2020'den itibaren, Aygıt lar ve Aygıt şablonları etkinleştirilmiş uygulamalardaki tüm yeni dışa aktarımlar yukarıda açıklanan veri biçimine sahip olacaktır. Bundan önce oluşturulan tüm dışa aktarımlar 30 Haziran 2020'ye kadar eski veri biçiminde kalır ve bu süre sonunda bu dışa aktarımlar otomatik olarak yeni veri biçimine geçirilecektir. Yeni veri biçimi, IoT Merkezi genel API'deki [aygıt,](https://docs.microsoft.com/rest/api/iotcentral/devices/get) [aygıt özelliği,](https://docs.microsoft.com/rest/api/iotcentral/devices/getproperties) [aygıt bulut özelliği](https://docs.microsoft.com/rest/api/iotcentral/devices/getcloudproperties) ve aygıt [şablonu](https://docs.microsoft.com/rest/api/iotcentral/devicetemplates/get) nesneleriyle eşleşir. 
  
-**Cihazlar**için eski veri biçimi ve yeni veri biçimi arasındaki önemli farklar şunlardır:
-- cihaz için `@id` kaldırılır, `deviceId` `id` olarak yeniden adlandırılır 
-- Cihazın sağlama durumunu anlatmak için `provisioned` bayrağı eklendi
-- Cihazın onay durumunu anlatmak için `approved` bayrağı eklendi
-- Cihaz ve bulut özellikleri dahil `properties`, ortak API 'deki varlıklarla eşleşir
+**Cihazlar**için, eski veri biçimi ve yeni veri biçimi arasındaki önemli farklar şunlardır:
+- `@id`cihaz için kaldırılır, `deviceId` yeniden adlandırılır`id` 
+- `provisioned`aygıtın sağlama durumunu açıklamak için bayrak eklenir
+- `approved`aygıtın onay durumunu açıklamak için bayrak eklenir
+- `properties`aygıt ve bulut özellikleri de dahil olmak üzere, kamu API'sindeki varlıklarla eşleşir
 
-**Cihaz şablonlarında**, eski veri biçimi ve yeni veri biçimi arasındaki önemli farklar şunlardır:
+**Aygıt şablonları**için, eski veri biçimi ile yeni veri biçimi arasındaki önemli farklar şunlardır:
 
-- cihaz şablonu için `@id` `id` olarak yeniden adlandırıldı
-- cihaz şablonu için `@type` `types`olarak yeniden adlandırılır ve artık bir dizidir
+- `@id`için aygıt şablonu yeniden adlandırıldı`id`
+- `@type`aygıt şablonu için `types`yeniden adlandırılmış ve şimdi bir dizi
 
-### <a name="devices-format-deprecated-as-of-3-february-2020"></a>Cihazlar (biçim 3 Şubat 2020 itibariyle kullanım dışı)
+### <a name="devices-format-deprecated-as-of-3-february-2020"></a>Cihazlar (3 Şubat 2020 itibariyle amortismana hazır)
 ```json
 {
   "@id":"<id-value>",
@@ -619,7 +619,7 @@ Bu, blob depolamada cihazları ve özellik verilerini içeren örnek bir anlık 
 }
 ```
 
-### <a name="device-templates-format-deprecated-as-of-3-february-2020"></a>Cihaz şablonları (biçim 3 Şubat 2020 itibariyle kullanım dışı)
+### <a name="device-templates-format-deprecated-as-of-3-february-2020"></a>Aygıt şablonları (3 Şubat 2020 itibariyle amortismana hazır biçimi)
 ```json
 {
   "@id":"<template-id>",
@@ -753,7 +753,7 @@ Bu, blob depolamada cihazları ve özellik verilerini içeren örnek bir anlık 
 ```
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Artık verilerinizi Azure Event Hubs, Azure Service Bus ve Azure Blob depolama 'ya aktarmayı öğrenmiş olduğunuza göre, sonraki adıma geçin:
+Verilerinizi Azure Etkinlik Hub'larına, Azure Hizmet Veri Veri Ton'una ve Azure Blob Depolamasına nasıl aktaracağınız artık bir sonraki adıma devam edin:
 
 > [!div class="nextstepaction"]
-> [Web kancaları oluşturma](./howto-create-webhooks.md)
+> [Webhooks nasıl oluşturulur](./howto-create-webhooks.md)

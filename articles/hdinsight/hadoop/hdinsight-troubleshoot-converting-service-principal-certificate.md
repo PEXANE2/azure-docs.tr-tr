@@ -1,6 +1,6 @@
 ---
-title: Sertifika içeriğini temele dönüştürme-64-Azure HDInsight
-description: Azure HDInsight 'ta hizmet sorumlusu sertifika içeriğini Base-64 kodlu dize biçimine dönüştürme
+title: Sertifika içeriğini base-64'e dönüştürme - Azure HDInsight
+description: Azure HDInsight'ta hizmet temel sertifika içeriğini temel-64 kodlanmış dize biçimine dönüştürme
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
@@ -8,27 +8,27 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/31/2019
 ms.openlocfilehash: d6119e4f8c651ba482a24f46b44ff15f870858ad
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75894181"
 ---
-# <a name="converting-service-principal-certificate-contents-to-base-64-encoded-string-format-in-hdinsight"></a>HDInsight 'ta hizmet sorumlusu sertifika içeriğini Base-64 kodlu dize biçimine dönüştürme
+# <a name="converting-service-principal-certificate-contents-to-base-64-encoded-string-format-in-hdinsight"></a>HDInsight'ta hizmet temel sertifika içeriğini base-64 kodlanmış dize biçimine dönüştürme
 
-Bu makalede, Azure HDInsight kümeleriyle etkileşim kurarken sorun giderme adımları ve olası çözümleri açıklanmaktadır.
+Bu makalede, Azure HDInsight kümeleriyle etkileşimde olurken sorun giderme adımları ve sorunlarla ilgili olası çözümler açıklanmaktadır.
 
 ## <a name="issue"></a>Sorun
 
-Temel olmayan bir 64 karakteri, ikiden fazla doldurma karakteri veya doldurma karakterleri arasında boşluk olmayan bir karakter içerdiğinden girişin geçerli bir Base-64 dizesi olduğunu belirten bir hata iletisi alırsınız.
+Girişin geçerli bir Base-64 dizesi olmadığını belirten bir hata iletisi alırsınız, çünkü temel olmayan 64 karakter, ikiden fazla dolgu karakteri veya dolgu karakterleri arasında beyaz olmayan bir boşluk karakteri içerir.
 
 ## <a name="cause"></a>Nedeni
 
-Birincil veya ek depolama alanı olarak Data Lake sahip kümeler oluşturmak için PowerShell veya Azure şablon dağıtımı kullanılırken, Data Lake depolama hesabına erişmek için belirtilen hizmet sorumlusu sertifika içerikleri Base-64 biçimindedir. PFX Sertifika içeriklerinin Base-64 kodlu dizeye hatalı dönüştürülmesi bu hataya neden olabilir.
+Birincil veya ek depolama alanı olarak Data Lake olan kümeler oluşturmak için PowerShell veya Azure şablon dağıtımı kullanılırken, Veri Gölü depolama hesabına erişmek için sağlanan hizmet temel sertifika içeriği taban-64 biçimindedir. PFX sertifika içeriğinin base-64 kodlanmış dizesine yanlış dönüştürülmesi bu hataya neden olabilir.
 
-## <a name="resolution"></a>Çözünürlük
+## <a name="resolution"></a>Çözüm
 
-Pfx biçiminde hizmet sorumlusu sertifikası aldıktan sonra (örnek hizmet sorumlusu oluşturma adımları için [buraya](https://github.com/Azure/azure-quickstart-templates/tree/master/201-hdinsight-datalake-store-azure-storage) bakın), sertifika içeriğini base-64 biçimine dönüştürmek Için aşağıdaki C# PowerShell komutunu veya kod parçacığını kullanın.
+Pfx formatında hizmet temel sertifikasını aldıktan sonra (örnek hizmet temel oluşturma adımları için [buraya](https://github.com/Azure/azure-quickstart-templates/tree/master/201-hdinsight-datalake-store-azure-storage) bakın), sertifika içeriğini base-64 biçimine dönüştürmek için aşağıdaki PowerShell komutunu veya C# snippet'i kullanın.
 
 ```powershell
 $servicePrincipalCertificateBase64 = [System.Convert]::ToBase64String([System.IO.File]::ReadAllBytes(path-to-servicePrincipalCertificatePfxFile))
@@ -54,10 +54,10 @@ namespace ConsoleApplication
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Sorununuzu görmüyorsanız veya sorununuzu çözemediyseniz, daha fazla destek için aşağıdaki kanallardan birini ziyaret edin:
+Sorununuzu görmediyseniz veya sorununuzu çözemiyorsanız, daha fazla destek için aşağıdaki kanallardan birini ziyaret edin:
 
-* Azure [topluluk desteği](https://azure.microsoft.com/support/community/)aracılığıyla Azure uzmanlarından yanıt alın.
+* [Azure Topluluk Desteği](https://azure.microsoft.com/support/community/)aracılığıyla Azure uzmanlarından yanıtlar alın.
 
-* [@AzureSupport](https://twitter.com/azuresupport) ile bağlanma-Azure Community 'yi doğru kaynaklara bağlayarak müşteri deneyimini iyileştirmeye yönelik resmi Microsoft Azure hesabı: yanıtlar, destek ve uzmanlar.
+* [@AzureSupport](https://twitter.com/azuresupport) Azure topluluğunu doğru kaynaklara bağlayarak müşteri deneyimini geliştirmek için resmi Microsoft Azure hesabına bağlanın: yanıtlar, destek ve uzmanlar.
 
-* Daha fazla yardıma ihtiyacınız varsa [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **destek** ' i seçin veya **Yardım + Destek** hub 'ını açın. Daha ayrıntılı bilgi için lütfen [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)konusunu inceleyin. Abonelik yönetimi ve faturalandırma desteği 'ne erişim Microsoft Azure aboneliğinize dahildir ve [Azure destek planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla teknik destek sağlanır.
+* Daha fazla yardıma ihtiyacınız varsa, [Azure portalından](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **Destek'i** seçin veya **Yardım + destek** merkezini açın. Daha ayrıntılı bilgi için lütfen [Azure destek isteği nin nasıl oluşturulabildiğini](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)gözden geçirin. Abonelik Yönetimi'ne erişim ve faturalandırma desteği Microsoft Azure aboneliğinize dahildir ve Teknik Destek Azure [Destek Planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla sağlanır.

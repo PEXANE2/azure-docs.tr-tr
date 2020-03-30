@@ -1,6 +1,6 @@
 ---
-title: Azure VMware çözümleri (AVS)-Şirket içi iş yükleri için AVS özel bulutunu olağanüstü durum sitesi olarak kullanın
-description: Şirket içi VMware iş yükleri için AVS özel bulutunuzu bir olağanüstü durum kurtarma sitesi olarak ayarlamayı açıklar
+title: CloudSimple tarafından Azure VMware Çözümü - Şirket içi iş yükleri için özel bulutu felaket sitesi olarak kullanın
+description: CloudSimple Private Cloud'unuzu şirket içi VMware iş yükleri için olağanüstü durum kurtarma sitesi olarak nasıl ayarlayişlerinizi açıklar
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/20/2019
@@ -8,91 +8,91 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: e5ee43af97e79f1e835787d61bd79cfb256ef445
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.openlocfilehash: 0e019a9229b671be2fb73e758bd39f33657bc2d4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77083139"
 ---
-# <a name="set-up-avs-private-cloud-as-a-disaster-recovery-site-for-on-premises-vmware-workloads"></a>Şirket içi VMware iş yükleri için AVS özel bulutunu olağanüstü durum kurtarma sitesi olarak ayarlama
+# <a name="set-up-cloudsimple-private-cloud-as-a-disaster-recovery-site-for-on-premises-vmware-workloads"></a>CloudSimple Private Cloud'u şirket içi VMware iş yükleri için olağanüstü durum kurtarma sitesi olarak ayarlama
 
-AVS özel bulutunuz, bir olağanüstü durum durumunda iş sürekliliği sağlamak üzere şirket içi uygulamalar için bir kurtarma sitesi olarak ayarlanabilir. Kurtarma çözümü, çoğaltma ve düzenleme platformu olarak sanal çoğaltmayı temel alır. Kritik altyapı ve uygulama sanal makineleri, şirket içi vCenter 'ınızdan AVS özel bulutuna sürekli olarak çoğaltılabilir. Yük devretme testi için AVS özel bulutunuzu kullanabilir ve bir olağanüstü durum sırasında uygulamanızın kullanılabilirliğini sağlayabilirsiniz. Benzer bir yaklaşım, bir kurtarma sitesi tarafından farklı bir konumda korunan bir birincil site olarak AVS özel bulutunu ayarlamak için de izlenebilir.
+CloudSimple Private Cloud'unuzun, bir felaket durumunda iş sürekliliği sağlamak için şirket içi uygulamalar için bir kurtarma sitesi olarak kurulabilir. Kurtarma çözümü çoğaltma ve orkestrasyon platformu olarak Zerto Sanal Çoğaltma dayanmaktadır. Kritik altyapı ve uygulama sanal makineleri, şirket içi vCenter'ınızdan Özel Bulut'unuza sürekli olarak çoğaltılabilir. Özel Bulut'unuzu başarısız test için ve bir felaket sırasında uygulamanızın kullanılabilirliğini sağlamak için kullanabilirsiniz. Özel Bulut'u farklı bir konumdaki bir kurtarma sitesi tarafından korunan birincil site olarak ayarlamak için benzer bir yaklaşım izlenebilir.
 
 > [!NOTE]
-> Olağanüstü durum kurtarma ortamınızı boyutlandırmayla ilgili yönergeler için, [sanal çoğaltmaya yönelik boyutlandırma konularını](https://s3.amazonaws.com/zertodownload_docs/5.5U3/Zerto%20Virtual%20Replication%20Sizing.pdf) belgelemek için Zerto bölümüne bakın.
+> Afet kurtarma ortamınızı boyutlandırma yönergeleri için [Zerto](https://s3.amazonaws.com/zertodownload_docs/5.5U3/Zerto%20Virtual%20Replication%20Sizing.pdf) belgesinde Dikkat Edilmesi Gerekenler'a bakın.
 
-AVS çözümü:
+CloudSimple çözümü:
 
-* Özellikle olağanüstü durum kurtarma (DR) için bir veri merkezini ayarlama gereksinimini ortadan kaldırır.
-* , Dünya çapındaki coğrafi esnekliği için AVS 'nin dağıtıldığı Azure konumlarından yararlanmanızı sağlar.
-* , DR için dağıtım maliyetlerini ve toplam sahiplik maliyetini azaltmaya yönelik bir seçenek sunar.
+* Olağanüstü durum kurtarma (DR) için özel olarak bir veri merkezi kurma gereksinimini ortadan kaldırır.
+* CloudSimple'ın dünya çapında coğrafi esneklik için dağıtıldığı Azure konumları'ndan yararlanmanızı sağlar.
+* Dr için dağıtım maliyetlerini ve toplam sahip olma maliyetini azaltma seçeneği sunar.
 
-Çözüm şunları yapmanızı gerektirir:
+Çözüm şunları gerektirir:
 
-* AVS özel bulutunuzda zera 'yı yüklemek, yapılandırmak ve yönetmek.
-* AVS özel bulutu korumalı site olduğunda, Zerto için kendi lisanslarınızı belirtin. Şirket içi sitenizin lisans verme ile AVS sitesinde çalışır şekilde eşleşmesini sağlayabilirsiniz.
+* Özel Bulut'unuzda Zerto'ya yükleyin, yapılandırın ve yönetin.
+* Özel Bulut korunan site olduğunda Zerto için kendi lisanslarınızı sağlayın. CloudSimple sitesinde çalışan Zerto'yu lisans lama için şirket içi sitenizle eşleştirebilirsiniz.
 
-Aşağıdaki şekilde, Zerto çözümünün mimarisi gösterilmektedir.
+Aşağıdaki şekil Zerto çözeltisinin mimarisini göstermektedir.
 
 ![Mimari](media/cloudsimple-zerto-architecture.png)
 
-## <a name="how-to-deploy-the-solution"></a>Çözümü dağıtma
+## <a name="how-to-deploy-the-solution"></a>Çözüm nasıl dağıtılır?
 
-Aşağıdaki bölümlerde, AVS özel bulutunuzda Zerto sanal çoğaltma kullanılarak bir DR çözümünün nasıl dağıtılacağı açıklanır.
+Aşağıdaki bölümlerde, Özel Bulut'unuzda Zerto Sanal Çoğaltma'yı kullanarak bir DR çözümünüzün nasıl dağıtılanılabildiğini açıklayınız.
 
-1. [Önkoşullar](#prerequisites)
-2. [AVS özel bulutunuzda isteğe bağlı yapılandırma](#optional-configuration-on-your-avs-private-cloud)
-3. [AVS özel bulutunuzda ZVM ve VRA 'yi ayarlama](#set-up-zvm-and-vra-on-your-avs-private-cloud)
-4. [Sanal koruma grubunu ayarla](#set-up-zerto-virtual-protection-group)
+1. [Ön koşullar](#prerequisites)
+2. [CloudSimple Private Cloud'da isteğe bağlı yapılandırma](#optional-configuration-on-your-private-cloud)
+3. [CloudSimple Private Cloud'da ZVM ve VRA'yı ayarlama](#set-up-zvm-and-vra-on-your-private-cloud)
+4. [Zerto Sanal Koruma Grubu'nun kurulumu](#set-up-zerto-virtual-protection-group)
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
-Şirket içi ortamınızdan AVS özel bulutuna sanal çoğaltma gerçekleştirmek için aşağıdaki önkoşulları izleyin.
+Zerto Sanal Çoğaltma'yı şirket içi ortamınızdan Özel Bulut'unuza sağlamak için aşağıdaki ön koşulları tamamlayın.
 
-1. Şirket [içi ağınız ve AVS özel bulutunuz arasında siteden sıteye VPN bağlantısı kurun](set-up-vpn.md).
-2. [AVS özel bulut yönetimi BILEŞENLERINIZIN AVS özel bulut DNS sunucularına iletilmesi IÇIN DNS aramasını ayarlayın](on-premises-dns-setup.md). DNS aramasının iletilmesini etkinleştirmek için, şirket içi DNS sunucunuzda `*.cloudsimple.io` AVS DNS sunucularına yönelik bir iletme bölgesi girişi oluşturun.
-3. Şirket içi vCenter bileşenlerinin şirket içi DNS sunucularına iletilmesi için DNS aramasını ayarlayın. DNS sunucularının, siteden siteye VPN üzerinden AVS özel bulutunuzda erişilebilir olması gerekir. Yardım almak için aşağıdaki bilgileri sağlayarak bir [destek isteği](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)gönderebilirsiniz. 
+1. [Şirket içi ağınızla CloudSimple Private Cloud'unuz arasında Siteden Siteye VPN bağlantısı kurun.](set-up-vpn.md)
+2. [Özel Bulut yönetimi bileşenlerinizin Özel Bulut DNS sunucularına iletilmesi için DNS aramasını ayarlayın.](on-premises-dns-setup.md)  DNS aramasının iletilmesini etkinleştirmek için, `*.cloudsimple.io` şirket içi DNS sunucunuzda CloudSimple DNS sunucularına bir yönlendirme bölgesi girişi oluşturun.
+3. Şirket içi vCenter bileşenlerinin şirket içi DNS sunucularına iletilmesi için DNS aramasını ayarlayın.  DNS sunucularına Siteden Siteye VPN üzerinden CloudSimple Private Cloud'unuzdan erişilebilmelidir. Yardım için, aşağıdaki bilgileri sağlayarak bir [destek isteği](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)gönderin.  
 
     * Şirket içi DNS etki alanı adı
-    * Şirket içi DNS sunucusu IP adresleri
+    * Şirket içi DNS sunucu IP adresleri
 
-4. AVS özel bulutunuzda bir Windows Server yükler. Sunucu, Virtual Manager 'ı yüklemek için kullanılır.
-5. [AVS ayrıcalıklarınızı ilerletin](escalate-private-cloud-privileges.md).
-6. Sanal yönetici için hizmet hesabı olarak kullanılacak yönetim rolüyle AVS özel bulut vCenter 'unuzda yeni bir kullanıcı oluşturun.
+4. Özel Bulut'unuza bir Windows sunucusu yükleyin. Sunucu Zerto Virtual Manager yüklemek için kullanılır.
+5. [CloudSimple ayrıcalıklarınızı artırın.](escalate-private-cloud-privileges.md)
+6. Zerto Virtual Manager'ın hizmet hesabı olarak kullanılacak yönetim rolüyle Private Cloud vCenter'ınızda yeni bir kullanıcı oluşturun.
 
-### <a name="optional-configuration-on-your-avs-private-cloud"></a>AVS özel bulutunuzda isteğe bağlı yapılandırma
+### <a name="optional-configuration-on-your-private-cloud"></a>Özel Bulut'unuzda isteğe bağlı yapılandırma
 
-1. Şirket içi ortamınızdan VM 'Ler için hedef kaynak havuzları olarak kullanmak üzere AVS özel bulut vCenter 'unuzda bir veya daha fazla kaynak havuzu oluşturun.
-2. Şirket içi ortamınızdan VM 'Ler için hedef klasör olarak kullanmak üzere AVS özel bulut vCenter 'unuzda bir veya daha fazla klasör oluşturun.
-3. Yük devretme ağı için VLAN oluşturun ve güvenlik duvarı kuralları ayarlayın. Yardım için bir [destek isteği](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) açın.
-4. VM 'lerin yük devretmesini test etmek için yük devretme ağı ve test ağı için dağıtılmış bağlantı noktası grupları oluşturun.
-5. [DHCP ve DNS sunucularını](dns-dhcp-setup.md) yükler veya AVS özel bulut ortamınızda bir Active Directory etki alanı denetleyicisi kullanın.
+1. Özel Bulut vCenter'ınızda, şirket içi ortamınızdan VM'ler için hedef kaynak havuzları olarak kullanmak üzere bir veya daha fazla kaynak havuzu oluşturun.
+2. Özel Bulut vCenter'ınızda, şirket içi ortamınızdan VM'ler için hedef klasör olarak kullanmak üzere bir veya daha fazla klasör oluşturun.
+3. Failover ağı için VN'ler oluşturun ve güvenlik duvarı kuralları ayarlayın. Yardım için bir [destek isteği](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) açın.
+4. Başarısız ağ ve Test ağı için dağıtılmış bağlantı noktası grupları oluşturun ve VM'lerin başarısız lığı test edin.
+5. [DHCP ve DNS sunucularını](dns-dhcp-setup.md) yükleyin veya Özel Bulut ortamınızda bir Active Directory etki alanı denetleyicisi kullanın.
 
-### <a name="set-up-zvm-and-vra-on-your-avs-private-cloud"></a>AVS özel bulutunuzda ZVM ve VRA 'yi ayarlama
+### <a name="set-up-zvm-and-vra-on-your-private-cloud"></a>Özel Bulutunuzda ZVM ve VRA'yı ayarlama
 
-1. AVS özel bulutunuzda Windows Server 'daki sanal yönetici (ZVM) uygulamasını yükler.
-2. Önceki adımlarda oluşturulan hizmet hesabını kullanarak ZVM 'de oturum açın.
-3. Zerto Virtual Manager için lisanslama ayarlayın.
-4. AVS özel bulutunuzun ESXi konaklarına sanal çoğaltma gereci 'nı (VRA) yükler.
-5. AVS özel bulut ZVM 'nizi şirket içi ZVM 'niz ile eşleştirin.
+1. Özel Bulut'unuzdaki Windows sunucusuna Zerto Virtual Manager'ı (ZVM) yükleyin.
+2. Önceki adımlarda oluşturulan hizmet hesabını kullanarak ZVM'de oturum açın.
+3. Zerto Virtual Manager için lisans ayarlayın.
+4. Zerto Sanal Çoğaltma Cihazı'nı (VRA) Özel Bulut'unuzun ESXi ana bilgisayarlarına yükleyin.
+5. Özel Bulut ZVM'nizi şirket içi ZVM'nizle eşleştirin.
 
-### <a name="set-up-zerto-virtual-protection-group"></a>Sanal koruma grubunu ayarla
+### <a name="set-up-zerto-virtual-protection-group"></a>Zerto Sanal Koruma Grubu'nun kurulumu
 
-1. Yeni bir sanal koruma grubu (VPG) oluşturun ve VPG için önceliği belirtin.
+1. Yeni bir Sanal Koruma Grubu (VPG) oluşturun ve VPG için önceliği belirtin.
 2. İş sürekliliği için koruma gerektiren sanal makineleri seçin ve gerekirse önyükleme sırasını özelleştirin.
-3. AVS özel bulutunuz olarak kurtarma sitesini ve varsayılan kurtarma sunucusunu, AVS özel bulut kümesi veya oluşturduğunuz kaynak grubu olarak seçin. AVS özel bulutunuzda kurtarma veri deposu için **Vsandatastore** ' i seçin.
+3. Kurtarma sitesini Özel Bulut'unuz, varsayılan kurtarma sunucusunu da Özel Bulut kümesi veya oluşturduğunuz kaynak grubu olarak seçin. Özel Bulut'unuzdaki kurtarma veri deposu için **vsanDatastore'u** seçin.
 
     ![VPG](media/cloudsimple-zerto-vpg.png)
 
     > [!NOTE]
-    > VM ayarları seçeneğinde tek tek VM 'Ler için konak seçeneğini özelleştirebilirsiniz.
+    > VM Ayarları seçeneği altında tek tek VM'ler için ana bilgisayar seçeneğini özelleştirebilirsiniz.
 
-4. Depolama seçeneklerini gereken şekilde özelleştirin.
-5. Daha önce oluşturulan dağıtılmış bağlantı noktası grupları olarak yük devretme ağı ve yük devretme testi ağı için kullanılacak kurtarma ağlarını belirtin ve kurtarma betiklerini gerektiği gibi özelleştirin.
-6. Gerekirse ayrı VM 'Ler için ağ ayarlarını özelleştirin ve VPG 'yi oluşturun.
-7. Çoğaltma tamamlandıktan sonra yük devretmeyi test edin.
+4. Depolama seçeneklerini gerektiği gibi özelleştirin.
+5. Daha önce oluşturulan dağıtılmış bağlantı noktası grupları olarak başarısız ağ ve başarısız test ağı için kullanılacak kurtarma ağlarını belirtin ve kurtarma komut dosyalarını gerektiği gibi özelleştirin.
+6. Gerekirse tek tek VM'ler için ağ ayarlarını özelleştirin ve VPG'yi oluşturun.
+7. Çoğaltma tamamlandıktan sonra test başarısız.
 
 ## <a name="reference"></a>Başvuru
 
-[Zerto belgeleri](https://www.zerto.com/myzerto/technical-documentation/)
+[Zerto Dokümantasyon](https://www.zerto.com/myzerto/technical-documentation/)

@@ -1,6 +1,6 @@
 ---
-title: Internet çözümleyici Istemcisini Ekle | Microsoft Docs
-description: Bu makalede, uygulamanıza Internet Çözümleyicisi JavaScript istemcisini nasıl katıştıracağınızı öğrenin.
+title: Gömme İnternet Çözümleyici İstemci | Microsoft Dokümanlar
+description: Bu makalede, internet çözümleyicijavascript istemcisini uygulamanıza nasıl gömeriz öğrenin.
 services: internet-analyzer
 author: mattcalder
 ms.service: internet-analyzer
@@ -8,15 +8,15 @@ ms.topic: quickstart
 ms.date: 10/16/2019
 ms.author: mebeatty
 ms.openlocfilehash: f9ecb8d731945847160b49c68c554fafdd7285d9
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74896377"
 ---
-# <a name="embed-the-internet-analyzer-client"></a>Internet çözümleyici istemcisini katıştırma
+# <a name="embed-the-internet-analyzer-client"></a>Internet Analyzer istemcisini gömme
 
-Bu makalede JavaScript istemcisini uygulamanıza nasıl katıştırabileceğinizi gösterir. Bu istemcinin yüklenmesi, testleri çalıştırmak ve karne analizlerini almak için gereklidir. **Profile özgü JavaScript istemcisi, ilk test yapılandırıldıktan sonra sağlanır.** Buradan, yeni bir komut dosyası eklemeye gerek kalmadan bu profile test ekleme veya kaldırma işlemine devam edebilirsiniz. Internet çözümleyici hakkında daha fazla bilgi için bkz. [genel bakış](internet-analyzer-overview.md). 
+Bu makalede, uygulamanıza JavaScript istemcisini nasıl gömersiniz gösterilmektedir. Bu istemcinin yüklenmesi testleri çalıştırmak ve karne analizi almak için gereklidir. **Profile özel JavaScript istemcisi, ilk test yapılandırıldıktan sonra sağlanır.** Buradan, yeni bir komut dosyası katıştırmak zorunda kalmadan bu profile testler eklemeye veya kaldırmaya devam edebilirsiniz. Internet Analyzer hakkında daha fazla bilgi için [genel bakışa](internet-analyzer-overview.md)bakın. 
 
 > [!IMPORTANT]
 > Bu genel önizleme bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılmamalıdır. Belirli özellikler desteklenmiyor olabilir, kısıtlı yeteneklere sahip olabilir veya tüm Azure konumlarında mevcut olmayabilir. Ayrıntılar için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
@@ -24,15 +24,15 @@ Bu makalede JavaScript istemcisini uygulamanıza nasıl katıştırabileceğiniz
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Internet Çözümleyicisi 'nin doğru çalışması için Azure 'a ve diğer Microsoft hizmetlerine erişimi olması gerekir. İstemciyi gömmeden önce lütfen `fpc.msedge.net` ve önceden yapılandırılmış uç nokta URL 'Lerine ( [CLI](internet-analyzer-cli.md)aracılığıyla görünür) ağ erişimine izin verin.
+Internet Analyzer'ın düzgün çalışması için Azure ve diğer Microsoft hizmetlerine erişim gerektirir. İstemciyi gömmeden önce, lütfen ağ erişimine `fpc.msedge.net` ve önceden yapılandırılmış uç nokta URL'lerine [(CLI](internet-analyzer-cli.md)aracılığıyla görünür) izin verin.
 
-## <a name="find-the-client-script-url"></a>İstemci komut dosyası URL 'sini bulma
+## <a name="find-the-client-script-url"></a>İstemci komut dosyası URL'sini bulma
 
-Betik URL 'SI, bir test yapılandırıldıktan sonra Azure portal veya Azure CLı aracılığıyla bulunabilir. Daha fazla bilgi için bkz. [Internet çözümleyici kaynağı oluşturma](internet-analyzer-create-test-portal.md).
+Komut dosyası URL'si, bir test yapıldıktan sonra Azure portalı veya Azure CLI aracılığıyla bulunabilir. Daha fazla bilgi için [bkz.](internet-analyzer-create-test-portal.md)
 
-1\. Seçenek Azure portal, [Bu bağlantıyı](https://aka.ms/InternetAnalyzerPreviewPortal) kullanarak Azure Internet Çözümleyicisi için Önizleme portalı sayfasını açın. **Ayarlar > yapılandırması**' na gıderek betik URL 'sini görmek Için Internet Çözümleyicisi profilinize gidin.
+1. Seçenek Azure portalında, Azure Internet Analyzer için önizleme portalı sayfasını açmak için [bu bağlantıyı](https://aka.ms/InternetAnalyzerPreviewPortal) kullanın. **Ayarlar > Yapılandırma'ya**giderek komut dosyası URL'sini görmek için Internet Analyzer profilinize gidin.
 
-2\. Seçenek Azure CLı 'yı kullanarak `scriptFileUri` özelliğini denetleyin.
+2. Seçenek Azure CLI'yi kullanarak `scriptFileUri` Özelliği denetleyin.
 ```azurecli-interactive
     az extension add --name internet-analyzer    
     az internet-analyzer test list --resource-group "MyInternetAnalyzerResourceGroup" --profile-name "MyInternetAnalyzerProfile"
@@ -40,14 +40,14 @@ Betik URL 'SI, bir test yapılandırıldıktan sonra Azure portal veya Azure CL�
 
 ## <a name="client-details"></a>İstemci ayrıntıları
 
-Betik, özel olarak profil ve testleriniz için oluşturulur. Yüklendikten sonra betik 2 saniyelik bir gecikmeyle yürütülür. İlk olarak, testlerinizde yapılandırılan uç noktaların listesini getirmek için Internet Çözümleyicisi hizmetiyle iletişim kurar. Daha sonra ölçümleri çalıştırır ve zamanlanan sonuçları Internet çözümleyici hizmetine geri yükler.
+Komut dosyası profiliniz ve testler için özel olarak oluşturulur. Yüklendikten sonra komut dosyası 2 saniyelik bir gecikmeyle yürütülür. Önce, testlerinizde yapılandırılan uç noktaların listesini almak için Internet Analyzer hizmetiyle bağlantı kurun. Daha sonra ölçümleri çalıştırır ve zamanlanmış sonuçları Internet Analyzer hizmetine geri yükler.
 
 ## <a name="client-examples"></a>İstemci örnekleri
 
-Bu örneklerde, istemci JavaScript 'ı Web sayfanıza veya uygulamanıza eklemek için birkaç temel yöntem gösterilmektedir. Betik URL 'SI için örnek bir profil KIMLIĞI olarak `0bfcb32638b44927935b9df86dcfe397` kullanırız.
+Bu örnekler, istemci JavaScript'i web sayfanıza veya uygulamanıza yerleştirmek için birkaç temel yöntem gösterir. Komut `0bfcb32638b44927935b9df86dcfe397` dosyası URL'si için örnek profil kimliği olarak kullanırız.
 
-### <a name="run-on-page-load"></a>Sayfa yükleme sırasında Çalıştır
-En basit yöntem, meta etiketi bloğunun içindeki komut dosyası etiketini kullanmaktır. Bu etiket, sayfa yüküne göre betiği çalıştırır.
+### <a name="run-on-page-load"></a>Sayfa yükünde çalıştır
+En basit yöntem, meta etiket bloğunun içindeki komut dosyası etiketini kullanmaktır. Bu etiket, sayfa başına bir kez komut dosyası yürütülür.
 
 ```html
 <html>
@@ -60,4 +60,4 @@ En basit yöntem, meta etiketi bloğunun içindeki komut dosyası etiketini kull
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Internet ÇÖZÜMLEYICISI SSS](internet-analyzer-faq.md) makalesini okuyun
+Internet [Analyzer SSS'yi](internet-analyzer-faq.md) okuyun

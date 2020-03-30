@@ -1,5 +1,5 @@
 ---
-title: Microsoft tarafından platform uygulama hesaplarını değiştirme | Mavisi
+title: Microsoft'u tanımlama platformu uygulama hesaplarını değiştirin | Azure
 description: Kimlerin veya hangi hesapların uygulamaya erişebileceğini değiştirmek için Microsoft kimlik platformuyla kayıtlı bir uygulama yapılandırın.
 services: active-directory
 author: rwike77
@@ -12,34 +12,34 @@ ms.date: 05/08/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 56771658380e0a5b946c3acc70df98a262561b5c
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.openlocfilehash: 94fed6f4aa62c7e649cf7d644e571b30561e0da4
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77160698"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80050237"
 ---
-# <a name="quickstart-modify-the-accounts-supported-by-an-application"></a>Hızlı başlangıç: bir uygulama tarafından desteklenen hesapları değiştirme
+# <a name="quickstart-modify-the-accounts-supported-by-an-application"></a>Hızlı başlatma: Bir uygulama tarafından desteklenen hesapları değiştirme
 
 Bir uygulamayı Microsoft kimlik platformunda kaydederken uygulamaya yalnızca kuruluşunuzdaki kullanıcılar tarafından erişim sağlanmasını isteyebilirsiniz. Alternatif olarak, uygulamanızın dış kuruluşlardaki kullanıcılar tarafından veya dış kuruluşlardaki kullanıcılar ve bir kuruluşun parçası olmayan kullanıcılar (kişisel hesaplar) tarafından da erişilebilir olmasını isteyebilirsiniz.
 
 Bu hızlı başlangıçta, kimlerin veya hangi hesapların uygulamaya erişebileceğini değiştirmek için uygulamanızın yapılandırmasını değiştirmeyi öğreneceksiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Başlamak için aşağıdaki önkoşulları karşıladığınızdan emin olun:
+Başlamak için aşağıdaki önkoşulları tamamladığınızdan emin olun:
 
 * Diğer kullanıcılar veya uygulamalar tarafından kullanılması gereken uygulamaları derleme konusunda önemli olan desteklenen [izinler ve onaylar](v2-permissions-and-consent.md) hakkında bilgi edinin.
-* Uygulamaların kaydedilmiş olduğu bir kiracı kullanın.
+* Kaydedilmiş uygulamaları olan bir kiracısı olma.
   * Kayıtlı uygulama yoksa, [Microsoft kimlik platformu ile uygulamaları kaydetmeyi öğrenin](quickstart-register-app.md).
 
 ## <a name="sign-in-to-the-azure-portal-and-select-the-app"></a>Azure portalında oturum açın ve uygulamayı seçin
 
 Uygulamayı yapılandırmadan önce, aşağıdaki adımları izleyin:
 
-1. Bir iş veya okul hesabı ya da kişisel Microsoft hesabınızı kullanarak [Azure portalında](https://portal.azure.com) oturum açın.
-1. Hesabınız birden fazla Azure AD kiracısına erişim sunuyorsa sağ üst köşeden hesabınızı seçin ve portal oturumunuzu kullanmak istediğiniz Azure AD kiracısına ayarlayın.
-1. Sol taraftaki Gezinti bölmesinde **Azure Active Directory** hizmetini seçin ve **uygulama kayıtları**' i seçin.
+1. Bir iş veya okul hesabını ya da kişisel bir Microsoft hesabını kullanarak [Azure portalında](https://portal.azure.com) oturum açın.
+1. Hesabınız size birden fazla Azure AD kiracısına erişim sunuyorsa sağ üst köşeden hesabınızı seçin ve portal oturumunuzu istediğiniz Azure AD kiracısına ayarlayın.
+1. Sol daki gezinti bölmesinde Azure **Active Directory** hizmetini seçin ve ardından **Uygulama kayıtlarını**seçin.
 1. Yapılandırmak istediğiniz uygulamayı bulun ve seçin. Uygulamayı seçtiğinizde, uygulamanın **Genel Bakış** veya ana kayıt sayfasını görürsünüz.
 1. [Uygulama kaydını farklı hesapları destekleyecek şekilde değiştirme](#change-the-application-registration-to-support-different-accounts) adımlarını izleyin.
 1. Tek sayfalı bir uygulamanız varsa, [OAuth 2.0 örtük onayını etkinleştirin](#enable-oauth-20-implicit-grant-for-single-page-applications).
@@ -49,7 +49,7 @@ Uygulamayı yapılandırmadan önce, aşağıdaki adımları izleyin:
 Kuruluşunuzun dışındaki müşterilerinize veya iş ortaklarınıza sunmak istediğiniz bir uygulama yazıyorsanız Azure portalda uygulama tanımını güncelleştirmeniz gerekir.
 
 > [!IMPORTANT]
-> Azure AD, çok kiracılı uygulamaların Uygulama Kimliği URI'sinin genel olarak benzersiz olmasını gerektirir. Uygulama Kimliği URI'si, uygulamanın protokol iletileri içinde tanımlanması için kullanılan yollardan biridir. Tek kiracılı bir uygulamada Uygulama Kimliği URI'sinin kiracı içinde benzersiz olması yeterlidir. Azure AD'nin uygulamayı tüm kiracılar arasında bulabilmesi için çok kiracılı uygulamada bu değerin genel olarak benzersiz olması gerekir. Genel olarak benzersiz olma gereksinimi, Uygulama Kimliği URI'sinin Azure AD kiracısının doğrulanmış etki alanı ile eşleşen bir ana bilgisayar adına sahip olması şartıyla sağlanır. Örneğin kiracınızın adı contoso.onmicrosoft.com ise geçerli bir Uygulama Kimliği URI'si https://contoso.onmicrosoft.com/myapp şeklinde olacaktır. Kiracınızda contoso.com etki alanı doğrulanmışsa geçerli Uygulama Kimliği URI'si https://contoso.com/myapp şeklinde olacaktır. Uygulama Kimliği URI'si bu düzene uygun olmadığında uygulamayı çok kiracılı hale getirme işlemi başarısız olur.
+> Azure AD, çok kiracılı uygulamaların Uygulama Kimliği URI'sinin genel olarak benzersiz olmasını gerektirir. Uygulama Kimliği URI'si, uygulamanın protokol iletileri içinde tanımlanması için kullanılan yollardan biridir. Tek kiracılı bir uygulamada Uygulama Kimliği URI'sinin kiracı içinde benzersiz olması yeterlidir. Azure AD'nin uygulamayı tüm kiracılar arasında bulabilmesi için çok kiracılı uygulamada bu değerin genel olarak benzersiz olması gerekir. Genel olarak benzersiz olma gereksinimi, Uygulama Kimliği URI'sinin Azure AD kiracısının doğrulanmış etki alanı ile eşleşen bir ana bilgisayar adına sahip olması şartıyla sağlanır. Örneğin kiracınızın adı contoso.onmicrosoft.com ise geçerli bir Uygulama Kimliği URI'si `https://contoso.onmicrosoft.com/myapp` şeklinde olacaktır. Kiracınızda contoso.com etki alanı doğrulanmışsa geçerli Uygulama Kimliği URI'si `https://contoso.com/myapp` şeklinde olacaktır. Uygulama Kimliği URI'si bu düzene uygun olmadığında uygulamayı çok kiracılı hale getirme işlemi başarısız olur.
 
 ### <a name="to-change-who-can-access-your-application"></a>Uygulamanızı erişebilecek kişileri değiştirmek için
 
@@ -57,7 +57,7 @@ Kuruluşunuzun dışındaki müşterilerinize veya iş ortaklarınıza sunmak is
     * Bir iş kolu uygulaması (LOB) oluşturuyorsanız **Yalnızca bu dizindeki hesaplar** seçeneğini belirleyin. Uygulama bir dizine kaydedilmiyorsa bu seçenek kullanılamaz.
     * Tüm iş ve eğitim kullanıcılarını hedeflemek istiyorsanız, **Herhangi bir kuruluş dizinindeki hesaplar** seçeneğini belirleyin.
     * En geniş müşteri kümesini hedeflemek için **Herhangi bir kuruluş dizinindeki hesaplar ve kişisel Microsoft hesapları** seçeneğini belirleyin.
-1. **Kaydet**’i seçin.
+1. **Kaydet'i**seçin.
 
 ## <a name="enable-oauth-20-implicit-grant-for-single-page-applications"></a>Tek sayfalı uygulamalar için OAuth 2.0 örtük onayını etkinleştirme
 
@@ -72,13 +72,13 @@ OAuth 2.0 örtük onay özelliği uygulamalar için varsayılan olarak devre dı
 1. Uygulamanın **Genel Bakış** sayfasında, **Kimlik doğrulaması** bölümünü seçin.
 1. **Gelişmiş ayarlar** altında, **Örtük onay** bölümünü bulun.
 1. **Kimlik belirteçleri**, **Erişim belirteçleri** veya her ikisini birden seçin.
-1. **Kaydet**’i seçin.
+1. **Kaydet'i**seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Uygulamalar için diğer ilgili uygulama yönetimi hızlı başlangıçları hakkında bilgi edinin:
 
-* [Microsoft kimlik platformu ile uygulama kaydetme](quickstart-register-app.md)
+* [Microsoft kimlik platformuna uygulama kaydetme](quickstart-register-app.md)
 * [Bir istemci uygulamasını web API'lerine erişecek şekilde yapılandırma](quickstart-configure-app-access-web-apis.md)
 * [Bir uygulamayı web API'lerini kullanıma sunacak şekilde yapılandırma](quickstart-configure-app-expose-web-apis.md)
 * [Microsoft kimlik platformu ile kaydedilmiş bir uygulamayı kaldırma](quickstart-remove-app.md)
