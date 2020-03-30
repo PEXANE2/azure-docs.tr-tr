@@ -8,265 +8,262 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 2bfdf1046c67ed1651f792191923bf4c533d0299
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 53bbee6dd75e045c2a7e95c88a0138c9859d12db
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77205694"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80374021"
 ---
-Bu makalede, Azure yönetilen diskler ve Azure Premium SSD diskleri hakkında sık sorulan bazı sorular yanıtlanmaktadır.
+Bu makalede, Azure Yönetilen Diskler ve Azure Premium SSD diskleri hakkında sık sorulan bazı sorular yanıtlanmaktadır.
 
 ## <a name="managed-disks"></a>Yönetilen Diskler
 
-**Azure yönetilen diskler nedir?**
+**Azure Yönetilen Diskler nedir?**
 
-Yönetilen diskler, depolama hesabı yönetimini sizin için işleyerek Azure IaaS VM 'Leri için disk yönetimini kolaylaştıran bir özelliktir. Daha fazla bilgi için bkz. [yönetilen disklere genel bakış](../articles/virtual-machines/windows/managed-disks-overview.md).
+Yönetilen Diskler, azure iaas vm'leri için depolama hesabı yönetimini sizin için işleyerek disk yönetimini basitleştiren bir özelliktir. Daha fazla bilgi için [Yönetilen Diskler'e genel bakış](../articles/virtual-machines/windows/managed-disks-overview.md)bilgisine bakın.
 
-**Mevcut bir VHD 'den 80 GB olan standart bir yönetilen disk oluşturdum, ne kadar ücret alınacaktır?**
+**Mevcut bir VHD'den 80 GB'lık standart yönetilen bir disk oluşturursam, bu bana ne kadara mal olur?**
 
-80 GB 'lık bir VHD 'den oluşturulan standart bir yönetilen disk, S10 disk olan bir sonraki kullanılabilir standart disk boyutu olarak değerlendirilir. S10 disk fiyatlandırmasına göre ücretlendirilirsiniz. Daha fazla bilgi edinmek için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/storage).
+80 GB VHD'den oluşturulan standart yönetilen disk, s10 diski olan bir sonraki kullanılabilir standart disk boyutu olarak kabul edilir. S10 disk fiyatlandırmasına göre ücretlendirilirsiniz. Daha fazla bilgi edinmek için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/storage).
 
-**Standart yönetilen diskler için herhangi bir işlem maliyeti var mı?**
+**Standart yönetilen diskler için işlem maliyeti var mı?**
 
 Evet. Her işlem için ücretlendirilirsiniz. Daha fazla bilgi edinmek için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/storage).
 
-**Standart yönetilen bir disk için, diskteki verilerin gerçek boyutu veya diskin sağlanmış kapasitesi için ücretlendirilecektir mi?**
+**Standart yönetilen bir disk için, diskteki verilerin gerçek boyutu veya diskin sağlanan kapasitesi için ücretlendirilir miyim?**
 
 Diskin sağlanan kapasitesine göre ücretlendirilirsiniz. Daha fazla bilgi edinmek için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/storage).
 
-**Premium yönetilen disklerin fiyatlandırması yönetilmeyen disklerden nasıl farklıdır?**
+**Premium yönetilen disklerin fiyatlandırmasının yönetilmeyen disklerden farkı nedir?**
 
-Premium yönetilen disklerin fiyatlandırması, yönetilmeyen Premium disklerle aynıdır.
+Premium yönetilen disklerin fiyatlandırması, yönetilmeyen premium disklerle aynıdır.
 
 **Yönetilen disklerimin depolama hesabı türünü (Standart veya Premium) değiştirebilir miyim?**
 
-Evet. Yönetilen disklerinizin depolama hesabı türünü Azure portal, PowerShell veya Azure CLı kullanarak değiştirebilirsiniz.
+Evet. Azure portalını, PowerShell'i veya Azure CLI'yi kullanarak yönetilen disklerinizin depolama hesabı türünü değiştirebilirsiniz.
 
-**Farklı bir aboneliğe sahip yönetilen bir disk oluşturmak için Azure depolama hesabında bir VHD dosyası kullanabilir miyim?**
+**Farklı bir aboneye sahip yönetilen bir disk oluşturmak için Azure depolama hesabındaki bir VHD dosyasını kullanabilir miyim?**
 
 Evet.
 
-**Farklı bir bölgede yönetilen disk oluşturmak için Azure depolama hesabında bir VHD dosyası kullanabilir miyim?**
+**Farklı bir bölgede yönetilen bir disk oluşturmak için Azure depolama hesabındaki bir VHD dosyasını kullanabilir miyim?**
 
 Hayır.
 
-**Yönetilen diskler kullanan müşteriler için herhangi bir ölçek sınırlaması var mı?**
+**Yönetilen diskleri kullanan müşteriler için ölçek sınırlamaları var mı?**
 
-Yönetilen diskler, depolama hesaplarıyla ilişkili sınırları ortadan kaldırır. Ancak, en fazla sınır 50.000, bir abonelik için bölge başına yönetilen disk ve disk türü olarak kullanılır.
+Yönetilen Diskler, depolama hesaplarıyla ilişkili sınırları ortadan kaldırır. Ancak, en büyük sınır, bir abonelik için bölge başına ve disk türü başına 50.000 yönetilen disktir.
 
-**Yönetilen bir disk için artımlı bir anlık görüntü alabilir miyim?**
+**Kullanılabilirlik kümesindeki VM'ler yönetilen ve yönetilmeyen disklerin bir birleşiminden oluşabilir mi?**
 
-Hayır. Geçerli anlık görüntü özelliği, yönetilen bir diskin tam bir kopyasını oluşturur.
+Hayır. Kullanılabilirlik kümesindeki VM'ler yönetilen tüm diskleri veya tüm yönetilmeyen diskleri kullanmalıdır. Kullanılabilirlik kümesi oluşturduğunuzda, hangi tür diskleri kullanmak istediğinizi seçebilirsiniz.
 
-**Kullanılabilirlik kümesindeki VM 'Ler, yönetilen ve yönetilmeyen disklerin birleşiminden oluşur mi?**
-
-Hayır. Bir kullanılabilirlik kümesindeki VM 'Ler, tüm yönetilen diskleri ya da yönetilmeyen diskleri kullanmalıdır. Bir kullanılabilirlik kümesi oluşturduğunuzda, kullanmak istediğiniz disk türünü seçebilirsiniz.
-
-**Yönetilen diskler Azure portal varsayılan seçenektir mi?**
+**Yönetilen Diskler Azure portalındaki varsayılan seçenek midir?**
 
 Evet.
 
-**Boş bir yönetilen disk oluşturabilir miyim?**
+**Boş yönetilen bir disk oluşturabilir miyim?**
 
-Evet. Boş bir disk oluşturabilirsiniz. Yönetilen bir disk, bir VM 'den bağımsız olarak oluşturulabilir, örneğin, bir VM 'ye iliştirmeden.
+Evet. Boş bir disk oluşturabilirsiniz. Yönetilen bir disk, örneğin vm'ye takmadan vm'den bağımsız olarak oluşturulabilir.
 
-**Yönetilen diskleri kullanan bir kullanılabilirlik kümesi için desteklenen hata etki alanı sayısı nedir?**
+**Yönetilen Diskler kullanan bir kullanılabilirlik kümesi için desteklenen hata etki alanı sayısı nedir?**
 
-Yönetilen diskleri kullanan kullanılabilirlik kümesinin bulunduğu bölgeye bağlı olarak, desteklenen hata etki alanı sayısı 2 veya 3 ' dir.
+Yönetilen Diskler kullanan kullanılabilirlik kümesinin bulunduğu bölgeye bağlı olarak, desteklenen hata etki alanı sayısı 2 veya 3'tur.
 
 **Tanılama için standart depolama hesabı nasıl ayarlanır?**
 
-VM Tanılama için bir özel depolama hesabı ayarlarsınız.
+VM tanılama için özel bir depolama hesabı açtınız.
 
-**Yönetilen diskler için ne tür bir rol tabanlı Access Control desteği vardır?**
+**Yönetilen Diskler için ne tür Rol Tabanlı Erişim Denetimi desteği kullanılabilir?**
 
-Yönetilen diskler üç temel varsayılan rolü destekler:
+Yönetilen Diskler üç temel varsayılan rolü destekler:
 
-* Sahip: erişim dahil her şeyi yönetebilir
-* Katkıda bulunan: erişim dışında her şeyi yönetebilir
-* Okuyucu: her şeyi görüntüleyebilir, ancak değişiklik yapamaz
+* Sahibi: Erişim de dahil olmak üzere her şeyi yönetebilirsiniz
+* Katkıda bulunan: Erişim dışında her şeyi yönetebilir
+* Okuyucu: Her şeyi görüntüleyebilir, ancak değişiklik yapamaz
 
-**Yönetilen bir diski özel depolama hesabına kopyalayabiliyorum veya dışarı aktardığım bir yol var mı?**
+**Yönetilen bir diski özel bir depolama hesabına kopyalamanın veya dışa aktarmamın bir yolu var mı?**
 
-Yönetilen disk için salt okunurdur ve paylaşılan erişim imzası (SAS) URI 'SI oluşturabilir ve içeriği bir özel depolama hesabına veya şirket içi depolamaya kopyalamak için kullanabilirsiniz. SAS URI 'sini Azure portal, Azure PowerShell, Azure CLı veya [AzCopy](../articles/storage/common/storage-use-azcopy.md) kullanarak kullanabilirsiniz
+Yönetilen disk için salt okunur paylaşılan erişim imzası (SAS) URI oluşturabilir ve içeriği özel bir depolama hesabına veya şirket içi depolama alanına kopyalamak için kullanabilirsiniz. SAS URI'yi Azure portalını, Azure PowerShell'i, Azure CLI'yi veya [AzCopy'yi](../articles/storage/common/storage-use-azcopy.md) kullanarak kullanabilirsiniz
 
-**Yönetilen disklerimin bir kopyasını oluşturabilir miyim?**
+**Yönetilen diskimin bir kopyasını oluşturabilir miyim?**
 
-Müşteriler yönetilen disklerinin anlık görüntüsünü alabilir ve ardından anlık görüntüyü kullanarak başka bir yönetilen disk oluşturabilir.
+Müşteriler, yönetilen disklerinin anlık görüntüsünü alabilir ve ardından anlık görüntüden başka bir yönetilen disk oluşturmak için kullanabilir.
 
 **Yönetilmeyen diskler hala destekleniyor mu?**
 
-Evet, hem yönetilmeyen hem de yönetilen diskler destekleniyor. Yeni iş yükleri için yönetilen diskler kullanmanızı ve geçerli iş yüklerinizi yönetilen disklere geçirmeyi öneririz.
+Evet, hem yönetilmeyen hem de yönetilen diskler desteklenir. Yönetilen diskleri yeni iş yükleri için kullanmanızı ve geçerli iş yüklerinizi yönetilen disklere geçirmenizi öneririz.
 
-**Aynı VM 'de yönetilmeyen ve yönetilen diskleri birlikte bulabilir miyim?**
+**Aynı VM'de yönetilmeyen ve yönetilen diskleri birlikte bulabilir miyim?**
 
 Hayır.
 
-**128 GB bir disk oluşturup boyutu 130 Gibibyte (gib) olarak artırdığımda, sonraki disk boyutu (256 gib) için ücretlendirilirim mıyım?**
+**128 GB'lık bir disk oluşturup boyutu 130'a (GiB) çıkarsam, bir sonraki disk boyutu (256 GiB) için ücretlendirilir miyim?**
 
 Evet.
 
-**Yerel olarak yedekli depolama, coğrafi olarak yedekli depolama ve bölgesel olarak yedekli depolama ile yönetilen diskler oluşturabilir miyim?**
+**Yerel olarak yedekli depolama, coğrafi yedekli depolama ve bölge yedekli depolama yönetilen diskler oluşturabilir miyim?**
 
-Azure yönetilen diskler Şu anda yalnızca yerel olarak yedekli depolama ile yönetilen diskleri desteklemektedir.
+Azure Yönetilen Diskler şu anda yalnızca yerel olarak yedekli depolama yı yönetilen diskleri destekler.
 
-**Yönetilen disklerimi daraltabilir veya değiştirebilir miyim?**
+**Yönetilen disklerimi küçültebilir veya küçültebilir miyim?**
 
-Hayır. Bu özellik şu anda desteklenmiyor.
+Hayır. Bu özellik şu anda desteklenmez.
 
-**Diskimde bir kirayı bölebilir miyim?**
+**Diskimin kira kontratını kırabilir miyim?**
 
-Hayır. Bu, disk kullanılırken yanlışlıkla silinmeye engel olmak için bir kira olduğu için şu anda desteklenmez.
+Hayır. Disk kullanılırken yanlışlıkla silinmesini önlemek için bir kiralama mevcut olduğundan, bu şu anda desteklenmez.
 
-**Bir VM sağlamak için özelleştirilmiş (Sistem Hazırlama Aracı veya Genelleştirilmiş) işletim sistemi diski kullanıldığında bilgisayar adı özelliğini değiştirebilir miyim?**
+**Özel bir (Sistem Hazırlama aracı kullanılarak oluşturulmadı veya genelleştirilmiş) işletim sistemi diski VM sağlamak için kullanıldığında bilgisayar adı özelliğini değiştirebilir miyim?**
 
-Hayır. Bilgisayar adı özelliğini güncelleştiremezsiniz. Yeni VM, işletim sistemi diskini oluşturmak için kullanılan üst VM 'den devralır. 
+Hayır. Bilgisayar adı özelliğini güncelleştiremezsiniz. Yeni VM, işletim sistemi diskini oluşturmak için kullanılan ana VM'den devralır. 
 
-**Yönetilen disklere sahip VM 'Ler oluşturmak için örnek Azure Resource Manager şablonlarını nerede bulabilirim?**
-* [Yönetilen diskleri kullanan şablonların listesi](https://github.com/Azure/azure-quickstart-templates/blob/master/managed-disk-support-list.md)
+**Yönetilen disklere sahip VM'ler oluşturmak için örnek Azure Kaynak Yöneticisi şablonlarını nerede bulabilirim?**
+* [Yönetilen Diskler kullanan şablonlar listesi](https://github.com/Azure/azure-quickstart-templates/blob/master/managed-disk-support-list.md)
 * https://github.com/chagarw/MDPP
 
-**Blob 'dan bir disk oluştururken, bu kaynak Blobun sürekli olarak var olan bir ilişki var mı?**
+**Bir blob bir disk oluştururken, bu kaynak blob ile herhangi bir sürekli varolan ilişki var mı?**
 
-Hayır, yeni disk oluşturulduğunda bu Blobun o anda tam tek başına kopyasıdır ve ikisi arasında bir bağlantı yoktur. İsterseniz, diski oluşturduktan sonra, kaynak blobu yeni oluşturulan diski herhangi bir şekilde etkilemeden silinebilir.
+Hayır, yeni disk oluşturulduğunda o zaman bu lekenin tam bağımsız bir kopyasıdır ve ikisi arasında bağlantı yoktur. İsterseniz, diski oluşturduktan sonra, kaynak blob yeni oluşturulan diskherhangi bir şekilde etkilemeden silinebilir.
 
-**Yönetilen veya yönetilmeyen bir diski oluşturulduktan sonra yeniden adlandırabilir miyim?**
+**Yönetilen veya yönetilmeyen bir diskoluşturulduktan sonra yeniden adlandırabilir miyim?**
 
-Yönetilen diskler için bunları yeniden adlandıramazsınız. Ancak, şu anda bir VHD veya VM 'ye bağlı olmadığı sürece, yönetilmeyen bir diski yeniden adlandırabilirsiniz.
+Yönetilen diskler için bunları yeniden adlandıramazsınız. Ancak, şu anda bir VHD veya VM'ye bağlı olmadığı sürece yönetilmeyen bir diski yeniden adlandırabilirsiniz.
 
-**Bir Azure diskinde GPT bölümlendirme kullanabilir miyim?**
+**Azure Disk'te GPT bölümleme kullanabilir miyim?**
 
-1\. nesil görüntüler, işletim sistemi disklerinde değil yalnızca veri disklerinde GPT bölümlendirme kullanabilir. İşletim sistemi disklerinin MBR bölümleme stilini kullanması gerekir.
+Nesil 1 görüntüler, işletim sistemi disklerinde değil, yalnızca veri disklerinde GPT bölümleme kullanabilir. İşletim sistemi diskleri MBR bölüm stilini kullanmalıdır.
 
-[2. nesil görüntüler](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2) , işletim sistemi diskinde ve VERI disklerinde GPT bölümlendirme kullanabilir.
+[Nesil 2 görüntüleri,](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2) işletim sistemi diskinin yanı sıra veri disklerinde GPT bölümleme sini de kullanabilir.
 
-**Hangi disk türleri anlık görüntüleri destekliyor?**
+**Hangi disk türleri anlık görüntüleri destekler?**
 
-Premium SSD, standart SSD ve standart HDD desteği anlık görüntüleri. Bu üç disk türü için, tüm disk boyutları (boyut olarak 32 TiB 'ye kadar olan diskler dahil) için anlık görüntüler desteklenir. Ultra diskler anlık görüntüleri desteklemez.
+Premium SSD, standart SSD ve standart HDD destek anlık görüntüleri. Bu üç disk türü için anlık görüntüler tüm disk boyutları için desteklenir (32 TiB boyutuna kadar diskler dahil). Ultra diskler anlık görüntüleri desteklemez.
 
 **Azure disk rezervasyonları nelerdir?**
-Disk ayırma, toplam maliyetinizi azaltmak için önceden bir yıllık disk depolama alanı satın alma seçeneğidir. Azure disk ayırmaları ile ilgili ayrıntılar için konu hakkındaki makalemize bakın: [rezervasyon Iskontosunun Azure diskine nasıl uygulandığını anlayın](../articles/cost-management-billing/reservations/understand-disk-reservations.md).
+Disk rezervasyonu, toplam maliyetinizi azaltarak bir yıllık disk depolama işlemini önceden satın alma seçeneğidir. Azure disk rezervasyonları ile ilgili ayrıntılar için konuyla ilgili makalemize bakın: [Azure Disk'e rezervasyon indiriminizin nasıl uygulandığını anlayın.](../articles/cost-management-billing/reservations/understand-disk-reservations.md)
 
-**Azure disk rezervasyonu hangi seçenekleri sunar?** Azure disk ayırma, bir yıllık dönem için P30 (1 TiB) ile P80 (32 TiB) arasında Premium SSD 'Ler satın alma seçeneği sunar. Disk ayırması satın almak için gereken minimum disk miktarı üzerinde hiçbir sınırlama yoktur. Ayrıca, tek, ön ödeme veya aylık ödemeler ile ödeme yapmayı tercih edebilirsiniz. Premium SSD yönetilen disklere uygulanan ek bir işlem maliyeti yoktur. 
+**Azure disk rezervasyonu hangi seçenekleri sunar?**    
+Azure disk rezervasyonu, belirtilen SK'lerde P30'dan (1 TiB) P80'e (32 TiB) kadar premium SSD'leri bir yıllık bir dönem için satın alma seçeneği sunar. Bir disk rezervasyonu satın almak için gereken en az disk miktarı üzerinde herhangi bir sınırlama yoktur. Ayrıca, tek bir peşin ödeme veya aylık ödeme ile ödemeyi seçebilirsiniz. Premium SSD Yönetilen Diskler için ek işlem maliyeti uygulanmaz.    
 
-Ayırmalar, kapasite değil, diskler biçiminde yapılır. Diğer bir deyişle, bir P80 (32 TiB) diski ayırdığınızda tek bir P80 diski alırsınız, daha sonra söz konusu ayırmayı iki küçük P70 (16 TiB) diske bölemez. Kuşkusuz, iki ayrı P70 (16 TiB) disk dahil olmak üzere istediğiniz kadar çok sayıda disk ayırabilirsiniz.
+Rezervasyonlar kapasite de değil, disk şeklinde yapılır. Başka bir deyişle, bir P80 (32 TiB) disk ayırdığınızda, tek bir P80 diski alırsanız, bu özel rezervasyonu iki küçük P70 (16 TiB) diske bölemezsiniz. Elbette, iki ayrı P70 (16 TiB) diskde dahil olmak üzere istediğiniz kadar veya az sayıda disk rezerve edebilirsiniz.
 
-**Azure disk ayırması nasıl uygulanır?**  
-Diskler ayırması, ayrılmış sanal makine (VM) örneklerine benzer bir model izler. Bir sanal makine örneği, bir disk rezervasyonunun farklı SKU 'Lara uygulanamadığından farklılık gösteren fark. VM örnekleri hakkında daha fazla bilgi için bkz. [Azure ayrılmış VM örnekleri ile maliyetleri kaydetme](../articles/virtual-machines/linux/prepay-reserved-vm-instances.md) .    
+**Azure disk rezervasyonu nasıl uygulanır?**    
+Diskler rezervasyon ayrılmış sanal makine (VM) örnekleri benzer bir model izler. Fark, bir disk ayırma farklı SNU'lara uygulanamaz ken, bir VM örneği olabilir. VM örnekleri hakkında daha fazla bilgi için [Azure Ayrılmış VM Örnekleri ile maliyetleri](../articles/virtual-machines/linux/prepay-reserved-vm-instances.md) kaydedin.     
 
-**Birden çok bölgede Azure diskleri ayırması aracılığıyla satın alınan veri depolama alanını kullanabilir miyim?**     
-Azure diskleri ayırması belirli bir bölge ve SKU (Doğu ABD 2 içinde P30 gibi) için satın alınır ve bu nedenle bu yapılar dışında kullanılamaz. Diğer bölgelerde veya SKU 'Larda disk depolama gereksinimleriniz için her zaman ek bir Azure diskleri ayırması satın alabilirsiniz. 
+**Azure diskleri tarafından satın alınan veri depolama mı kullanabilirim?**    
+Azure diskleri rezervasyonu belirli bir bölge ve SKU (Doğu ABD 2'deki P30 gibi) için satın alınır ve bu nedenle bu yapılar dışında kullanılamaz. Disk depolama gereksinimleriniz için diğer bölgelerdeki veya SK'lerde her zaman ek bir Azure Diskleri Rezervasyonu satın alabilirsiniz.    
 
-**Azure disklerimin ayırması sona erdiğinde ne olur?**    
-Süresi dolmadan 30 gün önce ve sona erme tarihinde bir süre sonra bir e-posta bildirimi alacaksınız. Ayırma süresi dolduktan sonra, dağıtılan diskler çalışmaya devam eder ve en son [Kullandıkça Öde tarifesine](https://azure.microsoft.com/pricing/details/managed-disks/)göre faturalandırılır.
+**Azure diskleri rezervasyonumun süresi dolduğunda ne olur?**    
+Son kullanma tarihinden 30 gün önce ve son kullanma tarihinden itibaren e-posta bildirimleri alırsınız. Rezervasyonun süresi dolduğunda, dağıtılan diskler çalışmaya devam eder ve en son [kullandıkça öde fiyatlarıyla](https://azure.microsoft.com/pricing/details/managed-disks/)faturalandırılır.
 
 ### <a name="azure-shared-disks"></a>Azure paylaşılan diskler
 
-**Paylaşılan diskler özelliği yönetilmeyen diskler veya sayfa Blobları için destekleniyor mu?**
+**Paylaşılan diskler özelliği yönetilmeyen diskler veya sayfa lekeleri için destekleniyor mu?**
 
-Hayır, yalnızca Premium SSD tarafından yönetilen diskler için desteklenir.
+Hayır, yalnızca premium SSD yönetilen diskler için desteklenir.
 
-**Hangi bölgeler Paylaşılan diskleri destekler?**
+**Paylaşılan diskleri destekleyen bölgeler nelerdir?**
 
-Şu anda yalnızca Orta Batı ABD.
+Şu anda sadece Batı Orta ABD.
 
-**Paylaşılan diskler, işletim sistemi diski olarak kullanılabilir mi?**
+**Paylaşılan diskler işletim sistemi diski olarak kullanılabilir mi?**
 
 Hayır, paylaşılan diskler yalnızca veri diskleri için desteklenir.
 
-**Hangi disk boyutları Paylaşılan diskleri destekliyor?**
+**Hangi disk boyutları paylaşılan diskleri destekler?**
 
-Yalnızca P15 veya üzeri olan Premium SSD 'ler Paylaşılan diskleri destekler.
+Yalnızca P15 veya daha fazla destek paylaşılan diskler olan premium SSD'ler.
 
-**Mevcut bir Premium SSD varsa, üzerinde paylaşılan diskler etkinleştirebilirim miyim?**
+**Varolan bir premium SSD'm varsa, üzerinde paylaşılan diskleri etkinleştirebilir miyim?**
 
-API sürümü 2019-07-01 veya üzeri ile oluşturulan tüm yönetilen diskler, Paylaşılan diskleri etkinleştirebilir. Bunu yapmak için, bağlı olduğu tüm VM 'lerden diski çıkarmanız gerekir. Sonra, diskteki `maxShares` özelliğini düzenleyin.
+API sürümü 2019-07-01 veya daha yüksek ile oluşturulan tüm yönetilen diskler paylaşılan diskleri etkinleştirebilir. Bunu yapmak için, bağlı olduğu tüm VM'lerden diski sökmeniz gerekir. Ardından, diskteki `maxShares` özelliği edin.
 
-**Artık paylaşılan modda bir disk kullanmak istemiyorum, bunu nasıl devre dışı bırakabilirim?**
+**Paylaşılan modda artık bir disk kullanmak istemiyorsam, diski nasıl devre dışı asıyım?**
 
-Diski, eklendiği tüm VM 'lerden çıkarın. Sonra, diskteki maxShare özelliğini 1 olarak düzenleyin.
+Bağlı olduğu tüm VM'lerden diski sökün. Ardından diskteki maxShare özelliğini 1'e kadar edin.
 
 **Paylaşılan bir diski yeniden boyutlandırabilir misiniz?**
 
 Evet.
 
-**Paylaşılan diskler de etkinleştirilmiş bir diskte yazma hızlandırıcıyı etkinleştirebilir miyim?**
+**Paylaşılan disklerin etkin olduğu bir diskte yazma hızlandırıcısını etkinleştirebilir miyim?**
 
 Hayır.
 
-**Paylaşılan disk etkin olan bir disk için konak önbelleğe almayı etkinleştirebilir miyim?**
+**Paylaşılan disk etkinleştirilmiş bir disk için ana bilgisayar önbelleğe alma özelliğini etkinleştirebilir miyim?**
 
-Desteklenen tek konak önbelleğe alma seçeneği ' none '.
+Desteklenen tek ana bilgisayar önbelleğe alma seçeneği 'Yok'dur.
 
 ## <a name="ultra-disks"></a>Ultra diskler
 
-**Son derece disk verimini ne şekilde ayarlayamalıyım?**
-Disk aktarım hızını hangi şekilde ayarlayacağınızdan emin değilseniz, 16 KiB 'nin GÇ boyutunu kabul ederek ve uygulamanızı izlerken performansı buradan ayarlamanız önerilir. Formül: MB/sn cinsinden aktarım hızı = ıOPS * 16/1000.
+**Ultra disk elimi ne lere ayarlamalıyım?**
+Disk iş inizi neye ayarladığınızdan emin değilseniz, 16 KiB'lik bir IO boyutu varsayarak başlamanızı ve uygulamanızı izlerken performansı oradan ayarlamanızı öneririz. Formül: MBps = # IOPS * 16 / 1000 throughput olduğunu.
 
-**Diskmi 40000 ıOPS olarak yapılandırdım, ancak yalnızca 12800 ıOPS görüyorum, diskin performansını neden göremiyorum?**
-Disk azaltma 'ya ek olarak, VM düzeyinde uygulanan bir GÇ azaltması vardır. Lütfen kullandığınız VM boyutunun disklerinizde yapılandırılan düzeyleri destekleyebileceğini doğrulayın. VM 'niz tarafından uygulanan GÇ limitleriyle ilgili ayrıntılar için bkz. [Azure 'Da Windows sanal makineleri Için boyutlar](../articles/virtual-machines/windows/sizes.md).
+**Ben 40000 IOPS benim disk yapılandırılan ama sadece 12800 IOPS görüyorum, neden diskin performansını göremiyorum?**
+Disk gazına ek olarak, VM düzeyinde uygulanan bir IO gaz vardır. Lütfen kullanmakta olduğunuz VM boyutunun disklerinizde yapılandırılan düzeyleri desteklediğinden emin olun. VM'niz tarafından uygulanan IO limitleri ile ilgili ayrıntılar için [Azure'daki Windows sanal makineleri için Boyutlar'a](../articles/virtual-machines/windows/sizes.md)bakın.
 
-**Bir ultra disk ile önbelleğe alma düzeylerini kullanabilir miyim?**
-Hayır, Ultra diskler diğer disk türlerinde desteklenen farklı önbelleğe alma yöntemlerini desteklemez. Disk önbelleğe almayı hiçbiri olarak ayarlayın.
+**Ultra diskli önbelleğe alma düzeylerini kullanabilir miyim?**
+Hayır, ultra diskler diğer disk türlerinde desteklenen farklı önbelleğe alma yöntemlerini desteklemez. Disk önbelleğe alma'yı Yok olarak ayarlayın.
 
-**Var olan sanal makinenize bir ultra disk ekleyebilir miyim?**
-Belki de sanal makinenizin Ultra diskleri destekleyen bir bölge ve kullanılabilirlik alanı çifti olması gerekir. Ayrıntılar için bkz. [Ultra disklerle çalışmaya](../articles/virtual-machines/windows/disks-enable-ultra-ssd.md) başlama.
+**Mevcut VM'me ultra disk takabilir miyim?**
+Belki, VM ultra diskleri destekleyen bir bölge ve kullanılabilirlik bölgesi çifti olmalıdır. Ayrıntılar için [ultra disklerle başlamaya](../articles/virtual-machines/windows/disks-enable-ultra-ssd.md) bakın.
 
-**VM 'im için bir ultra disk işletim sistemi diski olarak kullanabilir miyim?**
-Hayır, Ultra diskler yalnızca veri diskleri olarak desteklenir ve yalnızca 4K yerel disk olarak desteklenir.
+**VM'im için işletim sistemi diski olarak ultra disk kullanabilir miyim?**
+Hayır, ultra Diskler yalnızca veri diski olarak desteklenir ve yalnızca 4K yerel disk olarak desteklenir.
 
-**Var olan bir diski bir ultra diske dönüştürebilir miyim?**
-Hayır, ancak mevcut bir diskteki verileri bir ultra diske geçirebilirsiniz. Var olan bir diski bir ultra diske geçirmek için, her iki diski aynı sanal makineye bağlayın ve disk verilerini bir diskten diğerine kopyalayın ya da veri geçişi için 3. taraf çözümünü kullanın.
+**Varolan bir diski ultra diske dönüştürebilir miyim?**
+Hayır, ancak verileri varolan bir diskten ultra diske geçirebilirsiniz. Varolan bir diski ultra diske geçirmek için, her iki diski de aynı VM'ye takın ve diskin verilerini bir diskten diğerine kopyalayın veya veri geçişi için üçüncü taraf çözümden yararlanın.
 
-**Ultra diskler için anlık görüntüler oluşturabilir miyim?**
+**Ultra diskler için anlık görüntü oluşturabilir miyim?**
 Hayır, anlık görüntüler henüz kullanılamıyor.
 
-**Azure Backup Ultra diskler için kullanılabilir mi?**
-Hayır, Azure Backup desteği henüz kullanılamıyor.
+**Azure Yedekleme ultra diskler için kullanılabilir mi?**
+Hayır, Azure Yedekleme desteği henüz kullanılamıyor.
 
-**Kullanılabilirlik kümesinde çalışan bir VM 'ye bir ultra disk ekleyebilir miyim?**
-Hayır, bu henüz desteklenmiyor.
+**Kullanılabilirlik kümesinde çalışan bir VM'ye ultra disk ekleyebilir miyim?**
+Hayır, bu henüz desteklenmedi.
 
-**Ultra diskler kullanan VM 'Ler için Azure Site Recovery etkinleştirebilir miyim?**
-Hayır, Azure Site Recovery henüz Ultra diskler için desteklenmiyor.
+**Ultra diskler kullanarak VM'ler için Azure Site Kurtarma'yı etkinleştirebilir miyim?**
+Hayır, Azure Site Kurtarma henüz ultra diskler için desteklenmedi.
 
 ## <a name="uploading-to-a-managed-disk"></a>Yönetilen bir diske yükleme
 
-**Mevcut bir yönetilen diske veri yükleyebilir miyim?**
+**Varolan yönetilen bir diske veri yükleyebilir miyim?**
 
-Hayır, karşıya yükleme yalnızca **Readytoupload** durumuna sahip yeni bir boş disk oluşturulurken kullanılabilir.
+Hayır, yükleme yalnızca **ReadyToUpload** durumuna sahip yeni bir boş disk oluşturulması sırasında kullanılabilir.
 
-**Nasıl yaparım? yönetilen bir diske mı yüklenecek?**
+**Yönetilen bir diske nasıl yüklenirim?**
 
-[Creationdata](https://docs.microsoft.com/rest/api/compute/disks/createorupdate#creationdata) 'ın [Createoption](https://docs.microsoft.com/rest/api/compute/disks/createorupdate#diskcreateoption) özelliği "karşıya yükle" olarak ayarlanmış bir yönetilen disk oluşturun, ardından verileri karşıya yükleyebilirsiniz.
+[CreationData'nın](https://docs.microsoft.com/rest/api/compute/disks/createorupdate#creationdata) [createOption](https://docs.microsoft.com/rest/api/compute/disks/createorupdate#diskcreateoption) özelliği "Upload" olarak ayarlanmış yönetilen bir disk oluşturun, ardından ona veri yükleyebilirsiniz.
 
-**Karşıya yükleme durumundayken bir diski bir VM 'ye ekleyebilir miyim?**
+**Yükleme durumundayken VM'ye disk ekleyebilir miyim?**
 
 Hayır.
 
-**, Bir karşıya yükleme durumundaki bir sürücü anlık görüntüsünü alabilir miyim?**
+**Yükleme durumundaki manged diskin anlık görüntüsünü alabilir miyim?**
 
 Hayır.
 
 ## <a name="standard-ssd-disks"></a>Standart SSD diskler
 
-**Azure Standart SSD diskleri nelerdir?**
-Standart SSD diskler, düşük ıOPS düzeylerinde tutarlı performans gerektiren iş yükleri için uygun maliyetli depolama olarak iyileştirilmiş, katı hal medyası tarafından desteklenen standart disklerdir.
+**Azure Standart SSD diskleri nedir?**
+Standart SSD diskler, daha düşük IOPS düzeylerinde tutarlı performans gerektiren iş yükleri için uygun maliyetli depolama alanı olarak optimize edilen katı hal ortamı tarafından desteklenen standart disklerdir.
 
-<a id="standard-ssds-azure-regions"></a>**Standart SSD diskler için şu anda desteklenen bölgeler nelerdir?**
-Tüm Azure bölgeleri artık Standart SSD diskleri desteklemektedir.
+<a id="standard-ssds-azure-regions"></a>**Şu anda Standart SSD diskler için desteklenen bölgeler nelerdir?**
+Artık tüm Azure bölgeleri Standart SSD diskleri destekliyor.
 
-**Standart SSD 'Ler kullanılırken Azure Backup kullanılabilir mi?**
-Evet, Azure Backup artık kullanılabilir.
+**Azure Yedekleme Standart SSD'leri kullanırken kullanılabilir mi?**
+Evet, Azure Yedekleme artık kullanılabilir.
 
-**Nasıl yaparım? Standart SSD diskler mi oluşturulsun?**
-Azure Resource Manager şablonları, SDK, PowerShell veya CLı kullanarak Standart SSD diskleri oluşturabilirsiniz. Standart SSD disk oluşturmak için Kaynak Yöneticisi şablonunda gereken parametreler şunlardır:
+**Standart SSD diskleri nasıl oluştururum?**
+Azure Kaynak Yöneticisi şablonları, SDK, PowerShell veya CLI'yi kullanarak Standart SSD diskleri oluşturabilirsiniz. Standart SSD Diskleri oluşturmak için Kaynak Yöneticisi şablonunda gerekli parametreler aşağıda verilmiştir:
 
-* Microsoft. COMPUTE için *Apiversion* , `2018-04-01` olarak ayarlanmalıdır (veya üzeri)
-* *Manageddisk. storageAccountType* as `StandardSSD_LRS` belirtin
+* Microsoft.Compute için *apiVersion* olarak `2018-04-01` ayarlanmalıdır (veya daha sonra)
+* *managedDisk.storageAccountType'ı*`StandardSSD_LRS`
 
-Aşağıdaki örnek, Standart SSD diskleri kullanan bir VM için *Properties. storageProfile. osDisk* bölümünü gösterir:
+Aşağıdaki örnekte, Standart SSD Diskler kullanan bir VM için *properties.storageProfile.osDisk* bölümü gösterilmektedir:
 
 ```json
 "osDisk": {
@@ -280,213 +277,213 @@ Aşağıdaki örnek, Standart SSD diskleri kullanan bir VM için *Properties. st
 }
 ```
 
-Şablon ile Standart SSD disk oluşturma hakkında ayrıntılı bir örnek için, bkz. [Standart SSD Veri disklerine sahip bir Windows GÖRÜNTÜSÜNDEN VM oluşturma](https://github.com/azure/azure-quickstart-templates/tree/master/101-vm-with-standardssd-disk/).
+Şablonlu bir Standart SSD diskinin nasıl oluşturulaca açık tam bir şablon örneği için [bkz.](https://github.com/azure/azure-quickstart-templates/tree/master/101-vm-with-standardssd-disk/)
 
-**Mevcut disklerimi Standart SSD dönüştürebilir miyim?**
-Evet, bunu yapabilirsiniz. [Azure yönetilen diskler depolama alanını standartdan Premium 'A dönüştürme ve](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage) yönetilen diskleri dönüştürmeye yönelik genel yönergeler için tam tersi. Ve, disk türünü Standart SSD güncelleştirmek için aşağıdaki değeri kullanın.
--AccountType StandardSSD_LRS
+**Varolan disklerimi Standart SSD'ye dönüştürebilir miyim?**
+Evet, bunu yapabilirsiniz. Azure [yönetilen diskdepolamayı standarttan premium'a dönüştürmeye](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage) bakın ve Yönetilen Diskleri dönüştürmeyle ilgili genel yönergeler için tam tersi. Ayrıca, disk türünü Standart SSD'ye güncelleştirmek için aşağıdaki değeri kullanın.
+-Hesap Tipi StandardSSD_LRS
 
-**HDD yerine Standart SSD diskleri kullanmanın avantajı nedir?**
-Standart SSD diskler, HDD disklerine kıyasla daha iyi gecikme, tutarlılık, kullanılabilirlik ve güvenilirlik sağlar. Uygulama iş yükleri bu nedenle Standart SSD çok daha sorunsuz bir şekilde çalışır. Premium SSD diskler, en fazla GÇ yoğun üretim iş yükleri için önerilen çözümdür.
+**HDD yerine Standart SSD diskler kullanmanın faydası nedir?**
+Standart SSD diskler, HDD disklere kıyasla daha iyi gecikme süresi, tutarlılık, kullanılabilirlik ve güvenilirlik sunar. Uygulama iş yükleri, bu nedenle Standart SSD'de çok daha sorunsuz çalışır. Not: Premium SSD diskler, IO yoğun üretim iş yüklerinin çoğu için önerilen çözümdür.
 
-**Standart SSD 'leri yönetilmeyen diskler olarak kullanabilir miyim?**
-Hayır, standart SSD diskler yalnızca yönetilen diskler olarak kullanılabilir.
+**Standart SSD'leri Yönetilmeyen Diskler olarak kullanabilir miyim?**
+Hayır, Standart SSD'ler diskleri yalnızca Yönetilen Diskler olarak kullanılabilir.
 
-**Standart SSD diskleri "tek örnekli VM SLA 'Sı" destekliyor mu?**
-Hayır, standart SSD 'Lerin tek örnekli VM SLA 'Sı yoktur. Tek örnekli VM SLA 'Sı için Premium SSD diskleri kullanın.
+**Standart SSD Diskler "tek örnek VM SLA"yı destekliyor mu?**
+Hayır, Standart SSD'lerde tek bir örnek VM SLA yoktur. Tek örnek VM SLA için Premium SSD diskleri kullanın.
 
 ## <a name="migrate-to-managed-disks"></a>Yönetilen Disklere geçme
 
-**Yönetilen diskler performansında geçişin etkileri var mı?**
+**Geçişin Yönetilen Diskler performansı üzerinde herhangi bir etkisi var mı?**
 
-Geçiş, diskin bir depolama konumundan diğerine taşınmasını içerir. Bu, verilerin arka plan kopyası aracılığıyla düzenlenir, bu işlem birkaç saat sürebilir ve genellikle, disklerdeki veri miktarına bağlı olarak 24 saat daha küçüktür. Bu süre boyunca, bazı okumalar özgün konuma yeniden yönlendiriliyorsa ve tamamlanması daha uzun sürebileceğinden, uygulamanız olağan okuma gecikmesinden daha yüksek bir deneyim yaşayabilir. Bu süre boyunca yazma gecikmesi üzerinde hiçbir etkisi yoktur.  
+Geçiş, Diskin bir Depolama konumundan diğerine hareketini içerir. Bu, disklerde veri miktarına bağlı olarak genellikle 24 Saat'ten daha az, tamamlanması birkaç saat sürebilecek arka plandaki veri kopyası aracılığıyla düzenlenmiştir. Bu süre zarfında uygulamanız normalden daha yüksek okuma gecikmesi yaşayabilir, çünkü bazı okumalar orijinal konuma yönlendirilebilir ve tamamlanması daha uzun sürebilir. Bu dönemde yazma gecikmesi üzerinde hiçbir etkisi yoktur.  
 
-**Önceden var olan bir Azure Backup hizmeti yapılandırmasında, yönetilen disklere geçişten önce/sonra hangi değişiklikler gerekir?**
+**Yönetilen Disklere geçişten önce/sonra önceden varolan bir Azure Yedekleme hizmeti yapılandırmasında hangi değişiklikler gereklidir?**
 
-Değişiklik gerekmiyor.
+Değişiklik gerekmez.
 
-**Geçiş çalışmaya devam etmeden önce VM yedeklemelerim Azure Backup hizmet aracılığıyla oluşturulur mi?**
+**Geçiş çalışmaya devam etmeden önce Azure Yedekleme hizmeti aracılığıyla oluşturulan VM yedeklerim çalışır mı?**
 
-Evet, yedeklemeler sorunsuz şekilde çalışır.
+Evet, yedeklemeler sorunsuz çalışır.
 
-**Önceden var olan Azure diskleri şifreleme yapılandırmasında, yönetilen disklere geçişten önce/sonra hangi değişiklikler gerekir?**
+**Yönetilen Disklere geçişten önce/sonra önceden varolan bir Azure Diskşifreleme yapılandırmasında hangi değişiklikler gereklidir?**
 
-Değişiklik gerekmiyor.
+Değişiklik gerekmez.
 
-**, Mevcut bir sanal makine ölçek kümesinin yönetilmeyen disklerden yönetilen disklere otomatik olarak geçirilmesi mi?**
+**Varolan sanal makine ölçeğinin otomatik geçişi yönetilmeyen disklerden Yönetilen Disklere ayarlanır mı?**
 
-Hayır. Yönetilmeyen diskler içeren eski ölçek kümesinden görüntüyü kullanarak, yönetilen disklerle yeni bir ölçek kümesi oluşturabilirsiniz.
+Hayır. Yönetilen Diskler ile yönetilen diskler ile eski ölçek kümesinden görüntüyü kullanarak yeni bir ölçek kümesi oluşturabilirsiniz.
 
-**Yönetilen disklere geçmeden önce alınan Sayfa Blobu anlık görüntüsünden yönetilen bir disk oluşturabilir miyim?**
+**Yönetilen Diskler'e geçmeden önce çekilen bir sayfa blob anlık görüntüsünden Yönetilen Disk oluşturabilir miyim?**
 
-Hayır. Sayfa Blobu anlık görüntüsünü Sayfa Blobu olarak dışa aktarabilir ve ardından dışa aktarılmış sayfa blobundan yönetilen bir disk oluşturabilirsiniz.
+Hayır. Bir sayfa blob anlık görüntüsünü bir sayfa blob olarak dışa aktarabilir ve ardından dışa aktarılan sayfa blob'undan yönetilen disk oluşturabilirsiniz.
 
-**Yönetilen diskler içeren bir VM 'ye Azure Site Recovery tarafından korunan şirket içi makinelerimin yükünü devreder miyim?**
+**Azure Site Kurtarma tarafından korunan şirket içi makinelerim üzerinde Yönetilen Diskler ile vm'de başarısız olabilir miyim?**
 
-Evet, yönetilen disklerle bir VM 'ye yük devretmeyi seçebilirsiniz.
+Evet, Yönetilen Diskler ile bir VM'ye başarısız olmayı seçebilirsiniz.
 
-**Azure 'dan Azure 'a çoğaltma aracılığıyla Azure Site Recovery korunan Azure VM 'lerinde geçişin etkileri var mı?**
+**Azure Site Kurtarma yoluyla Azure çoğaltma yoluyla korunan Azure VM'leri üzerindeki geçişin herhangi bir etkisi var mı?**
 
-Hayır. Yönetilen disklere sahip VM 'Ler için Azure 'dan Azure 'a koruma Azure Site Recovery.
+Hayır. Yönetilen Diskler'e sahip VM'ler için Azure Site Kurtarma Azure'dan Azure'a koruma mevcuttur.
 
-**VM 'Leri, yönetilen disklere daha önce şifrelenmiş olan veya daha önce şifrelenen depolama hesaplarında bulunan yönetilmeyen disklere geçirebilir miyim?**
+**Yönetilen diskler için önceden şifrelenmiş veya depolama hesaplarında bulunan yönetilmeyen disklerle VM'leri geçirtebilir miyim?**
 
 Evet
 
-## <a name="managed-disks-and-storage-service-encryption"></a>Yönetilen diskler ve Depolama Hizmeti Şifrelemesi
+## <a name="managed-disks-and-storage-service-encryption"></a>Yönetilen Diskler ve Depolama Hizmeti Şifrelemesi
 
-**Azure Depolama Hizmeti Şifrelemesi, yönetilen bir disk oluştururken varsayılan olarak etkindir mi?**
+**Yönetilen bir disk oluşturduğumda Azure Depolama Hizmeti Şifrelemesi varsayılan olarak etkinleştirilir mi?**
 
 Evet.
 
-**Önyükleme birimi, yönetilen bir diskte varsayılan olarak şifrelendi mı?**
+**Önyükleme birimi yönetilen bir diskte varsayılan olarak şifrelenir mi?**
 
-Evet. Varsayılan olarak, işletim sistemi diski dahil olmak üzere tüm yönetilen diskler şifrelenir.
+Evet. Varsayılan olarak, işletim sistemi diski de dahil olmak üzere yönetilen tüm diskler şifrelenir.
 
-**Şifreleme anahtarlarını kim yönetir?**
+**Şifreleme anahtarlarını kim yönetiyor?**
 
-Microsoft, şifreleme anahtarlarını yönetir.
+Şifreleme anahtarlarını Microsoft yönetir.
 
-**Yönetilen disklerimin Depolama Hizmeti Şifrelemesi devre dışı bırakabilir miyim?**
+**Yönetilen disklerim için Depolama Hizmeti Şifrelemesi'ni devre dışı kılabilir miyim?**
 
 Hayır.
 
-**Depolama Hizmeti Şifrelemesi yalnızca belirli bölgelerde kullanılabilir mi?**
+**Depolama Hizmeti Şifrelemesi yalnızca belirli bölgelerde mi kullanılabilir?**
 
-Hayır. Yönetilen disklerin kullanılabildiği tüm bölgelerde kullanılabilir. Yönetilen diskler tüm genel bölgelerde ve Almanya 'da kullanılabilir. Bununla birlikte, yalnızca Microsoft tarafından yönetilen anahtarlar için, müşteri tarafından yönetilen anahtarlar için değil, Çin 'de de kullanılabilir.
+Hayır. Yönetilen Disklerin kullanılabildiği tüm bölgelerde kullanılabilir. Yönetilen Diskler tüm ortak bölgelerde ve Almanya'da kullanılabilir. Ancak Çin'de de kullanılabilir, ancak müşteri yönetilen anahtarlar için değil, yalnızca Microsoft yönetilen anahtarlar için kullanılabilir.
 
-**Yönetilen diskimin şifrelenip şifrelenmediğini nasıl öğrenebilirim?**
+**Yönetilen diskimin şifrelenip şifrelenmedığını nasıl öğrenebilirim?**
 
-Yönetilen bir diskin Azure portal, Azure CLı ve PowerShell 'den oluşturulma zamanını öğrenebilirsiniz. Süre, 9 Haziran 2017 ' den sonra ise, diskiniz şifrelenir.
+Azure portalı, Azure CLI ve PowerShell'den yönetilen bir diskin ne zaman oluşturulduğunu öğrenebilirsiniz. Saat 9 Haziran 2017'den sonraysa, diskiniz şifrelenir.
 
-**10 Haziran 2017 ' den önce oluşturulan mevcut disklerimi nasıl şifreleyebilirim?**
+**10 Haziran 2017'den önce oluşturulan varolan disklerimi nasıl şifreleyebilirim?**
 
-10 Haziran 2017 itibariyle, mevcut yönetilen disklere yazılan yeni veriler otomatik olarak şifrelenir. Ayrıca, var olan verileri şifrelemeyi planlıyoruz ve şifreleme arka planda zaman uyumsuz olarak gerçekleşecektir. Mevcut verileri şimdi şifrelemeniz gerekiyorsa, diskinizin bir kopyasını oluşturun. Yeni diskler şifrelenir.
+10 Haziran 2017 itibariyle, mevcut yönetilen disklere yazılan yeni veriler otomatik olarak şifrelenir. Ayrıca varolan verileri şifrelemeyi planlıyoruz ve şifreleme arka planda eşzamanlı olarak gerçekleşecektir. Varolan verileri şimdi şifrelemeniz gerekiyorsa, diskinizin bir kopyasını oluşturun. Yeni diskler şifrelenir.
 
-* [Azure CLı kullanarak yönetilen diskleri kopyalama](../articles/virtual-machines/scripts/virtual-machines-linux-cli-sample-copy-managed-disks-to-same-or-different-subscription.md?toc=%2fcli%2fmodule%2ftoc.json)
+* [Azure CLI'yi kullanarak yönetilen diskleri kopyalama](../articles/virtual-machines/scripts/virtual-machines-linux-cli-sample-copy-managed-disks-to-same-or-different-subscription.md?toc=%2fcli%2fmodule%2ftoc.json)
 * [Yönetilen diskleri PowerShell kullanarak kopyalama](../articles/virtual-machines/scripts/virtual-machines-windows-powershell-sample-copy-managed-disks-to-same-or-different-subscription.md?toc=%2fcli%2fmodule%2ftoc.json)
 
-**Yönetilen anlık görüntüler ve görüntüler şifrelendi mı?**
+**Yönetilen anlık görüntüler ve görüntüler şifrelenir mi?**
 
-Evet. 9 Haziran 2017 ' den sonra oluşturulan tüm yönetilen anlık görüntüler ve görüntüler otomatik olarak şifrelenir. 
+Evet. 9 Haziran 2017'den sonra oluşturulan tüm yönetilen anlık görüntüler ve görüntüler otomatik olarak şifrelenir. 
 
-**VM 'Leri daha önce yönetilen disklere şifrelenmiş depolama hesaplarında bulunan yönetilmeyen disklere dönüştürebilir miyim?**
+**Yönetilen diskler için önceden şifrelenmiş veya depolama hesaplarında bulunan yönetilmeyen disklere sahip VM'leri dönüştürebilir miyim?**
 
 Evet
 
-**Yönetilen bir diskten ya da bir anlık görüntüden dışarıya aktarılmış bir VHD mi olacak?**
+**Yönetilen bir diskten veya anlık görüntüden dışa aktarılan Bir VHD de şifrelenir mi?**
 
-Hayır. Ancak, şifrelenen bir yönetilen diskten veya anlık görüntüsünden bir VHD 'yi şifrelenmiş bir depolama hesabına dışa aktardığınızda, bu durumda şifrelenir. 
+Hayır. Ancak, şifreli yönetilen bir diskten veya anlık görüntüden şifreli bir depolama hesabına vhd dışa aktarırsanız, bu hesap şifrelenir. 
 
-## <a name="premium-disks-managed-and-unmanaged"></a>Premium diskler: yönetilen ve yönetilmeyen
+## <a name="premium-disks-managed-and-unmanaged"></a>Premium diskler: Yönetilen ve yönetilmeyen
 
-**Bir VM, DSv2 gibi Premium SSD diskleri destekleyen bir boyut serisi kullanıyorsa hem Premium hem de standart veri disklerini ekleyebilir miyim?** 
+**Bir VM, DSv2 gibi Premium SSD diskleri destekleyen bir boyut serisi kullanıyorsa, hem premium hem de standart veri diskleri ekleyebilir miyim?** 
 
 Evet.
 
-**Hem Premium hem de standart veri disklerini D, Dv2, G veya F serisi gibi Premium SSD diskleri desteklemeyen bir boyut dizisine iliştirebilir miyim?**
+**D, Dv2, G veya F serisi gibi Premium SSD diskleri desteklemeyen bir boyut serisine hem premium hem de standart veri diskleri ekleyebilir miyim?**
 
-Hayır. Yalnızca Premium SSD diskleri destekleyen bir boyut serisi kullanmayan VM 'lere yalnızca standart veri diskleri ekleyebilirsiniz.
+Hayır. Premium SSD diskleri destekleyen bir boyut serisi kullanmayan VM'lere yalnızca standart veri diskleri ekleyebilirsiniz.
 
-**80 GB olan mevcut bir VHD 'den Premium veri diski oluştururum, bu maliyet ne kadar olacaktır?**
+**80 GB olan mevcut bir VHD'den bir premium veri diski oluşturursam, bu ne kadara mal olur?**
 
-Bir 80 GB VHD 'den oluşturulan Premium veri diski, P10 disk olan bir sonraki kullanılabilir Premium disk boyutu olarak değerlendirilir. P10 disk fiyatlandırmasına göre ücretlendirilirsiniz.
+80 GB VHD'den oluşturulan birinci sınıf veri diski, p10 diski olan bir sonraki kullanılabilir premium disk boyutu olarak kabul edilir. P10 disk fiyatlandırmasına göre ücretlendirilirsiniz.
 
 **Premium SSD diskleri kullanmak için işlem maliyetleri var mı?**
 
-Her disk boyutu için sabit bir maliyet vardır ve bu, ıOPS ve aktarım hızı için belirli limitlerle sağlanır. Varsa, diğer maliyetler ise giden bant genişliğidir ve anlık görüntü kapasitesidir. Daha fazla bilgi edinmek için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/storage).
+IOPS ve iş maliyeti belirli limitler ile sağlanan her disk boyutu için sabit bir maliyet vardır. Diğer maliyetler, varsa giden bant genişliği ve anlık görüntü kapasitesidir. Daha fazla bilgi edinmek için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/storage).
 
-**Disk önbelleğinden alabileceği ıOPS ve aktarım hızı sınırları nelerdir?**
+**IOPS ve disk önbelleğinden alabildiğim iş için sınırlar nelerdir?**
 
-Bir DS serisi için önbellek ve yerel SSD için Birleşik Sınırlar, çekirdek başına 4.000 ıOPS ve çekirdek başına 33 MiB. GS serisi çekirdek başına 5.000 ıOPS ve çekirdek başına saniyede 50 MIB sağlar.
+Bir DS serisi için önbellek ve yerel SSD için birleştirilmiş sınırlar çekirdek başına 4.000 IOPS ve çekirdek başına saniyede 33 MiB'dir. GS serisi çekirdek başına 5.000 IOPS ve çekirdek başına saniyede 50 MiB sunuyor.
 
-**Yerel SSD, yönetilen diskler VM 'si için destekleniyor mu?**
+**Yerel SSD Yönetilen Diskler VM için destekleniyor mu?**
 
-Yerel SSD, yönetilen diskler VM 'ye dahil olan geçici bir depodır. Bu geçici depolama için ek maliyet yoktur. Azure Blob depolamada kalıcı olmadığından, uygulama verilerinizi depolamak için bu yerel SSD 'yi kullanmanızı öneririz.
+Yerel SSD, Yönetilen Diskler VM ile birlikte verilen geçici depolama alanıdır. Bu geçici depolama için ekstra bir ücret yoktur. Azure Blob depolama alanında kalıcı olmadığı için uygulama verilerinizi depolamak için bu yerel SSD'yi kullanmamanızı öneririz.
 
-**Premium disklerde KıRPMA kullanımı için herhangi bir sorun var mı?**
+**Premium disklerde TRIM kullanımının herhangi bir yan etkisi var mı?**
 
-Azure disklerinde, Premium veya Standart diskler üzerinde KıRPMA kullanmanın bir alt tarafı yoktur.
+Azure disklerde TRIM kullanımının premium veya standart disklerde kullanılmasının hiçbir dezavantajı yoktur.
 
-## <a name="new-disk-sizes-managed-and-unmanaged"></a>Yeni disk boyutları: yönetilen ve yönetilmeyen
+## <a name="new-disk-sizes-managed-and-unmanaged"></a>Yeni disk boyutları: Yönetilen ve yönetilmeyen
 
-**Hangi bölgeler geçerli Premium SSD disk boyutu için ne kadar fazla özelliği destekler?**
+**Hangi bölgeler, geçerli premium SSD disk boyutu için patlama yeteneğini destekler?**
 
-Patlama özelliği şu anda Azure Orta Batı ABD 'da desteklenmektedir.
+Patlama özelliği şu anda Azure West Central US'ta desteklenmiştir.
 
-**Hangi bölgeler 4/8/16 GiB yönetilen disk boyutlarına (P1/P2/P3, E1/E2/E3) destekleniyor?**
+**4/8/16 GİB Yönetilen Disk boyutları (P1/P2/P3, E1/E2/E3) hangi bölgelerde desteklenir?**
 
-Bu yeni disk boyutları şu anda Azure Orta Batı ABD 'da desteklenmektedir.
+Bu yeni disk boyutları şu anda Azure West Central US'ta destekleniyor.
 
-**, Yönetilmeyen diskler veya sayfa Blobları için P1/P2/P3 disk boyutları desteklenir mi?**
+**P1/P2/P3 disk boyutları yönetilmeyen diskler veya sayfa lekeleri için destekleniyor mu?**
 
-Hayır, yalnızca Premium SSD tarafından yönetilen disklerde desteklenir. 
+Hayır, yalnızca premium SSD yönetilen disklerde desteklenir. 
 
-**E1/E2/E3 disk boyutları, yönetilmeyen diskler veya sayfa Blobları için destekleniyor mu?**
+**E1/E2/E3 disk boyutları yönetilmeyen diskler veya sayfa lekeleri için destekleniyor mu?**
 
-Hayır, her boyuttaki standart SSD yönetilen diskleri, yönetilmeyen disklerle veya sayfa Blobları ile kullanılamaz.
+Hayır, herhangi bir boyuttaki standart SSD yönetilen diskler yönetilmeyen disklerle veya sayfa lekeleriyle kullanılamaz.
 
-**İşletim sistemi ve veri diskleri için desteklenen en büyük yönetilen disk boyutu nedir?**
+**İşletim sistemi ve veri diskleri için desteklenen en büyük Yönetilen disk boyutu nedir?**
 
-Azure 'un bir işletim sistemi diski için desteklediği bölüm türü, ana önyükleme kaydıdır (MBR). MBR biçimi 2 TiB 'ye kadar bir disk boyutunu destekler. Azure 'un bir işletim sistemi diski için desteklediği en büyük boyut 2 TiB 'dir. Azure, yönetilen veri diskleri için en fazla 32 TiB destekler.
+Azure'un bir işletim sistemi diski için desteklediği bölüm türü, ana önyükleme kaydıdır (MBR). MBR biçimi 2 TiB'e kadar bir disk boyutunu destekler. Azure'un bir işletim sistemi diski için desteklediği en büyük boyut 2 TiB'dir. Azure, yönetilen veri diskleri için 32 TiB'ye kadar destekler.
 
-**İşletim sistemi ve veri diskleri için desteklenen en büyük yönetilmeyen disk boyutu nedir?**
+**İşletim sistemi ve veri diskleri için desteklenen en büyük Yönetilmeyen Disk boyutu nedir?**
 
-Azure 'un bir işletim sistemi diski için desteklediği bölüm türü, ana önyükleme kaydıdır (MBR). MBR biçimi 2 TiB 'ye kadar bir disk boyutunu destekler. Azure 'un bir işletim sistemi tarafından yönetilmeyen disk için desteklediği en büyük boyut 2 TiB 'dir. Azure, veri yönetilmeyen diskler için en fazla 4 TiB destekler.
+Azure'un bir işletim sistemi diski için desteklediği bölüm türü, ana önyükleme kaydıdır (MBR). MBR biçimi 2 TiB'e kadar bir disk boyutunu destekler. Azure'un yönetilmeyen bir işletim sistemi için desteklediği en büyük boyut 2 TiB'dir. Azure, yönetilmeyen veriler için en fazla 4 TiB'yi destekler.
 
-**Desteklenen en büyük Sayfa Blobu boyutu nedir?**
+**Desteklenen en büyük sayfa blob boyutu nedir?**
 
-Azure 'un desteklediği en büyük Sayfa Blobu boyutu 8 TiB 'dir (8.191 GiB). Bir VM 'ye veri olarak veya işletim sistemi diskleri olarak eklenen en büyük Sayfa Blobu boyutu 4 TiB (4.095 GiB).
+Azure'un desteklediği en büyük sayfa blob boyutu 8 TiB 'dir (8.191 GiB). Veri veya işletim sistemi diskleri olarak bir VM'e eklendiğinde maksimum sayfa blob boyutu 4 TiB 'dir (4,095 GiB).
 
-**1 TiB 'den büyük disklerin oluşturulması, eklenmesi, yeniden boyutlandırılması ve karşıya yüklenmesi için yeni bir Azure araçları sürümü kullanmam gerekir mi?**
+**1 TiB'den büyük diskler oluşturmak, eklemek, yeniden boyutlandırmak ve yüklemek için Azure araçlarının yeni bir sürümünü kullanmam gerekir mi?**
 
-1 TiB 'den büyük disklerin oluşturulması, eklenmesi veya yeniden boyutlandırılması için mevcut Azure araçlarınızı yükseltmeniz gerekmez. VHD dosyanızı Şirket içinden doğrudan bir Sayfa Blobu veya yönetilmeyen disk olarak Azure 'a yüklemek için aşağıda listelenen en son araç kümelerini kullanmanız gerekir. Yalnızca 8 TiB 'ye kadar olan VHD yüklemelerini destekliyoruz.
+1 TiB'den büyük diskler oluşturmak, eklemek veya yeniden boyutlandırmak için varolan Azure araçlarınızı yükseltmeniz gerekmez. VHD dosyanızı şirket içinde doğrudan sayfa blob'u veya yönetilmeyen disk olarak Azure'a yüklemek için, aşağıda listelenen en son araç kümelerini kullanmanız gerekir. Biz sadece 8 TiB kadar VHD yüklemeleri destekler.
 
-|Azure Araçları      | Desteklenen sürümler                                |
+|Azure araçları      | Desteklenen sürümler                                |
 |-----------------|---------------------------------------------------|
-|Azure PowerShell | Sürüm numarası 4.1.0: Haziran 2017 sürüm veya üzeri|
-|Azure CLı v1     | Sürüm numarası 0.10.13: Mayıs 2017 sürüm veya sonrası|
-|Azure CLı v2     | Sürüm numarası 2.0.12: Temmuz 2017 sürümü veya üzeri|
-|AzCopy           | Sürüm numarası 6.1.0: Haziran 2017 sürüm veya üzeri|
+|Azure PowerShell | Sürüm numarası 4.1.0: Haziran 2017 sürümü veya sonrası|
+|Azure CLI v1     | Sürüm numarası 0.10.13: Mayıs 2017 sürümü veya sonrası|
+|Azure CLI v2     | Sürüm numarası 2.0.12: Temmuz 2017 sürümü veya sonrası|
+|AzCopy              | Sürüm numarası 6.1.0: Haziran 2017 sürümü veya sonrası|
 
-**P4 ve P6 disk boyutları yönetilmeyen diskler veya sayfa Blobları için destekleniyor mu?**
+**P4 ve P6 disk boyutları yönetilmeyen diskler veya sayfa lekeleri için destekleniyor mu?**
 
-P4 (32 GiB) ve P6 (64 GiB) disk boyutları, yönetilmeyen diskler ve sayfa Blobları için varsayılan disk katmanları olarak desteklenmez. Diskinizin Bu katmanlarla eşleştirilmesini sağlamak için [BLOB katmanını](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) P4 ve P6 olarak ayarlamanız gerekir. Disk boyutu veya disk uzunluğu 32 GiB 'den az olan bir yönetilmeyen disk veya Sayfa Blobu dağıtırsanız ya da blob katmanını ayarlamadan 32 GiB ile 64 GiB arasında devam ederseniz, P10 'de 500 ıOPS ve 100 MIB/s ve eşlenmiş fiyatlandırma katmanı ile çalışmaya devam edersiniz.
+P4 (32 GiB) ve P6 (64 GiB) disk boyutları, yönetilmeyen diskler ve sayfa lekeleri için varsayılan disk katmanları olarak desteklenmez. Diskinizin bu katmanlara eşlenebilmek için [Blob Tier'i](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) açıkça P4 ve P6 olarak ayarlamanız gerekir. Disk boyutu veya içerik uzunluğu 32 GiB'den az veya Blob Tier'i ayarlamadan 32 GiB ile 64 GiB arasında olan yönetilmeyen bir disk veya sayfa blob'u dağıtırsanız, 500 IOPS ve 100 MiB/s ve eşlenen fiyatlandırma katmanıyla P10'a inmeye devam edersiniz.
 
-**Küçük disk etkinleştirilmeden (15 Haziran 2017 ' de olmak üzere), mevcut Premium yönetilen diskim daha az 64 GiB tarafından oluşturulduysa, nasıl faturalandırılır?**
+**Mevcut premium yönetilen diskim küçük disk etkinleştirilmeden önce 64 GiB'den az oluşturulmuşsa (15 Haziran 2017 civarında), nasıl faturalandırılır?**
 
-64 GiB 'den küçük olan mevcut küçük Premium diskler P10 fiyatlandırma katmanına göre faturalandırılmaya devam eder.
+64 GiB'den küçük olan mevcut küçük premium diskler P10 fiyatlandırma katmanına göre faturalandırılamaya devam eder.
 
-**64 GiB 'den küçük Premium disklerin disk katmanını P4 veya P6 'e nasıl değiştirebilirim?**
+**64 GiB'den küçük premium disklerin disk katmanını P10'dan P4 veya P6'ya nasıl değiştirebilirim?**
 
-Küçük disklerinizin anlık görüntüsünü alabilir ve ardından bir disk oluşturarak fiyatlandırma katmanını otomatik olarak P4 veya P6 olarak sağlanan boyuta göre değiştirebilirsiniz.
+Küçük disklerinizin anlık görüntüsünü alabilir ve ardından fiyatlandırma katmanını sağlanan boyuta bağlı olarak otomatik olarak P4 veya P6'ya geçirmek için bir disk oluşturabilirsiniz.
 
-**Mevcut yönetilen diskleri 4 tebibayttan (TiB) daha az 32 TiB 'ye kadar yeni sunulan disk boyutlarına göre boyutlandırmanıza izin verebilir mi?**
+**Mevcut Yönetilen Diskleri 4 tebibayttan (TiB) daha az boyutlardan 32 TiB'ye kadar yeni tanıtılan yeni disk boyutlarına yeniden boyutlandırabilir misiniz?**
 
 Evet.
 
-**Azure Backup ve Azure Site Recovery hizmeti tarafından desteklenen en büyük disk boyutları nelerdir?**
+**Azure Yedekleme ve Azure Site Kurtarma hizmeti tarafından desteklenen en büyük disk boyutları nelerdir?**
 
-Azure Backup tarafından desteklenen en büyük disk boyutu 32 TiB 'dir (şifrelenmiş diskler için 4 TiB). Azure Site Recovery tarafından desteklenen en büyük disk boyutu 8 TiB 'dir. 32 TiB 'ye kadar daha büyük diskler için destek, Azure Site Recovery ' de henüz kullanılamamaktadır.
+Azure Yedekleme tarafından desteklenen en büyük disk boyutu 32 TiB 'dir (şifreli diskler için 4 TiB). Azure Site Kurtarma tarafından desteklenen en büyük disk boyutu 8 TiB'dir. Azure Site Kurtarma'da 32 TiB'ye kadar olan büyük diskler için destek henüz kullanılamıyor.
 
-**İyileştirilmiş disk ıOPS ve bant genişliğine ulaşmak için Standart SSD ve Standart HDD diskler için daha büyük disk boyutları (> 4 TiB) için önerilen VM boyutları nelerdir?**
+**Optimize edilmiş disk IOPS ve Bant Genişliği elde etmek için Standart SSD ve Standart HDD diskler için daha büyük disk boyutları (>4 TiB) için önerilen VM boyutları nelerdir?**
 
-Standart SSD disk işleme elde etmek ve büyük disk boyutları Standart HDD (> 4 TiB) 500 ıOPS ve 60 MIB/sn 'den daha fazla performansını iyileştirmek için aşağıdaki VM boyutlarından birinden yeni bir VM dağıtmanız önerilir: B-serisi, DSv2-serisi, Dsv3-serisi, ESv3-Series, FS-Serisi, Fsv2-serisi, M-serisi, GS-Series, NCv2-serisi, NCv3-serisi veya LS Serisi VM 'Ler. Mevcut VM 'lere veya yukarıda önerilen boyutları kullanmayan VM 'lere büyük diskler eklemek daha düşük performans yaşayabilir.
+Standart SSD ve Standart HDD büyük disk boyutlarının (>4 TiB) 500 IOPS ve 60 MiB/s'den daha fazla disk elde etmek için, Performansınızı optimize etmek için aşağıdaki VM boyutlarından birinden yeni bir VM dağıtmanızı öneririz: B serisi, DSv2 serisi, Dsv3 Serisi, ESv3 Serisi, Fs serisi, Fsv2 serisi, M serisi, GS serisi, NCv2 serisi, NCv3 serisi veya Ls serisi VM'ler. Yukarıda önerilen boyutları kullanmayan varolan VM'lere veya VM'lere büyük diskler takılmak daha düşük performansla karşılaşabilir.
 
-**En büyük disk boyutları önizlemesi sırasında dağıtılan disklerimi nasıl yükseltebilirim (> 4 TiB) ve daha yüksek ıOPS, GA & bant genişliğine sahip olabilir mi?**
+**GA'da daha yüksek IOPS & bant genişliğini elde etmek için daha büyük disk boyutları önizlemesi sırasında dağıtılan disklerimi (>4 TiB) nasıl yükseltebilirim?**
 
-Diskin bağlı olduğu VM 'yi durdurup başlatabilir veya diskinizin bağlantısını ayırıp yeniden ekleyebilirsiniz. Daha büyük disk boyutlarının performans hedefleri, her iki Premium SSD ve standart SSD 'Ler için de artmıştır.
+Diskin bağlı olduğu VM'yi durdurup başlatabilir veya diskinizi ayırıp yeniden takabilirsiniz. GA'da hem premium SSD'ler hem de standart SSD'ler için daha büyük disk boyutlarının performans hedefleri artırıldı.
 
-**Hangi bölgeler, ' de desteklenen 8 TiB, 16 TiB ve 32 TiB tarafından desteklenen disk boyutlarıdır?**
+**8 TiB, 16 TiB ve 32 TiB'nin yönetilen disk boyutları hangi bölgelerde desteklenir?**
 
-8 TiB, 16 TiB ve 32 TiB disk SKU 'Ları, küresel Azure, Microsoft Azure Kamu ve Azure Çin 21Vianet altındaki tüm bölgelerde desteklenir.
+8 TiB, 16 TiB ve 32 TiB disk SUS'u global Azure, Microsoft Azure Hükümeti ve Azure China 21Vianet kapsamındaki tüm bölgelerde desteklenir.
 
-**Tüm disk boyutlarında konak önbelleğini etkinleştirmeyi destekliyoruz.**
+**Tüm disk boyutlarında Ana Bilgisayar Önbelleğe Alma'yı etkinleştirme yi destekliyor muyum?**
 
-Salt okunur ve okuma/yazma işlemleri için 4 TiB 'den az disk boyutlarında konak önbelleğe alma destekliyoruz. 4 TiB 'den fazla disk boyutları için, None dışında önbelleğe alma seçeneğini ayarlamayı desteklemiyoruz. VM 'de önbelleğe alınan verilerle daha iyi performans artışı gözlemleyebileceğiniz daha küçük disk boyutları için önbelleğe almayı öneririz.
+ReadOnly'in Host Caching'ini destekliyoruz ve 4 TiB'den küçük disk boyutlarında Okuma/Yazma'yı destekliyoruz. 4 TiB'den fazla disk boyutları için, Hiçbiri dışında önbelleğe alma seçeneğini desteklemeyiz. VM'ye önbelleğe alınan verilerle daha iyi performans artışı gözlemleyebileceğiniz daha küçük disk boyutları için önbelleğe almanızı öneririz.
 
-## <a name="what-if-my-question-isnt-answered-here"></a>Sorum burada yanıtlanmazsa ne olacak?
+## <a name="what-if-my-question-isnt-answered-here"></a>Ya sorum burada cevaplandırılmazsa?
 
-Sorunuz burada listelenmiyorsa, bize bilgi verin ve bir yanıt bulmanıza yardımcı olabiliriz. Açıklamalarda Bu makalenin sonuna bir soru gönderebilirsiniz. Azure depolama ekibi ve bu makaleyle ilgili diğer topluluk üyeleriyle birlikte çalışmak için MSDN [Azure depolama Forumu](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata)' nu kullanın.
+Sorunuz burada listelenmemişse, bize bildirin ve bir yanıt bulmanıza yardımcı olalım. Bu makalenin sonunda yorum bir soru gönderebilirsiniz. Azure Depolama ekibi ve diğer topluluk üyeleriyle bu makale hakkında etkileşimde bulunmak için MSDN [Azure Depolama forumundan](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata)yararlanın.
 
-Özellik istemek için isteklerinizi ve fikirlerinizi [Azure Storage geri bildirim forumuna](https://feedback.azure.com/forums/217298-storage)gönderin.
+Özellikler istemek için isteklerinizi ve fikirlerinizi [Azure Depolama geri bildirim forumuna](https://feedback.azure.com/forums/217298-storage)gönderin.

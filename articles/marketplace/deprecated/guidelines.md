@@ -1,20 +1,19 @@
 ---
-title: Azure Market ve AppSource yayımcısı için yönergeler | Mavisi
-description: Uygulama ve hizmet yayımcıları için Azure Market ve AppSource yönergeleri
+title: Azure Marketi ve AppSource yayıncısı için yönergeler | Azure
+description: Uygulama ve hizmet yayıncıları için Azure Marketi ve AppSource yönergeleri
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: jm-aditi-ms
-manager: pabutler
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/13/2018
-ms.author: ellacroi
-ms.openlocfilehash: 371f36e13c244439a583cbeb7ff06c6a1283d272
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: f41aeb75253c803eac03b856d1e1ed0edb74a7e6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825944"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80281536"
 ---
 # <a name="guidelines"></a>Yönergeler  
 
@@ -23,52 +22,52 @@ ms.locfileid: "73825944"
 -->
 ---
 
-## <a name="guidelines-for-azure-marketplace"></a>Azure Marketi için yönergeler  
+## <a name="guidelines-for-azure-marketplace"></a>Azure Marketi Yönergeleri  
 
-### <a name="guidelines-for-creating-a-microsoft-id-to-manage-a-marketplace-account"></a>Market hesabını yönetmek için Microsoft KIMLIĞI oluşturma yönergeleri  
-Market hesabınızı oluşturmak için kullanılan aynı Microsoft KIMLIĞINE birden fazla kişi erişimi gerektiriyorsa, bir şirket hesabı oluşturmanıza yardımcı olması için bu yönergeleri izlemeniz gerekir. 
+### <a name="guidelines-for-creating-a-microsoft-id-to-manage-a-marketplace-account"></a>Bir pazar hesabını yönetmek için Microsoft Kimliği oluşturma yönergeleri  
+Birden fazla kişi, pazar hesabınızı oluşturmak için kullanılan aynı Microsoft Kimliğine erişim gerektiriyorsa, bir şirket hesabı oluşturmanıza yardımcı olmak için bu yönergeleri izlemeniz gerekir. 
 
 >[!IMPORTANT]
->Birden çok kullanıcının Microsoft Geliştirici Merkezi (Geliştirme Merkezi) hesabınıza erişmesini yetkilendirmek için, Microsoft bireysel kullanıcılara roller atamak üzere Azure Active Directory (Azure AD) kullanmanızı önerir. Her kullanıcının, tek tek Azure AD kimlik bilgileriyle oturum açarak hesaba erişmesi gerekir. Microsoft KIMLIĞINIZI şirketinizde kayıtlı bir etki alanında e-posta adresi kullanarak oluşturun Microsoft, e-postanın bir kişiye atanmadığından emin olur. `windowsapps@fabrikam.com` bunun bir örneğidir.  
->*   Daha fazla bilgi için, [Azure AD Federasyon etki alanındaki MICROSOFT kimliği](#issue-microsoft-id-in-an-azure-ad-federated-domain) bölümüne gidin.  
+>Microsoft, birden çok kullanıcıya Microsoft Geliştirici Merkezi (Geliştirme Merkezi) hesabınıza erişme yetkisi vermek için, tek tek kullanıcılara roller atamak için Azure Active Directory (Azure AD) kullanmanızı önerir. Her kullanıcı, tek tek Azure AD kimlik bilgileriyle oturum açarak hesaba erişmelidir. Microsoft, şirketinize kayıtlı bir etki alanında bir e-posta adresi kullanarak Microsoft Kimliğinizi oluşturun, e-postanın bir kişiye atanmadığını önerir. `windowsapps@fabrikam.com` bunun bir örneğidir.  
+>*   Daha fazla bilgi için, [Azure AD federe etki alanı](#issue-microsoft-id-in-an-azure-ad-federated-domain) bölümündeki Sorun: Microsoft Kimliği'ni ziyaret edin.  
 
-*   Microsoft KIMLIĞINE erişimi, mümkün olan en az sayıda geliştiriciyle sınırlayın. 
-*   Geliştirme Merkezi hesabınıza erişmesi gereken herkesi içeren bir kurumsal e-posta dağıtım listesi (DL) ayarlayın. Güvenlik bilgilerinizin DL e-posta adresini ekleyin. DL, listedeki tüm çalışanların istendiğinde güvenlik kodları almasına ve Microsoft KIMLIĞINIZ için güvenlik bilgilerini yönetmesine olanak sağlar. Dağıtım listesi ayarlamak uygun değilse, her bir e-posta hesabının sahibi, istendiğinde güvenlik koduna erişmek ve bu kodun paylaşılması için kullanılabilir olmalıdır.  
-    *   Örneğin, Microsoft KIMLIĞINE yeni güvenlik bilgileri eklendiğinde veya Microsoft KIMLIĞINE yeni bir cihazdan erişildiğinde sahip sahibi sorulur.  
-*   Uzantı gerektirmeyen ve anahtar takım üyeleri tarafından erişilebilen bir şirket telefonu numarası ekleyin.  
-*   Genel olarak, geliştiricilerin Geliştirici Merkezi hesabınızda oturum açmak için güvenilir cihazları kullanmalarını gerektirmelisiniz. Tüm anahtar takım üyelerinin güvenilen cihazlara erişimi olmalıdır. Erişim için güvenilen cihazların kullanılması, birisi Geliştirme Merkezi hesabına erişirken güvenlik kodları gönderme gereksinimini azaltır.  
-*   Geliştirme Merkezi hesabına güvenilmeyen bir bilgisayardan erişim izni vermeniz gerekiyorsa, erişimi en fazla beş geliştirici ile sınırlandırmalısınız. İdeal olarak, geliştiricileriniz aynı coğrafi ve ağ konumunu paylaşan bilgisayarlardan hesaba erişmelidir.  
-*   Genellikle güvenlik bilgilerinizi gözden geçirin ve doğrulayın.  
-    *   Güvenlik bilgilerinizi görüntülemek için, [account.Live.com/proofs/Manage](https://account.live.com/proofs/Manage)adresinde bulunan güvenlik ayarları sayfasını ziyaret edin.
+*   Microsoft Kimliği'ne erişimi mümkün olan en az sayıda geliştiriciyle sınırlandırın. 
+*   Dev Center hesabınıza erişmesi gereken herkesi içeren bir kurumsal e-posta dağıtım listesi (DL) ayarlayın. Güvenlik bilgilerinize DL e-posta adresini ekleyin. DL, listedeki tüm çalışanların istendiğinde güvenlik kodları almasını ve Microsoft Kimliğinizin güvenlik bilgilerini yönetmesini sağlar. Bir dağıtım listesi ayarlamak mümkün değilse, istendiğinde güvenlik koduna erişmek ve paylaşmak için tek tek e-posta hesabının sahibinin kullanılabilir olması gerekir.  
+    *   Örneğin, Microsoft Kimliği'ne yeni güvenlik bilgileri eklendiğinde veya Microsoft Kimliği'ne yeni bir aygıttan erişildiğinde sahibinden istenir.  
+*   Uzatma gerektirmeyen ve anahtar ekip üyeleri tarafından erişilebilen bir şirket telefon numarası ekleyin.  
+*   Genel olarak, Geliştirme Merkezi hesabınızda oturum açabilmek için geliştiricilerin güvenilir aygıtlar kullanmasını zorunlu kılmalıdır. Tüm anahtar ekip üyelerinin güvenilir aygıtlara erişimi olmalıdır. Erişmek için güvenilir aygıtlar kullanmak, birisi Geliştirme Merkezi hesabına erişirken güvenlik kodları gönderme gereksinimini azaltır.  
+*   Dev Center hesabına güvenilmeyen bir bilgisayardan erişim izni vermeniz gerekiyorsa, erişimi en fazla beş geliştiriciyle sınırlamanız gerekir. İdeal olarak, geliştiricilerinizin hesaba aynı coğrafi ve ağ konumunu paylaşan bilgisayarlardan erişmesi gerekir.  
+*   Güvenlik bilgilerinizi sık sık gözden geçirin ve doğrulayın.  
+    *   Güvenlik bilgilerinizi görüntülemek için [account.live.com/proofs/Manage'da](https://account.live.com/proofs/Manage)bulunan Güvenlik ayarları sayfasını ziyaret edin.
 
-Geliştirme Merkezi hesabınıza öncelikle güvenilen bilgisayarlardan erişilmelidir. Her hafta Dev Center hesabı başına oluşturulan kodların sayısıyla sınırlı olduğundan, güvenilen bilgisayarlardan erişmeniz önemlidir. Güvenilen bilgisayarların kullanılması, en güvenli ve tutarlı oturum açma deneyimine de izin vermez. 
-*   Ek geliştirme merkezi hesap yönergeleri ve güvenliği hakkında daha fazla bilgi için, [docs.Microsoft.com/Windows/UWP/Publish/Opening-a-Developer-Account](https://docs.microsoft.com/windows/uwp/publish/opening-a-developer-account)adresinde bulunan bir geliştirici hesabı açma sayfasını ziyaret edin. 
+Dev Center hesabınıza öncelikle güvenilir bilgisayarlardan erişilmelidir. Haftalık Dev Center hesabı başına oluşturulan kod sayısının bir sınırı olduğundan, güvenilir bilgisayarlardan erişmeniz çok önemlidir. Güvenilir bilgisayarları kullanmak aynı zamanda en güvenli ve tutarlı oturum açma deneyimini de sağlar. 
+*   Ek Dev Center hesap yönergeleri ve güvenliği hakkında daha fazla bilgi [için, docs.microsoft.com/windows/uwp/publish/opening-a-developer-account'da](https://docs.microsoft.com/windows/uwp/publish/opening-a-developer-account)bulunan bir geliştirici hesabı açma sayfasını ziyaret edin. 
 
 ---
 
-#### <a name="issue-microsoft-id-in-an-azure-ad-federated-domain"></a>Sorun: Azure AD Federasyon etki alanında Microsoft KIMLIĞI  
-Şirket hesabınız Azure Active Directory (Azure AD) aracılığıyla federe olabilir. Azure AD ile federe bir kurumsal e-posta adresi kullanarak bir Microsoft KIMLIĞI oluşturmayı denerseniz, bir hata alırsınız. Bir hata alırsanız, hesabınızın Azure AD aracılığıyla federe olduğunu onaylamak için BT ekibinize göz önüne almanız gerekir. Azure AD Federasyon e-postası bilinen bir sorundur ve Microsoft bu sorunu çözmeye çalışmaktadır.  
-*   Azure AD hakkında daha fazla bilgi için, [docs.Microsoft.com/Azure/Active-Directory](https://docs.microsoft.com/azure/active-directory)adresinde bulunan Azure Active Directory belge sayfasını ziyaret edin.
+#### <a name="issue-microsoft-id-in-an-azure-ad-federated-domain"></a>Sorun: Azure AD federe etki alanında Microsoft Kimliği  
+Kurumsal hesabınız Azure Etkin Dizin (Azure AD) aracılığıyla federated olabilir. Azure AD ile beslenen bir şirket e-posta adresi kullanarak bir Microsoft kimliği oluşturmaya çalışırsanız, bir hata alırsınız. Bir hata alırsanız, hesabınızın Azure AD aracılığıyla federated olduğunu doğrulamak için BT ekibinize danışmalısınız. Azure AD federe e-posta bilinen bir sorundur ve Microsoft bu sorunu çözmek için çalışıyor.  
+*   Azure AD hakkında daha fazla bilgi için [docs.microsoft.com/azure/active-directory'da](https://docs.microsoft.com/azure/active-directory)bulunan Azure Etkin Dizin Belgeleri sayfasını ziyaret edin.
 
-Microsoft bir geçici çözüm önerir. `outlook.com` etki alanında yeni bir e-posta adresi oluşturmak ve iletişimlerinizi iletmek için bir kural oluşturmak için aşağıdaki adımları izleyin.  
-1.  Hesap Oluştur sayfasına gidin ve yeni e-posta adresi al bağlantısına tıklayın. 
-    *   Microsoft KIMLIĞINIZ için kaydolmak üzere [signup.Live.com/signup](https://signup.live.com/signup)adresinde bulunan hesap oluştur sayfasını ziyaret edin.  
-2.  Yeni e-posta adresini oluşturun ve bir parola girin. `outlook.com` etki alanında yeni bir Microsoft KIMLIĞI ve bir e-posta posta kutusu oluşturulur. Hesap oluşturuluncaya kadar kayıt işlemine devam edin.  
+Microsoft bir geçici çözüm önerir. `outlook.com` Etki alanında yeni bir e-posta adresi oluşturmak ve iletişimlerinizi iletmek için bir kural oluşturmak için aşağıdaki adımları izleyin.  
+1.  Hesap Oluştur sayfasına gidin ve yeni bir e-posta adresi al bağlantısını tıklayın. 
+    *   Microsoft Kimliğinize kaydolmak için [signup.live.com/signup'da](https://signup.live.com/signup)bulunan hesabı oluştur sayfasını ziyaret edin.  
+2.  Yeni e-posta adresini oluşturun ve bir parola girin. `outlook.com` Etki alanında yeni bir Microsoft Kimliği ve bir e-posta posta kutusu oluşturulur. Hesap oluşturulana kadar kayıt işlemine devam edin.  
 
     >[!IMPORTANT]
-    >Geliştirme Merkezi 'ne kaydolmak için Microsoft KIMLIĞI olarak kaydedilmiş bir e-posta adresi veya dağıtım listesi kullanmanız gerekir. Microsoft, kişilerden bağımlılığı kaldırmak için bir dağıtım listesi kullanmanızı önerir. E-posta adresiniz veya dağıtım listeniz kayıtlı değilse, şimdi kaydolmanız gerekir.    
+    >Dev Center'a kaydolmak için Microsoft Kimliği olarak kayıtlı bir e-posta adresi veya dağıtım listesi kullanmanız gerekir. Microsoft, bireylerden gelen bağımlılığı kaldırmak için bir dağıtım listesi kullanmanızı önerir. E-posta adresiniz veya dağıtım listeniz kayıtlı değilse, şimdi kaydolmanız gerekir.    
 
     >[!Important]
-    >Herhangi bir e-posta adresiniz `Microsoft` şirket etki alanında bulunuyorsa, bunu geliştirme merkezi 'nde kayıt için kullanamazsınız.  
+    >Herhangi bir e-posta adresiniz `Microsoft` şirket etki alanında bulunuyorsa, bu adresi Dev Center'da kayıt için kullanamazsınız.  
 
-3.  Outlook e-posta adresiyle Microsoft KIMLIĞI oluşturduktan sonra Outlook posta kutunuzda oturum açın. E-posta iletme kuralı oluşturun. E-posta iletme kuralı, Outlook posta kutusunda alınan tüm e-postaları Market hesabınızı yönetmek için oluşturduğunuz etki alanındaki e-posta adresine taşımalıdır.  
-    *   Outlook posta kutunuzda oturum açmak için, [Outlook.Live.com/OWA](https://outlook.live.com/owa)adresinde bulunan Outlook sayfasını ziyaret edin.  
-    *   Kuralları iletme hakkında daha fazla bilgi için, [support.Office.com/article/Use-Rules-in-Outlook-Web-App-to-automatically-Forward-messages-to-another-Account-1433e3a0-7fb0-4999-b536-50e05cb67fed](https://support.office.com/article/Use-rules-in-Outlook-Web-App-to-automatically-forward-messages-to-another-account-1433e3a0-7fb0-4999-b536-50e05cb67fed)adresinde bulunan başka bir hesaba iletileri otomatik olarak Iletmek üzere Outlook Web App 'teki kullanım kuralları sayfasını ziyaret edin.  
+3.  Outlook e-posta adresiyle Microsoft Kimliğini oluşturduktan sonra Outlook posta kutunuzda oturum açın. E-posta yönlendirme kuralı oluşturun. E-posta yönlendirme kuralı, Outlook posta kutusunda alınan tüm e-postaları, pazar hesabınızı yönetmek için oluşturduğunuz etki alanınızdaki e-posta adresine taşımalıdır.  
+    *   Outlook posta kutunuzda oturum açabilmek için [outlook.live.com/owa'da](https://outlook.live.com/owa)bulunan Outlook sayfasını ziyaret edin.  
+    *   Yönlendirme kuralları hakkında daha fazla bilgi için, support.office.com/article/Use-rules-in-Outlook-Web-App-to-automatically-forward-messages-to-another-account-1433e3a0-7fb0-4999-b536-50e05cb67fed'da bulunan başka bir hesap sayfasına [support.office.com/article/Use-rules-in-Outlook-Web-App-to-automatically-forward-messages-to-another-account-1433e3a0-7fb0-4999-b536-50e05cb67fed](https://support.office.com/article/Use-rules-in-Outlook-Web-App-to-automatically-forward-messages-to-another-account-1433e3a0-7fb0-4999-b536-50e05cb67fed)otomatik olarak iletileri iletmek için Outlook Web App'teki Kullanım kurallarını ziyaret edin.  
 
-1.  İletme kuralı, Outlook e-posta hesabında alınan tüm e-posta ve iletişimleri, şirketinizde kayıtlı bir etki alanındaki e-posta adresine gönderir. `outlook.com` e-posta adresiniz geliştirme merkezi ve Bulut İş Ortağı Portalı kimlik doğrulaması için kullanılmalıdır.  
+1.  Yönlendirme kuralı, Outlook e-posta hesabından alınan tüm e-posta ve iletişimleri şirketinize kayıtlı bir etki alanında bulunan e-posta adresine gönderir. `outlook.com` E-posta adresiniz, Hem Dev Center hem de Cloud Partner Portal'da kimlik doğrulaması yapmak için kullanılmalıdır.  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-*   [Azure Marketi ve AppSource yayımcı Kılavuzu](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide) sayfasını ziyaret edin. 
+*   Azure [Marketi ve AppSource Publisher Guide](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide) sayfasını ziyaret edin. 
  
 ---

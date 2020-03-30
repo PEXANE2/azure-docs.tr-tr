@@ -1,6 +1,6 @@
 ---
-title: Azure Data Factory sürekli tümleştirme ve teslim
-description: Data Factory işlem hatlarını bir ortamdan (geliştirme, test, üretim) diğerine taşımak için sürekli tümleştirme ve teslimi nasıl kullanacağınızı öğrenin.
+title: Azure Veri Fabrikası'nda sürekli entegrasyon ve teslimat
+description: Veri Fabrikası ardışık hatlarını bir ortamdan (geliştirme, test, üretim) diğerine taşımak için sürekli tümleştirme ve teslimatı nasıl kullanacağınızı öğrenin.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -11,24 +11,24 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 02/12/2020
-ms.openlocfilehash: dc0da82447b5df0735b16f46298a2f473ee61ea0
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.openlocfilehash: 8bbb11a8811582bea26e784636564eb5d5a4d284
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/14/2020
-ms.locfileid: "79371384"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80384339"
 ---
-# <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure Data Factory sürekli tümleştirme ve teslim
+# <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Azure Veri Fabrikası'nda sürekli entegrasyon ve teslimat
 
 ## <a name="overview"></a>Genel Bakış
 
-Sürekli tümleştirme, kod tabanınızda yapılan her değişikliği otomatik olarak ve mümkün olduğunca erken test etme yöntemidir. Sürekli teslim, sürekli tümleştirme sırasında gerçekleşen testi izler ve bir hazırlama veya üretim sistemine değişiklikleri gönderir.
+Sürekli tümleştirme, kod tabanınızda yapılan her değişikliği otomatik olarak ve mümkün olduğunca erken test etme uygulamasıdır.Sürekli teslimat, sürekli tümleştirme sırasında gerçekleşen testleri izler ve bir evreleme veya üretim sistemindeki değişiklikleri iter.
 
-Azure Data Factory, sürekli tümleştirme ve teslim (CI/CD), Data Factory işlem hatlarını bir ortamdan (geliştirme, test, üretim) diğerine taşıma anlamına gelir. CI/CD yapmak için, Azure Resource Manager şablonlarla Data Factory UX tümleştirmesi kullanabilirsiniz.
+Azure Veri Fabrikası'nda, sürekli tümleştirme ve teslim (CI/CD), Veri Fabrikası ardışık hatlarının bir ortamdan (geliştirme, test, üretim) diğerine taşınması anlamına gelir. C/CD yapmak için Azure Kaynak Yöneticisi şablonlarıyla Veri Fabrikası UX tümleştirmesini kullanabilirsiniz.
 
-Data Factory UX ' de **ARM şablonu** açılır menüsünden bir kaynak yöneticisi şablonu oluşturabilirsiniz. **ARM şablonunu dışarı aktar**' ı seçtiğinizde, portal veri fabrikası için Kaynak Yöneticisi şablonu ve tüm bağlantı dizelerinizi ve diğer parametreleri içeren bir yapılandırma dosyası oluşturur. Ardından, her ortam için bir yapılandırma dosyası oluşturursunuz (geliştirme, test, üretim). Ana Kaynak Yöneticisi Şablon dosyası tüm ortamlar için aynı kalır.
+Veri Fabrikası UX'sinde **ARM Şablonu** açılır menüsünden bir Kaynak Yöneticisi şablonu oluşturabilirsiniz. **Dışa Aktarma KOLU**Şablonu'nu seçtiğinizde, portal veri fabrikası için Kaynak Yöneticisi şablonunu ve tüm bağlantı dizelerinizi ve diğer parametreleri içeren bir yapılandırma dosyasını oluşturur. Sonra her ortam (geliştirme, test, üretim) için bir yapılandırma dosyası oluşturursunuz. Ana Kaynak Yöneticisi şablon dosyası tüm ortamlar için aynı kalır.
 
-Bu özelliğe ve bir tanıtım 'e dokuz dakikalık bir giriş için şu videoyu izleyin:
+Bu özellik ve bir gösteri için dokuz dakikalık bir giriş için, bu videoyu izleyin:
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Continuous-integration-and-deployment-using-Azure-Data-Factory/player]
 
@@ -36,121 +36,121 @@ Bu özelliğe ve bir tanıtım 'e dokuz dakikalık bir giriş için şu videoyu 
 
 ## <a name="cicd-lifecycle"></a>CI/CD yaşam döngüsü
 
-Aşağıda, Azure Repos git ile yapılandırılmış bir Azure Data Factory 'deki CI/CD yaşam döngüsüne örnek bir genel bakış sunulmaktadır. Git deposunu yapılandırma hakkında daha fazla bilgi için bkz. [Azure Data Factory kaynak denetimi](source-control.md).
+Aşağıda, Azure Repos Git ile yapılandırılan bir Azure veri fabrikasındaki CI/CD yaşam döngüsüne örnek bir genel bakış verilmiştir. Git deposunu yapılandırma hakkında daha fazla bilgi için [Azure Veri Fabrikası'nda Kaynak denetimine](source-control.md)bakın.
 
-1.  Bir geliştirme Veri Fabrikası oluşturulup Azure Repos git ile yapılandırılır. Tüm geliştiricilerin işlem hatları ve veri kümeleri gibi Data Factory kaynaklarını yazmak için izni olmalıdır.
+1.  Azure Repos Git ile bir geliştirme veri fabrikası oluşturulur ve yapılandırılır. Tüm geliştiricilerin veri hatları ve veri kümeleri gibi Veri Fabrikası kaynaklarını yazma izni olmalıdır.
 
-1.  Geliştiriciler Özellik dallarında değişiklik yaparken, işlem hattı çalıştırmalarının en son değişiklikleriyle ilgili hata ayıklaması yapar. İşlem hattı çalıştırmasında hata ayıklama hakkında daha fazla bilgi için, bkz. [Azure Data Factory yinelemeli geliştirme ve hata ayıklama](iterative-development-debugging.md).
+1.  Geliştiriciler özellik dallarında değişiklik yaptıkça, ardışık hatlar denetimlerini en son değişiklikleriyle birlikte hata ayıklarlar. Bir ardışık yapının hata ayıklama hakkında daha fazla bilgi için Azure [Veri Fabrikası ile Yinelemeli geliştirme ve hata ayıklama](iterative-development-debugging.md)bölümüne bakın.
 
-1.  Geliştiriciler yaptıkları değişikliklerle karşılandıktan sonra, yaptıkları değişikliklerin eşler tarafından gözden geçirilmesini sağlamak için özellik dalından ana veya işbirliği dalına bir çekme isteği oluşturur.
+1.  Geliştiriciler değişikliklerinden memnun kaldıktan sonra, değişikliklerini eşler tarafından gözden geçirmek için özellik dallarından ana veya işbirliği dalına bir çekme isteği oluştururlar.
 
-1.  Bir çekme isteği onaylandıktan ve değişiklikler ana dalda birleştirildikten sonra, değişiklikler geliştirme fabrikasında yayımlanabilir.
+1.  Çekme isteği onaylandıktan ve değişiklikler ana dalda birleştirildikten sonra, değişiklikler geliştirme fabrikasına yayımlanabilir.
 
-1.  Takım değişiklikleri test fabrikasına ve ardından üretim fabrikasına dağıtmaya hazırsa, takım Kaynak Yöneticisi şablonunu ana daldan dışarı aktarır.
+1.  Takım değişiklikleri test fabrikasına ve ardından üretim fabrikasına dağıtmaya hazır olduğunda, takım ana daldan Kaynak Yöneticisi şablonu dışa aktarmaz.
 
-1.  Dışarıya aktarılmış Kaynak Yöneticisi şablonu, test fabrikasına ve üretim fabrikasına farklı parametre dosyaları ile dağıtılır.
+1.  Dışa aktarılan Kaynak Yöneticisi şablonu, test fabrikasına ve üretim fabrikasına farklı parametre dosyalarıyla dağıtılır.
 
-## <a name="create-a-resource-manager-template-for-each-environment"></a>Her ortam için bir Kaynak Yöneticisi şablonu oluşturma
+## <a name="create-a-resource-manager-template-for-each-environment"></a>Her ortam için Kaynak Yöneticisi şablonu oluşturma
 
-1. **ARM şablon** listesinde, geliştirme ortamında veri fabrikanızın Kaynak Yöneticisi şablonunu dışarı aktarmak Için **ARM şablonunu dışarı aktar** ' ı seçin.
+1. ARM **Şablonu** listesinde, geliştirme ortamındaki veri fabrikanız için Kaynak Yöneticisi şablonunu dışa aktarmak için **Dışa** Aktarma KOLU Şablonu'nu seçin.
 
-   ![Kaynak Yöneticisi şablonu dışarı aktarma](media/continuous-integration-deployment/continuous-integration-image1.png)
+   ![Kaynak Yöneticisi şablonu dışa aktarma](media/continuous-integration-deployment/continuous-integration-image1.png)
 
-1. Test ve üretim verileri fabrikalarınız içinde **ARM şablonunu Içeri aktar**' ı seçin. Bu eylem, dışarı aktarılan şablonu içeri aktarabileceğiniz Azure portal sizi yönlendirir. Kaynak Yöneticisi Şablon düzenleyicisini açmak için **düzenleyicide kendi şablonunuzu oluşturun öğesini** seçin.
+1. Test ve üretim veri fabrikalarında, **ARM Şablonunu Al'ı**seçin. Bu eylem sizi dışa aktarılan şablonu içe aktarabileceğiniz Azure portalına götürür. Kaynak Yöneticisi şablon düzenleyicisini açmak için **düzenleyicide kendi şablonunuzu oluştur'u** seçin.
 
    ![Kendi şablonunuzu oluşturun](media/continuous-integration-deployment/custom-deployment-build-your-own-template.png) 
 
-1. **Dosya Yükle**' yi seçin ve ardından oluşturulan kaynak yöneticisi şablonunu seçin. Bu, 1. adımda dışarıya alınan. zip dosyasında bulunan **arm_template. JSON** dosyasıdır.
+1. **Dosyayı Yükle'yi**seçin ve ardından oluşturulan Kaynak Yöneticisi şablonuna bakın. Bu, adım 1'de dışa aktarılan .zip dosyasında bulunan **arm_template.json** dosyasıdır.
 
-   ![Şablonu Düzenle](media/continuous-integration-deployment/custom-deployment-edit-template.png)
+   ![Şablonu edin](media/continuous-integration-deployment/custom-deployment-edit-template.png)
 
-1. Ayarlar bölümünde, bağlı hizmet kimlik bilgileri gibi yapılandırma değerlerini girin. İşiniz bittiğinde Kaynak Yöneticisi şablonunu dağıtmak için **satın al** ' ı seçin.
+1. Ayarlar bölümünde, bağlı hizmet kimlik bilgileri gibi yapılandırma değerlerini girin. İşi bittiğinde, Kaynak Yöneticisi şablonuna dağıtmak için **Satın Al'ı** seçin.
 
    ![Ayarlar bölümü](media/continuous-integration-deployment/continuous-integration-image5.png)
 
 ### <a name="connection-strings"></a>Bağlantı dizeleri
 
-Bağlantı dizelerini yapılandırma hakkında daha fazla bilgi için bağlayıcının makalesine bakın. Örneğin, Azure SQL veritabanı için, bkz. [Azure Data Factory kullanarak Azure SQL veritabanına veri kopyalama](connector-azure-sql-database.md). Bir bağlantı dizesini doğrulamak için Data Factory UX içindeki kaynak için kod görünümünü açabilirsiniz. Kod görünümünde, bağlantı dizesinin parola veya hesap anahtarı kısmı kaldırılır. Kod görünümünü açmak için, burada vurgulanan simgeyi seçin:
+Bağlantı dizelerini yapılandırma hakkında bilgi için bağlayıcının makalesine bakın. Örneğin, Azure SQL Veritabanı için Azure [Veri Fabrikası'nı kullanarak verileri Azure SQL Veritabanına kopyala'ya veya Azure SQL Veritabanından kopyalayın'a](connector-azure-sql-database.md)bakın. Bir bağlantı dizesini doğrulamak için, Veri Fabrikası UX'deki kaynağın kod görünümünü açabilirsiniz. Kod görünümünde, bağlantı dizesinin parola veya hesap anahtarı bölümü kaldırılır. Kod görünümünü açmak için burada vurgulanan simgeyi seçin:
 
-![Bağlantı dizesini görmek için kod görünümünü açın](media/continuous-integration-deployment/continuous-integration-codeview.png)
+![Bağlantı dizesini görmek için kod görünümünü açma](media/continuous-integration-deployment/continuous-integration-codeview.png)
 
 ## <a name="automate-continuous-integration-by-using-azure-pipelines-releases"></a>Azure Pipelines sürümlerini kullanarak sürekli tümleştirmeyi otomatikleştirin
 
-Aşağıda, bir veri fabrikasının birden çok ortama dağıtımını otomatikleştiren Azure Pipelines bir sürümü ayarlamaya yönelik bir kılavuz verilmiştir.
+Aşağıda, bir veri fabrikasının birden çok ortama dağıtımını otomatikleştiren bir Azure Ardışık Alanları sürümü ayarlama kılavuzu veremser.
 
-![Azure Pipelines ile sürekli tümleştirme diyagramı](media/continuous-integration-deployment/continuous-integration-image12.png)
+![Azure Boru Hatları ile sürekli tümleştirme diyagramı](media/continuous-integration-deployment/continuous-integration-image12.png)
 
 ### <a name="requirements"></a>Gereksinimler
 
--    [Azure Resource Manager hizmeti uç noktasını](https://docs.microsoft.com/azure/devops/pipelines/library/service-endpoints#sep-azure-resource-manager)kullanan Visual Studio Team Foundation Server veya Azure Repos bağlantılı bir Azure aboneliği.
+-    [Azure Kaynak Yöneticisi hizmeti bitiş noktasını](https://docs.microsoft.com/azure/devops/pipelines/library/service-endpoints#sep-azure-resource-manager)kullanan Visual Studio Team Foundation Server veya Azure Repos'a bağlı bir Azure aboneliği.
 
--   Azure Repos git tümleştirmesi ile yapılandırılmış bir veri fabrikası.
+-   Azure Repos Git tümleştirmesi ile yapılandırılan bir veri fabrikası.
 
--   Her ortam için gizli dizileri içeren bir [Azure Anahtar Kasası](https://azure.microsoft.com/services/key-vault/) .
+-   Her ortamın sırlarını içeren bir [Azure anahtar kasası.](https://azure.microsoft.com/services/key-vault/)
 
-### <a name="set-up-an-azure-pipelines-release"></a>Azure Pipelines yayını ayarlama
+### <a name="set-up-an-azure-pipelines-release"></a>Azure Ardışık Hatları sürümü ayarlama
 
-1.  [Azure DevOps](https://dev.azure.com/)'da, Data Factory 'niz ile yapılandırılmış projeyi açın.
+1.  [Azure DevOps'te,](https://dev.azure.com/)veri fabrikanızla yapılandırılan projeyi açın.
 
-1.  Sayfanın sol tarafında, işlem **hatları**' nı seçin ve ardından **yayınlar**' ı seçin.
+1.  Sayfanın sol tarafında, **Ardışık Hatlar'ı**seçin ve ardından **Sürümler'i**seçin.
 
-    ![İşlem hatları, yayınlar seçin](media/continuous-integration-deployment/continuous-integration-image6.png)
+    ![Boru Hatları, Sürümler seçin](media/continuous-integration-deployment/continuous-integration-image6.png)
 
-1.  **Yeni işlem hattı**' nı seçin veya mevcut işlem hatlarınız varsa **Yeni** ' yi ve ardından **Yeni yayın**işlem hattını seçin.
+1.  **Yeni ardışık hatlar'ı**seçin veya varolan ardışık hatlar varsa **Yeni** ve ardından Yeni **sürüm ardışık hattını**seçin.
 
-1.  **Boş iş** şablonunu seçin.
+1.  Boş **iş** şablonu'nu seçin.
 
-    ![Boş işi seçin](media/continuous-integration-deployment/continuous-integration-image13.png)
+    ![Boş iş'i seçin](media/continuous-integration-deployment/continuous-integration-image13.png)
 
-1.  **Aşama adı** kutusuna ortamınızın adını girin.
+1.  Sahne **adı** kutusuna ortamınızın adını girin.
 
-1.  **Yapıt Ekle**' yi seçin ve ardından veri fabrikayla yapılandırılmış depoyu seçin. **Varsayılan dal**için **adf_publish** seçin. **Varsayılan sürüm**için **varsayılan daldan en son**' u seçin.
+1.  **Yapı Ekle'yi**seçin ve ardından veri fabrikanızla yapılandırılan depoyu seçin. **Varsayılan dal**için **adf_publish'yi** seçin. Varsayılan **sürüm**için, **varsayılan daldan En Son'u**seçin.
 
     ![Yapıt ekleme](media/continuous-integration-deployment/continuous-integration-image7.png)
 
-1.  Azure Resource Manager Dağıtım görevi ekleyin:
+1.  Azure Kaynak Yöneticisi Dağıtım görevi ekleyin:
 
-    a.  Aşama görünümünde, **aşama görevlerini görüntüle**' yi seçin.
+    a.  Sahne görünümünde, **sahne görevlerini görüntüle'yi**seçin.
 
-    ![Aşama görünümü](media/continuous-integration-deployment/continuous-integration-image14.png)
+    ![Sahne görünümü](media/continuous-integration-deployment/continuous-integration-image14.png)
 
-    b.  Yeni bir görev oluşturun. **Azure Kaynak grubu dağıtımı**' nı arayın ve ardından **Ekle**' yi seçin.
+    b.  Yeni bir görev oluşturun. Azure **Kaynak Grubu Dağıtımı'nı**arayın ve sonra **Ekle'yi**seçin.
 
-    c.  Dağıtım görevinde, hedef veri fabrikası için abonelik, kaynak grubu ve konum ' u seçin. Gerekirse kimlik bilgilerini sağlayın.
+    c.  Dağıtım görevinde, hedef veri fabrikası için abonelik, kaynak grubu ve konumu seçin. Gerekirse kimlik bilgilerini sağlayın.
 
-    d.  **Eylem** listesinde, **kaynak grubunu oluştur veya Güncelleştir**' i seçin.
+    d.  **Eylem** listesinde kaynak **grubu oluştur'u veya güncelleştir'i**seçin.
 
-    e.  **Şablon** kutusunun yanındaki üç nokta düğmesini ( **...** ) seçin. Bu makalenin [her bir ortam için Kaynak Yöneticisi şablonu oluşturma](continuous-integration-deployment.md#create-a-resource-manager-template-for-each-environment) bölümünde **ARM şablonunu içeri aktar** ' a tıklayarak oluşturduğunuz Azure Resource Manager şablonuna gözatamazsınız. Bu dosyayı adf_publish dalının <FactoryName> klasöründe arayın.
+    e.  **Şablon** kutusunun yanındaki elips düğmesini (**...**) seçin. Bu makalenin her ortam bölümü için Kaynak Yöneticisi Oluştur şablonunda **İçe Aktar KOLU** Şablonu'nu kullanarak oluşturduğunuz Azure Kaynak Yöneticisi [şablonuna](continuous-integration-deployment.md#create-a-resource-manager-template-for-each-environment) göz atın. bu dosyayı <FactoryName> adf_publish dalı klasöründe arayın.
 
-    f.  Seç **...** **şablon parametreleri** kutusunun yanındaki parametreler dosyasını seçin. Seçtiğiniz dosya, bir kopya oluşturup oluşturdığınıza veya ARMTemplateParametersForFactory. JSON adlı varsayılan dosyayı kullanmaktan bağımsız olarak değişir.
+    f.  Seçin **...** parametreler dosyasını seçmek için **Şablon parametreleri** kutusunun yanında. Seçtiğiniz dosya, bir kopyasını oluşturup oluşturmadığınıza veya varsayılan dosya olan ARMTemplateParametersForFactory.json'u kullanıp kullanmadığınıza bağlıdır.
 
-    g.  Seç **...** **şablon parametrelerini geçersiz kıl** kutusunun yanında, hedef veri fabrikasının bilgilerini girin. Azure Key Vault gelen kimlik bilgileri için, çift tırnak işaretleri arasında gizli dizi adını girin. Örneğin, gizli dizinin adı cred1 ise, bu değer için **"$ (cred1)"** girin.
+    g.  Seçin **...** **Override şablon parametreleri** kutusunun yanında ve hedef veri fabrikası için bilgileri girin. Azure Key Vault'tan gelen kimlik bilgileri için, çift tırnak işaretleri arasına sırrın adını girin. Örneğin, sırrın adı cred1 ise, bu değer için **"$(cred1)"** girin.
 
-    h. **Dağıtım modu**için **artımlı** ' ı seçin.
+    h. **Dağıtım modu**için **Artıl'ı** seçin.
 
     > [!WARNING]
-    > **Dağıtım modu**için **Tamam** ' ı seçerseniz, hedef kaynak grubundaki tüm kaynaklar da dahil olmak üzere, Kaynak Yöneticisi şablonunda tanımlanmamış olan kaynaklar silinebilir.
+    > **Dağıtım modu**için **Tamam'ı** seçerseniz, Kaynak Yöneticisi şablonunda tanımlanmayan hedef kaynak grubundaki tüm kaynaklar da dahil olmak üzere varolan kaynaklar silinebilir.
 
-    ![Data Factory üretim dağıtımı](media/continuous-integration-deployment/continuous-integration-image9.png)
+    ![Veri Fabrikası Prod Dağıtım](media/continuous-integration-deployment/continuous-integration-image9.png)
 
-1.  Yayın ardışık düzenini kaydedin.
+1.  Serbest bırakma ardışık hattını kaydedin.
 
-1. Bir yayını tetiklemek için **yayın oluştur**' u seçin.
+1. Bir sürümü tetiklemek **için, sürüm oluştur'u**seçin.
 
-   ![Yayın oluştur ' u seçin](media/continuous-integration-deployment/continuous-integration-image10.png)
+   ![Sürüm Oluştur'u seçin](media/continuous-integration-deployment/continuous-integration-image10.png)
 
 > [!IMPORTANT]
-> CI/CD senaryolarında, farklı ortamlardaki Integration Runtime (IR) türü aynı olmalıdır. Örneğin, geliştirme ortamında şirket içinde barındırılan bir IR varsa, aynı IR, test ve üretim gibi diğer ortamlarda da kendi kendine barındırılan türde olmalıdır. Benzer şekilde, tümleştirme çalışma zamanlarını birden çok aşamada paylaşıyorsanız, tümleştirme çalışma zamanlarını, geliştirme, test ve üretim gibi tüm ortamlarda bağlanmış bir şekilde yapılandırmanız gerekir.
+> CI/CD senaryolarında, farklı ortamlardaki tümleştirme çalışma süresi (IR) türü aynı olmalıdır. Örneğin, geliştirme ortamında kendi kendine barındırılan bir IR'niz varsa, aynı IR de test ve üretim gibi diğer ortamlarda kendi kendine barındırılan türde olmalıdır. Benzer şekilde, tümleştirme çalışma sürelerini birden çok aşamada paylaşıyorsanız, tümleştirme çalışma sürelerini geliştirme, test ve üretim gibi tüm ortamlarda kendi kendine barındırılan bağlantılı olarak yapılandırmanız gerekir.
 
-### <a name="get-secrets-from-azure-key-vault"></a>Azure Key Vault parolaları al
+### <a name="get-secrets-from-azure-key-vault"></a>Azure Key Vault'tan sır alın
 
-Azure Resource Manager şablonunda geçiş yapmak için gizli dizileri varsa, Azure Pipelines sürümü ile Azure Key Vault kullanmanızı öneririz.
+Azure Kaynak Yöneticisi şablonunda geçirilen sırlarınız varsa, Azure Ardışık Hatları sürümüyle Azure Anahtar Kasası'nı kullanmanızı öneririz.
 
-Gizli dizileri ele almanın iki yolu vardır:
+Sırları ele almanın iki yolu vardır:
 
-1.  Gizli dizileri parametreler dosyasına ekleyin. Daha fazla bilgi için bkz. [dağıtım sırasında güvenli parametre değeri geçirmek için Azure Key Vault kullanma](../azure-resource-manager/templates/key-vault-parameter.md).
+1.  Parametreler dosyasına sırları ekleyin. Daha fazla bilgi için, [dağıtım sırasında güvenli parametre değerini geçmek için Azure Anahtar Kasası'nı kullanın'a](../azure-resource-manager/templates/key-vault-parameter.md)bakın.
 
-    Yayımla dalına yüklenen parametreler dosyasının bir kopyasını oluşturun. Key Vault almak istediğiniz parametrelerin değerlerini şu biçimi kullanarak ayarlayın:
+    Yayımlama dalına yüklenen parametre dosyasının bir kopyasını oluşturun. Bu biçimi kullanarak Key Vault'tan almak istediğiniz parametrelerin değerlerini ayarlayın:
 
     ```json
     {
@@ -167,31 +167,31 @@ Gizli dizileri ele almanın iki yolu vardır:
     }
     ```
 
-    Bu yöntemi kullandığınızda, gizli anahtar, anahtar kasasından otomatik olarak çekilir.
+    Bu yöntemi kullandığınızda, gizli otomatik olarak anahtar kasasından çekilir.
 
-    Parametre dosyasının da yayımlama dalında olması gerekir.
+    Parametreler dosyasının yayımlama dalında da olması gerekir.
 
-1. Önceki bölümde açıklanan Azure Resource Manager dağıtım görevinin önüne bir [Azure Key Vault görevi](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-key-vault) ekleyin:
+1. Önceki bölümde açıklanan Azure Kaynak Yöneticisi Dağıtımı görevinden önce bir [Azure Anahtar Kasası görevi](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-key-vault) ekleyin:
 
-    1.  **Görevler** sekmesinde yeni bir görev oluşturun. **Azure Key Vault** arayın ve ekleyin.
+    1.  **Görevler** sekmesinde yeni bir görev oluşturun. Azure **Anahtar Kasası'nı** arayın ve ekleyin.
 
-    1.  Key Vault görevinde, anahtar kasasını oluşturduğunuz aboneliği seçin. Gerekirse kimlik bilgilerini sağlayın ve ardından anahtar kasasını seçin.
+    1.  Anahtar Kasa görevinde, anahtar kasasını oluşturduğunuz aboneliği seçin. Gerekirse kimlik bilgilerini sağlayın ve ardından anahtar kasasını seçin.
 
-    ![Key Vault görevi ekleme](media/continuous-integration-deployment/continuous-integration-image8.png)
+    ![Anahtar Kasası görevi ekleme](media/continuous-integration-deployment/continuous-integration-image8.png)
 
 #### <a name="grant-permissions-to-the-azure-pipelines-agent"></a>Azure Pipelines aracısına izin verme
 
-Doğru izinler ayarlanmamışsa Azure Key Vault görev erişim reddedildi hatasıyla başarısız olabilir. Yayın için günlükleri indirin ve Azure Pipelines aracısına izin vermek için komutunu içeren. ps1 dosyasını bulun. Komutu doğrudan çalıştırabilirsiniz. Ya da asıl KIMLIĞI dosyadan kopyalayabilir ve Azure portal erişim ilkesini el ile ekleyebilirsiniz. `Get` ve `List` gereken en düşük izinlerdir.
+Doğru izinler ayarlanmazsa, Azure Anahtar Kasası görevi Access Reddedildi hatasıyla başarısız olabilir. Sürüm günlüklerini indirin ve Azure Pipelines aracısına izin vermek için komutu içeren .ps1 dosyasını bulun. Komutu doğrudan çalıştırabilirsiniz. Veya dosyadan asıl kimliği kopyalayabilir ve Azure portalına el ile erişim ilkesini ekleyebilirsiniz. `Get`ve `List` gerekli minimum izinlerdir.
 
-### <a name="update-active-triggers"></a>Etkin Tetikleyicileri Güncelleştir
+### <a name="update-active-triggers"></a>Etkin tetikleyicileri güncelleştirme
 
-Etkin Tetikleyicileri güncelleştirmeye çalışırsanız dağıtım başarısız olabilir. Etkin Tetikleyicileri güncelleştirmek için, bunları el ile durdurmanız ve dağıtımdan sonra yeniden başlatmanız gerekir. Bunu bir Azure PowerShell görevi kullanarak yapabilirsiniz:
+Etkin tetikleyicileri güncelleştirmeye çalışırsanız dağıtım başarısız olabilir. Etkin tetikleyicileri güncelleştirmek için, bunları el ile durdurmanız ve dağıtımdan sonra yeniden başlatmanız gerekir. Bunu bir Azure PowerShell görevini kullanarak yapabilirsiniz:
 
-1.  Sürümün **Görevler** sekmesinde **Azure PowerShell** bir görev ekleyin. Görev sürümü 4. * öğesini seçin. 
+1.  Sürümün **Görevler** sekmesine bir **Azure PowerShell** görevi ekleyin. Görev sürümü 4.*'u seçin. 
 
-1.  Fabrikanızın bulunduğu aboneliği seçin.
+1.  Fabrikanızın içinde olduğu aboneliği seçin.
 
-1.  Betik türü olarak **betik dosyası yolunu** seçin. Bu, PowerShell betiğinizi deponuza kaydetmenizi gerektirir. Tetikleyicileri durdurmak için aşağıdaki PowerShell betiği kullanılabilir:
+1.  Komut dosyası türü olarak **Komut Dosyası Dosyası Yolu'nu** seçin. Bunun için PowerShell komut dosyanızı deponuza kaydetmeniz gerekiyor. Aşağıdaki PowerShell komut dosyası tetikleyicileri durdurmak için kullanılabilir:
 
     ```powershell
     $triggersADF = Get-AzDataFactoryV2Trigger -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
@@ -199,24 +199,24 @@ Etkin Tetikleyicileri güncelleştirmeye çalışırsanız dağıtım başarıs�
     $triggersADF | ForEach-Object { Stop-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.name -Force }
     ```
 
-Dağıtımdan sonra Tetikleyicileri yeniden başlatmak için benzer adımları (`Start-AzDataFactoryV2Trigger` işleviyle birlikte) tamamlayabilirsiniz.
+Dağıtımdan sonra tetikleyicileri `Start-AzDataFactoryV2Trigger` yeniden başlatmak için benzer adımları (işlevle) tamamlayabilirsiniz.
 
-### <a name="sample-pre--and-post-deployment-script"></a>Örnek ön ve dağıtım sonrası betiği
+### <a name="sample-pre--and-post-deployment-script"></a>Dağıtım öncesi ve sonrası komut dosyası örneği
 
-Aşağıdaki örnek betik, dağıtımdan önce Tetikleyicileri durdurmak ve daha sonra yeniden başlatmak için kullanılabilir. Betik Ayrıca kaldırılan kaynakları silmek için kod içerir. Betiği bir Azure DevOps git deposuna kaydedin ve sürüm 4. * kullanarak bir Azure PowerShell görevi aracılığıyla buna başvurun.
+Aşağıdaki örnek komut dosyası, dağıtımdan önce tetikleyicileri durdurmak ve daha sonra yeniden başlatmak için kullanılabilir. Komut dosyası, kaldırılan kaynakları silmek için kod da içerir. Komut dosyasını bir Azure DevOps git deposuna kaydedin ve sürüm 4'ü kullanarak azure PowerShell görevi aracılığıyla başvurun.*.
 
-Dağıtım öncesi betiği çalıştırırken, **betik bağımsız değişkenleri** alanında aşağıdaki parametrelerin bir çeşidini belirtmeniz gerekecektir.
+Dağıtım öncesi komut dosyası çalıştırırken, **Komut Dosyası Bağımsız Değişkenleri** alanında aşağıdaki parametrelerin bir varyasyonu belirtmeniz gerekir.
 
 `-armTemplate "$(System.DefaultWorkingDirectory)/<your-arm-template-location>" -ResourceGroupName <your-resource-group-name> -DataFactoryName <your-data-factory-name>  -predeployment $true -deleteDeployment $false`
 
 
-Dağıtım sonrası betiği çalıştırırken, **betik bağımsız değişkenleri** alanında aşağıdaki parametrelerin bir çeşidini belirtmeniz gerekecektir.
+Dağıtım sonrası komut dosyası çalıştırırken, **Komut Dosyası Bağımsız Değişkenleri** alanında aşağıdaki parametrelerin bir varyasyonu belirtmeniz gerekir.
 
 `-armTemplate "$(System.DefaultWorkingDirectory)/<your-arm-template-location>" -ResourceGroupName <your-resource-group-name> -DataFactoryName <your-data-factory-name>  -predeployment $false -deleteDeployment $true`
 
-    ![Azure PowerShell task](media/continuous-integration-deployment/continuous-integration-image11.png)
+![Azure PowerShell görevi](media/continuous-integration-deployment/continuous-integration-image11.png)
 
-Dağıtım öncesi ve sonrası için kullanılabilecek komut dosyası aşağıda verilmiştir. Silinen kaynaklar ve kaynak başvuruları için BT hesapları.
+Burada dağıtım öncesi ve sonrası için kullanılabilecek komut dosyası ve komut dosyası. Silinen kaynakları ve kaynak başvurularını hesaplar.
 
 ```powershell
 param
@@ -366,7 +366,13 @@ if ($predeployment -eq $true) {
     Write-Host "Stopping deployed triggers"
     $triggerstostop | ForEach-Object { 
         Write-host "Disabling trigger " $_
-        Stop-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_ -Force 
+        Remove-AzDataFactoryV2TriggerSubscription -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_ -Force
+    $status = Get-AzDataFactoryV2TriggerSubscriptionStatus -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_
+    while ($status.Status -ne "Disabled"){
+            Start-Sleep -s 15
+            $status = Get-AzDataFactoryV2TriggerSubscriptionStatus -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_
+    }
+    Stop-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_ -Force 
     }
 }
 else {
@@ -459,42 +465,48 @@ else {
     Write-Host "Starting active triggers"
     $activeTriggerNames | ForEach-Object { 
         Write-host "Enabling trigger " $_
-        Start-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_ -Force 
+        Add-AzDataFactoryV2TriggerSubscription -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_ -Force
+    $status = Get-AzDataFactoryV2TriggerSubscriptionStatus -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_
+    while ($status.Status -ne "Enabled"){
+            Start-Sleep -s 15
+            $status = Get-AzDataFactoryV2TriggerSubscriptionStatus -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_
+    }
+    Start-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_ -Force 
     }
 }
 ```
 
-## <a name="use-custom-parameters-with-the-resource-manager-template"></a>Kaynak Yöneticisi şablonuyla özel parametreleri kullanma
+## <a name="use-custom-parameters-with-the-resource-manager-template"></a>Resource Manager şablonuyla özel parametreler kullanma
 
-GIT modundaysanız, şablonda parametreli olan özellikleri ve sabit kodlanmış özellikleri ayarlamak için Kaynak Yöneticisi şablonunuzda varsayılan özellikleri geçersiz kılabilirsiniz. Bu senaryolarda varsayılan parameterleştirme şablonunu geçersiz kılmak isteyebilirsiniz:
+GIT modundaysanız, şablonda parametreli özellikleri ve sabit kodlanmış özellikleri ayarlamak için Kaynak Yöneticisi şablonunuzdavarsayılan özellikleri geçersiz kılabilirsiniz. Bu senaryolarda varsayılan parametreoluşturma şablonunu geçersiz kılmak isteyebilirsiniz:
 
-* Otomatik CI/CD kullanıyorsunuz ve Kaynak Yöneticisi dağıtımı sırasında bazı özellikleri değiştirmek istiyorsunuz, ancak özellikler varsayılan olarak parametreleştirimez.
-* Fabrikanızın izin verilen en fazla sayıda parametreye (256) sahip olduğu için varsayılan Kaynak Yöneticisi şablonunun geçersiz olması çok büyük.
+* Otomatik CI/CD kullanıyorsunuz ve Kaynak Yöneticisi dağıtımı sırasında bazı özellikleri değiştirmek istiyorsunuz, ancak özellikler varsayılan olarak parametreye sahip değil.
+* Fabrikanız o kadar büyüktür ki varsayılan Kaynak Yöneticisi şablonu, izin verilen en yüksek parametrelerden daha fazla olduğu için geçersizdir (256).
 
-Bu koşullar altında, varsayılan parameterleştirme şablonunu geçersiz kılmak için, Data Factory git tümleştirmesi için kök klasör olarak belirtilen klasörde **ARM-Template-Parameters-Definition. JSON** adlı bir dosya oluşturun. Bu tam dosya adını kullanmanız gerekir. Data Factory, bu dosyayı, yalnızca işbirliği dalından değil Azure Data Factory portalında yaptığınız daldan okur. Bir özel daldan dosya oluşturabilir veya düzenleyebilirsiniz, burada, Kullanıcı arabiriminde **ARM şablonunu dışarı aktar** ' ı seçerek yaptığınız değişiklikleri test edebilirsiniz. Daha sonra dosyayı işbirliği dalında birleştirebilirsiniz. Dosya bulunamazsa, varsayılan şablon kullanılır.
+Bu koşullar altında, varsayılan parametrelendirme şablonunu geçersiz kılmak için, veri fabrikası git tümleştirmesi için kök klasör olarak belirtilen klasörde **kol-şablon-parametreler-definition.json** adlı bir dosya oluşturun. Tam olarak bu dosya adını kullanmalısınız. Veri Fabrikası bu dosyayı yalnızca işbirliği dalından değil, Azure Veri Fabrikası portalında şu anda hangi şubede çalışıyorsanız okur. UI'de **Dışa Aktarma KOLU** Şablonu'nu seçerek değişikliklerinizi test edebileceğiniz özel bir daldan dosyayı oluşturabilir veya düzenleme yapabilirsiniz. Daha sonra dosyayı işbirliği dalında birleştirebilirsiniz. Dosya bulunamazsa, varsayılan şablon kullanılır.
 
 > [!NOTE]
-> Özel bir parameterleştirme şablonu, 256 ARM şablon parametresi sınırını değiştirmez. Parametreli özellik sayısını seçmenizi ve azaltmanızı sağlar.
+> Özel parametrelendirme şablonu, 256 ARM şablonu parametre sınırını değiştirmez. Parametreli özelliklerin sayısını seçmenize ve azaltmanıza olanak tanır.
 
-### <a name="syntax-of-a-custom-parameters-file"></a>Özel parametre dosyasının sözdizimi
+### <a name="syntax-of-a-custom-parameters-file"></a>Özel parametreler dosyasının sözdizimi
 
-Özel parametreler dosyasını oluştururken izlenecek bazı yönergeler aşağıda verilmiştir. Dosya her varlık türü için bir bölümden oluşur: tetikleyici, işlem hattı, bağlı hizmet, veri kümesi, tümleştirme çalışma zamanı vb.
-* İlgili varlık türünün altında özellik yolunu girin.
-* Bir özellik adının `*` olarak ayarlanması, altındaki tüm özellikleri parametreleştirmek istediğinizi gösterir (özyinelemeli değil, yalnızca ilk düzeye kadar). Bu yapılandırmaya özel durumlar da sağlayabilirsiniz.
-* Bir özelliğin değerini dize olarak ayarlamak, özelliği parametreleştirmek istediğinizi gösterir.  `<action>:<name>:<stype>`biçimini kullanın.
-   *  `<action>` şu karakterlerden biri olabilir:
-      * `=` , geçerli değeri parametresi için varsayılan değer olarak tutacağı anlamına gelir.
-      * `-` , parametresi için varsayılan değeri saklama anlamına gelir.
-      * `|` , bağlantı dizeleri veya anahtarlar için Azure Key Vault parolalar için özel bir durumdur.
-   * `<name>` , parametrenin adıdır. Boşsa, özelliğin adını alır. Değer bir `-` karakteriyle başlıyorsa, ad kısaltılmıştır. Örneğin, `AzureStorage1_properties_typeProperties_connectionString` `AzureStorage1_connectionString`kısaltıldı.
-   * `<stype>` parametrenin türüdür.  `<stype>` boş ise, varsayılan tür `string`olur. Desteklenen değerler: `string`, `bool`, `number`, `object`ve `securestring`.
-* Tanım dosyasında bir dizi belirtilmesi, şablondaki eşleşen özelliğin bir dizi olduğunu gösterir. Data Factory, dizinin tümleştirme çalışma zamanı nesnesinde belirtilen tanımı kullanarak dizideki tüm nesneler arasında yinelenir. İkinci nesne, bir dize, her yineleme için parametresinin adı olarak kullanılan özelliğin adı olur.
-* Bir tanım, kaynak örneğine özgü olamaz. Herhangi bir tanım, bu türdeki tüm kaynaklar için geçerlidir.
-* Varsayılan olarak, Key Vault gizli dizileri ve bağlantı dizeleri, anahtarlar ve belirteçler gibi güvenli dizeler gibi tüm güvenli dizeler parametrelenir.
+Özel parametreler dosyasını oluştururken izlenir. Dosya her varlık türü için bir bölümden oluşur: tetikleyici, ardışık hatlar, bağlantılı hizmet, veri kümesi, tümleştirme çalışma süresi ve benzeri.
+* İlgili varlık türü altında özellik yolunu girin.
+* Bir özellik adını, `*` altındaki tüm özellikleri parametreye getirmek istediğinizi gösterir (yalnızca ilk düzeye kadar, özyinelemeli olarak değil). Bu yapılandırma için özel durumlar da sağlayabilirsiniz.
+* Bir özelliğin değerini dize olarak ayarlamak, özelliği parametrelendirmek istediğinizi gösterir. Biçimi `<action>:<name>:<stype>`kullanın.
+   *  `<action>` bu karakterlerden biri olabilir:
+      * `=` parametrenin varsayılan değeri olarak geçerli değeri tutmak anlamına gelir.
+      * `-` parametre için varsayılan değeri tutmayın anlamına gelir.
+      * `|` bağlantı dizeleri veya anahtarları için Azure Key Vault'tan gelen sırlar için özel bir durumdur.
+   * `<name>` parametrenin adıdır. Boşsa, mülkün adını alır. Değer bir `-` karakterle başlarsa, ad kısaltılır. Örneğin, `AzureStorage1_properties_typeProperties_connectionString` kısaltılmış `AzureStorage1_connectionString`olacaktır.
+   * `<stype>` parametre türüdür.  `<stype>`Boşsa, varsayılan tür `string` . Desteklenen değerler: `string` `bool`, `number` `object`, `securestring`, , ve .
+* Tanım dosyasında bir dizi belirtilmesi, şablondaki eşleşen özelliğin bir dizi olduğunu gösterir. Veri Fabrikası, dizinin tümleştirme çalışma zamanı nesnesinde belirtilen tanımı kullanarak dizideki tüm nesneleri yineler. İkinci nesne, bir dize, her yineleme için parametre adı olarak kullanılan özelliğin adı olur.
+* Bir tanım kaynak örneğine özgü olamaz. Herhangi bir tanım bu türtüm kaynaklar için geçerlidir.
+* Varsayılan olarak, Anahtar Vault sırları gibi tüm güvenli dizeleri ve bağlantı dizeleri, anahtarlar ve belirteçleri gibi güvenli dizeleri parametreli.
  
-### <a name="sample-parameterization-template"></a>Örnek Parametreleştirme şablonu
+### <a name="sample-parameterization-template"></a>Örnek parametreleme şablonu
 
-Parametreleştirme şablonunun nasıl görünebileceğini aşağıda görebilirsiniz:
+Parametrelendirme şablonunun nasıl görünebileceğine bir örnek aşağıda verilmiştir:
 
 ```json
 {
@@ -555,35 +567,35 @@ Parametreleştirme şablonunun nasıl görünebileceğini aşağıda görebilirs
     }
 }
 ```
-Yukarıdaki şablonun nasıl oluşturulduğu ve kaynak türüne göre nasıl bölündüğü hakkında bir açıklama aşağıda verilmiştir.
+Aşağıda, önceki şablonun kaynak türüne göre nasıl oluşturulduklarına ilişkin bir açıklama verilmiştir.
 
 #### <a name="pipelines"></a>İşlem hatları
     
-* Yol `activities/typeProperties/waitTimeInSeconds` herhangi bir özellik parametrelenir. `waitTimeInSeconds` adlı bir işlem hattındaki herhangi bir etkinlik (örneğin, `Wait` etkinliği), varsayılan bir ada sahip bir sayı olarak parametrelenir. Ancak Kaynak Yöneticisi şablonunda varsayılan bir değere sahip olmaz. Kaynak Yöneticisi dağıtımı sırasında zorunlu bir giriş olacaktır.
-* Benzer şekilde, `headers` adlı bir Özellik (örneğin, bir `Web` etkinliğinde), tür `object` (JObject) ile parametrelenir. Kaynak fabrikasının değeriyle aynı değer olan varsayılan bir değere sahiptir.
+* Yoldaki `activities/typeProperties/waitTimeInSeconds` herhangi bir özellik parametreli. Kod düzeyinde bir özelliği olan `waitTimeInSeconds` bir ardışık etki adındaki herhangi bir etkinlik (örneğin, `Wait` etkinlik) varsayılan bir adla bir sayı olarak parametreye ayarlanır. Ancak Kaynak Yöneticisi şablonunda varsayılan bir değer olmaz. Kaynak Yöneticisi dağıtımı sırasında zorunlu bir giriş olacaktır.
+* Benzer şekilde, (örneğin, bir `headers` `Web` etkinlikte) adlı bir özellik `object` türü (JObject) ile parametreli. Varsayılan değeri vardır ve bu değer kaynak fabrikayla aynı değere sahiptir.
 
-#### <a name="integrationruntimes"></a>Tümleştirme çalışma zamanları
+#### <a name="integrationruntimes"></a>EntegrasyonRuntimes
 
-* `typeProperties` yolu altındaki tüm özellikler, kendi varsayılan değerleriyle parametreleştirilenir. Örneğin, `IntegrationRuntimes` türü Özellikler altında iki özellik vardır: `computeProperties` ve `ssisProperties`. Her iki özellik türü de ilgili varsayılan değerleri ve türleri (nesne) ile oluşturulur.
+* Yol `typeProperties` altındaki tüm özellikler, ilgili varsayılan değerleriyle parametreye yerleştirilir. Örneğin, tür özellikleri altında `IntegrationRuntimes` iki `computeProperties` özellik `ssisProperties`vardır: ve . Her iki özellik türü de kendi varsayılan değerleri ve türleri (Nesne) ile oluşturulur.
 
 #### <a name="triggers"></a>Tetikleyiciler
 
-* `typeProperties`altında iki özellik parametrelenir. Birincisi, varsayılan bir değere sahip ve`string`türünde olan `maxConcurrency`. `<entityName>_properties_typeProperties_maxConcurrency`varsayılan parametre adı vardır.
-* `recurrence` özelliği de parametreleştirilenir. Bu düzeyin altında, bu düzeydeki tüm özellikler, varsayılan değerler ve parametre adlarıyla dize olarak parametreleştirime olarak belirtilir. Özel durum, tür `number`olarak parametreleştirilen `interval` özelliğidir. Parametre adı `<entityName>_properties_typeProperties_recurrence_triggerSuffix`ile Sonya düzeltildi. Benzer şekilde, `freq` özelliği bir dizedir ve bir dize olarak parametrelenir. Ancak, `freq` özelliği varsayılan değer olmadan parametrelenir. Ad kısaltılmıştır ve Sonya düzeltildi. Örneğin, `<entityName>_freq`.
+* Altında, `typeProperties`iki özellik parametreli. `maxConcurrency`İlki, varsayılan bir değere sahip olduğu belirtilen`string`ve türünde olan. Varsayılan parametre adı `<entityName>_properties_typeProperties_maxConcurrency`vardır.
+* Özellik `recurrence` de parametreli. Altında, bu düzeydeki tüm özellikleri varsayılan değerleri ve parametre adları ile dizeleri olarak parametreli olarak belirtilir. Bir özel `interval` durum türü `number`olarak parametreli özelliktir. Parametre adı `<entityName>_properties_typeProperties_recurrence_triggerSuffix`ile suffixed olduğunu . Benzer şekilde, `freq` özellik bir dize ve bir dize olarak parametreli. Ancak, `freq` özellik varsayılan bir değer olmadan parametrelendirilmiştir. Adı kısaltılmış ve suffixed. Örneğin, `<entityName>_freq`.
 
-#### <a name="linkedservices"></a>linkedServices
+#### <a name="linkedservices"></a>Bağlantılı Hizmetler
 
-* Bağlı hizmetler benzersizdir. Bağlı hizmetler ve veri kümelerinin çok sayıda türü olduğundan, türe özgü özelleştirme sağlayabilirsiniz. Bu örnekte, `AzureDataLakeStore`türündeki tüm bağlı hizmetler için belirli bir şablon uygulanır. Tüm diğerleri için (`*`aracılığıyla), farklı bir şablon uygulanır.
-* `connectionString` özelliği bir `securestring` değeri olarak parametrelendirilecektir. Varsayılan bir değere sahip olmayacaktır. `connectionString`, sonekli olan kısaltılmış bir parametre adına sahip olur.
-* Özellik `secretAccessKey` `AzureKeyVaultSecret` (örneğin, bir Amazon S3 bağlantılı hizmetinde) olur. Otomatik olarak Azure Key Vault gizli dizi olarak parametrelenir ve yapılandırılan anahtar kasasından alınır. Ayrıca, anahtar kasasının kendisini parametreleştirebilirsiniz.
+* Bağlantılı hizmetler benzersizdir. Bağlı hizmetler ve veri kümeleri çok çeşitli türlere sahip olduğundan, türe özgü özelleştirme sağlayabilirsiniz. Bu örnekte, türünün `AzureDataLakeStore`tüm bağlantılı hizmetleri için belirli bir şablon uygulanır. Diğerleri için (üzerinden), `*`farklı bir şablon uygulanır.
+* Özellik `connectionString` bir `securestring` değer olarak parametreye olur. Varsayılan değeri olmaz. Bu suffixed's kısaltılmış bir parametre `connectionString`adı olacaktır.
+* Özellik `secretAccessKey` bir `AzureKeyVaultSecret` (örneğin, bir Amazon S3 bağlantılı hizmet) olur. Azure Key Vault sırrı olarak otomatik olarak parametreye aktarılır ve yapılandırılan anahtar kasasından getirilir. Anahtar kasasının kendisini de parametrenize edebilirsiniz.
 
 #### <a name="datasets"></a>Veri kümeleri
 
-* Veri kümeleri için türe özgü özelleştirme kullanılabilir olsa da, açıkça \*düzeyinde bir yapılandırmaya sahip olmadan yapılandırma sağlayabilirsiniz. Yukarıdaki örnekte, `typeProperties` altındaki tüm veri kümesi özellikleri parametrelenir.
+* Veri kümeleri için türe özgü özelleştirme kullanılabilir olsa da, \*açıkça düzey yapılandırması olmadan yapılandırma sağlayabilirsiniz. Önceki örnekte, altındaki `typeProperties` tüm veri kümesi özellikleri parametrelidir.
 
-### <a name="default-parameterization-template"></a>Varsayılan parameterleştirme şablonu
+### <a name="default-parameterization-template"></a>Varsayılan parametreleme şablonu
 
-Geçerli varsayılan parameterleştirme şablonu aşağıda verilmiştir. Yalnızca birkaç parametre eklemeniz gerekiyorsa, varolan parameterleştirme yapısını kaybetmemeniz nedeniyle bu şablonu doğrudan düzenlemeniz iyi bir fikir olabilir.
+Aşağıdaki geçerli varsayılan parametrelendirme şablonudur. Yalnızca birkaç parametre eklemeniz gerekiyorsa, varolan parametreboyutlandırma yapısını kaybetmeyeceğiniz için bu şablonu doğrudan düzenlemek iyi bir fikir olabilir.
 
 ```json
 {
@@ -693,7 +705,7 @@ Geçerli varsayılan parameterleştirme şablonu aşağıda verilmiştir. Yalnı
 }
 ```
 
-Aşağıdaki örnek, varsayılan parameterleştirme şablonuna tek bir değerin nasıl ekleneceğini gösterir. Yalnızca bir Databricks bağlı hizmeti için mevcut Azure Databricks etkileşimli küme KIMLIĞINI parametreler dosyasına eklemek istiyoruz. Bu dosyanın, `Microsoft.DataFactory/factories/linkedServices`Özellikler alanında `existingClusterId` eklenmesi dışında önceki dosyayla aynı olduğunu unutmayın.
+Aşağıdaki örnekte, varsayılan parametreleştirme şablonuna tek bir değer innasıl eklenir. Yalnızca Veri Tuğlaları bağlantılı bir hizmet için varolan bir Azure Databricks etkileşimli küme kimliği'ni parametreler dosyasına eklemek istiyoruz. Bu dosyanın önceki dosyayla `existingClusterId` aynı olduğunu `Microsoft.DataFactory/factories/linkedServices`unutmayın.
 
 ```json
 {
@@ -804,65 +816,65 @@ Aşağıdaki örnek, varsayılan parameterleştirme şablonuna tek bir değerin 
 }
 ```
 
-## <a name="linked-resource-manager-templates"></a>Bağlı Kaynak Yöneticisi şablonları
+## <a name="linked-resource-manager-templates"></a>Bağlantılı Kaynak Yöneticisi şablonları
 
-Veri fabrikalarınız için CI/CD ayarladıysanız, fabrikanızın daha Büyük büyüdüğü için Azure Resource Manager şablonu sınırlarını aşabilirsiniz. Örneğin, bir sınır Kaynak Yöneticisi şablonundaki en fazla kaynak sayısıdır. Fabrika için tam Kaynak Yöneticisi şablonu oluştururken büyük fabrikalara uyum sağlamak için, Data Factory artık bağlantılı Kaynak Yöneticisi şablonları oluşturuyor. Bu özellikle, tüm fabrika yükü, sınırlara göre sınırlandırılmaması için çeşitli dosyalara bölünür.
+Veri fabrikalarınız için CI/CD ayarladıysanız, fabrikanız büyüdükçe Azure Kaynak Yöneticisi şablon sınırlarını aşabilirsiniz. Örneğin, bir sınır, Kaynak Yöneticisi şablonundaki en büyük kaynak sayısıdır. Bir fabrika için tam Kaynak Yöneticisi şablonu oluştururken büyük fabrikaları barındırmak için, Veri Fabrikası artık bağlantılı Kaynak Yöneticisi şablonları oluşturur. Bu özellik sayesinde, tüm fabrika yükü çeşitli dosyalara bölünerek sınırlar tarafından sınırlandırılmamanız için.
 
-Git 'i yapılandırdıysanız, bağlantılı şablonlar oluşturulur ve adf_publish dalındaki tam Kaynak Yöneticisi şablonlarıyla birlikte linkedTemplates adlı yeni bir klasöre kaydedilir:
+Git'i yapılandırmışsanız, bağlı şablonlar adf_publish dalındaki tam Kaynak Yöneticisi şablonlarının yanında linkedTemplates adlı yeni bir klasörde oluşturulur ve kaydedilir:
 
-![Bağlı Kaynak Yöneticisi şablonları klasörü](media/continuous-integration-deployment/linked-resource-manager-templates.png)
+![Bağlantılı Kaynak Yöneticisi şablonlar klasörü](media/continuous-integration-deployment/linked-resource-manager-templates.png)
 
-Bağlantılı Kaynak Yöneticisi şablonları genellikle ana şablondan ve ana şablon kümesinden oluşur. Üst şablon ArmTemplate_master. JSON olarak adlandırılır ve alt şablonlar, ArmTemplate_0. JSON, ArmTemplate_1. JSON ve benzeri düzeniyle adlandırılır. 
+Bağlı Kaynak Yöneticisi şablonları genellikle bir ana şablon ve ana şablona bağlı bir alt şablon kümesinden oluşur. Üst şablon ArmTemplate_master.json olarak adlandırılır ve alt şablonlar ArmTemplate_0.json, ArmTemplate_1.json ve benzeri desenle adlandırılır. 
 
-Tam Kaynak Yöneticisi şablonu yerine bağlantılı şablonlar kullanmak için, CI/CD görevinizi ArmTemplateForFactory. JSON (tam Kaynak Yöneticisi şablonu) yerine ArmTemplate_master. json ' a işaret etmek üzere güncelleştirin. Kaynak Yöneticisi ayrıca, Azure 'un dağıtım sırasında erişebilmesi için bağlantılı şablonları bir depolama hesabına yüklemenizi gerektirir. Daha fazla bilgi için bkz. [VSTS ile bağlantılı kaynak yöneticisi şablonlarını dağıtma](https://blogs.msdn.microsoft.com/najib/2018/04/22/deploying-linked-arm-templates-with-vsts/).
+Tam Kaynak Yöneticisi şablonu yerine bağlantılı şablonları kullanmak için, Ci/CD görevinizi ArmTemplateForFactory.json (tam Kaynak Yöneticisi şablonu) yerine ArmTemplate_master.json'a işaret etmek için güncelleştirin. Kaynak Yöneticisi, Azure'un dağıtım sırasında bunlara erişebilmeleri için bağlantılı şablonları bir depolama hesabına yüklemenizi de gerektirir. Daha fazla bilgi için bkz: [VSTS ile bağlantılı Kaynak Yöneticisi şablonlarını dağıtma.](https://blogs.msdn.microsoft.com/najib/2018/04/22/deploying-linked-arm-templates-with-vsts/)
 
-Dağıtım görevinden önce ve sonra, CI/CD işlem hattınızda Data Factory betikleri eklemeyi unutmayın.
+Dağıtım görevinden önce ve sonra CI/CD ardışık sisteminize Veri Fabrikası komut dosyalarını eklemeyi unutmayın.
 
-Git 'in yapılandırılıp yapılandırılmadığını, **ARM şablon** listesindeki **ARM şablonunu dışarı aktar** aracılığıyla bağlı şablonlara erişebilirsiniz.
+Git'i yapılandırmadıysanız, ARM **Şablonu** listesinde dışa aktarma **KOLU Şablonu** aracılığıyla bağlantılı şablonlara erişebilirsiniz.
 
-## <a name="hotfix-production-branch"></a>Düzeltme üretim Dalı
+## <a name="hotfix-production-branch"></a>Hotfix üretim şubesi
 
-Bir üretime fabrika dağıtımı yaptıysanız ve hemen düzeltilmesi gereken bir hata olduğunu fark ederseniz, ancak geçerli işbirliği dalını dağıtamazsınız, bir düzeltme dağıtmanız gerekebilir. Bu yaklaşım, hızlı çözüm Mühendisliği veya QFE olarak bilinir.
+Bir fabrikayı üretime dağıyorsanız ve hemen düzeltilmesi gereken bir hata olduğunu fark ederseniz, ancak geçerli işbirliği dalını dağıtamıyorsanız, bir düzeltme dağıtmanız gerekebilir. Bu yaklaşım, hızlı düzeltme mühendisliği veya QFE olarak bilinir.
 
-1.  Azure DevOps 'da üretime dağıtılan sürüme gidin. Dağıtılan son yürütmeyi bulun.
+1.    Azure DevOps'te, üretime dağıtılan sürüme gidin. Dağıtılan son commit'ı bulun.
 
-2.  Tamamlama iletisinden işbirliği dalının kayıt KIMLIĞINI alın.
+2.    İletiyi iletme den, işbirliği şubesinin kimlik sini alın.
 
-3.  Bu işlemeden yeni bir düzeltme dalı oluşturun.
+3.    Bu taahhüt yeni bir hotfix dalı oluşturun.
 
-4.  Azure Data Factory UX ' e gidin ve düzeltme dalına geçiş yapın.
+4.    Azure Veri Fabrikası UX'ye gidin ve hotfix şubesine geçin.
 
-5.  Azure Data Factory UX kullanarak hatayı düzeltemedi. Değişikliklerinizi test edin.
+5.    Azure Veri Fabrikası UX'yi kullanarak hatayı düzeltin. Değişikliklerinizi test edin.
 
-6.  Düzeltme doğrulandıktan sonra, düzeltme Kaynak Yöneticisi şablonunu almak için **ARM şablonunu dışarı aktar** ' ı seçin.
+6.    Düzeltme doğrulandıktan sonra, hotfix Kaynak Yöneticisi şablonuna ulaşmak için **DıŞA Aktarım KOLU** Şablonu'nu seçin.
 
-7.  Bu derlemeyi adf_publish dalına el ile kontrol edin.
+7.    Bu yapıyı adf_publish dalına elle kontrol edin.
 
-8.  Yayın işlem hattınızı adf_publish iadelerine göre otomatik olarak tetiklemek üzere yapılandırdıysanız, yeni bir yayın otomatik olarak başlatılır. Aksi takdirde, bir yayını el ile sıraya alın.
+8.    Sürüm ardışık adf_publish denetime göre otomatik olarak tetiklenecek şekilde yapılandırıldıysanız, yeni bir sürüm otomatik olarak başlatılır. Aksi takdirde, bir sürümü el ile sıralar.
 
-9.  Düzeltme sürümünü test ve üretim fabrikasına dağıtın. Bu sürüm, önceki üretim yükünü ve 5. adımda yaptığınız çözümü içerir.
+9.    Hotfix yayınını test ve üretim fabrikalarına dağıtın. Bu sürüm, önceki üretim yükünün yanı sıra adım 5'te yaptığınız düzeltmeyi içerir.
 
-10. Sonraki sürümlerin aynı hatayı içermemesi için düzeltmeden değişiklikleri geliştirme dalına ekleyin.
+10.    Daha sonraki sürümler aynı hatayı içermeyecek şekilde düzeltmedeki değişiklikleri geliştirme dalına ekleyin.
 
-## <a name="best-practices-for-cicd"></a>CI/CD için en iyi yöntemler
+## <a name="best-practices-for-cicd"></a>CI/CD için en iyi uygulamalar
 
-Veri fabrikanınızla git tümleştirmesi kullanıyorsanız ve değişikliklerinizi geliştirmeden test ve daha sonra üretime taşıyan bir CI/CD işlem hattına sahipseniz, bu en iyi yöntemleri öneririz:
+Veri fabrikanızla Git tümleştirmesini kullanıyorsanız ve değişikliklerinizi geliştirmeden teste ve daha sonra üretime dönüştüren bir CI/CD ardışık hattınız varsa, şu en iyi uygulamaları öneririz:
 
--   **Git tümleştirmesi**. Yalnızca geliştirme veri fabrikanızı git tümleştirmesi ile yapılandırmanız gerekir. Test ve üretimde yapılan değişiklikler CI/CD aracılığıyla dağıtılır ve git tümleştirmesi gerekmez.
+-   **Git entegrasyonu**. Yalnızca geliştirme veri fabrikanızı Git tümleştirmesiyle yapılandırmanız gerekir. Test ve üretimdeki değişiklikler CI/CD aracılığıyla dağıtılır ve Git tümleştirmesine gerek yoktur.
 
--   **Data Factory CI/CD betiği**. CI/CD 'deki Kaynak Yöneticisi dağıtım adımından önce, Tetikleyicileri durdurma ve yeniden başlatma ve temizleme işlemlerini yapma gibi belirli görevleri gerçekleştirmeniz gerekir. Dağıtımdan önce ve sonra PowerShell betikleri kullanmanızı öneririz. Daha fazla bilgi için bkz. [etkin Tetikleyicileri güncelleştirme](#update-active-triggers).
+-   **Veri Fabrikası CI/CD komut dosyası.** KAYNAK Yöneticisi dağıtım adımı CI/CD'de tamamlanmadan önce, tetikleyicileri durdurma ve yeniden başlatma ve temizleme gerçekleştirme gibi belirli görevleri tamamlamanız gerekir. Dağıtımdan önce ve sonra PowerShell komut dosyalarını kullanmanızı öneririz. Daha fazla bilgi için [bkz.](#update-active-triggers)
 
--   **Tümleştirme çalışma zamanları ve paylaşma**. Tümleştirme çalışma zamanları sıklıkla değişmez ve CI/CD 'inizdeki tüm aşamalar arasında benzerdir. Data Factory, CI/CD 'nin tüm aşamalarında aynı ad ve türde tümleştirme çalışma zamanı olmasını bekler. Tümleştirme çalışma zamanlarını tüm aşamalarda paylaşmak istiyorsanız, paylaşılan tümleştirme çalışma zamanlarını içerecek şekilde, Üçlü bir fabrika kullanmayı düşünün. Bu paylaşılan fabrikası tüm ortamlarınızda bağlantılı tümleştirme çalışma zamanı türü olarak kullanabilirsiniz.
+-   **Tümleştirme çalışma saatleri ve paylaşım.** Tümleştirme çalışma süreleri sık sık değişmez ve CI/CD'nizdeki tüm aşamalarda benzerdir. Bu nedenle, Veri Fabrikası, CI/CD'nin tüm aşamalarında aynı ada ve türde tümleştirme çalışma süresine sahip olduğunuzu bekler. Tüm aşamalarda tümleştirme çalışma sürelerini paylaşmak istiyorsanız, yalnızca paylaşılan tümleştirme çalışma sürelerini içerecek şekilde bir üçüncül fabrika kullanmayı düşünün. Bu paylaşılan fabrikayı tüm ortamlarınızda bağlantılı tümleştirme çalışma zamanı türü olarak kullanabilirsiniz.
 
--   **Key Vault**. Bağlı hizmetleri Azure Key Vault göre kullandığınızda, farklı ortamlar için ayrı anahtar kasaları tutarak bundan daha fazla avantaj sağlayabilirsiniz. Ayrıca, her Anahtar Kasası için ayrı izin düzeyleri yapılandırabilirsiniz. Örneğin, ekip üyelerinizin üretim gizli dizileri için izinleri olmasını istemeyebilirsiniz. Bu yaklaşımı izlerseniz, tüm aşamalar genelinde aynı gizli adları tutmanız önerilir. Aynı adı tutarsanız, tek şey, Kaynak Yöneticisi şablonu parametrelerinden biri olan Anahtar Kasası adı olduğundan, Kaynak Yöneticisi şablonlarını CI/CD ortamları arasında değiştirmeniz gerekmez.
+-   **Anahtar Kasası**. Azure Anahtar Kasası'nı temel alan bağlantılı hizmetleri kullandığınızda, farklı ortamlar için ayrı anahtar kasaları tutarak bu hizmetlerden daha fazla yararlanabilirsiniz. Ayrıca, her anahtar kasası için ayrı izin düzeylerini yapılandırabilirsiniz. Örneğin, ekip üyelerinizin gizli üretim izinlerine sahip olmasını istemeyebilirsiniz. Bu yaklaşımı izlerseniz, tüm aşamalarda aynı gizli adları saklamanızı öneririz. Aynı adları tutarsanız, Kaynak Yöneticisi şablonlarınızı CI/CD ortamlarında değiştirmeniz gerekmez, çünkü değişen tek şey Kaynak Yöneticisi şablon parametrelerinden biri olan anahtar kasa adıdır.
 
 ## <a name="unsupported-features"></a>Desteklenmeyen özellikler
 
-- Tasarım yaparak Data Factory işleme veya kaynakların seçmeli yayımlamasına izin vermez. Yayınlar, veri fabrikasında yapılan tüm değişiklikleri içerir.
+- Tasarım gereği, Veri Fabrikası kiraz toplama taahhütleri veya kaynakların seçici yayımlanmasına izin vermez. Yayımlar, veri fabrikasında yapılan tüm değişiklikleri içerir.
 
-    - Data Factory varlıkları birbirlerine bağlıdır. Örneğin, tetikler, işlem hatlarına ve işlem hatları, veri kümelerine ve diğer işlem hattına bağlıdır. Bir kaynak alt kümesinin seçmeli olarak yayımlanması beklenmeyen davranışlara ve hatalara neden olabilir.
-    - Seçmeli yayımlamaya ihtiyacınız olduğunda nadir olarak bir düzeltme kullanmayı düşünün. Daha fazla bilgi için bkz. [Düzeltme üretim Dalı](#hotfix-production-branch).
+    - Veri fabrikası varlıkları birbirine bağlıdır. Örneğin, tetikleyiciler ardışık lıklara, ardışık lıklar da veri kümelerine ve diğer ardışık lıklara bağlıdır. Kaynakların bir alt kümesinin seçici yayımlama beklenmeyen davranışlar ve hatalara yol açabilir.
+    - Seçici yayımlama ya ihtiyacınız olduğunda, bir düzeltme kullanmayı düşünün. Daha fazla bilgi için [Hotfix üretim şubesine](#hotfix-production-branch)bakın.
 
--   Özel dallardan yayımlayamazsınız.
+-   Özel şubelerden yayın yapamazsınız.
 
--   Şu anda Bitbucket üzerinde projeler barındıramıyoruz.
+-   Şu anda Bitbucket'ta proje barındıramaz.

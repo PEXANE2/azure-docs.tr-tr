@@ -1,5 +1,5 @@
 ---
-title: 'Hızlı başlangıç: Azure PowerShell-HDInsight ile Apache Kafka oluşturma'
+title: 'Quickstart: Azure PowerShell ile Apache Kafka Oluşturun - HDInsight'
 description: Bu hızlı başlangıçta, Azure PowerShell kullanarak Azure HDInsight üzerinde bir Apache Kafka kümesi oluşturmayı öğrenirsiniz. Kafka konuları, aboneleri ve tüketicileri hakkında da bilgi edinirsiniz.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,15 +9,15 @@ ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/12/2019
 ms.openlocfilehash: d14d8f38ff8a2bed01584d5c5fec56d254cede05
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73494754"
 ---
-# <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-powershell"></a>Hızlı başlangıç: PowerShell kullanarak Azure HDInsight 'ta Apache Kafka kümesi oluşturma
+# <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-powershell"></a>Quickstart: PowerShell'i kullanarak Azure HDInsight'ta Apache Kafka kümesi oluşturun
 
-[Apache Kafka](https://kafka.apache.org/) , açık kaynaklı, dağıtılmış bir akış platformudur. Yayımla-abone ol ileti kuyruğuna benzer işlevler sağladığı için genellikle ileti aracısı olarak kullanılır. 
+[Apache Kafka](https://kafka.apache.org/) açık kaynak kodlu, dağıtılmış bir akış platformudur. Yayımla-abone ol ileti kuyruğuna benzer işlevler sağladığı için genellikle ileti aracısı olarak kullanılır. 
 
 Bu hızlı başlangıçta, Azure PowerShell kullanarak [Apache Kafka](https://kafka.apache.org) kümesi oluşturmayı öğrenirsiniz. Ayrıca Kafka kullanarak ileti göndermek ve almak için, birlikte sunulan yardımcı programları kullanmayı da öğrenirsiniz.
 
@@ -25,19 +25,19 @@ Bu hızlı başlangıçta, Azure PowerShell kullanarak [Apache Kafka](https://ka
 
 Kafka API’sine yalnızca aynı sanal ağ içindeki kaynaklar tarafından erişilebilir. Bu hızlı başlangıçta, doğrudan SSH kullanarak kümeye erişirsiniz. Diğer hizmetleri, ağları veya sanal makineleri Kafka’ya bağlamak için önce bir sanal ağ oluşturmanız e sonra ağ içinde kaynakları oluşturmanız gerekir. Daha fazla bilgi için [Sanal ağ kullanarak Apache Kafka'ya bağlanma](apache-kafka-connect-vpn-gateway.md) belgesine bakın.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-* PowerShell [az Module](https://docs.microsoft.com/powershell/azure/overview) yüklendi.
+* PowerShell [Az Modülü](https://docs.microsoft.com/powershell/azure/overview) kuruldu.
 
-* Bir SSH istemcisi. Daha fazla bilgi için bkz. [SSH kullanarak HDInsight 'A bağlanma (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* Bir SSH istemcisi. Daha fazla bilgi için [SSH kullanarak HDInsight'a (Apache Hadoop) bağlan'a](../hdinsight-hadoop-linux-use-ssh-unix.md)bakın.
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-`Connect-AzAccount` cmdlet 'i ile Azure aboneliğinizde oturum açın ve ekrandaki yönergeleri izleyin.
+`Connect-AzAccount` Cmdlet ile Azure aboneliğinizde oturum açın ve ekrandaki yönergeleri izleyin.
 
 ```azurepowershell-interactive
 # Login to your Azure subscription
@@ -53,7 +53,7 @@ if(-not($sub))
 
 ## <a name="create-resource-group"></a>Kaynak grubu oluşturma
 
-[New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)Ile bir Azure Kaynak grubu oluşturun. Kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. Aşağıdaki örnekte, adınız ve konumunuz istenir, daha sonra yeni bir kaynak grubu oluşturulur:
+[Yeni-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)ile bir Azure kaynak grubu oluşturun. Kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. Aşağıdaki örnekte, adınız ve konumunuz istenir, daha sonra yeni bir kaynak grubu oluşturulur:
 
 ```azurepowershell-interactive
 $resourceGroup = Read-Host -Prompt "Enter the resource group name"
@@ -64,10 +64,10 @@ New-AzResourceGroup -Name $resourceGroup -Location $location
 
 ## <a name="create-a-storage-account"></a>Depolama hesabı oluşturma
 
-HDInsight üzerinde Kafka, Kafka verilerini depolamak için Azure Yönetilen Diskler’i kullanırken, küme de günlükler gibi bilgileri depolamak için Azure Depolama’yı kullanır. Yeni bir depolama hesabı oluşturmak için [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) komutunu kullanın.
+HDInsight üzerinde Kafka, Kafka verilerini depolamak için Azure Yönetilen Diskler’i kullanırken, küme de günlükler gibi bilgileri depolamak için Azure Depolama’yı kullanır. Yeni bir depolama hesabı oluşturmak için [Yeni Depolama Hesabı'nı](/powershell/module/az.storage/new-azstorageaccount) kullanın.
 
 > [!IMPORTANT]  
-> Depolama hesabı türü `BlobStorage`, yalnızca HDInsight kümeleri için ikincil depolama alanı olarak kullanılabilir.
+> Depolama hesabı `BlobStorage` türü yalnızca HDInsight kümeleri için ikincil depolama alanı olarak kullanılabilir.
 
 ```azurepowershell-interactive
 $storageName = Read-Host -Prompt "Enter the storage account name"
@@ -81,7 +81,7 @@ New-AzStorageAccount `
     -EnableHttpsTrafficOnly 1
 ```
 
-HDInsight, depolama hesabındaki verileri bir blob kapsayıcısında depolar. Yeni bir kapsayıcı oluşturmak için [New-AzStorageContainer](/powershell/module/Az.Storage/New-AzStorageContainer) komutunu kullanın.
+HDInsight, depolama hesabındaki verileri bir blob kapsayıcısında depolar. Yeni bir kapsayıcı oluşturmak için [Yeni AzStorageContainer'ı](/powershell/module/Az.Storage/New-AzStorageContainer) kullanın.
 
 ```azurepowershell-interactive
 $containerName = Read-Host -Prompt "Enter the container name"
@@ -98,7 +98,7 @@ New-AzStorageContainer -Name $containerName -Context $storageContext
 
 ## <a name="create-an-apache-kafka-cluster"></a>Apache Kafka kümesi oluşturma
 
-HDInsight kümesinde [New-AzHDInsightCluster](/powershell/module/az.HDInsight/New-azHDInsightCluster)ile bir Apache Kafka oluşturun.
+[New-AzHDInsightCluster](/powershell/module/az.HDInsight/New-azHDInsightCluster)ile HDInsight kümesinde bir Apache Kafka oluşturun.
 
 ```azurepowershell-interactive
 # Create a Kafka 1.1 cluster
@@ -135,7 +135,7 @@ HDInsight kümesinin oluşturulması 20 dakika kadar sürebilir.
 
 `-DisksPerWorkerNode` parametresi, HDInsight üzerinde Kafka’nın ölçeklenebilirliğini yapılandırır. HDInsight üzerinde Kafka, verileri depolamak için kümedeki sanal makinelerin yerel diskini kullanır. Kafka, G/Ç açısından yoğun olduğundan, yüksek aktarım hızı ve düğüm başına daha fazla depolama alanı sağlamak için [Azure Yönetilen Diskler](../../virtual-machines/windows/managed-disks-overview.md) kullanılır.
 
-Yönetilen diskin türü __Standart__ (HDD) veya __Premium__ (SSD) olabilir. Disk türü, çalışan düğümleri (Kafka aracıları) tarafından kullanılan sanal makine boyutuna bağlıdır. Premium diskler otomatik olarak DS ve GS serisi sanal makinelerle kullanılır. Diğer tüm VM türleri standart disk kullanır. `-WorkerNodeSize` parametresini kullanarak sanal makine türünü ayarlayabilirsiniz. Parametreler hakkında daha fazla bilgi için bkz. [New-AzHDInsightCluster](/powershell/module/az.HDInsight/New-azHDInsightCluster) documentation.
+Yönetilen diskin türü __Standart__ (HDD) veya __Premium__ (SSD) olabilir. Disk türü, çalışan düğümleri (Kafka aracıları) tarafından kullanılan sanal makine boyutuna bağlıdır. Premium diskler otomatik olarak DS ve GS serisi sanal makinelerle kullanılır. Diğer tüm VM türleri standart disk kullanır. `-WorkerNodeSize` parametresini kullanarak sanal makine türünü ayarlayabilirsiniz. Parametreler hakkında daha fazla bilgi için [New-AzHDInsightCluster](/powershell/module/az.HDInsight/New-azHDInsightCluster) belgelerine bakın.
 
 32’den fazla çalışan düğümü kullanmayı planlıyorsanız (küme oluşturma sırasında veya oluşturma işleminden sonra kümeyi ölçeklendirerek), en az 8 çekirdek ve 14 GB RAM ile bir sanal makine boyutu belirtmek için `-HeadNodeSize` parametresini kullanmanız gerekir. Düğüm boyutları ve ilişkili maliyetler hakkında daha fazla bilgi için bkz. [HDInsight fiyatlandırması](https://azure.microsoft.com/pricing/details/hdinsight/).
 
@@ -174,11 +174,11 @@ Welcome to Kafka on HDInsight.
 Last login: Thu Mar 29 13:25:27 2018 from 108.252.109.241
 ```
 
-## <a id="getkafkainfo"></a>Apache Zookeeper ve aracı ana bilgisayar bilgilerini al
+## <a name="get-the-apache-zookeeper-and-broker-host-information"></a><a id="getkafkainfo"></a>Apache Zookeeper ve Broker ev sahibi bilgilerini alın
 
-Kafka ile çalışırken *Apache Zookeeper* ve *Aracı* konaklarınızı bilmeniz gerekir. Bu konaklar Kafka API’si ve Kafka ile gönderilen yardımcı programların birçoğu ile birlikte kullanılır.
+Kafka ile çalışırken, *Apache Zookeeper* ve *Broker* ev sahiplerini tanımalısınız. Bu konaklar Kafka API’si ve Kafka ile gönderilen yardımcı programların birçoğu ile birlikte kullanılır.
 
-Bu bölümde, küme üzerindeki Apache ambarı REST API ana bilgisayar bilgilerini alırsınız.
+Bu bölümde, kümedeki Apache Ambari REST API'sinden ana bilgisayar bilgilerini alırsınız.
 
 1. Küme ile SSH bağlantısından aşağıdaki komutu kullanarak `jq` yardımcı programını yükleyin. Bu yardımcı program, JSON belgelerini ayrıştırmak için kullanılır ve ana bilgisayar bilgilerini almak için yararlıdır:
    
@@ -194,7 +194,7 @@ Bu bölümde, küme üzerindeki Apache ambarı REST API ana bilgisayar bilgileri
 
     İstendiğinde, Kafka kümesinin adını girin.
 
-3. Bir ortam değişkenini Zookeeper ana bilgisayar bilgileriyle ayarlamak için aşağıdaki komutu kullanın. Komut tüm Zookeeper Konakları alır, ardından yalnızca ilk iki girişi döndürür. Bunun nedeni, bir ana bilgisayarın ulaşılamaz olması durumunda yedeklilik istemenizdir.
+3. Zookeeper ana bilgisayar bilgileriyle bir ortam değişkeni ayarlamak için aşağıdaki komutu kullanın. Komut tüm Zookeeper ana bilgisayarlarını alır ve yalnızca ilk iki girişi döndürür. Bunun nedeni, bir ana bilgisayarın ulaşılamaz olması durumunda yedeklilik istemenizdir.
 
     ```bash
     export KAFKAZKHOSTS=`curl -sS -u admin -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")' | cut -d',' -f1,2`
@@ -254,7 +254,7 @@ Kafka, veri akışlarını *konular* içinde depolar. Konuları yönetmek için 
 
         Kafka, Azure hata etki alanları ile uyumlu değildir. Konular için bölüm çoğaltmaları oluşturulurken, çoğaltmalar yüksek kullanılabilirlik için düzgün şekilde dağıtılmayabilir.
 
-        Yüksek kullanılabilirlik sağlamak için [Apache Kafka bölüm yeniden dengeleme aracını](https://github.com/hdinsight/hdinsight-kafka-tools)kullanın. Bu araç bir SSH bağlantısından Kafka kümenizin baş düğümüne doğru çalıştırılmalıdır.
+        Yüksek kullanılabilirlik sağlamak [için, Apache Kafka bölüm yeniden dengeleme aracını](https://github.com/hdinsight/hdinsight-kafka-tools)kullanın. Bu araç bir SSH bağlantısından Kafka kümenizin baş düğümüne doğru çalıştırılmalıdır.
 
         Kafka verilerinizin en yüksek kullanılabilirliğe sahip olması için, aşağıdaki durumlarda konunuz için bölüm çoğaltmalarını yeniden dengelemeniz gerekir:
 
@@ -315,11 +315,11 @@ Daha önce oluşturduğunuz test konu başlığında kayıtları depolamak ve ar
 
 4. Tüketiciyi durdurmak için __Ctrl + C__ tuşlarını kullanın.
 
-Ayrıca programlı olarak üretici ve tüketici de oluşturabilirsiniz. Bu API 'nin kullanımıyla ilgili bir örnek için bkz. [HDInsight Ile tüketici API 'si Apache Kafka üreticisi](apache-kafka-producer-consumer-api.md) belgesi.
+Ayrıca programlı olarak üretici ve tüketici de oluşturabilirsiniz. Bu API'yi kullanma örneğine bakın, [HDInsight belgeli Apache Kafka Üretici ve Tüketici API'si.](apache-kafka-producer-consumer-api.md)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık gerekli değilse, [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) komutunu kullanarak kaynak grubunu, HDInsight 'ı ve tüm ilgili kaynakları kaldırabilirsiniz.
+Artık gerekmediğinde, kaynak grubunu, HDInsight'ı ve ilgili tüm kaynakları kaldırmak için [Kaldır-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) komutunu kullanabilirsiniz.
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name $resourceGroup
@@ -333,4 +333,4 @@ Remove-AzResourceGroup -Name $resourceGroup
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Apache Kafka ile Apache Spark kullanma](../hdinsight-apache-kafka-spark-structured-streaming.md)
+> [Apache Kafka ile Apache Spark kullanın](../hdinsight-apache-kafka-spark-structured-streaming.md)

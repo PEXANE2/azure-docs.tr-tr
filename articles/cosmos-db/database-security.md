@@ -1,90 +1,90 @@
 ---
-title: Güvenlik - Azure Cosmos DB veritabanı
-description: Azure Cosmos DB, verileriniz için veritabanı koruma ve veri güvenliğini nasıl sağladığını öğrenin.
+title: Veritabanı güvenliği - Azure Cosmos DB
+description: Azure Cosmos DB'nin verileriniz için veritabanı koruması ve veri güvenliği sağladığını öğrenin.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/23/2019
+ms.date: 03/10/2020
 ms.author: mjbrown
-ms.openlocfilehash: 0c97d70ea3e5c7fdd14b0f97c5e393359f2b948e
-ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
+ms.openlocfilehash: 30991f17970eefe1a140cdd70e1f6b305160349c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79087226"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79537338"
 ---
-# <a name="security-in-azure-cosmos-db---overview"></a>Azure Cosmos DB güvenlik-genel bakış
+# <a name="security-in-azure-cosmos-db---overview"></a>Azure Cosmos DB’de güvenlik - genel bakış
 
 Bu makalede veritabanı ihlallerini önlemenize, algılamanıza ve yanıtlamanıza yardımcı olmak üzere Azure Cosmos DB tarafından sunulan veritabanı güvenliği en iyi yöntemleri ve önemli özellikleri açıklanır.
 
-## <a name="whats-new-in-azure-cosmos-db-security"></a>Azure Cosmos DB güvenliği yenilikleri
+## <a name="whats-new-in-azure-cosmos-db-security"></a>Azure Cosmos DB güvenliğindeki yenilikler
 
-Bekleme sırasında şifreleme belgeler ve tüm Azure bölgelerinde Azure Cosmos DB'de depolanan yedeklemeler için kullanıma sunulmuştur. Bekleme sırasında şifreleme, bu bölgede yeni ve mevcut müşteriler için otomatik olarak uygulanır. Herhangi bir şey yapılandırmak için gerek yoktur; aynı harika gecikme süresi, aktarım hızı, kullanılabilirlik alın ve olarak önce verilerinizi olduğunu bilmesinin avantajı ile bekleyen veri şifrelemesi ile güvenli bir işlevdir.
+Artık tüm Azure bölgelerinde Azure Cosmos DB'de depolanan belgeler ve yedeklemeler için artık istirahatte şifreleme kullanılabilir. Bu bölgelerdeki hem yeni hem de mevcut müşteriler için istirahatte şifreleme otomatik olarak uygulanır. Bir şey yapılandırmak için gerek yoktur; ve verilerinizin güvenli ve emniyetli olduğunu ve hazır da şifrenizi bilmenin avantajıyla, önceki gibi aynı büyük gecikme, iş kaynağı, kullanılabilirlik ve işlevselliği elde edeyim.
 
-## <a name="how-do-i-secure-my-database"></a>Veritabanım güvenli Nasıl yaparım?
+## <a name="how-do-i-secure-my-database"></a>Veritabanımı nasıl güvenli hale alarım?
 
-Veri güvenliği, müşterinin ve veritabanı sağlayıcınız arasında paylaşılan bir sorumluluğundadır. Seçtiğiniz veritabanı sağlayıcıya bağlı olarak, yürütmek sorumluluk miktarını farklılık gösterebilir. Şirket içi bir çözüm seçerseniz, hiçbir kolay bir görevdir, donanım - fiziksel güvenlik için uç nokta koruması kadar her şeyi vermeniz gerekir. Azure Cosmos DB gibi PaaS bulut veritabanı sağlayıcısı seçerseniz, bölgenizdeki sorunlu önemli ölçüde küçültür. Microsoft 'un [bulut bilgi işlem teknik incelemesi Için paylaşılan sorumluluklarından](https://aka.ms/sharedresponsibility) ödünç alınan aşağıdaki görüntüde, sorumluluğun Azure Cosmos DB gibi bir PaaS sağlayıcısıyla nasıl azaldığını gösterir.
+Veri güvenliği, siz, müşteri ve veritabanı sağlayıcınız arasında paylaşılan bir sorumluluktur. Seçtiğiniz veritabanı sağlayıcısına bağlı olarak, taşıdığınız sorumluluk miktarı değişebilir. Şirket içi bir çözüm seçerseniz, son nokta korumasından donanımınızın fiziksel güvenliğine kadar her şeyi sağlamanız gerekir ki bu kolay bir iş değildir. Azure Cosmos DB gibi bir PaaS bulut veritabanı sağlayıcısı seçerseniz, ilgi alanınız önemli ölçüde küçülür. Microsoft'un Cloud Computing için [Paylaşılan Sorumlulukları](https://aka.ms/sharedresponsibility) teknik incelemesinden ödünç alınan aşağıdaki resim, Azure Cosmos DB gibi bir PaaS sağlayıcısıyla sorumluluğunuzun nasıl azaldığını gösterir.
 
 ![Müşteri ve veritabanı sağlayıcısı sorumlulukları](./media/database-security/nosql-database-security-responsibilities.png)
 
-Önceki şemada, üst düzey bulut güvenlik bileşenleri gösterilmektedir, ancak hangi öğeleri özellikle veritabanı çözümünüz için yükleme konusunda endişelenmenize gerek? Ve çözümleri birbirleriyle nasıl karşılaştırabilirsiniz?
+Önceki diyagram üst düzey bulut güvenlik bileşenlerini gösterir, ancak veritabanı çözümünüz için özel olarak hangi öğeler hakkında endişelenmeniz gerekir? Ve nasıl birbirleri ile çözümleri karşılaştırabilirsiniz?
 
-Gereksinimleri, veritabanı sistemleri karşılaştırmak aşağıdaki denetim listesindeki adımları öneririz:
+Veritabanı sistemlerini karşılaştırmak için aşağıdaki gereksinimlerin denetim listesini öneririz:
 
 - Ağ güvenliği ve güvenlik duvarı ayarları
-- Kullanıcı kimlik doğrulaması ve hassas kullanıcı denetimleri
-- Bölgesel hatalar için genel veri çoğaltma olanağı
-- Bir veri merkezinden diğerine yük devretme olanağı
-- Bir veri merkezinde yerel veri çoğaltma
-- Otomatik veri yedekleme
-- Silinen verileri yedeklerden geri yükleme
-- Hassas verileri yalıtmak ve korumak
-- Saldırıları için izleme
-- Saldırılara karşı yanıt
-- Coğrafi sınır veri veri İdaresi kısıtlamaları uyması olanağı
-- Korumalı veri merkezlerindeki sunucular fiziksel koruma
+- Kullanıcı kimlik doğrulaması ve ince taneli kullanıcı denetimleri
+- Bölgesel hatalar için verileri küresel olarak çoğaltma becerisi
+- Bir veri merkezinden diğerine başarısız olma becerisi
+- Veri merkezi içinde yerel veri çoğaltma
+- Otomatik veri yedeklemeleri
+- Yedeklemelerden silinen verilerin geri yüklemesi
+- Hassas verileri koruma ve yalıtma
+- Saldırıların izlenmesi
+- Saldırılara yanıt verme
+- Veri yönetimi kısıtlamalarına uymak için verileri coğrafi olarak çitleme yeteneği
+- Korumalı veri merkezlerinde sunucuların fiziksel koruması
 - Sertifikalar
 
-Ayrıca, [çok sayıda büyük ölçekli veritabanı ihlal](https://thehackernews.com/2017/01/mongodb-database-security.html) etmekle birlikte, aşağıdaki gereksinimlerin basit ancak kritik önem derecesini hatırlatır:
+Ve her ne kadar açık gibi görünse [de,](https://thehackernews.com/2017/01/mongodb-database-security.html) son büyük ölçekli veritabanı ihlalleri aşağıdaki gereksinimlerin basit ama kritik önemini bize hatırlatıyor:
 
-- Güncel tutulan ve düzeltme eki uygulanan sunucular
-- HTTPS varsayılan/SSL şifrelemesi
-- Yönetim hesapları ile güçlü parolalar
+- Güncel tutulan yamalı sunucular
+- Varsayılan/SSL şifrelemesi ile HTTPS
+- Güçlü parolalara sahip yönetim hesapları
 
-## <a name="how-does-azure-cosmos-db-secure-my-database"></a>Veritabanımın güvenliğini nasıl Azure Cosmos DB?
+## <a name="how-does-azure-cosmos-db-secure-my-database"></a>Azure Cosmos DB veritabanımı nasıl güvence altına alar
 
-Önceki listesini yeniden gözden geçirelim - bu güvenlik gereksinimleri kaç Azure Cosmos DB sağlar mı? Tek tek her.
+Önceki listeye geri bakalım - Azure Cosmos DB bu güvenlik gereksinimlerinden kaç tanesini sağlar? Her birini.
 
-Şimdi her birini ayrıntılı sayesinde çalışın.
+Her birini ayrıntılı olarak inceleyelim.
 
 |Güvenlik gereksinimi|Azure Cosmos DB'nin güvenlik yaklaşımı|
 |---|---|
-|Ağ güvenliği|İlk veritabanınızı güvenli hale getirmek için koruma katmanı bir IP Güvenlik Duvarı'nı kullanmaktır. Azure Cosmos DB, ilke temelli IP tabanlı erişim denetimlerini gelen güvenlik duvarı desteği için destekler. IP tabanlı erişim denetimleri geleneksel veritabanı sistemleri tarafından kullanılan güvenlik duvarı kurallarına benzerdir, ancak Azure Cosmos veritabanı hesabına yalnızca onaylanan bir makine veya bulut hizmeti tarafından erişilebilmeleri için genişletilir. [Azure Cosmos DB güvenlik duvarı destek](firewall-support.md) makalesinde daha fazla bilgi edinin.<br><br>Azure Cosmos DB, belirli bir IP adresi (168.61.48.0), bir IP aralığı (168.61.48.0/8) ve IP aralıkları ve birleşimleri etkinleştirmek sağlar. <br><br>Bu izin verilen liste dışındaki makinelerden gelen tüm istekler, Azure Cosmos DB tarafından engellenir. Onaylanan machines ve cloud services ardından gelen istekleri kaynaklara erişim denetimi verilecek kimlik doğrulama sürecini tamamlamanız gerekir.<br><br> Ağ yalıtımı elde etmek ve Azure Cosmos DB kaynaklarınızı genel Internet 'ten korumak için [sanal ağ hizmeti etiketlerini](../virtual-network/service-tags-overview.md) kullanabilirsiniz. Güvenlik kuralları oluştururken belirli IP adreslerinin yerine hizmet etiketleri kullanın. Bir kuralın uygun kaynak veya hedef alanındaki hizmet etiketi adını (örneğin, Azuversmosdb) belirterek, karşılık gelen hizmet için trafiğe izin verebilir veya bu trafiği reddedebilirsiniz.|
-|Yetkilendirme|Azure Cosmos DB yetkilendirme için karma tabanlı ileti kimlik doğrulama kodu (HMAC) kullanır. <br><br>Her isteğin gizli hesap anahtarı kullanarak karma uygulanır ve sonraki base-64 kodlanmış karma her çağrı için Azure Cosmos DB ile gönderilir. İstek doğrulamak için Azure Cosmos DB hizmetini doğru gizli anahtarı ve özelliklerini bir karma değer oluşturmak için kullanır ve ardından istekteki bir değerle karşılaştırır. İki değer eşleşen, işlemi başarıyla yetkili ve isteği işleyen, aksi takdirde bir Yetkilendirme hatası yoktur ve istek reddedilir.<br><br>Bir [ana anahtar](secure-access-to-data.md#master-keys)veya bir [kaynak belirteci](secure-access-to-data.md#resource-tokens) kullanarak, bir belge gibi bir kaynağa ayrıntılı erişime izin verebilirsiniz.<br><br>[Azure Cosmos DB kaynaklarına erişimi güvenli hale getirme](secure-access-to-data.md)hakkında daha fazla bilgi edinin.|
-|Kullanıcıları ve izinleri|Hesap için ana anahtarı kullanarak, veritabanı başına kullanıcı kaynakları ve izin kaynakları oluşturabilirsiniz. Kaynak belirteci, veritabanındaki bir izinle ilişkilendirilir ve kullanıcının veritabanında bir uygulama kaynağına erişimi olup olmadığını (salt okuma yazma, salt okuma veya erişim yok) belirler. Kapsayıcı, belgeler, ekleri, saklı yordamlar, tetikleyiciler ve UDF'ler uygulama kaynaklarını içerir. Kaynak belirteci sağlayın ya da kaynağa erişimi reddetmek için kimlik doğrulaması sırasında sonra kullanılır.<br><br>[Azure Cosmos DB kaynaklarına erişimi güvenli hale getirme](secure-access-to-data.md)hakkında daha fazla bilgi edinin.|
-|Active directory ile tümleştirme (RBAC)| Ayrıca, Cosmos hesabı, veritabanı, kapsayıcı ve Azure portal erişim denetimi (ıAM) kullanarak (aktarım hızı) erişimi de sağlayabilirsiniz veya kısıtlayabilirsiniz. IAM rol tabanlı erişim denetimi sağlar ve Active Directory ile tümleşir. Yerleşik roller veya bireyler ve gruplar için özel roller kullanabilirsiniz. Daha fazla bilgi için bkz. [Active Directory tümleştirme](role-based-access-control.md) makalesi.|
-|Genel çoğaltma|Azure Cosmos DB, verilerinizi, Azure'un dünya çapındaki veri merkezlerinden herhangi birine bir düğmeye tıklayarak çoğaltmayı olanak tanıyan anahtar teslim küresel dağıtım sunar. Genel çoğaltma küresel olarak ölçeklendirin ve düşük gecikme süreli erişim için verilerinizi dünyanın dört bir yanındaki sağlamanıza olanak tanır.<br><br>Güvenlik bağlamında, küresel çoğaltma bölgesel hatalarına karşı verileri koruma sağlar.<br><br>[Verileri küresel olarak dağıtma](distribute-data-globally.md) bölümünde daha fazlasını öğrenin.|
-|Bölgesel yük devretme|Verilerinizi birden fazla veri merkezinde çoğaltıldığından, Azure Cosmos DB bölgesel veri merkezi çevrimdışı duruma işlemlerinizi otomatik olarak yapar. Yük devretme bölge içinde verilerinizi çoğaltılır bölgeleri kullanma öncelikli listesi oluşturabilirsiniz. <br><br>[Azure Cosmos DB bölgesel](high-availability.md)yük devretmeler hakkında daha fazla bilgi edinin.|
-|Yerel çoğaltma|Tek bir veri merkezi içinde bile, Azure Cosmos DB [tutarlılık düzeyi](consistency-levels.md)seçimi sunarak yüksek kullanılabilirliğe yönelik verileri otomatik olarak çoğaltır. Bu çoğaltma, tüm tek bölge hesapları için% 99,99 [kullanılabilirlik SLA 'sını](https://azure.microsoft.com/support/legal/sla/cosmos-db) ve gevşek tutarlılığa sahip tüm çok bölgeli hesapları garanti eder ve tüm çok bölgeli veritabanı hesaplarında% 99,999 okuma kullanılabilirliği sağlar.|
-|Otomatik çevrimiçi yedeklemeler|Azure Cosmos veritabanları düzenli olarak yedeklenir ve coğrafi olarak yedekli bir depoda depolanır. <br><br>[Azure Cosmos DB Ile otomatik çevrimiçi yedekleme ve geri yükleme](online-backup-and-restore.md)hakkında daha fazla bilgi edinin.|
-|Silinmiş öğeleri geri yükleme verileri|Otomatik çevrimiçi yedeklemeler, yanlışlıkla olayından sonra yaklaşık 30 güne kadar sildiğinizi verileri kurtarmak için kullanılabilir. <br><br>[Azure Cosmos DB Ile otomatik çevrimiçi yedekleme ve geri yükleme](online-backup-and-restore.md) hakkında daha fazla bilgi edinin|
-|Hassas verileri yalıtmak ve korumak|Bölgelerdeki tüm veriler, yenilikler bölümünde listelendi. Artık Rest 'de şifrelenir.<br><br>Belirli kullanıcılara yalnızca okuma erişimi sınırlandırılabilir veya kişisel veri ve diğer gizli verileri belirli bir kapsayıcı ve okuma-yazma için ayrılmış olabilir.|
-|Saldırıları için İzleyici|[Denetim günlüğü ve etkinlik günlüklerini](logging.md)kullanarak, hesabınızı normal ve anormal etkinlikler için izleyebilirsiniz. Hangi işlemleri işlemi gerçekleştiğinde, işlem ve çok daha olarak bu tablodan sonraki ekran görüntüsünde gösterilen durum işlemi başlatan kaynaklarınız üzerinde gerçekleştirilen görüntüleyebilirsiniz.|
-|Saldırılara karşılık vermek|Olası bir saldırı raporlamak üzere Azure desteğine görüştüğünüz sonra bir 5 adımlı olayı yanıt süreci başlatılır. 5 adımlı işlem amacı, bir sorun algılandı ve araştırma başlatıldıktan sonra normal hizmet güvenliği ve işlemleri mümkün olan en kısa sürede geri yüklemektir.<br><br>[Bulutta Microsoft Azure Güvenlik yanıtı](https://aka.ms/securityresponsepaper)hakkında daha fazla bilgi edinin.|
-|Şirketin coğrafı|Azure Cosmos DB bağımsız bölgeler (örneğin, Almanya, Çin, ABD Devleti) için veri yönetimi sağlar.|
-|Korunan tesislerde|Azure Cosmos DB'de veriler, Azure'un korumalı veri merkezlerinde ssd'lerde depolanır.<br><br>[Microsoft Global veri merkezlerinde](https://www.microsoft.com/en-us/cloud-platform/global-datacenters) daha fazla bilgi edinin|
-|HTTPS/SSL/TLS şifrelemesi|Azure Cosmos DB tüm bağlantıları HTTPS 'yi destekler. Azure Cosmos DB ayrıca TLS 1,2 ' i destekler.<br>En düşük TLS sürümü sunucu tarafını zorlamak mümkündür. Bunu yapmak için lütfen [azurecosmosdbtls@service.microsoft.com](mailto:azurecosmosdbtls@service.microsoft.com)başvurun.|
-|Bekleme sırasında şifreleme|Azure Cosmos DB'ye depolanan tüm veriler bekleme durumundayken şifrelenir. [Rest 'te Azure Cosmos DB şifreleme](./database-encryption-at-rest.md) hakkında daha fazla bilgi edinin|
-|Düzeltme eki uygulama sunucuları|Yönetilen bir veritabanı Azure Cosmos DB, sizin için otomatik olarak yapılır yönetin ve sunucuları, düzeltme eki ihtiyacını ortadan kaldırır.|
-|Yönetim hesapları ile güçlü parolalar|Biz bile bu gereksinim bahsetmeniz gerekir, ancak bazı rakiplerimizin, bir yönetici hesabı parolası ile Azure Cosmos DB'de olması mümkün değildir geldiğimize inanmak.<br><br> Güvenliği SSL ve HMAC gizli tabanlı kimlik doğrulaması aracılığıyla varsayılan olarak yerleşik.|
-|Güvenlik ve veri koruma sertifikaları| Sertifikaların en güncel listesi için genel [Azure uyumluluk sitesinin](https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings) yanı sıra tüm sertifikalarla en son [Azure uyumluluk belgesine](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) (Cosmos arama) bakın. Daha fazla odaklanmış bir okuma için, 25 Nisan 2018 sonrası [Azure #CosmosDB: SOCS 1/2 tür 2, HITRUST, PCI DSS Level 1, ISO 27001, HIPAA, Fedratin ve diğer birçok kişi içeren güvenli, özel, uyumlu bir şekilde kullanıma alın.
+|Ağ güvenliği|IP güvenlik duvarı kullanmak, veritabanınızı güvenli hale getirmek için ilk koruma katmanıdır. Azure Cosmos DB, gelen güvenlik duvarı desteği için ilke odaklı IP tabanlı erişim denetimlerini destekler. IP tabanlı erişim denetimleri geleneksel veritabanı sistemleri tarafından kullanılan güvenlik duvarı kurallarına benzer, ancak Azure Cosmos veritabanı hesabına yalnızca onaylanmış bir makine kümesinden veya bulut hizmetleriyle erişilebilmeleri için genişletilir. [Azure Cosmos DB güvenlik duvarı destek](firewall-support.md) makalesinde daha fazla bilgi edinin.<br><br>Azure Cosmos DB, belirli bir IP adresini (168.61.48.0), ip aralığını (168.61.48.0/8) ve IP ve aralıkkombinasyonlarını etkinleştirmenizi sağlar. <br><br>Bu izin verilen listenin dışındaki makinelerden kaynaklanan tüm istekler Azure Cosmos DB tarafından engellenir. Onaylanan makinelerden ve bulut hizmetlerinden gelen istekler, kaynaklara erişim denetimi verilabilmesi için kimlik doğrulama işlemini tamamlamalıdır.<br><br> Ağ yalıtımı elde etmek ve Azure Cosmos DB kaynaklarınızı genel Internet'ten korumak için [sanal ağ hizmeti etiketlerini](../virtual-network/service-tags-overview.md) kullanabilirsiniz. Güvenlik kuralları oluştururken belirli IP adresleri yerine hizmet etiketlerini kullanın. Bir kuralın uygun kaynak veya hedef alanında hizmet etiketi adını (örneğin AzureCosmosDB) belirterek, ilgili hizmetin trafiğine izin verebilir veya reddedebilirsiniz.|
+|Yetkilendirme|Azure Cosmos DB, yetkilendirme için karma tabanlı ileti kimlik doğrulama kodu (HMAC) kullanır. <br><br>Her istek gizli hesap anahtarı kullanılarak karma hale edilir ve sonraki base-64 kodlanmış karma her çağrıyla birlikte Azure Cosmos DB'ye gönderilir. İsteği doğrulamak için Azure Cosmos DB hizmeti karma oluşturmak için doğru gizli anahtarı ve özellikleri kullanır, ardından değeri istekteki yle karşılaştırır. İki değer eşleşirse, işlem başarıyla yetkilendirilir ve istek işlenir, aksi takdirde bir yetkilendirme hatası olur ve istek reddedilir.<br><br>[Bir ana anahtar](secure-access-to-data.md#master-keys)veya belge gibi bir kaynağa ince taneli erişimsağlayan bir kaynak [belirteci](secure-access-to-data.md#resource-tokens) kullanabilirsiniz.<br><br>[Azure Cosmos DB kaynaklarına erişimi güvence altına alma](secure-access-to-data.md)hakkında daha fazla bilgi edinin.|
+|Kullanıcılar ve izinler|Hesabın ana anahtarını kullanarak, veritabanı başına kullanıcı kaynakları ve izin kaynakları oluşturabilirsiniz. Kaynak belirteci veritabanındaki bir izinle ilişkilidir ve kullanıcının veritabanındaki bir uygulama kaynağına erişimi olup olmadığını (okuma-yazma, salt okuma veya erişim yok) belirler. Uygulama kaynakları kapsayıcı, belgeler, ekler, depolanan yordamlar, tetikleyiciler ve UDF'leri içerir. Kaynak belirteci daha sonra kimlik doğrulama sırasında kaynağa erişimi sağlamak veya reddetmek için kullanılır.<br><br>[Azure Cosmos DB kaynaklarına erişimi güvence altına alma](secure-access-to-data.md)hakkında daha fazla bilgi edinin.|
+|Etkin dizin tümleştirmesi (RBAC)| Azure portalındaki Access denetimi (IAM) kullanarak Cosmos hesabına, veritabanına, kapsayıcıya ve tekliflere (iş tünemi) erişimi sağlayabilir veya kısıtlayabilirsiniz. IAM rol tabanlı erişim denetimi sağlar ve Active Directory ile tümleştirir. Bireyler ve gruplar için yerleşik rolleri veya özel rolleri kullanabilirsiniz. Daha fazla bilgi için [Active Directory tümleştirme](role-based-access-control.md) makalesine bakın.|
+|Genel çoğaltma|Azure Cosmos DB, tek bir düğmeyi tıklatarak verilerinizi Azure'un dünya çapındaki veri merkezlerinden herhangi birine çoğaltmanızı sağlayan anahtar teslim küresel dağıtım sunar. Genel çoğaltma, tüm dünyada küresel olarak ölçeklendirmenize ve verilerinize düşük gecikmeli erişim sağlamanıza olanak tanır.<br><br>Güvenlik bağlamında, genel çoğaltma bölgesel hatalara karşı veri koruması sağlar.<br><br>[Verileri küresel olarak dağıtma](distribute-data-globally.md) bölümünde daha fazlasını öğrenin.|
+|Bölgesel yük devretme|Verilerinizi birden fazla veri merkezinde çoğalttınızsa, bölgesel bir veri merkezi çevrimdışı olursa Azure Cosmos DB işlemlerinizi otomatik olarak devraşar. Verilerinizin çoğaltıldığı bölgeleri kullanarak öncelikle başarısız bölgelerin listesini oluşturabilirsiniz. <br><br>[Azure Cosmos DB'deki Bölgesel Arızalar hakkında](high-availability.md)daha fazla bilgi edinin.|
+|Yerel çoğaltma|Azure Cosmos DB, tek bir veri merkezi içinde bile yüksek kullanılabilirlik için verileri otomatik olarak çoğaltır ve size [tutarlılık düzeyleri](consistency-levels.md)seçeneği sunar. Bu çoğaltma, tüm tek bölge hesapları ve tüm çok bölgeli hesaplar için rahat tutarlılığa sahip %99,99 [kullanılabilirlik SLA'sını](https://azure.microsoft.com/support/legal/sla/cosmos-db) ve tüm çok bölgeli veritabanı hesaplarında %99,999 okuma kullanılabilirliğini garanti eder.|
+|Otomatik çevrimiçi yedeklemeler|Azure Cosmos veritabanları düzenli olarak yedeklenir ve coğrafi yedek deposunda depolanır. <br><br>[Azure Cosmos DB ile Otomatik çevrimiçi yedekleme ve geri yükleme](../synapse-analytics/sql-data-warehouse/backup-and-restore.md)hakkında daha fazla bilgi edinin.|
+|Silinen verileri geri yükleme|Otomatik çevrimiçi yedeklemeler, olaydan 30 gün sonrasına kadar yanlışlıkla silmiş olabileceğiniz verileri kurtarmak için kullanılabilir. <br><br>[Azure Cosmos DB ile Otomatik çevrimiçi yedekleme ve geri yükleme hakkında](../synapse-analytics/sql-data-warehouse/backup-and-restore.md) daha fazla bilgi edinin|
+|Hassas verileri koruma ve yalıtma|Yeniliklerde listelenen bölgelerdeki tüm veriler? şimdi istirahatte şifrelenir.<br><br>Kişisel veriler ve diğer gizli veriler belirli bir kapsayıcıya yalıtılabilir ve okuma-yazma veya salt okunur erişim belirli kullanıcılarla sınırlı olabilir.|
+|Saldırılar için monitör|Denetim [günlüğü ve etkinlik günlüklerini](logging.md)kullanarak, normal ve anormal etkinlik için hesabınızı izleyebilirsiniz. Kaynaklarınızda hangi işlemlerin gerçekleştirilmediğini, işlemi kimin başlattığını, işlemin ne zaman gerçekleştiğini, işlemin durumunu ve bu tabloyu izleyen ekran görüntüsünde gösterildiği gibi çok daha fazlasını görüntüleyebilirsiniz.|
+|Saldırılara yanıt verme|Olası bir saldırıyı bildirmek için Azure desteğiyle iletişime geçtikten sonra, 5 adımlık bir olay yanıt süreci başlatıldı. 5 adımlı işlemin amacı, bir sorun algılandıktan ve bir soruşturma başlatıldıktan sonra normal hizmet güvenliğini ve işlemlerini mümkün olan en kısa sürede geri yüklemektir.<br><br>[Bulutta Microsoft Azure Güvenlik Yanıtı](https://aka.ms/securityresponsepaper)hakkında daha fazla bilgi edinin.|
+|Geo-eskrim|Azure Cosmos DB, egemen bölgeler için veri yönetimi sağlar (örneğin, Almanya, Çin, ABD Gov).|
+|Korumalı tesisler|Azure Cosmos DB'deki veriler Azure'un korumalı veri merkezlerinde SSD'lerde depolanır.<br><br>[Microsoft küresel veri merkezlerinde](https://www.microsoft.com/en-us/cloud-platform/global-datacenters) daha fazla bilgi edinin|
+|HTTPS/SSL/TLS şifreleme|Azure Cosmos DB'ye tüm bağlantılar HTTPS'yi destekler. Azure Cosmos DB, TLS 1.2'yi de destekler.<br>En az TLS sürümü sunucu tarafı zorlamak mümkündür. Bunu yapmak için [azurecosmosdbtls@service.microsoft.com](mailto:azurecosmosdbtls@service.microsoft.com)lütfen .|
+|Bekleme sırasında şifreleme|Azure Cosmos DB'de depolanan tüm veriler istirahatte şifrelenir. [Azure Cosmos DB şifreleme](./database-encryption-at-rest.md) hakkında daha fazla bilgi edinin|
+|Yamalı sunucular|Azure Cosmos DB, yönetilen bir veritabanı olarak, sunucuları otomatik olarak sizin için yapılan sunucuları yönetme ve yama gereksinimini ortadan kaldırır.|
+|Güçlü parolalara sahip yönetim hesapları|Bu gereksinimden bahsetmemiz gerektiğine inanmak bile zor, ancak bazı rakiplerimizin aksine, Azure Cosmos DB'de şifresi olmayan bir idari hesaba sahip olmak imkansızdır.<br><br> SSL ve HMAC gizli tabanlı kimlik doğrulama sıyrık üzerinden güvenlik varsayılan olarak pişirilir.|
+|Güvenlik ve veri koruma sertifikaları| En güncel sertifikalar listesi için genel Azure [Uyumluluk sitesine](https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings) ve tüm sertifikalara sahip en son [Azure Uyumluluk Belgesi'ne](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) bakın (Cosmos'u arayın). Daha odaklı bir okuma için 25 Nisan 2018 gönderisine göz atın [Azure #CosmosDB: Güvenli, özel, SOCS 1/2 Type 2, HITRUST, PCI DSS Level 1, ISO 27001, HIPAA, FedRAMP High ve daha birçok larını içeren uyumlu.
 
-Aşağıdaki ekran görüntüsünde, hesabınızı izlemek için denetim günlüğü ve etkinlik günlüklerini nasıl kullanabileceğiniz gösterilmektedir: Azure Cosmos DB için etkinlik günlükleri ![](./media/database-security/nosql-database-security-application-logging.png)
+Aşağıdaki ekran görüntüsü, hesabınızı izlemek için denetim günlüğünü ve ![etkinlik günlüklerini nasıl kullanabileceğinizi gösterir: Azure Cosmos DB için etkinlik günlükleri](./media/database-security/nosql-database-security-application-logging.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Ana anahtarlar ve kaynak belirteçleri hakkında daha fazla bilgi için bkz. [Azure Cosmos DB verilerine erişimi güvenli hale getirme](secure-access-to-data.md).
+Ana anahtarlar ve kaynak belirteçleri hakkında daha fazla bilgi için [bkz.](secure-access-to-data.md)
 
-Denetim günlüğü hakkında daha fazla bilgi için bkz. [Azure Cosmos DB tanılama günlüğü](logging.md).
+Denetim günlüğü hakkında daha fazla bilgi için [Azure Cosmos DB tanı günlüğü'ne](logging.md)bakın.
 
-Microsoft sertifikaları hakkında daha fazla bilgi için bkz. [Azure Güven Merkezi](https://azure.microsoft.com/support/trust-center/).
+Microsoft sertifikaları hakkında daha fazla bilgi için [Azure Güven Merkezi'ne](https://azure.microsoft.com/support/trust-center/)bakın.

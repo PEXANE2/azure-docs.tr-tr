@@ -1,7 +1,7 @@
 ---
-title: Azure AD Connect AD FS Yönetimi ve özelleştirmesi | Microsoft Docs
-description: Azure AD Connect ve PowerShell ile Kullanıcı AD FS oturum açma deneyimini Azure AD Connect ve özelleştirmesiyle AD FS Yönetimi.
-keywords: AD FS, ADFS, AD FS Yönetimi, AAD Connect, Bağlan, oturum açma, AD FS özelleştirme, onarım güveni, O365, Federasyon, bağlı olan taraf
+title: Azure AD Connect - AD FS yönetimi ve özelleştirme | Microsoft Dokümanlar
+description: Azure AD Connect ile AD FS yönetimi ve Azure AD Connect ve PowerShell ile kullanıcı AD FS oturum açma deneyiminin özelleştirilmesi.
+keywords: AD FS, ADFS, AD FS yönetimi, AAD Connect, Connect, oturum açma, AD FS özelleştirme, onarım güven, O365, federasyon, güvenen taraf
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -18,85 +18,85 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7249f2077666530964afa16ef47d69731cee846a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: fcbeedddc65a916f869a778616779917a9571181
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79261599"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80331973"
 ---
-# <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>Active Directory Federasyon Hizmetleri (AD FS) Azure AD Connect kullanarak yönetin ve özelleştirin
-Bu makalede Azure Active Directory (Azure AD) Connect kullanılarak Active Directory Federasyon Hizmetleri (AD FS) (AD FS) yönetimi ve özelleştirmeyi açıklanmaktadır. Ayrıca, bir AD FS grubunun tüm yapılandırması için yapmanız gerekebilecek diğer ortak AD FS görevlerini de içerir.
+# <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>Azure AD Connect'i kullanarak Active Directory Federation Hizmetlerini yönetme ve özelleştirme
+Bu makalede, Azure Etkin Dizin (Azure AD) Bağlantısı kullanarak Active Directory Federation Services'ı (AD FS) nasıl yönetilip özelleştirileştirileştirilen açıklanmıştır. Ayrıca, bir AD FS çiftliğinin tam yapılandırması için yapmanız gereken diğer yaygın AD FS görevlerini de içerir.
 
-| Konu başlığı | Ne içerir? |
+| Konu başlığı | Neleri kapsıyor |
 |:--- |:--- |
-| **AD FS Yönet** | |
-| [Güveni onarma](#repairthetrust) |Office 365 ile Federasyon güvenini onarma. |
-| [Alternatif oturum açma KIMLIĞINI kullanarak Azure AD ile federasyon oluşturma](#alternateid) | Alternatif oturum açma KIMLIĞI kullanarak Federasyonu yapılandırma  |
-| [AD FS sunucusu ekleme](#addadfsserver) |AD FS grubunu ek bir AD FS sunucusu ile genişletme. |
-| [AD FS Web uygulaması ara sunucusu ekleme](#addwapserver) |Bir AD FS grubunu ek Web uygulaması ara sunucusu (WAP) sunucusu ile genişletme. |
-| [Federasyon etki alanı ekleme](#addfeddomain) |Federasyon etki alanı ekleme. |
-| [SSL sertifikasını güncelleştirme](how-to-connect-fed-ssl-update.md)| AD FS grubu için SSL sertifikasını güncelleştirme. |
-| **AD FS özelleştirme** | |
-| [Özel bir şirket logosu veya çizimi ekleme](#customlogo) |Şirket logosu ve çizimi ile AD FS oturum açma sayfasını özelleştirme. |
-| [Oturum açma açıklaması ekle](#addsignindescription) |Oturum açma sayfası açıklaması ekleme. |
-| [AD FS talep kurallarını değiştirme](#modclaims) |Çeşitli Federasyon senaryolarında AD FS taleplerini değiştirme. |
+| **AD FS'yi yönetme** | |
+| [Güveni onarın](#repairthetrust) |Office 365 ile federasyon güveninin onarılması. |
+| [Alternatif giriş kimliği kullanarak Azure AD ile fetorat](#alternateid) | Alternatif oturum açma kimliğini kullanarak federasyonu yapılandırma  |
+| [AD FS sunucusu ekleme](#addadfsserver) |Ek bir AD FS sunucusu ile bir AD FS çiftliği nasıl genişletilir. |
+| [AD FS Web Application Proxy sunucusu ekleme](#addwapserver) |Nasıl ek bir Web Application Proxy (WAP) sunucusu ile bir AD FS çiftlik genişletmek için. |
+| [Federe etki alanı ekleme](#addfeddomain) |Federe etki alanı nasıl eklenir. |
+| [TLS/SSL sertifikasını güncelleştirin](how-to-connect-fed-ssl-update.md)| BIR AD FS çiftliği için TLS/SSL sertifikası nasıl güncellenir? |
+| **AD FS'yi özelleştir** | |
+| [Özel bir şirket logosu veya çizimi ekleme](#customlogo) |Şirket logosu ve çizimi olan bir AD FS oturum açma sayfası nasıl özelleştirilir? |
+| [Oturum açma açıklaması ekleme](#addsignindescription) |Oturum açma sayfası açıklaması nasıl eklenir. |
+| [AD FS talep kurallarını değiştirme](#modclaims) |Çeşitli federasyon senaryoları için AD FS taleplerini değiştirme. |
 
-## <a name="manage-ad-fs"></a>AD FS Yönet
-Azure AD Connect Sihirbazı 'nı kullanarak en az kullanıcı müdahalesi ile Azure AD Connect çeşitli AD FS ilgili görevleri gerçekleştirebilirsiniz. Sihirbazı çalıştırarak Azure AD Connect yüklemeyi tamamladıktan sonra ek görevleri gerçekleştirmek için Sihirbazı yeniden çalıştırabilirsiniz.
+## <a name="manage-ad-fs"></a>AD FS'yi yönetme
+Azure AD Connect sihirbazını kullanarak en az kullanıcı müdahalesiyle Azure AD Connect'te AD FS ile ilgili çeşitli görevleri gerçekleştirebilirsiniz. Sihirbazı çalıştırarak Azure AD Connect'i yüklemeyi tamamladıktan sonra, ek görevler gerçekleştirmek için sihirbazı yeniden çalıştırabilirsiniz.
 
-## <a name="repairthetrust"></a>Güveni onarma 
-Azure AD Connect kullanarak, AD FS ve Azure AD güveninin geçerli durumunu denetleyebilir ve güveni onarmak için gerekli işlemleri gerçekleştirebilirsiniz. Azure AD 'nizi ve AD FS güvenini onarmak için aşağıdaki adımları izleyin.
+## <a name="repair-the-trust"></a><a name="repairthetrust"></a>Güveni onarın 
+AD FS ve Azure AD güveninin geçerli durumunu denetlemek ve güveni onarmak için uygun eylemleri yapmak için Azure AD Connect'i kullanabilirsiniz. Azure AD ve AD FS güveninizi onarmak için aşağıdaki adımları izleyin.
 
-1. Ek görevler listesinden **AAD ve ADFS güvenini Onar ' ı** seçin.
-   AAD ve ADFS güvenini Onar ![](./media/how-to-connect-fed-management/RepairADTrust1.PNG)
+1. Ek görevler listesinden **Onarım AAD ve ADFS Güven'i** seçin.
+   ![Onarım AAD ve ADFS Güven](./media/how-to-connect-fed-management/RepairADTrust1.PNG)
 
-2. **Azure AD 'ye Bağlan** sayfasında, Azure AD için genel yönetici kimlik bilgilerinizi girin ve **İleri**' ye tıklayın.
+2. Azure **AD'ye Bağlan** sayfasında, Azure AD için genel yönetici kimlik bilgilerinizi sağlayın ve **İleri'yi**tıklatın.
    ![Azure AD'ye Bağlanma](./media/how-to-connect-fed-management/RepairADTrust2.PNG)
 
-3. **Uzaktan erişim kimlik bilgileri** sayfasında, etki alanı yöneticisinin kimlik bilgilerini girin.
+3. Uzaktan **erişim kimlik bilgileri** sayfasına etki alanı yöneticisinin kimlik bilgilerini girin.
 
    ![Uzaktan erişim kimlik bilgileri](./media/how-to-connect-fed-management/RepairADTrust3.PNG)
 
-    **İleri**' ye tıkladıktan sonra, Azure AD Connect sertifika durumunu denetler ve tüm sorunları gösterir.
+    **İleri'yi**tıklattıktan sonra Azure AD Connect sertifika durumunu denetler ve herhangi bir sorunu gösterir.
 
     ![Sertifikaların durumu](./media/how-to-connect-fed-management/RepairADTrust4.PNG)
 
-    **Yapılandırmaya hazırlanma** sayfası, güveni onarmak için gerçekleştirilecek eylemlerin listesini gösterir.
+    **Yapılandırmaya Hazır** sayfası, güveni onarmak için gerçekleştirilecek eylemlerin listesini gösterir.
 
     ![Yapılandırma için hazır](./media/how-to-connect-fed-management/RepairADTrust5.PNG)
 
-4. Güveni onarmak için, **yükler** ' e tıklayın.
+4. Güveni onarmak için **Yükle'yi** tıklatın.
 
 > [!NOTE]
-> Azure AD Connect yalnızca kendinden imzalı sertifikaları onarabilir veya üzerinde işlem yapabilir. Azure AD Connect üçüncü taraf sertifikaları onaramaz.
+> Azure AD Connect yalnızca kendi imzası olan sertifikaları onarabilir veya bunlara göre hareket edebilir. Azure AD Connect üçüncü taraf sertifikalarını onaramıyor.
 
-## <a name="alternateid"></a>AlternateId kullanarak Azure AD ile federasyona ekleme 
-Şirket içi Kullanıcı asıl adı (UPN) ve bulut Kullanıcı asıl adının aynı tutulması önerilir. Şirket içi UPN, yönlendirilemeyen bir etki alanı (örn.) kullanıyorsa. Contoso. Local) veya yerel uygulama bağımlılıkları nedeniyle değiştirilemez, alternatif oturum açma KIMLIĞI ayarlamayı öneririz. Alternatif oturum açma KIMLIĞI, kullanıcıların, e-posta gibi UPN dışında bir öznitelikle oturum açbilecekleri bir oturum açma deneyimi yapılandırmanıza olanak tanır. Azure AD Connect Kullanıcı asıl adı seçimi Active Directory ' deki userPrincipalName özniteliğine varsayılan olarak sahiptir. Kullanıcı asıl adı için başka bir öznitelik seçer ve AD FS kullanarak Federasyonun, Azure AD Connect alternatif oturum KIMLIĞI için AD FS yapılandırır. Kullanıcı asıl adı için farklı bir öznitelik seçme örneği aşağıda gösterilmiştir:
+## <a name="federate-with-azure-ad-using-alternateid"></a><a name="alternateid"></a>AlternateID kullanarak Azure AD ile feodeto 
+Şirket içi Kullanıcı Adı(UPN) ve bulut Kullanıcı Soyadı'nın aynı tutulması önerilir. Şirket içi UPN,routable olmayan bir etki alanı kullanıyorsa (ör. Contoso.local) veya yerel uygulama bağımlılıkları nedeniyle değiştirilemez, alternatif giriş kimliği ayarlamanızı öneririz. Alternatif giriş kimliği, kullanıcıların posta gibi UPN'leri dışındaki bir öznitelikle oturum açabilecekleri bir oturum açma deneyimi yapılandırmanıza olanak tanır. Azure AD Connect'te Kullanıcı Ana Adı seçeneği, Active Directory'deki kullanıcıPrincipalName özniteliğine varsayılan olarak gelir. Kullanıcı Ana Adı için başka bir öznitelik seçerseniz ve AD FS kullanarak federating iseniz, sonra Azure AD Connect alternatif giriş kimliği için AD FS yapılandıracaktır. Kullanıcı Anaadı adı için farklı bir öznitelik seçme örneği aşağıda gösterilmiştir:
 
-![Alternatif KIMLIK öznitelik seçimi](./media/how-to-connect-fed-management/attributeselection.png)
+![Alternatif kimlik özniteliği seçimi](./media/how-to-connect-fed-management/attributeselection.png)
 
-AD FS için alternatif oturum açma KIMLIĞINI yapılandırmak iki ana adımdan oluşur:
-1. **Doğru verme talepleri kümesini yapılandırın**: Azure AD bağlı olan taraf güveninde verme talep kuralları, seçilen userPrincipalName özniteliğini kullanıcının alternatif kimliği olarak kullanacak şekilde değiştirilir.
-2. **AD FS yapılandırmasında alternatif oturum açma kimliğini etkinleştir**: AD FS yapılandırma güncelleştirilerek AD FS, alternatif kimliği kullanarak ilgili ormanlardaki kullanıcıları arayabilir. Bu yapılandırma Windows Server 2012 R2 'deki AD FS (KB2919355 ile) veya sonraki sürümlerde desteklenir. AD FS sunucuları 2012 R2 ise, gerekli KB 'nin varlığını denetler Azure AD Connect. KB algılanmazsa, yapılandırma tamamlandıktan sonra aşağıda gösterildiği gibi bir uyarı görüntülenir:
+AD FS için alternatif giriş kimliğini yapılandırmak iki ana adımdan oluşur:
+1. **Doğru verme talebi kümesini yapılandırın:** Azure AD relying taraf güvenindeki verme talep kuralları, seçilen UserPrincipalName özniteliğini kullanıcının alternatif kimliği olarak kullanacak şekilde değiştirilir.
+2. **AD FS yapılandırmasında alternatif giriş kimliğini etkinleştirin**: AD FS yapılandırması, AD FS'nin alternatif kimliği kullanarak uygun ormanlarda kullanıcıları alabilmeleri için güncelleştirilir. Bu yapılandırma, Windows Server 2012 R2'de (KB2919355 ile) veya sonraki ad FS için desteklenir. AD FS sunucuları 2012 R2 ise, Azure AD Connect gerekli KB'nin varlığını denetler. KB algılanmazsa, aşağıda gösterildiği gibi yapılandırma tamamlandıktan sonra bir uyarı görüntülenir:
 
-    ![2012R2 ' de eksik KB uyarısı](./media/how-to-connect-fed-management/kbwarning.png)
+    ![2012R2'de eksik KB uyarısı](./media/how-to-connect-fed-management/kbwarning.png)
 
-    Eksik KB durumunda yapılandırmayı yeniden düzeltmek için gerekli [KB2919355](https://go.microsoft.com/fwlink/?LinkID=396590) ' yi yükleyip, ardından [AAD 'Yi onar ve güveni AD FS güven](#repairthetrust)' i kullanarak güveni onarın.
-
-> [!NOTE]
-> AlternateId ve el ile yapılandırma adımları hakkında daha fazla bilgi için [Alternatif oturum açma kimliğini yapılandırma](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/operations/configuring-alternate-login-id) makalesini okuyun
-
-## <a name="addadfsserver"></a>AD FS sunucusu ekleme 
+    KB eksik durumunda yapılandırma düzeltmek için, gerekli [KB2919355](https://go.microsoft.com/fwlink/?LinkID=396590) yükleyin ve sonra [Onarım AAD ve AD FS Trust](#repairthetrust)kullanarak güven onarmak.
 
 > [!NOTE]
-> AD FS bir sunucu eklemek için PFX sertifikası Azure AD Connect gerekir. Bu nedenle, bu işlemi yalnızca Azure AD Connect kullanarak AD FS grubunu yapılandırdıysanız gerçekleştirebilirsiniz.
+> AlternatID ve el ile yapılandırma adımları hakkında daha fazla bilgi [için, Alternatif Giriş Kimliğini Yapılandırma'yı](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/operations/configuring-alternate-login-id) okuyun
 
-1. **Ek bir federasyon sunucusu dağıt**' ı seçin ve **İleri**' ye tıklayın.
+## <a name="add-an-ad-fs-server"></a><a name="addadfsserver"></a>AD FS sunucusu ekleme 
+
+> [!NOTE]
+> Bir AD FS sunucusu eklemek için Azure AD Connect PFX sertifikasıgerektirir. Bu nedenle, bu işlemi yalnızca Azure AD Connect'i kullanarak AD FS çalışmasını yapılandırırsanız gerçekleştirebilirsiniz.
+
+1. **Ek bir Federasyon Sunucusu Dağıt'ı**seçin ve **İleri'yi**tıklatın.
 
    ![Ek federasyon sunucusu](./media/how-to-connect-fed-management/AddNewADFSServer1.PNG)
 
-2. **Azure AD 'ye Bağlan** sayfasında, Azure AD için genel yönetici kimlik bilgilerinizi girin ve **İleri**' ye tıklayın.
+2. Azure **AD'ye Bağlan** sayfasında, Azure AD için genel yönetici kimlik bilgilerinizi girin ve **İleri'yi**tıklatın.
 
    ![Azure AD'ye Bağlanma](./media/how-to-connect-fed-management/AddNewADFSServer2.PNG)
 
@@ -104,151 +104,151 @@ AD FS için alternatif oturum açma KIMLIĞINI yapılandırmak iki ana adımdan 
 
    ![Etki alanı yöneticisi kimlik bilgileri](./media/how-to-connect-fed-management/AddNewADFSServer3.PNG)
 
-4. Azure AD Connect, yeni AD FS grubunuzu Azure AD Connect yapılandırırken verdiğiniz PFX dosyasının parolasını ister. PFX dosyasının parolasını sağlamak için **parolayı girin** ' e tıklayın.
+4. Azure AD Connect, yeni AD FS çiftliğinizi Azure AD Connect ile yapılandırırken sağladığınız PFX dosyasının parolasını ister. PFX dosyasının parolasını sağlamak için Parola Yı **Gir'i** tıklatın.
 
    ![Sertifika parolası](./media/how-to-connect-fed-management/AddNewADFSServer4.PNG)
 
-    ![SSL sertifikası belirt](./media/how-to-connect-fed-management/AddNewADFSServer5.PNG)
+    ![TLS/SSL sertifikasını belirtin](./media/how-to-connect-fed-management/AddNewADFSServer5.PNG)
 
-5. **AD FS sunucuları** sayfasında, AD FS grubuna eklenecek sunucu adını veya IP adresini girin.
+5. AD **FS Sunucuları** sayfasında, AD FS ekine eklenecek sunucu adını veya IP adresini girin.
 
    ![AD FS sunucuları](./media/how-to-connect-fed-management/AddNewADFSServer6.PNG)
 
-6. **İleri**' ye tıklayın ve son **yapılandırma** sayfasını ziyaret edin. Azure AD Connect sunucuları AD FS grubuna eklemeyi tamamladıktan sonra, bağlantıyı doğrulama seçeneği verilir.
+6. **İleri'yi**tıklatın ve son Yapılandırılan sayfayı gözden **geçirin.** Azure AD Connect sunucuları AD FS ekine eklemeyi bitirdikten sonra, bağlantının doğrulanması seçeneği sunulur.
 
    ![Yapılandırma için hazır](./media/how-to-connect-fed-management/AddNewADFSServer7.PNG)
 
-    ![Yükleme Tamam](./media/how-to-connect-fed-management/AddNewADFSServer8.PNG)
+    ![Kurulum tamamlandı](./media/how-to-connect-fed-management/AddNewADFSServer8.PNG)
 
-## <a name="addwapserver"></a>AD FS WAP sunucusu ekleme 
+## <a name="add-an-ad-fs-wap-server"></a><a name="addwapserver"></a>AD FS WAP sunucusu ekleme 
 
 > [!NOTE]
-> WAP sunucusu eklemek için, Azure AD Connect PFX sertifikasını gerektirir. Bu nedenle, AD FS grubunu yalnızca Azure AD Connect kullanarak yapılandırdıysanız bu işlemi gerçekleştirebilirsiniz.
+> Bir WAP sunucusu eklemek için Azure AD Connect PFX sertifikasıgerektirir. Bu nedenle, bu işlemi yalnızca Azure AD Connect'i kullanarak AD FS çalışmasını yapılandırırsanız gerçekleştirebilirsiniz.
 
-1. Kullanılabilir görevler listesinden **Web uygulaması proxy 'Si dağıt** ' ı seçin.
+1. Kullanılabilir görevler listesinden **Web Uygulama Proxy'sini dağıt'ı** seçin.
 
-   ![Web uygulaması ara sunucusu dağıtma](./media/how-to-connect-fed-management/WapServer1.PNG)
+   ![Web Uygulama Proxy'yi Dağıt](./media/how-to-connect-fed-management/WapServer1.PNG)
 
-2. Azure genel yönetici kimlik bilgilerini sağlayın.
+2. Azure global yönetici kimlik bilgilerini sağlayın.
 
    ![Azure AD'ye Bağlanma](./media/how-to-connect-fed-management/wapserver2.PNG)
 
-3. **SSL sertifikası belirtin** sayfasında, Azure AD Connect AD FS grubunu YAPıLANDıRDıĞıNıZDA sağladığınız PFX dosyasının parolasını girin.
-   Sertifika parolasını ![](./media/how-to-connect-fed-management/WapServer3.PNG)
+3. **SSL sertifika** sını belirt sayfasında, AD FS çiftliğini Azure AD Connect ile yapılandırırken sağladığınız PFX dosyasının parolasını sağlayın.
+   ![Sertifika parolası](./media/how-to-connect-fed-management/WapServer3.PNG)
 
-    ![SSL sertifikası belirt](./media/how-to-connect-fed-management/WapServer4.PNG)
+    ![TLS/SSL sertifikasını belirtin](./media/how-to-connect-fed-management/WapServer4.PNG)
 
-4. WAP sunucusu olarak eklenecek sunucuyu ekleyin. WAP sunucusu etki alanına katılamadığından, sihirbaz eklenmekte olan sunucuya yönetici kimlik bilgilerini ister.
+4. WAP sunucusu olarak eklenecek sunucuyu ekleyin. WAP sunucusu etki alanına katılmayabileceğinden, sihirbaz eklenen sunucuya yönetim kimlik bilgilerini ister.
 
-   ![Yönetim sunucusu kimlik bilgileri](./media/how-to-connect-fed-management/WapServer5.PNG)
+   ![Yönetim sunucu kimlik bilgileri](./media/how-to-connect-fed-management/WapServer5.PNG)
 
-5. **Proxy güveni kimlik bilgileri** sayfasında, proxy güvenini yapılandırmak ve AD FS grubundaki birincil sunucuya erişmek için yönetici kimlik bilgilerini sağlayın.
+5. Proxy **güven kimlik bilgileri** sayfasında, proxy güvenini yapılandırmak ve AD FS çiftliğindeki birincil sunucuya erişmek için yönetim kimlik bilgileri sağlayın.
 
-   ![Proxy güveni kimlik bilgileri](./media/how-to-connect-fed-management/WapServer6.PNG)
+   ![Proxy güven kimlik bilgileri](./media/how-to-connect-fed-management/WapServer6.PNG)
 
-6. **Yapılandırmaya hazırlanma** sayfasında, sihirbaz gerçekleştirilecek eylemlerin listesini gösterir.
+6. **Yapılandırmaya Hazır** sayfasında sihirbaz, gerçekleştirilecek eylemlerin listesini gösterir.
 
    ![Yapılandırma için hazır](./media/how-to-connect-fed-management/WapServer7.PNG)
 
-7. Yapılandırmayı sona erdirmesi için, **Kur** ' a tıklayın. Yapılandırma tamamlandıktan sonra sihirbaz, sunucularla olan bağlantıyı doğrulama seçeneği sunar. Bağlantıyı denetlemek için **Doğrula** ' ya tıklayın.
+7. Yapılandırmayı tamamlamak için **Yükle'yi** tıklatın. Yapılandırma tamamlandıktan sonra sihirbaz, sunuculara bağlantıyı doğrulama seçeneği sunar. Bağlantıyı denetlemek için **Doğrula'yı** tıklatın.
 
-   ![Yükleme Tamam](./media/how-to-connect-fed-management/WapServer8.PNG)
+   ![Kurulum tamamlandı](./media/how-to-connect-fed-management/WapServer8.PNG)
 
-## <a name="addfeddomain"></a>Federasyon etki alanı ekleme 
+## <a name="add-a-federated-domain"></a><a name="addfeddomain"></a>Federe etki alanı ekleme 
 
-Azure AD Connect kullanarak Azure AD ile Federasyon oluşturulacak bir etki alanı kolayca eklenebilir. Azure AD Connect, Federasyon için etki alanı ekler ve Azure AD ile federe birden fazla etki alanınız olduğunda sertifikayı vereni doğru şekilde yansıtmak için talep kurallarını değiştirir.
+Azure AD Connect'i kullanarak Azure AD ile birlikte federe olacak bir etki alanı eklemek kolaydır. Azure AD Connect, federasyon için etki alanını ekler ve Azure AD ile beslenen birden çok etki alanınız olduğunda vereni doğru yansıtacak şekilde talep kurallarını değiştirir.
 
-1. Bir Federasyon etki alanı eklemek için, **ek bir Azure AD etki alanı Ekle**görevini seçin.
+1. Federe etki alanı eklemek için, **ek bir Azure AD etki alanı ekleme**görevini seçin.
 
    ![Ek Azure AD etki alanı](./media/how-to-connect-fed-management/AdditionalDomain1.PNG)
 
-2. Sihirbazın sonraki sayfasında, Azure AD için genel yönetici kimlik bilgilerini sağlayın.
+2. Sihirbazın bir sonraki sayfasında, Azure AD için genel yönetici kimlik bilgilerini sağlayın.
 
    ![Azure AD'ye Bağlanma](./media/how-to-connect-fed-management/AdditionalDomain2.PNG)
 
-3. **Uzaktan erişim kimlik bilgileri** sayfasında, etki alanı yöneticisi kimlik bilgilerini sağlayın.
+3. Uzaktan **erişim kimlik bilgileri** sayfasında, etki alanı yöneticisi kimlik bilgilerini sağlayın.
 
    ![Uzaktan erişim kimlik bilgileri](./media/how-to-connect-fed-management/additionaldomain3.PNG)
 
-4. Bir sonraki sayfada, sihirbaz şirket içi dizininizi federasyona barındırabileceğiniz Azure AD etki alanlarının bir listesini sağlar. Listeden etki alanını seçin.
+4. Bir sonraki sayfada sihirbaz, şirket içi dizininizi fecofize edebileceğiniz Azure AD etki alanlarının bir listesini sağlar. Listeden etki alanını seçin.
 
    ![Azure AD etki alanı](./media/how-to-connect-fed-management/AdditionalDomain4.PNG)
 
-    Etki alanını seçtikten sonra sihirbaz, sihirbazın gerçekleştirebileceği diğer eylemler ve yapılandırmanın etkisi hakkında uygun bilgileri sağlar. Bazı durumlarda, Azure AD 'de henüz doğrulanmamış bir etki alanını seçerseniz, sihirbaz, etki alanını doğrulamanıza yardımcı olacak bilgiler sağlar. Daha fazla bilgi için bkz. [Azure Active Directory için özel etki alanı adınızı ekleme](../active-directory-domains-add-azure-portal.md) .
+    Etki alanını seçtikten sonra sihirbaz, sihirbazın gerçekleştireceği diğer eylemler ve yapılandırmanın etkisi hakkında size uygun bilgiler sağlar. Bazı durumlarda, Azure AD'de henüz doğrulanmamış bir etki alanı seçerseniz, sihirbaz etki alanını doğrulamanıza yardımcı olacak bilgiler sağlar. Bkz. Daha fazla ayrıntı için [azure etkin dizinine özel alan adınızı ekleyin.](../active-directory-domains-add-azure-portal.md)
 
-5. **İleri**’ye tıklayın. **Yapılandırmaya hazırlanma** sayfası Azure AD Connect gerçekleştireceği eylemlerin listesini gösterir. Yapılandırmayı sona erdirmesi için, **Kur** ' a tıklayın.
+5. **İleri**'ye tıklayın. **Yapılandırmaya Hazır** sayfası, Azure AD Connect'in gerçekleştireceği eylemlerin listesini gösterir. Yapılandırmayı tamamlamak için **Yükle'yi** tıklatın.
 
    ![Yapılandırma için hazır](./media/how-to-connect-fed-management/AdditionalDomain5.PNG)
 
 > [!NOTE]
-> Eklenen Federasyon etki alanındaki kullanıcıların Azure AD 'ye oturum açabilmek için önce eşitlenmesi gerekir.
+> Eklenen federe etki alanından kullanıcılar, Azure AD'ye giriş yapabilmeden önce eşitlenmelidir.
 
 ## <a name="ad-fs-customization"></a>AD FS özelleştirme
-Aşağıdaki bölümler, AD FS oturum açma sayfanızı özelleştirirken gerçekleştirmeniz gerekebilecek bazı yaygın görevlerden ilgili ayrıntıları sağlar.
+Aşağıdaki bölümlerde, AD FS oturum açma sayfanızı özelleştirirken gerçekleştirmek zorunda kaldığınız ortak görevlerhakkında ayrıntılı bilgi verilmiştir.
 
-## <a name="customlogo"></a>Özel bir şirket logosu veya çizimi ekleme 
-**Oturum açma** sayfasında görüntülenen şirketin logosunu değiştirmek Için aşağıdaki Windows PowerShell cmdlet 'ini ve sözdizimini kullanın.
+## <a name="add-a-custom-company-logo-or-illustration"></a><a name="customlogo"></a>Özel bir şirket logosu veya çizimi ekleme 
+**Oturum açma** sayfasında görüntülenen şirketin logosunu değiştirmek için aşağıdaki Windows PowerShell cmdlet ve sözdizimini kullanın.
 
 > [!NOTE]
-> Logo için önerilen boyutlar 260 x 35 \@ 96 dpi 'dir ve dosya boyutu 10 KB 'tan fazla değildir.
+> Logo için önerilen boyutlar 260 \@ x 35 96 dpi ve dosya boyutu 10 KB'den büyük değildir.
 
     Set-AdfsWebTheme -TargetName default -Logo @{path="c:\Contoso\logo.PNG"}
 
 > [!NOTE]
-> *TargetName* parametresi zorunludur. AD FS ile yayınlanan varsayılan tema varsayılan olarak adlandırılır.
+> *TargetName* parametresi gereklidir. AD FS ile yayımlanan varsayılan tema Varsayılan olarak adlandırılır.
 
-## <a name="addsignindescription"></a>Oturum açma açıklaması ekle 
-**Oturum açma sayfasına**bir oturum açma sayfası açıklaması eklemek Için aşağıdaki Windows PowerShell cmdlet 'ini ve sözdizimini kullanın.
+## <a name="add-a-sign-in-description"></a><a name="addsignindescription"></a>Oturum açma açıklaması ekleme 
+**Oturum açma sayfasına**oturum açma sayfası açıklaması eklemek için aşağıdaki Windows PowerShell cmdlet ve sözdizimini kullanın.
 
     Set-AdfsGlobalWebContent -SignInPageDescriptionText "<p>Sign-in to Contoso requires device registration. Click <A href='http://fs1.contoso.com/deviceregistration/'>here</A> for more information.</p>"
 
-## <a name="modclaims"></a>AD FS talep kurallarını değiştirme 
-AD FS, özel talep kuralları oluşturmak için kullanabileceğiniz bir zengin talep dilini destekler. Daha fazla bilgi için bkz. [talep kuralı dili rolü](https://technet.microsoft.com/library/dd807118.aspx).
+## <a name="modify-ad-fs-claim-rules"></a><a name="modclaims"></a>AD FS talep kurallarını değiştirme 
+AD FS, özel talep kuralları oluşturmak için kullanabileceğiniz zengin bir talep dilini destekler. Daha fazla bilgi [için, Talep Kuralı Dilinin Rolü bölümüne](https://technet.microsoft.com/library/dd807118.aspx)bakın.
 
-Aşağıdaki bölümlerde, Azure AD ve AD FS Federasyonu ile ilgili bazı senaryolar için nasıl özel kurallar yazacağınız açıklanır.
+Aşağıdaki bölümlerde, Azure AD ve AD FS federasyonuyla ilgili bazı senaryolar için özel kurallar nasıl yazabileceğiniz açıklanmaktadır.
 
-### <a name="immutable-id-conditional-on-a-value-being-present-in-the-attribute"></a>Öznitelikte bulunan bir değer üzerinde sabit KIMLIK koşulu
-Azure AD Connect, nesneler Azure AD ile eşitlendiğinde kaynak bağlantısı olarak kullanılacak bir öznitelik belirtmenize olanak tanır. Özel öznitelikteki değer boş değilse, sabit bir KIMLIK talebi vermek isteyebilirsiniz.
+### <a name="immutable-id-conditional-on-a-value-being-present-in-the-attribute"></a>Öznitelikte mevcut olan bir değere koşullu değişmez kimlik
+Azure AD Connect, nesneler Azure AD ile eşitlendiğinde kaynak bağlantı noktası olarak kullanılacak bir öznitelik belirtmenize olanak tanır. Özel öznitelikteki değer boş değilse, değişmez bir kimlik talebi vermek isteyebilirsiniz.
 
-Örneğin, kaynak bağlayıcının özniteliği olarak **MS-DS-** IBU GUID ' i seçebilir ve özniteliğin bir değere sahip olması durumunda **ImmutableID** as **MS-DS-** ımıse GUID olarak ayarlayabilirsiniz. Özniteliğe karşı bir değer yoksa, sabit KIMLIK olarak **Objectguıd** ' ı yayınlayın. Aşağıdaki bölümde açıklandığı gibi özel talep kuralları kümesi oluşturabilirsiniz.
+Örneğin, kaynak çapa için öznitelik olarak **ms-ds-tutarlılığı** seçebilir ve özniteliğinin buna karşı bir değeri olması durumunda **immutableID'yi** **ms-ds-tutarlılığı** olarak verebilir. Öznitelik karşısında bir değer yoksa, değişmez kimlik olarak **objectGuid'i** sorun. Aşağıdaki bölümde açıklandığı gibi özel talep kuralları kümesini oluşturabilirsiniz.
 
-**Kural 1: sorgu öznitelikleri**
+**Kural 1: Sorgu öznitelikleri**
 
     c:[Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/windowsaccountname"]
     => add(store = "Active Directory", types = ("http://contoso.com/ws/2016/02/identity/claims/objectguid", "http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid"), query = "; objectGuid,ms-ds-consistencyguid;{0}", param = c.Value);
 
-Bu kuralda, kullanıcının Active Directory için **MS-DS-ımlıguıd** ve **Objectguıd** değerlerini sorgulıyoruz. Mağaza adını AD FS dağıtımınızda uygun bir mağaza adıyla değiştirin. Ayrıca, **Objectguıd** ve **MS-DS-ımıbu GUID**için tanımlanan şekilde, talep türünü Federasyonun uygun bir talep türüyle değiştirin.
+Bu kuralda, Active Directory'den kullanıcı için **ms-ds tutarlılığı** ve **objectGuid** değerlerini sorguluyorsunuz. AD FS dağıtımınızda mağaza adını uygun bir mağaza adı ile değiştirin. Ayrıca, **objectGuid** ve **ms-ds-consistencyguid**için tanımlandığı gibi, taleplerini federasyonunuz için uygun bir talep türüyle değiştirin.
 
-Ayrıca, **Ekle** ve **Hayır ' ı**kullanarak varlık için giden bir sorun eklemekten kaçının ve değerleri ara değer olarak kullanabilir. Sabit KIMLIK olarak kullanılacak değeri belirledikten sonra talebi sonraki bir kuralda verirsiniz.
+Ayrıca, **ekle** ve **sorunu**kullanarak, varlık için giden bir sorun eklemekten kaçınırsınız ve değerleri ara değerler olarak kullanabilirsiniz. Değişmez kimlik olarak hangi değeri kullanacağınızı belirledikten sonra talebi daha sonraki bir kuralda yayınlayacaktır.
 
-**Kural 2: Kullanıcı için ms-DS-ımfbu GUID olup olmadığını denetleyin**
+**Kural 2: Kullanıcı için ms-ds-consistencyguid olup olmadığını kontrol edin**
 
     NOT EXISTS([Type == "http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid"])
     => add(Type = "urn:anandmsft:tmp/idflag", Value = "useguid");
 
-Bu kural, Kullanıcı için doldurulmuş bir **MS-DS-ımıbu GUID** yoksa **useguıd** olarak ayarlanan **ıdflag** adlı geçici bir bayrak tanımlar. Bunun arkasındaki mantık AD FS, boş talepler için izin vermediği bir olgu olur. Bu nedenle, kural 1 ' de talepler http://contoso.com/ws/2016/02/identity/claims/objectguid ve http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid eklediğinizde, yalnızca değerin Kullanıcı için doldurulması durumunda bir **msdsıse, GUID** talebi ile biter. Doldurulmamışsa, AD FS boş bir değere sahip olacağını görür ve hemen bırakır. Tüm nesneler **Objectguıd**değerini alacak, bu nedenle kural 1 yürütüldükten sonra talep her zaman olur.
+Bu kural, kullanıcı için **ms-ds tutarlılığı** yoksa **kullanıma uygun** olarak ayarlanan **idflag** adlı geçici bir bayrak tanımlar. Bunun arkasındaki mantık, AD FS boş iddialara izin vermiyor olmasıdır. Bu nedenle, `http://contoso.com/ws/2016/02/identity/claims/objectguid` talep `http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid` eklediğinizde ve Kural 1'de, yalnızca değer kullanıcı için doldurulursa **bir msdsconsistencyguid** talebiyle sonuçlanırsınız. Doldurulmazsa, AD FS boş bir değere sahip olacağını görür ve hemen düşürür. Tüm **nesnelerobjectGuid'e**sahip olacak, böylece kural 1 yürütüldükten sonra bu iddia her zaman orada olacaktır.
 
-**Kural 3: varsa, ms-DS-ımıdnbu GUID 'yi sabit KIMLIK olarak verme**
+**Kural 3: Varsa değişmez kimlik olarak ms-ds-tutarlılık sorunu**
 
     c:[Type == "http://contoso.com/ws/2016/02/identity/claims/msdsconsistencyguid"]
     => issue(Type = "http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID", Value = c.Value);
 
-Bu **örtük bir** denetim. Talep için değer varsa, bu değeri sabit KIMLIK olarak verin. Önceki örnek, **NameIdentifier** talebini kullanır. Bunu, ortamınızdaki sabit KIMLIK için uygun talep türü olarak değiştirmeniz gerekir.
+Bu örtülü bir **Varvar** denetimidir. Talep değeri varsa, o zaman değişmez kimlik olarak sorun. Önceki **örneknamedentifier** iddiasını kullanır. Bunu ortamınızdaki değişmez kimlik için uygun talep türüyle değiştirmeniz gerekir.
 
-**Kural 4: ms-DS-ımıdnguıd yoksa sabit KIMLIK olarak Objectguıd verme**
+**Kural 4: ms-ds-tutarlılıkGuid yoksa, objectGuid'i değişmez kimlik olarak sorun**
 
     c1:[Type == "urn:anandmsft:tmp/idflag", Value =~ "useguid"]
     && c2:[Type == "http://contoso.com/ws/2016/02/identity/claims/objectguid"]
     => issue(Type = "http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID", Value = c2.Value);
 
-Bu kuralda, yalnızca geçici bayrağı **ıdflag**' u kontrol edersiniz. Talebin değerine göre mi verilmeyeceğine karar verirsiniz.
+Bu kuralda, yalnızca geçici bayrak **iflag**kontrol ediyoruz. Talebin değerine göre verilip verilemeyeceğine siz karar verirsiniz.
 
 > [!NOTE]
 > Bu kuralların sırası önemlidir.
 
-### <a name="sso-with-a-subdomain-upn"></a>Alt etki alanı UPN 'si ile SSO
+### <a name="sso-with-a-subdomain-upn"></a>Bir alt etki alanı UPN ile SSO
 
-[Yeni bir Federasyon etki alanı ekleme](how-to-connect-fed-management.md#addfeddomain)bölümünde açıklandığı gibi Azure AD Connect kullanarak Federasyon oluşturulacak birden fazla etki alanı ekleyebilirsiniz. Azure AD Connect Version 1.1.553.0 ve latest, ıssuerıd için otomatik olarak doğru talep kuralını oluşturur. Azure AD Connect Version 1.1.553.0 veya latest sürümünü kullandıysanız, Azure AD bağlı olan taraf güveni için doğru talep kuralları oluşturmak ve ayarlamak üzere [Azure AD RPT talep kuralları](https://aka.ms/aadrptclaimrules) aracının kullanılması önerilir.
+[Yeni bir federe etki alanı ekle'de](how-to-connect-fed-management.md#addfeddomain)açıklandığı gibi, Azure AD Connect'i kullanarak federe edilecek birden fazla etki alanı ekleyebilirsiniz. Azure AD Connect sürüm 1.1.553.0 ve en son verenID için doğru talep kuralını otomatik olarak oluşturur. Azure AD Connect sürüm 1.1.553.0 veya en son sürümünü kullanamıyorsanız, [Azure AD RPT Talep Kuralları](https://aka.ms/aadrptclaimrules) aracının Azure AD güvendiğiniz taraf güveni için doğru talep kuralları oluşturmak ve ayarlamak için kullanılması önerilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 [Kullanıcı oturum açma seçenekleri](plan-connect-user-signin.md)hakkında daha fazla bilgi edinin.

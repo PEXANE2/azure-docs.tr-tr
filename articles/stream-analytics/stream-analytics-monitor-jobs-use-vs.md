@@ -1,6 +1,6 @@
 ---
-title: Visual Studio ile Azure Stream Analytics izleme ve yönetme
-description: Bu makalede, Azure Stream Analytics işlerini yönetmek ve izlemek için Visual Studio kullanmayı açıklar.
+title: Visual Studio ile Azure Akış Analitiğini izleyin ve yönetin
+description: Bu makalede, Azure Akış Analizi işlerini izlemek ve yönetmek için Visual Studio'nun nasıl kullanılacağı açıklanmaktadır.
 author: su-jie
 ms.author: sujie
 ms.reviewer: mamccrea
@@ -9,43 +9,43 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
 ms.openlocfilehash: e43a8d157baaf7e02ab7f8db4c777009d2a0abe9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75431681"
 ---
-# <a name="monitor-and-manage-stream-analytics-jobs-with-visual-studio"></a>İzleme ve Stream Analytics işleri Visual Studio ile yönetme
+# <a name="monitor-and-manage-stream-analytics-jobs-with-visual-studio"></a>Visual Studio ile Stream Analytics işlerini izleyin ve yönetin
 
-Bu makalede, Stream Analytics işi Visual Studio'da izlemeyi gösterir. Visual Studio için Azure Stream Analytics araçları IDE'den ayrılmanıza gerek kalmadan Azure Portalı'na benzer bir izleme deneyimi sağlar. Bir işi, en erken izlemek başlayabilirsiniz **azure'a Gönder** gelen, **Script.asaql**, veya nasıl oluşturulmuş bağımsız olarak mevcut işleri izleyebilir. 
+Bu makale, Visual Studio'daki Stream Analytics işinizi nasıl izleyeceğinizi göstermektedir. Visual Studio için Azure Akış Analizi araçları, IDE'den ayrılmak zorunda kalmadan Azure portalına benzer bir izleme deneyimi sağlar. Bir işi **Script.asaql'ınızdan** **Azure'a gönderdiğinizde** izlemeye başlayabilir veya nasıl oluşturulduklarına bakılmaksızın varolan işleri izleyebilirsiniz. 
 
 ## <a name="job-summary"></a>İş özeti
 
-**İş özeti** ve **iş ölçümleri** hızlı bir anlık görüntü işinin verin. Bir bakışta, bir işin durumu ve olay bilgileri belirleyebilirsiniz.]
+**İş Özeti** ve **İş Ölçümleri,** işinizin hızlı bir görüntüsünü verir. Bir bakışta, bir işin durumunu ve olay bilgilerini belirleyebilirsiniz.]
 
 <img src="./media/stream-analytics-monitor-jobs-use-vs/stream-analytics-job-summary-metrics.png" alt="Stream Analytics job summary and job metrics" width="300px"/> 
 
 
 ## <a name="job-metrics"></a>İş ölçümleri
 
-Daraltılabilir mi **iş özeti** tıklatıp **iş ölçümleri** grafik ile önemli ölçümleri görüntülemek için sekmesinde. Ekleme ve bunları grafikten kaldırma için onay ve işaretini kaldırın ölçümleri türleri.
+Önemli ölçümlere sahip bir grafiği görüntülemek için **İş Özetini** daraltabilir ve **İş Ölçümleri** sekmesini tıklatabilirsiniz. Eklemek ve grafikten kaldırmak için ölçüm türlerini denetleyin ve denetleyin.
 
-![Stream Analytics ölçümleri Visual Studio'da](./media/stream-analytics-monitor-jobs-use-vs/stream-analytics-vs-metrics.png)
+![Visual Studio'da Akış Analizi ölçümleri](./media/stream-analytics-monitor-jobs-use-vs/stream-analytics-vs-metrics.png)
 
 
 ## <a name="error-monitoring"></a>Hata izleme
 
-Tıklayarak hataları izleyebilirsiniz **hataları** sekmesi.
+**Hatalar** sekmesine tıklayarak hataları da izleyebilirsiniz.
 
-![Stream Analytics hataları Visual Studio'da](./media/stream-analytics-monitor-jobs-use-vs/stream-analytics-vs-errors.png)
+![Visual Studio'da Akış Analizi hataları](./media/stream-analytics-monitor-jobs-use-vs/stream-analytics-vs-errors.png)
 
 
 ## <a name="get-support"></a>Destek alın
-Daha fazla yardım için deneyin bizim [Azure Stream Analytics forumumuzu](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics). 
+Daha fazla yardım için [Azure Akışı Analizi forumumuzu](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)deneyin. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Azure Stream analytics'e giriş](stream-analytics-introduction.md)
-* [Visual Studio ile bir Azure Stream Analytics işi oluşturma](stream-analytics-quick-create-vs.md)
-* [Visual Studio için Azure Stream Analytics araçları yükleme](stream-analytics-tools-for-visual-studio-install.md) 
+* [Azure Akış Analizine Giriş](stream-analytics-introduction.md)
+* [Visual Studio ile Azure Akışı Analizi işi oluşturun](stream-analytics-quick-create-vs.md)
+* [Visual Studio için Azure Akışı Analytics araçlarını yükleyin](stream-analytics-tools-for-visual-studio-install.md) 
 
 

@@ -1,33 +1,33 @@
 ---
-title: Azure haritalar 'ı kullanarak bir harita stili ayarlayın Android SDK | Microsoft Azure haritaları
-description: Bu makalede, Android SDK için stille ilgili işlevleri Microsoft Azure eşler hakkında bilgi edineceksiniz.
-author: farah-alyasari
-ms.author: v-faalya
+title: Azure Haritalar Android SDK| Microsoft Azure Haritaları
+description: Bu makalede, Android SDK için Microsoft Azure Haritalar stiliyle ilgili işlevler hakkında bilgi edineceksiniz.
+author: philmea
+ms.author: philmea
 ms.date: 04/26/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 96564a89a2b64203eef913b0d8300f0dafa332c5
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.openlocfilehash: a4d761abf54682ed0263922d0a118debc9eccf0a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2020
-ms.locfileid: "77209588"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80334364"
 ---
-# <a name="set-map-style-using-azure-maps-android-sdk"></a>Azure haritalar 'ı kullanarak harita stili ayarlama Android SDK
+# <a name="set-map-style-using-azure-maps-android-sdk"></a>Azure Haritalar Android SDK'yı kullanarak harita stilini ayarlama
 
-Bu makalede, Azure Haritalar Android SDK kullanarak harita stillerini ayarlamak için kullanabileceğiniz iki yol gösterilmektedir. Azure haritalar 'ın aralarından seçim yapabileceğiniz altı farklı harita stili vardır. Desteklenen harita stilleri hakkında daha fazla bilgi için bkz. [Azure Maps 'de desteklenen harita stilleri](./supported-map-styles.md).
-
-
-## <a name="prerequisites"></a>Önkoşullar
-
-Bu makaledeki işlemi gerçekleştirmek için, bir harita yüklemek üzere [Azure Maps Android SDK](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) yüklemeniz gerekir.
+Bu makalede, Azure Haritalar Android SDK'yı kullanarak harita stillerini ayarlamanın iki yolu gösterilmektedir. Azure Haritalar'da seçim yapabileceğiniz altı farklı harita stili vardır. Desteklenen harita stilleri hakkında daha fazla bilgi için [Azure Haritalar'da desteklenen harita stillerine](./supported-map-styles.md)bakın.
 
 
-## <a name="set-map-style-in-the-layout"></a>Düzende harita stili ayarla
+## <a name="prerequisites"></a>Ön koşullar
 
-Etkinlik sınıfınızın düzen dosyasında bir harita stili ayarlayabilirsiniz. **Kaynak > düzeni activity_main. xml >** düzenleyin, bu nedenle aşağıdaki gibi görünür:
+Bu makaledeki işlemi tamamlamak için, bir harita yüklemek için [Azure Haritalar Android SDK'yı](https://docs.microsoft.com/azure/azure-maps/how-to-use-android-map-control-library) yüklemeniz gerekir.
+
+
+## <a name="set-map-style-in-the-layout"></a>Düzende harita stilini ayarlama
+
+Etkinlik sınıfınızın düzen dosyasında bir harita stili ayarlayabilirsiniz. Düzenle **activity_main.xml > > düzen res,** böylece aşağıdaki gibi görünüyor:
 
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
@@ -51,15 +51,15 @@ Etkinlik sınıfınızın düzen dosyasında bir harita stili ayarlayabilirsiniz
 </FrameLayout>
 ```
 
-Yukarıdaki `mapcontrol_style` özniteliği harita stilini **grayscale_dark**olarak ayarlar. 
+Yukarıdaki `mapcontrol_style` öznitelik, harita stilini **grayscale_dark**ayarlar. 
 
 <center>
 
-![Style-grayscale_dark](./media/set-android-map-styles/grayscale-dark.png)</center>
+![stil grayscale_dark](./media/set-android-map-styles/grayscale-dark.png)</center>
 
-## <a name="set-map-style-in-the-activity-class"></a>Etkinlik sınıfında harita stilini ayarla
+## <a name="set-map-style-in-the-activity-class"></a>Etkinlik sınıfında harita stilini ayarlama
 
-Eşleme stili etkinlik sınıfında ayarlanabilir. Aşağıdaki kod parçacığını `MainActivity.java` sınıfınızın **OnCreate ()** yöntemine kopyalayın. Bu kod, eşleme stilini **satellite_road_labels**olarak ayarlar.
+Eşlemi stili etkinlik sınıfında ayarlanabilir. Aşağıdaki kod parçacıklarını sınıfınızın `MainActivity.java` **onCreate()** yöntemine kopyalayın. Bu kod, harita stilini **satellite_road_labels**ayarlayacaktır.
 
 ```Java
 mapControl.onReady(map -> {
@@ -73,4 +73,4 @@ mapControl.onReady(map -> {
 
 <center>
 
-![Style-uydu-yol-etiketleri](./media/set-android-map-styles/satellite-road-labels.png)</center>
+![stil-uydu-yol-etiketleri](./media/set-android-map-styles/satellite-road-labels.png)</center>

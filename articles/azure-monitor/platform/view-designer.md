@@ -1,109 +1,109 @@
 ---
-title: Azure Izleyici 'de günlük verilerini çözümlemek için görünümler oluşturun | Microsoft Docs
-description: Azure Izleyici 'de Görünüm Tasarımcısı 'nı kullanarak, Azure portal görüntülenen ve Log Analytics çalışma alanındaki veriler üzerinde çeşitli görselleştirmeler içeren özel görünümler oluşturabilirsiniz. Bu makale, görünüm tasarımcısına genel bir bakış içerir ve özel görünümleri oluşturma ve düzenlemeyle ilgili yordamları sunar.
+title: Azure Monitör'de günlük verilerini çözümlemek için görünümler oluşturma | Microsoft Dokümanlar
+description: Azure Monitörü'nde Görünüm Tasarımcısı'nı kullanarak, Azure portalında görüntülenen özel görünümler oluşturabilir ve Günlük Analizi çalışma alanındaki verilerle ilgili çeşitli görselleştirmeler içerebilir. Bu makalede, Görünüm Tasarımcısı'na genel bir bakış içerir ve özel görünümler oluşturma ve düzenleme yordamları sunar.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/10/2019
 ms.openlocfilehash: 9a7521f61dc59bd954629a05638c159ab0e70556
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77658498"
 ---
-# <a name="create-custom-views-by-using-view-designer-in-azure-monitor"></a>Azure Izleyici 'de Görünüm Tasarımcısı 'nı kullanarak özel görünümler oluşturma
-Azure Izleyici 'de Görünüm Tasarımcısı 'nı kullanarak, Azure portal Log Analytics çalışma alanınızdaki verileri görselleştirmenize yardımcı olabilecek çeşitli özel görünümler oluşturabilirsiniz. Bu makalede, özel görünümleri oluşturma ve düzenlemeyle ilgili görünüm tasarımcısına ve yordamlarına ilişkin bir genel bakış sunulmaktadır.
+# <a name="create-custom-views-by-using-view-designer-in-azure-monitor"></a>Azure Monitör'de Görünüm Tasarımcısı'nı kullanarak özel görünümler oluşturun
+Azure Monitörü'nde Görünüm Tasarımcısı'nı kullanarak, Azure portalında Günlük Analizi çalışma alanınızdaki verileri görselleştirmenize yardımcı olabilecek çeşitli özel görünümler oluşturabilirsiniz. Bu makalede, Görünüm Tasarımcısı ve özel görünümler oluşturma ve düzenleme yordamları genel bir bakış sunar.
 
 > [!IMPORTANT]
-> Azure Izleyici 'deki görünümler kullanıma alınıyor ve ek işlevsellik sağlayan [çalışma kitapları](workbooks-overview.md) ile değiştiriliyor. Mevcut görünümlerinizi çalışma kitaplarına dönüştürmeye ilişkin ayrıntılar için bkz. [Azure izleyici Görünüm Tasarımcısı çalışma kitapları geçiş kılavuzu](view-designer-conversion-overview.md) .
+> Azure Monitor'daki görünümler aşamalı olarak devre dışı ediliyor ve ek işlevler sağlayan [çalışma kitaplarıyla](workbooks-overview.md) değiştiriliyor. Mevcut görünümlerinizi çalışma kitaplarına dönüştürme yle ilgili ayrıntılar için [Azure Monitor görünüm tasarımcısını çalışma kitapları geçiş kılavuzuna](view-designer-conversion-overview.md) bakın.
 
-Görünüm Tasarımcısı hakkında daha fazla bilgi için bkz.
+Görünüm Tasarımcısı hakkında daha fazla bilgi için bkz:
 
-* [Kutucuk başvurusu](view-designer-tiles.md): özel görünümlerinizin her bir kullanılabilir kutucuğun ayarlarına yönelik bir başvuru kılavuzu sağlar.
-* [Görselleştirme bölümü başvurusu](view-designer-parts.md): özel görünümlerinizdeki kullanılabilir görselleştirme bölümlerinin ayarlarına bir başvuru kılavuzu sağlar.
+* [Kutucuk başvurusu](view-designer-tiles.md): Özel görünümlerinizde kullanılabilir kutucukların her biri için ayarlar için bir başvuru kılavuzu sağlar.
+* [Visualization parçası başvurusu](view-designer-parts.md): Özel görünümlerinizde bulunan görselleştirme parçalarının ayarları için bir başvuru kılavuzu sağlar.
 
 
 ## <a name="concepts"></a>Kavramlar
-Görünümler, Azure portal Azure Izleyici **genel bakış** sayfasında görüntülenir. **Öngörüler** bölümünün altında **daha fazla** ' ya tıklayarak bu sayfayı **Azure izleyici** menüsünden açın. Her özel görünümdeki kutucuklar alfabetik olarak görüntülenir ve izleme çözümlerinin kutucukları aynı çalışma alanına yüklenir.
+Görünümler, Azure portalındaki Azure Monitöre **Genel Bakış** sayfasında görüntülenir. **Öngörüler** bölümünde **daha fazla** seçeneğini tıklayarak **Azure Monitor** menüsünden bu sayfayı açın. Her özel görünümdeki döşemeler alfabetik olarak görüntülenir ve izleme çözümleri için kutucuklar aynı çalışma alanına yüklenir.
 
-![Genel Bakış sayfası](media/view-designer/overview-page.png)
+![Genel bakış sayfası](media/view-designer/overview-page.png)
 
 Görünüm Tasarımcısı ile oluşturduğunuz görünümler aşağıdaki tabloda açıklanan öğeleri içerir:
 
-| Bölümüyle | Açıklama |
+| Bölüm | Açıklama |
 |:--- |:--- |
-| Parça | , Azure Izleyici **genel bakış** sayfasında görüntülenir. Her kutucuk, gösterdiği özel görünümün görsel özetini görüntüler. Her döşeme türü, kayıtlarınızın farklı bir görselleştirmesini sağlar. Özel bir görünüm görüntülemek için bir kutucuk seçersiniz. |
-| Özel görünüm | Bir kutucuk seçtiğinizde gösterilir. Her görünüm bir veya daha fazla görselleştirme bölümü içerir. |
-| Görselleştirme parçaları | Bir veya daha fazla [günlük sorgusuna](../log-query/log-query-overview.md)göre Log Analytics çalışma alanında bir veri görselleştirmesi sunun. Çoğu bölüm, üst düzey bir görselleştirme sağlayan bir üst bilgi ve en üstteki sonuçları görüntüleyen bir liste içerir. Her bölüm türü, Log Analytics çalışma alanındaki kayıtların farklı bir görselleştirmesini sağlar. Ayrıntılı kayıtlar sağlayan bir günlük sorgusu gerçekleştirmek için bölümünde öğeleri seçersiniz. |
+| Kutucuklar | Azure Monitöre **Genel Bakış** sayfanızda görüntülenir. Her döşeme, temsil eder özel görünümün görsel bir özetini görüntüler. Her döşeme türü, kayıtlarınızın farklı bir görselleştirmesini sağlar. Özel bir görünüm görüntülemek için bir döşeme seçersiniz. |
+| Özel görünüm | Bir kiremit seçtiğinizde görüntülenir. Her görünüm bir veya daha fazla görselleştirme parçası içerir. |
+| Görselleştirme parçaları | Bir veya daha fazla [günlük sorgusunu](../log-query/log-query-overview.md)temel alan Log Analytics çalışma alanında verilerin görselleştirilmesini sunun. Çoğu parça, üst düzey görselleştirme sağlayan bir üstbilgi ve en üst sonuçları görüntüleyen bir liste içerir. Her parça türü, Log Analytics çalışma alanındaki kayıtların farklı bir görselleştirmesini sağlar. Ayrıntılı kayıtlar sağlayan bir günlük sorgusu gerçekleştirmek için parçadaki öğeleri seçersiniz. |
 
 ## <a name="required-permissions"></a>Gerekli izinler
-Görünümleri oluşturmak veya değiştirmek için Log Analytics çalışma alanında en az [katkıda bulunan düzeyi izinlerinizin](manage-access.md#manage-access-using-azure-permissions) olması gerekir. Bu izne sahip değilseniz menüde Görünüm Tasarımcısı seçeneği gösterilmez.
+Görünümoluşturmak veya değiştirmek için Log Analytics çalışma alanında en az [katılımcı düzeyinde izinlere](manage-access.md#manage-access-using-azure-permissions) ihtiyacınız vardır. Bu izne sahip değilseniz, Tasarımcıyı Görüntüle seçeneği menüde görüntülenmez.
 
 
-## <a name="work-with-an-existing-view"></a>Mevcut bir görünümle çalışma
+## <a name="work-with-an-existing-view"></a>Varolan bir görünümle çalışma
 Görünüm Tasarımcısı ile oluşturulan görünümler aşağıdaki seçenekleri görüntüler:
 
-![Genel Bakış menüsü](media/view-designer/overview-menu.png)
+![Genel bakış menüsü](media/view-designer/overview-menu.png)
 
 Seçenekler aşağıdaki tabloda açıklanmıştır:
 
 | Seçenek | Açıklama |
 |:--|:--|
-| Yenile   | En son verilerle görünümü yeniler. | 
-| Günlükler      | Günlük sorgularıyla verileri çözümlemek için [Log Analytics](../log-query/portals.md) açar. |
-| Düzenle       | İçeriğini ve yapılandırmasını düzenlemek için Görünüm Tasarımcısı ' nda görünümü açar.  |
-| Kopyalama      | Yeni bir görünüm oluşturur ve onu Görünüm Tasarımcısı 'nda açar. Yeni görünümün adı özgün adla aynıdır, ancak buna *kopyalama* eklenir. |
-| Tarih aralığı | Görünümde yer alan veriler için tarih ve saat aralığı filtresini ayarlayın. Bu tarih aralığı, görünümdeki sorgularda ayarlanan herhangi bir tarih aralığından önce uygulanır.  |
+| Yenile   | Görünümü en son verilerle yeniler. | 
+| Günlükler      | Günlük sorgularıyla verileri çözümlemek için [Log Analytics'i](../log-query/portals.md) açar. |
+| Düzenle       | İçeriğini ve yapılandırmasını düzenlemek için Görünümü Tasarımcı'da açar.  |
+| Kopyalama      | Yeni bir görünüm oluşturur ve Görünüm Tasarımcısı'nda açar. Yeni görünümün adı özgün adla aynıdır, ancak *kopya* ona eklenen ile. |
+| Tarih aralığı | Görünüme dahil olan veriler için tarih ve saat aralığı filtresini ayarlayın. Bu tarih aralığı, görünümdeki sorgularda ayarlanan tarih aralıklarından önce uygulanır.  |
 | +          | Görünüm için tanımlanan özel bir filtre tanımlayın. |
 
 
 ## <a name="create-a-new-view"></a>Yeni bir görünüm oluşturma
-Log Analytics çalışma alanınızın menüsündeki **Görünüm Tasarımcısı** ' nı seçerek görünüm Tasarımcısı ' nda yeni bir görünüm oluşturabilirsiniz.
+Log Analytics çalışma alanınızın menüsünde **View Designer'ı** seçerek Görünüm Tasarımcısı'nda yeni bir görünüm oluşturabilirsiniz.
 
-![Tasarımcı kutucuğunu görüntüle](media/view-designer/view-designer-tile.png)
+![Tasarımcı döşemesi görüntüle](media/view-designer/view-designer-tile.png)
 
 
-## <a name="work-with-view-designer"></a>Görünüm Tasarımcısı ile çalışma
-Yeni görünümler oluşturmak veya varolanları düzenlemek için Görünüm Tasarımcısı 'nı kullanın. 
+## <a name="work-with-view-designer"></a>Görünüm Tasarımcısı ile Çalışma
+Yeni görünümler oluşturmak veya varolanları yeniden oluşturmak için Görünüm Tasarımcısı'nı kullanırsınız. 
 
-Görünüm tasarımcısının üç bölmesi vardır: 
-* **Tasarım**: oluşturmakta veya düzenlemekte olduğunuz özel görünümü içerir. 
-* **Denetimler**: **Tasarım** bölmesine eklediğiniz kutucukları ve parçaları içerir. 
-* **Özellikler**: kutucukların veya seçili parçaların özelliklerini görüntüler.
+Görünüm Tasarımcısı'nın üç bölmesi vardır: 
+* **Tasarım**: Oluşturduğunuz veya düzenlediğiniz özel görünümü içerir. 
+* **Denetimler**: **Tasarım** bölmesine eklediğiniz döşemeleri ve parçaları içerir. 
+* **Özellikler**: Döşemelerin veya seçili parçaların özelliklerini görüntüler.
 
 ![Görünüm Tasarımcısı](media/view-designer/view-designer-screenshot.png)
 
-### <a name="configure-the-view-tile"></a>Görünüm kutucuğunu yapılandırma
-Özel bir görünüm yalnızca tek bir kutucuğa sahip olabilir. Geçerli kutucuğu görüntülemek veya alternatif bir tane seçmek için **Denetim** bölmesinde **kutucuk** sekmesini seçin. **Özellikler** bölmesi, geçerli kutucuğun özelliklerini görüntüler. 
+### <a name="configure-the-view-tile"></a>Görünüm döşemesini yapılandırma
+Özel bir görünümde yalnızca tek bir döşeme olabilir. Geçerli döşemeyi görüntülemek veya alternatif bir döşeme seçmek için **Denetim** bölmesinde **Döşeme** sekmesini seçin. **Özellikler** bölmesi geçerli döşemenin özelliklerini görüntüler. 
 
-Kutucuk özelliklerini [kutucuk başvurusunda](view-designer-tiles.md) bulunan bilgilere göre yapılandırabilir ve ardından değişiklikleri kaydetmek için **Uygula** ' ya tıklayabilirsiniz.
+Döşeme özelliklerini [Döşeme başvurusundaki](view-designer-tiles.md) bilgilere göre yapılandırabilir ve değişiklikleri kaydetmek için **Uygula'yı** tıklatabilirsiniz.
 
 ### <a name="configure-the-visualization-parts"></a>Görselleştirme parçalarını yapılandırma
-Bir görünüm herhangi bir sayıda görselleştirme bölümü içerebilir. Bir görünüme parçalar eklemek için **Görünüm** sekmesini seçin ve ardından bir görselleştirme bölümü seçin. **Özellikler** bölmesi, seçili parçanın özelliklerini görüntüler. 
+Görünüm, herhangi bir sayıda görselleştirme parçası içerebilir. Görünüme parça eklemek için **Görünüm** sekmesini seçin ve ardından bir görselleştirme bölümü seçin. **Özellikler** bölmesi seçili parçanın özelliklerini görüntüler. 
 
-Görünüm özelliklerini [görselleştirme bölümü başvurusu](view-designer-parts.md) 'ndaki bilgilere göre yapılandırabilir ve ardından değişiklikleri kaydetmek için **Uygula** ' ya tıklayabilirsiniz.
+Görünüm özelliklerini [Görselleştirme bölümü başvurusundaki](view-designer-parts.md) bilgilere göre yapılandırabilir ve değişiklikleri kaydetmek için **Uygula'yı** tıklatabilirsiniz.
 
-Görünümler yalnızca bir görselleştirme bölümlerinin bir satırına sahiptir. Varolan bölümleri yeni bir konuma sürükleyerek yeniden düzenleyebilirsiniz.
+Görünümlerin yalnızca bir sıra görselleştirme parçası vardır. Varolan parçaları yeni bir konuma sürükleyerek yeniden düzenleyebilirsiniz.
 
-Görünümün sağ üst köşesinde bulunan **X** ' i seçerek bir görselleştirme parçasını görünümden kaldırabilirsiniz.
+Parçanın sağ üst kısmındaki **X'i** seçerek görüntübir bölümü görünümden kaldırabilirsiniz.
 
 
 ### <a name="menu-options"></a>Menü seçenekleri
-Düzenleme modunda görünümlerle çalışma seçenekleri aşağıdaki tabloda açıklanmıştır.
+Görünümlerle edit modunda çalışma seçenekleri aşağıdaki tabloda açıklanmıştır.
 
-![Düzenle menüsü](media/view-designer/edit-menu.png)
+![Menüyü edit](media/view-designer/edit-menu.png)
 
 | Seçenek | Açıklama |
 |:--|:--|
 | Kaydet        | Değişikliklerinizi kaydeder ve görünümü kapatır. |
 | İptal      | Değişikliklerinizi atar ve görünümü kapatır. |
 | Görünümü Sil | Görünümü siler. |
-| Dışarı Aktarma      | Görünümü, başka bir çalışma alanına aktarabileceğiniz bir [Azure Resource Manager şablonuna](../../azure-resource-manager/templates/template-syntax.md) dışarı aktarır. Dosyanın adı, görünümün adıdır ve bir *omsview* uzantısına sahiptir. |
-| İçeri Aktarma      | Başka bir çalışma alanından verdiğiniz *omsview* dosyasını içeri aktarır. Bu eylem, var olan görünümün yapılandırmasının üzerine yazar. |
-| Kopyalama       | Yeni bir görünüm oluşturur ve onu Görünüm Tasarımcısı 'nda açar. Yeni görünümün adı özgün adla aynıdır, ancak buna *kopyalama* eklenir. |
+| Dışarı Aktarma      | Görünümü, başka bir çalışma alanına aktarabileceğiniz bir [Azure Kaynak Yöneticisi şablonuna](../../azure-resource-manager/templates/template-syntax.md) dışa aktarın. Dosyanın adı görünümün adıdır ve *omsview* uzantısı vardır. |
+| İçeri Aktarma      | Başka bir çalışma alanından dışa aktardığınız *omsview* dosyasını içeri aktarın. Bu eylem, varolan görünümün yapılandırmasını üzerine yazar. |
+| Kopyalama       | Yeni bir görünüm oluşturur ve Görünüm Tasarımcısı'nda açar. Yeni görünümün adı özgün adla aynıdır, ancak *kopya* ona eklenen ile. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Özel görünüminizdeki [kutucukları](view-designer-tiles.md) ekleyin.
-* [Görselleştirme parçalarını](view-designer-parts.md) özel görünümverilerinize ekleyin.
+* Özel görünümünüze [Kutucuklar](view-designer-tiles.md) ekleyin.
+* Özel görünümünüze [Görselleştirme parçaları](view-designer-parts.md) ekleyin.

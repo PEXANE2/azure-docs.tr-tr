@@ -5,22 +5,22 @@ ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
 ms.openlocfilehash: a53d2b259bc4ece12c4ccb1cf47409cd2f0af86f
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67189056"
 ---
-**Objective-C**:
+**Amaç-C**:
 
-1. İçinde **QSAppDelegate.m**, iOS SDK'sını alın ve **QSTodoService.h**:
+1. **QSAppDelegate.m,** iOS SDK ve **QSTodoService.h**alma:
 
     ```objc
     #import <MicrosoftAzureMobile/MicrosoftAzureMobile.h>
     #import "QSTodoService.h"
     ```
 
-2. İçinde `didFinishLaunchingWithOptions` içinde **QSAppDelegate.m**, aşağıdaki satırları hemen önce INSERT `return YES;`:
+2. `didFinishLaunchingWithOptions` **QSAppDelegate.m'de**aşağıdaki satırları hemen önce `return YES;`ekleyin:
 
     ```objc
     UIUserNotificationSettings* notificationSettings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil];
@@ -28,7 +28,7 @@ ms.locfileid: "67189056"
     [[UIApplication sharedApplication] registerForRemoteNotifications];
     ```
 
-3. İçinde **QSAppDelegate.m**, aşağıdaki işleyici yöntemleri ekleyin. Uygulamanızı anında iletme bildirimlerini desteklemek için güncelleştirilmiştir. 
+3. **QSAppDelegate.m'de**aşağıdaki işleyici yöntemlerini ekleyin. Uygulamanız artık anında iletme bildirimlerini destekleyecek şekilde güncelleştirildi. 
 
     ```objc
     // Registration with APNs is successful
@@ -97,9 +97,9 @@ ms.locfileid: "67189056"
     }
     ```
 
-**Swift**:
+**Hızlı :**
 
-1. Dosya ekleme **ClientManager.swift** aşağıdaki içeriğe sahip. Değiştirin *AppUrl %* Azure mobil uygulaması arka uç URL'si ile.
+1. Aşağıdaki içerikleri ile dosya **ClientManager.swift** ekleyin. *%AppUrl%* ile Azure Mobil App arka uçurl'sini değiştirin.
 
     ```swift
     class ClientManager {
@@ -107,13 +107,13 @@ ms.locfileid: "67189056"
     }
     ```
 
-2. İçinde **ToDoTableViewController.swift**, değiştirin `let client` başlatır satırı bir `MSClient` bu satırı ile:
+2. **ToDoTableViewController.swift'te,** `let client` bir `MSClient` satırı bu satırla başharfe alan satırı değiştirin:
 
     ```swift
     let client = ClientManager.sharedClient
     ```
 
-3. İçinde **AppDelegate.swift**, gövdesinin yerini `func application` gibi:
+3. **AppDelegate.swift**olarak, aşağıdaki `func application` gibi gövde değiştirin:
 
     ```swift
     func application(application: UIApplication,
@@ -126,7 +126,7 @@ ms.locfileid: "67189056"
     }
     ```
 
-4. İçinde **AppDelegate.swift**, aşağıdaki işleyici yöntemleri ekleyin. Uygulamanızı anında iletme bildirimlerini desteklemek için güncelleştirilmiştir.
+4. **AppDelegate.swift'te**aşağıdaki işleyici yöntemlerini ekleyin. Uygulamanız artık anında iletme bildirimlerini destekleyecek şekilde güncelleştirildi.
 
     ```swift
     func application(application: UIApplication,

@@ -1,6 +1,6 @@
 ---
-title: Eski Azure sanal ağ VPN Gateway SKU 'Ları
-description: Eski sanal ağ geçidi SKU 'Ları ile çalışma Temel, standart ve HighPerformance.
+title: Eski Azure sanal ağ VPN ağ geçidi SK'lar
+description: Eski sanal ağ ağ ağ geçidi SUS ile nasıl çalışılı; Temel, Standart ve Yüksek Performans.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
@@ -8,59 +8,59 @@ ms.topic: article
 ms.date: 08/15/2019
 ms.author: cherylmc
 ms.openlocfilehash: 9c5e6d5aca51bd560a46837ba47de86362665773
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79279396"
 ---
-# <a name="working-with-virtual-network-gateway-skus-legacy-skus"></a>Sanal ağ geçidi SKU 'Ları (eski SKU 'Lar) ile çalışma
+# <a name="working-with-virtual-network-gateway-skus-legacy-skus"></a>Sanal ağ ağ geçidi SUS 'lerle (eski SK'ler) çalışma
 
-Bu makale, eski (eski) sanal ağ geçidi SKU 'Ları hakkında bilgi içerir. Eski SKU 'Lar, zaten oluşturulmuş olan VPN ağ geçitlerinin her iki dağıtım modelinde de çalışır. Klasik VPN ağ geçitleri, hem mevcut ağ geçitleri hem de yeni ağ geçitleri için eski SKU 'Ları kullanmaya devam eder. Yeni Kaynak Yöneticisi VPN ağ geçitleri oluştururken, yeni ağ geçidi SKU 'Larını kullanın. Yeni SKU 'Lar hakkında bilgi için bkz. [VPN Gateway](vpn-gateway-about-vpngateways.md).
+Bu makalede, eski (eski) sanal ağ ağ ağ Geçidi SUS hakkında bilgi içerir. Eski SNU'lar, zaten oluşturulmuş VPN ağ geçitleri için her iki dağıtım modelinde de çalışmaya devam etmektedir. Klasik VPN ağ geçitleri, hem varolan ağ geçitleri hem de yeni ağ geçitleri için eski STU'ları kullanmaya devam eder. Yeni Kaynak Yöneticisi VPN ağ geçitleri oluştururken, yeni ağ geçidi STU'larını kullanın. Yeni STU'lar hakkında bilgi için [VPN Ağ Geçidi hakkında](vpn-gateway-about-vpngateways.md)bilgi alalım.
 
-## <a name="gwsku"></a>Ağ Geçidi SKU'ları
+## <a name="gateway-skus"></a><a name="gwsku"></a>Ağ Geçidi SKU'ları
 
 [!INCLUDE [Legacy gateway SKUs](../../includes/vpn-gateway-gwsku-legacy-include.md)]
 
-Eski ağ geçidi fiyatlandırmasını, [ExpressRoute fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/expressroute)bulunan **sanal ağ geçitleri** bölümünde görüntüleyebilirsiniz.
+ExpressRoute fiyatlandırma sayfasında bulunan **Sanal Ağ Ağ Ağ Geçitleri** bölümünde eski ağ geçidi [fiyatlandırmasını](https://azure.microsoft.com/pricing/details/expressroute)görüntüleyebilirsiniz.
 
-## <a name="agg"></a>SKU 'ya göre tahmini toplam verimlilik
+## <a name="estimated-aggregate-throughput-by-sku"></a><a name="agg"></a>SKU'ya göre tahmini toplam verimlilik
 
 [!INCLUDE [Aggregated throughput by legacy SKU](../../includes/vpn-gateway-table-gwtype-legacy-aggtput-include.md)]
 
-## <a name="config"></a>SKU ve VPN türüne göre desteklenen konfigürasyonlar
+## <a name="supported-configurations-by-sku-and-vpn-type"></a><a name="config"></a>SKU ve VPN türüne göre desteklenen yapılandırmalar
 
 [!INCLUDE [Table requirements for old SKUs](../../includes/vpn-gateway-table-requirements-legacy-sku-include.md)]
 
-## <a name="resize"></a>Ağ geçidini yeniden boyutlandırma
+## <a name="resize-a-gateway"></a><a name="resize"></a>Ağ geçidini yeniden boyutlandırma
 
-Ağ geçidinizi aynı SKU ailesi içindeki bir ağ geçidi SKU 'SU ile yeniden boyutlandırabilirsiniz. Örneğin, standart bir SKU 'SU varsa, HighPerformance SKU 'suna yeniden boyutlandırabilirsiniz. Ancak, eski SKU 'Lar ve yeni SKU aileleri arasında VPN ağ geçidinizi yeniden boyutlandıramazsınız. Örneğin, standart bir SKU 'dan bir VpnGw2 SKU 'suna veya temel SKU 'yu VpnGw1 'e gidemezsiniz.
+Aynı SKU ailesi içinde bir ağ geçidi SKU için ağ geçidi yeniden boyutlandırabilirsiniz. Örneğin, standart SKU'nuz varsa, Yüksek Performanslı SKU olarak yeniden boyutlandırabilirsiniz. Ancak, vpn ağ geçidinizi eski SKU'lar ve yeni SKU aileleri arasında yeniden boyutlandıramaz. Örneğin, Standart SKU'dan VpnGw2 SKU'ya veya Temel SKU'dan VpnGw1'e gidemezsiniz.
 
 ### <a name="resource-manager"></a>Resource Manager
 
-PowerShell kullanarak Kaynak Yöneticisi dağıtım modeli için bir ağ geçidini yeniden boyutlandırmak üzere aşağıdaki komutu kullanın:
+PowerShell kullanarak Kaynak Yöneticisi dağıtım modeli için bir ağ geçidini yeniden boyutlandırmak için aşağıdaki komutu kullanın:
 
 ```powershell
 $gw = Get-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg
 Resize-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -GatewaySku HighPerformance
 ```
 
-Ayrıca Azure portal bir ağ geçidini yeniden boyutlandırabilirsiniz.
+Azure portalında bir ağ geçidini yeniden boyutlandırabilirsiniz.
 
-### <a name="classicresize"></a>Klasik
+### <a name="classic"></a><a name="classicresize"></a>Klasik
 
-Klasik dağıtım modeli için bir ağ geçidini yeniden boyutlandırmak üzere hizmet yönetimi PowerShell cmdlet 'lerini kullanmanız gerekir. Aşağıdaki komutu kullanın:
+Klasik dağıtım modeli için bir ağ geçidini yeniden boyutlandırmak için Service Management PowerShell cmdlets'i kullanmanız gerekir. Aşağıdaki komutu kullanın:
 
 ```powershell
 Resize-AzureVirtualNetworkGateway -GatewayId <Gateway ID> -GatewaySKU HighPerformance
 ```
 
-## <a name="change"></a>Yeni ağ geçidi SKU 'Larına değiştirme
+## <a name="change-to-the-new-gateway-skus"></a><a name="change"></a>Yeni ağ geçidi STU'larına geçiş
 
 [!INCLUDE [Change to the new SKUs](../../includes/vpn-gateway-gwsku-change-legacy-sku-include.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Yeni ağ geçidi SKU 'Ları hakkında daha fazla bilgi için bkz. [ağ geçidi SKU 'ları](vpn-gateway-about-vpngateways.md#gwsku).
+Yeni Ağ Geçidi SK'leri hakkında daha fazla bilgi için [Ağ Geçidi STU'larına](vpn-gateway-about-vpngateways.md#gwsku)bakın.
 
-Yapılandırma ayarları hakkında daha fazla bilgi için bkz. [VPN Gateway yapılandırma ayarları hakkında](vpn-gateway-about-vpn-gateway-settings.md).
+Yapılandırma ayarları hakkında daha fazla bilgi için [VPN Ağ Geçidi yapılandırma ayarları hakkında](vpn-gateway-about-vpn-gateway-settings.md)bilgi alabiliyorum.
