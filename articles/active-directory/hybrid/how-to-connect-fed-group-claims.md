@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory olan uygulamalar için grup taleplerini yapılandırma | Microsoft Docs
-description: Azure AD ile kullanım için grup taleplerini yapılandırma hakkında bilgiler.
+title: Azure Active Directory ile uygulamalar için grup taleplerini yapılandırma | Microsoft Dokümanlar
+description: Azure AD ile kullanılmak üzere grup taleplerinin nasıl yapılandırılabildiğini zedeb.
 services: active-directory
 documentationcenter: ''
 ms.reviewer: paulgarn
@@ -12,140 +12,140 @@ ms.topic: article
 ms.date: 02/27/2019
 ms.author: billmath
 author: billmath
-ms.openlocfilehash: 78b36e1f5ababf2551bd69682807a8ed308ae24d
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: b8708aec1137836516852135412c4c7cec2feba4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78298454"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79408411"
 ---
-# <a name="configure-group-claims-for-applications-with-azure-active-directory-public-preview"></a>Azure Active Directory olan uygulamalar için grup taleplerini yapılandırma (Genel Önizleme)
+# <a name="configure-group-claims-for-applications-with-azure-active-directory-public-preview"></a>Azure Etkin Dizini (Genel Önizleme) ile uygulamalar için grup taleplerini yapılandırma
 
-Azure Active Directory, bir Kullanıcı grubu üyelik bilgilerini uygulamalar içinde kullanım için belirteçlerde sağlayabilir.  İki ana desen desteklenir:
+Azure Active Directory, kullanıcılara uygulamalarda kullanılmak üzere belirteçlerde grup üyelik bilgileri sağlayabilir.  İki ana desen desteklenir:
 
-- Azure Active Directory nesne tanımlayıcısı (OID) özniteliğiyle tanımlanan gruplar (genel olarak kullanılabilir)
-- Active Directory (AD) eşitlenmiş gruplar ve kullanıcılar için sAMAccountName veya Groupsıd öznitelikleriyle tanımlanan gruplar (Genel Önizleme)
+- Azure Etkin Dizin nesne tanımlayıcı (OID) özniteliği (Genellikle Kullanılabilir) tarafından tanımlanan gruplar
+- Active Directory (AD) senkronize gruplar ve kullanıcılar için sAMAccountName veya GroupSID öznitelikleri tarafından tanımlanan gruplar (Genel Önizleme)
 
 > [!IMPORTANT]
-> Bu önizleme işlevselliği için dikkat edilecek bir dizi uyarılar vardır:
+> Bu önizleme işlevi için dikkat edilmesi gereken birkaç uyarı vardır:
 >
->- Şirket içinden eşitlenen sAMAccountName ve güvenlik tanımlayıcısı (SID) özniteliklerinin kullanımı için destek, mevcut uygulamaların AD FS ve diğer kimlik sağlayıcılarından taşınmasını sağlamak üzere tasarlanmıştır. Azure AD 'de yönetilen gruplar, bu talepleri oluşturmak için gereken öznitelikleri içermez.
->- Daha büyük kuruluşlarda, bir kullanıcının üyesi olduğu grupların sayısı Azure Active Directory bir belirtece eklenecek sınırı aşabilir. bir SAML belirteci için 150 grupları ve JWT için 200. Bu, öngörülemeyen sonuçlara neden olabilir. Kullanıcılarınızın çok sayıda grup üyeliği varsa, taleplerde yayınlanan grupları uygulamanın ilgili gruplarıyla kısıtlama seçeneğini kullanmanızı öneririz.  
->- Yeni uygulama geliştirme veya uygulamanın kendisi için yapılandırılabileceği ve iç içe geçmiş grup desteğinin gerekmediği durumlarda, uygulama içi yetkilendirmenin gruplar yerine uygulama rollerine dayalı olması önerilir.  Bu, belirtece gitmesi gereken bilgi miktarını kısıtlar, daha güvenlidir ve Kullanıcı atamasını uygulama yapılandırmasından ayırır.
+>- Şirket içinde senkronize edilen sAMAccountName ve güvenlik tanımlayıcı (SID) özniteliklerinin kullanımı için destek, varolan uygulamaların AD FS ve diğer kimlik sağlayıcılarından taşınmasını sağlamak üzere tasarlanmıştır. Azure AD'de yönetilen gruplar, bu talepleri yattırmak için gereken öznitelikleri içermez.
+>- Daha büyük kuruluşlarda, bir kullanıcının üyesi olduğu grup sayısı, Azure Etkin Dizin'inin belirtemeye ekeceği sınırı aşabilir. BIR SAML belirteci için 150 grup ve JWT için 200. Bu öngörülemeyen sonuçlara yol açabilir. Kullanıcılarınızın çok sayıda grup üyeliği varsa, talepte bulunan grupları uygulama için ilgili gruplara sınırlama seçeneğini kullanmanızı öneririz.  
+>- Yeni uygulama geliştirme için veya uygulamanın bunun için yapılandırılabildiği durumlarda ve iç içe grup desteğinin gerekli olmadığı durumlarda, uygulama içi yetkilendirmenin gruplardan çok uygulama rollerine dayanmasını öneririz.  Bu, belirteciiçine gitmek için gereken bilgi miktarını sınırlar, daha güvenli ve uygulama yapılandırması kullanıcı atama ayırır.
 
-## <a name="group-claims-for-applications-migrating-from-ad-fs-and-other-identity-providers"></a>AD FS ve diğer kimlik sağlayıcılarından geçiş yapan uygulamalar için Grup talepleri
+## <a name="group-claims-for-applications-migrating-from-ad-fs-and-other-identity-providers"></a>AD FS ve diğer kimlik sağlayıcılardan geçiş yapılan uygulamalar için grup talepleri
 
-AD FS kimlik doğrulaması için yapılandırılan birçok uygulama, Windows AD grup öznitelikleri biçimindeki grup üyeliği bilgilerini kullanır.   Bu öznitelikler, etki alanı adı veya Windows grup güvenlik tanımlayıcısı (Groupsıd) ile nitelenbilen sAMAccountName grubudur.  Uygulama AD FS ile federe olduğunda, AD FS Kullanıcı için grup üyeliklerini almak üzere TokenGroups işlevini kullanır.
+AD FS ile kimlik doğrulaması yapmak üzere yapılandırılan birçok uygulama, Windows AD grup öznitelikleri biçiminde grup üyelik bilgilerine dayanır.   Bu öznitelikler, alan adı ile nitelikli olabilecek grup sAMAccountName veya Windows Group Security Identifier (GroupSID) grubudur.  Uygulama AD FS ile federe olduğunda, AD FS kullanıcı için grup üyelikleri almak için TokenGroups işlevini kullanır.
 
-Aynı biçimdeki AD FS gereksinimlerine taşınan bir uygulama. Grup ve rol talepleri, Grup Azure Active Directory ObjectID yerine Active Directory tarafından eşitlenmiş olan etki alanı üyesi olan Azure Active Directory dağıtılabilir.
+AD FS'den taşınmış bir uygulamanın aynı biçimde taleplere ihtiyacı vardır. Grup ve rol talepleri, grubun Azure Etkin Dizin objectID'si yerine Active Directory'den eşitlenen etki alanı nitelikli sAMAccountName veya GroupSID'yi içeren Azure Active Directory'den yayılabilir.
 
 Grup talepleri için desteklenen biçimler şunlardır:
 
-- **Azure Active Directory grubu ObjectID** (tüm gruplar için kullanılabilir)
-- **sAMAccountName** (Active Directory eşitlenen gruplar için kullanılabilir)
-- **Netbiosdomain\samaccountname** (Active Directory ile eşitlenen gruplar için kullanılabilir)
-- **DNSEtkiAlanıAdı sAMAccountName** (Active Directory eşitlenen gruplar için kullanılabilir)
-- **Şirket Içi grup güvenlik tanımlayıcısı** (Active Directory ile eşitlenen gruplar için kullanılabilir)
+- **Azure Active Directory Group ObjectId** (Tüm gruplar için kullanılabilir)
+- **sAMAccountName** (Active Directory'den senkronize edilen gruplar için kullanılabilir)
+- **NetbiosDomain\sAMAccountName** (Active Directory'den senkronize edilmiş gruplar için kullanılabilir)
+- **DNSDomainName\sAMAccountName** (Active Directory'den senkronize edilen gruplar için kullanılabilir)
+- **On Premises Group Security Tanımlayıcı** (Active Directory'den eşitlenen gruplar için kullanılabilir)
 
 > [!NOTE]
-> sAMAccountName ve on-premises Group SID öznitelikleri yalnızca Active Directory 'ten eşitlenen grup nesnelerinde kullanılabilir.   Azure Active Directory veya Office365 içinde oluşturulan gruplar üzerinde kullanılamaz.   Eşitlenmiş şirket içi grup özniteliklerini almak için Azure Active Directory 'de yapılandırılan uygulamalar, onları yalnızca eşitlenmiş gruplar için alır.
+> sAMAccountName ve On Premises Group SID öznitelikleri yalnızca Active Directory'den eşitlenen Grup nesnelerinde kullanılabilir.   Azure Etkin Dizin veya Office365'te oluşturulan gruplarda kullanılamazlar.   Şirket içi grup özniteliklerinin senkronize edilmesi için Azure Active Directory'de yapılandırılan uygulamalar, bunları yalnızca eşitlenmiş gruplar için alır.
 
-## <a name="options-for-applications-to-consume-group-information"></a>Uygulamaların grup bilgilerini tüketmesi için seçenekler
+## <a name="options-for-applications-to-consume-group-information"></a>Grup bilgilerini tüketen uygulamalar için seçenekler
 
-Uygulamalar, kimliği doğrulanmış kullanıcı için grup bilgilerini almak üzere MS Graph Groups uç noktasını çağırabilir. Bu çağrı, bir kullanıcının üyesi olduğu tüm grupların, çok sayıda grup dahil olduğunda bile kullanılabilir olmasını sağlar.  Grup numaralandırması, daha sonra belirteç boyutu sınırlamalarından bağımsızdır.
+Uygulamalar, kimliği doğrulanan kullanıcı için grup bilgilerini elde etmek için MS Graph gruplarını uç nokta olarak arayabilir. Bu çağrı, ilgili çok sayıda grup olsa bile, bir kullanıcının üyesi olduğu tüm grupların kullanılabilir olmasını sağlar.  Grup numaralandırma daha sonra belirteç boyutu sınırlamalarından bağımsızdır.
 
-Ancak, var olan bir uygulama talepler aracılığıyla grup bilgilerini tüketmeyi bekliyorsa, Azure Active Directory bir dizi farklı talep biçimi ile yapılandırılabilir.  Aşağıdaki seçenekleri göz önünde bulundurun:
+Ancak, varolan bir uygulama talep yoluyla grup bilgilerini tüketmeyi bekliyorsa, Azure Etkin Dizini bir dizi farklı talep biçimiyle yapılandırılabilir.  Aşağıdaki seçenekleri göz önünde bulundurun:
 
-- Uygulama içi yetkilendirme amacıyla Grup üyeliği kullanılırken, ObjectID grubunu kullanmak tercih edilir. Azure Active Directory Grup ObjectID sabit ve benzersiz ve tüm gruplar için kullanılabilir.
-- Yetkilendirme için şirket içi grup sAMAccountName kullanılıyorsa, etki alanı nitelikli adlar kullanın;  ad çakışması daha az olabilir. sAMAccountName bir Active Directory etki alanı içinde benzersiz olabilir, ancak birden fazla Active Directory etki alanı bir Azure Active Directory kiracısıyla eşitlenirse, birden fazla grubun aynı ada sahip olması mümkün olur.
-- Grup üyeliği ve uygulama arasında bir yöneltme katmanı sağlamak için [uygulama rollerini](../../active-directory/develop/howto-add-app-roles-in-azure-ad-apps.md) kullanmayı düşünün.   Daha sonra uygulama, belirteçte rol çakışması temelinde iç yetkilendirme kararları verir.
-- Uygulama, Active Directory eşitlenen grup özniteliklerini almak üzere yapılandırıldıysa ve bir grup bu öznitelikleri içermiyorsa, taleplere dahil değildir.
-- Belirteçlerdeki grup talepleri, grup taleplerini uygulamaya atanan gruplarla sınırlamak için seçeneğinin kullanılması dışında iç içe gruplar içerir.  Bir Kullanıcı GroupB üyesiyse ve GroupB bir GroupA üyesiyse, Kullanıcı için Grup talepleri hem GroupA hem de GroupB 'yi içerecektir. Bir kuruluşun kullanıcıları çok sayıda grup üyeliğine sahip olduğunda, belirteçte listelenen grup sayısı belirteç boyutunu büyütebilir.  Azure Active Directory, SAML onaylamaları için 150 'e ve JWT için 200 ' e yayalacak grup sayısını sınırlar.  Bir Kullanıcı daha fazla sayıda grubun üyesiyse, gruplar atlanır ve bunun yerine grup bilgilerini almak için grafik uç noktasına bir bağlantı eklenir.
+- Grup üyeliğini uygulama içi yetkilendirme amacıyla kullanırken ObjectID grubu'nu kullanmak tercih edilir. Grup ObjectID değişmez ve Azure Etkin Dizini'nde benzersizdir ve tüm gruplar için kullanılabilir.
+- Yetkilendirme için şirket içi sAMAccountName grubunu kullanıyorsanız, alan nitelikli adlarını kullanın;  İsimlerin çakışma ihtimali daha az. sAMAccountName Bir Active Directory etki alanında benzersiz olabilir, ancak birden fazla Active Directory etki alanı bir Azure Active Directory kiracıile eşitlenirse, birden fazla grubun aynı ada sahip olma olasılığı vardır.
+- Grup üyeliği ve uygulama arasında bir yönlendirme katmanı sağlamak için [Uygulama Rolleri'ni](../../active-directory/develop/howto-add-app-roles-in-azure-ad-apps.md) kullanmayı düşünün.   Uygulama daha sonra belirteçteki rol istiridyelerine dayalı iç yetkilendirme kararları verir.
+- Uygulama, Etkin Dizin'den eşitlenen grup özniteliklerini almak için yapılandırılırsa ve bir Grup bu öznitelikleri içermiyorsa, taleplere dahil edilmez.
+- Grup taleplerini belirteçlerde, grup taleplerini uygulamaya atanan gruplarla sınırlama seçeneğini kullanmadışında iç içe olan grupları içerir.  Bir kullanıcı GroupB üyesiyse ve GroupB GroupA üyesiyse, kullanıcı için grup talepleri hem GroupA hem de GroupB içerir. Bir kuruluşun kullanıcıları çok sayıda grup üyeliğine sahipse, belirteçte listelenen grup sayısı belirteç boyutunu büyütebilir.  Azure Etkin Dizin, bir belirteç halinde yayacakları grup sayısını SAML iddiaları için 150 ve JWT için 200 ile sınırlar.  Bir kullanıcı daha fazla sayıda grubun üyesiyse, gruplar atlanır ve grup bilgilerini elde etmek için Grafik bitiş noktasına bir bağlantı dahil edilir.
 
-## <a name="prerequisites-for-using-group-attributes-synchronized-from-active-directory"></a>Active Directory 'ten eşitlenen grup özniteliklerini kullanma önkoşulları
+## <a name="prerequisites-for-using-group-attributes-synchronized-from-active-directory"></a>Active Directory'den senkronize edilen Grup özniteliklerini kullanmak için ön koşullar
 
-ObjectID biçimini kullanırsanız, Grup üyeliği talepleri herhangi bir grup için belirteçlerde yayılabilir. Grup taleplerini grup ObjectID dışında bir biçimde kullanmak için, Active Directory Azure AD Connect kullanılarak grupların eşitlenmesi gerekir.
+ObjectId biçimini kullanırsanız, grup üyelik talepleri herhangi bir grup için belirteçler halinde yayılabilir. Grup taleplerini ObjectId grubu dışındaki biçimlerde kullanmak için, grupların Azure AD Connect kullanarak Active Directory'den eşitlenmiş olması gerekir.
 
-Active Directory grupları için Grup adlarını yayma Azure Active Directory yapılandırmanın iki adımı vardır.
+Azure Etkin Dizini'ni, Etkin Dizin Grupları için grup adları yatmak üzere yapılandırmak için iki adım vardır.
 
-1. **Active Directory Grup adlarını eşitler** Azure Active Directory, Grup veya rol taleplerinde grup adlarını veya şirket grubu SID 'sini yaymadan önce, gerekli özniteliklerin Active Directory eşitlenmesi gerekir.  Azure AD Connect Version 1.2.70 veya üstünü çalıştırıyor olmanız gerekir.   Daha eski Azure AD Connect sürümleri, Grup nesnelerini Active Directory eşitler, ancak gerekli Grup adı özniteliklerini içermez.  Geçerli sürüme yükseltin.
+1. **Active Directory'den grup adlarını eşitle** Azure Etkin Dizin grup adlarını veya grup veya rol iddialarında sid grubu veya şirket içi grup yatsa, gerekli özniteliklerin Active Directory'den eşitlenmiş olması gerekir.  Azure AD Connect sürümünü 1.2.70 veya sonraki sürümde çalışıyor olmalısınız.   Azure AD Connect'in 1,2.70'ten önceki sürümleri Active Directory'deki grup nesnelerini eşitler, ancak gerekli grup adı özniteliklerini içermez.  Geçerli sürüme yükseltin.
 
-2. **Belirteçleri grup taleplerini içerecek şekilde Azure Active Directory için uygulama kaydını yapılandırma** Grup talepleri, portalın kurumsal uygulamalar bölümünde veya uygulama kayıtları bölümünde uygulama bildirimi kullanılarak yapılandırılabilir.  Uygulama bildiriminde grup taleplerini yapılandırmak için aşağıdaki "grup öznitelikleri için Azure Active Directory Uygulama kaydını yapılandırma" bölümüne bakın.
+2. **Azure Etkin Dizini'ndeki uygulama kaydını, grup taleplerini belirteçlere dahil etmek üzere yapılandırın** Grup talepleri portalın Kurumsal Uygulamalar bölümünde veya Uygulama Kayıtları bölümündeki Uygulama Bildirimi kullanılarak yapılandırılabilir.  Uygulama bildiriminde grup taleplerini yapılandırmak için aşağıdaki "Grup öznitelikleri için Azure Active Directory Application Registration yapılandırma" adlı yapıya bakın.
 
-## <a name="add-group-claims-to-tokens-for-saml-applications-using-sso-configuration"></a>SSO yapılandırması kullanarak SAML uygulamaları için belirteçlere grup talepleri ekleme
+## <a name="add-group-claims-to-tokens-for-saml-applications-using-sso-configuration"></a>SSO yapılandırmasını kullanarak SAML uygulamaları için grup taleplerine grup talepleri ekleme
 
-Galeri veya Galeri dışı bir SAML uygulamasının grup taleplerini yapılandırmak için, **Kurumsal uygulamaları**açın, listede uygulamaya tıklayın, **Çoklu oturum açma yapılandırması**' nı seçin ve ardından **Kullanıcı öznitelikleri & talepler**' i seçin.
+Galeri veya Galeri Olmayan SAML uygulaması için Grup Taleplerini yapılandırmak için, **Kurumsal Uygulamaları**açın, listedeki uygulamayı tıklatın, **Yapılandırmada Tek Oturum Açma'yı**seçin ve ardından Kullanıcı **Öznitelikleri & Talepleri'ni**seçin.
 
-**Grup talebi ekle** ' ye tıklayın  
+Grup **talebi ekle'ye** tıklayın  
 
-![talepler Kullanıcı arabirimi](media/how-to-connect-fed-group-claims/group-claims-ui-1.png)
+![iddia UI](media/how-to-connect-fed-group-claims/group-claims-ui-1.png)
 
-Simgeye dahil edilecek grupları seçmek için radyo düğmelerini kullanın
+Belirteçte hangi grupların yer alması gerektiğini seçmek için radyo düğmelerini kullanın
 
-![talepler Kullanıcı arabirimi](media/how-to-connect-fed-group-claims/group-claims-ui-2.png)
+![iddia UI](media/how-to-connect-fed-group-claims/group-claims-ui-2.png)
 
 | Seçim | Açıklama |
 |----------|-------------|
-| **Tüm gruplar** | Güvenlik grupları ve dağıtım listeleri ve rolleri yayar.  |
-| **Güvenlik grupları** | Kullanıcının gruplar talebinde üyesi olduğu güvenlik gruplarını yayar |
-| **Dizin rolleri** | Kullanıcıya Dizin rolleri atanırsa, bunlar ' WDS ' talebi olarak dağıtılır (gruplar talebi yayınlanmaz) |
-| **Uygulamaya atanan gruplar** | Yalnızca uygulamaya açıkça atanmış olan grupları yayar ve Kullanıcı |
+| **Tüm gruplar** | Güvenlik grupları ve dağıtım listeleri ve rolleri yayır.  |
+| **Güvenlik grupları** | Kullanıcının üyesi olduğu güvenlik gruplarını gruplara yayır iddia |
+| **Dizin rolleri** | Kullanıcıya dizin rolleri atanmışsa, bunlar 'wids' iddiası olarak yayılır (grup iddiası yayılamaz) |
+| **Uygulamaya atanan gruplar** | Yalnızca uygulamaya açıkça atanan grupları yayır ve kullanıcı |
 
-Örneğin, kullanıcının üyesi olduğu tüm güvenlik gruplarını yayma için güvenlik grupları ' nı seçin.
+Örneğin, kullanıcının üyesi olduğu tüm Güvenlik Gruplarını yalamak için Güvenlik Grupları'nı seçin
 
-![talepler Kullanıcı arabirimi](media/how-to-connect-fed-group-claims/group-claims-ui-3.png)
+![iddia UI](media/how-to-connect-fed-group-claims/group-claims-ui-3.png)
 
-Azure AD ObjectIDs yerine Active Directory eşitlenen Active Directory öznitelikleri kullanarak grupları yaymak için, açılan listeden gerekli biçimi seçin. Taleplere yalnızca Active Directory eşitlenen gruplar dahil edilir.
+Azure AD objectID'leri yerine Active Directory'den eşitlenen Active Directory özniteliklerini kullanan gruplar oluşturmak için açılır yerden gerekli biçimi seçin. Taleplere yalnızca Active Directory'den eşitlenen gruplar dahil edilir.
 
-![talepler Kullanıcı arabirimi](media/how-to-connect-fed-group-claims/group-claims-ui-4.png)
+![iddia UI](media/how-to-connect-fed-group-claims/group-claims-ui-4.png)
 
-Yalnızca uygulamaya atanan grupları yaymak için, **uygulamaya atanan grupları** seçin
+Yalnızca uygulamaya atanan grupları yaymak **için, uygulamaya Atanan Gruplar'ı** seçin
 
-![talepler Kullanıcı arabirimi](media/how-to-connect-fed-group-claims/group-claims-ui-4-1.png)
+![iddia UI](media/how-to-connect-fed-group-claims/group-claims-ui-4-1.png)
 
-Uygulamaya atanan gruplar belirtece dahil edilir.  Kullanıcının üyesi olduğu diğer gruplar da atlanır.  Bu seçenekle iç içe gruplar dahil edilmez ve Kullanıcı, uygulamaya atanan grubun doğrudan bir üyesi olmalıdır.
+Uygulamaya atanan gruplar belirtecidahil edilecektir.  Kullanıcının üyesi olduğu diğer gruplar atlanacaktır.  Bu seçenek ile iç içe gruplar dahil edilmez ve kullanıcı uygulamaya atanan grubun doğrudan bir üyesi olmalıdır.
 
-Uygulamaya atanan grupları değiştirmek için, **Kurumsal uygulamalar** listesinden uygulamayı seçin ve ardından uygulamanın sol taraftaki gezinti menüsünden **Kullanıcılar ve gruplar** ' a tıklayın.
+Uygulamaya atanan grupları değiştirmek **için, Kurumsal Uygulamalar** listesinden uygulamayı seçin ve ardından uygulamanın sol daki gezinme menüsünden **Kullanıcılar ve Gruplar'ı** tıklatın.
 
-Uygulamalara grup atamasını yönetme ayrıntıları için [bir uygulamaya Kullanıcı ve grup atamaya yönelik belge yöntemlerine](../../active-directory/manage-apps/methods-for-assigning-users-and-groups.md#assign-groups) bakın.
+Uygulamalara grup atamasını yönetme ayrıntıları için [bir kullanıcıyı veya grubu kurumsal bir uygulamaya atama](../../active-directory/manage-apps/assign-user-or-group-access-portal.md) kalım belgesine bakın.
 
 ### <a name="advanced-options"></a>Gelişmiş seçenekler
 
-Grup taleplerinin Yayınlanma yöntemi, Gelişmiş Seçenekler altındaki ayarlar tarafından değiştirilebilir
+Grup taleplerinin yayma şekli Gelişmiş seçenekler altındaki ayarlarla değiştirilebilir
 
-Grup talebinin adını özelleştirin: seçilirse, Grup talepleri için farklı bir talep türü belirtilebilir.   Ad alanına talep türünü ve isteğe bağlı ad alanını ad alanı alanında girin.
+Grup talebinin adını özelleştirin: Seçilirse, grup talepleri için farklı bir talep türü belirtilebilir.   Ad alanına talep türünü ve ad alanı alanına talep için isteğe bağlı ad alanını girin.
 
-![talepler Kullanıcı arabirimi](media/how-to-connect-fed-group-claims/group-claims-ui-5.png)
+![iddia UI](media/how-to-connect-fed-group-claims/group-claims-ui-5.png)
 
-Bazı uygulamalar, Grup üyeliği bilgilerinin ' rol ' talebinde görünmesini gerektirir. İsteğe bağlı olarak, ' grupları bir rol taleplerini yay ' kutusunu işaretleyerek kullanıcının gruplarını roller olarak görüntüleyebilirsiniz.
+Bazı uygulamalar, grup üyelik bilgilerinin 'rol' iddiasında görünmesini gerektirir. İsteğe bağlı olarak , 'Rol iddialarını gruphaline erdir' kutusunu işaretleyerek kullanıcının gruplarını rol olarak yatabilirsiniz.
 
-![talepler Kullanıcı arabirimi](media/how-to-connect-fed-group-claims/group-claims-ui-6.png)
+![iddia UI](media/how-to-connect-fed-group-claims/group-claims-ui-6.png)
 
 > [!NOTE]
-> Grup verilerini roller olarak yayma seçeneği kullanılırsa, rol talebinde yalnızca gruplar görüntülenir.  Kullanıcının atandığı tüm uygulama rolleri rol talebinde görünmez.
+> Grup verilerini rol olarak yayacak seçeneği kullanılırsa, rol iddiasında yalnızca gruplar görünür.  Kullanıcının atandığı Uygulama Rolleri rol talebinde görünmez.
 
-### <a name="edit-the-group-claims-configuration"></a>Grup talep yapılandırmasını düzenleme
+### <a name="edit-the-group-claims-configuration"></a>Grup taleplerini yapılandırmasını düzenleme
 
-Kullanıcı özniteliklerine & talep yapılandırmasına bir grup talebi yapılandırması eklendikten sonra, bir grup talebi ekleme seçeneği gri kalır.  Grup talebi yapılandırmasını değiştirmek için **ek talep** listesindeki grup talebine tıklayın.
+Kullanıcı Öznitelikleri & Talepler yapılandırmasına bir grup talebi yapılandırması eklendikten sonra, grup talebi ekleme seçeneği soluklanır.  Grup talep yapılandırmasını değiştirmek için Ek **talepler** listesindeki grup talebine tıklayın.
 
-![talepler Kullanıcı arabirimi](media/how-to-connect-fed-group-claims/group-claims-ui-7.png)
+![iddia UI](media/how-to-connect-fed-group-claims/group-claims-ui-7.png)
 
-## <a name="configure-the-azure-ad-application-registration-for-group-attributes"></a>Grup öznitelikleri için Azure AD uygulama kaydını yapılandırma
+## <a name="configure-the-azure-ad-application-registration-for-group-attributes"></a>Grup öznitelikleri için Azure AD Uygulama Kaydını yapılandırma
 
-Grup talepleri, [uygulama bildiriminin](../../active-directory/develop/reference-app-manifest.md) [isteğe bağlı talepler](../../active-directory/develop/active-directory-optional-claims.md) bölümünde de yapılandırılabilir.
+Grup talepleri, [Uygulama Bildirimi'nin](../../active-directory/develop/reference-app-manifest.md) [İsteğe Bağlı Talepler](../../active-directory/develop/active-directory-optional-claims.md) bölümünde de yapılandırılabilir.
 
-1. Portal-> Azure Active Directory-> uygulama kayıtları-> Uygulama-> bildirimini seçin
+1. >Azure Active Directory -> Uygulama Kayıtları->Select Application->Manifestosu
 
-2. GroupMembershipClaim 'i değiştirerek grup üyeliği taleplerini etkinleştirin
+2. Grubu değiştirerek grup üyelik taleplerini etkinleştirinÜyelikClaim
 
 Geçerli değerler:
 
 | Seçim | Açıklama |
 |----------|-------------|
-| **Bütün** | Güvenlik gruplarını, dağıtım listelerini ve rolleri yayar |
-| **"SecurityGroup"** | Kullanıcının gruplar talebinde üyesi olduğu güvenlik gruplarını yayar |
-| **"DirectoryRole** | Kullanıcıya Dizin rolleri atanırsa, bunlar ' WDS ' talebi olarak dağıtılır (gruplar talebi yayınlanmaz) |
-| **"ApplicationGroup** | Yalnızca uygulamaya açıkça atanmış olan grupları yayar ve Kullanıcı |
+| **"Tümü"** | Güvenlik grupları, dağıtım listeleri ve rolleri yayır |
+| **"Güvenlik Grubu"** | Kullanıcının üyesi olduğu güvenlik gruplarını gruplara yayır iddia |
+| **"DizinRol** | Kullanıcıya dizin rolleri atanmışsa, bunlar 'wids' iddiası olarak yayılır (grup iddiası yayılamaz) |
+| **"Uygulama Grubu** | Yalnızca uygulamaya açıkça atanan grupları yayır ve kullanıcı |
 
    Örnek:
 
@@ -153,20 +153,20 @@ Geçerli değerler:
    "groupMembershipClaims": "SecurityGroup"
    ```
 
-   Varsayılan olarak grup ObjectID 'Ler, Grup talep değeri ' ne yayılır.  Talep değerini şirket içi grup özniteliklerini içerecek şekilde değiştirmek veya talep türünü rol olarak değiştirmek için, Optionalclaim yapılandırması ' nı aşağıdaki gibi kullanın:
+   Varsayılan olarak Grup ObjectIDs grup talep değeri yayılacak.  Talep değerini şirket grup özniteliklerini içerecek şekilde değiştirmek veya talep türünü role değiştirmek için İsteğe Bağlı Talepler yapılandırmasını aşağıdaki gibi kullanın:
 
-3. Grup adı yapılandırması isteğe bağlı taleplerini ayarlayın.
+3. Grup adı yapılandırması isteğe bağlı talepleri ayarlayın.
 
-   Belirteçteki grupların şirket içi AD grubu özniteliklerini içermesini istiyorsanız, isteğe bağlı talepler bölümünde hangi belirteç türü isteğe bağlı talebin uygulanacağını belirtin.  Birden çok belirteç türü listelenebilir:
+   Belirteçteki grupların şirket içi AD grubu özniteliklerini içermesini istiyorsanız, isteğe bağlı talepler bölümünde hangi belirteç türüne isteğe bağlı talep uygulanması gerektiğini belirtin.  Birden çok belirteç türü listelenebilir:
 
-   - OıDC KIMLIK belirtecinin ıdtoken 'ı
-   - OAuth/OıDC erişim belirteci için accessToken
+   - OIDC kimlik belirteci için idToken
+   - oAuth/OIDC erişim jetonu için Token'e erişin
    - SAML belirteçleri için Saml2Token.
 
    > [!NOTE]
-   > Saml2Token türü SAML 1.1 ve SAML 2.0 biçim belirteçleri için geçerlidir
+   > Saml2Token türü hem SAML1.1 hem de SAML2.0 biçim belirteçleri için geçerlidir
 
-   Her ilgili belirteç türü için, gruplar talebini, bildirimdeki Optionalclaim bölümünü kullanacak şekilde değiştirin. Optionalclaim şeması aşağıdaki gibidir:
+   İlgili her belirteç türü için, bildirimdeki İsteğe Bağlı Talepler bölümünü kullanma iddiasını grupları değiştirin. İsteğe Bağlı İddialar şema aşağıdaki gibidir:
 
    ```json
    {
@@ -177,23 +177,23 @@ Geçerli değerler:
    }
    ```
 
-   | İsteğe bağlı talepler şeması | Değer |
+   | İsteğe Bağlı İddialar Şeması | Değer |
    |----------|-------------|
-   | **ada** | "Gruplar" olmalıdır |
-   | **kaynaktaki** | Kullanılmıyor. Null değerini atla veya belirt |
-   | **dir** | Kullanılmıyor. Yoksay veya false belirt |
-   | **AdditionalProperties** | Ek özelliklerin listesi.  Geçerli seçenekler şunlardır "sam_account_name", "dns_domain_and_sam_account_name", "netbios_domain_and_sam_account_name", "emit_as_roles" |
+   | **Adı:** | "Gruplar" olmalıdır |
+   | **Kaynak:** | Kullanılmadı. Geçersiz kılın |
+   | **Temel:** | Kullanılmadı. Yanlışı atla veya belirt |
+   | **ek Özellikler:** | Ek özelliklerin listesi.  Geçerli seçenekler "sam_account_name", "dns_domain_and_sam_account_name", "netbios_domain_and_sam_account_name", "emit_as_roles" |
 
-   AdditionalProperties içinde "sam_account_name", "dns_domain_and_sam_account_name", "netbios_domain_and_sam_account_name" yalnızca biri gereklidir.  Birden fazla varsa, ilki kullanılır ve diğerleri yok sayılır.
+   Ek Özellikler'de yalnızca "sam_account_name", "dns_domain_and_sam_account_name", "netbios_domain_and_sam_account_name" gerekir.  Birden fazla varsa, ilk kullanılır ve diğerleri göz ardı.
 
-   Bazı uygulamalar, rol talebinde Kullanıcı hakkında grup bilgileri gerektirir.  Talep türünü bir grup talebine bir rol talebine değiştirmek için, ek özelliklere "emit_as_roles" ekleyin.  Grup değerleri rol talebinde yayınlanacaktır.
+   Bazı uygulamalar, rol talebindeki kullanıcı hakkında grup bilgileri gerektirir.  Talep türünü bir grup talebinden bir rol talebine değiştirmek için ek özelliklere "emit_as_roles" ekleyin.  Grup değerleri rol talebinde yayılacaktır.
 
    > [!NOTE]
-   > "Emit_as_roles" kullanılırsa, Kullanıcı atandığı yapılandırılmış herhangi bir uygulama rolü rol talebinde görünmez
+   > Kullanıcının atandığı yapılandırılan herhangi bir Uygulama Rolü "emit_as_roles" kullanılırsa, rol iddiasında görünmez
 
 ### <a name="examples"></a>Örnekler
 
-Grupları DNSEtkiAlanıAdı sAMAccountName biçimindeki OAuth erişim belirteçlerinde grup adları olarak yay
+Grupları OAuth erişim belirteçleri olarak grup adları olarak dnsDomainName\SAMAccountName biçiminde yaslar
 
 ```json
 "optionalClaims": {
@@ -204,7 +204,7 @@ Grupları DNSEtkiAlanıAdı sAMAccountName biçimindeki OAuth erişim belirteçl
 }
  ```
 
-SAML ve OıDC KIMLIK belirteçlerinde rol talebi olarak netbiosDomain\samAccountName biçiminde döndürülecek grup adlarını yayma:
+SAML ve OIDC ID Belirteçleri'ndeki rollerin iddia ettiği gibi netbiosDomain\samAccountName formatında döndürülecek grup adlarını yalamak için:
 
 ```json
 "optionalClaims": {
@@ -222,6 +222,6 @@ SAML ve OıDC KIMLIK belirteçlerinde rol talebi olarak netbiosDomain\samAccount
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Bir uygulamaya Kullanıcı ve Grup atama yöntemleri](../../active-directory/manage-apps/methods-for-assigning-users-and-groups.md#assign-groups)
+[Bir kurumsal uygulamaya kullanıcı veya grup atama](../../active-directory/manage-apps/assign-user-or-group-access-portal.md)
 
 [Rol taleplerini yapılandırma](../../active-directory/develop/active-directory-enterprise-app-role-management.md)

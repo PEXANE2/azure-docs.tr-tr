@@ -1,6 +1,6 @@
 ---
-title: Azure Data Box Edge cihazınızı döndürün veya değiştirin | Microsoft Docs
-description: Azure Data Box Edge cihazının nasıl geri alınacağını veya değiştirileceğini açıklar.
+title: Azure Veri Kutusu Kenarı aygıtınızı iade edin veya değiştirin | Microsoft Dokümanlar
+description: Azure Veri Kutusu Kenarı aygıtının nasıl döndürüldebildiğini veya değiştirilmeye devam edilebildiğini açıklar.
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,116 +9,116 @@ ms.topic: article
 ms.date: 02/26/2020
 ms.author: alkohli
 ms.openlocfilehash: 521277b2eed7edfba016f6a80e8f877decfb0ac5
-ms.sourcegitcommit: 96dc60c7eb4f210cacc78de88c9527f302f141a9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77651109"
 ---
-# <a name="return-or-replace-your-azure-data-box-edge-device"></a>Azure Data Box Edge cihazınızı döndürme veya değiştirme
+# <a name="return-or-replace-your-azure-data-box-edge-device"></a>Azure Veri Kutusu Kenarı aygıtınızı iade edin veya değiştirin
 
-Bu makalede, verileri silme ve sonra Azure Data Box Edge cihazınızı döndürme açıklanmaktadır. Cihazı geri aldıktan sonra, cihazla ilişkili kaynağı da silebilir veya bir değiştirme cihazını sipariş edebilirsiniz.
+Bu makalede, verileri nasıl silip azure veri kutusu kenar aygıtınızı nasıl döndürebilirsiniz. Aygıtı iade ettikten sonra, aygıtla ilişkili kaynağı da silebilir veya yeni bir aygıt sipariş edebilirsiniz.
 
 Bu makalede şunları öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Cihazdaki veri disklerinin verileri silme
-> * Cihazınızı döndürmek için bir destek bileti açın
-> * Cihazı paketleme ve bir toplama zamanlama
-> * Azure portal kaynağı silme
-> * Yeni bir cihaz alma
+> * Aygıttaki veri disklerinden verileri silme
+> * Cihazınızı iade etmek için destek bileti açma
+> * Cihazı topla ve bir paket alma programı
+> * Azure portalındaki kaynağı silme
+> * Yeni bir cihaz alın
 
-## <a name="erase-data-from-the-device"></a>Cihazdan verileri silme
+## <a name="erase-data-from-the-device"></a>Aygıttan veri silme
 
-Cihazınızın veri disklerinin verilerini silmek için cihazınızı sıfırlamanız gerekir. Yerel Web Kullanıcı arabirimini veya PowerShell arabirimini kullanarak cihazınızı sıfırlayabilirsiniz.
+Cihazınızın veri disklerinden verileri silmek için aygıtınızı sıfırlamanız gerekir. Yerel web ui veya PowerShell arabirimini kullanarak cihazınızı sıfırlayabilirsiniz.
 
-Sıfırlamadan önce, gerekirse, cihazdaki yerel verilerin bir kopyasını oluşturun. Cihazdan verileri bir Azure depolama kapsayıcısına kopyalayabilirsiniz.
+Sıfırlamadan önce, gerekirse aygıttaki yerel verilerin bir kopyasını oluşturun. Verileri aygıttan bir Azure Depolama kapsayıcısına kopyalayabilirsiniz.
 
-Yerel Web Kullanıcı arabirimini kullanarak cihazınızı sıfırlamak için aşağıdaki adımları uygulayın.
+Yerel web web ui kullanarak cihazınızı sıfırlamak için aşağıdaki adımları izleyin.
 
-1. Yerel Web Kullanıcı arabiriminde **bakım > cihaz sıfırlaması**' na gidin.
-2. **Cihazı Sıfırla**' yı seçin.
+1. Yerel web web web ui'sinde, **Maintenance > Device sıfırlama**adresine gidin.
+2. **Cihazı Sıfırla'yı**seçin.
 
     ![Cihaz sıfırlama](media/data-box-edge-return-device/device-reset-1.png)
 
-3. Onay istendiğinde, uyarıyı gözden geçirin ve devam etmek için **Evet** ' i seçin.
+3. Onay istendiğinde, uyarıyı gözden geçirin ve devam etmek için **Evet'i** seçin.
 
-    ![Sıfırlamayı Onayla](media/data-box-edge-return-device/device-reset-2.png)  
+    ![Sıfırlamayı onayla](media/data-box-edge-return-device/device-reset-2.png)  
 
-Sıfırlama, verileri cihaz veri disklerinin dışına siler. Bu işlem, cihazınızdaki veri miktarına bağlı olarak yaklaşık 30-40 dakika sürer.
+Sıfırlama, aygıt veri disksindeki verileri siler. Cihazınızdaki veri miktarına bağlı olarak, bu işlem yaklaşık 30-40 dakika sürer.
 
-Alternatif olarak, cihazın PowerShell arabirimine bağlanın ve veri disklerinden verileri silmek için `Reset-HcsAppliance` cmdlet 'ini kullanın. Daha fazla bilgi için bkz. [cihazınızı sıfırlama](data-box-edge-connect-powershell-interface.md#reset-your-device).
+Alternatif olarak, aygıtın PowerShell arabirimine `Reset-HcsAppliance` bağlanın ve verileri veri disklerinden silmek için cmdlet'i kullanın. Daha fazla bilgi için [bkz.](data-box-edge-connect-powershell-interface.md#reset-your-device)
 
 > [!NOTE]
-> - Yeni bir cihaza değiş tokuş yapıyorsanız veya yükseltiyorsanız, Cihazınızı yalnızca yeni cihazı aldıktan sonra sıfırlamanız önerilir.
-> - Cihaz sıfırlaması yalnızca cihazdaki tüm yerel verileri siler. Buluttaki veriler silinmez ve [ücretleri](https://azure.microsoft.com/pricing/details/storage/)toplar. Bu verilerin, [Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/)gibi bir bulut depolama yönetim aracı kullanılarak ayrı olarak silinmesi gerekir.
+> - Yeni bir aygıtla alışveriş için değiştiriyor veya yeni bir cihaza modernizasyonu yapıyorsanız, cihazınızı ancak yeni aygıtı aldıktan sonra sıfırlamanızı öneririz.
+> - Aygıt sıfırlama yalnızca aygıttaki tüm yerel verileri siler. Buluttaki veriler silinmez ve [ücret](https://azure.microsoft.com/pricing/details/storage/)toplar. Bu verilerin [Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/)gibi bir bulut depolama yönetimi aracı kullanılarak ayrı olarak silinmesi gerekir.
 
-## <a name="open-a-support-ticket"></a>Bir destek bileti açın
+## <a name="open-a-support-ticket"></a>Destek bileti açma
 
-Geri dönüş işlemini başlatmak için aşağıdaki adımları uygulayın.
+İade işlemini başlatmak için aşağıdaki adımları izleyin.
 
-1. Cihazı döndürmek istediğinizi belirten Microsoft Desteği bir destek bileti açın. **Data Box Edge donanım**olarak sorun türünü seçin.
+1. Cihazı iade etmek istediğinizi belirten Microsoft Destek ile bir Destek bileti açın. **Veri Kutusu Kenar Donanımı**olarak sorun türünü seçin.
 
     ![Destek bileti açma](media/data-box-edge-return-device/open-support-ticket-1.png)  
 
-2. Bir Microsoft Desteği mühendisi sizinle iletişim kuracaktır. Sevkıyat ayrıntılarını belirtin.
-3. İade sevk etme kutusuna ihtiyacınız varsa, isteği isteyebilirsiniz. Sorunun **geri dönmesi Için** **Evet** yanıtını yazın.
+2. Bir Microsoft Destek mühendisi sizinle iletişim erecektir. Sevkiyat ayrıntılarını sağlayın.
+3. İade gönderim kutusuna ihtiyacınız varsa, bunu talep edebilirsiniz. Soruya **Evet** **yanıtı Dönmek için boş bir kutu gerekir.**
 
 
-## <a name="schedule-a-pickup"></a>Çekme zamanlaması
+## <a name="schedule-a-pickup"></a>Bir teslim alma planı
 
-1. Cihazı kapatın. Yerel Web Kullanıcı arabiriminde **bakım > Güç ayarları**' na gidin.
-2. **Kapat ' ı**seçin. Onay istendiğinde, devam etmek için **Evet** ' e tıklayın. Daha fazla bilgi için bkz. [güç yönetimi](data-box-gateway-manage-access-power-connectivity-mode.md#manage-power).
-3. Güç kablolarını çıkarın ve cihazdaki tüm ağ kablolarını kaldırın.
-4. Kendi kutusunu veya Azure 'dan aldığınız boş kutuyu kullanarak sevkiyat paketini hazırlayın. Cihazı ve cihazla birlikte gelen güç gücünü kutuya yerleştirin.
-5. Paket üzerinde Azure 'dan aldığınız sevkiyat etiketini AFBir şekilde düzeltir.
-6. Bölgenizdeki taşıyıcıdan bir kargo toplama randevusu alın. Cihaz bıze döndürülürken, taşıyıcınızın UPS veya FedEx olması mümkündür. KESINTISIZ bir çekme planı zamanlamak için:
+1. Cihazı kapatın. Yerel web ui'sinde, **Bakım > Güç ayarlarına**gidin.
+2. **Kapat'ı**seçin. Onay istendiğinde, devam etmek için **Evet'i** tıklatın. Daha fazla bilgi için [bkz.](data-box-gateway-manage-access-power-connectivity-mode.md#manage-power)
+3. Güç kablolarını çıkarın ve tüm ağ kablolarını cihazdan çıkarın.
+4. Kendi kutunuzu veya Azure'dan aldığınız boş kutuyu kullanarak gönderi paketini hazırlayın. Cihazı ve cihazla birlikte gönderilen güç kablolarını kutuya yerleştirin.
+5. Pakete Azure'dan aldığınız gönderi etiketini yapıştırın.
+6. Bölgenizdeki taşıyıcıdan bir kargo toplama randevusu alın. Cihazı ABD'de iade ediyorsanız, operatörünüz UPS veya FedEx olabilir. UPS ile bir alım planlamak için:
 
-    1. Yerel UPS (ülkeye özel ücretsiz numara) çağırın.
-    2. Çağrınızda, basılı etiketinizde gösterildiği gibi ters Sevkiyat izleme numarasını tırnak içine edin.
-    3. İzleme numarası tırnak işareti yoksa, UPS toplama sırasında ek ücret ödemeniz gerekir.
+    1. Yerel UPS'i (ülkeye özel ücretsiz numara) arayın.
+    2. Aramanızda, yazdırılan etiketinizde gösterildiği gibi ters sevkiyat takip numarasını alıntı.
+    3. Takip numarası belirtilmiş değilse, UPS teslim alma sırasında ek bir ücret ödemenizi gerektirir.
 
-    Toplama zamanlamak yerine, en yakın bırakma konumundaki Data Box Edge de bırakabilirsiniz.
+    Alıcıyı planlamak yerine, Veri Kutusu Kenarını en yakın bırakma konumuna da bırakabilirsiniz.
 
-## <a name="delete-the-resource"></a>Kaynağı Sil
+## <a name="delete-the-resource"></a>Kaynağı silme
 
-Cihaz Azure veri merkezinde alındıktan sonra, cihaz hasar veya herhangi bir değişiklik işareti için denetlenir.
+Cihaz Azure veri merkezinden alındıktan sonra, cihaz hasar veya kurcalama belirtisi olup olmadığı denetlenir.
 
-- Cihaz bozulmadan ve iyi bir şekle ulaştığında, faturalandırma ölçümü o kaynak için duraklar. Microsoft Desteği, cihazın döndürüldüğünden emin olmak için sizinle iletişim kuracaktır. Daha sonra Azure portal cihazla ilişkili kaynağı silebilirsiniz.
-- Cihaz önemli ölçüde hasar görmüşse, cezaları uygulanabilir. Ayrıntılar için bkz. [kayıp veya hasarlı cihaz](https://azure.microsoft.com/pricing/details/databox/edge/) ve [ürün hizmet koşulları](https://www.microsoft.com/licensing/product-licensing/products)hakkında SSS.  
-
-
-Azure portal cihazı silebilirsiniz:
--   Siparişi yerleştirdikten ve cihaz Microsoft tarafından hazırlanmadan önce.
--   Cihazı Microsoft 'a döndürdüyseniz, Azure veri merkezinde fiziksel incelemeyi geçirir ve cihazın döndürüldüğünden emin olmak için çağrılar Microsoft Desteği.
-
-Cihazı başka bir abonelik veya konuma karşı etkinleştirdiyseniz, Microsoft siparişinizi bir iş günü içinde yeni abonelik veya konuma taşır. Sipariş taşındıktan sonra bu kaynağı silebilirsiniz.
+- Aygıt sağlam ve iyi durumda gelirse, faturaölçer ibu kaynak için durur. Microsoft Destek, aygıtın döndürüldüğünü onaylamak için sizinle temasa geçer. Daha sonra Azure portalındaki aygıtla ilişkili kaynağı silebilirsiniz.
+- Cihaz önemli ölçüde hasar görürse, para cezaları uygulanabilir. Ayrıntılar için, [kaybolan veya hasar gören cihazla ilgili SSS'ye](https://azure.microsoft.com/pricing/details/databox/edge/) ve [Ürün Hizmet Şartları'na](https://www.microsoft.com/licensing/product-licensing/products)bakın.  
 
 
-Azure portal, cihazı ve kaynağı silmek için aşağıdaki adımları uygulayın.
+Aygıtı Azure portalında silebilirsiniz:
+-   Siparişi verdikten sonra ve cihaz Microsoft tarafından hazırlanmadan önce.
+-   Aygıtı Microsoft'a iade ettikten sonra, Azure veri merkezinde fiziksel denetimden geçer ve microsoft destek, aygıtın döndürüldünden onay almak için çağrılarda bulunur.
 
-1. Azure portal, kaynağına gidin ve **genel bakış**' a bakın. Komut çubuğundan **Sil**' i seçin.
+Aygıtı başka bir aboneye veya konuma göre etkinleştirdiyseniz, Microsoft siparişinizi bir iş günü içinde yeni aboneye veya konuma taşır. Sipariş taşındıktan sonra bu kaynağı silebilirsiniz.
 
-    ![Sil ' i seçin](media/data-box-edge-return-device/delete-resource-1.png)
 
-2. **Cihazı Sil** dikey penceresinde, silmek istediğiniz cihazın adını yazın ve **Sil**' i seçin.
+Azure portalındaki aygıtı ve kaynağı silmek için aşağıdaki adımları izleyin.
+
+1. Azure portalında kaynağınıza gidin ve ardından **Genel Bakış'a gidin.** Komut çubuğundan **Sil'i**seçin.
+
+    ![Sil'i seçin](media/data-box-edge-return-device/delete-resource-1.png)
+
+2. Sil **aygıt** bıçağına, silmek istediğiniz aygıtın adını yazın ve **Sil'i**seçin.
 
     ![Silmeyi onayla](media/data-box-edge-return-device/delete-resource-2.png)
 
-Cihaz ve ilişkili kaynak başarıyla silindikten sonra size bildirimde bulunuluyoruz.
+Aygıt tan sonra bilgilendirilirsiniz ve ilişkili kaynak başarıyla silinir.
 
-## <a name="get-a-replacement-device"></a>Yeni bir cihaz alma
+## <a name="get-a-replacement-device"></a>Yeni bir cihaz alın
 
-Mevcut cihazda bir donanım arızası olduğunda veya bir yükseltme gerektiğinde bir değiştirme cihazı gerekir. Cihazınızda bir donanım sorunu olduğunda aşağıdaki adımları uygulayın:
+Varolan aygıtın donanım arızası olduğunda veya yükseltmeye ihtiyacı olduğunda değiştirme aygıtı gereklidir. Cihazınızda donanım sorunu olduğunda aşağıdaki adımları izleyin:
 
-1. [Donanım sorunu için bir destek bileti açın](#open-a-support-ticket). Microsoft Desteği, bu örnek için bir alan değiştirme birimi (FRU) bulunmadığını veya cihazın bir donanım yükseltmesine ihtiyacı olduğunu belirlemektir. Her iki durumda da destek, bir değiştirme cihazını sıraya alır.
-2. Değiştirme cihazı için [Yeni bir kaynak oluşturun](data-box-edge-deploy-prep.md#create-a-new-resource) . **Data Box Edge cihazım olmasına**karşı onay kutusunu seçtiğinizden emin olun. 
-3. Bir değiştirme aygıtı aldıktan sonra, yeni kaynağa karşı değiştirme cihazını [yükleyip](data-box-edge-deploy-install.md) [etkinleştirin](data-box-edge-deploy-connect-setup-activate.md) .
-4. Özgün cihazı döndürmek için tüm adımları izleyin:
-    1. Özgün cihazı döndürmek için başka bir bilet açın.
-    2. [Cihazdaki verileri silin](#erase-data-from-the-device).
-    3. [Bir toplama zamanlayın](#schedule-a-pickup).
-    5. Döndürülen cihazla ilişkili [kaynağı silin](#delete-the-resource) .
+1. [Donanım sorunu için destek bileti açın.](#open-a-support-ticket) Microsoft Destek, bu örnekiçin bir Alan Değiştirme Birimi'nin (FRU) kullanılmadığını veya aygıtın bir donanım yükseltmesi gerektiğini belirler. Her iki durumda da, Destek bir yedek cihaz sipariş edecektir.
+2. Değiştirme aygıtı için [yeni bir kaynak oluşturun.](data-box-edge-deploy-prep.md#create-a-new-resource) Ben bir Veri Kutusu **Edge cihaz var**karşı onay kutusunu seçtiğinizden emin olun. 
+3. Değiştirilen bir aygıt aldıktan sonra, değiştirme aygıtını yeni kaynağa karşı [yükleyin](data-box-edge-deploy-install.md) ve [etkinleştirin.](data-box-edge-deploy-connect-setup-activate.md)
+4. Özgün aygıtı döndürmek için tüm adımları izleyin:
+    1. Orijinal cihazı iade etmek için başka bir bilet açın.
+    2. [Aygıttaki verileri silin.](#erase-data-from-the-device)
+    3. [Bir pikap planlayın.](#schedule-a-pickup)
+    5. Döndürülen aygıtla ilişkili [kaynağı silin.](#delete-the-resource)
 
 
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Resource Manager şablonu kullanarak Azure Veri Gezgini için IoT Hub veri bağlantısı oluşturma
-description: Bu makalede Azure Resource Manager şablonu kullanarak Azure Veri Gezgini için IoT Hub veri bağlantısı oluşturmayı öğreneceksiniz.
+title: Azure Kaynak Yöneticisi şablonu kullanarak Azure Veri Gezgini için Bir IoT Hub veri bağlantısı oluşturma
+description: Bu makalede, Azure Kaynak Yöneticisi şablonu kullanarak Azure Veri Gezgini için Bir IoT Hub veri bağlantısı oluşturmayı öğrenirsiniz.
 author: lucygoldbergmicrosoft
 ms.author: lugoldbe
 ms.reviewer: orspodek
@@ -8,32 +8,32 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/28/2019
 ms.openlocfilehash: 42b9f34802b8e6344f9008bf26a8bcc9f554adfb
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74669226"
 ---
-# <a name="create-an-iot-hub-data-connection-for-azure-data-explorer-by-using-azure-resource-manager-template"></a>Azure Resource Manager şablonu kullanarak Azure Veri Gezgini için IoT Hub veri bağlantısı oluşturma
+# <a name="create-an-iot-hub-data-connection-for-azure-data-explorer-by-using-azure-resource-manager-template"></a>Azure Kaynak Yöneticisi şablonu kullanarak Azure Veri Gezgini için Bir IoT Hub veri bağlantısı oluşturma
 
 > [!div class="op_single_selector"]
 > * [Portal](ingest-data-iot-hub.md)
-> * [C#](data-connection-iot-hub-csharp.md)
+> * [C #](data-connection-iot-hub-csharp.md)
 > * [Python](data-connection-iot-hub-python.md)
 > * [Azure Resource Manager şablonu](data-connection-iot-hub-resource-manager.md)
 
-Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve üst düzeyde ölçeklenebilir veri keşfetme hizmetidir. Azure Veri Gezgini, Event Hubs, IoT Hub 'larından ve BLOB kapsayıcılarına yazılan bloblardan alma (veri yükleme) sağlar. Bu makalede Azure Resource Manager şablonu kullanarak Azure Veri Gezgini için IoT Hub bir veri bağlantısı oluşturacaksınız.
+Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve üst düzeyde ölçeklenebilir veri keşfetme hizmetidir. Azure Veri Gezgini, Olay Hub'larından, IoT Hub'larından ve blob kaplarına yazılmış lekelerden yutma (veri yükleme) sunar. Bu makalede, Azure Kaynak Yöneticisi şablonu kullanarak Azure Veri Gezgini için bir IoT Hub veri bağlantısı oluşturursunuz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/) oluşturun.
 * [Küme ve veritabanı](create-cluster-database-portal.md) oluşturma
-* [Tablo ve sütun eşlemesi](ingest-data-iot-hub.md#create-a-target-table-in-azure-data-explorer) oluşturma
-* [Yapılandırılmış bir paylaşılan erişim ilkesiyle IoT Hub](ingest-data-iot-hub.md#create-an-iot-hub)oluşturun.
+* [Tablo ve sütun eşleme oluşturma](ingest-data-iot-hub.md#create-a-target-table-in-azure-data-explorer)
+* [Paylaşılan erişim ilkesi yapılandırılan bir IoT Hub'ı oluşturun.](ingest-data-iot-hub.md#create-an-iot-hub)
 
-## <a name="azure-resource-manager-template-for-adding-an-iot-hub-data-connection"></a>IoT Hub veri bağlantısı eklemek için Azure Resource Manager şablonu
+## <a name="azure-resource-manager-template-for-adding-an-iot-hub-data-connection"></a>Iot Hub veri bağlantısı eklemek için Azure Kaynak Yöneticisi şablonu
 
-Aşağıdaki örnekte, IoT Hub veri bağlantısı eklemek için bir Azure Resource Manager şablonu gösterilmektedir.  Formunu kullanarak [Azure Portal şablonu düzenleyebilir ve dağıtabilirsiniz](/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal#edit-and-deploy-the-template) .
+Aşağıdaki örnekte, IoT Hub veri bağlantısı eklemek için bir Azure Kaynak Yöneticisi şablonu gösterilmektedir.  Formu kullanarak [şablonu Azure portalında düzenleme yapabilir ve dağıtabilirsiniz.](/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal#edit-and-deploy-the-template)
 
 ```json
 {

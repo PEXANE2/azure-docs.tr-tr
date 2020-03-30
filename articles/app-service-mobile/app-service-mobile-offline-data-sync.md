@@ -1,97 +1,97 @@
 ---
-title: Çevrimdışı veri eşitleme
-description: Azure Mobile Apps için çevrimdışı veri eşitleme özelliğine kavramsal başvuru ve genel bakış
+title: Çevrimdışı Veri Eşitlemi
+description: Azure Mobil Uygulamaları için çevrimdışı veri eşitleme özelliğine kavramsal başvuru ve genel bakış
 author: conceptdev
 ms.assetid: 982fb683-8884-40da-96e6-77eeca2500e3
 ms.devlang: multiple
 ms.topic: article
 ms.date: 10/30/2016
 ms.openlocfilehash: 0cc4309fa57a29997bdd2f650634efd0723e6965
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77458758"
 ---
 # <a name="offline-data-sync-in-azure-mobile-apps"></a>Azure Mobile Apps’te Çevrimdışı Veri Eşitleme
 
-## <a name="what-is-offline-data-sync"></a>Çevrimdışı veri eşitleme nedir?
-Çevrimdışı veri eşitleme, geliştiricilerin bir ağ bağlantısı olmadan işlevsel uygulamalar oluşturmasını kolaylaştıran bir Azure Mobile Apps istemci ve sunucu SDK özelliğidir.
+## <a name="what-is-offline-data-sync"></a>Çevrimdışı veri eşitlemi nedir?
+Çevrimdışı veri eşitleme, Azure Mobile Apps'ın istemci ve sunucu SDK özelliğidir ve geliştiricilerin ağ bağlantısı olmadan işlevsel uygulamalar oluşturmasını kolaylaştırır.
 
-Uygulamanız çevrimdışı modda olduğunda, yine de bir yerel depoya kaydedilen verileri oluşturabilir ve değiştirebilirsiniz. Uygulama yeniden çevrimiçi olduğunda, yerel değişiklikleri Azure Mobil uygulama arka ucunuz ile eşitlenebilir. Bu özellik, hem istemcide hem de arka uçta aynı kayıt değiştirildiğinde çakışmaların algılanmasının desteğini de içerir. Çakışmalar daha sonra sunucuda veya istemcide işlenebilir.
+Uygulamanız çevrimdışı moddayken, yerel bir mağazaya kaydedilen verileri oluşturabilir ve değiştirebilirsiniz. Uygulama çevrimiçi olduğunda, azure mobil uygulama arka ucunuzla yerel değişiklikleri senkronize edebilir. Özellik, aynı kayıt hem istemcide hem de arka uçta değiştirildiğinde çakışmaları algılamak için destek de içerir. Çakışmalar daha sonra sunucuda veya istemcide işlenebilir.
 
 Çevrimdışı eşitlemenin çeşitli avantajları vardır:
 
-* Sunucu verilerini yerel olarak cihazda önbelleğe alarak uygulama yanıt hızını geliştirme
-* Ağ sorunları olduğunda faydalı olmaya devam eden sağlam uygulamalar oluşturun
-* Son kullanıcıların, ağ erişimi olmadığında bile veri oluşturmalarına ve değiştirmesine izin ver, çok az veya hiç bağlantı olan senaryolar destekleme
-* Birden çok cihaz genelinde verileri eşitleyin ve aynı kayıt iki cihaz tarafından değiştirildiğinde çakışmaları tespit edin
-* Yüksek Gecikmeli veya tarifeli ağlarda ağ kullanımını sınırlayın
+* Sunucu verilerini aygıtta yerel olarak önbelleğe alarak uygulama yanıt verme yeteneğini geliştirin
+* Ağ sorunları olduğunda yararlı olmaya devam eden sağlam uygulamalar oluşturun
+* Ağ erişimi olmadığında bile son kullanıcıların veri oluşturmasına ve değiştirmesine izin vererek, çok az bağlantı içeren veya hiç bağlantı olmayan senaryoları destekleme
+* Verileri birden çok aygıt arasında eşitleme ve aynı kayıt iki aygıt tarafından değiştirildiğinde çakışmaları algılama
+* Yüksek gecikmeli veya tarifeli ağlarda ağ kullanımını sınırlama
 
-Aşağıdaki öğreticilerde, Azure Mobile Apps kullanarak mobil istemcilerinize nasıl çevrimdışı eşitleme ekleyeceğiniz gösterilmektedir:
+Aşağıdaki öğreticiler, Azure Mobil Uygulamaları'nı kullanarak mobil müşterilerinize çevrimdışı eşitlemenin nasıl ekleyeceğinigösteriz:
 
-* [Android: çevrimdışı eşitlemeyi etkinleştir]
-* [Apache Cordova: çevrimdışı eşitlemeyi etkinleştir](app-service-mobile-cordova-get-started-offline-data.md)
-* [iOS: çevrimdışı eşitlemeyi etkinleştir]
-* [Xamarin iOS: çevrimdışı eşitlemeyi etkinleştir]
-* [Xamarin Android: çevrimdışı eşitlemeyi etkinleştir]
-* [Xamarin. Forms: çevrimdışı eşitlemeyi etkinleştir](app-service-mobile-xamarin-forms-get-started-offline-data.md)
-* [Evrensel Windows Platformu: çevrimdışı eşitlemeyi etkinleştir]
+* [Android: Çevrimdışı eşitleme etkinleştirme]
+* [Apache Cordova: Çevrimdışı eşitleme etkinleştirme](app-service-mobile-cordova-get-started-offline-data.md)
+* [iOS: Çevrimdışı eşitlemeyi etkinleştirme]
+* [Xamarin iOS: Çevrimdışı eşitleme etkinleştirme]
+* [Xamarin Android: Çevrimdışı eşitleme etkinleştirme]
+* [Xamarin.Forms: Çevrimdışı eşitleme etkinleştirme](app-service-mobile-xamarin-forms-get-started-offline-data.md)
+* [Evrensel Windows Platformu: Çevrimdışı eşitleme etkinleştirme]
 
 ## <a name="what-is-a-sync-table"></a>Eşitleme tablosu nedir?
-"/Tables" uç noktasına erişmek için Azure mobil istemci SDK 'Ları `IMobileServiceTable` (.NET istemci SDK) veya `MSTable` (iOS istemcisi) gibi arabirimler sağlar. Bu API 'Ler doğrudan Azure Mobil uygulama arka ucuna bağlanır ve istemci cihazının bir ağ bağlantısı yoksa başarısız olur.
+Azure Mobil istemci SDK'ları "/tablolar" bitiş noktasına erişmek için `IMobileServiceTable` (.NET istemciSDK) veya `MSTable` (iOS istemcisi) gibi arabirimler sağlar. Bu API'ler doğrudan Azure Mobil Uygulaması arka ucuna bağlanır ve istemci aygıtın ağ bağlantısı yoksa başarısız olur.
 
-Çevrimdışı kullanımı desteklemek için uygulamanızın bunun yerine `IMobileServiceSyncTable` (.NET istemci SDK) veya `MSSyncTable` (iOS istemcisi) gibi *Eşitleme tablosu* API 'lerini kullanması gerekir. Aynı CRUD işlemleri (oluşturma, okuma, güncelleştirme, silme), eşitleme tablosu API 'Lerine göre çalışarak, artık *yerel bir mağazadan*okudukları veya yazdıkları durumlar hariç. Tüm eşitleme tablosu işlemleri gerçekleştirilemeden önce, yerel deponun başlatılmış olması gerekir.
+Çevrimdışı kullanımı desteklemek için uygulamanızın bunun yerine *eşitleme* tablosu `IMobileServiceSyncTable` API'lerini (.NET istemciSi SDK) veya `MSSyncTable` (iOS istemcisi) gibi kullanmanız gerekir. Aynı CRUD işlemleri (Oluştur, Oku, Güncelle, Sil) eşitleme tablosu API'lerine karşı çalışır, ancak artık yerel bir *mağazadan*okur veya yazar. Herhangi bir eşitleme tablosu işlemleri gerçekleştirilemeden önce, yerel mağazanın başlatılması gerekir.
 
-## <a name="what-is-a-local-store"></a>Yerel depo nedir?
-Yerel bir depo, istemci cihazında veri Kalıcılık katmanıdır. Azure Mobile Apps istemci SDK 'Ları varsayılan bir yerel mağaza uygulamasını sağlar. Windows, Xamarin ve Android 'de, SQLite temel alır. İOS 'ta temel verileri temel alır.
+## <a name="what-is-a-local-store"></a>Yerel mağaza nedir?
+Yerel bir depo istemci aygıtındaki veri kalıcılık katmanıdır. Azure Mobil Apps istemci SDK'ları varsayılan bir yerel mağaza uygulaması sağlar. Windows, Xamarin ve Android, Bu SQLite dayanmaktadır. iOS'ta Çekirdek Verilere dayanır.
 
-Windows Phone veya Microsoft Store üzerinde SQLite tabanlı uygulama kullanmak için bir SQLite uzantısı yüklemeniz gerekir. Daha fazla bilgi için bkz. [Evrensel Windows Platformu: çevrimdışı eşitlemeyi etkinleştir]. Android ve iOS, cihaz işletim sisteminde bir SQLite sürümü ile birlikte gönderilir ve bu nedenle kendi SQLite sürümüne başvurmak gerekli değildir.
+Windows Phone veya Microsoft Mağazası'nda SQLite tabanlı uygulamayı kullanmak için bir SQLite uzantısı yüklemeniz gerekir. Daha fazla bilgi için Evrensel [Windows Platformu: Çevrimdışı eşitlemeyi etkinleştirin.] Android ve iOS cihaz işletim sisteminin kendisi SQLite bir sürümü ile gemi, bu yüzden SQLite kendi sürümü referans gerekli değildir.
 
-Geliştiriciler, kendi yerel mağazalarını da uygulayabilir. Örneğin, verileri mobil istemcide şifreli bir biçimde depolamak isterseniz, şifreleme için SQLCipher kullanan bir yerel depo tanımlayabilirsiniz.
+Geliştiriciler kendi yerel mağazalarını da uygulayabilir. Örneğin, verileri mobil istemcide şifreli bir biçimde depolamak istiyorsanız, şifreleme için SQLCipher kullanan yerel bir depo tanımlayabilirsiniz.
 
 ## <a name="what-is-a-sync-context"></a>Eşitleme bağlamı nedir?
-Bir *eşitleme bağlamı* , bir mobil istemci nesnesiyle (`IMobileServiceClient` veya `MSClient`gibi) ilişkilendirilir ve eşitleme tabloları ile yapılan değişiklikleri izler. Eşitleme bağlamı, daha sonra sunucusuna gönderilen CUD işlemlerinin sıralı bir listesini (oluşturma, güncelleştirme, silme) tutan bir *işlem kuyruğu*tutar.
+*Eşitleme bağlamı* mobil istemci nesnesiyle `IMobileServiceClient` (örneğin veya) `MSClient`ilişkilidir ve eşitleme tablolarıyla yapılan değişiklikleri izler. Eşitleme bağlamı, daha sonra sunucuya gönderilen CUD işlemlerinin (Oluştur, Güncelleştir, Sil) sıralı bir listesini tutan bir *işlem kuyruğu*tutar.
 
-Yerel bir depo, [.NET istemci SDK 'Sı]`IMobileServicesSyncContext.InitializeAsync(localstore)` gibi bir başlatma yöntemi kullanılarak eşitleme bağlamıyla ilişkilendirilir.
+Yerel bir [mağaza,.NET istemcisi SDK] `IMobileServicesSyncContext.InitializeAsync(localstore)` gibi bir başlatma yöntemi ni kullanarak eşitleme bağlamıyla ilişkilidir.
 
-## <a name="how-sync-works"></a>Çevrimdışı eşitlemenin nasıl çalıştığı
-Eşitleme tabloları kullanılırken, yerel değişiklikler bir Azure Mobil uygulama arka ucu ile eşitlendiğinde istemci kodunuz kontrol edilir. Yerel değişiklikleri *Gönder* çağrısı olana kadar arka uca hiçbir şey gönderilmez. Benzer şekilde, yerel depo yalnızca *çekme* verileri için bir çağrı olduğunda yeni verilerle doldurulur.
+## <a name="how-offline-synchronization-works"></a><a name="how-sync-works"></a>Çevrimdışı eşitleme nasıl çalışır?
+Eşitleme tablolarını kullanırken, yerel değişiklikler Azure Mobil Uygulaması arka uçla eşitlendiğinde istemci kodunuz denetler. Yerel değişiklikleri *zorlamak* için bir çağrı olana kadar hiçbir şey arka uca gönderilmez. Benzer şekilde, yerel depo yalnızca veri *çekme* çağrısı olduğunda yeni verilerle doldurulur.
 
-* **Gönderim**: push, eşitleme bağlamındaki bir işlemdir ve son göndermeden bu yana tüm CUD değişikliklerini gönderir. Aksi takdirde, bazı işlemler sırada gönderilemediğinden yalnızca tek bir tablonun değişikliklerini gönderemeyebilir. Gönderim, Azure Mobil uygulama arka ucunuza bir dizi REST çağrısı yürütür, bu da sunucu veritabanınızı değiştirir.
-* **Çekme**: çekme, tablo başına temelinde gerçekleştirilir ve sunucu verilerinin yalnızca bir alt kümesini almak için bir sorguyla özelleştirilebilir. Azure mobil istemci SDK 'Ları, sonuçta elde edilen verileri yerel depoya ekler.
-* **Örtük gönderim**: bekleyen yerel güncelleştirmeleri olan bir tabloya karşı bir çekme yürütülürse, çekme önce eşitleme bağlamında bir `push()` yürütür. Bu gönderim, zaten kuyruğa alınan değişiklikler ve sunucudan yeni veriler arasındaki çakışmaların en aza indirilmesine yardımcı olur.
-* **Artımlı eşitleme**: çekme işlemine ilk parametre yalnızca istemcide kullanılan bir *sorgu adıdır* . Null olmayan bir sorgu adı kullanırsanız, Azure Mobile SDK *artımlı eşitleme*gerçekleştirir. Bir çekme işlemi bir sonuç kümesi döndürdüğünde, bu sonuç kümesinden en son `updatedAt` zaman damgası SDK yerel sistem tablolarında depolanır. Sonraki çekme işlemleri yalnızca bu zaman damgasından sonraki kayıtları alır.
+* **Push**: Push eşitleme bağlamında bir işlemdir ve son itme den bu yana tüm CUD değişiklikleri gönderir. Aksi takdirde işlemler sıradışı gönderilebildiği için yalnızca tek bir tablonun değişikliklerini göndermenin mümkün olmadığını unutmayın. Push, Azure Mobil Uygulama arka uçunuzda bir dizi REST çağrısı yürütür ve bu da sunucu veritabanınızı değiştirir.
+* **Pull**: Pull, her tablo bazında gerçekleştirilir ve sunucu verilerinin yalnızca bir alt kümesini almak için bir sorguyla özelleştirilebilir. Azure Mobile istemci SDK'ları, elde edilen verileri yerel mağazaya ekler.
+* **Örtük İtmeler**: Çekme bekleyen yerel güncelleştirmeleri olan bir tabloya `push()` karşı yürütülürse, çekme önce eşitleme bağlamında bir yürütme yi yürütür. Bu itme, zaten sıralanmış olan değişikliklerle sunucudan gelen yeni veriler arasındaki çakışmaları en aza indirmeye yardımcı olur.
+* **Artımlı Eşitleme**: çekme işleminin ilk parametresi yalnızca istemcide kullanılan bir *sorgu adıdır.* Null olmayan bir sorgu adı kullanıyorsanız, Azure Mobil SDK *artımlı*bir eşitleme gerçekleştirir. Bir çekme işlemi bir dizi sonuç döndürderken, bu sonuç kümesinden en son `updatedAt` zaman damgası SDK yerel sistem tablolarında depolanır. Sonraki çekme işlemleri yalnızca bu zaman damgası sonra kayıtları alır.
 
-  Artımlı eşitleme kullanmak için sunucunuzun anlamlı `updatedAt` değerler döndürmesi ve ayrıca bu alana göre sıralamayı desteklemesi gerekir. Ancak, SDK updatedAt alanına kendi sıralamasını eklediğinden, kendi `orderBy` yan tümcesine sahip bir çekme sorgusu kullanamazsınız.
+  Artımlı eşitleme kullanmak için sunucunuzun anlamlı `updatedAt` değerler döndürmesi ve bu alana göre sıralamayı desteklemesi gerekir. Ancak, SDK güncelleştirilmişAt alanına kendi sıralamasını eklediklerinden, kendi `orderBy` yan tümcesi olan bir çekme sorgusu kullanamazsınız.
 
-  Sorgu adı seçtiğiniz herhangi bir dize olabilir, ancak uygulamanızdaki her bir mantıksal sorgu için benzersiz olmalıdır.
-  Aksi takdirde, farklı çekme işlemleri aynı artımlı eşitleme zaman damgasının üzerine yazabilir ve sorgularınız hatalı sonuçlar döndürebilir.
+  Sorgu adı seçtiğiniz herhangi bir dize olabilir, ancak uygulamanızdaki her mantıksal sorgu için benzersiz olmalıdır.
+  Aksi takdirde, farklı çekme işlemleri aynı artımlı eşitleme zaman damgasının üzerine yazabilir ve sorgularınız yanlış sonuçlar döndürebilir.
 
-  Sorguda bir parametre varsa, benzersiz bir sorgu adı oluşturmanın bir yolu parametre değerini kullanmaktır.
-  Örneğin, Kullanıcı kimliği ' nde C#filtrelerken, sorgu adınız şu şekilde olabilir:
+  Sorgunun bir parametresi varsa, benzersiz bir sorgu adı oluşturmanın bir yolu parametre değerini birleştirmektir.
+  Örneğin, userid üzerinde filtreleme iseniz, sorgu adınız aşağıdaki gibi olabilir (C#):
 
         await todoTable.PullAsync("todoItems" + userid,
             syncTable.Where(u => u.UserId == userid));
 
-  Artımlı eşitleme ' yi devre dışı bırakmak istiyorsanız, `null` sorgu KIMLIĞI olarak geçirin. Bu durumda, tüm kayıtlar, potansiyel olarak verimsiz olan `PullAsync`her çağrısıyla alınır.
-* **Temizleme**: `IMobileServiceSyncTable.PurgeAsync`kullanarak yerel deponun içeriğini temizleyebilirsiniz.
-  İstemci veritabanında eski veriler varsa veya bekleyen tüm değişiklikleri atmak istiyorsanız Temizleme işlemi gerekebilir.
+  Artımlı eşitlemeyi devre dışı bırakmak `null` istiyorsanız, sorgu kimliği olarak geçirin. Bu durumda, tüm kayıtlar, potansiyel olarak `PullAsync`verimsiz olan her çağrıda alınır.
+* **Tasfiye**: Yerel mağazanın içeriğini kullanarak `IMobileServiceSyncTable.PurgeAsync`temizleyebilirsiniz.
+  İstemci veritabanında eski verileriniz varsa veya bekleyen tüm değişiklikleri atmak istiyorsanız temizleme gerekebilir.
 
-  Bir Temizleme, bir tabloyu yerel depodan temizler. Sunucu veritabanıyla eşitleme bekleyen işlemler varsa Temizleme, *temizlemeyi zorla* parametresi ayarlanmadığı takdirde bir özel durum oluşturur.
+  Bir tasfiye yerel mağazadan bir tablo temizler. Sunucu veritabanıyla eşitlemeyi bekleyen işlemler varsa, *zorlama temizleme* parametresi ayarlanmadığı sürece temizleme bir özel durum oluşturur.
 
-  İstemcide eski verilerin bir örneği olarak, "Todo List" örneğinde, Device1 yalnızca tamamlanmamış öğeleri çeker. "Satın alma morijinalini" bir TodoItem, sunucuda başka bir cihaz tarafından tamamlandı olarak işaretlenir. Ancak, yalnızca tamamlandı olarak işaretlenmemiş öğeleri çektiğinden, Device1 yine de yerel depoda "mılalk" TodoItem. Bir Temizleme, bu eski öğeyi temizler.
+  İstemcideki eski verilere örnek olarak, "yapılacaklar listesi" örneğinde, Device1 yalnızca tamamlanmamış öğeleri çeker. Sunucuda başka bir aygıt tarafından tamamlanan "Süt satın al" todoitem işaretlenir. Ancak, Device1 hala yerel mağazada "Süt Satın Al" todoitem vardır, çünkü yalnızca tam olarak işaretlenmemiş öğeleri çekiyor. Bir temizleme bu bayat öğeyi temizler.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [iOS: çevrimdışı eşitlemeyi etkinleştir]
-* [Xamarin iOS: çevrimdışı eşitlemeyi etkinleştir]
-* [Xamarin Android: çevrimdışı eşitlemeyi etkinleştir]
-* [Evrensel Windows Platformu: çevrimdışı eşitlemeyi etkinleştir]
+* [iOS: Çevrimdışı eşitlemeyi etkinleştirme]
+* [Xamarin iOS: Çevrimdışı eşitleme etkinleştirme]
+* [Xamarin Android: Çevrimdışı eşitleme etkinleştirme]
+* [Evrensel Windows Platformu: Çevrimdışı eşitleme etkinleştirme]
 
 <!-- Links -->
-[.NET istemci SDK 'Sı]: app-service-mobile-dotnet-how-to-use-client-library.md
-[Android: çevrimdışı eşitlemeyi etkinleştir]: app-service-mobile-android-get-started-offline-data.md
-[iOS: çevrimdışı eşitlemeyi etkinleştir]: app-service-mobile-ios-get-started-offline-data.md
-[Xamarin iOS: çevrimdışı eşitlemeyi etkinleştir]: app-service-mobile-xamarin-ios-get-started-offline-data.md
-[Xamarin Android: çevrimdışı eşitlemeyi etkinleştir]: app-service-mobile-xamarin-android-get-started-offline-data.md
-[Evrensel Windows Platformu: çevrimdışı eşitlemeyi etkinleştir]: app-service-mobile-windows-store-dotnet-get-started-offline-data.md
+[.NET istemci SDK]: app-service-mobile-dotnet-how-to-use-client-library.md
+[Android: Çevrimdışı eşitleme etkinleştirme]: app-service-mobile-android-get-started-offline-data.md
+[iOS: Çevrimdışı eşitlemeyi etkinleştirme]: app-service-mobile-ios-get-started-offline-data.md
+[Xamarin iOS: Çevrimdışı eşitleme etkinleştirme]: app-service-mobile-xamarin-ios-get-started-offline-data.md
+[Xamarin Android: Çevrimdışı eşitleme etkinleştirme]: app-service-mobile-xamarin-android-get-started-offline-data.md
+[Evrensel Windows Platformu: Çevrimdışı eşitleme etkinleştirme]: app-service-mobile-windows-store-dotnet-get-started-offline-data.md

@@ -1,7 +1,7 @@
 ---
-title: Performans için ölçeklendirin
+title: Performansı ölçeklendirme
 titleSuffix: Azure Cognitive Search
-description: Azure Bilişsel Arama performansını ayarlamaya ve optimum ölçeği yapılandırmaya yönelik teknikleri ve en iyi yöntemleri öğrenin.
+description: Azure Bilişsel Arama performansını ayarlaya bilmek ve optimum ölçeği yapılandırmak için teknikleri ve en iyi uygulamaları öğrenin.
 manager: nitinme
 author: LiamCavanagh
 ms.author: liamca
@@ -10,120 +10,120 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/14/2020
 ms.openlocfilehash: 7c2857de0613be400f83544e1dabe079b7497bbd
-ms.sourcegitcommit: 0eb0673e7dd9ca21525001a1cab6ad1c54f2e929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77212380"
 ---
-# <a name="scale-for-performance-on-azure-cognitive-search"></a>Azure Bilişsel Arama performans için ölçeklendirin
+# <a name="scale-for-performance-on-azure-cognitive-search"></a>Azure Bilişsel Arama'da performans için ölçeklendirme
 
-Bu makalede ölçeklenebilirlik ve kullanılabilirlik için gelişmiş gereksinimlere sahip gelişmiş senaryolar için en iyi yöntemler açıklanmaktadır.
+Bu makalede, ölçeklenebilirlik ve kullanılabilirlik için gelişmiş gereksinimleri olan gelişmiş senaryolar için en iyi uygulamalar açıklanmaktadır.
 
-## <a name="start-with-baseline-numbers"></a>Taban çizgisi numaralarıyla başla
+## <a name="start-with-baseline-numbers"></a>Temel sayılarla başlayın
 
-Daha büyük bir dağıtım çabadan önce, tipik bir sorgu yükünün nasıl göründüğünü öğrendiğinizden emin olun. Aşağıdaki kılavuzlar, taban çizgisi sorgu numaralarına ulaşgetirmenize yardımcı olabilir.
+Daha büyük bir dağıtım çabası gerçekleştirmeden önce, tipik bir sorgu yükünün neye benzediğini bildiğinizden emin olun. Aşağıdaki yönergeler, temel sorgu numaralarına ulaşmanıza yardımcı olabilir.
 
-1. Tipik bir arama isteğinin tamamlanması için gereken bir hedef gecikme süresi (veya en fazla süre) seçin.
+1. Tipik bir arama isteğinin tamamlanması için gereken bir hedef gecikme süresi (veya maksimum süre) seçin.
 
-1. Bu gecikme sürelerini ölçmek için gerçekçi bir veri kümesiyle, arama hizmetinize karşı gerçek bir iş yükü oluşturun ve test edin.
+1. Bu gecikme oranlarını ölçmek için gerçekçi bir veri kümesiyle arama hizmetinize karşı gerçek bir iş yükü oluşturun ve test edin.
 
-1. Saniye başına az sayıda sorgu (QPS) ile başlayın ve ardından sorgu gecikmesi önceden tanımlanmış hedefin altına düşene kadar testte yürütülen sayıyı kademeli olarak artırın. Bu, uygulamanızın kullanımda büyüdüğü sürece ölçek planlaması yapmanıza yardımcı olan önemli bir kıyaslamaya yöneliktir.
+1. Saniyede az sayıda sorguyla (QPS) başlayın ve sorgu gecikmesi önceden tanımlanmış hedefin altına düşene kadar testte çalıştırılan sayıyı kademeli olarak artırın. Bu, uygulamanız kullanımda büyüdükçe ölçek lendirmenize yardımcı olacak önemli bir ölçüttür.
 
-1. Mümkün olan yerlerde HTTP bağlantılarını yeniden kullanın. Azure Bilişsel Arama .NET SDK kullanıyorsanız bu, bir örneği veya [Searchındexclient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient) örneğini yeniden kullanmanız gerektiği anlamına gelir ve REST API kullanıyorsanız, tek bir HttpClient kullanmanız gerekir.
+1. Mümkün olan her yerde HTTP bağlantılarını yeniden kullanın. Azure Bilişsel Arama .NET SDK kullanıyorsanız, bu bir örneği veya [SearchIndexClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient) örneğini yeniden kullanmanız gerektiği ve REST API'sini kullanıyorsanız, tek bir HttpClient'ı yeniden kullanmanız gerektiği anlamına gelir.
 
-1. Sorgunun farklı bölümlerinin üzerinde gerçekleşmesini sağlamak için sorgu isteklerinin bu şekilde çeşitini farklılık gösterir. Aynı arama isteklerini sürekli olarak yürütüyorsa, değişim önemlidir çünkü sürekli olarak aynı arama isteklerini yürütüyorsa, verilerin önbelleğe alınması, daha farklı bir sorgu kümesiyle olabileceği gibi performansı daha iyi hale getirmek için başlar.
+1. Aramanın dizininizin farklı bölümleri üzerinde gerçekleşmesi için sorgu isteklerinin öznünüzü değiştirin. Varyasyon önemlidir, çünkü aynı arama isteklerini sürekli olarak yürütürseniz, veri önbelleğe alma, performansı daha farklı bir sorgu kümesiyle olduğundan daha iyi görünmeye başlar.
 
-1. Farklı sorgu türlerini alabilmeniz için sorgu isteklerinin yapısını farklılık gösterir. Her arama sorgusu aynı düzeyde uygulanmaz. Örneğin, bir belge arama veya arama önerisi genellikle önemli sayıda model ve filtre içeren bir sorgudan daha hızlıdır. Test kompozisyonu, kabaca, üretimde bekleeceğiniz oranlar halinde çeşitli sorgular içermelidir.  
+1. Farklı türde sorgular elde etmek için sorgu isteklerinin yapısını değiştirin. Her arama sorgusu aynı düzeyde gerçekleştirmez. Örneğin, bir belge arama veya arama önerisi genellikle önemli sayıda farklı yönü ve filtresi olan bir sorgudan daha hızlıdır. Test kompozisyonu, üretimde beklediğiniz gibi kabaca aynı oranlarda çeşitli sorgular içermelidir.  
 
-Bu test iş yüklerini oluştururken aklınızda bulundurmanız gereken bazı Azure Bilişsel Arama özellikleri vardır:
+Bu test iş yüklerini oluştururken, Azure Bilişsel Arama'nın göz önünde bulundurulması gereken bazı özellikleri vardır:
 
-+ Tek seferde çok fazla arama sorgusu göndererek hizmetinizi aşırı yükleme olasılığı vardır. Bu durumda, HTTP 503 yanıt kodları görürsünüz. Test sırasında 503 önlemek için, daha fazla arama isteği eklerken gecikme hızlarındaki farkları görmek üzere çeşitli arama istekleri aralıklarıyla başlayın.
++ Aynı anda çok fazla arama sorgusu iterek hizmetinizi aşırı yüklemeniz mümkündür. Bu durumda, HTTP 503 yanıt kodlarını görürsünüz. Test sırasında bir 503'ten kaçınmak için, daha fazla arama isteği ekledikçe gecikme oranlarındaki farklılıkları görmek için çeşitli arama istekleri aralıklarıyla başlayın.
 
-+ Azure Bilişsel Arama, dizin oluşturma görevlerini arka planda çalıştırmaz. Hizmetiniz sorgu ve dizin oluşturma iş yüklerini eşzamanlı olarak işlerinizde, sorgu testleriniz için dizin oluşturma işleri sunarak ya da yoğun saatlerde dizin oluşturma işlerini çalıştırmaya yönelik seçenekleri inceleyerek bunu hesaba sunun.
++ Azure Bilişsel Arama, arka planda dizin oluşturma görevlerini çalıştırmaz. Hizmetiniz sorgu yu ve iş yüklerini dizine aynı anda işliyorsa, sorgu testlerinize dizin oluşturma işleri ekleyerek veya yoğun saatlerde dizin oluşturma seçeneklerini keşfederek bunu göz önünde bulundurun.
 
 > [!Tip]
-> Yük testi araçlarını kullanarak gerçekçi bir sorgu yükünün benzetimini yapabilirsiniz. [Azure DevOps ile yük testi](https://docs.microsoft.com/azure/devops/test/load-test/get-started-simple-cloud-load-test?view=azure-devops) yapmayı deneyin veya bu [alternatifden](https://docs.microsoft.com/azure/devops/test/load-test/overview?view=azure-devops#alternatives)birini kullanın.
+> Yük test araçlarını kullanarak gerçekçi bir sorgu yükünü simüle edebilirsiniz. [Azure DevOps ile yük testi'ni](https://docs.microsoft.com/azure/devops/test/load-test/get-started-simple-cloud-load-test?view=azure-devops) deneyin veya bu [alternatiflerden](https://docs.microsoft.com/azure/devops/test/load-test/overview?view=azure-devops#alternatives)birini kullanın.
 
-## <a name="scale-for-high-query-volume"></a>Yüksek sorgu hacmi için ölçeklendirin
+## <a name="scale-for-high-query-volume"></a>Yüksek sorgu hacmi için ölçeklendirme
 
-Sorgular çok uzun sürmeye başladığında veya hizmet istekleri bırakmaya başladığında bir hizmet aşırı kullanılıyor. Böyle bir durumla karşılaşırsanız, sorunu iki şekilde ele alabilirsiniz:
+Sorgular çok uzun sürdüğünde veya hizmet isteklerini bırakmaya başladığında hizmet aşırı yüklenir. Bu durumda, sorunu iki şekilde giderebilirsiniz:
 
-+ **Çoğaltmalar ekleme**  
++ **Yineleme ekleme**  
 
-  Her çoğaltma, verilerinizin birden çok kopyaya karşı yük dengelemesi yapmasına izin veren verilerinizin bir kopyasıdır.  Tüm yük dengeleme ve veri çoğaltma işlemi Azure Bilişsel Arama tarafından yönetilir ve hizmetiniz için ayrılan çoğaltmaların sayısını dilediğiniz zaman değiştirebilirsiniz. Standart bir arama hizmetinde 12 ' ye kadar çoğaltma ve temel bir arama hizmetinde 3 çoğaltma ayırabilirsiniz. Çoğaltmalar [Azure Portal](search-create-service-portal.md) ya da [PowerShell](search-manage-powershell.md)'den ayarlanabilir.
+  Her yineleme, hizmetin bakiye isteklerini birden çok kopyaya karşı yüklemesine olanak tanıyan verilerinizin bir kopyasıdır.  Tüm yük dengeleme ve verilerin çoğaltılması Azure Bilişsel Arama tarafından yönetilir ve istediğiniz zaman hizmetiniz için ayrılan çoğaltma sayısını değiştirebilirsiniz. Standart arama hizmetinde en fazla 12 yineleme ve Temel arama hizmetinde 3 yineleme ayırabilirsiniz. Yinelemeler [Azure portalından](search-create-service-portal.md) veya [PowerShell'den](search-manage-powershell.md)ayarlanabilir.
 
-+ **Daha yüksek bir katmanda yeni bir hizmet oluşturun**  
++ **Daha yüksek bir katmanda yeni bir hizmet oluşturma**  
 
-  Azure Bilişsel Arama [birkaç katmanda](https://azure.microsoft.com/pricing/details/search/) gelir ve her biri farklı performans düzeyleri sunar. Bazı durumlarda, üzerinde yaptığınız katmanda çoğaltmalar ne zaman olsa bile yeterli sayıda sorgu sağlayamadığımdan çok sayıda sorguya sahip olabilirsiniz. Bu durumda, çok sayıda belge ve çok yüksek sorgu iş yükleri gibi senaryolar için tasarlanan Standart S3 katmanı gibi daha yüksek performanslı bir katmana geçmeyi göz önünde bulundurun.
+  Azure Bilişsel Arama çeşitli [katmanlarda](https://azure.microsoft.com/pricing/details/search/) gelir ve her biri farklı performans düzeyleri sunar. Bazı durumlarda, üzerinde olduğunuz katman, yinelemelerin limiti dolsa bile yeterli geri dönüş sağlayamadığında o kadar çok sorgunuz olabilir. Bu durumda, çok sayıda belgeye ve son derece yüksek sorgu iş yüklerine sahip senaryolar için tasarlanmış Standart S3 katmanı gibi daha yüksek performanslı bir katmana taşınmayı düşünün.
 
-## <a name="scale-for-slow-individual-queries"></a>Yavaş tek sorgular için ölçeklendirin
+## <a name="scale-for-slow-individual-queries"></a>Yavaş ayrı sorgular için ölçeklendirme
 
-Yüksek gecikme oranları için bir diğer neden, tek bir sorgunun tamamlanmasını çok uzun sürüyor. Bu durumda, çoğaltmaları eklemek yardımcı olmayacaktır. Aşağıdakileri içeren olası iki seçenek vardır:
+Yüksek gecikme oranlarının bir diğer nedeni de, tamamlanması çok uzun süren tek bir sorgudur. Bu durumda, yinelemeler ekleme yardımcı olmaz. Yardımcı olabilecek iki olası seçenek şunlardır:
 
-+ **Bölümleri artırma**
++ **Bölümleri Artırma**
 
-  Bir bölüm, verileri ek bilgi işlem kaynakları arasında böler. İki bölüm, verileri yarı bir şekilde ayırır, üçüncü bir bölüm onu üç ve diğerleri olarak böler. Bir pozitif yan etki, daha yavaş sorguların bazen paralel bilgi işlem nedeniyle daha hızlı bir şekilde gerçekleştirilemesidir. Çok sayıda belgeyle eşleşen sorgular veya çok sayıda belge üzerinde sayı sağlayan modeller gibi düşük seçiciliği sorgularında paralelleştirme belirtiyoruz. Belgelerin yeniden dengeliğine veya belge numaralarını saymaya yönelik önemli bir hesaplama gerektiğinden, ek bölümler eklemek sorguların daha hızlı tamamlanmasını sağlar.  
+  Bir bölüm verileri ekstra bilgi işlem kaynaklarına böler. İki bölüm verileri ikiye böler, üçüncü bir bölüm üçüncülere böler ve saire. Olumlu yan etkilerden biri, paralel bilgi işlem nedeniyle yavaş sorguların bazen daha hızlı performans göstermesidir. Birçok belgeyle eşleşen sorgular veya çok sayıda belge üzerinde sayım sağlayan yüzler gibi düşük seçicilik sorgularında paralelleştirme kaydettik. Belgelerin alaka puanını almak veya belge sayısını saymak için önemli hesaplama gerektiğinden, ek bölümler eklemek sorguların daha hızlı tamamlanmasına yardımcı olur.  
    
-  Temel arama hizmetinde standart arama hizmetinde ve 1 bölümde en fazla 12 bölüm olabilir. Bölümler [Azure Portal](search-create-service-portal.md) ya da [PowerShell](search-manage-powershell.md)'den ayarlanabilir.
+  Standart arama hizmetinde en fazla 12 bölüm ve Temel arama hizmetinde 1 bölüm olabilir. Bölümler [Azure portalından](search-create-service-portal.md) veya [PowerShell'den](search-manage-powershell.md)ayarlanabilir.
 
-+ **Yüksek kardinalite alanlarını sınırla**
++ **Yüksek Kardinallik Alanlarını Sınırla**
 
-  Yüksek bir kardinalite alanı, önemli sayıda benzersiz değere sahip çok yönlü veya filtrelenebilir bir alandan oluşur ve sonuç olarak sonuçları hesaplarken önemli kaynakları tüketir. Örneğin, bir ürün KIMLIĞI veya açıklama alanını çok yönlü tablo/filtre olarak ayarlamak, belgedeki değerlerin çoğu benzersiz olduğundan yüksek önem düzeyi olarak sayılır. Mümkün olan yerlerde, yüksek kardinalite alanlarının sayısını sınırlandırın.
+  Yüksek önem düzeyi alanı, önemli sayıda benzersiz değere sahip bir yüz tablolu veya filtrelenebilir alandan oluşur ve sonuç olarak, sonuçları hesaplarken önemli kaynaklar tüketir. Örneğin, bir Ürün Kimliği veya Açıklama alanını facetable/filterable olarak ayarlamak, belgeden belgeye değerlerin çoğu benzersiz olduğundan, yüksek ciddiyet olarak sayılır. Mümkün olan her yerde, yüksek kardinallik alanlarının sayısını sınırlayın.
 
-+ **Arama katmanını artır**  
++ **Arama Katmanını Artırın**  
 
-  Daha yüksek bir Azure Bilişsel Arama katmanına taşımak, yavaş sorguların performansını artırmanın başka bir yolu olabilir. Her iki katman da daha hızlı CPU ve daha fazla bellek sağlar ve bunların her ikisi de sorgu performansı üzerinde olumlu bir etkiye sahiptir.
+  Daha yüksek bir Azure Bilişsel Arama katmanına geçmek, yavaş sorguların performansını artırmanın başka bir yolu olabilir. Her bir üst katman, sorgu performansı üzerinde olumlu bir etkiye sahip olan daha hızlı CPU'lar ve daha fazla bellek sağlar.
 
-## <a name="scale-for-availability"></a>Kullanılabilirlik için ölçeklendirin
+## <a name="scale-for-availability"></a>Kullanılabilirlik için ölçeklendir
 
-Çoğaltmalar yalnızca sorgu gecikmesini azaltmaya yardımcı olur, ancak yüksek kullanılabilirliğe de izin verebilir. Tek bir çoğaltmayla, yazılım güncelleştirmelerinden sonra veya gerçekleşen diğer bakım olayları için sunucu yeniden başlatılması nedeniyle dönemsel kapalı kalma süresi beklemelisiniz. Sonuç olarak, uygulamanızın çok yüksek düzeyde aramalar (sorgular) ve yazmaları (Dizin oluşturma olayları) gerektirip gerektirmediğini göz önünde bulundurmanız önemlidir. Azure Bilişsel Arama, tüm ücretli arama tekliflerindeki SLA seçeneklerini aşağıdaki özniteliklerle sunar:
+Yinelemeler yalnızca sorgu gecikmesüresini azaltmaya yardımcı olmakla birlikte, yüksek kullanılabilirlik için de izin verebilir. Tek bir yinelemeyle, yazılım güncelleştirmeleri veya oluşacak diğer bakım olayları sonrasında sunucu yeniden başlatmaları nedeniyle periyodik olarak kapalı kalma süresi beklemelisiniz. Sonuç olarak, uygulamanızın aramaların (sorguların) yanı sıra yazma (dizin oluşturma olayları) yüksek kullanılabilirlik gerektirip gerektirip gerektirmeyişe bilip olmadığını göz önünde bulundurmanız önemlidir. Azure Bilişsel Arama, aşağıdaki özelliklere sahip tüm ücretli arama teklifleri üzerinde SLA seçenekleri sunar:
 
-+ Salt okuma iş yüklerinin yüksek kullanılabilirliği için iki çoğaltma (sorgular)
++ Salt okunur iş yüklerinin (sorgular) yüksek kullanılabilirliği için iki yineleme
 
-+ Okuma/yazma iş yüklerinin yüksek kullanılabilirliği için üç veya daha fazla çoğaltma (sorgular ve dizin oluşturma)
++ Okuma yazma iş yüklerinin yüksek kullanılabilirliği için üç veya daha fazla yineleme (sorgular ve dizin oluşturma)
 
-Bunun hakkında daha fazla bilgi için lütfen [Azure Bilişsel Arama hizmet düzeyi sözleşmesi](https://azure.microsoft.com/support/legal/sla/search/v1_0/)ziyaret edin.
+Bu konuda daha fazla bilgi için lütfen [Azure Bilişsel Arama Hizmeti Düzeyi Sözleşmesi'ni](https://azure.microsoft.com/support/legal/sla/search/v1_0/)ziyaret edin.
 
-Çoğaltmalar verilerinizin kopyaları olduğundan, birden fazla kopyaya sahip olmak Azure Bilişsel Arama 'nin makine yeniden başlatmaları ve bakım yapmasına izin verdiğinden, sorgu yürütme diğer çoğaltmalarda devam eder. Buna karşılık, çoğaltmaları dışarıda bırakırsanız, bu çoğaltmaların bir veya daha fazla kaynak olduğu varsayıldığında sorgu performansı düşüşüne tabi olursunuz.
+Yinelemeler verilerinizin kopyaları olduğundan, birden çok yinelemeye sahip olmak Azure Bilişsel Arama'nın bir yinelemeye karşı makine yeniden başlatma ve bakım yapmasına olanak sağlarken, sorgu yürütme diğer yinelemelerde de devam eder. Tersine, yinelemeleri uzaklara götürürseniz, bu yinelemelerin az kullanılan bir kaynak olduğunu varsayarak sorgu performansı bozulmasına uğrarsınız.
 
-## <a name="scale-for-geo-distributed-workloads-and-geo-redundancy"></a>Coğrafi olarak dağıtılan iş yükleri ve coğrafi yedeklilik için ölçeklendirin
+## <a name="scale-for-geo-distributed-workloads-and-geo-redundancy"></a>Coğrafi olarak dağıtılan iş yükleri ve coğrafi artıklık için ölçeklendirme
 
-Coğrafi olarak dağıtılan iş yükleri için, ana bilgisayar veri merkezinden uzakta bulunan kullanıcılar daha yüksek gecikme süresine sahip olur. Bir hafifletme, bölgelere bu kullanıcılara daha yakından yaklaşarak birden çok arama hizmeti sağlamak.
+Coğrafi olarak dağıtılan iş yükleri için, ana bilgisayar veri merkezinden uzakta bulunan kullanıcılar daha yüksek gecikme gecikme oranlarına sahip olur. Bir azaltma, bu kullanıcılara daha yakın olan bölgelerde birden çok arama hizmeti sağlamaktır.
 
-Azure Bilişsel Arama, bölge genelinde Azure Bilişsel Arama dizinlerinin coğrafi olarak çoğaltılmasının otomatik bir yöntemini sağlamıyor, ancak bu işlemi uygulamak ve yönetmek için basit hale getirmek üzere kullanılabilecek bazı teknikler vardır. Bunlar, sonraki birkaç bölümde özetlenmiştir.
+Azure Bilişsel Arama şu anda bölgeler arasında Azure Bilişsel Arama dizinlerini coğrafi olarak çoğaltmak için otomatik bir yöntem sağlamaz, ancak bu işlemin uygulanmasını ve yönetilmesini kolaylaştırabilecek bazı teknikler vardır. Bunlar sonraki birkaç bölümde özetlenmiştir.
 
-Coğrafi olarak dağıtılmış bir arama hizmetleri kümesinin amacı, iki veya daha fazla bölgede iki veya daha fazla dizine sahip olmaktır. Bu durumda, bir kullanıcının Azure Bilişsel Arama hizmetine yönlendirildiği, bu örnekte görüldüğü gibi en düşük gecikme süresi sağlar:
+Coğrafi olarak dağıtılan bir arama hizmeti kümesinin amacı, bir kullanıcının bu örnekte görüldüğü gibi en düşük gecikme gecikmesini sağlayan Azure Bilişsel Arama hizmetine yönlendirildiği iki veya daha fazla bölgede iki veya daha fazla dizin kullanılabilir olmasıdır:
 
-   ![Bölgeye göre hizmetlerin çapraz sekmesi][1]
+   ![Bölgelere göre hizmetlerin çapraz sekmesi][1]
 
-### <a name="keep-data-synchronized-across-multiple-services"></a>Verileri birden çok hizmet arasında eşitlenmiş durumda tut
+### <a name="keep-data-synchronized-across-multiple-services"></a>Verileri birden çok hizmet arasında senkronize tutma
 
-[Azure bilişsel arama Dizin oluşturucuyu](search-indexer-overview.md) veya anında iletme API 'Sini ( [Azure bilişsel arama REST API](https://docs.microsoft.com/rest/api/searchservice/)olarak da bilinir) kullanarak, dağıtılmış arama hizmetlerinizi eşitlenmiş halde tutmanın iki seçeneği vardır.  
+Azure [Bilişsel Arama Dizinleyicisi](search-indexer-overview.md) veya Push API 'yi [(Azure Bilişsel Arama REST API](https://docs.microsoft.com/rest/api/searchservice/)olarak da adlandırılır) kullanmaktan oluşan dağıtılmış arama hizmetlerinizi eşit tutmak için iki seçenek vardır.  
 
-### <a name="use-indexers-for-updating-content-on-multiple-services"></a>Birden çok hizmet üzerinde içerik güncelleştirmek için Dizin oluşturucular kullanma
+### <a name="use-indexers-for-updating-content-on-multiple-services"></a>Birden çok hizmetteki içeriği güncelleştirmek için dizin oluşturma
 
-Bir hizmette zaten Dizin Oluşturucu kullanıyorsanız, ikinci bir hizmette ikinci bir Dizin Oluşturucu yapılandırarak aynı veri kaynağı nesnesini kullanarak aynı konumdan veri çekmesini sağlayabilirsiniz. Her bölgedeki her bir hizmetin kendi Dizin Oluşturucusu ve bir hedef dizini vardır (arama dizininiz paylaşılmaz, bu da veriler yinelenir), ancak her Dizin Oluşturucu aynı veri kaynağına başvurur.
+Bir hizmette zaten dizinleyici kullanıyorsanız, aynı veri kaynağı nesnesini kullanmak için ikinci bir hizmetüzerinde ikinci bir dizinleyiciyi yapılandırabilirsiniz ve aynı konumdan veri çekebilirsiniz. Her bölgedeki her hizmetin kendi dizinleyicisi ve hedef dizini vardır (arama dizininiz paylaşılmaz, bu da verilerin çoğaltıldığı anlamına gelir), ancak her dizinleyici aynı veri kaynağına başvurur.
 
-Mimarinin nasıl görüneceğine ilişkin üst düzey bir görsel aşağıda verilmiştir.
+İşte bu mimarinin neye benzeyeceğine dair üst düzey bir görsel.
 
-   ![Dağıtılmış Dizin Oluşturucu ve hizmet bileşimleri içeren tek veri kaynağı][2]
+   ![Dağıtılmış dizinleyici ve hizmet birleşimleri ile tek veri kaynağı][2]
 
-### <a name="use-rest-apis-for-pushing-content-updates-on-multiple-services"></a>Birden çok hizmete içerik güncelleştirmelerini göndermek için REST API 'Lerini kullanma
+### <a name="use-rest-apis-for-pushing-content-updates-on-multiple-services"></a>Birden çok hizmette içerik güncelleştirmelerini zorlamak için REST API'lerini kullanın
 
-Azure [bilişsel arama dizininizdeki içeriği göndermek](https://docs.microsoft.com/rest/api/searchservice/update-index)için azure bilişsel arama REST API kullanıyorsanız, her bir güncelleştirme gerektiğinde tüm arama hizmetlerine değişiklikleri göndererek çeşitli arama hizmetlerinizi eşitlenmiş halde tutabilirsiniz. Kodunuzda, bir arama hizmetine yapılan bir güncelleştirmenin başarısız olduğu ancak diğer arama hizmetleri için başarılı olduğu durumları işlediğinizden emin olun.
+[Azure Bilişsel Arama Dizininizdeki içeriği zorlamak](https://docs.microsoft.com/rest/api/searchservice/update-index)için Azure Bilişsel Arama REST API'sını kullanıyorsanız, bir güncelleştirme gerektiğinde tüm arama hizmetlerinde değişiklik yaparak çeşitli arama hizmetlerinizi eşit tutabilirsiniz. Kodunuzda, bir arama hizmetine güncelleştirmenin başarısız olduğu ancak diğer arama hizmetlerinde başarılı olduğu servis taleplerini işlediğinizden emin olun.
 
-## <a name="leverage-azure-traffic-manager"></a>Azure Traffic Manager 'ten yararlanın
+## <a name="leverage-azure-traffic-manager"></a>Azure Trafik Yöneticisi'ni kaldır
 
-[Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) , istekleri birden çok arama hizmeti tarafından desteklenen, coğrafi olarak bulunan birden çok Web sitesine yönlendirmenize olanak tanır. Traffic Manager avantajlarından biri, kullanılabilir olmasını sağlamak için Azure Bilişsel Arama araştırma yapabilir ve kapalı kalma durumunda kullanıcıları alternatif arama hizmetleri 'ne yönlendirebilir. Ayrıca, Azure Web siteleri aracılığıyla arama isteklerini yönlendirçalışıyorsanız Azure Traffic Manager, Web sitesinin en fazla Azure Bilişsel Arama olmadığı, Yük Dengeleme durumlarını yüklemenize izin verir. Traffic Manager yararlanan mimarinin bir örneği aşağıda verilmiştir.
+[Azure Trafik Yöneticisi,](../traffic-manager/traffic-manager-overview.md) istekleri birden çok arama hizmeti tarafından desteklenen birden çok coğrafi konumdaki web sitelerine yönlendirmenize olanak tanır. Trafik Yöneticisi'nin bir avantajı, kullanılabilir olduğundan emin olmak için Azure Bilişsel Arama'yı inceleyebilir ve kapalı kalma süresi durumunda kullanıcıları alternatif arama hizmetlerine yönlendirebilmesidir. Ayrıca, Azure Web Siteleri üzerinden arama isteklerini yönlendirmeniz durumunda, Azure Trafik Yöneticisi, Web Sitesinin açık olduğu ancak Azure Bilişsel Arama'nın olmadığı bakiye durumlarını yüklemenize olanak tanır. Trafik Yöneticisi'ni kaldıran mimarinin ne olduğuna bir örnek aşağıda verilmiştir.
 
-   ![Merkezi Traffic Manager ile bölgelere göre hizmetlerin çapraz sekmesi][3]
+   ![Merkezi Trafik Yöneticisi ile bölgelere göre hizmetlerin çapraz sekmesi][3]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Her biri için fiyatlandırma katmanları ve hizmet limitleri hakkında daha fazla bilgi edinmek için bkz. [hizmet limitleri](search-limits-quotas-capacity.md). Bölüm ve çoğaltma birleşimleri hakkında daha fazla bilgi edinmek için bkz. [kapasiteyi planlayın](search-capacity-planning.md) .
+Her biri için fiyatlandırma katmanları ve hizmet sınırları hakkında daha fazla bilgi edinmek için [Hizmet sınırlarına](search-limits-quotas-capacity.md)bakın. Bölüm ve çoğaltma kombinasyonları hakkında daha fazla bilgi edinmek [için kapasite için Plan'a](search-capacity-planning.md) bakın.
 
-Bu makalede ele alınan tekniklerin performansı ve gösterileri hakkında bir tartışma için aşağıdaki videoyu izleyin:
+Performans ve bu makalede tartışılan tekniklerin gösterileri hakkında bir tartışma için aşağıdaki videoyu izleyin:
 
 > [!VIDEO https://channel9.msdn.com/Events/Microsoft-Azure/AzureCon-2015/ACON319/player]
 > 

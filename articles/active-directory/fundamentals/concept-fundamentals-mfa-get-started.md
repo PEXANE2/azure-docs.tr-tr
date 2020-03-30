@@ -1,68 +1,67 @@
 ---
-title: Kuruluşunuz için Multi-Factor Authentication etkinleştirme-Azure Active Directory
-description: Lisansınızı temel alarak kuruluşunuz için Azure MFA 'yı etkinleştirin
+title: Kuruluşunuz için Azure Çok Faktörlü Kimlik Doğrulama - Azure Etkin Dizini
+description: Lisans modelinize dayalı olarak kuruluşunuz için Azure Çok Faktörlü Kimlik Doğrulama'nın kullanılabilir özellikleri hakkında bilgi edinin
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 12/06/2019
+ms.date: 03/18/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe0d79f228ee2b84c00a35d4836cbda6a4847a42
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: febdb708c637ac322c0ca884eae627da9bd5904c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74932456"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79530402"
 ---
-# <a name="enable-multi-factor-authentication-for-your-organization"></a>Kuruluşunuz için Multi-Factor Authentication etkinleştirme
+# <a name="overview-of-azure-multi-factor-authentication-for-your-organization"></a>Kuruluşunuz için Azure Çok Faktörlü Kimlik Doğrulama'ya Genel Bakış
 
-Kuruluşunuzun sahip olduğu lisanslara göre Azure Active Directory (AD) kullanıcılarınız için Azure Multi-Factor Authentication (MFA) etkinleştirmenin birden çok yolu vardır. 
+Kuruluşunuzun sahip olduğu lisansları temel alarak Azure Etkin Dizin (AD) kullanıcılarınız için Azure Çok Faktörlü Kimlik Doğrulaması'nı etkinleştirmenin birden çok yolu vardır. 
 
-![Gerektiğinde sinyalleri araştırın ve MFA 'yı uygulayın](./media/concept-fundamentals-mfa-get-started/verify-signals-and-perform-mfa-if-required.png)
+![Sinyalleri araştırın ve gerekirse MFA'yı uygulayın](./media/concept-fundamentals-mfa-get-started/verify-signals-and-perform-mfa-if-required.png)
 
-Önerilerimize bağlı olarak, MFA kullanıyorsanız, hesabınız% 99,9 ' den daha az olabilir.
+Çalışmalarımıza dayanarak, çok faktörlü kimlik doğrulama (MFA) kullanırsanız hesabınızın %99,9'dan daha az tehlikeye girme olasılığı daha yüksektir.
 
-Böylece kuruluşunuz, bir istatistik olmadan önce Multi-Factor Authentication 'ı ücretsiz olarak nasıl açıp açsın?
+Peki nasıl kuruluşunuz bir istatistik haline gelmeden önce, ücretsiz bile MFA açmak mı?
 
 ## <a name="free-option"></a>Ücretsiz seçenek
 
-Azure AD 'nin ücretsiz avantajlarından yararlanan müşteriler, ortamınızda Multi-Factor Authentication 'ı etkinleştirmek için [güvenlik varsayılanlarını](../fundamentals/concept-fundamentals-security-defaults.md) kullanabilir.
+Azure AD'nin ücretsiz avantajlarından yararlanan müşteriler, ortamlarında çok faktörlü kimlik doğrulamayı etkinleştirmek için [güvenlik varsayılanlarını](../fundamentals/concept-fundamentals-security-defaults.md) kullanabilir.
 
-## <a name="office-365"></a>Office 365
+## <a name="office-365-business-premium-e3-or-e5"></a>Office 365 Business Premium, E3 veya E5
 
-Office 365 ile müşteriler için iki seçenek vardır:
+Office 365'e sahip müşteriler için iki seçenek vardır:
 
-- [Güvenlik Varsayılanları](concept-fundamentals-security-defaults.md) , Azure Multi-Factor Authentication ile tüm kullanıcılarınızı korumak IÇIN Azure AD aracılığıyla etkinleştirilebilir.
-- Kuruluşunuz Multi-Factor Authentication sağlamaya yönelik daha fazla ayrıntı gerektiriyorsa, Office lisanslarınız [Kullanıcı BAŞıNA MFA](../authentication/howto-mfa-userstates.md) özelliklerini içerir. Kullanıcı başına MFA etkinleştirilir ve yöneticiler tarafından tek tek her kullanıcı için zorlanır.
+* Azure Çok Faktörlü Kimlik Doğrulama, tüm oturum açma etkinlikleri için tüm kullanıcılar için etkin veya devre dışı bırakılır. Yalnızca bir kullanıcı alt kümesi için veya yalnızca belirli senaryolar altında çok faktörlü kimlik doğrulamayı etkinleştirme olanağı yoktur. Yönetim, Office 365 portalı üzerinden yapılır. 
+* Geliştirilmiş bir kullanıcı deneyimi için Azure AD Premium P1 veya P2'ye yükseltin ve Koşullu Erişim'i kullanın. Daha fazla bilgi için, çok faktörlü kimlik doğrulamalı güvenli Office 365 kaynaklarına bakın.
 
 ## <a name="azure-ad-premium-p1"></a>Azure AD Premium P1
 
-Enterprise Mobility + Security E3, Microsoft 365 F1 veya Microsoft 365 E3 gibi bu işlevselliği içeren Azure AD Premium P1 veya benzer lisanslara sahip müşteriler için: 
+Azure AD Premium P1 veya Enterprise Mobility + Security E3, Microsoft 365 F1 veya Microsoft 365 E3 gibi bu işlevselliği içeren benzer lisanslara sahip müşteriler için: 
 
-En iyi kullanıcı deneyimi için [koşullu erişim ilkelerinin](../conditional-access/concept-conditional-access-policy-common.md) kullanılması önerilir.
+Belirli senaryolar veya etkinlikler sırasında iş gereksinimlerinize uyacak şekilde kullanıcılardan çok faktörlü kimlik doğrulaması için komut istemi yapmak için [Azure AD Koşullu Erişim'i](../conditional-access/overview.md) kullanın.
 
 ## <a name="azure-ad-premium-p2"></a>Azure AD Premium P2
 
-Enterprise Mobility + Security E5 veya Microsoft 365 E5 gibi bu işlevselliği içeren Azure AD Premium P2 veya benzer lisansları olan müşteriler için: 
+Azure AD Premium P2 veya Enterprise Mobility + Security E5 veya Microsoft 365 E5 gibi bu işlevselliği içeren benzer lisanslara sahip müşteriler için: 
 
-En iyi kullanıcı deneyimi ve zorlama esnekliği açısından, [koşullu erişim ilkelerinin](../conditional-access/concept-conditional-access-policy-common.md) yanı sıra [kimlik koruması](../identity-protection/overview-v2.md) risk ilkeleriyle birlikte kullanılması önerilir.
+En güçlü güvenlik konumunu ve geliştirilmiş kullanıcı deneyimini sağlar. Azure AD Premium P1 özelliklerine, kullanıcının desenlerine uyum sağlayan ve çok faktörlü kimlik doğrulama istemlerini en aza indiren [risk tabanlı Koşullu Erişim](../conditional-access/howto-conditional-access-policy-risk.md) ekler.
 
 ## <a name="authentication-methods"></a>Kimlik doğrulama yöntemleri
 
-|   | Güvenlik varsayılanları | Diğer tüm Yöntemler |
+|   | Güvenlik varsayılanları | Diğer tüm yöntemler |
 | --- | --- | --- |
-| Mobil uygulama aracılığıyla bildirim | X | X |
-| Mobil uygulama veya donanım belirtecinden doğrulama kodu |   | X |
+| Mobil uygulama üzerinden bildirim | X | X |
+| Mobil uygulama veya donanım belirteci doğrulama kodu |   | X |
 | Telefona kısa mesaj |   | X |
-| Telefon çağrısı |   | X |
-| Uygulama parolaları |   | X * * |
-
-\* * Uygulama parolaları yalnızca yöneticiler tarafından etkinleştirildiyse eski kimlik doğrulama senaryolarıyla Kullanıcı başına MFA 'da kullanılabilir.
+| Telefona çağrı |   | X |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure AD fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/active-directory/)
+Başlamak için Azure Çok [Faktörlü Kimlik Doğrulama ile kullanıcı oturum açma etkinliklerini güvence altına](../authentication/tutorial-enable-azure-mfa.md)alan öğreticiye bakın.
+
+Lisanslama hakkında daha fazla bilgi için [Azure Çok Faktörlü Kimlik Doğrulama](../authentication/concept-mfa-licensing.md)özellikleri ve lisanslarına bakın.

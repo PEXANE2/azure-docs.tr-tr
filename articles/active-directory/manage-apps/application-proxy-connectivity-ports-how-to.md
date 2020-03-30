@@ -1,6 +1,6 @@
 ---
-title: Uygulama proxy uygulaması için gerekli güvenlik duvarı bağlantı noktalarını açma
-description: Hangi Azure AD uygulama düzgün çalışması proxy'si için açmak için bağlantı noktalarını kullanıma Bul
+title: Uygulama Proxy uygulaması için gerekli güvenlik duvarı bağlantı noktaları nasıl açılır?
+description: Azure AD Uygulama Proxy'sinin düzgün çalışması için hangi bağlantı noktalarını açacağımı öğrenin
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,27 +17,27 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2b676508c73ff0233526f19b865bb9e4f7b80f12
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74275545"
 ---
-# <a name="how-to-open-the-firewall-ports-required-for-an-application-proxy-application"></a>Bir uygulama proxy'si uygulaması için gereken güvenlik duvarı bağlantı noktaları açma
+# <a name="how-to-open-the-firewall-ports-required-for-an-application-proxy-application"></a>Uygulama Proxy uygulaması için gerekli güvenlik duvarı bağlantı noktaları nasıl açılır?
 
-Gerekli bağlantı noktalarının ve her bağlantı noktasının işlevinin tam listesini görmek için, [uygulama proxy 'si belgelerinin](application-proxy-add-on-premises-application.md)Önkoşullar bölümüne bakın. Uygulama proxy'si yalnızca giden bağlantı noktaları kullandığına dikkat edin.
+Gerekli bağlantı noktalarının tam listesini ve her bağlantı noktasının işlevini görmek [için, Uygulama Proxy belgelerinin](application-proxy-add-on-premises-application.md)ön koşullar bölümüne bakın. Uygulama Proxy'nin yalnızca giden bağlantı noktalarını kullandığını unutmayın.
 
-Ayrıca, şirket içi ağınızdan [bağlayıcı bağlantı noktaları test aracını](https://aadap-portcheck.connectorporttest.msappproxy.net/) açarak gerekli tüm bağlantı noktalarının açık olup olmadığını kontrol edebilirsiniz. Daha fazla yeşil onay işaretleri koyacağız büyük dayanıklılık anlamına gelir. 
+[Konektör Bağlantı Noktaları Test Aracı'nı](https://aadap-portcheck.connectorporttest.msappproxy.net/) şirket içi ağınızdan açarak gerekli tüm bağlantı noktalarını açıp açmadığınızı da kontrol edebilirsiniz. Daha fazla yeşil onay işareti daha fazla esneklik anlamına gelir. 
 
-## <a name="app-proxy-regions"></a>Uygulama Ara sunucusu bölgeleri
+## <a name="app-proxy-regions"></a>App Proxy bölgeleri
 
-Bu bölgeler hangisinin sizin için yeşil olması gereken bildirmek için bir yol üzerinde çalışıyoruz. Şimdilik, tüm olduklarından emin olun. Orta ABD bakılmaksızın hangi bölgeyi de gereklidir.
+Bu bölgelerden hangisinin sizin için yeşil olması gerektiğini size bildirmek için bir yol üzerinde çalışıyoruz. Şimdilik, hepsinin emin ol. Merkezi ABD'de hangi bölgede olduğunuza bakılmaksızın da gereklidir.
 
-Aracı size doğru sonuçları emin olmak için emin olun:
+Aracın size doğru sonuçları verdiğinden emin olmak için aşağıdakilerden emin olun:
 
--   Bir tarayıcıdan aracı Bağlayıcısı'nı yüklediğiniz sunucunun açın.
+-   Aracı Bağlayıcıyı yüklediğiniz sunucudan bir tarayıcıda açın.
 
--   Herhangi bir proxy veya güvenlik duvarları, bağlayıcıya geçerli de bu sayfaya uygulandığından emin olun. Bu, Internet Explorer 'da &gt; **Internet seçenekleri** -&gt; **Bağlantılar** -&gt; **LAN ayarları** **' -giderek** yapılabilir. Bu sayfada, alanın "Kullanımı bir Proxy sunucusu için bilgisayarınızı LAN" görürsünüz. Bu kutuyu seçin ve "Address" alanına proxy adresi yerleştirin.
+-   Bağlayıcınız için geçerli olan ek vekillerin veya güvenlik duvarlarının da bu sayfaya uygulandığından emin olun. Bu **Ayarlar**  - &gt; **Internet Seçenekleri**  - &gt; **Bağlantıları**  - &gt; LAN **Ayarları**giderek Internet Explorer yapılabilir. Bu sayfada, "LAN'ınız için Proxy Sunucusu kullanın" alanını görürsünüz. Bu kutuyu seçin ve proxy adresini "Adres" alanına koyun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Azure AD Uygulama Ara Sunucusu bağlayıcılarını anlama](application-proxy-connectors.md)
+[Azure AD Uygulama Proxy bağlayıcılarını anlama](application-proxy-connectors.md)

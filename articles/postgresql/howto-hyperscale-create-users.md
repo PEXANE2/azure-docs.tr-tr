@@ -1,71 +1,71 @@
 ---
-title: Kullanıcı oluşturma-hiper ölçek (Citus)-PostgreSQL için Azure veritabanı
-description: Bu makalede, PostgreSQL için Azure veritabanı-hiper ölçek (Citus) ile etkileşim kurmak üzere nasıl yeni kullanıcı hesapları oluşturabileceğiniz açıklanmaktadır.
+title: Kullanıcı oluşturma - Hyperscale (Citus) - PostgreSQL için Azure Veritabanı
+description: Bu makalede, PostgreSQL - Hyperscale (Citus) için bir Azure Veritabanı ile etkileşim kurmak için nasıl yeni kullanıcı hesapları oluşturabileceğiniz açıklanmaktadır.
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 1/8/2019
 ms.openlocfilehash: 674fd4372bdf7c3782d18aaf04b48eb0067a9b2e
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77484936"
 ---
-# <a name="create-users-in-azure-database-for-postgresql---hyperscale-citus"></a>PostgreSQL için Azure veritabanı 'nda Kullanıcı oluşturma-hiper ölçek (Citus)
+# <a name="create-users-in-azure-database-for-postgresql---hyperscale-citus"></a>PostgreSQL - Hyperscale (Citus) için Azure Veritabanı'nda kullanıcı oluşturma
 
 > [!NOTE]
-> "Kullanıcılar" terimi, bir Hyperscale (Citus) sunucu grubu içindeki kullanıcılara başvurur. Azure abonelik kullanıcıları ve ayrıcalıkları hakkında bilgi edinmek için [Azure rol tabanlı erişim denetimi (RBAC) makalesini](../role-based-access-control/built-in-roles.md) ziyaret edin veya [rolleri nasıl özelleştireceğinizi](../role-based-access-control/custom-roles.md)inceleyin.
+> "Kullanıcılar" terimi, Bir Hyperscale (Citus) sunucu grubundaki kullanıcıları ifade eder. Bunun yerine Azure abonelik kullanıcıları ve ayrıcalıkları hakkında bilgi edinmek için [Azure rol tabanlı erişim denetimi (RBAC) makalesini](../role-based-access-control/built-in-roles.md) ziyaret edin veya rolleri nasıl [özelleştirinir'](../role-based-access-control/custom-roles.md)i gözden geçirin.
 
 ## <a name="the-server-admin-account"></a>Sunucu yöneticisi hesabı
 
-PostgreSQL altyapısı, veritabanı nesnelerine erişimi denetlemek için [Roller](https://www.postgresql.org/docs/current/sql-createrole.html) kullanır ve yeni oluşturulan bir hiper ölçek (Citus) sunucu grubu önceden tanımlanmış çeşitli rollerle birlikte gelir:
+PostgreSQL altyapısı veritabanı nesnelerine erişimi denetlemek için [rolleri](https://www.postgresql.org/docs/current/sql-createrole.html) kullanır ve yeni oluşturulan Hyperscale (Citus) sunucu grubu önceden tanımlanmış çeşitli rollerle birlikte gelir:
 
 * [Varsayılan PostgreSQL rolleri](https://www.postgresql.org/docs/current/default-roles.html)
 * `azure_pg_admin`
 * `postgres`
 * `citus`
 
-Hyperscale yönetilen bir PaaS hizmeti olduğundan, yalnızca Microsoft `postgres` süper kullanıcı rolüyle oturum açabilir. Sınırlı yönetim erişimi için hiper ölçek `citus` rolü sağlar.
+Hyperscale yönetilen bir PaaS hizmeti olduğundan, `postgres` süper kullanıcı rolüyle yalnızca Microsoft oturum açabilir. Sınırlı yönetim erişimi için, `citus` Hyperscale rolü sağlar.
 
-`citus` rolü izinleri:
+`citus` Rol için izinler:
 
-* Tüm yapılandırma değişkenlerini, hatta yalnızca süper kullanıcılar için görünür olan değişkenleri okuyun.
-* Tüm pg\_stat\_\* görünümlerini okuyun ve normalde yalnızca süper kullanıcılar için görünür olan, hatta görünümler ve uzantılar gibi çeşitli uzantılarla ilgili uzantıları kullanın.
-* Büyük olasılıkla uzun bir süre boyunca tablolardaki kilitleri paylaşma ERIŞIMI olabilecek izleme işlevlerini yürütün.
-* [PostgreSQL uzantıları oluşturun](concepts-hyperscale-extensions.md) (rol `azure_pg_admin`bir üyesi olduğundan).
+* Normalde yalnızca süper kullanıcılar tarafından görülebilen tüm yapılandırma değişkenlerini, hatta değişkenleri bile okuyun.
+* Tüm pg\_\_ \* stat görünümlerini okuyun ve istatistiklerle ilgili çeşitli uzantılar kullanın - hatta görünümler veya uzantılar normalde yalnızca süper kullanıcılar tarafından görülebilir.
+* Access SHARE kilitlerini tablolara alabilecek izleme işlevlerini uzun süre çalıştırın.
+* [PostgreSQL uzantıları oluşturun](concepts-hyperscale-extensions.md) (çünkü rol `azure_pg_admin`üyesidir).
 
-Özellikle, `citus` rolünde bazı kısıtlamalar vardır:
+Özellikle, rolün `citus` bazı kısıtlamaları vardır:
 
-* Roller oluşturulamıyor
+* Roller oluşturamaz
 * Veritabanları oluşturulamıyor
 
-## <a name="how-to-create-additional-user-roles"></a>Ek Kullanıcı rolleri oluşturma
+## <a name="how-to-create-additional-user-roles"></a>Ek kullanıcı rolleri oluşturma
 
-Belirtildiği gibi, `citus` yönetici hesabının ek Kullanıcı oluşturma izni yoktur. Bir kullanıcı eklemek için Azure portal arabirimini kullanın.
+Belirtildiği gibi, `citus` yönetici hesabı ek kullanıcılar oluşturmak için izin yoksun. Kullanıcı eklemek için Azure portal arabirimini kullanın.
 
-1. Hiper ölçek sunucu grubunuzun **Roller** sayfasına gidin ve **+ Ekle**' ye tıklayın:
+1. Hiper ölçekli sunucu grubunuz için **Roller** sayfasına gidin ve **+ Ekle'yi**tıklatın :
 
    ![Roller sayfası](media/howto-hyperscale-create-users/1-role-page.png)
 
-2. Rol adını ve parolayı girin. **Kaydet** düğmesine tıklayın.
+2. Rol adını ve parolayı girin. **Kaydet**'e tıklayın.
 
-   ![Rol Ekle](media/howto-hyperscale-create-users/2-add-user-fields.png)
+   ![Rol ekleme](media/howto-hyperscale-create-users/2-add-user-fields.png)
 
-Kullanıcı, sunucu grubunun düzenleyici düğümünde oluşturulacak ve tüm çalışan düğümlerine yayılacaktır. Azure portal aracılığıyla oluşturulan roller `LOGIN` özniteliğe sahiptir ve bu, veritabanında oturum açabilen doğru Kullanıcı oldukları anlamına gelir.
+Kullanıcı sunucu grubunun koordinatör düğümünde oluşturulur ve tüm alt düğümlere yayılır. Azure portalı üzerinden oluşturulan `LOGIN` roller özniteliğe sahiptir, bu da veritabanında oturum açabilen gerçek kullanıcılar oldukları anlamına gelir.
 
 ## <a name="how-to-modify-privileges-for-user-role"></a>Kullanıcı rolü için ayrıcalıkları değiştirme
 
-Yeni Kullanıcı rolleri genellikle kısıtlanmış ayrıcalıklarla veritabanı erişimi sağlamak için kullanılır. Kullanıcı ayrıcalıklarını değiştirmek için, PgAdmin veya psql gibi bir araç kullanarak standart PostgreSQL komutlarını kullanın. (Bkz. Hyperscale (Citus) hızlı başlangıç bölümünde [psql ile bağlanma](quickstart-create-hyperscale-portal.md#connect-to-the-database-using-psql) .)
+Yeni kullanıcı rolleri genellikle sınırlı ayrıcalıklarla veritabanı erişimi sağlamak için kullanılır. Kullanıcı ayrıcalıklarını değiştirmek için PgAdmin veya psql gibi bir aracı kullanarak standart PostgreSQL komutlarını kullanın. (Bkz. Hyperscale (Citus) quickstart'ında [psql ile bağlantı](quickstart-create-hyperscale-portal.md#connect-to-the-database-using-psql) kurun.)
 
-Örneğin, `db_user` `mytable`okumasına izin vermek için izin verin:
+Örneğin, okumak `mytable` `db_user` için izin vermek için, izin verin:
 
 ```sql
 GRANT SELECT ON mytable TO db_user;
 ```
 
-Hiper ölçek (Citus) tek tablo verme deyimlerini tüm çalışan düğümlerine uygulayarak tüm küme aracılığıyla yayar. Bununla birlikte, sistem genelinde (örneğin, bir şemadaki tüm tablolar için) her bir tarih düğümünde çalıştırılması gereken Izin verir.  `run_command_on_workers()` yardımcı işlevini kullanın:
+Hyperscale (Citus), tüm grup boyunca tek tablolu GRANT deyimlerini yayıklar ve bunları tüm işçi düğümlerine uygular. Ancak sistem çapında (örneğin, şemadaki tüm tablolar için) GRANT'lerin her tarih düğümünde çalıştırılması gerekir.  `run_command_on_workers()` Yardımcı işlevini kullanın:
 
 ```sql
 -- applies to the coordinator node
@@ -77,20 +77,20 @@ SELECT run_command_on_workers(
 );
 ```
 
-## <a name="how-to-delete-a-user-role-or-change-their-password"></a>Kullanıcı rolünü silme veya parolasını değiştirme
+## <a name="how-to-delete-a-user-role-or-change-their-password"></a>Bir kullanıcı rolü silme veya parolasını değiştirme
 
-Bir kullanıcıyı güncelleştirmek için, hiper ölçek sunucu grubunuzun **Roller** sayfasını ziyaret edin ve kullanıcının yanındaki üç nokta **...** seçeneğine tıklayın. Üç nokta, kullanıcıyı silmek veya parolasını sıfırlamak için bir menü açar.
+Bir kullanıcıyı güncellemek için, Hiper ölçekli sunucu grubunuzun **Görevler** sayfasını ziyaret edin ve kullanıcının **yanındaki** elipsleri tıklatın. Elipsler, kullanıcıyı silmek veya parolalarını sıfırlamak için bir menü açar.
 
-   ![Rol düzenleme](media/howto-hyperscale-create-users/edit-role.png)
+   ![Rolü edin](media/howto-hyperscale-create-users/edit-role.png)
 
-`citus` rolü ayrıcalıklı ve silinemez.
+Rol `citus` ayrıcalıklıdır ve silinemez.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bağlantı kurmasını sağlamak için yeni kullanıcıların makinelerinin IP adresleri için güvenlik duvarını açın: [Azure Portal kullanarak hiper ölçek (Citus) güvenlik duvarı kuralları oluşturun ve yönetin](howto-hyperscale-manage-firewall-using-portal.md).
+Yeni kullanıcıların makinelerinin IP adreslerinin bağlantı kurmasını sağlamak için güvenlik duvarını açın: [Azure portalını kullanarak Hyperscale (Citus) güvenlik duvarı kuralları oluşturun ve yönetin.](howto-hyperscale-manage-firewall-using-portal.md)
 
-Veritabanı kullanıcı hesabı yönetimi hakkında daha fazla bilgi için bkz. PostgreSQL ürün belgeleri:
+Veritabanı kullanıcı hesabı yönetimi hakkında daha fazla bilgi için PostgreSQL ürün belgelerine bakın:
 
-* [Veritabanı rolleri ve ayrıcalıkları](https://www.postgresql.org/docs/current/static/user-manag.html)
-* [Sözdizimi verme](https://www.postgresql.org/docs/current/static/sql-grant.html)
-* [Ayrıcalıkları](https://www.postgresql.org/docs/current/static/ddl-priv.html)
+* [Veritabanı Rolleri ve Ayrıcalıkları](https://www.postgresql.org/docs/current/static/user-manag.html)
+* [GRANT Sözdizimi](https://www.postgresql.org/docs/current/static/sql-grant.html)
+* [Ayrıcalıklar](https://www.postgresql.org/docs/current/static/ddl-priv.html)

@@ -1,50 +1,50 @@
 ---
-title: UWP uygulamanıza kimlik doğrulaması ekleme
-description: AAD, Google, Facebook, Twitter ve Microsoft gibi kimlik sağlayıcılarıyla Evrensel Windows Platformu (UWP) uygulamanızın kullanıcılarının kimliğini doğrulamak için Azure App Service Mobile Apps nasıl kullanacağınızı öğrenin.
+title: UWP uygulamanıza kimlik doğrulama ekleme
+description: Evrensel Windows Platformu (UWP) uygulamanızın kullanıcılarını AAD, Google, Facebook, Twitter ve Microsoft gibi kimlik sağlayıcılarıyla doğrulamak için Azure App Service Mobile Apps'ı nasıl kullanacağınızı öğrenin.
 ms.assetid: 6cffd951-893e-4ce5-97ac-86e3f5ad9466
 ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
 ms.openlocfilehash: 32d4313b345964a2db13d68e83f81756a4acf0d9
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77458945"
 ---
-# <a name="add-authentication-to-your-windows-app"></a>Windows uygulamanıza kimlik doğrulaması ekleme
+# <a name="add-authentication-to-your-windows-app"></a>Windows uygulamanıza kimlik doğrulama ekleme
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
 
 ## <a name="overview"></a>Genel Bakış
-Bu konuda, mobil uygulamanıza bulut tabanlı kimlik doğrulaması ekleme konusu gösterilmektedir. Bu öğreticide, Azure App Service tarafından desteklenen bir kimlik sağlayıcısı kullanarak Mobile Apps için Evrensel Windows Platformu (UWP) hızlı başlangıç projesine kimlik doğrulaması eklersiniz. Mobil uygulama arka ucunuz tarafından başarıyla kimlik doğrulamasından ve yetkilendirdikten sonra, Kullanıcı KIMLIĞI değeri görüntülenir.
+Bu konu, mobil uygulamanıza bulut tabanlı kimlik doğrulamayı nasıl ekleyeceğinizi gösterir. Bu eğitimde, Azure Uygulama Hizmeti tarafından desteklenen bir kimlik sağlayıcısı nı kullanarak Mobil Uygulamalar için Evrensel Windows Platformu (UWP) hızlı başlatma projesine kimlik doğrulama eklersiniz. Mobil Uygulama arka ucunuz tarafından başarıyla doğrulanmış ve yetkilendirilen kullanıcı kimliği değeri görüntülenir.
 
-Bu öğretici Mobile Apps hızlı başlangıcı ' nı temel alır. İlk [olarak Mobile Apps kullanmaya başlama](app-service-mobile-windows-store-dotnet-get-started.md)öğreticisini doldurmanız gerekir.
+Bu öğretici, Mobil Uygulamalar hızlı başlatma dayanmaktadır. Öncelikle öğreticiyi tamamlamanız gerekir [Mobil Uygulamalar ile başlayın.](app-service-mobile-windows-store-dotnet-get-started.md)
 
-## <a name="register"></a>Uygulamanızı kimlik doğrulaması için kaydedin ve App Service yapılandırın
+## <a name="register-your-app-for-authentication-and-configure-the-app-service"></a><a name="register"></a>Uygulamanızı kimlik doğrulama için kaydedin ve Uygulama Hizmetini yapılandırın
 [!INCLUDE [app-service-mobile-register-authentication](../../includes/app-service-mobile-register-authentication.md)]
 
-## <a name="redirecturl"></a>Uygulamanızı Izin verilen dış yönlendirme URL 'Lerine ekleyin
+## <a name="add-your-app-to-the-allowed-external-redirect-urls"></a><a name="redirecturl"></a>Uygulamanızı İzin Verilen Harici Yönlendirme URL'lerine ekleyin
 
-Güvenli kimlik doğrulaması, uygulamanız için yeni bir URL şeması tanımlamanızı gerektirir. Bu, kimlik doğrulama işlemi tamamlandıktan sonra kimlik doğrulama sisteminin uygulamanıza yeniden yönlendirilmesini sağlar. Bu öğreticide, üzerinde URL şeması _uygulamamız_ kullanırız. Ancak, seçtiğiniz herhangi bir URL şemasını kullanabilirsiniz. Bu, mobil uygulamanız için benzersiz olmalıdır. Sunucu tarafında yeniden yönlendirmeyi etkinleştirmek için:
+Güvenli kimlik doğrulaması, uygulamanız için yeni bir URL düzeni tanımlamanızı gerektirir. Bu, kimlik doğrulama işlemi tamamlandıktan sonra kimlik doğrulama sisteminin uygulamanıza geri yönlendirmesine olanak tanır. Bu öğreticide, URL şeması _ekadını_ sonuna kadar kullanırız. Ancak, seçtiğiniz herhangi bir URL düzenini kullanabilirsiniz. Mobil uygulamanıza özgü olmalıdır. Sunucu tarafında yeniden yönlendirmeyi etkinleştirmek için:
 
-1. [Azure portal](https://ms.portal.azure.com)App Service seçin.
+1. Azure [portalında](https://ms.portal.azure.com)Uygulama Hizmetinizi seçin.
 
-2. **Kimlik doğrulama/yetkilendirme** menü seçeneğine tıklayın.
+2. Kimlik **Doğrulama / Yetkilendirme** menüsü seçeneğini tıklatın.
 
-3. **Izin verilen dış yeniden yönlendirme URL 'lerinde**`url_scheme_of_your_app://easyauth.callback`girin.  Bu dizedeki **url_scheme_of_your_app** , MOBIL uygulamanızın URL şemadır.  Bir protokol için normal URL belirtimini izlemelidir (yalnızca harfler ve rakamlar kullanın ve bir harfle başlar).  Mobil uygulama kodunuzu birkaç yerde URL düzeniyle ayarlamanız gerekeceğinden, seçtiğiniz dizeyi bir yere iade etmeniz gerekir.
+3. İzin **Verilen Harici Yönlendirme URL'lerine**girin. `url_scheme_of_your_app://easyauth.callback`  Bu dizedeki **url_scheme_of_your_app,** mobil uygulamanızın URL Düzenidir.  Bir protokol için normal URL belirtimini izlemeli (yalnızca harfleri ve sayıları kullanın ve harfle başlamalıdır).  Mobil uygulama kodunuzu URL Düzeni ile birkaç yerde ayarlamanız gerektiğinden, seçtiğiniz dizeye not alabilirsiniz.
 
-4. **Kaydet** düğmesine tıklayın.
+4. **Kaydet**'e tıklayın.
 
-## <a name="permissions"></a>Kimliği doğrulanmış kullanıcılar için izinleri kısıtla
+## <a name="restrict-permissions-to-authenticated-users"></a><a name="permissions"></a>İzinleri kimlik doğrulaması verilen kullanıcılarla sınırlama
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
-Şimdi, arka ucunuza anonim erişimin devre dışı bırakıldığını doğrulayabilirsiniz. UWP uygulama projesi, başlangıç projesi olarak ayarlanmış şekilde, uygulamayı dağıtıp çalıştırın; uygulama başladıktan sonra 401 (yetkisiz) durum koduna sahip işlenmemiş bir özel durumun yapıldığını doğrulayın. Bunun nedeni, uygulamanın mobil uygulama kodunuza kimliği doğrulanmamış bir kullanıcı olarak erişmeye çalıştığı, ancak *TodoItem* tablosunun artık kimlik doğrulaması gerektirdiğinden meydana gelir.
+Şimdi, arka uca anonim erişimin devre dışı bırakıldığını doğrulayabilirsiniz. UWP uygulama projesi başlangıç projesi olarak ayarlanmışken, uygulamayı dağıtın ve çalıştırın; uygulama başladıktan sonra 401 (Yetkisiz) durum kodu içeren işlenmemiş bir özel durum ortaya sürüldü. Bu durum, uygulamanın Mobil Uygulama Kodunuza kimliği doğrulanmamış bir kullanıcı olarak erişmeye çalıştığından, ancak *TodoItem* tablosu artık kimlik doğrulaması gerektirdiğinden olur.
 
-Bundan sonra, App Service kaynakları isteyerek önce kullanıcıların kimliğini doğrulamak üzere uygulamayı güncelleşolursunuz.
+Ardından, Uygulama Hizmetinizden kaynak istemeden önce uygulamayı kullanıcıların kimliğini doğrulamak için güncellersiniz.
 
-## <a name="add-authentication"></a>Uygulamaya kimlik doğrulaması ekleme
-1. UWP uygulama proje dosyasında MainPage.xaml.cs ve aşağıdaki kod parçacığını ekleyin:
+## <a name="add-authentication-to-the-app"></a><a name="add-authentication"></a>Uygulamaya kimlik doğrulama ekleme
+1. UWP uygulama proje dosyasında MainPage.xaml.cs ve aşağıdaki kod parçacığı ekleyin:
    
         // Define a member variable for storing the signed-in user. 
         private MobileServiceUser user;
@@ -77,8 +77,8 @@ Bundan sonra, App Service kaynakları isteyerek önce kullanıcıların kimliği
             return success;
         }
    
-    Bu kod, kullanıcının kimliğini Facebook oturumu ile doğrular. Facebook dışında bir kimlik sağlayıcısı kullanıyorsanız, yukarıdaki **Mobileserviceauthenticationprovider** değerini sağlayıcınızın değerine değiştirin.
-2. MainPage.xaml.cs içinde **OnNavigatedTo ()** metodunu değiştirin. Ardından, uygulamaya kimlik doğrulaması tetikleyen bir **oturum açma** düğmesi ekleyeceksiniz.
+    Bu kod, kullanıcının Facebook girişiyle kimlik doğruluğunu doğrular. Facebook dışında bir kimlik sağlayıcısı kullanıyorsanız, yukarıdaki **MobileServiceAuthenticationProvider** değerini sağlayıcınızın değeriyle değiştirin.
+2. **MainPage.xaml.cs'da OnNavigatedTo()** yöntemini değiştirin. Ardından, uygulamaya kimlik doğrulamasını tetikleyen bir **Oturum Açma** düğmesi eklersiniz.
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
@@ -88,7 +88,7 @@ Bundan sonra, App Service kaynakları isteyerek önce kullanıcıların kimliği
             }
         }
 
-3. Aşağıdaki kod parçacığını MainPage.xaml.cs ekleyin:
+3. MainPage.xaml.cs aşağıdaki kod parçacığı ekleyin:
    
         private async void ButtonLogin_Click(object sender, RoutedEventArgs e)
         {
@@ -102,7 +102,7 @@ Bundan sonra, App Service kaynakları isteyerek önce kullanıcıların kimliği
                 await RefreshTodoItems();
             }
         }
-4. MainPage. xaml proje dosyasını açın, **Kaydet** düğmesini tanımlayan öğeyi bulun ve aşağıdaki kodla değiştirin:
+4. MainPage.xaml proje dosyasını açın, **Kaydet** düğmesini tanımlayan öğeyi bulun ve aşağıdaki kodla değiştirin:
    
         <Button Name="ButtonSave" Visibility="Collapsed" Margin="0,8,8,0" 
                 Click="ButtonSave_Click">
@@ -118,7 +118,7 @@ Bundan sonra, App Service kaynakları isteyerek önce kullanıcıların kimliği
                 <TextBlock Margin="5">Sign in</TextBlock> 
             </StackPanel>
         </Button>
-5. Aşağıdaki kod parçacığını App.xaml.cs ekleyin:
+5. App.xaml.cs aşağıdaki kod parçacığı ekleyin:
 
         protected override void OnActivated(IActivatedEventArgs args)
         {
@@ -134,21 +134,21 @@ Bundan sonra, App Service kaynakları isteyerek önce kullanıcıların kimliği
             Window.Current.Activate();
             base.OnActivated(args);
         }
-6. Package. appxmanifest dosyasını açın, **Bildirimler**' e gidin, **kullanılabilir bildirimler** açılan listesinde **protokol** ' ü seçin ve düğme **Ekle** ' ye tıklayın. Şimdi **protokol** bildiriminin **özelliklerini** yapılandırın. **Görünen ad**' ta, uygulamanızın kullanıcılarına göstermek istediğiniz adı ekleyin. **Ad**alanına {url_scheme_of_your_app} 'nizi ekleyin.
-7. Uygulamayı çalıştırmak için F5 tuşuna basın, **oturum aç** düğmesine tıklayın ve seçtiğiniz kimlik sağlayıcınızla birlikte uygulamada oturum açın. Oturum açma işlemi başarılı olduktan sonra, uygulama hatasız çalışır ve arka ucunuzu sorgulayabilir ve verilerde güncelleştirmeler yapabilirsiniz.
+6. Package.appxmanifest dosyasını açın, Kullanılabilir **Bildirimler** açılır listesinde **Bildirimler'e**gidin, **Protokol'ü** seçin ve **Ekle** düğmesini tıklatın. Şimdi **Protokol** bildiriminin **özelliklerini** yapılandırın. **Display adına**, görüntülemek istediğiniz adı uygulamanızın kullanıcılarına ekleyin. **Ad**olarak , {url_scheme_of_your_app}'nizi ekleyin.
+7. Uygulamayı çalıştırmak için F5 tuşuna basın, **Oturum Aç** düğmesini tıklayın ve seçtiğiniz kimlik sağlayıcıyla uygulamada oturum açın. Oturum açmanız başarılı olduktan sonra, uygulama hatasız çalışır ve arka uçunuzu sorgulayıp verilerde güncellemeler yapabilirsiniz.
 
-## <a name="tokens"></a>Kimlik doğrulama belirtecini istemcide depolayın
-Önceki örnekte, istemcinin her başlatıldığında hem kimlik sağlayıcısı hem de App Service ile iletişim kurabilmesi gereken standart bir oturum açma gösterildi. Bu yöntem verimsiz değildir, kullanım ile ilgili konular, birçok müşteri aynı anda uygulamanızı başlatmaya çalışır. Daha iyi bir yaklaşım, App Service tarafından döndürülen yetkilendirme belirtecini önbelleğe almak ve sağlayıcı tabanlı bir oturum açma kullanmadan önce bunu kullanmayı denemenin bir yaklaşımdır.
+## <a name="store-the-authentication-token-on-the-client"></a><a name="tokens"></a>Kimlik doğrulama belirtecisini istemcide depolama
+Önceki örnekte, istemcinin uygulama her başlatıldığında hem kimlik sağlayıcısına hem de Uygulama Hizmetiyle iletişime geçmesini gerektiren standart bir oturum açma gösterilmektedir. Bu yöntem verimsiz olmasının tek nedeni, birçok müşteri uygulamanızı aynı anda başlatmaya çalışırsa, kullanımla ilgili sorunlarla da karşınıza çıkabilir. Daha iyi bir yaklaşım, Uygulama Hizmetiniz tarafından döndürülen yetkilendirme belirteci önbelleğe almak ve sağlayıcı tabanlı oturum açma kullanmadan önce bunu kullanmaya çalışmaktır.
 
 > [!NOTE]
-> İstemci tarafından yönetilen veya hizmet tarafından yönetilen kimlik doğrulaması kullanıyor olinizden bağımsız olarak, App Services tarafından verilen belirteci önbelleğe alabilirsiniz. Bu öğretici, hizmet tarafından yönetilen kimlik doğrulaması kullanır.
+> İstemci tarafından yönetilen veya hizmet tarafından yönetilen kimlik doğrulaması kullanıp kullanmadığınıza bakılmaksızın App Services tarafından verilen belirteci önbelleğe alabilirsiniz. Bu öğretici, hizmet tarafından yönetilen kimlik doğrulaması kullanır.
 > 
 > 
 
 [!INCLUDE [mobile-windows-universal-dotnet-authenticate-app-with-token](../../includes/mobile-windows-universal-dotnet-authenticate-app-with-token.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu temel kimlik doğrulama öğreticisini tamamladığınıza göre, aşağıdaki öğreticilerden birine devam etmeyi göz önünde bulundurun:
+Şimdi bu temel kimlik doğrulama öğretici tamamladı, aşağıdaki öğreticiler birine devam düşünün:
 
 * [Uygulamanıza anında iletme bildirimleri ekleme](app-service-mobile-windows-store-dotnet-get-started-push.md)  
   Uygulamanıza anında iletme bildirimleri desteği eklemeyi ve anında iletme bildirimleri göndermek için Azure Notification Hubs’ı kullanmak üzere Mobile App arka ucunuzu yapılandırmayı öğrenin.

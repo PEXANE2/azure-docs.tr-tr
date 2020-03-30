@@ -1,7 +1,7 @@
 ---
-title: Bir Azure sanal ağında alt ağ temsili ekleme veya kaldırma
+title: Azure sanal ağında bir alt ağ delegasyonu ekleme veya kaldırma
 titlesuffix: Azure Virtual Network
-description: Azure 'da bir hizmet için Temsilcili bir alt ağ ekleme veya kaldırma hakkında bilgi edinin.
+description: Azure'daki bir hizmet için devralınan bir alt ağı nasıl ekleyeceğinizi veya kaldırmayı öğrenin.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -13,15 +13,15 @@ ms.workload: infrastructure-services
 ms.date: 11/06/2019
 ms.author: kumud
 ms.openlocfilehash: 6f767abdf8673e3adffc6c4e3748733054ba723d
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77201875"
 ---
-# <a name="add-or-remove-a-subnet-delegation"></a>Alt ağ temsili ekleme veya kaldırma
+# <a name="add-or-remove-a-subnet-delegation"></a>Bir alt ağ delegasyonu ekleme veya kaldırma
 
-Alt ağ temsili, hizmeti dağıtma sırasında benzersiz bir tanımlayıcı kullanarak alt ağda hizmete özel kaynaklar oluşturmak için hizmete açık izinler verir. Bu makalede, bir Azure hizmeti için Temsilcili bir alt ağın nasıl ekleneceği veya kaldırılacağı açıklanır.
+Alt ağ delegasyonu, hizmeti dağıtırken benzersiz bir tanımlayıcı kullanarak alt ağda hizmete özgü kaynaklar oluşturmak için hizmete açık izinler verir. Bu makalede, bir Azure hizmeti için devralınan bir alt ağ nasıl ekleyeceğiniz veya kaldırılacak şekilde açıklanmaktadır.
 
 ## <a name="portal"></a>Portal
 
@@ -29,57 +29,57 @@ Alt ağ temsili, hizmeti dağıtma sırasında benzersiz bir tanımlayıcı kull
 
 https://portal.azure.com adresinden Azure portalında oturum açın.
 
-### <a name="create-the-virtual-network"></a>Sanal ağı oluşturma
+### <a name="create-the-virtual-network"></a>Sanal ağ oluşturma
 
-Bu bölümde, bir sanal ağ ve daha sonra bir Azure hizmetine temsilci olarak kullanacağınız alt ağ oluşturursunuz.
+Bu bölümde, daha sonra bir Azure hizmetine devreceğiniz bir sanal ağ ve alt ağ oluşturursunuz.
 
-1. Ekranın sol üst kısmında, **kaynak oluştur** > **ağ** > **sanal ağ**' ı seçin.
-1. **Sanal ağ oluştur**' da bu bilgileri girin veya seçin:
+1. Ekranın sol üst tarafında,**Networking** > **Sanal ağ**ağı ağı **oluştur'u** > seçin.
+1. **Sanal ağ oluştur'da**bu bilgileri girin veya seçin:
 
     | Ayar | Değer |
     | ------- | ----- |
-    | Ad | *MyVirtualNetwork*girin. |
+    | Adı | *MyVirtualNetwork*girin. |
     | Adres alanı | *10.0.0.0/16*girin. |
     | Abonelik | Aboneliğinizi seçin.|
-    | Kaynak grubu | **Yeni oluştur**' u seçin, *myresourcegroup*yazın ve ardından **Tamam**' ı seçin. |
-    | Konum | **EastUS**öğesini seçin.|
-    | Alt ağ adı | *Mysubnet*yazın. |
+    | Kaynak grubu | **Yeni Oluştur'u**seçin, *myResourceGroup'u*girin, ardından **Tamam'ı**seçin. |
+    | Konum | **EastUS'u**seçin.|
+    | Subnet - Adı | *mySubnet*girin. |
     | Alt Ağ - Adres aralığı | *10.0.0.0/24*girin. |
     |||
-1. Kalanı varsayılan olarak bırakın ve ardından **Oluştur**' u seçin.
+1. Geri sini varsayılan olarak bırakın ve ardından **Oluştur'u**seçin.
 
 ### <a name="permissions"></a>İzinler
 
-Bir Azure hizmetine temsilci seçmek istediğiniz alt ağı oluşturmadıysanız, aşağıdaki izne sahip olmanız gerekir: `Microsoft.Network/virtualNetworks/subnets/write`.
+Bir Azure hizmetine devretmek istediğiniz alt ağı oluşturmadıysanız, aşağıdaki izinlere `Microsoft.Network/virtualNetworks/subnets/write`ihtiyacınız vardır: .
 
-Yerleşik [ağ katılımcısı](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) rolü de gerekli izinleri içerir.
+Yerleşik Ağ [Katılımcısı](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) rolü de gerekli izinleri içerir.
 
-### <a name="delegate-a-subnet-to-an-azure-service"></a>Bir Azure hizmetine alt ağ atama
+### <a name="delegate-a-subnet-to-an-azure-service"></a>Bir alt ağı Azure hizmetine temsilci olarak
 
-Bu bölümde, önceki bölümde oluşturduğunuz alt ağı bir Azure hizmetine devredebilirsiniz.
+Bu bölümde, önceki bölümde oluşturduğunuz alt ağı bir Azure hizmetine devresiniz.
 
-1. Portalın arama çubuğunda *myVirtualNetwork*girin. Arama sonuçlarında **myVirtualNetwork** göründüğünde seçin.
-2. Arama sonuçlarında *myVirtualNetwork*' yi seçin.
-3. **Ayarlar**altında **alt ağlar**' ı seçin ve ardından **mysubnet**' i seçin.
-4. *Mysubnet* sayfasındaki **alt ağ temsilcisi** listesi için, **alt ağı bir hizmete devretmek** (örneğin, **Microsoft. dbforpostgresql/serversv2**) altında listelenen hizmetlerden seçim yapın.  
+1. Portalın arama çubuğuna *myVirtualNetwork*girin. Arama sonuçlarında **myVirtualNetwork** göründüğünde seçin.
+2. Arama sonuçlarında *myVirtualNetwork'u*seçin.
+3. **AYARLAR**altında **Alt Ağlar'ı**seçin ve sonra **mySubnet'i**seçin.
+4. *mySubnet* sayfasında, **Subnet temsilci listesi** **için, Temsilci alt ağı** altında listelenen hizmetlerden bir hizmete (örneğin, **Microsoft.DBforPostgreSQL/serversv2)** seçin.  
 
-### <a name="remove-subnet-delegation-from-an-azure-service"></a>Azure hizmetinden alt ağ temsilcisini kaldırma
+### <a name="remove-subnet-delegation-from-an-azure-service"></a>Azure hizmetinden alt ağ delegasyonu kaldırma
 
-1. Portalın arama çubuğunda *myVirtualNetwork*girin. Arama sonuçlarında **myVirtualNetwork** göründüğünde seçin.
-2. Arama sonuçlarında *myVirtualNetwork*' yi seçin.
-3. **Ayarlar**altında **alt ağlar**' ı seçin ve ardından **mysubnet**' i seçin.
-4. *Mysubnet* sayfasında **alt ağ temsilcisi** listesi için **alt ağ temsilcisi**altında listelenen hizmetlerden **hiçbiri** ' ni seçin. 
+1. Portalın arama çubuğuna *myVirtualNetwork*girin. Arama sonuçlarında **myVirtualNetwork** göründüğünde seçin.
+2. Arama sonuçlarında *myVirtualNetwork'u*seçin.
+3. **AYARLAR**altında **Alt Ağlar'ı**seçin ve sonra **mySubnet'i**seçin.
+4. *Subnet sayfamda,* **Subnet temsilci listesi** için, Temsilci alt ağı altında listelenen hizmetlerden **bir hizmete** **Yok'u** seçin. 
 
 ## <a name="azure-cli"></a>Azure CLI
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Bunun yerine Azure CLı 'yı yüklemeye ve kullanmaya karar verirseniz, bu makale Azure CLı sürüm 2.0.28 veya üstünü kullanmanızı gerektirir. Yüklü sürümünüzü bulmak için `az --version`çalıştırın. Bkz. Install veya Upgrade Info for [Azure CLI](/cli/azure/install-azure-cli) .
+Bunun yerine Azure CLI'yi yerel olarak yüklemeye ve kullanmaya karar verirseniz, bu makalede Azure CLI sürüm 2.0.28 veya sonraki sürümlerini kullanmanız gerekir. Yüklü sürümünüzü bulmak için `az --version`çalıştırın. Bilgileri yüklemek veya yükseltmek için [Azure CLI'yi yükle'ye](/cli/azure/install-azure-cli) bakın.
 
 ### <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 [az group create](https://docs.microsoft.com/cli/azure/group) ile bir kaynak grubu oluşturun. Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır.
 
-Aşağıdaki örnek **eastus** konumunda **myResourceGroup** adlı bir kaynak grubu oluşturur:
+Aşağıdaki örnek, **eastus** konumda **myResourceGroup** adlı bir kaynak grubu oluşturur:
 
 ```azurecli-interactive
 
@@ -89,8 +89,8 @@ Aşağıdaki örnek **eastus** konumunda **myResourceGroup** adlı bir kaynak gr
 
 ```
 
-### <a name="create-a-virtual-network"></a>Sanal ağ oluştur
-**az network vnet create** komutunu kullanarak **myResourceGroup** içinde **mySubnet** adlı bir alt ağ ile [myVnet](https://docs.microsoft.com/cli/azure/network/vnet) adlı bir sanal ağ oluşturun.
+### <a name="create-a-virtual-network"></a>Sanal ağ oluşturma
+[az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet) komutunu kullanarak **myResourceGroup** içinde **mySubnet** adlı bir alt ağ ile **myVnet** adlı bir sanal ağ oluşturun.
 
 ```azurecli-interactive
   az network vnet create \
@@ -103,15 +103,15 @@ Aşağıdaki örnek **eastus** konumunda **myResourceGroup** adlı bir kaynak gr
 ```
 ### <a name="permissions"></a>İzinler
 
-Bir Azure hizmetine temsilci seçmek istediğiniz alt ağı oluşturmadıysanız, aşağıdaki izne sahip olmanız gerekir: `Microsoft.Network/virtualNetworks/subnets/write`.
+Bir Azure hizmetine devretmek istediğiniz alt ağı oluşturmadıysanız, aşağıdaki izinlere `Microsoft.Network/virtualNetworks/subnets/write`ihtiyacınız vardır: .
 
-Yerleşik [ağ katılımcısı](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) rolü de gerekli izinleri içerir.
+Yerleşik Ağ [Katılımcısı](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) rolü de gerekli izinleri içerir.
 
-### <a name="delegate-a-subnet-to-an-azure-service"></a>Bir Azure hizmetine alt ağ atama
+### <a name="delegate-a-subnet-to-an-azure-service"></a>Bir alt ağı Azure hizmetine temsilci olarak
 
-Bu bölümde, önceki bölümde oluşturduğunuz alt ağı bir Azure hizmetine devredebilirsiniz. 
+Bu bölümde, önceki bölümde oluşturduğunuz alt ağı bir Azure hizmetine devresiniz. 
 
-**Mysubnet** adlı alt ağı bir Azure hizmetine temsilciyle güncelleştirmek için [az Network VNET subnet Update](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update) kullanın.  Bu örnekte, örnek temsili için **Microsoft. DBforPostgreSQL/serversv2** kullanılmıştır:
+**mySubnet** adlı alt ağı bir Azure hizmetine bir temsilciyle güncellemek için [az network vnet subnet güncelleştirmesini](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update) kullanın.  Bu örnekte **Microsoft.DBforPostgreSQL/serversv2** örnek delegasyon için kullanılır:
 
 ```azurecli-interactive
   az network vnet subnet update \
@@ -121,7 +121,7 @@ Bu bölümde, önceki bölümde oluşturduğunuz alt ağı bir Azure hizmetine d
   --delegations Microsoft.DBforPostgreSQL/serversv2
 ```
 
-Temsilinin uygulandığını doğrulamak için [az Network VNET subnet Show](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-show)kullanın. Hizmetin, **HizmetAdı**özelliği altındaki alt ağa atanmış olduğunu doğrulayın:
+Delegasyonun uygulandığını doğrulamak için [az network vnet subnet show'u](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-show)kullanın. Hizmetin özellik **hizmetiAdı**altında alt ağa devrediliş olduğunu doğrulayın:
 
 ```azurecli-interactive
   az network vnet subnet show \
@@ -148,9 +148,9 @@ Temsilinin uygulandığını doğrulamak için [az Network VNET subnet Show](htt
 ]
 ```
 
-### <a name="remove-subnet-delegation-from-an-azure-service"></a>Azure hizmetinden alt ağ temsilcisini kaldırma
+### <a name="remove-subnet-delegation-from-an-azure-service"></a>Azure hizmetinden alt ağ delegasyonu kaldırma
 
-**Mysubnet**adlı alt ağdan temsilciyi kaldırmak için [az Network VNET subnet Update](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update) kullanın:
+**MySubnet**adlı alt ağden delegasyonu kaldırmak için [az network vnet subnet güncelleştirmesini](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update) kullanın:
 
 ```azurecli-interactive
   az network vnet subnet update \
@@ -159,7 +159,7 @@ Temsilinin uygulandığını doğrulamak için [az Network VNET subnet Show](htt
   --vnet-name myVnet \
   --remove delegations
 ```
-Temsilinin kaldırıldığını doğrulamak için [az Network VNET subnet Show](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-show)kullanın. Hizmetin **ServiceName**özelliği altındaki alt ağdan kaldırıldığını doğrulayın:
+Delegasyonun kaldırıldığını doğrulamak için [az network vnet subnet show'u](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-show)kullanın. Hizmetin özellik **hizmetiAdı**altında alt ağdan kaldırıldığını doğrulayın:
 
 ```azurecli-interactive
   az network vnet subnet show \
@@ -168,7 +168,7 @@ Temsilinin kaldırıldığını doğrulamak için [az Network VNET subnet Show](
   --vnet-name myVnet \
   --query delegations
 ```
-Komutun çıktısı boş bir köşeli ayracdır:
+Komuttan çıkış null bir parantezdir:
 ```json
 []
 ```
@@ -186,14 +186,14 @@ Komutun çıktısı boş bir köşeli ayracdır:
 ### <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 [New-AzResourceGroup](https://docs.microsoft.com/cli/azure/group)ile bir kaynak grubu oluşturun. Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır.
 
-Aşağıdaki örnek *eastus* konumunda *myResourceGroup* adlı bir kaynak grubu oluşturur:
+Aşağıdaki örnek, *eastus* konumda *myResourceGroup* adlı bir kaynak grubu oluşturur:
 
 ```azurepowershell-interactive
   New-AzResourceGroup -Name myResourceGroup -Location eastus
 ```
 ### <a name="create-virtual-network"></a>Sanal ağ oluşturma
 
-Myresourcegroup **adlı bir** alt ağ Ile **myvnet** adlı bir alt ağ ile **myresourcegroup** [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork?view=latest) [kullanan bir](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig?view=latest) sanal ağ oluşturun. Sanal ağın IP adresi alanı **10.0.0.0/16**' dır. Sanal ağ içindeki alt ağ **10.0.0.0/24**' dir.  
+**MyResourceGroup'ta** [New-AzVirtualNetworkConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig?view=latest) kullanarak **mySubnet** adlı bir alt ağı olan **myVnet** adında bir sanal ağ oluşturun. [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork?view=latest) Sanal ağ için IP adresi alanı **10.0.0.0/16'dır.** Sanal ağ içindeki alt ağ **10.0.0.0/24'dür.**  
 
 ```azurepowershell-interactive
   $subnet = New-AzVirtualNetworkSubnetConfig -Name mySubnet -AddressPrefix "10.0.0.0/24"
@@ -202,15 +202,15 @@ Myresourcegroup **adlı bir** alt ağ Ile **myvnet** adlı bir alt ağ ile **myr
 ```
 ### <a name="permissions"></a>İzinler
 
-Bir Azure hizmetine temsilci seçmek istediğiniz alt ağı oluşturmadıysanız, aşağıdaki izne sahip olmanız gerekir: `Microsoft.Network/virtualNetworks/subnets/write`.
+Bir Azure hizmetine devretmek istediğiniz alt ağı oluşturmadıysanız, aşağıdaki izinlere `Microsoft.Network/virtualNetworks/subnets/write`ihtiyacınız vardır: .
 
-Yerleşik [ağ katılımcısı](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) rolü de gerekli izinleri içerir.
+Yerleşik Ağ [Katılımcısı](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) rolü de gerekli izinleri içerir.
 
-### <a name="delegate-a-subnet-to-an-azure-service"></a>Bir Azure hizmetine alt ağ atama
+### <a name="delegate-a-subnet-to-an-azure-service"></a>Bir alt ağı Azure hizmetine temsilci olarak
 
-Bu bölümde, önceki bölümde oluşturduğunuz alt ağı bir Azure hizmetine devredebilirsiniz. 
+Bu bölümde, önceki bölümde oluşturduğunuz alt ağı bir Azure hizmetine devresiniz. 
 
-**Mysubnet** adlı alt ağı bir Azure hizmetine **mytemsilciliğini** taşıyan bir temsilciyle güncelleştirmek Için [Add-aztemsilcisini](https://docs.microsoft.com/powershell/module/az.network/add-azdelegation?view=latest) kullanın.  Bu örnekte, örnek temsili için **Microsoft. DBforPostgreSQL/serversv2** kullanılmıştır:
+**MySubnet** adlı alt ağı bir Azure hizmetine **myDelegation** adlı bir temsilciyle güncelleştirmek için [Add-AzDelegation'ı](https://docs.microsoft.com/powershell/module/az.network/add-azdelegation?view=latest) kullanın.  Bu örnekte **Microsoft.DBforPostgreSQL/serversv2** örnek delegasyon için kullanılır:
 
 ```azurepowershell-interactive
   $vnet = Get-AzVirtualNetwork -Name "myVNet" -ResourceGroupName "myResourceGroup"
@@ -218,7 +218,7 @@ Bu bölümde, önceki bölümde oluşturduğunuz alt ağı bir Azure hizmetine d
   $subnet = Add-AzDelegation -Name "myDelegation" -ServiceName "Microsoft.DBforPostgreSQL/serversv2" -Subnet $subnet
   Set-AzVirtualNetwork -VirtualNetwork $vnet
 ```
-Temsilciyi doğrulamak için [Get-Aztemsilciyi](https://docs.microsoft.com/powershell/module/az.network/get-azdelegation?view=latest) kullanın:
+Temsilciliği doğrulamak için [Get-AzDelegation'ı](https://docs.microsoft.com/powershell/module/az.network/get-azdelegation?view=latest) kullanın:
 
 ```azurepowershell-interactive
   $subnet = Get-AzVirtualNetwork -Name "myVnet" -ResourceGroupName "myResourceGroup" | Get-AzVirtualNetworkSubnetConfig -Name "mySubnet"
@@ -232,9 +232,9 @@ Temsilciyi doğrulamak için [Get-Aztemsilciyi](https://docs.microsoft.com/power
   Id                : /subscriptions/3bf09329-ca61-4fee-88cb-7e30b9ee305b/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myVnet/subnets/mySubnet/delegations/myDelegation
 
 ```
-### <a name="remove-subnet-delegation-from-an-azure-service"></a>Azure hizmetinden alt ağ temsilcisini kaldırma
+### <a name="remove-subnet-delegation-from-an-azure-service"></a>Azure hizmetinden alt ağ delegasyonu kaldırma
 
-**Mysubnet**adlı alt ağdan temsilciyi kaldırmak için [Remove-aztemsilciyi](https://docs.microsoft.com/powershell/module/az.network/remove-azdelegation?view=latest) kullanın:
+**mySubnet**adlı alt ağdan delegasyonu kaldırmak için [Remove-AzDelegation](https://docs.microsoft.com/powershell/module/az.network/remove-azdelegation?view=latest) kullanın:
 
 ```azurepowershell-interactive
   $vnet = Get-AzVirtualNetwork -Name "myVnet" -ResourceGroupName "myResourceGroup"
@@ -242,7 +242,7 @@ Temsilciyi doğrulamak için [Get-Aztemsilciyi](https://docs.microsoft.com/power
   $subnet = Remove-AzDelegation -Name "myDelegation" -Subnet $subnet
   Set-AzVirtualNetwork -VirtualNetwork $vnet
 ```
-Temsilcinin kaldırıldığını doğrulamak için [Get-Aztemsilciyi](https://docs.microsoft.com/powershell/module/az.network/get-azdelegation?view=latest) kullanın:
+Temsilcinin kaldırıldığını doğrulamak için [Get-AzDelegation'ı](https://docs.microsoft.com/powershell/module/az.network/get-azdelegation?view=latest) kullanın:
 
 ```azurepowershell-interactive
   $subnet = Get-AzVirtualNetwork -Name "myVnet" -ResourceGroupName "myResourceGroup" | Get-AzVirtualNetworkSubnetConfig -Name "mySubnet"
@@ -253,4 +253,4 @@ Temsilcinin kaldırıldığını doğrulamak için [Get-Aztemsilciyi](https://do
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Azure 'da alt ağları yönetmeyi](virtual-network-manage-subnet.md)öğrenin.
+- [Azure'da alt ağları nasıl yönetirize](virtual-network-manage-subnet.md)edin.

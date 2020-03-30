@@ -1,6 +1,6 @@
 ---
-title: Azure Veri Gezgini Python kitaplığını kullanarak verileri sorgulama
-description: Bu makalede, Azure Veri Gezgini Python kullanarak verileri sorgulamayı öğreneceksiniz.
+title: Azure Veri Gezgini Python kitaplığını kullanarak verileri sorgula
+description: Bu makalede, Python'u kullanarak Azure Veri Gezgini'nden verileri nasıl sorgulayabileceğinizi öğreneceksiniz.
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
@@ -8,23 +8,23 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/05/2019
 ms.openlocfilehash: ebd65f2dcbb0040b764290627bbfd2901aa9a7d3
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77443984"
 ---
-# <a name="query-data-using-the-azure-data-explorer-python-library"></a>Azure Veri Gezgini Python kitaplığını kullanarak verileri sorgulama
+# <a name="query-data-using-the-azure-data-explorer-python-library"></a>Azure Veri Gezgini Python kitaplığını kullanarak verileri sorgula
 
-Bu makalede, Azure Veri Gezgini kullanarak verileri sorgulayın. Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve üst düzeyde ölçeklenebilir veri keşfetme hizmetidir.
+Bu makalede, Azure Veri Gezgini'ni kullanarak verileri sorgularsınız. Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve üst düzeyde ölçeklenebilir veri keşfetme hizmetidir.
 
-Azure Veri Gezgini [Python için bir veri istemci kitaplığı](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data) sağlar. Bu kitaplık kodunuzdan verileri sorgulamanıza olanak tanır. *Yardım kümesi* üzerinde öğrendiğimiz bir tabloya bağlanın. Bu kümedeki bir tabloyu sorgulayabilir ve sonuçları döndürebilirsiniz.
+Azure Veri Gezgini [Python için bir veri istemci kitaplığı](https://github.com/Azure/azure-kusto-python/tree/master/azure-kusto-data) sağlar. Bu kitaplık kodunuzdan verileri sorgulamanıza olanak tanır. Öğrenmeye yardımcı olmak için kurduğumuz *yardım kümesindeki* bir tabloya bağlanın. Bu kümedeki bir tabloyu sorgulayabilir ve sonuçları döndürebilirsiniz.
 
-Bu makale bir [Azure Not defteri](https://notebooks.azure.com/ManojRaheja/libraries/KustoPythonSamples/html/QueryKusto.ipynb)olarak da kullanılabilir.
+Bu makale, Azure [Not Defteri](https://notebooks.azure.com/ManojRaheja/libraries/KustoPythonSamples/html/QueryKusto.ipynb)olarak da kullanılabilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* [Python 3.4 +](https://www.python.org/downloads/)
+* [Python 3.4+](https://www.python.org/downloads/)
 
 * Azure Active Directory (AAD) üyesi olan bir kuruluş e-posta hesabı
 
@@ -67,7 +67,7 @@ KUSTO_CLUSTER = "https://help.kusto.windows.net/"
 KUSTO_DATABASE = "Samples"
 ```
 
-Şimdi bağlantı dizesini hazırlayın. Bu örnekte kümeye erişmek için cihaz kimlik doğrulaması kullanılır. [AAD uygulama sertifikası](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L24), [AAD uygulama anahtarı](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L20)ve [AAD Kullanıcı ve parolasını](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L34)da kullanabilirsiniz.
+Şimdi bağlantı dizesini hazırlayın. Bu örnekte kümeye erişmek için cihaz kimlik doğrulaması kullanılır. Ayrıca [AAD uygulama sertifikası,](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L24) [AAD uygulama anahtarı](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L20)ve [AAD kullanıcı ve şifre](https://github.com/Azure/azure-kusto-python/blob/master/azure-kusto-data/tests/sample.py#L34)kullanabilirsiniz.
 
 ```python
 KCSB = KustoConnectionStringBuilder.with_aad_device_authentication(
@@ -100,4 +100,4 @@ StormEvents tablosunda ilk on sonucu görüyor olmalısınız.
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Azure Veri Gezgini Python kitaplığını kullanarak verileri alma](python-ingest-data.md)
+> [Azure Veri Gezgini Python kitaplığını kullanarak veri alma](python-ingest-data.md)

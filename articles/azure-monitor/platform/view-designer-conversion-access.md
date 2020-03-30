@@ -1,5 +1,5 @@
 ---
-title: Çalışma kitabı dönüştürme özeti ve erişim için Azure Izleyici Görünüm Tasarımcısı
+title: Çalışma kitapları dönüşüm özeti ve erişim için Azure Monitor görünüm tasarımcısı
 description: ''
 author: austonli
 ms.author: aul
@@ -7,44 +7,44 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.openlocfilehash: fb53a966b0dc4959253ac0786ef09ef3c497e809
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77658855"
 ---
-# <a name="view-designer-to-workbooks-conversion-summary-and-access"></a>Çalışma kitabı dönüştürme özeti ve erişim için tasarımcıyı görüntüleyin
-[Görünüm Tasarımcısı](view-designer.md) , Log Analytics çalışma alanınızdaki verileri grafiklerle, listelerle ve zaman çizelgeleriyle görselleştirmenize yardımcı olmak üzere özel görünümler oluşturmanıza olanak sağlayan bir Azure izleyici özelliğidir. Bunlar kullanıma alınır ve başka işlevler sağlayan çalışma kitapları ile değiştirilmiştir. Bu makalede, çalışma kitaplarına erişmek için gereken bir genel bakış Özeti ve izinleri nasıl oluşturabileceğiniz açıklanır.
+# <a name="view-designer-to-workbooks-conversion-summary-and-access"></a>Tasarımcıyı çalışma kitapları dönüşüm özetine ve erişime görüntüleme
+[Görünüm tasarımcısı,](view-designer.md) Azure Monitor'un, Log Analytics çalışma alanınızdaki grafikler, listeler ve zaman çizelgeleriyle verileri görselleştirmenize yardımcı olacak özel görünümler oluşturmanıza olanak tanıyan bir özelliğidir. Bunlar aşamalı olarak devre dışı ediliyor ve ek işlevsellik sağlayan çalışma kitaplarıyla değiştiriliyor. Bu makalede, çalışma kitaplarına erişmek için gereken genel bakış özetini ve izinleri nasıl oluşturabileceğiniz ayrıntılı olarak açıklanmıştır.
 
-## <a name="creating-your-workspace-summary-from-azure-dashboard"></a>Azure panosundan çalışma alanı özetinizi oluşturma
-Görünüm Tasarımcısı kullanıcıları, bir görünüm kümesini temsil eden bir genel bakış kutucuğuna sahip olmaya alışmış olabilir. Görünüm Tasarımcısı çalışma alanı Özeti gibi görsel bir genel bakışı sürdürmek için çalışma kitapları, [Azure Portal panonuza](../../azure-portal/azure-portal-dashboards.md)sabitlenebilir sabitlenmiş adımlar sunar. Çalışma alanı özetindeki genel bakış kutucuklarına benzer şekilde, sabitlenmiş çalışma kitabı öğeleri doğrudan çalışma kitabı görünümüne bağlanır.
+## <a name="creating-your-workspace-summary-from-azure-dashboard"></a>Azure Panosundan Çalışma Alanı Özetinizi Oluşturma
+Görünüm tasarımcısı kullanıcılar, bir görünüm kümesini temsil edecek genel bir döşemeye sahip olmaya aşina olabilir. Görünüm tasarımcısı çalışma alanı özeti gibi görsel bir genel bakış sağlamak için, çalışma kitapları [Azure portal panonuza](../../azure-portal/azure-portal-dashboards.md)sabitlenebilecek sabitlenmiş adımlar sunar. Çalışma Alanı özetindeki genel bakış kutucukları gibi, sabitlenmiş çalışma kitabı öğeleri de doğrudan çalışma kitabı görünümüne bağlanır.
 
-Azure panolarıyla birlikte sunulan, sabitlenmiş öğeleriniz ve Görselleştirmeleriniz için otomatik yenileme, taşıma, boyutlandırma ve ek filtrelemeye olanak sağlayan yüksek düzeyde özelleştirme özelliklerinden yararlanabilirsiniz. 
+Sabitlenmiş öğeleriniz ve görselleştirmeleriniz için otomatik yenileme, taşıma, boyutlandırma ve ek filtreleme sağlayan Azure panolarıyla sağlanan yüksek düzeydeözelleştirme özelliklerinden yararlanabilirsiniz. 
 
 ![Pano](media/view-designer-conversion-access/dashboard.png)
 
-Çalışma kitabı öğelerini sabitlemeye başlamak için yeni bir Azure panosu oluşturun veya var olan bir panoyu seçin.
+Yeni bir Azure panosu oluşturun veya çalışma kitabı öğelerini sabitlemeye başlamak için varolan bir pano seçin.
 
-Tek bir öğeyi sabitlemek için, belirli adımınız için PIN simgesini etkinleştirmeniz gerekir. Bunu yapmak için adımlarınız için ilgili **düzenleme** düğmesini seçin, ardından **Gelişmiş ayarları**açmak için dişli simgesini seçin. **Bu adımda PIN simgesini her zaman gösterme**seçeneğini işaretleyin ve adımlarınızın sağ üst köşesinde bir pin simgesi görünür. Bu pin, özel görselleştirmeleri panonuza, genel bakış kutucukları gibi sabitlemenize olanak sağlar.
+Tek tek öğeyi sabitlemek için, belirli bir adımın pin simgesini etkinleştirmeniz gerekir. Bunu yapmak için, adımınız için ilgili **Edit** düğmesini seçin ve ardından **Gelişmiş Ayarlar'ı**açmak için vites simgesini seçin. **Bu adımda her zaman pin simgesini gösterme**seçeneğini işaretleyin ve adımınızın sağ üst köşesinde bir pin simgesi görünür. Bu pin, genel bakış döşemeleri gibi belirli görselleri panonuza sabitlemenizi sağlar.
 
-![PIN adımı](media/view-designer-conversion-access/pin-step.png)
-
-
-Ayrıca, çalışma kitabından veya tüm çalışma kitabı içeriğinin bir panoya birden fazla görselleştirmeyi sabitlemek isteyebilirsiniz. Çalışma kitabının tamamını sabitlemek için, **düzenleme modunu**değiştirmek üzere üstteki araç çubuğunda **Düzenle** ' yi seçin. Çalışma kitabı öğesinin tamamını veya çalışma kitabındaki tüm adımları ve görselleştirmeleri sabitlemenize olanak tanıyan bir PIN simgesi görüntülenir.
-
-![Tümünü sabitle](media/view-designer-conversion-access/pin-all.png)
+![Adımı sabitle](media/view-designer-conversion-access/pin-step.png)
 
 
+Çalışma Kitabı'ndan veya Çalışma Kitabı içeriğinin tamamından bir panoya birden çok görseli sabitlemek isteyebilirsiniz. Çalışma kitabının tamamını sabitlemek için, Düzenleme Modu'nu geçiş yapmak için üst araç çubuğunda **Edit'i** seçin. **Edit Mode** Çalışma kitabı öğesinin tamamını veya çalışma kitabındaki tüm tek adımlar ve görselöğeleri sabitlemenize olanak tanıyan bir pin simgesi görüntülenir.
 
-## <a name="sharing-and-viewing-permissions"></a>Paylaşım ve görüntüleme Izinleri 
-Çalışma kitapları, özel veya paylaşılan bir belge olmasının avantajına sahiptir. Varsayılan olarak, kaydedilen çalışma kitapları **Raporlarım**altına kaydedilir, yani yalnızca oluşturucunun bu çalışma kitabını görüntüleyebileceği anlamına gelir.
+![Tümlerini sabitle](media/view-designer-conversion-access/pin-all.png)
 
-Çalışma kitaplarınızı, **düzenleme modundayken**üstteki araç çubuğundan **paylaşma** simgesini seçerek paylaşabilirsiniz. Çalışma kitabınızı **paylaşılan raporlara**taşımanız istenir ve bu, çalışma kitabına doğrudan erişim sağlayan bir bağlantı oluşturur.
 
-Bir kullanıcının paylaşılan bir çalışma kitabını görüntülemesi için, çalışma kitabının kaydedildiği abonelik ve kaynak grubuna her ikisi de erişebilmelidir.
+
+## <a name="sharing-and-viewing-permissions"></a>İzinleri Paylaşma ve Görüntüleme 
+Çalışma kitapları, özel veya paylaşılan bir belge olmanın avantajına sahiptir. Varsayılan olarak, kaydedilen çalışma kitapları **Raporlarım**altında kaydedilir, yani bu çalışma kitabını yalnızca oluşturucu görüntüleyebilir.
+
+**Düzenleme Modundayken**üst araç çubuğundan **Paylaş** simgesini seçerek çalışma kitaplarınızı paylaşabilirsiniz. Çalışma kitabınızı **Paylaşılan Raporlar'a**taşımanız istenir ve bu da çalışma kitabına doğrudan erişim sağlayan bir bağlantı oluşturur.
+
+Bir kullanıcının paylaşılan bir çalışma kitabını görüntüleyebilmesi için, çalışma kitabının altında kayıtlı olduğu abonelik ve kaynak grubuna erişimi olması gerekir.
 
 ![Abonelik tabanlı erişim](media/view-designer-conversion-access/subscription-access.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Ortak görevler](view-designer-conversion-tasks.md)
+- [Genel görevler](view-designer-conversion-tasks.md)

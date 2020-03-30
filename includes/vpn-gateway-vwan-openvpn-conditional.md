@@ -9,37 +9,37 @@ ms.date: 02/14/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 410570302eec418f1e4bcb75d6413936a96b5171
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77471585"
 ---
-Koşullu erişim, uygulama başına ayrıntılı erişim denetimi sağlar. Koşullu erişimi kullanabilmeniz için, koşullu erişim kurallarına tabi olacak kullanıcılara Azure AD Premium 1 veya daha büyük bir lisanslama uygulanmış olmalıdır.
+Koşullu Erişim, uygulama başına ince taneli erişim denetimine olanak tanır. Koşullu Erişim'i kullanmak için, Koşullu Erişim kurallarına tabi olacak kullanıcılara Azure AD Premium 1 veya daha fazla lisans uygulamanız gerekir.
 
-1. **Kurumsal uygulamalar-tüm uygulamalar** sayfasına gidin ve **Azure VPN**' ye tıklayın.
+1. **Kurumsal uygulamalara** gidin - Tüm uygulamalar sayfası ve **Azure VPN'i**tıklatın.
 
-   - **Koşullu erişim**' e tıklayın.
-   - Yeni **ilke** ' ye tıklayarak **Yeni** bölmeyi açın.
-2. **Yeni** bölmede, **atamalar-> Kullanıcılar ve gruplar**' a gidin. **Kullanıcılar ve Gruplar->** **ekleme** sekmesi:
+   - **Koşullu Erişim'i**tıklatın.
+   - **Yeni** bölmeyi açmak için **Yeni ilkeyi** tıklatın.
+2. **Yeni** bölmede, Kullanıcılar **ve gruplar > Atamalar'a**gidin. Kullanıcılar **ve gruplar ->** **Ekle** sekmesi:
 
-   - **Kullanıcıları ve grupları seç**' e tıklayın.
-   - **Kullanıcıları ve grupları**denetleyin.
-   - MFA 'dan etkilenecek bir grup veya kullanıcı kümesi seçmek için **Seç** ' e tıklayın.
+   - **Kullanıcıları ve grupları seçin'i**tıklatın.
+   - **Kullanıcıları ve grupları**kontrol edin.
+   - MFA'dan etkilenecek bir grup veya kullanıcı kümesi seçmek için **Seç'i** tıklatın.
    - **Bitti**’ye tıklayın.
 
    ![Atamalar](./media/vpn-gateway-vwan-openvpn-azure-ad-mfa/mfa-ca-assignments.png)
-3. **Yeni** bölmede, **erişim denetimleri-> izin** bölmesine gidin:
+3. **Yeni** bölmede, **Access denetimleri -> Hibe** bölmesine gidin:
 
-   - **Erişim ver**' e tıklayın.
-   - **Multi-Factor Authentication gerektir**' e tıklayın.
-   - **Seçili tüm denetimleri gerektir**' e tıklayın.
-   - **Seç**'e tıklayın.
+   - **Erişim Eki'ni Ver'i**tıklatın.
+   - **Çok faktörlü kimlik doğrulamayı gerektir'i**tıklatın.
+   - **Seçili tüm denetimleri iste'yi**tıklatın.
+   - **Seç'i**tıklatın.
    
-   ![Erişim verme-MFA](./media/vpn-gateway-vwan-openvpn-azure-ad-mfa/mfa-ca-grant-mfa.png)
-4. **Ilkeyi etkinleştir** bölümünde:
+   ![Erişim izni - MFA](./media/vpn-gateway-vwan-openvpn-azure-ad-mfa/mfa-ca-grant-mfa.png)
+4. Etkinleştir **ilkesi** bölümünde:
 
-   - **Açık**seçeneğini belirleyin.
-   - **Oluştur**'a tıklayın.
+   - **Üzerinde'ni**seçin.
+   - **Oluştur'u**tıklatın.
 
-   ![Ilkeyi etkinleştir](./media/vpn-gateway-vwan-openvpn-azure-ad-mfa/mfa-ca-enable-policy.png)
+   ![İlkeyi Etkinleştir](./media/vpn-gateway-vwan-openvpn-azure-ad-mfa/mfa-ca-enable-policy.png)

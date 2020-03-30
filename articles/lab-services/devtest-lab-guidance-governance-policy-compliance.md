@@ -1,6 +1,6 @@
 ---
-title: Azure DevTest Labs Şirket ilkesi ve uyumluluğu
-description: Bu makalede, Azure DevTest Labs altyapısı için Şirket ilkesi ve uyumluluğunu yöneten yönergeler sunulmaktadır.
+title: Azure DevTest Labs'da şirket ilkesi ve uyumluluğu
+description: Bu makalede, Azure DevTest Labs altyapısı için şirket ilkesi ve uyumluluk yönetimi hakkında kılavuz verilmektedir.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -14,67 +14,67 @@ ms.date: 11/26/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: 81ca2a90b1940d70e170cab3f8d18144a5d5e5a8
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/27/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74560515"
 ---
-# <a name="governance-of-azure-devtest-labs-infrastructure---company-policy-and-compliance"></a>Azure DevTest Labs altyapısını idare edin-Şirket ilkesi ve uyumluluğu
-Bu makalede, Azure DevTest Labs altyapısı için Şirket ilkesi ve uyumluluğunu yöneten yönergeler sunulmaktadır. 
+# <a name="governance-of-azure-devtest-labs-infrastructure---company-policy-and-compliance"></a>Azure DevTest Labs altyapısının yönetimi - Şirket ilkesi ve uyumluluğu
+Bu makalede, Azure DevTest Labs altyapısı için şirket ilkesi ve uyumluluk yönetimi hakkında kılavuz verilmektedir. 
 
-## <a name="public-vs-private-artifact-repository"></a>Ortak ve özel yapıt deposu
-
-### <a name="question"></a>Soru
-Kuruluşun, DevTest Labs 'de ortak yapıt deposu ve özel yapıt deposu kullanması gerekir mi?
-
-### <a name="answer"></a>Yanıt
-[Ortak yapıt deposu](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts) , en yaygın olarak kullanılan bir ilk yazılım paketi kümesi sağlar. Ortak geliştirici araçları ve eklentilerini yeniden oluşturmak için zaman yatırmaya gerek kalmadan hızlı dağıtıma yardımcı olur. Kendi özel deposunu dağıtmayı seçebilirsiniz. Genel ve özel bir depoyu paralel olarak kullanabilirsiniz. Ortak depoyu devre dışı bırakmayı da tercih edebilirsiniz. Özel bir depoyu dağıtmaya yönelik ölçütler aşağıdaki soru ve noktalara göre yapılmalıdır:
-
-- Kuruluşun, DevTest Labs sunumunun parçası olarak kurumsal lisanslı yazılıma sahip olması için bir gereksinimi var mı? Yanıt Evet ise, özel bir deponun oluşturulması gerekir.
-- Kuruluş, genel sağlama sürecinin bir parçası olarak gerekli olan belirli bir işlem sağlayan özel yazılım geliştirebilir mi? Yanıt Evet ise, özel bir deponun dağıtılması gerekir.
-- Kuruluşun idare ilkesi yalıtım gerektiriyorsa ve dış depolar kuruluş tarafından doğrudan yapılandırma yönetimi altında değilse, özel bir yapıt deposu dağıtılmalıdır. Bu işlemin bir parçası olarak, ortak deponun ilk kopyası özel depo ile kopyalanabilir ve tümleştirilebilir. Daha sonra, ortak depo devre dışı bırakılabilir, böylece kuruluş içinde hiç kimse artık erişemez. Bu yaklaşım, kuruluştaki tüm kullanıcıların kuruluş tarafından onaylanan tek bir depoya sahip olmasını ve yapılandırma drlarını en aza indirmenize olanak sağlar.
-
-### <a name="single-repository-or-multiple-repositories"></a>Tek depo veya birden çok depo 
+## <a name="public-vs-private-artifact-repository"></a>Genel ve özel eser deposu
 
 ### <a name="question"></a>Soru
-Bir kuruluş tek bir depoyu planlıyor veya birden çok depoya izin veriyor mu?
+Bir kuruluş DevTest Labs'da ortak yapı deposu ve özel eser deposu ne zaman kullanmalıdır?
 
 ### <a name="answer"></a>Yanıt
-Kuruluşunuzun genel idare ve yapılandırma yönetimi stratejisinin bir parçası olarak, merkezi bir depo kullanmanızı öneririz. Birden çok depo kullandığınızda, bu kişiler zaman içinde yönetilmeyen yazılımların siloları haline gelebilir. Merkezi bir depoyla, birden fazla ekip projeleri için bu depodan yapıları kullanabilir. Standartlaştırma, güvenlik ve yönetim kolaylığı sağlar ve çabalarınızın çoğaltılmasını ortadan kaldırır. Merkezileşmeyi bir parçası olarak, uzun süreli yönetim ve sürdürülebilirlik için önerilen uygulamalar aşağıdaki eylemlerdir:
+[Ortak yapı deposu,](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts) en sık kullanılan bir ilk yazılım paketi kümesi sağlar. Ortak geliştirici araçlarını ve eklentilerini yeniden oluşturmak için zaman yatırım yapmak zorunda kalmadan hızlı dağıtıma yardımcı olur. Kendi özel depolarını dağıtmayı seçebilirsiniz. Ortak ve özel bir depoyı paralel olarak kullanabilirsiniz. Ayrıca, genel depoyu devre dışı bırakmayı da seçebilirsiniz. Özel bir depo dağıtmak için ölçütler aşağıdaki sorular ve hususlar tarafından yönlendirilmelidir:
 
-- Azure Repos kimlik doğrulaması ve yetkilendirme için Azure aboneliğinin kullandığı Azure Active Directory kiracısıyla ilişkilendirin.
-- Merkezi olarak yönetilen Azure Active Directory **Tüm DevTest Labs geliştiricileri** adlı bir grup oluşturun. Yapıt geliştirmeye katkıda bulunan tüm geliştiriciler bu gruba yerleştirilmelidir.
-- Aynı Azure Active Directory grubu, Azure Repos deposuna ve laboratuvarına erişim sağlamak için kullanılabilir.
-- Azure Repos, dallandırma veya dallama, birincil üretim deposundan ayrı bir geliştirme deposunda ayrı olarak kullanılmalıdır. İçerik yalnızca, doğru bir kod incelemesi sonrasında bir çekme isteğiyle birlikte Ana dala eklenir. Kod gözden geçiren değişikliği onayladığında, ana dalın bakımında sorumlu olan bir lider geliştiricisi, güncelleştirilmiş kodu birleştirir. 
+- Kuruluşun DevTest Labs teklifinin bir parçası olarak kurumsal lisanslı yazılıma sahip olması gerekliliği var mı? Yanıt evet ise, özel bir depo oluşturulmalıdır.
+- Kuruluş, genel sağlama sürecinin bir parçası olarak gerekli olan belirli bir işlem sağlayan özel yazılım lar geliştiriyor mu? Yanıt evet ise, özel bir depo dağıtılmalıdır.
+- Kuruluşun yönetim ilkesi yalıtım gerektiriyorsa ve dış depolar kuruluş tarafından doğrudan yapılandırma yönetimi altında değilse, özel bir yapı deposu dağıtılmalıdır. Bu işlemin bir parçası olarak, kamu deposunun ilk kopyası kopyalanabilir ve özel depoile tümleştirilebilir. Daha sonra, kuruluş içindeki hiç kimsenin artık bu depoya erişemesi için ortak depo devre dışı tutulabilir. Bu yaklaşım, kuruluş içindeki tüm kullanıcıları kuruluş tarafından onaylanan tek bir depoya sahip olmaya ve yapılandırma sürüklenmesini en aza indirmeye zorlar.
 
-## <a name="corporate-security-policies"></a>Kurumsal güvenlik ilkeleri
+### <a name="single-repository-or-multiple-repositories"></a>Tek depo veya birden fazla depo 
 
 ### <a name="question"></a>Soru
-Kuruluş güvenlik ilkelerinin yerinde olması nasıl bir organizasyon olabilir?
+Bir kuruluş tek bir depo için plan yapmalı veya birden çok depoya izin vermeli mi?
 
 ### <a name="answer"></a>Yanıt
-Bir kuruluş, aşağıdaki eylemleri gerçekleştirerek bunu elde edebilir:
+Kuruluşunuzun genel yönetim ve yapılandırma yönetimi stratejisinin bir parçası olarak, merkezi bir depo kullanmanızı öneririz. Birden çok depo kullandığınızda, bunlar zaman içinde yönetilmeyen yazılım siloları haline gelebilir. Merkezi bir depo ile, birden çok takım projeleri için bu depodaki yapıları tüketebilir. Standardizasyon, güvenlik, yönetim kolaylığı ve çabaların çoğaltılmasını ortadan kaldırır. Merkezileştirmenin bir parçası olarak, aşağıdaki eylemler uzun vadeli yönetim ve sürdürülebilirlik için tavsiye edilen uygulamalardır:
 
-1. Kapsamlı bir güvenlik ilkesi geliştirme ve yayımlama. İlke, using yazılımı, bulut varlıkları ile ilişkili kabul edilebilir kullanım kurallarını ifade ediler. Ayrıca ilkeyi açıkça ihlal ettiğini de tanımlar. 
-2. Özel bir görüntü, özel yapıtlar ve Active Directory ile tanımlanmış güvenlik bölgesi içinde düzenlemeye izin veren bir dağıtım işlemi geliştirin. Bu yaklaşım, kurumsal sınır uygular ve ortak bir ortam denetimi kümesi ayarlar. Bu denetimler, bir geliştiricinin geliştirme sırasında göz önünde bulundurulması ve genel sürecinin bir parçası olarak güvenli bir geliştirme yaşam döngüsünü takip edebilir. Amaç Ayrıca geliştirmede çok kısıtlayıcı olmayan bir ortam sağlamaktır, ancak makul bir denetim kümesi de vardır. Laboratuvar sanal makineleri içeren kuruluş birimindeki (OU) Grup ilkeleri, üretimde bulunan toplam grup ilkelerinin bir alt kümesi olabilir. Alternatif olarak, belirlenen riskleri doğru bir şekilde azaltmak için ek bir küme olabilir.
+- Azure Repos'u, Azure aboneliğinin kimlik doğrulama ve yetkilendirme için kullandığı Aynı Azure Etkin Dizin kiracısıyla ilişkilendirin.
+- Azure Etkin Dizin'de merkezi olarak yönetilen **Tüm DevTest Labs Geliştiricileri** adında bir grup oluşturun. Yapı geliştirmeye katkıda bulunan herhangi bir geliştirici bu gruba yerleştirilmelidir.
+- Aynı Azure Etkin Dizin grubu, Azure Deposu deposuna ve laboratuvara erişim sağlamak için kullanılabilir.
+- Azure Deposu'nda, dallanma veya forama, birincil üretim deposundan ayrı bir geliştirme deposu için kullanılmalıdır. İçerik yalnızca uygun bir kod incelemesinden sonra çekme isteğiyle ana dala eklenir. Kod gözden geçiren değişikliği onayladıktan sonra, ana dalı bakımından sorumlu bir müşteri adayı geliştirici, güncelleştirilmiş kodu birleştirir. 
+
+## <a name="corporate-security-policies"></a>Kurumsal güvenlik politikaları
+
+### <a name="question"></a>Soru
+Bir kuruluş kurumsal güvenlik ilkelerinin yerinde olmasını nasıl sağlayabilir?
+
+### <a name="answer"></a>Yanıt
+Bir kuruluş bunu aşağıdaki eylemleri yaparak elde edebilir:
+
+1. Kapsamlı bir güvenlik politikası geliştirmek ve yayınlamak. İlke, yazılım, bulut varlıkları nın kullanımıyla ilişkili kabul edilebilir kullanım kurallarını ifade eder. Ayrıca, politikayı açıkça ihlal eden şeyi tanımlar. 
+2. Etkin dizinle tanımlanan güvenlik alanı içinde düzenlemeye olanak tanıyan özel bir görüntü, özel yapılar ve dağıtım işlemi geliştirin. Bu yaklaşım, kurumsal sınırı zorlar ve ortak bir çevresel denetim kümesi belirler. Bir geliştirici, genel süreçlerinin bir parçası olarak güvenli bir geliştirme yaşam döngüsü geliştirir ken ve takip ederken, bir geliştiricinin düşünebileceği ortama karşı bu denetimler. Amaç aynı zamanda, gelişimi engelleyebilecek aşırı kısıtlayıcı olmayan, ancak makul bir denetim kümesi sağlayan bir ortam sağlamaktır. Laboratuvar sanal makinelerini içeren kuruluş birimindeki (OU) grup ilkeleri, üretimde bulunan toplam grup ilkelerinin bir alt kümesi olabilir. Alternatif olarak, tanımlanan riskleri düzgün bir şekilde azaltmak için ek bir küme olabilir.
 
 ## <a name="data-integrity"></a>Veri bütünlüğü
 
 ### <a name="question"></a>Soru
-Bir kuruluş, uzaktan iletişim geliştiricilerin kod kaldıramayacağı veya kötü amaçlı yazılım ya da onaylanmamış yazılımlar sunabileceğine emin olmak için veri bütünlüğünü nasıl
+Bir kuruluş, remoting geliştiricilerinin kodu kaldıramamasını veya kötü amaçlı yazılım veya onaylanmamış yazılım ları tanıtamamasını sağlamak için veri bütünlüğünü nasıl sağlayabilir?
 
 ### <a name="answer"></a>Yanıt
-DevTest Labs 'de işbirliği yapmak için dış danışmanların, yüklenicilerin veya ' de uzaktan iletişim olan çalışanların tehdidi hafifletmek için birkaç denetim katmanı vardır. 
+DevTest Labs'da işbirliği yapmak için yeniden motive olan harici danışmanlar, yükleniciler veya çalışanların tehdidini azaltmak için çeşitli denetim katmanları vardır. 
 
-Daha önce belirtildiği gibi, ilk adımda, kabul edilebilir kullanım ilkesi drafted ve bir Kullanıcı ilkeyi ihlal ettiğinde sonuçları açıkça özetleyen bir bakış tanımlanmış olmalıdır. 
+Daha önce de belirtildiği gibi, ilk adım, birisi politikayı ihlal ettiğinde sonuçlarını açıkça özetleyen kabul edilebilir bir kullanım politikası hazırlamış ve tanımlanmalıdır. 
 
-Uzaktan erişim için denetimlerin ilk katmanı, doğrudan laboratuvara bağlı olmayan bir VPN bağlantısı aracılığıyla uzaktan erişim ilkesi uygulamaktır. 
+Uzaktan erişim için ilk denetim katmanı, doğrudan laboratuvara bağlı olmayan bir VPN bağlantısı üzerinden uzaktan erişim ilkesi uygulamaktır. 
 
-Denetimlerin ikinci katmanı, Uzak Masaüstü aracılığıyla kopyalamayı ve yapıştırmayı önleyen bir Grup İlkesi nesnesi kümesi uygulamaktır. Ağ ilkesi, ortamdan FTP ve RDP hizmetleri gibi giden hizmetlere izin vermek için uygulanabilir. Kullanıcı tanımlı yönlendirme, tüm Azure ağ trafiğini şirket içi olarak geri zorlayabilir, ancak yönlendirme, içerik ve oturumları taramak için bir proxy aracılığıyla denetlenmediği müddetçe verilerin karşıya yüklenmesine izin verebilecek tüm URL 'Leri hesaba işleyemedi. Ortak IP 'Ler, DevTest Labs 'i destekleyen sanal ağ dahilinde bir dış ağ kaynağının köprülemesini sağlamak için kısıtlanabilir.
+Denetimlerin ikinci katmanı, uzak masaüstü üzerinden kopyalanıp yapıştırmayı engelleyen bir grup ilkesi nesnesi kümesi uygulamaktır. FTP ve RDP hizmetleri gibi çevreden giden hizmetlerin çevredışına çıkmasına izin vermemek için bir ağ ilkesi uygulanabilir. Kullanıcı tanımlı yönlendirme tüm Azure ağ trafiğini şirket başına geri dönmeye zorlayabilir, ancak yönlendirme, içeriği ve oturumları taramaya yönelik bir proxy aracılığıyla denetlenmedikçe verilerin yüklenmesine izin verebilecek tüm URL'leri hesaba katamadı. Genel IP'ler, DevTest Labs'ı destekleyen sanal ağ içinde harici bir ağ kaynağının köprülemesine izin vermeyecek şekilde kısıtlanabilir.
 
-Sonuç olarak, aynı tür kısıtlamaların kuruluş genelinde uygulanması gerekir, bu da bir içerik gönderisini kabul edebilen tüm olası çıkarılabilir medya veya dış URL yöntemlerinin de hesaba eklenmesi gerekir. Güvenlik ilkesini gözden geçirmek ve uygulamak için güvenlik uzmanınıza başvurun. Daha fazla öneri için bkz. [Microsoft Cyber güvenliği](https://www.microsoft.com/security/default.aspx?&WT.srch=1&wt.mc_id=AID623240_SEM_sNYnsZDs).
+Sonuç olarak, aynı tür kısıtlamaların kuruluş genelinde uygulanması gerekir, bu da bir içerik gönderisini kabul edebilecek çıkarılabilir ortam veya harici URL'lerin olası tüm yöntemlerini de hesaba katmak zorunda kalacaktır. Bir güvenlik ilkesini gözden geçirmek ve uygulamak için güvenlik uzmanınızla danışın. Daha fazla öneri için [Microsoft Siber Güvenlik'e](https://www.microsoft.com/security/default.aspx?&WT.srch=1&wt.mc_id=AID623240_SEM_sNYnsZDs)bakın.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bkz. [uygulama geçişi ve tümleştirmesi](devtest-lab-guidance-governance-application-migration-integration.md).
+Bkz. [Uygulama geçişi ve tümleştirme.](devtest-lab-guidance-governance-application-migration-integration.md)

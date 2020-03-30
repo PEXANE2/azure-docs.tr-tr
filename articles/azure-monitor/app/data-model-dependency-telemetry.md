@@ -1,53 +1,53 @@
 ---
-title: Azure Izleyici Application Insights bağımlılık veri modeli
-description: Bağımlılık telemetri için Application Insights veri modeli
+title: Azure Monitör Uygulama Öngörüleri Bağımlılık Veri Modeli
+description: Bağımlılık telemetrisi için Uygulama Öngörüleri veri modeli
 ms.topic: conceptual
 ms.date: 04/17/2017
 ms.reviewer: sergkanz
 ms.openlocfilehash: ba0d848904d1ba885dc53e2941953d8dfb4864cf
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671928"
 ---
 # <a name="dependency-telemetry-application-insights-data-model"></a>Bağımlılık telemetrisi: Application Insights veri modeli
 
-Bağımlılık telemetrisi ( [Application Insights](../../azure-monitor/app/app-insights-overview.md)), IZLENEN bileşenin SQL veya HTTP uç noktası gibi uzak bir bileşenle bir etkileşimini temsil eder.
+Bağımlılık Telemetrisi [(Uygulama Öngörüleri'nde),](../../azure-monitor/app/app-insights-overview.md)izlenen bileşenin SQL veya HTTP bitiş noktası gibi uzak bir bileşenle etkileşimini temsil eder.
 
 ## <a name="name"></a>Adı
 
-Bu bağımlılık çağrısıyla başlatılan komutun adı. Düşük kardinalite değeri. Örnekler, saklı yordam adı ve URL yolu şablonudur.
+Bu bağımlılık çağrısıyla başlatılan komutun adı. Düşük önem düzeyi. Örnekler yordam adı ve URL yol şablonu saklanır.
 
 ## <a name="id"></a>Kimlik
 
-Bağımlılık çağrı örneğinin tanımlayıcısı. Bu bağımlılık çağrısına karşılık gelen istek telemetrisi öğesiyle bağıntı için kullanılır. Daha fazla bilgi için bkz. [bağıntı](../../azure-monitor/app/correlation.md) sayfası.
+Bağımlılık arama örneğinin tanımlayıcısı. Bu bağımlılık çağrısına karşılık gelen istek telemetri öğesi ile korelasyon için kullanılır. Daha fazla bilgi için [korelasyon](../../azure-monitor/app/correlation.md) sayfasına bakın.
 
-## <a name="data"></a>Veriler
+## <a name="data"></a>Veri
 
-Bu bağımlılık çağrısıyla başlatılan komut. Örnekler, tüm sorgu parametrelerine sahip SQL deyimleridir ve HTTP URL 'sidir.
+Bu bağımlılık çağrısı tarafından başlatılan komut. Örnekler tüm sorgu parametreleri ile SQL deyimi ve HTTP URL vardır.
 
 ## <a name="type"></a>Tür
 
-Bağımlılık türü adı. Bağımlılıkların mantıksal gruplandırması ve commandName ve resultCode gibi diğer alanların yorumlanması için düşük kardinalite değeri. SQL, Azure tablosu ve HTTP örnekleri aşağıda verilmiştir.
+Bağımlılık türü adı. Bağımlılıkların mantıksal gruplandırması ve commandName ve resultCode gibi diğer alanların yorumlanması için düşük önem düzeyi. Örnekler SQL, Azure tablosu ve HTTP'dir.
 
 ## <a name="target"></a>Hedef
 
-Bağımlılık çağrısının hedef sitesi. Örnek olarak sunucu adı, ana bilgisayar adresidir. Daha fazla bilgi için bkz. [bağıntı](../../azure-monitor/app/correlation.md) sayfası.
+Bağımlılık çağrısının hedef sitesi. Örnekler sunucu adı, ana bilgisayar adresidir. Daha fazla bilgi için [korelasyon](../../azure-monitor/app/correlation.md) sayfasına bakın.
 
 ## <a name="duration"></a>Süre
 
-Şu biçimdeki istek süresi: `DD.HH:MM:SS.MMMMMM`. `1000` günden az olmalıdır.
+Formatta istek `DD.HH:MM:SS.MMMMMM`süresi: . Birkaç günden `1000` az olmalı.
 
 ## <a name="result-code"></a>Sonuç kodu
 
-Bağımlılık çağrısının sonuç kodu. SQL hata kodu ve HTTP durum kodu örnekleri aşağıda verilmiştir.
+Bağımlılık çağrısının sonuç kodu. Örnekler SQL hata kodu ve HTTP durum koduvardır.
 
 ## <a name="success"></a>Başarılı
 
-Başarılı veya başarısız çağrı göstergesi.
+Başarılı veya başarısız aramanın göstergesi.
 
-## <a name="custom-properties"></a>Özel Özellikler
+## <a name="custom-properties"></a>Özel özellikler
 
 [!INCLUDE [application-insights-data-model-properties](../../../includes/application-insights-data-model-properties.md)]
 
@@ -58,8 +58,8 @@ Başarılı veya başarısız çağrı göstergesi.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [.Net](../../azure-monitor/app/asp-net-dependencies.md)için bağımlılık izlemeyi ayarlayın.
-- [Java](../../azure-monitor/app/java-agent.md)için bağımlılık izlemeyi ayarlayın.
+- [.NET](../../azure-monitor/app/asp-net-dependencies.md)için bağımlılık izleme ayarlama.
+- [Java](../../azure-monitor/app/java-agent.md)için bağımlılık izleme ayarlayın.
 - [Özel bağımlılık telemetrisi yazma](../../azure-monitor/app/api-custom-events-metrics.md#trackdependency)
-- Application Insights türleri ve veri modeli için [veri modeli](data-model.md) 'ne bakın.
-- Application Insights tarafından desteklenen [platformları](../../azure-monitor/app/platforms.md) inceleyin.
+- Uygulama Öngörüleri türleri ve veri modeli için [veri modeline](data-model.md) bakın.
+- Application Insights tarafından desteklenen [platformlara](../../azure-monitor/app/platforms.md) göz atın.

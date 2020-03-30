@@ -1,7 +1,7 @@
 ---
-title: Her zaman açık VPN tüneli yapılandırma
+title: Her Zaman Açık VPN tünelini yapılandırma
 titleSuffix: Azure VPN Gateway
-description: VPN Gateway için Always on VPN tünelini yapılandırma adımları
+description: VPN Ağ Geçidi için Her Zaman VPN tünelinde yapılandırma adımları
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/12/2020
 ms.author: cherylmc
 ms.openlocfilehash: 9036992a354b41cd75735e5ccd895d7287a00e91
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79371791"
 ---
 # <a name="configure-an-always-on-vpn-device-tunnel"></a>Always On VPN cihazı tüneli yapılandırma
@@ -21,13 +21,13 @@ ms.locfileid: "79371791"
 
 ## <a name="configure-the-gateway"></a>Ağ geçidini yapılandırma
 
-VPN ağ geçidini, [noktadan sıteye VPN bağlantısı yapılandırma](vpn-gateway-howto-point-to-site-resource-manager-portal.md) makalesini kullanarak Ikev2 ve sertifika tabanlı kimlik doğrulaması kullanacak şekilde yapılandırın.
+Bir [Point-to-Site VPN bağlantı makalesini Yapılandırarak](vpn-gateway-howto-point-to-site-resource-manager-portal.md) IKEv2 ve sertifika tabanlı kimlik doğrulaması kullanmak için VPN ağ geçidini yapılandırın.
 
-## <a name="configure-the-device-tunnel"></a>Cihaz tüneli yapılandırma
+## <a name="configure-the-device-tunnel"></a>Aygıt tünelini yapılandırma
 
 [!INCLUDE [device tunnel](../../includes/vpn-gateway-vwan-always-on-device.md)]
 
-## <a name="to-remove-a-profile"></a>Bir profili kaldırmak için
+## <a name="to-remove-a-profile"></a>Profili kaldırmak için
 
 Profili kaldırmak için aşağıdaki komutu çalıştırın:
 
@@ -35,4 +35,4 @@ Profili kaldırmak için aşağıdaki komutu çalıştırın:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Sorun giderme için bkz. [Azure Noktadan siteye bağlantı sorunları](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)
+Sorun giderme için Azure [noktadan siteye bağlantı sorunlarına](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md) bakın

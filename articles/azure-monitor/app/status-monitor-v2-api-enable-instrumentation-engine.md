@@ -1,39 +1,39 @@
 ---
-title: Azure Application Insights Aracısı API başvurusu
-description: Aracı API başvurusunu Application Insights. Enable-ınstrumentationengine. Web sitesini yeniden dağıtmaya gerek kalmadan Web sitesi performansını izleyin. Şirket içinde, VM 'lerde veya Azure 'da barındırılan ASP.NET Web Apps ile birlikte kullanılır.
+title: Azure Uygulama Öngörüleri AracıAP başvurusu
+description: Uygulama Öngörüleri Aracısı API başvurusu. Enable-InstrumentationEngine. Web sitesini yeniden dağıtmadan web sitesinin performansını izleyin. Şirket içinde, VM'lerde veya Azure'da barındırılan ASP.NET web uygulamalarıyla çalışır.
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
 ms.openlocfilehash: b3f298ac31cc584cd16553186359c87f69f27aad
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671367"
 ---
-# <a name="application-insights-agent-api-enable-instrumentationengine"></a>Application Insights aracı API 'SI: Enable-ınstrumentationengine
+# <a name="application-insights-agent-api-enable-instrumentationengine"></a>Uygulama Öngörüleri Aracısı API: Etkinleştir-InstrumentationEngine
 
-Bu makalede, [az. ApplicationMonitor PowerShell modülünün](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)üyesi olan bir cmdlet açıklanmaktadır.
+Bu [makalede, Az.ApplicationMonitor PowerShell modülüüyesi](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)bir cmdlet açıklanır.
 
 ## <a name="description"></a>Açıklama
 
-Bazı kayıt defteri anahtarlarını ayarlayarak izleme altyapısını sunar.
-Değişikliklerin etkili olması için IIS 'yi yeniden başlatın.
+Bazı kayıt defteri anahtarlarını ayarlayarak enstrümantasyon motorunu etkinleştirir.
+Değişikliklerin etkili olması için IIS'yi yeniden başlatın.
 
-İzleme altyapısı, .NET SDK 'Ları tarafından toplanan verileri tamamlayabilir.
-Yönetilen bir işlemin yürütülmesini tanımlayan olayları ve iletileri toplar. Bu olaylar ve mesajlar bağımlılık sonuç kodlarını, HTTP fiillerini ve [SQL komut metnini](asp-net-dependencies.md#advanced-sql-tracking-to-get-full-sql-query)içerir.
+Enstrümantasyon motoru .NET SDK'lar tarafından toplanan verileri tamamlayabilir.
+Yönetilen bir işlemin yürütülmesini açıklayan olayları ve iletileri toplar. Bu olaylar ve iletiler bağımlılık sonuç kodları, HTTP fiiller ve [SQL komut metni](asp-net-dependencies.md#advanced-sql-tracking-to-get-full-sql-query)içerir.
 
-Şu durumlarda izleme altyapısını etkinleştirin:
-- Enable cmdlet 'i ile izlemeyi zaten etkinleştirdiniz, ancak izleme altyapısını etkinleştirmediniz.
-- Uygulamanızı .NET SDK 'Ları ile el ile gördünüz ve ek telemetri toplamak istiyorsunuz.
+Aşağıdakiler varsa enstrümantasyon motorunu etkinleştirin:
+- Etkinleştir cmdlet ile izlemeyi zaten etkinleştirdin, ancak enstrümantasyon motorunu etkinleştirmedin.
+- Uygulamanızı .NET SDK'larla el ile belgelediniz ve ek telemetri toplamak istiyorsunuz.
 
 > [!IMPORTANT] 
-> Bu cmdlet yönetici izinlerine sahip bir PowerShell oturumu gerektirir.
+> Bu cmdlet, Yönetici izinleri içeren bir PowerShell oturumu gerektirir.
 
 > [!NOTE] 
-> - Bu cmdlet, lisans ve Gizlilik Bildirimimizi incelemenizi ve kabul etmenizi gerektirir.
-> - İzleme altyapısı ek yük ekler ve varsayılan olarak kapalıdır.
+> - Bu cmdlet, lisans ve gizlilik bildirimimizi gözden geçirmenizi ve kabul lenmenizi gerektirir.
+> - Enstrümantasyon motoru ek ek ek yükü ekler ve varsayılan olarak kapalıdır.
 
 ## <a name="examples"></a>Örnekler
 
@@ -43,16 +43,16 @@ PS C:\> Enable-InstrumentationEngine
 
 ## <a name="parameters"></a>Parametreler
 
-### <a name="-acceptlicense"></a>-AcceptLicense
-**Seçim.** Gözetimsiz yüklemelerde lisans ve gizlilik bildirimini kabul etmek için bu anahtarı kullanın.
+### <a name="-acceptlicense"></a>-Kabul Lisansı
+**Isteğe bağlı.** Başsız yüklemelerde lisans ve gizlilik bildirimini kabul etmek için bu anahtarı kullanın.
 
-### <a name="-verbose"></a>-Ayrıntılı
-**Ortak parametre.** Ayrıntılı günlükleri çıkarmak için bu anahtarı kullanın.
+### <a name="-verbose"></a>-Verbose
+**Ortak parametre.** Ayrıntılı günlükleri çıktıetmek için bu anahtarı kullanın.
 
 ## <a name="output"></a>Çıktı
 
 
-#### <a name="example-output-from-successfully-enabling-the-instrumentation-engine"></a>İzleme altyapısını başarıyla etkinleştirmenin örnek çıkışı
+#### <a name="example-output-from-successfully-enabling-the-instrumentation-engine"></a>Enstrümantasyon motorunun başarılı bir şekilde etkinleştirilmesinden örnek çıktı
 
 ```
 Configuring IIS Environment for instrumentation engine...
@@ -62,17 +62,17 @@ Configuring registry for instrumentation engine...
 ## <a name="next-steps"></a>Sonraki adımlar
 
   Telemetrinizi görüntüleyin:
- - Performansı ve kullanımı izlemek için [ölçümleri](../../azure-monitor/app/metrics-explorer.md) bulun.
-- Sorunları tanılamak için [olayları ve günlükleri arayın](../../azure-monitor/app/diagnostic-search.md) .
-- Daha gelişmiş sorgular için [analiz](../../azure-monitor/app/analytics.md) kullanın.
-- [Panolar oluşturun](../../azure-monitor/app/overview-dashboard.md).
+ - Performansı ve kullanımı izlemek için [ölçümleri keşfedin.](../../azure-monitor/app/metrics-explorer.md)
+- Sorunları tanılamak için [olayları ve günlükleri arayın.](../../azure-monitor/app/diagnostic-search.md)
+- Daha gelişmiş sorgular için [analitiği](../../azure-monitor/app/analytics.md) kullanın.
+- [Panolar oluşturun.](../../azure-monitor/app/overview-dashboard.md)
  
  Daha fazla telemetri ekleyin:
- - Sitenizin canlı kaldığından emin olmak için [Web testleri oluşturun](monitor-web-app-availability.md) .
-- Web sayfası kodundan özel durumları görmek ve izleme çağrılarını etkinleştirmek için [Web istemcisi telemetrisini ekleyin](../../azure-monitor/app/javascript.md) .
-- İzleme ve günlük çağrısı ekleyebilmeniz [için Application Insights SDK 'sını kodunuza ekleyin](../../azure-monitor/app/asp-net.md) .
+ - Sitenizin canlı kalması için [web testleri oluşturun](monitor-web-app-availability.md).
+- Web sayfası kodundan özel durumları görmek ve izleme çağrılarını etkinleştirmek için [web istemcisi telemetrisi ekleyin.](../../azure-monitor/app/javascript.md)
+- İzleme ve günlük aramaları ekleyebilmeniz [için Uygulama Öngörüleri SDK'yı kodunuza ekleyin.](../../azure-monitor/app/asp-net.md)
  
- Application Insights aracısıyla daha fazlasını yapın:
- - Application Insights Aracısı [sorunlarını gidermek](status-monitor-v2-troubleshoot.md) için kılavuzumuzu kullanın.
- - Ayarlarınızın doğru kaydedildiğinden emin olmak için [yapılandırmayı alın](status-monitor-v2-api-get-config.md) .
- - İzlemeyi İnceleme [durumunu alın](status-monitor-v2-api-get-status.md) .
+ Application Insights Agent ile daha fazlasını yapın:
+ - Uygulama Öngörüleri [Aracısı'nın sorun giderme](status-monitor-v2-troubleshoot.md) kılavuzunu kullanın.
+ - Ayarlarınızın doğru kaydedildiğini doğrulamak için [config'i alın.](status-monitor-v2-api-get-config.md)
+ - İzlemeyi incelemek için [durumu alın.](status-monitor-v2-api-get-status.md)

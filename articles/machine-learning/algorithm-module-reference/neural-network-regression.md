@@ -1,7 +1,7 @@
 ---
-title: 'Sinir ağ gerileme: modül başvurusu'
+title: 'Nöral Ağ Regresyonu: Modül Referansı'
 titleSuffix: Azure Machine Learning
-description: Özelleştirilebilir bir sinir ağ algoritması kullanarak regresyon modeli oluşturmak için Azure Machine Learning 'de sinir ağ gerileme modülünü nasıl kullanacağınızı öğrenin.
+description: Azure Machine Learning'de Özelleştirilebilir bir sinir ağı algoritması kullanarak bir regresyon modeli oluşturmak için Nöral Ağ Regresyon modüllerini nasıl kullanacağınızı öğrenin...
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,91 +9,91 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: d1e93c18b13e7171274eda2a7e8d07eefbefb592
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.openlocfilehash: 3a591badab29a1669d109f01f8a93732704d2fd4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/28/2020
-ms.locfileid: "77920391"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79456107"
 ---
-# <a name="neural-network-regression-module"></a>Sinir ağ gerileme modülü
+# <a name="neural-network-regression-module"></a>Nöral Ağ Regresyon modülü
 
-*Bir sinir ağ algoritması kullanarak regresyon modeli oluşturur*  
+*Sinir selağ algoritması kullanarak bir regresyon modeli oluşturur*  
   
- Kategori: model/gerileme Machine Learning/Başlat
+ Kategori: Makine Öğrenimi / Model Başlatma / Regresyon
   
 ## <a name="module-overview"></a>Modüle genel bakış  
 
-Bu makalede Azure Machine Learning tasarımcısında modül (Önizleme) açıklanmaktadır.
+Bu makalede, Azure Machine Learning tasarımcısı (önizleme) bir modül açıklanmaktadır.
 
-Özelleştirilebilir bir sinir ağı algoritması kullanarak regresyon modeli oluşturmak için bu modülü kullanın.
+Özelleştirilebilir bir nöral ağ algoritması kullanarak bir regresyon modeli oluşturmak için bu modülü kullanın.
   
- Sinir Networks, derin öğrenimi ve görüntü tanıma gibi karmaşık sorunları modelleyen yaygın olarak bilinse de, regresyon sorunlarına kolayca uyarlanmıştır. Herhangi bir istatistiksel model sınıfı, uyarlamalı ağırlıklar kullanıyorsa ve girişlerinin doğrusal olmayan işlevlerini yaklaşık bir şekilde tahmin edebilir bir sinir ağı olabilir. Bu nedenle sinir ağ gerileme, daha geleneksel regresyon modelinin bir çözüme uyamadığı sorunlara uygundur.
+ Sinir ağları derin öğrenme ve görüntü tanıma gibi karmaşık problemleri modellemede yaygın olarak bilinmesine rağmen, regresyon sorunlarına kolayca adapte edilebilirler. Herhangi bir istatistiksel model sınıfı, uyarlanabilir ağırlıklar kullanıyorsa ve girdilerinin doğrusal olmayan işlevlerini yaklaşık olarak karşılayabiliyorlarsa, nöral ağ olarak adlandırılabilir. Bu nedenle nöral ağ regresyonu, daha geleneksel bir regresyon modelinin çözüme sığamayacağı sorunlara uygundur.
   
- Sinir ağ gerileme denetimli bir öğrenme yöntemidir ve bu nedenle etiket sütunu içeren *etiketli bir veri kümesi*gerektirir. Regresyon modeli sayısal bir değeri tahmin ettiğinden, etiket sütununun sayısal bir veri türü olması gerekir.  
+ Nöral ağ regresyon denetimli bir öğrenme yöntemidir ve bu nedenle etiketli bir *veri kümesi*gerektirir , bir etiket sütunu içerir. Bir regresyon modeli sayısal bir değer tahmin ettiği için, etiket sütunu sayısal bir veri türü olmalıdır.  
   
- Modeli [eğitmek](./train-model.md)için bir girdi olarak modeli ve etiketli veri kümesini sağlayarak modeli eğitebilirsiniz. Eğitilen model daha sonra yeni giriş örneklerinin değerlerini tahmin etmek için kullanılabilir.  
+ Modeli ve etiketli veri kümesini [Train Model'e](./train-model.md)giriş olarak sağlayarak modeli eğitebilirsiniz. Daha sonra yeni giriş örnekleri için değerleri tahmin etmek için eğitilen model kullanılabilir.  
   
-## <a name="configure-neural-network-regression"></a>Sinir ağ gerilemesini yapılandırma 
+## <a name="configure-neural-network-regression"></a>Nöral Ağ Regresyon Yapılandırılması 
 
-Sinir ağları kapsamlı bir şekilde özelleştirilebilir. Bu bölümde, iki yöntemi kullanarak bir modelin nasıl oluşturulacağı açıklanmaktadır:
+Sinir ağları kapsamlı olarak özelleştirilebilir. Bu bölümde, iki yöntem kullanarak bir model nasıl oluşturulacak açıklanmaktadır:
   
-+ [Varsayılan mimariyi kullanarak bir sinir ağ modeli oluşturma](#bkmk_DefaultArchitecture)  
++ [Varsayılan mimarisini kullanarak bir nöral ağ modeli oluşturma](#bkmk_DefaultArchitecture)  
   
-    Varsayılan sinir ağ mimarisini kabul ediyorsanız, **Özellikler** bölmesini, gizli katmandaki düğümlerin sayısı, öğrenme oranı ve normalleştirme gibi, sinir ağının davranışını denetleyen parametreleri ayarlamak için kullanın.
+    Varsayılan sinir ağı mimarisini kabul ederseniz, gizli katmandaki düğüm sayısı, öğrenme hızı ve normalleştirme gibi nöral ağın davranışını kontrol eden parametreleri ayarlamak için **Özellikler** bölmesini kullanın.
 
-    Sinir Networks 'e yeni başladıysanız buradan başlayın. Modül birçok özelleştirmeyi ve model ayarlamayı, sinir Networks hakkında derin bilgi olmadan destekler. 
+    Sinir ağlarına yeniyseniz buradan başlayın. Modül, sinir ağları hakkında derin bilgi sahibi olmadan birçok özelleştirmenin yanı sıra model atonlamayı da destekler. 
 
-+ Bir sinir ağı için özel mimari tanımlama 
++ Sinir ağı için özel bir mimari tanımlama 
 
-    Ek gizli katmanlar eklemek veya ağ mimarisini, bağlantılarını ve etkinleştirme işlevlerini tamamen özelleştirmek istiyorsanız bu seçeneği kullanın.
+    Fazladan gizli katmanlar eklemek veya ağ mimarisini, bağlantılarını ve etkinleştirme işlevlerini tamamen özelleştirmek istiyorsanız bu seçeneği kullanın.
     
-    Sinir ağlarını zaten biliyorsanız, bu seçenek en iyisidir. Ağ mimarisini tanımlamak için NET # dilini kullanın.  
+    Sinir ağlarına zaten biraz aşinaysanız, bu seçenek en iyisidir. Ağ mimarisini tanımlamak için Net# dilini kullanırsınız.  
 
-##  <a name="bkmk_DefaultArchitecture"></a>Varsayılan mimariyi kullanarak bir sinir ağ modeli oluşturma
+##  <a name="create-a-neural-network-model-using-the-default-architecture"></a><a name="bkmk_DefaultArchitecture"></a>Varsayılan mimarisini kullanarak bir nöral ağ modeli oluşturma
 
-1.  **Sinir ağ regresyon** modülünü, tasarımcıda işlem hattınızı ekleyin. Bu modülü, **regresyon** kategorisinde **Machine Learning**, **Initialize**altında bulabilirsiniz. 
+1.  Tasarımcıda **nöral ağ regresyon** modüllerini boru hattınıza ekleyin. Bu modülü Makine **Öğrenimi**, **Initialize**, **Regresyon** kategorisinde bulabilirsiniz. 
   
-2. Eğitim **modunu oluşturma** seçeneğini ayarlayarak modelin eğitilme biçimini belirtin.  
+2. Eğitmen oluştur mod seçeneğini ayarlayarak modelin nasıl eğitilmesini **istediğinizi** belirtin.  
   
-    -   **Tek parametre**: modeli nasıl yapılandırmak istediğinizi zaten biliyorsanız bu seçeneği belirleyin.
+    -   **Tek Parametre**: Modeli nasıl yapılandırmak istediğinizi zaten biliyorsanız bu seçeneği seçin.
 
-    -   **Parametre aralığı**: en iyi parametrelerden emin değilseniz ve bir parametre süpürme çalıştırmak istiyorsanız bu seçeneği belirleyin. Yinelemek için bir değer aralığı seçin ve [ayarlama modeli hiper parametreleri](tune-model-hyperparameters.md) , en iyi sonuçları üreten hiper parametreleri belirlemek için, belirttiğiniz ayarların tüm olası birleşimlerinin üzerinde yinelenir.   
+    -   **Parametre Aralığı**: En iyi parametrelerden emin değilseniz ve parametre süpürmesini çalıştırmak istiyorsanız bu seçeneği seçin. Üzerinde çoğaltmak için bir dizi değer seçin ve [Tune Model Hiperparametreleri,](tune-model-hyperparameters.md) en iyi sonuçları üreten hiperparametreleri belirlemek için sağladığınız ayarların olası tüm kombinasyonları üzerinde yinelenir.   
 
-3.  **Gizli katman belirtiminde**, **tam bağlantılı durum**' u seçin. Bu seçenek, bir sinir ağ regresyon modeli için varsayılan sinir ağ mimarisini kullanarak bir model oluşturur ve bu özniteliklere sahiptir:  
+3.  **Gizli katman belirtiminderinde,** **Tam bağlı kasa'yı**seçin. Bu seçenek, bir nöral ağ regresyon modeli için aşağıdaki özniteliklere sahip varsayılan nöral ağ mimarisini kullanarak bir model oluşturur:  
   
-    + Ağın tam olarak bir gizli katmanı vardır.
-    + Çıktı Katmanı gizli katmana tamamen bağlanır ve gizli katman giriş katmanına tam olarak bağlanır.
-    + Gizli katmandaki düğümlerin sayısı Kullanıcı tarafından ayarlanabilir (varsayılan değer 100 ' dir).  
+    + Ağ tam olarak bir gizli katmana sahiptir.
+    + Çıktı katmanı tamamen gizli katmana ve gizli katman giriş katmanına tamamen bağlı.
+    + Gizli katmandaki düğüm sayısı kullanıcı tarafından ayarlanabilir (varsayılan değer 100'dür).  
   
-    Giriş katmanındaki düğümlerin sayısı eğitim verilerinde özelliklerin sayısına göre belirlendiği için, regresyon modelinde çıkış katmanında yalnızca bir düğüm olabilir.  
+    Giriş katmanındaki düğüm sayısı eğitim verilerindeki özellik sayısına göre belirlendiği için, bir regresyon modelinde çıkış katmanında yalnızca bir düğüm olabilir.  
   
-4. **Gizli düğüm sayısı**için gizli düğümlerin sayısını yazın. Varsayılan değer, 100 düğümü olan bir gizli katmandır. (NET # kullanarak özel bir mimari tanımlarsanız bu seçenek kullanılamaz.)
+4. **Gizli düğüm sayısı**için, gizli düğüm sayısını yazın. Varsayılan, 100 düğümlü gizli bir katmandır. (Net#'i kullanarak özel bir mimari tanımlarsanız bu seçenek kullanılamaz.)
   
-5.  **Öğrenme oranı**için, düzeltmeden önce her yinelemede gerçekleştirilen adımı tanımlayan bir değer yazın. Öğrenme oranı için daha büyük bir değer modelin daha hızlı yakınsama olmasına neden olabilir, ancak yerel Mini ma 'yı aşırı gerçekleştirebilir.
+5.  **Öğrenme oranı**için, düzeltmeden önce her yinelemede atılan adımı tanımlayan bir değer yazın. Öğrenme hızı için daha büyük bir değer, modelin daha hızlı yakınsamasını sağlayabilir, ancak yerel minima'yı aşabilir.
 
-6.  **Öğrenme yinelemeleri sayısı**için, algoritmanın eğitim çalışmalarını işleme süresini en fazla sayısını belirtin.
+6.  **Öğrenme yineleme sayısı**için, algoritmanın eğitim servis taleplerini en fazla kaç kez işlediğini belirtin.
 
 
-8.  **İtici güç**için, öğrenme sırasında önceki yinelemelerdeki düğümlerde bir ağırlık olarak uygulanacak bir değer yazın.
+8.  **Momentum**için, önceki yinelemelerden düğümler üzerinde bir ağırlık olarak öğrenme sırasında uygulamak için bir değer yazın.
 
-10. Yinelemeler arasındaki durumların sırasını değiştirmek için, **örnekleri karıştır**seçeneğini belirleyin. Bu seçeneğin işaretini kaldırırsanız, işlem hattını her çalıştırdığınızda her zaman tam olarak aynı sırada işlenir.
+10. Yinelemeler arasındaki servis taleplerinin sırasını değiştirmek için, **karıştırma örnekleri**seçeneğini seçin. Bu seçeneği niçin seçerseniz, ardışık düzen hattını her çalıştırdığınızda servis talepleri tam olarak aynı sırada işlenir.
   
-11. **Rastgele sayı kaynağı**için isteğe bağlı olarak, çekirdek olarak kullanılacak bir değer yazabilirsiniz. Aynı işlem hattının yinelenebilirlik üzerinde çalışmasını sağlamak istediğinizde bir çekirdek değeri belirtilmesi yararlı olur.
+11. **Rasgele sayı tohumu**için, isteğe bağlı olarak tohum olarak kullanmak üzere bir değer yazabilirsiniz. Aynı ardışık ardışık ardışık ardışık çalıştırmalar arasında tekrarlanabilirlik sağlamak istediğinizde, tohum değerini belirtmek yararlıdır.
   
-13. Eğitim veri kümesini ve [eğitim modülleriyle](module-reference.md)bir tane bağlayın: 
+13. Bir eğitim veri kümesini ve [eğitim modüllerinden](module-reference.md)birini bağlayın: 
   
-    -   **Tek parametreye**oluşturma ve ayarlama **modunu** ayarlarsanız, [modeli eğitme](./train-model.md)' yi kullanın.  
+    -   Tek **Parametre** **için eğitmen modu oluştur** ayarlarsanız, Tren [Modeli](./train-model.md)kullanın.  
   
    
-14. İşlem hattını çalıştırma.  
+14. Boru hattını gönderin.  
 
 ## <a name="results"></a>Sonuçlar
 
 Eğitim tamamlandıktan sonra:
 
-- Eğitilen modelin anlık görüntüsünü kaydetmek için **model eğitimi** modülünün sağ panelindeki **çıktılar** sekmesini seçin. Modeli yeniden kullanılabilir bir modül olarak kaydetmek için **veri kümesini kaydet** simgesini seçin.
+- Eğitilen modelin anlık görüntüsünü kaydetmek **için, Tren modeli** modülünün sağ panelindeki **Çıktılar** sekmesini seçin. Modeli yeniden kullanılabilir bir modül olarak kaydetmek için **Kayıt veri kümesi** simgesini seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın. 
+Azure Machine Learning için [kullanılabilen modül ler kümesine](module-reference.md) bakın. 

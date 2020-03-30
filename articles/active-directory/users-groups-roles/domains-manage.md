@@ -1,6 +1,6 @@
 ---
-title: Özel etki alanı adlarını ekleme ve doğrulama-Azure Active Directory | Microsoft Docs
-description: Azure Active Directory bir etki alanı adını yönetmek için yönetim kavramları ve nasıl yapılır?
+title: Özel alan adları ekleme ve doğrulama - Azure Etkin Dizin | Microsoft Dokümanlar
+description: Azure Active Directory'de bir etki alanı adını yönetmek için yönetim kavramları ve nasıl yapılacağını
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -15,102 +15,102 @@ ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2395aa5984de2a9fe41e4778d16aba69bfef5192
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77559242"
 ---
-# <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Azure Active Directory özel etki alanı adlarını yönetme
+# <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Azure Etkin Dizininizde özel alan adlarını yönetme
 
-Etki alanı adı, birçok dizin kaynağı tanımlayıcısının önemli bir parçasıdır: bir kullanıcı adının veya bir kullanıcının e-posta adresinin bir parçası, bir grup adresinin bir parçası ve bazen bir uygulama için uygulama KIMLIĞI URI 'sinin bir parçası. Azure Active Directory (Azure AD) içindeki bir kaynak, kaynağı içeren dizine ait bir etki alanı adı içerebilir. Azure AD 'de yalnızca genel yönetici etki alanlarını yönetebilir.
+Etki alanı adı, birçok dizin kaynağı için tanımlayıcının önemli bir parçasıdır: bir kullanıcı için kullanıcı adının veya e-posta adresinin, bir grubun adresinin bir parçasıdır ve bazen bir uygulama için uygulama kimliği URI'nin bir parçasıdır. Azure Etkin Dizini'ndeki (Azure AD) bir kaynak, kaynağı içeren dizine ait bir etki alanı adı içerebilir. Azure AD'deki etki alanlarını yalnızca bir Global Administrator yönetebilir.
 
-## <a name="set-the-primary-domain-name-for-your-azure-ad-directory"></a>Azure AD dizininiz için birincil etki alanı adını ayarlama
+## <a name="set-the-primary-domain-name-for-your-azure-ad-directory"></a>Azure REKLAM dizininizin birincil etki alanı adını ayarlama
 
-Dizininiz oluşturulduğunda, ' contoso.onmicrosoft.com, ' gibi ilk etki alanı adı da birincil etki alanı adıdır. Birincil etki alanı, yeni bir kullanıcı oluşturduğunuzda yeni bir kullanıcı için varsayılan etki alanı adıdır. Birincil etki alanı adı ayarlandığında, yönetici, portalda Yeni Kullanıcı oluşturma sürecini basitleştirir. Birincil etki alanı adını değiştirmek için:
+Dizininiz oluşturulduğunda, 'contoso.onmicrosoft.com' gibi ilk etki alanı adı da birincil etki alanı adıdır. Birincil etki alanı, yeni bir kullanıcı oluşturduğunuzda yeni bir kullanıcıiçin varsayılan etki alanı adıdır. Birincil etki alanı adı ayarlamak, bir yöneticinin portalda yeni kullanıcılar oluşturması işlemini kolaylaştırır. Birincil etki alanı adını değiştirmek için:
 
-1. [Azure Portal](https://portal.azure.com) , Dizin Için genel yönetici olan bir hesapla oturum açın.
-2. **Azure Active Directory**'yi seçin.
+1. Dizin için Global Administrator olan bir hesapla [Azure portalında](https://portal.azure.com) oturum açın.
+2. **Azure Etkin Dizini'ni**seçin.
 3. **Özel etki alanı adları**'nı seçin.
   
-   ![Kullanıcı Yönetimi sayfasını açma](./media/domains-manage/add-custom-domain.png)
-4. Birincil etki alanı olmasını istediğiniz etki alanının adını seçin.
-5. **Birincil yap** komutunu seçin. İstendiğinde seçiminizi onaylayın.
+   ![Kullanıcı yönetimi sayfasını açma](./media/domains-manage/add-custom-domain.png)
+4. Birincil etki alanı olmak istediğiniz etki alanının adını seçin.
+5. Birincil komutu **yap'ı** seçin. İstendiğinde seçiminizi onaylayın.
   
-   ![Etki alanı adını birincil yapın](./media/domains-manage/make-primary-domain.png)
+   ![Etki alanı adını birincil ad yapma](./media/domains-manage/make-primary-domain.png)
 
-Dizininiz için birincil etki alanı adını, federe olmayan doğrulanmış özel etki alanı olacak şekilde değiştirebilirsiniz. Dizininizin birincil etki alanını değiştirmek, mevcut kullanıcıların kullanıcı adını değiştirmez.
+Dizininizin birincil etki alanı adını, federe olmayan doğrulanmış özel etki alanı olarak değiştirebilirsiniz. Dizininizin birincil etki alanını değiştirmek, varolan kullanıcıların kullanıcı adını değiştirmez.
 
-## <a name="add-custom-domain-names-to-your-azure-ad-tenant"></a>Azure AD kiracınıza özel etki alanı adları ekleme
+## <a name="add-custom-domain-names-to-your-azure-ad-tenant"></a>Azure AD kiracınıza özel alan adları ekleme
 
-En fazla 900 yönetilen etki alanı adı ekleyebilirsiniz. Tüm etki alanlarınızı şirket içi Active Directory ile Federasyon için yapılandırıyorsanız, her bir dizine en fazla 450 etki alanı adı ekleyebilirsiniz.
+En fazla 900 yönetilen alan adı ekleyebilirsiniz. Tüm etki alanlarınızı şirket içi Active Directory ile federasyon için yapılandırıyorsanız, her dizinde en fazla 450 etki alanı adı ekleyebilirsiniz.
 
 ## <a name="add-subdomains-of-a-custom-domain"></a>Özel bir etki alanının alt etki alanlarını ekleme
 
-Dizininize ' europe.contoso.com ' gibi bir üçüncü düzey etki alanı adı eklemek istiyorsanız, öncelikle contoso.com gibi ikinci düzey etki alanını eklemeniz ve doğrulamanız gerekir. Alt etki alanı, Azure AD tarafından otomatik olarak doğrulanır. Eklediğiniz alt etki alanının doğrulandığını görmek için tarayıcıdaki etki alanı listesini yenileyin.
+Dizininize 'europe.contoso.com' gibi üçüncü düzey bir etki alanı adı eklemek istiyorsanız, önce contoso.com gibi ikinci düzey etki alanını eklemeniz ve doğrulamanız gerekir. Alt etki alanı Azure AD tarafından otomatik olarak doğrulanır. Eklediğiniz alt etki alanının doğrulanmış olduğunu görmek için tarayıcıdaki etki alanı listesini yenileyin.
 
-## <a name="what-to-do-if-you-change-the-dns-registrar-for-your-custom-domain-name"></a>Özel etki alanı adınızın DNS kaydedicisinde değişiklik yaparsanız yapmanız gerekenler
+## <a name="what-to-do-if-you-change-the-dns-registrar-for-your-custom-domain-name"></a>Özel alan adınız için DNS kayıt şirketini değiştirirseniz ne yapmalıdır?
 
-DNS kayıt şirketlerinde değiştirirseniz, Azure AD 'de başka yapılandırma görevleri yoktur. Azure AD ile etki alanı adını kesinti olmadan kullanmaya devam edebilirsiniz. Özel etki alanı adınızı Office 365, Intune veya Azure AD 'de özel etki alanı adlarına bağlı diğer hizmetlerle kullanıyorsanız, bu hizmetler için belgelere bakın.
+DNS kayıt şirketlerini değiştirirseniz, Azure AD'de ek yapılandırma görevi yoktur. Alan adını Azure AD ile kesintisiz olarak kullanmaya devam edebilirsiniz. Özel alan adınızı Office 365, Intune veya Azure AD'deki özel alan adlarına dayanan diğer hizmetlerle kullanıyorsanız, bu hizmetlerin belgelerine bakın.
 
-## <a name="delete-a-custom-domain-name"></a>Özel bir etki alanı adını silme
+## <a name="delete-a-custom-domain-name"></a>Özel alan adı silme
 
-Kuruluşunuz artık bu etki alanı adını kullanmadıysanız veya başka bir Azure AD ile bu etki alanı adını kullanmanız gerekiyorsa, Azure AD 'nizden özel bir etki alanı adını silebilirsiniz.
+Kuruluşunuz artık bu etki alanı adını kullanmıyorsa veya bu etki alanı adını başka bir Azure REKLAMıyla kullanmanız gerekiyorsa Azure REKLAMınızdan özel bir etki alanı adını silebilirsiniz.
 
-Özel bir etki alanı adını silmek için, ilk olarak dizininizdeki hiçbir kaynağın etki alanı adına dayandığından emin olmanız gerekir. Şu durumlarda dizininizden bir etki alanı adı silemezsiniz:
+Özel bir etki alanı adını silmek için öncelikle dizininizdeki hiçbir kaynağın etki alanı adına dayanmadığından emin olmalısınız. Şuanda varsa dizininizden bir etki alanı adını silemezsiniz:
 
-* Herhangi bir kullanıcının etki alanı adını içeren bir Kullanıcı adı, e-posta adresi veya proxy adresi vardır.
-* Herhangi bir grubun, etki alanı adını içeren bir e-posta adresi veya proxy adresi vardır.
-* Azure AD 'deki herhangi bir uygulamanın, etki alanı adını içeren bir uygulama KIMLIĞI URI 'SI vardır.
+* Herhangi bir kullanıcının etki alanı adını içeren bir kullanıcı adı, e-posta adresi veya proxy adresi vardır.
+* Herhangi bir grubun etki alanı adını içeren bir e-posta adresi veya proxy adresi vardır.
+* Azure AD'nizdeki herhangi bir uygulamada etki alanı adını içeren bir uygulama kimliği URI vardır.
 
-Özel etki alanı adını silebilmeniz için önce Azure AD dizininizde böyle bir kaynağı değiştirmeniz veya silmeniz gerekir.
+Özel alan adını silmeden önce Azure REKLAM dizininizdeki bu tür kaynakları değiştirmeniz veya silmeniz gerekir.
 
 ### <a name="forcedelete-option"></a>ForceDelete seçeneği
 
-[Azure AD Yönetim merkezinde](https://aad.portal.azure.com) veya [Microsoft Graph API](https://docs.microsoft.com/graph/api/domain-forcedelete?view=graph-rest-beta)kullanarak bir etki alanı adını **silmeyi zorla** yapabilirsiniz. Bu seçenekler, zaman uyumsuz bir işlem kullanır ve "user@contoso.com" gibi özel etki alanı adındaki tüm başvuruları "user@contoso.onmicrosoft.com" gibi ilk varsayılan etki alanı adı ile güncelleştirir. 
+[Azure AD Yönetici Merkezi'nde](https://aad.portal.azure.com) veya Microsoft [Graph API'sini](https://docs.microsoft.com/graph/api/domain-forcedelete?view=graph-rest-beta)kullanarak bir etki alanı adını **Zorla Silebilirsiniz.** Bu seçenekler bir eşzamanlı işlem kullanır ve " "user@contoso.comgibi özel etki alanı adındaki tümuser@contoso.onmicrosoft.combaşvuruları ilk varsayılan etki alanı adına güncelleştirin. 
 
-Azure portal **Forcedelete** ' i çağırmak için, etki alanı adına 1000 ' den az başvuru olduğundan emin olmanız ve Exchange 'in sağlama hizmeti 'Nin [Exchange Yönetim merkezinde](https://outlook.office365.com/ecp/)güncellenmesi veya kaldırılması gerektiği tüm başvurular olması gerekir. Bu, Exchange posta etkin güvenlik gruplarını ve dağıtılmış listeleri içerir; daha fazla bilgi için bkz. [posta etkin güvenlik gruplarını kaldırma](https://technet.microsoft.com/library/bb123521(v=exchg.160).aspx#Remove%20mail-enabled%20security%20groups). Ayrıca, aşağıdakilerden biri geçerliyse **Forcedelete** işlemi başarılı olmaz:
+Azure portalında **ForceDelete'i** aramak için, alan adına 1000'den az başvuru olduğundan ve Exchange'in sağlama hizmeti olduğu tüm başvuruların [Exchange Yönetici Merkezi'nde](https://outlook.office365.com/ecp/)güncellenmesi veya kaldırılması gerektiğinden emin olmalısınız. Buna Exchange Mail Özellikli Güvenlik Grupları ve dağıtılmış listeler dahildir; daha fazla bilgi için [bkz. posta yla etkin güvenlik gruplarını kaldırma.](https://technet.microsoft.com/library/bb123521(v=exchg.160).aspx#Remove%20mail-enabled%20security%20groups) Ayrıca, aşağıdakilerden biri doğruysa **ForceDelete** işlemi başarılı olmaz:
 
 * Office 365 etki alanı abonelik hizmetleri aracılığıyla bir etki alanı satın aldınız
-* Başka bir müşteri kiracısı adına bir iş ortağıysanız
+* Başka bir müşteri kiracısı adına yöneten bir iş ortağısınız
 
-**Forcedelete** işleminin bir parçası olarak aşağıdaki eylemler gerçekleştirilir:
+**ForceDelete** işleminin bir parçası olarak aşağıdaki işlemler gerçekleştirilir:
 
-* Özel etki alanı adı ile ilk varsayılan etki alanı adına başvuran Kullanıcı UPN 'sini, Emaadresi ve ProxyAddress yeniden adlandırır.
-* Özel etki alanı adı başvuruları olan grupların EMAA adını ilk varsayılan etki alanı adı ile yeniden adlandırır.
-* Özel etki alanı adı başvuruları olan uygulamaların ıdentifieruri 'Lerini ilk varsayılan etki alanı adı ile yeniden adlandırır.
+* İlk varsayılan etki alanı adına özel alan adı referansları ile kullanıcıların UPN, E-posta Adresi ve ProxyAddress yeniden adlandırır.
+* Özel alan adı için başvuruiçeren grupların E-posta Adresini ilk varsayılan etki alanı adına yeniden adlandırır.
+* Özel etki alanı adına yapılan atıflarla uygulamaların tanımlayıcılarını ilk varsayılan etki alanı adına yeniden adlandırır.
 
-Şu durumlarda bir hata döndürülür:
+Bir hata döndürülür:
 
-* Yeniden adlandırılacak nesne sayısı 1000 ' den büyük
+* Yeniden adlandırılacak nesne sayısı 1000'den büyüktür
 * Yeniden adlandırılacak uygulamalardan biri çok kiracılı bir uygulamadır
 
 ### <a name="frequently-asked-questions"></a>Sık sorulan sorular
 
-**S: etki alanı silme neden, bu etki alanı adında ana kopyalı grupları değiş tokuş ederim belirten bir hata ile başarısız oluyor mu?** <br>
-Y **:** Bugün, posta etkin güvenlik grupları ve dağıtılmış listeler gibi bazı gruplar Exchange tarafından sağlanır ve [Exchange Yönetim Merkezi 'nde (EAC)](https://outlook.office365.com/ecp/)el ile temizlenmelidir. Özel etki alanı adını kullanan kalan ProxyAddresses olabilir ve başka bir etki alanı adına el ile güncelleştirilmeleri gerekir. 
+**S: Neden etki alanı silme ben bu etki alanı adı üzerinde Exchange hakim gruplar olduğunu belirten bir hata ile başarısız oluyor?** <br>
+**A:** Bugün, Posta Destekli Güvenlik grupları ve dağıtılmış listeler gibi belirli gruplar Exchange tarafından sağlanmaktadır ve [Exchange Yönetici Merkezi'nde (EAC)](https://outlook.office365.com/ecp/)el ile temizlenmesi gerekir. Özel etki alanı adına dayanan ve başka bir etki alanı adına el ile güncellenmesi gereken proxyadresleri olabilir. 
 
-**S: yönetici\@contoso.com olarak oturum açdım, ancak "contoso.com" etki alanı adını silemiyorum?**<br>
-Y **:** Kullanıcı hesabınızın adında silmeye çalıştığınız özel etki alanı adına başvurulamıyor. Genel yönetici hesabının admin@contoso.onmicrosoft.comgibi ilk varsayılan etki alanı adını (. onmicrosoft.com) kullandığından emin olun. admin@contoso.onmicrosoft.com gibi farklı bir genel yönetici hesabıyla oturum açın ve hesabın admin@fabrikam.com"fabrikam.com" gibi başka bir özel etki alanı adı.
+**S: Ben yönetici\@contoso.com olarak giriş yapıyorum ama etki alanı adı "contoso.com silemez miyim?**<br>
+**A:** Kullanıcı hesabı adınızda silmeye çalıştığınız özel alan adı için başvuruda bulunamazsınız. Global Administrator hesabının ilk varsayılan etki alanı adını (.onmicrosoft.com) kullandığından emin admin@contoso.onmicrosoft.comolun. Farklı bir Global Administrator hesabı yla admin@contoso.onmicrosoft.com oturum açın, örneğin veya hesabın bulunduğu admin@fabrikam.com"fabrikam.com" gibi başka bir özel etki alanı adı.
 
-**S: etki alanını Sil düğmesine tıkladıktan sonra silme işlemi için `In Progress` durumu ' na tıkladım. Ne kadar sürer? Başarısız olursa ne olur?**<br>
-Y **:** Etki alanı silme işlemi, etki alanı adına yapılan tüm başvuruları yeniden adlandıran zaman uyumsuz bir arka plan görevdir. Bir veya iki dakika içinde tamamlanır. Etki alanı silme işlemi başarısız olursa, şu olmadığından emin olun:
+**S: Etki alanını sil düğmesini `In Progress` tıklattım ve Sil işleminin durumunu gördüm. Ne kadar sürer? Başarısız olursa ne olur?**<br>
+**A:** Silme etki alanı işlemi, etki alanı adına yapılan tüm başvuruları yeniden adlandıran eşzamanlı bir arka plan görevidir. Bir iki dakika içinde tamamlar. Etki alanı silme başarısız olursa, şuna sahip olmadığınızı sağlayın:
 
-* Etki alanı adı üzerinde Appıdentifieruri ile yapılandırılan uygulamalar
-* Özel etki alanı adına başvuran posta etkin herhangi bir grup
-* Etki alanı adına 1000 'den fazla başvuru
+* AppIdentifierURI ile alan adı üzerinde yapılandırılan uygulamalar
+* Özel etki alanı adına başvuran posta özellikli herhangi bir grup
+* Etki alanı adına 1000'den fazla başvuru
 
-Koşulların herhangi birinin karşılanmadığını fark ederseniz, başvuruları el ile temizleyin ve etki alanını silmeyi yeniden deneyin.
+Koşullardan herhangi birinin yerine getirilmediğini fark ederseniz, başvuruları el ile temizleyin ve etki alanını yeniden silmeyi deneyin.
 
-## <a name="use-powershell-or-the-microsoft-graph-api-to-manage-domain-names"></a>Etki alanı adlarını yönetmek için PowerShell veya Microsoft Graph API 'sini kullanma
+## <a name="use-powershell-or-the-microsoft-graph-api-to-manage-domain-names"></a>Etki alanı adlarını yönetmek için PowerShell veya Microsoft Graph API'yi kullanma
 
-Azure Active Directory etki alanı adları için birçok yönetim görevi Microsoft PowerShell kullanılarak veya Microsoft Graph API kullanılarak programlı bir şekilde tamamlanabilir.
+Azure Etkin Dizini'ndeki alan adları için çoğu yönetim görevi Microsoft PowerShell kullanılarak veya programlı olarak Microsoft Graph API kullanılarak tamamlanabilir.
 
-* [Azure AD 'de etki alanı adlarını yönetmek için PowerShell kullanma](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#domains)
+* [Azure AD'de alan adlarını yönetmek için PowerShell'i kullanma](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#domains)
 * [Etki alanı kaynak türü](https://docs.microsoft.com/graph/api/resources/domain?view=graph-rest-1.0)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Özel etki alanı adı ekleme](/azure/active-directory/fundamentals/add-custom-domain?context=azure/active-directory/users-groups-roles/context/ugr-context)
-* [Azure AD 'de özel bir etki alanı adı üzerinde Exchange Yönetim Merkezi 'nde Exchange posta etkin güvenlik gruplarını kaldırma](https://technet.microsoft.com/library/bb123521(v=exchg.160).aspx#Remove%20mail-enabled%20security%20groups)
-* [ForceMicrosoft Graph API ile özel bir etki alanı adını silme](https://docs.microsoft.com/graph/api/domain-forcedelete?view=graph-rest-beta)
+* [Exchange Yönetici Merkezi'ndeki Exchange posta özellikli güvenlik gruplarını Azure AD'deki özel bir etki alanı adında kaldırma](https://technet.microsoft.com/library/bb123521(v=exchg.160).aspx#Remove%20mail-enabled%20security%20groups)
+* [ForceDelete Microsoft Graph API ile özel bir etki alanı adı](https://docs.microsoft.com/graph/api/domain-forcedelete?view=graph-rest-beta)

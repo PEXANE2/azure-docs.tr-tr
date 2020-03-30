@@ -1,32 +1,32 @@
 ---
-title: Azure Işlevleri için Azure IoT Hub bağlamaları
-description: Azure Işlevlerinde IoT Hub tetikleyiciyi ve bağlamayı kullanmayı öğrenin.
+title: Azure İşlevleri için Azure IoT Hub bağlamaları
+description: Azure İşlevlerinde IoT Hub tetikleyicisini ve bağlamayı kullanmayı öğrenin.
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.openlocfilehash: 1c25543b16c3486a8f6a445427346382faaaa09a
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77586147"
 ---
-# <a name="azure-iot-hub-bindings-for-azure-functions"></a>Azure Işlevleri için Azure IoT Hub bağlamaları
+# <a name="azure-iot-hub-bindings-for-azure-functions"></a>Azure İşlevleri için Azure IoT Hub bağlamaları
 
-Bu makale kümesinde IoT Hub için Azure Işlevleri bağlamalarıyla nasıl çalışılacağı açıklanmaktadır. IoT Hub desteği, [Azure Event Hubs bağlamasını](functions-bindings-event-hubs.md)temel alır.
+Bu makale kümesi, IoT Hub için Azure İşlevbağlamaları ile nasıl çalışılabildiğini açıklar. IoT Hub desteği, [Azure Etkinlik Hub'ları Bağlama'yı](functions-bindings-event-hubs.md)temel adatır.
 
 > [!IMPORTANT]
-> Aşağıdaki kod örnekleri Olay Hub 'ı API 'sini kullanırken, verilen söz dizimi IoT Hub işlevleri için geçerlidir.
+> Aşağıdaki kod örnekleri Olay Hub API'sini kullanırken, verilen sözdizimi IoT Hub işlevleri için geçerlidir.
 
 | Eylem | Tür |
 |--------|------|
-| IoT Hub olay akışına gönderilen olaylara yanıt verme. | [Tetikleyici](./functions-bindings-event-iot-trigger.md) |
-| IoT olay akışına olay yazma | [Çıkış bağlama](./functions-bindings-event-iot-output.md) |
+| IoT hub olay akışına gönderilen olaylara yanıt verin. | [Tetikleyici](./functions-bindings-event-iot-trigger.md) |
+| Olayları Bir IoT olay akışına yazma | [Çıkış bağlama](./functions-bindings-event-iot-output.md) |
 
 [!INCLUDE [functions-bindings-event-hubs](../../includes/functions-bindings-event-hubs.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Bir olay hub 'ı olay akışına (tetikleyici) gönderilen olaylara yanıt verme](./functions-bindings-event-iot-trigger.md)
-- [Olayları bir olay akışına yazma (çıkış bağlama)](./functions-bindings-event-iot-output.md)
+- [Olay merkezi olay akışına gönderilen olaylara yanıt verme (Tetikleyici)](./functions-bindings-event-iot-trigger.md)
+- [Olayları olay akışına yazma (Çıktı bağlama)](./functions-bindings-event-iot-output.md)

@@ -1,71 +1,71 @@
 ---
-title: Azure Log Analytics 'da verileri görüntüleme ve çözümleme | Microsoft Docs
-description: Azure Izleyici günlük sorgu deneyimine Log Analytics günlük araması kullanıcıları için yardım.
+title: Azure Log Analytics'te verileri görüntüleme ve analiz etme | Microsoft Dokümanlar
+description: Log Analytics kullanıcıları için Azure Monitor günlük sorgusu deneyiminde arama günlüğü desteği.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/16/2019
 ms.openlocfilehash: 6cc7fc94162ed101d06fbbbc4722867be46987b6
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77670143"
 ---
-# <a name="transition-from-log-analytics-log-search-to-azure-monitor-logs"></a>Log Analytics günlük aramadan Azure Izleyici günlüklerine geçiş
-Log Analytics günlük araması kısa süre önce Azure Izleyici günlüklerini çözümlemek için yeni bir deneyimle değiştirilmiştir. Günlük arama sayfasına şu anda Azure portal **Log Analytics çalışma alanları** sayfasındaki **Günlükler (klasik)** menü öğesi aracılığıyla erişilebilir ancak 15 Şubat 2019 ' de kaldırılacaktır. Bu makalede, günlük aramadan geçiş yapmanıza yardımcı olmak için iki deneyim arasındaki farklar açıklanmaktadır. 
+# <a name="transition-from-log-analytics-log-search-to-azure-monitor-logs"></a>Log Analytics günlük aramasından Azure Monitor günlüklerine geçiş
+Log Analytics'teki günlük araması, kısa bir süre önce Azure Monitor günlüklerini analiz etmek için yeni bir deneyimle değiştirildi. Günlük arama sayfasına Şu anda Azure portalındaki Log **Analytics çalışma alanları** sayfasındaki **Günlükler (klasik)** menü öğesi aracılığıyla erişilebiliyor, ancak 15 Şubat 2019'da kaldırılacak. Bu makalede, günlük arama geçiş yardımcı olmak için iki deneyim arasındaki farklar açıklanmaktadır. 
 
-## <a name="filter-results-of-a-query"></a>Sorgunun sonuçlarını filtreleme
-Günlük aramasında, arama sonuçları teslim edildiğinde bir filtre listesi görüntülenir. Sorguyu seçili filtreyle çalıştırmak için bir filtre seçin ve **Uygula** ' ya tıklayın.
+## <a name="filter-results-of-a-query"></a>Sorgunun filtreleme sonuçları
+Günlük Arama'da, arama sonuçları teslim edilirken filtrelerin listesi görüntülenir. Bir filtre seçin ve seçili filtreyle sorguyu çalıştırmak için **Uygula'yı** tıklatın.
 
-![Günlük arama filtresi](media/log-search-transition/filter-log-search.png)
+![Günlük Arama filtresi](media/log-search-transition/filter-log-search.png)
 
-Azure Izleyici günlükleri ' nde filtreleri görüntülemek için *filtre (Önizleme)* öğesini seçin. Ekleme filtrelerini göstermek için filtre simgesine tıklayın. Sorguyu seçili filtreyle çalıştırmak için bir filtre seçin ve **çalıştır & Uygula** ' ya tıklayın.
+Azure Monitor günlüklerinde, filtreleri görüntülemek için *Filtre (önizleme)* seçeneğini belirleyin. Ek filtreleri görüntülemek için filtre simgesine tıklayın. Bir filtre seçin ve seçili filtreyle sorguyu çalıştırmak için **Çalıştır &** uygula'yı tıklatın.
 
-![Günlükler filtresi](media/log-search-transition/filter-logs.png)
+![Günlükleri filtresi](media/log-search-transition/filter-logs.png)
 
-## <a name="extract-custom-fields"></a>Özel alanları Ayıkla 
-Günlük aramasında, liste görünümünden [özel alanlar](../platform/custom-fields.md) ayıkladıktan sonra bir alanın menüsü, _tablodaki alanları Ayıkla_eylemini içerir.
+## <a name="extract-custom-fields"></a>Özel alanları ayıklama 
+Günlük Arama'da, bir alanın menüsünde _Tablo'dan_eylem Ayıklama alanlarını içeren Liste görünümünden [özel alanlar](../platform/custom-fields.md) ayıklarsınız.
 
-![Günlük araması ayıklama alanları](media/log-search-transition/extract-fields-log-search.png)
+![Günlük Arama ayıklama alanları](media/log-search-transition/extract-fields-log-search.png)
 
-Azure Izleyici günlüklerinde, tablo görünümünden özel alanları ayıkladığınızda. Sol oka tıklayarak bir kaydı genişletin ve _alanları Ayıkla_ eylemine erişmek için üç noktaya tıklayın.
+Azure Monitor günlüklerinde, tablo görünümünden özel alanlar ayıklarsınız. Soldaki oku tıklatarak bir kaydı genişletin ve _ayıklama alanları_ eylemine erişmek için elipsleri tıklatın.
 
 ![Günlükleri ayıklama alanları](media/log-search-transition/extract-fields-logs.png)
 
-## <a name="functions-and-computer-groups"></a>İşlevler ve bilgisayar grupları
-Günlük aramasında bir aramayı kaydetmek için, bir ad, kategori ve sorgu metni sağlamak üzere **kaydedilmiş aramalar** ' ı ve **Ekle** ' yi seçin. Bir işlev diğer adı ekleyerek bir [bilgisayar grubu](../platform/computer-groups.md) oluşturun.
+## <a name="functions-and-computer-groups"></a>Fonksiyonlar ve bilgisayar grupları
+Günlük Arama'da bir aramayı kaydetmek **için, bir** ad, kategori ve sorgu metni sağlamak için Kaydedilmiş aramalar ve **Ekle'yi** seçin. İşlev takma adı ekleyerek bir [bilgisayar grubu](../platform/computer-groups.md) oluşturun.
 
-![Günlük aramasını Kaydet](media/log-search-transition/save-search-log-search.png)
+![Günlük aramakaydet](media/log-search-transition/save-search-log-search.png)
 
-Geçerli sorguyu Azure Izleyici günlüklerine kaydetmek için **Kaydet**' i seçin. **Farklı kaydet** işlevini _işlevine_ değiştirin ve Işlev oluşturmak Için bir **işlev diğer adı** [sağlayın.](functions.md) Bir [bilgisayar grubu](../platform/computer-groups.md)için işlev diğer adını kullanmak üzere _Bu sorguyu bilgisayar grubu olarak kaydet_ ' i seçin.
+Geçerli sorguyu Azure Monitor günlüklerine kaydetmek için **Kaydet'i**seçin. _İşlev_ **olarak Kaydet'i** değiştirin ve bir [işlev](functions.md)oluşturmak için bir **Işlev Adı** sağlayın. Bir [bilgisayar grubu](../platform/computer-groups.md)için işlev diğer adını kullanmak için _bu sorguyu bilgisayar grubu olarak kaydet'i_ seçin.
 
-![Günlük sorgusunu Kaydet](media/log-search-transition/save-query-logs.png)
+![Günlük sorgusuna kaydet](media/log-search-transition/save-query-logs.png)
 
 ## <a name="saved-queries"></a>Kaydedilen sorgular
-Günlük aramasında, kaydedilmiş sorgularınızı, Eylem çubuğu öğesi **kaydedilmiş aramaları**aracılığıyla kullanılabilir. Azure Izleyici günlükleri ' nde, kaydedilmiş sorgulara [sorgu Gezgini](../log-query/get-started-portal.md#save-queries)'nden erişin.
+Günlük Arama'da, kaydedilen sorgularınız eylem çubuğu öğesi **Kaydedilmiş aramalar**aracılığıyla kullanılabilir. Azure Monitor günlüklerinde, [Sorgu Gezgini'nden](../log-query/get-started-portal.md#save-queries)kaydedilen sorgulara erişin.
 
-![Sorgu Gezgini](media/log-search-transition/query-explorer.png)
+![Sorgu gezgini](media/log-search-transition/query-explorer.png)
 
-## <a name="drill-down-on-summarized-rows"></a>Özetlenen satırlarda detaya gitme
-Günlük arama ' da, Özet sorgudaki bir satıra tıklayarak bu satırdaki ayrıntılı kayıtları listeleyen başka bir sorgu başlatabilirsiniz.
+## <a name="drill-down-on-summarized-rows"></a>Özetlenen satırları ayrıntıya göre detaylandırma
+Günlük Arama'da, özetlenmiş bir sorgudaki bir satıra tıklayarak, bu satırdaki ayrıntılı kayıtları listeleyen başka bir sorgu başlatabilirsiniz.
 
-![Günlük araması ayrıntıya git](media/log-search-transition/drilldown-search.png)
+![Günlük Arama detaylandırma](media/log-search-transition/drilldown-search.png)
 
-Azure Izleyici günlüklerinde, bu kayıtları döndürmek için sorguyu değiştirmeniz gerekir. Sonuçlarda bulunan satırlardan birini genişletin ve sorguya eklemek için değerin yanındaki **+** tıklatın. Ardından **özetleme** komutunu açýklama ve sorguyu yeniden çalıştırın.
+Azure Monitor günlüklerinde, bu kayıtları döndürmek için sorguyu değiştirmeniz gerekir. Sonuçlardaki satırlardan birini genişletin ve **+** sorguya eklemek için değerin yanındaki nitı tıklatın. Sonra **özet** komutu dışarı yorum ve sorguyu yeniden çalıştırın.
 
-![Azure Izleyici günlüklerine git](media/log-search-transition/drilldown-logs.png)
+![Azure Monitor, ayrıntılı olarak günlüklerini kaydeder](media/log-search-transition/drilldown-logs.png)
 
-## <a name="take-action"></a>İşlem yapın
-Günlük aramasında, **eylem al**' ı seçerek bir [runbook 'u](take-action.md) arama sonuçlarından başlatabilirsiniz.
+## <a name="take-action"></a>Harekete geçin
+Günlük Arama'da, **Eyleme Al'ı**seçerek bir arama sonucundan [bir runbook başlatabilirsiniz.](take-action.md)
 
-![İşlem yapın](media/log-search-transition/take-action-log-search.png)
+![Harekete geçin](media/log-search-transition/take-action-log-search.png)
 
-Azure Izleyici günlükleri ' nde [günlük sorgusundan bir uyarı oluşturun](../platform/alerts-log.md). Uyarıya yanıt olarak çalışacak bir veya daha fazla eylem içeren bir eylem grubu yapılandırın.
+Azure Monitor günlüklerinde, [günlük sorgusundan bir uyarı oluşturun.](../platform/alerts-log.md) Bir eylem grubunu uyarıya yanıt olarak çalışacak bir veya daha fazla eylemle yapılandırın.
 
 ![Eylem grubu](media/log-search-transition/action-group.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Yeni [Azure izleyici günlükleri deneyimi](get-started-portal.md)hakkında daha fazla bilgi edinin.
+- Yeni [Azure Monitör günlükleri deneyimi](get-started-portal.md)hakkında daha fazla bilgi edinin.

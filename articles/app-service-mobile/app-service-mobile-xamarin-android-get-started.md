@@ -1,16 +1,16 @@
 ---
-title: Xamarin. Android uygulamalarını kullanmaya başlama
-description: Xamarin Android geliştirme için Azure Mobile Apps kullanmaya başlamak için bu öğreticiyi izleyin.
+title: Xamarin.Android uygulamaları ile başlayın
+description: Xamarin Android geliştirme için Azure Mobil Uygulamalarını kullanmaya başlamak için bu öğreticiyi izleyin.
 ms.assetid: 81649dd3-544f-40ff-b9b7-60c66d683e60
 ms.tgt_pltfrm: mobile-xamarin-android
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.openlocfilehash: b42205436c88f9075423bfcaf9e5a9fd931ee4f4
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77461377"
 ---
 # <a name="create-a-xamarinandroid-app"></a>Xamarin.Android Uygulaması oluşturma
@@ -25,7 +25,7 @@ Aşağıda tamamlanmış uygulamadan bir ekran görüntüsünü görebilirsiniz:
 
 Bu öğreticiyi tamamlamak Xamarin Android uygulamalarına ilişkin tüm Mobile Apps öğreticileri için ön koşuldur.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu öğreticiyi tamamlamak için aşağıdaki önkoşulları karşılamanız gerekir:
 
 * Etkin bir Azure hesabı. Hesabınız yoksa Azure deneme sürümü için kaydolun ve 10 ücretsiz Mobil Uygulama edinin. Ayrıntılı bilgi için bkz. [Azure Ücretsiz Deneme Sürümü](https://azure.microsoft.com/pricing/free-trial/).
@@ -38,21 +38,21 @@ Mobil Uygulama arka ucu oluşturmak için bu adımları izleyin.
 
 Artık, mobil istemci uygulamalarınız tarafından kullanılabilecek bir Azure Mobil Uygulama arka ucu sağladınız. Ardından, basit bir "Yapılacaklar listesi" arka ucu için sunucu projesi indirin ve Azure’a yayımlayın.
 
-## <a name="create-a-database-connection-and-configure-the-client-and-server-project"></a>Bir veritabanı bağlantısı oluşturma ve istemciyi ve sunucu projesini yapılandırma
+## <a name="create-a-database-connection-and-configure-the-client-and-server-project"></a>Veritabanı bağlantısı oluşturun ve istemci ve sunucu projesini yapılandırma
 [!INCLUDE [app-service-mobile-configure-new-backend.md](../../includes/app-service-mobile-configure-new-backend.md)]
 
-## <a name="run-the-xamarinandroid-app"></a>Xamarin. Android uygulamasını çalıştırma
-1. Xamarin. Android projesini açın.
+## <a name="run-the-xamarinandroid-app"></a>Xamarin.Android uygulamasını çalıştırın
+1. Xamarin.Android projesini açın.
 
-2. [Azure Portal](https://portal.azure.com/) gidin ve oluşturduğunuz mobil uygulamaya gidin. `Overview` dikey penceresinde, mobil uygulamanız için genel uç nokta olan URL 'YI arayın. Örnek-uygulamamın adı "test123" olan SiteName değeri https://test123.azurewebsites.netolacaktır.
+2. [Azure portalına](https://portal.azure.com/) gidin ve oluşturduğunuz mobil uygulamaya gidin. Bıçakta, `Overview` mobil uygulamanızın genel bitiş noktası olan URL'ye bakın. Örnek - uygulama adım "test123" için https://test123.azurewebsites.netsite adı olacaktır.
 
-3. Bu klasördeki dosya `ToDoActivity.cs` açın-Xamarin. Android/ZUMOAPPNAME/ToDoActivity. cs. Uygulama adı `ZUMOAPPNAME`.
+3. Bu klasördeki dosyayı `ToDoActivity.cs` açın - xamarin.android/ZUMOAPPNAME/ToDoActivity.cs. Uygulama `ZUMOAPPNAME`adı.
 
-4. `ToDoActivity` sınıfında, `ZUMOAPPURL` değişkenini Yukarıdaki genel uç nokta ile değiştirin.
+4. Sınıfta, `ToDoActivity` değişkeni yukarıdaki ortak bitiş noktasıyla değiştirin. `ZUMOAPPURL`
 
     `const string applicationURL = @"ZUMOAPPURL";`
 
-    geldiğinde
+    Olur
     
     `const string applicationURL = @"https://test123.azurewebsites.net";`
     

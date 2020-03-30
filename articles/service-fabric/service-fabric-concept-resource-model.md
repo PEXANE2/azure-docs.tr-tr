@@ -1,93 +1,105 @@
 ---
-title: Azure Service Fabric uygulama kaynak modeli
-description: Bu makalede, Azure Resource Manager ile Azure Service Fabric uygulamasının yönetilmesine ilişkin bir genel bakış sunulmaktadır
+title: Azure Hizmet Kumaşı uygulama kaynak modeli
+description: Bu makalede, Azure Kaynak Yöneticisi kullanarak bir Azure Hizmet Kumaşı uygulamasını yönetmeye genel bir bakış sağlanmaktadır.
 ms.topic: conceptual
 ms.date: 10/21/2019
 ms.custom: sfrev
-ms.openlocfilehash: 44073967730d95e803f57d504aa9d8c529250a8d
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 69c10b0e9d3b7c29122c8432ab1e4bc06d3a3120
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75751200"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79481125"
 ---
-# <a name="service-fabric-application-resource-model"></a>Service Fabric uygulama kaynak modeli
+# <a name="service-fabric-application-resource-model"></a>Hizmet Kumaş uygulama kaynak modeli
 
-Service Fabric uygulamaların Azure Resource Manager aracılığıyla Service Fabric kümenize dağıtılması önerilir. Bu yöntem, JSON 'daki uygulama ve Hizmetleri tanımlamaya ve bunları kümeniz ile aynı Kaynak Yöneticisi şablonunda dağıtmanıza olanak tanır. Uygulamaları PowerShell veya Azure CLı aracılığıyla dağıtmanın ve yönetmenin aksine, kümenin kullanıma başlamasını beklemeniz gerekmez. Uygulama kaydetme, hazırlama ve dağıtma işlemlerinin tümü tek bir adımda gerçekleşebilir. Bu, kümenizdeki uygulama yaşam döngüsünü yönetmek için kullanılabilecek en iyi yöntemdir. Daha fazla bilgi için bkz. [en iyi uygulamalar: kod olarak altyapı](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code#azure-service-fabric-resources).
+Hizmet Kumaşı kümenizde Azure Hizmet Kumaşı uygulamalarını dağıtmak için birden çok seçeneğiniz vardır. Azure Kaynak Yöneticisi'ni kullanmanızı öneririz. Kaynak Yöneticisi kullanıyorsanız, JSON'daki uygulamaları ve hizmetleri açıklayabilir ve bunları kümenizle aynı Kaynak Yöneticisi şablonunda dağıtabilirsiniz. Uygulamaları dağıtmak ve yönetmek için PowerShell veya Azure CLI'yi kullanmanın aksine, Kaynak Yöneticisi kullanıyorsanız kümenin hazır olmasını beklemeniz gerekmez; uygulama kaydı, sağlama ve dağıtım tek bir adımda gerçekleşebilir. Kaynak Yöneticisi'ni kullanmak, kümenizdeki uygulama yaşam döngüsünü yönetmenin en iyi yoludur. Daha fazla bilgi için [bkz: Kod olarak altyapı.](service-fabric-best-practices-infrastructure-as-code.md#azure-service-fabric-resources)
 
-Uygun olduğunda, uygulamalarınızı geliştirmek için Kaynak Yöneticisi kaynak olarak yönetin:
+Uygulamalarınızı Kaynak Yöneticisi'nde kaynak olarak yönetme, bu alanlarda iyileştirmeler elde edebilirsiniz:
 
-* Denetim izi: Kaynak Yöneticisi her işlemi denetler ve bu uygulamalarda ve kümeniz üzerinde yapılan değişiklikleri izlemenize yardımcı olabilecek ayrıntılı bir *etkinlik günlüğü* tutar.
-* Rol tabanlı erişim denetimi: kümelere erişimin yanı sıra küme üzerinde dağıtılan uygulamaların de aynı Kaynak Yöneticisi şablonu aracılığıyla yapılması yapılabilir.
-* Azure Resource Manager (Azure portal aracılığıyla), kümenizin ve kritik uygulama dağıtımlarınızın yönetilmesi için tek bir durdurulmalı bir mağaza haline gelir.
+* Denetim izi: Kaynak Yöneticisi her işlemi denetler ve ayrıntılı bir etkinlik günlüğü tutar. Etkinlik günlüğü, uygulamalarda ve kümenizde yapılan değişiklikleri izlemenize yardımcı olabilir.
+* Rol tabanlı erişim denetimi: Aynı Kaynak Yöneticisi şablonu kullanarak kümelere ve kümede dağıtılan uygulamalara erişimi yönetebilirsiniz.
+* Yönetim verimliliği: Kaynak Yöneticisi'ni kullanmak, küme ve kritik uygulama dağıtımlarınızı yönetmek için size tek bir konum (Azure portalı) sağlar.
 
-## <a name="service-fabric-application-life-cycle-with-azure-resource-manager"></a>Azure Resource Manager ile uygulama yaşam döngüsünü Service Fabric
-
-Bu belgede aşağıdakileri nasıl yapacağınızı öğreneceksiniz:
+Bu belgede, nasıl öğreneceksiniz:
 
 > [!div class="checklist"]
 >
-> * Azure Resource Manager kullanarak uygulama kaynaklarını dağıtma
-> * Azure Resource Manager kullanarak uygulama kaynaklarını yükseltme
-> * Uygulama kaynaklarını Sil
+> * Kaynak Yöneticisi'ni kullanarak uygulama kaynaklarını dağıtın.
+> * Kaynak Yöneticisi'ni kullanarak uygulama kaynaklarını yükseltin.
+> * Uygulama kaynaklarını silin.
 
-## <a name="deploy-application-resources-using-azure-resource-manager"></a>Azure Resource Manager kullanarak uygulama kaynaklarını dağıtma
+## <a name="deploy-application-resources"></a>Uygulama kaynaklarını dağıtma
 
-Azure Resource Manager uygulama kaynak modelini kullanarak bir uygulamayı ve hizmetlerini dağıtmak için, uygulama kodu paketleyip paketi yüklemeniz ve sonra bir Azure Resource Manager şablonundaki paketin konumuna uygulama olarak başvurması gerekir Kaynak. Daha fazla bilgi için, [paketi bir uygulamayı](https://docs.microsoft.com/azure/service-fabric/service-fabric-package-apps#create-an-sfpkg)görüntüleyin.
+Kaynak Yöneticisi uygulama kaynak modelini kullanarak bir uygulamayı ve hizmetlerini dağıtmak için attığınız üst düzey adımlar şunlardır:
+1. Uygulama kodunu paketle.
+1. Paketi yükleyin.
+1. Uygulama kaynağı olarak Kaynak Yöneticisi şablonundaki paketin konumuna başvurun. 
 
-Ardından, bir Azure Resource Manager şablonu oluşturun, Parameters dosyasını uygulama ayrıntıları ile güncelleştirin ve Service Fabric kümesine dağıtın. [Buradaki](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/tree/master/ARM)örneklere bakın.
+Daha fazla bilgi [için, paket bir uygulamayı](service-fabric-package-apps.md#create-an-sfpkg)görüntüleyin.
+
+Ardından, bir Kaynak Yöneticisi şablonu oluşturur, parametreler dosyasını uygulama ayrıntılarıyla güncelleştirin ve şablonu Hizmet Dokusu kümesine dağıtırsınız. [Örnekleri keşfedin.](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/tree/master/ARM)
 
 ### <a name="create-a-storage-account"></a>Depolama hesabı oluşturma
 
-Kaynak Yöneticisi şablondan uygulama dağıtmak, uygulama görüntüsünü hazırlamak için bir depolama hesabı gerektirir. Uygulamalarınızı hazırlamak için, mevcut bir depolama hesabını yeniden kullanabilir veya yeni bir depolama hesabı oluşturabilirsiniz. Mevcut bir depolama hesabını kullanmak istiyorsanız, bu adımı atlayabilirsiniz. 
+Kaynak Yöneticisi şablonundan bir uygulama dağıtmak için bir depolama hesabınız olması gerekir. Depolama hesabı uygulama görüntüsünü sahnelemek için kullanılır. 
+
+Varolan bir depolama hesabını yeniden kullanabilir veya uygulamalarınızı evrelemek için yeni bir depolama hesabı oluşturabilirsiniz. Varolan bir depolama hesabı kullanıyorsanız, bu adımı atlayabilirsiniz. 
 
 ![Depolama hesabı oluşturma][CreateStorageAccount]
 
-### <a name="configure-storage-account"></a>Depolama hesabını yapılandırma
+### <a name="configure-your-storage-account"></a>Depolama hesabınızı yapılandırma
 
-Depolama hesabı oluşturulduktan sonra, uygulamaların hazırlanbildiği bir blob kapsayıcısı oluşturmanız gerekir. Azure portal, uygulamalarınızı depolamak istediğiniz depolama hesabına gidin. **Bloblar** dikey penceresini seçin ve **kapsayıcı Ekle** düğmesine tıklayın. Kümenizin içindeki kaynaklara genel erişim düzeyi özel olarak ayarlanarak güvenli hale getirebilirsiniz. Erişim, birkaç yolla verilebilir:
+Depolama hesabı oluşturulduktan sonra, uygulamaların sahnelenebildiği bir blob kapsayıcısı oluşturursunuz. Azure portalında, uygulamalarınızı depolamak istediğiniz Azure Depolama hesabına gidin. **Blobs** > **Ekle Kapsayıcı'yı**seçin. 
 
-* [Azure Active Directory ile bloblara ve kuyruklara erişim yetkisi verme](../storage/common/storage-auth-aad-app.md)
-* [Azure portalında RBAC ile Azure blob ve kuyruk verilerine erişim izni verme](../storage/common/storage-auth-aad-rbac-portal.md)
-* [Paylaşılan erişim imzasıyla (SAS) erişim yetkisi verme](https://docs.microsoft.com/rest/api/storageservices/delegate-access-with-shared-access-signature
-)
+Kümenizdeki kaynaklar, genel erişim düzeyini **özel**olarak ayarlayarak güvence altına alınabilir. Birden çok şekilde erişim izni verebilirsiniz:
 
- Bu örnekte, Bloblar için anonim okuma erişimi kullanmaya devam edeceğiz.
+* Azure Etkin Dizini'ni kullanarak blob'lara ve kuyruklara erişimi [yetkilendirmeyin.](../storage/common/storage-auth-aad-app.md)
+* [Azure portalında RBAC'ı](../storage/common/storage-auth-aad-rbac-portal.md)kullanarak Azure blob ve kuyruk verilerine erişim izni verin.
+* Paylaşılan bir [erişim imzasını](https://docs.microsoft.com/rest/api/storageservices/delegate-access-with-shared-access-signature)kullanarak temsilci erişimi.
 
-![Blob oluştur][CreateBlob]
+Aşağıdaki ekran görüntüsündeki örnekte, lekeler için anonim okuma erişimi kullanır.
 
-### <a name="stage-application-in-a-storage-account"></a>Uygulamayı bir depolama hesabında aşamalandırın
+![Leke oluşturma][CreateBlob]
 
-Uygulama dağıtılmadan önce, blob depolamada hazırlanmalıdır. Bu öğreticide uygulama paketini el ile oluşturacağız, ancak bu adım otomatik hale getirilebilir.  Daha fazla bilgi için, [paketi bir uygulamayı](https://docs.microsoft.com/azure/service-fabric/service-fabric-package-apps#create-an-sfpkg)görüntüleyin. Aşağıdaki adımlarda, [Oylama örnek uygulaması](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart) kullanılacaktır.
+### <a name="stage-the-application-in-your-storage-account"></a>Uygulamayı depolama hesabınızda aşamalı olarak düzenleme
 
-1. Visual Studio 'da oylama projesine sağ tıklayın ve paket ' i seçin.
-![paket uygulaması][PackageApplication]  
-2. Yeni oluşturduğunuz **.\Service-Fabric-DotNet-quickstart\Voting\pkg\Debug** dizinini açın ve içeriği,, ApplicationManifest. xml dosyası ZIP dosyasının kökünde olacak şekilde **Oylama. zip** adlı bir dosyaya ekleyin.  
-![ZIP uygulaması][ZipApplication]  
-3. Dosyanın uzantısını. zip konumundan **. sfpkg**olarak yeniden adlandırın.
-4. Azure portal, depolama hesabınızın **uygulamalar** kapsayıcısında, **karşıya yükle** ' ye tıklayın ve **Oylama. sfpkg**' ı karşıya yükleyin.  
-![uygulama paketini karşıya yükle][UploadAppPkg]
+Bir uygulamayı dağıtmadan önce, uygulamayı blob depolama alanında aşamalı olarak düzenlemeniz gerekir. Bu eğitimde, uygulama paketini el ile oluştururuz. Bu adımın otomatikleştirileebileceğini unutmayın. Daha fazla bilgi için [bir uygulamayı Paketle'ye](service-fabric-package-apps.md#create-an-sfpkg)bakın. 
 
-Uygulama artık hazırlandı. Şimdi uygulamayı dağıtmak için Azure Resource Manager şablonu oluşturmaya hazırsınız.
+Bu öğreticide, [Oylama örnek uygulamasını](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart)kullanıyoruz.
 
-### <a name="create-the-azure-resource-manager-template"></a>Azure Resource Manager şablonu oluşturma
+1. Visual Studio'da **Oylama** projesine sağ tıklayın ve ardından **Paket'i**seçin.
 
-Örnek uygulama, uygulamayı dağıtmak için kullanılabilecek [Azure Resource Manager şablonlar](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/tree/master/ARM) içerir. Şablon dosyaları **userapp. JSON** ve **Userapp. Parameters. JSON**olarak adlandırılır.
+   ![Paket Uygulaması][PackageApplication]  
+1. *.\service-fabric-dotnet-quickstart\Voting\pkg\Hata ayıklama* dizinine gidin. İçeriği *Oylama.zip*adlı bir dosyaya gönderin. *ApplicationManifest.xml* dosyası zip dosyasının kökünde olmalıdır.
+
+   ![Zip Uygulaması][ZipApplication]  
+1. Uzantısı .zip'ten *.sfpkg'a*değiştirmek için dosyayı yeniden adlandırın.
+
+1. Azure portalında, depolama hesabınıziçin **uygulama** konteynerinde **Yükle'yi**seçin ve ardından **Voting.sfpkg'yi yükleyin.** 
+
+   ![Uygulama Paketi Yükle][UploadAppPkg]
+
+Şimdi, uygulama şimdi aşamalı ve uygulamayı dağıtmak için Kaynak Yöneticisi şablonu oluşturabilirsiniz.
+
+### <a name="create-the-resource-manager-template"></a>Resource Manager şablonu oluşturma
+
+Örnek uygulama, uygulamayı dağıtmak için kullanabileceğiniz [Azure Kaynak Yöneticisi şablonlarını](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/tree/master/ARM) içerir. Şablon dosya adları *UserApp.json* ve *UserApp.Parameters.json' dur.*
 
 > [!NOTE]
-> **Userapp. Parameters. JSON** dosyası kümenizin adıyla birlikte güncelleştirilmeleri gerekir.
+> *UserApp.Parameters.json* dosyası kümenizin adı ile güncelleştirilmelidir.
 >
 >
 
 | Parametre              | Açıklama                                 | Örnek                                                      | Yorumlar                                                     |
 | ---------------------- | ------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| clusterName            | Dağıtım yaptığınız kümenin adı | SF-cluster123                                                |                                                              |
-| uygulama            | Uygulamanın adı                 | Lerinizi                                                       |
-| applicationTypeName    | Uygulamanın tür adı           | VotingType                                                   | ApplicationManifest. xml ' deki yeniliklere uymalıdır                 |
-| applicationTypeVersion | Uygulama türü sürümü         | 1.0.0                                                        | ApplicationManifest. xml ' deki yeniliklere uymalıdır                 |
-| HizmetAdı            | Hizmetin hizmetin adı         | Oylama ~ VotingWeb                                             | ApplicationName ~ ServiceType biçiminde olmalıdır            |
-| serviceTypeName        | Hizmetin tür adı                | VotingWeb                                                    | ServiceManifest. xml dosyasındaki yeniliklere uymalıdır                 |
-| appPackageUrl 'Si          | Uygulamanın BLOB depolama URL 'SI     | https://servicefabricapps.blob.core.windows.net/apps/Voting.sfpkg | Blob depolamada uygulama paketinin URL 'SI (Bu ayarı ayarlama yordamı aşağıda açıklanmıştır) |
+| clusterName            | Dağıtmak üzere dağıttığınız kümenin adı | sf-küme123                                                |                                                              |
+| uygulama            | Uygulamanın adı                 | Oylama                                                       |
+| uygulamaTypeName    | Uygulamanın türü adı           | Oylama Türü                                                   | ApplicationManifest.xml ile eşleşmeli                 |
+| uygulamaTypeVersion | Uygulama türünün sürümü         | 1.0.0                                                        | ApplicationManifest.xml ile eşleşmeli                 |
+| Hizmetadı            | Hizmetin adı         | Oylama ~VotingWeb                                             | ApplicationName~ServiceType biçiminde olmalıdır            |
+| serviceTypeName        | Hizmetin türü adı                | VotingWeb                                                    | ServiceManifest.xml ile eşleşmeli                 |
+| appPackageUrl          | Uygulamanın blob depolama URL'si     | https://servicefabricapps.blob.core.windows.net/apps/Voting.sfpkg | Blob depolamasında uygulama paketinin URL'si (URL'yi ayarlama yordamı daha sonra makalede açıklanmıştır) |
 
 ```json
 {
@@ -118,17 +130,17 @@ Uygulama artık hazırlandı. Şimdi uygulamayı dağıtmak için Azure Resource
 
 ### <a name="deploy-the-application"></a>Uygulamayı dağıtma
 
-Uygulamayı dağıtmak için, kümenizi içeren kaynak grubuna dağıtmak üzere New-AzResourceGroupDeployment komutunu çalıştırın.
+Uygulamayı kümenizi içeren kaynak grubuna dağıtmak için **Yeni Kaynak GrubuDağıtım** cmdlet'ini çalıştırın:
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName "sf-cluster-rg" -TemplateParameterFile ".\UserApp.Parameters.json" -TemplateFile ".\UserApp.json" -Verbose
 ```
 
-## <a name="upgrade-service-fabric-application-using-azure-resource-manager"></a>Azure Resource Manager kullanarak Service Fabric uygulamayı yükseltme
+## <a name="upgrade-the-service-fabric-application-by-using-resource-manager"></a>Kaynak Yöneticisi'ni kullanarak Hizmet Kumaşı uygulamasını yükseltme
 
-Bir Service Fabric kümesine zaten dağıtılan uygulamalar aşağıdaki nedenlerden dolayı yükseltilecektir:
+Hizmet Kumaşı kümesine zaten dağıtılan bir uygulamayı şu nedenlerden biriyle yükseltebilirsiniz:
 
-1. Uygulamaya yeni bir hizmet eklenir. Service-manifest. xml ve Application-manifest. xml dosyasına bir hizmet tanımı eklenmelidir. Daha sonra uygulamanın yeni sürümünü yansıtmak için, uygulama türü sürümünü 1.0.0 ' dan 1.0.1 [Userapp. Parameters. JSON](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/blob/master/ARM/UserApp.Parameters.json)olarak güncelleştirmeniz gerekir.
+* Uygulamaya yeni bir hizmet eklenir. Bir hizmet uygulamaya eklendiğinde *service-manifest.xml* ve *application-manifest.xml* dosyalarına bir hizmet tanımı eklenmelidir. Bir uygulamanın yeni bir sürümünü yansıtmak için [UserApp.Parameters.json'da](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/blob/master/ARM/UserApp.Parameters.json)uygulama türü sürümünü 1.0.0'dan 1.0.1'e değiştirmeniz gerekir:
 
     ```json
     "applicationTypeVersion": {
@@ -142,7 +154,7 @@ Bir Service Fabric kümesine zaten dağıtılan uygulamalar aşağıdaki nedenle
     }
     ```
 
-2. Uygulamaya mevcut bir hizmetin yeni bir sürümü eklenir. Bu, uygulama kodu değişikliklerini ve uygulama türü sürümüne ve adına yapılan güncelleştirmeleri içerir.
+* Varolan bir hizmetin yeni bir sürümü uygulamaya eklenir. Örnekler uygulama kodu değişiklikleri ve uygulama türü sürümü ve adı güncellemeleri içerir. Bu yükseltme için UserApp.Parameters.json'u şu şekilde güncelleyin:
 
     ```json
      "applicationTypeVersion": {
@@ -150,17 +162,17 @@ Bir Service Fabric kümesine zaten dağıtılan uygulamalar aşağıdaki nedenle
     },
     ```
 
-## <a name="delete-application-resources"></a>Uygulama kaynaklarını Sil
+## <a name="delete-application-resources"></a>Uygulama kaynaklarını silme
 
-Azure Resource Manager içinde uygulama kaynak modeli kullanılarak dağıtılan uygulamalar, aşağıdaki adımlar kullanılarak kümeden silinebilir
+Kaynak Yöneticisi'nde uygulama kaynak modelini kullanarak dağıtılan bir uygulamayı silmek için:
 
-1) [Get-AzResource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource?view=azps-2.5.0)kullanarak uygulama IÇIN kaynak kimliği al:
+1. Uygulama için kaynak kimliğini almak için [Get-AzResource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource?view=azps-2.5.0) cmdlet'ini kullanın:
 
     ```powershell
     Get-AzResource  -Name <String> | f1
     ```
 
-2) [Remove-AzResource](https://docs.microsoft.com/powershell/module/az.resources/remove-azresource?view=azps-2.5.0)kullanarak uygulama kaynaklarını silme:
+1. Uygulama kaynaklarını silmek için [Remove-AzResource](https://docs.microsoft.com/powershell/module/az.resources/remove-azresource?view=azps-2.5.0) cmdlet'ini kullanın:
 
     ```powershell
     Remove-AzResource  -ResourceId <String> [-Force] [-ApiVersion <String>]
@@ -170,13 +182,11 @@ Azure Resource Manager içinde uygulama kaynak modeli kullanılarak dağıtılan
 
 Uygulama kaynak modeli hakkında bilgi alın:
 
-* [Service Fabric bir uygulama modelleme](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-model)
-* [Uygulama ve hizmet bildirimlerini Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-and-service-manifests)
+* [Hizmet Kumaşı'nda bir uygulama modeli](service-fabric-application-model.md)
+* [Hizmet Kumaş uygulama ve hizmet bildirimleri](service-fabric-application-and-service-manifests.md)
+* [En iyi uygulamalar: Kod olarak altyapı](service-fabric-best-practices-infrastructure-as-code.md#azure-service-fabric-resources)
+* [Uygulamaları ve hizmetleri Azure kaynakları olarak yönetme](service-fabric-best-practices-infrastructure-as-code.md)
 
-## <a name="see-also"></a>Ayrıca Bkz.
-
-* [En iyi uygulamalar](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code)
-* [Uygulamaları ve Hizmetleri Azure kaynakları olarak yönetme](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code)
 
 <!--Image references-->
 [CreateStorageAccount]: ./media/service-fabric-application-model/create-storage-account.png

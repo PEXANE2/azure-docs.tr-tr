@@ -1,6 +1,6 @@
 ---
-title: Temel genel 'ten standart Genel Azure Load Balancer yükseltin
-description: Bu makalede, Azure temel Iç Load Balancer standart genel Load Balancer sürümüne nasıl yükselteceğiniz gösterilmektedir
+title: Temel Genel'den Standart Genele yükseltme - Azure Yük Dengeleyicisi
+description: Bu makalede, Azure Temel İç Yük Dengeleyicisini Standart Genel Yük Dengeleyicisine nasıl yükseltilen gösterilmektedir
 services: load-balancer
 author: irenehua
 ms.service: load-balancer
@@ -8,78 +8,78 @@ ms.topic: article
 ms.date: 01/23/2020
 ms.author: irenehua
 ms.openlocfilehash: 346fc3d5a4e7b165caafd9847b9797abae0c9113
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77659994"
 ---
-# <a name="upgrade-azure-internal-load-balancer---outbound-connection-required"></a>Azure Iç Load Balancer yükseltme-giden bağlantı gerekli
-[Azure Standart Load Balancer](load-balancer-overview.md) , bölge artıklığı aracılığıyla zengin bir işlev kümesi ve yüksek kullanılabilirlik sağlar. Load Balancer SKU 'SU hakkında daha fazla bilgi için bkz. [karşılaştırma tablosu](https://docs.microsoft.com/azure/load-balancer/concepts-limitations#skus). Standart dahili Load Balancer giden bağlantı sağlamadığından, bunun yerine standart bir genel Load Balancer oluşturmak için bir çözüm sağlıyoruz.
+# <a name="upgrade-azure-internal-load-balancer---outbound-connection-required"></a>Azure Dahili Yük Dengeleyicisi Yükseltme - Giden Bağlantı Gerekli
+[Azure Standart Yük Dengeleyici,](load-balancer-overview.md) bölge artıklığı sayesinde zengin bir işlevsellik kümesi ve yüksek kullanılabilirlik sunar. Yük Dengeleyici SKU hakkında daha fazla bilgi edinmek için [karşılaştırma tablosuna](https://docs.microsoft.com/azure/load-balancer/concepts-limitations#skus)bakın. Standart Dahili Yük Dengeleyici giden bağlantı sağlamadığından, bunun yerine bir Standart Genel Yük Dengeleyicisi oluşturmak için bir çözüm sağlarız.
 
 Yükseltmenin dört aşaması vardır:
 
-1. Yapılandırmayı standart genel Load Balancer geçirme
-2. Standart genel Load Balancer arka uç havuzlara VM ekleme
-3. Giden bağlantı için Load Balancer giden bir kural oluşturma
-4. Internet 'ten/veya Internet 'e ayarlanması gereken alt ağ/VM 'Ler için NSG kuralları ayarlama
+1. Yapılandırmayı Standart Genel Yük Dengeleyicisine geçirin
+2. Standart Genel Yük Dengeleyicisinin arka uç havuzlarına VM ekleme
+3. Giden bağlantı için Yük Dengeleyicisi'nde giden kural oluşturma
+4. Internet'ten/Internet'e karşı kaçınılması gereken Subnet/VM'ler için NSG kurallarını ayarlama
 
-Bu makalede yapılandırma geçişi ele alınmaktadır. Arka uç havuzlara sanal makine eklemek, belirli ortamınıza bağlı olarak değişebilir. Ancak, bazı üst düzey genel öneriler [sağlanır](#add-vms-to-backend-pools-of-standard-load-balancer).
+Bu makalede, yapılandırma geçişi kapsar. Arka uç havuzlarına VM eklemek, özel ortamınıza bağlı olarak değişebilir. Ancak, bazı üst düzey, genel öneriler [sağlanır.](#add-vms-to-backend-pools-of-standard-load-balancer)
 
 ## <a name="upgrade-overview"></a>Yükseltmeye genel bakış
 
-Aşağıdakileri gerçekleştiren bir Azure PowerShell betiği vardır:
+Aşağıdakileri yapan bir Azure PowerShell komut dosyası kullanılabilir:
 
-* Kaynak grubunda ve belirttiğiniz konumda standart bir SKU ortak Load Balancer oluşturur.
-* Temel SKU Iç Load Balancer yapılandırmalarının yeni oluşturma standart ortak Load Balancer sorunsuz şekilde kopyasını oluşturur.
+* Kaynak grubunda ve belirttiğiniz konumda bir Standart SKU Genel Yük Dengeleyicisi oluşturur.
+* Temel SKU Dahili Yük Dengeleyicisi yapılandırmalarını yeni oluşturulan Standart Genel Yük Dengeleyicisine sorunsuz bir şekilde kopyalar.
 
-### <a name="caveatslimitations"></a>Caveats\Limitations
+### <a name="caveatslimitations"></a>Uyarılar\Sınırlamalar
 
-* Betik, giden bağlantının gerekli olduğu dahili Load Balancer yükseltmesini destekler. Tüm VM 'Ler için giden bağlantı gerekli değilse, en iyi yöntem için [Bu sayfaya](upgrade-basicInternal-standard.md) bakın.
-* Standart Load Balancer yeni bir ortak adrese sahiptir. Farklı SKU 'Lara sahip olduklarından, mevcut temel dahili Load Balancer ilişkili IP adreslerini standart ortak Load Balancer sorunsuzca taşımak olanaksızdır.
-* Standart yük dengeleyici farklı bir bölgede oluşturulduysa, eski bölgede var olan VM 'Leri yeni oluşturulan Standart Load Balancer ilişkilendiremeyeceksiniz. Bu kısıtlamayı geçici olarak çözmek için yeni bölgede yeni bir VM oluşturun.
-* Load Balancer herhangi bir ön uç IP yapılandırması veya arka uç havuzu yoksa, betiği çalıştırırken bir hatayla karşılaşamayacaksınız.  Bunların boş olmadığından emin olun.
+* Komut dosyası, giden bağlantının gerekli olduğu durumlarda Dahili Yük Dengeleyici yükseltmesi destekler. VM'lerden herhangi biri için giden bağlantı gerekli değilse, en iyi uygulama için [bu sayfaya](upgrade-basicInternal-standard.md) bakın.
+* Standart Yük Dengeleyici'nin yeni bir genel adresi vardır. Farklı SNU'lara sahip oldukları için, mevcut Temel İç Yük Dengeleyicisi ile ilişkili IP adreslerini sorunsuz bir şekilde Standart Genel Yük Dengeleyicisine taşımak mümkün değildir.
+* Standart yük dengeleyicisi farklı bir bölgede oluşturulursa, eski bölgede bulunan VM'leri yeni oluşturulan Standart Yük Dengeleyicisi ile ilişkilendiremezsinuz. Bu sınırlamayı aşmak için yeni bölgede yeni bir VM oluşturduğunuzdan emin olun.
+* Yük Dengeleyicinizde ön uç IP yapılandırması veya arka uç havuzu yoksa, komut dosyasını çalıştıran bir hataya çarpma olasılığınız yüksektir.  Boş olmadıklarından emin olun.
 
-## <a name="download-the-script"></a>Betiği indir
+## <a name="download-the-script"></a>Komut dosyasını indirin
 
-[PowerShell Galerisi](https://www.powershellgallery.com/packages/AzurePublicLBUpgrade/1.0)geçiş betiğini indirin.
-## <a name="use-the-script"></a>Betiği kullan
+[PowerShell Galerisi'nden](https://www.powershellgallery.com/packages/AzurePublicLBUpgrade/1.0)geçiş komut dosyasını indirin.
+## <a name="use-the-script"></a>Komut dosyasını kullanma
 
-Yerel PowerShell ortamınız kuruluma ve tercihlerinize bağlı olarak sizin için iki seçenek vardır:
+Yerel PowerShell ortamı kurulumunuza ve tercihlerinize bağlı olarak sizin için iki seçenek vardır:
 
-* Azure az modüller yüklü değilse veya Azure az modüllerini kaldırmayı bilmiyorsanız en iyi seçenek, komut dosyasını çalıştırmak için `Install-Script` seçeneğini kullanmaktır.
-* Azure az modules tutmanız gerekiyorsa, en iyi sonuç, betiği indirmek ve doğrudan çalıştırmak olacaktır.
+* Azure Az modülleri yüklü değilse veya Azure Az modüllerini kaldırmakta sakınca görmüyorsanız, en iyi seçenek `Install-Script` komut dosyasını çalıştırma seçeneğini kullanmaktır.
+* Azure Az modüllerini saklamanız gerekiyorsa, en iyi seçenek komut dosyasını indirip doğrudan çalıştırmaktır.
 
-Azure az modules yüklü olup olmadığınızı öğrenmek için `Get-InstalledModule -Name az`çalıştırın. Yüklü az modül görmüyorsanız, `Install-Script` yöntemini kullanabilirsiniz.
+Azure Az modüllerinin yüklü olup olmadığını belirlemek `Get-InstalledModule -Name az`için çalıştırın. Yüklü Az modülleri görmüyorsanız, `Install-Script` yöntemi kullanabilirsiniz.
 
-### <a name="install-using-the-install-script-method"></a>Install-Script metodunu kullanarak install
+### <a name="install-using-the-install-script-method"></a>Install-Script yöntemini kullanarak yükleme
 
-Bu seçeneği kullanmak için, bilgisayarınızda Azure az modules yüklü olmamalıdır. Yüklüyse, aşağıdaki komut bir hata görüntüler. Azure az modüller ' i kaldırabilir veya betiği el ile indirmek ve çalıştırmak için diğer seçeneği kullanabilirsiniz.
+Bu seçeneği kullanmak için bilgisayarınızda Azure Az modüllerinin yüklü olmaması gerekir. Yüklüyse, aşağıdaki komut bir hata görüntüler. Azure Az modüllerini kaldırabilir veya komut dosyasını el ile indirip çalıştırmak için diğer seçeneği kullanabilirsiniz.
   
-Betiği aşağıdaki komutla çalıştırın:
+Komut dosyasını aşağıdaki komutla çalıştırın:
 
 `Install-Script -Name AzurePublicLBUpgrade`
 
-Bu komut ayrıca gerekli az modülleri de yüklüyor.  
+Bu komut aynı zamanda gerekli Az modüllerini de yükler.  
 
-### <a name="install-using-the-script-directly"></a>Betiği kullanarak doğrudan yüklemeyi
+### <a name="install-using-the-script-directly"></a>Komut dosyasını kullanarak doğrudan yükleme
 
-Bazı Azure az modülleriniz varsa ve bunları kaldıramıyorsanız (veya kaldırmak istemiyorsanız), betik indirme bağlantısındaki **El Ile indir** sekmesini kullanarak betiği el ile indirebilirsiniz. Betik, ham nupkg dosyası olarak indirilir. Betiği bu nupkg dosyasından yüklemek için bkz. [El Ile paket indirme](/powershell/scripting/gallery/how-to/working-with-packages/manual-download).
+Bazı Azure Az modülleriniz yüklüyse ve bunları kaldıramıyorsanız (veya kaldırmak istemiyorsanız), komut dosyası indirme bağlantısındaki **Manuel İndir** sekmesini kullanarak komut dosyasını el ile indirebilirsiniz. Komut dosyası ham nupkg dosyası olarak indirilir. Bu nupkg dosyasından komut dosyasını yüklemek için Bkz. [Manuel Paket İndir.](/powershell/scripting/gallery/how-to/working-with-packages/manual-download)
 
 Betiği çalıştırmak için:
 
-1. Azure 'a bağlanmak için `Connect-AzAccount` kullanın.
+1. Azure'a bağlanmak için kullanın. `Connect-AzAccount`
 
-1. Az modülleri içeri aktarmak için `Import-Module Az` kullanın.
+1. Az `Import-Module Az` modüllerini almak için kullanın.
 
 1. Gerekli parametreleri inceleyin:
 
-   * **Oldrgname: [dize]: gereklidir** – bu, yükseltmek Istediğiniz mevcut temel Load Balancer kaynak grubudur. Bu dize değerini bulmak için Azure portal gidin, temel Load Balancer kaynağınızı seçin ve yük dengeleyiciye **Genel Bakış ' a** tıklayın. Kaynak grubu bu sayfada bulunur.
-   * **Oldlbname: [dize]: gerekli** – bu, yükseltmek Istediğiniz mevcut temel dengeleyicinizin adıdır. 
-   * **Newrgname: [dize]: gereklidir** – bu, standart Load Balancer oluşturulacağı kaynak grubudur. Yeni bir kaynak grubu veya var olan bir grup olabilir. Var olan bir kaynak grubunu seçerseniz, Load Balancer adının kaynak grubu içinde benzersiz olması gerektiğini unutmayın. 
-   * **newLocation: [dize]: gerekli** – standart Load Balancer oluşturulacağı konumdur. Diğer mevcut kaynaklarla daha iyi ilişki sağlamak için seçili temel Load Balancer aynı konumunun Standart Load Balancer devralınmasını öneririz.
-   * **Newlbname: [dize]: gerekli** – bu, oluşturulacak standart Load Balancer adıdır.
-1. Uygun parametreleri kullanarak betiği çalıştırın. Tamamlanması beş ila yedi dakika sürebilir.
+   * **oldRgName: [String]: Gerekli** – Bu yükseltmek istediğiniz mevcut Temel Yük Dengeleyici için kaynak grubudur. Bu dize değerini bulmak için Azure portalına gidin, Temel Yük Bakiyesi kaynağınızı seçin ve yük bakiyesi için **Genel Bakış'ı** tıklatın. Kaynak Grubu bu sayfada yer alır.
+   * **oldLBName: [String]: Gerekli** – Bu yükseltmek istediğiniz mevcut Basic Balancer adıdır. 
+   * **newrgName: [String]: Gerekli** – Bu, Standart Yük Dengeleyicisinin oluşturulacağı kaynak grubudur. Yeni bir kaynak grubu veya varolan bir grup olabilir. Varolan bir kaynak grubu seçerseniz, Yük Dengeleyicisi adının kaynak grubunda benzersiz olması gerektiğini unutmayın. 
+   * **newlocation: [String]: Gerekli** – Bu, Standart Yük Dengeleyicisinin oluşturulacağı yerdir. Diğer mevcut kaynaklarla daha iyi ilişkilendirmek için seçilen Temel Yük Dengeleyicisinin aynı konumunu Standart Yük Dengeleyicisine devralmanızı öneririz.
+   * **newLBName: [String]: Gerekli** – Bu oluşturulacak Standart Yük Dengeleyicisi'nin adıdır.
+1. Uygun parametreleri kullanarak komut dosyasını çalıştırın. Bitirmesi beş ila yedi dakika sürebilir.
 
     **Örnek**
 
@@ -87,53 +87,53 @@ Betiği çalıştırmak için:
    AzurePublicLBUpgrade.ps1 -oldRgName "test_publicUpgrade_rg" -oldLBName "LBForPublic" -newrgName "test_userInput3_rg" -newlocation "centralus" -newLbName "LBForUpgrade"
    ```
 
-### <a name="add-vms-to-backend-pools-of-standard-load-balancer"></a>Standart Load Balancer arka uç havuzlarına VM ekleme
+### <a name="add-vms-to-backend-pools-of-standard-load-balancer"></a>Standart Yük Dengeleyicisinin arka uç havuzlarına VM ekleme
 
-İlk olarak, betiğin, temel ortak Load Balancer üzerinden geçirilmiş doğru yapılandırmayla yeni bir standart ortak Load Balancer başarıyla oluşturduğunu kontrol edin. Bunu Azure portal doğrulayabilirsiniz.
+İlk olarak, komut dosyasının Temel Genel Yük Dengeleyicinizden tam yapılandırmaile birlikte yeni bir Standart Genel Yük Dengeleyicisi'ni başarıyla oluşturacağından çift kontrol edin. Bunu Azure portalından doğrulayabilirsiniz.
 
-El ile test olarak Standart Load Balancer aracılığıyla az miktarda trafik gönderdiğinizden emin olun.
+El ile test olarak Standart Yük Dengeleyicisi aracılığıyla az miktarda trafik gönderdiğinden emin olun.
   
-Aşağıda, yeni oluşturulan Standart genel Load Balancer için arka uç havuzlarına sanal makineler eklemenin ve her biri için önerdiğimiz bazı senaryolar verilmiştir:
+Yeni oluşturulan Standart Genel Yük Dengeleyicisinin arka uç havuzlarına VM'leri nasıl eklediğinize ilişkin birkaç senaryo ve her biri için önerilerimiz aşağıda verilmiştir:
 
-* **Mevcut VM 'leri eski temel genel Load Balancer arka uç havuzlarından yeni oluşturulan standart ortak Load Balancer arka uç havuzlarından taşıma**.
-    1. Bu hızlı başlangıçta görevleri yapmak için [Azure Portal](https://portal.azure.com)oturum açın.
+* **Mevcut VM'leri eski Temel Genel Yük Dengeleyicisinin arka uç havuzlarından yeni oluşturulan Standart Genel Yük Dengeleyicisinin arka uç havuzlarına taşıma.**
+    1. Bu hızlı başlangıçta görevleri yapmak için [Azure portalında](https://portal.azure.com)oturum açın.
  
-    1. Sol taraftaki menüden **tüm kaynaklar** ' ı seçin ve ardından kaynak listesinden **Yeni oluşturulan standart Load Balancer** seçin.
+    1. Sol menüdeki **Tüm kaynakları** seçin ve ardından kaynak listesinden yeni oluşturulan Standart **Yük Dengeleyicisini** seçin.
    
     1. **Ayarlar**’ın altında **Arka Uç Havuzları**’nı seçin.
    
-    1. Temel Load Balancer arka uç havuzuyla eşleşen arka uç havuzunu seçin, aşağıdaki değeri seçin: 
-      - **Sanal makine**: açılır ve temel Load Balancer eşleşen arka uç havuzundan VM 'leri seçin.
-    1. **Kaydet**’i seçin.
+    1. Temel Yük Dengeleyicisi'nin arka uç havuzuyla eşleşen arka uç havuzunu seçin ve aşağıdaki değeri seçin: 
+      - **Sanal Makine**: Temel Yük Dengeleyicisi'nin eşleşen arka uç havuzundan VM'leri aşağı indirin ve seçin.
+    1. **Kaydet'i**seçin.
     >[!NOTE]
-    >Ortak IP 'leri olan VM 'Ler için, ilk olarak aynı IP adresinin garantili olmadığı standart IP adresleri oluşturmanız gerekecektir. VM 'Lerin temel IP 'lerden ilişkisini kaldırın ve yeni oluşturulan standart IP adresleriyle ilişkilendirin. Ardından, Standart Load Balancer arka uç havuzuna VM 'Ler eklemek için yönergeleri takip edebilirsiniz. 
+    >Genel IP'leri olan VM'ler için, önce aynı IP adresinin garanti edilemediğinizde Standart IP adresleri oluşturmanız gerekir. VM'leri Temel IP'lerden ayırın ve bunları yeni oluşturulan Standart IP adresleriyle ilişkilendirin. Daha sonra, Standart Yük Dengeleyici'nin arka uç havuzuna VM eklemek için yönergeleri izleyebilirsiniz. 
 
-* **Yeni oluşturulan Standart genel Load Balancer arka uç havuzlarına eklemek için yeni VM 'Ler oluşturma**.
-    * VM oluşturma ve Standart Load Balancer ile ilişkilendirme hakkında daha fazla yönerge [burada](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal#create-virtual-machines)bulunabilir.
+* **Yeni oluşturulan Standart Genel Yük Dengeleyicisinin arka uç havuzlarına eklemek için yeni VM'ler oluşturma.**
+    * VM oluşturmak ve Standart Yük Dengeleyici ile ilişkilendirmek için nasıl daha fazla talimat [burada](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal#create-virtual-machines)bulunabilir.
 
-### <a name="create-an-outbound-rule-for-outbound-connection"></a>Giden bağlantı için giden bir kural oluşturma
+### <a name="create-an-outbound-rule-for-outbound-connection"></a>Giden bağlantı için giden kural oluşturma
 
-Bir giden kuralı oluşturmak için [yönergeleri](https://docs.microsoft.com/azure/load-balancer/configure-load-balancer-outbound-portal#create-outbound-rule-configuration) izleyin, böylece
-* Giden NAT 'yi sıfırdan tanımlayın.
-* Varolan giden NAT 'nin davranışını ölçeklendirin ve ayarlayın.
+Giden bir kural oluşturmak için [yönergeleri](https://docs.microsoft.com/azure/load-balancer/configure-load-balancer-outbound-portal#create-outbound-rule-configuration) izleyin, böylece
+* Giden NAT'yi sıfırdan tanımlayın.
+* Varolan giden NAT'nin davranışını ölçeklendirin ve ayarlayın.
 
-### <a name="create-nsg-rules-for-vms-which-to-refrain-communication-from-or-to-the-internet"></a>Internet 'ten veya internetten gelen iletişimi belirten sanal makineler için NSG kuralları oluşturma
-Internet trafiğinin sanal makinelerinize ulaşmasını istiyorsanız, VM 'lerin ağ arabiriminde bir [NSG kuralı](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group) oluşturabilirsiniz.
+### <a name="create-nsg-rules-for-vms-which-to-refrain-communication-from-or-to-the-internet"></a>Internet'ten veya Internet'e iletişimden kaçınmak için VM'ler için NSG kuralları oluşturma
+Internet trafiğinin VM'lerinize ulaşmasını engellemek istiyorsanız, VM'lerin Ağ Arabirimi'nde bir [NSG kuralı](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group) oluşturabilirsiniz.
 
 ## <a name="common-questions"></a>Sık sorulan sorular
 
-### <a name="are-there-any-limitations-with-the-azure-powershell-script-to-migrate-the-configuration-from-v1-to-v2"></a>Yapılandırmayı v1 'den v2 'ye geçirmek için Azure PowerShell betiğiyle ilgili herhangi bir sınırlama var mı?
+### <a name="are-there-any-limitations-with-the-azure-powershell-script-to-migrate-the-configuration-from-v1-to-v2"></a>Azure PowerShell komut dosyasında yapılandırmayı v1'den v2'ye geçirmek için herhangi bir sınırlama var mı?
 
-Evet. Bkz. [Uyarılar/sınırlamalar](#caveatslimitations).
+Evet. Bkz. [Uyarılar/Sınırlamalar.](#caveatslimitations)
 
-### <a name="does-the-azure-powershell-script-also-switch-over-the-traffic-from-my-basic-load-balancer-to-the-newly-created-standard-load-balancer"></a>Azure PowerShell betiği, temel Load Balancer trafik üzerinde yeni oluşturulan Standart Load Balancer da geçiş yapar mi?
+### <a name="does-the-azure-powershell-script-also-switch-over-the-traffic-from-my-basic-load-balancer-to-the-newly-created-standard-load-balancer"></a>Azure PowerShell komut dosyası, temel yük bakiyemden yeni oluşturulan Standart Yük Dengeleyicisi'ne de trafik geçişyapar mı?
 
-Hayır. Azure PowerShell betiği yalnızca yapılandırmayı geçirir. Gerçek trafik geçişi, sizin ve denetiminizin sorumluluğundadır.
+Hayır. Azure PowerShell komut dosyası yalnızca yapılandırmayı geçirtir. Gerçek trafik geçişi sizin sorumluluğunuzda dır ve sizin kontrolünüzdedir.
 
-### <a name="i-ran-into-some-issues-with-using-this-script-how-can-i-get-help"></a>Bu betiği kullanmayla ilgili bazı sorunlarla karşılaştım. Nasıl yardım alabilirim?
+### <a name="i-ran-into-some-issues-with-using-this-script-how-can-i-get-help"></a>Ben bu komut dosyası kullanarak bazı sorunlar la karşılaştı. Nasıl yardım alabilirim?
   
-slbupgradesupport@microsoft.combir e-posta gönderebilir, Azure desteğiyle bir destek talebi açabilir veya her ikisini de yapabilirsiniz.
+Azure Desteği ile slbupgradesupport@microsoft.combir destek servis talebi açmak için e-posta gönderebilir veya her ikisini de yapabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Standart Load Balancer hakkında bilgi edinin](load-balancer-overview.md)
+[Standart Yük Dengeleyicisi hakkında bilgi edinin](load-balancer-overview.md)

@@ -1,6 +1,6 @@
 ---
-title: Azure Güvenlik kıyaslaması genel bakış
-description: Güvenlik kıyaslaması genel bakış
+title: Azure Güvenlik Kıyaslama'ya genel bakış
+description: Güvenlik Kıyaslama genel bakış
 author: msmbaldwin
 manager: rkarlin
 ms.service: security
@@ -9,23 +9,23 @@ ms.date: 12/16/2019
 ms.author: mbaldwin
 ms.custom: security-baselines
 ms.openlocfilehash: c16d7247b781fea04cfa2d53b8854cff14e039c7
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77616441"
 ---
-# <a name="overview-of-azure-security-baselines"></a>Azure güvenlik temellerine genel bakış
+# <a name="overview-of-azure-security-baselines"></a>Azure Güvenlik Taban Çizgilerinden Genel Bakış
 
-Azure güvenlik temelleri, geliştirilmiş araçlar, izleme ve güvenlik özellikleri aracılığıyla ürünlerimizin güvenliğini güçlendirin ve ortamınızı güvenli hale getirirken tutarlı bir deneyim sağlar.
+Azure Güvenlik Taban Çizgileri, gelişmiş takım lama, izleme ve güvenlik özellikleri yle ürünlerimizin güvenliğini güçlendirmenize yardımcı olur ve ortamınızı güvence altına alırken size tutarlı bir deneyim sunar.
 
-Azure hizmeti güvenlik temelleri, bulut merkezli denetim alanlarında odaklanmaktadır. Bu denetimler, Internet güvenliği (CIS) için merkezi tarafından açıklananlar gibi iyi bilinen güvenlik değerlendirmeleri ile tutarlıdır. Temellerimiz, [Azure Güvenlik kıyaslaması](overview.md)'nda listelenen denetim alanlarıyla ilgili rehberlik sağlar.
+Azure Hizmet Güvenliği Taban Çizgileri bulut merkezli denetim alanlarına odaklanır. Bu denetimler, Internet Security Merkezi (BDT) tarafından açıklananlar gibi iyi bilinen güvenlik ölçütleriyle tutarlıdır. Taban [çizgilerimiz, Azure Güvenlik Kıyaslama'sında](overview.md)listelenen denetim alanları için kılavuz sağlar.
 
 Her öneri aşağıdaki bilgileri içerir:
-- **Azure ID**: öneriye karşılık gelen Azure GÜVENLIK kıyaslama kimliği.
-- **Öneri**: doğrudan Azure kimliğinden sonra, öneri denetimin üst düzey açıklamasını sağlar.
-- **Rehberlik**: önerinin ve nasıl uygulanacağı üzerine kılavuzluk eden bağlantılar. Öneri Azure Güvenlik Merkezi tarafından destekleniyorsa, bu bilgiler de listelenecektir.
-- **Sorumluluk**: denetimi uygulamaktan sorumlu kişi. Olası senaryolar müşteri sorumluluğu, Microsoft sorumluluğu veya paylaşılan sorumluluktur.
-- **Azure Güvenlik Merkezi izleme**: denetim, Azure Güvenlik Merkezi tarafından, başvuruya bağlantı ile izlenip izlenmediği.
+- **Azure Kimliği**: Öneriye karşılık gelen Azure Güvenlik Kıyaslama Kimliği.
+- **Öneri**: Azure Kimliği'nden hemen sonra, öneri denetimin üst düzey bir açıklamasını sağlar.
+- **Rehberlik**: Tavsiyenin gerekçesi ve nasıl uygulanacağı ile ilgili rehberlik bağlantıları. Öneri Azure Güvenlik Merkezi tarafından desteklenirse, bu bilgiler de listelenir.
+- **Sorumluluk**: Kontrolün uygulanmasından kim sorumludur. Olası senaryolar müşteri sorumluluğu, Microsoft sorumluluğu veya paylaşılan sorumluluktur.
+- **Azure Güvenlik Merkezi izleme**: Denetimin başvuru bağlantısıyla Azure Güvenlik Merkezi tarafından izlenip izlenmediği.
 
-Bu belirli hizmet için geçerli olmayan öneriler de dahil olmak üzere tüm öneriler, Azure Güvenlik kıyaslamaları 'nın her bir hizmetle nasıl ilişkili olduğu hakkında ayrıntılı bir resim sunmak için temele dahil edilmiştir. Bazen çeşitli nedenlerle geçerli olmayan denetimler olabilir — Örneğin, IaaS/bilgi işlem merkezli denetimler (örneğin, işletim sistemi yapılandırma yönetimine özgü denetimler) PaaS hizmetleri için geçerli olmayabilir.
+Bu özel hizmet için geçerli olmayan öneriler de dahil olmak üzere tüm öneriler, Azure Güvenlik Kıyaslaması'nın her hizmetle nasıl ilişkili olduğunu tam olarak gösteren bir resmi sağlamak için taban çizgisine dahildir. Bazen çeşitli nedenlerle geçerli olmayan denetimler olabilir (örneğin, IaaS/compute merkezli denetimler (işletim sistemi yapılandırma yönetimine özgü denetimler gibi) PaaS hizmetleri için geçerli olmayabilir.

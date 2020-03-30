@@ -1,89 +1,89 @@
 ---
-title: Azure Application Insights kullanımı etkisi | Microsoft docs
-description: Farklı özelliklerin uygulamalarınızın parçaları için dönüştürme hızlarını nasıl etkileyebileceğini analiz edin.
+title: Azure Uygulama Öngörüleri Kullanım Etkisi | Microsoft dokümanlar
+description: Farklı özelliklerin uygulamalarınızın bazı bölümleri için dönüşüm oranlarını nasıl etkilenebildiğini analiz edin.
 ms.topic: conceptual
 author: NumberByColors
 ms.author: daviste
 ms.date: 01/08/2019
 ms.reviewer: mbullwin
 ms.openlocfilehash: 787221c4df3f06029d19ee779a28bb763723f27d
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671044"
 ---
-# <a name="impact-analysis-with-application-insights"></a>Application Insights ile etki analizi
+# <a name="impact-analysis-with-application-insights"></a>Uygulama Öngörüleri ile etki analizi
 
-Etki, yük sürelerinin ve diğer özelliklerin uygulamanızın çeşitli bölümleri için dönüştürme oranlarını nasıl etkilediğini analiz eder. Daha hassas bir şekilde koymak için, **sayfa görünümü**, **özel olay**veya **istek** için **herhangi bir boyutun** farklı bir **sayfa görünümü** veya **özel olay**kullanımını nasıl etkilediğini bulur. 
+Etki, yükleme sürelerinin ve diğer özelliklerin uygulamanızın çeşitli bölümleri için dönüşüm oranlarını nasıl etkilediğini analiz eder. Daha kesin olarak ifade etmek gerekirse, sayfa **görünümü,** **özel olay**veya **istek** herhangi bir **boyutu** farklı bir **sayfa görünümü** veya **özel olay**kullanımını nasıl etkilediğini keşfeder. 
 
-![Etki aracı](./media/usage-impact/0001-impact.png)
+![Darbe aracı](./media/usage-impact/0001-impact.png)
 
-## <a name="still-not-sure-what-impact-does"></a>Hangi etkiyi gerçekleştirdiğinizden hala emin değil misiniz?
+## <a name="still-not-sure-what-impact-does"></a>Impact'in ne yaptığından hala emin değil misiniz?
 
-Etkileri düşünmenin bir yolu, takımınızın bazı yönlerine yönelik olan bağımsız değişkenleri, kullanıcıların dolaşıp gezinmediğini nasıl etkilediğini öğrenmek için en son araçtır. Kullanıcılar belirli bir yavaşlığa göre tolerans sağlarken, etki iyileştirme ve performansın en iyi şekilde ne kadar süre içinde Kullanıcı dönüştürmeyi en üst düzeye çıkarabilme konusunda fikir verir.
+Impact'i düşünmenin bir yolu, sitenizin bazı yönlerindeki yavaşlığın kullanıcıların etrafta kalıp kalmamasını nasıl etkilediği ne kadar yavaşolduğu yla ilgili ekibinizdeki biriyle tartışmaları halletmek için nihai bir araçtır. Kullanıcılar belirli bir miktar yavaşlığa tolerans gösterse de Impact, kullanıcı dönüşümlerini en üst düzeye çıkarmak için optimizasyon ve performansı en iyi nasıl dengelediğinize dair size fikir verir.
 
-Ancak performansın çözümlenmesi yalnızca bir etki alanının özellik alt kümesidir. Etki özel olayları ve boyutları desteklediğinden, kullanıcı tarayıcısı seçiminin farklı dönüştürme ücretleri ile ilişkilendirilmesi gibi sorulara yanıt vermek yalnızca birkaç tıklamayla daha fazla tıklama.
+Ama performansı analiz etmek Impact'in yeteneklerinin sadece bir alt kümesidir. Impact özel olayları ve boyutları desteklediği için, kullanıcı tarayıcıseçiminin farklı dönüşüm oranlarıyla nasıl ilişkili olduğu gibi soruları yanıtlamak yalnızca birkaç tıklama uzakta.
 
 ![Tarayıcılar tarafından ekran görüntüsü dönüştürme](./media/usage-impact/0004-browsers.png)
 
 > [!NOTE]
-> Application Insights kaynağınız, etki aracını kullanmak için sayfa görünümleri veya özel olaylar içermelidir. [Uygulamanızı, Application Insights JavaScript SDK 'sı ile otomatik olarak sayfa görünümlerini toplamak üzere ayarlamayı öğrenin](../../azure-monitor/app/javascript.md). Ayrıca, bağıntı çözümlenirken örnek boyutu önemli olduğundan emin olmak için aklınızda bulundurun.
+> Uygulama Öngörüleri kaynağınız, Etki aracını kullanmak için sayfa görünümleri veya özel olaylar içermelidir. [Application Insights JavaScript SDK ile sayfa görünümlerini otomatik olarak toplamak için uygulamanızı nasıl ayarlayabilirsiniz](../../azure-monitor/app/javascript.md)öğrenin. Ayrıca, korelasyon analiz beri, örnek boyutu önemli olduğunu unutmayın.
 >
 >
 
-## <a name="is-page-load-time-impacting-how-many-people-convert-on-my-page"></a>Sayfa yükleme süresi sayfamda kaç kişinin dönüştürülmesini etkiliyor mu?
+## <a name="is-page-load-time-impacting-how-many-people-convert-on-my-page"></a>Sayfa yükleme süresi sayfamda kaç kişinin dönüşüm emlenmesini etkiliyor mu?
 
-Etki aracı ile soruları cevaplamak için bir başlangıç sayfa görünümü, özel olay veya istek seçin.
+Impact aracıyla soruları yanıtlamaya başlamak için bir başlangıç sayfası görünümü, özel etkinlik veya istek seçin.
 
-![Etki aracı](./media/usage-impact/0002-dropdown.png)
+![Darbe aracı](./media/usage-impact/0002-dropdown.png)
 
-1. **Sayfa görünümü** açılır listesinden bir sayfa görünümü seçin.
-2. Varsayılan **süre** seçiminde (Bu bağlam **süresinde** , **sayfa yükleme süresi**için bir diğer ad) açılan listesini **Çözümle** ' ye bırakın.
-3. , Açılan menü **kullanımını etkiler** için bir özel olay seçin. Bu olay, 1. adımda seçtiğiniz sayfa görünümündeki bir UI öğesine karşılık gelmelidir.
+1. **Sayfa görünümü** açılır için bir sayfa görünümü seçin.
+2. **Varsayılan Süre** seçiminde **nasıl** açılır bırak (Bu bağlamda **Süre,** Sayfa **Yük Süresi**için bir diğer addır .)
+3. Açılır bırakma **kullanımının etkileri** için özel bir olay seçin. Bu olay, adım 1'de seçtiğiniz sayfa görünümündeki bir Web-Servis Elemanı öğesine karşılık gelir.
 
 ![Sonuçların ekran görüntüsü](./media/usage-impact/0003-results.png)
 
-**Ürün sayfası** yükleme süresi, bu örnekte, **satın alma ürününe tıklanan** dönüştürme oranını artırır. Yukarıdaki dağıtıma bağlı olarak, 3,5 saniyelik en iyi sayfa yükleme süresi, %55 oranında bir dönüştürme ücreti elde etmek için hedeflenebilir. 3,5 saniyelik yük süresini azaltmaya yönelik daha fazla performans geliştirmesi, şu anda ek dönüştürme avantajlarıyla bağıntılı değildir.
+Bu durumda **Ürün Sayfası** yükleme süresi arttıkça **tıklanan Ürün Satın Alma'ya** dönüşüm oranı azalır. Yukarıdaki dağıtıma bağlı olarak, olası %55'lik bir dönüşüm oranına ulaşmak için 3,5 saniyelik en uygun sayfa yükleme süresi hedeflenebilir. Yükleme süresini 3,5 saniyenin altına düşürmek için yapılan diğer performans iyileştirmeleri şu anda ek dönüşüm avantajlarıyla ilişkili değildir.
 
-## <a name="what-if-im-tracking-page-views-or-load-times-in-custom-ways"></a>Sayfa görünümlerini veya yükleme zamanlarını özel şekillerde izlersem ne yapmalıyım?
+## <a name="what-if-im-tracking-page-views-or-load-times-in-custom-ways"></a>Sayfa görüntülemelerini veya yükleme sürelerini özel yollarla takip edersem ne olur?
 
-Etki, hem standart hem de özel özellikleri ve ölçümleri destekler. İstediğiniz her şeyi kullanın. Süre yerine, daha belirgin bir şekilde yararlanmak için birincil ve ikincil olaylarda filtreler kullanın.
+Darbe hem standart hem de özel özellikleri ve ölçüleri destekler. Ne istersen kullan. Süre yerine, daha spesifik olmak için birincil ve ikincil olaylardaki filtreleri kullanın.
 
-## <a name="do-users-from-different-countries-or-regions-convert-at-different-rates"></a>Farklı ülkelerden veya bölgelerden kullanıcılar farklı oranlarda mi dönüştürülecek?
+## <a name="do-users-from-different-countries-or-regions-convert-at-different-rates"></a>Farklı ülkelerden veya bölgelerden kullanıcılar farklı oranlarda dönüşüm yapar mı?
 
-1. **Sayfa görünümü** açılır listesinden bir sayfa görünümü seçin.
-2. Açılan menüsünü **analiz etme** bölümünde "ülke veya bölge" yi seçin
-3. , Açılan menü **kullanımını etkiler** için, 1. adımda seçtiğiniz sayfa GÖRÜNÜMÜNDEKI bir UI öğesine karşılık gelen özel bir olay seçin.
+1. **Sayfa görünümü** açılır için bir sayfa görünümü seçin.
+2. Açılır **düşüşünü analiz** etmek için "Ülke veya bölge"yi seçin
+3. Açılır bırakma **kullanımının etkileri** için, adım 1'de seçtiğiniz sayfa görünümünde bir Kullanıcı Arabirimi öğesine karşılık gelen özel bir olay seçin.
 
-Bu durumda, sonuçlar artık ilk örnekte olduğu gibi sürekli bir x ekseni modeline sığmıyor. Bunun yerine, kesimli bir huniye benzer bir görselleştirme sunulur. Ülkeye/bölgeye göre özel olayınızın dönüştürmesinin çeşitlemesini görüntülemek için **kullanıma** göre sıralayın.
+Bu durumda, sonuçlar artık ilk örnekte olduğu gibi sürekli bir x ekseni modeline sığmaz. Bunun yerine, parçalı bir hunibenzer bir görselleştirme sunulur. Ülkeye/bölgeye göre özel etkinliğinize dönüşüm varyasyonunu görüntülemek için **Kullanıma** göre sıralayın.
 
 
-## <a name="how-does-the-impact-tool-calculate-these-conversion-rates"></a>Etki aracı bu dönüştürme oranlarını nasıl hesaplar?
+## <a name="how-does-the-impact-tool-calculate-these-conversion-rates"></a>Impact aracı bu dönüşüm oranlarını nasıl hesaplar?
 
-Bu, Impact Aracı, [Pearson bağıntı katsayısını](https://en.wikipedia.org/wiki/Pearson_correlation_coefficient)kullanır. Sonuçlar-1 ile 1 arasında, negatif bir doğrusal bağıntıyı temsil eden 1 ile 1 arasında hesaplanır ve pozitif bir doğrusal bağıntıyı temsil eder.
+Kaputun altında, Etki aracı [Pearson korelasyon katsayısına](https://en.wikipedia.org/wiki/Pearson_correlation_coefficient)dayanır. Sonuçlar -1 ile 1 arasında ,1 negatif doğrusal korelasyon ve 1 pozitif doğrusal korelasyon temsil eden hesaplanır.
 
-Etki çözümlemenin nasıl çalıştığına ilişkin temel döküm aşağıdaki gibidir:
+Etki Analizi'nin nasıl çalıştığının temel dökümü aşağıdaki gibidir:
 
-Let _A_ = ilk açılan pencerede seçtiğiniz ana sayfa görünümü/özel olay/istek. (**Sayfa görünümü için**).
+A _A_ = ilk açılır sayfada seçtiğiniz ana sayfa görünümü/özel olay/istek olsun. (**Sayfa görünümü için**).
 
-Let _B_ = seçtiğiniz ikincil sayfa görünümü/özel olay (**kullanımını etkiler**).
+Let _B_ = seçtiğiniz ikincil sayfa görünümü/özel olay (**kullanımını etkiler).**
 
-Etki, seçilen zaman aralığındaki kullanıcılardan gelen tüm oturumların bir örneğine bakar. Her bir oturum için, her _bir bir_' ın her oluşumunu arar.
+Impact, seçilen zaman aralığındaki kullanıcılardan gelen tüm oturumların bir örneğine bakar. Her oturum için, _A'nın_her oluşumunu arar.
 
-Oturumlar daha sonra İki koşuldan birine göre iki farklı _alt oturum_ türüne ayrılır:
+Oturumlar daha sonra iki koşuldan birine göre iki farklı alt _oturum_ türüne ayrılır:
 
-- Dönüştürülen bir alt oturum, _b_ olayından biten bir oturumdan oluşur ve _b_'den önce oluşan _tüm olayları_ kapsar.
-- Dönüştürülmeyen _bir_alt oturum, _B_terminali olmadan meydana geldiğinde oluşur.
+- Dönüştürülmüş bir alt _oturum, B_ olayıyla biten bir oturumdan oluşur ve _B'den_önce gerçekleşen tüm _A_ olaylarını kapsar.
+- Tüm _A'lar_ _B_terminali olmadan gerçekleştiğinde dönüştürülmemiş bir alt oturum oluşur.
 
-Etkili bir şekilde hesaplama, ölçüm veya boyuta göre analiz edilip etmediğimiz temel alınarak değişir. Bir alt oturumdaki tüm _A_içindeki ölçümler için ortalaması alınır. Yani, her _bir_ katkıda bulunan _1/N_ değerini _B_ 'ye atanan değere göre boyutlar için _n_ , alt oturumdaki _A_'nın sayısıdır.
+Etki'nin nasıl hesaplandığı, ölçüme veya boyuta göre analiz edip etmediğime bağlı olarak değişir. Ölçümler için bir alt oturumdaki tüm _A'lar_ortalamaolarak alınır. Boyutlar için her _A'nın_ _değeri, B'ye_ atanan değere _1/N_ katkıda bulunurken, _N_ alt oturumdaki _A'nın_sayısıdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Kullanım deneyimlerini etkinleştirmek için [özel olaylar](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent) veya [sayfa görünümleri](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views)göndermeye başlayın.
-- Özel olayları veya sayfa görünümlerini zaten gönderirseniz, kullanıcıların hizmetinizi nasıl kullandığını öğrenmek için kullanım araçları ' nı araştırın.
+- Kullanım deneyimlerini etkinleştirmek için [özel etkinlikler](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent) veya [sayfa görünümleri](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views)göndermeye başlayın.
+- Zaten özel etkinlikler veya sayfa görünümleri gönderiyorsanız, kullanıcıların hizmetinizi nasıl kullandığını öğrenmek için Kullanım araçlarını keşfedin.
     - [Huniler](usage-funnels.md)
     - [Bekletme](usage-retention.md)
     - [Kullanıcı Akışları](usage-flows.md)
-    - [Çalışma kitapları](../../azure-monitor/app/usage-workbooks.md)
-    - [Kullanıcı bağlamı Ekle](usage-send-user-context.md)
+    - [Çalışma Kitapları](../../azure-monitor/app/usage-workbooks.md)
+    - [Kullanıcı bağlamı ekleme](usage-send-user-context.md)

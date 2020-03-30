@@ -1,6 +1,6 @@
 ---
-title: Python ve jupi Not defterleri ile veri bilimi öğretmek için laboratuvar kurma | Microsoft Docs
-description: Python ve Jupyıter not defterlerini kullanarak veri bilimi öğretmek için laboratuvar ayarlamayı öğrenin.
+title: Python ve Jupyter Notebook'larla veri bilimi öğretmek için bir laboratuvar kurmak | Microsoft Dokümanlar
+description: Python ve Jupyter Notebook'ları kullanarak veri bilimi öğretmek için nasıl bir laboratuvar kurup kurabilirsiniz öğrenin.
 services: lab-services
 documentationcenter: na
 author: emaher
@@ -14,66 +14,66 @@ ms.topic: article
 ms.date: 11/19/2019
 ms.author: enewman
 ms.openlocfilehash: dfb133f9aa3dd9b76f8b4ea4c6188cfaf9a67b75
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77444120"
 ---
-# <a name="set-up-a-lab-to-teach-data-science-with-python-and-jupyter-notebooks"></a>Python ve Jupyıter Not defterleri ile veri bilimi öğretmek için laboratuvar ayarlama
+# <a name="set-up-a-lab-to-teach-data-science-with-python-and-jupyter-notebooks"></a>Python ve Jupyter Notebook'larla veri bilimi öğretmek için bir laboratuvar ayarlayın
 
-Bu makalede, öğrencilerin [Jupyıter not defterlerini](http://jupyter-notebook.readthedocs.io)nasıl kullanacağınızı öğretmek için gereken araçlarla laboratuvar hizmetlerinde bir şablon makinesinin nasıl ayarlanacağı özetlenmektedir.  Jupyter Not defterleri, zengin metin ve yürütülebilir [Python](https://www.python.org/) kaynak kodunu not defteri adlı tek bir tuval üzerinde kolayca birleştirebilmenizi sağlayan açık kaynaklı bir projem.  Bir not defteri çalıştırmak, giriş ve çıkışları doğrusal bir kaydıyla sonuçlanır.  Bu çıktılar metin, bilgi tabloları, dağılım çizimleri ve daha fazlasını içerebilir.
+Bu makalede, öğrencilere [Jupyter Notebook'ları](http://jupyter-notebook.readthedocs.io)nasıl kullanacaklarını öğretmek için gereken araçlarla Laboratuvar Hizmetleri'nde bir şablon makinesinin nasıl kurulabildiğini özetlenmiştir.  Jupyter Notebooks, zengin metin ve çalıştırılabilir [Python](https://www.python.org/) kaynak kodunu not defteri adı verilen tek bir tuvalde kolayca birleştirmenizi sağlayan açık kaynaklı bir projedir.  Not defterini çalıştırmak, girdi ve çıktıların doğrusal bir kaydıyla sonuçlanır.  Bu çıktılar metin, bilgi tabloları, dağılım çizimleri ve daha fazlasını içerebilir.
 
 ## <a name="lab-configuration"></a>Laboratuvar yapılandırması
 
-Bu Laboratuvarı ayarlamak için, başlamak üzere bir Azure aboneliğine ve laboratuvar hesabına sahip olmanız gerekir. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun. Bir Azure aboneliği aldıktan sonra, Azure Lab Services yeni bir laboratuvar hesabı oluşturabilirsiniz. Yeni laboratuvar hesabı oluşturma hakkında daha fazla bilgi için bkz. [Laboratuvar hesabı kurmak için öğretici](tutorial-setup-lab-account.md).  Ayrıca var olan bir laboratuvar hesabı da kullanabilirsiniz.
+Bu laboratuarı kurmak için başlamak için bir Azure aboneliğine ve laboratuvar hesabına ihtiyacınız var. Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun. Azure aboneliği ni aldıktan sonra Azure Lab Hizmetleri'nde yeni bir laboratuvar hesabı oluşturabilirsiniz. Yeni bir laboratuvar hesabı oluşturma hakkında daha fazla bilgi için, [bir laboratuvar hesabı kurma öğreticisine](tutorial-setup-lab-account.md)bakın.  Varolan bir laboratuvar hesabını da kullanabilirsiniz.
 
-### <a name="lab-account-settings"></a>Laboratuvar hesabı ayarları
+### <a name="lab-account-settings"></a>Laboratuvar Hesap Ayarları
 
-Laboratuvar hesabı için aşağıdaki tabloda açıklanan ayarları etkinleştirin. Market görüntülerinin nasıl etkinleştirileceği hakkında daha fazla bilgi için bkz. [Laboratuvar oluşturucuları için kullanılabilen Market görüntülerini belirtme](specify-marketplace-images.md).
+Laboratuvar hesabı için aşağıdaki tabloda açıklanan ayarları etkinleştirin. Pazar yeri görüntülerinin nasıl etkinleştirilen hakkında daha fazla bilgi için, [laboratuvar oluşturucuları tarafından kullanılabilen Market görüntülerini belirtin'e](specify-marketplace-images.md)bakın.
 
-| Laboratuvar hesabı ayarı | Yönergeler |
+| Laboratuvar hesap ayarı | Yönergeler |
 | ------------------- | ------------ |
-| Market görüntüsü | Laboratuvar hesabınızda kullanılmak üzere [veri bilimi sanal makinesi-Windows 2016](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-windows) görüntüsünü etkinleştirin. |
+| Pazar yeri görüntüsü | Laboratuvar hesabınızda kullanmak üzere [Veri Bilimi Sanal Makine - Windows 2016](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-windows) görüntüsünü etkinleştirin. |
 
 >[!TIP]
->Bu makale, Windows Server işletim sistemini kullanan bir şablon makinesini yapılandırmaya odaklanacaktır.  Ayrıca, Azure Marketi 'nden [Linux (CentOS)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.linux-data-science-vm) [veri bilimi sanal makinesi veya Linux (Ubuntu)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.linux-data-science-vm-ubuntu) görüntüleri için veri bilimi sanal makinesi kullanan Python ve jupi Notebook ile veri bilimi sınıfı ayarlamak da mümkündür.
+>Bu makalede, Windows Server işletim sistemini kullanan bir şablon makinesi yapılandırma üzerinde durulacak.  Linux [için Veri Bilimi Sanal Makine (CentOS)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.linux-data-science-vm) veya Azure Marketi'nden Linux için Veri [Bilimi Sanal Makine (Ubuntu)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.linux-data-science-vm-ubuntu) görüntülerini kullanarak Python ve Jupyter Notebook'larla veri bilimi sınıfı da oluşturmak mümkündür.
 
 ### <a name="lab-settings"></a>Laboratuvar ayarları
 
-Bir sınıf Laboratuvarı ayarlarken aşağıdaki tablodaki ayarları kullanın.  Sınıf Laboratuvarı oluşturma hakkında daha fazla bilgi için bkz. [bir derslik Laboratuvarı ayarlama öğreticisi](tutorial-setup-classroom-lab.md).
+Sınıf laboratuarı kurarken aşağıdaki tablodaki ayarları kullanın.  Sınıf laboratuarı oluşturmak için daha fazla bilgi için [bkz.](tutorial-setup-classroom-lab.md)
 
-| Laboratuvar ayarları | Değer/yönergeler |
+| Laboratuvar ayarları | Değer/talimatlar |
 | ------------ | ------------------ |
-|Sanal Makine Boyutu| Küçük GPU (Işlem). Bu boyut, yapay zeka ve derin öğrenme gibi yoğun işlem yoğunluğu ve yoğun ağ kullanımı gerektiren uygulamalar için idealdir. |
-|Sanal makine görüntüsü| Veri Bilimi Sanal Makinesi-Windows 2016|
+|Sanal Makine Boyutu| Küçük GPU (İşlem). Bu boyut, Yapay Zeka ve Derin Öğrenme gibi bilgi işlem yoğun ve ağ yoğun uygulamalar için en uygun uyrmuştur. |
+|Sanal Makine Görüntüsü| Veri Bilimi Sanal Makine - Windows 2016|
 
 ## <a name="template-machine"></a>Şablon makinesi
 
-[Veri bilimi sanal makinesi-Windows 2016](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-windows) görüntüsü, bu tür bir sınıf için gereken ayrıntılı öğrenme çerçevelerini ve araçları sağlar.  Görüntü Jupyıter not defterlerini ve Visual Studio Code içerir.  [Jupi Not defterleri](http://jupyter-notebook.readthedocs.io) , veri bilimcilerinin ham veri almasına, hesaplamalar çalıştırmasına ve sonuçların tümünü aynı ortamda görüntülemesine olanak tanıyan bir Web uygulamasıdır.  Şablon makinemiz için Web uygulaması yerel olarak çalışır.  [Visual Studio Code](https://code.visualstudio.com/) , bir not defteri yazarken ve test edilirken zengin bir etkileşimli deneyim sağlayan bir IDE 'dir.  Daha fazla bilgi için bkz. [Visual Studio Code jupi Not defterleri Ile çalışma](https://code.visualstudio.com/docs/python/jupyter-support).
+[Veri Bilimi Sanal Makine - Windows 2016](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-windows) görüntü sınıf bu tür için gerekli derin öğrenme çerçeveleri ve araçları sağlar.  Görüntü Jupyter Notebooks ve Visual Studio Code içerir.  [Jupyter Notebooks,](http://jupyter-notebook.readthedocs.io) veri bilimcilerin ham veri almalarına, hesaplamaları yürütmelerine ve sonuçları aynı ortamda görmelerine olanak tanıyan bir web uygulamasıdır.  Şablon makinemiz için web uygulaması yerel olarak çalışacaktır.  [Visual Studio Code,](https://code.visualstudio.com/) bir dizüstü bilgisayar yazarken ve test ederken zengin bir etkileşimli deneyim sağlayan bir IDE'dir.  Daha fazla bilgi için Visual [Studio Code'da Jupyter Notebook'larla çalışma](https://code.visualstudio.com/docs/python/jupyter-support)bilgisine bakın.
 
-Sınıfını ayarlamak için kalan görev, yerel Not defterleri sağlamaktır.  Azure Machine Learning örneklerini kullanma hakkında yönergeler için bkz. [jupi Not defterleri ile ortam yapılandırma](../../machine-learning/how-to-configure-environment.md#jupyter).  Ayrıca, şablon makinesinde kendi not defterlerinizi de sağlayabilirsiniz.  Şablon yayımlandığında Not defterleri tüm öğrenci makinelerine kopyalanır.
+Sınıfı ayarlamak için kalan görev yerel not defterleri sağlamaktır.  Azure Machine Learning örneklerini nasıl kullanacağınız için, [Jupyter Notebook'larla ortamı nasıl yapılandıracağınıza](../../machine-learning/how-to-configure-environment.md#jupyter)bakın.  Ayrıca şablon makinesinde kendi not defterlerinizi de sağlayabilirsiniz.  Şablon yayımlandığında defterler tüm öğrenci makinelerine kopyalanır.
 
 ## <a name="cost-estimate"></a>Maliyet tahmini
 
-Bu sınıf için olası bir maliyet tahminini ele alalım.  25 öğrencilerden oluşan bir sınıf kullanacağız.  20 saatlik zamanlanan sınıf zamanı vardır.  Ayrıca, her öğrenci, zamanlanan sınıf zamanı dışında ev ödevleri veya atamalar için 10 saatlik kota alır.  Seçtiğimiz sanal makine boyutu, 139 laboratuvar birimi olan küçük GPU (işlem) idi.
+Bu sınıf için olası bir maliyet tahminini karşılayalım.  25 öğrencilik bir sınıf kullanacağız.  20 saatlik ders saati var.  Ayrıca, her öğrenci planlanan ders saati dışında ödev veya ödevler için 10 saat kontenjan alır.  Seçtiğimiz sanal makine boyutu 139 laboratuvar birimi olan küçük GPU (bilgi işlem) idi.
 
-Bu sınıf için olası bir maliyet tahmini örneği aşağıda verilmiştir:
+Aşağıda, bu sınıf için olası bir maliyet tahmini örneği verilmiştir:
 
-25 öğrenci \* (20 zamanlanan saat + 10 kota saati) \* 139 laboratuvar birimi \* 0,01 ABD Doları/1042,5 saat USD
+25 \* öğrenci (20 planlanan saat + \* 10 kontenjan saati) 139 laboratuvar ünitesi \* 0,01 SAAT başına USD = 1042,5 USD
 
-Fiyatlandırma hakkında daha fazla bilgi için bkz. [Azure Lab Services fiyatlandırması](https://azure.microsoft.com/pricing/details/lab-services/).
+Fiyatlandırma hakkında daha fazla ayrıntı için Azure [Lab Hizmetleri Fiyatlandırması'na](https://azure.microsoft.com/pricing/details/lab-services/)bakın.
 
 ## <a name="conclusion"></a>Sonuç
 
-Bu makalede, bir Jupyıter Not defteri sınıfı için Laboratuvar oluşturma adımlarını ele aldık. Diğer makine öğrenimi sınıfları için benzer bir kurulum kullanabilirsiniz.
+Bu makalede, bir Jupyter Notebooks sınıf için bir laboratuvar oluşturmak için adımları ile yürüdü. Diğer makine öğrenimi sınıfları için de benzer bir kurulum kullanabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Sonraki adımlar, herhangi bir laboratuvarı ayarlamak için ortaktır.
+Sonraki adımlar herhangi bir laboratuvar kurmak için ortak.
 
 - [Şablon oluşturma ve yönetme](how-to-create-manage-template.md)
-- [Kullanıcı ekleme](tutorial-setup-classroom-lab.md#add-users-to-the-lab)
+- [Kullanıcı ekle](tutorial-setup-classroom-lab.md#add-users-to-the-lab)
 - [Kota ayarlama](how-to-configure-student-usage.md#set-quotas-for-users)
 - [Zamanlama ayarlama](tutorial-setup-classroom-lab.md#set-a-schedule-for-the-lab)
-- [Öğrenciler için e-posta kaydı bağlantıları](how-to-configure-student-usage.md#send-invitations-to-users)
+- [Öğrencilere e-posta kayıt bağlantıları](how-to-configure-student-usage.md#send-invitations-to-users)

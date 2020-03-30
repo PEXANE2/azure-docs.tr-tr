@@ -9,10 +9,10 @@ ms.date: 02/18/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 26e76731f663ac9038bc87182d52c4bd245f1b6e
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77471726"
 ---
 ## <a name="limitations"></a>Sınırlamalar
@@ -23,14 +23,14 @@ ms.locfileid: "77471726"
 
 [!INCLUDE [virtual-machines-disks-shared-sizes](virtual-machines-disks-shared-sizes.md)]
 
-## <a name="deploy-an-azure-shared-disk"></a>Azure Paylaşılan diski dağıtma
+## <a name="deploy-an-azure-shared-disk"></a>Azure paylaşılan diskini dağıtma
 
-Paylaşılan disk özelliği etkinken yönetilen bir disk dağıtmak için yeni özelliği `maxShares` kullanın ve bir değer `>1`tanımlayın. Bu, diski birden çok VM arasında paylaşılabilir hale getirir.
+Paylaşılan disk özelliği etkinleştirilmiş yönetilen bir disk dağıtmak `maxShares` için, `>1`yeni özelliği kullanın ve bir değer tanımlayın. Bu, diski birden çok VM arasında paylaşılabilir hale getirir.
 
 > [!IMPORTANT]
-> `maxShares` değeri yalnızca bir disk tüm VM 'lerden çıkarıldığınızda ayarlanabilir veya değiştirilebilir. `maxShares`için izin verilen değerler için [disk boyutlarına](#disk-sizes) bakın.
+> `maxShares` Değeri yalnızca bir disk tüm VM'lerden söküldüğünde ayarlanabilir veya değiştirilebilir. Için izin verilen değerler için `maxShares`Disk [boyutlarını](#disk-sizes) görün.
 
-Aşağıdaki şablonu kullanmadan önce `[parameters('dataDiskName')]`, `[resourceGroup().location]`, `[parameters('dataDiskSizeGB')]`ve `[parameters('maxShares')]` değerlerini kendi değerlerinizle değiştirin.
+Aşağıdaki şablonu kullanmadan `[parameters('dataDiskName')]` `[resourceGroup().location]`önce, değiştirin , , `[parameters('dataDiskSizeGB')]`, ve `[parameters('maxShares')]` kendi değerleri ile.
 
 ```json
 { 
@@ -71,12 +71,12 @@ Aşağıdaki şablonu kullanmadan önce `[parameters('dataDiskName')]`, `[resour
 }
 ```
 
-### <a name="using-azure-shared-disks-with-your-vms"></a>Sanal makinelerinizdeki Azure Paylaşılan disklerini kullanma
+### <a name="using-azure-shared-disks-with-your-vms"></a>Azure paylaşılan diskleri VM'lerinizle kullanma
 
-`maxShares>1`ile paylaşılan bir disk dağıttıktan sonra, diski bir veya daha fazla sanal makinelerinize bağlayabilirsiniz.
+Paylaşılan bir diski dağıttıktan `maxShares>1`sonra, diski VM'lerinizden birine veya daha fazlasına monte edebilirsiniz.
 
 > [!IMPORTANT]
-> Bir diski paylaşan tüm VM 'Lerin aynı [yakınlık yerleşimi grubuna](../articles/virtual-machines/windows/proximity-placement-groups.md)dağıtılması gerekir.
+> Bir diski paylaşan tüm VM'ler aynı [yakınlık yerleşim grubunda](../articles/virtual-machines/windows/proximity-placement-groups.md)dağıtılmalıdır.
 
 ```azurepowershell-interactive
 
@@ -100,9 +100,9 @@ update-AzVm -VM $vm -ResourceGroupName $resourceGroup
 
 ## <a name="supported-scsi-pr-commands"></a>Desteklenen SCSI PR komutları
 
-Paylaşılan diski kümenize sanal makinelerinize bağladıktan sonra, çekirdek oluşturabilir ve SCSI PR kullanarak diske okuma/yazma yapabilirsiniz. Azure paylaşılan diskler kullanılırken aşağıdaki PR komutları kullanılabilir:
+Paylaşılan diski kümenizde VM'lerinize monte ettikten sonra, çoğunluk oluşturabilir ve SCSI PR'ı kullanarak diske okuma/yazma yapabilirsiniz. Azure paylaşılan diskleri kullanırken aşağıdaki PR komutları kullanılabilir:
 
-Diskle etkileşimde bulunmak için kalıcı rezervasyon eylem listesiyle başlayın:
+Diskle etkileşimkurmak için kalıcı rezervasyon eylem listesiyle başlayın:
 
 ```
 PR_REGISTER_KEY 
@@ -120,7 +120,7 @@ PR_CLEAR_RESERVATION
 PR_RELEASE_RESERVATION 
 ```
 
-PR_RESERVE, PR_PREEMPT_RESERVATION veya PR_RELEASE_RESERVATION kullanırken, şu kalıcı rezervasyon türünden birini sağlayın:
+PR_RESERVE, PR_PREEMPT_RESERVATION veya PR_RELEASE_RESERVATION kullanırken aşağıdaki kalıcı rezervasyon türünden birini sağlayın:
 
 ```
 PR_NONE 
@@ -138,9 +138,9 @@ PR_WRITE_EXCLUSIVE_ALL_REGISTRANTS
 PR_EXCLUSIVE_ACCESS_ALL_REGISTRANTS 
 ```
 
-PR_RESERVE, PR_REGISTER_AND_IGNORE, PR_REGISTER_KEY, PR_PREEMPT_RESERVATION, PR_CLEAR_RESERVATION veya PR_RELEASE AYıRMAYı kullanırken de kalıcı rezervasyon anahtarı sağlamanız gerekir.
+Ayrıca, PR_RESERVE, PR_REGISTER_AND_IGNORE, PR_REGISTER_KEY, PR_PREEMPT_RESERVATION, PR_CLEAR_RESERVATION veya PR_RELEASE-RESERVATION kullanırken kalıcı rezervasyon anahtarı sağlamanız gerekir.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Paylaşılan diskler gerçekleştirmeye ilgileniyorsanız, [önizlememiz için kaydolun](https://aka.ms/AzureSharedDiskPreviewSignUp).
+Paylaşılan diskleri denemek istiyorsanız [önizlememize kaydolun.](https://aka.ms/AzureSharedDiskPreviewSignUp)

@@ -1,7 +1,7 @@
 ---
-title: Çalışma alanı nedir?
+title: Çalışma alanı nedir
 titleSuffix: Azure Machine Learning
-description: Çalışma alanı Azure Machine Learning için en üst düzey kaynaktır. Günlükler, ölçümler, çıktılar ve betiklerinizin bir anlık görüntüsü dahil olmak üzere tüm eğitim çalıştırmaları geçmişini tutar. Hangi eğitim çalışmasının en iyi modeli ürettiğini öğrenmek için bu bilgileri kullanırsınız
+description: Çalışma alanı, Azure Machine Learning için en üst düzey kaynaktır. Günlükler, ölçümler, çıktı ve komut dosyalarınızın anlık görüntüsü de dahil olmak üzere tüm eğitim çalıştırmalarının geçmişini tutar. Hangi eğitim çalışmasının en iyi modeli ürettiğini belirlemek için bu bilgileri kullanırsınız
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,115 +10,115 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 12/27/2019
 ms.openlocfilehash: 03bc49c24e3c2d32e97f3e5e03bd39da63428a6e
-ms.sourcegitcommit: 934776a860e4944f1a0e5e24763bfe3855bc6b60
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77505567"
 ---
-# <a name="what-is-an-azure-machine-learning-workspace"></a>Azure Machine Learning çalışma alanı nedir?
+# <a name="what-is-an-azure-machine-learning-workspace"></a>Azure Makine Öğrenimi çalışma alanı nedir?
 
-Çalışma alanı, Azure Machine Learning için en üst düzey kaynaktır ve Azure Machine Learning kullandığınızda oluşturduğunuz tüm yapıtlarla çalışmak üzere merkezi bir yer sağlar.  Çalışma alanı; Günlükler, ölçümler, çıktılar ve betiklerinizin bir anlık görüntüsü dahil olmak üzere tüm eğitim çalıştırmaları geçmişini tutar. Hangi eğitim çalıştırmasının en iyi modeli ürettiğini öğrenmek için bu bilgileri kullanın.  
+Çalışma alanı, Azure Machine Learning'i kullandığınızda oluşturduğunuz tüm yapılarla çalışmak için merkezi bir yer sağlayan Azure Machine Learning için en üst düzey kaynaktır.  Çalışma alanı, günlükler, ölçümler, çıktılar ve komut dosyalarınızın anlık görüntüsü de dahil olmak üzere tüm eğitim çalıştırmalarının geçmişini tutar. Bu bilgileri, hangi eğitim çalışmasının en iyi modeli ürettiğini belirlemek için kullanırsınız.  
 
-İstediğiniz bir modele sahip olduktan sonra, çalışma alanına kayıt yaptırmış olursunuz. Daha sonra Azure Container Instances, Azure Kubernetes hizmetine dağıtmak için kayıtlı model ve Puanlama betiklerini ve REST tabanlı HTTP uç noktası olarak bir alan ile programlanabilir kapı dizisine (FPGA) dağıtım yapmak için kullanılır. Modeli bir Azure IoT Edge cihazına modül olarak da dağıtabilirsiniz.
+Beğendiğiniz bir modele sahip olduğunuzda, modelini çalışma alanına kaydedersiniz. Daha sonra, Azure Kapsayıcı Örnekleri, Azure Kubernetes Hizmeti veya alan programlanabilir bir geçit dizisine (FPGA) REST tabanlı HTTP bitiş noktası olarak dağıtmak için kayıtlı modeli ve puanlama komut dosyalarını kullanırsınız. Modeli modül olarak bir Azure IoT Edge aygıtına da dağıtabilirsiniz.
 
-Fiyatlandırma ve özellikler, çalışma alanı için [temel veya Enterprise sürümünün](overview-what-is-azure-ml.md#sku) seçili olmasına bağlıdır. [Çalışma alanını oluştururken](#create-workspace)sürümü seçersiniz.  Ayrıca temel sürümünden Enterprise sürümüne [yükseltebilirsiniz](#upgrade) .
+Fiyatlandırma ve kullanılabilir özellikler, çalışma alanı için [Temel veya Kurumsal sürümün](overview-what-is-azure-ml.md#sku) seçilip seçilmediğine bağlıdır. [Çalışma alanını oluştururken](#create-workspace)sürümü seçersiniz.  Ayrıca Basic'ten Enterprise sürümüne [de yükseltebilirsiniz.](#upgrade)
 
-## <a name="taxonomy"></a>Sınıflandır 
+## <a name="taxonomy"></a>Taksonomi 
 
-Çalışma alanının bir sınıflandırması aşağıdaki diyagramda gösterilmiştir:
+Çalışma alanının taksonomisi aşağıdaki diyagramda gösterilmiştir:
 
-[![çalışma alanı sınıflandırması](./media/concept-workspace/azure-machine-learning-taxonomy.png)](./media/concept-workspace/azure-machine-learning-taxonomy.png#lightbox)
+[![Çalışma alanı taksonomisi](./media/concept-workspace/azure-machine-learning-taxonomy.png)](./media/concept-workspace/azure-machine-learning-taxonomy.png#lightbox)
 
-Diyagramda bir çalışma alanının aşağıdaki bileşenleri gösterilmektedir:
+Diyagram, çalışma alanının aşağıdaki bileşenlerini gösterir:
 
-+ Bir çalışma alanı, Azure Machine Learning çalıştırmak için gereken Python ortamıyla yapılandırılmış [Azure Machine Learning işlem örnekleri](concept-compute-instance.md), bulut kaynakları içerebilir.
++ Çalışma alanı, Azure Machine Learning'i çalıştırmak için gerekli python ortamıyla yapılandırılan [Azure Machine Learning bilgi işlem örneklerini,](concept-compute-instance.md)bulut kaynaklarını içerebilir.
 
-+ [Kullanıcı rolleri](how-to-assign-roles.md) , çalışma alanınızı diğer kullanıcılar, takımlar veya projelerle paylaşmanızı sağlar.
-+ [İşlem hedefleri](concept-azure-machine-learning-architecture.md#compute-targets) , denemeleri hesabınızı çalıştırmak için kullanılır.
-+ Çalışma alanını oluşturduğunuzda [ilişkili kaynaklar](#resources) da sizin için oluşturulur.
-+ [Denemeleri](concept-azure-machine-learning-architecture.md#experiments) , modellerinizi oluşturmak için kullandığınız eğitim çalışmalardır.  
-+ İşlem [hatları](concept-azure-machine-learning-architecture.md#ml-pipelines) , modelinize eğitim ve yeniden eğitim için yeniden kullanılabilir iş akışlarıdır.
-+ Veri [kümeleri](concept-azure-machine-learning-architecture.md#datasets-and-datastores) , model eğitimi ve işlem hattı oluşturma için kullandığınız verilerin yönetimine yardımcı olur.
-+ Dağıtmak istediğiniz bir model olduktan sonra, kayıtlı bir model oluşturursunuz.
-+ [Dağıtım uç noktası](concept-azure-machine-learning-architecture.md#endpoints)oluşturmak için kayıtlı modeli ve bir Puanlama betiğini kullanın.
++ [Kullanıcı rolleri,](how-to-assign-roles.md) çalışma alanınızı diğer kullanıcılarla, ekiplerle veya projelerle paylaşmanızı sağlar.
++ [Hesaplama hedefleri,](concept-azure-machine-learning-architecture.md#compute-targets) denemelerinizi çalıştırmak için kullanılır.
++ Çalışma alanını oluşturduğunuzda, [ilişkili kaynaklar](#resources) da sizin için oluşturulur.
++ [Denemeler,](concept-azure-machine-learning-architecture.md#experiments) modellerinizi oluşturmak için kullandığınız eğitim koşularıdır.  
++ [Boru hatları,](concept-azure-machine-learning-architecture.md#ml-pipelines) modelinizi eğitmek ve yeniden eğitmek için yeniden kullanılabilir iş akışlarıdır.
++ [Veri kümeleri,](concept-azure-machine-learning-architecture.md#datasets-and-datastores) model eğitimi ve boru hattı oluşturma için kullandığınız verilerin yönetimine yardımcı olabilir.
++ Dağıtmak istediğiniz bir modele sahip olduktan sonra, kayıtlı bir model oluşturursunuz.
++ [Dağıtım bitiş noktası](concept-azure-machine-learning-architecture.md#endpoints)oluşturmak için kayıtlı modeli ve puanlama komut dosyasını kullanın.
 
-## <a name="tools-for-workspace-interaction"></a>Çalışma alanı etkileşimi için Araçlar
+## <a name="tools-for-workspace-interaction"></a>Çalışma alanı etkileşimi için araçlar
 
-Aşağıdaki yollarla çalışma alanım ile etkileşim kurabilirsiniz:
+Çalışma alanınızla aşağıdaki yollarla etkileşim kurabilirsiniz:
 
-+ Web 'de:
-    + [Azure Machine Learning Studio](https://ml.azure.com) 
-    + [Azure Machine Learning Designer (Önizleme)](concept-designer.md) -yalnızca [Enterprise Edition](overview-what-is-azure-ml.md#sku) çalışma alanlarında kullanılabilir.
-+ Python [için Azure Machine Learning SDK 'sı](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)olan herhangi bir Python ortamında.
-+ [R için Azure Machine Learning SDK 'sı](https://azure.github.io/azureml-sdk-for-r/reference/index.html)olan herhangi bir r ortamında.
++ Web'de:
+    + [Azure Machine Learning stüdyosu](https://ml.azure.com) 
+    + [Azure Machine Learning tasarımcısı (önizleme)](concept-designer.md) - Yalnızca [Enterprise sürümü](overview-what-is-azure-ml.md#sku) çalışma alanlarında kullanılabilir.
++ Python için Azure [Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)ile herhangi bir Python ortamında.
++ R için Azure [Machine Learning SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html)ile herhangi bir R ortamında .
 + Azure Machine Learning [CLI uzantısını](https://docs.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli) kullanarak komut satırında
 
-## <a name="machine-learning-with-a-workspace"></a>Çalışma alanıyla makine öğrenimi
+## <a name="machine-learning-with-a-workspace"></a>Çalışma alanı ile makine öğrenimi
 
-Machine Learning görevleri çalışma alanınıza yapıları okur ve/veya yazar.
+Makine öğrenimi görevleri çalışma alanınıza eserleri okur ve/veya yazar.
 
-+ Model yazma denemesi çalışma alanı için bir deneme çalıştırın.
-+ Model yazma eğitim sonuçlarını çalışma alanına eğitme için otomatik ML kullanın.
-+ Çalışma alanına bir model kaydettirin.
-+ Model dağıtma-bir dağıtım oluşturmak için kayıtlı modeli kullanır.
++ Bir modeli eğitmek için bir deneme çalıştırın - çalışma alanına deneme çalıştırma sonuçları yazar.
++ Bir modeli eğitmek için otomatik ML kullanın - çalışma alanına eğitim sonuçları yazar.
++ Çalışma alanına bir model kaydedin.
++ Bir model dağıtın - bir dağıtım oluşturmak için kayıtlı modeli kullanır.
 + Yeniden kullanılabilir iş akışları oluşturun ve çalıştırın.
-+ Denemeleri, işlem hatları, modeller, dağıtımlar gibi makine öğrenimi yapılarını görüntüleyin.
-+ Modelleri izleyin ve izleyin.
++ Denemeler, boru hatları, modeller, dağıtımlar gibi makine öğrenimi yapıtlarını görüntüleyin.
++ Modelleri takip edin ve izleyin.
 
 ## <a name="workspace-management"></a>Çalışma alanı yönetimi
 
-Ayrıca, aşağıdaki çalışma alanı yönetim görevlerini gerçekleştirebilirsiniz:
+Ayrıca aşağıdaki çalışma alanı yönetimi görevlerini gerçekleştirebilirsiniz:
 
-| Çalışma alanı yönetim görevi   | Portal              | Studio | Python SDK/R SDK       | CLI        |
+| Çalışma alanı yönetimi görevi   | Portal              | Studio | Python SDK / R SDK       | CLI        |
 |---------------------------|---------|---------|------------|------------|
 | Çalışma alanı oluşturma        | **&check;**     | | **&check;** | **&check;** |
 | Çalışma alanı erişimini yönetme    | **&check;**   || |  **&check;**    |
-| Enterprise Edition 'a yükseltme    | **&check;** | **&check;**  | |     |
-| İşlem kaynaklarını oluşturma ve yönetme    | **&check;**   | **&check;** | **&check;** |  **&check;**   |
-| Not defteri VM 'si oluşturma |   | **&check;** | |     |
+| Kurumsal sürümüne yükseltme    | **&check;** | **&check;**  | |     |
+| İşlem kaynakları oluşturma ve yönetme    | **&check;**   | **&check;** | **&check;** |  **&check;**   |
+| Not Defteri VM Oluşturma |   | **&check;** | |     |
 
 > [!WARNING]
-> Azure Machine Learning çalışma alanınızı farklı bir aboneliğe taşımak veya sahip olunan aboneliğin yeni bir kiracıya taşınması desteklenmez. Bunun yapılması hatalara neden olabilir.
+> Azure Machine Learning çalışma alanınızı farklı bir aboneye taşımak veya sahip olan aboneliğiyeni bir kiracıya taşımak desteklenmez. Bunu yapmak hatalara neden olabilir.
 
-## <a name='create-workspace'></a>Çalışma alanı oluşturma
+## <a name="create-a-workspace"></a><a name='create-workspace'></a>Çalışma alanı oluşturma
 
-Bir çalışma alanı oluşturduğunuzda, [temel veya Enterprise sürümü](overview-what-is-azure-ml.md#sku)ile oluşturulup oluşturulmayacağını siz karar verirsiniz. Sürüm, çalışma alanında kullanılabilen özellikleri belirler. Enterprise Edition, diğer özelliklerin yanı sıra [Azure Machine Learning tasarımcı](concept-designer.md) ve [otomatik makine öğrenimi denemeleri](tutorial-first-experiment-automated-ml.md)oluşturma Studio sürümüne erişmenizi sağlar.  Daha ayrıntılı bilgi ve fiyatlandırma bilgileri için bkz. [Azure Machine Learning fiyatlandırması](https://azure.microsoft.com/pricing/details/machine-learning/).
+Bir çalışma alanı oluşturduğunuzda, [temel veya Enterprise sürümüyle](overview-what-is-azure-ml.md#sku)mi oluşturacağına karar verirsiniz. Sürüm, çalışma alanında bulunan özellikleri belirler. Diğer özelliklerin yanı sıra, Enterprise edition [Azure Machine Learning tasarımcısına](concept-designer.md) ve [otomatik makine öğrenimi denemeleri](tutorial-first-experiment-automated-ml.md)oluşturmanın stüdyo sürümüne erişmenizi sağlar.  Daha fazla bilgi ve fiyatlandırma bilgisi için [Azure Machine Learning fiyatlandırması](https://azure.microsoft.com/pricing/details/machine-learning/)'na bakın.
 
 Çalışma alanı oluşturmanın birden çok yolu vardır:  
 
-* Her adımda size yol göstermek için bir nokta ve tıklama arabirimi için [Azure Portal](how-to-manage-workspace.md) kullanın.
-* Python betikleri veya Jupiter not defterlerinden anında çalışma alanı oluşturmak için [Python için Azure Machine Learning SDK 'sını](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py#workspace) kullanın
-* Şirket güvenlik standartları ile oluşturma işlemini otomatik hale getirmeniz veya özelleştirmeniz gerektiğinde bir [Azure Resource Manager şablonu](how-to-create-workspace-template.md) veya [Azure Machine Learning CLI](reference-azure-machine-learning-cli.md) kullanın.
-* Visual Studio Code ' de çalışıyorsanız [vs Code uzantısını](tutorial-setup-vscode-extension.md)kullanın.
+* Her adımda size yol vermek için bir nokta ve tıklatma arabirimi için [Azure portalını](how-to-manage-workspace.md) kullanın.
+* Python komut dosyalarından veya Jüpiter not defterlerinden anında bir çalışma alanı oluşturmak [için Python için Azure Machine Learning SDK'yı](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py#workspace) kullanın
+* Oluşturmayı kurumsal güvenlik standartlarıyla otomatikleştirmeniz veya özelleştirmeniz gerektiğinde [Azure Kaynak Yöneticisi şablonu](how-to-create-workspace-template.md) veya [Azure Machine Learning CLI](reference-azure-machine-learning-cli.md) şablonu kullanın.
+* Visual Studio Code'da çalışıyorsanız, [VS Kodu uzantısını](tutorial-setup-vscode-extension.md)kullanın.
 
 > [!NOTE]
-> Çalışma alanı adı büyük/küçük harfe duyarlıdır.
+> Çalışma alanı adı büyük/küçük harf duyarsız.
 
-## <a name="upgrade"></a>Enterprise Edition 'a yükseltme
+## <a name="upgrade-to-enterprise-edition"></a><a name="upgrade"></a>Kurumsal sürümüne yükseltme
 
-Azure portal kullanarak [çalışma alanınızı temel kurumsal sürüme yükseltebilirsiniz](how-to-manage-workspace.md#upgrade) . Enterprise Edition çalışma alanını temel bir sürüm çalışma alanına indirgeyemezsiniz. 
+Çalışma [alanınızı Azure portalını kullanarak Temel'den Enterprise sürümüne yükseltebilirsiniz.](how-to-manage-workspace.md#upgrade) Kurumsal sürüm çalışma alanını Temel sürüm çalışma alanına indiremezsiniz. 
 
-## <a name="resources"></a>İlişkili kaynaklar
+## <a name="associated-resources"></a><a name="resources"></a>İlişkili kaynaklar
 
-Yeni bir çalışma alanı oluşturduğunuzda, çalışma alanı tarafından kullanılan bazı Azure kaynakları otomatik olarak oluşturur:
+Yeni bir çalışma alanı oluşturduğunuzda, çalışma alanı tarafından otomatik olarak kullanılan birkaç Azure kaynağı oluşturur:
 
-+ [Azure Container Registry](https://azure.microsoft.com/services/container-registry/): eğitim sırasında ve bir modeli dağıtırken kullandığınız Docker kapsayıcılarını kaydeder. Maliyetleri en aza indirmek için, dağıtım görüntüleri oluşturuluncaya kadar ACR **yavaş yüklenir** .
-+ [Azure depolama hesabı](https://azure.microsoft.com/services/storage/): çalışma alanı için varsayılan veri deposu olarak kullanılır.  Azure Machine Learning işlem örneklerinizde kullanılan jupi Not defterleri burada da depolanır.
-+ [Azure Application Insights](https://azure.microsoft.com/services/application-insights/): modelleriniz hakkında izleme bilgilerini depolar.
-+ [Azure Key Vault](https://azure.microsoft.com/services/key-vault/): işlem hedefleri ve çalışma alanı için gereken diğer hassas bilgiler tarafından kullanılan gizli dizileri depolar.
++ [Azure Kapsayıcı Kayıt Defteri](https://azure.microsoft.com/services/container-registry/): Eğitim sırasında ve bir modeli dağıtırken kullandığınız docker kapsayıcılarını kaydeder. Maliyetleri en aza indirmek için, ACR dağıtım görüntüleri oluşturulana kadar **tembel yüklenir.**
++ [Azure Depolama hesabı](https://azure.microsoft.com/services/storage/): Çalışma alanı için varsayılan veri deposu olarak kullanılır.  Azure Machine Learning bilgi işlem örneklerinizde kullanılan jupyter dizüstü bilgisayarlar da burada depolanır.
++ [Azure Uygulama Öngörüleri](https://azure.microsoft.com/services/application-insights/): Modelleriniz hakkındaki izleme bilgilerini depolar.
++ [Azure Anahtar Kasası](https://azure.microsoft.com/services/key-vault/): Bilgi işlem hedefleri ve çalışma alanının ihtiyaç duyduğu diğer hassas bilgiler tarafından kullanılan sırları saklar.
 
 > [!NOTE]
-> Yeni sürümler oluşturmaya ek olarak, var olan Azure hizmetlerini de kullanabilirsiniz.
+> Yeni sürümler oluşturmanın yanı sıra, varolan Azure hizmetlerini de kullanabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Machine Learning kullanmaya başlamak için bkz.:
+Azure Machine Learning'e başlamak için bkz:
 
-+ [Azure Machine Learning genel bakış](overview-what-is-azure-ml.md)
-+ [Çalışma Alanı oluşturma](how-to-manage-workspace.md)
-+ [Çalışma Alanını Yönetme](how-to-manage-workspace.md)
-+ [Öğretici: Python SDK ile ilk ML denemenizi oluşturmaya başlama](tutorial-1st-experiment-sdk-setup.md)
-+ [Öğretici: R SDK ile Azure Machine Learning kullanmaya başlama](tutorial-1st-r-experiment.md)
-+ [Öğretici: otomatik makine öğrenimi ile ilk sınıflandırma modelinizi oluşturma](tutorial-first-experiment-automated-ml.md) (yalnızca [Enterprise Edition](overview-what-is-azure-ml.md#sku) çalışma alanlarında kullanılabilir)
-+ [Öğretici: tasarımcı ile otomobil fiyatını tahmin](tutorial-designer-automobile-price-train-score.md) etme (yalnızca [Enterprise Edition](overview-what-is-azure-ml.md#sku) çalışma alanlarında kullanılabilir)
++ [Azure Machine Learning'e genel bakış](overview-what-is-azure-ml.md)
++ [Çalışma alanı oluşturma](how-to-manage-workspace.md)
++ [Çalışma alanını yönetme](how-to-manage-workspace.md)
++ [Öğretici: Python SDK ile ilk ML denemeoluşturmaya başlayın](tutorial-1st-experiment-sdk-setup.md)
++ [Öğretici: R SDK ile Azure Machine Learning ile başlayın](tutorial-1st-r-experiment.md)
++ [Öğretici: Otomatik makine öğrenimi ile ilk sınıflandırma modelinizi oluşturun](tutorial-first-experiment-automated-ml.md) (yalnızca [Enterprise edition](overview-what-is-azure-ml.md#sku) çalışma alanlarında kullanılabilir)
++ [Öğretici: Tasarımcı ile otomobil fiyatını tahmin edin](tutorial-designer-automobile-price-train-score.md) (Yalnızca [Enterprise edition](overview-what-is-azure-ml.md#sku) çalışma alanlarında kullanılabilir)
