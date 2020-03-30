@@ -1,44 +1,44 @@
 ---
-title: Kubernetes 'te uygulama geliştirme
+title: Kubernetes üzerinde bir uygulama geliştirme
 services: azure-dev-spaces
 ms.date: 02/20/2020
 ms.topic: quickstart
-description: Bu hızlı başlangıçta, Azure Kubernetes hizmetinde bir uygulama geliştirmek için Azure Dev Spaces ve komut satırının nasıl kullanılacağı gösterilir.
-keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes hizmeti, kapsayıcılar, Held, hizmet ağı, hizmet kafesi yönlendirme, kubectl, k8s
+description: Bu hızlı başlangıç, Azure Kubernetes Hizmeti'nde bir uygulama geliştirmek için Azure Dev Spaces'i ve komut satırını nasıl kullanacağınızı gösterir
+keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Servisi, konteynerler, Miğfer, servis kafesi, servis örgü yönlendirme, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 974f0039bb16dc685bb056e279df63933e358edd
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.openlocfilehash: 8ee5cba06d9a526640d9057ee88a681d46392f4f
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2020
-ms.locfileid: "78245259"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80239703"
 ---
-# <a name="quickstart-develop-an-application-on-kubernetes---azure-dev-spaces"></a>Hızlı başlangıç: Kubernetes 'te uygulama geliştirme-Azure Dev Spaces
+# <a name="quickstart-develop-an-application-on-kubernetes---azure-dev-spaces"></a>Quickstart: Kubernetes'te bir uygulama geliştirin - Azure Dev Spaces
 Bu kılavuzda şunların nasıl yapıldığını öğreneceksiniz:
 
-- Azure’da yönetilen bir Kubernetes ile Azure Dev Spaces’ı ayarlayın.
+- Azure'da yönetilen bir Kubernetes ile Azure Dev Spaces'ı ayarlayın.
 - Komut satırını kullanarak kapsayıcılarda kod geliştirin ve çalıştırın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 - Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz hesap](https://azure.microsoft.com/free) oluşturabilirsiniz.
 - [Yüklü Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-## <a name="create-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes hizmet kümesi oluşturma
+## <a name="create-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Hizmet kümesi oluşturma
 
-[Desteklenen bir bölgede][supported-regions]aks kümesi oluşturmanız gerekir. Aşağıdaki komutlar *Myresourcegroup* adlı bir kaynak grubu ve *myaks*adlı bir aks kümesi oluşturur.
+Desteklenen bir [bölgede][supported-regions]bir AKS kümesi oluşturmanız gerekir. Aşağıdaki komutlar *MyResourceGroup* adında bir kaynak grubu ve *MyAKS*adlı bir AKS kümesi oluşturur.
 
 ```azurecli
 az group create --name MyResourceGroup --location eastus
 az aks create -g MyResourceGroup -n MyAKS --location eastus --generate-ssh-keys
 ```
 
-## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>AKS kümenizde Azure Dev Spaces etkinleştirme
+## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>AKS kümenizde Azure Dev Alanları'nı etkinleştirme
 
-AKS kümenizde dev alanlarını etkinleştirmek ve istemleri izlemek için `use-dev-spaces` komutunu kullanın. Aşağıdaki komut *Myresourcegroup* grubundaki *myaks* kümesinde dev alanlarını etkinleştiriyor ve *varsayılan* bir dev alanı oluşturuyor.
+AKS `use-dev-spaces` kümenizde Dev Spaces'i etkinleştirmek ve istemleri izlemek için komutu kullanın. Aşağıdaki komut, *MyResourceGroup* grubunda *MyAKS* kümesinde Dev Spaces'i etkinleştirive *varsayılan* bir dev alanı oluşturur.
 
 > [!NOTE]
-> `use-dev-spaces` komutu, zaten yüklenmemişse Azure Dev Spaces CLı 'yi de yükler. Azure Dev Spaces CLı 'yi Azure Cloud Shell yükleyemezsiniz.
+> Komut, `use-dev-spaces` zaten yüklü değilse Azure Dev Spaces CLI'yi de yükler. Azure Geliştirme Alanları CLI'sini Azure Bulut Kabuğu'na yükleyemezsiniz.
 
 ```azurecli
 az aks use-dev-spaces -g MyResourceGroup -n MyAKS
@@ -60,11 +60,11 @@ Configuring and selecting dev space 'default'...3s
 Managed Kubernetes cluster 'MyAKS' in resource group 'MyResourceGroup' is ready for development in dev space 'default'. Type `azds prep` to prepare a source directory for use with Azure Dev Spaces and `azds up` to run.
 ```
 
-## <a name="get-sample-application-code"></a>Örnek uygulama kodu al
+## <a name="get-sample-application-code"></a>Örnek uygulama kodu alın
 
-Bu makalede, Azure Dev Spaces kullanmayı göstermek için [Azure dev Spaces örnek uygulamayı](https://github.com/Azure/dev-spaces) kullanırsınız.
+Bu makalede, Azure [Dev Spaces](https://github.com/Azure/dev-spaces) kullanarak göstermek için Azure Dev Spaces örnek uygulamasını kullanırsınız.
 
-Uygulamayı GitHub 'dan kopyalayın ve *dev-Spaces/Samples/NodeJS/Başlarken/webön uç* dizinine gidin:
+Uygulamayı GitHub'dan klonla ve *dev-spaces/samples/nodejs/getting-started/webfrontend* dizinine gidin:
 
 ```cmd
 git clone https://github.com/Azure/dev-spaces
@@ -73,22 +73,22 @@ cd dev-spaces/samples/nodejs/getting-started/webfrontend
 
 ## <a name="prepare-the-application"></a>Uygulamayı hazırlama
 
-Uygulamanızı Azure Dev Spaces çalıştırmak için bir Dockerfile ve HELI grafiğinin olması gerekir. [Java][java-quickstart], [.NET Core][netcore-quickstart]ve [Node. js][nodejs-quickstart]gibi bazı dillerde, Azure dev Spaces istemci araçları, ihtiyacınız olan tüm varlıkları oluşturabilir. Go, PHP ve Python gibi diğer birçok dil için, istemci araçları, geçerli bir Dockerfile sağlayabilmeniz koşuluyla Held grafiğini oluşturabilir.
+Uygulamanızı Azure Geliştirme Spaces'te çalıştırmak için bir Dockerfile ve Helm grafiğine ihtiyacınız vardır. [Java][java-quickstart], [.NET core][netcore-quickstart]ve [Node.js][nodejs-quickstart]gibi bazı dillerde Azure Dev Spaces istemcisi aracı, ihtiyacınız olan tüm varlıkları oluşturabilir. Go, PHP ve Python gibi diğer birçok dilde, istemci aracı, geçerli bir Dockerfile sağlayabildiğiniz sürece Miğfer grafiğini oluşturabilir.
 
-`azds prep` komutunu kullanarak Kubernetes 'te uygulamayı çalıştırmak için Docker ve helk grafik varlıkları oluşturun:
+Uygulamayı Kubernetes'te `azds prep` komutu kullanarak çalıştırmak için Docker ve Helm grafik varlıklarını oluşturun:
 
 ```cmd
 azds prep --enable-ingress
 ```
 
-Docker ve Held grafik varlıklarını doğru şekilde oluşturmak için *geliştirme-Spaces/Samples/NodeJS/alma-başlatma/webön uç* dizininden `prep` komutunu çalıştırmalısınız.
+Docker ve `prep` Helm grafik varlıklarını doğru bir şekilde oluşturmak için komutu *dev-spaces/samples/nodejs/getting-started/webfrontend* dizininden çalıştırmanız gerekir.
 
 > [!TIP]
-> `prep` komutu, projeniz için [bir Dockerfile ve Held grafiği](how-dev-spaces-works.md#prepare-your-code) oluşturmaya çalışır. Azure Dev Spaces, kodunuzu derlemek ve çalıştırmak için bu dosyaları kullanır, ancak projenin oluşturulup çalıştırıldığını değiştirmek istiyorsanız bu dosyaları değiştirebilirsiniz.
+> Komut, `prep` projeniz için [bir Dockerfile ve Helm grafiği](how-dev-spaces-works-prep.md#prepare-your-code) oluşturmaya çalışır. Azure Dev Spaces, kodunuzu oluşturmak ve çalıştırmak için bu dosyaları kullanır, ancak projenin oluşturulma ve çalışma şeklini değiştirmek istiyorsanız bu dosyaları değiştirebilirsiniz.
 
 ## <a name="build-and-run-code-in-kubernetes"></a>Kubernetes'de kodu oluşturma ve çalıştırma
 
-Kodunuzu `azds up` komutunu kullanarak AKS 'de derleyin ve çalıştırın:
+Komutu kullanarak KODUNUZU AKS'de oluşturun ve çalıştırın: `azds up`
 
 ```cmd
 $ azds up
@@ -112,26 +112,26 @@ Service 'webfrontend' port 80 (http) is available at http://localhost:54256
 ...
 ```
 
-Hizmetin çalışmakta olduğu ortak URL 'yi açarak, `azds up` komutunun çıktısında görüntülendiğini görebilirsiniz. Bu örnekte, genel URL *http://webfrontend.1234567890abcdef1234.eus.azds.io/* .
+Komuttan çıktıda görüntülenen genel URL'yi açarak hizmetin `azds up` çalıştığını görebilirsiniz. Bu örnekte, genel *http://webfrontend.1234567890abcdef1234.eus.azds.io/* URL.
 
 > [!NOTE]
-> `azds up`çalıştırılırken hizmetinize gittiğinizde, HTTP isteği izlemeleri de `azds up` komutunun çıktısında görüntülenir. Bu izlemeler, hizmetinizde sorun gidermenize ve hata ayıklamanıza yardımcı olabilir. `azds up`çalıştırırken `--disable-http-traces` kullanarak bu izlemeleri devre dışı bırakabilirsiniz.
+> Çalışırken `azds up`hizmetinize gidince, HTTP istek izleri de `azds up` komutun çıktısında görüntülenir. Bu izlemeler, hizmetinizi sorun gidermenize ve hata ayıklamanıza yardımcı olabilir. Çalışırken bu izleri kullanarak `--disable-http-traces` devre dışı `azds up`kullanabilirsiniz.
 
-*Ctrl + c*kullanarak `azds up` komutunu durdurursanız, hizmet aks 'de çalışmaya devam eder ve genel URL kullanılabilir olarak kalır.
+`azds up` *Ctrl+c*kullanarak komutu durdurursanız, hizmet AKS'de çalışmaya devam eder ve genel URL kullanılabilir kalır.
 
 ## <a name="update-code"></a>Kodu güncelleştirme
 
-Hizmetinizin güncelleştirilmiş bir sürümünü dağıtmak için, projenizdeki herhangi bir dosyayı güncelleştirebilir ve `azds up` komutunu yeniden çalıştırabilirsiniz. Örnek:
+Hizmetinizin güncelleştirilmiş bir sürümünü dağıtmak için, projenizdeki herhangi `azds up` bir dosyayı güncelleyebilir ve komutu yeniden çalıştırabilirsiniz. Örnek:
 
-1. `azds up` hala çalışıyorsa, *Ctrl + c*tuşlarına basın.
-1. [`server.js`satırı 13 ' te](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/server.js#L13) güncelleştir:
+1. Çalışıyorsa `azds up` *Ctrl+c*tuşuna basın.
+1. [Güncelleme satırı 13 için: `server.js` ](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/server.js#L13)
     
     ```javascript
         res.send('Hello from webfrontend in Azure');
     ```
 
 1. Yaptığınız değişiklikleri kaydedin.
-1. `azds up` komutunu yeniden çalıştırın:
+1. Komutu `azds up` yeniden çalıştırın:
 
     ```cmd
     $ azds up
@@ -142,10 +142,10 @@ Hizmetinizin güncelleştirilmiş bir sürümünü dağıtmak için, projenizdek
     ...    
     ```
 
-1. Çalışan hizmetinize gidin ve değişikliklerinizi gözlemleyin.
-1. `azds up` komutunu durdurmak için *Ctrl + c* tuşlarına basın.
+1. Çalışan servisinize gidin ve değişikliklerinizi gözlemleyin.
+1. Komutu durdurmak için *Ctrl+c* tuşuna `azds up` basın.
 
-## <a name="clean-up-your-azure-resources"></a>Azure kaynaklarınızı Temizleme
+## <a name="clean-up-your-azure-resources"></a>Azure kaynaklarınızı temizleme
 
 ```azurecli
 az group delete --name MyResourceGroup --yes --no-wait
@@ -153,10 +153,10 @@ az group delete --name MyResourceGroup --yes --no-wait
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Dev Spaces birden çok kapsayıcı genelinde daha karmaşık uygulamalar geliştirmenize nasıl yardımcı olduğunu ve farklı alanlarda kodunuzun farklı sürümleriyle veya dallarıyla çalışarak işbirliğine dayalı geliştirmeyi nasıl kolaylaştırabileceğinizi öğrenin.
+Azure Geliştirme Alanları'nın birden çok kapsayıcıda daha karmaşık uygulamalar geliştirmenize nasıl yardımcı olduğunu ve farklı alanlarda farklı sürümlerle veya kod dallarıyla çalışarak ortak geliştirmeyi nasıl basitleştirebileceğinizi öğrenin.
 
 > [!div class="nextstepaction"]
-> [Azure Dev Spaces 'de takım geliştirme][team-quickstart]
+> [Azure Geliştirme Alanlarında ekip geliştirme][team-quickstart]
 
 [java-quickstart]: quickstart-java.md
 [nodejs-quickstart]: quickstart-nodejs.md

@@ -1,7 +1,7 @@
 ---
 title: Veri yedekliği
 titleSuffix: Azure Storage
-description: Microsoft Azure Depolama hesabınızdaki veriler, dayanıklılık ve yüksek kullanılabilirlik için çoğaltılır. Artıklık yapılandırması yerel olarak yedekli depolama (LRS), bölgesel olarak yedekli depolama (ZRS), coğrafi olarak yedekli depolama (GRS), Okuma Erişimli Coğrafi olarak yedekli depolama (RA-GRS), coğrafi bölge yedekli depolama (GZRS) (Önizleme) ve okuma erişimi içerir coğrafi bölge yedekli depolama (RA-GZRS) (Önizleme).
+description: Microsoft Azure Depolama hesabınızdaki veriler dayanıklılık ve yüksek kullanılabilirlik için çoğaltılır. Artıklık yapılandırmaları yerel yedekdepolama (LRS), bölge yedekli depolama (ZRS), coğrafi yedekli depolama (GRS), okuma-erişim coğrafi yedekli depolama (RA-GRS), jeo-bölge yedekli depolama (GZRS) (önizleme) ve okuma erişimi içerir coğrafi bölge yedekli depolama (RA-GZRS) (önizleme).
 services: storage
 author: tamram
 ms.service: storage
@@ -11,100 +11,101 @@ ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.openlocfilehash: 7ae5f59a1bd96362d5466b2f6363185ba168d942
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79255268"
 ---
-# <a name="azure-storage-redundancy"></a>Azure depolama artıklığı
+# <a name="azure-storage-redundancy"></a>Azure Depolama artıklığı
 
-Azure depolama, geçici donanım arızaları, ağ veya güç kesintileri ve çok büyük doğal felaketler de dahil olmak üzere planlı ve planlanmamış olaylardan korunabilmesi için verilerinizin birden çok kopyasını her zaman depolar. Yedeklilik, depolama hesabınızın, başarısızlık durumunda bile [Azure depolama Için hizmet düzeyi sözleşmesini (SLA)](https://azure.microsoft.com/support/legal/sla/storage/) karşıladığından emin olmanızı sağlar.
+Azure Depolama, geçici donanım arızaları, ağ veya elektrik kesintileri ve büyük doğal afetler de dahil olmak üzere planlanmış ve planlanmamış olaylara karşı korunacak şekilde verilerinizin birden çok kopyasını her zaman depolar. Artıklık, depolama hesabınızın hatalar karşısında bile [Azure Depolama için Hizmet Düzeyi Sözleşmesi'ni (SLA)](https://azure.microsoft.com/support/legal/sla/storage/) karşılamasını sağlar.
 
-Senaryonuz için en uygun artıklık seçeneğinin hangisi olduğuna karar verirken, düşük maliyetler ve daha yüksek kullanılabilirlik ve dayanıklılık arasındaki avantajları göz önünde bulundurun. Hangi artıklık seçeneğini belirlemenizi gerektiğine yardımcı olan faktörler şunlardır:  
+Senaryonuz için hangi artıklık seçeneğinin en iyi olduğuna karar verirken, daha düşük maliyetler ve daha yüksek kullanılabilirlik ve dayanıklılık arasındaki dengeleri göz önünde bulundurun. Hangi artıklık seçeneğini seçmenize yardımcı olan etkenler şunlardır:  
 
-- Verileriniz birincil bölgede nasıl çoğaltılır
-- Verilerinizin birincil bölgeye coğrafi olarak uzaktaki ikinci bir konuma çoğaltılıp çoğaltılmayacağı, bölgesel olağanüstü durumlara karşı koruma
-- Birincil bölge herhangi bir nedenle kullanılamaz duruma gelirse, uygulamanızın ikincil bölgedeki çoğaltılan verilere okuma erişimi gerektirip gerektirmediğini belirtir
+- Verileriniz birincil bölgede nasıl çoğaltılır?
+- Bölgesel afetlere karşı korunmak için verilerinizin coğrafi olarak birincil bölgeye uzak ikinci bir konuma çoğaltılıp çoğaltılmadığı
+- Birincil bölge herhangi bir nedenle kullanılamıyorsa, uygulamanızın ikincil bölgedeki çoğaltılan verilere okuma erişimi gerektirenden gerek ip olmadığı
 
-## <a name="redundancy-in-the-primary-region"></a>Birincil bölgedeki artıklık
+## <a name="redundancy-in-the-primary-region"></a>Birincil bölgede fazlalık
 
-Azure depolama hesabındaki veriler her zaman birincil bölgede üç kez çoğaltılır. Azure depolama, verilerinizin birincil bölgede nasıl çoğaltılacağı konusunda iki seçenek sunar:
+Azure Depolama hesabındaki veriler birincil bölgede her zaman üç kez çoğaltılır. Azure Depolama, verilerinizin birincil bölgede nasıl çoğaltıldılabilen iki seçenek sunar:
 
-- **Yerel olarak yedekli depolama (LRS)** , verilerinizi, birincil bölgedeki tek bir fiziksel konum içinde zaman uyumlu olarak üç kez kopyalar. LRS, en az maliyetli çoğaltma seçeneğidir, ancak yüksek kullanılabilirlik gerektiren uygulamalar için önerilmez.
-- Bölgesel olarak **yedekli depolama (ZRS)** , verilerinizi, birincil bölgedeki üç Azure kullanılabilirlik bölgesi üzerinden eşzamanlı olarak kopyalar. Microsoft, yüksek kullanılabilirlik gerektiren uygulamalar için birincil bölgede ZRS kullanımını ve ayrıca bir ikincil bölgeye çoğaltmayı önerir.
+- **Yerel olarak yedekli depolama (LRS),** verilerinizi birincil bölgedeki tek bir fiziksel konum içinde eşzamanlı olarak üç kez kopyalar. LRS en ucuz çoğaltma seçeneğidir, ancak yüksek kullanılabilirlik gerektiren uygulamalar için önerilmez.
+- **Bölge yedekli depolama (ZRS),** verilerinizi birincil bölgedeki üç Azure kullanılabilirlik bölgesinde eşzamanlı olarak kopyalar. Yüksek kullanılabilirlik gerektiren uygulamalar için Microsoft, birincil bölgede ZRS kullanılmasını ve ikincil bir bölgeye çoğaltılmasını önerir.
 
 ### <a name="locally-redundant-storage"></a>Yerel olarak yedekli depolama
 
-Yerel olarak yedekli depolama (LRS), verilerinizi birincil bölgedeki tek bir fiziksel konum içinde üç kez çoğaltır. LRS, belirli bir yıl boyunca nesnelerin en az% 99,999999999 (11 nines) dayanıklılığı sağlar.
+Yerel olarak yedekli depolama (LRS), verilerinizi birincil bölgedeki tek bir fiziksel konum içinde üç kez çoğaltır. LRS, belirli bir yıl içinde nesnelerin en az %99,999999999999% (11 dokuz) dayanıklılığını sağlar.
 
-LRS, en düşük maliyetli artıklık seçeneğidir ve diğer seçeneklere kıyasla en az dayanıklılık sağlar. LRS, verilerinizi sunucu rafı ve sürücü hatalarıyla karşı korur. Ancak, veri merkezinde yangın ya da taşması gibi bir olağanüstü durum oluşursa, LRS kullanan bir depolama hesabının tüm çoğaltmaları kaybolabilir veya kurtarılamaz olabilir. Bu riski azaltmak için Microsoft, bölgesel olarak [yedekli depolama (](#zone-redundant-storage) ZRS), coğrafi olarak [yedekli depolama](#geo-redundant-storage) (GRS) veya [coğrafi bölge-yedekli depolama (Önizleme)](#geo-zone-redundant-storage-preview) (GZRS) kullanmanızı önerir.
+LRS en düşük maliyetli artıklık seçeneğidir ve diğer seçeneklere göre en az dayanıklılık sunar. LRS verilerinizi sunucu rafına ve sürücü arızalarına karşı korur. Ancak, veri merkezi içinde yangın veya su baskını gibi bir felaket meydana gelirse, LRS kullanan bir depolama hesabının tüm kopyaları kaybolabilir veya kurtarılamaz olabilir. Bu riski azaltmak için Microsoft, [bölge yedekli depolama](#zone-redundant-storage) (ZRS), [coğrafi yedekli depolama](#geo-redundant-storage) (GRS) veya coğrafi bölge [yedekli depolama (önizleme) (GZRS)](#geo-zone-redundant-storage-preview) kullanmanızı önerir.
 
-LRS kullanan bir depolama hesabına yazma isteği eşzamanlı olarak gerçekleştirilir. Yazma işlemi, yalnızca veriler üç kopyaya yazıldıktan sonra başarıyla döndürülür.
+LRS kullanan bir depolama hesabına yazma isteği eşzamanlı olarak gerçekleşir. Yazma işlemi, yalnızca veriler üç yinelemeye de yazıldıktan sonra başarıyla döndürür.
 
 LRS aşağıdaki senaryolar için iyi bir seçimdir:
 
-- Uygulamanız veri kaybı oluşursa kolayca yeniden oluşturabileceğiniz verileri depoluyorsa LRS 'yi kabul edebilirsiniz.
-- Uygulamanız veri idare gereksinimleri nedeniyle yalnızca bir ülke veya bölge içinde veri çoğaltmaya sınırlı olursa LRS 'yi kabul edebilirsiniz. Bazı durumlarda, verilerin coğrafi olarak çoğaltılacağı eşleştirilmiş bölgeler başka bir ülkede veya bölgede olabilir. Eşleştirilmiş bölgeler hakkında daha fazla bilgi için bkz. [Azure bölgeleri](https://azure.microsoft.com/regions/).
+- Uygulamanız, veri kaybı oluşursa kolayca yeniden oluşturulabilecek verileri depolarsa, LRS'yi tercih edebilirsiniz.
+- Uygulamanız, veri yönetimi gereksinimleri nedeniyle yalnızca bir ülke veya bölge içinde veri çoğaltma ile sınırlıysa, LRS'yi tercih edebilirsiniz. Bazı durumlarda, verilerin coğrafi olarak çoğaltıldığı eşleştirilmiş bölgeler başka bir ülke veya bölgede olabilir. Eşlenen bölgeler hakkında daha fazla bilgi için [Azure bölgelerine](https://azure.microsoft.com/regions/)bakın.
 
 ### <a name="zone-redundant-storage"></a>Alanlar arası yedekli depolama
 
-Bölgesel olarak yedekli depolama (ZRS), Azure depolama verilerinizi birincil bölgedeki üç Azure kullanılabilirlik bölgesinde eşzamanlı olarak çoğaltır. Her kullanılabilirlik alanı, bağımsız güç, soğutma ve ağ ile ayrı bir fiziksel konumdur. ZRS, belirli bir yıl boyunca en az% 99,9999999999 (12 9 ' a) Azure depolama veri nesneleri için dayanıklılık sağlar.
 
-ZRS ile, bir bölge kullanılamaz hale gelirse bile verilerinize hem okuma hem de yazma işlemleri için erişilebilir. Bir bölge kullanılamaz duruma gelirse Azure, DNS yeniden işaretleme gibi ağ güncelleştirmelerini alır. Güncelleştirmeler tamamlanmadan önce verilere erişmeniz durumunda bu güncelleştirmeler uygulamanızı etkileyebilir. ZRS için uygulama tasarlarken, üstel geri alma ile yeniden deneme ilkeleri uygulama da dahil olmak üzere geçici hata işleme için uygulamaları izleyin.
+Bölge yedekli depolama (ZRS), Azure Depolama verilerinizi birincil bölgedeki üç Azure kullanılabilirlik bölgesinde eşzamanlı olarak çoğaltır. Her kullanılabilirlik bölgesi, bağımsız güç, soğutma ve ağ ile ayrı bir fiziksel konumdur. ZRS, belirli bir yıl içinde en az %99,99999999999 (12 9's) Azure Depolama veri nesneleri için dayanıklılık sunar.
 
-ZRS kullanan bir depolama hesabına yazma isteği eşzamanlı olarak gerçekleştirilir. Yazma işlemi, veriler yalnızca üç kullanılabilirlik alanı genelinde tüm yinelemelere yazıldıktan sonra başarıyla döndürülür.
+ZRS ile, bölge kullanılamamış olsa bile verileriniz hem okuma hem de yazma işlemleri için hala erişilebilir. Bir bölge kullanılamaz hale gelirse, Azure DNS yeniden işaretleme gibi ağ güncelleştirmelerini üstlenir. Güncelleştirmeler tamamlanmadan önce verilere erişirseniz, bu güncelleştirmeler uygulamanızı etkileyebilir. ZRS uygulamaları tasarlarken, üstel geri leme ile yeniden deneme ilkelerini uygulamak da dahil olmak üzere geçici hata işleme uygulamalarını izleyin.
 
-Microsoft, birincil bölgede, tutarlılık, dayanıklılık ve yüksek kullanılabilirlik gerektiren senaryolar için ZRS kullanılmasını önerir. ZRS, geçici olarak kullanılamaz duruma gelirse verileriniz için mükemmel performans, düşük gecikme süresi ve dayanıklılık sağlar. Ancak, ZRS, verileri birden çok bölgenin kalıcı olarak etkilediği bölgesel bir olağanüstü duruma karşı koruyamayabilir. Bölgesel felate karşı koruma için, Microsoft birincil bölgede ZRS kullanan ve ayrıca verilerinizi ikincil bir bölgeye çoğaltan [coğrafi bölge yedekli depolama](#geo-zone-redundant-storage-preview) (GZRS) kullanılmasını önerir.
+ZRS kullanan bir depolama hesabına yazma isteği eşzamanlı olarak gerçekleşir. Yazma işlemi, yalnızca veriler üç kullanılabilirlik bölgesinde ki tüm yinelemelere yazıldıktan sonra başarıyla döndürür.
 
-Aşağıdaki tabloda hangi depolama hesabı türlerinin hangi bölgelerde ZRS destekledikleri gösterilmektedir:
+Microsoft, tutarlılık, dayanıklılık ve yüksek kullanılabilirlik gerektiren senaryolar için birincil bölgede ZRS kullanılmasını önerir. ZRS, geçici olarak kullanılamaması durumunda mükemmel performans, düşük gecikme ve verileriniz için esneklik sağlar. Ancak, ZRS tek başına verilerinizi birden çok bölge kalıcı olarak etkilenen bölgesel bir felakete karşı koruyamaz. Microsoft, bölgesel felaketlere karşı korunmak için, birincil bölgede ZRS kullanan ve verilerinizi ikincil bir bölgeye coğrafi olarak kopyalayan [jeo-bölge yedekli depolama](#geo-zone-redundant-storage-preview) (GZRS) kullanmanızı önerir.
+
+Aşağıdaki tablo, hangi depolama hesabı türlerinin hangi bölgelerde ZRS'yi desteklediğini gösterir:
 
 |    Depolama hesabı türü    |    Desteklenen bölgeler    |    Desteklenen hizmetler    |
 |----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|
-|    Genel amaçlı v2<sup>1</sup>    | Güneydoğu Asya<br /> Doğu Avustralya<br /> Kuzey Avrupa<br />  Batı Avrupa<br /> Orta Fransa<br /> Doğu Japonya<br /> Güney Afrika Kuzey<br /> Güney Birleşik Krallık<br /> ABD Orta<br /> ABD Doğu<br /> ABD Doğu 2<br /> ABD Batı 2    |    Blok blobları<br /> Sayfa Blobları<sup>2</sup><br /> Dosya paylaşımları (Standart)<br /> Tablolar<br /> Kuyruklar<br /> |
-|    BlockBlobStorage<sup>1</sup>    | Batı Avrupa<br /> ABD Doğu    |    Yalnızca blok Blobları    |
-|    Dosya depolama    | Batı Avrupa<br /> ABD Doğu    |    Yalnızca Azure dosyaları    |
+|    Genel amaçlı v2<sup>1</sup>    | Güneydoğu Asya<br /> Doğu Avustralya<br /> Kuzey Avrupa<br />  Batı Avrupa<br /> Orta Fransa<br /> Doğu Japonya<br /> Güney Afrika Kuzey<br /> Güney Birleşik Krallık<br /> ABD Orta<br /> ABD Doğu<br /> ABD Doğu 2<br /> ABD Batı 2    |    Blok blobları<br /> Sayfa lekeleri<sup>2</sup><br /> Dosya paylaşımları (standart)<br /> Tablolar<br /> Kuyruklar<br /> |
+|    BlockBlobStorage<sup>1</sup>    | Batı Avrupa<br /> ABD Doğu    |    Yalnızca blobs blok    |
+|    Dosya Depolama    | Batı Avrupa<br /> ABD Doğu    |    Yalnızca Azure Dosyaları    |
 
-<sup>1</sup> arşiv katmanı Şu anda ZRS hesapları için desteklenmiyor.<br />
-<sup>2</sup> sanal makineler için Azure yönetilen diskleri içeren depolama hesapları her zaman LRS kullanır. Azure yönetilmeyen diskler de LRS kullanmalıdır. GRS kullanan Azure yönetilmeyen diskler için bir depolama hesabı oluşturmak mümkündür, ancak zaman uyumsuz coğrafi çoğaltma üzerinde tutarlılık nedeniyle olası sorunlar nedeniyle bu önerilmez. Yönetilen veya yönetilmeyen diskler ZRS veya GZRS 'yi desteklemez. Yönetilen diskler hakkında daha fazla bilgi için bkz. [Azure yönetilen diskler fiyatlandırması](https://azure.microsoft.com/pricing/details/managed-disks/).
+<sup>1</sup> Arşiv katmanı şu anda ZRS hesapları için desteklenmez.<br />
+<sup>2</sup> Sanal makineler için Azure yönetilen diskler içeren depolama hesapları her zaman LRS kullanır. Azure yönetilmeyen diskler de LRS kullanmalıdır. GRS kullanan Azure yönetilmeyen diskler için bir depolama hesabı oluşturmak mümkündür, ancak eşzamanlı coğrafi çoğaltma üzerinde tutarlılık içeren olası sorunlar nedeniyle önerilmez. Yönetilen veya yönetilmeyen diskler ZRS veya GZRS'yi desteklemez. Yönetilen diskler hakkında daha fazla bilgi için Azure [yönetilen diskler için Fiyatlandırma'ya](https://azure.microsoft.com/pricing/details/managed-disks/)bakın.
 
-ZRS 'yi destekleyen bölgeler hakkında daha fazla bilgi için, [Azure kullanılabilirlik alanları nedir?](../../availability-zones/az-overview.md)bölümünde **bölgeye göre hizmetlere göre destek** bölümüne bakın.
+Hangi bölgelerin ZRS'yi desteklediği hakkında bilgi için [Azure Kullanılabilirlik Bölgeleri nelerdir?'de](../../availability-zones/az-overview.md) **bölgelere göre Hizmetler desteğine** bakın.
 
-## <a name="redundancy-in-a-secondary-region"></a>İkincil bölgede artıklık
+## <a name="redundancy-in-a-secondary-region"></a>İkincil bir bölgede fazlalık
 
-Yüksek kullanılabilirlik gerektiren uygulamalar için, Depolama hesabınızdaki verileri, birincil bölgeden yüzlerce mil uzakta olan ikincil bir bölgeye kopyalamayı tercih edebilirsiniz. Depolama Hesabınız ikincil bir bölgeye kopyalanırsa, tüm bölgesel bir kesinti veya birincil bölgenin kurtarılamaz bir olağanüstü durum durumunda bile verileriniz dayanıklı olur.
+Yüksek kullanılabilirlik gerektiren uygulamalarda, depolama hesabınızdaki verileri birincil bölgeden yüzlerce mil uzaktaki ikincil bir bölgeye kopyalamayı seçebilirsiniz. Depolama hesabınız ikincil bir bölgeye kopyalanırsa, tam bir bölgesel kesinti veya birincil bölgenin kurtarılamayan bir felaket durumunda bile verileriniz dayanıklıdır.
 
-Bir depolama hesabı oluşturduğunuzda, hesabın birincil bölgesini seçersiniz. Eşleştirilmiş ikincil bölge, birincil bölgeye göre belirlenir ve değiştirilemez. Azure tarafından desteklenen bölgeler hakkında daha fazla bilgi için bkz. [Azure bölgeleri](https://azure.microsoft.com/global-infrastructure/regions/).
+Bir depolama hesabı oluşturduğunuzda, hesabın birincil bölgesini seçersiniz. Eşleştirilmiş ikincil bölge birincil bölgeye göre belirlenir ve değiştirilemez. Azure tarafından desteklenen bölgeler hakkında daha fazla bilgi için Azure [bölgelerine](https://azure.microsoft.com/global-infrastructure/regions/)bakın.
 
-Azure depolama, verilerinizi ikincil bir bölgeye kopyalamak için iki seçenek sunar:
+Azure Depolama, verilerinizi ikincil bir bölgeye kopyalamak için iki seçenek sunar:
 
-- **Coğrafi olarak yedekli depolama (GRS)** , LRS kullanarak, birincil bölgedeki tek bir fiziksel konum içinde verilerinizi eşzamanlı olarak üç kez kopyalar. Daha sonra verilerinizi zaman uyumsuz olarak ikincil bölgedeki tek bir fiziksel konuma kopyalar.
-- **Coğrafi bölge yedekli depolama (GZRS)** (Önizleme), ZRS kullanarak birincil bölgedeki üç Azure kullanılabilirlik bölgesi arasında verilerinizi eşzamanlı olarak kopyalar. Daha sonra verilerinizi zaman uyumsuz olarak ikincil bölgedeki tek bir fiziksel konuma kopyalar.
+- **Coğrafi yedekli depolama (GRS),** LRS kullanarak verilerinizi birincil bölgedeki tek bir fiziksel konum içinde eşzamanlı olarak üç kez kopyalar. Ardından verilerinizi eşzamanlı olarak ikincil bölgedeki tek bir fiziksel konuma kopyalar.
+- **Coğrafi bölge yedekli depolama (GZRS) (önizleme), ZRS** kullanarak birincil bölgedeki üç Azure kullanılabilirlik bölgesinde verilerinizi eşzamanlı olarak kopyalar. Ardından verilerinizi eşzamanlı olarak ikincil bölgedeki tek bir fiziksel konuma kopyalar.
 
-GRS ve GZRS arasındaki birincil fark, verilerin birincil bölgede nasıl çoğaltıladır. İkincil konum içinde, veriler her zaman eş zamanlı olarak LRS kullanılarak çoğaltılır.
+GRS ve GZRS arasındaki temel fark, verilerin birincil bölgede nasıl çoğaltıldığA başladığıdır. İkincil konum içinde, veriler her zaman LRS kullanılarak eşzamanlı olarak üç kez çoğaltılır.
 
-GRS veya GZRS ile ikincil konumdaki veriler, ikincil bölgede bir yük devretme işlemi olmadıkça okuma veya yazma erişimi için kullanılamaz. İkincil konuma okuma erişimi için, depolama hesabınızı Okuma Erişimli Coğrafi olarak yedekli depolama (RA-GRS) veya Okuma Erişimli Coğrafi bölge-yedekli depolama (RA-GZRS) kullanacak şekilde yapılandırın. Daha fazla bilgi için bkz. [İkincil bölgedeki verilere okuma erişimi](#read-access-to-data-in-the-secondary-region).
+GRS veya GZRS ile, ikincil konumdaki veriler, ikincil bölgeye bir hata olmadığı sürece okuma veya yazma erişimi için kullanılamaz. İkincil konuma okuma erişimi için, okuma-erişim coğrafi yedekli depolama (RA-GRS) veya okuma-erişim coğrafi bölge yedekli depolama (RA-GZRS) kullanmak için depolama hesabınızı yapılandırın. Daha fazla bilgi için bkz: [İkinci bölgedeki verilere erişimi oku.](#read-access-to-data-in-the-secondary-region)
 
-Birincil bölge kullanılamaz duruma gelirse ikincil bölgeye yük devretme (Önizleme) seçeneğini belirleyebilirsiniz. Yük devretme tamamlandıktan sonra, ikincil bölge birincil bölge olur ve verileri okuyabilir ve yazabilirsiniz. Olağanüstü durum kurtarma hakkında daha fazla bilgi edinmek ve ikincil bölgeye yük devretmeyi öğrenmek için bkz. [olağanüstü durum kurtarma ve hesap yük devretme (Önizleme)](storage-disaster-recovery-guidance.md).
+Birincil bölge kullanılamıyorsa, ikincil bölgeye (önizleme) başarısız olmayı seçebilirsiniz. Başarısızlık tamamlandıktan sonra, ikincil bölge birincil bölge olur ve verileri yeniden okuyup yazabilirsiniz. Olağanüstü durum kurtarma hakkında daha fazla bilgi edinmek ve ikincil bölgeye nasıl başarısız olunsağı öğreneceğiz için [bkz.](storage-disaster-recovery-guidance.md)
 
 > [!IMPORTANT]
-> Veriler ikincil bölgeye zaman uyumsuz olarak çoğaltıldığından, birincil bölgeyi etkileyen bir hata, birincil bölge kurtarılamazsa veri kaybına neden olabilir. Birincil bölgeye en son yazma işlemleri ile ikincil bölgeye son yazma arasındaki Aralık, kurtarma noktası hedefi (RPO) olarak bilinir. RPO, verilerin kurtarılabileceği noktayı gösterir. Azure depolama, genellikle 15 dakikadan daha kısa bir RPO 'ya sahiptir, ancak şu anda verilerin ikincil bölgeye çoğaltılmasının ne kadar sürdüğü konusunda bir SLA yoktur.
+> Veriler eşzamanlı olarak ikincil bölgeye çoğaltıldığından, birincil bölge kurtarılamazsa birincil bölgeyi etkileyen bir hata veri kaybına neden olabilir. Birincil bölgeye en son yazma ile ikincil bölgeye son yazma arasındaki aralık, kurtarma noktası hedefi (RPO) olarak bilinir. RPO, verilerin kurtarılabildiği noktayı gösterir. Azure Depolama'da genellikle 15 dakikadan az bir RPO vardır, ancak şu anda ikincil bölgeye veri çoğaltmanın ne kadar süreceği konusunda SLA yoktur.
 
 ### <a name="geo-redundant-storage"></a>Coğrafi olarak yedekli depolama
 
-Coğrafi olarak yedekli depolama (GRS), LRS kullanarak, birincil bölgedeki tek bir fiziksel konum içinde verilerinizi eşzamanlı olarak üç kez kopyalar. Daha sonra verilerinizi zaman uyumsuz bir şekilde birincil bölgeden yüzlerce mil olan ikincil bölgedeki tek bir fiziksel konuma kopyalar. GRS, belirli bir yıl boyunca en az% 99.99999999999999 (16 9) Azure depolama veri nesneleri için dayanıklılık sağlar.
+Coğrafi yedekli depolama (GRS), LRS kullanarak verilerinizi birincil bölgedeki tek bir fiziksel konum içinde eşzamanlı olarak üç kez kopyalar. Ardından, verilerinizi birincil bölgeden yüzlerce mil uzaktaki ikincil bir bölgedeki tek bir fiziksel konuma eşit olarak kopyalar. GRS, belirli bir yıl içinde en az %99,99999999999999999999999999999999999999999999999999999'luk Azure Depolama veri nesneleri için dayanıklılık sunar.
 
-İlk olarak birincil konuma bir yazma işlemi kaydedilir ve LRS kullanılarak çoğaltılır. Güncelleştirme daha sonra ikincil bölgeye zaman uyumsuz olarak çoğaltılır. Veriler ikincil konuma yazıldığında, LRS kullanarak bu konumda da çoğaltılır.
+Bir yazma işlemi ilk olarak birincil konuma adanır ve LRS kullanılarak çoğaltılır. Güncelleştirme daha sonra ikincil bölgeye eşit olarak çoğaltılır. Veriler ikincil konuma yazıldığında, lrs kullanılarak bu konumda da çoğaltılır.
 
-### <a name="geo-zone-redundant-storage-preview"></a>Coğrafi bölge yedekli depolama (Önizleme)
+### <a name="geo-zone-redundant-storage-preview"></a>Coğrafi bölge yedekli depolama (önizleme)
 
-Coğrafi bölge yedekli depolama (GZRS) (Önizleme), coğrafi çoğaltma tarafından sağlanmış olan bölgesel kesintilerden korunarak kullanılabilirlik alanları genelinde artıklık tarafından sağlanmış yüksek kullanılabilirliği birleştirir. Bir GZRS Storage hesabındaki veriler, birincil bölgedeki üç [Azure kullanılabilirlik bölgesine](../../availability-zones/az-overview.md) kopyalanır ve ayrıca bölgesel felaketlerden koruma için ikincil bir coğrafi bölgeye çoğaltılır. Microsoft, olağanüstü durum kurtarma için maksimum tutarlılık, dayanıklılık ve kullanılabilirlik, mükemmel performans ve esnekliği gerektiren uygulamalar için GZRS kullanılmasını önerir.
+Coğrafi bölge yedekli depolama (GZRS) (önizleme), kullanılabilirlik bölgeleri arasında artıklığın sağladığı yüksek kullanılabilirliği, coğrafi çoğaltma tarafından sağlanan bölgesel kesintilere karşı korumayla birleştirir. GZRS depolama hesabındaki veriler birincil bölgedeki üç [Azure kullanılabilirlik bölgesinde](../../availability-zones/az-overview.md) kopyalanır ve bölgesel felaketlerden korunmak için ikincil bir coğrafi bölgeye kopyalanır. Microsoft, maksimum tutarlılık, dayanıklılık ve kullanılabilirlik, mükemmel performans ve olağanüstü durum kurtarma için esneklik gerektiren uygulamalar için GZRS kullanılmasını önerir.
 
-Bir GZRS depolama hesabı ile bir kullanılabilirlik alanı kullanılamaz hale gelirse veya kurtarılamaz durumdaysa verileri okumaya ve yazmaya devam edebilirsiniz. Ayrıca, tüm bölgesel bir kesinti veya birincil bölgenin kurtarılamaz bir olağanüstü durum durumunda verileriniz de dayanıklı olur. GZRS belirli bir yıl boyunca nesnelerin en az% 99.99999999999999 (16 9) oranında dayanıklılığını sağlamak üzere tasarlanmıştır.
+GZRS depolama hesabıyla, kullanılabilirlik bölgesi kullanılamıyorsa veya kurtarılamazsa verileri okumaya ve yazmaya devam edebilirsiniz. Ayrıca, verileriniz tam bir bölgesel kesinti veya birincil bölgenin kurtarılmadığı bir felaket durumunda da dayanıklıdır. GZRS, belirli bir yıl içinde nesnelerin %99,9999999999999999999999'una (16 9's) dayanıklılık sağlamak üzere tasarlanmıştır.
 
-GZRS ve RA-GZRS desteği yalnızca genel amaçlı v2 depolama hesaplarıdır. Depolama hesabı türleri hakkında daha fazla bilgi için bkz. [Azure depolama hesabına genel bakış](storage-account-overview.md). GZRS ve RA-GZRS desteği blok Blobları, sayfa Blobları (VHD diskleri hariç), dosyalar, tablolar ve kuyruklar.
+Yalnızca genel amaçlı v2 depolama hesapları GZRS ve RA-GZRS'yi destekler. Depolama hesabı türleri hakkında daha fazla bilgi için [Azure depolama hesabına genel bakış](storage-account-overview.md)bilgisine bakın. GZRS ve RA-GZRS blok blobs, sayfa lekeleri (VHD diskler hariç), dosyalar, tablolar ve kuyruklar destekler.
 
-GZRS ve RA-GZRS Şu anda şu bölgelerde önizleme için kullanılabilir:
+GZRS ve RA-GZRS şu anda aşağıdaki bölgelerde önizleme için kullanılabilir:
 
 - Güneydoğu Asya
 - Kuzey Avrupa
@@ -116,64 +117,64 @@ GZRS ve RA-GZRS Şu anda şu bölgelerde önizleme için kullanılabilir:
 - ABD Orta
 - ABD Batı 2
 
-Microsoft, ek Azure bölgelerinde GZRS ve RA-GZRS etkinleştirmesine devam etmektedir. Desteklenen bölgeler hakkında bilgi için [Azure hizmet güncelleştirmeleri](https://azure.microsoft.com/updates/) sayfasını düzenli olarak denetleyin.
+Microsoft, ek Azure bölgelerinde GZRS ve RA-GZRS'yi etkinleştirmeye devam ediyor. Desteklenen bölgeler hakkında bilgi için [Azure Hizmet Güncelleştirmeleri](https://azure.microsoft.com/updates/) sayfasını düzenli olarak kontrol edin.
 
-Önizleme fiyatlandırması hakkında bilgi için, [Bloblar](https://azure.microsoft.com/pricing/details/storage/blobs), [dosyalar](https://azure.microsoft.com/pricing/details/storage/files/), [Kuyruklar](https://azure.microsoft.com/pricing/details/storage/queues/)ve [Tablolar](https://azure.microsoft.com/pricing/details/storage/tables/)için GZRS Preview fiyatlandırması bölümüne bakın.
+Önizleme fiyatlandırması hakkında daha fazla bilgi [için, Blobs,](https://azure.microsoft.com/pricing/details/storage/blobs) [Files,](https://azure.microsoft.com/pricing/details/storage/files/) [Queues](https://azure.microsoft.com/pricing/details/storage/queues/)ve [Tablolar](https://azure.microsoft.com/pricing/details/storage/tables/)için GZRS önizleme fiyatlandırmasına bakın.
 
 > [!IMPORTANT]
-> Microsoft, üretim iş yükleri için Önizleme özelliklerinin kullanılmasını önerir.
+> Microsoft, üretim iş yükleri için önizleme özelliklerinin kullanılmasına karşı önerir.
 
-## <a name="read-access-to-data-in-the-secondary-region"></a>İkincil bölgedeki verilere yönelik okuma erişimi
+## <a name="read-access-to-data-in-the-secondary-region"></a>İkincil bölgedeki verilere erişimi okuma
 
-Coğrafi olarak yedekli depolama (GRS veya GZRS ile), bölgesel kesintilere karşı koruma sağlamak için verilerinizi ikincil bölgedeki başka bir fiziksel konuma çoğaltır. Ancak, bu veriler yalnızca müşteri veya Microsoft birincili ikincil bölgeye yük devretme işlemi başlattığında okunabilir. İkincil bölgeye okuma erişimini etkinleştirdiğinizde, birincil bölge kullanılamaz hale gelirse verileriniz okunabilir. İkincil bölgeye okuma erişimi için Okuma Erişimli Coğrafi olarak yedekli depolamayı (RA-GRS) veya Okuma Erişimli Coğrafi bölge-yedekli depolamayı (RA-GZRS) etkinleştirin.
+Coğrafi yedekli depolama (GRS veya GZRS ile) verilerinizi bölgesel kesintilere karşı korumak için ikincil bölgedeki başka bir fiziksel konuma çoğaltır. Ancak, bu veriler yalnızca müşteri veya Microsoft birincil bölgeden ikincil bölgeye bir hata başlatması durumunda okunabilir. İkincil bölgeye okuma erişimini etkinleştirdiğinizde, birincil bölge kullanılamıyorsa verileriniz okunabilir. İkincil bölgeye okuma erişimi için, okuma-erişim coğrafi yedekli depolama (RA-GRS) veya okuma-erişim coğrafi bölge yedekli depolama (RA-GZRS) etkinleştirin.
 
-### <a name="design-your-applications-for-read-access-to-the-secondary"></a>Uygulamalarınızı ikincil için okuma erişimi için tasarlama
+### <a name="design-your-applications-for-read-access-to-the-secondary"></a>İkincil erişim için uygulamalarınızı tasarla
 
-Depolama Hesabınız ikincil bölgeye okuma erişimi için yapılandırılmışsa, birincil bölge herhangi bir nedenden dolayı kullanılamaz hale gelirse, uygulamalarınızı ikincil bölgeden verileri okumak için sorunsuz bir şekilde kaydırma yapmak üzere tasarlayabilirsiniz. İkincil bölge, her zaman okuma erişimi için kullanılabilir olduğundan, bir kesinti durumunda ikincinden okunmasını sağlamak için uygulamanızı test edebilirsiniz. Uygulamalarınızı yüksek kullanılabilirliğe göre tasarlamak hakkında daha fazla bilgi için bkz. [Okuma Erişimli Coğrafi olarak yedekli depolama kullanarak yüksek oranda kullanılabilir uygulamalar tasarlama](storage-designing-ha-apps-with-ragrs.md).
+Depolama hesabınız ikincil bölgeye okuma erişimi için yapılandırılırsa, birincil bölge herhangi bir nedenle kullanılamıyorsa uygulamalarınızı ikincil bölgeden okuma verilerine sorunsuz bir şekilde kayacak şekilde tasarlayabilirsiniz. İkincibölge her zaman okuma erişimi için kullanılabilir, böylece bir kesinti durumunda ikincil den okunacak emin olmak için uygulamanızı test edebilirsiniz. Yüksek kullanılabilirlik için uygulamalarınızı nasıl tasarlarınız hakkında daha fazla bilgi için [bkz.](storage-designing-ha-apps-with-ragrs.md)
 
-İkinciye okuma erişimi etkinleştirildiğinde, verileriniz ikincil uç noktadan ve depolama hesabınızın birincil uç noktasından okunabilir. İkincil uç nokta son eki *–* hesap adına ekler. Örneğin, BLOB depolama için birincil uç noktanız `myaccount.blob.core.windows.net`, ikincil uç nokta `myaccount-secondary.blob.core.windows.net`. Depolama hesabınızın hesap erişim anahtarları, hem birincil hem de ikincil uç noktalar için aynıdır.
+İkincil erişim etkinleştirildiğinde, verileriniz ikincil bitiş noktasından ve depolama hesabınızın birincil bitiş noktasından okunabilir. İkincil uç nokta, hesap adına *ikincil olan* sonek ekler. Örneğin, Blob depolama için birincil bitiş `myaccount.blob.core.windows.net`noktası ise, ikincil `myaccount-secondary.blob.core.windows.net`bitiş noktası. Depolama hesabınıziçin hesap erişim anahtarları hem birincil hem de ikincil uç noktalar için aynıdır.
 
 ### <a name="check-the-last-sync-time-property"></a>Son Eşitleme Zamanı özelliğini denetleme
 
-Veriler ikincil bölgeye zaman uyumsuz olarak çoğaltıldığından, ikincil bölge genellikle birincil bölgenin arkasında olur. Birincil bölgede bir hata oluşursa, birinciye yazma işlemleri henüz ikinciye çoğaltılmayacak.
+Veriler eşzamanlı olarak ikincil bölgeye çoğaltıldığından, ikincil bölge genellikle birincil bölgenin arkasındadır. Birincil bölgede bir hata olursa, birincil e doğru yazdığın tüm yazmaların henüz ikincil bölgeye çoğaltılmış olma olasılığı yüksektir.
 
-Hangi yazma işlemlerinin ikincil bölgeye çoğaltıldığını öğrenmek için, uygulamanız depolama hesabınızın **son eşitleme zamanı** özelliğini denetleyebilir. Birincil bölgeye son eşitleme zamanından önce yazılan tüm yazma işlemleri, ikincil bölgeye başarıyla çoğaltılmıştı ve bu, ikincilden okunmak üzere kullanılabilir. Son eşitleme zamanından sonra birincil bölgeye yazılan yazma işlemleri, ikincil bölgeye çoğaltılmayabilir veya bu, okuma işlemleri için uygun olmayabilir.
+Hangi yazma işlemlerinin ikincil bölgeye çoğaltıldığını belirlemek için, uygulamanız depolama hesabınız için **Son Eşitleme Zamanı** özelliğini denetleyebilir. Son eşitleme saatinden önce birincil bölgeye yazılan tüm yazma işlemleri, ikincil bölgeye başarıyla çoğaltıldı, yani ikincil bölgeden okunabilecek şekilde kullanılabilir. Son eşitleme süresinden sonra birincil bölgeye yazılan yazma işlemleri ikincil bölgeye çoğaltılmış olabilir veya çoğaltılmış olabilir, bu da okuma işlemleri için kullanılamayabilecekleri anlamına gelir.
 
-**Son eşitleme zamanı** özelliğinin değerini Azure PowerShell, Azure CLI veya Azure Storage istemci kitaplıklarından birini kullanarak sorgulayabilirsiniz. **Son eşitleme zamanı** ÖZELLIĞI bir GMT Tarih/saat değeri. Daha fazla bilgi için bkz. [depolama hesabı Için Son eşitleme zamanı özelliğini denetleme](last-sync-time-get.md).
+Azure PowerShell, Azure CLI veya Azure Depolama istemci kitaplıklarından birini kullanarak **Son Eşitleme Zamanı** özelliğinin değerini sorgulayabilirsiniz. **Son Eşitleme Zamanı** özelliği BIR GMT tarih/saat değeridir. Daha fazla bilgi için, [bir depolama hesabı için Son Eşitleme Zamanı özelliğini denetleyin'](last-sync-time-get.md)e bakın.
 
-## <a name="summary-of-redundancy-options"></a>Artıklık seçeneklerinin Özeti
+## <a name="summary-of-redundancy-options"></a>Artıklık seçeneklerinin özeti
 
-Aşağıdaki tabloda, depolama hesabınızda hangi artıklık türünün geçerli olduğuna bağlı olarak verilerinizin belirli bir senaryoda ne kadar dayanıklı ve kullanılabilir olduğunu gösterilmektedir:
+Aşağıdaki tablo, depolama hesabınız için hangi tür fazlalık ların etkin olduğuna bağlı olarak, verilerinizin belirli bir senaryoda ne kadar dayanıklı ve kullanılabilir olduğunu gösterir:
 
-| Senaryo                                                                                                 | LRS                             | ZRS                              | GRS/RA-GRS                                  | GZRS/RA-GZRS (Önizleme)                              |
+| Senaryo                                                                                                 | LRS                             | ZRS                              | GRS/RA-GRS                                  | GZRS/RA-GZRS (önizleme)                              |
 | :------------------------------------------------------------------------------------------------------- | :------------------------------ | :------------------------------- | :----------------------------------- | :----------------------------------- |
-| Veri Merkezi içindeki bir düğüm kullanılamaz duruma gelir                                                                 | Yes                             | Yes                              | Yes                                  | Yes                                  |
-| Tüm veri merkezi (zonal veya ZGen olmayan) kullanılamaz hale gelir                                           | Hayır                              | Yes                              | Yes                                  | Yes                                  |
-| Bölge genelinde kesinti meydana gelir                                                                                     | Hayır                              | Hayır                               | Yes                                  | Yes                                  |
-| Birincil bölge kullanılamaz duruma gelirse ikincil bölgedeki verilere yönelik okuma erişimi | Hayır                              | Hayır                               | Evet (RA-GRS ile)                                   | Evet (RA-GZRS ile)                                 |
-| Belirli<sup>bir yıl boyunca</sup> nesnelerin yüzde dayanıklılığı yüzdesi                                          | en az% 99,999999999 (11 9) | en az% 99,9999999999 (12 9) | en az% 99.99999999999999 (16 9) | en az% 99.99999999999999 (16 9) |
+| Veri merkezi içindeki düğüm kullanılamaz hale gelir                                                                 | Evet                             | Evet                              | Evet                                  | Evet                                  |
+| Tüm veri merkezi (zonal veya non-zonal) kullanılamaz hale gelir                                           | Hayır                              | Evet                              | Evet                                  | Evet                                  |
+| Bölge genelinde bir kesinti oluşur                                                                                     | Hayır                              | Hayır                               | Evet                                  | Evet                                  |
+| Birincil bölge kullanılamıyorsa ikincil bölgedeki verilere erişimi okuma | Hayır                              | Hayır                               | Evet (RA-GRS ile)                                   | Evet (RA-GZRS ile)                                 |
+| Belirli bir yıl daki nesnelerin yüzde dayanıklılığı<sup>1</sup>                                          | en az 99.99999999999% (11 9's) | en az 99.9999999999999% (12 9's) | en az 99.99999999999999999999999% (16 9's) | en az 99.99999999999999999999999% (16 9's) |
 | Desteklenen depolama hesabı türleri<sup>2</sup>                                                                   | GPv2, GPv1, BlockBlobStorage, BlobStorage, FileStorage                | GPv2, BlockBlobStorage, FileStorage                             | GPv2, GPv1, BlobStorage                     | GPv2                     |
-| Okuma istekleri için kullanılabilirlik SLA 'Sı<sup>1</sup>  | En az% 99,9 (Seyrek Erişimli Katman için %99) | En az% 99,9 (Seyrek Erişimli Katman için %99) | GRS için en az% 99,9 (Seyrek Erişimli Katman için %99)<br /><br />RA-GRS için en az% 99,99 (Seyrek Erişimli Katman için% 99,9) | GZRS için en az% 99,9 (Seyrek Erişimli Katman için %99)<br /><br />RA-GZRS için en az% 99,99 (Seyrek Erişimli Katman için% 99,9) |
-| Yazma istekleri için kullanılabilirlik SLA 'Sı<sup>1</sup>  | En az% 99,9 (Seyrek Erişimli Katman için %99) | En az% 99,9 (Seyrek Erişimli Katman için %99) | En az% 99,9 (Seyrek Erişimli Katman için %99) | En az% 99,9 (Seyrek Erişimli Katman için %99) |
+| Okuma istekleri için kullanılabilirlik SLA<sup>1</sup>  | En az %99,9 (havalı erişim katmanı için %99) | En az %99,9 (havalı erişim katmanı için %99) | GRS için en az %99,9 (serin erişim katmanı için %99)<br /><br />RA-GRS için en az %99,99 (havalı erişim katmanı için %99,9) | GZRS için en az %99,9 (havalı erişim katmanı için %99)<br /><br />RA-GZRS için en az %99,99 (havalı erişim katmanı için %99,9) |
+| Yazma istekleri için kullanılabilirlik SLA<sup>1</sup>  | En az %99,9 (havalı erişim katmanı için %99) | En az %99,9 (havalı erişim katmanı için %99) | En az %99,9 (havalı erişim katmanı için %99) | En az %99,9 (havalı erişim katmanı için %99) |
 
-<sup>1</sup> dayanıklılık ve kullanılabilirlik Için Azure depolama garantisi hakkında daha fazla bilgi için bkz. [Azure Storage SLA](https://azure.microsoft.com/support/legal/sla/storage/).
+<sup>1</sup> Dayanıklılık ve kullanılabilirlik için Azure Depolama garantileri hakkında bilgi için [Azure Depolama SLA'sına](https://azure.microsoft.com/support/legal/sla/storage/)bakın.
 
-<sup>2</sup> depolama hesabı türleri hakkında bilgi için bkz. [depolama hesabına genel bakış](storage-account-overview.md).
+<sup>2</sup> Depolama hesabı türleri hakkında bilgi için [bkz.](storage-account-overview.md)
 
-Tüm depolama hesabı türleri için tüm veriler, depolama hesabının artıklık seçeneğine göre kopyalanır. Blok Blobları, ekleme Blobları, sayfa Blobları, kuyruklar, tablolar ve dosyalar da dahil olmak üzere nesneler kopyalanır.
+Tüm depolama hesapları nın tüm verileri, depolama hesabının artıklık seçeneğine göre kopyalanır. Blok lekeleri, ek blobs, sayfa blobs, kuyruklar, tablolar ve dosyalar gibi nesneler kopyalanır.
 
-Her artıklık seçeneği için fiyatlandırma bilgileri için bkz. [Azure Storage fiyatlandırması](https://azure.microsoft.com/pricing/details/storage/).
+Her artıklık seçeneğiiçin fiyatlandırma bilgileri için [Azure Depolama fiyatlandırması'na](https://azure.microsoft.com/pricing/details/storage/)bakın.
 
 > [!NOTE]
-> Azure Premium Disk Depolama şu anda yalnızca yerel olarak yedekli depolamayı (LRS) desteklemektedir. Blok Blob depolama hesapları, belirli bölgelerde yerel olarak yedekli depolamayı (LRS) ve bölge yedekli depolamayı (ZRS) destekler.
+> Azure Premium Disk Depolama şu anda yalnızca yerel olarak yedekli depolamayı (LRS) destekler. Blob depolama hesaplarını blok, belirli bölgelerde ki yerel gereksiz depolama (LRS) ve bölge yedekdepolama (ZRS) destekler.
 
 ## <a name="data-integrity"></a>Veri bütünlüğü
 
-Azure depolama, Döngüsel artıklık denetimleri (CRCs) kullanılarak depolanan verilerin bütünlüğünü düzenli olarak doğrular. Veri bozulması algılanırsa, bu, gereksiz veriler kullanılarak onarılır. Azure Storage Ayrıca veri depolarken veya alırken veri paketlerinin bozulmasını algılamak için tüm ağ trafiğinde sağlama toplamlarını hesaplar.
+Azure Depolama, döngüsel artıklık denetimleri (CRC'ler) kullanılarak depolanan verilerin bütünlüğünü düzenli olarak doğrular. Veri bozulması algılanırsa, gereksiz veriler kullanılarak onarılır. Azure Depolama, veri depolama veya alma yaparken veri paketlerinin bozulmasını algılamak için tüm ağ trafiğindeki denetim leri de hesaplar.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-- [Bir depolama hesabı için son eşitleme zamanı özelliğini denetleyin](last-sync-time-get.md)
+- [Depolama hesabı için Son Eşitleme Zamanı özelliğini denetleme](last-sync-time-get.md)
 - [Depolama hesabı için artıklık seçeneğini değiştirme](redundancy-migration.md)
-- [RA-GRS depolama kullanarak yüksek oranda kullanılabilir uygulamalar tasarlama](../storage-designing-ha-apps-with-ragrs.md)
-- [Olağanüstü durum kurtarma ve hesap yük devretme (Önizleme)](storage-disaster-recovery-guidance.md)
+- [RA-GRS Depolama kullanarak yüksek kullanılabilir uygulamalar tasarlama](../storage-designing-ha-apps-with-ragrs.md)
+- [Olağanüstü durum kurtarma ve hesap başarısız (önizleme)](storage-disaster-recovery-guidance.md)

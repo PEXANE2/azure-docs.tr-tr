@@ -1,23 +1,23 @@
 ---
-title: Sanal makine ölçek kümesi arka ucunu kullanın-CLı
+title: Arka uç kümesi ni sanal makine ölçeği kullanın - CLI
 titleSuffix: Azure Application Gateway
-description: Azure CLı kullanarak bir sanal makine ölçek kümesi ile uygulama ağ geçidi oluşturma hakkında bilgi edinin.
+description: Azure CLI'yi kullanarak sanal makine ölçeği kümesiyle bir uygulama ağ geçidi oluşturmayı öğrenin.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: ec1837419390fc29e53565881e41fd4265914f78
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: a5b9fa6eca25aa5ed64725ee677330053e60cb37
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074516"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80239473"
 ---
-# <a name="create-an-application-gateway-with-a-virtual-machine-scale-set-using-the-azure-cli"></a>Azure CLı kullanarak bir sanal makine ölçek kümesi ile uygulama ağ geçidi oluşturma
+# <a name="create-an-application-gateway-with-a-virtual-machine-scale-set-using-the-azure-cli"></a>Azure CLI'yi kullanarak sanal makine ölçeği kümesiyle bir uygulama ağ geçidi oluşturma
 
-Arka uç sunucuları için bir [sanal makine ölçek kümesi](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) kullanan bir [uygulama ağ geçidi](application-gateway-introduction.md) oluşturmak için Azure CLI 'yı kullanabilirsiniz. Bu örnekte örnek kümesi, uygulama ağ geçidinin varsayılan arka uç havuzuna eklenen iki sanal makine örneğini içerir.
+Arka uç sunucuları için sanal makine ölçeği [kümesi](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) ni kullanan bir [uygulama ağ geçidi](application-gateway-introduction.md) oluşturmak için Azure CLI'yi kullanabilirsiniz. Bu örnekte örnek kümesi, uygulama ağ geçidinin varsayılan arka uç havuzuna eklenen iki sanal makine örneğini içerir.
 
 Bu makalede şunları öğreneceksiniz:
 
@@ -26,11 +26,11 @@ Bu makalede şunları öğreneceksiniz:
 > * Uygulama ağ geçidi oluşturma
 > * Varsayılan arka uç havuzuyla bir sanal makine ölçek kümesi oluşturma
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-CLI'yi yerel olarak yükleyip kullanmayı seçerseniz bu hızlı başlangıç için Azure CLI 2.0.4 veya sonraki bir sürümünü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme](/cli/azure/install-azure-cli).
+CLI'yi yerel olarak yükleyip kullanmayı seçerseniz bu hızlı başlangıç için Azure CLI 2.0.4 veya sonraki bir sürümünü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](/cli/azure/install-azure-cli).
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
@@ -44,7 +44,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>Ağ kaynakları oluşturma 
 
-*az network vnet create* komutunu kullanarak *myVNet* adlı sanal ağı ve [myAGSubnet](/cli/azure/network/vnet) adlı alt ağı oluşturun. Daha sonra *az network vnet subnet create* kullanan arka uç sunucularının gerek duyduğu [myBackendSubnet](/cli/azure/network/vnet/subnet) adlı alt ağı ekleyebilirsiniz. *az network public-ip create* komutunu kullanarak [myAGPublicIPAddress](/cli/azure/network/public-ip) adlı genel IP adresini oluşturun.
+[az network vnet create](/cli/azure/network/vnet) komutunu kullanarak *myVNet* adlı sanal ağı ve *myAGSubnet* adlı alt ağı oluşturun. Daha sonra [az network vnet subnet create](/cli/azure/network/vnet/subnet) kullanan arka uç sunucularının gerek duyduğu *myBackendSubnet* adlı alt ağı ekleyebilirsiniz. [az network public-ip create](/cli/azure/network/public-ip) komutunu kullanarak *myAGPublicIPAddress* adlı genel IP adresini oluşturun.
 
 ```azurecli-interactive
 az network vnet create \
@@ -66,7 +66,7 @@ az network public-ip create \
 
 ## <a name="create-an-application-gateway"></a>Uygulama ağ geçidi oluşturma
 
-[myAppGateway](/cli/azure/network/application-gateway) adlı uygulama ağ geçidini oluşturmak için *az network application-gateway create* komutunu kullanabilirsiniz. Azure CLI kullanarak bir uygulama ağ geçidi oluşturduğunuzda, kapasite, sku ve HTTP ayarları gibi yapılandırma bilgilerini belirtirsiniz. Application Gateway, daha önce oluşturduğunuz *Myagsubnet* ve *Mypublicıpaddress* öğesine atanır. 
+*myAppGateway* adlı uygulama ağ geçidini oluşturmak için [az network application-gateway create](/cli/azure/network/application-gateway) komutunu kullanabilirsiniz. Azure CLI kullanarak bir uygulama ağ geçidi oluşturduğunuzda, kapasite, sku ve HTTP ayarları gibi yapılandırma bilgilerini belirtirsiniz. Uygulama ağ geçidi, daha önce oluşturduğunuz *myAGSubnet* ve *myPublicIPAddress'e* atanır. 
 
 ```azurecli-interactive
 az network application-gateway create \
@@ -128,7 +128,7 @@ az vmss extension set \
 
 Uygulama ağ geçidinin genel IP adresini almak için [az network public-ip show](/cli/azure/network/public-ip) komutunu kullanın. Genel IP adresini kopyalayıp tarayıcınızın adres çubuğuna yapıştırın.
 
-```azurepowershell-interactive
+```azurecli-interactive
 az network public-ip show \
   --resource-group myResourceGroupAG \
   --name myAGPublicIPAddress \
@@ -147,4 +147,4 @@ Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 > * Uygulama ağ geçidi oluşturma
 > * Varsayılan arka uç havuzuyla bir sanal makine ölçek kümesi oluşturma
 
-Uygulama ağ geçitleri ve bunlarla ilişkili kaynaklar hakkında daha fazla bilgi edinmek için nasıl yapılır makalelerine devam edin.
+Uygulama ağ geçitleri ve bunların ilişkili kaynakları hakkında daha fazla bilgi edinmek için nasıl yapılacağını makalelerine devam edin.

@@ -1,156 +1,156 @@
 ---
-title: Azure Notebooks önizlemeyi yapılandırın ve yönetin
-description: Azure Notebooks Kullanıcı arabirimi ve doğrudan Terminal erişimi aracılığıyla proje meta verilerini, proje dosyalarını, projenin ortamını ve kurulum adımlarını yönetmeyi öğrenin.
+title: Azure Dizüstü Bilgisayar önizlemesini yapılandırma ve yönetme
+description: Hem Azure Notebook UI'si hem de doğrudan terminal erişimi nde proje meta verilerini, proje dosyalarını, projenin ortamını ve kurulum adımlarını nasıl yöneteceğimize öğrenin.
 ms.topic: how-to
 ms.date: 02/28/2020
 ms.openlocfilehash: 1674effda2cb9bda45f49c91ca618225b0a75f0c
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79280605"
 ---
-# <a name="a-idmanage-and-configure-projects--manage-and-configure-projects-in-azure-notebooks-preview"></a>Azure Notebooks önizlemede projeleri yönetmek ve yapılandırmak <a id="manage-and-configure-projects" />
+# <a name="manage-and-configure-projects-in-azure-notebooks-preview"></a><a id="manage-and-configure-projects" />Azure Dizüstü Bilgisayarlar Önizleme'de projeleri yönetme ve yapılandırma
 
-Azure Notebooks önizlemede bulunan bir proje, temel olarak Jupyter Not defterlerinin çalıştığı ve bir dosya klasörüyle birlikte açıklayıcı meta verilerle birlikte temel alınan Linux sanal makinesinin bir yapılandırmadır. 
+Azure Not Defterleri Önizleme'deki bir proje, aslında Jupyter dizüstü bilgisayarların bir dosya klasörü ve açıklayıcı meta verilerle birlikte çalıştırdığı temel Linux sanal makinesinin bir yapılandırmasıdır. 
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
-Proje Panosu Azure not defterlerinde dosyaları yönetmek ve aksi takdirde proje özelliklerini yapılandırmanıza olanak sağlar:
+Azure Not Defterleri'ndeki proje panosu, dosyaları yönetmenize ve projenin özelliklerini yapılandırmanıza olanak tanır:
 
-- Projenin çalıştırıldığı işlem katmanı, ücretsiz katman veya bir Azure sanal makinesi olabilir.
-- Bir ad, açıklama, projeyi paylaşırken kullanılan tanımlayıcıyı ve projenin public veya Private olduğunu içeren proje meta verileri.
-- Projenin Not defteri, verileri ve diğer dosya sistemleri gibi yönettiğiniz diğer dosyalar.
-- Başlangıç betikleri ya da doğrudan Terminal aracılığıyla yönettiğiniz bir projenin ortamı.
-- Terminal üzerinden erişebileceğiniz Günlükler.
+- Projenin çalıştığı ve ücretsiz katman veya Azure sanal makinesi olabilecek bilgi işlem katmanı.
+- Projeyi paylaşırken kullanılan bir ad, açıklama, tanımlayıcı ve projenin ortak mı yoksa özel mi olduğunu içeren proje meta verileri.
+- Projenin not defteri, veri ve diğer dosyalar gibi yönettiğiniz diğer dosyalar.
+- Başlangıç komut dosyaları aracılığıyla veya doğrudan terminal aracılığıyla yönettiğiniz bir projenin ortamı.
+- Terminalden erişebildiğiniz günlükler.
 
 > [!Note]
-> Burada açıklanan yönetim ve yapılandırma özellikleri yalnızca projeyi başlangıçta oluşturan Proje sahibi tarafından kullanılabilir. Ancak, projeyi kendi hesabınıza kopyalayabilir, bu durumda sahip olursunuz ve projeyi istediğiniz şekilde yapılandırabilirsiniz.
+> Burada açıklanan yönetim ve yapılandırma özellikleri yalnızca projeyi başlangıçta oluşturan proje sahibi tarafından kullanılabilir. Ancak, projeyi kendi hesabınıza kopyalayabilirsiniz, bu durumda sahibi olursunuz ve projeyi istediğiniz gibi yapılandırabilirsiniz.
 
-Azure not defterleri, her bir not defteri veya başka bir dosyaya çalıştırdığınızda temel sanal makine başlar. Sunucu otomatik olarak dosyaları kaydeder ve 60 dakika işlem yapılmadığında kapanır. Ayrıca, sunucuyu dilediğiniz zaman **kapatın** komutunu (klavye kısayolu: h) kullanabilirsiniz.
+Azure Not Defterleri, bir not defteri veya başka bir dosya çalıştırdığınızda temel deki sanal makineyi başlatır. Sunucu dosyaları otomatik olarak kaydeder ve 60 dakikalık bir etkinlik ten sonra kapanır. Kapatma **komutu** (klavye kısayolu: h) ile sunucuyu istediğiniz zaman durdurabilirsiniz.
 
-## <a name="compute-tier"></a>İşlem Katmanı
+## <a name="compute-tier"></a>İşlem katmanı
 
-Varsayılan olarak, projeler **ücretsiz işlem** katmanında çalışır, bu da kötüye kullanımı engellemek için 4 GB bellek ve 1 GB veri ile sınırlıdır. Bu sınırlamaları atlayabilir ve bir Azure aboneliğinde sağladığınız farklı bir sanal makineyi kullanarak işlem gücünü artırabilirsiniz. Daha fazla bilgi için bkz. [veri bilimi sanal makinelerini kullanma](use-data-science-virtual-machine.md).
+Varsayılan olarak, projeler kötüye kullanımı önlemek için 4 GB bellek ve 1 GB veriyle sınırlı **olan Ücretsiz Bilgi İşlem** katmanında çalışır. Azure aboneliğinde sizin için sağlanan farklı bir sanal makineyi kullanarak bu sınırlamaları atlayabilir ve bilgi işlem gücünü artırabilirsiniz. Daha fazla bilgi için [Data Science Virtual Machines nasıl kullanılır.](use-data-science-virtual-machine.md)
 
-## <a name="edit-project-metadata"></a>Proje meta verilerini düzenleme
+## <a name="edit-project-metadata"></a>Proje meta verilerini düzenlemesi
 
-Proje panosunda **proje ayarları**' nı seçin ve ardından aşağıdaki tabloda açıklandığı gibi projenin meta verilerini içeren **bilgi** sekmesini seçin. Proje meta verileri dilediğiniz zaman değiştirebilirsiniz.
+Proje panosunda **Proje Ayarları'nı**seçin ve ardından aşağıdaki tabloda açıklandığı gibi projenin meta verilerini içeren **Bilgiler** sekmesini seçin. Proje meta verilerini istediğiniz zaman değiştirebilirsiniz.
 
 | Ayar | Açıklama |
 | --- | --- |
-| Proje adı | Azure not defterlerini görüntüleme amacıyla kullanır. projeniz için bir kolay ad. Örneğin, "Hello World içinde Python". |
-| Proje Kimliği | Bir proje paylaşmak için kullandığınız URL parçası haline gelir özel tanımlayıcısı. Bu KIMLIK yalnızca harf, rakam ve kısa çizgi kullanabilir, 30 karakterle sınırlıdır ve [ayrılmış bir proje kimliği](create-clone-jupyter-notebooks.md#reserved-project-ids)olamaz. Ne kullanılacağını emin değilseniz, genel bir kural projenizin adına bir küçük harfli sürümünü burada "my-Not-(gerekirse, uzunluk sınırını uyacak şekilde kesildi) proje" gibi kısa çizgi içine boşluk açık kullanmaktır. |
-| Genel proje | Varsa ayarlama, proje erişmek için bağlantıya kimseyle sağlar. Özel bir proje oluştururken, bu seçeneği temizleyin. |
-| Klonları Gizle | Ayarlanırsa, kullanıcılar bu proje için yapılmış kopyalar listesini göremiyorsanız. Klonları gizleme aynı kuruluştaki bir parçası gibi olmayan birçok kişilerle paylaşılan projeler için kullanışlı bir not defteri kullanırken bir sınıf ders için. |
+| Proje adı | Azure Notebook'ların görüntüleme amacıyla kullandığı projeniz için kolay bir ad. Örneğin, "Python'da Merhaba Dünya". |
+| Proje Kimliği | Projeyi paylaşmak için kullandığınız URL'nin bir parçası haline gelen özel bir tanımlayıcı. Bu kimlik yalnızca harfleri, sayıları ve tireleri kullanabilir, 30 karakterle sınırlıdır ve ayrılmış bir [proje kimliği](create-clone-jupyter-notebooks.md#reserved-project-ids)olamaz. Ne kullanacağınızdan emin değilseniz, ortak bir kural, boşlukların tirelere dönüştürüldüğü proje adınızın küçük bir sürümünü kullanmaktır (uzunluk sınırına sığması için gerekirse kesilir). |
+| Kamu projesi | Ayarlanırsa, bağlantıya sahip olan herkesin projeye erişmesine izin verir. Özel bir proje oluştururken, bu seçeneği temizleyin. |
+| Klonları gizle | Ayarlanırsa, diğer kullanıcılar bu proje için yapılmış klonların listesini göremiyor. Klonları gizlemek, aynı kuruluşun parçası olmayan birçok kişiyle paylaşılan projeler için (örneğin, bir sınıfa ders verebilmek için not defteri kullanmak gibi) yararlıdır. |
 
 > [!Important]
 >
-> Proje kimliği değiştiriliyor herhangi bir bağlantı, daha önce paylaştığınız proje geçersiz kılar.
+> Proje kimliğini değiştirmek, projeyle daha önce paylaşmış olabileceğiniz bağlantıları geçersiz kılmaktadır.
 
 ## <a name="manage-project-files"></a>Proje dosyalarını yönetme
 
-Proje Panosu proje klasörü sistem içeriğini gösterir. Bu dosyaları yönetmek için çeşitli komutlara kullanabilirsiniz.
+Proje panosu, projenin klasör sisteminin içeriğini gösterir. Bu dosyaları yönetmek için çeşitli komutları kullanabilirsiniz.
 
-### <a name="create-new-files-and-folders"></a>Yeni dosyalar ve klasörler oluşturma
+### <a name="create-new-files-and-folders"></a>Yeni dosya ve klasörler oluşturma
 
-**+ New** komutu (klavye kısayolu: n) yeni dosya veya klasör oluşturur. İlk komutunu kullanırken, oluşturulacak öğesi türünü seçin:
+**+ Yeni** komut (klavye kısayolu: n) yeni dosya veya klasörler oluşturur. Komutu kullanırken, ilk olarak oluşturmak için öğe türünü seçin:
 
-| Öğe türü | Açıklama | Komut davranışı |
+| Madde türü | Açıklama | Komut davranışı |
 | --- | --- | --- |
-| **Mini** | Jupyter not defteri | Not defterinin dosya adı ve dil belirtin açılır pencere görüntüler. |
-| **Klasör** | Bir alt klasör | Klasör adı girin, projenin dosya listesinde bir düzenleme alanı oluşturur. |
-| **Boş dosya** | Bir dosya metin, veri, vb. gibi herhangi bir içeriği saklayabilirsiniz. | Bir düzenleme alanı dosya adını girin projenin dosya listesini oluşturur. |
-| **MARKDOWN** | Bir Markdown dosyası. | Bir düzenleme alanı dosya adını girin projenin dosya listesini oluşturur. |
+| **Not Defteri** | Bir Jupyter dizüstü bilgisayar | Not defterinin dosya adını ve dilini belirttiğiniz bir açılır pencere görüntüler. |
+| **Klasör** | Bir alt klasör | Projenin dosya listesinde klasör adını girdiğiniz bir edit alanı oluşturur. |
+| **Boş Dosya** | Metin, veri, vb. gibi içerikleri depolayabildiğiniz bir dosya. | Projenin dosya listesinde dosya adını girdiğiniz bir edit alanı oluşturur. |
+| **Markdown** | Markdown dosyası. | Projenin dosya listesinde dosya adını girdiğiniz bir edit alanı oluşturur. |
 
 ### <a name="upload-files"></a>Dosyaları karşıya yükleme
 
-**Karşıya yükle** komutu, diğer konumlardan veri içeri aktarmak için iki seçenek sunar: **URL 'den** ve **bilgisayardan**. Daha fazla bilgi için bkz. [Azure Not defteri projelerinde veri dosyalarıyla çalışma](work-with-project-data-files.md).
+**Yükle** komutu diğer konumlardan veri almak için iki seçenek sağlar: **URL'den** ve **Bilgisayardan.** Daha fazla bilgi için Azure [Notebook projelerinde veri dosyalarıyla Çalışma'ya](work-with-project-data-files.md)bakın.
 
-### <a name="select-file-specific-commands"></a>Dosya özel komutları seçin
+### <a name="select-file-specific-commands"></a>Dosyaya özgü komutları seçin
 
-Projenin dosya listesindeki her öğeyi sağ bağlam menüsü komutları sağlar:
+Projenin dosya listesindeki her öğe, sağ tıklatma bağlam menüsünden komutlar sağlar:
 
-![Bir dosya bağlam menüsü komutları](media/project-file-commands.png)
+![Dosya bağlamı menüsündeki komutlar](media/project-file-commands.png)
 
 | Komut | Klavye kısayolu | Eylem |
 | --- | --- | --- |
-| Çalıştırın | r (veya tıklayın) | Bir not defteri dosyası çalıştırır. Diğer dosya türleri görüntüleme için açılır.  |
-| Bağlantıyı Kopyala | {1&gt;y&lt;1} | Panoya bir dosyaya bir bağlantı kopyalar. |
-| Jupyter laboratuar ortamında çalıştırma | j | Bir not defteri olan Jupyter normalde sağladığından bir geliştirici odaklı daha arabirimi JupyterLab içinde çalıştırır. |
-| Önizleme | p | Dosyanın bir HTML önizlemesini açılır; Not defterleri için not defterinin salt okunur bir işleme bir önizlemedir. Daha fazla bilgi için [Önizleme](#preview) bölümüne bakın. |
-| Dosyasını düzenleyin | Ben | Dosya düzenleme için açar. |
-| İndirme | {1&gt;d&lt;1} | Dosya veya klasör içeriğini içeren bir zip dosyası indirir. |
-| Yeniden Adlandır | a | Dosya veya klasör için yeni bir ad sorar. |
-| Sil | x | Onay ister ve ardından dosyayı projeden kalıcı olarak kaldırır. Silme işlemleri geri alınamaz. |
-| Taşı | m | Bir dosyayı, aynı projede farklı bir klasöre taşır. |
+| Çalıştırın | r (veya tıklayın) | Bir not defteri dosyası çalıştırın. Diğer dosya türleri görüntülemek için açılır.  |
+| Bağlantıyı Kopyala | y | Dosyanın panosuna giden bağlantıyı kopyalar. |
+| Jupyter Lab çalıştırın | J | Jupyter normalde sağladığından daha geliştirici odaklı bir arayüz olan JupyterLab'da bir dizüstü bilgisayar çalıştırır. |
+| Önizleme | p | Dosyanın HTML önizlemesini açar; not defterleri için önizleme, not defterinin salt okunur şekilde işlenmesidir. Daha fazla bilgi için [Önizleme](#preview) bölümüne bakın. |
+| Dosyayı edit | ı | Düzenleme için dosyayı açar. |
+| İndirme | d | Dosyayı veya bir klasörün içeriğini içeren bir zip dosyası indirir. |
+| Yeniden Adlandır | a | Dosya veya klasör için yeni bir ad ister. |
+| Sil | x | Onay ister, sonra dosyayı projeden kalıcı olarak kaldırır. Silmeler geri alınamaz. |
+| Taşı | m | Bir dosyayı aynı projede farklı bir klasöre taşır. |
 
 #### <a name="preview"></a>Önizleme
 
-Bir dosya veya dizüstü bilgisayar İçindekiler salt okunur görünüm önizlemesidir; Not Defteri hücreleri çalıştıran devre dışı bırakıldı. Not Defteri ve dosya için bir bağlantı vardır, ancak Azure not defterleri açmadı herkes tarafından önizlemesi gösterilmektedir. Bir kullanıcı oturum açtıktan sonra kendi hesabı not defterini kopyalayabilirsiniz veya not defteri kendi yerel bilgisayarlarına yükleyebilirsiniz.
+Bir dosyanın veya not defterinin önizlemesi, içeriğin salt okunur görünümüdür; çalışan not defteri hücreleri devre dışı bırakılır. Önizleme, dosya veya not defterine bağlantısı olan ancak Azure Not Defteri'nde oturum açmamış herkese gösterilir. Oturum açKen, kullanıcı not defterini kendi hesabına kopyalayabilir veya not defterini yerel bilgisayarına indirebilir.
 
-Önizleme sayfası klavye kısayollarıyla birkaç araç çubuğu komutlarını destekler:
+Önizleme sayfası klavye kısayolları ile çeşitli araç çubuğu komutlarını destekler:
 
 | Komut | Klavye kısayolu | Eylem |
 | --- | --- | --- |
-| Paylaş | s | İçinden bağlantısını almak, sosyal medyada paylaşın, HTML eklemek için alabilir ve bir e-posta paylaşım açılan pencere görüntüler. |
-| Kopyalama | c  | Not defterini hesabınıza kopyalayın. |
-| Çalıştırın | r | Bunu yapmak izin verilmez, Not defterini çalıştırılır. |
-| İndirme | {1&gt;d&lt;1} | Not defterini bir kopyasını yükler. |
+| Paylaş | s | Bağlantı edinebileceğiniz, sosyal medyada paylaşabileceğiniz, katıştırma için HTML elde edebileceğiniz ve e-posta gönderebileceğiniz paylaşım açılır penceresini görüntüler. |
+| Kopyalama | c  | Not defterini hesabınıza kopyala. |
+| Çalıştırın | r | Bunu yapmanıza izin verilirse not defterini çalıştırın. |
+| İndirme | d | Not defterinin bir kopyasını indirir. |
 
 ## <a name="configure-the-project-environment"></a>Proje ortamını yapılandırma
 
-Not defterlerinizi içinde çalıştığı temel sanal makine ortamı yapılandırmak için üç yolu vardır:
+Dizüstü defterlerinizin çalıştırıldığı altta yatan sanal makinenin ortamını yapılandırmanın üç yolu vardır:
 
-- Bir kez başlatma komut dosyası Ekle
-- Kurulum adımları belirtmek için projenin ortam ayarlarını kullan
-- Sanal makine, bir terminal erişin.
+- Tek seferlik başlatma komut dosyası ekleme
+- Kurulum adımlarını belirtmek için projenin ortam ayarlarını kullanma
+- Bir terminal üzerinden sanal makineerişin.
 
-Sanal makine başlatılır ve bu nedenle proje içindeki tüm not defterlerinin etkiler her proje yapılandırması biçimlerinin uygulanır.
+Sanal makine başlatıldığında tüm proje yapılandırma biçimleri uygulanır ve böylece proje içindeki tüm defterleri etkiler.
 
-### <a name="one-time-initialization-script"></a>Tek seferlik başlatma betiği
+### <a name="one-time-initialization-script"></a>Tek seferlik başlatma komut dosyası
 
-İlk kez Azure Notebooks proje için bir sunucu oluşturduğunda, projede *aznbsetup.sh*adlı bir dosya arar. Bu dosya varsa, Azure Notebooks çalıştırır. Betiğin çıkışı proje klasörünüzde *. aznbsetup. log*olarak depolanır.
+İlk kez Azure Not Defteri proje için bir sunucu oluşturur, *projede aznbsetup.sh*adlı bir dosya arar. Bu dosya varsa, Azure Not Defterleri çalıştırın. Komut dosyasının çıktısı proje klasörünüzde *.aznbsetup.log*olarak depolanır.
 
-### <a name="environment-setup-steps"></a>Ortam Kurulumu adımları
+### <a name="environment-setup-steps"></a>Ortam kurulum adımları
 
-Ortam yapılandırma her bir adımı oluşturmak için projenin ortam ayarlarını kullanabilirsiniz.
+Ortamı yapılandıran tek tek adımlar oluşturmak için projenin ortam ayarlarını kullanabilirsiniz.
 
-Proje panosunda proje **ayarları**' nı seçin ve ardından proje için kurulum adımlarını eklemek, kaldırmak ve değiştirmek istediğiniz **ortam** sekmesini seçin:
+Proje panosunda **Proje Ayarları'nı**seçin ve ardından proje için kurulum adımlarını eklediğiniz, kaldırdığınız ve değiştirdiğiniz **Çevre** sekmesini seçin:
 
-![Ortam sekmesi seçili proje ayarları açılır](media/project-settings-environment-steps.png)
+![Seçili Çevre sekmesiyle proje ayarları açılır](media/project-settings-environment-steps.png)
 
-Bir adım eklemek için, önce **+ Ekle**' yi seçin ve ardından **işlem** açılır listesinden bir adım türü seçin:
+Adım eklemek için önce **+ Ekle'yi**seçin, ardından **İşlem** açılır listesinde bir adım türü seçin:
 
-![Yeni ortam Kurulum adımı için işlem Seçici](media/project-settings-environment-details.png)
+![Yeni bir Ortam kurulum adımı için çalışma seçici](media/project-settings-environment-details.png)
 
-Ardından Proje bilgi işlemi, seçtiğiniz türüne bağlıdır:
+Daha sonra yansıttığınız bilgiler seçtiğiniz işlem türüne bağlıdır:
 
-- **Requirements. txt**: ikinci açılan listede, projede zaten olan bir *requirements. txt* dosyası seçin. Ardından görüntülenen üçüncü aşağı açılan listeden bir Python sürümünü seçin. Bir bir not defteri sunucusunu başlatırken, *requirements. txt* dosyasını kullanarak, *requirements. txt* dosyası ile `pip install -r` Azure Notebooks çalışır. Açıkça içinde notebook paketleri yüklemeniz gerekmez.
+- **Requirements.txt**: İkinci açılan listede, projede zaten bulunan *bir requirements.txt* dosyasını seçin. Ardından, görünen üçüncü açılır listeden bir Python sürümü seçin. Azure Notebook, *bir requirements.txt* dosyası `pip install -r` kullanarak, bir dizüstü bilgisayar sunucusu başlatırken *requirements.txt* dosyasıyla çalışır. Not defterinin içinden paketleri açıkça yüklemeniz gerekmez.
 
-- **Kabuk betiği**: ikinci aşağı açılan listede, ortamı başlatmak için çalıştırmak istediğiniz komutları içeren, projede bir bash Shell betiği (genellikle *. sh* uzantılı bir dosya) seçin.
+- **Kabuk komut dosyası**: İkinci açılır listede, projede bir bash kabuk komutdosyası (genellikle *.sh* uzantılı bir dosya) seçin ve ortamı niçin çalıştırmak istediğiniz komutları içerir.
 
-- **Environment. yml**: ikinci açılan listede, bir Conda ortamı kullanarak Python projeleri için bir *ortamlar. yml* dosyası seçin.
+- **Environment.yml**: İkinci açılır listede, conda ortamı nı kullanan Python projeleri için bir *ortam.yml* dosyası seçin.
 
    > [!WARNING]
-   > Bu bir önizleme hizmeti geliştirildiği için, `Environment.yml` ayarının projenize beklendiği şekilde uygulanamadığı bilinen bir sorun vardır. İçindeki proje ve jupi Not defterleri, belirtilen ortam dosyasını yok olarak yüklemez.
+   > Bu, geliştirilmekte olan bir önizleme hizmeti olduğundan, `Environment.yml` şu anda ayarın beklendiği gibi projenize uygulanmadığı bilinen bir sorun vardır. Proje ve içindeki Jupyter dizüstü bilgisayarlar şu anda belirtilen ortam dosyasını yüklemez.
 
-Adım ekleme işiniz bittiğinde **Kaydet**' i seçin.
+Adım eklemeyi bitirdiğinizde **Kaydet'i**seçin.
 
-### <a name="use-the-terminal"></a>Terminal kullanma
+### <a name="use-the-terminal"></a>Terminali kullanma
 
-Proje panosunda, **Terminal** komutu sunucuya doğrudan erişim sağlayan bir Linux terminali açar. Terminal içinde verileri indirmek, düzenleyebilir veya dosyalarını yönetme, işlemleri incelemek ve hatta VI ve nano gibi araçları kullanın.
+Proje panosunda Terminal **komutu,** sunucuya doğrudan erişim sağlayan bir Linux terminali açar. Terminal içinde veri indirebilir, dosyaları dedebilir veya yönetebilir, süreçleri inceleyebilir ve hatta vi ve nano gibi araçları kullanabilirsiniz.
 
 > [!Note]
-> Projenizin ortamında başlangıç betikleriniz varsa, terminal açma Kurulum'un devam ediyor belirten bir ileti görüntüleyebilir.
+> Projenizin ortamında başlangıç komut dosyalarınız varsa, terminali açmak kurulumun hala devam ettiğini belirten bir ileti görüntüleyebilir.
 
-Terminalde tüm standart Linux komutlarını gönderebilir. Ayrıca, bir sanal makinede bulunan *anaconda2_501*, *anaconda3_420*, *Anaconda3_501*, *ifsharp*ve *R*gibi farklı ortamları, projeyi içeren bir *Proje* klasörüyle birlikte görmek için giriş klasöründeki `ls` de kullanabilirsiniz:
+Terminalde herhangi bir standart Linux komutu yayınlayabilirsiniz. `ls` Ayrıca, projeyi içeren bir *proje* klasörüyle birlikte *sanal*makinede anaconda2_501, *anaconda3_420,* *anaconda3_501,* *IfSharp*ve *R*gibi sanal makinede bulunan farklı ortamları görmek için ev klasöründe de kullanabilirsiniz:
 
-![Proje terminalde Azure Not Defterleri](media/project-terminal.png)
+![Azure Dizüstü Bilgisayarlar'da proje terminali](media/project-terminal.png)
 
-Belirli bir ortama etkilemek için bu ortam klasöre dizinleri önce değiştirin.
+Belirli bir ortamı etkilemek için dizinleri önce o ortam klasöründe değiştirin.
 
-Python ortamları için, her bir ortamın *bin* klasöründe `pip` ve `conda` bulabilirsiniz. Yerleşik diğer adlar ortamları için de kullanabilirsiniz:
+Python ortamları için, `pip` her `conda` ortamın *çöp kutusu* klasörünü bulabilirsiniz. Ortamlar için yerleşik takma adlar da kullanabilirsiniz:
 
 ```bash
 # Anaconda 2 5.3.0/Python 2.7: python27
@@ -163,16 +163,16 @@ python35 -m pip install <package>
 python36 -m pip install <package>
 ```
 
-Sunucuda yapılan değişiklikler, *Proje* klasöründe oluşturduğunuz dosyalar ve klasörler hariç yalnızca geçerli oturum için geçerlidir. Örneğin, proje klasöründeki bir dosyayı düzenlediğinizde oturumlar arasında kalıcı olur, ancak `pip install` olan paketler değildir.
+Sunucuda yapılan değişiklikler, *proje* klasöründe oluşturduğunuz dosya ve klasörler dışında yalnızca geçerli oturumiçin geçerli dir. Örneğin, proje klasöründe bir dosyayı düzenleme oturumları arasında `pip install` kalıcıdır, ancak olan paketler bunlar değildir.
 
 > [!Note]
-> `python` veya `python3`kullanıyorsanız, Python 'un, Not defterleri için kullanılmayan, sistemde yüklü olan sürümlerini çağırabilirsiniz. `pip install` gibi işlemler için izinleriniz yok, bu nedenle sürüme özgü diğer adları kullandığınızdan emin olun.
+> Python'un `python` `python3`not defterleri için kullanılmayan sistem yüklü sürümlerini kullanır veya çağırırsınız. Benzer işlemler `pip install` için izinleriniz de yoktur, bu nedenle sürüme özgü takma adları kullandığınızdan emin olun.
 
-## <a name="access-notebook-logs"></a>Not Defteri günlüklerine erişme
+## <a name="access-notebook-logs"></a>Not defteri günlüklerine erişin
 
-Bir not defteri çalıştırırken sorunlarla karşılaşırsanız, Jupyter 'dan alınan çıkış *. NB. log*adlı bir klasörde depolanır. Bu günlüklere, **Terminal** komutu veya proje panosu aracılığıyla erişebilirsiniz.
+Not defteri çalıştırırken sorunlarla karşılanırsanız, Jupyter'dan gelen çıktı *.nb.log*adlı klasörde depolanır. Bu günlüklere **Terminal** komutu veya proje panosundan erişebilirsiniz.
 
-Jupyter yerel olarak çalıştırırken genellikle, bu bir terminal penceresinden başlatılmamış olabilir. Terminal penceresinde, çekirdek durumu gibi bir çıktı gösterir.
+Genellikle Jupyter'ı yerel olarak çalıştırırken bir terminal penceresinden başlatmış olabilirsiniz. Terminal penceresi çekirdek durumu gibi çıktıları gösterir.
 
 Günlükleri görüntülemek için terminalde aşağıdaki komutu kullanın:
 
@@ -180,7 +180,7 @@ Günlükleri görüntülemek için terminalde aşağıdaki komutu kullanın:
 cat .nb.log
 ```
 
-Ayrıca, bir kod hücresine bir Python not defteri gelen komutunu da kullanabilirsiniz:
+Python not defterindeki bir kod hücresinden gelen komutu da kullanabilirsiniz:
 
 ```bash
 !cat .nb.log
@@ -188,5 +188,5 @@ Ayrıca, bir kod hücresine bir Python not defteri gelen komutunu da kullanabili
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Nasıl yapılır: proje veri dosyalarıyla çalışma](work-with-project-data-files.md)
-- [Bir not defterinde bulut verilerine erişme](access-data-resources-jupyter-notebooks.md)
+- [Nasıl kullanılır: Proje veri dosyalarıyla çalışma](work-with-project-data-files.md)
+- [Not defterinde bulut verilerine erişme](access-data-resources-jupyter-notebooks.md)

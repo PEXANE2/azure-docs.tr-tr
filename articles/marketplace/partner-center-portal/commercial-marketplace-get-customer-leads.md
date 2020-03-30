@@ -1,111 +1,110 @@
 ---
 title: Müşteri müşteri adaylarını yapılandırma | Azure Marketi
-description: Ticari Market 'te müşteri adaylarını yapılandırın.
-services: Azure, Marketplace, commercial marketplace, Partner Center
+description: Ticari pazarda müşteri müşteri adaylarını yapılandırın.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.author: evansma
-ms.openlocfilehash: 7ead8dee12d4376e6e1058b84a25b91c021a937c
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: ce576d9825819770486197a6c39425adf6ac3208
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73812638"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80275909"
 ---
-# <a name="customer-leads-from-your-marketplace-offer"></a>Market teklifinizin müşteri adayları
+# <a name="customer-leads-from-your-marketplace-offer"></a>Market teklifinizden müşteri adayları
 
-Müşteri adayları, [Azure Marketi](https://azuremarketplace.microsoft.com) 'Nden veya [appsource](https://appsource.microsoft.com)'tan tekliflerinizi ilgilenen veya dağıtmakta olan müşteriler. Teklifiniz Market 'te yayımlandığında müşteri adaylarını alacaksınız. Bu makalede şunlar açıklanmaktadır:
+Müşteri adayları, tekliflerinizi [Azure Marketi'nden](https://azuremarketplace.microsoft.com) veya [AppSource'dan](https://appsource.microsoft.com)ilgilenen veya dağıtan müşterilerdir. Teklifiniz pazara yayınlandığında müşteri müşteri adayları alacaksınız. Bu makalede açıklayacağız:
 
-* Market teklifinizin müşteri adaylarını nasıl üretdirebileceği, iş fırsatlarını kaçırmadığınızdan emin olmanızı sağlar. 
-* Müşteri adaylarınızı tek bir merkezi konumda yönetebilmeniz için CRM 'nizi teklifize bağlayın.
-* Size gönderilen müşteri adayı verilerini anlayın, bu sayede size ulaşan müşterileri takip edebilirsiniz.
+* Pazar yeri teklifinizin müşteri müşteri adaylarını nasıl oluşturur, iş fırsatlarını kaçırmamanızı sağlar. 
+* Müşteri adaylarınızı tek bir merkezi konumda yönetebilmeniz için CRM'nizi teklifinize bağlayın.
+* Size gönderdiğimiz müşteri verilerini anlayın, böylece size ulaşan müşterileri takip edebilirsiniz.
 
-## <a name="generate-customer-leads"></a>Müşteri adayları oluşturma
+## <a name="generate-customer-leads"></a>Müşteri müşteri adayları oluşturma
 
-Bir müşteri adayının oluşturulduğu yer şunlardır:
+Müşteri adayının oluşturulduğu yerler şunlardır:
 
-1. Bir müşteri, marketten "benimle Iletişim kurun" seçeneğini belirledikten sonra bilgilerini paylaştığında. Bu müşteri adayı, ürününüzü alma konusunda ilgilendiğiniz müşteri hakkındaki bilgileri paylaşdığımız bir **ilk vade farkının** bulunduğu liderdir. Müşteri adayı, Alım huninin en üstü.
+1. Bir müşteri pazardan "Bana Ulaşın" seçeneğini seçtikten sonra bilgilerini paylaşmayı kabul ettiğinde. Bu müşteri, ürününüzü almakla ilgilendiğini ifade eden müşteri hakkındaki bilgileri paylaştığımız bir **başlangıç müşteri** adayıdır. Kurşun, satın alma hunisinin en üst kısmıdır.
 
-      ![Dynamics 365 benimle Iletişim kurun](./media/commercial-marketplace-get-customer-leads/dynamics-365-contact-me.png)
+      ![Dynamics 365 Bana Ulaşın](./media/commercial-marketplace-get-customer-leads/dynamics-365-contact-me.png)
 
-2. Bir müşteri teklifinizi almak için "Şimdi al" veya "Oluştur" seçeneğini seçtiğinde ( [Azure Portal](https://portal.azure.com/)), bu müşteri adayı, ürününüzü dağıtmaya başlamış bir müşteri hakkındaki bilgileri paylaşdığımız **etkin bir lider**olur.
+2. Bir müşteri teklifinizi almak için "Şimdi Al" veya "Oluştur" seçeneğini seçtiğinde [(Azure portalında)](https://portal.azure.com/)bu müşteri, ürününüzü dağıtmaya başlayan bir müşteri hakkında bilgi paylaştığımız etkin bir **müşteri dir.**
 
-    ![SQL şimdi al](./media/commercial-marketplace-get-customer-leads/sql-get-it-now.png)
+    ![SQL Şimdi Alın](./media/commercial-marketplace-get-customer-leads/sql-get-it-now.png)
 
-    ![Windows Server oluşturma](./media/commercial-marketplace-get-customer-leads/windows-server-create.png)
+    ![Windows Server Oluştur](./media/commercial-marketplace-get-customer-leads/windows-server-create.png)
 
-3. Müşteri "test sürücüsü" alır veya teklifinizin "ücretsiz deneme sürümü" başlatır. Sınama sürücüleri veya ücretsiz denemeler, herhangi bir giriş konusunda herhangi bir engelleri olmadan işletmenizin potansiyel müşterilerle anında paylaşılması için hızlandırılmış fırsatlardır.
+3. Bir müşteri bir "Test Sürüşü" alır veya teklifinizin "Ücretsiz Deneme" sini başlatır. Test Sürüşleri veya ücretsiz denemeler, herhangi bir giriş engeli olmaksızın işinizi potansiyel müşterilerle anında paylaşmanız için hızlandırılmış fırsatlardır.
 
-    ![Dynamics 365 test sürücüsü](./media/commercial-marketplace-get-customer-leads/dynamics-365-test-drive.png)
+    ![Dynamics 365 Test Sürüşü](./media/commercial-marketplace-get-customer-leads/dynamics-365-test-drive.png)
 
-    ![Dynamics 365 test sürücüsü](./media/commercial-marketplace-get-customer-leads/dynamics-365-free-trial.png)
+    ![Dynamics 365 Test Sürüşü](./media/commercial-marketplace-get-customer-leads/dynamics-365-free-trial.png)
 
-## <a name="connect-to-your-crm-system"></a>CRM sisteminize bağlanma
+## <a name="connect-to-your-crm-system"></a>CRM sisteminize bağlanın
 
 [!INCLUDE [Test drive content](./includes/connect-lead-management.md)]
 
 ## <a name="understand-lead-data"></a>Müşteri adayı verilerini anlama
 
-Müşteri alma işlemi sırasında aldığınız her bir müşteri, belirli alanlardaki verilere sahiptir. Aranacak ilk alan, şu biçimi izleyen `LeadSource` alanıdır: **Kaynak-eylem** | **teklif**.
+Müşteri edinme işlemi sırasında aldığınız her müşteri adayının belirli alanlarda verileri vardır. Dikkat etmek için ilk alan `LeadSource` bu biçimi izleyen alandır: **Kaynak-Eylem** | **Teklifi**.
 
-**Kaynaklar**: Bu alanın değeri, müşteri adayını oluşturan Market 'e göre doldurulur. Olası değerler şunlardır `"AzureMarketplace"`, `"AzurePortal"`ve `"AppSource (SPZA)"`.
+**Kaynaklar**: Bu alanın değeri, kurşunu oluşturan pazara göre doldurulur. Olası değerler `"AzureMarketplace"` `"AzurePortal"`, `"AppSource (SPZA)"`ve .
 
-**Eylemler**: Bu alanın değeri, müşterinin müşteri adayını oluşturan, Market 'te aldığı eyleme göre doldurulur. 
+**Eylemler**: Bu alanın değeri, müşterinin pazarda yaptığı ve müşteriyi oluşturan eyleme göre doldurulur. 
 
 Olası değerler şunlardır:
 
-- "INS"--yükleme. Bu eylem, bir müşteri ürününüzü satın aldığında Azure Market veya AppSource 'ta bulunur.
-- "PLT"--Iş ortağı LED deneme sürümünü temsil eder. Bu eylem, bir müşteri benimle Iletişim kurma seçeneğini kullandığında AppSource 'ta bulunur.
-- "DNC"--Iletişim kurulamadı. Bu eylem, uygulama sayfanızda çapraz olarak listelenen bir Iş ortağı ile iletişim kurulması istendiğinde AppSource 'ta bulunur. Bu müşterinin uygulamanızda çapraz olarak listelenme kafalarını paylaşıyoruz, ancak bunlara başvurulmaları gerekmez.
-- "Oluştur"--Bu eylem yalnızca Azure portal içindedir ve müşteri teklifinizi kendi hesaplarına satın aldığında üretilir.
-- "StartTestDrive"--Bu eylem yalnızca test sürücüleri için geçerlidir ve bir müşteri test sürücüsünü başlattığında oluşturulur.
+- "INS" -- Kurulum. Bu eylem, bir müşteri ürününüzü satın aldığında Azure Marketi veya AppSource'da yapılır.
+- "PLT" -- Ortak Led Trial anlamına gelir. Bu eylem, bir müşteri Bana Ulaşın seçeneğini kullandığında AppSource'ta dır.
+- "DNC" -- Temas etmeyin. Bu eylem, uygulama sayfanızda çapraz listelenen bir İş Ortağıyla iletişime geçilmesi istendiğinde AppSource'da yer alır. Bu müşterinin uygulamanızda çapraz listeye alındığına dair kafaları paylaşıyoruz, ancak bunlarla iletişime geçmelerine gerek yok.
+- "Oluştur" -- Bu eylem yalnızca Azure portalının içindedir ve bir müşteri teklifinizi kendi hesabına satın aldığında oluşturulur.
+- "StartTestDrive" -- Bu eylem yalnızca Test Sürücüleri içindir ve bir müşteri test sürüşüne başladığında oluşturulur.
 
-**Teklifler**: market 'te birden çok teklif olabilir. Bu alanın değeri, müşteri adayını oluşturan teklifine göre doldurulur. Yayımcı KIMLIĞI ve teklif KIMLIĞI bu alana gönderilir ve teklifi Market 'e yayımladığınızda verdiğiniz değerlerdir.
+**Teklifler**: Pazarda birden fazla teklif olabilir. Bu alanın değeri, müşteri adayını oluşturan teklife göre doldurulur. Publisher ID ve Teklif Kimliği bu alanda gönderilir ve teklifi pazara yayınladığınızda sağladığınız değerlerdir.
 
-Aşağıdaki örneklerde, beklenen biçimdeki örnek değerler gösterilmektedir `publisherid.offerid`: 
+Aşağıdaki örnekler, örnek değerleri beklenen `publisherid.offerid`biçimde gösterir: 
 
 1. `checkpoint.check-point-r77-10sg-byol`
 1. `bitnami.openedxcypress`
 1. `docusign.3701c77e-1cfa-4c56-91e6-3ed0b622145`
 
-## <a name="customer-info"></a>Müşteri bilgileri
+## <a name="customer-info"></a>Müşteri Bilgileri
 
-Müşterinin bilgileri birden çok alan aracılığıyla gönderilir. Aşağıdaki örnek, bir müşteri adayıyla bulunan müşteri bilgilerini gösterir.
+Müşterinin bilgileri birden çok alan üzerinden gönderilir. Aşağıdaki örnek, müşteri adayında bulunan müşteri bilgilerini gösterir.
 
-- FirstName: John
+- Ad soyad: John
 - Soyadı: Smith
-- E-posta: jsmith\@microsoft.com
-- Telefon: 1234567890
+- E-posta:\@jsmith microsoft.com
+- Telefon numarası: 1234567890
 - Ülke: ABD
 - Şirket: Microsoft
 - Başlık: CTO
 
 >[!Note]
->Önceki örnekteki verilerin hepsi her bir müşteri adayı için her zaman kullanılabilir değildir. Müşteri adayları bölümünde belirtildiği gibi birden çok adımdan müşteri adaylarını alacağınız için, müşteri adaylarını işlemenin en iyi yolu, kayıtları yeniden çoğaltmanız ve takip eden pencereleri kişiselleştirmenize neden olur. Bu şekilde, her müşteri uygun bir ileti almaya ve benzersiz bir ilişki oluşturuyoruz.
+>Önceki örnekteki tüm veriler her müşteri adayı için her zaman kullanılabilir değildir. Müşteri Adayları bölümünde belirtildiği gibi birden çok adımdan müşteri adayları alacağınız için, müşteri adaylarını işlemenin en iyi yolu kayıtları çoğaltmak ve takipleri kişiselleştirmektir. Bu şekilde her müşteri uygun bir ileti alıyor ve siz benzersiz bir ilişki oluşturuyorsunuz.
 
-## <a name="best-practices-for-lead-management"></a>Müşteri adayı yönetimi için en iyi yöntemler
+## <a name="best-practices-for-lead-management"></a>Lider yönetimi için en iyi uygulamalar
 
-1. *İşlem* -kilometre taşları, KPI 'ler ve takım sahipliğini temizle ile açık bir satış işlemi tanımlayın.
-2. *Nitelik belirleme* -bir müşteri adayının tam nitelikli olup olmadığını gösteren önkoşulları tanımlayın. Satış veya pazarlama temsilcilerinin, müşteri adaylarını tam satış süreci boyunca almadan önce dikkatle uygun hale getirin.
-3. *Takip edin* -izlemeyi unutmayın, tipik işlemin beş ile 12 arasında izleme çağrısı gerektirdiğini bekliyor
-4. *Nurra* , daha yüksek bir kâr marjına ulaşmak için müşteri adaylarınızı ister.
+1. *İşlem* - Kilometre taşları, KPM'ler ve net ekip sahipliği yle net bir satış süreci tanımlayın.
+2. *Nitelik* - Bir müşteri adayının tam olarak kalifiye olup olmadığını gösteren ön koşulları tanımlayın. Satış veya pazarlama temsilcilerinin müşteri adaylarını tam satış sürecine geçmeden önce dikkatli bir şekilde hak kazandığından emin olun.
+3. *Takip -* Takip etmeyi unutmayın, tipik işlemin 5 ila 12 takip çağrısı gerektirmesini bekleyin
+4. *Nurture* - Daha yüksek bir kar marjı yolunda almak için, yol yetiştirmek.
 
-## <a name="leads-frequently-asked-questions"></a>Müşteri adayları hakkında sık sorulan sorular
+## <a name="leads-frequently-asked-questions"></a>Sık sorulan sorulara yol açar
 
-### <a name="where-can-i-get-help-in-setting-up-my-lead-destination"></a>Lider hedefini ayarlama konusunda nereden yardım alabilirim?
+### <a name="where-can-i-get-help-in-setting-up-my-lead-destination"></a>Müşteri adayımın ayarlanması nda nereden yardım alabilirim?
 
-Belgeleri [buradan](#connect-to-your-crm-system) bulabilir veya aka.MS/marketplacepublishersupport aracılığıyla bir destek bileti gönderebilir ve **"teklif oluşturma"** , **teklif** → **' sağlama Yönetim yapılandırması** ' nı seçebilirsiniz.
+Belgeleri [burada](#connect-to-your-crm-system) bulabilir veya aka.ms/marketplacepublishersupport üzerinden bir destek bileti gönderebilir, ardından **'teklif oluşturma'** → **teklif türünü** → **'müşteri adayı yönetimi yapılandırması'nı seçebilirsiniz.**
 
-### <a name="am-i-required-to-configure-a-lead-destination-in-order-to-publish-an-offer-on-the-marketplace"></a>Market 'te teklif yayımlamak için bir lider hedefi yapılandırmak istiyorum mu?
+### <a name="am-i-required-to-configure-a-lead-destination-in-order-to-publish-an-offer-on-the-marketplace"></a>Pazarda bir teklif yayınlamak için bir müşteri adayı nı yapılandırmam gerekiyor mu?
 
-Yanıt, yayımladığınız teklifin türüne bağlıdır. Müşteri katılım için SaaS ve Dynamics 365 ' i, ' benimle Iletişim kurun ', Işlem için tüm Dynamics 365 teklifleri, tüm Dynamics 365 Iş Merkezi teklifleri ve tüm danışmanlık hizmeti teklifleri bir müşteri adayı hedefine bağlantı gerektirir. Teklif türü listelenmediyse, gerekli değildir. Ancak, iş fırsatlarını kaçırmamak için bir lider hedefi yapılandırmanız önerilir.
+Yanıt, yayımladırdığınız tekliftürüne bağlıdır. Müşteri Katılımı için SaaS ve Dynamics 365 'Contact Me', tüm Dynamics 365 for Operations teklifleri, tüm Dynamics 365 Business Central teklifleri ve tüm Danışmanlık Hizmeti teklifleri bir lider hedefe bağlantı gerektirir. Teklif türünüz listelenmediyse, gerekli değildir. Ancak, iş fırsatlarını kaçırmamak için bir müşteri adayı hedefini yapılandırmanız önerilir.
 
-### <a name="how-can-i-find-the-test-lead"></a>Test lideri nasıl bulabilirim?
+### <a name="how-can-i-find-the-test-lead"></a>Test ipucunu nasıl bulabilirim?
 
-Müşteri adayı Hedefinizdeki `"MSFT_TEST"` arayın, Microsoft 'tan örnek bir test lideri aşağıda verilmiştir:
+Müşteri `"MSFT_TEST"` adayı hedefinizi arayın, microsoft'tan örnek bir test müşteri adayı aşağıda verilmiştir:
 
 ```
 company = MSFT_TEST_636573304831318844
@@ -122,42 +121,42 @@ phone = 1234567890
 title = MSFT_TEST_636573304831318844
 ```
 
-### <a name="i-have-a-live-offer-but-im-not-seeing-any-leads"></a>Canlı bir teklifim var, ancak hiçbir müşteri adayı görmüyorum?
+### <a name="i-have-a-live-offer-but-im-not-seeing-any-leads"></a>Canlı bir teklifim var ama bir ipucu göremiyorum.
 
-Müşteri adayı hedefine olan bağlantınızın geçerli olduğundan emin olun. Iş Ortağı Merkezi 'nde teklifiniz üzerinde Yayımla ' yı vurduktan sonra size bir test lideri göndereceğiz. Test lideri görürseniz, bağlantı geçerli olur. Ayrıca, Market 'teki listede "Şimdi al", "benimle iletişim" veya "ücretsiz deneme" seçeneğine tıklayarak, önizleme adımı sırasında teklif önizlemeyi edinmeye çalışırken müşteri adayı bağlantınızı test edebilirsiniz.
+Müşteri adayı hedefine bağlantınızın geçerli olduğundan emin olun. Partner Center'daki teklifinizi yayınladıktan sonra size bir test ipucu göndereceğiz. Test müşteri adayını görürseniz, bağlantı geçerlidir. Ayrıca, pazardaki girişte "şimdi al", "benimle iletişim edeyim" veya "ücretsiz deneme" seçeneğini tıklayarak, önizleme adımı sırasında teklif önizlemesini elde etmeye çalışarak müşteri adayı bağlantınızı test edebilirsiniz.
 
-Ayrıca, doğru verileri baktığınızdan emin olun. Bu belgenin [müşteri adayı verilerini anlama](#understand-lead-data) bölümünde bulunan içerik, müşteri adayının hedefine gönderdiğimiz müşteri adayı verilerini açıklar.
+Ayrıca, doğru verileri aradığınızdan emin olun. Bu belgenin [Veri Verilerini Anla](#understand-lead-data) bölümündeki içerik, müşteri adayı hedefinize gönderdiğimiz müşteri adayı verilerini açıklar.
 
-### <a name="i-have-configured-azure-blob-as-my-lead-destination-why-dont-i-see-the-lead"></a>Azure BLOB 'U lider hedefi olarak yapılandırdım, neden müşteri adayını görmüyorum?
+### <a name="i-have-configured-azure-blob-as-my-lead-destination-why-dont-i-see-the-lead"></a>Azure BLOB'u müşteri adayı olarak yapılandırıldım, neden müşteri adayını göremiyorum?
 
-Azure Blob lider hedefi artık desteklenmiyor, bu nedenle teklifiniz tarafından oluşturulan müşteri adaylarını kaçıruyoruz. Diğer [lider hedefi seçeneklerinden](./commercial-marketplace-get-customer-leads.md)herhangi birine geçin. 
+Azure Blob müşteri adayı hedefi artık desteklenmez, bu nedenle teklifiniz tarafından oluşturulan müşteri müşteri müşteri adaylarını kaçırırsınız. Diğer müşteri adayı [hedef seçeneklerinden](./commercial-marketplace-get-customer-leads.md)herhangi biri için geçin. 
 
-### <a name="i-received-an-email-from-marketplace-why-cant-i-find-the-lead-in-my-crm"></a>Market 'ten bir e-posta aldım, neden CRM 'de müşteri adayını bulamıyorum?
+### <a name="i-received-an-email-from-marketplace-why-cant-i-find-the-lead-in-my-crm"></a>Marketplace'ten bir e-posta aldım, crm'imde neden müşteri adayı bulamıyorum?
 
-Son kullanıcının e-posta etki alanı. edu 'dan olabilir. Gizlilik nedenleriyle,. edu etki alanından PII verileri geçirmedik. Aka.ms/marketplacepublishersupport aracılığıyla destek bileti gönderme.
+Son kullanıcının e-posta etki alanı .edu'dan olabilir. Gizlilik nedeniyle, .edu etki alanından kişisel bilgi verisi geçirmiyoruz. aka.ms/marketplacepublishersupport üzerinden destek bileti gönderin.
 
-### <a name="i-have-configured-azure-table-as-my-lead-destination-how-can-i-view-the-leads"></a>Azure tablosunu lider hedefim olarak yapılandırdım, müşteri adaylarını nasıl görüntüleyebilirim?
+### <a name="i-have-configured-azure-table-as-my-lead-destination-how-can-i-view-the-leads"></a>Azure Tablosu'nu müşteri adayı olarak yapılandırıldım, müşteri adaylarını nasıl görüntüleyebilirim?
 
-Azure portalında depolanan müşteri adayı verilerine Azure portalından erişebilirsiniz veya Azure depolama hesabınızın tablo verilerini görüntülemek için [Azure Depolama Gezgini](https://azure.microsoft.com/features/storage-explorer/) ücretsiz olarak indirip yükleyebilirsiniz.
+Azure Portalı'ndan Azure Tablosu'nda depolanan müşteri adayı verilerine erişebilir veya Azure depolama hesabınızın tablo verilerini görüntülemek için [Azure Depolama Gezgini'ni](https://azure.microsoft.com/features/storage-explorer/) ücretsiz olarak indirip yükleyebilirsiniz.
 
-### <a name="i-have-configured-azure-table-as-my-lead-destination-can-i-get-notified-whenever-a-new-lead-is-sent-by-marketplace"></a>Azure tablosunu lider hedefim olarak yapılandırdım, Market tarafından yeni bir müşteri adayı gönderildiğinde bildirim alabilir miyim?
+### <a name="i-have-configured-azure-table-as-my-lead-destination-can-i-get-notified-whenever-a-new-lead-is-sent-by-marketplace"></a>Azure Tablosu'nu müşteri adayım olarak yapılandırıldım, Market tarafından yeni bir müşteri adayı gönderildiğinde bilgilendirilebilir miyim?
 
-Evet, [buradaki](./commercial-marketplace-lead-management-instructions-azure-table.md)belgelerde Azure tablosuna bir müşteri adayı eklenirse bir e-posta gönderen Microsoft Flow 'u ayarlamak için yönergeleri izleyin.
+Evet, [buradaki](./commercial-marketplace-lead-management-instructions-azure-table.md)belgelerde Azure Tablosuna bir müşteri adayı eklenirse e-posta gönderen bir Microsoft akışı ayarlamak için yönergeleri izleyin.
 
-### <a name="i-have-configured-salesforce-as-my-lead-destination-why-cant-i-find-the-leads"></a>Salesforce 'um hedefi olarak Salesforce yapılandırdım, neden müşteri adaylarını bulamıyorum?
+### <a name="i-have-configured-salesforce-as-my-lead-destination-why-cant-i-find-the-leads"></a>Satış Gücü'ni müşteri adayım olarak yapılandırıldım, neden müşteri adaylarını bulamıyorum?
 
-"Müşteri adayına Web" formunun bir seçim listesine göre zorunlu bir alan olup olmadığını denetleyin. Yanıt Evet ise, alanı üzerinde zorunlu olmayan bir metin alanına geçin.
+"Web to lead" formunun bir seçim listesine dayalı zorunlu bir alan olup olmadığını kontrol edin. Evet ise, alanı zorunlu olmayan bir metin alanına geçin.
 
-### <a name="there-was-an-issue-with-my-lead-destination-and-i-missed-some-leads-can-i-have-them-sent-to-me-in-an-email"></a>Lider hedefimde bir sorun oluştu ve bazı müşteri adaylarını kaçırdım. E-postada bana gönderilebilirim?
+### <a name="there-was-an-issue-with-my-lead-destination-and-i-missed-some-leads-can-i-have-them-sent-to-me-in-an-email"></a>Benim kurşun hedef ile ilgili bir sorun vardı ve bazı yol cevapsız. Bunları bana bir e-posta yla göndertebilir miyim?
 
-PII (özel olarak tanımlanabilen bilgiler) ilkeleri nedeniyle, güvenli olmayan e-posta ile müşteri adayı bilgilerini paylaşamazsınız.
+Kişisel Bilgiler (Özel Tanımlanabilir Bilgiler) ilkeleri nedeniyle, müşteri adayı bilgilerini güvenli olmayan e-posta yoluyla paylaşamayız.
 
-### <a name="i-have-configured-azure-table-as-my-lead-destination-how-much-will-it-cost"></a>Azure tablosunu, lider hedefi olarak yapılandırdım, ne kadar ücret alınacaktır?
+### <a name="i-have-configured-azure-table-as-my-lead-destination-how-much-will-it-cost"></a>Müşteri adayım olarak Azure Tablosu'nu yapılandırıldım, ne kadara mal olur?
 
-Öncü gen verileri düşüktür (neredeyse tüm yayımcılar için 1 GB <). Maliyet, bir 50 ayda 1.000 müşteri adayı alınmışsa, ücretlendirilecektir. Depolama fiyatlandırması hakkında daha fazla bilgi için bkz. [Depolama fiyatlandırması](https://azure.microsoft.com/pricing/details/storage/).
+Kurşun gen verileri düşüktür (hemen hemen tüm yayıncılar için 1 GB <). Maliyet, bir ay içinde 1.000 müşteri adayı alınırsa, yaklaşık 50 sente mal olacak. Depolama fiyatlandırması hakkında daha fazla bilgi için [bkz.](https://azure.microsoft.com/pricing/details/storage/)
 
-Sorunuz hala yanıtlanmazsa, aka.ms/marketplacepublishersupport aracılığıyla desteğe başvurun, sonra **' teklif oluşturma '** ' yı seçin ve **teklif** → **' sağlama Yönetim yapılandırması** ' nı →. 
+Sorunuz hala yanıtlanmamışsa, aka.ms/marketplacepublishersupport aracılığıyla Destek'e başvurun, ardından **'teklif oluşturma'** → **teklif türünü** → **'müşteri adayı yönetimi yapılandırması'** seçeneğini belirleyin. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Teknik kurulum hazır olduktan sonra, bu müşteri adaylarını geçerli satış & Pazarlama stratejinize ve işlemsel süreçlerinize eklemeniz gerekir. Genel Satış sürecinizi daha iyi anlamak ve yüksek kaliteli müşteri adayları sağlamak ve size yeterli veri sağlamak için size yakın bir şekilde çalışmak istemeniz gerekir. Size bu müşterileri başarılı hale getirmeye yardımcı olmak için size ek veriler gönderdiğimiz müşteri adaylarını iyileştirebilecek ve geliştirebilmemiz için geri bildirimde bulunun. Satış ekibinizin Market müşteri adaylarıyla daha başarılı olmasını sağlamak için [geri bildirim](mailto:AzureMarketOnboard@microsoft.com) ve öneriler sağlamayı düşünüyorsanız bize bilgi verin.
+Teknik kurulum yapıldıktan sonra, bu müşteri adaylarını mevcut satış & pazarlama stratejinize ve operasyonel süreçlerinize dahil etmelidir. Genel satış sürecinizi daha iyi anlamak istiyoruz ve başarılı olmak için yüksek kaliteli müşteri adayları ve yeterli veri sağlama konusunda sizinle yakın bir şekilde çalışmak istiyoruz. Bu müşterilerin başarılı olması için size gönderdiğimiz müşteri adaylarını nasıl optimize edebileceğimiz ve geliştirebileceğimiz hakkındaki görüşlerinizi memnuniyetle karşılıyoruz. Satış ekibinizin Market Müşteri Adayları ile daha başarılı olmasını sağlamak için [geri bildirim](mailto:AzureMarketOnboard@microsoft.com) ve öneriler sunmak istiyorsanız bize bildirin.

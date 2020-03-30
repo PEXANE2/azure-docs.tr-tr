@@ -1,25 +1,23 @@
 ---
-title: Operations için Dynamics 365 yardım wiki
-description: Bu makale kullanımdan kaldırılmıştır ve bılgısayar makalesine bağlanır; "Operations yardım wiki bilgileri sayfası için Dynamics 365" idi
-services: Azure, Marketplace, Cloud Partner Portal,
-author: ChJenk
-manager: Ricardo.Villalobos
+title: Operasyonlar Için Dynamics 365 Yardım Wiki
+description: Bu makalede deprecated ve PC makaleye bağlı; "Dynamics 365 for Operations Help Wiki bilgi sayfası" oldu
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/30/2019
-ms.author: v-chjen
-ms.openlocfilehash: 27680824a4586a8bd3174eb28ce2ddb3604c014b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 19043397cc31e089cc77e732485ade61ef4b4e30
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824214"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80275994"
 ---
-# <a name="dynamics-365-for-operations-help-wiki"></a>Operations için Dynamics 365 yardım wiki
+# <a name="dynamics-365-for-operations-help-wiki"></a>Operasyonlar Için Dynamics 365 Yardım Wiki
 
-Işlemler için Microsoft Dynamics 365, Microsoft 'un kuruluşlar için iş uygulamasıdır. Kullanıcıların gerçek zamanlı içgörüler ve verilere erişim sağlayan akıllı bir kullanıcı arabirimi aracılığıyla hızla daha verimli kararlar almasına olanak tanır. İşletmelerin, iş süreçlerini daha hızlı yeniden tasarlamalarını sağlayan kanıtlanmış iş mantığını sunarak, kullanıcıların dönüştürmesini ve yenilik yapın sağlar. İşletmelerin iş ihtiyaçlarını karşılamak üzere işlemlerini küresel olarak ölçeklendirmelerine olanak tanımak için, işletmelere kendi hızınıza göre büyüme ve işleri neredeyse her yerde işleme esnekliği sunar.
+Microsoft Dynamics 365 for Operations, Microsoft'un işletmeler için iş uygulamasıdır. İnsanların gerçek zamanlı öngörülere ve verilere erişim sağlayan akıllı bir kullanıcı arabirimi aracılığıyla hızlı bir şekilde daha akıllı kararlar almalarını sağlar. İşletmelerin, iş süreçlerini daha hızlı yeniden tasarlamalarına olanak tanıyan kanıtlanmış iş mantığı sunarak dönüşüm yapmalarını ve yenilik yapmalarını sağlar. İşletmelere kendi hızlarında büyüme ve iş yapma esnekliği sağlar, her zaman, her zaman, iş ihtiyaçlarını karşılamak için operasyonlarını küresel olarak ölçeklendirmelerine olanak sağlar.
 
-Bu Kullanıcı Kılavuzu, işiniz için Dynamics 365 ' i işletmeniz için nasıl çalışır hale getirmenize yardımcı olabilir.
+Bu kullanım kılavuzu, Dynamics 365 for Operations'ın işletmeniz için çalışmasını nasıl sağlayacağınızı öğrenmenize yardımcı olabilir.
 
-Daha fazla bilgi için bkz. [Operations yardım wiki Için Dynamics 365](https://docs.microsoft.com/dynamics365/operations/) .
+Daha fazla bilgi [için Operasyonlar Yardım Wiki için Dynamics 365](https://docs.microsoft.com/dynamics365/operations/) sayfasına bakın.

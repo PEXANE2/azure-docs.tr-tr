@@ -1,6 +1,6 @@
 ---
-title: P2S tarafından yönetilen örneği yapılandırma
-description: Şirket içi istemci bilgisayardan Noktadan siteye bağlantı kullanarak SQL Server Management Studio kullanarak Azure SQL veritabanı yönetilen örneğine bağlanın.
+title: P2S'yi yapılandır - Yönetilen örnek
+description: Şirket içi istemci bilgisayardan yerinde bağlantı kullanarak SQL Server Management Studio'u kullanarak Azure SQL Veritabanı Yönetilen Örneği'ne bağlanın.
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
@@ -12,34 +12,34 @@ ms.author: srbozovi
 ms.reviewer: sstein, carlrab, bonova, jovanpop
 ms.date: 03/13/2019
 ms.openlocfilehash: 30b2ba92174996ea2bae34e7553a3258d8ebee27
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79268892"
 ---
-# <a name="quickstart-configure-a-point-to-site-connection-to-an-azure-sql-database-managed-instance-from-on-premises"></a>Hızlı başlangıç: şirket içi Azure SQL veritabanı yönetilen örneği ile noktadan siteye bağlantı yapılandırma
+# <a name="quickstart-configure-a-point-to-site-connection-to-an-azure-sql-database-managed-instance-from-on-premises"></a>Hızlı başlatma: Şirket içinde Azure SQL Veritabanı Yönetilen Örneği'ne yerinde bağlantı oluşturma
 
-Bu hızlı başlangıçta, bir şirket içi istemci bilgisayarından Noktadan siteye bağlantı üzerinden [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS) kullanarak Azure SQL veritabanı yönetilen örneği 'ne nasıl bağlanacağı gösterilmektedir. Noktadan siteye bağlantılar hakkında bilgi için bkz. [noktadan sıteye VPN hakkında](../vpn-gateway/point-to-site-about.md)
+Bu hızlı başlangıç, yerinde istemci bilgisayardan bir noktadan siteye bağlantı üzerinden [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) 'yı (SSMS) kullanarak Azure SQL Veritabanı Yönetilen Örneği'ne nasıl bağlanılabildiğini gösterir. Noktadan siteye bağlantılar hakkında bilgi için, [Bkz.](../vpn-gateway/point-to-site-about.md)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu hızlı başlangıç:
 
-- , [Yönetilen bir örnek oluşturmak](sql-database-managed-instance-get-started.md) için başlangıç noktası olarak oluşturulan kaynakları kullanır.
-- Şirket içi istemci bilgisayarınızda PowerShell 5,1 ve AZ PowerShell 1.4.0 veya üstünü gerektirir. Gerekirse, [Azure PowerShell modülünü yükleme](https://docs.microsoft.com/powershell/azure/install-az-ps#install-the-azure-powershell-module)yönergelerine bakın.
-- Şirket içi istemci bilgisayarınızda en yeni [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS) sürümünü gerektirir.
+- Oluşturulan [kaynakları,](sql-database-managed-instance-get-started.md) Başlangıç noktası olarak Yönetilen Örnek Oluştur'u kullanır.
+- PowerShell 5.1 ve AZ PowerShell 1.4.0 veya daha sonra şirket içi istemci bilgisayarınızda gerektirir. Gerekirse, [Azure PowerShell modüllerini yüklemek](https://docs.microsoft.com/powershell/azure/install-az-ps#install-the-azure-powershell-module)için verilen talimatlara bakın.
+- Şirket içi istemci bilgisayarınızda [SQL Server Management Studio'nun](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS) en yeni sürümünü gerektirir.
 
-## <a name="attach-a-vpn-gateway-to-your-managed-instance-virtual-network"></a>Yönetilen örnek sanal ağınıza bir VPN ağ geçidi iliştirme
+## <a name="attach-a-vpn-gateway-to-your-managed-instance-virtual-network"></a>Yönetilen Örnek sanal ağınıza VPN ağ geçidi ekleme
 
-1. Şirket içi istemci bilgisayarınızda PowerShell 'i açın.
+1. PowerShell'i şirket içi istemci bilgisayarınızda açın.
 
-2. Bu PowerShell betiğini kopyalayın. Bu betik, [yönetilen örnek oluşturma](sql-database-managed-instance-get-started.md) hızlı başlangıç bölümünde oluşturduğunuz yönetilen örnek sanal ağına bir VPN Gateway ekler. Bu betik, Azure PowerShell az Module kullanır ve Windows ya da Linux tabanlı konaklar için aşağıdakileri yapılır:
+2. Bu PowerShell komut dosyasını kopyalayın. Bu komut dosyası, [Yönetilen Örnek Oluşturma](sql-database-managed-instance-get-started.md) hızlı başlatınca oluşturduğunuz Yönetilen Örnek sanal ağına bir VPN Ağ Geçidi bağlar. Bu komut dosyası Azure PowerShell Az Modülü'ni kullanır ve Windows veya Linux tabanlı ana bilgisayarlar için aşağıdakileri yapar:
 
-   - İstemci makinesinde sertifika oluşturur ve yükler
-   - Gelecek VPN Gateway alt ağ IP aralığını hesaplar
-   - GatewaySubnet 'i oluşturur
-   - , VPN Gateway VPN alt ağına bağlayan Azure Resource Manager şablonunu dağıtır
+   - İstemci makinesinde sertifika lar oluşturur ve yükler
+   - Gelecekteki VPN Ağ Geçidi alt ağ ip aralığını hesaplar
+   - GatewaySubnet oluşturur
+   - VPN Ağ Geçidi'ni VPN alt ağına iliştiren Azure Kaynak Yöneticisi şablonuna dağıtır
 
      ```powershell
      $scriptUrlBase = 'https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/manage/azure-sql-db-managed-instance/attach-vpn-gateway'
@@ -54,56 +54,56 @@ Bu hızlı başlangıç:
      Invoke-Command -ScriptBlock ([Scriptblock]::Create((iwr ($scriptUrlBase+'/attachVPNGateway.ps1?t='+ [DateTime]::Now.Ticks)).Content)) -ArgumentList $parameters, $scriptUrlBase
      ```
 
-3. Betiği PowerShell pencerenize yapıştırın ve gerekli parametreleri sağlayın. `<subscriptionId>`, `<resourceGroup>`ve `<virtualNetworkName>` değerleri, [yönetilen örnek oluşturma](sql-database-managed-instance-get-started.md) hızlı başlangıcı için kullandıklardan eşleşmelidir. `<certificateNamePrefix>` değeri, tercih ettiğiniz bir dize olabilir.
+3. Komut dosyasını PowerShell pencerenize yapıştırın ve gerekli parametreleri sağlayın. Yönetilen [Örnek Oluştur](sql-database-managed-instance-get-started.md) `<virtualNetworkName>` için kullandıklarınız olanların , ve 'nin `<resourceGroup>`değerleri ile eşleşmesi gerekir. `<subscriptionId>` Değer için `<certificateNamePrefix>` seçtiğiniz bir dize olabilir.
 
-4. PowerShell betiğini yürütün.
+4. PowerShell komut dosyasını çalıştırın.
 
 > [!IMPORTANT]
-> PowerShell betiği tamamlanana kadar devam etmez.
+> PowerShell komut dosyası tamamlanana kadar devam etmeyin.
 
-## <a name="create-a-vpn-connection-to-your-managed-instance"></a>Yönetilen örneğiniz için bir VPN bağlantısı oluşturma
+## <a name="create-a-vpn-connection-to-your-managed-instance"></a>Yönetilen Örneğinize VPN bağlantısı oluşturun
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
-2. Sanal ağ geçidini oluşturduğunuz kaynak grubunu açın ve sonra sanal ağ geçidi kaynağını açın.
-3. **Noktadan siteye yapılandırma** ' yı seçin ve ardından **VPN istemcisini indir**' i seçin.
+1. [Azure portalında](https://portal.azure.com/)oturum açın.
+2. Sanal ağ ağ ağ geçidini oluşturduğunuz kaynak grubunu açın ve ardından sanal ağ ağ geçidi kaynağını açın.
+3. **Noktaya Sayfa yapılandırmayı** seçin ve ardından **VPN istemcisini indir'i**seçin.
 
-    ![VPN istemcisini indir](./media/sql-database-managed-instance-configure-p2s/download-vpn-client.png)  
-4. Şirket içi istemci bilgisayarınızda, ZIP dosyasındaki dosyaları ayıklayın ve ardından ayıklanan dosyaların bulunduğu klasörü açın.
-5. '**WindowsAmd64** klasörünü açın ve **VpnClientSetupAmd64. exe** dosyasını açın.
-6. **PC 'niz korumalı bir Windows** iletisi alırsanız, **daha fazla bilgi** ' ye ve **yine de Çalıştır**' a tıklayın.
+    ![VPN istemcisini indirin](./media/sql-database-managed-instance-configure-p2s/download-vpn-client.png)  
+4. Şirket içi istemci bilgisayarınızda, zip dosyasından dosyaları ayıklayın ve ardından çıkarılan dosyalarla klasörü açın.
+5. **' WindowsAmd64** klasörünü açın ve **VpnClientSetupAmd64.exe** dosyasını açın.
+6. Windows tarafından **korunan bir BILGISAYAR iletisi** alırsanız, **daha fazla bilgi** ve ardından Yine de **Çalıştır'ı**tıklatın.
 
-    ![VPN istemcisi 'ni yükler](./media/sql-database-managed-instance-configure-p2s/vpn-client-defender.png)\
-7. Kullanıcı hesabı denetimi iletişim kutusunda devam etmek için **Evet** ' e tıklayın.
-8. Sanal ağınıza başvuran iletişim kutusunda, sanal ağınızın VPN Istemcisini yüklemek için **Evet** ' i seçin.
+    ![VPN istemcisini yükleme](./media/sql-database-managed-instance-configure-p2s/vpn-client-defender.png)\
+7. Kullanıcı Hesabı Denetimi iletişim kutusunda, devam etmek için **Evet**'e tıklayın.
+8. Sanal ağınıza başvuran iletişim kutusunda, sanal ağınız için VPN İstemcisini yüklemek için **Evet'i** seçin.
 
-## <a name="connect-to-the-vpn-connection"></a>VPN bağlantısına Bağlan
+## <a name="connect-to-the-vpn-connection"></a>VPN bağlantısına bağlanın
 
-1. Şirket içi istemci bilgisayarınızda **ağ & Internet** 'Te bulunan **VPN** 'ye gidin ve bu VNET Ile bağlantı kurmak için yönetilen örnek Sanal ağınızı seçin. Aşağıdaki görüntüde VNet, **Mynewvnet**olarak adlandırılmıştır.
+1. Şirket içi istemci bilgisayarınızda **Ağ & Internet'te** **VPN'e** gidin ve bu VNet'e bağlantı kurmak için Yönetilen Örnek sanal ağınızı seçin. Aşağıdaki resimde, VNet **MyNewVNet**adlandırılır.
 
     ![VPN bağlantısı](./media/sql-database-managed-instance-configure-p2s/vpn-connection.png)  
 2. **Bağlan**’ı seçin.
-3. İletişim kutusunda **Bağlan**' ı seçin.
+3. İletişim kutusunda **Bağlan'ı**seçin.
 
     ![VPN bağlantısı](./media/sql-database-managed-instance-configure-p2s/vpn-connection2.png)  
-4. Bağlantı Yöneticisi 'nin yol tablonuzu güncelleştirmek için yükseltilmiş ayrıcalığa ihtiyacı olması istendiğinde, **devam**' ı seçin.
-5. Devam etmek için Kullanıcı hesabı denetimi iletişim kutusunda **Evet** ' i seçin.
+4. Bağlantı Yöneticisi'nin rota tablonuzu güncelleştirmek için yüksek ayrıcalığa ihtiyacı olduğu istendiğinde **Devam et'i**seçin.
+5. Devam etmek için Kullanıcı Hesabı Denetimi iletişim kutusunda **Evet'i** seçin.
 
-   Yönetilen örnek VNet 'iniz için bir VPN bağlantısı oluşturdunuz.
+   Yönetilen Örnek VNet'inize vpn bağlantısı kurdunuz.
 
     ![VPN bağlantısı](./media/sql-database-managed-instance-configure-p2s/vpn-connection-succeeded.png)  
 
-## <a name="use-ssms-to-connect-to-the-managed-instance"></a>SSMS, yönetilen örneği'ne bağlanın
+## <a name="use-ssms-to-connect-to-the-managed-instance"></a>Yönetilen Örneğe bağlanmak için SSMS'i kullanma
 
-1. Şirket içi istemci bilgisayarında SQL Server Management Studio (SSMS) öğesini açın.
-2. **Sunucuya Bağlan** iletişim kutusunda, **sunucu adı** kutusuna yönetilen örneğiniz için tam **ana bilgisayar adını** girin.
-3. **SQL Server kimlik doğrulaması**' nı seçin, Kullanıcı adınızı ve parolanızı girin ve ardından **Bağlan**' ı seçin.
+1. Şirket içi istemci bilgisayarında SQL Server Management Studio'yu (SSMS) açın.
+2. **Sunucuya Bağlan** iletişim kutusuna, Yönetilen Örneğinizin tam nitelikli **ana bilgisayar adını** Sunucu **ad** kutusuna girin.
+3. **SQL Server Kimlik Doğrulaması'nı**seçin, kullanıcı adınızı ve parolanızı girin ve sonra **Bağlan'ı**seçin.
 
     ![ssms bağlanma](./media/sql-database-managed-instance-configure-vm/ssms-connect.png)  
 
-Bağlandıktan sonra, sistem ve Kullanıcı veritabanlarınızı veritabanları düğümünde görüntüleyebilirsiniz. Ayrıca güvenlik, sunucu nesneleri, çoğaltma, yönetim, SQL Server Agent ve XEvent Profiler düğümlerinde çeşitli nesneleri görüntüleyebilirsiniz.
+Bağlandıktan sonra, sistem ve kullanıcı veritabanlarınızı Veritabanları düğümünde görüntüleyebilirsiniz. Güvenlik, Sunucu Nesneleri, Çoğaltma, Yönetim, SQL Server Agent ve XEvent Profiler düğümlerinde çeşitli nesneleri de görüntüleyebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Azure sanal makinesinden bağlanmayı gösteren bir hızlı başlangıç için bkz. [Noktadan siteye bağlantı yapılandırma](sql-database-managed-instance-configure-p2s.md).
+- Azure sanal makinesinden nasıl bağlanılmayı gösteren hızlı [bir](sql-database-managed-instance-configure-p2s.md)başlangıç için bkz.
 - Uygulamaların bağlantı seçeneklerine genel bir bakış için bkz: [Uygulamalarınızı Yönetilen Örneğe bağlama](sql-database-managed-instance-connect-app.md).
-- Mevcut bir SQL Server veritabanını Şirket içinden yönetilen bir örneğe geri yüklemek için, [geçiş Için Azure veritabanı geçiş hizmeti 'ni (DMS)](../dms/tutorial-sql-server-to-managed-instance.md) veya bir veritabanı yedekleme dosyasından geri yüklemek için [T-SQL restore komutunu](sql-database-managed-instance-get-started-restore.md) kullanabilirsiniz.
+- Varolan bir SQL Server veritabanını şirket içinde yönetilen bir örneğe geri yüklemek için, [geçiş için Azure Veritabanı Geçiş Hizmeti'ni (DMS)](../dms/tutorial-sql-server-to-managed-instance.md) veya veritabanı yedekleme dosyasından geri yüklemek için [T-SQL RESTORE komutunu](sql-database-managed-instance-get-started-restore.md) kullanabilirsiniz.

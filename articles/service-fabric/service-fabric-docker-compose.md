@@ -1,156 +1,156 @@
 ---
-title: Azure Service Fabric Docker Compose dağıtım önizlemesi
-description: Azure Service Fabric, Service Fabric kullanarak var olan kapsayıcıları düzenlemenizi kolaylaştırmak için Docker Compose biçimini kabul eder. Bu destek, şu anda Önizleme aşamasındadır.
+title: Azure Hizmet Kumaş Docker Oluşturma Dağıtım Önizleme
+description: Azure Hizmet Kumaşı, Service Fabric kullanarak varolan kapsayıcıları düzenlemeyi kolaylaştırmak için Docker Compose biçimini kabul eder. Bu destek şu anda önizlemededir.
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: f84dd0ecb7a4002182c8455bfd86354d794a6f7c
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79282464"
 ---
-# <a name="docker-compose-deployment-support-in-azure-service-fabric-preview"></a>Azure Service Fabric Docker Compose dağıtım desteği (Önizleme)
+# <a name="docker-compose-deployment-support-in-azure-service-fabric-preview"></a>Docker Azure Hizmet Dokusunda dağıtım desteği oluşturun (Önizleme)
 
-Docker, çok Kapsayıcılı uygulamalar tanımlamak için [Docker-Compose. yıml](https://docs.docker.com/compose) dosyasını kullanır. Docker 'ın sunduğumuz müşterilerin Azure Service Fabric 'deki mevcut kapsayıcı uygulamalarını düzenleme konusunda daha kolay hale getirmek için, platformda yerel olarak Docker Compose dağıtımı için Önizleme desteği eklenmiştir. Service Fabric, `docker-compose.yml` dosyalarının sürüm 3 ' ü ve üstünü kabul edebilir. 
+Docker, çoklu kapsayıcı uygulamalarını tanımlamak için [docker-compose.yml](https://docs.docker.com/compose) dosyasını kullanır. Docker'ı tanıyan müşterilerin Azure Hizmet Kumaşı'ndaki mevcut konteyner uygulamalarını düzenlemesini kolaylaştırmak için, Docker Compose dağıtımı için önizleme desteğini platforma dahil ettik. Service `docker-compose.yml` Fabric, sürüm 3 ve sonraki dosyaları kabul edebilir. 
 
-Bu destek önizlemede olduğundan, oluşturma yönergelerinin yalnızca bir alt kümesi desteklenir.
+Bu destek önizlemede olduğundan, yalnızca Bir Alt Oluşturma yönergeleri desteklenir.
 
-Bu önizlemeyi kullanmak için, Service Fabric çalışma Azure portal zamanının sürüm 5,7 veya daha büyük bir sürümüyle birlikte ilgili SDK ile birlikte kümenizi oluşturun. 
+Bu önizlemeyi kullanmak için, ilgili SDK ile birlikte Azure portalı üzerinden Hizmet Kumaşı çalışma süresinin 5,7 veya üzerinde sürümüyle kümenizi oluşturun. 
 
 > [!NOTE]
-> Bu özellik önizleme aşamasındadır ve üretimde desteklenmez.
-> Aşağıdaki örnekler çalışma zamanı sürüm 6,0 ve SDK sürüm 2,8 ' i temel alır.
+> Bu özellik önizlemededir ve üretimde desteklenmez.
+> Aşağıdaki örnekler çalışma zamanı sürüm 6.0 ve SDK sürüm 2.8'e dayanmaktadır.
 
-## <a name="deploy-a-docker-compose-file-on-service-fabric"></a>Service Fabric üzerinde Docker Compose dosyası dağıtma
+## <a name="deploy-a-docker-compose-file-on-service-fabric"></a>Hizmet Kumaşında Docker Oluştur dosyayı dağıtma
 
-Aşağıdaki komutlar, diğer Service Fabric uygulamaları gibi izleyebilmeniz ve yönetebileceğiniz bir Service Fabric uygulaması (`fabric:/TestContainerApp`olarak adlandırılır) oluşturur. Sistem durumu sorguları için belirtilen uygulama adını kullanabilirsiniz.
-Service Fabric, oluşturma dağıtımının tanımlayıcısı olarak "DeploymentName" i tanır.
+Aşağıdaki komutlar, diğer Service Fabric `fabric:/TestContainerApp`uygulamaları gibi izleyip yönetebileceğiniz bir Hizmet Kumaşı uygulaması (adlandırılmış) oluşturur. Sistem durumu sorguları için belirtilen uygulama adını kullanabilirsiniz.
+Service Fabric, "DeploymentName"i Oluştur dağıtımının tanımlayıcısı olarak tanır.
 
 ### <a name="use-powershell"></a>PowerShell kullanma
 
-PowerShell 'de aşağıdaki komutu çalıştırarak bir Docker-Compose. yml dosyasından Service Fabric oluşturma dağıtımı oluşturun:
+PowerShell'de aşağıdaki komutu çalıştırarak docker-compose.yml dosyasından bir Hizmet Kumaşı Oluştur dağıtımı oluşturun:
 
 ```powershell
 New-ServiceFabricComposeDeployment -DeploymentName TestContainerApp -Compose docker-compose.yml [-RegistryUserName <>] [-RegistryPassword <>] [-PasswordEncrypted]
 ```
 
-`RegistryUserName` ve `RegistryPassword` kapsayıcı kayıt defteri Kullanıcı adı ve parolasına bakın. Dağıtımı tamamladıktan sonra, aşağıdaki komutu kullanarak durumunu kontrol edebilirsiniz:
+`RegistryUserName`ve `RegistryPassword` konteyner kayıt defteri kullanıcı adı ve şifrebakın. Dağıtımı tamamladıktan sonra, aşağıdaki komutu kullanarak durumunu denetleyebilirsiniz:
 
 ```powershell
 Get-ServiceFabricComposeDeploymentStatus -DeploymentName TestContainerApp
 ```
 
-PowerShell aracılığıyla oluşturma dağıtımını silmek için aşağıdaki komutu kullanın:
+PowerShell üzerinden Dağıtım Oluştur'u silmek için aşağıdaki komutu kullanın:
 
 ```powershell
 Remove-ServiceFabricComposeDeployment  -DeploymentName TestContainerApp
 ```
 
-PowerShell aracılığıyla bir dağıtım yükseltmesi oluşturmaya başlamak için aşağıdaki komutu kullanın:
+PowerShell üzerinden dağıtım yükseltmesi oluşturmayı başlatmak için aşağıdaki komutu kullanın:
 
 ```powershell
 Start-ServiceFabricComposeDeploymentUpgrade -DeploymentName TestContainerApp -Compose docker-compose-v2.yml -Monitored -FailureAction Rollback
 ```
 
-PowerShell aracılığıyla dağıtım yükseltmesini oluşturma işlemini geri almak için aşağıdaki komutu kullanın:
+PowerShell üzerinden Toplama dağıtım yükseltmesini geri almak için aşağıdaki komutu kullanın:
 
 ```powershell
 Start-ServiceFabricComposeDeploymentRollback -DeploymentName TestContainerApp
 ```
 
-Yükseltme işlemi kabul edildikten sonra, aşağıdaki komutu kullanarak yükseltme ilerlemesi izlenebilir:
+Yükseltme kabul edildikten sonra, yükseltme ilerlemesi aşağıdaki komut kullanılarak izlenebilir:
 
 ```powershell
 Get-ServiceFabricComposeDeploymentUpgrade -DeploymentName TestContainerApp
 ```
 
-### <a name="use-azure-service-fabric-cli-sfctl"></a>Azure Service Fabric CLı (sfctl) kullanma
+### <a name="use-azure-service-fabric-cli-sfctl"></a>Azure Hizmet Kumaşı CLI (sfctl) kullanın
 
-Alternatif olarak, aşağıdaki Service Fabric CLı komutunu kullanabilirsiniz:
+Alternatif olarak, aşağıdaki Service Fabric CLI komutunu kullanabilirsiniz:
 
 ```shell
 sfctl compose create --deployment-name TestContainerApp --file-path docker-compose.yml [ [ --user --encrypted-pass ] | [ --user --has-pass ] ] [ --timeout ]
 ```
 
-Dağıtımı oluşturduktan sonra, aşağıdaki komutu kullanarak durumunu kontrol edebilirsiniz:
+Dağıtımı oluşturduktan sonra, aşağıdaki komutu kullanarak durumunu denetleyebilirsiniz:
 
 ```shell
 sfctl compose status --deployment-name TestContainerApp [ --timeout ]
 ```
 
-Oluşturma dağıtımını silmek için aşağıdaki komutu kullanın:
+Oluştur dağıtımını silmek için aşağıdaki komutu kullanın:
 
 ```shell
 sfctl compose remove  --deployment-name TestContainerApp [ --timeout ]
 ```
 
-Bir dağıtım yükseltmesi oluşturma başlatmak için aşağıdaki komutu kullanın:
+Bir Dağıtım Oluştur yükseltmesini başlatmak için aşağıdaki komutu kullanın:
 
 ```shell
 sfctl compose upgrade --deployment-name TestContainerApp --file-path docker-compose-v2.yml [ [ --user --encrypted-pass ] | [ --user --has-pass ] ] [--upgrade-mode Monitored] [--failure-action Rollback] [ --timeout ]
 ```
 
-Dağıtımı oluşturma yükseltmesini geri almak için aşağıdaki komutu kullanın:
+Toplama yükseltmesini geri almak için aşağıdaki komutu kullanın:
 
 ```shell
 sfctl compose upgrade-rollback --deployment-name TestContainerApp [ --timeout ]
 ```
 
-Yükseltme işlemi kabul edildikten sonra, aşağıdaki komutu kullanarak yükseltme ilerlemesi izlenebilir:
+Yükseltme kabul edildikten sonra, yükseltme ilerlemesi aşağıdaki komut kullanılarak izlenebilir:
 
 ```shell
 sfctl compose upgrade-status --deployment-name TestContainerApp
 ```
 
-## <a name="supported-compose-directives"></a>Desteklenen oluşturma yönergeleri
+## <a name="supported-compose-directives"></a>Desteklenen Oluşturma yönergeleri
 
-Bu önizleme, aşağıdaki temel elemanlar dahil olmak üzere, oluşturma sürümü 3 biçimindeki yapılandırma seçeneklerinin bir alt kümesini destekler:
+Bu önizleme, aşağıdaki ilkel ler de dahil olmak üzere Sürüm 3'ten yapılandırma seçeneklerinin bir alt kümesini destekler:
 
-* > Çoğaltmaları dağıtmak > Hizmetler
-* Hizmetler > Dağıtım > yerleştirme > kısıtlamaları
-* Hizmetler > > kaynaklarını dağıtma > limitleri
-    * -CPU-paylaşımlar
+* > Çoğaltmaları Dağıtma> Hizmetler
+* Hizmetler > > Yerleştirme > Kısıtlamaları Dağıtma
+* > Kaynakları > Sınırları Dağıtma> Hizmetler
+    * -cpu-hisse
     * -bellek
-    * -bellek-takas
-* Hizmetler > komutları
-* Hizmetler > ortamı
-* Hizmetler > bağlantı noktaları
-* Hizmetler > görüntü
-* Hizmet > yalıtımı (yalnızca Windows için)
-* Hizmet > günlük > sürücüsü
-* Hizmetler > günlük > sürücü > seçenekleri
-* Volume & > birimi dağıt
+    * -bellek değiştirme
+* Hizmetler > Komutanlıkları
+* Hizmetler > Çevre
+* Hizmetler > Limanlar
+* Hizmetler > İmaj
+* Yalıtım > Hizmetler (yalnızca Windows için)
+* Hizmetler > Logging > Sürücüsü
+* Hizmetler > Günlük > Sürücü > Seçenekleri
+* Hacim & Dağıtma > Hacmi
 
-Kaynak sınırlarını zorlayıp [Service Fabric kaynak](service-fabric-resource-governance.md)Yönetimi bölümünde açıklandığı gibi kümeyi ayarlayın. Diğer tüm Docker Compose yönergeleri bu önizleme için desteklenmez.
+[Service Fabric kaynak yönetiminde](service-fabric-resource-governance.md)açıklandığı gibi kaynak sınırlarını zorlamak için kümeyi ayarlayın. Diğer tüm Docker Compose yönergeleri bu önizleme için desteklenmez.
 
 ### <a name="ports-section"></a>Bağlantı noktaları bölümü
 
-Service Fabric hizmeti dinleyicisi tarafından kullanılacak bağlantı noktaları bölümünde http veya https protokolünü belirtin. Bu, ters proxy 'nin istekleri iletmesini sağlamak için, uç nokta protokolünün adlandırma hizmeti ile doğru şekilde yayımlanmasını sağlar:
-* Güvenli olmayan Service Fabric oluşturma hizmetleri 'ne yönlendirmek için **/http**belirtin. Örneğin,- **"80:80/http"** .
-* Güvenli Service Fabric oluşturma hizmetleri 'ne yönlendirmek için **/https**değerini belirtin. Örneğin,- **"443:443/HTTPS"** .
+Service Fabric servis dinleyicisi tarafından kullanılacak Bağlantı Noktaları bölümünde http veya https protokolünü belirtin. Bu, ters proxy istekleri iletmek için izin vermek için adlandırma hizmeti ile bitiş noktası protokolü doğru yayımlanır sağlayacaktır:
+* Güvenli olmayan Hizmet Kumaş Oluşturma hizmetlerine yönlendirmek için **/http**' i belirtin. Örneğin, - **"80:80/http"**.
+* Güvenli Hizmet Kumaş Oluşturma hizmetlerine yönlendirmek için **/https**' yi belirtin. Örneğin, - **"443:443/https"**.
 
 > [!NOTE]
-> /Http ve/HTTPS bağlantı noktaları bölümü sözdizimi, doğru Service Fabric dinleyici URL 'sini kaydetmek için Service Fabric özgüdür.  Docker Compose dosya sözdizimi program aracılığıyla doğrulanırsa, doğrulama hatasına neden olabilir.
+> /http ve/https Ports bölümü sözdizimi, doğru Service Fabric dinleyici URL'sini kaydetmek için Service Fabric'e özgüdür.  Docker dosya sözdizimini oluşturan programlı olarak doğrulanırsa, doğrulama hatasına neden olabilir.
 
 ## <a name="servicednsname-computation"></a>ServiceDnsName hesaplama
 
-Bir oluşturma dosyasında belirttiğiniz hizmet adı tam etki alanı adıdır (yani, bir nokta [.] içeriyorsa) Service Fabric tarafından kaydedilen DNS adı `<ServiceName>` (nokta dahil). Aksi takdirde, uygulama adındaki her yol segmenti, en üst düzey etki alanı etiketine sahip olan ilk yol segmenti olan hizmet DNS adında bir etki alanı etiketi haline gelir.
+Bir Oluştur dosyasında belirttiğiniz hizmet adı tam nitelikli bir etki alanı adıysa (diğer bir deyişle, bir nokta [.]içeriyorsa), Service Fabric tarafından kayıtlı DNS adı `<ServiceName>` (nokta dahil). Değilse, uygulama adındaki her yol kesimi hizmet DNS adında bir etki alanı etiketi olur ve ilk yol kesimi üst düzey etki alanı etiketi olur.
 
-Örneğin, belirtilen uygulama adı `fabric:/SampleApp/MyComposeApp`, `<ServiceName>.MyComposeApp.SampleApp` kayıtlı DNS adı olacaktır.
+Örneğin, belirtilen uygulama `fabric:/SampleApp/MyComposeApp`adı, `<ServiceName>.MyComposeApp.SampleApp` kayıtlı DNS adı olacaktır.
 
-## <a name="compose-deployment-instance-definition-versus-service-fabric-app-model-type-definition"></a>Dağıtım (örnek tanımı) ve Service Fabric uygulama modeli (tür tanımı) karşılaştırması
+## <a name="compose-deployment-instance-definition-versus-service-fabric-app-model-type-definition"></a>Dağıtım oluşturma (örnek tanımı) ve Service Fabric uygulama modeli (tür tanımı)
 
-Docker-Compose. yıml dosyası, özellikleri ve yapılandırmalarına dahil olmak üzere dağıtılabilir bir kapsayıcı kümesi tanımlar.
-Örneğin, dosya ortam değişkenleri ve bağlantı noktaları içerebilir. Ayrıca, Docker-Compose. yıml dosyasındaki yerleştirme kısıtlamaları, kaynak sınırları ve DNS adları gibi dağıtım parametrelerini de belirtebilirsiniz.
+Docker-compose.yml dosyası, özellikleri ve yapılandırmaları da dahil olmak üzere dağıtılabilir bir kapsayıcı kümesini açıklar.
+Örneğin, dosya ortam değişkenleri ve bağlantı noktaları içerebilir. Docker-compose.yml dosyasında yerleşim kısıtlamaları, kaynak sınırları ve DNS adları gibi dağıtım parametrelerini de belirtebilirsiniz.
 
-[Service Fabric uygulama modeli](service-fabric-application-model.md) , hizmet türlerini ve uygulama türlerini kullanır, burada aynı türden birçok uygulama örneğine sahip olabilirsiniz. Örneğin, müşteri başına bir uygulama örneğiniz olabilir. Bu tür tabanlı model, çalışma zamanına kayıtlı aynı uygulama türünün birden çok sürümünü destekler.
+[Service Fabric uygulama modeli,](service-fabric-application-model.md) aynı türde birçok uygulama örneğinin olabileceği hizmet türlerini ve uygulama türlerini kullanır. Örneğin, müşteri başına bir uygulama örneğiniz olabilir. Bu tür tabanlı model, çalışma süresine kayıtlı aynı uygulama türünün birden çok sürümüne destek sağlar.
 
-Örneğin, A müşterisi, AppTypeA türü 1,0 ile örneklenen bir uygulamaya sahip olabilir ve B müşterisi aynı tür ve sürümle oluşturulmuş başka bir uygulamaya sahip olabilir. Uygulama türleri uygulama bildirimlerini tanımlar ve uygulamayı oluştururken uygulama adı ve dağıtım parametrelerini belirtirsiniz.
+Örneğin, A müşterisi AppTypeA'nın 1.0 türüyle anında bir uygulama yapabilir ve B müşterisi aynı tür ve sürümle anında başka bir uygulama kaplayabilir. Uygulama bildirimlerinde uygulama türlerini tanımlarsınız ve uygulamayı oluştururken uygulama adını ve dağıtım parametrelerini belirtirsiniz.
 
-Bu modelde esneklik sunulmasına karşın, türlerin bildirim dosyasından örtük olduğu daha basit, örnek tabanlı bir dağıtım modelini desteklemeyi planlıyoruz. Bu modelde, her uygulama kendi bağımsız bildirimini alır. Örnek tabanlı bir dağıtım biçimi olan Docker-Compose. yıml için destek ekleyerek bu çabayı önizliyoruz.
+Bu model esneklik sunsa da, türlerin manifesto dosyasından örtülü olduğu daha basit, örnek tabanlı bir dağıtım modelini desteklemeyi de planlıyoruz. Bu modelde, her uygulama kendi bağımsız bildirimi alır. Örnek tabanlı dağıtım biçimi olan docker-compose.yml için destek ekleyerek bu çabayı önizliyoruz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Service Fabric uygulama modelinde](service-fabric-application-model.md) oku
+* Service Fabric [uygulama modelini](service-fabric-application-model.md) okuyun
 * [Service Fabric CLI kullanmaya başlama](service-fabric-cli.md)

@@ -1,6 +1,6 @@
 ---
-title: Azure dosyaları 'na veri aktarmak için Azure Içeri/dışarı aktarma kullanma | Microsoft Docs
-description: Azure dosyalarına veri aktarmak için Azure portal içeri aktarma işleri oluşturmayı öğrenin.
+title: Verileri Azure Dosyalarına aktarmak için Azure İçe Aktarma/Verme kullanma | Microsoft Dokümanlar
+description: Verileri Azure Dosyaları'na aktarmak için Azure portalında nasıl içe aktarma işleri oluşturabilirsiniz öğrenin.
 author: alkohli
 services: storage
 ms.service: storage
@@ -9,197 +9,197 @@ ms.date: 04/08/2019
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: 201d0c0a545c5ba7ae1bb0b5e119f7acb1ae362f
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79268307"
 ---
-# <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>Azure dosyaları 'na veri aktarmak için Azure Içeri/dışarı aktarma hizmeti 'ni kullanma
+# <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>Azure Dosyaları'na veri aktarmak için Azure İçeri/Dışarı Aktarma hizmetini kullanma
 
-Bu makalede, Azure Içeri/dışarı aktarma hizmeti 'nin büyük miktarlarda verileri Azure dosyalarına güvenli bir şekilde aktarmak için nasıl kullanılacağı hakkında adım adım yönergeler sağlanmaktadır. Verileri içeri aktarmak için hizmet, verilerinizi içeren desteklenen disk sürücülerinin bir Azure veri merkezine sevk etmeniz gerekir.  
+Bu makalede, Azure Dosyaları'na büyük miktarda veri güvenli bir şekilde içe aktarmak için Azure İçe Alma/Dışa Aktarma hizmetinin nasıl kullanılacağına ilişkin adım adım yönergeler verilmektedir. Veri almak için hizmet, verilerinizi içeren desteklenen disk sürücülerini bir Azure veri merkezine göndermenizi gerektirir.  
 
-Içeri/dışarı aktarma hizmeti, Azure depolama 'ya yalnızca Azure dosyalarını içeri aktarmayı destekler. Azure dosyalarını dışarı aktarma desteklenmiyor.
+İçe Aktarma/Verme hizmeti, Azure Dosyalarının Azure Depolama'ya yalnızca içe aktarını destekler. Azure Dosyalarını dışa aktarma desteklenmez.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Azure dosyalarına veri aktarmaya yönelik bir içeri aktarma işi oluşturmadan önce, aşağıdaki önkoşul listesini dikkatle gözden geçirin ve doldurun. Şunları yapmanız gerekir:
+Verileri Azure Dosyaları'na aktarmak için bir alma işi oluşturmadan önce, aşağıdaki ön koşullar listesini dikkatle inceleyin ve tamamlayın. Şunları yapmalısın:
 
-- Içeri/dışarı aktarma hizmeti ile kullanmak için etkin bir Azure aboneliğine sahip olmanız gerekir.
-- En az bir Azure depolama hesabınız olmalıdır. [İçeri/dışarı aktarma hizmeti Için desteklenen depolama hesapları ve depolama türleri](storage-import-export-requirements.md)listesine bakın. Yeni bir depolama hesabı oluşturma hakkında bilgi için bkz. [depolama hesabı oluşturma](storage-account-create.md).
-- [Desteklenen türlerde](storage-import-export-requirements.md#supported-disks)yeterli sayıda disk vardır.
-- [Desteklenen BIR işletim sistemi sürümünü](storage-import-export-requirements.md#supported-operating-systems)çalıştıran bir Windows sistemine sahiptir.
-- Windows sisteminde [Waımportexport sürüm 2](https://aka.ms/waiev2) ' nı indirin. `waimportexport`varsayılan klasöre ayıklayın. Örneğin, `C:\WaImportExport`.
-- FedEx/DHL hesabınız olmalıdır. FedEx/DHL dışında bir taşıyıcı kullanmak istiyorsanız, `adbops@microsoft.com`Azure Data Box Işlemler ekibine başvurun.  
-    - Hesap geçerli olmalıdır, bakiyesi olmalıdır ve dönüş teslim özelliklerine sahip olmalıdır.
-    - Dışarı aktarma işi için bir izleme numarası oluştur.
+- İçe Aktarma/Dışa Aktarma hizmetiyle kullanmak üzere etkin bir Azure aboneliğine sahip olun.
+- En az bir Azure Depolama hesabınız var. [İçe Aktarma/Dışa Aktarma hizmeti için Desteklenen depolama hesapları nın ve depolama türlerinin listesine](storage-import-export-requirements.md)bakın. Yeni bir depolama hesabı oluşturma hakkında daha fazla bilgi için [bkz.](storage-account-create.md)
+- [Desteklenen türlerin](storage-import-export-requirements.md#supported-disks)disksayısı yeterli sayıda var.
+- Desteklenen işletim sistemi [sürümünü](storage-import-export-requirements.md#supported-operating-systems)çalıştıran bir Windows sistemine sahip.
+- [WAImportExport sürüm 2'yi](https://aka.ms/waiev2) Windows sisteminden indirin. Varsayılan klasöre `waimportexport`unzip . Örneğin, `C:\WaImportExport`.
+- Bir FedEx/DHL hesabınız var. FedEx/DHL dışında bir operatör kullanmak istiyorsanız, 'den Azure `adbops@microsoft.com`Veri Kutusu İşlemleri ekibine başvurun.  
+    - Hesap geçerli olmalı, bakiyeye sahip olmalı ve sevkiyat alabilmeli.
+    - Dışa aktarma işi için bir izleme numarası oluşturun.
     - Her işin ayrı bir izleme numarası olmalıdır. Aynı izleme numarasına sahip birden çok iş desteklenmez.
-    - Bir taşıyıcı hesabınız yoksa şuraya gidin:
-        - [FedEX hesabı oluşturun](https://www.fedex.com/en-us/create-account.html)veya
-        - [BIR DHL hesabı oluşturun](http://www.dhl-usa.com/en/express/shipping/open_account.html).
+    - Operatör hesabınız yoksa, şu na gidin:
+        - [Bir FedEX hesabı oluşturun](https://www.fedex.com/en-us/create-account.html)veya
+        - [Bir DHL hesabı oluşturun.](http://www.dhl-usa.com/en/express/shipping/open_account.html)
 
 
 
-## <a name="step-1-prepare-the-drives"></a>1\. Adım: sürücüleri hazırlama
+## <a name="step-1-prepare-the-drives"></a>Adım 1: Sürücüleri hazırlama
 
-Bu adım bir günlük dosyası oluşturur. Günlük dosyası, sürücü seri numarası, şifreleme anahtarı ve depolama hesabı ayrıntıları gibi temel bilgileri depolar.
+Bu adım bir günlük dosyası oluşturur. Günlük dosyası sürücü seri numarası, şifreleme anahtarı ve depolama hesabı ayrıntıları gibi temel bilgileri depolar.
 
 Sürücüleri hazırlamak için aşağıdaki adımları gerçekleştirin.
 
-1. Windows sistemine SATA bağlayıcıları aracılığıyla disk sürücülerimizi bağlayın.
-2. Her sürücüde tek bir NTFS birimi oluşturun. Birime bir sürücü harfi atayın. Bağlama noktalarını kullanmayın.
-3. Aracın bulunduğu kök klasördeki *DataSet. csv* dosyasını değiştirin. Bir dosyayı veya klasörü veya her ikisini de içeri aktarmak istediğinize bağlı olarak, aşağıdaki örneklere benzer şekilde *DataSet. csv* dosyasına giriş ekleyin.  
+1. Disk sürücülerimizi SATA konektörleri aracılığıyla Windows sistemine bağlayın.
+2. Her sürücüde tek bir NTFS hacmi oluşturun. Ses birimine bir sürücü mektubu atayın. Montaj noktalarını kullanmayın.
+3. Aracın bulunduğu kök klasöründeki *dataset.csv* dosyasını değiştirin. Bir dosya veya klasör veya her ikisini de almak isteyip istemediğiniz bağlı olarak, *dataset.csv* dosyasına aşağıdaki örneklere benzer girişler ekleyin.  
 
-   - **Bir dosyayı içeri aktarmak için**: aşağıdaki örnekte kopyalanacak veriler F: sürücüsünde yer alır. *MyFile1. txt* dosyanız *MyAzureFileshare1*köküne kopyalanır. *MyAzureFileshare1* yoksa, Azure depolama hesabında oluşturulur. Klasör yapısı korunur.
+   - **Bir dosyayı almak için**: Aşağıdaki örnekte, kopyalanması gereken veriler F: sürücüde bulunur. Dosyanız *MyFile1.txt* *MyAzureFileshare1*köküne kopyalanır. *MyAzureFileshare1* yoksa, Azure Depolama hesabında oluşturulur. Klasör yapısı korunur.
 
        ```
            BasePath,DstItemPathOrPrefix,ItemType,Disposition,MetadataFile,PropertiesFile
            "F:\MyFolder1\MyFile1.txt","MyAzureFileshare1/MyFile1.txt",file,rename,"None",None
 
        ```
-   - **Bir klasörü içeri aktarmak için**: *MyFolder2* altındaki tüm dosyalar ve klasörler yinelemeli olarak FileShare 'e kopyalanır. Klasör yapısı korunur.
+   - **Bir klasörü almak için**: *MyFolder2* altındaki tüm dosya ve klasörler özyinelemeli olarak fileshare'e kopyalanır. Klasör yapısı korunur.
 
        ```
            "F:\MyFolder2\","MyAzureFileshare1/",file,rename,"None",None
 
        ```
-     İçeri aktarılan klasörlere veya dosyalara karşılık gelen aynı dosyada birden çok giriş yapılabilir.
+     Aynı dosyada, içe aktarılan klasörlere veya dosyalara karşılık gelen birden çok giriş yapılabilir.
 
        ```
            "F:\MyFolder1\MyFile1.txt","MyAzureFileshare1/MyFile1.txt",file,rename,"None",None
            "F:\MyFolder2\","MyAzureFileshare1/",file,rename,"None",None
 
        ```
-     [Veri KÜMESI CSV dosyasını hazırlama](storage-import-export-tool-preparing-hard-drives-import.md)hakkında daha fazla bilgi edinin.
+     [Dataset CSV dosyasını hazırlama](storage-import-export-tool-preparing-hard-drives-import.md)hakkında daha fazla bilgi edinin.
 
 
-4. Aracın bulunduğu kök klasördeki *driveset. csv* dosyasını değiştirin. Aşağıdaki örneklere benzer şekilde *driveset. csv* dosyasına girdi ekleyin. Sürücünün hazırlanabilmesi için disk listesini doğru bir şekilde seçmesini sağlamak üzere sürücü kümesi dosyasında diskler ve karşılık gelen sürücü harfleri bulunur.
+4. Aracın bulunduğu kök klasöründeki *driveset.csv* dosyasını değiştirin. *Driveset.csv* dosyasındaki girişleri aşağıdaki örneklere benzer şekilde ekleyin. Driveset dosyası, aracın hazırlanacak disklerin listesini doğru şekilde seçebilmeleri için disklerin ve ilgili sürücü harflerinin listesini kullanır.
 
-    Bu örnek, iki diskin bağlı olduğunu ve temel NTFS birimlerinin G:\ olduğunu varsayar. ve H:\ oluşturulur. G: zaten şifrelenirken h:\şifrelenmez. Araç, H:\ barındıran diski biçimlendirir ve şifreler yalnızca (ve G:\)değil.
+    Bu örnek, iki diskin bağlı olduğunu ve temel NTFS hacimlerinin G:\ ve H:\ oluşturulur. G: zaten şifrelenmiş iken H:\şifrelenmez. Araç, H:\ sadece (ve G\)değil: .
 
-   - **Şifrelenmeyen bir disk için**: diskte BitLocker şifrelemesini etkinleştirmek üzere *şifrelemeyi* belirtin.
+   - **Şifrelenmemiş bir disk için**: Diskte BitLocker şifrelemesini etkinleştirmek için *Şifrele'yi* belirtin.
 
        ```
        DriveLetter,FormatOption,SilentOrPromptOnFormat,Encryption,ExistingBitLockerKey
        H,Format,SilentMode,Encrypt,
        ```
 
-   - **Zaten şifrelenmiş bir disk için**: *Alreadyencrypted* belirtip BitLocker anahtarını sağlayın.
+   - **Zaten şifrelenmiş bir disk**için : *AlreadyEncrypted'ı* belirtin ve BitLocker tuşunu temin edin.
 
        ```
        DriveLetter,FormatOption,SilentOrPromptOnFormat,Encryption,ExistingBitLockerKey
        G,AlreadyFormatted,SilentMode,AlreadyEncrypted,060456-014509-132033-080300-252615-584177-672089-411631
        ```
 
-     Birden fazla girişe karşılık gelen aynı dosyada birden çok giriş yapılabilir. [Sürücü KÜMESI CSV dosyasını hazırlama](storage-import-export-tool-preparing-hard-drives-import.md)hakkında daha fazla bilgi edinin.
+     Aynı dosyada birden çok sürücüye karşılık gelen birden çok giriş yapılabilir. [Driveset CSV dosyasını hazırlama](storage-import-export-tool-preparing-hard-drives-import.md)hakkında daha fazla bilgi edinin.
 
-5. Verileri disk sürücüsüne kopyalamak ve hazırlamak için `PrepImport` seçeneğini kullanın. İlk kopyalama oturumunda, dizinleri ve/veya dosyaları yeni bir kopyalama oturumuyla kopyalamak için aşağıdaki komutu çalıştırın:
+5. Verileri `PrepImport` disk sürücüsüne kopyalama ve hazırlama seçeneğini kullanın. Dizinleri ve/veya dosyaları yeni bir kopyalama oturumuyla kopyalamak için ilk kopyalama oturumu için aşağıdaki komutu çalıştırın:
 
        ```
        .\WAImportExport.exe PrepImport /j:<JournalFile> /id:<SessionId> [/logdir:<LogDirectory>] [/sk:<StorageAccountKey>] [/silentmode] [/InitialDriveSet:<driveset.csv>] DataSet:<dataset.csv>
        ```
 
-   Aşağıda bir içeri aktarma örneği gösterilmektedir.
+   Bir alma örneği aşağıda gösterilmiştir.
 
        ```
        .\WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#1  /sk:************* /InitialDriveSet:driveset.csv /DataSet:dataset.csv /logdir:C:\logs
        ```
 
-6. Komut satırının her çalıştırması için `/j:` parametresiyle birlikte verdiğiniz bir günlük dosyası oluşturulur. Hazırladığınız her sürücü, içeri aktarma işini oluştururken karşıya yüklenmesi gereken bir günlük dosyasına sahiptir. Günlük dosyaları olmayan sürücüler işlenmedi.
+6. Parametre ile `/j:` sağlanan adı içeren bir günlük dosyası, komut satırının her çalışması için oluşturulur. Hazırladığınız her sürücü, alma işini oluştururken yüklenmesi gereken bir günlük dosyasına sahiptir. Günlük dosyaları olmayan sürücüler işlenmez.
 
     > [!IMPORTANT]
-    > - Disk sürücüsü veya günlük dosyası üzerinde disk hazırlama işlemini tamamladıktan sonra verileri değiştirmeyin.
+    > - Disk hazırlamayı tamamladıktan sonra disk sürücüleri veya günlük dosyasındaki verileri değiştirmeyin.
 
-Ek örnekler için, [günlük dosyaları Için örneklere](#samples-for-journal-files)gidin.
+Ek örnekler [için, günlük dosyaları için Örnekler'e](#samples-for-journal-files)gidin.
 
-## <a name="step-2-create-an-import-job"></a>2\. Adım: içeri aktarma işi oluşturma
+## <a name="step-2-create-an-import-job"></a>Adım 2: Bir alma işi oluşturma
 
-Azure portal bir içeri aktarma işi oluşturmak için aşağıdaki adımları gerçekleştirin.
-1. https://portal.azure.com/oturum açın.
-2. **Tüm hizmetlere > depolama > içeri/dışarı aktarma işlerine**gidin.
+Azure portalında bir alma işi oluşturmak için aşağıdaki adımları gerçekleştirin.
+1. Oturum https://portal.azure.com/aç.
+2. Tüm **hizmetlere gidin > Depolama > İthalat/Dışa Aktarma işleri.**
 
-    ![Içeri/dışarı aktarmaya git](./media/storage-import-export-data-to-blobs/import-to-blob1.png)
+    ![İthalat/dışa aktarmaya git](./media/storage-import-export-data-to-blobs/import-to-blob1.png)
 
-3. **İçeri/dışarı aktarma Işi oluştur**' a tıklayın.
+3. **İçe Alma/Dışa Aktar İşi Oluştur'u**tıklatın.
 
-    ![Içeri/dışarı aktarma işi ' ne tıklayın](./media/storage-import-export-data-to-blobs/import-to-blob2.png)
+    ![İçe/Dışa Aktar/Dışa Aktarma işini tıklatın](./media/storage-import-export-data-to-blobs/import-to-blob2.png)
 
-4. **Temel bilgiler**:
+4. **Temel olarak:**
 
-    - **Azure 'A aktar**' ı seçin.
-    - İçeri aktarma işi için açıklayıcı bir ad girin. Bu adı, işleri devam ederken ve tamamlandıktan sonra izlemek için kullanın.
-        -  Bu ad yalnızca küçük harf, sayı, kısa çizgi ve alt çizgi içerebilir.
-        -  Ad bir harfle başlamalı ve boşluk içermemelidir.
+    - **Azure'a Aktar'ı**seçin.
+    - Alma işi için açıklayıcı bir ad girin. İşlerinizi devam ederken ve tamamlandıktan sonra izlemek için bu adı kullanın.
+        -  Bu ad yalnızca küçük harfler, sayılar, tireler ve alt çizerler içerebilir.
+        -  Ad bir harfle başlamalı ve boşluk içermeyebilir.
     - Bir abonelik seçin.
     - Kaynak grubunu seçin.
 
-        ![İçeri aktarma işi oluşturma-1. adım](./media/storage-import-export-data-to-blobs/import-to-blob3.png)
+        ![Alma işi oluşturma - Adım 1](./media/storage-import-export-data-to-blobs/import-to-blob3.png)
 
-3. **İş için Ayrıntılar**:
+3. **İş ayrıntıları:**
 
-    - Yukarıdaki [Adım 1: sürücüleri hazırlama](#step-1-prepare-the-drives)sırasında oluşturduğunuz günlük dosyalarını karşıya yükleyin.
-    - Verilerin aktarılacağı depolama hesabını seçin.
-    - Açılan konum, seçilen depolama hesabı bölgesine göre otomatik olarak doldurulur.
+    - Önceki Adım 1 sırasında oluşturduğunuz günlük dosyalarını [yükleyin: Sürücüleri hazırlayın.](#step-1-prepare-the-drives)
+    - Verilerin aktarılacAcağı depolama hesabını seçin.
+    - Açılan konumu, seçilen depolama hesabının bölgesine bağlı olarak otomatik olarak doldurulur.
 
-       ![İçeri aktarma işi oluşturma-2. adım](./media/storage-import-export-data-to-blobs/import-to-blob4.png)
+       ![Alma işi oluşturma - Adım 2](./media/storage-import-export-data-to-blobs/import-to-blob4.png)
 
-4. **İade gönderimi bilgileri**:
+4. **Karşılığında nakliye bilgileri**:
 
-    - Açılır listeden taşıyıcısı seçin. FedEx/DHL dışında bir taşıyıcı kullanmak istiyorsanız, açılan listeden varolan bir seçeneği belirleyin. Kullanmayı planladığınız taşıyıcı ile ilgili bilgilerle `adbops@microsoft.com` Azure Data Box Işlemler ekibine başvurun.
-    - Bu taşıyıcı ile oluşturduğunuz geçerli bir taşıyıcı hesap numarası girin. Microsoft, içeri aktarma işiniz tamamlandıktan sonra sürücüleri size geri göndermek için bu hesabı kullanır.
-    - Tümü ve geçerli bir iletişim adı, telefon, e-posta, sokak adresi, şehir, posta, Eyalet/bölge ve ülke/bölge sağlayın.
+    - Açılan listeden taşıyıcıyı seçin. FedEx/DHL dışında bir taşıyıcı kullanmak istiyorsanız, açılır yerden mevcut bir seçenek seçin. Kullanmayı planladığınız `adbops@microsoft.com` operatörle ilgili bilgilerle birlikte Azure Veri Kutusu İşlemleri ekibine başvurun.
+    - Bu taşıyıcıyla oluşturduğunuz geçerli bir taşıyıcı hesap numarasını girin. Microsoft, alma işiniz tamamlandıktan sonra sürücüleri size geri sevk etmek için bu hesabı kullanır.
+    - Tam ve geçerli bir iletişim adı, telefon, e-posta, sokak adresi, şehir, zip, eyalet/ il ve ülke/bölge sağlayın.
 
         > [!TIP]
-        > Tek bir kullanıcı için bir e-posta adresi belirtmek yerine, bir grup e-postası sağlayın. Bu, bir yönetici ayrılsa bile bildirimleri almanızı sağlar.
+        > Tek bir kullanıcı için e-posta adresi belirtmek yerine, grup e-postası sağlayın. Bu, bir yönetici ayrılsa bile bildirim almanızı sağlar.
 
-       ![İçeri aktarma işi oluşturma-3. adım](./media/storage-import-export-data-to-blobs/import-to-blob5.png)
+       ![Alma işi oluşturma - Adım 3](./media/storage-import-export-data-to-blobs/import-to-blob5.png)
 
 
-5. **Özet**:
+5. **Özetle**:
 
-    - Disklerin Azure 'a geri sevk edilmesi için Azure veri merkezi teslimat adresini sağlayın. İş adının ve tam adresin Sevkiyat Etiketi üzerinde belirtildiğinden emin olun.
-    - İçeri aktarma işi oluşturmayı gerçekleştirmek için **Tamam** ' ı tıklatın.
+    - Diskleri Azure'a geri gönderme için Azure veri merkezi gönderi adresini sağlayın. İş adının ve tam adresinin sevkiyat etiketinde belirtildiğinden emin olun.
+    - Alma iş oluşturmayı tamamlamak için **Tamam'ı** tıklatın.
 
-        ![İçeri aktarma işi oluşturma-4. adım](./media/storage-import-export-data-to-blobs/import-to-blob6.png)
+        ![Alma işi oluşturma - Adım 4](./media/storage-import-export-data-to-blobs/import-to-blob6.png)
 
-## <a name="step-3-ship-the-drives-to-the-azure-datacenter"></a>3\. Adım: sürücüleri Azure veri merkezine gönderme
+## <a name="step-3-ship-the-drives-to-the-azure-datacenter"></a>Adım 3: Sürücüleri Azure veri merkezine gönderme
 
 [!INCLUDE [storage-import-export-ship-drives](../../../includes/storage-import-export-ship-drives.md)]
 
-## <a name="step-4-update-the-job-with-tracking-information"></a>4\. Adım: işi izleme bilgileriyle güncelleştirme
+## <a name="step-4-update-the-job-with-tracking-information"></a>Adım 4: İzleme bilgileriyle işi güncelleştirme
 
 [!INCLUDE [storage-import-export-update-job-tracking](../../../includes/storage-import-export-update-job-tracking.md)]
 
-## <a name="step-5-verify-data-upload-to-azure"></a>5\. Adım: verileri Azure 'a yüklemeyi doğrulama
+## <a name="step-5-verify-data-upload-to-azure"></a>Adım 5: Azure'a veri yüklemesini doğrulayın
 
-İşi tamamlamaya göre izleyin. İş tamamlandıktan sonra verilerinizin Azure 'a yüklendiğini doğrulayın. Şirket içi verileri yalnızca karşıya yükleme işleminin başarılı olduğunu doğruladıktan sonra silin.
+İşi tamamlayakadar izleyin. İş tamamlandıktan sonra verilerinizin Azure'a yüklendiğini doğrulayın. Şirket içi verileri yalnızca yüklemenin başarılı olduğunu doğruladıktan sonra silin.
 
 ## <a name="samples-for-journal-files"></a>Günlük dosyaları için örnekler
 
-**Daha fazla sürücü eklemek**için yeni bir sürücü kümesi dosyası oluşturun ve komutu aşağıda gösterildiği gibi çalıştırın.
+Daha **fazla sürücü eklemek**için yeni bir sürücü seti dosyası oluşturun ve komutu aşağıdaki gibi çalıştırın.
 
-*Initialdriveset. csv* dosyasında belirtilenden farklı disk sürücülerine sonraki kopyalama oturumları için yeni bir sürücü kümesi *. csv* dosyası belirtin ve bunu `AdditionalDriveSet`parametreye bir değer olarak sağlayın. **Aynı günlük dosyası** adını kullanın ve **yenı bir oturum kimliği**sağlayın. AdditionalDriveset CSV dosyası biçimi ınitialdriveset biçimiyle aynı.
+*InitialDriveset .csv* dosyasında belirtilenden farklı disk sürücülerine sonraki kopyalama oturumları için yeni bir driveset *.csv* dosyası belirtin ve parametreye `AdditionalDriveSet`değer olarak sağlayın. Aynı **günlük dosya** adını kullanın ve yeni bir **oturum kimliği**sağlayın. AdditionalDriveset CSV dosyasının biçimi InitialDriveSet biçimiyle aynıdır.
 
     ```
     WAImportExport.exe PrepImport /j:<JournalFile> /id:<SessionId> /AdditionalDriveSet:<driveset.csv>
     ```
 
-Aşağıda bir içeri aktarma örneği gösterilmektedir.
+Bir alma örneği aşağıda gösterilmiştir.
 
     ```
     WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#3  /AdditionalDriveSet:driveset-2.csv
     ```
 
 
-Aynı sürücü kümesine ek veri eklemek için, ek dosya/dizin kopyalamak üzere sonraki kopyalama oturumları için Prepımport komutunu kullanın.
+Aynı sürücü kümesine ek veri eklemek için, ek dosyaları/dizini kopyalamak için sonraki kopyalama oturumları için PrepImport komutunu kullanın.
 
-*Initialdriveset. csv* dosyasında belirtilen sabit disk sürücülerine sonraki kopyalama oturumları için, **aynı günlük dosyası** adını belirtin ve **Yeni bir oturum kimliği**sağlayın; depolama hesabı anahtarı sağlanması gerekmez.
+*InitialDriveset.csv* dosyasında belirtilen aynı sabit disk sürücülerine sonraki kopyalama oturumları **için, aynı günlük dosya** adını belirtin ve yeni bir **oturum kimliği**sağlayın; depolama hesabı anahtarını sağlamaya gerek yoktur.
 
     ```
     WAImportExport PrepImport /j:<JournalFile> /id:<SessionId> /j:<JournalFile> /id:<SessionId> [/logdir:<LogDirectory>] DataSet:<dataset.csv>
     ```
 
-Aşağıda bir içeri aktarma örneği gösterilmektedir.
+Bir alma örneği aşağıda gösterilmiştir.
 
     ```
     WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#2  /DataSet:dataset-2.csv
@@ -207,5 +207,5 @@ Aşağıda bir içeri aktarma örneği gösterilmektedir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [İşi ve sürücü durumunu görüntüleme](storage-import-export-view-drive-status.md)
-* [Içeri/dışarı aktarma gereksinimlerini gözden geçirme](storage-import-export-requirements.md)
+* [İş ve sürücü durumunu görüntüleme](storage-import-export-view-drive-status.md)
+* [İthalat/İhracat gereksinimlerini gözden geçirin](storage-import-export-requirements.md)

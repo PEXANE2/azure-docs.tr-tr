@@ -1,201 +1,201 @@
 ---
-title: Azure Application Insights ölçümleri keşfetme | Microsoft Docs
-description: Ölçüm Gezgini 'nde grafikleri yorumlama ve Ölçüm Gezgini dikey pencerelerini özelleştirme.
+title: Azure Uygulama Öngörülerinde Ölçümleri Keşfetmek | Microsoft Dokümanlar
+description: Metrik explorer'daki grafiklerin nasıl yorumlanacağı ve metrik explorer bıçaklarının nasıl özelleştirileni.
 ms.topic: conceptual
 ms.date: 01/22/2019
 ms.openlocfilehash: f85a8fe79e7f4f820d7c0e5b942730305e892095
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79275899"
 ---
-# <a name="exploring-metrics-in-application-insights"></a>Application Insights ölçümleri keşfetme
-[Application Insights][start] ölçümler, uygulamanızdan telemetri olarak gönderilen olayların ve sayımların ölçümleridir. Bunlar, performans sorunlarını tespit etmenize ve uygulamanızın nasıl kullanıldığı konusunda eğilimleri izlemenize yardımcı olur. Birçok standart ölçüm yelpazesi vardır ve ayrıca kendi özel ölçümlerinizi ve olaylarınızı da oluşturabilirsiniz.
+# <a name="exploring-metrics-in-application-insights"></a>Uygulama Öngörülerinde Ölçümleri Keşfetme
+[Uygulama Öngörüleri'ndeki][start] ölçümler, uygulamanızdan telemetri yle gönderilen olayların ölçülü değerleri ve sayısıdır. Bunlar, uygulamanızın nasıl kullanıldığına dair performans sorunlarını algılamanıza ve eğilimleri izlemenize yardımcı olur. Çok çeşitli standart ölçümler vardır ve kendi özel ölçümlerinizi ve etkinliklerinizi de oluşturabilirsiniz.
 
 > [!NOTE]
-> Bu makalede, şu anda kullanım dışı olan ve sonunda kullanımdan kaldırılacak olan klasik Ölçüm Gezgini deneyimi açıklanmaktadır. [Bu makalede](../platform/metrics-charts.md)açıklanan yeni deneyimi kullanıma sunmanızı öneririz.
+> Bu makalede, şu anda amortismana kaldırılmış olan ve sonunda kullanımdan kaldırılacak olan klasik ölçümler explorer deneyimi açıklanmaktadır. Bu makalede açıklanan yeni deneyime dikkat etmenizi [öneririz.](../platform/metrics-charts.md)
 
-Ölçümler ve olay sayıları, toplamlar, ortalamalar veya sayımlar gibi toplanmış değerlerin grafiklerde görüntülenir.
+Ölçümler ve olay sayıları, toplamlar, ortalamalar veya sayımlar gibi birleştirilmiş değerlerin grafiklerinde görüntülenir.
 
-Aşağıda örnek bir grafik kümesi verilmiştir:
+Aşağıda örnek bir grafik kümesi verem:
 
 ![](./media/metrics-explorer/01-overview.png)
 
-Ölçüm grafiklerini Application Insights portalında her yerde bulabilirsiniz. Çoğu durumda, özelleştirilebilir ve dikey pencereye daha fazla grafik ekleyebilirsiniz. Genel Bakış dikey penceresinde, daha ayrıntılı grafikler ("sunucular" gibi başlıklar içeren) için öğesine tıklayın veya özel grafikler oluşturabileceğiniz yeni bir dikey pencere açmak için **Ölçüm Gezgini** ' a tıklayın.
+Uygulama Öngörüleri portalında her yerde metrik grafikleri bulabilirsiniz. Çoğu durumda, bunlar özelleştirilebilir ve bıçak için daha fazla grafik ekleyebilirsiniz. Genel Bakış bıçağından, daha ayrıntılı grafiklere ("Sunucular" gibi **başlıklara** sahip) tıklayın veya özel grafikler oluşturabileceğiniz yeni bir bıçak açmak için Metrics Explorer'ı tıklatın.
 
 ## <a name="time-range"></a>Zaman aralığı
-Herhangi bir dikey penceredeki grafiklerin veya ızgaraların kapsadığı zaman aralığını değiştirebilirsiniz.
+Herhangi bir bıçaküzerindeki grafiklerin veya ızgaraların kapsadığı Zaman aralığını değiştirebilirsiniz.
 
-![Azure portal uygulamanızın genel bakış dikey penceresini açın](./media/metrics-explorer/03-range.png)
+![Azure portalında uygulamanızın genel bakış bıçaklarını açın](./media/metrics-explorer/03-range.png)
 
-Henüz görüntülenmeyen bazı verileri bekliyorsanız Yenile ' ye tıklayın. Grafikler kendi başlarına zaman aralıklarıyla yenilenir, ancak aralıklar daha büyük zaman aralıkları için daha uzun olur. Verilerin analiz işlem hattından grafik üzerine gelmesi biraz zaman alabilir.
+Henüz görünmemiş bazı veriler bekliyorsanız, Yenile'yi tıklatın. Grafikler aralıklarla kendilerini yeniler, ancak aralıklar daha büyük zaman aralıkları için daha uzundur. Verilerin analiz boru hattından bir grafiğe gelmesi biraz zaman alabilir.
 
-Grafiğin bir kısmına yakınlaştırmak için, üzerine sürükleyin:
+Grafiğin bir kısmını yakınlaştırmak için grafiğin üzerine sürükleyin:
 
-![Grafiğin bir bölümü boyunca sürükleyin.](./media/metrics-explorer/12-drag.png)
+![Grafiğin bir bölümüboyunca sürükleyin.](./media/metrics-explorer/12-drag.png)
 
-Geri yüklemek için yakınlaştırmayı geri al düğmesine tıklayın.
+Geri yüklemek için Yakınlaştır düğmesini geri a tıklayın.
 
-## <a name="granularity-and-point-values"></a>Ayrıntı düzeyi ve nokta değerleri
-Bu noktada ölçümlerin değerlerini göstermek için farenizi grafiğin üzerine getirin.
+## <a name="granularity-and-point-values"></a>Taneciklilik ve nokta değerleri
+Bu noktada ölçümlerin değerlerini görüntülemek için farenizi grafiğin üzerine titretin.
 
-![Fareyi grafiğin üzerine getirin](./media/metrics-explorer/02-focus.png)
+![Fareyi bir grafiğin üzerine tover](./media/metrics-explorer/02-focus.png)
 
-Belirli bir noktadaki ölçüm değeri, yukarıdaki örnekleme aralığı içinde toplanır.
+Belirli bir noktadaki ölçümün değeri, önceki örnekleme aralığında toplanır.
 
-Örnekleme aralığı veya "ayrıntı düzeyi" dikey pencerenin en üstünde gösterilir.
+Numune alma aralığı veya "taneciklilik" bıçağın üst kısmında gösterilir.
 
-![Bir dikey pencerenin üst bilgisi.](./media/metrics-explorer/11-grain.png)
+![Bir bıçağın başlığı.](./media/metrics-explorer/11-grain.png)
 
-Zaman aralığı dikey penceresinde ayrıntı düzeyi ayarlayabilirsiniz:
+Zaman aralığı bıçağındaki tanecikleri ayarlayabilirsiniz:
 
-![Bir dikey pencerenin üst bilgisi.](./media/metrics-explorer/grain.png)
+![Bir bıçağın başlığı.](./media/metrics-explorer/grain.png)
 
-Kullanılabilir olan granuya seçtiğiniz zaman aralığına göre değişir. Açık granuo, zaman aralığı için "otomatik" ayrıntı düzeyi alternatiflerdir.
+Kullanılabilir parçalı lıklar seçtiğiniz zaman aralığına bağlıdır. Açık tanecikler, zaman aralığı için "otomatik" tanecikliliğe alternatiflerdir.
 
 
-## <a name="editing-charts-and-grids"></a>Grafikleri ve ızgaraları düzenleniyor
-Dikey pencereye yeni bir grafik eklemek için:
+## <a name="editing-charts-and-grids"></a>Grafikleri ve ızgaraları düzenleme
+Bıçak için yeni bir grafik eklemek için:
 
-![Ölçüm Gezgini, grafik Ekle ' yi seçin.](./media/metrics-explorer/04-add.png)
+![Metrikler Gezgini'nde Grafik Ekle'yi seçin](./media/metrics-explorer/04-add.png)
 
-Mevcut veya yeni bir grafik üzerinde **Düzenle** ' yi seçerek gösterdiği şeyi düzenleyin:
+Ne gösterdiğini deletmek için varolan veya yeni bir grafikte **Edit'i** seçin:
 
 ![Bir veya daha fazla ölçüm seçin](./media/metrics-explorer/08-select.png)
 
-Bir grafikte birden fazla ölçüm gösterebilirsiniz, ancak birlikte görüntülenebilen birleşimler hakkında kısıtlamalar vardır. Tek bir ölçüm seçtiğinizde bazı diğerleri devre dışı bırakılır.
+Birlikte görüntülenebilen kombinasyonlarla ilgili kısıtlamalar olsa da, grafikte birden fazla metrik görüntüleyebilirsiniz. Bir metrik seçtiğiniz de, diğerlerinden bazıları devre dışı bırakılır.
 
-[Özel ölçümleri][track] uygulamanıza koddıysanız (trackmetric ve TrackEvent çağrıları), burada listelenecektir.
+Uygulamanıza [özel ölçümler][track] kodladıysanız (TrackMetric ve TrackEvent çağrıları) burada listelenir.
 
-## <a name="segment-your-data"></a>Verilerinizi segmentlere ayırın
-Bir ölçümü özelliğe göre bölebilirsiniz; Örneğin, farklı işletim sistemlerine sahip istemcilerde sayfa görünümlerini karşılaştırmak için.
+## <a name="segment-your-data"></a>Verilerinizi segmente
+Bir metriyi özelliğe göre bölebilirsiniz - örneğin, farklı işletim sistemleri olan istemcilerin sayfa görünümlerini karşılaştırmak için.
 
-Bir grafik veya kılavuz seçin, gruplandırma üzerinde geçiş yapın ve gruplamak için bir özellik seçin:
+Bir grafik veya ızgara seçin, gruplandırmayı açın ve gruplandırmaiçin bir özellik seçin:
 
-![Gruplandırma açık ' i seçin, sonra gruptaki bir özelliği Seç ' i ayarla](./media/metrics-explorer/15-segment.png)
+![Gruplandırma'yı seçin, ardından Group By'de bir özellik seçin](./media/metrics-explorer/15-segment.png)
 
 > [!NOTE]
-> Gruplandırma kullandığınızda, alan ve çubuk grafik türleri Yığılmış bir görüntü sağlar. Bu, toplama yönteminin toplam olduğu yerde uygundur. Ancak toplama türünün ortalama olduğu, çizgi veya ızgara görüntüleme türlerini seçin.
+> Gruplandırma kullandığınızda, Alan ve Çubuk grafik türleri yığılmış bir ekran sağlar. Bu, Toplama yönteminin Toplam olduğu durumlarda uygundur. Ancak toplama türü Ortalama olduğunda, Çizgi veya Izgara ekran türlerini seçin.
 >
 >
 
-[Özel ölçümleri][track] uygulamanıza kodlarsa ve özellik değerlerini içeriyorsa, listeden özelliğini seçebilirsiniz.
+Uygulamanıza [özel ölçümler][track] kodlarsanız ve bunlar özellik değerlerini içeriyorsa, listedeki özelliği seçebilirsiniz.
 
-Grafik, bölümlenmiş veriler için çok küçük mi? Yüksekliğini ayarlayın:
+Grafik, parçalı veriler için çok mu küçük? Yüksekliğini ayarlayın:
 
-![Kaydırıcıyı ayarla](./media/metrics-explorer/18-height.png)
+![Kaydırıcıyı ayarlama](./media/metrics-explorer/18-height.png)
 
 ## <a name="aggregation-types"></a>Toplama türleri
-Yan taraftaki gösterge, genellikle grafiğin dönemi boyunca toplanmış değeri gösterir. Grafiğin üzerine geldiğinizde, bu noktada değeri gösterir.
+Varsayılan olarak yan taraftaki gösterge genellikle grafik dönemi boyunca toplanan değeri gösterir. Grafiğin üzerinde gezinirseniz, bu noktadadeğeri gösterir.
 
-Grafikteki her bir veri noktası, önceki örnekleme aralığında veya "ayrıntı düzeyi" olarak alınan veri değerlerinin toplamıdır. Ayrıntı düzeyi dikey pencerenin üst kısmında gösterilir ve grafiğin genel zaman ölçeğiyle birlikte değişir.
+Grafikteki her veri noktası, önceki örnekleme aralığında veya "parçalı" olarak alınan veri değerlerinin toplamıdır. Parçalı lık bıçağın üst kısmında gösterilir ve grafiğin genel zaman ölçeğine göre değişir.
 
-Ölçümler, farklı yollarla toplanabilir:
+Ölçümler farklı şekillerde toplanabilir:
 
-* **Count** , örnekleme aralığında alınan olayların sayısıdır. İstekler gibi olaylar için kullanılır. Grafiğin yükseklikteki değişimler, olayların oluşma hızında değişimleri gösterir. Ancak örnekleme aralığını değiştirdiğinizde sayısal değerin değişdiğine unutmayın.
-* **Sum** , örnekleme aralığı üzerinden alınan tüm veri noktalarının değerlerini veya grafiğin dönemini ekler.
-* **Ortalama** , toplamı Aralık üzerinden alınan veri noktası sayısına böler.
-* **Benzersiz** sayımlar Kullanıcı ve hesap sayısı için kullanılır. Örnekleme aralığı boyunca veya grafiğin dönemi boyunca, bu sırada görülen farklı kullanıcıların sayısını gösterir.
-* **%** -her bir toplama 'nın yüzde olan sürümleri yalnızca kesimli grafiklerle kullanılır. Toplam, %100 ' e kadar her zaman ekler ve grafik toplam farklı bileşenlerin göreli katkısını gösterir.
+* **Sayım,** örnekleme aralığında alınan olayların sayısıdır. İstek gibi olaylar için kullanılır. Grafiğin yüksekliğindeki varyasyonlar, olayların oluşma hızındaki varyasyonları gösterir. Ancak örnekleme aralığını değiştirdiğinizde sayısal değerin değiştiğini unutmayın.
+* **Özetle,** örnekleme aralığı veya grafik dönemi boyunca alınan tüm veri noktalarının değerlerini toplar.
+* **Ortalama,** Toplamı aralıkta alınan veri noktalarının sayısına böler.
+* **Benzersiz** sayımlar, kullanıcı ve hesap sayımları için kullanılır. Örnekleme aralığı nda veya grafik dönemi boyunca, şekil o zaman içinde görülen farklı kullanıcıların sayısını gösterir.
+* **%**- Her toplama yüzdesi sürümleri yalnızca parçalı grafiklerle kullanılır. Toplam her zaman %100'e kadar gelir ve grafik, toplamın farklı bileşenlerinin göreli katkısını gösterir.
 
-    ![Yüzde toplamı](./media/metrics-explorer/percentage-aggregation.png)
+    ![Yüzde toplama](./media/metrics-explorer/percentage-aggregation.png)
 
 ### <a name="change-the-aggregation-type"></a>Toplama türünü değiştirme
 
-![Grafiği düzenleyin ve ardından toplama 'yı seçin](./media/metrics-explorer/05-aggregation.png)
+![Grafiği edin ve ardından Toplama'yı seçin](./media/metrics-explorer/05-aggregation.png)
 
-Her ölçüm için varsayılan yöntem, yeni bir grafik oluşturduğunuzda veya tüm ölçümler seçimi kaldırıldığında gösterilir:
+Her metrik için varsayılan yöntem, yeni bir grafik oluşturduğunuzda veya tüm ölçümler deselected olduğunda gösterilir:
 
-![Varsayılanları görmek için tüm ölçümlerin seçimini kaldırın](./media/metrics-explorer/06-total.png)
+![Varsayılanları görmek için tüm ölçümleri seçin](./media/metrics-explorer/06-total.png)
 
-## <a name="pin-y-axis"></a>Y eksenini sabitle 
-Varsayılan olarak bir grafik, değerlerin hisse Sayın görsel gösterimini vermek için, veri aralığındaki maksimum değere kadar sıfırdan başlayan Y ekseni değerlerini gösterir. Ancak bazı durumlarda ücretten daha fazla değişiklik yapmak, değerlerin küçük değişikliklerini görsel olarak incelemek ilginç olabilir. Bu gibi özelleştirmeler için y ekseni Aralık düzenlemesi özelliğini kullanarak, istenen yerde Y ekseninin en küçük veya en büyük değerini sabitleyebilirsiniz.
-Y ekseni Aralık ayarlarını açmak için "Gelişmiş ayarlar" onay kutusunu tıklatın
+## <a name="pin-y-axis"></a>Y eksenini sabitleme 
+Varsayılan olarak bir grafik, değerlerin kuantum görsel bir gösterimi vermek için, veri aralığında maksimum değerler sıfırdan başlayan Y ekseni değerleri gösterir. Ama bazı durumlarda kuantumdan daha fazla değerdeki küçük değişiklikleri görsel olarak incelemek ilginç olabilir. Bu gibi özelleştirmeler için Y ekseni aralığı düzenleme özelliğini kullanarak Y ekseninin minimum veya maksimum değerini istenilen yere sabitleyin.
+Y ekseni aralığı Ayarlarını açmak için "Gelişmiş Ayarlar" onay kutusuna tıklayın
 
-![Gelişmiş ayarlar ' a tıklayın, özel Aralık ' ı seçin ve min maks. değer belirtin](./media/metrics-explorer/y-axis-range.png)
+![Gelişmiş Ayarlar'ı tıklatın, Özel aralığı seçin ve min max değerlerini belirtin](./media/metrics-explorer/y-axis-range.png)
 
-## <a name="filter-your-data"></a>Verilerinizi filtreleyin
-Yalnızca seçili bir özellik değerleri kümesine ilişkin ölçümleri görmek için:
+## <a name="filter-your-data"></a>Verilerinizi filtreleme
+Seçili özellik değerleri kümesiiçin yalnızca ölçümleri görmek için:
 
-![Filtre ' ye tıklayın, bir özellik genişletin ve bazı değerleri denetleyin](./media/metrics-explorer/19-filter.png)
+![Filtrele'yi tıklatın, özelliği genişletin ve bazı değerleri denetleyin](./media/metrics-explorer/19-filter.png)
 
-Belirli bir özellik için herhangi bir değer seçmezseniz, tümünü seçmekle aynı olur: Bu özellikte filtre yoktur.
+Belirli bir özellik için herhangi bir değer seçmezseniz, bu, bunların hepsini seçmekle aynıdır: bu özellikte filtre yoktur.
 
-Her özellik değerinin yanı sıra olay sayılarına dikkat edin. Bir özelliğin değerlerini seçtiğinizde, diğer özellik değerlerinin yanında bulunan sayımlar ayarlanır.
+Her özellik değerinin yanında olay sayısına dikkat edin. Bir özelliğin değerlerini seçtiğinizde, diğer özellik değerleriyle birlikte sayımlar ayarlanır.
 
-Filtreler dikey penceredeki tüm grafiklere uygulanır. Farklı grafiklere farklı filtreler uygulanmasını istiyorsanız, farklı ölçüm dikey pencereleri oluşturun ve kaydedin. İsterseniz, farklı dikey pencerelere ait grafikleri birbirlerine sabitleyebilir, böylece birbirleriyle birlikte görüntüleyebilirsiniz.
+Filtreler bir bıçak üzerindeki tüm grafiklere uygulanır. Farklı grafiklere farklı filtreler uygulanmasını istiyorsanız, farklı ölçümler bıçakları oluşturun ve kaydedin. İsterseniz, farklı bıçaklardan gösterge paneline grafikleri sabitleyebilirsiniz, böylece onları yan yana görebilirsiniz.
 
-### <a name="remove-bot-and-web-test-traffic"></a>Bot ve Web test trafiğini kaldır
-**Gerçek veya yapay trafiği** filtrele ve **Gerçek**denetim ' i kullanın.
+### <a name="remove-bot-and-web-test-traffic"></a>Bot ve web test trafiğini kaldırma
+**Filtre Gerçek veya sentetik trafik** kullanın ve **Real**kontrol edin.
 
-**Yapay trafik kaynağına**göre de filtre uygulayabilirsiniz.
+Ayrıca **sentetik trafik kaynağına**göre filtreleyebilirsiniz.
 
 ### <a name="to-add-properties-to-the-filter-list"></a>Filtre listesine özellik eklemek için
-Kendi seçtiğiniz bir kategoride Telemetriyi filtrelemek istiyor musunuz? Örneğin, kullanıcılarınızı farklı kategorilere ayırabilirsiniz, ancak verilerinizi bu kategorilere göre segmentlere ayırmak istiyorsunuz.
+Kendi seçtiğiniz bir kategoride telemetri filtrelemek ister misiniz? Örneğin, kullanıcılarınızı farklı kategorilere bölmek ve verilerinizi bu kategorilere göre bölmek istersiniz.
 
-[Kendi özelliğini oluşturun](../../azure-monitor/app/api-custom-events-metrics.md#properties). Farklı SDK modülleri tarafından gönderilen standart telemetri dahil olmak üzere tüm telemetride görünmesini sağlamak için bir [telemetri başlatıcısında](../../azure-monitor/app/api-custom-events-metrics.md#defaults) ayarlayın.
+[Kendi mülkünüzü oluşturun.](../../azure-monitor/app/api-custom-events-metrics.md#properties) Farklı SDK modülleri tarafından gönderilen standart telemetri de dahil olmak üzere tüm telemetrilerde görünmesi için bir [Telemetri Initializer'ine](../../azure-monitor/app/api-custom-events-metrics.md#defaults) ayarlayın.
 
-## <a name="edit-the-chart-type"></a>Grafik türünü düzenleme
-Kılavuzlar ve grafikler arasında geçiş yapabildiğinize dikkat edin:
+## <a name="edit-the-chart-type"></a>Grafik türünü edin
+Izgaralar ve grafikler arasında geçiş yapabileceğinize dikkat edin:
 
-![Bir ızgara veya grafik seçin, sonra bir grafik türü seçin](./media/metrics-explorer/16-chart-grid.png)
+![Bir ızgara veya grafik seçin, ardından bir grafik türü seçin](./media/metrics-explorer/16-chart-grid.png)
 
-## <a name="save-your-metrics-blade"></a>Ölçümler dikey penceresini kaydedin
-Bazı grafikler oluşturduğunuzda bunları sık kullanılan olarak kaydedin. Bir kuruluş hesabı kullanıyorsanız, onu diğer ekip üyeleriyle paylaşmak isteyip istemediğinizi seçebilirsiniz.
+## <a name="save-your-metrics-blade"></a>Ölçüm bıçağınızı kaydedin
+Bazı grafikler oluşturduğınızda, bunları sık kullanılan olarak kaydedin. Kuruluş hesabı kullanıyorsanız, bunu diğer ekip üyeleriyle paylaşıp paylaşmayacağınızı seçebilirsiniz.
 
-![Sık kullanılan Seç](./media/metrics-explorer/21-favorite-save.png)
+![Sık Kullanılanı Seçin](./media/metrics-explorer/21-favorite-save.png)
 
-Dikey pencereyi tekrar görmek için **genel bakış dikey penceresine gidin** ve Sık Kullanılanlar ' ı açın:
+Bıçağı tekrar görmek **için genel bakış bıçağına gidin** ve Sık Kullanılanlar'ı açın:
 
-![Genel Bakış dikey penceresinde Sık Kullanılanlar ' ı seçin.](./media/metrics-explorer/22-favorite-get.png)
+![Genel Bakış bıçağında Sık Kullanılanlar'ı seçin](./media/metrics-explorer/22-favorite-get.png)
 
-Kaydettiğinizde göreli zaman aralığı ' nı seçerseniz, dikey pencere en son ölçülerle güncelleştirilir. Mutlak zaman aralığı ' nı seçtiyseniz, her seferinde aynı veriler gösterilir.
+Kaydettiğiniz zaman Göreli zaman aralığını seçtiyseniz, bıçak en son ölçümlerle güncelleştirilir. Mutlak zaman aralığını seçtiyseniz, her seferinde aynı verileri gösterir.
 
-## <a name="reset-the-blade"></a>Dikey pencereyi sıfırlama
-Bir dikey pencereyi düzenlerseniz, ancak özgün kaydedilmiş kümesine geri dönmek isterseniz, Sıfırla ' ya tıklamanız yeterlidir.
+## <a name="reset-the-blade"></a>Bıçağı sıfırla
+Bir bıçağı yeniden ayarlayıp orijinal kaydedilmiş sete geri dönmek istiyorsanız, Sıfırla'yı tıklatın.
 
-![Ölçüm Gezgini ' nin en üstündeki düğmelerde](./media/metrics-explorer/17-reset.png)
+![Metric Explorer'ın üst kısmındaki düğmelerde](./media/metrics-explorer/17-reset.png)
 
-## <a name="live-metrics-stream"></a>Canlı ölçüm akışı
+## <a name="live-metrics-stream"></a>Canlı ölçümler akışı
 
-Telemetrinizin çok daha hızlı bir görünümü için [canlı akış](live-stream.md)açın. Toplama işlemi nedeniyle çoğu ölçüm görünmesi birkaç dakika sürer. Bunun aksine, canlı ölçümler düşük gecikme süresi için iyileştirilmiştir. 
+Telemetrinizin çok daha hızlı bir görünümü için [Canlı Yayın'ı](live-stream.md)açın. Çoğu ölçümün görünmesi, toplama işlemi nedeniyle birkaç dakika sürer. Bunun aksine, canlı ölçümler düşük gecikme sonu için optimize edilebiyi gösterir. 
 
 ## <a name="set-alerts"></a>Uyarı ayarlama
-Herhangi bir ölçümün olağandışı değerlerinin e-postasından haberdar olmak için bir uyarı ekleyin. E-postayı hesap yöneticilerine veya belirli e-posta adreslerine göndermek üzere birini seçebilirsiniz.
+Herhangi bir metnin olağandışı değerlerine e-posta ile bildirilmek için bir uyarı ekleyin. E-postayı hesap yöneticilerine veya belirli e-posta adreslerine göndermeyi seçebilirsiniz.
 
-![Ölçüm Gezgini, uyarı kuralları ' nı seçin, uyarı Ekle](./media/metrics-explorer/appinsights-413setMetricAlert.png)
+![Metrikler Gezgini'nde Uyarı kurallarını seçin, Uyarı Ekle](./media/metrics-explorer/appinsights-413setMetricAlert.png)
 
-[Uyarılar hakkında daha fazla bilgi edinin][alerts].
+[Uyarılar hakkında daha fazla bilgi edinin.][alerts]
 
 
-## <a name="continuous-export"></a>Sürekli dışarı aktarma
-Verileri dışarıdan işleyebilmeniz için sürekli olarak dışa aktarılmasını istiyorsanız [sürekli dışarı aktarma](../../azure-monitor/app/export-telemetry.md)kullanmayı düşünün.
+## <a name="continuous-export"></a>Sürekli İhracat
+Verileri dışarıdan işleyebilirsiniz, böylece sürekli dışa aktarın istiyorsanız, [Sürekli dışa aktarma](../../azure-monitor/app/export-telemetry.md)yı kullanmayı düşünün.
 
 ### <a name="power-bi"></a>Power BI
-Verilerinizin daha zengin görünümlerini istiyorsanız [Power BI dışa aktarabilirsiniz](https://blogs.msdn.com/b/powerbi/archive/2015/11/04/explore-your-application-insights-data-with-power-bi.aspx).
+Verilerinizin daha da zengin görünümlerini istiyorsanız, [Power BI'ye dışa aktarabilirsiniz.](https://blogs.msdn.com/b/powerbi/archive/2015/11/04/explore-your-application-insights-data-with-power-bi.aspx)
 
 ## <a name="analytics"></a>Analiz
-[Analiz](../../azure-monitor/app/analytics.md) , güçlü bir sorgu dili kullanarak telemetrinizi çözümlemenin daha çok yönlü bir yoludur. Ölçümleri ölçülerden birleştirmek veya hesaplamak isterseniz veya uygulamanızın en son performansını derinlemesine bir şekilde araştırmayı gerçekleştirmek istiyorsanız bu seçeneği kullanın. 
+[Analytics,](../../azure-monitor/app/analytics.md) güçlü bir sorgu dili kullanarak telemetrinizi analiz etmenin daha çok yönlü bir yoludur. Ölçümlerden elde edilen sonuçları birleştirmek veya hesaplamak veya uygulamanızın son performansını derinlemesine bir şekilde araştırmak istiyorsanız kullanın. 
 
-Ölçüm grafiğinden analiz simgesine tıklayarak doğrudan eşdeğer analiz sorgusuna ulaşabilirsiniz.
+Bir metrik grafikten, doğrudan eşdeğer Analytics sorgusuna ulaşmak için Analytics simgesini tıklatabilirsiniz.
 
 ## <a name="troubleshooting"></a>Sorun giderme
-*Grafiğimde hiç veri görmüyorum.*
+*Grafiğimde veri göremiyorum.*
 
-* Filtreler dikey penceredeki tüm grafiklere uygulanır. Tek bir grafiğe odaklanırken, diğer tüm verileri dışlayan bir filtre ayarlamadıysanız emin olun.
+* Filtreler bıçaktaki tüm grafiklere uygulanır. Bir grafiğe odaklanırken, diğerindeki tüm verileri hariç tutan bir filtre ayarlamadığınızdan emin olun.
 
-    Farklı grafiklerde farklı filtreler ayarlamak istiyorsanız bunları farklı dikey pencerelerde oluşturun, bunları ayrı sık kullanılanlar olarak kaydedin. İsterseniz, bunları birbirlerine göre görebilmeniz için panoya sabitleyebilir.
-* Bir grafiği, ölçüm üzerinde tanımlı olmayan bir özelliğe göre gruplandırdıysanız grafik üzerinde hiçbir şey olmayacaktır. ' Group by ' öğesini temizlemeyi deneyin veya farklı bir gruplama özelliği seçin.
-* Durum İzleyicisi 'ni ve [Azure Cloud Services](../../azure-monitor/app/app-insights-overview.md)'yi yüklüyorsanız, Java Web Hizmetleri, Windows Masaüstü uygulamaları, [IIS Web uygulamaları ve Hizmetleri](../../azure-monitor/app/monitor-performance-live-website-now.md)IÇIN performans VERILERI (CPU, GÇ oranı vb.) kullanılabilir. Azure Web siteleri için kullanılamaz.
+    Farklı grafiklerde farklı filtreler ayarlamak istiyorsanız, bunları farklı bıçaklarda oluşturun ve bunları ayrı sık kullanılanlar olarak kaydedin. İsterseniz, onları panoya sabitleyebilirsiniz, böylece onları yan yana görebilirsiniz.
+* Bir grafiği metrikte tanımlanmamış bir özelliğe göre gruplarsanız, grafikte hiçbir şey olmaz. 'Grupla gruplandırmayı' deneyin veya farklı bir gruplandırma özelliği seçin.
+* Performans verileri (CPU, IO oranı vb.) Java web hizmetleri, Windows masaüstü uygulamaları, [iIS web uygulamaları ve hizmetleri için kullanılabilir durumdadır, ve](../../azure-monitor/app/monitor-performance-live-website-now.md) [Azure Bulut Hizmetleri.](../../azure-monitor/app/app-insights-overview.md) Azure web siteleri için kullanılamaz.
 
 ## <a name="video"></a>Video
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Application Insights ile kullanımı izleme](../../azure-monitor/app/usage-overview.md)
-* [Tanılama aramasını kullanma](../../azure-monitor/app/diagnostic-search.md)
+* [Uygulama Öngörüleri ile kullanımı izleme](../../azure-monitor/app/usage-overview.md)
+* [Tanılama Arama'yı Kullanma](../../azure-monitor/app/diagnostic-search.md)
 
 <!--Link references-->
 

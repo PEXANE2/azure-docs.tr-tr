@@ -1,7 +1,7 @@
 ---
-title: Azure CLı betik örneği-IPv6 ön uç Standart Load Balancer yapılandırma
+title: Azure CLI komut dosyası örneği - IPv6 ön ucunu yapılandır - Standart Yük Dengeleyici
 titlesuffix: Azure Virtual Network
-description: Azure sanal ağ 'da Azure CLı kullanarak IPv6 uç noktalarını etkinleştirme
+description: Azure Sanal Ağ'da Azure CLI'yi kullanarak IPv6 uç noktalarını etkinleştirme
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -12,37 +12,39 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 07/15/2019
 ms.author: kumud
-ms.openlocfilehash: 86c8acedb230989fa7a7f28690bd4be9c51ead9e
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 5f5856a89a04b58b138ee23a5f289ceff0915acf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77201348"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80235045"
 ---
-# <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-using-standard-load-balancerpreview"></a>Standart Load Balancer kullanarak sanal ağ betiği örneğinde IPv6 uç noktalarını yapılandırma (Önizleme)
+# <a name="configure-ipv6-endpoints-in-virtual-network-script-sample-using-standard-load-balancerpreview"></a>Standart Yük Dengeleyicisi(önizleme) kullanarak sanal ağ komut dosyası örneğinde IPv6 uç noktalarını yapılandırın
 
-Bu makalede, çift yığın alt ağına sahip bir çift yığın sanal ağı, Çift (IPv4 + IPv6) ön uç yapılandırmalarına sahip bir Standart Load Balancer ve çift IP 'si olan NIC 'leri olan VM 'Leri içeren bir çift yığın (IPv4 + IPv6) uygulamasının nasıl dağıtılacağı gösterilmektedir. yapılandırma, çift ağ güvenlik grubu kuralları ve ikili genel IP 'Ler.
+Bu makalede, Azure'da çift yığın alt ağına sahip çift yığınlı sanal ağ, çift (IPv4 + IPv6) ön uç yapılandırmalı standart yük dengeleyicisi, çift IP'si olan NIC'ler içeren bir çift yığın (IPv4 + IPv6) uygulaması nasıl dağıtılabildiğinizi gösterilmektedir. yapılandırma, çift ağ güvenlik grubu kuralları ve çift kamu IP'leri.
 
-Azure [Cloud Shell](https://shell.azure.com/bash)’den veya yerel bir Azure CLI yüklemesinden betiği yürütebilirsiniz. CLI’yi yerel olarak kullanıyorsanız bu betik, 2.0.28 veya üzeri bir sürümü çalıştırmanızı gerektirir. Yüklü sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yi yükleme](/cli/azure/install-azure-cli). CLI’yi yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `az login` komutunu da çalıştırmanız gerekir.
+Azure [Cloud Shell](https://shell.azure.com/bash)’den veya yerel bir Azure CLI yüklemesinden betiği yürütebilirsiniz. CLI’yi yerel olarak kullanıyorsanız bu betik, 2.0.28 veya üzeri bir sürümü çalıştırmanızı gerektirir. Yüklü sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli). CLI’yi yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `az login` komutunu da çalıştırmanız gerekir.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
-Azure sanal ağ için IPv6 özelliğini kullanmak üzere aboneliğinizi aşağıdaki şekilde yalnızca bir kez yapılandırmanız gerekir:
+## <a name="prerequisites"></a>Ön koşullar
+Azure sanal ağ için IPv6 özelliğini kullanmak için aboneliğinizi aşağıdaki gibi yalnızca bir kez yapılandırmanız gerekir:
 
 ```azurecli
 az feature register --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
 az feature register --name AllowIPv6CAOnStandardLB --namespace Microsoft.Network
 ```
-Özellik kaydının tamamlanabilmesi 30 dakika kadar sürer. Aşağıdaki Azure CLı komutunu çalıştırarak kayıt durumunuzu kontrol edebilirsiniz:
 
-```azurelci
+Özellik kaydının tamamlanması 30 dakika kadar sürer. Aşağıdaki Azure CLI komutunu çalıştırarak kayıt durumunuzu kontrol edebilirsiniz:
+
+```azurecli
 az feature show --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
 az feature show --name AllowIPv6CAOnStandardLB --namespace Microsoft.Network
 ```
+
 Kayıt tamamlandıktan sonra aşağıdaki komutu çalıştırın:
 
-```azurelci
+```azurecli
 az provider register --namespace Microsoft.Network
 ```
 
@@ -279,13 +281,14 @@ az vm create \
 --availability-set dsAVset \
 --image MicrosoftWindowsServer:WindowsServer:2019-Datacenter:latest 
 ```
-## <a name="view-ipv6-dual-stack-virtual-network-in-azure-portal"></a>Azure portal 'de IPv6 çift yığın sanal ağını görüntüleme
-IPv6 çift yığın sanal ağını Azure portal içinde aşağıdaki gibi görüntüleyebilirsiniz:
-1. Portalın arama çubuğunda *Dsvnet*' i girin.
-2. Arama sonuçlarında **myVirtualNetwork** göründüğünde seçin. Bu, *Dsvnet*adlı çift yığın sanal ağının **genel bakış** sayfasını başlatır. Çift yığın sanal ağı, hem IPv4 hem de IPv6 yapılandırmalarına sahip ve *Dssubnet*adlı çift yığın alt ağında bulunan iki NIC 'yi gösterir. 
+
+## <a name="view-ipv6-dual-stack-virtual-network-in-azure-portal"></a>Azure portalında IPv6 çift yığın sanal ağı görüntüleyin
+Azure portalındaki IPv6 çift yığın sanal ağını aşağıdaki gibi görüntüleyebilirsiniz:
+1. Portalın arama çubuğuna *dsVnet*girin.
+2. Arama sonuçlarında **myVirtualNetwork** göründüğünde seçin. Bu *dsVnet*adlı çift yığını sanal ağ **Genel Bakış** sayfası başlattı. Çift yığın sanal ağ *dsSubnet*adlı çift yığın alt ağında bulunan hem IPv4 ve IPv6 yapılandırmaları ile iki NIC gösterir. 
 
 > [!NOTE]
-> Azure sanal ağ için IPv6, bu önizleme sürümünde salt okunurdur Azure portal kullanılabilir.
+> Azure için IPv6 sanal ağı, bu önizleme sürümü için salt okunur olarak Azure portalında kullanılabilir.
 
 ## <a name="clean-up-deployment"></a>Dağıtımı temizleme
 

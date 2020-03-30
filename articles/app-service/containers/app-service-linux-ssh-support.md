@@ -1,7 +1,7 @@
 ---
-title: Linux kapsayıcıları için SSH erişimi
-description: Azure App Service bir Linux kapsayıcısına SSH oturumu açabilirsiniz. Özel Linux kapsayıcıları, özel görüntinizdeki bazı değişikliklerle desteklenir.
-keywords: Azure App Service, Web uygulaması, Linux, OSS
+title: Linux kapları için SSH erişimi
+description: Azure Uygulama Hizmeti'nde bir Linux kapsayıcısına Bir SSH oturumu açabilirsiniz. Özel Linux kapları, özel resminizde yapılan bazı değişikliklerle desteklenir.
+keywords: azure uygulama hizmeti, web uygulaması, linux, oss
 author: msangapu-msft
 ms.assetid: 66f9988f-8ffa-414a-9137-3a9b15a5573c
 ms.topic: article
@@ -9,48 +9,48 @@ ms.date: 02/25/2019
 ms.author: msangapu
 ms.custom: seodec18
 ms.openlocfilehash: dab13f222b441c7415a8d09d0d91ab3af5aaf836
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79280189"
 ---
 # <a name="ssh-support-for-azure-app-service-on-linux"></a>Linux üzerinde Azure App Service için SSH desteği
 
-[Secure Shell (SSH)](https://wikipedia.org/wiki/Secure_Shell) genellikle bir komut satırı terminalden uzaktan yönetim komutları yürütmek için kullanılır. Linux üzerinde App Service, uygulama kapsayıcısına SSH desteği sağlar. 
+[Secure Shell (SSH),](https://wikipedia.org/wiki/Secure_Shell) komut satırı terminalinden uzakta yönetim komutlarını yürütmek için yaygın olarak kullanılır. Linux'taki Uygulama Hizmeti, uygulama konteynerine SSH desteği sağlar. 
 
-![Linux App Service SSH](./media/app-service-linux-ssh-support/app-service-linux-ssh.png)
+![Linux Uygulama Hizmeti SSH](./media/app-service-linux-ssh-support/app-service-linux-ssh.png)
 
-Ayrıca, SSH ve SFTP kullanarak doğrudan yerel geliştirme makinenizden kapsayıcıya da bağlanabilirsiniz.
+Ayrıca, SSH ve SFTP kullanarak konteynere doğrudan yerel geliştirme makinenizden bağlanabilirsiniz.
 
-## <a name="open-ssh-session-in-browser"></a>SSH oturumunu tarayıcıda aç
+## <a name="open-ssh-session-in-browser"></a>Tarayıcıda SSH oturumunu açma
 
 [!INCLUDE [Open SSH session in browser](../../../includes/app-service-web-ssh-connect-no-h.md)]
 
 ## <a name="use-ssh-support-with-custom-docker-images"></a>Özel Docker görüntüleriyle SSH desteğini kullanma
 
-Bkz. [özel KAPSAYıCıDA SSH yapılandırma](configure-custom-container.md#enable-ssh).
+Bkz. [Özel bir kapsayıcıda SSH yapılandırın.](configure-custom-container.md#enable-ssh)
 
-## <a name="open-ssh-session-from-remote-shell"></a>Uzak kabuktan SSH oturumu aç
+## <a name="open-ssh-session-from-remote-shell"></a>Uzak kabuktan SSH oturumunu açma
 
 > [!NOTE]
-> Bu özellik şu anda önizleme aşamasındadır.
+> Bu özellik şu anda Önizleme'dedir.
 >
 
-TCP tünelini kullanarak, geliştirme makineniz ile kimliği doğrulanmış bir WebSocket bağlantısı üzerinden Kapsayıcılar için Web App bir ağ bağlantısı oluşturabilirsiniz. Seçtiğiniz istemciden App Service çalıştıran kapsayıcınıza bir SSH oturumu açmanıza olanak sağlar.
+TCP tüneloluşturmayı kullanarak, kimlik doğrulaması yapılan bir WebSocket bağlantısı üzerinden geliştirme makineniz ile Kapsayıcılar için Web Uygulaması arasında bir ağ bağlantısı oluşturabilirsiniz. Seçtiğiniz istemciden Uygulama Hizmeti'nde çalışan kabınızla bir SSH oturumu açmanızı sağlar.
 
-Başlamak için [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)'yi yüklemeniz gerekir. Azure CLı yüklemeden nasıl çalıştığını görmek için [Azure Cloud Shell](../../cloud-shell/overview.md)açın. 
+Başlamak için [Azure CLI'yi](/cli/azure/install-azure-cli?view=azure-cli-latest)yüklemeniz gerekir. Azure CLI'yi yüklemeden nasıl çalıştığını görmek için [Azure Bulut BulutU'nu](../../cloud-shell/overview.md)açın. 
 
-[Az WebApp Remote-Connection Create](/cli/azure/ext/webapp/webapp/remote-connection?view=azure-cli-latest#ext-webapp-az-webapp-remote-connection-create) komutunu kullanarak uygulamanıza uzak bir bağlantı açın. Uygulamanız için _\<abonelik kimliği >_ , _\<grup adı >_ ve \_\<app-name > _ belirtin.
+[az webapp uzaktan bağlantı oluşturma](/cli/azure/ext/webapp/webapp/remote-connection?view=azure-cli-latest#ext-webapp-az-webapp-remote-connection-create) komutunu kullanarak uygulamanız için uzaktan bağlantı açın. Uygulamanız için _ \<abonelik kimliği>, _ _ \<grup adı>_ ve \_ \<uygulama adı>_ belirtin.
 
 ```azurecli-interactive
 az webapp create-remote-connection --subscription <subscription-id> --resource-group <resource-group-name> -n <app-name> &
 ```
 
 > [!TIP]
-> komutun sonundaki `&`, Cloud Shell kullanıyorsanız yalnızca kolaylık sağlaması içindir. Bir sonraki komutu aynı kabukta çalıştırabilmeniz için işlemi arka planda çalıştırır.
+> `&`komutun sonunda, Cloud Shell kullanıyorsanız kolaylık sağlamak içindir. Bir sonraki komutu aynı kabukta çalıştırabilmeniz için işlemi arka planda çalıştırUr.
 
-Komut çıktısı size bir SSH oturumu açmak için gereken bilgileri sağlar.
+Komut çıktısı, bir SSH oturumu açmak için gereken bilgileri verir.
 
 ```output
 Port 21382 is open
@@ -58,20 +58,20 @@ SSH is available { username: root, password: Docker! }
 Start your favorite client and connect to port 21382
 ```
 
-Yerel bağlantı noktasını kullanarak, istediğiniz istemcisiyle kapsayıcınıza sahip bir SSH oturumu açın. Aşağıdaki örnek varsayılan [SSH](https://ss64.com/bash/ssh.html) komutunu kullanır:
+Yerel bağlantı noktasını kullanarak, seçtiğiniz istemciyle kabınızla bir SSH oturumu açın. Aşağıdaki örnekte varsayılan [ssh](https://ss64.com/bash/ssh.html) komutu kullanır:
 
 ```bash
 ssh root@127.0.0.1 -p <port>
 ```
 
-İstendiğinde, bağlanmaya devam etmek için `yes` yazın. Bundan sonra parola istenir. Daha önce gösterilen `Docker!`kullanın.
+İstendiğinde, bağlanmaya devam etmek için yazın. `yes` Daha sonra parola için istenir. Daha `Docker!`önce size gösterilen kullanımı.
 
 ```output
 Warning: Permanently added '[127.0.0.1]:21382' (ECDSA) to the list of known hosts.
 root@127.0.0.1's password:
 ```
 
-Kimliğiniz doğrulandıktan sonra oturum hoş geldiniz ekranını görmeniz gerekir.
+Kimliğinidoğruladıktan sonra, oturum karşılama ekranını görmeniz gerekir.
 
 ```output
   _____
@@ -85,9 +85,9 @@ A P P   S E R V I C E   O N   L I N U X
 0e690efa93e2:~#
 ```
 
-Artık bağlayıcınıza bağlısınız.  
+Artık konektörünüze bağlısınız.  
 
-[En üstteki](https://ss64.com/bash/top.html) komutu çalıştırmayı deneyin. Uygulamanızın işlemini işlem listesinde görebilmeniz gerekir. Aşağıdaki örnek çıktıda, `PID 263`.
+[En üst](https://ss64.com/bash/top.html) komutu çalıştırmayı deneyin. Uygulamanızın işlemini işlem listesinde görebilmelisiniz. Aşağıdaki örnek çıktıda, `PID 263`'.
 
 ```output
 Mem: 1578756K used, 127032K free, 8744K shrd, 201592K buff, 341348K cached
@@ -113,12 +113,12 @@ Load average: 0.07 0.04 0.08 4/765 45738
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Azure forumuna](https://docs.microsoft.com/answers/topics/azure-webapps.html)sorular ve sorunlar gönderebilirsiniz.
+Azure [forumunda](https://docs.microsoft.com/answers/topics/azure-webapps.html)soru ve endişenizi yayınlayabilirsiniz.
 
-Kapsayıcılar için Web App hakkında daha fazla bilgi için bkz.
+Kapsayıcılar için Web Uygulaması hakkında daha fazla bilgi için bkz:
 
-* [VS Code 'deki Azure App Service Node. js uygulamalarının uzaktan hata ayıklamasını tanıtma](https://medium.com/@auchenberg/introducing-remote-debugging-of-node-js-apps-on-azure-app-service-from-vs-code-in-public-preview-9b8d83a6e1f0)
-* [Kapsayıcılar için Web App’e yönelik özel Docker görüntüsü kullanma](quickstart-docker-go.md)
+* [Vs Kodu'ndan Azure Uygulama Hizmetinde Node.js uygulamalarının uzaktan hata ayıklama ile tanıtımı](https://medium.com/@auchenberg/introducing-remote-debugging-of-node-js-apps-on-azure-app-service-from-vs-code-in-public-preview-9b8d83a6e1f0)
+* [Kapsayıcılar için Web Uygulaması için özel bir Docker görüntüsü nasıl kullanılır?](quickstart-docker-go.md)
 * [Linux üzerinde Azure App Service’te .NET Core Kullanma](quickstart-dotnetcore.md)
 * [Linux üzerinde Azure App Service’te Ruby Kullanma](quickstart-ruby.md)
 * [Kapsayıcılar için Azure App Service Web App SSS](app-service-linux-faq.md)

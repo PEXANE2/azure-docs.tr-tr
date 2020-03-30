@@ -1,7 +1,7 @@
 ---
-title: Application Gateway ile sanal ağda API Management kullanma
+title: Uygulama Ağ Geçidi ile Sanal Ağ'da API Yönetimi nasıl kullanılır?
 titleSuffix: Azure API Management
-description: Azure API Management 'yi ön uç olarak Application Gateway (WAF) ile Iç sanal ağda ayarlama ve yapılandırma hakkında bilgi edinin
+description: Azure API Yönetimini Internal Virtual Network'te Application Gateway (WAF) ile FrontEnd olarak nasıl ayarlayıp yapılandıracağız öğrenin
 services: api-management
 documentationcenter: ''
 author: solankisamir
@@ -15,83 +15,83 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: sasolank
 ms.openlocfilehash: 2b8cf66afa1d8aa592d5755ebab70cd6ad2e75fd
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79298071"
 ---
-# <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>Application Gateway ile iç VNET 'te API Management tümleştirme
+# <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>API Yönetimini Uygulama Ağ Geçidi ile dahili bir VNET'e entegre edin
 
-## <a name="overview"> </a> Genel bakış
+## <a name="overview"></a><a name="overview"> </a> Genel Bakış
 
-API Management hizmeti, Sanal Ağa gelen iç modunda yapılandırılabilir ve bu, yalnızca sanal ağ içinden erişilebilir hale gelir. Azure Application Gateway, katman 7 yük dengeleyici sağlayan bir PAAS hizmetidir. Bir ters proxy hizmeti işlevi görür ve bir Web uygulaması güvenlik duvarı (WAF) teklifi arasında sağlar.
+API Yönetimi hizmeti, bir Sanal Ağ'da dahili modda yapılandırılabilir ve bu da yalnızca Sanal Ağ içinden erişilebilir olmasını sağlar. Azure Application Gateway, Katman-7 yük dengeleyicisi sağlayan bir PAAS Hizmetidir. Bir ters proxy hizmeti olarak görür ve bir Web Uygulama Güvenlik Duvarı (WAF) sunan arasında sağlar.
 
-İç VNET 'te sağlanan API Management Application Gateway ön uç ile birleştirmek aşağıdaki senaryolara izin vermez:
+Dahili bir VNET'te sağlanan API Yönetimi ile Application Gateway ön uçunun birleştirilmesi aşağıdaki senaryoları sağlar:
 
-* Hem iç tüketicilere hem de dış tüketicilere göre tüketim için aynı API Management kaynağını kullanın.
-* Tek bir API Management kaynağı kullanın ve dış tüketiciler için kullanılabilir API Management tanımlanmış API 'lerin bir alt kümesine sahip olmanız gerekir.
-* Genel Internet 'ten API Management erişimi açmak ve kapatmak için bir anahtar değiştirme yöntemi sağlayın.
+* Hem dahili tüketiciler hem de dış tüketiciler tarafından tüketim için aynı API Yönetimi kaynağını kullanın.
+* Tek bir API Yönetimi kaynağı kullanın ve harici tüketiciler için KULLANıLABILIR API Yönetimi'nde tanımlanmış bir API alt kümesine sahip.
+* API Yönetimi'ne erişimi herkese açık ve kapalı olarak genel Internet'ten değiştirmek için anahtar teslimi bir yol sağlayın.
 
 [!INCLUDE [premium-dev.md](../../includes/api-management-availability-premium-dev.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Bu makalede açıklanan adımları izlemek için, şunları yapmanız gerekir:
+Bu makalede açıklanan adımları izlemek için aşağıdakilere sahip olmalısınız:
 
 * Etkin bir Azure aboneliği.
 
     [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-* Sertifikalar-API ana bilgisayar adının PFX ve cer ve geliştirici portalının konak adı için PFX.
+* Sertifikalar - api hostname için pfx ve cer ve geliştirici portalının ana adı için pfx.
 
-## <a name="scenario"> </a> Senaryo
+## <a name="scenario"></a><a name="scenario"> </a> Senaryo
 
-Bu makalede hem iç hem de dış tüketiciler için tek bir API Management hizmetinin nasıl kullanılacağı ele alınmaktadır ve hem şirket içi hem de bulut API 'Lerinde tek bir ön uç işlevi görür. Ayrıca, Application Gateway ' de kullanılabilen yönlendirme işlevlerini kullanarak, API 'nizin yalnızca bir alt kümesini kullanıma sunma (yeşil renkle vurgulandığı örnekte) görürsünüz.
+Bu makalede, hem dahili hem de harici tüketiciler için tek bir API Yönetimi hizmetinin nasıl kullanılacağı ve hem şirket içi hem de bulut API'leri için tek bir ön taraf olarak nasıl hareket edilebiz. Uygulama Ağ Geçidi'nde kullanılabilir yönlendirme işlevini kullanarak Harici Tüketim için API'lerinizin yalnızca bir alt kümesini (yeşil olarak vurgulanan örnekte) nasıl ortaya çıkaracağınızı da göreceksiniz.
 
-İlk kurulum örneğinde, tüm API 'leriniz yalnızca sanal ağınız içinden yönetilir. Dahili tüketiciler (Turuncu renkle vurgulanır), tüm iç ve dış API 'lerinize erişebilir. Trafik hiçbir şekilde internet 'e gitmez. Yüksek performanslı bağlantı hızlı rota devreleri aracılığıyla dağıtılır.
+İlk kurulum örneğinde tüm API'leriniz yalnızca Sanal Ağınızdan yönetilir. Dahili tüketiciler (turuncu renkle vurgulanır) tüm dahili ve harici API'lerinize erişebilir. Trafik asla internete gitmez. Yüksek performanslı bağlantı Express Route devreleri üzerinden gerçekleştirilir.
 
-![URL yolu](./media/api-management-howto-integrate-internal-vnet-appgateway/api-management-howto-integrate-internal-vnet-appgateway.png)
+![url rotası](./media/api-management-howto-integrate-internal-vnet-appgateway/api-management-howto-integrate-internal-vnet-appgateway.png)
 
-## <a name="before-you-begin"> </a> Başlamadan önce
+## <a name="before-you-begin"></a><a name="before-you-begin"> </a> Başlamadan önce
 
-* Azure PowerShell’in en yeni sürümünü kullandığınızdan emin olun. Yükleme [Azure PowerShell](/powershell/azure/install-az-ps)yükleme yönergelerine bakın. 
+* Azure PowerShell’in en yeni sürümünü kullandığınızdan emin olun. [Azure PowerShell'i Yükle'deki](/powershell/azure/install-az-ps)yükleme yönergelerine bakın. 
 
-## <a name="what-is-required-to-create-an-integration-between-api-management-and-application-gateway"></a>API Management ve Application Gateway arasında bir tümleştirme oluşturmak için ne gerekir?
+## <a name="what-is-required-to-create-an-integration-between-api-management-and-application-gateway"></a>API Yönetimi ve Uygulama Ağ Geçidi arasında tümleştirme oluşturmak için ne gerekir?
 
-* **Arka uç sunucu havuzu:** Bu, API Management hizmetinin iç sanal IP adresidir.
-* **Arka uç sunucu havuzu ayarları**: Her havuzun bağlantı noktası, protokol ve tanımlama bilgisi temelli benzeşim gibi ayarları vardır. Bu ayarlar, havuzdaki tüm sunuculara uygulanır.
-* **Ön uç bağlantı noktası:** Bu, uygulama ağ geçidinde açılan genel bağlantı noktasıdır. Giden trafik, arka uç sunucularından birine yönlendirilir.
+* **Arka uç sunucu havuzu:** Bu, API Yönetimi hizmetinin dahili sanal IP adresidir.
+* **Arka uç sunucu havuzu ayarları**: Her havuzun bağlantı noktası, protokol ve tanımlama bilgisi temelli benzeşim gibi ayarları vardır. Bu ayarlar havuz içindeki tüm sunuculara uygulanır.
+* **Ön uç bağlantı noktası:** Bu, uygulama ağ geçidinde açılan ortak bağlantı noktasıdır. Trafik isabet arka uç sunucularından birine yönlendirilir alır.
 * **Dinleyici:** Dinleyicide bir ön uç bağlantı noktası, bir protokol (Http veya Https, bu değerler büyük/küçük harfe duyarlıdır) ve SSL sertifika adı (SSL yük boşaltımı yapılandırılıyorsa) vardır.
-* **Kural:** Kural bir dinleyiciyi arka uç sunucu havuzuna bağlar.
-* **Özel durum araştırması:** Application Gateway, varsayılan olarak, BackendAddressPool içindeki hangi sunucuların etkin olduğunu anlamak için IP adresi tabanlı araştırmaları kullanır. API Management hizmeti yalnızca doğru ana bilgisayar üst bilgisine sahip isteklere yanıt verir, bu nedenle varsayılan yoklamalar başarısız olur. Application Gateway 'in hizmetin etkin olduğunu ve istekleri iletmeli olduğunu belirlemesine yardımcı olmak için özel bir sistem durumu araştırması tanımlanmalıdır.
-* **Özel etki alanı sertifikaları:** API Management internet 'ten erişmek için, ana bilgisayar adının bir CNAME eşlemesini Application Gateway ön uç DNS adına oluşturmanız gerekir. Bu, API Management iletilen Application Gateway ana bilgisayar başlığı ve sertifikasının bir APıM 'in geçerli olarak tanıyabilmesini sağlar. Bu örnekte, arka uç ve geliştirici portalı için iki sertifika kullanacağız.  
+* **Kural:** Kural, dinleyiciyi arka uç sunucu havuzuna bağlar.
+* **Özel Sağlık Sondası:** Uygulama Ağ Geçidi, varsayılan olarak, BackendAddressPool'daki hangi sunucuların etkin olduğunu anlamak için IP adresi tabanlı probları kullanır. API Yönetimi hizmeti yalnızca doğru ana bilgisayar üstbilgisiyle istekleri yanıtlar, bu nedenle varsayılan sondalar başarısız olur. Uygulama ağ geçidinin hizmetin canlı olduğunu belirlemesine ve istekleri iletmesi gerektiğine yardımcı olmak için özel bir sistem durumu sondasının tanımlanması gerekir.
+* **Özel etki alanı sertifikaları:** API Yönetimi'ne internetten erişmek için, ana bilgisayar adının Uygulama Ağ Geçidi ön uç DNS adına cname eşlemesi oluşturmanız gerekir. Bu, API Yönetimi'ne iletilen Uygulama Ağ Geçidi'ne gönderilen ana bilgisayar adı üstbilgisinin ve sertifikasının APIM'nin geçerli olarak tanıyabileceği bir üstbilgi olmasını sağlar. Bu örnekte, arka uç ve geliştirici portalı için iki sertifika kullanacağız.  
 
-## <a name="overview-steps"> </a> API Management ve Application Gateway tümleştirmek için gereken adımlar
+## <a name="steps-required-for-integrating-api-management-and-application-gateway"></a><a name="overview-steps"> </a> API Yönetimi ve Uygulama Ağ Geçidi'ni tümleştirmek için gereken adımlar
 
 1. Resource Manager için kaynak grubu oluşturun.
-2. Application Gateway için bir sanal ağ, alt ağ ve genel IP oluşturun. API Management için başka bir alt ağ oluşturun.
-3. Yukarıda oluşturulan VNET alt ağı içinde bir API Management hizmeti oluşturun ve Iç modu kullandığınızdan emin olun.
-4. API Management hizmetinde özel bir etki alanı adı ayarlayın.
-5. Application Gateway yapılandırma nesnesi oluşturun.
-6. Application Gateway kaynağı oluşturun.
-7. Application Gateway genel DNS adından API Management proxy ana bilgisayar adına bir CNAME oluşturun.
+2. Uygulama Ağ Geçidi için sanal ağ, alt ağ ve genel IP oluşturun. API Yönetimi için başka bir alt ağ oluşturun.
+3. Yukarıda oluşturulan VNET alt ağı içinde bir API Yönetimi hizmeti oluşturun ve Dahili modunu kullandığınızdan emin olun.
+4. API Yönetimi hizmetinde özel bir etki alanı adı ayarlayın.
+5. Bir Uygulama Ağ Geçidi yapılandırma nesnesi oluşturun.
+6. Uygulama Ağ Geçidi kaynağı oluşturun.
+7. UYGULAMA Ağ Geçidi'nin ortak DNS adından API Yönetimi proxy ana adı için bir CNAME oluşturun.
 
-## <a name="exposing-the-developer-portal-externally-through-application-gateway"></a>Geliştirici portalını Application Gateway dışarıdan gösterme
+## <a name="exposing-the-developer-portal-externally-through-application-gateway"></a>Uygulama Ağ Geçidi aracılığıyla geliştirici portalını harici olarak teşhir etme
 
-Bu kılavuzda, Application Gateway aracılığıyla **Geliştirici Portalını** dış izleyiciler için de kullanıma sunacağız. Geliştirici portalının dinleyicisini, araştırmasını, ayarlarını ve kurallarını oluşturmak için ek adımlar gerektirir. Tüm ayrıntılar ilgili adımlarda sunulmaktadır.
-
-> [!WARNING]
-> Azure AD veya üçüncü taraf kimlik doğrulaması kullanıyorsanız, lütfen Application Gateway için [tanımlama bilgisi tabanlı oturum benzeşimi](../application-gateway/features.md#session-affinity) özelliğini etkinleştirin.
+Bu kılavuzda, geliştirici **portalını** Uygulama Ağ Geçidi aracılığıyla dış kitlelere de sunacağız. Geliştirici portalının dinleyicisi, sondası, ayarları ve kuralları oluşturmak için ek adımlar gerektirir. Tüm ayrıntılar ilgili adımlarda sağlanır.
 
 > [!WARNING]
-> Application Gateway WAF 'nin Geliştirici Portalında Openapı belirtiminin indirilmesini bozmasını engellemek için, `942200 - "Detects MySQL comment-/space-obfuscated injections and backtick termination"`güvenlik duvarı kuralını devre dışı bırakmanız gerekir.
+> Azure AD veya üçüncü taraf kimlik doğrulaması kullanıyorsanız, lütfen Uygulama Ağ Geçidi'nde [çerez tabanlı oturum yakınlığı](../application-gateway/features.md#session-affinity) özelliğini etkinleştirin.
+
+> [!WARNING]
+> Uygulama Ağ Geçidi WAF'ın geliştirici portalında OpenAPI belirtimini karşıdan yüklemesini engellemesini önlemek için güvenlik duvarı kuralını `942200 - "Detects MySQL comment-/space-obfuscated injections and backtick termination"`devre dışı kesmeniz gerekir.
 
 ## <a name="create-a-resource-group-for-resource-manager"></a>Resource Manager için kaynak grubu oluşturun
 
-### <a name="step-1"></a>1\. Adım
+### <a name="step-1"></a>1. Adım
 
 Azure'da oturum açma
 
@@ -99,18 +99,18 @@ Azure'da oturum açma
 Connect-AzAccount
 ```
 
-Kimlik bilgilerinizle kimlik doğrulaması yapın.
+Kimlik bilgilerinizle kimlik doğrulaması.
 
-### <a name="step-2"></a>2\. Adım
+### <a name="step-2"></a>2. Adım
 
-İstediğiniz aboneliği seçin.
+İstediğin aboneliği seçin.
 
 ```powershell
 $subscriptionId = "00000000-0000-0000-0000-000000000000" # GUID of your Azure subscription
 Get-AzSubscription -Subscriptionid $subscriptionId | Select-AzSubscription
 ```
 
-### <a name="step-3"></a>3\. Adım
+### <a name="step-3"></a>3. Adım
 
 Bir kaynak grubu oluşturun (mevcut bir kaynak grubu kullanıyorsanız bu adımı atlayın).
 
@@ -120,37 +120,37 @@ $location = "West US"           # Azure region
 New-AzResourceGroup -Name $resGroupName -Location $location
 ```
 
-Azure Resource Manager, tüm kaynak gruplarının bir konum belirtmesini gerektirir. Bu, kaynak grubunda kaynaklar için varsayılan konum olarak kullanılır. Uygulama ağ geçidi oluşturmak için tüm komutların aynı kaynak grubunu kullanmasını sağlayın.
+Azure Resource Manager, tüm kaynak gruplarının bir konum belirtmesini gerektirir. Bu, kaynak grubunda kaynaklar için varsayılan konum olarak kullanılır. Bir uygulama ağ geçidi oluşturmak için tüm komutların aynı kaynak grubunu kullandığından emin olun.
 
-## <a name="create-a-virtual-network-and-a-subnet-for-the-application-gateway"></a>Uygulama ağ geçidi için bir sanal ağ ve alt ağ oluşturma
+## <a name="create-a-virtual-network-and-a-subnet-for-the-application-gateway"></a>Uygulama ağ geçidi için sanal ağ ve bir alt ağ oluşturma
 
-Aşağıdaki örnek, Kaynak Yöneticisi kullanarak nasıl sanal ağ oluşturulacağını gösterir.
+Aşağıdaki örnek, Kaynak Yöneticisi'ni kullanarak sanal ağ oluşturmanın nasıl yapılacağını gösterir.
 
-### <a name="step-1"></a>1\. Adım
+### <a name="step-1"></a>1. Adım
 
-Bir sanal ağ oluştururken Application Gateway için kullanılacak alt ağ değişkenine 10.0.0.0/24 adres aralığını atayın.
+Sanal Ağ oluştururken Uygulama Ağ Geçidi için kullanılacak alt net değişkenine 10.0.0.0/24 adres aralığını atayın.
 
 ```powershell
 $appgatewaysubnet = New-AzVirtualNetworkSubnetConfig -Name "apim01" -AddressPrefix "10.0.0.0/24"
 ```
 
-### <a name="step-2"></a>2\. Adım
+### <a name="step-2"></a>2. Adım
 
-Bir sanal ağ oluştururken API Management için kullanılacak alt ağ değişkenine 10.0.1.0/24 adres aralığını atayın.
+Sanal Ağ oluştururken API Yönetimi için kullanılacak alt net değişkenine 10.0.1.0/24 adres aralığını atayın.
 
 ```powershell
 $apimsubnet = New-AzVirtualNetworkSubnetConfig -Name "apim02" -AddressPrefix "10.0.1.0/24"
 ```
 
-### <a name="step-3"></a>3\. Adım
+### <a name="step-3"></a>3. Adım
 
-Batı ABD bölgesi için **APIM-appGw-RG** kaynak grubunda **appgwvnet** adlı bir sanal ağ oluşturun. 10.0.0.0/24 ve 10.0.1.0/24 alt ağları ile 10.0.0.0/16 önekini kullanın.
+Batı ABD bölgesi için kaynak grubu **apim-appGw-RG'de** **appgwvnet** adında bir Sanal Ağ oluşturun. 10.0.0.0/16 önekini 10.0.0.0/24 ve 10.0.1.0/24 alt ağları ile kullanın.
 
 ```powershell
 $vnet = New-AzVirtualNetwork -Name "appgwvnet" -ResourceGroupName $resGroupName -Location $location -AddressPrefix "10.0.0.0/16" -Subnet $appgatewaysubnet,$apimsubnet
 ```
 
-### <a name="step-4"></a>4\. Adım
+### <a name="step-4"></a>4. Adım
 
 Sonraki adımlar için bir alt ağ değişkeni atama
 
@@ -159,21 +159,21 @@ $appgatewaysubnetdata = $vnet.Subnets[0]
 $apimsubnetdata = $vnet.Subnets[1]
 ```
 
-## <a name="create-an-api-management-service-inside-a-vnet-configured-in-internal-mode"></a>İç modda yapılandırılmış bir VNET içinde API Management hizmeti oluşturma
+## <a name="create-an-api-management-service-inside-a-vnet-configured-in-internal-mode"></a>Dahili modda yapılandırılan bir VNET içinde BIR API Yönetimi hizmeti oluşturma
 
-Aşağıdaki örnek, yalnızca iç erişim için yapılandırılmış bir sanal ağda API Management bir hizmetin nasıl oluşturulacağını gösterir.
+Aşağıdaki örnek, yalnızca dahili erişim için yapılandırılmış bir VNET'te bir API Yönetimi hizmetinin nasıl oluşturuluredildiğini gösterir.
 
-### <a name="step-1"></a>1\. Adım
+### <a name="step-1"></a>1. Adım
 
-Yukarıda oluşturulan alt ağ $apimsubnetdata kullanarak API Management bir sanal ağ nesnesi oluşturun.
+Yukarıda oluşturulan alt $apimsubnetdata kullanarak bir API Yönetimi Sanal Ağ nesnesi oluşturun.
 
 ```powershell
 $apimVirtualNetwork = New-AzApiManagementVirtualNetwork -SubnetResourceId $apimsubnetdata.Id
 ```
 
-### <a name="step-2"></a>2\. Adım
+### <a name="step-2"></a>2. Adım
 
-Sanal ağ içinde bir API Management hizmeti oluşturun.
+Sanal Ağ içinde bir API Yönetimi hizmeti oluşturun.
 
 ```powershell
 $apimServiceName = "ContosoApi"       # API Management service instance name
@@ -182,16 +182,16 @@ $apimAdminEmail = "admin@contoso.com" # administrator's email address
 $apimService = New-AzApiManagement -ResourceGroupName $resGroupName -Location $location -Name $apimServiceName -Organization $apimOrganization -AdminEmail $apimAdminEmail -VirtualNetwork $apimVirtualNetwork -VpnType "Internal" -Sku "Developer"
 ```
 
-Yukarıdaki komut başarılı olduktan sonra, bu [hizmete erişmek için Iç VNET API Management hizmetine erişmek için gereken DNS yapılandırmasına](api-management-using-with-internal-vnet.md#apim-dns-configuration) başvurun. Bu adım, bir saatten fazla sürebilir.
+Yukarıdaki komut başarılı olduktan sonra, iç [VNET API Yönetimi hizmetine erişmek için gereken DNS Yapılandırmasına](api-management-using-with-internal-vnet.md#apim-dns-configuration) bakın. Bu adım yarım saatten fazla sürebilir.
 
-## <a name="set-up-a-custom-domain-name-in-api-management"></a>API Management bir özel etki alanı adı ayarlama
+## <a name="set-up-a-custom-domain-name-in-api-management"></a>API Yönetimi'nde özel bir etki alanı adı ayarlama
 
 > [!IMPORTANT]
-> [Yeni geliştirici portalı](api-management-howto-developer-portal.md) , aşağıdaki adımlara ek olarak API Management yönetim uç noktasına bağlantıyı etkinleştirmenizi de gerektirir.
+> [Yeni geliştirici portalı,](api-management-howto-developer-portal.md) aşağıdaki adımlara ek olarak API Yönetimi'nin yönetim bitiş noktasına bağlantı sağlamayı da gerektirir.
 
-### <a name="step-1"></a>1\. Adım
+### <a name="step-1"></a>1. Adım
 
-Aşağıdaki değişkenleri, etki alanları için özel anahtarlarla sertifikaların ayrıntılarıyla başlatın. Bu örnekte `api.contoso.net` ve `portal.contoso.net`kullanacağız.  
+Aşağıdaki değişkenleri, etki alanları için özel anahtarlarla sertifikaların ayrıntılarıyla birlikte başlangıç olarak adlandırır. Bu örnekte, biz `api.contoso.net` `portal.contoso.net`kullanacağız ve .  
 
 ```powershell
 $gatewayHostname = "api.contoso.net"                 # API gateway host
@@ -206,9 +206,9 @@ $certPwd = ConvertTo-SecureString -String $gatewayCertPfxPassword -AsPlainText -
 $certPortalPwd = ConvertTo-SecureString -String $portalCertPfxPassword -AsPlainText -Force
 ```
 
-### <a name="step-2"></a>2\. Adım
+### <a name="step-2"></a>2. Adım
 
-Proxy ve Portal için ana bilgisayar adı yapılandırma nesneleri oluşturun ve ayarlayın.  
+Proxy ve portal için ana bilgisayar yapılandırma nesnelerini oluşturun ve ayarlayın.  
 
 ```powershell
 $proxyHostnameConfig = New-AzApiManagementCustomHostnameConfiguration -Hostname $gatewayHostname -HostnameType Proxy -PfxPath $gatewayCertPfxPath -PfxPassword $certPwd
@@ -220,11 +220,11 @@ Set-AzApiManagement -InputObject $apimService
 ```
 
 > [!NOTE]
-> Eski geliştirici portalı bağlantısını yapılandırmak için `-HostnameType DeveloperPortal` `-HostnameType Portal`ile değiştirmeniz gerekir.
+> Eski geliştirici portal bağlantısını yapılandırmak için `-HostnameType DeveloperPortal` `-HostnameType Portal`' ile değiştirmeniz gerekir.
 
 ## <a name="create-a-public-ip-address-for-the-front-end-configuration"></a>Ön uç yapılandırma için genel bir IP adresi oluşturun
 
-Kaynak grubunda genel bir IP kaynağı **publicıp01** oluşturun.
+Kaynak grubunda genel BIR IP kaynağı **publicIP01** oluşturun.
 
 ```powershell
 $publicip = New-AzPublicIpAddress -ResourceGroupName $resGroupName -name "publicIP01" -location $location -AllocationMethod Dynamic
@@ -232,27 +232,27 @@ $publicip = New-AzPublicIpAddress -ResourceGroupName $resGroupName -name "public
 
 Hizmet başlatıldığında uygulama ağ geçidine bir IP adresi atanır.
 
-## <a name="create-application-gateway-configuration"></a>Uygulama ağ geçidi yapılandırması oluştur
+## <a name="create-application-gateway-configuration"></a>Uygulama ağ geçidi yapılandırması oluşturma
 
 Tüm yapılandırma öğeleri, uygulama ağ geçidi oluşturulmadan önce ayarlanmalıdır. Aşağıdaki adımlar uygulama ağ geçidi kaynağı için gerekli yapılandırma öğelerini oluşturur.
 
-### <a name="step-1"></a>1\. Adım
+### <a name="step-1"></a>1. Adım
 
-**gatewayIP01** adlı bir uygulama ağ geçidi IP yapılandırması oluşturun. Application Gateway başladığında, yapılandırılan alt ağdan bir IP adresi alır ve ağ trafiğini arka uç IP havuzundaki IP adreslerine yönlendirir. Her örneğin bir IP adresi aldığını göz önünde bulundurun.
+**GatewayIP01**adlı bir uygulama ağ geçidi IP yapılandırması oluşturun. Application Gateway başladığında, yapılandırılan alt ağdan bir IP adresi alır ve ağ trafiğini arka uç IP havuzundaki IP adreslerine yönlendirir. Her örneğin bir IP adresi aldığını göz önünde bulundurun.
 
 ```powershell
 $gipconfig = New-AzApplicationGatewayIPConfiguration -Name "gatewayIP01" -Subnet $appgatewaysubnetdata
 ```
 
-### <a name="step-2"></a>2\. Adım
+### <a name="step-2"></a>2. Adım
 
-Genel IP uç noktası için ön uç IP bağlantı noktasını yapılandırın. Bu bağlantı noktası, son kullanıcıların bağlanacağı bağlantı noktasıdır.
+Ortak IP bitiş noktası için ön uç IP bağlantı noktasını yapılandırın. Bu bağlantı noktası, son kullanıcıların bağlandığı bağlantı noktasıdır.
 
 ```powershell
 $fp01 = New-AzApplicationGatewayFrontendPort -Name "port01"  -Port 443
 ```
 
-### <a name="step-3"></a>3\. Adım
+### <a name="step-3"></a>3. Adım
 
 Ön uç IP’sini genel IP uç noktası ile yapılandırın.
 
@@ -260,30 +260,30 @@ $fp01 = New-AzApplicationGatewayFrontendPort -Name "port01"  -Port 443
 $fipconfig01 = New-AzApplicationGatewayFrontendIPConfig -Name "frontend1" -PublicIPAddress $publicip
 ```
 
-### <a name="step-4"></a>4\. Adım
+### <a name="step-4"></a>4. Adım
 
-İle yapılan trafiğin şifresini çözmek ve yeniden şifrelemek için kullanılacak Application Gateway için sertifikaları yapılandırın.
+Geçen trafiğin şifresini çözmek ve yeniden şifrelemek için kullanılacak Olan Uygulama Ağ Geçidi'nin sertifikalarını yapılandırın.
 
 ```powershell
 $cert = New-AzApplicationGatewaySslCertificate -Name "cert01" -CertificateFile $gatewayCertPfxPath -Password $certPwd
 $certPortal = New-AzApplicationGatewaySslCertificate -Name "cert02" -CertificateFile $portalCertPfxPath -Password $certPortalPwd
 ```
 
-### <a name="step-5"></a>5\. Adım
+### <a name="step-5"></a>5. Adım
 
-Application Gateway için HTTP dinleyicileri oluşturun. Ön uç IP yapılandırması, bağlantı noktası ve SSL sertifikalarını bunlara atayın.
+Uygulama Ağ Geçidi için HTTP dinleyicilerini oluşturun. Ön uç IP yapılandırmasını, bağlantı noktasını ve ssl sertifikalarını onlara atayın.
 
 ```powershell
 $listener = New-AzApplicationGatewayHttpListener -Name "listener01" -Protocol "Https" -FrontendIPConfiguration $fipconfig01 -FrontendPort $fp01 -SslCertificate $cert -HostName $gatewayHostname -RequireServerNameIndication true
 $portalListener = New-AzApplicationGatewayHttpListener -Name "listener02" -Protocol "Https" -FrontendIPConfiguration $fipconfig01 -FrontendPort $fp01 -SslCertificate $certPortal -HostName $portalHostname -RequireServerNameIndication true
 ```
 
-### <a name="step-6"></a>6\. Adım
+### <a name="step-6"></a>6. Adım
 
-API Management hizmeti `ContosoApi` proxy etki alanı uç noktası için özel yoklamalar oluşturun. Yol `/status-0123456789abcdef`, tüm API Management hizmetlerinde barındırılan varsayılan bir sistem durumu uç noktasıdır. SSL sertifikasıyla güvenli hale getirmek için `api.contoso.net` özel bir araştırma ana bilgisayar adı olarak ayarlayın.
+API Management hizmeti `ContosoApi` proxy etki alanı bitiş noktasına özel problar oluşturun. Yol, `/status-0123456789abcdef` tüm API Yönetimi hizmetlerinde barındırılan varsayılan bir sistem durumu bitiş noktasıdır. SSL sertifikası ile güvenli hale getirmek için özel bir sonda ana bilgisayar adı olarak ayarlayın. `api.contoso.net`
 
 > [!NOTE]
-> Ana bilgisayar adı `contosoapi.azure-api.net`, genel Azure 'da `contosoapi` adlı bir hizmet oluşturulduğunda yapılandırılan varsayılan proxy ana bilgisayar adıdır.
+> Ana bilgisayar `contosoapi.azure-api.net` adı, ortak Azure'da adı `contosoapi` geçen bir hizmet oluşturulduğunda yapılandırılan varsayılan proxy ana bilgisayar adıdır.
 >
 
 ```powershell
@@ -291,34 +291,34 @@ $apimprobe = New-AzApplicationGatewayProbeConfig -Name "apimproxyprobe" -Protoco
 $apimPortalProbe = New-AzApplicationGatewayProbeConfig -Name "apimportalprobe" -Protocol "Https" -HostName $portalHostname -Path "/signin" -Interval 60 -Timeout 300 -UnhealthyThreshold 8
 ```
 
-### <a name="step-7"></a>7\. Adım
+### <a name="step-7"></a>7. Adım
 
-SSL özellikli arka uç havuzu kaynaklarında kullanılacak sertifikayı karşıya yükleyin. Bu, yukarıda 4. adımda girdiğiniz sertifikadır.
+SSL özellikli arka uç havuzu kaynaklarında kullanılacak sertifikayı yükleyin. Bu, yukarıda Adım 4'te sağladığınız sertifikanın aynısI.
 
 ```powershell
 $authcert = New-AzApplicationGatewayAuthenticationCertificate -Name "whitelistcert1" -CertificateFile $gatewayCertCerPath
 ```
 
-### <a name="step-8"></a>8\. Adım
+### <a name="step-8"></a>8. Adım
 
-Application Gateway için HTTP arka uç ayarlarını yapılandırın. Bu, arka uç isteği için bir zaman aşımı sınırı ayarlamayı, sonrasında iptal edilmeleri içerir. Bu değer, araştırma zaman aşımı durumundan farklıdır.
+Uygulama Ağ Geçidi için HTTP arka uç ayarlarını yapılandırın. Bu, arka uç isteği için bir zaman sonu sınırı ayarlamayı ve ardından iptal edilir. Bu değer sonda zaman diliminden farklıdır.
 
 ```powershell
 $apimPoolSetting = New-AzApplicationGatewayBackendHttpSettings -Name "apimPoolSetting" -Port 443 -Protocol "Https" -CookieBasedAffinity "Disabled" -Probe $apimprobe -AuthenticationCertificates $authcert -RequestTimeout 180
 $apimPoolPortalSetting = New-AzApplicationGatewayBackendHttpSettings -Name "apimPoolPortalSetting" -Port 443 -Protocol "Https" -CookieBasedAffinity "Disabled" -Probe $apimPortalProbe -AuthenticationCertificates $authcert -RequestTimeout 180
 ```
 
-### <a name="step-9"></a>9\. Adım
+### <a name="step-9"></a>9. Adım
 
-Yukarıda oluşturulan API Management hizmetinin iç sanal IP adresiyle **apımarka uç** adlı bir arka uç IP adresi havuzu yapılandırın.
+Yukarıda oluşturulan API Yönetimi hizmetinin dahili sanal IP adresi ile **apimbackend** adlı bir arka uç IP adresi havuzunu yapılandırın.
 
 ```powershell
 $apimProxyBackendPool = New-AzApplicationGatewayBackendAddressPool -Name "apimbackend" -BackendIPAddresses $apimService.PrivateIPAddresses[0]
 ```
 
-### <a name="step-10"></a>10. Adım
+### <a name="step-10"></a>Adım 10
 
-Temel yönlendirmeyi kullanmak için Application Gateway kurallar oluşturun.
+Temel yönlendirmeyi kullanmak için Uygulama Ağ Geçidi için kurallar oluşturun.
 
 ```powershell
 $rule01 = New-AzApplicationGatewayRequestRoutingRule -Name "rule1" -RuleType Basic -HttpListener $listener -BackendAddressPool $apimProxyBackendPool -BackendHttpSettings $apimPoolSetting
@@ -326,51 +326,51 @@ $rule02 = New-AzApplicationGatewayRequestRoutingRule -Name "rule2" -RuleType Bas
 ```
 
 > [!TIP]
-> Geliştirici portalının belirli sayfalarına erişimi kısıtlamak için-RuleType ve Routing öğesini değiştirin.
+> Geliştirici portalının belirli sayfalarına erişimi kısıtlamak için -RuleType ve yönlendirmeyi değiştirin.
 
 ### <a name="step-11"></a>Adım 11
 
-Application Gateway örnek sayısını ve boyutunu yapılandırın. Bu örnekte, API Management kaynağının güvenliği arttığı için [WAF SKU 'su](../application-gateway/application-gateway-webapplicationfirewall-overview.md) kullanıyoruz.
+Uygulama Ağ Geçidi için örnek sayısını ve boyutunu yapılandırın. Bu örnekte, API Yönetimi kaynağının artan güvenliği için [WAF SKU'yu](../application-gateway/application-gateway-webapplicationfirewall-overview.md) kullanıyoruz.
 
 ```powershell
 $sku = New-AzApplicationGatewaySku -Name "WAF_Medium" -Tier "WAF" -Capacity 2
 ```
 
-### <a name="step-12"></a>12. adım
+### <a name="step-12"></a>Adım 12
 
-WAF 'yi "önleme" modunda olacak şekilde yapılandırın.
+WAF'ı "Önleme" modunda olacak şekilde yapılandırın.
 
 ```powershell
 $config = New-AzApplicationGatewayWebApplicationFirewallConfiguration -Enabled $true -FirewallMode "Prevention"
 ```
 
-## <a name="create-application-gateway"></a>Application Gateway oluştur
+## <a name="create-application-gateway"></a>Uygulama Ağ Geçidi Oluşturma
 
-Yukarıdaki adımlardan tüm yapılandırma nesneleriyle bir Application Gateway oluşturun.
+Önceki adımlardaki tüm yapılandırma nesneleriyle bir Uygulama Ağ Geçidi oluşturun.
 
 ```powershell
 $appgwName = "apim-app-gw"
 $appgw = New-AzApplicationGateway -Name $appgwName -ResourceGroupName $resGroupName -Location $location -BackendAddressPools $apimProxyBackendPool -BackendHttpSettingsCollection $apimPoolSetting, $apimPoolPortalSetting  -FrontendIpConfigurations $fipconfig01 -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01 -HttpListeners $listener, $portalListener -RequestRoutingRules $rule01, $rule02 -Sku $sku -WebApplicationFirewallConfig $config -SslCertificates $cert, $certPortal -AuthenticationCertificates $authcert -Probes $apimprobe, $apimPortalProbe
 ```
 
-## <a name="cname-the-api-management-proxy-hostname-to-the-public-dns-name-of-the-application-gateway-resource"></a>CNAME API Management proxy ana bilgisayar adı Application Gateway kaynağının genel DNS adına
+## <a name="cname-the-api-management-proxy-hostname-to-the-public-dns-name-of-the-application-gateway-resource"></a>CNAME UYGULAMA Ağ Geçidi kaynağının genel DNS adına API Yönetimi proxy ana bilgisayar adı
 
-Ağ geçidi oluşturulduktan sonraki adım, iletişim için ön uç yapılandırması yapmaktır. Genel IP kullanırken Application Gateway dinamik olarak atanan bir DNS adı gerektirir ve bu, kullanılması kolay olmayabilir.
+Ağ geçidi oluşturulduktan sonraki adım, iletişim için ön uç yapılandırması yapmaktır. Ortak bir IP kullanırken, Uygulama Ağ Geçidi dinamik olarak atanmış bir DNS adı gerektirir ve kullanımı kolay olmayabilir.
 
-Application Gateway DNS adı, APıM proxy ana bilgisayar adını (örneğin, Yukarıdaki örneklerde `api.contoso.net`) bu DNS adına işaret eden bir CNAME kaydı oluşturmak için kullanılmalıdır. Ön uç IP CNAME kaydını yapılandırmak için, Application Gateway ayrıntılarını ve ilgili IP/DNS adını Publicıpaddress öğesini kullanarak alın. Ağ geçidinin yeniden başlatılması sırasında VIP değişebileceğinizden, A kayıtlarının kullanılması önerilmez.
+Uygulama Ağ Geçidi'nin DNS adı, APIM proxy ana bilgisayar adını (örn. `api.contoso.net` yukarıdaki örneklerde) bu DNS adına işaret eden bir CNAME kaydı oluşturmak için kullanılmalıdır. Ön uç IP CNAME kaydını yapılandırmak için PublicIPAddress öğesini kullanarak Uygulama Ağ Geçidi'nin ayrıntılarını ve ilişkili IP/DNS adını alın. VIP ağ geçidinin yeniden başlatılmasında değişebileceğinden A kayıtlarının kullanılması önerilmez.
 
 ```powershell
 Get-AzPublicIpAddress -ResourceGroupName $resGroupName -Name "publicIP01"
 ```
 
-## <a name="summary"> </a> Özet
-Bir sanal ağda yapılandırılan Azure API Management, şirket içinde veya bulutta barındırılıp barındırılmayacağı tüm yapılandırılmış API 'Ler için tek bir ağ geçidi arabirimi sağlar. Application Gateway API Management ile tümleştirmek, belirli API 'Lerin Internet üzerinde erişilebilir olmasını seçmeli olarak etkinleştirme esnekliği sağlar ve bir Web uygulaması güvenlik duvarını API Management örneğiniz için ön uç olarak sağlar.
+## <a name="summary"></a><a name="summary"> </a> Özet
+VNET'te yapılandırılan Azure API Yönetimi, ister şirket içinde ister bulutta barındırılan tüm yapılandırılmış API'ler için tek bir ağ geçidi arabirimi sağlar. Uygulama Ağ Geçidi'ni API Yönetimi ile tümleştirmek, belirli API'lerin Internet'te erişilebilir olmasını seçerek etkinleştirme esnekliği sağlamanın yanı sıra API Yönetimi örneğinizin ön koşulu olarak bir Web Uygulaması Güvenlik Duvarı sağlama esnekliği sağlar.
 
-## <a name="next-steps"> </a> Sonraki adımlar
-* Azure Application Gateway hakkında daha fazla bilgi
-  * [Application Gateway genel bakış](../application-gateway/application-gateway-introduction.md)
-  * [Application Gateway Web uygulaması güvenlik duvarı](../application-gateway/application-gateway-webapplicationfirewall-overview.md)
-  * [Yol tabanlı yönlendirme kullanarak Application Gateway](../application-gateway/application-gateway-create-url-route-arm-ps.md)
-* API Management ve sanal ağlar hakkında daha fazla bilgi edinin
-  * [Yalnızca VNET içinde kullanılabilir API Management kullanma](api-management-using-with-internal-vnet.md)
-  * [VNET 'te API Management kullanma](api-management-using-with-vnet.md)
+## <a name="next-steps"></a><a name="next-steps"> </a> Sonraki adımlar
+* Azure Uygulama Ağ Geçidi hakkında daha fazla bilgi edinin
+  * [Uygulama Ağ Geçidine Genel Bakış](../application-gateway/application-gateway-introduction.md)
+  * [Uygulama Ağ Geçidi Web Uygulaması Güvenlik Duvarı](../application-gateway/application-gateway-webapplicationfirewall-overview.md)
+  * [Yol Tabanlı Yönlendirme'yi kullanarak Uygulama Ağ Geçidi](../application-gateway/application-gateway-create-url-route-arm-ps.md)
+* API Yönetimi ve VNET'ler hakkında daha fazla bilgi edinin
+  * [Yalnızca VNET içinde kullanılabilen API Yönetimini kullanma](api-management-using-with-internal-vnet.md)
+  * [VNET'te API Yönetimini Kullanma](api-management-using-with-vnet.md)

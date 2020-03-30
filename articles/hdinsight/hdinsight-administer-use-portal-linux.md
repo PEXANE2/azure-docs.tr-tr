@@ -1,6 +1,6 @@
 ---
-title: Azure portal kullanarak HDInsight 'ta Apache Hadoop kümelerini yönetme
-description: Azure portal kullanarak Azure HDInsight kümeleri oluşturmayı ve yönetmeyi öğrenin.
+title: Azure portalını kullanarak HDInsight'ta Apache Hadoop kümelerini yönetme
+description: Azure portalını kullanarak Azure HDInsight kümelerini nasıl oluşturup yöneteceklerini öğrenin.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,43 +9,43 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/12/2020
 ms.openlocfilehash: b9d923b3272f9d8b3da39d7cdb771a766eee4eab
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79272740"
 ---
-# <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>HDInsight 'ta Apache Hadoop kümelerini Azure portal kullanarak yönetin
+# <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Azure portalını kullanarak HDInsight'ta Apache Hadoop kümelerini yönetme
 
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
 
-[Azure Portal](https://portal.azure.com)kullanarak, Azure hdınsight 'ta [Apache Hadoop](https://hadoop.apache.org/) kümelerini yönetebilirsiniz. Diğer araçları kullanarak HDInsight 'ta Hadoop kümelerini yönetme hakkında bilgi için yukarıdaki sekme seçiciyi kullanın.
+Azure [portalını](https://portal.azure.com)kullanarak Azure HDInsight'ta [Apache Hadoop](https://hadoop.apache.org/) kümelerini yönetebilirsiniz. Diğer araçları kullanarak HDInsight'taki Hadoop kümelerini yönetme hakkında bilgi edinmek için yukarıdaki sekme seçiciyi kullanın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-HDInsight 'ta mevcut bir Apache Hadoop kümesi.  Bkz. [HDInsight 'ta Azure Portal kullanarak Linux tabanlı kümeler oluşturma](hdinsight-hadoop-create-linux-clusters-portal.md).
+HDInsight'ta varolan bir Apache Hadoop kümesi.  Azure [portalını kullanarak HDInsight'ta Linux tabanlı kümeler oluşturma'ya](hdinsight-hadoop-create-linux-clusters-portal.md)bakın.
 
 ## <a name="getting-started"></a>Başlarken
 
-[https://portal.azure.com](https://portal.azure.com) adresinde oturum açın.
+Oturum [https://portal.azure.com](https://portal.azure.com)aç.
 
-## <a name="showClusters"></a>Kümeleri listeleme ve gösterme
+## <a name="list-and-show-clusters"></a><a name="showClusters"></a>Kümeleri listele ve göster
 
-**HDInsight kümeleri** sayfası, mevcut kümelerinizi listeler.  Portaldan:
-1. Sol taraftaki menüden **tüm hizmetler** ' i seçin.
-2. **Analiz**altında **HDInsight kümeleri** ' ni seçin.
+**HDInsight kümeleri** sayfası varolan kümelerinizi listeler.  Portaldan:
+1. Sol menüden **Tüm hizmetleri** seçin.
+2. **ANALYTICS**altında **HDInsight kümelerini** seçin.
 
-## <a name="homePage"></a>Küme giriş sayfası
+## <a name="cluster-home-page"></a><a name="homePage"></a>Ana sayfayı kümele
 
-[**HDInsight kümeleri**](#showClusters) sayfasından kümenizin adını seçin.  Bu işlem, aşağıdaki görüntüye benzer şekilde görünen **genel bakış** görünümünü açar:
+[**HDInsight kümeleri**](#showClusters) sayfasından küme adınızı seçin.  Bu, aşağıdaki resme benzeyen **Genel Bakış** görünümünü açar:
 
-![Azure portal HDInsight kümesi temel bileşenleri](./media/hdinsight-administer-use-portal-linux/hdinsight-essentials2.png)
+![Azure portalı HDInsight küme temelleri](./media/hdinsight-administer-use-portal-linux/hdinsight-essentials2.png)
 
 **Üst menü:**  
 
 | Öğe| Açıklama |
 |---|---|
-|Taşı|Kümeyi başka bir kaynak grubuna veya başka bir aboneliğe kaydırır.|
+|Taşı|Kümeyi başka bir kaynak grubuna veya başka bir aboneye taşır.|
 |Sil|Kümeyi siler. |
 |Yenile|Görünümü yeniler.|
 
@@ -56,156 +56,156 @@ HDInsight 'ta mevcut bir Apache Hadoop kümesi.  Bkz. [HDInsight 'ta Azure Porta
     | Öğe| Açıklama |
     |---|---|
     |Genel Bakış|Kümeniz için genel bilgiler sağlar.|
-    |Etkinlik günlüğü|Etkinlik günlüklerini gösterir ve sorgular.|
-    |Erişim denetimi (ıAM)|Rol atamalarını kullanın.  Bkz. [Azure abonelik kaynaklarınıza erişimi yönetmek için rol atamalarını kullanma](../role-based-access-control/role-assignments-portal.md).|
-    |Etiketler|Bulut hizmetlerinizin özel bir taksonomini tanımlamak için anahtar/değer çiftleri ayarlamanıza olanak sağlar. Örneğin, **Proje**adlı bir anahtar oluşturabilir ve ardından belirli bir projeyle ilişkili tüm hizmetler için ortak bir değer kullanabilirsiniz.|
-    |Sorunları tanılama ve çözme|Sorun giderme bilgilerini görüntüleyin.|
-    |Hızlı Başlangıç|HDInsight kullanmaya başlamanıza yardımcı olacak bilgiler görüntüler.|
+    |Etkinlik günlüğü|Etkinlik günlüklerini göster ve sorgula.|
+    |Erişim denetimi (IAM)|Rol atamaları kullanın.  Bkz. [Azure abonelik kaynaklarınıza erişimi yönetmek için rol atamaları](../role-based-access-control/role-assignments-portal.md)kullanın.|
+    |Etiketler|Bulut hizmetlerinizin özel taksonomisini tanımlamak için anahtar/değer çiftleri ayarlamanızı sağlar. Örneğin, proje adında bir anahtar oluşturabilir ve ardından belirli bir **projeyle**ilişkili tüm hizmetler için ortak bir değer kullanabilirsiniz.|
+    |Sorunları tanılayın ve çözün|Sorun giderme bilgilerini görüntüleyin.|
+    |Hızlı Başlangıç|HDInsight'ı kullanmaya başlamanıza yardımcı olan bilgileri görüntüler.|
     |Araçlar|HDInsight ile ilgili araçlar için yardım bilgileri.|
 
   - **Ayarlar menüsü**  
 
     | Öğe| Açıklama |
     |---|---|
-    |Küme boyutu|Küme çalışan düğümlerinin sayısını denetleyin, artırın ve azaltın. Bkz. [Ölçek Kümeleri](hdinsight-administer-use-portal-linux.md#scale-clusters).|
+    |Küme boyutu|Küme altdüğüm düğümlerinin sayısını denetleyin, artırın ve azaltın. Bkz. [Ölçek kümeleri.](hdinsight-administer-use-portal-linux.md#scale-clusters)|
     |Kota sınırları|Aboneliğiniz için kullanılan ve kullanılabilir çekirdekleri görüntüleyin.|
-    |SSH + küme oturumu açma|Secure Shell (SSH) bağlantısı kullanarak kümeye bağlanma yönergelerini gösterir. Daha fazla bilgi için bkz. [HDInsight ile SSH kullanma](hdinsight-hadoop-linux-use-ssh-unix.md).|
-    |Data Lake Storage Gen1|Erişim Data Lake Storage 1. yapılandırma.  Bkz. [hızlı başlangıç: HDInsight 'ta kümeleri ayarlama](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).|
-    |Depolama hesapları|Depolama hesaplarını ve anahtarları görüntüleyin. Depolama hesapları, küme oluşturma işlemi sırasında yapılandırılır.|
-    |Uygulamalar|HDInsight uygulamaları ekleyin/kaldırın.  Bkz. [özel HDInsight uygulamaları yüklemeyi](hdinsight-apps-install-custom-applications.md).|
-    |Betik eylemleri|Kümede Bash betiklerini çalıştırın. Bkz. [betik eylemi kullanarak Linux tabanlı HDInsight kümelerini özelleştirme](hdinsight-hadoop-customize-cluster-linux.md).|
-    |Dış meta veri|[Apache Hive](https://hive.apache.org/) ve [Apache Oozie](https://oozie.apache.org/) meta tastores ' nı görüntüleyin. Meta depolar yalnızca küme oluşturma işlemi sırasında yapılandırılabilir.|
-    |HDInsight iş ortağı|Geçerli HDInsight Iş ortağını ekleyin/kaldırın.|
-    |Özellikler|[Küme özelliklerini](#properties)görüntüleyin.|
-    |Kilitler|Kümenin değiştirilmesini veya silinmesini engellemek için bir kilit ekleyin.|
-    |Şablonu dışarı aktarma|Küme için Azure Resource Manager şablonunu görüntüleyin ve dışarı aktarın. Şu anda yalnızca bağımlı Azure Storage hesabını dışarı aktarabilirsiniz. Bkz. [HDInsight 'ta Azure Resource Manager şablonları kullanarak Linux tabanlı Apache Hadoop kümeleri oluşturma](hdinsight-hadoop-create-linux-clusters-arm-templates.md).|
+    |SSH + Cluster giriş|Güvenli Kabuk (SSH) bağlantısını kullanarak kümeye bağlanma yönergelerini gösterir. Daha fazla bilgi için bkz. [HDInsight ile SSH kullanma](hdinsight-hadoop-linux-use-ssh-unix.md).|
+    |Data Lake Storage Gen1|Erişim Veri Gölü Depolama Gen1 yapılandırılması.  [Bkz. Hızlı Başlangıç: HDInsight'ta kümeler ayarlayın.](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)|
+    |Depolama hesapları|Depolama hesaplarını ve anahtarları görüntüleyin. Depolama hesapları küme oluşturma işlemi sırasında yapılandırılır.|
+    |Uygulamalar|HDInsight uygulamalarını ekleme/kaldırma.  Bkz. [Özel HDInsight uygulamalarını yükle.](hdinsight-apps-install-custom-applications.md)|
+    |Komut dosyası eylemleri|Kümeüzerinde Bash komut dosyalarını çalıştırın. [Bkz. Script Action'ı kullanarak Linux tabanlı HDInsight kümelerini özelleştirin.](hdinsight-hadoop-customize-cluster-linux.md)|
+    |Dış metastore'lar|[Apache Hive](https://hive.apache.org/) ve [Apache Oozie](https://oozie.apache.org/) metastore'larını görüntüleyin. Metamağazalar yalnızca küme oluşturma işlemi sırasında yapılandırılabilir.|
+    |HDInsight iş ortağı|Geçerli HDInsight İş Ortağını ekleyin/kaldırın.|
+    |Özellikler|Küme [özelliklerini](#properties)görüntüleyin.|
+    |Kilitler|Kümenin değiştirilmesini veya silinmesini önlemek için bir kilit ekleyin.|
+    |Şablonu dışarı aktarma|Küme için Azure Kaynak Yöneticisi şablonu görüntüleyin ve dışa aktarın. Şu anda yalnızca bağımlı Azure depolama hesabını dışa aktarabilirsiniz. Azure [Kaynak Yöneticisi şablonlarını kullanarak HDInsight'ta Linux tabanlı Apache Hadoop kümeleri oluşturun'a](hdinsight-hadoop-create-linux-clusters-arm-templates.md)bakın.|
 
   - **İzleme menüsü**
 
     | Öğe| Açıklama |
     |---|---|
     |Uyarılar|Uyarıları ve eylemleri yönetin.|
-    |Ölçümler|Azure Izleyici günlüklerinde küme ölçümlerini izleyin.|
-    |Tanılama ayarları|Tanılama ölçümlerinin depolanacağı ayarlar.|
-    |Azure İzleyici|Azure Izleyici 'de kümenizi izleyin.|
+    |Ölçümler|Azure Monitor günlüklerinde küme ölçümlerini izleyin.|
+    |Tanı ayarları|Tanı ölçümlerinin nerede depolandığına ilişkin ayarlar.|
+    |Azure İzleyici|Cluster'ınızı Azure Monitor'da izleyin.|
 
   - **Destek + sorun giderme menüsü**
 
     | Öğe| Açıklama |
     |---|---|
-    |Kaynak durumu|Bkz. [Azure Kaynak durumu genel bakış](../service-health/resource-health-overview.md).|
-    |Yeni destek isteği|Microsoft desteği ile bir destek bileti oluşturmanıza olanak sağlar.|
+    |Kaynak durumu|Bkz. [Azure kaynak durumu genel bakışı.](../service-health/resource-health-overview.md)|
+    |Yeni destek isteği|Microsoft desteği ile bir destek bileti oluşturmanıza olanak tanır.|
 
-## <a name="properties"></a>Küme özellikleri
+## <a name="cluster-properties"></a><a name="properties"></a>Küme Özellikleri
 
-[Küme giriş sayfasında](#homePage), **Ayarlar** ' ın altında **Özellikler**' i seçin.
+Küme [ana sayfasından](#homePage) **Ayarlar'ın** altında **Özellikler'i**seçin.
 
 |Öğe | Açıklama |
 |---|---|
-|Konak|Küme adı.|
-|KÜME URL 'SI|Ambarı Web arabiriminin URL 'SI.|
-|Özel Uç Nokta|Küme için özel uç nokta.|
-|Güvenli Kabuk (SSH)|SSH aracılığıyla kümeye erişirken kullanılacak Kullanıcı adı ve ana bilgisayar adı.|
-|DURUM|Bunlardan biri: durduruldu, kabul edildi, Clusterstoragesağlandı, AzureVMConfiguration, HDInsightConfiguration, Işlemsel, çalışıyor, hata, silme, silinen, zaman aşımına uğradı, Deletekuyruklanmış, Deletetimemak, DeleteError, Patchkuyruktaki, Certrolloverkuyrukta, Resizekuyruğa alındı veya ClusterCustomization.|
-|GELI|Azure konumu. Desteklenen Azure konumlarının listesi için bkz. [HDInsight fiyatlandırması](https://azure.microsoft.com/pricing/details/hdinsight/)üzerinde **bölge** açılan liste kutusu.|
-|OLUŞTURULMA TARIHI|Kümenin dağıtıldığı tarih.|
-|İŞLETİM SİSTEMİ|**Windows** ya da **Linux**.|
-|TÜR|Hadoop, HBase, fırtınası, Spark.|
-|Sürüm|Bkz. [HDInsight sürümleri](hdinsight-component-versioning.md).|
-|En düşük TLS sürümü|TLS sürümü.|
+|Hostname|Küme adı.|
+|KÜME URL|Ambari web arayüzü için URL.|
+|Özel Uç Nokta|Küme için özel bitiş noktası.|
+|Güvenli kabuk (SSH)|SSH üzerinden kümeye erişirken kullanılacak kullanıcı adı ve ana bilgisayar adı.|
+|DURUM|Bunlardan biri: İptal, Kabul Edilen, ClusterStorageProvisioned, AzureVMConfiguration, HDInsightConfiguration, Operational, Running, Error, Silme, Silinmiş, Timedout, DeleteQueued, DeleteTimedout, DeleteError, PatchQueued, CertRolloverQueued, Yeniden Boyutlandı veya ClusterCustomization.|
+|BÖLGE|Azure konumu. Desteklenen Azure konumlarının listesi için [HDInsight fiyatlandırması](https://azure.microsoft.com/pricing/details/hdinsight/)için **Bölge** açılır liste kutusuna bakın.|
+|OLUŞTURMA TARİHİ|Kümenin dağıtılan tarih.|
+|İşletim Sistemi|Ya **Windows** veya **Linux**.|
+|TÜR|Hadoop, HBase, Fırtına, Kıvılcım.|
+|Sürüm|[HDInsight sürümlerine](hdinsight-component-versioning.md)bakın.|
+|Minimum TLS sürümü|TLS sürümü.|
 |ABONELİK|Abonelik adı.|
-|VARSAYıLAN VERI KAYNAĞı|Varsayılan küme dosya sistemi.|
-|Çalışan düğümleri boyutları|Çalışan düğümlerinin seçili VM boyutu.|
-|Baş düğüm boyutu|Baş düğümlerin seçili VM boyutu.|
-|Sanal ağ|Dağıtım zamanında seçilmiş olan kümenin dağıtıldığı sanal ağın adı.|
+|VARSAYıLAN VERI Kaynağı|Varsayılan küme dosya sistemi.|
+|İşçi düğümleri boyutları|İşçi düğümlerinin seçili VM boyutu.|
+|Baş düğüm boyutu|Kafa düğümlerinin seçili VM boyutu.|
+|Sanal ağ|Dağıtım sırasında seçiliyse, kümenin dağıtıldığı Sanal Ağ'ın adı.|
 
-## <a name="move-clusters"></a>Kümeleri taşı
+## <a name="move-clusters"></a>Kümeleri taşıma
 
-HDInsight kümesini başka bir Azure Kaynak grubuna veya başka bir aboneliğe taşıyabilirsiniz.
+BIR HDInsight kümesini başka bir Azure kaynak grubuna veya başka bir aboneye taşıyabilirsiniz.
 
-[Küme giriş sayfasından](#homePage):
+Küme [ana sayfasından:](#homePage)
 
-1. Üstteki menüden **Taşı** ' yı seçin.
-2. **Başka bir kaynak grubuna Taşı** veya **başka bir aboneliğe taşı**' yı seçin.
+1. Üst menüden **Taşı'yı** seçin.
+2. **Başka bir kaynak grubuna taşı** veya başka bir **aboneye taşı'nı**seçin.
 3. Yeni sayfadaki yönergeleri izleyin.
 
-## <a name="delete-clusters"></a>Kümeleri Sil
+## <a name="delete-clusters"></a>Kümeleri silme
 
-Bir kümeyi silmek varsayılan depolama hesabını ve bağlı depolama hesaplarını silmez. Aynı depolama hesaplarını ve aynı meta tasmres 'yi kullanarak kümeyi yeniden oluşturabilirsiniz. Kümeyi yeniden oluşturduğunuzda yeni bir varsayılan blob kapsayıcısı kullanmanızı öneririz.
+Kümesilme, varsayılan depolama hesabını veya bağlantılı depolama hesaplarını silmez. Aynı depolama hesaplarını ve aynı meta depoları kullanarak kümeyi yeniden oluşturabilirsiniz. Kümeyi yeniden oluştururken yeni bir varsayılan Blob kapsayıcısı kullanmanızı öneririz.
 
-[Küme giriş sayfasından](#homePage):
+Küme [ana sayfasından:](#homePage)
 
-1. Üstteki menüden **Sil** ' i seçin.
+1. Üst menüden **Sil'i** seçin.
 2. Yeni sayfadaki yönergeleri izleyin.
 
-Ayrıca bkz. [kümeleri duraklatma/kapatma](#pauseshut-down-clusters).
+[Ayrıca](#pauseshut-down-clusters)bkz.
 
 ## <a name="add-additional-storage-accounts"></a>Başka depolama hesapları ekleme
 
-Bir küme oluşturulduktan sonra ek Azure depolama hesapları ve Azure Data Lake Storage hesapları ekleyebilirsiniz. Daha fazla bilgi için bkz. [HDInsight’a başka depolama hesapları ekleme](./hdinsight-hadoop-add-storage.md).
+Küme oluşturulduktan sonra ek Azure Depolama hesapları ve Azure Veri Gölü Depolama hesapları ekleyebilirsiniz. Daha fazla bilgi için bkz. [HDInsight’a başka depolama hesapları ekleme](./hdinsight-hadoop-add-storage.md).
 
-## <a name="scale-clusters"></a>Ölçek Kümeleri
+## <a name="scale-clusters"></a>Ölçek kümeleri
 
-Küme ölçekleme özelliği, kümeyi yeniden oluşturmaya gerek kalmadan bir Azure HDInsight kümesi tarafından kullanılan çalışan düğümlerinin sayısını değiştirmenize olanak sağlar.
+Küme ölçekleme özelliği, bir Azure HDInsight kümesi tarafından kullanılan alt düğüm sayısını, kümeyi yeniden oluşturmak zorunda kalmadan değiştirmenize olanak tanır.
 
-Tüm bilgiler için bkz. [HDInsight kümelerini ölçeklendirme](./hdinsight-scaling-best-practices.md) .
+Tam bilgi için [HDInsight kümelerini](./hdinsight-scaling-best-practices.md) ölçeklendir'e bakın.
 
 ## <a name="pauseshut-down-clusters"></a>Kümeleri duraklatma/kapatma
 
-Hadoop işlerinin çoğu yalnızca zaman zaman çalışan toplu işlerdir. Çoğu Hadoop kümesi için, kümenin işlenmek üzere kullanılmayan büyük süreler vardır. HDInsight ile Verileriniz Azure Storage 'da depolanır, bu sayede bir kümeyi kullanımda olmadığında güvenle silebilirsiniz.
-Ayrıca, kullanımda olmasa bile bir HDInsight kümesi için de ücretlendirilirsiniz. Kümenin ücretleri depolama ücretinden çok daha fazla olduğundan, kullanımda olmadıkları zaman kümeleri silmek ekonomik bir anlam sağlar.
+Hadoop işlerinin çoğu sadece ara sıra çalıştırılabilen toplu işlerdir. Çoğu Hadoop kümesi için, kümenin işleme için kullanılmadığı büyük zaman dilimleri vardır. HDInsight ile verileriniz Azure Depolama'da depolanır, böylece kullanılmadığında bir kümeyi güvenle silebilirsiniz.
+Kullanılmamış olsa bile bir HDInsight kümesi için de ücretlendirilirsiniz. Küme ücretleri depolama ücretlerinden kat kat daha fazla olduğundan, kümeleri kullanılmadıklarında silmek ekonomik açıdan mantıklıdır.
 
-İşlemi programlayabilirsiniz. birçok yol vardır:
+İşlemi programlamanın birçok yolu vardır:
 
-- Kullanıcı Azure Data Factory. İsteğe bağlı HDInsight bağlı hizmetleri oluşturmak için [Azure Data Factory kullanarak HDInsight 'ta isteğe bağlı Linux tabanlı Apache Hadoop kümeleri oluşturma](hdinsight-hadoop-create-linux-clusters-adf.md) konusuna bakın.
-- Azure PowerShell kullanın.  Bkz. [Uçuş gecikmesi verilerini çözümleme](./interactive-query/interactive-query-tutorial-analyze-flight-data.md).
-- Azure CLı 'yi kullanın. Bkz. [Azure CLI kullanarak Azure HDInsight kümelerini yönetme](hdinsight-administer-use-command-line.md).
-- HDInsight .NET SDK 'Yı kullanın. Bkz. [Apache Hadoop Işleri gönderme](hadoop/submit-apache-hadoop-jobs-programmatically.md).
+- Kullanıcı Azure Veri Fabrikası. İsteğe bağlı HDInsight bağlantılı hizmetler oluşturmak için [Azure Veri Fabrikası'nı kullanarak HDInsight'ta isteğe bağlı Linux tabanlı Apache Hadoop kümeleri](hdinsight-hadoop-create-linux-clusters-adf.md) oluşturun'a bakın.
+- Azure PowerShell'i kullanın.  Bkz. [Uçuş gecikme verilerini analiz edin.](./interactive-query/interactive-query-tutorial-analyze-flight-data.md)
+- Azure CLI'yı kullanın. Bkz. [Azure CLI kullanarak Azure HDInsight kümelerini yönet.](hdinsight-administer-use-command-line.md)
+- HDInsight .NET SDK'yı kullanın. Bkz. [Apache Hadoop işlerini gönder.](hadoop/submit-apache-hadoop-jobs-programmatically.md)
 
-Fiyatlandırma bilgileri için bkz. [HDInsight fiyatlandırması](https://azure.microsoft.com/pricing/details/hdinsight/). Portaldan bir kümeyi silmek için bkz. [kümeleri silme](#delete-clusters)
+Fiyatlandırma bilgileri için [HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/)fiyatlandırması'na bakın. Portaldan bir kümeyi silmek için [bkz.](#delete-clusters)
 
-## <a name="upgrade-clusters"></a>Küme yükseltme
+## <a name="upgrade-clusters"></a>Yükseltme kümeleri
 
-Bkz. [HDInsight kümesini daha yeni bir sürüme yükseltme](./hdinsight-upgrade-cluster.md).
+HdInsight [kümesini daha yeni bir sürüme yükseltin'](./hdinsight-upgrade-cluster.md)e bakın.
 
-## <a name="open-the-apache-ambari-web-ui"></a>Apache ambarı Web Kullanıcı arabirimini açın
+## <a name="open-the-apache-ambari-web-ui"></a>Apache Ambari web UI'yi açın
 
-Ambarı, tekrar eden API 'Ler tarafından desteklenen sezgisel, kullanımı kolay bir Hadoop yönetimi Web Kullanıcı arabirimi sağlar. Ambarı, sistem yöneticilerinin Hadoop kümelerini yönetmesine ve izlemesine olanak sağlar.
+Ambari, RESTful API'leri ile desteklenen sezgisel, kullanımı kolay Bir Hadoop yönetim web UI sağlar. Ambari, sistem yöneticilerinin Hadoop kümelerini yönetmesini ve izlemesini sağlar.
 
-[Küme giriş sayfasından](#homePage):
+Küme [ana sayfasından:](#homePage)
 
-1. **Küme panoları**' nı seçin.
+1. **Küme panolarını**seçin.
 
     ![HDInsight Apache Hadoop küme menüsü](./media/hdinsight-administer-use-portal-linux/hdinsight-azure-portal-cluster-menu2.png)
 
-1. Yeni sayfadan **ambarı giriş** ' i seçin.
-1. Küme Kullanıcı adı ve parolasını girin.  Varsayılan küme Kullanıcı adı _admin_' dir.
+1. Yeni sayfadan **Ambari'yi ana sayfaseçin.**
+1. Küme kullanıcı adı ve parolasını girin.  Varsayılan küme kullanıcı adı _yöneticidir._
 
-Daha fazla bilgi için bkz. [Apache ambarı Web Kullanıcı arabirimini kullanarak HDInsight kümelerini yönetme](hdinsight-hadoop-manage-ambari.md).
+Daha fazla bilgi [için, Apache Ambari Web UI'yi kullanarak HDInsight kümelerini yönet'e](hdinsight-hadoop-manage-ambari.md)bakın.
 
 ## <a name="change-passwords"></a>Parolaları değiştirme
 
-An HDInsight küme iki kullanıcı hesabına sahip olabilir. HDInsight kümesi Kullanıcı hesabı (HTTP Kullanıcı hesabı) ve SSH kullanıcı hesabı, oluşturma işlemi sırasında oluşturulur. Portalı kullanarak, küme kullanıcı hesabı parolasını değiştirebilir ve SSH kullanıcı hesabını değiştirmek için betik eylemleri yapabilirsiniz.
+BIR HDInsight kümesinin iki kullanıcı hesabı olabilir. Oluşturma işlemi sırasında HDInsight küme kullanıcı hesabı (HTTP kullanıcı hesabı) ve SSH kullanıcı hesabı oluşturulur. Portalı küme kullanıcı hesabı parolasını değiştirmek için ve SSH kullanıcı hesabını değiştirmek için komut dosyası eylemlerini kullanabilirsiniz.
 
 ### <a name="change-the-cluster-user-password"></a>Küme kullanıcı parolasını değiştirme
 
 > [!NOTE]  
-> Küme kullanıcı (yönetici) parolasının değiştirilmesi, betik eylemlerinin başarısız olması için bu kümede çalışmasına neden olabilir. Çalışan düğümlerini hedefleyen kalıcı betik eylemleriniz varsa, yeniden boyutlandırma işlemleri aracılığıyla kümeye düğüm eklediğinizde bu betikler başarısız olabilir. Betik eylemleri hakkında daha fazla bilgi için bkz. [betik eylemlerini kullanarak HDInsight kümelerini özelleştirme](hdinsight-hadoop-customize-cluster-linux.md).
+> Küme kullanıcı (yönetici) parolasını değiştirmek, bu kümeye karşı çalışan komut dosyası eylemlerinin başarısız lığa neden olabilir. Alt düğümleri hedefleyen kalıcı komut dosyası eylemleriniz varsa, yeniden boyutlandırma işlemleri yoluyla kümeye düğüm ler eklediğinizde bu komut dosyaları başarısız olabilir. Komut dosyası eylemleri hakkında daha fazla bilgi için, [komut dosyası eylemlerini kullanarak HDInsight kümelerini özelleştir'e](hdinsight-hadoop-customize-cluster-linux.md)bakın.
 
-[Küme giriş sayfasından](#homePage):
-1. **Ayarlar**altında **SSH + küme oturumu açma** ' yı seçin.
-2. **Kimlik bilgilerini Sıfırla**' yı seçin.
-3. Metin kutularına yeni parolayı girin ve onaylayın.
-4. **Tamam**’ı seçin.
+Küme [ana sayfasından:](#homePage)
+1. **Ayarlar**altında **SSH + Cluster girişi'ni** seçin.
+2. **Kimlik bilgisi sıfırla'yı**seçin.
+3. Metin kutularına yeni parola girin ve onaylayın.
+4. **Tamam'ı**seçin.
 
-Parola, kümedeki tüm düğümlerde değiştirilir.
+Parola kümedeki tüm düğümlerde değiştirilir.
 
 ### <a name="change-the-ssh-user-password"></a>SSH kullanıcı parolasını değiştirme
 
-1. Bir metin düzenleyicisi kullanarak, aşağıdaki metni **ChangePassword.sh**adlı bir dosya olarak kaydedin.
+1. Metin düzenleyicisi kullanarak, aşağıdaki metni **changepassword.sh**adlı bir dosya olarak kaydedin.
 
     > [!IMPORTANT]  
-    > Bitiş satırı olarak LF kullanan bir düzenleyici kullanmanız gerekir. Düzenleyici CRLF kullanıyorsa, komut dosyası çalışmaz.
+    > Satır bitişi olarak LF kullanan bir düzenleyici kullanmanız gerekir. Düzenleyici CRLF kullanıyorsa, komut dosyası çalışmıyor.
 
     ```bash
     #! /bin/bash
@@ -214,59 +214,59 @@ Parola, kümedeki tüm düğümlerde değiştirilir.
     usermod --password $(echo $PASS | openssl passwd -1 -stdin) $USER
     ```
 
-2. HTTP veya HTTPS adresi kullanılarak dosyayı HDInsight 'tan erişilebilen bir depolama konumuna yükleyin. Örneğin, OneDrive veya Azure Blob depolama gibi bir ortak dosya deposu. URI 'yi (HTTP veya HTTPS adresi), bu URI bir sonraki adımda gerekli olduğundan dosyaya kaydedin.
-3. [Küme giriş sayfasında](#homePage), **Ayarlar**' ın altında **betik eylemleri** ' ni seçin.
-4. **Betik eylemleri** sayfasında **Yeni Gönder**' i seçin.
-5. **Betik eylemini gönder** sayfasında, aşağıdaki bilgileri girin:
+2. Dosyayı, HTTP veya HTTPS adresini kullanarak HDInsight'tan erişilebilen bir depolama konumuna yükleyin. Örneğin, OneDrive veya Azure Blob depolama alanı gibi genel bir dosya deposu. Bir sonraki adımda bu URI gerektiğinden URI'yi (HTTP veya HTTPS adresi) dosyaya kaydedin.
+3. Küme [ana sayfasından](#homePage) **Ayarlar**altında **Komut Dosyası eylemlerini** seçin.
+4. Komut **Dosyası eylemleri** sayfasından **yeni gönder'i**seçin.
+5. Komut dosyası eylem in **sayfasından** aşağıdaki bilgileri girin:
 
    | Alan | Değer |
    | --- | --- |
-   | Betik türü | Açılan listeden **özel** ' i seçin.|
-   | Adı |"SSH parolasını değiştir" |
-   | Bash betiği URI 'SI |Changepassword.sh dosyasının URI 'SI |
-   | Düğüm türleri: (Head, Worker, Nimbus, gözetmen veya Zookeeper.) |✓ listelenen tüm düğüm türleri için |
+   | Komut dosyası türü | Seçin - Açılan listeden **özel.**|
+   | Adı |"ssh şifreni değiştir" |
+   | Bash script URI |changepassword.sh dosyasına URI |
+   | Düğüm türü(ler): (Baş, İşçi, Nimbus, Süpervizör veya Zookeeper.) |✓ listelenen tüm düğüm türleri için |
    | Parametreler |SSH kullanıcı adını ve ardından yeni parolayı girin. Kullanıcı adı ve parola arasında bir boşluk olmalıdır. |
-   | Bu betik eylemini kalıcı yap... |Bu alanı işaretlenmemiş olarak bırakın. |
+   | Bu komut dosyası eylem devam ... |Bu alanı işaretsiz bırakın. |
 
-6. Betiği uygulamak için **Oluştur** ' u seçin. Betik tamamlandıktan sonra, yeni parolayla SSH kullanarak kümeye bağlanabilirsiniz.
+6. Komut dosyasını uygulamak için **Oluştur'u** seçin. Komut dosyası tamamlandığında, yeni parolayla SSH kullanarak kümeye bağlanabilirsiniz.
 
-## <a name="find-the-subscription-id"></a>Abonelik KIMLIĞINI bulun
+## <a name="find-the-subscription-id"></a>Abonelik kimliğini bulma
 
-Her küme bir Azure aboneliğine bağlanır.  Azure abonelik KIMLIĞI, [küme giriş sayfasından](#homePage)görünür.
+Her küme bir Azure aboneliğine bağlıdır.  Azure abonelik kimliği küme [giriş sayfasından](#homePage)görülebilir.
 
 ## <a name="find-the-resource-group"></a>Kaynak grubunu bulma
 
-Azure Resource Manager modunda, her HDInsight kümesi bir Azure Resource Manager grubuyla oluşturulur. Kaynak Yöneticisi grubu, [küme giriş sayfasından](#homePage)görünür.
+Azure Kaynak Yöneticisi modunda, her HDInsight kümesi bir Azure Kaynak Yöneticisi grubuyla oluşturulur. Kaynak Yöneticisi grubu küme [ana sayfasından](#homePage)görünür.
 
 ## <a name="find-the-storage-accounts"></a>Depolama hesaplarını bulma
 
-HDInsight kümeleri, verileri depolamak için bir Azure depolama hesabı veya Azure Data Lake Storage kullanır. Her HDInsight kümesinde bir varsayılan depolama hesabı ve bir dizi bağlı depolama hesabı bulunabilir. Depolama hesaplarını listelemek için, **Ayarlar**altındaki [küme giriş sayfasından](#homePage) **depolama hesapları**' nı seçin.
+HDInsight kümeleri, verileri depolamak için bir Azure Depolama hesabı veya Azure Veri Gölü Depolaması kullanır. Her HDInsight kümesinde bir varsayılan depolama hesabı ve bir dizi bağlantılı depolama hesabı olabilir. **Ayarlar**altındaki küme ana [sayfasından](#homePage) depolama hesaplarını listelemek için **Depolama hesaplarını**seçin.
 
 ## <a name="monitor-jobs"></a>İşleri izleme
 
-Bkz. [Apache ambarı Web Kullanıcı arabirimini kullanarak HDInsight kümelerini yönetme](hdinsight-hadoop-manage-ambari.md#monitoring).
+Bkz. [Apache Ambari Web UI'yi kullanarak HDInsight kümelerini yönetin.](hdinsight-hadoop-manage-ambari.md#monitoring)
 
 ## <a name="cluster-size"></a>Küme boyutu
 
-Küme [giriş sayfasından](#homePage) **küme boyutu** kutucuğu, bu kümeye ayrılan çekirdek sayısını ve bu kümedeki düğümler için nasıl ayrılacağını gösterir.
+[Küme ana sayfasındaki Küme](#homePage) **boyutu** döşemesi, bu kümeye ayrılan çekirdek sayısını ve bu kümedeki düğümler için nasıl ayrıldıklarını görüntüler.
 
 > [!IMPORTANT]  
-> HDInsight kümesi tarafından sunulan hizmetleri izlemek için, ambarı Web veya ambarı REST API kullanmanız gerekir. Ambarı kullanma hakkında daha fazla bilgi için bkz. [Apache ambarı kullanarak HDInsight kümelerini yönetme](hdinsight-hadoop-manage-ambari.md)
+> HDInsight kümesi tarafından sağlanan hizmetleri izlemek için Ambari Web veya Ambari REST API'yi kullanmanız gerekir. Ambari'yi kullanma hakkında daha fazla bilgi için [Apache Ambari kullanarak HDInsight kümelerini yönet'e](hdinsight-hadoop-manage-ambari.md) bakın
 
 ## <a name="connect-to-a-cluster"></a>Kümeye bağlanma
 
-- [HDInsight ile Apache Hive kullanma](hadoop/apache-hadoop-use-hive-ambari-view.md)
+- [HDInsight ile Apache Hive'ı kullanma](hadoop/apache-hadoop-use-hive-ambari-view.md)
 - [HDInsight ile SSH kullanma](hdinsight-hadoop-linux-use-ssh-unix.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, bazı temel yönetim işlevlerini öğrendiniz. Daha fazla bilgi için aşağıdaki makalelere bakın:
+Bu makalede, bazı temel yönetim işlevleri öğrendim. Daha fazla bilgi için aşağıdaki makalelere bakın:
 
-- [Azure PowerShell kullanarak HDInsight 'ı yönetme](hdinsight-administer-use-powershell.md)
-- [Azure CLı kullanarak HDInsight 'ı yönetme](hdinsight-administer-use-command-line.md)
+- [Azure PowerShell kullanarak HDInsight'ı yönetin](hdinsight-administer-use-powershell.md)
+- [Azure CLI'yi kullanarak HDInsight'ı yönetin](hdinsight-administer-use-command-line.md)
 - [HDInsight kümeleri oluşturma](hdinsight-hadoop-provision-linux-clusters.md)
-- [Apache ambarı 'nı kullanma hakkında ayrıntılar REST API](hdinsight-hadoop-manage-ambari-rest-api.md)
-- [HDInsight 'ta Apache Hive kullanma](hadoop/hdinsight-use-hive.md)
-- [HDInsight 'ta Apache Sqoop kullanma](hadoop/hdinsight-use-sqoop.md)
-- [HDInsight 'ta Apache Hive ve Apache Pig ile Python Kullanıcı tanımlı Işlevleri (UDF) kullanma](hadoop/python-udf-hdinsight.md)
-- [Azure HDInsight 'ta Apache Hadoop sürümü nedir?](hdinsight-component-versioning.md)
+- [Apache Ambari REST API'nin kullanımı ile ilgili ayrıntılar](hdinsight-hadoop-manage-ambari-rest-api.md)
+- [HDInsight'ta Apache Hive'ı kullanma](hadoop/hdinsight-use-hive.md)
+- [HDInsight'ta Apache Sqoop'u kullanın](hadoop/hdinsight-use-sqoop.md)
+- [HDInsight'ta Apache Hive ve Apache Pig ile Python Kullanıcı Tanımlı Fonksiyonlar (UDF) kullanın](hadoop/python-udf-hdinsight.md)
+- [Azure HDInsight'ta Apache Hadoop'un hangi sürümü var?](hdinsight-component-versioning.md)

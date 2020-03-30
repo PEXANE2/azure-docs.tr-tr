@@ -1,162 +1,162 @@
 ---
-title: Azure Service Fabric ters proxy
-description: Kümenin içinden ve dışından mikro hizmetlere iletişim için Service Fabric ters ara sunucusunu kullanın.
+title: Azure Hizmet Kumaş ters proxy
+description: Kümenin içinden ve dışından mikro hizmetlere iletişim için Service Fabric'in ters proxy'sini kullanın.
 author: BharatNarasimman
 ms.topic: conceptual
 ms.date: 11/03/2017
 ms.author: bharatn
 ms.openlocfilehash: 4fa4c6e46dd786b833087f892d995e85b5d2ea47
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79282230"
 ---
-# <a name="reverse-proxy-in-azure-service-fabric"></a>Azure Service Fabric ters proxy
-Azure 'da yerleşik olarak bulunan ters proxy Service Fabric, bir Service Fabric kümesinde çalışan mikro hizmetlerin HTTP uç noktalarına sahip diğer hizmetleri bulmasına ve iletişim kurmasına yardımcı olur.
+# <a name="reverse-proxy-in-azure-service-fabric"></a>Azure Hizmet Kumaşında ters proxy
+Azure Hizmet Kumaşı'nda yerleşik ters proxy, Hizmet Kumaşı kümesinde çalışan mikro hizmetlerin http uç noktaları olan diğer hizmetleri keşfetmesine ve onlarla iletişim kurmasına yardımcı olur.
 
-## <a name="microservices-communication-model"></a>Mikro Hizmetler iletişim modeli
-' Service Fabric deki mikro hizmetler, kümedeki düğümlerin bir alt kümesi üzerinde çalışır ve çeşitli nedenlerle düğümler arasında geçiş yapabilir. Sonuç olarak, mikro hizmetler için uç noktalar dinamik olarak değişebilir. Mikro hizmet, kümedeki diğer hizmetleri bulup iletişim kurmak için aşağıdaki adımlardan ilermelidir:
+## <a name="microservices-communication-model"></a>Microservices iletişim modeli
+Hizmet Kumaşındaki Microservices kümedeki düğümlerin bir alt kümesinde çalışır ve çeşitli nedenlerle düğümler arasında geçiş yapabilir. Sonuç olarak, mikro hizmetlerin uç noktaları dinamik olarak değişebilir. Kümedeki diğer hizmetleri keşfetmek ve onlarla iletişim kurmak için mikro hizmet aşağıdaki adımları aşmalıdır:
 
-1. Adlandırma hizmeti aracılığıyla hizmet konumunu çözümleyin.
-2. Hizmetine bağlanın.
-3. Önceki adımları hizmet çözümlemesi uygulayan bir döngüde sarın ve bağlantı hatalarıyla ilgili yeniden deneme ilkeleri
+1. Adlandırma hizmeti aracılığıyla hizmet konumunu çözümle.
+2. Hizmete bağlanın.
+3. Önceki adımları hizmet çözümlemesi uygulayan bir döngüye sarın ve bağlantı hatalarında uygulanacak ilkeleri yeniden deneyin
 
-Daha fazla bilgi için bkz. [Hizmetler Ile bağlanma ve iletişim kurma](service-fabric-connect-and-communicate-with-services.md).
+Daha fazla bilgi için [Connect'e](service-fabric-connect-and-communicate-with-services.md)bakın ve hizmetlerle iletişim kurun.
 
 ### <a name="communicating-by-using-the-reverse-proxy"></a>Ters proxy kullanarak iletişim kurma
-Ters proxy, her düğümde çalışan ve uç nokta çözümleme, otomatik yeniden deneme ve diğer bağlantı başarısızlıklarını istemci hizmetleri adına işleyen bir hizmettir. Ters proxy, istemci hizmetlerinden gelen istekleri işlediği için çeşitli ilkeler uygulayacak şekilde yapılandırılabilir. Ters proxy kullanmak, istemci hizmetinin istemci tarafı HTTP iletişim kitaplıklarını kullanmasına izin verir ve hizmette özel çözüm ve yeniden deneme mantığı gerektirmez. 
+Ters proxy, her düğümde çalışan ve istemci hizmetleri adına uç nokta çözümlemesi, otomatik yeniden deneme ve diğer bağlantı hatalarını işleyen bir hizmettir. Ters proxy, istemci hizmetlerinden gelen istekleri işlerken çeşitli ilkeler uygulamak üzere yapılandırılabilir. Ters proxy kullanmak istemci hizmetinin istemci tarafındaki http iletişim kitaplıklarını kullanmasına izin verir ve hizmette özel çözünürlük ve yeniden deneme mantığı gerektirmez. 
 
-Ters proxy, istemci hizmetlerinin diğer hizmetlere istek göndermek için kullanması için yerel düğümde bir veya daha fazla uç nokta gösterir.
+Ters proxy, istemci hizmetlerinin diğer hizmetlere istek göndermek için kullanması için yerel düğümde bir veya daha fazla uç noktayı ortaya çıkarır.
 
 ![İç iletişim][1]
 
 > [!NOTE]
-> **Desteklenen platformlar**
+> **Desteklenen Platformlar**
 >
-> Service Fabric ters proxy Şu anda aşağıdaki platformları desteklemektedir
-> * *Windows kümesi*: Windows 8 ve üzeri ya da windows Server 2012 ve üzeri
-> * *Linux kümesi*: ters ara sunucu şu anda Linux kümelerinde kullanılamıyor
+> Service Fabric'te ters proxy şu anda aşağıdaki platformları destekler
+> * *Windows Cluster*: Windows 8 ve sonraki veya Windows Server 2012 ve sonrası
+> * *Linux Cluster*: Ters Proxy şu anda Linux kümeleri için kullanılamıyor
 >
 
 ## <a name="reaching-microservices-from-outside-the-cluster"></a>Küme dışından mikro hizmetlere ulaşma
-Mikro hizmetler için varsayılan dış iletişim modeli, her bir hizmete doğrudan dış istemcilerden erişilemeyen bir katılım modelidir. Mikro hizmetler ve dış istemciler arasındaki bir ağ sınırı olan [Azure Load Balancer](../load-balancer/load-balancer-overview.md), ağ adresi çevirisi gerçekleştirir ve dış ISTEKLERI iç IP 'ye iletir: bağlantı noktası uç noktaları. Mikro hizmet uç noktasını dış istemciler için doğrudan erişilebilir hale getirmek için, önce Load Balancer, trafiği, hizmetin kümede kullandığı her bağlantı noktasına iletecek şekilde yapılandırmanız gerekir. Ayrıca, çoğu mikro hizmet, özellikle de durum bilgisi olan mikro hizmetler, kümenin tüm düğümlerinde etkin değildir. Mikro hizmetler, yük devretmede düğümler arasında hareket edebilir. Böyle durumlarda Load Balancer, trafiği iletmesi gereken çoğaltmaların hedef düğümünün konumunu etkin bir şekilde belirleyemez.
+Mikro hizmetler için varsayılan dış iletişim modeli, her hizmete doğrudan dış istemcilerden erişilemediği bir opt-in modelidir. Mikro hizmetler ve dış istemciler arasında bir ağ sınırı olan [Azure Yük Dengeleyici,](../load-balancer/load-balancer-overview.md)ağ adresi çevirisini gerçekleştirir ve dış istekleri dahili IP:port uç noktalarına iletir. Bir mikro hizmetin bitiş noktasını dış istemciler tarafından doğrudan erişilebilir hale getirmek için, öncelikle yükü hizmetin kümede kullandığı her bağlantı noktasına iletecek Şekilde Yük Dengeleyicisi'ni yapılandırmanız gerekir. Ayrıca, çoğu mikro hizmet, özellikle de devlete özel mikro hizmetler, kümenin tüm düğümlerinde yaşamaz. Mikro hizmetler, başarısız olundaki düğümler arasında hareket edebilir. Bu gibi durumlarda, Yük Dengeleyici, trafiği iletmesi gereken yinelemelerin hedef düğümünün konumunu etkili bir şekilde belirleyemez.
 
-### <a name="reaching-microservices-via-the-reverse-proxy-from-outside-the-cluster"></a>Küme dışından ters proxy aracılığıyla mikro hizmetlere ulaşma
-Load Balancer ' de tek bir hizmetin bağlantı noktasını yapılandırmak yerine, Load Balancer yalnızca ters proxy 'nin bağlantı noktasını yapılandırabilirsiniz. Bu yapılandırma, küme dışındaki istemcilerin ek yapılandırma gerektirmeden ters proxy 'yi kullanarak küme içindeki hizmetlere ulaşmasını sağlar.
+### <a name="reaching-microservices-via-the-reverse-proxy-from-outside-the-cluster"></a>Küme nin dışından ters proxy ile mikro hizmetlere ulaşma
+Yük Dengeleyici'de tek bir hizmetin bağlantı noktasını yapılandırmak yerine, Yük Dengeleyici'nde yalnızca ters proxy bağlantı noktasını yapılandırabilirsiniz. Bu yapılandırma, küme dışındaki istemcilerin ek yapılandırma olmadan ters proxy'yi kullanarak küme içindeki hizmetlere ulaşmasını sağlar.
 
 ![Dış iletişim][0]
 
 > [!WARNING]
-> Load Balancer ' de ters proxy 'nin bağlantı noktasını yapılandırdığınızda, kümedeki bir HTTP uç noktasını kullanıma sunan tüm mikro hizmetler, küme dışından adreslenemez. Diğer bir deyişle, mikro hizmetlerin iç olduğu, belirlenen kötü amaçlı kullanıcı tarafından bulunabilir olabileceği anlamına gelir. Bu potansiyel olarak yararlanılabilen ciddi güvenlik açıkları sunmaktadır. Örneğin:
+> Ters proxy'nin Yük Dengeleyicisi'ndeki bağlantı noktasını yapılandırırken, kümedeki bir HTTP bitiş noktasını ortaya çıkaran tüm mikro hizmetler kümenin dışından adreslenebilir. Bu, dahili olması amaçedilen mikro hizmetlerin kararlı bir kötü niyetli kullanıcı tarafından keşfedilebilir olduğu anlamına gelir. Bu, yararlanılabilen ciddi güvenlik açıkları sunar; örneğin:
 >
-> * Kötü niyetli bir Kullanıcı, yeterince sıkı bir saldırı yüzeyi olmayan bir iç hizmeti tekrar çağırarak bir hizmet reddi saldırısı başlatabilir.
-> * Kötü niyetli bir Kullanıcı, dahili bir hizmete hatalı oluşturulmuş paketler sunabilir ve bu durum istenmeden davranışa neden olabilir.
-> * İç olması amaçlanan bir hizmet, küme dışındaki hizmetlere sunulmayan özel veya hassas bilgileri döndürebilir ve bu nedenle bu hassas bilgileri kötü amaçlı bir kullanıcıya ortaya çıkarabiliriz. 
+> * Kötü niyetli bir kullanıcı, yeterince sertleştirilmiş bir saldırı yüzeyine sahip olmayan bir dahili hizmeti defalarca arayarak hizmet reddi saldırısı başlatabilir.
+> * Kötü amaçlı bir kullanıcı, istenmeyen davranışlarla sonuçlanan bozuk paketleri dahili bir hizmete sunabilir.
+> * Dahili olması gereken bir hizmet, küme dışındaki hizmetlere maruz kalması amaçlanmayan özel veya hassas bilgileri döndürerek bu hassas bilgileri kötü amaçlı bir kullanıcıya sunabilir. 
 >
-> Ters proxy bağlantı noktasını genel yapmadan önce kümeniz ve üzerinde çalışan uygulamalar için olası güvenlik kollerini tam olarak anladığınızdan ve azaltmanıza emin olun. 
+> Ters proxy bağlantı noktasını herkese açık hale getirmeden önce kümenizin ve üzerinde çalışan uygulamaların olası güvenlik sonuçlarını tam olarak anladığınızdan ve azaltladığınızdan emin olun. 
 >
 
 
-## <a name="uri-format-for-addressing-services-by-using-the-reverse-proxy"></a>Ters proxy 'yi kullanarak hizmetleri adresleme için URI biçimi
-Ters proxy, gelen isteğin iletilmesi gereken hizmet bölümünü belirlemek için belirli bir Tekdüzen Kaynak tanımlayıcısı (URI) biçimi kullanır:
+## <a name="uri-format-for-addressing-services-by-using-the-reverse-proxy"></a>Ters proxy kullanarak hizmetleri adresleme için URI biçimi
+Ters proxy, gelen isteğin iletilmesi gereken hizmet bölümlerini tanımlamak için belirli bir tek biçimli kaynak tanımlayıcısı (URI) biçimini kullanır:
 
 ```
 http(s)://<Cluster FQDN | internal IP>:Port/<ServiceInstanceName>/<Suffix path>?PartitionKey=<key>&PartitionKind=<partitionkind>&ListenerName=<listenerName>&TargetReplicaSelector=<targetReplicaSelector>&Timeout=<timeout_in_seconds>
 ```
 
-* **http (s):** Ters proxy, HTTP veya HTTPS trafiğini kabul edecek şekilde yapılandırılabilir. HTTPS iletimi için, HTTPS 'yi dinlemek üzere ters ara sunucu kurulumuna sahip olduğunuzda [ters ara sunucu ile güvenli bir hizmete bağlanma](service-fabric-reverseproxy-configure-secure-communication.md) bölümüne bakın.
-* **Küme tam etki alanı adı (FQDN) | Iç IP:** Dış istemciler için ters proxy 'yi, mycluster.eastus.cloudapp.azure.com gibi küme etki alanı üzerinden erişilebilmeleri için yapılandırabilirsiniz. Varsayılan olarak, ters proxy her düğümde çalışır. İç trafik için, ters ara sunucuya, localhost veya 10.0.0.1 gibi herhangi bir iç düğüm IP 'si üzerinden ulaşılanmış olabilir.
+* **http(ler):** Ters proxy HTTP veya HTTPS trafiğini kabul etmek üzere yapılandırılabilir. HTTPS iletme için, HTTPS'yi dinlemek için ters proxy kurulumu yaptıktan sonra [ters proxy ile güvenli bir hizmete bağlan'a](service-fabric-reverseproxy-configure-secure-communication.md) bakın.
+* **Küme tam nitelikli etki alanı adı (FQDN) | dahili IP:** Dış istemciler için, ters proxy'yi küme etki alanı üzerinden mycluster.eastus.cloudapp.azure.com gibi erişilebilen şekilde yapılandırabilirsiniz. Varsayılan olarak, ters proxy her düğümüzerinde çalışır. İç trafik için, ters proxy'ye localhost'ta veya 10.0.0.1 gibi herhangi bir iç düğüm IP'sinde ulaşılabilir.
 * **Bağlantı noktası:** Bu, ters proxy için belirtilen 19081 gibi bağlantı noktasıdır.
-* **ServiceInstanceName:** Bu, "Fabric:/" olmadan ulaşmaya çalıştığınız dağıtılan hizmet örneğinin tam adıdır Şemadaki. Örneğin, *dokunun:/MyApp/hizmetim/* Service 'e ulaşmak için *MyApp/hizmetim*kullanırsınız.
+* **ServiceInstanceName:** Bu, "kumaş:/" olmadan ulaşmaya çalıştığınız dağıtılan hizmet örneğinin tam nitelikli adıdır. Düzeni. Örneğin, kumaş ulaşmak *için:/myapp/myservice/service,* *myapp/myservice'i*kullanırsınız.
 
-    Hizmet örneği adı büyük/küçük harfe duyarlıdır. URL 'deki hizmet örneği adı için farklı bir büyük harf kullanılması, isteklerin 404 (bulunamadı) ile başarısız olmasına neden olur.
-* **Sonek yolu:** Bu, bağlanmak istediğiniz hizmetin *uygı/değer/ekleme/3*gıbı asıl URL yoludur.
-* **Partitionkey:** Bölümlenmiş bir hizmet için bu, ulaşmak istediğiniz bölümün hesaplanan bölüm anahtarıdır. Bunun bölüm KIMLIĞI GUID *'si olmadığına* unutmayın. Bu parametre, Singleton bölüm düzenini kullanan hizmetler için gerekli değildir.
-* **Partitionkind:** Bu, hizmet bölümü şemadır. Bu, ' Int64Range ' veya ' adlandırılmış ' olabilir. Bu parametre, Singleton bölüm düzenini kullanan hizmetler için gerekli değildir.
-* **Listenername** Hizmetten gelen uç noktalar {"endpoints": {"Listener1": "Endpoint1", "Listener2": "Endpoint2"...}} biçimindedir. Hizmet birden çok uç nokta kullanıma sunarsa, bu, istemci isteğinin iletilmesi gereken uç noktayı tanımlar. Bu, hizmetin yalnızca bir dinleyicisi varsa atlanabilir.
-* **Targetreplicaselector** Bu, hedef çoğaltmanın veya örneğin nasıl seçilmesi gerektiğini belirtir.
-  * Hedef hizmetin durum bilgisi olduğunda, TargetReplicaSelector aşağıdakilerden biri olabilir: ' PrimaryReplica ', ' Rasgelesecondaryreplica ' veya ' RandomReplica '. Bu parametre belirtilmediğinde, varsayılan değer ' PrimaryReplica ' olur.
-  * Hedef hizmet durum bilgisiz olduğunda, ters proxy, isteği iletmek için hizmet bölümünün rastgele bir örneğini seçer.
-* **Zaman aşımı:**  Bu, istemci isteği adına hizmete ters proxy tarafından oluşturulan HTTP isteğinin zaman aşımını belirtir. Varsayılan değer 60 saniyedir. Bu, isteğe bağlı bir parametredir.
+    Hizmet örneği adı büyük/küçük harf duyarlıdır. URL'de servis örneği adı için farklı bir kasa kullanılması, isteklerin 404 (Bulunamadı) ile başarısız olmasını neden olur.
+* **Sonek yolu:** Bu, bağlanmak istediğiniz hizmet için *myapi/values/add/3*gibi gerçek URL yoludur.
+* **PartitionKey:** Bölümlenmiş bir hizmet için bu, ulaşmak istediğiniz bölümün hesaplanmış bölüm anahtarıdır. Bunun bölüm kimliği GUID *olmadığını* unutmayın. Bu parametre, singleton bölümleme düzenini kullanan hizmetler için gerekli değildir.
+* **PartitionKind:** Bu hizmet bölümleme düzenidir. Bu 'Int64Range' veya 'Named' olabilir. Bu parametre, singleton bölümleme düzenini kullanan hizmetler için gerekli değildir.
+* **DinleyiciAdı** Hizmetten uç noktalar {"Endpoints":{"Listener1":"Endpoint1","Listener2":"Endpoint2" ...}} şeklindedir. Hizmet birden çok uç nokta ortaya çıktığında, bu istemci isteğinin iletilmesi gereken bitiş noktasını tanımlar. Hizmetin yalnızca bir dinleyicisi varsa bu atlanabilir.
+* **TargetReplicaSelector** Bu, hedef yinelemenin veya örneğin nasıl seçileceği belirtilir.
+  * Hedef hizmet durumlu olduğunda, TargetReplicaSelector aşağıdakilerden biri olabilir: 'PrimaryReplica', 'RandomSecondaryReplica', veya 'RandomReplica'. Bu parametre belirtilmediğinde, varsayılan 'PrimaryReplica' olur.
+  * Hedef hizmet durum siz olduğunda, ters proxy isteği iletmek için hizmet bölümü rasgele bir örnek seçer.
+* **Zaman araları:**  Bu, istemci isteği adına hizmete ters proxy tarafından oluşturulan HTTP isteği için zaman arasını belirtir. Varsayılan değer 60 saniyedir. Bu isteğe bağlı bir parametredir.
 
 ### <a name="example-usage"></a>Örnek kullanım
-Örnek olarak, aşağıdaki URL 'de bir HTTP dinleyicisi açan *doku:/MyApp/hizmetim* hizmetini ele alalım:
+Örnek olarak, aşağıdaki URL'de bir HTTP dinleyicisi açan kumaşı ele *alalım:/MyApp/MyService* hizmeti:
 
 ```
 http://10.0.0.5:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/
 ```
 
-Hizmetin kaynakları aşağıda verilmiştir:
+Hizmet için kaynaklar şunlardır:
 
 * `/index.html`
 * `/api/users/<userId>`
 
-Hizmet tekil bölümlendirme şemasını kullanıyorsa, *Partitionkey* ve *partitionkind* sorgu dizesi parametreleri gerekli değildir ve ağ geçidi şu şekilde kullanılarak hizmete ulaşılabilir:
+Hizmet singleton bölümleme düzenini kullanıyorsa, *PartitionKey* ve *PartitionKind* sorgu dize parametreleri gerekli değildir ve hizmet ağ geçidi kullanılarak ulaşılabilir:
 
-* Harici: `http://mycluster.eastus.cloudapp.azure.com:19081/MyApp/MyService`
-* Dahili olarak: `http://localhost:19081/MyApp/MyService`
+* Harici:`http://mycluster.eastus.cloudapp.azure.com:19081/MyApp/MyService`
+* Dahili:`http://localhost:19081/MyApp/MyService`
 
-Hizmet Tekdüzen Int64 bölümlendirme şemasını kullanıyorsa, bir hizmetin bölümüne ulaşmak için *Partitionkey* ve *partitionkind* sorgu dizesi parametreleri kullanılmalıdır:
+Hizmet, Uniform Int64 bölümleme düzenini kullanıyorsa, hizmetin bir bölümüne ulaşmak için *PartitionKey* ve *PartitionKind* sorgu dize parametreleri kullanılmalıdır:
 
-* Harici: `http://mycluster.eastus.cloudapp.azure.com:19081/MyApp/MyService?PartitionKey=3&PartitionKind=Int64Range`
-* Dahili olarak: `http://localhost:19081/MyApp/MyService?PartitionKey=3&PartitionKind=Int64Range`
+* Harici:`http://mycluster.eastus.cloudapp.azure.com:19081/MyApp/MyService?PartitionKey=3&PartitionKind=Int64Range`
+* Dahili:`http://localhost:19081/MyApp/MyService?PartitionKey=3&PartitionKind=Int64Range`
 
-Hizmetin sunduğu kaynaklara ulaşmak için, URL 'deki hizmet adından sonra kaynak yolunu yerleştirmeniz yeterlidir:
+Hizmetin ortaya çıkardığı kaynaklara ulaşmak için, kaynak yolunu hizmet adından sonra URL'ye yerleştirmemiz yeterlidir:
 
-* Harici: `http://mycluster.eastus.cloudapp.azure.com:19081/MyApp/MyService/index.html?PartitionKey=3&PartitionKind=Int64Range`
-* Dahili olarak: `http://localhost:19081/MyApp/MyService/api/users/6?PartitionKey=3&PartitionKind=Int64Range`
+* Harici:`http://mycluster.eastus.cloudapp.azure.com:19081/MyApp/MyService/index.html?PartitionKey=3&PartitionKind=Int64Range`
+* Dahili:`http://localhost:19081/MyApp/MyService/api/users/6?PartitionKey=3&PartitionKind=Int64Range`
 
-Ağ Geçidi daha sonra bu istekleri hizmetin URL 'sine iletir:
+Ağ geçidi daha sonra bu istekleri hizmetin URL'sine iletir:
 
 * `http://10.0.0.5:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/index.html`
 * `http://10.0.0.5:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/api/users/6`
 
-## <a name="special-handling-for-port-sharing-services"></a>Bağlantı noktası paylaşma Hizmetleri için özel işleme
-Ters proxy Service Fabric, bir hizmet adresini yeniden çözümlemeye çalışır ve bir hizmete ulaşılamadığında isteği yeniden dener. Genellikle, bir hizmete ulaşılamadığından, hizmet örneği veya çoğaltma, normal yaşam döngüsünün bir parçası olarak farklı bir düğüme taşınır. Bu durumda, ters proxy, bir uç noktanın artık özgün olarak çözümlenen adreste açık olmadığını belirten bir ağ bağlantı hatası alabilir.
+## <a name="special-handling-for-port-sharing-services"></a>Bağlantı noktası paylaşım hizmetleri için özel kullanım
+Hizmet Dokusu ters proxy bir hizmet adresini yeniden çözmek ve bir hizmete ulaşılamadığınızda isteği yeniden denemek için çalışır. Genellikle, bir hizmete ulaşılamıyorsa, hizmet örneği veya yineleme normal yaşam döngüsünün bir parçası olarak farklı bir düğüme taşınır. Bu durumda, ters proxy, özgün olarak çözülen adreste bir bitiş noktasının artık açık olmadığını belirten bir ağ bağlantısı hatası alabilir.
 
-Ancak, çoğaltmalar veya hizmet örnekleri bir konak işlemini paylaşabilir ve ayrıca, bir http. sys tabanlı Web sunucusu tarafından barındırıldığı sırada bir bağlantı noktası paylaşabilir, örneğin:
+Ancak, yinelemeler veya hizmet örnekleri bir ana bilgisayar işlemini paylaşabilir ve http.sys tabanlı bir web sunucusu tarafından barındırıldığında bir bağlantı noktasını da paylaşabilir:
 
-* [System .net. HttpListener](https://msdn.microsoft.com/library/system.net.httplistener%28v=vs.110%29.aspx)
-* [WebListener ASP.NET Core](https://docs.asp.net/latest/fundamentals/servers.html#weblistener)
+* [System.Net.HttpListener](https://msdn.microsoft.com/library/system.net.httplistener%28v=vs.110%29.aspx)
+* [ASP.NET Çekirdek WebListener](https://docs.asp.net/latest/fundamentals/servers.html#weblistener)
 * [Katana](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.OwinSelfHost/)
 
-Bu durumda, Web sunucusu ana bilgisayar işleminde kullanılabilir ve isteklere yanıt verebilir, ancak çözümlenen hizmet örneği veya çoğaltma artık konakta kullanılamıyor olabilir. Bu durumda, ağ geçidi Web sunucusundan bir HTTP 404 yanıtı alır. Bu nedenle, bir HTTP 404 yanıtı iki ayrı anlam içerebilir:
+Bu durumda, web sunucusuana bilgisayar işleminde ve isteklere yanıt verirken kullanılabilir, ancak çözümlenmiş hizmet örneği veya yineleme artık ana bilgisayarda kullanılamaz. Bu durumda, ağ geçidi web sunucusundan bir HTTP 404 yanıtı alır. Böylece, bir HTTP 404 yanıtı iki farklı anlamları olabilir:
 
-- Büyük/küçük harf #1: hizmet adresi doğru, ancak kullanıcının istediği kaynak yok.
-- Büyük/küçük harf #2: hizmet adresi hatalı ve kullanıcının istediği kaynak farklı bir düğümde bulunabilir.
+- Büyük/küçük harf #1: Servis adresi doğru, ancak kullanıcının istediği kaynak yok.
+- Büyük/#2: Servis adresi yanlıştır ve kullanıcının istediği kaynak farklı bir düğümüzerinde bulunabilir.
 
-İlk durum, bir kullanıcı hatası olarak kabul edilen normal bir HTTP 404 ' dir. Ancak, ikinci durumda Kullanıcı var olan bir kaynak istedi. Hizmetin kendisi taşındığı için ters proxy bunu bulamadı. Ters proxy 'nin adresi yeniden çözmesi ve isteği yeniden denemesi gerekiyor.
+İlk durumda bir kullanıcı hatası olarak kabul edilir normal bir HTTP 404, olduğunu. Ancak, ikinci durumda, kullanıcı var olan bir kaynak istedi. Ters proxy, hizmetin kendisi taşındığı için onu bulamadı. Ters proxy'nin adresi yeniden çözmesi ve isteği yeniden denemesi gerekir.
 
-Bu nedenle, ters proxy bu iki durum arasında ayrım yapmak için bir yol gerektirir. Bu ayrım yapmak için sunucudan bir ipucu gerekir.
+Ters proxy böylece bu iki durum arasında ayrım yapmak için bir yol gerekir. Bu ayrımı yapmak için sunucudan bir ipucu gereklidir.
 
-* Varsayılan olarak, ters proxy, büyük/küçük harfe #2 varsayar ve isteği yeniden çözmeye çalışır.
-* Ters ara sunucu için büyük/küçük harf #1 belirtmek için, hizmetin aşağıdaki HTTP yanıt üst bilgisini döndürmesi gerekir:
+* Varsayılan olarak, ters proxy büyük/#2 varsayar ve isteği yeniden çözmek ve vermek için çalışır.
+* Ters proxy'ye #1 büyük/#1 belirtmek için, hizmetaşağıdaki HTTP yanıt üstbilgisini döndürmelidir:
 
   `X-ServiceFabric : ResourceNotFound`
 
-Bu HTTP yanıt üst bilgisi, istenen kaynağın bulunmadığı normal bir HTTP 404 durumunu gösterir ve ters proxy, hizmet adresini yeniden çözümlemeyi denemez.
+Bu HTTP yanıt üstbilgisi, istenen kaynağın olmadığı normal bir HTTP 404 durumunu gösterir ve ters proxy hizmet adresini yeniden çözmeye çalışmaz.
 
-## <a name="special-handling-for-services-running-in-containers"></a>Kapsayıcılar üzerinde çalışan hizmetler için özel işleme
+## <a name="special-handling-for-services-running-in-containers"></a>Konteynerlerde çalışan hizmetler için özel taşıma
 
-Kapsayıcılar içinde çalışan hizmetler için, aşağıdaki kodda gösterildiği gibi, [ters proxy URL 'sini](#uri-format-for-addressing-services-by-using-the-reverse-proxy) oluşturmak için ortam değişkenini `Fabric_NodeIPOrFQDN` kullanabilirsiniz:
+Kapsayıcıların içinde çalışan hizmetler için, aşağıdaki `Fabric_NodeIPOrFQDN` kodda olduğu gibi [ters proxy URL'sini](#uri-format-for-addressing-services-by-using-the-reverse-proxy) oluşturmak için ortam değişkenini kullanabilirsiniz:
 
 ```csharp
     var fqdn = Environment.GetEnvironmentVariable("Fabric_NodeIPOrFQDN");
     var serviceUrl = $"http://{fqdn}:19081/DockerSFApp/UserApiContainer";
 ```
-Yerel küme için, `Fabric_NodeIPOrFQDN` varsayılan olarak "localhost" olarak ayarlanır. Kapsayıcıların düğüm üzerinde çalışan ters ara sunucuya ulaşabilmesi için `-UseMachineName` parametresiyle yerel kümeyi başlatın. Daha fazla bilgi için bkz. bir [Geliştirici ortamınızı kapsayıcılara hata ayıklama Için yapılandırma](service-fabric-how-to-debug-windows-containers.md#configure-your-developer-environment-to-debug-containers).
+Yerel küme için `Fabric_NodeIPOrFQDN` varsayılan olarak "localhost" olarak ayarlanır. Kapsayıcıların `-UseMachineName` düğüm üzerinde çalışan ters proxy'ye erişebileceğinden emin olmak için yerel kümeyi parametreyle başlatın. Daha fazla bilgi için, [kapsayıcıları hata ayıklamak için geliştirici ortamınızı yapılandır' ına](service-fabric-how-to-debug-windows-containers.md#configure-your-developer-environment-to-debug-containers)bakın.
 
-Docker Compose kapsayıcıları içinde çalışan Service Fabric Hizmetleri, özel bir Docker-Compose. yml *bağlantı noktaları bölümü* http: veya https: Configuration gerektirir. Daha fazla bilgi için bkz. [Azure Service Fabric Docker Compose dağıtım desteği](service-fabric-docker-compose.md).
+Docker Compose kapları içinde çalışan Service Fabric hizmetleri özel bir docker-compose.yml *Bağlantı Noktaları bölümü* ister http: veya https: yapılandırma. Daha fazla bilgi için [bkz.](service-fabric-docker-compose.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Bir kümede ters proxy ayarlayın ve yapılandırın](service-fabric-reverseproxy-setup.md).
-* [Ters ara sunucu ile güvenli HTTP hizmeti için yönlendirmeyi ayarlama](service-fabric-reverseproxy-configure-secure-communication.md)
+* [Küme üzerinde ters proxy'yi ayarlama ve yapılandırma.](service-fabric-reverseproxy-setup.md)
+* [TERS proxy ile HTTP hizmetini güvenli hale getirmek için yönlendirmeyi ayarlama](service-fabric-reverseproxy-configure-secure-communication.md)
 * [Ters proxy olaylarını tanılama](service-fabric-reverse-proxy-diagnostics.md)
-* [GitHub üzerinde örnek bir projede](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)bulunan HIZMETLER arasındaki HTTP iletişimi örneğini inceleyin.
-* [Reliable Services uzaktan iletişim ile uzak yordam çağrıları](service-fabric-reliable-services-communication-remoting.md)
-* [Reliable Services 'de OWıN kullanan Web API 'SI](service-fabric-reliable-services-communication-webapi.md)
-* [Reliable Services kullanarak WCF iletişimi](service-fabric-reliable-services-communication-wcf.md)
+* [GitHub'daki örnek](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)bir projedeki hizmetler arasındaki HTTP iletişimörneğine bakın.
+* [Güvenilir Hizmetler remoting ile uzaktan yordam çağrıları](service-fabric-reliable-services-communication-remoting.md)
+* [Güvenilir Hizmetlerde OWIN kullanan Web API'sı](service-fabric-reliable-services-communication-webapi.md)
+* [Güvenilir Hizmetler kullanarak WCF iletişimi](service-fabric-reliable-services-communication-wcf.md)
 
 [0]: ./media/service-fabric-reverseproxy/external-communication.png
 [1]: ./media/service-fabric-reverseproxy/internal-communication.png
