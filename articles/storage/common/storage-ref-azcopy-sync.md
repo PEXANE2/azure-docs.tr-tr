@@ -1,6 +1,6 @@
 ---
-title: AzCopy eşitleme | Microsoft Docs
-description: Bu makale AzCopy Sync komutu için başvuru bilgileri sağlar.
+title: azcopy senkronizasyon | Microsoft Dokümanlar
+description: Bu makalede, azcopy eşitleme komutu için referans bilgileri sağlar.
 author: normesta
 ms.service: storage
 ms.topic: reference
@@ -9,50 +9,50 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: 1bff46c8584934ab8bcffce74763edc8363533d6
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76988252"
 ---
 # <a name="azcopy-sync"></a>azcopy eşitleme
 
-Kaynak konumunu hedef konuma çoğaltır.
+Kaynak konumu hedef konuma kopyalar.
 
-## <a name="synopsis"></a>Özeti
+## <a name="synopsis"></a>Özet
 
-Son değiştirme zamanları karşılaştırma için kullanılır. Hedefteki son değiştirilme zamanı daha yeni ise dosya atlanır.
+Son değiştirilen saatler karşılaştırma için kullanılır. Hedefteki son değiştirilen süre daha yeniyse dosya atlanır.
 
 Desteklenen çiftler şunlardır:
 
-- Yerel < > Azure Blobu (SAS veya OAuth kimlik doğrulaması kullanılabilir)
-- Azure Blob <-> Azure Blob (kaynak bir SAS içermeli ya da genel olarak erişilebilir olmalıdır; hedef için SAS veya OAuth kimlik doğrulaması kullanılabilir)
-- Azure dosya <-> Azure dosyası (kaynak bir SAS içermeli veya genel olarak erişilebilir olmalıdır; Hedef için SAS kimlik doğrulaması kullanılmalıdır)
+- yerel < > Azure Blob (SAS veya OAuth kimlik doğrulaması kullanılabilir)
+- Azure Blob < > Azure Blob (Kaynak bir SAS içermelidir veya herkese açık; Hedef için SAS veya OAuth kimlik doğrulaması kullanılabilir)
+- Azure Dosyası < > Azure Dosyası (Kaynak bir SAS içermelidir veya herkese açık olmalıdır; Hedef için SAS kimlik doğrulaması kullanılmalıdır)
 
-Eşitle komutu kopyalama komutundan farklı yollarla farklılık gösterir:
+Eşitleme komutu kopyalama komutundan çeşitli şekillerde farklıdır:
 
-1. Varsayılan olarak, özyinelemeli bayrak true olur ve tüm alt dizinleri eşitler. Eşitleme yalnızca özyinelemeli bayrak false ise, en üst düzey dosyaları bir dizin içinde kopyalar.
-2. Sanal dizinler arasında eşitleme yaparken, bir sanal dizinle aynı ada sahip bir blob varsa yola bir sondaki eğik çizgi ekleyin (örneklere bakın).
-3. ' DeleteDestination ' bayrağı true ya da Prompt olarak ayarlandıysa, eşitleme, hedefteki dosyaları ve Blobları kaynakta mevcut olmayan şekilde siler.
+1. Varsayılan olarak, özyinelemeli bayrak doğrudur ve tüm alt dizinleri eşitler. Özyinelemeli bayrak yanlışsa, yalnızca dizin içindeki üst düzey dosyaları eşitleme.
+2. Sanal dizinler arasında eşitleme yaparken, sanal dizinlerden biriyle aynı ada sahip bir leke varsa, yola bir çizgi ekleyin (örneklere bakın).
+3. 'DeleteDestination' bayrağı doğru veya istemi olarak ayarlanmışsa, eşitleme kaynağında bulunmayan hedefteki dosyaları ve lekeleri siler.
 
 ## <a name="related-conceptual-articles"></a>İlgili kavramsal makaleler
 
-- [AzCopy ile çalışmaya başlama](storage-use-azcopy-v10.md)
-- [AzCopy ve BLOB Storage ile veri aktarma](storage-use-azcopy-blobs.md)
-- [AzCopy ve dosya depolama ile veri aktarma](storage-use-azcopy-files.md)
-- [AzCopy 'i yapılandırma, iyileştirme ve sorun giderme](storage-use-azcopy-configure.md)
+- [AzCopy’yi kullanmaya başlama](storage-use-azcopy-v10.md)
+- [AzCopy ve Blob depolama ile veri aktarımı](storage-use-azcopy-blobs.md)
+- [AzCopy ve dosya depolama ile veri aktarımı](storage-use-azcopy-files.md)
+- [AzCopy'i yapılandırma, en iyi duruma getirme ve sorun giderme](storage-use-azcopy-configure.md)
 
 ### <a name="advanced"></a>Gelişmiş
 
-Bir dosya uzantısı belirtmezseniz, AzCopy dosya uzantısına veya içeriğe (uzantı belirtilmediyse) göre yerel diskten karşıya yüklenirken dosyaların içerik türünü otomatik olarak algılar.
+Bir dosya uzantısı belirtmezseniz, AzCopy dosya uzantısıveya içeriğe bağlı olarak yerel diskten yükleme yaparken dosyaların içerik türünü otomatik olarak algılar (uzantı belirtilmemişse).
 
-Yerleşik arama tablosu küçüktür, ancak UNIX üzerinde, bu adlardan biri veya birkaçı altında varsa, yerel sistemin MIME. Types dosyaları tarafından Genişletilebilir:
+Yerleşik arama tablosu küçüktür, ancak Unix'te, bu adlardan biri veya birkaçı altında varsa yerel sistemin mim.types dosyası(lar) tarafından artırılır:
 
-- /etc/Mime.exe
+- /etc/mime.types
 - /etc/apache2/mime.types
 - /etc/apache/mime.types
 
-Windows 'da MIME türleri kayıt defterinden ayıklanır.
+Windows'da MIME türleri kayıt defterinden ayıklanır.
 
 ```azcopy
 azcopy sync <source> <destination> [flags]
@@ -60,108 +60,108 @@ azcopy sync <source> <destination> [flags]
 
 ## <a name="examples"></a>Örnekler
 
-Tek bir dosyayı eşitleyin:
+Tek bir dosyayı eşitleme:
 
 ```azcopy
 azcopy sync "/path/to/file.txt" "https://[account].blob.core.windows.net/[container]/[path/to/blob]"
 ```
 
-Yukarıdaki gibi, ancak bu kez dosya içeriğinin MD5 karmasını de hesaplar ve BLOB 'un Content-MD5 özelliği olarak kaydeder:
+Yukarıdaki gibi, ama bu kez, aynı zamanda dosya içeriğinin MD5 karma hesap ve blob İçerik-MD5 özelliği olarak kaydedin:
 
 ```azcopy
 azcopy sync "/path/to/file.txt" "https://[account].blob.core.windows.net/[container]/[path/to/blob]" --put-md5
 ```
 
-Tüm dizini alt dizinleriyle birlikte eşitleyin (özyinelemeli, varsayılan olarak açık olduğunu unutmayın):
+Alt dizinlerini içeren tüm dizinleri eşitleme (özyinelemenin varsayılan olarak açık olduğunu unutmayın):
 
 ```azcopy
 azcopy sync "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]"
 ```
 
-veya
+or
 
 ```azcopy
 azcopy sync "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]" --put-md5
 ```
 
-Yalnızca bir dizinin içindeki en üstteki dosyaları eşitleyin, ancak alt dizinlerini değil:
+Yalnızca bir dizin içindeki en iyi dosyaları eşitleyin, ancak alt dizinlerini eşitlemeyin:
 
 ```azcopy
 azcopy sync "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]" --recursive=false
 ```
 
-Dizindeki dosyaların bir alt kümesini eşitleyin (örneğin: yalnızca jpg ve PDF dosyaları Için veya dosya adı "exactName" ise):
+Bir dizindeki dosyaların bir alt kümesini eşitleyin (Örneğin: yalnızca jpg ve pdf dosyaları veya dosya adı "exactName" ise):
 
 ```azcopy
 azcopy sync "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]" --include="*.jpg;*.pdf;exactName"
 ```
 
-Bir dizinin tamamını eşitleyin, ancak belirli dosyaları kapsamdan dışlayın (örneğin: Foo ile başlayan her dosya ve çubukla biter):
+Tüm dizineşitle, ancak belirli dosyaları kapsamdan hariç tut (Örneğin: foo ile başlayan veya çubukla biten her dosya):
 
 ```azcopy
 azcopy sync "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]" --exclude="foo*;*bar"
 ```
 
-Tek bir blobu eşitleme:
+Tek bir lekeyi eşitle:
 
 ```azcopy
 azcopy sync "https://[account].blob.core.windows.net/[container]/[path/to/blob]?[SAS]" "https://[account].blob.core.windows.net/[container]/[path/to/blob]"
 ```
 
-Sanal bir dizini Eşitle:
+Sanal dizini eşitleme:
 
 ```azcopy
 azcopy sync "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]?[SAS]" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]" --recursive=true
 ```
 
-Aynı ada sahip bir sanal dizini blob ile eşitleyin (belirsizliği ortadan kaldırmak için yola eğik çizgi ekleyin):
+Bir blob ile aynı ada sahip sanal bir dizin eşitleme (ayrıştırmak için yola bir çizgi ekleme):
 
 ```azcopy
 azcopy sync "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]/?[SAS]" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]/" --recursive=true
 ```
 
-Bir Azure dosya dizinini eşitleme (blob ile aynı söz dizimi):
+Azure Dosya dizini (Blob ile aynı sözdizimi):
 
 ```azcopy
 azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]" "https://[account].file.core.windows.net/[share]/[path/to/dir]" --recursive=true
 ```
 
 > [!NOTE]
-> Dahil etme/hariç tutma bayrakları birlikte kullanılırsa, yalnızca içerme desenleriyle eşleşen dosyalar aranabilir, ancak dışlama desenleriyle eşleşen dosyalar her zaman yok sayılır.
+> Ekle/hariç bayraklar birlikte kullanılırsa, yalnızca dahil desenleriyle eşleşen dosyalara bakılır, ancak dışlama desenleri eşleşen dosyalar her zaman yoksayılır.
 
 ## <a name="options"></a>Seçenekler
 
-**--blok-boyut-MB** float, Azure depolama 'ya yükleme yaparken veya Azure Storage 'dan indirerek bu blok boyutunu (MIB 'de belirtilir) kullanır. Varsayılan değer, dosya boyutuna göre otomatik olarak hesaplanır. Ondalık kesirlere izin verilir (örneğin: 0,25).
+**--block-size-mb** float Azure Depolama'ya yüklerken veya Azure Depolama'dan indirirken bu blok boyutunu (MiB'de belirtilir) kullanın. Varsayılan, dosya boyutuna göre otomatik olarak hesaplanır. Ondalık kesirlere izin verilir (Örneğin: 0.25).
 
-**--Check-MD5** dizesi, indirme sırasında ne kadar MD5 karmalarının doğrulanması gerektiğini belirtir. Bu seçenek yalnızca indirme sırasında kullanılabilir. Kullanılabilir değerler şunlardır: NoCheck, LogOnly, Failiffarklı, Failiffarklıentormissing. (varsayılan ' Failiffarklı '). (varsayılan "Failiffarklı")
+**--check-md5** dizesi İndirilirken MD5 hashes'in ne kadar kesin olarak doğrulanması gerektiğini belirtir. Bu seçenek yalnızca indirirken kullanılabilir. Kullanılabilir değerler şunlardır: NoCheck, LogOnly, FailIfDifferent, FailIfDifferentOrMissing. (varsayılan 'FailIfDifferent'). (varsayılan "FailIfDifferent")
 
-**--Delete-Destination** dizesi, kaynakta mevcut olmayan hedefe ait ek dosyaların silinip oluşturulmayacağını tanımlar. True, false veya Prompt olarak ayarlanabilir. Sor olarak ayarlandıysa, kullanıcıya dosyaları ve Blobları silmeye başlamadan önce bir soru sorulur. (varsayılan ' false '). (varsayılan "false")
+**--delete-destination** string Kaynakta bulunmayan hedeften ek dosyaların silinip silinmeyeceğini tanımlar. Doğru, yanlış veya istemi ayarlanabilir. İstem için ayarlanırsa, kullanıcıya silme için dosya ve blobs zamanlamadan önce bir soru sorulur. (varsayılan 'false'). (varsayılan "false")
 
-**--exclude-Attributes** dizesi (yalnızca Windows) öznitelikleri öznitelik listesiyle eşleşen dosyaları hariç tutar. Örneğin: A; Malar Sağ
+**--öznitelik dizesini dışla (Yalnızca** Windows) Öznitelikleri öznitelik listesiyle eşleşen dosyaları hariç tut. Örneğin: A; S; R
 
-**--exclude-yol** dizesi kopyalama sırasında bu yolları hariç tutar. Bu seçenek joker karakterleri (*) desteklemez. Göreli yol önekini denetler (örneğin: myFolder; myFolder/subDirName/File. PDF). Hesap çapraz geçiş ile birlikte kullanıldığında, yollar kapsayıcı adını içermez.
+**--exclude-path** string Kopyalanırken bu yolları hariç tut. Bu seçenek joker karakter (*) desteklemez. Göreli yol önekini denetler (Örneğin: myFolder;myFolder/subDirName/file.pdf). Hesap geçişi ile birlikte kullanıldığında, yollar kapsayıcı adını içermez.
 
-**--exclude-model** dize, adın model listesiyle eşleştiği dosyaları hariç tutar. Örneğin: \*. jpg;\*. PDF; exactName
+**--desen dizesini dışla,** adın desen listesiyle eşleştiği dosyaları hariç tut. Örneğin: \*.jpg; \*.pdf;exactName
 
-**-h,--** eşitleme için yardım yardımı
+**-h, --senkronizasyon** için yardım
 
-**--Include-Attributes** dizesi (yalnızca Windows) öznitelikleri öznitelik listesiyle eşleşen dosyaları içerir. Örneğin: A; Malar Sağ
+**--include-öznitelikler** dizesi (yalnızca Windows) Yalnızca öznitelikleri öznitelik listesiyle eşleşen dosyaları ekleyin. Örneğin: A; S; R
 
-**--Include-model** dize yalnızca adı, model listesiyle eşleşen dosyaları içerir. Örneğin: \*. jpg;\*. PDF; exactName
+**--include-desen dizesi** Yalnızca adın desen listesiyle eşleştiği dosyaları ekleyin. Örneğin: \*.jpg; \*.pdf;exactName
 
-**--günlük düzeyi** dize günlük dosyası, kullanılabilir düzeyler: bilgi (tüm istekler ve yanıtlar), uyarı (yavaş yanıtlar), hata (yalnızca başarısız istekler) ve hiçbiri (çıktı günlüğü yok) için günlük ayrıntı düzeylerini tanımlar. (varsayılan BILGI). (varsayılan "BILGI")
+**--günlük düzeyi** dizesi Günlük dosyasının günlük ayrıntılılığını, kullanılabilir düzeyleri: INFO(tüm istek ve yanıtlar), UYARI(yavaş yanıtlar), HATA (yalnızca başarısız istekler) ve NONE(çıkış günlüğü yok) olarak tanımlayın. (varsayılan BİlGİ). (varsayılan "BİlGİ")
 
-**--PUT-MD5**                     Her bir dosyanın MD5 karmasını oluşturun ve karmayı hedef Blobun veya dosyanın Content-MD5 özelliği olarak kaydedin. (Varsayılan olarak, karma oluşturulmaz.) Yalnızca karşıya yükleme sırasında kullanılabilir.
+**--put-md5**                     Her dosyanın bir MD5 karma sını oluşturun ve karmayı hedef blob veya dosyanın İçerik-MD5 özelliği olarak kaydedin. (Varsayılan olarak karma oluşturulmadı.) Yalnızca yükleme yaparken kullanılabilir.
 
-**--özyinelemeli**                   Varsayılan olarak, dizinler arasında eşitleme yaparken alt dizinlere yinelemeli olarak bakın. (varsayılan doğru). (varsayılan doğru)
+**--özyinelemeli**                   Varsayılan olarak doğru, dizinler arasında eşitleme yaparken alt dizinlere özyinelemeli olarak bakın. (varsayılan true). (varsayılan true)
 
 ## <a name="options-inherited-from-parent-commands"></a>Üst komutlardan devralınan seçenekler
 
 |Seçenek|Açıklama|
 |---|---|
-|--Cap-Mbps uint32|Saniye başına megabit cinsinden aktarım hızının üst sınırı. Kısa süre içinde işlem hacmi büyük bir farklılık gösterebilir. Bu seçenek sıfır olarak ayarlandıysa veya atlanırsa, üretilen iş işleme alınır.|
-|--çıkış türü dize|Komutun çıktısının biçimi. Seçenekler şunlardır: Text, JSON. Varsayılan değer "Text" değeridir.|
+|--kap-mbps uint32|Transfer hızını saniyede megabit olarak kaplar. Anlık iş artışı kapaktan biraz farklı olabilir. Bu seçenek sıfıra ayarlanmışsa veya atlanırsa, iş elde etme kapaklı değildir.|
+|--çıkış türü dize|Komutçıktısının biçimi. Seçenekler şunlardır: metin, json. Varsayılan değer "metin"dir.|
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-- [AzCopy](storage-ref-azcopy.md)
+- [azcopy](storage-ref-azcopy.md)

@@ -1,6 +1,6 @@
 ---
-title: Azure Izleyici çalışma kitapları erişim denetimi
-description: Rol tabanlı erişim denetimi ile önceden oluşturulmuş ve özel parametreli çalışma kitapları ile karmaşık raporlamayı kolaylaştırın
+title: Azure Monitör Çalışma Kitapları erişim denetimi
+description: Role dayalı erişim denetimine sahip önceden oluşturulmuş ve özel parametreli çalışma kitaplarıyla karmaşık raporlamayı basitleştirin
 services: azure-monitor
 author: mrbullwinkle
 manager: carmonm
@@ -10,35 +10,35 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
 ms.openlocfilehash: 20116ab105e4eb12875ba3cb279fb261eb5c70e4
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77658430"
 ---
 # <a name="access-control"></a>Erişim denetimi
 
-Çalışma kitaplarında erişim denetimi iki şeyi ifade eder:
+Çalışma kitaplarındaki erişim denetimi iki şeyi ifade eder:
 
-* Çalışma kitabındaki verileri okumak için erişim gerekiyor. Bu erişim, çalışma kitabında kullanılan kaynaklarda standart [Azure rolleri](https://docs.microsoft.com/azure/role-based-access-control/overview) tarafından denetlenir. Çalışma kitapları, bu kaynaklara erişim belirtmez veya yapılandırmaz. Kullanıcılar bu kaynaklara genellikle bu kaynaklara ait [Izleme okuyucu](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) rolünü kullanarak bu kaynaklara erişir.
+* Çalışma kitabındaki verileri okumak için erişim gereklidir. Bu erişim, çalışma kitabında kullanılan kaynaklardaki standart [Azure rolleri](https://docs.microsoft.com/azure/role-based-access-control/overview) tarafından denetlenir. Çalışma kitapları bu kaynaklara erişimi belirtmez veya yapılandırmaz. Kullanıcılar genellikle bu kaynaklardaki İzleme [Okuyucurolünü](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) kullanarak bu kaynaklara bu erişimi elde eder.
 
-* Çalışma kitaplarını kaydetmek için erişim gerekli
+* Çalışma kitaplarını kaydetmek için gereken erişim
 
-    - Özel `("My")` çalışma kitaplarını kaydetmek ek ayrıcalıklar gerektirmez. Tüm kullanıcılar özel çalışma kitaplarını kaydedebilir ve yalnızca bu çalışma kitaplarını görebilirler.
-    - Paylaşılan çalışma kitaplarını kaydetme, çalışma kitabını kaydetmek için bir kaynak grubunda yazma ayrıcalıkları gerektirir. Bu ayrıcalıklar genellikle [Izleme katılımcısı](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) rolü tarafından belirtilir, ancak *çalışma kitaplarının katkıda* bulunan rolü aracılığıyla da ayarlanabilir.
+    - Özel `("My")` çalışma kitaplarını kaydetmek için ek ayrıcalıklar gerektirmez. Tüm kullanıcılar özel çalışma kitaplarını kaydedebilir ve bu çalışma kitaplarını yalnızca onlar görebilir.
+    - Paylaşılan çalışma kitaplarını kaydetmek için bir kaynak grubunda yazma ayrıcalıkları gerektirir. Bu ayrıcalıklar genellikle [İzleme Katılımcısı](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) rolü yle belirtilir, ancak *Workbooks Katılımcısıfatı* rolü yle de ayarlanabilir.
     
-## <a name="standard-roles-with-workbook-related-privileges"></a>Çalışma kitabıyla ilgili ayrıcalıklar içeren standart roller
+## <a name="standard-roles-with-workbook-related-privileges"></a>Çalışma kitabıyla ilgili ayrıcalıklara sahip standart roller
 
-[Izleme okuyucu](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) , kaynaklardan verileri okumak için izleme araçları (çalışma kitapları dahil) tarafından kullanılan standart/Read ayrıcalıklarını içerir.
+[İzleme Okuyucusu,](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) kaynaklardan gelen verileri okumak için izleme araçları (çalışma kitapları dahil) tarafından kullanılacak standart /okuma ayrıcalıklarını içerir.
 
-[Katkıda](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) bulunanı izlemek, öğeleri kaydetmek için çeşitli izleme araçları tarafından kullanılan genel `/write` ayrıcalıklarını içerir (paylaşılan çalışma kitaplarını kaydetmek için `workbooks/write` ayrıcalığına dahil).
-"Çalışma kitapları katılımcısı" paylaşılan çalışma kitaplarını kaydetmek için bir nesneye "çalışma kitapları/yazma" ayrıcalıklarını ekler.
-Kullanıcıların yalnızca görebileceği özel çalışma kitaplarını kaydedebilmeleri için özel ayrıcalıklar gerekmez.
+[İzleme](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) Katılımcısı, `/write` öğeleri kaydetmek için çeşitli izleme araçları tarafından `workbooks/write` kullanılan genel ayrıcalıkları içerir (paylaşılan çalışma kitaplarını kaydetme ayrıcalığı dahil).
+"Çalışma Kitapları Katılımcısı", paylaşılan çalışma kitaplarını kaydetmek için bir nesneye "çalışma kitapları/yazma" ayrıcalıkları ekler.
+Kullanıcıların yalnızca onların görebileceği özel çalışma kitaplarını kaydetmesi için özel ayrıcalıklar gerekmez.
 
-Özel rol tabanlı erişim denetimi için:
+Özel Rol tabanlı erişim denetimi için:
 
-Paylaşılan çalışma kitaplarını kaydetmek için `microsoft.insights/workbooks/write` ekleyin. Daha ayrıntılı bilgi için bkz. [çalışma kitabı katılımcısı](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) rolü.
+Paylaşılan `microsoft.insights/workbooks/write` çalışma kitaplarını kaydetmek için ekleyin. Daha fazla bilgi için [Çalışma Kitabı Katılımcısı](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) rolüne bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Çok sayıda zengin görselleştirmeler seçeneği hakkında daha fazla [bilgi edinmeye başlayın](workbooks-visualizations.md) .
+* Çalışma kitapları hakkında daha fazla bilgi [edinmeye başlayın](workbooks-visualizations.md) birçok zengin görselleştirme seçeneği.

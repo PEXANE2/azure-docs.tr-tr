@@ -1,7 +1,7 @@
 ---
-title: Video Indexer dil modelini özelleştirme-Azure
+title: Video Dizinleyici'de Dil modelini özelleştirme - Azure
 titleSuffix: Azure Media Services
-description: Bu makale, Video Indexer dil modeli nedir ve özelleştirmeyi özelleştirmek için bir genel bakış sunar.
+description: Bu makalede, Video Indexer'da Dil modelinin ne olduğu ve nasıl özelleştirilene ilgili genel bir bakış yer almaktadır.
 services: media-services
 author: anikaz
 manager: johndeu
@@ -11,37 +11,37 @@ ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
 ms.openlocfilehash: b096b9352be65033f2fb782b118e815dc16b43b6
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73838312"
 ---
-# <a name="customize-a-language-model-with-video-indexer"></a>Video Indexer bir dil modelini özelleştirme
+# <a name="customize-a-language-model-with-video-indexer"></a>Video Dizinleyici ile Dil modelini özelleştirme
 
-Video Indexer, Microsoft [özel konuşma tanıma hizmeti](https://azure.microsoft.com/services/cognitive-services/custom-speech-service/)ile tümleştirme yoluyla otomatik konuşma tanımayı destekler. Dil modelini uyarlama metnini karşıya yükleyerek özelleştirebilirsiniz. Bu, alt yapısının benzediğini istediğiniz etki alanından metin. Modelinize bir kez eğtikten sonra, uyarlama metninde görüntülenen yeni kelimeler tanınacaktır, bu, varsayılan telaffuz varsayıldığında ve dil modelinin yeni olası sözcük dizilerini öğrenmesi gerekir. Özel dil modelleri Ingilizce, Ispanyolca, Fransızca, Almanca, Italyanca, Çince (Basitleştirilmiş), Japonca, Rusça, Portekizce (Brezilya), Hintçe ve Korece için desteklenir. 
+Video Indexer, Microsoft Özel Konuşma [Hizmeti](https://azure.microsoft.com/services/cognitive-services/custom-speech-service/)ile tümleştirme yoluyla otomatik konuşma tanımayı destekler. Uyarlama metnini, yani sözcük dağarcığının dishaline uyum sağlamasını istediğiniz etki alanından metin yükleyerek Dil modelini özelleştirebilirsiniz. Modelinizi eğittikten sonra, uyarlama metninde görünen yeni sözcükler varsayılan telaffuzunu varsayarak tanınacak ve Dil modeli yeni olası sözcük dizilerini öğrenir. Özel Dil modelleri İngilizce, İspanyolca, Fransızca, Almanca, İtalyanca, Çince (Basitleştirilmiş), Japonca, Rusça, Brezilya Portekizcesi, Hintçe ve Korece için desteklenir. 
 
-Örnek olarak, "Kubernetes" (Azure Kubernetes hizmeti bağlamında) gibi yüksek ölçüde özgü bir sözcük alalım. Word Video Indexer yeni bir değer olduğundan, "Topluluklar" olarak tanınır. Modeli, "Kubernetes" olarak tanımak için eğmeniz gerekir. Diğer durumlarda, kelimeler vardır ancak dil modeli, belirli bir bağlamda görünmesini beklemiyordu. Örneğin, "kapsayıcı hizmeti", özel olmayan bir dil modelinin belirli bir sözcük kümesi olarak tanıyacağı 2 sözcüklü bir dizi değildir.
+Örnek olarak "Kubernetes" (Azure Kubernetes hizmeti bağlamında) gibi son derece özel bir kelimeyi ele alalım. Kelime Video Indexer için yeni olduğundan, "topluluklar" olarak kabul edilmektedir. Modeli "Kubernetes" olarak tanıması için eğitmelisin. Diğer durumlarda, sözcükler var, ancak Dil modeli bunların belirli bir bağlamda görünmesini beklemiyor. Örneğin, "kapsayıcı hizmeti" özel olmayan bir Dil modelinin belirli bir sözcük kümesi olarak tanıyacağı 2 sözcüklü bir dizi değildir.
 
-Metin dosyasındaki bir listede bağlam olmadan sözcük yükleme seçeneğiniz vardır. Bu, kısmi uyarlama olarak değerlendirilir. Alternatif olarak, daha iyi bir uyarlama için içeriklerinize ilişkin belge veya Tümcelerin metin dosyalarını karşıya yükleyebilirsiniz.
+Metin dosyasındaki bir listede bağlam olmadan sözcükler yükleme seçeneğiniz vardır. Bu kısmi adaptasyon olarak kabul edilir. Alternatif olarak, daha iyi uyarlama için içeriğiniz ile ilgili belgelerin veya cümlelerin metin dosyasını(lar) yükleyebilirsiniz.
 
-Video Indexer API 'Leri veya Web sitesini, bu konunun [sonraki adımlar](#next-steps) bölümündeki konular bölümünde açıklandığı gibi özel dil modelleri oluşturmak ve düzenlemek için kullanabilirsiniz.
+Video Dizinleyici API'lerini veya web sitesini, bu konunun [Sonraki adımlar](#next-steps) bölümünde açıklandığı gibi özel Dil modelleri oluşturmak ve bunları yeniden oluşturmak için kullanabilirsiniz.
 
-## <a name="best-practices-for-custom-language-models"></a>Özel dil modelleri için en iyi uygulamalar
+## <a name="best-practices-for-custom-language-models"></a>Özel Dil modelleri için en iyi uygulamalar
 
-Video Indexer, en iyi şekilde bilgi edinmek için, sözcük birleşimlerinin olasılıklarına göre öğreniyor:
+Video Indexer sözcük kombinasyonları olasılıklarına göre öğrenir, böylece en iyi öğrenmek için:
 
-* Söyleyecek kadar gerçek tümceler örneği sağlayın.
-* Satır başına yalnızca bir cümle koyun, daha fazlasını yapın. Aksi takdirde sistem cümleler genelinde olasılıkların öğrenmesine sahip olur.
-* Kelimeyi diğerlerine karşı artırmak için bir sözcük olarak bir kelime koymak normaldir, ancak sistem tam cümlelerden en iyi şekilde öğrenir.
-* Mümkünse, yeni sözcüklere veya kısaltmaya giriş yaparken, sisteme mümkün olduğunca fazla bağlam sağlamak için tam bir tümcede birçok kullanım örneği verin.
-* Birkaç uyarlama seçeneği koymaya çalışın ve nasıl çalıştığını görün.
-* Aynı cümlenin aynısını birden çok kez tekrarlamayı önleyin. Girişin geri kalanına göre sapma oluşturabilir.
-* Seyrek görülen sembolleri (~, # @% &) atıldıklarından hariç kullanmayın. Göründükleri tümceler da atılır.
-* Yüz binlerce cümle gibi çok büyük girişler yerleştirmekten kaçının, ancak bunu yapmak, artırma etkisini de desteklenecektir.
+* Konuşulan cümlelerin yeterince gerçek örneklerini verin.
+* Satır başına sadece bir cümle koy, daha fazla değil. Aksi takdirde sistem cümleler arasında olasılıkları öğrenir.
+* Bu başkalarına karşı kelime artırmak için bir cümle olarak bir kelime koymak tamam, ama sistem tam cümleler en iyi öğrenir.
+* Yeni sözcükler veya kısaltmalar tanıtırken, mümkünse, sisteme mümkün olduğunca çok bağlam vermek için tam bir cümlede birçok kullanım örneği verin.
+* Birkaç adaptasyon seçeneği koymayı deneyin ve sizin için nasıl çalıştıklarını görün.
+* Aynı cümlenin birden çok kez tekrarını önlemek. Bu girdinin geri kalanına karşı önyargı oluşturabilir.
+* Onlar atılır alırsınız gibi nadir olmayan semboller (~, # @ &) dahil kaçının. Göründükleri cümleler de atılır.
+* Yüz binlerce cümle gibi çok büyük girdiler koymaktan kaçının, çünkü bunu yapmak artırmanın etkisini sulandıracaktır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[API 'Leri kullanarak dil modelini özelleştirme](customize-language-model-with-api.md)
+[API'leri kullanarak Dil modelini özelleştir](customize-language-model-with-api.md)
 
-[Dil modelini Web sitesini kullanarak özelleştirme](customize-language-model-with-website.md)
+[Web sitesini kullanarak Dil modelini özelleştir](customize-language-model-with-website.md)

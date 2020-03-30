@@ -1,6 +1,6 @@
 ---
-title: Karma makineleri Azure 'a ölçeklendirmeye bağlama
-description: Bu makalede, hizmet sorumlusu kullanarak sunucular için Azure Arc (Önizleme) kullanarak makineleri Azure 'a bağlamayı öğreneceksiniz.
+title: Karma makineleri azure'a ölçekte bağlayın
+description: Bu makalede, bir hizmet ilkesi ni kullanarak sunucular için Azure Arc 'ı kullanarak makineleri Azure'a nasıl bağacağınızı (önizleme) öğrenirsiniz.
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-servers
@@ -9,35 +9,35 @@ ms.author: magoedte
 ms.date: 02/04/2020
 ms.topic: conceptual
 ms.openlocfilehash: 3a19dc019d2566ddddb2c0ba7988b342d30a45d4
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77192278"
 ---
-# <a name="connect-hybrid-machines-to-azure-at-scale"></a>Karma makineleri Azure 'a ölçeklendirmeye bağlama
+# <a name="connect-hybrid-machines-to-azure-at-scale"></a>Karma makineleri azure'a ölçekte bağlayın
 
-Gereksinimlerinize bağlı olarak çeşitli esnek seçeneklerle ortamınızda birden çok Windows veya Linux makinesi için sunucu (Önizleme) için Azure yayı 'yi etkinleştirebilirsiniz. Sağladığımız şablon betiğini kullanarak, Azure Arc bağlantısı kurulması da dahil olmak üzere, yüklemenin her adımını otomatikleştirebiliriz. Bununla birlikte, bu betiği, hedef makinede ve Azure 'da yükseltilmiş izinlere sahip bir hesapla etkileşimli olarak yürütmeniz gerekir. Makineleri sunucular için Azure yaya bağlamak için, [makineyi etkileşimli olarak bağlamak](onboard-portal.md)üzere ayrıcalıklı kimliğinizi kullanmak yerine bir Azure Active Directory [hizmet sorumlusu](../../active-directory/develop/app-objects-and-service-principals.md) kullanabilirsiniz. Hizmet sorumlusu, yalnızca `azcmagent` komutunu kullanarak makineleri Azure 'a bağlamak için gereken en düşük izne sahip özel sınırlı bir yönetim kimliğidir. Bu, Kiracı Yöneticisi gibi daha yüksek ayrıcalıklı bir hesap kullanmaktan daha güvenlidir ve erişim denetimi güvenliği en iyi yöntemlerimizi izler. Hizmet sorumlusu yalnızca ekleme sırasında kullanılır, başka bir amaçla kullanılmaz.  
+Gereksinimlerinize bağlı olarak çeşitli esnek seçeneklerle ortamınızdaki birden çok Windows veya Linux makinesi için sunucular için Azure Arc'ı (önizleme) etkinleştirebilirsiniz. Sağladığımız şablon komut dosyasını kullanarak, Azure Arc bağlantısı kurmak da dahil olmak üzere yüklemenin her adımını otomatikleştirebilirsiniz. Ancak, bu komut dosyasını hedef makinede ve Azure'da yüksek izinlere sahip bir hesapla etkileşimli olarak yürütmeniz gerekir. Makineleri sunucular için Azure Arc'a bağlamak için, [makineyi etkileşime bağlamak](onboard-portal.md)için ayrıcalıklı kimliğinizi kullanmak yerine bir Azure Etkin Dizin [hizmet ilkesi](../../active-directory/develop/app-objects-and-service-principals.md) kullanabilirsiniz. Hizmet sorumlusu, komutu kullanarak makineleri Azure'a bağlamak için yalnızca gereken minimum `azcmagent` izin verilen özel bir sınırlı yönetim kimliğidir. Bu, Kiracı Yöneticisi gibi daha yüksek ayrıcalıklı bir hesap kullanmaktan daha güvenlidir ve erişim denetimi güvenliği en iyi uygulamalarımızı izler. Hizmet prensibi sadece onboarding sırasında kullanılır, başka bir amaç için kullanılmaz.  
 
-Bağlı makine aracısını yüklemeye ve yapılandırmaya yönelik yükleme yöntemleri, kullandığınız otomatik metodun makinelerde yönetici izinlerine sahip olmasını gerektirir. Linux 'ta, kök hesabı ve Windows üzerinde yerel Yöneticiler grubunun bir üyesi olarak.
+Bağlı Makine aracısını yüklemek ve yapılandırmak için yükleme yöntemleri, kullandığınız otomatik yöntemin makinelerde yönetici izinlerine sahip olmasını gerektirir. Linux'ta, kök hesabı nı kullanarak ve Windows'da, Yerel Yöneticiler grubunun bir üyesi olarak.
 
-Başlamadan önce, [önkoşulları](overview.md#prerequisites) gözden geçirdiğinizden ve aboneliğinizin ve kaynaklarınızın gereksinimleri karşıladığından emin olun.
+Başlamadan [önce, ön koşulları](overview.md#prerequisites) gözden geçirdiğinizden ve aboneliğinizin ve kaynaklarınızın gereksinimleri karşıladığını doğruladığını unutmayın.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
 
-Bu işlemin sonunda, karma makinelerinizi sunucular için Azure yaya başarıyla bağlamış olursunuz.
+Bu işlemin sonunda, karma makinelerinizi sunucular için Azure Arc'a başarıyla bağlamış olabilirsiniz.
 
-## <a name="create-a-service-principal-for-onboarding-at-scale"></a>Ölçekte ekleme için bir hizmet sorumlusu oluşturma
+## <a name="create-a-service-principal-for-onboarding-at-scale"></a>Ölçekte biniş için bir Hizmet Müdürü Oluşturma
 
-[New-AzADServicePrincipal](/powershell/module/Az.Resources/New-AzADServicePrincipal) cmdlet 'i ile bir hizmet sorumlusu oluşturmak için [Azure PowerShell](/powershell/azure/install-az-ps) kullanabilirsiniz. Ya da bu görevi gerçekleştirmek için [Azure Portal kullanarak hizmet sorumlusu oluşturma](../../active-directory/develop/howto-create-service-principal-portal.md) altında listelenen adımları izleyebilirsiniz.
+[Yeni-AzADServicePrincipal](/powershell/module/Az.Resources/New-AzADServicePrincipal) cmdlet ile bir hizmet ilkesi oluşturmak için [Azure PowerShell'i](/powershell/azure/install-az-ps) kullanabilirsiniz. Veya bu görevi tamamlamak için [Azure portalını kullanarak Hizmet Sorumlusu Oluştur](../../active-directory/develop/howto-create-service-principal-portal.md) altında listelenen adımları izleyebilirsiniz.
 
 > [!NOTE]
-> Bir hizmet sorumlusu oluşturduğunuzda, hesabınız, ekleme için kullanmak istediğiniz abonelikte bir sahip veya Kullanıcı erişimi Yöneticisi olmalıdır. Rol atamaları oluşturmak için yeterli izniniz yoksa, hizmet sorumlusu oluşturulmuş olabilir, ancak makine ekleyemez.
+> Bir hizmet yöneticisi oluşturduğunuzda, hesabınız, biniş için kullanmak istediğiniz abonelikte bir Sahip veya Kullanıcı Erişim Yöneticisi olmalıdır. Rol atamaları oluşturmak için yeterli izine sahip değilseniz, hizmet ilkesi oluşturulabilir, ancak makinelere binemez.
 >
 
-PowerShell kullanarak hizmet sorumlusu oluşturmak için aşağıdakileri yapın.
+PowerShell'i kullanarak hizmet ilkesini oluşturmak için aşağıdakileri gerçekleştirin.
 
-1. Aşağıdaki komutu çalıştırın. [`New-AzADServicePrincipal`](/powershell/module/az.resources/new-azadserviceprincipal) cmdlet 'inin çıkışını bir değişkende depolamanız gerekir, aksi durumda daha sonraki bir adımda gereken parolayı alamazsınız.
+1. Şu komutu çalıştırın. [`New-AzADServicePrincipal`](/powershell/module/az.resources/new-azadserviceprincipal) Cmdlet çıktısını bir değişkende saklamanız gerekir, yoksa daha sonraki bir adımda gerekli parolayı alamazsınız.
 
     ```azurepowershell-interactive
     $sp = New-AzADServicePrincipal -DisplayName "Arc-for-servers" -Role "Azure Connected Machine Onboarding"
@@ -54,43 +54,43 @@ PowerShell kullanarak hizmet sorumlusu oluşturmak için aşağıdakileri yapın
     Type                  :
     ```
 
-2. `$sp` değişkeninde depolanan parolayı almak için aşağıdaki komutu çalıştırın:
+2. Değişkende depolanan parolayı `$sp` almak için aşağıdaki komutu çalıştırın:
 
     ```azurepowershell-interactive
     $credential = New-Object pscredential -ArgumentList "temp", $sp.Secret
     $credential.GetNetworkCredential().password
     ```
 
-3. Çıktıda, alan **parolasının** altındaki parola değerini bulun ve kopyalayın. Ayrıca, **applicationfield** alanının altındaki değeri bulur ve ayrıca kopyalayın. Daha sonra güvenli bir yerde saklayın. Hizmet sorumlusu Parolanızı unutur veya kaybederseniz, [`New-AzADSpCredential`](/powershell/module/azurerm.resources/new-azurermadspcredential) cmdlet 'ini kullanarak sıfırlayabilirsiniz.
+3. Çıktıda, alan **parolasının** altındaki parola değerini bulun ve kopyalayın. Ayrıca **applicationid** alanının altındaki değeri bulun ve kopyalayın. Daha sonra güvenli bir yere saklayın. Servis ana şifrenizi unutur veya kaybederseniz cmdlet kullanarak [`New-AzADSpCredential`](/powershell/module/azurerm.resources/new-azurermadspcredential) sıfırlayabilirsiniz.
 
-Aşağıdaki özelliklerden alınan değerler `azcmagent`geçirilen parametrelerle kullanılır:
+Aşağıdaki özelliklerden alınan değerler, aşağıdaki parametrelere geçirilen parametrelerle birlikte `azcmagent`kullanılır:
 
-* **ApplicationId** özelliğinden alınan değer `--service-principal-id` parametre değeri için kullanılır
-* **Password** özelliğinden alınan değer, aracıyı bağlamak için kullanılan `--service-principal-secret` parametresi için kullanılır.
+* **ApplicationId** özelliğinden değer `--service-principal-id` parametre değeri için kullanılır
+* **Parola** özelliğinden gelen değer aracıyı bağlamak için kullanılan `--service-principal-secret` parametre için kullanılır.
 
 > [!NOTE]
-> **Kimlik** özelliğini değil hizmet sorumlusu **ApplicationId** özelliğini kullandığınızdan emin olun.
+> **Id** özelliğini değil, hizmet ana kuruluşu **ApplicationId** özelliğini kullandığınızdan emin olun.
 >
 
-**Azure bağlı makine ekleme** rolü yalnızca bir makineyi eklemek için gereken izinleri içerir. Kapsamının bir kaynak grubu veya abonelik içermesini sağlamak için hizmet sorumlusu iznini atayabilirsiniz. Rol ataması eklemek için bkz. [Azure RBAC ve Azure Portal kullanarak rol atamaları ekleme veya kaldırma](../../role-based-access-control/role-assignments-portal.md) , [Azure RBAC ve Azure CLI kullanarak rol atamaları ekleme veya kaldırma](../../role-based-access-control/role-assignments-cli.md).
+**Azure Bağlı Makine Yerleşik** rolü yalnızca bir makinede bulunan izinleri içerir. Kapsamının bir kaynak grubu veya abonelik içermesine izin vermek için hizmet analık izniatlayabilirsiniz. Rol ataması eklemek için Azure [RBAC ve Azure portalı kullanarak rol atamaları ekle veya kaldır](../../role-based-access-control/role-assignments-portal.md) veya [Azure RBAC ve Azure CLI kullanarak rol atamaları ekleme veya kaldırma'ya](../../role-based-access-control/role-assignments-cli.md)bakın.
 
-## <a name="install-the-agent-and-connect-to-azure"></a>Aracıyı yükleyip Azure 'a bağlanın
+## <a name="install-the-agent-and-connect-to-azure"></a>Aracıyı yükleyin ve Azure'a bağlanın
 
-Aşağıdaki adımlar, [Azure Portal makalesinden karma makinelerde Azure 'A bağlanma](onboard-portal.md) bölümünde açıklanan benzer adımları gerçekleştiren betik şablonunu kullanarak, karma makinelerinize bağlı makine aracısını yükler ve yapılandırır. Fark, hizmet sorumlusunu kullanarak `azcmagent` komutunu kullanarak Azure Arc bağlantısını oluşturduğunuz son adımdır. 
+Aşağıdaki adımlar, Azure portalı makalesinden [Azure'a bağlan karma makinelerde](onboard-portal.md) açıklanan benzer adımları gerçekleştiren komut dosyası şablonunu kullanarak karma makinelerinizdeki Connected Machine aracısını yükleyin ve yapılandırın. Aradaki fark, hizmet ilkesini kullanarak komutu `azcmagent` kullanarak Azure Arc bağlantısını kurduğunuz son adımdır. 
 
-Aşağıda, hizmet sorumlusu için kullanmak üzere `azcmagent` komutunu yapılandırdığınız ayarlar verilmiştir.
+Aşağıda, hizmet ilkesi için kullanılacak `azcmagent` komutu yapılandırdığınız ayarlar verilmiştir.
 
-* `tenant-id`: adanmış Azure AD örneğinizi temsil eden benzersiz tanımlayıcı (GUID).
-* `subscription-id`: içinde makinelere istediğiniz Azure aboneliğinizin abonelik KIMLIĞI (GUID).
-* `resource-group`: bağlı makinelerinizin ait olmasını istediğiniz kaynak grubu adı.
-* `location`: [desteklenen Azure bölgelerine](overview.md#supported-regions)bakın. Bu konum, kaynak grubunun konumuyla aynı veya farklı olabilir.
-* `resource-name`: (*Isteğe bağlı*) Şirket Içi makinenizin Azure Kaynak temsili için kullanılır. Bu değeri belirtmezseniz makine ana bilgisayar adı kullanılır.
+* `tenant-id`: Azure AD özel örneğini temsil eden benzersiz tanımlayıcı (GUID).
+* `subscription-id`: Makinelerin içinde olmasını istediğiniz Azure aboneliğinizin abonelik kimliği (GUID).
+* `resource-group`: Bağlı makinelerinizin ait olmasını istediğiniz kaynak grubu adı.
+* `location`: [Desteklenen Azure bölgelerine](overview.md#supported-regions)bakın. Bu konum, kaynak grubunun konumuyla aynı veya farklı olabilir.
+* `resource-name`: (*İsteğe Bağlı*) Şirket içi makinenizin Azure kaynak gösterimi için kullanılır. Bu değeri belirtmezseniz, makine ana bilgisayar adı kullanılır.
 
-[Azcmagent başvurusunu](azcmagent-reference.md)inceleyerek `azcmagent` komut satırı aracı hakkında daha fazla bilgi edinebilirsiniz.
+`azcmagent` [Azcmagent Başvurusu'nu](azcmagent-reference.md)inceleyerek komut satırı aracı hakkında daha fazla bilgi edinebilirsiniz.
 
-### <a name="windows-installation-script"></a>Windows yükleme betiği
+### <a name="windows-installation-script"></a>Windows yükleme komut dosyası
 
-Aşağıda, aracının tam otomatik ve etkileşimli olmayan bir yüklemesini desteklemek üzere hizmet sorumlusunu kullanacak şekilde değiştirilen Windows yükleme betiği için bağlı makine aracısına bir örnek verilmiştir.
+Aşağıda, aracının tam otomatik, etkileşimli olmayan bir yüklemesini desteklemek için hizmet ilkesini kullanmak üzere değiştirilen Windows yükleme komut dosyası için Bağlı Makine aracısı örneği verilmiştir.
 
 ```
  # Download the package
@@ -110,9 +110,9 @@ msiexec /i AzureConnectedMachineAgent.msi /l*v installationlog.txt /qn | Out-Str
   --subscription-id "{subscriptionID}"
 ```
 
-### <a name="linux-installation-script"></a>Linux yükleme betiği
+### <a name="linux-installation-script"></a>Linux yükleme komut dosyası
 
-Aşağıda, aracının tam otomatik ve etkileşimli olmayan bir yüklemesini desteklemek üzere hizmet sorumlusunu kullanacak şekilde değiştirilen Linux yükleme betiği için bağlı makine aracısına bir örnek verilmiştir.
+Aşağıda, aracının tam otomatik, etkileşimli olmayan bir yüklemesini desteklemek üzere servis ilkesini kullanmak üzere değiştirilmiş Linux yükleme komut dosyası için Connected Machine aracısının bir örneği verilmiştir.
 
 ```
 # Download the installation package
@@ -131,12 +131,12 @@ azcmagent connect \
   --subscription-id "{subscriptionID}"
 ```
 
-Aracıyı yükledikten ve sunucular için Azure yaya (Önizleme) bağlanacak şekilde yapılandırdıktan sonra, sunucunun başarıyla bağlandığını doğrulamak için Azure portal gidin. [Azure Portal](https://aka.ms/hybridmachineportal)makinelerinizi görüntüleyin.
+Aracıyı yükledikten ve sunucular için Azure Arc'a bağlanacak şekilde yapılandırdıktan sonra (önizleme), sunucunun başarıyla bağlandığını doğrulamak için Azure portalına gidin. Makinelerinizi [Azure portalında](https://aka.ms/hybridmachineportal)görüntüleyin.
 
 ![Başarılı bir sunucu bağlantısı](./media/onboard-portal/arc-for-servers-successful-onboard.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- VM [Konuk yapılandırması](../../governance/policy/concepts/guest-configuration.md), makinenin beklenen Log Analytics çalışma alanına rapor olduğunu doğrulama, [VM 'lerle Azure izleyici](../../azure-monitor/insights/vminsights-enable-at-scale-policy.md)ile izlemeyi etkinleştirme ve çok daha birçok şey için [Azure ilkesi](../../governance/policy/overview.md)'ni kullanarak makinenizi yönetmeyi öğrenin.
+- [Azure İlkesi'ni](../../governance/policy/overview.md)kullanarak makinenizi nasıl yöneteceğimizi öğrenin , VM [konuk yapılandırması](../../governance/policy/concepts/guest-configuration.md)gibi şeyler için, makinenin beklenen Log Analytics çalışma alanına rapor ettiğini doğrulamak, [VM'lerle Azure Monitor](../../azure-monitor/insights/vminsights-enable-at-scale-policy.md)ile izlemeyi etkinleştirmek ve çok daha fazlası.
 
-- [Log Analytics Aracısı](../../azure-monitor/platform/log-analytics-agent.md)hakkında daha fazla bilgi edinin. Makinede çalışan işletim sistemi ve iş yüklerini önceden izlemek, Otomasyon Runbook 'larını veya Güncelleştirme Yönetimi gibi çözümleri kullanarak yönetmek ya da [Azure Güvenlik Merkezi](../../security-center/security-center-intro.md)gibi diğer Azure hizmetlerini kullanmak istediğinizde Windows ve Linux için Log Analytics Aracısı gerekir.
+- [Log Analytics aracısı](../../azure-monitor/platform/log-analytics-agent.md)hakkında daha fazla bilgi edinin. Makinede çalışan işletim sistemlerini ve iş yüklerini proaktif olarak izlemek, Otomasyon runbook'larını veya Update Management gibi çözümleri kullanarak yönetmek veya [Azure Güvenlik Merkezi](../../security-center/security-center-intro.md)gibi diğer Azure hizmetlerini kullanmak istediğinizde Windows ve Linux için Log Analytics aracısı gereklidir.

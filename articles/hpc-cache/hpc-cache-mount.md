@@ -1,41 +1,41 @@
 ---
-title: Azure HPC önbelleği bağlama
-description: İstemcileri Azure HPC önbellek hizmetine bağlama
+title: Azure HPC Önbelleğini Takma
+description: İstemcileri Azure HPC Önbellek hizmetine bağlama
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: rohogue
 ms.openlocfilehash: d906ed9a1a55e936c6374806a9037085c47e3b01
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73582223"
 ---
-# <a name="mount-the-azure-hpc-cache"></a>Azure HPC önbelleğini bağlama
+# <a name="mount-the-azure-hpc-cache"></a>Azure HPC Önbelleğini Dağın
 
-Önbellek oluşturulduktan sonra, NFS istemcileri basit bir Mount komutuyla erişebilir.
+Önbellek oluşturulduktan sonra, NFS istemcileri basit bir montaj komutuyla erişebilir.
 
-Bağlama komutu iki öğeden oluşur:
+Montaj komutu iki öğeden oluşur:
 
-* Önbelleğin bağlama adreslerinden biri (önbelleğe Genel Bakış sayfasında listelenir)
-* Depolama hedefini oluştururken ayarladığınız sanal ad alanı yolu
+* Önbelleğin montaj adreslerinden biri (önbelleğe genel bakış sayfasında listelenir)
+* Depolama hedefini oluşturduğunuzda ayarladığınız sanal ad alanı yolu
 
-![Azure HPC önbellek örneğinin genel bakış sayfasının ekran görüntüsü, sağ alt taraftaki bağlama adresleri listesi etrafında bir vurgulama kutusuyla](media/hpc-cache-mount-addresses.png)
+![Sağ alttaki montaj adresleri listesinin etrafında bir vurgu kutusu olan Azure HPC Önbellek örneğinin Genel Bakış sayfasının ekran görüntüsü](media/hpc-cache-mount-addresses.png)
 
 > [!NOTE] 
-> Önbellek bağlama adresleri, önbelleğin alt ağının içindeki ağ arabirimlerine karşılık gelir. Bir kaynak grubunda, bu NIC 'ler `-cluster-nic-` ile biten adlarla ve bir sayı ile listelenir. Bu arabirimleri değiştirmeyin veya silmeyin, aksi durumda önbellek kullanılamaz hale gelir.
+> Önbellek montaj adresleri, önbelleğin alt ağındaki ağ arabirimlerine karşılık gelir. Bir kaynak grubunda, bu NIC'ler biten `-cluster-nic-` adlar ve bir sayı ile listelenir. Bu arabirimleri değiştirmeyin veya silmeyin, yoksa önbellek kullanılamaz hale gelir.
 
-Sanal ad alanı yolları, **depolama hedefleri** sayfasında gösterilir. Ayrıntılarını görmek için, bununla ilişkili toplanmış ad alanı yolları da dahil olmak üzere, ayrı bir depolama hedefi adına tıklayın.
+Sanal ad alanı yolları **Depolama hedefleri** sayfasında gösterilir. Ayrıntılarıyla ilişkili toplu ad alanı yolları da dahil olmak üzere ayrıntılarını görmek için tek bir depolama hedef adını tıklatın.
 
-![tablonun yol sütunundaki bir girdinin etrafında vurgulama kutusuyla, önbelleğin depolama hedefi panelinin ekran görüntüsü](media/hpc-cache-view-namespace-paths.png)
+![önbelleğin Depolama hedef panelinin ekran görüntüsü, tablonun Yol sütunundaki bir girişin etrafında bir vurgu kutusu yla](media/hpc-cache-view-namespace-paths.png)
 
-## <a name="mount-command-syntax"></a>Bağlama komutu sözdizimi
+## <a name="mount-command-syntax"></a>Montaj komutu sözdizimi
 
-Aşağıdaki gibi bir mount komutu kullanın:
+Aşağıdaki gibi bir montaj komutu kullanın:
 
-> sudo Mount *cache_mount_address*:/*namespace_path* *local_path* {*Seçenekler*}
+> sudo mount *cache_mount_address*:/*namespace_path* *local_path* {*seçenekler*}
 
 Örnek:
 
@@ -45,24 +45,24 @@ root@test-client:/tmp# sudo mount 10.0.0.28:/blob-demo-0722 ./hpccache/ -orw,tcp
 root@test-client:/tmp# 
 ```
 
-Bu komut başarılı olduktan sonra, depolama dışarı aktarmanın içerikleri istemcideki ``hpccache`` dizininde görünür olmalıdır.
+Bu komut başarılı olduktan sonra, depolama dışa aktarma ``hpccache`` içeriği istemci üzerinde dizinde görünür olmalıdır.
 
 > [!NOTE] 
-> İstemcileriniz, önbelleğinizi barındıran sanal ağa ve alt ağa erişebilmelidir. Örneğin, aynı sanal ağ içinde istemci VM 'Leri oluşturun veya dışarıdaki bir erişim için bir uç nokta, ağ geçidi veya sanal ağda başka bir çözüm kullanın. Önbelleğin alt ağı içinde başka hiçbir şeyin barındırılayamadığını unutmayın.
+> Müşterilerinizin önbelleğinizi barındıran sanal ağa ve alt ağa erişebilmesi gerekir. Örneğin, aynı sanal ağ içinde istemci VM'leri oluşturun veya dışarıdan erişmek için sanal ağda bir bitiş noktası, ağ geçidi veya başka bir çözüm kullanın. Önbelleğin alt ağı içinde başka hiçbir şeyin barındırılamayabileceğini unutmayın.
 
-### <a name="mount-command-options"></a>Bağlama komutu seçenekleri
+### <a name="mount-command-options"></a>Montaj komut seçenekleri
 
-Sağlam bir istemci bağlama için, bu ayarları ve bağımsız değişkenleri bağlama komutunuz geçirin: 
+Sağlam bir istemci yuvası için, montaj komutunuzda bu ayarları ve bağımsız değişkenleri geçirin: 
 
 ``mount -o hard,proto=tcp,mountproto=tcp,retry=30 ${CACHE_IP_ADDRESS}:/${NAMESPACE_PATH} ${LOCAL_FILESYSTEM_MOUNT_POINT}``
 
-| Önerilen bağlama komutu ayarları | |
+| Önerilen montaj komutu ayarları | |
 --- | --- 
-``hard`` | Azure HPC Cache 'e yönelik hafif bağlar, uygulama hatalarıyla ve olası veri kaybı ile ilişkilendirilir. 
-``proto=netid`` | Bu seçenek NFS ağ hatalarının uygun işlenmesini destekler.
-``mountproto=netid`` | Bu seçenek, bağlama işlemleri için ağ hatalarının uygun işlenmesini destekler.
-``retry=n`` | Geçici bağlama hatalarından kaçınmak için ``retry=30`` ayarlayın. (Ön plan takmaları farklı bir değer önerilir.)
+``hard`` | Azure HPC Önbelleğine yumuşak bağlar uygulama hataları ve olası veri kaybıyla ilişkilidir. 
+``proto=netid`` | Bu seçenek, NFS ağ hatalarının uygun şekilde işlenmesini destekler.
+``mountproto=netid`` | Bu seçenek, montaj işlemleri için ağ hatalarının uygun şekilde işlenmesini destekler.
+``retry=n`` | Geçici ``retry=30`` montaj hatalarını önlemek için ayarlayın. (Ön plandaki bağlarda farklı bir değer önerilir.)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Verileri önbelleğin depolama hedeflerine taşımak için [yeni Azure Blob depolama alanını](hpc-cache-ingest.md)okuyun.
+* Verileri önbelleğin depolama hedeflerine taşımak [için, yeni Azure Blob depolama alanını doldur'u](hpc-cache-ingest.md)okuyun.

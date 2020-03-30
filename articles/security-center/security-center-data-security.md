@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 11/28/2018
 ms.author: memildin
 ms.openlocfilehash: a25bbd0f14d38a70624dbc58755c0e814753a181
-ms.sourcegitcommit: 0cc25b792ad6ec7a056ac3470f377edad804997a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77604187"
 ---
 # <a name="azure-security-center-data-security"></a>Azure Güvenlik Merkezi Veri Güvenliği
@@ -47,7 +47,7 @@ Azure Güvenlik Merkezi, güvenlik durumunuzu görüntüleme, güvenlik açıkla
 
 | VM'nin Bulunduğu Coğrafi Bölge                              | Çalışma Alanının Bulunduğu Coğrafi Bölge |
 |-------------------------------------|---------------|
-| Birleşik Devletler, Brezilya, Güney Afrika | Amerika Birleşik Devletleri |
+| Amerika Birleşik Devletleri, Brezilya, Güney Afrika | Amerika Birleşik Devletleri |
 | Kanada                              | Kanada        |
 | Avrupa (Birleşik Krallık hariç)   | Avrupa        |
 | Birleşik Krallık                      | Birleşik Krallık |
@@ -80,8 +80,8 @@ Azure Güvenlik Merkezi Ücretsiz sürümünü kullanıyorsanız Güvenlik İlke
 
 Müşteriler, farklı veri akışlarındaki Güvenlik Merkezi ile ilişkili verileri aşağıda gösterildiği gibi kullanabilir:
 
-* **Azure etkinliği**: tüm güvenlik uyarıları, onaylanan [Güvenlik Merkezi istekleri](https://docs.microsoft.com/azure/security-center/security-center-just-in-time) ve [Uyarlamalı uygulama denetimleri](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)tarafından oluşturulan tüm uyarılar.
-* **Azure izleyici günlükleri**: tüm güvenlik uyarıları.
+* **Azure Etkinliği**: tüm güvenlik uyarıları, onaylı Güvenlik Merkezi [Tam zamanında](https://docs.microsoft.com/azure/security-center/security-center-just-in-time) istek istekleri ve [uyarlanabilir uygulama denetimleri](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)tarafından oluşturulan tüm uyarılar.
+* **Azure Monitor günlükleri:** tüm güvenlik uyarıları.
 
 
 > [!NOTE]
@@ -94,4 +94,4 @@ Bu belgede Azure Güvenlik Merkezi'nde verilerin yönetilmesi ve korunması hakk
 * [Azure Güvenlik Merkezi'nde güvenlik durumunu izleme](security-center-monitoring.md) - Azure kaynaklarınızın sistem durumunu nasıl izleyeceğiniz hakkında bilgi edinin
 * [Azure Güvenlik Merkezi'nde güvenlik uyarılarını yönetme ve yanıtlama](security-center-managing-and-responding-alerts.md) - Güvenlik uyarılarını yönetme ve yanıtlama hakkında bilgi edinin
 * [Azure Güvenlik Merkezi ile iş ortağı çözümlerini izleme](security-center-partner-solutions.md) - İş ortağı çözümlerinizin sistem durumunu nasıl izleyeceğiniz hakkında bilgi edinin.
-* [Azure Güvenlik Blogu](https://blogs.msdn.com/b/azuresecurity/) - Azure güvenliği ve uyumluluğu ile ilgili blog yazılarını bulabilirsiniz
+* [Azure Güvenlik Blogu](https://blogs.msdn.com/b/azuresecurity/) — Azure güvenliği ve uyumluluğu yla ilgili blog gönderilerini bulun

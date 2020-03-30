@@ -1,6 +1,6 @@
 ---
-title: Palo Alto Networks verilerini Azure Sentinel 'e bağlama | Microsoft Docs
-description: Palo Alto Networks verilerini Azure Sentinel 'e bağlamayı öğrenin.
+title: Palo Alto Networks verilerini Azure Sentinel'e bağlayın| Microsoft Dokümanlar
+description: Palo Alto Networks verilerini Azure Sentinel'e nasıl bağlayabilirsiniz öğrenin.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -16,44 +16,44 @@ ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
 ms.openlocfilehash: a79b7a1448e1decb377aa0072261df068c366567
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77588136"
 ---
-# <a name="connect-palo-alto-networks-to-azure-sentinel"></a>Palo Alto ağlarını Azure Sentinel 'e bağlama
+# <a name="connect-palo-alto-networks-to-azure-sentinel"></a>Palo Alto Ağlarını Azure Sentinel'e bağlayın
 
 
 
-Bu makalede, Palo Alto Networks gerecinizi Azure Sentinel 'e nasıl bağlayabileceğiniz açıklanır. Palo Alto Networks Data Connector, Azure Sentinel ile Palo Alto Networks günlüklerine kolayca bağlanmanızı, panoları görüntülemenizi, özel uyarılar oluşturmayı ve araştırmayı geliştirmeyi sağlar. Azure Sentinel 'de Palo Alto ağlarını kullanmak, kuruluşunuzun Internet kullanımına yönelik daha fazla öngörü sağlar ve güvenlik işlemi yeteneklerini geliştirir. 
+Bu makalede, Palo Alto Networks cihazınızı Azure Sentinel'e nasıl bağlayabilirsiniz. Palo Alto Networks veri bağlayıcısı, Azure Sentinel ile Palo Alto Networks günlüklerinizi kolayca bağlamanızı, panoları görüntülemenizi, özel uyarılar oluşturmanızı ve araştırmayı geliştirmenizi sağlar. Azure Sentinel'de Palo Alto Ağlarını kullanmak, kuruluşunuzun Internet kullanımı hakkında daha fazla bilgi sağlar ve güvenlik işlemi yeteneklerini geliştirir. 
 
 
-## <a name="forward-palo-alto-networks-logs-to-the-syslog-agent"></a>Palo Alto Networks günlüklerini Syslog aracısına ilet
+## <a name="forward-palo-alto-networks-logs-to-the-syslog-agent"></a>Forward Palo Alto Networks, Syslog temsilcisine günlük ler
 
-Azure çalışma alanınıza Syslog Aracısı aracılığıyla syslog iletilerini CEF biçiminde iletmek için Palo Alto ağlarını yapılandırın:
-1.  [Ortak olay biçimi (CEF) yapılandırma kılavuzlarından](https://docs.paloaltonetworks.com/resources/cef) gidin ve gereç türü için PDF 'yi indirin. CEF olaylarını toplamak üzere Palo Alto Networks gerecinizi ayarlamak için kılavuzdaki tüm yönergeleri izleyin. 
+Syslog aracısı aracılığıyla CEF formatında Syslog iletilerini Azure çalışma alanınıza iletmek için Palo Alto Ağlarını yapılandırın:
+1.  Ortak [Etkinlik Formatı (CEF) Yapılandırma Kılavuzları'na](https://docs.paloaltonetworks.com/resources/cef) gidin ve cihaz tipiniz için pdf'yi indirin. CEF etkinliklerini toplamak için Palo Alto Networks cihazınızı kurmak için kılavuzdaki tüm talimatları izleyin. 
 
-1.  [Syslog Izlemesini yapılandırma](https://aka.ms/asi-syslog-paloalto-forwarding) bölümüne gidin ve Azure Sentinel 'e Palo Alto Networks GERECINDEN CEF olay iletmeyi yapılandırmak için adım 2 ve 3 ' ü izleyin.
+1.  [Syslog izlemeyi Yapılandırma'ya](https://aka.ms/asi-syslog-paloalto-forwarding) gidin ve Palo Alto Networks cihazınızdan Azure Sentinel'e CEF olayını yapılandırmak için 2 ve 3 adımlarını izleyin.
 
-    1. **Syslog Sunucu biçimini** **BSD**olarak ayarladığınızdan emin olun.
+    1. **Syslog sunucu biçimini** **BSD**olarak ayarladıklarından emin olun.
 
        > [!NOTE]
-       > PDF 'den Kopyala/yapıştır işlemleri metni değiştirebilir ve rastgele karakterler ekleyebilir. Bunu önlemek için, metni bir düzenleyiciye kopyalayın ve bu örnekte görebileceğiniz gibi, yapıştırmadan önce günlük biçimini bozabilecek tüm karakterleri kaldırın.
+       > PDF'deki kopyalama/yapıştır işlemleri metni değiştirebilir ve rastgele karakterler ekleyebilir. Bunu önlemek için metni bir düzenleyiciye kopyalayın ve bu örnekte de görebileceğiniz gibi, yapıştırmadan önce günlük biçimini kırabilecek karakterleri kaldırın.
  
         ![CEF metin kopyalama sorunu](./media/connect-cef/paloalto-text-prob1.png)
 
-1. Palo Alto Networks olayları için Log Analytics ilgili şemayı kullanmak için, **Commonsecuritylog**' u arayın.
+1. Palo Alto Networks etkinlikleri için Log Analytics'teki ilgili şemayı kullanmak için **CommonSecurityLog'u**arayın.
 
-1. 3\. [Adım: bağlantıyı doğrulama adımına](connect-cef-verify.md)geçin.
+1. ADIM 3'e devam [et: Bağlantıyı doğrulayın.](connect-cef-verify.md)
 
 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu belgede, Palo Alto Networks gereçlerini Azure Sentinel 'e bağlamayı öğrendiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
-- [Verilerinize nasıl görünürlük alabileceğinizi ve olası tehditleri](quickstart-get-visibility.md)öğrenin.
-- [Azure Sentinel ile tehditleri algılamaya](tutorial-detect-threats-built-in.md)başlayın.
-- Verilerinizi izlemek için [çalışma kitaplarını kullanın](tutorial-monitor-your-data.md) .
+Bu belgede, Palo Alto Networks cihazlarını Azure Sentinel'e nasıl bağlayabileceğinizi öğrendiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
+- [Verilerinize ve olası tehditlere](quickstart-get-visibility.md)nasıl görünürlük elde edebilirsiniz öğrenin.
+- Azure [Sentinel ile tehditleri algılamaya](tutorial-detect-threats-built-in.md)başlayın.
+- Verilerinizi izlemek için [çalışma kitaplarını kullanın.](tutorial-monitor-your-data.md)
 
 

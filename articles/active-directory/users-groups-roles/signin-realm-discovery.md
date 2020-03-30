@@ -1,6 +1,6 @@
 ---
-title: Oturum açma sırasında Kullanıcı adı arama Azure Active Directory | Microsoft Docs
-description: Ekran mesajlaşması Azure Active Directory oturum açma sırasında Kullanıcı adı aramasını yansıtır
+title: Oturum açma sırasında kullanıcı adı araması - Azure Active Directory | Microsoft Dokümanlar
+description: Azure Active Directory'de oturum açma sırasında ekrandaki mesajlaşmanın kullanıcı adı aramasını nasıl yansıttığı
 services: active-directory
 author: curtand
 manager: daveba
@@ -14,46 +14,46 @@ ms.reviewer: kexia
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c8b6a65a964016f702fcf75aa4cbdab33a952e3b
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74024245"
 ---
-# <a name="home-realm-discovery-for-azure-active-directory-sign-in-pages"></a>Azure Active Directory oturum açma sayfaları için giriş bölgesi bulma
+# <a name="home-realm-discovery-for-azure-active-directory-sign-in-pages"></a>Azure Active Directory oturum açma sayfaları için ana bölge keşfi
 
-Yeni kimlik doğrulaması yöntemlerine yer açmak ve kullanılabilirliği geliştirmek için Azure Active Directory (Azure AD) oturum açma davranışımızı değiştiriyoruz. Oturum açma işlemi sırasında Azure AD kullanıcının nerede kimlik doğrulaması yapması gerektiğini belirler. Azure AD, oturum açma sayfasında girilen kullanıcı adının kuruluş ve kullanıcı ayarlarını okuyarak akıllı kararlar alır. Bu, FIDO 2.0 gibi ek kimlik bilgilerinin kullanılmasına imkan tanıyan parolasız bir geleceğe doğru atılan bir adım.
+Yeni kimlik doğrulama yöntemlerine yer açmak ve kullanılabilirliği artırmak için Azure Active Directory (Azure AD) oturum açma davranışımızı değiştiriyoruz. Oturum açma sırasında Azure AD, kullanıcının nerede kimlik doğrulaması yapması gerektiğini belirler. Azure AD, oturum açma sayfasında girilen kullanıcı adı için kuruluş ve kullanıcı ayarlarını okuyarak akıllı kararlar verir. Bu, FIDO 2.0 gibi ek kimlik bilgilerini etkinleştiren parolasız bir geleceğe doğru atılmış bir adımdır.
 
-## <a name="home-realm-discovery-behavior"></a>Giriş bölgesi bulma davranışı
+## <a name="home-realm-discovery-behavior"></a>Ev alemi bulma davranışı
 
-Tarihsel olarak, giriş bölgesi bulma, oturum açma sırasında veya bazı eski uygulamalar için bir giriş bölgesi bulma ilkesiyle belirtilen etki alanı tarafından yönetilir. Örneğin, bulma davranışımızda Azure Active Directory bir Kullanıcı Kullanıcı adını yanlış bir şekilde yanlış verebilir, ancak kuruluşunuzun kimlik bilgisi toplama ekranına ulaşacak. Bu durum, Kullanıcı kuruluşun "contoso.com" etki alanı adını doğru şekilde sunursa oluşur. Bu davranış, bireysel kullanıcı için deneyimlerin özelleştirilmesi ayrıntı düzeyine izin vermez.
+Tarihsel olarak, ana bölge keşfi oturum açma sırasında sağlanan etki alanı veya bazı eski uygulamalar için Bir Home Realm Discovery ilkesi tarafından yönetildi. Örneğin, bulma davranışımızda bir Azure Active Directory kullanıcısı kullanıcı adını yanlış yazabilir, ancak yine de kuruluşunun kimlik bilgisi toplama ekranına gelebilir. Bu, kullanıcı kuruluşun etki alanı adını "contoso.com" doğru şekilde verdiğinde oluşur. Bu davranış, tek bir kullanıcı için deneyimleri özelleştirmek için parçalı izin vermez.
 
-Daha geniş bir kimlik bilgilerini desteklemek ve kullanılabilirliği artırmak için, oturum açma işlemi sırasında Azure Active Directory Kullanıcı adı arama davranışı artık güncellenir. Yeni davranış, oturum açma sayfasına girilen kullanıcı adına göre kiracı ve Kullanıcı düzeyi ayarlarını okuyarak akıllı kararlar verir. Bunu mümkün kılmak için Azure Active Directory, oturum açma sayfasına girilen kullanıcı adının belirtilen etki alanında bulunup bulunmadığını ve Kullanıcı kimlik bilgilerini sağlamak için kullanıcıyı yeniden yönlendirdiği denetlenir.
+Daha geniş bir kimlik bilgilerini desteklemek ve kullanılabilirliği artırmak için, oturum açma işlemi sırasında Azure Active Directory'nin kullanıcı adı arama davranışı artık güncelleştirildi. Yeni davranış, oturum açma sayfasında girilen kullanıcı adına göre kiracı ve kullanıcı düzeyi ayarlarını okuyarak akıllı kararlar verir. Bunu mümkün kılmak için Azure Active Directory, oturum açma sayfasında girilen kullanıcı adının belirtilen etki alanında bulununp var olmadığını veya kullanıcıyı kimlik bilgilerini sağlamak için yönlendirip yönlendirmediğini denetler.
 
-Bu çalışmanın ek bir avantajı, hata iletileri geliştirilerek geliştirilmiştir. Aşağıda yalnızca Azure Active Directory Kullanıcıları destekleyen bir uygulamada oturum açarken geliştirilmiş hata iletilerine ilişkin bazı örnekler verilmiştir.
+Bu çalışmanın ek bir yararı hata iletisi geliştirilmiştir. Aşağıda, yalnızca Azure Etkin Dizin kullanıcılarını destekleyen bir uygulamada oturum açKen geliştirilmiş hata iletisine bazı örnekler verilmiştir.
 
-- Kullanıcı adı yanlış yazılmış veya Kullanıcı adı henüz Azure AD ile eşitlenmedi:
+- Kullanıcı adı yanlış yazılmış veya kullanıcı adı henüz Azure AD ile eşitlenmemiştir:
   
-    ![Kullanıcı adı yanlış yazılmış veya bulunamadı](./media/signin-realm-discovery/typo-username.png)
+    ![kullanıcı adı yanlış yazılmış veya bulunamaz](./media/signin-realm-discovery/typo-username.png)
   
 - Etki alanı adı yanlış yazılmış:
   
-    ![etki alanı adı yanlış yazılmış veya bulunamadı](./media/signin-realm-discovery/typo-domain.png)
+    ![alan adı yanlış yazılmış veya bulunamamıştır](./media/signin-realm-discovery/typo-domain.png)
   
-- Kullanıcı bilinen bir tüketici etki alanıyla oturum açmaya çalışır:
+- Kullanıcı bilinen bir tüketici etki alanı ile oturum açmaya çalışır:
   
-    ![bilinen bir tüketici etki alanı ile oturum açın](./media/signin-realm-discovery/consumer-domain.png)
+    ![bilinen bir tüketici etki alanıyla oturum açma](./media/signin-realm-discovery/consumer-domain.png)
   
-- Parola yanlış yazmış, ancak Kullanıcı adı doğru:  
+- Parola yanlış yazılmış, ancak kullanıcı adı doğrudur:  
   
-    ![parola, iyi Kullanıcı adı ile yanlış yazılmış](./media/signin-realm-discovery/incorrect-password.png)
+    ![şifre iyi bir kullanıcı adı ile yanlış yazılır](./media/signin-realm-discovery/incorrect-password.png)
   
 > [!IMPORTANT]
-> Bu özellik, Federasyonu zorlamak için eski etki alanı düzeyi giriş bölgesi bulma 'ya bağlı olan Federasyon etki alanları üzerinde etkiye sahip olabilir. Federasyon etki alanı desteğinin ekleneceği güncelleştirmeler için, [Microsoft 365 hizmetleri için oturum açma sırasında giriş bölgesi bulma](https://azure.microsoft.com/updates/signin-hrd/)bölümüne bakın. Bu sırada, bazı kuruluşlar çalışanları Azure Active Directory olmayan bir kullanıcı adıyla oturum açmak için eğitildi, ancak etki alanı adları kullanıcıları kendi kuruluşlarının etki alanı uç noktasına yönlendirtiğinden, uygun etki alanı adını içerir. Yeni oturum açma davranışı buna izin vermez. Kullanıcı, Kullanıcı adını düzeltmek üzere bilgilendirilir ve Azure Active Directory mevcut olmayan bir kullanıcı adıyla oturum açmasına izin verilmez.
+> Bu özellik, federasyonu zorlamak için eski etki alanı düzeyindeki Home Realm Discovery'ye güvenen federe etki alanları üzerinde etkili olabilir. Federe etki alanı desteğinin ne zaman eklenip ekleneceğine ilişkin güncelleştirmeler [için, Microsoft 365 hizmetleri için oturum açma sırasında Ana alan keşfine](https://azure.microsoft.com/updates/signin-hrd/)bakın. Bu arada, alan adı kullanıcıları şu anda kuruluşlarının etki alanı bitiş noktasına yönlendirdiği için, bazı kuruluşlar çalışanlarını Azure Etkin Dizini'nde bulunmayan ancak uygun etki alanı adını içeren bir kullanıcı adı ile oturum açmaları için eğitti. Yeni oturum açma davranışı buna izin vermez. Kullanıcıya kullanıcı adını düzeltmesi bildirilir ve Azure Active Directory'de bulunmayan bir kullanıcı adı ile oturum açmalarına izin verilmez.
 >
-> Siz veya kuruluşunuzda eski davranışa bağlı olan uygulamalar varsa, Kuruluş yöneticilerinin çalışan oturum açma ve kimlik doğrulama belgelerini güncelleştirmesi ve çalışanların oturum açmasını sağlamak için Azure Active Directory Kullanıcı adlarını kullanma konusunda bilgi sahibi olmanız önemlidir.
+> Sizin veya kuruluşunuz eski davranışa bağlı uygulamalara sahipse, kuruluş yöneticilerinin çalışan oturum açma ve kimlik doğrulama belgelerini güncelleştirmeleri ve çalışanları oturum açmak için Azure Etkin Dizin kullanıcı adlarını kullanmaları için eğitmek önemlidir.
   
-Yeni davranışla ilgili endişeleriniz varsa, bu makalenin **geri bildirim** bölümünde yer alarak yaptığınız açıklamaları bırakın.  
+Yeni davranışla ilgili endişeleriniz varsa, açıklamalarınızı bu makalenin **Geri Bildirim** bölümünde bırakın.  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

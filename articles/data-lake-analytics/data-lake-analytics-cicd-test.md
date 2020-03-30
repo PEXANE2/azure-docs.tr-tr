@@ -1,6 +1,6 @@
 ---
-title: Azure Data Lake Analytics kodunuzu test etme
-description: U-SQL için test çalışmalarının ve Azure Data Lake Analytics için genişletilmiş C# kodun nasıl ekleneceğini öğrenin.
+title: Azure Veri Gölü Analizi kodunuzu nasıl test emilir?
+description: Azure Veri Gölü Analitiği için U-SQL ve genişletilmiş C# kodu için test örnekleri eklemeyi öğrenin.
 services: data-lake-analytics
 author: yanancai
 ms.author: yanacai
@@ -11,61 +11,61 @@ ms.topic: conceptual
 ms.workload: big-data
 ms.date: 08/30/2019
 ms.openlocfilehash: d568a267952a22d2e7a6b7acb6d54cf41f803367
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70913955"
 ---
-# <a name="test-your-azure-data-lake-analytics-code"></a>Azure Data Lake Analytics kodunuzu test etme
+# <a name="test-your-azure-data-lake-analytics-code"></a>Azure Veri Gölü Analizi kodunuzu test edin
 
-Azure Data Lake, [U-SQL](data-lake-analytics-u-sql-get-started.md) dilini sağlar. U-SQL, herhangi bir ölçekte verileri C# işlemek için BILDIRIM temelli SQL 'i kesinlik ile birleştirir. Bu belgede, U-SQL ve genişletilmiş C# Kullanıcı tanımlı operatör (Udo) kodu için test çalışmaları oluşturmayı öğreneceksiniz.
+Azure Veri Gölü [U-SQL](data-lake-analytics-u-sql-get-started.md) dilini sağlar. U-SQL, verileri herhangi bir ölçekte işlemek için bildirimsel SQL ile zorunlu C# ile birleştirir. Bu belgede, U-SQL ve genişletilmiş C# kullanıcı tanımlı işleç (UDO) kodu için test örnekleri oluşturmayı öğrenirsiniz.
 
 ## <a name="test-u-sql-scripts"></a>U-SQL betiklerini test etme
 
-U-SQL betiği derlenir ve çalıştırılabilir kodun Azure 'da veya yerel bilgisayarınızda çalışması için iyileştirilmiştir. Derleme ve iyileştirme işlemi, tüm U-SQL betiğini bir bütün olarak değerlendirir. Her bildiri için geleneksel birim testi yapamazsınız. Ancak, U-SQL test SDK 'sını ve yerel çalışma SDK 'sını kullanarak betik düzeyinde testler yapabilirsiniz.
+U-SQL komut dosyası, Azure'da veya yerel bilgisayarınızda çalıştırılabilir kod için derlenir ve optimize edilir. Derleme ve optimizasyon işlemi, tüm U-SQL komut dosyasını bir bütün olarak ele alar. Her ifade için geleneksel bir birim testi yapamazsınız. Ancak, U-SQL testi SDK ve yerel çalıştırış SDK kullanarak komut dosyası düzeyinde testler yapabilirsiniz.
 
-### <a name="create-test-cases-for-u-sql-script"></a>U-SQL betiği için test çalışmaları oluşturma
+### <a name="create-test-cases-for-u-sql-script"></a>U-SQL komut dosyası için test örnekleri oluşturma
 
-Visual Studio için Azure Data Lake Araçları, U-SQL betik test çalışmaları oluşturmanızı sağlar.
+Visual Studio için Azure Veri Gölü Araçları, U-SQL komut dosyası test örnekleri oluşturmanıza olanak tanır.
 
-1. Çözüm Gezgini ' de bir U-SQL komut dosyasına sağ tıklayın ve ardından **birim testi oluştur**' u seçin.
+1. Solution Explorer'da bir U-SQL komut dosyasına sağ tıklayın ve ardından **Birim Testi Oluştur'u**seçin.
 
-1. Yeni bir test projesi oluşturun veya var olan bir test projesine test durumunu ekleyin.
+1. Yeni bir test projesi oluşturun veya test çalışması varolan bir test projesine ekleyin.
 
-   ![Visual Studio için Data Lake araçları--U-SQL test projesi yapılandırması oluşturma](./media/data-lake-analytics-cicd-test/data-lake-tools-create-usql-test-project-configure.png)
+   ![Visual Studio için Veri Gölü Araçları -- Bir U-SQL test projesi yapılandırması oluşturma](./media/data-lake-analytics-cicd-test/data-lake-tools-create-usql-test-project-configure.png)
 
 ### <a name="manage-the-test-data-source"></a>Test veri kaynağını yönetme
 
-U-SQL betiklerini test ettiğinizde, test giriş dosyaları gerekir. Test verilerini yönetmek için, **Çözüm Gezgini**' de, U-SQL projesine sağ tıklayın ve **Özellikler**' i seçin. **Test veri kaynağına**bir kaynak girebilirsiniz.
+U-SQL komut dosyalarını sınadiğinizde, test giriş dosyalarına ihtiyacınız vardır. **Çözüm Gezgini'nde**test verilerini yönetmek için U-SQL projesine sağ tıklayın ve **Özellikler'i**seçin. **Test Veri Kaynağı'na**bir kaynak girebilirsiniz.
 
-![Visual Studio için Data Lake araçları--proje testi veri kaynağını yapılandırma](./media/data-lake-analytics-cicd-test/data-lake-tools-configure-project-test-data-source.png)
+![Visual Studio için Veri Gölü Araçları -- proje test veri kaynağını yapılandırma](./media/data-lake-analytics-cicd-test/data-lake-tools-configure-project-test-data-source.png)
 
-U-SQL test `Initialize()` SDK 'sında arabirimini çağırdığınızda, test projesinin çalışma dizini altında geçici bir yerel veri kök klasörü oluşturulur. U-SQL betik test çalışmalarını çalıştırmadan önce, test veri kaynağı klasöründeki tüm dosyalar ve klasörler geçici yerel veri kök klasörüne kopyalanır. Test veri klasörü yolunu noktalı virgülle ayırarak daha fazla test veri kaynağı klasörü ekleyebilirsiniz.
+U-SQL `Initialize()` test SDK'daki arabirimi çağırdığınızda, test projesinin çalışma dizininin altında geçici bir yerel veri kökü klasörü oluşturulur. U-SQL komut dosyası test taleplerini çalıştırmadan önce test veri kaynağı klasöründeki tüm dosya ve klasörler geçici yerel veri kökü klasörüne kopyalanır. Test veri klasörü yolunu bir yarı nokta nokta ile bölerek daha fazla test veri kaynağı klasörü ekleyebilirsiniz.
 
-### <a name="manage-the-database-environment-for-testing"></a>Test için veritabanı ortamını yönetme
+### <a name="manage-the-database-environment-for-testing"></a>Sınama için veritabanı ortamını yönetme
 
-U-SQL komut dosyalarınız U-SQL veritabanı nesneleriyle kullanıyorsa veya sorgulardaysa, U-SQL test çalışmalarını çalıştırmadan önce veritabanı ortamını başlatmalısınız. Saklı yordamlar çağrılırken bu yaklaşım gerekli olabilir. U-SQL test SDK 'sindeki arabirim,u-SQLprojesitarafındanbaşvurulantümveritabanlarını,testprojesininçalışmadizinindekigeçiciyerelverikökklasörünedağıtmanızayardımcıolur.`Initialize()`
+U-SQL komut dosyalarınız U-SQL veritabanı nesneleriyle kullanıyorsa veya sorgulanıyorsa, U-SQL test denemelerini çalıştırmadan önce veritabanı ortamını başlatmanız gerekir. Bu yaklaşım, depolanan yordamları ararken gerekli olabilir. U-SQL testi SDK'daki arabirim, `Initialize()` U-SQL projesi tarafından başvurulan tüm veritabanlarını test projesinin çalışma dizinindeki geçici yerel veri kökü klasörüne dağıtmanıza yardımcı olur.
 
-U-SQL projesi için U-SQL veritabanı proje başvurularını yönetme hakkında daha fazla bilgi için, bkz. [u-SQL veritabanı projesine başvuru](data-lake-analytics-data-lake-tools-develop-usql-database.md#reference-a-u-sql-database-project).
+U-SQL projesi için U-SQL veritabanı proje başvurularını nasıl yönetilir hakkında daha fazla bilgi için [bkz.](data-lake-analytics-data-lake-tools-develop-usql-database.md#reference-a-u-sql-database-project)
 
-### <a name="verify-test-results"></a>Test sonuçlarını doğrula
+### <a name="verify-test-results"></a>Test sonuçlarını doğrulama
 
-`Run()` Arabirim bir iş yürütme sonucu döndürür. *0* başarılı anlamına gelir ve *1* hata anlamına gelir. Çıkışları doğrulamak için onay C# işlevlerini de kullanabilirsiniz.
+`Run()` Arabirim bir iş yürütme sonucu döndürür. *0* başarı, *1* başarısızlık demektir. Çıktıları doğrulamak için C# assert işlevlerini de kullanabilirsiniz.
 
-### <a name="run-test-cases-in-visual-studio"></a>Visual Studio 'da test çalışmalarını çalıştırma
+### <a name="run-test-cases-in-visual-studio"></a>Visual Studio'da test test lerini çalıştırma
 
-Bir U-SQL betiği test projesi, C# birim test çerçevesinin üzerine kurulmuştur. Projeyi derledikten sonra, **Test** > **Windows** > **Test Gezgini**' ni seçin. Test **Gezgini**'nden test çalışmalarını çalıştırabilirsiniz. Alternatif olarak, birim testinizde. cs dosyasına sağ tıklayın ve **Testleri Çalıştır**' ı seçin.
+Bir U-SQL komut dosyası test projesi, C# birimi test çerçevesinin üzerine inşa edilmiştir. Projeyi yaptıktan**sonra, Windows** > **Test Gezgini'ni** **test** > et'i seçin. **Test Gezgini'nden**test çalışmaları çalıştırabilirsiniz. Alternatif olarak, birim testinizdeki .cs dosyasına sağ tıklayın ve **Testleri Çalıştır'ı**seçin.
 
-## <a name="test-c-udos"></a>Test C# uıliği
+## <a name="test-c-udos"></a>Test C# UDOs
 
-### <a name="create-test-cases-for-c-udos"></a>Uıdos için C# test çalışmaları oluşturma
+### <a name="create-test-cases-for-c-udos"></a>C# UdO'lar için test çalışmaları oluşturma
 
-Kullanıcı tanımlı işleçlerinizi C# C# (UDOs) test etmek için bir birim test çerçevesi kullanabilirsiniz. Uıdos test edilirken, karşılık gelen **IRowset** nesnelerini giriş olarak hazırlamanız gerekir.
+C# kullanıcı tanımlı operatörlerinizi (UdOs) test etmek için C# birimi test çerçevesi kullanabilirsiniz. UdOs test ederken, giriş olarak ilgili **IRowset** nesneleri hazırlamak gerekir.
 
-**IRowset** nesnesi oluşturmanın iki yolu vardır:
+**Bir IRowset** nesnesi oluşturmanın iki yolu vardır:
 
-- **IRowset**oluşturmak için bir dosyadaki verileri yükleme:
+- **IRowset**oluşturmak için bir dosyadan veri yükleme:
 
     ```csharp
     //Schema: "a:int, b:int"
@@ -81,7 +81,7 @@ Kullanıcı tanımlı işleçlerinizi C# C# (UDOs) test etmek için bir birim te
     IRowset rowset = UnitTestHelper.GetRowsetFromFile(@"processor.txt", schema, output.AsReadOnly(), discardAdditionalColumns: true, rowDelimiter: null, columnSeparator: '\t');
     ```
 
-- **IRowset**oluşturmak için bir veri koleksiyonundaki verileri kullanın:
+- **IRowset**oluşturmak için bir veri koleksiyonundan verileri kullanın:
 
     ```csharp
     //Schema: "a:int, b:int"
@@ -102,54 +102,54 @@ Kullanıcı tanımlı işleçlerinizi C# C# (UDOs) test etmek için bir birim te
     IRowset rowset = UnitTestHelper.GetRowsetFromCollection(rows, output.AsReadOnly());
     ```
 
-### <a name="verify-test-results"></a>Test sonuçlarını doğrula
+### <a name="verify-test-results"></a>Test sonuçlarını doğrulama
 
-UıDO işlevlerini çağırdığınızda, onaylama işlevlerini kullanarak C# şema ve satır kümesi değer doğrulama aracılığıyla sonuçları doğrulayabilirsiniz. Çözümünüze bir **U-SQL C# Udo birim testi projesi** ekleyebilirsiniz. Bunu yapmak için, Visual Studio 'da **dosya > yeni > proje** ' yi seçin.
+UDO işlevlerini aradıktan sonra, C# assert işlevlerini kullanarak sonuçları şema ve Rowset değer doğrulama yoluyla doğrulayabilirsiniz. Çözümünüze **bir U-SQL C# UDO Birim Test Projesi** ekleyebilirsiniz. Bunu yapmak için Visual **Studio'da Dosya > Yeni > Projesi'ni** seçin.
 
-### <a name="run-test-cases-in-visual-studio"></a>Visual Studio 'da test çalışmalarını çalıştırma
+### <a name="run-test-cases-in-visual-studio"></a>Visual Studio'da test test lerini çalıştırma
 
-Projeyi derledikten sonra, **Test** > **Windows** > **Test Gezgini**' ni seçin. Test **Gezgini**'nden test çalışmalarını çalıştırabilirsiniz. Alternatif olarak, birim testinizde. cs dosyasına sağ tıklayın ve **Testleri Çalıştır**' ı seçin.
+Projeyi yaptıktan**sonra, Windows** > **Test Gezgini'ni** **test** > et'i seçin. **Test Gezgini'nden**test çalışmaları çalıştırabilirsiniz. Alternatif olarak, birim testinizdeki .cs dosyasına sağ tıklayın ve **Testleri Çalıştır'ı**seçin.
 
-## Azure Pipelines 'de test çalışmalarını çalıştırma<a name="run-test-cases-in-azure-devops"></a>
+## <a name="run-test-cases-in-azure-pipelines"></a>Azure Ardışık Hatlar'da test servis taleplerini çalıştırma<a name="run-test-cases-in-azure-devops"></a>
 
-Hem **U-SQL betik testi projeleri** hem  **C# de Udo test projeleri** birim testi projelerini miras C# alır. Azure Pipelines içindeki [Visual Studio test görevi](https://docs.microsoft.com/azure/devops/pipelines/test/getting-started-with-continuous-testing?view=vsts) bu test çalışmalarını çalıştırabilir.
+Hem **U-SQL komut dosyası test projeleri** hem de **C# UDO test projeleri** C# birim test projelerini devralır. Azure Ardışık Hatlar'daki [Visual Studio test görevi](https://docs.microsoft.com/azure/devops/pipelines/test/getting-started-with-continuous-testing?view=vsts) bu test servis taleplerini çalıştırabilir.
 
-### <a name="run-u-sql-test-cases-in-azure-pipelines"></a>Azure Pipelines 'de U-SQL test çalışmalarını çalıştırma
+### <a name="run-u-sql-test-cases-in-azure-pipelines"></a>Azure Ardışık Hatları'nda U-SQL test servis taleplerini çalıştırma
 
-U-SQL testi için, yapı bilgisayarınıza yüklediğinizden emin `CPPSDK` olun ve `CPPSDK` yolu ' ye `USqlScriptTestRunner(cppSdkFolderFullPath: @"")`geçirin.
+U-SQL testi için, yapı `CPPSDK` bilgisayarınıza yüklediğinizden emin `CPPSDK` olun `USqlScriptTestRunner(cppSdkFolderFullPath: @"")`ve ardından yolu 'ye' ye geçirin.
 
 #### <a name="what-is-cppsdk"></a>CPPSDK nedir?
 
-CPPSDK, Microsoft Visual C++ 14 ve Windows SDK 10.0.10240.0 içeren bir pakettir. Bu paket, U-SQL çalışma zamanı için gereken ortamı içerir. Bu paketi Visual Studio için Azure Data Lake Araçları yükleme klasörü altında edinebilirsiniz:
+CPPSDK, Microsoft Visual C++ 14 ve Windows SDK 10.0.10240.0 içeren bir pakettir. Bu paket, U-SQL çalışma zamanının gerektirdiği ortamı içerir. Bu paketi Visual Studio yükleme klasörü için Azure Veri Gölü Araçları altında niçin alabilirsiniz:
 
 - Visual Studio 2015 için`C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\Microsoft Azure Data Lake Tools for Visual Studio 2015\X.X.XXXX.X\CppSDK`
 - Visual Studio 2017 için`C:\Program Files (x86)\Microsoft Visual Studio\2017\<Visual Studio Edition>\SDK\ScopeCppSDK`
 - Visual Studio 2019 için`C:\Program Files (x86)\Microsoft Visual Studio\2019\<Visual Studio Edition>\SDK\ScopeCppSDK`
 
-#### <a name="prepare-cppsdk-in-the-azure-pipelines-build-agent"></a>Azure Pipelines yapı aracısında CPPSDK hazırlama
+#### <a name="prepare-cppsdk-in-the-azure-pipelines-build-agent"></a>Azure Ardışık Hatları yapı aracısında CPPSDK'yi hazırlayın
 
-Azure Pipelines CPPSDK bağımlılığını hazırlamanın en yaygın yolu aşağıdaki gibidir:
+Azure Ardışık Hatları'nda CPPSDK bağımlılığını hazırlamanın en yaygın yolu aşağıdaki gibidir:
 
-1. CPPSDK kitaplıklarını içeren klasörü ZIP.
+1. CPPSDK kitaplıklarını içeren klasörü zipleyin.
 
-1. Kaynak denetim sisteminize. zip dosyasını iade edin. . Zip dosyası, bir `.gitignore` dosya nedeniyle dosyaların yoksayılmaması için cppsdk klasörü altındaki tüm kitaplıkları iade almanızı sağlar.
+1. .zip dosyasını kaynak kontrol sisteminize iade edin. .zip dosyası, dosyaların bir `.gitignore` dosya nedeniyle göz ardı edilmemesi için CPPSDK klasörü altındaki tüm kitaplıkları iade etmenizi sağlar.
 
-1. Derleme ardışık düzeninde. zip dosyasını açın.
+1. Yapı ardışık hattındaki .zip dosyasının zip'ini açın.
 
-1. Yapı `USqlScriptTestRunner` bilgisayarında bu zip 'lenmiş bir klasöre işaret edin.
+1. Yapı `USqlScriptTestRunner` bilgisayarındaki bu fermuarsız klasörü işaret edin.
 
-### <a name="run-c-udo-test-cases-in-azure-pipelines"></a>Azure Pipelines C# 'de Udo test çalışmalarını çalıştırma
+### <a name="run-c-udo-test-cases-in-azure-pipelines"></a>Azure Ardışık Hatları'nda C# UDO test servis taleplerini çalıştırma
 
-Bir C# Udo testi Için, UDOs için gereken aşağıdaki derlemelere başvurduğunuzdan emin olun.
+C# UDO testi için, UdO'lar için gerekli olan aşağıdaki derlemelere başvuruyaptığınızdan emin olun.
 
-- Microsoft. Analytics. Interfaces
-- Microsoft. Analytics. Types
-- Microsoft. Analytics. UnitTest
+- Microsoft.Analytics.Interfaces
+- Microsoft.Analytics.Types
+- Microsoft.Analytics.UnitTest
 
-Bunlara [Microsoft. Azure. DataLake. USQL. Interfaces NuGet paketi](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.Interfaces/)aracılığıyla başvurdıysanız, yapı ardışık düzenine bir NuGet geri yükleme görevi eklediğinizden emin olun.
+[Bunları Nuget paketi Microsoft.Azure.DataLake.USQL.Interfaces](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.Interfaces/)aracılığıyla başvurursanız, yapı ardınıza bir NuGet Geri Yükleme görevi eklediğinizden emin olun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Data Lake Analytics için CI/CD işlem hattı ayarlama](data-lake-analytics-cicd-overview.md)
-- [Yerel makinenizde U-SQL betiğini çalıştırma](data-lake-analytics-data-lake-tools-local-run.md)
-- [U-SQL veritabanı geliştirmek için u-SQL veritabanı projesi kullanma](data-lake-analytics-data-lake-tools-develop-usql-database.md)
+- [Azure Veri Gölü Analitiği için CI/CD ardışık kurulumu nasıl ayarlanır?](data-lake-analytics-cicd-overview.md)
+- [Yerel makinenizde U-SQL komut dosyası çalıştırma](data-lake-analytics-data-lake-tools-local-run.md)
+- [U-SQL veritabanını geliştirmek için U-SQL veritabanı projesini kullanma](data-lake-analytics-data-lake-tools-develop-usql-database.md)

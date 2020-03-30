@@ -1,42 +1,42 @@
 ---
-title: Couşbase 'ten Azure Cosmos DB SQL API 'sine geçiş
-description: Couşbase 'ten Azure Cosmos DB SQL API 'sine geçiş için adım adım yönergeler
+title: CouchBase'den Azure Cosmos DB SQL API'ye geçiş
+description: CouchBase'den Azure Cosmos DB SQL API'ye geçiş için adım adım kılavuz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/11/2020
 ms.author: mansha
 author: manishmsfte
 ms.openlocfilehash: 9713d963978e34ad874dc032676a6e1f14e4657c
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77210950"
 ---
-# <a name="migrate-from-couchbase-to-azure-cosmos-db-sql-api"></a>Couşbase 'ten Azure Cosmos DB SQL API 'sine geçiş
+# <a name="migrate-from-couchbase-to-azure-cosmos-db-sql-api"></a>CouchBase'den Azure Cosmos DB SQL API'ye geçiş
 
-Azure Cosmos DB, ölçeklenebilir, global olarak dağıtılmış, tam olarak yönetilen bir veritabanıdır. Verilerinize garantili düşük gecikme süresi erişimi sağlar. Azure Cosmos DB hakkında daha fazla bilgi edinmek için [genel bakış](introduction.md) makalesine bakın. Bu makalede, Couşbase 'e bağlı Java uygulamalarını Azure Cosmos DB 'deki bir SQL API hesabına geçirmeye yönelik yönergeler sağlanmaktadır.
+Azure Cosmos DB ölçeklenebilir, küresel olarak dağıtılmış, tam olarak yönetilen bir veritabanıdır. Verilerinize garantili düşük gecikme gecikmesi erişimi sağlar. Azure Cosmos DB hakkında daha fazla bilgi edinmek için [genel bakış](introduction.md) makalesine bakın. Bu makalede, Couchbase'e bağlı Java uygulamalarını Azure Cosmos DB'deki bir SQL API hesabına geçirmek için yönergeler verilmektedir.
 
-## <a name="differences-in-nomenclature"></a>Terminolojiyle farklılıklar
+## <a name="differences-in-nomenclature"></a>Adlandırma farklılıkları
 
-Aşağıda, Couşbase ile karşılaştırıldığında Azure Cosmos DB farklı şekilde çalışan temel özellikler verilmiştir:
+Couchbase ile karşılaştırıldığında Azure Cosmos DB'de farklı çalışan temel özellikler şunlardır:
 
 |   Couchbase     |   Azure Cosmos DB   |
 | ---------------|-------------------|
-|Couşbase sunucusu| Hesap       |
-|Demet           | Veritabanı      |
-|Demet           | Kapsayıcı/koleksiyon |
-|JSON belgesi    | Öğe/belge |
+|Couchbase sunucusu| Hesap       |
+|Kova           | Database      |
+|Kova           | Konteyner / Toplama |
+|JSON Belgesi    | Öğe / Belge |
 
 ## <a name="key-differences"></a>Temel farklılıklar
 
-* Azure Cosmos DB belge içinde bir "ID" alanı vardır; Couşbase, demet 'nin bir parçası olarak KIMLIĞE sahiptir. "KIMLIK" alanı bölüm genelinde benzersizdir.
+* Azure Cosmos DB'nin belge içinde bir "Kimlik" alanı, Couchbase'in ise kovanın bir parçası olarak kimliği vardır. "Kimlik" alanı bölüm boyunca benzersizdir.
 
-* Bölümlendirme veya parçalama tekniğini kullanarak Azure Cosmos DB ölçeklendirir. Yani, verileri birden çok parça/bölüme böler. Bu bölümler/parçalar, sağladığınız bölüm anahtarı özelliği temel alınarak oluşturulur. Okuma ve yazma işlemlerini iyileştirmek ya da çok iyileştirilmiş okuma/yazma işlemleri için bölüm anahtarını seçebilirsiniz. Daha fazla bilgi için [bölümlendirme](./partition-data.md) makalesine bakın.
+* Azure Cosmos DB, bölme veya parçalama tekniğini kullanarak ölçeklendirin. Bu da verileri birden çok parçaya/bölüme böldüğü anlamına gelir. Bu bölümler/kırıklar, sağladığınız bölüm anahtarı özelliğine göre oluşturulur. Okuma işlemlerini optimize etmek için bölüm tuşunu seçebilir veya en iyi duruma getirilmiş okuma/yazma işlemlerini de seçebilirsiniz. Daha fazla bilgi edinmek için [bölümleme](./partition-data.md) makalesine bakın.
 
-* Azure Cosmos DB, koleksiyon adı zaten mevcut olduğundan üst düzey hiyerarşinin koleksiyonu belirtmek için gerekli değildir. Bu özellik, JSON yapısını çok daha kolay hale getirir. Aşağıdaki örnek, Couşbase ve Azure Cosmos DB arasında veri modelinde farkları gösteren bir örnektir:
+* Azure Cosmos DB'de, koleksiyon adı zaten var olduğundan, üst düzey hiyerarşinin koleksiyonu belirtmesi gerekmez. Bu özellik JSON yapısını çok daha basit hale getirir. Aşağıda, Couchbase ve Azure Cosmos DB arasındaki veri modelifarklılıklarını gösteren bir örnek verilmiştir:
 
-   **Couşbase**: belge kimliği = "99FF4444"
+   **Couchbase**: Belge Kimliği = "99FF4444"
 
     ```json
     {
@@ -66,7 +66,7 @@ Aşağıda, Couşbase ile karşılaştırıldığında Azure Cosmos DB farklı �
     }
    ```
 
-   **Azure Cosmos DB**: belge içinde aşağıda gösterildiği gıbı "kimlik" öğesine bakın
+   **Azure Cosmos DB**: Aşağıda gösterildiği gibi belge içindeki "ID"e bakın
 
     ```json
     {
@@ -98,18 +98,18 @@ Aşağıda, Couşbase ile karşılaştırıldığında Azure Cosmos DB farklı �
          
 ## <a name="java-sdk-support"></a>Java SDK desteği
 
-Azure Cosmos DB, farklı Java çerçevelerini desteklemek için aşağıdaki SDK 'lara sahiptir:
+Azure Cosmos DB, farklı Java çerçevelerini desteklemek için SDK'ları takip etmiştir:
 
-* Zaman uyumsuz SDK
-* Yay önyükleme SDK 'Sı
+* Async SDK
+* Bahar Çizme SDK
 
-Aşağıdaki bölümlerde bu SDK 'ların her birinin ne zaman kullanılacağı açıklanır. Üç tür iş yükünden oluşan bir örnek düşünün:
+Aşağıdaki bölümlerde bu SDK'ların her birinin ne zaman kullanılacağı açıklanıyor. Üç tür iş yüküne sahip olduğumuz bir örnek düşünün:
 
-## <a name="couchbase-as-document-repository--spring-data-based-custom-queries"></a>Belge deposu olarak couşbase & yay veri tabanlı özel sorgular
+## <a name="couchbase-as-document-repository--spring-data-based-custom-queries"></a>Belge deposu olarak Couchbase & yay veri tabanlı özel sorgular
 
-Geçirdiğiniz iş yükü Spring Boot tabanlı SDK 'yı temel alıyorsa aşağıdaki adımları kullanabilirsiniz:
+Geçirtme nizin iş yükü Bahar Önyükleme Tabanlı SDK'ya dayanıyorsa, aşağıdaki adımları kullanabilirsiniz:
 
-1. Pod. xml dosyasına üst öğe ekleyin:
+1. POM.xml dosyasına üst öğe ekleyin:
 
    ```java
    <parent>
@@ -120,13 +120,13 @@ Geçirdiğiniz iş yükü Spring Boot tabanlı SDK 'yı temel alıyorsa aşağı
    </parent>
    ```
 
-1. Pod. xml dosyasına özellikler ekleyin:
+1. POM.xml dosyasına özellikler ekleyin:
 
    ```java
    <azure.version>2.1.6</azure.version>
    ```
 
-1. Pod. xml dosyasına bağımlılıklar ekleyin:
+1. POM.xml dosyasına bağımlılıklar ekleyin:
 
    ```java
    <dependency>
@@ -136,7 +136,7 @@ Geçirdiğiniz iş yükü Spring Boot tabanlı SDK 'yı temel alıyorsa aşağı
    </dependency>
    ```
 
-1. Kaynaklar altına uygulama özellikleri ekleyin ve aşağıdakileri belirtin. URL, anahtar ve veritabanı adı parametrelerini değiştirdiğinizden emin olun:
+1. Kaynakların altına uygulama özellikleri ekleyin ve aşağıdakileri belirtin. URL, anahtar ve veritabanı adı parametrelerini değiştirdiğinden emin olun:
 
    ```java
       azure.cosmosdb.uri=<your-cosmosDB-URL>
@@ -144,7 +144,7 @@ Geçirdiğiniz iş yükü Spring Boot tabanlı SDK 'yı temel alıyorsa aşağı
       azure.cosmosdb.database=<your-cosmosDB-dbName>
    ```
 
-1. Modeldeki koleksiyonun adını tanımlayın. Ayrıca, daha fazla ek açıklama da belirtebilirsiniz. Örneğin, KIMLIĞI, Bölüm anahtarını açıkça belirtmek için:
+1. Modeldeki koleksiyonun adını tanımlayın. Ayrıca ek açıklamalar da belirtebilirsiniz. Örneğin, id, bölüm anahtarı açıkça belirtmek için:
 
    ```java
    @Document(collection = "mycollection")
@@ -157,50 +157,50 @@ Geçirdiğiniz iş yükü Spring Boot tabanlı SDK 'yı temel alıyorsa aşağı
        }
    ```
 
-CRUD işlemlerine yönelik kod parçacıkları aşağıda verilmiştir:
+CRUD işlemleri için kod parçacıkları şunlardır:
 
 ### <a name="insert-and-update-operations"></a>Ekleme ve güncelleştirme işlemleri
 
-Burada *_repo* deponun nesnesidir ve *doc* ise Pojo sınıfının nesnesidir. Eklemek için `.save` kullanabilirsiniz (belirtilen KIMLIĞE sahip belge bulunursa). Aşağıdaki kod parçacığı bir belge nesnesinin nasıl ekleneceğini veya güncelleştirilmesini göstermektedir:
+*Burada _repo* depo nesnesi ve *doc* POJO sınıfının nesnesidir. Eklemek veya `.save` eklemek için kullanabilirsiniz (belirtilen kimliği bulunan belge varsa). Aşağıdaki kod snippet nasıl bir doc nesnesi eklemek veya güncelleştirmegösterir:
 
 ```_repo.save(doc);```
 
-### <a name="delete-operation"></a>Silme Işlemi
+### <a name="delete-operation"></a>Silme İşlemi
 
-Aşağıdaki kod parçacığını göz önünde bulundurun. burada, belge nesnesinin, nesne bulmak ve silmek için KIMLIK ve bölüm anahtarı zorunludur.
+Doküman nesnesinin nesneyi bulmak ve silmek için kimlik ve bölüm anahtarının zorunlu olacağı aşağıdaki kod parçacıklarını düşünün:
 
 ```_repo.delete(doc);```
 
-### <a name="read-operation"></a>Okuma Işlemi
+### <a name="read-operation"></a>Okuma İşlemi
 
-Bölüm anahtarını belirtmeden veya belirtmeden belgeyi okuyabilirsiniz. Bölüm anahtarını belirtmezseniz, bu, çapraz bölümlü bir sorgu olarak kabul edilir. Aşağıdaki kod örneklerini göz önünde bulundurun, ilki KIMLIĞI ve bölüm anahtarı alanını kullanarak işlem gerçekleştirir. İkinci örnek, bölüm anahtarı alanını belirtmeden & düzenli bir alan kullanır.
+Bölümü anahtarını belirtmeden veya belirtmeden belgeyi okuyabilirsiniz. Bölüm anahtarını belirtmezseniz, bu sorgu çapraz bölüm sorgusu olarak kabul edilir. Aşağıdaki kod örneklerini göz önünde bulundurun, ilk iDim ve bölüm anahtarı alanını kullanarak işlem gerçekleştirecektir. İkinci örnek, bölüm tuşu alanını belirtmeden düzenli bir alan & kullanır.
 
 * ```_repo.findByIdAndName(objDoc.getId(),objDoc.getName());```
 * ```_repo.findAllByStatus(objDoc.getStatus());```
 
-Bu, artık uygulamanızı Azure Cosmos DB kullanarak kullanabilirsiniz. Bu belgede açıklanan örnek için tam kod örneği [Couşbasetocosmosdb-SpringCosmos](https://github.com/Azure-Samples/couchbaseTocosmosdb/tree/master/SpringCosmos) GitHub deposunda mevcuttur.
+Artık uygulamanızı Azure Cosmos DB ile kullanabilirsiniz. Bu dokümanda açıklanan örnek için tam kod örneği [CouchbaseToCosmosDB-SpringCosmos](https://github.com/Azure-Samples/couchbaseTocosmosdb/tree/master/SpringCosmos) GitHub repo'da mevcuttur.
 
-## <a name="couchbase-as-a-document-repository--using-n1ql-queries"></a>N1QL sorguları kullanarak belge deposu olarak couşbase &
+## <a name="couchbase-as-a-document-repository--using-n1ql-queries"></a>N1QL sorgularını kullanarak belge deposu & olarak Couchbase
 
-N1QL sorguları, Couşbase 'de sorguları tanımlamanın yoludur.
+N1QL sorguları Couchbase sorguları tanımlamak için bir yoldur.
 
-|N1QL sorgusu | Azure CosmosDB sorgusu|
+|N1QL Sorgusu | Azure CosmosDB Sorgusu|
 |-------------------|-------------------|
-|META (`TravelDocument`). ID, id AS ID, `TravelDocument`. * FROM `TravelDocument` buradan `_type` = "com. xx. xx. xx. xxx. xxx. xxxx" ve Country = ' Hindistan ' ve visas 'in d. Type = = ' Multi-entry ' ve d. Country [' Hindistan ', Bhutan '] SıRALAMA ` Validity` ölçütü 0 fark   | C 'yi SEÇIN. c. Country = ' Hindistan ' ve c. _type = "com. xx. xx. xx. xxx. xxx. xxxx" ve c. Country = ' Hindistan ' ve m. Type = ' Multi-entry ' ve m. Country IN (' Hindistan ', ' Bhutan ') SıRASıYLA c. geçerlilik DESC KAYMASı 0 sınır 25 ' i r. |
+|SELECT`TravelDocument`META( ).id `TravelDocument`AS ID, .* FROM `TravelDocument` WHERE `_type` = "com.xx.xx.xx.xxx.xxx.xxxx " ve ülke = 'Hindistan' ve HER HANGİ m Vizesi SATISFIES m.type == 'Multi-Entry' ve m.Country IN ['Hindistan', Bhutan'] SİPARİş ` Validity` DESC LIMIT 25 OFFSET 0   | SELECT c.id,c FROM c JOIN m in c.country='India' WHERE c._type = " com.xx.xx.xx.xxx.xxx.xxxx" ve c.country = 'Hindistan' ve m.type = 'Multi-Entry' ve m.Country IN ('Hindistan', 'Bhutan') SİPARİş C.Geçerlilik DESC OFSET 0 LIMIT 25 |
 
-N1QL sorgularınızda aşağıdaki değişiklikleri görebilirsiniz:
+N1QL sorgularınızda aşağıdaki değişiklikleri fark edebilirsiniz:
 
-* META anahtar sözcüğünü kullanmanız veya ilk düzey belgeye başvurmanız gerekmez. Bunun yerine, kapsayıcıya kendi başvurunuz için bir başvuru oluşturabilirsiniz. Bu örnekte, bunu "c" olarak kabul ettik (herhangi bir şey olabilir). Bu başvuru, tüm ilk düzey alanların öneki olarak kullanılır. Fr example, c.id, c. ülke vb.
+* META anahtar sözcüklerini kullanmanız veya birinci düzey belgeye başvurmanız gerekmez. Bunun yerine kapsayıcı için kendi başvuru oluşturabilirsiniz. Bu örnekte, biz "c" (herhangi bir şey olabilir) olarak kabul ettik. Bu başvuru, tüm birinci düzey alanlar için bir önek olarak kullanılır. Fr örnek, c.id, c.country vb.
 
-* Artık "ANY" yerine, alt belge üzerinde bir JOIN yapabilir ve "d" gibi özel bir diğer ad ile başvurabilirsiniz. Bir alt belge için diğer ad oluşturduktan sonra diğer adı kullanmanız gerekir. Örneğin, a. ülke.
+* "ANY" yerine artık alt belgeüzerinde birbirleştirme yapabilir ve "m" gibi özel bir takma adla başvurabilirsiniz. Bir alt belge için takma ad oluşturduktan sonra takma ad kullanmanız gerekir. Örneğin, m.Country.
 
-* Azure Cosmos DB sorgusunda, fark sırası farklıdır, önce sapmayı belirtmeniz ve ardından SıNıRı belirtmeniz gerekir. Sorgu Azure Cosmos DB ' a geçirilirken istemci tarafında gerekli olan ek yüke sahip olduğundan, en fazla özel tanımlanmış sorgu kullanıyorsanız Spring Data SDK kullanılması önerilir. Bunun yerine, bu durumda çok verimli bir şekilde kullanılabilecek doğrudan zaman uyumsuz bir Java SDK 'Sı sunuyoruz.
+* AZURE Cosmos DB sorgusunda OFSET dizisi farklıdır, önce OFSET sonra LIMIT belirtmeniz gerekir. Sorguyu Azure Cosmos DB'ye aktarırken istemci tarafında gereksiz ek yükü olabileceğinden, maksimum özel tanımlı sorgular kullanıyorsanız, Yay Veri SDK'sını kullanmamanız önerilir. Bunun yerine bu durumda çok verimli bir şekilde kullanılabilir doğrudan Async Java SDK, var.
 
-### <a name="read-operation"></a>Okuma işlemi
+### <a name="read-operation"></a>İşlemi okuma
 
-Zaman uyumsuz Java SDK 'sını aşağıdaki adımlarla kullanın:
+Async Java SDK'yı aşağıdaki adımlarla kullanın:
 
-1. Pod. xml dosyası üzerinde aşağıdaki bağımlılığı yapılandırın:
+1. Aşağıdaki bağımlılığı POM.xml dosyasına yapılandırın:
 
    ```java
    <!-- https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb -->
@@ -211,7 +211,7 @@ Zaman uyumsuz Java SDK 'sını aşağıdaki adımlarla kullanın:
    </dependency>
    ```
 
-1. Aşağıdaki örnekte gösterildiği gibi `ConnectionBuilder` metodunu kullanarak Azure Cosmos DB için bir bağlantı nesnesi oluşturun. Bu bildirimi, aşağıdaki kodun yalnızca bir kez yürütülmesi gereken şekilde çekirdeklere 'e yerleştirdiğinizden emin olun:
+1. Aşağıdaki örnekte gösterildiği `ConnectionBuilder` yöntemi kullanarak Azure Cosmos DB için bir bağlantı nesnesi oluşturun. Aşağıdaki kodun yalnızca bir kez yürütülmesi gerektiğini fasulye içine bu bildirimi koymak emin olun:
 
    ```java
    ConnectionPolicy cp=new ConnectionPolicy();
@@ -228,13 +228,13 @@ Zaman uyumsuz Java SDK 'sını aşağıdaki adımlarla kullanın:
    container = client.getDatabase(_dbName).getContainer(_collName);
    ```
 
-1. Sorguyu yürütmek için aşağıdaki kod parçacığını çalıştırmanız gerekir:
+1. Sorguyu yürütmek için aşağıdaki kod parçacıklarını çalıştırmanız gerekir:
 
    ```java
    Flux<FeedResponse<CosmosItemProperties>> objFlux= container.queryItems(query, fo);
    ```
 
-Şimdi, yukarıdaki yöntemin yardımıyla birden çok sorgu geçirebilir ve sorunsuz bir şekilde yürütebilirsiniz. Birden çok sorguya bölünebilen bir büyük sorgu yürütme gereksinimine sahipseniz, daha sonra bir önceki kod parçacığını deneyin:
+Şimdi, yukarıdaki yöntem yardımıyla birden çok sorguları geçirebilirsiniz ve herhangi bir güçlük olmadan yürütmek. Birden çok sorguya bölünebilen büyük bir sorgu yürütme gereksiniminiz varsa, bir önceki yerine aşağıdaki kod parçacıklarını deneyin:
 
 ```java
 for(SqlQuerySpec query:queries)
@@ -258,7 +258,7 @@ for(SqlQuerySpec query:queries)
 }
 ```
 
-Önceki kodla sorguları paralel olarak çalıştırabilir ve iyileştirmek için dağıtılmış yürütmelerin artmasını sağlayabilirsiniz. Diğer bir deyişle ekleme ve güncelleştirme işlemlerini de çalıştırabilirsiniz:
+Önceki kodla, sorguları paralel olarak çalıştırabilir ve en iyi duruma getirmek için dağıtılmış yürütmeleri artırabilirsiniz. Ayrıca ekleme ve güncelleştirme işlemlerini de çalıştırabilirsiniz:
 
 ### <a name="insert-operation"></a>Ekleme işlemi
 
@@ -268,7 +268,7 @@ Belgeyi eklemek için aşağıdaki kodu çalıştırın:
 Mono<CosmosItemResponse> objMono= container.createItem(doc,ro);
 ```
 
-Ardından mono 'ya abone ol:
+Sonra Mono'ya şu şekilde abone olun:
 
 ```java
 CountDownLatch latch=new CountDownLatch(1);
@@ -284,33 +284,33 @@ objMono .subscribeOn(Schedulers.elastic())
 latch.await();              
 ```
 
-### <a name="upsert-operation"></a>Upsert işlem
+### <a name="upsert-operation"></a>Yükseltme işlemi
 
-Upsert işlem, güncelleştirilmesi gereken belgeyi belirtmenizi gerektirir. Tüm belgeyi getirmek için, başlık okuma işlemi altında belirtilen kod parçacığını kullanabilir sonra gerekli alanları değiştirebilirsiniz. Aşağıdaki kod parçacığı belgeyi çıkarır:
+Yukarı işlemi, güncelleştirilmesi gereken belgeyi belirtmenizi gerektirir. Belgenin tamamını almak için okuma işlemi başlığı altında belirtilen parçacığı kullanabilirsiniz ve ardından gerekli alan(lar) değiştirebilirsiniz. Aşağıdaki kod snippet belgeyi yukarılar:
 
 ```java
 Mono<CosmosItemResponse> obs= container.upsertItem(doc, ro);
 ```
-Ardından mono 'ya abone olun. Ekleme işleminde mono abonelik kod parçacığına bakın.
+Sonra mono abone olun. Ekleme işlemindeki mono abonelik snippet'ine bakın.
 
-### <a name="delete-operation"></a>Silme işlemi
+### <a name="delete-operation"></a>İşlemi silme
 
-Aşağıdaki kod parçacığı, silme işlemini yapılacak:
+Aşağıdaki snippet silme işlemi yapacaktır:
 
 ```java     
 CosmosItem objItem= container.getItem(doc.Id, doc.Tenant);
 Mono<CosmosItemResponse> objMono = objItem.delete(ro);
 ```
 
-Ardından mono 'ya abone olun, ekleme işleminde mono abonelik kod parçacığına bakın. Tam kod örneği, [Couşbasetocosmosdb-Asynınspring](https://github.com/Azure-Samples/couchbaseTocosmosdb/tree/master/AsyncInSpring) GitHub deposunda mevcuttur.
+Sonra mono abone olun, ekleme işleminde mono abonelik snippet bakın. Tam kod örneği [CouchbaseToCosmosDB-AsyncInSpring](https://github.com/Azure-Samples/couchbaseTocosmosdb/tree/master/AsyncInSpring) GitHub repo mevcuttur.
 
-## <a name="couchbase-as-a-keyvalue-pair"></a>Anahtar/değer çifti olarak couşbase
+## <a name="couchbase-as-a-keyvalue-pair"></a>Anahtar/değer çifti olarak Couchbase
 
-Bu, sorgular yerine arama gerçekleştirebileceğiniz basit bir iş yükü türüdür. Anahtar/değer çiftleri için aşağıdaki adımları kullanın:
+Bu, sorgular yerine arama yapabileceğiniz basit bir iş yükü türüdür. Anahtar/değer çiftleri için aşağıdaki adımları kullanın:
 
-1. Birincil anahtar olarak "/ID" seçeneğini göz önünde bulundurun. Bu, arama işlemini doğrudan belirli bölümde gerçekleştirebilmeniz için sağlar. Bir koleksiyon oluşturun ve bölüm anahtarı olarak "/ID" belirtin.
+1. "/ID"yi birincil anahtar olarak kullanmayı düşünün, bu da arama işlemini doğrudan belirli bir bölümde gerçekleştirebileceğinizden emin olur. Bir koleksiyon oluşturun ve bölüm anahtarı olarak "/ID" belirtin.
 
-1. Dizin oluşturma işleminin tamamen devre dışı bırakın. Arama işlemlerini yürütecağından, dizin oluşturma ek yükü taşıma noktası yoktur. Dizin oluşturmayı devre dışı bırakmak için Azure portal oturum açın, Azure Cosmos DB hesaba gidin. **Veri Gezgini**açın, **veritabanınızı** ve **kapsayıcıyı**seçin. **Ölçek & ayarları** sekmesini açın ve **Dizin oluşturma ilkesini**seçin. Şu anda dizin oluşturma ilkesi şu şekilde görünür:
+1. Dizin oluşturmayı tamamen kapatın. Arama işlemlerini yürüteceğiniz için, ek yükü dizin taşımanın bir anlamı yoktur. Dizin oluşturmayı kapatmak için Azure portalında oturum açın ve Azure Cosmos DB Hesabı'na gidin. Veri **Gezgini'ni**açın, **Veritabanınızı** ve **Kapsayıcı'yı**seçin. Ölçek **& Ayarlar** sekmesini açın ve **Dizin Oluşturma İlkesi'ni**seçin. Şu anda dizine alma ilkesi aşağıdaki gibi görünür:
     
    ```json
    {
@@ -348,7 +348,7 @@ Bu, sorgular yerine arama gerçekleştirebileceğiniz basit bir iş yükü tür�
    }
    ````
 
-   Yukarıdaki dizin oluşturma ilkesini aşağıdaki ilkeyle değiştirin:
+   Yukarıdaki dizin oluşturma ilkesini aşağıdaki ilkeile değiştirin:
 
    ```json
    {
@@ -356,7 +356,7 @@ Bu, sorgular yerine arama gerçekleştirebileceğiniz basit bir iş yükü tür�
    }
    ```
 
-1. Bağlantı nesnesini oluşturmak için aşağıdaki kod parçacığını kullanın. Bağlantı nesnesi (@Bean yerleştirilecek veya statik hale getirmek için):
+1. Bağlantı nesnesini oluşturmak için aşağıdaki kod parçacıklarını kullanın. Bağlantı Nesnesi (yerleştirilecek @Bean veya statik hale getirilecek):
 
    ```java
    ConnectionPolicy cp=new ConnectionPolicy();
@@ -373,11 +373,11 @@ Bu, sorgular yerine arama gerçekleştirebileceğiniz basit bir iş yükü tür�
    container = client.getDatabase(_dbName).getContainer(_collName);
    ```
 
-Artık CRUD işlemlerini aşağıdaki gibi çalıştırabilirsiniz:
+Şimdi CRUD işlemlerini aşağıdaki gibi yürütebilirsiniz:
 
-### <a name="read-operation"></a>Okuma işlemi
+### <a name="read-operation"></a>İşlemi okuma
 
-Öğeyi okumak için aşağıdaki kod parçacığını kullanın:
+Öğeyi okumak için aşağıdaki parçacığı kullanın:
 
 ```java        
 CosmosItemRequestOptions ro=new CosmosItemRequestOptions();
@@ -400,13 +400,13 @@ latch.await();
 
 ### <a name="insert-operation"></a>Ekleme işlemi
 
-Bir öğe eklemek için aşağıdaki kodu uygulayabilirsiniz:
+Bir öğe eklemek için aşağıdaki kodu gerçekleştirebilirsiniz:
 
 ```java 
 Mono<CosmosItemResponse> objMono= container.createItem(doc,ro);
 ```
 
-Ardından mono 'ya abone ol:
+Sonra mono abone olarak:
 
 ```java
 CountDownLatch latch=new CountDownLatch(1);
@@ -422,36 +422,36 @@ objMono.subscribeOn(Schedulers.elastic())
 latch.await();
 ```
 
-### <a name="upsert-operation"></a>Upsert işlem
+### <a name="upsert-operation"></a>Yükseltme işlemi
 
-Bir öğenin değerini güncelleştirmek için aşağıdaki kod parçacığını inceleyin:
+Bir öğenin değerini güncelleştirmek için aşağıdaki kod parçacığına bakın:
 
 ```java
 Mono<CosmosItemResponse> obs= container.upsertItem(doc, ro);
 ```
-Ardından mono 'ya abone olun, ekleme işleminde mono abonelik kod parçacığına bakın.
+Sonra mono abone olun, ekleme işleminde mono abonelik snippet bakın.
 
-### <a name="delete-operation"></a>Silme işlemi
+### <a name="delete-operation"></a>İşlemi silme
 
-Silme işlemini yürütmek için aşağıdaki kod parçacığını kullanın:
+Silme işlemini yürütmek için aşağıdaki snippet'i kullanın:
 
 ```java     
 CosmosItem objItem= container.getItem(id, id);
 Mono<CosmosItemResponse> objMono = objItem.delete(ro);
 ```
 
-Ardından mono 'ya abone olun, ekleme işleminde mono abonelik kod parçacığına bakın. Tam kod örneği [Couşbasetocosmosdb-AsyncKeyValue](https://github.com/Azure-Samples/couchbaseTocosmosdb/tree/master/AsyncKeyValue) GitHub deposunda mevcuttur.
+Sonra mono abone olun, ekleme işleminde mono abonelik snippet bakın. Tam kod örneği [CouchbaseToCosmosDB-AsyncKeyValue](https://github.com/Azure-Samples/couchbaseTocosmosdb/tree/master/AsyncKeyValue) GitHub repo mevcuttur.
 
 ## <a name="data-migration"></a>Veri Taşıma
 
-Veri geçişi için iki yol vardır.
+Verileri geçirmenin iki yolu vardır.
 
-* **Azure Data Factory kullanın:** Bu, verileri geçirmek için en önerilen yöntemdir. Kaynağı Couşbase ve Sink olarak Yapılandırma Azure Cosmos DB SQL API 'SI, ayrıntılı adımlar için bkz. Azure [Cosmos DB Data Factory Bağlayıcısı](../data-factory/connector-azure-cosmos-db.md) makalesi.
+* **Azure Veri Fabrikası'nı kullanın:** Bu, verileri geçirmek için en çok önerilen yöntemdir. Kaynağı Couchbase olarak yapılandırın ve Azure Cosmos DB SQL API olarak battı, ayrıntılı adımlar için Azure [Cosmos DB Data Factory bağlayıcısı](../data-factory/connector-azure-cosmos-db.md) makalesine bakın.
 
-* **Azure Cosmos DB veri alma aracını kullanın:** Bu seçenek, daha az miktarda veri içeren VM 'Leri kullanarak geçiş yapmak için önerilir. Ayrıntılı adımlar için bkz. [veri alma](./import-data.md) makalesi.
+* **Azure Cosmos DB veri alma aracını kullanın:** Bu seçenek, daha az veri miktarı ile VM'ler kullanarak geçiş için önerilir. Ayrıntılı adımlar için [Veri aktarıcısı](./import-data.md) makalesine bakın.
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-* Performans testi yapmak için bkz. [Azure Cosmos DB makalesinde performans ve ölçek testi](./performance-testing.md) .
-* Kodu iyileştirmek için [Azure Cosmos DB makalesine yönelik performans ipuçları](./performance-tips-async-java.md) bölümüne bakın.
-* Java Async v3 SDK, [SDK başvuru](https://github.com/Azure/azure-cosmosdb-java/tree/v3) GitHub deposu ' nu keşfet.
+* Performans testi yapmak için [Azure Cosmos DB makalesiyle Performans ve ölçek testine](./performance-testing.md) bakın.
+* Kodu optimize etmek [için Azure Cosmos DB](./performance-tips-async-java.md) makalesi için Performans ipuçlarına bakın.
+* Java Async V3 SDK, [SDK referans](https://github.com/Azure/azure-cosmosdb-java/tree/v3) GitHub repo keşfedin.

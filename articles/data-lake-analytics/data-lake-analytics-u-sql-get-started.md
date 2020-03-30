@@ -1,6 +1,6 @@
 ---
-title: Azure Data Lake Analytics 'de U-SQL dili ile çalışmaya başlama
-description: Azure Data Lake Analytics 'deki U-SQL dilinin temellerini öğrenin. Dosyalardan daha fazla veri eklemek, satır kümesini dönüştürmek ve verileri toplamak için değişkenleri kullanarak ilk sorgunuzu yazın.
+title: Azure Veri Gölü Analytics'te U-SQL dili yle başlayın
+description: Azure Veri Gölü Analitiği'nde U-SQL dilinin temellerini öğrenin. Dosyalardan gelen ekstra verileri kullanmak, satır kümesini dönüştürmek ve verileri toplamak için ilk sorgunuzu değişkenleri kullanarak yazın.
 services: data-lake-analytics
 author: saveenr
 ms.author: saveenr
@@ -10,28 +10,28 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 06/23/2017
 ms.openlocfilehash: 8130679dcc519cecd25abf43902c003ad8047df3
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/29/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71672831"
 ---
-# <a name="get-started-with-u-sql-in-azure-data-lake-analytics"></a>Azure Data Lake Analytics 'de U-SQL ile çalışmaya başlama
-U-SQL, herhangi bir ölçekte verileri işlemenizi sağlamak için C# , BILDIRIME dayalı SQL 'i kesinlik ile birleştiren bir dildir. U-SQL ' i n ölçeklenebilir, dağıtılmış sorgu özelliği aracılığıyla Azure SQL veritabanı gibi ilişkisel depolarda verileri verimli bir şekilde çözümleyebilirsiniz. U-SQL ile, okuma ve özel mantık ve UDF 'ler ekleme üzerine şema uygulayarak yapılandırılmamış verileri işleyebilirsiniz. Ayrıca, U-SQL, ölçekte nasıl yürütülebilecek konusunda ayrıntılı denetim sağlayan genişletilebilirlik içerir. 
+# <a name="get-started-with-u-sql-in-azure-data-lake-analytics"></a>Azure Veri Gölü Analizi'nde U-SQL ile başlayın
+U-SQL, verileri herhangi bir ölçekte işlemenizi sağlamak için bildirimsel SQL ile zorunlu C# ile birleştiren bir dildir. U-SQL'in ölçeklenebilir, dağıtılmış sorgu özelliği sayesinde, Verileri Azure SQL Veritabanı gibi ilişkisel mağazalar arasında verimli bir şekilde çözümleyebilirsiniz. U-SQL ile, okunan şema uygulayarak ve özel mantık ve UDF'ler ekleyerek yapılandırılmamış verileri işleyebilirsiniz. Ayrıca, U-SQL ölçekte yürütme konusunda ince taneli denetim sağlayan genişletilebilirlik içerir. 
 
 ## <a name="learning-resources"></a>Öğrenme kaynakları
 
-* [U-SQL öğreticisi](https://aka.ms/usqltutorial) , u-SQL dilinin büyük bir adım adım kılavuz sağlar. Bu belge, U-SQL öğrenmekle mücadele eden tüm geliştiriciler için okunmaya önerilir.
-* **U-SQL dili sözdizimi**hakkında ayrıntılı bilgi için, bkz. [u-SQL dili başvurusu](https://docs.microsoft.com/u-sql/).
-* **U-SQL tasarım FI**'sini anlamak Için, Visual Studio blog gönderisine ( [u-SQL tanıtımı), büyük veri işlemeyi kolay hale getiren bir dili](https://blogs.msdn.microsoft.com/visualstudio/2015/09/28/introducing-u-sql-a-language-that-makes-big-data-processing-easy/)inceleyin.
+* [U-SQL Öğretici, U-SQL](https://aka.ms/usqltutorial) dilinin çoğunun kılavuzlu bir geçişini sağlar. Bu belge, U-SQL öğrenmek isteyen tüm geliştiriciler için okunması önerilir.
+* **U-SQL dil sözdizimi**hakkında ayrıntılı bilgi için [U-SQL Dil Başvurusu'na](https://docs.microsoft.com/u-sql/)bakın.
+* **U-SQL tasarım felsefesini**anlamak için Visual Studio blog yazısı na bakın [U-SQL Tanıtılması – Büyük Veri İşlemeyi Kolaylaştıran Bir Dil](https://blogs.msdn.microsoft.com/visualstudio/2015/09/28/introducing-u-sql-a-language-that-makes-big-data-processing-easy/).
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Bu belgedeki U-SQL örneklerinden geçmeden önce, [öğreticiyi tamamlayın: Visual Studio için Data Lake araçları 'nı kullanarak u-SQL betikleri geliştirin](data-lake-analytics-data-lake-tools-get-started.md). Bu öğreticide, Visual Studio için Azure Data Lake Araçları ile U-SQL kullanma mekanizması açıklanmaktadır.
+Bu belgedeki U-SQL örneklerini gözden geçirmeden önce, Öğreticiyi okuyun ve [tamamlayın: Visual Studio için Data Lake Tools'u kullanarak U-SQL komut dosyaları geliştirin.](data-lake-analytics-data-lake-tools-get-started.md) Bu öğretici, Visual Studio için Azure Data Lake Tools ile U-SQL kullanmanın mekaniğini açıklar.
 
 ## <a name="your-first-u-sql-script"></a>İlk U-SQL betiğiniz
 
-Aşağıdaki U-SQL betiği basittir ve U-SQL dilinin birçok yönlerini araştırmamızı sağlar.
+Aşağıdaki U-SQL komut dosyası basittir ve U-SQL dilini birçok açıdan keşfetmemizi sağlar.
 
 ```
 @searchlog =
@@ -50,30 +50,30 @@ OUTPUT @searchlog
     USING Outputters.Csv();
 ```
 
-Bu betikte herhangi bir dönüştürme adımı yok. `SearchLog.tsv`adlı kaynak dosyadan okur, şemalar ve satır kümesini SearchLog-first-u-sql. csv adlı bir dosyaya geri yazar.
+Bu komut dosyasının herhangi bir dönüşüm adımı yok. Bu adlı `SearchLog.tsv`kaynak dosyadan okur , şematize, ve searchlog-first-u-sql.csv adlı bir dosyaya rowset geri yazar.
 
-`Duration` alanındaki veri türünün yanındaki soru işaretine dikkat edin. `Duration` alanın null olabileceği anlamına gelir.
+Alandaki veri türünün yanındaki soru `Duration` işaretine dikkat edin. `Duration` Bu, alanın hükümsüz olabileceği anlamına geliyor.
 
 ### <a name="key-concepts"></a>Önemli kavramlar
-* **Satır kümesi değişkenleri**: bir satır kümesi üreten her sorgu ifadesi bir değişkene atanabilir. U-SQL, betikteki T-SQL değişken adlandırma örüntüsünün (örneğin`@searchlog`) izler.
-* **Extract** anahtar sözcüğü bir dosyadaki verileri okur ve okunan şemayı tanımlar. `Extractors.Tsv`, sekmeyle ayrılmış değer dosyaları için yerleşik bir U-SQL ayıklayıcısı. Özel ayıklayıcıları geliştirebilirsiniz.
-* **Çıktı** , verileri bir satır kümesinden dosyaya yazar. `Outputters.Csv()`, virgülle ayrılmış değer dosyası oluşturmak için yerleşik bir U-SQL outputter ' dur. Özel çıktıcılar geliştirebilirsiniz.
+* **Rowset değişkenleri**: Bir satır kümesi oluşturan her sorgu ifadesi bir değişkene atanabilir. U-SQL komut dosyasında T-SQL`@searchlog`değişken adlandırma deseni (örneğin) izler.
+* **EXTRACT** anahtar kelimesi bir dosyadaki verileri okur ve okuma daki şemı tanımlar. `Extractors.Tsv`sekme-ayrılmış değer dosyaları için yerleşik bir U-SQL çıkarıcıdır. Özel çıkarıcılar geliştirebilirsiniz.
+* **OUTPUT,** bir satır kümesinden dosyaya veri yazar. `Outputters.Csv()`virgülle ayrılmış değer dosyası oluşturmak için yerleşik bir U-SQL çıktısıdır. Özel çıktılar geliştirebilirsiniz.
 
 ### <a name="file-paths"></a>Dosya yolları
 
-AYıKLA ve OUTPUT deyimleri dosya yollarını kullanır. Dosya yolları mutlak veya göreli olabilir:
+EXTRACT ve OUTPUT deyimleri dosya yollarını kullanır. Dosya yolları mutlak veya göreceli olabilir:
 
-Aşağıdaki mutlak dosya yolu, `mystore`adlı Data Lake Store bir dosyaya başvurur:
+Bu aşağıdaki mutlak dosya yolu, `mystore`Veri Gölü Deposu'ndaki bir dosyayı ifade eder:
 
     adl://mystore.azuredatalakestore.net/Samples/Data/SearchLog.tsv
 
-Aşağıdaki dosya yolu `"/"`başlar. Varsayılan Data Lake Store hesabındaki bir dosyaya başvurur:
+Bu aşağıdaki dosya `"/"`yolu ile başlar. Varsayılan Data Lake Store hesabındaki bir dosyayı ifade eder:
 
     /output/SearchLog-first-u-sql.csv
 
-## <a name="use-scalar-variables"></a>Skalar değişkenler kullanın
+## <a name="use-scalar-variables"></a>Skaler değişkenleri kullanma
 
-Skalar değişkenleri kullanabilir ve betik bakımının daha kolay olmasını sağlayabilirsiniz. Önceki U-SQL betiği de şöyle yazılabilir:
+Komut dosyası bakımınızı kolaylaştırmak için skaler değişkenleri de kullanabilirsiniz. Önceki U-SQL komut dosyası da şu şekilde yazılabilir:
 
     DECLARE @in  string = "/Samples/Data/SearchLog.tsv";
     DECLARE @out string = "/output/SearchLog-scalar-variables.csv";
@@ -93,9 +93,9 @@ Skalar değişkenleri kullanabilir ve betik bakımının daha kolay olmasını s
         TO @out
         USING Outputters.Csv();
 
-## <a name="transform-rowsets"></a>Satır kümelerini Dönüştür
+## <a name="transform-rowsets"></a>Sıra kümelerini dönüştürme
 
-Satır kümelerini dönüştürmek için **Seç ' i** kullanın:
+Sıra kümelerini dönüştürmek için **SELECT'i** kullanın:
 
     @searchlog =
         EXTRACT UserId          int,
@@ -117,9 +117,9 @@ Satır kümelerini dönüştürmek için **Seç ' i** kullanın:
         TO "/output/SearchLog-transform-rowsets.csv"
         USING Outputters.Csv();
 
-WHERE yan tümcesi bir [ C# Boole ifadesi](/dotnet/csharp/language-reference/operators/index)kullanır. Kendi ifadelerinizi ve C# işlevlerinizi yapmak için ifade dilini kullanabilirsiniz. Hatta bunları mantıksal yarışmalar (and) ve ayırt edici (ORs) ile birleştirerek daha karmaşık filtreler de gerçekleştirebilirsiniz.
+WHERE yan tümcesi [C# Boolean ifadesini](/dotnet/csharp/language-reference/operators/index)kullanır. Kendi ifadelerinizi ve işlevlerinizi yapmak için C# ifade dilini kullanabilirsiniz. Hatta mantıksal bağlaçlar (ANDs) ve disjunctions (ORs) ile birleştirerek daha karmaşık filtreleme gerçekleştirebilirsiniz.
 
-Aşağıdaki betik DateTime. Parse () yöntemini ve bir birlikte kullanır.
+Aşağıdaki komut dosyası DateTime.Parse() yöntemini ve bağlaçları kullanır.
 
     @searchlog =
         EXTRACT UserId          int,
@@ -147,14 +147,14 @@ Aşağıdaki betik DateTime. Parse () yöntemini ve bir birlikte kullanır.
         USING Outputters.Csv();
 
  >[!NOTE]
- >İkinci sorgu, iki filtrenin bileşimini oluşturan ilk satır kümesinin sonucu üzerinde çalışıyor. Ayrıca bir değişken adını yeniden kullanabilirsiniz ve adlar kapsama göre kapsamlandırılır.
+ >İkinci sorgu, iki filtrenin bir bileşimini oluşturan ilk satır kümesinin sonucu üzerinde çalışıyor. Değişken adını yeniden kullanabilirsiniz ve adlar sözlü olarak kapsamlıdır.
 
-## <a name="aggregate-rowsets"></a>Toplu satır kümeleri
-U-SQL, size göre tanıdık SıRALAMA, gruplama ölçütü ve toplamaları sağlar.
+## <a name="aggregate-rowsets"></a>Toplam sıra kümeleri
+U-SQL size tanıdık ORDER BY, GROUP BY ve toplamaları verir.
 
-Aşağıdaki sorgu, bölge başına toplam süreyi bulur ve sonra ilk beş süreyi sırasıyla görüntüler.
+Aşağıdaki sorgu bölge başına toplam süreyi bulur ve ardından sırayla en iyi beş süreyi görüntüler.
 
-U-SQL satır kümeleri bir sonraki sorgu için sıralarını korumaz. Bu nedenle, bir çıktıyı sıralamak için OUTPUT ifadesine ORDER BY eklemeniz gerekir:
+U-SQL rowsets bir sonraki sorgu için kendi sırasını korumaz. Bu nedenle, bir çıktı sipariş etmek için, OUTPUT deyimine ORDER BY eklemeniz gerekir:
 
     DECLARE @outpref string = "/output/Searchlog-aggregation";
     DECLARE @out1    string = @outpref+"_agg.csv";
@@ -194,9 +194,9 @@ U-SQL satır kümeleri bir sonraki sorgu için sıralarını korumaz. Bu nedenle
         ORDER BY TotalDuration DESC
         USING Outputters.Csv();
 
-U-SQL ORDER BY yan tümcesi bir SELECT ifadesinde FETCH yan tümcesinin kullanılmasını gerektirir.
+U-SQL ORDER BY yan tümcesi SELECT ifadesinde FETCH yan tümcesini kullanmayı gerektirir.
 
-U-SQL HAVING yan tümcesi, çıkış koşulunu karşılayan gruplarla sınırlamak için kullanılabilir:
+U-SQL HAVING yan tümcesi, çıktıyı HAVING koşulunu karşılayan gruplarla sınırlamak için kullanılabilir:
 
     @searchlog =
         EXTRACT UserId          int,
@@ -222,7 +222,7 @@ U-SQL HAVING yan tümcesi, çıkış koşulunu karşılayan gruplarla sınırlam
         ORDER BY TotalDuration DESC
         USING Outputters.Csv();
 
-Gelişmiş toplama senaryolarında, bkz. [toplu, analitik ve başvuru işlevleri](/u-sql/built-in-functions) için U-SQL başvurusu belgeleri
+Gelişmiş toplama senaryoları [için, toplama, analitik ve başvuru işlevleri](/u-sql/built-in-functions) için U-SQL başvuru belgelerine bakın
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Microsoft Azure Data Lake Analytics'e genel bakış](data-lake-analytics-overview.md)

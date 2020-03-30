@@ -1,6 +1,6 @@
 ---
-title: Gelen trafik v1 denetimi
-description: App Service Ortamı gelen trafiği nasıl denetleyeceğinizi öğrenin. Bu belge yalnızca eski v1 Ao kullanan müşteriler için sağlanır.
+title: Gelen trafiği kontrol etmek v1
+description: Bir Uygulama Hizmet Ortamı'na gelen trafiği nasıl kontrol edin. Bu doküman yalnızca eski v1 ASE'yi kullanan müşteriler için sağlanır.
 author: ccompy
 ms.assetid: 4cc82439-8791-48a4-9485-de6d8e1d1a08
 ms.topic: article
@@ -8,111 +8,111 @@ ms.date: 01/11/2017
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: aa43d44a691fa9151959e8817596bdfc9bba65f0
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74687384"
 ---
-# <a name="how-to-control-inbound-traffic-to-an-app-service-environment"></a>App Service Ortamı gelen trafiği denetleme
+# <a name="how-to-control-inbound-traffic-to-an-app-service-environment"></a>Uygulama Servis Ortamına Gelen Trafiği Denetleme
 ## <a name="overview"></a>Genel Bakış
-**Bir App Service Ortamı** Azure Resource Manager Sanal ağda **veya** klasik dağıtım modeli [sanal ağında][virtualnetwork]oluşturulabilir.  Yeni bir sanal ağ ve yeni alt ağ bir App Service Ortamı oluşturulduğu sırada tanımlanabilir.  Alternatif olarak, önceden var olan bir sanal ağda ve önceden var olan alt ağda bir App Service Ortamı oluşturulabilir.  Haziran 2016 ' de yapılan bir değişiklik ile, ASE 'ler ortak adres aralıkları veya RFC1918 adres alanları (örn. özel adresler) kullanan sanal ağlara da dağıtılabilir.  App Service Ortamı oluşturma hakkında daha fazla bilgi için bkz. [App Service ortamı oluşturma][HowToCreateAnAppServiceEnvironment].
+Bir Azure Kaynak Yöneticisi **either** sanal ağında **veya** klasik dağıtım modeli [sanal ağında][virtualnetwork]Bir Uygulama Hizmet Ortamı oluşturulabilir.  Uygulama Hizmet Ortamı oluşturulduğunda yeni bir sanal ağ ve yeni alt ağ tanımlanabilir.  Alternatif olarak, önceden varolan bir sanal ağda ve önceden varolan bir alt ağda bir Uygulama Hizmet Ortamı oluşturulabilir.  Haziran 2016'da yapılan bir değişiklikle, AS'ler genel adres aralıklarını veya RFC1918 adres alanlarını (örn. özel adresler) kullanan sanal ağlara da dağıtılabilir.  Bir Uygulama Hizmeti Ortamı oluşturma hakkında daha fazla bilgi için, [Uygulama Hizmeti Ortamı Nasıl Oluşturulur'][HowToCreateAnAppServiceEnvironment]a bakın.
 
-Bir alt ağ, HTTP ve HTTPS trafiğinin yalnızca belirli bir yukarı akış üzerinden kabul edildiği gibi, yukarı akış cihazları ve Hizmetleri arkasındaki gelen trafiği kilitlemek için kullanılabilecek bir ağ sınırı sağladığından, her zaman bir alt ağ içinde oluşturulmalıdır. App Service Ortamı IP adresleri.
+Bir alt ağ, gelen trafiği, http ve HTTPS trafiğinin yalnızca belirli upstream'den kabul edildiği şekilde yukarı akışlı aygıtların ve hizmetlerin arkasına kilitlemek için kullanılabilecek bir ağ sınırı sağladığından, her zaman bir alt ağ içinde oluşturulmalıdır IP adresleri.
 
-Bir alt ağdaki gelen ve giden ağ trafiği bir [ağ güvenlik grubu][NetworkSecurityGroups]kullanılarak denetlenir. Gelen trafiği denetlemek için bir ağ güvenlik grubunda ağ güvenlik kuralları oluşturulması ve ardından ağ güvenlik grubu App Service Ortamı içeren alt ağa atanması gerekir.
+Bir alt ağdaki gelen ve giden ağ trafiği bir [ağ güvenlik grubu][NetworkSecurityGroups]kullanılarak denetlenir. Gelen trafiği denetlemek, ağ güvenlik grubunda ağ güvenliği kuralları oluşturmayı ve ardından ağ güvenlik grubuna App Service Environment'ı içeren alt ağı atamayı gerektirir.
 
-Bir ağ güvenlik grubu bir alt ağa atandıktan sonra, ağ güvenlik grubunda tanımlanan izin verme ve reddetme kurallarına göre App Service Ortamı uygulamalara gelen trafiğe izin verilir/engellenir.
+Bir ağ güvenlik grubu bir alt ağa atandıktan sonra, Uygulama Hizmeti Ortamındaki uygulamalara gelen trafiğe, ağ güvenlik grubunda tanımlanan izin verme ve reddetme kurallarına göre izin verilir/engellenir.
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../../includes/app-service-web-to-api-and-mobile.md)]
 
-## <a name="inbound-network-ports-used-in-an-app-service-environment"></a>App Service Ortamı kullanılan gelen ağ bağlantı noktaları
-Ağ güvenlik grubuyla gelen ağ trafiğini kilitlemeden önce, bir App Service Ortamı tarafından kullanılan gerekli ve isteğe bağlı ağ bağlantı noktaları kümesini bilmeniz önemlidir.  Bazı bağlantı noktalarına gelen trafiği yanlışlıkla kapatmak bir App Service Ortamı işlev kaybına neden olabilir.
+## <a name="inbound-network-ports-used-in-an-app-service-environment"></a>Uygulama Hizmeti Ortamında Kullanılan Gelen Ağ Bağlantı Noktaları
+Bir ağ güvenlik grubuyla gelen ağ trafiğini kilitlemeden önce, Bir Uygulama Hizmeti Ortamı tarafından kullanılan gerekli ve isteğe bağlı ağ bağlantı noktaları kümesini bilmek önemlidir.  Bazı bağlantı noktalarına trafiğin yanlışlıkla kapatılması, Bir Uygulama Hizmeti Ortamında işlevsellik kaybına neden olabilir.
 
-Bir App Service Ortamı tarafından kullanılan bağlantı noktalarının listesi aşağıda verilmiştir. Tersi belirtilmedikçe, tüm bağlantı noktaları **TCP**ile yapılır:
+Aşağıda, Bir Uygulama Hizmet Ortamı tarafından kullanılan bağlantı noktalarının listesi verilmiştir. Aksi açıkça belirtilmedikçe tüm bağlantı noktaları **TCP'dir:**
 
-* 454: Azure altyapısı tarafından SSL aracılığıyla App Service ortamları yönetmek ve sürdürmek için kullanılan **bağlantı noktası** .  Bu bağlantı noktasına giden trafiği engellemez.  Bu bağlantı noktası her zaman bir ASE 'nin Genel VIP 'sine bağlanır.
-* 455: Azure altyapısı tarafından SSL aracılığıyla App Service ortamları yönetmek ve sürdürmek için kullanılan **bağlantı noktası** .  Bu bağlantı noktasına giden trafiği engellemez.  Bu bağlantı noktası her zaman bir ASE 'nin Genel VIP 'sine bağlanır.
-* 80: bir App Service Ortamı App Service planlarında çalışan uygulamalara gelen HTTP trafiği için varsayılan bağlantı noktası.  ILB etkin bir Ao, bu bağlantı noktası Ao 'nun ıLB adresine bağlıdır.
-* 443: bir App Service Ortamı App Service planlarında çalışan uygulamalara gelen SSL trafiği için varsayılan bağlantı noktası.  ILB etkin bir Ao, bu bağlantı noktası Ao 'nun ıLB adresine bağlıdır.
-* 21: FTP için denetim kanalı.  FTP kullanılmıyorsa bu bağlantı noktası güvenle engellenebilir.  ILB özellikli bir AO 'da, bu bağlantı noktası bir AO için ıLB adresine bağlanabilir.
-* 990: FTPS için denetim kanalı.  Bu bağlantı noktası, FTPS kullanılmıyorsa güvenle engellenebilir.  ILB özellikli bir AO 'da, bu bağlantı noktası bir AO için ıLB adresine bağlanabilir.
-* 10001-10020: FTP için veri kanalları.  Denetim kanalında olduğu gibi, FTP kullanılmıyorsa bu bağlantı noktaları güvenle engellenebilir.  ILB özellikli bir AO 'da, bu bağlantı noktası ATıCı 'in ıLB adresine bağlanabilir.
-* 4016: Visual Studio 2012 ile uzaktan hata ayıklama için kullanılır.  Bu bağlantı noktası, özellik kullanılmıyorsa güvenle engellenebilir.  ILB etkin bir Ao, bu bağlantı noktası Ao 'nun ıLB adresine bağlıdır.
-* 4018: Visual Studio 2013 ile uzaktan hata ayıklama için kullanılır.  Bu bağlantı noktası, özellik kullanılmıyorsa güvenle engellenebilir.  ILB etkin bir Ao, bu bağlantı noktası Ao 'nun ıLB adresine bağlıdır.
-* 4020: Visual Studio 2015 ile uzaktan hata ayıklama için kullanılır.  Bu bağlantı noktası, özellik kullanılmıyorsa güvenle engellenebilir.  ILB etkin bir Ao, bu bağlantı noktası Ao 'nun ıLB adresine bağlıdır.
+* 454: SSL üzerinden Uygulama Hizmet Ortamlarını yönetmek ve sürdürmek için Azure altyapısı tarafından kullanılan **gerekli bağlantı noktası.**  Bu bağlantı noktasının trafiğini engellemeyin.  Bu bağlantı noktası her zaman bir ASE'nin genel VIP'sine bağlıdır.
+* 455: SSL üzerinden Uygulama Hizmet Ortamlarını yönetmek ve sürdürmek için Azure altyapısı tarafından kullanılan **gerekli bağlantı noktası.**  Bu bağlantı noktasının trafiğini engellemeyin.  Bu bağlantı noktası her zaman bir ASE'nin genel VIP'sine bağlıdır.
+* 80: Uygulama Hizmeti Ortamında Uygulama Hizmeti Planlarında çalışan uygulamalara gelen HTTP trafiği için varsayılan bağlantı noktası.  ILB özellikli bir ASE'de bu bağlantı noktası ASE'nin ILB adresine bağlıdır.
+* 443: Uygulama Hizmet Ortamında Uygulama Hizmet Planları'nda çalışan uygulamalara gelen SSL trafiği için varsayılan bağlantı noktası.  ILB özellikli bir ASE'de bu bağlantı noktası ASE'nin ILB adresine bağlıdır.
+* 21: FTP için kontrol kanalı.  FTP kullanılıyorsa bu bağlantı noktası güvenle engellenebilir.  ILB özellikli bir ASE'de, bu bağlantı noktası bir ASE için ILB adresine bağlanabilir.
+* 990: FTPS için kontrol kanalı.  FTPS kullanılmadığı takdirde bu bağlantı noktası güvenli bir şekilde engellenebilir.  ILB özellikli bir ASE'de, bu bağlantı noktası bir ASE için ILB adresine bağlanabilir.
+* 10001-10020: FTP için veri kanalları.  Kontrol kanalında olduğu gibi, FTP kullanılmadığı takdirde bu bağlantı noktaları güvenli bir şekilde engellenebilir.  ILB özellikli bir ASE'de bu bağlantı noktası ASE'nin ILB adresine bağlanabilir.
+* 4016: Visual Studio 2012 ile uzaktan hata ayıklama için kullanılır.  Özellik kullanılıyorsa bu bağlantı portu güvenle engellenebilir.  ILB özellikli bir ASE'de bu bağlantı noktası ASE'nin ILB adresine bağlıdır.
+* 4018: Visual Studio 2013 ile uzaktan hata ayıklama için kullanılır.  Özellik kullanılıyorsa bu bağlantı portu güvenle engellenebilir.  ILB özellikli bir ASE'de bu bağlantı noktası ASE'nin ILB adresine bağlıdır.
+* 4020: Visual Studio 2015 ile uzaktan hata ayıklama için kullanılır.  Özellik kullanılıyorsa bu bağlantı portu güvenle engellenebilir.  ILB özellikli bir ASE'de bu bağlantı noktası ASE'nin ILB adresine bağlıdır.
 
-## <a name="outbound-connectivity-and-dns-requirements"></a>Giden bağlantı ve DNS gereksinimleri
-App Service Ortamı düzgün bir şekilde çalışması için, ayrıca çeşitli uç noktalara giden erişim gerekir. AX tarafından kullanılan dış uç noktaların tam listesi [ExpressRoute Için ağ yapılandırması](app-service-app-service-environment-network-configuration-expressroute.md#required-network-connectivity) makalesinin "gerekli ağ bağlantısı" bölümünde bulunur.
+## <a name="outbound-connectivity-and-dns-requirements"></a>Giden Bağlantı ve DNS Gereksinimleri
+Bir Uygulama Hizmet Ortamının düzgün çalışması için, çeşitli uç noktalara giden erişim de gerektirir. Bir ASE tarafından kullanılan harici uç noktaların tam [listesi, ExpressRoute](app-service-app-service-environment-network-configuration-expressroute.md#required-network-connectivity) makalesi için Ağ Yapılandırması'nın "Gerekli Ağ Bağlantısı" bölümünde yer almaktadır.
 
-App Service ortamları, sanal ağ için yapılandırılmış geçerli bir DNS altyapısı gerektirir.  Bir App Service Ortamı oluşturulduktan sonra DNS yapılandırması değiştirilirse, geliştiriciler bir App Service Ortamı yeni DNS yapılandırmasını çekmeye zorlayabilir.  [Azure portal][NewPortal] App Service ortamı yönetim dikey penceresinin en üstünde yer alan "yeniden Başlat" simgesi kullanılarak sıralı bir ortamı yeniden başlatmanın tetiklenmesi, ORTAMıN yeni DNS yapılandırmasını başlatmasına neden olur.
+Uygulama Hizmet Ortamları, sanal ağ için yapılandırılmış geçerli bir DNS altyapısı gerektirir.  Herhangi bir nedenle, Bir Uygulama Hizmet Ortamı oluşturulduktan sonra DNS yapılandırması değiştirilirse, geliştiriciler yeni DNS yapılandırmasını almaya bir Uygulama Hizmet Ortamı zorlayabilir.  [Azure portalında][NewPortal] Uygulama Hizmeti Ortamı yönetim bıçağının üst kısmında bulunan "Yeniden Başlat" simgesini kullanarak yuvarlanma ortamını yeniden başlatmayı tetiklemek, ortamın yeni DNS yapılandırmasını almasını sağlar.
 
-Ayrıca, VNET üzerindeki özel DNS sunucularının, bir App Service Ortamı oluşturmadan önce bir süre önce kurulumunu da öneririz.  Bir App Service Ortamı oluşturulurken bir sanal ağın DNS yapılandırması değiştirilirse, bu, App Service Ortamı oluşturma işleminin başarısız olmasına neden olur.  Benzer bir Vein içinde, bir VPN ağ geçidinin diğer ucunda özel bir DNS sunucusu varsa ve DNS sunucusu ulaşılamaz durumdaysa veya kullanılamıyorsa, App Service Ortamı oluşturma işlemi de başarısız olur.
+Ayrıca, vnet'teki özel DNS sunucularının Bir Uygulama Hizmet Ortamı oluşturmadan önce kuruluma önceden kurulması önerilir.  Bir Uygulama Hizmet Ortamı oluşturulurken sanal ağın DNS yapılandırması değiştirilirse, bu Uygulama Hizmeti Ortamı oluşturma işleminin başarısız olmasına neden olur.  Benzer bir şekilde, VPN ağ geçidinin diğer ucunda özel bir DNS sunucusu varsa ve DNS sunucusuna erişilemez veya kullanılamıyorsa, Uygulama Hizmeti Ortamı oluşturma işlemi de başarısız olur.
 
-## <a name="creating-a-network-security-group"></a>Ağ güvenlik grubu oluşturma
-Ağ güvenlik gruplarının nasıl çalıştığı hakkında tam Ayrıntılar için aşağıdaki [bilgileri][NetworkSecurityGroups]görün.  Aşağıdaki Azure hizmet yönetimi örneği, bir ağ güvenlik grubunu yapılandırma ve bir App Service Ortamı içeren bir alt ağa uygulamayla ilgili bir odak içeren ağ güvenlik gruplarının vurgulanması üzerine dokunmalıdır.
+## <a name="creating-a-network-security-group"></a>Ağ Güvenlik Grubu oluşturma
+Ağ güvenlik gruplarının nasıl çalıştığına ilişkin tüm ayrıntılar için aşağıdaki [bilgilere][NetworkSecurityGroups]bakın.  Aşağıdaki Azure Hizmet Yönetimi örneği, bir ağ güvenlik grubunu uygulama hizmeti ortamı içeren bir alt ağa yapılandırmaya ve uygulamaya odaklanarak ağ güvenlik gruplarının önemli noktalarına değinmektedir.
 
-**Note:** Ağ güvenlik grupları, [Azure portalı](https://portal.azure.com) kullanılarak veya Azure PowerShell üzerinden grafiksel olarak yapılandırılabilir.
+**Not:** Ağ güvenlik [grupları, Azure Portalı](https://portal.azure.com) kullanılarak veya Azure PowerShell aracılığıyla grafik olarak yapılandırılabilir.
 
-Ağ güvenlik grupları öncelikle bir abonelikle ilişkili bir tek başına varlık olarak oluşturulur. Ağ güvenlik grupları bir Azure bölgesinde oluşturulduğundan, ağ güvenlik grubunun App Service Ortamı aynı bölgede oluşturulduğundan emin olun.
+Ağ güvenlik grupları ilk olarak bir abonelikle ilişkili bağımsız bir varlık olarak oluşturulur. Ağ güvenlik grupları bir Azure bölgesinde oluşturulduğundan, ağ güvenlik grubunun App Service Environment ile aynı bölgede oluşturulduğundan emin olun.
 
-Aşağıda bir ağ güvenlik grubu oluşturulması gösterilmektedir:
+Aşağıdakiler bir ağ güvenlik grubu oluşturmayı gösterir:
 
     New-AzureNetworkSecurityGroup -Name "testNSGexample" -Location "South Central US" -Label "Example network security group for an app service environment"
 
-Bir ağ güvenlik grubu oluşturulduktan sonra, bir veya daha fazla ağ güvenlik kuralı eklenir.  Kuralların zaman içinde değişebilmesi için, zaman içinde ek kurallar eklemeyi kolaylaştıran kural öncelikleri için kullanılan numaralandırma düzeninin üzerinde yer açmak önerilir.
+Bir ağ güvenlik grubu oluşturulduktan sonra, bir veya daha fazla ağ güvenlik kuralı eklenir.  Kurallar kümesi zaman içinde değişebileceğinden, zaman içinde ek kurallar eklemeyi kolaylaştırmak için kural öncelikleri için kullanılan numaralandırma düzenini ayarlamaları önerilir.
 
-Aşağıdaki örnekte, App Service Ortamı yönetilmesi ve bakımını yapmak için Azure altyapısının gerek duyduğu yönetim bağlantı noktalarına açıkça erişim veren bir kural gösterilmektedir.  Tüm yönetim trafiğinin SSL üzerinden akar ve istemci sertifikaları tarafından güvenli hale getirildiğine ve bu nedenle, bağlantı noktalarının açık olmasına rağmen, Azure Yönetim alt yapısı dışında herhangi bir varlık tarafından erişilemez durumda olduğundan emin olmanız gerekir.
+Aşağıdaki örnekte, Bir Uygulama Hizmeti Ortamını yönetmek ve sürdürmek için Azure altyapısının ihtiyaç duyduğu yönetim bağlantı noktalarına erişim sağlayan bir kural gösterilmektedir.  Tüm yönetim trafiğinin SSL üzerinden aktığını ve istemci sertifikaları yla güvence altına alınmıştır, bu nedenle bağlantı noktaları açılsa bile Azure yönetim altyapısı dışındaki herhangi bir kuruluş tarafından erişilemez.
 
     Get-AzureNetworkSecurityGroup -Name "testNSGexample" | Set-AzureNetworkSecurityRule -Name "ALLOW AzureMngmt" -Type Inbound -Priority 100 -Action Allow -SourceAddressPrefix 'INTERNET'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '454-455' -Protocol TCP
 
 
-80 ve 443 numaralı bağlantı noktasına erişimi kilitleyerek yukarı akış cihazlarının veya hizmetlerinin arkasındaki bir App Service Ortamı "gizlemek" için yukarı akış IP adresini bilmeniz gerekecektir.  Örneğin, bir Web uygulaması güvenlik duvarı (WAF) kullanıyorsanız WAF, trafiği bir aşağı akış App Service Ortamı ara sunucusunu kullanarak kendi IP adresine (veya adreslerine) sahip olur.  Bir ağ güvenlik kuralının *Sourceaddresspredüzeltmesini* PARAMETRESINDE bu IP adresini kullanmanız gerekir.
+Bir Uygulama Hizmet Ortamını yukarı akım aygıtların veya hizmetlerin arkasına "gizlemek" için 80 ve 443 bağlantı noktasına erişimi kilitlerken, yukarı akım IP adresini bilmeniz gerekir.  Örneğin, bir web uygulaması güvenlik duvarı (WAF) kullanıyorsanız, WAF'ın trafiği bir aşağı Uygulama Hizmet Ortamına proxy verirken kullandığı kendi IP adresi (veya adresleri) olacaktır.  Bu IP adresini bir ağ güvenlik kuralının *SourceAddressPrefix* parametresinde kullanmanız gerekir.
 
-Aşağıdaki örnekte, belirli bir yukarı akış IP adresinden gelen trafiğe açıkça izin verilir.  *1.2.3.4* adresi, bir yukarı akış WAF IP adresi için yer tutucu olarak kullanılır.  Değeri, yukarı akış cihazınız veya hizmetiniz tarafından kullanılan adresle eşleşecek şekilde değiştirin.
+Aşağıdaki örnekte, belirli bir yukarı IP adresinden gelen trafiğe açıkça izin verilir.  *1.2.3.4* adresi, yukarı akım bir WAF'ın IP adresi için yer tutucu olarak kullanılır.  Yukarı akım aygıtınız veya hizmetiniz tarafından kullanılan adresle eşleşecek şekilde değeri değiştirin.
 
     Get-AzureNetworkSecurityGroup -Name "testNSGexample" | Set-AzureNetworkSecurityRule -Name "RESTRICT HTTP" -Type Inbound -Priority 200 -Action Allow -SourceAddressPrefix '1.2.3.4/32'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '80' -Protocol TCP
     Get-AzureNetworkSecurityGroup -Name "testNSGexample" | Set-AzureNetworkSecurityRule -Name "RESTRICT HTTPS" -Type Inbound -Priority 300 -Action Allow -SourceAddressPrefix '1.2.3.4/32'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '443' -Protocol TCP
 
-FTP desteği isteniyorsa, FTP denetim bağlantı noktası ve veri kanalı bağlantı noktalarına erişim vermek için şablon olarak aşağıdaki kurallar kullanılabilir.  FTP, durum bilgisi olmayan bir protokol olduğundan, FTP trafiğini geleneksel bir HTTP/HTTPS güvenlik duvarı veya proxy cihazından yönlendirmeyebilirsiniz.  Bu durumda, *Sourceaddresspredüzeltmesini* farklı bir değere ayarlamanız gerekir. ÖRNEĞIN, FTP istemcilerinin üzerinde çalıştığı geliştirici veya DAĞıTıM makinelerinin IP adresi aralığı. 
+FTP desteği isteniyorsa, FTP denetim bağlantı noktasına ve veri kanalı bağlantı noktalarına erişim sağlamak için aşağıdaki kurallar şablon olarak kullanılabilir.  FTP özel bir protokol olduğundan, FTP trafiğini geleneksel bir HTTP/HTTPS güvenlik duvarı veya proxy aygıtı üzerinden yönlendiremeyebilirsiniz.  Bu durumda *SourceAddressPrefix'i* farklı bir değere ayarlamanız gerekir ( örneğin FTP istemcilerinin çalıştırdığı geliştirici veya dağıtım makinelerinin IP adresi aralığı. 
 
     Get-AzureNetworkSecurityGroup -Name "testNSGexample" | Set-AzureNetworkSecurityRule -Name "RESTRICT FTPCtrl" -Type Inbound -Priority 400 -Action Allow -SourceAddressPrefix '1.2.3.4/32'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '21' -Protocol TCP
     Get-AzureNetworkSecurityGroup -Name "testNSGexample" | Set-AzureNetworkSecurityRule -Name "RESTRICT FTPDataRange" -Type Inbound -Priority 500 -Action Allow -SourceAddressPrefix '1.2.3.4/32'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '10001-10020' -Protocol TCP
 
-(**Note:** önizleme döneminde veri kanalı bağlantı noktası aralığı değişebilir.)
+(**Not:** veri kanalı bağlantı noktası aralığı önizleme döneminde değişebilir.)
 
-Visual Studio ile uzaktan hata ayıklama kullanılıyorsa aşağıdaki kurallar nasıl erişim izni verildiğini gösterir.  Her sürüm uzaktan hata ayıklama için farklı bir bağlantı noktası kullandığından, Visual Studio 'nun desteklenen her sürümü için ayrı bir kural vardır.  FTP erişiminde olduğu gibi, uzaktan hata ayıklama trafiği geleneksel bir WAF veya proxy cihazından düzgün şekilde akamayabilir.  *Sourceaddresspredüzeltmesini* , Visual Studio çalıştıran GELIŞTIRICI makinelerinin IP adresi aralığına ayarlanabilir.
+Visual Studio ile uzaktan hata ayıklama kullanılıyorsa, aşağıdaki kurallar erişimin nasıl verilebildiğini gösterir.  Her sürüm uzaktan hata ayıklama için farklı bir bağlantı noktası kullandığından, Visual Studio'nun desteklenen her sürümü için ayrı bir kural vardır.  FTP erişiminde olduğu gibi, uzaktan hata ayıklama trafiği geleneksel WAF veya proxy aygıtı üzerinden düzgün akmayabilir.  *SourceAddressPrefix* bunun yerine Visual Studio çalıştıran geliştirici makinelerinIP adresi aralığına ayarlanabilir.
 
     Get-AzureNetworkSecurityGroup -Name "testNSGexample" | Set-AzureNetworkSecurityRule -Name "RESTRICT RemoteDebuggingVS2012" -Type Inbound -Priority 600 -Action Allow -SourceAddressPrefix '1.2.3.4/32'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '4016' -Protocol TCP
     Get-AzureNetworkSecurityGroup -Name "testNSGexample" | Set-AzureNetworkSecurityRule -Name "RESTRICT RemoteDebuggingVS2013" -Type Inbound -Priority 700 -Action Allow -SourceAddressPrefix '1.2.3.4/32'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '4018' -Protocol TCP
     Get-AzureNetworkSecurityGroup -Name "testNSGexample" | Set-AzureNetworkSecurityRule -Name "RESTRICT RemoteDebuggingVS2015" -Type Inbound -Priority 800 -Action Allow -SourceAddressPrefix '1.2.3.4/32'  -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '4020' -Protocol TCP
 
-## <a name="assigning-a-network-security-group-to-a-subnet"></a>Bir alt ağa ağ güvenlik grubu atama
-Bir ağ güvenlik grubunun tüm dış trafiğe erişimi reddeden bir varsayılan güvenlik kuralı vardır.  Yukarıda açıklanan ağ güvenlik kurallarını birleştirmenin sonucu ve gelen trafiği engelleyen Varsayılan güvenlik kuralı, yalnızca bir *Izin verme* eylemiyle ilişkili kaynak adres aralıklarından gelen trafiğin bir App Service ortamı çalıştıran uygulamalara trafik gönderebilmesini sağlar.
+## <a name="assigning-a-network-security-group-to-a-subnet"></a>Bir Alt Ağa Ağ Güvenlik Grubu Atama
+Ağ güvenlik grubunun, tüm dış trafiğe erişimi reddeden varsayılan bir güvenlik kuralı vardır.  Yukarıda açıklanan ağ güvenliği kurallarının ve gelen trafiği engelleyen varsayılan güvenlik kuralının birleştirilmesinin sonucu, yalnızca *Bir İzin Verme* eylemiyle ilişkili kaynak adres aralıklarından gelen trafiğin Bir Uygulama Hizmet Ortamında çalışan uygulamalara trafik gönderebilmesidir.
 
-Bir ağ güvenlik grubu güvenlik kuralları ile doldurulduktan sonra, App Service Ortamı içeren alt ağa atanması gerekir.  Atama komutu, hem App Service Ortamı bulunduğu sanal ağın adına hem de App Service Ortamı oluşturulduğu alt ağın adına başvurur.  
+Bir ağ güvenlik grubu güvenlik kurallarıyla doldurulduktan sonra, Uygulama Hizmet Ortamı'nı içeren alt ağa atanması gerekir.  Atama komutu, hem App Service Environment'ın bulunduğu sanal ağın adını hem de Uygulama Hizmet Ortamının oluşturulduğu alt ağın adını başvurur.  
 
-Aşağıdaki örnekte, bir alt ağa ve sanal ağa atanmış bir ağ güvenlik grubu gösterilmektedir:
+Aşağıdaki örnekte, bir alt ağa ve sanal ağa atanan bir ağ güvenlik grubu gösterilmektedir:
 
     Get-AzureNetworkSecurityGroup -Name "testNSGexample" | Set-AzureNetworkSecurityGroupToSubnet -VirtualNetworkName 'testVNet' -SubnetName 'Subnet-test'
 
-Ağ güvenlik grubu ataması başarılı olduktan sonra (atama uzun süre çalışan bir işlemdir ve tamamlanması birkaç dakika sürebilir), yalnızca *Izin verme* kuralları ile eşleşen gelen trafik App Service ortamı uygulamalara başarılı bir şekilde ulaşacaktır.
+Ağ güvenliği grubu ataması başarılı olduktan sonra (atama uzun süren bir işlemdir ve tamamlanması birkaç dakika sürebilir), yalnızca gelen trafik eşleştirme kurallarına *izin verme* kuralları Uygulama Hizmet Ortamındaki uygulamalara başarıyla ulaşır.
 
-Tamamlana için aşağıdaki örnekte, ağ güvenlik grubunun alt ağdan nasıl kaldırılacağı ve bundan sonra dış ilişkilendirme yapılacağı gösterilmektedir:
+Bütünlük için aşağıdaki örnek, ağ güvenlik grubunun alt ağdan nasıl kaldırılıp ilişkilendirilen bir şekilde kaldırılabildiğini ve böylece ilişkilendirilen ibareleri gösterir:
 
     Get-AzureNetworkSecurityGroup -Name "testNSGexample" | Remove-AzureNetworkSecurityGroupFromSubnet -VirtualNetworkName 'testVNet' -SubnetName 'Subnet-test'
 
-## <a name="special-considerations-for-explicit-ip-ssl"></a>Açık IP-SSL için özel konular
-Bir uygulama açık bir IP-SSL adresiyle yapılandırılmışsa ( *yalnızca* genel VIP 'Si olan ASE 'ler için geçerlidir), App SERVICE ORTAMı varsayılan IP adresini kullanmak yerine, hem http hem de HTTPS trafiği, 80 ve 443 bağlantı noktalarından farklı bir bağlantı noktası kümesi üzerinden alt ağa akar.
+## <a name="special-considerations-for-explicit-ip-ssl"></a>Açık IP-SSL için Özel Hususlar
+Bir uygulama, Uygulama Hizmet Ortamının varsayılan IP adresini kullanmak yerine açık bir IP-SSL adresiyle *(yalnızca* genel VIP'si olan AS'ler için geçerli) yapılandırılırsa, hem HTTP hem de HTTPS trafiği 80 ve 443 bağlantı noktaları dışında farklı bir bağlantı noktası kümesi üzerinden alt ağa akar.
 
-Her IP SSL adresi tarafından kullanılan her bir bağlantı noktası çifti, App Service Ortamı Ayrıntılar UX dikey penceresinden Portal Kullanıcı arabiriminde bulunabilir.  "Tüm ayarlar" ' ı seçin--"IP adresleri" >.  "IP adresleri" dikey penceresinde, her IP SSL adresiyle ilişkili HTTP ve HTTPS trafiğini yönlendirmek için kullanılan özel bağlantı noktası çiftiyle birlikte App Service Ortamı için açıkça yapılandırılmış tüm IP-SSL adreslerinin bir tablosu gösterilmektedir.  Bir ağ güvenlik grubundaki kuralları yapılandırırken DestinationPortRange parametreleri için kullanılması gereken bu bağlantı noktası çiftidir.
+Her IP-SSL adresi tarafından kullanılan tek tek bağlantı noktaları çifti, Uygulama Servis Ortamı'nın ayrıntıları UX blade'den portal kullanıcı arabiriminde bulunabilir.  "Tüm ayarlar" --> "IP adresleri"ni seçin.  "IP adresleri" bıçak App Servis Ortamı için açıkça yapılandırılmış tüm IP-SSL adreslerinin bir tablo gösterir, her IP-SSL adresi ile ilişkili HTTP ve HTTPS trafiği yönlendirmek için kullanılan özel bağlantı noktası çifti ile birlikte.  Bir ağ güvenlik grubunda kuralları yapılandırırken DestinationPortRange parametreleri için kullanılması gereken bu bağlantı noktası çiftidir.
 
-Ao üzerindeki bir uygulama IP-SSL kullanmak üzere yapılandırıldığında, dış müşteriler özel bağlantı noktası çifti eşleme konusunda endişelenmenize gerek kalmaz.  Uygulamalara giden trafik normal olarak yapılandırılan IP-SSL adresine akacaktır.  Özel bağlantı noktası çiftinin çevirisi, trafiği Ao 'un bulunduğu alt ağa yönlendirmesinin son BAI sırasında otomatik olarak gerçekleşir. 
+ASE'deki bir uygulama IP-SSL kullanacak şekilde yapılandırıldığında, harici müşteriler özel bağlantı noktası çifti eşlemesini görmez ve endişelenmelerine gerek kalmaz.  Uygulamalara giden trafik normal olarak yapılandırılan IP-SSL adresine akar.  Özel bağlantı noktası çiftine çeviri, trafiğin ASE'yi içeren alt ağına yönlendirmesinin son etabı sırasında otomatik olarak dahili olarak gerçekleşir. 
 
-## <a name="getting-started"></a>Başlangıç
-App Service ortamlarıyla çalışmaya başlamak için bkz. [giriş App Service ortamı][IntroToAppServiceEnvironment]
+## <a name="getting-started"></a>Başlarken
+Uygulama Hizmet Ortamlarına başlamak için Uygulama [Hizmet Ortamına Giriş][IntroToAppServiceEnvironment]
 
-Bir App Service Ortamı arka uç kaynağına güvenli bir şekilde bağlanan uygulamalar hakkındaki ayrıntılar için bkz. [bir App Service ortamı arka uç kaynaklarına güvenli bir şekilde bağlanma][SecurelyConnecttoBackend]
+Bir Uygulama Hizmet Ortamından arka uç kaynağına güvenli bir şekilde bağlanan uygulamalarla ilgili ayrıntılar için, [Bir Uygulama Hizmet Ortamından Arka Uç kaynaklarına güvenli bir şekilde bağlanma][SecurelyConnecttoBackend]
 
 [!INCLUDE [app-service-web-try-app-service](../../../includes/app-service-web-try-app-service.md)]
 

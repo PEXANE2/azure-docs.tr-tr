@@ -1,6 +1,6 @@
 ---
-title: Application Gateway giriş denetleyicisi sorunlarını giderme
-description: Bu makale, Application Gateway giriş denetleyicisindeki yaygın soruların ve/veya sorunların nasıl giderileceği hakkında belgeler sağlar.
+title: Uygulama Ağ Geçidi Giriş Denetleyicisorun giderme
+description: Bu makalede, Uygulama Ağ Geçidi Giriş Denetleyicisi ile sık sorulan sorular ve/veya sorunları nasıl giderilene ilişkin belgeler sağlanmaktadır.
 services: application-gateway
 author: caya
 ms.service: application-gateway
@@ -8,27 +8,27 @@ ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: a64a9ce5e080308674893273e90a0e83686e339e
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73795504"
 ---
-# <a name="troubleshoot-common-questions-or-issues-with-ingress-controller"></a>Giriş denetleyicisindeki yaygın soruların veya sorunların sorunlarını giderme
+# <a name="troubleshoot-common-questions-or-issues-with-ingress-controller"></a>Giriş Denetleyicisi ile sık sorulan soruları veya sorunları giderme
 
-[Azure Cloud Shell](https://shell.azure.com/) , aks ve agic yüklemenizin sorunlarını gidermek için en kolay yoldur. Kabuğunu [Shell.Azure.com](https://shell.azure.com/) adresinden başlatın veya bağlantıya tıklayın:
+[Azure Bulut Shell,](https://shell.azure.com/) AKS ve AGIC kurulumunuzla ilgili sorunları gidermenin en kullanışlı yoludur. Shell.azure.com [veya](https://shell.azure.com/) bağlantıyı tıklayarak kabuğunuzu başlatın:
 
-[![Ekleme başlatma](https://shell.azure.com/images/launchcloudshell.png "Azure Cloud Shell'i başlatma")](https://shell.azure.com)
+[![Gömme başlatma](https://shell.azure.com/images/launchcloudshell.png "Azure Cloud Shell'i başlatma")](https://shell.azure.com)
 
 
-## <a name="test-with-a-simple-kubernetes-app"></a>Basit bir Kubernetes uygulamasıyla test etme
+## <a name="test-with-a-simple-kubernetes-app"></a>Basit bir Kubernetes uygulaması ile test edin
 
-Aşağıdaki adımlarda varsayılmaktadır:
-  - Gelişmiş ağ özellikli bir AKS kümeniz var
-  - AGIC, AKS kümesine yüklendi
-  - AKS kümeniz ile paylaşılan bir VNET üzerinde zaten bir Application Gateway hamalmış olursunuz
+Aşağıdaki adımlar varsayalım:
+  - Gelişmiş Ağ etkin leştirilmiş bir AKS kümeniz var
+  - AGIC AKS kümesine yüklendi
+  - AKS kümenizle paylaşılan bir VNET'te zaten bir Uygulama Ağ Geçidi'ni
 
-Application Gateway + AKS + AGIC yüklemesinin doğru şekilde ayarlandığından emin olmak için en basit olası uygulamayı dağıtın:
+Uygulama Ağ Geçidi + AKS + AGIC yüklemesinin doğru şekilde kurulduğunu doğrulamak için mümkün olan en basit uygulamayı dağıtın:
 
 ```bash
 cat <<EOF | kubectl apply -f -
@@ -76,64 +76,64 @@ spec:
 EOF
 ```
 
-Yukarıdaki betikten bir kerede tüm satırları kopyalayıp bir [Azure Cloud Shell](https://shell.azure.com/)yapıştırın. Lütfen tüm komutun kopyalanıp `cat` ve son `EOF`dahil olmak üzere kopyalandığından emin olun.
+Yukarıdaki komut dosyasından tüm satırları aynı anda bir [Azure Bulut Uyrciçine](https://shell.azure.com/)kopyalayın ve yapıştırın. Lütfen tüm komutun kopyalandığından `cat` emin olun - `EOF`son ile başlayan ve dahil olmak üzere .
 
-![uygulayabilirsiniz](./media/application-gateway-ingress-controller-troubleshooting/tsg--apply-config.png)
+![apply](./media/application-gateway-ingress-controller-troubleshooting/tsg--apply-config.png)
 
-Uygulamanın başarıyla dağıtımı, AKS kümenizin üzerinde başarılı bir şekilde uygulandıktan sonra yeni bir pod, hizmet ve giriş olur.
+Uygulamanın AKS kümenizin üzerinde başarılı bir şekilde dağıtılmasından sonra yeni bir Pod, Hizmet ve Giriş olacaktır.
 
-[Cloud Shell](https://shell.azure.com/): `kubectl get pods -o wide`ile pod 'nin listesini alın.
-' Test-agic-App-Pod ' adlı bir pod 'un oluşturulmasını bekledik. Bir IP adresi olur. Bu adres, AKS ile kullanılan Application Gateway sanal ağı dahilinde olmalıdır.
+[Cloud Shell](https://shell.azure.com/)ile pod listesini `kubectl get pods -o wide`alın: .
+'Test-agic-app-pod' adlı bir bölmenin oluşturulmasını bekliyoruz. Bir IP adresi olacak. Bu adres, AKS ile birlikte kullanılan Uygulama Ağ Geçidi'nin VNET'inde olmalıdır.
 
-![Pod](./media/application-gateway-ingress-controller-troubleshooting/tsg--get-pods.png)
+![Bakla](./media/application-gateway-ingress-controller-troubleshooting/tsg--get-pods.png)
 
-Hizmetlerin listesini alın: `kubectl get services -o wide`. ' Test-agic-App-Service ' adlı bir hizmet görmemiz beklenir.
+Hizmet listesini alın: `kubectl get services -o wide`. 'Test-agic-app-service' adında bir hizmet görmeyi bekliyoruz.
 
-![Pod](./media/application-gateway-ingress-controller-troubleshooting/tsg--get-services.png)
+![Bakla](./media/application-gateway-ingress-controller-troubleshooting/tsg--get-services.png)
 
-Giriş listesi listesini alın: `kubectl get ingress`. ' Test-agic-App-ınress ' adlı bir giriş kaynağı oluşturulması Bekleniyorduk. Kaynak, ' test.agic.contoso.com ' ana bilgisayar adına sahip olacak.
+Girişlerin listesini alın: `kubectl get ingress`. 'Test-agic-app-ingress' adlı bir Giriş kaynağıoluşturulmasını bekliyoruz. Kaynağın ana bilgisayar adı 'test.agic.contoso.com' olacaktır.
 
-![Pod](./media/application-gateway-ingress-controller-troubleshooting/tsg--get-ingress.png)
+![Bakla](./media/application-gateway-ingress-controller-troubleshooting/tsg--get-ingress.png)
 
-Ayırımların biri AGIC olacaktır. `kubectl get pods`, biri ' ınress-Azure ' ile başlayacak olan bir pods listesini gösterir. Başarılı bir dağıtımımız olduğunu doğrulamak için, bu Pod 'ın tüm günlüklerini `kubectl logs <name-of-ingress-controller-pod>` ile alın. Başarılı bir dağıtım şu satırları günlüğe ekledi:
+Kapsüllerden biri AGIC olacak. `kubectl get pods`bölmelerin bir listesini gösterir, bunlardan biri 'giriş-azure' ile başlayacaktır. Başarılı bir dağıtım yaptığımızı `kubectl logs <name-of-ingress-controller-pod>` doğrulamak için bölmenin tüm günlüklerini alın. Başarılı bir dağıtım günlüğe aşağıdaki satırları eklerdi:
 ```
 I0927 22:34:51.281437       1 process.go:156] Applied Application Gateway config in 20.461335266s
 I0927 22:34:51.281585       1 process.go:165] cache: Updated with latest applied config.
 I0927 22:34:51.282342       1 process.go:171] END AppGateway deployment
 ```
 
-Alternatif olarak, [Cloud Shell](https://shell.azure.com/) yalnızca `kubectl logs <ingress-azure-....> | grep 'Applied App Gateway config in'`ile başarılı Application Gateway yapılandırmayı belirten satırları alabiliriz; burada `<ingress-azure....>` agic Pod 'un tam adı olmalıdır.
+Alternatif olarak, [Cloud Shell'den](https://shell.azure.com/) yalnızca AGIC bölmesinin `kubectl logs <ingress-azure-....> | grep 'Applied App Gateway config in'`tam `<ingress-azure....>` adı nerede olması gerektiği ile başarılı Uygulama Ağ Geçidi yapılandırmasını gösteren satırları alabiliriz.
 
-Application Gateway aşağıdaki yapılandırma uygulanmış olacaktır:
+Uygulama Ağ Geçidi aşağıdaki yapılandırmayı uygular:
 
-- Dinleyici: dinleyici](./media/application-gateway-ingress-controller-troubleshooting/tsg--listeners.png) ![
+- Dinleyici: ![dinleyici](./media/application-gateway-ingress-controller-troubleshooting/tsg--listeners.png)
 
-- Yönlendirme kuralı: ![routing_rule](./media/application-gateway-ingress-controller-troubleshooting/tsg--rule.png)
+- Yönlendirme Kuralı: ![routing_rule](./media/application-gateway-ingress-controller-troubleshooting/tsg--rule.png)
 
-- Arka uç havuzu:
-  - Arka uç adres havuzunda bir IP adresi olacak ve daha önce `kubectl get pods -o wide`
-![backend_pool ile gözlemlediğimiz Pod 'un IP adresiyle eşleşmesi gerekir](./media/application-gateway-ingress-controller-troubleshooting/tsg--backendpools.png)
+- Arka uç Havuzu:
+  - Arka uç adres havuzunda bir IP adresi olacak ve daha önce gözlemlediğimiz `kubectl get pods -o wide` 
+ ![Pod'un IP adresiyle backend_pool](./media/application-gateway-ingress-controller-troubleshooting/tsg--backendpools.png)
 
 
-Son olarak, yeni dağıtılan uygulamaya HTTP bağlantısı kurmak için [Cloud Shell](https://shell.azure.com/) içinden `cURL` komutunu kullanabiliriz:
+Son olarak, `cURL` yeni dağıtılan uygulamaya bir HTTP bağlantısı kurmak için [Cloud Shell](https://shell.azure.com/) içinden komutu kullanabiliriz:
 
-1. Application Gateway genel IP adresini almak için `kubectl get ingress` kullanın
+1. Uygulama `kubectl get ingress` Ağ Geçidi'nin Genel IP adresini almak için kullanın
 2. `curl -I -H 'test.agic.contoso.com' <publitc-ip-address-from-previous-command>` kullan
 
-![Pod](./media/application-gateway-ingress-controller-troubleshooting/tsg--curl.png)
+![Bakla](./media/application-gateway-ingress-controller-troubleshooting/tsg--curl.png)
 
-`HTTP/1.1 200 OK` sonucu Application Gateway + AKS + AGIC sisteminin beklendiği gibi çalıştığını gösterir.
-
-
-## <a name="inspect-kubernetes-installation"></a>Kubernetes yüklemesini İncele
-
-### <a name="pods-services-ingress"></a>Pods, hizmetler, giriş
-Application Gateway giriş denetleyicisi (AGIC) Şu Kubernetes kaynaklarını sürekli izler: [dağıtım](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#creating-a-deployment) veya [Pod](https://kubernetes.io/docs/concepts/workloads/pods/pod/#what-is-a-pod), [hizmet](https://kubernetes.io/docs/concepts/services-networking/service/), giriş [](https://kubernetes.io/docs/concepts/services-networking/ingress/)
+Bunun bir `HTTP/1.1 200 OK` sonucu, Uygulama Ağ Geçidi + AKS + AGIC sisteminin beklendiği gibi çalıştığını gösterir.
 
 
-AGIC 'in beklenen şekilde çalışması için aşağıdakiler olması gerekir:
-  1. Aks 'lerin bir veya daha fazla sağlıklı **Pod**olması gerekir.
-     `apsnetapp`sahip bir pod 'niz varsa, bu [Cloud Shell](https://shell.azure.com/) `kubectl get pods -o wide --show-labels` ile, çıktınızdan şöyle görünebildiğini doğrulayın:
+## <a name="inspect-kubernetes-installation"></a>Kubernetes Kurulumunu İncele
+
+### <a name="pods-services-ingress"></a>Podlar, Hizmetler, Giriş
+Uygulama Ağ Geçidi Giriş Denetleyicisi (AGIC) sürekli olarak aşağıdaki Kubernetes kaynaklarını izler: [Dağıtım](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#creating-a-deployment) veya [Pod](https://kubernetes.io/docs/concepts/workloads/pods/pod/#what-is-a-pod), [Hizmet](https://kubernetes.io/docs/concepts/services-networking/service/), [Giriş](https://kubernetes.io/docs/concepts/services-networking/ingress/)
+
+
+AGIC'in beklendiği gibi çalışması için aşağıdakiler yerinde olmalıdır:
+  1. AKS bir veya daha fazla sağlıklı **pods**olmalıdır.
+     [Bunu Cloud Shell'den](https://shell.azure.com/) `kubectl get pods -o wide --show-labels` doğrulayın, bir `apsnetapp`Pod'unuz varsa , çıktınız şu na benzer:
      ```bash
      delyan@Azure:~$ kubectl get pods -o wide --show-labels
 
@@ -141,8 +141,8 @@ AGIC 'in beklenen şekilde çalışması için aşağıdakiler olması gerekir:
      aspnetapp              1/1     Running   0          17h   10.0.0.6    aks-agentpool-35064155-1   <none>           <none>            app=aspnetapp
      ```
 
-  2. Bir veya daha fazla **hizmet**, eşleşen `selector` Etiketler aracılığıyla yukarıdaki Pod 'ye başvuruyor.
-     Bunu `kubectl get services -o wide` [Cloud Shell](https://shell.azure.com/) doğrulayın
+  2. Bir veya daha fazla **hizmet,** eşleşen `selector` etiketler aracılığıyla yukarıdaki bölmelere başvurur.
+     [Bunu Cloud Shell'den](https://shell.azure.com/) doğrula`kubectl get services -o wide`
      ```bash
      delyan@Azure:~$ kubectl get services -o wide --show-labels
 
@@ -150,7 +150,7 @@ AGIC 'in beklenen şekilde çalışması için aşağıdakiler olması gerekir:
      aspnetapp           ClusterIP   10.2.63.254    <none>        80/TCP    17h   app=aspnetapp   <none>     
      ```
 
-  3. Yukarıdaki hizmete başvuran `kubernetes.io/ingress.class: azure/application-gateway`**giriş, `kubectl get ingress -o wide --show-labels`** Ile [Cloud Shell](https://shell.azure.com/) doğrulayın
+  3. **Giriş**, açıklamalı `kubernetes.io/ingress.class: azure/application-gateway`, yukarıdaki hizmete atıfta bulunarak Bulut [Shell'den](https://shell.azure.com/) bunu doğrulayın`kubectl get ingress -o wide --show-labels`
      ```bash
      delyan@Azure:~$ kubectl get ingress -o wide --show-labels
 
@@ -158,7 +158,7 @@ AGIC 'in beklenen şekilde çalışması için aşağıdakiler olması gerekir:
      aspnetapp   *                 80      17h   <none>
      ```
 
-  4. Yukarıdaki giriş açıklamalarını görüntüleyin: `kubectl get ingress aspnetapp -o yaml` (`aspnetapp` giriş adı ile değiştirin)
+  4. Yukarıdaki giriş ek açıklamalarını `kubectl get ingress aspnetapp -o yaml` görüntüleyin: (girişinizin adı ile değiştirin) `aspnetapp`
      ```bash
      delyan@Azure:~$ kubectl get ingress aspnetapp -o yaml
 
@@ -174,12 +174,12 @@ AGIC 'in beklenen şekilde çalışması için aşağıdakiler olması gerekir:
          servicePort: 80
      ```
 
-     Giriş kaynağına `kubernetes.io/ingress.class: azure/application-gateway`ile açıklama eklenmelidir.
+     Giriş kaynağı ile açıklama `kubernetes.io/ingress.class: azure/application-gateway`yapılmalıdır.
  
 
-### <a name="verify-observed-namespace"></a>Gözlemlenen ad alanını doğrula
+### <a name="verify-observed-namespace"></a>Gözlenen Ad Alanını Doğrula
 
-* Kubernetes kümesinde var olan ad alanlarını alın. Uygulamanız hangi ad alanı üzerinde çalışıyor? Bu ad alanını izliyor musunuz? Gözlemlenen ad alanlarını düzgün bir şekilde yapılandırma hakkında [birden çok ad alanı desteği](./ingress-controller-multiple-namespace-support.md#enable-multiple-namespace-support) belgesine bakın.
+* Kubernetes kümesindeki varolan ad alanlarını alın. Uygulamanız hangi ad alanında çalışıyor? AGIC bu isim alanını izliyor mu? Gözlenen [ad](./ingress-controller-multiple-namespace-support.md#enable-multiple-namespace-support) alanlarını düzgün şekilde yapılandırmaya ilişkin Çoklu Ad Alanı Desteği belgelerine bakın.
 
     ```bash
     # What namespaces exist on your cluster
@@ -190,7 +190,7 @@ AGIC 'in beklenen şekilde çalışması için aşağıdakiler olması gerekir:
     ```
 
 
-* AGIC Pod, `default` ad alanında olmalıdır (bkz. sütun `NAMESPACE`). Sağlıklı pod, `STATUS` sütununda `Running` sahip olabilir. En az bir adet AGIC Pod olmalıdır.
+* AGIC bölmesi `default` ad alanında olmalıdır (bkz. sütun). `NAMESPACE` Sütunda sağlıklı bir bölme olurdu. `Running` `STATUS` En az bir AGIC kapsülü olmalıdır.
 
     ```bash
     # Get a list of the Application Gateway Ingress Controller pods
@@ -198,13 +198,13 @@ AGIC 'in beklenen şekilde çalışması için aşağıdakiler olması gerekir:
     ```
 
 
-* AGIC Pod sağlam değilse (yukarıdaki komuttan`STATUS` sütun `Running`):
-  - şunları anlamak için günlükleri al: `kubectl logs <pod-name>`
-  - Pod 'un önceki örneği için: `kubectl logs <pod-name> --previous`
-  - daha fazla bağlam almak için pod 'ı açıkla: `kubectl describe pod <pod-name>`
+* AGIC bölmesi sağlıklı değilse`STATUS` (yukarıdaki komuttaki `Running`sütun değil):
+  - neden anlamak için günlükleri almak:`kubectl logs <pod-name>`
+  - bölmenin önceki örneği için:`kubectl logs <pod-name> --previous`
+  - daha fazla bağlam elde etmek için pod açıklayın:`kubectl describe pod <pod-name>`
 
 
-* Bir Kubernetes [hizmeti](https://kubernetes.io/docs/concepts/services-networking/service/) [ve giriş](https://kubernetes.io/docs/concepts/services-networking/ingress/) kaynağınız var mı?
+* Kubernetes [Servis](https://kubernetes.io/docs/concepts/services-networking/service/) ve [Giriş](https://kubernetes.io/docs/concepts/services-networking/ingress/) kaynaklarınız var mı?
     
     ```bash
     # Get all services across all namespaces
@@ -215,7 +215,7 @@ AGIC 'in beklenen şekilde çalışması için aşağıdakiler olması gerekir:
     ```
 
 
-* Giriş hesabınız [Şu şekilde açıklama](https://kubernetes.io/docs/concepts/services-networking/ingress/) eklendi: `kubernetes.io/ingress.class: azure/application-gateway`? AGIC, yalnızca bu ek açıklamaya sahip Kubernetes giriş kaynaklarını izleyebilir.
+* Sizin [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/) ile açıklamalı `kubernetes.io/ingress.class: azure/application-gateway`mı: ? AGIC sadece bu ek açıklama var Kubernetes Ingress kaynakları için izleyecek.
     
     ```bash
     # Get the YAML definition of a particular ingress resource
@@ -223,31 +223,31 @@ AGIC 'in beklenen şekilde çalışması için aşağıdakiler olması gerekir:
     ```
 
 
-* AGIC, belirli kritik hatalara karşı Kubernetes olaylarını yayar. Bunları görüntüleyebilirsiniz:
-  - `kubectl get events --sort-by=.metadata.creationTimestamp` aracılığıyla terminalinizde
-  - [Kubernetes Web Kullanıcı arabirimini (Pano)](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/) kullanarak tarayıcınızda
+* AGIC bazı kritik hatalar için Kubernetes olaylarını yayır. Bunları görüntüleyebilirsiniz:
+  - üzerinden terminalinizde`kubectl get events --sort-by=.metadata.creationTimestamp`
+  - [Kubernetes Web UI (Pano)](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/) kullanarak tarayıcınızda
 
 
-## <a name="logging-levels"></a>Günlüğe kaydetme düzeyleri
+## <a name="logging-levels"></a>Günlük Düzeyleri
 
-AGIC 'in 3 günlük düzeyi vardır. Düzey 1 varsayılan bir sayıdır ve en az sayıda günlük satırı gösterir.
-Diğer yandan 5. düzey, ARM 'ye uygulanan yapılandırma için ayıklanmış içerik de dahil olmak üzere tüm günlükleri görüntüler.
+AGIC'in 3 günlük seviyesi vardır. Düzey 1 varsayılan biridir ve en az sayıda günlük satırı gösterir.
+Düzey 5, diğer taraftan, ARM uygulanan config sanitized içeriği de dahil olmak üzere tüm günlükleri görüntüler.
 
-Kubernetes topluluğu, [kubectl](https://kubernetes.io/docs/reference/kubectl/cheatsheet/#kubectl-output-verbosity-and-debugging) aracı için 9 günlük kayıt kurdu. Bu depoda, benzer anlamlarla birlikte bunlardan 3 ' ü kullanıyoruz:
+Kubernetes topluluğu [kubectl](https://kubernetes.io/docs/reference/kubectl/cheatsheet/#kubectl-output-verbosity-and-debugging) aracı için 9 seviye günlük oluşturmuştur. Bu depoda benzer anlambilimile bunlardan 3'ü kullanıyoruz:
 
 
-| Verbosity | Açıklama |
+| Ayrıntı Düzeyi | Açıklama |
 |-----------|-------------|
-|  1        | Varsayılan günlük düzeyi; başlangıç ayrıntılarını, uyarıları ve hataları gösterir |
-|  3        | Olaylar ve değişiklikler hakkında genişletilmiş bilgiler; oluşturulan nesne listeleri |
-|  5        | Sıralanan nesneleri günlüğe kaydeder; ARM 'ye uygulanan ayıklanmış JSON yapılandırmasını gösterir |
+|  1        | Varsayılan günlük düzeyi; başlangıç ayrıntılarını, uyarılarını ve hatalarını gösterir |
+|  3        | Olaylar ve değişiklikler hakkında genişletilmiş bilgiler; oluşturulan nesnelerin listeleri |
+|  5        | Günlükler marshaled nesneleri; ARM'a uygulanan dezenfekte edilmiş JSON config'ini gösterir |
 
 
-Ayrıntı düzeyleri, [helmconfig. YAML](#sample-helm-config-file) dosyasındaki `verbosityLevel` değişkeni aracılığıyla ayarlanabilir. [ARM](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)'ye gönderilen JSON yapılandırmasını almak için ayrıntı düzeyini `5` artırın:
-  - [helmconfig. YAML](#sample-helm-config-file) içinde bir satıra `verbosityLevel: 5` ekleyin ve yeniden yükler
-  - `kubectl logs <pod-name>` günlükleri al
+Ayrıntılı lık düzeyleri `verbosityLevel` [helm-config.yaml](#sample-helm-config-file) dosyasındaki değişken üzerinden ayarlanabilir. JSON config `5` [ARM](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)sevk almak için verbosity düzeyini artırmak:
+  - `verbosityLevel: 5` [helm-config.yaml](#sample-helm-config-file) tek başına bir satır eklemek ve yeniden yüklemek
+  - ile günlükleri almak`kubectl logs <pod-name>`
 
-### <a name="sample-helm-config-file"></a>Örnek HELI yapılandırma dosyası
+### <a name="sample-helm-config-file"></a>Örnek Helm config dosyası
 ```yaml
     # This file contains the essential configs for the ingress controller helm chart
 

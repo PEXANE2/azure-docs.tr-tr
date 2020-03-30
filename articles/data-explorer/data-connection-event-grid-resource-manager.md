@@ -1,6 +1,6 @@
 ---
-title: Azure Resource Manager şablonu kullanarak Azure Veri Gezgini için Event Grid veri bağlantısı oluşturma
-description: Bu makalede Azure Resource Manager şablonu kullanarak Azure Veri Gezgini için Event Grid veri bağlantısı oluşturmayı öğreneceksiniz.
+title: Azure Kaynak Yöneticisi şablonu kullanarak Azure Veri Gezgini için Olay Ağı veri bağlantısı oluşturma
+description: Bu makalede, Azure Kaynak Yöneticisi şablonu kullanarak Azure Veri Gezgini için Olay Izgara veri bağlantısı oluşturmayı öğrenirsiniz.
 author: lucygoldbergmicrosoft
 ms.author: lugoldbe
 ms.reviewer: orspodek
@@ -8,34 +8,34 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/28/2019
 ms.openlocfilehash: a2e29b9811ab163642e7f65ded584c4889c199db
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74669265"
 ---
-# <a name="create-an-event-grid-data-connection-for-azure-data-explorer-by-using-azure-resource-manager-template"></a>Azure Resource Manager şablonu kullanarak Azure Veri Gezgini için Event Grid veri bağlantısı oluşturma
+# <a name="create-an-event-grid-data-connection-for-azure-data-explorer-by-using-azure-resource-manager-template"></a>Azure Kaynak Yöneticisi şablonu kullanarak Azure Veri Gezgini için Olay Ağı veri bağlantısı oluşturma
 
 > [!div class="op_single_selector"]
 > * [Portal](ingest-data-event-grid.md)
-> * [C#](data-connection-event-grid-csharp.md)
+> * [C #](data-connection-event-grid-csharp.md)
 > * [Python](data-connection-event-grid-python.md)
 > * [Azure Resource Manager şablonu](data-connection-event-grid-resource-manager.md)
 
 
-Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve üst düzeyde ölçeklenebilir veri keşfetme hizmetidir. Azure Veri Gezgini, Event Hubs, IoT Hub 'larından ve BLOB kapsayıcılarına yazılan bloblardan alma (veri yükleme) sağlar. Bu makalede Azure Resource Manager şablonu kullanarak Azure Veri Gezgini için Event Grid bir veri bağlantısı oluşturacaksınız.
+Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve üst düzeyde ölçeklenebilir veri keşfetme hizmetidir. Azure Veri Gezgini, Olay Hub'larından, IoT Hub'larından ve blob kaplarına yazılmış lekelerden yutma (veri yükleme) sunar. Bu makalede, Azure Kaynak Yöneticisi şablonu kullanarak Azure Veri Gezgini için bir Olay Ağıveri bağlantısı oluşturursunuz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/) oluşturun.
 * [Küme ve veritabanı](create-cluster-database-portal.md) oluşturma
-* [Tablo ve sütun eşlemesi](ingest-data-event-grid.md#create-a-target-table-in-azure-data-explorer) oluşturma
-* [Olay Hub 'ı](https://docs.microsoft.com/azure/event-hubs/event-hubs-create) oluşturma
-* [Event Grid abonelikle bir depolama hesabı](ingest-data-event-grid.md#create-an-event-grid-subscription-in-your-storage-account)oluşturun.
+* [Tablo ve sütun eşleme oluşturma](ingest-data-event-grid.md#create-a-target-table-in-azure-data-explorer)
+* [Etkinlik merkezi](https://docs.microsoft.com/azure/event-hubs/event-hubs-create) oluşturma
+* [Olay Izgara aboneliği olan bir depolama hesabı](ingest-data-event-grid.md#create-an-event-grid-subscription-in-your-storage-account)oluşturun.
 
-## <a name="azure-resource-manager-template-for-adding-an-event-grid-data-connection"></a>Event Grid veri bağlantısı eklemek için Azure Resource Manager şablonu
+## <a name="azure-resource-manager-template-for-adding-an-event-grid-data-connection"></a>Olay Izgara veri bağlantısı eklemek için Azure Kaynak Yöneticisi şablonu
 
-Aşağıdaki örnekte, Event Grid veri bağlantısı eklemek için bir Azure Resource Manager şablonu gösterilmektedir.  Formunu kullanarak [Azure Portal şablonu düzenleyebilir ve dağıtabilirsiniz](/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal#edit-and-deploy-the-template) .
+Aşağıdaki örnekte, Olay Izgara veri bağlantısı eklemek için bir Azure Kaynak Yöneticisi şablonu gösterilmektedir.  Formu kullanarak [şablonu Azure portalında düzenleme yapabilir ve dağıtabilirsiniz.](/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal#edit-and-deploy-the-template)
 
 ```json
 {

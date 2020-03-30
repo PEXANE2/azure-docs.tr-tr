@@ -1,64 +1,64 @@
 ---
 title: Görüntüleme iş ortağı tümleştirmesi
-description: Bu makalede Imagery iş ortağı tümleştirmesi açıklanmaktadır.
+description: Bu makalede, görüntü ortağı tümleştirme açıklanır.
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: 62e5b363f8008380a61e24c0549573a30ecaeb73
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77131861"
 ---
 # <a name="imagery-partner-integration"></a>Görüntüleme iş ortağı tümleştirmesi
 
-Bu makalede, Azure Farmtts Translator bileşeninin, verileri Farmto 'a göndermek için nasıl kullanılacağı açıklanır. Agricultürey verileri, multispectral kameralar, uydu ve Drones gibi çeşitli kaynaklardan üretilebilir. Agricultürel iş ortakları, müşterilere grupları için özel olarak oluşturulan haritalar sağlamak üzere Farmtempts ile tümleştirilebilir.
+Bu makalede, FarmBeats'e görüntü verileri göndermek için Azure FarmBeats Translator bileşeninin nasıl kullanılacağı açıklanmaktadır. Tarımsal görüntü verileri, çoklu spektral kameralar, uydular ve insansız hava araçları gibi çeşitli kaynaklardan oluşturulabilir. Tarımsal görüntü ortakları, müşterilerine çiftlikleri için özel olarak oluşturulan haritalar sunmak için FarmBeats ile entegre olabilir.
 
-Veriler, kullanılabilir olduktan sonra, bir şekilde gizlenebilir hızlandırıcı ve potansiyel olarak veri Fusion ve makine öğrenimi/yapay zekası (ML/AI) modeli için, agricultürel işletmelerin veya müşteri sistem tümleştiricilerine göre oluşturmakta kullanılabilir.
+Veriler, bir kez kullanılabilir, FarmBeats Hızlandırıcı ile görselleştirilmiş ve potansiyel tarım işletmeleri veya müşteri sistemi entegratörleri tarafından veri füzyon ve makine öğrenme / yapay zeka (ML / AI) model oluşturma için kullanılabilir.
 
-Farmtörler şunları sağlar:
+FarmBeats yeteneği sağlar:
 
-- /ExtendedType API 'Lerini kullanarak özel görüntü türlerini, kaynağı ve dosya biçimini tanımlayın.
-- Çeşitli kaynaklardan alınan verileri/sahnenin ve/manzara eFile API 'Leri aracılığıyla alma.
+- /ExtendedType API'lerini kullanarak özel görüntü türlerini, kaynağı ve dosya biçimini tanımlayın.
+- /Scene ve /SceneFile API'leri aracılığıyla çeşitli kaynaklardan alınan görüntü verilerini alın.
 
-Aşağıdaki bilgiler, Farmtts sistemine herhangi bir Imagery formu almaya odaklanır.
+Aşağıdaki bilgiler FarmBeats sistemine herhangi bir görüntü türü elde etmek üzerinde duruluyor.
 
-**Drone Imagery** bölümünü seçtiğinizde, drone diklik 'in yüksek çözünürlüklü görüntüsünü göstermek için bir açılır pencere açılır. İş ortağı yazılımına erişerek, drone fışıkları planlamaya ve ham veri almanıza yardımcı olur. Yol planlama ve ormozaik görüntü birleştirme için iş ortağının yazılımını kullanmaya devam edersiniz.
+**Drone Görüntüleri** bölümünü seçtiğinizde, drone ortomoziğinin yüksek çözünürlüklü görüntüsünü göstermek için bir açılır pencere açılır. Drone uçuşlarının planlanıp ham veri elde etmeye yardımcı olan ortak yazılıma erişebilirsiniz. Ortağın yazılımını yol planlaması ve ortomoz görüntü dikişi için kullanmaya devam edersiniz.
 
-Drone iş ortaklarının, müşterilerin müşteri hesaplarını Azure 'daki Farmtts örneğiyle bağlantı kurmasını sağlama ihtiyacı vardır.
+Drone iş ortaklarının müşterilerin müşteri hesaplarını Azure'daki FarmBeats örnekleriyle ilişkilendirmelerini sağlaması gerekir.
 
-Farmtts 'yi bağlamak için drone iş ortağı yazılımında aşağıdaki kimlik bilgilerini kullanmanız gerekir:
+FarmBeats'i bağlamak için drone ortağı yazılımında aşağıdaki kimlik bilgilerini kullanmanız gerekir:
 
 - API uç noktası
 - Kiracı Kimliği
 - İstemci Kimliği
 - Gizli anahtar
 
-## <a name="api-development"></a>API Geliştirme
+## <a name="api-development"></a>API geliştirme
 
-API 'Ler Swagger teknik belgelerini içerir. API 'Ler ve karşılık gelen istekler veya yanıtlar hakkında daha fazla bilgi için bkz. [Swagger](https://aka.ms/FarmBeatsDatahubSwagger).
+API'ler Swagger teknik dokümantasyon içerir. API'ler ve ilgili istekler veya yanıtlar hakkında bilgi [için](https://aka.ms/FarmBeatsDatahubSwagger)bkz.
 
-## <a name="authentication"></a>Kimlik Doğrulaması
+## <a name="authentication"></a>Kimlik doğrulaması
 
-Farmtts Microsoft Azure [Active Directory](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization) (Azure AD) kullanır. Azure App Service, yerleşik kimlik doğrulama ve yetkilendirme desteği sağlar. 
+FarmBeats, Microsoft Azure [Etkin Dizini 'ni](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization) (Azure AD) kullanır. Azure Uygulama Hizmeti yerleşik kimlik doğrulama ve yetkilendirme desteği sağlar. 
 
-Azure AD hakkında daha fazla bilgi için bkz. [Azure Active Directory](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization).   
+Azure AD hakkında daha fazla bilgi için [Azure Etkin Dizini'ne](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization)bakın.   
 
-Farmrets veri hub 'ı, aşağıdaki kimlik bilgilerini gerektiren taşıyıcı kimlik doğrulamasını kullanır:
+FarmBeats Datahub, aşağıdaki kimlik bilgilerini gerektiren taşıyıcı kimlik doğrulamasını kullanır:
 
 - İstemci Kimliği
 - Gizli anahtar
 - Kiracı Kimliği
 
-Çağıran, önceki kimlik bilgilerini kullanarak, üst bilgi bölümünde aşağıdaki gibi, sonraki API isteklerinde gönderilmesi gereken bir erişim belirteci isteyebilir:
+Arayan, önceki kimlik bilgilerini kullanarak, sonraki API isteklerinde, üstbilgi bölümünde aşağıdaki gibi gönderilmesi gereken bir erişim belirteci isteyebilir:
 
 ```
 headers = {"Authorization": "Bearer " + access_token, …} 
 ```
 
-Aşağıdaki Python kod örneği, erişim belirtecini alır. Daha sonra bu belirteci, Farmtts için sonraki API çağrıları için kullanabilirsiniz.
+Aşağıdaki Python kod örneği erişim belirteci alır. Daha sonra FarmBeats sonraki API aramaları için belirteci kullanabilirsiniz.
 
 ```python
 from azure.common.credentials import ServicePrincipalCredentials 
@@ -77,29 +77,29 @@ token_response = context.acquire_token_with_client_credentials(ENDPOINT, CLI
 access_token = token_response.get('accessToken') 
 ```
 
-## <a name="http-request-headers"></a>HTTP istek üstbilgileri
+## <a name="http-request-headers"></a>HTTP istek üstbilgi
 
-Farmrets veri hub 'ına bir API çağrısı yaptığınızda belirtilmesi gereken en yaygın istek üstbilgileri aşağıda verilmiştir.
+FarmBeats Datahub'a API çağrısı yaptığınızda belirtilmesi gereken en yaygın istek üstbilgileri aşağıda veda eder.
 
-**Üst Bilgi** | **Açıklama ve örnek**
+**Üst bilgi** | **Açıklama ve örnek**
 --- | ---
-Content-Type  | İstek biçimi (Content-Type: Application/<format>). Farmrets veri hub 'ı API 'Leri için, biçim JSON olur. Content-Type: Application/JSON
-Yetkilendirme | API çağrısı yapmak için gereken erişim belirtecini belirtir. Yetkilendirme: taşıyıcı < erişim-belirteç >
-Kabul et  | Yanıt biçimi. Farmrets veri hub 'ı API 'Leri için, biçim JSON olur. Kabul et: uygulama/JSON
+İçerik Türü  | İstek biçimi (İçerik Türü:<format>uygulama/ ). FarmBeats Datahub API'leri için biçim JSON'dur. İçerik Türü: uygulama/json
+Yetkilendirme | API araması yapmak için gereken erişim belirteci belirtir. Yetkilendirme: Taşıyıcı <Erişim-Belirteç>
+Kabul Et  | Yanıt biçimi. FarmBeats Datahub API'leri için biçim JSON'dur. Kabul Et: uygulama/json
 
 
 ## <a name="api-requests"></a>API istekleri
 
-REST API bir istek yapmak için şunu birleştirmelisiniz:
+REST API isteği nde bulunmak için şunları birleştirirsiniz:
 
 - HTTP yöntemi (GET, POST ve PUT).
-- API hizmetinin URL 'SI.
-- Kaynak URI 'SI (sorgulamak, veri göndermek, güncelleştirmek veya silmek için).
-- Bir veya daha fazla HTTP istek üst bilgisi.
+- API hizmetinin URL'si.
+- KAYNAK URI (sorgu, veri göndermek, güncelleştirmek veya silmek için).
+- Bir veya daha fazla HTTP istek üstbilgi.
 
-İsteğe bağlı olarak, filtrelemeye yönelik çağrıları al, boyut sınırını sınırla ve yanıtlarındaki verileri sıralamak için sorgu parametreleri ekleyebilirsiniz.
+İsteğe bağlı olarak, yanıtlarda verileri filtrelemek, boyutunu sınırlamak ve sıralamak için GET çağrılarına sorgu parametrelerini ekleyebilirsiniz.
 
-Aşağıdaki örnek istek, cihazların listesini almak için kullanılır:
+Aşağıdaki örnek istek cihazların listesini almaktır:
 
 ```bash
 curl -X GET "https://microsoft-farmbeats.azurewebsites.net/Device" -H
@@ -107,9 +107,9 @@ curl -X GET "https://microsoft-farmbeats.azurewebsites.net/Device" -H
 "Authorization: Bearer <Access-Token>”
 ```
 
-Çoğu GET, POST ve PUT çağrısı, bir JSON istek gövdesi gerektirir.
+Çoğu GET, POST ve PUT aramaları bir JSON istek gövdesi gerektirir.
 
-Aşağıdaki örnek istek bir cihaz oluşturmaktır. Bu örnekte, istek gövdesine sahip bir JSON girişi vardır.
+Aşağıdaki örnek istek bir aygıt oluşturmaktır. Bu örnek istek gövdesi ile bir giriş JSON vardır.
 
 
 ```bash
@@ -122,34 +122,34 @@ curl -X POST "https://microsoft-farmbeats.azurewebsites.net/Device" -H
 
 ## <a name="data-format"></a>Veri biçimi
 
-JSON, rastgele veri yapılarının basit bir metin gösterimini sağlayan, dilden bağımsız ortak bir veri biçimidir. Daha fazla bilgi için bkz. [JSON org](https://JSON.org).
+JSON, rasgele veri yapılarının basit bir metin gösterimi sağlayan ortak bir dilden bağımsız veri biçimidir. Daha fazla bilgi için [JSON org adresine](https://JSON.org)bakın.
 
-## <a name="ingest-imagery-into-farmbeats"></a>Farmınts 'e Alım
+## <a name="ingest-imagery-into-farmbeats"></a>FarmBeats içine görüntüleri yutmak
 
-İş ortağının Farmrets veri merkezine bağlanmak için kimlik bilgileri olduktan sonra, iş ortağı Translator bileşeninde aşağıdaki adımları gerçekleştirir.
+İş ortağının FarmBeats Datahub'a bağlanmak için kimlik bilgileri ne dikten sonra, iş ortağı Çevirmen bileşeninde aşağıdaki adımları atar.
 
-1.  Karşıya yüklenecek olan Imagery türüne uygun olarak, aşağıdaki alanlar için yeni bir genişletilmiş tür oluşturun:
+1.  Yüklenecek görüntü türüne uygun olarak, aşağıdaki alanlar için yeni bir genişletilmiş tür oluşturun:
 
-    - **Sahne kaynağı**: örneğin, drone_partner_name
-    - **Sahne türü**: Örneğin, drone
-    - **Sahne dosyası türü**: Örneğin, Chlorophyll dizini
-    - **Sahne dosyası Içerik türü**: Örneğin, görüntü/TIFF
+    - **Sahne Kaynağı**: Örneğin, drone_partner_name
+    - **Sahne Tipi**: Örneğin, drone
+    - **Sahne Dosya Türü**: Örneğin, klorofil indeksi
+    - **Sahne Dosyası İçerik Türü**: Örneğin, resim/tiff
 
-2.  Azure Farmtts sistemi içinden grupların listesini almak için/gruplar API 'sini çağırın.
-3.  Müşteriyi, gruplar listesinden tek bir grup seçebilme olanağı sağlar.
+2.  Azure FarmBeats sistemindeki çiftliklerin listesini almak için /Farms API'yi arayın.
+3.  Müşteriye çiftlikler listesinden tek bir çiftlik seçme olanağı sağlayın.
 
-    İş ortağı sisteminin yol planlama ve kurutma ve görüntü toplamayı yapması için ortak yazılım içindeki grubu göstermesi gerekir.
+    Ortak sistem yol planlama ve drone uçuş ve görüntü toplama yapmak için ortak yazılım içinde çiftlik göstermek gerekir.
 
-4.  /Sahnenin API 'sini çağırın ve benzersiz bir sahne KIMLIĞIYLE yeni bir sahne oluşturmak için gerekli ayrıntıları sağlayın.
-5.  Gerekli görüntüleri, seçilen grup bağlamında Farmrets sisteminde bulunan bir blob SAS URL 'SI alın.
+4.  /Scene API'yi arayın ve benzersiz bir sahne kimliğiyle yeni bir sahne oluşturmak için gerekli ayrıntıları sağlayın.
+5.  FarmBeats sisteminde, seçilen çiftlik bağlamında FarmBeats Datahub'a gerekli resimleri yüklemek için bir blob SAS URL'si alın.
 
-API çağrılarında ayrıntılı bir akış aşağıda verilmiştir.
+İşte API aramaları hakkında ayrıntılı bir akış.
 
-### <a name="step-1-extendedtype"></a>1\. Adım: ExtendedType
+### <a name="step-1-extendedtype"></a>Adım 1: ExtendedType
 
-Tür ve dosya kaynağının, Farmtts üzerinde kullanılabilir olup olmadığını görmek için/ExtendedType API 'sini iade edin. Bunu yapmak için/ExtendedType API 'sinde bir GET çağırın.
+FarmBeats'te tür ve dosya kaynağının kullanılabilir olup olmadığını görmek için /ExtendedType API'sini iade edin. Bunu yapmak için /ExtendedType API'den GET'i arayın.
 
-Sistem tarafından tanımlanan değerler aşağıda verilmiştir:
+Sistem tanımlı değerler şunlardır:
 
 ```json
 {
@@ -331,9 +331,9 @@ Sistem tarafından tanımlanan değerler aşağıda verilmiştir:
 }
 ```
 
-Bu adım tek seferlik bir kurulumdır. Bu yeni sahne türünün kapsamı, Azure Farmınts 'nin yüklendiği abonelikle sınırlıdır.
+Bu adım tek seferlik bir kurulumdur. Bu yeni sahne türünün kapsamı, Azure FarmBeats'in yüklendiği abonelikle sınırlıdır.
 
-Örneğin, manzara: "SlantRange",/ExtendedType API 'sinin KIMLIĞINI "manzara \ kaynak" giriş yükü ile birlikte bir araya getirin.
+Örneğin, SceneSource eklemek için: "SlantRange," anahtar "SceneSource" giriş yükü ile / ExtendedType API kimliği bir PUT yapmak.
 
 ```json
 {
@@ -351,13 +351,13 @@ Bu adım tek seferlik bir kurulumdır. Bu yeni sahne türünün kapsamı, Azure 
 
 ```
 
-Yeşil alan, sistem tarafından tanımlanan sahnenin kaynak değerlerinin yeni bir ektir.
+Yeşil alan, sistem tanımlı sahne kaynağı değerlerine yeni ektir.
 
-### <a name="step-2-get-farm-details"></a>2\. Adım: Grup ayrıntılarını al
+### <a name="step-2-get-farm-details"></a>Adım 2: Çiftlik ayrıntılarını alın
 
-Sahneler (. tiff veya. csv dosyaları) bir grup bağlamındadır. /Farm API 'sinde bir GET yaparak Grup ayrıntılarını almanız gerekir. API, Farmtempts 'de kullanılabilir grupların listesini döndürür. Verilerini almak istediğiniz grubu seçebilirsiniz.
+Sahneler (.tiff veya .csv dosyaları) bir çiftlik bağlamındadır. /Farm API'de GET yaparak çiftlik detaylarını almanız gerekir. API FarmBeats kullanılabilir çiftliklerin listesini döndürür. Verileri almak istediğiniz çiftliği seçebilirsiniz.
 
-/Farm yanıtı al:
+GET /Farm yanıtı:
 
 ```json
 {
@@ -403,13 +403,13 @@ Sahneler (. tiff veya. csv dosyaları) bir grup bağlamındadır. /Farm API 'sin
 }
  ```
 
-### <a name="step-3-create-a-scene-id-post-call"></a>3\. Adım: sahne KIMLIĞI oluşturma (çağrı Gönder)
+### <a name="step-3-create-a-scene-id-post-call"></a>Adım 3: Sahne kimliği oluşturma (POSTA araması)
 
-Verilen bilgileri içeren yeni bir sahne (. tiff veya. csv dosyası) oluşturun ve sahnenin ilişkilendirildiği Tarih, sıra ve grup KIMLIĞINI sağlar. Sahneyle ilişkili meta veriler, ölçü süresi ve türü dahil olmak üzere Özellikler altında tanımlanabilir.
+Verilen bilgilerle birlikte, sahnenin ilişkili olduğu tarih, sıra ve çiftlik kimliğini sağlayan yeni bir sahne (.tiff veya .csv dosyası) oluşturun. Sahneyle ilişkili meta veriler, ölçünün süresini ve türünü içeren özellikler altında tanımlanabilir.
 
-Yeni bir sahnenin oluşturulması, grupla ilişkilendirilmiş yeni bir sahne KIMLIĞI oluşturur. Sahne KIMLIĞI oluşturulduktan sonra, Kullanıcı yeni bir dosya (. tiff veya. csv) oluşturmak için aynısını kullanabilir ve dosyanın içeriğini saklayabilir.
+Yeni bir sahne oluşturmak, çiftlikle ilişkili yeni bir sahne kimliği oluşturur. Sahne kimliği oluşturulduktan sonra, kullanıcı yeni bir dosya (.tiff veya .csv) oluşturmak ve dosyanın içeriğini depolamak için aynı şeyi kullanabilir.
 
-/Sahnenin API 'sindeki POST çağrısının örnek giriş yükü:
+/Scene API'daki POST çağrısı için örnek giriş yükü:
 
 ```json
 {
@@ -447,11 +447,11 @@ API yanıtı:
 
 **Sahne dosyası oluşturma**
 
-Adım 3 ' te döndürülen sahne KIMLIĞI, sahne dosyasının giriştir. Sahne dosyası, 24 saat için geçerli olan bir SAS URL belirteci döndürür.
+Adım 3'te döndürülen sahne kimliği, sahne dosyasının girişidir. Sahne dosyası, 24 saat boyunca geçerli olan bir SAS URL belirteci döndürür.
 
-Kullanıcı bir görüntü akışını karşıya yüklemeyi programlı bir şekilde gerektiriyorsa, BLOB depolama SDK 'Sı sahne dosya KIMLIĞI, konum ve URL 'YI kullanarak bir yöntemi tanımlamak için kullanılabilir.
+Kullanıcı bir görüntü akışı yükleme programlı bir şekilde gerekiyorsa, blob depolama SDK sahne dosyası kimliği, konumu ve URL kullanarak bir yöntem tanımlamak için kullanılabilir.
 
-/Manzara eFile API 'sindeki POST çağrısının örnek giriş yükü:
+/SceneFile API'daki POST çağrısı için örnek giriş yükü:
 
 ```json
 {
@@ -487,9 +487,9 @@ API yanıtı:
 
 ```
 
-/Manzara eFile API 'sine yönelik POST çağrısı, Azure Blob depolama istemcisi veya kitaplığı kullanılarak. csv veya. tiff dosyasını karşıya yüklemek için kullanılabilen bir SAS karşıya yükleme URL 'SI döndürür.
+/SceneFile API'ye yapılan POST çağrısı, Azure Blob depolama istemcisini veya kitaplığını kullanarak .csv veya .tiff dosyasını yüklemek için kullanılabilecek bir SAS yükleme URL'si döndürür.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-REST API tabanlı tümleştirme ayrıntıları hakkında daha fazla bilgi için bkz. [REST API](rest-api-in-azure-farmbeats.md).
+REST API tabanlı tümleştirme ayrıntıları hakkında daha fazla bilgi için [REST API'ye](rest-api-in-azure-farmbeats.md)bakın.

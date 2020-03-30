@@ -1,6 +1,6 @@
 ---
-title: Oturum açtıktan sonra uygulama sayfasında hata iletisi görüntüleniyor | Microsoft Docs
-description: Uygulama bir hata iletisi döndürdüğünde Azure AD oturum açma sorunlarını çözme.
+title: Oturum açmadan sonra uygulama sayfasında hata iletisi görünür | Microsoft Dokümanlar
+description: Uygulama bir hata iletisi döndürdüğünde Azure AD oturum açma ile ilgili sorunları nasıl gidereceğiniz.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,151 +17,151 @@ ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9b8d20b31e96973a492355f0515d0532deea0ac9
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77185486"
 ---
-# <a name="an-app-page-shows-an-error-message-after-the-user-signs-in"></a>Bir uygulama sayfası, Kullanıcı oturum açtıktan sonra bir hata iletisi gösterir
+# <a name="an-app-page-shows-an-error-message-after-the-user-signs-in"></a>Bir uygulama sayfası, kullanıcı tarafından işaretledikten sonra bir hata iletisi gösterir
 
-Bu senaryoda, Azure Active Directory (Azure AD) kullanıcıyı ' de imzalar. Ancak uygulama bir hata iletisi görüntüler ve kullanıcının oturum açma akışını bitirmesini izin vermez. Bu sorun, uygulamanın Azure AD 'nin verdiği yanıtı kabul etmiyordu.
+Bu senaryoda, Azure Etkin Dizin (Azure AD) kullanıcıyı imzalar. Ancak uygulama bir hata iletisi görüntüler ve kullanıcının oturum açma akışını bitirmesine izin vermez. Sorun, uygulamanın Azure AD'nin verdiği yanıtı kabul etmemiş olmasıdır.
 
-Uygulamanın Azure AD 'den gelen yanıtı kabul etmemesinin birkaç olası nedeni vardır. Hata iletisi yanıtta eksik olanları açıkça tanımmazsa, aşağıdakileri deneyin:
+Uygulamanın Azure AD'den gelen yanıtı kabul etmemiş olmasının birkaç olası nedeni vardır. Hata iletisi yanıtta eksik olanları açıkça tanımlayamazsa, aşağıdakileri deneyin:
 
--   Uygulama Azure AD Galerisi ise, [Azure AD 'de uygulamalar IÇIN SAML tabanlı çoklu oturum açma hatalarını ayıklama](https://azure.microsoft.com/documentation/articles/active-directory-saml-debugging)bölümündeki adımları izlemediğinizi doğrulayın.
+-   Uygulama Azure REKLAM galerisiyse, Azure AD'deki [uygulamalarda SAML tabanlı tek oturum açma hataayıklama adımlarını](https://azure.microsoft.com/documentation/articles/active-directory-saml-debugging)izlediğinizi doğrulayın.
 
--   SAML isteği, yanıtı ve belirtecini yakalamak için [Fiddler](https://www.telerik.com/fiddler) gibi bir araç kullanın.
+-   SAML isteğini, yanıtı ve belirteci yakalamak için [Fiddler](https://www.telerik.com/fiddler) gibi bir araç kullanın.
 
--   SAML yanıtını uygulama satıcısına gönderin ve eksik olanları sorun.
+-   SAML yanıtını uygulama satıcısına gönderin ve eksik olan ne olduğunu sorun.
 
 ## <a name="attributes-are-missing-from-the-saml-response"></a>SAML yanıtında öznitelikler eksik
 
-Azure AD yapılandırmasında Azure AD yanıtında gönderilecek bir öznitelik eklemek için aşağıdaki adımları izleyin:
+Azure AD yanıtında gönderilecek Azure AD yapılandırmasına bir öznitelik eklemek için aşağıdaki adımları izleyin:
 
-1. [**Azure Portal**](https://portal.azure.com/) açın ve genel yönetici veya ortak yönetici olarak oturum açın.
+1. Azure [**portalını**](https://portal.azure.com/) açın ve genel yönetici veya yardımcı yönetici olarak oturum açın.
 
-2. Sol taraftaki Gezinti bölmesinin üst kısmında, **tüm hizmetler** ' i seçerek Azure ad uzantısını açın.
+2. Sol taraftaki gezinti bölmesinin üst kısmında, Azure AD uzantısını açmak için **Tüm hizmetler'i** seçin.
 
-3. Filtre arama kutusuna **Azure Active Directory** yazın ve **Azure Active Directory**' ı seçin.
+3. Filtre arama kutusuna **Azure Etkin Dizini** yazın ve ardından **Azure Etkin Dizin'i**seçin.
 
-4. Azure AD gezinti bölmesinde **Kurumsal uygulamalar** ' ı seçin.
+4. Azure AD gezinti bölmesinde **Kurumsal Uygulamalar'ı** seçin.
 
-5. Uygulamalarınızın listesini görüntülemek için **tüm uygulamalar** ' ı seçin.
+5. Uygulamalarınızın listesini görüntülemek için **Tüm Uygulamalar'ı** seçin.
 
    > [!NOTE]
-   > İstediğiniz uygulamayı görmüyorsanız, **tüm uygulamalar listesinin**en üstündeki **filtre** denetimini kullanın. **Göster** seçeneğini "tüm uygulamalar" olarak ayarlayın.
+   > İstediğiniz uygulamayı görmüyorsanız, **Tüm Uygulamalar Listesi'nin**en üstündeki **Filtre** denetimini kullanın. **Göster** seçeneğini "Tüm Uygulamalar" olarak ayarlayın.
 
-6. Çoklu oturum açma için yapılandırmak istediğiniz uygulamayı seçin.
+6. Tek oturum açma için yapılandırmak istediğiniz uygulamayı seçin.
 
-7. Uygulama yüklendikten sonra, gezinti bölmesinde **Çoklu oturum açma** seçeneğini belirleyin.
+7. Uygulama yüklendikten sonra gezinti bölmesinde **Tek oturum açma'yı** seçin.
 
-8. **Kullanıcı öznitelikleri** bölümünde, **diğer tüm Kullanıcı özniteliklerini görüntüle ve Düzenle**' yi seçin. Burada, kullanıcılar oturum açtığında SAML belirtecinde uygulamaya hangi özniteliklerin gönderileceğini değiştirebilirsiniz.
+8. Kullanıcı **Öznitelikleri** bölümünde, **Görünüm'i seçin ve diğer tüm kullanıcı özniteliklerini edin.** Burada, kullanıcılar oturum açarken SAML belirtecinde uygulamaya hangi öznitelikleri göndereceğinizi değiştirebilirsiniz.
 
    Bir öznitelik eklemek için:
 
-   1. **Öznitelik Ekle**' yi seçin. **Adı**girin ve açılan listeden **değeri** seçin.
+   1. **Öznitelik Ekle'yi**seçin. **Adı**girin ve açılan listeden **Değeri** seçin.
 
-   1.  **Kaydet**’i seçin. Tabloda yeni özniteliğini görürsünüz.
+   1.  **Kaydet'i**seçin. Tabloda yeni özniteliği görürsünüz.
 
 9. Yapılandırmayı kaydedin.
 
-   Kullanıcı uygulamada bir sonraki sefer oturum açtığında Azure AD, SAML yanıtında yeni özniteliği gönderir.
+   Kullanıcı uygulamaya bir sonraki kaydedinde, Azure AD SAML yanıtında yeni özniteliği gönderir.
 
-## <a name="the-app-doesnt-identify-the-user"></a>Uygulama kullanıcıyı tanımlamıyor
+## <a name="the-app-doesnt-identify-the-user"></a>Uygulama kullanıcıyı tanımlamaz
 
-SAML yanıtında rol gibi bir öznitelik eksik olduğundan uygulamada oturum açma başarısız olur. Ya da uygulama, **NameID** (Kullanıcı tanımlayıcısı) özniteliği için farklı bir biçim veya değer beklediği için başarısız oldu.
+SAML yanıtı rol gibi bir özniteliği eksik olduğundan uygulamada oturum açma başarısız olur. Veya uygulama **NameID** (Kullanıcı Tanımlayıcısı) özniteliği için farklı bir biçim veya değer beklediği için başarısız olur.
 
-Uygulamada kullanıcıları oluşturmak, sürdürmek ve kaldırmak için [Azure AD otomatik Kullanıcı sağlama](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) kullanıyorsanız, kullanıcının SaaS uygulamasına sağlandığını doğrulayın. Daha fazla bilgi için bkz. [Azure AD Galeri uygulamasına hiçbir Kullanıcı sağlanmıyor](../app-provisioning/application-provisioning-config-problem-no-users-provisioned.md).
+Uygulamadaki kullanıcıları oluşturmak, korumak ve kaldırmak için [Azure AD otomatikleştirilmiş kullanıcı sağlama](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) yı kullanıyorsanız, kullanıcının SaaS uygulamasına sağlandığını doğrulayın. Daha fazla bilgi için [bkz.](../app-provisioning/application-provisioning-config-problem-no-users-provisioned.md)
 
-## <a name="add-an-attribute-to-the-azure-ad-app-configuration"></a>Azure AD uygulama yapılandırmasına öznitelik ekleme
+## <a name="add-an-attribute-to-the-azure-ad-app-configuration"></a>Azure AD uygulaması yapılandırmasına bir öznitelik ekleme
 
-Kullanıcı tanımlayıcısı değerini değiştirmek için şu adımları izleyin:
+Kullanıcı Tanımlayıcı değerini değiştirmek için aşağıdaki adımları izleyin:
 
-1. [**Azure Portal**](https://portal.azure.com/) açın ve genel yönetici veya ortak yönetici olarak oturum açın.
+1. Azure [**portalını**](https://portal.azure.com/) açın ve genel yönetici veya yardımcı yönetici olarak oturum açın.
 
-2. Azure AD uzantısını açmak için sol taraftaki Gezinti bölmesinin en üstünde bulunan **tüm hizmetler** ' i seçin.
+2. Azure AD uzantısını açmak için sol taraftaki gezinti bölmesinin üst kısmındaki **Tüm hizmetleri** seçin.
 
-3. Filtre arama kutusuna **Azure Active Directory** yazın ve **Azure Active Directory**' ı seçin.
+3. Filtre arama kutusuna **Azure Etkin Dizini** yazın ve ardından **Azure Etkin Dizin'i**seçin.
 
-4. Azure AD gezinti bölmesinde **Kurumsal uygulamalar** ' ı seçin.
+4. Azure AD gezinti bölmesinde **Kurumsal Uygulamalar'ı** seçin.
 
-5. Uygulamalarınızın listesini görüntülemek için **tüm uygulamalar** ' ı seçin.
+5. Uygulamalarınızın listesini görüntülemek için **Tüm Uygulamalar'ı** seçin.
 
    > [!NOTE]
-   > İstediğiniz uygulamayı görmüyorsanız, **tüm uygulamalar listesinin**en üstündeki **filtre** denetimini kullanın. **Göster** seçeneğini "tüm uygulamalar" olarak ayarlayın.
+   > İstediğiniz uygulamayı görmüyorsanız, **Tüm Uygulamalar Listesi'nin**en üstündeki **Filtre** denetimini kullanın. **Göster** seçeneğini "Tüm Uygulamalar" olarak ayarlayın.
 
 6. SSO için yapılandırmak istediğiniz uygulamayı seçin.
 
-7. Uygulama yüklendikten sonra, gezinti bölmesinde **Çoklu oturum açma** seçeneğini belirleyin.
+7. Uygulama yüklendikten sonra gezinti bölmesinde **Tek oturum açma'yı** seçin.
 
-8. Kullanıcı **öznitelikleri**altında Kullanıcı **tanımlayıcısı** açılan listesinden kullanıcının benzersiz tanımlayıcısını seçin.
+8. **Kullanıcı öznitelikleri**altında, **Kullanıcı Tanımlayıcı** açılır listesinden kullanıcı için benzersiz tanımlayıcıyı seçin.
 
 ## <a name="change-the-nameid-format"></a>NameID biçimini değiştirme
 
-Uygulama, **NameID** (Kullanıcı tanımlayıcısı) özniteliği için başka bir biçim beklediğinde, NameID biçimini değiştirmek Için [NameID 'yi düzenlemeyle](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-claims-customization#editing-nameid) bölümüne bakın.
+Uygulama **NameID** (Kullanıcı Tanımlayıcısı) özniteliği için başka bir biçim bekliyorsa, NameID biçimini değiştirmek için [Düzenleme nameID'e](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-claims-customization#editing-nameid) bakın.
 
-Azure AD, seçilen değere göre **NameID** özniteliği (Kullanıcı tanımlayıcısı) BIÇIMINI veya SAML authrequest içinde uygulama tarafından istenen biçimi seçer. Daha fazla bilgi için [Çoklu oturum açma SAML protokolünün](https://docs.microsoft.com/azure/active-directory/develop/single-sign-on-saml-protocol#nameidpolicy)"Nameıdpolicy" bölümüne bakın.
+Azure AD, seçilen değere veya SAML AuthRequest'teki uygulama tarafından istenen biçime göre **NameID** özniteliğinin (Kullanıcı Tanımlayıcısı) biçimini seçer. Daha fazla bilgi için, Tek oturum [açma SAML protokolünün](https://docs.microsoft.com/azure/active-directory/develop/single-sign-on-saml-protocol#nameidpolicy)"NameIDPolicy" bölümüne bakın.
 
-## <a name="the-app-expects-a-different-signature-method-for-the-saml-response"></a>Uygulama, SAML yanıtı için farklı bir imza yöntemi bekliyor
+## <a name="the-app-expects-a-different-signature-method-for-the-saml-response"></a>Uygulama SAML yanıtı için farklı bir imza yöntemi bekliyor
 
-SAML belirtecinin hangi bölümlerinin Azure AD tarafından dijital olarak imzalandığını değiştirmek için şu adımları izleyin:
+SAML belirtecinin hangi bölümlerinin Azure AD tarafından dijital olarak imzalanmış olduğunu değiştirmek için aşağıdaki adımları izleyin:
 
-1. [Azure Portal](https://portal.azure.com/) açın ve genel yönetici veya ortak yönetici olarak oturum açın.
+1. Azure [portalını](https://portal.azure.com/) açın ve genel yönetici veya yardımcı yönetici olarak oturum açın.
 
-2. Azure AD uzantısını açmak için sol taraftaki Gezinti bölmesinin en üstünde bulunan **tüm hizmetler** ' i seçin.
+2. Azure AD uzantısını açmak için sol taraftaki gezinti bölmesinin üst kısmındaki **Tüm hizmetleri** seçin.
 
-3. Filtre arama kutusuna **Azure Active Directory** yazın ve **Azure Active Directory**' ı seçin.
+3. Filtre arama kutusuna **Azure Etkin Dizini** yazın ve ardından **Azure Etkin Dizin'i**seçin.
 
-4. Azure AD gezinti bölmesinde **Kurumsal uygulamalar** ' ı seçin.
+4. Azure AD gezinti bölmesinde **Kurumsal Uygulamalar'ı** seçin.
 
-5. Uygulamalarınızın listesini görüntülemek için **tüm uygulamalar** ' ı seçin.
-
-   > [!NOTE]
-   > İstediğiniz uygulamayı görmüyorsanız, **tüm uygulamalar listesinin**en üstündeki **filtre** denetimini kullanın. **Göster** seçeneğini "tüm uygulamalar" olarak ayarlayın.
-
-6. Çoklu oturum açma için yapılandırmak istediğiniz uygulamayı seçin.
-
-7. Uygulama yüklendikten sonra, gezinti bölmesinde **Çoklu oturum açma** seçeneğini belirleyin.
-
-8. **SAML Imzalama sertifikası**' nın altında, **Gelişmiş sertifika imzalama ayarlarını göster**' i seçin.
-
-9. Uygulamanın bu seçenekler arasında beklediği **Imzalama seçeneğini** seçin:
-
-   * **SAML yanıtını imzala**
-   * **SAML yanıtını ve onaylama işlemlerini imzala**
-   * **SAML onaylama imzası**
-
-   Kullanıcı uygulamada bir sonraki sefer oturum açtığında, Azure AD seçtiğiniz SAML yanıtının bölümünü imzalayacaktır.
-
-## <a name="the-app-expects-the-sha-1-signing-algorithm"></a>Uygulama, SHA-1 imzalama algoritmasını bekliyor
-
-Varsayılan olarak, Azure AD, SAML belirtecini en güvenli algoritmayı kullanarak imzalar. Uygulama SHA-1 gerektirmediği takdirde, imzalama algoritmasını *SHA-1* olarak değiştirmemenizi öneririz.
-
-İmzalama algoritmasını değiştirmek için şu adımları izleyin:
-
-1. [Azure Portal](https://portal.azure.com/) açın ve genel yönetici veya ortak yönetici olarak oturum açın.
-
-2. Azure AD uzantısını açmak için sol taraftaki Gezinti bölmesinin en üstünde bulunan **tüm hizmetler** ' i seçin.
-
-3. Filtre arama kutusuna **Azure Active Directory** yazın ve **Azure Active Directory**' ı seçin.
-
-4. Azure AD gezinti bölmesinde **Kurumsal uygulamalar** ' ı seçin.
-
-5. Uygulamalarınızın listesini görüntülemek için **tüm uygulamalar** ' ı seçin.
+5. Uygulamalarınızın listesini görüntülemek için **Tüm Uygulamalar'ı** seçin.
 
    > [!NOTE]
-   > İstediğiniz uygulamayı görmüyorsanız, **tüm uygulamalar listesinin**en üstündeki **filtre** denetimini kullanın. **Göster** seçeneğini "tüm uygulamalar" olarak ayarlayın.
+   > İstediğiniz uygulamayı görmüyorsanız, **Tüm Uygulamalar Listesi'nin**en üstündeki **Filtre** denetimini kullanın. **Göster** seçeneğini "Tüm Uygulamalar" olarak ayarlayın.
 
-6. Çoklu oturum açma için yapılandırmak istediğiniz uygulamayı seçin.
+6. Tek oturum açma için yapılandırmak istediğiniz uygulamayı seçin.
 
-7. Uygulama yüklendikten sonra, uygulamanın sol tarafındaki gezinti bölmesinden **Çoklu oturum açma** seçeneğini belirleyin.
+7. Uygulama yüklendikten sonra gezinti bölmesinde **Tek oturum** açma'yı seçin.
 
-8. **SAML Imzalama sertifikası**' nın altında, **Gelişmiş sertifika imzalama ayarlarını göster**' i seçin.
+8. **SAML İmzaSertifikası**altında gelişmiş **sertifika imzalama ayarlarını göster'i**seçin.
 
-9. **Imzalama algoritması**olarak **SHA-1** ' i seçin.
+9. Uygulamanın bu seçenekler arasından beklediği **İmzalama Seçeneğini** seçin:
 
-   Kullanıcı uygulamada bir sonraki sefer oturum açtığında, Azure AD, SAML belirtecini SHA-1 algoritmasını kullanarak imzalayacaktır.
+   * **SamL yanıtını imzala**
+   * **SamL yanıtını ve iddiasını imzala**
+   * **Sign SAML iddiası**
+
+   Kullanıcı uygulamada bir sonraki oturum açtırsa, Azure AD seçtiğiniz SAML yanıtının bir bölümünü imzalar.
+
+## <a name="the-app-expects-the-sha-1-signing-algorithm"></a>Uygulama SHA-1 imzalama algoritması bekliyor
+
+Varsayılan olarak, Azure AD en güvenli algoritmayı kullanarak SAML belirteci imzalar. Uygulama SHA-1 gerektirmedikçe imzalama algoritmasını *SHA-1* olarak değiştirmemenizi öneririz.
+
+İmzaalgoritmasını değiştirmek için aşağıdaki adımları izleyin:
+
+1. Azure [portalını](https://portal.azure.com/) açın ve genel yönetici veya yardımcı yönetici olarak oturum açın.
+
+2. Azure AD uzantısını açmak için sol taraftaki gezinti bölmesinin üst kısmındaki **Tüm hizmetleri** seçin.
+
+3. Filtre arama kutusuna **Azure Etkin Dizini** yazın ve ardından **Azure Etkin Dizin'i**seçin.
+
+4. Azure AD gezinti bölmesinde **Kurumsal Uygulamalar'ı** seçin.
+
+5. **Uygulamalarınızın** listesini görüntülemek için Tüm Uygulamalar'ı seçin.
+
+   > [!NOTE]
+   > İstediğiniz uygulamayı görmüyorsanız, **Tüm Uygulamalar Listesi'nin**en üstündeki **Filtre** denetimini kullanın. **Göster** seçeneğini "Tüm Uygulamalar" olarak ayarlayın.
+
+6. Tek oturum açma için yapılandırmak istediğiniz uygulamayı seçin.
+
+7. Uygulama yüklendikten sonra, uygulamanın sol tarafındaki gezinti bölmesinden **Tek oturum** açma'yı seçin.
+
+8. **SAML İmzaSertifikası**altında gelişmiş **sertifika imzalama ayarlarını göster'i**seçin.
+
+9. **İmza Algoritması**olarak **SHA-1'i** seçin.
+
+   Kullanıcı uygulamayı bir sonraki oturuma dahil ettiğinde, Azure AD SHA-1 algoritmasını kullanarak SAML belirteci oturum alacaktır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Azure AD 'de uygulamalar IÇIN SAML tabanlı çoklu oturum açma hatalarını ayıklama](https://azure.microsoft.com/documentation/articles/active-directory-saml-debugging).
+[Azure AD'deki uygulamalarda SAML tabanlı tek oturum](https://azure.microsoft.com/documentation/articles/active-directory-saml-debugging)açma hataayıklama nasıl.

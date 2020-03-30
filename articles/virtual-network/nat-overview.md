@@ -1,7 +1,7 @@
 ---
-title: Azure sanal ağ NAT nedir?
+title: Azure Sanal Ağ NAT nedir?
 titlesuffix: Azure Virtual Network
-description: Sanal ağ NAT özellikleri, kaynakları, mimarisi ve uygulamaya genel bakış. Sanal ağ NAT 'ın nasıl çalıştığını ve NAT ağ geçidi kaynaklarını bulutta nasıl kullanacağınızı öğrenin.
+description: Sanal Ağ NAT özelliklerine, kaynaklarına, mimarisine ve uygulamasına genel bakış. Sanal Ağ NAT'nin nasıl çalıştığını ve buluttaki NAT ağ geçidi kaynaklarını nasıl kullanacağınızı öğrenin.
 services: virtual-network
 documentationcenter: na
 author: asudbring
@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/05/2020
+ms.date: 03/14/2020
 ms.author: allensu
-ms.openlocfilehash: d8ecabab596612b443f1eb0a50fd550fdc474c43
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.openlocfilehash: 4b34d4208d8686cdac3f8164d2cf7efb2d881346
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/14/2020
-ms.locfileid: "79370823"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "79409907"
 ---
-# <a name="what-is-virtual-network-nat"></a>Sanal ağ NAT nedir?
+# <a name="what-is-virtual-network-nat"></a>Sanal Ağ NAT nedir?
 
-Sanal ağ NAT (ağ adresi çevirisi), sanal ağlar için yalnızca giden Internet bağlantısını basitleştirir. Bir alt ağda yapılandırıldığında, tüm giden bağlantılar belirttiğiniz statik genel IP adreslerini kullanır.  Doğrudan sanal makinelere bağlı yük dengeleyici veya genel IP adresleri olmadan giden bağlantı kurulabilir. NAT tamamen yönetiliyor ve yüksek oranda dayanıklı.
+Sanal Ağ NAT (ağ adresi çevirisi) sanal ağlar için giden yalnızca Internet bağlantısını basitleştirir. Bir alt ağ üzerinde yapılandırıldığında, tüm giden bağlantı belirtilen statik genel IP adreslerini kullanır.  Giden bağlantı, yük dengeleyicisi veya sanal makinelere doğrudan bağlı genel IP adresleri olmadan mümkündür. NAT tamamen yönetilen ve son derece esnektir.
 
 <!-- 
 <img src="./media/nat-overview/flow-map.svg" width="270" align="center">
@@ -31,70 +31,70 @@ Sanal ağ NAT (ağ adresi çevirisi), sanal ağlar için yalnızca giden Interne
 -->
 
 <p align="center">
-  <img src="./media/nat-overview/flow-map.svg" width="256" title="Sanal ağ NAT">
+  <img src="./media/nat-overview/flow-map.svg" width="256" title="Sanal Ağ NAT">
 </p>
 
 
 
-*Şekil: sanal ağ NAT*
+*Şekil: Sanal Ağ NAT*
 
-## <a name="static-ip-addresses-for-outbound-only"></a>Yalnızca giden statik IP adresleri
+## <a name="static-ip-addresses-for-outbound-only"></a>Yalnızca giden ler için statik IP adresleri
 
-Her alt ağ için NAT ile giden bağlantı tanımlanabilir.  Aynı sanal ağ içindeki birden çok alt ağ farklı NAT 'ları içerebilir. Bir alt ağ, hangi [NAT ağ geçidi kaynağının](./nat-gateway-resource.md) kullanılacağını belirterek yapılandırılır. Herhangi bir sanal makine örneğinden gelen tüm UDP ve TCP giden akışları NAT kullanır. 
+NAT'li her alt ağ için giden bağlantı tanımlanabilir.  Aynı sanal ağ daki birden çok alt ağ farklı N'lere sahip olabilir. Bir alt ağ, hangi [NAT ağ geçidi kaynağının](./nat-gateway-resource.md) kullanılacağı belirtilerek yapılandırılır. Herhangi bir sanal makine örneğinden tüm UDP ve TCP giden akışları NAT kullanır. 
 
-NAT, standart SKU [genel IP adresi kaynaklarıyla](./virtual-network-ip-addresses-overview-arm.md#standard) veya [genel IP öneki kaynaklarıyla](./public-ip-address-prefix.md) veya her ikisinin birleşimiyle uyumludur.  Genel bir IP önekini doğrudan kullanabilir veya ön ek IP adreslerini birden çok NAT ağ geçidi kaynağı arasında dağıtabilirsiniz. NAT, tüm trafiği ön ek IP adresi aralığına göre bölümlendirilecektir.  Dağıtımlarınızın IP beyaz listesi artık kolay.
+NAT, standart SKU [genel IP adresi kaynakları](./virtual-network-ip-addresses-overview-arm.md#standard) veya genel IP [öneki kaynakları](./public-ip-address-prefix.md) veya her ikisinin bir kombinasyonu ile uyumludur.  Genel BIR IP önekini doğrudan kullanabilir veya önekin genel IP adreslerini birden çok NAT ağ geçidi kaynağına dağıtabilirsiniz. NAT, önekin IP adresleri aralığına kadar olan tüm trafiği tımar eder.  Dağıtımlarınızın ip beyaz listesi artık çok kolay.
 
-Alt ağ için tüm giden trafik, hiçbir müşteri yapılandırması olmadan NAT tarafından otomatik olarak işlenir.  Kullanıcı tanımlı yollar gerekli değildir. NAT diğer [giden senaryolara](../load-balancer/load-balancer-outbound-connections.md) göre önceliklidir ve bir alt ağın varsayılan Internet hedefini değiştirir.
+Alt ağ için tüm giden trafik nat tarafından herhangi bir müşteri yapılandırması olmadan otomatik olarak işlenir.  Kullanıcı tanımlı rotalar gerekli değildir. NAT, diğer [giden senaryolardan](../load-balancer/load-balancer-outbound-connections.md) önce gelir ve bir alt ağın varsayılan Internet hedefinin yerini alır.
 
-## <a name="on-demand-snat-with-multiple-ip-addresses-for-scale"></a>Ölçek için birden çok IP adresi ile isteğe bağlı SNAT
+## <a name="on-demand-snat-with-multiple-ip-addresses-for-scale"></a>Ölçek için birden fazla IP adresine sahip isteğe bağlı SNAT
 
-NAT, "bağlantı noktası ağ adresi çevirisi" (PNAT veya PAT) kullanır ve çoğu iş yükü için önerilir. Dinamik veya daha fazla iş yükleri, isteğe bağlı giden akış ayırmasına kolayca eklenebilir. Kapsamlı ön planlama, ön tahsisi ve son olarak giden kaynakların aşırı sağlanması önlenmiş olur. SNAT bağlantı noktası kaynakları, belirli bir NAT ağ geçidi kaynağı kullanan tüm alt ağlarda paylaşılır ve kullanılabilir ve gerektiğinde sağlanır.
+NAT "bağlantı noktası ağ adresi çevirisi" (PNAT veya PAT) kullanır ve çoğu iş yükü için önerilir. Dinamik veya farklı iş yükleri, isteğe bağlı giden akış tahsisi ile kolayca karşılanabilir. Kapsamlı ön planlama, ön tahsis ve sonuçta giden kaynakların aşırı sağlanması önlenir. SNAT bağlantı noktası kaynakları, belirli bir NAT ağ geçidi kaynağı kullanılarak tüm alt ağlarda paylaşılır ve kullanılabilir ve gerektiğinde sağlanır.
 
-NAT 'a bağlı genel IP adresi, UDP ve TCP için en fazla 64.000 eşzamanlı akış sağlar. Tek bir IP adresi ile başlayabilir ve 16 genel IP adresini ölçeklendirebilirsiniz.
+NAT'ye bağlı genel bir IP adresi, UDP ve TCP için 64.000'e kadar eşzamanlı akış sağlar. Tek bir IP adresiyle başlayabilir ve en fazla 16 genel IP adresi ölçeklendirebilirsiniz.
 
-NAT, sanal ağdan Internet 'e akış oluşturulmasına izin verir. Yalnızca etkin bir akışa yanıt olarak Internet 'ten gelen trafiğe izin verilir.
+NAT, sanal ağdan Internet'e akışların oluşturulmasına izin verir. Yalnızca etkin bir akışa yanıt olarak Internet'ten gelen geri dönüş trafiğine izin verilir.
 
-Yük dengeleyici giden SNAT 'den farklı olarak NAT, bir sanal makine örneğinin özel IP 'si giden bağlantılar oluşturmak için hiçbir kısıtlamaya sahip değildir.  İkincil IP yapılandırması, NAT ile giden Internet bağlantısı oluşturabilir.
+Yük dengeleyici giden SNAT aksine, NAT bir sanal makine örneğinin özel IP giden bağlantılar yapabilirsiniz üzerinde hiçbir kısıtlama vardır.  İkincil IP yapılandırmaları NAT ile giden Internet bağlantısı oluşturabilir.
 
-## <a name="coexistence-of-inbound-and-outbound"></a>Gelen ve giden birlikte bulunma
+## <a name="coexistence-of-inbound-and-outbound"></a>Gelen ve gidenin birlikte liği
 
-NAT, aşağıdaki standart SKU kaynaklarıyla uyumludur:
+NAT aşağıdaki standart SKU kaynakları ile uyumludur:
 
-- [Yük Dengeleyici](../load-balancer/load-balancer-overview.md)
+- [Yük dengeleyici](../load-balancer/load-balancer-overview.md)
 - [Genel IP adresi](../virtual-network/virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)
-- [Genel IP öneki](../virtual-network/public-ip-address-prefix.md)
+- [Genel IP ön eki](../virtual-network/public-ip-address-prefix.md)
 
-NAT ile birlikte kullanıldığında, bu kaynaklar alt ağlarınızla gelen Internet bağlantısı sağlar. NAT, alt ağlarınızın tüm giden Internet bağlantılarını sağlar.
+NAT ile birlikte kullanıldığında, bu kaynaklar alt ağınıza gelen Internet bağlantısı sağlar. NAT, alt ağınızdan tüm giden Internet bağlantısını sağlar.
 
-NAT ve uyumlu standart SKU özellikleri, akışın başlatıldığı yönden haberdar değildir. Gelen ve giden senaryolar birlikte çalışabilir. Bu senaryolar, akış yönünün farkında olduğundan, bu senaryolar doğru ağ adresi çevirileri alır. 
+NAT ve uyumlu Standart SKU özellikleri, akışın başlatıldıklarının farkındadır. Gelen ve giden senaryolar bir arada bulunabilir. Bu özellikler akış yönünün farkında olduğundan, bu senaryolar doğru ağ adresi çevirilerini alır. 
 
 <!-- 
 <img src="./media/nat-overview/flow-direction4.svg" width="500" align="center">
 ![Virtual Network NAT flow direction](./media/nat-overview/flow-direction4.svg)
 -->
 <p align="center">
-  <img src="./media/nat-overview/flow-direction4.svg" width="512" title="Sanal ağ NAT akış yönü">
+  <img src="./media/nat-overview/flow-direction4.svg" width="512" title="Sanal Ağ NAT akış yönü">
 </p>
 
-*Şekil: sanal ağ NAT akış yönü*
+*Şekil: Sanal Ağ NAT akış yönü*
 
-## <a name="fully-managed-highly-resilient"></a>Tam olarak yönetilen, yüksek oranda dayanıklı
+## <a name="fully-managed-highly-resilient"></a>Tamamen yönetilen, son derece esnek
 
-NAT, başlangıçtan tamamen ölçeklendirildi. Bir artırma veya genişletme işlemi gerekli değildir.  Azure, NAT 'nin işlemini sizin için yönetir.  NAT, her zaman birden çok hata etki alanına sahiptir ve hizmet kesintisi olmadan birden çok hata olabilir.
+NAT baştan tamamen ölçeklendirilir. Herhangi bir rampa ya da ölçeklendirme işlemi gerekli değildir.  Azure, NAT'nin çalışmasını sizin için yönetir.  NAT her zaman birden çok hata etki alanı vardır ve hizmet kesintisi olmadan birden çok hatayı sürdürebilir.
 
-## <a name="tcp-reset-for-unrecognized-flows"></a>Tanınmayan akışlar için TCP sıfırlaması
+## <a name="tcp-reset-for-unrecognized-flows"></a>Tanınmayan akışlar için TCP Sıfırlama
 
-NAT 'nin özel tarafı, mevcut olmayan bir TCP bağlantısıyla iletişim kurmaya yönelik TCP sıfırlama paketleri gönderir. Bir örnek, boşta kalma zaman aşımına ulaşmış bağlantılardır. Alınan bir sonraki paket, bağlantı kapatmaya zorlamak ve özel IP adresine TCP sıfırlaması döndürecek.
+NAT'nin özel tarafı, var olmayan bir TCP bağlantısında iletişim kurma girişimleri için TCP Sıfırlama paketleri gönderir. Bir örnek, boşta zaman alabilen bağlantılardır. Alınan bir sonraki paket, sinyal vermek ve bağlantı kapatmayı zorlamak için özel IP adresine bir TCP Sıfırlama döndürecektir.
 
-NAT 'nin Genel tarafı TCP sıfırlama paketleri veya başka herhangi bir trafik oluşturmaz.  Yalnızca müşterinin sanal ağı tarafından üretilen trafik yayınlanır.
+NAT'nin genel tarafı TCP Sıfırlama paketleri veya başka bir trafik oluşturmaz.  Yalnızca müşterinin sanal ağı tarafından üretilen trafik yayılır.
 
-## <a name="configurable-idle-timeout"></a>Yapılandırılabilir boşta zaman aşımı
+## <a name="configurable-tcp-idle-timeout"></a>Yapılandırılabilir TCP boşta zaman acısı
 
-4 dakikalık varsayılan bir boşta kalma süresi kullanılır ve 120 dakikaya kadar artırılabilir. Akıştaki her etkinlik, TCP keepcanlı tutma dahil boşta zamanlayıcısını de sıfırlayabilir.
+Varsayılan 4 dakikalık bir TCP boşta zaman aşımı kullanılır ve 120 dakikaya kadar artırılabilir. Akıştaki herhangi bir etkinlik, TCP keepalives da dahil olmak üzere boşta zamanlayıcıyı da sıfırlayabilir.
 
-## <a name="regional-or-zone-isolation-with-availability-zones"></a>Kullanılabilirlik alanları ile bölgesel veya bölge yalıtımı
+## <a name="regional-or-zone-isolation-with-availability-zones"></a>Kullanılabilirlik bölgeleri ile bölgesel veya bölge yalıtımı
 
-NAT varsayılan olarak bölgesel bir bölgedir. [Kullanılabilirlik alanları](../availability-zones/az-overview.md) senaryoları oluştururken, NAT belirli bir bölgede (zonal dağıtım) yalıtılabilir.
+NAT varsayılan olarak bölgeseldir. [Kullanılabilirlik bölgeleri](../availability-zones/az-overview.md) senaryoları oluştururken, NAT belirli bir bölgede (bölge dağıtımı) yalıtılabilir.
 
 <!-- 
 <img src="./media/nat-overview/az-directions.svg" width="500" align="center">
@@ -102,61 +102,61 @@ NAT varsayılan olarak bölgesel bir bölgedir. [Kullanılabilirlik alanları](.
 -->
 
 <p align="center">
-  <img src="./media/nat-overview/az-directions.svg" width="512" title="Kullanılabilirlik alanları ile sanal ağ NAT">
+  <img src="./media/nat-overview/az-directions.svg" width="512" title="Kullanılabilirlik bölgeleri ile Sanal Ağ NAT">
 </p>
 
-*Şekil: kullanılabilirlik alanları ile sanal ağ NAT*
+*Şekil: Kullanılabilirlik bölgeleri ile Sanal Ağ NAT*
 
-## <a name="multi-dimensional-metrics-for-observability"></a>Observability için çok boyutlu ölçümler
+## <a name="multi-dimensional-metrics-for-observability"></a>Gözlemlenebilirlik için çok boyutlu ölçümler
 
-Azure Izleyici 'de kullanıma sunulan çok boyutlu ölçümler aracılığıyla NAT 'nizin işlemini izleyebilirsiniz. Bu ölçümler, kullanımı gözlemlemek ve sorunlarını gidermek için kullanılabilir.  NAT ağ geçidi kaynakları aşağıdaki ölçümleri sunar:
+Azure Monitor'da açığa çıkan çok boyutlu ölçümler aracılığıyla NAT'nizin çalışmasını izleyebilirsiniz. Bu ölçümler, kullanımı gözlemlemek ve sorun giderme için kullanılabilir.  NAT ağ geçidi kaynakları aşağıdaki ölçümleri ortaya çıkarır:
 - Bayt
-- Paketleri
-- Bırakılan paketler
+- Paket
+- Bırakılan Paketler
 - Toplam SNAT bağlantısı
-- Her Aralık için SNAT bağlantı durumu geçişleri.
+- SNAT bağlantı durumu aralık başına geçişler.
 
 <!-- "ADD when PM is done" Learn more about [NAT gateway metrics](./nat-gateway-metrics.md) -->
 
 ## <a name="sla"></a>SLA
 
-Genel kullanılabilirlik aşamasında NAT veri yolu en az% 99,9 kullanılabilir.
+Genel kullanılabilirlik olduğunda, NAT veri yolu en az %99,9 kullanılabilir.
 
 
 ## <a name="pricing"></a>Fiyatlandırma
 
-NAT Gateway iki ayrı ölçü ile faturalandırılır:
+NAT ağ geçidi iki ayrı metre ile faturalandırılır:
 
 | Ölçüm | Fiyat |
 | --- | --- |
 | Kaynak saatleri | $0.045/saat |
-| İşlenen veri | $0.045/GB |
+| İşlenen veriler | $0.045/TR |
 
-Bir NAT ağ geçidi kaynağının bulunduğu süre için kaynak saatleri hesapları.
-Bir NAT ağ geçidi kaynağı tarafından işlenen tüm trafik için veri işleme hesapları.
+Kaynak saatleri, NAT ağ geçidi kaynağının bulunduğu süreyi hesaplar.
+NAT ağ geçidi kaynağı tarafından işlenen tüm trafik için işlenen veriler.
 
 ## <a name="availability"></a>Kullanılabilirlik
 
-Sanal ağ NAT ve NAT ağ geçidi kaynağı tüm Azure genel bulut [bölgelerinde](https://azure.microsoft.com/global-infrastructure/regions/)kullanılabilir.
+Sanal Ağ NAT ve NAT ağ geçidi kaynağı tüm Azure genel bulut [bölgelerinde](https://azure.microsoft.com/global-infrastructure/regions/)kullanılabilir.
 
 ## <a name="support"></a>Destek
 
-NAT, normal destek kanalları aracılığıyla desteklenir.
+NAT normal destek kanalları aracılığıyla desteklenir.
 
 ## <a name="feedback"></a>Geri Bildirim
 
-Hizmeti nasıl geliştirebileceğimizi öğrenmek istiyoruz. [NAT Için UserVoice](https://aka.ms/natuservoice)'ta daha sonra derleme yapmanız gerekenleri önerin ve oylayın.
+Hizmeti nasıl geliştirebileceğimizi bilmek istiyoruz. Önerin ve [NAT için UserVoice](https://aka.ms/natuservoice)sonraki inşa etmelidir ne oy.
 
 
 ## <a name="limitations"></a>Sınırlamalar
 
-* NAT, standart SKU genel IP 'si, genel IP öneki ve yük dengeleyici kaynaklarıyla uyumludur. Temel yük dengeleyici gibi temel kaynaklar ve bunlardan türetilmiş tüm ürünler NAT ile uyumlu değildir.  Temel kaynakların NAT ile yapılandırılmamış bir alt ağa yerleştirilmesi gerekir.
-* IPv4 adres ailesi destekleniyor.  NAT, IPv6 adres ailesi ile etkileşime girmez.  NAT, IPv6 ön ekine sahip bir alt ağa dağıtılamaz.
-* NSG akış günlüğü, NAT kullanılırken desteklenmez.
-* NAT birden çok sanal ağa yayılamaz.
+* NAT standart SKU genel IP, genel IP öneki ve yük dengeleyici kaynakları ile uyumludur. Temel yük dengeleyicisi gibi temel kaynaklar ve bunlardan türetilen ürünler NAT ile uyumlu değildir.  Temel kaynaklar NAT ile yapılandırılan bir alt ağa yerleştirilmelidir.
+* IPv4 adres ailesi desteklenir.  NAT, IPv6 adres ailesiyle etkileşime girmez.  NAT, IPv6 öneki olan bir alt ağ üzerinde dağıtılamaz.
+* NAT kullanırken NSG akış günlüğü desteklenmez.
+* NAT birden çok sanal ağa yayAmaz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [NAT ağ geçidi kaynağı](./nat-gateway-resource.md)hakkında bilgi edinin.
-* [UserVoice 'Ta sanal ağ NAT için bir sonraki derleme yapmanız gerektiğini bize söyleyin](https://aka.ms/natuservoice).
+* [UserVoice Sanal Ağ NAT için sonraki oluşturmak için ne söyle.](https://aka.ms/natuservoice)
 

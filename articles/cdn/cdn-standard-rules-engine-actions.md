@@ -1,6 +1,6 @@
 ---
-title: Azure CDN için standart kurallar altyapısındaki eylemler | Microsoft Docs
-description: Azure Content Delivery Network için standart kurallar altyapısındaki (Azure CDN) eylemler için başvuru belgeleri.
+title: Azure CDN için Standart kurallar altyapısındaki eylemler | Microsoft Dokümanlar
+description: Azure İçerik Dağıtım Ağı (Azure CDN) için Standart kurallar altyapısındaki eylemler için başvuru belgeleri.
 services: cdn
 author: mdgattuso
 ms.service: azure-cdn
@@ -8,109 +8,109 @@ ms.topic: article
 ms.date: 11/01/2019
 ms.author: magattus
 ms.openlocfilehash: 53280bc90f629d93ff8a045c80f34a73970b43f6
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74171625"
 ---
-# <a name="actions-in-the-standard-rules-engine-for-azure-cdn"></a>Azure CDN için standart kurallar altyapısındaki eylemler
+# <a name="actions-in-the-standard-rules-engine-for-azure-cdn"></a>Azure CDN için Standart kurallar altyapısındaki eylemler
 
-Azure Content Delivery Network için [standart kurallar altyapısında](cdn-standard-rules-engine.md) (Azure CDN), bir kural bir veya daha fazla eşleşme koşulu ve bir eylemden oluşur. Bu makalede, Azure CDN için standart kurallar altyapısında kullanabileceğiniz eylemlerin ayrıntılı açıklamaları sağlanmaktadır.
+Azure İçerik Teslim Ağı (Azure CDN) için [Standart kurallar altyapısında,](cdn-standard-rules-engine.md) bir kural bir veya daha fazla eşleşme koşulu ve bir eylemden oluşur. Bu makalede, Azure CDN için Standart kurallar altyapısında kullanabileceğiniz eylemlerin ayrıntılı açıklamaları sağlanmaktadır.
 
-Bir kuralın ikinci bölümü bir eylemdir. Bir eylem, eşleşme koşulunun veya eşleştirme koşulları kümesinin tanımladığı istek türüne uygulanan davranışı tanımlar.
+Kuralın ikinci bölümü bir eylemdir. Eylem, eşleşme koşulunun veya eşleşme koşulları kümesinin tanımladığı istek türüne uygulanan davranışı tanımlar.
 
 ## <a name="actions"></a>Eylemler
 
-Aşağıdaki eylemler, Azure CDN için standart kurallar altyapısında kullanılmak üzere kullanılabilir. 
+Aşağıdaki eylemler Azure CDN için Standart kurallar altyapısında kullanılabilir. 
 
-### <a name="cache-expiration"></a>Önbellek süre sonu
+### <a name="cache-expiration"></a>Önbellek süresi
 
-Kuralların eşleştiği talepler için uç noktanın yaşam süresi (TTL) değerinin üzerine yazmak için bu eylemi kullanın.
+Kuralların koşullarıyla eşleşen istekleri için bitiş noktasının yaşam (TTL) değerinin üzerine yazmak için bu eylemi kullanın.
 
 #### <a name="required-fields"></a>Gerekli alanlar
 
 Önbellek davranışı |  Açıklama              
 ---------------|----------------
-Atlama önbelleği | Bu seçenek belirlendiğinde ve kural eşleştiğinde, içerik önbelleğe alınmaz.
-Manızı | Bu seçenek belirlendiğinde ve kural eşleştiğinde, kaynaktan döndürülen TTL değeri, eylemde belirtilen değerle üzerine yazılır.
-Eksikse ayarla | Bu seçenek belirlendiğinde ve kural eşleştiğinde, kaynaktan bir TTL değeri döndürülmezse, kural TTL 'yi eylemde belirtilen değere ayarlar.
+Önbelleği atla | Bu seçenek seçildiğinde ve kural eşleştiğinde, içerik önbelleğe alınmaz.
+Geçersiz kıl | Bu seçenek seçildiğinde ve kural eşleştiğinde, kaynağınızdan döndürülen TTL değeri eylemde belirtilen değerle birlikte üzerine yazılır.
+Eksikse ayarla | Bu seçenek seçildiğinde ve kural eşleştiğinde, kaynağınızdan TTL değeri döndürülmediyse, kural TTL'yi eylemde belirtilen değere ayarlar.
 
 #### <a name="additional-fields"></a>Ek alanlar
 
 Gün | Saat | Dakika | Saniye
 -----|-------|---------|--------
-'Tir | 'Tir | 'Tir | 'Tir 
+int | int | int | int 
 
 ### <a name="cache-key-query-string"></a>Önbellek anahtarı sorgu dizesi
 
-Sorgu dizelerine göre önbellek anahtarını değiştirmek için bu eylemi kullanın.
+Sorgu dizelerini temel alan önbellek anahtarını değiştirmek için bu eylemi kullanın.
 
 #### <a name="required-fields"></a>Gerekli alanlar
 
 Davranış | Açıklama
 ---------|------------
-içeriyor | Bu seçenek belirlendiğinde ve kural eşleştiğinde, parametrelerde belirtilen sorgu dizeleri önbellek anahtarı oluşturulduğunda dahil edilir. 
-Her benzersiz URL'yi önbelleğe al | Bu seçenek belirlendiğinde ve kural eşleştiğinde, her benzersiz URL 'nin kendi önbellek anahtarı vardır. 
-Exclude | Bu seçenek belirlendiğinde ve kural eşleştiğinde, parametrelerde belirtilen sorgu dizeleri önbellek anahtarı oluşturulduğunda dışlanır.
-Sorgu dizelerini yoksay | Bu seçenek belirlendiğinde ve kural eşleştiğinde, önbellek anahtarı oluşturulduğunda sorgu dizeleri değerlendirilmez. 
+Şunları Dahil Et: | Bu seçenek seçildiğinde ve kural eşleştiğinde, önbellek anahtarı oluşturulduğunda parametrelerde belirtilen sorgu dizeleri dahil edilir. 
+Her benzersiz URL'yi önbelleğe al | Bu seçenek seçildiğinde ve kural eşleştiğinde, her benzersiz URL'nin kendi önbellek anahtarı vardır. 
+Exclude | Bu seçenek seçildiğinde ve kural eşleştiğinde, önbellek anahtarı oluşturulduğunda parametrelerde belirtilen sorgu dizeleri dışlanır.
+Sorgu dizelerini yoksay | Bu seçenek seçildiğinde ve kural eşleştiğinde, önbellek anahtarı oluşturulduğunda sorgu dizeleri dikkate alınmaz. 
 
-### <a name="modify-request-header"></a>İstek üst bilgisini Değiştir
+### <a name="modify-request-header"></a>İstek üstbilgisini değiştirme
 
-Bu eylemi, kaynağına gönderilen isteklerde bulunan üst bilgileri değiştirmek için kullanın.
-
-#### <a name="required-fields"></a>Gerekli alanlar
-
-Eylem | HTTP üst bilgi adı | Değer
--------|------------------|------
-Ekle | Bu seçenek belirlendiğinde ve kural eşleştiğinde, **üstbilgi adı** bölümünde belirtilen üstbilgi belirtilen değere sahip isteğe eklenir. Üst bilgi zaten mevcutsa, değer mevcut değere eklenir. | Dize
-Yazılacak | Bu seçenek belirlendiğinde ve kural eşleştiğinde, **üstbilgi adı** bölümünde belirtilen üstbilgi belirtilen değere sahip isteğe eklenir. Üst bilgi zaten mevcutsa, belirtilen değer varolan değerin üzerine yazar. | Dize
-Sil | Bu seçenek belirlendiğinde, kural eşleşir ve kuralda belirtilen üst bilgi bulunur, üst bilgi istekten silinir. | Dize
-
-### <a name="modify-response-header"></a>Yanıt üst bilgisini Değiştir
-
-İstemcilerinize döndürülen yanıtlarda bulunan üstbilgileri değiştirmek için bu eylemi kullanın.
+Kaynağınıza gönderilen isteklerde bulunan üstbilgileri değiştirmek için bu eylemi kullanın.
 
 #### <a name="required-fields"></a>Gerekli alanlar
 
-Eylem | HTTP üst bilgi adı | Değer
+Eylem | HTTP üstbilgi adı | Değer
 -------|------------------|------
-Ekle | Bu seçenek belirlendiğinde ve kural eşleştiğinde, **üst bilgi adı** 'nda belirtilen üst bilgi yanıta belirtilen **değer**kullanılarak eklenir. Üst bilgi zaten mevcutsa, **değer** var olan değere eklenir. | Dize
-Yazılacak | Bu seçenek belirlendiğinde ve kural eşleştiğinde, **üst bilgi adı** 'nda belirtilen üst bilgi yanıta belirtilen **değer**kullanılarak eklenir. Üst bilgi zaten mevcutsa, **değer** varolan değerin üzerine yazar. | Dize
-Sil | Bu seçenek belirlendiğinde, kural eşleşir ve kuralda belirtilen üst bilgi bulunur, üst bilgi yanıttan silinir. | Dize
+Ekle | Bu seçenek seçildiğinde ve kural eşleştiğinde, **üstbilgi adında** belirtilen üstbilgi belirtilen değerle isteğe eklenir. Üstbilgi zaten mevcutsa, değer varolan değere eklenir. | Dize
+Üzerine yaz | Bu seçenek seçildiğinde ve kural eşleştiğinde, **üstbilgi adında** belirtilen üstbilgi belirtilen değerle isteğe eklenir. Üstbilgi zaten mevcutsa, belirtilen değer varolan değerin üzerine yazar. | Dize
+Sil | Bu seçenek seçildiğinde, kural eşleşir ve kuralda belirtilen üstbilgi bulunursa, üstbilgi istekten silinir. | Dize
+
+### <a name="modify-response-header"></a>Yanıt üstbilgisini değiştirme
+
+Müşterilerinize döndürülen yanıtlarda bulunan üstbilgileri değiştirmek için bu eylemi kullanın.
+
+#### <a name="required-fields"></a>Gerekli alanlar
+
+Eylem | HTTP Üstbilgi adı | Değer
+-------|------------------|------
+Ekle | Bu seçenek seçildiğinde ve kural eşleştiğinde, **üstbilgi adında** belirtilen üstbilgi belirtilen **Değer**kullanılarak yanıta eklenir. Üstbilgi zaten mevcutsa, **Değer** varolan değere eklenir. | Dize
+Üzerine yaz | Bu seçenek seçildiğinde ve kural eşleştiğinde, **üstbilgi adında** belirtilen üstbilgi belirtilen **Değer**kullanılarak yanıta eklenir. Üstbilgi zaten mevcutsa, **Değer** varolan değerin üzerine yazar. | Dize
+Sil | Bu seçenek seçildiğinde, kural eşleşir ve kuralda belirtilen üstbilgi bulunursa, üstbilgi yanıttan silinir. | Dize
 
 ### <a name="url-redirect"></a>URL yeniden yönlendirme
 
-İstemcileri yeni bir URL 'ye yönlendirmek için bu eylemi kullanın. 
+İstemcileri yeni bir URL'ye yönlendirmek için bu eylemi kullanın. 
 
 #### <a name="required-fields"></a>Gerekli alanlar
 
 Alan | Açıklama 
 ------|------------
-Tür | İstek sahibine döndürülecek yanıt türünü seçin: bulunan (302), taşınan (301), geçici yeniden yönlendirme (307) ve kalıcı yeniden yönlendirme (308).
-Protokol | Match Isteği, HTTP, HTTPS.
+Tür | İstekçiye dönmek için yanıt türünü seçin: Bulundu (302), Moved (301), Temporary redirect (307) ve Kalıcı yeniden yönlendirme (308).
+Protokol | Maç İsteği, HTTP, HTTPS.
 Ana Bilgisayar Adı | İsteğin yeniden yönlendirilmesini istediğiniz ana bilgisayar adını seçin. Gelen ana bilgisayarı korumak için boş bırakın.
-Yol | Yeniden Yönlendirmede kullanılacak yolu tanımlayın. Gelen yolu korumak için boş bırakın.  
-Sorgu dizesi | Yeniden Yönlendirmede kullanılan sorgu dizesini tanımlayın. Gelen sorgu dizesini korumak için boş bırakın. 
-Parçada | Yeniden Yönlendirmede kullanılacak parçayı tanımlayın. Gelen parçayı korumak için boş bırakın. 
+Yol | Yönlendirmede kullanılacak yolu tanımlayın. Gelen yolu korumak için boş bırakın.  
+Sorgu dizesi | Yönlendirmede kullanılan sorgu dizesini tanımlayın. Gelen sorgu dizesini korumak için boş bırakın. 
+Parça | Yeniden yönlendirmede kullanılacak parçayı tanımlayın. Gelen parçayı korumak için boş bırakın. 
 
-Mutlak bir URL kullanmanızı kesinlikle öneririz. Göreli bir URL kullanmak Azure CDN URL 'Leri geçersiz bir yola yönlendirebilir. 
+Mutlak bir URL kullanmanızı şiddetle öneririz. Göreli bir URL kullanmak Azure CDN URL'lerini geçersiz bir yola yönlendirebilir. 
 
 ### <a name="url-rewrite"></a>URL yeniden yazma
 
-Bu eylemi, kaynağına yönlendiren bir isteğin yolunu yeniden yazmak için kullanın.
+Kaynağınıza giden bir isteğin yolunu yeniden yazmak için bu eylemi kullanın.
 
 #### <a name="required-fields"></a>Gerekli alanlar
 
 Alan | Açıklama 
 ------|------------
-Kaynak stili | Değiştirilecek URL yolundaki kaynak modelini tanımlayın. Şu anda, kaynak stili önek tabanlı eşleşme kullanıyor. Tüm URL yollarını eşleştirmek için, kaynak model değeri olarak bir eğik çizgi ( **/** ) kullanın.
-Hedef | Yeniden yazma sırasında kullanılacak hedef yolu tanımlayın. Hedef yol, kaynak deseninin üzerine yazar.
-Eşleşmeyen yolu koru | **Evet**olarak ayarlanırsa, kaynak örüntüden sonraki kalan yol yeni hedef yoluna eklenir. 
+Kaynak deseni | Değiştirmek için URL yolunda kaynak deseni tanımlayın. Şu anda, kaynak deseni önek tabanlı bir eşleşme kullanır. Tüm URL yollarını eşleştirmek için**/** kaynak desen değeri olarak ileri eğik çizgi ( ) kullanın.
+Hedef | Yeniden yazmada kullanılacak hedef yolu tanımlayın. Hedef yol kaynak deseninin üzerine yazar.
+Eşleşmemiş yolu koru | **Evet**olarak ayarlanırsa, kaynak desenden sonra kalan yol yeni hedef yola eklenir. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure CDN genel bakış](cdn-overview.md)
-- [Standart kurallar altyapısı başvurusu](cdn-standard-rules-engine-reference.md)
-- [Standart kurallar altyapısındaki koşulları Eşleştir](cdn-standard-rules-engine-match-conditions.md)
-- [Standart kurallar altyapısını kullanarak HTTPS 'yi zorla](cdn-standard-rules-engine.md)
+- [Azure CDN'ye genel bakış](cdn-overview.md)
+- [Standart kural altyapısı başvurusu](cdn-standard-rules-engine-reference.md)
+- [Standart kurallar motorundaki koşulları eşleştirme](cdn-standard-rules-engine-match-conditions.md)
+- [Standart kural altyapısını kullanarak HTTPS'yi zorlama](cdn-standard-rules-engine.md)

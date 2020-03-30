@@ -1,40 +1,40 @@
 ---
-title: Azure Kubernetes Service (AKS) ' de Azure disklerini şifrelemek için müşteri tarafından yönetilen bir anahtar kullanma
-description: AKS işletim sistemini ve veri disklerini şifrelemek için kendi anahtarlarınızı getirin (BYOK).
+title: Azure Kubernetes Hizmetinde (AKS) Azure disklerini şifrelemek için müşteri tarafından yönetilen bir anahtar kullanın
+description: AKS OS ve Veri disklerini şifrelemek için kendi anahtarlarınızı (BYOK) getirin.
 services: container-service
 ms.topic: article
 ms.date: 01/12/2020
 ms.openlocfilehash: bb6ba5e6dd4ace9e33043079c0f435c10baf5cb2
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77596513"
 ---
-# <a name="bring-your-own-keys-byok-with-azure-disks-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki Azure diskleriyle kendi anahtarlarınızı (BYOK) getirin
+# <a name="bring-your-own-keys-byok-with-azure-disks-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Hizmetinde (AKS) Azure diskleriyle kendi anahtarlarınızı (BYOK) getirin
 
-Azure depolama, bekleyen bir depolama hesabındaki tüm verileri şifreler. Varsayılan olarak, veriler Microsoft tarafından yönetilen anahtarlarla şifrelenir. Şifreleme anahtarları üzerinde ek denetim için, AKS kümeleriniz için hem işletim sistemi hem de veri diskleri için bekleyen şifreleme için kullanılmak üzere [müşteri tarafından yönetilen anahtarlar][customer-managed-keys] sağlayabilirsiniz.
+Azure Depolama, bir depolama hesabındaki tüm verileri istirahat halinde şifreler. Varsayılan olarak, veriler Microsoft tarafından yönetilen anahtarlarla şifrelenir. Şifreleme anahtarları üzerinde ek denetim için, AKS kümeleriniz için hem işletim sistemi hem de veri diskleri için şifreleme için kullanmak üzere [müşteri tarafından yönetilen anahtarları][customer-managed-keys] sağlayabilirsiniz.
 
 > [!NOTE]
 > BYOK Linux ve Windows tabanlı AKS kümeleri, Azure yönetilen disklerin sunucu tarafı şifrelemesini destekleyen [Azure bölgelerinde][supported-regions] kullanılabilir.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-* Bu makalede *Yeni BIR AKS kümesi*oluşturduğunuz varsayılır.
+* Bu makalede, yeni bir *AKS kümesi*oluşturduğunuz varsayar.
 
-* Yönetilen diskleri şifrelemek için Key Vault kullanırken *Azure Key Vault* için geçici silme ve Temizleme korumasını etkinleştirmeniz gerekir.
+* Yönetilen diskleri şifrelemek için Key Vault'u kullanırken *Azure Key Vault* için yumuşak silme ve temizleme koruması etkinleştirmelisiniz.
 
-* Azure CLı sürüm 2.0.79 veya üzeri ve aks-Preview 0.4.26 uzantısı gerekir
+* Azure CLI sürüm 2.0.79 veya sonrası ve aks önizleme 0.4.26 uzantısı gerekir
 
 > [!IMPORTANT]
-> AKS Önizleme özellikleri self servis kabul etme sürecindedir. Önizlemeler, "olduğu gibi" ve "kullanılabilir olarak" verilmiştir ve hizmet düzeyi sözleşmelerinden ve sınırlı garantiden çıkarılır. AKS önizlemeleri, müşteri desteğinin en iyi çaba temelinde kısmen ele alınmıştır. Bu nedenle, bu özellikler üretim kullanımı için tasarlanmamıştır. Ek bilgi için lütfen aşağıdaki destek makalelerine bakın:
+> AKS önizleme özellikleri self servis tercihidir. Önizlemeler "olduğu gibi" ve "mevcut olduğu gibi" sağlanır ve hizmet düzeyi anlaşmaları ve sınırlı garanti dışında dır. AKS Önizlemeler kısmen en iyi çaba temelinde müşteri desteği tarafından karşılanır. Bu nedenle, bu özellikler üretim kullanımı için değildir. Ek infromation için lütfen aşağıdaki destek makalelerini görmek için:
 >
-> * [AKS destek Ilkeleri](support-policies.md)
-> * [Azure desteği SSS](faq.md)
+> * [AKS Destek Politikaları](support-policies.md)
+> * [Azure Destek SSS](faq.md)
 
-## <a name="install-latest-aks-cli-preview-extension"></a>En son AKS CLı önizleme uzantısını yükler
+## <a name="install-latest-aks-cli-preview-extension"></a>En son AKS CLI önizleme uzantısını yükleyin
 
-Müşteri tarafından yönetilen anahtarları kullanmak için, *aks-Preview* CLI uzantısının sürüm 0.4.26 veya daha yüksek olması gerekir. [Az Extension Add][az-extension-add] komutunu kullanarak *aks-Preview* Azure CLI uzantısını yükledikten sonra [az Extension Update][az-extension-update] komutunu kullanarak kullanılabilir güncelleştirmeleri denetleyin:
+Müşteri tarafından yönetilen anahtarları kullanmak için *aks önizleme* CLI uzantısı sürümü 0.4.26 veya daha yüksek olması gerekir. [az uzantı ekle][az-extension-add] komutunu kullanarak *aks önizleme* Azure CLI uzantısını yükleyin ve az [uzantı güncelleştirme][az-extension-update] komutunu kullanarak kullanılabilir güncelleştirmeleri denetleyin:
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -44,11 +44,11 @@ az extension add --name aks-preview
 az extension update --name aks-preview
 ```
 
-## <a name="create-an-azure-key-vault-instance"></a>Azure Key Vault örneği oluşturma
+## <a name="create-an-azure-key-vault-instance"></a>Azure Anahtar Kasası örneği oluşturma
 
-Anahtarlarınızı depolamak için bir Azure Key Vault örneği kullanın.  Azure portal, [müşteri tarafından yönetilen anahtarları Azure Key Vault Ile yapılandırmak][byok-azure-portal] için isteğe bağlı olarak kullanabilirsiniz
+Anahtarlarınızı depolamak için Azure Key Vault örneğini kullanın.  [Azure Anahtar Kasası ile müşteri tarafından yönetilen anahtarları yapılandırmak][byok-azure-portal] için Azure portalını isteğe bağlı olarak kullanabilirsiniz
 
-Yeni bir *kaynak grubu*oluşturun ve ardından yeni bir *Key Vault* örneği oluşturun ve geçici silme ve Temizleme korumasını etkinleştirin.  Her komut için aynı bölgeyi ve kaynak grubu adlarını kullandığınızdan emin olun.
+Yeni bir *kaynak grubu*oluşturun, ardından yeni bir Anahtar *Kasa* örneği oluşturun ve yumuşak silme ve temizleme koruması etkinleştirin.  Her komut için aynı bölge ve kaynak grubu adlarını kullandığınızdan emin olun.
 
 ```azurecli-interactive
 # Optionally retrieve Azure region short names for use on upcoming commands
@@ -65,7 +65,7 @@ az keyvault create -n myKeyVaultName -g myResourceGroup -l myAzureRegionName  --
 
 ## <a name="create-an-instance-of-a-diskencryptionset"></a>DiskEncryptionSet örneği oluşturma
 
-*Mykeyvaultname* değerini anahtar kasanızın adıyla değiştirin.  Ayrıca, aşağıdaki adımları tamamlayabilmeniz için Azure Key Vault depolanan bir *anahtara* ihtiyacınız olacaktır.  Mevcut anahtarınızı önceki adımlarda oluşturduğunuz Key Vault depolayın veya [Yeni bir anahtar oluşturun][key-vault-generate] ve aşağıdaki *mykeyname* değerini anahtarınızın adıyla değiştirin.
+*MyKeyVaultName'i* anahtar kasanızın adı ile değiştirin.  Ayrıca, aşağıdaki adımları tamamlamak için Azure Key Vault'ta depolanan bir *anahtara* da ihtiyacınız olacaktır.  Mevcut Anahtarınızı önceki adımlarda oluşturduğunuz Key Vault'ta saklayın veya [yeni bir anahtar oluşturun][key-vault-generate] ve aşağıdaki anahtarınızın adı ile *myKeyName'i* değiştirin.
     
 ```azurecli-interactive
 # Retrieve the Key Vault Id and store it in a variable
@@ -78,9 +78,9 @@ keyVaultKeyUrl=$(az keyvault key show --vault-name myKeyVaultName  --name myKeyN
 az disk-encryption-set create -n myDiskEncryptionSetName  -l myAzureRegionName  -g myResourceGroup --source-vault $keyVaultId --key-url $keyVaultKeyUrl 
 ```
 
-## <a name="grant-the-diskencryptionset-access-to-key-vault"></a>DiskEncryptionSet erişimini Anahtar Kasası 'na verme
+## <a name="grant-the-diskencryptionset-access-to-key-vault"></a>DiskEncryptionSet'in anahtar kasasına erişimini verme
 
-Önceki adımlarda oluşturduğunuz DiskEncryptionSet ve Resource gruplarını kullanın ve Azure Key Vault DiskEncryptionSet kaynağına erişimi verin.
+Önceki adımlarda oluşturduğunuz DiskEncryptionSet'i ve kaynak gruplarını kullanın ve DiskEncryptionSet kaynak erişimini Azure Anahtar Kasası'na ver.
 
 ```azurecli-interactive
 # Retrieve the DiskEncryptionSet value and set a variable
@@ -93,12 +93,12 @@ az keyvault set-policy -n myKeyVaultName -g myResourceGroup --object-id $desIden
 az role assignment create --assignee $desIdentity --role Reader --scope $keyVaultId
 ```
 
-## <a name="create-a-new-aks-cluster-and-encrypt-the-os-disk"></a>Yeni bir AKS kümesi oluşturma ve işletim sistemi diskini şifreleme
+## <a name="create-a-new-aks-cluster-and-encrypt-the-os-disk"></a>Yeni bir AKS kümesi oluşturun ve işletim sistemi diskini şifreleme
 
-Yeni bir **kaynak grubu** ve aks kümesi oluşturun ve ardından anahtarınızı kullanarak işletim sistemi diskini şifreleyin. Müşteri tarafından yönetilen anahtarlar yalnızca 1,17 'den büyük Kubernetes sürümlerinde desteklenir. 
+Yeni bir **kaynak grubu** ve AKS kümesi oluşturun ve ardından işletim sistemi diskini şifrelemek için anahtarınızı kullanın. Müşteri tarafından yönetilen anahtarlar yalnızca 1,17'den büyük Kubernetes sürümlerinde desteklenir. 
 
 > [!IMPORTANT]
-> Aks kümeniz için yeni bir eklendi grubu oluşturduğunuzdan emin olun
+> AKS kümeniz için yeni bir resoruce grubu oluşturduğunuzdan emin olun
 
 ```azurecli-interactive
 # Retrieve the DiskEncryptionSet value and set a variable
@@ -111,14 +111,14 @@ az group create -n myResourceGroup -l myAzureRegionName
 az aks create -n myAKSCluster -g myResourceGroup --node-osdisk-diskencryptionset-id $diskEncryptionSetId --kubernetes-version 1.17.0 --generate-ssh-keys
 ```
 
-Yukarıda oluşturulan kümeye yeni düğüm havuzları eklendiğinde, oluşturma sırasında belirtilen müşteri tarafından yönetilen anahtar, işletim sistemi diskini şifrelemek için kullanılır.
+Yukarıda oluşturulan kümeye yeni düğüm havuzları eklendiğinde, oluşturma sırasında sağlanan müşteri tarafından yönetilen anahtar işletim sistemi diskini şifrelemek için kullanılır.
 
-## <a name="encrypt-your-aks-cluster-data-disk"></a>AKS kümesi veri diskinizi şifreleyin
+## <a name="encrypt-your-aks-cluster-data-disk"></a>AKS küme veri diskinizi şifreleme
 
-AKS veri disklerini kendi anahtarınızla de şifreleyebilirsiniz.
+AKS veri disklerini kendi anahtarlarınızla da şifreleyebilirsiniz.
 
 > [!IMPORTANT]
-> Uygun AKS kimlik bilgilerine sahip olduğunuzdan emin olun. Hizmet sorumlusunun, diskencryptionset 'in dağıtıldığı kaynak grubuna katkıda bulunan erişiminin olması gerekir. Aksi takdirde, hizmet sorumlusunun izin içermediğinden emin olmak için bir hata alırsınız.
+> Uygun AKS kimlik bilgilerine sahip olduğundan emin olun. Hizmet sorumlusunun, diskşifreleme kümesinin dağıtıldığı kaynak grubuna katkıda bulunanlara erişimi olması gerekir. Aksi takdirde, hizmet sorumlusunun izinleri olmadığını düşündüren bir hata alırsınız.
 
 ```azurecli-interactive
 # Retrieve your Azure Subscription Id from id property as shown below
@@ -144,7 +144,7 @@ someuser@Azure:~$ az account list
 ]
 ```
 
-Aşağıdaki bilgileri içeren **bYok-Azure-disk. YAML** adlı bir dosya oluşturun.  Myazuyeniden gönderme Scriptionıd, myResourceGroup ve myDiskEncrptionSetName değerlerini değerlerinizle değiştirin ve YAML 'yi uygulayın.  DiskEncryptionSet dosyanızın dağıtıldığı kaynak grubunu kullandığınızdan emin olun.  Azure Cloud Shell kullanırsanız, bu dosya bir sanal veya fiziksel sistemde çalışırken VI veya nano kullanılarak oluşturulabilir:
+Aşağıdaki bilgileri içeren **byok-azure-disk.yaml** adlı bir dosya oluşturun.  myAzureSubscriptionId, myResourceGroup ve myDiskEncrptionSetName'i değerlerinizle değiştirin ve yaml uygulayın.  DiskEncryptionSet'inizin dağıtıldığı kaynak grubunu kullandığınızdan emin olun.  Azure Bulut Kabuğu'nu kullanıyorsanız, bu dosya sanal veya fiziksel bir sistem üzerinde çalışıyormuş gibi vi veya nano kullanılarak oluşturulabilir:
 
 ```
 kind: StorageClass
@@ -168,16 +168,16 @@ kubectl apply -f byok-azure-disk.yaml
 
 ## <a name="limitations"></a>Sınırlamalar
 
-* BYOK, yalnızca belirli [Azure BÖLGELERINDE][supported-regions] GA ve önizleme sürümünde kullanılabilir
-* Kubernetes sürüm 1,17 ve üzerinde işletim sistemi disk şifrelemesi destekleniyor   
-* Yalnızca BYOK 'ın desteklendiği bölgelerde kullanılabilir
-* Müşteri tarafından yönetilen anahtarlarla şifreleme Şu anda yalnızca yeni AKS kümelerine yöneliktir, mevcut kümeler yükseltilemez
-* Sanal makine ölçek kümeleri kullanan AKS kümesi gereklidir, sanal makine kullanılabilirlik kümeleri için destek gerekmez
+* BYOK şu anda yalnızca belirli [Azure bölgelerinde][supported-regions] yalnızca GA ve Önizleme'de kullanılabilir
+* Kubernetes sürüm 1.17 ve üzeri ile desteklenen Işletim Sistemi Disk Şifrelemesi   
+* Yalnızca BYOK'un desteklendiği bölgelerde kullanılabilir
+* Şu anda yalnızca yeni AKS kümeleri için müşteri tarafından yönetilen anahtarlarla şifreleme yapılır, varolan kümeler yükseltilemez
+* Sanal Makine Ölçek Setleri kullanarak AKS küme gereklidir, Sanal Makine Kullanılabilirlik Setleri için destek
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[AKS küme güvenliği için en iyi uygulamaları][best-practices-security] gözden geçirme
+[AKS küme güvenliği için en iyi uygulamaları][best-practices-security] gözden geçirin
 
 <!-- LINKS - external -->
 

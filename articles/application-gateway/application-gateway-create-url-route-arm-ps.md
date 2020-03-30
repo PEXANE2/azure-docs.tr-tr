@@ -1,7 +1,7 @@
 ---
-title: PowerShell kullanarak URL yolu tabanlı yönlendirme kuralları
+title: PowerShell'i kullanarak URL yol tabanlı yönlendirme kuralları
 titleSuffix: Azure Application Gateway
-description: Azure PowerShell kullanarak bir uygulama ağ geçidi ve sanal makine ölçek kümesi için URL yol tabanlı yönlendirme kuralları oluşturma hakkında bilgi edinin.
+description: Azure PowerShell'i kullanarak bir uygulama ağ geçidi ve sanal makine ölçeği kümesi için URL yol tabanlı yönlendirme kurallarının nasıl oluşturulup oluşturulmayı öğrenin.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -9,36 +9,36 @@ ms.topic: article
 ms.date: 11/14/2019
 ms.author: victorh
 ms.openlocfilehash: e7934ba0b33bff7ffb8e89e7b56c5b998a232289
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74048045"
 ---
-# <a name="create-an-application-gateway-with-url-path-based-routing-rules-using-azure-powershell"></a>Azure PowerShell kullanarak URL yol tabanlı yönlendirme kuralları ile uygulama ağ geçidi oluşturma
+# <a name="create-an-application-gateway-with-url-path-based-routing-rules-using-azure-powershell"></a>Azure PowerShell'i kullanarak URL yol tabanlı yönlendirme kurallarıyla bir uygulama ağ geçidi oluşturma
 
-[Uygulama ağ geçidi](application-gateway-introduction.md)oluştururken [URL yolu tabanlı yönlendirme kurallarını](application-gateway-url-route-overview.md) yapılandırmak için Azure PowerShell kullanabilirsiniz. Bu öğreticide, bir [sanal makine ölçek kümesi](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)kullanarak arka uç havuzları oluşturacaksınız. Daha sonra, Web trafiğinin havuzlardaki uygun sunuculara ulaştığınızdan emin olmak için yönlendirme kuralları oluşturursunuz.
+Bir [uygulama ağ geçidi](application-gateway-introduction.md)oluştururken URL yol tabanlı yönlendirme [kurallarını](application-gateway-url-route-overview.md) yapılandırmak için Azure PowerShell'i kullanabilirsiniz. Bu öğreticide, sanal makine ölçeği [kümesini](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)kullanarak arka uç havuzları oluşturursunuz. Ardından, web trafiğinin havuzlarda uygun sunuculara ulaştığından emin olmak için yönlendirme kuralları oluşturursunuz.
 
 Bu makalede şunları öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Ağı ayarlama
-> * URL eşlemesi ile uygulama ağ geçidi oluşturma
+> * URL haritasıyla bir uygulama ağ geçidi oluşturma
 > * Arka uç havuzları ile sanal makine ölçek kümeleri oluşturma
 
 ![URL yönlendirme örneği](./media/application-gateway-create-url-route-arm-ps/scenario.png)
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-PowerShell 'i yerel olarak yükleyip kullanmayı tercih ederseniz bu öğretici Azure PowerShell modülünü gerektirir. Sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Connect-AzAccount` komutunu da çalıştırmanız gerekir.
+PowerShell'i yerel olarak yüklemeyi ve kullanmayı seçerseniz, bu öğretici azure PowerShell modüllerini gerektirir. Sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Connect-AzAccount` komutunu da çalıştırmanız gerekir.
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-Kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)kullanarak bir Azure Kaynak grubu oluşturun.  
+Kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. [Yeni-AzResourceGroup'u](/powershell/module/az.resources/new-azresourcegroup)kullanarak bir Azure kaynak grubu oluşturun.  
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name myResourceGroupAG -Location eastus
@@ -46,7 +46,7 @@ New-AzResourceGroup -Name myResourceGroupAG -Location eastus
 
 ## <a name="create-network-resources"></a>Ağ kaynakları oluşturma
 
-[New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig)kullanarak *myagsubnet* ve *mybackendsubnet* alt ağ yapılandırmalarını oluşturun. Alt ağ yapılandırmalarına sahip [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) kullanarak *myvnet* adlı sanal ağı oluşturun. Son olarak, [New-azpublicıpaddress](/powershell/module/az.network/new-azpublicipaddress)kullanarak *Myagpublicıpaddress* adlı genel IP adresini oluşturun. Bu kaynaklar, uygulama ağ geçidi ve ilişkili kaynakları ile ağ bağlantısı sağlamak için kullanılır.
+[New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig)kullanarak subnet yapılandırmaları *myAGSubnet* ve *myBackendSubnet* oluşturun. Subnet yapılandırmaları ile [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) kullanarak *myVNet* adlı sanal ağı oluşturun. Ve son olarak, [Yeni-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress)kullanarak *myAGPublicIPAddress* adlı genel IP adresi oluşturun. Bu kaynaklar, uygulama ağ geçidi ve ilişkili kaynakları ile ağ bağlantısı sağlamak için kullanılır.
 
 ```azurepowershell-interactive
 $backendSubnetConfig = New-AzVirtualNetworkSubnetConfig `
@@ -72,7 +72,7 @@ $pip = New-AzPublicIpAddress `
 
 ### <a name="create-the-ip-configurations-and-frontend-port"></a>IP yapılandırmaları ve ön uç bağlantı noktası oluşturma
 
-[Yeni-Azapplicationgatewayıp](/powershell/module/az.network/new-azapplicationgatewayipconfiguration)'leri kullanarak daha önce oluşturduğunuz *Myagsubnet* 'i uygulama ağ geçidine ilişkilendirin. [New-Azapplicationgatewayfrontendıpconfig](/powershell/module/az.network/new-azapplicationgatewayfrontendipconfig)kullanarak *Myagpublicıpaddress* 'i Application Gateway 'e atayın.
+Daha önce oluşturduğunuz *myAGSubnet'i* [New-AzApplicationGatewayIPConfiguration](/powershell/module/az.network/new-azapplicationgatewayipconfiguration)kullanarak uygulama ağ geçidine ilişkilendirin. *MyAGPublicIPAddress'i* [New-AzApplicationGatewayFrontendIPConfig](/powershell/module/az.network/new-azapplicationgatewayfrontendipconfig)kullanarak uygulama ağ geçidine atayın.
 
 ```azurepowershell-interactive
 $vnet = Get-AzVirtualNetwork `
@@ -95,7 +95,7 @@ $frontendport = New-AzApplicationGatewayFrontendPort `
 
 ### <a name="create-the-default-pool-and-settings"></a>Varsayılan havuz ve ayarlar oluşturma
 
-[New-Azapplicationgatewaybackendadspool](/powershell/module/az.network/new-azapplicationgatewaybackendaddresspool)kullanarak Application Gateway Için *Appgatewaybackendpool* adlı varsayılan arka uç havuzunu oluşturun. [New-AzApplicationGatewayBackendHttpSettings](/powershell/module/az.network/new-azapplicationgatewaybackendhttpsetting)kullanarak arka uç havuzunun ayarlarını yapılandırın.
+[New-AzApplicationGatewayBackendAddressPool](/powershell/module/az.network/new-azapplicationgatewaybackendaddresspool)kullanarak uygulama ağ geçidi için *appGatewayBackendPool* adlı varsayılan arka uç havuzu oluşturun. [Yeni-AzApplicationGatewayBackendHttpSettings](/powershell/module/az.network/new-azapplicationgatewaybackendhttpsetting)kullanarak arka uç havuzu için ayarları yapılandırın.
 
 ```azurepowershell-interactive
 $defaultPool = New-AzApplicationGatewayBackendAddressPool `
@@ -110,9 +110,9 @@ $poolSettings = New-AzApplicationGatewayBackendHttpSettings `
 
 ### <a name="create-the-default-listener-and-rule"></a>Varsayılan dinleyici ve kural oluşturma
 
-Uygulama ağ geçidinin trafiği arka uç havuzuna uygun şekilde yönlendirmesini sağlamak için bir dinleyici gereklidir. Bu öğreticide, iki dinleyici oluşturacaksınız. Oluşturduğunuz ilk temel dinleyici, kök URL'deki trafiği dinler. Oluşturduğunuz ikinci dinleyici ise belirli URL'lerdeki trafiği dinler.
+Uygulama ağ geçidinin trafiği arka uç havuzuna uygun şekilde yönlendirmesini sağlamak içn bir dinleyici gereklidir. Bu öğreticide, iki dinleyici oluşturacaksınız. Oluşturduğunuz ilk temel dinleyici, kök URL'deki trafiği dinler. Oluşturduğunuz ikinci dinleyici ise belirli URL'lerdeki trafiği dinler.
 
-[New-AzApplicationGatewayHttpListener](/powershell/module/az.network/new-azapplicationgatewayhttplistener) adlı ön uç yapılandırması ve önceden oluşturduğunuz ön uç bağlantı noktası kullanılarak *mydefaultlistener* adlı varsayılan dinleyiciyi oluşturun. Dinleyicinin gelen trafik için kullanacağı arka uç havuzunu bilmesi için bir kural gerekir. [New-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule)kullanarak *rule1* adlı temel bir kural oluşturun.
+Daha önce oluşturduğunuz ön uç yapılandırması ve önuç bağlantı noktası ile [New-AzApplicationGatewayHttpListener](/powershell/module/az.network/new-azapplicationgatewayhttplistener) kullanarak *myDefaultListener* adlı varsayılan dinleyici oluşturun. Dinleyicinin gelen trafik için kullanacağı arka uç havuzunu bilmesi için bir kural gerekir. [New-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule)kullanarak *kural1* adlı temel bir kural oluşturun.
 
 ```azurepowershell-interactive
 $defaultlistener = New-AzApplicationGatewayHttpListener `
@@ -130,7 +130,7 @@ $frontendRule = New-AzApplicationGatewayRequestRoutingRule `
 
 ### <a name="create-the-application-gateway"></a>Uygulama ağ geçidi oluşturma
 
-Artık gerekli destekleyici kaynakları oluşturduğunuza göre, [New-AzApplicationGatewaySku](/powershell/module/az.network/new-azapplicationgatewaysku)kullanarak *myappgateway* adlı uygulama ağ geçidi için parametreler belirtin ve ardından [New-azapplicationgateway](/powershell/module/az.network/new-azapplicationgateway)kullanarak oluşturun.
+Şimdi gerekli destekleyici kaynakları oluşturduğunuzda, *MyAppGateway* adlı uygulama ağ geçidi için [yeni-AzApplicationGatewaySku](/powershell/module/az.network/new-azapplicationgatewaysku)kullanarak parametreleri belirtin ve sonra [New-AzApplicationGateway](/powershell/module/az.network/new-azapplicationgateway)kullanarak oluşturun.
 
 ```azurepowershell-interactive
 $sku = New-AzApplicationGatewaySku `
@@ -153,7 +153,7 @@ $appgw = New-AzApplicationGateway `
 
 ### <a name="add-image-and-video-backend-pools-and-port"></a>Görüntü ve video arka uç havuzlarını ve bağlantı noktasını ekleme
 
-[Add-Azapplicationgatewaybackendadspool kuyruğu](/powershell/module/az.network/add-azapplicationgatewaybackendaddresspool)kullanarak, *ımaizbackendpool* ve *videobackendpool* adlı arka uç havuzlarını Application Gateway 'e ekleyebilirsiniz. [Add-AzApplicationGatewayFrontendPort](/powershell/module/az.network/add-azapplicationgatewayfrontendport)kullanarak havuzların ön uç bağlantı noktasını eklersiniz. Daha sonra [set-AzApplicationGateway](/powershell/module/az.network/set-azapplicationgateway)kullanarak değişiklikleri uygulama ağ geçidine gönderebilirsiniz.
+[Sen Add-AzApplicationGatewayBackendAddressPool](/powershell/module/az.network/add-azapplicationgatewaybackendaddresspool)kullanarak uygulama ağ geçidine *imagesBackendPool* ve *videoBackendPool* adlı arka uç havuzları ekleyebilirsiniz. [Add-AzApplicationGatewayFrontendPort](/powershell/module/az.network/add-azapplicationgatewayfrontendport)kullanarak havuzları için ön uç bağlantı noktası ekleyin. Daha sonra [değişiklikleri Set-AzApplicationGateway'i](/powershell/module/az.network/set-azapplicationgateway)kullanarak uygulama ağ geçidine gönderirsiniz.
 
 ```azurepowershell-interactive
 $appgw = Get-AzApplicationGateway `
@@ -174,7 +174,7 @@ Set-AzApplicationGateway -ApplicationGateway $appgw
 
 ### <a name="add-backend-listener"></a>Arka uç dinleyicisi ekleme
 
-[Add-AzApplicationGatewayHttpListener](/powershell/module/az.network/add-azapplicationgatewayhttplistener)kullanarak trafiği yönlendirmek Için gereken *backendlistener* adlı arka uç dinleyicisini ekleyin.
+[Add-AzApplicationGatewayHttpListener](/powershell/module/az.network/add-azapplicationgatewayhttplistener)kullanarak trafiği yönlendirmek için gerekli *backend Listener* adlı arka uç dinleyici ekleyin.
 
 ```azurepowershell-interactive
 $appgw = Get-AzApplicationGateway `
@@ -196,7 +196,7 @@ Set-AzApplicationGateway -ApplicationGateway $appgw
 
 ### <a name="add-url-path-map"></a>URL yol eşlemesini ekleme
 
-URL yol eşlemeleri belirli URL'lerin belirli arka uç havuzlarına yönlendirilmesini sağlar. [New-AzApplicationGatewayPathRuleConfig](/powershell/module/az.network/new-azapplicationgatewaypathruleconfig) ve [Add-AzApplicationGatewayUrlPathMapConfig](/powershell/module/az.network/add-azapplicationgatewayurlpathmapconfig)kullanarak *ımagepathrule* ve *videopathrule* adlı URL yolu eşlemeleri oluşturabilirsiniz.
+URL yol eşlemeleri belirli URL'lerin belirli arka uç havuzlarına yönlendirilmesini sağlar. [Yeni-AzApplicationGatewayPathRuleConfig](/powershell/module/az.network/new-azapplicationgatewaypathruleconfig) ve [Add-AzApplicationGatewayUrlPathMapConfig](/powershell/module/az.network/add-azapplicationgatewayurlpathmapconfig)kullanarak *imagePathRule* ve *videoPathRule* adlı URL yolu haritaları oluşturabilirsiniz.
 
 ```azurepowershell-interactive
 $appgw = Get-AzApplicationGateway `
@@ -235,7 +235,7 @@ Set-AzApplicationGateway -ApplicationGateway $appgw
 
 ### <a name="add-routing-rule"></a>Yönlendirme kuralı ekleme
 
-Yönlendirme kuralı URL eşlemesini oluşturduğunuz dinleyici ile ilişkilendirir. [Add-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/add-azapplicationgatewayrequestroutingrule)kullanarak **bağlanma2* adlı kuralı ekleyebilirsiniz.
+Yönlendirme kuralı URL eşlemesini oluşturduğunuz dinleyici ile ilişkilendirir. [Add-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/add-azapplicationgatewayrequestroutingrule)kullanarak **rule2* adlı kuralı ekleyebilirsiniz.
 
 ```azurepowershell-interactive
 $appgw = Get-AzApplicationGateway `
@@ -346,7 +346,7 @@ for ($i=1; $i -le 3; $i++)
 
 ## <a name="test-the-application-gateway"></a>Uygulama ağ geçidini test etme
 
-Uygulama ağ geçidinin genel IP adresini almak için [Get-Azpublicıpaddress](/powershell/module/az.network/get-azpublicipaddress) komutunu kullanabilirsiniz. Genel IP adresini kopyalayıp tarayıcınızın adres çubuğuna yapıştırın. Örneğin, `http://52.168.55.24`, `http://52.168.55.24:8080/images/test.htm`veya `http://52.168.55.24:8080/video/test.htm`.
+Uygulama ağ geçidinin genel IP adresini almak için [Get-AzPublicIPAddress'i](/powershell/module/az.network/get-azpublicipaddress) kullanabilirsiniz. Genel IP adresini kopyalayıp tarayıcınızın adres çubuğuna yapıştırın. Gibi, `http://52.168.55.24`, `http://52.168.55.24:8080/images/test.htm`, `http://52.168.55.24:8080/video/test.htm`veya .
 
 ```azurepowershell-interactive
 Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAddress
@@ -354,21 +354,21 @@ Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAdd
 
 ![Temel URL’yi uygulama ağ geçidinde test etme](./media/application-gateway-create-url-route-arm-ps/application-gateway-iistest.png)
 
-URL 'YI, `<ip-address>`için IP adresiniz yerine `http://<ip-address>:8080/video/test.htm`olarak değiştirin ve aşağıdaki örneğe benzer bir şey görmeniz gerekir:
+URL'yi `http://<ip-address>:8080/video/test.htm`IP adresinizin `<ip-address>`yerine ,aşağıdaki örnek gibi bir şey görmeniz gerekir:
 
 ![Görüntü URL’sini uygulama ağ geçidinde test etme](./media/application-gateway-create-url-route-arm-ps/application-gateway-iistest-images.png)
 
-URL 'YI `http://<ip-address>:8080/video/test.htm` değiştirin ve aşağıdaki örneğe benzer bir şey görmeniz gerekir:
+URL'yi `http://<ip-address>:8080/video/test.htm` değiştirin ve aşağıdaki örnek gibi bir şey görmeniz gerekir:
 
 ![Video URL’sini uygulama ağ geçidinde test etme](./media/application-gateway-create-url-route-arm-ps/application-gateway-iistest-video.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, şu şekilde nasıl yapılacağını öğrendiniz:
+Bu makalede, nasıl öğrendim:
 
 > [!div class="checklist"]
 > * Ağı ayarlama
-> * URL eşlemesi ile uygulama ağ geçidi oluşturma
+> * URL haritasıyla bir uygulama ağ geçidi oluşturma
 > * Arka uç havuzları ile sanal makine ölçek kümeleri oluşturma
 
-Uygulama ağ geçitleri ve bunlarla ilişkili kaynaklar hakkında daha fazla bilgi edinmek için nasıl yapılır makalelerine devam edin.
+Uygulama ağ geçitleri ve bunların ilişkili kaynakları hakkında daha fazla bilgi edinmek için nasıl yapılacağını makalelerine devam edin.

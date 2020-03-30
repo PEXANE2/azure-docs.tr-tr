@@ -1,6 +1,6 @@
 ---
-title: Azure 'da SAP HANA 'da HANA tarafında izleme ve sorun giderme (büyük örnekler) | Microsoft Docs
-description: Azure 'da SAP HANA (büyük örnekler) üzerinde HANA tarafında izleme ve sorun giderme.
+title: Azure'da SAP HANA'da HANA tarafından izleme ve sorun giderme (Büyük Örnekler) | Microsoft Dokümanlar
+description: Bir Azure'da (Büyük Örnekler) SAP HANA'da HANA tarafından izleme ve sorun giderme.
 services: virtual-machines-linux
 documentationcenter: ''
 author: msjuergent
@@ -14,159 +14,159 @@ ms.date: 09/10/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 047ea4d07f2b497ac8c7deb90c056d63976094f4
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77617068"
 ---
 # <a name="monitoring-and-troubleshooting-from-hana-side"></a>HANA tarafından izleme ve sorun giderme
 
-Azure 'daki SAP HANA ilgili sorunları (büyük örnekler) etkin bir şekilde çözümlemek için, bir sorunun kök nedenini daraltmak yararlı olur. SAP, size yardımcı olmak için büyük miktarda belge yayımladı.
+Azure'da (Büyük Örnekler) SAP HANA ile ilgili sorunları etkili bir şekilde çözümlemek için, bir sorunun temel nedenini daraltmak yararlıdır. SAP size yardımcı olmak için çok sayıda belge yayımlamıştır.
 
-SAP HANA performansla ilgili geçerli SSS 'ler aşağıdaki SAP notlarında bulunabilir:
+SAP HANA performansıyla ilgili geçerli SSS'leri aşağıdaki SAP Notlarında bulunabilir:
 
-- [SAP Note #2222200 – SSS: SAP HANA ağ](https://launchpad.support.sap.com/#/notes/2222200)
-- [SAP Note #2100040 – SSS: SAP HANA CPU](https://launchpad.support.sap.com/#/notes/0002100040)
-- [SAP Note #199997 – SSS: SAP HANA bellek](https://launchpad.support.sap.com/#/notes/2177064)
-- [SAP Note #200000 – SSS: SAP HANA performans Iyileştirmesi](https://launchpad.support.sap.com/#/notes/2000000)
-- [SAP Not #199930 – SSS: SAP HANA g/ç Analizi](https://launchpad.support.sap.com/#/notes/1999930)
-- [SAP Note #2177064 – SSS: SAP HANA hizmeti yeniden başlatma ve çökme](https://launchpad.support.sap.com/#/notes/2177064)
+- [SAP Note #2222200 – SSS: SAP HANA Ağı](https://launchpad.support.sap.com/#/notes/2222200)
+- [SAP Not #2100040 – SSS: SAP HANA CPU](https://launchpad.support.sap.com/#/notes/0002100040)
+- [SAP Not #199997 – SSS: SAP HANA Bellek](https://launchpad.support.sap.com/#/notes/2177064)
+- [SAP Not #200000 – SSS: SAP HANA Performans Optimizasyonu](https://launchpad.support.sap.com/#/notes/2000000)
+- [SAP Not #199930 – SSS: SAP HANA I/O Analizi](https://launchpad.support.sap.com/#/notes/1999930)
+- [SAP Note #2177064 – SSS: SAP HANA Hizmeti Yeniden Başlat Ve Çöküyor](https://launchpad.support.sap.com/#/notes/2177064)
 
-## <a name="sap-hana-alerts"></a>SAP HANA uyarılar
+## <a name="sap-hana-alerts"></a>SAP HANA Uyarıları
 
-İlk adım olarak, geçerli SAP HANA uyarı günlüklerini denetleyin. SAP HANA Studio 'da **Yönetim konsoluna gidin: Uyarılar: göster: tüm uyarılar**. Bu sekmede, en düşük ve en yüksek eşiklerin dışında kalan belirli değerler (boş fiziksel bellek, CPU kullanımı vb.) için tüm SAP HANA uyarıları gösterilir. Varsayılan olarak, denetimler her 15 dakikada bir otomatik olarak yenilenir.
+İlk adım olarak, geçerli SAP HANA uyarı günlüklerini kontrol edin. SAP HANA Studio'da **Yönetim Konsolu'na gidin: Uyarılar: Göster: tüm uyarılar.** Bu sekme, belirlenen minimum ve maksimum eşiklerin dışına çıkan belirli değerler (ücretsiz fiziksel bellek, CPU kullanımı, vb.) için tüm SAP HANA uyarılarını gösterir. Varsayılan olarak, denetimler her 15 dakikada bir otomatik olarak yenilenir.
 
-![SAP HANA Studio 'da yönetim konsoluna gidin: Uyarılar: göster: tüm uyarılar](./media/troubleshooting-monitoring/image1-show-alerts.png)
+![SAP HANA Studio'da Yönetim Konsolu'na gidin: Uyarılar: Göster: tüm uyarılar](./media/troubleshooting-monitoring/image1-show-alerts.png)
 
 ## <a name="cpu"></a>CPU
 
-Hatalı eşik ayarı nedeniyle tetiklenen bir uyarı için, bir çözüm varsayılan değere veya daha makul bir eşik değerine sıfırlanacak.
+Yanlış eşik ayarı nedeniyle tetiklenen bir uyarı için, bir çözünürlük varsayılan değere veya daha makul bir eşik değerine sıfırlanır.
 
-![Varsayılan değere veya daha makul bir eşik değerine sıfırlayın](./media/troubleshooting-monitoring/image2-cpu-utilization.png)
+![Varsayılan değere veya daha makul bir eşik değerine sıfırlama](./media/troubleshooting-monitoring/image2-cpu-utilization.png)
 
-Aşağıdaki uyarılar CPU kaynağı sorunlarını gösteriyor olabilir:
+Aşağıdaki uyarılar CPU kaynak sorunlarını gösterebilir:
 
-- Ana bilgisayar CPU kullanımı (uyarı 5)
-- En son kayıt noktası işlemi (uyarı 28)
-- Kayıt noktası süresi (uyarı 54)
+- Ana Bilgisayar CPU Kullanımı (Uyarı 5)
+- En son savepoint işlemi (Alert 28)
+- Savepoint süresi (Uyarı 54)
 
-SAP HANA veritabanınızda aşağıdakilerden birini izleyerek yüksek CPU tüketimi fark edebilirsiniz:
+SAP HANA veritabanınızda yüksek CPU tüketimini aşağıdakilerden birinden fark edebilirsiniz:
 
-- Uyarı 5 (konak CPU kullanımı) geçerli veya geçmiş CPU kullanımı için oluşturuldu
-- Genel bakış ekranında görüntülenmekte olan CPU kullanımı
+- Alert 5 (Host CPU kullanımı) geçerli veya geçmiş CPU kullanımı için yükseltilir
+- Genel bakış ekranında görüntülenen CPU kullanımı
 
-![Genel bakış ekranında kullanılan CPU kullanımı](./media/troubleshooting-monitoring/image3-cpu-usage.png)
+![Genel bakış ekranında görüntülenen CPU kullanımı](./media/troubleshooting-monitoring/image3-cpu-usage.png)
 
-Yük Graph, geçmişte yüksek CPU tüketimi veya yüksek tüketim gösterebilir:
+Yük grafiği yüksek CPU tüketimini veya geçmişte yüksek tüketimi gösterebilir:
 
-![Yük Graph, geçmişte yüksek CPU tüketimi veya yüksek tüketim gösterebilir](./media/troubleshooting-monitoring/image4-load-graph.png)
+![Yük grafiği yüksek CPU tüketimini veya geçmişte yüksek tüketimi gösterebilir](./media/troubleshooting-monitoring/image4-load-graph.png)
 
-Yüksek CPU kullanımı nedeniyle tetiklenen bir uyarı olabilir, ancak bunlarla sınırlı olmamak üzere bazı işlemler, veri yükleme, yanıt vermeyen işler, uzun süre çalışan SQL deyimleri ve hatalı sorgu performansı gibi çeşitli nedenlerden kaynaklanabilir (örneğin: , HANA küplerinde bant genişliği ile).
+Yüksek CPU kullanımı nedeniyle tetiklenen bir uyarı, belirli işlemlerin yürütülmesi, veri yüklemesi, yanıt vermeyen işler, uzun süren SQL deyimleri ve kötü sorgu performansı (örneğin, BW ile HANA küpleri).
 
-Ayrıntılı sorun giderme adımları için [SAP HANA sorun giderme: CPU Ile Ilgili nedenler ve çözümler](https://help.sap.com/saphelp_hanaplatform/helpdata/en/4f/bc915462db406aa2fe92b708b95189/content.htm?frameset=/en/db/6ca50424714af8b370960c04ce667b/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=46&amp;show_children=false) sitesine bakın.
+Ayrıntılı sorun giderme adımları için [SAP HANA Sorun Giderme: CPU Ile İlgili Nedenler ve Çözümler](https://help.sap.com/saphelp_hanaplatform/helpdata/en/4f/bc915462db406aa2fe92b708b95189/content.htm?frameset=/en/db/6ca50424714af8b370960c04ce667b/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=46&amp;show_children=false) sitesine bakın.
 
 ## <a name="operating-system"></a>İşletim Sistemi
 
-Linux üzerinde SAP HANA en önemli denetimlerinden biri, saydam büyük sayfaların devre dışı bırakıldığından emin olmak için, [SAP HANA sunucularında SAP Note #2131662 – saydam büyük sayfalar (THP)](https://launchpad.support.sap.com/#/notes/2131662)konusuna bakın.
+Linux'ta SAP HANA için en önemli kontrollerden biri Şeffaf Büyük Sayfaların devre dışı bırakıldığından emin olmaktır, sap [hana sunucularında SAP Note #2131662 – Şeffaf Büyük Sayfalar (THP)](https://launchpad.support.sap.com/#/notes/2131662)bölümüne bakın.
 
-- Saydam büyük sayfaların şu Linux komutu aracılığıyla etkinleştirilip etkinleştirilmediğini kontrol edebilirsiniz: **Cat/sys/kernel/mm/Transparent\_kugepage/etkin**
-- Aşağıdaki gibi _her zaman_ köşeli ayraç içine Alınmısa, saydam büyük sayfaların etkin olduğu anlamına gelir: [Always] her zaman madmenlik; aşağıdaki gibi _hiçbir zaman_ parantez içine alınmadıysa, saydam büyük sayfaların devre dışı bırakıldığı anlamına gelir: her zaman madmenlik [hiçbir zaman]
+- Saydam Büyük Sayfaların aşağıdaki Linux komutu yla etkin olup olmadığını kontrol edebilirsiniz: **cat /sys/kernel/mm/transparent\_hugepage/enabled**
+- _Her zaman_ aşağıdaki gibi parantez içinde kapalı ise, Saydam Büyük Sayfalar etkin olduğu anlamına gelir: [her zaman] madvise asla; _hiçbir zaman_ aşağıdaki gibi parantez içinde kapalı değilse, Saydam Büyük Sayfalar devre dışı bırakıldığı anlamına gelir: her zaman [asla]
 
-Aşağıdaki Linux komutu Nothing olarak döndürmelidir: **RPM-qa | grep ulimit.** _Uılimit_ yüklüyse, hemen kaldırın.
+Aşağıdaki Linux komutu hiçbir şey döndürmemelidir: **rpm -qa | grep ulimit.** _Ulimit_ yüklü görünüyorsa, hemen kaldırın.
 
 ## <a name="memory"></a>Bellek
 
-SAP HANA veritabanı tarafından ayrılan bellek miktarının beklenenden yüksek olduğunu gözlemleyebilirsiniz. Aşağıdaki uyarılar, yüksek bellek kullanımıyla ilgili sorunları gösterir:
+SAP HANA veritabanı tarafından ayrılan bellek miktarının beklenenden yüksek olduğunu gözlemleebilirsiniz. Aşağıdaki uyarılar yüksek bellek kullanımı yla ilgili sorunları gösterir:
 
-- Ana bilgisayar fiziksel bellek kullanımı (uyarı 1)
-- Ad sunucusunun bellek kullanımı (uyarı 12)
-- Sütun deposu tablolarının toplam bellek kullanımı (uyarı 40)
-- Hizmetlerin bellek kullanımı (uyarı 43)
-- Sütun deposu tablolarının ana depolamanın bellek kullanımı (uyarı 45)
-- Çalışma zamanı döküm dosyaları (uyarı 46)
+- Ana bilgisayar fiziksel bellek kullanımı (Uyarı 1)
+- Ad sunucusunun bellek kullanımı (Alert 12)
+- Sütun Deposu tablolarının toplam bellek kullanımı (Uyarı 40)
+- Hizmetlerin bellek kullanımı (Alert 43)
+- Sütun Deposu tablolarının ana depolama alanının bellek kullanımı (Uyarı 45)
+- Çalışma zamanı döküm dosyaları (Alert 46)
 
-Ayrıntılı sorun giderme adımları için [SAP HANA sorun giderme: bellek sorunları](https://help.sap.com/saphelp_hanaplatform/helpdata/en/db/6ca50424714af8b370960c04ce667b/content.htm?frameset=/en/59/5eaa513dde43758b51378ab3315ebb/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=26&amp;show_children=false) sitesine bakın.
+Ayrıntılı sorun giderme adımları için [SAP HANA Sorun Giderme: Bellek Sorunları](https://help.sap.com/saphelp_hanaplatform/helpdata/en/db/6ca50424714af8b370960c04ce667b/content.htm?frameset=/en/59/5eaa513dde43758b51378ab3315ebb/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=26&amp;show_children=false) sitesine bakın.
 
 ## <a name="network"></a>Ağ
 
-[SAP note #2081065 – SAP HANA ağ sorunlarını giderme](https://launchpad.support.sap.com/#/notes/2081065) ve bu SAP notunda ağ sorun giderme adımlarını gerçekleştirme bölümüne bakın.
+SAP Note #2081065 ' a bakın [– SORUN Giderme SAP HANA Ağı](https://launchpad.support.sap.com/#/notes/2081065) ve bu SAP Notunda ağ sorun giderme adımlarını gerçekleştirin.
 
-1. Sunucu ve istemci arasındaki gidiş dönüş süresini çözümleme.
-  A. SQL betiği [_HANA\_ağ\_istemcilerini_](https://launchpad.support.sap.com/#/notes/1969700)çalıştırın _._
+1. Sunucu ve istemci arasındaki gidiş-dönüş süresini çözümleme.
+  A. SQL komut dosyası [_HANA\_\_Ağ İstemlerini_](https://launchpad.support.sap.com/#/notes/1969700)çalıştırın._._
   
-2. Düğümler arası iletişimi analiz edin.
-  A. SQL Script [_HANA\_ağ\_hizmetlerini_](https://launchpad.support.sap.com/#/notes/1969700)çalıştırın _._
+2. İnternod iletişimini analiz edin.
+  A. SQL komut dosyası [_HANA\_Ağ\_Hizmetleri_](https://launchpad.support.sap.com/#/notes/1969700)çalıştırın._._
 
-3. Linux komutunu çalıştırın **ıconfig** (çıkış, herhangi bir paket kayıpları oluşup oluşmadığını gösterir).
-4. Linux komutunu çalıştırın **tcpdump**.
+3. Linux komutu **ifconfig** çalıştırın (çıktı herhangi bir paket kaybı meydana geliyorsa gösterir).
+4. Linux **komutu tcpdump**çalıştırın.
 
-Ayrıca, gerçek uygulama ağı performansını ölçmek için açık kaynak [Iperf](https://iperf.fr/) aracını (veya benzer) kullanın.
+Ayrıca, gerçek uygulama ağı performansını ölçmek için açık kaynak [IPERF](https://iperf.fr/) aracını (veya benzersini) kullanın.
 
-Ayrıntılı sorun giderme adımları için [SAP HANA sorun giderme: ağ performansı ve bağlantı sorunları](https://help.sap.com/saphelp_hanaplatform/helpdata/en/a3/ccdff1aedc4720acb24ed8826938b6/content.htm?frameset=/en/dc/6ff98fa36541e997e4c719a632cbd8/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=142&amp;show_children=false) sitesine bakın.
+Ayrıntılı sorun giderme adımları için [SAP HANA Sorun Giderme: Ağ Performansı ve Bağlantı Sorunları](https://help.sap.com/saphelp_hanaplatform/helpdata/en/a3/ccdff1aedc4720acb24ed8826938b6/content.htm?frameset=/en/dc/6ff98fa36541e997e4c719a632cbd8/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=142&amp;show_children=false) sitesine bakın.
 
 ## <a name="storage"></a>Depolama
 
-Bir son kullanıcı perspektifinden, bir uygulama (veya bir bütün olarak sistem) yavaş çalışır, yanıt vermemeye başlıyor veya g/ç performansı sorunları varsa yanıt vermeyi durdurmuş gibi görünse de durabilir. SAP HANA Studio 'daki **birimler** sekmesinde, eklenen birimleri ve her bir hizmet tarafından hangi birimlerin kullanıldığını görebilirsiniz.
+Son kullanıcı açısından bakıldığında, bir uygulama (veya bir bütün olarak sistem) yavaş çalışır, yanıt vermiyor veya G/Ç performansıyla ilgili sorunlar varsa yanıt vermeyi bile durdurabilir. SAP HANA Studio'daki **Birimler** sekmesinde, ekli birimleri ve her hizmet tarafından hangi birimlerin kullanıldığını görebilirsiniz.
 
-![SAP HANA Studio 'daki birimler sekmesinde, eklenen birimleri ve her bir hizmet tarafından kullanılan birimleri görebilirsiniz](./media/troubleshooting-monitoring/image5-volumes-tab-a.png)
+![SAP HANA Studio'daki Birimler sekmesinde, ekli birimleri ve her hizmet tarafından hangi birimlerin kullanıldığını görebilirsiniz](./media/troubleshooting-monitoring/image5-volumes-tab-a.png)
 
-Ekranın alt kısmındaki eklenen birimler, birimlerin ayrıntılarını (örneğin, dosyalar ve g/ç istatistikleri) görebilirsiniz.
+Ekranın alt kısmında ekli birimler, dosyalar ve G/Ç istatistikleri gibi birimlerin ayrıntılarını görebilirsiniz.
 
-![Ekranın alt kısmındaki eklenen birimler, birimlerin ayrıntılarını (örneğin, dosyalar ve g/ç istatistikleri) görebilirsiniz](./media/troubleshooting-monitoring/image6-volumes-tab-b.png)
+![Ekranın alt kısmında ekli birimler, dosyalar ve G/Ç istatistikleri gibi birimlerin ayrıntılarını görebilirsiniz](./media/troubleshooting-monitoring/image6-volumes-tab-b.png)
 
-[SAP HANA sorun giderme: g/ç Ile Ilgili temel nedenler ve çözümler](https://help.sap.com/saphelp_hanaplatform/helpdata/en/dc/6ff98fa36541e997e4c719a632cbd8/content.htm?frameset=/en/47/4cb08a715c42fe9f7cc5efdc599959/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=55&amp;show_children=false) ve SAP HANA sorun giderme: ayrıntılı sorun giderme adımları Için [diskle ilgili kök nedenler ve çözümler](https://help.sap.com/saphelp_hanaplatform/helpdata/en/47/4cb08a715c42fe9f7cc5efdc599959/content.htm?frameset=/en/44/3e1db4f73d42da859008df4f69e37a/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=53&amp;show_children=false) sitesi.
+Ayrıntılı sorun giderme adımları için [SAP HANA Sorun Giderme: I/Ç İlgili Kök Nedenleri ve Çözümleri](https://help.sap.com/saphelp_hanaplatform/helpdata/en/dc/6ff98fa36541e997e4c719a632cbd8/content.htm?frameset=/en/47/4cb08a715c42fe9f7cc5efdc599959/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=55&amp;show_children=false) ve SAP [HANA Sorun Giderme: Diskle İlgili Kök Nedenleri ve Çözümleri](https://help.sap.com/saphelp_hanaplatform/helpdata/en/47/4cb08a715c42fe9f7cc5efdc599959/content.htm?frameset=/en/44/3e1db4f73d42da859008df4f69e37a/frameset.htm&amp;current_toc=/en/85/d132c3f05e40a2b20c25aa5fd6331b/plain.htm&amp;node_id=53&amp;show_children=false) sitesine bakın.
 
-## <a name="diagnostic-tools"></a>Tanılama Araçları
+## <a name="diagnostic-tools"></a>Tanı Araçları
 
-HANA\_yapılandırma\_Minichecks aracılığıyla SAP HANA bir sistem durumu denetimi gerçekleştirin. Bu araç, SAP HANA Studio 'da zaten uyarı olarak oluşturulmuş olması gereken önemli olabilecek teknik sorunları döndürür.
+HANA\_Configuration\_Minichecks aracılığıyla SAP HANA Sağlık Kontrolü yapın. Bu araç, SAP HANA Studio'da uyarı olarak zaten yükseltilmiş olması gereken potansiyel olarak kritik teknik sorunları döndürür.
 
-[SAP HANA Için SAP Note #1969700 – SQL deyimi koleksiyonuna](https://launchpad.support.sap.com/#/notes/1969700) bakın ve bu nota eklenen SQL deyimlerini. zip dosyasını indirin. Bu. zip dosyasını yerel sabit sürücüde depolayın.
+SAP [HANA için SAP Note #1969700 - SQL ekstre koleksiyonuna](https://launchpad.support.sap.com/#/notes/1969700) bakın ve bu nota eklenen SQL Statements.zip dosyasını indirin. Bu .zip dosyasını yerel sabit diskte saklayın.
 
-SAP HANA Studio 'da, **sistem bilgileri** sekmesinde **ad** sütununa sağ tıklayın ve **SQL deyimlerini içeri aktar**' ı seçin.
+SAP HANA Studio'da, **Sistem Bilgileri** sekmesinde, **Ad** sütununa sağ tıklayın ve **SQL Deyimlerini Aktar'ı**seçin.
 
-![SAP HANA Studio 'da, sistem bilgileri sekmesinde Ad sütununa sağ tıklayın ve SQL deyimlerini Içeri Aktar ' ı seçin.](./media/troubleshooting-monitoring/image7-import-statements-a.png)
+![SAP HANA Studio'da, Sistem Bilgileri sekmesinde, Ad sütununa sağ tıklayın ve SQL Deyimlerini Aktar'ı seçin](./media/troubleshooting-monitoring/image7-import-statements-a.png)
 
-Yerel olarak depolanan SQL deyimlerini. zip dosyasını seçin ve karşılık gelen SQL deyimlerine sahip bir klasör içeri aktarılır. Bu noktada, birçok farklı tanılama denetimi bu SQL deyimleriyle çalıştırılabilir.
+Yerel olarak depolanan SQL Statements.zip dosyasını seçin ve ilgili SQL deyimlerinin bulunduğu bir klasör içe aktarılır. Bu noktada, birçok farklı tanılama denetimleri bu SQL deyimleri ile çalıştırılabilir.
 
-Örneğin, SAP HANA sistem çoğaltması bant genişliği gereksinimlerini test etmek için **çoğaltma: bant genişliği** altında **bant genişliği** BILDIRIMINE sağ tıklayın ve SQL konsolunda **Aç** ' ı seçin.
+Örneğin, SAP HANA System Replication bant genişliği gereksinimlerini test etmek için Çoğaltma altındaki **Bant Genişliği** deyimini sağ **tıklatın: Bant Genişliği** ve SQL Konsolunda **Aç'ı** seçin.
 
-Tüm SQL deyimleri, giriş parametrelerinin (değiştirme bölümü) değiştirilmesine ve sonra yürütülmesine izin vererek açılır.
+Tam SQL deyimi, giriş parametrelerinin (değişiklik bölümü) değiştirilmesine ve sonra yürütülmesine izin vererek açılır.
 
-![Tüm SQL deyimleri, giriş parametrelerinin (değiştirme bölümü) değiştirilmesine ve sonra yürütülmesine izin vererek açılır](./media/troubleshooting-monitoring/image8-import-statements-b.png)
+![Tam SQL deyimi, giriş parametrelerinin (modifikasyon bölümü) değiştirilmesine ve sonra yürütülmesine izin veren açılır](./media/troubleshooting-monitoring/image8-import-statements-b.png)
 
-Diğer bir örnek, **çoğaltma: genel bakış**altındaki deyimlere sağ tıklandır. Bağlam menüsünden **Çalıştır** ' ı seçin:
+Başka bir örnek çoğaltma altındaki ifadelere sağ **tıklayarak: Genel Bakış**. Bağlam **Execute** menüsünden Yürüt''yü seçin:
 
-![Diğer bir örnek, çoğaltma: genel bakış altındaki deyimlere sağ tıklandır. Bağlam menüsünden Yürüt ' ü seçin](./media/troubleshooting-monitoring/image9-import-statements-c.png)
+![Başka bir örnek, Çoğaltma altındaki ifadelere sağ tıklamadır: Genel Bakış. Bağlam menüsünden Yürüt''yü seçin](./media/troubleshooting-monitoring/image9-import-statements-c.png)
 
-Bu, sorun gidermenize yardımcı olan bilgiler ile sonuçlanır:
+Bu, sorun giderme ile yardımcı olan bilgilerle sonuçlanır:
 
-![Bu, sorun gidermenize yardımcı olacak bilgiler ile sonuçlanır](./media/troubleshooting-monitoring/image10-import-statements-d.png)
+![Bu, sorun giderme ile yardımcı olacak bilgilerle sonuçlanır](./media/troubleshooting-monitoring/image10-import-statements-d.png)
 
-HANA\_yapılandırma\_Minichecks için aynısını yapın ve _C_ (kritik) sütununda herhangi bir _X_ işaretini denetleyin.
+\_Aynısını HANA\_Configuration Minichecks için de yapın ve _C_ (Kritik) sütunundaki _X_ işaretlerini kontrol edin.
 
-Örnek çıktılar:
+Örnek çıktıları:
 
-**HANA\_Configuration\_MiniChecks\_Rev 102.01 + 1** Genel SAP HANA denetimleri için.
+Genel SAP HANA kontrolleri için **\_HANA Configuration\_MiniChecks\_Rev102.01+1.**
 
-![HANA\_Configuration\_MiniChecks\_Rev 102.01 + 1 Genel SAP HANA denetimleri için](./media/troubleshooting-monitoring/image11-configuration-minichecks.png)
+![Genel\_SAP\_HANA çekleri için HANA Configuration MiniChecks\_Rev102.01+1](./media/troubleshooting-monitoring/image11-configuration-minichecks.png)
 
-**HANA\_Hizmetleri** , şu anda hangi SAP HANA hizmetlerinin çalıştığını bir genel bakış için\_.
+**SAP\_HANA\_** hizmetlerinin şu anda yürüttüğü ne genel bir bakış için HANA Hizmetlerine Genel Bakış.
 
-![HANA\_Hizmetleri, şu anda hangi SAP HANA hizmetlerinin çalıştığını bir genel bakış için\_](./media/troubleshooting-monitoring/image12-services-overview.png)
+![SAP\_HANA hizmetlerinin şu anda yürüttüğü ne genel bir bakış için HANA Hizmetlerine\_Genel Bakış](./media/troubleshooting-monitoring/image12-services-overview.png)
 
-**HANA\_Hizmetleri** , SAP HANA Service ıNFORMATION (CPU, bellek vb.) için istatistikleri\_.
+**SAP\_HANA\_** hizmet bilgileri için HANA Hizmet İstatistikleri (CPU, bellek, vb.).
 
-![SAP HANA hizmet bilgileri için HANA\_Hizmetleri\_Istatistikleri](./media/troubleshooting-monitoring/image13-services-statistics.png)
+![SAP\_HANA hizmet bilgileri için HANA Hizmet\_İstatistikleri](./media/troubleshooting-monitoring/image13-services-statistics.png)
 
-**HANA\_Configuration\_genel bakış** SAP HANA örneği hakkında genel bilgi Için\_Rev110 +.
+SAP HANA örneği hakkında genel bilgi için **HANA\_Yapılandırmaya\_Genel Bakış\_Rev110+**
 
-![HANA\_yapılandırma\_genel bakış SAP HANA örneği hakkında genel bilgi için\_Rev110 +](./media/troubleshooting-monitoring/image14-configuration-overview.png)
+![SAP\_HANA örneği hakkında genel bilgi için HANA Yapılandırmaya\_Genel Bakış\_Rev110+](./media/troubleshooting-monitoring/image14-configuration-overview.png)
 
-**HANA\_yapılandırma\_parametreler** , SAP HANA parametrelerini denetlemek Için\_Rev70 +.
+SAP HANA parametrelerini kontrol etmek için **HANA\_\_Konfigürasyon Parametreleri\_Rev70+**
 
-![HANA\_yapılandırma\_parametreleri\_SAP HANA parametrelerini denetlemek için Rev70 +](./media/troubleshooting-monitoring/image15-configuration-parameters.png)
+![SAP\_HANA parametrelerini kontrol etmek için HANA Konfigürasyon\_Parametreleri\_Rev70+](./media/troubleshooting-monitoring/image15-configuration-parameters.png)
 
 **Sonraki adımlar**
 
-- [STONITH kullanarak SUSE 'de yüksek kullanılabilirlik kümesine](ha-setup-with-stonith.md)bakın.
+- [STONITH kullanarak SUSE'da ayarlanmış yüksek kullanılabilirliği ifade edin.](ha-setup-with-stonith.md)

@@ -1,6 +1,6 @@
 ---
-title: OPC yayımcısı çalıştırma-Azure | Microsoft Docs
-description: Bu makalede OPC yayımcısının nasıl çalıştırılacağı ve ayıklanacağı açıklanır. Ayrıca performans ve bellek konularını ele alınmaktadır.
+title: OPC Publisher çalıştırın - Azure | Microsoft Dokümanlar
+description: Bu makalede, OPC Publisher'ın nasıl çalıştırılıp hata ayıklanınca açıklanmaktadır. Ayrıca performans ve bellek hususlar ı da ele alıyor.
 author: dominicbetts
 ms.author: dobett
 ms.date: 06/10/2019
@@ -9,19 +9,19 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 4f5d57bab51d537b64ce4b800737219663c3d7a7
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77198795"
 ---
 # <a name="run-opc-publisher"></a>OPC Yayımcısını Çalıştırma
 
-Bu makalede, ad hata ayıklama OPC yayımcısının nasıl çalıştırılacağı açıklanır. Ayrıca performans ve bellek konularını ele alınmaktadır.
+Bu makalede, reklam hata ayıklama OPC Publisher çalıştırmak için nasıl açıklanmaktadır. Ayrıca performans ve bellek hususlar ı da ele alıyor.
 
 ## <a name="command-line-options"></a>Komut satırı seçenekleri
 
-Uygulama kullanımı, `--help` komut satırı seçeneği kullanılarak aşağıdaki şekilde gösterilir:
+Uygulama kullanımı `--help` komut satırı seçeneği kullanılarak aşağıdaki gibi gösterilir:
 
 ```sh/cmd
 Current directory is: /appdata
@@ -334,17 +334,17 @@ Options:
                                 reside in a directory.
 ```
 
-Genellikle IoT Hub sahip bağlantı dizesini yalnızca uygulamanın ilk çalıştırmasında belirtirsiniz. Bağlantı dizesi şifrelenir ve platform sertifika deposunda depolanır. Daha sonra uygulama, sertifika deposundan bağlantı dizesini okur. Her çalıştırmada bağlantı dizesini belirtirseniz, IoT Hub cihaz kayıt defterinde uygulama için oluşturulan cihaz kaldırılır ve yeniden oluşturulur.
+Genellikle, yalnızca uygulamanın ilk çalışmasında IoT Hub sahibi bağlantı dizesini belirtirsiniz. Bağlantı dizesi şifrelenir ve platform sertifika deposunda depolanır. Daha sonraki çalıştırmalarda, uygulama sertifika deposundan bağlantı dizesini okur. Her çalıştırmada bağlantı dizesini belirtirseniz, IoT Hub aygıt kayıt defterindeki uygulama için oluşturulan aygıt kaldırılır ve yeniden oluşturulur.
 
-## <a name="run-natively-on-windows"></a>Windows üzerinde yerel olarak çalıştır
+## <a name="run-natively-on-windows"></a>Windows'da yerel olarak çalıştırın
 
-Visual Studio ile **opcpublisher. sln** projesini açın, çözümü derleyin ve yayımlayın. Uygulamayı, yayımladığınız **hedef dizinde** aşağıdaki şekilde başlatabilirsiniz:
+Visual Studio ile **opcpublisher.sln** projesini açın, çözümü oluşturun ve yayınlayın. Yayınladığınız **Hedef dizininde** uygulamayı aşağıdaki şekilde başlatabilirsiniz:
 
 ```cmd
 dotnet opcpublisher.dll <applicationname> [<IoT Hubconnectionstring>] [options]
 ```
 
-## <a name="use-a-self-built-container"></a>Kendi kendine oluşturulmuş bir kapsayıcı kullanma
+## <a name="use-a-self-built-container"></a>Kendi kendine inşa edilmiş bir kapsayıcı kullanma
 
 Kendi kapsayıcınızı oluşturun ve aşağıdaki gibi başlatın:
 
@@ -352,29 +352,29 @@ Kendi kapsayıcınızı oluşturun ve aşağıdaki gibi başlatın:
 docker run <your-container-name> <applicationname> [<IoT Hubconnectionstring>] [options]
 ```
 
-## <a name="use-a-container-from-microsoft-container-registry"></a>Microsoft Container Registry bir kapsayıcı kullanın
+## <a name="use-a-container-from-microsoft-container-registry"></a>Microsoft Kapsayıcı Kayıt Defteri'nden bir kapsayıcı kullanma
 
-Microsoft Container Registry 'de önceden oluşturulmuş bir kapsayıcı mevcuttur. Şu şekilde başlatın:
+Microsoft Kapsayıcı Kayıt Defteri'nde önceden oluşturulmuş bir kapsayıcı vardır. Aşağıdaki gibi başlatın:
 
 ```sh/cmd
 docker run mcr.microsoft.com/iotedge/opc-publisher <applicationname> [<IoT Hubconnectionstring>] [options]
 ```
 
-Desteklenen işletim sistemlerini ve işlemci mimarilerini görmek için [Docker Hub 'ını](https://hub.docker.com/_/microsoft-iotedge-opc-publisher) denetleyin. İşletim sistemi ve CPU mimariniz destekleniyorsa Docker otomatik olarak doğru kapsayıcıyı seçer.
+Desteklenen işletim sistemlerini ve işlemci mimarilerini görmek için [Docker Hub'ı](https://hub.docker.com/_/microsoft-iotedge-opc-publisher) kontrol edin. İşletim sistemi ve CPU mimariniz desteklenirse, Docker doğru kapsayıcıyı otomatik olarak seçer.
 
-## <a name="run-as-an-azure-iot-edge-module"></a>Azure IoT Edge modülü olarak çalıştır
+## <a name="run-as-an-azure-iot-edge-module"></a>Azure IoT Edge modülü olarak çalıştırın
 
-OPC yayımcısı [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge) modülü olarak kullanılmak üzere kullanılabilir. OPC yayımcısını IoT Edge modülü olarak kullandığınızda, desteklenen tek taşıma protokolleri **Amqp_Tcp_Only** ve **Mqtt_Tcp_Only**.
+OPC Publisher, [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge) modülü olarak kullanılmaya hazırdır. OPC Publisher'ı IoT Edge modülü olarak kullandığınızda, desteklenen tek aktarım protokolleri **Amqp_Tcp_Only** ve **Mqtt_Tcp_Only.**
 
-OPC yayımcısını IoT Edge dağıtımınıza modül olarak eklemek için, Azure portal IoT Hub ayarlarınıza gidin ve aşağıdaki adımları tamamlayın:
+IoT Edge dağıtımınıza modül olarak OPC Publisher eklemek için Azure portalındaki IoT Hub ayarlarınıza gidin ve aşağıdaki adımları tamamlayın:
 
-1. **IoT Edge** gidin ve IoT Edge cihazınızı oluşturun veya seçin.
+1. **IoT Edge'e** gidin ve IoT Edge cihazınızı oluşturun veya seçin.
 1. **Modülleri Ayarlama**'yı seçin.
-1. **Dağıtım modülleri** altında **Ekle** ' yi ve ardından **IoT Edge modülünü**seçin.
-1. **Ad** alanına **Yayımcı**yazın.
-1. **Görüntü URI 'si** alanına `mcr.microsoft.com/iotedge/opc-publisher:<tag>` girin.
-1. Kullanılabilir etiketleri [Docker Hub 'ında](https://hub.docker.com/_/microsoft-iotedge-opc-publisher) bulabilirsiniz
-1. Aşağıdaki JSON öğesini **kapsayıcı oluşturma seçenekleri** alanına yapıştırın:
+1. **Dağıtım Modülleri** Altında **Ekle'yi** ve ardından **IoT Edge Modülünü**seçin.
+1. **Ad** alanına **yayımcı**girin.
+1. Image **URI** alanına girin`mcr.microsoft.com/iotedge/opc-publisher:<tag>`
+1. Mevcut etiketleri Docker [Hub'da](https://hub.docker.com/_/microsoft-iotedge-opc-publisher) bulabilirsiniz
+1. Aşağıdaki JSON'u **Kapsayıcı Oluşturma Seçenekleri** alanına yapıştırın:
 
     ```json
     {
@@ -385,10 +385,10 @@ OPC yayımcısını IoT Edge dağıtımınıza modül olarak eklemek için, Azur
     }
     ```
 
-    Bu yapılandırma, OPC yayımcı görüntüsünü kullanarak **Yayımcı** adlı bir kapsayıcıyı başlatmak için IoT Edge yapılandırır. Kapsayıcının sisteminin konak adı **Publisher**olarak ayarlanmıştır. OPC yayımcısı aşağıdaki komut satırı bağımsız değişkeniyle çağrılır: `--aa`. Bu seçenekle OPC yayımcısı, bağlandığı OPC UA sunucularının sertifikalarına güvenir. Herhangi bir OPC yayımcısı komut satırı seçeneğini kullanabilirsiniz. Tek sınırlama, IoT Edge tarafından desteklenen **kapsayıcı oluşturma seçeneklerinin** boyutudur.
+    Bu yapılandırma, IoT Edge'i OPC Publisher görüntüsünü kullanarak **yayımcı** adı verilen bir kapsayıcıyı başlatmak için yapılandırır. Kapsayıcının sisteminin ana bilgisayar adı **yayımcı**olarak ayarlanır. OPC Publisher aşağıdaki komut satırı bağımsız `--aa`değişkeni ile çağrılır: . Bu seçenekle OPC Publisher, bağlandığı OPC UA sunucularının sertifikalarına güvenir. Herhangi bir OPC Publisher komut satırı seçeneklerini kullanabilirsiniz. Tek sınırlama, IoT Edge tarafından desteklenen **Kapsayıcı Oluşturma Seçenekleri'nin** boyutudur.
 
-1. Diğer ayarları değiştirmeden bırakın ve **Kaydet**'i seçin.
-1. OPC yayımcısının çıkışını başka bir IoT Edge modülüyle yerel olarak işlemek istiyorsanız, **modülleri ayarla** sayfasına dönün. Ardından **rotalar belirt** sekmesine gidin ve aşağıdaki JSON gibi görünen yeni bir yol ekleyin:
+1. Diğer ayarları değiştirmeden bırakın ve **Kaydet'i**seçin.
+1. OPC Publisher çıktısını başka bir IoT Edge modülüyle yerel olarak işlemek istiyorsanız, **Modülleri Ayarla** sayfasına geri dön. Ardından Yolları **Belirt** sekmesine gidin ve aşağıdaki JSON'a benzeyen yeni bir rota ekleyin:
 
     ```json
     {
@@ -399,13 +399,13 @@ OPC yayımcısını IoT Edge dağıtımınıza modül olarak eklemek için, Azur
     }
     ```
 
-1. **Modülleri ayarla** sayfasına döndüğünüzde, yapılandırmanın son sayfasına ulaşana kadar **İleri**' yi seçin.
-1. Yapılandırmanızı IoT Edge göndermek için **Gönder** ' i seçin.
-1. Edge cihazınızda IoT Edge başlattığınızda ve Docker kapsayıcı **yayımcısı** çalışıyorsa OPC yayımcısının günlük çıkışını `docker logs -f publisher` kullanarak veya günlük dosyasına bakarak kullanıma alabilirsiniz. Önceki örnekte, günlük dosyası `d:\iiotegde\publisher-publisher.log`üzerinde. [IoT-Edge-OPC-Publisher-Diagnostics aracını](https://github.com/Azure-Samples/iot-edge-opc-publisher-diagnostics)da kullanabilirsiniz.
+1. **Modülleri Ayarla** sayfasında, yapılandırmanın son sayfasına ulaşana kadar **İleri'yi**seçin.
+1. Yapılandırmanızı IoT Edge'e göndermek için **Gönder'i** seçin.
+1. Kenar aygıtınızda IoT Edge'i başlattığınızda ve docker **konteyneryayımı** çalışıyorsa, opc Publisher'ın `docker logs -f publisher` günlük çıktısını kullanarak veya logfileyi kontrol ederek kontrol edebilirsiniz. Önceki örnekte, günlük dosyası `d:\iiotegde\publisher-publisher.log`yukarıda. Ayrıca [iot-edge-opc-publisher-diagnostics aracını](https://github.com/Azure-Samples/iot-edge-opc-publisher-diagnostics)da kullanabilirsiniz.
 
-### <a name="make-the-configuration-files-accessible-on-the-host"></a>Yapılandırma dosyalarını konakta erişilebilir hale getirme
+### <a name="make-the-configuration-files-accessible-on-the-host"></a>Yapılandırma dosyalarını ana bilgisayarda erişilebilir hale getirme
 
-IoT Edge modülü yapılandırma dosyalarını konak dosya sisteminde erişilebilir hale getirmek için aşağıdaki **kapsayıcı oluşturma seçeneklerini**kullanın. Aşağıdaki örnek, Windows için Linux kapsayıcıları kullanan bir dağıtımdır:
+IoT Edge modül yapılandırma dosyalarını ana bilgisayar dosya sisteminde erişilebilir hale getirmek için aşağıdaki **Kapsayıcı Oluşturma Seçenekleri'ni**kullanın. Aşağıdaki örnek, Windows için Linux Kapsayıcıları'nı kullanan bir dağıtımdır:
 
 ```json
 {
@@ -422,13 +422,13 @@ IoT Edge modülü yapılandırma dosyalarını konak dosya sisteminde erişilebi
 }
 ```
 
-Bu seçeneklerle OPC yayımcısı, dosya `./pn.json` yayımlaması gereken düğümleri okur ve kapsayıcının çalışma dizini başlangıçta `/appdata` olarak ayarlanır. Bu ayarlarla OPC yayımcısı, yapılandırmasını almak için kapsayıcıdan dosya `/appdata/pn.json` okur. `--pf` seçeneği olmadan OPC yayımcısı varsayılan yapılandırma dosyası `./publishednodes.json`okumaya çalışır.
+Bu seçeneklerle, OPC Publisher dosyadan `./pn.json` yayımlaması gereken düğümleri okur ve kapsayıcının `/appdata` çalışma dizini başlangıçta ayarlanır. Bu ayarlarla, OPC Publisher `/appdata/pn.json` yapılandırmasını almak için dosyayı kapsayıcıdan okur. `--pf` Seçenek olmadan, OPC Publisher varsayılan yapılandırma `./publishednodes.json`dosyasını okumaya çalışır.
 
-`publisher-publisher.log`varsayılan adı kullanılarak günlük dosyası `/appdata` yazılır ve `CertificateStores` dizini de bu dizinde oluşturulur.
+Varsayılan adı `publisher-publisher.log`kullanarak günlük dosyası yazılır `/appdata` ve `CertificateStores` dizin de bu dizinde oluşturulur.
 
-Bu dosyaların tümünün konak dosya sisteminde kullanılabilmesini sağlamak için, kapsayıcı yapılandırması bir bağlama bağlama birimi gerektirir. `d://iiotedge:/appdata` BIND, kapsayıcı başlangıcında geçerli çalışma dizini olan dizin `/appdata``d://iiotedge`konak dizinine eşler. Bu seçenek olmadan, kapsayıcı bir sonraki başlatıldığında hiçbir dosya verisi kalıcı olmaz.
+Tüm bu dosyaları ana bilgisayar dosya sisteminde kullanılabilir hale getirmek için, kapsayıcı yapılandırması bir bağlama montaj hacmi gerektirir. Bağlama, `d://iiotedge:/appdata` kapsayıcı başlatmadaki `/appdata`geçerli çalışma dizini olan dizini ana bilgisayar `d://iiotedge`dizinine eşler. Bu seçenek olmadan, kapsayıcı sonraki başlatıldığında hiçbir dosya verisi kalıcı dır.
 
-Windows kapsayıcıları çalıştırıyorsanız `Binds` parametresinin sözdizimi farklıdır. Kapsayıcı başlangıcında, çalışma dizini `c:\appdata`. Yapılandırma dosyasını konaktaki Dizin `d:\iiotedge`yerleştirmek için `HostConfig` bölümünde aşağıdaki eşlemeyi belirtin:
+Windows kapsayıcıları çalıştırıyorsanız, `Binds` parametresözdizimi farklıdır. Kapsayıcı başlatmada, çalışma dizini `c:\appdata`. Yapılandırma dosyasını ana bilgisayardaki `d:\iiotedge`dizine koymak için, bölümdeki aşağıdaki eşlemi belirtin: `HostConfig`
 
 ```json
 "HostConfig": {
@@ -438,7 +438,7 @@ Windows kapsayıcıları çalıştırıyorsanız `Binds` parametresinin sözdizi
 }
 ```
 
-Linux üzerinde Linux kapsayıcıları çalıştırıyorsanız, `Binds` parametresinin sözdizimi de farklı olur. Kapsayıcı başlangıcında, çalışma dizini `/appdata`. Yapılandırma dosyasını konaktaki Dizin `/iiotedge` yerleştirmek için `HostConfig` bölümünde aşağıdaki eşlemeyi belirtin:
+Linux'ta Linux kapsayıcıları çalıştırıyorsanız, `Binds` parametresözdizimi yine farklıdır. Kapsayıcı başlatmada, çalışma dizini `/appdata`. Yapılandırma dosyasını ana bilgisayardaki `/iiotedge` dizine koymak için, bölümdeki aşağıdaki eşlemi belirtin: `HostConfig`
 
 ```json
 "HostConfig": {
@@ -448,106 +448,106 @@ Linux üzerinde Linux kapsayıcıları çalıştırıyorsanız, `Binds` parametr
 }
 ```
 
-## <a name="considerations-when-using-a-container"></a>Kapsayıcı kullanırken dikkat edilecek noktalar
+## <a name="considerations-when-using-a-container"></a>Kapsayıcı kullanırken dikkat edilmesi gerekenler
 
-Aşağıdaki bölümlerde bir kapsayıcı kullandığınızda göz önünde bulundurmanız gereken bazı şeyler listelenmektedir:
+Aşağıdaki bölümler, bir kapsayıcı kullanırken aklınızda bulundurmanız gereken bazı şeyleri listeleyir:
 
-### <a name="access-to-the-opc-publisher-opc-ua-server"></a>OPC yayımcısı OPC UA sunucusuna erişim
+### <a name="access-to-the-opc-publisher-opc-ua-server"></a>OPC Publisher OPC UA sunucusuna erişim
 
-Varsayılan olarak OPC yayımcısı OPC UA sunucusu 62222 numaralı bağlantı noktasını dinler. Bu gelen bağlantı noktasını bir kapsayıcıda kullanıma sunmak için aşağıdaki komutu kullanın:
+Varsayılan olarak, OPC Publisher OPC UA sunucusu bağlantı noktası 62222'de dinler. Bu gelen bağlantı noktasını bir kapsayıcıda ortaya çıkarmak için aşağıdaki komutu kullanın:
 
 ```sh/cmd
 docker run -p 62222:62222 mcr.microsoft.com/iotedge/opc-publisher <applicationname> [<IoT Hubconnectionstring>] [options]
 ```
 
-### <a name="enable-intercontainer-name-resolution"></a>Kapsayıcı adı çözümlemesini etkinleştir
+### <a name="enable-intercontainer-name-resolution"></a>Konteynerler arası ad çözümlemesini etkinleştirme
 
-Kapsayıcının içinden diğer kapsayıcılara ad çözümlemesini etkinleştirmek için, Docker köprü ağını tanımlayan bir kullanıcı oluşturun ve `--network` seçeneğini kullanarak kapsayıcıyı bu ağa bağlayın. Ayrıca, `--name` seçeneğini kullanarak kapsayıcının adını aşağıdaki gibi atayın:
+Kapsayıcının içinden diğer kapsayıcılara ad çözümlemesini etkinleştirmek için, docker bridge network'ünü tanımlayan bir kullanıcı oluşturun ve kapsayıcıyı `--network` bu ağa bu ağa bağlama seçeneğini kullanarak. Ayrıca `--name` aşağıdaki seçeneği kullanarak kapsayıcı bir ad atayın:
 
 ```sh/cmd
 docker network create -d bridge iot_edge
 docker run --network iot_edge --name publisher mcr.microsoft.com/iotedge/opc-publisher <applicationname> [<IoT Hubconnectionstring>] [options]
 ```
 
-Kapsayıcıya artık aynı ağdaki diğer kapsayıcılar tarafından `publisher` adı kullanılarak erişilebilir.
+Kapsayıcıartık aynı ağdaki diğer `publisher` kapsayıcılar tarafından ad kullanılarak ulaşılabilir.
 
-### <a name="access-other-systems-from-within-the-container"></a>Diğer sistemlere kapsayıcı içinden erişin
+### <a name="access-other-systems-from-within-the-container"></a>Konteynerin içinden diğer sistemlere erişin
 
-Önceki bölümde açıklanan parametreler kullanılarak diğer kapsayıcılara erişilebilir. Docker 'ın barındırıldığı işletim sistemi DNS etkin ise, DNS tarafından bilinen tüm sistemlere erişim işe yarar.
+Diğer kapsayıcılara önceki bölümde açıklanan parametreler kullanılarak ulaşılabilir. Docker'ın barındırıldığı işletim sistemi DNS etkinse, DNS tarafından bilinen tüm sistemlere erişmek işe yarar.
 
-NetBIOS ad çözümlemesi kullanan ağlarda, kapsayıcınızı `--add-host` seçeneğiyle başlatarak diğer sistemlere erişimi etkinleştirin. Bu seçenek, kapsayıcının konak dosyasına bir girişi etkin bir şekilde ekler:
+NetBIOS ad çözümlemesi kullanan ağlarda, kapsayıcınızı `--add-host` opsiyonla başlatarak diğer sistemlere erişimi etkinleştirin. Bu seçenek, kapsayıcının ana bilgisayar dosyasına etkili bir giriş ekler:
 
 ```cmd/sh
 docker run --add-host mydevbox:192.168.178.23  mcr.microsoft.com/iotedge/opc-publisher <applicationname> [<IoT Hubconnectionstring>] [options]
 ```
 
-### <a name="assign-a-hostname"></a>Konak adı ata
+### <a name="assign-a-hostname"></a>Ana bilgisayar adı atama
 
-OPC yayımcısı, sertifika ve uç nokta üretimi için üzerinde çalıştığı makinenin ana bilgisayar adını kullanır. Docker, `-h` seçeneği tarafından ayarlanmamışsa rastgele bir konak adı seçer. Aşağıdaki örnekte, kapsayıcının iç ana bilgisayar adının `publisher`olarak nasıl ayarlanacağı gösterilmektedir:
+OPC Publisher, sertifika ve son nokta oluşturma için çalıştırdAradığı makinenin ana bilgisayar adını kullanır. Docker, `-h` seçenek tarafından ayarlanan bir kişi değilse rasgele bir ana bilgisayar adı seçer. Aşağıdaki örnek, kapsayıcının iç ana bilgisayar adının `publisher`nasıl ayarlanır:
 
 ```sh/cmd
 docker run -h publisher mcr.microsoft.com/iotedge/opc-publisher <applicationname> [<IoT Hubconnectionstring>] [options]
 ```
 
-### <a name="use-bind-mounts-shared-filesystem"></a>BIND takar (paylaşılan dosya sistemi) kullan
+### <a name="use-bind-mounts-shared-filesystem"></a>Bağlama montajlarını kullanma (paylaşılan dosya sistemi)
 
-Kapsayıcı dosya sistemini kullanmak yerine, yapılandırma bilgilerini ve günlük dosyalarını depolamak için konak dosya sistemini seçebilirsiniz. Bu seçeneği yapılandırmak için bağlama bağlama modunda `docker run` `-v` seçeneğini kullanın.
+Kapsayıcı dosya sistemini kullanmak yerine, yapılandırma bilgilerini ve günlük dosyalarını depolamak için ana bilgisayar dosya sistemini seçebilirsiniz. Bu seçeneği yapılandırmak için `-v` bind montaj modunda seçeneğini `docker run` kullanın.
 
-## <a name="opc-ua-x509-certificates"></a>OPC UA X. 509.440 sertifikaları
+## <a name="opc-ua-x509-certificates"></a>OPC UA X.509 sertifikaları
 
-OPC UA, bir bağlantı kurarken ve aralarındaki iletişimi şifrelemek için OPC UA istemcisinin ve sunucusunun kimliğini doğrulamak üzere X. 509.440 sertifikaları kullanır. OPC yayımcısı tüm sertifikaları yönetmek için OPC UA yığını tarafından tutulan sertifika depolarını kullanır. Başlangıçta OPC yayımcısı kendisi için bir sertifika olup olmadığını denetler. Sertifika deposunda sertifika yoksa ve biri komut satırında geçirilmemişse OPC yayımcısı otomatik olarak imzalanan bir sertifika oluşturur. Daha fazla bilgi için `OpcApplicationConfigurationSecurity.cs`içindeki **ıningpplicationsecurityasync** yöntemine bakın.
+OPC UA, bir bağlantı kurduklarında OPC UA istemcisinin ve sunucusunun kimliğini doğrulamak ve aralarındaki iletişimi şifrelemek için X.509 sertifikalarını kullanır. OPC Publisher, tüm sertifikaları yönetmek için OPC UA yığını tarafından tutulan sertifika depolarını kullanır. Başlangıçta, OPC Publisher kendisi için bir sertifika olup olmadığını denetler. Sertifika deposunda sertifika yoksa ve komut satırında sertifika yoksa, OPC Publisher kendi imzalı bir sertifika oluşturur. Daha fazla bilgi için **InitApplicationSecurityAsync** yöntemine `OpcApplicationConfigurationSecurity.cs`bakın.
 
-Otomatik olarak imzalanan sertifikalar, güvenilir bir CA tarafından imzalanmadığı için herhangi bir güvenlik sağlamaz.
+Güvenilir bir CA tarafından imzalanmadıkları için kendi imzalı sertifikalar herhangi bir güvenlik sağlamaz.
 
-OPC yayımcısı şunları yapmak için komut satırı seçenekleri sağlar:
+OPC Publisher komut satırı seçenekleri sağlar:
 
-- OPC yayımcısı tarafından kullanılan geçerli uygulama sertifikasının CSR bilgilerini alın.
-- CA imzalı bir sertifika ile OPC yayımcısı sağlayın.
-- Yeni bir anahtar çifti ve eşleşen CA imzalı sertifikayla OPC yayımcısı sağlayın.
-- Güvenilen bir eşe veya güvenilir veren sertifika deposuna sertifikalar ekleyin.
-- Bir CRL ekleyin.
-- Güvenilen eşten veya güvenilen verenler sertifika deposundan bir sertifikayı kaldırın.
+- OPC Publisher tarafından kullanılan geçerli uygulama sertifikasının CSR bilgilerini alın.
+- CA imzalı sertifikaya sahip OPC Publisher'ı sağlama.
+- Yeni bir anahtar çifti ve eşleşen CA imzalı sertifika ile Sağlama OPC Publisher.
+- Güvenilir bir eş veya güvenilir veren sertifika deposuna sertifika ekleyin.
+- CRL ekleyin.
+- Sertifikayı güvenilir eş veya güvenilir verenler sertifika deposundan kaldırın.
 
-Tüm bu seçenekler, dosyaları veya Base64 kodlamalı dizeleri kullanarak parametreleri geçirmenize olanak sağlar.
+Tüm bu seçenekler, dosyaları veya base64 kodlanmış dizeleri kullanarak parametreleri geçiş sağlar.
 
-Tüm sertifika depoları için varsayılan depolama türü, komut satırı seçeneklerini kullanarak değiştirebileceğiniz dosya sistemidir. Kapsayıcı, dosya sisteminde kalıcı depolama alanı sağlamadığından, farklı bir depo türü seçmeniz gerekir. Konak dosya sisteminde veya bir Docker biriminde sertifika depolarını kalıcı hale getirmek için Docker `-v` seçeneğini kullanın. Bir Docker birimi kullanıyorsanız, sertifikaları Base64 kodlamalı dizeler kullanarak geçirebilirsiniz.
+Tüm sertifika depoları için varsayılan mağaza türü, komut satırı seçeneklerini kullanarak değiştirebileceğiniz dosya sistemidir. Kapsayıcı dosya sisteminde kalıcı depolama sağlamadığından, farklı bir depo türü seçmeniz gerekir. Sertifika depolarını ana dosya sisteminde veya Docker biriminde sürdürmek için Docker `-v` seçeneğini kullanın. Docker birimi kullanıyorsanız, base64 kodlanmış dizeleri kullanarak sertifikaları geçirebilirsiniz.
 
-Çalışma zamanı ortamı sertifikaların kalıcı olduğunu etkiler. Uygulamayı her çalıştırdığınızda yeni sertifika depoları oluşturmaktan kaçının:
+Çalışma zamanı ortamı, sertifikaların nasıl kalıcı olduğunu etkiler. Uygulamayı her çalıştırdığınızda yeni sertifika depoları oluşturmaktan kaçının:
 
-- Windows üzerinde yerel olarak çalışan, özel anahtara erişim başarısız olduğundan `Directory` türünde bir uygulama sertifika deposu kullanamazsınız. Bu durumda `--at X509Store`seçeneğini kullanın.
-- Linux Docker kapsayıcısı olarak çalışan, Docker Run seçeneği `-v <hostdirectory>:/appdata`sertifika depolarını konak dosya sistemiyle eşleyebilirsiniz. Bu seçenek, sertifikanın uygulama genelinde kalıcı olmasını sağlar.
-- Linux Docker kapsayıcısı olarak çalışıyor ve uygulama sertifikası için bir x509 deposu kullanmak istiyorsanız, Docker Run seçeneğini `-v x509certstores:/root/.dotnet/corefx/cryptography/x509stores` ve uygulama seçeneğini kullanın `--at X509Store`
+- Windows'da yerel olarak çalışan, özel anahtara erişim `Directory` başarısız olduğundan, tür bir uygulama sertifikası deposu kullanamazsınız. Bu durumda, seçeneğini `--at X509Store`kullanın.
+- Linux docker konteyner olarak çalışan, docker çalıştır seçeneği `-v <hostdirectory>:/appdata`ile ana dosya sistemi için sertifika depoları eşleyebilirsiniz. Bu seçenek, sertifikayı uygulama çalıştırmaları arasında kalıcı hale getirir.
+- Linux docker konteyner olarak çalışan ve uygulama sertifikası için bir X509 mağaza `-v x509certstores:/root/.dotnet/corefx/cryptography/x509stores` kullanmak istiyorsanız, docker çalıştır seçeneği ve uygulama seçeneği kullanın`--at X509Store`
 
-## <a name="performance-and-memory-considerations"></a>Performans ve bellek konuları
+## <a name="performance-and-memory-considerations"></a>Performans ve bellek hususları
 
-Bu bölümde bellek ve performansı yönetme seçenekleri açıklanmaktadır:
+Bu bölümde bellek ve performansı yönetme seçenekleri anlatılmaktadır:
 
-### <a name="command-line-parameters-to-control-performance-and-memory"></a>Performansı ve belleği denetlemek için komut satırı parametreleri
+### <a name="command-line-parameters-to-control-performance-and-memory"></a>Performansı ve belleği kontrol etmek için komut satırı parametreleri
 
-OPC yayımcısı 'nı çalıştırdığınızda, performans gereksinimlerinizi ve ana bilgisayarınızda bulunan bellek kaynaklarını bilmeniz gerekir.
+OPC Publisher'ı çalıştırdığınızda, performans gereksinimleriniz ve ev sahibinizde bulunan bellek kaynaklarının farkında olmanız gerekir.
 
-Bellek ve performans birbirine bağımlıdır ve her ikisi de, yayımlanacak düğüm sayısına göre yapılandırmaya bağlıdır. Aşağıdaki parametrelerin gereksinimlerinizi karşıladığından emin olun:
+Bellek ve performans birbirine bağlıdır ve her ikisi de yayımlamak için yapılandırdığınız düğümün yapılandırmasına bağlıdır. Aşağıdaki parametrelerin gereksinimlerinizi karşıladığını sağlayın:
 
-- IoT Hub zaman aralığı gönderir: `--si`
-- IoT Hub ileti boyutu (varsayılan `1`): `--ms`
-- İzlenen öğeler kuyruk kapasitesi: `--mq`
+- IoT Hub aralığı gönderir:`--si`
+- IoT Hub ileti `1`boyutu (varsayılan):`--ms`
+- İzlenen öğeler kuyruk kapasitesi:`--mq`
 
-`--mq` parametresi, tüm OPC düğümü değer değişikliği bildirimlerini arabelleğe alarak iç sıranın kapasitesinin üst sınırını denetler. OPC yayımcısı IoT Hub yeterince hızlı bir şekilde ileti gönderemıyorsa, bu sıra bildirimleri arabelleğe alır. Parametresi, ara belleğe kullanılabilecek bildirimlerin sayısını ayarlar. Bu kuyruktaki öğelerin sayısını test çalıştırmalarınız içinde artırdıysanız, ileti kaybını önlemek için şunları yapmanız gerekir:
+`--mq` Parametre, tüm OPC düğüm değeri değişiklik bildirimlerini arabellekten iç sıranın kapasitesinin üst sınırını denetler. OPC Publisher IoT Hub'a yeterince hızlı ileti gönderemezse, bu sıra bildirimleri arabellekte tutar. Parametre arabelleğe alınabilecek bildirim sayısını ayarlar. Bu kuyruktaki öğe sayısının test çalışırınızda arttığını görürseniz, iletileri kaybetmemek için şunları yapmalısınız:
 
-- IoT Hub gönderme aralığını azaltma
-- IoT Hub ileti boyutunu artır
+- IoT Hub gönderme aralığını azaltın
+- IoT Hub ileti boyutunu artırma
 
-`--si` parametresi OPC yayımcısı 'nı belirtilen aralıkta IoT Hub iletileri gönderecek şekilde zorlar. OPC Publisher, `--ms` parametresi tarafından belirtilen ileti boyutuna ulaşıldığında veya `--si` parametresi tarafından belirtilen aralığa ulaşıldığında, hemen bir ileti gönderir. İleti boyutu seçeneğini devre dışı bırakmak için `--ms 0`kullanın. Bu durumda OPC yayımcısı, toplu iş verilerine 256 kB 'Lık en büyük olası IoT Hub ileti boyutunu kullanır.
+Parametre, `--si` OPC Publisher'ı belirtilen aralıkta IoT Hub'ına ileti göndermeye zorlar. OPC Publisher, `--ms` parametrede belirtilen ileti boyutuna ulaşılır ulaşmaz veya `--si` parametrede belirtilen araya erişilir ulaşmaz bir ileti gönderir. İleti boyutu seçeneğini devre dışı `--ms 0`kullanabilirsiniz. Bu durumda, OPC Publisher toplu veri için 256 kB mümkün olan en büyük IoT Hub ileti boyutunu kullanır.
 
-`--ms` parametresi, IoT Hub gönderilecek toplu iletileri sağlar. Kullanmakta olduğunuz protokol, yük göndermenin gerçek zamanına kıyasla IoT Hub ileti gönderme yükünün yüksek olup olmadığını belirler. Veriler IoT Hub tarafından yapıldığında senaryonuz gecikme süresine izin veriyorsa, OPC yayımcısını 256 kB olan en büyük ileti boyutunu kullanacak şekilde yapılandırın.
+Parametre, IoT Hub'a `--ms` gönderilen toplu iletileri toplu olarak göndermenizi sağlar. Kullandığınız protokol, IoT Hub'a ileti göndermenin ek yükünün yükün gerçek gönderme süresiyle karşılaştırıldığında yüksek olup olmadığını belirler. Senaryonuz, IoT Hub tarafından veri sorulduğunda gecikmeye izin veriyorsa, OPC Publisher'ı 256 kB'lik en büyük ileti boyutunu kullanacak şekilde yapılandırın.
 
-Üretim senaryolarında OPC yayımcısını kullanmadan önce, üretim koşullarında performans ve bellek kullanımını test edin. OPC yayımcısının tanılama bilgilerini yazmasının saniye cinsinden aralığını belirtmek için `--di` parametresini kullanabilirsiniz.
+Üretim senaryolarında OPC Publisher'ı kullanmadan önce, performans ve bellek kullanımını üretim koşullarında test edin. `--di` OPC Publisher'ın tanılama bilgilerini yazdığı aralığı saniyeler içinde belirtmek için parametreyi kullanabilirsiniz.
 
 ### <a name="test-measurements"></a>Test ölçümleri
 
-Aşağıdaki örnek tanılama, 1 saniyelik bir OPC yayımlama aralığıyla 500 düğümü yayımlamak `--si` ve `--ms` parametreleri için farklı değerlerle ölçümleri gösterir.  Test, 120 saniye için Windows 10 ' da yerel olarak bir OPC yayımcısı hata ayıklama derlemesi kullandı. IoT Hub protokolü varsayılan MQTT protokolüdür.
+Aşağıdaki örnek tanılama, 1 saniyelik Bir OPC yayımlama aralığı ile 500 düğüm yayımlama için `--si` farklı değerler ve `--ms` parametrelerile ölçümler gösterir.  Test, Windows 10'da 120 saniye boyunca yerel olarak bir OPC Publisher hata ayıklama yapısı kullandı. IoT Hub protokolü varsayılan MQTT protokolüydü.
 
-#### <a name="default-configuration---si-10---ms-262144"></a>Varsayılan yapılandırma (--si 10--MS 262144)
+#### <a name="default-configuration---si-10---ms-262144"></a>Varsayılan yapılandırma (--si 10 --ms 262144)
 
 ```log
 ==========================================================================
@@ -579,9 +579,9 @@ current working set in MB: 90
 ==========================================================================
 ```
 
-Varsayılan yapılandırma, verileri her 10 saniyede bir IoT Hub veya IoT Hub almak için 256 kB 'Lık verilerin kullanılabilir olduğu durumlarda gönderir. Bu yapılandırma yaklaşık 10 saniyelik bir gecikme süresi ekler, ancak büyük ileti boyutu nedeniyle verilerin kaybedilmesi için en düşük olasılığa sahiptir. Tanılama çıkışında kayıp OPC düğümü güncelleştirmesi olmadığını gösterilmektedir: `monitored item notifications enqueue failure: 0`.
+Varsayılan yapılandırma, her 10 saniyede bir IoT Hub'ına veya IoT Hub'ının yutması için 256 kB veri kullanılabilir olduğunda veri gönderir. Bu yapılandırma, yaklaşık 10 saniyelik orta bir gecikme gecikmesi ekler, ancak büyük ileti boyutu nedeniyle veri kaybetme olasılığı en düşüktür. Tanılama çıktısı, kayıp OPC düğümü güncelleştirmesi olmadığını gösterir: `monitored item notifications enqueue failure: 0`.
 
-#### <a name="constant-send-interval---si-1---ms-0"></a>Sabit gönderme aralığı (--si 1--MS 0)
+#### <a name="constant-send-interval---si-1---ms-0"></a>Sabit gönderme aralığı (--si 1 --ms 0)
 
 ```log
 ==========================================================================
@@ -613,9 +613,9 @@ current working set in MB: 90
 ==========================================================================
 ```
 
-İleti boyutu 0 olarak ayarlandığında OPC Publisher, 256 kB olan en büyük desteklenen IoT Hub ileti boyutunu kullanarak verileri dahili olarak toplu olarak işler. Tanılama çıktısı, ortalama ileti boyutunu 115.019 bayt olduğunu gösterir. Bu yapılandırmada OPC yayımcısı hiçbir OPC düğümü değer güncelleştirmesini kaybetmez ve varsayılana kıyasla daha düşük gecikme süresine sahiptir.
+İleti boyutu 0 olarak ayarlandığında, OPC Publisher 256 kB olan en büyük desteklenen IoT Hub ileti boyutunu kullanarak verileri dahili olarak toplu olarak alır. Tanılama çıktısı ortalama ileti boyutunun 115.019 bayt olduğunu gösterir. Bu yapılandırmada OPC Publisher herhangi bir OPC düğüm değer güncelleştirmelerini kaybetmez ve varsayılanla karşılaştırıldığında daha düşük gecikme gecikmesine sahiptir.
 
-### <a name="send-each-opc-node-value-update---si-0---ms-0"></a>Her OPC düğüm değeri güncelleştirmesini gönder (--si 0--MS 0)
+### <a name="send-each-opc-node-value-update---si-0---ms-0"></a>Her OPC düğüm değeri güncelleştirmesi gönderin (--si 0 --ms 0)
 
 ```log
 ==========================================================================
@@ -647,9 +647,9 @@ current working set in MB: 96
 ==========================================================================
 ```
 
-Bu yapılandırma her OPC düğümü değeri için bir ileti IoT Hub değiştirin. Tanılama, ortalama ileti boyutunu gösterir, küçük olan 234 bayttır. Bu yapılandırmanın avantajı, OPC yayımcısının herhangi bir gecikme eklemesıdır. Kayıp OPC düğüm değeri güncelleştirmeleri (`monitored item notifications enqueue failure: 44624`) yüksek olduğundan, bu yapılandırmayı yüksek hacime sahip senaryolarda yayımlanacak senaryolara uygun hale getirir.
+Bu yapılandırma, her OPC düğüm değeri için ioT Hub'a bir ileti değişikliği gönderir. Tanılama, ortalama ileti boyutunun 234 bayt olduğunu gösterir, ki bu küçüktür. Bu yapılandırmanın avantajı, OPC Publisher'ın herhangi bir gecikme sonu eklememesidir. Kayıp OPC düğüm değer güncelleştirmelerinin`monitored item notifications enqueue failure: 44624`sayısı yüksektir, bu da bu yapılandırmayı yüksek hacimli telemetri içeren senaryolar için uygun hale getirir.
 
-### <a name="maximum-batching---si-0---ms-262144"></a>En fazla toplu işlem (--si 0--MS 262144)
+### <a name="maximum-batching---si-0---ms-262144"></a>Maksimum toplu iş (--si 0 --ms 262144)
 
 ```log
 ==========================================================================
@@ -681,35 +681,35 @@ current working set in MB: 90
 ==========================================================================
 ```
 
-Bu yapılandırma, olabildiğince fazla OPC düğüm değeri güncelleştirmesi olarak toplu işler. En büyük IoT Hub ileti boyutu, burada yapılandırılan 256 kB 'tır. Gönderme aralığı istenmez, bu, alma için IoT Hub veri miktarının gecikme süresini belirlediği anlamına gelir. Bu yapılandırma, tüm OPC düğüm değerlerini kaybetme olasılığının en az olasılığını içerir ve çok sayıda düğüm yayımlamak için uygundur. Bu yapılandırmayı kullandığınızda, 256 kB 'lik ileti boyutuna ulaşılmazsa, senaryonuzun gecikme süresi yüksek olan koşullar olmadığından emin olun.
+Bu yapılandırma, mümkün olduğunca çok Sayıda OPC düğüm değeri güncelleştirmesi toplu. Maksimum IoT Hub ileti boyutu 256 kB'dir ve burada yapılandırılır. İstenilen gönderme aralığı yoktur, bu da IoT Hub'ın yutması gereken veri miktarının gecikmeyi belirlediği anlamına gelir. Bu yapılandırma, herhangi bir OPC düğüm değerlerini kaybetme olasılığı en düşüktür ve çok sayıda düğüm yayımlama için uygundur. Bu yapılandırmayı kullandığınızda, 256 kB ileti boyutuna ulaşılmazsa senaryonuzun yüksek gecikme nin başlandığı koşullar olmadığından emin olun.
 
 ## <a name="debug-the-application"></a>Uygulamada hata ayıklama
 
-Uygulamada hata ayıklamak için, Visual Studio ile **opcpublisher. sln** çözüm dosyasını açın ve Visual Studio hata ayıklama araçlarını kullanın.
+Uygulamayı hata ayıklamak için Visual Studio ile **opcpublisher.sln** çözüm dosyasını açın ve Visual Studio hata ayıklama araçlarını kullanın.
 
-OPC Yayımcısındaki OPC UA sunucusuna erişmeniz gerekiyorsa, güvenlik duvarınızın sunucunun dinlediği bağlantı noktasına erişmesine izin verdiğinden emin olun. Varsayılan bağlantı noktası: 62222.
+OPC Publisher'daki OPC UA sunucusuna erişmeniz gerekiyorsa, güvenlik duvarınızın sunucunun dinlediği bağlantı noktasına erişime izin verdiğinden emin olun. Varsayılan bağlantı noktası: 62222.
 
 ## <a name="control-the-application-remotely"></a>Uygulamayı uzaktan denetleme
 
-Yayımlanacak düğümleri yapılandırmak, IoT Hub doğrudan yöntemler kullanılarak yapılabilir.
+Düğümleri yayımlayacak şekilde yapılandırma, IoT Hub doğrudan yöntemleri kullanılarak yapılabilir.
 
-OPC yayımcısı, okumak için birkaç ek IoT Hub doğrudan yöntem çağrısı uygular:
+OPC Publisher okumak için birkaç ek IoT Hub doğrudan yöntem çağrıları uygular:
 
 - Genel bilgiler.
-- OPC oturumlarında, aboneliklerde ve izlenen öğelerde tanılama bilgileri.
+- OPC oturumları, abonelikler ve izlenen öğeler hakkında tanılama bilgileri.
 - IoT Hub iletileri ve olayları hakkında tanılama bilgileri.
 - Başlangıç günlüğü.
 - Günlüğün son 100 satırı.
-- Uygulamayı kapatın.
+- Başvuruyu kapatın.
 
-Aşağıdaki GitHub depoları, [Tanılama bilgilerini](https://github.com/Azure-Samples/iot-edge-opc-publisher-diagnostics)yayımlamak ve okumak [üzere düğümleri yapılandırmak](https://github.com/Azure-Samples/iot-edge-opc-publisher-nodeconfiguration) için araçlar içerir. Her iki araç da Docker Hub 'da kapsayıcılar olarak da kullanılabilir.
+Aşağıdaki GitHub depoları, [tanılama bilgilerini](https://github.com/Azure-Samples/iot-edge-opc-publisher-diagnostics)yayımlamak ve okumak için [düğümleri yapılandırmak için](https://github.com/Azure-Samples/iot-edge-opc-publisher-nodeconfiguration) araçlar içerir. Her iki araç da Docker Hub'da kapsayıcı olarak mevcuttur.
 
-## <a name="use-a-sample-opc-ua-server"></a>Örnek OPC UA sunucusu kullanma
+## <a name="use-a-sample-opc-ua-server"></a>Örnek bir OPC UA sunucusu kullanma
 
-Gerçek bir OPC UA sunucunuz yoksa, kullanmaya başlamak için [OPC UA PLC örneğini](https://github.com/Azure-Samples/iot-edge-opc-plc) kullanabilirsiniz. Bu örnek PLC, Docker Hub 'da da kullanılabilir.
+Gerçek bir OPC UA sunucunuz yoksa, başlamak için [örnek OPC UA PLC'yi](https://github.com/Azure-Samples/iot-edge-opc-plc) kullanabilirsiniz. Bu örnek PLC, Docker Hub'da da mevcuttur.
 
-Bu, anormallarla rastgele veri ve Etiketler oluşturan bir dizi etiket uygular. Ek etiket değerlerinin benzetimini yapmanız gerekiyorsa, örneği genişletebilirsiniz.
+Rasgele veri ve anomalilerle etiketler oluşturan bir dizi etiket uygular. Ek etiket değerlerini simüle etmek gerekiyorsa, örneği genişletebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-OPC yayımcısının nasıl çalıştırılacağını öğrendiğinize göre, önerilen sonraki adımlar [OPC ikizi](overview-opc-twin.md) ve [OPC Kasası](overview-opc-vault.md)hakkında bilgi edinmek için kullanılır.
+Artık OPC Publisher'ı çalıştırmayı öğrendiğiniz için, önerilen sonraki adımlar [OPC Twin](overview-opc-twin.md) ve [OPC Vault](overview-opc-vault.md)hakkında bilgi edinmektir.

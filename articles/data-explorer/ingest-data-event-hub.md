@@ -1,6 +1,6 @@
 ---
-title: Olay Hub 'ından Azure Veri Gezgini veri alma
-description: Bu makalede, Olay Hub 'ından Azure Veri Gezgini veri alma (yükleme) hakkında bilgi edineceksiniz.
+title: Olay Hub'ından Azure Veri Gezgini'ne veri alma
+description: Bu makalede, Olay Hub'ından Azure Veri Gezgini'ne nasıl veri öttürecek (yüklenir) öğrenirsiniz.
 author: orspod
 ms.author: orspodek
 ms.reviewer: tzgitlin
@@ -8,44 +8,44 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/08/2020
 ms.openlocfilehash: bb9357ca4388bd1fb7ae3e3704cf4112d07c1105
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77188198"
 ---
-# <a name="ingest-data-from-event-hub-into-azure-data-explorer"></a>Olay Hub 'ından Azure Veri Gezgini veri alma
+# <a name="ingest-data-from-event-hub-into-azure-data-explorer"></a>Olay Hub'ından Azure Veri Gezgini'ne veri alma
 
 > [!div class="op_single_selector"]
 > * [Portal](ingest-data-event-hub.md)
-> * [C#](data-connection-event-hub-csharp.md)
+> * [C #](data-connection-event-hub-csharp.md)
 > * [Python](data-connection-event-hub-python.md)
 > * [Azure Resource Manager şablonu](data-connection-event-hub-resource-manager.md)
 
-Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve yüksek oranda ölçeklenebilir veri keşfetme hizmetidir. Azure Veri Gezgini, büyük veri akış platformu ve olay ekleme hizmeti olan Event Hubs'dan veri eklemeyi (veri yüklemeyi) destekler. [Event Hubs](/azure/event-hubs/event-hubs-about) , yaklaşık gerçek zamanlı olarak saniyede milyonlarca olayı işleyebilir. Bu makalede, bir olay hub 'ı oluşturur, Azure Veri Gezgini 'a bağlanırsınız ve sistem aracılığıyla veri akışını görürsünüz.
+Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve üst düzeyde ölçeklenebilir veri keşfetme hizmetidir. Azure Veri Gezgini, büyük veri akış platformu ve olay ekleme hizmeti olan Event Hubs'dan veri eklemeyi (veri yüklemeyi) destekler. [Olay Hub'ları](/azure/event-hubs/event-hubs-about) saniyede milyonlarca olayı neredeyse gerçek zamanlı olarak işleyebilir. Bu makalede, bir olay hub'ı oluşturur, Azure Veri Gezgini'nden ona bağlanır ve sistem üzerinden veri akışını görürsünüz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/) oluşturun.
-* [Bir test kümesi ve veritabanı](create-cluster-database-portal.md).
-* Veri üreten ve onu bir olay hub 'ına Gönderen [örnek bir uygulama](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) . Örnek uygulamayı sisteminize indirin.
-* Örnek uygulamayı çalıştırmak için [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) .
+* [Bir test kümesi ve veritabanı.](create-cluster-database-portal.md)
+* Veri üreten ve olay merkezine gönderen örnek bir [uygulama.](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) Örnek uygulamayı sisteminize indirin.
+* [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) örnek uygulamayı çalıştırmak için.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
-[Azure Portal](https://portal.azure.com/)’ında oturum açın.
+[Azure portalında](https://portal.azure.com/)oturum açın.
 
 ## <a name="create-an-event-hub"></a>Olay hub’ı oluşturma
 
-Bu makalede, örnek veri oluşturur ve bir olay hub 'ına gönderebilirsiniz. İlk adım bir olay hub'ı oluşturmaktır. Bunun için Azure portalda bir Azure Resource Manager şablonu kullanacaksınız.
+Bu makalede, örnek veri oluşturmak ve bir olay hub'ına gönderin. İlk adım bir olay hub'ı oluşturmaktır. Bunun için Azure portalda bir Azure Resource Manager şablonu kullanacaksınız.
 
-1. Bir olay hub 'ı oluşturmak için, dağıtımı başlatmak üzere aşağıdaki düğmeyi kullanın. Sağ tıklayıp **Yeni pencerede aç**' ı seçerek bu makaledeki adımların geri kalanını izleyebilirsiniz.
+1. Olay hub'ı oluşturmak için dağıtımı başlatmak için aşağıdaki düğmeyi kullanın. Bu makaledeki adımların geri kalanını takip etmek için **yeni pencerede Aç'ı**sağ tıklatın ve seçin.
 
-    [![Azure’a dağıtma](media/ingest-data-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-event-hubs-create-event-hub-and-consumer-group%2Fazuredeploy.json)
+    [![Azure'a Dağıt](media/ingest-data-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-event-hubs-create-event-hub-and-consumer-group%2Fazuredeploy.json)
 
     **Azure'a dağıtma** düğmesi Azure portalda doldurmanız gereken bir form sayfasını açar.
 
-    ![Azure’a dağıtma](media/ingest-data-event-hub/deploy-to-azure.png)
+    ![Azure’a Dağıt](media/ingest-data-event-hub/deploy-to-azure.png)
 
 1. Olay hub'ının oluşturulmasını istediğiniz aboneliği seçin ve *test-hub-rg* adlı bir kaynak grubu oluşturun.
 
@@ -61,7 +61,7 @@ Bu makalede, örnek veri oluşturur ve bir olay hub 'ına gönderebilirsiniz. İ
     |---|---|---|
     | Abonelik | Aboneliğiniz | Olay hub'ınız için kullanmak istediğiniz Azure aboneliğini seçin.|
     | Kaynak grubu | *test-hub-rg* | Yeni bir kaynak grubu oluşturun. |
-    | Konum | *Batı ABD* | Bu makale için *Batı ABD* seçin. Üretim sisteminde ihtiyaçlarınıza en uygun bölgeyi seçmeniz gerekir. En iyi performansı elde etmek için kusto kümesiyle aynı konumda Olay Hub 'ı ad alanı oluşturun (yüksek aktarım hızı olan olay hub 'ı ad alanları için en önemli).
+    | Konum | *Batı ABD* | Bu makale için *Batı ABD'yi* seçin. Üretim sisteminde ihtiyaçlarınıza en uygun bölgeyi seçmeniz gerekir. En iyi performans için Kusto kümesiyle aynı Konumda olay hub ad alanını oluşturun (en önemlisi, yüksek iş geleni olan olay hub ad alanları için).
     | Ad alanı adı | Benzersiz bir ad alanı adı | Ad alanınızı tanımlayan benzersiz bir ad seçin. Örneğin, *mytestnamespace*. Girdiğiniz adın sonuna *servicebus.windows.net* etki alanı adı eklenir. Ad yalnızca küçük harf, sayı ve kısa çizgi içerebilir. Ad bir harf ile başlamalı ve harf veya sayı ile bitmelidir. Değer uzunluğu 6 ile 50 karakter arasında olmalıdır.
     | Olay hub'ı adı | *test-hub* | Olay hub'ı benzersiz bir kapsayıcı kapsamı sunan ad alanında bulunur. Olay hub'ı adının ad alanında benzersiz olması gerekir. |
     | Tüketici grubu adı | *test-group* | Tüketici grupları birden fazla tüketici uygulamasının ayrı olay akışı görünümüne sahip olmasını sağlar. |
@@ -81,7 +81,7 @@ Bu makalede, örnek veri oluşturur ve bir olay hub 'ına gönderebilirsiniz. İ
 
     ![Sorgu uygulama bağlantısı](media/ingest-data-event-hub/query-explorer-link.png)
 
-1. Aşağıdaki komutu pencereye kopyalayın ve alınan verileri alacak tabloyu (TestTable) oluşturmak için **Çalıştır** ' ı seçin.
+1. Aşağıdaki komutu pencereye kopyalayın ve yutulan verileri alacak tabloyu (TestTable) oluşturmak için **Çalıştır'ı** seçin.
 
     ```Kusto
     .create table TestTable (TimeStamp: datetime, Name: string, Metric: int, Source:string)
@@ -89,7 +89,7 @@ Bu makalede, örnek veri oluşturur ve bir olay hub 'ına gönderebilirsiniz. İ
 
     ![Oluşturma sorgusunu çalıştırma](media/ingest-data-event-hub/run-create-query.png)
 
-1. Aşağıdaki komutu pencereye kopyalayın ve gelen JSON verilerini tablonun sütun adlarıyla ve veri türleriyle (TestTable) eşlemek için **Çalıştır** ' ı seçin.
+1. Aşağıdaki komutu pencereye kopyalayın ve gelen JSON verilerini tablonun sütun adları ve veri türleri (TestTable) ile eşlemek için **Çalıştır'ı** seçin.
 
     ```Kusto
     .create table TestTable ingestion json mapping 'TestMapping' '[{"column":"TimeStamp","path":"$.timeStamp","datatype":"datetime"},{"column":"Name","path":"$.name","datatype":"string"},{"column":"Metric","path":"$.metric","datatype":"int"},{"column":"Source","path":"$.source","datatype":"string"}]'
@@ -105,11 +105,11 @@ Bu makalede, örnek veri oluşturur ve bir olay hub 'ına gönderebilirsiniz. İ
 
     ![Test veritabanını seçme](media/ingest-data-event-hub/select-test-database.png)
 
-1. **Veri** alımı ' nı seçin ve **veri bağlantısı ekleyin**. Ardından, aşağıdaki bilgilerle formu doldurun. İşiniz bittiğinde **Oluştur** ' u seçin.
+1. **Veri alımını** seçin ve **veri bağlantısı ekleyin.** Daha sonra formu aşağıdaki bilgilerle doldurun. Bittiğinde **Oluştur'u** seçin.
 
     ![Olay hub'ı bağlantısı](media/ingest-data-event-hub/event-hub-connection.png)
 
-    **Veri kaynağı:**
+    **Veri Kaynağı:**
 
     **Ayar** | **Önerilen değer** | **Alan açıklaması**
     |---|---|---|
@@ -117,27 +117,27 @@ Bu makalede, örnek veri oluşturur ve bir olay hub 'ına gönderebilirsiniz. İ
     | Olay hub’ı ad alanı | Benzersiz bir ad alanı adı | Önceden seçtiğiniz ve ad alanınızı tanımlayan ad. |
     | Olay hub'ı | *test-hub* | Oluşturduğunuz olay hub'ı. |
     | Tüketici grubu | *test-group* | Oluşturduğunuz olay hub'ında tanımlanan tüketici grubu. |
-    | Olay sistemi özellikleri | İlgili özellikleri seçin | [Olay Hub 'ı sistem özellikleri](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations). Olay iletisi başına birden çok kayıt varsa, sistem özellikleri ilk birine eklenir. Sistem Özellikleri eklenirken, tablo şemasını [oluşturun](/azure/kusto/management/create-table-command) veya [güncelleştirin](/azure/kusto/management/alter-table-command) ve seçili özellikleri dahil etmek için [eşleme](/azure/kusto/management/mappings) yapın. |
-    | Sıkıştırma | *Seçim* | Olay Hub 'ı ileti yükünün sıkıştırma türü. Desteklenen sıkıştırma türleri: *none, gzip*.|
+    | Olay sistemi özellikleri | İlgili özellikleri seçme | [Olay Hub sistemi özellikleri.](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations) Olay iletisi başına birden çok kayıt varsa, sistem özellikleri ilkine eklenir. Sistem özellikleri eklerken, seçili özellikleri içerecek şekilde tablo şeması ve [eşleme](/azure/kusto/management/mappings) [oluşturun](/azure/kusto/management/create-table-command) veya [güncelleştirin.](/azure/kusto/management/alter-table-command) |
+    | Sıkıştırma | *Yok* | Olay Hub iletileri yükünün sıkıştırma türü. Desteklenen sıkıştırma türleri: *Yok, GZip*.|
     | | |
 
     **Hedef tablo:**
 
-    Alınan verileri yönlendirmeye yönelik iki seçenek vardır: *statik* ve *dinamik*. 
-    Bu makalede, tablo adını, veri biçimini ve eşlemeyi belirttiğiniz statik yönlendirme kullanırsınız. Bu nedenle, **verilerim yönlendirme bilgilerini içeren verileri** işaretsiz olarak bırak.
+    Yutulan verileri yönlendirmek için iki seçenek vardır: *statik* ve *dinamik.* 
+    Bu makale için, tablo adını, veri biçimini ve eşlemi belirttiğiniz statik yönlendirmeyi kullanırsınız. Bu nedenle, verilerimi terk etmek, yönlendirme bilgilerini seçilmeden **içerir.**
 
      **Ayar** | **Önerilen değer** | **Alan açıklaması**
     |---|---|---|
     | Tablo | *TestTable* | **TestDatabase** içinde oluşturduğunuz tablo. |
-    | Veri biçimi | *JSON* | Desteklenen biçimler şunlardır avro, CSV, JSON, çok SATıRLı JSON, PSV, SOHSV, SCSV, TSV, TSVE, TXT, ORC ve PARQUET. |
-    | Sütun eşleme | *TestMapping* | **TestDatabase**'te oluşturduğunuz ve gelen JSON verilerini **TestTable**'ın sütun adlarıyla ve veri türleriyle eşleyen [eşleme](/azure/kusto/management/mappings) . JSON veya çok SATıRLı JSON için gereklidir ve diğer biçimler için isteğe bağlıdır.|
+    | Veri biçimi | *Json* | Desteklenen formatlar Avro, CSV, JSON, MULTILINE JSON, PSV, SOHSV, SCSV, TSV, TSVE, TXT, ORC ve PARKE'dir. |
+    | Sütun eşleme | *TestMapping* | **TestDatabase'de**oluşturduğunuz ve gelen JSON verilerini **TestTable'ın**sütun adlarına ve veri türlerine eşleyen [eşleme.](/azure/kusto/management/mappings) JSON veya MULTILINE JSON için gereklidir ve diğer biçimler için isteğe bağlıdır.|
     | | |
 
     > [!NOTE]
-    > * Verilerim ' i seçin, verilerin [örnek uygulama](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) açıklamalarında görüldüğü gibi gerekli yönlendirme bilgilerini içerdiği dinamik yönlendirmeyi kullanmak için **yönlendirme bilgilerini içerir** . Hem statik hem de dinamik özellikler ayarlandıysa, dinamik özellikler statik olanları geçersiz kılar. 
-    > * Yalnızca veri bağlantısını oluşturduktan sonra sıraya alınan olaylar alınır.
-    > * Ayrıca, [örnek uygulamada](https://github.com/Azure-Samples/event-hubs-dotnet-ingest)görüldüğü gibi, sıkıştırma türünü dinamik özellikler aracılığıyla da ayarlayabilirsiniz.
-    > * Avro, ORC ve PARQUET biçimlerinin yanı sıra, olay sistemi özellikleri de GZip sıkıştırma yükünde desteklenmez.
+    > * **Verilerim'i** seçin, verilerinizin [örnek uygulama](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) yorumlarında görüldüğü gibi gerekli yönlendirme bilgilerini içerdiği dinamik yönlendirme bilgilerini kullanır. Hem statik hem de dinamik özellikler ayarlanmışsa, dinamik özellikler statik özellikleri geçersiz kılar. 
+    > * Yalnızca veri bağlantısını oluşturduktan sonra sıraya giren olaylar yutulür.
+    > * Sıkıştırma türünü [örnek uygulamada](https://github.com/Azure-Samples/event-hubs-dotnet-ingest)görüldüğü gibi dinamik özelliklerle de ayarlayabilirsiniz.
+    > * Avro, ORC ve PARKE formatları ile etkinlik sistemi özellikleri GZip sıkıştırma yükünde desteklenmez.
 
 [!INCLUDE [data-explorer-container-system-properties](../../includes/data-explorer-container-system-properties.md)]
 
@@ -149,13 +149,13 @@ Bu makalede, örnek veri oluşturur ve bir olay hub 'ına gönderebilirsiniz. İ
 
     ![Paylaşılan erişim ilkeleri](media/ingest-data-event-hub/shared-access-policies.png)
 
-1. **Bağlantı dizesi - birincil anahtar** değerini kopyalayın. Bir sonraki bölümde bunu yapıştıracaksınız.
+1. **Bağlantı dizekopya - birincil anahtar**. Bir sonraki bölümde bunu yapıştıracaksınız.
 
     ![Bağlantı dizesi](media/ingest-data-event-hub/connection-string.png)
 
 ## <a name="generate-sample-data"></a>Örnek veri oluşturma
 
-Veri oluşturmak için indirdiğiniz [Örnek uygulamayı](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) kullanın.
+Veri oluşturmak için indirdiğiniz [örnek uygulamayı](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) kullanın.
 
 1. Örnek uygulama çözümünü Visual Studio'da açın.
 
@@ -197,9 +197,9 @@ Uygulama tarafından oluşturulan verilerin olay hub'ından kümenizdeki tabloya
     ![İleti sonuç kümesi](media/ingest-data-event-hub/message-result-set.png)
 
     > [!NOTE]
-    > * Azure Veri Gezgini, alım işlemini iyileştirmek için tasarlanan veri alımı için toplama (toplu işlem) ilkesine sahiptir. İlke, varsayılan olarak 5 dakika veya 500 MB veri olarak yapılandırılır, bu nedenle bir gecikmeyle karşılaşabilirsiniz. Toplama seçenekleri için bkz. [toplu işlem ilkesi](/azure/kusto/concepts/batchingpolicy) . 
-    > * Olay Hub 'ı alımı, 10 saniyelik veya 1 MB Olay Hub 'ı yanıt süresini içerir. 
-    > * Tablonuzu, akışı destekleyecek şekilde yapılandırın ve yanıt süresi içinde gecikme süresini kaldırın. [Akış ilkesi](/azure/kusto/concepts/streamingingestionpolicy)bölümüne bakın. 
+    > * Azure Veri Gezgini'nin, veri alımı için bir toplama (toplu laştırma) ilkesi vardır ve bu politika, alma işlemini optimize etmek için tasarlanmıştır. İlke varsayılan olarak 5 dakika veya 500 MB veriye yapılandırılmıştır, böylece bir gecikme deneyimi yaşayabilirsiniz. Toplama seçenekleri için [toplu laştırma ilkesine](/azure/kusto/concepts/batchingpolicy) bakın. 
+    > * Olay Hub'ı alımı, 10 saniye veya 1 MB'lık Olay Hub yanıt süresini içerir. 
+    > * Tablonuzu akışı destekleyecek şekilde yapılandırın ve yanıt süresindeki gecikmeyi kaldırın. [Akış ilkesine](/azure/kusto/concepts/streamingingestionpolicy)bakın. 
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
@@ -217,4 +217,4 @@ Olay hub'ınızı daha sonra kullanmayı planlamıyorsanız ek maliyet oluşmas�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Veri Gezgini 'de verileri sorgulama](web-query-data.md)
+* [Azure Veri Gezgini'nde verileri sorgula](web-query-data.md)

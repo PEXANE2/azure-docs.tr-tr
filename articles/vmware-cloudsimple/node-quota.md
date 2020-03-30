@@ -1,6 +1,6 @@
 ---
-title: Azure VMware çözümleri (AVS)-AVS düğüm kotası
-description: AVS düğümlerinin kota sınırlarını ve kota artışı için nasıl istek yapılacağını açıklar
+title: CloudSimple tarafından Azure VMware Çözümü - CloudSimple düğüm kotası
+description: CloudSimple düğümleri için kota sınırlarını ve kota artışı isteme nin nasıl yapılacağını açıklar
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/19/2019
@@ -8,34 +8,34 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: fa1b056c8c96fb09def63ca1cd696fc2da5e9bed
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 83dc9e26e03eb955d88340d1ed21084d4e685ed8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77019647"
 ---
-# <a name="avs-node-quota-limits"></a>AVS düğüm kotası limitleri
+# <a name="cloudsimple-node-quota-limits"></a>CloudSimple düğüm kota sınırları
 
-Dört düğüm, aboneliğiniz AVS hizmeti için etkinleştirildiğinde satın alma için kullanılabilen varsayılan miktardır. Azure portal herhangi bir [düğüm türü](cloudsimple-node.md) satın alabilirsiniz. Bir AVS özel bulutu oluşturmak için aynı SKU 'nun en az üç düğümü gereklidir. Düğümleri satın aldıysanız, ek düğümler satın almaya çalıştığınızda bir hata görebilirsiniz.
+Dört düğüm, Aboneliğiniz CloudSimple hizmeti için etkinleştirildiğinde satın alınabilecek varsayılan miktardır.  Azure portalından herhangi bir [düğüm türü](cloudsimple-node.md) satın alabilirsiniz.  Özel Bulut oluşturmak için aynı SKU'dan en az üç düğüm gerekir.  Düğümleri satın aldıysanız, ek düğümsatın almaya çalıştığınızda bir hata görebilirsiniz.
 
 ## <a name="quota-increase"></a>Kota artışı
 
-Bir destek isteği göndererek düğüm kotasının artmasını sağlayabilirsiniz. Hizmet işlemleri ekibi, isteği değerlendirir ve düğüm kotasını artırmak için sizinle birlikte çalışır. Yeni bir bilet açtığınızda aşağıdaki seçenekleri belirleyin:
+Bir destek isteği göndererek düğüm kotasını artırabilirsiniz. Servis işlemleri ekibi isteği değerlendirir ve düğüm kotasını artırmak için sizinle birlikte çalışır.  Yeni bir bilet açtığınızda aşağıdaki seçenekleri seçin:
 
 * Sorun türü: **Teknik**
-* Abonelik: **ABONELIK kimliğiniz**
-* Hizmet türü: **AVS tarafından VMware çözümü**
-* Sorun türü: **adanmış düğümler kotası**
-* Sorun alt türü: **adanmış düğümlerin kotasını artırma**
+* Abonelik: **Abonelik kimliğiniz**
+* Hizmet türü: **CloudSimple tarafından VMware Çözüm**
+* Sorun türü: **Özel Düğümler kotası**
+* Sorun alt türü: **Özel düğümkotalarını artırma**
 * Konu: **Kota artışı**
 
-Destek bileti ayrıntılarında gereken düğüm ve düğüm SKU sayısını sağlayın.
+Destek biletinin ayrıntılarında, gerekli düğüm ve düğüm sayısını SKU olarak belirtin.
 
-* Düğüm SKU 'SU
-* Kota artışı istediğiniz ek düğümlerin sayısı
+* Düğüm SKU
+* Kota artışını istediğiniz ek düğüm sayısı
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Satın alma düğümleri](create-nodes.md)
-* [AVS düğümlerine genel bakış](cloudsimple-node.md)
+* [Düğümleri satın alma](create-nodes.md)
+* [CloudSimple düğümlerine genel bakış](cloudsimple-node.md)

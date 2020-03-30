@@ -1,40 +1,40 @@
 ---
-title: Azure HPC önbellek verileri alma-msrsync
-description: Azure HPC önbelleğinde bir BLOB depolama hedefine veri taşımak için msrsync kullanma
+title: Azure HPC Önbellek veri yutma - msrsync
+description: Azure HPC Önbelleğinde verileri Blob depolama hedefine taşımak için msrsync nasıl kullanılır?
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: rohogue
 ms.openlocfilehash: 4f8863d706d623d613ac156cf202c3b7b12f2ae0
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74168432"
 ---
-# <a name="azure-hpc-cache-data-ingest---msrsync-method"></a>Azure HPC Cache Data ınest-msrsync yöntemi
+# <a name="azure-hpc-cache-data-ingest---msrsync-method"></a>Azure HPC Önbellek veri yutma - msrsync yöntemi
 
-Bu makalede, Azure HPC Cache ile kullanmak üzere verileri bir Azure Blob depolama kapsayıcısına kopyalamak için ``msrsync`` yardımcı programının kullanılmasıyla ilgili ayrıntılı yönergeler sunulmaktadır.
+Bu makalede, Azure HPC Önbelleği ile kullanılmak üzere verileri bir Azure Blob depolama kapsayıcısına kopyalamak için ``msrsync`` yardımcı programı kullanmak için ayrıntılı yönergeler verem.
 
-Azure HPC önbelleğiniz için verileri blob depolamaya taşıma hakkında daha fazla bilgi edinmek için [Azure Blob depolama 'ya veri taşıma](hpc-cache-ingest.md)makalesini okuyun.
+Azure HPC Önbelleğiniz için verileri Blob depolama alanına taşıma hakkında daha fazla bilgi edinmek için [verileri Azure Blob depolama alanına taşı'nı](hpc-cache-ingest.md)okuyun.
 
-``msrsync`` Aracı, verileri Azure HPC önbelleği için bir arka uç depolama hedefine taşımak üzere kullanılabilir. Bu araç birden çok paralel ``rsync`` işlemi çalıştırarak bant genişliği kullanımını iyileştirmek için tasarlanmıştır. https://github.com/jbd/msrsync'de GitHub 'dan kullanılabilir.
+Araç, ``msrsync`` Verileri Azure HPC Önbelleği için arka uç depolama hedefine taşımak için kullanılabilir. Bu araç, birden çok paralel ``rsync`` işlem çalıştırarak bant genişliği kullanımını en iyi duruma getirmek için tasarlanmıştır. GitHub'dan https://github.com/jbd/msrsyncedinilebilir.
 
-``msrsync``, kaynak dizinini ayrı "demetlere" ayırır ve sonra her bir Bucket üzerinde bireysel ``rsync`` süreçlerini çalıştırır.
+``msrsync``kaynak dizini ayrı "kovalara" ayırır ve ``rsync`` her kovada tek tek işlemleri çalıştırır.
 
-Dört çekirdekli bir VM kullanan ön test, 64 işlemleri kullanırken en iyi verimliliği gösteriyordu. İşlem sayısını 64 olarak ayarlamak için ``-p`` ``msrsync`` seçeneğini kullanın.
+Dört çekirdekli VM kullanılarak yapılan ön testler, 64 proses kullanırken en iyi verimi gösterdi. İşlem ``msrsync`` sayısını ``-p`` 64 olarak ayarlamak için seçeneği kullanın.
 
-``msrsync`` yalnızca yerel birimlerden ve bu birimlere yazabildiğini unutmayın. Kaynak ve hedefin, komutu vermek için kullanılan iş istasyonunda yerel takmaları olarak erişilebilir olması gerekir.
+Yalnızca ``msrsync`` yerel birimlere ve yerel birimlerden yazabilen not. Komutu vermek için kullanılan iş istasyonundaki yerel bağlar olarak kaynak ve hedefe erişilebilir olmalıdır.
 
-Azure Blob depolamayı Azure HPC Cache ile doldurmak için ``msrsync`` kullanmak için şu yönergeleri izleyin:
+Azure Blob ``msrsync`` depolama alanını Azure HPC Önbelleği yle doldurmak için kullanılacak aşağıdaki yönergeleri izleyin:
 
-1. ``msrsync`` ve önkoşullarını (``rsync`` ve Python 2,6 veya üzeri) yükleyip
-1. Kopyalanacak toplam dosya ve dizin sayısını belirleme.
+1. Yükleyin ``msrsync`` ve önkoşulları``rsync`` (ve Python 2.6 veya sonrası)
+1. Kopyalanacak toplam dosya ve dizin sayısını belirleyin.
 
-   Örneğin, ```prime.py --directory /path/to/some/directory``` bağımsız değişkenlerle ``prime.py`` (<https://github.com/Azure/Avere/blob/master/src/clientapps/dataingestor/prime.py>indirerek kullanılabilir) yardımcı programı kullanın.
+   Örneğin, bağımsız değişkenlerle ``prime.py`` ```prime.py --directory /path/to/some/directory``` yardımcı programı kullanın <https://github.com/Azure/Avere/blob/master/src/clientapps/dataingestor/prime.py>(indirerek kullanılabilir).
 
-   ``prime.py``kullanmıyorsanız, GNU ``find`` aracıyla birlikte öğe sayısını aşağıdaki şekilde hesaplayabilirsiniz:
+   Kullanmıyorsanız, ``prime.py``GNU ``find`` aracıyla madde sayısını aşağıdaki gibi hesaplayabilirsiniz:
 
    ```bash
    find <path> -type f |wc -l         # (counts files)
@@ -42,14 +42,14 @@ Azure Blob depolamayı Azure HPC Cache ile doldurmak için ``msrsync`` kullanmak
    find <path> |wc -l                 # (counts both)
    ```
 
-1. İşlem başına öğe sayısını öğrenmek için öğe sayısını 64 göre bölün. Komutu çalıştırdığınızda demetlerin boyutunu ayarlamak için bu sayıyı ``-f`` seçeneğiyle kullanın.
+1. İşlem başına madde sayısını belirlemek için madde sayısını 64'e bölün. Komutu ``-f`` çalıştırdığınızda kovaların boyutunu ayarlamak için seçeneği ile bu numarayı kullanın.
 
-1. Dosyaları kopyalamak için ``msrsync`` komutunu verme:
+1. Dosyaları ``msrsync`` kopyalamak için komutu verme:
 
    ```bash
    msrsync -P --stats -p64 -f<ITEMS_DIV_64> --rsync "-ahv --inplace" <SOURCE_PATH> <DESTINATION_PATH>
    ```
 
-   Örneğin, bu komut, 11.000 64 dosyalarını/test/source-Repository 'den/mnt/hpccache/Repository dizinine taşımak için tasarlanmıştır:
+   Örneğin, bu komut 64 işlemdeki 11.000 dosyayı /test/kaynak deposundan /mnt/hpccache/depoya taşımak üzere tasarlanmıştır:
 
    ``mrsync -P --stats -p64 -f170 --rsync "-ahv --inplace" /test/source-repository/ /mnt/hpccache/repository``

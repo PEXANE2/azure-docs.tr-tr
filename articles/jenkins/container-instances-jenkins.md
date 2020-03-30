@@ -1,67 +1,67 @@
 ---
-title: Bir kapsayıcı örneği üzerinde Jenkins derlemesi
-description: Bir Jenkins sunucusunu istendiğinde derleme işleri çalıştırmak için nasıl yapılandıracağınızı öğrenin Azure Container Instances
+title: Jenkins konteyner örneği üzerine inşa
+description: Azure Kapsayıcı Örnekleri'nde isteğe bağlı iş lerinizi çalıştırmak için Jenkins sunucusunu nasıl yapılandıracaklarınız öğrenin
 ms.topic: article
 ms.date: 08/31/2018
 ms.openlocfilehash: 8bb84895fb581053248fbad326ea7b2c8d1873a2
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77617976"
 ---
-# <a name="use-azure-container-instances-as-a-jenkins-build-agent"></a>Jenkins derleme aracısı olarak Azure Container Instances kullanma
+# <a name="use-azure-container-instances-as-a-jenkins-build-agent"></a>Azure Kapsayıcı Örnekleri'ni Jenkins yapı aracısı olarak kullanma
 
-Azure Container Instances (acı) Kapsayıcılı iş yüklerini çalıştırmak için isteğe bağlı, Burstable ve yalıtılmış bir ortam sağlar. Bu öznitelikler nedeniyle, Cankins derleme işlerini büyük ölçekte çalıştırmaya yönelik harika bir platform oluşturur. Bu makalede, bir derleme hedefi olarak ACI ile önceden yapılandırılmış bir Jenkins sunucusunun dağıtımı ve kullanılması anlatılmaktadır.
+Azure Kapsayıcı Örnekleri (ACI), kapsayıcılaştırılmış iş yüklerini çalıştırmak için isteğe bağlı, patlamalı ve yalıtılmış bir ortam sağlar. Bu özellikleri nedeniyle, ACI Jenkins büyük bir ölçekte iş kurmak çalıştırmak için büyük bir platform yapar. Bu makale, aci ile yapılı hedef olarak önceden yapılandırılmış bir Jenkins sunucusunun dağıtımı ve kullanımı üzerinden yürür.
 
-Azure Container Instances hakkında daha fazla bilgi için bkz. [Azure Container Instances hakkında](../container-instances/container-instances-overview.md).
+Azure Kapsayıcı Örnekleri hakkında daha fazla bilgi için [Azure Kapsayıcı Örnekleri Hakkında'ya](../container-instances/container-instances-overview.md)bakın.
 
 ## <a name="deploy-a-jenkins-server"></a>Jenkins sunucusu dağıtma
 
-1. Azure portal, **kaynak oluştur** ' u seçin ve **Jenkins**için arama yapın. **Microsoft**'un bir yayımcısı Ile Jenkins teklifini seçin ve ardından **Oluştur**' u seçin.
+1. Azure portalında kaynak **oluştur'u** ve **Jenkins'i**arayın'ı seçin. **Microsoft'un**bir yayımcısıyla Jenkins teklifini seçin ve ardından **Oluştur'u**seçin.
 
-2. **Temel** bilgiler formuna aşağıdaki bilgileri girin ve ardından **Tamam**' ı seçin.
+2. **Temel Bilgiler** formuna aşağıdaki bilgileri girin ve ardından **Tamam'ı**seçin.
 
-   - **Ad**: Jenkins dağıtımı için bir ad girin.
-   - **Kullanıcı adı**: Jenkins sanal makinesinin Yönetici kullanıcısı için bir ad girin.
-   - **Kimlik doğrulama türü**: kimlik doğrulaması için SSH ortak anahtarı önerilir. Bu seçeneği belirlerseniz, Jenkins sanal makinesinde oturum açmak için kullanılacak SSH ortak anahtarını yapıştırın.
-   - **Abonelik**: Bir Azure aboneliği seçin.
+   - **Adı**: Jenkins konuşlandırmaiçin bir ad girin.
+   - **Kullanıcı adı**: Jenkins sanal makinenin yönetici kullanıcısı için bir ad girin.
+   - **Kimlik doğrulama türü**: Kimlik doğrulama için bir SSH ortak anahtarı öneririz. Bu seçeneği belirlerseniz, Jenkins sanal makinesinde oturum açmak için kullanılacak bir SSH ortak anahtarına yapıştırın.
+   - **Abonelik**: Azure aboneliği seçin.
    - **Kaynak grubu**: Bir kaynak grubu oluşturun veya mevcut bir kaynak grubunu seçin.
    - **Konum**: Jenkins sunucusu için bir konum seçin.
 
-   ![Jenkins Portal dağıtımı için temel ayarlar](./media/container-instances-jenkins/jenkins-portal-01.png)
+   ![Jenkins portal dağıtımı için temel ayarlar](./media/container-instances-jenkins/jenkins-portal-01.png)
 
-3. **Ek ayarlar** formunda, aşağıdaki öğeleri doldurun:
+3. Ek **Ayarlar** formunda aşağıdaki öğeleri tamamlayın:
 
-   - **Boyut**: Jenkins sanal makineniz için uygun boyutlandırma seçeneğini belirleyin.
-   - **VM disk türü**: Jenkins sunucusu için **HDD** (sabit disk sürücüsü) ya da **SSD** (katı hal sürücüsü) belirtin.
-   - **Sanal ağ**: varsayılan ayarları değiştirmek istiyorsanız oku seçin.
-   - **Alt ağlar**: oku seçin, bilgileri doğrulayın ve **Tamam**' ı seçin.
-   - **Genel IP adresi**: genel IP adresine özel bir ad vermek, SKU 'yu yapılandırmak ve atama yöntemini ayarlamak için oku seçin.
-   - **Etki alanı adı etiketi**: Jenkins sanal makinesine tam bir URL oluşturmak için bir değer belirtin.
-   - **Jenkins sürüm türü**: **LTS**, **Haftalık derleme**veya **Azure tarafından doğrulanan**seçeneklerden istenen yayın türünü seçin.
+   - **Boyut**: Jenkins sanal makineniz için uygun boyutlandırma seçeneğini seçin.
+   - **VM disk türü**: Jenkins sunucusu için **HDD** (sabit disk sürücüsü) veya **SSD** (katı hal sürücüsü) belirtin.
+   - **Sanal ağ**: Varsayılan ayarları değiştirmek istiyorsanız oku seçin.
+   - **Alt ağlar**: Oku seçin, bilgileri doğrulayın ve **Tamam'ı**seçin.
+   - **Genel IP adresi**: Genel IP adresine özel bir ad vermek, SKU'yu yapılandırmak ve atama yöntemini ayarlamak için oku seçin.
+   - **Alan adı etiketi**: Jenkins sanal makinesine tam nitelikli bir URL oluşturmak için bir değer belirtin.
+   - **Jenkins sürüm türü**: Seçeneklerden istediğiniz sürüm türünü seçin: **LTS**, **Haftalık yapı**veya Azure **Doğrulandı**.
 
-   ![Jenkins Portal dağıtımı için ek ayarlar](./media/container-instances-jenkins/jenkins-portal-02.png)
+   ![Jenkins portal dağıtımı için ek ayarlar](./media/container-instances-jenkins/jenkins-portal-02.png)
 
-4. Hizmet sorumlusu tümleştirmesi için **Otomatik (MSI)** ' i seçerek [Azure kaynakları için yönetilen kimliklerin](../active-directory/managed-identities-azure-resources/overview.md) otomatik olarak Jenkins örneği için bir kimlik doğrulama kimliği oluşturmasını sağlayabilirsiniz. Kendi hizmet sorumlusu kimlik bilgilerinizi sağlamak için **el ile** ' yi seçin.
+4. Hizmet temel tümleştirmesi [için, Azure kaynaklarının kimliklerini otomatik](../active-directory/managed-identities-azure-resources/overview.md) olarak yönetmiş olmak için **Otomatik (MSI)** seçeneğini belirleyin, Jenkins örneği için otomatik olarak bir kimlik doğrulama kimliği oluşturun. Kendi hizmet temel kimlik bilgilerinizi sağlamak için **El Kitabı'nı** seçin.
 
-5. Bulut aracıları, Jenkins derleme işleri için bulut tabanlı bir platform yapılandırır. Bu makalenin sake 'ı için **aci**'yi seçin. ACI bulut aracısıyla, her Jenkins derleme işi bir kapsayıcı örneğinde çalıştırılır.
+5. Bulut aracıları Jenkins için bulut tabanlı bir platform yapılandırır. Bu makalenin **hatırına, ACI'yi**seçin. ACI bulut aracısı ile, her Jenkins yapı işi bir kapsayıcı örneğinde çalıştırılır.
 
-   ![Jenkins Portal dağıtımı için bulut tümleştirme ayarları](./media/container-instances-jenkins/jenkins-portal-03.png)
+   ![Jenkins portal dağıtımı için bulut tümleştirme ayarları](./media/container-instances-jenkins/jenkins-portal-03.png)
 
-6. Tümleştirme ayarları ile işiniz bittiğinde **Tamam**' ı seçin ve ardından doğrulama özetinde tekrar **Tamam** ' ı seçin. **Kullanım koşulları** özetinde **Oluştur** ' u seçin. Jenkins sunucusunun dağıtılması birkaç dakika sürer.
+6. Tümleştirme ayarlarını bitirdikten sonra **Tamam'ı**seçin ve doğrulama özetinde **tamam'ı** yeniden seçin. **Kullanım Koşulları** özetinde **Oluştur'u** seçin. Jenkins sunucusunun dağıtılması birkaç dakika sürer.
 
 ## <a name="configure-jenkins"></a>Jenkins’i yapılandırma
 
-1. Azure portal Jenkins kaynak grubuna göz atın, Jenkins sanal makinesini seçin ve DNS adını göz önünde atın.
+1. Azure portalında Jenkins kaynak grubuna göz atın, Jenkins sanal makinesini seçin ve DNS adını not alın.
 
-   ![Jenkins sanal makinesiyle ilgili ayrıntıların bulunduğu DNS adı](./media/container-instances-jenkins/jenkins-portal-fqdn.png)
+   ![Jenkins sanal makine hakkında ayrıntılarda DNS adı](./media/container-instances-jenkins/jenkins-portal-fqdn.png)
 
-2. Jenkins sanal makinesinin DNS adına gidin ve döndürülen SSH dizesini kopyalayın.
+2. Jenkins VM'nin DNS adına göz atın ve döndürülen SSH dizesini kopyalayın.
 
-   ![SSH dizesiyle Jenkins oturum açma yönergeleri](./media/container-instances-jenkins/jenkins-portal-04.png)
+   ![SSH dizesi ile Jenkins giriş talimatları](./media/container-instances-jenkins/jenkins-portal-04.png)
 
-3. Geliştirme sisteminizde bir terminal oturumu açın ve son adımdan SSH dizesine yapıştırın. Jenkins sunucusunu dağıtırken belirttiğiniz kullanıcı adına `username` güncelleştirin.
+3. Geliştirme sisteminizde bir terminal oturumu açın ve son adımdan itibaren SSH dizesini yapıştırın. Jenkins `username` sunucusunu dağıtırken belirttiğiniz kullanıcı adına güncelleştirin.
 
 4. Oturum bağlandıktan sonra, ilk yönetici parolasını almak için aşağıdaki komutu çalıştırın:
 
@@ -69,57 +69,57 @@ Azure Container Instances hakkında daha fazla bilgi için bkz. [Azure Container
    sudo cat /var/lib/jenkins/secrets/initialAdminPassword
    ```
 
-5. SSH oturumunu ve tüneli çalışır durumda bırakın ve bir tarayıcıda `http://localhost:8080` gidin. İlk yönetici parolasını kutuya yapıştırın ve sonra **devam**' ı seçin.
+5. SSH oturumunu ve tüneli çalışır `http://localhost:8080` durumda bırakın ve bir tarayıcıya gidin. İlk yönetici parolasını kutuya yapıştırın ve sonra **Devam et'i**seçin.
 
-   !["Jenkins" ekranının yönetici parolası kutusuyla birlikte açılması](./media/container-instances-jenkins/jenkins-portal-05.png)
+   ![Yönetici şifresi için kutu ile "Kilidini Jenkins" ekranı](./media/container-instances-jenkins/jenkins-portal-05.png)
 
-6. Önerilen tüm Jenkins eklentilerini yüklemek için **Önerilen eklentileri yüklensin** ' i seçin.
+6. Önerilen tüm Jenkins eklentilerini yüklemek için **önerilen eklentileri yükle'yi** seçin.
 
-   !["Önerilen eklentileri yükler" seçiliyken "Jenkins" ekranını özelleştirme](./media/container-instances-jenkins/jenkins-portal-06.png)
+   !["Önerilen eklentileri yükle" ile "Jenkins'i özelleştir" ekranı](./media/container-instances-jenkins/jenkins-portal-06.png)
 
-7. Yönetici Kullanıcı hesabı oluşturun. Bu hesap, ' de oturum açmak ve Jenkins örneğiniz ile çalışmak için kullanılır.
+7. Bir yönetici kullanıcı hesabı oluşturun. Bu hesap, Jenkins örneğinize giriş yapmak ve bunlarla çalışmak için kullanılır.
 
-   !["Birinci yönetici kullanıcı oluştur" ekranı, kimlik bilgileriyle doldurulmuştur](./media/container-instances-jenkins/jenkins-portal-07.png)
+   !["İlk Yönetici Kullanıcı Oluştur" ekranı, kimlik bilgileri doldurulmuş](./media/container-instances-jenkins/jenkins-portal-07.png)
 
-8. **Kaydet ve son**' u seçin ve ardından yapılandırmayı tamamladıktan sonra **Jenkins kullanmaya başla** ' yı seçin.
+8. **Kaydet ve Bitir'i**seçin ve yapılandırmayı tamamlamak için **Jenkins'i kullanmaya başlat'ı** seçin.
 
-Jenkins artık yapılandırılır ve kodu derlemek ve dağıtmak için hazırdır. Bu örnekte, Azure Container Instances bir Jenkins derlemesini göstermek için basit bir Java uygulaması kullanılır.
+Jenkins şimdi yapılandırıldı ve kod oluşturmaya ve dağıtmaya hazır. Bu örnekte, Azure Kapsayıcı Örnekleri'nde Jenkins yapısını göstermek için basit bir Java uygulaması kullanılır.
 
 ## <a name="create-a-build-job"></a>Yapı işi oluşturma
 
-Şimdi, Azure Container Instance üzerinde Jenkins derlemelerini göstermek için Jenkins derleme işi oluşturulur.
+Şimdi, Jenkins yapı işi, Jenkins'in Azure kapsayıcısı üzerine inşa sını göstermek için oluşturulur.
 
-1. **Yeni öğe**' yi seçin, derleme projesine **aci-demo**gibi bir ad verin, **Freestyle Project**' i seçin ve **Tamam**' ı seçin.
+1. **Yeni Öğe'yi**seçin, yapı projesine **aci-demo**gibi bir ad verin, **Serbest Stil projesini**seçin ve **Tamam'ı**seçin.
 
    ![Yapı işinin adı ve proje türlerinin listesi için kutu](./media/container-instances-jenkins/jenkins-new-job.png)
 
-2. **Genel**altında, **Bu projenin nerede çalıştırılabileceğini kısıtla** seçeneğinin işaretli olduğundan emin olun. Etiket ifadesi için **Linux** girin. Bu yapılandırma, bu derleme işinin ACI bulutu üzerinde çalışmasını sağlar.
+2. **Genel**altında, **bu projenin çalıştırılabildiği yeri Kısıtla'nın** seçildiğinden emin olun. Etiket ifadesi için **linux** girin. Bu yapılandırma, bu yapı işinin ACI bulutu üzerinde çalışan olmasını sağlar.
 
-   ![Yapılandırma ayrıntıları içeren "genel" sekmesi](./media/container-instances-jenkins/jenkins-job-01.png)
+   ![Yapılandırma ayrıntılarıyla "Genel" sekmesi](./media/container-instances-jenkins/jenkins-job-01.png)
 
-3. **Yapı**' ın altında **derleme Ekle adımı** ' nı seçin ve **kabuğu Yürüt**' ü seçin Komut olarak `echo "aci-demo"` girin.
+3. **Yapı**altında, **Yapı adımı ekle'yi** seçin ve **Shell'i Yürüt'ün'u**seçin. Komut `echo "aci-demo"` olarak girin.
 
-   ![Derleme adımının seçimleriyle birlikte "derleme" sekmesi](./media/container-instances-jenkins/jenkins-job-02.png)
+   ![Yapı adımı için seçimlerle "Oluştur" sekmesi](./media/container-instances-jenkins/jenkins-job-02.png)
 
-5. **Kaydet**’i seçin.
+5. **Kaydet'i**seçin.
 
-## <a name="run-the-build-job"></a>Derleme işini çalıştırma
+## <a name="run-the-build-job"></a>Yapı işini çalıştırma
 
-Yapı işini test etmek ve derleme platformu olarak Azure Container Instances gözlemlemek için bir derlemeyi el ile başlatın.
+Yapı işini sınamak ve Yapı platformu olarak Azure Kapsayıcı Örnekleri'ni gözlemlemek için, el ile bir yapı başlatın.
 
-1. Derleme işini başlatmak için **Şimdi Oluştur** ' u seçin. İşin başlatılması birkaç dakika sürer. Aşağıdaki görüntüye benzer bir durum görmeniz gerekir:
+1. Bir yapı işi başlatmak için **Şimdi Oluştur'u** seçin. İşin başlaması birkaç dakika sürer. Aşağıdaki resme benzer bir durum görmeniz gerekir:
 
-   ![İş durumu ile "derleme geçmişi" bilgileri](./media/container-instances-jenkins/jenkins-job-status.png)
+   ![İş durumu yla "Geçmiş Oluşturma" bilgileri](./media/container-instances-jenkins/jenkins-job-status.png)
 
-2. İş çalışırken Azure portal açın ve Jenkins kaynak grubuna bakın. Bir kapsayıcı örneğinin oluşturulduğunu görmeniz gerekir. Jenkins işi bu örnek içinde çalışıyor.
+2. İş çalışırken Azure portalını açın ve Jenkins kaynak grubuna bakın. Bir kapsayıcı örneğinin oluşturulduğunu görmeniz gerekir. Jenkins işi bu olayiçinde çalışıyor.
 
-   ![Kaynak grubundaki kapsayıcı örneği](./media/container-instances-jenkins/jenkins-aci.png)
+   ![Kaynak grubunda kapsayıcı örneği](./media/container-instances-jenkins/jenkins-aci.png)
 
-3. Jenkins, yapılandırılmış Jenkins yürüticilerinden (varsayılan 2) daha fazla iş çalıştırıyorsa, birden çok kapsayıcı örneği oluşturulur.
+3. Jenkins, yapılandırılan Jenkins uygulayıcısayısından (varsayılan 2) daha fazla iş çalıştırdarken, birden çok kapsayıcı örneği oluşturulur.
 
    ![Yeni oluşturulan kapsayıcı örnekleri](./media/container-instances-jenkins/jenkins-aci-multi.png)
 
-4. Tüm derleme işleri tamamlandıktan sonra kapsayıcı örnekleri kaldırılır.
+4. Tüm yapı işleri tamamlandıktan sonra, kapsayıcı örnekleri kaldırılır.
 
    ![Kapsayıcı örnekleri kaldırılmış kaynak grubu](./media/container-instances-jenkins/jenkins-aci-none.png)
 

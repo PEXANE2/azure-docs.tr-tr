@@ -1,6 +1,6 @@
 ---
-title: Azure Java SDK 'sını kullanarak Azure Data Lake Analytics yönetme
-description: Bu makalede, Azure Java SDK 'nın Data Lake Analytics işleri, veri kaynaklarını & kullanıcıları yöneten uygulamalar yazmak için nasıl kullanılacağı açıklanır.
+title: Azure Java SDK'yı kullanarak Azure Veri Gölü Analizini yönetme
+description: Bu makalede, Veri Gölü Analizi işlerini, veri kaynaklarını, & kullanıcıları yöneten uygulamalar yazmak için Azure Java SDK'nın nasıl kullanılacağı açıklanmaktadır.
 services: data-lake-analytics
 ms.service: data-lake-analytics
 author: saveenr
@@ -10,28 +10,28 @@ ms.assetid: 07830b36-2fe3-4809-a846-129cf67b6a9e
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.openlocfilehash: b8c7d2ba1c782c3b6ae3034d6a9aab5eb19be954
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70813629"
 ---
-# <a name="manage-azure-data-lake-analytics-using-a-java-app"></a>Java uygulaması kullanarak Azure Data Lake Analytics yönetme
+# <a name="manage-azure-data-lake-analytics-using-a-java-app"></a>Java uygulamasını kullanarak Azure Veri Gölü Analizi'ni yönetme
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
 
-Bu makalede, Azure Java SDK 'Sı kullanılarak yazılmış bir uygulamayı kullanarak Azure Data Lake Analytics hesaplarının, veri kaynaklarının, kullanıcıların ve işlerin nasıl yönetileceği açıklanmaktadır. 
+Bu makalede, Azure Java SDK kullanılarak yazılmış bir uygulamayı kullanarak Azure Veri Gölü Analizi hesaplarının, veri kaynaklarının, kullanıcıların ve işlerin nasıl yönetilenolduğu açıklanmaktadır. 
 
-## <a name="prerequisites"></a>Önkoşullar
-* **Java Development Kit (JDK) 8** (Java sürüm 1,8 ' i kullanarak).
-* **IntelliJ** veya başka bir uygun Java geliştirme ortamı. Bu belgedeki yönergeler IntelliJ kullanır.
-* Bir Azure Active Directory (AAD) uygulaması oluşturun ve **İstemci Kimliği**, **Kiracı Kimliği** ve **Anahtar** bilgilerini alın. AAD uygulamaları hakkında daha fazla bilgi ve istemci kimliği almaya ilişkin yönergeler için bkz. [Portal kullanarak Active Directory uygulaması ve hizmet sorumlusu oluşturma](../active-directory/develop/howto-create-service-principal-portal.md). Uygulama oluşturulduktan ve anahtar oluşturulduktan sonra, portalda yanıt URI 'SI ve anahtar kullanılabilir.
+## <a name="prerequisites"></a>Ön koşullar
+* **Java Geliştirme Kiti (JDK) 8** (Java sürüm 1.8 kullanarak).
+* **IntelliJ** veya başka bir uygun Java geliştirme ortamı. Bu belgedeki yönergeler IntelliJ'i kullanır.
+* Bir Azure Active Directory (AAD) uygulaması oluşturun ve **İstemci Kimliği**, **Kiracı Kimliği** ve **Anahtar** bilgilerini alın. AAD uygulamaları hakkında daha fazla bilgi ve istemci kimliği almaya ilişkin yönergeler için bkz. [Portal kullanarak Active Directory uygulaması ve hizmet sorumlusu oluşturma](../active-directory/develop/howto-create-service-principal-portal.md). Yanıt URI ve Anahtar, uygulama oluşturulduktan ve anahtar oluşturulduktan sonra portaldan kullanılabilir.
 
-## <a name="authenticating-using-azure-active-directory"></a>Azure Active Directory kullanarak kimlik doğrulama
+## <a name="authenticating-using-azure-active-directory"></a>Azure Etkin Dizini kullanarak kimlik doğrulama
 
-Aşağıdaki kod parçacığı, uygulamanın kendi kimlik bilgilerini sağladığı **etkileşimli olmayan** kimlik doğrulaması için kod sağlar.
+Snippet'i izleyen kod, uygulamanın kendi kimlik bilgilerini sağladığı **etkileşimli olmayan** kimlik doğrulaması için kod sağlar.
 
 ## <a name="create-a-java-application"></a>Java uygulaması oluşturma
-1. IntelliJ 'yi açın ve **komut satırı uygulama** şablonunu kullanarak bir Java projesi oluşturun.
+1. IntelliJ'i açın ve **Command-Line App** şablonunu kullanarak bir Java projesi oluşturun.
 2. Ekranınızın sol tarafında projeye sağ tıklayın ve **Add Framework Support (Framework Desteği Ekle)** seçeneğine tıklayın. **Maven**'ı seçip **OK (Tamam)** seçeneğine tıklayın.
 3. Yeni oluşturulan **"pom.xml"** dosyasını açın ve **\</version>** etiketi ile **\</project>** etiketi arasına şu metin parçacığını ekleyin:
 
@@ -76,9 +76,9 @@ Aşağıdaki kod parçacığı, uygulamanın kendi kimlik bilgilerini sağladı�
 </dependencies>
 ```
 
-**Dosya > ayarları ' na gidin > > yürütme > dağıtımı oluşturun**. **Derleme araçlarını > Maven > Içeri aktarma**' yı seçin. Ardından **Maven projelerini otomatik olarak Içeri aktarın**.
+Yürütme **> Dağıtım > oluşturma > Dosya > Ayarları'na**gidin. İthalat > **Maven > Araçları Oluştur'u**seçin. Sonra **Otomatik olarak Alma Maven projelerini**kontrol edin.
 
-Açın `Main.java` ve var olan kod bloğunu şu kodla değiştirin:
+Varolan kod bloğunu aşağıdaki kodla açın `Main.java` ve değiştirin:
 
 ```java
 import com.microsoft.azure.CloudException;
@@ -307,7 +307,7 @@ public class Main {
 }
 ```
 
-Kod parçacığında çağrılan parametrelerin değerlerini sağlayın:
+Kod snippet'inde çağrılan parametreler için değerleri sağlayın:
 * `localFolderPath`
 * `_adlaAccountName`
 * `_adlsAccountName`

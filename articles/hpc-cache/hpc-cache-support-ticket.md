@@ -1,32 +1,32 @@
 ---
-title: Azure HPC önbelleği için bir destek bileti açın
-description: Azure HPC önbelleği için yardım isteği açma
+title: Azure HPC Önbelleği için destek bileti açın
+description: Azure HPC Önbelleği için yardım isteği nasıl açılır?
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: rohogue
 ms.openlocfilehash: 76261f4e2e42b4272abcd976fcf2644fd43aa818
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74169370"
 ---
-# <a name="open-a-support-ticket-for-azure-hpc-cache"></a>Azure HPC önbelleği için bir destek bileti açın
+# <a name="open-a-support-ticket-for-azure-hpc-cache"></a>Azure HPC Önbelleği için destek bileti açın
 
-Bir destek bileti açmak için Azure portal kullanın. Önbellek örneğinize gidin ve kenar çubuğunun altında görüntülenen **Yeni destek isteği** bağlantısına tıklayın.
+Destek bileti açmak için Azure portalını kullanın. Önbellek örneğinize gidin ve kenar çubuğunun alt kısmında görünen **Yeni destek isteği** bağlantısını tıklatın.
 
-Etkin bir önbelleğiniz olmadığında bir bileti açmak için Azure portal Ana yardım + destek sayfasını kullanın. Ekranın sol üst kısmındaki denetimden Portal menüsünü açın, ardından en alta kaydırın ve **Yardım + Destek**' e tıklayın.
+Etkin bir önbelleğiniz yoksa bilet açmak için Azure portalındaki ana Yardım + destek sayfasını kullanın. Ekranın sol üst kısmındaki denetimden portal menüsünü açın, ardından alta kaydırın ve **Yardım + destek'e**tıklayın.
 
-**Yeni destek isteği ' ni** seçin ve Azure HPC önbelleğine özgü yardım için **Teknik** ' i seçin.
+**Yeni destek isteğini** seçin ve Azure HPC Önbelleğine özgü yardım için **Teknik'i** seçin.
 
 Listeden aboneliğinizi seçin.
 
-Azure HPC önbellek hizmetini bulmak için, **tüm hizmetler** düğmesine tıklayın ve HPC için arama yapın.
+Azure HPC Önbellek hizmetini bulmak için **Tüm hizmetler** düğmesini tıklatın ve HPC'yi arayın.
 
-![Destek isteği temelleri sekmesinin ekran görüntüsü, kısmen belirtildiği şekilde doldurulmuştur](media/hpc-cache-support-request.png)
+![Destek isteğinin ekran görüntüsü - Temeller sekmesi, kısmen açıklandığı gibi doldurulmuş](media/hpc-cache-support-request.png)
 
-Bilgi ve tercihlerinizle alanları geri kalanı doldurun ve hazır olduğunuzda bileti iletin.
+Diğer alanları bilgi ve tercihlerinizle doldurun, hazır olduğunuzda bileti gönderin.
 
-İsteği gönderdikten sonra, Bilet numarası içeren bir onay e-postası alacaksınız. Destek ekibi üyesi, istek hakkında sizinle iletişim kuracaktır.
+Talebi gönderdikten sonra, bilet numarası içeren bir onay e-postası alacaksınız. Bir destek personeli istek hakkında sizinle irtibata geçecektir.

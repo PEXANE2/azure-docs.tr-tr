@@ -1,6 +1,6 @@
 ---
-title: Azure HDInsight 'ta fırtınası için SCP.NET Programlama Kılavuzu
-description: Oluşturmak için SCP.NET kullanmayı öğrenin. Azure HDInsight 'ta çalışan fırtınası ile kullanım için NET tabanlı fırtınası topolojileri.
+title: Azure HDInsight'ta Storm için SCP.NET programlama kılavuzu
+description: Oluşturmak için SCP.NET nasıl kullanacağınızı öğrenin. Azure HDInsight'ta çalışan Storm ile kullanılmak üzere NET tabanlı Storm topolojileri.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,70 +9,70 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/13/2020
 ms.openlocfilehash: ddf69a75a39911293277a4a4189cf4e79256e09d
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77186871"
 ---
-# <a name="scp-programming-guide-for-apache-storm-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache Storm için SCP Programlama Kılavuzu
+# <a name="scp-programming-guide-for-apache-storm-in-azure-hdinsight"></a>Azure HDInsight'ta Apache Storm için SCP programlama kılavuzu
 
-SCP gerçek zamanlı, güvenilir, tutarlı ve yüksek performanslı veri işleme uygulamaları oluşturmaya yönelik bir platformdur. Açık kaynaklı yazılım toplulukları tarafından tasarlanan akış işleme sistemi olan [Apache Storm](https://storm.incubator.apache.org/)üzerine kurulmuştur. Nathan Marz oluşturuldu fırtınası. Twitter tarafından açık kaynak olarak yayımlandı. Fırtınası, son derece güvenilir dağıtılmış koordinasyon ve durum yönetimine izin veren başka bir Apache projesi olan [Apache ZooKeeper](https://zookeeper.apache.org/)kullanır.
+SCP, gerçek zamanlı, güvenilir, tutarlı ve yüksek performanslı veri işleme uygulamaları oluşturmak için bir platformdur. Açık kaynak yazılım toplulukları tarafından tasarlanmış bir akış işleme sistemi olan [Apache Storm'un](https://storm.incubator.apache.org/)üzerine inşa edilmiştir. Nathan Marz Storm'u yarattı. Twitter tarafından açık kaynak olarak yayınlandı. Fırtına [Apache ZooKeeper](https://zookeeper.apache.org/)kullanır , son derece güvenilir dağıtılmış koordinasyon ve devlet yönetimi sağlayan başka bir Apache projesidir.
 
-SCP projesi Windows üzerinde yalnızca bir bağlantı noktası ve ayrıca proje tarafından eklenen uzantıları ve özelleştirmeleri Windows ortamına değil. Uzantılar .NET Geliştirici deneyimini ve .NET kitaplıklarını içerir. Özelleştirme, Windows tabanlı dağıtımı içerir.
+SCP projesi yalnızca Windows'da Fırtına'yı değil, Windows ortamı için proje ekuzantıları ve özelleştirmeyi de işaretlemiştir. Uzantılar arasında .NET geliştirici deneyimi ve .NET kitaplıkları yer alır. Özelleştirme, Windows tabanlı dağıtımı içerir.
 
-Uzantılar ve özelleştirme ile açık kaynaklı yazılım projelerini çatalla ihtiyacınız yoktur. Fırtınası üzerinde oluşturulmuş türetilmiş ortamları kullanabilirsiniz.
+Uzantıları ve özelleştirme ile, açık kaynak yazılım projeleri çatal gerekmez. Storm'un üzerine inşa edilmiş türetilmiş ortamlar kullanabilirsiniz.
 
-## <a name="processing-model"></a>İşlem modeli
+## <a name="processing-model"></a>İşleme modeli
 
-SCP 'deki veriler, tanımlama gruplarının sürekli akışları olarak modellenir. Genellikle, tanımlama grupları:
+SCP'deki veriler sürekli tuples akışları olarak modellenir. Tipik olarak, tuples:
 
-1. Bir sıraya akar.
-1. , Bir fırtınası topolojisi içinde barındırılan iş mantığına göre alınır ve dönüştürülür.
-1. Çıkışları, başka bir SCP sistemine yönelik tanımlama grupları olarak veya dağıtılmış dosya sistemleri ve SQL Server gibi veritabanları gibi mağazalara kararlıdır.
+1. Sıraya girin.
+1. Bir Fırtına topolojisi içinde barındırılan iş mantığı tarafından alınır ve dönüştürülür.
+1. Çıktıları başka bir SCP sistemine tuples olarak borulanmış veya dağıtılmış dosya sistemleri ve SQL Server gibi veritabanları gibi mağazalara adamıştır.
 
-![Bir kuyruğun bir diyagramı, verileri işlenecek şekilde beslemenin yanı sıra bir veri deposunun beslemelerini sağlar](./media/apache-storm-scp-programming-guide/queue-feeding-data-to-processing-to-data-store.png)
+![Sırayla bir veri deposu besler işleme için bir kuyruk besleme veri diyagramı](./media/apache-storm-scp-programming-guide/queue-feeding-data-to-processing-to-data-store.png)
 
-Fırtınası ' da, bir uygulama topolojisi bir hesaplama grafiğini tanımlar. Bir topolojideki her düğüm, işlem mantığını içerir. Düğümler arasındaki bağlantılar veri akışını gösterir.
+Storm'da bir uygulama topolojisi bir hesaplama grafiği tanımlar. Bir topolojideki her düğüm işleme mantığı içerir. Düğümler arasındaki bağlantılar veri akışını gösterir.
 
-Topolojiye giriş verisi eklenen düğümlere _Spout_adı verilir. Bunları verileri sıralamak için kullanabilirsiniz. Giriş verileri, dosya günlükleri, bir işlem veritabanı veya sistem performans sayacı gibi bir kaynaktan gelebilir.
+Giriş verilerini topolojiye enjekte eden _düğümlere spouts_denir. Verileri sıralamak için bunları kullanabilirsiniz. Giriş verileri dosya günlükleri, işlem veritabanı veya sistem performans sayacı gibi bir kaynaktan gelebilir.
 
-Hem giriş hem de çıkış verisi akışları olan düğümlere _cıvatalar_denir. Gerçek veri filtreleme, seçimler ve toplama işlemlerini yapar.
+Hem giriş hem de çıktı veri akışları olan _düğümlere cıvata_denir. Gerçek veri filtreleme, seçim ve toplama yı yaparlar.
 
-SCP, en az bir kez ve tam bir kez veri işleme olmak üzere en iyi çabaları destekler.
+SCP en iyi çabaları, en az bir kez ve tam olarak bir kez veri işleme destekler.
 
-Dağıtılmış bir akış işleme uygulamasında, veri işleme sırasında hatalar meydana gelebilir. Bu hatalar, bir ağ kesintisi, bir makine arızası veya kodunuzda bir hata içerir. En az bir kez işleme, bir hata oluştuğunda aynı verileri otomatik olarak yeniden alarak tüm verilerin en az bir kez işlenmesini sağlar.
+Dağıtılmış bir akış işleme uygulamasında, veri işleme sırasında hatalar meydana gelebilir. Bu tür hatalar arasında ağ kesintisi, makine hatası veya kodundaki bir hata yer almaktadır. En az bir kez işleme, bir hata olduğunda aynı verileri otomatik olarak yeniden oynatarak tüm verilerin en az bir kez işlenmesini sağlar.
 
-En az bir kez işleme basit ve güvenilirdir ve birçok uygulama için tasarlanmıştır. Ancak bir uygulama tam sayım gerektirdiğinde, aynı veriler uygulama topolojisinde yeniden çalınabileceğinden, en az bir kez işleme yeterli değildir. Bu durumda, tam olarak bir kez işleme, veriler yeniden çalındığında ve birden çok kez işlendiğinde bile sonucun doğru olduğundan emin olur.
+En az bir kez işleme basit ve güvenilir, ve birçok uygulamalar uygun. Ancak bir uygulama tam sayma gerektirdiğinde, aynı veriler uygulama topolojisinde yeniden oynatılabileceğinden en az bir kez işleme yeterli değildir. Bu durumda, veriler birden çok kez yeniden oynandı ve işlendiğinde bile tam olarak bir kez işleme sonucunun doğru olduğundan emin olun.
 
-SCP, .NET geliştiricilerinin, fırtınası ile Java Sanal Makinesi (JVM) kullanırken gerçek zamanlı veri işleme uygulamaları oluşturmalarına olanak tanır. TCP yerel yuvaları aracılığıyla bir JVM ve .NET iletişim kurar. Her Spout/cıvata, Kullanıcı mantığının bir .NET işleminde eklenti olarak çalıştırıldığı .NET/Java işlem çiftidir.
+SCP, .NET geliştiricilerin Storm ile java sanal makine (JVM) kullanırken gerçek zamanlı veri işleme uygulamaları oluşturmasına olanak tanır. Bir JVM ve .NET TCP yerel soketleri üzerinden iletişim kurar. Her bir spout/cıvata, kullanıcı mantığının bir .NET işleminde eklenti olarak çalıştığı bir .NET/Java işlem çiftidir.
 
-SCP 'nin üstünde bir veri işleme uygulaması oluşturmak için aşağıdaki adımları izleyin:
+SCP'nin üstüne bir veri işleme uygulaması oluşturmak için aşağıdaki adımları izleyin:
 
-1. Kuyruklardan verileri çekmek için biriktirmalar tasarlayın ve uygulayın.
-1. Giriş verilerini işleyen ve veritabanı gibi dış depolara kaydedecek cıvatları tasarlayın ve uygulayın.
-1. Topolojiyi tasarlayın, sonra, oluşturup çalıştırın.
+1. Kuyruklardan veri çekmek için spout'lar tasarla ve uygulayın.
+1. Giriş verilerini işleyen ve veritabanı gibi harici mağazalara kaydeden cıvatalar tasarlayıp uygulayın.
+1. Topolojiyi tasarlayın, sonra gönderin ve çalıştırın.
 
-Topoloji, izdüşümlerinin yanı sıra aralarında akan verileri tanımlar. SCP bir topoloji belirtimi alır ve bu kümeyi her bir köşenin tek bir mantıksal düğümde çalıştığı bir fırtınası kümesine dağıtır. Fırtınası Görev Zamanlayıcı, yük devretme ve ölçeklendirmeyi üstlenir.
+Topoloji tepe tepelerini ve aralarında akan verileri tanımlar. SCP bir topoloji belirtimi alır ve her tepe noktasının tek bir mantıksal düğüm üzerinde çalıştığı bir Fırtına kümesine dağır. Fırtına görev zamanlayıcısı başarısızlık ve ölçekleme ilgilenir.
 
-Bu makalede, SCP ile veri işleme uygulamaları oluşturma konusunda yol göstermek için bazı basit örnekler kullanılmaktadır.
+Bu makalede, SCP ile veri işleme uygulamaları oluşturmak için nasıl yürümek için bazı basit örnekler kullanır.
 
 ## <a name="scp-plug-in-interface"></a>SCP eklenti arabirimi
 
-SCP eklentileri tek başına uygulamalardır. Geliştirme sırasında Visual Studio içinde çalışabilir ve üretim dağıtımından sonra fırtınası ardışık düzenine takılır.
+SCP eklentileri bağımsız uygulamalardır. Geliştirme sırasında Visual Studio'da çalıştırılabilir ler ve üretim dağıtımından sonra Fırtına boru hattına bağlanabilirler.
 
-SCP eklentisi yazmak, diğer Windows konsol uygulamalarının yazılmasında de aynıdır. SCP.NET platformu, Spout/cıvam için bazı arabirimler bildirir. Eklenti kodunuz bu arabirimleri uygular. Bu tasarımın ana amacı, SCP.NET platformunun diğer şeyleri işlemesini sağlayarak iş mantığınıza odaklanmanıza olanak sağlamaktır.
+SCP eklentisi yazmak, diğer Windows konsol uyrumu uygulamalarını yazmakla aynıdır. SCP.NET platformu emz/cıvata için bazı arabirimler bildirir. Eklenti kodunuz bu arabirimleri uygular. Bu tasarımın temel amacı, SCP.NET platformunun diğer şeyleri ele almalarına izin verirken iş mantığınıza odaklanmanızı sağlamaktır.
 
-Eklenti kodunuz aşağıdaki arabirimlerden birini uygular. Hangi arabirim, topolojinin işlem veya işlem dışı olmasına ve bileşenin bir Spout ya da bir cıvata olup olmamasına bağlıdır.
+Eklenti kodunuz aşağıdaki arabirimlerden birini uygular. Hangi arabirim, topolojinin işlemsel mi yoksa işlem dışı mı olduğuna ve bileşenin bir emzme mi yoksa cıvata mı olduğuna bağlıdır.
 
 * **ISCPSpout**
-* **Iscpsürgüsü**
+* **ISCPBolt**
 * **ISCPTxSpout**
-* **Iscpbatchcıvata**
+* **ISCPBatchBolt**
 
-### <a name="iscpplugin"></a>SCC
+### <a name="iscpplugin"></a>ISCPPlugin
 
-**SCC** , birçok eklenti için ortak arabirimdir. Şu anda, bu bir kukla arabirimdir.
+**ISCPPlugin** birçok eklentiiçin ortak arayüzdür.
 
 ```csharp
 public interface ISCPPlugin
@@ -82,7 +82,7 @@ public interface ISCPPlugin
 
 ### <a name="iscpspout"></a>ISCPSpout
 
-**Icpspout** , işlem dışı bir Spout arabirimidir.
+**ISCPSpout** işlem dışı bir emzit için arabirimdir.
 
 ```csharp
 public interface ISCPSpout : ISCPPlugin
@@ -93,23 +93,23 @@ public interface ISCPSpout : ISCPPlugin
 }
 ```
 
-**Nexttuple** çağrıldığında, C# kodunuz bir veya daha fazla tanımlama grubu yayabilir. Yayma için bir şey yoksa, bu yöntem hiçbir şeyi yaymadan döndürmelidir.
+**NextTuple** çağrıldığında, C# kodunuz bir veya daha fazla tuples yarayabilir. Yayan bir şey yoksa, bu yöntem hiçbir şey yaymadan geri dönmelidir.
 
-**Nexttuple**, **ACK**ve **Fail** yöntemlerinin hepsi bir C# işlemin tek bir iş parçacığında sıkı bir döngüde çağırılır. Görüntülenecek bir tanımlama grubu olmadığında, 10 milisaniyeye benzer bir süre için **Nexttuple** uyumaya sahip olması gerekir. Bu uyku, CPU kullanılabilirliğini gereksiz şekilde önlemenize yardımcı olur.
+**NextTuple**, **Ack**ve **Fail** yöntemleri nin tümü, c# işleminin tek bir iş parçacığında sıkı bir döngü içinde çağrılır. Yayılacak tuples olmadığında, **NextTuple** uykusu 10 milisaniye gibi kısa bir süre için uyuyun. Bu uyku, CPU kullanılabilirliğini boşa harcamaya yardımcı olur.
 
-**ACK** ve **Fail** yöntemleri yalnızca bir belirtim dosyası bildirim mekanizmasını etkinleştirmesine izin verecek şekilde çağrılır. *SeqID* parametresi, onaylanan veya başarısız olan kayıt grubunu tanımlar. Bildirim, işlem dışı bir topolojide etkinleştirilirse, aşağıdaki **yayma** işlevi bir Spout içinde kullanılmalıdır:
+**Ack** ve **Fail** yöntemleri yalnızca bir belirtim dosyası bildirim mekanizmasını etkinleştirdiğinde çağrılır. *SeqId* parametresi kabul edilen veya başarısız olan tuple'ı tanımlar. İşlem dışı bir topolojide bildirim etkinse, aşağıdaki **Emit** işlevi bir dışa doğru kullanılmalıdır:
 
 ```csharp
 public abstract void Emit(string streamId, List<object> values, long seqId);
 ```
 
-İşlem dışı bir topoloji onay desteklemiyorsa, **ACK** ve **Fail** boş işlevler olarak kalabilir.
+İşlem dışı bir topoloji bildirimi desteklemiyorsa, **Ack** ve **Fail** boş işlevler olarak bırakılabilir.
 
-Bu işlevlerdeki *parametreleri* giriş parametresi boş bir sözlük belirtir ve gelecekte kullanılmak üzere ayrılmıştır.
+Bu işlevlerde *parms* giriş parametresi boş bir sözlük belirtir ve gelecekteki kullanım için ayrılmıştır.
 
-### <a name="iscpbolt"></a>Iscpsürgüsü
+### <a name="iscpbolt"></a>ISCPBolt
 
-**Iscpcıvata** , işlem dışı bir sürgüdeki arabirimdir.
+**ISCPBolt** işlem dışı bir cıvata için arabirimdir.
 
 ```csharp
 public interface ISCPBolt : ISCPPlugin
@@ -118,11 +118,11 @@ void Execute(SCPTuple tuple);
 }
 ```
 
-Yeni bir tanımlama grubu kullanılabilir olduğunda, **yürütme** işlevi onu işlemek için çağırılır.
+Yeni bir tuple kullanılabilir olduğunda, **yürütme** işlevi onu işlemek için çağrılır.
 
 ### <a name="iscptxspout"></a>ISCPTxSpout
 
-**Iscptxspout** , işlem için bir Spout arabirimidir.
+**ISCPTxSpout** bir işlem spout için arabirimdir.
 
 ```csharp
 public interface ISCPTxSpout : ISCPPlugin
@@ -133,17 +133,17 @@ public interface ISCPTxSpout : ISCPPlugin
 }
 ```
 
-İşlem için ve başarısız olan karşılıklarına benzer şekilde, **Nexttx**, **ACK**ve **Fail** , bir C# işlemin tek bir iş parçacığında sıkı bir döngüde çağırılır. Görüntülenecek bir tanımlama grubu olmadığında, 10 milisaniyeye benzer bir süre için **Nexttx** uyumaya sahip olması gerekir. Bu uyku, CPU kullanılabilirliğini gereksiz şekilde önlemenize yardımcı olur.
+İşlem dışı karşılıkları **NextTx**, **Ack**ve **Fail** gibi hepsi de c# işleminin tek bir iş parçacığında sıkı bir döngü içinde çağrılır. Yayılacak tuples olmadığında, **NextTx** 10 milisaniye gibi kısa bir süre için uyku var. Bu uyku, CPU kullanılabilirliğini boşa harcamaya yardımcı olur.
 
-Yeni bir işlem başlatmak için **Nexttx** çağrıldığında, *SeqID* çıkış parametresi işlemi tanımlar. İşlem **ACK** ve **Fail**içinde de kullanılır. **Nexttx** yönteminiz, Java tarafında veri yayabilir. Veriler, yeniden yürütmeyi desteklemek için ZooKeeper içinde depolanır. ZooKeeper sınırlı kapasiteye sahip olduğundan, kodunuz yalnızca bir işlem biriktirme dosyasında toplu verileri değil, yalnızca meta verileri göstermelidir.
+**NextTx** yeni bir işlem başlatmak için *çağrıldığında, seqId* çıkış parametresi hareketi tanımlar. Hareket, **Ack** ve **Fail'de**de kullanılır. **NextTx** yönteminiz Java tarafına veri yatabilir. Veriler, yeniden oynatmayı desteklemek için ZooKeeper'da depolanır. ZooKeeper sınırlı kapasiteye sahip olduğundan, kodunuz yalnızca meta veri yontmalı ve işlem seli içinde toplu veri yatmalıdır.
 
-Fırtınası başarısız bir işlemi otomatik olarak yeniden yürüttüğünde, **başarısızlık** genellikle çağrılmaz. Ancak SCP bir işlem biriktirme tarafından oluşturulan meta verileri denet, meta veriler geçersiz olduğunda **başarısız** olabilir.
+Storm başarısız bir hareketi otomatik olarak yeniden oynattığı için **Fail** genellikle çağrılmaz. Ancak SCP, bir işlem emdi tarafından yayılan meta verileri denetleyebilirse, meta veriler geçersiz olduğunda **Başarısız** olarak arayabilir.
 
-Bu işlevlerdeki *parametreleri* giriş parametresi boş bir sözlük belirtir ve gelecekte kullanılmak üzere ayrılmıştır.
+Bu işlevlerde *parms* giriş parametresi boş bir sözlük belirtir ve gelecekteki kullanım için ayrılmıştır.
 
-### <a name="iscpbatchbolt"></a>Iscpbatchcıvata
+### <a name="iscpbatchbolt"></a>ISCPBatchBolt
 
-**Iscpbatchcıvata** bir işlem sürgüsü arabirimidir.
+**ISCPBatchBolt** bir işlem cıvataiçin arabirimdir.
 
 ```csharp
 public interface ISCPBatchBolt : ISCPPlugin
@@ -153,24 +153,24 @@ public interface ISCPBatchBolt : ISCPPlugin
 }
 ```
 
-**Execute** yöntemi, yeni bir tanımlama grubu, cıvata ulaştığında çağrılır. Bu işlem sona erdiğinde, **Sonlandırhbatch** yöntemi çağrılır. *Parametreleri* giriş parametresi gelecekte kullanılmak üzere ayrılmıştır.
+**Cıvataya** yeni bir tuple geldiğinde Yürüt metodu çağrılır. Bu işlem sona erdiğinde **FinishBatch** yöntemi çağrılır. *Parms* giriş parametresi ileride kullanılmak üzere ayrılmıştır.
 
-Bir işlem topolojisi için **Stormtxdenemesi** önemli bir sınıftır. İki üye vardır: **Txıd** ve **AttemptId**. **Txıd** üyesi belirli bir işlemi tanımlar. İşlem başarısız olursa ve yeniden yürütülemezse bir işlem birden çok kez denenmeyebilir.
+Bir işlem topolojisi için **StormTxAttempt** önemli bir sınıftır. İki üyesi vardır: **TxId** ve **AttemptId**. **TxId** üyesi belirli bir hareketi tanımlar. Bir hareket başarısız olursa ve yeniden oynatılırsa birden çok kez denenebilir.
 
-SCP.NET, her **Stormtxgirişim** nesnesini işlemek Için, Java 'daki her bir TBU nesnesi gibi yeni bir **ıscpbatchcıvam** nesnesi oluşturur. Bu tasarımın amacı paralel işlem işlemeyi destekliyoruz. İşlem girişiminden sonra karşılık gelen **ıscpbatchcıvam** nesnesi yok edilir ve atık olarak toplanır.
+SCP.NET, her **StormTxAttempt** nesnesini işlemek için yeni bir **ISCPBatchBolt** nesnesi oluşturur, tıpkı Storm'un Java'da yaptığı gibi. Bu tasarımın amacı paralel işlem işlemeyi desteklemektir. Bir işlem girişimi tamamlandıktan sonra, ilgili **ISCPBatchBolt** nesnesi yok edilir ve çöp toplanır.
 
 ## <a name="object-model"></a>Nesne modeli
 
-SCP.NET ayrıca geliştiricilerin ile programlama için basit bir temel nesne kümesi sağlar. Nesneler **bağlam**, **Statestore**ve **SCPRuntime**. Bunlar bu bölümde ele alınmıştır.
+SCP.NET ayrıca geliştiricilerin programla programlayabilmek için basit bir anahtar nesne kümesi de sağlar. Nesneler **Bağlam,** **StateStore**ve **SCPRuntime'dır.** Bu bölümde tartışılıyorlar.
 
 ### <a name="context"></a>Bağlam
 
-**Bağlam** nesnesi, bir uygulamaya çalışan bir ortam sağlar. **Icpspout**, **iscpcıvam**, **iscptxspout**veya **ıscpbatchcıvatinin** her bir **SCC** örneği karşılık gelen bir **bağlam** örneğine sahiptir. **Bağlam** tarafından sunulan işlevsellik, bu iki parçaya ayrılmıştır:
+**Bağlam** nesnesi bir uygulamaya çalışan bir ortam sağlar. **ISCPSpout,** **ISCPBolt,** **ISCPTxSpout**veya **ISCPBatchBolt'un** her **ISCPPlugin** örneğinin karşılık gelen bir **Bağlam** örneği vardır. **Bağlam** tarafından sağlanan işlevsellik şu iki bölüme ayrılır:
 
-* Tüm C# işlemde kullanılabilen statik bölüm
-* Yalnızca belirli **bağlam** örneği için kullanılabilen dinamik bölüm
+* Tüm C# işleminde bulunan statik parça
+* Yalnızca belirli **Bağlam** örneği için kullanılabilen dinamik parça
 
-### <a name="static-part"></a>Statik bölüm
+### <a name="static-part"></a>Statik parça
 
 ```csharp
 public static ILogger Logger = null;
@@ -179,9 +179,9 @@ public static Config Config { get; set; }
 public static TopologyContext TopologyContext { get; set; }  
 ```
 
-Günlüğe kaydetme amacıyla **günlükçü** nesnesi sağlanır.
+**Logger** nesnesi günlük amacıyla sağlanır.
 
-**PluginType** nesnesi C# işlemin eklenti türünü gösterir. İşlem Java olmadan yerel test modunda çalışıyorsa, eklenti türü **SCP_NET_LOCAL**.
+**PluginType nesnesi** C# işleminin eklenti türünü gösterir. İşlem Java olmadan yerel test modunda çalıştırılırsa, eklenti türü **SCP_NET_LOCAL.**
 
 ```csharp
 public enum SCPPluginType 
@@ -194,14 +194,14 @@ public enum SCPPluginType
     }
 ```
 
-**Config** özelliği, Java tarafında yapılandırma parametrelerini alır ve bu, bir C# eklenti başlatıldığında bunları geçirir. **Yapılandırma** parametreleri iki parçaya ayrılmıştır: **stormconf** ve **pluginconf**.
+**Config** özelliği, C# eklentisi başharfe geçtiğinde bunları geçen Java tarafından yapılandırma parametrelerini alır. **Config** parametreleri iki bölüme ayrılır: **stormConf** ve **pluginConf**.
 
 ```csharp
 public Dictionary<string, Object> stormConf { get; set; }  
 public Dictionary<string, Object> pluginConf { get; set; }  
 ```
 
-**Stormconf** bölümü, fırtınası tarafından tanımlanan parametrelerdir ve **PLUGINCONF** bölümü SCP tarafından tanımlanan parametrelerdir. Bir örneği aşağıda verilmiştir:
+**StormConf** parçası Storm tarafından tanımlanan parametrelerdir ve **pluginConf** parçası SCP tarafından tanımlanan parametrelerdir. Bir örneği aşağıda verilmiştir:
 
 ```csharp
 public class Constants
@@ -217,7 +217,7 @@ public class Constants
 }
 ```
 
-**Topologyıcontext** türü topoloji bağlamını alır. Birden çok paralel bileşen için en yararlı seçenektir. Bir örneği aşağıda verilmiştir:
+**TopolojiBağlam** türü topoloji bağlamını alır. Birden çok paralel bileşen için en kullanışlıdır. Bir örneği aşağıda verilmiştir:
 
 ```csharp
 //demo how to get TopologyContext info
@@ -235,9 +235,9 @@ if (Context.pluginType != SCPPluginType.SCP_NET_LOCAL)
 }
 ```
 
-### <a name="dynamic-part"></a>Dinamik bölüm
+### <a name="dynamic-part"></a>Dinamik parça
 
-Aşağıdaki arabirimler, SCP.NET platformu tarafından oluşturulan ve kodunuza geçilen belirli bir **bağlam** örneği ile ilgili olarak belirlenir:
+Aşağıdaki arabirimler, SCP.NET platformu tarafından oluşturulan ve kodunuza geçirilen belirli bir **Bağlam** örneğiyle ilgilidir:
 
 ```csharp
 // Declare the Output and Input Stream Schemas
@@ -251,14 +251,14 @@ public abstract void Emit(List<object> values);
 public abstract void Emit(string streamId, List<object> values);  
 ```
 
-Bildirimi destekleyen bir işlem dışı Spout için aşağıdaki yöntem verilmiştir:
+Bildirimi destekleyen işlem dışı bir emzme için aşağıdaki yöntem sağlanır:
 
 ```csharp
 // for nontransactional spout that supports ack
 public abstract void Emit(string streamId, List<object> values, long seqId);  
 ```
 
-Bildirimi destekleyen bir işlem dışı bir sürgülü **ACK** çağrısı veya aldığı kayıt düzeni ile **başarısız** olması gerekir. Yeni bir tanımlama grubu yayırken, rulı Ayrıca demet 'in tutturucularını belirtmelidir. Aşağıdaki yöntemler verilmiştir:
+Bildirimi destekleyen işlem dışı bir cıvata, aldığı tuple ile açıkça **Ack** veya **Fail'i** aramalıdır. Yeni bir tuple yayan cıvata da tuple'S çapa belirtmelidir. Aşağıdaki yöntemler sağlanmaktadır:
 
 ```csharp
 public abstract void Emit(string streamId, IEnumerable<SCPTuple> anchors, List<object> values);
@@ -268,11 +268,11 @@ public abstract void Fail(SCPTuple tuple);
 
 ### <a name="statestore"></a>StateStore
 
-**Statestore** nesnesi meta veri Hizmetleri, monoton dizisi oluşturma ve ücretsiz düzenleme koordinasyonunu sağlar. **Statestore**'da daha yüksek düzeyde dağıtılmış eşzamanlılık soyutlamaları oluşturabilirsiniz. Bu soyutlamalar dağıtılmış kilitleri, dağıtılmış kuyrukları, engelleri ve işlem hizmetlerini içerir.
+**StateStore** nesnesi meta veri hizmetleri, monoton sıra oluşturma ve beklemeden koordinasyon sağlar. **StateStore'da**daha üst düzey dağıtılmış eşzamanlılık soyutlamaları oluşturabilirsiniz. Bu soyutlamalar dağıtılmış kilitleri, dağıtılmış kuyrukları, engelleri ve işlem hizmetlerini içerir.
 
-SCP uygulamaları, [Apache ZooKeeper](https://zookeeper.apache.org/)bilgileri seri hale getirmek için **durum** nesnesini kullanabilir. Bu özellik özellikle bir işlem topolojisi için değerlidir. Bir işlem biriktirme ve yeniden başlatma durdurulduğunda, **durum** ZooKeeper adresinden gerekli bilgileri alabilir ve ardışık düzeni yeniden başlatabilir.
+SCP uygulamaları [Apache ZooKeeper'daki](https://zookeeper.apache.org/)bilgileri serihale getirmek için **Durum** nesnesini kullanabilir. Bu yetenek özellikle işlemsel bir topoloji için değerlidir. Bir işlem spout yanıt durdurur ve yeniden başlatılırsa, **State** ZooKeeper gerekli bilgileri almak ve ardışık yeniden başlatabilirsiniz.
 
-**Statestore** nesnesi şu asıl yöntemlere sahiptir:
+**StateStore** nesnesi şu temel yöntemlere sahiptir:
 
 ```csharp
 /// <summary>
@@ -329,7 +329,7 @@ public IEnumerable<Registry> Aborted();
 public State GetState(long stateId)
 ```
 
-**Durum** nesnesi şu asıl yöntemlere sahiptir:
+**Durum** nesnesi şu temel yöntemlere sahiptir:
 
 ```csharp
 /// <summary>
@@ -357,7 +357,7 @@ public void Abort();
     public T GetAttribute<T>(string key);
 ```
 
-**Simplemode** **true**olarak ayarlandığında, **COMMIT** yöntemi ZooKeeper içinde karşılık gelen znode 'u siler. Aksi takdirde, yöntemi geçerli ZNode 'u siler ve yürütülen\_yoluna yeni bir düğüm ekler.
+**simpleMode** **doğru**ayarlandığında, **Commit** yöntemi ZooKeeper'daki ilgili ZNode'yi siler. Aksi takdirde, yöntem geçerli ZNode'u siler ve\_COMMITTED PATH'e yeni bir düğüm ekler.
 
 ### <a name="scpruntime"></a>SCPRuntime
 
@@ -369,23 +369,23 @@ public static void Initialize();
 public static void LaunchPlugin(newSCPPlugin createDelegate);  
 ```
 
-**Initialize** yöntemi SCP çalışma zamanı ortamını başlatır. Bu yöntemde C# işlem, yapılandırma parametrelerini ve topoloji bağlamını almak için Java tarafına bağlanır.
+**Initialize** yöntemi SCP çalışma zamanı ortamını başlatmayı sağlar. Bu yöntemde, C# işlemi yapılandırma parametreleri ve topoloji bağlamı almak için Java tarafına bağlanır.
 
-**Launchplugin** yöntemi ileti işleme döngüsünü başlatır. Bu döngüde, C# eklenti Java tarafında iletileri alır. Bu iletiler, tanımlama işaretleri ve denetim sinyalleri içerir. Daha sonra eklenti, belki kodunuzun verdiği arabirim yöntemini çağırarak iletileri işler.
+**LaunchPlugin** yöntemi ileti işleme döngüsüne başlar. Bu döngüde, C# eklentisi Java tarafından iletileri alır. Bu iletiler tuples ve kontrol sinyalleri içerir. Eklenti daha sonra, belki de kodunuz tarafından sağlanan arabirim yöntemini çağırarak iletileri işler.
 
-**Launchplugin** için giriş parametresi bir temsilcisidir. Yöntemi, **ıscpspout**, **iscpcıvata**, **ıscptxspout**veya **ıscpbatchcıvatu** arabirimini uygulayan bir nesne döndürebilir.
+**LaunchPlugin'in** giriş parametresi bir temsilcidir. Yöntem, **ISCPSpout,** **ISCPBolt**, **ISCPTxSpout**veya **ISCPBatchBolt** arabirimini uygulayan bir nesne döndürebilir.
 
 ```csharp
 public delegate ISCPPlugin newSCPPlugin(Context ctx, Dictionary<string, Object> parms);
 ```
 
-**Iscpbatchcıvaı**için, *parametreleri* parametresinden bir **stormtxgirişim** nesnesi alabilir ve bu işlemi, denemesinin yeniden yürütülmüş bir girişimin olup olmadığını jeetmek için kullanabilirsiniz. Yeniden yürütme denemesine yönelik denetim genellikle yürütme sürgüsü üzerinden yapılır. Merhaba Worldtx örneği bu makalenin ilerleyen kısımlarında bu denetim gösterilmektedir.
+**ISCPBatchBolt**için, *parms* parametrebir **StormTxAttempt** nesne almak ve girişimi tekrar girişimi olup olmadığını yargılamak için kullanabilirsiniz. Yeniden oynatma denemesi için denetim genellikle commit cıvatada yapılır. HelloWorldTx örneği daha sonra bu makalede bu denetimi gösterir.
 
-SCP eklentileri genellikle iki modda çalışabilir: Yerel test modu ve normal mod.
+SCP eklentileri genellikle iki modda çalıştırılabilir: yerel test modu ve normal mod.
 
 #### <a name="local-test-mode"></a>Yerel test modu
 
-Bu modda, C# kodunuzda SCP eklentileri geliştirme aşamasında Visual Studio içinde çalışır. Bu modda **ıkalcontext** arabirimini kullanabilirsiniz. Arabirim, yayınlanan tanımlama gruplarını yerel dosyalara serileştirmek ve bunları RAM 'e geri okumak için yöntemler sağlar.
+Bu modda, C# kodunuzdaki SCP eklentileri geliştirme aşamasında Visual Studio'da çalıştırılır. **ILocalContext** arabirimini bu modda kullanabilirsiniz. Arabirim, yayılan tuples'i yerel dosyalara seri hale getirmek ve bunları RAM'e geri okumak için yöntemler sağlar.
 
 ```csharp
 public interface ILocalContext
@@ -398,7 +398,7 @@ public interface ILocalContext
 
 #### <a name="regular-mode"></a>Normal mod
 
-Bu modda, fırtınası Java işlemi SCP eklentilerini çalıştırır. Örnek aşağıda verilmiştir:
+Bu modda, Storm Java işlemi SCP eklentilerini çalıştırır. Aşağıda bir örnek verilmiştir:
 
 ```csharp
 namespace Scp.App.HelloWorld
@@ -426,44 +426,44 @@ class HelloWorld
 }
 ```
 
-## <a name="topology-specification-language"></a>Topoloji belirtim dili
+## <a name="topology-specification-language"></a>Topoloji Belirtimi dili
 
-SCP topolojisi belirtimi, SCP topolojilerini tanımlamak ve yapılandırmak için bir etki alanına özgü dildir (DSL). Bu, [fırtınası 'Nın Clojure DSL](https://storm.incubator.apache.org/documentation/Clojure-DSL.html) TABANLıDıR ve SCP tarafından genişletilir.
+SCP Topoloji Belirtimi, SCP topolojilerini tanımlamak ve yapılandırmak için etki alanına özgü bir dildir (DSL). [Storm's Clojure DSL'ye](https://storm.incubator.apache.org/documentation/Clojure-DSL.html) dayanıyor ve SCP tarafından genişletildi.
 
-**Runspec** komutu aracılığıyla, yürütme için topoloji belirtimlerini doğrudan bir fırtınası kümesine gönderebilirsiniz.
+Topoloji belirtimlerini **runSpec** komutu aracılığıyla yürütülmesi için doğrudan bir Fırtına kümesine gönderebilirsiniz.
 
-SCP.NET, işlem topolojilerini tanımlamak için aşağıdaki işlevleri ekledi:
+SCP.NET işlem topolojilerini tanımlamak için aşağıdaki işlevleri ekledi:
 
 | Yeni işlev | Parametreler | Açıklama |
 | --- | --- | --- |
-| **TX-topolopy** |*topoloji-adı*<br />*Spout eşleme*<br />*cıvata eşleme* |Topoloji adı, Spout tanım eşlemesi ve cıvatalar tanım eşlemesi ile bir işlem topolojisini tanımlar. |
-| **SCP-TX-Spout** |*exec-adı*<br />*args*<br />*alanını* |İşlem biriktirme listesini tanımlar. İşlevi, *Exec-Name* tarafından belirtilen uygulamayı çalıştırır ve *bağımsız değişkenleri*kullanır.<br /><br />*Fields* parametresi, Spout için çıkış alanlarını belirtir. |
-| **SCP-TX-Batch-sürgüsü** |*exec-adı*<br />*args*<br />*alanını* |İşlem Batch sürgüsü tanımlar. İşlevi, *Exec-Name* tarafından belirtilen uygulamayı çalıştırır ve *bağımsız değişkenleri kullanır.*<br /><br />*Fields* parametresi, cıvatanın çıkış alanlarını belirtir. |
-| **SCP-TX-COMMIT-cıvata** |*exec-adı*<br />*args*<br />*alanını* |İşlem bir işleme sürgüsü tanımlar. İşlevi, *Exec-Name* tarafından belirtilen uygulamayı çalıştırır ve *bağımsız değişkenleri*kullanır.<br /><br />*Fields* parametresi, cıvatanın çıkış alanlarını belirtir. |
-| **TX olmayan topoloji** |*topoloji-adı*<br />*Spout eşleme*<br />*cıvata eşleme* |Topoloji adı, Spout tanım eşlemesi ve cıvatalar tanım eşlemesi ile işlem dışı bir topoloji tanımlar. |
-| **SCP-Spout** |*exec-adı*<br />*args*<br />*alanını*<br />*parametreler* |İşlem dışı bir Spout tanımlar. İşlevi, *Exec-Name* tarafından belirtilen uygulamayı çalıştırır ve *bağımsız değişkenleri*kullanır.<br /><br />*Fields* parametresi, Spout için çıkış alanlarını belirtir.<br /><br />*Parameters* parametresi isteğe bağlıdır. "İşlem dışı. ACK. Enabled" gibi parametreleri belirtmek için bunu kullanın. |
-| **SCP-sürgüsü** |*exec-adı*<br />*args*<br />*alanını*<br />*parametreler* |İşlem dışı bir sürgülü tanımlar. İşlevi, *Exec-Name* tarafından belirtilen uygulamayı çalıştırır ve *bağımsız değişkenleri*kullanır.<br /><br />*Fields* parametresi, cıvatanın çıkış alanlarını belirtir<br /><br />*Parameters* parametresi isteğe bağlıdır. "İşlem dışı. ACK. Enabled" gibi parametreleri belirtmek için bunu kullanın. |
+| **tx-topolopy** |*topoloji-adı*<br />*spout-harita*<br />*cıvata-harita* |Topoloji adı, spouts tanım haritası ve cıvata tanım haritası ile bir işlem topolojisi tanımlar. |
+| **scp-tx-spout** |*exec-name*<br />*args*<br />*Alanları* |Bir işlem emzisi tanımlar. *İşlev, exec-name* ile belirtilen uygulamayı çalıştırıyor ve *args*kullanır.<br /><br />*Alanlar* parametresi, emzit için çıkış alanlarını belirtir. |
+| **scp-tx-toplu cıvata** |*exec-name*<br />*args*<br />*Alanları* |İşlemsel toplu iş cıvatası tanımlar. *İşlev, exec-name* ile belirtilen uygulamayı çalıştırıyor ve *args kullanır.*<br /><br />*Alanlar* parametresi cıvata için çıkış alanlarını belirtir. |
+| **scp-tx-commit-cıvata** |*exec-name*<br />*args*<br />*Alanları* |Bir işlem commit bolt tanımlar. *İşlev, exec-name* ile belirtilen uygulamayı çalıştırıyor ve *args*kullanır.<br /><br />*Alanlar* parametresi cıvata için çıkış alanlarını belirtir. |
+| **nontx-topoloji** |*topoloji-adı*<br />*spout-harita*<br />*cıvata-harita* |Topoloji adı, spouts tanım haritası ve cıvata tanım haritası ile işlem dışı bir topoloji tanımlar. |
+| **scp-spout** |*exec-name*<br />*args*<br />*Alanları*<br />*Parametre* |İşlem dışı bir emzit tanımlar. *İşlev, exec-name* ile belirtilen uygulamayı çalıştırıyor ve *args*kullanır.<br /><br />*Alanlar* parametresi, emzit için çıkış alanlarını belirtir.<br /><br />*Parametreler* parametresi isteğe bağlıdır. "Nontransactional.ack.enabled" gibi parametreleri belirtmek için kullanın. |
+| **scp-cıvata** |*exec-name*<br />*args*<br />*Alanları*<br />*Parametre* |İşlem dışı bir cıvata tanımlar. *İşlev, exec-name* ile belirtilen uygulamayı çalıştırıyor ve *args*kullanır.<br /><br />*Alanlar* parametresi cıvata için çıkış alanlarını belirtir<br /><br />*Parametreler* parametresi isteğe bağlıdır. "Nontransactional.ack.enabled" gibi parametreleri belirtmek için kullanın. |
 
-SCP.NET aşağıdaki anahtar sözcükleri tanımlar:
+SCP.NET aşağıdaki anahtar kelimeleri tanımlar:
 
-| Anahtar sözcüğü | Açıklama |
+| Anahtar kelime | Açıklama |
 | --- | --- |
-| **: ad** |Topoloji adı |
-| **: topoloji** |Önceki tabloda ve yerleşik işlevlerde bulunan işlevleri kullanan topoloji |
-| **:p** |Her Spout veya cıvata paralellik İpucu |
-| **: yapılandırma** |Parametrelerin yapılandırılacağını veya mevcut olanları güncelleştirmenize bakılmaksızın |
-| **: şema** |Akışın şeması |
+| **:isim** |Topoloji adı |
+| **:topoloji** |Bir önceki tablodaki işlevleri ve yerleşik işlevleri kullanan topoloji |
+| **:p** |Her emzme veya cıvata için paralellik ipucu |
+| **:config** |Parametreleri yapılandırmak veya varolanları güncelleştirmek mi |
+| **:şema** |Derenin şeması |
 
-SCP.NET, sık kullanılan bu parametreleri de tanımlar:
+SCP.NET ayrıca sık kullanılan bu parametreleri tanımlar:
 
 | Parametre | Açıklama |
 | --- | --- |
-| "plugin.name" |C# Eklentinin. exe dosya adı |
-| "Plugin. args" |Eklenti bağımsız değişkenleri |
-| "output. Schema" |Çıktı şeması |
-| "işlem dışı. ACK. Enabled" |İşlem dışı bir topoloji için onay etkinleştirilip etkinleştirilmediği |
+| "plugin.name" |C# eklentisinin .exe dosya adı |
+| "plugin.args" |Eklenti bağımsız değişkenleri |
+| "output.schema" |Çıkış şeması |
+| "nontransactional.ack.enabled" |İşlem dışı bir topoloji için bildirimin etkin olup olmadığı |
 
-**Runspec** komutu, BITS ile birlikte dağıtılır. Komut kullanımı aşağıda verilmiştir:
+**runSpec** komutu bitlerle birlikte dağıtılır. Burada komut kullanımı:
 
 ```csharp
 .\bin\runSpec.cmd
@@ -471,19 +471,19 @@ usage: runSpec [spec-file target-dir [resource-dir] [-cp classpath]]
 ex: runSpec examples\HelloWorld\HelloWorld.spec specs examples\HelloWorld\Target
 ```
 
-*Resource-dir* parametresi isteğe bağlıdır. C# Uygulamayı eklemek istediğinizde belirtin. Belirtilen dizin, uygulamayı, bağımlılıkları ve konfigürasyonları içerir.
+*Kaynak-dir* parametresi isteğe bağlıdır. C# uygulamasını takmak istediğinizde belirtin. Belirtilen dizin, uygulama, bağımlılıklar ve yapılandırmaları içerir.
 
-*Sınıfyolu* parametresi de isteğe bağlıdır. Belirtim dosyası bir Java Spout veya cıvatiçeriyorsa Java sınıfyolunu belirtir.
+*Sınıf yolu* parametresi de isteğe bağlıdır. Belirtim dosyasında Java emzme veya cıvata varsa Java classpath'i belirtir.
 
 ## <a name="miscellaneous-features"></a>Çeşitli özellikler
 
-### <a name="input-and-output-schema-declarations"></a>Giriş ve çıkış şeması bildirimleri
+### <a name="input-and-output-schema-declarations"></a>Giriş ve çıktı şema bildirimleri
 
-C# İşlemleriniz, tanımlama gruplarını yayabilir. Bunu yapmak için platform, tanımlama gruplarını **Byte []** nesnelerine serileştirir ve nesneleri Java tarafına aktarır. Sonra bu tanımlama gruplarını hedeflere aktarır.
+C# işlemleriniz tuples yaçabilir. Bunu yapmak için platform tuples'ı **bayt[]** nesnelere serihale eder ve nesneleri Java tarafına aktarır. Fırtına daha sonra bu tuples'ı hedeflere aktarıyor.
 
-Aşağı akış bileşenlerinde, C# işler tanımlama gruplarını Java kenarından geri alır ve bunları platformun orijinal türlerine dönüştürür. Tüm bu işlemler platform tarafından gizlenir.
+Akış aşağı bileşenlerinde, C# işlemleri Java tarafından geri tuples alır ve platformun orijinal türlerine dönüştürür. Tüm bu işlemler platform tarafından gizlidir.
 
-Serileştirme ve seri durumdan çıkarmayı desteklemek için, kodunuzun giriş ve çıkış şemasını bildirmesi gerekir. Şema bir sözlük olarak tanımlanır. Akış KIMLIĞI sözlük anahtarıdır. Anahtar değeri, sütunların türleridir. Bir bileşen birden çok akış bildirebilir.
+Serileştirme ve deserialization desteklemek için, kod giriş ve çıkış şemasını bildirmek gerekir. Şema sözlük olarak tanımlanır. Akış kimliği sözlük anahtarıdır. Anahtar değeri sütun türleridir. Bir bileşen birden çok akışı bildirebilir.
 
 ```csharp
 public class ComponentStreamSchema
@@ -498,19 +498,19 @@ public class ComponentStreamSchema
 }
 ```
 
-Aşağıdaki işlev bir **bağlam** nesnesine eklenir:
+Bağlam **nesnesine** aşağıdaki işlev eklenir:
 
 ```csharp
 public void DeclareComponentSchema(ComponentStreamSchema schema)
 ```
 
-Geliştiriciler, oluşturulan tanımlama gruplarının bir akış için tanımlanan şemayı kullandığından emin olmalıdır. Aksi takdirde, sistem bir çalışma zamanı özel durumu oluşturur.
+Geliştiriciler, yayılan tuples bir akış için tanımlanan şema itaat sağlamak gerekir. Aksi takdirde, sistem bir çalışma zamanı özel durum atar.
 
 ### <a name="multistream-support"></a>Çoklu akış desteği
 
-SCP, kodunuzun aynı anda birden çok farklı akışı almasına veya almasına izin verir. **Bağlam** nesnesi bu desteği, **yayma** YÖNTEMININ isteğe bağlı akış kimliği parametresi olarak yansıtır.
+SCP, kodunuzu aynı anda birden çok farklı akışa yatsın veya alır. **Bağlam** nesnesi, **Emit** yönteminin isteğe bağlı akış kimliği parametresi olarak bu desteği yansıtır.
 
-SCP.NET **Context** nesnesindeki iki yöntem eklenmiştir. Belirli akışlara bir veya daha fazla tanımlama grubu yayırlar. *Streamıd* parametresi bir dizedir. Değeri hem C# kodda hem de topoloji tanımı belirtiminde aynı olmalıdır.
+SCP.NET **Bağlam** nesnesinde iki yöntem eklendi. Belirli akışlara bir veya daha fazla tuples yayırlar. *StreamId* parametresi bir dizedir. Değeri hem C# kodunda hem de topoloji tanım belirtiminde aynı olmalıdır.
 
 ```csharp
 /* Emit tuple to the specific stream. */
@@ -520,13 +520,13 @@ public abstract void Emit(string streamId, List<object> values);
 public abstract void Emit(string streamId, List<object> values, long seqId);
 ```
 
-Varolmayan bir akışa yayma, çalışma zamanı özel durumlarına neden olur.
+Var olmayan bir akışa yayan çalışma zamanı özel durumlara neden olur.
 
-### <a name="fields-grouping"></a>Alanları gruplama
+### <a name="fields-grouping"></a>Alanlar gruplandırma
 
-Fırtınası içinde yerleşik alanlar gruplandırmada SCP.NET içinde düzgün çalışmıyor. Java proxy tarafında, tüm alanların veri türü aslında **Byte []** olur. Alanlar gruplandırması, gruplandırmayı yapmak için **Byte []** nesnesinin karma kodunu kullanır. Karma kodu, bu nesnenin RAM 'teki adresidir. Bu nedenle, aynı içeriğe sahip ancak aynı adresi değil çok baytlı nesneler için gruplama yanlış olur.
+Storm'da gruplandırma yapan yerleşik alanlar SCP.NET'da düzgün çalışmıyor. Java proxy tarafında, tüm alanların veri türü aslında **bayt[]**. Alanlar gruplandırma, gruplandırma yapmak için **bayt[]** nesnenin karma kodunu kullanır. Karma kod, RAM'deki bu nesnenin adresidir. Bu nedenle gruplandırma, aynı içeriği paylaşan ancak aynı adresi paylaşmayan çok bayt nesneler için yanlış olacaktır.
 
-SCP.NET, özelleştirilmiş bir gruplama yöntemi ekler ve gruplandırmayı yapmak için **Byte []** nesnesinin içeriğini kullanır. Bir belirtim dosyasında söz dizimi aşağıdaki örnekteki gibi görünür:
+SCP.NET özelleştirilmiş bir gruplandırma yöntemi ekler ve gruplandırma yapmak için **bayt[]** nesnesinin içeriğini kullanır. Belirtim dosyasında sözdizimi aşağıdaki örneğe benzer:
 
 ```csharp
 (bolt-spec
@@ -539,17 +539,17 @@ SCP.NET, özelleştirilmiş bir gruplama yöntemi ekler ve gruplandırmayı yapm
 
 Önceki belirtim dosyasında:
 
-* `scp-field-group`, gruplandırmanın SCP tarafından uygulanan özelleştirilmiş bir alan gruplandırması olduğunu belirtir.
-* `:tx` veya `:non-tx`, topolojinin işlem olup olmadığını belirtir. Başlangıç dizini işlem ve işlem dışı topolojiler arasında farklı olduğundan, bu bilgiye ihtiyacınız vardır.
-* `[0,1]`, sıfır ile başlayan bir alan kimliği karma kümesini belirtir.
+* `scp-field-group`gruplandırmanın SCP tarafından uygulanan özelleştirilmiş bir alan grubu olduğunu belirtir.
+* `:tx`veya `:non-tx` topolojinin işlemsel olup olmadığını belirtir. Başlangıç dizini işlemsel ve işlem dışı topolojiler arasında farklı olduğundan bu bilgilere ihtiyacınız vardır.
+* `[0,1]`sıfırla başlayan karma alan kimlikleri kümesini belirtir.
 
-### <a name="hybrid-topology"></a>Karma topolojisi
+### <a name="hybrid-topology"></a>Hibrit topoloji
 
-Yerel fırtınası kodu Java 'da yazılmıştır. SCP.NET, iş mantığınızı işlemek için kod C# yazmanıza olanak sağlamak üzere gelişmiş bir fırtınası içerir. Ancak SCP.NET aynı zamanda yalnızca C# Spout/cıvatları ve ayrıca Java Spoler/cıvatları de içeren karma topolojileri destekler.
+Yerli Fırtına kodu Java'da yazılır. SCP.NET iş mantığı işlemek için C # kodu yazmak için izin Storm geliştirdi. Ama SCP.NET aynı zamanda sadece C # spouts / cıvata değil, aynı zamanda Java spouts / cıvata içeren hibrid topolojileri destekler.
 
-### <a name="specify-java-spoutbolt-in-a-specification-file"></a>Bir belirtim dosyasında Java Spout/Ruli belirtme
+### <a name="specify-java-spoutbolt-in-a-specification-file"></a>Belirtim dosyasında Java spout/bolt belirtin
 
-Java spotları ve cıvatları belirtmek için bir belirtim dosyasında **SCP-Spout** ve **SCP-sürgüsü** kullanabilirsiniz. Bir örneği aşağıda verilmiştir:
+Java spouts ve cıvata belirtmek için bir belirtim dosyasında **scp-spout** ve **scp-bolt** kullanabilirsiniz. Bir örneği aşağıda verilmiştir:
 
 ```csharp
 (spout-spec 
@@ -557,29 +557,29 @@ Java spotları ve cıvatları belirtmek için bir belirtim dosyasında **SCP-Spo
   :p 1)
 ```
 
-Burada `microsoft.scp.example.HybridTopology.Generator` Java Spout sınıfının adıdır.
+Burada `microsoft.scp.example.HybridTopology.Generator` Java spout sınıfının adıdır.
 
-### <a name="specify-the-java-classpath-in-a-runspec-command"></a>RunSpec komutunda Java sınıfyolunu belirtme
+### <a name="specify-the-java-classpath-in-a-runspec-command"></a>runSpec komutundaki Java classpath'ini belirtin
 
-Java spotları veya cıvataları içeren topoloji göndermek istiyorsanız, ilk olarak bunları JAR dosyaları oluşturacak şekilde derleyin. Ardından, topolojiyi gönderdiğinizde JAR dosyalarını içeren Java sınıf yolunu belirtin. Bir örneği aşağıda verilmiştir:
+Java spouts veya cıvata içeren topoloji göndermek istiyorsanız, ilk JAR dosyaları üretmek için bunları derlemek. Ardından topoloji gönderirken JAR dosyalarını içeren java sınıf yolunu belirtin. Bir örneği aşağıda verilmiştir:
 
 ```csharp
 bin\runSpec.cmd examples\HybridTopology\HybridTopology.spec specs examples\HybridTopology\net\Target -cp examples\HybridTopology\java\target\*
 ```
 
-Burada, Java Spout/cıvata JAR dosyasını içeren klasör `examples\HybridTopology\java\target\`.
+Burada, `examples\HybridTopology\java\target\` Java spout/bolt JAR dosyasını içeren klasördür.
 
-### <a name="serialization-and-deserialization-between-java-and-c"></a>Java ve arasında serileştirme ve seri durumundan çıkarmaC#
+### <a name="serialization-and-deserialization-between-java-and-c"></a>Java ve C arasında serileştirme ve deserialization #
 
-SCP bileşeni, Java tarafını ve C# tarafını içerir. Yerel Java spotları/cıvataları ile etkileşim kurmak için aşağıdaki grafikte gösterildiği gibi, serileştirme ve seri durumdan çıkarma Java C# yan ve yan arasında gerçekleşmelidir:
+Bir SCP bileşeni Java tarafını ve C# tarafını içerir. Yerel Java spouts / cıvata ile etkileşim için, serileştirme ve deserialization Java tarafı ve C # tarafı arasında meydana gelmelidir, aşağıdaki grafikte gösterildiği gibi:
 
-![SCP bileşenine gönderilen ve daha sonra farklı bir Java bileşenine gönderen Java bileşeni diyagramı](./media/apache-storm-scp-programming-guide/java-compent-sending-to-scp-component-sending-to-java-component.png)
+![SCP bileşenine gönderen Java bileşeninin diyagramı, daha sonra farklı bir Java bileşenine gönderir](./media/apache-storm-scp-programming-guide/java-compent-sending-to-scp-component-sending-to-java-component.png)
 
-#### <a name="serialization-in-the-java-side-and-deserialization-in-the-c-side"></a>Java tarafında serileştirme ve C# yan yana serisini kaldırma
+#### <a name="serialization-in-the-java-side-and-deserialization-in-the-c-side"></a>Java tarafında serileştirme ve C# tarafında deserialization
 
-İlk olarak, Java tarafında serileştirme için varsayılan uygulamayı ve C# tarafında seri durumdan çıkarmayı sağlayın.
+Önce Java tarafında serileştirme ve C# tarafında deserialization için varsayılan uygulama sağlar.
 
-Java tarafında serileştirme yöntemini bir belirtim dosyasında belirtin.
+Bir belirtim dosyasında Java tarafının serileştirme yöntemini belirtin.
 
 ```csharp
 (scp-bolt
@@ -591,7 +591,7 @@ Java tarafında serileştirme yöntemini bir belirtim dosyasında belirtin.
     })
 ```
 
-C# Kodunuzda C# yan seri kaldırma yöntemini belirtin.
+C# kodunuzda C# tarafının deserialization yöntemini belirtin.
 
 ```csharp
 Dictionary<string, List<Type>> inputSchema = new Dictionary<string, List<Type>>();
@@ -600,12 +600,12 @@ this.ctx.DeclareComponentSchema(new ComponentStreamSchema(inputSchema, null));
 this.ctx.DeclareCustomizedDeserializer(new CustomizedInteropJSONDeserializer());
 ```  
 
-Veri türü çok karmaşık değilse, bu varsayılan uygulamanın çoğu durumu işlemesi gerekir. Kendi uygulamanızı ekleyebileceğiniz durumlar şunlardır:
+Veri türü çok karmaşık değilse, bu varsayılan uygulama çoğu servis taleplerini ele almalıdır. Kendi uygulamanızı takabileceğiniz durumlar şunlardır:
 
-* Veri türü, varsayılan uygulama için çok karmaşık.
+* Veri türünüz varsayılan uygulama için çok karmaşıktır.
 * Varsayılan uygulamanızın performansı gereksinimlerinizi karşılamıyor.
 
-Java tarafındaki serileştirme arabirimi şöyle tanımlanır:
+Java tarafındaki serileştirme arabirimi şu şekilde tanımlanır:
 
 ```csharp
 public interface ICustomizedInteropJavaSerializer {
@@ -614,7 +614,7 @@ public interface ICustomizedInteropJavaSerializer {
 }
 ```
 
-C# Taraftaki seri kaldırma arabirimi şöyle tanımlanır:
+C# tarafındaki deserialization arabirimi şu şekilde tanımlanır:
 
 ```csharp
 public interface ICustomizedInteropCSharpDeserializer
@@ -623,15 +623,15 @@ public interface ICustomizedInteropCSharpDeserializer
 }
 ```
 
-#### <a name="serialization-in-the-c-side-and-deserialization-in-the-java-side"></a>Java tarafında seri C# hale getirme yan ve seri durumundan çıkarma
+#### <a name="serialization-in-the-c-side-and-deserialization-in-the-java-side"></a>C# tarafında serileştirme ve Java tarafında deserialization
 
-C# Kodunuzda C# yan seri hale getirme yöntemini belirtin.
+C# kodunuzda C# tarafının serileştirme yöntemini belirtin.
 
 ```csharp
 this.ctx.DeclareCustomizedSerializer(new CustomizedInteropJSONSerializer()); 
 ```
 
-Bir belirtim dosyasında Java tarafında seri kaldırma yöntemini belirtin.
+Bir belirtim dosyasında Java tarafının deserialization yöntemini belirtin.
 
 ```csharp
 (scp-spout
@@ -644,11 +644,11 @@ Bir belirtim dosyasında Java tarafında seri kaldırma yöntemini belirtin.
 )
 ```
 
-Burada, `"microsoft.scp.storm.multilang.CustomizedInteropJSONDeserializer"` seri hale getiricinin adıdır ve `"microsoft.scp.example.HybridTopology.Person"` verilerin seri durumdan çıkarılmakta olduğu hedef sınıftır.
+Burada, `"microsoft.scp.storm.multilang.CustomizedInteropJSONDeserializer"` deserializer adıdır ve `"microsoft.scp.example.HybridTopology.Person"` veri deserialized hedef sınıfıdır.
 
-Ayrıca, C# seri hale getirici ve Java seri hale getirici uygulamanızı da takabilirsiniz.
+Ayrıca bir C# serializer ve Java deserializer kendi uygulama takabilirsiniz.
 
-Bu kod C# seri hale getirici için arabirimidir:
+Bu kod C# serializer için arabirimdir:
 
 ```csharp
 public interface ICustomizedInteropCSharpSerializer
@@ -657,7 +657,7 @@ public interface ICustomizedInteropCSharpSerializer
 }
 ```
 
-Bu kod, Java seri hale getiricisi için arabirimidir:
+Bu kod Java deserializer için arabirimdir:
 
 ```csharp
 public interface ICustomizedInteropJavaDeserializer {
@@ -668,7 +668,7 @@ public interface ICustomizedInteropJavaDeserializer {
 
 ## <a name="scp-host-mode"></a>SCP ana bilgisayar modu
 
-Bu modda, kodunuzu bir DLL olarak derleyebilir ve bir topoloji göndermek için SCP tarafından sağlandığı SCPHost. exe ' yi kullanabilirsiniz. Bir belirtim dosyası şu kod gibi görünür:
+Bu modda, kodunuzu DLL olarak derleyebilir ve topoloji göndermek için SCPCP tarafından sağlanan SCPHost.exe'yi kullanabilirsiniz. Belirtim dosyası bu koda benzer:
 
 ```csharp
 (scp-spout
@@ -679,21 +679,21 @@ Bu modda, kodunuzu bir DLL olarak derleyebilir ve bir topoloji göndermek için 
   })
 ```
 
-Burada, `"plugin.name"` SCP SDK 'Sı tarafından belirtilen `"SCPHost.exe"`olarak belirtilir. SCPHost. exe aşağıdaki sırada üç parametreyi kabul eder:
+Burada, `"plugin.name"` SCP `"SCPHost.exe"`SDK tarafından sağlanan olarak belirtilir. SCPHost.exe aşağıdaki sırada üç parametre kabul eder:
 
-1. Bu örnekte `"HelloWorld.dll"` DLL adı.
-1. Bu örnekte `"Scp.App.HelloWorld.Generator"` olan sınıf adı.
-1. Bir genel statik yöntemin adı, bu, bir **SCC, SCC**'in bir örneğini almak için çağrılabilir.
+1. Bu örnekte olan `"HelloWorld.dll"` DLL adı.
+1. Bu `"Scp.App.HelloWorld.Generator"` örnekte olan sınıf adı.
+1. **ISCPPlugin**örneğini almak için çağrılabilir ortak statik yöntem, adı.
 
-Ana bilgisayar modunda, SCP platformu tarafından çağrılması için kodunuzu bir DLL olarak derleyin. Platform daha sonra işlem mantığının tamamına tam denetim gönderebildiğinden, topolojiyi SCP ana bilgisayar modunda göndermeniz önerilir. Bunun yapılması geliştirme deneyimini basitleştirir. Ayrıca, daha fazla esneklik ve daha sonraki sürümlerde daha iyi uyumluluk sağlar.
+Ana bilgisayar modunda, kodunuzu SCP platformu tarafından çağrılması için DLL olarak derleyin. Platform daha sonra tüm işleme mantığının tam denetimini alabildiği için, SCP ana bilgisayar modunda topoloji göndermenizi öneririz. Bunu yapmak geliştirme deneyimini kolaylaştırır. Ayrıca, daha sonraki sürümler için daha fazla esneklik ve daha iyi geri uyumluluk sağlar.
 
 ## <a name="scp-programming-examples"></a>SCP programlama örnekleri
 
-### <a name="helloworld"></a>HelloWorld
+### <a name="helloworld"></a>Helloworld
 
-Aşağıdaki basit HelloWorld örneği, SCP.NET bir listesini gösterir. **Oluşturucu** adlı ve **Splitter** ve **sayaç**olarak adlandırılan iki cıvam ile birlikte işlem dışı bir topoloji kullanır. **Generator** Spout, cümleleri rastgele oluşturur ve bu cümleleri **bölümlendiriciye**yayar. **Bölümlendirici** , cümleleri sözcüklere böler ve bu sözcükleri **sayaç** sürgüsü 'a yayar. **Sayaç** sürgüsü, her sözcüğün oluşumunu kaydetmek için bir sözlük kullanır.
+Aşağıdaki basit HelloWorld örneği SCP.NET bir tat gösterir. Bu bir emzme denilen bir işlem **generator** dışı topoloji ve **splitter** ve **sayaç**denilen iki cıvata kullanır. **Jeneratör** emzme rasgele cümleler oluşturur ve **splitter**için bu cümleler yontmak . **Bölünene** kadar cıvata cümleleri sözcüklere böler ve bu sözcükleri **karşı** cıvataya yayar. **Sayaç** cıvatası, her sözcüğün oluşumunu kaydetmek için bir sözlük kullanır.
 
-Bu örnek iki belirtim dosyasına sahiptir: HelloWorld. spec ve HelloWorld\_EnableAck. spec. Kod C# , Java tarafında `pluginConf` nesnesini alarak onay yapılıp yapılmayacağını bulabilir.
+Bu örnekte iki belirtim dosyası vardır:\_HelloWorld.spec ve HelloWorld EnableAck.spec. C# kodu, nesneyi Java tarafından alarak `pluginConf` bildirimin etkin olup olmadığını bulabilir.
 
 ```csharp
 /* demo how to get pluginConf info */
@@ -704,7 +704,7 @@ if (Context.Config.pluginConf.ContainsKey(Constants.NONTRANSACTIONAL_ENABLE_ACK)
 Context.Logger.Info("enableAck: {0}", enableAck);
 ```
 
-Spout 'de onay etkinse, sözlük, kabul edilmemiş olan tanımlama gruplarını önbelleğe alır. `Fail` çağrılırsa, başarısız kayıt düzeni yeniden yürütülür.
+Bildirim emzmede etkinleştirilirse, sözlük onaylanmamış tuples önbelleğe gelir. `Fail` Çağrıldığında, başarısız olan tuple yeniden oynandı.
 
 ```csharp
 public void Fail(long seqId, Dictionary<string, Object> parms)
@@ -726,26 +726,26 @@ public void Fail(long seqId, Dictionary<string, Object> parms)
 }
 ```
 
-### <a name="helloworldtx"></a>Merhaba Worldtx
+### <a name="helloworldtx"></a>MerhabaWorldTx
 
-Aşağıdaki HelloWorldTx örneği, işlem topolojisinin nasıl uygulanacağını gösterir. Örnek, **Oluşturucu**adlı bir Spout, **kısmi sayı**olarak adlandırılan bir yığın işareti ve **Count-Sum**adlı bir COMMIT sürgüsü içerir. Örnek ayrıca üç tane var metin dosyasına sahiptir: DataSource0. txt, DataSource1. txt ve DataSource2. txt.
+Aşağıdaki HelloWorldTx örneği, işlemsel topolojinin nasıl uygulanacağını göstermektedir. Örnekte **jeneratör**adı verilen bir spout, **kısmi sayım**adı verilen bir toplu cıvata ve **count-sum**adı verilen bir cıvata vardır. DataSource0.txt, DataSource1.txt ve DataSource2.txt olmak üzere üç tane varolan metin dosyası vardır.
 
-Her işlemde, **Oluşturucu** Spout var olan üç dosyadan rastgele iki dosya seçer ve iki dosya adını **kısmi sayı** sürgüüne yayar. **Kısmi sayı** sürgüsü:
+Her işlemde, **jeneratör** emzme rasgele varolan üç dosyadan iki dosya seçer ve **kısmi sayı** cıvata iki dosya adları yalar. **Kısmi sayım** cıvatası:
 
-1. Alınan tanımlama grubundan bir dosya adı alır.
-1. Karşılık gelen dosyayı açar.
-1. Dosyadaki sözcüklerin sayısını sayar.
-1. Sözcük sayısını **say-topla** sürgüsü olarak yayar.
+1. Alınan tuple bir dosya adı alır.
+1. İlgili dosyayı açar.
+1. Dosyadaki sözcük sayısını sayar.
+1. **Sayım-toplam** cıvatasına sayı sözcüğü yayır.
 
-**Count-Sum** sürgüsü toplam sayıyı özetler.
+**Sayım toplamı** cıvatası toplam sayımı özetler.
 
-Tam bir kez semantik bir şekilde ulaşmak için, **Count-Sum** COMMIT sürgüsü, yeniden yürütülmüş bir işlem olup olmadığını Jbir şekilde gerektirir. Bu örnekte, aşağıdaki statik üye değişkenine sahiptir:
+Tam olarak bir kez semantik elde etmek için, **sayım toplamı** taahhüt cıvata bir yeniden bir işlem olup olmadığını yargılamak gerekir. Bu örnekte, aşağıdaki statik üye değişkenvardır:
 
 ```csharp
 public static long lastCommittedTxId = -1; 
 ```
 
-Bir **ıscpbatchcıvam** örneği oluşturulduğunda, giriş parametrelerinden `txAttempt` nesnesinin değerini alır.
+Bir **ISCPBatchBolt** örneği oluşturulduğunda, giriş parametrelerinden nesnenin `txAttempt` değerini alır.
 
 ```csharp
 public static CountSum Get(Context ctx, Dictionary<string, Object> parms)
@@ -763,7 +763,7 @@ public static CountSum Get(Context ctx, Dictionary<string, Object> parms)
 }
 ```
 
-`FinishBatch` çağrıldığında, yeniden yürütülmüş bir işlem değilse `lastCommittedTxId` güncellenir.
+`FinishBatch` Çağrıldığında, `lastCommittedTxId` yeniden oynatılamamış sayılsa güncelleştirilir.
 
 ```csharp
 public void FinishBatch(Dictionary<string, Object> parms)
@@ -781,19 +781,19 @@ public void FinishBatch(Dictionary<string, Object> parms)
 }
 ```
 
-### <a name="hybridtopology"></a>HybridTopology
+### <a name="hybridtopology"></a>Hibrid Topoloji
 
-Bu topoloji bir Java Spout ve bir C# sürgüsü içerir. SCP platformu tarafından belirtilen varsayılan serileştirme ve seri kaldırma uygulamasını kullanır. Belirtim dosyası ayrıntıları için\\HybridTopology klasöründeki örneklerdeki HybridTopology. spec dosyasına bakın. Ayrıca bkz., Java sınıfyolunu belirtme için SubmitTopology. bat.
+Bu topoloji bir Java emzisi ve C# cıvataiçerir. SCP platformu tarafından sağlanan varsayılan serileştirme ve deserialization uygulamasını kullanır. Belirtim dosyası ayrıntıları için HybridTopology klasörü örneklerinde\\HybridTopology.spec dosyasına bakın. Ayrıca Java classpath belirtmek için nasıl GönderTopology.bat bakın.
 
 ### <a name="scphostdemo"></a>SCPHostDemo
 
-Bu örnek, HelloWorld ile aynı özbir örnektir. Tek fark, kodunuzun DLL olarak derlenmesi ve topoloji SCPHost. exe kullanılarak gönderilir. Daha ayrıntılı bir açıklama için SCP konak modu bölümüne bakın.
+Bu örnek özünde HelloWorld ile aynıdır. Tek fark, kodunuzu bir DLL olarak derlenir ve topoloji SCPHost.exe kullanılarak gönderilir. Daha ayrıntılı bir açıklama için SCP ana bilgisayar modu bölümüne bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-SCP kullanılarak oluşturulan Apache Storm topolojilerinin örnekleri için aşağıdaki makalelere bakın:
+SCP kullanılarak oluşturulan Apache Storm topolojisi örnekleri için aşağıdaki makalelere bakın:
 
-* [Visual C# Studio kullanarak hdınsight 'ta Apache Storm için topolojiler geliştirin](apache-storm-develop-csharp-visual-studio-topology.md)
-* [HDInsight üzerinde Apache Storm Azure Event Hubs olayları işleme](apache-storm-develop-csharp-event-hub-topology.md)
-* [HDInsight üzerinde Apache Storm kullanarak Event Hubs araç algılayıcısı verilerini işleme](https://github.com/hdinsight/hdinsight-storm-examples/tree/master/IotExample)
-* [Azure Event Hubs Apache HBase 'e ayıklama, dönüştürme ve yükleme (ETL)](https://github.com/hdinsight/hdinsight-storm-examples/blob/master/RealTimeETLExample)
+* [Visual Studio'yu kullanarak HDInsight'ta Apache Storm için C# topolojileri geliştirin](apache-storm-develop-csharp-visual-studio-topology.md)
+* [HDInsight'ta Apache Storm ile Azure Etkinlik Hub'larından etkinlikleri işleme](apache-storm-develop-csharp-event-hub-topology.md)
+* [HDInsight'ta Apache Storm kullanarak Olay Hub'larından gelen araç sensör verilerini işleme](https://github.com/hdinsight/hdinsight-storm-examples/tree/master/IotExample)
+* [Azure Etkinlik Hub'larından Apache HBase'e ayıklama, dönüştürme ve yükleme (ETL)](https://github.com/hdinsight/hdinsight-storm-examples/blob/master/RealTimeETLExample)

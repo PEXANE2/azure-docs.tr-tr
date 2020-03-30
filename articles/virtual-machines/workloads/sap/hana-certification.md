@@ -1,6 +1,6 @@
 ---
-title: Azure 'da SAP HANA sertifikası (büyük örnekler) | Microsoft Docs
-description: Azure 'da SAP HANA sertifikası (büyük örnekler).
+title: AZURE'da SAP HANA Sertifikası (Büyük Örnekler) | Microsoft Dokümanlar
+description: SAP HANA'nın Azure'da sertifikası (Büyük Örnekler).
 services: virtual-machines-linux
 documentationcenter: ''
 author: msjuergent
@@ -14,31 +14,31 @@ ms.date: 09/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 2a02f0e1b05b9de8105126d1c9e4e3f79057285f
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77617221"
 ---
 # <a name="certification"></a>Sertifika
 
-NetWeaver sertifikalarının yanı sıra SAP, Azure IaaS gibi belirli altyapılarda SAP HANA desteklemek için SAP HANA özel bir sertifika gerektirir.
+NetWeaver sertifikasının yanı sıra SAP, SAP HANA için Azure IaaS gibi belirli altyapılarda SAP HANA'yı desteklemek için özel bir sertifika gerektirir.
 
-NetWeaver üzerinde temel SAP Note ve bir derece SAP HANA sertifikası, [SAP note #1928533 – Azure 'DA SAP uygulamaları: Desteklenen Ürünler ve Azure VM türleri](https://launchpad.support.sap.com/#/notes/1928533).
+NetWeaver'daki temel SAP Notu ve bir dereceye kadar SAP HANA sertifikası, [Azure'daki SAP Note #1928533 – Azure'daki SAP uygulamaları: Desteklenen ürünler ve Azure VM türleridir.](https://launchpad.support.sap.com/#/notes/1928533)
 
-Azure (büyük örnekler) birimlerindeki SAP HANA sertifika kayıtları, [SAP HANA sertifikalı IaaS platformları](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) sitesinde bulunabilir. 
+Azure (Büyük Örnekler) birimlerindeki SAP HANA'nın sertifika kayıtları [SAP HANA sertifikalı IaaS Platformları](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) sitesinde bulunabilir. 
 
-SAP HANA sertifikalı IaaS platformları sitesinde başvurulan Azure (büyük örnekler) türlerindeki SAP HANA, Microsoft ve SAP müşterilerine Azure 'da büyük SAP Business Suite, SAP BW, S/4 HANA, siyah beyaz/4HANA veya diğer SAP HANA iş yüklerini dağıtma yeteneği sağlar. Çözüm, SAP-HANA sertifikalı adanmış donanım damgasına ([SAP HANA özel veri merkezi tümleştirmesi – TDI](https://scn.sap.com/docs/DOC-63140)) dayanır. SAP HANA TDı ile yapılandırılmış bir çözüm çalıştırırsanız, SAP HANA tabanlı tüm uygulamalar (SAP HANA üzerindeki SAP Business Suite SAP BW, SAP HANA, S4/HANA ve BW4/HANA) donanım altyapısında çalışır.
+SAP HANA sertifikalı IaaS Platformları sitesinde atıfta bulunulan Azure'daki SAP HANA (Büyük Örnekler) türleri, Microsoft ve SAP müşterilerine Azure'da büyük SAP Business Suite, SAP BW, S/4 HANA, BW/4HANA veya diğer SAP HANA iş yüklerini dağıtma olanağı sağlar. Çözüm SAP-HANA sertifikalı özel donanım damgası[(SAP HANA özel veri merkezi entegrasyonu – TDI)](https://scn.sap.com/docs/DOC-63140)dayanmaktadır. SAP HANA TDI tarafından yapılandırılmış bir çözüm çalıştırırsanız, tüm SAP HANA tabanlı uygulamalar (SAP HANA'daki SAP Business Suite, SAP HANA'daki SAP BW, S4/HANA ve BW4/HANA gibi) donanım altyapısı üzerinde çalışır.
 
-VM 'lerdeki SAP HANA çalıştırmaya kıyasla bu çözüm avantajına sahiptir. Daha büyük bellek birimleri sağlar. Bu çözümü etkinleştirmek için aşağıdaki temel yönleri anlamanız gerekir:
+VM'lerde SAP HANA'yı çalıştırmakla karşılaştırıldığında, bu çözümün bir yararı vardır. Çok daha büyük bellek hacimleri sağlar. Bu çözümü etkinleştirmek için aşağıdaki temel hususları anlamanız gerekir:
 
-- SAP uygulama katmanı ve SAP olmayan uygulamalar, normal Azure donanım damgaları 'nda barındırılan VM 'lerde çalışır.
-- Müşteri şirket içi altyapısı, veri merkezleri ve uygulama dağıtımları, ExpressRoute (önerilen) veya bir sanal özel ağ (VPN) üzerinden bulut platformuna bağlanır. Active Directory ve DNS, Azure 'da da genişletilir.
-- HANA iş yükünün SAP HANA veritabanı örneği Azure üzerinde SAP HANA çalışır (büyük örnekler). Büyük örnek damgası Azure ağa bağlı olduğundan, VM 'lerde çalışan yazılımlar, HANA büyük örneğinde çalışan HANA örneğiyle etkileşime geçebilir.
-- Azure 'daki SAP HANA donanımı (büyük örnekler), SUSE Linux Enterprise Server veya Red Hat Enterprise Linux önceden yüklenmiş olarak bir IaaS içinde sunulan ayrılmış donanımdır. Sanal makinelerde olduğu gibi, işletim sistemiyle ilgili diğer güncelleştirmeler ve bakım de sizin sorumluluğunuzdadır.
-- Hana büyük örnek birimlerinde SAP HANA çalıştırmak için gerekli olan HANA veya ek bileşenlerin yüklenmesi sorumluluğu sizin sorumluluğunuzdadır. Azure 'daki SAP HANA tüm devam eden işlemler ve yönetimi de sizin sorumluluğunuzdadır.
-- Burada açıklanan çözümlere ek olarak, Azure aboneliğinize Azure 'daki SAP HANA bağlanan diğer bileşenleri (büyük örnekler) yükleyebilirsiniz. Örneğin, geçiş sunucuları, RDP sunucuları, SAP HANA Studio, SAP BI senaryoları için SAP veri Hizmetleri veya ağ izleme çözümleri gibi SAP HANA veritabanıyla iletişim sağlayan bileşenlerdir.
-- Azure 'da olduğu gibi, HANA büyük örnek yüksek kullanılabilirlik ve olağanüstü durum kurtarma işlevselliği için destek sağlar.
+- SAP uygulama katmanı ve SAP olmayan uygulamalar, her zamanki Azure donanım damgalarında barındırılan VM'lerde çalışır.
+- Müşteri şirket içi altyapı, veri merkezleri ve uygulama dağıtımları ExpressRoute (önerilir) veya sanal özel ağ (VPN) aracılığıyla bulut platformuna bağlanır. Etkin Dizin ve DNS de Azure'a genişletilir.
+- HANA iş yükü için SAP HANA veritabanı örneği Azure'da (Büyük Örnekler) SAP HANA'da çalışır. Büyük Örnek damgası Azure ağına bağlanır, böylece VM'lerde çalışan yazılımlar HANA Örneği'nde çalışan HANA örneğiyle etkileşimkurabilir.
+- SAP HANA'nın Azure'daki donanımı (Büyük Örnekler), SUSE Linux Enterprise Server veya Red Hat Enterprise Linux önceden yüklenmiş bir IaaS'da sağlanan özel donanımdır. Sanal makinelerde olduğu gibi, işletim sistemine daha fazla güncelleme ve bakım sizin sorumluluğunuzdadır.
+- HANA'nın veya SAP HANA'nın HANA Büyük Örnek birimlerine çalıştırılması için gerekli ek bileşenlerin yüklenmesi sizin sorumluluğunuzdadır. SAP HANA'nın Azure'da devam eden tüm işlemleri ve yönetimi de sizin sorumluluğunuzdadır.
+- Burada açıklanan çözümlere ek olarak, Azure aboneliğinizde SAP HANA'ya bağlanan diğer bileşenleri Azure'da (Büyük Örnekler) yükleyebilirsiniz. Örnekler, atlama sunucuları, RDP sunucuları, SAP HANA Studio, SAP BI senaryoları için SAP Veri Hizmetleri veya ağ izleme çözümleri gibi SAP HANA veritabanıyla veya doğrudan iletişimi sağlayan bileşenlerdir.
+- Azure'da olduğu gibi, HANA Büyük Örnek yüksek kullanılabilirlik ve olağanüstü durum kurtarma işlevleri için destek sunar.
 
 **Sonraki adımlar**
-- [HLI Için kullanılabilir SKU 'lara](hana-available-skus.md) başvurun 
+- [HLI için Mevcut SK'ları](hana-available-skus.md) Referans Alalım 

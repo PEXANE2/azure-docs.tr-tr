@@ -1,6 +1,6 @@
 ---
-title: dosya ekle
-description: dosya ekle
+title: include dosyası
+description: include dosyası
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
@@ -9,19 +9,19 @@ ms.date: 10/07/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 02ced43f8c3fc7c83359b78362e8ad0feeab3070
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72168394"
 ---
 >[!NOTE]
->Azure, varsayılan ilkelerle çalışırken bir IPSec tünel kurulumu sırasında hem Başlatıcı hem de Yanıtlayıcı görevi görebilir. Azure için yalnızca Yanıtlayıcı olarak destek yoktur.
+>Varsayılan ilkelerle çalışırken, Azure bir IPsec tünel kurulumu sırasında hem başlatıcı hem de yanıtlayıcı olarak hareket edebilir. Yalnızca yanıtlayıcı olarak Azure için destek yoktur.
 >
 
-### <a name="initiator"></a>Anı
+### <a name="initiator"></a>Başlatıcı
 
-Aşağıdaki bölümlerde, Azure tünelde başlatıcı olduğunda desteklenen ilke birleşimleri listelenmektedir.
+Aşağıdaki bölümlerde, Azure tünelin başlatıcısı olduğunda desteklenen ilke birleşimleri listelenir.
 
 **Aşama-1**
 
@@ -37,9 +37,9 @@ Aşağıdaki bölümlerde, Azure tünelde başlatıcı olduğunda desteklenen il
 * AES_256, SHA_256, PFS_NONE
 * AES_128, SHA_1, PFS_NONE
 
-### <a name="responder"></a>Yanıtlayıcısı
+### <a name="responder"></a>Yanıtlayıcı
 
-Aşağıdaki bölümlerde, Azure tünelden Yanıtlayıcı olduğunda desteklenen ilke birleşimleri listelenmektedir.
+Aşağıdaki bölümlerde, Azure tünelin yanıtlayıcısı olduğunda desteklenen ilke birleşimleri listelenir.
 
 **Aşama-1**
 

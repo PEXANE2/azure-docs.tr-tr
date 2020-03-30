@@ -8,16 +8,16 @@ ms.date: 10/26/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 95d7abca27ec9db46a72140bc8a61b2841c63fcb
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77598604"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-using-azure-cli"></a>Hızlı Başlangıç: Azure CLI kullanarak Azure dosya paylaşımları oluşturma ve yönetme
 Bu kılavuzda, Azure CLI kullanarak [Azure dosya paylaşımları](storage-files-introduction.md) ile çalışmanın temel kuralları gösterilmektedir. Azure dosya paylaşımları diğer dosya paylaşımları gibidir, ancak bulutta depolanır ve Azure platformu tarafından desteklenir. Azure dosya paylaşımları endüstri standardı SMB protokolünü destekler ve birden çok makine, uygulama ve örnek arasında dosya paylaşmayı olanaklı kılar. 
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -28,7 +28,7 @@ Varsayılan olarak, Azure CLI komutları JavaScript Nesne Gösterimi (JSON) dön
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 Kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. Henüz bir Azure kaynak grubunuz yoksa, [az group create](/cli/azure/group) komutunu kullanarak bir tane oluşturabilirsiniz. 
 
-Aşağıdaki örnek, *Batı ABD 2* konumunda *myresourcegroup* adlı bir kaynak grubu oluşturur:
+Aşağıdaki örnek, *Batı ABD 2* konumunda *myResourceGroup* adında bir kaynak grubu oluşturur:
 
 ```azurecli-interactive 
 export resourceGroupName="myResourceGroup"
@@ -43,7 +43,7 @@ az group create \
 ## <a name="create-a-storage-account"></a>Depolama hesabı oluşturma
 Depolama hesabı, Azure dosya paylaşımlarını veya bloblar veya sorgular gibi diğer depolama kaynaklarını dağıtabileceğiniz, paylaşılan bir depolama havuzudur. Bir depolama hesabında sınırsız sayıda dosya paylaşımı olabilir. Bir paylaşım, depolama hesabının kapasite limitlerine kadar sınırsız sayıda dosyayı depolayabilir.
 
-Aşağıdaki örnek, [az Storage Account Create](/cli/azure/storage/account) komutunu kullanarak bir depolama hesabı oluşturur. Depolama hesabı adları benzersiz olmalıdır; bu nedenle `$RANDOM` kullanarak adın sonuna bir sayı ekleyip adı benzersiz hale getirin.
+Aşağıdaki örnek, [az depolama hesabı oluşturma](/cli/azure/storage/account) komutunu kullanarak bir depolama hesabı oluşturur. Depolama hesabı adları benzersiz olmalıdır; bu nedenle `$RANDOM` kullanarak adın sonuna bir sayı ekleyip adı benzersiz hale getirin.
 
 ```azurecli-interactive 
 export storageAccountName="mystorageacct$RANDOM"
@@ -59,7 +59,7 @@ az storage account create \
 ```
 
 > [!Note]  
-> 5 TiB 'den büyük olan paylaşımlar (paylaşım başına en fazla 100 TiB 'ye kadar) yalnızca yerel olarak yedekli (LRS) ve bölge yedekli (ZRS) depolama hesaplarında kullanılabilir. Coğrafi olarak yedekli (GRS) veya coğrafi bölge-yedekli (GZRS) depolama hesabı oluşturmak için `--enable-large-file-share` parametresini kaldırın.
+> 5 TiB'den büyük hisseler (hisse başına en fazla 100 TiB) yalnızca yerel yedekli (LRS) ve bölge yedekli (ZRS) depolama hesaplarında kullanılabilir. Coğrafi yedekli (GRS) veya coğrafi bölge yedekli (GZRS) depolama hesabı oluşturmak için `--enable-large-file-share` parametreyi kaldırın.
 
 ### <a name="get-the-storage-account-key"></a>Depolama hesabı anahtarını alma
 Depolama hesabı anahtarları, depolama hesabındaki kaynaklara erişimi denetler. Bu anahtarlar, depolama hesabını oluşturduğunuzda otomatik olarak oluşturulur. [az storage account keys list](/cli/azure/storage/account/keys) komutunu kullanarak depolama hesabınızın depolama hesabı anahtarlarını alabilirsiniz: 
@@ -92,22 +92,22 @@ Azure Dosyaları, Azure dosya paylaşımınızdaki dosya ve klasörler ile çal�
 
 Bir dosya paylaşımını SMB ile bağlayabilmeniz için işletim sisteminize göre aşağıdaki belgeye bakın:
 - [Linux](storage-how-to-use-files-linux.md)
-- [macOS](storage-how-to-use-files-mac.md)
+- [Macos](storage-how-to-use-files-mac.md)
 - [Windows](storage-how-to-use-files-windows.md)
 
 ### <a name="using-an-azure-file-share-with-the-file-rest-protocol"></a>Dosya REST protokolü ile bir Azure dosya paylaşımını kullanma 
-Dosya REST protokolü doğrudan ile doğrudan çalışabilir (el ile REST HTTP çağrıları), ancak dosya REST protokolünü kullanmanın en yaygın yolu, Azure CLı 'yi, [Azure PowerShell modülünü](storage-how-to-use-files-powershell.md)veya bir Azure depolama SDK 'sını kullanarak tercih ettiğiniz komut dosyası/programlama DILINDE Dosya REST Protokolü etrafında iyi bir sarmalayıcı sağlar.  
+Doğrudan Dosya REST protokolü ile doğrudan çalışmak mümkündür (el işçiliği REST HTTP kendiniz çağırır), ancak Dosya REST protokolünü kullanmanın en yaygın yolu Azure CLI' yi, [Azure PowerShell modülünü](storage-how-to-use-files-powershell.md)veya Azure Depolama SDK'sını kullanmaktır ve bunların hepsi seçtiğiniz komut dosyası/programlama dilinde Dosya REST protokolünün etrafında güzel bir sarmalayıcı sağlar.  
 
 Kullanabilmeyi umdukları mevcut uygulama ve araçlarını kullanmalarına izin vereceği için Azure Dosyaları kullanıcılarının çoğunluğunun Azure dosya paylaşımları ile SMP protokolü üzerinden çalışmasını bekliyoruz, ancak SMB yerine Dosya REST API'si kullanmanın aşağıdaki gibi bazı avantajları bulunmaktadır:
 
 - Dosya paylaşımınıza (SMB üzerinden dosya paylaşımı bağlayamayan) Azure Bash Cloud Shell'den göz atıyorsanız.
 - [Azure İşlevleri](../../azure-functions/functions-overview.md) gibi sunucusuz kaynaklardan yararlanıyorsanız. 
-- Yedekleme veya virüsten koruma taraması yapma gibi birçok Azure dosya paylaşımı ile etkileşime girebilen bir değer ekleme hizmeti oluşturuyorsunuz.
+- Yedekleme veya virüsten koruma taraması yapmak gibi birçok Azure dosya paylaşımıyla etkileşimedebilen bir değer katma hizmeti oluşturuyorsunuz.
 
-Aşağıdaki örneklerde Azure CLı kullanarak Azure dosya paylaşımınızı Dosya REST protokolüyle nasıl işleyebileceğiniz gösterilmektedir. 
+Aşağıdaki örnekler, Azure dosya paylaşımınızı Dosya REST protokolüyle işlemek için Azure CLI'nin nasıl kullanılacağını gösterir. 
 
 ### <a name="create-a-directory"></a>Dizin oluşturma
-Azure dosya paylaşımınızın kökünde *myDirectory* adlı yeni bir dizin oluşturmak için [`az storage directory create`](/cli/azure/storage/directory) komutunu kullanın:
+Azure dosya paylaşımınızın kökünde *myDirectory* adında yeni bir dizin oluşturmak için aşağıdaki komutu [`az storage directory create`](/cli/azure/storage/directory) kullanın:
 
 ```azurecli-interactive
 az storage directory create \
@@ -119,7 +119,7 @@ az storage directory create \
 ```
 
 ### <a name="upload-a-file"></a>Dosyayı karşıya yükleme
-[`az storage file upload`](/cli/azure/storage/file) komutunu kullanarak bir dosyayı karşıya yükleme işlemini göstermek için öncelikle Cloud Shell karalama sürücüsünde karşıya yüklenecek bir dosya oluşturun. Aşağıdaki örnekte dosyayı oluşturup karşıya yüklersiniz:
+Komutu kullanarak bir dosyanın [`az storage file upload`](/cli/azure/storage/file) nasıl yüklendiğini göstermek için, önce Cloud Shell scratch sürücüsüne yüklenmesi gereken bir dosya oluşturun. Aşağıdaki örnekte dosyayı oluşturup karşıya yüklersiniz:
 
 ```azurecli-interactive
 cd ~/clouddrive/
@@ -135,7 +135,7 @@ az storage file upload \
 
 Azure CLI'yi yerel olarak çalıştırıyorsanız, `~/clouddrive` değerini makinenizde var olan bir yolla değiştirin.
 
-Dosyayı karşıya yükledikten sonra, [`az storage file list`](/cli/azure/storage/file) komutunu kullanarak dosyanın Azure dosya paylaşımınıza yüklendiğinden emin olabilirsiniz:
+Dosyayı yükledikten sonra, dosyanın [`az storage file list`](/cli/azure/storage/file) Azure dosya paylaşımınıza yüklendiğinden emin olmak için komutu kullanabilirsiniz:
 
 ```azurecli-interactive
 az storage file list \
@@ -147,7 +147,7 @@ az storage file list \
 ```
 
 ### <a name="download-a-file"></a>Dosya indirme
-Cloud Shell karalama sürücünüze yüklediğiniz dosyanın bir kopyasını indirmek için [`az storage file download`](/cli/azure/storage/file) komutunu kullanabilirsiniz:
+Bulut Kabuğu [`az storage file download`](/cli/azure/storage/file) karalama sürücüsüne yüklediğiniz dosyanın bir kopyasını indirmek için komutu kullanabilirsiniz:
 
 ```azurecli-interactive
 # Delete an existing file by the same name as SampleDownload.txt, if it exists, because you've run this example before
@@ -163,7 +163,7 @@ az storage file download \
 ```
 
 ### <a name="copy-files"></a>Dosyaları kopyalama
-Ortak bir görev, dosyaları bir dosya paylaşımından başka bir dosya paylaşımında kopyalamak için kullanılır. Bu işlevselliği göstermek için yeni bir paylaşım oluşturun. Bu yeni paylaşıma yüklediğiniz dosyayı [az storage file copy](/cli/azure/storage/file/copy) komutunu kullanarak kopyalayın: 
+Yaygın bir görev, dosyaları bir dosya paylaşımından başka bir dosya paylaşımına kopyalamaktır. Bu işlevselliği göstermek için yeni bir paylaşım oluşturun. Bu yeni paylaşıma yüklediğiniz dosyayı [az storage file copy](/cli/azure/storage/file/copy) komutunu kullanarak kopyalayın: 
 
 ```azurecli-interactive
 otherShareName="myshare2"
@@ -202,16 +202,16 @@ az storage file list \
     --output table
 ```
 
-`az storage file copy start` komutu Azure dosya paylaşımları arasında dosya taşıma işlemleri için uygun olsa da, geçişler ve daha büyük veri hareketleri için Windows üzerinde macOS ve Linux ve `robocopy` `rsync` önerilir. `rsync` ve `robocopy`, Dosyasıest API 'si yerine veri taşımalarını gerçekleştirmek için SMB 'yi kullanır.
+Komut, `az storage file copy start` Azure dosya paylaşımları arasında, geçişler ve daha büyük veri `rsync` hareketleri için dosya `robocopy` hareketleri için kullanışlı olsa da, macOS ve Linux ve Windows'da öneririz. `rsync`ve `robocopy` FileREST API yerine veri hareketlerini gerçekleştirmek için SMB'yi kullanın.
 
 ## <a name="create-and-manage-share-snapshots"></a>Paylaşım anlık görüntülerini oluşturma ve yönetme
 Azure dosya paylaşımıyla yerine getirebileceğiniz bir diğer yararlı görev ise paylaşım anlık görüntüleri oluşturmaktır. Anlık görüntü, Azure dosya paylaşımının zamanın bir noktasındaki kopyasını saklar. Paylaşım anlık görüntüleri, zaten tanıyor olabileceğiniz bazı işletim sistemi teknolojilerine benzerdir:
 
-- Linux sistemleri için [mantıksal birim Yöneticisi (LVM)](https://en.wikipedia.org/wiki/Logical_Volume_Manager_(Linux)#Basic_functionality) anlık görüntüleri.
+- Linux sistemleri için [Mantıksal Birim Yöneticisi (LVM)](https://en.wikipedia.org/wiki/Logical_Volume_Manager_(Linux)#Basic_functionality) anlık görüntüleri.
 - macOS için [Apple Dosya Sistemi (APFS)](https://developer.apple.com/library/content/documentation/FileManagement/Conceptual/APFS_Guide/Features/Features.html) anlık görüntüleri.
-- NTFS ve ReFS gibi Windows dosya sistemleri için [birim gölge kopyası hizmeti (VSS)](https://docs.microsoft.com/windows/desktop/VSS/volume-shadow-copy-service-portal) .
+- NTFS ve ReFS gibi Windows dosya sistemleri için [Birim Gölge Kopyalama Hizmeti (VSS).](https://docs.microsoft.com/windows/desktop/VSS/volume-shadow-copy-service-portal)
  
-[`az storage share snapshot`](/cli/azure/storage/share) komutunu kullanarak bir paylaşım anlık görüntüsü oluşturabilirsiniz:
+[`az storage share snapshot`](/cli/azure/storage/share) Komutu kullanarak bir paylaşım anlık görüntüsü oluşturabilirsiniz:
 
 ```azurecli-interactive
 snapshot=$(az storage share snapshot \
@@ -275,7 +275,7 @@ az storage file copy start \
 ```
 
 ### <a name="delete-a-share-snapshot"></a>Paylaşım anlık görüntüsünü silme
-[`az storage share delete`](/cli/azure/storage/share) komutunu kullanarak bir paylaşım anlık görüntüsünü silebilirsiniz. `$SNAPSHOT` parametresine `--snapshot` başvurusunu içeren değişkeni kullanın:
+[`az storage share delete`](/cli/azure/storage/share) Komutu kullanarak bir paylaşım anlık görüntüsünü silebilirsiniz. `--snapshot` parametresine `$SNAPSHOT` başvurusunu içeren değişkeni kullanın:
 
 ```azurecli-interactive
 az storage share delete \
@@ -287,7 +287,7 @@ az storage share delete \
 ```
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
-İşiniz bittiğinde, [`az group delete`](/cli/azure/group) komutunu kullanarak kaynak grubunu ve tüm ilgili kaynakları kaldırabilirsiniz: 
+İşi bittiğinde, kaynak grubunu [`az group delete`](/cli/azure/group) ve ilgili tüm kaynakları kaldırmak için komutu kullanabilirsiniz: 
 
 ```azurecli-interactive 
 az group delete --name $resourceGroupName

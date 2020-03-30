@@ -1,6 +1,6 @@
 ---
-title: Azure Linux Sanal Makineleri için güvenlik denetimleri-Linux
-description: Azure Linux Sanal Makineleri değerlendirmek için güvenlik denetimlerinin denetim listesi
+title: Azure Linux Sanal Makineler için güvenlik kontrolleri - Linux
+description: Azure Linux Sanal Makinelerini değerlendirmek için güvenlik denetimleri listesi
 services: virtual-machines
 ms.service: virtual-machines
 documentationcenter: ''
@@ -10,58 +10,58 @@ ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 300acaf4a9d2a11ef107e19df99452c909257d54
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77190565"
 ---
-# <a name="security-controls-for-linux-virtual-machines"></a>Linux Sanal Makineleri için güvenlik denetimleri
+# <a name="security-controls-for-linux-virtual-machines"></a>Linux Sanal Makineler için güvenlik kontrolleri
 
-Bu makalede, Linux Sanal Makineleri yerleşik olarak bulunan güvenlik denetimleri Belgelenebilir.
+Bu makalede, Linux Sanal Makineler yerleşik güvenlik kontrolleri belgeler.
 
 [!INCLUDE [Security controls header](../../../includes/security-controls-header.md)]
 
 ## <a name="network"></a>Ağ
 
-| Güvenlik denetimi | Evet/Hayır | Notlar |
+| Güvenlik kontrolü | Evet/Hayır | Notlar |
 |---|---|--|
-| Hizmet uç noktası desteği| Evet | |
-| VNet ekleme desteği| Evet | |
-| Ağ yalıtımı ve güvenlik duvarı desteği| Evet |  |
-| Zorlamalı tünel desteği| Evet | Bkz. [Azure Resource Manager dağıtım modelini kullanarak Zorlamalı tünel yapılandırma](/azure/vpn-gateway/vpn-gateway-forced-tunneling-rm). |
+| Hizmet bitiş noktası desteği| Evet | |
+| VNet enjeksiyon desteği| Evet | |
+| Ağ Yalıtımı ve Güvenlik Duvarı desteği| Evet |  |
+| Zorunlu tünel desteği| Evet | Bkz. [Azure Kaynak Yöneticisi dağıtım modelini kullanarak zorunlu tünel yapılandırma.](/azure/vpn-gateway/vpn-gateway-forced-tunneling-rm) |
 
-## <a name="monitoring--logging"></a>& Günlüğü izleme
+## <a name="monitoring--logging"></a>İzleme & günlüğe kaydetme
 
-| Güvenlik denetimi | Evet/Hayır | Notlar|
+| Güvenlik kontrolü | Evet/Hayır | Notlar|
 |---|---|--|
-| Azure izleme desteği (Log Analytics, App Insights vb.)| Evet | Bkz. [Azure 'Da Linux sanal makinesini izleme ve güncelleştirme](/azure/virtual-machines/linux/tutorial-monitoring). |
-| Denetim ve yönetim düzlemi günlüğü ve denetimi| Evet |  |
+| Azure izleme desteği (Log analitiği, Uygulama öngörüleri, vb.)| Evet | [Azure'da bir Linux sanal makinesini izleyin ve güncelleyin.](/azure/virtual-machines/linux/tutorial-monitoring) |
+| Kontrol ve yönetim düzlemi günlüğü ve denetimi| Evet |  |
 | Veri düzlemi günlüğü ve denetimi | Hayır |  |
 
 ## <a name="identity"></a>Kimlik
 
-| Güvenlik denetimi | Evet/Hayır | Notlar|
+| Güvenlik kontrolü | Evet/Hayır | Notlar|
 |---|---|--|
-| Kimlik Doğrulama| Evet |  |
+| Kimlik doğrulaması| Evet |  |
 | Yetkilendirme| Evet |  |
 
 ## <a name="data-protection"></a>Veri koruma
 
-| Güvenlik denetimi | Evet/Hayır | Notlar |
+| Güvenlik kontrolü | Evet/Hayır | Notlar |
 |---|---|--|
-| Rest 'te sunucu tarafı şifreleme: Microsoft tarafından yönetilen anahtarlar | Evet | Bkz. [Linux VM 'leri Için Azure disk şifrelemesi](disk-encryption-overview.md). |
-| Aktarım sırasında şifreleme (ExpressRoute şifrelemesi, VNet şifreleme ve VNet-VNet şifreleme gibi)| Evet | Azure sanal makineleri [ExpressRoute](/azure/expressroute) ve VNET şifrelemesini destekler. Bkz. [VM 'lerde geçiş içi şifreleme](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms). |
-| Bekleyen sunucu tarafı şifreleme: müşteri tarafından yönetilen anahtarlar (BYOK) | Evet | Müşteri tarafından yönetilen anahtarlar desteklenen bir Azure şifreleme senaryosudur; bkz. [Azure şifrelemesi 'ne genel bakış](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms).|
-| Sütun düzeyinde şifreleme (Azure veri Hizmetleri)| YOK | |
-| Şifrelenmiş API çağrıları| Evet | HTTPS ve TLS aracılığıyla. |
+| Sunucu tarafında şifreleme istirahat: Microsoft tarafından yönetilen anahtarlar | Evet | [Linux VM'leri için Azure Disk Şifrelemesi'ne](disk-encryption-overview.md)bakın. |
+| Aktarım sırasında şifreleme (ExpressRoute şifreleme, VNet şifreleme ve VNet-VNet şifreleme gibi)| Evet | Azure Sanal Makineler [ExpressRoute](/azure/expressroute) ve VNet şifrelemeyi destekler. [VM'lerde aktarım şifrelemesi](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms)ne bakınız. |
+| Sunucu tarafında şifreleme istirahat: müşteri tarafından yönetilen anahtarlar (BYOK) | Evet | Müşteri tarafından yönetilen anahtarlar desteklenen bir Azure şifreleme senaryosudur; bkz. [Azure şifrelemeye genel bakış.](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms)|
+| Sütun düzeyi şifreleme (Azure Veri Hizmetleri)| Yok | |
+| API şifreli aramalar| Evet | HTTPS ve TLS üzerinden. |
 
 ## <a name="configuration-management"></a>Yapılandırma yönetimi
 
-| Güvenlik denetimi | Evet/Hayır | Notlar|
+| Güvenlik kontrolü | Evet/Hayır | Notlar|
 |---|---|--|
-| Yapılandırma yönetimi desteği (yapılandırmanın sürümü oluşturma, vb.)| Evet |  | 
+| Yapılandırma yönetimi desteği (yapılandırmanın sürümü, vb.)| Evet |  | 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure hizmetleri genelinde yerleşik güvenlik denetimleri](../../security/fundamentals/security-controls.md)hakkında daha fazla bilgi edinin.
+- [Azure hizmetlerinde yerleşik güvenlik denetimleri](../../security/fundamentals/security-controls.md)hakkında daha fazla bilgi edinin.

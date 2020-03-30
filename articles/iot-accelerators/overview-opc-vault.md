@@ -1,6 +1,6 @@
 ---
-title: OPC Kasası nedir?-Azure | Microsoft Docs
-description: Bu makalede OPC Kasası 'na bir genel bakış sunulmaktadır. Bulutta OPC UA uygulamaları için sertifika yaşam döngüsünü yapılandırabilir, kaydedebilir ve yönetebilir.
+title: OPC Vault Nedir - Azure | Microsoft Dokümanlar
+description: Bu makalede, OPC Vault'a genel bir bakış sağkalmaktadır. Buluttaki OPC UA uygulamaları için sertifika yaşam döngüsünü yapılandırabilir, kaydedebilir ve yönetebilir.
 author: dominicbetts
 ms.author: dobett
 ms.date: 11/26/2018
@@ -9,31 +9,31 @@ ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 66a322d4f60d9553a68207136ae609c1f9b50dbc
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "73826212"
 ---
-# <a name="what-is-opc-vault"></a>OPC Kasası nedir?
+# <a name="what-is-opc-vault"></a>OPC Vault nedir?
 
-OPC Kasası, buluttaki OPC UA sunucusu ve istemci uygulamaları için sertifika yaşam döngüsünü yapılandırabileceğiniz, kaydedebildiğiniz ve yönetebilen bir mikro hizmettir. Bu makalede OPC kasasının basit kullanım durumları açıklanmaktadır.
+OPC Vault, Buluttaki OPC UA sunucusu ve istemci uygulamaları için sertifika yaşam döngüsünü yapılandırabilen, kaydedilebilen ve yönetebilen bir mikro hizmettir. Bu makalede, OPC Vault'un basit kullanım örnekleri açıklanmaktadır.
 
 ## <a name="certificate-management"></a>Sertifika yönetimi
 
-Örneğin, bir üretim şirketinin OPC UA sunucu makinesini yeni oluşturulan istemci uygulamasına bağlanması gerekir. Üretici, sunucu makinesine ilk erişimi yaptığında, istemci uygulamanın güvenli olmadığını belirtmek için OPC UA sunucu uygulamasında hemen bir hata iletisi gösterilir. Bu mekanizma, tüm yetkisiz uygulama erişimini engellemek için OPC UA sunucu makinesinde oluşturulmuştur ve bu da, mağaza katında çarpıcı bir şekilde çalışmaya engel olur.
+Örneğin, bir üretim şirketinin OPC UA sunucu makinesini yeni inşa edilen istemci uygulamasına bağlaması gerekir. Üretici sunucu makinesinin ilk erişimini yaptığında, istemci uygulamasının güvenli olmadığını belirtmek için OPC UA sunucu uygulamasında hemen bir hata iletisi gösterilir. Bu mekanizma, mağaza zemininde kısır hack önler herhangi bir yetkisiz uygulama erişimini önlemek için OPC UA sunucu makinesinde inşa edilmiştir.
 
 ## <a name="application-security-management"></a>Uygulama güvenliği yönetimi
-Bir güvenlik uzmanı, OPC UA sunucusunun herhangi bir istemci uygulamasıyla iletişim kurmasını sağlamak için OPC kasamikro hizmetini kullanır, çünkü OPC Kasası sertifika kayıt defteri, depolama ve yaşam döngüsü yönetimi için tüm işlevlere sahiptir. Artık OPC UA sunucusu güvenli bir şekilde bağlı olduğundan, yeni oluşturulan istemci uygulamasıyla iletişim kurabilir
+OPC Vault sertifika kayıt defteri, depolama ve yaşam döngüsü yönetimi için tüm işlevlere sahip olduğundan, bir güvenlik uzmanı OPC UA sunucusunun herhangi bir istemci uygulamasıyla kolayca iletişim kurmasını sağlamak için OPC Vault microservice'i kullanır. Şimdi OPC UA sunucusu güvenli bir şekilde bağlı, yeni oluşturulan istemci uygulamasına iletişim kurabilir
 
-## <a name="the-complete-opc-vault-architecture"></a>Tüm OPC Kasası mimarisi
-Aşağıdaki diyagramda, tüm OPC Kasası mimarisi gösterilmektedir.
+## <a name="the-complete-opc-vault-architecture"></a>Tam OPC Vault mimarisi
+Aşağıdaki diyagram, Tam OPC Vault mimarisini göstermektedir.
 
-![OPC Kasası mimarisi](media/overview-opc-vault-architecture/opc-vault.png)
+![OPC Vault mimarisi](media/overview-opc-vault-architecture/opc-vault.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Artık OPC kasası ve kullanımları hakkında bilgi edindiğinize göre, önerilen sonraki adım aşağıda verilmiştir:
+Şimdi OPC Vault ve kullanımları hakkında öğrendim, burada önerilen bir sonraki adımdır:
 
 > [!div class="nextstepaction"]
-> [OPC Kasası mimarisi](overview-opc-vault-architecture.md)
+> [OPC Vault mimarisi](overview-opc-vault-architecture.md)

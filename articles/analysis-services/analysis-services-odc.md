@@ -1,6 +1,6 @@
 ---
-title: . Odc dosyası ile Azure Analysis Services bağlanma | Microsoft Docs
-description: Azure 'da bir Analysis Services sunucusuna bağlanmak ve veri almak için Office veri bağlantısı dosyası oluşturmayı öğrenin.
+title: .odc dosyasıyla Azure Analiz Hizmetlerine bağlanma | Microsoft Dokümanlar
+description: Azure'daki bir Analiz Hizmetleri sunucusuna bağlanmak ve verileri almak için Office Veri Bağlantısı dosyasını nasıl oluşturabileceğinizi öğrenin.
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
@@ -8,30 +8,30 @@ ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: a4e2dc09c54b39d58b0193e7ac9f585236886722
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73572679"
 ---
-# <a name="create-an-office-data-connection-file"></a>Office veri bağlantısı dosyası oluşturma
+# <a name="create-an-office-data-connection-file"></a>Office Veri Bağlantısı dosyası oluşturma
 
-Bu makaledeki bilgiler, Excel 2016 sürüm numarası 16.0.7369.2117 veya daha önceki bir sürümü veya Excel 2013 ' den bir Azure Analysis Services sunucusuna bağlanmak için Office veri bağlantısı dosyası oluşturma işlemini açıklar. Güncelleştirilmiş bir [MSOLAP. 7 sağlayıcısı](analysis-services-data-providers.md) da gereklidir.
+Bu makaledeki bilgiler, Excel 2016 sürüm numarası 16.0.7369.2117 veya daha önceki sürümlerden veya Excel 2013'ten bir Azure Analiz Hizmetleri sunucusuna bağlanmak için bir Office Veri Bağlantısı dosyasını nasıl oluşturabileceğinizi açıklar. Güncelleştirilmiş bir [MSOLAP.7 sağlayıcısı](analysis-services-data-providers.md) da gereklidir.
 
 
-1. Aşağıdaki örnek bağlantı dosyasını kopyalayın ve bir metin düzenleyicisine yapıştırın. 
+1. Örnek bağlantı dosyasını aşağıdan kopyalayın ve bir metin düzenleyicisine yapıştırın. 
 
-2. `odc:ConnectionString`, aşağıdaki özellikleri değiştirin:
+2. In `odc:ConnectionString`, aşağıdaki özellikleri değiştirin:
 
-    *   `Data Source=asazure://<region>.asazure.windows.net/<servername>;` `<region>` Analysis Services sunucunuzun bölgesine ve sunucunuzun adına `<servername>`.
+    *   Çözümleme `<region>` Hizmetleri sunucunuzun bölgesine `<servername>` ve sunucunuzun adına `Data Source=asazure://<region>.asazure.windows.net/<servername>;` değiştirin.
 
-    *   `Initial Catalog=<database>;` `<database>` veritabanınızın adına değiştirin.
+    *   Veritabanınızın adını `Initial Catalog=<database>;` değiştirmek `<database>` için.
 
-3. `<odc:CommandText>Model</odc:CommandText>`, `Model` modelinizin veya perspektifin adına değiştirin. 
+3. Modelinizin veya perspektifinizin adını `<odc:CommandText>Model</odc:CommandText>` değiştirin. `Model` 
 
-4. Dosyayı `.odc` Uzantısı ile C:\Users\\*kullanıcıadı*\ Belgelerim\veri kaynakları klasörüne kaydedin.
+4. Dosyayı C:\Users `.odc` \\kullanıcı*adı*\Belgeler\Veri Kaynaklarım klasörüne uzanarak kaydedin.
 
-5. Dosyaya sağ tıklayın ve ardından **Excel 'de aç**' a tıklayın. Ya da Excel 'de, **veri** şeridinde, **mevcut bağlantılar**' a tıklayın, dosyanızı seçin ve ardından **Aç**' a tıklayın.
+5. Dosyayı sağ tıklatın ve ardından **Excel'de Aç'ı**tıklatın. Veya Excel'de, **Veri** şeridinde **Varolan Bağlantılar'ı**tıklatın, dosyanızı seçin ve sonra **Aç'ı**tıklatın.
 
 
 

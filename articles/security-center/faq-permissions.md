@@ -1,6 +1,6 @@
 ---
-title: Azure Güvenlik Merkezi hakkında SSS-izinler hakkında sorular
-description: Bu SSS, tehditleri önlemenize, algılamanıza ve yanıtlamanıza yardımcı olan Azure Güvenlik Merkezi 'ndeki izinlerle ilgili soruları yanıtlar.
+title: Azure Güvenlik Merkezi SSSS - izinlerle ilgili sorular
+description: Bu SSS, tehditleri önlemenize, algılamanıza ve bunlara yanıt vermenize yardımcı olan Azure Güvenlik Merkezi'ndeki izinlerle ilgili soruları yanıtlar.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,26 +14,26 @@ ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
 ms.openlocfilehash: 66a260fbb03f770ee98ec29a5f5e15e3d7dd1310
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77599398"
 ---
 # <a name="permissions"></a>İzinler
 
-## <a name="how-do-permissions-work-in-azure-security-center"></a>İzinler Azure Güvenlik Merkezi 'nde nasıl çalışır?
+## <a name="how-do-permissions-work-in-azure-security-center"></a>Azure Güvenlik Merkezi'nde izinler nasıl çalışır?
 
-Azure Güvenlik Merkezi, Azure'daki kullanıcılara, gruplara ve hizmetlere atanabilen [yerleşik roller](../role-based-access-control/role-assignments-portal.md) sağlayan [Rol Tabanlı Erişim Denetimi'ni (RBAC)](../role-based-access-control/built-in-roles.md) kullanır.
+Azure Güvenlik Merkezi, Azure'daki kullanıcılara, gruplara ve hizmetlere atanabilen [yerleşik roller](../role-based-access-control/built-in-roles.md) sağlayan [Rol Tabanlı Erişim Denetimi'ni (RBAC)](../role-based-access-control/role-assignments-portal.md) kullanır.
 
-Güvenlik Merkezi, güvenlik sorunlarını ve güvenlik açıklarını tanımlamak amacıyla kaynaklarınızın yapılandırmasını değerlendirir. Güvenlik Merkezi'nde, yalnızca bir kaynağa sahip, katkıda bulunan veya okuyucu rolü bir kaynağın ait olduğu kaynak grubu veya abonelik atandığında ilgili bilgiler görürsünüz.
+Güvenlik Merkezi, güvenlik sorunlarını ve güvenlik açıklarını tanımlamak için kaynaklarınızın yapılandırmasını değerlendirir. Güvenlik Merkezi'nde, yalnızca kaynağın ait olduğu abonelik veya kaynak grubu için Sahip, Katılımcı veya Okuyucu rolü atandığında kaynakla ilgili bilgileri görürsünüz.
 
-Güvenlik Merkezi 'nde roller ve izin verilen eylemler hakkında daha fazla bilgi edinmek için bkz. [Azure Güvenlik Merkezi 'Ndeki izinler](security-center-permissions.md) .
+Güvenlik [Merkezi'ndeki](security-center-permissions.md) roller ve izin verilen eylemler hakkında daha fazla bilgi edinmek için Azure Güvenlik Merkezi'ndeki İzinler'e bakın.
 
 
 
-## <a name="who-can-modify-a-security-policy"></a>Güvenlik İlkesi değiştirebilecekleri?
+## <a name="who-can-modify-a-security-policy"></a>Güvenlik ilkesini kimler değiştirebilir?
 
-Güvenlik ilkesini değiştirmek için bir güvenlik yöneticisi veya sahibi veya katkıda bulunanı o aboneliğin olması gerekir.
+Bir güvenlik ilkesini değiştirmek için güvenlik yöneticisi veya bu aboneliğin sahibi veya katılımcısı olmalısınız.
 
-Güvenlik ilkesi yapılandırma hakkında bilgi edinmek için bkz. [Azure Güvenlik Merkezi 'nde güvenlik Ilkelerini ayarlama](tutorial-security-policy.md).
+Güvenlik ilkesini nasıl yapılandırıştırılaceksiniz öğrenmek için Azure [Güvenlik Merkezi'nde güvenlik ilkelerini ayarlama'ya](tutorial-security-policy.md)bakın.

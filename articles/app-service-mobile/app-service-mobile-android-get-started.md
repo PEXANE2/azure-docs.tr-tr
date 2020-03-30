@@ -1,16 +1,16 @@
 ---
 title: Android uygulaması oluşturma
-description: Android uygulama geliştirmesi için Azure mobil uygulaması arka uçları kullanmaya başlamak için bu öğreticiyi izleyin.
+description: Android uygulaması geliştirme için Azure mobil uygulama arka uçlarını kullanmaya başlamak için bu öğreticiyi izleyin.
 ms.assetid: 355f0959-aa7f-472c-a6c7-9eecea3a34a9
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 5/6/2019
 ms.openlocfilehash: 9be9402bff1a1263de3c6f21b78899464c50c823
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77459586"
 ---
 # <a name="create-an-android-app"></a>Android uygulaması oluşturma
@@ -21,20 +21,20 @@ Bu öğreticide, bir Android mobil uygulamasına Azure mobil uygulaması arka uc
 
 Bu öğreticiyi tamamlamak, Azure App Service’de Mobile Apps özelliğini kullanmayla ilgili diğer tüm Android öğreticileri için ön koşuldur.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 Bu öğreticiyi tamamlamak için aşağıdakiler gerekir:
 
 * Android Studio tümleşik geliştirme ortamını ve en son Android platformunu içeren [Android Geliştirici Araçları](https://developer.android.com/sdk/index.html).
-* Azure mobil Android SDK.
-* [Etkin bir Azure hesabı](https://azure.microsoft.com/pricing/free-trial/).
+* Azure Mobil Android SDK.
+* Etkin bir [Azure hesabı.](https://azure.microsoft.com/pricing/free-trial/)
 
 ## <a name="create-a-new-azure-mobile-app-backend"></a>Yeni bir Azure mobil uygulama arka ucu oluşturma
 [!INCLUDE [app-service-mobile-dotnet-backend-create-new-service](../../includes/app-service-mobile-dotnet-backend-create-new-service.md)]
 
-## <a name="create-a-database-connection-and-configure-the-client-and-server-project"></a>Bir veritabanı bağlantısı oluşturma ve istemciyi ve sunucu projesini yapılandırma
+## <a name="create-a-database-connection-and-configure-the-client-and-server-project"></a>Veritabanı bağlantısı oluşturun ve istemci ve sunucu projesini yapılandırma
 [!INCLUDE [app-service-mobile-configure-new-backend.md](../../includes/app-service-mobile-configure-new-backend.md)]
 
-## <a name="run-the-android-app"></a>Android uygulamasını çalıştırma
+## <a name="run-the-android-app"></a>Android uygulamasını çalıştırın
 [!INCLUDE [app-service-mobile-android-run-app](../../includes/app-service-mobile-android-run-app.md)]
 
 <!-- URLs -->

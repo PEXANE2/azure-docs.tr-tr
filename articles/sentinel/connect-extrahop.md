@@ -1,6 +1,6 @@
 ---
-title: ExtraHop (x) Azure Sentinel 'e bağla | Microsoft Docs
-description: ExtraHop (x) ' i Azure Sentinel 'e bağlamayı öğrenin.
+title: ExtraHop Reveal(x)'ı Azure Sentinel'e bağlayın| Microsoft Dokümanlar
+description: ExtraHop Reveal(x) ile Azure Sentinel'e nasıl bağlanıştırılamayı öğrenin.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,35 +15,35 @@ ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
 ms.openlocfilehash: 8d82d8c5a76c34875e9a4aae22c547aec897c18a
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77588306"
 ---
 # <a name="connect-extrahop-revealx"></a>ExtraHop Reveal(x)'i bağlama
 
-ExtraHop (x) veri Bağlayıcısı, panoları görüntülemek, özel uyarılar oluşturmak ve araştırmayı geliştirmek için, gösterme (x) sisteminizi Azure Sentinel ile kolayca bağlamanıza olanak tanır. Bu tümleştirme, kuruluşunuzun ağı hakkında fikir elde etmenizi ve güvenlik işlemi olanaklarınızı iyileştirebilmenizi sağlar.
+ExtraHop Reveal(x) veri bağlayıcısı, panelleri görüntülemek, özel uyarılar oluşturmak ve araştırmayı iyileştirmek için Reveal(x) sisteminizi Azure Sentinel ile kolayca bağlamanızı sağlar. Bu tümleştirme, kuruluşunuzun ağı hakkında bilgi edinme ve güvenlik işlem yeteneklerinizi geliştirme olanağı sağlar.
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-- Azure Sentinel çalışma alanına yönelik okuma ve yazma izinleri.
+- Azure Sentinel çalışma alanı için izinleri okuyun ve yazın.
 
-- ExtraHop, üretici yazılımı sürüm 7,8 veya sonraki bir sürümü ile sınırsız (yönetici) ayrıcalıklarına sahip bir kullanıcı hesabıyla keşif veya komut gereci bulur.
+- ExtraHop Discover veya Command cihazı ile firmware sürümü 7.8 veya daha sonra Sınırsız (yönetici) ayrıcalıkları olan bir kullanıcı hesabı ile.
 
-## <a name="connect-azure-sentinel-to-extrahop-revealx"></a>Azure Sentinel 'i ExtraHop (x) ile bağlama
+## <a name="connect-azure-sentinel-to-extrahop-revealx"></a>Azure Sentinel'i ExtraHop Reveal(x) 'ye bağlayın
 
-1. Azure portal **Azure Sentinel** > **veri bağlayıcıları** ' na gidin ve ardından **extrahop (x)** bağlayıcısını seçin.
+1. Azure portalında Azure **Sentinel** > **Veri bağlayıcılarına** gidin ve **ardından ExtraHop Reveal(x)** bağlayıcısını seçin.
 
-2. **Bağlayıcı sayfasını aç**' ı seçin.
+2. **Bağlayıcıyı Aç'ı**seçin.
 
-3. **Extrahop (x)** sayfasındaki yönergeleri izleyin.
+3. **ExtraHop Reveal(x)** sayfasındaki talimatları izleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu belgede, ExtraHop (x) ' i Azure Sentinel 'e bağlamayı öğrendiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
-- [Verilerinize nasıl görünürlük alabileceğinizi ve olası tehditleri](quickstart-get-visibility.md)öğrenin.
-- [Azure Sentinel ile tehditleri algılamaya](tutorial-detect-threats-built-in.md)başlayın.
-- Verilerinizi izlemek için [çalışma kitaplarını kullanın](tutorial-monitor-your-data.md) .
+Bu belgede, ExtraHop Reveal(x) ile Azure Sentinel'e nasıl bağlanabileceğinizi öğrendiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
+- [Verilerinize ve olası tehditlere](quickstart-get-visibility.md)nasıl görünürlük elde edebilirsiniz öğrenin.
+- Azure [Sentinel ile tehditleri algılamaya](tutorial-detect-threats-built-in.md)başlayın.
+- Verilerinizi izlemek için [çalışma kitaplarını kullanın.](tutorial-monitor-your-data.md)
 
 

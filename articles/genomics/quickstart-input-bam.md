@@ -1,7 +1,7 @@
 ---
-title: Bad dosya girişini kullanarak iş akışı gönderme
+title: BAM dosya girişini kullanarak iş akışı gönderme
 titleSuffix: Microsoft Genomics
-description: Bu makalede, giriş dosyanız tek bir Bad dosyası ise Microsoft Genomiks hizmetine bir iş akışı gönderme işlemi gösterilmektedir.
+description: Bu makalede, giriş dosyanız tek bir BAM dosyasıysa, Microsoft Genomics hizmetine iş akışının nasıl gönderilen bir dosya olduğunu gösterin.
 services: genomics
 author: grhuynh
 manager: cgronlun
@@ -10,15 +10,15 @@ ms.service: genomics
 ms.topic: conceptual
 ms.date: 12/07/2017
 ms.openlocfilehash: 5145aa0ffdc4095f178a214f63433e5bcece83b6
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72249158"
 ---
 # <a name="submit-a-workflow-using-a-bam-file-input"></a>BAM dosyası girişini kullanarak iş akışı gönderme
 
-Bu makalede, giriş dosyanız tek bir Bad dosyası ise Microsoft Genomiks hizmetine bir iş akışı gönderme işlemi gösterilmektedir. Bu konu başlığında `msgen` istemcisini yükleyip çalıştırdığınız ve Azure Depolama konusunda bilgi sahibi olduğunuz kabul edilmektedir. Belirtilen örnek verileri kullanarak bir iş akışını başarıyla gönderdiyseniz, bu makaleye devam etmeye hazırsınızdır. 
+Bu makalede, giriş dosyanız tek bir BAM dosyasıysa, Microsoft Genomics hizmetine iş akışının nasıl gönderilen bir dosya olduğunu gösterin. Bu konu başlığında `msgen` istemcisini yükleyip çalıştırdığınız ve Azure Depolama konusunda bilgi sahibi olduğunuz kabul edilmektedir. Sağlanan örnek verileri kullanarak başarılı bir şekilde bir iş akışı gönderdiyseniz, bu makaleye devam etmeye hazırsınız. 
 
 ## <a name="set-up-upload-your-bam-file-to-azure-storage"></a>Kurulum: BAM dosyanızı Azure depolamaya yükleme
 *reads.bam* adlı tek bir BAM dosyasına sahip olduğunuzu ve bu dosyayı *myaccount* adlı Azure depolama hesabınıza **https://<span></span>myaccount.blob.core<span></span>.windows<span></span>.net<span></span>/inputs/reads<span></span>.bam<span></span>** olarak yüklediğinizi düşünelim. API URL'sine ve erişim anahtarına sahipsiniz. **https://<span></span>myaccount.blob.core<span></span>.windows<span></span>.net<span></span>/outputs<span></span>** içinde iki çıkış olmasını istiyorsunuz.

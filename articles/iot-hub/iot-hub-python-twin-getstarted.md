@@ -1,171 +1,155 @@
 ---
-title: Azure IoT Hub cihaz TWINS (Python) ile çalışmaya başlama | Microsoft Docs
-description: Azure IoT Hub cihaz ikimlerini kullanarak etiketler ekleyin ve ardından bir IoT Hub sorgusu kullanın. Python için Azure IoT SDK 'larını kullanarak, Etiketler ekleyen ve IoT Hub sorguyu çalıştıran sanal cihaz uygulamasını ve bir hizmet uygulamasını uygulayabilirsiniz.
+title: Azure IoT Hub aygıt ikizleri (Python) | Microsoft Dokümanlar
+description: Etiketler eklemek ve ardından bir IoT Hub sorgusu kullanmak için Azure IoT Hub aygıt ikizleri nasıl kullanılır? Python için Azure IoT SDK'larını kullanarak simüle edilmiş aygıt uygulamasını ve etiketleri ekleyen ve IoT Hub sorgusunu çalıştıran bir hizmet uygulamasını uygularsınız.
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: python
 ms.topic: conceptual
-ms.date: 08/26/2019
+ms.date: 03/11/2020
 ms.author: robinsh
-ms.openlocfilehash: a6210c4672042801350e56ef6c8e8a2c02420a81
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.openlocfilehash: c1db7f1a891646ad29f6cae95ddb7e2cf3a42bfc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/09/2020
-ms.locfileid: "77110397"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79409767"
 ---
-# <a name="get-started-with-device-twins-python"></a>Cihaz ikizlerini kullanmaya başlama (Python)
+# <a name="get-started-with-device-twins-python"></a>Aygıt ikizleri (Python) ile başlayın
 
 [!INCLUDE [iot-hub-selector-twin-get-started](../../includes/iot-hub-selector-twin-get-started.md)]
 
-Bu öğreticinin sonunda iki Python konsol uygulamanız olacaktır:
+Bu eğitimin sonunda, iki Python konsol uygulaması olacak:
 
-* Etiketler ve sorgu cihaz TWINS 'i ekleyen bir Python arka uç uygulaması olan **AddTagsAndQuery.py**.
+* **AddTagsAndQuery.py**, etiketleri ve sorguları cihaz ikizler ekler bir Python arka uç uygulaması.
 
-* Daha önce oluşturulan cihaz kimliğiyle IoT Hub 'ınıza bağlanan bir cihazın benzetimini yapan ve bağlantı koşulunu raporlayan bir Python uygulaması **ReportConnectivity.py**.
+* **ReportConnectivity.py**, IoT hub'ınıza daha önce oluşturulan aygıt kimliğiyle bağlanan bir aygıtı taklit eden ve bağlantı durumunu bildiren bir Python uygulamasıdır.
 
 [!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-[!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
+[!INCLUDE [iot-hub-include-python-v2-installation-notes](../../includes/iot-hub-include-python-v2-installation-notes.md)]
 
-* Güvenlik duvarınızdaki 8883 numaralı bağlantı noktasını açık olduğundan emin olun. Bu makaledeki cihaz örneği, 8883 numaralı bağlantı noktası üzerinden iletişim kuran MQTT protokolünü kullanır. Bu bağlantı noktası, bazı kurumsal ve eğitim ağ ortamlarında engellenebilir. Bu sorunu geçici olarak çözmek için daha fazla bilgi ve IoT Hub bkz. [bağlanma (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+* 8883 bağlantı noktasının güvenlik duvarınızda açık olduğundan emin olun. Bu makaledeki aygıt örneği, bağlantı noktası 8883 üzerinden iletişim sağlayan MQTT protokolünü kullanır. Bu bağlantı noktası, bazı kurumsal ve eğitim ağı ortamlarında engellenebilir. Daha fazla bilgi ve bu sorunu çözmenin yolları için [IoT Hub'ına Bağlanma (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)konusuna bakın.
 
 ## <a name="create-an-iot-hub"></a>IoT hub oluşturma
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-## <a name="register-a-new-device-in-the-iot-hub"></a>IoT Hub 'a yeni bir cihaz kaydetme
+## <a name="register-a-new-device-in-the-iot-hub"></a>Yeni bir aygıtı IoT hub'ına kaydetme
 
 [!INCLUDE [iot-hub-include-create-device](../../includes/iot-hub-include-create-device.md)]
 
-## <a name="get-the-iot-hub-connection-string"></a>IoT Hub bağlantı dizesini al
+## <a name="get-the-iot-hub-connection-string"></a>IoT hub bağlantı dizesini alın
 
 [!INCLUDE [iot-hub-howto-twin-shared-access-policy-text](../../includes/iot-hub-howto-twin-shared-access-policy-text.md)]
 
 [!INCLUDE [iot-hub-include-find-custom-connection-string](../../includes/iot-hub-include-find-custom-connection-string.md)]
 
-## <a name="create-the-service-app"></a>Hizmet uygulaması oluşturma
+## <a name="create-the-service-app"></a>Hizmet uygulamasını oluşturma
 
-Bu bölümde, **{DEVICE ID}** ile ilişkili cihaz ikizi konum meta verilerini ekleyen bir Python konsol uygulaması oluşturacaksınız. Ardından, IoT Hub 'ında depolanan cihaz TWINS 'i, Redmond 'da bulunan cihazları ve ardından hücresel bağlantı bildirdikleri sorgular.
+Bu bölümde, **{Aygıt Kimliği}** ile ilişkili aygıt ikizine konum meta verileri ekleyen bir Python konsol uygulaması oluşturursunuz. Daha sonra, Redmond'da bulunan aygıtları seçerek IoT hub'ında depolanan aygıt ikizleri ve hücresel bağlantı bildirencihazları sorgular.
 
-1. Çalışma dizininizde, bir komut istemi açın ve **Python Için Azure IoT Hub hizmet SDK 'sını**yükledikten sonra.
+1. Çalışma dizininizde bir komut istemi açın ve **Python için Azure IoT Hub Hizmeti SDK'sını**yükleyin.
 
    ```cmd/sh
-   pip install azure-iothub-service-client
+   pip install azure-iot-hub
    ```
 
-   > [!NOTE]
-   > Azure-ıothub-Service-Client için PIP paketi şu anda yalnızca Windows işletim sistemi için kullanılabilir. Linux/Mac OS için lütfen [geliştirme ortamınızı Python](https://github.com/Azure/azure-iot-sdk-python/blob/v1-deprecated/doc/python-devbox-setup.md) gönderisini hazırlama bölümündeki linux ve Mac OS özgü bölümlere bakın.
-   >
-
-2. Bir metin düzenleyicisi kullanarak yeni bir **AddTagsAndQuery.py** dosyası oluşturun.
+2. Metin düzenleyicisi kullanarak, yeni bir **AddTagsAndQuery.py** dosyası oluşturun.
 
 3. Hizmet SDK’sından gerekli modülleri içeri aktarmak için aşağıdaki kodu ekleyin:
 
    ```python
    import sys
-   import iothub_service_client
-   from iothub_service_client import IoTHubRegistryManager, IoTHubRegistryManagerAuthMethod
-   from iothub_service_client import IoTHubDeviceTwin, IoTHubError
+   from time import sleep
+   from azure.iot.hub import IoTHubRegistryManager
+   from azure.iot.hub.models import Twin, TwinProperties, QuerySpecification, QueryResult
    ```
 
-4. Aşağıdaki kodu ekleyin. `[IoTHub Connection String]` [, IoT Hub bağlantı dizesini al](#get-the-iot-hub-connection-string)bölümünde kopyaladığınız IoT Hub bağlantı dizesiyle değiştirin. `[Device Id]`, [IoT Hub 'ına yeni bir cihaz kaydetmek için](#register-a-new-device-in-the-iot-hub)KAYDETTIĞINIZ cihaz kimliği ile değiştirin.
+4. Aşağıdaki kodu ekleyin. Kopyala'da kopyaladığınız `[IoTHub Connection String]` [IoT hub bağlantı dizesini değiştirin.](#get-the-iot-hub-connection-string) IoT hub'ında yeni bir aygıt kaydedin'de kaydettiğiniz aygıt `[Device Id]` [kimliğiyle değiştirin.](#register-a-new-device-in-the-iot-hub)
   
     ```python
-    CONNECTION_STRING = "[IoTHub Connection String]"
+    IOTHUB_CONNECTION_STRING = "[IoTHub Connection String]"
     DEVICE_ID = "[Device Id]"
-
-    UPDATE_JSON = "{\"properties\":{\"desired\":{\"location\":\"Redmond\"}}}"
-
-    UPDATE_JSON_SEARCH = "\"location\":\"Redmond\""
-    UPDATE_JSON_CLIENT_SEARCH = "\"connectivity\":\"cellular\""
     ```
 
-5. Aşağıdaki kodu **AddTagsAndQuery.py** dosyasına ekleyin:
+5. **AddTagsAndQuery.py** dosyasına aşağıdaki kodu ekleyin:
 
     ```python
     def iothub_service_sample_run():
         try:
-            iothub_registry_manager = IoTHubRegistryManager(CONNECTION_STRING)
+            iothub_registry_manager = IoTHubRegistryManager(IOTHUB_CONNECTION_STRING)
 
-            iothub_registry_statistics = iothub_registry_manager.get_statistics()
-            print ( "Total device count                       : {0}".format(iothub_registry_statistics.totalDeviceCount) )
-            print ( "Enabled device count                     : {0}".format(iothub_registry_statistics.enabledDeviceCount) )
-            print ( "Disabled device count                    : {0}".format(iothub_registry_statistics.disabledDeviceCount) )
-            print ( "" )
+            new_tags = {
+                    'location' : {
+                        'region' : 'US',
+                        'plant' : 'Redmond43'
+                    }
+                }
 
-            number_of_devices = iothub_registry_statistics.totalDeviceCount
-            dev_list = iothub_registry_manager.get_device_list(number_of_devices)
+            twin = iothub_registry_manager.get_twin(DEVICE_ID)
+            twin_patch = Twin(tags=new_tags, properties= TwinProperties(desired={'power_level' : 1}))
+            twin = iothub_registry_manager.update_twin(DEVICE_ID, twin_patch, twin.etag)
 
-            iothub_twin_method = IoTHubDeviceTwin(CONNECTION_STRING)
+            # Add a delay to account for any latency before executing the query
+            sleep(1)
 
-            for device in range(0, number_of_devices):
-                if dev_list[device].deviceId == DEVICE_ID:
-                    twin_info = iothub_twin_method.update_twin(dev_list[device].deviceId, UPDATE_JSON)
+            query_spec = QuerySpecification(query="SELECT * FROM devices WHERE tags.location.plant = 'Redmond43'")
+            query_result = iothub_registry_manager.query_iot_hub(query_spec, None, 100)
+            print("Devices in Redmond43 plant: {}".format(', '.join([twin.device_id for twin in query_result.items])))
 
-            print ( "Devices in Redmond: " )
-            for device in range(0, number_of_devices):
-                twin_info = iothub_twin_method.get_twin(dev_list[device].deviceId)
+            print()
 
-                if twin_info.find(UPDATE_JSON_SEARCH) > -1:
-                    print ( dev_list[device].deviceId )
+            query_spec = QuerySpecification(query="SELECT * FROM devices WHERE tags.location.plant = 'Redmond43' AND properties.reported.connectivity = 'cellular'")
+            query_result = iothub_registry_manager.query_iot_hub(query_spec, None, 100)
+            print("Devices in Redmond43 plant using cellular network: {}".format(', '.join([twin.device_id for twin in query_result.items])))
 
-            print ( "" )
-
-            print ( "Devices in Redmond using cellular network: " )
-            for device in range(0, number_of_devices):
-                twin_info = iothub_twin_method.get_twin(dev_list[device].deviceId)
-
-                if twin_info.find(UPDATE_JSON_SEARCH) > -1:
-                    if twin_info.find(UPDATE_JSON_CLIENT_SEARCH) > -1:
-                        print ( dev_list[device].deviceId )
-
-        except IoTHubError as iothub_error:
-            print ( "Unexpected error {0}".format(iothub_error) )
+        except Exception as ex:
+            print("Unexpected error {0}".format(ex))
             return
         except KeyboardInterrupt:
-            print ( "IoTHub sample stopped" )
+            print("IoT Hub Device Twin service sample stopped")
     ```
 
-    **Kayıt defteri** nesnesi, hizmetten cihaz ikikiyle etkileşimde bulunmak için gereken tüm yöntemleri kullanıma sunar. Kod, ilk olarak **kayıt defteri** nesnesini başlatır ve ardından, **DeviceID**için cihaz ikizi güncelleştirir ve son olarak iki sorgu çalıştırır. İlki, **Redmond43** tesisinde bulunan cihazların yalnızca cihaz ikelerini seçer ve ikincisi ise yalnızca hücresel ağ üzerinden de bağlı olan cihazları seçecek şekilde sorguyu iyileştirir.
+    **IoTHubRegistryManager** nesnesi, hizmetten aygıt ikizleri ile etkileşim kurmak için gereken tüm yöntemleri ortaya çıkarır. Kod önce **IoTHubRegistryManager** nesnesini başolarak çözer, sonra aygıt ikizini **DEVICE_ID**için güncelleştirir ve son olarak iki sorgu çalıştırır. **İlki, Redmond43** tesisinde bulunan aygıtların yalnızca aygıt ikizlerini seçer ve ikincisi sorguyu yalnızca hücresel ağ üzerinden bağlanan aygıtları seçmek için geliştirir.
 
-6. **İothub_service_sample_run** işlevini uygulamak için **AddTagsAndQuery.py** sonuna aşağıdaki kodu ekleyin:
+6. **iothub_service_sample_run** işlevini uygulamak için **AddTagsAndQuery.py** sonunda aşağıdaki kodu ekleyin:
 
     ```python
     if __name__ == '__main__':
-        print ( "Starting the IoT Hub Device Twins Python service sample..." )
+        print("Starting the Python IoT Hub Device Twin service sample...")
+        print()
 
         iothub_service_sample_run()
     ```
 
-7. Uygulamayı ile çalıştırın:
+7. Uygulamayı aşağıdakilerle çalıştırın:
 
     ```cmd/sh
     python AddTagsAndQuery.py
     ```
 
-    **Redmond43** ' de bulunan tüm cihazları isteyen sorgunun sonuçlarında bir cihaz görmeniz gerekir ve sonuçları hücresel ağ kullanan cihazlara kısıtlayan sorgu için yok.
+    **Redmond43'te** bulunan tüm aygıtları soran sorgunun sonuçlarında bir aygıt görmeniz ve sonuçları hücresel ağ kullanan aygıtlarla sınırlayan sorgu için hiçbir aygıt görmeniz gerekir.
 
-    ![Redmond 'daki tüm cihazları gösteren ilk sorgu](./media/iot-hub-python-twin-getstarted/service-1.png)
+    ![Redmond'daki tüm cihazları gösteren ilk sorgu](./media/iot-hub-python-twin-getstarted/service-1.png)
 
-Sonraki bölümde, bağlantı bilgilerini raporlayan ve önceki bölümde sorgunun sonucunu değiştiren bir cihaz uygulaması oluşturacaksınız.
+Sonraki bölümde, bağlantı bilgilerini bildiren ve önceki bölümdeki sorgunun sonucunu değiştiren bir aygıt uygulaması oluşturursunuz.
 
-## <a name="create-the-device-app"></a>Cihaz uygulaması oluşturma
+## <a name="create-the-device-app"></a>Cihaz uygulamasını oluşturma
 
-Bu bölümde, hub 'ınıza **{CIHAZ kimliğiniz}** olarak bağlanan bir Python konsol uygulaması oluşturursunuz ve ardından cihaz ikizi 'nin bildirilen özelliklerini bir hücresel ağ kullanılarak bağlı olduğu bilgileri içerecek şekilde güncelleştirir.
+Bu bölümde, hub'ınıza **{Aygıt Kimliği}** olarak bağlanan bir Python konsol uygulaması oluşturur sunuz ve ardından aygıt ikizinin bildirilen özelliklerini hücresel ağ kullanarak bağlı olduğu bilgileri içerecek şekilde güncelleştirirsiniz.
 
-1. Çalışma dizininizde bir komut isteminden **Python Için Azure IoT Hub cihaz SDK 'sını**yükledikten sonra:
+1. Çalışma dizininizdeki bir komut isteminden **Python için Azure IoT Hub Aygıt SDK'sını**yükleyin:
 
     ```cmd/sh
     pip install azure-iot-device
     ```
 
-2. Bir metin düzenleyicisi kullanarak yeni bir **ReportConnectivity.py** dosyası oluşturun.
+2. Metin düzenleyicisi kullanarak, yeni bir **ReportConnectivity.py** dosyası oluşturun.
 
-3. Cihaz SDK 'sından gerekli modülleri içeri aktarmak için aşağıdaki kodu ekleyin:
+3. SDK cihazından gerekli modülleri almak için aşağıdaki kodu ekleyin:
 
     ```python
     import time
@@ -173,13 +157,13 @@ Bu bölümde, hub 'ınıza **{CIHAZ kimliğiniz}** olarak bağlanan bir Python k
     from azure.iot.device import IoTHubModuleClient
     ```
 
-4. Aşağıdaki kodu ekleyin. `[IoTHub Device Connection String]` yer tutucu değerini, [IoT Hub 'ına yeni bir cihaz kaydet](#register-a-new-device-in-the-iot-hub)' de kopyaladığınız cihaz bağlantı dizesiyle değiştirin.
+4. Aşağıdaki kodu ekleyin. Yer `[IoTHub Device Connection String]` tutucu [değerini, IoT hub'ında yeni bir aygıtı kaydedin'de](#register-a-new-device-in-the-iot-hub)kopyaladığınız aygıt bağlantısı dizesiyle değiştirin.
 
     ```python
     CONNECTION_STRING = "[IoTHub Device Connection String]"
     ```
 
-5. Cihaz TWINS işlevlerini uygulamak için aşağıdaki kodu **ReportConnectivity.py** dosyasına ekleyin:
+5. Aygıt ikizişlevselliğini uygulamak için **ReportConnectivity.py** dosyasına aşağıdaki kodu ekleyin:
 
     ```python
     def twin_update_listener(client):
@@ -209,16 +193,16 @@ Bu bölümde, hub 'ınıza **{CIHAZ kimliğiniz}** olarak bağlanan bir Python k
             while True:
                 time.sleep(1000000)
         except KeyboardInterrupt:
-            print ( "IoTHubClient sample stopped" )
+            print ( "IoT Hub Device Twin device sample stopped" )
     ```
 
-    **İstemci** nesnesi, cihazdan cihaz ikikiyle etkileşimde bulunmak için gereken tüm yöntemleri kullanıma sunar. Önceki kod, **istemci** nesnesini başlattıktan sonra cihazınızla ilgili cihaz ikizi alır ve bildirilen özelliğini bağlantı bilgileriyle güncelleştirir.
+    **IoTHubModuleClient** nesnesi, aygıttaki aygıt ikizleri ile etkileşim de ihtiyacınız olan tüm yöntemleri ortaya çıkarır. Önceki kod, **IoTHubModuleClient** nesnesini aldıktan sonra aygıtınız için ikiz ilerler ve bildirilen özelliğini bağlantı bilgileriyle güncelleştirir.
 
-6. **İothub_client_sample_run** işlevini uygulamak için **ReportConnectivity.py** sonuna aşağıdaki kodu ekleyin:
+6. **iothub_client_sample_run** işlevini uygulamak için **ReportConnectivity.py** sonunda aşağıdaki kodu ekleyin:
 
     ```python
     if __name__ == '__main__':
-        print ( "Starting the IoT Hub Device Twins Python client sample..." )
+        print ( "Starting the Python IoT Hub Device Twin device sample..." )
         print ( "IoTHubModuleClient waiting for commands, press Ctrl-C to exit" )
 
         iothub_client_sample_run()
@@ -230,28 +214,32 @@ Bu bölümde, hub 'ınıza **{CIHAZ kimliğiniz}** olarak bağlanan bir Python k
     python ReportConnectivity.py
     ```
 
-    Cihaz ikikinin güncelleştirildiğinden onay görmeniz gerekir.
+    Aygıt ikizbildirilen özelliklerinin güncelleştirilen onayını görmeniz gerekir.
 
-    ![güncelleştirme TWINS](./media/iot-hub-python-twin-getstarted/device-1.png)
+    ![cihaz uygulamasından bildirilen özellikleri güncelleştirme](./media/iot-hub-python-twin-getstarted/device-1.png)
 
-8. Cihaz bağlantı bilgilerini raporladığı için, her iki sorgu da görünmelidir. Geri dönüp sorguları yeniden çalıştırın:
+8. Aygıt bağlantı bilgilerini bildirdiğine göre, her iki sorguda da görünmesi gerekir. Geri dön ve sorguları yeniden çalıştır:
 
     ```cmd/sh
     python AddTagsAndQuery.py
     ```
 
-    Bu kez, **{DEVICE ID}** hesabınız her iki sorgu sonucunda da görünmelidir.
+    Bu kez **{Aygıt Kimliği}** her iki sorgu sonuçlarında da görünmelidir.
 
-    ![İkinci sorgu](./media/iot-hub-python-twin-getstarted/service-2.png)
+    ![servis uygulamasında ikinci sorgu](./media/iot-hub-python-twin-getstarted/service-2.png)
+
+    Cihazınızda, servis uygulaması tarafından gönderilen istenilen özelliklerde çift eki alındığına dair onay görürsünüz.
+
+    ![cihaz uygulamasında istenilen özellikleri alma](./media/iot-hub-python-twin-getstarted/device-2.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, Azure portalında yeni bir IoT hub'ı yapılandırdınız ve ardından IoT hub'ının kimlik kayıt defterinde bir cihaz kimliği oluşturdunuz. Cihaz meta verilerini bir arka uç uygulamasından Etiketler olarak eklediniz ve cihaz ikizi cihaz bağlantı bilgilerini raporlamak için bir sanal cihaz uygulaması yazmış olursunuz. Ayrıca, bu bilgileri kayıt defterini kullanarak sorgulama hakkında bilgi edinirsiniz.
+Bu öğreticide, Azure portalında yeni bir IoT hub'ı yapılandırdınız ve ardından IoT hub'ının kimlik kayıt defterinde bir cihaz kimliği oluşturdunuz. Aygıt meta verilerini arka uç uygulamasından etiketler olarak eklediniz ve aygıt ikizindeki aygıt bağlantı bilgilerini bildirmek için simüle edilmiş bir aygıt uygulaması yazdınız. Ayrıca, kayıt defterini kullanarak bu bilgileri nasıl sorgulayabileceğinizi de öğrendiniz.
 
-Aşağıdakilerin nasıl yapılacağını öğrenmek için aşağıdaki kaynakları kullanın:
+Nasıl yapılacağını öğrenmek için aşağıdaki kaynakları kullanın:
 
-* [IoT Hub ile çalışmaya başlama](quickstart-send-telemetry-python.md) öğreticisini kullanarak cihazlardan telemetri gönderin.
+* [IoT Hub öğreticisiyle başlayın'a](quickstart-send-telemetry-python.md) sahip cihazlardan telemetri gönderin.
 
-* [Cihazları yapılandırmak için istenen özellikleri kullan](tutorial-device-twins.md) öğreticisiyle cihaz ikizi 'nin istenen özelliklerini kullanarak cihazları yapılandırın.
+* Aygıtları, aygıtları [yapılandırmak için istenen özellikleri kullanarak](tutorial-device-twins.md) aygıtları yapılandırma.
 
-* Cihazları etkileşimli olarak (kullanıcı denetimli bir uygulamadan bir fanı açmak gibi) [doğrudan Yöntemler](quickstart-control-device-python.md) öğreticisini kullanarak kontrol edin.
+* Cihazları etkileşimli olarak kontrol edin (kullanıcı kontrolündeki bir uygulamadan bir fanı açmak gibi), [doğrudan yöntem](quickstart-control-device-python.md) kullanma öğreticisiyle.

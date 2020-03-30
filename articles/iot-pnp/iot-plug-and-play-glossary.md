@@ -1,6 +1,6 @@
 ---
-title: Terimler sözlüğü-IoT Tak ve Kullan önizlemesi | Microsoft Docs
-description: Kavramlar-IoT Tak ve Kullan önizlemesiyle ilgili yaygın koşulların bir sözlüğü.
+title: Terimler Sözlüğü - IoT Tak ve Çalıştır Önizleme | Microsoft Dokümanlar
+description: Kavramlar - IoT Tak ve Çalıştır Önizleme ile ilgili ortak terimler sözlüğü.
 author: ChrisGMsft
 ms.author: chrisgre
 ms.date: 12/23/2019
@@ -10,195 +10,195 @@ ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
 ms.openlocfilehash: ef5ce9cc1cda7f1ff6b1985771e20cb20123e264
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77025648"
 ---
-# <a name="glossary-of-terms-for-iot-plug-and-play-preview"></a>IoT Tak ve Kullan önizlemesi için terimler sözlüğü
+# <a name="glossary-of-terms-for-iot-plug-and-play-preview"></a>IoT Tak ve Çalıştır Önizleme terimleri sözlüğü
 
-IoT Tak ve Kullan makalelerinde kullanılan yaygın terimlerin tanımları.
+IoT Tak ve Çalıştır makalelerinde kullanılan ortak terimlerin tanımları.
 
-## <a name="azure-certified-for-iot-portal"></a>IoT portalı için Azure sertifikası
+## <a name="azure-certified-for-iot-portal"></a>IoT portalı için Azure Sertifikalı
 
-[IoT Için Azure Sertifikalı](https://aka.ms/ACFI) Web sitesini kullanarak şunları yapabilirsiniz:
+[IoT portalı için Azure Sertifikalı](https://aka.ms/ACFI) web sitesini şu şekilde kullanabilirsiniz:
 
-- [Iot Tak ve kullan cihazınız](#iot-plug-and-play-device)için [sertifika sürecini](#device-certification) doldurun.
-- [Cihaz yetenek modellerini](#device-capability-model)bulun.
-- [Ortak model deposuna](#public-model-repository)bir cihaz yetenek modeli yayımlayın.
+- [IoT Tak ve Çalıştır cihazınız](#iot-plug-and-play-device)için sertifika [işlemini](#device-certification) tamamlayın.
+- [Aygıt özelliği modellerini](#device-capability-model)bulun.
+- Aygıt yetenek [modelini ortak model deposuna](#public-model-repository)yayımlayın.
 
 ## <a name="azure-cli"></a>Azure CLI
 
-Azure CLı, Azure kaynaklarını yönetmeye yönelik platformlar arası bir komut satırı aracıdır. Azure CLı için Azure IoT uzantısı, ile etkileşimde bulunmak ve [ıot Tak ve kullan cihazlarını](#iot-plug-and-play-device)test etmek için bir komut satırı aracıdır. Uzantıyı şu şekilde kullanabilirsiniz:
+Azure CLI, Azure kaynaklarını yönetmek için bir çapraz platform, komut satırı aracıdır. Azure CLI için Azure IoT uzantısı, [IoT Tak ve Çalıştır aygıtlarıyla](#iot-plug-and-play-device)etkileşim kurmak ve test etmek için bir komut satırı aracıdır. Uzantıyı şu adreste kullanabilirsiniz:
 
-- IoT Tak ve Kullan cihazına bağlanın.
-- Cihazın gönderdiği [Telemetriyi](#telemetry) görüntüleyin.
-- Cihaz [özellikleriyle](#properties)çalışın.
-- Çağrı cihazı [komutları](#commands).
-- [Model depoları](#model-repository), [arabirimler](#interface)ve [cihaz yetenek modellerini](#device-capability-model)yönetin.
+- Bir IoT Tak ve Çalıştır aygıtına bağlanın.
+- Aygıtın gönderdiği [telemetriyi](#telemetry) görüntüleyin.
+- Aygıt [özellikleriyle](#properties)çalışın.
+- Çağrı aygıtı [komutları.](#commands)
+- [Model depolarını,](#model-repository) [arabirimleri](#interface)ve [aygıt yetenek modellerini](#device-capability-model)yönetin.
 
 ## <a name="azure-iot-central"></a>Azure IoT Central
 
-Azure IoT Central, [ıot Tak ve kullan cihazlarınızı](#iot-plug-and-play-device)bağlamayı, izlemeyi ve yönetmeyi kolaylaştıran, tam olarak yönetilen bir hizmet olarak yazılım çözümüdür. Cihazlarınızı izlemek ve yönetmek için bir IoT Central uygulamasını otomatik olarak yapılandırmak üzere [cihaz yetenek modellerini](#device-capability-model) kullanabilirsiniz.
+Azure IoT Central, [IoT Tak ve Çalıştır cihazlarınızı](#iot-plug-and-play-device)bağlamayı, izlemeyi ve yönetmeyi kolaylaştıran, hizmet olarak yazılım olarak tamamen yönetilen bir çözümdür. Aygıtlarınızı izlemek ve yönetmek için bir IoT Merkezi uygulamasını otomatik olarak yapılandırmak için [aygıt özelliği modellerini](#device-capability-model) kullanabilirsiniz.
 
 ## <a name="azure-iot-certification-service"></a>Azure IoT sertifika hizmeti
 
-Azure IoT sertifika hizmeti, [Azure Sertifikalı IoT portalı](#azure-certified-for-iot-portal)aracılığıyla sertifika Için bir [IoT Tak ve Kullan cihazı](#iot-plug-and-play-device) gönderdiğinizde bir sertifika testleri kümesi çalıştırır. [IoT cihaz kataloğuna sertifikalı](#certified-for-iot-device-catalog)bir cihaz ekleyebilmeniz için önce cihazın sertifikalı olması gerekir.
+Azure IoT sertifika hizmeti, [IoT için](#azure-certified-for-iot-portal)Azure Sertifikalı portalı üzerinden sertifikaiçin bir [IoT Tak ve Çalıştır aygıtı](#iot-plug-and-play-device) gönderdiğinizde bir dizi sertifika testi çalıştırMaktadır. [Sertifikalı IoT aygıt kataloğuna](#certified-for-iot-device-catalog)bir aygıt eklemeden önce, aygıtın sertifikalı olması gerekir.
 
-## <a name="azure-iot-tools-extension"></a>Azure IoT araçları uzantısı
+## <a name="azure-iot-tools-extension"></a>Azure IoT Araçları uzantısı
 
-Azure IoT araçları, [Visual Studio Code](#visual-studio-code) 'da IoT Hub etkileşime geçerek IoT cihazları geliştirmenize yardımcı olan bir uzantılar koleksiyonudur. IoT Tak ve Kullan cihaz geliştirme için şunları yapmanıza yardımcı olur:
+Azure IoT Araçları, Visual Studio [kodunda](#visual-studio-code) IoT Hub ile etkileşimkurmanıza ve IoT aygıtları geliştirmenize yardımcı olan bir uzantı koleksiyonudur. IoT Tak ve Çalıştır aygıtı geliştirmeiçin şunları yardımcı olur:
 
-- [Cihaz yetenek modellerini](#device-capability-model) ve [arabirimlerini](#interface)yazar.
-- [Model depolarında](#model-repository)yayımlayın.
-- Cihaz uygulamasını uygulamak için iskelet kodu oluşturun.
+- Yazar [cihaz yeteneği modelleri](#device-capability-model) ve [arayüzleri](#interface).
+- Model [depoları](#model-repository)için yayımlayın.
+- Aygıt uygulamasını uygulamak için iskelet kodu oluşturun.
 
-## <a name="azure-iot-explorer-tool"></a>Azure IoT gezgin aracı
+## <a name="azure-iot-explorer-tool"></a>Azure IoT explorer aracı
 
-Azure IoT Explorer, [ıot Tak ve kullan cihazlarınızla](#iot-plug-and-play-device)etkileşim kurmak ve test etmek için kullanabileceğiniz bir grafik aracıdır. Aracı yerel makinenize yükledikten sonra, şunları yapmak için kullanabilirsiniz:
+Azure IoT gezgini, [IoT Tak ve Çalıştır aygıtlarınızla](#iot-plug-and-play-device)etkileşimde kalmak ve test etmek için kullanabileceğiniz bir grafik aracıdır. Aracı yerel makinenize yükledikten sonra şunları yapabilirsiniz:
 
-- [IoT Hub 'ınıza](#azure-iot-hub)bağlı cihazları görüntüleyin.
-- IoT Tak ve Kullan cihazına bağlanın.
-- Cihazın gönderdiği [Telemetriyi](#telemetry) görüntüleyin.
-- Cihaz [özellikleriyle](#properties)çalışın.
-- Çağrı cihazı [komutları](#commands).
+- IoT hub'ınıza bağlı aygıtları [görüntüleyin.](#azure-iot-hub)
+- Bir IoT Tak ve Çalıştır aygıtına bağlanın.
+- Aygıtın gönderdiği [telemetriyi](#telemetry) görüntüleyin.
+- Aygıt [özellikleriyle](#properties)çalışın.
+- Çağrı aygıtı [komutları.](#commands)
 
-## <a name="azure-iot-hub"></a>Azure IoT Hub
+## <a name="azure-iot-hub"></a>Azure IoT Hub’ı
 
-IoT Hub, bulutta barındırılan ve IoT uygulamanız ve yönettiği cihazlar arasındaki iki yönlü iletişim için merkezi ileti hub’ı görevi gören, yönetilen bir hizmettir. [Iot Tak ve kullan cihazları](#iot-plug-and-play-device) , IoT Hub 'ına bağlanabilir. IoT çözümü, şunları sağlamak için bir IoT Hub 'ı kullanır:
+IoT Hub, bulutta barındırılan ve IoT uygulamanız ve yönettiği cihazlar arasındaki iki yönlü iletişim için merkezi ileti hub’ı görevi gören, yönetilen bir hizmettir. [IoT Tak ve Çalıştır aygıtları](#iot-plug-and-play-device) bir IoT hub'ına bağlanabilir. Bir IoT çözümü, şunları etkinleştirmek için bir IoT hub'ı kullanır:
 
-- Bulut tabanlı bir çözüme telemetri göndermek için cihazlar.
-- Bağlı cihazları yönetmek için bulut tabanlı bir çözüm.
+- Telemetriyi bulut tabanlı bir çözüme gönderecek cihazlar.
+- Bağlı aygıtları yönetmek için bulut tabanlı bir çözüm.
 
-## <a name="azure-iot-device-sdk"></a>Azure IoT cihaz SDK 'Sı
+## <a name="azure-iot-device-sdk"></a>Azure IoT cihazı SDK
 
-IoT Tak ve Kullan cihaz istemci uygulamaları oluşturmak için kullanabileceğiniz birden çok dil için cihaz SDK 'Ları vardır. Cihaz [sertifikası](#device-certification) gereksinimlerinden biri, cihaz Istemci kodunun Azure IoT cihaz SDK 'larından birini kullanmasıdır.
+IoT Tak ve Çalıştır aygıtı istemci uygulamalarını oluşturmak için kullanabileceğiniz birden çok dil için aygıt SDK'ları vardır. [Aygıt sertifikası](#device-certification) için gereken gereksinimlerden biri, aygıt istemci kodunun Azure IoT aygıt SDK'larından birini kullanmasıdır.
 
-## <a name="certified-for-iot-device-catalog"></a>IoT cihaz kataloğu için sertifikalı
+## <a name="certified-for-iot-device-catalog"></a>IoT cihaz kataloğu için onaylı
 
-[IoT cihaz kataloğu sertifikalı](https://catalog.azureiotsolutions.com/) , [cihaz sertifika](#device-certification) testlerini geçen [IoT Tak ve kullan cihazlarını](#iot-plug-and-play-device) listeler. Bu cihaz, katalogdaki IoT Tak ve Kullan cihazları için ve ortak model deposunda yayınlanan [yetenek modelleridir](#device-capability-model) .
+[Sertifikalı IoT aygıt kataloğu,](https://catalog.azureiotsolutions.com/) [aygıt sertifika](#device-certification) testlerini geçmiş [Olan IoT Tak ve Çalıştır aygıtlarını](#iot-plug-and-play-device) listeler. Katalogdaki IoT Tak ve Çalıştır aygıtları için [aygıt özelliği modelleri](#device-capability-model) ve genel model deposunda yayınlandı.
 
 ## <a name="commands"></a>Komutlar
 
-Bir [arabirimde](#interface) tanımlanan komutlar, [dijital ikizi](#digital-twin)yürütülebilecek yöntemleri temsil eder. Örneğin, bir cihazı yeniden başlatmak için bir komut.
+[Arabirimde](#interface) tanımlanan komutlar, [dijital ikizüzerinde](#digital-twin)yürütülebilecek yöntemleri temsil eder. Örneğin, aygıtı yeniden başlatma komutu.
 
-## <a name="common-interface"></a>Ortak arabirim
+## <a name="common-interface"></a>Ortak arayüz
 
-Tüm [ıot Tak ve kullan cihazlarının](#iot-plug-and-play-device) bazı ortak [arabirimleri](#interface)uygulaması beklenir. Örneğin, cihaz bilgi arabirimi, cihaz ile ilgili donanım ve işletim sistemi bilgilerini tanımlar. [Cihaz sertifikası](#device-certification) , cihazınızın birkaç ortak arabirimi uygulamasını gerektirir. Ortak model deposundan ortak arabirim tanımlarını elde edebilirsiniz.
+Tüm [IoT Tak ve Çalıştır aygıtlarının](#iot-plug-and-play-device) bazı ortak [arayüzleri](#interface)uygulaması beklenmektedir. Örneğin, aygıt bilgi arabirimi aygıt la ilgili donanım ve işletim sistemi bilgilerini tanımlar. [Aygıt sertifikası,](#device-certification) cihazınızın birkaç ortak arabirim uygulamasını gerektirir. Ortak model deposundan ortak arabirim tanımlarını alabilirsiniz.
 
-## <a name="company-model-repository"></a>Şirket modeli deposu
+## <a name="company-model-repository"></a>Şirket model deposu
 
-Bir kuruluş, [cihaz yeteneği modelleri](#device-capability-model) ve [arabirimleri](#interface)için özel bir mağaza olarak bir şirket [modeli deposu](#model-repository) kullanabilir.
+Bir [kuruluş, aygıt özelliği modelleri](#device-capability-model) ve [arabirimleri](#interface)için özel mağaza olarak şirket [modeli deposunu](#model-repository) kullanabilir.
 
 ## <a name="connection-string"></a>Bağlantı dizesi
 
-Bir bağlantı dizesi, bir uç noktaya bağlanmak için gereken bilgileri kapsüller. Bağlantı dizesi genellikle uç nokta ve güvenlik bilgilerinin adresini içerir, ancak bağlantı dizesi biçimleri hizmetler arasında farklılık gösterir. IoT Hub hizmetiyle ilişkili iki tür bağlantı dizesi vardır:
+Bağlantı dizesi, bitiş noktasına bağlanmak için gereken bilgileri kapsüller. Bağlantı dizesi genellikle bitiş noktası nın adresini ve güvenlik bilgilerini içerir, ancak bağlantı dize biçimleri hizmetler arasında farklılık gösterir. IoT Hub hizmetiyle ilişkili iki tür bağlantı dizesi vardır:
 
-- Cihaz bağlantı dizeleri IoT Hub 'ındaki cihaza yönelik uç noktalara bağlanmak için [ıot Tak ve kullan cihazları](#iot-plug-and-play-device) etkinleştirir. Bir cihazdaki istemci kodu, IoT Hub ile güvenli bir bağlantı kurmak için bağlantı dizesini kullanır.
-- IoT Hub bağlantı dizeleri, bir IoT Hub 'ında hizmete yönelik uç noktalara güvenli bir şekilde bağlanmak için arka uç çözümlerini ve araçlarını etkinleştirir. Bu çözümler ve araçlar, IoT Hub 'ını ve ona bağlı olan cihazları yönetir.
-- Şirket modeli deposu bağlantı dizeleri, bir [Şirket modeli deposuna](#company-model-repository)güvenli bir şekilde bağlanmak için arka uç çözümlerini ve araçlarını etkinleştirir. Bu çözümler ve araçlar depodaki [cihaz yeteneği modellerini](#device-capability-model) ve [arabirimlerini](#interface) kullanır veya yönetir.
+- Aygıt bağlantı [dizeleri, IoT Tak ve Çalıştır aygıtlarının ioT](#iot-plug-and-play-device) hub'ındaki aygıta bakan uç noktalara bağlanmasını sağlar. Aygıttaki istemci kodu, bir IoT hub'ı ile güvenli bir bağlantı kurmak için bağlantı dizesini kullanır.
+- IoT Hub bağlantı dizeleri, bir IoT hub'ında hizmete bakan uç noktalara güvenli bir şekilde bağlanmak için arka uç çözümlerinin ve araçları sağlar. Bu çözümler ve araçlar IoT hub'ını ve ona bağlı aygıtları yönetir.
+- Şirket modeli depo bağlantı dizeleri arka uç çözümleri ve araçları güvenli bir [şirket modeli deposuna](#company-model-repository)bağlanmak için etkinleştirin. Bu çözümler ve araçlar depodaki [aygıt yetenek modellerini](#device-capability-model) ve [arabirimlerini](#interface) tüketir veya yönetir.
 
 ## <a name="device-capability-model"></a>Cihaz yetenek modeli
 
-Cihaz yetenek modeli, [ıot Tak ve kullan cihazını](#iot-plug-and-play-device) açıklar ve cihaz tarafından uygulanan [arabirimlerin](#interface) kümesini tanımlar. Bir cihaz yetenek modeli, genellikle fiziksel bir cihaza, ürüne veya SKU 'ya karşılık gelir. Bir cihaz yetenek modeli tanımlamak için [Digital Ikizi tanım dilini](#digital-twin-definition-language) kullanırsınız.
+Aygıt özelliği modeli, bir [IoT Tak ve Çalıştır aygıtını](#iot-plug-and-play-device) açıklar ve aygıt tarafından uygulanan [arabirim](#interface) kümesini tanımlar. Aygıt yeteneği modeli genellikle fiziksel bir aygıta, ürüne veya SKU'ya karşılık gelir. Bir aygıt yeteneği modelini tanımlamak için [Dijital İkiz Tanımlı Dili](#digital-twin-definition-language) kullanırsınız.
 
-## <a name="device-certification"></a>Cihaz Sertifikası
+## <a name="device-certification"></a>Cihaz sertifikası
 
-Cihaz sertifikası, IoT [cihaz kataloğuna](#certified-for-iot-device-catalog) ve [cihaz yeteneği modeline](#device-capability-model) ve [Genel model deposuna](#public-model-repository)eklenen [arabirimlere](#interface) eklenebilmeleri için bir [IoT Tak ve kullan cihazının](#iot-plug-and-play-device) sertifikalandırılması işlemidir.
+Cihaz sertifikası, [ioT aygıtının Sertifikalı IoT aygıt kataloğuna](#certified-for-iot-device-catalog) ve [cihaz yetenek modeline](#device-capability-model) ve [genel model deposuna](#public-model-repository)eklenen [arayüzlere](#interface) eklenabilmesi için bir [IoT Tak ve Çalıştır cihazını](#iot-plug-and-play-device) onaylama işlemidir.
 
 ## <a name="device-developer"></a>Cihaz geliştirici
 
-Bir cihaz geliştiricisi, [ıot Tak ve kullan cihazında](#iot-plug-and-play-device)çalıştırılacak kodu uygulamak için bir [cihaz yetenek modeli](#device-capability-model), [arabirimler](#interface)ve bir [Azure IoT cihaz SDK 'sı](#azure-iot-device-sdk) kullanır.
+Aygıt geliştiricisi, [ioT Tak ve Çalıştır aygıtında](#iot-plug-and-play-device)çalışacak kod uygulamak için bir [aygıt yeteneği modeli,](#device-capability-model) [arabirimleri](#interface)ve [Bir Azure IoT aygıtı SDK](#azure-iot-device-sdk) kullanır.
 
-## <a name="device-modeling"></a>Cihaz modellemesi
+## <a name="device-modeling"></a>Cihaz modelleme
 
-Bir [cihaz geliştiricisi](#device-developer) , [IoT Tak ve kullan cihazının](#iot-plug-and-play-device)yeteneklerini modellemek Için [Digital ikizi tanım dilini](#digital-twin-definition-language) kullanır. Model bir model deposu kullanılarak paylaşılabilir. Bir cihaz geliştiricisi modelden iskelet cihaz kodu oluşturabilir. Bir [çözüm geliştiricisi](#solution-developer) , bir IoT çözümünü modelden yapılandırabilir.
+Bir [aygıt geliştiricisi,](#device-developer) Bir [IoT Tak ve Çalıştır aygıtının](#iot-plug-and-play-device)özelliklerini modellemek için [Dijital İkiz Tanım Lı Dil'i](#digital-twin-definition-language) kullanır. Model bir model deposu kullanılarak paylaşılabilir. Aygıt geliştiricisi modelden iskelet aygıt kodu oluşturabilir. Bir [çözüm geliştiricisi](#solution-developer) modelden bir IoT çözümüsekleyebilir.
 
-## <a name="device-provisioning-service"></a>Cihaz sağlama hizmeti
+## <a name="device-provisioning-service"></a>Cihaz Sağlama Hizmeti
 
-[Azure IoT Central](#azure-iot-central) , tüm cihaz kaydı ve bağlantılarını yönetmek Için cihaz sağlama hizmetini kullanır. Daha fazla bilgi için bkz. [Azure IoT Central cihaz bağlantısı](../iot-central/core/concepts-get-connected.md). Cihaz kaydı ve IoT Hub tabanlı IoT çözümünüze bağlantı yönetmek için cihaz sağlama hizmetini de kullanabilirsiniz. Daha fazla bilgi için bkz. [Azure IoT Hub cihaz sağlama hizmeti ile cihazları sağlama](../iot-dps/about-iot-dps.md).
+[Azure IoT Central,](#azure-iot-central) tüm cihaz kaydını ve bağlantısını yönetmek için Aygıt Sağlama Hizmetini kullanır. Daha fazla bilgi için [Azure IoT Central'daki Aygıt bağlantısına](../iot-central/core/concepts-get-connected.md)bakın. Cihaz kaydını ve IoT Hub tabanlı IoT çözümünüze bağlantıyı yönetmek için Aygıt Sağlama Hizmetini de kullanabilirsiniz. Daha fazla bilgi için bkz: [Azure IoT Hub Aygıt Sağlama Hizmeti ile Sağlama aygıtları.](../iot-dps/about-iot-dps.md)
 
 ## <a name="device-registration"></a>Cihaz kaydı
 
-[Iot Tak ve kullan cihazının](#iot-plug-and-play-device) bir IoT çözümüne bağlanabilmesi için, çözüme kayıtlı olması gerekir. [Azure IoT Central](#azure-iot-central) cihaz kaydını yönetmek Için [cihaz sağlama hizmetini](#device-provisioning-service) kullanır. Özel bir IoT çözümünde, IoT Hub 'ınıza cihazları Azure portal veya program aracılığıyla kaydedebilirsiniz.
+Bir [IoT Tak ve Çalıştır aygıtının bir IoT](#iot-plug-and-play-device) çözümüne bağlanabilmesi için önce çözüme kaydedilmesi gerekir. [Azure IoT Central,](#azure-iot-central) aygıt kaydını yönetmek için [Aygıt Sağlama Hizmetini](#device-provisioning-service) kullanır. Özel bir IoT çözümünde, aygıtları Azure portalında veya programlı bir şekilde IoT hub'ınızla kaydedebilirsiniz.
 
-## <a name="device-first"></a>Cihaz-önce
+## <a name="device-first"></a>Önce cihaz
 
-[Azure IoT Central](#azure-iot-central) , bir cihazın ilk kaydını ve bağlantı senaryosunu destekler. Bu senaryoda, [ıot Tak ve Kullan bir cihaz](#iot-plug-and-play-device) bir IoT Central uygulamasına önceden kaydolmadan bağlanabilir. Bir cihaz uygulamaya ilk kez bağlandığında kayıt otomatik olarak gerçekleşir.
+[Azure IoT Central,](#azure-iot-central) aygıta ilk kayıt ve bağlantı senaryosunı destekler. Bu senaryoda, bir [IoT Tak ve Çalıştır aygıtı](#iot-plug-and-play-device) önceden kaydolmadan bir IoT Merkezi uygulamasına bağlanabilir. Kayıt, bir aygıt uygulamaya ilk bağlandığında otomatik olarak gerçekleşir.
 
-## <a name="digital-twin"></a>Dijital ikizi
+## <a name="digital-twin"></a>Dijital ikiz
 
-Dijital ikizi, [ıot Tak ve kullan cihazının](#iot-plug-and-play-device)bir modelidir. Dijital bir ikizi, [dijital Ikizi tanım dili](#digital-twin-definition-language)kullanılarak modellenir. Çalışma zamanında dijital TWINS ile etkileşim kurmak için [Azure IoT cihaz SDK](#azure-iot-device-sdk) 'larını kullanabilirsiniz. Örneğin, bir cihazdaki dijital ikizi bir özellik değeri ayarlayabilirsiniz ve SDK bu değişikliği buluttaki IoT çözümünüz ile iletişim kurar.
+Dijital ikiz, [IoT Tak ve Çalıştır cihazının](#iot-plug-and-play-device)bir modelidir. Dijital [ikiz, Dijital İkiz Tanımlı Dil](#digital-twin-definition-language)kullanılarak modellenmiştir. Çalışma zamanında dijital ikizler ile etkileşim kurmak için [Azure IoT aygıt SDK'larını](#azure-iot-device-sdk) kullanabilirsiniz. Örneğin, bir aygıttaki dijital ikizde özellik değeri ayarlayabilirsiniz ve SDK bu değişikliği buluttaki IoT çözümünüze iletir.
 
-## <a name="digital-twin-change-events"></a>Dijital ikizi değişiklik olayları
+## <a name="digital-twin-change-events"></a>Dijital ikiz değişim etkinlikleri
 
-[Iot Tak ve Kullan cihazı](#iot-plug-and-play-device) bir [IoT Hub 'ına](#azure-iot-hub)bağlandığında, hub, dijital ikizi değişikliklerinin bildirimlerini göndermek için yönlendirme özelliğini kullanabilir. Örneğin, bir cihazdaki [özellik](#properties) değeri her değiştiğinde IoT Hub Service Bus kuyruğu gibi bir uç noktaya bildirim gönderebilir.
+Bir [IoT Tak ve Çalıştır aygıtı](#iot-plug-and-play-device) bir [IoT hub'ına](#azure-iot-hub)bağlandığında, hub yönlendirme yeteneğini kullanarak dijital ikiz değişiklikleriyle ilgili bildirimler gönderebilir. Örneğin, [bir](#properties) aygıtta özellik değeri değiştiğinde, IoT Hub bir bildirimi Hizmet Veri Servisi kuyruğu gibi bir bitiş noktasına gönderebilir.
 
-## <a name="digital-twin-definition-language"></a>Digital Ikizi tanım dili
+## <a name="digital-twin-definition-language"></a>Dijital İkiz Tanımlı Dil
 
-[Iot Tak ve kullan cihazları](#iot-plug-and-play-device)için modelleri ve arabirimleri tanımlamaya yönelik bir dil. Dijital [Ikizi tanım dilini](https://aka.ms/DTDL) kullanarak bir [Digital ikizi 'ın](#digital-twin) yeteneklerini ve IoT platformunu ve IoT çözümlerini, varlığın semantiklerinden yararlanmak için etkinleştirin.
+[IoT Tak](#iot-plug-and-play-device)ve Çalıştır aygıtları için modelleri ve arayüzleri açıklayan bir dil. [Dijital ikizin](#digital-twin) yeteneklerini tanımlamak ve IoT platformu ve IoT çözümlerinin varlığın anlambiliminden yararlanmasını sağlamak için [Dijital İkiz Tanımlı Dili](https://aka.ms/DTDL) kullanın.
 
-## <a name="digital-twin-route"></a>Dijital ikizi rotası
+## <a name="digital-twin-route"></a>Dijital ikiz rota
 
-Bir [IoT Hub 'ında](#azure-iot-hub) , [dijital ikizi değişiklik olayları](#digital-twin-change-events) ve Service Bus kuyruğu gibi uç nokta sunmak için bir yol ayarlandı.
+Bir [IoT hub'ında,](#azure-iot-hub) Servis Veri Yolu kuyruğu gibi [dijital ikiz değiştirme olaylarını](#digital-twin-change-events) ve bitiş noktasına teslim etmek için ayarlanmış bir rota.
 
 ## <a name="interface"></a>Arabirim
 
-Bir arabirim, [ıot Tak ve kullan cihazından](#iot-plug-and-play-device) veya [dijital ikizi](#digital-twin)tarafından uygulanan ilgili özellikleri açıklar. Arabirimleri farklı [cihaz yeteneği modelleri](#device-capability-model)genelinde yeniden kullanabilirsiniz.
+Arabirim, bir [IoT Tak ve Çalıştır aygıtı](#iot-plug-and-play-device) veya [dijital ikiz](#digital-twin)tarafından uygulanan ilgili yetenekleri açıklar. Farklı [aygıt özelliği modelleri](#device-capability-model)arasında arabirimleri yeniden kullanabilirsiniz.
 
 ## <a name="iot-hub-query-language"></a>IoT Hub sorgu dili
 
-IoT Hub sorgu dili birden çok amaçla kullanılır. Örneğin, IoT Hub 'ınıza [kayıtlı cihazları](#device-registration) aramak veya [dijital ikizi yönlendirme](#digital-twin-route) davranışını daraltmak için dilini kullanabilirsiniz.
+IoT Hub sorgu dili birden çok amaç için kullanılır. Örneğin, dili IoT hub'ınıza [kayıtlı aygıtları](#device-registration) aramak veya [dijital ikiz yönlendirme](#digital-twin-route) davranışını hassaslaştırmak için kullanabilirsiniz.
 
-## <a name="iot-plug-and-play-device"></a>IoT Tak ve Kullan cihazı
+## <a name="iot-plug-and-play-device"></a>IoT Tak ve Çalıştır cihazı
 
-IoT Tak ve Kullan cihazı genellikle veri toplayan veya diğer cihazları denetleyen ve [cihaz yetenek modeli](#device-capability-model)uygulayan yazılım veya bellenim çalıştıran bir küçük ölçekli, tek başına bilgi işlem aygıtıdır.  Örneğin, bir IoT Tak ve Kullan cihazı, bir çevre izleme cihazı veya bir akıllı tarım sulama sistemi denetleyicisi olabilir. Komut, denetim ve IoT Tak ve Kullan cihazlarındaki verileri almak için bulutta barındırılan bir IoT çözümü yazabilirsiniz. [IoT Için Azure Sertifikalı cihaz kataloğu](#certified-for-iot-device-catalog) , kullanılabilir IoT Tak ve kullan cihazları listeler. Katalogdaki her bir IoT Tak ve Kullan aygıtı doğrulandıktan sonra bir [cihaz yetenek modeli](#device-capability-model)vardır.
+IoT Tak ve Çalıştır aygıtı genellikle veri toplayan veya diğer aygıtları kontrol eden ve bir [aygıt yetenek modeli](#device-capability-model)uygulayan yazılım veya yazılım çalıştıran küçük ölçekli, bağımsız bir bilgi işlem aygıtıdır.  Örneğin, bir IoT Tak ve Çalıştır cihazı bir çevre izleme cihazı veya akıllı tarım sulama sistemi için bir denetleyici olabilir. Komut, denetim ve IoT Tak ve Çalıştır aygıtlarından veri almak için bulut barındırılan bir IoT çözümü yazabilirsiniz. [Azure Sertifikalı IoT aygıt kataloğu,](#certified-for-iot-device-catalog) kullanılabilir IoT Tak ve Çalıştır aygıtlarını listeler. Katalogdaki her IoT Tak ve Çalıştır aygıtı doğrulandı ve bir [aygıt yeteneği modeli](#device-capability-model)var.
 
-## <a name="microsoft-partner-center"></a>Microsoft Iş Ortağı Merkezi
+## <a name="microsoft-partner-center"></a>Microsoft İş Ortağı Merkezi
 
-[Microsoft Iş Ortağı Merkezi](https://docs.microsoft.com/partner-center/) , kuruluşunuzun uçtan uca ilişkilerini Microsoft ile yönetmektedir. IoT [Tak ve kullan cihazınızı](#iot-plug-and-play-device) [IoT portalındaki Azure sertifikası](#azure-certified-for-iot-portal)'nda doğrulayabilmeniz Için bir Microsoft iş ortağı Merkezi hesabına ihtiyacınız vardır.
+[Microsoft İş Ortağı Merkezi,](https://docs.microsoft.com/partner-center/) kuruluşunuzun Microsoft ile uçlardan uca ilişkisini yönettiği yerdir. [IoT Tak ve Çalıştır cihazınızı](#iot-plug-and-play-device) [Azure Sertifikalı IoT portalında](#azure-certified-for-iot-portal)onaylamadan önce bir Microsoft İş Ortağı Merkezi hesabına ihtiyacınız vardır.
 
 ## <a name="model-discovery"></a>Model keşfi
 
-[Iot Tak ve Kullan cihazı](#iot-plug-and-play-device) bir IoT çözümüne bağlanırsa, çözüm cihaz [yetenek modelini](#device-capability-model)bularak cihazın yeteneklerini bulabilir. Bir cihaz, yetenek modelini çözüme gönderebilir veya çözüm bir [model deposunda](#model-repository)cihaz yetenek modeli bulabilir.
+Bir [IoT Tak ve Çalıştır aygıtı](#iot-plug-and-play-device) bir IoT çözümüne bağlandığında, çözüm aygıt [yetenek modelini](#device-capability-model)bularak cihazın özelliklerini keşfedebilir. Bir aygıt, yetenek modelini çözüme gönderebilir veya çözüm bir [model deposunda](#model-repository)aygıt yetenek modeli bulabilir.
 
 ## <a name="model-repository"></a>Model deposu
 
-Model deposu [cihaz yeteneği modellerini](#device-capability-model) ve [arabirimlerini](#interface)depolar. Tek bir [ortak model deposu](#public-model-repository)vardır. Kuruluşlar kendi kuruluş modeli depolamalarını oluşturabilir.
+Bir model [deposu, aygıt özelliği modellerini](#device-capability-model) ve [arabirimlerini](#interface)depolar. Tek bir [halka açık model deposu](#public-model-repository)var. Kuruluşlar kendi kuruluş modeli depolarını oluşturabilir.
 
 ## <a name="model-repository-rest-api"></a>Model deposu REST API
 
-Model depoları yönetmek ve bunlarla etkileşim kurmak için bir API. Örneğin, API 'yi [cihaz yetenek modelleri](#device-capability-model) eklemek ve yetenek modellerini aramak için kullanabilirsiniz.
+Model depolarını yönetmek ve bunlarla etkileşimde olmak için bir API. Örneğin, [aygıt yeteneği modelleri](#device-capability-model) eklemek ve yetenek modellerini aramak için API'yi kullanabilirsiniz.
 
 ## <a name="properties"></a>Özellikler
 
-Özellikler, bir Digital ikizi 'ın bazı durumlarını temsil eden bir [arabirimde](#interface) tanımlanan veri alanlarıdır. Özellikleri salt okunurdur veya yazılabilir olarak bildirebilirsiniz. Seri numarası gibi salt yazılır özellikler, [ıot Tak ve kullan cihazının](#iot-plug-and-play-device) kendisi üzerinde çalışan kodla ayarlanır.  Bir alarm eşiği gibi yazılabilir özellikler genellikle bulut tabanlı IoT çözümünden ayarlanır.
+Özellikler, dijital ikizin bazı durumunu temsil eden bir [arabirimde](#interface) tanımlanan veri alanlarıdır. Özellikleri salt okunur veya yazılabilir olarak bildirebilirsiniz. Seri numarası gibi salt okunur özellikler, [IoT Tak ve Çalıştır aygıtında](#iot-plug-and-play-device) çalışan kodla ayarlanır.  Alarm eşiği gibi yazılabilir özellikler genellikle bulut tabanlı IoT çözümünden ayarlanır.
 
-## <a name="public-model-repository"></a>Ortak model deposu
+## <a name="public-model-repository"></a>Genel model deposu
 
-[Sertifikalı cihazlar](#device-certification)için [cihaz yetenek modellerini](#device-capability-model) ve [arabirimlerini](#interface) depolayan tek bir ortak model deposu vardır. Ortak model deposu Ayrıca [ortak arabirim](#common-interface) tanımlarını depolar.
+[Sertifikalı aygıtlar](#device-certification)için [aygıt özelliği modellerini](#device-capability-model) ve [arabirimlerini](#interface) depolayan tek bir ortak model deposu vardır. Ortak model deposu da [ortak arabirim](#common-interface) tanımları de depolar.
 
-## <a name="registration-id"></a>Kayıt KIMLIĞI
+## <a name="registration-id"></a>Kayıt Kimliği
 
-Kayıt KIMLIĞI cihaz [sağlama hizmetindeki](#device-provisioning-service)bir cihazı benzersiz şekilde tanımlar. Bu KIMLIK, [IoT Hub 'ındaki](#azure-iot-hub)bir cihaz için benzersiz bir tanımlayıcı olan cihaz kimliğiyle aynı değildir.
+Kayıt kimliği, [Aygıt Sağlama Hizmeti'ndeki](#device-provisioning-service)bir aygıtı benzersiz olarak tanımlar. Bu kimlik, [IoT](#azure-iot-hub)hub'ındaki bir aygıt için benzersiz bir tanımlayıcı olan aygıt kimliğiyle aynı değildir.
 
-## <a name="scope-id"></a>Kapsam KIMLIĞI
+## <a name="scope-id"></a>Kapsam Kimliği
 
-Kapsam KIMLIĞI kapsamı, bir [cihaz sağlama hizmeti](#device-provisioning-service) örneğini benzersiz bir şekilde tanımlar.
+Kapsam Kimliği kapsamı, aygıt [sağlama hizmeti](#device-provisioning-service) örneğini benzersiz olarak tanımlar.
 
 ## <a name="shared-access-signature"></a>Paylaşılan erişim imzası
 
-Paylaşılan erişim imzaları, SHA-256 güvenli karmaları veya URI 'Leri temel alan bir kimlik doğrulama mekanizmasıdır. Paylaşılan erişim imzası kimlik doğrulaması iki bileşene sahiptir: paylaşılan erişim ilkesi ve paylaşılan erişim imzası (genellikle belirteç olarak adlandırılır). [Iot Tak ve Kullan cihazı](#iot-plug-and-play-device) , [IoT Hub](#azure-iot-hub)ile kimlik doğrulamak için paylaşılan erişim imzasını kullanır.
+Paylaşılan erişim imzaları SHA-256 güvenli iş birliğini veya URI'leri temel alan bir kimlik doğrulama mekanizmasıdır. Paylaşılan erişim imzası kimlik doğrulaması iki bileşenden oluşur: paylaşılan erişim ilkesi ve paylaşılan erişim imzası (genellikle belirteç olarak adlandırılır). Bir [IoT Tak ve Çalıştır aygıtı,](#iot-plug-and-play-device) bir [IoT hub'ı](#azure-iot-hub)ile kimlik doğrulaması yapmak için paylaşılan bir erişim imzası kullanır.
 
 ## <a name="solution-developer"></a>Çözüm geliştiricisi
 
-Çözüm geliştiricisi, çözüm arka ucu oluşturur. Çözüm geliştiricisi, genellikle [IoT Hub](#azure-iot-hub) ve [model depoları](#model-repository)gibi Azure kaynaklarıyla birlikte çalışarak, [IoT Central](#azure-iot-central)ile birlikte çalışabilir.
+Bir çözüm geliştiricisi çözümü arka uçta oluşturur. Bir çözüm geliştiricisi genellikle [IoT Hub](#azure-iot-hub) ve [model depoları](#model-repository)gibi Azure kaynaklarıyla çalışır veya [IoT Central](#azure-iot-central)ile çalışır.
 
 ## <a name="telemetry"></a>Telemetri
 
-Bir [arabirimde](#interface) tanımlanan telemetri alanları ölçümleri temsil eder. Bu ölçümler genellikle [ıot Tak ve kullan cihazının](#iot-plug-and-play-device) veri akışı olarak gönderdiği algılayıcı ayarları gibi değerlerdir.
+[Arabirimde](#interface) tanımlanan telemetri alanları ölçümleri temsil eder. Bu ölçümler genellikle [IoT Tak ve Çalıştır aygıtı](#iot-plug-and-play-device) tarafından veri akışı olarak gönderilen sensör okumaları gibi değerlerdir.
 
 ## <a name="visual-studio-code"></a>Visual Studio kodu
 
-Visual Studio Code, birden çok platform için kullanılabilen modern bir kod düzenleyicisidir. [Azure IoT araçları](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) paketinde bulunanlar gibi uzantılar, düzenleyici 'yi çok çeşitli geliştirme senaryolarını destekleyecek şekilde özelleştirmenize olanak tanır.
+Visual Studio kodu, birden fazla platform için kullanılabilen modern bir kod düzenleyicisidir. [Azure IoT Araçları](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) paketindeki ler gibi uzantılar, çok çeşitli geliştirme senaryolarını destekleyecek şekilde düzenleyiciyi özelleştirmenize olanak tanır.

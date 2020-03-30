@@ -1,5 +1,5 @@
 ---
-title: Azure Ilkeleriyle tümleştirme-Azure Batch | Microsoft Docs
+title: Azure İlkeleri ile Tümleştirme - Azure Toplu İşi | Microsoft Dokümanlar
 description: ''
 services: batch
 documentationcenter: ''
@@ -15,28 +15,28 @@ ms.date: 02/24/2020
 ms.author: labrenne
 ms.custom: seodec18
 ms.openlocfilehash: 9a306457f838fc79d12be3217d96cc8fb25c9c1b
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77618379"
 ---
-# <a name="integration-with-azure-policy"></a>Azure Ilkesiyle tümleştirme
+# <a name="integration-with-azure-policy"></a>Azure İlkesiyle Tümleştirme
 
-Azure Ilkesi, kaynakların kurumsal standartlarınızla ve hizmet düzeyi sözleşmelerle uyumlu kalmasını sağlamak için kaynaklarınız üzerinde kurallar uygulayan ilkeler oluşturmak, atamak ve yönetmek için kullandığınız bir hizmettir. Azure Ilkesi, atadığınız ilkelerle uyumlu olmayan kaynaklarınızı hesaplar. 
+Azure İlkesi, Azure'da, bu kaynakların şirket standartlarınızla ve hizmet düzeyi sözleşmelerinizle uyumlu kalmasını sağlamak için kaynaklarınız üzerinde kurallar uygulayan ilkeler oluşturmak, atamak ve yönetmek için kullandığınız bir hizmettir. Azure İlkesi, kaynaklarınızı atadığınız ilkelere uymadığınıza göre değerlendirir. 
 
-Azure Batch, ilke uyumluluğunu yönetmenize yardımcı olmak için iki yerleşik uzantıya sahiptir. 
+Azure Toplu İş'in, ilke uyumluluğunu yönetmenize yardımcı olacak iki yerleşik uzantısı vardır. 
 
-|**Ad**...|   **Açıklama**|**Efekt (ler)**|  **Sürüm**|    **Kaynak**
+|**Adı**...|   **Açıklama**|**Etki(ler)**|  **Sürüm**|    **Kaynak**
 |----------------|----------|----------|----------------|---------------|
-|Batch hesaplarındaki tanılama günlükleri etkinleştirilmelidir|   Tanılama günlüklerini etkinleştirme denetimi. Bu, araştırma amacıyla kullanılacak etkinlik izlerini yeniden oluşturmayı sağlar; bir güvenlik olayı gerçekleştiğinde veya ağınız tehlikede olduğunda|Auditınotexists, devre dışı|  2.0.0|  GitHub|
-|Toplu Iş hesaplarında ölçüm uyarısı kuralları yapılandırılmalıdır| Gerekli ölçümü etkinleştirmek için Batch hesabındaki ölçüm uyarı kurallarının yapılandırmasını denetleme|   Auditınotexists, devre dışı| 1.0.0|  GitHub|
+|Toplu iş hesaplarındaki tanılama günlükleri etkinleştirilmeli|   Tanılama günlüklerinin denetim için. Bu, araştırma amacıyla kullanmak üzere etkinlik izlerini yeniden oluşturmanıza olanak tanır; bir güvenlik olayı meydana geldiğinde veya ağınızın gizliliği ihlal edildiğinde|Auditifnotexists, Devre Dışı|  2.0.0|  GitHub|
+|Metrik uyarı kuralları Toplu Iş hesaplarında yapılandırılmalıdır| Gerekli metrik etkinleştirmek için Toplu hesaptaki metrik uyarı kurallarının denetim yapılandırması|   Auditifnotexists, Devre Dışı| 1.0.0|  GitHub|
 
-İlke tanımları, karşılanması gereken koşulları tanımlar. Bir koşul, kaynak özelliğini gerekli bir değerle karşılaştırır. Kaynak özelliği alanlarına önceden tanımlanmış diğer adlar kullanılarak erişilir. Bir kaynak türü için belirli özelliklere erişmek üzere özellik diğer adlarını kullanırsınız. Diğer adlar, kaynak üzerinde bir özellik için hangi değerleri veya koşullara izin sınırlamak sağlar. Belirtilen kaynak türü için farklı bir API sürümlerinde yolları her diğer adın eşlenir. İlke değerlendirmesi sırasında ilke altyapısı bu API sürümü için özellik yolu alır.
+İlke tanımları karşılanması gereken koşulları açıklar. Bir koşul, kaynak özelliğini gerekli bir değerle karşılaştırır. Kaynak özelliği alanlarına önceden tanımlanmış diğer adlar kullanılarak erişilir. Kaynak türüiçin belirli özelliklere erişmek için özellik takma adlarını kullanırsınız. Diğer adlar, kaynaktaki bir özellik için hangi değerlerin veya koşulların izin verildiğini kısıtlamanızı sağlar. Her diğer ad, belirli bir kaynak türü için farklı API sürümlerindeki yollara eş ler. İlke değerlendirmesi sırasında, ilke altyapısı bu API sürümü için özellik yolunu alır.
 
-Batch tarafından gereken kaynaklar şunlardır: hesap, işlem düğümü, havuz, iş ve görev. Bu nedenle, bu kaynakların belirli özelliklerine erişmek için özellik diğer adlarını kullanırsınız. [Diğer adlar](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#aliases) hakkında daha fazla bilgi
+Toplu İşlem tarafından gerekli kaynaklar şunlardır: hesap, işlem düğümü, havuz, iş ve görev. Bu nedenle, bu kaynaklar için belirli özelliklere erişmek için özellik takma adlarını kullanırsınız. [Diğer Adlar](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#aliases) hakkında daha fazla bilgi edinin
 
-Geçerli diğer adları bildiğiniz ve kaynaklarınızı ve ilkelerinizi gözden geçirdiğinizden emin olmak için Visual Studio Code için Azure ilkesi uzantısını kullanın. Bu, Visual Studio Code tarafından desteklenen tüm platformlara yüklenebilir. Bu destek, Windows, Linux ve macOS içerir. Bkz. [yükleme yönergeleri](https://docs.microsoft.com/azure/governance/policy/how-to/extension-for-vscode).
+Geçerli diğer adları bildiğinizden ve kaynaklarınızı ve ilkelerinizi gözden geçirdiğinizden emin olmak için Visual Studio Code için Azure ilke uzantısını kullanın. Visual Studio Code tarafından desteklenen tüm platformlarda kurulabilir. Bu destek Windows, Linux ve macOS'u içerir. [Yükleme yönergelerine](https://docs.microsoft.com/azure/governance/policy/how-to/extension-for-vscode)bakın.
 
 
 

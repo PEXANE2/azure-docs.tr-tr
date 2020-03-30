@@ -1,6 +1,6 @@
 ---
-title: Azure AD Domain Services için kaynak ormanı kavramları | Microsoft Docs
-description: Kaynak ormanın ne Azure Active Directory Domain Services olduğunu ve kuruluşunuzun Karma ortamda, sınırlı Kullanıcı kimlik doğrulama seçenekleriyle veya güvenlik kaygılarıyla nasıl yararlandıkları hakkında bilgi edinin.
+title: Azure AD Etki Alanı Hizmetleri için kaynak ormanı kavramları | Microsoft Dokümanlar
+description: Azure Etkin Dizin Etki Alanı Hizmetlerinde kaynak ormanının ne olduğunu ve sınırlı kullanıcı kimlik doğrulama seçenekleri veya güvenlik sorunlarıyla karma ortamda kuruluşunuza nasıl fayda sağladığını öğrenin.
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -11,112 +11,112 @@ ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: iainfou
 ms.openlocfilehash: a583e32cbc3d58d5dfc5616335b2f38ad20fac14
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/20/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74233616"
 ---
-# <a name="resource-forest-concepts-and-features-for-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services için kaynak ormanı kavramları ve özellikleri
+# <a name="resource-forest-concepts-and-features-for-azure-active-directory-domain-services"></a>Azure Active Directory Etki Alanı Hizmetleri için kaynak ormanı kavramları ve özellikleri
 
-Azure Active Directory Domain Services (AD DS), eski, şirket içi ve iş kolu uygulamaları için bir oturum açma deneyimi sağlar. Şirket içi ve bulut kullanıcılarının kullanıcıları, grupları ve parola karmaları Azure AD DS yönetilen etki alanıyla eşitlenir. Bu eşitlenmiş parola karmaları, kullanıcılara şirket içi AD DS, Office 365 ve Azure Active Directory için kullanabilecekleri tek bir kimlik bilgileri kümesi sağlar.
+Azure Active Directory Domain Services (AD DS), eski, şirket içi, iş yeri uygulamaları için oturum açma deneyimi sağlar. Şirket içi ve bulut kullanıcılarının kullanıcıları, grupları ve parola grupları Azure AD DS yönetilen etki alanına eşitlenir. Bu eşitlenmiş parola yongaları, kullanıcılara şirket içi AD DS, Office 365 ve Azure Etkin Dizini için kullanabilecekleri tek bir kimlik bilgileri kümesi sağlar.
 
-Güvenli ve ek güvenlik avantajları sunmakla birlikte, bazı kuruluşlar bu kullanıcı parolası karmalarını Azure AD veya Azure AD DS ile eşitleyemez. Kuruluştaki kullanıcılar, yalnızca akıllı kart kimlik doğrulamasını kullandıkları için parolasını bilmiyor olabilir. Bu sınırlamalar, bazı kuruluşların şirket içi klasik uygulamaları Azure 'a taşımak ve bunlara geçiş yapmak için Azure AD DS kullanmasını engeller.
+Güvenli ve ek güvenlik avantajları sağlamasına rağmen, bazı kuruluşlar bu kullanıcı parolalarını Azure AD veya Azure AD DS ile eşitleemez. Kuruluştaki kullanıcılar parolalarını bilmiyor olabilir, çünkü yalnızca akıllı kart kimlik doğrulaması kullanıyorlar. Bu sınırlamalar, bazı kuruluşların şirket içi klasik uygulamaları kaldırmak ve Azure'a kaydırmak için Azure AD DS'yi kullanmasını engeller.
 
-Bu ihtiyaçları ve kısıtlamaları gidermek için, kaynak ormanı kullanan bir Azure AD DS yönetilen etki alanı oluşturabilirsiniz. Bu kavramsal makalede, ormanların ne olduğu ve güvenli bir kimlik doğrulama yöntemi sağlamak üzere diğer kaynaklara nasıl güvendikleri açıklanmaktadır. Azure AD DS kaynak ormanları Şu anda önizleme aşamasındadır.
+Bu gereksinimleri ve kısıtlamaları gidermek için, kaynak ormanı kullanan bir Azure AD DS yönetilen etki alanı oluşturabilirsiniz. Bu kavramsal makalede, ormanların ne olduğu ve güvenli bir kimlik doğrulama yöntemi sağlamak için diğer kaynaklara nasıl güvendikleri açıklanmaktadır. Azure AD DS kaynak ormanları şu anda önizlemede.
 
 > [!IMPORTANT]
-> Azure AD DS kaynak ormanları Şu anda Azure HDInsight veya Azure dosyalarını desteklememektedir. Varsayılan Azure AD DS kullanıcı ormanları bu ek hizmetlerden her ikisini de destekler.
+> Azure AD DS kaynak ormanları şu anda Azure HDInsight veya Azure Dosyalarını desteklemiyor. Varsayılan Azure AD DS kullanıcı ormanları bu ek hizmetlerin her ikisini de destekler.
 
-## <a name="what-are-forests"></a>Ormanlar nelerdir?
+## <a name="what-are-forests"></a>Ormanlar nedir?
 
-*Orman* , bir veya daha fazla *etki alanını*gruplamak için Active Directory Domain Services (AD DS) tarafından kullanılan mantıksal bir yapıdır. Etki alanları daha sonra Kullanıcı veya grup için nesneleri depolar ve kimlik doğrulama hizmetleri sağlar.
+*Orman,* Active Directory Domain Services (AD DS) tarafından bir veya daha fazla *etki alanını*gruplandırmak için kullanılan mantıksal bir yapıdır. Etki alanları daha sonra nesneleri kullanıcı veya gruplar için depolar ve kimlik doğrulama hizmetleri sağlar.
 
-Azure AD DS, orman yalnızca bir etki alanı içerir. Şirket içi AD DS ormanları genellikle birçok etki alanı içerir. Büyük kuruluşlarda, özellikle Birleşmeler ve alımlar sonrasında, her biri birden çok etki alanı içeren birden çok şirket içi ormana sahip olabilirsiniz.
+Azure AD DS'de orman yalnızca bir etki alanı içerir. Şirket içi AD DS ormanları genellikle birçok etki alanı içerir. Büyük kuruluşlarda, özellikle birleşme ve satın almalardan sonra, her biri birden çok etki alanı içeren birden çok şirket içi ormanla karşılaşabilirsiniz.
 
-Varsayılan olarak, Azure AD DS yönetilen bir etki alanı bir *Kullanıcı* Ormanı olarak oluşturulur. Bu tür bir orman, şirket içi AD DS ortamında oluşturulan kullanıcı hesapları da dahil olmak üzere Azure AD 'deki tüm nesneleri eşitler. Kullanıcı hesapları, etki alanına katılmış bir VM 'de oturum açmak gibi Azure AD DS yönetilen etki alanında doğrudan kimlik doğrulaması yapabilir. Parola karmaları eşitlenecekse ve kullanıcılar akıllı kart kimlik doğrulaması gibi özel oturum açma yöntemlerini kullanmadığı zaman bir Kullanıcı ormanı işe yarar.
+Varsayılan olarak, bir Azure AD DS yönetilen etki alanı *kullanıcı* ormanı olarak oluşturulur. Bu tür orman, şirket içi AD DS ortamında oluşturulan kullanıcı hesapları da dahil olmak üzere Azure AD'deki tüm nesneleri eşitler. Kullanıcı hesapları, etki alanına katılan bir VM'de oturum açma gibi Azure AD DS yönetilen etki alanına karşı doğrudan kimlik doğrulaması yapabilir. Parola kalıpları eşitlenediğinde ve kullanıcılar akıllı kart kimlik doğrulaması gibi özel oturum açma yöntemleri kullanmadığında kullanıcı ormanı çalışır.
 
-Azure AD DS *kaynak* ormanında, kullanıcılar şirket içi AD DS tek yönlü bir orman *güveni* üzerinden kimlik doğrular. Bu yaklaşımda, Kullanıcı nesneleri ve parola karmaları Azure AD DS ile eşitlenmez. Kullanıcı nesneleri ve kimlik bilgileri yalnızca şirket içi AD DS bulunur. Bu yaklaşım, kuruluşların Azure 'da, LDAPS, Kerberos veya NTLM gibi klasik kimlik doğrulamasına bağlı olan kaynakları ve uygulama platformlarını barındırmasına, ancak tüm kimlik doğrulama sorunları veya kaygıları kaldırılmasına olanak sağlar. Azure AD DS kaynak ormanları Şu anda önizleme aşamasındadır.
+Azure AD DS *kaynak* ormanında, kullanıcılar şirket içi AD DS'lerinden tek yönlü orman *güveni* üzerinden kimlik doğrulaması sağlar. Bu yaklaşımla, kullanıcı nesneleri ve parola kalıpları Azure AD DS ile eşitlenmez. Kullanıcı nesneleri ve kimlik bilgileri yalnızca şirket içi AD DS'de bulunur. Bu yaklaşım, işletmelerin Azure'da LDAPS, Kerberos veya NTLM gibi klasik kimlik doğrulamasına bağlı kaynakları ve uygulama platformlarını barındırmasına olanak tanır, ancak kimlik doğrulama sorunları veya endişeleri kaldırılır. Azure AD DS kaynak ormanları şu anda önizlemede.
 
-Kaynak ormanları Ayrıca uygulamalarınızı tek seferde bir bileşen üzerinde kaldırma ve kaydırma özelliği de sağlar. Birçok eski şirket içi uygulama, genellikle bir Web sunucusu veya ön uç ve veritabanı ile ilgili birçok bileşeni kullanan çok katmanlı. Bu katmanlar, tek bir adımda uygulamanın tamamını buluta taşımak ve kaydırmak için çok daha fazlasını yapar. Kaynak ormanlarıyla uygulamanızı aşamalı yaklaşımda kaldırabilirsiniz. Bu, uygulamanızı Azure 'a taşımayı kolaylaştırır.
+Kaynak ormanları, uygulamalarınızı her seferinde bir bileşenden kaldırma ve kaydırma olanağı da sağlar. Birçok eski şirket içi uygulamalar, genellikle bir web sunucusu veya ön uç ve veritabanı ile ilgili birçok bileşen kullanılarak çok katmanlıdır. Bu katmanlar, tüm uygulamayı tek bir adımda buluta kaldırmayı ve kaydırmayı zorlar. Kaynak ormanları ile uygulamanızı aşamalı bir yaklaşımla buluta taşıyabilirsiniz, bu da uygulamanızı Azure'a taşımanızı kolaylaştırır.
 
-## <a name="what-are-trusts"></a>Güvenler nelerdir?
+## <a name="what-are-trusts"></a>Güven nedir?
 
-Birden fazla etki alanı olan kuruluşların genellikle kullanıcıların farklı bir etki alanında paylaşılan kaynaklara erişmesi gerekir. Bu paylaşılan kaynaklara erişim, bir etki alanındaki kullanıcıların başka bir etki alanında kimlik doğrulamasını gerektirir. Farklı etki alanlarındaki istemciler ve sunucular arasında bu kimlik doğrulama ve yetkilendirme özellikleri sağlamak için iki etki alanı arasında bir *güven* olmalıdır.
+Birden fazla etki alanına sahip kuruluşlar genellikle kullanıcıların farklı bir etki alanında paylaşılan kaynaklara erişmelerine ihtiyaç duyar. Bu paylaşılan kaynaklara erişim, bir etki alanındakullanıcıların başka bir etki alanına kimlik doğrulamasını gerektirir. Farklı etki alanlarındaki istemciler ve sunucular arasında bu kimlik doğrulama ve yetkilendirme özelliklerini sağlamak için, iki etki alanı arasında bir *güven* olması gerekir.
 
-Etki alanı güvenleri ile, her etki alanı için kimlik doğrulama mekanizmaları, diğer etki alanından gelen kimlik doğrulamaları için güvenir. Güvenler, gelen kimlik doğrulama isteklerinin güvenilen bir yetkilinizden ( *Güvenilen* etki alanı) geldiği doğrulayarak, kaynak etki alanındaki ( *güvenen* etki alanındaki) paylaşılan kaynaklara denetimli erişim sağlamaya yardımcı olur. Güvenler yalnızca, kimlik alanları arasında dolaşmak için doğrulanan kimlik doğrulama isteklerinin izin veren köprü olarak davranır.
+Etki alanı güvenleri ile, her etki alanı için kimlik doğrulama mekanizmaları diğer etki alanından gelen kimlik doğrulamaları güven. Güvenler, gelen kimlik doğrulama isteklerinin güvenilir bir yetkiliden *(güvenilir* etki alanından) geldiğini doğrulayarak kaynak etki alanında *(güvenilen* etki alanı) paylaşılan kaynaklara kontrollü erişim sağlanmasına yardımcı olur. Güvenler, yalnızca doğrulanmış kimlik doğrulama isteklerinin etki alanları arasında seyahat etmesine izin veren köprüler görevi görede dir.
 
-Güven, kimlik doğrulama isteklerini nasıl geçireceğini nasıl yapılandırdığına bağlıdır. Güvenler aşağıdaki yollarla yapılandırılabilir:
+Bir güvenin kimlik doğrulama isteklerini nasıl geçtiği, nasıl yapılandırıldığına bağlıdır. Güvenler aşağıdaki yollardan biriyle yapılandırılabilir:
 
-* **Tek yönlü** -güvenen etki alanındaki kaynaklara güvenilir etki alanından erişim sağlar.
-* **İki yönlü** -diğer etki alanındaki kaynaklara her etki alanından erişim sağlar.
+* **Tek yönlü** - güvenilen etki alanından güvenilen etki alanından kaynaklara erişim sağlar.
+* **İki yönlü** - her etki alanından diğer etki alanında kaynaklara erişim sağlar.
 
-Güvenler Ayrıca aşağıdaki yollarla ek güven ilişkilerini işleyecek şekilde yapılandırılır:
+Güvenler, ek güven ilişkilerini aşağıdaki yollardan birinde işlenecek şekilde de yapılandırılır:
 
-* **Geçişsiz** -güven yalnızca iki güven ortağı etki alanı arasında bulunur.
-* **Geçişli** güven, iş ortaklarının güvendiği diğer etki alanlarına otomatik olarak genişletilir.
+* **Geçişsiz** - Güven yalnızca iki güven ortağı etki alanı arasında bulunur.
+* **Geçişli** - Güven, iş ortaklarından herhangi birinin güvendiği diğer etki alanlarını otomatik olarak genişletir.
 
-Bazı durumlarda, etki alanları oluşturulduğunda güven ilişkileri otomatik olarak oluşturulur. Diğer zamanlarda, bir güven türü seçmeniz ve uygun ilişkileri açıkça oluşturmanız gerekir. Kullanılan belirli güven türleri ve bu güven ilişkilerinin yapısı, Active Directory Directory hizmetinin nasıl düzenlendiğini ve ağda farklı Windows sürümlerinin aynı olup olmadığını gösterir.
+Bazı durumlarda, etki alanları oluşturulduğunda güven ilişkileri otomatik olarak kurulur. Diğer zamanlarda, bir güven türünü seçmeniz ve uygun ilişkileri açıkça kurmanız gerekir. Kullanılan belirli güven türleri ve bu güven ilişkilerinin yapısı, Etkin Dizin dizini hizmetinin nasıl düzenlendiğine ve Windows'un farklı sürümlerinin ağda bir arada bulunup bulunmadığına bağlıdır.
 
 ## <a name="trusts-between-two-forests"></a>İki orman arasındaki güvenler
 
-Tek yönlü veya iki yönlü bir orman güveni el ile oluşturarak, tek bir ormandaki etki alanı güvenlerini başka bir ormana genişletebilirsiniz. Orman güveni, yalnızca bir orman kök etki alanı ile ikinci bir orman kök etki alanı arasında bulunan geçişli bir güvendir.
+Tek yönlü veya iki yönlü orman güveni oluşturarak, tek bir ormandaki etki alanı güvenlerini başka bir ormana genişletebilirsiniz. Orman güveni, yalnızca bir orman kökü etki alanı ile ikinci bir orman kökü etki alanı arasında bulunan geçişli bir güvendir.
 
-* Tek yönlü bir orman güveni, bir ormandaki tüm kullanıcıların diğer ormandaki tüm etki alanlarına güvenmesini sağlar.
-* İki yönlü bir orman güveni, her iki ormandaki her etki alanı arasında geçişli bir güven ilişkisi oluşturur.
+* Tek yönlü orman güveni, bir ormandaki tüm kullanıcıların diğer ormandaki tüm etki alanlarında güvenmesine olanak tanır.
+* İki yönlü orman güveni, her iki ormandaki her etki alanı arasında geçişli bir güven ilişkisi oluşturur.
 
-Orman güvenlerini geçişliliği, iki orman iş ortaklarıyla sınırlıdır. Orman güveni, iş ortaklarının her biri tarafından güvenilen ek ormana genişlemez.
+Orman tröstlerinin geçişleri iki orman ortağıyla sınırlıdır. Orman güveni, ortakların her ikisinin de güvendiği ek ormanları kapsamaz.
 
-![Azure AD DS şirket içi AD DS orman güveninin diyagramı](./media/concepts-resource-forest/resource-forest-trust-relationship.png)
+![Azure AD DS'den şirket içi AD DS'ye orman güveni diyagramı](./media/concepts-resource-forest/resource-forest-trust-relationship.png)
 
-Kuruluşun Active Directory yapısına bağlı olarak, farklı etki alanı ve orman güveni yapılandırması oluşturabilirsiniz. Azure AD DS yalnızca tek yönlü bir orman güvenini destekler. Bu yapılandırmada, Azure AD DS 'daki kaynaklar şirket içi bir ormandaki tüm etki alanlarına güvenebilir.
+Kuruluşun Etkin Dizin yapısına bağlı olarak farklı etki alanı ve orman güven yapılandırmaları oluşturabilirsiniz. Azure AD DS yalnızca tek yönlü orman güvenini destekler. Bu yapılandırmada, Azure AD DS'deki kaynaklar şirket içi bir ormandaki tüm etki alanlarına güvenebilir.
 
-## <a name="supporting-technology-for-trusts"></a>Güvenler için destekleme teknolojisi
+## <a name="supporting-technology-for-trusts"></a>Güvenler için teknolojiyi destekleme
 
-Güvenler, ortaklık ormanlarda etki alanı denetleyicilerini bulmak için DNS gibi çeşitli hizmetler ve Özellikler kullanır. Güvenler Ayrıca, Active Directory etki alanları ve ormanlar arasında güvenli bir iletişim altyapısı sağlamaya yardımcı olmak için NTLM ve Kerberos kimlik doğrulama protokollerine ve Windows tabanlı yetkilendirme ve erişim denetimi mekanizmalarına de bağlıdır. Aşağıdaki hizmetler ve Özellikler başarılı güven ilişkilerini desteklemeye yardımcı olur.
+Güvenler, ortak ormanlarda etki alanı denetleyicilerini bulmak için DNS gibi çeşitli hizmetler ve özellikler kullanır. Güvenler ayrıca NTLM ve Kerberos kimlik doğrulama protokollerine ve Etkin Dizin etki alanları ve ormanlar arasında güvenli bir iletişim altyapısı sağlamaya yardımcı olmak için Windows tabanlı yetkilendirme ve erişim denetim mekanizmalarına da bağlıdır. Aşağıdaki hizmetler ve özellikler başarılı güven ilişkilerini desteklemeye yardımcı olur.
 
 ### <a name="dns"></a>DNS
 
-AD DS, etki alanı denetleyicisi (DC) konumu ve adlandırması için DNS gerektirir. AD DS başarıyla çalışması için DNS 'den aşağıdaki destek sağlanır:
+AD DS etki alanı denetleyicisi (DC) konumu ve adlandırma için DNS gerekir. AD DS'nin başarılı bir şekilde çalışması için DNS'den aşağıdaki destek sağlanır:
 
-* Ağ konaklarının ve hizmetlerinin DC 'leri bulmasını sağlayan bir ad çözümleme hizmeti.
-* Bir kuruluşun, kendi dizin hizmeti etki alanlarının adlarında kuruluş yapısını yansıtmasını sağlayan bir adlandırma yapısı.
+* Ağ ana bilgisayarlarının ve hizmetlerin DC'leri bulmasını sağlayan bir ad çözümleme hizmeti.
+* Bir işletmenin kuruluş yapısını dizin hizmeti etki alanlarının adlarına yansıtmasını sağlayan bir adlandırma yapısı.
 
-Genellikle AD DS etki alanı ad alanını yansıtan bir DNS etki alanı ad alanı dağıtılır. AD DS dağıtımından önce mevcut bir DNS ad alanı varsa, DNS ad alanı genellikle Active Directory için bölümlenir ve Active Directory orman köküne yönelik bir DNS alt etki alanı ve temsili oluşturulur. Daha sonra her bir Active Directory alt etki alanı için ek DNS etki alanı adları eklenir.
+Ad DS etki alanı ad alanını yansıtan bir DNS etki alanı genellikle dağıtılır. AD DS dağıtımından önce varolan bir DNS ad alanı varsa, DNS ad alanı genellikle Active Directory için bölümlere ayrılır ve Active Directory orman kökü için bir DNS alt etki alanı ve delegasyonu oluşturulur. Daha sonra her Active Directory alt etki alanı için ek DNS etki alanı adları eklenir.
 
-DNS, Active Directory DC 'lerin konumunu desteklemek için de kullanılır. DNS bölgeleri, ağ ana bilgisayarlarının ve hizmetlerinin Active Directory DC 'leri bulmasını sağlayan DNS kaynak kayıtlarıyla doldurulur.
+DNS, Active Directory DCs'nin konumunu desteklemek için de kullanılır. DNS bölgeleri, ağ ana bilgisayarlarının ve hizmetlerinin Active Directory DC'leri bulmasını sağlayan DNS kaynak kayıtlarıyla doldurulur.
 
-### <a name="applications-and-net-logon"></a>Uygulamalar ve net oturum açma
+### <a name="applications-and-net-logon"></a>Uygulamalar ve Net Oturum Açma
 
-Hem uygulamalar hem de net oturum açma hizmeti, Windows dağıtılmış güvenlik kanal modelinin bileşenleridir. Windows Server ve Active Directory ile tümleştirilmiş uygulamalar, ağ oturum açma hizmetiyle iletişim kurmak için kimlik doğrulama protokollerini kullanır. böylece, kimlik doğrulamanın gerçekleşebileceği güvenli bir yol oluşturulabilir.
+Hem uygulamalar hem de Net Logon hizmeti, Windows dağıtılmış güvenlik kanalı modelinin bileşenleridir. Windows Server ve Active Directory ile tümleşik uygulamalar, kimlik doğrulamanın gerçekleşebileceği güvenli bir yol kurulabilmesi için Net Logon hizmetiyle iletişim kurmak için kimlik doğrulama protokollerini kullanır.
 
 ### <a name="authentication-protocols"></a>Kimlik Doğrulama Protokolleri
 
-Active Directory DC 'Ler, aşağıdaki protokollerden birini kullanarak kullanıcıların ve uygulamaların kimliğini doğrular:
+Etkin Dizin DC'leri, aşağıdaki protokollerden birini kullanarak kullanıcıların ve uygulamaların kimliğini doğrular:
 
 * **Kerberos sürüm 5 kimlik doğrulama protokolü**
-    * Kerberos sürüm 5 Protokolü, Windows çalıştıran ve üçüncü taraf işletim sistemlerini destekleyen şirket içi bilgisayarlar tarafından kullanılan varsayılan kimlik doğrulama protokolüdür. Bu protokol, RFC 1510 ' de belirtilmiştir ve Active Directory, sunucu ileti bloğu (SMB), HTTP ve uzak yordam çağrısı (RPC) ile ve bu protokolleri kullanan istemci ve sunucu uygulamaları ile tamamen tümleşiktir.
-    * Kerberos protokolü kullanıldığında, sunucunun DC ile iletişim kurmak zorunda değildir. Bunun yerine, istemci sunucu hesabı etki alanındaki DC 'den bir sunucu isteyerek bir bilet alır. Sunucu daha sonra başka bir yetkiliye danışmadan bileti doğrular.
-    * Bir işlemde yer alan herhangi bir bilgisayar Kerberos sürüm 5 protokolünü desteklemiyorsa, NTLM protokolü kullanılır.
+    * Kerberos sürüm 5 protokolü, Windows çalıştıran ve üçüncü taraf işletim sistemlerini destekleyen şirket içi bilgisayarlar tarafından kullanılan varsayılan kimlik doğrulama protokolüdür. Bu protokol RFC 1510'da belirtilir ve Active Directory, sunucu ileti bloğu (SMB), HTTP ve uzak yordam çağrısı (RPC) ile bu protokolleri kullanan istemci ve sunucu uygulamalarıyla tam olarak entegre edilmiştir.
+    * Kerberos protokolü kullanıldığında, sunucunun DC ile iletişim kurması gerekmez. Bunun yerine, istemci sunucu hesabı etki alanında bir DC bir istekte bulunarak bir sunucu için bir bilet alır. Sunucu daha sonra başka bir yetkiliye danışmadan bileti doğrular.
+    * Bir işlemle ilgili herhangi bir bilgisayar Kerberos sürüm 5 protokolünü desteklemiyorsa, NTLM protokolü kullanılır.
 
 * **NTLM kimlik doğrulama protokolü**
-    * NTLM protokolü, eski işletim sistemleri tarafından kullanılan klasik bir ağ kimlik doğrulama protokolüdür. Uyumluluk nedenleriyle, daha önceki Windows tabanlı istemciler ve sunucular ve üçüncü taraf işletim sistemleri için tasarlanan uygulamalardan gelen ağ kimlik doğrulama isteklerini işlemek için Active Directory etki alanları tarafından kullanılır.
-    * Bir istemci ve sunucu arasında NTLM protokolü kullanıldığında, sunucunun istemci kimlik bilgilerini doğrulamak için bir DC 'de bir etki alanı kimlik doğrulama hizmetiyle iletişim kurabilmesi gerekir. Sunucu istemci kimlik bilgilerini istemci hesabı etki alanındaki bir DC 'ye ileterek istemcinin kimliğini doğrular.
-    * İki Active Directory etki alanı veya orman bir güven ile bağlandığında, bu protokolleri kullanarak yapılan kimlik doğrulama istekleri her iki ormandaki kaynaklara erişim sağlamak için yönlendirilebilir.
+    * NTLM protokolü, eski işletim sistemleri tarafından kullanılan klasik bir ağ kimlik doğrulama protokolüdür. Uyumluluk nedenleriyle, önceki Windows tabanlı istemciler ve sunucular ve üçüncü taraf işletim sistemleri için tasarlanmış uygulamalardan gelen ağ kimlik doğrulama isteklerini işlemek için Active Directory etki alanları tarafından kullanılır.
+    * NTLM protokolü bir istemci ve sunucu arasında kullanıldığında, sunucu istemci kimlik bilgilerini doğrulamak için DC'deki bir etki alanı kimlik doğrulama hizmetine başvurmalıdır. Sunucu, istemci kimlik bilgilerini istemci hesabı etki alanında bir DC'ye ileterek istemcinin kimliğini doğrular.
+    * İki Active Directory etki alanı veya orman bir güven tarafından bağlandığında, bu protokoller kullanılarak yapılan kimlik doğrulama istekleri her iki ormandaki kaynaklara erişim sağlamak için yönlendirilebilir.
 
-## <a name="authorization-and-access-control"></a>Yetkilendirme ve erişim denetimi
+## <a name="authorization-and-access-control"></a>Yetkilendirme ve erişim kontrolü
 
-Yetkilendirme ve güven teknolojileri, Active Directory etki alanları veya ormanlar arasında güvenli bir iletişim altyapısı sağlamak için birlikte çalışır. Yetkilendirme, bir kullanıcının bir etki alanındaki kaynaklara hangi erişim düzeyinin olduğunu belirler. Güvenler, diğer etki alanlarındaki kullanıcıların kimliğini doğrulamak için bir yol sağlayarak kullanıcıların etki alanları arası yetkilendirmesini kolaylaştırır ve bu sayede bu etki alanındaki paylaşılan kaynaklara yönelik isteklere yetki verebilir.
+Yetkilendirme ve güven teknolojileri, Active Directory etki alanları veya ormanlar arasında güvenli bir iletişim altyapısı sağlamak için birlikte çalışır. Yetkilendirme, bir kullanıcının etki alanında kaynaklara hangi erişim düzeyine sahip olduğunu belirler. Güvenler, kullanıcıların diğer etki alanlarındaki kimlik doğrulamalarını doğrulamak için bir yol sağlayarak kullanıcıların etki alanları arası yetkilendirmesini kolaylaştırır, böylece bu etki alanlarındaki paylaşılan kaynaklara yönelik istekleri yetkilendirilebilir.
 
-Güvenen bir etki alanında yapılan bir kimlik doğrulama isteği, güvenilen etki alanı tarafından doğrulandığında, hedef kaynağa geçirilir. Hedef kaynak daha sonra, erişim denetimi yapılandırmasına göre güvenilen etki alanındaki Kullanıcı, hizmet veya bilgisayar tarafından yapılan belirli bir isteğin yetkilendirilip yetkilendirilmeyeceğini belirler.
+Güvenilen bir etki alanında yapılan kimlik doğrulama isteği güvenilen etki alanı tarafından doğrulandığında, hedef kaynağa aktarılır. Hedef kaynak daha sonra, kullanıcı, hizmet veya bilgisayarın güvenilen etki alanında yaptığı belirli isteği erişim denetimi yapılandırmasına göre yetkilendirilip yetkilendirmeyeceğini belirler.
 
-Güvenler, güvenen bir etki alanına geçirilen kimlik doğrulama isteklerini doğrulamak için bu mekanizmayı sağlar. Kaynak bilgisayardaki erişim denetimi mekanizmaları, güvenilen etki alanında istek sahibine verilen son erişim düzeyini tespit ediyor.
+Güvenler, güvenilen bir etki alanına geçirilen kimlik doğrulama isteklerini doğrulamak için bu mekanizmayı sağlar. Kaynak bilgisayarındaki erişim denetim mekanizmaları, güvenilen etki alanında istekte bulunana verilen son erişim düzeyini belirler.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Güvenler hakkında daha fazla bilgi edinmek için bkz. [Azure AD DS orman güvenleri nasıl çalışır?][concepts-trust]
+Güvenler hakkında daha fazla bilgi edinmek için [Azure AD DS'de orman güvenleri nasıl çalışır?][concepts-trust]
 
-Kaynak ormanı ile Azure AD DS yönetilen etki alanı oluşturmaya başlamak için bkz. [azure AD DS yönetilen etki alanı oluşturma ve yapılandırma][tutorial-create-advanced]. Ardından, [bir şirket içi etki alanına (Önizleme) giden bir orman güveni oluşturabilirsiniz][create-forest-trust].
+Kaynak ormanı olan bir Azure AD DS yönetilen etki alanı oluşturmaya başlamak için [bkz.][tutorial-create-advanced] Daha sonra [şirket içi etki alanına giden orman güveni (önizleme) oluşturabilirsiniz.][create-forest-trust]
 
 <!-- LINKS - INTERNAL -->
 [concepts-trust]: concepts-forest-trust.md
