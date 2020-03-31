@@ -27,13 +27,249 @@
       href: databricks-stream-from-eventhubs.md
     - name: Bilişsel Hizmetler kullanarak yaklaşım analizi
       href: databricks-sentiment-analysis-cognitive-services.md
+- name: Kavramlar
+  items:
+    - name: Azure Databricks kavramları
+      href: /azure/databricks/getting-started/concepts
+      maintainContext: true
 - name: Nasıl yapılır kılavuzları
   items:
-    - name: Başlarken
+    - name: Dil kılavuzları
       items:
-        - name: Azure Databricks kavramları
-          href: /azure/databricks/getting-started/concepts
+        - name: Python
+          href: /azure/databricks/languages/python
           maintainContext: true
+        - name: R
+          items:
+            - name: R kılavuzu
+              href: /azure/databricks/spark/latest/sparkr/index
+              maintainContext: true
+            - name: SparkR'ye genel bakış
+              href: /azure/databricks/spark/latest/sparkr/overview
+              maintainContext: true
+            - name: SparkR ML öğreticileri
+              items:
+                - name: Mini r ML öğreticilerine genel bakış
+                  href: /azure/databricks/spark/latest/sparkr/tutorials/index
+                  maintainContext: true
+                - name: glm kullanma
+                  href: /azure/databricks/spark/latest/sparkr/tutorials/using-glm
+                  maintainContext: true
+            - name: SparkR işlev başvurusu
+              href: /azure/databricks/spark/latest/sparkr/sparkr
+              maintainContext: true
+            - name: SparkR 1.6
+              items:
+                - name: SparkR 1.6'ya genel bakış
+                  href: /azure/databricks/spark/1.6/sparkr/overview
+                  maintainContext: true
+                - name: SparkR 1.6 işlev başvurusu
+                  href: /azure/databricks/spark/1.6/sparkr/functions/index
+                  maintainContext: true
+            - name: sparklyr
+              href: /azure/databricks/spark/latest/sparkr/sparklyr
+              maintainContext: true
+            - name: Azure Databricks üzerinde RStudio
+              href: /azure/databricks/spark/latest/sparkr/rstudio
+              maintainContext: true
+            - name: Azure Databricks üzerinde Shiny
+              href: /azure/databricks/spark/latest/sparkr/shiny
+              maintainContext: true
+        - name: Scala
+          href: /azure/databricks/languages/scala
+          maintainContext: true
+        - name: SQL
+          items:
+            - name: SQL'e genel bakış
+              href: /azure/databricks/spark/latest/spark-sql/index
+              maintainContext: true
+            - name: SQL dili el kitabı
+              items:
+                - name: Veritabanını Değiştirme
+                  href: /azure/databricks/spark/latest/spark-sql/language-manual/alter-database
+                  maintainContext: true
+                - name: Tabloyu veya Görünümü Değiştirme
+                  href: /azure/databricks/spark/latest/spark-sql/language-manual/alter-table-or-view
+                  maintainContext: true
+                - name: Tablo Bölümlerini Değiştirme
+                  href: /azure/databricks/spark/latest/spark-sql/language-manual/alter-table-partitions
+                  maintainContext: true
+                - name: Tabloyu Çözümleme
+                  href: /azure/databricks/spark/latest/spark-sql/language-manual/analyze-table
+                  maintainContext: true
+                - name: Önbellek
+                  href: /azure/databricks/spark/latest/spark-sql/language-manual/cache-dbio
+                  maintainContext: true
+                - name: Önbellek Tablosu
+                  href: /azure/databricks/spark/latest/spark-sql/language-manual/cache-table
+                  maintainContext: true
+                - name: Önbelleği Temizle
+                  href: /azure/databricks/spark/latest/spark-sql/language-manual/clear-cache
+                  maintainContext: true
+                - name: Delta'ya Dönüştürme (Azure Databricks'te Delta Lake)
+                  href: /azure/databricks/spark/latest/spark-sql/language-manual/convert-to-delta
+                  maintainContext: true
+                - name: Veritabanı Oluşturma
+                  href: /azure/databricks/spark/latest/spark-sql/language-manual/create-database
+                  maintainContext: true
+                - name: İşlev Oluşturma
+                  href: /azure/databricks/spark/latest/spark-sql/language-manual/create-function
+                  maintainContext: true
+                - name: Tablo Oluşturma
+                  href: /azure/databricks/spark/latest/spark-sql/language-manual/create-table
+                  maintainContext: true
+                - name: Görünüm Oluşturma
+                  href: /azure/databricks/spark/latest/spark-sql/language-manual/create-view
+                  maintainContext: true
+                - name: Silme (Azure Databricks'te Delta Lake)
+                  href: /azure/databricks/spark/latest/spark-sql/language-manual/delete-from
+                  maintainContext: true
+                - name: Reddet
+                  href: /azure/databricks/spark/latest/spark-sql/language-manual/deny
+                  maintainContext: true
+                - name: Veritabanını Açıklama
+                  href: /azure/databricks/spark/latest/spark-sql/language-manual/describe-database
+                  maintainContext: true
+                - name: İşlevi Açıklama
+                  href: /azure/databricks/spark/latest/spark-sql/language-manual/describe-function
+                  maintainContext: true
+                - name: Geçmişi Açıklama (Azure Databricks'te Delta Lake)
+                  href: /azure/databricks/spark/latest/spark-sql/language-manual/describe-history
+                  maintainContext: true
+                - name: Tabloyu Açıklama
+                  href: /azure/databricks/spark/latest/spark-sql/language-manual/describe-table
+                  maintainContext: true
+                - name: Veritabanını Bırakma
+                  href: /azure/databricks/spark/latest/spark-sql/language-manual/drop-database
+                  maintainContext: true
+                - name: İşlevi Bırakma
+                  href: /azure/databricks/spark/latest/spark-sql/language-manual/drop-function
+                  maintainContext: true
+                - name: Tabloyu Bırakma
+                  href: /azure/databricks/spark/latest/spark-sql/language-manual/drop-table
+                  maintainContext: true
+                - name: Görünümü Bırakma
+                  href: /azure/databricks/spark/latest/spark-sql/language-manual/drop-view
+                  maintainContext: true
+                - name: Açıklama
+                  href: /azure/databricks/spark/latest/spark-sql/language-manual/explain
+                  maintainContext: true
+                - name: Fsck Tabloyu Onarma (Azure Databricks'te Delta Lake)
+                  href: /azure/databricks/spark/latest/spark-sql/language-manual/fsck
+                  maintainContext: true
+                - name: İşlevler
+                  href: /azure/databricks/spark/latest/spark-sql/language-manual/functions
+                  maintainContext: true
+                - name: İzin verme
+                  href: /azure/databricks/spark/latest/spark-sql/language-manual/grant
+                  maintainContext: true
+                - name: Oluştur
+                  href: /azure/databricks/spark/latest/spark-sql/language-manual/generate
+                  maintainContext: true
+                - name: Ekle
+                  href: /azure/databricks/spark/latest/spark-sql/language-manual/insert
+                  maintainContext: true
+                - name: Veri Yükleme
+                  href: /azure/databricks/spark/latest/spark-sql/language-manual/load-data
+                  maintainContext: true
+                - name: Birleştirme (Azure Databricks'te Delta Lake)
+                  href: /azure/databricks/spark/latest/spark-sql/language-manual/merge-into
+                  maintainContext: true
+                - name: Msck
+                  href: /azure/databricks/spark/latest/spark-sql/language-manual/msck
+                  maintainContext: true
+                - name: İyileştirme (Azure Databricks'te Delta Lake)
+                  href: /azure/databricks/spark/latest/spark-sql/language-manual/optimize
+                  maintainContext: true
+                - name: Tabloyu Yenileme
+                  href: /azure/databricks/spark/latest/spark-sql/language-manual/refresh-table
+                  maintainContext: true
+                - name: Sıfırla
+                  href: /azure/databricks/spark/latest/spark-sql/language-manual/reset
+                  maintainContext: true
+                - name: İptal Et
+                  href: /azure/databricks/spark/latest/spark-sql/language-manual/revoke
+                  maintainContext: true
+                - name: 'Şunu seçin:'
+                  href: /azure/databricks/spark/latest/spark-sql/language-manual/select
+                  maintainContext: true
+                - name: Ayarla
+                  href: /azure/databricks/spark/latest/spark-sql/language-manual/set
+                  maintainContext: true
+                - name: Sütunları Gösterme
+                  href: /azure/databricks/spark/latest/spark-sql/language-manual/show-columns
+                  maintainContext: true
+                - name: Tablo Oluşturmayı Gösterme
+                  href: /azure/databricks/spark/latest/spark-sql/language-manual/show-create-table
+                  maintainContext: true
+                - name: Veritabanlarını Gösterme
+                  href: /azure/databricks/spark/latest/spark-sql/language-manual/show-databases
+                  maintainContext: true
+                - name: İşlevleri Gösterme
+                  href: /azure/databricks/spark/latest/spark-sql/language-manual/show-functions
+                  maintainContext: true
+                - name: İzni Gösterme
+                  href: /azure/databricks/spark/latest/spark-sql/language-manual/show-grant
+                  maintainContext: true
+                - name: Bölümleri Gösterme
+                  href: /azure/databricks/spark/latest/spark-sql/language-manual/show-partitions
+                  maintainContext: true
+                - name: Tablo Özelliklerini Gösterme
+                  href: /azure/databricks/spark/latest/spark-sql/language-manual/show-table-properties
+                  maintainContext: true
+                - name: Tabloları Gösterme
+                  href: /azure/databricks/spark/latest/spark-sql/language-manual/show-tables
+                  maintainContext: true
+                - name: Tabloları Kesme
+                  href: /azure/databricks/spark/latest/spark-sql/language-manual/truncate-table
+                  maintainContext: true
+                - name: Tabloları Önbellekten Çıkarma
+                  href: /azure/databricks/spark/latest/spark-sql/language-manual/uncache-table
+                  maintainContext: true
+                - name: Güncelleştirme (Azure Databricks'te Delta Lake)
+                  href: /azure/databricks/spark/latest/spark-sql/language-manual/update
+                  maintainContext: true
+                - name: Veritabanını Kullanma
+                  href: /azure/databricks/spark/latest/spark-sql/language-manual/use-database
+                  maintainContext: true
+                - name: Vakum
+                  href: /azure/databricks/spark/latest/spark-sql/language-manual/vacuum
+                  maintainContext: true
+            - name: Spark SQL örnekleri
+              items:
+                - name: Maliyet Tabanlı iyileştirici
+                  href: /azure/databricks/spark/latest/spark-sql/cbo
+                  maintainContext: true
+                - name: Veri atlama dizini
+                  href: /azure/databricks/spark/latest/spark-sql/dataskipping-index
+                  maintainContext: true
+                - name: DBIO ile bulut depolamasına işlem tabanlı yazma
+                  href: /azure/databricks/spark/latest/spark-sql/dbio-commit
+                  maintainContext: true
+                - name: Hatalı kayıtları ve dosyaları işleme
+                  href: /azure/databricks/spark/latest/spark-sql/handling-bad-records
+                  maintainContext: true
+                - name: Yüksek eşzamanlılık için p görevi
+                  href: /azure/databricks/spark/latest/spark-sql/preemption
+                  maintainContext: true
+                - name: Etkileşimli iş akışlarında büyük sorguları işleme
+                  href: /azure/databricks/spark/latest/spark-sql/query-watchdog
+                  maintainContext: true
+                - name: Spark ve Pandas Veri Çerçeveleri arasında dönüştürmeyi iyileştirme
+                  href: /azure/databricks/spark/latest/spark-sql/spark-pandas
+                  maintainContext: true
+                - name: Kullanıcı tanımlı toplama işlevler - Scala
+                  href: /azure/databricks/spark/latest/spark-sql/udf-scala
+                  maintainContext: true
+                - name: Kullanıcı tanımlı işlevler - Python
+                  href: /azure/databricks/spark/latest/spark-sql/udf-python
+                  maintainContext: true
+                - name: Pandas kullanıcı tanımlı işlevleri
+                  href: /azure/databricks/spark/latest/spark-sql/udf-python-pandas
+                  maintainContext: true
+                - name: Apache Hive uyumluluğu
+                  href: /azure/databricks/spark/latest/spark-sql/compatibility/hive
+                  maintainContext: true
     - name: Databricks çalışma zamanları
       items:
         - name: Çalışma zamanına genel bakış
@@ -219,8 +455,8 @@
             - name: Cosmos DB
               href: /azure/databricks/data/data-sources/azure/cosmosdb-connector
               maintainContext: true
-            - name: Azure SQL Veri Ambarı
-              href: /azure/databricks/data/data-sources/azure/sql-data-warehouse
+            - name: Azure Synapse Analytics
+              href: /azure/databricks/data/data-sources/azure/synapse-analytics
               maintainContext: true
             - name: İkili dosya
               href: /azure/databricks/data/data-sources/binary-file
@@ -478,234 +714,6 @@
             - name: Akış uygulaması geliştirme için en iyi yöntemler
               href: /azure/databricks/spark/latest/rdd-streaming/developing-streaming-applications
               maintainContext: true
-    - name: SQL
-      items:
-        - name: SQL'e genel bakış
-          href: /azure/databricks/spark/latest/spark-sql/index
-          maintainContext: true
-        - name: SQL dili el kitabı
-          items:
-            - name: Veritabanını Değiştirme
-              href: /azure/databricks/spark/latest/spark-sql/language-manual/alter-database
-              maintainContext: true
-            - name: Tabloyu veya Görünümü Değiştirme
-              href: /azure/databricks/spark/latest/spark-sql/language-manual/alter-table-or-view
-              maintainContext: true
-            - name: Tablo Bölümlerini Değiştirme
-              href: /azure/databricks/spark/latest/spark-sql/language-manual/alter-table-partitions
-              maintainContext: true
-            - name: Tabloyu Çözümleme
-              href: /azure/databricks/spark/latest/spark-sql/language-manual/analyze-table
-              maintainContext: true
-            - name: Önbellek
-              href: /azure/databricks/spark/latest/spark-sql/language-manual/cache-dbio
-              maintainContext: true
-            - name: Önbellek Tablosu
-              href: /azure/databricks/spark/latest/spark-sql/language-manual/cache-table
-              maintainContext: true
-            - name: Önbelleği Temizle
-              href: /azure/databricks/spark/latest/spark-sql/language-manual/clear-cache
-              maintainContext: true
-            - name: Delta'ya Dönüştürme (Azure Databricks'te Delta Lake)
-              href: /azure/databricks/spark/latest/spark-sql/language-manual/convert-to-delta
-              maintainContext: true
-            - name: Veritabanı Oluşturma
-              href: /azure/databricks/spark/latest/spark-sql/language-manual/create-database
-              maintainContext: true
-            - name: İşlev Oluşturma
-              href: /azure/databricks/spark/latest/spark-sql/language-manual/create-function
-              maintainContext: true
-            - name: Tablo Oluşturma
-              href: /azure/databricks/spark/latest/spark-sql/language-manual/create-table
-              maintainContext: true
-            - name: Görünüm Oluşturma
-              href: /azure/databricks/spark/latest/spark-sql/language-manual/create-view
-              maintainContext: true
-            - name: Silme (Azure Databricks'te Delta Lake)
-              href: /azure/databricks/spark/latest/spark-sql/language-manual/delete-from
-              maintainContext: true
-            - name: Reddet
-              href: /azure/databricks/spark/latest/spark-sql/language-manual/deny
-              maintainContext: true
-            - name: Veritabanını Açıklama
-              href: /azure/databricks/spark/latest/spark-sql/language-manual/describe-database
-              maintainContext: true
-            - name: İşlevi Açıklama
-              href: /azure/databricks/spark/latest/spark-sql/language-manual/describe-function
-              maintainContext: true
-            - name: Geçmişi Açıklama (Azure Databricks'te Delta Lake)
-              href: /azure/databricks/spark/latest/spark-sql/language-manual/describe-history
-              maintainContext: true
-            - name: Tabloyu Açıklama
-              href: /azure/databricks/spark/latest/spark-sql/language-manual/describe-table
-              maintainContext: true
-            - name: Veritabanını Bırakma
-              href: /azure/databricks/spark/latest/spark-sql/language-manual/drop-database
-              maintainContext: true
-            - name: İşlevi Bırakma
-              href: /azure/databricks/spark/latest/spark-sql/language-manual/drop-function
-              maintainContext: true
-            - name: Tabloyu Bırakma
-              href: /azure/databricks/spark/latest/spark-sql/language-manual/drop-table
-              maintainContext: true
-            - name: Görünümü Bırakma
-              href: /azure/databricks/spark/latest/spark-sql/language-manual/drop-view
-              maintainContext: true
-            - name: Açıklama
-              href: /azure/databricks/spark/latest/spark-sql/language-manual/explain
-              maintainContext: true
-            - name: Fsck Tabloyu Onarma (Azure Databricks'te Delta Lake)
-              href: /azure/databricks/spark/latest/spark-sql/language-manual/fsck
-              maintainContext: true
-            - name: İşlevler
-              href: /azure/databricks/spark/latest/spark-sql/language-manual/functions
-              maintainContext: true
-            - name: İzin verme
-              href: /azure/databricks/spark/latest/spark-sql/language-manual/grant
-              maintainContext: true
-            - name: Oluştur
-              href: /azure/databricks/spark/latest/spark-sql/language-manual/generate
-              maintainContext: true
-            - name: Ekle
-              href: /azure/databricks/spark/latest/spark-sql/language-manual/insert
-              maintainContext: true
-            - name: Veri Yükleme
-              href: /azure/databricks/spark/latest/spark-sql/language-manual/load-data
-              maintainContext: true
-            - name: Birleştirme (Azure Databricks'te Delta Lake)
-              href: /azure/databricks/spark/latest/spark-sql/language-manual/merge-into
-              maintainContext: true
-            - name: Msck
-              href: /azure/databricks/spark/latest/spark-sql/language-manual/msck
-              maintainContext: true
-            - name: İyileştirme (Azure Databricks'te Delta Lake)
-              href: /azure/databricks/spark/latest/spark-sql/language-manual/optimize
-              maintainContext: true
-            - name: Tabloyu Yenileme
-              href: /azure/databricks/spark/latest/spark-sql/language-manual/refresh-table
-              maintainContext: true
-            - name: Sıfırla
-              href: /azure/databricks/spark/latest/spark-sql/language-manual/reset
-              maintainContext: true
-            - name: İptal Et
-              href: /azure/databricks/spark/latest/spark-sql/language-manual/revoke
-              maintainContext: true
-            - name: 'Şunu seçin:'
-              href: /azure/databricks/spark/latest/spark-sql/language-manual/select
-              maintainContext: true
-            - name: Ayarla
-              href: /azure/databricks/spark/latest/spark-sql/language-manual/set
-              maintainContext: true
-            - name: Sütunları Gösterme
-              href: /azure/databricks/spark/latest/spark-sql/language-manual/show-columns
-              maintainContext: true
-            - name: Tablo Oluşturmayı Gösterme
-              href: /azure/databricks/spark/latest/spark-sql/language-manual/show-create-table
-              maintainContext: true
-            - name: Veritabanlarını Gösterme
-              href: /azure/databricks/spark/latest/spark-sql/language-manual/show-databases
-              maintainContext: true
-            - name: İşlevleri Gösterme
-              href: /azure/databricks/spark/latest/spark-sql/language-manual/show-functions
-              maintainContext: true
-            - name: İzni Gösterme
-              href: /azure/databricks/spark/latest/spark-sql/language-manual/show-grant
-              maintainContext: true
-            - name: Bölümleri Gösterme
-              href: /azure/databricks/spark/latest/spark-sql/language-manual/show-partitions
-              maintainContext: true
-            - name: Tablo Özelliklerini Gösterme
-              href: /azure/databricks/spark/latest/spark-sql/language-manual/show-table-properties
-              maintainContext: true
-            - name: Tabloları Gösterme
-              href: /azure/databricks/spark/latest/spark-sql/language-manual/show-tables
-              maintainContext: true
-            - name: Tabloları Kesme
-              href: /azure/databricks/spark/latest/spark-sql/language-manual/truncate-table
-              maintainContext: true
-            - name: Tabloları Önbellekten Çıkarma
-              href: /azure/databricks/spark/latest/spark-sql/language-manual/uncache-table
-              maintainContext: true
-            - name: Güncelleştirme (Azure Databricks'te Delta Lake)
-              href: /azure/databricks/spark/latest/spark-sql/language-manual/update
-              maintainContext: true
-            - name: Veritabanını Kullanma
-              href: /azure/databricks/spark/latest/spark-sql/language-manual/use-database
-              maintainContext: true
-            - name: Vakum
-              href: /azure/databricks/spark/latest/spark-sql/language-manual/vacuum
-              maintainContext: true
-        - name: Spark SQL örnekleri
-          items:
-            - name: Maliyet Tabanlı iyileştirici
-              href: /azure/databricks/spark/latest/spark-sql/cbo
-              maintainContext: true
-            - name: Veri atlama dizini
-              href: /azure/databricks/spark/latest/spark-sql/dataskipping-index
-              maintainContext: true
-            - name: DBIO ile bulut depolamasına işlem tabanlı yazma
-              href: /azure/databricks/spark/latest/spark-sql/dbio-commit
-              maintainContext: true
-            - name: Hatalı kayıtları ve dosyaları işleme
-              href: /azure/databricks/spark/latest/spark-sql/handling-bad-records
-              maintainContext: true
-            - name: Yüksek eşzamanlılık için p görevi
-              href: /azure/databricks/spark/latest/spark-sql/preemption
-              maintainContext: true
-            - name: Etkileşimli iş akışlarında büyük sorguları işleme
-              href: /azure/databricks/spark/latest/spark-sql/query-watchdog
-              maintainContext: true
-            - name: Spark ve Pandas Veri Çerçeveleri arasında dönüştürmeyi iyileştirme
-              href: /azure/databricks/spark/latest/spark-sql/spark-pandas
-              maintainContext: true
-            - name: Kullanıcı tanımlı toplama işlevler - Scala
-              href: /azure/databricks/spark/latest/spark-sql/udf-scala
-              maintainContext: true
-            - name: Kullanıcı tanımlı işlevler - Python
-              href: /azure/databricks/spark/latest/spark-sql/udf-python
-              maintainContext: true
-            - name: Pandas kullanıcı tanımlı işlevleri
-              href: /azure/databricks/spark/latest/spark-sql/udf-python-pandas
-              maintainContext: true
-            - name: Apache Hive uyumluluğu
-              href: /azure/databricks/spark/latest/spark-sql/compatibility/hive
-              maintainContext: true
-    - name: R
-      items:
-        - name: R kılavuzu
-          href: /azure/databricks/spark/latest/sparkr/index
-          maintainContext: true
-        - name: SparkR'ye genel bakış
-          href: /azure/databricks/spark/latest/sparkr/overview
-          maintainContext: true
-        - name: SparkR ML öğreticileri
-          items:
-            - name: Mini r ML öğreticilerine genel bakış
-              href: /azure/databricks/spark/latest/sparkr/tutorials/index
-              maintainContext: true
-            - name: glm kullanma
-              href: /azure/databricks/spark/latest/sparkr/tutorials/using-glm
-              maintainContext: true
-        - name: SparkR işlev başvurusu
-          href: /azure/databricks/spark/latest/sparkr/sparkr
-          maintainContext: true
-        - name: SparkR 1.6
-          items:
-            - name: SparkR 1.6'ya genel bakış
-              href: /azure/databricks/spark/1.6/sparkr/overview
-              maintainContext: true
-            - name: SparkR 1.6 işlev başvurusu
-              href: /azure/databricks/spark/1.6/sparkr/functions/index
-              maintainContext: true
-        - name: sparklyr
-          href: /azure/databricks/spark/latest/sparkr/sparklyr
-          maintainContext: true
-        - name: Azure Databricks üzerinde RStudio
-          href: /azure/databricks/spark/latest/sparkr/rstudio
-          maintainContext: true
-        - name: Azure Databricks üzerinde Shiny
-          href: /azure/databricks/spark/latest/sparkr/shiny
-          maintainContext: true
     - name: Makine öğrenimi
       items:
         - name: Makine öğrenmesine genel bakış
@@ -913,6 +921,12 @@
         - name: MLflow projeleriyle çalıştırmaları yeniden oluşturma
           href: /azure/databricks/applications/mlflow/projects
           maintainContext: true
+        - name: MLflow Model Kayıt Defterindeki MLflow Modellerinin Yaşam Döngüsünü Yönetme
+          href: /azure/databricks/applications/mlflow/model-registry
+          maintainContext: true
+        - name: MLflow Model Kayıt Defteri örneği
+          href: /azure/databricks/applications/mlflow/model-registry-example
+          maintainContext: true
     - name: Grafik analizi
       items:
         - name: Graf analizine genel bakış
@@ -1037,6 +1051,9 @@
               maintainContext: true
             - name: Azure Databricks'te tanılama günlüğü
               href: /azure/databricks/administration-guide/account-settings/azure-diagnostic-logs
+              maintainContext: true
+            - name: Etiketleri kullanarak kullanımı izleme
+              href: /azure/databricks/administration-guide/account-settings/usage-detail-tags-azure
               maintainContext: true
         - name: Kullanıcıları ve grupları yönetme
           items:
@@ -1355,6 +1372,9 @@
               maintainContext: true
             - name: İş MaxResultSize ile başarısız oldu
               href: /azure/databricks/kb/jobs/job-fails-maxresultsize-exception
+              maintainContext: true
+            - name: SQLAlchemy paket hatası işin başarısız olmasına neden oluyor
+              href: /azure/databricks/kb/jobs/job-fails-sqlalchemy
               maintainContext: true
             - name: Tek sefer etkili olmayı sağlama
               href: /azure/databricks/kb/jobs/jobs-idempotency
@@ -1752,10 +1772,22 @@
               maintainContext: true
         - name: Databricks Çalışma Zamanı
           items:
-            - name: Destekleniyor
+            - name: Çalışma zamanı sürüm notları
               items:
-                - name: Desteklenen çalışma zamanı sürümleri
-                  href: /azure/databricks/release-notes/runtime/supported
+                - name: Çalışma zamanı sürümleri
+                  href: /azure/databricks/release-notes/runtime/releases
+                  maintainContext: true
+                - name: Databricks Runtime 7.0 (Beta)
+                  href: /azure/databricks/release-notes/runtime/7.0
+                  maintainContext: true
+                - name: Databricks Runtime 6.5 (Beta)
+                  href: /azure/databricks/release-notes/runtime/6.5
+                  maintainContext: true
+                - name: Databricks Runtime 6.5 ML (Beta)
+                  href: /azure/databricks/release-notes/runtime/6.5ml
+                  maintainContext: true
+                - name: Databricks Runtime 6.5 Genomics (Beta)
+                  href: /azure/databricks/release-notes/runtime/6.5genomics
                   maintainContext: true
                 - name: Databricks Runtime 6.4
                   href: /azure/databricks/release-notes/runtime/6.4
@@ -1831,11 +1863,6 @@
                   maintainContext: true
                 - name: Databricks Runtime 5.2 ML
                   href: /azure/databricks/release-notes/runtime/5.2ml
-                  maintainContext: true
-            - name: Desteklenmeyen
-              items:
-                - name: Desteklenmeyen çalışma zamanı sürümleri
-                  href: /azure/databricks/release-notes/runtime/unsupported
                   maintainContext: true
                 - name: Databricks Runtime 5.1
                   href: /azure/databricks/release-notes/runtime/5.1

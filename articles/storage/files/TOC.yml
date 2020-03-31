@@ -39,8 +39,11 @@
       href: storage-files-scale-targets.md
     - name: Kimlik tabanlı doğrulama ve yetkilendirme
       href: storage-files-active-directory-overview.md
-    - name: Bekleme sırasında şifreleme
+    - name: Azure Depolama bekleyen verileri şifreleme
       href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+      items:
+        - name: Azure Key Vault ile müşteri tarafından yönetilen anahtarlar
+          href: ../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Uyumluluk teklifleri
       href: ../common/storage-compliance-offerings.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Geliştirme
@@ -93,6 +96,10 @@
           href: storage-how-to-use-files-mac.md
     - name: Ağ
       items:
+        - name: Azure Dosyalar ağ uç noktalarını yapılandırma
+          href: storage-files-networking-endpoints.md
+        - name: Azure Dosyalar için DNS iletmeyi yapılandırma
+          href: storage-files-networking-dns.md
         - name: Siteden Siteye VPN’yi yapılandırma
           href: storage-files-configure-s2s-vpn.md
         - name: Windows’da Noktadan Siteye VPN’yi yapılandırma
@@ -117,12 +124,22 @@
           href: storage-sync-files-monitoring.md
     - name: Geçiş
       items:
-        - name: Azure Dosya Eşitleme’ye Geçiş
-          href: storage-sync-offline-data-transfer.md
-        - name: StorSimple 8100 ve 8600 geçiş kılavuzu
-          href: storage-files-migration-storsimple-8000.md
-        - name: StorSimple 1200 geçiş kılavuzu
-          href: storage-files-migration-storsimple-1200.md
+        - name: Azure dosya paylaşımlarına geçirme
+          href: storage-files-migration-overview.md
+        - name: Karma dağıtımı hedefleme
+          items:
+            - name: Azure DataBox ile verileri Azure Dosya Eşitleme’ye toplu olarak geçirme
+              href: storage-sync-offline-data-transfer.md
+            - name: Azure Dosya Eşitleme ile Linux’tan hibrit dosya sunucusuna geçirme
+              href: storage-files-migration-linux-hybrid.md
+            - name: Azure Dosya Eşitleme ile şirket içi NAS’den karma dosya sunucusuna geçirme
+              href: storage-files-migration-nas-hybrid.md
+        - name: StorSimple’dan
+          items:
+            - name: StorSimple 8100 ve 8600 geçiş kılavuzu
+              href: storage-files-migration-storsimple-8000.md
+            - name: StorSimple 1200 geçiş kılavuzu
+              href: storage-files-migration-storsimple-1200.md
     - name: Geliştirme
       items:
         - name: Bağlantı dizelerini yapılandırma

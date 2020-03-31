@@ -5,8 +5,12 @@
   items:
     - name: Azure Active Directory nedir?
       href: active-directory-whatis.md
+    - name: Azure AD’yi ADDS ile karşılaştırma
+      href: active-directory-compare-azure-ad-to-ad.md
     - name: Azure Active Directory’deki yenilikler
       href: whats-new.md
+    - name: Microsoft 365 Kamu’daki yenilikler
+      href: whats-new-microsoft-365-government.md
 - name: Hızlı Başlangıçlar
   expanded: true
   items:
@@ -17,8 +21,6 @@
 - name: Kavramlar
   expanded: true
   items:
-    - name: Kimlik secure score’u
-      href: identity-secure-score.md
     - name: Güvenlik
       items:
         - name: MFA’yı etkinleştirme
@@ -27,24 +29,30 @@
           href: concept-fundamentals-security-defaults.md
         - name: Eski kimlik doğrulamasını engelleme
           href: concept-fundamentals-block-legacy-authentication.md
-    - name: Gruplar ve erişim yönetimi
-      href: active-directory-manage-groups.md
-    - name: Grup tabanlı lisanslama
-      href: active-directory-licensing-whatis-azure-portal.md
-    - name: Azure AD mimarisi
-      href: active-directory-architecture.md
-    - name: Varsayılan kullanıcı izinleri
-      href: users-default-permissions.md
-    - name: 'Dağıtım 30, 90 ve sonrası'
+        - name: Kimlik secure score’u
+          href: identity-secure-score.md
+    - name: Gruplar ve kullanıcılar
+      items:
+        - name: Gruplar ve erişim yönetimi
+          href: active-directory-manage-groups.md
+        - name: Grup tabanlı lisanslama
+          href: active-directory-licensing-whatis-azure-portal.md
+        - name: Varsayılan kullanıcı izinleri
+          href: users-default-permissions.md
+    - name: Mimari
+      items:
+        - name: Azure AD mimarisi
+          href: active-directory-architecture.md
+    - name: Dağıtım kılavuzu
+      items:
+        - name: 'Dağıtım 30, 90 ve sonrası'
       href: active-directory-deployment-checklist-p2.md
-    - name: Avrupa müşterileri için kimlik verisi depolama
-      href: active-directory-data-storage-eu.md
-    - name: Avustralya ve Yeni Zelanda müşterileri için kimlik verisi depolama
-      href: active-directory-data-storage-australia-newzealand.md
-    - name: Microsoft 365 Kamu’daki yenilikler
-      href: whats-new-microsoft-365-government.md
-    - name: Azure AD’yi ADDS ile karşılaştırma
-      href: active-directory-compare-azure-ad-to-ad.md
+    - name: Veri depolama
+      items:
+        - name: Avrupa müşterileri için kimlik verileri depolama
+          href: active-directory-data-storage-eu.md
+        - name: Avustralya ve Yeni Zelanda müşterileri için kimlik verisi depolama
+          href: active-directory-data-storage-australia-newzealand.md
     - name: Azure AD İşlem başvurusu
       items:
         - name: Giriş

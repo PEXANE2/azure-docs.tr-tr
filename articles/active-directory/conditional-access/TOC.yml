@@ -58,22 +58,24 @@
       href: best-practices.md
     - name: Sık kullanılan Koşullu Erişim İlkeleri
       items:
+        - name: Eski kimlik doğrulamasını engelleme
+          href: howto-conditional-access-policy-block-legacy.md
         - name: Yöneticiler için MFA gerektirme
           href: howto-conditional-access-policy-admin-mfa.md
         - name: Azure yönetimi için MFA gerektirme
           href: howto-conditional-access-policy-azure-management.md
         - name: Tüm kullanıcılar için MFA gerektirme
           href: howto-conditional-access-policy-all-users-mfa.md
-        - name: Eski kimlik doğrulamasını engelleme
-          href: howto-conditional-access-policy-block-legacy.md
         - name: Risk tabanlı Koşullu Erişim
           href: howto-conditional-access-policy-risk.md
-        - name: MFA kaydı için güvenilen konum gerektirme
+        - name: Güvenlik bilgileri kaydının güvenliğini sağlama
           href: howto-conditional-access-policy-registration.md
         - name: Erişimi konuma göre engelleme
           href: howto-conditional-access-policy-location.md
         - name: Uyumlu cihaz gerektirme
           href: howto-conditional-access-policy-compliant-device.md
+        - name: Erişimi engelleme
+          href: howto-conditional-access-policy-block-access.md
     - name: Eski kimlik doğrulamasını engelleme
       href: block-legacy-authentication.md
     - name: Onaylı istemci uygulamaları gerektirme
@@ -94,6 +96,8 @@
       href: policy-migration-mfa.md
     - name: Sorun giderme
       items:
+        - name: Oturum açma sorunlarını giderme
+          href: troubleshoot-conditional-access.md
         - name: What If aracını kullanarak sorun giderme
           href: troubleshoot-conditional-access-what-if.md
 - name: Kaynaklar

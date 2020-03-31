@@ -10,13 +10,13 @@ metadata:
   ms.collection: collection
   author: DCtheGeek
   ms.author: dacoulte
-  ms.date: 09/10/2019
-  ms.openlocfilehash: 7090c0814e91b2178dea44eed4d28e6f4e80bd77
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.date: 03/24/2020
+  ms.openlocfilehash: 2df970e3aa36f69dc6f2d990ee307db6536a8ac9
+  ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "77470625"
+  ms.lasthandoff: 03/26/2020
+  ms.locfileid: "80282044"
 highlightedContent:
   items:
   - title: İdareye genel bakış
@@ -113,6 +113,8 @@ additionalContent:
         url: /dotnet/api/overview/azure/managementgroups
       - text: Node için Azure SDK
         url: /javascript/api/@azure/arm-managementgroups/managementgroups
+      - text: REST
+        url: /rest/api/resources/managementgroups
     - title: Azure İlkesi
       links:
       - text: Azure CLI
@@ -126,12 +128,6 @@ additionalContent:
       - text: Azure PowerShell
         url: https://www.powershellgallery.com/packages/Az.GuestConfiguration
         note: (Konuk Yapılandırması)
-      - text: .NET için Azure SDK
-        url: /dotnet/api/microsoft.azure.management.resourcemanager.models.policyassignment
-        note: (Atamalar)
-      - text: .NET için Azure SDK
-        url: /dotnet/api/microsoft.azure.management.resourcemanager.models.policydefinition
-        note: (İlke Tanımları)
       - text: REST
         url: /rest/api/policy-insights/
         note: (İlke İçgörüleri)
@@ -149,6 +145,22 @@ additionalContent:
         note: (Konuk Yapılandırması)
       - text: Resource Manager şablonları
         url: /azure/templates/microsoft.authorization/allversions
+    - title: Azure İlkesi (daha fazla)
+      links:
+      - text: .NET için Azure SDK
+        url: /dotnet/api/microsoft.azure.management.resourcemanager.models.policyassignment
+        note: (Atamalar)
+      - text: .NET için Azure SDK
+        url: /dotnet/api/microsoft.azure.management.resourcemanager.models.policydefinition
+        note: (İlke Tanımları)
+      - text: Node için Azure SDK
+        url: /javascript/api/@azure/arm-policy
+        note: (İlke)
+      - text: Node için Azure SDK
+        url: /javascript/api/@azure/arm-policyinsights
+        note: (İlke İçgörüleri)
+      - text: Python için Azure SDK
+        url: /python/api/azure-mgmt-policyinsights/azure.mgmt.policyinsights
     - title: Azure Blueprints
       links:
       - text: Şema işlevleri

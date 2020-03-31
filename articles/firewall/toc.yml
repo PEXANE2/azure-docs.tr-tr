@@ -43,6 +43,8 @@
       href: compliance-certifications.md
     - name: Merkezi yönetim
       href: central-management.md
+    - name: Uzaktan çalışma desteği
+      href: remote-work-support.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Azure PowerShell’i kullanarak dağıtma

@@ -3,7 +3,7 @@ title: Azure SQL Veritabanı izleme ve performans ayarlama
 summary: Azure SQL Veritabanı, veritabanınızı izlemek ve performansını iyileştirmek üzere ölçüm ve tanılama bilgisi toplamanıza yardımcı olacak araçlar sağlar.
 metadata:
   title: Azure SQL Veritabanı izleme ve performans ayarlama belgeleri
-  description: Azure SQL Veritabanı, veritabanınızı izlemek ve performansını iyileştirmek üzere ölçüm ve tanılama bilgisi toplamanıza yardımcı olacak araçlar sağlar.
+  description: Ölçüm ve tanılama verilerini toplamayıp veritabanı performansını iyileştirmenize yardımcı olan Azure SQL Veritabanı izleme ve performans ayarlama araçları hakkında bilgi edinin.
   ms.service: sql-database
   ms.subservice: performance
   ms.topic: landing-page
@@ -11,12 +11,12 @@ metadata:
   author: CarlRabeler
   ms.author: carlrab
   ms.date: 03/10/2020
-  ms.openlocfilehash: 43f74ea126ab7e028b39a86e2eb1edad4cae41a2
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: bc2c2a64cfce8bde6f04835bf090b632b8839a6f
+  ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "79208903"
+  ms.lasthandoff: 03/27/2020
+  ms.locfileid: "80373106"
 landingContent:
 - title: İzleme ve performans ayarlama hakkında
   linkLists:
