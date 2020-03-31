@@ -1,6 +1,6 @@
 ---
-title: Microsoft Graph güvenliği & güvenlik işlemlerini tümleştirin ve yönetin
-description: Microsoft Graph güvenlik & ile uygulamanızın tehdit korumasını, algılamayı ve yanıtını geliştirebilirsiniz Azure Logic Apps
+title: Microsoft Graph Security & güvenlik işlemlerini tümleştirme ve yönetme
+description: Microsoft Graph Security & Azure Logic Apps ile uygulamanızın tehdit koruması, algılama ve yanıtını geliştirin
 services: logic-apps
 ms.suite: integration
 author: preetikr
@@ -10,156 +10,156 @@ ms.topic: article
 ms.date: 02/21/2020
 tags: connectors
 ms.openlocfilehash: b4f51b192d1a7c0ee14a769321793753e8217dea
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77598842"
 ---
-# <a name="improve-threat-protection-by-integrating-security-operations-with-microsoft-graph-security--azure-logic-apps"></a>Güvenlik işlemlerini Microsoft Graph güvenlik & tümleştirerek tehdit korumasını geliştirebilirsiniz Azure Logic Apps
+# <a name="improve-threat-protection-by-integrating-security-operations-with-microsoft-graph-security--azure-logic-apps"></a>Güvenlik işlemlerini Microsoft Graph Security & Azure Logic Apps ile tümleştirerek tehdit koruması geliştirme
 
-[Azure Logic Apps](../logic-apps/logic-apps-overview.md) ve [Microsoft Graph güvenlik](https://docs.microsoft.com/graph/security-concept-overview) Bağlayıcısı sayesinde, Microsoft güvenlik ürünleri, hizmetleri ve iş ortaklarının tümleştirilmesine yönelik otomatik iş akışları oluşturarak uygulamanızın tehditleri nasıl algıladığı, koruduğunu ve yanıtladığını artırabilirsiniz. Örneğin, uyarılar gibi Microsoft Graph güvenlik varlıklarını izleyen ve yöneten [Azure Güvenlik Merkezi oyun kitapları](../security-center/security-center-playbooks.md) oluşturabilirsiniz. Microsoft Graph güvenlik Bağlayıcısı tarafından desteklenen bazı senaryolar aşağıda verilmiştir:
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md) ve Microsoft Graph [Security](https://docs.microsoft.com/graph/security-concept-overview) bağlayıcısı ile, Microsoft güvenlik ürünlerini, hizmetlerini ve iş ortaklarını entegre etmek için otomatik iş akışları oluşturarak uygulamanızın tehditleri nasıl algıladığını, koruduğunu ve yanıt verdiğinizi geliştirebilirsiniz. Örneğin, uyarılar gibi Microsoft Graph Security varlıklarını izleyen ve yöneten [Azure Güvenlik Merkezi oyun kitapları](../security-center/security-center-playbooks.md) oluşturabilirsiniz. Microsoft Graph Security bağlayıcısı tarafından desteklenen bazı senaryolar şunlardır:
 
-* Sorguları veya uyarı KIMLIĞINE göre uyarıları alın. Örneğin, yüksek önem derecesi uyarıları içeren bir liste alabilirsiniz.
+* Sorgulara veya uyarı kimliğine dayalı uyarılar alın. Örneğin, yüksek önem uyarılarını içeren bir liste alabilirsiniz.
 
-* Uyarıları güncelleştirin. Örneğin, uyarı atamalarını güncelleştirebilir, uyarılara yorum ekleyebilir veya uyarıları etiketleyebilir.
+* Uyarıları güncelleştirin. Örneğin, uyarı atamalarını güncelleyebilir, uyarılara yorum ekleyebilir veya uyarıları etiketleyebilirsiniz.
 
-* [Uyarı abonelikleri (Web kancaları)](https://docs.microsoft.com/graph/api/resources/webhooks)oluşturarak uyarıların ne zaman oluşturulduğunu veya değiştirildiğini izler.
+* [Uyarı abonelikleri (webhooks)](https://docs.microsoft.com/graph/api/resources/webhooks)oluşturarak uyarılar oluşturulduğunda veya değiştirildiğinde izleyin.
 
-* Uyarı aboneliklerinizi yönetin. Örneğin, etkin abonelikler alabilir, bir aboneliğin süre sonu süresini genişletebilir veya abonelikleri silebilirsiniz.
+* Uyarı aboneliklerinizi yönetin. Örneğin, etkin abonelikler alabilir, aboneliğin son kullanma süresini uzatabilir veya abonelikleri silebilirsiniz.
 
-Mantıksal uygulamanızın iş akışı, Microsoft Graph güvenlik bağlayıcısından yanıt alan eylemleri kullanabilir ve bu çıktıyı iş akışınızda diğer eylemler için kullanılabilir hale getirir. Ayrıca, iş akışınızda başka eylemlere de sahip olabilirsiniz Microsoft Graph güvenlik Bağlayıcısı eylemleriyle çıktıyı kullanın. Örneğin, Microsoft Graph güvenlik Bağlayıcısı aracılığıyla yüksek önem derecesine sahip uyarılar alırsanız, bu uyarıları Outlook bağlayıcısını kullanarak bir e-posta iletisiyle gönderebilirsiniz. 
+Mantık uygulamanızın iş akışı, Microsoft Graph Security bağlayıcısından yanıt alan eylemleri kullanabilir ve bu çıktıyı iş akışınızdaki diğer eylemler için kullanılabilir hale getirebilir. Microsoft Graph Security bağlayıcı sıyrık eylemlerinden elde edilen çıktıyı kullanarak iş akışınızda başka eylemler de yapabilirsiniz. Örneğin, Microsoft Graph Security bağlayıcısı aracılığıyla yüksek önem uyarılarını alırsanız, bu uyarıları Outlook bağlayıcısını kullanarak bir e-posta iletisinde gönderebilirsiniz. 
 
-Microsoft Graph güvenliği hakkında daha fazla bilgi edinmek için [Microsoft Graph güvenlik API 'sine genel bakış](https://aka.ms/graphsecuritydocs)bölümüne bakın. Logic Apps 'e yeni başladıysanız [ne Azure Logic Apps? ne olduğunu](../logic-apps/logic-apps-overview.md)gözden geçirin. Microsoft Flow veya PowerApps arıyorsanız bkz. [Flow nedir?](https://flow.microsoft.com/) veya [PowerApps nedir?](https://powerapps.microsoft.com/)
+Microsoft Graph Security hakkında daha fazla bilgi edinmek için [Microsoft Graph Security API genel bakış'a](https://aka.ms/graphsecuritydocs)bakın. Mantıksal uygulamalarda yeniyseniz, [Azure Mantık Uygulamaları nedir inceleyin?](../logic-apps/logic-apps-overview.md) Microsoft Flow veya PowerApps'ı arıyorsanız, [Bkz. Akış nedir](https://flow.microsoft.com/) veya [PowerApps nedir?](https://powerapps.microsoft.com/)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/). 
 
-* Microsoft Graph güvenlik bağlayıcısını kullanmak için, [Microsoft Graph güvenlik kimlik doğrulama gereksinimlerinin](https://aka.ms/graphsecurityauth)bir parçası olan, *AÇıKÇA* Azure Active Directory (ad) Kiracı Yöneticisi onay vermiş olmanız gerekir. Bu onay, Microsoft Graph güvenlik bağlayıcısının uygulama KIMLIĞI ve adının yanı sıra [Azure Portal](https://portal.azure.com)de bulabileceğinizi gerektirir:
+* Microsoft Graph Güvenlik bağlayıcısını kullanmak için Azure Active Directory (AD) kiracısının yöneticisinin *açıkça verilmiş* onayı olması gerekir. Bu, [Microsoft Graph Güvenlik Kimlik Doğrulaması gereksinimlerinin](https://aka.ms/graphsecurityauth) bir parçasıdır. Bu onay, [Azure portalında](https://portal.azure.com)da bulabileceğiniz Microsoft Graph Security bağlayıcısının uygulama kimliğini ve adını gerektirir:
 
   | Özellik | Değer |
   |----------|-------|
-  | **Uygulama adı** | `MicrosoftGraphSecurityConnector` |
-  | **Uygulama KIMLIĞI** | `c4829704-0edc-4c3d-a347-7c4a67586f3c` |
+  | **Uygulama Adı** | `MicrosoftGraphSecurityConnector` |
+  | **Başvuru Kimliği** | `c4829704-0edc-4c3d-a347-7c4a67586f3c` |
   |||
 
-  Bağlayıcıya izin vermek için, Azure AD kiracı yöneticiniz aşağıdaki adımları izleyebilir:
+  Bağlayıcı için izin vermek için Azure AD kiracı yöneticiniz aşağıdaki adımları izleyebilir:
 
-  * [Azure AD uygulamaları için kiracı yöneticisine Izin verin](../active-directory/develop/v2-permissions-and-consent.md).
+  * [Azure AD uygulamalarına kiracı yöneticisi onayı verme](../active-directory/develop/v2-permissions-and-consent.md).
 
-  * Mantıksal uygulamanızın ilk çalıştırıldığı sırada, [uygulamanız uygulama onayı deneyimi](../active-directory/develop/application-consent-experience.md)aracılığıyla Azure AD kiracı yöneticinizden izin isteyebilir.
+  * Mantıksal uygulamanız ilk kez çalıştırıldığında [uygulama onayı deneyimi](../active-directory/develop/application-consent-experience.md) aracılığıyla uygulamanız Azure AD kiracınızın yöneticisinden onay isteyebilir.
    
-* [Mantıksal uygulamalar oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md) hakkında temel bilgi
+* [Mantık uygulamaları oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md) hakkında temel bilgiler
 
-* Uyarılar gibi Microsoft Graph güvenlik varlıklarınıza erişmek istediğiniz mantıksal uygulama. Microsoft Graph güvenlik tetikleyicisi kullanmak için boş bir mantıksal uygulama gerekir. Microsoft Graph bir güvenlik eylemi kullanmak için, senaryonuza uygun tetikleyiciyle başlayan bir mantıksal uygulama gerekir.
+* Uyarılar gibi Microsoft Graph Security varlıklarınıza erişmek istediğiniz mantık uygulaması. Microsoft Graph Security tetikleyicisi kullanmak için boş bir mantık uygulamasına ihtiyacınız var. Microsoft Graph Security eylemini kullanmak için, senaryonuz için uygun tetikleyiciyle başlayan bir mantık uygulamasına ihtiyacınız var.
 
-## <a name="connect-to-microsoft-graph-security"></a>Microsoft Graph güvenliğine bağlanma 
+## <a name="connect-to-microsoft-graph-security"></a>Microsoft Graph Security'ye bağlanma 
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. [Azure Portal](https://portal.azure.com/)oturum açın ve daha önce açık değilse mantıksal uygulama Tasarımcısı 'nda mantıksal uygulamanızı açın.
+1. [Azure portalında](https://portal.azure.com/)oturum açın ve mantık uygulamanızı zaten açık değilse Mantık Uygulama Tasarımcısı'nda açın.
 
-1. Boş Logic Apps için, Microsoft Graph bir güvenlik eylemi eklemeden önce tetikleyiciyi ve istediğiniz diğer eylemleri ekleyin.
-
-   -veya-
-
-   Mevcut Logic Apps için, Microsoft Graph güvenlik eylemi eklemek istediğiniz son adım altında **yeni adım**' ı seçin.
+1. Boş mantık uygulamaları için, microsoft grafik güvenlik eylemi eklemeden önce tetikleyiciyi ve istediğiniz diğer eylemleri ekleyin.
 
    -veya-
 
-   Adımlar arasında bir eylem eklemek için, işaretçinizi adımlar arasındaki oka taşıyın. Görüntülenen artı işaretini (+) seçin ve **Eylem Ekle**' yi seçin.
+   Varolan mantık uygulamaları için, Microsoft Graph Security eylemi eklemek istediğiniz son adım altında **Yeni adım'ı**seçin.
 
-1. Arama kutusuna filtreniz olarak "Microsoft Graph Security" yazın. Eylemler listesinden istediğiniz eylemi seçin.
+   -veya-
 
-1. Microsoft Graph güvenlik kimlik bilgilerinizle oturum açın.
+   Adımlar arasında eylem eklemek için işaretçinizin üzerine adımların arasında ilerleyin. Görünen artı işaretini (+) seçin ve **eylem ekle'yi**seçin.
 
-1. Seçtiğiniz eyleminiz için gerekli ayrıntıları sağlayın ve mantıksal uygulamanızın iş akışını oluşturmaya devam edin.
+1. Arama kutusuna filtreniz olarak "microsoft graph security" girin. Eylemler listesinden, istediğiniz eylemi seçin.
 
-## <a name="add-triggers"></a>Tetikleyici ekleme
+1. Microsoft Graph Security kimlik bilgilerinizle oturum açın.
 
-Azure Logic Apps, her mantıksal uygulama, belirli bir olay gerçekleştiğinde veya belirli bir koşul karşılandığında tetiklenen bir [tetikleyiciyle](../logic-apps/logic-apps-overview.md#logic-app-concepts)başlamalıdır. Tetikleyici her tetiklendiğinde Logic Apps altyapısı bir mantıksal uygulama örneği oluşturur ve uygulamanızın iş akışını çalıştırmaya başlar.
+1. Seçtiğiniz eylem için gerekli ayrıntıları sağlayın ve mantık uygulamanızın iş akışını oluşturmaya devam edin.
+
+## <a name="add-triggers"></a>Tetikleyiciler ekleme
+
+Azure Logic Apps'ta, her mantık uygulaması, belirli bir olay olduğunda veya belirli bir koşul yerine getirildiğinde ateş eden bir [tetikleyiciyle](../logic-apps/logic-apps-overview.md#logic-app-concepts)başlamalıdır. Tetikleyici her ateşleninse, Logic Apps motoru bir mantık uygulaması örneği oluşturur ve uygulamanızın iş akışını çalıştırmaya başlar.
 
 > [!NOTE] 
-> Tetikleyici tetiklendiğinde, tetikleyici tüm yeni uyarıları işler. Hiçbir uyarı alınmıyorsa, tetikleyici çalıştırması atlanır. Sonraki tetikleyici yoklama, tetikleyicisinin özelliklerinde belirttiğiniz yinelenme aralığına göre yapılır.
+> Bir tetikleyici ateşlendiğinde, tetikleyici tüm yeni uyarıları işler. Uyarı alınmazsa, tetikleyici çalıştırma atlanır. Bir sonraki tetikleyici yoklaması, tetikleyicinin özelliklerinde belirttiğiniz yineleme aralığına göre gerçekleşir.
 
-Bu örnek, uygulamanıza yeni uyarılar gönderildiğinde bir mantıksal uygulama iş akışını nasıl başlatacağınızı gösterir.
+Bu örnek, uygulamanıza yeni uyarılar gönderildiğinde bir mantık uygulaması iş akışını nasıl başlatabileceğinizi gösterir.
 
-1.  Azure portal veya Visual Studio 'da mantıksal uygulama Tasarımcısı ' nı açan boş bir mantıksal uygulama oluşturun. Bu örnek Azure portal kullanır.
+1.  Azure portalında veya Visual Studio'da, Logic App Designer'ı açan boş bir mantık uygulaması oluşturun. Bu örnekte Azure portalı kullanır.
 
-1.  Tasarımcıda arama kutusuna filtreniz olarak "Microsoft Graph Security" yazın. Tetikleyiciler listesinde, bu tetikleyiciyi seçin: **tüm yeni uyarılarda**
+1.  Tasarımcıda, arama kutusuna filtreniz olarak "microsoft graph security" girin. Tetikleyiciler listesinden şu tetikleyiciyi seçin: **Tüm yeni uyarılarda**
 
-1.  Tetikleyicide, izlemek istediğiniz uyarılar hakkında bilgi sağlayın. Daha fazla özellik için **yeni parametre Ekle** listesini açın ve bu özelliği tetikleyiciye eklemek için bir parametre seçin.
+1.  Tetikleyicide, izlemek istediğiniz uyarılar hakkında bilgi sağlayın. Daha fazla özellik için **yeni parametre** listesi ekle'yi açın ve bu özelliği tetikleyiciye eklemek için bir parametre seçin.
 
-   | Özellik | Özellik (JSON) | Gerekli | Tür | Açıklama |
+   | Özellik | Emlak (JSON) | Gerekli | Tür | Açıklama |
    |----------|-----------------|----------|------|-------------|
-   | **Aralık** | `interval` | Yes | Tamsayı | İş akışının sıklık temelinde ne sıklıkta çalışacağını açıklayan pozitif bir tamsayı. En düşük ve en büyük aralıklar aşağıda verilmiştir: <p><p>-Ay: 1-16 ay <br>Gün: 1-500 gün <br>-Saat: 1-12000 saat <br>-Dakika: 1-72000 dakika <br>-İkinci: 1-9999999 saniye <p>Örneğin, Aralık 6 ve Sıklık "month" ise, yinelenme 6 aydır. |
-   | **Sıklık** | `frequency` | Yes | Dize | Yinelenme için zaman birimi: **saniye**, **dakika**, **saat**, **gün**, **hafta**veya **ay** |
-   | **Saat dilimi** | `timeZone` | Hayır | Dize | Yalnızca bir başlangıç saati belirttiğinizde geçerlidir çünkü bu tetikleyici [UTC sapmasını](https://en.wikipedia.org/wiki/UTC_offset)kabul etmez. Uygulamak istediğiniz saat dilimini seçin. |
-   | **Başlangıç saati** | `startTime` | Hayır | Dize | Bu biçimde bir başlangıç tarihi ve saati belirtin: <p><p>YYYY-MM-DDThh: mm: ss saat dilimi seçerseniz <p>-veya- <p>YYYY-MM-DDThh: mm: ssZ saat dilimi seçme <p>Örneğin, 18 Eylül 2017 ile 2:00 PM arasında bir süre istiyorsanız "2017-09-18T14:00:00" belirtin ve Pasifik standart saati gibi bir saat dilimi seçin. Ya da saat dilimi olmadan "2017-09-18T14:00:00Z" belirtin. <p>**Note:** Bu başlangıç saati, gelecekte en fazla 49 yıla sahiptir ve UTC [8601 tarih saat belirtimini](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) UTC [Tarih saat biçiminde](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)izlemelidir, ancak [UTC bir fark](https://en.wikipedia.org/wiki/UTC_offset)olmadan gelmelidir. Bir saat dilimi seçmezseniz, sonunda boşluk olmadan "Z" harfini eklemeniz gerekir. Bu "Z", eşdeğer [nadeniz saati](https://en.wikipedia.org/wiki/Nautical_time)anlamına gelir. <p>Basit zamanlamalar için başlangıç zamanı ilk oluşumdır, ancak karmaşık zamanlamalar için tetikleyici başlangıç zamanından daha önce harekete geçmez. [*Başlangıç tarihini ve saatini kullanmanın yolları nelerdir?* ](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time) |
+   | **Interval** | `interval` | Evet | Tamsayı | İş akışının sıklığına bağlı olarak ne sıklıkta çalıştığını açıklayan pozitif bir tamsayı. Minimum ve maksimum aralıklar şunlardır: <p><p>- Ay: 1-16 ay <br>- Gün: 1-500 gün <br>- Saat: 1-12.000 saat <br>- Dakika: 1-72.000 dakika <br>- İkinci: 1-9,999,999 saniye <p>Örneğin, aralık 6 ise ve sıklık "Ay" ise, yineleme her 6 ayda bir olur. |
+   | **Frequency** | `frequency` | Evet | Dize | Yineleme için zaman birimi: **İkinci**, **Dakika**, **Saat**, **Gün**, **Hafta**, veya **Ay** |
+   | **Saat dilimi** | `timeZone` | Hayır | Dize | Bu tetikleyici [UTC ofset](https://en.wikipedia.org/wiki/UTC_offset)kabul etmediğinden, yalnızca bir başlangıç saati belirttiğiniz zaman geçerlidir. Uygulamak istediğiniz saat dilimini seçin. |
+   | **Başlangıç saati** | `startTime` | Hayır | Dize | Bu biçimde bir başlangıç tarihi ve saati sağlayın: <p><p>Saat dilimi seçerseniz YYYY-MM-DDThh:mm:ss <p>-veya- <p>Saat dilimi seçmezseniz YYYY-MM-DDThh:mm:ssZ <p>Örneğin, 18 Eylül 2017 saat 14:00'te istiyorsanız, "2017-09-18T14:00:00" seçeneğini belirleyin ve Pasifik Standart Saati gibi bir saat dilimi seçin. Veya saat dilimi olmadan "2017-09-18T14:00:00Z" olarak belirtiniz. <p>**Not:** Bu başlangıç süresi gelecekte en fazla 49 yıl vardır ve [UTC tarih saati biçiminde](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) [ISO 8601 tarih saati belirtimini](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) takip etmelidir, ancak [UTC mahsup](https://en.wikipedia.org/wiki/UTC_offset)olmadan. Bir saat dilimi seçmezseniz, herhangi bir boşluk olmadan sonuna "Z" harfini eklemeniz gerekir. Bu "Z" eşdeğer [denizcilik zamanı](https://en.wikipedia.org/wiki/Nautical_time)anlamına gelir. <p>Basit zamanlamalar için başlangıç zamanı ilk olaydır, karmaşık zamanlamalar için tetikleyici başlangıç saatinden daha erken ateş etmez. [*Başlangıç tarihini ve saatini kullanma yolları nelerdir?*](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time) |
    ||||||
 
-1.  İşiniz bittiğinde, Tasarımcı araç çubuğunda **Kaydet**' i seçin.
+1.  Bittiğinde, tasarımcı araç çubuğunda **Kaydet'i**seçin.
 
-1.  Şimdi, tetikleyici sonuçlarıyla gerçekleştirmek istediğiniz görevler için mantıksal uygulamanıza bir veya daha fazla eylem eklemeye devam edin.
+1.  Şimdi, tetikleyici sonuçlarıyla gerçekleştirmek istediğiniz görevler için mantık uygulamanıza bir veya daha fazla eylem eklemeye devam edin.
 
 ## <a name="add-actions"></a>Eylem ekleme
 
-Microsoft Graph güvenlik Bağlayıcısı ile kullanılabilen çeşitli eylemleri kullanma hakkında daha ayrıntılı bilgiler aşağıda verilmiştir.
+Aşağıda, Microsoft Graph Security bağlayıcısıyla kullanılabilen çeşitli eylemleri kullanma yla ilgili daha ayrıntılı ayrıntılar verilmiştir.
 
 ### <a name="manage-alerts"></a>Uyarıları yönetme
 
-En son sonuçları filtrelemek, sıralamak veya almak için *yalnızca* [Microsoft Graph tarafından desteklenen OData sorgu parametrelerini](https://docs.microsoft.com/graph/query-parameters)sağlayın. Tüm temel URL 'YI veya HTTP eylemini (örneğin, `https://graph.microsoft.com/v1.0/security/alerts`veya `GET` veya `PATCH` işlemi) *belirtmeyin* . Yüksek önem derecesine sahip bir liste istediğinizde, **uyarıları al** eyleminin parametrelerini gösteren belirli bir örnek aşağıda verilmiştir:
+Filtrelemek, sıralamak veya en son sonuçları almak için yalnızca [Microsoft Graph tarafından desteklenen ODATA sorgu parametrelerini](https://docs.microsoft.com/graph/query-parameters)sağlayın. *only* Temel *URL'nin* tamamını veya HTTP eylemini (örneğin) `https://graph.microsoft.com/v1.0/security/alerts` `GET` veya `PATCH` işlemi belirtmeyin. Aşağıda, yüksek önem **uyarılarına** sahip bir liste istediğinizde uyarı al eyleminin parametrelerini gösteren belirli bir örnek verilmiştir:
 
 `Filter alerts value as Severity eq 'high'`
 
-Bu bağlayıcı ile kullanabileceğiniz sorgular hakkında daha fazla bilgi için [Microsoft Graph güvenlik uyarıları başvuru belgelerine](https://docs.microsoft.com/graph/api/alert-list)bakın. Bu bağlayıcıyla ilgili gelişmiş deneyimler oluşturmak için bağlayıcının desteklediği [şema özellikleri uyarıları](https://docs.microsoft.com/graph/api/resources/alert) hakkında daha fazla bilgi edinin.
+Bu bağlayıcıyla kullanabileceğiniz sorgular hakkında daha fazla bilgi için [Microsoft Graph Security uyarıları başvuru belgelerine](https://docs.microsoft.com/graph/api/alert-list)bakın. Bu bağlayıcıyla gelişmiş deneyimler oluşturmak için, konektörün desteklediği [şema özellikleri uyarıları](https://docs.microsoft.com/graph/api/resources/alert) hakkında daha fazla bilgi edinin.
 
 | Eylem | Açıklama |
 |--------|-------------|
-| **Uyarıları al** | Bir veya daha fazla [Uyarı özelliklerine](https://docs.microsoft.com/graph/api/resources/alert)göre filtrelenmiş uyarıları alın, örneğin `Provider eq 'Azure Security Center' or 'Palo Alto Networks'`. | 
-| **KIMLIĞE göre uyarı al** | Uyarı KIMLIğINE bağlı olarak belirli bir uyarı alın. | 
-| **Uyarıyı Güncelleştir** | Uyarı KIMLIĞINE göre belirli bir uyarıyı güncelleştirin. İsteğinize gerekli ve düzenlenebilir özellikleri geçirdiğinizden emin olmak için, [Uyarılar için düzenlenebilir özelliklere](https://docs.microsoft.com/graph/api/alert-update)bakın. Örneğin, araştırabilmeleri için bir güvenlik analiste uyarı atamak üzere uyarının **atanmış** özelliğini güncelleştirebilirsiniz. |
+| **Uyarıları alın** | Örneğin, `Provider eq 'Azure Security Center' or 'Palo Alto Networks'`bir veya daha fazla [uyarı özelliğine](https://docs.microsoft.com/graph/api/resources/alert)göre filtreuygulanmış uyarıları alın. | 
+| **Kimlikle uyarı alın** | Uyarı kimliğine göre belirli bir uyarı alın. | 
+| **Uyarıyı güncelleştir** | Uyarı kimliğine dayalı olarak belirli bir uyarıyı güncelleştirin. İsteğinizde gerekli ve değiştirilebilir özellikleri geçtiğinizden emin olmak [için uyarılar için değiştirilebilir özelliklere](https://docs.microsoft.com/graph/api/alert-update)bakın. Örneğin, bir güvenlik analistine bir uyarı atamak böylece araştırma yapabilir, uyarının **Atanmış** özelliğini güncelleştirebilirsiniz. |
 |||
 
 ### <a name="manage-alert-subscriptions"></a>Uyarı aboneliklerini yönetme
 
-Microsoft Graph [*abonelikleri*](https://docs.microsoft.com/graph/api/resources/subscription)veya [*Web kancalarını*](https://docs.microsoft.com/graph/api/resources/webhooks)destekler. Abonelikleri almak, güncelleştirmek veya silmek için [Microsoft Graph tarafından desteklenen OData sorgu parametrelerini](https://docs.microsoft.com/graph/query-parameters) Microsoft Graph varlık yapısına sağlayın ve `security/alerts` ve ardından OData sorgusunu ekleyin. Temel URL 'yi *eklemeyin* , örneğin `https://graph.microsoft.com/v1.0`. Bunun yerine, şu örnekteki biçimi kullanın:
+Microsoft Graph abonelikleri veya [*web hook'ları*](https://docs.microsoft.com/graph/api/resources/webhooks)destekler. [*subscriptions*](https://docs.microsoft.com/graph/api/resources/subscription) Abonelikleri almak, güncelleştirmek veya silmek için Microsoft [Graph tarafından desteklenen ODATA sorgu parametrelerini](https://docs.microsoft.com/graph/query-parameters) Microsoft Graph varlık yapısına sağlayın ve ardından ODATA sorgusunu ekleyin. `security/alerts` Temel *URL'yi eklemeyin,* `https://graph.microsoft.com/v1.0`örneğin. Bunun yerine, bu örnekte biçimi kullanın:
 
 `security/alerts?$filter=status eq 'New'`
 
 | Eylem | Açıklama |
 |--------|-------------|
-| **Abonelik oluşturma** | Herhangi bir değişiklik hakkında size bildirimde bulunan [bir abonelik oluşturun](https://docs.microsoft.com/graph/api/subscription-post-subscriptions) . İstediğiniz belirli uyarı türleri için bu aboneliği filtreleyebilirsiniz. Örneğin, size yüksek önem derecesi uyarıları bildiren bir abonelik oluşturabilirsiniz. |
-| **Etkin abonelikleri al** | Süre [dolmamış abonelikler alın](https://docs.microsoft.com/graph/api/subscription-list). | 
-| **Aboneliği Güncelleştir** | Abonelik KIMLIĞINI sağlayarak [bir aboneliği güncelleştirin](https://docs.microsoft.com/graph/api/subscription-update) . Örneğin, aboneliğinizi genişletmek için, aboneliğin `expirationDateTime` özelliğini güncelleştirebilirsiniz. | 
-| **Aboneliği Sil** | Abonelik KIMLIĞINI sağlayarak [bir aboneliği silin](https://docs.microsoft.com/graph/api/subscription-delete) . | 
+| **Abonelikleri oluşturma** | Değişiklikler hakkında sizi belirten [bir abonelik oluşturun.](https://docs.microsoft.com/graph/api/subscription-post-subscriptions) Bu aboneliği istediğiniz belirli uyarı türleri için filtreleyebilirsiniz. Örneğin, yüksek önem uyarılarını size bildiren bir abonelik oluşturabilirsiniz. |
+| **Etkin abonelikler alın** | [Süresi dolmamış abonelikleri alın.](https://docs.microsoft.com/graph/api/subscription-list) | 
+| **Aboneliği güncelleştir** | Abonelik kimliğini sağlayarak [aboneliği güncelleştirin.](https://docs.microsoft.com/graph/api/subscription-update) Örneğin, aboneliğinizi genişletmek için aboneliğin `expirationDateTime` özelliğini güncelleştirebilirsiniz. | 
+| **Aboneliği silme** | Abonelik kimliğini sağlayarak [aboneliği silin.](https://docs.microsoft.com/graph/api/subscription-delete) | 
 ||| 
 
-### <a name="manage-threat-intelligence-indicators"></a>Tehdit zekası göstergelerini yönetme
+### <a name="manage-threat-intelligence-indicators"></a>Tehdit istihbaratı göstergelerini yönetme
 
-En son sonuçları filtrelemek, sıralamak veya almak için *yalnızca* [Microsoft Graph tarafından desteklenen OData sorgu parametrelerini](https://docs.microsoft.com/graph/query-parameters)sağlayın. Tüm temel URL 'YI veya HTTP eylemini (örneğin, `https://graph.microsoft.com/beta/security/tiIndicators`veya `GET` veya `PATCH` işlemi) *belirtmeyin* . İşte `DDoS` tehdit türüne sahip bir liste istediğinizde, **Get Tıators** eyleminin parametrelerini gösteren belirli bir örnek:
+Filtrelemek, sıralamak veya en son sonuçları almak için yalnızca [Microsoft Graph tarafından desteklenen ODATA sorgu parametrelerini](https://docs.microsoft.com/graph/query-parameters)sağlayın. *only* Temel *URL'nin* tamamını veya HTTP eylemini (örneğin) `https://graph.microsoft.com/beta/security/tiIndicators` `GET` veya `PATCH` işlemi belirtmeyin. Tehdit türüne sahip `DDoS` bir liste istediğinizde **tiIndicators alın** eyleminin parametrelerini gösteren belirli bir örnek aşağıda verilmiştir:
 
 `Filter threat intelligence indicator value as threatType eq 'DDoS'`
 
-Bu bağlayıcı ile kullanabileceğiniz sorgular hakkında daha fazla bilgi için, [Microsoft Graph güvenlik tehdit bilgileri gösterge başvurusu belgelerindeki "Isteğe bağlı sorgu parametreleri"](https://docs.microsoft.com/graph/api/tiindicators-list?view=graph-rest-beta&tabs=http)başlığına bakın. Bu bağlayıcıyla ilgili gelişmiş deneyimler oluşturmak için bağlayıcının desteklediği [şema özellikleri tehdit bilgileri göstergesi](https://docs.microsoft.com/graph/api/resources/tiindicator?view=graph-rest-beta) hakkında daha fazla bilgi edinin.
+Bu bağlayıcıyla kullanabileceğiniz sorgular hakkında daha fazla bilgi için [Microsoft Graph Security tehdit zekası göstergesi başvuru belgelerinde "İsteğe Bağlı Sorgu Parametreleri"](https://docs.microsoft.com/graph/api/tiindicators-list?view=graph-rest-beta&tabs=http)adlı başvuruya bakın. Bu bağlayıcıyla gelişmiş deneyimler oluşturmak için, konektörün desteklediği [şema özellikleri tehdit istihbarat göstergesi](https://docs.microsoft.com/graph/api/resources/tiindicator?view=graph-rest-beta) hakkında daha fazla bilgi edinin.
 
 | Eylem | Açıklama |
 |--------|-------------|
-| **Tehdit zekası göstergelerini al** | Bir veya daha fazla [Tiındicator özelliklerine](https://docs.microsoft.com/graph/api/resources/tiindicator?view=graph-rest-beta)göre filtrelenmiş, örneğin, `threatType eq 'MaliciousUrl' or 'DDoS'` |
-| **KIMLIĞE göre tehdit zekası göstergesi al** | Tiındicator KIMLIĞI temelinde belirli bir Tiındicator alın. | 
-| **Tehdit zekası göstergesi oluşturma** | Tiındicators koleksiyonuna göndererek yeni bir Tiındicator oluşturun. İsteğinize gerekli özellikleri geçirdiğinizden emin olmak için, [Tiındicator oluşturmak için gereken özelliklere](https://docs.microsoft.com/graph/api/tiindicators-post?view=graph-rest-beta&tabs=http)bakın. |
-| **Birden çok tehdit zekasının göstergelerini gönder** | Bir Tiındicators koleksiyonu naklederek birden çok yeni Tiındicators oluşturun. İsteğinize gerekli özellikleri geçirdiğinizden emin olmak için, [birden çok Tiındicators göndermek için gereken özelliklere](https://docs.microsoft.com/graph/api/tiindicator-submittiindicators?view=graph-rest-beta&tabs=http)bakın. |
-| **Tehdit zekası göstergesini Güncelleştir** | Tiındicator KIMLIĞI temelinde belirli bir Tiındicator 'ı güncelleştirin. İsteğinize gerekli ve düzenlenebilir özellikleri geçirdiğinizden emin olmak için, [Tiındicator için düzenlenebilir özelliklere](https://docs.microsoft.com/graph/api/tiindicator-update?view=graph-rest-beta&tabs=http)bakın. Örneğin, göstergenin targetProduct güvenlik aracından eşleşmesi durumunda uygulanacak eylemi güncelleştirmek için, Tiındicator 'ın **Action** özelliğini güncelleştirebilirsiniz. |
-| **Birden çok tehdit zekası göstergelerini güncelleştirme** | Birden çok Tiındicators 'ı güncelleştirin. İsteğinize gerekli özellikleri geçirdiğinizden emin olmak için, [birden çok Tiındicators 'ı güncelleştirmek için gereken özelliklere](https://docs.microsoft.com/graph/api/tiindicator-updatetiindicators?view=graph-rest-beta&tabs=http)bakın. |
-| **Tehdit zekası göstergesini KIMLIĞE göre Sil** | Tiındicator KIMLIĞI temelinde belirli bir Tiındicator öğesini silin. |
-| **Kimliklere göre birden çok tehdit zekası göstergelerini silme** | Birden çok Tiındicators kimliklerini kimliklerine göre silin. İsteğinize gerekli özellikleri geçirdiğinizden emin olmak için, [birden çok Tiındicators 'ı kimliklere göre silmek için gerekli özelliklere](https://docs.microsoft.com/graph/api/tiindicator-deletetiindicators?view=graph-rest-beta&tabs=http)bakın. |
-| **Çoklu tehdit zekası göstergelerini dış kimliklere göre Sil** | Dış kimliklere göre birden çok Tiındicators silin. İsteğinize gerekli özellikleri geçirdiğinizden emin olmak için, [dış kimliklere göre birden çok Tiındicators silmek için gereken özelliklere](https://docs.microsoft.com/graph/api/tiindicator-deletetiindicatorsbyexternalid?view=graph-rest-beta&tabs=http)bakın. |
+| **Tehdit istihbaratı göstergelerini alın** | TiIndicators'ı bir veya daha fazla [tiIndicator özelliğine](https://docs.microsoft.com/graph/api/resources/tiindicator?view=graph-rest-beta)göre filtreleme (örneğin,`threatType eq 'MaliciousUrl' or 'DDoS'` |
+| **Kimlikle tehdit istihbarat göstergesi alma** | tiIndicator KIMLIĞIne dayalı belirli bir tiIndicator alın. | 
+| **Tehdit istihbarat göstergesi oluşturma** | tiIndicators koleksiyonuna göndererek yeni bir tiIndicator oluşturun. İsteğinizde gerekli özellikleri geçtiğinizden emin olmak [için, tiIndicator oluşturmak için gerekli özelliklere](https://docs.microsoft.com/graph/api/tiindicators-post?view=graph-rest-beta&tabs=http)bakın. |
+| **Birden çok tehdit istihbarat göstergesi gönderme** | Bir tiIndicators koleksiyonu göndererek birden çok yeni tiIndicators oluşturun. İsteğiniz içinde gerekli özellikleri geçtiğinizden emin olmak [için, birden çok tiIndicators göndermek için gerekli özelliklere](https://docs.microsoft.com/graph/api/tiindicator-submittiindicators?view=graph-rest-beta&tabs=http)bakın. |
+| **Tehdit istihbarat göstergesini güncelleştirme** | tiIndicator kimliğini temel alan belirli bir tiIndicator'ı güncelleştirin. İsteğinizde gerekli ve değiştirilebilir özellikleri geçtiğinizden emin olmak [için, tiIndicator için değiştirilebilir özelliklere](https://docs.microsoft.com/graph/api/tiindicator-update?view=graph-rest-beta&tabs=http)bakın. Örneğin, gösterge hedefÜrün güvenlik aracı nın içinden eşleşirse uygulanacak eylemi güncelleştirmek için tiIndicator'ın **eylem** özelliğini güncelleştirebilirsiniz. |
+| **Birden çok tehdit istihbarat göstergesini güncelleştirme** | Birden çok tiIndicators güncelleştirin. İsteğiniz içinde gerekli özellikleri geçtiğinizden emin olmak için, [birden çok tiIndicators güncelleştirmek için gerekli özelliklere](https://docs.microsoft.com/graph/api/tiindicator-updatetiindicators?view=graph-rest-beta&tabs=http)bakın. |
+| **Tehdit istihbarat göstergesini kimlikle silme** | tiIndicator kimliğine göre belirli bir tiIndicator'ı silin. |
+| **Birden çok tehdit istihbarat göstergesini dizinlere göre silme** | Birden çok tiIndicators'ı kimliklerini silebilmektedir. İsteğiniz içinde gerekli özellikleri geçtiğinizden emin olmak [için, birden çok tiIndicators'ı kimliklerle silerlemek için gerekli özelliklere](https://docs.microsoft.com/graph/api/tiindicator-deletetiindicators?view=graph-rest-beta&tabs=http)bakın. |
+| **Dış tetkiler tarafından birden çok tehdit istihbarat göstergesini silme** | Harici kimlikler tarafından birden çok tiIndicators silin. İsteğiniz içinde gerekli özellikleri geçtiğinizden emin olmak [için, birden çok tiIndicator'ı harici kimliklerle silerlemek için gerekli özelliklere](https://docs.microsoft.com/graph/api/tiindicator-deletetiindicatorsbyexternalid?view=graph-rest-beta&tabs=http)bakın. |
 |||
 
 ## <a name="connector-reference"></a>Bağlayıcı başvurusu
 
-Bağlayıcının Openapı (eski adıyla Swagger) açıklaması tarafından tanımlanan Tetikleyiciler, Eylemler ve limitlerle ilgili teknik ayrıntılar için bağlayıcının [başvuru sayfasını](https://aka.ms/graphsecurityconnectorreference)gözden geçirin.
+Bağlayıcının OpenAPI (eski adıyla Swagger) açıklamasıyla açıklanan tetikleyiciler, eylemler ve sınırlar hakkındaki teknik ayrıntılar için bağlayıcının [başvuru sayfasını](https://aka.ms/graphsecurityconnectorreference)inceleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

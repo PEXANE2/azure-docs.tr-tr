@@ -1,100 +1,100 @@
 ---
-title: Azure ön kapısının Web uygulaması güvenlik duvarı özel kuralı
-description: Web uygulaması güvenlik duvarı (WAF) özel kurallarını kullanarak Web uygulamalarınızı kötü amaçlı saldırılara karşı koruma hakkında bilgi edinin.
+title: Azure Ön Kapı için Web uygulaması güvenlik duvarı özel kuralı
+description: Web uygulamalarınızı kötü amaçlı saldırılara karşı koruyan Web Uygulaması Güvenlik Duvarı (WAF) özel kurallarını nasıl kullanacağınızı öğrenin.
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: article
 services: web-application-firewall
 ms.date: 09/05/2019
 ms.author: victorh
-ms.openlocfilehash: 516e327cca1aa6a691a1d932c5f48c9108d818b4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 158bfe30bf48ee420be8efb9ff32fff0e555d9e7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73512528"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79475833"
 ---
-#  <a name="custom-rules-for-web-application-firewall-with-azure-front-door"></a>Azure ön kapısına sahip Web uygulaması güvenlik duvarı için özel kurallar
+#  <a name="custom-rules-for-web-application-firewall-with-azure-front-door"></a>Azure Ön Kapı ile Web Uygulaması Güvenlik Duvarı için özel kurallar
 
-Ön kapı hizmeti olan Azure Web uygulaması güvenlik duvarı (WAF), tanımladığınız koşullara göre Web uygulamalarınıza erişimi denetlemenize olanak tanır. Özel bir WAF kuralı bir öncelik numarası, kural türü, eşleşme koşulları ve bir eylemden oluşur. İki tür özel kural vardır: eşleştirme kuralları ve hız sınırı kuralları. Bir eşleştirme kuralı, eşleşen koşullara göre erişimi denetler, ancak bir hız sınırı kuralı, eşleşen koşullara ve gelen isteklerin ücretlerine göre erişimi denetler. Hesaplanmasını önlemek için özel bir kuralı devre dışı bırakabilirsiniz, ancak yine de yapılandırmayı devam edebilirsiniz. 
+Ön Kapılı Azure Web Uygulama Güvenlik Duvarı (WAF), tanımladığınız koşullara bağlı olarak web uygulamalarınıza erişimi denetlemenize olanak tanır. Özel bir WAF kuralı öncelik numarası, kural türü, eşleşme koşulları ve bir eylemden oluşur. İki tür özel kural vardır: maç kuralları ve fiyat sınırı kuralları. Eşmatch kuralı, bir oran sınırı kuralı eşleşen koşullara ve gelen istek oranlarına göre erişimi denetlerken, eşleşen koşullar kümesine göre erişimi denetler. Değerlendirilmesini önlemek için özel bir kuralı devre dışı kılabilir, ancak yapılandırmayı yine de saklarsınız. 
 
-## <a name="priority-match-conditions-and-action-types"></a>Öncelik, eşleşme koşulları ve eylem türleri
+## <a name="priority-match-conditions-and-action-types"></a>Öncelik, eşleştirme koşulları ve eylem türleri
 
-Bir öncelik numarası, bir kural türü, eşleşme koşullarından oluşan bir dizi ve bir eylem tanımlayan özel bir WAf kuralıyla erişimi kontrol edebilirsiniz. 
+Erişimi, öncelik numarası, kural türü, bir dizi eşleşme koşulu ve bir eylemi tanımlayan özel bir WAf kuralıyla denetleyebilirsiniz. 
 
-- **Priority:** WAF kurallarının değerlendirilme sırasını açıklayan benzersiz bir tamsayıdır. Düşük öncelik değerleri olan kurallar, daha yüksek değerlere sahip kurallardan önce değerlendirilir. Öncelik numaraları tüm özel kurallar arasında benzersiz olmalıdır.
+- **Öncelik:** WAF kurallarının değerlendirilmesi sırasını açıklayan benzersiz bir tamsayıdır. Daha düşük öncelik değerlerine sahip kurallar, daha yüksek değerlere sahip kurallardan önce değerlendirilir. Öncelik numaraları tüm özel kurallar arasında benzersiz olmalıdır.
 
-- **Eylem:** bir WAF kuralı eşleştirildiği takdirde bir isteğin nasıl yönlendirileceğini tanımlar. Bir istek özel bir kuralla eşleştiğinde uygulanacak aşağıdaki eylemlerden birini seçebilirsiniz.
+- **Eylem:** WAF kuralı eşleşirse isteğin nasıl yönlendirilenin ibaresini tanımlar. Bir istek özel bir kuralla eşleştiğinde uygulanacak aşağıdaki eylemlerden birini seçebilirsiniz.
 
-    - *Allow* -WAF, isteği arka uca iletir, WAF günlüklerinde bir girişi günlüğe kaydeder ve çıkar.
-    - *Blok* -istek engellendi, WAF, isteği arka uca iletmeksizin istemciye yanıt gönderiyor. WAF, WAF günlüklerinde bir girişi günlüğe kaydeder.
-    - *Log* -WAF WAF günlüklerinde bir girişi günlüğe kaydeder ve sonraki kuralı değerlendirmeye devam eder.
-    - *Yeniden yönlendirme* -WAF isteği BELIRTILEN bir URI 'ye yönlendirir, WAF günlüklerinde bir girişi günlüğe kaydeder ve çıkar.
+    - *İzin ver* - WAF arayışı arka uca ileter, WAF günlüklerinde ve çıkışlarında bir girişi kaydeder.
+    - *Blok* - İstek engellenir, WAF isteği arka uca iletmeden istemciye yanıt gönderir. WAF, WAF günlüklerinde bir girişi kaydeder.
+    - *Günlük* - WAF, WAF günlüklerinde bir girişi kaydeder ve bir sonraki kuralı değerlendirmeye devam eder.
+    - *Yönlendirme* - WAF isteği belirli bir URI'ye yönlendirir, WAF günlüklerinde bir giriş kaydeder ve çıkışlar.
 
-- **Koşulu eşleştir:** bir Match değişkeni, işleç ve Match değeri tanımlar. Her kural birden fazla eşleşme koşulu içerebilir. Bir eşleşme koşulu, coğrafi konuma, istemci IP adreslerine (CıDR), boyuta veya dize eşleşmesi temel alabilir. Dize eşleşmesi, eşleşme değişkenlerinin bir listesine göre olabilir.
-  - **Match değişkeni:**
-    - requestMethod
+- **Eşleştirme koşulu:** bir eşleşme değişkeni, bir işleç ve eşleme değeri tanımlar. Her kural birden çok eşleşme koşulu içerebilir. Eşleşme koşulu coğrafi konuma, istemci IP adreslerine (CIDR), boyut veya dize eşleşmesi temel alabilir. String eşleşmesi eşleme değişkenleri listesine karşı olabilir.
+  - **Eşleştirme değişkeni:**
+    - İstek Yöntemi
     - QueryString
     - PostArgs
-    - requestUri
-    - RequestHeader
-    - Istek gövdesi
-    - Özgü
-  - **İşlecinde**
-    - Any: herhangi bir kural eşleştirilyoksa varsayılan eylemi tanımlamak için genellikle kullanılır. Any, Match All işleçtir.
-    - Sıfıra
+    - Requesturi
+    - İstek Header
+    - İstek Gövdesi
+    - Tanımlama bilgileri
+  - **Işleç:**
+    - Any: kural eşleşmezse genellikle varsayılan eylemi tanımlamak için kullanılır. Herhangi bir maç tüm operatör.
+    - Eşittir
     - Contains
     - LessThan: boyut kısıtlaması
     - GreaterThan: boyut kısıtlaması
-    - Yetersiz okarşılandığından al: boyut kısıtlaması
+    - LessThanOrEqual: boyut kısıtlaması
     - GreaterThanOrEqual: boyut kısıtlaması
-    - Ile başlıyor
+    - BeginsWith
     - EndsWith
     - Regex
   
   - **Regex** aşağıdaki işlemleri desteklemez: 
-    - Geri başvurular ve yakalama alt ifadeleri
-    - Rastgele sıfır Genişlik onaylamaları
-    - Alt yordam başvuruları ve özyinelemeli desenler
+    - Geri göndermeler ve alt ifadeleri yakalama
+    - Rasgele sıfır genişlik iddiaları
+    - Alt yordamreferansları ve özyinelemeli desenler
     - Koşullu desenler
     - Geri izleme denetim fiilleri
-    - \C Single-Byte yönergesi
-    - \R yeni satır eşleştirme yönergesi
-    - Eşleşme sıfırlama yönergesinin \K başlangıcı
-    - Belirtme çizgileri ve gömülü kod
-    - Atomik gruplandırma ve sahip nicelik belirteçleri
+    - \C tek bayt yönergesi
+    - \R newline eşleşmesi yönergesi
+    - Maç sıfırlama yönergesinin \K başlangıcı
+    - Ek çalışmalar ve gömülü kod
+    - Atomik gruplama ve sahiplenici niceleyiciler
 
-  - **Negate [isteğe bağlı]:** Bir koşulun sonucu ölçü olması gerekiyorsa, *Negate* koşulunu true olarak ayarlayabilirsiniz.
+  - **[isteğe bağlı]:** Bir koşulun sonucu inkar *edilirse, negate* koşulunu doğru ayarlayabilirsiniz.
       
-  - **Dönüştürme [isteğe bağlı]:** Eşleşmesinden önce yapılacak dönüşümlerdeki adlara sahip dizelerin listesi. Bunlar aşağıdaki dönüşümler olabilir:
-     - İngiliz 
+  - **[isteğe bağlı]dönüştürün:** Eşleşmeden önce yapılacak dönüşümadlarının bulunduğu dizelerin listesi denenir. Aşağıdaki dönüşümler olabilir:
+     - Büyük harfe 
      - Küçük harf
-     - Kırpma
+     - Trim
      - RemoveNulls
-     - URL kod çözme
+     - UrlDecode
      - UrlEncode
      
-   - **Eşleşme değeri:** Desteklenen HTTP istek yöntemi değerleri şunlardır:
+   - **Maç değeri:** Desteklenen HTTP istek yöntemi değerleri şunlardır:
      - GET
-     - Yayınla
-     - KONUR
-     - BAŞLı
+     - POST
+     - PUT
+     - HEAD
      - DELETE
-     - INE
-     - KALDıRıN
-     - PROFILINIZI
+     - Kilit
+     - Kilidini
+     - PROFİL
      - Seçenekler
-     - FıND
-     - Pro
-     - MKCOL
-     - KOPYA
-     - GEÇIŞ
+     - PROPFIND
+     - Proppatch
+     - Mkcol
+     - Kopya
+     - Hareket
 
 ## <a name="examples"></a>Örnekler
 
-### <a name="waf-custom-rules-example-based-on-http-parameters"></a>Http parametrelerine göre WAF özel kurallar örneği
+### <a name="waf-custom-rules-example-based-on-http-parameters"></a>WAF özel kurallar örneği http parametrelerine dayalı
 
-İki eşleşme koşulu olan özel bir kuralın yapılandırmasını gösteren bir örnek aşağıda verilmiştir. İstekler, başvuran tarafından tanımlanan belirli bir siteden ve sorgu dizesinde "Password" yok.
+Aşağıda, iki eşleşme koşuluyla özel bir kuralın yapılandırmasını gösteren bir örnek verilmiştir. İstekler, başvurucu tarafından tanımlandığı şekilde belirli bir siteden gelir ve sorgu dizesi "parola" içermez.
 
 ```
 # http rules example
@@ -126,7 +126,7 @@ Bir öncelik numarası, bir kural türü, eşleşme koşullarından oluşan bir 
 }
 
 ```
-"PUT" metodunu engellemeye yönelik örnek bir yapılandırma aşağıda gösterildiği gibi gösterilmiştir:
+"PUT" yöntemini engellemek için örnek bir yapılandırma aşağıdaki gibi gösterilmiştir:
 
 ``` 
 # http Request Method custom rules
@@ -152,7 +152,7 @@ Bir öncelik numarası, bir kural türü, eşleşme koşullarından oluşan bir 
 
 ### <a name="size-constraint"></a>Boyut kısıtlaması
 
-Gelen isteğin bir bölümünde boyut kısıtlamasını belirten özel bir kural oluşturabilirsiniz. Örneğin, aşağıdaki kural 100 karakterden daha uzun bir URL 'Yi engelliyor.
+Gelen isteğin bir bölümünde boyut kısıtlaması belirten özel bir kural oluşturabilirsiniz. Örneğin, aşağıda kural 100 karakterden uzun bir Url'yi engeller.
 
 ```
 # http parameters size constraint
@@ -177,7 +177,7 @@ Gelen isteğin bir bölümünde boyut kısıtlamasını belirten özel bir kural
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Azure PowerShell kullanarak bir Web uygulaması güvenlik duvarı ilkesi yapılandırma](waf-front-door-custom-rules-powershell.md) 
-- [Ön kapılı Web uygulaması güvenlik duvarı](afds-overview.md) hakkında bilgi edinin
+- [Azure PowerShell'i kullanarak Bir Web Uygulaması Güvenlik Duvarı ilkesini yapılandırma](waf-front-door-custom-rules-powershell.md) 
+- Ön [Kapılı web Uygulaması Güvenlik Duvarı](afds-overview.md) hakkında bilgi edinin
 - [Front Door oluşturmayı](../../frontdoor/quickstart-create-front-door.md) öğrenin.
 

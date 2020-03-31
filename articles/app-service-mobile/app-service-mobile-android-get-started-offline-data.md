@@ -1,45 +1,45 @@
 ---
-title: Çevrimdışı eşitlemeyi etkinleştir (Android)
-description: Android uygulamanızda çevrimdışı verileri önbelleğe almak ve eşitlemek için App Service Mobile Apps kullanmayı öğrenin.
+title: Çevrimdışı eşitleme (Android) etkinleştirme
+description: Android uygulamanızda çevrimdışı verileri önbelleğe almak ve senkronize etmek için App Service Mobile Apps'ı nasıl kullanacağınızı öğrenin.
 ms.assetid: 32a8a079-9b3c-4faf-8588-ccff02097224
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: article
 ms.date: 06/25/2019
 ms.openlocfilehash: c215105af5fe1ef8056b0d816cf2c2a6b96f2038
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77461632"
 ---
-# <a name="enable-offline-sync-for-your-android-mobile-app"></a>Android mobil uygulamanız için çevrimdışı eşitlemeyi etkinleştirme
+# <a name="enable-offline-sync-for-your-android-mobile-app"></a>Android mobil uygulamanız için çevrimdışı eşitleme yi etkinleştirme
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
 
 ## <a name="overview"></a>Genel Bakış
-Bu öğretici, Android için Azure Mobile Apps çevrimdışı eşitleme özelliğini ele almaktadır. Çevrimdışı eşitleme son kullanıcıların bir mobil uygulamayla etkileşime geçmesini sağlar ve ağ bağlantısı olmasa bile veri&mdash;görüntüleme, ekleme veya değiştirme&mdash;. Değişiklikler yerel bir veritabanında depolanır. Cihaz yeniden çevrimiçi olduktan sonra, bu değişiklikler uzak arka uca eşitlenir.
+Bu öğretici, Android için Azure Mobil Uygulamaları'nın çevrimdışı eşitleme özelliğini kapsar. Çevrimdışı eşitleme, ağ bağlantısı olmasa&mdash;&mdash;bile son kullanıcıların bir mobil uygulamayı görüntüleme, ekleme veya değiştirme ile etkileşimkurmasına olanak tanır. Değişiklikler yerel bir veritabanında depolanır. Aygıt yeniden çevrimiçi olduğunda, bu değişiklikler uzak arka uçla senkronize edilir.
 
-Azure Mobile Apps ile ilgili ilk deneyiminiz varsa öncelikle [Android uygulaması oluşturma]öğreticisini tamamlamalısınız. İndirilen hızlı başlangıç sunucusu projesini kullanmazsanız, veri erişim uzantısı paketlerini projenize eklemeniz gerekir. Sunucu Uzantısı paketleri hakkında daha fazla bilgi için bkz. [Azure için .net arka uç sunucu SDK 'sı Mobile Apps çalışma](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
+Azure Mobil Apps ile ilk deneyiminiz buysa, öncelikle [Bir Android Uygulaması Oluştur]eğitimini tamamlamanız gerekir. İndirilen hızlı başlangıç sunucusu projesini kullanmıyorsanız, projenize veri erişim uzantısı paketlerini eklemeniz gerekir. Sunucu uzantı paketleri hakkında daha fazla bilgi için Azure [Mobil Uygulamaları için .NET arka uç sunucusu SDK ile çalışma](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)'ya bakın.
 
-Çevrimdışı eşitleme özelliği hakkında daha fazla bilgi edinmek için [Azure Mobile Apps’te Çevrimdışı Veri Eşitleme]konusuna bakın.
+Çevrimdışı eşitleme özelliği hakkında daha fazla bilgi edinmek için [Azure Mobil Uygulamalarında Çevrimdışı Veri Eşitleme]konusuna bakın.
 
-## <a name="update-the-app-to-support-offline-sync"></a>Çevrimdışı eşitlemeyi destekleyecek şekilde uygulamayı güncelleştirme
-Çevrimdışı eşitleme ile, cihazınızdaki bir **SQLite** veritabanının parçası olan bir *eşitleme tablosundan* ( *ımobileservicesynctable* arabirimini kullanarak) okuyup yazarsınız.
+## <a name="update-the-app-to-support-offline-sync"></a>Çevrimdışı eşitlemeyi desteklemek için uygulamayı güncelleştirin
+Çevrimdışı eşitleme ile, cihazınızdaki bir **SQLite** veritabanının parçası olan bir *eşitleme tablosuna* *(IMobileServiceSyncTable* arabirimini kullanarak) okuyup yazarsınız.
 
-Cihaz ile Azure Mobile Services arasında anında iletme ve çekme değişiklikleri yapmak için, yerel veritabanıyla birlikte verileri yerel olarak depolamak üzere başlattığınız bir *eşitleme bağlamı* (*MobileServiceClient. syncContext*) kullanırsınız.
+Aygıt ve Azure Mobil Hizmetleri arasındaki değişiklikleri itmek ve çekmek için, verileri yerel olarak depolamak için yerel veritabanıyla baş harfe aldığınız bir *eşitleme bağlamı* *(MobileServiceClient.SyncContext)* kullanırsınız.
 
-1. `TodoActivity.java`, var olan `mToDoTable` tanımını açıklama ve eşitleme tablosu sürümünün açıklamasını kaldırın:
+1. In, `TodoActivity.java`eşitleme tablosu `mToDoTable` sürümü varolan tanımı nı açıklama ve açıklama:
    
         private MobileServiceSyncTable<ToDoItem> mToDoTable;
-2. `onCreate` yönteminde, var olan `mToDoTable` başlatmasını ve bu tanımın açıklamasını kaldırın:
+2. `onCreate` Yöntemde, varolan başharfe `mToDoTable` yorum yapın ve bu tanımı açıklamayın:
    
         mToDoTable = mClient.getSyncTable("ToDoItem", ToDoItem.class);
-3. `refreshItemsFromTable` `results` tanımını not edin ve bu tanımın açıklamasını kaldırın:
+3. Bu `refreshItemsFromTable` tanımın `results` tanımı ve yorum uncomment dışarı yorum olarak:
    
         // Offline Sync
         final List<ToDoItem> results = refreshItemsFromMobileServiceTableSyncTable();
-4. `refreshItemsFromMobileServiceTable`tanımını açıklama olarak değerlendirin.
-5. `refreshItemsFromMobileServiceTableSyncTable`tanımının açıklamasını kaldırın:
+4. Açıklama tanımı . `refreshItemsFromMobileServiceTable`
+5. Uncomment `refreshItemsFromMobileServiceTableSyncTable`tanımı:
    
         private List<ToDoItem> refreshItemsFromMobileServiceTableSyncTable() throws ExecutionException, InterruptedException {
             //sync the data
@@ -48,7 +48,7 @@ Cihaz ile Azure Mobile Services arasında anında iletme ve çekme değişiklikl
                     eq(val(false));
             return mToDoTable.read(query).get();
         }
-6. `sync`tanımının açıklamasını kaldırın:
+6. Uncomment `sync`tanımı:
    
         private AsyncTask<Void, Void, Void> sync() {
             AsyncTask<Void, Void, Void> task = new AsyncTask<Void, Void, Void>(){
@@ -68,32 +68,32 @@ Cihaz ile Azure Mobile Services arasında anında iletme ve çekme değişiklikl
         }
 
 ## <a name="test-the-app"></a>Uygulamayı test edin
-Bu bölümde, davranışı WiFi ile test edersiniz ve sonra bir çevrimdışı senaryo oluşturmak için WiFi 'yi devre dışı bırakabilirsiniz.
+Bu bölümde, WiFi ile davranışı sınayın ve çevrimdışı bir senaryo oluşturmak için WiFi'ı kapatırsınız.
 
-Veri öğeleri eklediğinizde, bunlar yerel SQLite deposunda tutulur, ancak **Yenile** düğmesine bastığımda mobil hizmetle eşitlenmez. Diğer uygulamalar, verilerin eşitlenmesi gerektiği zaman ilgili farklı gereksinimlere sahip olabilir, ancak demo amacıyla bu öğreticide Kullanıcı tarafından açıkça istekte bulunur.
+Veri öğeleri eklediğinizde, bunlar yerel SQLite deposunda tutulur, ancak **siz Yenile** düğmesine basana kadar mobil servisle eşitlenmez. Diğer uygulamaların verilerin ne zaman eşitlenmesi gerektiğine ilişkin farklı gereksinimleri olabilir, ancak demo amaçlı bu öğretici, kullanıcının açıkça talep etmesini sağlar.
 
-Bu düğmeye bastığınızda yeni bir arka plan görevi başlatılır. İlk olarak, eşitleme bağlamını kullanarak yerel depoda yapılan tüm değişiklikleri iter, ardından tüm değiştirilen verileri Azure 'dan yerel tabloya çeker.
+Bu düğmeye bastığınızda, yeni bir arka plan görevi başlar. Önce eşitleme bağlamını kullanarak yerel mağazada yapılan tüm değişiklikleri iter, ardından değiştirilen tüm verileri Azure'dan yerel tabloya çeker.
 
 ### <a name="offline-testing"></a>Çevrimdışı test
-1. Cihazı veya benzeticiyi *uçak moduna*koyun. Bu bir çevrimdışı senaryo oluşturur.
-2. Bazı *Todo* öğeleri ekleyin veya bazı öğeleri tamamlanmış olarak işaretleyin. Cihazdan veya benzeticinden çıkın (ya da uygulamayı zorla kapatın) ve yeniden başlatın. Yerel SQLite deposunda tutuldıklarından, değişikliklerin cihazda kalıcı olduğunu doğrulayın.
-3. Azure *TodoItem* tablosunun içeriğini *SQL Server Management STUDIO*gibi bir SQL aracıyla veya *Fiddler* veya *Postman*gibi bir rest istemcisi ile görüntüleyin. Yeni öğelerin sunucuyla eşitlendiğinden emin olun
+1. Cihazı veya simülatörü *Uçak Modu'na*yerleştirin. Bu çevrimdışı bir senaryo oluşturur.
+2. Bazı *ToDo* öğeleri ekleyin veya bazı öğeleri tamamlanmış olarak işaretleyin. Cihazı veya simülatörden çıkın (veya uygulamayı zorla kapatın) ve yeniden başlatın. Değişikliklerinizin aygıtta kalıcı olduğunu doğrulayın, çünkü bunlar yerel SQLite deposunda tutulur.
+3. Azure *TodoItem* tablosunun içeriğini SQL Server Management *Studio*gibi bir SQL aracıyla veya *Fiddler* veya *Postacı*gibi bir REST istemcisiyle görüntüleyin. Yeni öğelerin sunucuyla *eşitlenmediğini* doğrulama
    
-       + Bir Node. js arka ucu için [Azure Portal](https://portal.azure.com/)gidin ve mobil uygulama arka ucunuzda `TodoItem` tablosunun içeriğini görüntülemek Için **kolay tablolar** > **TodoItem** ' e tıklayın.
-       + .NET arka ucu için tablo içeriğini *SQL Server Management Studio*gıbı bir SQL aracıyla veya *Fiddler* veya *Postman*gibi bir rest istemcisi ile görüntüleyin.
-4. Cihazda veya benzeticide WiFi 'yi açın. Sonra **Yenile** düğmesine basın.
-5. TodoItem verilerini Azure portal yeniden görüntüleyin. Yeni ve değiştirilmiş Todoıtems artık görünmelidir.
+       + Bir Düğüm.js arka uç için [Azure portalına](https://portal.azure.com/)gidin ve Mobil Uygulama arka uçta `TodoItem` tablonun içeriğini görüntülemek için **Kolay Tablolar** > **TodoItem'i** tıklatın.
+       + .NET arka uç için tablo içeriğini *SQL Server Management Studio*gibi bir SQL aracıyla veya *Fiddler* veya *Postacı*gibi bir REST istemcisiyle görüntüleyin.
+4. Cihazda veya simülatörde WiFi'ı açın. Ardından, **Yenile** düğmesine basın.
+5. TodoItem verilerini Azure portalında yeniden görüntüleyin. Yeni ve değiştirilen TodoItems şimdi görünmelidir.
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 * [Azure Mobile Apps’te Çevrimdışı Veri Eşitleme]
-* [Bulut kapağı: azure Mobile Services çevrimdışı eşitleme] \(Note: video Mobile Services açık, ancak çevrimdışı eşitleme Azure Mobile Apps benzer bir şekilde çalışıyor\)
+* [Bulut Kapağı: Azure Mobil Hizmetlerde] \(Çevrimdışı Eşitleme: Video Mobil Hizmetler'dedir, ancak Çevrimdışı eşitleme Azure Mobil Uygulamalarında benzer şekilde çalışır\)
 
 <!-- URLs. -->
 
 [Azure Mobile Apps’te Çevrimdışı Veri Eşitleme]: app-service-mobile-offline-data-sync.md
 
-[Android uygulaması oluşturma]: app-service-mobile-android-get-started.md
+[Android Uygulaması Oluşturma]: app-service-mobile-android-get-started.md
 
-[Bulut kapağı: Azure Mobile Services çevrimdışı eşitleme]: https://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
+[Bulut Kapağı: Azure Mobil Hizmetlerinde Çevrimdışı Eşitleme]: https://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
 [Azure Friday: Offline-enabled apps in Azure Mobile Services]: https://azure.microsoft.com/documentation/videos/azure-mobile-services-offline-enabled-apps-with-donna-malayeri/
 

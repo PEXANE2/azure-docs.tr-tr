@@ -1,6 +1,6 @@
 ---
-title: Birincil yenileme belirteci (PRT) ve Azure AD-Azure Active Directory
-description: Rolü nedir ve Azure Active Directory birincil yenileme belirtecini (PRT) nasıl yönetebiliriz?
+title: Birincil Yenileme Belirteci (PRT) ve Azure AD - Azure Etkin Dizini
+description: Azure Etkin Dizini'ndeki Birincil Yenileme Belirteci'nin (PRT) rolü nedir ve nasıl yönetiriz?
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -12,187 +12,187 @@ manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9a237ad35d9d5d8abee784926563d972d0ee95f9
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78672643"
 ---
-# <a name="what-is-a-primary-refresh-token"></a>Birincil yenileme belirteci nedir?
+# <a name="what-is-a-primary-refresh-token"></a>Birincil Yenileme Belirteci nedir?
 
-Birincil yenileme belirteci (PRT), Windows 10, iOS ve Android cihazlarda Azure AD kimlik doğrulamasının temel yapıtıdır. Bu cihazlarda kullanılan uygulamalarda çoklu oturum açma (SSO) özelliğini etkinleştirmek için, Microsoft ilk taraf belirteç aracılarına özel olarak verilen bir JSON Web Token (JWT). Bu makalede, Windows 10 cihazlarında bir PRT 'nin nasıl verildiği, kullanıldığı ve korunduğu hakkında ayrıntılı bilgi sağlıyoruz.
+Birincil Yenileme Belirteci (PRT), Windows 10, iOS ve Android cihazlarda Azure AD kimlik doğrulamasının önemli bir eseridir. Bu, bu aygıtlarda kullanılan uygulamalar arasında tek oturum açma (SSO) sağlamak için Microsoft birinci taraf belirteç brokerlarına özel olarak verilen bir JSON Web Belirtecidir (JWT). Bu makalede, Windows 10 aygıtlarında bir PRT'nin nasıl verildiği, kullanıldığı ve korunduğu hakkında ayrıntılı bilgi vereceğiz.
 
-Bu makalede, Azure AD 'de mevcut olan farklı cihaz durumlarını ve çoklu oturum açma 'nın Windows 10 ' da nasıl çalıştığını anladığınızı varsaymaktadır. Azure AD 'deki cihazlar hakkında daha fazla bilgi için [Azure Active Directory cihaz yönetimi](overview.md) nedir makalesine bakın.
+Bu makalede, Azure AD'de kullanılabilen farklı aygıt durumlarını ve Windows 10'da tek oturum açmanın nasıl çalıştığını zaten anladığınızı varsayar. Azure AD'deki aygıtlar hakkında daha fazla bilgi için, [Azure Etkin Dizini'nde aygıt yönetimi nedir makalesine bakın?](overview.md)
 
-## <a name="key-terminology-and-components"></a>Anahtar terminolojisi ve bileşenleri
+## <a name="key-terminology-and-components"></a>Temel terminoloji ve bileşenler
 
-Aşağıdaki Windows bileşenleri, bir PRT isteğinde ve kullanarak bir anahtar rol oynar:
+Aşağıdaki Windows bileşenleri bir PRT isteme ve kullanmada önemli bir rol oynar:
 
-* **Bulut kimlik doğrulama sağlayıcısı** (cloudap): cloudap, Windows oturum açma için modern kimlik doğrulama sağlayıcısıdır ve kullanıcıların bir Windows 10 cihazına oturum açmasını doğrular. CloudAP, kimlik sağlayıcılarının kimlik bilgilerini kullanarak Windows için kimlik doğrulamasını etkinleştirmek üzere kimlik sağlayıcılarının üzerinde oluşturabileceğiniz bir eklenti çerçevesi sağlar.
-* **Web hesabı Yöneticisi** (WAM): WAM, Windows 10 cihazlarında varsayılan belirteç aracısıdır. WAM ayrıca kimlik sağlayıcılarının bu kimlik sağlayıcısına bağlı olan uygulamalarına yönelik SSO 'yu oluşturup etkinleştirebilmeleri için bir eklenti çerçevesi de sağlar.
-* **Azure AD cloudap eklentisi**: Windows oturum açma SıRASıNDA Azure AD ile Kullanıcı kimlik bilgilerini doğrulayan, cloudap çerçevesi üzerine Inşa EDILEN Azure AD 'ye özgü bir eklenti.
-* **Azure AD WAM eklentisi**:, kimlik doğrulaması IÇIN Azure AD 'yi kullanan uygulamalar için SSO 'yu sağlayan, WAM çerçevesi üzerinde oluşturulmuş BIR Azure AD özel eklentisi.
-* **Dsreg**: Windows 10 ' da, tüm cihaz durumları için cihaz kayıt işlemini Işleyen BIR Azure AD 'ye özgü bileşen.
-* **Güvenilir Platform Modülü** (TPM): TPM, Kullanıcı ve cihaz gizli dizileri için donanım tabanlı güvenlik işlevleri sağlayan bir cihaza yerleşik bir donanım bileşenidir. [Güvenilir Platform Modülü teknolojisine genel bakış](/windows/security/information-protection/tpm/trusted-platform-module-overview)makalesinde daha fazla ayrıntı bulabilirsiniz.
+* **Bulut Kimlik Doğrulama Sağlayıcısı** (CloudAP): CloudAP, Windows oturum açma için kullanıcıların Windows 10 aygıtına günlüğe kaydolduğunu doğrulayan modern kimlik doğrulama sağlayıcısıdır. CloudAP, kimlik sağlayıcılarının, bu kimlik sağlayıcısının kimlik bilgilerini kullanarak Windows'a kimlik doğrulamayı etkinleştirmek için oluşturabileceği bir eklenti çerçevesi sağlar.
+* **Web Hesap Yöneticisi** (WAM): WAM, Windows 10 aygıtlarında varsayılan belirteç aracısıdır. WAM ayrıca kimlik sağlayıcılarının üzerine oluşturabileceği ve SSO'nun bu kimlik sağlayıcısına güvenerek uygulamalarına olanak tanıyan bir eklenti çerçevesi sağlar.
+* **Azure AD CloudAP eklentisi**: Windows oturum açma sırasında kullanıcı kimlik bilgilerini Azure AD ile doğrulayan CloudAP çerçevesi üzerinde oluşturulmuş azure AD özel eklentisi.
+* **Azure AD WAM eklentisi**: SSO'nun kimlik doğrulama için Azure AD'ye güvenen uygulamalara olanak tanıyan WAM çerçevesi üzerine inşa edilmiş Bir Azure AD özel eklentisi.
+* **Dsreg**: Windows 10'da tüm aygıt durumları için aygıt kayıt işlemini yürüten Azure AD'ye özgü bir bileşendir.
+* **Güvenilen Platform Modülü** (TPM): TPM, kullanıcı ve aygıt sırları için donanım tabanlı güvenlik işlevleri sağlayan bir aygıtta yerleşik bir donanım bileşenidir. Daha fazla bilgi makalede [Güvenilir Platform Modülü Teknoloji Genel Bakış](/windows/security/information-protection/tpm/trusted-platform-module-overview)bulunabilir.
 
-## <a name="what-does-the-prt-contain"></a>PRT neleri içerir?
+## <a name="what-does-the-prt-contain"></a>İİT'de ne var?
 
-Bir PRT, genellikle herhangi bir Azure AD yenileme belirtecinde bulunan talepleri içerir. Ayrıca, PRT 'ye dahil edilen cihaza özgü bazı talepler vardır. Bunlar aşağıdaki gibidir:
+PRT genellikle herhangi bir Azure AD yenileme belirtecinde bulunan talepleri içerir. Buna ek olarak, PRT dahil bazı cihaza özgü iddialar vardır. Bunlar şu şekildedir:
 
-* **CIHAZ kimliği**: belirli bir cihazdaki bir kullanıcıya bir prt verilir. Cihaz KIMLIĞI talebi `deviceID`, PRT 'nin kullanıcıya verildiği aygıtı belirler. Bu talep daha sonra PRT aracılığıyla elde edilen belirteçlere verilir. Cihaz KIMLIĞI talebi, cihaz durumu veya uyumluluğuna göre koşullu erişim için Yetkilendirmeyi belirlemede kullanılır.
-* **Oturum anahtarı**: oturum anahtarı, prt 'nin bir parçası olarak VERILEN Azure AD kimlik doğrulama hizmeti tarafından oluşturulan şifreli bir simetrik anahtardır. Oturum anahtarı, diğer uygulamalar için belirteçleri elde etmek üzere bir PRT kullanıldığında, sahip olma kanıtı olarak davranır.
+* **Cihaz Kimliği**: Belirli bir cihazda kullanıcıya BIR PRT verilir. Aygıt kimliği `deviceID` iddiası, PRT'nin kullanıcıya verildiği aygıtı belirler. Bu talep daha sonra İİT aracılığıyla elde edilen belirteçlere verilir. Aygıt kimliği talebi, aygıt durumuna veya uyumluluğuna göre Koşullu Erişim yetkilendirmesini belirlemek için kullanılır.
+* **Oturum anahtarı**: Oturum anahtarı, Azure AD kimlik doğrulama hizmeti tarafından oluşturulan ve PRT'nin bir parçası olarak verilen şifreli simetrik bir anahtardır. Oturum anahtarı, diğer uygulamalar için belirteçler elde etmek için bir PRT kullanıldığında sahip olma kanıtı olarak görür.
 
-### <a name="can-i-see-whats-in-a-prt"></a>Bir PRT 'de ne olduğunu görebilir miyim?
+### <a name="can-i-see-whats-in-a-prt"></a>İİT'de ne olduğunu görebilir miyim?
 
-PRT, içeriği hiçbir istemci bileşeni tarafından bilinen Azure AD 'den gönderilen donuk bir BLOB ' tur. Bir PRT içinde nelerin olduğunu göremezsiniz.
+PRT, Azure AD'den gönderilen ve içeriği hiçbir istemci bileşeni tarafından bilinmeyen opak bir blob'dur. Bir İİT'nin içinde ne olduğunu göremezsin.
 
-## <a name="how-is-a-prt-issued"></a>PRT nasıl verilir?
+## <a name="how-is-a-prt-issued"></a>İİT nasıl verilir?
 
-Cihaz kaydı, Azure AD 'de cihaz tabanlı kimlik doğrulaması için bir önkoşuldur. Yalnızca kayıtlı cihazlarda kullanıcılara bir PRT verilir. Cihaz kaydı hakkında daha ayrıntılı bilgi için, [iş Için Windows Hello ve cihaz kaydı](/windows/security/identity-protection/hello-for-business/hello-how-it-works-device-registration)makalesine bakın. Cihaz kaydı sırasında dsreg bileşeni iki şifreleme anahtarı çifti kümesi oluşturur:
+Aygıt kaydı, Azure AD'deki aygıt tabanlı kimlik doğrulaması için bir ön koşuldur. Bir PRT yalnızca kayıtlı cihazlarda kullanıcılara verilir. Cihaz kaydı yla ilgili daha ayrıntılı bilgi için, [İş ve Aygıt Kaydı için Windows Hello](/windows/security/identity-protection/hello-for-business/hello-how-it-works-device-registration)makalesine bakın. Aygıt kaydı sırasında, dsreg bileşeni iki şifreleme anahtar çifti kümesi oluşturur:
 
-* Cihaz anahtarı (dkpub/dkprıv)
-* Aktarım anahtarı (tkpub/tkprıv)
+* Cihaz anahtarı (dkpub/dkpriv)
+* Taşıma anahtarı (tkpub/tkpriv)
 
-Cihazın geçerli ve çalışır durumda bir TPM 'si varsa özel anahtarlar cihazın TPM 'ye bağlanır, ancak ortak anahtarlar cihaz kayıt işlemi sırasında Azure AD 'ye gönderilir. Bu anahtarlar, PRT istekleri sırasında cihaz durumunu doğrulamak için kullanılır.
+Aygıtın geçerli ve işleyen bir TPM'si varsa, ortak anahtarlar aygıt kayıt işlemi sırasında Azure AD'ye gönderilirken, özel anahtarlar aygıtın TPM'sine bağlıdır. Bu anahtarlar, PRT istekleri sırasında aygıt durumunu doğrulamak için kullanılır.
 
-PRT, bir Windows 10 cihazında Kullanıcı kimlik doğrulaması sırasında iki senaryoda verilir:
+PRT, windows 10 aygıtında kullanıcı kimlik doğrulaması sırasında iki senaryoda verilir:
 
-* **Azure AD 'ye katılmış** veya **karma Azure AD 'ye katılmış**: bir Kullanıcı, kuruluş kimlik bilgileriyle oturum açtığında Windows oturum açma sırasında bir prt verilir. Windows 10 tarafından desteklenen tüm kimlik bilgileriyle (örneğin, parola ve Iş için Windows Hello) bir PRT verilir. Bu senaryoda, PRT için birincil yetkiliniz olan Azure AD CloudAP eklentisi.
-* **Azure AD kayıtlı cihazı**: bir Kullanıcı Windows 10 cihazına ikincil iş hesabı eklediğinde bir prt verilir. Kullanıcılar, Windows 10 ' a bir hesabı iki farklı şekilde ekleyebilir.  
-   * Bir uygulamada oturum açtıktan sonra bu **cihaz isteminde bu hesabı her yerde kullan** hesabı ekleme (örneğin, Outlook)
-   * **Ayarlar** > **hesaplarından** hesap ekleme **iş veya okul** > **Connect** > erişim
+* **Azure AD katıldı** veya **Karma Azure AD katıldı**: Windows oturum açma sırasında bir kullanıcı kuruluş kimlik bilgilerini oturum açtıklarında bir PRT verilir. Bir PRT tüm Windows 10 desteklenen kimlik bilgileri ile verilir , örneğin, parola ve Windows Hello İş için. Bu senaryoda, Azure AD CloudAP eklentisi PRT'nin birincil yetkilisidir.
+* **Azure AD kayıtlı aygıt**: Bir kullanıcı Windows 10 cihazına ikincil bir iş hesabı eklediğinde BIR PRT verilir. Kullanıcılar Windows 10'a iki farklı şekilde hesap ekleyebilir -  
+   * Bir uygulamada oturum açtıktan sonra **bu cihazda her yerde bu hesabı kullan** üzerinden hesap ekleme (örneğin, Outlook)
+   * **Ayarlar** > **Hesapları** > **Erişim Çalışması veya Okul** > **Bağlantısı'ndan** hesap ekleme
 
-Azure AD kayıtlı cihaz senaryolarında, Azure AD WAM eklentisi, bu Azure AD hesabında Windows oturum açma işlemi gerçekleşmediği için PRT 'in birincil yetkilisindir.
+Azure AD kayıtlı aygıt senaryolarında, Windows oturumu bu Azure AD hesabında gerçekleşmediğinden, Azure AD WAM eklentisi PRT'nin birincil yetkisidir.
 
 > [!NOTE]
-> 3\. taraf kimlik sağlayıcılarının Windows 10 cihazlarında PRT verilmesini etkinleştirmek için WS-Trust protokolünü desteklemesi gerekir. WS-Trust olmadan, karma Azure AD 'ye katılmış veya Azure AD 'ye katılmış cihazlarda kullanıcılara PRT verilemez
+> Üçüncü taraf kimlik sağlayıcılarının Windows 10 aygıtlarında PRT verme yi etkinleştirmek için WS-Trust protokolünü desteklemesi gerekir. WS-Trust olmadan, PrT, Karma Azure AD'de veya Azure AD'de birleştirilmiş aygıtlarda kullanıcılara verilemez
 
-## <a name="what-is-the-lifetime-of-a-prt"></a>Bir PRT 'in yaşam süresi nedir?
+## <a name="what-is-the-lifetime-of-a-prt"></a>Bir İİT'nin ömrü nedir?
 
-Verildikten sonra, bir PRT 14 gün boyunca geçerlidir ve Kullanıcı cihazı etkin bir şekilde kullandığı sürece sürekli olarak yenilenir.  
+Bir kez yayımlandıktan sonra, bir PRT 14 gün boyunca geçerlidir ve kullanıcı cihazı aktif olarak kullandığı sürece sürekli olarak yenilenir.  
 
-## <a name="how-is-a-prt-used"></a>Bir PRT nasıl kullanılır?
+## <a name="how-is-a-prt-used"></a>İİT nasıl kullanılır?
 
-Bir PRT, Windows 'da iki anahtar bileşeni tarafından kullanılır:
+PRT, Windows'da iki temel bileşen tarafından kullanılır:
 
-* **Azure AD CloudAP eklentisi**: Windows oturum açma sırasında Azure AD cloudap eklentisi, Kullanıcı tarafından belirtilen kimlik bilgilerini kullanarak Azure AD 'den bir prt ister. Ayrıca, kullanıcının bir internet bağlantısına erişimi olmadığında önbelleğe alınmış oturum açma özelliğini etkinleştirmek için PRT 'yi önbelleğe alır.
-* **Azure AD WAM eklentisi**: kullanıcılar uygulamalara erişmeye çalıştığında, Azure AD WAM eklentisi Windows 10 ' da SSO 'yu etkinleştirmek için prt 'yi kullanır. Azure AD WAM eklentisi, belirteç istekleri için WAM 'yi kullanan uygulamalar için yenileme ve erişim belirteçleri istemek üzere PRT 'yi kullanır. Ayrıca, tarayıcılarda SSO 'yu tarayıcı isteklerine ekleme tarafından da sunar. Windows 10 ' da tarayıcı SSO 'SU, Microsoft Edge (yerel olarak) ve Chrome (Windows 10 hesapları veya Office Online uzantısı aracılığıyla) üzerinde desteklenir.
+* **Azure AD CloudAP eklentisi**: Windows oturum açma sırasında Azure AD CloudAP eklentisi, kullanıcı tarafından sağlanan kimlik bilgilerini kullanarak Azure AD'den bir PRT ister. Ayrıca, kullanıcının internet bağlantısına erişimi olmadığında önbelleğe alınmış oturum açmayı etkinleştirmek için PRT'yi önbelleğe adar.
+* **Azure AD WAM eklentisi**: Kullanıcılar uygulamalara erişmeye çalıştıklarında, Azure AD WAM eklentisi Windows 10'da SSO'yu etkinleştirmek için PRT'yi kullanır. Azure AD WAM eklentisi, belirteç istekleri için WAM'a dayanan uygulamalar için yenileme ve erişim belirteçleri istemek için PRT'yi kullanır. Ayrıca, prt'yi tarayıcı isteklerine enjekte ederek tarayıcılarda SSO'ya olanak tanır. Windows 10'daki Tarayıcı SSO'su Microsoft Edge (yerel olarak) ve Chrome'da (Windows 10 Hesapları veya Office Online uzantısı üzerinden) desteklenir.
 
-## <a name="how-is-a-prt-renewed"></a>PRT nasıl yenilenir?
+## <a name="how-is-a-prt-renewed"></a>Bir PRT nasıl yenilenir?
 
-Bir PRT iki farklı yöntemde yenilenir:
+Bir PRT iki farklı yöntemle yenilenir:
 
-* **Her 4 saatte bir Azure AD CloudAP eklentisi**: cloudap eklentisi, Windows oturum açma sırasında her 4 saatte BIR, prt 'yi yeniler. Bu süre boyunca kullanıcının internet bağlantısı yoksa, CloudAP eklentisi cihaz internet 'e bağlandıktan sonra PRT 'yi yeniler.
-* **Uygulama belirteci istekleri sırasında Azure AD WAM eklentisi**: WAM eklentisi, uygulamalar için sessiz belirteç Isteklerini etkinleştirerek Windows 10 cihazlarında SSO 'yu etkinleştirir. WAM eklentisi, bu belirteç istekleri sırasında PRT 'yi iki farklı şekilde yenileyebilir:
-   * Uygulama, erişim belirteci için bir WAM sessizce ister ancak bu uygulama için kullanılabilir yenileme belirteci yok. Bu durumda, WAM, uygulama için bir belirteç istemek üzere PRT 'yi kullanır ve yanıtta yeni bir PRT 'yi geri alır.
-   * Uygulama, erişim belirteci için WAM ister ancak PRT geçersiz ya da Azure AD ek yetkilendirme gerektirir (örneğin, Azure Multi-Factor Authentication). Bu senaryoda, WAM kullanıcının yeniden kimlik doğrulamasını veya ek doğrulama sağlamasını gerektiren etkileşimli bir oturum açma işlemini başlatır ve başarılı bir kimlik doğrulamasında yeni bir PRT verilir.
+* **Azure AD CloudAP eklentisi**: CloudAP eklentisi, Windows oturum açma sırasında her 4 saatte bir PRT'yi yeniler. Bu süre zarfında kullanıcının internet bağlantısı yoksa, cloudap eklentisi cihaz internete bağlandıktan sonra İİT'yi yeniler.
+* **Uygulama belirteç istekleri sırasında Azure AD WAM eklentisi**: WAM eklentisi, uygulamalar için sessiz belirteç isteklerini etkinleştirerek Windows 10 cihazlarında SSO'yu etkinleştiriyor. WAM eklentisi bu belirteç istekleri sırasında İİT'yi iki farklı şekilde yenileyebilir:
+   * Bir uygulama WAM'dan erişim belirteci için sessizce talep tespresin, ancak bu uygulama için yenilenme belirteci bulunmamaktadır. Bu durumda, WAM uygulama için bir belirteç istemek için PRT kullanır ve yanıt olarak yeni bir PRT geri alır.
+   * Bir uygulama WAM'dan erişim jetonu ister, ancak PRT geçersizdir veya Azure AD ek yetkilendirme gerektirir (örneğin, Azure Çok Faktörlü Kimlik Doğrulaması). Bu senaryoda, WAM kullanıcının yeniden kimlik doğrulaması vermesini veya ek doğrulama sağlamasını gerektiren etkileşimli bir oturum açar ve başarılı kimlik doğrulama üzerine yeni bir PRT verilir.
 
 ### <a name="key-considerations"></a>Dikkat edilmesi gereken temel konular
 
-* Bir PRT yalnızca yerel uygulama kimlik doğrulaması sırasında verilir ve yenilenir. Bir tarayıcı oturumu sırasında bir PRT yenilenmez veya verilmez.
-* Azure AD 'ye katılmış ve karma Azure AD 'ye katılmış cihazlarda, CloudAP eklentisi bir PRT için birincil yetkildir. Bir PRT, WAM tabanlı bir belirteç isteği sırasında yenilenirse, PRT, kabul edilmeden önce Azure AD ile PRT 'in geçerliliğini doğrulayan CloudAP eklentisine geri gönderilir.
+* Bir PRT yalnızca yerel uygulama kimlik doğrulaması sırasında verilir ve yenilenir. Bir PRT, tarayıcı oturumu sırasında yenilenmez veya yayınlanmaz.
+* Azure AD'nin birleştiği ve azure AD'nin bağlanan aygıtlarda hibrit olarak katıldığı cihazlarda, CloudAP eklentisi bir PRT'nin birincil yetkisidir. BIR PRT WAM tabanlı belirteç isteği sırasında yenilenirse, PRT cloudap eklentisine geri gönderilir ve bu da prt'nin Azure AD ile geçerliliğini kabul etmeden önce doğrular.
 
-## <a name="how-is-the-prt-protected"></a>PRT nasıl korunuyor?
+## <a name="how-is-the-prt-protected"></a>İİT nasıl korunur?
 
-Bir PRT, kullanıcının oturum açladığı cihaza bağlayarak korunur. Azure AD ve Windows 10 aşağıdaki yöntemlerle PRT korumasını etkinleştirir:
+Bir PRT, kullanıcının oturum açtığı aygıta bağlanarak korunur. Azure AD ve Windows 10, aşağıdaki yöntemlerle PRT koruması sağlar:
 
-* **İlk oturum açma sırasında**: ilk oturum açma sırasında, istekler cihaz kaydı sırasında oluşturulan şifreleme cihaz anahtarı kullanılarak imzalanarak BIR prt verilir. Geçerli ve çalışır bir TPM 'ye sahip bir cihazda, cihaz anahtarı, herhangi bir kötü amaçlı erişimi öngören TPM tarafından korunur. Karşılık gelen cihaz anahtarı imzası onaylanamamışsa, bir PRT verilmez.
-* **Belirteç istekleri ve yenileme sırasında**: BIR prt verildiğinde, Azure AD Ayrıca cihaza şifreli bir oturum anahtarı da yayınlar. Oluşturulan ve Azure AD 'ye gönderilen ortak Aktarım anahtarı (tkpub) ile birlikte, cihaz kaydının bir parçası olarak şifrelenir. Bu oturum anahtarı yalnızca TPM tarafından güvenli hale getirilmiş özel Aktarım anahtarı (tkprprıv) tarafından şifresi çözülür. Oturum anahtarı, Azure AD 'ye gönderilen tüm istekler için sahip olma (POP) anahtarıdır.  Oturum anahtarı da TPM tarafından korunur ve başka bir işletim sistemi bileşeni erişemez. Belirteç istekleri veya PRT yenileme istekleri bu oturum anahtarı tarafından TPM aracılığıyla güvenli bir şekilde imzalanır ve bu nedenle üzerinde değişiklik yapılamaz. Azure AD, cihazdaki tüm istekleri, karşılık gelen oturum anahtarı tarafından imzalanmamış olan cihazdan geçersiz kılar.
+* **İlk oturum açma sırasında**: İlk oturum açma sırasında, cihaz kaydı sırasında şifreleme olarak oluşturulan aygıt anahtarı kullanılarak istekleri imzalayarak bir PRT verilir. Geçerli ve işleyen bir TPM'ye sahip bir aygıtta, aygıt anahtarı TPM tarafından güvenli hale getirilerek kötü amaçlı erişimi engeller. İlgili aygıt anahtar imzası doğrulanamıyorsa PRT verilmez.
+* **Belirteç istekleri ve yenileme sırasında**: Bir PRT yayımlandığında, Azure AD da aygıt için şifreli bir oturum anahtarı yayınlar. Oluşturulan toplu taşıma anahtarı (tkpub) ile şifrelenir ve aygıt kaydının bir parçası olarak Azure AD'ye gönderilir. Bu oturum anahtarı yalnızca TPM tarafından güvenli özel aktarım anahtarı (tkpriv) ile çözülebilir. Oturum anahtarı, Azure AD'ye gönderilen istekler için Sahip Olma Kanıtı (POP) anahtarıdır.  Oturum anahtarı da TPM tarafından korunur ve başka hiçbir işletim sistemi bileşeni erişemez. Belirteç istekleri veya PRT yenileme istekleri, TPM aracılığıyla bu oturum anahtarı tarafından güvenli bir şekilde imzalanır ve bu nedenle kurcalanamaz. Azure AD, aygıttan ilgili oturum anahtarı tarafından imzalanmayan tüm istekleri geçersiz kılınacaktır.
 
-Bu anahtarların TPM ile güvenli hale getirilmesi sayesinde kötü amaçlı aktörler, bir saldırganın cihaza fiziksel olarak sahip olması durumunda bile TPM 'nin erişilemez olması durumunda anahtarları oynamaz veya başka bir yere yeniden çalabilir.  Bu nedenle, TPM kullanmak Azure AD 'ye katılmış, karma Azure AD 'ye katılmış ve Azure AD 'ye kayıtlı cihazların kimlik bilgileri hırsızlığına karşı güvenliğini büyük ölçüde geliştirir. Performans ve güvenilirlik için TPM 2,0, Windows 10 ' da tüm Azure AD cihaz kaydı senaryoları için önerilen sürümdür.
+Bu anahtarları TPM ile güvence altına alarak, kötü niyetli aktörler anahtarları çalamaz veya tpm'ye erişilemese bile aygıtın fiziksel olarak ele geçirilmesine erişilemese bile İİT'yi başka bir yerde tekrar oynatamaz.  Böylece, Bir TPM kullanmak Azure AD Joined, Hybrid Azure AD'nin ve Azure AD kayıtlı aygıtlarının kimlik bilgisi hırsızlığına karşı güvenliğini büyük ölçüde artırır. Performans ve güvenilirlik için TPM 2.0, Windows 10'daki tüm Azure AD aygıt kayıt senaryoları için önerilen sürüdür.
 
-### <a name="how-are-app-tokens-and-browser-cookies-protected"></a>Uygulama belirteçleri ve tarayıcı tanımlama bilgileri nasıl korunur?
+### <a name="how-are-app-tokens-and-browser-cookies-protected"></a>Uygulama belirteçleri ve tarayıcı çerezleri nasıl korunur?
 
-**Uygulama belirteçleri**: BIR uygulama WAM aracılığıyla belirteç Istediğinde, Azure AD bir yenileme belirteci ve erişim belirteci yayınlar. Ancak, WAM yalnızca uygulamaya erişim belirtecini döndürür ve kullanıcının veri koruma uygulaması programlama arabirimi (DPAPI) anahtarıyla şifreleyerek yenileme belirtecinin önbelleğinde güvenliğini sağlar. WAM, daha fazla erişim belirteci vermek için istekleri oturum anahtarıyla imzalayarak yenileme belirtecini kullanır. DPAPI anahtarı, Azure AD 'de bir Azure AD tabanlı simetrik anahtarla korunmaktadır. Cihazın, Kullanıcı profilinin DPAPI anahtarıyla şifresinin çözülmesi gerektiğinde Azure AD, oturum anahtarı tarafından şifrelenen DPAPI anahtarını sağlar, bu, şifre çözme için TPM isteğinde bulunan CloudAP eklentisini ister. Bu işlevsellik yenileme belirteçlerinin güvenliğini sağlama ve kendi koruma mekanizmalarını uygulayan uygulamaların yapılmasını önler.  
+**Uygulama belirteçleri**: Bir uygulama WAM aracılığıyla belirteç istediğinde, Azure AD yenileme belirteci ve erişim belirteci yayınlar. Ancak WAM yalnızca erişim belirtecisini uygulamaya döndürür ve kullanıcının veri koruma uygulama programlama arabirimi (DPAPI) anahtarıyla şifreleyerek önbelleğindeki yenileme belirtecisini güvenli hale verir. WAM, daha fazla erişim belirteçleri vermek için oturum anahtarıyla istekleri imzalayarak yenileme belirteci'ni güvenli bir şekilde kullanır. DPAPI tuşu, Azure AD'nin kendisinde Azure AD tabanlı simetrik bir anahtarla sabitlenir. Aygıtın DPAPI tuşu ile kullanıcı profilinin şifresini çözmesi gerektiğinde, Azure AD oturum anahtarıyla şifrelenmiş DPAPI anahtarını sağlar ve CloudAP eklentisi TPM'nin şifresini çözmesini ister. Bu işlevsellik, yenileme belirteçlerinin güvenliğini sağlamada tutarlılık sağlar ve uygulamaların kendi koruma mekanizmalarını uygulamalarını önler.  
 
-**Tarayıcı tanımlama bilgileri**: Windows 10 ' da, Azure AD, Internet Explorer ve Microsoft Edge 'de tarayıcı SSO 'Yu, Windows 10 hesapları uzantısı aracılığıyla yerel olarak veya Google Chrome 'da destekler. Güvenlik yalnızca tanımlama bilgilerini korumak için değil, tanımlama bilgilerinin gönderildiği uç noktalar için de tasarlanmıştır. Tarayıcı tanımlama bilgileri, tanımlama bilgilerini imzalamak ve korumak için oturum anahtarından yararlanarak bir PRT ile aynı şekilde korunur.
+**Tarayıcı çerezleri**: Windows 10'da Azure AD, Windows 10 hesapları uzantısı aracılığıyla Internet Explorer ve Microsoft Edge'de veya Google Chrome'da tarayıcı SSO'yu destekler. Güvenlik yalnızca tanımlama bilgilerini değil, tanımlama bilgilerinin gönderildiği uç noktaları da korumak için oluşturulmuştür. Tarayıcı çerezleri, çerezleri imzalamak ve korumak için oturum tuşunu kullanarak, bir PRT ile aynı şekilde korunur.
 
-Bir Kullanıcı bir tarayıcı etkileşimi başlattığında, tarayıcı (veya uzantısı) bir COM Native istemci konağını çağırır. Yerel istemci Konağı, sayfanın izin verilen etki alanlarından birinden olmasını sağlar. Tarayıcı, bir nonce dahil olmak üzere yerel istemci ana bilgisayarına başka parametreler gönderebilir, ancak yerel istemci ana bilgisayarı ana bilgisayar adının doğrulanmasını garanti eder. Yerel istemci ana bilgisayarı, CloudAP eklentisi 'nden bir PRT tanımlama bilgisi ister ve bunu TPM korumalı oturum anahtarı ile oluşturur ve imzalar. PRT tanımlama bilgisi oturum anahtarı tarafından imzalandığından, ile oynanmış olamaz. Bu PRT tanımlama bilgisi, kaynak olduğunu doğrulamak üzere Azure AD 'nin istek başlığına dahildir. Chrome tarayıcısını kullanıyorsanız, yalnızca yerel istemci ana bilgisayarının bildiriminde açıkça tanımlanmış olan uzantı, bu istekleri yapmak için rastgele uzantıların yapılmasını engellemeyi çağırabilir. Azure AD, PRT tanımlama bilgisini doğruladıktan sonra tarayıcıya bir oturum tanımlama bilgisi yayınlar. Bu oturum tanımlama bilgisi Ayrıca, bir PRT ile verilen aynı oturum anahtarını içerir. Sonraki istekler sırasında oturum anahtarı, tanımlama bilgisini cihaza etkin bir şekilde bağlamaya ve başka bir yerden yeniden çalınmalarına izin vermez.
+Bir kullanıcı bir tarayıcı etkileşimi başlattığında, tarayıcı (veya uzantı) bir COM yerel istemci ana bilgisayar çağırır. Yerel istemci ana bilgisayar, sayfanın izin verilen etki alanlarından birinden olmasını sağlar. Tarayıcı, bir nonce dahil olmak üzere diğer parametreleri yerel istemci ana bilgisayara gönderebilir, ancak yerel istemci ana bilgisayar ana bilgisayar ana bilgisayar adının doğrulanmasını garanti eder. Yerel istemci ana bilgisayar CloudAP eklentisinden bir PRT tanımlama bilgisi ister ve bu çerezi TPM korumalı oturum anahtarıyla oluşturur ve imzalar. PRT çerezi oturum anahtarı yla imzalandığı için kurcalanamaz. Bu PRT çerezi, geldiği aygıtı doğrulamak için Azure AD'nin istek üstbilgisine dahildir. Chrome tarayıcısını kullanıyorsanız, yalnızca yerel istemci ana bilgisayar bildiriminde açıkça tanımlanan uzantı, rasgele uzantıların bu istekleri yapmasını engelleyebilir. Azure AD, PRT çerezini doğruladıktan sonra tarayıcıya bir oturum çerezi sağlar. Bu oturum çerezi aynı zamanda bir PRT ile verilen oturum anahtarını içerir. Sonraki istekler sırasında, oturum anahtarı etkili bir şekilde aygıta çerez bağlama ve başka bir yerden tekrarları engelleyerek doğrulanır.
 
-## <a name="when-does-a-prt-get-an-mfa-claim"></a>Bir dut bir MFA talebi alır mi?
+## <a name="when-does-a-prt-get-an-mfa-claim"></a>Bir PRT ne zaman MFA iddiası alır?
 
-Bir PRT, belirli senaryolarda Multi-Factor Authentication (MFA) talebi alabilir. MFA tabanlı bir PRT, uygulamalar için belirteçleri istemek üzere kullanıldığında, MFA talebi bu uygulama belirteçlerine aktarılır. Bu işlevsellik, kullanıcılara gereken her uygulama için MFA sınamasını önleyecek şekilde kullanıcılara sorunsuz bir deneyim sağlar. Bir PRT, MFA talebini aşağıdaki yollarla alabilir:
+Bir PRT, belirli senaryolarda çok faktörlü kimlik doğrulama (MFA) iddiası alabilir. Uygulamalar için belirteçleri istemek için MFA tabanlı bir PRT kullanıldığında, MFA talebi bu uygulama belirteçlerine aktarılır. Bu işlevsellik, bunu gerektiren her uygulama için MFA meydan okumasını önleyerek kullanıcılara sorunsuz bir deneyim sağlar. Bir PRT aşağıdaki yollarla bir MFA iddia alabilirsiniz:
 
-* **İş Için Windows Hello Ile oturum açın**: iş Için Windows Hello parolaları değiştirir ve güçlü iki öğeli kimlik doğrulama sağlamak için şifreleme anahtarları kullanır. Iş için Windows Hello, cihazdaki bir kullanıcıya özeldir ve kendisi MFA 'nın sağlamasını gerektirir. Bir Kullanıcı Iş için Windows Hello ile oturum açtığında, kullanıcının PRT 'si bir MFA talebi alır. Bu senaryo, akıllı kart kimlik doğrulaması ADFS 'den bir MFA talebi üretirse akıllı kartlar ile oturum açan kullanıcılar için de geçerlidir.
-   * Iş için Windows Hello çok faktörlü kimlik doğrulaması olarak kabul edildiği için, PRT 'in kendisi yenilendiğinde MFA talebi güncelleştirilir, böylece kullanıcılar Iş için WIndows Hello ile oturum açtığında MFA süresi sürekli olarak genişletilir.
-* **WAM etkileşimli oturum açma sırasında MFA**: WAM aracılığıyla bir belirteç isteği sırasında, bir kullanıcının uygulamaya erışmek için MFA yapması gerekiyorsa, bu etkileşim sırasında yenilenen prt bir MFA talebine göre belirlenir.
-   * Bu durumda, MFA talebi sürekli olarak güncellenmez, bu nedenle MFA süresi dizindeki yaşam süresine göre belirlenir.
-   * Bir uygulamaya erişim için önceki mevcut PRT ve RT kullanıldığında, PRT ve RT ilk kimlik doğrulaması kanıtı olarak kabul edilir. İkinci bir kanıt ve kesin bir MFA talebi ile birlikte yeni bir de gerekecektir. Bu, ayrıca yeni bir PRT ve RT de yayımlayacak.
-* **Cihaz kaydı sırasında MFA**: bir yönetici, [CIHAZLARı kaydetmek için MFA 'Yı GEREKTIRMEK](device-management-azure-portal.md#configure-device-settings)üzere Azure AD 'de cihaz ayarlarını yapılandırdıysa, kullanıcının kaydı tamamlaması için MFA yapması gerekir. Bu işlem sırasında, kullanıcıya verilen PRT 'nin kayıt sırasında elde edilen MFA talebi vardır. Bu özellik yalnızca, bu cihazda oturum açan diğer kullanıcılara değil, yalnızca JOIN işlemini yapan kullanıcı için geçerlidir.
-   * WAM etkileşimli oturum açma işlemine benzer şekilde, MFA talebi sürekli olarak güncellenmez, bu nedenle MFA süresi dizindeki belirlenen yaşam süresine göre belirlenir.
+* **Windows Hello for Business ile oturum açın**: Windows Hello for Business parolaların yerini alır ve güçlü iki faktörlü kimlik doğrulaması sağlamak için şifreleme anahtarlarını kullanır. Windows Hello for Business, aygıttaki bir kullanıcıya özgüdür ve kendisinin mfa'nın sağlanmasını gerektirir. Bir kullanıcı Windows Hello for Business ile oturum açtığınızda, kullanıcının PRT'si MFA talebi alır. Bu senaryo, akıllı kart kimlik doğrulaması ADFS'den MFA talebi üretiyorsa, akıllı kartlarla oturum açan kullanıcılar için de geçerlidir.
+   * Windows Hello for Business çok faktörlü kimlik doğrulama olarak kabul edildiğinden, PRT'nin kendisi yenilendiğinde MFA iddiası güncellenir, bu nedenle kullanıcılar WIndows Hello for Business ile oturum açtıklarında MFA süresi sürekli olarak uzar
+* **WAM etkileşimli oturum açma sırasında MFA**: WAM üzerinden bir belirteç isteği sırasında, bir kullanıcının uygulamaya erişmek için MFA yapması gerekiyorsa, bu etkileşim sırasında yenilenen PRT bir MFA iddiasıyla yazdırılır.
+   * Bu durumda, MFA talebi sürekli olarak güncelleştirilmeyecektir, bu nedenle MFA süresi dizinde ayarlanan ömür boyu temel alınarak yapılır.
+   * Bir uygulamaya erişmek için daha önceki bir PRT ve RT kullanıldığında, PRT ve RT kimlik doğrulamanın ilk kanıtı olarak kabul edilir. Yeni bir AT ikinci bir kanıt ve baskılı MFA iddia ile gerekli olacaktır. Bu da yeni bir PRT ve RT yayınlayacak.
+* **Cihaz kaydı sırasında MFA**: Bir yönetici Azure AD'deki aygıt ayarlarını [MFA'nın cihazları kaydetmesini gerektirecek](device-management-azure-portal.md#configure-device-settings)şekilde yapılandıysa, kullanıcının kaydı tamamlamak için MFA yapması gerekir. Bu işlem sırasında, kullanıcıya verilen İİT'nin kayıt sırasında elde ettiği MFA talebi vardır. Bu özellik yalnızca birleştirme işlemini yapan kullanıcı için geçerlidir, bu aygıtta oturum açan diğer kullanıcılar için geçerli değildir.
+   * WAM etkileşimli oturum açmasına benzer şekilde, MFA talebi sürekli olarak güncelleştirilmeyecektir, bu nedenle MFA süresi dizinde ayarlanan ömür boyu temel alınarak yapılır.
 
-Windows 10, her kimlik bilgisi için bölümlenmiş bir PRTs listesini tutar. Bu nedenle, her Iş için Windows Hello, parola veya akıllı kart için bir PRT vardır. Bu bölümlendirme, MFA taleplerinin, kullanılan kimlik bilgileri temel alınarak yalıtılmasını sağlar ve belirteç istekleri sırasında karıştırılır.
+Windows 10, her kimlik bilgisi için bölünmüş bir İİT listesi tutar. Bu nedenle, Windows Hello for Business, parola veya akıllı kart için bir PRT vardır. Bu bölümleme, MFA taleplerinin kullanılan kimlik bilgilerine göre yalıtılmış olmasını ve belirteç istekleri sırasında karıştırılmamasını sağlar.
 
-## <a name="how-is-a-prt-invalidated"></a>PRT nasıl geçersiz kılınır?
+## <a name="how-is-a-prt-invalidated"></a>Bir PRT nasıl geçersiz kılınabilir?
 
-Aşağıdaki senaryolarda bir PRT geçersiz kılınır:
+Bir PRT aşağıdaki senaryolarda geçersiz kılındı:
 
-* **Geçersiz Kullanıcı**: bir Kullanıcı Azure AD 'de silinirse veya devre dışı bırakılmışsa, prt özellikleri geçersiz kılınır ve uygulamalar için belirteçleri almak üzere kullanılamaz. Silinen veya devre dışı bırakılmış bir Kullanıcı önceden bir cihazda daha önce oturum açmışsa, bu oturum açma işlemi, CloudAP 'in geçersiz durumlarını bilene kadar günlüğe kaydedilir. CloudAP kullanıcının geçersiz olduğunu belirlerse, sonraki oturum açmaları engeller. Geçersiz bir kullanıcının kimlik bilgileri önbelleğe alınmamış yeni cihazlarda oturum açması otomatik olarak engellenir.
-* **Geçersiz cihaz**: Azure AD 'de bir cihaz silinirse veya devre dışı bırakılırsa, bu cihazda elde edilen prt geçersiz kılınır ve diğer uygulamalar için belirteçleri elde etmek için kullanılamaz. Bir kullanıcı zaten geçersiz bir cihazda oturum açmışsa, bu işlemi yapmaya devam edebilirler. Ancak cihazdaki tüm belirteçler geçersiz kılınır ve kullanıcının bu cihazdaki herhangi bir kaynak için SSO 'SU yoktur.
-* **Parola değiştirme**: bir Kullanıcı parolasını değiştirdikten sonra, önceki parolayla elde edilen PRT, Azure AD tarafından geçersiz kılınır. Parola değişikliği, kullanıcının yeni bir Pry alma sonucu elde ediyor. Bu geçersiz kılma iki farklı şekilde olabilir:
-   * Kullanıcı Windows 'da yeni parolasıyla oturum açarsa, CloudAP eski PRT 'yi atar ve yeni parolalarıyla yeni bir PRT vermek üzere Azure AD istekleri ister. Kullanıcının internet bağlantısı yoksa, yeni parola doğrulanamaz, Windows kullanıcının eski parolasını girmesini gerektirebilir.
-   * Bir Kullanıcı eski parolasıyla oturum açtıysa veya Windows 'da oturum açtıktan sonra parolalarını değiştirdiyseniz, WAM tabanlı tüm Belirteç istekleri için eski PRT kullanılır. Bu senaryoda, kullanıcıdan WAM belirteci isteği sırasında yeniden kimlik doğrulaması yapması istenir ve yeni bir PRT verilir.
-* **TPM sorunları**: bazen bır cihazın TPM 'SI, TPM tarafından güvenliği sağlanan anahtarların ınerişilebilirliğine göre lider veya başarısız olabilir. Bu durumda, cihaz, şifreleme anahtarlarını kanıtlayaamadığı için, mevcut bir PRT 'yi kullanarak bir PRT veya belirteç isteme yeteneğine sahip değildir. Sonuç olarak, mevcut PRT 'ları Azure AD tarafından geçersiz kılınır. Windows 10 bir hata algıladığında, cihazı yeni şifreleme anahtarlarıyla yeniden kaydetmek için bir kurtarma akışı başlatır. Karma Azure AD JOIN ile tıpkı ilk kayıt gibi, kurtarma Kullanıcı girişi olmadan sessizce gerçekleşir. Azure AD 'ye katılmış veya Azure AD 'ye kayıtlı cihazlarda, kurtarmanın cihazda yönetici ayrıcalıklarına sahip bir kullanıcı tarafından gerçekleştirilmesi gerekir. Bu senaryoda, kurtarma akışı kullanıcının cihazı başarıyla kurtarmasını yönlendiren bir Windows istemi tarafından başlatılır.
+* **Geçersiz kullanıcı**: Azure AD'de bir kullanıcı silinirse veya devre dışı bırakılırsa, PRT'si geçersiz sayılır ve uygulamalar için belirteçler elde etmek için kullanılamaz. Silinmiş veya devre dışı bırakılmış bir kullanıcı daha önce bir aygıtta oturum açmışsa, Önbelleğe alınmış oturum açma, CloudAP geçersiz durumunu fark edene kadar oturum açar. CloudAP kullanıcının geçersiz olduğunu belirledikten sonra sonraki oturum açmaları engeller. Geçersiz bir kullanıcının kimlik bilgileri önbelleğe alınmış olmayan yeni aygıtlarda oturum açması otomatik olarak engellenir.
+* **Geçersiz aygıt**: Azure AD'de bir aygıt silinirse veya devre dışı bırakılırsa, söz gelimi cihazda elde edilen PRT geçersiz sayılır ve diğer uygulamalar için belirteçler elde etmek için kullanılamaz. Bir kullanıcı geçersiz bir aygıtta zaten oturum açmışsa, bunu yapmaya devam edebilir. Ancak aygıttaki tüm belirteçler geçersiz kılındı ve kullanıcının söz sahibi cihazdaki kaynaklara SSO'su yok.
+* **Parola değişikliği**: Kullanıcı parolasını değiştirdikten sonra, önceki parolayla elde edilen PRT Azure AD tarafından geçersiz kılındı. Parola değişikliği, kullanıcının yeni bir PRT elde edilmesine neden olabilir. Bu geçersiz işlem iki farklı şeyi olabilir:
+   * Kullanıcı windows'da yeni parolasıyla yer alırsa, CloudAP eski PRT'yi atar ve Azure AD'den yeni parolalarıyla yeni bir PRT yayınlamasını ister. Kullanıcının internet bağlantısı yoksa, yeni parola doğrulanamıyorsa, Windows kullanıcının eski parolasını girmesini gerektirebilir.
+   * Bir kullanıcı eski parolasıyla oturum açmışsa veya Windows'da oturum açtıktan sonra parolasını değiştirmişse, eski PRT WAM tabanlı belirteç istekleri için kullanılır. Bu senaryoda, kullanıcıwam belirteç isteği sırasında yeniden kimlik doğrulaması istenir ve yeni bir PRT verilir.
+* **TPM sorunları**: Bazen, bir aygıtın TPM'si bocalayabilir veya başarısız olabilir ve bu da TPM tarafından güvenli anahtarların erişilemezliğine yol açabilir. Bu durumda, aygıt bir PRT almak veya şifreleme anahtarları sahip kanıtlayamaz gibi varolan bir PRT kullanarak belirteçleri talep aciz. Sonuç olarak, varolan tüm PRT Azure AD tarafından geçersiz kılındı. Windows 10 bir hata algıladığında, aygıtı yeni şifreleme anahtarlarıyla yeniden kaydetmek için bir kurtarma akışı başlatır. İlk kayıtta olduğu gibi Karma Azure Reklam join ile kurtarma, kullanıcı girişi olmadan sessizce gerçekleşir. Azure AD'ye katılan veya Azure AD'ye kayıtlı aygıtlar için kurtarmanın aygıtta yönetici ayrıcalıkları olan bir kullanıcı tarafından gerçekleştirilmesi gerekir. Bu senaryoda, kurtarma akışı, kullanıcıyı aygıtı başarıyla kurtarmasına yönlendiren bir Windows istemi tarafından başlatılır.
 
 ## <a name="detailed-flows"></a>Ayrıntılı akışlar
 
-Aşağıdaki diyagramlarda, bir uygulama için erişim belirteci istemek üzere bir PRT verme, yenileme ve kullanma konusunda temel alınan Ayrıntılar gösterilmektedir. Ayrıca, bu adımlar, bu etkileşimler sırasında belirtilen güvenlik mekanizmalarının nasıl uygulandığını de açıklamaktadır.
+Aşağıdaki diyagramlar, bir uygulama için erişim belirteci istemek için bir PRT verme, yenileme ve kullanmada temel ayrıntıları göstermektedir. Ayrıca, bu adımlar, söz konusu güvenlik mekanizmalarının bu etkileşimler sırasında nasıl uygulandığını da açıklar.
 
 ### <a name="prt-issuance-during-first-sign-in"></a>İlk oturum açma sırasında PRT verme
 
-![İlk oturum açma sırasında ayrıntılı akışta PRT verme](./media/concept-primary-refresh-token/prt-initial-sign-in.png)
+![Ayrıntılı akışilk işareti sırasında PRT verme](./media/concept-primary-refresh-token/prt-initial-sign-in.png)
 
 > [!NOTE]
-> Azure AD 'ye katılmış cihazlarda bu Exchange, kullanıcının Windows 'da oturum açmasını sağlamak için zaman uyumlu olarak gerçekleştirilir. Karma Azure AD 'ye katılmış cihazlarda, şirket içi Active Directory birincil yetkilisdir. Bu nedenle, Kullanıcı oturum açmak için bir TGT elde edene kadar bekler, ancak PRT verme işlemi zaman uyumsuz olur. Bu senaryo, oturum açma Azure AD kimlik bilgilerini kullanmadığından Azure AD 'ye kayıtlı cihazlar için geçerlidir.
+> Azure AD'nin birleştiği aygıtlarda, kullanıcı Windows'da oturum açmadan önce bu alışveriş eşzamanlı olarak bir PRT verir. Karma Azure AD birleştirilmiş aygıtlarda, şirket içi Active Directory birincil yetkilidir. Yani, kullanıcı sadece oturum açmak için bir TGT elde edebilirsiniz kadar bekliyor, PRT verme eşzamanlı olur iken. Oturum açma Azure AD kimlik bilgilerini kullanmadığı için bu senaryo Azure AD kayıtlı aygıtlar için geçerli değildir.
 
 | Adım | Açıklama |
 | :---: | --- |
-| A | Kullanıcı oturum açma kullanıcı arabirimindeki parolasını girer. LogonUI bir kimlik doğrulama arabelleğindeki kimlik bilgilerini LSA 'ya geçirir, bu da bunu sırayla CloudAP öğesine geçirir. CloudAP bu isteği CloudAP eklentisine iletir. |
-| B | CloudAP eklentisi kullanıcının kimlik sağlayıcısını tanımlamak için bir bölge bulma isteği başlatır. Kullanıcının kiracısında bir Federasyon sağlayıcısı kurulumu varsa, Azure AD Federasyon sağlayıcısının meta veri değişimi uç noktası (MEX) uç noktasını döndürür. Aksi takdirde Azure AD, kullanıcının Azure AD ile kimlik doğrulaması yapabileceğini belirten bir kullanıcı tarafından yönetilmediğini döndürür. |
-| C | Kullanıcı yönetilmiyorsa, CloudAP Azure AD 'den nonce alır. Kullanıcı federe ise, CloudAP eklentisi Federasyon sağlayıcısından kullanıcının kimlik bilgileriyle bir SAML belirteci ister. Bu, SAML belirtecini aldıktan sonra Azure AD 'den bir kerelik anahtar ister. |
-| D | CloudAP eklentisi kullanıcının kimlik bilgileri, nonce ve aracı kapsamıyla kimlik doğrulama isteği oluşturur, isteği cihaz anahtarıyla imzalar (dkprıv) ve Azure AD 'ye gönderir. Federasyon ortamında, CloudAP eklentisi kullanıcının kimlik bilgileri yerine Federasyon sağlayıcısı tarafından döndürülen SAML belirtecini kullanır. |
-| E | Azure AD Kullanıcı kimlik bilgilerini, nonce ve cihaz imzasını doğrular, cihazın kiracıda geçerli olduğunu doğrular ve şifreli PRT 'yi yayınlar. Ayrıca, Azure AD, Aktarım anahtarı (tkpub) kullanılarak Azure AD tarafından şifrelenen oturum anahtarı adlı bir simetrik anahtar de yayınlar. Ayrıca, oturum anahtarı PRT 'ye de katıştırılır. Bu oturum anahtarı, PRT ile sonraki istekler için birlikte bulunma (PoP) anahtarı olarak davranır. |
-| F | CloudAP eklentisi şifreli PRT ve oturum anahtarını CloudAP 'e geçirir. CloudAP, aktarım anahtarını (tkprıv) kullanarak oturum anahtarının şifresini çözmek için TPM isteyin ve TPM 'nin kendi anahtarını kullanarak yeniden şifreleyin. CloudAP, şifreli oturum anahtarını önbelleğinde ve PRT ile birlikte depolar. |
+| A | Kullanıcı parolasını Kullanıcı Kabirimi'ndeki oturuma girer. LogonUI, kimlik bilgilerini bir auth arabelleğiyle LSA'ya geçirir ve bu da kimlik bilgilerini dahili olarak CloudAP'a geçirir. CloudAP bu isteği CloudAP eklentisine ileter. |
+| B | CloudAP eklentisi, kullanıcının kimlik sağlayıcısını tanımlamak için bir alan bulma isteği başlatır. Kullanıcının kiracısının bir federasyon sağlayıcısı kurulumu varsa, Azure AD federasyon sağlayıcısının Meta veri alışverişi bitiş noktasını (MEX) bitiş noktasını döndürür. Değilse, Azure AD kullanıcının Azure AD ile kimlik doğrulaması olabileceğini belirten yönetilen döndürür. |
+| C | Kullanıcı yönetilirse, CloudAP nonce'yi Azure AD'den alır. Kullanıcı federe ise, CloudAP eklentisi kullanıcının kimlik bilgilerini içeren federasyon sağlayıcısından bir SAML belirteci ister. SAML belirteci aldıktan sonra Azure AD'den bir nonce ister. |
+| D | CloudAP eklentisi kimlik doğrulama isteğini kullanıcının kimlik bilgileri, nonce ve aracı kapsamıyla birlikte kurar, isteği Aygıt anahtarıyla (dkpriv) imzalar ve Azure AD'ye gönderir. Federe bir ortamda CloudAP eklentisi, kullanıcının kimlik bilgileri yerine federasyon sağlayıcısı tarafından döndürülen SAML belirteci kullanır. |
+| E | Azure AD kullanıcı kimlik bilgilerini, nonce'yi ve aygıt imzasını doğrular, aygıtın kiracıda geçerli olduğunu doğrular ve şifrelenmiş PRT'yi yayınlar. Azure AD, PRT ile birlikte, Aktarım anahtarı (tkpub) kullanılarak Azure AD tarafından şifrelenen Oturum anahtarı olarak adlandırılan simetrik bir anahtar da kullanır. Buna ek olarak, Oturum tuşu da PRT gömülüdür. Bu Oturum anahtarı, PRT ile sonraki istekler için sahip olma kanıtı (PoP) anahtarı olarak hareket eder. |
+| F | CloudAP eklentisi, şifreli PRT ve Oturum anahtarını CloudAP'a geçirir. CloudAP, Aktarım anahtarını (tkpriv) kullanarak Oturum anahtarının şifresini çözmesini ve TPM'nin kendi anahtarını kullanarak yeniden şifrelemesini isteyin. CloudAP, şifreli Oturum anahtarını ÖNBELLEğinde PRT ile birlikte saklar. |
 
-### <a name="prt-renewal-in-subsequent-logons"></a>Sonraki oturumlarda PRT yenilemesi
+### <a name="prt-renewal-in-subsequent-logons"></a>Sonraki oturumlarda PRT yenileme
 
-![Sonraki oturumlarda PRT yenilemesi](./media/concept-primary-refresh-token/prt-renewal-subsequent-logons.png)
-
-| Adım | Açıklama |
-| :---: | --- |
-| A | Kullanıcı oturum açma kullanıcı arabirimindeki parolasını girer. LogonUI bir kimlik doğrulama arabelleğindeki kimlik bilgilerini LSA 'ya geçirir, bu da bunu sırayla CloudAP öğesine geçirir. CloudAP bu isteği CloudAP eklentisine iletir. |
-| B | Kullanıcı daha önce kullanıcıya oturum açtıysa, Windows önbelleğe alınmış oturum açma işlemini başlatır ve kullanıcının oturum açmasını sağlamak için kimlik bilgilerini doğrular. Her 4 saatte bir CloudAP eklentisi zaman uyumsuz olarak yenileme işlemini başlatır. |
-| C | CloudAP eklentisi kullanıcının kimlik sağlayıcısını tanımlamak için bir bölge bulma isteği başlatır. Kullanıcının kiracısında bir Federasyon sağlayıcısı kurulumu varsa, Azure AD Federasyon sağlayıcısının meta veri değişimi uç noktası (MEX) uç noktasını döndürür. Aksi takdirde Azure AD, kullanıcının Azure AD ile kimlik doğrulaması yapabileceğini belirten bir kullanıcı tarafından yönetilmediğini döndürür. |
-| D | Kullanıcı federe ise, CloudAP eklentisi Federasyon sağlayıcısından kullanıcının kimlik bilgileriyle bir SAML belirteci ister. Bu, SAML belirtecini aldıktan sonra Azure AD 'den bir kerelik anahtar ister. Kullanıcı yönetilmiyorsa, CloudAP doğrudan Azure AD 'de nonce 'yi alır. |
-| E | CloudAP eklentisi, kimlik doğrulama isteğini kullanıcının kimlik bilgileri, nonce ve var olan PRT ile oluşturur, oturum anahtarını oturum anahtarıyla imzalar ve Azure AD 'ye gönderir. Federasyon ortamında, CloudAP eklentisi kullanıcının kimlik bilgileri yerine Federasyon sağlayıcısı tarafından döndürülen SAML belirtecini kullanır. |
-| F | Azure AD, oturum anahtarı imzasını, PRT 'ye gömülü oturum anahtarıyla karşılaştırarak doğrular, nonce 'yi doğrular ve cihazın kiracıda geçerli olduğunu doğrular ve yeni bir PRT yayınlar. Daha önce görüldüğü gibi, PRT, Aktarım anahtarı (tkpub) tarafından şifrelenen oturum anahtarı ile birlikte gönderilir. |
-| Acil | CloudAP eklentisi şifreli PRT ve oturum anahtarını CloudAP 'e geçirir. CloudAP, aktarım anahtarını (tkprıv) kullanarak oturum anahtarının şifresini çözmek ve TPM 'nin kendi anahtarını kullanarak yeniden şifrelemek için TPM 'YI ister. CloudAP, şifreli oturum anahtarını önbelleğinde ve PRT ile birlikte depolar. |
-
-### <a name="prt-usage-during-app-token-requests"></a>Uygulama belirteci istekleri sırasında PRT kullanımı
-
-![Uygulama belirteci istekleri sırasında PRT kullanımı](./media/concept-primary-refresh-token/prt-usage-app-token-requests.png)
+![Sonraki oturumlarda PRT yenileme](./media/concept-primary-refresh-token/prt-renewal-subsequent-logons.png)
 
 | Adım | Açıklama |
 | :---: | --- |
-| A | Bir uygulama (örneğin, Outlook, OneNote vb.), WAM 'ye yönelik bir belirteç isteği başlatır. WAM, sırasıyla belirteç isteğine hizmet etmek için Azure AD WAM eklentisini ister. |
-| B | Uygulama için yenileme belirteci zaten kullanılabiliyorsa, Azure AD WAM eklentisi onu bir erişim belirteci istemek için kullanır. Cihaz bağlama kanıtı sağlamak için, WAM eklentisi, isteği oturum anahtarıyla imzalar. Azure AD oturum anahtarını doğrular ve oturum anahtarı tarafından şifrelenen bir erişim belirteci ve uygulama için yeni bir yenileme belirteci yayınlar. WAM eklentisi, belirteçlerin şifresini çözmek için Cloud AP eklentisini ister. Bu, sırasıyla, oturum anahtarını kullanarak şifre çözme için TPM 'yi istediğinde, her iki belirteci de içeren WAM eklentisine neden olur. Sonra, WAM eklentisi uygulamaya yalnızca erişim belirtecini sağlar, ancak yenileme belirtecini DPAPI ile yeniden şifreler ve kendi önbelleğinde depolar  |
-| C |  Uygulama için yenileme belirteci yoksa, Azure AD WAM eklentisi bir erişim belirteci istemek için PRT 'yi kullanır. Birlikte bulunan bir kanıt sağlamak için, WAM eklentisi oturum anahtarıyla PRT 'yi içeren isteği imzalar. Azure AD, oturum anahtarı imzasını, PRT 'ye gömülü oturum anahtarıyla karşılaştırarak doğrular, cihazın geçerli olduğunu doğrular ve uygulama için bir erişim belirteci ve yenileme belirteci yayınlar. Ayrıca, Azure AD, her biri oturum anahtarı tarafından şifrelenen yeni bir PRT (yenileme döngüsüne göre) verebilir. |
-| D | WAM eklentisi, belirteçlerin şifresini çözmek için Cloud AP eklentisini ister. Bu, sırasıyla, oturum anahtarını kullanarak şifre çözme için TPM 'yi istediğinde, her iki belirteci de içeren WAM eklentisine neden olur. Sonra, WAM eklentisi uygulamaya yalnızca erişim belirtecini sağlar, ancak yenileme belirtecini DPAPI ile yeniden şifreler ve kendi önbelleğinde depolar. WAM eklentisi bu uygulama için iletme belirtecini kullanacak şekilde kullanacaktır. WAM eklentisi Ayrıca, yeni PRT 'yi bulut AP eklentisine geri verir ve bu da kendi önbelleğinde güncelleştirmeden önce Azure AD ile PRT 'yi doğrular. Cloud AP eklentisi ileri doğru giden yeni PRT 'yi kullanacaktır. |
-| E | WAM, yeni verilen erişim belirtecini WAM 'ye sağlar ve bunu çağıran uygulamaya geri sağlar|
+| A | Kullanıcı parolasını Kullanıcı Kabirimi'ndeki oturuma girer. LogonUI, kimlik bilgilerini bir auth arabelleğiyle LSA'ya geçirir ve bu da kimlik bilgilerini dahili olarak CloudAP'a geçirir. CloudAP bu isteği CloudAP eklentisine ileter. |
+| B | Kullanıcı daha önce kullanıcıda oturum açmışsa, Windows önbelleğe alınmış oturum açma işlemini başlatır ve kullanıcıyı oturum açmak için kimlik bilgilerini doğrular. CloudAP eklentisi her 4 saatte bir PRT yenilemesini eşit bir şekilde başlatır. |
+| C | CloudAP eklentisi, kullanıcının kimlik sağlayıcısını tanımlamak için bir alan bulma isteği başlatır. Kullanıcının kiracısının bir federasyon sağlayıcısı kurulumu varsa, Azure AD federasyon sağlayıcısının Meta veri alışverişi bitiş noktasını (MEX) bitiş noktasını döndürür. Değilse, Azure AD kullanıcının Azure AD ile kimlik doğrulaması olabileceğini belirten yönetilen döndürür. |
+| D | Kullanıcı federe ise, CloudAP eklentisi kullanıcının kimlik bilgilerini içeren federasyon sağlayıcısından bir SAML belirteci ister. SAML belirteci aldıktan sonra Azure AD'den bir nonce ister. Kullanıcı yönetilirse, CloudAP nonce'yi doğrudan Azure AD'den alır. |
+| E | CloudAP eklentisi kimlik doğrulama isteğini kullanıcının kimlik bilgileri, nonce ve mevcut PRT ile birlikte kurar, isteği Oturum anahtarıyla işaretler ve Azure AD'ye gönderir. Federe bir ortamda CloudAP eklentisi, kullanıcının kimlik bilgileri yerine federasyon sağlayıcısı tarafından döndürülen SAML belirteci kullanır. |
+| F | Azure AD, Oturum anahtar imzasını PRT'ye katıştırılmış Oturum anahtarıyla karşılaştırarak doğrular, nonce'yi doğrular ve aygıtın kiracıda geçerli olduğunu doğrular ve yeni bir PRT yayınlar. Daha önce de görüldüğü gibi, PRT yine Oturum tuşu ile birlikte Taşıma anahtarı (tkpub) ile şifrelenir. |
+| G | CloudAP eklentisi, şifreli PRT ve Oturum anahtarını CloudAP'a geçirir. CloudAP, TPM'den Aktarım anahtarını (tkpriv) kullanarak Oturum anahtarının şifresini çözmesini ve TPM'nin kendi anahtarını kullanarak yeniden şifrelemesini ister. CloudAP, şifreli Oturum anahtarını ÖNBELLEğinde PRT ile birlikte saklar. |
 
-### <a name="browser-sso-using-prt"></a>PRT kullanarak tarayıcı SSO 'SU
+### <a name="prt-usage-during-app-token-requests"></a>Uygulama belirteç istekleri sırasında PRT kullanımı
 
-![PRT kullanarak tarayıcı SSO 'SU](./media/concept-primary-refresh-token/browser-sso-using-prt.png)
+![Uygulama belirteç istekleri sırasında PRT kullanımı](./media/concept-primary-refresh-token/prt-usage-app-token-requests.png)
 
 | Adım | Açıklama |
 | :---: | --- |
-| A | Kullanıcı, bir PRT almak için kimlik bilgileriyle Windows 'da oturum açar. Kullanıcı tarayıcıyı açtıktan sonra tarayıcı (veya uzantısı), URL 'Leri kayıt defterinden yükler. |
-| B | Bir Kullanıcı Azure AD oturum açma URL 'sini açtığında tarayıcı veya uzantı, kayıt defterinden elde edilen URL 'YI doğrular. Eşleşiyorsa tarayıcı, belirteç almak için yerel istemci konağını çağırır. |
-| C | Yerel istemci Konağı, URL 'Lerin Microsoft Identity Providers 'a (Microsoft hesabı veya Azure AD) ait olduğunu doğrular, URL 'den gönderilen bir nonce ayıklar ve bir PRT tanımlama bilgisi almak için CloudAP eklentisine bir çağrı yapar. |
-| D | CloudAP eklentisi PRT tanımlama bilgisini oluşturacak, TPM ile bağlantılı oturum anahtarıyla oturum açıp yerel istemci konağına geri göndermeyecektir. Tanımlama bilgisi oturum anahtarı tarafından imzalandığından üzerinde değişiklik yapılamaz. |
-| E | Yerel istemci ana bilgisayarı, bu PRT tanımlama bilgisini tarayıcıya döndürecek ve bu, Azure AD 'den x-MS-RefreshTokenCredential ve istek belirteçleri olarak adlandırılan istek üst bilgisinin bir parçası olarak ekleyecek. |
-| F | Azure AD, PRT tanımlama bilgisinde oturum anahtarı imzasını doğrular, nonce 'yi doğrular, cihazın kiracıda geçerli olduğunu doğrular ve Web sayfası için bir KIMLIK belirteci ve tarayıcının şifreli bir oturum tanımlama bilgisini yayınlar. |
+| A | Bir uygulama (örneğin, Outlook, OneNote vb.) WAM'a bir belirteç isteği başlatır. WAM, buna karşılık, Azure AD WAM eklentisinin belirteç isteğine hizmet etmesini ister. |
+| B | Uygulama için yenileme belirteci zaten mevcutsa, Azure AD WAM eklentisi bunu erişim belirteci istemek için kullanır. Cihaz bağlama kanıtı sağlamak için WAM eklentisi isteği Oturum tuşu ile imzalar. Azure AD Oturum anahtarını doğrular ve Oturum tuşu tarafından şifrelenmiş uygulama için bir erişim belirteci ve uygulama için yeni bir yenileme belirteci yayınlar. WAM eklentisi, Bulut AP eklentisinin belirteçlerin şifresini çözmesini ister ve bu da TPM'den Oturum anahtarını kullanarak şifresini çözmesini ister ve bu da WAM eklentisinin her iki belirteçleri de elde etmesiyle sonuçlanır. Ardından, WAM eklentisi yalnızca uygulamaya erişim belirteci sağlarken, yenileme belirteciyle DPAPI ile yeniden şifreler ve kendi önbelleğinde saklar  |
+| C |  Uygulama için yenile belirteci yoksa, Azure AD WAM eklentisi erişim belirteci istemek için PRT'yi kullanır. Sahip kanıtı sağlamak için, WAM eklentisi Oturum anahtarı ile PRT içeren isteği imzalar. Azure AD, Oturum anahtar imzasını PRT'ye katıştırılmış Oturum anahtarıyla karşılaştırarak doğrular, aygıtın geçerli olduğunu doğrular ve uygulama için bir erişim belirteci ve yenileme belirteci yayınlar. ayrıca, Azure AD yeni bir PRT (yenileme döngüsüne dayalı) verebilir ve bunların tümü Oturum tuşu tarafından şifrelenebilir. |
+| D | WAM eklentisi, Bulut AP eklentisinin belirteçlerin şifresini çözmesini ister ve bu da TPM'den Oturum anahtarını kullanarak şifresini çözmesini ister ve bu da WAM eklentisinin her iki belirteçleri de elde etmesiyle sonuçlanır. Ardından, WAM eklentisi yalnızca uygulamaya erişim belirteci sağlarken, yenileme belirteciyle DPAPI ile yeniden şifreler ve kendi önbelleğinde saklar. WAM eklentisi bu uygulama için ileriye dönük yenileme belirteci kullanır. WAM eklentisi ayrıca, kendi önbelleğinde güncellemeden önce Azure AD ile PRT'yi doğrulayan yeni PRT'yi Cloud AP eklentisine geri verir. Cloud AP eklentisi ileriye dönük yeni PRT kullanacaktır. |
+| E | WAM, wam'a yeni verilen erişim belirteci sağlar ve bu da onu arama uygulamasına geri sağlar|
+
+### <a name="browser-sso-using-prt"></a>TARAYıCı SSO PRT kullanarak
+
+![TARAYıCı SSO PRT kullanarak](./media/concept-primary-refresh-token/browser-sso-using-prt.png)
+
+| Adım | Açıklama |
+| :---: | --- |
+| A | Kullanıcı, BIR PRT almak için kimlik bilgileriyle Windows'a giriş yaptı. Kullanıcı tarayıcıyı açtıktan sonra tarayıcı (veya uzantı) URL'leri kayıt defterinden yükler. |
+| B | Bir kullanıcı Azure AD giriş URL'sini açtığında, tarayıcı veya uzantı URL'yi kayıt defterinden elde edilenlerle doğrular. Eşleşirlerse, tarayıcı bir belirteç almak için yerel istemci ana bilgisayarını çağırır. |
+| C | Yerel istemci ana bilgisayar, URL'lerin Microsoft kimlik sağlayıcılarına (Microsoft hesabı veya Azure AD) ait olduğunu doğrular, URL'den gönderilen bir nonce'yi ayıklar ve PRT çerezi almak için CloudAP eklentisine çağrı yapar. |
+| D | CloudAP eklentisi PRT çerezini oluşturur, TPM'ye bağlı oturum anahtarıyla oturum açacak ve yerel istemci ana bilgisayara geri gönderir. Çerez oturum anahtarı yla imzalandığı için kurcalanamaz. |
+| E | Yerel istemci ana bilgisayar bu PRT çerezini tarayıcıya döndürür ve bu çerezi x-ms-RefreshTokenCredential adlı istek üstbilgisinin bir parçası olarak içerir ve Azure AD'den belirteçleri talep eder. |
+| F | Azure AD, PRT çerezindeki Oturum anahtar imzasını doğrular, nonce'yi doğrular, aygıtın kiracıda geçerli olduğunu doğrular ve web sayfası için bir kimlik belirteci ve tarayıcı için şifreli oturum çerezi yayınlar. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-PRT ile ilgili sorunları giderme hakkında daha fazla bilgi için bkz. [karma Azure Active Directory katılmış Windows 10 ve Windows Server 2016 cihazları sorunlarını giderme](troubleshoot-hybrid-join-windows-current.md).
+PRT ile ilgili sorun giderme hakkında daha fazla bilgi için, [Windows 10 ve Windows Server 2016 aygıtlarına katılan karma Azure Etkin Dizinine](troubleshoot-hybrid-join-windows-current.md)Sorun Giderme makalesine bakın.

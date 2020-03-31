@@ -9,24 +9,24 @@ ms.date: 11/26/2018
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: d06bda1826964b019edb156375885c7f389ca6ec
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67189020"
 ---
-Görüntülemek ve şu anda bir işlev uygulaması tarafından kullanılan çalışma zamanı sürümünü güncelleştirmek için aşağıdaki yordamı kullanın.
+Bir işlev uygulaması tarafından şu anda kullanılan çalışma zamanı sürümünü görüntülemek ve güncelleştirmek için aşağıdaki yordamı kullanın.
 
-1. [Azure portal'da](https://portal.azure.com) işlev uygulamanızı bulun.
+1. Azure [portalında](https://portal.azure.com)işlev uygulamanıza göz atın.
 
-1. Altında **yapılandırılan özellikler**, seçin **işlev uygulaması ayarları**.
+1. **Yapılandırılmış Özellikler** **altında, İşlev uygulama ayarlarını**seçin.
 
-    ![İşlev uygulaması ayarlarını seçin](./media/functions-view-update-version-portal/add-update-app-setting.png)
+    ![İşlev uygulama ayarlarını seçin](./media/functions-view-update-version-portal/add-update-app-setting.png)
 
-1. **İşlev uygulaması ayarları** sekmesinde **Çalışma zamanı sürümü** bölümünü bulun. Burada ilgili çalışma zamanı sürümünü ve istenen ana sürümü görebilirsiniz. Aşağıdaki örnekte sürüm `~2` olarak ayarlanmıştır.
+1. **İşlev uygulaması ayarları** sekmesinde, **Runtime sürümünü**bulun. Belirli çalışma zamanı sürümüne ve istenen ana sürüme dikkat edin. Aşağıdaki örnekte, sürüm `~2`.
 
-   ![İşlev uygulaması ayarlarını seçin](./media/functions-view-update-version-portal/function-app-view-version.png)
+   ![İşlev uygulama ayarlarını seçin](./media/functions-view-update-version-portal/function-app-view-version.png)
 
-1. İşlev uygulamanızı 1.x çalışma zamanı sürümüne sabitlemek için **Çalışma zamanı sürümü** bölümünde **~1** seçeneğini belirleyin. Uygulamanızda işlevler varsa bu anahtar devre dışı bırakılır.
+1. Fonksiyon uygulamanızı sürüm 1.x çalışma süresine sabitlemek için **Runtime sürümü**altında **~1'i** seçin. Uygulamanızda işlevleriniz olduğunda bu anahtar devre dışı bırakılır.
 
-1. Çalışma zamanı sürümünü değiştirdiğinizde, geri dönüp **genel bakış** sekmesini **yeniden** uygulamayı yeniden başlatmanız.  İşlev uygulaması, 1.x çalışma zamanı sürümü üzerinde çalıştırılarak yeniden başlatılır ve işlev oluşturduğunuzda 1.x sürümüne ilişkin şablonlar kullanılır.
+1. Çalışma zamanı sürümünü değiştirdiğinizde, Genel **Bakış** sekmesine geri dön ve uygulamayı yeniden başlatmak için **Yeniden Başlat'ı** seçin.  İşlev uygulaması sürüm 1.x çalışma zamanında yeniden çalışmaya başlar ve işlevler oluşturduğunuzda sürüm 1.x şablonları kullanılır.

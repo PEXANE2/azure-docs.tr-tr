@@ -13,12 +13,12 @@ metadata:
   ms.date: 02/27/2020
   featureFlags:
   - clicktale
-  ms.openlocfilehash: e3d9f63d2f365d5f91f205dc57b1d28e42711403
-  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.openlocfilehash: 015631efc0077bdaab9a335b4a38fbf4f927e22d
+  ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 03/24/2020
-  ms.locfileid: "80129816"
+  ms.lasthandoff: 03/26/2020
+  ms.locfileid: "80286022"
 highlightedContent:
   items:
   - title: Azure geliştiricileri için başlangıç kılavuzu
@@ -32,7 +32,7 @@ highlightedContent:
     url: https://docs.microsoft.com/azure/cloud-adoption-framework/
   - title: Microsoft Learn ile becerilerinizi geliştirin
     itemType: learn
-    url: https://docs.microsoft.com/learn/browse/?products=azure&resource_type=learning%20path
+    url: https://docs.microsoft.com/learn/browse/?products=azure&resource_type=learning+path
 productDirectory:
   title: Azure ürünlerine göz atın
   items:
@@ -42,7 +42,7 @@ productDirectory:
     azureCategories:
     - ai-machine-learning
     url: cognitive-services/anomaly-detector/index.yml
-  - title: Azure Robot Hizmeti
+  - title: Azure Bot Hizmeti
     summary: İsteğe bağlı olarak ölçeklendirilebilen akıllı ve sunucusuz bot hizmeti
     imageSrc: https://static.docs.com/ui/media/product/azure/bot-service.svg
     azureCategories:
@@ -253,7 +253,7 @@ productDirectory:
     azureCategories:
     - ai-machine-learning
     url: https://docs.microsoft.com/azure/cognitive-services/speech-service/index#pivot=start&panel=texttospeech
-  - title: Translator Metni
+  - title: Translator Metin Çevirisi
     summary: Basit bir REST API çağrısı ile kolayca makine çevirileri yapın
     imageSrc: https://static.docs.com/ui/media/product/azure/cognitive-services.svg
     azureCategories:
@@ -450,7 +450,7 @@ productDirectory:
     - compute
     url: vmware-cloudsimple/index.md
   - title: Batch
-    summary: Bulut ölçeğinde iş zamanlaması ve bilgi işlem yönetimi
+    summary: Bulut ölçeğinde iş zamanlaması ve işlem yönetimi
     imageSrc: https://static.docs.com/ui/media/product/azure/batch-accounts.svg
     azureCategories:
     - compute
@@ -491,7 +491,7 @@ productDirectory:
     - compute
     url: virtual-machines/workloads/sap/hana-overview-architecture.md
   - title: Service Fabric
-    summary: Windows veya Linux üzerinde mikro hizmet geliştirme ve kapsayıcıları düzenleme
+    summary: Windows veya Linux üzerinde mikro hizmet geliştirin ve kapsayıcıları düzenleyin
     imageSrc: https://static.docs.com/ui/media/product/azure/service-fabric-clusters.svg
     azureCategories:
     - compute
@@ -726,7 +726,7 @@ productDirectory:
     - hybrid
     url: azure-arc/index.yml
   - title: Azure ExpressRoute
-    summary: Azure için ayrılmış özel fiber ağ bağlantıları
+    summary: Azure için adanmış özel fiber ağ bağlantıları
     imageSrc: https://static.docs.com/ui/media/product/azure/expressroute.svg
     azureCategories:
     - hybrid
@@ -1100,7 +1100,7 @@ productDirectory:
     azureCategories:
     - networking
     url: private-link/index.yml
-  - title: Yük Dengeleyici
+  - title: Load Balancer
     summary: Uygulamalarınıza yüksek düzeyde kullanılabilirlik ve ağ performansı sağlayın
     imageSrc: https://static.docs.com/ui/media/product/azure/load-balancer.svg
     azureCategories:
@@ -1137,7 +1137,7 @@ productDirectory:
     azureCategories:
     - security
     url: dedicated-hsm/index.yml
-  - title: Anahtar Kasası
+  - title: Key Vault
     summary: Anahtarlarınızı ve diğer gizli dizileri koruyun ve denetimini elinizde tutun
     imageSrc: https://static.docs.com/ui/media/product/azure/key-vault.svg
     azureCategories:
@@ -1173,7 +1173,7 @@ productDirectory:
     azureCategories:
     - storage
     url: azure-netapp-files/index.yml
-  - title: Blob Storage
+  - title: Blob Depolama
     summary: Yapılandırılmamış veriler için REST tabanlı nesne depolama
     imageSrc: https://static.docs.com/ui/media/product/azure/storage-accounts.svg
     azureCategories:
@@ -1185,7 +1185,7 @@ productDirectory:
     azureCategories:
     - storage
     url: virtual-machines/windows/managed-disks-overview.md
-  - title: File Storage
+  - title: Dosya Depolama
     summary: Standart SMB 3.0 protokolünü kullanan dosya paylaşımları
     imageSrc: https://static.docs.com/ui/media/product/azure/storage-accounts.svg
     azureCategories:
