@@ -8,6 +8,10 @@
   items:
     - name: VM ayarlarından güçlendirilmiş erişim konağı oluşturma
       href: quickstart-host-portal.md
+- name: Kavramlar
+  items:
+    - name: Uzaktan çalışma
+      href: work-remotely-support.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Bastion konağı oluşturma
@@ -16,6 +20,8 @@
           href: bastion-create-host-portal.md
         - name: Azure PowerShell
           href: bastion-create-host-powershell.md
+        - name: Azure CLI
+          href: create-host-cli.md
     - name: Sanal makineye bağlanma
       items:
         - name: SSH (Linux)
@@ -40,6 +46,14 @@
       href: session-monitoring.md
     - name: Sorun giderme
       href: troubleshoot.md
+- name: Başvuru
+  items:
+    - name: Azure PowerShell
+      href: /powershell/module/az.network
+    - name: REST
+      href: /rest/api/virtualnetwork/bastionhosts
+    - name: Azure CLI
+      href: /cli/azure/network/bastion
 - name: Kaynaklar
   items:
     - name: Bastion hakkında SSS

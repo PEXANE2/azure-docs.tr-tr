@@ -102,6 +102,8 @@
               href: concepts-data-access-and-security-private-link.md
             - name: Veri Şifrelemesi
               href: concepts-data-encryption-postgresql.md
+            - name: Güvenlik temeli
+              href: security-baseline.md
         - name: İş sürekliliği
           items:
             - name: İş sürekliliğine giriş
@@ -273,6 +275,10 @@
               href: howto-restart-server-portal.md
             - name: Azure CLI
               href: howto-restart-server-cli.md
+        - name: Genel Ağ Erişimini engelleme
+          items:
+            - name: Azure portal
+              href: howto-deny-public-network-access.md
         - name: Çoğaltma
           items:
             - name: Azure portalda okuma amaçlı çoğaltmaları yönetme

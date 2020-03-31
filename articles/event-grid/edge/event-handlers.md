@@ -1,6 +1,6 @@
 ---
-title: Olay Işleyicileri ve hedefleri-Azure Event Grid IoT Edge | Microsoft Docs
-description: Event Grid uç tarafında olay Işleyicileri ve hedefler
+title: Etkinlik İşleyicileri ve varış noktaları - Azure Olay Izgara IoT Edge | Microsoft Dokümanlar
+description: Kenardaki Olay Izgarasında Etkinlik İşleyicileri ve varış noktaları
 author: banisadr
 ms.author: babanisa
 ms.reviewer: spelluru
@@ -9,23 +9,23 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 35bf5af90aa5f0456aa8d68f0e4e8aaacc6cf84f
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76849753"
 ---
-# <a name="event-handlers-and-destinations-in-event-grid-on-edge"></a>Event Grid uç tarafında olay Işleyicileri ve hedefler
+# <a name="event-handlers-and-destinations-in-event-grid-on-edge"></a>Kenardaki Olay Izgarasında Etkinlik İşleyicileri ve varış noktaları
 
-Olay işleyicisi, daha fazla eylem veya olayı işlemek için olayın bulunduğu yerdir. Edge modülünde Event Grid, olay işleyicisi aynı sınır cihazında, başka bir cihazda veya bulutta olabilir. Herhangi bir Web kancasını kullanarak olayları idare edebilir veya Azure Event Grid gibi yerel işleyicilerden birine olay gönderebilirsiniz.
+Olay işleyicisi, olayın daha fazla eylem veya olayı işlemek için bulunduğu yerdir. Olay Izgarası Edge modülü ile, olay işleyicisi aynı kenar aygıtında, başka bir aygıtta veya bulutta olabilir. Olayları işlemek için herhangi bir WebHook'u kullanabilir veya Olayları Azure Olay Idamı gibi yerel işleyicilerinden birine gönderebilirsiniz.
 
-Bu makalede, her birinin nasıl yapılandırılacağı hakkında bilgi verilmektedir.
+Bu makalede, her yapılandırılması hakkında bilgi sağlar.
 
-## <a name="webhook"></a>Web kancası
+## <a name="webhook"></a>WebHook
 
-Bir Web kancası uç noktasına yayımlamak için, `endpointType` `WebHook` olarak ayarlayın ve şunları belirtin:
+Bir WebHook bitiş noktasına yayımlamak `endpointType` `WebHook` için, aşağıdakileri ayarlayın ve sağlayın:
 
-* endpointUrl: Web kancası uç noktası URL 'SI
+* endpointUrl: WebHook uç nokta URL
 
     ```json
         {
@@ -42,11 +42,11 @@ Bir Web kancası uç noktasına yayımlamak için, `endpointType` `WebHook` olar
 
 ## <a name="azure-event-grid"></a>Azure Event Grid
 
-Azure Event Grid bulut uç noktasına yayımlamak için, `endpointType` `eventGrid` olarak ayarlayın ve şunları sağlayın:
+Azure Olay Izgara bulutu bitiş `endpointType` noktasına `eventGrid` yayımlamak için aşağıdakileri ayarlayın ve sağlayın:
 
-* endpointUrl: Event Grid konu URL 'SI buluta
-* sasKey: Event Grid konunun SAS anahtarı
-* topicName: Event Grid tüm giden olayları damgalamak için ad. Konu adı bir Event Grid etki alanı konusuna naklederken faydalıdır.
+* endpointUrl: Bulutta Olay Izgara Konu URL
+* sasKey: Olay Grid Topic's SAS anahtarı
+* topicName: Olay Grid tüm giden olayları damgalamak için ad. Konu adı, Olay Izgara Etki Alanı konusuna deftere nakledilirken yararlıdır.
 
    ```json
         {
@@ -63,11 +63,11 @@ Azure Event Grid bulut uç noktasına yayımlamak için, `endpointType` `eventGr
     }
    ```
 
-## <a name="iot-edge-hub"></a>IoT Edge hub 'ı
+## <a name="iot-edge-hub"></a>IoT Kenar Hub
 
-Bir uç hub modülüne yayımlamak için, `endpointType` `edgeHub` olarak ayarlayın ve şunları sağlayın:
+Edge Hub modülünde yayımlamak `endpointType` için `edgeHub` aşağıdakileri ayarlayın ve sağlayın:
 
-* outputName: Event Grid modülünün, bu abonelikle eşleşen olayları edgeHub 'a yönlendireceğini belirten çıktı. Örneğin, aşağıdaki abonelikle eşleşen olaylar/messages/modules/eventgridmodule/outputs/sampleSub4. 'e yazılacak
+* outputName: Olay Izgara modülünün bu abonelikle eşleşen olayları edgeHub'a yönlendireceği çıktı. Örneğin, aşağıdaki abonelikle eşleşen olaylar /messages/modules/eventgridmodule/outputs/sampleSub4'e yazılacaktır.
 
     ```json
         {
@@ -84,12 +84,12 @@ Bir uç hub modülüne yayımlamak için, `endpointType` `edgeHub` olarak ayarla
 
 ## <a name="event-hubs"></a>Event Hubs
 
-Bir olay hub 'ına yayımlamak için `endpointType` `eventHub` ayarlayın ve şunları sağlayın:
+Bir Olay Hub'ında `endpointType` yayımlamak için aşağıdakileri `eventHub` ayarlayın ve sağlayın:
 
-* connectionString: hedeflediğiniz belirli olay hub 'ı için, paylaşılan erişim Ilkesi aracılığıyla oluşturulmuş bağlantı dizesi.
+* connectionString: Hedeflediğiniz belirli Olay Hub'ı için bağlantı dizesi Paylaşılan Erişim İlkesi aracılığıyla oluşturulur.
 
     >[!NOTE]
-    > Bağlantı dizesi varlığa özgü olmalıdır. Ad alanı bağlantı dizesinin kullanılması çalışmayacak. Azure portalında yayınlamak istediğiniz belirli olay hub 'ına giderek ve **paylaşılan erişim ilkeleri** ' ne tıklayarak, varlığa özel bağlantı dizesi oluşturarak yeni bir varlığa özgü bağlama dizesi oluşturabilirsiniz.
+    > Bağlantı dizesi varlığa özgü olmalıdır. Ad alanı bağlantı dizesi kullanmak çalışmaz. Azure Portalı'nda yayınlamak istediğiniz belirli Etkinlik Hub'ına giderek ve yeni bir varlığa özgü connecection dizesi oluşturmak için **Paylaşılan erişim ilkelerini** tıklatarak bir varlık özel bağlantı dizesi oluşturabilirsiniz.
 
     ```json
         {
@@ -104,14 +104,14 @@ Bir olay hub 'ına yayımlamak için `endpointType` `eventHub` ayarlayın ve şu
         }
     ```
 
-## <a name="service-bus-queues"></a>Hizmet Veri Yolu Sıraları
+## <a name="service-bus-queues"></a>Service Bus Kuyrukları
 
-Service Bus kuyruğuna yayımlamak için `endpointType` `serviceBusQueue` olarak ayarlayın ve şunları sağlayın:
+Hizmet Veri Servisi Kuyruğu'nda `endpointType` yayımlamak `serviceBusQueue` için aşağıdakileri ayarlayın ve aşağıdakileri sağlayın:
 
-* connectionString: hedeflediğiniz belirli Service Bus kuyruğu için bağlantı dizesi, paylaşılan erişim Ilkesi aracılığıyla üretildi.
+* connectionString: Hedeflediğiniz belirli Hizmet Veri Yolu Kuyruğu'nun bağlantı dizesi, Paylaşılan Erişim İlkesi aracılığıyla oluşturulur.
 
     >[!NOTE]
-    > Bağlantı dizesi varlığa özgü olmalıdır. Ad alanı bağlantı dizesinin kullanılması çalışmayacak. Azure portalında yayımlamak istediğiniz belirli Service Bus kuyruğuna giderek ve **paylaşılan erişim ilkeleri** ' ne tıklayarak, yeni varlığa özel bağlantı dizesi oluşturmak için varlığa özgü bir bağlantı dizesi oluşturun.
+    > Bağlantı dizesi varlığa özgü olmalıdır. Ad alanı bağlantı dizesi kullanmak çalışmaz. Azure Portalı'nda yayınlamak istediğiniz belirli Hizmet Veri Servisi Kuyruğu'nda gezinerek ve yeni bir varlığa özgü connecection dizesini oluşturmak için **Paylaşılan erişim ilkelerini** tıklatarak bir varlık özel bağlantı dizesi oluşturun.
 
     ```json
         {
@@ -126,14 +126,14 @@ Service Bus kuyruğuna yayımlamak için `endpointType` `serviceBusQueue` olarak
         }
     ```
 
-## <a name="service-bus-topics"></a>Hizmet Veri Yolu Konuları
+## <a name="service-bus-topics"></a>Service Bus Konuları
 
-Service Bus bir konuya yayımlamak için `endpointType` `serviceBusTopic` olarak ayarlayın ve şunları sağlayın:
+Bir Hizmet Veri Servisi Konu'da `endpointType` `serviceBusTopic` yayımlamak için aşağıdakileri ayarlayın ve sağlayın:
 
-* connectionString: bir paylaşılan erişim Ilkesi aracılığıyla hedeflediğiniz özel Service Bus konusu için bağlantı dizesi.
+* connectionString: Hedeflediğiniz belirli Hizmet Veri Yolu Konusu için bağlantı dizesi Paylaşılan Erişim İlkesi aracılığıyla oluşturulur.
 
     >[!NOTE]
-    > Bağlantı dizesi varlığa özgü olmalıdır. Ad alanı bağlantı dizesinin kullanılması çalışmayacak. Azure portalında yayımlamak istediğiniz belirli Service Bus konusuna giderek ve **paylaşılan erişim ilkeleri** ' ne tıklayarak, yeni varlığa özel bir bağlantı dizesi oluşturmak için varlığa özel bağlantı dizesi oluşturun.
+    > Bağlantı dizesi varlığa özgü olmalıdır. Ad alanı bağlantı dizesi kullanmak çalışmaz. Azure Portalı'nda yayınlamak istediğiniz belirli Hizmet Veri Servisi Konusu'nda gezinerek ve yeni bir varlığa özgü connecection dizesini oluşturmak için **Paylaşılan erişim ilkelerini** tıklatarak bir varlık özel bağlantı dizesi oluşturun.
 
     ```json
         {
@@ -148,15 +148,15 @@ Service Bus bir konuya yayımlamak için `endpointType` `serviceBusTopic` olarak
         }
     ```
 
-## <a name="storage-queues"></a>Depolama kuyrukları
+## <a name="storage-queues"></a>Depolama Kuyrukları
 
-Bir depolama kuyruğuna yayımlamak için `endpointType` `storageQueue` ayarlayın ve şunları sağlayın:
+Depolama Kuyruğu'nda yayımlamak `endpointType` için `storageQueue` aşağıdakileri ayarlayın ve sağlayın:
 
-* SıraAdı: yayımlamakta olduğunuz depolama kuyruğunun adı.
-* connectionString: depolama sırasının bulunduğu depolama hesabı için bağlantı dizesi.
+* queueName: Yayımlamakta olduğunuz Depolama Kuyruğunun Adı.
+* connectionString: Depolama Sırası'nın içinde olduğu Depolama Hesabı için bağlantı dizesi.
 
     >[!NOTE]
-    > Satır Event Hubs, Service Bus kuyrukları ve Service Bus konuları, depolama kuyrukları için kullanılan bağlantı dizesi varlığa özgü değildir. Bunun yerine, depolama hesabı için bağlantı dizesi gerekir.
+    > Sırasız Olay Hub'ları, Servis Veri Merkezi Kuyrukları ve Hizmet Veri Mesuli konular, Depolama Kuyrukları için kullanılan bağlantı dizesi entity özgü değildir. Bunun yerine, ancak Depolama Hesabı için bağlantı dizesi gerekir.
 
     ```json
         {

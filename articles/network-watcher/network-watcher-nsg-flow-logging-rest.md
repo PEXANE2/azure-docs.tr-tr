@@ -1,7 +1,7 @@
 ---
-title: NSG akış günlüklerini yönetme-Azure REST API
+title: NSG akış günlüklerini yönetme - Azure REST API
 titleSuffix: Azure Network Watcher
-description: Bu sayfada, Azure ağ Izleyicisi 'nde ağ güvenlik grubu akış günlüklerinin REST API ile nasıl yönetileceği açıklanmaktadır
+description: Bu sayfa, REST API ile Azure Ağ İzleyicisi'ndeki Ağ Güvenliği Grubu akış günlüklerinin nasıl yönetilenini açıklar
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -13,44 +13,44 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 7cc47414dc985f6fc2fff3c57d809f307b142e30
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76840936"
 ---
-# <a name="configuring-network-security-group-flow-logs-using-rest-api"></a>REST API kullanarak ağ güvenlik grubu akış günlüklerini yapılandırma
+# <a name="configuring-network-security-group-flow-logs-using-rest-api"></a>REST API kullanarak Ağ Güvenlik Grubu akış günlüklerini yapılandırma
 
 > [!div class="op_single_selector"]
-> - [Azure Portal](network-watcher-nsg-flow-logging-portal.md)
-> - [PowerShell](network-watcher-nsg-flow-logging-powershell.md)
+> - [Azure portalında](network-watcher-nsg-flow-logging-portal.md)
+> - [Powershell](network-watcher-nsg-flow-logging-powershell.md)
 > - [Azure CLI](network-watcher-nsg-flow-logging-cli.md)
 > - [REST API](network-watcher-nsg-flow-logging-rest.md)
 
-Ağ güvenlik grubu akış günlükleri, bir ağ güvenlik grubu üzerinden giriş ve çıkış IP trafiği hakkındaki bilgileri görüntülemenize olanak tanıyan bir ağ Izleyicisi özelliğidir. Bu akış günlükleri, JSON biçiminde yazılır ve bir kural temelinde giden ve gelen akışları gösterir, akışın akışı (kaynak/hedef IP 'si, kaynak/hedef bağlantı noktası, protokol) ve trafiğe izin verildiyse veya reddedildiyse, 5 demet bilgi için geçerlidir.
+Ağ Güvenliği Grubu akış günlükleri, Ağ Güvenlik Grubu aracılığıyla giriş ve çıkış IP trafiği hakkındaki bilgileri görüntülemenize olanak tanıyan Ağ İzleyicisi'nin bir özelliğidir. Bu akış günlükleri json biçiminde yazılır ve kural bazında giden ve gelen akışları gösterir, akış için geçerli nic, akış hakkında 5-tuple bilgi (Kaynak/Hedef IP, Kaynak/Hedef Bağlantı Noktası, Protokol) ve trafiğe izin verilip verilmediğini veya reddedilmişse.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-ARMclient, PowerShell kullanarak REST API çağırmak için kullanılır. ARMClient, [Chocolatey üzerinde](https://chocolatey.org/packages/ARMClient) Chocolatey konumunda bulunur
+ARMclient PowerShell kullanarak REST API aramak için kullanılır. ARMClient [Chocolatey armclient](https://chocolatey.org/packages/ARMClient) çikolataüzerinde bulunur
 
-Bu senaryo, ağ Izleyicisi oluşturmak için [ağ Izleyicisi oluşturma](network-watcher-create.md) bölümündeki adımları zaten izlediğinizi varsayar.
+Bu senaryo, Ağ İzleyicisi oluşturmak için [Ağ İzleyicisi Oluştur'daki](network-watcher-create.md) adımları zaten izlediğinizi varsayar.
 
 > [!Important]
-> Ağ Izleyicisi için REST API, istek URI 'sindeki kaynak grubu adını çağıran, üzerinde tanılama eylemleri gerçekleştirdiğiniz kaynakları değil, Ağ İzleyicisini içeren kaynak grubudur.
+> Network Watcher REST API için istek URI kaynak grubu adı çağırır ağ watcher değil, üzerinde tanılama eylemleri gerçekleştiren kaynakları içeren kaynak grubudur.
 
 ## <a name="scenario"></a>Senaryo
 
-Bu makalede ele alınan senaryo, REST API kullanarak akış günlüklerini etkinleştirme, devre dışı bırakma ve sorgulama işlemlerinin nasıl yapılacağını gösterir. Ağ güvenlik grubu akış günlükleri hakkında daha fazla bilgi edinmek için [ağ güvenlik grubu akış günlüğü 'Ne genel bakış](network-watcher-nsg-flow-logging-overview.md)' ı ziyaret edin.
+Bu makalede kapsanan senaryo, REST API'sini kullanarak akış günlüklerini nasıl etkinleştirdiğinizi, devre dışı bırakabileceğinizi ve sorgu akışı günlüklerini nasıl etkinleştirdiğinizi gösterir. Ağ Güvenliği Grubu akış günlüğe kaydetmeleri hakkında daha fazla bilgi edinmek için [Ağ Güvenliği Grubu akış günlüğe kaydetme - Genel Bakış](network-watcher-nsg-flow-logging-overview.md)' ı ziyaret edin.
 
-Bu senaryoda şunları yapmanız gerekir:
+Bu senaryoda şunları yapacaksınız:
 
-* Akış günlüklerini etkinleştir (sürüm 2)
+* Akış günlüklerini etkinleştirme (Sürüm 2)
 * Akış günlüklerini devre dışı bırak
-* Sorgu akışı günlüklerinin durumu
+* Sorgu akışı günlükleri durumu
 
-## <a name="log-in-with-armclient"></a>ARMClient ile oturum açma
+## <a name="log-in-with-armclient"></a>ARMClient ile giriş yapın
 
-Azure kimlik bilgilerinizle armclient 'da oturum açın.
+Azure kimlik bilgilerinizle birlikte silah istemcisi için oturum açın.
 
 ```powershell
 armclient login
@@ -58,16 +58,16 @@ armclient login
 
 ## <a name="register-insights-provider"></a>Insights sağlayıcısını kaydetme
 
-Akış günlüğünün başarıyla çalışması için, **Microsoft. Insights** sağlayıcısı kayıtlı olmalıdır. **Microsoft. Insights** sağlayıcısının kayıtlı olduğundan emin değilseniz, aşağıdaki betiği çalıştırın.
+Akış günlüğe kaydetmenin başarılı bir şekilde çalışabilmesi için **Microsoft.Insights** sağlayıcısının kaydedilmesi gerekir. **Microsoft.Insights** sağlayıcısının kayıtlı olup olmadığından emin değilseniz, aşağıdaki komut dosyasını çalıştırın.
 
 ```powershell
 $subscriptionId = "00000000-0000-0000-0000-000000000000"
 armclient post "https://management.azure.com//subscriptions/${subscriptionId}/providers/Microsoft.Insights/register?api-version=2016-09-01"
 ```
 
-## <a name="enable-network-security-group-flow-logs"></a>Ağ güvenlik grubu akış günlüklerini etkinleştir
+## <a name="enable-network-security-group-flow-logs"></a>Ağ Güvenlik Grubu akış günlüklerini etkinleştirme
 
-Akış günlükleri sürüm 2 ' i etkinleştirme komutu aşağıdaki örnekte gösterilmiştir. Sürüm 1 ' in ' version ' alanını ' 1 ' ile değiştirin:
+Akış günlükleri sürüm 2 etkinleştirmek için komutu aşağıdaki örnekte gösterilir. Sürüm 1 için 'sürüm' alanını '1' ile değiştirin:
 
 ```powershell
 $subscriptionId = "00000000-0000-0000-0000-000000000000"
@@ -96,7 +96,7 @@ $requestBody = @"
 armclient post "https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}/configureFlowLog?api-version=2016-12-01" $requestBody
 ```
 
-Yukarıdaki örnekten döndürülen yanıt aşağıdaki gibidir:
+Önceki örnekten döndürülen yanıt aşağıdaki gibidir:
 
 ```json
 {
@@ -116,9 +116,9 @@ Yukarıdaki örnekten döndürülen yanıt aşağıdaki gibidir:
 }
 ```
 
-## <a name="disable-network-security-group-flow-logs"></a>Ağ güvenlik grubu akış günlüklerini devre dışı bırak
+## <a name="disable-network-security-group-flow-logs"></a>Ağ Güvenlik Grubu akış günlüklerini devre dışı bırak
 
-Akış günlüklerini devre dışı bırakmak için aşağıdaki örneği kullanın. Çağrı, etkin özellik için **false** dışında, akış günlüklerini etkinleştirme ile aynıdır.
+Akış günlüklerini devre dışı kakmak için aşağıdaki örneği kullanın. Arama, etkin özellik için **yanlış** ayarlanması dışında akış günlüklerini etkinleştirme yle aynıdır.
 
 ```powershell
 $subscriptionId = "00000000-0000-0000-0000-000000000000"
@@ -147,7 +147,7 @@ $requestBody = @"
 armclient post "https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}/configureFlowLog?api-version=2016-12-01" $requestBody
 ```
 
-Yukarıdaki örnekten döndürülen yanıt aşağıdaki gibidir:
+Önceki örnekten döndürülen yanıt aşağıdaki gibidir:
 
 ```json
 {
@@ -169,7 +169,7 @@ Yukarıdaki örnekten döndürülen yanıt aşağıdaki gibidir:
 
 ## <a name="query-flow-logs"></a>Sorgu akış günlükleri
 
-Aşağıdaki REST çağrısı, akış günlüklerinin durumunu bir ağ güvenlik grubunda sorgular.
+Aşağıdaki REST çağrısı, Ağ Güvenlik Grubu'ndaki akış günlüklerinin durumunu sorgular.
 
 ```powershell
 $subscriptionId = "00000000-0000-0000-0000-000000000000"
@@ -185,7 +185,7 @@ $requestBody = @"
 armclient post "https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}/queryFlowLogStatus?api-version=2016-12-01" $requestBody
 ```
 
-Aşağıda döndürülen yanıtın bir örneği verilmiştir:
+Döndürülen yanıtın bir örneği aşağıda verilmiştir:
 
 ```json
 {
@@ -205,11 +205,11 @@ Aşağıda döndürülen yanıtın bir örneği verilmiştir:
 }
 ```
 
-## <a name="download-a-flow-log"></a>Akış günlüğü indir
+## <a name="download-a-flow-log"></a>Akış günlüğü indirin
 
-Akış günlüğünün depolama konumu, oluşturma sırasında tanımlanmıştır. Bir depolama hesabına kaydedilmiş bu akış günlüklerine erişmek için uygun bir araç, buradan indirilebilen Microsoft Azure Depolama Gezgini. https://storageexplorer.com/
+Akış günlüğünün depolama konumu oluşturmada tanımlanır. Bir depolama hesabına kaydedilen bu akış günlüklerine erişmek için kullanışlı bir araç, buradan indirilebilen Microsoft Azure Depolama Gezgini'dir:https://storageexplorer.com/
 
-Bir depolama hesabı belirtilmişse, paket yakalama dosyaları aşağıdaki konumdaki bir depolama hesabına kaydedilir:
+Bir depolama hesabı belirtilirse, paket yakalama dosyaları aşağıdaki konumdaki bir depolama hesabına kaydedilir:
 
 ```
 https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/resourceId=/SUBSCRIPTIONS/{subscriptionID}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y={year}/m={month}/d={day}/h={hour}/m=00/macAddress={macAddress}/PT1H.json
@@ -217,6 +217,6 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[NSG akış günlüklerinizi PowerBI Ile görselleştirmeyi](network-watcher-visualize-nsg-flow-logs-power-bi.md) öğrenin
+[PowerBI ile NSG akış günlüklerinizi nasıl görselleştirebilirsiniz](network-watcher-visualize-nsg-flow-logs-power-bi.md) öğrenin
 
-[Açık kaynaklı araçlarla NSG akış günlüklerinizi görselleştirmeyi](network-watcher-visualize-nsg-flow-logs-open-source-tools.md) öğrenin
+[NSG akış günlüklerinizi açık kaynak araçlarıyla nasıl görselleştirebilirsiniz](network-watcher-visualize-nsg-flow-logs-open-source-tools.md) öğrenin

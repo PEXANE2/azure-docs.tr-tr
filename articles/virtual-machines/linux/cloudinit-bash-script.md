@@ -1,40 +1,40 @@
 ---
-title: Azure 'da bir Linux VM 'de Bash betiğini çalıştırmak için Cloud-init kullanma
-description: Azure CLı ile oluşturma sırasında bir Linux sanal makinesinde Bash betiğini çalıştırmak için Cloud-init kullanma
+title: Azure'daki bir Linux VM'de bash komut dosyası çalıştırmak için bulut init'i kullanma
+description: Azure CLI ile oluşturma sırasında Linux VM'de bash komut dosyası çalıştırmak için bulut init nasıl kullanılır?
 author: rickstercdn
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
 ms.openlocfilehash: e2f19ceb6c7f19ba749b46a3553036587be6a71a
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78969224"
 ---
-# <a name="use-cloud-init-to-run-a-bash-script-in-a-linux-vm-in-azure"></a>Azure 'da bir Linux sanal makinesinde Bash betiğini çalıştırmak için Cloud-init kullanma
-Bu makalede, Azure 'da sağlama sırasında Linux sanal makinesi (VM) veya sanal makine ölçek kümeleri (VMSS) üzerinde mevcut bir bash betiğini çalıştırmak için [Cloud-init](https://cloudinit.readthedocs.io) ' i nasıl kullanacağınız gösterilmektedir. Bu Cloud-init betikleri, kaynaklar Azure tarafından sağlandıktan sonra ilk önyüklemede çalışır. Cloud-init 'in Azure 'da ve desteklenen Linux korumalar 'daki yerel olarak nasıl çalıştığı hakkında daha fazla bilgi için bkz. [Cloud-init Overview](using-cloud-init.md)
+# <a name="use-cloud-init-to-run-a-bash-script-in-a-linux-vm-in-azure"></a>Azure'da bir Linux VM'de bash komut dosyası çalıştırmak için bulut init'i kullanma
+Bu makalede, Azure'da sağlama zamanında bir Linux sanal makinede (VM) veya sanal makine ölçeği kümelerinde (VMSS) varolan bir bash komut dosyasını çalıştırmak için [bulut init'i](https://cloudinit.readthedocs.io) nasıl kullanacağınızı gösterilmektedir. Bu bulut init komut dosyaları, kaynaklar Azure tarafından sağlandıktan sonra ilk önyüklemede çalışır. Azure'da ve desteklenen Linux dağıtımlarında bulut init'in yerel olarak nasıl çalıştığı hakkında daha fazla bilgi için [bulut girişe genel bakış](using-cloud-init.md)
 
-## <a name="run-a-bash-script-with-cloud-init"></a>Cloud-init ile bash betiği çalıştırma
-Cloud-init ile mevcut betiklerinizi bir Cloud-config dosyasına dönüştürmeniz gerekmez, Cloud-init, biri Bash betiğiyle birden çok giriş türünü kabul eder.
+## <a name="run-a-bash-script-with-cloud-init"></a>Bulut tabanlı bir bash komut dosyası çalıştırma
+Bulut girişi ile varolan komut dosyalarınızı bir bulut config'ine dönüştürmeniz gerekmez, cloud-init birden çok giriş türünü kabul eder ve bunlardan biri bash komut dosyasıdır.
 
-Betikleri çalıştırmak için Linux özel betik Azure uzantısını kullanıyorsanız, bunları Cloud-init kullanmak üzere geçirebilirsiniz. Ancak, Azure uzantıları, komut dosyası hatalarıyla uyarı vermek için tümleşik raporlamaya sahiptir, komut dosyası başarısız olursa bir Cloud-init görüntü dağıtımı başarısız olmaz.
+Komut dosyalarınızı çalıştırmak için Linux Custom Script Azure Uzantısı'nı kullanıyorsanız, bunları bulut eklentisini kullanmak üzere geçirebilirsiniz. Ancak, Azure Uzantıları komut dosyası hatalarına karşı uyarmak için raporlamayı tümleşik hale getirmekiçin, komut dosyası başarısız olursa bulut içerisindeki görüntü dağıtımı başarısız olmaz.
 
-Bu işlevi eylemde görmek için, test için basit bir bash betiği oluşturun. Cloud-init `#cloud-config` dosyası gibi, bu betiğin sanal makinenizi sağlamak için AzureCLI komutlarını çalıştıracağınız yerel olması gerekir.  Bu örnekte, dosyayı yerel makinenizde değil Cloud Shell oluşturun. İstediğiniz düzenleyiciyi kullanabilirsiniz. Dosyayı oluşturmak ve kullanılabilir düzenleyicilerin listesini görmek için `sensible-editor simple_bash.sh` adını girin. **Nano** düzenleyiciyi kullanmak için #1 seçin. Tüm Cloud-init dosyalarının, özellikle de ilk satırda doğru şekilde kopyalandığından emin olun.  
+Bu işlevselliği iş başında görmek için, sınama için basit bir bash komut dosyası oluşturun. Bulut-init `#cloud-config` dosyası gibi, bu komut dosyası da sanal makinenizi sağlamak için AzureCLI komutlarını çalıştıracağınız yerin yerel olması gerekir.  Bu örnekte, dosyayı yerel makinenizde değil, Bulut Kabuğu'nda oluşturun. İstediğiniz düzenleyiciyi kullanabilirsiniz. Dosyayı oluşturmak ve kullanılabilir düzenleyicilerin listesini görmek için `sensible-editor simple_bash.sh` adını girin. **Nano** düzenleyiciyi kullanmak için #1 seçin. Bulut-init dosyasının tamamının, özellikle de ilk satırın doğru kopyalandığından emin olun.  
 
 ```bash
 #!/bin/sh
 echo "this has been written via cloud-init" + $(date) >> /tmp/myScript.txt
 ```
 
-Bu görüntüyü dağıtılmadan önce [az Group Create](/cli/azure/group) komutuyla bir kaynak grubu oluşturmanız gerekir. Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. Aşağıdaki örnek *eastus* konumunda *myResourceGroup* adlı bir kaynak grubu oluşturur.
+Bu görüntüyü dağıtmadan önce, az grubu oluşturma komutuna sahip bir kaynak grubu [oluşturmanız](/cli/azure/group) gerekir. Azure kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. Aşağıdaki örnek *eastus* konumunda *myResourceGroup* adlı bir kaynak grubu oluşturur.
 
 ```azurecli-interactive 
 az group create --name myResourceGroup --location eastus
 ```
 
-Şimdi [az VM Create](/cli/azure/vm) Ile bir VM oluşturun ve `--custom-data simple_bash.sh` ile bash betik dosyasını aşağıdaki gibi belirtin:
+Şimdi, [az vm oluşturmak](/cli/azure/vm) ve aşağıdaki gibi bash `--custom-data simple_bash.sh` komut dosyası dosyası belirtin bir VM oluşturun:
 
 ```azurecli-interactive 
 az vm create \
@@ -44,23 +44,23 @@ az vm create \
   --custom-data simple_bash.sh \
   --generate-ssh-keys 
 ```
-## <a name="verify-bash-script-has-run"></a>Bash betiği 'nin çalıştırıldığını doğrula
-Önceki komutun çıktısında gösterilen sanal makinenizin genel IP adresine SSH. Kendi **Publicıpaddress** değerini aşağıdaki şekilde girin:
+## <a name="verify-bash-script-has-run"></a>Bash komut dosyasının çalıştırılıp çalıştırıldın
+SSH, önceki komuttan çıktıda gösterilen VM'nizin genel IP adresine. Kendi **genel İplik Adresinizi** aşağıdaki gibi girin:
 
 ```bash
 ssh <publicIpAddress>
 ```
 
-**/Tmp** dizinine geçin ve MyScript. txt dosyasının var olduğunu ve içinde uygun metne sahip olduğunu doğrulayın.  Değilse, daha fazla ayrıntı için **/var/log/Cloud-Init.log dosyasına** bakabilirsiniz.  Aşağıdaki girişi arayın:
+**/tmp** dizinini değiştirin ve myScript.txt dosyasının var olduğunu ve içinde uygun metin olduğunu doğrulayın.  Yoksa, daha fazla bilgi için **/var/log/cloud-init.log'u** kontrol edebilirsiniz.  Aşağıdaki girişi arayın:
 
 ```bash
 Running config-scripts-user using lock Running command ['/var/lib/cloud/instance/scripts/part-001']
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Yapılandırma değişikliklerine yönelik ek Cloud-init örnekleri için aşağıdakilere bakın:
+Yapılandırma değişikliklerine yönelik ek bulut bindirme örnekleri için aşağıdakileri görün:
  
-- [VM 'ye ek bir Linux kullanıcısı ekleme](cloudinit-add-user.md)
-- [İlk önyüklemede var olan paketleri güncelleştirmek için bir paket yöneticisi çalıştırın](cloudinit-update-vm.md)
-- [VM yerel ana bilgisayar adını değiştir](cloudinit-update-vm-hostname.md) 
-- [Uygulama paketi yüklemesi, yapılandırma dosyalarını güncelleştirme ve anahtarları ekleme](tutorial-automate-vm-deployment.md)
+- [VM'ye ek bir Linux kullanıcısı ekleme](cloudinit-add-user.md)
+- [İlk önyüklemede varolan paketleri güncelleştirmek için bir paket yöneticisi çalıştırma](cloudinit-update-vm.md)
+- [VM yerel ana bilgisayar adını değiştirme](cloudinit-update-vm-hostname.md) 
+- [Uygulama paketi yükleme, yapılandırma dosyalarını güncelleştirme ve anahtar ekleme](tutorial-automate-vm-deployment.md)

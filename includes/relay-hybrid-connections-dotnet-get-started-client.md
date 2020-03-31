@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: clemensv
 ms.openlocfilehash: 2d6836b2bf667e4170e67a95dc1daad72a769eb9
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67188605"
 ---
 ### <a name="create-a-console-application"></a>Konsol uygulaması oluşturma
@@ -18,7 +18,7 @@ Visual Studio'da yeni bir **Konsol Uygulaması (.NET Framework)** projesi oluşt
 ### <a name="add-the-relay-nuget-package"></a>Geçiş NuGet paketini ekleme
 
 1. Yeni oluşturulan projeye sağ tıklayıp **NuGet Paketlerini Yönet**'i seçin.
-2. **Göz at**'ı seçip **Microsoft.Azure.Relay** araması yapın. Arama sonuçlarında **Microsoft Azure Geçişi**'ni seçin. 
+2. **Göz at**'ı seçip **Microsoft.Azure.Relay** araması yapın. Arama sonuçlarında **Microsoft Azure Röle'yi**seçin. 
 3. Yüklemeyi tamamlamak için **Yükle**'yi seçin. İletişim kutusunu kapatın.
 
 ### <a name="write-code-to-send-messages"></a>İleti göndermek için kod yazma

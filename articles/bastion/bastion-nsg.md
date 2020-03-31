@@ -1,6 +1,6 @@
 ---
-title: Azure 'da VM 'Ler ve NSG 'lerle çalışma
-description: Bu makalede Azure savunma ile NSG erişimini birleştirme işlemi açıklanır
+title: Azure Kalesi'nde VM'ler ve NSG'lerle çalışma
+description: Bu makalede, Azure Kalesi ile NSG erişiminin nasıl dahil edilebildiğini açıklamaktadır.
 services: bastion
 author: charwen
 ms.service: bastion
@@ -8,58 +8,58 @@ ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: charwen
 ms.openlocfilehash: 15abee4688a2f6aefa2b08ad2b8eee6622d56be2
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77087262"
 ---
-# <a name="working-with-nsg-access-and-azure-bastion"></a>NSG erişimiyle ve Azure ile çalışma
+# <a name="working-with-nsg-access-and-azure-bastion"></a>NSG erişimi ve Azure Bastion ile çalışma
 
-Azure savunma ile çalışırken ağ güvenlik gruplarını (NSG 'ler) kullanabilirsiniz. Daha fazla bilgi için bkz. [güvenlik grupları](../virtual-network/security-overview.md). 
+Azure Bastion ile çalışırken ağ güvenlik gruplarını (NSG' ler) kullanabilirsiniz. Daha fazla bilgi için [Güvenlik Grupları'na](../virtual-network/security-overview.md)bakın. 
 
 ![Mimari](./media/bastion-nsg/nsg-architecture.png)
 
 Bu diyagramda:
 
-* Savunma ana bilgisayarı sanal ağa dağıtılır.
-* Kullanıcı herhangi bir HTML5 tarayıcısı kullanarak Azure portal bağlanır.
-* Kullanıcı Azure sanal makinesine RDP/SSH 'ye gider.
-* Tümleştirme-tarayıcı içinde tek tıklamayla RDP/SSH oturumu bağlayın
-* Azure VM 'de genel IP gerekli değildir.
+* Bastion ana bilgisayarı sanal ağa dağıtılır.
+* Kullanıcı herhangi bir HTML5 tarayıcısını kullanarak Azure portalına bağlanır.
+* Kullanıcı RDP/SSH için Azure sanal makineye yönlendirin.
+* Connect Tümleştirme - Tarayıcı içinde tek tıklamayla RDP/SSH oturumu
+* Azure VM'de ortak IP gerekmez.
 
-## <a name="nsg"></a>Ağ güvenlik grupları
+## <a name="network-security-groups"></a><a name="nsg"></a>Ağ güvenlik grupları
 
-Bu bölümde, Kullanıcı ve Azure savunma arasındaki ağ trafiği ve sanal ağınızdaki VM 'Leri hedeflemek için:
+Bu bölümde, kullanıcı ile Azure Kalesi arasındaki ağ trafiği ve sanal ağınızdaki VM'leri hedeflemek için aşağıdakiler gösterilmektedir:
 
 ### <a name="azurebastionsubnet"></a>AzureBastionSubnet
 
-Azure savunma, özellikle AzureBastionSubnet 'e dağıtılır.
+Azure Bastion özellikle AzureBastionSubnet'e dağıtılır.
 
-* **Giriş trafiği:**
+* **Giriş Trafiği:**
 
-   * **Genel İnternet 'ten gelen trafik:** Azure savunma, giriş trafiği için genel IP üzerinde bağlantı noktası 443 ' ün etkin olmasını gerektiren bir genel IP oluşturur. 3389/22 numaralı bağlantı noktası, AzureBastionSubnet açık olması gerekmez.
-   * **Azure savunma denetim düzleminin giriş trafiği:** Denetim düzlemi bağlantısı için **Gatewaymanager** hizmet etiketinden gelen bağlantı noktası 443 ' yı etkinleştirin. Bu, denetim düzlemi, diğer bir deyişle, ağ geçidi yöneticisinin Azure ile iletişim kurabilmesine olanak sağlar.
+   * **Genel internetten Giriş Trafiği:** Azure Kalesi, giriş trafiği için ortak IP'de etkinleştirilmiş port 443'e ihtiyaç olan genel bir IP oluşturur. Port 3389/22 AzureBastionSubnet'te açılmak zorunda değildir.
+   * **Azure Bastion denetim düzleminden Giriş Trafiği:** Denetim düzlemi bağlantısı için **GatewayManager** hizmet etiketinden gelen bağlantı 443'e olanak sağlar. Bu, Ağ Geçidi Yöneticisi'nin Azure Bastion ile konuşabilmesini sağlar.
 
-* **Çıkış trafiği:**
+* **Çıkış Trafiği:**
 
-   * **Hedef VM 'Lere giden çıkış trafiği:** Azure savunma, hedef VM 'Lere özel IP üzerinden ulaşacaktır. NSG 'ler, bağlantı noktası 3389 ve 22 için diğer hedef VM alt ağlarına giden trafiğe izin vermek için gerekir.
-   * **Azure 'da diğer genel uç noktalara giden trafik çıkışı:** Azure savunma 'nın Azure 'daki çeşitli genel uç noktalara bağlanabililmesi gerekir (örneğin, tanılama günlüklerini ve ölçüm günlüklerini depolamak için). Bu nedenle, Azure savunma 'nın 443 'e giden ve **Azurecı** hizmeti etiketi için çıkış yapması gerekir.
+   * **VM'leri hedeflemek için Çıkış Trafiği:** Azure Bastion, özel IP üzerinden hedef VM'lere ulaşır. NSG'ler, 3389 ve 22 bağlantı noktası için diğer hedef VM alt ağlarına çıkış trafiğine izin vermeli.
+   * **Azure'daki diğer ortak uç noktalara çıkış Trafiği:** Azure Bastion'un Azure'daki çeşitli ortak uç noktalara bağlanabilmesi gerekir (örneğin, tanılama günlüklerini ve ölçüm günlüklerini depolamak için). Bu nedenle, Azure Bastion'un 443 **-AzureCloud** hizmet etiketine giden olması gerekir.
 
-* **Hedef VM alt ağı:** Bu, RDP/SSH yapmak istediğiniz hedef sanal makineyi içeren alt ağıdır.
+* **Hedef VM Subnet:** Bu, RDP/SSH istediğiniz hedef sanal makineyi içeren alt ağdır.
 
-   * **Azure 'dan giriş trafiği:** Azure savunma, hedef VM 'ye özel IP üzerinden ulaşacaktır. RDP/SSH bağlantı noktaları (sırasıyla 3389/22), özel IP üzerinden hedef VM tarafında açılmalıdır. En iyi uygulama olarak, bu bağlantı noktalarını hedef VM alt ağınızdaki hedef VM 'lerde açabiliyor olması için Azure savunma alt ağı IP adresi aralığını bu kurala ekleyebilirsiniz.
+   * **Azure Kalesi'nden Giriş Trafiği:** Azure Bastion, özel IP üzerinden hedef VM'ye ulaşır. RDP/SSH bağlantı noktalarının (sırasıyla 3389/22 bağlantı noktaları) hedef VM tarafında özel IP üzerinden açılması gerekir. En iyi uygulama olarak, bu kurala Azure Bastion Subnet IP adresi aralığını ekleyerek, hedef VM alt netindeki hedef VM'lerde bu bağlantı noktalarını yalnızca Bastion'un açabilmesine olanak tanır.
 
-## <a name="apply"></a>NSG 'leri AzureBastionSubnet 'e Uygula
+## <a name="apply-nsgs-to-azurebastionsubnet"></a><a name="apply"></a>AzureBastionSubnet'e NSG'ler uygulayın
 
-***AzureBastionSubnet***'e BIR NSG oluşturup uygularsanız, NSG 'nize aşağıdaki kuralları eklediğinizden emin olun. Bu kuralları eklemedikçe NSG oluşturma/güncelleştirme başarısız olur:
+***AzureBastionSubnet'e***bir NSG oluşturup uygularsanız, NSG'nizde aşağıdaki kuralları eklediğinizden emin olun. Bu kuralları eklemezseniz, NSG oluşturma/güncelleştirmesi başarısız olur:
 
-* **Denetim düzlemi bağlantısı:** GatewayManager 'dan gelen 443
-* **Tanılama günlüğü ve diğerleri:** 443 ile Azurecyüksek arasındaki trafik. Bu hizmet etiketi içindeki bölgesel Etiketler henüz desteklenmiyor.
-* **Hedef VM:** 3389 ve 22-VirtualNetwork için giden
+* **Düzlem bağlantısını kontrol edin:** GatewayManager'dan 443'e gelen
+* **Tanılama günlüğü ve diğerleri:** AzureCloud'a 443'ten çıkış. Bu hizmet etiketiiçindeki bölgesel etiketler henüz desteklenmez.
+* **Hedef VM:** 3389 ve 22 için Giden VirtualNetwork için
 
 Bu [hızlı başlangıç şablonunda](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azure-bastion-nsg)başvuru için bir NSG kuralı örneği mevcuttur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure savunma hakkında daha fazla bilgi için bkz. [SSS](bastion-faq.md).
+Azure Bastion hakkında daha fazla bilgi için [SSS](bastion-faq.md)bölümüne bakın.

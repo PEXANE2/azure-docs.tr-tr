@@ -1,6 +1,6 @@
 ---
-title: Azure Media Analytics ile Motions Algıla | Microsoft Docs
-description: Azure Media Motion Detector medya işlemcisi (MP), diğer bir deyişle, diğer bir deyişle, diğer bir deyişle, diğer bir deyişle, diğer bir deyişle, önemli olmayan video
+title: Azure Medya Analitiği ile Hareketleri Algılama | Microsoft Dokümanlar
+description: Azure Medya Hareket Dedektörü ortam işlemcisi (MP), uzun ve olaysız bir video içinde ilgi çekici bölümleri verimli bir şekilde belirlemenize olanak tanır.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -15,43 +15,43 @@ ms.date: 03/19/2019
 ms.author: juliako
 ms.reviewer: milanga
 ms.openlocfilehash: f4c021531a4d04bf16e5dbee4172952433f675d9
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77913013"
 ---
-# <a name="detect-motions-with-azure-media-analytics"></a>Azure Media Analytics ile Motions Algıla
+# <a name="detect-motions-with-azure-media-analytics"></a>Azure Medya Analitiği ile Hareketleri Algılama
 
 > [!NOTE]
-> **Azure Media Motion Detector** medya işlemcisi kullanımdan kaldırılacak. Kullanımdan kaldırma tarihi için, [eski bileşenler](legacy-components.md) konusuna bakın.
+> **Azure Media Motion Detector** ortam işlemcisi kullanımdan kaldırılacak. Emeklilik tarihi [için, eski bileşenler](legacy-components.md) konusuna bakın.
  
 ## <a name="overview"></a>Genel Bakış
 
-**Azure Media Motion Detector** medya IŞLEMCISI (MP), diğer bir deyişle, diğer bir deyişle, diğer bir deyişle, diğer bir deyişle, diğer bir deyişle, önemli olmayan video Hareket algılama, videonun, hareketin gerçekleştiği yerleri belirlemek için statik kamera çekimleri üzerinde kullanılabilir. Zaman damgalarına ve olayın gerçekleştiği sınırlayıcı bölgeye sahip bir meta veri içeren bir JSON dosyası oluşturur.
+**Azure Medya Hareket Dedektörü** ortam işlemcisi (MP), uzun ve olaysız bir video içinde ilgi çekici bölümleri verimli bir şekilde belirlemenize olanak tanır. Hareket algılama, hareketin gerçekleştiği video bölümlerini belirlemek için statik kamera görüntülerinde kullanılabilir. Zaman damgaları ve olayın oluştuğu sınırlayıcı bölge içeren bir meta veri içeren bir JSON dosyası oluşturur.
 
-Güvenlik video akışlarına hedeflenmiş bu teknoloji, ilgili olaylara yönelik hareketi ve gölge ve aydınlatma değişiklikleri gibi hatalı pozitif sonuçları kategorilere ayırmanıza olanak sağlar. Bu, uzun sürme videolarından ilgi çekici bir şekilde istenmeyen olaylar elde etmeksizin kamera akışından güvenlik uyarıları oluşturmanıza olanak sağlar.
+Güvenlik video beslemelerine yönelik olan bu teknoloji, hareketi ilgili olaylara ve gölgeler ve Aydınlatma değişiklikleri gibi yanlış pozitif lere göre kategorize edebilir. Bu, kamera akışlarından sonsuz alakasız olaylarla spam edilmeden güvenlik uyarıları oluşturmanıza olanak sağlarken, uzun güvenlik videolarından ilgi çekici anları ayıklayabilmenizi sağlar.
 
-**Azure Media Motion Detector** MP Şu anda önizleme aşamasındadır.
+**Azure Medya Hareket Dedektörü** MP şu anda Önizleme'de.
 
-Bu makale, **Azure Media Motion Detector** ayrıntılarını sağlar ve .net IÇIN Media Services SDK ile nasıl kullanacağınızı gösterir
+Bu **makalede, Azure Media Motion Detector** hakkında ayrıntılı bilgi verir ve .NET için Medya Hizmetleri SDK ile nasıl kullanılacağını gösterir
 
-## <a name="motion-detector-input-files"></a>Hareket algılayıcısı giriş dosyaları
-Video dosyaları. Şu anda şu biçimler desteklenir: MP4, MOV ve WMV.
+## <a name="motion-detector-input-files"></a>Hareket Dedektörü giriş dosyaları
+Video dosyaları. Şu anda, aşağıdaki biçimleri desteklenir: MP4, MOV ve WMV.
 
 ## <a name="task-configuration-preset"></a>Görev yapılandırması (önceden ayarlanmış)
-**Azure Media Motion Detector**bir görev oluştururken, bir yapılandırma ön ayarı belirtmeniz gerekir. 
+**Azure Media Motion Detector**ile bir görev oluştururken, bir yapılandırma ön ayarı belirtmeniz gerekir. 
 
 ### <a name="parameters"></a>Parametreler
 Aşağıdaki parametreleri kullanabilirsiniz:
 
 | Adı | Seçenekler | Açıklama | Varsayılan |
 | --- | --- | --- | --- |
-| sensitivityLevel |String: 'low', 'medium', 'high' |Hareketlerin 'in bildirildiği duyarlılık düzeyini ayarlar. Hatalı pozitif sonuç sayısını ayarlamak için bunu ayarlayın. |'medium' |
-| frameSamplingValue |Pozitif tamsayı |Algoritmanın çalışacağı sıklığı ayarlar. 1 her çerçeveye eşittir, 2 her ikinci kare de vb. anlamına gelir. |1 |
-| detectLightChange |Boolean: 'true', 'false' |Sonuçlarda açık değişikliklerin raporlanıp raporlanmadığını ayarlar |'False' |
-| mergeTimeThreshold |XS-Time: ss: DD: ss<br/>Örnek: 00:00:03 |2 olayın birleştirileceği ve 1 olarak bildirildiği hareket olayları arasındaki zaman penceresini belirtir. |00:00:00 |
-| detectionZones |Bir algılama bölgesi dizisi:<br/>-Algılama bölgesi 3 veya daha fazla noktadan oluşan bir dizidir<br/>-Point, 0 ile 1 arasında bir x ve y koordinatı. |Kullanılacak Çokgen algılama bölgelerinin listesini açıklar.<br/>Sonuçlar bir KIMLIK olarak, ilki ' id ' olan bölge ile bildirilir: 0 |Tüm çerçeveyi kapsayan tek bölge. |
+| sensitivitySeviye |String:'düşük', 'orta', 'yüksek' |Hareketlerin raporlandığı duyarlılık düzeyini ayarlar. Yanlış pozitif sayısını ayarlamak için bunu ayarlayın. |'orta' |
+| çerçeveSamplingValue |Pozitif tamsayı |Algoritmanın çalışma sıklığını ayarlar. 1 her kare eşittir, 2 her saniye kare anlamına gelir, ve benzeri. |1 |
+| detectLightChange |Boolean:'true', 'false' |Sonuçlarda ışık değişikliklerinin bildirilip bildirilmediğini ayarlar |'Yanlış' |
+| mergeTimeThreshold |Xs-time: Hh:mm:ss<br/>Örnek: 00:00:03 |2 olayın birleştirildiği ve 1 olarak raporlandığı hareket olayları arasındaki zaman penceresini belirtir. |00:00:00 |
+| algılamaBölgeler |Bir dizi algılama bölgesi:<br/>- Algılama Bölgesi 3 veya daha fazla noktadan oluşan bir dizidir<br/>- Nokta 0'dan 1'e kadar bir x ve y koordinatıdır. |Kullanılacak çokgen algılama bölgelerinin listesini açıklar.<br/>Sonuçlar, ilki 'id':0 olmak üzere, bölgelerle birlikte kimlik olarak bildirilir |Tüm çerçeveyi kapsayan tek bölge. |
 
 ### <a name="json-example"></a>JSON örneği
 
@@ -85,36 +85,36 @@ Aşağıdaki parametreleri kullanabilirsiniz:
     }
 ```
 
-## <a name="motion-detector-output-files"></a>Hareket algılayıcısı çıkış dosyaları
-Bir hareket algılama işi, video içinde hareket uyarılarını ve bunların kategorilerini açıklayan çıkış varlığı içinde bir JSON dosyası döndürür. Dosya videoda algılanan hareket saati ve süresi hakkındaki bilgileri içerir.
+## <a name="motion-detector-output-files"></a>Hareket Dedektörü çıkış dosyaları
+Bir hareket algılama işi, video içindeki hareket uyarılarını ve kategorilerini açıklayan çıktı varlığındaki bir JSON dosyasını döndürür. Dosya, videoda algılanan hareket süresi ve süresi hakkında bilgi içerir.
 
-Hareket algılayıcısı API 'SI, sabit bir arka plan videosunda (örneğin, bir izleme videosu) hareket halinde nesneler olduğunda göstergeler sağlar. Hareket algılayıcısı, aydınlatma ve gölge değişiklikleri gibi yanlış alarmları azaltmak için eğitilir. Algoritmaların geçerli sınırlamaları, gece Vision videoları, yarı saydam nesneler ve küçük nesneler içerir.
+Hareket Dedektörü API sabit bir arka plan video (örneğin, bir gözetim video hareket nesneleri olduğunda göstergeler sağlar). Hareket Dedektörü, aydınlatma ve gölge değişiklikleri gibi yanlış alarmları azaltmak için eğitilir. Algoritmaların geçerli sınırlamaları gece görüş videoları, yarı saydam nesneler ve küçük nesneleri içerir.
 
-### <a id="output_elements"></a>Çıktı JSON dosyasının öğeleri
+### <a name="elements-of-the-output-json-file"></a><a id="output_elements"></a>Çıktı JSON dosyasının öğeleri
 > [!NOTE]
-> En son sürümde, çıkış JSON biçimi değişmiştir ve bazı müşterilere yönelik bir son değişikliği temsil edebilir.
+> En son sürümde, Output JSON biçimi değişti ve bazı müşteriler için bir kırılma değişikliği temsil edebilir.
 > 
 > 
 
-Aşağıdaki tabloda, çıkış JSON dosyasının öğeleri açıklanmaktadır.
+Aşağıdaki tabloda çıktı JSON dosyasının öğeleri açıklanmaktadır.
 
 | Öğe | Açıklama |
 | --- | --- |
-| version |Bu, video API 'sinin sürümünü ifade eder. Geçerli sürüm 2 ' dir. |
-| timescale |Videonun saniye başına "ticks" değeri. |
-| offset |"Ticks" içindeki zaman damgalarının zaman değeri. Video API 'Lerinin 1,0 sürümünde bu her zaman 0 olur. Daha sonra destekduğumuz senaryolarda bu değer değişebilir. |
-| framerate |Videodaki saniye başına kare hızı. |
-| width, height |Videonun piksel cinsinden genişlik ve yüksekliğini ifade eder. |
-| start |"Ticks" içinde başlangıç zaman damgası. |
-| duration |Olayın "ticks" cinsinden uzunluğu. |
-| interval |Olaydaki her girdinin "ticks" cinsinden aralığı. |
-| etkinlikler |Her olay parçası bu süre içinde algılanan hareketi içerir. |
-| type |Geçerli sürümde, bu her zaman genel hareket için ' 2 '. Bu etiket, video API 'Lerine gelecekteki sürümlerde hareketi kategorilere ayırma esnekliği verir. |
-| regionId |Yukarıda açıklandığı gibi, bu sürümde her zaman 0 olur. Bu etiket, video API 'SI ile gelecekteki sürümlerde çeşitli bölgelerde hareket bulma esnekliği sağlar. |
-| bölgeler |Videonuzdaki hareket hakkında bilgi verdiğiniz alanı ifade eder. <br/><br/>-"ID", bu sürümde yalnızca bir, ID 0 olan bölge alanını temsil eder. <br/>-"tür" hareket için ilgilendiğiniz bölgenin şeklini temsil eder. Şu anda, "dikdörtgen" ve "Çokgen" desteklenir.<br/> "Dikdörtgen" belirttiyseniz, bölgenin boyutları X, Y, genişlik ve yükseklik olarak belirlenmiştir. X ve Y koordinatları, bölgenin sol üst XY koordinatlarını 0,0 ile 1,0 arasında normalleştirilmiş bir ölçekte temsil eder. Genişlik ve yükseklik, 0,0 ile 1,0 arasındaki normalleştirilmiş ölçekte bölgenin boyutunu temsil eder. Geçerli sürümde X, Y, genişlik ve yükseklik her zaman 0, 0 ve 1, 1 ' de sabittir. <br/>"Çokgen" belirttiyseniz, bölgede boyutlar vardır. <br/> |
-| parçalar |Meta veriler parçalar adlı farklı kesimlere bölünmüştür. Her parçada başlangıç, süre, aralık sayısı ve olaylar vardır. Olayları olmayan bir parça, bu başlangıç saati ve süresi boyunca hiçbir hareketin algılanmadığı anlamına gelir. |
-| brackets [] |Her köşeli ayraç, olaydaki bir aralığı temsil eder. Bu Aralık için boş köşeli ayraçlar hiçbir hareket algılanmadığı anlamına gelir. |
-| konumlar |Olaylar altındaki bu yeni giriş, hareketin gerçekleştiği konumu listeler. Bu, algılama bölgelerinden daha özgüdür. |
+| version |Bu, Video API sürümüanlamına gelir. Geçerli sürüm 2'dir. |
+| Zaman ölçeği |Videonun saniyesinde "Keneler". |
+| uzaklık |"Keneler"deki zaman damgaları için zaman mahsupları. Video API'lerinin sürüm 1.0'ında bu her zaman 0 olacaktır. Desteklediğimiz gelecek senaryolarda bu değer değişebilir. |
+| Framerate |Videodaki saniye başına kare hızı. |
+| genişlik, yükseklik |Piksellerde videonun genişliğini ve yüksekliğini ifade eder. |
+| start |"Keneler"deki başlangıç zaman damgası. |
+| süre |Olayın uzunluğu, "keneler"de. |
+| interval |Olaydaki her giriş aralığı, "kene"de. |
+| etkinlikler |Her olay parçası, bu süre içinde algılanan hareketi içerir. |
+| type |Geçerli sürümde, bu her zaman genel hareket için '2' dir. Bu etiket, Video API'lerine gelecekteki sürümlerde hareketi kategorilere ayırma esnekliği sağlar. |
+| regionId |Yukarıda açıklandığı gibi, bu her zaman bu sürümde 0 olacaktır. Bu etiket, Video API'ye gelecekteki sürümlerde çeşitli bölgelerde hareket bulma esnekliği sağlar. |
+| Bölge |Videonuzdaki hareketi önemsediğiniz alanı ifade eder. <br/><br/>-"id" bölge alanını temsil eder – bu sürümde sadece bir tane vardır, ID 0. <br/>-"type" hareket için önemsediğiniz bölgenin şeklini temsil eder. Şu anda, "dikdörtgen" ve "çokgen" desteklenir.<br/> "Dikdörtgen" olarak belirttiyseniz, bölgenin X, Y, Genişlik ve Yükseklik boyutları vardır. X ve Y koordinatları, 0,0 ile 1,0 arasında normalleştirilmiş bir ölçekte bölgenin sol üst XY koordinatlarını temsil eder. Genişlik ve yükseklik, 0,0 ile 1,0 arasında normalleştirilmiş bir ölçekte bölgenin boyutunu temsil ediyor. Geçerli sürümde, X, Y, Genişlik ve Yükseklik her zaman 0, 0 ve 1, 1 olarak sabitlenir. <br/>"Çokgen" olarak belirtirseniz, bölgenin noktalarda boyutları vardır. <br/> |
+| Parça |Meta veriler, parça adı verilen farklı bölümlere ayrılır. Her parçada başlangıç, süre, aralık sayısı ve olaylar vardır. Olay olmayan bir parça, bu başlangıç zamanı ve süresi boyunca hiçbir hareketin algılanmadı anlamına gelir. |
+| parantez [] |Her parantez olaydaki bir aralığı temsil eder. Bu aralık için boş köşeli ayraçlar hiçbir hareket algılanmadı anlamına gelir. |
+| Konum |Olaylar altındaki bu yeni giriş, hareketin oluştuğu konumu listeler. Bu, algılama bölgelerinden daha spesifiktir. |
 
 Aşağıdaki JSON örneği çıktıyı gösterir:
 
@@ -163,16 +163,16 @@ Aşağıdaki JSON örneği çıktıyı gösterir:
 ```
 
 ## <a name="limitations"></a>Sınırlamalar
-* Desteklenen giriş video biçimleri, MP4, MOV ve WMV 'yi içerir.
-* Hareket algılama, sabit arka plan videoları için iyileştirilmiştir. Algoritma, aydınlatma değişiklikleri ve gölgeleri gibi yanlış alarmları azaltmaya odaklanır.
-* Teknik sorunlar nedeniyle bazı hareketler algılanmayabilir; Örneğin, gece Vision videoları, yarı saydam nesneler ve küçük nesneler.
+* Desteklenen giriş video biçimleri MP4, MOV ve WMV içerir.
+* Hareket Algılama sabit arka plan videoları için optimize edin. Algoritma, aydınlatma değişiklikleri ve gölgeler gibi yanlış alarmları azaltmaya odaklanır.
+* Bazı hareketler teknik zorluklar nedeniyle tespit edilemeyebilir; örneğin, gece görüş videoları, yarı saydam nesneler ve küçük nesneler.
 
 ## <a name="net-sample-code"></a>.NET örnek kodu
 
-Aşağıdaki program, aşağıdakilerin nasıl yapılacağını göstermektedir:
+Aşağıdaki program nasıl yapılacağını gösterir:
 
-1. Bir varlık oluşturun ve kıymete bir medya dosyası yükleyin.
-2. Aşağıdaki JSON ön ayarını içeren bir yapılandırma dosyasını temel alan video hareket algılama göreviyle bir iş oluşturun: 
+1. Bir varlık oluşturun ve bir medya dosyasını varlığa yükleyin.
+2. Aşağıdaki json önceden ayarını içeren bir yapılandırma dosyasına dayalı bir video hareket algılama görevi içeren bir iş oluşturun: 
    
     ```json
             {
@@ -381,16 +381,16 @@ namespace VideoMotionDetection
 }
 ```
 
-## <a name="media-services-learning-paths"></a>Media Services öğrenme yolları
+## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Geri bildirimde bulunma
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-links"></a>İlgili bağlantılar
-[Azure Media Services hareket algılayıcısı blogu](https://azure.microsoft.com/blog/motion-detector-update/)
+[Azure Medya Hizmetleri Hareket Dedektörü blogu](https://azure.microsoft.com/blog/motion-detector-update/)
 
-[Azure Media Services Analytics genel bakışı](media-services-analytics-overview.md)
+[Azure Medya Hizmetleri Analizine Genel Bakış](media-services-analytics-overview.md)
 
-[Azure Media Analytics gösterileri](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)
+[Azure Medya Analizi demoları](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 

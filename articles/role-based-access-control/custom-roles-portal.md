@@ -1,6 +1,6 @@
 ---
-title: Azure portal (Önizleme)-Azure RBAC kullanarak Azure özel rolleri oluşturma veya güncelleştirme
-description: Azure portal kullanarak Azure rol tabanlı erişim denetimi (Azure RBAC) için Azure özel rolleri oluşturmayı öğrenin. Buna özel rolleri listeleme, oluşturma, güncelleştirme ve silme işlemlerinin nasıl yapılacağı de dahildir.
+title: Azure portalı (Önizleme) - Azure RBAC'ı kullanarak Azure özel rolleri oluşturma veya güncelleme
+description: Azure portalını kullanarak Azure rol tabanlı erişim denetimi (Azure RBAC) için Azure özel rolleri nasıl oluşturabilirsiniz öğrenin. Buna, özel rollerin nasıl listelenebildiğini, oluşturulup güncelleştirilen ve silinir.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -13,81 +13,81 @@ ms.workload: identity
 ms.date: 02/26/2020
 ms.author: rolyon
 ms.openlocfilehash: 3204cdf51f3f37588f684f801a811f569b337d13
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77674876"
 ---
-# <a name="create-or-update-azure-custom-roles-using-the-azure-portal-preview"></a>Azure portal (Önizleme) kullanarak Azure özel rolleri oluşturma veya güncelleştirme
+# <a name="create-or-update-azure-custom-roles-using-the-azure-portal-preview"></a>Azure portalını kullanarak Azure özel rolleri oluşturma veya güncelleme (Önizleme)
 
 > [!IMPORTANT]
-> Azure portal kullanan Azure özel rolleri Şu anda genel önizlemededir.
+> Azure portalını kullanan Azure özel rolleri şu anda genel önizlemededir.
 > Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir.
-> Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Daha fazla bilgi için Microsoft [Azure Önizlemeleri için Ek Kullanım Koşulları'na](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)bakın.
 
-[Azure yerleşik rolleri](built-in-roles.md) kuruluşunuzun belirli ihtiyaçlarını karşılamıyorsa, kendi Azure özel rollerinizi de oluşturabilirsiniz. Yerleşik rollerde olduğu gibi, abonelik ve kaynak grubu kapsamları 'nda kullanıcılara, gruplara ve hizmet sorumlularına özel roller atayabilirsiniz. Özel Roller bir Azure Active Directory (Azure AD) dizininde depolanır ve abonelikler arasında paylaşılabilir. Her bir dizin en fazla 5000 özel role sahip olabilir. Özel roller Azure portal, Azure PowerShell, Azure CLı veya REST API kullanılarak oluşturulabilir. Bu makalede, Azure portal (Şu anda önizleme aşamasında) kullanılarak nasıl özel roller oluşturulacağı açıklanır.
+Azure [yerleşik rolleri](built-in-roles.md) kuruluşunuzun özel gereksinimlerini karşılamazsa, kendi Azure özel rollerinizi oluşturabilirsiniz. Yerleşik roller gibi, abonelik ve kaynak grubu kapsamlarında kullanıcılara, gruplara ve hizmet ilkelerine özel roller atayabilirsiniz. Özel roller bir Azure Etkin Dizin (Azure AD) dizininde depolanır ve abonelikler arasında paylaşılabilir. Her dizin en fazla 5000 özel rol olabilir. Azure portalı, Azure PowerShell, Azure CLI veya REST API kullanılarak özel roller oluşturulabilir. Bu makalede, Azure portalı (şu anda önizlemede) kullanılarak özel rollerin nasıl oluşturulacak olduğu açıklanmaktadır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Özel Roller oluşturmak için şunlar gerekir:
+Özel roller oluşturmak için şunları yapmanız gerekir:
 
 - [Sahip](built-in-roles.md#owner) veya [Kullanıcı Erişimi Yöneticisi](built-in-roles.md#user-access-administrator) gibi özel rol oluşturma izni
 
-## <a name="step-1-determine-the-permissions-you-need"></a>1\. Adım: ihtiyacınız olan izinleri belirleme
+## <a name="step-1-determine-the-permissions-you-need"></a>Adım 1: İhtiyacınız olan izinleri belirleme
 
-Azure 'da, özel rolünüzün potansiyel olarak içerebileceği binlerce izin vardır. Özel rolünüze eklemek istediğiniz izinleri belirleyebilmeniz için kullanabileceğiniz dört yol aşağıda verilmiştir:
+Azure'da özel rolünüze ekleyebilecek binlerce izin vardır. Özel rolünüze eklemek isteyeceğiniz izinleri belirlemenin dört yolu aşağıda veda edebilirsiniz:
 
 | Yöntem | Açıklama |
 | --- | --- |
-| Mevcut rollere bakın | Hangi izinlerin kullanıldığını görmek için mevcut rollere bakabilirsiniz. Daha fazla bilgi için bkz. [Azure yerleşik rolleri](built-in-roles.md). |
-| Anahtar sözcüğe göre izinleri ara | Azure portal kullanarak özel bir rol oluşturduğunuzda, anahtar sözcüğe göre izinler araması yapabilirsiniz. Örneğin, *sanal makine* veya *faturalandırma* izinleri için arama yapabilirsiniz. Bu arama işlevi, [4. Adım: izinler](#step-4-permissions)bölümünde daha sonra açıklanmaktadır. |
-| Tüm izinleri indir | Azure portal kullanarak özel bir rol oluşturduğunuzda tüm izinleri bir CSV dosyası olarak indirebilir ve ardından bu dosyada arama yapabilirsiniz. İzinleri **Ekle** bölmesinde tüm izinleri indirmek için **tüm izinleri indir** düğmesine tıklayın. İzin Ekle bölmesi hakkında daha fazla bilgi için bkz. [4. Adım: izinler](#step-4-permissions). |
-| Docs 'taki izinleri görüntüleme | Kullanılabilir izinleri [Azure Resource Manager kaynak sağlayıcısı işlemlerinde](resource-provider-operations.md)görüntüleyebilirsiniz. |
+| Varolan rollere bakın | Hangi izinlerin kullanıldığını görmek için varolan rollere bakabilirsiniz. Daha fazla bilgi için [Azure yerleşik rolleri'ne](built-in-roles.md)bakın. |
+| Anahtar kelimeye göre izin arama | Azure portalını kullanarak özel bir rol oluşturduğunuzda, anahtar kelimeye göre izinler arayabilirsiniz. Örneğin, *sanal makine* veya *faturalama* izinleri arayabilirsiniz. Bu arama işlevi daha sonra [Adım 4: İzinler](#step-4-permissions)açıklanır. |
+| Tüm izinleri indirin | Azure portalını kullanarak özel bir rol oluşturduğunuzda, tüm izinleri CSV dosyası olarak karşıdan yükleyebilir ve bu dosyada arama yapabilirsiniz. İzin **Ekle** bölmesine, tüm **izinleri** indirmek için tüm izinleri indir düğmesini tıklatın. İzin Ekle bölmesi hakkında daha fazla bilgi için [bkz.](#step-4-permissions) |
+| Dokümanlarda izinleri görüntüleme | Kullanılabilir izinleri [Azure Kaynak Yöneticisi kaynak sağlayıcısı işlemlerinde](resource-provider-operations.md)görüntüleyebilirsiniz. |
 
-## <a name="step-2-choose-how-to-start"></a>2\. Adım: nasıl başlayakullanacağınızı seçin
+## <a name="step-2-choose-how-to-start"></a>Adım 2: Nasıl başlayacağınızı seçin
 
-Özel bir rol oluşturmaya başlayabilmeniz için kullanabileceğiniz üç yol vardır. Var olan bir rolü klonlayabilir, sıfırdan başlayabilir veya bir JSON dosyasıyla başlayabilirsiniz. En kolay yol, ihtiyacınız olan izinlere sahip olan mevcut bir rolü bulmanız ve sonra senaryonuz için kopyalayıp değiştirmektir. 
+Özel bir rol oluşturmaya başlamanın üç yolu vardır. Varolan bir rolü klonlayabilir, sıfırdan başlayabilir veya bir JSON dosyasıyla başlayabilirsiniz. En kolay yolu, ihtiyacınız olan izinlerin çoğuna sahip varolan bir rolü bulmak ve ardından senaryonuz için onu klonlamak ve değiştirmektir. 
 
-### <a name="clone-a-role"></a>Rolü kopyalama
+### <a name="clone-a-role"></a>Bir rolü klonlama
 
-Mevcut bir rol gerekli izinlere sahip değilse, onu kopyalayabilir ve sonra izinleri değiştirebilirsiniz. Bir rolü kopyalamaya başlamak için bu adımları izleyin.
+Varolan bir rol tam olarak ihtiyacınız olan izinlere sahip değilse, onu klonlayabilir ve izinleri değiştirebilirsiniz. Bir rolü klonlamaya başlamak için aşağıdaki adımları izleyin.
 
-1. Azure portal, özel rolün atanabilir olmasını istediğiniz bir abonelik veya kaynak grubu açın ve ardından **erişim denetimi (IAM)** öğesini açın.
+1. Azure portalında, özel rolün atanmasını istediğiniz bir abonelik veya kaynak grubu açın ve ardından **Access denetimini (IAM)** açın.
 
-    Aşağıdaki ekran görüntüsünde, abonelik için açılan erişim denetimi (ıAM) sayfası gösterilmektedir.
+    Aşağıdaki ekran görüntüsü, abonelik için açılan Access denetimi (IAM) sayfasını gösterir.
 
-    ![Abonelik için erişim denetimi (ıAM) sayfası](./media/custom-roles-portal/access-control-subscription.png)
+    ![Abonelik için erişim denetimi (IAM) sayfası](./media/custom-roles-portal/access-control-subscription.png)
 
-1. Tüm yerleşik ve özel rollerin listesini görmek için **Roller** sekmesine tıklayın.
+1. Tüm yerleşik ve özel rollerin listesini görmek için **Roller** sekmesini tıklatın.
 
-1. Fatura okuyucu rolü gibi kopyalamak istediğiniz bir rolü arayın.
+1. Fatura Okuyucu rolü gibi klonlamak istediğiniz bir rolü arayın.
 
-1. Satırın sonunda üç nokta ( **...** ) simgesine tıklayın ve ardından **Kopyala**' ya tıklayın.
+1. Satırın sonunda, elips (**...**) 'yi tıklatın ve ardından **Clone'u**tıklatın.
 
-    ![Kopya bağlam menüsü](./media/custom-roles-portal/clone-menu.png)
+    ![Bağlamyı klonlama menüsü](./media/custom-roles-portal/clone-menu.png)
 
-    Bu, özel roller düzenleyicisini **bir rol Kopyala** seçeneği belirlenmiş olarak açar.
+    Bu, **clone bir rol** seçeneği seçilen özel roller düzenleyiciaçılır.
 
-1. 3\. [Adım: temel bilgiler](#step-3-basics)' e geçin.
+1. Adım [3'e geçin: Temel bilgiler](#step-3-basics).
 
 ### <a name="start-from-scratch"></a>Sıfırdan başlama
 
 İsterseniz, sıfırdan özel bir rol başlatmak için aşağıdaki adımları izleyebilirsiniz.
 
-1. Azure portal, özel rolün atanabilir olmasını istediğiniz bir abonelik veya kaynak grubu açın ve ardından **erişim denetimi (IAM)** öğesini açın.
+1. Azure portalında, özel rolün atanmasını istediğiniz bir abonelik veya kaynak grubu açın ve ardından **Access denetimini (IAM)** açın.
 
-1. **Ekle** ' ye tıklayın ve ardından **özel rol Ekle (Önizleme)** seçeneğine tıklayın.
+1. **Ekle'yi** tıklatın ve ardından **özel rol ekle'yi (önizleme)** tıklatın.
 
-    ![Özel rol Ekle menüsü](./media/custom-roles-portal/add-custom-role-menu.png)
+    ![Özel rol menüsü ekleme](./media/custom-roles-portal/add-custom-role-menu.png)
 
-    Bu, özel roller düzenleyicisini **sıfırdan başla** seçeneği seçili olarak açar.
+    Bu, seçilen **sıfırdan Başlat** seçeneğiyle özel roller düzenleyicisini açar.
 
-1. 3\. [Adım: temel bilgiler](#step-3-basics)' e geçin.
+1. Adım [3'e geçin: Temel bilgiler](#step-3-basics).
 
-### <a name="start-from-json"></a>JSON 'dan Başlat
+### <a name="start-from-json"></a>JSON'dan başla
 
-İsterseniz, özel rol değerlerinizin çoğunu bir JSON dosyasında belirtebilirsiniz. Dosyayı özel roller düzenleyicisinde açabilir, ek değişiklikler yapabilir ve sonra özel rolü oluşturabilirsiniz. Bir JSON dosyasıyla başlamak için bu adımları izleyin.
+İsterseniz, bir JSON dosyasında özel rol değerlerinizin çoğunu belirtebilirsiniz. Dosyayı özel roller düzenleyicisinde açabilir, ek değişiklikler yapabilir ve ardından özel rolü oluşturabilirsiniz. JSON dosyasıyla başlamak için aşağıdaki adımları izleyin.
 
 1. Aşağıdaki biçime sahip bir JSON dosyası oluşturun:
 
@@ -109,7 +109,7 @@ Mevcut bir rol gerekli izinlere sahip değilse, onu kopyalayabilir ve sonra izin
     }
     ```
 
-1. JSON dosyasında çeşitli özellikler için değerleri belirtin. Aşağıda bazı değerler eklenmiş bir örnek verilmiştir. Farklı özellikler hakkında daha fazla bilgi için bkz. [rol tanımlarını anlama](role-definitions.md).
+1. JSON dosyasında, çeşitli özellikler için değerleri belirtin. Aşağıda, bazı değerlerin eklenmiştir. Farklı özellikler hakkında bilgi için [bkz.](role-definitions.md)
 
     ```json
     {
@@ -139,77 +139,77 @@ Mevcut bir rol gerekli izinlere sahip değilse, onu kopyalayabilir ve sonra izin
     }
     ```
     
-1. Azure portal, **erişim denetimi (IAM)** sayfasını açın.
+1. Azure portalında Access **denetimi (IAM)** sayfasını açın.
 
-1. **Ekle** ' ye tıklayın ve ardından **özel rol Ekle (Önizleme)** seçeneğine tıklayın.
+1. **Ekle'yi** tıklatın ve ardından **özel rol ekle'yi (önizleme)** tıklatın.
 
-    ![Özel rol Ekle menüsü](./media/custom-roles-portal/add-custom-role-menu.png)
+    ![Özel rol menüsü ekleme](./media/custom-roles-portal/add-custom-role-menu.png)
 
     Bu, özel roller düzenleyicisini açar.
 
-1. Temel bilgiler sekmesinde, **temel izinler**' de **JSON 'dan Başlat**' ı seçin.
+1. Temel bilgiler sekmesinde, **Temel izinlerde** **JSON'dan Başlat'ı**seçin.
 
-1. Dosya Seç kutusunun yanındaki klasör düğmesine tıklayarak aç iletişim kutusunu açın.
+1. Dosya kutusunu Seç'in yanında, Aç iletişim kutusunu açmak için klasör düğmesini tıklatın.
 
-1. JSON dosyanızı seçin ve ardından **Aç**' a tıklayın.
+1. JSON dosyanızı seçin ve sonra **Aç'ı**tıklatın.
 
-1. 3\. [Adım: temel bilgiler](#step-3-basics)' e geçin.
+1. Adım [3'e geçin: Temel bilgiler](#step-3-basics).
 
-## <a name="step-3-basics"></a>3\. Adım: temel bilgiler
+## <a name="step-3-basics"></a>Adım 3: Temel Bilgiler
 
-**Temel bilgiler** sekmesinde, özel rolünüzün ad, açıklama ve taban çizgisi izinlerini belirtirsiniz.
+Temel **Bilgiler** sekmesinde, özel rolünüz için ad, açıklama ve temel izinleri belirtirsiniz.
 
-1. **Özel rol adı** kutusunda, özel rol için bir ad belirtin. Ad, Azure AD dizini için benzersiz olmalıdır. Ad harf, sayı, boşluk ve özel karakterler içerebilir.
+1. Özel **rol adı** kutusunda, özel rol için bir ad belirtin. Bu ad, Azure AD dizininde benzersiz olmalıdır. Ad harfleri, sayıları, boşlukları ve özel karakterleri içerebilir.
 
-1. **Açıklama** kutusunda, özel rol için isteğe bağlı bir açıklama belirtin. Bu, özel rol için araç ipucu olur.
+1. **Açıklama** kutusunda, özel rol için isteğe bağlı bir açıklama belirtin. Bu, özel rolün araç ucu olacaktır.
 
-    **Taban çizgisi izinleri** seçeneği, önceki adıma göre zaten ayarlanmalıdır, ancak bunu değiştirebilirsiniz.
+    **Temel izinler** seçeneği zaten önceki adıma göre ayarlanmalıdır, ancak değiştirebilirsiniz.
 
-    ![Belirtilen değerleri içeren temel bilgiler sekmesi](./media/custom-roles-portal/basics-values.png)
+    ![Belirtilen değerlerle temeller sekmesi](./media/custom-roles-portal/basics-values.png)
 
-## <a name="step-4-permissions"></a>4\. Adım: Izinler
+## <a name="step-4-permissions"></a>Adım 4: İzinler
 
-**İzinler** sekmesinde, özel rolünüzün izinlerini belirtirsiniz. Bir rolü Klonladığınız veya JSON ile başladığınıza bağlı olarak, Izinler sekmesi bazı izinleri zaten listelemeyebilir.
+**İzinler** sekmesinde, özel rolünüz için izinleri belirtirsiniz. Bir rolü klonlayıp klonlamadığınıza veya JSON ile başlatıp başlamadığınıza bağlı olarak, İzinler sekmesi bazı izinleri zaten listeleyebilir.
 
-![Özel rol oluştur 'un İzinler sekmesi](./media/custom-roles-portal/permissions.png)
+![Özel rol oluşturma izinleri sekmesi](./media/custom-roles-portal/permissions.png)
 
-### <a name="add-or-remove-permissions"></a>İzinleri ekleme veya kaldırma
+### <a name="add-or-remove-permissions"></a>İzin ekleme veya kaldırma
 
-Özel rolünüzün izinlerini eklemek veya kaldırmak için bu adımları izleyin.
+Özel rolünüz için izin eklemek veya kaldırmak için aşağıdaki adımları izleyin.
 
-1. İzinler eklemek için **izin Ekle ' ye tıklayarak izin** Ekle bölmesini açın.
+1. İzin eklemek için İzin Ekle bölmesini açmak için **İzin Ekle'yi** tıklatın.
 
-    Bu bölme, kullanılabilir tüm izinleri bir kart biçiminde farklı kategoriler halinde gruplanmış olarak listeler. Her kategori, Azure kaynaklarını sağlayan bir hizmet olan bir *kaynak sağlayıcısını*temsil eder.
+    Bu bölme, kart biçiminde farklı kategorilere gruplanmış tüm kullanılabilir izinleri listeler. Her kategori, Azure kaynakları sağlayan bir hizmet olan bir *kaynak sağlayıcısını*temsil eder.
 
-1. **Izin ara** kutusuna, izinleri aramak için bir dize yazın. Örneğin, faturayla ilgili izinleri bulmak için *Fatura* araması yapın.
+1. İzin **kutusu** arama'da, izinleri aramak için bir dize yazın. Örneğin, faturayla ilgili izinleri bulmak için *fatura* yı arayın.
 
-    Arama dizeniz temelinde, kaynak sağlayıcısı kartlarının bir listesi görüntülenir. Kaynak sağlayıcılarının Azure hizmetleriyle nasıl eşlenme listesi için bkz. [Azure hizmetleri Için kaynak sağlayıcıları](../azure-resource-manager/management/azure-services-resource-providers.md).
+    Kaynak sağlayıcı kartlarının listesi, arama dizenize göre görüntülenir. Kaynak sağlayıcıların Azure hizmetlerini nasıl eşlenebildiğini öğrenmek için Azure [hizmetleri için Kaynak sağlayıcılarına](../azure-resource-manager/management/azure-services-resource-providers.md)bakın.
 
-    ![Kaynak sağlayıcısı ile izin bölmesi ekleme](./media/custom-roles-portal/add-permissions-provider.png)
+    ![Kaynak sağlayıcısıyla izin bölmesi ekleme](./media/custom-roles-portal/add-permissions-provider.png)
 
-1. Özel rolünüze eklemek istediğiniz izinlere sahip olabilecek **Microsoft faturalandırma**gibi bir kaynak sağlayıcısı kartına tıklayın.
+1. **Microsoft Faturalandırma**gibi özel rolünüze eklemek istediğiniz izinlere sahip olabilecek bir kaynak sağlayıcı kartını tıklatın.
 
-    Bu kaynak sağlayıcının yönetim izinlerinin listesi, arama dizeniz temelinde görüntülenir.
+    Bu kaynak sağlayıcısının yönetim izinlerinin listesi, arama dizenize göre görüntülenir.
 
-    ![İzin listesi ekle](./media/custom-roles-portal/add-permissions-list.png)
+    ![İzinler listesi ekleme](./media/custom-roles-portal/add-permissions-list.png)
 
-1. Veri düzlemi için uygulanan izinleri arıyorsanız, **veri eylemleri**' ne tıklayın. Aksi takdirde, yönetim düzlemine uygulanan izinleri listelemek için Eylemler seçeneğini **Eylemler** olarak ayarlayın. Yönetim düzlemi ve veri düzlemi arasındaki farklılıklar hakkında daha fazla bilgi için bkz. [Yönetim ve veri işlemleri](role-definitions.md#management-and-data-operations).
+1. Veri düzlemi için geçerli izinler arıyorsanız, **Veri Eylemleri'ni**tıklatın. Aksi takdirde, yönetim düzlemi için geçerli izinleri listelemek için eylemler kümesini **Eylemler'e** bırakın. Daha fazla bilgi için, yönetim düzlemi ve veri düzlemi arasındaki farklar hakkında, [Bkz. Yönetim ve veri işlemleri.](role-definitions.md#management-and-data-operations)
 
-1. Gerekirse, aramanızı daha ayrıntılı hale getirmek için arama dizesini güncelleştirin.
+1. Gerekirse, aramanızı daha da hassaslaştırmak için arama dizesini güncelleştirin.
 
-1. Özel rolünüze eklemek istediğiniz bir veya daha fazla izin bulduktan sonra, izinlerin yanına bir onay işareti ekleyin. Örneğin, diğer ' in yanına bir onay işareti ekleyin: faturaları indirme iznini eklemek için **faturayı indirin** .
+1. Özel rolünüze eklemek istediğiniz bir veya daha fazla izin bulduğunuzda, izinlerin yanına onay işareti ekleyin. Örneğin, Diğer: Faturaları indirme izni eklemek için **Faturayı İndir'in** yanına bir onay işareti ekleyin.
 
-1. İzin listenize izin eklemek için **Ekle** ' ye tıklayın.
+1. İzin listenize izin eklemek için **Ekle'yi** tıklatın.
 
-    İzin `Actions` veya `DataActions`olarak eklenir.
+    İzin bir veya `Actions` bir `DataActions`.
 
     ![İzin eklendi](./media/custom-roles-portal/permissions-list-add.png)
 
-1. İzinleri kaldırmak için, satırın sonundaki Sil simgesine tıklayın. Bu örnekte, bir kullanıcının destek bileti oluşturmasına gerek duymayacak olduğundan `Microsoft.Support/*` izin silinebilir.
+1. İzinleri kaldırmak için satırın sonundaki sil simgesini tıklatın. Bu örnekte, bir kullanıcı destek biletleri oluşturma yeteneğine `Microsoft.Support/*` gerek olmadığından, izin silinebilir.
 
 ### <a name="add-wildcard-permissions"></a>Joker karakter izinleri ekleme
 
-Başlatma isteğinize bağlı olarak, izinler listenizde joker karakter (\*) ile izinleriniz olabilir. Bir joker karakter (\*), sağladığınız dizeyle eşleşen her şeye bir izni genişletir. Örneğin, Azure maliyet yönetimi ve dışarı aktarma ile ilgili tüm izinleri eklemek istediğinizi varsayalım. Tüm bu izinleri ekleyebilirsiniz:
+Nasıl başlamayı seçtiğinize bağlı olarak, izinler listenizde\*joker karakterli izinler () olabilir. Joker karakter\*( ) sağladığınız dizeyle eşleşen her şeye izin verir. Örneğin, Azure Maliyet Yönetimi ve dışa aktarmayla ilgili tüm izinleri eklemek istediğinizi varsayalım. Bu izinlerin tümlerini ekleyebilirsiniz:
 
 ```
 Microsoft.CostManagement/exports/action
@@ -219,139 +219,139 @@ Microsoft.CostManagement/exports/delete
 Microsoft.CostManagement/exports/run/action
 ```
 
-Bu izinlerin tümünü eklemek yerine yalnızca bir joker karakter izni ekleyebilirsiniz. Örneğin, aşağıdaki joker karakter izni önceki beş izinlerle eşdeğerdir. Bu Ayrıca, eklenebilir olabilecek, gelecekteki tüm dışarı aktarma izinlerini de içerir.
+Bu izinlerin tümünün eklenmesi yerine, joker karakter izni ekleyebilirsiniz. Örneğin, aşağıdaki joker karakter izni önceki beş izine eşdeğerdir. Bu, gelecekte eklenebilen tüm dışa aktarma izinlerini de içerir.
 
 ```
 Microsoft.CostManagement/exports/*
 ```
 
-Yeni bir joker karakter izni eklemek istiyorsanız, **Izinleri Ekle** bölmesini kullanarak ekleyemezsiniz. Joker karakter iznini eklemek için **JSON** sekmesini kullanarak el ile eklemeniz gerekir. Daha fazla bilgi için bkz. [6. Adım: JSON](#step-6-json).
+Yeni bir joker karakter izni eklemek istiyorsanız, **İzin Ekle** bölmesini kullanarak ekemezsiniz. Joker karakter izni eklemek için **JSON** sekmesini kullanarak el ile eklemeniz gerekir. Daha fazla bilgi için [Bkz. Adım 6: JSON](#step-6-json).
 
-### <a name="exclude-permissions"></a>Dışlama izinleri
+### <a name="exclude-permissions"></a>İzinleri hariç tutma
 
-Rolünüzün bir joker (\*) izni varsa ve bu joker karakter izninden belirli izinleri dışlamak veya çıkarmak istiyorsanız, bunları dışlayabilirsiniz. Örneğin, aşağıdaki joker karakter iznine sahip olduğunu varsayalım:
+Rolünüz bir joker karakter\*( ) iznine sahipse ve belirli izinleri bu joker karakter izninden hariç tutmak veya çıkarmak istiyorsanız, bunları hariç tutabilirsiniz. Örneğin, aşağıdaki joker karakter iznine sahip olduğunuzu varsayalım:
 
 ```
 Microsoft.CostManagement/exports/*
 ```
 
-Bir dışarı aktarmanın silinmesine izin vermek istemiyorsanız, aşağıdaki Silme iznini dışlayabilirsiniz:
+Bir dışa aktarmanın silinmesine izin vermek istemiyorsanız, aşağıdaki silme iznini hariç tutabilirsiniz:
 
 ```
 Microsoft.CostManagement/exports/delete
 ```
 
-Bir izni dışladığınızda, `NotActions` veya `NotDataActions`olarak eklenir. Etkin yönetim izinleri, tüm `Actions` eklenerek ve sonra tüm `NotActions`çıkarılarak hesaplanır. Etkin veri izinleri, tüm `DataActions` eklenerek ve sonra tüm `NotDataActions`çıkarılarak hesaplanır.
+Bir izni hariç tutsanız, bir `NotActions` `NotDataActions`veya . Etkili yönetim izinleri tüm `Actions` ekleyerek ve daha sonra tüm çıkarılarak `NotActions`hesaplanır. Etkili veri izinleri tüm `DataActions` ekleyerek ve daha sonra tüm çıkarılarak `NotDataActions`hesaplanır.
 
 > [!NOTE]
-> İznin dışlanması bir reddetme ile aynı değildir. İzinlerin dışlanması, izinleri bir joker karakter izninden çıkarmak için kullanışlı bir yoldur.
+> İzin hariç olmak, inkar etmekle aynı şey değildir. İzinleri hariç almak, izinleri joker karakter izninden çıkarmanın yalnızca kullanışlı bir yoludur.
 
-1. İzin verilen joker karakter izninden bir izni dışlamak veya çıkarmak için izinleri hariç tut bölmesini açmak için **Izinleri hariç tut** ' a tıklayın.
+1. İzin verilen joker karakter iznini hariç tutmak veya çıkarmak için, İzinleri Hariç Le'yi açmak için **İzinleri Hariç** Le'yi tıklatın.
 
     Bu bölmede, dışlanan veya çıkarılan yönetim veya veri izinlerini belirtirsiniz.
 
-1. Dışlamak istediğiniz bir veya daha fazla izin bulduktan sonra, izinlerin yanına bir onay işareti ekleyin ve ardından **Ekle** düğmesine tıklayın.
+1. Hariç tutmak istediğiniz bir veya daha fazla izin bulduktan sonra, izinlerin yanına bir onay işareti ekleyin ve sonra **Ekle** düğmesini tıklatın.
 
-    ![İzinleri dışlama bölmesi-izin seçildi](./media/custom-roles-portal/exclude-permissions-select.png)
+    ![İzinbölmeyi hariç tut - izin seçili](./media/custom-roles-portal/exclude-permissions-select.png)
 
-    İzin `NotActions` veya `NotDataActions`olarak eklenir.
+    İzin a `NotActions` veya . `NotDataActions`
 
-    ![İzin dışlandı](./media/custom-roles-portal/exclude-permissions-list-add.png)
+    ![İzin hariç](./media/custom-roles-portal/exclude-permissions-list-add.png)
 
-## <a name="step-5-assignable-scopes"></a>5\. Adım: atanabilir kapsamlar
+## <a name="step-5-assignable-scopes"></a>Adım 5: Atanabilir kapsamlar
 
-**Atanabilir kapsamlar** sekmesinde, özel rolünüzün atama için kullanılabildiği, abonelik veya kaynak grubu gibi bir konum belirtirsiniz. Bu sekmede, başlatmayı nasıl seçtiğinize bağlı olarak, erişim denetimi (ıAM) sayfasını açtığınız kapsam listeleyebilir. Atanabilir kapsamın kök kapsama ("/") ayarlanması desteklenmiyor. Bu önizleme için, atanabilir kapsam olarak bir yönetim grubu ekleyemezsiniz.
+**Atanabilir kapsamlar** sekmesinde, abonelik veya kaynak grubu gibi özel rolünüzün atama için nerede kullanılabildiği belirtilir. Nasıl başlamayı seçtiğinize bağlı olarak, bu sekme Erişim denetimi (IAM) sayfasını açtığınız kapsamı listeleyebilir. Kök kapsamına atanabilir kapsamı ("/") ayarlamak desteklenmez. Bu önizleme için, bir yönetim grubunu atanabilir kapsam olarak ekleyemezsiniz.
 
-1. Atanabilir kapsamlar Ekle bölmesini açmak için **atanabilir kapsamlar Ekle** ' ye tıklayın.
+1. Atanabilir Kapsam ekle bölmesini açmak için **atanabilir kapsamları Ekle'yi** tıklatın.
 
     ![Atanabilir kapsamlar sekmesi](./media/custom-roles-portal/assignable-scopes.png)
 
-1. Kullanmak istediğiniz bir veya daha fazla kapsamı (genellikle aboneliğiniz) tıklatın.
+1. Genellikle aboneliğinizi kullanmak istediğiniz bir veya daha fazla kapsamı tıklatın.
 
-    ![Atanabilir kapsamlar ekleme](./media/custom-roles-portal/add-assignable-scopes.png)
+    ![Atayabilen kapsamlar ekleme](./media/custom-roles-portal/add-assignable-scopes.png)
 
-1. Atanabilir kapsamınızı eklemek için **Ekle** düğmesine tıklayın.
+1. Atanabilir kapsamınızı eklemek için **Ekle** düğmesini tıklatın.
 
-## <a name="step-6-json"></a>6\. Adım: JSON
+## <a name="step-6-json"></a>Adım 6: JSON
 
-**JSON** sekmesinde, özel rolünüzün JSON içinde biçimlendirildiğini görürsünüz. İsterseniz JSON 'u doğrudan düzenleyebilirsiniz. Joker karakter (\*) izni eklemek istiyorsanız, bu sekmeyi kullanmanız gerekir.
+**JSON** sekmesinde, Özel rolünüzün JSON'da biçimlendirilmiş olduğunu görürsünüz. İsterseniz, doğrudan JSON'u edinebilirsiniz. Joker karakter (\*) izni eklemek istiyorsanız, bu sekmeyi kullanmanız gerekir.
 
-1. JSON 'u düzenlemek için **Düzenle**' ye tıklayın.
+1. JSON'u yeniden delemek için **Edit'i**tıklatın.
 
     ![Özel rolü gösteren JSON sekmesi](./media/custom-roles-portal/json.png)
 
-1. JSON üzerinde değişiklik yapın.
+1. JSON'da değişiklik yapın.
 
-    JSON doğru biçimlendirilmediyse dikey cilt alanında kırmızı bir pürüzlü çizgi ve bir gösterge görürsünüz.
+    JSON doğru biçimlendirilmemişse, dikey olukta kırmızı pürüzlü bir çizgi ve bir gösterge görürsünüz.
 
-1. Düzenlemeden sonra **Kaydet**' e tıklayın.
+1. Düzenleme tamamlandığında **Kaydet'i**tıklatın.
 
-## <a name="step-7-review--create"></a>7\. Adım: Inceleme + oluştur
+## <a name="step-7-review--create"></a>Adım 7: Gözden geçirme + oluşturma
 
-**Gözden geçir + oluştur** sekmesinde, özel rol ayarlarınızı gözden geçirebilirsiniz.
+Gözden **Geçir + oluştur** sekmesinde, özel rol ayarlarınızı gözden geçirebilirsiniz.
 
 1. Özel rol ayarlarınızı gözden geçirin.
 
-    ![Gözden geçir + Oluştur sekmesi](./media/custom-roles-portal/review-create.png)
+    ![İnceleme + oluşturma sekmesi](./media/custom-roles-portal/review-create.png)
 
-1. Özel rolünüzü oluşturmak için **Oluştur** ' a tıklayın.
+1. Özel rolünüzü oluşturmak için **Oluştur'u** tıklatın.
 
-    Birkaç dakika sonra, özel rolünüzün başarıyla oluşturulduğunu belirten bir ileti kutusu görünür.
+    Birkaç dakika sonra, özel rolünüzün başarıyla oluşturulduğunu gösteren bir ileti kutusu görüntülenir.
 
-    ![Özel rol iletisi oluştur](./media/custom-roles-portal/custom-role-success.png)
+    ![Özel rol iletisi oluşturma](./media/custom-roles-portal/custom-role-success.png)
 
     Herhangi bir hata algılanırsa, bir ileti görüntülenir.
 
-    ![İnceleme + oluşturma hatası](./media/custom-roles-portal/review-create-error.png)
+    ![Gözden geçirme + hata oluşturma](./media/custom-roles-portal/review-create-error.png)
 
-1. Yeni özel rolünüzü **Roller** listesinde görüntüleyin. Özel rolünüzü görmüyorsanız **Yenile**' ye tıklayın.
+1. **Roller** listesindeki yeni özel rolünüzü görüntüleyin. Özel rolünüzü **görmüyorsanız, Yenile'yi**tıklatın.
 
-     Özel rolünüzün her yerde gösterilmesi birkaç dakika sürebilir.
+     Özel rolünüzün her yerde görünmesi birkaç dakika sürebilir.
 
 ## <a name="list-custom-roles"></a>Özel rolleri listeleme
 
 Özel rollerinizi görüntülemek için aşağıdaki adımları izleyin.
 
-1. Bir abonelik veya kaynak grubu açın ve ardından **erişim denetimi (IAM)** öğesini açın.
+1. Bir abonelik veya kaynak grubu açın ve ardından **Access denetimini (IAM)** açın.
 
-1. Tüm yerleşik ve özel rollerin listesini görmek için **Roller** sekmesine tıklayın.
+1. Tüm yerleşik ve özel rollerin listesini görmek için **Roller** sekmesini tıklatın.
 
-1. **Tür** listesinde, **customrole** öğesini seçerek özel rollerinizi görüntüleyin.
+1. **Tür** listesinde, özel rollerinizi görmek için **CustomRole'yi** seçin.
 
-    Özel rolünüzü oluşturduysanız ve listede görmüyorsanız, **Yenile**' ye tıklayın.
+    Özel rolünüzü yeni oluşturduysanız ve listede **göremiyorsanız, Yenile'yi**tıklatın.
 
     ![Özel rol listesi](./media/custom-roles-portal/custom-role-list.png)
 
 ## <a name="update-a-custom-role"></a>Özel rolü güncelleştirme
 
-1. Bu makalenin önceki kısımlarında açıklandığı gibi, özel roller listenizi açın.
+1. Bu makalede daha önce açıklandığı gibi, özel roller listenizi açın.
 
-1. Güncelleştirmek istediğiniz özel rolün üç nokta ( **...** ) simgesine tıklayın ve ardından **Düzenle**' ye tıklayın. Yerleşik rolleri güncelleştiremayacağınızı unutmayın.
+1. Güncelleştirmek istediğiniz özel rol için elipsis (**...**) 'yi tıklatın ve ardından **Edit'i**tıklatın. Yerleşik rolleri güncelleştiremezsiniz.
 
-    Özel rol düzenleyicide açılır.
+    Özel rol editörde açılır.
 
     ![Özel rol menüsü](./media/custom-roles-portal/edit-menu.png)
 
 1. Özel rolü güncelleştirmek için farklı sekmeleri kullanın.
 
-1. Değişikliklerinizi tamamladıktan sonra değişikliklerinizi gözden geçirmek için **gözden geçir + oluştur** sekmesine tıklayın.
+1. Değişikliklerinizi bitirdikten sonra, değişikliklerinizi gözden geçirmek için **Gözden Geçir + oluştur** sekmesini tıklatın.
 
-1. Özel rolünüzü güncelleştirmek için **Güncelleştir** düğmesine tıklayın.
+1. Özel rolünüzü güncellemek için **Güncelleştir** düğmesini tıklatın.
 
 ## <a name="delete-a-custom-role"></a>Özel rolü silme
 
-1. Bu makalenin önceki kısımlarında açıklandığı gibi, özel roller listenizi açın.
+1. Bu makalede daha önce açıklandığı gibi, özel roller listenizi açın.
 
-1. Özel rolü kullanan tüm rol atamalarını kaldırın.
+1. Özel rolü kullanarak tüm rol atamaları kaldırın.
 
-1. Silmek istediğiniz özel rolün üç nokta ( **...** ) simgesine tıklayın ve ardından **Sil**' e tıklayın.
+1. Silmek istediğiniz özel rol için elipsis (**...**) tuşuna basın ve sonra **Sil'i**tıklatın.
 
     ![Özel rol menüsü](./media/custom-roles-portal/delete-menu.png)
 
-    Özel rolünüzün tamamen silinmesi birkaç dakika sürebilir.
+    Özel rolünüzün tamamen silinmiş olması birkaç dakika sürebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Öğretici: Azure PowerShell kullanarak özel bir rol oluşturma](tutorial-custom-role-powershell.md)
+- [Öğretici: Azure PowerShell'i kullanarak özel bir rol oluşturma](tutorial-custom-role-powershell.md)
 - [Azure'da özel roller](custom-roles.md)
-- [Azure Resource Manager kaynak sağlayıcısı işlemleri](resource-provider-operations.md)
+- [Azure Kaynak Yöneticisi kaynak sağlayıcısı işlemleri](resource-provider-operations.md)

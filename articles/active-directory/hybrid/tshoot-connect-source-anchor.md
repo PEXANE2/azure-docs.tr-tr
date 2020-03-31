@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: Yükleme sırasında kaynak bağlantı sorunlarını giderme | Microsoft Docs'
-description: Bu konu, yükleme sırasında kaynak bağlantısı ile ilgili sorunları gidermek için adımları sağlar.
+title: 'Azure AD Connect: Yükleme sırasında Kaynak Bağlantı Sorunlarını Giderme | Microsoft Dokümanlar'
+description: Bu konu, yükleme sırasında kaynak bağlantı noktasıyla ilgili sorunları nasıl gidereceklerine yönelik adımlar sağlar.
 services: active-directory
 author: billmath
 manager: daveba
@@ -11,38 +11,38 @@ ms.date: 04/19/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.openlocfilehash: fac33a01afc2efc1ab06c4783c11f7a089bb6208
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "62114165"
 ---
-# <a name="troubleshooting-source-anchor-issues-during-installation"></a>Yükleme sırasında kaynak bağlantı sorunlarını giderme
-Bu makalede farklı açıklanmaktadır kaynak bağlantısı ilgili bu sorunları çözmek için yükleme ve teklifler yolları sırasında meydana gelebilecek sorunları.
+# <a name="troubleshooting-source-anchor-issues-during-installation"></a>Yükleme sırasında Kaynak Bağlantı Sorunları Giderme
+Bu makalede, yükleme sırasında oluşabilecek farklı kaynak bağlantı sorunları açıklanabilir ve bu sorunları çözmek için yollar sunar.
 
-## <a name="invalid-source-anchor-in-azure-active-directory"></a>Azure Active Directory'de geçersiz kaynak bağlantısı
+## <a name="invalid-source-anchor-in-azure-active-directory"></a>Azure Etkin Dizininde Geçersiz Kaynak Çapa
 
-### <a name="custom-installation"></a>Özel yükleme
+### <a name="custom-installation"></a>Özel Kurulum
 
-Özel yükleme sırasında Azure AD Connect, Azure Active Directory'den kaynak bağlantı İlkesi okur. Azure Active Directory'de bir ilke varsa Azure AD Connect müşteri tarafından geçersiz kılınmadığı sürece aynı ilke geçerlidir. Sihirbaz hangi özniteliğin okuma bildirir. Ayrıca, sihirbaz, kaynak bağlantı ilkesi geçersiz kılmak deneyin sizi uyarır.
+Azure AD Connect, özel yükleme sırasında Azure Active Directory'deki kaynak bağlantı ilkesini okur. İlke Azure Etkin Dizini'nde varsa, Azure AD Connect müşteri tarafından geçersiz kılınmadığı sürece aynı ilkeyi uygular. Sihirbaz, hangi özniteliğin okunduğunu bildirir. Ayrıca, kaynak bağlantı ilkesini geçersiz kılmaya çalışırsanız sihirbaz uyarır.
 
-Bu okuma işlemi sırasında Azure Active Directory'de kaynak bağlantı İlkesi beklenmiyor mümkündür. Bu durumda, Azure AD Connect, hangi kaynak bağlantısı kullanmayı bilmeyen ve el ile geçersiz kılma gerekiyor.</br>
-![beklenmeyen](media/tshoot-connect-source-anchor/source1.png)
+Bu okuma işlemi sırasında, Azure Etkin Dizin'deki kaynak bağlantı ilkesinin beklenmeyen olması mümkündür. Bu durumda, Azure AD Connect hangi kaynak çapanın kullanılacağını bilmiyor ve el ile geçersiz kılmaya ihtiyacı var.</br>
+![Beklen -medik](media/tshoot-connect-source-anchor/source1.png)
 
-Bu sorunu çözmek için el ile kaynak bağlantısını belirli bir öznitelik seçerek geçersiz kılabilirsiniz. Bu seçenekle belirli ve yalnızca, hangi özniteliğinin seçin. Emin değilseniz, kişi [Microsoft Destek](https://support.microsoft.com/contactus/) Kılavuzu. Kaynak bağlantı ilkeyi değiştirirseniz, şirket içi kullanıcılarınıza ve bunların ilişkili Azure kaynakları arasında ilişki bozabilir.</br>
-![beklenmeyen](media/tshoot-connect-source-anchor/source2.png)
+Bu sorunu gidermek için, belirli bir öznitelik seçerek kaynak çapa el ile geçersiz kılabilirsiniz. Seçmek için hangi öznitelik emin seniz ve sadece bu seçeneği ile devam edin. Emin değilseniz, rehberlik için [Microsoft desteğine](https://support.microsoft.com/contactus/) başvurun. Kaynak bağlantı ilkesini değiştirirseniz, şirket içi kullanıcılarınızla ilişkili Azure kaynakları arasındaki ilişkiyi bozabilir.</br>
+![Beklen -medik](media/tshoot-connect-source-anchor/source2.png)
 
-### <a name="express-installation"></a>Hızlı yükleme
-Hızlı yükleme sırasında Azure AD Connect, Azure Active Directory'den kaynak bağlantı İlkesi okur. Azure Active Directory'de bir ilke varsa Azure AD Connect aynı ilke geçerlidir. El ile geçersiz kılma yapmak için seçeneği yoktur.
+### <a name="express-installation"></a>Ekspres Kurulum
+Azure AD Connect, ekspres yükleme sırasında Azure Active Directory'deki kaynak bağlantı ilkesini okur. İlke Azure Etkin Dizini'nde varsa, Azure AD Connect aynı ilkeyi uygular. El ile geçersiz kılma seçeneği yoktur.
 
-Bu okuma işlemi sırasında Azure Active Directory'de kaynak bağlantı İlkesi beklenmiyor mümkündür. Bu durumda, Azure AD Connect kaynak bağlantısı olması gereken bilmez.</br>
-![beklenmeyen](media/tshoot-connect-source-anchor/source3.png)
+Bu okuma işlemi sırasında, Azure Etkin Dizin'deki kaynak bağlantı ilkesinin beklenmeyen olması mümkündür. Bu durumda, Azure AD Connect kaynak çapanın ne olması gerektiğini bilmez.</br>
+![Beklen -medik](media/tshoot-connect-source-anchor/source3.png)
 
-Bu sorunu çözmek için özel bir modunu kullanarak yeniden yükleyin ve el ile kaynak bağlantısı, belirli bir öznitelik seçerek yok saymak gerekir. Bu seçenekle belirli ve yalnızca, hangi özniteliğinin seçin. Emin değilseniz, kişi [Microsoft Destek](https://support.microsoft.com/contactus/) Kılavuzu. Kaynak bağlantı ilkeyi değiştirirseniz, şirket içi kullanıcılarınıza ve bunların ilişkili Azure kaynakları arasında ilişki bozabilir.
+Bu sorunu gidermek için, özel modu kullanarak yeniden yüklemeniz ve belirli bir öznitelik seçerek kaynak bağlantı sını el ile geçersiz kılmanız gerekir. Seçmek için hangi öznitelik emin seniz ve sadece bu seçeneği ile devam edin. Emin değilseniz, rehberlik için [Microsoft desteğine](https://support.microsoft.com/contactus/) başvurun. Kaynak bağlantı ilkesini değiştirirseniz, şirket içi kullanıcılarınızla ilişkili Azure kaynakları arasındaki ilişkiyi bozabilir.
 
-### <a name="invalid-source-anchor-in-sync-engine"></a>Eşitleme altyapısındaki geçersiz kaynak bağlantısı
-İsteğe bağlı olarak yükleme sırasında olası bir Azure AD, bir geçersiz kaynak bağlantısı kullanılarak eşitleme altyapısını yapılandırma girişimleri bağlanın. Bu işlem, büyük olasılıkla bir ürün sorunu olur ve Azure AD Connect yüklemesi başarısız olur. İlgili kişi [Microsoft Destek](https://support.microsoft.com/contactus/) bu soruna çalıştırırsanız.</br>
-![beklenmeyen](media/tshoot-connect-source-anchor/source4.png)
+### <a name="invalid-source-anchor-in-sync-engine"></a>Eşitleme Motorunda Geçersiz Kaynak Çapa
+Yükleme sırasında, Azure AD Connect'in eşitleme altyapısını geçersiz bir kaynak çapa kullanarak yapılandırmaya çalıştığı mümkündür. Bu işlem büyük olasılıkla bir ürün sorunudur ve Azure AD Connect'in yüklenmesi başarısız olur. Bu sorunla karşılaştıysanız [Microsoft desteğine](https://support.microsoft.com/contactus/) başvurun.</br>
+![Beklen -medik](media/tshoot-connect-source-anchor/source4.png)
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

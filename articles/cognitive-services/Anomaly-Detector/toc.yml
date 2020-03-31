@@ -50,7 +50,7 @@
       href: concepts/anomaly-detection-best-practices.md
 - name: Başvuru
   items:
-    - name: REST API’si Başvurusu
+    - name: REST API Başvurusu
       href: 'https://aka.ms/anomaly-detector-rest-api-ref'
     - name: SDK’lar
       items:
@@ -78,6 +78,16 @@
       href: 'https://arxiv.org/abs/1906.03821'
 - name: Kaynaklar
   items:
+    - name: Destek
+      items:
+        - name: Destek alın
+          href: 'https://aka.ms/adsupport'
+        - name: Stack Overflow
+          href: 'https://aka.ms/adso'
+        - name: MSDN
+          href: 'https://aka.ms/admsdn'
+        - name: User Voice
+          href: 'https://aka.ms/aduservoice'
     - name: Fiyatlandırma
       href: 'https://aka.ms/adpricing'
     - name: Bölgesel kullanılabilirlik
@@ -90,13 +100,3 @@
       href: 'https://azure.microsoft.com/solutions/architecture/anomaly-detector-process/'
     - name: Uyumluluk
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
-- name: Destek
-  items:
-    - name: Destek alın
-      href: 'https://aka.ms/adsupport'
-    - name: Stack Overflow
-      href: 'https://aka.ms/adso'
-    - name: MSDN
-      href: 'https://aka.ms/admsdn'
-    - name: User Voice
-      href: 'https://aka.ms/aduservoice'

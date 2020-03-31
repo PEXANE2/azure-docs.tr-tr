@@ -1,6 +1,6 @@
 ---
-title: HDInsight 'ta Hadoop ile ton Linux tabanlı kümeler-Azure
-description: HDInsight kümelerine ton yüklemeyi öğrenin ve istekleri tona yönlendirmek için Tüneli kullanın. Depolamaya gözatıp Hive veya Pig çalıştırmak için ton kullanın.
+title: HDInsight Linux tabanlı kümelerde Hadoop ile Hue - Azure
+description: Hue'yu HDInsight kümelerine nasıl yükleyin ve istekleri Hue'ye yönlendirmek için tünel kazmayı kullanmayı öğrenin. Depolama alanına göz atmak ve Kovan veya Domuz'u çalıştırmak için Hue'yu kullanın.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,122 +9,122 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/28/2019
 ms.openlocfilehash: 69acfd4f2edab9be1b1dcfbb52eafbd00aec712f
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75934574"
 ---
-# <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>HDInsight Hadoop kümelerinde ton 'u yükleyip kullanma
+# <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>HDInsight Hadoop kümelerinde Hue'yi yükleyin ve kullanın
 
-HDInsight kümelerine ton yüklemeyi öğrenin ve istekleri tona yönlendirmek için Tüneli kullanın.
+Hue'yu HDInsight kümelerine nasıl yükleyin ve istekleri Hue'ye yönlendirmek için tünel kazmayı kullanmayı öğrenin.
 
-## <a name="what-is-hue"></a>Ton nedir?
+## <a name="what-is-hue"></a>Hue nedir?
 
-Ton Apache Hadoop bir kümeyle etkileşim kurmak için kullanılan bir Web uygulamaları kümesidir. Bir Hadoop kümesiyle ilişkili depolamaya (HDInsight kümeleri söz konusu olduğunda, Hive işleri ve Pig betikleri) ve bu şekilde devam etmek için ton kullanabilirsiniz. Aşağıdaki bileşenler bir HDInsight Hadoop kümesindeki ton yüklemeleri ile kullanılabilir.
+Hue, Apache Hadoop kümesiyle etkileşim kurmak için kullanılan bir Web uygulamaları kümesidir. Bir Hadoop kümesiyle ilişkili depolama alanına göz atmak için Hue'yi kullanabilirsiniz (WASB, HDInsight kümeleri durumunda), Kovan işleri ve Pig komut dosyaları çalıştırın, vb. Aşağıdaki bileşenler, HDInsight Hadoop kümesindeki Hue yüklemeleri ile kullanılabilir.
 
-* Beeswax Hive Düzenleyicisi
-* Apache Pig
-* Meta veri deposu Yöneticisi
-* Apache Oozie
-* FileBrowser (varsayılan kapsayıcı ile iletişim kuran)
-* İş tarayıcısı
+* Balmumu Kovan Editörü
+* Apaçi Domuz
+* Metastore yöneticisi
+* Apaçi Oozie
+* FileBrowser (WASB varsayılan kapsayıcı için görüşmeler)
+* İş Tarayıcısı
 
 > [!WARNING]  
-> HDInsight kümesiyle sağlanan bileşenler tam olarak desteklenir ve Microsoft Desteği bu bileşenlerle ilgili sorunları yalıtmaya ve çözmeye yardımcı olur.
+> HDInsight kümesiyle sağlanan bileşenler tam olarak desteklenir ve Microsoft Desteği bu bileşenlerle ilgili sorunları yalıtmak ve çözmeye yardımcı olur.
 >
-> Özel bileşenler, sorunu gidermeye yardımcı olmak için ticari açıdan makul destek alır. Bu durum sorunu çözmeye veya bu teknolojinin derin uzmanlığı bulunan açık kaynaklı teknolojiler için kullanılabilir kanalları size sormaya neden olur. Örneğin, şu şekilde kullanılabilecek birçok topluluk sitesi vardır: [HDInsight Için MSDN Forumu](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [https://stackoverflow.com](https://stackoverflow.com). Ayrıca Apache projelerinin [https://apache.org](https://apache.org)proje siteleri vardır, örneğin: [Hadoop](https://hadoop.apache.org/).
+> Özel bileşenler, sorunu daha fazla gidermenize yardımcı olmak için ticari olarak makul destek alır. Bu, sorunun çözülmesiyle veya bu teknoloji için derin uzmanlık bulunan açık kaynak teknolojileri için kullanılabilir kanallardan bağlantı kurmanızı istemesiyle sonuçlanabilir. Örneğin, kullanılabilir birçok topluluk sitesi vardır, örneğin: [HDInsight için MSDN forumu](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [https://stackoverflow.com](https://stackoverflow.com). Ayrıca Apache projeleri, [https://apache.org](https://apache.org)örneğin proje siteleri var: [Hadoop](https://hadoop.apache.org/).
 
-## <a name="install-hue-using-script-actions"></a>Betik eylemlerini kullanarak ton yüklemesi
+## <a name="install-hue-using-script-actions"></a>Komut Dosyası Eylemlerini Kullanarak Ton Yükleme
 
-Betik eyleminiz için aşağıdaki tablodaki bilgileri kullanın. Betik eylemlerini kullanma hakkında belirli yönergeler için bkz. [HDInsight kümelerini betik eylemleriyle özelleştirme](hdinsight-hadoop-customize-cluster-linux.md) .
+Komut Dosyası Eyleminiz için aşağıdaki tablodaki bilgileri kullanın. Komut Dosyası Eylemleri'ni kullanma yla ilgili belirli yönergeler için [KOMUT Dosyası Eylemleri ile HDInsight kümelerini özelleştir'e](hdinsight-hadoop-customize-cluster-linux.md) bakın.
 
 > [!NOTE]  
-> HDInsight kümelerine ton yüklemek için önerilen baş düğüm boyutu en az A4 (8 çekirdek, 14 GB bellek) olur.
+> Hue'yu HDInsight kümelerine yüklemek için önerilen kafa düğümü boyutu en az A4 'dür (8 çekirdek, 14 GB bellek).
 
 |Özellik |Değer |
 |---|---|
-|Betik türü:|-Özel|
-|Ad|Hue yükleme|
-|Bash betiği URI 'SI|`https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh`|
-|Düğüm türleri:|Baş|
+|Komut dosyası türü:|- Özel|
+|Adı|Ton Yükle|
+|Bash script URI|`https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh`|
+|Düğüm türü(ler):|Head|
 
-## <a name="use-hue-with-hdinsight-clusters"></a>HDInsight kümeleriyle ton kullanma
+## <a name="use-hue-with-hdinsight-clusters"></a>HDInsight kümeleriyle Hue'yi kullanma
 
-SSH tüneli, bir kez çalışmaya başladıktan sonra, kümedeki tona erişmenin tek yoludur. SSH aracılığıyla tünel oluşturma, trafiğin ton 'un çalıştığı kümenin baş düğümüne doğrudan geçmesine izin verir. Kümenin hazırlanması tamamlandıktan sonra, bir HDInsight kümesinde ton kullanmak için aşağıdaki adımları kullanın.
+SSH Tünelleme, kümedeki Tona erişebilmek için tek yoldur. SSH üzerinden tünel yapmak, trafiğin doğrudan Hue'nin çalıştığı kümenin headnode'una gitmesini sağlar. Küme sağlama yı bitirdikten sonra, Bir HDInsight kümesinde Hue'yu kullanmak için aşağıdaki adımları kullanın.
 
 > [!NOTE]  
-> Aşağıdaki yönergeleri izlemek için Firefox Web tarayıcısının kullanılması önerilir.
+> Aşağıdaki talimatları takip etmek için Firefox web tarayıcısını kullanmanızı öneririz.
 
-1. [Apache ambarı Web UI, ResourceManager, JobHistory, süs Code, Oozie ve diğer Web Kullanıcı arabirimine erişmek IÇIN SSH tüneli kullanma](hdinsight-linux-ambari-ssh-tunnel.md) bölümündeki bilgileri kullanarak Istemci sisteminizden HDInsight KÜMESINE bir SSH tüneli oluşturun ve ardından Web tarayıcınızı bir proxy olarak SSH tüneli kullanacak şekilde yapılandırın.
+1. [Apache Ambari web Kullanıcı Arabirimi, ResourceManager, JobHistory, NameNode, Oozie ve diğer web Kullanıcı Arabirimi'ne erişmek için SSH Tünel](hdinsight-linux-ambari-ssh-tunnel.md) oluşturmayı kullanarak istemci sisteminizden HDInsight kümesine bir SSH tüneli oluşturun ve ardından Web tarayıcınızı proxy olarak kullanacak şekilde yapılandırın.
 
-1. Kümenize bağlanmak için [SSH komutunu](./hdinsight-hadoop-linux-use-ssh-unix.md) kullanın. CLUSTERNAME öğesini kümenizin adıyla değiştirerek aşağıdaki komutu düzenleyin ve ardından şu komutu girin:
+1. Kümenize bağlanmak için [ssh komutunu](./hdinsight-hadoop-linux-use-ssh-unix.md) kullanın. CLUSTERNAME'yi kümenizin adıyla değiştirerek aşağıdaki komutu düzenleme ve ardından komutu girin:
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-1. Bağlandıktan sonra, birincil headnode 'un tam etki alanı adını almak için aşağıdaki komutu kullanın:
+1. Bağlandıktan sonra, birincil başlığın tam nitelikli etki alanı adını elde etmek için aşağıdaki komutu kullanın:
 
     ```bash
     hostname -f
     ```
 
-    Bu, aşağıdakine benzer bir ad döndürür:
+    Bu, aşağıdakilere benzer bir ad döndürecektir:
 
         myhdi-nfebtpfdv1nubcidphpap2eq2b.ex.internal.cloudapp.net
 
-    Bu, ton Web sitesinin bulunduğu birincil yayın düğümünün ana bilgisayar adıdır.
+    Bu, Hue web sitesinin bulunduğu birincil başlık başlığının ana adıdır.
 
-1. `http://HOSTNAME:8888`' de ton Portalını açmak için tarayıcıyı kullanın. Ana BILGISAYAR adını önceki adımda edindiğiniz adla değiştirin.
+1. 'de `http://HOSTNAME:8888`Hue portalını açmak için tarayıcıyı kullanın. HOSTNAME'yi önceki adımda elde ettiğiniz adla değiştirin.
 
    > [!NOTE]  
-   > İlk kez oturum açtığınızda, ton portalında oturum açmak için bir hesap oluşturmanız istenir. Burada belirttiğiniz kimlik bilgileri portalla sınırlandırılır ve kümeyi sağlarken belirttiğiniz yönetici veya SSH kullanıcı kimlik bilgileriyle ilgili değildir.
+   > İlk kez oturum açtığınızda, Hue portalında oturum açmak için bir hesap oluşturmanız istenir. Burada belirttiğiniz kimlik bilgileri portalla sınırlı olacaktır ve kümeyi sağlarken belirttiğiniz yönetici veya SSH kullanıcı kimlik bilgileriyle ilgili değildir.
 
-    ![HDInsight ton portalı oturum açma penceresi](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-login.png "Ton portalı için kimlik bilgilerini belirtin")
+    ![HDInsight ton portalı giriş penceresi](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-login.png "Hue portalı için kimlik bilgilerini belirtin")
 
 ### <a name="run-a-hive-query"></a>Hive sorgusu çalıştırma
 
-1. Ton portalından **Sorgu Düzenleyicileri**' ni seçin ve Hive düzenleyicisini açmak için **Hive** ' ı seçin.
+1. Hue portalından **Sorgu Düzenleyicileri'ni**seçin ve ardından Hive düzenleyicisini açmak için **Hive'ı** seçin.
 
-    ![HDInsight ton portalı Hive düzenleyicisini kullanma](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-use-hive.png "Hive kullanma")
+    ![HDInsight ton portalı kullanım kovan editörü](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-use-hive.png "Kovan kullanın")
 
-2. **Yardım** sekmesinde, **veritabanı**altında, **hivesampletable**' ı görmeniz gerekir. Bu, HDInsight üzerinde tüm Hadoop kümeleriyle birlikte gelen örnek bir tablodur. Sağ bölmede örnek bir sorgu girin ve ekran yakalama bölümünde gösterildiği gibi aşağıdaki bölmedeki **sonuçlar** sekmesinde yer alan çıktıyı görüntüleyin.
+2. **Assist** sekmesinde, **Veritabanı**altında **kovan örneği tablosunu**görmeniz gerekir. Bu HDInsight tüm Hadoop kümeleri ile sevk bir örnek tablodur. Sağ bölmeye örnek bir sorgu girin ve ekran yakalamada gösterildiği gibi aşağıdaki bölmedeki **Sonuçlar** sekmesinde çıktıyı görün.
 
-    ![HDInsight ton portalı Hive sorgusu](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-hive-query.png "Hive sorgusu Çalıştır")
+    ![HDInsight hue portal kovan sorgusu](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-hive-query.png "Kovan sorgusunu çalıştır")
 
-    Ayrıca, sonucun görsel gösterimini görmek için **grafik** sekmesini de kullanabilirsiniz.
+    Sonucun görsel bir temsilini görmek için **Grafik** sekmesini de kullanabilirsiniz.
 
-### <a name="browse-the-cluster-storage"></a>Küme depolamaya gözatamıyorum
+### <a name="browse-the-cluster-storage"></a>Küme depolama alanına göz atın
 
-1. Ton portalından, menü çubuğunun sağ üst köşesindeki **dosya tarayıcısı** ' nı seçin.
-2. Varsayılan olarak, dosya tarayıcısı **/User/MyUser** dizininde açılır. Yoldaki Kullanıcı dizininden, kümeyle ilişkili Azure depolama kapsayıcısının köküne gitmek için hemen eğik çizgi seçin.
+1. Hue portalından, menü çubuğunun sağ üst köşesinde **Dosya Tarayıcısı'nı** seçin.
+2. Varsayılan olarak dosya tarayıcısı **/user/myuser** dizininde açılır. Kümeyle ilişkili Azure depolama kapsayıcısının köküne gitmek için kullanıcı dizininden hemen önce ileri eğik çizgiyi seçin.
 
-    ![HDInsight ton portalı dosya tarayıcısı](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-file-browser.png "Dosya tarayıcısını kullan")
+    ![HDInsight renk portalı dosya tarayıcısı](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-file-browser.png "Dosya tarayıcısı kullanma")
 
-3. Kullanılabilir işlemleri görmek için bir dosyaya veya klasöre sağ tıklayın. Dosyaları geçerli dizine yüklemek için sağ köşedeki **karşıya yükle** düğmesini kullanın. Yeni dosya veya dizin oluşturmak için **Yeni** düğmesini kullanın.
+3. Kullanılabilir işlemleri görmek için bir dosyaveya klasöre sağ tıklayın. Dosyaları geçerli dizine yüklemek için sağ köşedeki **Yükle** düğmesini kullanın. Yeni dosyalar veya dizinler oluşturmak için **Yeni** düğmesini kullanın.
 
 > [!NOTE]  
-> Ton dosya tarayıcısı yalnızca HDInsight kümesiyle ilişkili varsayılan kapsayıcının içeriğini gösterebilir. Kümeyle ilişkili olabileceğiniz tüm ek depolama hesaplarına/kapsayıcılara dosya tarayıcısı kullanılarak erişilemeyecektir. Ancak, küme ile ilişkili ek kapsayıcılar her zaman Hive işleri için erişilebilir olacaktır. Örneğin, Hive düzenleyicide komut `dfs -ls wasbs://newcontainer@mystore.blob.core.windows.net` girerseniz, ek kapsayıcıların içeriğini de görebilirsiniz. Bu komutta **newcontainer** bir kümeyle ilişkili varsayılan kapsayıcı değildir.
+> Hue dosya tarayıcısı yalnızca HDInsight kümesiyle ilişkili varsayılan kapsayıcının içeriğini gösterebilir. Kümeyle ilişkili olabileceğiniz ek depolama hesapları/kapsayıcıları dosya tarayıcısı kullanılarak erişilemez. Ancak, kümeyle ilişkili ek kapsayıcılar Hive işleri için her zaman erişilebilir olacaktır. Örneğin, Hive düzenleyicisinde `dfs -ls wasbs://newcontainer@mystore.blob.core.windows.net` komutu girerseniz, ek kapsayıcıların içeriğini de görebilirsiniz. Bu komutta, **yeni kapsayıcı** bir küme ile ilişkili varsayılan kapsayıcı değildir.
 
 ## <a name="important-considerations"></a>Önemli noktalar
 
-1. Tonu yüklemek için kullanılan komut dosyası, yalnızca kümenin birincil yayın düğümüne yüklenir.
+1. Hue'yu yüklemek için kullanılan komut dosyası, yalnızca kümenin birincil headnode'una yükler.
 
-1. Yükleme sırasında, yapılandırmayı güncelleştirmek için birden çok Hadoop hizmeti (, YARN, MR2, Oozie) yeniden başlatılır. Komut dosyası ton yükleme işlemini tamamladıktan sonra, diğer Hadoop hizmetlerinin başlatılması biraz zaman alabilir. Bu, başlangıçta ton performansını etkileyebilir. Tüm hizmetler başlatıldıktan sonra ton tamamen işlevsel olur.
+1. Kurulum sırasında, yapılandırmayı güncelleştirmek için birden fazla Hadoop hizmeti (HDFS, YARN, MR2, Oozie) yeniden başlatılır. Komut dosyası Hue yüklemeyi bitirdikten sonra, diğer Hadoop hizmetlerinin başlatılması biraz zaman alabilir. Bu, başlangıçta Hue'nin performansını etkileyebilir. Tüm hizmetler başladığında, Hue tamamen işlevsel olacaktır.
 
-1. Ton, Hive için geçerli varsayılan olan Apache Tez işleri anlamaz. MapReduce 'yi Hive yürütme altyapısı olarak kullanmak istiyorsanız, komut dosyanızı komut dosyasında aşağıdaki komutu kullanacak şekilde güncelleştirin:
+1. Hue, Hive için geçerli varsayılan olan Apache Tez işlerini anlamıyor. MapReduce'ı Kovan yürütme motoru olarak kullanmak istiyorsanız, komut dosyanızdaki aşağıdaki komutu kullanmak için komut dosyasını güncelleştirin:
 
         set hive.execution.engine=mr;
 
-1. Linux kümeleriyle, Kaynak Yöneticisi ikincil üzerinde çalışırken hizmetlerinizin birincil baş düğümüne üzerinde çalıştığı bir senaryoya sahip olabilirsiniz. Bu tür bir senaryo, kümedeki çalışan işlerin ayrıntılarını görüntülemek için ton kullanılırken hatalara neden olabilirler (aşağıda gösterilen). Ancak, iş tamamlandığında iş ayrıntılarını görüntüleyebilirsiniz.
+1. Linux kümeleri ile, Kaynak Yöneticisi ikincil de çalışıyor olabilir iken hizmetlerinbirincil başlık üzerinde çalışan bir senaryo olabilir. Böyle bir senaryo, kümedeki RUNNING işlerinin ayrıntılarını görüntülemek için Hue'yu kullanırken hatalara (aşağıda gösterilmiştir) neden olabilir. Ancak, iş tamamlandığında iş ayrıntılarını görüntüleyebilirsiniz.
 
-   ![Ton portalı hatası örnek iletisi](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-error.png "Ton portalı hatası")
+   ![Ton portalı hatası örnek ileti](./media/hdinsight-hadoop-hue-linux/hdinsight-hue-portal-error.png "Ton portalı hatası")
 
-   Bunun nedeni bilinen bir sorundur. Geçici bir çözüm olarak, Active Kaynak Yöneticisi birincil headnode üzerinde de çalışacak şekilde ambarı değiştirin.
+   Bunun nedeni bilinen bir sorundur. Geçici çözüm olarak Ambari'yi değiştirin, böylece etkin Kaynak Yöneticisi de birincil başlıküzerinde çalışır.
 
-1. Bir ton, HDInsight kümeleri `wasbs://`kullanarak Azure Storage kullanırken Web 'e anlamıştır. Bu nedenle, komut dosyası eylemiyle kullanılan özel betik, bir Weblerile uyumlu bir hizmet olan WEBLERB 'yi yükleyerek. Bu nedenle, ton portalı bir yerde (farenizi **Dosya tarayıcısının**üzerine getirdiğinizde olduğu gibi), o da, It b olarak yorumlanmalıdır.
+1. HDInsight kümeleri Azure Depolama'yı kullanarak `wasbs://`kullanırken Hue WebHDFS'yi anlıyor. Yani, komut dosyası eylem ile kullanılan özel komut dosyası WASB konuşmak için bir WebHDFS uyumlu bir hizmettir WebWasb yükler. Bu nedenle, Hue portalı yerlerde HDFS diyor olsa bile **(Dosya Tarayıcısı**üzerinde farenizi hareket ettirdiğinizde olduğu gibi), WASB olarak yorumlanmalıdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[HDInsight kümelerine R 'Yi yükler](hdinsight-hadoop-r-scripts-linux.md). HDInsight Hadoop kümelerine R 'yi yüklemek için küme özelleştirmesi ' nı kullanın. R, istatistiksel bilgi işlem için açık kaynaklı bir dildir ve ortamıdır. İşlevsel ve nesne odaklı programlamanın yönlerini birleştiren yüzlerce yerleşik istatistiksel işlev ve kendi programlama dili sağlar. Ayrıca kapsamlı grafik özellikleri de sağlar.
+[HDInsight kümelerine R yükleyin.](hdinsight-hadoop-r-scripts-linux.md) HDInsight Hadoop kümelerine R yüklemek için küme özelleştirmesini kullanın. R, istatistiksel bilgi işlem için açık kaynak kodlu bir dil ve ortamdır. Yüzlerce yerleşik istatistiksel işlev ve işlevsel ve nesne yönelimli programlama yönlerini birleştiren kendi programlama dili sağlar. Ayrıca kapsamlı grafik yetenekleri sağlar.

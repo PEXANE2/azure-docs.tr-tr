@@ -1,6 +1,6 @@
 ---
-title: Azure SQL veritabanı ve SQL Server Spark Bağlayıcısı
-description: Azure SQL veritabanı ve SQL Server Spark bağlayıcısını nasıl kullanacağınızı öğrenin
+title: Azure SQL Veritabanı ve SQL Server ile Kıvılcım Konektörü
+description: Azure SQL Veritabanı ve SQL Server için Kıvılcım Bağlayıcısını nasıl kullanacağınızı öğrenin
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -12,51 +12,51 @@ ms.author: denzilr
 ms.reviewer: carlrab
 ms.date: 09/25/2018
 ms.openlocfilehash: b22ec475c0281a54d65921bc450b35723aa23219
-ms.sourcegitcommit: 64def2a06d4004343ec3396e7c600af6af5b12bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77471661"
 ---
-# <a name="accelerate-real-time-big-data-analytics-with-spark-connector-for-azure-sql-database-and-sql-server"></a>Azure SQL veritabanı ve SQL Server için Spark Connector ile gerçek zamanlı büyük veri analizlerini hızlandırma
+# <a name="accelerate-real-time-big-data-analytics-with-spark-connector-for-azure-sql-database-and-sql-server"></a>Azure SQL Veritabanı ve SQL Server için Spark konektörü ile gerçek zamanlı büyük veri analitiğini hızlandırın
 
-Azure SQL veritabanı ve SQL Server Spark Bağlayıcısı, Azure SQL veritabanı ve SQL Server dahil olmak üzere SQL veritabanlarının, Spark işleri için giriş veri kaynağı veya çıkış veri havuzu olarak çalışmasını sağlar. Büyük veri analizindeki gerçek zamanlı işlem verilerini kullanmanızı ve geçici sorgular veya raporlama sonuçlarını kalıcı hale getirme olanağı sağlar. Yerleşik JDBC Bağlayıcısı ile karşılaştırıldığında, bu bağlayıcı, verileri SQL veritabanlarına toplu olarak ekleme olanağı sunar. Satır ekleyerek 10 kat daha hızlı performans ile 20 kat daha hızlı performans sağlayabilir. Azure SQL veritabanı ve SQL Server Spark Bağlayıcısı AAD kimlik doğrulamasını da destekler. AAD hesabınızı kullanarak Azure Databricks Azure SQL veritabanınıza güvenli bir şekilde bağlanmanızı sağlar. Yerleşik JDBC Bağlayıcısı ile benzer arabirimler sağlar. Mevcut Spark işlerinizin bu yeni bağlayıcıyı kullanmak için geçirilmesi kolaydır.
+Azure SQL Veritabanı ve SQL Server için Spark bağlayıcısı, Azure SQL Veritabanı ve SQL Server da dahil olmak üzere SQL veritabanlarının Spark işleri için giriş veri kaynağı veya çıktı veri stoğu görevi görebilmesini sağlar. Büyük veri analitiğinde gerçek zamanlı işlem verilerini kullanmanıza ve geçici sorgular veya raporlama için sonuçları kalıcı hale getirmek için izin verir. Yerleşik JDBC bağlayıcısı ile karşılaştırıldığında, bu bağlayıcı SQL veritabanlarına veri toplu ekleme yeteneği sağlar. 10x ila 20x daha hızlı performans ile satır satır ekleme daha iyi performans gösterebilirsiniz. Azure SQL Veritabanı ve SQL Server için Kıvılcım bağlayıcısı da AAD kimlik doğrulamasını destekler. AAD hesabınızı kullanarak Azure Databricks'ten Azure SQL veritabanınıza güvenli bir şekilde bağlanmanızı sağlar. Yerleşik JDBC konektörü ile benzer arabirimler sağlar. Bu yeni bağlayıcıyı kullanmak için varolan Spark işlerinizi geçirmek kolaydır.
 
 ## <a name="download"></a>İndirme
-Başlamak için, GitHub 'daki [Azure-SQLDB-Spark deposundan](https://github.com/Azure/azure-sqldb-spark) Spark ' ı SQL DB bağlayıcısına indirin.
+Başlamak için GitHub'daki [azure-sqldb-spark deposundan](https://github.com/Azure/azure-sqldb-spark) Sql DB konektörüne Spark'ı indirin.
 
-## <a name="official-supported-versions"></a>Resmi desteklenen sürümler
+## <a name="official-supported-versions"></a>Resmi Desteklenen Sürümler
 
 | Bileşen                            | Sürüm                  |
 | :----------------------------------- | :----------------------- |
-| Apache Spark                         | 2.0.2 veya üzeri           |
-| Scala                                | 2,10 veya üzeri            |
-| SQL Server için Microsoft JDBC sürücüsü | 6,2 veya üzeri             |
-| Microsoft SQL Server                 | SQL Server 2008 veya üzeri |
+| Apache Spark                         | 2.0.2 veya sonrası           |
+| Scala                                | 2.10 veya sonrası            |
+| SQL Server için Microsoft JDBC sürücüsü | 6.2 veya sonrası             |
+| Microsoft SQL Server                 | SQL Server 2008 veya üstü |
 | Azure SQL Veritabanı                   | Destekleniyor                |
 
-Azure SQL veritabanı ve SQL Server Spark Bağlayıcısı, verileri Spark çalışan düğümleri ve SQL veritabanları arasında taşımak için SQL Server Microsoft JDBC sürücüsü kullanır:
+Azure SQL Veritabanı ve SQL Server için Spark bağlayıcısı, verileri Spark alt düğümleri ve SQL veritabanları arasında taşımak için SQL Server için Microsoft JDBC Driver'ı kullanır:
  
 Veri akışı aşağıdaki gibidir:
-1. Spark ana düğümü SQL Server veya Azure SQL veritabanı 'na bağlanır ve verileri belirli bir tablodan veya belirli bir SQL sorgusunu kullanarak yükler
-2. Spark ana düğümü, dönüştürme için verileri çalışan düğümlerine dağıtır. 
-3. Çalışan düğümü SQL Server veya Azure SQL veritabanı 'na bağlanır ve veritabanına veri yazar. Kullanıcı, satır satır ekleme veya toplu ekleme kullanmayı seçebilir.
+1. Spark ana düğümü SQL Server veya Azure SQL Veritabanı'na bağlanır ve belirli bir tablodan veya belirli bir SQL sorgusukullanarak verileri yükler
+2. Spark ana düğümü dönüştürme için alt düğümlere veri dağıtır. 
+3. İşçi düğümü SQL Server veya Azure SQL Veritabanı'na bağlanır ve veritabanına veri yazar. Kullanıcı satır satır ekleme veya toplu ekleme kullanmayı seçebilir.
 
-Aşağıdaki diyagramda veri akışı gösterilmektedir.
+Aşağıdaki diyagram veri akışını göstermektedir.
 
-   ![mimari](./media/sql-database-spark-connector/architecture.png)
+   ![architecture](./media/sql-database-spark-connector/architecture.png)
 
-### <a name="build-the-spark-to-sql-db-connector"></a>Spark 'ı SQL DB bağlayıcısına oluşturma
-Şu anda bağlayıcı projesi Maven kullanır. Bağlayıcıyı bağımlılıklar olmadan derlemek için şunu çalıştırabilirsiniz:
+### <a name="build-the-spark-to-sql-db-connector"></a>Kıvılcımdan SQL DB konektörüne oluşturun
+Şu anda, bağlayıcı proje maven kullanır. Bağlayıcıyı bağımlılık olmadan oluşturmak için şunları çalıştırabilirsiniz:
 
-- MVN Temizleme paketi
-- Yayın klasöründen JAR 'nin en son sürümlerini indirin
-- SQL DB Spark JAR 'i ekleme
+- mvn temiz paket
+- JAR'ın en son sürümlerini sürüm klasöründen indirin
+- SQL DB Kıvılcım JAR'ı ekleyin
 
-## <a name="connect-spark-to-sql-db-using-the-connector"></a>Bağlayıcıyı kullanarak Spark 'ı SQL DB 'ye bağlama
-Azure SQL veritabanı 'na veya Spark işlerinin SQL Server bağlanabilir, verileri okuyabilir veya yazabilirsiniz. Ayrıca, bir Azure SQL veritabanında veya SQL Server veritabanında DML veya DDL sorgusu da çalıştırabilirsiniz.
+## <a name="connect-spark-to-sql-db-using-the-connector"></a>Konektörü kullanarak Spark'ı SQL DB'ye bağlayın
+Spark işlerinden Azure SQL Veritabanı'na veya SQL Server'a bağlanabilir, veri okuyabilir veya yazabilirsiniz. Bir Azure SQL veritabanında veya SQL Server veritabanında bir DML veya DDL sorgusu da çalıştırabilirsiniz.
 
-### <a name="read-data-from-azure-sql-database-or-sql-server"></a>Azure SQL veritabanı veya SQL Server verilerini okuyun
+### <a name="read-data-from-azure-sql-database-or-sql-server"></a>Azure SQL Veritabanı veya SQL Server'daki verileri okuma
 
 ```scala
 import com.microsoft.azure.sqldb.spark.config.Config
@@ -75,7 +75,7 @@ val config = Config(Map(
 val collection = sqlContext.read.sqlDB(config)
 collection.show()
 ```
-### <a name="reading-data-from-azure-sql-database-or-sql-server-with-specified-sql-query"></a>Azure SQL veritabanı 'ndan veya belirtilen SQL sorgusuyla SQL Server veri okuma
+### <a name="reading-data-from-azure-sql-database-or-sql-server-with-specified-sql-query"></a>Belirtilen SQL sorgusuyla Azure SQL Veritabanı veya SQL Server'dan veri okuma
 ```scala
 import com.microsoft.azure.sqldb.spark.config.Config
 import com.microsoft.azure.sqldb.spark.connect._
@@ -93,7 +93,7 @@ val collection = sqlContext.read.sqlDB(config)
 collection.show()
 ```
 
-### <a name="write-data-to-azure-sql-database-or-sql-server"></a>Verileri Azure SQL veritabanı 'na veya SQL Server yazma
+### <a name="write-data-to-azure-sql-database-or-sql-server"></a>Azure SQL Veritabanı'na veya SQL Server'a veri yazma
 ```scala
 import com.microsoft.azure.sqldb.spark.config.Config
 import com.microsoft.azure.sqldb.spark.connect._
@@ -112,7 +112,7 @@ import org.apache.spark.sql.SaveMode
 collection.write.mode(SaveMode.Append).sqlDB(config)
 ```
 
-### <a name="run-dml-or-ddl-query-in-azure-sql-database-or-sql-server"></a>Azure SQL veritabanı 'nda DML veya DDL sorgusu çalıştırın veya SQL Server
+### <a name="run-dml-or-ddl-query-in-azure-sql-database-or-sql-server"></a>Azure SQL Veritabanı veya SQL Server'da DML veya DDL sorgusu nu çalıştırma
 ```scala
 import com.microsoft.azure.sqldb.spark.config.Config
 import com.microsoft.azure.sqldb.spark.query._
@@ -133,11 +133,11 @@ val config = Config(Map(
 sqlContext.sqlDBQuery(config)
 ```
 
-## <a name="connect-spark-to-azure-sql-database-using-aad-authentication"></a>AAD kimlik doğrulaması kullanarak Spark 'ı Azure SQL veritabanı 'na bağlama
-Azure SQL veritabanı 'na Azure Active Directory (AAD) kimlik doğrulaması kullanarak bağlanabilirsiniz. Veritabanı kullanıcılarının kimliklerini merkezi olarak yönetmek için AAD kimlik doğrulamasını kullanın ve SQL Server kimlik doğrulamasına alternatif olarak.
-### <a name="connecting-using-activedirectorypassword-authentication-mode"></a>ActiveDirectoryPassword kimlik doğrulama modunu kullanarak bağlanma
-#### <a name="setup-requirement"></a>Kurulum gereksinimi
-ActiveDirectoryPassword kimlik doğrulama modunu kullanıyorsanız, [Azure-ActiveDirectory-Library-for-Java](https://github.com/AzureAD/azure-activedirectory-library-for-java) ve bağımlılıklarını Indirmeniz ve Java derleme yoluna dahil etmeniz gerekir.
+## <a name="connect-spark-to-azure-sql-database-using-aad-authentication"></a>AAD kimlik doğrulamasını kullanarak Spark'ı Azure SQL Veritabanına bağlayın
+Azure Active Directory (AAD) kimlik doğrulamasını kullanarak Azure SQL Veritabanı'na bağlanabilirsiniz. Veritabanı kullanıcılarının kimliklerini merkezi olarak yönetmek ve SQL Server kimlik doğrulamasına alternatif olarak AAD kimlik doğrulamasını kullanın.
+### <a name="connecting-using-activedirectorypassword-authentication-mode"></a>ActiveDirectoryPassword Kimlik Doğrulama Modu kullanarak bağlanma
+#### <a name="setup-requirement"></a>Kurulum Gereksinimi
+ActiveDirectoryPassword kimlik doğrulama modunu kullanıyorsanız, [azure-activedirectory-library-for-java](https://github.com/AzureAD/azure-activedirectory-library-for-java) ve bağımlılıklarını indirmeniz ve bunları Java yapı yoluna eklemeniz gerekir.
 
 ```scala
 import com.microsoft.azure.sqldb.spark.config.Config
@@ -156,11 +156,11 @@ val collection = sqlContext.read.sqlDB(config)
 collection.show()
 ```
 
-### <a name="connecting-using-access-token"></a>Erişim belirteci kullanarak bağlanma
-#### <a name="setup-requirement"></a>Kurulum gereksinimi
-Erişim belirteci tabanlı kimlik doğrulama modunu kullanıyorsanız, [Azure-ActiveDirectory-Library-for-Java](https://github.com/AzureAD/azure-activedirectory-library-for-java) ve bağımlılıklarını indirmeniz ve bunları Java derleme yoluna eklemeniz gerekir.
+### <a name="connecting-using-access-token"></a>Access Token kullanarak bağlanma
+#### <a name="setup-requirement"></a>Kurulum Gereksinimi
+Access token tabanlı kimlik doğrulama modunu kullanıyorsanız, [azure-activedirectory-library-for-java](https://github.com/AzureAD/azure-activedirectory-library-for-java) ve bağımlılıklarını indirmeniz ve bunları Java yapı yoluna eklemeniz gerekir.
 
-Azure SQL veritabanınıza erişim belirtecini nasıl alabileceğinizi öğrenmek için bkz. [SQL veritabanı ile kimlik doğrulaması için Azure Active Directory kimlik doğrulaması kullanma](sql-database-aad-authentication.md) .
+Azure SQL veritabanınıza nasıl erişim elde edileceksiniz öğrenmek [için SQL Veritabanı ile kimlik doğrulama için Azure Active Directory Authentication'ı kullanın'](sql-database-aad-authentication.md) a bakın.
 
 ```scala
 import com.microsoft.azure.sqldb.spark.config.Config
@@ -178,8 +178,8 @@ val collection = sqlContext.read.sqlDB(config)
 collection.show()
 ```
 
-## <a name="write-data-to-azure-sql-database-or-sql-server-using-bulk-insert"></a>Toplu ekleme kullanarak Azure SQL veritabanı 'na veya SQL Server veri yazma
-Geleneksel JDBC Bağlayıcısı, verileri Azure SQL veritabanı 'na veya satır satır ekleme kullanarak SQL Server yazar. Toplu ekleme kullanarak SQL veritabanı 'na veri yazmak için Spark 'ı SQL DB Bağlayıcısı ' nı kullanabilirsiniz. Büyük veri kümelerini yüklerken yazma performansını önemli ölçüde geliştirir veya bir sütun deposu dizininin kullanıldığı tablolara veri yükleme.
+## <a name="write-data-to-azure-sql-database-or-sql-server-using-bulk-insert"></a>Toplu Ekleme'yi kullanarak verileri Azure SQL veritabanına veya SQL Server'a yazma
+Geleneksel jdbc bağlayıcısı, satır satır ekleme kullanarak verileri Azure SQL veritabanına veya SQL Server'a yazar. Toplu ekleme yi kullanarak SQL veritabanına veri yazmak için Spark to SQL DB bağlayıcısı kullanabilirsiniz. Büyük veri kümeleri yüklerken veya bir sütun deposu dizininin kullanıldığı tablolara veri yüklerken yazma performansını önemli ölçüde artırır.
 
 ```scala
 import com.microsoft.azure.sqldb.spark.bulkcopy.BulkCopyMetadata
@@ -212,10 +212,10 @@ df.bulkCopyToSqlDB(bulkCopyConfig, bulkCopyMetadata)
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Henüz yapmadıysanız Azure SQL veritabanı için Spark bağlayıcısını indirin ve [Azure-SQLDB-Spark GitHub deposundan](https://github.com/Azure/azure-sqldb-spark) SQL Server ve depodaki ek kaynakları keşfedebilirsiniz:
+Henüz yapmadıysanız, Azure SQL Veritabanı ve SQL Server için Spark konektörünü [azure-sqldb-spark GitHub deposundan](https://github.com/Azure/azure-sqldb-spark) indirin ve repo'daki ek kaynakları keşfedin:
 
-- [Örnek Azure Databricks Not defterleri](https://github.com/Azure/azure-sqldb-spark/tree/master/samples/notebooks)
-- [Örnek betikler (Scala)](https://github.com/Azure/azure-sqldb-spark/tree/master/samples/scripts)
+- [Azure Databricks dizüstü bilgisayarlarını örnekle](https://github.com/Azure/azure-sqldb-spark/tree/master/samples/notebooks)
+- [Örnek komut dosyaları (Scala)](https://github.com/Azure/azure-sqldb-spark/tree/master/samples/scripts)
 
-Ayrıca, [Apache Spark SQL, DataFrames ve veri kümeleri kılavuzunu](https://spark.apache.org/docs/latest/sql-programming-guide.html) ve [Azure Databricks belgelerini](https://docs.microsoft.com/azure/azure-databricks/)gözden geçirmek isteyebilirsiniz.
+[Ayrıca Apache Spark SQL, DataFrames ve Datasets Kılavuzu](https://spark.apache.org/docs/latest/sql-programming-guide.html) ve [Azure Databricks belgelerini](https://docs.microsoft.com/azure/azure-databricks/)de gözden geçirmek isteyebilirsiniz.
 

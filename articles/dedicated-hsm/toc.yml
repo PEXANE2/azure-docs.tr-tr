@@ -26,6 +26,8 @@
   items:
     - name: Dağıtım mimarisine karar verme
       href: deployment-architecture.md
+    - name: Sorun giderme
+      href: troubleshoot.md
 - name: Kaynaklar
   items:
     - name: Sık sorulan sorular

@@ -1,6 +1,6 @@
 ---
-title: Kuruluşunuz için Azure DevTest Labs benimseyin
-description: Bu makalede, kuruluşunuzda Azure DevTest Labs'i kullanarak için normatif bir Rehber sağlanır.
+title: Kuruluşunuz için Azure DevTest Labs'ı benimseyin
+description: Bu makalede, kuruluşunuzda Azure DevTest Labs kullanmak için açıklayıcı yönergeler sağlar.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -14,31 +14,31 @@ ms.date: 04/12/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: 32e828f420d41d7a67e4f41ac8a4a0698711ce2f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "64916399"
 ---
 # <a name="devtest-labs-in-the-enterprise"></a>Kuruluşta DevTest Labs
-Kuruluşların hızla nedeniyle bulut benimseme [avantajları](/azure/architecture/cloud-adoption/business-strategy/cloud-migration-business-case) çeviklik, esneklik ve ekonomik içerir. İlk adımları genellikle geliştirme ve test iş yüklerini. Azure DevTest Labs sağlar [özellikleri](devtest-lab-concepts.md) Kurumsal ve Destek avantajı [anahtar geliştirme/test senaryoları](devtest-lab-guidance-get-started.md).
+İşletmeler çeviklik, esneklik ve ekonomi gibi [avantajlar](/azure/architecture/cloud-adoption/business-strategy/cloud-migration-business-case) nedeniyle bulutu hızla benimsiyor. İlk adımlar genellikle geliştirme ve test iş yükleridir. Azure DevTest Labs, kuruluşa yarar sağlayan ve [anahtar geliştirme/test senaryolarını](devtest-lab-guidance-get-started.md)destekleyen [özellikler](devtest-lab-concepts.md) sağlar.
 
-İş yüklerini buluta geçirme kuruluşlar için yaygın endişeler şunlardır:
+İş yüklerini buluta geçiren işletmeler için sık karşılaşılan endişeler şunlardır:
 
-- [Geliştirme/test kaynaklarını güvenli hale getirme](devtest-lab-guidance-governance-policy-compliance.md)
-- [Yönetmek ve maliyetleri anlama](devtest-lab-guidance-governance-cost-ownership.md)
-- Kurumsal güvenlik ve uyumluluk ödün vermeden, geliştiriciler için Self Servis etkinleştirme
-- Otomatikleştirme ve DevTest Labs, ek senaryoları kaplayacak şekilde genişletme
-- [DevTest Labs tabanlı bir çözüm kaynakları binlerce ölçeklendirme](devtest-lab-guidance-scale.md)
-- [DevTest Labs, büyük ölçekli dağıtımlar](devtest-lab-guidance-orchestrate-implementation.md)
-- [Kavram kanıtı ile çalışmaya başlama](devtest-lab-guidance-orchestrate-implementation.md)
+- [Geliştirme/test kaynaklarının güvenliğini sağlama](devtest-lab-guidance-governance-policy-compliance.md)
+- [Maliyetleri yönetme ve anlama](devtest-lab-guidance-governance-cost-ownership.md)
+- Kurumsal güvenlik ve uyumluluködün vermeden geliştiriciler için self servis etkinleştirme
+- DevTest Laboratuvarlarını ek senaryoları kapsayacak şekilde otomatikleştirmek ve genişletmek
+- [Binlerce kaynağa DevTest Labs tabanlı çözüm ölçekleme](devtest-lab-guidance-scale.md)
+- [DevTest Labs'ın büyük ölçekli dağıtımları](devtest-lab-guidance-orchestrate-implementation.md)
+- [Konseptin kanıtıyla başlamak](devtest-lab-guidance-orchestrate-implementation.md)
 
 ## <a name="intended-audience"></a>Hedef kitle
-Bu belge kurumsal BT için olan planlayıcıları ve mimarları oluşturma ve dağıtımları gözden geçirme ve işlemleri gözlemledikten sorumlu yöneticileri. Bu makaleler, genel işlem ve önerilen tasarım ilkeleri vurgulayın. Sonuçta bir kuruluştaki Azure DevTest Labs benimseme sürücüleri bir güvenli, kararlı geliştirme/test ortamını yükseltme olmaktır.
+Bu dokümantasyon, dağıtımların oluşturulması ve gözden geçirilmesi ve operasyonların denetlenmesiyle sorumlu kurumsal BT planlamacıları, mimarlar ve yöneticiler içindir. Bu makaleler genel süreci ve önerilen tasarım ilkelerini vurgular. Amaç, azure devtest labs'ın bir kuruluş içinde benimsenmesini sağlayan güvenli ve istikrarlı bir geliştirme/test ortamını teşvik etmektir.
 
 ## <a name="enterprise-customers"></a>Kurumsal müşteriler
 
-Birçok geçerli DevTest Labs Kurumsal müşteriler, geliştirme ve test iş yükleri, kuruluşları için DevTest Labs başarıyla kullanın. [Daha fazla bilgi edinin](https://azure.microsoft.com/case-studies/?term=DevTest+labs).
+Birçok mevcut DevTest Labs kurumsal müşteri başarıyla geliştirme ve kuruluşlarında iş yüklerini test etmek için DevTest Labs kullanın. [Daha fazla bilgi edinin](https://azure.microsoft.com/case-studies/?term=DevTest+labs).
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Bir kuruluş için başvuru mimarisi](devtest-lab-reference-architecture.md)
+- [Bir kuruluş için referans mimarisi](devtest-lab-reference-architecture.md)

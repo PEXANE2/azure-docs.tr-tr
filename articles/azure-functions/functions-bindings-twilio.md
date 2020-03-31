@@ -1,43 +1,43 @@
 ---
-title: Azure Işlevleri Twilio bağlama
-description: Azure Işlevleri ile Twilio bağlamalarını nasıl kullanacağınızı anlayın.
+title: Azure Fonksiyonları Twilio bağlama
+description: Azure İşlevleriyle Twilio bağlamalarının nasıl kullanılacağını öğrenin.
 author: craigshoemaker
 ms.topic: reference
 ms.date: 07/09/2018
 ms.author: cshoe
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 1426d6e770cca566c4b77ca4742e2f8a0fbb5465
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76715069"
 ---
-# <a name="twilio-binding-for-azure-functions"></a>Azure Işlevleri için Twilio bağlama
+# <a name="twilio-binding-for-azure-functions"></a>Azure İşlevler için Twilio bağlama
 
-Bu makalede, Azure Işlevlerinde [Twilio](https://www.twilio.com/) bağlamaları kullanılarak nasıl metin iletileri gönderileceği açıklanır. Azure Işlevleri, Twilio için çıkış bağlamalarını destekler.
+Bu makalede, Azure İşlevleri'nde [Twilio](https://www.twilio.com/) bağlamaları kullanılarak metin iletilerinin nasıl gönderilen açıklanmaktadır. Azure Fonksiyonları, Twilio için çıktı bağlamaları destekler.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages---functions-1x"></a>Paketler - 1.x işlevleri
+## <a name="packages---functions-1x"></a>Paketler - Fonksiyonlar 1.x
 
-Twilio bağlamaları [Microsoft. Azure. WebJobs. Extensions. Twilio](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Twilio) NuGet paketi, sürüm 1. x içinde sağlanır. Paketin kaynak kodu, [Azure-WebJobs-SDK](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.Twilio/) GitHub deposundadır.
+Twilio ciltleri [Microsoft.Azure.WebJobs.Extensions.Twilio](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Twilio) NuGet paketi, sürüm 1.x'te sağlanır. Paketin kaynak kodu [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.Twilio/) GitHub deposundadır.
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
 
-## <a name="packages---functions-2x-and-higher"></a>Paketler-Işlevler 2. x ve üzeri
+## <a name="packages---functions-2x-and-higher"></a>Paketler - Fonksiyonlar 2.x ve üzeri
 
-Twilio bağlamaları [Microsoft. Azure. WebJobs. Extensions. Twilio](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Twilio) NuGet paketi, sürüm 3. x içinde sağlanır. Paketin kaynak kodu, [Azure-WebJobs-SDK](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/) GitHub deposundadır.
+Twilio ciltleri [Microsoft.Azure.WebJobs.Extensions.Twilio](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Twilio) NuGet paketi, sürüm 3.x'te sağlanır. Paketin kaynak kodu [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/) GitHub deposundadır.
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
 <a id="example"></a>
 
-## <a name="example---functions-2x-and-higher"></a>Örnek-Işlevler 2. x ve üzeri
+## <a name="example---functions-2x-and-higher"></a>Örnek - Fonksiyonlar 2.x ve üzeri
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
-Aşağıdaki örnek, bir kuyruk iletisi tarafından tetiklendiğinde kısa mesaj gönderen bir [ C# işlevi](functions-dotnet-class-library.md) gösterir.
+Aşağıdaki örnekte, bir sıra iletisi tarafından tetiklendiğinde kısa mesaj gönderen bir [C# işlevi](functions-dotnet-class-library.md) gösterilmektedir.
 
 ```cs
 using Microsoft.Azure.WebJobs;
@@ -68,15 +68,15 @@ namespace TwilioQueueOutput
 }
 ```
 
-Bu örnek, `TwilioSms` özniteliğini yöntem dönüş değeri ile kullanır. Diğer bir seçenek de `out CreateMessageOptions` parametresi veya `ICollector<CreateMessageOptions>` veya `IAsyncCollector<CreateMessageOptions>` parametresiyle özniteliği kullanmaktır.
+Bu örnek, `TwilioSms` yöntem iade değeri ile öznitelik kullanır. Bir alternatif bir `out CreateMessageOptions` parametre veya bir `ICollector<CreateMessageOptions>` veya `IAsyncCollector<CreateMessageOptions>` parametre ile öznitelik kullanmaktır.
 
-# <a name="c-scripttabcsharp-script"></a>[C#SCRIPT](#tab/csharp-script)
+# <a name="c-script"></a>[C# Komut Dosyası](#tab/csharp-script)
 
-Aşağıdaki örnek, bir *function. JSON* dosyasında Twilio çıkış bağlamasını ve bağlamayı kullanan bir [ C# betik işlevini](functions-reference-csharp.md) gösterir. İşlevi bir metin mesajı göndermek için bir `out` parametresi kullanır.
+Aşağıdaki örnek, *bir function.json* dosyasında bir Twilio çıktısı bağlama ve bağlamayı kullanan bir [C# komut dosyası işlevini](functions-reference-csharp.md) gösterir. İşlev, `out` kısa mesaj göndermek için bir parametre kullanır.
 
-İşte, *function. JSON* dosyasındaki veri bağlama:
+*Function.json* dosyasındaki bağlayıcı veriler aşağıda veda eder:
 
-Örnek Function. JSON:
+Örnek function.json:
 
 ```json
 {
@@ -90,7 +90,7 @@ Aşağıdaki örnek, bir *function. JSON* dosyasında Twilio çıkış bağlamas
 }
 ```
 
-C# Betik kodu aşağıdadır:
+İşte C# komut dosyası kodu:
 
 ```cs
 #r "Newtonsoft.Json"
@@ -122,7 +122,7 @@ public static void Run(string myQueueItem, out CreateMessageOptions message,  IL
 }
 ```
 
-Zaman uyumsuz kodda Out parametrelerini kullanamazsınız. Zaman uyumsuz C# betik kodu örneği:
+Parametreleri eşzamanlı kodda kullanamazsınız. Burada bir eşzamanlı C# komut dosyası kodu örneği:
 
 ```cs
 #r "Newtonsoft.Json"
@@ -156,13 +156,13 @@ public static async Task Run(string myQueueItem, IAsyncCollector<CreateMessageOp
 }
 ```
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
-Aşağıdaki örnek, bir *function. JSON* dosyasındaki Twilio çıkış bağlamasını ve bağlamayı kullanan bir [JavaScript işlevini](functions-reference-node.md) gösterir.
+Aşağıdaki örnek, *bir function.json* dosyasında bir Twilio çıktısı bağlama ve bağlamayı kullanan bir [JavaScript işlevini](functions-reference-node.md) gösterir.
 
-İşte, *function. JSON* dosyasındaki veri bağlama:
+*Function.json* dosyasındaki bağlayıcı veriler aşağıda veda eder:
 
-Örnek Function. JSON:
+Örnek function.json:
 
 ```json
 {
@@ -176,7 +176,7 @@ Aşağıdaki örnek, bir *function. JSON* dosyasındaki Twilio çıkış bağlam
 }
 ```
 
-JavaScript kod aşağıdaki gibidir:
+İşte JavaScript kodu:
 
 ```javascript
 module.exports = function (context, myQueueItem) {
@@ -201,9 +201,9 @@ module.exports = function (context, myQueueItem) {
 };
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
-Aşağıdaki örnek, aşağıdaki *function. js*' de tanımlanan çıktı bağlamasını kullanarak nasıl SMS iletisi gönderileceğini gösterir.
+Aşağıdaki örnek, aşağıdaki *function.js'de*tanımlandığı şekilde çıktı bağlamayı kullanarak SMS iletisinin nasıl gönderilecek olduğunu gösterir.
 
 ```json
     {
@@ -217,7 +217,7 @@ Aşağıdaki örnek, aşağıdaki *function. js*' de tanımlanan çıktı bağla
     }
 ```
 
-SMS iletisini göndermek için, seri hale getirilmiş bir JSON nesnesini `func.Out` parametresine geçirebilirsiniz.
+SMS iletisi göndermek için `func.Out` parametreye serileştirilmiş bir JSON nesnesi geçirebilirsiniz.
 
 ```python
 import logging
@@ -239,9 +239,9 @@ def main(req: func.HttpRequest, twilioMessage: func.Out[str]) -> func.HttpRespon
     return func.HttpResponse(f"Message sent")
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
-Aşağıdaki örnek, [TwilioSmsOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.twiliosmsoutput) ek açıklamanın SMS iletisi göndermek için nasıl kullanılacağını gösterir. `to`, `from`ve `body` değerleri, program aracılığıyla geçersiz kılsanız bile öznitelik tanımında gereklidir.
+Aşağıdaki örnek, SMS iletisi göndermek için [TwilioSmsOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.twiliosmsoutput) ek açıklamanın nasıl kullanılacağını gösterir. `to`' nin `from`değerleri `body` , ve öznitelik tanımında gerekli olan değerler, bunları programlı bir şekilde geçersiz kılsanız bile.
 
 ```java
 package com.function;
@@ -287,11 +287,11 @@ public class TwilioOutput {
 
 ## <a name="attributes-and-annotations"></a>Öznitelikler ve ek açıklamalar
 
-# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
-[ C# Sınıf kitaplıkları](functions-dotnet-class-library.md)' nda [TwilioSms](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/TwilioSMSAttribute.cs) özniteliğini kullanın.
+[C# sınıfı kitaplıklarda](functions-dotnet-class-library.md) [TwilioSms](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/TwilioSMSAttribute.cs) özniteliğini kullanın.
 
-Yapılandırabileceğiniz öznitelik özellikleri hakkında daha fazla bilgi için bkz. [yapılandırma](#configuration). Yöntem imzasında bir `TwilioSms` özniteliği örneği aşağıda verilmiştir:
+Yapılandırabileceğiniz öznitelik özellikleri hakkında bilgi için [yapılandırmaya](#configuration)bakın. Yöntem imzasında `TwilioSms` bir öznitelik örneği aşağıda verilmiştir:
 
 ```csharp
 [FunctionName("QueueTwilio")]
@@ -303,44 +303,44 @@ public static CreateMessageOptions Run(
 }
  ```
 
-Tüm örnek için bkz [ C# . örnek](#example).
+Tam bir örnek için [C# örneğine](#example)bakın.
 
-# <a name="c-scripttabcsharp-script"></a>[C#SCRIPT](#tab/csharp-script)
+# <a name="c-script"></a>[C# Komut Dosyası](#tab/csharp-script)
 
-Öznitelikler komut dosyası tarafından C# desteklenmiyor.
+Öznitelikler C# Script tarafından desteklenmez.
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 Öznitelikler JavaScript tarafından desteklenmez.
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 Öznitelikler Python tarafından desteklenmez.
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
-`T` [ek açıklamayı](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.twiliosmsoutput) , `int`, `String`, `byte[]`veya Pojo türü gibi herhangi bir yerel Java türü olabileceği bir [`OutputBinding<T>`](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.outputbinding) parametresine yerleştirin.
+[TwilioSmsOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.twiliosmsoutput) ek açıklamasını, [`OutputBinding<T>`](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.outputbinding) yani `T` `int` `String` `byte[]`POJO türü gibi herhangi bir yerel Java türü olabilecek bir parametreye yerleştirin.
 
 ---
 
 ## <a name="configuration"></a>Yapılandırma
 
-Aşağıdaki tabloda, *function. JSON* dosyasında ve `TwilioSms` özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır.
+Aşağıdaki *tabloda, function.json* dosyasında ayarladığınız bağlama `TwilioSms` yapılandırma özellikleri ve öznitelik açıklanmaktadır.
 
-| V1 function. JSON özelliği | v2 function. JSON özelliği | Öznitelik özelliği |Açıklama|
+| v1 function.json özelliği | v2 function.json özelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|---------|----------------------|
-|**type**|**type**| `twilioSms`olarak ayarlanmalıdır.|
-|**direction**|**direction**| `out`olarak ayarlanmalıdır.|
-|**ada**|**ada**| Twilio SMS metin mesajı için işlev kodunda kullanılan değişken adı. |
-|**accountSid**|**Accountsıdsetting**| **Accountsıdsetting**| Bu değer, Twilio hesabı SID 'nizi (`TwilioAccountSid`) tutan bir uygulama ayarının adına ayarlanmalıdır. Ayarlanmamışsa, varsayılan uygulama ayarı adı "AzureWebJobsTwilioAccountSid" olur. |
-|**authToken**|**authTokenSetting**|**AuthTokenSetting**| Bu değer, Twilio kimlik doğrulama belirtecinizi (`TwilioAccountAuthToken`) tutan bir uygulama ayarının adına ayarlanmalıdır. Ayarlanmamışsa, varsayılan uygulama ayarı adı "AzureWebJobsTwilioAuthToken" olur. |
-|**Hedef**| Yok-kodda belirt | **Alıcı**| Bu değer, SMS metninin gönderildiği telefon numarası olarak ayarlanır.|
-|**Kaynak**|**Kaynak** | **Kaynak**| Bu değer, SMS metninin gönderildiği telefon numarası olarak ayarlanır.|
-|**bölümü**|**bölümü** | **Gövde**| Bu değer, işlevinizin kodunda dinamik olarak ayarlamanız gerekmiyorsa SMS metin iletisini sabit koda almak için kullanılabilir. |  
+|**Türü**|**Türü**| `twilioSms`olarak ayarlanmalıdır.|
+|**Yön**|**Yön**| `out`olarak ayarlanmalıdır.|
+|**Adı**|**Adı**| Twilio SMS metin mesajı için işlev kodunda kullanılan değişken adı. |
+|**hesapSid**|**hesapSidSetting**| **AccountSidSetting**| Bu değer, Twilio Hesap Sid 'inizi tutan bir uygulama`TwilioAccountSid`ayarının adına ayarlanmalıdır. Ayarlanmazsa, varsayılan uygulama ayar adı "AzureWebJobsTwilioAccountSid"dir. |
+|**authToken**|**authTokenSetting**|**AuthTokenSetting**| Bu değer, Twilio kimlik doğrulama belirtecinizi tutan bir uygulama`TwilioAccountAuthToken`ayarı adına ayarlanmalıdır ( ). Ayarlanmazsa, varsayılan uygulama ayar adı "AzureWebJobsTwilioAuthToken"dir. |
+|**-**| N/A - kodda belirtin | **Hedef**| Bu değer, SMS metninin gönderildiği telefon numarasına ayarlanır.|
+|**Kaynak**|**Kaynak** | **Kimden**| Bu değer, SMS metninin gönderildiği telefon numarasına ayarlanır.|
+|**Vücut**|**Vücut** | **Gövde**| Bu değer, işlevinizin kodunda dinamik olarak ayarlamanız gerekmiyorsa SMS kısa mesajını sabit kodlamak için kullanılabilir. |  
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Azure işlevleri Tetikleyicileri ve bağlamaları hakkında daha fazla bilgi edinin](functions-triggers-bindings.md)
+> [Azure işlevleri tetikleyicileri ve bağlamaları hakkında daha fazla bilgi edinin](functions-triggers-bindings.md)

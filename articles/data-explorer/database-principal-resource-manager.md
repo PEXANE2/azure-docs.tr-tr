@@ -1,6 +1,6 @@
 ---
-title: Azure Resource Manager şablonu kullanarak Azure Veri Gezgini için veritabanı sorumlusu ekleme
-description: Bu makalede, Azure Veri Gezgini için veritabanı sorumlularını bir Azure Resource Manager şablonu kullanarak nasıl ekleyeceğinizi öğreneceksiniz.
+title: Azure Kaynak Yöneticisi şablonu kullanarak Azure Veri Gezgini için veritabanı ilkesi ekleme
+description: Bu makalede, Azure Kaynak Yöneticisi şablonu kullanarak Azure Veri Gezgini için veritabanı ilkelerinin nasıl ekleyeceğinizi öğrenirsiniz.
 author: lucygoldbergmicrosoft
 ms.author: lugoldbe
 ms.reviewer: orspodek
@@ -8,29 +8,29 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.openlocfilehash: 80fcf4b6c5d64dde7bd1c5475fb6a3dbafd7f907
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76965118"
 ---
-# <a name="add-database-principals-for-azure-data-explorer-by-using-an-azure-resource-manager-template"></a>Azure Resource Manager şablonu kullanarak Azure Veri Gezgini yönelik veritabanı sorumlularını ekleme
+# <a name="add-database-principals-for-azure-data-explorer-by-using-an-azure-resource-manager-template"></a>Azure Kaynak Yöneticisi şablonu kullanarak Azure Veri Gezgini için veritabanı ilkeleri ekleme
 
 > [!div class="op_single_selector"]
-> * [C#](database-principal-csharp.md)
+> * [C #](database-principal-csharp.md)
 > * [Python](database-principal-python.md)
 > * [Azure Resource Manager şablonu](database-principal-resource-manager.md)
 
-Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve üst düzeyde ölçeklenebilir veri keşfetme hizmetidir. Bu makalede, Azure Veri Gezgini için veritabanı sorumlularını bir Azure Resource Manager şablonu kullanarak eklersiniz.
+Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve üst düzeyde ölçeklenebilir veri keşfetme hizmetidir. Bu makalede, Azure Kaynak Yöneticisi şablonu kullanarak Azure Veri Gezgini için veritabanı ilkeleri eklersiniz.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/) oluşturun.
 * [Küme ve veritabanı](create-cluster-database-portal.md) oluşturma
 
-## <a name="azure-resource-manager-template-for-adding-a-database-principal"></a>Veritabanı sorumlusu eklemek için şablon Azure Resource Manager
+## <a name="azure-resource-manager-template-for-adding-a-database-principal"></a>Veritabanı yöneticisi eklemek için Azure Kaynak Yöneticisi şablonu
 
-Aşağıdaki örnekte, bir veritabanı sorumlusu eklemek için bir Azure Resource Manager şablonu gösterilmektedir.  Formunu kullanarak [Azure Portal şablonu düzenleyebilir ve dağıtabilirsiniz](/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal#edit-and-deploy-the-template) .
+Aşağıdaki örnekte, veritabanı yöneticisi eklemek için bir Azure Kaynak Yöneticisi şablonu gösterilmektedir.  Formu kullanarak [şablonu Azure portalında düzenleme yapabilir ve dağıtabilirsiniz.](/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal#edit-and-deploy-the-template)
 
 ```json
 {
@@ -104,4 +104,4 @@ Aşağıdaki örnekte, bir veritabanı sorumlusu eklemek için bir Azure Resourc
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Olay Hub 'ından Azure Veri Gezgini veri alma](ingest-data-event-hub.md)
+* [Olay Hub'ından Azure Veri Gezgini'ne veri alma](ingest-data-event-hub.md)

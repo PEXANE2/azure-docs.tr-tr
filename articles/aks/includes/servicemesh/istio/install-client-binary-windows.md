@@ -4,15 +4,15 @@ ms.topic: include
 ms.date: 11/15/2019
 ms.author: pabouwer
 ms.openlocfilehash: 562382cc1cfb6adb7e65d76e717df4c4e2962ba7
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77594002"
 ---
-## <a name="download-and-install-the-istio-istioctl-client-binary"></a>Istio istioctl istemci ikilisini indirme ve yükleme
+## <a name="download-and-install-the-istio-istioctl-client-binary"></a>Istio istioctl istemci ikilisini indirin ve kurun
 
-Windows üzerinde PowerShell tabanlı bir kabukta, Istio sürümünü indirmek için `Invoke-WebRequest` kullanın ve ardından `Expand-Archive` ile aşağıdaki şekilde ayıklayın:
+Windows'da PowerShell tabanlı bir `Invoke-WebRequest` kabukta, Istio yayınını `Expand-Archive` indirmek ve ardından aşağıdaki gibi ayıklamak için kullanın:
 
 ```powershell
 # Specify the Istio version that will be leveraged throughout these instructions
@@ -24,7 +24,7 @@ $ProgressPreference = 'SilentlyContinue'; Invoke-WebRequest -URI "https://github
 Expand-Archive -Path "istio-$ISTIO_VERSION.zip" -DestinationPath .
 ```
 
-İstemci ikili dosyası `istioctl` istemci makinenizde çalışır ve bu hizmet ağıyla etkileşim kurmanıza olanak tanır. Windows üzerinde PowerShell tabanlı bir kabuğa `istioctl` istemci ikilisini yüklemek için aşağıdaki komutları kullanın. Bu komutlar, `istioctl` istemci ikilisini bir Istio klasörüne kopyalar ve ardından, `PATH`üzerinden (geçerli kabukta) ve kalıcı olarak (kabukta yeniden başlatmalar arasında) kullanılabilir hale getirir. Bu komutları çalıştırmak için yükseltilmiş (yönetici) ayrıcalıklarına ihtiyacınız yoktur ve kabuğunu yeniden başlatmanız gerekmez.
+İstemci `istioctl` ikilisi istemci makinenizde çalışır ve Istio servis ağıyla etkileşim kurmanızı sağlar. Windows'da PowerShell tabanlı bir `istioctl` kabuk istio istemci ikili yüklemek için aşağıdaki komutları kullanın. Bu komutlar `istioctl` istemci ikilisini bir Istio klasörüne kopyalar ve sonra hem hemen (geçerli kabukta) `PATH`hem de kalıcı olarak (kabuk yeniden başlatmalar arasında) sizin aracılığınızla kullanılabilir hale getirir. Bu komutları çalıştırmak için yükseltilmiş (Yönetici) ayrıcalıklara ihtiyacınız yoktur ve kabuğunuzu yeniden başlatmanız gerekmez.
 
 ```powershell
 # Copy istioctl.exe to C:\Istio

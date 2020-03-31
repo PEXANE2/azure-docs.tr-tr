@@ -1,6 +1,6 @@
 ---
-title: Bağlantı Izleyicisi (Önizleme) | Microsoft Docs
-description: Dağıtılmış bir ortamdaki ağ iletişimini izlemek için bağlantı Izleyicisi 'ni (Önizleme) nasıl kullanacağınızı öğrenin.
+title: Bağlantı Monitörü (Önizleme) | Microsoft Dokümanlar
+description: Dağıtılmış bir ortamda ağ iletişimini izlemek için Bağlantı İzleyicisi'ni (Önizleme) nasıl kullanacağınızı öğrenin.
 services: network-watcher
 documentationcenter: na
 author: vinynigam
@@ -16,141 +16,141 @@ ms.date: 01/27/2020
 ms.author: vinigam
 ms.custom: mvc
 ms.openlocfilehash: 8f3a6f002fbebe215699c9b97a6dce63177c446f
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77599333"
 ---
-# <a name="network-connectivity-monitoring-with-connection-monitor-preview"></a>Bağlantı Izleyicisi ile ağ bağlantısı Izleme (Önizleme)
+# <a name="network-connectivity-monitoring-with-connection-monitor-preview"></a>Bağlantı Monitörü ile Ağ Bağlantısı İzleme (Önizleme)
 
-Bağlantı Izleyicisi (Önizleme), Azure ağ Izleyicisi 'nde birleştirilmiş uçtan uca bağlantı izleme sağlar. Bağlantı Izleyicisi (Önizleme) özelliği karma ve Azure bulut dağıtımlarını destekler. Ağ Izleyicisi, Azure dağıtımlarınız için bağlantı ile ilgili ölçümleri izlemek, tanılamak ve görüntülemek için araçlar sağlar.
+Bağlantı İzleyicisi (Önizleme), Azure Ağ İzleyicisi'nde birleştirilmiş uçdan uca bağlantı izleme sağlar. Bağlantı İzleyicisi (Önizleme) özelliği karma ve Azure bulut dağıtımlarını destekler. Ağ İzleyicisi, Azure dağıtımlarınız için bağlantıyla ilgili ölçümleri izlemek, tanılamak ve görüntülemek için araçlar sağlar.
 
-Bağlantı Izleyicisi (Önizleme) için bazı kullanım durumları aşağıda verilmiştir:
+Bağlantı İzleyicisi (Preview) için bazı kullanım örnekleri aşağıda veda edilmiştir:
 
-- Ön uç Web sunucusu sanal makinesi, çok katmanlı bir uygulamadaki bir veritabanı sunucusu VM 'si ile iletişim kurar. İki VM arasındaki ağ bağlantısını kontrol etmek istiyorsunuz.
-- Doğu ABD bölgesindeki VM 'Lerin Orta ABD bölgesindeki sanal makinelere ping işlemi olmasını ve bölgeler arası ağ gecikmelerinin karşılaştırmasını istiyorsunuz.
-- Seattle, Washington ve Ashyakma, Virginia 'de birden çok şirket içi Office siteniz var. Office siteleriniz Office 365 URL 'Lerine bağlanır. Office 365 URL 'nizin kullanıcıları için Seattle ve Ashburn arasındaki gecikme sürelerini karşılaştırın.
-- Karma uygulamanızın bir Azure depolama uç noktasına bağlanması gerekiyor. Şirket içi siteniz ve Azure uygulamanız aynı Azure depolama uç noktasına bağlanır. Şirket içi sitenin gecikme sürelerini Azure uygulamasının gecikme süreleriyle karşılaştırmak istiyorsunuz.
-- Şirket içi kurulumlarınız ile bulut uygulamanızı barındıran Azure VM 'Ler arasındaki bağlantıyı denetlemek istiyorsunuz.
+- Ön uç web sunucusu VM çok katmanlı bir uygulamada bir veritabanı sunucusu VM ile iletişim kurar. İki VM arasındaki ağ bağlantısını denetlemek istiyorsunuz.
+- Doğu ABD bölgesindeki VM'lerin Orta ABD bölgesindeki VM'leri pinglemasını ve bölgeler arası ağ gecikmelerini karşılaştırmak istiyorsunuz.
+- Seattle, Washington ve Ashburn, Virginia'da birden fazla ofis var. Ofis siteleriniz Office 365 URL'lerine bağlanır. Office 365 URL'lerini kullananlarınız için Seattle ve Ashburn arasındaki gecikmeleri karşılaştırın.
+- Karma uygulamanızın bir Azure Depolama bitiş noktasına bağlantı ihtiyacı vardır. Şirket içi siteniz ve Azure uygulamanız aynı Azure Depolama bitiş noktasına bağlanır. Şirket içi sitenin gecikmelerini Azure uygulamasının gecikmesi ile karşılaştırmak istiyorsunuz.
+- Şirket içi kurulumlarınız ile bulut uygulamanızı barındıran Azure Sanal Ayarları arasındaki bağlantıyı denetlemek istiyorsunuz.
 
-Bağlantı Izleyicisi, önizleme aşamasında iki özelliği en iyi şekilde birleştirir: ağ Izleyicisi [Bağlantı İzleyicisi](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#monitor-communication-between-a-virtual-machine-and-an-endpoint) özelliği ve ağ performansı İzleyicisi (NPM) [hizmet bağlantısı İzleyicisi](https://docs.microsoft.com/azure/azure-monitor/insights/network-performance-monitor-service-connectivity) özelliği.
+Önizleme aşamasında Connection Monitor en iyi iki özelliği bir leştirir: Ağ [İzleyicisi Bağlantı Monitörü](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#monitor-communication-between-a-virtual-machine-and-an-endpoint) özelliği ve Ağ Performans Monitörü (NPM) [Service Connectivity Monitor](https://docs.microsoft.com/azure/azure-monitor/insights/network-performance-monitor-service-connectivity) özelliği.
 
-Bağlantı Izleyicisi 'nin (Önizleme) bazı avantajları aşağıda verilmiştir:
+Bağlantı İzleyicisi'nin bazı avantajları (Önizleme):
 
-* Azure ve karma izleme ihtiyaçlarına yönelik Birleşik, sezgisel deneyim
+* Azure ve karma izleme ihtiyaçları için birleşik, sezgisel deneyim
 * Bölgeler arası, çapraz çalışma alanı bağlantısı izleme
-* Daha yüksek yoklama sıklıkları ve ağ performansına daha iyi görünürlük
+* Daha yüksek probing frekansları ve ağ performansında daha iyi görünürlük
 * Karma dağıtımlarınız için daha hızlı uyarı
-* HTTP, TCP ve ıCMP tabanlı bağlantı denetimleri için destek 
-* Hem Azure hem de Azure olmayan test kurulumları için ölçümler ve Log Analytics desteği
+* HTTP, TCP ve ICMP tabanlı bağlantı denetimleri desteği 
+* Hem Azure hem de Azure olmayan test kurulumları için Ölçümler ve Log Analytics desteği
 
-![Bağlantı Izleyicisinin Azure VM 'Leri, Azure dışı Konakları, uç noktaları ve veri depolama konumları ile nasıl etkileşime gireceğini gösteren diyagram](./media/connection-monitor-2-preview/hero-graphic.png)
+![Bağlantı İzleyicisi'nin Azure Sanal Bilgisayarlar, Azure olmayan ana bilgisayarlar, uç noktalar ve veri depolama konumlarıyla nasıl etkileşimde bulundugünü gösteren diyagram](./media/connection-monitor-2-preview/hero-graphic.png)
 
-İzleme için bağlantı Izleyicisi 'ni (Önizleme) kullanmaya başlamak için şu adımları izleyin: 
+İzleme için Bağlantı İzleyicisi 'ni (Önizleme) kullanmaya başlamak için aşağıdaki adımları izleyin: 
 
-1. İzleme aracılarını yükler.
-1. Aboneliğinizde ağ Izleyicisi 'Ni etkinleştirin.
-1. Bağlantı İzleyicisi oluşturun.
-1. Veri analizini ve uyarıları ayarlayın.
-1. Ağınızdaki sorunları tanılayın.
+1. İzleme aracılarını yükleyin.
+1. Aboneliğinizde Ağ İzleyicisi'ni etkinleştirin.
+1. Bir bağlantı monitörü oluşturun.
+1. Veri analizi ve uyarıları ayarlayın.
+1. Abunuzdaki sorunları tanıla.
 
-Aşağıdaki bölümlerde bu adımlarla ilgili ayrıntılar sağlanmaktadır.
+Aşağıdaki bölümlerde bu adımlar için ayrıntılar sağlayın.
 
-## <a name="install-monitoring-agents"></a>İzleme aracılarını yükler
+## <a name="install-monitoring-agents"></a>İzleme aracılarını yükleme
 
-Bağlantı Izleyicisi, bağlantı denetimlerini çalıştırmak için hafif yürütülebilir dosyaları kullanır.  Azure ortamlarından ve şirket içi ortamların bağlantı denetimlerini destekler. Kullandığınız yürütülebilir dosya, sanal makinenizin Azure 'da mı yoksa şirket içinde mi barındırıldığından bağlıdır.
+Bağlantı İzleyicisi, bağlantı denetimlerini çalıştırmak için hafif yürütülebilir dosyalara güvenir.  Hem Azure ortamlarından hem de şirket içi ortamlardan gelen bağlantı denetimlerini destekler. Kullandığınız yürütülebilir dosya, VM'nizin Azure'da mı yoksa şirket içinde mi barındırılan olduğuna bağlıdır.
 
 ### <a name="agents-for-azure-virtual-machines"></a>Azure sanal makineleri için aracılar
 
-Bağlantı Izleyicisi 'nin Azure VM 'lerinizi izleme kaynakları olarak tanımasını sağlamak için, ağ Izleyicisi Aracısı sanal makine uzantısını bunlara yükler. Bu uzantı, *Ağ İzleyicisi uzantısı*olarak da bilinir. Azure sanal makineleri, uzantının uçtan uca izlemeyi ve diğer gelişmiş işlevleri tetiklemesine gerek duyar. 
+Connection Monitor'un Azure VM'lerinizi izleme kaynağı olarak tanımasını sağlamak için, Ağ İzleyicisi Aracısı sanal makine uzantısını yükleyin. Bu uzantı, *Ağ İzleyicisi uzantısı*olarak da bilinir. Azure sanal makineleri, uçlardan uca izlemeyi ve diğer gelişmiş işlevleri tetiklemek için uzantı gerektirir. 
 
-[BIR VM oluşturduğunuzda](https://docs.microsoft.com/azure/network-watcher/connection-monitor#create-the-first-vm)ağ izleyicisi uzantısını yükleyebilirsiniz. Ayrıca, [Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/network-watcher-linux) ve [Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/network-watcher-windows)için ağ izleyicisi uzantısını ayrı olarak yükleyebilir, yapılandırabilir ve sorun giderebilirsiniz.
+[Bir VM oluştururken](https://docs.microsoft.com/azure/network-watcher/connection-monitor#create-the-first-vm)Ağ İzleyicisi uzantısını yükleyebilirsiniz. Ayrıca [Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/network-watcher-linux) ve [Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/network-watcher-windows)için Ağ İzleyicisi uzantısını ayrı ayrı yükleyebilir, yapılandırabilir ve sorun giderebilirsiniz.
 
-Bir ağ güvenlik grubu (NSG) veya güvenlik duvarı için kurallar, kaynak ve hedef arasındaki iletişimi engelleyebilirler. Bağlantı Izleyicisi bu sorunu algılar ve topolojide bir tanılama iletisi olarak gösterir. Bağlantı izlemeyi etkinleştirmek için NSG ve Güvenlik Duvarı kurallarının, kaynak ve hedef arasında TCP veya ıCMP üzerinden paketlere izin verildiğinden emin olun.
+Ağ güvenlik grubu (NSG) veya güvenlik duvarı kuralları kaynak ve hedef arasındaki iletişimi engelleyebilir. Bağlantı İzleyicisi bu sorunu algılar ve topolojide tanısal bir ileti olarak gösterir. Bağlantı izlemeyi etkinleştirmek için, NSG ve güvenlik duvarı kurallarının, kaynak ve hedef arasında TCP veya ICMP üzerinden paketlere izin verdiğinden emin olun.
 
 ### <a name="agents-for-on-premises-machines"></a>Şirket içi makineler için aracılar
 
-Bağlantı Izleyicisi 'ni izlemek için kaynak olarak şirket içi makinelerinizi tanımasını sağlamak için, makinelere Log Analytics aracısını yüklersiniz. Ağ Performansı İzleyicisi çözümü etkinleştirin. Bu aracılar Log Analytics çalışma alanlarına bağlanır, bu nedenle aracıların izlemeye başlamadan önce çalışma alanı KIMLIĞI ve birincil anahtarı ayarlamanız gerekir.
+Connection Monitor'un şirket içi makinelerinizi izleme kaynağı olarak tanımasını sağlamak için, Log Analytics aracısını makinelere yükleyin. Ardından Ağ Performans İzleyicisi çözümünü etkinleştirin. Bu aracılar Log Analytics çalışma alanlarına bağlıdır, bu nedenle aracıların izlemeye başlamadan önce çalışma alanı kimliğini ve birincil anahtarı ayarlamanız gerekir.
 
-Windows makineleri için Log Analytics Aracısı 'nı yüklemek için bkz. [Windows Için Azure izleyici sanal makine uzantısı](https://docs.microsoft.com/azure/virtual-machines/extensions/oms-windows).
+Windows makineleri için Log Analytics aracısını yüklemek [için Windows için Azure Monitor sanal makine uzantısına](https://docs.microsoft.com/azure/virtual-machines/extensions/oms-windows)bakın.
 
-Yol güvenlik duvarları veya ağ sanal gereçler (NVA 'lar) içeriyorsa, hedefin erişilebilir olduğundan emin olun.
+Yol güvenlik duvarları veya ağ sanal cihazları (NV'ler) içeriyorsa, hedefe ulaşılabildiğinizden emin olun.
 
-## <a name="enable-network-watcher-on-your-subscription"></a>Aboneliğinizde ağ Izleyicisi 'Ni etkinleştirin
+## <a name="enable-network-watcher-on-your-subscription"></a>Aboneliğinizde Ağ İzleyicisini etkinleştirme
 
-Sanal ağı olan tüm abonelikler ağ Izleyicisi ile etkinleştirilir. Aboneliğinizde bir sanal ağ oluşturduğunuzda, sanal ağın bölgesinde ve aboneliğinde ağ Izleyicisi otomatik olarak etkinleştirilir. Bu otomatik etkinleştirme, kaynaklarınızı etkilemez veya ücretlendirir. Ağ Izleyicisi 'nin aboneliğinizde açık olarak devre dışı olmadığından emin olun. 
+Sanal ağa sahip tüm abonelikler Network Watcher ile etkinleştirilir. Aboneliğinizde sanal ağ oluşturduğunuzda, Ağ İzleyicisi sanal ağın bölgesinde ve aboneliğinde otomatik olarak etkinleştirilir. Bu otomatik etkinleştirme kaynaklarınızı etkilemez veya bir ücrete tabi değildir. Ağ İzleyicisi'nin aboneliğinizde açıkça devre dışı bırakılmadığından emin olun. 
 
-Daha fazla bilgi için bkz. [ağ Izleyicisini etkinleştirme](https://docs.microsoft.com/azure/network-watcher/network-watcher-create).
+Daha fazla bilgi için [bkz.](https://docs.microsoft.com/azure/network-watcher/network-watcher-create)
 
 ## <a name="create-a-connection-monitor"></a>Bağlantı izleyicisi oluşturma 
 
-Bağlantı Izleyicisi, iletişimi düzenli aralıklarla izler. Ulaşılabilirlik ve gecikme süresi içindeki değişiklikleri bilgilendirir. Ayrıca, kaynak aracıları ile hedef uç noktalar arasındaki geçerli ve geçmiş ağ topolojisini kontrol edebilirsiniz.
+Bağlantı Monitörü iletişimi düzenli aralıklarla izler. Ulaşılabilirlik ve gecikme deki değişiklikler hakkında sizi bilgilendirir. Kaynak aracılar ve hedef uç noktalar arasındaki geçerli ve geçmiş ağ topolojisini de kontrol edebilirsiniz.
 
-Kaynaklar, yüklü bir izleme aracısına sahip Azure sanal makineleri veya şirket içi makineler olabilir. Hedef uç noktalar Office 365 URL 'Leri, Dynamics 365 URL 'Leri, özel URL 'ler, Azure VM kaynak kimlikleri, IPv4, IPv6, FQDN veya herhangi bir etki alanı adı olabilir.
+Kaynaklar, Azure VM'leri veya yüklü bir izleme aracısı olan şirket içi makineler olabilir. Hedef uç noktalar Office 365 URL'leri, Dynamics 365 URL'leri, özel URL'ler, Azure VM kaynak adları, IPv4, IPv6, FQDN veya herhangi bir etki alanı adı olabilir.
 
-### <a name="access-connection-monitor-preview"></a>Erişim bağlantısı Izleyicisi (Önizleme)
+### <a name="access-connection-monitor-preview"></a>Erişim Bağlantı Monitörü (Önizleme)
 
-1. Azure portal giriş sayfasında **Ağ İzleyicisi**' ne gidin.
-1. Sol tarafta, **izleme** bölümünde **Bağlantı İzleyicisi (Önizleme)** öğesini seçin.
-1. Bağlantı Izleyicisinde (Önizleme) oluşturulan tüm bağlantı izleyicilerini görürsünüz. Klasik bağlantı Izleyici deneyiminde oluşturulan bağlantı izleyicilerini görmek için **Bağlantı İzleyicisi** sekmesine gidin.
+1. Azure portalı giriş **sayfasında, Ağ İzleyicisi'ne**gidin.
+1. Solda, **İzleme** bölümünde **Bağlantı İzleyicisi (Önizleme) seçeneğini**belirleyin.
+1. Bağlantı İzleyicisi'nde (Önizleme) oluşturulan tüm bağlantı monitörlerini görürsünüz. Bağlantı Monitörü'nün klasik deneyiminde oluşturulan bağlantı monitörlerini görmek için **Bağlantı İzleyicisi** sekmesine gidin.
 
-    ![Bağlantı Izleyicisinde oluşturulan bağlantı izleyicilerini gösteren ekran görüntüsü (Önizleme)](./media/connection-monitor-2-preview/cm-resource-view.png)
+    ![Bağlantı Monitörü'nde oluşturulan bağlantı monitörlerini gösteren ekran görüntüsü (Önizleme)](./media/connection-monitor-2-preview/cm-resource-view.png)
 
 
 ### <a name="create-a-connection-monitor"></a>Bağlantı izleyicisi oluşturma
 
-Bağlantı Izleyici (Önizleme) bölümünde oluşturduğunuz bağlantı izleyicilerinde, hem şirket içi makineleri hem de Azure VM 'lerini kaynak olarak ekleyebilirsiniz. Bu bağlantı izleyicileri, uç noktalara bağlantıyı da izleyebilir. Uç noktalar Azure veya başka bir URL veya IP üzerinde olabilir.
+Bağlantı İzleyicisi'nde (Önizleme) oluşturduğunuz bağlantı monitörlerinde, hem şirket içi makineleri hem de Azure VM'lerini kaynak olarak ekleyebilirsiniz. Bu bağlantı monitörleri uç noktalara bağlantı izleyebilir. Uç noktalar Azure'da veya başka bir URL veya IP'de olabilir.
 
-Bağlantı Izleyicisi (Önizleme) aşağıdaki varlıkları içerir:
+Bağlantı İzleyicisi (Önizleme) aşağıdaki varlıkları içerir:
 
-* **Bağlantı İzleyicisi kaynağı** : bölgeye özgü bir Azure kaynağı. Aşağıdaki varlıkların hepsi bir bağlantı İzleyicisi kaynağının özellikleridir.
-* **Uç nokta** : bağlantı denetimlerine katılan kaynak veya hedef. Uç noktalara örnek olarak Azure VM 'Leri, şirket içi aracılar, URL 'Ler ve IP 'Ler verilebilir.
-* **Test yapılandırması** – bir test için protokole özgü bir yapılandırma. Seçtiğiniz protokole bağlı olarak, bağlantı noktası, eşikler, sınama sıklığı ve diğer parametreleri tanımlayabilirsiniz.
-* **Test grubu** : kaynak uç noktaları, hedef uç noktaları ve test yapılandırmalarının bulunduğu grup. Bir bağlantı İzleyicisi birden fazla test grubu içerebilir.
-* **Test** : kaynak uç noktası, hedef uç noktası ve test yapılandırmasının birleşimi. Test, izleme verilerinin kullanılabildiği en ayrıntılı düzeydir. İzleme verileri, başarısız olan denetim yüzdesini ve gidiş dönüş süresini (RTT) içerir.
+* **Bağlantı izleme kaynağı** – Bölgeye özgü bir Azure kaynağı. Aşağıdaki varlıkların tümü bir bağlantı izleme kaynağının özellikleridir.
+* **Bitiş Noktası** – Bağlantı denetimlerine katılan bir kaynak veya hedef. Son noktalara örnek olarak Azure VM'ler, şirket içi aracılar, URL'ler ve IP'ler verilebilir.
+* **Test yapılandırması** – Bir test için protokole özgü bir yapılandırma. Seçtiğiniz protokole bağlı olarak, bağlantı noktasını, eşikleri, test sıklığını ve diğer parametreleri tanımlayabilirsiniz.
+* **Test grubu** – Kaynak uç noktaları, hedef uç noktaları ve test yapılandırmaları içeren grup. Bağlantı monitörü birden fazla test grubu içerebilir.
+* **Test** – Kaynak bitiş noktası, hedef bitiş noktası ve test yapılandırmasının birleşimi. Test, izleme verilerinin kullanılabildiği en ayrıntılı düzeydir. İzleme verileri, başarısız olan çeklerin yüzdesini ve gidiş-dönüş süresini (RTT) içerir.
 
- ![Test grupları ve testler arasındaki ilişkiyi tanımlayan bir bağlantı izleyicisini gösteren diyagram](./media/connection-monitor-2-preview/cm-tg-2.png)
+ ![Bağlantı monitörünü gösteren, test grupları ve testler arasındaki ilişkiyi tanımlayan diyagram](./media/connection-monitor-2-preview/cm-tg-2.png)
 
-#### <a name="create-a-connection-monitor-from-the-azure-portal"></a>Azure portal bir bağlantı izleyicisi oluşturun
+#### <a name="create-a-connection-monitor-from-the-azure-portal"></a>Azure portalından bağlantı monitörü oluşturma
 
-Azure portal bir bağlantı İzleyicisi oluşturmak için aşağıdaki adımları izleyin:
+Azure portalından bir bağlantı monitörü oluşturmak için aşağıdaki adımları izleyin:
 
-1. **Bağlantı İzleyicisi (Önizleme)** panosunda, sol üst köşedeki **Oluştur**' u seçin.
-1. **Temel bilgiler** sekmesinde, bağlantı monitörünüz için bilgi girin:
-   * **Bağlantı Izleyicisi adı** – bağlantı monitörünüzün adını ekleyin. Azure kaynakları için standart adlandırma kurallarını kullanın.
-   * **Abonelik** : bağlantı monitörünüz için bir abonelik seçin.
-   * **Region** : bağlantı monitörünüz için bir bölge seçin. Yalnızca bu bölgede oluşturulan kaynak VM 'Leri seçebilirsiniz.
-   * **Çalışma alanı yapılandırması** -çalışma alanınız izleme verilerinizi tutar. Özel bir çalışma alanı veya varsayılan çalışma alanı kullanabilirsiniz. 
-       * Varsayılan çalışma alanını kullanmak için onay kutusunu işaretleyin. 
-       * Özel bir çalışma alanı seçmek için onay kutusunu temizleyin. Ardından özel çalışma alanınız için abonelik ve bölge seçin. 
-1. Sekmenin alt kısmındaki **İleri: test grupları**' nı seçin.
+1. Bağlantı **Monitörü (Önizleme)** panosunda, sol üst köşede **Oluştur'u**seçin.
+1. Temel **Bilgiler** sekmesinde, bağlantı monitörünüz için bilgileri girin:
+   * **Bağlantı Monitörü Adı** – Bağlantı monitörünüzün adını ekleyin. Azure kaynakları için standart adlandırma kurallarını kullanın.
+   * **Abonelik** – Bağlantı monitörünüz için bir abonelik seçin.
+   * **Bölge** – Bağlantı monitörünüz için bir bölge seçin. Yalnızca bu bölgede oluşturulan kaynak VM'leri seçebilirsiniz.
+   * **Çalışma alanı yapılandırması** - Çalışma alanınız izleme verilerinizi tutar. Özel bir çalışma alanı veya varsayılan çalışma alanı kullanabilirsiniz. 
+       * Varsayılan çalışma alanını kullanmak için onay kutusunu seçin. 
+       * Özel bir çalışma alanı seçmek için onay kutusunu temizleyin. Ardından, özel çalışma alanınız için aboneliği ve bölgeyi seçin. 
+1. Sekmenin alt kısmında **İleri: Test grupları'nı**seçin.
 
-   ![Bağlantı Izleyicisinde temel bilgiler sekmesini gösteren ekran görüntüsü](./media/connection-monitor-2-preview/create-cm-basics.png)
+   ![Bağlantı Monitöründeki Temeller sekmesini gösteren ekran görüntüsü](./media/connection-monitor-2-preview/create-cm-basics.png)
 
-1. **Test grupları** sekmesinde **+ test grubu**' nu seçin. Test gruplarınızı ayarlamak için, bkz. [bağlantı Izleyicisinde test grupları oluşturma](#create-test-groups-in-a-connection-monitor). 
-1. Sekmenin en altında, Ileri ' yi seçin ve bağlantı monitörünüzü gözden geçirmek için **Oluştur** ' a tıklayın.
+1. Test **grupları** sekmesinde **+ Test grubu'nu**seçin. Test gruplarınızı ayarlamak için [Bağlantı İzleyicisi'nde test grupları oluştur'a](#create-test-groups-in-a-connection-monitor)bakın. 
+1. Sekmenin alt kısmında, Bağlantı monitörünüzü incelemek için **İleri: Gözden Geçir + oluştur'u** seçin.
 
    ![Test grupları sekmesini ve test grubu ayrıntılarını eklediğiniz bölmeyi gösteren ekran görüntüsü](./media/connection-monitor-2-preview/create-tg.png)
 
-1. **Gözden geçir + oluştur** sekmesinde, bağlantı izleyicisini oluşturmadan önce temel bilgileri ve test gruplarını gözden geçirin. Bağlantı izleyicisini düzenlemeniz gerekiyorsa:
-   * Temel ayrıntıları düzenlemek için kalem simgesini seçin.
-   * Bir test grubunu düzenlemek için seçin.
+1. Gözden **Geçir + oluştur** sekmesinde, bağlantı monitörünü oluşturmadan önce temel bilgileri ve test gruplarını gözden geçirin. Bağlantı monitörünü delemniz gerekiyorsa:
+   * Temel ayrıntıları nidaetmek için kalem simgesini seçin.
+   * Bir test grubunu yeniden seçmek için seçin.
 
    > [!NOTE] 
-   > **Gözden geçir + oluştur** sekmesi, Bağlantı İzleyicisi önizleme aşamasında aylık maliyeti gösterir. Şu anda **GEÇERLI maliyet** sütunu hiçbir ücret göstermez. Bağlantı Izleyicisi genel kullanıma sunulduğunda, bu sütunda aylık bir ücret gösterilir. 
+   > **Gözden Geçir + oluştur** sekmesi, Bağlantı İzleyicisi önizleme aşamasında aylık maliyeti gösterir. Şu anda, **CARI MALİYET** sütununda ücret belirtilmektedir. Bağlantı İzleyicisi genel kullanıma sunulduğunda, bu sütun aylık bir ücret gösterir. 
    > 
-   > Bağlantı Izleyicisi önizleme aşamasında bile, Log Analytics alma ücretleri uygulanır.
+   > Connection Monitor önizleme aşamasında bile Log Analytics yutma ücretleri uygulanır.
 
-1. Bağlantı izleyicisini oluşturmaya hazırsanız, **gözden geçir + oluştur** sekmesinin altındaki **Oluştur**' u seçin.
+1. Bağlantı monitörünü oluşturmaya hazır olduğunuzda, Gözden Geçir **+ oluştur** sekmesinin en altında **Oluştur'u**seçin.
 
-   ![Inceleme + Oluştur sekmesini gösteren bağlantı Izleyicisinin ekran görüntüsü](./media/connection-monitor-2-preview/review-create-cm.png)
+   ![Bağlantı Monitörü ekran görüntüsü, Gözden Geçirme + oluşturma sekmesini gösteren](./media/connection-monitor-2-preview/review-create-cm.png)
 
-Bağlantı Izleyicisi (Önizleme) arka planda Bağlantı İzleyicisi kaynağını oluşturur.
+Bağlantı İzleyicisi (Önizleme), arka planda bağlantı izleme kaynağı oluşturur.
 
-#### <a name="create-a-connection-monitor-by-using-armclient"></a>ARMClient kullanarak bağlantı İzleyicisi oluşturma
+#### <a name="create-a-connection-monitor-by-using-armclient"></a>ARMClient kullanarak bağlantı monitörü oluşturma
 
-ARMClient kullanarak bir bağlantı İzleyicisi oluşturmak için aşağıdaki kodu kullanın.
+ARMClient kullanarak bir bağlantı monitörü oluşturmak için aşağıdaki kodu kullanın.
 
 ```armclient
 $connectionMonitorName = "sampleConnectionMonitor"
@@ -382,306 +382,306 @@ address: '\&lt;URL\&gt;'
 } "
 ```
 
-Dağıtım komutu aşağıda verilmiştir:
+Dağıtım komutu aşağıda veda eder:
 ```
 armclient PUT $ARM/$SUB/$NW/connectionMonitors/$connectionMonitorName/?api-version=2019-07-01 $body -verbose
 ```
 
-### <a name="create-test-groups-in-a-connection-monitor"></a>Bağlantı izleyicisinde test grupları oluşturma
+### <a name="create-test-groups-in-a-connection-monitor"></a>Bağlantı monitöründe test grupları oluşturma
 
-Bir bağlantı izleyicisinde bulunan her bir test grubu, ağ parametrelerini test eden kaynakları ve hedefleri içerir. Başarısız olan denetim yüzdesi ve test yapılandırmalarının RTT üzerinden test edilmiştir.
+Bağlantı monitöründeki her test grubu, ağ parametreleri üzerinde sınanan kaynakları ve hedefleri içerir. Bunlar, test yapılandırmaları üzerinden başarısız olan denetimyüzdesi ve RTT için test edilir.
 
-Azure portal, bir bağlantı izleyicisinde bir test grubu oluşturmak için aşağıdaki alanlar için değerler belirtirsiniz:
+Azure portalından, bağlantı monitöründe bir test grubu oluşturmak için aşağıdaki alanlar için değerler belirtirsiniz:
 
-* **Test grubunu devre dışı bırak** – test grubunun belirttiği tüm kaynaklar ve hedefler için izlemeyi devre dışı bırakmak üzere bu alanı seçebilirsiniz. Bu seçim varsayılan olarak temizlenir.
-* **Ad** – test grubunuzu adlandırın.
-* **Kaynaklar** : aracılar bunlara yüklenmişse hem Azure VM 'lerini hem de şirket içi makineleri kaynak olarak belirtebilirsiniz. Kaynağınıza yönelik bir aracı yüklemek için bkz. [izleme aracılarını yüklemek](#install-monitoring-agents).
-   * Azure aracılarını seçmek için **Azure aracıları** sekmesini seçin. Burada yalnızca bağlantı izleyicisini oluştururken belirttiğiniz bölgeye bağlı olan VM 'Leri görürsünüz. Varsayılan olarak VM 'Ler, ait oldukları abonelikte gruplandırılır. Bu gruplar daraltılmıştır. 
+* **Test Grubunu Devre Dışı-** Test grubunun belirlediği tüm kaynaklar ve hedefler için izlemeyi devre dışı kalımiçin bu alanı seçebilirsiniz. Bu seçim varsayılan olarak temizlenir.
+* **Ad** – Test grubunuzun adını adlandırın.
+* **Kaynaklar** – Hem Azure VM'lerini hem de şirket içi makineleri, aracılar yüklüyse kaynak olarak belirtebilirsiniz. Kaynağınız için bir aracı yüklemek için [bkz.](#install-monitoring-agents)
+   * Azure aracılarını seçmek için **Azure Aracıları** sekmesini seçin. Burada, bağlantı monitörünü oluşturduğunuzda belirttiğiniz bölgeye bağlı yalnızca VM'ler görürsünüz. Varsayılan olarak, VM'ler ait oldukları abonelik olarak gruplandırılır. Bu gruplar çöktü. 
    
-       Abonelik düzeyinden hiyerarşideki diğer düzeylere ayrıntıya gidebilirsiniz:
+       Abonelik düzeyinden hiyerarşideki diğer düzeylere kadar ayrıntılı olarak ayrıntılı olarak inebilirsiniz:
 
-      **Abonelik** > **kaynak grupları** > **sanal** **ağlar** **, aracıları olan sanal makineler** >  > .
+      **Abonelik** > **Kaynak grupları** > **Subnets** > VM'leri**aracılarla** > **gruplandırır**
 
-      Ayrıca, ağacı başka bir düzeyden başlatmak için **Group By** alanı değerini de değiştirebilirsiniz. Örneğin, sanal ağa göre gruplandırdıysanız, sanal **ağlarda** aracıların bulunduğu VM 'leri, **aracılarla > VM 'ler** ** > .**
+      Ayrıca, ağacı başka bir düzeyden başlatmak için **Alana göre Grubun** değerini de değiştirebilirsiniz. Örneğin, sanal ağa göre gruplandırırsanız, hiyerarşide aracılar olan **VNETs** > **Subnets** > **VM'leri aracılarla**birlikte vm'ler görürsünüz.
 
-      ![Kaynak ekleme paneli ve Azure aracıları sekmesini gösteren bağlantı Izleyicisinin ekran görüntüsü](./media/connection-monitor-2-preview/add-azure-sources.png)
+      ![Kaynak Ekle panelini ve Azure Aracıları sekmesini gösteren Bağlantı Monitörü ekran görüntüsü](./media/connection-monitor-2-preview/add-azure-sources.png)
 
-   * Şirket içi aracıları seçmek için, **Azure dışı aracılar** sekmesini seçin. Varsayılan olarak, aracılar bölgelere göre çalışma alanları halinde gruplandırılır. Bu çalışma alanlarının tümünde Ağ Performansı İzleyicisi çözümü yapılandırıldı. 
+   * Şirket içi aracıları seçmek için **Azure Olmayan Aracılar** sekmesini seçin. Varsayılan olarak, aracılar bölgeye göre çalışma alanlarına gruplandırılır. Tüm bu çalışma alanları, Ağ Performans İzleyicisi çözümünü yapılandırmış. 
    
-       Çalışma alanınıza Ağ Performansı İzleyicisi eklemeniz gerekiyorsa [Azure Marketi](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview)'nden alın. Ağ Performansı İzleyicisi ekleme hakkında daha fazla bilgi için bkz. [Azure izleyici 'de çözümleri izleme](https://docs.microsoft.com/azure/azure-monitor/insights/solutions). 
+       Çalışma alanınıza Ağ Performans Monitörü eklemeniz gerekiyorsa, [Azure Marketi'nden](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview)alın. Ağ Performans Monitörü nasıl ekleyeceğiniz hakkında bilgi için [Azure Monitor'da İzleme çözümlerine](https://docs.microsoft.com/azure/azure-monitor/insights/solutions)bakın. 
    
-       **Bağlantı Izleyicisi oluştur** görünümünde, **temel bilgiler** sekmesinde varsayılan bölge seçilidir. Bölgeyi değiştirirseniz, yeni bölgedeki çalışma alanlarından aracılar seçebilirsiniz. Ayrıca **Group By** alanı değerini, alt ağlara göre gruplandırma olarak değiştirebilirsiniz.
+       Bağlantı **İzleyicisi Oluştur** görünümünde, **Temeller** sekmesinde varsayılan bölge seçilir. Bölgeyi değiştirirseniz, yeni bölgedeki çalışma alanlarından aracılar seçebilirsiniz. **Ayrıca, grubun** değerini alana göre alt ağlara göre gruplandırmaya da değiştirebilirsiniz.
 
-      ![Kaynak ekleme paneli ve Azure dışı aracılar sekmesini gösteren bağlantı Izleyicisinin ekran görüntüsü](./media/connection-monitor-2-preview/add-non-azure-sources.png)
+      ![Kaynak Ekle panelini ve Azure Olmayan Aracılar sekmesini gösteren Bağlantı Monitörü ekran görüntüsü](./media/connection-monitor-2-preview/add-non-azure-sources.png)
 
 
-   * Seçtiğiniz Azure ve Azure olmayan aracıları gözden geçirmek için **İnceleme** sekmesine gidin.
+   * Seçtiğiniz Azure ve Azure olmayan aracıları gözden geçirmek için **Gözden Geçir** sekmesine gidin.
 
-      ![Kaynak Ekle panelini ve gözden geçirme sekmesini gösteren bağlantı Izleyicisinin ekran görüntüsü](./media/connection-monitor-2-preview/review-sources.png)
+      ![Kaynak Ekle panelini ve Gözden Geçirme sekmesini gösteren Bağlantı Monitörü ekran görüntüsü](./media/connection-monitor-2-preview/review-sources.png)
 
-   * Kaynakları ayarlamayı tamamladığınızda, **Kaynak Ekle** panelinin alt kısmındaki **bitti**' yi seçin.
+   * Kaynak eklemeyi bitirdiğinizde, **Kaynak Ekle** panelinin alt **kısmında, Bitti'yi**seçin.
 
-* **Hedefler** : Azure VM 'lerine veya herhangi bir uç noktaya (genel IP, URL veya FQDN) yönelik bağlantıyı, hedefler olarak belirterek izleyebilirsiniz. Tek bir test grubunda Azure VM 'leri, Office 365 URL 'Leri, Dynamics 365 URL 'Leri ve özel uç noktaları ekleyebilirsiniz.
+* **Hedefler** – Azure VM'lerine veya herhangi bir uç noktasına (genel IP, URL veya FQDN) bağlantılarını hedef olarak belirterek izleyebilirsiniz. Tek bir test grubunda Azure VM'leri, Office 365 URL'leri, Dynamics 365 URL'leri ve özel uç noktaları ekleyebilirsiniz.
 
-    * Azure VM 'lerini hedef olarak seçmek için **Azure VM 'leri** sekmesini seçin. Varsayılan olarak, Azure VM 'Leri, **temel bilgiler** sekmesinde **Bağlantı İzleyicisi oluştur** görünümünde seçtiğiniz bölgede bulunan bir abonelik hiyerarşisinde gruplandırılır. Bölgeyi değiştirebilir ve yeni seçilen bölgeden Azure VM 'Leri seçebilirsiniz. Daha sonra, Azure Agents düzeyi gibi, abonelik düzeyinden hiyerarşideki diğer düzeylere gidebilirsiniz.
+    * Hedef olarak Azure VM'leri seçmek için **Azure VM** sekmesini seçin. Varsayılan olarak, Azure VM'leri **Temel Bilgiler** sekmesinde **Bağlantı İzleyicisi Oluştur** görünümünde seçtiğiniz aynı bölgede bulunan bir abonelik hiyerarşisi olarak gruplandırılır. Bölgeyi değiştirebilir ve yeni seçilen bölgeden Azure VM'lerini seçebilirsiniz. Ardından, Azure Aracıları düzeyi gibi hiyerarşideki abonelik düzeyinden diğer düzeylere kadar ayrıntıya inebilirsiniz.
 
-       ![Azure VM 'Leri sekmesini gösteren hedefler ekle bölmesinin ekran görüntüsü](./media/connection-monitor-2-preview/add-azure-dests1.png)
+       ![Azure VM'ler sekmesini gösteren Hedef Ekle bölmesinin ekran görüntüsü](./media/connection-monitor-2-preview/add-azure-dests1.png)
 
-       ![Abonelik düzeyini gösteren hedefler ekle bölmesinin ekran görüntüsü](./media/connection-monitor-2-preview/add-azure-dests2.png)
+       ![Hedef Ekle bölmesinin, Abonelik düzeyini gösteren ekran görüntüsü](./media/connection-monitor-2-preview/add-azure-dests2.png)
 
-    * Uç noktaları hedef olarak seçmek için **bitiş noktaları** sekmesini seçin. Uç noktalar listesi, Office 365 test URL 'Leri ve Dynamics 365 test URL 'Lerini ada göre gruplanmış olarak içerir. Bu uç noktalara ek olarak, aynı bağlantı izleyicisinde diğer test gruplarında oluşturulmuş bir uç nokta seçebilirsiniz. 
+    * Hedef olarak uç noktaları seçmek için **Uç Noktalar** sekmesini seçin. Bitiş noktaları listesi, ada göre gruplanmış Office 365 test URL'leri ve Dynamics 365 test URL'lerini içerir. Bu uç noktalara ek olarak, aynı bağlantı monitöründeki diğer test gruplarında oluşturulan bir bitiş noktası seçebilirsiniz. 
     
-        Yeni bir uç nokta eklemek için sağ üst köşede **+ uç noktalar**' ı seçin. Ardından bir uç nokta adı ve URL, IP veya FQDN belirtin.
+        Yeni bir bitiş noktası eklemek için sağ üst köşede **+ Bitiş Noktaları'nı**seçin. Ardından bir bitiş noktası adı ve URL, IP veya FQDN sağlayın.
 
-       ![Bağlantı Izleyicisinde uç noktaların hedef olarak nereye ekleneceğini gösteren ekran görüntüsü](./media/connection-monitor-2-preview/add-endpoints.png)
+       ![Bağlantı İzleyicisi'nde hedef olarak uç noktaların nereye ekleyeceğini gösteren ekran görüntüsü](./media/connection-monitor-2-preview/add-endpoints.png)
 
-    * Seçtiğiniz Azure sanal makinelerini ve uç noktalarını gözden geçirmek için **İnceleme** sekmesini seçin.
-    * Hedefleri seçme işini bitirdiğinizde **bitti**' yi seçin.
+    * Seçtiğiniz Azure VM'lerini ve uç noktalarını gözden geçirmek için **Gözden Geçir** sekmesini seçin.
+    * Hedef seçmeyi bitirdiğinizde, **Bitti'yi**seçin.
 
-* **Test yapılandırması** – test yapılandırmasını bir test grubunda ilişkilendirebilirsiniz. Azure portal, test grubu başına yalnızca bir test yapılandırmasına izin verir, ancak daha fazla eklemek için ARMClient kullanabilirsiniz.
+* **Test yapılandırmaları** – Test yapılandırmalarını bir test grubunda ilişkilendirebilirsiniz. Azure portalı test grubu başına yalnızca bir test yapılandırmasına izin verir, ancak daha fazlasını eklemek için ARMClient'ı kullanabilirsiniz.
 
-    * **Ad** – test yapılandırmasını adlandırın.
-    * **Protokol** : TCP, ıCMP veya http ' yi seçin. HTTP 'yi HTTPS olarak değiştirmek için protokol olarak **http** ' yi seçin ve bağlantı noktası olarak **443** ' yı seçin.
-        * **Ağ test yapılandırması oluştur** – bu onay kutusu yalnızca **protokol** alanında **http** ' yi seçtiğinizde görünür. Yapılandırmanızda başka bir yerde belirttiğiniz kaynakları ve hedefleri kullanan başka bir test yapılandırması oluşturmak için bu kutuyu seçin. Yeni oluşturulan test yapılandırması `<the name of your test configuration>_networkTestConfig`olarak adlandırılır.
-        * İzleme hareketini **devre dışı bırak** – Bu alan, protokolü TCP veya ICMP olan test grupları için geçerlidir. Kaynakları, topolojiyi ve Atlama RTT 'yi bulmaktan durdurmak için bu kutuyu seçin.
-    * **Hedef bağlantı noktası** : bu alanı, seçtiğiniz bir hedef bağlantı noktasıyla özelleştirebilirsiniz.
-    * **Sınama sıklığı** – kaynakların, belirttiğiniz protokol ve bağlantı noktasındaki hedeflere ne sıklıkta ping uygulayabileceğini belirlemek için bu alanı kullanın. 30 saniye, 1 dakika, 5 dakika, 15 dakika veya 30 dakika seçebilirsiniz. Kaynaklar, seçtiğiniz değere göre hedeflere bağlantıyı test edecektir.  Örneğin, 30 saniye seçerseniz, kaynaklar en az 30 saniyelik bir dönemde hedefe bağlantıyı kontrol eder.
-    * **Başarı eşiği** – aşağıdaki ağ parametrelerinde eşikler ayarlayabilirsiniz:
-       * **Denetim başarısız** : kaynaklar, belirttiğiniz kriterleri kullanarak hedeflere bağlantı denetlediğinde başarısız olan denetim yüzdesini ayarlayın. TCP veya ıCMP protokolü için, başarısız denetimlerin yüzdesi, paket kaybı yüzdesine eşit hale getirilmiş olabilir. HTTP protokolü için, bu alan yanıt olmadan alınan HTTP isteklerinin yüzdesini temsil eder.
-       * **Gidiş dönüş süresi** – bir test yapılandırması üzerinden hedefe bağlanmak için kaynakların ne kadar süreceğine ILIŞKIN olarak RTT 'yi milisaniye olarak ayarlayın.
+    * **Ad** – Test yapılandırmasını adlandırın.
+    * **Protokol** – TCP, ICMP veya HTTP'yi seçin. HTTP'yi HTTPS olarak değiştirmek için protokol olarak **HTTP'yi** seçin ve bağlantı noktası olarak **443'ü** seçin.
+        * **Ağ testi yapılandırması oluşturun** – Bu onay kutusu yalnızca **Protokol** alanında **HTTP'yi** seçerseniz görüntülenir. Yapılandırmanızın başka bir yerinde belirttiğiniz aynı kaynakları ve hedefleri kullanan başka bir test yapılandırması oluşturmak için bu kutuyu seçin. Yeni oluşturulan test yapılandırması adı. `<the name of your test configuration>_networkTestConfig`
+        * **İzleme rotasını devre dışı bırakma** – Bu alan, protokolü TCP veya ICMP olan test grupları için geçerlidir. Kaynakların topolojiyi ve hop-by-hop RTT'yi keşfetmesini engellemek için bu kutuyu seçin.
+    * **Hedef bağlantı noktası** – Bu alanı seçtiğiniz bir hedef bağlantı noktasıyla özelleştirebilirsiniz.
+    * **Test Sıklığı** – Kaynakların belirttiğiniz protokol ve bağlantı noktasında ki hedefleri ne sıklıkta pingleeceğini seçmek için bu alanı kullanın. 30 saniye, 1 dakika, 5 dakika, 15 dakika veya 30 dakika seçebilirsiniz. Kaynaklar, seçtiğiniz değere bağlı olarak hedeflere bağlantı test eder.  Örneğin, 30 saniye seçerseniz, kaynaklar 30 saniyelik bir dönemde hedefe olan bağlantıyı en az bir kez denetler.
+    * **Başarı Eşiği** – Aşağıdaki ağ parametrelerinde eşikler ayarlayabilirsiniz:
+       * **Denetimler başarısız oldu** – Kaynaklar belirttiğiniz ölçütleri kullanarak hedeflere bağlantıyı denetlediğinde başarısız olabilecek denetimlerin yüzdesini ayarlayın. TCP veya ICMP protokolü için, başarısız çeklerin yüzdesi paket kaybı yüzdesine eşit olabilir. HTTP protokolü için bu alan, yanıt alan http isteklerinin yüzdesini temsil eder.
+       * **Gidiş-dönüş süresi** – RTT'yi, kaynakların test yapılandırması üzerinden hedefe bağlanmanın ne kadar sürebileceğini milisaniyecinsinden ayarlayın.
     
-       ![Bağlantı Izleyicisinde bir test yapılandırmasının nerede ayarlanacağını gösteren ekran görüntüsü](./media/connection-monitor-2-preview/add-test-config.png)
+       ![Bağlantı Monitörü'nde test yapılandırması nerede ayarlandığıgösteren ekran görüntüsü](./media/connection-monitor-2-preview/add-test-config.png)
 
-Bir test grubuna eklediğiniz tüm kaynaklar, hedefler ve test yapılandırması, bireysel testlere bölünmüştür. Kaynak ve hedeflerin nasıl bölündüğü hakkında bir örnek aşağıda verilmiştir:
+Bir test grubuna eklediğiniz tüm kaynaklar, hedefler ve test yapılandırmaları tek tek testlere bölünur. Kaynakların ve hedeflerin nasıl bozulduklarına bir örnek aşağıda verilmiştir:
 
 * Test grubu: TG1
 * Kaynaklar: 3 (A, B, C)
-* Hedefler: 2 (D, E)
-* Test yapılandırması: 2 (yapılandırma 1, yapılandırma 2)
+* Gidilecek Yerler: 2 (D, E)
+* Test yapılandırmaları: 2 (Config 1, Config 2)
 * Oluşturulan toplam test sayısı: 12
 
-| Sınama numarası | Kaynak | Hedef | Test yapılandırması |
+| Test numarası | Kaynak | Hedef | Test yapılandırması |
 | --- | --- | --- | --- |
-| 1 | A | D | Yapılandırma 1 |
-| 2 | A | D | Yapılandırma 2 |
-| 3 | A | E | Yapılandırma 1 |
-| 4 | A | E | Yapılandırma 2 |
-| 5 | B | D | Yapılandırma 1 |
-| 6 | B | D | Yapılandırma 2 |
-| 7 | B | E | Yapılandırma 1 |
-| 8 | B | E | Yapılandırma 2 |
-| 9 | C | D | Yapılandırma 1 |
-| 10 | C | D | Yapılandırma 2 |
-| 11 | C | E | Yapılandırma 1 |
-| 12 | C | E | Yapılandırma 2 |
+| 1 | A | D | Config 1 |
+| 2 | A | D | Config 2 |
+| 3 | A | E | Config 1 |
+| 4 | A | E | Config 2 |
+| 5 | B | D | Config 1 |
+| 6 | B | D | Config 2 |
+| 7 | B | E | Config 1 |
+| 8 | B | E | Config 2 |
+| 9 | C | D | Config 1 |
+| 10 | C | D | Config 2 |
+| 11 | C | E | Config 1 |
+| 12 | C | E | Config 2 |
 
 ### <a name="scale-limits"></a>Ölçek sınırları
 
-Bağlantı izleyicileri aşağıdaki ölçek sınırlarına sahiptir:
+Bağlantı monitörleri aşağıdaki ölçek sınırlarına sahiptir:
 
-* Her bölge için abonelik başına en fazla bağlantı İzleyicisi: 100
-* Bağlantı İzleyicisi başına en fazla test grubu: 20
-* Bağlantı İzleyicisi başına en fazla kaynak ve hedef sayısı: 100
-* Bağlantı İzleyicisi başına en fazla test yapılandırması: 
-    * 20 ile ARMClient
-    * 2 Azure portal aracılığıyla
+* Bölge başına abonelik başına maksimum bağlantı monitörü: 100
+* Bağlantı monitörü başına maksimum test grubu: 20
+* Bağlantı monitörü başına maksimum kaynak ve varış noktaları: 100
+* Bağlantı monitörü başına maksimum test yapılandırmaları: 
+    * ARMClient ile 20
+    * Azure portalı üzerinden 2
 
-## <a name="analyze-monitoring-data-and-set-alerts"></a>İzleme verilerini çözümleme ve uyarıları ayarlama
+## <a name="analyze-monitoring-data-and-set-alerts"></a>İzleme verilerini analiz etme ve uyarıları ayarlama
 
-Bir bağlantı İzleyicisi oluşturduktan sonra, kaynaklar test yapılandırmanıza göre hedeflere bağlantıyı denetler.
+Bir bağlantı monitörü oluşturduktan sonra, kaynaklar test yapılandırmanıza göre hedeflere bağlantı denetimini sağlar.
 
-### <a name="checks-in-a-test"></a>Bir testte denetimler
+### <a name="checks-in-a-test"></a>Testte denetimler
 
-Bağlantı Izleyicisi (Önizleme), test yapılandırmasında seçtiğiniz protokole bağlı olarak, kaynak-hedef çifti için bir dizi denetim çalıştırır. Denetimler, seçtiğiniz test sıklığına göre çalışır.
+Test yapılandırmasında seçtiğiniz protokole bağlı olarak, Bağlantı İzleyicisi (Önizleme) kaynak hedef çifti için bir dizi denetim çalıştırAr. Denetimler seçtiğiniz test sıklığına göre çalışır.
 
-HTTP kullanırsanız, hizmet yanıt kodu döndüren HTTP yanıtlarının sayısını hesaplar. Sonuç, başarısız denetimlerin yüzdesini belirler. RTT 'yi hesaplamak için, hizmet bir HTTP çağrısıyla yanıt arasındaki süreyi ölçer.
+HTTP kullanıyorsanız, hizmet yanıt kodunu döndüren HTTP yanıtlarının sayısını hesaplar. Sonuç, başarısız olan denetimlerin yüzdesini belirler. RTT'yi hesaplamak için, hizmet bir HTTP çağrısı ile yanıt arasındaki süreyi ölçer.
 
-TCP veya ıCMP kullanıyorsanız, hizmet başarısız denetimlerin yüzdesini öğrenmek için paket kaybı yüzdesini hesaplar. RTT 'yi hesaplamak için, hizmet gönderilen paketlerin onay (ACK) alınması için geçen süreyi ölçer. Ağ testleriniz için izleme yolu verilerini etkinleştirdiyseniz, şirket içi ağınız için atlama kaybını ve gecikme süresini görebilirsiniz.
+TCP veya ICMP kullanıyorsanız, hizmet başarısız çeklerin yüzdesini belirlemek için paket kaybı yüzdesini hesaplar. RTT'yi hesaplamak için, hizmet gönderilen paketler için bildirim (ACK) almak için gereken süreyi ölçer. Ağ testleriniz için izleme yolu verilerini etkinleştirlediyseniz, şirket içi ağınız için atlama kaybı ve gecikme gecikmesi görebilirsiniz.
 
 ### <a name="states-of-a-test"></a>Bir testin durumları
 
-Denetimlerin döndürdüğü verilere bağlı olarak, testler aşağıdaki durumlara sahip olabilir:
+Denetimlerin döndürdüğü verilere göre, testlerin şeyi şereleri olabilir:
 
-* **Pass** : başarısız denetimlerin yüzdesi için gerçek değerler ve RTT belirtilen eşiklerin içindedir.
-* **Başarısız** – başarısız DENETIMLERIN veya RTT yüzdesinin gerçek değerleri belirtilen eşikleri aştı. Eşik belirtilmemişse, başarısız denetimlerin yüzdesi 100 olduğunda bir test başarısız durumuna ulaşır.
-* **Uyarı** – başarısız denetimlerin yüzdesi için hiçbir ölçüt belirtilmemiş. Belirtilen ölçüt yokluğunda, bağlantı Izleyicisi (Önizleme) otomatik olarak bir eşik atar. Bu eşik aşıldığında, test durumu uyarı olarak değişir.
+* **Geç** – Başarısız çeklerin ve RTT'nin yüzdesi için gerçek değerler belirtilen eşikler içindedir.
+* **Fail** – Başarısız çeklerin veya RTT'nin yüzdesi için gerçek değerler belirtilen eşikleri aştı. Eşik belirtilmemişse, başarısız denetimlerin yüzdesi 100 olduğunda bir test Başarısız durumuna ulaşır.
+* **Uyarı** – Başarısız çekyüzdesi için ölçüt belirtilmedi. Belirtilen ölçütlerin yokluğunda, Bağlantı İzleyicisi (Önizleme) otomatik olarak bir eşik atar. Bu eşik aşıldığında, test durumu Uyarı olarak değişir.
 
 ### <a name="data-collection-analysis-and-alerts"></a>Veri toplama, analiz ve uyarılar
 
-Bağlantı Izleyicisi (Önizleme) tarafından toplanan veriler Log Analytics çalışma alanında depolanır. Bu çalışma alanını bağlantı izleyicisini oluştururken ayarlarsınız. 
+Bağlantı İzleyicisi'nin (Preview) topladığı veriler Log Analytics çalışma alanında depolanır. Bağlantı izleme sini oluşturduğunuzda bu çalışma alanını ayarlarsınız. 
 
-Azure Izleyici ölçümlerinde izleme verileri de mevcuttur. İzleme verilerinizi istediğiniz uzunlukta tutmak için Log Analytics kullanabilirsiniz. Azure Izleyici, ölçümleri varsayılan olarak yalnızca 30 gün boyunca depolar. 
+İzleme verileri Azure Monitör Ölçümleri'nde de kullanılabilir. İzleme verilerinizi istediğiniz kadar tutmak için Log Analytics'i kullanabilirsiniz. Azure Monitor varsayılan olarak ölçümleri yalnızca 30 gün boyunca depolar. 
 
-[Veride ölçüm tabanlı uyarılar ayarlayabilirsiniz](https://azure.microsoft.com/blog/monitor-at-scale-in-azure-monitor-with-multi-resource-metric-alerts/).
+Veriler [üzerinde metrik tabanlı uyarılar](https://azure.microsoft.com/blog/monitor-at-scale-in-azure-monitor-with-multi-resource-metric-alerts/)ayarlayabilirsiniz.
 
 #### <a name="monitoring-dashboards"></a>Panoları izleme
 
-İzleme Panoları ' nde, abonelikleriniz, bölgeler, zaman damgaları, kaynaklarınız ve hedef türleri için erişebileceğiniz bağlantı izleyicilerinin bir listesini görürsünüz.
+İzleme panolarında, abonelikleriniz, bölgeleriniz, zaman damgalarınız, kaynaklarınız ve hedef türleriniz için erişebileceğiniz bağlantı izleyicilerinin bir listesini görürsünüz.
 
-Ağ Izleyicisinden bağlantı Izleyicisi 'ne (Önizleme) gittiğinizde, verileri şu şekilde görüntüleyebilirsiniz:
+Ağ İzleyicisi'nden Bağlantı İzleyicisi'ne (Önizleme) gittiğinizde, verileri şu şekilde görüntüleyebilirsiniz:
 
-* **Bağlantı İzleyicisi** – abonelikleriniz, bölgeler, zaman damgaları, kaynaklarınız ve hedef türleri için oluşturulan tüm bağlantı izleyicilerinin listesi. Bu görünüm varsayılandır.
-* **Test grupları** – abonelikleriniz, bölgelerleriniz, zaman damgaları, kaynaklarınız ve hedef türleri için oluşturulan tüm test gruplarının listesidir. Bu test grupları bağlantı izleyicilerine göre filtrelenmez.
-* **Test** – abonelikleriniz, bölgeler, zaman damgaları, kaynaklarınız ve hedef türleriniz için çalışan tüm testlerin listesi. Bu testler bağlantı izleyicilerine veya test gruplarına göre filtrelenmez.
+* **Bağlantı monitörü** – Abonelikleriniz, bölgeleriniz, zaman damgalarınız, kaynaklarınız ve hedef türleriniz için oluşturulan tüm bağlantı monitörlerinin listesi. Bu görünüm varsayılandır.
+* **Test grupları** – Abonelikleriniz, bölgeleriniz, zaman damgalarınız, kaynaklarınız ve hedef türleriniz için oluşturulan tüm test gruplarının listesi. Bu test grupları bağlantı monitörleri tarafından filtrelenmez.
+* **Test** – Abonelikleriniz, bölgeleriniz, zaman damgalarınız, kaynaklarınız ve hedef türleriniz için çalışan tüm testlerin listesi. Bu testler bağlantı monitörleri veya test grupları tarafından filtrelenmez.
 
-Aşağıdaki görüntüde, üç veri görünümü, ok 1 ile belirtilmiştir.
+Aşağıdaki resimde, üç veri görünümü ok 1 ile gösterilir.
 
-Panoda, her bir bağlantı izleyicisini genişleterek test gruplarını görüntüleyebilirsiniz. Ardından, içinde çalışan testleri görmek için her bir test grubunu genişletebilirsiniz. 
+Panoda, test gruplarını görmek için her bağlantı monitörünü genişletebilirsiniz. Ardından, içinde çalışan testleri görmek için her test grubunu genişletebilirsiniz. 
 
-Bir listeyi temelinde filtreleyebilirsiniz:
+Bir listeyi şu temele göre filtreleyebilirsiniz:
 
-* **Üst düzey filtreler** – abonelikler, bölgeler, zaman damgası kaynakları ve hedef türleri seçin. Aşağıdaki görüntüde Box 2 ' ye bakın.
-* **Durum tabanlı filtreler** : Bağlantı İzleyicisi, test grubu veya test durumuna göre filtreleyin. Aşağıdaki görüntüde ok 3 ' ü inceleyin.
-* **Özel filtreler** – genel arama yapmak Için **Tümünü Seç ' i** seçin. Belirli bir varlığa göre arama yapmak için, açılan listeden öğesini seçin. Aşağıdaki görüntüde ok 4 ' ü inceleyin.
+* **Üst düzey filtreler** – Abonelikleri, bölgeleri, zaman damgası kaynaklarını ve hedef türlerini seçin. Aşağıdaki resimdeki kutu 2'ye bakın.
+* **Durum tabanlı filtreler** – Bağlantı izleme, test grubu veya testdurumuna göre filtreuygulayın. Aşağıdaki resimdeki ok 3'e bakın.
+* **Özel filtreler** – Genel arama yapmak için **Tümünü Seç'i** seçin. Belirli bir varlığa göre arama yapmak için açılan listeden seçim yapın. Aşağıdaki resimdeki ok 4'e bakın.
 
-![Bağlantı Izleyicilerindeki bağlantı izleyicilerinin, test gruplarının ve testlerin nasıl filtreleneceğini gösteren ekran görüntüsü (Önizleme)](./media/connection-monitor-2-preview/cm-view.png)
+![Bağlantı Monitörü'nde bağlantı monitörlerinin, test gruplarının ve testlerin görünümlerine nasıl filtre uygulanış gösteriş görüntüleyici ekran görüntüsü (Önizleme)](./media/connection-monitor-2-preview/cm-view.png)
 
-Örneğin, kaynak IP 'nin 10.192.64.56 olduğu bağlantı Izleyicisi 'ndeki (Önizleme) tüm testlere bakmak için:
-1. Görünümü **Test**olacak şekilde değiştirin.
-1. Arama alanına *10.192.64.56* yazın.
-1. Açılan listede **kaynaklar**' ı seçin.
-
-Kaynak IP 'nin 10.192.64.56 olduğu bağlantı Izleyicisinde (Önizleme) yalnızca başarısız testleri göstermek için:
-1. Görünümü **Test**olacak şekilde değiştirin.
-1. Durum tabanlı filtre için **başarısız**' ı seçin.
-1. Arama alanına *10.192.64.56* yazın.
-1. Açılan listede **kaynaklar**' ı seçin.
-
-Yalnızca hedef outlook.office365.com olan bağlantı Izleyicisinde (Önizleme) başarısız testleri göstermek için:
+Örneğin, kaynak IP'nin 10.192.64.56 olduğu Bağlantı İzleyicisi'ndeki (Önizleme) tüm testlere bakmak için:
 1. Görünümü **Test**olarak değiştirin.
-1. Durum tabanlı filtre için **başarısız**' ı seçin.
-1. Arama alanına *Outlook.office365.com* girin.
-1. Açılan listede **hedefler**' i seçin.
+1. Arama alanında, *10.192.64.56* yazın
+1. Açılan **listede, Kaynaklar'ı**seçin.
 
-   ![Outlook.Office365.com hedefi için yalnızca başarısız testleri göstermek üzere filtrelenmiş bir görünümü gösteren ekran görüntüsü](./media/connection-monitor-2-preview/tests-view.png)
+Kaynak IP'nin 10.192.64.56 olduğu Bağlantı Monitörü'nde (Önizleme) yalnızca başarısız testleri göstermek için:
+1. Görünümü **Test**olarak değiştirin.
+1. Durum tabanlı filtre için **Başarısız'ı**seçin.
+1. Arama alanında, *10.192.64.56* yazın
+1. Açılan **listede, Kaynaklar'ı**seçin.
 
-RTT içindeki eğilimleri ve bir bağlantı izleyicisinin başarısız olan denetim yüzdesini görüntülemek için:
-1. Araştırmak istediğiniz bağlantı izleyicisini seçin. Varsayılan olarak, izleme verileri test grubuna göre düzenlenir.
+Yalnızca hedefin outlook.office365.com bağlantı monitöründe (Önizleme) yalnızca başarısız testleri göstermek için:
+1. Görünümü **Test**olarak değiştirin.
+1. Durum tabanlı filtre için **Başarısız'ı**seçin.
+1. Arama *alanına, outlook.office365.com* girin
+1. Açılan **listede, Hedefler'i**seçin.
 
-   ![Test grubuna göre gösterilen bir bağlantı izleyicisinin ölçümlerini gösteren ekran görüntüsü](./media/connection-monitor-2-preview/cm-drill-landing.png)
+   ![yalnızca Outlook.Office365.com hedef için başarısız testleri göstermek için filtre uygulanmış bir görünümü gösteren ekran görüntüsü](./media/connection-monitor-2-preview/tests-view.png)
+
+RTT'deki eğilimleri ve bağlantı monitörü için başarısız denetimlerin yüzdesini görüntülemek için:
+1. Araştırmak istediğiniz bağlantı monitörünü seçin. Varsayılan olarak, izleme verileri test grubuna göre düzenlenir.
+
+   ![Test grubuna göre görüntülenen bağlantı monitörü ölçümlerini gösteren ekran görüntüsü](./media/connection-monitor-2-preview/cm-drill-landing.png)
 
 1. Araştırmak istediğiniz test grubunu seçin.
 
-   ![Bir test grubunun nerede seçileceğini gösteren ekran görüntüsü](./media/connection-monitor-2-preview/cm-drill-select-tg.png)
+   ![Test grubunun seçilebileceği yeri gösteren ekran görüntüsü](./media/connection-monitor-2-preview/cm-drill-select-tg.png)
 
-    Başarısız denetimlerin RTT veya yüzdesine göre test grubunuzun en çok başarısız olan beş testi görürsünüz. Her test için, başarısız denetimlerin yüzdesi için RTT ve eğilim çizgilerini görürsünüz.
-1. Listeden bir test seçin veya araştırmak için başka bir test seçin. Zaman aralığı ve başarısız denetimlerin yüzdesi için eşik ve gerçek değerler görürsünüz. RTT için eşik, ortalama, minimum ve maksimum değerlerini görürsünüz.
+    TEST grubunuzun RTT'ye veya başarısız denetimlerin yüzdesini temel alan en iyi beş başarısız testini görürsünüz. Her test için, başarısız denetimlerin yüzdesi için RTT ve eğilim çizgilerini görürsünüz.
+1. Listeden bir test seçin veya araştırmak için başka bir test seçin. Zaman aralığınız ve başarısız denetimlerin yüzdesi için eşik ve gerçek değerleri görürsünüz. RTT için eşik, ortalama, minimum ve maksimum değerleri görürsünüz.
 
-   ![Bir testin RTT ve başarısız denetimlerin yüzdesi için sonuçlarını gösteren ekran görüntüsü](./media/connection-monitor-2-preview/cm-drill-charts.png)
+   ![RTT için bir test sonuçlarını ve başarısız denetimlerin yüzdesini gösteren ekran görüntüsü](./media/connection-monitor-2-preview/cm-drill-charts.png)
 
 1. Daha fazla veri görüntülemek için zaman aralığını değiştirin.
-1. Kaynakları, hedefleri veya test yapılandırmasını görmek için görünümü değiştirin. 
-1. Başarısız testler temelinde bir kaynak seçin ve başarısız olan ilk beş testi araştırın. Örneğin, bağlantı izleyicisinde ilgili testleri araştırmak için > **kaynaklarıyla** **görüntüle** ve > **hedeflere** **göre görüntüle** ' yi seçin.
+1. Kaynakları, hedefleri veya test yapılandırmalarını görmek için görünümü değiştirin. 
+1. Başarısız testlere dayalı bir kaynak seçin ve en iyi beş başarısız testi araştırın. Örneğin, bağlantı monitöründeki ilgili testleri araştırmak için**Kaynaklara** **Göre** > Görüntüle ve > **Hedeflere** **Göre Görüntüle'yi**seçin.
 
-   ![İlk beş başarısız test için performans ölçümlerini gösteren ekran görüntüsü](./media/connection-monitor-2-preview/cm-drill-select-source.png)
+   ![Başarısız olan ilk beş testiçin performans ölçümlerini gösteren ekran görüntüsü](./media/connection-monitor-2-preview/cm-drill-select-source.png)
 
-RTT içindeki eğilimleri ve bir test grubu için başarısız denetimlerin yüzdesini görüntülemek için:
+RTT'deki eğilimleri ve bir test grubu için başarısız denetimlerin yüzdesini görüntülemek için:
 
 1. Araştırmak istediğiniz test grubunu seçin. 
 
-    Varsayılan olarak, izleme verileri kaynaklar, hedefler ve test yapılandırmalarına (testler) göre düzenlenir. Daha sonra, test gruplarından kaynakları, hedefleri veya test yapılandırmalarına kadar görünümü değiştirebilirsiniz. Ardından, ilk beş başarısız testi araştırmak için bir varlık seçin. Örneğin, seçilen bağlantı izleyicisinde ilgili testleri araştırmak için görünümü kaynaklar ve hedefler olarak değiştirin.
+    Varsayılan olarak, izleme verileri kaynaklara, hedeflere ve test yapılandırmalarına (testler) göre düzenlenir. Daha sonra, görünümü test gruplarından kaynaklara, hedeflere veya test yapılandırmalarına değiştirebilirsiniz. Ardından, en iyi beş başarısız testi araştırmak için bir varlık seçin. Örneğin, seçili bağlantı monitöründeki ilgili testleri araştırmak için görünümü kaynaklar ve hedeflerle değiştirin.
 1. Araştırmak istediğiniz testi seçin.
 
-   ![Testin nerede seçileceğini gösteren ekran görüntüsü](./media/connection-monitor-2-preview/tg-drill.png)
+   ![Testin nerede seçilebileceğinizi gösteren ekran görüntüsü](./media/connection-monitor-2-preview/tg-drill.png)
 
-    Zaman aralığı ve başarısız denetimlerin yüzdesi için eşik değerlerini ve gerçek değerleri görürsünüz. RTT için eşik, ortalama, minimum ve maksimum değerlerini görürsünüz. Seçtiğiniz test için tetiklenen uyarıları da görürsünüz.
+    Zaman aralığınız ve başarısız denetim yüzdeniz için eşik değerlerini ve gerçek değerleri görürsünüz. RTT için eşik, ortalama, minimum ve maksimum değerler görürsünüz. Ayrıca seçtiğiniz test için uyarılarını da görürsünüz.
 1. Daha fazla veri görüntülemek için zaman aralığını değiştirin.
 
-RTT içindeki eğilimleri ve test için başarısız denetimlerin yüzdesini görüntülemek için:
+RTT'deki eğilimleri ve bir test için başarısız denetimlerin yüzdesini görüntülemek için:
 1. Araştırmak istediğiniz kaynak, hedef ve test yapılandırmasını seçin.
 
-    Zaman aralığı ve başarısız denetimlerin yüzdesi için eşik değerlerini ve gerçek değerleri görürsünüz. RTT için eşik, ortalama, minimum ve maksimum değerlerini görürsünüz. Seçtiğiniz test için tetiklenen uyarıları da görürsünüz.
+    Zaman aralığınız ve başarısız denetimlerin yüzdesi için eşik değerlerini ve gerçek değerleri görürsünüz. RTT için eşik, ortalama, minimum ve maksimum değerler görürsünüz. Ayrıca seçtiğiniz test için uyarılarını da görürsünüz.
 
-   ![Bir test için ölçümleri gösteren ekran görüntüsü](./media/connection-monitor-2-preview/test-drill.png)
+   ![Test için ölçümleri gösteren ekran görüntüsü](./media/connection-monitor-2-preview/test-drill.png)
 
-1. Ağ topolojisini görmek için **topoloji**' yi seçin.
+1. Ağ topolojisini görmek için **Topoloji'yi**seçin.
 
-   ![Ağ topolojisi sekmesini gösteren ekran görüntüsü](./media/connection-monitor-2-preview/test-topo.png)
+   ![Ağ Topoloji sekmesini gösteren ekran görüntüsü](./media/connection-monitor-2-preview/test-topo.png)
 
-1. Tanımlanan sorunları görmek için, topolojide, yoldaki herhangi bir atlama seçin. (Bu atlamalar Azure kaynaklarıdır.) Bu işlevsellik şu anda şirket içi ağlarda kullanılamıyor.
+1. Topolojide tanımlanan sorunları görmek için, yoldaki herhangi bir atlamayı seçin. (Bu atlamalar Azure kaynaklarıdır.) Bu işlevsellik şu anda şirket içi ağlar için kullanılamaz.
 
-   ![Topoloji sekmesindeki seçili atlama bağlantısını gösteren ekran görüntüsü](./media/connection-monitor-2-preview/test-topo-hop.png)
+   ![Topoloji sekmesinde seçili bir atlama bağlantısını gösteren ekran görüntüsü](./media/connection-monitor-2-preview/test-topo-hop.png)
 
-#### <a name="log-queries-in-log-analytics"></a>Log Analytics 'de günlük sorguları
+#### <a name="log-queries-in-log-analytics"></a>Log Analytics'te günlük sorguları
 
-İzleme verilerinizin özel görünümlerini oluşturmak için Log Analytics kullanın. Kullanıcı arabiriminin gösterdiği tüm veriler Log Analytics. Depodaki verileri etkileşimli olarak analiz edebilirsiniz. Aracı Durumu veya Log Analytics tabanlı diğer çözümlerdeki verilerin ilişkilendirilmesi. Verileri Excel 'e aktarın veya Power BI veya paylaşılabilir bir bağlantı oluşturun.
+İzleme verilerinizin özel görünümlerini oluşturmak için Günlük Analizi'ni kullanın. UI'nin görüntülemesi tüm veriler Log Analytics'ten dir. Depodaki verileri etkileşimli olarak analiz edebilirsiniz. Aracı Durumu'ndan veya Log Analytics'te bulunan diğer çözümlerden gelen verileri ilişkilendirin. Verileri Excel veya Power BI'ye dışa aktarın veya paylaşılabilir bir bağlantı oluşturun.
 
 #### <a name="metrics-in-azure-monitor"></a>Azure İzleyicisi'nde ölçümler
 
-Bağlantı Izleyicisi (Önizleme) deneyiminden önce oluşturulan bağlantı izleyicilerinde, dört ölçüm de kullanılabilir:% araştırmaları başarısız, AverageRoundtripMs, ChecksFailedPercent (Önizleme) ve Roundüçlü zaman MS (Önizleme). Bağlantı Izleyicisi (Önizleme) deneyiminde oluşturulan bağlantı izleyicilerinde, veriler yalnızca ile etiketlenmiş ölçümler *(Önizleme)* için kullanılabilir.
+Bağlantı İzleyicisi (Önizleme) deneyiminden önce oluşturulan bağlantı monitörlerinde, dört ölçümün tümü de kullanılabilir: % Sondalar Başarısız, AverageRoundTripMs, ChecksFailedPercent (Önizleme) ve RoundTripTimeM'ler (Önizleme). Bağlantı İzleyicisi (Önizleme) deneyiminde oluşturulan bağlantı monitörlerinde veriler yalnızca *(Önizleme)* ile etiketlenen ölçümler için kullanılabilir.
 
-![Bağlantı Izleyicisinde ölçümleri gösteren ekran görüntüsü (Önizleme)](./media/connection-monitor-2-preview/monitor-metrics.png)
+![Bağlantı Monitörü'nde ölçümleri gösteren ekran görüntüsü (Önizleme)](./media/connection-monitor-2-preview/monitor-metrics.png)
 
-Ölçümleri kullandığınızda, kaynak türünü Microsoft. Network/networkWatchers/Connectionmonitörleri olarak ayarlayın
+Ölçümleri kullandığınızda, kaynak türünü Microsoft.Network/networkWatchers/connectionMonitors olarak ayarlayın
 
 | Ölçüm | Görünen ad | Birim | Toplama türü | Açıklama | Boyutlar |
 | --- | --- | --- | --- | --- | --- |
-| ProbesFailedPercent | % Yoklama başarısız oldu | Yüzde | Ortalama | Bağlantı İzleme Araştırmaları yüzdesi başarısız oldu. | Boyut yok |
-| AverageRoundtripMs | Ort. gidiş dönüş süresi (MS) | Milisaniye | Ortalama | Kaynak ve hedef arasında gönderilen bağlantı izleme araştırmaları için Ortalama ağ RTT. |             Boyut yok |
-| ChecksFailedPercent (Önizleme) | % Denetim başarısız oldu (Önizleme) | Yüzde | Ortalama | Bir test için başarısız denetimlerin yüzdesi. | Connectionmonitorresourceıd <br>SourceAddress <br>Kaynak <br>Sourceresourceıd <br>KaynakTürü <br>Protokol <br>DestinationAddress <br>Hedef adı <br>Hedef RESOURCEID <br>Hedef türü <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>Bölge |
-| Roundüçlü MS (Önizleme) | Gidiş dönüş süresi (MS) (Önizleme) | Milisaniye | Ortalama | Kaynak ve hedef arasında gönderilen denetimler için RTT. Bu değer, ortalama değildir. | Connectionmonitorresourceıd <br>SourceAddress <br>Kaynak <br>Sourceresourceıd <br>KaynakTürü <br>Protokol <br>DestinationAddress <br>Hedef adı <br>Hedef RESOURCEID <br>Hedef türü <br>DestinationPort <br>TestGroupName <br>TestConfigurationName <br>Bölge |
+| ProbesFailedPercent | % Sondalar Başarısız Oldu | Yüzde | Ortalama | Bağlantı izleme sondalarının yüzdesi başarısız oldu. | Boyut yok |
+| AverageRoundtripMs | Avg. Gidiş-dönüş Saati (ms) | Milisaniye | Ortalama | Kaynak ve hedef arasında gönderilen bağlantı izleme probları için ortalama ağ RTT. |             Boyut yok |
+| ChecksFailedPercent (Önizleme) | % Denetler Başarısız (Önizleme) | Yüzde | Ortalama | Bir test için başarısız denetimyüzdesi. | BağlantıMonitorResourceId <br>Kaynak Adresi <br>Kaynak Adı <br>SourceResourceId <br>KaynakTürü <br>Protokol <br>Hedef Adres <br>Hedef Adı <br>HedefKaynakId <br>Destinationtype <br>Hedef Port <br>TestGroupName <br>TestConfigurationName <br>Bölge |
+| RoundTripTimeMs (Önizleme) | Gidiş-dönüş Süresi (ms) (Önizleme) | Milisaniye | Ortalama | Kaynak ve hedef arasında gönderilen denetimler için RTT. Bu değer ortalama değildir. | BağlantıMonitorResourceId <br>Kaynak Adresi <br>Kaynak Adı <br>SourceResourceId <br>KaynakTürü <br>Protokol <br>Hedef Adres <br>Hedef Adı <br>HedefKaynakId <br>Destinationtype <br>Hedef Port <br>TestGroupName <br>TestConfigurationName <br>Bölge |
 
-#### <a name="metric-alerts-in-azure-monitor"></a>Azure Izleyici 'de ölçüm uyarıları
+#### <a name="metric-alerts-in-azure-monitor"></a>Azure Monitör'de metrik uyarılar
 
-Azure Izleyici 'de bir uyarı oluşturmak için:
+Azure Monitor'da bir uyarı oluşturmak için:
 
-1. Bağlantı Izleyicisi (Önizleme) bölümünde oluşturduğunuz Bağlantı İzleyicisi kaynağını seçin.
-1. **Ölçümün** Bağlantı İzleyicisi için sinyal türü olarak görüntülendiğinden emin olun.
-1. **Koşul**adı bölümünde, **sinyal adı**Için, **checksfailedpercent (Önizleme)** veya **roundüçlü MS (Önizleme)** öğesini seçin.
-1. **Sinyal türü**için **ölçümler**' i seçin. Örneğin, **Checksfailedpercent (Önizleme)** öğesini seçin.
-1. Ölçümün tüm boyutları listelenir. Boyut adı ve boyut değerini seçin. Örneğin, **kaynak adresi** ' ni seçin ve ardından bağlantı izleyicinizdeki herhangi BIR kaynağın IP adresini girin.
-1. **Uyarı mantığı**' nda aşağıdaki ayrıntıları girin:
-   * **Koşul türü**: **statik**.
-   * **Koşul** ve **eşik**.
-   * **Toplama ayrıntı düzeyi ve değerlendirme sıklığı**: bağlantı Izleyicisi (Önizleme) her dakikada verileri güncelleştirir.
-1. **Eylemler**' de eylem grubunuzu seçin.
-1. Uyarı ayrıntılarını belirtin.
+1. Bağlantı İzleyicisi'nde (Önizleme) oluşturduğunuz bağlantı izleme kaynağını seçin.
+1. **Metrik'in** bağlantı monitörü için sinyal türü olarak ortaya çıktığından emin olun.
+1. **İşaret Adı**Için **Koşul Ekle'de** **ChecksFailedPercent(Preview)** veya **RoundTripTimeMs(Preview)** seçeneğini belirleyin.
+1. **Sinyal Türü**için **Ölçümler'i**seçin. Örneğin, **ChecksFailedPercent(Preview)** seçeneğini belirleyin.
+1. Metrik için tüm boyutlar listelenir. Boyut adını ve boyut değerini seçin. Örneğin, **Kaynak Adresi** seçin ve ardından bağlantı monitörünüze herhangi bir kaynağın IP adresini girin.
+1. **Alert Logic'te**aşağıdaki ayrıntıları doldurun:
+   * **Koşul Türü**: **Statik**.
+   * **Koşul** ve **Eşik**.
+   * **Toplama Tanecikleri ve Değerlendirme Sıklığı**: Bağlantı Monitörü (Önizleme) verileri her dakika günceller.
+1. **Eylemler'de**eylem grubunuzu seçin.
+1. Uyarı ayrıntıları sağlayın.
 1. Uyarı kuralını oluşturun.
 
-   ![Azure Izleyici 'de kural oluştur alanını gösteren ekran görüntüsü; "Kaynak adresi" ve "kaynak uç noktası adı" vurgulanır](./media/connection-monitor-2-preview/mdm-alerts.jpg)
+   ![Azure Monitor'da Oluştur kuralı alanını gösteren ekran görüntüsü; "Kaynak adresi" ve "Kaynak uç nokta adı" vurgulanır](./media/connection-monitor-2-preview/mdm-alerts.jpg)
 
-## <a name="diagnose-issues-in-your-network"></a>Ağınızdaki sorunları tanılayın
+## <a name="diagnose-issues-in-your-network"></a>Abunuzdaki sorunları tanılama
 
-Bağlantı Izleyicisi (Önizleme), bağlantı izleyicinizdeki ve ağınızdaki sorunları tanılamanıza yardımcı olur. Karma ağınızdaki sorunlar, daha önce yüklediğiniz Log Analytics aracıları tarafından algılanır. Azure 'daki sorunlar ağ Izleyicisi uzantısı tarafından algılanır. 
+Bağlantı İzleyicisi (Önizleme), bağlantı monitörünüzdeki ve ağınızdaki sorunları tanılamanıza yardımcı olur. Karma ağınızdaki sorunlar, daha önce yüklediğiniz Log Analytics aracıları tarafından algılanır. Azure'daki sorunlar Ağ İzleyicisi uzantısı tarafından algılanır. 
 
-Ağ topolojisinde Azure ağı 'ndaki sorunları görüntüleyebilirsiniz.
+Ağ topolojisinde Azure ağındaki sorunları görüntüleyebilirsiniz.
 
-Kaynakları şirket içi VM 'Ler olan ağlarda aşağıdaki sorunlar tespit edilebilir:
+Kaynakları şirket içi VM olan ağlar için aşağıdaki sorunlar algılanabilir:
 
-* İstek zaman aşımına uğradı.
-* Uç nokta DNS tarafından çözümlenmedi-geçici veya kalıcı. URL geçersiz.
-* Hiçbir ana bilgisayar bulunamadı.
-* Kaynak, hedefle bağlantı kuramıyor. Hedefe ıCMP üzerinden ulaşılamıyor.
-* Sertifikayla ilgili sorunlar: 
+* İstek zaman doldu.
+* Bitiş noktası DNS tarafından çözülmedi – geçici veya kalıcı. URL geçersiz.
+* Ev sahibi bulunamadı.
+* Kaynak hedefe bağlanamıyor. HEDEF ICMP üzerinden ulaşılamıyor.
+* Sertifika ile ilgili sorunlar: 
     * Aracının kimliğini doğrulamak için istemci sertifikası gereklidir. 
-    * Sertifika konum değiştirme listesine erişilemiyor. 
-    * Uç noktanın ana bilgisayar adı, sertifikanın konu veya konu diğer adı ile eşleşmiyor. 
-    * Kaynağın yerel bilgisayar güvenilen sertifika yetkilileri deposunda kök sertifika yok. 
-    * SSL sertifikasının zaman aşımına uğradı, geçersiz, iptal edildi veya uyumsuz.
+    * Sertifika yer değiştirme listesine erişilemez. 
+    * Bitiş noktasının ana bilgisayar adı, sertifikanın öznesi veya özne alternatif adı ile eşleşmez. 
+    * Kaynak'ın Yerel Bilgisayar Güvenilen Sertifika Yetkilileri deposunda kök sertifikası eksik. 
+    * SSL sertifikasının süresi doldu, geçersiz, iptal edildi veya uyumsuz.
 
-Kaynakları Azure VM 'Leri olan ağlarda aşağıdaki sorunlar tespit edilebilir:
+Kaynakları Azure VM olan ağlar için aşağıdaki sorunlar algılanabilir:
 
 * Aracı sorunları:
-    * Aracı durdu.
-    * DNS çözümlemesi başarısız oldu.
-    * Hedef bağlantı noktasını dinleyen uygulama veya dinleyici yok.
-    * Yuva açılamadı.
-* VM durumu sorunları: 
+    * Ajan durdu.
+    * Başarısız DNS çözünürlüğü.
+    * Hedef bağlantı noktasında dinleme uygulaması veya dinleyici yok.
+    * Soket açılamadı.
+* VM durum sorunları: 
     * Başlatılıyor
     * Durduruluyor
     * Durduruldu
     * Serbest bırakılıyor
     * Serbest bırakıldı
-    * Yeniden başlatılıyor
-    * Ayrılmadı
-* ARP tablosu girdisi eksik.
+    * Yeni -den başlatma
+    * Tahsis edilmedi
+* ARP tablo girişi eksik.
 * Yerel güvenlik duvarı sorunları veya NSG kuralları nedeniyle trafik engellendi.
-* Sanal ağ geçidi sorunları: 
-    * Eksik yollar.
-    * İki ağ geçidi arasındaki tünelin bağlantısı kesildi veya yok.
-    * İkinci ağ geçidi, tünel tarafından bulunamadı.
-    * Eşleme bilgisi bulunamadı.
-* Microsoft Edge 'de yol eksikti.
-* Sistem yolları veya UDR nedeniyle trafik durduruldu.
-* Ağ Geçidi bağlantısında BGP etkin değil.
-* DIP araştırması, yük dengeleyicide çalışıyor.
+* Sanal ağ ağ geçidi sorunları: 
+    * Kayıp rotalar.
+    * İki ağ geçidi arasındaki tünel bağlantısı kesilmiş veya eksik.
+    * İkinci geçit tünelin yanında bulunamadı.
+    * Hiçbir eşleme bilgisi bulunamadı.
+* Microsoft Edge'de rota eksikti.
+* Trafik sistem yolları veya UDR nedeniyle durduruldu.
+* Ağ geçidi bağlantısında BGP etkin değil.
+* DIP sondası yük dengeleyicisi aşağı.

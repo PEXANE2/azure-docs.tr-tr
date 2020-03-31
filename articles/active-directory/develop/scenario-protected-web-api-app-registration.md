@@ -1,7 +1,7 @@
 ---
-title: Korumalı Web API 'SI uygulama kaydı | Mavisi
+title: Korumalı web API uygulama kaydı | Azure
 titleSuffix: Microsoft identity platform
-description: Korumalı bir Web API 'SI oluşturmayı ve uygulamayı kaydettirmek için gereken bilgileri oluşturmayı öğrenin.
+description: Korumalı bir web API'sini nasıl oluşturabileceğinizi ve uygulamayı kaydetmek için ihtiyacınız olan bilgileri öğrenin.
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -17,100 +17,100 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 2d9e5d051f101288b8528b47fa88b4783a040950
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79262509"
 ---
-# <a name="protected-web-api-app-registration"></a>Korumalı Web API 'SI: uygulama kaydı
+# <a name="protected-web-api-app-registration"></a>Korumalı web API: Uygulama kaydı
 
-Bu makalede, korumalı bir Web API 'SI için uygulama kaydının ayrıntıları açıklanmaktadır.
+Bu makalede, korumalı bir web API için uygulama kaydının özellikleri açıklanmaktadır.
 
-Bir uygulamayı kaydetmeye yönelik ortak adımlar için bkz. [hızlı başlangıç: Microsoft Identity platformu ile uygulama kaydetme](quickstart-register-app.md).
+Bir uygulamayı kaydetmek için ortak adımlar için [Quickstart: Microsoft kimlik platformuna bir uygulama kaydolun.](quickstart-register-app.md)
 
 ## <a name="accepted-token-version"></a>Kabul edilen belirteç sürümü
 
-Microsoft Identity platform uç noktası, v 1.0 belirteçlerini ve v 2.0 belirteçlerini verebilir. Bu belirteçler hakkında daha fazla bilgi için bkz. [erişim belirteçleri](access-tokens.md).
+Microsoft kimlik platformu bitiş noktası v1.0 belirteçleri ve v2.0 belirteçleri verebilir. Bu belirteçler hakkında daha fazla bilgi için [Erişim belirteçleri'ne](access-tokens.md)bakın.
 
 Kabul edilen belirteç sürümü, uygulamanızı oluştururken seçtiğiniz **Desteklenen hesap türleri** değerine bağlıdır.
 
-- **Desteklenen hesap türlerinin** değeri **herhangi bir kurumsal dizin ve kişisel Microsoft hesabında (örn. Skype, Xbox, Outlook.com) hesaplardır**, kabul edilen belirteç sürümü v 2.0 ' dır.
-- Aksi takdirde, kabul edilen belirteç sürümü v 1.0 'dır.
+- Desteklenen hesap **türlerinin** değeri **herhangi bir kuruluş dizinindeki ve kişisel Microsoft hesaplarındaki (örneğin Skype, Xbox, Outlook.com) Hesaplar**ise, kabul edilen belirteç sürümü v2.0'dır.
+- Aksi takdirde, kabul edilen belirteç sürümü v1.0'dır.
 
-Uygulamayı oluşturduktan sonra, aşağıdaki adımları izleyerek kabul edilen belirteç sürümünü belirleyebilir veya değiştirebilirsiniz:
+Uygulamayı oluşturduktan sonra, kabul edilen belirteç sürümünü aşağıdaki adımları izleyerek belirleyebilir veya değiştirebilirsiniz:
 
-1. Azure portal, uygulamanızı seçin ve ardından **bildirim**' ı seçin.
-1. Bildirimde **Accesstokenacceptedversion** özelliğini bulun. Özelliğin varsayılan değeri 2 ' dir.
-1. Değer, Web API 'sinin kabul ettiği belirteç sürümünün Azure Active Directory (Azure AD) olduğunu belirtir.
-    - Değer 2 ise, Web API 'SI v 2.0 belirteçlerini kabul eder.
-    - Değer **null**ise, Web API 'si v 1.0 belirteçlerini kabul eder.
-1. Belirteç sürümünü değiştirdiyseniz **Kaydet**' i seçin.
+1. Azure portalında uygulamanızı seçin ve ardından **Bildirim'i**seçin.
+1. Özellik **erişimTokenAcceptedVersion'u** bildirimde bulun. Özelliğin varsayılan değeri 2'dir.
+1. Değer, web API'nin kabul ettiği sürümdeki Azure Etkin Dizini'ne (Azure AD) göredeğişir.
+    - Değer 2 ise, web API v2.0 belirteçleri kabul eder.
+    - Değer **null**ise, web API v1.0 belirteçleri kabul eder.
+1. Belirteç sürümünü değiştirdiyseniz, **Kaydet'i**seçin.
 
 > [!NOTE]
-> Web API 'SI, kabul ettiği belirteç sürümünü belirtir. İstemci, Microsoft Identity platform (v 2.0) uç noktasından Web API 'niz için bir belirteç istediğinde, istemci, Web API 'sinin hangi belirteç sürümünü kabul ettiğini belirten bir belirteç alır.
+> Web API, hangi belirteç sürümünü kabul ettiği belirtilir. İstemci, Microsoft kimlik platformundan (v2.0) web API'niz için bir belirteç istediğinde, istemci web API'nin hangi belirteç sürümünü kabul ettiğini gösteren bir belirteç alır.
 
-## <a name="no-redirect-uri"></a>Yeniden yönlendirme URI 'SI yok
+## <a name="no-redirect-uri"></a>URI'yi yönlendirmeyok
 
-Kullanıcı etkileşimli olarak oturum açmamış olduğundan Web API 'Lerinin yeniden yönlendirme URI 'SI kaydetmesi gerekmez.
+Hiçbir kullanıcı etkileşimli olarak oturum etmediğinden, Web API'leri yeniden yönlendirme URI'sini kaydetmeye gerek yoktur.
 
-## <a name="exposed-api"></a>Sunulan API
+## <a name="exposed-api"></a>Maruz KALAN API
 
-Web API 'Lerine özgü diğer ayarlar, sunulan API ve sunulan kapsamlardır.
+Web API'lerine özgü diğer ayarlar, açıkta kalan API'ler ve açıkta kalan kapsamlardır.
 
-### <a name="application-id-uri-and-scopes"></a>Uygulama KIMLIĞI URI 'SI ve kapsamları
+### <a name="application-id-uri-and-scopes"></a>Uygulama Kimliği URI ve kapsamları
 
-Kapsamlar genellikle form `resourceURI/scopeName`. Microsoft Graph için kapsamlar kısayollarına sahiptir. Örneğin, `User.Read` `https://graph.microsoft.com/user.read`için bir kısayoldur.
+Kapsamlar genellikle forma `resourceURI/scopeName`sahiptir. Microsoft Graph için kapsamların kısayolları vardır. Örneğin, `User.Read` `https://graph.microsoft.com/user.read`bir kısayol.
 
 Uygulama kaydı sırasında şu parametreleri tanımlamanız gerekir:
 
-- Kaynak URI 'SI
+- Kaynak URI
 - Bir veya daha fazla kapsam
 - Bir veya daha fazla uygulama rolü
 
-Varsayılan olarak, uygulama kayıt portalı `api://{clientId}`Kaynak URI 'sini kullanmanızı önerir. Bu URI benzersizdir ancak insanlar okunabilir değil. URI 'yi değiştirirseniz, yeni değerin benzersiz olduğundan emin olun.
+Varsayılan olarak, uygulama kayıt portalı kaynak URI `api://{clientId}`kullanmanızı önerir. Bu URI benzersiz ama insan okunabilir değildir. URI'yi değiştirirseniz, yeni değerin benzersiz olduğundan emin olun.
 
-İstemci uygulamalarında kapsamlar, *temsilci izinleri* olarak görünür ve uygulama rolleri, Web API 'niz için *Uygulama izinleri* olarak gösterilir.
+İstemci uygulamalarında *kapsamlar, yetkin izinler* olarak gösterir ve uygulama rolleri web API'nız için *uygulama izinleri* olarak gösteriş gösterir.
 
-Kapsamlar, uygulamanızın kullanıcılarına sunulan izin penceresinde de görüntülenir. Bu nedenle, kapsamı tanımlayan karşılık gelen dizeleri sağlamanız gerekir:
+Kapsamlar, uygulamanızın kullanıcılarına sunulan onay penceresinde de görünür. Bu nedenle kapsamı açıklayan karşılık gelen dizeleri sağlamanız gerekir:
 
 - Bir kullanıcı tarafından görüldüğü gibi.
-- Bir kiracı yöneticisi tarafından görüldüğü gibi, yönetici onayı de verebilir.
+- Yönetici nin rızasını verebilecek bir kiracı yönetici tarafından görüldüğü gibi.
 
-### <a name="exposing-delegated-permissions-scopes"></a>Temsilci izinleri gösterme (kapsamlar)
+### <a name="exposing-delegated-permissions-scopes"></a>Devredilen izinlerin (kapsamların) açığa çıkarılması
 
-1. Uygulama kaydında **BIR API 'Yi kullanıma** sunma ' yı seçin.
+1. Uygulama kaydında **API'yi ortaya çıkar'ı** seçin.
 1. **Kapsam ekle**’yi seçin.
-1. İstenirse, **Kaydet ve devam et**' i seçerek ÖNERILEN uygulama kimliği URI 'sini (`api://{clientId}`) kabul edin.
-1. Şu değerleri belirtin:
-    - **Kapsam adı** ' nı seçin ve **access_as_user**girin.
-    - **Kimlerin izin verebilir** ' i seçin ve **yöneticilerin ve kullanıcıların** seçili olduğundan emin olun.
-    - **Yönetici onayı görünen adını** seçin ve **Kullanıcı olarak erişim TodoListService**girin.
-    - **Yönetici onayı açıklaması** ' nı seçin ve **TodoListService Web API 'Sine Kullanıcı olarak erişir**yazın.
-    - **Kullanıcı onayı görünen adı** ' nı seçin ve **Kullanıcı olarak erişim TodoListService**girin.
-    - **Kullanıcı onay açıklaması** ' nı seçin ve **TodoListService Web API 'Sine Kullanıcı olarak erişir**yazın.
-    - **Durum** değerini **etkin**olarak bırakın.
- 1. **Kapsam Ekle**' yi seçin.
+1. İstenirse, Kaydet ve`api://{clientId}`Devam'ı seçerek önerilen uygulama kimliği URI () seçeneğini kabul **edin.**
+1. Bu değerleri belirtin:
+    - **Kapsam adını** seçin ve **access_as_user**girin.
+    - **Kimlerin onay kullanabileceğini** seçin ve **Yöneticilerin ve kullanıcıların** seçildiğinden emin olun.
+    - **Yönetici onayı ekran adını** seçin ve Kullanıcı olarak Access **TodoListService**girin.
+    - **Yönetici onayı açıklamasını** seçin ve kullanıcı olarak **TodoListService Web API'sine erişin.**
+    - **Kullanıcı onayı ekran adını** seçin ve Kullanıcı olarak Access **TodoListService**girin.
+    - **Kullanıcı onayı açıklamasını** seçin ve kullanıcı olarak **TodoListService Web API'sine erişin.**
+    - **Durum** değerini **Etkin**olarak ayarlamayı tutun.
+ 1. **Kapsam Ekle'yi**seçin.
 
-### <a name="if-your-web-api-is-called-by-a-daemon-app"></a>Web API 'niz bir Daemon uygulaması tarafından çağrılırsa
+### <a name="if-your-web-api-is-called-by-a-daemon-app"></a>Web API'niz bir daemon uygulaması tarafından çağrılırsa
 
-Bu bölümde, Daemon uygulamalarının güvenli bir şekilde çağırabilmesi için korumalı Web API 'nizi nasıl kaydedeceğinizi öğreneceksiniz.
+Bu bölümde, daemon uygulamalarının güvenli bir şekilde arayabilmeleri için korumalı web API'nizi nasıl kaydedebileceğinizi öğrenirsiniz.
 
-- Yalnızca *uygulama izinlerini* bildirir ve açığa çıkarmak için Daemon uygulamaları kullanıcılarla etkileşime girmezsiniz. Temsilci izinleri anlamlı hale getirir.
-- Kiracı yöneticileri, Azure AD 'nin yalnızca API 'nin uygulama izinlerinden birine erişmek üzere kayıtlı olan uygulamalara Web API belirteçleri vermesini gerektirebilir.
+- Daemon uygulamaları kullanıcılarla etkileşimde olmadığı için yalnızca *uygulama izinlerini* beyan eder ve açıklarsınız. Yetki niçin bir anlamı yok.
+- Kiracı yöneticiler, Azure AD'nin web API belirteçlerini yalnızca API'nin uygulama izinlerinden birine erişmek için kaydolmuş uygulamalara yayınlamasını gerektirebilir.
 
-#### <a name="exposing-application-permissions-app-roles"></a>Uygulama izinlerini gösterme (uygulama rolleri)
+#### <a name="exposing-application-permissions-app-roles"></a>Uygulama izinlerinin açığa çıkarılması (uygulama rolleri)
 
-Uygulama izinlerini göstermek için bildirimi düzenlemeniz gerekir.
+Uygulama izinlerini ortaya çıkarmak için bildirimi nizgerekir.
 
-1. Uygulamanız için uygulama kaydında, **bildirim**' ı seçin.
-1. Bildirimi düzenlemek için `appRoles` ayarını bulun ve uygulama rollerini ekleyin. Rol tanımları aşağıdaki örnek JSON bloğunda verilmiştir.
-1. `allowedMemberTypes` yalnızca `"Application"` olarak ayarlı bırakın.
-1. `id` benzersiz bir GUID olduğundan emin olun.
-1. `displayName` ve `value` boşluk içermediğinden emin olun.
-1. Bildirimi kaydedin.
+1. Başvurunuz için başvuru **kaydında, Manifesto'yu**seçin.
+1. Bildirimi ayarlamak için `appRoles` ayarı bulun ve uygulama rolleri ekleyin. Rol tanımları aşağıdaki örnek JSON bloğunda verilmiştir.
+1. `allowedMemberTypes` Sadece ayarlayın. `"Application"`
+1. Benzersiz `id` bir GUID olduğundan emin olun.
+1. Boşluk `displayName` içerdiğinden emin olun ve `value` almayın.
+1. Manifestoyu kaydedin.
 
-Aşağıdaki örnek, `id` değerinin herhangi bir benzersiz GUID olabilecek `appRoles`içeriğini gösterir.
+Aşağıdaki örnek, değerin `appRoles`benzersiz bir `id` GUID olabileceği içeriği gösterir.
 
 ```JSon
 "appRoles": [
@@ -127,31 +127,31 @@ Aşağıdaki örnek, `id` değerinin herhangi bir benzersiz GUID olabilecek `app
 ],
 ```
 
-#### <a name="ensuring-that-azure-ad-issues-tokens-for-your-web-api-to-only-allowed-clients"></a>Azure AD 'nin, Web API 'niz için belirteçleri yalnızca izin verilen istemcilere verdiği doğrulanıyor
+#### <a name="ensuring-that-azure-ad-issues-tokens-for-your-web-api-to-only-allowed-clients"></a>Azure AD'nin web API'nizin yalnızca istemcilere izin vermesine izin vermek için belirteçler verdiğine emin olun
 
-Web API 'SI, uygulama rolünü denetler. Bu rol, uygulama izinlerini göstermek için bir yazılım geliştiricisi yoludur. Ayrıca, Azure AD 'yi yalnızca kiracı yöneticisinin API erişimi için onayladığı uygulamalara API belirteçleri verecek şekilde yapılandırabilirsiniz.
+Web API'si uygulama rolünü denetler. Bu rol, bir yazılım geliştiricisinin uygulama izinlerini ortaya çıkarma yoludur. Azure AD'yi, API belirteçlerini yalnızca kiracı yöneticinin API erişimi için onayladığı uygulamalarla birlikte yapılandırabilirsiniz.
 
 Bu artırılmış güvenliği eklemek için:
 
-1. Uygulama kaydınız için uygulamaya **genel bakış** sayfasına gidin.
-1. **Yerel dizinde yönetilen uygulama**altında uygulamanızın adıyla bağlantıyı seçin. Bu seçimin etiketi kesilmiş olabilir. Örneğin, **Içinde yönetilen uygulamayı görebilirsiniz...**
+1. Uygulama kaydınız için uygulamaya **Genel Bakış** sayfasına gidin.
+1. **Yerel dizinde Yönetilen uygulama**altında, uygulamanızın adını içeren bağlantıyı seçin. Bu seçimin etiketi kesilmiş olabilir. Örneğin, **Yönetilen uygulamayı görebilirsiniz ...**
 
    > [!NOTE]
    >
-   > Bu bağlantıyı seçtiğinizde **Kurumsal uygulamaya genel bakış** sayfasına gidebilirsiniz. Bu sayfa, sizin oluşturduğunuz kiracıda uygulamanız için hizmet sorumlusu ile ilişkilendirilir. Tarayıcınızın geri düğmesini kullanarak uygulama kayıt sayfasına gidebilirsiniz.
+   > Bu bağlantıyı seçtiğinizde, Kurumsal **Uygulamaya Genel Bakış** sayfasına gidersiniz. Bu sayfa, oluşturduğunuz kiracıdaki uygulamanızın servis sorumlusuyla ilişkilidir. Tarayıcınızın arka düğmesini kullanarak uygulama kayıt sayfasına gidebilirsiniz.
 
-1. Kurumsal uygulama sayfalarının **Yönet** bölümünde **Özellikler** sayfasını seçin.
-1. Azure AD 'nin yalnızca belirli istemcilerden Web API 'nize erişmesine izin vermek istiyorsanız, **gereken Kullanıcı atamasını** **Evet**olarak ayarlayın.
+1. Kurumsal uygulama sayfalarının **Yönet** bölümündeki **Özellikler** sayfasını seçin.
+1. Azure AD'nin web API'nıza yalnızca belirli istemcilerden erişmesine izin **Yes**vermek istiyorsanız, **Kullanıcı atamasını gerekli** olarak ayarlar sınız?
 
    > [!IMPORTANT]
    >
-   > **Gerekli Kullanıcı atamasını** **AYARLARSANıZ, Azure**ad, bir Web API erişim belirteci istediğinde bir istemcinin uygulama rolü atamalarını denetler. İstemci herhangi bir uygulama rolüne atanmamışsa, Azure AD "invalid_client: AADSTS501051: Application \<uygulama adı\> \<Web API\>" rolüne atanmaz.
+   > **Kullanıcı atamasını gerekli** olarak **Yes**ayarlarsanız? İstemci herhangi bir uygulama rolüne atanmamışsa, Azure AD hata iletisini döndürecek "invalid_client: AADSTS501051: Uygulama \<uygulama adı\> \<web API'si\>için bir role atanmadı".
    >
-   > **Kullanıcı atamasını gerekli** tutarsanız, **Hayır**olarak AYARLARSANıZ, istemci Web API 'niz için bir erişim BELIRTECI istediğinde, Azure AD uygulama rolü atamalarını denetlemez. Tüm Daemon istemcileri, istemci kimlik bilgileri akışını kullanan tüm istemciler, hedef kitini belirterek API için bir erişim belirteci alabilir. Herhangi bir uygulama, API 'ye izin istemek zorunda kalmadan erişebilir.
+   > **Kullanıcı atamasını gerekli tutarsanız?** **No** Herhangi bir daemon istemcisi, yani istemci kimlik bilgilerini kullanan herhangi bir istemci, yalnızca hedef kitlesini belirterek API için bir erişim belirteci alabilirsiniz. Herhangi bir uygulama, izin istemeden API'ye erişebilir.
    >
-   > Ancak, önceki bölümde açıklandığı gibi, Web API 'niz uygulamanın kiracı yöneticisi tarafından yetkilendirilen doğru rolün olduğunu her zaman doğrulayabilirler. API, erişim belirtecinin bir rol talebine sahip olduğunu ve bu talebin değerinin doğru olduğunu doğrulayarak bu doğrulamayı gerçekleştirir. Önceki JSON örneğinde, değer `access_as_application`.
+   > Ancak önceki bölümde açıklandığı gibi, web API'niz her zaman uygulamanın kiracı yönetici tarafından yetkilendirilen doğru role sahip olduğunu doğrulayabilir. API, bu doğrulamayı, erişim belirtecinin bir rol talebi olduğunu ve bu talebin değerinin doğru olduğunu doğrulayarak gerçekleştirir. Önceki JSON örneğinde, değer `access_as_application`.
 
-1. **Kaydet**’i seçin.
+1. **Kaydet'i**seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

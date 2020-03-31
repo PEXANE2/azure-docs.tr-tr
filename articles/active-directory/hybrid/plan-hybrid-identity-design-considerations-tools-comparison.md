@@ -1,5 +1,5 @@
 ---
-title: 'Karma kimlik: Dizin tümleştirme araçları karşılaştırması | Microsoft Docs'
+title: 'Karma Kimlik: Dizin tümleştirme araçları karşılaştırması | Microsoft Belgeleri'
 description: Bu sayfada, dizin tümleştirme için kullanılabilen çeşitli dizin tümleştirme araçlarını karşılaştıran kapsamlı bir tablo sunulmaktadır.
 services: active-directory
 documentationcenter: ''
@@ -16,10 +16,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: aed01ea11c1f53cb090d9c2e65ee23f521575649
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60456926"
 ---
 # <a name="hybrid-identity-directory-integration-tools-comparison"></a>Karma Kimlik dizin tümleştirme araçları karşılaştırması
@@ -28,7 +28,7 @@ Yıllar içinde dizin tümleştirme araçları büyüme ve gelişim göstermişt
 <!-- The hardcoded link is a workaround for campaign ids not working in acom links-->
 
 > [!NOTE]
-> Azure AD Connect, daha önce Dirsync ve AAD Eşitleme olarak yayınlanan bileşenleri ve işlevleri bir araya getirir. Bu araçlar artık tek tek yayınlanmamaktadır ve ilerideki tüm geliştirmeler Azure AD Connect güncelleştirmelerine dahil edilecektir, böylece her zaman en güncel işlevlere nereden ulaşabileceğinizi bileceksiniz.
+> Azure AD Connect, daha önce Dirsync ve AAD Sync olarak daha önce yayımlanan bileşenleri ve işlevleri içerir. Bu araçlar artık tek tek yayımlanmayacak ve gelecekteki tüm geliştirmeler Azure AD Connect güncelleştirmelerine dahil edilecektir, böylece en güncel işlevselliği nereden alacağınızı her zaman bilirsiniz.
 > 
 > DirSync ve Azure AD Eşitleme kullanım dışı bırakılmıştır. [Buradan](reference-connect-dirsync-deprecated.md) daha fazla bilgi edinebilirsiniz.
 > 

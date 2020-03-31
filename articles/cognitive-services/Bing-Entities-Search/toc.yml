@@ -7,7 +7,7 @@
     - name: Bing Arama API'lerini karşılaştırma
       href: ../Bing-Web-Search/bing-api-comparison.md
       maintainContext: true
-- name: REST API Hızlı Başlangıçları
+- name: Hızlı Başlangıçlar
   expanded: true
   items:
     - name: REST API

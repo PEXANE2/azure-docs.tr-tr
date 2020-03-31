@@ -1,6 +1,6 @@
 ---
-title: Bir Azure VM 'yi önyüklerken mavi ekran hataları | Microsoft Docs
-description: Önyükleme sırasında mavi ekran hatasının alındığı sorunu nasıl giderebileceğinizi öğrenin | Microsoft Docs
+title: Azure VM önyükleme yaparken mavi ekran hataları| Microsoft Dokümanlar
+description: Önyükleme yaparken mavi ekran hatasının alındığı sorunu nasıl gidereceklerini öğrenin| Microsoft Dokümanlar
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
@@ -13,58 +13,58 @@ ms.workload: infrastructure
 ms.date: 09/28/2018
 ms.author: genli
 ms.openlocfilehash: beb1562738699bbcede58d8214e69342abbb7c93
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79266942"
 ---
-# <a name="windows-shows-blue-screen-error-when-booting-an-azure-vm"></a>Windows, bir Azure VM 'yi önyüklerken mavi ekran hatasını gösterir
-Bu makalede, Microsoft Azure ' de bir Windows sanal makinesini (VM) önyüklediğinizde karşılaşabileceğiniz mavi ekran hataları açıklanır. Destek bileti için veri toplamanıza yardımcı olacak adımları sağlar. 
+# <a name="windows-shows-blue-screen-error-when-booting-an-azure-vm"></a>Windows, Azure VM önyükleme yaparken mavi ekran hatası gösterir
+Bu makalede, Microsoft Azure'da bir Windows Sanal Makine (VM) önyükleme yaptığınızda karşılaşabileceğiniz mavi ekran hataları açıklanmaktadır. Destek bileti için veri toplamanıza yardımcı olacak adımlar sağlar. 
 
 
 ## <a name="symptom"></a>Belirti 
 
-Bir Windows VM 'si başlamıyor. Önyükleme [tanılamalarında](./boot-diagnostics.md)önyükleme ekran görüntülerini denetlediğinizde, mavi ekranda aşağıdaki hata iletilerinden birini görürsünüz:
+Windows VM başlatılamıyor. [Önyükleme tanılamaönyükleme](./boot-diagnostics.md)ekran görüntüleri kontrol ettiğinizde, mavi ekranda aşağıdaki hata iletilerinden birini görürsünüz:
 
-- BILGISAYARıMDA bir sorun oluştu ve yeniden başlatılması gerekiyor. Yalnızca bazı hata bilgilerini topluyoruz ve sonra yeniden başlatabilirsiniz.
-- BILGISAYARıNıZ bir sorunla karşılaştı ve yeniden başlatılması gerekiyor.
+- bizim PC bir sorunla karşılaştı ve yeniden başlatması gerekiyor. Sadece bazı hata bilgileri topluyoruz, ve sonra yeniden başlatabilirsiniz.
+- Bilgisayarınız bir sorunla karşılaştı ve yeniden başlatılması gerekiyor.
 
-Bu bölümde, VM 'Leri yönetirken karşılaşabileceğiniz yaygın hata iletileri listelenmektedir:
+Bu bölümde, VM'leri yönetirken karşılaşabileceğiniz yaygın hata iletileri listelenebilir:
 
 ## <a name="cause"></a>Nedeni
 
-Neden bir durma hatası edinmenizin birden çok nedeni olabilir. En yaygın nedenler şunlardır:
+Bir durdurma hatası almak neden olarak birden çok nedeni olabilir. En yaygın nedenleri şunlardır:
 
-- Sürücü ile ilgili sorun
-- Bozuk sistem dosyası veya belleği
-- Uygulama, belleğin yasak bir sektörüne erişir
+- Sürücüyle ilgili sorun
+- Bozuk sistem dosyası veya bellek
+- Bir uygulama belleğin yasak bir sektörüne erişiyor
 
-## <a name="collect-memory-dump-file"></a>Bellek dökümü dosyası topla
+## <a name="collect-memory-dump-file"></a>Bellek dökümü dosyasını toplama
 
-Bu sorunu çözmek için öncelikle kilitlenme için döküm dosyası toplamanız ve döküm dosyası ile desteğe başvurmanız gerekir. Döküm dosyasını toplamak için aşağıdaki adımları izleyin:
+Bu sorunu gidermek için, önce kilitlenme için döküm dosyasını toplamanız ve döküm dosyasıyla desteğe başvurmanız gerekir. Dökümü dosyasını toplamak için aşağıdaki adımları izleyin:
 
-### <a name="attach-the-os-disk-to-a-recovery-vm"></a>İşletim sistemi diskini bir kurtarma VM'si ekleme
+### <a name="attach-the-os-disk-to-a-recovery-vm"></a>Os diskini kurtarma VM'ine takın
 
-1. Etkilenen VM 'nin işletim sistemi diskinin anlık görüntüsünü bir yedekleme olarak alın. Daha fazla bilgi için bkz. [disk anlık görüntüsü](../windows/snapshot-copy-managed-disk.md).
-2. [İşletim sistemi diskini bir kurtarma sanal makinesine ekleyin](../windows/troubleshoot-recovery-disks-portal.md). 
-3. Kurtarma sanal makinesine uzak masaüstü.
+1. Yedek olarak etkilenen VM'nin işletim sistemi diskinin anlık görüntüsünü alın. Daha fazla bilgi için [bir diskanlık anlık görüntüsüne](../windows/snapshot-copy-managed-disk.md)bakın.
+2. [Os diskini kurtarma VM'sine takın.](../windows/troubleshoot-recovery-disks-portal.md) 
+3. Kurtarma VM uzak masaüstü.
 
-### <a name="locate-dump-file-and-submit-a-support-ticket"></a>Döküm dosyasını bul ve bir destek bileti gönder
+### <a name="locate-dump-file-and-submit-a-support-ticket"></a>Döküm dosyanı bulma ve destek bileti gönderme
 
-1. Kurtarma VM 'sinde, bağlı işletim sistemi diskinde Windows klasörü ' ne gidin. Bağlı işletim sistemi diskine atanan sürücü harfi F ise, F:\windowsadresine gitmeniz gerekir.
-2. Memory. dmp dosyasını bulun ve ardından döküm dosyası ile [bir destek bileti gönderebilirsiniz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) . 
+1. Kurtarma VM'inde, bağlı işletim sistemi diskindeki windows klasörüne gidin. Bağlı işletim sistemi diskine atanan sürücü harfi F ise, F:\Windows'a gitmeniz gerekir.
+2. Memory.dmp dosyasını bulun ve ardından döküm dosyasıyla [birlikte bir destek bileti gönderin.](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) 
 
-Döküm dosyasını bulamıyorsanız, döküm günlüğünü ve seri konsolunu etkinleştirmek için sonraki adımı taşıyın.
+Döküm dosyasını bulamıyorsanız, döküm günlüğü ve Seri Konsol'u etkinleştirmek için bir sonraki adımı taşıyın.
 
-### <a name="enable-dump-log-and-serial-console"></a>Döküm günlük ve seri konsol etkinleştir
+### <a name="enable-dump-log-and-serial-console"></a>Döküm günlük ve Seri Konsol etkinleştirme
 
-Döküm günlük ve seri konsol etkinleştirmek için aşağıdaki betiği çalıştırın.
+Döküm günlüğü ve Seri Konsol'u etkinleştirmek için aşağıdaki komut dosyasını çalıştırın.
 
-1. Yükseltilmiş komut Istemi oturumunu açın (yönetici olarak çalıştır).
+1. Yükseltilmiş komut Istem oturumunu açın (Yönetici olarak çalıştırın).
 2. Şu betiği çalıştırın:
 
-    Bu betikte, bağlı işletim sistemi diskine atanan sürücü harfinin F olduğunu varsaytık.  Bunu sanal makinenizde uygun değerle değiştirin.
+    Bu komut dosyasında, ekli işletim sistemi diskine atanan sürücü harfinin F olduğunu varsayıyoruz.  VM'inizdeki uygun değerle değiştirin.
 
     ```powershell
     reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv
@@ -88,8 +88,8 @@ Döküm günlük ve seri konsol etkinleştirmek için aşağıdaki betiği çal�
     reg unload HKLM\BROKENSYSTEM
     ```
 
-    1. Bu VM için seçtiğiniz boyuta bağlı olarak RAM 'e kadar bellek ayırmak için diskte yeterli alan olduğundan emin olun.
-    2. Yeterli alan yoksa veya bu büyük boyutlu bir VM (G, GS veya E serisi) ise, bu dosyanın oluşturulacağı konumu değiştirebilir ve VM 'ye bağlı olan diğer tüm veri diskine başvurabilirsiniz. Bunu yapmak için aşağıdaki anahtarı değiştirmeniz gerekir:
+    1. Diskte, bu VM için seçtiğiniz boyuta bağlı olarak RAM kadar bellek ayırmak için yeterli alan olduğundan emin olun.
+    2. Yeterli alan yoksa veya bu büyük boyutlu bir VM (G, GS veya E serisi) ise, bu dosyanın oluşturulacağı konumu değiştirebilir ve bunu VM'ye bağlı başka bir veri diskine yönlendirebilirsiniz. Bunu yapmak için aşağıdaki anahtarı değiştirmeniz gerekir:
 
             reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv
 
@@ -98,9 +98,9 @@ Döküm günlük ve seri konsol etkinleştirmek için aşağıdaki betiği çal�
 
             reg unload HKLM\BROKENSYSTEM
 
-3. [İşletim sistemi diskini ayırın ve ardından işletim sistemi diskini ETKILENEN VM 'ye yeniden ekleyin](../windows/troubleshoot-recovery-disks-portal.md).
-4. Sorunu yeniden oluşturmak için VM 'yi başlatın, ardından bir döküm dosyası oluşturulur.
-5. İşletim sistemi diskini bir kurtarma sanal makinesine ekleyin, döküm dosyasını toplayın ve ardından döküm dosyası ile [bir destek bileti](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) iletin.
+3. [Os diskini ayırın ve ardından işletim sistemi diskini etkilenen VM'ye yeniden takın.](../windows/troubleshoot-recovery-disks-portal.md)
+4. Sorunu çoğaltmak için VM'yi başlatın, ardından bir döküm dosyası oluşturulur.
+5. Os diskini kurtarma VM'sine takın, döküm dosyasını toplayın ve ardından döküm dosyasıyla [birlikte bir destek bileti gönderin.](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)
 
 
 

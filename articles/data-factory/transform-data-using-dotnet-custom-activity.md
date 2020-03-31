@@ -1,6 +1,6 @@
 ---
-title: İşlem hattında özel etkinlikler kullanma
-description: Özel etkinlikler oluşturmayı ve bunları bir Azure Data Factory işlem hattında kullanmayı öğrenin.
+title: Bir ardışık alanda özel etkinlikler kullanma
+description: Azure Veri Fabrikası ardışık bir ardışık alanda özel etkinlikler oluşturmayı ve bunları nasıl kullanacağınızı öğrenin.
 services: data-factory
 ms.service: data-factory
 author: nabhishek
@@ -11,36 +11,36 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/26/2018
 ms.openlocfilehash: 4913152125b0fafd74db575f835d53fa992b075e
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79260585"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Bir Azure Data Factory işlem hattında özel etkinlikler kullanma
 
-> [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
+> [!div class="op_single_selector" title1="Kullandığınız Veri Fabrikası hizmetisürümünü seçin:"]
 > * [Sürüm 1](v1/data-factory-use-custom-activities.md)
 > * [Geçerli sürüm](transform-data-using-dotnet-custom-activity.md)
 
-Azure Data Factory ardışık düzeninde kullanabileceğiniz iki tür etkinlik vardır.
+Bir Azure Veri Fabrikası ardışık hattında kullanabileceğiniz iki tür etkinlik vardır.
 
-- Verileri [, desteklenen kaynak ve havuz veri depoları](copy-activity-overview.md#supported-data-stores-and-formats)arasında taşımak için [veri taşıma etkinlikleri](copy-activity-overview.md) .
-- Azure HDInsight, Azure Batch ve Azure Machine Learning gibi işlem hizmetlerini kullanarak verileri dönüştürmek için [veri dönüştürme etkinlikleri](transform-data.md) .
+- Desteklenen [kaynak ve lavabo veri depoları](copy-activity-overview.md#supported-data-stores-and-formats)arasında veri taşımak için veri hareketi [faaliyetleri.](copy-activity-overview.md)
+- Azure HDInsight, Azure Toplu İş ve Azure Machine Learning gibi bilgi işlem hizmetlerini kullanarak verileri dönüştürmek için [veri dönüştürme etkinlikleri.](transform-data.md)
 
-Data Factory desteklemediği bir veri deposuna/veritabanından veri taşımak veya Data Factory tarafından desteklenmeyen bir şekilde veri dönüştürmek veya işlemek için, kendi veri taşıma veya dönüştürme mantığınızla **özel bir etkinlik** oluşturabilir ve aktiviteyi bir işlem hattında kullanabilirsiniz. Özel etkinlik, özelleştirilmiş kod mantığınızı bir sanal makineler **Azure Batch** havuzunda çalıştırır.
+Verileri Veri Fabrikası'nın desteklemediği bir veri deposuna/veri deposundan taşımak veya Verileri Veri Fabrikası tarafından desteklenmeyen bir şekilde dönüştürmek/işlemek için, kendi veri hareketiniz veya dönüştürme mantığınızla bir **Özel etkinlik** oluşturabilir ve etkinliği bir ardışık ardışık işlemde kullanabilirsiniz. Özel etkinlik, özelleştirilmiş kod mantığınızı Azure **Toplu Sanal** Makineler havuzunda çalıştırır.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Azure Batch Service ' i yeni biliyorsanız aşağıdaki makalelere bakın:
+Azure Toplu İş hizmetinde yeniyseniz aşağıdaki makalelere bakın:
 
-* Azure Batch hizmetine genel bakış hakkında [temel bilgiler Azure Batch](../batch/batch-technical-overview.md) .
-* Azure Batch bir hesap oluşturmak için [New-AzBatchAccount](/powershell/module/az.batch/New-azBatchAccount) cmdlet 'i, Azure portal kullanarak Azure Batch hesabı oluşturmak için [Azure Portal](../batch/batch-account-create-portal.md) . Cmdlet 'ini kullanma hakkında ayrıntılı yönergeler için [Azure Batch hesabını yönetmek üzere PowerShell kullanma](https://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx) makalesine bakın.
-* Azure Batch havuzu oluşturmak için [New-AzBatchPool](/powershell/module/az.batch/New-AzBatchPool) cmdlet 'i.
+* Azure Toplu İşlem hizmetine genel bakış için [Azure Toplu İşlem temelleri.](../batch/batch-technical-overview.md)
+* Azure portalını kullanarak Azure Toplu Hesabı oluşturmak için bir Azure Toplu İş hesabı (veya) [Azure portalı](../batch/batch-account-create-portal.md) oluşturmak için [Yeni-AzBatchAccount](/powershell/module/az.batch/New-azBatchAccount) cmdlet. Cmdlet'i kullanma yla ilgili ayrıntılı talimatlar için Azure Toplu İş Hesabı makalesini yönetmek için [PowerShell'i](https://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx) kullanma makalesine bakın.
+* Azure Toplu İş havuzu oluşturmak için [Yeni-AzBatchPool](/powershell/module/az.batch/New-AzBatchPool) cmdlet.
 
-## <a name="azure-batch-linked-service"></a>Bağlı hizmet Azure Batch
+## <a name="azure-batch-linked-service"></a>Azure Toplu İşlem bağlantılı hizmet
 
-Aşağıdaki JSON bir örnek Azure Batch bağlı hizmetini tanımlar. Ayrıntılar için bkz. [Azure Data Factory tarafından desteklenen işlem ortamları](compute-linked-services.md)
+Aşağıdaki JSON örnek bir Azure Toplu İş bağlantılı hizmeti tanımlar. Ayrıntılar için Bkz. [Azure Veri Fabrikası tarafından desteklenen Bilgi İşlem ortamları](compute-linked-services.md)
 
 ```json
 {
@@ -64,11 +64,11 @@ Aşağıdaki JSON bir örnek Azure Batch bağlı hizmetini tanımlar. Ayrıntıl
 }
 ```
 
- Azure Batch bağlı hizmet hakkında daha fazla bilgi edinmek için bkz. [işlem bağlı hizmetleri](compute-linked-services.md) makalesi.
+ Azure Toplu İş bağlantılı hizmet hakkında daha fazla bilgi edinmek için [Bkz. Bilgi İşlem bağlantılı hizmetler](compute-linked-services.md) makalesine bakın.
 
 ## <a name="custom-activity"></a>Özel etkinlik
 
-Aşağıdaki JSON kod parçacığı, basit bir özel etkinliğe sahip bir işlem hattı tanımlar. Etkinlik tanımının Azure Batch bağlı hizmetine bir başvurusu vardır.
+Aşağıdaki JSON snippet basit bir Özel Etkinlik ile bir boru hattı tanımlar. Etkinlik tanımının Azure Toplu İş Bağlantısı hizmetine bir başvurusu vardır.
 
 ```json
 {
@@ -95,35 +95,35 @@ Aşağıdaki JSON kod parçacığı, basit bir özel etkinliğe sahip bir işlem
 }
 ```
 
-Bu örnekte, HelloWorld. exe, Resourcelınkedservice 'te kullanılan Azure Storage hesabının customactv2/HelloWorld klasöründe depolanan özel bir uygulamadır. Özel etkinlik, Azure Batch yürütülmek üzere bu özel uygulamayı gönderir. Komutunu, Azure Batch havuz düğümlerinin hedef Işletim sisteminde yürütülebilecek herhangi bir tercih edilen uygulamayla değiştirebilirsiniz.
+Bu örnekte, helloworld.exe, resourceLinkedService'te kullanılan Azure Depolama hesabının customactv2/helloworld klasöründe depolanan özel bir uygulamadır. Özel etkinlik, Azure Toplu İş'te yürütülecek bu özel uygulamayı gönderir. Komutu, Azure Toplu Birleştirme Havuzu düğümlerinin hedef İşlem Sistemi'nde yürütülebilecek tercih edilen uygulamalarla değiştirebilirsiniz.
 
-Aşağıdaki tabloda, bu etkinliğe özgü özelliklerin adları ve açıklamaları açıklanmaktadır.
+Aşağıdaki tabloda, bu faaliyete özgü özelliklerin adları ve açıklamaları açıklanmaktadır.
 
 | Özellik              | Açıklama                              | Gerekli |
 | :-------------------- | :--------------------------------------- | :------- |
-| ad                  | İşlem hattındaki etkinliğin adı     | Yes      |
+| ad                  | Boru hattındaki etkinliğin adı     | Evet      |
 | açıklama           | Etkinliğin ne yaptığını açıklayan metin.  | Hayır       |
-| type                  | Özel etkinlik için etkinlik türü **Custom**olur. | Yes      |
-| linkedServiceName     | Azure Batch bağlı hizmet. Bu bağlı hizmet hakkında bilgi edinmek için bkz. [işlem bağlı hizmetleri](compute-linked-services.md) makalesi.  | Yes      |
-| command               | Yürütülecek özel uygulamanın komutu. Uygulama Azure Batch havuzu düğümünde zaten kullanılabiliyorsa, Resourcelınkedservice ve folderPath atlanabilir. Örneğin, Windows Batch havuzu düğümü tarafından yerel olarak desteklenen `cmd /c dir`için komutu belirtebilirsiniz. | Yes      |
-| Resourcelınkedservice | Özel uygulamanın depolandığı depolama hesabına Azure Storage bağlı hizmeti | Eşleşen&#42;       |
-| folderPath            | Özel uygulamanın klasörünün yolu ve tüm bağımlılıkları<br/><br/>Alt klasörlerde depolanan bağımlılıklarınız varsa-diğer bir deyişle, *FolderPath* altındaki hiyerarşik bir klasör yapısında, dosyalar Azure Batch kopyalanırken klasör yapısı şu anda düzleştirilir. Diğer bir deyişle, tüm dosyalar alt klasörleri olmayan tek bir klasöre kopyalanır. Bu davranışa geçici bir çözüm bulmak için, dosyaları sıkıştırmayı, sıkıştırılmış dosyayı kopyalamayı ve sonra istenen konumdaki özel kodla bir daha fazla ping işlemi yapmayı göz önünde bulundurun. | Eşleşen&#42;       |
-| referenceObjects      | Mevcut bağlı hizmetlerin ve veri kümelerinin dizisi. Başvurulan bağlı hizmetler ve veri kümeleri, JSON biçiminde özel uygulamaya geçirilir, böylece özel kodunuzun Data Factory kaynaklarına başvurabilir. | Hayır       |
-| extendedProperties    | Özel kodunuzun ek özelliklere başvurabilmesi için JSON biçiminde özel uygulamaya geçirilebilecek Kullanıcı tanımlı özellikler | Hayır       |
-| retentionTimeInDays | Özel etkinlik için gönderilen dosyalar için bekletme süresi. Varsayılan değer 30 gündür. | Hayır |
+| type                  | Özel etkinlik için etkinlik türü **Özeldir.** | Evet      |
+| linkedServiceName     | Azure Toplu İş'e Bağlı Hizmet. Bu bağlantılı hizmet hakkında bilgi edinmek için [Bkz. Compute bağlantılı hizmetler](compute-linked-services.md) makalesine bakın.  | Evet      |
+| command               | Yürütülecek özel uygulamanın komutu. Uygulama Azure Toplu İş Havuzu Düğümü'nde zaten kullanılabilirse, kaynak LinkedService ve folderPath atlanabilir. Örneğin, Windows Toplu İş Havuzu `cmd /c dir`düğümü tarafından yerel olarak desteklenen komutu belirtebilirsiniz. | Evet      |
+| kaynakLinkedService | Azure Depolama Bağlantılı Hizmet, özel uygulamanın depolandığı Depolama hesabına | &#42; yok       |
+| folderPath            | Özel uygulama klasörüne ve tüm bağımlılıklarına giden yol<br/><br/>Alt klasörlerde depolanan bağımlılıklarınız varsa - yani *folderPath* altında hiyerarşik bir klasör yapısında - dosyalar Azure Toplu İş'e kopyalandığında klasör yapısı şu anda düzleştirilmiş durumda. Diğer bir diğer anda, tüm dosyalar alt klasörü olmayan tek bir klasöre kopyalanır. Bu davranışı n için dosyaları sıkıştırmayı, sıkıştırılmış dosyayı kopyalamayı ve ardından istediğiniz konumda özel kodla açmayı düşünün. | &#42; yok       |
+| referansNesneler      | Varolan Bağlantılı Hizmetler ve Veri Kümeleri dizisi. Başvurulan Bağlantılı Hizmetler ve Veri kümeleri JSON formatında özel uygulamaya aktarılır, böylece özel kodunuz Veri Fabrikası'nın kaynaklarına başvurulabilir | Hayır       |
+| genişletilmiş Özellikler    | Özel kodunuz ek özelliklere başvurulabilmek için JSON formatında özel uygulamaya geçirilebilen kullanıcı tanımlı özellikler | Hayır       |
+| retentionTimeInDays | Özel etkinlik için gönderilen dosyaların bekletme süresi. Varsayılan değer 30 gündür. | Hayır |
 
-&#42;`resourceLinkedService` ve `folderPath` özelliklerinin ikisi de belirtilmelidir ya da her ikisi de atlanmalıdır.
+&#42; Özellikleri `resourceLinkedService` `folderPath` ve her ikisi de belirtilmelidir veya her ikisi de atlanmalıdır.
 
 > [!NOTE]
-> Bağlı hizmetleri özel etkinlikte referenceObjects olarak geçirirseniz, Azure Key Vault etkinleştirilmiş bir bağlı hizmeti geçirmek (güvenli dizeler içermediğinden) ve doğrudan anahtardan gizli bir ad kullanarak kimlik bilgilerini getirmek iyi bir güvenlik uygulamasıdır. Koddan kasa. [Burada](https://github.com/nabhishek/customactivity_sample/tree/linkedservice) , Akv özellikli bağlı hizmete başvuran bir örnek bulabilir, Key Vault kimlik bilgilerini alır ve sonra koddaki depolamaya erişir.
+> Bağlantılı hizmetleri Özel Etkinlik'te referans Olarak Geçiyorsanız, Azure Anahtar Kasası etkin leştirilmiş bağlantılı hizmeti geçmek (güvenli dizeleri içermediğinden) ve kimlik bilgilerini doğrudan Key'den gizli ad kullanarak almak iyi bir güvenlik uygulamasıdır Koddan kasa. [Burada](https://github.com/nabhishek/customactivity_sample/tree/linkedservice) AKV etkin bağlantılı hizmete başvuran, kimlik bilgilerini Key Vault'tan alan ve koddaki depolama alanına erişen bir örnek bulabilirsiniz.
 
 ## <a name="custom-activity-permissions"></a>Özel etkinlik izinleri
 
-Özel etkinlik Azure Batch otomatik Kullanıcı hesabını *görev kapsamıyla yönetici olmayan erişime* (varsayılan Otomatik Kullanıcı belirtimi) ayarlar. Otomatik Kullanıcı hesabının izin düzeyini değiştiremezsiniz. Daha fazla bilgi için bkz. [Batch 'de Kullanıcı hesapları altında görevleri çalıştırma | Otomatik Kullanıcı hesapları](../batch/batch-user-accounts.md#auto-user-accounts).
+Özel etkinlik, Azure Toplu Otomatik Kullanıcı hesabını görev kapsamıyla (varsayılan otomatik kullanıcı belirtimi) *yönetici olmayan erişime* ayarlar. Otomatik kullanıcı hesabının izin düzeyini değiştiremezsiniz. Daha fazla bilgi için bkz: [Toplu Iş' deki kullanıcı hesapları altındaki görevleri çalıştır | Otomatik kullanıcı hesapları.](../batch/batch-user-accounts.md#auto-user-accounts)
 
-## <a name="executing-commands"></a>Komutları yürütme
+## <a name="executing-commands"></a>Yürütme komutları
 
-Özel etkinlik kullanarak bir komutu doğrudan çalıştırabilirsiniz. Aşağıdaki örnek, hedef Azure Batch havuz düğümlerinde "Echo Hello World" komutunu çalıştırır ve çıktıyı stdout ' a yazdırır.
+Özel Etkinlik'i kullanarak bir komutu doğrudan yürütebilirsiniz. Aşağıdaki örnek, hedef Azure Toplu İşlem Havuzu düğümlerinde "yankı merhaba world" komutunu çalıştırır ve çıktıyı stdout'a yazdırır.
 
 ```json
 {
@@ -145,9 +145,9 @@ Aşağıdaki tabloda, bu etkinliğe özgü özelliklerin adları ve açıklamala
 }
 ```
 
-## <a name="passing-objects-and-properties"></a>Nesneleri ve özellikleri geçirme
+## <a name="passing-objects-and-properties"></a>Geçen nesneler ve özellikler
 
-Bu örnek, özel uygulamanıza Data Factory nesneleri ve Kullanıcı tanımlı özellikleri geçirmek için referenceObjects ve extendedProperties 'i nasıl kullanabileceğinizi gösterir.
+Bu örnek, Veri Fabrikası nesnelerini ve kullanıcı tanımlı özellikleri özel uygulamanıza geçirmek için referans Nesneleri ve genişletilmiş Özellikleri nasıl kullanabileceğinizi gösterir.
 
 ```json
 {
@@ -189,21 +189,21 @@ Bu örnek, özel uygulamanıza Data Factory nesneleri ve Kullanıcı tanımlı �
 }
 ```
 
-Etkinlik yürütüldüğünde, referenceObjects ve extendedProperties, SampleApp. exe ' nin aynı yürütme klasörüne dağıtılan aşağıdaki dosyalarda saklanır:
+Etkinlik yürütüldüğünde, referenceObjects ve extendedProperties, SampleApp.exe'nin aynı yürütme klasörüne dağıtılan aşağıdaki dosyalarda depolanır:
 
 - `activity.json`
 
-  Özel etkinliğin Extendedözelliklerini ve özelliklerini depolar.
+  Genişletilmiş Özellikleri ve özel etkinliğin özelliklerini depolar.
 
 - `linkedServices.json`
 
-  ReferenceObjects özelliğinde tanımlanan bağlantılı hizmetlerden oluşan bir diziyi depolar.
+  ReferenceObjects özelliğinde tanımlanan bir dizi Bağlantılı Hizmet depolar.
 
 - `datasets.json`
 
-  ReferenceObjects özelliğinde tanımlanan bir veri kümesi dizisini depolar.
+  ReferenceObjects özelliğinde tanımlanan bir dizi Veri kümesi depolar.
 
-Aşağıdaki örnek kod, SampleApp. exe ' nin JSON dosyalarından gerekli bilgilere nasıl erişebileceğini göstermektedir:
+Örnek kod aşağıdaki ÖrnekApp.exe'nin JSON dosyalarından gerekli bilgilere nasıl erişebileceğini gösterir:
 
 ```csharp
 using Newtonsoft.Json;
@@ -228,15 +228,15 @@ namespace SampleApp
 }
 ```
 
-## <a name="retrieve-execution-outputs"></a>Yürütme çıkışlarını alma
+## <a name="retrieve-execution-outputs"></a>Yürütme çıktılarını alma
 
-Aşağıdaki PowerShell komutunu kullanarak bir işlem hattı çalıştırması başlatabilirsiniz:
+Aşağıdaki PowerShell komutunu kullanarak bir ardışık hat lar hattı çalıştırabilirsiniz:
 
 ```powershell
 $runId = Invoke-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineName $pipelineName
 ```
 
-İşlem hattı çalışırken, aşağıdaki komutları kullanarak yürütme çıkışını kontrol edebilirsiniz:
+Ardışık iş aktarım ı çalışırken, yürütme çıktısını aşağıdaki komutları kullanarak denetleyebilirsiniz:
 
 ```powershell
 while ($True) {
@@ -264,7 +264,7 @@ Write-Host "Activity `Error` section:" -foregroundcolor "Yellow"
 $result.Error -join "`r`n"
 ```
 
-Özel uygulamanızın **stdout** ve **stderr** 'ı, görevin bir GUID 'ı ile Azure Batch bağlantılı hizmet oluştururken tanımladığınız Azure Storage bağlı hizmetindeki **adfjobs** kapsayıcısına kaydedilir. Aşağıdaki kod parçacığında gösterildiği gibi, etkinlik çalıştırma çıktısından ayrıntılı yolu alabilirsiniz:
+Özel uygulamanızın **stdout** ve **stderr** görevin bir GUID ile Azure Toplu İş Bağlantılı Hizmet oluştururken tanımladığınız Azure Depolama Bağlantılı Hizmeti **adfjobs** kapsayıcısına kaydedilir. Aşağıdaki snippet gösterildiği gibi Etkinlik Çalıştır çıktısından ayrıntılı yolu alabilirsiniz:
 
 ```
 Pipeline ' MyCustomActivity' run finished. Result:
@@ -297,19 +297,19 @@ Activity Error section:
 "target": "MyCustomActivity"
 ```
 
-StdOut. txt içeriğini aşağı akış etkinliklerinde kullanmak istiyorsanız, "\@Activity (' MyCustomActivity ') ifadesindeki stdout. txt dosyasının yolunu alabilirsiniz. Output. çıktılar [0]".
+Downstream etkinliklerinde stdout.txt içeriğini tüketmek istiyorsanız, "activity('MyCustomActivity').output.outputs[0]"\@ifadesinde stdout.txt dosyasına giden yolu alabilirsiniz.
 
 > [!IMPORTANT]
-> - Activity. JSON, linkedServices. JSON ve DataSet. JSON, Batch görevinin Runtime klasöründe saklanır. Bu örnek için Activity. JSON, linkedServices. JSON ve DataSet. JSON `"https://adfv2storage.blob.core.windows.net/adfjobs/\<GUID>/runtime/"` yolunda depolanır. Gerekirse, bunları ayrı olarak temizlemeniz gerekir.
-> - Şirket içinde barındırılan Integration Runtime kullanan bağlı hizmetler için, anahtar veya parola gibi hassas bilgiler, müşteri tarafından tanımlanan özel ağ ortamında kimlik bilgilerinin kalmasını sağlamak üzere şirket içinde barındırılan Integration Runtime tarafından şifrelenir. Özel uygulama kodunuz tarafından bu şekilde başvuruluyorsa bazı hassas alanlar eksik olabilir. Gerekirse, bağlantılı hizmet başvurusunu kullanmak yerine, SecureString 'i extendedProperties içinde kullanın.
+> - Activity.json, linkedServices.json ve datasets.json Toplu İşlem görevinin çalışma zamanı klasöründe depolanır. Bu örnekte, activity.json, linkedServices.json ve datasets.json `"https://adfv2storage.blob.core.windows.net/adfjobs/\<GUID>/runtime/"` şekilde depolanır. Gerekirse, ayrı ayrı temizlemek gerekir.
+> - Self-Hosted Integration Runtime'ı kullanan Bağlantılı Hizmetler için, anahtarlar veya parolalar gibi hassas bilgiler, müşteri tanımlı özel ağ ortamında kimlik bilgisi nin kalmasını sağlamak için Self-Hosted Integration Runtime tarafından şifrelenir. Bu şekilde özel uygulama kodunuz tarafından başvurulduğunda bazı hassas alanlar eksik olabilir. Gerekirse Bağlantılı Hizmet başvurusu kullanmak yerine genişletilmiş Özellikler'de SecureString'i kullanın.
 
-## <a name="pass-outputs-to-another-activity"></a>Çıkışları başka bir etkinliğe geçirme
+## <a name="pass-outputs-to-another-activity"></a>Çıktıları başka bir faaliyete geçirin
 
-Özel bir etkinlikte kodunuzdaki özel değerleri Azure Data Factory geri gönderebilirsiniz. Bunu uygulamanızdaki `outputs.json` yazarak yapabilirsiniz. Data Factory, `outputs.json` içeriğini kopyalar ve `customOutput` özelliğinin değeri olarak etkinlik çıktısına ekler. (Boyut sınırı 2MB 'dir.) Aşağı akış etkinliklerindeki `outputs.json` içeriğini kullanmak istiyorsanız, `@activity('<MyCustomActivity>').output.customOutput`ifadesini kullanarak değeri alabilirsiniz.
+Özel Etkinlik'te kodunuzdaki özel değerleri Azure Veri Fabrikası'na geri gönderebilirsiniz. Bunu uygulamanızdan yazarak `outputs.json` yapabilirsiniz. Veri Fabrikası içeriğini kopyalar `outputs.json` ve `customOutput` özelliğin değeri olarak Faaliyet Çıktısı'na ekler. (Boyut sınırı 2MB'dır.) Akış aşağı etkinliklerinin `outputs.json` içeriğini tüketmek istiyorsanız, ifadeyi `@activity('<MyCustomActivity>').output.customOutput`kullanarak değeri elde edebilirsiniz.
 
-## <a name="retrieve-securestring-outputs"></a>SecureString çıkışlarını al
+## <a name="retrieve-securestring-outputs"></a>SecureString çıktılarını alın
 
-Bu makaledeki bazı örneklerde gösterildiği gibi *SecureString*türü olarak atanan hassas özellik değerleri, Data Factory Kullanıcı arabirimindeki İzleme sekmesinde maskelenir.  Ancak gerçek işlem hattı yürütmesinde, bir *SecureString* özelliği `activity.json` dosyasında düz metın olarak JSON olarak serileştirilir. Örnek:
+Bu makaledeki bazı örneklerde gösterildiği gibi, *SecureString*türü olarak atanan hassas özellik değerleri, Veri Fabrikası kullanıcı arabirimindeki İzleme sekmesinde maskelenir.  Gerçek ardışık yürütme, ancak, bir *SecureString* özelliği düz `activity.json` metin olarak dosya içinde JSON olarak seriolarak. Örnek:
 
 ```json
 "extendedProperties": {
@@ -320,50 +320,50 @@ Bu makaledeki bazı örneklerde gösterildiği gibi *SecureString*türü olarak 
 }
 ```
 
-Bu serileştirme gerçekten güvenli değildir ve güvenli hale getirilmesi amaçlanmamıştır. Amaç, Izleme sekmesindeki değeri maskelemek için Data Factory ipucu.
+Bu serileştirme gerçekten güvenli değildir ve güvenli olması amaçlanmamıştır. Amaç, İzleme sekmesindeki değeri gizlemek için Veri Fabrikası'na ipucu vermektir.
 
-Özel etkinlikten *SecureString* türünün özelliklerine erişmek için, ile aynı klasöre yerleştirilmiş `activity.json` dosyasını okuyun. EXE, JSON serisini kaldırıp JSON özelliğine (extendedProperties = > [propertyName] = > value) erişin.
+Özel bir etkinlikten *SecureString* türü özelliklerine `activity.json` erişmek için, ''niz ile aynı klasöre yerleştirilen dosyayı okuyun. EXE, JSON deserialize ve sonra JSON özelliğine erişmek (genişletilmiş Properties => [propertyName] => değeri).
 
-## <a name="compare-v2-v1"></a>V2 özel etkinliğini ve sürüm 1 (özel) DotNet etkinliğini karşılaştırın
+## <a name="compare-v2-custom-activity-and-version-1-custom-dotnet-activity"></a><a name="compare-v2-v1"></a>v2 Özel Etkinliği ve sürüm 1 (Özel) DotNet Etkinliğini Karşılaştır
 
-Azure Data Factory sürüm 1 ' de, `IDotNetActivity` arabiriminin `Execute` yöntemini uygulayan bir sınıf ile .NET sınıf kitaplığı projesi oluşturarak (özel) DotNet etkinliği uygulayabilirsiniz. Bir (özel) DotNet etkinliğinin JSON yükünde bağlı hizmetler, veri kümeleri ve genişletilmiş özellikler, yürütme yöntemine türü kesin belirlenmiş nesneler olarak geçirilir. Sürüm 1 davranışı hakkındaki ayrıntılar için bkz. [Sürüm 1 ' de (özel) DotNet](v1/data-factory-use-custom-activities.md). Bu uygulama nedeniyle, sürüm 1 DotNet etkinlik kodunuzun .NET Framework 4.5.2 hedeflemesi gerekir. Sürüm 1 DotNet etkinliğinin de Windows tabanlı Azure Batch havuzu düğümlerinde yürütülmesi gerekir.
+Azure Veri Fabrikası sürüm 1'de, `Execute` `IDotNetActivity` arabirim yöntemini uygulayan bir sınıfa sahip bir .NET Sınıf Kitaplığı projesi oluşturarak (Özel) DotNet Etkinliği uygularsınız. Bir (Özel) DotNet Etkinliğinin JSON yükündeki Bağlantılı Hizmetler, Veri Kümeleri ve Genişletilmiş Özellikler, güçlü bir şekilde yazılan nesneler olarak yürütme yöntemine aktarılır. Sürüm 1 davranışı hakkında ayrıntılı bilgi için sürüm [1'deki (Custom) DotNet'e](v1/data-factory-use-custom-activities.md)bakın. Bu uygulama nedeniyle, sürüm 1 DotNet Etkinlik kodunun .NET Framework 4.5.2'yi hedeflemesi gerekiyor. Sürüm 1 DotNet Etkinliği de Windows tabanlı Azure Toplu Havuz düğümleri üzerinde yürütülmesi gerekir.
 
-Azure Data Factory v2 özel etkinliğinde, .NET arabirimi uygulamanız gerekmez. Artık yürütülebilir dosya olarak derlenen komutları, betikleri ve kendi özel kodunuzu doğrudan çalıştırabilirsiniz. Bu uygulamayı yapılandırmak için, `folderPath` özelliği ile birlikte `Command` özelliğini belirtin. Özel etkinlik, `folderpath` için çalıştırılabiliri ve bağımlılıklarını yükler ve komutu sizin için yürütür.
+Azure Veri Fabrikası V2 Özel Etkinliği'nde bir .NET arabirimi uygulamanız gerekmez. Artık komutları, komutları ve yürütülebilir olarak derlenen kendi özel kodunuzu doğrudan çalıştırabilirsiniz. Bu uygulamayı yapılandırmak için `Command` özelliği `folderPath` özellik ile birlikte belirtirsiniz. Özel Etkinlik, yürütülebilir ve bağımlılıklarını `folderpath` yükler ve komutu sizin için yürütür.
 
-Bağlı hizmetler, veri kümeleri (referenceObjects 'te tanımlanmıştır) ve bir Data Factory v2 özel etkinliğinin JSON yükünde tanımlanan genişletilmiş özelliklere ve çalıştırılabilir dosya tarafından JSON dosyaları olarak erişilebilir. Yukarıdaki SampleApp. exe kod örneğinde gösterildiği gibi, bir JSON serileştirici kullanarak gerekli özelliklere erişebilirsiniz.
+Bağlantılı Hizmetler, Veri Kümeleri (başvuru Nesneleri olarak tanımlanır) ve Bir Veri Fabrikası v2 Özel Etkinliğinin JSON yükünde tanımlanan Genişletilmiş Özellikler,JSON dosyaları olarak çalıştırılabilir tarafından erişilebilir. Yukarıdaki SampleApp.exe kod örneğinde gösterildiği gibi bir JSON serializer kullanarak gerekli özelliklere erişebilirsiniz.
 
-Data Factory v2 özel etkinliğinde tanıtılan değişikliklerle, özel kod mantığınızı tercih ettiğiniz dilde yazabilir ve Azure Batch tarafından desteklenen Windows ve Linux Işletim sistemlerinde yürütebilirsiniz.
+Veri Fabrikası V2 Özel Etkinliği'nde tanıtılan değişikliklerle, özel kod mantığınızı tercih ettiğiniz dilde yazabilir ve Azure Toplu İşlemi tarafından desteklenen Windows ve Linux İşlem Sistemleri'nde çalıştırabilirsiniz.
 
-Aşağıdaki tabloda Data Factory v2 özel etkinliği ve Data Factory sürüm 1 (özel) DotNet etkinliği arasındaki farklar açıklanmaktadır:
+Aşağıdaki tabloda Veri Fabrikası V2 Özel Etkinliği ile Veri Fabrikası sürüm 1 (Özel) DotNet Etkinliği arasındaki farklar açıklanmaktadır:
 
-|Fark      | Özel Etkinlik      | sürüm 1 (özel) DotNet etkinliği      |
+|Farklılıklar      | Özel Etkinlik      | sürüm 1 (Özel) DotNet Etkinliği      |
 | ---- | ---- | ---- |
-|Özel mantık nasıl tanımlanır      |Yürütülebilir bir dosya sağlayarak      |.NET DLL uygulayarak      |
+|Özel mantık nasıl tanımlanır?      |Çalıştırılabilir bir sağlayarak      |.NET DLL uygulayarak      |
 |Özel mantığın yürütme ortamı      |Windows veya Linux      |Windows (.NET Framework 4.5.2)      |
-|Betikler yürütülüyor      |, Betikleri doğrudan yürütmeyi destekler (örneğin, Windows VM 'de "cmd/c echo Hello World")      |.NET DLL 'de uygulama gerektirir      |
-|Veri kümesi gerekli      |İsteğe bağlı      |Etkinlikleri zincirlemek ve bilgi geçirmek için gereklidir      |
-|Etkinlikten özel mantığa bilgi geçirin      |ReferenceObjects (LinkedServices ve DataSet) ve ExtendedProperties aracılığıyla (özel özellikler)      |ExtendedProperties (özel özellikler), girdi ve çıktı veri kümeleri aracılığıyla      |
-|Özel mantığdaki bilgileri alma      |Yürütülebilir dosyanın aynı klasöründe depolanan Activity. JSON, linkedServices. JSON ve DataSet. JSON öğesini ayrıştırır      |.NET SDK aracılığıyla (.NET Frame 4.5.2)      |
-|Günlüğe kaydetme      |Doğrudan STDOUT 'a yazar      |.NET DLL 'de günlükçü uygulama      |
+|Komut dosyalarını yürütme      |Komut dosyalarının doğrudan yürütülmesini destekler (örneğin Windows VM'de "cmd /c yankı merhaba dünyası" )      |.NET DLL'de uygulama gerektirir      |
+|Gerekli veri kümesi      |İsteğe bağlı      |Faaliyetleri zincirlemek ve bilgi aktarmak için gerekli      |
+|Bilgileri etkinlikten özel mantığa geçirin      |ReferenceObjects (LinkedServices ve Datasets) ve ExtendedProperties (özel özellikler) aracılığıyla      |ExtendedProperties (özel özellikler), Giriş ve Çıktı Veri Kümeleri aracılığıyla      |
+|Özel mantıkla bilgi alma      |Parses activity.json, linkedServices.json ve datasets.json yürütülebilir aynı klasörde depolanır      |.NET SDK üzerinden (.NET Çerçeve 4.5.2)      |
+|Günlüğe Kaydetme      |Doğrudan STDOUT'a yazar      |.NET DLL'de Logger Uygulaması      |
 
-Sürüm 1 (özel) DotNet etkinliği için yazılmış bir .NET kodunuz varsa, özel etkinliğin geçerli sürümüyle çalışması için kodunuzu değiştirmeniz gerekir. Bu üst düzey yönergeleri izleyerek kodunuzu güncelleştirin:
+Sürüm 1 (Özel) DotNet Etkinliği için yazılmış varolan .NET kodunuz varsa, Özel Etkinlik'in geçerli sürümüyle çalışabilmek için kodunuzu değiştirmeniz gerekir. Bu üst düzey yönergeleri izleyerek kodunuzu güncelleştirin:
 
-  - Projeyi bir .NET sınıf kitaplığından konsol uygulamasına değiştirin.
-  - `Main` yöntemiyle uygulamanızı başlatın. `IDotNetActivity` arabiriminin `Execute` yöntemi artık gerekli değildir.
-  - Bağlı hizmetleri, veri kümelerini ve etkinlikleri bir JSON serileştiriciyle okuyup ayrıştırın ve türü kesin belirlenmiş nesneler olarak kullanmayın. Gerekli özelliklerin değerlerini ana özel kod mantığınıza geçirin. Örnek olarak yukarıdaki SampleApp. exe koduna bakın.
-  - Günlükçü nesnesi artık desteklenmiyor. Yürütülebilir bir dosyanın çıktısı konsola yazdırılabilir ve stdout. txt dosyasına kaydedilir.
-  - Microsoft. Azure. Management. DataFactory NuGet paketi artık gerekli değildir.
-  - Kodunuzu derleyin, yürütülebilir dosyayı ve bağımlılıklarını Azure depolama 'ya yükleyin ve `folderPath` özelliğindeki yolu tanımlayın.
+  - Projeyi .NET Sınıf Kitaplığı'ndan Konsol Uygulamasına değiştirin.
+  - Uygulamanızı yöntemle `Main` başlatın. `IDotNetActivity` Arabirimin `Execute` yöntemi artık gerekli değildir.
+  - Bağlantılı Hizmetleri, Veri Kümelerini ve Etkinliği bir JSON serileştiricisiyle okuyun ve ayrıştırın ve güçlü bir şekilde yazılan nesnelerle değil. Gerekli özelliklerin değerlerini ana özel kod mantığınıza geçirin. Örnek olarak önceki SampleApp.exe koduna bakın.
+  - Logger nesnesi artık desteklenmeyecek. Çalıştırılabilir çıktı konsola yazdırılabilir ve stdout.txt kaydedilir.
+  - Microsoft.Azure.Management.DataFactorys NuGet paketi artık gerekli değildir.
+  - Kodunuzu derle, çalıştırılabilir ve bağımlılıklarını Azure Depolama'ya yükleyin `folderPath` ve özellikteki yolu tanımlayın.
 
-Data Factory sürüm 1 makalesinde açıklanan uçtan uca DLL ve işlem hattı örneğinin tam bir örneği için bir Azure Data Factory işlem hattında [özel etkinlikler kullanma](https://docs.microsoft.com/azure/data-factory/v1/data-factory-use-custom-activities) Data Factory özel etkinlik olarak yeniden yazılabilir, bkz. [Data Factory özel etkinlik örneği](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ADFv2CustomActivitySample).
+Veri Fabrikası sürüm 1 makalede açıklanan uçtan uca DLL ve boru hattı örneğinin [Azure Veri Fabrikası ardışık hattındaki özel etkinlikleri](https://docs.microsoft.com/azure/data-factory/v1/data-factory-use-custom-activities) nasıl kullanabileceğine ilişkin tam bir örnek için bkz. [Data Factory Custom Activity sample](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ADFv2CustomActivitySample)
 
-## <a name="auto-scaling-of-azure-batch"></a>Azure Batch otomatik ölçeklendiriliyor
+## <a name="auto-scaling-of-azure-batch"></a>Azure Toplu İş'in otomatik ölçekleme
 
-Ayrıca, **Otomatik ölçeklendirme** özelliği ile bir Azure Batch havuzu da oluşturabilirsiniz. Örneğin, 0 adanmış VM ile bir Azure Batch havuzu ve bekleyen görevlerin sayısına göre bir otomatik ölçeklendirme formülü oluşturabilirsiniz.
+**Otomatik ölçeklendirme** özelliğine sahip bir Azure Toplu İş havuzu da oluşturabilirsiniz. Örneğin, 0 özel VM'ler içeren masmavi bir toplu iş havuzu ve bekleyen görev sayısını temel alan otomatik ölçeklendirme formülü oluşturabilirsiniz.
 
-Buradaki örnek formül aşağıdaki davranışa ulaşır: havuz başlangıçta oluşturulduğunda 1 VM ile başlar. $PendingTasks ölçümü, çalışan + etkin (sıraya alınmış) durumundaki görevlerin sayısını tanımlar. Formül, son 180 saniye içinde bekleyen görevlerin ortalama sayısını bulur ve Targetadanmış 'yi uygun şekilde ayarlar. Targetadanmış, 25 sanal makine dışında hiçbir şekilde geçmeyeceğinden emin olmanızı sağlar. Bu nedenle, yeni görevler gönderildiğinde havuz otomatik olarak büyür ve görevler tamamlandıkça, VM 'Ler tek bir kez serbest olur ve otomatik ölçeklendirme bu VM 'Leri küçültür. startingNumberOfVMs ve Maxnumberofvm 'Ler gereksinimlerinize göre ayarlanabilir.
+Buradaki örnek formül aşağıdaki davranışı elde eder: Havuz başlangıçta oluşturulduğunda, 1 VM ile başlar. $PendingTasks ölçümü, çalışan + etkin (sıralanmış) durumdaki görev sayısını tanımlar. Formül, son 180 saniyeiçinde bekleyen görevlerin ortalama sayısını bulur ve TargetDedicated'ı buna göre ayarlar. TargetDedicated'In asla 25 VM'yi geçmemesini sağlar. Böylece, yeni görevler gönderildikçe, havuz otomatik olarak büyür ve görevler tamamlandıkça, VM'ler birer birer ücretsiz hale gelir ve otomatik ölçekleme bu VM'leri küçültür. başlangıçNumberOfVMs ve maxNumberofVMs ihtiyaçlarınıza göre ayarlanabilir.
 
-Otomatik ölçeklendirme formülü:
+Otomatik ölçekformülü:
 
 ```
 startingNumberOfVMs = 1;
@@ -373,18 +373,18 @@ pendingTaskSamples = pendingTaskSamplePercent < 70 ? startingNumberOfVMs : avg($
 $TargetDedicated=min(maxNumberofVMs,pendingTaskSamples);
 ```
 
-Ayrıntılar için bkz. [bir Azure Batch havuzundaki işlem düğümlerini otomatik olarak ölçeklendirme](../batch/batch-automatic-scaling.md) .
+Ayrıntılar için [bir Azure Toplu İş havuzunda otomatik olarak hesap düğümlerini ölçeklendirin.](../batch/batch-automatic-scaling.md)
 
-Havuz varsayılan [autoScaleEvaluationInterval](https://msdn.microsoft.com/library/azure/dn820173.aspx)kullanıyorsa, Batch hizmeti özel etkinliği ÇALıŞTıRMADAN önce VM 'yi hazırlamak için 15-30 dakika sürebilir. Havuz farklı bir autoScaleEvaluationInterval kullanıyorsa, Batch hizmeti autoScaleEvaluationInterval + 10 dakika alabilir.
+Havuz varsayılan [otomatik ÖlçeklendirmeAralığı](https://msdn.microsoft.com/library/azure/dn820173.aspx)kullanıyorsa, Toplu İşlem hizmetinin özel etkinliği çalıştırmadan önce VM'yi hazırlaması 15-30 dakika sürebilir. Havuz farklı bir otomatik ÖlçeklendirmeInterval kullanıyorsa, Toplu Işlem hizmeti otomatik ÖlçeklendirmeAralığı + 10 dakika sürebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Verileri başka yollarla nasıl dönüştürebileceğinizi açıklayan aşağıdaki makalelere bakın:
+Verileri başka şekillerde nasıl dönüştüreceklerini açıklayan aşağıdaki makalelere bakın:
 
 * [U-SQL etkinliği](transform-data-using-data-lake-analytics.md)
-* [Hive etkinliği](transform-data-using-hadoop-hive.md)
-* [Pig etkinliği](transform-data-using-hadoop-pig.md)
-* [MapReduce etkinliği](transform-data-using-hadoop-map-reduce.md)
-* [Hadoop akışı etkinliği](transform-data-using-hadoop-streaming.md)
-* [Spark etkinliği](transform-data-using-spark.md)
-* [Machine Learning Batch yürütme etkinliği](transform-data-using-machine-learning.md)
-* [Saklı yordam etkinliği](transform-data-using-stored-procedure.md)
+* [Kovan aktivitesi](transform-data-using-hadoop-hive.md)
+* [Domuz aktivitesi](transform-data-using-hadoop-pig.md)
+* [MapAz etkinliği](transform-data-using-hadoop-map-reduce.md)
+* [Hadoop Akış etkinliği](transform-data-using-hadoop-streaming.md)
+* [Kıvılcım etkinliği](transform-data-using-spark.md)
+* [Makine Öğrenimi Toplu Yürütme Etkinliği](transform-data-using-machine-learning.md)
+* [Depolanan yordam etkinliği](transform-data-using-stored-procedure.md)

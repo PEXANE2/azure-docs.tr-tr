@@ -1,6 +1,6 @@
 ---
-title: Azure Maps olay şemasını Azure Event Grid
-description: Azure Event Grid ile Azure Maps olayları için belirtilen özellikleri ve şemayı açıklar
+title: Azure Olay IzgaraSı Azure Haritaları etkinlik şeması
+description: Azure Etkinlik Ağıtı ile Azure Haritalar etkinlikleri için sağlanan özellikleri ve şema açıklanır
 services: event-grid
 author: femila
 ms.service: event-grid
@@ -8,29 +8,29 @@ ms.topic: reference
 ms.date: 02/08/2019
 ms.author: femila
 ms.openlocfilehash: 9acef524521e8fac6ce6f8f61e5ff3fbbb81d18d
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77486368"
 ---
-# <a name="azure-event-grid-event-schema-for-azure-maps"></a>Azure haritalar için Azure Event Grid olay şeması
+# <a name="azure-event-grid-event-schema-for-azure-maps"></a>Azure Haritalar için Azure Olay Izgara etkinliği şeması
 
-Bu makalede, Azure Maps olayları için özellikler ve şema sağlanmaktadır. Olay şemalarına giriş için bkz. [Azure Event Grid olay şeması](https://docs.microsoft.com/azure/event-grid/event-schema).
+Bu makalede, Azure Haritalar olaylarının özellikleri ve şeması sağlanmaktadır. Etkinlik şemalarına giriş için [Azure Olay Izgara olay şemasına](https://docs.microsoft.com/azure/event-grid/event-schema)bakın.
 
-## <a name="available-event-types"></a>Kullanılabilir olay türleri
+## <a name="available-event-types"></a>Kullanılabilir etkinlik türleri
 
-Azure haritalar hesabı aşağıdaki olay türlerini yayar:
+Azure Haritalar hesabı aşağıdaki olay türlerini yayır:
 
 | Olay türü | Açıklama |
 | ---------- | ----------- |
-| Microsoft. maps. Geofencegirildi | Alınan Koordinatlar, belirli bir bölge sınırı 'ın içinden içine arasında taşındığında tetiklenir |
-| Microsoft. maps. Geofenceçıkıldı | Alınan koordinatlar belirli bir bölge içinden dışarıya taşındığında tetiklenir |
-| Microsoft. maps. GeofenceResult | Bölge sınırlama sorgusu, durumdan bağımsız olarak bir sonuç döndürdüğünde tetiklenir |
+| Microsoft.Maps.GeofenceEntered | Alınan koordinatlar belirli bir geofence dışından içinde taşındı zaman yükseltilmiş |
+| Microsoft.Maps.GeofenceÇıktı | Alınan koordinatlar belirli bir coğrafi çitin içinden dışarıya taşındığında yükseltildi |
+| Microsoft.Maps.GeofenceResult | Duruma bakılmaksızın, geofencing sorgusu her sonuç döndürdüğünde yükseltildi |
 
 ## <a name="event-examples"></a>Olay örnekleri
 
-Aşağıdaki örnek, **Geofencegirildi** olayının şemasını gösterir
+Aşağıdaki örnek, bir **GeofenceEntered** olayının şema gösterir
 
 ```JSON
 {   
@@ -60,7 +60,7 @@ Aşağıdaki örnek, **Geofencegirildi** olayının şemasını gösterir
 }
 ```
 
-Aşağıdaki örnek **GeofenceResult** için şemayı gösterir 
+Aşağıdaki örnek **GeofenceResult** için şema göstermek 
 
 ```JSON
 {   
@@ -100,70 +100,70 @@ Aşağıdaki örnek **GeofenceResult** için şemayı gösterir
 
 ## <a name="event-properties"></a>Olay özellikleri
 
-Bir olay aşağıdaki en üst düzey verilere sahiptir:
+Bir olay aşağıdaki üst düzey verilere sahiptir:
 
 | Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
-| konu başlığı | string | Olay kaynağının tam kaynak yolu. Bu alan yazılabilir değil. Event Grid bu değeri sağlar. |
-| subject | string | Olay konusunun yayımcı tanımlı yolu. |
-| eventType | string | Bu olay kaynağı için kayıtlı olay türlerinden biri. |
-| eventTime | string | Etkinliğin UTC saatine göre oluşturulduğu zaman. |
-| id | string | Etkinliğin benzersiz tanımlayıcısı. |
-| data | object | Bölge sınırlaması olay verileri. |
-| dataVersion | string | Veri nesnesinin şema sürümü. Yayımcı, şema sürümünü tanımlar. |
-| metadataVersion | string | Olay meta verilerinin şema sürümü. Event Grid üst düzey özelliklerin şemasını tanımlar. Event Grid bu değeri sağlar. |
+| konu başlığı | string | Olay kaynağına tam kaynak yolu. Bu alan yazılamaz. Event Grid bu değeri sağlar. |
+| Konu | string | Olay konusunun yayımcı tarafından tanımlanan yolu. |
+| Eventtype | string | Bu olay kaynağı için kayıtlı olay türlerinden biri. |
+| eventTime | string | Olayın sağlayıcının UTC zamanına bağlı olarak oluşturulan süre. |
+| id | string | Etkinlik için benzersiz tanımlayıcı. |
+| veri | object | Olay verilerini geofencing. |
+| dataVersion | string | Veri nesnesinin şema sürümü. Şema sürümünü yayımcı tanımlar. |
+| metadataVersion | string | Olay meta verilerinin şema sürümü. Event Grid en üst düzey özelliklerin şemasını tanımlar. Event Grid bu değeri sağlar. |
 
 Veri nesnesi aşağıdaki özelliklere sahiptir:
 
 | Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
-| apiCategory | string | Etkinliğin API kategorisi. |
-| apiName | string | Etkinliğin API adı. |
-| sorunlar | object | İşlem sırasında karşılaşılan sorunları listeler. Herhangi bir sorun döndürülürse, yanıtla birlikte hiçbir geometriler döndürülmeyecektir. |
+| apiKategori | string | Olayın API kategorisi. |
+| apiName | string | Olayın API adı. |
+| sorunlar | object | İşlemsırasında karşılaşılan sorunları listeler. Herhangi bir sorun döndürülürse, yanıtla birlikte döndürülen geometriler olmaz. |
 | responseCode | number | HTTP yanıt kodu |
-| geometriler | object | Koordinat konumunu içeren sınır geometrileri listeler veya konumun çevresindeki searchBuffer ile çakışıyor. |
+| Geometri | object | Koordinat konumunu içeren veya aramaBuffer'ın konumu etrafındaki çakışan çit geometrilerini listeler. |
 
-Maps API 'sinde bir hata oluştuğunda hata nesnesi döndürülür. Hata nesnesi aşağıdaki özelliklere sahiptir:
-
-| Özellik | Tür | Açıklama |
-| -------- | ---- | ----------- |
-| error | ErrorDetails |Bu nesne, Haritalar API 'sinde bir hata oluştuğunda döndürülür  |
-
-Maps API 'sinde bir hata oluştuğunda ErrorDetails nesnesi döndürülür. ErrorDetails veya nesnesi aşağıdaki özelliklere sahiptir:
+Haritalar API'sında bir hata oluştuğunda hata nesnesi döndürülür. Hata nesnesi aşağıdaki özelliklere sahiptir:
 
 | Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
-| code | string | HTTP durum kodu. |
-| message | string | Kullanılabiliyorsa, hatanın okunabilir bir açıklaması. |
-| ınnererror | Innererror | Varsa, hatayla ilgili hizmete özel bilgileri içeren bir nesne. |
+| error | ErrorDetails |Bu nesne, Haritalar API'sında bir hata oluştuğunda döndürülür  |
 
-Innererror, hatayla ilgili hizmete özel bilgileri içeren bir nesnedir. Innererror nesnesi aşağıdaki özelliklere sahiptir: 
+Hatalar Ayrıntıları nesnesi, Haritalar API'sında bir hata oluştuğunda döndürülür. Hata Ayrıntıları veya nesneaşağıdaki özelliklere sahiptir:
 
 | Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
-| code | string | Hata iletisi. |
+| kod | string | HTTP durum kodu. |
+| message | string | Varsa, hatanın okunabilir bir açıklaması. |
+| innererror | İç Hata | Varsa, hata hakkında hizmete özgü bilgiler içeren bir nesne. |
 
-Geometriler nesnesi, istekteki Kullanıcı saatine göre süresi geçen bölge sayısının geometri kimliklerini listeler. Geometriler nesnesi, aşağıdaki özelliklere sahip geometri öğelerine sahiptir: 
+InnerError hata hakkında hizmete özgü bilgiler içeren bir nesnedir. InnerError nesnesi aşağıdaki özelliklere sahiptir: 
+
+| Özellik | Tür | Açıklama |
+| -------- | ---- | ----------- |
+| kod | string | Hata iletisi. |
+
+Geometriler nesnesi, istekteki kullanıcı süresine göre süresi dolmuş geofences geometri künyelerini listeler. Geometriler nesnesi aşağıdaki özelliklere sahip geometri öğeleri vardır: 
 
 | Özellik | Tür | Açıklama |
 |:-------- |:---- |:----------- |
-| deviceid | string | Cihazın KIMLIĞI. |
-| distance | string | <p>Koordinatlardan bölge alanının en yakın kenarlığına olan uzaklık. Pozitif, koordinat bölge sayısının dışında olduğu anlamına gelir. Koordinat Bölge sınırının dışında, ancak en yakın bölge genişliğinden daha fazla searchBuffer değeri varsa, değer 999 ' dir. Negatif, koordinat bölge sayısının içinde olduğu anlamına gelir. Koordinat Çokgen içindeyse, ancak en yakın bölge sınırlaması kenarından daha fazla searchBuffer değerinden fazla olursa değer-999 olur. 999 değeri, koordinat bölge alanının dışında iyi bir güvenilirlik olduğu anlamına gelir. -999 değeri, koordinatın bölge kapsamında iyi olduğu anlamına gelir.<p> |
-| geometryıd |string | Benzersiz kimlik, bölge sınırı geometrisini tanımlar. |
-| nearestlat | number | En yakın geometri noktası enlem. |
-| nearestlon | number | Geometri 'nın en yakın noktasının boylam. |
-| udId | string | Bölge, karşıya yüklenirken Kullanıcı karşıya yükleme hizmetinden döndürülen benzersiz kimlik. , Bölge sınırlaması Post API 'sine dahil edilmez. |
+| Deviceıd | string | Cihazın kimliği. |
+| Mesafe | string | <p>Koordinattan geofence en yakın sınıra mesafe. Pozitif, koordinatın geofence'in dışında olduğu anlamına gelir. Koordinat geofence dışında, ancak arama Buffer değerinden daha uzak en yakın geofence sınırından ise, o zaman değeri 999 olduğunu. Negatif, koordinatın geofence'in içinde olduğu anlamına gelir. Koordinat çokgenin içindeyse, ancak aramanın değerinden daha fazlaysaBuffer en yakın geofencing sınırından uzaktaysa, değeri -999'dur. 999 değeri, koordinatın geofence'in çok dışında olduğuna dair büyük bir güven olduğu anlamına gelir. -999 değeri, koordinatın geofence içinde iyi olduğu büyük bir güven olduğu anlamına gelir.<p> |
+| geometriid |string | Benzersiz kimlik geofence geometrisi tanımlar. |
+| nearestlat | number | Geometrinin en yakın noktasının enlemi. |
+| nearestlon | number | Geometrinin en yakın noktasının boylam. |
+| udId | string | Benzersiz kimlik, bir geofence yüklerken kullanıcı yükleme hizmetinden döndürülür. Geofencing sonrası API'ye dahil edilmez. |
 
 Veri nesnesi aşağıdaki özelliklere sahiptir:
 
 | Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
-| expiredGeofenceGeometryId | String [] | İstekteki Kullanıcı saatine göre süresi dolmak üzere olan bölge sınırı 'ın geometri kimliği listesi. |
-| geometriler | geometriler [] |Koordinat konumunu içeren sınır geometrileri listeler veya konumun çevresindeki searchBuffer ile çakışıyor. |
-| ınvalidperiodgeofencegeometryıd | String []  | İstekteki Kullanıcı saatine göre geçersiz süre içinde olan bölge sınırı 'ın geometri kimliği listesi. |
-| ıventventyayımlandı | boole | Azure Maps olay abonesi 'nda en az bir olay yayımlandıysa true, Azure Maps olay abonesi 'nda hiçbir olay yayımlanmamışsa false. |
+| süresi dolmuşGeofenceGeometryId | dize[] | İsteğe göre süresi dolan geofence geometri kimliğinin listeleri. |
+| Geometri | geometriler[] |Koordinat konumunu içeren veya aramaBuffer'ın konumu etrafındaki çakışan çit geometrilerini listeler. |
+| geçersizPeriodGeofenceGeometryId | dize[]  | İsteğe göre geçersiz bir dönemde olan geofence geometri kimliği listeleri. |
+| isOlayPublished | boole | Azure Haritalar etkinlik abonesine en az bir olay yayınlanırsa, Azure Haritalar etkinlik abonesine hiçbir olay yayınlanmamışsa yanlış olur. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Azure Event Grid giriş için bkz. [Event Grid nedir?](overview.md)
-* Azure Event Grid aboneliği oluşturma hakkında daha fazla bilgi için bkz. [Event Grid abonelik şeması](subscription-creation-schema.md).
+* Azure Etkinlik Izgarasına giriş için [olay ızgarası nedir?](overview.md)
+* Azure Olay Ağı aboneliği oluşturma hakkında daha fazla bilgi için [Olay Ağı abonelik şemasına](subscription-creation-schema.md)bakın.

@@ -1,6 +1,6 @@
 ---
-title: Azure Event Hubs API 'sine genel bakış | Microsoft Docs
-description: Bu makalede, Azure Event Hubs hizmetini kullanmaya yönelik kullanılabilir API 'Lere (çalışma zamanı ve yönetim) genel bir bakış sunulmaktadır.
+title: Azure Etkinlik Hub'ları API'ye genel bakış | Microsoft Dokümanlar
+description: Bu makalede, Azure Etkinlik Hub'ları hizmetini kullanmak için kullanılabilir API'lere (çalışma zamanı ve yönetim) genel bir bakış sunulmaktadır.
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
@@ -15,23 +15,23 @@ ms.workload: na
 ms.date: 07/02/2018
 ms.author: shvija
 ms.openlocfilehash: 08e10996f633d35ffbf946b61937a0e9a76f7227
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77162234"
 ---
-# <a name="available-event-hubs-apis"></a>Kullanılabilir Event Hubs API 'Leri
+# <a name="available-event-hubs-apis"></a>Kullanılabilir Olay Hub'ları API'leri
 
-Bu makalede, Event Hubs kaynaklarını yönetmek için kullanabileceğiniz kullanılabilir API istemcileri kümesi açıklanır.
+Bu makalede, Olay Hub'ları kaynaklarını yönetmek için kullanabileceğiniz kullanılabilir API istemcileri kümesi açıklanmaktadır.
 
-## <a name="runtime-apis"></a>Çalışma zamanı API 'Leri
+## <a name="runtime-apis"></a>Çalışma Zamanı API'leri
 
-Aşağıdaki bölümde, mevcut olan tüm Azure Event Hubs çalışma zamanı istemcileri açıklanmaktadır. Bu kitaplıkların bazıları da sınırlı yönetim işlevleri de içerirken, yönetim işlemlerine adanmış [belirli kitaplıklar](#management-apis) da vardır. Bu kitaplıkların temel odağı, bir olay hub 'ından ileti göndermek ve almak için kullanılır.
+Aşağıdaki bölümde, şu anda kullanılabilen tüm Azure Etkinlik Hub'ları çalışma zamanı istemcilerini açıklamaktadır. Bu kitaplıkların bazıları sınırlı yönetim işlevselliği de içermekle birlikte, yönetim işlemlerine adanmış [özel kitaplıklar](#management-apis) da vardır. Bu kitaplıkların temel odak noktası, bir etkinlik hub'ından ileti gönderip almaktır.
 
-Her çalışma zamanı kitaplığının geçerli durumu hakkında daha fazla bilgi için bkz. [ek bilgi](#additional-information).
+Her çalışma zamanı kitaplığıngeçerli durumu hakkında daha fazla bilgi için [ek bilgilere](#additional-information)bakın.
 
-| Dil/platform | İstemci paketi | EventProcessorHost paketi | Depo |
+| Dil / Platform | İstemci paketi | EventProcessorHost paketi | Depo |
 | --- | --- | --- | --- |
 | .NET Standard | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.EventHubs.Processor/) | [GitHub](https://github.com/azure/azure-event-hubs-dotnet) |
 | .NET Framework | [NuGet](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost/) | Yok |
@@ -43,23 +43,23 @@ Her çalışma zamanı kitaplığının geçerli durumu hakkında daha fazla bil
 
 #### <a name="net"></a>.NET
 
-.NET ekosisteminde birden fazla çalışma zamanı bulunur, bu nedenle Event Hubs için birden çok .NET kitaplığı vardır. .NET Standard kitaplığı, .NET Core veya .NET Framework kullanılarak çalıştırılabilir, ancak .NET Framework kitaplığı yalnızca bir .NET Framework ortamında çalıştırılabilir. .NET Framework sürümleri hakkında daha fazla bilgi için bkz. [Framework sürümleri](https://docs.microsoft.com/dotnet/articles/standard/frameworks).
+.NET ekosisteminin birden çok çalışma alanı vardır, bu nedenle Olay Hub'ları için birden çok .NET kitaplık ları vardır. .NET Standart kitaplığı .NET Core veya .NET Framework kullanılarak çalıştırılabilirken, .NET Framework kitaplığı yalnızca .NET Framework ortamında çalıştırılabilir. .NET Framework sürümleri hakkında daha fazla bilgi için [çerçeve sürümlerine](https://docs.microsoft.com/dotnet/articles/standard/frameworks)bakın.
 
 #### <a name="node"></a>Node
 
-[JavaScript kitaplığı](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs) Şu anda önizleme aşamasındadır ve Microsoft çalışanları ve dış katkıda bulunanlar tarafından yan bir proje olarak korunur. Kaynak kodu dahil tüm katkılar hoş geldiniz ve incelenmeyecektir.
+[JavaScript kitaplığı](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs) şu anda önizlemededir ve Microsoft çalışanları ve dış katkıda bulunanlar tarafından bir yan proje olarak korunur. Kaynak kodu da dahil olmak üzere tüm katkılar memnuniyetle karşılanır ve gözden geçirilecektir.
 
 ## <a name="management-apis"></a>Yönetim API’leri
 
-Aşağıdaki tabloda, mevcut olan yönetime özgü tüm kitaplıklar listelenmiştir. Bu kitaplıkların hiçbiri çalışma zamanı işlemleri içermez ve Event Hubs varlıklarını yönetmek tek amaç içindir.
+Aşağıdaki tabloda şu anda yönetime özel tüm kitaplıklar listelenmektedir. Bu kitaplıkların hiçbiri çalışma zamanı işlemleri içermez ve yalnızca Olay Hub'ları varlıklarını yönetmek amacıyladır.
 
-| Dil/platform | Yönetim Paketi | Depo |
+| Dil / Platform | Yönetim paketi | Depo |
 | --- | --- | --- |
 | .NET Standard | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.Management.EventHub) | [GitHub](https://github.com/Azure/azure-sdk-for-net/tree/AutoRest/src/ResourceManagement/EventHub) |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Aşağıdaki bağlantıları inceleyerek Event Hubs hakkında daha fazla bilgi edinebilirsiniz:
 
-* [Event Hubs’a genel bakış](event-hubs-what-is-event-hubs.md)
-* [Olay Hub’ı oluşturma](event-hubs-create.md)
+* [Olay Hub'larına genel bakış](event-hubs-what-is-event-hubs.md)
+* [Etkinlik merkezi oluşturma](event-hubs-create.md)
 * [Event Hubs ile ilgili SSS](event-hubs-faq.md)

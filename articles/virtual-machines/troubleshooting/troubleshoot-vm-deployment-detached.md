@@ -1,6 +1,6 @@
 ---
-title: Ayrılmış diskler nedeniyle sanal makine dağıtımı sorunlarını giderme | Microsoft Docs
-description: Ayrılmış diskler nedeniyle sanal makine dağıtımı sorunlarını giderme
+title: Ayrılmış diskler nedeniyle sanal makine dağıtımında sorun giderme | Microsoft Dokümanlar
+description: Ayrılmış diskler nedeniyle sanal makine dağıtımının giderilmesi
 services: virtual-machines-windows
 documentationCenter: ''
 author: v-miegge
@@ -13,17 +13,17 @@ ms.workload: infrastructure
 ms.date: 10/31/2019
 ms.author: vaaga
 ms.openlocfilehash: e049a2b914cbf9c4f0ca0f3a1dd0281d58f881b2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75486826"
 ---
-# <a name="troubleshoot-virtual-machine-deployment-due-to-detached-disks"></a>Ayrılmış diskler nedeniyle sanal makine dağıtımı sorunlarını giderme
+# <a name="troubleshoot-virtual-machine-deployment-due-to-detached-disks"></a>Ayrılmış diskler nedeniyle sanal makine dağıtımının giderilmesi
 
 ## <a name="symptom"></a>Belirti
 
-Önceki veri diski bağlantısı başarısız olan bir sanal makineyi güncelleştirmeye çalışırken, bu hata kodu boyunca gelebilir.
+Önceki veri diski ayrılması başarısız olan sanal bir makineyi güncelleştirmeye çalışırken, bu hata koduyla karşılaşabilirsiniz.
 
 ```
 Code=\"AttachDiskWhileBeingDetached\" 
@@ -32,11 +32,11 @@ Message=\"Cannot attach data disk '{disk ID}' to virtual machine '{vmName}' beca
 
 ## <a name="cause"></a>Nedeni
 
-Son ayırma işlemi başarısız olan bir veri diskini yeniden iliştirçalıştığınızda bu hata oluşur. Bu durumdan ayrılmak için en iyi yol, hatalı diski ayırmanız olur.
+Bu hata, son ayırma işlemi başarısız olan bir veri diskini yeniden eklemeyi denediğinizde oluşur. Bu durumdan çıkmanın en iyi yolu başarısız diski ayırmaktır.
 
-## <a name="solution-1-powershell"></a>Çözüm 1: PowerShell
+## <a name="solution-1-powershell"></a>Çözüm 1: Powershell
 
-### <a name="step-1-get-the-virtual-machine-and-disk-details"></a>1\. Adım: sanal makineyi ve disk ayrıntılarını alın
+### <a name="step-1-get-the-virtual-machine-and-disk-details"></a>Adım 1: Sanal makine ve disk ayrıntılarını alın
 
 ```azurepowershell-interactive
 PS D:> $vm = Get-AzureRmVM -ResourceGroupName "Example Resource Group" -Name "ERGVM999999" 
@@ -51,23 +51,23 @@ diskSizeGB   : 8
 toBeDetached : False 
 ```
 
-### <a name="step-2-set-the-flag-for-failing-disks-to-true"></a>2\. Adım: başarısız disklerin bayrağını "true" olarak ayarlayın.
+### <a name="step-2-set-the-flag-for-failing-disks-to-true"></a>Adım 2: Başarısız diskler için bayrağı "true" olarak ayarlayın.
 
-Başarısız olan diskin dizi dizinini alın ve hatalı disk için **Tobeayrılan** bayrağını ( **Attachdiskwhilebeingayrılan** hata oluştuğunda) "true" olarak ayarlayın. Bu ayar, diski sanal makineden ayırmayı gerektirir. Hatalı disk adı **ErrorMessage**içinde bulunabilir.
+Başarısız diskin dizi dizini alın ve başarısız disk için **toBeDetached** bayrağını **(AttachDiskWhileBeingDetached** hatasının oluştuğu) "true" olarak ayarlayın. Bu ayar, diskin sanal makineden ayrılması anlamına gelir. Başarısız disk adı **errorMessage**bulunabilir.
 
-> ! Note: get ve put çağrıları için belirtilen API sürümünün 2019-03-01 veya daha büyük olması gerekir.
+> ! Not: Get and Put aramaları için belirtilen API sürümünün 2019-03-01 veya daha büyük olması gerekir.
 
 ```azurepowershell-interactive
 PS D:> $vm.StorageProfile.DataDisks[0].ToBeDetached = $true 
 ```
 
-Alternatif olarak, aşağıdaki komutu kullanarak bu diski de ayırabilirsiniz, bu da, 01 Mart 2019 ' den önceki API sürümlerini kullanan kullanıcılar için yararlı olacaktır.
+Alternatif olarak, 01 Mart 2019'dan önce API sürümlerini kullanan kullanıcılar için yararlı olacak aşağıdaki komutu kullanarak bu diski de ayırabilirsiniz.
 
 ```azurepowershell-interactive
 PS D:> Remove-AzureRmVMDataDisk -VM $vm -Name "<disk ID>" 
 ```
 
-### <a name="step-3-update-the-virtual-machine"></a>3\. Adım: sanal makineyi güncelleştirme
+### <a name="step-3-update-the-virtual-machine"></a>Adım 3: Sanal makineyi güncelleştirin
 
 ```azurepowershell-interactive
 PS D:> Update-AzureRmVM -ResourceGroupName "Example Resource Group" -VM $vm 
@@ -75,17 +75,17 @@ PS D:> Update-AzureRmVM -ResourceGroupName "Example Resource Group" -VM $vm
 
 ## <a name="solution-2-rest"></a>Çözüm 2: REST
 
-### <a name="step-1-get-the-virtual-machine-payload"></a>1\. Adım: sanal makine yükünü alın.
+### <a name="step-1-get-the-virtual-machine-payload"></a>Adım 1: Sanal makine yükünü alın.
 
 ```azurepowershell-interactive
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}?$expand=instanceView&api-version=2019-03-01
 ```
 
-### <a name="step-2-set-the-flag-for-failing-disks-to-true"></a>2\. Adım: başarısız disklerin bayrağını "true" olarak ayarlayın.
+### <a name="step-2-set-the-flag-for-failing-disks-to-true"></a>Adım 2: Başarısız diskler için bayrağı "true" olarak ayarlayın.
 
-Adım 1 ' de döndürülen yükte hatalı disk için **Tobeayrılan** bayrağını doğru olarak ayarlayın. Lütfen unutmayın: get ve put çağrıları için belirtilen API sürümünün `2019-03-01` veya daha büyük olması gerekir.
+Adım 1'de döndürülen yükte başarısız disk için **toBeDetached** bayrağını ayarlayın. Lütfen Dikkat: Get and Put aramaları için belirtilen `2019-03-01` API sürümü veya daha büyük olmalıdır.
 
-**Örnek Istek gövdesi**
+**Örnek İstek Gövdesi**
 
 ```azurepowershell-interactive
 {
@@ -143,17 +143,17 @@ Adım 1 ' de döndürülen yükte hatalı disk için **Tobeayrılan** bayrağın
 }
 ```
 
-Alternatif olarak, API sürümlerini kullanan kullanıcılar için, 01 Mart 2019 ' den önce yardımcı olan yukarıdaki yük üzerinden başarısız olan veri diskini da kaldırabilirsiniz.
+Alternatif olarak, 01 Mart 2019 tarihinden önce API sürümlerini kullanan kullanıcılar için yararlı olan başarısız veri diskini yukarıdaki yükten de kaldırabilirsiniz.
 
-### <a name="step-3-update-the-virtual-machine"></a>3\. Adım: sanal makineyi güncelleştirme
+### <a name="step-3-update-the-virtual-machine"></a>Adım 3: Sanal makineyi güncelleştirin
 
-2\. adımdaki istek gövdesi yük kümesini kullanın ve sanal makineyi şu şekilde güncelleştirin:
+Adım 2'de ayarlanan istek gövdesi yükünü kullanın ve sanal makineyi aşağıdaki gibi güncelleştirin:
 
 ```azurepowershell-interactive
 PATCH https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}?api-version=2019-03-01
 ```
 
-**Örnek yanıt:**
+**Örnek Yanıt:**
 
 ```azurepowershell-interactive
 {
@@ -232,6 +232,6 @@ PATCH https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-Sanal makinenize bağlanırken sorun yaşıyorsanız bkz. [Azure VM 'ye YÖNELIK RDP bağlantılarında sorun giderme](troubleshoot-rdp-connection.md).
+VM'nize bağlanmada sorun yaşıyorsanız, [bir Azure VM'ye bağlı SORUN Giderme RDP bağlantılarına](troubleshoot-rdp-connection.md)bakın.
 
-VM 'niz üzerinde çalışan uygulamalara erişme sorunları için bkz. [WINDOWS VM 'de uygulama bağlantı sorunlarını giderme](troubleshoot-app-connection.md).
+VM'nizde çalışan uygulamalara erişimle ilgili sorunlar için [Windows VM'deki Sorun Giderme uygulaması bağlantısı sorunlarına](troubleshoot-app-connection.md)bakın.

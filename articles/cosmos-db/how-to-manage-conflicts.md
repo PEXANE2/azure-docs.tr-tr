@@ -1,27 +1,27 @@
 ---
-title: Azure Cosmos DB bölgeler arasındaki çakışmaları yönetme
-description: Son yazıcı-WINS veya özel bir çakışma çözümleme ilkesi oluşturarak Azure Cosmos DB çakışmaların nasıl yönetileceğini öğrenin
+title: Azure Cosmos DB'deki bölgeler arasındaki çakışmaları yönetme
+description: Son yazar kazançları veya özel bir çakışma çözümlemesi ilkesi oluşturarak Azure Cosmos DB'deki çakışmaları nasıl yönetebilirsiniz öğrenin
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: mjbrown
 ms.openlocfilehash: 6d364f1a9974d6d638bb0f824e88ed3866644c15
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79247416"
 ---
-# <a name="manage-conflict-resolution-policies-in-azure-cosmos-db"></a>Azure Cosmos DB çakışma çözümleme ilkelerini yönetme
+# <a name="manage-conflict-resolution-policies-in-azure-cosmos-db"></a>Azure Cosmos DB'de çakışma çözümlemesi ilkelerini yönetme
 
-Çok bölgeli yazmalarda, birden fazla istemci aynı öğeye yazdığında çakışmalar oluşabilir. Bir çakışma oluştuğunda, farklı çakışma çözümleme ilkeleri kullanarak çakışmayı çözebilirsiniz. Bu makalede, çakışma çözümleme ilkelerinin nasıl yönetileceği açıklanır.
+Çok günlük yazmayla, birden çok istemci aynı öğeye yazdığında çakışmalar oluşabilir. Çakışma oluştuğunda, farklı çakışma çözümlemesi ilkeleri kullanarak çakışmayı çözebilirsiniz. Bu makalede, çakışma çözümlemesi ilkelerinin nasıl yönetilen açıklanmaktadır.
 
-## <a name="create-a-last-writer-wins-conflict-resolution-policy"></a>Son yazıcı oluşturma-WINS çakışma çözümü ilkesi
+## <a name="create-a-last-writer-wins-conflict-resolution-policy"></a>Son yazar-wins çakışma çözümilkesi oluşturma
 
-Bu örnekler, son yazıcı WINS çakışma çözümleme ilkesiyle bir kapsayıcının nasıl ayarlanacağını gösterir. Son-yazıcı için varsayılan yol, zaman damgası alanı veya `_ts` özelliğidir. SQL API 'SI için bu, sayısal türde Kullanıcı tanımlı bir yola de ayarlanabilir. Çakışma durumunda en yüksek değer kazanır. Yol ayarlanmamışsa veya geçersizse, varsayılan olarak `_ts`olur. Bu ilkeyle çözümlenen çakışmalar çakışma akışında gösterilmez. Bu ilke, tüm API 'Ler tarafından kullanılabilir.
+Bu örnekler, son yazar-wins çakışma çözümilkesi içeren bir kapsayıcının nasıl ayarlanyapılacağını gösterir. Son yazar-kazançlar için varsayılan yol zaman damgası `_ts` alanı veya özelliğidir. SQL API için bu, sayısal türü olan kullanıcı tanımlı bir yola da ayarlanabilir. Bir çakışmada, en yüksek değer kazanır. Yol ayarlı değilse veya geçersizse, varsayılan olarak `_ts`. Bu ilke ile çözülen çakışmalar çakışma akışında görünmüyor. Bu ilke tüm API'ler tarafından kullanılabilir.
 
-### <a id="create-custom-conflict-resolution-policy-lww-dotnet"></a>.NET SDK V2
+### <a name="net-sdk-v2"></a><a id="create-custom-conflict-resolution-policy-lww-dotnet"></a>.NET SDK V2
 
 ```csharp
 DocumentCollection lwwCollection = await createClient.CreateDocumentCollectionIfNotExistsAsync(
@@ -36,7 +36,7 @@ DocumentCollection lwwCollection = await createClient.CreateDocumentCollectionIf
   });
 ```
 
-### <a id="create-custom-conflict-resolution-policy-lww-dotnet-v3"></a>.NET SDK V3
+### <a name="net-sdk-v3"></a><a id="create-custom-conflict-resolution-policy-lww-dotnet-v3"></a>.NET SDK V3
 
 ```csharp
 Container container = await createClient.GetDatabase(this.databaseName)
@@ -50,7 +50,7 @@ Container container = await createClient.GetDatabase(this.databaseName)
     });
 ```
 
-### <a id="create-custom-conflict-resolution-policy-lww-java-async"></a>Java Async SDK’sı
+### <a name="java-async-sdk"></a><a id="create-custom-conflict-resolution-policy-lww-java-async"></a>Java Async SDK’sı
 
 ```java
 DocumentCollection collection = new DocumentCollection();
@@ -60,7 +60,7 @@ collection.setConflictResolutionPolicy(policy);
 DocumentCollection createdCollection = client.createCollection(databaseUri, collection, null).toBlocking().value();
 ```
 
-### <a id="create-custom-conflict-resolution-policy-lww-java-sync"></a>Java Sync SDK’sı
+### <a name="java-sync-sdk"></a><a id="create-custom-conflict-resolution-policy-lww-java-sync"></a>Java Sync SDK’sı
 
 ```java
 DocumentCollection lwwCollection = new DocumentCollection();
@@ -70,7 +70,7 @@ lwwCollection.setConflictResolutionPolicy(lwwPolicy);
 DocumentCollection createdCollection = this.tryCreateDocumentCollection(createClient, database, lwwCollection);
 ```
 
-### <a id="create-custom-conflict-resolution-policy-lww-javascript"></a>Node.js/JavaScript/TypeScript SDK
+### <a name="nodejsjavascripttypescript-sdk"></a><a id="create-custom-conflict-resolution-policy-lww-javascript"></a>Node.js/JavaScript/TypeScript SDK
 
 ```javascript
 const database = client.database(this.databaseName);
@@ -85,7 +85,7 @@ const { container: lwwContainer } = await database.containers.createIfNotExists(
 );
 ```
 
-### <a id="create-custom-conflict-resolution-policy-lww-python"></a>Python SDK’sı
+### <a name="python-sdk"></a><a id="create-custom-conflict-resolution-policy-lww-python"></a>Python SDK'sı
 
 ```python
 udp_collection = {
@@ -99,23 +99,23 @@ udp_collection = self.try_create_document_collection(
     create_client, database, udp_collection)
 ```
 
-## <a name="create-a-custom-conflict-resolution-policy-using-a-stored-procedure"></a>Saklı yordam kullanarak özel bir çakışma çözümleme ilkesi oluşturma
+## <a name="create-a-custom-conflict-resolution-policy-using-a-stored-procedure"></a>Depolanmış yordamı kullanarak özel çakışma çözümleme ilkesi oluşturma
 
-Bu örnekler çakışmayı çözümlemek için saklı yordama içeren özel çakışma çözümleme ilkesine sahip bir kapsayıcı ayarlama adımlarını göstermektedir. Bu çakışmalar, saklı yordamınızdaki bir hata olmadığı takdirde çakışma akışında gösterilmez. İlke kapsayıcı ile oluşturulduktan sonra, saklı yordamı oluşturmanız gerekir. Aşağıdaki .NET SDK örneği bir örnek gösterir. Bu ilke yalnızca çekirdek (SQL) API 'sinde desteklenir.
+Bu örnekler çakışmayı çözümlemek için saklı yordama içeren özel çakışma çözümleme ilkesine sahip bir kapsayıcı ayarlama adımlarını göstermektedir. Bu çakışmalar, depolanan yordamınızda bir hata olmadığı sürece çakışma akışında görünmüyor. İlke kapsayıcı ile oluşturulduktan sonra, depolanan yordamı oluşturmanız gerekir. Aşağıdaki .NET SDK örneği bir örnek göstermektedir. Bu ilke yalnızca Core (SQL) Api'de desteklenir.
 
-### <a name="sample-custom-conflict-resolution-stored-procedure"></a>Örnek özel çakışma çözümü saklı yordamı
+### <a name="sample-custom-conflict-resolution-stored-procedure"></a>Örnek özel çakışma çözümleme saklı yordamı
 
-Özel çakışma çözümü saklı yordamları aşağıda gösterilen işlev imzası kullanılarak uygulanmalıdır. İşlev adının, saklı yordamı kapsayıcı ile kaydedilirken kullanılan adla eşleşmesi gerekmez, ancak adlandırmayı basitleştirir. Bu saklı yordam için uygulanması gereken parametrelerin açıklaması aşağıdadır.
+Özel çakışma çözümleme saklı yordamları aşağıda gösterilen işlev imzası kullanılarak uygulanmalıdır. Işlev adının, depolanan yordamı kapsayıcıya kaydederken kullanılan adla eşleşmesi gerekmez, ancak adlandırmayı basitleştirir. Burada, bu depolanan yordam için uygulanması gereken parametrelerin açıklaması verilmiştir.
 
-- **ıncomingıtem**: çakışmaların üretilerek işlemede eklenen veya güncellenen öğe. , Silme işlemleri için null.
-- **existingıtem**: Şu anda taahhüt edilen öğe. Bu değer bir güncelleştirmede null değil ve INSERT veya delete için null.
-- **ı# kaldırıldı**: ıncomingıtem 'ın daha önce silinmiş bir öğeyle çakışıp çakışmadığını belirten Boolean. Doğru olduğunda, existingItem da null olur.
-- **Conflictingıtems**: KAPSAYıCıDA, ID veya diğer benzersiz dizin özelliklerindeki ıncomingıtem ile çakışan tüm öğelerin taahhüt edilen sürümünün dizisi.
+- **gelen Öğe**: Çakışmaları oluşturan commit'e eklenen veya güncelleştirilen öğe. Silme işlemleri için null' dur.
+- **existingItem**: Şu anda taahhüt edilen öğe. Bu değer bir güncelleştirmede null değildir ve bir ekleme veya silme için null.
+- **isTombstone**: Gelen Öğenin önceden silinmiş bir öğeyle çakışıp çelişmediğinden belirten boolean. Doğru olduğunda, existingItem de null.
+- **çakışan Öğeler**: Kimlik veya diğer benzersiz dizin özellikleriüzerinde gelen Öğe ile çakışan kapsayıcıdaki tüm öğelerin işlenen sürümünün dizilimi.
 
 > [!IMPORTANT]
-> Her türlü saklı yordamda olduğu gibi, özel bir çakışma çözümü yordamı aynı bölüm anahtarına sahip tüm verilere erişebilir ve çakışmaları çözümlemek için herhangi bir ekleme, güncelleştirme veya silme işlemi gerçekleştirebilir.
+> Depolanan tüm yordamlarda olduğu gibi, özel bir çakışma çözümlemesi yordamı da aynı bölüm anahtarına sahip herhangi bir veriye erişebilir ve çakışmaları çözmek için herhangi bir ekleme, güncelleştirme veya silme işlemi gerçekleştirebilir.
 
-Bu örnek saklı yordam, `/myCustomId` yolundan en düşük değeri seçerek çakışmaları çözer.
+Bu örnek depolanan `/myCustomId` yordam, yoldan en düşük değeri seçerek çakışmaları giderir.
 
 ```javascript
 function resolver(incomingItem, existingItem, isTombstone, conflictingItems) {
@@ -171,7 +171,7 @@ function resolver(incomingItem, existingItem, isTombstone, conflictingItems) {
 }
 ```
 
-### <a id="create-custom-conflict-resolution-policy-stored-proc-dotnet"></a>.NET SDK V2
+### <a name="net-sdk-v2"></a><a id="create-custom-conflict-resolution-policy-stored-proc-dotnet"></a>.NET SDK V2
 
 ```csharp
 DocumentCollection udpCollection = await createClient.CreateDocumentCollectionIfNotExistsAsync(
@@ -194,7 +194,7 @@ UriFactory.CreateStoredProcedureUri(this.databaseName, this.udpCollectionName, "
 });
 ```
 
-### <a id="create-custom-conflict-resolution-policy-stored-proc-dotnet-v3"></a>.NET SDK V3
+### <a name="net-sdk-v3"></a><a id="create-custom-conflict-resolution-policy-stored-proc-dotnet-v3"></a>.NET SDK V3
 
 ```csharp
 Container container = await createClient.GetDatabase(this.databaseName)
@@ -212,7 +212,7 @@ await container.Scripts.CreateStoredProcedureAsync(
 );
 ```
 
-### <a id="create-custom-conflict-resolution-policy-stored-proc-java-async"></a>Java Async SDK’sı
+### <a name="java-async-sdk"></a><a id="create-custom-conflict-resolution-policy-stored-proc-java-async"></a>Java Async SDK’sı
 
 ```java
 DocumentCollection collection = new DocumentCollection();
@@ -222,9 +222,9 @@ collection.setConflictResolutionPolicy(policy);
 DocumentCollection createdCollection = client.createCollection(databaseUri, collection, null).toBlocking().value();
 ```
 
-Kapsayıcınız oluşturulduktan sonra, `resolver` saklı yordamını oluşturmalısınız.
+Kapsayıcınız oluşturulduktan sonra, depolanan yordamı `resolver` oluşturmanız gerekir.
 
-### <a id="create-custom-conflict-resolution-policy-stored-proc-java-sync"></a>Java Sync SDK’sı
+### <a name="java-sync-sdk"></a><a id="create-custom-conflict-resolution-policy-stored-proc-java-sync"></a>Java Sync SDK’sı
 
 ```java
 DocumentCollection udpCollection = new DocumentCollection();
@@ -235,9 +235,9 @@ udpCollection.setConflictResolutionPolicy(udpPolicy);
 DocumentCollection createdCollection = this.tryCreateDocumentCollection(createClient, database, udpCollection);
 ```
 
-Kapsayıcınız oluşturulduktan sonra, `resolver` saklı yordamını oluşturmalısınız.
+Kapsayıcınız oluşturulduktan sonra, depolanan yordamı `resolver` oluşturmanız gerekir.
 
-### <a id="create-custom-conflict-resolution-policy-stored-proc-javascript"></a>Node.js/JavaScript/TypeScript SDK
+### <a name="nodejsjavascripttypescript-sdk"></a><a id="create-custom-conflict-resolution-policy-stored-proc-javascript"></a>Node.js/JavaScript/TypeScript SDK
 
 ```javascript
 const database = client.database(this.databaseName);
@@ -254,9 +254,9 @@ const { container: udpContainer } = await database.containers.createIfNotExists(
 );
 ```
 
-Kapsayıcınız oluşturulduktan sonra, `resolver` saklı yordamını oluşturmalısınız.
+Kapsayıcınız oluşturulduktan sonra, depolanan yordamı `resolver` oluşturmanız gerekir.
 
-### <a id="create-custom-conflict-resolution-policy-stored-proc-python"></a>Python SDK’sı
+### <a name="python-sdk"></a><a id="create-custom-conflict-resolution-policy-stored-proc-python"></a>Python SDK'sı
 
 ```python
 udp_collection = {
@@ -270,13 +270,13 @@ udp_collection = self.try_create_document_collection(
     create_client, database, udp_collection)
 ```
 
-Kapsayıcınız oluşturulduktan sonra, `resolver` saklı yordamını oluşturmalısınız.
+Kapsayıcınız oluşturulduktan sonra, depolanan yordamı `resolver` oluşturmanız gerekir.
 
 ## <a name="create-a-custom-conflict-resolution-policy"></a>Özel bir çakışma çözümleme ilkesi oluşturma
 
-Bu örnekler özel çakışma çözümleme ilkesine sahip bir kapsayıcı ayarlama adımlarını göstermektedir. Bu çakışmalar çakışma akışında görünür.
+Bu örnekler özel çakışma çözümleme ilkesine sahip bir kapsayıcı ayarlama adımlarını göstermektedir. Bu çakışmalar çakışma akışında ortaya çıkar.
 
-### <a id="create-custom-conflict-resolution-policy-dotnet"></a>.NET SDK V2
+### <a name="net-sdk-v2"></a><a id="create-custom-conflict-resolution-policy-dotnet"></a>.NET SDK V2
 
 ```csharp
 DocumentCollection manualCollection = await createClient.CreateDocumentCollectionIfNotExistsAsync(
@@ -290,7 +290,7 @@ DocumentCollection manualCollection = await createClient.CreateDocumentCollectio
   });
 ```
 
-### <a id="create-custom-conflict-resolution-policy-dotnet-v3"></a>.NET SDK V3
+### <a name="net-sdk-v3"></a><a id="create-custom-conflict-resolution-policy-dotnet-v3"></a>.NET SDK V3
 
 ```csharp
 Container container = await createClient.GetDatabase(this.databaseName)
@@ -303,7 +303,7 @@ Container container = await createClient.GetDatabase(this.databaseName)
     });
 ```
 
-### <a id="create-custom-conflict-resolution-policy-java-async"></a>Java Async SDK’sı
+### <a name="java-async-sdk"></a><a id="create-custom-conflict-resolution-policy-java-async"></a>Java Async SDK’sı
 
 ```java
 DocumentCollection collection = new DocumentCollection();
@@ -313,7 +313,7 @@ collection.setConflictResolutionPolicy(policy);
 DocumentCollection createdCollection = client.createCollection(databaseUri, collection, null).toBlocking().value();
 ```
 
-### <a id="create-custom-conflict-resolution-policy-java-sync"></a>Java Sync SDK’sı
+### <a name="java-sync-sdk"></a><a id="create-custom-conflict-resolution-policy-java-sync"></a>Java Sync SDK’sı
 
 ```java
 DocumentCollection manualCollection = new DocumentCollection();
@@ -323,7 +323,7 @@ manualCollection.setConflictResolutionPolicy(customPolicy);
 DocumentCollection createdCollection = client.createCollection(database.getSelfLink(), collection, null).getResource();
 ```
 
-### <a id="create-custom-conflict-resolution-policy-javascript"></a>Node.js/JavaScript/TypeScript SDK
+### <a name="nodejsjavascripttypescript-sdk"></a><a id="create-custom-conflict-resolution-policy-javascript"></a>Node.js/JavaScript/TypeScript SDK
 
 ```javascript
 const database = client.database(this.databaseName);
@@ -337,7 +337,7 @@ const {
 });
 ```
 
-### <a id="create-custom-conflict-resolution-policy-python"></a>Python SDK’sı
+### <a name="python-sdk"></a><a id="create-custom-conflict-resolution-policy-python"></a>Python SDK'sı
 
 ```python
 database = client.ReadDatabase("dbs/" + self.database_name)
@@ -352,15 +352,15 @@ manual_collection = client.CreateContainer(database['_self'], collection)
 
 ## <a name="read-from-conflict-feed"></a>Çakışma akışından okuma
 
-Bu örnekler, kapsayıcının çakışma akışından okuma yöntemlerini göstermektedir. Çakışmalar yalnızca otomatik olarak çözümlenmezse veya özel bir çakışma ilkesi kullanılıyorsa çakışma akışında gösterilir.
+Bu örnekler, kapsayıcının çakışma akışından okuma yöntemlerini göstermektedir. Çakışmalar, yalnızca otomatik olarak çözülmediklerinde veya özel bir çakışma ilkesi kullanıyorsa çakışma akışında gösterir.
 
-### <a id="read-from-conflict-feed-dotnet"></a>.NET SDK V2
+### <a name="net-sdk-v2"></a><a id="read-from-conflict-feed-dotnet"></a>.NET SDK V2
 
 ```csharp
 FeedResponse<Conflict> conflicts = await delClient.ReadConflictFeedAsync(this.collectionUri);
 ```
 
-### <a id="read-from-conflict-feed-dotnet-v3"></a>.NET SDK V3
+### <a name="net-sdk-v3"></a><a id="read-from-conflict-feed-dotnet-v3"></a>.NET SDK V3
 
 ```csharp
 FeedIterator<ConflictProperties> conflictFeed = container.Conflicts.GetConflictQueryIterator();
@@ -382,7 +382,7 @@ while (conflictFeed.HasMoreResults)
 }
 ```
 
-### <a id="read-from-conflict-feed-java-async"></a>Java Async SDK’sı
+### <a name="java-async-sdk"></a><a id="read-from-conflict-feed-java-async"></a>Java Async SDK’sı
 
 ```java
 FeedResponse<Conflict> response = client.readConflicts(this.manualCollectionUri, null)
@@ -392,7 +392,7 @@ for (Conflict conflict : response.getResults()) {
 }
 ```
 
-### <a id="read-from-conflict-feed-java-sync"></a>Java Sync SDK’sı
+### <a name="java-sync-sdk"></a><a id="read-from-conflict-feed-java-sync"></a>Java Sync SDK’sı
 
 ```java
 Iterator<Conflict> conflictsIterator = client.readConflicts(this.collectionLink, null).getQueryIterator();
@@ -402,7 +402,7 @@ while (conflictsIterator.hasNext()) {
 }
 ```
 
-### <a id="read-from-conflict-feed-javascript"></a>Node.js/JavaScript/TypeScript SDK
+### <a name="nodejsjavascripttypescript-sdk"></a><a id="read-from-conflict-feed-javascript"></a>Node.js/JavaScript/TypeScript SDK
 
 ```javascript
 const container = client
@@ -412,7 +412,7 @@ const container = client
 const { result: conflicts } = await container.conflicts.readAll().toArray();
 ```
 
-### <a id="read-from-conflict-feed-python"></a>Python
+### <a name="python"></a><a id="read-from-conflict-feed-python"></a>Python
 
 ```python
 conflicts_iterator = iter(client.ReadConflicts(self.manual_collection_link))
@@ -426,10 +426,10 @@ while conflict:
 
 Aşağıdaki Azure Cosmos DB kavramları hakkında bilgi edinin:
 
-- [Küresel dağıtım-alt düzey](global-dist-under-the-hood.md)
-- [Uygulamalarınızda çoklu yönetici yapılandırma](how-to-multi-master.md)
-- [İstemcileri çoklu barındırma için yapılandırma](how-to-manage-database-account.md#configure-multiple-write-regions)
-- [Azure Cosmos DB hesabınızdan bölge ekleme veya kaldırma](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
-- [Uygulamalarınızda çoklu yönetici yapılandırma](how-to-multi-master.md).
+- [Genel dağıtım - başlık altında](global-dist-under-the-hood.md)
+- [Uygulamalarınızda çoklu master nasıl yapılandırılatır](how-to-multi-master.md)
+- [Çok eşleme için istemcileri yapılandırın](how-to-manage-database-account.md#configure-multiple-write-regions)
+- [Azure Cosmos DB hesabınızdan bölgeler ekleme veya kaldırma](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
+- [Uygulamalarınızda çoklu master nasıl yapılandırılatır.](how-to-multi-master.md)
 - [Bölümleme ve veri dağıtımı](partition-data.md)
-- [Azure Cosmos DB 'de dizin oluşturma](indexing-policies.md)
+- [Azure Cosmos DB’de dizin oluşturma](indexing-policies.md)

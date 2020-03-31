@@ -5,28 +5,28 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: cynthn
 ms.openlocfilehash: c2ed33aea77b5478e8d17f6bd0213ef3e778b806
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67188708"
 ---
-## <a name="transfer-local-files-to-cloud-shell"></a>Cloud Shell için yerel dosya aktarımı
-`clouddrive` Azure portal depolama dikey directory eşitlenmesi. Dosya paylaşımınızda ya da yerel dosya aktarmak için bu dikey pencereyi kullanın. Cloud Shell içinde dosyaları güncelleştirmek dikey yenilediğinizde GUI dosya depolama alanına yansıtılır.
+## <a name="transfer-local-files-to-cloud-shell"></a>Yerel dosyaları Cloud Shell'e aktarma
+Dizin, `clouddrive` Azure portal depolama bıçağıyla eşitler. Yerel dosyaları dosya paylaşımınıza veya dosya paylaşımınızdan aktarmak için bu bıçağı kullanın. Bulut Kabuğu'nun içinden dosyaları güncellemek, bıçağı yenilediğinizde dosya depolama GUI'sine yansıtılır.
 
 ### <a name="download-files"></a>Dosyaları indirme
 
-![Yerel dosyaları listesi](../articles/cloud-shell/media/persisting-shell-storage/download.png)
-1. Azure portalında bağlı dosya paylaşımına gidin.
-2. Hedef dosya seçin.
-3. Seçin **indirme** düğmesi.
+![Yerel dosyalar listesi](../articles/cloud-shell/media/persisting-shell-storage/download.png)
+1. Azure portalında, monte edilmiş dosya paylaşımına gidin.
+2. Hedef dosyayı seçin.
+3. **İndir** düğmesini seçin.
 
 ### <a name="upload-files"></a>Dosyaları karşıya yükleme
 
-![Karşıya yüklenecek yerel dosyaları](../articles/cloud-shell/media/persisting-shell-storage/upload.png)
-1. Bağlı dosya paylaşımınızla gidin.
+![Yüklenecek yerel dosyalar](../articles/cloud-shell/media/persisting-shell-storage/upload.png)
+1. Monte edilmiş dosya paylaşımınıza gidin.
 2. Ardından **Yükle** düğmesini seçin.
-3. Dosya veya karşıya yüklemek istediğiniz dosyaları seçin.
-4. Karşıya yüklemeyi onaylayın.
+3. Yüklemek istediğiniz dosyayı veya dosyaları seçin.
+4. Yüklemeyi onaylayın.
 
-İçinde erişilebilir olan dosyaları görmelisiniz, `clouddrive` Cloud shell'de dizin.
+Artık Bulut Bulut'taki dizininizde `clouddrive` erişilebilen dosyaları görmeniz gerekir.

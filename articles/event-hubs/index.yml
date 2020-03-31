@@ -12,12 +12,12 @@ metadata:
   author: spelluru
   ms.author: spelluru
   ms.date: 01/29/2020
-  ms.openlocfilehash: 28cfe37f6058dbedb11fb6fe01d932cbb10cbd18
-  ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+  ms.openlocfilehash: 957a942efd618003dd3ff3f9f76be72799770859
+  ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
   ms.translationtype: HT
   ms.contentlocale: tr-TR
-  ms.lasthandoff: 02/12/2020
-  ms.locfileid: "77162965"
+  ms.lasthandoff: 03/26/2020
+  ms.locfileid: "80288300"
 landingContent:
 - title: Event Hubs hakkında
   linkLists:
@@ -70,7 +70,7 @@ landingContent:
   - linkListType: how-to-guide
     links:
     - text: Apache Kafka özellikli olay hub'ı oluşturma
-      url: event-hubs-create-kafka-enabled.md
+      url: event-hubs-create.md
     - text: Bir olay hub'ında Kafka aracısı yansıtma
       url: event-hubs-kafka-mirror-maker-tutorial.md
     - text: Apache Spark'ı bir olay hub'ına bağlama
@@ -143,7 +143,7 @@ landingContent:
       url: event-hubs-ip-filtering.md
     - text: Sanal ağ hizmet uç noktalarını kullanma
       url: event-hubs-service-endpoints.md
+    - text: Özel uç noktaları kullanma
+      url: private-link-service.md
     - text: Bekleyen verileri şifrelemek için müşteri tarafından yönetilen anahtarları yapılandırma
       url: configure-customer-managed-key.md
-    - text: Sanal Ağ tümleştirmesi ve güvenlik duvarlarını etkinleştirme
-      url: event-hubs-tutorial-virtual-networks-firewalls.md

@@ -5,75 +5,75 @@ ms.topic: include
 ms.date: 02/27/2020
 ms.author: ccompy
 ms.openlocfilehash: c731e2a7d4da1a66aabb50b335d526fbb6a0a302
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78671500"
 ---
-Bölgesel VNet tümleştirmesini kullanmak, uygulamanızın erişmesini sağlar:
+Bölgesel VNet Tümleştirme'yi kullanmak uygulamanızın şu şekilde erişimini sağlar:
 
-* aynı bölgedeki VNet 'teki kaynaklar 
-* VNet 'lerdeki kaynaklar aynı bölgedeki VNet 'iniz ile eşlenmez
-* hizmet uç noktası güvenliği sağlanmış hizmetler
-* ExpressRoute bağlantıları genelindeki kaynaklar
-* bağlı olduğunuz VNet 'teki kaynaklar
-* ExpressRoute bağlantıları dahil eşlenen bağlantı genelindeki kaynaklar
-* Özel uç noktalar 
+* entegre ettiğiniz aynı bölgedeki VNet'teki kaynaklar 
+* VNet'teki kaynaklar, aynı bölgede bulunan VNet'inize baktı
+* hizmet bitiş noktası güvenli hizmetler
+* ExpressRoute bağlantıları arasındaki kaynaklar
+* bağlı olduğunuz VNet'teki kaynaklar
+* ExpressRoute bağlantıları da dahil olmak üzere eşli bağlantılar arasındaki kaynaklar
+* özel uç noktalar 
 
-Sanal ağlar ile VNet tümleştirmesi aynı bölgede kullanılırken, aşağıdaki Azure ağ özelliklerini kullanabilirsiniz:
+Aynı bölgedeki VNet'lerle VNet Tümleştirme'yi kullanırken aşağıdaki Azure Ağ özelliklerini kullanabilirsiniz:
 
-* Ağ güvenlik grupları (NSG 'ler)-tümleştirme alt ağınıza yerleştirilmiş bir ağ güvenlik grubuyla giden trafiği engelleyebilirsiniz. Uygulama için gelen erişimi sağlamak üzere VNet tümleştirmesini kullanistemediğiniz için gelen kuralları uygulanmaz.
-* Yol tabloları (UDRs)-istediğiniz yere giden trafik göndermek için tümleştirme alt ağına bir rota tablosu yerleştirebilirsiniz. 
+* Ağ Güvenlik Grupları (NSGs) - Tümleştirme alt ağınıza yerleştirilen bir Ağ Güvenlik Grubu ile giden trafiği engelleyebilirsiniz. Uygulamanıza gelen erişimi sağlamak için VNet Tümleştirmesini kullanamadığınız için gelen kurallar geçerli değildir.
+* Rota Tabloları (ÜDR' ler) - Giden trafiği istediğiniz yere göndermek için tümleştirme alt ağına bir rota tablosu yerleştirebilirsiniz. 
 
-Varsayılan olarak, uygulamanız RFC1918 trafiğini yalnızca sanal ağınıza yönlendirirsiniz. Tüm giden trafiğinizi sanal ağınıza yönlendirmek istiyorsanız WEBSITE_VNET_ROUTE_ALL uygulama ayarını uygulamanıza uygulayın. Uygulama ayarını yapılandırmak için:
+Varsayılan olarak, uygulamanız RFC1918 trafiğini yalnızca VNet'inize yönlendirir. Tüm giden trafiğinizi VNet'inize yönlendirmek istiyorsanız, uygulama ayarını WEBSITE_VNET_ROUTE_ALL uygulamanız için uygulayın. Uygulama ayarını yapılandırmak için:
 
-1. Uygulama portalınızdaki yapılandırma kullanıcı arabirimine gidin. **Yeni uygulama ayarı** seçin
-1. Ad alanına **WEBSITE_VNET_ROUTE_ALL** yazın ve değer alanına **1** yazın
+1. Uygulama portalınızdaki Configuration UI'ye gidin. **Yeni uygulama ayarını** seçin
+1. Ad alanında **WEBSITE_VNET_ROUTE_ALL** ve Değer alanına **1** yazın
 
-   ![Uygulama ayarı sağla][4]
+   ![Uygulama ayarını sağlama][4]
 
-1. **Tamam**’ı seçin
+1. **Tamam'ı** seçin
 1. **Kaydet**’i seçin
 
-Tüm giden trafiğinizi sanal ağınıza yönlendirdiğinizde, tümleştirme alt ağınıza uygulanan NSG 'ler ve UDRs 'ye tabi olur. Tüm giden trafiğinizi sanal ağınıza yönlendirdiğinizde, trafiği başka bir yere göndermek için yollar sağlamadığınız müddetçe giden adresleriniz, uygulama özelliklerinde listelenen giden adresler olmaya devam eder. 
+Tüm giden trafiğinizi VNet'inize yönlendirirseniz, bu trafik entegrasyon alt ağınıza uygulanan NSG'lere ve ÜD'lere tabi olacaktır. Tüm giden trafiğinizi VNet'inize yönlendirdiğinizde, trafiği başka bir yere gönderecek rotalar sağlamadığınız sürece, giden adresleriniz uygulama özelliklerinizde listelenen giden adresler olmaya devam eder. 
 
-Aynı bölgedeki sanal ağlar ile VNet tümleştirmesi kullanımıyla ilgili bazı sınırlamalar vardır:
+Aynı bölgede VNet'lerle VNet Tümleştirmesi kullanmanın bazı sınırlamaları vardır:
 
-* Genel eşleme bağlantıları genelindeki kaynaklara ulaşılamıyor
-* Özelliği yalnızca PremiumV2 App Service planlarını destekleyen daha yeni App Service ölçek birimlerinden kullanılabilir.
-* Tümleştirme alt ağı yalnızca bir App Service planı tarafından kullanılabilir
-* Özellik, App Service Ortamı yalıtılmış plan uygulamaları tarafından kullanılamaz
-* Özellik, bir Kaynak Yöneticisi VNet 'te 32 adresi veya daha büyük bir/27 olan kullanılmayan bir alt ağ gerektiriyor
+* Küresel eşleme bağlantıları üzerinden kaynaklara erişemezsiniz
+* Bu özellik yalnızca PremiumV2 App Service planlarını destekleyen yeni Uygulama Hizmeti ölçek birimlerinden edinilebilir.
+* Tümleştirme alt ağı yalnızca bir Uygulama Hizmeti planı tarafından kullanılabilir
+* Bu özellik, Uygulama Hizmeti Ortamında bulunan Yalıtılmış plan uygulamaları tarafından kullanılamaz
+* Özellik, Bir Kaynak Yöneticisi VNet'te 32 adresli veya daha büyük bir /27 olan kullanılmayan bir alt ağ gerektirir
 * Uygulama ve VNet aynı bölgede olmalıdır
-* Tümleşik bir uygulamayla VNet 'i silemezsiniz. VNet 'i silmeden önce tümleştirmeyi kaldırın. 
-* Yalnızca uygulamayla aynı abonelikte VNET 'ler ile tümleştirilebilir
-* App Service planı başına yalnızca bir bölgesel VNet tümleştirmesi olabilir. Aynı App Service planındaki birden çok uygulama aynı VNet 'i kullanabilir. 
-* Bölgesel VNet tümleştirmesi kullanan bir uygulama varken bir uygulamanın veya planın aboneliğini değiştiremezsiniz
+* Entegre bir uygulamayla bir VNet'i silemezsiniz. VNet'i silmeden önce tümleştirmeyi kaldırın. 
+* VNets ile yalnızca uygulamayla aynı abonelikte entegre olabilirsiniz
+* Uygulama Hizmeti planı başına yalnızca bir bölgesel VNet Tümleştirme'niz olabilir. Aynı Uygulama Hizmeti planındaki birden çok uygulama aynı VNet'i kullanabilir. 
+* Bölgesel VNet Tümleştirmesi kullanan bir uygulama varken bir uygulamanın veya planın aboneliğini değiştiremezsiniz
 
-Her plan örneği için bir adres kullanılır. Uygulamanızı beş örneğe ölçeklendirirseniz, beş adres kullanılır. Alt ağ boyutu atamadan sonra değiştirilemediğinden, uygulamanızın ulaşabileceği ölçeğe uyum sağlayacak kadar büyük bir alt ağ kullanmanız gerekir. 64 adresi olan bir/26 önerilen boyutdir. 64 adresi olan bir/26, 30 örneğe sahip Premium bir plana sahip olur. Bir planı yukarı veya aşağı ölçeklendirirseniz, kısa bir süre için birçok adrese iki kez ihtiyacınız vardır. 
+Her plan örneği için bir adres kullanılır. Uygulamanızı beş örnekle ölçeklendirseniz, beş adres kullanılır. Atamadan sonra alt ağ boyutu değiştirilemeyeceğinden, uygulamanızın ulaşabileceği ölçeklere uyacak kadar büyük bir alt ağ kullanmanız gerekir. 64 adresli bir /26 önerilen boyutdur. 64 adresli bir /26, 30 örnekli bir Premium planı barındıracaktır. Bir planı yukarı veya aşağı ölçeklendirdiğinizde, kısa bir süre için iki kat daha fazla adrese ihtiyacınız vardır. 
 
-Başka bir plandaki uygulamalarınızın zaten başka bir plandaki uygulamalara bağlı olan bir VNet 'e ulaşmasını istiyorsanız, önceden var olan VNet tümleştirmesi tarafından kullanılandan farklı bir alt ağ seçmeniz gerekir.  
+Uygulamalarınızın başka bir plandaki uygulamalarla zaten bağlı olan bir VNet'e ulaşmasını istiyorsanız, önceden varolan VNet Tümleştirmesi tarafından kullanılandan farklı bir alt ağ seçmeniz gerekir.  
 
-Özelliği, Linux için önizlemededir. Özelliğin Linux formu yalnızca RFC 1918 adreslerine çağrı yapmayı destekler (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16).
+Özellik Linux için önizleme. Bu özelliğin Linux formu yalnızca RFC 1918 adreslerine (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) arama yapmayı destekler.
 
-### <a name="web--function-app-for-containers"></a>Kapsayıcılar için Web/İşlev Uygulaması
+### <a name="web--function-app-for-containers"></a>Kapsayıcılar için Web / Fonksiyon Uygulaması
 
-Uygulamanızı Linux 'ta yerleşik görüntülerle barındırdıysanız bölgesel VNet tümleştirmesi ek değişiklik yapılmadan işe yarar. Kapsayıcılar için Web/İşlev Uygulaması kullanıyorsanız, VNet tümleştirmesini kullanmak için Docker görüntünüzü değiştirmeniz gerekir. Docker yansımanıza, sabit kodlanmış bir bağlantı noktası numarası kullanmak yerine ana Web sunucusunun dinleme bağlantı noktası olarak bağlantı noktası ortam değişkenini kullanın. Bağlantı noktası ortam değişkeni, kapsayıcı başlangıç saatinde platform tarafından otomatik olarak ayarlanır. SSH kullanıyorsanız, SSH Daemon 'ın bölgesel VNet tümleştirmesi kullanılırken SSH_PORT ortam değişkeni tarafından belirtilen bağlantı noktası numarasını dinlemek üzere yapılandırılması gerekir.  Linux üzerinde ağ geçidi gerekli VNet tümleştirmesi desteği yoktur. 
+Uygulamanızı Linux'ta yerleşik görüntülerle barındırArsanız, bölgesel VNet Tümleştirmesi ek değişiklikler yapmadan çalışır. Kapsayıcılar için Web / Fonksiyon Uygulaması kullanıyorsanız, VNet Tümleştirmesi'ni kullanmak için docker resminizi değiştirmeniz gerekir. Docker görüntünüzde, sabit kodlu bir bağlantı noktası numarası kullanmak yerine ANA web sunucusunun dinleme bağlantı noktası olarak PORT ortamı değişkenini kullanın. PORT ortamı değişkeni, kapsayıcı başlatma zamanında platform tarafından otomatik olarak ayarlanır. SSH kullanıyorsanız, bölgesel VNet tümleştirmesini kullanırken SSH daemon'u SSH_PORT ortam değişkeni tarafından belirtilen bağlantı noktası numarasını dinleyecek şekilde yapılandırılmalıdır.  Linux'ta gerekli VNet Entegrasyonu için ağ geçidi desteği yoktur. 
 
-### <a name="service-endpoints"></a>Hizmet uç noktaları
+### <a name="service-endpoints"></a>Hizmet Uç Noktaları
 
-Bölgesel VNet tümleştirmesi, hizmet uç noktalarını kullanmanıza olanak sağlar.  Hizmet uç noktalarını uygulamanızla birlikte kullanmak için, seçili bir sanal ağa bağlanmak üzere bölgesel VNet tümleştirmesini kullanın ve ardından tümleştirme için kullandığınız alt ağdaki hizmet uç noktalarını yapılandırın. 
+Bölgesel VNet Tümleştirmesi, hizmet bitiş noktalarını kullanmanızı sağlar.  Uygulamanızla hizmet uç noktalarını kullanmak için, seçili bir VNet'e bağlanmak için bölgesel VNet Tümleştirmesini kullanın ve ardından tümleştirme için kullandığınız alt ağdaki hizmet uç noktalarını yapılandırın. 
 
 ### <a name="network-security-groups"></a>Ağ Güvenlik Grupları
 
-Ağ güvenlik grupları, bir sanal ağdaki kaynaklara gelen ve giden trafiği engellemenize olanak tanır. Bölgesel VNet tümleştirmesinin kullanıldığı bir uygulama, VNet veya Internet 'teki kaynaklara giden trafiği engellemek için [ağ güvenlik grubunu][VNETnsg] kullanabilir. Ortak adreslere giden trafiği engellemek için WEBSITE_VNET_ROUTE_ALL uygulama ayarının 1 olarak ayarlanmış olması gerekir. VNet tümleştirmesi yalnızca uygulamanızdan giden trafiği etkilediği için bir NSG 'deki gelen kuralları uygulamanıza uygulanmaz. Uygulamanıza gelen trafiği denetlemek için erişim kısıtlamaları özelliğini kullanın. Tümleştirme alt ağına uygulanan bir NSG, tümleştirme alt ağına uygulanan rotalara bakılmaksızın etkili olacaktır. WEBSITE_VNET_ROUTE_ALL 1 olarak ayarlanmışsa ve tümleştirme alt ağınızda ortak adres trafiğini etkileyen bir yolunuz yoksa, tüm giden trafiğiniz tümleştirme alt ağına atanan NSG 'lere tabidir. WEBSITE_VNET_ROUTE_ALL ayarlanmamışsa, NSG 'ler yalnızca RFC1918 trafiğe uygulanır.
+Ağ Güvenlik Grupları, VNet'teki kaynaklara gelen ve giden trafiği engellemenize olanak tanır. Bölgesel VNet Tümleştirmesini kullanan bir uygulama, VNet'inizdeki veya internetteki kaynaklara giden trafiği engellemek için [Ağ Güvenliği Grubu'nu][VNETnsg] kullanabilir. Ortak adreslere gelen trafiği engellemek için uygulama ayarını WEBSITE_VNET_ROUTE_ALL 1 olarak ayarlamanız gerekir. VNet Entegrasyonu yalnızca uygulamanızdan gelen trafiği etkilediği için NSG'deki gelen kurallar uygulamanız için geçerli değildir. Uygulamanıza gelen trafiği denetlemek için Erişim Kısıtlamaları özelliğini kullanın. Tümleştirme alt ağınıza uygulanan bir NSG, tümleştirme alt ağınıza uygulanan rotalardan bağımsız olarak geçerli olacaktır. WEBSITE_VNET_ROUTE_ALL 1 olarak ayarlanmışsa ve tümleştirme alt ağınızdaki genel adres trafiğini etkileyen herhangi bir rotanız yoksa, giden trafiğinizin tümü yine de tümleştirme alt ağınıza atanan NSG'lere tabi olacaktır. WEBSITE_VNET_ROUTE_ALL ayarlanmasaydı, NSG'ler yalnızca RFC1918 trafiğine uygulanırdı.
 
 ### <a name="routes"></a>Yollar
 
-Yol tabloları, uygulamanızdaki giden trafiği istediğiniz yere yönlendirmenize olanak tanır. Varsayılan olarak, yol tabloları yalnızca RFC1918 hedef trafiğinizi etkiler.  WEBSITE_VNET_ROUTE_ALL 1 olarak ayarlarsanız tüm giden çağrılarınız etkilenecektir. Tümleştirme alt ağınızda ayarlanan yollar, gelen uygulama isteklerine yapılan yanıtları etkilemez. Ortak hedefler, güvenlik duvarı cihazları veya ağ geçitleri içerebilir. Şirket içinde tüm giden trafiği yönlendirmek isterseniz, tüm giden trafiği ExpressRoute ağ geçidize göndermek için bir yol tablosu kullanabilirsiniz. Trafiği bir ağ geçidine yönlendirdiğinizde, dış ağdaki yolları, yanıtları geri gönderecek şekilde ayarladığınızdan emin olun.
+Rota Tabloları, giden trafiği uygulamanızdan istediğiniz yere yönlendirmenize olanak tanır. Varsayılan olarak, rota tabloları yalnızca RFC1918 hedef trafiğinizi etkiler.  WEBSITE_VNET_ROUTE_ALL 1 olarak ayarlarsanız, tüm giden çağrılarınız etkilenir. Tümleştirme alt ağınızda ayarlanan rotalar gelen uygulama isteklerine verilen yanıtları etkilemez. Sık kullanılan hedefler arasında güvenlik duvarı aygıtları veya ağ geçitleri yer alabilir. Tüm giden trafiği şirket içinde yönlendirmek istiyorsanız, tüm giden trafiği ExpressRoute ağ geçidinize göndermek için bir rota tablosu kullanabilirsiniz. Trafiği bir ağ geçidine yönlendirin, yanıtları geri göndermek için dış ağdaki yolları ayarladığınızdan emin olun.
 
-Sınır Ağ Geçidi Protokolü (BGP) yolları da uygulama trafiğinizi etkileyecektir. ExpressRoute ağ geçidine benzer bir şekilde BGP yollarınız varsa, uygulamanızın giden trafiği etkilenecektir. Varsayılan olarak BGP yolları yalnızca RFC1918 hedef trafiğinizi etkiler. WEBSITE_VNET_ROUTE_ALL 1 olarak ayarlanırsa, tüm giden trafik BGP rotalarınız tarafından etkilenebilir. 
+Kenarlık Ağ Geçidi Protokolü (BGP) yolları da uygulama trafiğinizi etkiler. ExpressRoute ağ geçidi gibi bir şeyden BGP rotalarınız varsa, uygulamagiden trafiğiniz etkilenir. Varsayılan olarak, BGP rotaları yalnızca RFC1918 hedef trafiğinizi etkiler. WEBSITE_VNET_ROUTE_ALL 1 olarak ayarlanmışsa, tüm giden trafik BGP rotalarınızdan etkilenebilir. 
 
 
 <!--Image references-->

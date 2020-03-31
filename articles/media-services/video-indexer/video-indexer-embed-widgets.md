@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 03/26/2020
 ms.author: juliako
-ms.openlocfilehash: 4d92bd3709c5f56db0095ca1be2caa0e9c78b42f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: MT
+ms.openlocfilehash: e475c1bc1878c6b5a0efbbe41f2a3a0fe86bcff2
+ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80336825"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80389384"
 ---
 # <a name="embed-video-indexer-widgets-in-your-apps"></a>Uygulamalarınıza Video Dizinleyici widget'ları gömme
 
@@ -48,7 +48,7 @@ Uyarlanabilir bit hızını kullanarak video akışı için Player widget'ını 
 |`showCaptions` | Boolean değeri | Yürütücünün etkin olan açıklamalı alt yazıları yüklemesini sağlar.<br/> Örnek: `showCaptions=true`. |
 |`type`| | Ses oynatıcı nın cildini etkinleştirir (video bölümü kaldırılır).<br/> Örnek: `type=audio`. |
 |`autoplay` | Boolean değeri | Oynatıcının yüklendiğinde videoyu oynatmaya başlayıp başlatmaması gerektiğini gösterir. Varsayılan değer: `true`.<br/> Örnek: `autoplay=false`. |
-|`language` | Dil kodu | Oyuncu dilini kontrol eder. Varsayılan değer: `en-US`.<br/>Örnek: `language=de-DE`.|
+|`language`/`locale` | Dil kodu | Oyuncu dilini kontrol eder. Varsayılan değer: `en-US`.<br/>Örnek: `language=de-DE`.|
 
 ### <a name="editor-widget"></a>Editör widget
 
@@ -233,14 +233,14 @@ Video Dizinleyici öngörülerini kendi [Azure Media Player'ınızla](https://ak
 
 İstediğiniz içgörü türlerini seçebilirsiniz. Bunu yapmak için, bunları (API'den veya web uygulamasından) aldığınız gömme koduna eklenen aşağıdaki URL parametresine bir değer olarak belirtin: `&widgets=<list of wanted widgets>`.
 
-Olası değerler şunlardır: **insanlar**, **anahtar kelimeler**, **duygular**, **transkript**, ve **arama**.
+`people`Olası değerler şunlardır: , `sentiments`, `topics` `keyframes` `transcript` `ocr` `speakers` `animatedCharacters` `keywords` `labels`, , `emotions` `scenes`, , , , , , , ve `namedEntities`.
 
-Örneğin, yalnızca kişileri ve arama istatistiklerini içeren bir widget katıştırmak istiyorsanız, iframe gömme URL'si aşağıdaki gibi görünür:
+Örneğin, yalnızca kişi ve anahtar kelime istatistikleri içeren bir widget katıştırmak istiyorsanız, iframe gömme URL'si aşağıdaki gibi görünür:
 
-`https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search`
+`https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,keywords`
 
-iframe penceresinin başlığı da iframe URL'ye sağlanarak `&title=<YourTitle>` özelleştirilebilir. (HTML \<başlığı> değerini özelleştirer).
-
+iframe penceresinin başlığı da iframe URL'ye sağlanarak `&title=<YourTitle>` özelleştirilebilir. (HTML <title> değerini özelleştirer).
+   
 Örneğin, iframe pencerenize "MyInsights" başlığını vermek istiyorsanız, URL aşağıdaki gibi görünür:
 
 `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?title=MyInsights`
@@ -257,15 +257,14 @@ Video Indexer yürütücüsünü eklerseniz iframe boyutunu belirterek yürütü
 
 Varsayılan olarak, Video Indexer oynatıcı, videonun transkriptini temel alan kapalı altyazıları otomatik olarak oluşturmuştur. Transkript, video yüklendiğinde seçilen kaynak diliyle birlikte videodan çıkarılır.
 
-Farklı bir dile gömmek istiyorsanız, katıştırma oynatıcı URL'sine ekleyebilirsiniz. `&captions=< Language | "all" | "false" >` Kullanılabilir tüm dillerde altyazı lar istiyorsanız, `all`değeri kullanın. Altyazıların varsayılan olarak görüntülenmesini istiyorsanız, .'ı geçebilirsiniz. `&showCaptions=true`
+Farklı bir dille katıştırmak istiyorsanız, gömme oynatıcı URL'sine &altyazılar=< Dil Kodu > ekleyebilirsiniz. Altyazıların varsayılan olarak görüntülenmesini istiyorsanız, &showCaptions=true'yu geçebilirsiniz.
 
 Gömme URL sonra şu gibi görünecektir:
 
-`https://www.videoindexer.ai/embed/player/<accountId>/<videoId>/?captions=italian`
-
-Altyazıları devre dışı düşürmek istiyorsanız, `captions` parametre değerini ' `false`olarak geçirebilirsiniz.
+`https://www.videoindexer.ai/embed/player/<accountId>/<videoId>/?captions=en-us`
 
 #### <a name="autoplay"></a>Autoplay
+
 Varsayılan olarak, oynatıcı videoyu oynatmaya başlar. önceki gömme URL'ye `&autoplay=false` geçerek yapmamayı seçebilirsiniz.
 
 ## <a name="code-samples"></a>Kod örnekleri

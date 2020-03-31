@@ -1,6 +1,6 @@
 ---
-title: IBM Informix veritabanına Bağlan
-description: Azure Logic Apps kullanarak IBM Informix ' de depolanan kaynakları yöneten görevleri ve iş akışlarını otomatikleştirin
+title: IBM Informix veritabanına bağlanın
+description: Azure Mantık Uygulamaları'nı kullanarak IBM Informix'te depolanan kaynakları yöneten görevleri ve iş akışlarını otomatikleştirin
 services: logic-apps
 ms.suite: integration
 author: gplarsen
@@ -10,86 +10,86 @@ ms.topic: article
 ms.date: 01/07/2020
 tags: connectors
 ms.openlocfilehash: dccb715c974037b4e3080f3e51576feae34c03df
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/26/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76757977"
 ---
-# <a name="manage-ibm-informix-database-resources-by-using-azure-logic-apps"></a>Azure Logic Apps kullanarak IBM Informix veritabanı kaynaklarını yönetme
+# <a name="manage-ibm-informix-database-resources-by-using-azure-logic-apps"></a>Azure Logic Apps'ı kullanarak IBM Informix veritabanı kaynaklarını yönetme
 
-[Azure Logic Apps](../logic-apps/logic-apps-overview.md) ve [Informix Bağlayıcısı](/connectors/informix/)sayesinde, bir IBM Informix veritabanında kaynakları yöneten otomatik görevler ve iş akışları oluşturabilirsiniz. Bu bağlayıcı, Şirket [içi veri ağ geçidini](../logic-apps/logic-apps-gateway-connection.md)kullanırken Azure sanallaştırma ve şirket içi veritabanlarında çalıştırılan WINDOWS Için IBM Informix gibi bulut tabanlı veritabanları da dahil olmak üzere bir TCP/IP ağı üzerinden uzak Informix sunucu bilgisayarlarıyla iletişim kuran bir Microsoft istemcisi içerir. Bu Informix platformları ve sürümlerine, dağıtılmış Ilişkisel veritabanı mimarisi (DRDA) istemci bağlantılarını destekleyecek şekilde yapılandırıldıysa bağlanabilirsiniz:
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md) ve [Informix konektörü](/connectors/informix/)ile bir IBM Informix veritabanında kaynakları yöneten otomatik görevler ve iş akışları oluşturabilirsiniz. Bu bağlayıcı, azure sanallaştırmasında çalışan IBM Informix windows veritabanları ve [şirket içi veri ağ geçidini](../logic-apps/logic-apps-gateway-connection.md)kullandığınızda şirket içi veritabanları gibi bulut tabanlı veritabanları da dahil olmak üzere, bir TCP/IP ağındaki uzak Informix sunucu bilgisayarlarıyla iletişim kuran bir Microsoft istemcisi içerir. Dağıtılmış İlişkisel Veritabanı Mimarisi (DRDA) istemci bağlantılarını destekleyecek şekilde yapılandırılırlarsa, bu Informix platformlarına ve sürümlerine bağlanabilirsiniz:
 
 * IBM Informix 12.1
-* IBM Informix 11,7
+* IBM Informix 11.7
 
-Bu konuda, bir mantıksal uygulamada, veritabanı işlemlerini işlemek için bağlayıcının nasıl kullanılacağı gösterilmektedir.
+Bu konu, veritabanı işlemlerini işlemek için bir mantık uygulamasında bağlayıcıyı nasıl kullanacağınızı gösterir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
-* Şirket içi veritabanları için, Şirket [içi veri ağ geçidini](../logic-apps/logic-apps-gateway-install.md) yerel bir bilgisayara indirip yükleyin ve ardından [Azure Portal bir Azure Data Gateway kaynağı oluşturun](../logic-apps/logic-apps-gateway-connection.md).
+* Şirket içi veritabanları için, şirket içi veri ağ geçidini yerel bir bilgisayara [indirip yükleyin](../logic-apps/logic-apps-gateway-install.md) ve ardından [Azure portalında bir Azure veri ağ geçidi kaynağı oluşturun.](../logic-apps/logic-apps-gateway-connection.md)
 
-* Informix veritabanınıza erişmeniz gereken mantıksal uygulama. Bu bağlayıcı yalnızca eylemleri sağlar, bu nedenle mantıksal uygulamanızın bir tetikleyiciyle başlaması gerekir, örneğin [yineleme tetikleyicisi](../connectors/connectors-native-recurrence.md). 
+* Informix veritabanınıza erişmeniz gereken mantık uygulaması. Bu bağlayıcı yalnızca eylemler sağlar, bu nedenle mantık uygulamanız zaten bir tetikleyiciyle başlamalıdır, [örneğin, Yineleme](../connectors/connectors-native-recurrence.md)tetikleyicisi. 
 
-## <a name="add-an-informix-action"></a>Informix eylemi ekleme
+## <a name="add-an-informix-action"></a>Informix aksiyonu ekleme
 
-1. [Azure Portal](https://portal.azure.com), zaten açık değilse mantıksal uygulama Tasarımcısı 'nda mantıksal uygulamanızı açın.
+1. Azure [portalında,](https://portal.azure.com)mantık uygulamanızı zaten açık değilse Mantık Uygulama Tasarımcısı'nda açın.
 
-1. Informix eylemini eklemek istediğiniz adım altında **yeni adım**' ı seçin.
+1. Informix eylemini eklemek istediğiniz adımın altında **Yeni adımı**seçin.
 
-   Varolan adımlar arasında bir eylem eklemek için farenizi bağlantı oku üzerine taşıyın. Görüntülenen artı işaretini ( **+** ) seçin ve ardından **Eylem Ekle**' yi seçin.
+   Varolan adımlar arasında eylem eklemek için farenizi bağlanan okun üzerine taşıyın. Görünen artı işaretini (**+**) seçin ve ardından eylem **ekle'yi**seçin.
 
-1. Arama kutusuna filtreniz olarak `informix` girin. Eylemler listesinden istediğiniz eylemi seçin, örneğin:
+1. Arama kutusuna filtreniz olarak girin. `informix` Eylemler listesinden, örneğin istediğiniz eylemi seçin:
 
-   ![Çalıştırılacak Informix eylemini seçin](./media/connectors-create-api-informix/select-informix-connector-action.png)
+   ![Çalıştırmak için Informix eylemini seçin](./media/connectors-create-api-informix/select-informix-connector-action.png)
 
-   Bağlayıcı, karşılık gelen veritabanı işlemlerini çalıştıran bu eylemleri sağlar:
+   Bağlayıcı, ilgili veritabanı işlemlerini çalıştıran şu eylemleri sağlar:
 
-   * Tabloları al-`CALL` bir ifade kullanarak veritabanı tablolarını listeleme
-   * Satırları al-`SELECT *` bir ifade kullanarak tüm satırları oku
-   * Satırı al-`SELECT WHERE` ifadesini kullanarak bir satırı okuyun
-   * `INSERT` ifadesini kullanarak satır ekleme
-   * `UPDATE` ifadesini kullanarak bir satırı düzenleme
-   * `DELETE` ifadesini kullanarak bir satırı silme
+   * Tabloları alma - İfade kullanarak `CALL` veritabanı tablolarını listele
+   * Satır alma - `SELECT *` Bir deyim kullanarak tüm satırları okuyun
+   * Satır alma - `SELECT WHERE` Bir deyim kullanarak satır okuma
+   * `INSERT` Deyim kullanarak satır ekleme
+   * `UPDATE` Bir deyim kullanarak satırı düzenleme
+   * `DELETE` İfade kullanarak satırı silme
 
-1. Informix veritabanınız için bağlantı ayrıntıları sağlamanız istenirse, [bağlantıyı oluşturma adımlarını](#create-connection)izleyin ve ardından sonraki adımla devam edin.
+1. Informix veritabanınız için bağlantı ayrıntıları sağlamanız [istenirse, bağlantıyı oluşturmak için adımları](#create-connection)izleyin ve bir sonraki adımla devam edin.
 
-1. Seçtiğiniz eyleme ilişkin bilgileri belirtin:
+1. Seçtiğiniz eylem için bilgileri sağlayın:
 
    | Eylem | Açıklama | Özellikler ve açıklamalar |
    |--------|-------------|-----------------------------|
-   | **Tabloları al** | Bir Informix çağrı ekstresi çalıştırarak veritabanı tablolarını listeleyin. | Hiçbiri |
-   | **Satırları al** | Bir Informix `SELECT *` ifadesini çalıştırarak belirtilen tablodaki tüm satırları getir. | **Tablo adı**: Istediğiniz Informix tablosunun adı <p><p>Bu eyleme başka özellikler eklemek için, **yeni parametre Ekle** listesinden bunları seçin. Daha fazla bilgi için [bağlayıcının başvuru konusuna](/connectors/informix/)bakın. |
-   | **Satırı al** | Bir Informix `SELECT WHERE` ifadesini çalıştırarak, belirtilen tablodan bir satır getirir. | - **tablo adı**: Istediğiniz Informix tablosunun adı <br>- **satır kimliği**: SATıRıN benzersiz kimliği, örneğin, `9999` |
-   | **Satır Ekle** | Bir Informix `INSERT` ifadesini çalıştırarak belirtilen Informix tablosuna bir satır ekleyin. | - **tablo adı**: Istediğiniz Informix tablosunun adı <br>- **öğesi**: eklenecek değerler içeren satır |
-   | **Satırı Güncelleştir** | Bir Informix `UPDATE` ifadesini çalıştırarak belirtilen Informix tablosundaki bir satırı değiştirin. | - **tablo adı**: Istediğiniz Informix tablosunun adı <br>- **satır kimliği**: güncelleştirilecek SATıRıN benzersiz kimliği, örneğin, `9999` <br>- **satır**: güncelleştirilmiş değerleri içeren satır, örneğin, `102` |
-   | **Satırı Sil** | Bir Informix `DELETE` ifadesini çalıştırarak belirtilen Informix tablosundan bir satırı kaldırın. | - **tablo adı**: Istediğiniz Informix tablosunun adı <br>- **satır kimliği**: silinecek SATıRıN benzersiz kimliği, örneğin, `9999` |
+   | **Tabloları alın** | Bir Informix CALL deyimi çalıştırarak veritabanı tablolarını listeleyin. | None |
+   | **Satırları alın** | Bir Informix `SELECT *` deyimi çalıştırarak belirtilen tablodaki tüm satırları getirin. | **Tablo adı**: İstediğindiğiniz Informix tablosunun adı <p><p>Bu eyleme başka özellikler eklemek **için, bunları yeni parametre** ekle listesinden seçin. Daha fazla bilgi için [bağlayıcının başvuru konusuna](/connectors/informix/)bakın. |
+   | **Satır al** | Bir Informix `SELECT WHERE` deyimi çalıştırarak belirtilen tablodan bir satır getirin. | - **Tablo adı**: İstediğindiğiniz Informix tablosunun adı <br>- **Satır Kimliği**: Satır için benzersiz kimlik, örneğin,`9999` |
+   | **Satır ekle** | Bir Informix `INSERT` deyimi çalıştırarak belirtilen Informix tablosuna bir satır ekleyin. | - **Tablo adı**: İstediğindiğiniz Informix tablosunun adı <br>- **item**: Eklenecek değerlere sahip satır |
+   | **Satırı güncelleştir** | Bir Informix `UPDATE` deyimi çalıştırarak belirtilen Informix tablosundaki bir satırı değiştirin. | - **Tablo adı**: İstediğindiğiniz Informix tablosunun adı <br>- **Satır Kimliği**: Satırın güncelleştirilen benzersiz kimliği, örneğin,`9999` <br>- **Satır**: Güncelleştirilmiş değerlere sahip satır, örneğin,`102` |
+   | **Satırı silme** | Bir Informix `DELETE` deyimi çalıştırarak belirtilen Informix tablosundan bir satır kaldırın. | - **Tablo adı**: İstediğindiğiniz Informix tablosunun adı <br>- **Satır Kimliği**: Satırın silinecek benzersiz kimliği, örneğin,`9999` |
    ||||
 
-1. Mantıksal uygulamanızı kaydedin. Şimdi [mantıksal uygulamanızı test](#test-logic-app) edin ya da mantıksal uygulamanızı oluşturmaya devam edin.
+1. Mantıksal uygulamanızı kaydedin. Şimdi, ya [mantık uygulamanızı test edin](#test-logic-app) ya da mantık uygulamanızı oluşturmaya devam edin.
 
 <a name="create-connection"></a>
 
-## <a name="connect-to-informix"></a>Informix ' ye bağlanma
+## <a name="connect-to-informix"></a>Informix'e bağlanın
 
-1. Mantıksal uygulamanız şirket içi bir veritabanına bağlanıyorsa Şirket **içi veri ağ geçidi üzerinden Bağlan**' ı seçin.
+1. Mantık uygulamanız şirket içi bir veritabanına bağlanıyorsa, **şirket içi veri ağ geçidi üzerinden Bağlan'ı**seçin.
 
-1. Bu bağlantı bilgilerini girip **Oluştur**' u seçin.
+1. Bu bağlantı bilgilerini sağlayın ve ardından **Oluştur'u**seçin.
 
-   | Özellik | JSON özelliği | Gereklidir | Örnek değer | Açıklama |
+   | Özellik | JSON özelliği | Gerekli | Örnek değer | Açıklama |
    |----------|---------------|----------|---------------|-------------|
    | Bağlantı adı | `name` | Evet | `informix-demo-connection` | Informix veritabanınıza bağlantı için kullanılacak ad |
-   | Sunucu | `server` | Evet | -Bulut: `informixdemo.cloudapp.net:9089` <br>-Şirket içi: `informixdemo:9089` | IPv4 veya IPv6 biçiminde olan TCP/IP adresi veya diğer ad, ardından iki nokta üst üste ve TCP/IP bağlantı noktası numarası |
-   | Veritabanı | `database` | Evet | `nwind` | DRDA Ilişkisel veritabanı adı (RDBNAM) veya Informix veritabanı adı (dbname). Informix bir 128 baytlık dizeyi kabul eder. |
-   | Kimlik Doğrulaması | `authentication` | Yalnızca şirket içi | **Temel** veya **Windows** (Kerberos) | Informix veritabanınız için gereken kimlik doğrulama türü. Bu özellik yalnızca şirket **içi veri ağ geçidi üzerinden Bağlan '** ı seçtiğinizde görünür. |
-   | Kullanıcı adı | `username` | Hayır | <*veritabanı-Kullanıcı adı*> | Veritabanı için Kullanıcı adı |
-   | Parola | `password` | Hayır | <*Veritabanı-parola*> | Veritabanı için bir parola |
-   | Ağ Geçidi | `gateway` | Yalnızca şirket içi | -<*Azure-subscription*> <br>-<*Azure-şirket içi-veri ağ geçidi-kaynak*> | Azure portal oluşturduğunuz şirket içi veri ağ geçidi için Azure aboneliği ve Azure Kaynak adı. **Ağ geçidi** özelliği ve alt özellikler yalnızca şirket **içi veri ağ geçidi üzerinden Bağlan '** ı seçtiğinizde görünür. |
+   | Sunucu | `server` | Evet | - Bulut:`informixdemo.cloudapp.net:9089` <br>- Tesis içi:`informixdemo:9089` | IPv4 veya IPv6 formatında olan TCP/IP adresi veya diğer ad, ardından bir üst üste ve TCP/IP bağlantı noktası numarası |
+   | Database | `database` | Evet | `nwind` | DRDA İlişkisel Veritabanı Adı (RDBNAM) veya Informix veritabanı adı (dbname). Informix 128 baytlık bir dize kabul eder. |
+   | Kimlik doğrulaması | `authentication` | Yalnızca şirket içi | **Temel** veya **Windows** (kerberos) | Informix veritabanınız tarafından gerekli olan kimlik doğrulama türü. Bu özellik yalnızca şirket **içi veri ağ geçidi üzerinden Bağlan'ı**seçtiğinizde görünür. |
+   | Kullanıcı adı | `username` | Hayır | <*veritabanı-kullanıcı adı*> | Veritabanı için bir kullanıcı adı |
+   | Parola | `password` | Hayır | <*veritabanı-şifre*> | Veritabanı için bir parola |
+   | Ağ geçidi | `gateway` | Yalnızca şirket içi | - *Azure aboneliği<*> <br>- <*Azure-şirket içi veri ağ geçidi-kaynak*> | Azure portalında oluşturduğunuz şirket içi veri ağ geçidi için Azure aboneliği ve Azure kaynak adı. **Ağ Geçidi** özelliği ve alt özellikleri yalnızca şirket içi veri ağ geçidi **üzerinden Bağlan'ı**seçtiğinizde görünür. |
    ||||||
 
-   Örneğin:
+   Örnek:
 
    * **Bulut veritabanı**
 
@@ -103,47 +103,47 @@ Bu konuda, bir mantıksal uygulamada, veritabanı işlemlerini işlemek için ba
 
 <a name="test-logic-app"></a>
 
-## <a name="test-your-logic-app"></a>Mantıksal uygulamanızı test etme
+## <a name="test-your-logic-app"></a>Mantık uygulamanızı test edin
 
-1. Mantıksal uygulama Tasarımcısı araç çubuğunda **Çalıştır**' ı seçin. Mantıksal uygulamanız çalıştıktan sonra, Bu çalıştırmaların çıkışlarını görüntüleyebilirsiniz.
+1. Logic App Designer araç çubuğunda **Çalıştır'ı**seçin. Mantık uygulamanız çalıştırdıktan sonra, bu çalıştırmanın çıktılarını görüntüleyebilirsiniz.
 
-1. Mantıksal uygulamanızın menüsünde **genel bakış**' ı seçin. Genel Bakış bölmesinde, **özet** > çalışma **geçmişi**altında, en son Çalıştır ' ı seçin.
+1. Mantık uygulamanızın menüsünden **Genel Bakış'ı**seçin. Özet > **Çalışır geçmişi**altında **Summary**genel bakış bölmesinde, en son çalıştırmayı seçin.
 
-1. **Mantıksal uygulama çalıştırma**altında, **Çalıştır ayrıntıları**' nı seçin.
+1. **Mantık uygulaması altında çalıştır**, Ayrıntıları **Çalıştır'ı**seçin.
 
-1. Eylemler listesinden, görüntülemek istediğiniz çıktıları içeren eylemi seçin, örneğin **Get_tables**.
+1. Eylemler listesinden, görüntülemek istediğiniz çıktıları içeren eylemi seçin( örneğin, **Get_tables.**
 
-   Eylem başarılı olduysa, **Status** özelliği **başarılı**olarak işaretlenir.
+   Eylem başarılı olduysa, **Durum** özelliği **Başarılı**olarak işaretlenir.
 
-1. Girişleri görüntülemek için, **girişler bağlantısı**altında URL bağlantısını seçin. Çıkışları görüntülemek için, **çıktılar bağlantı** BAĞLANTıSı altında URL bağlantısını seçin. Örnek çıktıları aşağıda verilmiştir:
+1. Girişleri görüntülemek **için, GirişLer Bağlantısı**altında, URL bağlantısını seçin. **Çıktıları** görüntülemek için Çıktılar Bağlantısı bağlantısı altında URL bağlantısını seçin. Aşağıda bazı örnek çıktılar verilmiştir:
 
-   * **Get_tables** , tabloların bir listesini gösterir:
+   * **Get_tables** tabloların listesini gösterir:
 
-     !["Tabloları al" eyleminden çıkış](./media/connectors-create-api-informix/InformixconnectorGetTablesLogicAppRunOutputs.png)
+     !["Tablo ları Al" eyleminden çıktılar](./media/connectors-create-api-informix/InformixconnectorGetTablesLogicAppRunOutputs.png)
 
-   * **Get_rows** satırların bir listesini gösterir:
+   * **Get_rows** satır listesini gösterir:
 
-     !["Satırları al" eyleminden çıkış](./media/connectors-create-api-informix/InformixconnectorGetRowsOutputs.png)
+     !["Satır al" eyleminden çıktılar](./media/connectors-create-api-informix/InformixconnectorGetRowsOutputs.png)
 
    * **Get_row** belirtilen satırı gösterir:
 
-     !["Satırı al" eyleminden çıkış](./media/connectors-create-api-informix/InformixconnectorGetRowOutputs.png)
+     !["Satır al" eyleminden çıktılar](./media/connectors-create-api-informix/InformixconnectorGetRowOutputs.png)
 
    * **Insert_row** yeni satırı gösterir:
 
-     !["Satır ekle" eyleminden çıkış](./media/connectors-create-api-informix/InformixconnectorInsertRowOutputs.png)
+     !["Satır ekle" eyleminden çıktılar](./media/connectors-create-api-informix/InformixconnectorInsertRowOutputs.png)
 
    * **Update_row** güncelleştirilmiş satırı gösterir:
 
-     !["Satırı güncelleştirme" eyleminden çıkış](./media/connectors-create-api-informix/InformixconnectorUpdateRowOutputs.png)
+     !["Satırı güncelleştirme" eyleminden çıktılar](./media/connectors-create-api-informix/InformixconnectorUpdateRowOutputs.png)
 
    * **Delete_row** silinen satırı gösterir:
 
-     !["Satırı sil" eyleminden çıkış](./media/connectors-create-api-informix/InformixconnectorDeleteRowOutputs.png)
+     !["Satırı sil" eyleminden çıktılar](./media/connectors-create-api-informix/InformixconnectorDeleteRowOutputs.png)
 
-## <a name="connector-specific-details"></a>Bağlayıcıya özgü ayrıntılar
+## <a name="connector-specific-details"></a>Bağlayıcıya özel ayrıntılar
 
-Bağlayıcının Swagger açıklaması tarafından tanımlanan Tetikleyiciler, Eylemler ve limitlerle ilgili teknik ayrıntılar için [bağlayıcının başvuru sayfasını](/connectors/informix/)gözden geçirin.
+Bağlayıcının Swagger açıklamasıyla açıklanan tetikleyiciler, eylemler ve sınırlar hakkındaki teknik ayrıntılar için [bağlayıcının başvuru sayfasını](/connectors/informix/)inceleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
