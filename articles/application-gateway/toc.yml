@@ -15,6 +15,9 @@
       href: quick-create-powershell.md
     - name: Uygulama Ağ Geçidi Oluşturma - Azure CLI
       href: quick-create-cli.md
+    - name: Uygulama Ağ Geçidi Oluşturma - ARM şablonu
+      displayName: Resource Manager
+      href: quick-create-template.md
 - name: Öğreticiler
   items:
     - name: SSL ile güvenli
@@ -47,6 +50,8 @@
           href: application-gateway-components.md
         - name: Yapılandırmaya genel bakış
           href: configuration-overview.md
+    - name: Yüksek trafik desteği
+      href: high-traffic-support.md
     - name: Otomatik ölçeklendirme v2 SKU
       href: application-gateway-autoscaling-zone-redundant.md
     - name: Yönlendirme

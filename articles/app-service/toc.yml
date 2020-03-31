@@ -265,6 +265,8 @@
           href: 'https://azure.microsoft.com/documentation/scripts/'
     - name: Sorun giderme
       items:
+        - name: Aralıklı giden bağlantı sorunlarını giderme
+          href: troubleshoot-intermittent-outbound-connection-errors.md
         - name: Visual Studio sorunlarını giderme
           href: troubleshoot-dotnet-visual-studio.md
         - name: Node.js uygulamasında sorun giderme

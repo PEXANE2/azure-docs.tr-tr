@@ -3,7 +3,7 @@ documentType: LandingData
 title: SQL yönetilen örneği
 metadata:
   title: 'Yönetilen örnek belgeleri - Öğreticiler, API Başvurusu'
-  meta.description: Learn how to use a managed instance in Azure SQL Database.
+  description: 'Bulutta barındırılan ve tam olarak yönetilen bir SQL Server Veritabanı Altyapısı örneği olan Azure SQL Veritabanı yönetilen örneği için hızlı başlangıç, öğretici ve örneklere ulaşın.'
   services: sql-database
   author: jovanpop-msft
   ms.reviewer: carlrab

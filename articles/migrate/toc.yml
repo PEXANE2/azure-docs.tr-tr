@@ -8,13 +8,13 @@
       href: whats-new.md
     - name: Sık sorulan sorular
       items:
-        - name: Azure Geçişi hakkındaki sorular
+        - name: Genel
           href: resources-faq.md
-        - name: Azure Geçişi gereci hakkındaki sorular
+        - name: Azure Geçişi gereci
           href: common-questions-appliance.md
-        - name: Bulma/değerlendirme/bağımlılık görselleştirmesi hakkındaki sorular
+        - name: Sunucu Değerlendirme aracı/bağımlılık analizi
           href: common-questions-discovery-assessment.md
-        - name: Sunucu Geçişi hakkında sorular
+        - name: Sunucu Geçişi aracı
           href: common-questions-server-migration.md
 - name: Öğreticiler
   items:
@@ -74,34 +74,40 @@
           href: migrate-appliance.md
         - name: Çoğaltma aleti gereksinimleri
           href: migrate-replication-appliance.md
+    - name: Azure Geçişi aleti mimarisi
+      href: migrate-appliance-architecture.md
     - name: Hyper-V geçiş mimarisi
       href: hyper-v-migration-architecture.md
-    - name: Aracı tabanlı geçiş mimarisi
+    - name: VMware aracı tabanlı geçiş mimarisi
       href: agent-based-migration-architecture.md
-    - name: Değerlendirmeler için en iyi yöntemler
-      href: best-practices-assessment.md
     - name: Değerlendirmelere genel bakış
       href: concepts-assessment-calculation.md
-    - name: Bağımlılık görselleştirme
+    - name: Değerlendirmeler için en iyi yöntemler
+      href: best-practices-assessment.md
+    - name: Bağımlılık analizine genel bakış
       href: concepts-dependency-visualization.md
 - name: Nasıl yapılır kılavuzları
   items:
-    - name: Önceki sürümle çalışma
-      href: migrate-v1.md
     - name: Azure Geçişi projelerini oluşturma ve yönetme
       href: create-manage-projects.md
-    - name: VMware aletini dağıtma
-      href: how-to-set-up-appliance-vmware.md
-    - name: Hyper-V aletini dağıtma
-      href: how-to-set-up-appliance-hyper-v.md
-    - name: Fiziksel sunucu aleti dağıtma
-      href: how-to-set-up-appliance-physical.md
-    - name: Uygulamaları/rolleri/özellikleri bulma
-      href: how-to-discover-applications.md
     - name: İlk kez araç ekleme
       href: how-to-add-tool-first-time.md
     - name: Değerlendirme araçları ekleme
       href: how-to-assess.md
+    - name: Azure Geçişi aletini dağıtma
+      items:
+        - name: VMware için alet dağıtma (OVA)
+          href: how-to-set-up-appliance-vmware.md
+        - name: Hyper-V için alet dağıtma (VHD)
+          href: how-to-set-up-appliance-hyper-v.md
+        - name: VMware/Hyper-V için alet dağıtma (betik)
+          href: deploy-appliance-script.md
+        - name: Fiziksel sunucular için alet dağıtma
+          href: how-to-set-up-appliance-physical.md
+    - name: VMware VM’leri için bulma kapsamını sınırlama
+      href: set-discovery-scope.md
+    - name: Uygulamaları/rolleri/özellikleri bulma
+      href: how-to-discover-applications.md
     - name: Değerlendirme için grup makineleri
       href: how-to-create-a-group.md
     - name: Makine bağımlılıklarını analiz etme (aracı tabanlı)
@@ -122,6 +128,8 @@
       href: prepare-for-migration.md
     - name: Azure Geçişi projesini silme
       href: how-to-delete-project.md
+    - name: Önceki sürümle çalışma
+      href: migrate-v1.md
     - name: Ölçek değerlendirmesi ve geçiş
       items:
         - name: Çok sayıda VMware VM’sini değerlendirme

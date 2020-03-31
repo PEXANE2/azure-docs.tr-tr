@@ -1,59 +1,86 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure Notification Hubs Belgeleri
+### YamlMime:Landing
+title: Azure Notification Hubs belgeleri
+summary: Herhangi bir arka uçtan herhangi bir mobil cihaza anında iletme bildirimleri gönderin. Öğreticiler, API başvuruları ve diğer belgeler.
 metadata:
-  title: 'Azure Notification Hubs Belgeleri - Öğreticiler, API Başvurusu | Microsoft Docs'
-  description: 'Notification Hubs ile herhangi bir arka uçtan herhangi bir mobil cihaza nasıl anında iletme bildirimleri gönderebileceğinizi öğrenin. Öğreticiler, API başvuruları ve diğer belgeler.'
-  services: notification-hubs
-  author: sethmanheim
-  manager: femila
+  title: Azure Notification Hubs belgeleri
+  description: Herhangi bir arka uçtan herhangi bir mobil cihaza anında iletme bildirimleri gönderin. Öğreticiler, API başvuruları ve diğer belgeler.
   ms.service: notification-hubs
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
-  ms.date: 03/01/2017
+  author: sethmanheim
   ms.author: sethm
-abstract:
-  description: 'Çeşitli cihaz türleri (Android, iOS, Windows, Windows Phone) üzerinde çalışan uygulamalara milyonlarca iletiyi hızlıca göndermeye yarayan çok platformlu, ölçeklenebilir bir anında iletme bildirimi altyapısı olan Notification Hubs’ı kullanmayı öğrenin. <p>Öğreticiler, API başvuruları ve diğer belgelerde, arka uçlardan mobil cihazlara yönelik anında iletme bildirimleri ayarlama ve gönderme hakkında bilgi sağlanmıştır.</p>'
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: media/index/video.png
-      width: 250
-    title: Android uygulamalarına anında iletme bildirimleri gönderme
-    href: 'https://channel9.msdn.com/Shows/Azure-Friday/Using-Azure-Notification-Hubs-in-an-Android-Application'
-    width: 250
-sections:
-  - title: Adım Adım Öğreticiler
-    items:
-      - type: paragraph
-        text: 'Notification Hubs kullanarak anında iletme bildirimleri göndermeyi öğrenin:'
-      - type: list
-        style: ordered
-        items:
-          - html: 'Tüm kayıtlı cihazlara anında iletme bildirimleri gönderme: <a href="/azure/notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started">Android</a> | <a href="/azure/notification-hubs/notification-hubs-ios-apple-push-notification-apns-get-started">iOS</a> | <a href="/azure/notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification">Windows</a> | <a href="/azure/notification-hubs/notification-hubs-windows-mobile-push-notifications-mpns">Windows Phone</a> | <a href="/azure/notification-hubs/xamarin-notification-hubs-push-notifications-android-gcm">Xamarin.Android</a> | <a href="/azure/notification-hubs/xamarin-notification-hubs-ios-push-notification-apns-get-started">Xamarin.iOS</a>'
-          - html: 'Belirli cihazlara anında iletme bildirimleri gönderme: <a href="/azure/notification-hubs/notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification">Android</a> | <a href="/azure/notification-hubs/notification-hubs-ios-xplat-segmented-apns-push-notification">iOS</a> | <a href="/azure/notification-hubs/notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns">Windows</a> | <a href="/azure/notification-hubs/notification-hubs-windows-phone-push-xplat-segmented-mpns-notification">Windows Phone</a>'
-          - html: 'Belirli kullanıcılara anında iletme bildirimleri gönderme: <a href="/azure/notification-hubs/notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification">Android</a> | <a href="/azure/notification-hubs/notification-hubs-aspnet-backend-ios-apple-apns-notification">iOS</a> | <a href="/azure/notification-hubs/notification-hubs-aspnet-backend-windows-dotnet-wns-notification">Windows</a>'
-          - html: 'Konum temelli anında iletme bildirimleri gönderme: <a href="/azure/notification-hubs/notification-hubs-push-bing-spatial-data-geofencing-notification">Windows</a>'
-          - html: 'Kişiselleştirilmiş ve yerelleştirilmiş anında iletme bildirimleri gönderme: <a href="/azure/notification-hubs/notification-hubs-ios-xplat-localized-apns-push-notification">iOS</a> | <a href="/azure/notification-hubs/notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification">Windows</a>'
-  - title: Örnekler
-    items:
-      - type: paragraph
-        text: 'Azure Notification Hubs örnek uygulamaları birden çok kaynakta kullanıma sunulur. Platforma özel örnekler, ayrı ayrı SDK’larla (bağlantılar aşağıda) gruplandırılır. Tek başına olan Örnek Depoları ise diğer platformlara yönelik örnekler içerir.'
-      - type: list
-        style: unordered
-        items:
-          - html: '<a href="https://github.com/Azure/azure-notificationhubs-android">Android SDK</a>'
-          - html: '<a href="https://github.com/Azure/azure-notificationhubs-ios">iOS SDK</a>'
-          - html: '<a href="https://github.com/Azure/azure-notificationhubs-dotnet">.NET SDK</a>'
-          - html: '<a href="https://github.com/Azure/azure-notificationhubs-samples">Örnek Depoları (Diğer platformlar)</a>'
-          - html: <a href="/azure/notification-hubs/samples-powershell">PowerShell</a>
-  - title: Başvuru
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: '<a href="https://docs.microsoft.com/powershell/module/az.notificationhubs">Azure PowerShell</a>'
-          - html: <a href="/dotnet/api/microsoft.azure.notificationhubs">.NET SDK</a>
-          - html: <a href="/rest/api/notificationhubs">REST API başvurusu</a>
+  ms.date: 03/11/2020
+  ms.openlocfilehash: bed452fcababb3a712da95e3041bdeec71116773
+  ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+  ms.translationtype: HT
+  ms.contentlocale: tr-TR
+  ms.lasthandoff: 03/26/2020
+  ms.locfileid: "80289116"
+landingContent:
+- title: Azure Notification Hubs hakkında
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Notification Hubs nedir?
+      url: notification-hubs-push-notification-overview.md
+    - text: App Service Mobile Apps ile Tümleştirme
+      url: notification-hubs-app-service.md
+  - linkListType: concept
+    links:
+    - text: Kurumsal gönderim mimari kılavuzu
+      url: notification-hubs-enterprise-push-notification-architecture.md
+    - text: Kayıt yönetimi
+      url: notification-hubs-push-notification-registration-management.md
+  - linkListType: video
+    links:
+    - text: Android uygulamalarına anında iletme bildirimleri gönderme
+      url: https://channel9.msdn.com/Shows/Azure-Friday/Using-Azure-Notification-Hubs-in-an-Android-Application
+- title: başlarken
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Azure portalında Azure bildirim merkezi oluşturma
+      url: create-notification-hub-portal.md
+    - text: Azure portalındaki bir bildirim merkezinde anında iletme bildirimlerini ayarlama
+      url: configure-notification-hub-portal-pns-settings.md
+- title: Tüm kayıtlı cihazlara anında iletme bildirimleri gönderme
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Tüm kayıtlı Android cihazlara anında iletme bildirimleri gönderme
+      url: notification-hubs-android-push-notification-google-fcm-get-started.md
+    - text: Swift iOS uygulamalarına anında iletme bildirimleri gönderme
+      url: notification-hubs-ios-push-notifications-swift-apps-get-started.md
+  - linkListType: how-to-guide
+    links:
+    - text: Platformlar arası bildirim gönderme
+      url: notification-hubs-aspnet-cross-platform-notification.md
+    - text: Planlanmış bildirimler gönderme
+      url: notification-hubs-send-push-notifications-scheduled.md
+- title: Örnekler
+  linkLists:
+  - linkListType: sample
+    links:
+    - text: Azure Notification Hubs örnekleri
+      url: samples.md
+    - text: PowerShell örnekleri
+      url: samples-powershell.md
+- title: Başvuru
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: .NET API’si
+      url: /dotnet/api/microsoft.azure.notificationhubs?view=azure-dotnet
+    - text: PowerShell
+      url: /powershell/module/az.notificationhubs/?view=azps-3.6.1
+    - text: CLI
+      url: /cli/azure/ext/notification-hub/notification-hub?view=azure-cli-latest
+- title: Kaynaklar
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: SSS
+      url: notification-hubs-push-notification-faq.md
+    - text: Destek seçenekleri
+      url: https://azure.microsoft.com/support/options/
+    - text: MSDN forumları
+      url: https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=notificationhubs

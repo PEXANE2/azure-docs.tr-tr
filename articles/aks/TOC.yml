@@ -14,7 +14,8 @@
           href: kubernetes-walkthrough.md
         - name: Azure portalı kullanma
           href: kubernetes-walkthrough-portal.md
-        - name: Resource Manager şablonu kullanma
+        - name: ARM şablonu kullanma
+          displayName: Resource Manager
           href: kubernetes-walkthrough-rm-template.md
     - name: Uygulama geliştirme
       expanded: true
@@ -73,6 +74,8 @@
       href: concepts-storage.md
     - name: Ölçek
       href: concepts-scale.md
+    - name: Düğüm otomatik onarımı
+      href: node-auto-repair.md
     - name: En iyi uygulamalar
       items:
         - name: Genel Bakış
@@ -123,6 +126,8 @@
           href: upgrade-cluster.md
         - name: İşlem düğümü işletim sistemi güncelleştirmeleri
           href: node-updates-kured.md
+        - name: AKS kümesini yapılandırma
+          href: cluster-configuration.md
         - name: AKS kümesi ile ACR'yi tümleştirme
           href: cluster-container-registry-integration.md
         - name: Sanal düğümler oluşturma
@@ -198,7 +203,7 @@
       items:
         - name: Hizmet sorumlusu oluşturma
           href: kubernetes-service-principal.md
-        - name: Yönetilen kimlikleri kullanma (önizleme)
+        - name: Yönetilen kimlikleri kullanma
           href: use-managed-identity.md
         - name: Küme yapılandırma dosyasına erişimi sınırlama
           href: control-kubeconfig-access.md
@@ -216,6 +221,8 @@
           href: limit-egress-traffic.md
         - name: Azure Active Directory tümleştirmesini etkinleştirme
           items:
+            - name: Azure AD’yi tümleştirme (önizleme)
+              href: azure-ad-v2.md
             - name: Azure CLI kullanma
               href: azure-ad-integration-cli.md
             - name: Azure portalı kullanma

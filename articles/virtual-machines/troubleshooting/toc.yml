@@ -69,18 +69,24 @@
           href: boot-diagnostics.md
         - name: BitLocker hataları
           href: troubleshoot-bitlocker-boot-error.md
-        - name: Dosya sistemi hatalarını denetleme
-          href: troubleshoot-check-disk-boot-error.md
         - name: Mavi ekran hataları
           href: troubleshoot-common-blue-screen-error.md
-        - name: VM başlatma takıldı
-          href: troubleshoot-vm-boot-configure-update.md
+        - name: Dosya sistemi hatalarını denetleme
+          href: troubleshoot-check-disk-boot-error.md
+        - name: Devre dışı bırakılmış kritik işlem
+          href: troubleshoot-guide-critical-process-died.md
         - name: Kritik hizmet başarısız oldu
           href: troubleshoot-critical-service-failed-boot-error.md
+        - name: Önyüklenebilir bir disk değil
+          href: troubleshoot-guide-not-bootable-disk.md
         - name: Yeniden başlatma döngüsü
           href: troubleshoot-reboot-loop.md
         - name: Windows güncelleştirmede takılı kalma
           href: troubleshoot-stuck-updating-boot-error.md
+        - name: VM başlatma takıldı
+          href: troubleshoot-vm-boot-configure-update.md
+        - name: 'VM, Windows önyükleme yöneticisinden dolayı önyükleme yapamıyor'
+          href: troubleshoot-guide-windows-boot-manager-menu.md
 - name: Sanal makineme bağlanılamıyor
   items:
     - name: RDP
@@ -156,13 +162,13 @@
           items:
             - name: PowerShell
               href: troubleshoot-recovery-disks-windows.md
-            - name: Azure portalı
+            - name: Azure portal
               href: troubleshoot-recovery-disks-portal-windows.md
         - name: Linux
           items:
             - name: CLI
               href: troubleshoot-recovery-disks-linux.md
-            - name: Azure portalı
+            - name: Azure portal
               href: troubleshoot-recovery-disks-portal-linux.md
         - name: Cihaz adları değiştirildi
           href: troubleshoot-device-names-problems.md

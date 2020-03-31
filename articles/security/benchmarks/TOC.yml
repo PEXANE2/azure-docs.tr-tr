@@ -32,11 +32,23 @@
   items:
     - name: Azure güvenlik temellerine genel bakış
       href: security-baselines-overview.md
+    - name: Redis için Azure Cache güvenlik temeli
+      href: ../../azure-cache-for-redis/security-baseline.md
     - name: Batch güvenlik temeli
       href: ../../batch/security-baseline.md
-    - name: Key Vault güvenlik temeli
-      href: ../../key-vault/security-baseline.md
+    - name: Container Registry güvenlik temeli
+      href: ../../container-registry/security-baseline.md
+    - name: Cosmos DB güvenlik temeli
+      href: ../../cosmos-db/security-baseline.md
     - name: HDInsight güvenlik temeli
       href: ../../hdinsight/security-baseline.md
+    - name: Key Vault güvenlik temeli
+      href: ../../key-vault/security-baseline.md
+    - name: MariaDB güvenlik temeli
+      href: ../../mariadb/security-baseline.md
+    - name: MySQL güvenlik temeli
+      href: ../../mysql/security-baseline.md
+    - name: PostgreSQL güvenlik temeli
+      href: ../../postgresql/security-baseline.md
     - name: SQL Veritabanı güvenlik temeli
       href: ../../sql-database/security-baseline.md

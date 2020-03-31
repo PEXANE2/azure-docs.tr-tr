@@ -10,6 +10,8 @@
           href: migrate-from-hub-spoke-topology.md
         - name: Genel geçiş ağ mimarisi
           href: virtual-wan-global-transit-network-architecture.md
+        - name: Çin ile bağlantı kurma
+          href: interconnect-china.md
 - name: Öğreticiler
   items:
     - name: Siteden siteye bağlantı oluşturma
@@ -20,6 +22,8 @@
       href: virtual-wan-expressroute-portal.md
 - name: Kavramlar
   items:
+    - name: Uzaktan çalışma
+      href: work-remotely-support.md
     - name: Konumlar ve iş ortakları
       items:
         - name: Merkez konumları ve iş ortakları
@@ -28,8 +32,6 @@
           href: virtual-wan-configure-automation-providers.md
     - name: IPsec ilkeleri
       href: virtual-wan-ipsec.md
-    - name: Noktadan Siteye VPN genel bakış
-      href: ../vpn-gateway/point-to-site-about.md?toc=%2fazure%2fvirtual-wan%2ftoc.json
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Sanal ağ geçidini Sanal WAN'a bağlama
@@ -52,25 +54,31 @@
           href: virtual-wan-site-to-site-portal.md
     - name: Kullanıcı VPN (noktadan siteye)
       items:
-        - name: Kullanıcı VPN (noktadan siteye) bağlantıları oluşturma
+        - name: Kullanıcı VPN bağlantısı oluşturma
           href: virtual-wan-point-to-site-portal.md
-        - name: Kullanıcı VPN’i için sertifikaları yapılandırma
+        - name: İstemci sertifikaları oluşturma
           href: certificates-point-to-site.md
-        - name: Kullanıcı VPN’i için Azure AD kiracısı yapılandırma
+        - name: Azure AD kiracısını yapılandırma
           href: openvpn-azure-ad-tenant.md
-        - name: AlwaysOn VPN kullanıcı tüneli yapılandırma
-          href: ../vpn-gateway/vpn-gateway-howto-always-on-user-tunnel.md?toc=%2fazure%2fvirtual-wan%2ftoc.json
-        - name: AlwaysOn VPN cihaz tüneli yapılandırma
-          href: ../vpn-gateway/vpn-gateway-howto-always-on-device-tunnel.md?toc=%2fazure%2fvirtual-wan%2ftoc.json
-        - name: Kullanıcı VPN’i için Çok Faktörlü Kimlik Doğrulamasını Etkinleştirme
-          href: openvpn-azure-ad-mfa.md
-        - name: Kullanıcı VPN’i için Azure AD kimlik doğrulamasını yapılandırma
-          href: virtual-wan-point-to-site-azure-ad.md
-        - name: Kullanıcı VPN’i için çok uygulamalı Azure AD kimlik doğrulamasını yapılandırma
-          href: openvpn-azure-ad-tenant-multi-app.md
-        - name: Genel ve merkez tabanlı Kullanıcı VPN’i profillerini indirme
+        - name: İstemci profili
+          href: about-vpn-profile-download.md
+        - name: Genel ve merkez tabanlı profil
           href: global-hub-profile.md
-    - name: Yönlendirmeyi yapılandırma
+        - name: OpenVPN istemcisi yapılandırması
+          href: howto-openvpn-clients.md?
+        - name: AlwaysOn VPN kullanıcı tüneli yapılandırma
+          href: howto-always-on-user-tunnel.md
+        - name: AlwaysOn VPN cihaz tüneli yapılandırma
+          href: howto-always-on-device-tunnel.md
+        - name: Multi-Factor Authentication’ı (MFA) etkinleştirme
+          href: openvpn-azure-ad-mfa.md
+        - name: Azure AD kimlik doğrulamasını yapılandırma
+          href: virtual-wan-point-to-site-azure-ad.md
+        - name: Azure VPN İstemcisi’ni Windows 10 için yapılandırma
+          href: openvpn-azure-ad-client.md
+        - name: Çok uygulamalı Azure AD kimlik doğrulamasını yapılandırma
+          href: openvpn-azure-ad-tenant-multi-app.md
+    - name: Yönlendirme
       items:
         - name: Sanal hub'dan NVA'ya trafik yönlendirme
           items:

@@ -62,8 +62,16 @@
       href: load-balancer-standard-availability-zones.md
     - name: Yerleşik güvenlik denetimleri
       href: load-balancer-security-controls.md
-- name: Nasıl yapılır?
+- name: Nasıl yapılır
   items:
+    - name: Sanal makine ölçek kümeleri
+      items:
+        - name: Mevcut bir Azure Load Balancer ile kullanma - Portal
+          href: configure-vm-scale-set-portal.md
+        - name: Mevcut bir Azure Load Balancer ile kullanma - PowerShell
+          href: configure-vm-scale-set-powershell.md
+        - name: Mevcut bir Azure Load Balancer ile kullanma - CLI
+          href: configure-vm-scale-set-cli.md
     - name: Temel Load Balancer’ı Standart Load Balancer’a yükseltme
       items:
         - name: Temel Genel Load Balancer’ı yükseltme
@@ -74,7 +82,7 @@
           href: upgrade-InternalBasic-To-PublicStandard.md
     - name: Giden kuralları yapılandırma
       items:
-        - name: Azure portalı
+        - name: Azure portal
           href: configure-load-balancer-outbound-portal.md
         - name: Azure CLI
           href: configure-load-balancer-outbound-cli.md

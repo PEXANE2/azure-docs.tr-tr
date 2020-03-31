@@ -14,6 +14,8 @@
       href: ./servers/onboard-service-principal.md
     - name: PowerShell DSC ile makineleri Azure Arc’a bağlama
       href: ./servers/onboard-dsc.md
+- name: Aracıyı yönetme
+  href: ./servers/manage-agent.md
 - name: Başvuru
   items:
     - name: Azure Bağlı Makine Aracısı CLI arabirimi

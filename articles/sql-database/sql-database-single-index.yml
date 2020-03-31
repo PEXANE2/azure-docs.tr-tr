@@ -1,16 +1,16 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: 'Azure SQL Veritabanı: Tek veritabanı'
+title: Azure SQL Veritabanı
 metadata:
-  title: Belgeler - Tek veritabanı
-  meta.description: Learn how to use Azure SQL databases.
+  title: 'Belgeler: Tek veritabanı, veritabanı sunucusu, elastik havuz'
+  description: 'Azure SQL Veritabanı tek veritabanları, elastik havuzları ve veritabanı sunucularına yönelik hızlı başlangıç, öğretici ve örneklere ulaşın.'
   services: sql-database
   requires-business-manager-approval: false
   ms.service: sql-database
   ms.subservice: single-database
   ms.topic: overview
   author: jovanpop-msft
-  ms.author: jovanpop-msft
+  ms.author: jovanpop
   ms.reviewer: carlrab
   manager: craigg
   ms.date: 04/26/2019

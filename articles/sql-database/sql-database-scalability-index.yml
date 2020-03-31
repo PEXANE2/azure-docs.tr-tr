@@ -3,7 +3,7 @@ documentType: LandingData
 title: Ölçeklenebilirlik
 metadata:
   title: Azure SQL Veritabanı - Ölçeklenebilirlik
-  meta.description: Learn how to scale your Azure SQL Database.
+  description: Azure SQL Veritabanı’nın veritabanınızı daha fazla işlem gücü (ölçek büyütme) veya daha fazla veritabanı birimi (ölçeği genişletme) ekleyerek kolayca ölçeklendirmenize nasıl olanak tanıdığını öğrenin.
   services: sql-database
   ms.subservice: scale-out
   author: jovanpop-msft
@@ -14,7 +14,7 @@ metadata:
   ms.devlang: null
   ms.topic: overview
   ms.date: 01/25/2019
-  ms.author: jovanpop-msft
+  ms.author: jovanpop
 sections:
   - items:
       - type: paragraph

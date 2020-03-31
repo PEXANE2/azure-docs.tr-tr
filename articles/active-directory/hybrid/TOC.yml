@@ -24,6 +24,8 @@
           href: cloud-governed-management-for-on-premises.md
         - name: Güçlü bir kimlik temeli için dört adım
           href: four-steps.md
+        - name: Hibrit kimlik doğrulaması yöntemi seçme
+          href: choose-ad-authn.md
     - name: Azure AD Connect ve Connect Health
       items:
         - name: Azure AD Connect ve Connect Health nedir?
@@ -312,6 +314,8 @@
           href: tshoot-connect-attribute-not-syncing.md
         - name: Yükleme sorunları
           href: tshoot-connect-install-issues.md
+        - name: UPN değişiklikleri
+          href: howto-troubleshoot-upn-changes.md
 - name: Başvuru
   items:
     - name: Karma Kimlik için Gereken Bağlantı Noktaları ve Protokoller

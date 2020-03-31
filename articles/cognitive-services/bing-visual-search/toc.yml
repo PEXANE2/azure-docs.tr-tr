@@ -41,6 +41,10 @@
       href: tutorial-visual-search-image-upload.md
     - name: Görüntünün bir alanını kırpma ve arama
       href: tutorial-visual-search-crop-area-results.md
+    - name: Önceki aramalardan benzer resimleri bulma
+      href: tutorial-visual-search-insights-token.md
+    - name: Tek sayfalı Web uygulaması oluşturma
+      href: tutorial-bing-visual-search-single-page-app.md
 - name: Örnekler
   items:
     - name: Kod örnekleri
@@ -63,10 +67,6 @@
     - name: Küçük resimleri yeniden boyutlandırma ve kırpma
       maintainContext: true
       href: ../bing-web-search/resize-and-crop-thumbnails.md
-    - name: Görüntü içgörüsü belirteçlerini kullanarak bir görüntüyü arama
-      href: tutorial-visual-search-insights-token.md
-    - name: Tek sayfalı Web uygulaması oluşturma
-      href: tutorial-bing-visual-search-single-page-app.md
 - name: Başvuru
   items:
     - name: REST v7 API

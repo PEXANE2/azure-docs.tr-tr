@@ -21,6 +21,8 @@
           href: cognitive-search-quickstart-blob.md
         - name: Bilgi deposu oluşturma
           href: knowledge-store-create-portal.md
+        - name: Arama gezgini ile sorgulama
+          href: search-explorer.md
     - name: 'C#'
       href: search-get-started-dotnet.md
     - name: Java
@@ -231,10 +233,10 @@
           href: search-query-simple-examples.md
         - name: Tam Lucene söz dizimini kullanma
           href: search-query-lucene-examples.md
-        - name: Arama Gezgini'ni kullanma (portal)
-          href: search-explorer.md
         - name: Özel karakterler ve kısmi terimler
           href: search-query-partial-matching.md
+        - name: Power Apps’ten sorgulama
+          href: search-howto-powerapps.md
         - name: Söz dizimi başvurusu
           items:
             - name: Basit sorgu söz dizimi

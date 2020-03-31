@@ -95,6 +95,9 @@
     - name: Model eğitimi
       displayName: 'run config, estimator, machine learning pipeline, ml pipeline, train model'
       href: concept-train-machine-learning-model.md
+    - name: Dağıtılmış eğitim
+      displayName: 'parallellization, deep learning, deep neural network, dnn'
+      href: concept-distributed-training.md
     - name: Model yönetimi (MLOps)
       displayName: 'deploy, deployment, publish, production, operationalize, operationalization'
       href: concept-model-management-and-deployment.md
@@ -111,6 +114,9 @@
     - name: Otomatik makine öğrenimi
       displayName: 'automl, auto ml'
       href: concept-automated-ml.md
+    - name: Makine öğrenmesi tuzaklarını yönetme
+      displayName: 'automl, auto ml, risks'
+      href: concept-manage-ml-pitfalls.md
     - name: İşlem örneği
       displayName: 'resource, dsvm, Data Science Virtual Machine'
       href: concept-compute-instance.md
@@ -184,39 +190,47 @@
           href: concept-train-model-git-integration.md
     - name: Verilerle çalışma
       items:
-        - name: Azure Depolama'daki verilere bağlanma
-          displayName: 'blob, get, fileshare, access storage, mount, download'
-          href: how-to-access-data.md
-        - name: Bir veri deposundan veri alma
-          displayName: 'data, data set, register, access data'
-          href: how-to-create-register-datasets.md
-        - name: Veri kümeleriyle eğitme
-          displayName: 'data, dataset, mount'
-          href: how-to-train-with-datasets.md
-        - name: Tasarımcıda verileri içeri aktarma
-          displayName: 'designer, data, import, dataset, datastore'
-          href: how-to-designer-import-data.md
-        - name: Veri kümelerinde kaymayı algılama
-          displayName: 'data, dataset'
-          href: how-to-monitor-datasets.md
-        - name: Veri kümeleri için sürüm oluşturma ve bunları izleme
-          displayName: 'data, data set'
-          href: how-to-version-track-datasets.md
-        - name: Etiketli verileri alma
-          displayName: 'data, dataset, labeling'
-          href: how-to-create-labeling-projects.md
-        - name: Resimleri etiketleme
-          displayName: 'data, dataset, labeling'
-          href: how-to-label-images.md
-        - name: Etiketlerle veri kümeleri oluşturma
-          displayName: 'data, labels, torchvision'
-          href: how-to-use-labeled-dataset.md
-        - name: Azure Data Factory ile veri alımı
-          displayName: 'data, ingestion, adf'
-          href: how-to-data-ingest-adf.md
-        - name: Veri alımı için DevOps
-          displayName: 'data, ingestion, devops'
-          href: how-to-cicd-data-ingestion.md
+        - name: Verileri etiketleme
+          items:
+            - name: Etiketli verileri alma
+              displayName: 'data, dataset, labeling'
+              href: how-to-create-labeling-projects.md
+            - name: Resimleri etiketleme
+              displayName: 'data, dataset, labeling'
+              href: how-to-label-images.md
+            - name: Etiketlerle veri kümeleri oluşturma
+              displayName: 'data, labels, torchvision'
+              href: how-to-use-labeled-dataset.md
+        - name: Verileri alma
+          items:
+            - name: Azure Data Factory ile veri alımı
+              displayName: 'data, ingestion, adf'
+              href: how-to-data-ingest-adf.md
+            - name: Veri alımı için DevOps
+              displayName: 'data, ingestion, devops'
+              href: how-to-cicd-data-ingestion.md
+            - name: Tasarımcıda verileri içeri aktarma
+              displayName: 'designer, data, import, dataset, datastore'
+              href: how-to-designer-import-data.md
+        - name: Verilere erişme
+          items:
+            - name: Azure Depolama’ya bağlanma
+              displayName: 'blob, get, fileshare, access, mount, download, data lake'
+              href: how-to-access-data.md
+            - name: Bir veri deposundan veri alma
+              displayName: 'data, data set, register, access data'
+              href: how-to-create-register-datasets.md
+        - name: Verileri yönetme ve kullanma
+          items:
+            - name: Veri kümeleriyle eğitme
+              displayName: 'data, dataset, mount'
+              href: how-to-train-with-datasets.md
+            - name: Veri kümelerinde kaymayı algılama
+              displayName: 'data, dataset'
+              href: how-to-monitor-datasets.md
+            - name: Veri kümeleri için sürüm oluşturma ve bunları izleme
+              displayName: 'data, data set'
+              href: how-to-version-track-datasets.md
     - name: Modelleri eğitme
       items:
         - name: ML için tahmin araçlarını kullanma
@@ -337,6 +351,7 @@
         - name: İşlem hattını tetikleme
           href: how-to-trigger-published-pipeline.md
         - name: İşlem hatlarında hata ayıklama ve sorun giderme
+          displayName: designer
           href: how-to-debug-pipelines.md
         - name: Application Insights’ta işlem hatlarında hata ayıklama
           displayname: 'pipelines, log, monitor'

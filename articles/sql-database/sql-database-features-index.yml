@@ -3,7 +3,7 @@ documentType: LandingData
 title: Özellikler
 metadata:
   title: Azure SQL Veritabanı - Özellikler
-  meta.description: Learn about the features in Azure SQL Database.
+  description: Daha güçlü işlemler yapmanıza ve gelişmiş senaryoları uygulamanıza olanak tanıyan Azure SQL Veritabanı’ndaki veritabanı özelliklerini keşfedin.
   services: sql-database
   author: jovanpop-msft
   manager: craigg
@@ -12,7 +12,7 @@ metadata:
   ms.devlang: null
   ms.topic: overview
   ms.date: 02/06/2019
-  ms.author: jovanpop-msft
+  ms.author: jovanpop
 sections:
   - items:
       - type: paragraph
