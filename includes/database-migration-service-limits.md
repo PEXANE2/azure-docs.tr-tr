@@ -4,15 +4,15 @@ ms.service: sql-database
 ms.topic: include
 ms.date: 11/25/2018
 ms.author: douglasl
-ms.openlocfilehash: f76ad3f91c2d05508d700e6ef40c9d342b87b5e3
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: bf8d0992cd25b52955ac90cecc00750d93343da6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "67188768"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80335072"
 ---
-Azure veritabanı geçiş hizmeti, birden çok veritabanı kaynağından Azure veri platformları arasında kesintisiz geçiş sağlamak için tasarlanan, tam olarak yönetilen bir hizmettir.
+Azure Veritabanı Geçiş Hizmeti, birden çok veritabanı kaynağından Azure veri platformlarına en az kapalı kalma süresiyle sorunsuz geçişler sağlamak üzere tasarlanmış tam olarak yönetilen bir hizmettir.
 
-| **Kaynak** | **Varsayılan sınır** | **Yorumlar** |
+| **Kaynak** | **Sınırı** | **Açıklamalar** |
 | --- | --- | --- |
-| Abonelik başına en fazla hizmet sayısı, bölge başına |2 | Bu sınıra yönelik bir artış istemek için desteğe başvurun. |
+| Her bölge için abonelik başına maksimum hizmet sayısı |2 | Bu sınır için bir artış istemek için desteğe başvurun. |

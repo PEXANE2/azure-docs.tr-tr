@@ -1,6 +1,6 @@
 ---
-title: Key Vault için Azure Güvenlik temeli
-description: Key Vault için Azure Güvenlik temeli
+title: Anahtar Kasası için Azure Güvenlik Taban Çizgisi
+description: Anahtar Kasası için Azure Güvenlik Taban Çizgisi
 author: msmbaldwin
 manager: rkarlin
 ms.service: security
@@ -8,673 +8,670 @@ ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 7c15786e9a5d2fe65c20a26606087cee994ab54b
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: cc76f8c87eca059db85a68acbe4c317cf4904d39
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78302857"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79457194"
 ---
-# <a name="azure-security-baseline-for-key-vault"></a>Key Vault için Azure Güvenlik temeli
+# <a name="azure-security-baseline-for-key-vault"></a>Anahtar Kasası için Azure Güvenlik Taban Çizgisi
 
-Key Vault için Azure Güvenlik temeli, dağıtımınızın güvenlik duruşunu artırmanıza yardımcı olacak öneriler içerir.
+Anahtar Vault için Azure Güvenlik Taban Çizgisi, dağıtımınızın güvenlik duruşunu geliştirmenize yardımcı olacak öneriler içerir.
 
-Bu hizmetlerin taban çizgisi, Azure [güvenlik kıyaslama sürümü 1,0](https://docs.microsoft.com/azure/security/benchmarks/overview)' dan çizilir ve bu, en iyi yöntemler kılavuzumuzdan Azure 'da bulut çözümlerinizi nasıl güvence altına almak için öneriler sağlar.
+Bu hizmetlerin temeli, en iyi uygulamalar kılavuzumuzla Azure'da bulut çözümlerinizi nasıl güvenebileceğinize ilişkin öneriler sunan [Azure Güvenlik Kıyaslama sürümü 1.0'dan](https://docs.microsoft.com/azure/security/benchmarks/overview)alınmıştır.
 
-Daha fazla bilgi için bkz. [Azure güvenlik temelleri 'ne genel bakış](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview).
+Daha fazla bilgi için [Azure Güvenlik Taban Çizgilerini genel olarak](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)görün.
 
 ## <a name="network-security"></a>Ağ Güvenliği
 
-*Daha fazla bilgi için bkz. [güvenlik denetimi: ağ güvenliği](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security).*
+*Daha fazla bilgi için [Güvenlik Denetimi: Ağ Güvenliği'ne](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security)bakın.*
 
-### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1,1: sanal ağınızda Ağ güvenlik gruplarını veya Azure Güvenlik duvarını kullanarak kaynakları koruyun
+### <a name="11-protect-resources-using-network-security-groups-or-azure-firewall-on-your-virtual-network"></a>1.1: Sanal Ağınızdaki Ağ Güvenlik Grupları veya Azure Güvenlik Duvarı'nı kullanarak kaynakları koruyun
 
-**Rehberlik**: Azure Key Vault Azure özel bağlantısı ile tümleştirin. Azure özel bağlantı hizmeti, Azure hizmetlerine (örneğin, Azure Key Vault) ve Azure 'da barındırılan müşteri/iş ortağı hizmetlerine sanal ağınızdaki özel bir uç nokta üzerinden erişmenizi sağlar.
-Azure özel uç noktası, Azure özel bağlantısı tarafından desteklenen bir hizmete özel ve güvenli bir şekilde bağlanan bir ağ arabirimidir. Özel uç nokta, sanal ağınızdan bir özel IP adresi kullanarak hizmeti sanal ağınıza etkin bir şekilde getiriyor. Hizmete giden tüm trafik özel uç nokta aracılığıyla yönlendirilebilir, bu nedenle ağ geçitleri, NAT cihazları, ExpressRoute veya VPN bağlantıları ya da genel IP adresleri gerekmez. Sanal ağınız ve hizmet arasındaki trafik, Microsoft omurga ağı üzerinden geçer ve genel İnternet’ten etkilenme olasılığı ortadan kaldırılır. Bir Azure kaynağı örneğine bağlanarak, erişim denetimi için en yüksek düzeyde ayrıntı düzeyi sağlayabilirsiniz.
+**Rehberlik**: Azure Anahtar Kasası'nı Azure Özel Bağlantısıyla Tümleştirin. Azure Özel Bağlantı Hizmeti, Azure Hizmetleri'ne (örneğin, Azure Anahtar Kasası) ve Azure barındırılan müşteri/iş ortağı hizmetlerine sanal ağınızdaki Özel Bitiş Noktası üzerinden erişmenizi sağlar.
+Azure Özel Bitiş Noktası, sizi Azure Özel Bağlantısı ile çalışan bir hizmete özel ve güvenli bir şekilde bağlayan bir ağ arabirimidir. Özel bitiş noktası, VNet'inizden gelen özel bir IP adresini kullanır ve hizmeti VNet'inize etkin bir şekilde getirir. Hizmete giden tüm trafik özel bitiş noktasından yönlendirilebilir, bu nedenle ağ geçidi, NAT aygıtları, ExpressRoute veya VPN bağlantıları veya genel IP adresleri gerekmez. Sanal ağınız ve hizmet arasındaki trafik, Microsoft omurga ağı üzerinden geçer ve genel İnternet’ten etkilenme olasılığı ortadan kaldırılır. Bir Azure kaynağıörneğine bağlanarak erişim denetiminde en yüksek parçalılık düzeyini sağlayabilirsiniz.
 
-Key Vault Azure özel bağlantısı ile tümleştirme: https://docs.microsoft.com/azure/key-vault/private-link-service
+Key Vault'u Azure Özel Bağlantısıyla nasıl tümleştirilir:https://docs.microsoft.com/azure/key-vault/private-link-service
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
-### <a name="12-monitor-and-log-the-configuration-and-traffic-of-vnets-subnets-and-nics"></a>1,2: VNet, alt ağlar ve NIC 'lerin yapılandırmasını ve trafiğini izleyin ve günlüğe kaydedin
+### <a name="12-monitor-and-log-the-configuration-and-traffic-of-vnets-subnets-and-nics"></a>1.2: Vnet, Subnet ve NIC'lerin yapılandırmasını ve trafiğini izleyin ve kaydedin
 
-**Kılavuz**: Azure Güvenlik Merkezi 'ni kullanın ve azure 'da Key Vault yapılandırılmış kaynaklarınızın güvenliğini sağlamaya yardımcı olmak için ağ koruma önerilerini izleyin. 
+**Kılavuz**: Azure Güvenlik Merkezi'ni kullanın ve Azure'da Key Vault tarafından yapılandırılan kaynaklarınızı güvence altına almaya yardımcı olmak için ağ koruma önerilerini izleyin. 
 
 
-Azure Güvenlik Merkezi tarafından sunulan ağ güvenliği hakkında daha fazla bilgi için: 
+Azure Güvenlik Merkezi tarafından sağlanan Ağ Güvenliği hakkında daha fazla bilgi için: 
 
 https://docs.microsoft.com/azure/security-center/security-center-network-recommendations
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
-### <a name="13-protect-critical-web-applications"></a>1,3: kritik Web uygulamalarını koruma
+### <a name="13-protect-critical-web-applications"></a>1.3: Kritik web uygulamalarını koruyun
 
-**Rehberlik**: uygulanamaz; Bu öneri, Azure App Service veya işlem kaynaklarında çalışan Web uygulamalarına yöneliktir.
+**Rehberlik**: Geçerli değildir; Bu öneri, Azure Uygulama Hizmeti'nde çalışan web uygulamaları veya bilgi işlem kaynakları için tasarlanmıştır.
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izleme**: Uygulanamaz
 
-**Sorumluluk**: geçerli değil
+**Sorumluluk**: Geçerli değil
 
-### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1,4: bilinen kötü amaçlı IP adresleriyle iletişimleri reddetme
+### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4: Bilinen kötü amaçlı IP adresleriyle iletişimi reddetme
 
-**Rehberlik**: dağıtılmış hizmet reddi saldırılarına karşı koruma için Key Vault örneklarınızla Ilişkili Azure sanal ağlarında Azure DDoS koruma standardı 'nı etkinleştirin. Bilinen kötü amaçlı veya kullanılmayan Internet IP adresleriyle iletişimleri reddetmek için Azure Güvenlik Merkezi tümleşik tehdit zekasını kullanın.
+**Kılavuz :** Dağıtılmış hizmet reddi saldırılarına karşı koruma sağlamak için Key Vault örneklerinizle ilişkili Azure Sanal Ağlarda Azure DDoS Koruma Standardını etkinleştirin. Bilinen kötü amaçlı veya kullanılmayan Internet IP adresleriyle iletişimi reddetmek için Azure Güvenlik Merkezi Tümleşik Tehdit İstihbaratı'nı kullanın.
 
  
-Azure Güvenlik Merkezi 'nde Azure hizmet katmanı için Azure portal: https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection tehdit algılamayı kullanarak Azure DDoS koruması standardını yönetin: https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer
+Azure portalını kullanarak Azure DDoS https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection Koruma Standardını yönetin: Azure Güvenlik Merkezi'ndeki Azure hizmet katmanı için tehdit algılama:https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
-### <a name="15-record-network-packets-and-flow-logs"></a>1,5: ağ paketlerini ve akış günlüklerini kaydetme
+### <a name="15-record-network-packets-and-flow-logs"></a>1.5: Ağ paketlerini ve akış günlüklerini kaydetme
 
-**Rehberlik**: Azure Key Vault Azure Key Vault için ağ güvenlik grupları (NSG) ve akış günlükleri kullanmaz. Bunun yerine, Azure Key Vault örneklerinizi güvenli hale getirmek ve ölçümleri ve denetim olaylarını kaydetmek için tanılama ayarlarını etkinleştirmek üzere Azure özel bağlantısı 'nı kullanın.
-Key Vault Azure özel bağlantısıyla tümleştirin: https://docs.microsoft.com/azure/key-vault/private-link-service
+**Kılavuz**: Azure Key Vault ağ güvenlik grupları (NSG) kullanmaz ve Azure Key Vault için akış günlükleri yakalanmaz. Bunun yerine, Azure Anahtar Kasası örneklerinizi güvence altına almak ve ölçümleri kaydetmek ve olayları denetlemek için tanı lama ayarlarına olanak sağlamak için Azure Özel Bağlantısını kullanın.
+Anahtar Kasası'nı Azure Özel Bağlantısıyla Tümleştirin:https://docs.microsoft.com/azure/key-vault/private-link-service
 
-Günlüğe kaydetme Azure Key Vault: https://docs.microsoft.com/azure/key-vault/key-vault-logging
-
-
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
-
-**Sorumluluk**: geçerli değil
-
-### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1,6: ağ tabanlı yetkisiz giriş algılama/yetkisiz erişim önleme sistemleri (KIMLIKLER/IP 'ler) dağıtma
-
-**Rehberlik**: Bu gereksinim, Azure Key Vault için Gelişmiş tehdit KORUMASı (ATP) yapılandırılarak karşılanır. ATP ek bir güvenlik zekası katmanı sağlar. Bu araç Azure Key Vault hesaplara erişmeye veya açıktan yararlanmaya yönelik olabilecek zararlı girişimleri algılar.
+Azure Key Vault günlüğü:https://docs.microsoft.com/azure/key-vault/key-vault-logging
 
 
-Azure Güvenlik Merkezi anormal etkinlik algıladığında uyarıları görüntüler. Ayrıca, şüpheli etkinliğin ayrıntılarını ve belirlenen tehditleri araştırıp düzeltme önerilerini içeren abonelik yöneticisine e-posta gönderir.
+**Azure Güvenlik Merkezi izleme**: Uygulanamaz
+
+**Sorumluluk**: Geçerli değil
+
+### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6: Ağ tabanlı izinsiz giriş algılama/saldırı önleme sistemlerini (IDS/IPS) dağıtma
+
+**Kılavuz**: Bu gereksinim, Azure Anahtar Kasası için gelişmiş tehdit koruması (ATP) yapılandırılarak karşılanabilir. ATP ek bir güvenlik istihbaratı katmanı sağlar. Bu araç, Azure Anahtar Kasası hesaplarına erişmek veya bunlardan yararlanmak için zararlı olabilecek girişimleri algılar.
 
 
-Azure Key Vault için Gelişmiş tehdit koruması ayarlama: https://docs.microsoft.com/azure/security-center/advanced-threat-protection-key-vault
+Azure Güvenlik Merkezi anormal etkinliği algıladığında, uyarıları görüntüler. Ayrıca, abonelik yöneticisine şüpheli etkinliğin ayrıntılarını ve tanımlanan tehditleri nasıl araştırıp düzelteceklerine ilişkin önerileri içeren e-postalar da e-postada bulunur.
+
+
+Azure Anahtar Kasası için gelişmiş tehdit koruması ayarlayın:https://docs.microsoft.com/azure/security-center/advanced-threat-protection-key-vault
 
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
-### <a name="17-manage-traffic-to-web-applications"></a>1,7: Web uygulamalarına trafiği yönetme
+### <a name="17-manage-traffic-to-web-applications"></a>1.7: Web uygulamalarına trafik yönetme
 
-**Rehberlik**: uygulanamaz; Bu öneri, Azure App Service veya işlem kaynaklarında çalışan Web uygulamalarına yöneliktir.
+**Rehberlik**: Geçerli değildir; Bu öneri, Azure Uygulama Hizmeti'nde çalışan web uygulamaları veya bilgi işlem kaynakları için tasarlanmıştır.
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izleme**: Uygulanamaz
 
-**Sorumluluk**: geçerli değil
+**Sorumluluk**: Geçerli değil
 
-### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1,8: ağ güvenlik kurallarının karmaşıklığını ve yönetim yükünü en aza indirme
+### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1.8: Ağ güvenliği kurallarının karmaşıklığını ve yönetim ek lerini en aza indirmek
 
-**Rehberlik**: Azure Key Vault örneklerine erişmesi gereken kaynaklar için, ağ güvenlik gruplarında veya Azure Güvenlik duvarında ağ erişim denetimleri tanımlamak üzere Azure Key Vault için Azure hizmet etiketleri kullanın. Hizmet etiketlerini güvenlik kuralı oluştururken belirli IP adreslerinin yerine kullanabilirsiniz. Bir kuralın uygun kaynak veya hedef alanında hizmet etiketi adı (örn., Apimanaya) belirterek, ilgili hizmet için trafiğe izin verebilir veya bu trafiği reddedebilirsiniz. Microsoft, hizmet etiketi ile çevrelenmiş adres öneklerini yönetir ve adres değişikliği olarak hizmet etiketini otomatik olarak güncelleştirir.
-
-
-Azure hizmet etiketlerine genel bakış: https://docs.microsoft.com/azure/virtual-network/service-tags-overview
-
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
-
-**Sorumluluk**: müşteri
-
-### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1,9: ağ cihazları için standart güvenlik yapılandırmalarının bakımını yapma
-
-**Rehberlik**: Azure ilkesiyle Azure Key Vault örneklarınızla ilişkili ağ kaynakları için standart güvenlik yapılandırması tanımlayın ve uygulayın. Azure Key Vault örneklerinizin ağ yapılandırmasını denetlemek veya zorlamak üzere özel ilkeler oluşturmak için "Microsoft. Keykasası" ve "Microsoft. Network" ad alanlarında Azure Ilke diğer adlarını kullanın. Ayrıca, Azure Key Vault ile ilgili yerleşik ilke tanımlarından da yararlanabilirsiniz, örneğin:
+**Kılavuz**: Azure Anahtar Kasası örneklerinize erişimi gereken kaynaklar için, ağ güvenlik gruplarında veya Azure Güvenlik Duvarı'ndaki ağ erişim denetimlerini tanımlamak için Azure Anahtar Kasası için Azure hizmet etiketlerini kullanın. Hizmet etiketlerini güvenlik kuralı oluştururken belirli IP adreslerinin yerine kullanabilirsiniz. Bir kuralın uygun kaynak veya hedef alanında servis etiketi adını (örn. ApiManagement) belirterek, ilgili hizmetin trafiğine izin verebilir veya reddedebilirsiniz. Microsoft, hizmet etiketinin kapsadığı adres öneklerini yönetir ve adresler değiştikçe servis etiketini otomatik olarak güncelleştirir.
 
 
-Key Vault bir sanal ağ hizmeti uç noktası kullanmalıdır
+Azure hizmet etiketleri genel bakış:https://docs.microsoft.com/azure/virtual-network/service-tags-overview
+
+**Azure Güvenlik Merkezi izleme**: Uygulanamaz
+
+**Sorumluluk**: Müşteri
+
+### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9: Ağ aygıtları için standart güvenlik yapılandırmalarını koruyun
+
+**Yönerge**: Azure İlkesi ile Azure Anahtar Kasası örneklerinizle ilişkili ağ kaynakları için standart güvenlik yapılandırmaları tanımlayın ve uygulayın. Azure Key Vault örneklerinizin ağ yapılandırmasını denetlemek veya zorlamak için özel ilkeler oluşturmak için "Microsoft.KeyVault" ve "Microsoft.Network" ad alanlarında Azure İlkesi takma adlarını kullanın. Azure Key Vault ile ilgili yerleşik ilke tanımlarından da yararlanabilirsiniz: [Key Vault sanal ağ hizmeti bitiş noktası kullanmalıdır](key-vault-overview-vnet-service-endpoints.md)
 
 
-Öğretici: uyumluluğu zorlamak için ilke oluşturma ve yönetme:
+Öğretici: Uyumluluğu uygulamak için ilkeler oluşturun ve yönetin:
 
 https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 
-Azure Ilke örnekleri:
+Azure İlkesi Örnekleri:
 
 https://docs.microsoft.com/azure/governance/policy/samples
 
-Hızlı başlangıç: portalda bir şema tanımlama ve atama:
+Quickstart: Portalda bir plan tanımlayın ve atayın:
 
 https://docs.microsoft.com/azure/governance/blueprints/create-blueprint-portal
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izleme**: Uygulanamaz
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
-### <a name="110-document-traffic-configuration-rules"></a>1,10: belge trafiği yapılandırma kuralları
+### <a name="110-document-traffic-configuration-rules"></a>1.10: Belge trafiği yapılandırma kuralları
 
-**Rehberlik**: meta veri ve mantıksal kuruluş sağlamak üzere Azure Key Vault örneklerinizin ağ güvenliği ve trafik akışı ile ilgili kaynaklar için Etiketler kullanın.
-
-
-Tüm kaynakların etiketlerle oluşturulmasını ve mevcut etiketlenmemiş kaynakları bilgilendirmesini sağlamak için etiketlemeyle ilgili yerleşik Azure ilke tanımlarından herhangi birini ("etiket ve onun değeri gerektir" gibi) kullanın.
+**Kılavuz**: Meta veriler ve mantıksal organizasyon sağlamak için Azure Anahtar Kasası örnekleriniz için ağ güvenliği ve trafik akışıyla ilgili kaynaklar için etiketlerkullanın.
 
 
-Azure PowerShell veya Azure CLı kullanarak, etiketlerine göre kaynakları arayabilir veya bunlarla ilgili eylemler gerçekleştirebilirsiniz.
+Tüm kaynakların etiketlerle oluşturulduğundan emin olmak ve varolan etiketlenmemiş kaynakları size bildirmek için etiketlemeyle ilgili "Etiket ve değeri gerektir" gibi yerleşik Azure ilke tanımlarından herhangi birini kullanın.
+
+
+Azure PowerShell veya Azure CLI'yi, etiketlerine dayalı kaynaklara bakmak veya eylemlergerçekleştirmek için kullanabilirsiniz.
 
 
 Azure kaynaklarınızı düzenlemek için etiketleri kullanın:
 
 https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izleme**: Uygulanamaz
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
-### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1,11: ağ kaynağı yapılandırmasını izlemek ve değişiklikleri algılamak için otomatikleştirilmiş araçları kullanın
+### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1.11: Ağ kaynağı yapılandırmalarını izlemek ve değişiklikleri algılamak için otomatik araçlar kullanın
 
-**Kılavuz**: Azure etkinlik günlüğü 'nü kullanarak ağ kaynak yapılandırmasını izleyin ve Azure Key Vault örneklerinizin ilişkili olduğu ağ kaynaklarına yönelik değişiklikleri tespit edin. Kritik ağ kaynaklarında yapılan değişiklikler yürürlüğe girdiğinde tetiklenecek Azure Izleyici içinde uyarılar oluşturun.
+**Yönerge**: Ağ kaynak yapılandırmalarını izlemek ve Azure Anahtar Kasası örneklerinizle ilgili ağ kaynaklarındaki değişiklikleri algılamak için Azure Etkinlik Günlüğü'ne kullanın. Azure Monitor'da kritik ağ kaynaklarında değişiklikler olduğunda tetikleyecek uyarılar oluşturun.
 
-Azure etkinlik günlüğü olaylarını görüntüleyin ve alın:
+Azure Etkinlik Günlüğü olaylarını görüntüleyin ve alın:
 
 https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view
 
 
-Azure Izleyici 'yi kullanarak etkinlik günlüğü uyarıları oluşturun, görüntüleyin ve yönetin:
+Azure Monitör'ü kullanarak etkinlik günlüğü uyarıları oluşturun, görüntüleyin ve yönetin:
 
 https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izleme**: Uygulanamaz
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 ## <a name="logging-and-monitoring"></a>Günlüğe Kaydetme ve İzleme
 
-*Daha fazla bilgi için bkz. [güvenlik denetimi: günlüğe kaydetme ve izleme](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring).*
+*Daha fazla bilgi için [Güvenlik Denetimi: Günlüğe kaydetme ve izleme.](https://docs.microsoft.com/azure/security/benchmarks/security-control-logging-monitoring)*
 
-### <a name="21-use-approved-time-synchronization-sources"></a>2,1: onaylanan zaman eşitleme kaynaklarını kullanın
+### <a name="21-use-approved-time-synchronization-sources"></a>2.1: Onaylanmış zaman senkronizasyon kaynaklarını kullanma
 
-**Rehberlik**: uygulanamaz; Microsoft, günlüklerdeki zaman damgaları için Azure Key Vault gibi Azure kaynakları için kullanılan saat kaynağını korur.
+**Rehberlik**: Geçerli değildir; Microsoft, günlüklerde zaman damgaları için Azure Anahtar Kasası gibi Azure kaynakları için kullanılan zaman kaynağını korur.
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izleme**: Uygulanamaz
 
 **Sorumluluk**: Microsoft
 
-### <a name="22-configure-central-security-log-management"></a>2,2: Merkezi güvenlik günlüğü yönetimini yapılandırma
+### <a name="22-configure-central-security-log-management"></a>2.2: Merkezi güvenlik günlüğü yönetimini yapılandırma
 
-**Rehberlik**: Azure Key Vault tarafından oluşturulan güvenlik verilerini toplamak Için Azure izleyici aracılığıyla günlükleri alma. Azure Izleyici 'de Azure Log Analytics çalışma alanını kullanarak Analytics 'i sorgulayın ve gerçekleştirin ve uzun süreli/arşiv depolama için Azure depolama hesaplarını kullanın. Alternatif olarak, Azure Sentinel 'e veya bir üçüncü taraf SıEM 'ye veri etkinleştirebilir ve bu verileri ayarlayabilirsiniz. 
+**Yönlendirme**: Azure Key Vault tarafından oluşturulan güvenlik verilerini toplamak için günlükleri Azure Monitor üzerinden alın. Azure Monitor'da, analitiği sorgulamak ve gerçekleştirmek için Azure Log Analytics çalışma alanını kullanın ve uzun vadeli/arşivdepolama için Azure Depolama Hesapları'nı kullanın. Alternatif olarak, Azure Sentinel'e veya bir üçüncü taraf SIEM'e veri etkinleştirebilir ve yerleşik veriler verebilirsiniz. 
 
-Günlüğe Azure Key Vault:
+Azure Key Vault günlüğü:
 
 https://docs.microsoft.com/azure/key-vault/key-vault-logging
 
-Hızlı başlangıç: yerleşik Azure Sentinel:
+Hızlı başlangıç: Azure Sentinel'de nasıl çalıştırılır:
 
 https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
-### <a name="23-enable-audit-logging-for-azure-resources"></a>2,3: Azure kaynakları için denetim günlüğünü etkinleştirme
+### <a name="23-enable-audit-logging-for-azure-resources"></a>2.3: Azure kaynakları için denetim günlüğe kaydetmeyi etkinleştirme
 
-**Rehberlik**: denetim, güvenlik ve tanılama günlüklerine erişim için Azure Key Vault örneklerinizin tanılama ayarlarını etkinleştirin. Otomatik olarak kullanılabilen etkinlik günlükleri Olay kaynağını, tarihi, kullanıcıyı, zaman damgasını, kaynak adreslerini, hedef adreslerini ve diğer yararlı öğeleri içerir.
+**Kılavuz**: Denetim, güvenlik ve tanılama günlüklerine erişmek için Azure Anahtar Kasası örneklerinizde tanılama ayarlarını etkinleştirin. Otomatik olarak kullanılabilen etkinlik günlükleri, olay kaynağı, tarih, kullanıcı, zaman damgası, kaynak adresleri, hedef adresleri ve diğer yararlı öğeleri içerir.
 
-Günlüğe Azure Key Vault:
+Azure Key Vault günlüğü:
 
 https://docs.microsoft.com/azure/key-vault/key-vault-logging
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
-### <a name="24-collect-security-logs-from-operating-systems"></a>2,4: işletim sistemlerinden güvenlik günlüklerini toplama
+### <a name="24-collect-security-logs-from-operating-systems"></a>2.4: İşletim sistemlerinden güvenlik günlüklerini toplama
 
-**Rehberlik**: uygulanamaz; Bu öneri, işlem kaynaklarına yöneliktir.
+**Rehberlik**: Geçerli değildir; bu öneri, hesaplama kaynakları için tasarlanmıştır.
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izleme**: Uygulanamaz
 
-**Sorumluluk**: geçerli değil
+**Sorumluluk**: Geçerli değil
 
-### <a name="25-configure-security-log-storage-retention"></a>2,5: güvenlik günlüğü depolama bekletmesini yapılandırma
+### <a name="25-configure-security-log-storage-retention"></a>2.5: Güvenlik günlüğü depolama tutma yapılandırma
 
-**Kılavuz**: Azure izleyici 'de, Azure Key Vault günlüklerinizi tutmak için kullanılan Log Analytics çalışma alanı için, saklama süresini kuruluşunuzun uyumluluk düzenlemelerine göre ayarlayın. Uzun süreli/arşiv depolama için Azure depolama hesaplarını kullanın.
+**Kılavuz**: Azure Monitörü'nde, Azure Anahtar Kasası günlüklerinizi tutmak için kullanılan Log Analytics çalışma alanı için bekletme süresini kuruluşunuzun uyumluluk yönetmeliklerine göre ayarlayın. Uzun vadeli/arşivdepolama için Azure Depolama Hesapları'nı kullanın.
 
-Veri saklama süresini değiştirin: https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period
+Veri saklama süresini değiştirme:https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izleme**: Uygulanamaz
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
-### <a name="26-monitor-and-review-logs"></a>2,6: günlükleri izleme ve gözden geçirme
+### <a name="26-monitor-and-review-logs"></a>2.6: Günlükleri izleme ve inceleme
 
-**Rehberlik**: anormal davranışlar için günlükleri çözümleyin ve izleyin ve Azure Key Vault korumalı kaynaklarınızın sonuçlarını düzenli olarak gözden geçirin. Günlükleri gözden geçirmek ve günlük verilerinde sorgular gerçekleştirmek için Azure Izleyici Log Analytics çalışma alanını kullanın. Alternatif olarak, Azure Sentinel 'e veya üçüncü taraf SıEM 'ye yönelik verileri etkinleştirebilir. 
-
-
-Hızlı başlangıç: yerleşik Azure Sentinel: https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+**Kılavuz**: Anormal davranışlar için günlükleri analiz edin ve izleyin ve Azure Key Vault korumalı kaynaklarınız için sonuçları düzenli olarak gözden geçirin. Günlükleri gözden geçirmek ve günlük verilerinde sorgular gerçekleştirmek için Azure Monitor'un Günlük Analizi çalışma alanını kullanın. Alternatif olarak, Azure Sentinel'e veya üçüncü taraf bir SIEM'e veri etkinleştirebilir ve yerleşik veriler verebilirsiniz. 
 
 
-Azure Izleyici 'de Log Analytics kullanmaya başlayın: https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal
+Hızlı başlangıç: Yerleşik Azure Sentinel:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
-Azure Izleyici 'de günlük sorgularını kullanmaya başlama: https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries
+
+Azure Monitor'da Log Analytics ile başlayın:https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal
+
+Azure Monitor'da günlük sorgularına başlayın:https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-queries
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
-### <a name="27-enable-alerts-for-anomalous-activity"></a>2,7: anormal etkinlik için uyarıları etkinleştir
+### <a name="27-enable-alerts-for-anomalous-activity"></a>2.7: Anormal aktivite için uyarıları etkinleştirme
 
-**Kılavuz**: Azure Güvenlik merkezi 'nde Key Vault için Gelişmiş tehdit koruması 'Nı (ATP) etkinleştirin. Azure Key Vault tanılama ayarlarını etkinleştirin ve günlükleri bir Log Analytics çalışma alanına gönderin. Log Analytics çalışma alanınızı Azure Sentinel 'e ekleyin. Bu, bir güvenlik Orchestration otomatik yanıtı (SOAR) çözümü sağlar. Bu, güvenlik sorunlarını gidermek için PlayBook 'ları (otomatikleştirilmiş çözümlerin) oluşturulmasına ve kullanılmasına olanak tanır.
+**Kılavuz :** Azure Güvenlik Merkezi'nde Key Vault için gelişmiş tehdit koruması (ATP) etkinleştirin. Azure Key Vault'ta tanı ayarlarını etkinleştirin ve günlükleri bir Log Analytics çalışma alanına gönderin. Bir güvenlik düzenleme otomatik yanıt (SOAR) çözümü sağladığı ndan, Log Analytics çalışma alanınız Azure Sentinel'e dahil olur. Bu, oyun kitaplarının (otomatik çözümler) oluşturulmasına ve güvenlik sorunlarını düzeltmek için kullanılmasına olanak tanır.
 
-Hızlı başlangıç: yerleşik Azure Sentinel:
+Hızlı başlangıç: Yerleşik Azure Sentinel:
 
 https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
-Azure Güvenlik Merkezi 'nde güvenlik uyarılarını yönetme ve yanıtlama:
+Azure Güvenlik Merkezi'ndeki güvenlik uyarılarını yönetin ve yanıtlayın:
 
 https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts
 
 
-Azure Izleyici uyarıları ile olaylara yanıt verme:
+Azure Monitör Uyarıları ile etkinliklere yanıt verin:
 
 https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-response
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
-### <a name="28-centralize-anti-malware-logging"></a>2,8: kötü amaçlı yazılımdan koruma 'yı merkezileştirme
+### <a name="28-centralize-anti-malware-logging"></a>2.8: Kötü amaçlı yazılımdan koruma günlüğe kaydetmeyi merkezileştirin
 
-**Rehberlik**: uygulanamaz; Azure Key Vault kötü amaçlı yazılımdan koruma ile ilgili günlükleri işlemez veya oluşturmaz.
+**Rehberlik**: Geçerli değildir; Azure Key Vault, kötü amaçlı yazılımdan koruma yla ilgili günlükleri işlemez veya üretmez.
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izleme**: Uygulanamaz
 
-**Sorumluluk**: geçerli değil
+**Sorumluluk**: Geçerli değil
 
-### <a name="29-enable-dns-query-logging"></a>2,9: DNS sorgu günlüğünü etkinleştir
+### <a name="29-enable-dns-query-logging"></a>2.9: DNS sorgu günlüğe kaydetmeyi etkinleştirme
 
-**Rehberlik**: uygulanamaz; Azure Key Vault DNS ile ilgili günlükleri işlemez veya oluşturmaz.
+**Rehberlik**: Geçerli değildir; Azure Key Vault, DNS ile ilgili günlükleri işlemez veya üretmez.
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izleme**: Uygulanamaz
 
-**Sorumluluk**: geçerli değil
+**Sorumluluk**: Geçerli değil
 
-### <a name="210-enable-command-line-audit-logging"></a>2,10: komut satırı denetim günlüğünü etkinleştir
+### <a name="210-enable-command-line-audit-logging"></a>2.10: Komut satırı denetim günlüğe kaydetmeyi etkinleştirme
 
-**Rehberlik**: uygulanamaz; Bu öneri, işlem kaynaklarına yöneliktir.
+**Rehberlik**: Geçerli değildir; bu öneri, hesaplama kaynakları için tasarlanmıştır.
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izleme**: Uygulanamaz
 
-**Sorumluluk**: geçerli değil
+**Sorumluluk**: Geçerli değil
 
 ## <a name="identity-and-access-control"></a>Kimlik ve Erişim Denetimi
 
-*Daha fazla bilgi için bkz. [güvenlik denetimi: kimlik ve Access Control](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control).*
+*Daha fazla bilgi için [güvenlik denetimi: kimlik ve erişim denetimi'ne](https://docs.microsoft.com/azure/security/benchmarks/security-control-identity-access-control)bakın.*
 
-### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3,1: yönetim hesaplarının envanterini tutma
+### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1: İdari hesapların envanterini korumak
 
-**Rehberlik**: Azure Active Directory kayıtlı uygulamalarınızın envanterini ve Azure Key Vault anahtarlarına, sırlarınıza ve sertifikalara erişimi olan tüm Kullanıcı hesaplarını sürdürün. Key Vault erişimi sorgulamak ve mutabık kılmak için Azure portal ya da PowerShell kullanabilirsiniz. PowerShell 'deki erişimi görüntülemek için aşağıdaki komutu kullanın:
+**Kılavuz**: Azure Active Directory'ye kayıtlı uygulamalarınızın yanı sıra Azure Anahtar Kasası anahtarlarınıza, sırlarınıza ve sertifikalarınıza erişimi olan tüm kullanıcı hesaplarının envanterini koruyun. Key Vault erişimini sorgulamak ve uzlaştırmak için Azure portalını veya PowerShell'i kullanabilirsiniz. PowerShell'de erişimi görüntülemek için aşağıdaki komutu kullanın:
 
 
-(Get-AzResource-RESOURCEID [Keyvaultresourceıd]). Properties. AccessPolicies
+(Get-AzResource -Resourceid [KeyVaultResourceID]). Properties.AccessPolicies
 
-Bir uygulamayı Azure Active Directory kaydetme: https://docs.microsoft.com/azure/key-vault/key-vault-manage-with-cli2#registering-an-application-with-azure-active-directory
+Azure Etkin Dizin'e bir uygulama kaydetme:https://docs.microsoft.com/azure/key-vault/key-vault-manage-with-cli2#registering-an-application-with-azure-active-directory
 
-Anahtar kasasına güvenli erişim: https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault
+Anahtar kasasına güvenli erişim:https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
-### <a name="32-change-default-passwords-where-applicable"></a>3,2: uygun yerlerde varsayılan parolaları değiştirme
+### <a name="32-change-default-passwords-where-applicable"></a>3.2: Varsayılan parolaları varsa değiştirme
 
-**Rehberlik**: uygulanamaz; Azure Key Vault, kimlik doğrulama Active Directory tarafından sağlandığı ve rol tabanlı erişim denetimiyle güvenli hale getirildiği için varsayılan parola kavramına sahip değildir.
+**Rehberlik**: Geçerli değildir; Azure Key Vault varsayılan parola kavramına sahip değildir, çünkü kimlik doğrulaması Active Directory tarafından sağlanır ve Rol tabanlı erişim denetimi yle güvence altına alınır.
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izleme**: Uygulanamaz
 
-**Sorumluluk**: geçerli değil
+**Sorumluluk**: Geçerli değil
 
-### <a name="33-use-dedicated-administrative-accounts"></a>3,3: adanmış yönetim hesapları kullanın
+### <a name="33-use-dedicated-administrative-accounts"></a>3.3: Özel yönetim hesaplarını kullanma
 
-**Rehberlik**: Azure Key Vault örneklerinizin erişimine sahip adanmış yönetim hesaplarının kullanımı etrafında standart işletim yordamları oluşturun. Etkin yönetim hesaplarının sayısını izlemek için Azure Güvenlik Merkezi kimlik ve erişim yönetimi (Şu anda önizleme aşamasında) kullanın.
+**Kılavuz**: Azure Anahtar Kasası örneklerinize erişimi olan özel yönetim hesaplarının kullanımı yla ilgili standart işletim yordamları oluşturun. Etkin yönetim hesabı sayısını izlemek için Azure Güvenlik Merkezi Kimliği ve Erişim Yönetimi'ni (şu anda önizlemede) kullanın.
 
 
-Kimlik ve erişimi izleme (Önizleme):
+Kimlik ve erişimi izleme (önizleme):
 
 https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
-### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3,4: Azure Active Directory ile çoklu oturum açma (SSO) kullanın
+### <a name="34-use-single-sign-on-sso-with-azure-active-directory"></a>3.4: Azure Active Directory ile tek oturum açma (SSO) kullanma
 
-**Rehberlik**: uygulamanızın kimliğini sorunsuzca doğrulamak ve Azure Key Vault gizli dizilerinize erişmek için kullanılacak belirteci almak için AppID, Tenantıd ve ClientSecret ile birlikte bir Azure hizmet sorumlusu kullanın.
+**Kılavuz :** Uygulamanızın doğruluğunu sorunsuz bir şekilde doğrulamak ve Azure Anahtar Kasası sırlarınıza erişmek için kullanılacak belirteci almak için AppId, TenantID ve ClientSecret ile birlikte bir Azure hizmet müdürü kullanın.
 
 
-.NET kullanarak Azure Key Vault için hizmetten hizmete kimlik doğrulaması:
+.NET kullanarak Azure Anahtar Kasası'na servis-servis kimlik doğrulaması:
 
 https://docs.microsoft.com/azure/key-vault/service-to-service-authentication
 
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izleme**: Uygulanamaz
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
-### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3,5: tüm Azure Active Directory tabanlı erişim için Multi-Factor Authentication kullanın
+### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3.5: Tüm Azure Active Directory tabanlı erişim için çok faktörlü kimlik doğrulamayı kullanın
 
-**Rehberlik**: Azure Active Directory Multi-Factor Authentication etkinleştirin ve Olay Hub 'ı özellikli kaynaklarınızın korunmasına yardımcı olmak Için Azure Güvenlik Merkezi kimlik ve erişim yönetimi (Şu anda önizleme aşamasında) önerilerini izleyin.
+**Yönerge**: Azure Active Directory Çok Faktörlü Kimlik Doğrulaması'nı etkinleştirin ve Etkinlik Hub'ı tarafından etkinleştirilen kaynaklarınızın korunmasına yardımcı olmak için Azure Güvenlik Merkezi Kimlik ve Erişim Yönetimi (şu anda önizlemede) önerilerini izleyin.
 
 
-Bulut tabanlı bir Azure Multi-Factor Authentication dağıtımı planlama:
+Bulut tabanlı Azure Çok Faktörlü Kimlik Doğrulama dağıtımı planlama:
 
 https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
 
 
-Kimlik ve erişimi izleme (Önizleme):
+Kimlik ve erişimi izleme (önizleme):
 
 https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
-### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3,6: tüm yönetim görevleri için adanmış makineler (ayrıcalıklı erişim Iş Istasyonları) kullanın
+### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6: Tüm idari görevler için özel makineleri (Ayrıcalıklı Erişim İş İstasyonları) kullanın
 
-**Rehberlik**: Key Vault etkin kaynakları açmak ve yapılandırmak Için yapılandırılmış Azure MULTI-Factor AUTHENTICATION (MFA) Ile ayrıcalıklı erişim iş istasyonu (Paw) kullanın. 
+**Kılavuz :** Key Vault özellikli kaynaklara giriş yapmak ve yapılandırmak üzere yapılandırılan Azure Çok Faktörlü Kimlik Doğrulama (MFA) ile Ayrıcalıklı Erişim İş İstasyonu (PAW) kullanın. 
 
-Ayrıcalıklı erişim Iş Istasyonları: https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations 
+Ayrıcalıklı Erişim İş İstasyonları:https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations 
 
-Bulut tabanlı bir Azure Multi-Factor Authentication dağıtımı planlama: https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
+Bulut tabanlı Azure Çok Faktörlü Kimlik Doğrulama dağıtımı planlama:https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
 
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izleme**: Uygulanamaz
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
-### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3,7: yönetim hesaplarından şüpheli etkinlikte günlüğe kaydet ve uyar
+### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3.7: İdari hesaplardan şüpheli etkinliklere ilişkin günlük ve uyarı
 
-**Rehberlik**: ortamda şüpheli veya güvenli olmayan bir etkinlik oluştuğunda günlükler ve uyarılar oluşturmak için Azure ACTIVE DIRECTORY (AAD) PRIVILEGED IDENTITY Management (PIM) kullanın. Riskli Kullanıcı davranışında uyarıları ve raporları görüntülemek için AAD risk algılamalarını kullanın. Ek günlük kaydı için Azure Güvenlik Merkezi risk algılama uyarılarını Azure Izleyicisine gönderin ve eylem gruplarını kullanarak özel uyarı/bildirim yapılandırın.
+**Rehberlik**: Ortam içinde şüpheli veya güvensiz etkinlik oluştuğunda günlük ve uyarı oluşturma için Azure Active Directory (AAD) Ayrıcalıklı Kimlik Yönetimi (PIM) kullanın. Riskli kullanıcı davranışı yla ilgili uyarıları ve raporları görüntülemek için AAD risk algılamalarını kullanın. Ek günlüğe kaydetme için Azure Güvenlik Merkezi risk algılama uyarılarını Azure Monitor'a gönderin ve Eylem Grupları'nı kullanarak özel uyarı/bildirimleri yapılandırın.
 
-Şüpheli etkinlik uyarıları oluşturmak için Azure Key Vault için Gelişmiş tehdit koruması 'nı (ATP) etkinleştirin.
+Şüpheli etkinlikler için uyarılar oluşturmak için Azure Key Vault için gelişmiş tehdit koruması (ATP) etkinleştirin.
 
-Dağıtım Azure AD Privileged Identity Management (PıM): https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan
+Azure AD Ayrıcalıklı Kimlik Yönetimi 'ni (PIM) dağıtın:https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan
 
-Azure Key Vault için Gelişmiş tehdit koruması ayarlama (Önizleme): https://docs.microsoft.com/azure/security-center/advanced-threat-protection-key-vault
+Azure Key Vault (önizleme) için gelişmiş tehdit koruması ayarlama:https://docs.microsoft.com/azure/security-center/advanced-threat-protection-key-vault
 
-Azure Key Vault için uyarılar (Önizleme): https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-azurekv
+Azure Anahtar Kasası (Önizleme) için uyarılar:https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-azurekv
 
-Risk algılamalarını Azure Active Directory: https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events
+Azure Active Directory risk algılamaları:https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events
 
-Azure portal eylem grupları oluşturun ve yönetin: https://docs.microsoft.com/azure/azure-monitor/platform/action-groups
+Azure portalında eylem grupları oluşturun ve yönetin:https://docs.microsoft.com/azure/azure-monitor/platform/action-groups
 
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
-### <a name="38-manage-azure-resources-from-only-approved-locations"></a>3,8: Azure kaynaklarını yalnızca onaylanan konumlardan yönetme
+### <a name="38-manage-azure-resources-from-only-approved-locations"></a>3.8: Azure kaynaklarını yalnızca onaylanan konumlardan yönetme
 
-**Rehberlik**: koşullu erişim ilkesinin konum koşulunu yapılandırın ve adlandırılmış konumlarınızı yönetin. Adlandırılmış konumlarla, IP adresi aralıkları veya ülkeler ve bölgeler için mantıksal gruplandırmaları oluşturabilirsiniz. Key Vault gizli dizileri gibi hassas kaynaklarla erişimi, yapılandırılmış adlandırılmış konumlara kısıtlayabilirsiniz.
+**Yönerge**: Koşullu Erişim ilkesinin konum koşulunu yapılandırın ve adlandırılmış konumlarınızı yönetin. Adlandırılmış konumlarla, IP adresi aralıklarının veya ülkelerin ve bölgelerin mantıksal gruplandırmalarını oluşturabilirsiniz. Anahtar Kasa sırlarınız gibi hassas kaynaklara erişimi, yapılandırılan konumlarınız la sınırlandırabilirsiniz.
 
-Koşullu erişim Azure Active Directory konum koşulu nedir?: https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations
+Azure Etkin Dizin Koşullu Erişim'de konum durumu nedir?:https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations
 
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
-### <a name="39-use-azure-active-directory"></a>3,9: Azure Active Directory kullanın
+### <a name="39-use-azure-active-directory"></a>3.9: Azure Etkin Dizini Kullanma
 
-**Rehberlik**: Key Vault gibi Azure kaynakları için merkezi kimlik doğrulama ve yetkilendirme sistemi olarak Azure ACTIVE DIRECTORY (AAD) kullanın. Bu, gizli kaynakları yönetmek için rol tabanlı erişim denetimi (RBAC) sağlar.
+**Yol gösterici**: Key Vault gibi Azure kaynakları için merkezi kimlik doğrulama ve yetkilendirme sistemi olarak Azure Active Directory 'i (AAD) kullanın. Bu, Rol tabanlı erişim denetiminin (RBAC) hassas kaynakları yönetmesine olanak tanır.
 
  
 
-Hızlı başlangıç: Azure Active Directory yeni bir kiracı oluşturun: https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant
+Hızlı başlangıç: Azure Etkin Dizini'nde yeni bir kiracı oluşturun:https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
-### <a name="310-regularly-review-and-reconcile-user-access"></a>3,10: Kullanıcı erişimini düzenli olarak gözden geçirin ve karşılaştırın
+### <a name="310-regularly-review-and-reconcile-user-access"></a>3.10: Kullanıcı erişimini düzenli olarak gözden geçirin ve uzlaştırın
 
-**Rehberlik**: Azure Key Vault yönetici rollerine sahip eski hesapları bulmaya yardımcı olması için Azure ACTIVE DIRECTORY (AAD) günlüklerini inceleyin. Ayrıca, grup üyeliklerini verimli bir şekilde yönetmek için AAD erişim incelemelerini kullanın, Azure Key Vault erişmek için kullanılabilecek kurumsal uygulamalara erişin ve rol atamalarına erişin. Yalnızca doğru kullanıcıların erişmeye devam ettiğinden emin olmak için, Kullanıcı erişiminin her 90 gün gibi düzenli aralıklarla gözden geçirilmesi gerekir.
+**Kılavuz**: Azure Key Vault yönetim rolleri ile eski hesapları keşfetmeye yardımcı olmak için Azure Active Directory (AAD) günlüklerini gözden geçirin. Ayrıca, grup üyeliklerini verimli bir şekilde yönetmek, Azure Anahtar Kasası'na erişmek için kullanılabilecek kurumsal uygulamalara erişim ve rol atamaları için AAD erişim incelemelerini kullanın. Yalnızca doğru kullanıcıların sürekli erişime sahip olduğundan emin olmak için kullanıcı erişimi her 90 günde bir olduğu gibi düzenli olarak gözden geçirilmelidir.
 
 
-Raporları ve izleme belgelerini Azure Active Directory:
+Azure Active Directory raporları ve izleme belgeleri:
 
 https://docs.microsoft.com/azure/active-directory/reports-monitoring/
 
 
-Azure AD erişim gözden geçirmeleri nelerdir?:
+Azure AD erişim değerlendirmeleri nelerdir?:
 
 https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
-### <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3,11: devre dışı bırakılmış hesaplara erişme girişimlerini izleme
+### <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3.11: Devre dışı bırakılmış hesaplara erişim denemelerini izleme
 
-**Rehberlik**: tüm günlükleri bir Log Analytics çalışma alanına göndererek Azure Key Vault ve Azure Active Directory için tanılama ayarlarını etkinleştirin. Log Analytics içindeki istenen uyarıları (devre dışı parolalara erişim girişimleri gibi) yapılandırın.
+**Kılavuz :** Azure Key Vault ve Azure Active Directory için tanı ayarlarını etkinleştirerek tüm günlükleri bir Log Analytics çalışma alanına gönderin. Log Analytics içinde istenen uyarıları (devre dışı bırakılan sırlara erişme girişimleri gibi) yapılandırın.
 
-Azure AD günlüklerini Azure Izleyici günlükleriyle tümleştirme: https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics
+Azure AD günlüklerini Azure Monitor günlükleriyle tümleştirin:https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics
 
-Eski Key Vault çözümden geçiş: https://docs.microsoft.com/azure/azure-monitor/insights/azure-key-vault#migrating-from-the-old-key-vault-solution
-
-**Azure Güvenlik Merkezi izleme**: Evet
-
-**Sorumluluk**: müşteri
-
-### <a name="312-alert-on-account-login-behavior-deviation"></a>3,12: hesap oturum açma davranışı sapmasından uyar
-
-**Rehberlik**: Azure Key Vault korumalı kaynaklarınızla ilişkili şüpheli eylemleri algılanan otomatik yanıtları yapılandırmak Için Azure Active Directory kimlik koruması ve risk algılama özelliklerini kullanın. Kuruluşunuzun güvenlik yanıtlarını uygulamak için Azure Sentinel aracılığıyla otomatikleştirilmiş yanıtları etkinleştirmeniz gerekir. 
-
-Azure Active Directory portalında riskli oturum açma işlemleri raporu: https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins 
-
-Nasıl yapılır: risk ilkelerini yapılandırma ve etkinleştirme: https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies
-
-Azure Sentinel 'i ekleme: https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+Eski Key Vault çözümünden geçiş:https://docs.microsoft.com/azure/azure-monitor/insights/azure-key-vault#migrating-from-the-old-key-vault-solution
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
-### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3,13: destek senaryoları sırasında Microsoft 'un ilgili müşteri verilerine erişimini sağlama
+### <a name="312-alert-on-account-login-behavior-deviation"></a>3.12: Hesap giriş davranış sapması konusunda uyarı
 
-**Rehberlik**: uygulanamaz; Azure Key Vault için Müşteri Kasası desteklenmez.
+**Yönlendirme**: Azure Anahtar Kasası korumalı kaynaklarınız ile ilgili algılanan şüpheli eylemlere otomatik yanıtları yapılandırmak için Azure Active Directory'nin Kimlik Koruması ve risk algılama özelliklerini kullanın. Kuruluşunuzun güvenlik yanıtlarını uygulamak için Azure Sentinel aracılığıyla otomatik yanıtları etkinleştirmelisiniz. 
 
-Genel kullanıma yönelik desteklenen hizmetler ve senaryolar: https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
+Azure Etkin Dizin portalında riskli oturum açma raporu:https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins 
+
+Nasıl Yapılışı: Risk ilkelerini yapılandırma ve etkinleştirme:https://docs.microsoft.com/azure/active-directory/identity-protection/howto-identity-protection-configure-risk-policies
+
+Azure Sentinel'e nasıl binilir:https://docs.microsoft.com/azure/sentinel/quickstart-onboard
+
+**Azure Güvenlik Merkezi izleme**: Evet
+
+**Sorumluluk**: Müşteri
+
+### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3.13: Destek senaryoları sırasında Microsoft'a ilgili müşteri verilerine erişim sağlama
+
+**Rehberlik**: Geçerli değildir; Azure Anahtar Kasası için Müşteri Kilit Kutusu desteklenmez.
+
+Genel kullanılabilirlik te desteklenen hizmetler ve senaryolar:https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability
 
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izleme**: Uygulanamaz
 
-**Sorumluluk**: geçerli değil
+**Sorumluluk**: Geçerli değil
 
 ## <a name="data-protection"></a>Veri Koruma
 
-*Daha fazla bilgi için bkz. [güvenlik denetimi: veri koruma](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection).*
+*Daha fazla bilgi için [güvenlik denetimi: veri koruma.](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-protection)*
 
-### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4,1: hassas bilgilerin envanterini tutma
+### <a name="41-maintain-an-inventory-of-sensitive-information"></a>4.1: Hassas Bilgilerin envanterini koruyun
 
-**Rehberlik**: Azure Key Vault etkinleştirilmiş kaynaklarda hassas bilgileri depolayan veya işleyen Azure kaynaklarını izlemeye yardımcı olması için etiketleri kullanın. 
+**Yönerge**: Azure Anahtar Kasası'nda etkin leştirilmiş kaynakları depolayan veya işleyen Azure kaynaklarını izlemeye yardımcı olmak için etiketleri kullanın. 
 
-Azure kaynaklarınızı düzenlemek için etiketleri kullanma: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+Azure kaynaklarınızı düzenlemek için etiketleri kullanın:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izleme**: Uygulanamaz
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
-### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4,2: hassas bilgileri depolayan veya işleyen sistemleri yalıtma
+### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2: Hassas bilgileri depolama veya işleme sistemlerini yalıtma
 
-**Rehberlik**: belirli alt ağlara erişimi kısıtlamak için yapılandırılmış sanal ağ hizmeti uç noktaları kullanarak Azure Key Vault erişimi güvenli hale getirebilirsiniz.
+**Kılavuz**: Belirli alt ağlara erişimi kısıtlamak üzere yapılandırılan sanal ağ hizmeti uç noktalarından yararlanarak Azure Anahtar Kasası'na erişimi güvence altına alabilirsiniz.
 
-Güvenlik duvarı kuralları etkin olduktan sonra, isteğiniz izin verilen alt ağlardan veya IP adresi aralıklarından kaynaklanıyorsa yalnızca Azure Key Vault veri düzlemi işlemleri gerçekleştirebilirsiniz. Bu, Azure portal Azure Key Vault erişim için de geçerlidir. Azure portal bir anahtar kasasına gözatabilseniz de, istemci makineniz izin verilenler listesinde değilse anahtarları, parolaları veya sertifikaları listelemeyebilirsiniz. Bu ayrıca Azure Key Vault seçiciyi ve diğer Azure hizmetlerini de etkiler. Güvenlik duvarı kuralları istemci makinenizin bunu yapmasını engelliyorsa, anahtar kasalarının listelerini görebilirsiniz, ancak liste anahtarlarını göremezsiniz.
+Güvenlik duvarı kuralları yürürlüğe girsince, Azure Key Vault veri düzlemi işlemlerini yalnızca isteğiniz izin verilen alt ağlardan veya IP adresi aralıklarından geldiğinde gerçekleştirebilirsiniz. Bu, Azure portalındaki Azure Key Vault erişimi için de geçerlidir. Azure portalından önemli bir kasaya göz atabiliyor olsanız da, istemci makineniz izin verilenler listesinde değilse anahtarları, sırları veya sertifikaları listeleyemeyebilirsiniz. Bu, Azure Key Vault Picker ve diğer Azure hizmetlerini de etkiler. Güvenlik duvarı kuralları istemci makinenizin bunu yapmasını engelliyorsa, Anahtar Kasaların listelerini görebilirsiniz, ancak liste anahtarlarını göremeyebilirsiniz.
 
-Azure Key Vault güvenlik duvarlarını ve sanal ağları yapılandırma: https://docs.microsoft.com/azure/key-vault/key-vault-network-security
+Azure Key Vault güvenlik duvarlarını ve sanal ağları yapılandırın:https://docs.microsoft.com/azure/key-vault/key-vault-network-security
 
-Azure Key Vault için sanal ağ hizmet uç noktaları: https://docs.microsoft.com/azure/key-vault/key-vault-overview-vnet-service-endpoints
+Azure Anahtar Kasası için sanal ağ hizmeti bitiş noktaları:https://docs.microsoft.com/azure/key-vault/key-vault-overview-vnet-service-endpoints
 
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
-### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4,3: hassas bilgilerin yetkisiz aktarımını izleme ve engelleme
+### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4.3: Hassas bilgilerin yetkisiz aktarımının izlenmesi ve engellenmesi
 
-**Rehberlik**: Azure Key Vault içinde depolanan tüm veriler hassas olarak kabul edilir. Azure Key Vault gizli dizi erişimini denetlemek için Azure Key Vault veri düzlemi erişim denetimleri kullanın. Ayrıca, Ağ katmanında erişimi denetlemek için Key Vault yerleşik güvenlik duvarını da kullanabilirsiniz. Azure Key Vault erişimi izlemek için, Key Vault tanılama ayarlarını etkinleştirin ve günlükleri bir Azure depolama hesabına veya Log Analytics çalışma alanına gönderin.
+**Kılavuz**: Azure Key Vault'ta depolanan tüm veriler hassas kabul edilir. Azure Key Vault sırlarına erişimi denetlemek için Azure Key Vault veri düzlemi erişim denetimlerini kullanın. Ağ katmanındaki erişimi denetlemek için Key Vault'un yerleşik güvenlik duvarını da kullanabilirsiniz. Azure Key Vault'a erişimi izlemek için, Key Vault Tanı Ayarlarını etkinleştirin ve günlükleri bir Azure Depolama Hesabı veya Log Analytics çalışma alanına gönderin.
 
-Anahtar kasasına güvenli erişim: https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault
+Anahtar kasasına güvenli erişim:https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault
 
-Azure Key Vault güvenlik duvarlarını ve sanal ağları yapılandırma: https://docs.microsoft.com/azure/key-vault/key-vault-network-security
+Azure Key Vault güvenlik duvarlarını ve sanal ağları yapılandırın:https://docs.microsoft.com/azure/key-vault/key-vault-network-security
 
-Günlüğe kaydetme Azure Key Vault: https://docs.microsoft.com/azure/key-vault/key-vault-logging
+Azure Key Vault günlüğü:https://docs.microsoft.com/azure/key-vault/key-vault-logging
 
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
-### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4,4: yoldaki tüm hassas bilgileri şifreleyin
+### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4: Tüm hassas bilgileri taşıma sırasında şifreleme
 
-**Rehberlik**: kimlik doğrulama, yönetim ve veri düzlemi erişimi için Azure Key Vault giden tüm trafik ŞIFRELENIR ve https: bağlantı noktası 443 üzerinden geçer. (Ancak, CRL için HTTP [port 80] trafiği zaman zaman olacaktır.) 
+**Yönlendirme**: Kimlik doğrulama, yönetim ve veri düzlemi erişimi için Azure Key Vault'a giden tüm trafik şifrelenir ve HTTPS üzerinden geçer: bağlantı noktası 443. (Ancak, bazen CRL için HTTP [port 80] trafik olacaktır.) 
 
-Güvenlik duvarının arkasındaki Azure Key Vault erişim: https://docs.microsoft.com/azure/key-vault/key-vault-access-behind-firewall
+Güvenlik duvarının arkasındaki Azure Key Vault'a erişin:https://docs.microsoft.com/azure/key-vault/key-vault-access-behind-firewall
 
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izleme**: Uygulanamaz
 
 **Sorumluluk**: Microsoft
 
-### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4,5: hassas verileri belirlemek için etkin bir keşif aracı kullanın
+### <a name="45-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4.5: Hassas verileri tanımlamak için etkin bir bulma aracı kullanın
 
-**Rehberlik**: uygulanamaz; Azure Key Vault (gizli diziler, anahtarlar ve sertifikalar) içindeki tüm veriler hassas olarak değerlendirilir.
+**Rehberlik**: Geçerli değildir; Azure Key Vault'daki tüm veriler (sırlar, anahtarlar ve sertifikalar) hassas kabul edilir.
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izleme**: Uygulanamaz
 
-**Sorumluluk**: geçerli değil
+**Sorumluluk**: Geçerli değil
 
-### <a name="46-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4,6: hassas verileri belirlemek için etkin bir keşif aracı kullanın
+### <a name="46-use-an-active-discovery-tool-to-identify-sensitive-data"></a>4.6: Hassas verileri tanımlamak için etkin bir bulma aracı kullanın
 
-**Rehberlik**: Azure Key Vault örneklerinizin yönetimine ve veri düzlemine güvenli erişim.
+**Kılavuz :** Azure Key Vault örneklerinizin yönetimine ve veri düzlemine güvenli erişim.
 
 
 Anahtar kasasına güvenli erişim:
 
 https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi denetimi**: Uygulanamaz
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
-### <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4,7: erişim denetimini zorlamak için ana bilgisayar tabanlı veri kaybı önleme kullanın
+### <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4.7: Erişim denetimini uygulamak için ana bilgisayar tabanlı veri kaybı önlemeyi kullanın
 
-**Rehberlik**: Microsoft, Azure Key Vault için temel altyapıyı yönetir ve müşteri verilerinin kaybını veya açıklanmasını engellemek için katı denetimler uygulamıştır.
-
-
-Azure Key Vault nedir? https://docs.microsoft.com/azure/key-vault/key-vault-overview
-
-Azure müşteri verileri koruması: https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
-
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
-
-**Sorumluluk**: Microsoft
-
-### <a name="48-encrypt-sensitive-information-at-rest"></a>4,8: hassas bilgileri Rest 'te şifreleyin
-
-**Rehberlik**: tüm yönetilen nesneler (anahtar, sertifikalar ve gizlilikler) Azure Key Vault Rest 'te şifrelenir.
+**Yönlendirme**: Microsoft, Azure Key Vault'un temel altyapısını yönetir ve Azure Key Vault korumalı resourcesta'nız için temel tarama yapmak için müşteri daUse Azure Güvenlik Merkezi'nin kaybolmasını veya maruz kalmasını önlemek için sıkı denetimler uygulamıştır.
 
 
-Azure Key Vault için güvenlik denetimleri: https://docs.microsoft.com/azure/key-vault/key-vault-security-controls
+Azure Anahtar Kasası Nedir?:https://docs.microsoft.com/azure/key-vault/key-vault-overview
 
+Azure müşteri veri koruması:https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izleme**: Uygulanamaz
 
 **Sorumluluk**: Microsoft
 
-### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4,9: kritik Azure kaynaklarında yapılan değişikliklerle ilgili günlük ve uyarı
+### <a name="48-encrypt-sensitive-information-at-rest"></a>4.8: Hassas bilgileri istirahatte şifreleme
 
-**Kılavuz**: Azure izleyici 'de Azure Key Vault Analytics çözümünü kullanarak Azure Key Vault denetim olay günlüklerini gözden geçirin.
-
-Azure Izleyici 'de Azure Key Vault Analytics çözümü: https://docs.microsoft.com/azure/azure-monitor/insights/azure-key-vault
+**Kılavuz :** Yönetilen tüm nesneler (anahtar, sertifikalar ve sırlar) Azure Key Vault'ta dinleniyerde şifrelenir.
 
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+Azure Anahtar Kasası için güvenlik denetimleri:https://docs.microsoft.com/azure/key-vault/key-vault-security-controls
 
-**Sorumluluk**: müşteri
+
+**Azure Güvenlik Merkezi izleme**: Uygulanamaz
+
+**Sorumluluk**: Microsoft
+
+### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9: Kritik Azure kaynaklarında yapılan değişiklikleri kaydedin ve uyarı
+
+**Kılavuz**: Azure Key Vault denetim olay günlüğünü incelemek için Azure Monitor'daki Azure Key Vault Analytics çözümünü kullanın.
+
+Azure Monitor'da Azure Key Vault Analytics çözümü:https://docs.microsoft.com/azure/azure-monitor/insights/azure-key-vault
+
+
+**Azure Güvenlik Merkezi izleme**: Uygulanamaz
+
+**Sorumluluk**: Müşteri
 
 ## <a name="vulnerability-management"></a>Güvenlik Açığı Yönetimi
 
-*Daha fazla bilgi için bkz. [güvenlik denetimi: güvenlik açığı yönetimi](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management).*
+*Daha fazla bilgi için [Güvenlik Denetimi: Güvenlik Açığı Yönetimi'ne](https://docs.microsoft.com/azure/security/benchmarks/security-control-vulnerability-management)bakın.*
 
-### <a name="51-run-automated-vulnerability-scanning-tools"></a>5,1: otomatikleştirilmiş güvenlik açığı tarama araçlarını çalıştırma
+### <a name="51-run-automated-vulnerability-scanning-tools"></a>5.1: Otomatik güvenlik açığı tarama araçlarını çalıştırın
 
-**Rehberlik**: Microsoft, Azure Key Vault destekleyen temel sistemler üzerinde güvenlik açığı yönetimi gerçekleştirir.
+**Kılavuz**: Microsoft, Azure Key Vault'u destekleyen temel sistemlerde güvenlik açığı yönetimi gerçekleştirir.
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
-
-**Sorumluluk**: Microsoft
-
-### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5,2: otomatik işletim sistemi düzeltme eki yönetimi çözümünü dağıtma
-
-**Rehberlik**: yok; Microsoft, Key Vault destekleyen temel sistemlerde Düzeltme Eki Yönetimi gerçekleştirir.
-
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
-
-**Sorumluluk**: geçerli değil
-
-### <a name="53-deploy-automated-third-party-software-patch-management-solution"></a>5,3: otomatik üçüncü taraf yazılım düzeltme eki yönetimi çözümünü dağıtma
-
-**Rehberlik**: uygulanamaz; Bu öneri, işlem kaynaklarına yöneliktir.
-
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
-
-**Sorumluluk**: geçerli değil
-
-### <a name="54-compare-back-to-back-vulnerability-scans"></a>5,4: geri dönüş güvenlik açığı taramalarını karşılaştırın
-
-**Rehberlik**: Microsoft, Key Vault destekleyen temel sistemler üzerinde güvenlik açığı yönetimi gerçekleştirir.
-
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izleme**: Uygulanamaz
 
 **Sorumluluk**: Microsoft
 
-### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5,5: bulunan güvenlik açıklarının düzeltilmesine öncelik vermek için risk derecelendirme işlemi kullanın
+### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5.2: Otomatik işletim sistemi yama yönetimi çözümlerini dağıtma
 
-**Kılavuz**: Azure Güvenlik Merkezi tarafından sunulan varsayılan risk derecelendirmelerini (güvenli puan) kullanın.
+**Rehberlik**: N/A; Microsoft, Key Vault'u destekleyen temel sistemlerde yama yönetimi gerçekleştirir.
 
-Azure Güvenlik Merkezi 'nde güvenli puanınızı geliştirme:
+**Azure Güvenlik Merkezi izleme**: Uygulanamaz
+
+**Sorumluluk**: Geçerli değil
+
+### <a name="53-deploy-automated-third-party-software-patch-management-solution"></a>5.3: Otomatik üçüncü taraf yazılım yama yönetimi çözümlerini dağıtma
+
+**Rehberlik**: Geçerli değildir; bu öneri, hesaplama kaynakları için tasarlanmıştır.
+
+**Azure Güvenlik Merkezi izleme**: Uygulanamaz
+
+**Sorumluluk**: Geçerli değil
+
+### <a name="54-compare-back-to-back-vulnerability-scans"></a>5.4: Arka arkaya güvenlik açığı taramalarını karşılaştırın
+
+**Kılavuz**: Microsoft, Key Vault'u destekleyen temel sistemlerde güvenlik açığı yönetimi gerçekleştirir.
+
+**Azure Güvenlik Merkezi izleme**: Uygulanamaz
+
+**Sorumluluk**: Microsoft
+
+### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5.5: Keşfedilen güvenlik açıklarının düzeltilmesine öncelik vermek için risk derecelendirme işlemi kullanın
+
+**Yönerge**: Azure Güvenlik Merkezi tarafından sağlanan varsayılan risk derecelendirmelerini (Güvenli Puan) kullanın.
+
+Azure Güvenlik Merkezi'nde Güvenli Puanınızı Artırın:
 
 https://docs.microsoft.com/azure/security-center/security-center-secure-score
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izleme**: Uygulanamaz
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 ## <a name="inventory-and-asset-management"></a>Envanter ve Varlık Yönetimi
 
-*Daha fazla bilgi için bkz. [güvenlik denetimi: envanter ve varlık yönetimi](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management).*
+*Daha fazla bilgi için [güvenlik denetimi: Envanter ve Varlık Yönetimi'ne](https://docs.microsoft.com/azure/security/benchmarks/security-control-inventory-asset-management)bakın.*
 
-### <a name="61-use-azure-asset-discovery"></a>6,1: Azure varlık bulmayı kullanma
+### <a name="61-use-azure-asset-discovery"></a>6.1: Azure Varlık Bulma'yı kullanma
 
-**Rehberlik**: aboneliğinizdeki tüm kaynakları (Azure Key Vault örnekleri dahil) sorgulamak ve bulmayı sağlamak Için Azure Kaynak grafiğini kullanın. Kiracınızda uygun (okuma) izinleriniz olduğundan ve aboneliklerinizdeki kaynakların yanı sıra tüm Azure aboneliklerinin listesini belirleyebildiğinizden emin olun.
+**Yönerge**: Aboneliğinizdeki tüm kaynakları (Azure Anahtar Kasası örnekleri dahil) sorgulamak ve keşfetmek için Azure Kaynak Grafiği'ni kullanın. Kiracınızda uygun (okuma) izinlere sahip olduğundan ve aboneliklerinizdeki tüm Azure aboneliklerinin yanı sıra kaynakları sıralayabildiğinizden emin olun.
 
-Hızlı başlangıç: Azure Kaynak Grafiği gezginini kullanarak ilk kaynak grafik sorgunuzu çalıştırın: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
+Hızlı başlatma: Azure Kaynak Grafiği Gezgini'ni kullanarak ilk Kaynak Grafiği sorgunuzu çalıştırın:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
-Geçerli hesabın erişebileceği abonelikler alın.: https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
+Cari hesabın erişebileceği abonelikleri alın.:https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
 
-Azure kaynakları için rol tabanlı erişim denetimi (RBAC) nedir? https://docs.microsoft.com/azure/role-based-access-control/overview
+Azure kaynakları için rol tabanlı erişim denetimi (RBAC) nedir?https://docs.microsoft.com/azure/role-based-access-control/overview
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izleme**: Uygulanamaz
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
-### <a name="62-maintain-asset-metadata"></a>6,2: varlık meta verilerini koruma
+### <a name="62-maintain-asset-metadata"></a>6.2: Varlık meta verilerini koruma
 
-**Rehberlik**: mantıksal olarak bunları bir taksonomi halinde düzenlemek için meta veriler sağlayan Azure Key Vault kaynaklarına Etiketler uygulayın.
+**Yönerge**: Etiketleri, mantıksal olarak taksonomi olarak düzenlemek için meta veriler veren Azure Anahtar Kasası kaynaklarına uygulayın.
 
 
-Etiketler oluşturma ve kullanma:
+Etiketler nasıl oluşturulur ve kullanılır:
 
 https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izleme**: Uygulanamaz
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
-### <a name="63-delete-unauthorized-azure-resources"></a>6,3: yetkisiz Azure kaynaklarını silme
+### <a name="63-delete-unauthorized-azure-resources"></a>6.3: Yetkisiz Azure kaynaklarını silme
 
-**Rehberlik**: Azure Key Vault örnekleri ve ilgili kaynakları düzenlemek ve izlemek için uygun yerlerde etiketleme, yönetim grupları ve ayrı abonelikler kullanın. Envanterin düzenli olarak mutabakatını yapın ve yetkisiz kaynakların aboneliğin zamanında silindiğinden emin olun.
+**Kılavuz**: Azure Anahtar Kasası örneklerini ve ilgili kaynakları düzenlemek ve izlemek için uygun olduğunda etiketleme, yönetim grupları ve ayrı abonelikleri kullanın. Envanteri düzenli olarak uzlaştırın ve yetkisiz kaynakların abonelikten zamanında silindiğinden emin olun.
 
 
 Ek bir Azure aboneliği oluşturun:
@@ -682,566 +679,566 @@ Ek bir Azure aboneliği oluşturun:
 https://docs.microsoft.com/azure/billing/billing-create-subscription
 
 
-Kaynak organizasyonu ve yönetimi için yönetim grupları oluşturma:
+Kaynak organizasyonu ve yönetimi için yönetim grupları oluşturun:
 
 https://docs.microsoft.com/azure/governance/management-groups/create
 
 
-Azure kaynaklarınızı düzenlemek için etiketleri kullanma: https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
+Azure kaynaklarınızı düzenlemek için etiketleri kullanın:https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izleme**: Uygulanamaz
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
-### <a name="64-maintain-an-inventory-of-approved-azure-resources-and-software-titles"></a>6,4: onaylanan Azure kaynakları ve yazılım başlıkları envanterini koruyun
+### <a name="64-maintain-an-inventory-of-approved-azure-resources-and-software-titles"></a>6.4: Onaylanan Azure kaynaklarının ve yazılım başlıklarının envanterini koruyun
 
-**Rehberlik**: işlem kaynaklarınız Için onaylanan Azure kaynakları ve onaylanan yazılımın listesini tanımlama
+**Yönerge**: İşlem kaynaklarınız için onaylanmış Azure kaynaklarının ve onaylı yazılımların listesini tanımlayın
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izleme**: Uygulanamaz
 
-**Sorumluluk**: geçerli değil
+**Sorumluluk**: Geçerli değil
 
-### <a name="65-monitor-for-unapproved-azure-resources"></a>6,5: onaylanmamış Azure kaynakları için izleyici
+### <a name="65-monitor-for-unapproved-azure-resources"></a>6.5: Onaylanmamış Azure kaynakları için izleme
 
-**Rehberlik**: aşağıdaki yerleşik ilke tanımlarını kullanarak müşteri aboneliklerine oluşturulabilecek kaynak türlerine kısıtlamalar koymak için Azure ilkelerini kullanın:
-
-- İzin verilmeyen kaynak türleri
-- İzin verilen kaynak türleri
-
-Ayrıca, Azure Kaynak grafiğini kullanarak abonelikler içindeki kaynakları sorgular/bulur.
-
-Öğretici: uyumluluğu zorlamak için ilke oluşturma ve yönetme: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
-
-Hızlı başlangıç: Azure Kaynak Grafiği gezginini kullanarak ilk kaynak grafik sorgunuzu çalıştırın: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
-
-
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
-
-**Sorumluluk**: müşteri
-
-### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6,6: işlem kaynakları içindeki onaylanmamış yazılım uygulamaları için izleyici
-
-**Rehberlik**: uygulanamaz; Bu öneri, işlem kaynaklarına yöneliktir.
-
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
-
-**Sorumluluk**: geçerli değil
-
-### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6,7: onaylanmamış Azure kaynaklarını ve yazılım uygulamalarını kaldırma
-
-**Rehberlik**: uygulanamaz; Bu öneri, Azure için bir bütün olarak ve işlem kaynakları için tasarlanmıştır.
-
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
-
-**Sorumluluk**: geçerli değil
-
-### <a name="68-use-only-approved-applications"></a>6,8: yalnızca onaylanan uygulamaları kullan
-
-**Rehberlik**: uygulanamaz; Bu öneri, işlem kaynaklarına yöneliktir.
-
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
-
-**Sorumluluk**: geçerli değil
-
-### <a name="69-use-only-approved-azure-services"></a>6,9: yalnızca onaylanan Azure hizmetlerini kullanın
-
-**Rehberlik**: aşağıdaki yerleşik ilke tanımlarını kullanarak müşteri aboneliklerine oluşturulabilecek kaynak türlerine kısıtlamalar koymak için Azure ilkelerini kullanın:
+**Yönerge**: Aşağıdaki yerleşik ilke tanımlarını kullanarak müşteri aboneliğinde oluşturulabilecek kaynak türüne kısıtlamalar getirmek için Azure ilkelerini kullanın:
 
 - İzin verilmeyen kaynak türleri
 - İzin verilen kaynak türleri
 
-Öğretici: uyumluluğu zorlamak için ilke oluşturma ve yönetme: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Ayrıca, abonelik içindeki kaynakları sorgulamak/keşfetmek için Azure Kaynak Grafiği'ni kullanın.
 
-Azure Ilke örnekleri: https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
+Öğretici: Uyumluluğu uygulamak için ilkeler oluşturun ve yönetin:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
-
-**Sorumluluk**: müşteri
-
-### <a name="610-implement-approved-application-list"></a>6,10: onaylanan uygulama listesini Uygula
-
-**Rehberlik**: uygulanamaz; Bu öneri, işlem kaynaklarına yöneliktir.
-
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
-
-**Sorumluluk**: geçerli değil
-
-### <a name="611-limit-users-ability-to-interact-with-azureresources-manager-via-scripts"></a>6,11: kullanıcıların betikler aracılığıyla AzureResources Manager ile etkileşim kurma yeteneğini sınırlayın
-
-**Rehberlik**: "Microsoft Azure yönetimi" uygulaması için "erişimi engelle" özelliğini yapılandırarak kullanıcıların Azure Resource Manager (ARM) ile etkileşime geçmesini sınırlamak Için Azure koşullu erişimini kullanın. Bu, Key Vault yapılandırma ile ilgili olanlar gibi yüksek bir güvenlik ortamındaki kaynaklarda oluşturma ve değişikliklere engel olabilir.
+Hızlı başlatma: Azure Kaynak Grafiği Gezgini'ni kullanarak ilk Kaynak Grafiği sorgunuzu çalıştırın:https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
 
-Azure yönetimine erişimi koşullu erişimle yönetme: https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
+**Azure Güvenlik Merkezi izleme**: Uygulanamaz
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Sorumluluk**: Müşteri
 
-**Sorumluluk**: müşteri
+### <a name="66-monitor-for-unapproved-software-applications-within-compute-resources"></a>6.6: Bilgi işlem kaynakları içindeki onaylanmamış yazılım uygulamalarını izleme
 
-### <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6,12: kullanıcıların işlem kaynakları içinde betikleri yürütme yeteneğini sınırlayın
+**Rehberlik**: Geçerli değildir; bu öneri, hesaplama kaynakları için tasarlanmıştır.
 
-**Rehberlik**: uygulanamaz; Bu öneri, işlem kaynaklarına yöneliktir.
+**Azure Güvenlik Merkezi izleme**: Uygulanamaz
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Sorumluluk**: Geçerli değil
 
-**Sorumluluk**: geçerli değil
+### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6.7: Onaylanmamış Azure kaynaklarını ve yazılım uygulamalarını kaldırma
 
-### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6,13: yüksek riskli uygulamaları fiziksel olarak veya mantıksal olarak ayırt edin
+**Rehberlik**: Geçerli değildir; bu öneri, bir bütün olarak Azure ve hesaplama kaynakları için tasarlanmıştır.
 
-**Rehberlik**: uygulanamaz; Bu öneri, Azure App Service veya işlem kaynaklarında çalışan Web uygulamalarına yöneliktir.
+**Azure Güvenlik Merkezi izleme**: Uygulanamaz
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Sorumluluk**: Geçerli değil
 
-**Sorumluluk**: geçerli değil
+### <a name="68-use-only-approved-applications"></a>6.8: Yalnızca onaylı uygulamaları kullanın
+
+**Rehberlik**: Geçerli değildir; bu öneri, hesaplama kaynakları için tasarlanmıştır.
+
+**Azure Güvenlik Merkezi izleme**: Uygulanamaz
+
+**Sorumluluk**: Geçerli değil
+
+### <a name="69-use-only-approved-azure-services"></a>6.9: Yalnızca onaylanmış Azure hizmetlerini kullanma
+
+**Yönerge**: Aşağıdaki yerleşik ilke tanımlarını kullanarak müşteri aboneliğinde oluşturulabilecek kaynak türüne kısıtlamalar getirmek için Azure ilkelerini kullanın:
+
+- İzin verilmeyen kaynak türleri
+- İzin verilen kaynak türleri
+
+Öğretici: Uyumluluğu uygulamak için ilkeler oluşturun ve yönetin:https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+
+Azure İlkesi Örnekleri:https://docs.microsoft.com/azure/governance/policy/samples/not-allowed-resource-types
+
+
+**Azure Güvenlik Merkezi izleme**: Uygulanamaz
+
+**Sorumluluk**: Müşteri
+
+### <a name="610-implement-approved-application-list"></a>6.10: Onaylı başvuru listesini uygulama
+
+**Rehberlik**: Geçerli değildir; bu öneri, hesaplama kaynakları için tasarlanmıştır.
+
+**Azure Güvenlik Merkezi izleme**: Uygulanamaz
+
+**Sorumluluk**: Geçerli değil
+
+### <a name="611-limit-users-ability-to-interact-with-azureresources-manager-via-scripts"></a>6.11: Kullanıcıların komut dosyaları aracılığıyla AzureResources Yöneticisi ile etkileşim deşmelerini sınırlandırın
+
+**Yönerge**: "Microsoft Azure Yönetimi" Uygulaması için "Erişimi engelle" yapılarak kullanıcıların Azure Kaynak Yöneticisi (ARM) ile etkileşim edebilmelerini sınırlamak için Azure Koşullu Erişimi kullanın. Bu, Anahtar Kasa yapılandırması gibi yüksek güvenlik ortamındaki kaynakların oluşturulmasını ve değiştirilmesini engelleyebilir.
+
+
+Koşullu Erişim ile Azure yönetimine erişimi yönetin:https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management
+
+**Azure Güvenlik Merkezi izleme**: Uygulanamaz
+
+**Sorumluluk**: Müşteri
+
+### <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6.12: Kullanıcıların bilgi işlem kaynakları içinde komut dosyalarını yürütme yeteneğini sınırlama
+
+**Rehberlik**: Geçerli değildir; bu öneri, hesaplama kaynakları için tasarlanmıştır.
+
+**Azure Güvenlik Merkezi izleme**: Uygulanamaz
+
+**Sorumluluk**: Geçerli değil
+
+### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13: Yüksek riskli uygulamaları fiziksel veya mantıksal olarak ayırmak
+
+**Rehberlik**: Geçerli değildir; Bu öneri, Azure Uygulama Hizmeti'nde çalışan web uygulamaları veya bilgi işlem kaynakları için tasarlanmıştır.
+
+**Azure Güvenlik Merkezi izleme**: Uygulanamaz
+
+**Sorumluluk**: Geçerli değil
 
 ## <a name="secure-configuration"></a>Güvenli Yapılandırma
 
-*Daha fazla bilgi için bkz. [güvenlik denetimi: güvenli yapılandırma](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration).*
+*Daha fazla bilgi için güvenlik [denetimi: Güvenli Yapılandırma'ya](https://docs.microsoft.com/azure/security/benchmarks/security-control-secure-configuration)bakın.*
 
-### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7,1: tüm Azure kaynakları için güvenli yapılandırma oluşturma
+### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1: Tüm Azure kaynakları için güvenli yapılandırmalar oluşturma
 
-**Rehberlik**: Azure Key Vault örneklerinizin yapılandırmasını denetlemek veya zorlamak üzere özel ilkeler oluşturmak Için "Microsoft. keykasası" ad alanındaki Azure ilke diğer adlarını kullanın. Ayrıca, Azure Key Vault için yerleşik Azure Ilke tanımlarını da kullanabilirsiniz:
-
-
-Key Vault nesneler kurtarılabilir olmalıdır
-
-Log Analytics çalışma alanına Key Vault için tanılama ayarlarını dağıt
-
-Key Vault tanılama günlükleri etkinleştirilmelidir
-
-Key Vault bir sanal ağ hizmeti uç noktası kullanmalıdır
-
-Olay Hub 'ına Key Vault için tanılama ayarlarını dağıtma
+**Yönerge**: Azure Anahtar Kasası örneklerinizi denetlemek veya yapılandırmayı zorlamak için özel ilkeler oluşturmak için "Microsoft.KeyVault" ad alanında Azure İlkesi takma adlarını kullanın. Azure Anahtar Kasası için yerleşik Azure İlkesi tanımlarını da kullanabilirsiniz:
 
 
-Azure Güvenlik Merkezi 'ndeki önerileri, Azure Key Vault örneklerinizin güvenli bir yapılandırma temeli olarak kullanın.
+Key Vault nesneleri kurtarılabilir olmalıdır
+
+Analytics çalışma alanını günlüğe kaydetmek için Anahtar Kasası için Tanılama Ayarlarını Dağıtma
+
+Key Vault'taki tanılama günlükleri etkinleştirilmeli
+
+Key Vault sanal ağ hizmeti bitiş noktası kullanmalıdır
+
+Anahtar Kasası için Tanı Ayarlarını Olay Hub'ına Dağıtma
 
 
-Kullanılabilir Azure Ilkesi diğer adlarını görüntüleme:
+Azure Anahtar Kasası örnekleriniz için güvenli bir yapılandırma taban çizgisi olarak Azure Güvenlik Merkezi'nden gelen önerileri kullanın.
+
+
+Kullanılabilir Azure İlkesi Diğer Adları nasıl görüntüleyebilirsiniz:
 
 https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 
 
-Öğretici: uyumluluğu zorlamak için ilke oluşturma ve yönetme:
+Öğretici: Uyumluluğu uygulamak için ilkeler oluşturun ve yönetin:
 
 https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
-### <a name="72-establish-secure-operating-system-configurations"></a>7,2: güvenli işletim sistemi yapılandırması oluşturma
+### <a name="72-establish-secure-operating-system-configurations"></a>7.2: Güvenli işletim sistemi yapılandırmaları oluşturma
 
-**Rehberlik**: uygulanamaz; Bu öneri, işlem kaynaklarına yöneliktir.
+**Rehberlik**: Geçerli değildir; bu öneri, hesaplama kaynakları için tasarlanmıştır.
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izleme**: Uygulanamaz
 
-**Sorumluluk**: geçerli değil
+**Sorumluluk**: Geçerli değil
 
-### <a name="73-maintain-secure-azure-resource-configurations"></a>7,3: güvenli Azure Kaynak yapılandırmalarının bakımını yapma
+### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3: Güvenli Azure kaynak yapılandırmalarını koruyun
 
-**Rehberlik**: Azure Key Vault etkinleştirilmiş kaynaklarınız genelinde güvenli ayarları zorlamak için Azure ilkesi [reddetme] ve [dağıtım yok] kullanın. 
+**Yol gösterici**: Azure Tuşu'nu etkinleştiren kaynaklarınızda güvenli ayarları zorlamak için Azure ilkesini [reddet] ve [varsa dağıt] kullanın. 
 
 
-Öğretici: uyumluluğu zorlamak için ilke oluşturma ve yönetme:
+Öğretici: Uyumluluğu uygulamak için ilkeler oluşturun ve yönetin:
 
 https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage 
 
 
   
-Azure Ilke efektlerini anlayın: 
+Azure İlkesi efektlerini anlayın: 
 
 https://docs.microsoft.com/azure/governance/policy/concepts/effects
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izleme**: Uygulanamaz
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
-### <a name="74-maintain-secure-operating-system-configurations"></a>7,4: güvenli işletim sistemi yapılandırmalarının bakımını yapma
+### <a name="74-maintain-secure-operating-system-configurations"></a>7.4: Güvenli işletim sistemi yapılandırmalarını koruyun
 
-**Rehberlik**: uygulanamaz; Bu öneri, işlem kaynaklarına yöneliktir.
+**Rehberlik**: Geçerli değildir; bu öneri, hesaplama kaynakları için tasarlanmıştır.
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izleme**: Uygulanamaz
 
-**Sorumluluk**: geçerli değil
+**Sorumluluk**: Geçerli değil
 
-### <a name="75-securely-store-configuration-of-azure-resources"></a>7,5: Azure kaynaklarının yapılandırmasını güvenli bir şekilde depolayın
+### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5: Azure kaynaklarının yapılandırmayı güvenli bir şekilde depolama
 
-**Rehberlik**: Azure Key Vault etkinleştirilmiş kaynaklarınız Için özel Azure ilke tanımları kullanıyorsanız, kodunuzu güvenli bir şekilde depolamak ve yönetmek için Azure Repos kullanın.
+**Kılavuz**: Azure Anahtar Kasası etkin kaynaklarınız için özel Azure İlkesi tanımlarını kullanıyorsanız, kodunuzu güvenli bir şekilde depolamak ve yönetmek için Azure Repos'u kullanın.
 
 
-Azure DevOps 'da kod depolama: 
+Azure DevOps'lerde kod depolama: 
 
 https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops 
 
 
-Azure Repos belgeleri: 
+Azure Depobelgeleri: 
 
 https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izleme**: Uygulanamaz
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
-### <a name="76-securely-store-custom-operating-system-images"></a>7,6: özel işletim sistemi görüntülerini güvenli bir şekilde depolayın
+### <a name="76-securely-store-custom-operating-system-images"></a>7.6: Özel işletim sistemi görüntülerini güvenli bir şekilde saklayın
 
-**Rehberlik**: uygulanamaz; Bu öneri, işlem kaynaklarına yöneliktir.
+**Rehberlik**: Geçerli değildir; bu öneri, hesaplama kaynakları için tasarlanmıştır.
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izleme**: Uygulanamaz
 
-**Sorumluluk**: geçerli değil
+**Sorumluluk**: Geçerli değil
 
-### <a name="77-deploy-system-configuration-management-tools"></a>7,7: sistem yapılandırma yönetimi araçlarını dağıtma
+### <a name="77-deploy-system-configuration-management-tools"></a>7.7: Sistem yapılandırma yönetim araçlarını dağıtma
 
-**Rehberlik**: sistem yapılandırmalarına uyarı vermek, denetlemek ve zorlamak üzere özel ilkeler oluşturmak Için "Microsoft. keykasası" ad alanındaki Azure ilke diğer adlarını kullanın. Ayrıca, ilke özel durumlarını yönetmek için bir işlem ve işlem hattı geliştirin.
+**Yönerge**: Sistem yapılandırmalarını uyarmak, denetlemek ve uygulamak için özel ilkeler oluşturmak için "Microsoft.KeyVault" ad alanında Azure İlkesi takma adlarını kullanın. Ayrıca, ilke özel durumlarını yönetmek için bir işlem ve ardışık hatlar geliştirin.
 
 
 
-Azure Ilkesini yapılandırma ve yönetme:
+Azure İlkesi nasıl yapılandırılabilen ve yönetilen:
 
 https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izleme**: Uygulanamaz
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
-### <a name="78-deploy-system-configuration-management-tools-for-operating-systems"></a>7,8: işletim sistemleri için sistem yapılandırma yönetimi araçları dağıtma
+### <a name="78-deploy-system-configuration-management-tools-for-operating-systems"></a>7.8: İşletim sistemleri için sistem yapılandırma yönetim araçlarını dağıtma
 
-**Rehberlik**: uygulanamaz; Bu öneri, işlem kaynaklarına yöneliktir.
+**Rehberlik**: Geçerli değildir; bu öneri, hesaplama kaynakları için tasarlanmıştır.
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izleme**: Uygulanamaz
 
-**Sorumluluk**: geçerli değil
+**Sorumluluk**: Geçerli değil
 
-### <a name="79-implement-automated-configuration-monitoring-for-azure-services"></a>7,9: Azure hizmetleri için otomatik yapılandırma izlemeyi uygulayın
+### <a name="79-implement-automated-configuration-monitoring-for-azure-services"></a>7.9: Azure hizmetleri için otomatik yapılandırma izleme uygulaması
 
-**Rehberlik**: Azure Key Vault korumalı kaynaklarınız için temel taramalar gerçekleştirmek üzere Azure Güvenlik Merkezi 'ni kullanma 
+**Kılavuz**: Azure Anahtar Vault korumalı kaynaklarınız için temel taramaları gerçekleştirmek için Azure Güvenlik Merkezi'ni kullanın. 
 
   
 
-Azure Güvenlik Merkezi 'nde öneriler nasıl düzeltileceği: 
+Azure Güvenlik Merkezi'nde öneriler nasıl düzeltilir: 
 
 https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
-### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7,10: işletim sistemleri için otomatik yapılandırma izlemeyi Uygula
+### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7.10: İşletim sistemleri için otomatik yapılandırma izleme
 
-**Rehberlik**: uygulanamaz; Bu kıyaslama, işlem kaynaklarına yöneliktir.
+**Rehberlik**: Geçerli değildir; bu kıyaslama hesaplama kaynakları için tasarlanmıştır.
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izleme**: Uygulanamaz
 
-**Sorumluluk**: geçerli değil
+**Sorumluluk**: Geçerli değil
 
-### <a name="711-manage-azure-secrets-securely"></a>7,11: Azure gizli dizilerini güvenli bir şekilde yönetin
+### <a name="711-manage-azure-secrets-securely"></a>7.11: Azure sırlarını güvenli bir şekilde yönetme
 
-**Rehberlik**: bulut uygulamalarınız için gizli yönetimi basitleştirmek ve güvenli hale getirmek için Azure Key Vault ile birlikte yönetilen hizmet kimliği kullanın. Azure Key Vault geçici silmenin etkinleştirildiğinden emin olun.
+**Rehberlik**: Bulut uygulamalarınız için gizli yönetimi basitleştirmek ve güvence altına almak için Azure Key Vault ile birlikte Yönetilen Hizmet Kimliğini kullanın. Azure Key Vault yumuşak silme özelliğinin etkin olduğundan emin olun.
 
 
-Azure yönetilen kimliklerle tümleştirme:
+Azure Yönetilen Kimliklerle nasıl tümleştirilir:
 
 https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
 
 
-Key Vault oluşturma:
+Anahtar Kasası nasıl oluşturulur:
 
 https://docs.microsoft.com/azure/key-vault/quick-create-portal
 
 
-Yönetilen kimlik ile Key Vault kimlik doğrulaması sağlama: 
+Key Vault kimlik doğrulaması yönetilen bir kimlikle nasıl sağlayacaksınız: 
 
 https://docs.microsoft.com/azure/key-vault/managed-identity
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
-### <a name="712-manage-identities-securely-and-automatically"></a>7,12: kimlikleri güvenli ve otomatik olarak yönetme
+### <a name="712-manage-identities-securely-and-automatically"></a>7.12: Kimlikleri güvenli ve otomatik olarak yönetme
 
-**Rehberlik**: bulut uygulamalarınız için gizli yönetimi basitleştirmek ve güvenli hale getirmek için Azure Key Vault ile birlikte yönetilen hizmet kimliği kullanın. 
+**Rehberlik**: Bulut uygulamalarınız için gizli yönetimi basitleştirmek ve güvence altına almak için Azure Key Vault ile birlikte Yönetilen Hizmet Kimliğini kullanın. 
 
   
 
-Azure yönetilen kimliklerle tümleştirme: 
+Azure Yönetilen Kimliklerle nasıl tümleştirilir: 
 
 https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity  
 
 
 
-Key Vault oluşturma: 
+Anahtar Kasası nasıl oluşturulur: 
 
 https://docs.microsoft.com/azure/key-vault/quick-create-portal    
 
-Yönetilen kimlik ile Key Vault kimlik doğrulaması sağlama:  
+Key Vault kimlik doğrulaması yönetilen bir kimlikle nasıl sağlayacaksınız:  
 https://docs.microsoft.com/azure/key-vault/managed-identity
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izleme**: Uygulanamaz
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
-### <a name="713-eliminate-unintended-credential-exposure"></a>7,13: istenmeyen kimlik bilgisi pozlamasını ortadan kaldırın
+### <a name="713-eliminate-unintended-credential-exposure"></a>7.13: İstenmeden kimlik bilgisi maruziyetini ortadan kaldırın
 
-**Rehberlik**: kod içinde kimlik bilgilerini tanımlamak Için kimlik bilgisi tarayıcısı uygulayın. Kimlik bilgisi tarayıcısı, bulunan kimlik bilgilerini Azure Key Vault gibi daha güvenli konumlara taşımayı de teşvik eder.  
+**Yönerge**: Kod içindeki kimlik bilgilerini tanımlamak için Kimlik Bilgisi Tarayıcısı'nı uygulayın. Kimlik Bilgisi Tarayıcısı, keşfedilen kimlik bilgilerinin Azure Anahtar Kasası gibi daha güvenli konumlara taşınmasını da teşvik edecektir.  
   
- Kimlik bilgileri tarayıcısını ayarlama: https://secdevtools.azurewebsites.net/helpcredscan.html
+ Kimlik Bilgisi Tarayıcı nasıl kurulturur:https://secdevtools.azurewebsites.net/helpcredscan.html
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izleme**: Uygulanamaz
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 ## <a name="malware-defense"></a>Kötü Amaçlı Yazılımdan Koruma
 
-*Daha fazla bilgi için bkz. [güvenlik denetimi: kötü amaçlı yazılımdan koruma](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense).*
+*Daha fazla bilgi için [Güvenlik Kontrolü: Malware Defense](https://docs.microsoft.com/azure/security/benchmarks/security-control-malware-defense)' e bakın.*
 
-### <a name="81-use-centrally-managed-anti-malware-software"></a>8,1: merkezi olarak yönetilen kötü amaçlı yazılımdan koruma yazılımı kullanma
+### <a name="81-use-centrally-managed-anti-malware-software"></a>8.1: Merkezi olarak yönetilen kötü amaçlı yazılımdan koruma yazılımlarını kullanın
 
-**Rehberlik**: uygulanamaz; Bu öneri, işlem kaynaklarına yöneliktir. Microsoft, temel alınan platform için kötü amaçlı yazılımdan koruma uygular.
+**Rehberlik**: Geçerli değildir; bu öneri, hesaplama kaynakları için tasarlanmıştır. Microsoft, altta yatan platform için kötü amaçlı yazılımdan koruma yı işler.
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izleme**: Uygulanamaz
 
-**Sorumluluk**: geçerli değil
+**Sorumluluk**: Geçerli değil
 
-### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8,2: işlem dışı Azure kaynaklarına yüklenecek dosyaları önceden Tara
+### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2: İşlem yapmayan Azure kaynaklarına yüklenecek dosyaları önceden taraya
 
-**Rehberlik**: Microsoft 'un kötü amaçlı yazılımdan koruma özelliği, Azure hizmetlerini destekleyen temel ana bilgisayar üzerinde etkinleştirilmiştir (örneğin, Azure Key Vault), ancak müşteri içeriği üzerinde çalışmaz.
-
-
-Karşıya yüklenen veya Azure Key Vault gibi işlem dışı Azure kaynaklarına gönderilen tüm içerikleri önceden tarayın. Microsoft bu örneklerdeki verilerinize erişemez.
+**Yönlendirme**: Azure hizmetlerini destekleyen temel ana bilgisayarda Microsoft kötü amaçlı yazılımdan koruma etkindir (örneğin, Azure Key Vault), müşteri içeriğinde çalışmaz.
 
 
-Azure Cloud Services ve sanal makineler için Microsoft Antimalware 'i anlayın: https://docs.microsoft.com/azure/security/fundamentals/antimalware
+Azure Key Vault gibi işlem yapmayan Azure kaynaklarına yüklenen veya gönderilen tüm içerikleri önceden tarayın. Microsoft bu gibi durumlarda verilerinize erişemez.
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
 
-**Sorumluluk**: müşteri
+Azure Bulut Hizmetleri ve Sanal Makineler için Microsoft Kötü Amaçlı Yazılımdan Koruma'yı anlayın:https://docs.microsoft.com/azure/security/fundamentals/antimalware
 
-### <a name="83-ensure-anti-malware-software-and-signatures-are-updated"></a>8,3: kötü amaçlı yazılımdan koruma yazılımlarının ve imzaların güncelleştirildiğinden emin olun
+**Azure Güvenlik Merkezi izleme**: Uygulanamaz
 
-**Rehberlik**: uygulanamaz; Bu öneri, işlem kaynaklarına yöneliktir. Microsoft, temel alınan platform için kötü amaçlı yazılımdan koruma uygular.
+**Sorumluluk**: Müşteri
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+### <a name="83-ensure-anti-malware-software-and-signatures-are-updated"></a>8.3: Kötü amaçlı yazılımdan koruma yazılımının ve imzalarının güncelleştirilmesini sağlayın
 
-**Sorumluluk**: geçerli değil
+**Rehberlik**: Geçerli değildir; bu öneri, hesaplama kaynakları için tasarlanmıştır. Microsoft, altta yatan platform için kötü amaçlı yazılımdan koruma yı işler.
+
+**Azure Güvenlik Merkezi izleme**: Uygulanamaz
+
+**Sorumluluk**: Geçerli değil
 
 ## <a name="data-recovery"></a>Veri Kurtarma
 
-*Daha fazla bilgi için bkz. [güvenlik denetimi: veri kurtarma](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery).*
+*Daha fazla bilgi için [güvenlik denetimi: veri kurtarma](https://docs.microsoft.com/azure/security/benchmarks/security-control-data-recovery).*
 
-### <a name="91-ensure-regular-automated-back-ups"></a>9,1: düzenli Otomatik yedeklemeli UPS sağlayın
+### <a name="91-ensure-regular-automated-back-ups"></a>9.1: Düzenli otomatik yedeklemeler sağlayın
 
-**Rehberlik**: aşağıdaki PowerShell komutlarıyla, Key Vault sertifikalarınızın, anahtarlarının, yönetilen depolama hesaplarınızın ve gizli dizilerinizde düzenli otomatik yedeklemelere sahip olun:
+**Kılavuz**: Aşağıdaki PowerShell komutlarıyla Anahtar Kasa Sertifikalarınızın, Anahtarlarınızın, Yönetilen Depolama Hesaplarınızın ve Sırlarınızın düzenli otomatik yedeklemelerini sağlayın:
 
-- Backup-AzKeyVaultCertificate
-- Backup-AzKeyVaultKey
-- Backup-AzKeyVaultManagedStorageAccount
-- Backup-AzKeyVaultSecret
+- Yedekleme-AzKeyVaultCertificate
+- Yedekleme-AzKeyVaultKey
+- Yedekleme-AzKeyVaultManagedStorageAccount
+- Yedekleme-AzKeyVaultSecret
 
-İsteğe bağlı olarak, Key Vault yedeklerinizi Azure Backup içinde depolayabiliriz.
+İsteğe bağlı olarak, Key Vault yedeklemelerinizi Azure Yedekleme'de saklayabilirsiniz.
 
-Key Vault sertifikalarını yedekleme: https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultcertificate
+Anahtar Kasa Sertifikaları nasıl yedekilir:https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultcertificate
 
-Key Vault anahtarlarını yedekleme: https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey
+Anahtar Vault Tuşları nasıl yedeklenebilir:https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey
 
-Key Vault yönetilen depolama hesaplarını yedekleme: https://docs.microsoft.com/powershell/module/az.keyvault/add-azkeyvaultmanagedstorageaccount
+Key Vault Yönetilen Depolama Hesapları nasıl yedekilir:https://docs.microsoft.com/powershell/module/az.keyvault/add-azkeyvaultmanagedstorageaccount
 
-Key Vault gizli dizileri yedekleme: https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultsecret
+Anahtar Vault Sırları yedeklemek için nasıl:https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultsecret
 
-Azure Backup etkinleştirme: https://docs.microsoft.com/azure/backup
-
-
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
-
-**Sorumluluk**: müşteri
-
-### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9,2: tüm sistem yedeklemelerini gerçekleştirin ve müşterinin yönettiği tüm anahtarları yedekleyin
-
-**Rehberlik**: aşağıdaki PowerShell komutlarıyla Key Vault sertifikalarınızı, anahtarlarınızı, yönetilen depolama hesaplarınızı ve gizli dizileri gerçekleştirin:
-
-- Backup-AzKeyVaultCertificate
-- Backup-AzKeyVaultKey
-- Backup-AzKeyVaultManagedStorageAccount
-- Backup-AzKeyVaultSecret
-
-İsteğe bağlı olarak, Key Vault yedeklerinizi Azure Backup içinde depolayabiliriz.
-
-Key Vault sertifikalarını yedekleme: https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultcertificate
-
-Key Vault anahtarlarını yedekleme: https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey
-
-Key Vault yönetilen depolama hesaplarını yedekleme: https://docs.microsoft.com/powershell/module/az.keyvault/add-azkeyvaultmanagedstorageaccount
-
-Key Vault gizli dizileri yedekleme: https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultsecret
-
-Azure Backup etkinleştirme: https://docs.microsoft.com/azure/backup
-
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
-
-**Sorumluluk**: müşteri
-
-### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9,3: müşterinin yönettiği anahtarlar dahil tüm yedeklemeleri doğrulama
-
-**Rehberlik**: aşağıdaki PowerShell komutlarıyla, Key Vault sertifikalarınızı, anahtarlarınızı, yönetilen depolama hesaplarınızı ve gizli dizileri düzenli aralıklarla geri yükleme işlemi gerçekleştirin:
-
-- Restore-AzKeyVaultCertificate
-- Restore-AzKeyVaultKey
-- Restore-AzKeyVaultManagedStorageAccount
-- Restore-AzKeyVaultSecret
-
-Key Vault sertifikalarını geri yükleme: https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultcertificate?view=azurermps-6.13.0
-
-Key Vault anahtarlarını geri yükleme: https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0 
-
-Key Vault yönetilen depolama hesaplarını geri yükleme: https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultmanagedstorageaccount
-
-Key Vault gizli dizileri geri yükleme: https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultsecret?view=azurermps-6.13.0
-
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
-
-**Sorumluluk**: müşteri
-
-### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9,4: yedeklemelerin ve müşteri tarafından yönetilen anahtarların korunmasını sağlayın
-
-**Rehberlik**: Azure Key Vault için geçici silmenin etkinleştirildiğinden emin olun. Geçici silme, silinen anahtar kasalarının ve anahtar, gizli dizi ve sertifika gibi kasa nesnelerinin kurtarılmasına olanak tanır. 
+Azure Yedekleme nasıl etkinleştirilir:https://docs.microsoft.com/azure/backup
 
 
-Azure Key Vault 'nin geçici silme kullanımı: 
+**Azure Güvenlik Merkezi izleme**: Uygulanamaz
+
+**Sorumluluk**: Müşteri
+
+### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2: Komple sistem yedeklemelerini gerçekleştirin ve müşteri yönetilen anahtarları yedekleme
+
+**Kılavuz :** Anahtar Kasa Sertifikalarınızın, Anahtarlarınızın, Yönetilen Depolama Hesaplarınızın ve Sırlarınızın yedeklerini aşağıdaki PowerShell komutlarıyla gerçekleştirin:
+
+- Yedekleme-AzKeyVaultCertificate
+- Yedekleme-AzKeyVaultKey
+- Yedekleme-AzKeyVaultManagedStorageAccount
+- Yedekleme-AzKeyVaultSecret
+
+İsteğe bağlı olarak, Key Vault yedeklemelerinizi Azure Yedekleme'de saklayabilirsiniz.
+
+Anahtar Kasa Sertifikaları nasıl yedekilir:https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultcertificate
+
+Anahtar Vault Tuşları nasıl yedeklenebilir:https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey
+
+Key Vault Yönetilen Depolama Hesapları nasıl yedekilir:https://docs.microsoft.com/powershell/module/az.keyvault/add-azkeyvaultmanagedstorageaccount
+
+Anahtar Vault Sırları yedeklemek için nasıl:https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultsecret
+
+Azure Yedekleme nasıl etkinleştirilir:https://docs.microsoft.com/azure/backup
+
+**Azure Güvenlik Merkezi izleme**: Uygulanamaz
+
+**Sorumluluk**: Müşteri
+
+### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9.3: Müşteri yönetilen anahtarlar dahil tüm yedeklemeleri doğrulayın
+
+**Rehberlik**: Anahtar Kasa Sertifikalarınızın, Anahtarlarınızın, Anahtarlarınızın, Yönetilen Depolama Hesaplarınızın ve Sırlarınızın veri geri yüklemesini aşağıdaki PowerShell komutlarıyla düzenli olarak gerçekleştirin:
+
+- Geri Yükleme-AzKeyVaultCertificate
+- Geri Yükleme-AzKeyVaultKey
+- Geri Yükleme-AzKeyVaultManagedStorageAccount Hesabı
+- Geri Yükleme-AzKeyVaultSecret
+
+Anahtar Kasa Sertifikaları nasıl geri yüklenir:https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultcertificate?view=azurermps-6.13.0
+
+Anahtar Kasa Anahtarları nasıl geri yüklenir:https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0 
+
+Key Vault Yönetilen Depolama Hesapları nasıl geri yüklenir:https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultmanagedstorageaccount
+
+Key Vault Secrets nasıl geri yüklenir:https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultsecret?view=azurermps-6.13.0
+
+**Azure Güvenlik Merkezi izleme**: Uygulanamaz
+
+**Sorumluluk**: Müşteri
+
+### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4: Yedeklerin ve müşteri yönetilen anahtarlarının korunmasını sağlayın
+
+**Kılavuz**: Azure Anahtar Kasası için yumuşak silmenin etkinleştirildiğinden emin olun. Yumuşak silme, silinen anahtar kasalarının ve anahtarlar, sırlar ve sertifikalar gibi kasa nesnelerinin kurtarılmasına olanak tanır. 
+
+
+Azure Key Vault'un Yumuşak Silme nasıl kullanılır: 
 
 https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 ## <a name="incident-response"></a>Olay Yanıtı
 
-*Daha fazla bilgi için bkz. [güvenlik denetimi: olay yanıtı](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response).*
+*Daha fazla bilgi için [Güvenlik Denetimi: Olay Yanıtı'na](https://docs.microsoft.com/azure/security/benchmarks/security-control-incident-response)bakın.*
 
-### <a name="101-create-an-incident-response-guide"></a>10,1: olay yanıtı kılavuzu oluşturma
+### <a name="101-create-an-incident-response-guide"></a>10.1: Olay yanıt kılavuzu oluşturma
 
-**Rehberlik**: kuruluşunuz için bir olay yanıtı Kılavuzu oluşturun. Tüm personel rollerinin yanı sıra olay işleme/yönetim 'in algılanmasından olay sonrası gözden geçirme aşamalarını tanımlayan, yazılı olay yanıt planları bulunduğundan emin olun. Bu işlemlerin, Key Vault gizli dizileri kullanma gibi hassas sistemleri korumasıyla bir odağa sahip olması gerekir.
+**Rehberlik**: Kuruluşunuz için bir olay yanıt kılavuzu oluşturun. Personelin tüm rollerini ve olay işleme/yönetiminin algılamadan olay sonrası incelemeye kadar olan aşamalarını tanımlayan yazılı olay yanıt planları olduğundan emin olun. Bu işlemler, Key Vault sırlarını kullananlar gibi hassas sistemleri korumaya odaklanmalıdır.
 
 
 
-Azure Güvenlik Merkezi 'nde Iş akışı Otomatiklamalar nasıl yapılandırılır: 
+Azure Güvenlik Merkezi'nde İş Akışı Otomasyonları nasıl yapılandırılabilen: 
 
 https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide   
 
 
 
-Kendi güvenlik olay yanıtı işleminizi oluşturma kılavuzu:  
+Kendi güvenlik olayı yanıt sürecinizi oluşturma kılavuzu:  
 
 https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/
 
 
 
-Microsoft Güvenlik Yanıt Merkezi 'nin bir olayın Anatomisi:   
+Microsoft Güvenlik Yanıt Merkezi'nin Bir Olayın Anatomisi:   
 
 https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process   
 
 
 
-Müşteri, kendi olay yanıt planının oluşturulmasına yardımcı olması için NıST 'nin bilgisayar güvenliği olay Işleme kılavuzunu de kullanabilir: 
+Müşteri ayrıca, kendi olay yanıt planının oluşturulmasına yardımcı olmak için NIST'nin Bilgisayar Güvenliği Olay İşlemleri Kılavuzu'ndan da yararlanabilir: 
 
 https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izleme**: Uygulanamaz
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
-### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10,2: olay Puanlama ve öncelik belirlemesi prosedürü oluşturma
+### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2: Olay puanlama ve öncelik lendirme prosedürü oluşturma
 
-**Rehberlik**: Güvenlik Merkezi, ilk olarak hangi uyarıların araştırılması gerektiğini önceliklendirmenize yardımcı olmak için her bir uyarıya önem derecesi atar. Önem derecesi, uyarı veren etkinliğin arkasında kötü amaçlı bir amaç olduğunu ve uyarıyı vermek için kullanılan analitik düzeyini, ne kadar güvenli bir güvenlik merkezinin olduğunu temel alır. Ayrıca, abonelikleri açıkça işaretleyin (örn. üretim, üretim dışı) ve Azure kaynaklarını net bir şekilde tanımlamak ve kategorilere ayırmak için, özellikle de Azure Key Vault gizli dizileri gibi hassas verileri işlemek üzere bir adlandırma sistemi oluşturun.
+**Rehberlik**: Güvenlik Merkezi, öncelikle hangi uyarıların araştırılması gerektiğine öncelik vermenize yardımcı olmak için her uyarıya önem verir. Önem derecesi, Güvenlik Merkezi'nin bulguda ne kadar emin olduğuna veya uyarıyı vermek için kullanılan analize ve uyarıya yol açan etkinliğin arkasında kötü amaçlı niyet olduğuna dair güven düzeyine dayanır. Ayrıca, abonelikleri açıkça işaretleyin (eski için. azure kaynaklarını, özellikle de Azure Anahtar Kasası sırları gibi hassas verileri işleyenleri net bir şekilde tanımlamak ve kategorilere ayırmak için bir adlandırma sistemi oluşturun.
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
-### <a name="103-test-security-response-procedures"></a>10,3: test Güvenliği Yanıt yordamları
+### <a name="103-test-security-response-procedures"></a>10.3: Test güvenlik yanıt yordamları
 
-**Rehberlik**: Azure Key Vault örneklerinizin ve ilgili kaynaklarınızın korunmasına yardımcı olmak için, sistem olay yanıt yeteneklerini düzenli bir temposunda test etmek üzere alıştırmaları gerçekleştirin. Zayıf noktaları ve boşlukları belirleyip planı gerektiği şekilde gözden geçirin.
+**Kılavuz**: Azure Anahtar Kasası örneklerinizi ve ilgili kaynaklarınızın korunmasına yardımcı olmak için sistemlerinizin olay yanıt yeteneklerini düzenli olarak test etmek için alıştırmalar yapın. Zayıf noktaları ve boşlukları belirleyin ve planı gerektiği gibi gözden geçirin.
 
 
-NıST 'nin yayını: BT planları ve özellikleri için test, eğitim ve alıştırma programlarını inceleyin: 
+NIST'in yayınına bakın: BT Planları ve Yetenekleri için Test, Eğitim ve Egzersiz Programları Kılavuzu: 
 
 https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izleme**: Uygulanamaz
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
-### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10,4: güvenlik olaylarına ilişkin iletişim ayrıntılarını sağlayın ve güvenlik olayları için uyarı bildirimleri yapılandırın
+### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10.4: Güvenlik olayı iletişim bilgilerini sağlayın ve güvenlik olayları için uyarı bildirimlerini yapılandırma
 
-**Rehberlik**: Microsoft Güvenlik Yanıt MERKEZI (MSRC), verilerinize izinsiz veya yetkisiz bir taraf tarafından erişildiğini belirlerse, Microsoft tarafından sizinle iletişim kurmak için güvenlik olayı iletişim bilgileri kullanılacaktır.  Sorunların çözümlendiğinden emin olmak için gerçesonra olayları gözden geçirin.
+**Kılavuz :** Microsoft Güvenlik Yanıt Merkezi (MSRC) verilerinize yasadışı veya yetkisiz bir taraf tarafından erişildiğini tespit ederse, güvenlik olayı iletişim bilgileri Microsoft tarafından sizinle iletişim kurmak için kullanılır.  Sorunların çözülmesini sağlamak için olaydan sonraki olayları gözden geçirin.
 
 
 
-Azure Güvenlik Merkezi güvenlik Ilgili kişisini ayarlama:
+Azure Güvenlik Merkezi Güvenlik Kişisi nasıl ayarlanır:
 
 https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details
 
 **Azure Güvenlik Merkezi izleme**: Evet
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
-### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10,5: güvenlik uyarılarını olay yanıt sisteminizle birleştirme
+### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5: Olay yanıt sisteminize güvenlik uyarıları dahil edin
 
-**Rehberlik**: Azure Key Vault etkinleştirilmiş kaynaklardaki riskleri belirlemenize yardımcı olması Için sürekli dışarı aktarma özelliğini kullanarak Azure Güvenlik Merkezi uyarılarınızı ve önerilerinizi dışarı aktarın. Sürekli dışa aktarma, uyarıları ve önerileri el ile veya devam eden sürekli bir biçimde dışa aktarmanız sağlar.  Azure Güvenlik Merkezi veri bağlayıcısını kullanarak uyarıları Azure Sentinel 'e akışını sağlayabilirsiniz. 
+**Kılavuz**: Azure Anahtar Vault özellikli kaynaklara yönelik riskleri belirlemeye yardımcı olmak için Sürekli DışAkverme özelliğini kullanarak Azure Güvenlik Merkezi uyarılarınızı ve önerilerinizi dışa aktarın. Sürekli Dışa Aktarma, uyarı ve önerileri el ile veya sürekli olarak dışa aktarmanıza olanak tanır.  Uyarıları Azure Sentinel'e aktarmak için Azure Güvenlik Merkezi veri bağlayıcısını kullanabilirsiniz. 
 
  
 
-Sürekli dışarı aktarmayı yapılandırma: 
+Sürekli dışa aktarma nasıl yapılandırılabilen: 
 
 https://docs.microsoft.com/azure/security-center/continuous-export 
 
   
 
-Uyarıları Azure Sentinel 'e aktarma: 
+Uyarıları Azure Sentinel'e nasıl aktarın: 
 
 https://docs.microsoft.com/azure/sentinel/connect-azure-security-center
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
-### <a name="106-automate-the-response-to-security-alerts"></a>10,6: güvenlik uyarılarına yanıtı otomatikleştirme
+### <a name="106-automate-the-response-to-security-alerts"></a>10.6: Güvenlik uyarılarına yanıtı otomatikleştirin
 
-**Rehberlik**: güvenlik uyarılarında "Logic Apps" aracılığıyla yanıtları otomatik olarak tetiklemek Için Azure Güvenlik Merkezi 'Nde Iş akışı Otomasyonu özelliğini kullanın ve Azure Key Vault korumalı kaynaklarınızı korumaya yönelik öneriler alın. 
+**Kılavuz**: Azure Key Vault korumalı kaynaklarınızı korumak için güvenlik uyarıları ve önerilerinde "Mantık Uygulamaları" aracılığıyla yanıtları otomatik olarak tetiklemek için Azure Güvenlik Merkezi'ndeki İş Akışı Otomasyonu özelliğini kullanın. 
 
  
 
-Iş akışı otomasyonunu yapılandırma ve Logic Apps: 
+İş Akışı Otomasyonu ve Mantık Uygulamaları nasıl yapılandırılabilen: 
 
 https://docs.microsoft.com/azure/security-center/workflow-automation
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 
-**Sorumluluk**: müşteri
+**Sorumluluk**: Müşteri
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>Sızma Testleri ve Red Team Alıştırmaları
 
-*Daha fazla bilgi için bkz. [güvenlik denetimi: Penetme testleri ve Red ekibi alıştırmaları](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises).*
+*Daha fazla bilgi için [Güvenlik Kontrolü: Penetrasyon Testleri ve Kırmızı Takım Egzersizleri'ne](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises)bakın.*
 
-### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings-within-60-days"></a>11,1: Azure kaynaklarınızın düzenli olarak sızma testini gerçekleştirin ve 60 gün içinde tüm kritik güvenlik bulgularını düzeltmeye dikkat edin
+### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings-within-60-days"></a>11.1: Azure kaynaklarınızı düzenli olarak delme testini gerçekleştirin ve tüm kritik güvenlik bulgularının 60 gün içinde düzeltilmesini sağlayın
 
-**Rehberlik**: Azure Key Vault hizmetinde doğrudan kalem testi gerçekleştirmekten, ancak gizli dizi güvenliğini sağlamak için Key Vault kullanan Azure kaynaklarınızı test etmeniz önerilir.
+**Kılavuz**: Azure Key Vault hizmetinde doğrudan kalem testi yapmamanız gerekir, ancak sırların güvenliğini sağlamak için Key Vault'u kullanan Azure kaynaklarınızı test etmeniz tavsiye edilir.
 
 
-Sızma testlerinizin Microsoft ilkelerini ihlal etmediğinden emin olmak için Microsoft katılım kurallarını izlemeniz gerekir:
+Penetrasyon Testlerinizin Microsoft ilkelerini ihlal etmediğini sağlamak için Microsoft Etkileşim Kuralları'na uymanız gerekir:
 
 https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1
 
 
-Microsoft 'un, Microsoft tarafından yönetilen bulut altyapısına, hizmetlerine ve uygulamalarına göre kırmızı ekip oluşturma ve canlı site sızma testini yürütme hakkında daha fazla bilgi edinebilirsiniz: 
+Microsoft'un Stratejisi ve Red Teaming ve Microsoft tarafından yönetilen bulut altyapısı, hizmetler ve uygulamalara karşı canlı site penetrasyon testi nin uygulanması hakkında daha fazla bilgiyi burada bulabilirsiniz: 
 
 https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e
 
-**Azure Güvenlik Merkezi izleme**: uygulanamaz
+**Azure Güvenlik Merkezi izleme**: Uygulanamaz
 
-**Sorumluluk**: paylaşılan
+**Sorumluluk**: Paylaşılan
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Bkz. [Azure Güvenlik kıyaslaması](https://docs.microsoft.com/azure/security/benchmarks/overview)
-- [Azure güvenlik temelleri](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview) hakkında daha fazla bilgi edinin
+- Azure [Güvenlik Kıyaslama'ya](https://docs.microsoft.com/azure/security/benchmarks/overview) bakın
+- [Azure Güvenlik Taban Çizgileri](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview) hakkında daha fazla bilgi edinin

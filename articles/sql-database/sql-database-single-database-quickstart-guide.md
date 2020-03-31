@@ -1,6 +1,6 @@
 ---
-title: Hızlı başlangıç-tek veritabanları
-description: Azure SQL veritabanı 'nda tek veritabanlarına hızlı bir şekilde nasıl başlaleyeceğinizi öğrenin
+title: Quickstart - tek veritabanları
+description: Azure SQL Veritabanı'ndaki tek veritabanlarıyla nasıl hızla başlayın gerektiğini öğrenin
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
@@ -12,48 +12,48 @@ ms.author: jovanpop
 ms.reviewer: carlr
 ms.date: 07/29/2019
 ms.openlocfilehash: 6070b53e5f906bc378402d98275b8f798f57b505
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78674423"
 ---
-# <a name="getting-started-with-single-databases-in-azure-sql-database"></a>Azure SQL veritabanı 'nda tek veritabanlarıyla çalışmaya başlama
+# <a name="getting-started-with-single-databases-in-azure-sql-database"></a>Azure SQL Veritabanı'nda tek veritabanları yla başlarken
 
-[Tek bir veritabanı](sql-database-single-index.yml) , modern bulut kaynaklı uygulamalar için ideal bir depolama altyapısı olan hizmet olarak veritabanı (DBaaS) tam olarak yönetilir. Bu bölümde, SQL veritabanında tek bir veritabanını hızlı bir şekilde yapılandırmayı ve oluşturmayı öğreneceksiniz.
+Tek bir [veritabanı,](sql-database-single-index.yml) modern bulut kaynaklı uygulamalar için ideal depolama motoru olan bir hizmet (DbaaS) olarak PaaS veritabanını tam olarak yönetilir. Bu bölümde, SQL Veritabanı'nda hızlı bir şekilde nasıl yapılandırAcağınızı ve tek bir veritabanı oluşturacağınızı öğreneceksiniz.
 
-## <a name="quickstart-overview"></a>Hızlı başlangıç genel bakış
+## <a name="quickstart-overview"></a>Hızlı başlangıca genel bakış
 
-Bu bölümde, tek veritabanlarını hızlıca kullanmaya başlamanıza yardımcı olabilecek kullanılabilir makalelere bir genel bakış görürsünüz. Aşağıdaki hızlı başlangıçler hızlı bir şekilde tek bir veritabanı oluşturmanıza, bir veritabanı sunucusu güvenlik duvarı kuralı yapılandırmanıza ve sonra bir veritabanını yeni tek veritabanına bir `.bacpac` dosyası kullanarak aktarmanıza olanak tanır:
+Bu bölümde, tek veritabanlarıyla hızla başlamanıza yardımcı olabilecek kullanılabilir makalelere genel bir bakış göreceksiniz. Aşağıdaki hızlı başlatmalar, hızlı bir şekilde tek bir veritabanı oluşturmanızı, bir veritabanı sunucusu güvenlik duvarı kuralını yapılandırmanızı ve ardından bir `.bacpac` dosyayı kullanarak yeni tek veritabanına bir veritabanı almanızı sağlar:
 
-- [Azure Portal kullanarak tek bir veritabanı oluşturun](sql-database-single-database-get-started.md).
-- Veritabanını oluşturduktan sonra, [güvenlik duvarı kurallarını yapılandırarak veritabanınızı güvenli hale](sql-database-server-level-firewall-rule.md)getirmeniz gerekir.
-- Azure 'a geçirmek istediğiniz SQL Server var olan bir veritabanınız varsa, SQL Server veritabanlarınızı çözümleyen ve tek veritabanı dağıtım seçeneğine geçişi engelleyebilen herhangi bir sorunu bulacağınız [Data Migration Yardımcısı (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) yüklemelisiniz. Herhangi bir sorun bulamazsanız, veritabanınızı `.bacpac` dosyası olarak dışarı aktarabilir ve [Azure Portal veya SqlPackage kullanarak içeri aktarabilirsiniz](sql-database-import.md).
+- [Azure portalını kullanarak tek bir veritabanı oluşturun.](sql-database-single-database-get-started.md)
+- Veritabanını oluşturduktan sonra, [güvenlik duvarı kurallarını yapılandırarak veritabanınızı güvenli hale](sql-database-server-level-firewall-rule.md)almanız gerekir.
+- SQL Server'da Azure'a geçirmek istediğiniz varolan bir veritabanınız varsa, veritabanlarınızı SQL Server'da çözümleyecek ve tek veritabanı dağıtım seçeneğine geçişi engelleyebilecek herhangi bir sorun bulacak [Veri Geçiş Yardımcısı 'nı (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) yüklemeniz gerekir. Herhangi bir sorun bulamazsanız, veritabanınızı dosya `.bacpac` olarak dışa aktarabilir ve [Azure portalını veya SqlPackage'ı kullanarak içe aktarabilirsiniz.](sql-database-import.md)
 
-## <a name="automating-management-operations"></a>Yönetim işlemlerini otomatikleştirme
+## <a name="automating-management-operations"></a>Yönetim işlemlerini otomatikleştirmek
 
-Veritabanınızı oluşturmak, yapılandırmak ve ölçeklendirmek için PowerShell veya Azure CLı kullanabilirsiniz.
+Veritabanınızı oluşturmak, yapılandırmak ve ölçeklendirmek için PowerShell'i veya Azure CLI'yi kullanabilirsiniz.
 
-- PowerShell veya [Azure CLI](scripts/sql-database-create-and-configure-database-cli.md) [kullanarak tek bir veritabanı oluşturma ve yapılandırma](scripts/sql-database-create-and-configure-database-powershell.md)
-- PowerShell veya [Azure CLI](scripts/sql-database-monitor-and-scale-database-cli.md) [kullanarak tek veritabanınızı güncelleştirin ve kaynakları ölçeklendirin](scripts/sql-database-monitor-and-scale-database-powershell.md)
+- [PowerShell veya](scripts/sql-database-create-and-configure-database-powershell.md) [Azure CLI](scripts/sql-database-create-and-configure-database-cli.md) kullanarak tek bir veritabanı oluşturma ve yapılandırma
+- PowerShell veya [Azure CLI](scripts/sql-database-monitor-and-scale-database-cli.md) [kullanarak tek veritabanınızı ve ölçek kaynaklarınızı güncelleştirin](scripts/sql-database-monitor-and-scale-database-powershell.md)
 
 ## <a name="migrating-to-a-single-database-with-minimal-downtime"></a>En az kapalı kalma süresiyle tek bir veritabanına geçiş
 
-Bu hızlı başlangıç, bir `.bacpac` dosyası kullanarak veritabanınızı hızlı bir şekilde oluşturmanıza veya Azure 'da aktarmanıza olanak tanır. Ancak `.bacpac` ve `.dacpac` dosyalar, veritabanlarını Azure SQL veritabanı 'ndaki farklı SQL Server ve dağıtım seçenekleri arasında hızlı bir şekilde taşımak veya DevOps işlem hattınızda sürekli tümleştirme uygulamak için tasarlanmıştır. Ancak, bu yöntem en az kapalı kalma süresiyle üretim veritabanlarınızın geçirilmesi için tasarlanmamıştır, çünkü yeni veri eklemeyi durdurmanız, kaynak veritabanının bir `.bacpac` dosyasına verilmesini beklemeniz ve sonra Azure SQL veritabanı 'na aktarma işleminin tamamlanmasını beklemeniz gerekir. Bu bekleyen tüm bu durum, özellikle büyük veritabanları için uygulamanızın kapalı kalma süresine neden olur. Üretim veritabanınızı taşımak için geçişin en az kapalı kalma süresini garanti eden geçiş için daha iyi bir yol gerekir. Bunun için, [veri geçiş hizmeti 'ni (DMS)](https://docs.microsoft.com/azure/dms/tutorial-sql-server-to-azure-sql?toc=/azure/sql-database/toc.json) kullanarak veritabanınızı en düşük kapalı kalma süresiyle geçirin. DMS, kaynak veritabanınızda yapılan değişiklikleri geri yüklenen tek veritabanına artırarak bunu gerçekleştirir. Bu şekilde, uygulamanızı kaynaktan hedef veritabanına en az kapalı kalma süresi ile hızlıca geçirebilirsiniz.
+Bu hızlı başlangıçlar, bir `.bacpac` dosya kullanarak veritabanınızı hızla oluşturmanıza veya Azure'a aktarmanıza olanak tanır. `.dacpac` Ancak, `.bacpac` dosyalar veritabanlarını SQL Server'ın farklı sürümlerinde hızlı bir şekilde taşımak ve Azure SQL Veritabanı'ndaki dağıtım seçenekleri arasında hızlı bir şekilde taşımak veya DevOps ardışık ardınızda sürekli tümleştirme uygulamak için tasarlanmıştır. Ancak, bu yöntem üretim veritabanlarınızın en az kapalı kalma süresiyle geçiş ilerlediği için tasarlanmaz, çünkü yeni `.bacpac` veri eklemeyi durdurmanız, kaynak veritabanının bir dosyaya dışa aktarılmasını beklemeniz ve ardından Azure SQL Veritabanı'na içe aktarmanın tamamlanmasını beklemeniz gerekir. Tüm bu bekleme, uygulamanızın özellikle büyük veritabanları için kapalı kalma süresine neden olabilir. Üretim veritabanınızı taşımak için, en az kesinti süresini garanti eden daha iyi bir geçiş yolu gerekir. Bunun için, veritabanınızı en az kapalı kalma süresiyle geçirmek için [Veri Geçiş Hizmeti'ni (DMS)](https://docs.microsoft.com/azure/dms/tutorial-sql-server-to-azure-sql?toc=/azure/sql-database/toc.json) kullanın... DMS bunu, kaynak veritabanınızda yapılan değişiklikleri geri yüklenen tek veritabanına kademeli olarak iterek gerçekleştirir. Bu şekilde, uygulamanızı en az kapalı kalma süresiyle kaynaktan hedef veritabanına hızlı bir şekilde değiştirebilirsiniz.
 
 ## <a name="hands-on-learning-modules"></a>Uygulamalı öğrenme modülleri
 
-Aşağıdaki Microsoft Learn modülleri, Azure SQL veritabanı hakkında ücretsiz bilgi edinmenize yardımcı olur.
+Aşağıdaki Microsoft Learn modülleri Azure SQL Veritabanı hakkında ücretsiz bilgi edinmenize yardımcı olur.
 
 - [Uygulama verilerini depolamak için bir Azure SQL veritabanı sağlama](https://docs.microsoft.com/learn/modules/provision-azure-sql-db/)
-- [Azure SQL veritabanı 'nı sorgulayan bir ASP.NET uygulaması geliştirin ve yapılandırın](https://docs.microsoft.com/learn/modules/develop-app-that-queries-azure-sql/)
-- [Azure SQL veritabanınızın güvenliğini sağlama](https://docs.microsoft.com/learn/modules/secure-your-azure-sql-database/)
+- [Azure SQL Veritabanı'nı sorgulayan bir ASP.NET uygulaması geliştirme ve yapılandırma](https://docs.microsoft.com/learn/modules/develop-app-that-queries-azure-sql/)
+- [Azure SQL Veritabanınızı Güvenli Hale](https://docs.microsoft.com/learn/modules/secure-your-azure-sql-database/)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure SQL veritabanı 'nda desteklenen özelliklerin üst düzey bir listesini](sql-database-features.md)bulun.
-- [Veritabanınızı daha güvenli](sql-database-security-tutorial.md)hale getirme hakkında bilgi edinin.
-- [Azure SQL veritabanı 'nda tek bir veritabanının nasıl kullanılacağı](sql-database-howto-single-database.md)hakkında daha gelişmiş nasıl yapılır hakkında daha fazla bilgi edinin.
-- [PowerShell](sql-database-powershell-samples.md) ve [Azure CLI](sql-database-cli-samples.md)'de yazılmış daha fazla örnek komut dosyası bulabilirsiniz.
-- Veritabanlarınızı yapılandırmak için kullanabileceğiniz [Yönetim API 'si](sql-database-single-databases-manage.md) hakkında daha fazla bilgi edinin.
-- Şirket [içi veritabanınız için doğru Azure SQL veritabanı/yönetilen örnek SKU 'Sunu belirler](/sql/dma/dma-sku-recommend-sql-db/).
+- Azure [SQL Veritabanı'nda desteklenen özelliklerin üst düzey bir listesini](sql-database-features.md)bulun.
+- Veritabanınızı nasıl [daha güvenli](sql-database-security-tutorial.md)hale getirebildiğini öğrenin.
+- [Azure SQL Veritabanı'nda tek bir veritabanının nasıl kullanılacağı](sql-database-howto-single-database.md)konusunda daha gelişmiş nasıl yapılır'ı öğrenin.
+- [PowerShell](sql-database-powershell-samples.md) ve [Azure CLI'de](sql-database-cli-samples.md)yazılmış daha fazla örnek komut dosyası bulun.
+- Veritabanlarınızı yapılandırmak için kullanabileceğiniz [yönetim API'si](sql-database-single-databases-manage.md) hakkında daha fazla bilgi edinin.
+- [Şirket içi veritabanınız için doğru Azure SQL Veritabanı/Yönetilen Örnek SKU'yu tanımlayın.](/sql/dma/dma-sku-recommend-sql-db/)

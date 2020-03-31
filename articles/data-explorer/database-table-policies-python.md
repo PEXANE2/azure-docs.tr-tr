@@ -1,6 +1,6 @@
 ---
-title: "Azure Veri Gezgini Python kitaplığı 'nı kullanarak Azure Veri Gezgini kümesi ve veritabanı için ilkeler oluşturma "
-description: Bu makalede, Python kullanarak ilke oluşturmayı öğreneceksiniz.
+title: 'Azure Veri Gezgini Python kitaplığını kullanarak Azure Veri Gezgini kümesi ve veritabanı için ilkeler oluşturma '
+description: Bu makalede, Python kullanarak ilkeleri oluşturmak için nasıl öğrenirler.
 author: lucygoldbergmicrosoft
 ms.author: lugoldbe
 ms.reviewer: orspodek
@@ -8,28 +8,28 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.openlocfilehash: a0fe86e2dcb802b822cb08ed0922b5da9c5cfd1c
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74667287"
 ---
-# <a name="create-database-and-table-policies-for-azure-data-explorer-by-using-python"></a>Python kullanarak Azure Veri Gezgini için veritabanı ve tablo ilkeleri oluşturma
+# <a name="create-database-and-table-policies-for-azure-data-explorer-by-using-python"></a>Python'u kullanarak Azure Veri Gezgini için veritabanı ve tablo ilkeleri oluşturma
 
 > [!div class="op_single_selector"]
-> * [C#](database-table-policies-csharp.md)
+> * [C #](database-table-policies-csharp.md)
 > * [Python](database-table-policies-python.md)
 >
 
-Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve üst düzeyde ölçeklenebilir veri keşfetme hizmetidir. Bu makalede, Python kullanarak Azure Veri Gezgini için veritabanı ve tablo ilkeleri oluşturacaksınız.
+Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve üst düzeyde ölçeklenebilir veri keşfetme hizmetidir. Bu makalede, Python kullanarak Azure Veri Gezgini için veritabanı ve tablo ilkeleri oluşturursunuz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/) oluşturun.
 * [Test kümesi ve veritabanı](create-cluster-database-python.md)
-* [Bir sınama tablosu](python-ingest-data.md#create-a-table-on-your-cluster)
+* [Bir test tablosu](python-ingest-data.md#create-a-table-on-your-cluster)
 
-## <a name="install-the-data-libraries"></a>Veri kitaplıklarını yükler
+## <a name="install-the-data-libraries"></a>Veri kitaplıklarını yükleme
 
 ```
 pip install azure-common
@@ -37,11 +37,11 @@ pip install azure-mgmt-kusto
 pip install azure-kusto-data (Optional, for changing table's policies)
 ```
 
-## <a name="authentication"></a>Kimlik Doğrulaması
-Bu makaledeki örnekleri çalıştırmak için, kaynaklara erişebilen bir Azure AD uygulaması ve hizmet sorumlusu olması gerekir. Aynı Azure AD uygulamasını [bir test kümesinden ve veritabanından](create-cluster-database-csharp.md#authentication)kimlik doğrulaması için kullanabilirsiniz. Farklı bir Azure AD uygulaması kullanmak istiyorsanız, ücretsiz bir Azure AD uygulaması oluşturmak ve abonelik kapsamında rol ataması eklemek için bkz. [Azure AD uygulaması oluşturma](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) . Ayrıca, `Directory (tenant) ID`, `Application ID`ve `Client Secret`nasıl alınacağını da gösterir. Yeni Azure AD uygulamasını veritabanına asıl olarak eklemeniz gerekebilir, bkz. [azure Veri Gezgini veritabanı Izinlerini yönetme](https://docs.microsoft.com/azure/data-explorer/manage-database-permissions).    
+## <a name="authentication"></a>Kimlik doğrulaması
+Bu makaledeki örnekleri çalıştırmak için, kaynaklara erişebilen bir Azure AD Uygulaması ve hizmet ilkesine ihtiyacımız var. Bir [test kümesinden ve veritabanından](create-cluster-database-csharp.md#authentication)kimlik doğrulama için aynı Azure AD Uygulamasını kullanabilirsiniz. Farklı bir Azure AD Uygulaması kullanmak istiyorsanız, ücretsiz bir Azure AD Uygulaması oluşturmak ve abonelik kapsamında rol ataması eklemek için [bir Azure AD uygulaması oluşturmaya](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) bakın. Ayrıca nasıl almak için `Directory (tenant) ID` `Application ID`gösterir `Client Secret`, ve . Yeni Azure AD Uygulamasını veritabanında ana para olarak eklemeniz gerekebilir, [bkz.](https://docs.microsoft.com/azure/data-explorer/manage-database-permissions)    
 
-## <a name="alter-database-retention-policy"></a>Alter database bekletme ilkesi
-10 günlük geçici silme dönemi ile bir bekletme ilkesi ayarlar.
+## <a name="alter-database-retention-policy"></a>Veritabanı tutma ilkesini değiştirme
+10 günlük yumuşak silme süresiyle bekletme ilkesi ayarlar.
 
 ```python
 from azure.mgmt.kusto import KustoManagementClient
@@ -73,8 +73,8 @@ poller = kustoManagementClient.databases.update(resource_group_name=resource_gro
                                            parameters=DatabaseUpdate(soft_delete_period=datetime.timedelta(days=10)))
 ```
 
-## <a name="alter-database-cache-policy"></a>Alter database Cache ilkesi
-Veritabanı için son beş günün veri kümesi SSD 'sinde olacağı önbellek ilkesini ayarlar.
+## <a name="alter-database-cache-policy"></a>Veritabanı önbelleği ilkesini değiştirme
+Son beş günlük verilerin SSD kümesinde olacağını gösteren veritabanı için bir önbellek ilkesi ayarlar.
 
 ```python
 from azure.mgmt.kusto import KustoManagementClient
@@ -106,8 +106,8 @@ poller = kustoManagementClient.databases.update(resource_group_name=resource_gro
                                            parameters=DatabaseUpdate(hot_cache_period=datetime.timedelta(days=5)))
 ```
 
-## <a name="alter-table-cache-policy"></a>Alter table Cache ilkesi
-Son beş günün veri kümesi SSD 'sinde olacağı tablo için önbellek ilkesi ayarlar.
+## <a name="alter-table-cache-policy"></a>Tablo önbelleği ilkesini değiştir
+Son beş günlük verinin SSD kümesinde olacağını tablo için bir önbellek ilkesi ayarlar.
 
 ```python
 from azure.kusto.data.request import KustoClient, KustoConnectionStringBuilder
@@ -131,8 +131,8 @@ command = '.alter table {} policy caching '.format(table_name) +  caching_policy
 kusto_client.execute_mgmt(database_name, command)
 ```
 
-## <a name="add-a-new-principal-for-database"></a>Veritabanı için yeni bir sorumlu ekleyin
-Veritabanı için yönetici sorumlusu olarak yeni bir Azure AD uygulaması ekleme
+## <a name="add-a-new-principal-for-database"></a>Veritabanı için yeni bir müdür ekleme
+Veritabanı için yönetici anabilim da yeni bir Azure AD uygulaması ekleme
 
 ```python
 from azure.mgmt.kusto import KustoManagementClient

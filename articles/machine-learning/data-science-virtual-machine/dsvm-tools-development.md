@@ -1,7 +1,7 @@
 ---
 title: Geliştirme araçları
 titleSuffix: Azure Data Science Virtual Machine
-description: Veri Bilimi Sanal Makinesi bulunan araçlar ve tümleşik geliştirme ortamları hakkında bilgi edinin.
+description: Data Science Virtual Machine'de bulunan araçlar ve entegre geliştirme ortamları hakkında bilgi edinin.
 keywords: veri bilimi araçları, veri bilimi sanal makinesi, veri bilimi için araçlar, linux veri bilimi
 services: machine-learning
 ms.service: machine-learning
@@ -10,78 +10,78 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: bc1f40760c1602d81da042bf6909e44a540d35de
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: c48cf6a7a82e90d3c9d8dc4c35e37dfb944af99f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79283764"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80282690"
 ---
-# <a name="development-tools-on-the-azure-data-science-virtual-machine"></a>Azure Veri Bilimi Sanal Makinesi geliştirme araçları
+# <a name="development-tools-on-the-azure-data-science-virtual-machine"></a>Azure Veri Bilimi Sanal Makinesi'nde geliştirme araçları
 
-Veri Bilimi Sanal Makinesi (DSVM), yüksek düzeyde üretken bir tümleşik geliştirme ortamında (IDE) çok sayıda popüler araç sağlar. DSVM'nin sağlanan bazı araçları şunlardır.
+Veri Bilimi Sanal Makine (DSVM), son derece verimli entegre bir geliştirme ortamında (IDE) birçok popüler aracı bir araya getirir. Aşağıda, DSVM'de sağlanan bazı araçlar verilmiştir.
 
-## <a name="visual-studio-community-edition"></a>Visual Studio Community sürümü
+## <a name="visual-studio-community-edition"></a>Görsel Stüdyo Topluluk Sürümü
 
 |    |           |
 | ------------- | ------------- |
-| Nedir?   | Genel amaçlı IDE      |
-| Desteklenen DSVM sürümleri      | Windows: Visual Studio 2017, Windows 2019 (Önizleme): Visual Studio 2019      |
-| Tipik kullanımları      | Yazılım geliştirme    |
-| DSVM 'de nasıl yapılandırılır ve yüklenir?      | Veri bilimi Iş yükü (Python ve R araçları), Azure iş yükü (Hadoop, Data Lake), Node. js, SQL Server araçları, [Visual Studio Code için Azure Machine Learning](https://github.com/Microsoft/vs-tools-for-ai)    |
-| Kullanma ve çalıştırma      | Masaüstü kısayolu (`C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\devenv.exe`). Grafiksel olarak, masaüstü simgesini veya **Başlat** menüsünü kullanarak Visual Studio 'yu açın. Programlar için arama yapın (Windows logo tuşu + S) ve ardından **Visual Studio**. Buradan, Python, R ve Node. js gibi C#dillerde projeler oluşturabilirsiniz.   |
-| DSVM 'deki ilgili araçlar      |     Visual Studio kodu, RStudio, Juno  |
+| Bu nedir?   | Genel amaçlı IDE      |
+| Desteklenen DSVM sürümleri      | Windows: Visual Studio 2017, Windows 2019 : Visual Studio 2019      |
+| Tipik kullanımlar      | Yazılım geliştirme    |
+| Nasıl yapılandırılır ve DSVM yüklü?      | Veri Bilimi İş Yükü (Python ve R araçları), Azure iş yükü (Hadoop, Data Lake), Node.js, SQL Server araçları, [Visual Studio Kodu için Azure Machine Learning](https://github.com/Microsoft/vs-tools-for-ai)    |
+| Nasıl kullanılır ve çalıştırın      | Masaüstü kısayolu`C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\devenv.exe`( ). Masaüstü simgesini veya **Başlat** menüsünü kullanarak Visual Studio'yu grafik olarak açın. Programları arayın (Windows logo tuşu+S), ardından **Visual Studio**. Buradan C#, Python, R ve Node.js gibi dillerde projeler oluşturabilirsiniz.   |
+| DSVM ile ilgili araçlar      |     Görsel Stüdyo Kodu, RStudio, Juno  |
 
 > [!NOTE]
-> Değerlendirme süreniz doldu bir ileti alabilirsiniz. Microsoft hesabı kimlik bilgilerinizi girin. Veya Visual Studio Community erişim elde etmek için yeni bir ücretsiz hesap oluşturun.
+> Değerlendirme sürenizin dolduğuna dair bir ileti alabilirsiniz. Microsoft hesap kimlik bilgilerinizi girin. Veya Visual Studio Community'ye erişmek için yeni bir ücretsiz hesap oluşturun.
 
 ## <a name="visual-studio-code"></a>Visual Studio Code 
 
 |    |           |
 | ------------- | ------------- |
-| Nedir?   | Genel amaçlı IDE      |
+| Bu nedir?   | Genel amaçlı IDE      |
 | Desteklenen DSVM sürümleri      | Windows, Linux     |
-| Tipik kullanımları      | Kod Düzenleyicisi ve Git tümleştirmesi   |
-| Kullanma ve çalıştırma      | Linux 'ta Windows, masaüstü kısayolu veya terminalde (`code`) masaüstü kısayolu (`C:\Program Files (x86)\Microsoft VS Code\Code.exe`)    |
-| DSVM 'deki ilgili araçlar      |     Visual Studio, RStudio, Juno  |
+| Tipik kullanımlar      | Kod düzenleyicisi ve Git entegrasyonu   |
+| Nasıl kullanılır ve çalıştırın      | Masaüstü kısayolu`C:\Program Files (x86)\Microsoft VS Code\Code.exe`( ) Windows'da,`code`masaüstü kısayolu veya terminal ( ) Linux'ta    |
+| DSVM ile ilgili araçlar      |     Visual Studio, RStudio, Juno  |
 
-## <a name="rstudio-desktop"></a>RStudio Masaüstü
+## <a name="rstudio-desktop"></a>RStudio Desktop
 
 |    |           |
 | ------------- | ------------- |
-| Nedir?   | R için istemci IDE dili   |
+| Bu nedir?   | R dili için Istemci IDE   |
 | Desteklenen DSVM sürümleri      | Windows, Linux      |
-| Tipik kullanımları      |  R geliştirme     |
-| Kullanma ve çalıştırma      | Linux üzerinde masaüstü kısayolu (`C:\Program Files\RStudio\bin\rstudio.exe`) Windows, masaüstü kısayolu (`/usr/bin/rstudio`)      |
-| DSVM 'deki ilgili araçlar      |   Visual Studio, Visual Studio Code, Juno      |
+| Tipik kullanımlar      |  R geliştirme     |
+| Nasıl kullanılır ve çalıştırın      | Masaüstü kısayolu`C:\Program Files\RStudio\bin\rstudio.exe`( ) Windows'da, masaüstü kısayolu (`/usr/bin/rstudio`) Linux'ta      |
+| DSVM ile ilgili araçlar      |   Görsel Stüdyo, Görsel Stüdyo Kodu, Juno      |
 
-## <a name="rstudio-server"></a>RStudio sunucusu
+## <a name="rstudio-server"></a>RStudio Server
 
 |    |           |
 | ------------- | ------------- |
-| Nedir?   | R için istemci IDE dili   |
-| Nedir?   | R için Web tabanlı IDE    |
+| Bu nedir?   | R dili için Istemci IDE   |
+| Bu nedir?   | R için Web tabanlı IDE    |
 | Desteklenen DSVM sürümleri      | Linux      |
-| Tipik kullanımları      |  R geliştirme     |
-| Kullanma ve çalıştırma      | Hizmeti _systemctl rstudio-Server_' ı etkinleştirerek etkinleştirin ve ardından hizmeti _systemctl start rstudio-Server_ile başlatın. Ardından, http:\//Your-VM-IP: 8787 konumundaki RStudio sunucusunda oturum açın.       |
-| DSVM 'deki ilgili araçlar      |   Visual Studio, Visual Studio Code, RStudio Masaüstü      |
+| Tipik kullanımlar      |  R geliştirme     |
+| Nasıl kullanılır ve çalıştırın      | Systemctl ile hizmeti _etkinleştirin rstudio-server etkinleştirin_ve sonra _systemctl start rstudio-server_ile hizmeti başlatın. Sonra http:\//your-vm-ip:8787 adresinden RStudio Server'da oturum açın.       |
+| DSVM ile ilgili araçlar      |   Visual Studio, Visual Studio Code, RStudio Masaüstü      |
 
 ## <a name="juno"></a>Juno 
 
 |    |           |
 | ------------- | ------------- |
-| Nedir?   | Julia diline için IDE istemcisi   |
+| Bu nedir?   | Julia dili için İstemci IDE   |
 | Desteklenen DSVM sürümleri      | Windows, Linux      |
-| Tipik kullanımları      |  Julia geliştirme     |
-| Kullanma ve çalıştırma      | Linux üzerinde masaüstü kısayolu (`C:\JuliaPro-0.5.1.1\Juno.bat`) Windows, masaüstü kısayolu (`/opt/JuliaPro-VERSION/Juno`)      |
-| DSVM 'deki ilgili araçlar      |   Visual Studio, Visual Studio Code, RStudio      |
+| Tipik kullanımlar      |  Julia geliştirme     |
+| Nasıl kullanılır ve çalıştırın      | Masaüstü kısayolu`C:\JuliaPro-0.5.1.1\Juno.bat`( ) Windows'da, masaüstü kısayolu (`/opt/JuliaPro-VERSION/Juno`) Linux'ta      |
+| DSVM ile ilgili araçlar      |   Visual Studio, Visual Studio Code, RStudio      |
 
 ## <a name="pycharm"></a>Pycharm
 
 |    |           |
 | ------------- | ------------- |
-| Nedir?   | Python dil için IDE istemcisi    |
-| Desteklenen DSVM sürümleri      | Windows 2019 (Önizleme), Linux      |
-| Tipik kullanımları      |  Python geliştirme     |
-| Kullanma ve çalıştırma      | Windows üzerinde masaüstü kısayolu (`C:\Program Files\tk`). Linux üzerinde masaüstü kısayolu (`/usr/bin/pycharm`)      |
-| DSVM 'deki ilgili araçlar      |   Visual Studio, Visual Studio Code, RStudio      |
+| Bu nedir?   | Python dili için Istemci IDE    |
+| Desteklenen DSVM sürümleri      | Windows 2019, Linux      |
+| Tipik kullanımlar      |  Python geliştirme     |
+| Nasıl kullanılır ve çalıştırın      | Windows'da`C:\Program Files\tk`masaüstü kısayolu ( ) Linux'ta`/usr/bin/pycharm`masaüstü kısayolu ( )      |
+| DSVM ile ilgili araçlar      |   Visual Studio, Visual Studio Code, RStudio      |

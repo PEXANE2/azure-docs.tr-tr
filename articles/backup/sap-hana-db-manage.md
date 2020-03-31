@@ -1,190 +1,237 @@
 ---
-title: Azure VM 'lerinde yedeklenen SAP HANA veritabanlarını yönetme
-description: Bu makalede, Azure sanal makinelerinde çalışan SAP HANA veritabanlarını yönetmek ve izlemek için ortak görevler hakkında bilgi edinin.
+title: Azure VM'lerde yedeklenmiş SAP HANA veritabanlarını yönetme
+description: Bu makalede, Azure sanal makinelerinde çalışan SAP HANA veritabanlarını yönetmek ve izlemek için ortak görevleri öğrenin.
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: a9462f8608fc5ae35255ac321a0742b3f1834fde
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 89fd7f23163d301817e767771257d9bc6f4ed526
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79252408"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79480071"
 ---
 # <a name="manage-and-monitor-backed-up-sap-hana-databases"></a>Yedeklenen SAP HANA veritabanlarını yönetme ve izleme
 
-Bu makalede, bir Azure sanal makinesinde (VM) çalışan ve [Azure Backup](https://docs.microsoft.com/azure/backup/backup-overview) hizmeti tarafından Azure Backup kurtarma hizmetleri kasasına yedeklenen SAP HANA veritabanlarını yönetmek ve izlemek için kullanılan ortak görevler açıklanmaktadır. İşlerin ve uyarıların nasıl izleneceğini, isteğe bağlı bir yedekleme tetiklemeyi, ilkeleri düzenlemenizi, veritabanı korumasını durdurup sürdürmeyi ve bir VM 'nin yedeklerden kaydını nasıl sileceğinizi öğreneceksiniz.
+Bu makalede, Bir Azure sanal makinede (VM) çalışan ve [Azure Yedekleme](https://docs.microsoft.com/azure/backup/backup-overview) hizmeti tarafından Azure Yedekleme Kurtarma Hizmetleri kasasına yedeklenen SAP HANA veritabanlarını yönetmek ve izlemek için kullanılan yaygın görevler açıklanmaktadır. İşleri ve uyarıları izlemeyi, isteğe bağlı yedeklemeyi tetiklemeyi, ilkeleri nasıl edineceğinizi, veritabanı korumasını durdurmayı ve devam ettirmeyi ve yedeklemelerden bir VM'yi silmeyi öğreneceksiniz.
 
-Yedeklemeleri henüz SAP HANA veritabanları için yapılandırmadıysanız, bkz. [Azure VM 'lerinde SAP HANA veritabanlarını yedekleme](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database).
+SAP HANA veritabanlarınız için henüz yedekleme yapılandırmadıysanız, [Azure VM'lerinde SAP HANA veritabanlarını](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database)yedekle'ye bakın.
 
-## <a name="monitor-manual-backup-jobs-in-the-portal"></a>Portalda el ile yedekleme işlerini izleme
+## <a name="monitor-manual-backup-jobs-in-the-portal"></a>Portaldaki manuel yedekleme işlerini izleme
 
-Azure Backup Azure portal tüm el ile tetiklenen işleri, **yedekleme işleri** bölümünde gösterir.
+Azure Yedekleme, Azure portalındaki **Yedekleme işleri** bölümünde el ile tetiklenen tüm işleri gösterir.
 
-![Yedekleme işleri bölümü](./media/sap-hana-db-manage/backup-jobs.png)
+![Yedek işler bölümü](./media/sap-hana-db-manage/backup-jobs.png)
 
-Bu portalda gördüğünüz işler veritabanı bulma ve kaydetme, yedekleme ve geri yükleme işlemlerini içerir. Bu bölümde günlük yedeklemeleri dahil olmak üzere zamanlanmış işler gösterilmez. SAP HANA yerel istemcilerden el ile tetiklenen yedeklemeler (Studio/kokpit/DBA kokpiti) da burada gösterilmez.
+Bu portalda gördüğünüz işler veritabanı bulma ve kaydetme ve yedekleme ve geri yükleme işlemleri içerir. Günlük yedeklemeleri de dahil olmak üzere zamanlanmış işler bu bölümde gösterilmez. SAP HANA yerel istemcilerinden (Studio/ Cockpit/ DBA Cockpit) elle tetiklenen yedeklemeler de burada görünmüyor.
 
-![Yedekleme işleri listesi](./media/sap-hana-db-manage/backup-jobs-list.png)
+![Yedek işler listesi](./media/sap-hana-db-manage/backup-jobs-list.png)
 
-İzleme hakkında daha fazla bilgi edinmek için [Azure izleyici kullanarak](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-use-azuremonitor)Azure Portal ve izleme ' [de izleme](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-built-in-monitor) ' ye gidin.
+İzleme hakkında daha fazla bilgi edinmek için [Azure portalında İzleme](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-built-in-monitor) ve [Azure Monitörünü kullanarak İzleme'ye](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-use-azuremonitor)gidin.
 
-## <a name="view-backup-alerts"></a>Yedekleme uyarılarını görüntüle
+## <a name="view-backup-alerts"></a>Yedekleme uyarılarını görüntüleme
 
-Uyarılar SAP HANA veritabanlarının yedeklerini izlemenin kolay bir yöntemidir. Uyarılar, bir yedeklemenin oluşturduğu çok sayıda olayın kaybedilmesi gerekmeden en iyi şekilde ilgilendiğiniz olaylara odaklanmaya yardımcı olur. Azure Backup, uyarıları ayarlamanıza olanak sağlar ve aşağıdaki gibi izlenebilir:
+Uyarılar, SAP HANA veritabanlarının yedeklemelerini izlemenin kolay bir yoluolur. Uyarılar, yedeklemenin ürettiği çok sayıda olayda kaybolmadan en çok değer verdiğiniz olaylara odaklanmanıza yardımcı olur. Azure Yedekleme uyarıları ayarlamanızı sağlar ve bunlar aşağıdaki gibi izlenebilir:
 
-* [Azure Portal](https://portal.azure.com/) oturum açın.
-* Kasa panosunda **yedekleme uyarıları**' nı seçin.
+* [Azure portalında](https://portal.azure.com/)oturum açın.
+* Kasa panosunda **Yedek Uyarıları'nı**seçin.
 
   ![Kasa panosunda yedekleme uyarıları](./media/sap-hana-db-manage/backup-alerts-dashboard.png)
 
-* Uyarıları görebileceksiniz:
+* Uyarıları görebilirsiniz:
 
   ![Yedekleme uyarıları listesi](./media/sap-hana-db-manage/backup-alerts-list.png)
 
-* Daha fazla ayrıntı görmek için uyarılara tıklayın:
+* Daha fazla ayrıntı görmek için uyarıları tıklayın:
 
   ![Uyarı ayrıntıları](./media/sap-hana-db-manage/alert-details.png)
 
-Bugün Azure Backup, e-posta ile uyarıların gönderilmesini sağlar. Bu uyarılar şunlardır:
+Azure Yedekleme bugün e-posta yoluyla uyarı gönderilmesine izin verir. Bu uyarılar şunlardır:
 
-* Tüm yedekleme hatalarıyla ilgili olarak tetiklendi.
-* Veritabanı düzeyinde hata koduna göre birleştirildi.
-* Yalnızca bir veritabanının ilk yedekleme hatası için gönderilir.
+* Tüm yedekleme hataları için tetiklenir.
+* Hata kodu ile veritabanı düzeyinde konsolide.
+* Yalnızca bir veritabanının ilk yedekleme hatası için gönderildi.
 
-İzleme hakkında daha fazla bilgi edinmek için [Azure izleyici 'yi kullanarak](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-use-azuremonitor)Azure Portal ve izleme ' [de izleme](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-built-in-monitor) ' ye gidin.
+Toİzleme hakkında daha fazla bilgi edinmek için [Azure portalında İzleme](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-built-in-monitor) ve [Azure Monitörünü kullanarak İzleme'ye](https://docs.microsoft.com/azure/backup/backup-azure-monitoring-use-azuremonitor)gidin.
 
-## <a name="management-operations"></a>Yönetim Işlemleri
+## <a name="management-operations"></a>Yönetim İşlemleri
 
-Azure Backup, yedeklenen bir SAP HANA veritabanının yönetimini desteklediği çok sayıda yönetim işlemi ile kolay hale getirir. Bu işlemler aşağıdaki bölümlerde daha ayrıntılı bir şekilde ele alınmıştır.
+Azure Yedekleme, desteklediği çok sayıda yönetim işlemiyle yedeklenmiş SAP HANA veritabanının yönetimini kolaylaştırır. Bu işlemler aşağıdaki bölümlerde daha ayrıntılı olarak ele alınmıştır.
 
-### <a name="run-an-ad-hoc-backup"></a>Geçici yedekleme çalıştırma
+### <a name="run-an-on-demand-backup"></a>İsteğe bağlı yedekleme çalıştırma
 
-Yedeklemeler, ilke zamanlamasına uygun olarak çalışır. İsteğe bağlı bir yedeklemeyi aşağıdaki gibi çalıştırabilirsiniz:
+Yedeklemeler ilke zamanlamasına uygun olarak çalışır. İsteğe bağlı yedeklemeyi aşağıdaki gibi çalıştırabilirsiniz:
 
-1. Kasa menüsünde, **yedekleme öğeleri**' ne tıklayın.
-2. **Yedekleme öğeleri**' nde, SAP HANA VERITABANıNı çalıştıran VM 'yi seçin ve **Şimdi Yedekle**' ye tıklayın.
-3. **Şimdi Yedekle**' de, kurtarma noktasının tutulacağı son günü seçmek için Takvim denetimini kullanın. Daha sonra, **Tamam**'a tıklayın.
-4. Portal bildirimlerini izleyin. İş ilerlemesini kasa panosunda izleyebilirsiniz > **yedekleme işleri** > **devam**ediyor. Veritabanınızın boyutuna bağlı olarak, ilk yedeklemenin oluşturulması biraz zaman alabilir.
+1. Kasa menüsünde Yedek **öğeleri**tıklatın.
+2. **Yedekleme Öğeleri'nde**SAP HANA veritabanını çalıştıran VM'yi seçin ve şimdi **Yedekleme'yi**tıklatın.
+3. **Yedekleme Şimdi,** kurtarma noktası nın korunması gereken son günü seçmek için takvim denetimini kullanın. Ardından **Tamam**'a tıklayın.
+4. Portal bildirimlerini izleyin. Devam**Eden** **Yedekleme İşleri** > > kasa panosundaki iş ilerlemesini izleyebilirsiniz. Veritabanınızın boyutuna bağlı olarak, ilk yedeklemeyi oluşturmak biraz zaman alabilir.
 
-### <a name="run-sap-hana-native-client-backup-on-a-database-with-azure-backup-enabled"></a>Azure Backup etkin olan bir veritabanında SAP HANA yerel istemci yedeklemesi çalıştırma
+### <a name="hana-native-client-integration"></a>HANA yerel istemci entegrasyonu
 
-Azure Backup yedeklenmekte olan bir veritabanının yerel yedeklemesini (HANA Studio/kokpit kullanarak) almak istiyorsanız aşağıdakileri yapın:
+Şimdi, HANA yerel istemcilerinden herhangi birinden tetiklenen isteğe bağlı tam yedeklemeler **Yedekleme Öğeleri** sayfasında tam yedekleme olarak gösterecektir.
 
-1. Veritabanının tamamlaması için herhangi bir tam veya günlük yedeklemesi bekleyin. SAP HANA Studio/Kokpit içindeki durumu denetleyin.
-2. Günlük yedeklemelerini devre dışı bırakın ve ilgili veritabanı için yedekleme kataloğunu dosya sistemine ayarlayın.
-3. Bunu yapmak için **SystemDB** > **yapılandırması** ' na çift tıklayın > veritabanı > **filtresi (günlük)** **seçeneğini belirleyin** .
-4. **Enable_auto_log_backup** **Hayır**olarak ayarlayın.
-5. **Log_backup_using_backint** **false**olarak ayarlayın.
-6. Veritabanının isteğe bağlı tam yedeklemesini yapın.
-7. Tam yedekleme ve Katalog yedeklemesinin bitmesini bekleyin.
-8. Önceki ayarları Azure için geri döndürür:
-   * **Enable_auto_log_backup** **Evet**olarak ayarlayın.
-   * **Log_backup_using_backint** **true**olarak ayarlayın.
+![Son yedeklemeler çalışır](./media/sap-hana-db-manage/last-backups.png)
 
-### <a name="change-policy"></a>İlkeyi Değiştir
+Bu geçici tam yedeklemeler de geri yükleme noktaları listesinde gösterecektir.
 
-SAP HANA yedekleme öğesi için temel olan ilkeyi değiştirebilirsiniz.
+![Geri yükleme noktaları listesi](./media/sap-hana-db-manage/list-restore-points.png)
 
-* Kasa panosunda **yedekleme öğeleri**' ne gidin:
+### <a name="run-sap-hana-native-client-backup-on-a-database-with-azure-backup-enabled"></a>Azure yedekleme etkinleştirilmiş bir veritabanında SAP HANA yerel istemci yedeklemeçalıştırın
 
-  ![Yedekleme öğelerini seçin](./media/sap-hana-db-manage/backup-items.png)
+Azure Yedekleme ile yedeklenen bir veritabanının yerel bir yedeklemesini (HANA Studio / Kokpit kullanarak) almak istiyorsanız, aşağıdakileri yapın:
 
-* **Azure VM 'de SAP HANA** seçin
+1. Veritabanının tamamlanması için tam veya günlük yedeklemelerini bekleyin. SAP HANA Studio/ Cockpit'deki durumu kontrol edin.
+2. Günlük yedeklemelerini devre dışı bırak ve yedekleme kataloğunu ilgili veritabanı için dosya sistemine ayarlayın.
+3. Bunu yapmak için **systemdb** > **Configuration** > **Select Database** > **Filtresi (Log)** çift tıklayın.
+4. **enable_auto_log_backup'ı** **Hayır**olarak ayarlayın.
+5. **False** **için log_backup_using_backint** ayarlayın.
+6. Veritabanının isteğe bağlı tam yedeklemesini alın.
+7. Tam yedekleme ve katalog yedeklemesinin tamamlanmasını bekleyin.
+8. Önceki ayarları Azure ayarlarına geri döndürün:
+   * **enable_auto_log_backup** **Evet**olarak ayarlayın.
+   * **log_backup_using_backint** **True**olarak ayarlayın.
 
-  ![Azure VM 'de SAP HANA seçin](./media/sap-hana-db-manage/sap-hana-in-azure-vm.png)
+### <a name="change-policy"></a>İlkeyi değiştir
+
+SAP HANA yedekleme öğesinin temel ilkesini değiştirebilirsiniz.
+
+* Kasa panosunda, **Yedekleme öğelerine**gidin:
+
+  ![Yedek öğeleri seçin](./media/sap-hana-db-manage/backup-items.png)
+
+* **Azure VM'de SAP HANA'yı** seçin
+
+  ![Azure VM'de SAP HANA'yı seçin](./media/sap-hana-db-manage/sap-hana-in-azure-vm.png)
 
 * Temel ilkesini değiştirmek istediğiniz yedekleme öğesini seçin
-* Mevcut yedekleme ilkesine tıklayın
+* Varolan Yedekleme ilkesini tıklatın
 
-  ![Mevcut yedekleme ilkesini seçin](./media/sap-hana-db-manage/existing-backup-policy.png)
+  ![Varolan yedekleme ilkesini seçin](./media/sap-hana-db-manage/existing-backup-policy.png)
 
-* Listeden seçim yaparak ilkeyi değiştirin. Gerekirse [Yeni bir yedekleme Ilkesi oluşturun](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database#create-a-backup-policy) .
+* Listeden seçerek ilkeyi değiştirin. Gerekirse [yeni bir yedekleme ilkesi oluşturun.](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database#create-a-backup-policy)
 
-  ![Açılan listeden ilke ' yi seçin](./media/sap-hana-db-manage/choose-backup-policy.png)
+  ![Açılan listeden ilke seçin](./media/sap-hana-db-manage/choose-backup-policy.png)
 
-* Değişiklikleri Kaydet
+* Değişiklikleri kaydetme
 
-  ![Değişiklikleri Kaydet](./media/sap-hana-db-manage/save-changes.png)
+  ![Değişiklikleri kaydetme](./media/sap-hana-db-manage/save-changes.png)
 
-* İlke değişikliği, ilişkili tüm yedekleme öğelerini etkiler ve ilgili **yapılandırma koruma** işlerini tetikler.
+* İlke değişikliği, ilişkili tüm Yedekleme Öğeleri'ni etkileyecek ve ilgili **yapılandırma koruma** işlerini tetikler.
 
 >[!NOTE]
-> Saklama döneminde yapılan herhangi bir değişiklik, yeni olanlar da içinde olmak üzere daha eski kurtarma noktalarına daha geriye dönük olarak uygulanır.
+> Bekletme süresindeki herhangi bir değişiklik, yenilerinin yanı sıra tüm eski kurtarma noktalarına geriye dönük olarak uygulanacaktır.
 >
-> Artımlı yedekleme ilkeleri SAP HANA veritabanları için kullanılamaz. Artımlı yedekleme şu anda bu veritabanları için desteklenmiyor.
+> Sap HANA veritabanları için artımlı yedekleme ilkeleri kullanılamaz. Artımlı yedekleme şu anda bu veritabanları için desteklenmez.
 
-### <a name="stop-protection-for-an-sap-hana-database"></a>SAP HANA veritabanı korumasını durdurma
+### <a name="modify-policy"></a>İlkeyi Değiştir
 
-SAP HANA veritabanının korunmasını birkaç yolla durdurabilirsiniz:
+Yedekleme türlerini, frekansları ve bekletme aralığını değiştirmek için ilkeyi değiştirin.
+
+>[!NOTE]
+>Bekletme dönemindeki herhangi bir değişiklik, yenilerine ek olarak tüm eski kurtarma noktalarına geriye dönük olarak uygulanır.
+
+1. Kasa panosunda, **Yedekleme İlkeleri > Yönet'e** gidin ve yönetmek istediğiniz ilkeyi seçin.
+
+   ![Dolandırılmak için ilkeyi seçin](./media/sap-hana-db-manage/manage-backup-policies.png)
+
+1. **Değiştir'i**seçin.
+
+   ![Değiştir'i seçin](./media/sap-hana-db-manage/modify-policy.png)
+
+1. Yedekleme türlerinin sıklığını seçin.
+
+   ![Yedekleme frekansı seçin](./media/sap-hana-db-manage/choose-frequency.png)
+
+İlke değişikliği, ilişkili tüm yedekleme öğelerini etkileyecek ve ilgili **yapılandırma koruma** işlerini tetikler.
+
+### <a name="inconsistent-policy"></a>Tutarsız ilke
+
+Bazen bir değişiklik ilkesi işlemi bazı yedekleme öğeleri için **tutarsız** bir ilke sürümüne yol açabilir. Bu, bir değişiklik ilkesi işlemi tetiklendikten sonra ilgili **yapılandırma koruma** işi yedekleme öğesi için başarısız olduğunda olur. Yedekleme öğesi görünümünde aşağıdaki gibi görünür:
+
+![Tutarsız ilke](./media/sap-hana-db-manage/inconsistent-policy.png)
+
+Etkilenen tüm öğelerin ilke sürümünü tek bir tıklamayla düzeltebilirsiniz:
+
+![İlke sürümünü düzeltme](./media/sap-hana-db-manage/fix-policy-version.png)
+
+### <a name="stop-protection-for-an-sap-hana-database"></a>SAP HANA veritabanı için korumayı durdurma
+
+SAP HANA veritabanını birkaç şekilde korumayı durdurabilirsiniz:
 
 * Gelecekteki tüm yedekleme işlerini durdurun ve tüm kurtarma noktalarını silin.
-* Gelecekteki tüm yedekleme işlerini durdurun ve kurtarma noktalarını bozulmadan bırakın.
+* Gelecekteki tüm yedekleme işlerini durdurun ve kurtarma noktalarını sağlam bırakın.
 
-Kurtarma noktalarından ayrıldığınızda bu ayrıntıları göz önünde bulundurun:
+Kurtarma noktalarını bırakmayı seçerseniz, şu ayrıntıları aklınızda bulundurun:
 
-* Tüm kurtarma noktaları süresiz olarak kalır, tüm ayıklama, verileri sakla ile korumayı durdurma sırasında durdurulur.
-* Korumalı örnek ve tüketilen depolama alanı için ücretlendirilirsiniz. Daha fazla bilgi için bkz. [Azure Backup fiyatlandırması](https://azure.microsoft.com/pricing/details/backup/).
+* Tüm kurtarma noktaları sonsuza kadar bozulmadan kalacak, tüm budama veri korumak ile durdurma koruma duracaktır.
+* Korunan örnek ve tüketilen depolama için ücretlendirilirsiniz. Daha fazla bilgi için Azure [Yedekleme fiyatlandırması'na](https://azure.microsoft.com/pricing/details/backup/)bakın.
 * Yedeklemeleri durdurmadan bir veri kaynağını silerseniz, yeni yedeklemeler başarısız olur.
 
-Bir veritabanının korumasını durdurmak için:
+Veritabanı nın korumasını durdurmak için:
 
-* Kasa panosunda **yedekleme öğeleri**' ni seçin.
-* **Yedekleme yönetimi türü**altında **Azure VM 'de SAP HANA** ' yi seçin.
+* Kasa panosunda **Yedek Öğeler'i**seçin.
+* **Yedekleme Yönetim Türü**altında Azure **VM'de SAP HANA'yı** seçin
 
-  ![Azure VM 'de SAP HANA seçin](./media/sap-hana-db-manage/sap-hana-azure-vm.png)
+  ![Azure VM'de SAP HANA'yı seçin](./media/sap-hana-db-manage/sap-hana-azure-vm.png)
 
-* Korumasını durdurmak istediğiniz veritabanını seçin:
+* Korumayı durdurmak istediğiniz veritabanını seçin:
 
   ![Korumayı durdurmak için veritabanını seçin](./media/sap-hana-db-manage/select-database.png)
 
-* Veritabanı menüsünde **Yedeklemeyi Durdur**' u seçin.
+* Veritabanı menüsünde **yedeklemeyi durdur'u**seçin.
 
-  ![Yedeklemeyi Durdur ' u seçin](./media/sap-hana-db-manage/stop-backup.png)
+  ![Yedeklemeyi durdur'u seçin](./media/sap-hana-db-manage/stop-backup.png)
 
-* **Yedeklemeyi Durdur** menüsünde, verileri tutmayı veya silmeyi seçin. İsterseniz, bir neden ve açıklama belirtin.
+* **Yedeklemeyi Durdur** menüsünde, verileri saklayıp saklamayacağınızveya silmeyi seçin. İstersen, bir neden ve yorum sağlayın.
 
-  ![Veri tutmayı veya silmeyi seçin](./media/sap-hana-db-manage/retain-backup-data.png)
+  ![Verileri tutma veya silme seçeneğini belirleyin](./media/sap-hana-db-manage/retain-backup-data.png)
 
-* **Yedeklemeyi Durdur**' u seçin.
+* **Yedeklemeyi Durdur'u**seçin.
 
-### <a name="resume-protection-for-an-sap-hana-database"></a>SAP HANA veritabanı için korumayı sürdürür
+### <a name="resume-protection-for-an-sap-hana-database"></a>SAP HANA veritabanı için özgeçmiş koruması
 
-SAP HANA veritabanı için korumayı durdurduğunuzda, **yedekleme verilerini sakla** seçeneğini belirlerseniz, daha sonra korumayı devam ettirebilirsiniz. Yedeklenen verileri korumazsanız korumaya devam edemeyeceksiniz.
+SAP HANA veritabanının korumasını durdurduğunuzda, **Yedekleme Verilerini Koru** seçeneğini seçerseniz, daha sonra korumaya devam edebilirsiniz. Yedeklenen verileri saklamazsanız, korumaya devam edemezsin.
 
-Bir SAP HANA veritabanı korumasını sürdürmesini sağlamak için:
+SAP HANA veritabanı için korumayı sürdürmek için:
 
-* Yedekleme öğesini açın ve yedeklemeyi yeniden **başlatma**' yı seçin.
+* Yedekleme öğesini açın ve **Yedeklemeye Devam'ı**seçin.
 
-   ![Yedeklemeyi sürdürür ' ı seçin](./media/sap-hana-db-manage/resume-backup.png)
+   ![Devam yedeklemeyi seçin](./media/sap-hana-db-manage/resume-backup.png)
 
-* **Yedekleme ilkesi** menüsünde bir ilke seçin ve ardından **Kaydet**' i seçin.
+* Yedekleme **ilkesi** menüsünde bir ilke seçin ve sonra **Kaydet'i**seçin.
 
-### <a name="upgrading-from-sap-hana-10-to-20"></a>SAP HANA 1,0 ' den 2,0 ' ye yükseltme
+### <a name="upgrading-from-sap-hana-10-to-20"></a>SAP HANA 1.0'dan 2.0'a yükseltme
 
-[SAP HANA 1,0 ' den 2,0 ' e yükselttikten sonra](backup-azure-sap-hana-database-troubleshoot.md#upgrading-from-sap-hana-10-to-20)bir SAP HANA veritabanı için yedeklemeye nasıl devam edeceğinizi öğrenin.
+[SAP HANA 1.0'dan 2.0'a yükselttikten sonra](backup-azure-sap-hana-database-troubleshoot.md#upgrading-from-sap-hana-10-to-20)SAP HANA veritabanı için yedeklemeye nasıl devam edeceğiz öğrenin.
 
 ### <a name="upgrading-without-a-sid-change"></a>SID değişikliği olmadan yükseltme
 
-[SID, yükseltmeden sonra değişmemiş](backup-azure-sap-hana-database-troubleshoot.md#upgrading-without-an-sid-change)bir SAP HANA veritabanının yedeğine nasıl devam edeceğinizi öğrenin.
+[SID'si yükseltmeden sonra değişmemiş](backup-azure-sap-hana-database-troubleshoot.md#upgrading-without-an-sid-change)bir SAP HANA veritabanının yedeklemesine nasıl devam edeceğiz öğrenin.
 
-### <a name="unregister-an-sap-hana-database"></a>SAP HANA veritabanının kaydını silme
+### <a name="unregister-an-sap-hana-instance"></a>SAP HANA örneğinin kaydını silme
 
-Korumayı devre dışı bıraktıktan sonra, kasayı silmeden önce bir SAP HANA örneğinin kaydını silin:
+Korumayı devre dışı düşürdükten sonra ancak kasayı silmeden önce bir SAP HANA örneğini kayıt dışı edin:
 
-* Kasa panosunda, **Yönet**altında, **Yedekleme altyapısı**' nı seçin.
+* Kasa panosunda, **Yönet**altında Yedek **Altyapı'yı**seçin.
 
-   ![Yedekleme altyapısını seçin](./media/sap-hana-db-manage/backup-infrastructure.png)
+   ![Yedekleme Altyapıseçin](./media/sap-hana-db-manage/backup-infrastructure.png)
 
-* **Azure VM 'de Iş yükü** olarak **yedekleme yönetimi türünü** seçin
+* **Azure VM'de İş Yükü** olarak Yedekleme Yönetimi **türünü** seçin
 
-   ![Azure VM 'de Iş yükü olarak yedekleme yönetimi türünü seçin](./media/sap-hana-db-manage/backup-management-type.png)
+   ![Azure VM'de İş Yükü olarak Yedekleme Yönetimi türünü seçin](./media/sap-hana-db-manage/backup-management-type.png)
 
-* **Korumalı sunucular**' da, silmek için örneği seçin. Kasayı silmek için tüm sunucuların/örneklerin kaydını silmeniz gerekir.
+* **Korumalı Sunucularda,** kaydını kısımak için örneği seçin. Kasayı silmek için tüm sunucuların/örneklerin kaydını silmeniz gerekir.
 
-* Korunan örneğe sağ tıklayıp **kayıt kaldır**' ı seçin.
+* Korumalı örneği sağ tıklatın ve **Kayıt Dışı'yı**seçin.
 
-   ![Kayıt silmeyi Seç](./media/sap-hana-db-manage/unregister.png)
+   ![Kayıt dışı yı seçin](./media/sap-hana-db-manage/unregister.png)
+
+### <a name="re-register-extension-on-the-sap-hana-server-vm"></a>SAP HANA sunucusu VM'de uzantıyı yeniden kaydedin
+
+Bazen VM'deki iş yükü uzantısı şu veya bu nedenle etkilenebilir. Bu gibi durumlarda, VM'de tetiklenen tüm işlemler başarısız olmaya başlar. Daha sonra VM'deki uzantıyı yeniden kaydetmeniz gerekebilir. Yeniden kayıt işlemi, işlemlerin devam etmesi için VM'deki iş yükü yedekleme uzantısını yeniden yükler.
+
+Bu seçeneği dikkatli kullanın: zaten sağlıklı bir uzantıya sahip bir VM'de tetiklendiğinde, bu işlem uzantınyeniden başlatılmasına neden olur. Bu, devam eden tüm işlerin başarısız lığa neden olabilir. Yeniden kaydetme işlemini tetiklemeden önce [belirtilerden](backup-azure-sap-hana-database-troubleshoot.md#re-registration-failures) birini veya birkaçını kontrol edin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [SAP HANA veritabanlarını yedeklerken sık karşılaşılan sorunları gidermeye nasıl sorun](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database-troubleshoot) alabileceğinizi öğrenin.
+* [SAP HANA veritabanlarını yedeklerken sık karşılaşılan sorunları](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database-troubleshoot) nasıl gidereceklerini öğrenin.

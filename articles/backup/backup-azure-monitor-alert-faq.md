@@ -1,86 +1,87 @@
 ---
-title: Uyarı ve rapor izleme hakkında SSS
-description: Bu makalede, Azure Backup Izleme uyarısı ve rapor Azure Backup hakkında sık sorulan soruların yanıtlarını bulun.
+title: İzleme Uyarısı ve Raporlar SSS
+description: Bu makalede, Azure Yedekleme İzleme Uyarısı ve Azure Yedekleme raporlarıyla ilgili sık sorulan soruların yanıtlarını keşfedin.
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 07/08/2019
 ms.openlocfilehash: f5be97458ba658f315c31ae34e540842b64e3ec4
-ms.sourcegitcommit: 4f6a7a2572723b0405a21fea0894d34f9d5b8e12
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/04/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76989578"
 ---
-# <a name="azure-backup-monitoring-alert---faq"></a>Azure Backup Izleme uyarısı-SSS
+# <a name="azure-backup-monitoring-alert---faq"></a>Azure Yedekleme İzleme Uyarısı - SSS
 
-Bu makalede Azure Backup izleme ve raporlama hakkında sık sorulan sorular yanıtlanmaktadır.
+Bu makalede, Azure Yedekleme izleme ve raporlama ile ilgili sık sorulan soruları yanıtlar.
 
 ## <a name="configure-azure-backup-reports"></a>Azure Backup raporlarını yapılandırma
 
-### <a name="how-do-i-check-if-reporting-data-has-started-flowing-into-a-log-analytics-la-workspace"></a>Nasıl yaparım? rapor verilerinin bir Log Analytics (LA) çalışma alanına aktarılmaya başlayıp başlamadığına bakın.
+### <a name="how-do-i-check-if-reporting-data-has-started-flowing-into-a-log-analytics-la-workspace"></a>Raporlama verilerinin Bir Günlük Analizi (LA) Çalışma Alanına akmaya başları olup olmadığını nasıl kontrol edebilirim?
 
-Yapılandırdığınız LA çalışma alanına gidin, **Günlükler** menü öğesine gidin ve sorgu CoreAzureBackup ' ı çalıştırın | 1 yapın. Döndürülmekte olan bir kayıt görürseniz, verilerin çalışma alanına akışını başlatan anlamına gelir. İlk veri gönderme, 24 saate kadar sürebilir.
+Yapılandırdığınız LA Çalışma Alanına gidin, **Günlükler** menü öğesine gidin ve CoreAzureBackup sorgusunu çalıştırın | almak 1. Döndürülen bir kaydı görürseniz, bu verilerin çalışma alanına akmaya başladığı anlamına gelir. İlk veri itme 24 saat kadar sürebilir.
 
-### <a name="what-is-the-frequency-of-data-push-to-an-la-workspace"></a>Bir LA çalışma alanına veri gönderme sıklığı nedir?
+### <a name="what-is-the-frequency-of-data-push-to-an-la-workspace"></a>LA Çalışma alanına yapılan veri itme sıklığı nedir?
 
-Kasadaki Tanılama verileri, bazı gecikmeye sahip Log Analytics çalışma alanına potılmış olur. Her olay, kurtarma hizmetleri kasasından gönderdikten sonra, Log Analytics çalışma alanına 20 ila 30 dakika sonra ulaşır. Gecikme hakkında daha fazla ayrıntı aşağıda verilmiştir:
+Kasadaki tanılama verileri Log Analytics çalışma alanına biraz gecikmeyle pompalanır. Her etkinlik, Recovery Services kasasından itildikten 20 ila 30 dakika sonra Log Analytics çalışma alanına gelir. Burada gecikme hakkında daha fazla bilgi vardır:
 
-* Tüm çözümlerde, yedekleme hizmetinin yerleşik uyarıları, oluşturulduktan hemen sonra gönderilir. Bu nedenle, genellikle 20 ila 30 dakika sonra Log Analytics çalışma alanında görünürler.
-* Tüm çözümlerde, isteğe bağlı yedekleme işleri ve geri yükleme işleri, tamamlanır almaz gönderilir.
-* SQL yedekleme dışındaki tüm çözümler için, zamanlanmış yedekleme işleri, tamamlanır almaz gönderilir.
-* SQL yedekleme için, günlük yedeklemeleri 15 dakikada bir gerçekleşebildiğinden, günlükler de dahil olmak üzere tamamlanan tüm zamanlanmış yedekleme işlerinin bilgileri toplu olarak oluşturulur ve her 6 saatte bir gönderilir.
-* Tüm çözümlerde yedekleme öğesi, ilke, kurtarma noktaları, depolama vb. gibi diğer bilgiler günde en az bir kez gönderilir.
-* Yedekleme yapılandırmasındaki (ilkeyi değiştirme veya ilkeyi değiştirme gibi) bir değişiklik, ilgili tüm yedekleme bilgilerinin bir anında gönderimini tetikler.
+* Tüm çözümlerde, yedekleme hizmetinin yerleşik uyarıları oluşturuldukları anda itilir. Bu nedenle genellikle Log Analytics çalışma alanında 20 ila 30 dakika sonra görünürler.
+* Tüm çözümlerde, isteğe bağlı yedekleme işleri ve geri yükleme işleri, işleri bitirir bitirmez itilir.
+* SQL yedeklemesi dışındaki tüm çözümler için, zamanlanmış yedekleme işleri biter bitmez itilir.
+* SQL yedeklemesi için, günlük yedeklemeleri her 15 dakikada bir gerçekleşebildiği için, günlükler de dahil olmak üzere tamamlanan tüm zamanlanmış yedekleme işlerinin bilgileri toplu olarak doldurularak her 6 saatte bir itilir.
+* Tüm çözümlerde, yedekleme öğesi, ilke, kurtarma noktaları, depolama ve benzeri diğer bilgiler günde en az bir kez itilir.
+* Yedekleme yapılandırmasındaki bir değişiklik (ilke değiştirme veya düzenleme ilkesi gibi) ilgili tüm yedekleme bilgilerinin itme sini tetikler.
 
-### <a name="how-long-can-i-retain-reporting-data"></a>Raporlama verilerini ne kadar süreyle saklayabilir?
+### <a name="how-long-can-i-retain-reporting-data"></a>Raporlama verilerini ne kadar tutabilirim?
 
-Bir LA çalışma alanı oluşturduktan sonra, verileri en fazla 2 yıl tutmayı seçebilirsiniz. Varsayılan olarak, bir LA çalışma alanı verileri 31 gün korur.
+Bir LA Çalışma Alanı oluşturduktan sonra, verileri en fazla 2 yıl tutmayı seçebilirsiniz. Varsayılan olarak, BIR LA Çalışma Alanı verileri 31 gün boyunca saklar.
 
-### <a name="will-i-see-all-my-data-in-reports-after-i-configure-the-la-workspace"></a>LA çalışma alanını yapılandırdıktan sonra raporlardaki tüm verilerimi görüyorum mi?
+### <a name="will-i-see-all-my-data-in-reports-after-i-configure-the-la-workspace"></a>LA Çalışma Alanını yapılandırdıktan sonra tüm verilerimi raporlarda görecek miyim?
 
- Tanılama ayarlarını yapılandırdıktan sonra oluşturulan tüm veriler, LA çalışma alanına gönderilir ve raporlarda kullanılabilir. Devam eden işler raporlama için itilmedi. İş bittikten veya başarısız olduktan sonra, raporlara gönderilir.
+ Tanılama ayarlarını yapılandırmadan sonra oluşturulan tüm veriler LA Çalışma Alanına itilir ve raporlarda kullanılabilir. Devam etmekte olan işler raporlama için itilmiş değildir. İş bittikten veya başarısız olduktan sonra raporlara gönderilir.
 
-### <a name="can-i-view-reports-across-vaults-and-subscriptions"></a>Raporları kasaların ve aboneliklerde görüntüleyebilir miyim?
+### <a name="can-i-view-reports-across-vaults-and-subscriptions"></a>Raporları kasalar ve abonelikler arasında görüntüleyebilir miyim?
 
-Evet, raporları kasaların ve aboneliklerde ve bölgeler arasında görüntüleyebilirsiniz. Verileriniz, tek bir LA çalışma alanında ya da bir LA çalışma alanı grubu içinde bulunabilir.
+Evet, raporları kasalar ve aboneliklerin yanı sıra bölgeler arasında da görüntüleyebilirsiniz. Verileriniz tek bir LA Çalışma alanında veya bir grup LA Çalışma Alanında bulunabilir.
 
 ### <a name="can-i-view-reports-across-tenants"></a>Raporları kiracılar arasında görüntüleyebilir miyim?
 
-Müşterilerinizin abonelikleri veya LA çalışma alanlarına temsilci erişimi olan bir [Azure](https://azure.microsoft.com/services/azure-lighthouse/) açık Kullanıcı kullanıyorsanız, tüm kiracılarınızdaki verileri görüntülemek Için Yedekleme raporları ' nı kullanabilirsiniz.
+Müşterilerinizin aboneliklerine veya LA Çalışma Alanlarına yetkili erişimi olan bir [Azure Deniz Feneri](https://azure.microsoft.com/services/azure-lighthouse/) kullanıcısıysanız, tüm kiracılarınızdaki verileri görüntülemek için Yedek Raporlar'ı kullanabilirsiniz.
 
-### <a name="how-long-does-it-take-for-the-azure-backup-agent-job-status-to-reflect-in-the-portal"></a>Azure Backup Aracısı iş durumunun portalda yansıtılması ne kadar sürer?
+### <a name="how-long-does-it-take-for-the-azure-backup-agent-job-status-to-reflect-in-the-portal"></a>Azure yedekleme aracısı iş durumunun portala yansıması ne kadar sürer?
 
-Azure portal, Azure Backup Aracısı iş durumunun yansıtılması 15 dakika kadar sürebilir.
+Azure portalının Azure yedekleme aracısı iş durumunu yansıtması 15 dakika kadar sürebilir.
 
-### <a name="when-a-backup-job-fails-how-long-does-it-take-to-raise-an-alert"></a>Bir yedekleme işi başarısız olduğunda, bir uyarının ne kadar süreceğine?
+### <a name="when-a-backup-job-fails-how-long-does-it-take-to-raise-an-alert"></a>Yedekleme işi başarısız olduğunda uyarı verilmesi ne kadar sürer?
 
-Azure Backup hatasının 20 dakika içinde bir uyarı oluşturulur.
+Azure yedekleme hatasına 20 dakika mesafede bir uyarı yükseltilir.
 
-### <a name="is-there-a-case-where-an-email-wont-be-sent-if-notifications-are-configured"></a>Bildirimler yapılandırılırsa bir e-postanın gönderilmeyeceği bir durum var mı?
+### <a name="is-there-a-case-where-an-email-wont-be-sent-if-notifications-are-configured"></a>Bildirimler yapılandırılırsa e-postanın gönderilmeyeceğinin bir durumu var mı?
 
 Evet. Aşağıdaki durumlarda bildirimler gönderilmez.
 
-* Bildirimler saatlik olarak yapılandırılırsa ve saat içinde bir uyarı oluşturulur ve çözülür
+* Bildirimler saatlik olarak yapılandırılırsa ve bir uyarı yükseltilir ve bir saat içinde çözülürse
 * Bir iş iptal edildiğinde
-* İlk yedekleme işi devam ettiğinden ikinci bir yedekleme işi başarısız olursa
+* Orijinal yedekleme işi devam ettiği için ikinci bir yedekleme işi başarısız olursa
 
 ## <a name="recovery-services-vault"></a>Kurtarma Hizmetleri Kasası
 
-### <a name="how-long-does-it-take-for-the-azure-backup-agent-job-status-to-reflect-in-the-portal"></a>Azure Backup Aracısı iş durumunun portalda yansıtılması ne kadar sürer?
 
-Azure portal, Azure Backup Aracısı iş durumunun yansıtılması 15 dakika kadar sürebilir.
+### <a name="how-long-does-it-take-for-the-azure-backup-agent-job-status-to-reflect-in-the-portal"></a>Azure yedekleme aracısı iş durumunun portala yansıması ne kadar sürer?
 
-### <a name="when-a-backup-job-fails-how-long-does-it-take-to-raise-an-alert"></a>Bir yedekleme işi başarısız olduğunda, bir uyarının ne kadar süreceğine?
+Azure portalının Azure yedekleme aracısı iş durumunu yansıtması 15 dakika kadar sürebilir.
 
-Azure Backup hatasının 20 dakika içinde bir uyarı oluşturulur.
+### <a name="when-a-backup-job-fails-how-long-does-it-take-to-raise-an-alert"></a>Yedekleme işi başarısız olduğunda uyarı verilmesi ne kadar sürer?
 
-### <a name="is-there-a-case-where-an-email-wont-be-sent-if-notifications-are-configured"></a>Bildirimler yapılandırılırsa bir e-postanın gönderilmeyeceği bir durum var mı?
+Azure yedekleme hatasına 20 dakika mesafede bir uyarı yükseltilir.
+
+### <a name="is-there-a-case-where-an-email-wont-be-sent-if-notifications-are-configured"></a>Bildirimler yapılandırılırsa e-postanın gönderilmeyeceğinin bir durumu var mı?
 
 Evet. Aşağıdaki durumlarda bildirimler gönderilmez:
 
-* Bildirimler saatlik olarak yapılandırılırsa ve saat içinde bir uyarı oluşturulur ve çözülür
+* Bildirimler saatlik olarak yapılandırılırsa ve bir uyarı yükseltilir ve bir saat içinde çözülürse
 * Bir iş iptal edildiğinde
-* İlk yedekleme işi devam ettiğinden ikinci bir yedekleme işi başarısız olursa
+* Orijinal yedekleme işi devam ettiği için ikinci bir yedekleme işi başarısız olursa
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

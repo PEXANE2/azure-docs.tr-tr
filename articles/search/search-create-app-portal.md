@@ -1,110 +1,110 @@
 ---
-title: Azure portal bir arama uygulaması oluşturma
+title: Azure portalında arama uygulaması oluşturma
 titleSuffix: Azure Cognitive Search
-description: İşlemsel bir Web uygulaması için HTML sayfaları ve betiği oluşturmak üzere uygulama oluşturma (Önizleme) Sihirbazı 'nı çalıştırın. Sayfa bir arama çubuğu, sonuç alanı, kenar çubuğu ve typeahead desteği içerir.
+description: Operasyonel bir web uygulaması için HTML sayfaları ve komut dosyası oluşturmak için Uygulama Oluştur (önizleme) sihirbazını çalıştırın. Sayfa, bir arama çubuğu, sonuç alanı, kenar çubuğu ve typeahead desteği içerir.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 12/05/2019
-ms.openlocfilehash: 9ed62ea6fdfc0732128ed340cc0bc48481eb73ec
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 03/25/2020
+ms.openlocfilehash: 248ef093601eda7a180a6465ccb97e6fc1c9fe41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841089"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80369720"
 ---
-# <a name="quickstart-create-a-search-app-in-the-portal-azure-cognitive-search"></a>Hızlı başlangıç: portalda bir arama uygulaması oluşturma (Azure Bilişsel Arama)
+# <a name="quickstart-create-a-search-app-in-the-portal-azure-cognitive-search"></a>Hızlı başlangıç: Portalda bir arama uygulaması oluşturma (Azure Bilişsel Arama)
 
-Tarayıcıda çalışan indirilebilir, "localhost" stilinde bir Web uygulaması oluşturmak için portalın **arama uygulaması oluşturma** Sihirbazı 'nı kullanın. Yapılandırmaya bağlı olarak, oluşturulan uygulama, uzak bir dizine canlı bağlantı ile ilk kullanımda çalışır. Varsayılan bir uygulama bir arama çubuğu, sonuç alanı, kenar çubuğu filtreleri ve typeahead desteği içerebilir.
+Bir tarayıcıda çalışan indirilebilir, "localhost" tarzı bir web uygulaması oluşturmak için portalın **Arama oluştur sihirbazını** kullanın. Yapılandırmasına bağlı olarak, oluşturulan uygulama ilk kullanımda çalışır durumda dır ve uzak bir dizine canlı bağlantı sağlar. Varsayılan uygulama bir arama çubuğu, sonuç alanı, kenar çubuğu filtreleri ve typeahead desteği içerebilir.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun. 
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun. 
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-[En son Microsoft Edge sürümüne](https://www.microsoft.com/edge) yükseltmek veya bu hızlı başlangıç için Google 'ın Chrome tarayıcısını kullanmak isteyeceksiniz.
+[Microsoft Edge'in en son sürümüne](https://www.microsoft.com/edge) yükseltin veya bu hızlı başlangıç için Google'ın Chrome tarayıcısını kullanın.
 
-Geçerli aboneliğinizde [bir Azure bilişsel arama hizmeti oluşturun](search-create-service-portal.md) veya [var olan bir hizmeti bulun](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) . Bu hızlı başlangıç için ücretsiz bir hizmet kullanabilirsiniz. 
+[Bir Azure Bilişsel Arama hizmeti oluşturun](search-create-service-portal.md) veya geçerli aboneliğiniz altında [varolan bir hizmeti bulun.](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) Bu hızlı başlangıç için ücretsiz bir hizmet kullanabilirsiniz. 
 
-Uygulamanızın temeli olarak kullanılacak [bir dizin oluşturun](search-create-index-portal.md) . 
+Uygulamanızın temeli olarak kullanmak üzere [bir dizin oluşturun.](search-create-index-portal.md) 
 
-Bu hızlı başlangıç, küçük resim görüntüleri içerdiğinden, yerleşik gerçek emlak örnek verilerini ve dizinini kullanır. Bu alıştırmada kullanılan dizini oluşturmak için, **veri alma** Sihirbazı ' nı çalıştırarak *reatastate-US-Sample* veri kaynağını seçin.
+Bu hızlı başlatma, küçük resim resimleri olduğundan yerleşik Emlak örnek verilerini ve dizinini kullanır (sihirbaz sonuçlar sayfasına resim eklemeyi destekler). Bu alıştırmada kullanılan dizini oluşturmak *için, emlak-us-örnek* veri kaynağını seçerek **İçe Aktar veri** sihirbazını çalıştırın.
 
 ![örnek veriler için veri kaynağı sayfası](media/search-create-app-portal/import-data-realestate.png)
 
-Dizin kullanıma hazırsa, sonraki adıma geçin.
+Dizin kullanıma hazır olduğunda, bir sonraki adıma geçin.
 
-## <a name="start-the-wizard"></a>Sihirbazı Başlat
+## <a name="start-the-wizard"></a>Sihirbazı başlatın
 
-1. [Azure Portal](https://portal.azure.com) oturum açın ve [arama hizmetinizi bulun](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices).
+1. [Azure portalında](https://portal.azure.com) oturum açın ve [arama hizmetinizi bulun.](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)
 
-1. Genel Bakış sayfasında, sayfanın ortasındaki bağlantılardan **dizinler**' i seçin. 
+1. Genel Bakış sayfasında, sayfanın ortasındaki bağlantılardan **Dizinler'i**seçin. 
 
-1. Var olan dizinler listesinden *reatastate-US-Sample-Index* öğesini seçin.
+1. Varolan dizinler listesinden *gayrimenkul-us-örnek dizini* seçin.
 
-1. Sihirbazı başlatmak için üst kısımdaki Dizin sayfasında, **arama uygulaması oluştur (Önizleme)** öğesini seçin.
+1. Dizin sayfasında, en üstte, sihirbazı başlatmak için **arama uygulaması oluştur'u (önizleme)** seçin.
 
-1. İlk sihirbaz sayfasında, Dizin tanımınıza CORS desteği eklemek için **çapraz kaynak kaynak paylaşımını (CORS) etkinleştir** ' i seçin. Bu adım isteğe bağlıdır, ancak yerel Web uygulamanız bu olmadan uzak dizine bağlanmaz.
+1. İlk sihirbaz sayfasında, dizin tanımınıza CORS desteği eklemek için **Çapraz Başlangıç Kaynak Paylaşımını (CORS)** Etkinleştir'i'ni seçin. Bu adım isteğe bağlıdır, ancak yerel web uygulamanız onsuz uzak dizine bağlanmaz.
 
 ## <a name="configure-search-results"></a>Arama sonuçlarını yapılandırma
 
-Sihirbaz, bir küçük resim görüntüsü, başlık ve açıklama için boşluk içeren işlenmiş arama sonuçları için temel bir düzen sağlar. Bu öğelerin her birini yedeklemek, dizininizdeki verileri sağlayan bir alandır. 
+Sihirbaz, küçük resim resmi, başlık ve açıklama için alan içeren işlenmiş arama sonuçları için temel bir düzen sağlar. Bu öğelerin her birini destekleyen verileri sağlayan dizin bir alandır. 
 
-1. Küçük resim bölümünde *reatastate-US-Sample* dizinindeki *küçük resim* alanını seçin. Bu örnek, resim küçük resimlerini, *küçük resim*adlı bir alanda depolanan url ile adreslenen görüntüler biçiminde eklemek için oluşur. Dizininizdeki görüntü yoksa, bu alanı boş bırakın.
+1. Küçük Resim'de, *realestate-us-sample* dizinindeki *küçük resim* alanını seçin. Bu örnek, *küçük resim*adı verilen bir alanda depolanan URL adresli görüntüler şeklinde resim küçük resimleri içerir. Dizininizin görüntüleri yoksa, bu alanı boş bırakın.
 
-1. Başlık bölümünde her bir belgenin benzersizlik alanını ileten bir alan seçin. Bu örnekte, liste KIMLIĞI makul bir seçimdir.
+1. Başlık'ta, her belgenin benzersizliğini ifade eden bir alan seçin. Bu örnekte, listeleme kimliği makul bir seçimdir.
 
-1. Açıklama ' da, birisinin belirli bir belgeye tıklamaya karar vermesine yardımcı olabilecek ayrıntılar sağlayan bir alan seçin.
+1. Açıklama'da, bir kişinin o belgeyi tıklatıp tıklatmayacağına karar vermesine yardımcı olabilecek ayrıntılar sağlayan bir alan seçin.
 
 ![örnek veriler için veri kaynağı sayfası](media/search-create-app-portal/configure-results.png)
 
-## <a name="add-a-sidebar"></a>Kenar çubuğu ekle
+## <a name="add-a-sidebar"></a>Kenar çubuğu ekleme
 
-Arama hizmeti, genellikle bir kenar çubuğu olarak işlenen çok yönlü gezintiyi destekler. Modeller, dizin şemasında gösterildiği gibi filtrelenebilir ve çok yönlü tablo alanlarını temel alır.
+Arama hizmeti genellikle bir kenar çubuğu olarak işlenen yönlü gezinme destekler. Fasonlar, dizin şemasında ifade edilen filtrelenebilir ve yüz yüze alanlara dayanır.
 
-Azure Bilişsel Arama 'de, çok yönlü gezinme bir toplu filtreleme deneyimidir. Bir kategori içinde birden çok filtre seçildiğinde sonuçlar genişletilir (örneğin, şehir içinde Seattle ve Bellevue ' i seçin). Kategoriler arasında birden çok filtre seçildiğinde sonuçlar daraltır.
+Azure Bilişsel Arama'da, yönlü gezinme kümülatif bir filtreleme deneyimidir. Bir kategori içinde, birden çok filtre seçmek sonuçları genişletir (örneğin, Şehir içinde Seattle ve Bellevue'yi seçmek). Kategoriler arasında, birden çok filtre seçmek sonuçları daraltır.
 
 > [!TIP]
-> Tam dizin şemasını portalda görüntüleyebilirsiniz. Her dizinin Genel Bakış sayfasındaki **Dizin tanımı (JSON)** bağlantısını bulun. Çok yönlü gezintiye uygun olan alanlarda "filtrelenebilir: true" ve "çok yönlü tablo: true" öznitelikleri vardır.
+> Portalda tam dizin şema görüntüleyebilirsiniz. Her dizinin genel bakış sayfasında **Dizin tanımı (JSON)** bağlantısını arayın. Yönlü gezinme için uygun alanlar "filtrelenebilir: doğru" ve "facetable: true" öznitelikleri vardır.
 
-Geçerli model seçimini kabul edin ve sonraki sayfaya devam edin.
+Geçerli fatür seçimini kabul edin ve bir sonraki sayfaya devam edin.
 
 
-## <a name="add-typeahead"></a>Typeahead Ekle
+## <a name="add-typeahead"></a>İleride yazma ekleme
 
-Typeahead işlevselliği otomatik tamamlama ve sorgu önerileri biçiminde kullanılabilir. Sihirbaz sorgu önerilerini destekler. Kullanıcı tarafından sunulan tuş vuruşu girişlerini temel alarak arama hizmeti, giriş olarak seçilebilirler "tamamlanan" sorgu dizelerinin listesini döndürür.
+Typeahead işlevselliği otomatik tamamlama ve sorgu önerileri şeklinde kullanılabilir. Sihirbaz sorgu önerilerini destekler. Kullanıcı tarafından sağlanan tuş vuruşu girişlerine bağlı olarak, arama hizmeti giriş olarak seçilebilen "tamamlanmış" sorgu dizelerinin bir listesini döndürür.
 
-Öneriler, belirli alan tanımlarında etkinleştirilir. Sihirbaz, bir önerisine Ne kadar bilgi ekleneceğini yapılandırmaya yönelik seçenekler sağlar. 
+Öneriler belirli alan tanımlarında etkinleştirilir. Sihirbaz, bir öneride ne kadar bilginin yer aldığına yapılandırmanız için seçenekler sunar. 
 
-Aşağıdaki ekran görüntüsünde, sihirbazda bulunan işlenmiş bir sayfayla birlikte, sihirbazdaki seçenekler gösterilmektedir. Alan seçimlerinin nasıl kullanıldığını ve öneri içindeki etiketlemeyi dahil etmek veya hariç tutmak için "alan adını göster" seçeneğini görebilirsiniz.
+Aşağıdaki ekran görüntüsü, uygulamada işlenmiş bir sayfayla yan yana getirilen sihirbazdaki seçenekleri gösterir. Alan seçimlerinin nasıl kullanıldığını ve öneriiçinde etiketlemeyi eklemek veya hariç tutmak için "Alan Adını Göster"in nasıl kullanıldığını görebilirsiniz.
 
 ![Sorgu önerisi yapılandırması](media/search-create-app-portal/suggestions.png)
 
-## <a name="create-download-and-execute"></a>Oluşturma, indirme ve yürütme
+## <a name="create-download-and-execute"></a>Oluşturma, indirme ve çalıştırma
 
-1. HTML dosyasını oluşturmak için **arama uygulaması oluştur** ' u seçin.
+1. HTML dosyasını oluşturmak için **arama oluştur uygulamasını** seçin.
 
-1. İstendiğinde, dosyayı indirmek için **uygulamanızı indir** ' i seçin.
+1. İstendiğinde, dosyayı indirmek için **uygulamanızı indir'i** seçin.
 
-1. Dosyayı açın. Aşağıdaki ekran görüntüsüne benzer bir sayfa görmeniz gerekir. Bir terim girin ve sonuçları daraltmak için filtreleri kullanın. 
+1. Dosyayı açın. Aşağıdaki ekran görüntüsüne benzer bir sayfa görmeniz gerekir. Bir terim girin ve sonuçları daraltmak için filtreler kullanın. 
 
-Temel alınan dizin, belgeler arasında çoğaltılan kurgusal, oluşturulan verilerden oluşur ve açıklamalar bazen görüntüyle eşleşmez. Kendi dizinlerinizi temel alan bir uygulama oluştururken daha açık bir deneyim de bekleyebilir.
+Temel dizin, belgeler arasında çoğaltılan hayali, oluşturulan verilerden oluşur ve açıklamalar bazen görüntüyle eşleşmez. Kendi dizinlerinizi temel alan bir uygulama oluşturduğunuzda daha uyumlu bir deneyim bekleyebilirsiniz.
 
 ![Uygulamayı çalıştırma](media/search-create-app-portal/run-app.png)
 
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Kendi aboneliğinizde çalışırken, sizin oluşturduğunuz kaynaklara hala ihtiyacınız olup olmadığını belirlemek için bir projenin sonunda iyi bir fikir olur. Çalışan kaynaklar sizin için ücret verebilir. Kaynakları tek tek silebilir veya kaynak grubunu silerek tüm kaynak kümesini silebilirsiniz.
+Kendi aboneliğinizde çalışırken, projenin sonunda oluşturduğunuz kaynaklara hala ihtiyacınız olup olmadığını belirlemek iyi bir fikirdir. Çalışır durumda bırakılan kaynaklar maliyetlerinizin artmasına neden olabilir. Kaynakları teker teker silebilir veya tüm kaynak grubunu silerek kaynak kümesinin tamamını kaldırabilirsiniz.
 
-Sol gezinti bölmesindeki **tüm kaynaklar** veya **kaynak grupları** bağlantısını kullanarak portalda kaynakları bulabilir ve yönetebilirsiniz.
+Sol navigasyon bölmesindeki **Tüm kaynaklar** veya **Kaynak grupları** bağlantısını kullanarak portaldaki kaynakları bulabilir ve yönetebilirsiniz.
 
-Ücretsiz bir hizmet kullanıyorsanız, üç Dizin, Dizin Oluşturucu ve veri kaynağı ile sınırlı olduğunu unutmayın. Sınırın altında kalmak için portalda ayrı ayrı öğeleri silebilirsiniz. 
+Ücretsiz bir hizmet kullanıyorsanız, üç dizin, dizin ve veri kaynağıyla sınırlı olduğunuzu unutmayın. Sınırın altında kalmak için portaldaki tek tek öğeleri silebilirsiniz. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Varsayılan uygulama ilk keşif ve küçük görevler için yararlı olsa da, API 'Lerin erken şekilde incelenmesi, kavram ve iş akışını daha derin bir düzeyde anlamanıza yardımcı olur:
+Varsayılan uygulama ilk arama ve küçük görevler için yararlı olsa da, API'leri erken gözden geçirmek kavramları ve iş akışını daha derin bir düzeyde anlamanıza yardımcı olacaktır:
 
 > [!div class="nextstepaction"]
-> [.NET SDK kullanarak dizin oluşturma](https://docs.microsoft.com/azure/search/search-create-index-dotnet)
+> [.NET SDK'yı kullanarak dizin oluşturma](https://docs.microsoft.com/azure/search/search-create-index-dotnet)

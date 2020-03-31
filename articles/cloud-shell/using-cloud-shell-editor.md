@@ -1,6 +1,6 @@
 ---
-title: Azure Cloud Shell Düzenleyicisi'ni kullanarak | Microsoft Docs
-description: Azure Cloud Shell Düzenleyicisi'ni nasıl genel bakış.
+title: Azure Bulut Shell düzenleyicisini kullanma | Microsoft Dokümanlar
+description: Azure Bulut Shell düzenleyicisinin nasıl kullanılacağına genel bakış.
 services: azure
 documentationcenter: ''
 author: maertendMSFT
@@ -15,42 +15,42 @@ ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
 ms.openlocfilehash: 7f597bb5cba1a12bdb93325fe2b877ffc644e3e4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60199231"
 ---
-# <a name="using-the-azure-cloud-shell-editor"></a>Azure Cloud Shell Düzenleyicisi'ni kullanarak
+# <a name="using-the-azure-cloud-shell-editor"></a>Azure Bulut Shell düzenleyicisini kullanma
 
-Azure Cloud Shell içeren açık kaynaklı yerleşik bir Tümleşik Dosya Düzenleyicisi [Monaco düzenleyicisine](https://github.com/Microsoft/monaco-editor). Cloud Shell Düzenleyicisi dil vurgulamasına gibi özellikler, komut paletini ve dosya Gezgini destekler.
+Azure Cloud Shell, açık kaynak kodlu [Monako Düzenleyicisi](https://github.com/Microsoft/monaco-editor)tarafından oluşturulmuş entegre bir dosya düzenleyicisi içerir. Cloud Shell düzenleyicisi dil vurgulama, komut paleti ve dosya gezgini gibi özellikleri destekler.
 
-![Cloud Shell Düzenleyicisi](media/using-cloud-shell-editor/open-editor.png)
+![Cloud Shell editörü](media/using-cloud-shell-editor/open-editor.png)
 
-## <a name="opening-the-editor"></a>Düzenleyicisini açma
+## <a name="opening-the-editor"></a>Editörü açma
 
-Basit dosya oluşturma ve düzenleme için Düzenleyicisi'ni çalıştırarak başlatma `code .` Cloud Shell Terminal. Bu eylem, terminalde ayarlamak active directory'nizle çalışma Düzenleyicisi açılır.
+Basit dosya oluşturma ve düzenleme işlemleri için Cloud Shell terminalinde `code .` komutunu çalıştırarak düzenleyiciyi başlatabilirsiniz. Bu eylem, terminalde etkin çalışma dizininiz ayarlanmış bir şekilde eylem düzenleyiciyi açar.
 
-Doğrudan hızlı düzenleme için bir dosya açmak için çalıştırın `code <filename>` dosya Gezgini olmadan düzenleyiciyi açın.
+Hızlı düzenleme yapmak için dosyayı doğrudan açmak isterseniz, `code <filename>` komutunu çalıştırarak düzenleyiciyi dosya gezgini olmadan açın.
 
-UI düğmesiyle Düzenleyicisi'ni açmak için `{}` araç çubuğundan Düzenleyicisi simgesi. Bu Düzenleyicisi'ni açın ve dosya Gezgini'ne varsayılan `/home/<user>` dizin.
+Düzenleyiciyi kullanıcı arabirimi düğmesiyle açmak için araç çubuğunda `{}` düzenleyici simgesine tıklayın. Düzenleyici açılır ve dosya gezgininde `/home/<user>` dizini görüntülenir.
 
-## <a name="closing-the-editor"></a>Düzenleyici kapatma
+## <a name="closing-the-editor"></a>Editörü kapatma
 
-Düzenleyiciyi kapatmak için açık `...` eylem panelinde üst sağında seçin ve düzenleyici `Close editor`.
+Düzenleyiciyi kapatmak için, `...` düzenleyicinin sağ üst kısmındaki `Close editor`eylem panelini açın ve seçin.
 
-![Düzenleyiciyi Kapat](media/using-cloud-shell-editor/close-editor.png)
+![Editörü kapat](media/using-cloud-shell-editor/close-editor.png)
 
 ## <a name="command-palette"></a>Komut paleti
 
-Komut paletini başlatmak için `F1` odak düzenleyicide olarak ayarlandığında anahtar. Komut paletini açma eylem panelinde yapılabilir.
+Komut paletini başlatmak için, odak düzenleyiciye ayarlandığında `F1` anahtarı kullanın. Komut paletinin açılması da eylem paneli aracılığıyla yapılabilir.
 
-![Komut paleti](media/using-cloud-shell-editor/cmd-palette.png)
+![Cmd palet](media/using-cloud-shell-editor/cmd-palette.png)
 
-## <a name="contributing-to-the-monaco-editor"></a>Monaco düzenleyicisine katkıda bulunan
+## <a name="contributing-to-the-monaco-editor"></a>Monako Editörüne Katkıda Bulunmak
 
-Cloud Shell düzenleyicisinde dil vurgulama desteği, Yukarı Akış işlevleri aracılığıyla desteklenir [Monaco düzenleyicisine](https://github.com/Microsoft/monaco-editor)kullanıcının Monarch söz dizimi tanımları kullanın. Katkı öğrenmek için okuyun [Monaco katkıda bulunan Kılavuzu'ndaki](https://github.com/Microsoft/monaco-editor/blob/master/CONTRIBUTING.md).
+Cloud Shell düzenleyicisindeki dil vurgusu desteği, [Monako](https://github.com/Microsoft/monaco-editor)Düzenleyicisi'nin Monarch sözdizimi tanımlarını kullanmasında yukarı akış işlevi aracılığıyla desteklenir. Nasıl katkıda bulunup bulunup katkıda bulunabilirsiniz, [Monako katılımcıkılavuzunu](https://github.com/Microsoft/monaco-editor/blob/master/CONTRIBUTING.md)okuyun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Cloud shell'de Bash için hızlı başlangıç kılavuzundan](quickstart.md)
-[tümleşik Cloud Shell araçları tam listesini görüntüleyin](features.md)
+[Bash in Cloud Shell](quickstart.md)
+için hızlı başlangıcı deneyin[Entegre Cloud Shell araçlarının tam listesini görüntüleyin](features.md)

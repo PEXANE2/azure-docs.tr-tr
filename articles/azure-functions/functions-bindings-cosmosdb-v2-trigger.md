@@ -1,28 +1,28 @@
 ---
-title: 2\. x Işlevleri için Azure Cosmos DB tetikleyicisi
-description: Azure Işlevlerinde Azure Cosmos DB tetikleyiciyi kullanmayı öğrenin.
+title: Fonksiyonlar için Azure Cosmos DB tetikleyicisi 2.x
+description: Azure İşlevlerinde Azure Cosmos DB tetikleyicisini kullanmayı öğrenin.
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/24/2020
 ms.author: cshoe
 ms.openlocfilehash: de8ad39ef731af3dc272d700eeee346acda64b53
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79277576"
 ---
-# <a name="azure-cosmos-db-trigger-for-azure-functions-2x"></a>Azure Işlevleri 2. x için Azure Cosmos DB tetikleyicisi
+# <a name="azure-cosmos-db-trigger-for-azure-functions-2x"></a>Azure İşlevler için Azure Cosmos DB tetikleyicisi 2.x
 
-Azure Cosmos DB tetikleyicisi, bölümler arasında eklemeleri ve güncelleştirmeleri dinlemek için [Azure Cosmos DB değişiklik akışını](../cosmos-db/change-feed.md) kullanır. Değişiklik akışı, ekler ve güncelleştirme, silme değil yayımlar.
+Azure Cosmos DB Trigger, ekler ve bölümler arasında güncelleştirmeleri dinlemek için [Azure Cosmos DB Change Feed'i](../cosmos-db/change-feed.md) kullanır. Değişiklik akışı ekler ve güncelleştirmeler yayımlar, silme değil.
 
-Kurulum ve yapılandırma ayrıntıları hakkında bilgi için bkz. [genel bakış](./functions-bindings-cosmosdb-v2.md).
+Kurulum ve yapılandırma ayrıntıları hakkında daha fazla bilgi için [genel bakışa](./functions-bindings-cosmosdb-v2.md)bakın.
 
 <a id="example" name="example"></a>
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
-Aşağıdaki örnek, belirtilen veritabanında ve koleksiyonda ekleme veya güncelleştirme olduğunda çağrılan bir [ C# işlevi](functions-dotnet-class-library.md) gösterir.
+Aşağıdaki örnekte, belirtilen veritabanı ve koleksiyonda ekler veya güncelleştirmeler olduğunda çağrılan bir [C# işlevi](functions-dotnet-class-library.md) gösterilmektedir.
 
 ```cs
 using Microsoft.Azure.Documents;
@@ -54,11 +54,11 @@ namespace CosmosDBSamplesV2
 }
 ```
 
-# <a name="c-script"></a>[C#SCRIPT](#tab/csharp-script)
+# <a name="c-script"></a>[C# Komut Dosyası](#tab/csharp-script)
 
-Aşağıdaki örnek, bir *function. JSON* dosyasındaki bir Cosmos DB tetikleyicisi bağlamasını ve bağlamayı kullanan bir [ C# betik işlevini](functions-reference-csharp.md) gösterir. İşlevi Cosmos DB kayıtları eklendiğinde veya değiştirildiğinde günlük iletilerini yazar.
+Aşağıdaki örnek, bir *function.json* dosyasında cosmos DB tetikleyici bağlama ve bağlama kullanan bir [C# komut dosyası işlevini](functions-reference-csharp.md) gösterir. İşlev, Cosmos DB kayıtları eklendiğinde veya değiştirildiğinde günlük iletileri yazar.
 
-Bu, *function. JSON* dosyasındaki bağlama verileri:
+*Function.json* dosyasındaki bağlayıcı veriler aşağıda veda eder:
 
 ```json
 {
@@ -73,7 +73,7 @@ Bu, *function. JSON* dosyasındaki bağlama verileri:
 }
 ```
 
-C# betik kodunu şu şekildedir:
+İşte C# komut dosyası kodu:
 
 ```cs
     #r "Microsoft.Azure.DocumentDB.Core"
@@ -90,11 +90,11 @@ C# betik kodunu şu şekildedir:
     }
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
-Aşağıdaki örnek, bir *function. JSON* dosyasındaki bir Cosmos DB tetikleyicisi bağlamasını ve bağlamayı kullanan bir [JavaScript işlevini](functions-reference-node.md) gösterir. İşlevi Cosmos DB kayıtları eklendiğinde veya değiştirildiğinde günlük iletilerini yazar.
+Aşağıdaki örnek, bir *function.json* dosyasında cosmos DB tetikleyici bağlama ve bağlama kullanan bir [JavaScript işlevi](functions-reference-node.md) gösterir. İşlev, Cosmos DB kayıtları eklendiğinde veya değiştirildiğinde günlük iletileri yazar.
 
-Bu, *function. JSON* dosyasındaki bağlama verileri:
+*Function.json* dosyasındaki bağlayıcı veriler aşağıda veda eder:
 
 ```json
 {
@@ -109,7 +109,7 @@ Bu, *function. JSON* dosyasındaki bağlama verileri:
 }
 ```
 
-JavaScript kod aşağıdaki gibidir:
+İşte JavaScript kodu:
 
 ```javascript
     module.exports = function (context, documents) {
@@ -121,9 +121,9 @@ JavaScript kod aşağıdaki gibidir:
 
 # <a name="python"></a>[Python](#tab/python)
 
-Aşağıdaki örnek, bir *function. JSON* dosyasındaki bir Cosmos DB tetikleyicisi bağlamasını ve bağlamayı kullanan bir [Python işlevini](functions-reference-python.md) gösterir. Cosmos DB kayıt değiştirildiğinde işlevi günlük iletisi yazar.
+Aşağıdaki örnek, bir *function.json* dosyasında cosmos DB tetikleyici bağlama ve bağlama kullanan bir [Python işlevi](functions-reference-python.md) gösterir. Cosmos DB kayıtları değiştirildiğinde işlev günlük iletileri yazar.
 
-Bu, *function. JSON* dosyasındaki bağlama verileri:
+*Function.json* dosyasındaki bağlayıcı veriler aşağıda veda eder:
 
 ```json
 {
@@ -138,7 +138,7 @@ Bu, *function. JSON* dosyasındaki bağlama verileri:
 }
 ```
 
-Python kodu aşağıda verilmiştir:
+Python kodu aşağıdavelvere vermiştir:
 
 ```python
     import logging
@@ -152,7 +152,7 @@ Python kodu aşağıda verilmiştir:
 
 # <a name="java"></a>[Java](#tab/java)
 
-Belirtilen veritabanı ve koleksiyonda ekleme veya güncelleştirme olduğunda bu işlev çağrılır.
+Bu işlev, belirtilen veritabanı ve koleksiyonda ekler veya güncelleştirmeler olduğunda çağrılır.
 
 ```java
     @FunctionName("cosmosDBMonitor")
@@ -169,17 +169,17 @@ Belirtilen veritabanı ve koleksiyonda ekleme veya güncelleştirme olduğunda b
 ```
 
 
-[Java işlevleri çalışma zamanı kitaplığı](/java/api/overview/azure/functions/runtime)'nda, değeri Cosmos DB geldiği parametrelerde `@CosmosDBTrigger` ek açıklamasını kullanın.  Bu ek açıklama `Optional<T>`kullanılarak yerel Java türleri, POJOs veya null atanabilir değerlerle kullanılabilir.
+Java [işlevleri çalışma zamanı kitaplığında,](/java/api/overview/azure/functions/runtime)değeri Cosmos DB'den gelecek parametrelerdeki `@CosmosDBTrigger` ek açıklamayı kullanın.  Bu ek açıklama, yerel Java türleri, POJO'lar veya `Optional<T>`nullable değerleri kullanılarak kullanılabilir.
 
 ---
 
 ## <a name="attributes-and-annotations"></a>Öznitelikler ve ek açıklamalar
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
-[ C# Sınıf kitaplıkları](functions-dotnet-class-library.md)' nda [cosmosdbtrigger](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.CosmosDB/Trigger/CosmosDBTriggerAttribute.cs) özniteliğini kullanın.
+[C# sınıfı kitaplıklarda](functions-dotnet-class-library.md) [CosmosDBTrigger](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.CosmosDB/Trigger/CosmosDBTriggerAttribute.cs) özniteliğini kullanın.
 
-Özniteliğin oluşturucusu, koleksiyon adı ve veritabanı adını alır. Yapılandırabileceğiniz bu ayarlar ve diğer özellikler hakkında daha fazla bilgi için bkz. [tetikleyici-yapılandırma](#configuration). Yöntem imzasında bir `CosmosDBTrigger` özniteliği örneği aşağıda verilmiştir:
+Özniteliğin oluşturucusu veritabanı adını ve koleksiyon adını alır. Bu ayarlar ve yapılandırabileceğiniz diğer özellikler hakkında bilgi için [Bkz.](#configuration) Yöntem imzasında `CosmosDBTrigger` bir öznitelik örneği aşağıda verilmiştir:
 
 ```csharp
     [FunctionName("DocumentUpdates")]
@@ -192,13 +192,13 @@ Belirtilen veritabanı ve koleksiyonda ekleme veya güncelleştirme olduğunda b
     }
 ```
 
-Tüm bir örnek için bkz. [tetikleyici](#example).
+Tam bir örnek için [Tetikleyici'ye](#example)bakın.
 
-# <a name="c-script"></a>[C#SCRIPT](#tab/csharp-script)
+# <a name="c-script"></a>[C# Komut Dosyası](#tab/csharp-script)
 
-Öznitelikler komut dosyası tarafından C# desteklenmiyor.
+Öznitelikler C# Script tarafından desteklenmez.
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 Öznitelikler JavaScript tarafından desteklenmez.
 
@@ -208,49 +208,49 @@ Tüm bir örnek için bkz. [tetikleyici](#example).
 
 # <a name="java"></a>[Java](#tab/java)
 
-[Java işlevleri çalışma zamanı kitaplığından](https://docs.microsoft.com/java/api/overview/azure/functions/runtime), Cosmos DB verileri okuyan parametrelerde `@CosmosDBInput` ek açıklamasını kullanın.
+Java [işlevleri çalışma zamanı kitaplığından,](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)Cosmos DB'den gelen verileri okuyan parametrelerle ilgili `@CosmosDBInput` ek açıklamayı kullanın.
 
 ---
 
 ## <a name="configuration"></a>Yapılandırma
 
-Aşağıdaki tabloda, *function. JSON* dosyasında ve `CosmosDBTrigger` özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır.
+Aşağıdaki *tabloda, function.json* dosyasında ayarladığınız bağlama `CosmosDBTrigger` yapılandırma özellikleri ve öznitelik açıklanmaktadır.
 
-|Function.JSON özelliği | Öznitelik özelliği |Açıklama|
+|function.json özelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
-|**type** | yok | `cosmosDBTrigger`olarak ayarlanmalıdır. |
-|**direction** | yok | `in`olarak ayarlanmalıdır. Azure portalında tetikleyicisi oluşturduğunuzda bu parametre otomatik olarak ayarlanır. |
-|**ada** | yok | Değişken adı değişikliklerle belgelerin listesini temsil eden bir işlev kodunu kullanılır. |
-|**connectionStringSetting**|**ConnectionStringSetting** | İzlenmekte olan Azure Cosmos DB hesabına bağlanmak için kullanılan bağlantı dizesi içeren bir uygulama ayarı adı. |
-|**Dosyasında**|**Dosyasında**  | İzlenmekte olan toplama ile Azure Cosmos DB veritabanının adı. |
-|**Ma** |**Ma** | İzlenmekte olan koleksiyonun adı. |
-|**leaseConnectionStringSetting** | **LeaseConnectionStringSetting** | Seçim Kira toplamayı tutan Azure Cosmos DB hesaba bağlantı dizesi içeren bir uygulama ayarının adı. Ayarlanmamışsa, `connectionStringSetting` değeri kullanılır. Bu parametre, portalda bağlama oluşturulduğunda otomatik olarak ayarlanır. Bağlantı dizesini kiralarını koleksiyonuna yazma izinlerine sahip olmalıdır.|
-|**leaseDatabaseName** |**LeaseDatabaseName** | (İsteğe bağlı) Kiraları depolamak için kullanılan koleksiyonu içeren veritabanının adı. Ayarlamadığınızda `databaseName` ayarının değeri kullanılır. Bu parametre, portalda bağlama oluşturulduğunda otomatik olarak ayarlanır. |
-|**leaseCollectionName** | **LeaseCollectionName** | (İsteğe bağlı) Kiraları depolamak için kullanılan koleksiyonun adı. Ayarlanmayan değer `leases` kullanılır. |
-|**createLeaseCollectionIfNotExists** | **CreateLeaseCollectionIfNotExists** | Seçim `true`olarak ayarlandığında, kiralamalar koleksiyonu zaten mevcut olmadığında otomatik olarak oluşturulur. Varsayılan değer: `false`. |
-|**Leasescollectionüretilen Iş**| **Leasescollectionüretilen Iş**| Seçim Kiralamalar koleksiyonu oluşturulduğunda atanacak Istek birimi sayısını tanımlar. Bu ayar yalnızca `createLeaseCollectionIfNotExists` `true`olarak ayarlandığında kullanılır. Bu parametre, portalı kullanarak bağlama oluşturulduğunda otomatik olarak ayarlanır.
-|**leaseCollectionPrefix**| **LeaseCollectionPrefix**| Seçim Ayarlandığında, bu Işlev için kira koleksiyonunda oluşturulan kiralamalar için bir ön ek olarak değer eklenir. Ön ek kullanmak, iki ayrı Azure Işlevinin aynı kira koleksiyonunu farklı ön ekler kullanarak paylaşmasına izin verir.
-|**feedPollDelay**| **FeedPollDelay**| Seçim Geçerli tüm değişiklikler boşaltılır sonra, bir bölümü akıştaki yeni değişiklikler için yoklayarak gecikme süresi (milisaniye cinsinden). Varsayılan değer 5.000 milisaniyedir veya 5 saniyedir.
-|**Leaseacquireınterval**| **Leaseacquireınterval**| (İsteğe bağlı) Ayarlandığında, bu, milisaniye cinsinden aralığı bölümler bilinen barındırma örnekleri arasında eşit olarak dağıtılmış, işlem için bir görev başlatabilir tanımlar. 13000 (13 saniye) varsayılandır.
-|**Leaseexpirationınterval**| **Leaseexpirationınterval**| (İsteğe bağlı) Ayarlandığında, bu, milisaniye cinsinden kira bir bölüm temsil eden bir kira alınmış aralığı tanımlar. Kira bu aralıkta yenilenmezse, süresi dolacak şekilde neden olur ve bölüm sahipliğini başka bir örneğine taşınır. 60000 (60 saniye) varsayılandır.
-|**leaseRenewInterval**| **LeaseRenewInterval**| (İsteğe bağlı) Ayarlandığında, bu, milisaniye cinsinden geçerli bir örnek tarafından tutulan bölümler için tüm kira yenileme aralığı tanımlar. 17000 (17 saniye) varsayılandır.
-|**Checkpointflik**| **Checkpointflik**| (İsteğe bağlı) Ayarlandığında, bu, milisaniye cinsinden kira kontrol noktaları arasındaki süreyi tanımlar. Varsayılan değer her bir Işlev çağrısından sonra olur.
-|**Maxıtemsperınvocation**| **Maxıtemsperınvocation**| Seçim Ayarlandığında, bu özellik, Işlev çağrısı başına alınan en fazla öğe sayısını ayarlar. İzlenen koleksiyondaki işlemler saklı yordamlar aracılığıyla gerçekleştiriliyorsa, değişiklik akışından öğe okurken [işlem kapsamı](../cosmos-db/stored-procedures-triggers-udfs.md#transactions) korunur. Sonuç olarak, aynı işlem tarafından değiştirilen öğelerin bir atomik toplu işin parçası olarak döndürülmesi için alınan öğe sayısı belirtilen değerden daha yüksek olabilir.
-|**Startfromstarted**| **Startfromstarted**| Seçim Bu seçenek tetikleyicisine, geçerli zamandan başlamak yerine koleksiyonun değişiklik geçmişinden başlayarak değişiklikleri okumasını söyler. Başlangıçtan itibaren okuma, sonraki çalışmalarda olduğu gibi, yalnızca tetikleyici başlatıldığında çalışır ve kontrol noktaları zaten depolanır. Zaten oluşturulan kiralamalar varsa `true` için bu seçeneğin ayarlanması etkisizdir. |
-|**preferredLocations**| **PreferredLocations**| Seçim Azure Cosmos DB hizmetindeki coğrafi olarak çoğaltılan veritabanı hesapları için tercih edilen konumları (bölgeleri) tanımlar. Değerler virgülle ayrılmalıdır. Örneğin, "Doğu ABD, Orta Güney ABD, Kuzey Avrupa". |
+|**Türü** | yok | Ayarlanmış `cosmosDBTrigger`olmalı. |
+|**Yön** | yok | Ayarlanmış `in`olmalı. Bu parametre, Azure portalında tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır. |
+|**Adı** | yok | Değişikliklerle birlikte belgelerin listesini temsil eden işlev kodunda kullanılan değişken adı. |
+|**bağlantıStringSetting**|**ConnectionStringSetting** | İzlenen Azure Cosmos DB hesabına bağlanmak için kullanılan bağlantı dizesini içeren bir uygulama ayarının adı. |
+|**Databasename**|**Databasename**  | Azure Cosmos DB veritabanının adı ve koleksiyon izleniyor. |
+|**Toplamaadı** |**CollectionName** | İzlenen koleksiyonun adı. |
+|**kiralamaConnectionStringSetting** | **KiralamaBağlantıStringSetting** | (İsteğe bağlı) Kira koleksiyonunu tutan Azure Cosmos DB hesabına bağlantı dizesini içeren bir uygulama ayarının adı. Ayarlanmadığında, `connectionStringSetting` değer kullanılır. Bağlama portalda oluşturulduğunda bu parametre otomatik olarak ayarlanır. Kiratoplama bağlantısı dizesi yazma izinleri olmalıdır.|
+|**leaseDatabaseName** |**KiralamaVeritabanı Adı** | (İsteğe bağlı) Kiralamaları depolamak için kullanılan koleksiyonu tutan veritabanının adı. Ayarlanmadığında, `databaseName` ayarın değeri kullanılır. Bağlama portalda oluşturulduğunda bu parametre otomatik olarak ayarlanır. |
+|**leaseCollectionName** | **LeaseCollectionName** | (İsteğe bağlı) Kiralamaları depolamak için kullanılan koleksiyonun adı. Ayarlanmadığında, değer `leases` kullanılır. |
+|**createLeaseCollectionIfNotExists** | **CreateLeaseCollectionIfNotExists** | (İsteğe bağlı) `true`Ayarlandığında, kiralama koleksiyonu zaten yokken otomatik olarak oluşturulur. Varsayılan değer: `false`. |
+|**leasesCollectionThroughput**| **LeasesCollectionThroughput**| (İsteğe bağlı) Kiralama koleksiyonu oluşturulduğunda atanacak İstek Birimlerinin sayısını tanımlar. Bu ayar yalnızca `createLeaseCollectionIfNotExists` . `true` Bağlama portalı kullanılarak oluşturulduğunda bu parametre otomatik olarak ayarlanır.
+|**leaseCollectionPrefix**| **LeaseCollection Önek**| (İsteğe bağlı) Ayarlandığında, bu İşlev için Kira koleksiyonunda oluşturulan kiralamalara değer öneki olarak eklenir. Önek kullanmak, iki ayrı Azure İşlevinin farklı önekler kullanarak aynı Kiralama koleksiyonunu paylaşmasına olanak tanır.
+|**feedPollDelay**| **FeedPollDelay**| (İsteğe bağlı) Tüm geçerli değişiklikler dolduktan sonra, akıştaki yeni değişiklikler için bir bölümü yoklama arasındaki gecikmenin gecikmesi (milisaniye cinsinden). Varsayılan değer 5.000 milisaniye veya 5 saniyedir.
+|**leaseAcquireInterval**| **KiralamaAlma Aralığı**| (İsteğe bağlı) Ayarlandığında, milisaniye cinsinden, bölümler bilinen ana bilgisayar örnekleri arasında eşit olarak dağıtılırsa, bir görevi hesaplamak için başlatma aralığını tanımlar. Varsayılan değer 13000 (13 saniye) 'dir.
+|**leaseExpirationInterval**| **LeaseExpirationInterval**| (İsteğe bağlı) Ayarlandığında, milisaniye cinsinden, bir bölümü temsil eden bir kira üzerinde kiranın alındığı aralığı tanımlar. Bu aralıkta kira yenilenmezse, süresinin dolmasına neden olur ve bölümün sahipliği başka bir örne taşınır. Varsayılan değer 60000 (60 saniye) 'dir.
+|**leaseRenewInterval**| **KiralamaYenilemeInterval**| (İsteğe bağlı) Ayarlandığında, milisaniye cinsinden, şu anda bir örnek tarafından tutulan bölümleriçin tüm kiralamaların yenileme aralığını tanımlar. Varsayılan değer 17000 (17 saniye) 'dir.
+|**checkpointFrekans**| **CheckpointFrekans**| (İsteğe bağlı) Ayarlandığında, milisaniye cinsinden kira denetim noktaları arasındaki aralığı tanımlar. Varsayılan her zaman her İşlev çağrısından sonradır.
+|**maxItemsPerInvocation**| **MaxItemsPerInvocation**| (İsteğe bağlı) Ayarlandığında, bu özellik İşlev çağrısı başına alınan en fazla öğe sayısını ayarlar. İzlenen koleksiyondaki işlemler depolanan yordamlar aracılığıyla gerçekleştirilirse, Değişiklik Akışı'ndan öğeler okunurken [işlem kapsamı](../cosmos-db/stored-procedures-triggers-udfs.md#transactions) korunur. Sonuç olarak, alınan madde sayısı belirtilen değerden daha yüksek olabilir, böylece aynı hareketle değiştirilen maddeler bir atomik toplu işlemin parçası olarak döndürülür.
+|**başlangıçBaşlangıçBaşlangıç**| **Başlangıç Başlangıç**| (İsteğe bağlı) Bu seçenek, Tetikleyici'ye, geçerli anda başlamak yerine koleksiyonun değişiklik geçmişinin başından itibaren değişiklikleri okumasını söyler. Baştan okuma, sonraki çalıştırmalarda olduğu gibi Tetikleyici ilk kez başladığı anda çalışır, denetim noktaları zaten depolanır. Bu seçeneğin, önceden oluşturulmuş kiralar `true` olduğunda ayarlanmasının hiçbir etkisi yoktur. |
+|**tercihYerleri**| **Tercih Edilen Yerler**| (İsteğe bağlı) Azure Cosmos DB hizmetinde coğrafi olarak çoğaltılan veritabanı hesapları için tercih edilen konumları (bölgeleri) tanımlar. Değerler virgülle ayrılmalıdır. Örneğin, "Doğu ABD,Güney Orta ABD, Kuzey Avrupa". |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="usage"></a>Kullanım
 
-Tetikleyici, bölümler üzerinde _kiraları_ depolamak için kullanacağı ikinci bir koleksiyon gerektirir. İzlenmekte olan toplama hem kiraları içeren koleksiyonu tetikleyicinin çalışma için kullanılabilir olmalıdır.
+Tetikleyici, bölümleri üzerinde _kiradepolamak_ için kullandığı ikinci bir koleksiyon gerektirir. Tetikleyicinin çalışması için hem denetimli koleksiyon hem de kiralamaları içeren koleksiyon kullanılabilir olmalıdır.
 
 >[!IMPORTANT]
-> Birden çok işlev aynı koleksiyon için Cosmos DB tetikleyicisi kullanacak şekilde yapılandırıldıysa, işlevlerin her biri adanmış bir kira koleksiyonu kullanmalı veya her bir işlev için farklı bir `LeaseCollectionPrefix` belirtmelidir. Aksi takdirde, yalnızca bir işlev tetiklenir. Ön ek hakkında daha fazla bilgi için [yapılandırma bölümüne](#configuration)bakın.
+> Aynı koleksiyon için cosmos DB tetikleyicisi kullanacak şekilde yapılandırılan birden çok işlev varsa, işlevlerin her biri özel bir kira koleksiyonu kullanmalı veya her işlev için farklı `LeaseCollectionPrefix` bir işlev belirtmelidir. Aksi takdirde, yalnızca bir işlev tetiklenir. Önek hakkında bilgi için [Yapılandırma bölümüne](#configuration)bakın.
 
-Tetikleyici, bir belge güncelleştirildi veya eklenen belge yalnızca sağladığı göstermiyor. Güncelleştirmeler ve ekler farklı şekilde işlemek istiyorsanız, zaman damgası alanları ekleme veya güncelleştirme uygulayarak yapabilirsiniz.
+Tetikleyici, belgenin güncelleştirilip güncelleştirilip eklenmediğini göstermez, yalnızca belgenin kendisini sağlar. Güncelleştirmeleri ve ekleri farklı şekilde işlemeniz gerekiyorsa, ekleme veya güncelleştirme için zaman damgası alanlarını uygulayarak bunu yapabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Cosmos DB belge okuma (giriş bağlama)](./functions-bindings-cosmosdb-v2-input.md)
-- [Azure Cosmos DB belgedeki değişiklikleri kaydetme (çıktı bağlama)](./functions-bindings-cosmosdb-v2-output.md)
+- [Azure Cosmos DB belgesini okuma (Giriş bağlama)](./functions-bindings-cosmosdb-v2-input.md)
+- [Azure Cosmos DB belgesinde değişiklikleri kaydetme (Çıktı bağlama)](./functions-bindings-cosmosdb-v2-output.md)

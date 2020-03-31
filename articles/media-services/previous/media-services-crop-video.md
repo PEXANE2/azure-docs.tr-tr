@@ -1,6 +1,6 @@
 ---
-title: Media Encoder Standard-Azure ile videoları kırpma | Microsoft Docs
-description: Kırpma, video çerçevesi içinde dikdörtgen bir pencere seçme ve yalnızca bu penceredeki pikselleri kodlama işlemidir. Bu makalede, Media Encoder Standard ile videoların nasıl kırpılacağını gösterilmektedir.
+title: Media Encoder Standard ile video kırpma - Azure | Microsoft Dokümanlar
+description: Kırpma, video çerçevesi içinde dikdörtgen bir pencere seçme ve yalnızca bu pencereiçindeki pikselleri kodlama işlemidir. Bu makalede, Media Encoder Standard ile video kırpma nasıl gösterilmektedir.
 services: media-services
 documentationcenter: ''
 author: anilmur
@@ -15,34 +15,34 @@ ms.date: 03/18/2019
 ms.author: anilmur
 ms.reviewer: juliako
 ms.openlocfilehash: 059816284e39c65bb772bd02f066d73da624722f
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74887773"
 ---
 # <a name="crop-videos-with-media-encoder-standard"></a>Media Encoder Standard ile videoları kırpma  
 
-Giriş videonuzu kırpmak için Media Encoder Standard (MES) kullanabilirsiniz. Kırpma, video çerçevesi içinde dikdörtgen bir pencere seçme ve yalnızca bu penceredeki pikselleri kodlama işlemidir. Aşağıdaki diyagram, işlemi göstermeye yardımcı olur.
+Giriş videonuzu kırpmak için Media Encoder Standard 'ı (MES) kullanabilirsiniz. Kırpma, video çerçevesi içinde dikdörtgen bir pencere seçme ve yalnızca bu pencereiçindeki pikselleri kodlama işlemidir. Aşağıdaki diyagram işlemi göstermeye yardımcı olur.
 
-![Videoyu kırpın](./media/media-services-crop-video/media-services-crop-video01.png)
+![Bir video kırpma](./media/media-services-crop-video/media-services-crop-video01.png)
 
-1920x1080 piksel (16:9 en boy oranı) çözümüne sahip bir video girişi olduğunu varsayalım, ancak sol ve sağ tarafta siyah çubuklar (ekran kutuları) vardır; böylece yalnızca bir 4:3 penceresi veya 1440x1080 piksel etkin video içerir. Siyah çubukları kırpmak veya düzenlemek ve 1440x1080 bölgesini kodlamak için MES ' i kullanabilirsiniz.
+1920x1080 piksel çözünürlüğe (16:9 en boy oranı) sahip, ancak solda ve sağda siyah çubuklara (sütun kutuları) sahip olan bir videoyu girdiniz, böylece yalnızca 4:3 pencere veya 1440x1080 piksel etkin video içerdiğini varsayalım. Mes'i kullanarak siyah çubukları kırpabilir veya dinleyebilirsiniz ve 1440x1080 bölgesini kodlayabilirsiniz.
 
-MES 'in kırpılması bir ön işleme aşamasıdır, bu nedenle kodlama ön ayarlamadaki kırpma parametreleri özgün giriş videosu için geçerlidir. Kodlama sonraki bir aşamadır ve genişlik/yükseklik ayarları orijinal videoya değil, *önceden işlenmiş* videoya uygulanır. Önceden ayarlarınızı tasarlarken şunları yapmanız gerekir: (a) orijinal giriş videosunu temel alan kırpma parametrelerini seçin ve (b) kırpılan videoya göre kodlama ayarlarınızı seçin. Kırpılan video ile kodlama ayarlarınızı eşleşmiyorsa, çıkış istediğiniz gibi olmayacaktır.
+MES'te kırpma bir ön işleme aşamasıdır, bu nedenle kodlama ön ayarındaki kırpma parametreleri orijinal giriş videosuna uygulanır. Kodlama sonraki bir aşamadır ve genişlik/yükseklik ayarları orijinal video için değil, *önceden işlenmiş* video için geçerlidir. Önceden ayarlarınızı tasarlarken aşağıdakileri yapmanız gerekir: (a) kırpma parametrelerini orijinal giriş videosuna göre seçin ve (b) kırpılan videoya göre kod ayarlarınızı seçin. Kod ayarlarınızı kırpılmış videoyla eşleştirmezseniz, çıktı beklediğiniz gibi olmayacaktır.
 
-[Aşağıdaki](media-services-custom-mes-presets-with-dotnet.md#encoding_with_dotnet) konuda, bir kodlama işinin nasıl oluşturulduğu ve kodlama görevi için özel bir hazır ayarın nasıl ayarlanacağı gösterilmektedir. 
+[Aşağıdaki](media-services-custom-mes-presets-with-dotnet.md#encoding_with_dotnet) konu, MES ile kodlama işinin nasıl oluşturulacağını ve kodlama görevi için özel bir ön anın nasıl belirtilen gibi olduğunu gösterir. 
 
-## <a name="creating-a-custom-preset"></a>Özel önayar oluşturma
+## <a name="creating-a-custom-preset"></a>Özel bir ön ayar oluşturma
 Diyagramda gösterilen örnekte:
 
-1. Özgün giriş 1920x1080
-2. Giriş çerçevesinde ortalanan, 1440x1080 çıkışındaki bir çıktıya kırpılmaya gerekir
-3. Bu, (1920 – 1440)/2 = 240 X ve Y değeri sıfır olan X sapmasını gösterir
-4. Kırpma dikdörtgeninin genişliği ve yüksekliği sırasıyla 1440 ve 1080 ' dir
-5. Kodlama aşamasında, ask üç katman oluşturmak, sırasıyla çözünürlük 1440x1080, 960x720 ve 480x360 şeklindedir
+1. Orijinal giriş 1920x1080
+2. Giriş çerçevesi merkezli 1440x1080 çıktısına kırpılması gerekir
+3. Bu, (1920 – 1440)/2 = 240 x ofset ve sıfır ın Y mahsupu anlamına gelir
+4. Kırpma dikdörtgeninin Genişliği ve Yüksekliği sırasıyla 1440 ve 1080'dir
+5. Kod aşamasında, sormak üç katman üretmektir, çözünürlükleri 1440x1080, 960x720 ve 480x360, sırasıyla
 
-### <a name="json-preset"></a>JSON önceden ayarı
+### <a name="json-preset"></a>JSON hazır
     {
       "Version": 1.0,
       "Sources": [
@@ -127,20 +127,20 @@ Diyagramda gösterilen örnekte:
     }
 
 
-## <a name="restrictions-on-cropping"></a>Kırpmadan kısıtlamalar
-Kırpma özelliği el ile olacak şekilde tasarlanmıştır. Giriş videonuzu, ilgi çekici çerçeveler seçmenizi sağlayan uygun bir araç aracına yüklemeniz, imleci, kırpma dikdörtgeninin kaydırmalarını belirlemek için işaretçiyi, söz konusu video için ayarlanmış kodlama ön ayarını belirlemek üzere konumlandırmanızı (vb.) yüklemeniz gerekir. Bu özellik, giriş Videonuzdaki siyah harf kutusu/pillarbox kenarlıklarının otomatik algılanması ve kaldırılması gibi şeyleri etkinleştirmek için tasarlanmamıştır.
+## <a name="restrictions-on-cropping"></a>Kırpma ile ilgili kısıtlamalar
+Kırpma özelliği manuel olması içindir. Giriş videonuzu, ilgili kareleri seçmenize, kırpma dikdörtgeni için uzaklıkları belirlemek için imleci konumlandırmanıza ve söz konusu video için ayarlanan kodlama ön ayarını belirlemenize vb. olanak tanıyan uygun bir düzenleme aracına yüklemeniz gerekir. Bu özellik, giriş videonuzdaki kara posta kutusu/sütun sınırlarının otomatik olarak algılanması ve kaldırılması gibi şeyleri etkinleştirmek için değildir.
 
-Aşağıdaki kısıtlamalar kırpma özelliği için geçerlidir. Bunlar karşılanmazsa, kodlama görevi başarısız olabilir veya beklenmeyen bir çıkış üretebilir.
+Aşağıdaki kısıtlamalar kırpma özelliği için geçerlidir. Bunlar karşılanmazsa, Kod Görevi başarısız olabilir veya beklenmeyen bir çıktı üretebilir.
 
-1. Kırpma dikdörtgeninin birlikte bulunan ve boyutunun, giriş videosunun içine sığması gerekir
-2. Yukarıda belirtildiği gibi, kodlama ayarlarındaki genişlik & yüksekliğinin kırpılan videoya karşılık gelmesi gerekir
-3. Kırpma, yatay modda yakalanan videolar için geçerlidir (örn. dikey olarak veya dikey modda tutulan bir akıllı telefonlarla Kaydedilen videoların geçerli olmadığı)
-4. Kare pikselleriyle yakalanan ilerleyen videolar ile en iyi şekilde geçerlidir
+1. Kırpma dikdörtgeninin koordinatları ve boyutu giriş videosuna sığmalı
+2. Yukarıda belirtildiği gibi, kod ayarlarındaki Genişlik & Yüksekliği kırpılmış videoya karşılık
+3. Kırpma, yatay modda çekilen videolar için geçerlidir (örn. dikey olarak veya dikey olarak tutulan bir akıllı telefonla kaydedilen videolar için geçerli değildir)
+4. Kare piksellerle yakalanan aşamalı video ile en iyi şekilde çalışır
 
-## <a name="provide-feedback"></a>Geri bildirim sağlayın
+## <a name="provide-feedback"></a>Geri bildirimde bulunma
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="next-step"></a>Sonraki adım
-AMS tarafından sunulan harika özellikler hakkında bilgi edinmenize yardımcı olması için bkz. Azure Media Services öğrenme yolları.  
+AMS tarafından sunulan harika özellikler hakkında bilgi edinmenize yardımcı olmak için Azure Medya Hizmetleri öğrenme yollarına bakın.  
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

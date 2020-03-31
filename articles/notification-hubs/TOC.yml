@@ -1,4 +1,4 @@
-- name: Notification Hubs Belgeleri
+- name: Notification Hubs ile ilgili belgeler
   href: index.yml
 - name: Genel Bakış
   items:
@@ -11,7 +11,9 @@
   items:
     - name: Bildirim hub'ı oluşturma - Azure portalı
       href: create-notification-hub-portal.md
-    - name: Bildirim hub'ı yapılandırma - Azure portalı
+    - name: Bildirim hub'ı oluşturma - Azure CLI
+      href: create-notification-hub-azure-cli.md
+    - name: Bildirim hub’ını yapılandırma
       href: configure-notification-hub-portal-pns-settings.md
 - name: Öğreticiler
   items:
@@ -140,6 +142,8 @@
       href: notification-hubs-push-notification-fixer.md
     - name: Baidu bulut anında iletme kullanarak anında iletme bildirimleri gönderme
       href: notification-hubs-baidu-china-android-notifications-get-started.md
+    - name: Notification Hubs aracılığıyla APNS VOIP kullanma
+      href: voip-apns.md
 - name: Başvuru
   items:
     - name: .NET

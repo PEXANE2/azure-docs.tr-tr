@@ -1,7 +1,7 @@
 ---
 title: SMOTE
 titleSuffix: Azure Machine Learning
-description: Fazla örnekleme kullanarak bir veri kümesindeki Low-olay örneklerinin sayısını artırmak için Azure Machine Learning SMOTE modülünü nasıl kullanacağınızı öğrenin.
+description: Aşırı örnekleme kullanarak veri kümesindeki düşük insidanslı örneklerin sayısını artırmak için Azure Machine Learning'deki SMOTE modülünün nasıl kullanılacağını öğrenin.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,95 +9,95 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/16/2019
-ms.openlocfilehash: 4b6944f7703500a2c3859e8e3111eceefbd5ff10
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: ed6d9e86143c3a5d6c97c4bd92a07c258bbd1bbc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76311419"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79477468"
 ---
 # <a name="smote"></a>SMOTE
 
-Bu makalede, makine öğrenimi için kullanılan bir veri kümesindeki eksik temsil edilen durumların sayısını artırmak için Azure Machine Learning tasarımcısında SMOTE modülünün nasıl kullanılacağı açıklanır. IÇGÖRÜME, yalnızca mevcut durumları çoğaltmaktan nadir durum sayısını artırmanın daha iyi bir yoludur.  
+Bu makalede, makine öğrenimi için kullanılan bir veri kümesinde yeterince temsil edilmeyen servis talebi sayısını artırmak için Azure Machine Learning tasarımcısındaki (önizleme) SMOTE modülünün nasıl kullanılacağı açıklanmaktadır. SMOTE, nadir vakaların sayısını artırmanın sadece varolan vakaları çoğaltmaktan daha iyi bir yoludur.  
 
-SMOTE modülünü *imdengeli*bir veri kümesine bağlayabilirsiniz. Bir veri kümesinin dengesde olmasının pek çok nedeni olabilir. Örneğin, hedeflediğiniz kategori nüfusda nadir olabilir veya verilerin toplanması zor olabilir. Genellikle, analiz etmek istediğiniz *sınıf* daha fazla temsil edildiğinde Smote kullanırsınız. 
+SMOTE modülünü *dengesiz*bir veri kümesine bağlarsınız. Bir veri kümesinin dengesiz olmasının birçok nedeni olabilir. Örneğin, hedeflediğiniz kategori popülasyonda nadir olabilir veya verileri toplamak zor olabilir. Genellikle, çözümlemek istediğiniz *sınıf* yeterince temsil edilmiyorsa SMOTE'yi kullanırsınız. 
   
-Modül, özgün örnekleri içeren bir veri kümesi döndürür. Ayrıca, Belirttiğiniz yüzdeye bağlı olarak bir dizi yapay minınlık örneği de döndürür.  
+Modül, özgün örnekleri içeren bir veri kümesi döndürür. Ayrıca, belirttiğiniz yüzdebağlı olarak bir dizi sentetik azınlık numunesi de döndürür.  
   
-## <a name="more-about-smote"></a>SMOTE hakkında daha fazla bilgi
+## <a name="more-about-smote"></a>SMOTE hakkında daha fazla
 
-Yapay Minınlık fazla örnekleme tekniği (SMOTE), veri kümenizdeki durum sayısını dengeli bir şekilde artırmak için istatistiksel bir tekniktir. Modül, giriş olarak sağladığınız mevcut minınlık çalışmalarından yeni örnekler oluşturarak işe yarar. Bu duman uygulamasının çoğunluğu büyük/ veya büyük/büyük
+Sentetik Azınlık Örnekleme Tekniği (SMOTE), veri setinizdeki vaka sayısını dengeli bir şekilde artırmak için istatistiksel bir tekniktir. Modül, girdi olarak sağladığınız mevcut azınlık durumlardan yeni örnekler oluşturarak çalışır. SMOTE'nin bu uygulaması çoğunluk durumlarının sayısını *değiştirmez.*
 
-Yeni örnekler yalnızca mevcut minlık durumlarının kopyaları değildir. Bunun yerine, algoritma her bir hedef sınıf ve en yakın komşuları için *özellik alanının* örneklerini alır. Daha sonra algoritma, hedef durumunun özelliklerini komşular özellikleriyle birleştiren yeni örnekler oluşturur. Bu yaklaşım her sınıf için kullanılabilen özellikleri artırır ve örnekleri daha genel hale getirir.
+Yeni örnekler sadece mevcut azınlık davalarının kopyaları değil. Bunun yerine, algoritma her hedef sınıf ve en yakın komşuları için *özellik alanı* örnekleri alır. Algoritma daha sonra, hedef servis talebinin özelliklerini komşularının özellikleriyle birleştiren yeni örnekler oluşturur. Bu yaklaşım, her sınıfın kullanabileceği özellikleri artırır ve örnekleri daha genel hale getirir.
   
-DUMAN, tüm veri kümesini giriş olarak alır, ancak yalnızca azlık durumlarının yüzdesini artırır. Örneğin, yalnızca %1 ' in hedef değerine sahip olduğu (minınlık sınıfı) ve servis taleplerinin yüzde 99 ' unun B değerine sahip olduğu bir imdengeli veri kümeniz olduğunu varsayalım. Minınlık durumlarının yüzdesini önceki yüzdenin iki katına yükseltmek için, modülün özelliklerindeki **Smote yüzdesi** olarak **200** girersiniz.  
+SMOTE tüm veri kümesini bir girdi olarak alır, ancak yalnızca azınlık vakalarının yüzdesini artırır. Örneğin, vakaların yalnızca yüzde 1'inin hedef değer A'ya (azınlık sınıfı) ve vakaların yüzde 99'unun B değerine sahip olduğu dengesiz bir veri kümeniz olduğunu varsayalım. Azınlık vakalarının yüzdesini önceki yüzdenin iki katına çıkarmak için, modülün özelliklerine **SMOTE yüzdesi** için **200** girersiniz.  
   
 ## <a name="examples"></a>Örnekler  
 
-Nasıl çalıştığını görmek için küçük bir veri kümesiyle SMOTE kullanmayı denemeniz önerilir. Aşağıdaki örnek, Azure Machine Learning tasarımcısında bulunan kan bağış veri kümesini kullanır.
+Nasıl çalıştığını görmek için küçük bir veri kümesiyle SMOTE'u kullanmayı denemenizi öneririz. Aşağıdaki örnekte, Azure Machine Learning tasarımcısında bulunan Kan Bağışı veri kümesi kullanılır.
   
-Veri kümesini bir işlem hattına ekler ve veri kümesinin çıktısında **Görselleştir** ' i seçerseniz, 748 satır veya veri kümesindeki satırın veya durumların, 570 servis taleplerinin (yüzde 76) 0 sınıfında olduğunu ve 178 Cases (%24) sınıfının 1 olduğunu görebilirsiniz. Bu sonuç, korsansız olmasa da, 1. sınıf, kanlı olan kişileri temsil ettiğinden, bu satırlar, modellemek istediğiniz *özellik alanını* içerir.
+Veri kümesini bir ardışık sıraya ekler ve veri kümesinin çıktısında **Görselleştir'i** seçerseniz, veri kümesindeki 748 satır veya servis genelliklenin 570 örneğinin (yüzde 76) Sınıf 0 ve 178 servis örneğinin (yüzde 24) Sınıf 1'den olduğunu görebilirsiniz. Bu sonuç son derece dengesiz olmasa da, Sınıf 1 kan bağışlayan kişileri temsil eder, bu nedenle bu satırlar modellemek istediğiniz *özellik alanını* içerir.
  
-Durum sayısını artırmak için, aşağıdaki gibi 100 katları kullanarak **Smote yüzdesi**değerini ayarlayabilirsiniz:
+Servis taleplerini artırmak için, 100'ün katlarını kullanarak **SMOTE yüzdesinin**değerini aşağıdaki gibi ayarlayabilirsiniz:
 
 ||Sınıf 0|Sınıf 1|toplam|  
 |-|-------------|-------------|-----------|  
-|Özgün veri kümesi<br /><br /> ( = **Smolik yüzdesine** eşdeğerdir)|570<br /><br /> %76|178<br /><br /> 24|748|  
-|**Smote yüzdesi** = **100**|570<br /><br /> %62|356<br /><br /> %38|926|  
-|**Smote yüzdesi** = **200**|570<br /><br /> %52|534<br /><br /> %48|1\.104|  
-|**Smote yüzdesi** = **300**|570<br /><br /> %44|712<br /><br /> %56|1\.282|  
+|Orijinal veri kümesi<br /><br /> **(SMOTE yüzdesi** = **0'a**eşdeğer )|570<br /><br /> 76%|178<br /><br /> 24%|748|  
+|**SMOTE yüzdesi** = **100**|570<br /><br /> 62%|356<br /><br /> 38%|926|  
+|**SMOTE yüzdesi** = **200**|570<br /><br /> %52|534<br /><br /> 48%|1,104|  
+|**SMOTE yüzdesi** = **300**|570<br /><br /> 44%|712<br /><br /> 56%|1,282|  
   
 > [!WARNING]
-> Daha doğru modeller oluşturmak için, SMOTE kullanılarak durum sayısının artırılması garanti edilmez. Farklı yüzdeleri, farklı özellik kümelerini ve farklı sayıda komşu komşular ile ardışık düzen oluşturmayı deneyerek, servis taleplerinin modelinizi nasıl etkilediğini görün.  
+> SMOTE kullanarak servis taleplerini artırmak daha doğru modeller üretmek için garanti edilmez. Servis talepleri eklemenin modelinizi nasıl etkilediğini görmek için farklı yüzdelerle, farklı özellik kümeleriyle ve farklı sayıda en yakın komşuyla pipelining yapmayı deneyin.  
   
-## <a name="how-to-configure-smote"></a>SMOTE yapılandırma
+## <a name="how-to-configure-smote"></a>SMOTE nasıl yapılandırılır?
   
-1.  Ardışık düzene SMOTE modülünü ekleyin. Modül, **veri dönüştürme modülleri**altında, **düzenleme** kategorisinde bulunabilir.
+1.  SMOTE modüllerini boru hattınıza ekleyin. Modülü Veri Dönüşümü **modülleri**altında, **Manipülasyon** kategorisinde bulabilirsiniz.
 
-2. Artırmak istediğiniz veri kümesini bağlayın. Yeni durumları oluşturmak için veya yalnızca belirli sütunları kullanarak ya da bazılarını dışlayarak özellik alanını belirtmek istiyorsanız, [veri kümesinde sütunları seç](select-columns-in-dataset.md) modülünü kullanın. Daha sonra, SMOTE kullanmadan önce kullanmak istediğiniz sütunları ayırabilirsiniz.
+2. Artırmak istediğiniz veri kümesini bağlayın. Yalnızca belirli sütunlar kullanarak veya bazılarını hariç tutarak yeni servis taleplerini oluşturmak için özellik alanını belirtmek istiyorsanız, [Dataset modülündeki Sütunları Seç'i](select-columns-in-dataset.md) kullanın. Daha sonra SMOTE kullanmadan önce kullanmak istediğiniz sütunları yalıtabilirsiniz.
   
-    Aksi takdirde, IÇNI aracılığıyla yeni durumların oluşturulması, giriş olarak sağladığınız *Tüm* sütunları temel alır. Özellik sütunlarının en az bir sütunu sayısaldır.
+    Aksi takdirde, SMOTE aracılığıyla yeni servis talepleri nin oluşturulması, girdi olarak sağladığınız *tüm* sütunları temel alar. Özellik sütunlarının en az bir sütunu sayısaldır.
   
-3.  Etiketi veya hedef sınıfı içeren sütunun seçili olduğundan emin olun. SMOTE yalnızca ikili Etiketler kabul eder.
+3.  Etiket veya hedef sınıfı içeren sütunun seçildiğinden emin olun. SMOTE yalnızca ikili etiketleri kabul eder.
   
-4.  SMOTE modülü etiket sütunundaki minınlık sınıfını otomatik olarak tanımlar ve ardından minınlık sınıfı için tüm örnekleri alır. Tüm sütunlarda NaN değer bulunamaz.
+4.  SMOTE modülü, etiket sütunundaki azınlık sınıfını otomatik olarak tanımlar ve azınlık sınıfı için tüm örnekleri alır. Tüm sütunlar NaN değerlerine sahip olamaz.
   
-5.  **Smote yüzdesi** seçeneğinde, çıkış veri kümesindeki minınlık durumlarının hedef yüzdesini gösteren bir tamsayı girin. Örneğin:  
+5.  **SMOTE yüzdesi** seçeneğinde, çıktı veri kümesindeki azınlık durumlarının hedef yüzdesini gösteren bir tam sayı girin. Örnek:  
   
-    - **0**girersiniz. SMOTE modülü, giriş olarak belirttiğiniz veri kümesini tam olarak döndürür. Yeni bir minınlık durumu ekler. Bu veri kümesinde, sınıf oranı değişmemiştir.  
+    - **0**girersiniz. SMOTE modülü, girdi olarak sağladığınız veri kümesini tam olarak döndürür. Yeni azınlık davaları da ekliyor. Bu veri kümesinde sınıf oranı değişmedi.  
   
-    - **100**girersiniz. SMOTE modülü yeni minlık durumları oluşturur. Özgün veri kümesindeki aynı sayıda minınlık durumunu ekler. SMOTE, büyük/büyük/büyük/büyük/veya her bir sınıfın servis taleplerinin oranını değiştirmediği için.  
+    - **100 girersin.** SMOTE modülü yeni azınlık vakaları oluşturur. Bu orijinal veri kümesinde olan azınlık durumlarda aynı sayıda ekler. SMOTE çoğunluk durumlarının sayısını artırmadığından, her sınıfın servis taleplerini n oranı değişti.  
   
-    - **200**girersiniz. Modül, özgün veri kümesiyle karşılaştırıldığında minınlık durumlarının yüzdesini iki katına çıkarır. Bu *,* daha önce olduğu gibi birçok minlık durumuna iki kez sahip olmaya neden olmaz. Bunun yerine, veri kümesinin boyutu, çok sayıda büyük bir durumda kalacak şekilde artar. Minınlık durumlarının sayısı, istenen yüzde değeri ile eşleşene kadar artar.  
+    - **200 girersin.** Modül, orijinal veri kümesine kıyasla azınlık vakalarının yüzdesini iki katına çıkar. Bu da öncekinin iki katı kadar azınlık davasına yol *alamayıyor.* Bunun yerine, veri kümesinin boyutu, çoğunluk durum larının sayısının aynı kalacağı şekilde artar. İstenilen yüzde değeriyle eşleşene kadar azınlık vakalarının sayısı artırılır.  
   
     > [!NOTE]
-    > SMOTE yüzdesi için yalnızca 100 katları kullanın.
+    > SMOTE yüzdesi için 100'ün yalnızca katlarını kullanın.
 
-6.  SMOTE algoritmasının yeni durumlar oluştururken kullandığı özellik alanının boyutunu belirtmek için **en yakın komşu sayısı** seçeneğini kullanın. En yakın komşu bir hedef örneğine benzer bir veri satırıdır (bir durumdur). İki durum arasındaki mesafe, tüm özelliklerin ağırlıklı vektörlerini birleştirerek ölçülür.  
+6.  SMOTE **algoritmasının** yeni servis talepleri oluşturmak için kullandığı özellik alanının boyutunu belirlemek için en yakın komşu sayısı seçeneğini kullanın. En yakın komşu, hedef servis talebine benzer bir veri satırıdır (servis talebi). Herhangi iki durum arasındaki mesafe, tüm özelliklerin ağırlıklı vektörleri birleştirilerek ölçülür.  
   
-    + En yakın komşu sayısını artırarak, daha fazla durumda özellikler alırsınız.
-    + En yakın komşuların sayısını düşük tutarak, özgün örnekteki gibi olan özellikleri kullanabilirsiniz.  
+    + En yakın komşuların sayısını artırarak, daha fazla durumda özellikler elde elabilirsiniz.
+    + En yakın komşu sayısını düşük tutarak, orijinal örnektekilere daha çok benzeyen özellikler kullanırsınız.  
   
-7. Aynı işlem hattının çalıştırılmasıyla aynı sonuçları aynı verilerle aynı şekilde sağlamak istiyorsanız **rastgele çekirdek** kutusunda bir değer girin. Aksi takdirde, işlem hattı dağıtıldığında modül işlemci saati değerlerini temel alarak rastgele bir çekirdek oluşturur. Rastgele bir çekirdek oluşturulması, çalıştırmalar üzerinde biraz farklı sonuçlara neden olabilir.
+7. Aynı veri ile aynı ardışık ardışık çalışır üzerinde aynı sonuçları sağlamak istiyorsanız **Random tohum** kutusuna bir değer girin. Aksi takdirde, boru hattı dağıtıldığında modül işlemci saat değerlerine dayalı rasgele bir tohum oluşturur. Rasgele bir tohum üretimi çalışır üzerinde biraz farklı sonuçlara neden olabilir.
 
-8. İşlem hattını çalıştırma.  
+8. Boru hattını gönderin.  
   
-   Modülün çıktısı, özgün satırları içeren bir veri kümesidir ve azlık durumları içeren bir dizi eklenen satır.  
+   Modülün çıktısı, özgün satırların yanı sıra azınlık durumları olan bir dizi ek satır içeren bir veri kümesidir.  
 
 ## <a name="technical-notes"></a>Teknik notlar
 
-+ **Smote** modülünü kullanan bir modeli yayımlarken, bir Web hizmeti olarak yayınlanmadan önce, tahmine dayalı işlem hattından **Smote** 'yı kaldırın. Bunun nedeni, SMOME 'nin eğitim sırasında bir modeli geliştirmek için tasarlanmış olması, Puanlama için değil. Yayımlanan bir tahmine dayalı işlem hattı, SMOTE modülünü içeriyorsa bir hata alabilirsiniz.
++ **SMOTE** modüllerini kullanan bir model yayımlarken, web hizmeti olarak yayımlanmadan önce **SMOTE'yi** tahmin edilen ardışık kaynaktan kaldırın. Bunun nedeni, SMOTE'nin eğitim sırasında bir modeli geliştirmek için tasarlanmış olmasıdır, puanlama için değil. Yayınlanmış bir tahmin hattı SMOTE modüllerini içeriyorsa hata alabilirsiniz.
 
-+ Eksik değerleri temizleyip, IÇGÖRÜLERINIZI uygulamadan önce verileri onarmak için diğer dönüştürmeleri uygularsanız, genellikle daha iyi sonuçlar elde edebilirsiniz. 
++ SMOTE'u uygulamadan önce eksik değerleri temizlerseniz veya verileri düzeltmek için başka dönüşümler uygularsanız genellikle daha iyi sonuçlar elde edebilirsiniz. 
 
-+ Bazı araştırmacılar, SMOTE 'ın, metin sınıflandırması veya genomikler veri kümelerinde kullanılan veriler gibi yüksek boyutlu veya seyrek veriler üzerinde etkin olup olmadığını araştırmıştır. Bu raporda, bu gibi durumlarda SMOTE uygulamanın teorik ve teorik geçerliliği hakkında iyi bir Özet vardır: [Blagus ve lusa: yüksek boyutlu sınıf tarafından imlenen veriler IÇIN Smote](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-14-106).
++ Bazı araştırmacılar SMOTE'nin metin sınıflandırmasında veya genomik veri kümelerinde kullanılan veriler gibi yüksek boyutlu veya seyrek veriler üzerinde etkili olup olmadığını araştırmış. Bu yazı etkileri ve bu gibi durumlarda SMOTE uygulama teorik geçerliliği iyi bir özeti vardır: [Blagus ve Lusa: Yüksek boyutlu sınıf dengesiz veri için SMOTE](https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-14-106).
 
-+ SIGTE, veri kümeniz için geçerli değilse, göz önünde bulundurmanız gereken diğer yaklaşımlar şunlardır:
-  + Minınlık durumlarını fazla örnekleme veya çoğunluk örneklerinin temelini örnekleme yöntemleri.
-  + Kümeleme, Bama veya Uyarlamalı yükseltme kullanarak doğrudan öğrenme yardımcı olan teknikler.
++ SMOTE veri setinizde etkili değilse, düşünebilirsiniz diğer yaklaşımlar şunlardır:
+  + Azınlık davalarını aşırı örnekleme veya çoğunluk vakalarının alt örnekleme yöntemleri.
+  + Kümeleme, torbalama veya uyarlamalı güçlendirme kullanarak doğrudan öğrenciye yardımcı olan topluluk teknikleri.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Machine Learning için [kullanılabilen modül kümesine](module-reference.md) bakın. 
+Azure Machine Learning için [kullanılabilen modül ler kümesine](module-reference.md) bakın. 
 

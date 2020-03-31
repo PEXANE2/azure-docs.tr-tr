@@ -1,7 +1,7 @@
 ---
-title: Weibo hesabı ile kaydolma ve oturum açma ayarlama
+title: Weibo hesabıyla kaydolma ve kaydolma ayarlama
 titleSuffix: Azure AD B2C
-description: Azure Active Directory B2C kullanarak uygulamalarınızda Weibo hesabı bulunan müşterilere kaydolma ve oturum açma sağlayın.
+description: Azure Active Directory B2C'yi kullanarak uygulamalarınızda Weibo hesabı olan müşterilere kaydolma ve kaydolma sağlayın.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,48 +12,48 @@ ms.date: 08/08/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: e99b5717cdcc32d8fd138d1edf5fe1bd3283c70e
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78187908"
 ---
-# <a name="set-up-sign-up-and-sign-in-with-a-weibo-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C kullanarak oturum açma ve Weibo hesabı ile oturum açma ayarlama
+# <a name="set-up-sign-up-and-sign-in-with-a-weibo-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C'yi kullanarak Weibo hesabıyla kaydolma ve kaydolma ayarlama
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
 ## <a name="create-a-weibo-application"></a>Weibo uygulaması oluşturma
 
-Azure Active Directory B2C (Azure AD B2C) ' de bir kimlik sağlayıcısı olarak bir Weibo hesabı kullanmak için kiracınızda onu temsil eden bir uygulama oluşturmanız gerekir. Zaten bir Weibo hesabınız yoksa [https://weibo.com/signup/signup.php?lang=en-us](https://weibo.com/signup/signup.php?lang=en-us)' de kaydolabilirsiniz.
+Bir Weibo hesabını Azure Active Directory B2C'de (Azure AD B2C) kimlik sağlayıcısı olarak kullanmak için kiracınızda onu temsil eden bir uygulama oluşturmanız gerekir. Zaten bir Weibo hesabınız yoksa, 'ye [https://weibo.com/signup/signup.php?lang=en-us](https://weibo.com/signup/signup.php?lang=en-us)kaydolabilirsiniz.
 
-1. [Weibo Geliştirici Portalında](https://open.weibo.com/) Weibo hesabı kimlik bilgilerinizle oturum açın.
-1. Oturum açtıktan sonra sağ üst köşedeki görünen adınızı seçin.
-1. Açılan menüde**编辑开发者信息**(geliştirici bilgilerini düzenle) öğesini seçin.
-1. Gerekli bilgileri girin ve**提交**(Gönder) seçeneğini belirleyin.
-1. E-posta doğrulama sürecini doldurun.
+1. Weibo hesap kimlik bilgilerinizle [Birlikte Weibo geliştirici portalında](https://open.weibo.com/) oturum açın.
+1. Oturum açmadan sonra sağ üst köşede görüntü adınızı seçin.
+1. Açılan açılır durumda, geliştirici bilgilerini **(geliştirici** bilgilerini düzenleme) seçeneğini belirleyin.
+1. Gerekli bilgileri girin **提交** ve (gönder) seçin.
+1. E-posta doğrulama işlemini tamamlayın.
 1. [Kimlik doğrulama sayfasına](https://open.weibo.com/developers/identity/edit)gidin.
-1. Gerekli bilgileri girin ve**提交**(Gönder) seçeneğini belirleyin.
+1. Gerekli bilgileri girin **提交** ve (gönder) seçin.
 
-### <a name="register-a-weibo-application"></a>Bir Weibo uygulamasını kaydetme
+### <a name="register-a-weibo-application"></a>Weibo uygulamasını kaydedin
 
-1. [Yeni Weibo uygulaması kayıt sayfasına](https://open.weibo.com/apps/new)gidin.
+1. [Yeni Weibo uygulama kayıt sayfasına](https://open.weibo.com/apps/new)gidin.
 1. Gerekli uygulama bilgilerini girin.
-1. **创建**(Oluştur) seçeneğini belirleyin.
-1. **Uygulama anahtarı** ve **uygulama gizli**anahtarı değerlerini kopyalayın. Kimlik sağlayıcısını kiracınıza eklemek için bunların her ikisine de ihtiyacınız vardır.
-1. Gerekli Fotoğrafları karşıya yükleyin ve gerekli bilgileri girin.
-1. **保存以上信息**(Kaydet) seçeneğini belirleyin.
-1. **高级信息**(gelişmiş bilgiler) seçeneğini belirleyin.
-1. OAuth 2.0**授权设置**(YENIDEN yönlendirme URL) alanının yanındaki**编辑**(Düzenle) öğesini seçin.
-1. OAuth 2.0**授权设置**(Redirect URL) için `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` girin. Örneğin, kiracı adınız contoso ise, URL 'YI `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp`olarak ayarlayın.
-1. **提交**(Gönder) seçeneğini belirleyin.
+1. Seçin **(oluştur).**
+1. **App Key** ve **App Secret**değerlerini kopyalayın. Kimlik sağlayıcınızı kiracınıza eklemek için bunların her ikisine de ihtiyacınız var.
+1. Gerekli fotoğrafları yükleyin ve gerekli bilgileri girin.
+1. Seçin **iz** (kaydet).
+1. **(Gelişmiş** bilgi) seçin.
+1. OAuth2.0 **授权设置** için alanın yanındaki **编辑** (url'yi yeniden yönlendir) seçin.
+1. OAuth2.0 **授权设置** (URL yönlendirme) için girin. `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` Örneğin, kiracı adınız contoso ise, URL'yi `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp`.
+1. Seçin **提交** (gönder).
 
-## <a name="configure-a-weibo-account-as-an-identity-provider"></a>Bir Weibo hesabını kimlik sağlayıcısı olarak yapılandırma
+## <a name="configure-a-weibo-account-as-an-identity-provider"></a>Weibo hesabını kimlik sağlayıcısı olarak yapılandırma
 
 1. [Azure portalda](https://portal.azure.com/) Azure AD B2C kiracınızın genel yöneticisi olarak oturum açın.
-1. Üst menüdeki **Dizin + abonelik** filtresini seçip kiracınızı içeren dizini seçerek Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun.
+1. Üst menüdeki **Dizin + abonelik** filtresini seçerek ve kiracınızı içeren dizin seçerek Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun.
 1. Azure portalın sol üst köşesinde **Tüm hizmetler**’i seçin ve **Azure AD B2C**’yi arayıp seçin.
-1. **Kimlik sağlayıcıları**' nı seçin ve ardından **Weibo (Önizleme)** öğesini seçin.
-1. Bir **ad**girin. Örneğin, *Weibo*.
-1. **ISTEMCI kimliği**için, daha önce oluşturduğunuz Weibo uygulamasının uygulama anahtarını girin.
-1. **İstemci parolası**için, kaydettiğiniz uygulama gizli anahtarını girin.
-1. **Kaydet**’i seçin.
+1. **Kimlik sağlayıcılarını**seçin, ardından **Weibo'yu seçin (Önizleme)**.
+1. Bir **Ad**girin. Örneğin, *Weibo.*
+1. **İstemci Kimliği**için, daha önce oluşturduğunuz Weibo uygulamasının Uygulama Anahtarı'nı girin.
+1. Müşteri **sırrı**için, kaydettiğiniz App Secret'ı girin.
+1. **Kaydet'i**seçin.

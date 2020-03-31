@@ -1,23 +1,23 @@
 ---
-title: Hızlı başlangıç-kayıt defteri oluşturma-Azure CLı
+title: Quickstart - Kayıt defteri oluşturma - Azure CLI
 description: Azure CLI ile hızlıca özel bir Docker kapsayıcısı kayıt defteri oluşturmayı öğrenin.
 ms.topic: quickstart
 ms.date: 01/22/2019
 ms.custom: seodec18, H1Hack27Feb2017, mvc
 ms.openlocfilehash: 551a3659feb39943c9f794484abb6f2da4367f39
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/24/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74455160"
 ---
-# <a name="quickstart-create-a-private-container-registry-using-the-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak özel kapsayıcı kayıt defteri oluşturma
+# <a name="quickstart-create-a-private-container-registry-using-the-azure-cli"></a>Hızlı başlatma: Azure CLI'yi kullanarak özel bir kapsayıcı kayıt defteri oluşturma
 
-Azure Container Registry, özel Docker kapsayıcı görüntülerini depolamak için kullanılan bir yönetilen Docker kapsayıcı kayıt defteridir. Bu kılavuzda, Azure CLI kullanarak bir Azure Container Registry örneği oluşturma hakkındaki ayrıntılar yer alır. Ardından, Docker komutlarını kullanarak kayıt defterine bir kapsayıcı görüntüsü gönderin ve son olarak görüntüyü Kayıt defterinizden çekin ve çalıştırın.
+Azure Container Registry, özel Docker kapsayıcı görüntülerini depolamak için kullanılan bir yönetilen Docker kapsayıcı kayıt defteridir. Bu kılavuzda, Azure CLI kullanarak bir Azure Container Registry örneği oluşturma hakkındaki ayrıntılar yer alır. Ardından, bir kapsayıcı görüntüsünü kayıt defterine itmek için Docker komutlarını kullanın ve son olarak resmi kayıt defterinizden çekip çalıştırın.
 
-Bu hızlı başlangıç, Azure CLı 'yi (sürüm 2.0.55 veya üzeri önerilir) çalıştırıyor olmanızı gerektirir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme][azure-cli].
+Bu hızlı başlatma, Azure CLI'yi (sürüm 2.0.55 veya daha sonra önerilir) çalıştırmanızı gerektirir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme][azure-cli].
 
-Ayrıca sisteminizde yerel olarak Docker yüklü olması gerekir. Docker, tüm [MacOS][docker-mac], [Windows][docker-windows]veya [Linux][docker-linux] sistemlerinde Docker 'ı kolayca yapılandıran paketler sağlar.
+Ayrıca sisteminizde yerel olarak Docker yüklü olması gerekir. Docker [macOS][docker-mac], [Windows][docker-windows] veya [Linux][docker-linux]'ta Docker'ı kolayca yapılandırmanızı sağlayan paketler sağlar.
 
 Azure Cloud Shell gerekli tüm Docker bileşenlerini (`dockerd` daemon) içermediğinden, bu hızlı başlangıçta Cloud Shell’i kullanamazsınız.
 
@@ -33,7 +33,7 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-container-registry"></a>Kapsayıcı kayıt defteri oluşturma
 
-Bu hızlı başlangıçta, Azure Container Registry hakkında bilgi edinmek için uygun maliyetli bir seçenek olan *temel* bir kayıt defteri oluşturursunuz. Kullanılabilir hizmet katmanları hakkında daha fazla bilgi için bkz. [kapsayıcı kayıt defteri SKU 'ları][container-registry-skus].
+Bu hızlı başlangıçta, Azure Konteyner Kayıt Defteri'ni öğrenen geliştiriciler için maliyet için en uygun seçenek olan *bir Temel* kayıt defteri oluşturursunuz. Kullanılabilir hizmet katmanları hakkında ayrıntılı bilgi için [Konteyner kayıt defteri SUS'larına][container-registry-skus]bakın.
 
 [az act create][az-acr-create] komutunu kullanarak bir ACR örneği oluşturun. Kaynak defteri adı Azure’da benzersiz olmalı ve 5-50 arası alfasayısal karakter içermelidir. Aşağıdaki örnekte *myContainerRegistry007* komutu kullanılmıştır. Bunu benzersiz bir değerle güncelleştirin.
 
@@ -64,11 +64,11 @@ Kayıt defteri oluşturulduğunda çıkış aşağıdakilere benzer:
 }
 ```
 
-Çıktıda, tam olarak nitelenmiş kayıt defteri adı (tümü küçük harf) olan `loginServer` bir göz atın. Bu hızlı başlangıcın geri kalanında `<acrName>`, kapsayıcı kayıt defteri adı için bir yer tutucudur.
+Tam nitelikli `loginServer` kayıt defteri adı (tüm küçük harf) çıktı, dikkat edin. Bu hızlı başlangıcın geri kalanında `<acrName>`, kapsayıcı kayıt defteri adı için bir yer tutucudur.
 
 ## <a name="log-in-to-registry"></a>Kayıt defterinde oturum açma
 
-Kapsayıcı görüntülerini göndermeden ve çekmeden önce, kayıt defterinde oturum açmalısınız. Bunu yapmak için [az acr login][az-acr-login] komutunu kullanın.
+Konteyner görüntülerini itmeden ve çekmeden önce kayıt defterine giriş yapmalısınız. Bunu yapmak için [az acr login][az-acr-login] komutunu kullanın.
 
 ```azurecli
 az acr login --name <acrName>
@@ -80,7 +80,7 @@ Bu komut tamamlandığında `Login Succeeded` iletisi döndürülür.
 
 ## <a name="list-container-images"></a>Kapsayıcı görüntülerini listeleme
 
-Aşağıdaki örnek, kayıt defterinizde bulunan depoları listeler:
+Aşağıdaki örnekte kayıt defterinizdeki depolar listelenebvardır:
 
 ```azurecli
 az acr repository list --name <acrName> --output table
@@ -94,7 +94,7 @@ Result
 hello-world
 ```
 
-Aşağıdaki örnekte, **Merhaba-Dünya** deposundaki Etiketler listelenmektedir.
+Aşağıdaki örnekte, merhaba **dünyası** deposundaki etiketler listelenir.
 
 ```azurecli
 az acr repository show-tags --name <acrName> --repository hello-world --output table
@@ -112,7 +112,7 @@ v1
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık gerekli değilse, [az Group Delete][az-group-delete] komutunu kullanarak kaynak grubunu, kapsayıcı kayıt defterini ve orada depolanan kapsayıcı görüntülerini kaldırabilirsiniz.
+Artık gerekmediğinde, kaynak grubunu, kapsayıcı kayıt defterini ve depolanan kapsayıcı görüntülerini kaldırmak için [az grubu silme][az-group-delete] komutunu kullanabilirsiniz.
 
 ```azurecli
 az group delete --name myResourceGroup
@@ -120,10 +120,10 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta Azure CLı ile bir Azure Container Registry oluşturdunuz, kayıt defterine bir kapsayıcı görüntüsü gönderdi ve görüntüyü kayıt defterinden çekmiş ve çalıştırdınız. ACR 'ye daha ayrıntılı bir bakış için Azure Container Registry öğreticilerine geçin.
+Bu hızlı başlangıçta, Azure CLI içeren bir Azure Kapsayıcı Kayıt Defteri oluşturdunuz, bir kapsayıcı görüntüsünü kayıt defterine ittiniz ve resmi kayıt defterinden çekip çalıştırdın. ACR'ye daha derinlemesine bakmak için Azure Konteyner Kayıt Defteri öğreticilerine devam edin.
 
 > [!div class="nextstepaction"]
-> [Azure Container Registry öğreticileri][container-registry-tutorial-quick-task]
+> [Azure Konteyner Kayıt Defteri öğreticileri][container-registry-tutorial-quick-task]
 
 <!-- LINKS - external -->
 [docker-linux]: https://docs.docker.com/engine/installation/#supported-platforms

@@ -9,21 +9,21 @@ ms.date: 10/09/2018
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: 8e0e549f88caf4a541642bab77faf54b5e536b29
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/20/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "71175002"
 ---
-## <a name="deploy-an-image-with-marketplace-terms"></a>Market koşullarına sahip bir görüntü dağıtma
+## <a name="deploy-an-image-with-marketplace-terms"></a>Pazar yeri terimleriyle görüntü dağıtma
 
-Azure Marketi 'ndeki bazı sanal makine görüntülerinin, programlama yoluyla dağıtmadan önce kabul etmeniz gereken ek lisans ve satın alma koşulları vardır.  
+Azure Marketi'ndeki bazı VM görüntülerinin, bunları programlı bir şekilde dağıtmadan önce kabul etmesi gereken ek lisans ve satın alma koşulları vardır.  
 
-Bu tür bir görüntüden bir VM dağıtmak için, hem görüntünün koşullarını kabul etmeniz hem de programlı dağıtımı etkinleştirmeniz gerekir. Bunu her abonelik için yalnızca bir kez yapmanız gerekir. Bundan sonra, görüntüden program aracılığıyla bir VM dağıttığınızda, *satın alma planı* parametreleri de belirtmeniz gerekir.
+Böyle bir görüntüden bir VM dağıtmak için hem görüntünün koşullarını kabul etmeniz hem de programatik dağıtımı etkinleştirmeniz gerekir. Bunu abonelik başına yalnızca bir kez yapmanız gerekir. Daha sonra, görüntüden programlı bir VM dağıttığınızda *satınalma planı* parametrelerini de belirtmeniz gerekir.
 
-Aşağıdaki bölümlerde aşağıdakilerin nasıl yapılacağı gösterilmektedir:
+Aşağıdaki bölümlernasıl yapılacağını gösterir:
 
 * Market görüntüsünün ek lisans koşullarına sahip olup olmadığını öğrenin 
-* Koşulları programlama yoluyla kabul etme
-* Bir VM 'yi program aracılığıyla dağıtırken satın alma planı parametreleri sağlama
+* Terimleri programlı olarak kabul edin
+* Bir VM'yi programlı olarak dağıttığınızda satınalma planı parametrelerini sağlama
 

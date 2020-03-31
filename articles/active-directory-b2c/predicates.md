@@ -1,7 +1,7 @@
 ---
-title: Koşullar ve Predicatedoğrulamaları
+title: Yüklemler ve Yüklemler
 titleSuffix: Azure AD B2C
-description: Azure Active Directory B2C içindeki özel ilkeleri kullanarak, hatalı oluşturulmuş verilerin Azure AD B2C kiracınıza eklenmesini engelleyin.
+description: Azure Active Directory B2C'de özel ilkeler kullanarak azure AD B2C kiracınıza bozuk veri eklenmesini önleyin.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -12,62 +12,62 @@ ms.date: 02/24/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: cc61ef5980a8019514f05c1db47f2300fff3603b
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
-ms.translationtype: MT
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78187245"
 ---
-# <a name="predicates-and-predicatevalidations"></a>Koşullar ve Predicatedoğrulamaları
+# <a name="predicates-and-predicatevalidations"></a>Yüklemler ve Yüklemler
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-**Koşullar** ve **predicatevalidation** öğeleri, Azure Active Directory B2C (Azure AD B2C) kiracısına yalnızca düzgün biçimlendirilmiş verilerin girildiğinden emin olmak için bir doğrulama işlemi gerçekleştirmenizi sağlar.
+**Yüklemler** ve **Yüklemler Özdeyişler** öğeleri, Azure Active Directory B2C (Azure AD B2C) kiracınıza yalnızca düzgün biçimlendirilmiş verilerin girilmesini sağlamak için bir doğrulama işlemi gerçekleştirmenize olanak tanır.
 
-Aşağıdaki diyagramda öğeler arasındaki ilişki gösterilmektedir:
+Aşağıdaki diyagram, öğeler arasındaki ilişkiyi gösterir:
 
-![Koşullar ve koşul doğrulamaları ilişkisini gösteren diyagram](./media/predicates/predicates.png)
+![Yüklemleri ve Yüklem Doğrulamalarını İlişkisi Gösteren Diyagram](./media/predicates/predicates.png)
 
 ## <a name="predicates"></a>Koşullar
 
-**Koşul** öğesi, bir talep türünün değerini denetlemek için temel bir doğrulama tanımlar ve `true` veya `false`döndürür. Doğrulama, belirtilen bir **Yöntem** öğesi ve yöntemiyle ilgili bir dizi **parametre** öğesi kullanılarak yapılır. Örneğin bir koşul, bir dize talep değerinin uzunluğunun, belirtilen minimum ve maksimum parametre aralığı içinde olup olmadığını veya bir dize talep değerinin bir karakter kümesi içerip içermediğini denetleyebilir. **Userhelptext** öğesi, Denetim başarısız olursa kullanıcılar için bir hata mesajı sağlar. **Userhelptext** öğesinin değeri [dil özelleştirmesi](localization.md)kullanılarak yerelleştirilebilecek.
+**Yüklem** öğesi, bir talep türünün değerini denetlemek için temel `true` bir `false`doğrulama tanımlar ve geri verir veya . Doğrulama, belirtilen bir **Yöntem** öğesi ve yöntemle ilgili **bir parametre** öğesi kümesi kullanılarak yapılır. Örneğin, bir yüklem, bir dize talep değerinin uzunluğunun belirtilen minimum ve maksimum parametreler aralığında olup olmadığını veya bir dize talep değerinin bir karakter kümesi ni içerip içermediğini denetleyebilir. **UserHelpText** öğesi, denetim başarısız olursa kullanıcılar için bir hata iletisi sağlar. **UserHelpText** öğesinin değeri [dil özelleştirme](localization.md)kullanılarak yerelleştirilebilir.
 
-**Doðrulama** öğesi, [buildingblocks](buildingblocks.md) öğesi Içinde **claimsschema** öğesinin hemen ardından gelmelidir.
+**Yüklemler** [öğesi, BuildingBlocks](buildingblocks.md) öğesi içindeki **ClaimsSchema** öğesini doğrudan takip etmelidir.
 
-**Koşullar** öğesi aşağıdaki öğeyi içerir:
+**Yüklemler** öğesi aşağıdaki öğeyi içerir:
 
-| Öğe | Öğeleri | Açıklama |
+| Öğe | Oluşum | Açıklama |
 | ------- | ----------- | ----------- |
-| Koşulunda | 1: n | Koşulların listesi. |
+| Yüklemi | 1:n | Yüklemlerin listesi. |
 
-**Koşul** öğesi aşağıdaki öznitelikleri içerir:
+**Yüklem** öğesi aşağıdaki öznitelikleri içerir:
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Kimlik | Yes | Koşul için kullanılan bir tanımlayıcı. Diğer öğeler ilkede bu tanımlayıcıyı kullanabilir. |
-| Yöntem | Yes | Doğrulama için kullanılacak yöntem türü. Olası değerler: **ılengthrange**, **matchesregex**, **ıncludescharacters**veya **ıdadterange**. **Ilengthrange** değeri, bir dize talep değerinin uzunluğunun, belirtilen minimum ve maksimum parametre aralığı içinde olup olmadığını denetler. **Matchesregex** değeri, bir dize talep değerinin bir normal ifadeyle eşleşip eşleşmediğini denetler. **Includescharacters** değeri, bir dize talep değerinin bir karakter kümesi içerip içermediğini denetler. **Isdadterange** değeri, bir tarih talep değerinin belirtilen en düşük ve en fazla parametre aralığı arasında olup olmadığını denetler. |
-| HelpText | Hayır | Denetim başarısız olursa kullanıcılara yönelik bir hata iletisi. Bu dize, [dil özelleştirmesi](localization.md) kullanılarak yerelleştirilebilecek |
+| Kimlik | Evet | Yüklem için kullanılan bir tanımlayıcı. Diğer öğeler bu tanımlayıcıyı ilkede kullanabilir. |
+| Yöntem | Evet | Doğrulama için kullanılacak yöntem türü. Olası değerler: **IsLengthRange**, **MatchesRegex**, **IçerirKarakterler**, veya **IsDateRange**. **IsLengthRange** değeri, bir dize talep değerinin uzunluğunun belirtilen minimum ve maksimum parametreler aralığında olup olmadığını denetler. **MatchesRegex** değeri, dize talep değerinin normal bir ifadeyle eşleşip eşleşmediğini denetler. **İçErdeki Ler** değeri, bir dize talep değerinin bir karakter kümesi ni içerip içermediğini denetler. **IsDateRange** değeri, tarih talep değerinin belirtilen minimum ve en büyük parametreler aralığı arasında olup olmadığını denetler. |
+| Helptext | Hayır | Denetim başarısız olursa kullanıcılar için bir hata iletisi. Bu dize [dil özelleştirme](localization.md) kullanılarak yerelleştirilebilir |
 
-**Koşul** öğesi aşağıdaki öğeleri içerir:
+**Yüklem** öğesi aşağıdaki öğeleri içerir:
 
-| Öğe | Öğeleri | Açıklama |
+| Öğe | Oluşum | Açıklama |
 | ------- | ----------- | ----------- |
-| UserHelpText | 0:1 | Kullanım dışı Denetim başarısız olursa kullanıcılara yönelik bir hata iletisi. |
-| Parametreler | 1:1 | Dize doğrulamanın Yöntem türü için parametreler. |
+| UserHelpText | 0:1 | (Amortismana uğradı) Denetim başarısız olursa kullanıcılar için bir hata iletisi. |
+| Parametreler | 1:1 | Dize doğrulama yöntemi türü için parametreler. |
 
-**Parameters** öğesi aşağıdaki öğeleri içerir:
+**Parametreler** öğesi aşağıdaki öğeleri içerir:
 
-| Öğe | Öğeleri | Açıklama |
+| Öğe | Oluşum | Açıklama |
 | ------- | ----------- | ----------- |
-| Parametre | 1: n | Dize doğrulamanın Yöntem türü için parametreler. |
+| Parametre | 1:n | Dize doğrulama yöntemi türü için parametreler. |
 
-**Parameter** öğesi aşağıdaki öznitelikleri içerir:
+**Parametre** öğesi aşağıdaki öznitelikleri içerir:
 
-| Öğe | Öğeleri | Açıklama |
+| Öğe | Oluşum | Açıklama |
 | ------- | ----------- | ----------- |
 | Kimlik | 1:1 | Parametrenin tanımlayıcısı. |
 
-Aşağıdaki örnek, `Minimum` ve `Maximum` dizenin uzunluk aralığını belirten `IsLengthRange` bir yöntemi gösterir:
+Aşağıdaki örnekte `IsLengthRange` parametreleri `Minimum` içeren `Maximum` ve dize uzunluk aralığını belirten bir yöntem gösterilmektedir:
 
 ```XML
 <Predicate Id="IsLengthBetween8And64" Method="IsLengthRange" HelpText="The password must be between 8 and 64 characters.">
@@ -78,7 +78,7 @@ Aşağıdaki örnek, `Minimum` ve `Maximum` dizenin uzunluk aralığını belirt
 </Predicate>
 ```
 
-Aşağıdaki örnek, bir normal ifadeyi belirten `RegularExpression` parametresi ile bir `MatchesRegex` yöntemi gösterir:
+Aşağıdaki örnekte, `MatchesRegex` parametreye `RegularExpression` sahip bir yöntem normal bir ifade gösterir:
 
 ```XML
 <Predicate Id="PIN" Method="MatchesRegex" HelpText="The password must be numbers only.">
@@ -88,7 +88,7 @@ Aşağıdaki örnek, bir normal ifadeyi belirten `RegularExpression` parametresi
 </Predicate>
 ```
 
-Aşağıdaki örnek, karakter kümesini belirten parametre `CharacterSet` sahip `IncludesCharacters` bir yöntemi gösterir:
+Aşağıdaki örnek, `IncludesCharacters` karakter kümesini `CharacterSet` belirten parametreye sahip bir yöntem gösterir:
 
 ```XML
 <Predicate Id="Lowercase" Method="IncludesCharacters" HelpText="a lowercase letter">
@@ -98,7 +98,7 @@ Aşağıdaki örnek, karakter kümesini belirten parametre `CharacterSet` sahip 
 </Predicate>
 ```
 
-Aşağıdaki örnek, `yyyy-MM-dd` ve `Today`biçimindeki tarih aralığını belirten `Minimum` ve `Maximum` parametrelere sahip bir `IsDateRange` yöntemi gösterir.
+Aşağıdaki örnekte `IsDateRange` parametreleri `Minimum` olan `Maximum` bir yöntem gösterilmektedir ve `yyyy-MM-dd` tarih `Today`aralığını bir biçimve .
 
 ```XML
 <Predicate Id="DateRange" Method="IsDateRange" HelpText="The date must be between 1970-01-01 and today.">
@@ -109,11 +109,11 @@ Aşağıdaki örnek, `yyyy-MM-dd` ve `Today`biçimindeki tarih aralığını bel
 </Predicate>
 ```
 
-## <a name="predicatevalidations"></a>Predicatedoğrulamaları
+## <a name="predicatevalidations"></a>YüklemLer
 
-Koşullar bir talep türüne karşı denetlenecek doğrulamayı tanımlalarken, **Predicatedoğrulamaları** , bir talep türüne uygulanabilen bir kullanıcı girişi doğrulaması oluşturmak için bir koşul kümesi grubu belirler. Her **Predicatevalidation** öğesi, bir **koşula**Işaret eden bir tahmine **Atereference** öğesi kümesi içeren bir **predicategroup** öğeleri kümesi içerir. Doğrulamanın başarılı olması için, talebin değeri, **Predicategroup** 'un tüm koşullarından herhangi bir koşulun tüm **Testlertereference** öğeleri kümesiyle tüm testlerini iletmelidir.
+Yüklemler bir talep türüne karşı kontrol etmek için doğrulamayı tanımlasa **da, Yüklemler,** bir talep türüne uygulanabilecek bir kullanıcı giriş doğrulaması oluşturmak için bir yüklem kümesi gruplar. Her **YüklemValidasyon** öğesi, **bir**Yüklem'i işaret eden bir predicateReference öğesi kümesi içeren bir **PredicateGroup** öğesi kümesi içerir. **PredicateReference** Doğrulamayı geçmek için, talebin değeri, **YüklemReferans** öğeleri kümesiyle tüm **Yüklem Grubu** altında yapılan tüm testleri geçmelidir.
 
-**Predicatedoğrulamaları** öğesi, [buildingblocks](buildingblocks.md) öğesi içindeki **koşulların** öğesinin hemen ardından gelmelidir.
+**Yüklemler** [öğesi, BuildingBlocks](buildingblocks.md) öğesi içindeki **Yüklemler** öğesini doğrudan izleyerek görünmelidir.
 
 ```XML
 <PredicateValidations>
@@ -133,74 +133,74 @@ Koşullar bir talep türüne karşı denetlenecek doğrulamayı tanımlalarken, 
 </PredicateValidations>
 ```
 
-**Predicatedoğrulamaları** öğesi aşağıdaki öğeyi içerir:
+**Yüklemler** öğesi aşağıdaki öğeyi içerir:
 
-| Öğe | Öğeleri | Açıklama |
+| Öğe | Oluşum | Açıklama |
 | ------- | ----------- | ----------- |
-| PredicateValidation | 1: n | Koşul doğrulama listesi. |
+| Yüklem Validasyonu | 1:n | Yüklem doğrulama listesi. |
 
-**Predicatevalidation** öğesi aşağıdaki özniteliği içerir:
+**YüklemÖz** öğesi aşağıdaki öznitelik içerir:
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Kimlik | Yes | Koşul doğrulama için kullanılan bir tanımlayıcı. **ClaimType** öğesi bu tanımlayıcıyı ilkede kullanabilir. |
+| Kimlik | Evet | Yüklem doğrulaması için kullanılan bir tanımlayıcı. **ClaimType** öğesi bu tanımlayıcıyı ilkede kullanabilir. |
 
-**Predicatevalidation** öğesi aşağıdaki öğeyi içerir:
+**YüklemGeçersiz madde** öğesi aşağıdaki öğeyi içerir:
 
-| Öğe | Öğeleri | Açıklama |
+| Öğe | Oluşum | Açıklama |
 | ------- | ----------- | ----------- |
-| PredicateGroups | 1: n | Koşul gruplarının listesi. |
+| YüklemGrupları | 1:n | Yüklem gruplarının listesi. |
 
-**Predicategroups** öğesi aşağıdaki öğeyi içerir:
+**Yüklem Grupları** öğesi aşağıdaki öğeyi içerir:
 
-| Öğe | Öğeleri | Açıklama |
+| Öğe | Oluşum | Açıklama |
 | ------- | ----------- | ----------- |
-| PredicateGroup | 1: n | Koşulların listesi. |
+| YüklemGrubu | 1:n | Yüklemlerin listesi. |
 
-**Predicategroup** öğesi aşağıdaki özniteliği içerir:
+**PredicateGroup** öğesi aşağıdaki öznitelik içerir:
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Kimlik | Yes | Koşul grubu için kullanılan bir tanımlayıcı.  |
+| Kimlik | Evet | Yüklem grubu için kullanılan bir tanımlayıcı.  |
 
-**Predicategroup** öğesi aşağıdaki öğeleri içerir:
+**PredicateGroup** öğesi aşağıdaki öğeleri içerir:
 
-| Öğe | Öğeleri | Açıklama |
+| Öğe | Oluşum | Açıklama |
 | ------- | ----------- | ----------- |
-| UserHelpText | 0:1 |  Kullanıcıların hangi değeri yazdıklarından haberdar olmaları için yararlı olabilecek koşulun açıklaması. |
-| Predicatereferde | 1: n | Koşul başvurularının listesi. |
+| UserHelpText | 0:1 |  Kullanıcıların hangi değeri yazmaları gerektiğini bilmelerine yardımcı olabilecek yüklemin açıklaması. |
+| YüklemReferanslar | 1:n | Yüklem başvurularının listesi. |
 
-**Predicatereferde** öğesi aşağıdaki öznitelikleri içerir:
+**Yüklemler** öğesi aşağıdaki öznitelikleri içerir:
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| MatchAtLeast | Hayır | Değerin en azından, girişin kabul edileceği birçok koşul tanımına uyması gerektiğini belirtir. Belirtilmemişse, değer tüm koşul tanımlarına uymalıdır. |
+| En uygun | Hayır | Girdinin kabul edilemesi için değerin en az bu kadar çok yüklem tanımıyla eşleşmesi gerektiğini belirtir. Belirtilmemişse, değer tüm yüklem tanımlarını eşleştirmelidir. |
 
-**Predicatereferde** öğesi aşağıdaki öğeleri içerir:
+**Yüklemler** öğesi aşağıdaki öğeleri içerir:
 
-| Öğe | Öğeleri | Açıklama |
+| Öğe | Oluşum | Açıklama |
 | ------- | ----------- | ----------- |
-| PredicateReference | 1: n | Bir koşula başvuru. |
+| YüklemReferans | 1:n | Bir yüklem için bir referans. |
 
-**Predicatereference** öğesi aşağıdaki öznitelikleri içerir:
+**YüklemBaşvuru** öğesi aşağıdaki öznitelikleri içerir:
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Kimlik | Yes | Koşul doğrulama için kullanılan bir tanımlayıcı.  |
+| Kimlik | Evet | Yüklem doğrulaması için kullanılan bir tanımlayıcı.  |
 
 
 ## <a name="configure-password-complexity"></a>Parola karmaşıklığını yapılandırma
 
-**Koşullar** ve **Predicatevalidationsinput** sayesinde, bir kullanıcı tarafından bir hesap oluştururken sunulan parolaların karmaşıklık gereksinimlerini kontrol edebilirsiniz. Varsayılan olarak, Azure AD B2C güçlü parolalar kullanır. Azure AD B2C Ayrıca, müşterilerin kullanabileceği parolaların karmaşıklığını denetlemek için yapılandırma seçeneklerini destekler. Bu koşul öğelerini kullanarak parola karmaşıklığı tanımlayabilirsiniz:
+**Yüklemler** ve **PredicateValidationsInput** ile bir hesap oluştururken bir kullanıcı tarafından sağlanan parolalar için karmaşıklık gereksinimlerini kontrol edebilirsiniz. Varsayılan olarak, Azure AD B2C güçlü parolalar kullanır. Azure AD B2C, müşterilerin kullanabileceği parolaların karmaşıklığını denetlemek için yapılandırma seçeneklerini de destekler. Bu yüklem öğelerini kullanarak parola karmaşıklığını tanımlayabilirsiniz:
 
-- `IsLengthRange` yöntemi kullanılarak **IsLengthBetween8And64** , parolanın 8 ila 64 karakter arasında olması gerektiğini doğrular.
-- `IncludesCharacters` yöntemi kullanılarak **küçük harfli** , parolanın küçük harfli bir harf içerdiğini doğrular.
-- **Büyük harfli** `IncludesCharacters` yöntemi kullanılarak parolanın büyük harfli bir harf içerdiğini doğrular.
-- `IncludesCharacters` yöntemi kullanan **sayı** parolanın bir basamak içerdiğini doğrular.
-- `IncludesCharacters` yöntemi kullanılarak **sembol** , parolanın çeşitli sembol karakterlerinden birini içerdiğini doğrular.
-- `MatchesRegex` yöntemi kullanılarak **PIN** , parolanın yalnızca sayı içerdiğini doğrular.
-- `MatchesRegex` yöntemi kullanılarak **Allowebaadcharacters** , parolanın yalnızca geçersiz karakterinin sağlandığını doğrular.
-- `MatchesRegex` yöntemi kullanılarak **Disallowedwhitespace** , parolanın boşluk karakteriyle başlamayacağını veya bitmediğini doğrular.
+- **IsLengthBetween8And64** yöntemini `IsLengthRange` kullanarak, parola8 ve 64 karakter arasında olması gerektiğini doğrular.
+- Yöntemi kullanarak **Küçük Harf,** parolanın küçük harf içerdiğini doğrular. `IncludesCharacters`
+- Yöntemi kullanarak **Büyük harf,** parolabir büyük harf içerdiğini doğrular. `IncludesCharacters`
+- `IncludesCharacters` Yöntemi kullanarak **sayı,** parola bir basamak içerdiğini doğrular.
+- `IncludesCharacters` Yöntemi kullanan **sembol,** parolanın birkaç sembol karakterden birini içerdiğini doğrular.
+- `MatchesRegex` Yöntemi kullanarak **PIN,** parolanın yalnızca sayılar içerdiğini doğrular.
+- Yöntemin kullanılmasına `MatchesRegex` izin verilen **AADCharacters,** parolanın yalnızca geçersiz karakterin sağlandığını doğrular.
+- **DisallowedWhitespace** `MatchesRegex` yöntemini kullanarak, parola nın bir beyaz boşluk karakteriyle başlamadığını veya bitmediğini doğrular.
 
 ```XML
 <Predicates>
@@ -254,11 +254,11 @@ Koşullar bir talep türüne karşı denetlenecek doğrulamayı tanımlalarken, 
   </Predicate>
 ```
 
-Temel doğrulamaları tanımladıktan sonra, bunları birlikte birleştirebilir ve ilkenizde kullanabileceğiniz bir dizi parola ilkesi oluşturabilirsiniz:
+Temel doğrulamaları tanımladıktan sonra, bunları birleştirebilir ve ilkenizde kullanabileceğiniz bir dizi parola ilkesi oluşturabilirsiniz:
 
-- **Simplepassword** , DisallowedWhitespace, Allowedadadcharacters ve IsLengthBetween8And64 doğrular
-- **Strongpassword** , DisallowedWhitespace, Allowebaadcharacters, IsLengthBetween8And64 doğrular. Son grup `CharacterClasses`, `MatchAtLeast` 3 olarak ayarlanan ek bir koşul kümesi çalıştırır. Kullanıcı parolası 8 ila 16 karakter arasında olmalıdır ve şu karakterlerden üçünü içermelidir: küçük harf, büyük harf, sayı veya simge.
-- **Custompassword** yalnızca DisallowedWhitespace, Alloweeradcharacters ' i doğrular. Bu nedenle, karakterler geçerli olduğu sürece Kullanıcı herhangi bir uzunlukta bir parola sağlayabilir.
+- **SimplePassword** DisallowedWhitespace, AllowedAADCharacters ve IsLengthBetween8And64 doğrular
+- **StrongPassword** DisallowedWhitespace, AllowedAADCharacters, IsLengthBetween8And64 doğrular. Son grup `CharacterClasses` `MatchAtLeast` 3'e ayarlanmış ek bir yüklem kümesi çalıştırın. Kullanıcı parolası 8 ile 16 karakter arasında ve aşağıdaki karakterlerden üçü arasında olmalıdır: Küçük Harf, Büyük harf, Sayı veya Sembol.
+- **CustomPassword** yalnızca DisallowedWhitespace, AllowedAADCharacters doğrular. Bu nedenle, karakterler geçerli olduğu sürece kullanıcı herhangi bir uzunlukta herhangi bir parola sağlayabilir.
 
 ```XML
 <PredicateValidations>
@@ -328,7 +328,7 @@ Temel doğrulamaları tanımladıktan sonra, bunları birlikte birleştirebilir 
 </PredicateValidations>
 ```
 
-Talep türü ' nde, **Predicatevalidationreference** öğesini ekleyin ve tanımlayıcıyı Simplepassword, strongpassword veya CustomPassword gibi koşul Doğrulamalardan biri olarak belirtin.
+Talep **türünüzde, PredicateValidationReference** öğesini ekleyin ve tanımlayıcıyı SimplePassword, StrongPassword veya CustomPassword gibi yüklem doğrulamalarından biri olarak belirtin.
 
 ```XML
 <ClaimType Id="password">
@@ -341,13 +341,13 @@ Talep türü ' nde, **Predicatevalidationreference** öğesini ekleyin ve tanım
 </ClaimType>
 ```
 
-Aşağıdaki, Azure AD B2C hata iletisini görüntülediğinde öğelerin nasıl düzenlendiğini gösterir:
+Azure AD B2C hata iletisini görüntülediğinde öğelerin nasıl düzenlendiğini aşağıda gösterir:
 
-![Koşul ve PredicateGroup parola karmaşıklığı örnek diyagramı](./media/predicates/predicates-pass.png)
+![Yüklem diyagramı ve YüklemGrubu parola karmaşıklığı örneği](./media/predicates/predicates-pass.png)
 
-## <a name="configure-a-date-range"></a>Bir tarih aralığı yapılandırma
+## <a name="configure-a-date-range"></a>Tarih aralığını yapılandırma
 
-**Koşullar** ve **predicatedoğrulamaları** öğeleriyle, `DateTimeDropdown`kullanarak **userınputtype** ' ın en düşük ve en yüksek tarih değerlerini kontrol edebilirsiniz. Bunu yapmak için, `IsDateRange` yöntemiyle bir **koşul** oluşturun ve en düşük ve en yüksek parametreleri sağlayın.
+**Yüklemler** ve **Yüklemler Özdeyişler** öğeleri ile **UserInputType'ın** minimum ve maksimum `DateTimeDropdown`tarih değerlerini bir . Bunu yapmak için, yöntemle bir `IsDateRange` **Yüklem** oluşturun ve minimum ve maksimum parametreleri sağlayın.
 
 ```XML
 <Predicates>
@@ -360,7 +360,7 @@ Aşağıdaki, Azure AD B2C hata iletisini görüntülediğinde öğelerin nasıl
 </Predicates>
 ```
 
-`DateRange` koşulu için bir başvuruya sahip bir **Predicatevalidation** ekleyin.
+Yükleme atıfta bulunarak bir **Yüklem Geçerliliği** ekleyin. `DateRange`
 
 ```XML
 <PredicateValidations>
@@ -376,7 +376,7 @@ Aşağıdaki, Azure AD B2C hata iletisini görüntülediğinde öğelerin nasıl
 </PredicateValidations>
 ```
 
-Talep türünde, **Predicatevalidationreference** öğesini ekleyin ve tanımlayıcıyı `CustomDateRange`olarak belirtin.
+Talep türünüzde, **PredicateValidationReference** öğesini ekleyin ve tanımlayıcıyı `CustomDateRange`' olarak belirtin.
 
 ```XML
 <ClaimType Id="dateOfBirth">

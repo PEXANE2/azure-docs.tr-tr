@@ -1,7 +1,7 @@
 ---
-title: AI zenginleştirme için belge bağlantıları
+title: AI zenginleştirme için dokümantasyon bağlantıları
 titleSuffix: Azure Cognitive Search
-description: Azure Bilişsel Arama 'de AI zenginleştirme iş yükleri ile ilgili makalelerin, öğreticilerin, örneklerin ve blog gönderilerinin açıklamalı bir listesi.
+description: Azure Bilişsel Arama'da AI zenginleştirme iş yüklerine ilişkin makalelerin, öğreticilerin, örneklerin ve blog gönderilerinin açıklamalı listesi.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
@@ -9,62 +9,62 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.openlocfilehash: d2b25fb93a1e35ffa82cf49c60d181b841b1692d
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77616188"
 ---
-# <a name="documentation-resources-for-ai-enrichment-in-azure-cognitive-search"></a>Azure Bilişsel Arama AI zenginleştirme için belge kaynakları
+# <a name="documentation-resources-for-ai-enrichment-in-azure-cognitive-search"></a>Azure Bilişsel Arama'da AI zenginleştirme için dokümantasyon kaynakları
 
-AI zenginleştirme, Azure Bilişsel Arama Dizin oluşturma özelliğinin metin olmayan kaynaklardaki ve ayırt edilmemiş metinlerin bulunduğu bir özelliktir. Bu özellik, Azure Bilişsel Arama 'de tam metin aranabilir içeriğe dönüştürülüyor.
+AI zenginleştirme, Azure Bilişsel Arama dizinoluşturma yeteneğidir ve metin dışı kaynaklarda ve farklılaşmamış metinde gizli bilgileri bularak Azure Bilişsel Arama'da tam metin aranabilir içeriğe dönüştürür.
 
-Aşağıdaki makaleler AI zenginleştirme için tüm belgeleriydi.
+Aşağıdaki makaleler AI zenginleştirme için tam belgelerdir.
 
 ## <a name="getting-started"></a>Başlarken
-+ [Azure Bilişsel Arama 'de AI 'ye giriş](cognitive-search-concept-intro.md)
-+ [Hızlı başlangıç: Azure portal Bilişsel Beceri oluşturma](cognitive-search-quickstart-blob.md)
-+ [Öğretici: AI ile zenginleştirilmiş dizin oluşturma](cognitive-search-tutorial-blob.md)
-+ [Örnek: AI zenginleştirme için özel bir yetenek oluşturma](cognitive-search-create-custom-skill-example.md)
++ [Azure Bilişsel Arama'da AI'ye Giriş](cognitive-search-concept-intro.md)
++ [Hızlı başlangıç: Azure portalında bilişsel beceriler oluşturun](cognitive-search-quickstart-blob.md)
++ [Öğretici: AI ile zenginleştirilmiş indeksleme](cognitive-search-tutorial-blob.md)
++ [Örnek: AI zenginleştirme için özel bir beceri oluşturma](cognitive-search-create-custom-skill-example.md)
 
-## <a name="how-to-guidance"></a>Nasıl yapılır Kılavuzu
-+ [Beceri tanımlama](cognitive-search-defining-skillset.md)
+## <a name="how-to-guidance"></a>Nasıl kılavuz
++ [Bir skillset nasıl tanımlanır?](cognitive-search-defining-skillset.md)
 + [Beceri kümesindeki ek açıklamalara başvurma](cognitive-search-concept-annotations-syntax.md)
-+ [Alanları bir dizinle eşleme](cognitive-search-output-field-mapping.md)
-+ [Görüntülerden bilgileri işleme ve ayıklama](cognitive-search-concept-image-scenarios.md)
++ [Alanları dizinle nasıl eşlersin?](cognitive-search-output-field-mapping.md)
++ [Görüntülerden bilgi işleme ve ayıklama](cognitive-search-concept-image-scenarios.md)
 + [Azure Bilişsel Arama dizinini yeniden oluşturma](search-howto-reindex.md)
-+ [Özel yetenekler arabirimi tanımlama](cognitive-search-custom-skill-interface.md)
++ [Özel beceri arabirimi nasıl tanımlanır?](cognitive-search-custom-skill-interface.md)
 + [Sorun giderme ipuçları](cognitive-search-concept-troubleshooting.md)
 
 ## <a name="reference"></a>Başvuru
 
 + [Yerleşik yetenekler](cognitive-search-predefined-skills.md)
-  + [Microsoft. yetenekler. Text. KeyPhraseExtractionSkill](cognitive-search-skill-keyphrases.md)
-  + [Microsoft. yetenekler. Text. LanguageDetectionSkill](cognitive-search-skill-language-detection.md)
-  + [Microsoft. yetenekler. Text. Entityrecognitionbeceri](cognitive-search-skill-entity-recognition.md)
-  + [Microsoft. yetenekler. Text. Mergeskıll](cognitive-search-skill-textmerger.md)
-  + [Microsoft. yetenekler. Text. PIIDetectionSkill](cognitive-search-skill-pii-detection.md)
-  + [Microsoft. yetenekler. Text. Splitbeceri](cognitive-search-skill-textsplit.md)
-  + [Microsoft. yetenekler. Text. Sentimentbecerisi](cognitive-search-skill-sentiment.md)
-  + [Microsoft. yetenekler. Text. Translationbeceri](cognitive-search-skill-text-translation.md)
-  + [Microsoft. yetenekler. Vision. ımageanalysisbeceri](cognitive-search-skill-image-analysis.md)
-  + [Microsoft. yetenekler. Vision. Ocrbeceri](cognitive-search-skill-ocr.md)
-  + [Microsoft. yetenekler. util. Conditionalbeceri](cognitive-search-skill-conditional.md)
-  + [Microsoft. yetenekler. util. Belgetextractionbeceri](cognitive-search-skill-document-extraction.md)
-  + [Microsoft. yetenekler. util. Shaperbeceri](cognitive-search-skill-shaper.md)
+  + [Microsoft.Skills.Text.KeyPhraseExtractionSkill](cognitive-search-skill-keyphrases.md)
+  + [Microsoft.Skills.Text.LanguageDetectionSkill](cognitive-search-skill-language-detection.md)
+  + [Microsoft.Skills.Text.EntityTanıma Beceri](cognitive-search-skill-entity-recognition.md)
+  + [Microsoft.Skills.Text.MergeSkill](cognitive-search-skill-textmerger.md)
+  + [Microsoft.Skills.Text.PIIDetectionSkill](cognitive-search-skill-pii-detection.md)
+  + [Microsoft.Skills.Text.SplitSkill](cognitive-search-skill-textsplit.md)
+  + [Microsoft.Skills.Text.SentimentSkill](cognitive-search-skill-sentiment.md)
+  + [Microsoft.Skills.Text.TranslationSkill](cognitive-search-skill-text-translation.md)
+  + [Microsoft.Skills.Vision.ImageAnalysisSkill](cognitive-search-skill-image-analysis.md)
+  + [Microsoft.Skills.Vision.OcrSkill](cognitive-search-skill-ocr.md)
+  + [Microsoft.Skills.Util.ConditionalSkill](cognitive-search-skill-conditional.md)
+  + [Microsoft.Skills.Util.DocumentExtractionSkill](cognitive-search-skill-document-extraction.md)
+  + [Microsoft.Skills.Util.ShaperBeceri](cognitive-search-skill-shaper.md)
 
 + Özel beceriler
-  + [Microsoft. yetenekler. Custom. WebApiSkill](cognitive-search-custom-skill-web-api.md)
+  + [Microsoft.Skills.Custom.WebApiSkill](cognitive-search-custom-skill-web-api.md)
 
-+ [Kullanım dışı yetenekler](cognitive-search-skill-deprecated.md)
-  + [Microsoft. yetenekler. Text. Namedentityrecognitionbeceri](cognitive-search-skill-named-entity-recognition.md)
++ [Kullanım dışı bırakılmış beceriler](cognitive-search-skill-deprecated.md)
+  + [Microsoft.Skills.Text.NamedEntityTanıma Beceri](cognitive-search-skill-named-entity-recognition.md)
 
 + [REST API](https://docs.microsoft.com/rest/api/searchservice/)
-  + [Beceri oluşturma (api-Version = 2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
-  + [Dizin Oluşturucu oluştur (api-Version = 2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
+  + [Skillset oluştur (api-version=2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
+  + [Indexer Oluştur (api-version=2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-+ [Azure Bilişsel Arama REST API](https://docs.microsoft.com/rest/api/searchservice/)
++ [Azure Bilişsel Arama REST API'si](https://docs.microsoft.com/rest/api/searchservice/)
 + [Azure Bilişsel Arama'daki Dizin Oluşturucular](search-indexer-overview.md)
 + [Azure Bilişsel Arama nedir?](search-what-is-azure-search.md)

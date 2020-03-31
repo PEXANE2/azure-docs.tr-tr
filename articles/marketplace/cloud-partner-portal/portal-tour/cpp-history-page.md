@@ -1,32 +1,31 @@
 ---
 title: Azure Marketi için denetim geçmişi sayfası
-description: Azure Marketi için Bulut İş Ortağı Portalı denetim geçmişi sayfasına genel bakış.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+description: Azure Marketi için Bulut İş Ortağı Portalı'ndaki Denetim geçmişi sayfasına genel bakış.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.author: pabutler
-ms.openlocfilehash: a09eca891c434a6bd836269908c3e2cf37fbd3f5
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: cd9577a4bcdb1914ac0a7a23e4a98c31f6e43030
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821550"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80288912"
 ---
 # <a name="audit-history-page"></a>Denetim geçmişi sayfası
 
-[**Denetim geçmişi**](https://cloudpartner.azure.com/#history) sayfası tüm Market teklifleri için yayımlama olaylarının bir listesini görüntüler.  Sütunlar olay türü, oluşum tarih saati, teklif adı, yayımcı ve eylemi başlatan kullanıcı içerir.  Sonuçlar sütuna göre sıralanabilir veya belirtilen dize üzerinde filtrelenebilir.  Bu sayfa, kullanıcının geçerli denetim listesinin bir virgülle ayrılmış değerler (. csv) dosyasını indirmesini de sağlar.
+[**Denetim geçmişi**](https://cloudpartner.azure.com/#history) sayfası, tüm pazar teklifleri için yayımlama etkinliklerinin bir listesini görüntüler.  Sütunlar olay türü, oluşum datetime, teklif adı, yayımcı ve eylemi başlatan kullanıcı içerir.  Sonuçlar sütuntarafından sıralanabilir veya belirli bir dize üzerinde filtrelenebilir.  Bu sayfa aynı zamanda kullanıcının geçerli denetim listesinin virgülle ayrılmış değerleri (.csv) dosyasını indirmesini sağlar.
 
 
 ## <a name="example-page"></a>Örnek sayfa
 
-Aşağıdaki görüntüde `contoso`dize üzerinde filtrelenmiş **Denetim geçmişi** sayfası gösterilmektedir.
+Aşağıdaki resimde dize `contoso`üzerinde filtre uygulanmış Denetim **geçmişi** sayfası gösterilmektedir.
 
-![Denetim geçmişi sayfası](./media/audit-history-page1.png)
+![Denetim Geçmişi sayfası](./media/audit-history-page1.png)
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Sonraki gezinti menü çubuğu öğesi, Market teklifleriniz içinde özelleştirilebilir panolar kümesi sağlayan Bulut İş Ortağı Portalı 'nin [satıcı öngörülerine](./cpp-insights-page.md) erişir.
+Bir sonraki gezinti menü çubuğu öğesi, pazar tekliflerinize özelleştirilebilir pano kümeleri sağlayan Bulut İş Ortağı Portalı'nın [Satıcı Öngörüleri](./cpp-insights-page.md) özelliğine erişir.

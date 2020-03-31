@@ -1,52 +1,52 @@
 ---
-title: Xamarin. iOS uygulamanıza anında iletme bildirimleri ekleme
-description: Xamarin. iOS uygulamanıza anında iletme bildirimleri göndermek için Azure App Service kullanmayı öğrenin.
+title: Xamarin.iOS uygulamanıza anında iletme bildirimleri ekleme
+description: Xamarin.iOS uygulamanıza anında iletme bildirimleri göndermek için Azure Uygulama Hizmetini nasıl kullanacağınızı öğrenin.
 ms.assetid: 2921214a-49f8-45e1-a306-a85ce21defca
 ms.tgt_pltfrm: mobile-xamarin-ios
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
 ms.openlocfilehash: f9c70491d06f61931ebabda859ff3a86ed035b44
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79249288"
 ---
-# <a name="add-push-notifications-to-your-xamarinios-app"></a>Xamarin. iOS uygulamanıza anında iletme bildirimleri ekleme
+# <a name="add-push-notifications-to-your-xamarinios-app"></a>Xamarin.iOS Uygulamanıza anında iletme bildirimleri ekleme
 
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
 
 ## <a name="overview"></a>Genel Bakış
 
-Bu öğreticide, bir kayıt her eklendiğinde cihaza anında iletme bildirimi gönderilmesi için [Xamarin. iOS hızlı başlangıç](app-service-mobile-xamarin-ios-get-started.md) projesine anında iletme bildirimleri eklersiniz.
+Bu öğreticide, [Xamarin.iOS hızlı başlatma](app-service-mobile-xamarin-ios-get-started.md) projesine anında iletme bildirimleri eklersiniz, böylece her kayıt ekildiğinde aygıta bir anında iletme bildirimi gönderilir.
 
-İndirilen hızlı başlangıç sunucusu projesini kullanmıyorsanız, anında iletme bildirimi uzantı paketine ihtiyacınız olacaktır. Daha fazla bilgi için bkz. [Azure için .net arka uç sunucu SDK 'sı Mobile Apps çalışma](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md) .
+İndirilen hızlı başlangıç sunucusu projesini kullanmazsanız, anında iletme bildirimi uzantısı paketine ihtiyacınız olacaktır. Daha fazla bilgi için [Azure Mobile Apps için .NET arka uç sunucusu SDK ile çalışma](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md) bilgisine bakın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* [Xamarin. iOS hızlı başlangıç](app-service-mobile-xamarin-ios-get-started.md) öğreticisini doldurun.
-* Fiziksel bir iOS cihazı. Anında iletme bildirimleri iOS simülatörü tarafından desteklenmez.
+* [Xamarin.iOS hızlı başlatma](app-service-mobile-xamarin-ios-get-started.md) eğitimini tamamlayın.
+* Fiziksel bir iOS aygıtı. Anında iletme bildirimleri iOS simülatörü tarafından desteklenmez.
 
-## <a name="register-the-app-for-push-notifications-on-apples-developer-portal"></a>Apple 'ın Geliştirici Portalında anında iletme bildirimleri için uygulamayı kaydetme
+## <a name="register-the-app-for-push-notifications-on-apples-developer-portal"></a>Uygulamayı Apple'ın geliştirici portalına anında iletme bildirimleri için kaydedin
 
 [!INCLUDE [Enable Apple Push Notifications](../../includes/enable-apple-push-notifications.md)]
 
-## <a name="configure-your-mobile-app-to-send-push-notifications"></a>Mobil uygulamanızı anında iletme bildirimleri gönderecek şekilde yapılandırma
+## <a name="configure-your-mobile-app-to-send-push-notifications"></a>Anında iletme bildirimleri gönderecek şekilde Mobil Uygulamanızı yapılandırın
 
 [!INCLUDE [app-service-mobile-apns-configure-push](../../includes/app-service-mobile-apns-configure-push.md)]
 
-## <a name="update-the-server-project-to-send-push-notifications"></a>Sunucu projesini anında iletme bildirimleri gönderecek şekilde Güncelleştir
+## <a name="update-the-server-project-to-send-push-notifications"></a>Anında iletme bildirimleri göndermek için sunucu projesini güncelleştirme
 
 [!INCLUDE [app-service-mobile-update-server-project-for-push-template](../../includes/app-service-mobile-update-server-project-for-push-template.md)]
 
-## <a name="configure-your-xamarinios-project"></a>Xamarin. iOS projenizi yapılandırma
+## <a name="configure-your-xamarinios-project"></a>Xamarin.iOS projenizi yapılandırın
 
 [!INCLUDE [app-service-mobile-xamarin-ios-configure-project](../../includes/app-service-mobile-xamarin-ios-configure-project.md)]
 
 ## <a name="add-push-notifications-to-your-app"></a>Uygulamanıza anında iletme bildirimleri ekleme
 
-1. **Qstodoservice**Içinde, **appdelegate** 'in Mobil istemciyi edinebilmesi için aşağıdaki özelliği ekleyin:
+1. **QSTodoService'te,** **AppDelegate'in** mobil istemciyi edinebilmeleri için aşağıdaki özelliği ekleyin:
 
     ```csharp
     public MobileServiceClient GetClient {
@@ -61,14 +61,14 @@ Bu öğreticide, bir kayıt her eklendiğinde cihaza anında iletme bildirimi g�
     }
     ```
 
-2. Aşağıdaki `using` ifadesini **AppDelegate.cs** dosyasının en üstüne ekleyin.
+2. Aşağıdaki `using` ifadeyi **AppDelegate.cs** dosyasının üstüne ekleyin.
 
     ```csharp
     using Microsoft.WindowsAzure.MobileServices;
     using Newtonsoft.Json.Linq;
     ```
 
-3. **Appdelegate**Içinde, **sonlandırmandbaşlatırken** olayını geçersiz kılın:
+3. **AppDelegate'de,** **FinishedLaunching** olayını geçersiz kılın:
 
    ```csharp
     public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
@@ -87,9 +87,9 @@ Bu öğreticide, bir kayıt her eklendiğinde cihaza anında iletme bildirimi g�
     }
     ```
 
-4. Aynı dosyada `RegisteredForRemoteNotifications` olayını geçersiz kılın. Bu kodda, sunucu tarafından desteklenen tüm platformlarda gönderilecek basit bir şablon bildirimi için kayıt yaptırmış olursunuz.
+4. Aynı dosyada, `RegisteredForRemoteNotifications` olayı geçersiz kılın. Bu kodda, sunucu tarafından desteklenen tüm platformlarda gönderilecek basit bir şablon bildirimi için kaydolabilirsiniz.
 
-    Notification Hubs olan şablonlar hakkında daha fazla bilgi için bkz. [Şablonlar](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md).
+    Bildirim Hub'ları içeren şablonlar hakkında daha fazla bilgi için [Şablonlar'a](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)bakın.
 
     ```csharp
     public override void RegisteredForRemoteNotifications(UIApplication application, NSData deviceToken)
@@ -132,15 +132,15 @@ Bu öğreticide, bir kayıt her eklendiğinde cihaza anında iletme bildirimi g�
 
 Uygulamanız artık anında iletme bildirimlerini destekleyecek şekilde güncelleştirildi.
 
-## <a name="test"></a>Uygulamanızda anında iletme bildirimlerini test etme
+## <a name="test-push-notifications-in-your-app"></a><a name="test"></a>Uygulamanızdaki anında iletme bildirimlerini test edin
 
-1. **Çalıştır** düğmesine basarak projeyi oluşturun ve uygulamayı iOS özellikli bir cihazda başlatın, sonra anında iletme bildirimlerini kabul etmek için **Tamam** ' ı tıklatın.
+1. Projeyi oluşturmak için **Çalıştır** düğmesine basın ve uygulamayı iOS özellikli bir cihazda başlatın, ardından anında iletme bildirimlerini kabul etmek için **Tamam'ı** tıklatın.
 
    > [!NOTE]
-   > Uygulamanızın anında iletme bildirimlerini kabul etmelisiniz. Bu istek yalnızca uygulamanın ilk kez çalıştırıldığı zaman gerçekleşir.
+   > Uygulamanızdan gelen anında iletme bildirimlerini açıkça kabul etmelisiniz. Bu istek yalnızca uygulamailk kez çalıştırılır.
 
-2. Uygulamada bir görev yazın ve ardından artı ( **+** ) simgesine tıklayın.
-3. Bildirimin alındığını doğrulayın ve sonra bildirimi kapatmak için **Tamam** ' ı tıklatın.
-4. 2\. adımı tekrarlayın ve uygulamayı hemen kapatın, sonra bir bildirimin gösterildiğini doğrulayın.
+2. Uygulamada, bir görev yazın ve sonra artı**+**( ) simgesini tıklatın.
+3. Bildirimin alındığını doğrulayın ve bildirimi kapatmak için **Tamam'ı** tıklatın.
+4. Adımı 2'yi tekrarlayın ve uygulamayı hemen kapatın, ardından bir bildirimin gösterildiğini doğrulayın.
 
 Bu öğreticiyi başarıyla tamamladınız.
