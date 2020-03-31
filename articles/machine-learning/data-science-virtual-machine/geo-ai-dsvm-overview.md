@@ -1,8 +1,8 @@
 ---
-title: Coğrafi yapay zeka Veri Bilimi Sanal Makinesi nedir?
+title: Geo Yapay Zeka Veri Bilimi Sanal Makine Nedir
 titleSuffix: Azure Data Science Virtual Machine
-description: Coğrafi yapay zeka Veri Bilimi Sanal Makinesi, coğrafi verilerle çalışmaya yönelik ArcGIS Pro ve ML ve AI ile çalışmaya yönelik Python, R ve veri bilimi araç takımları sağlar.
-keywords: derin öğrenme yapay ZEKA, veri bilimi araçları, veri bilimi sanal makinesi, Jeo-uzamsal analiz
+description: Geo Artificial Intelligence Data Science Virtual Machine, ArcGIS Pro'nun coğrafi verilerin yanı sıra Python, R ve veri bilimi araç kitleri ile ML ve AI ile çalışmak için çalışmasını sağlar.
+keywords: derin öğrenme, Yapay Bilgi, veri bilimi araçları, veri bilimi sanal makine, jeouzamsal analitik
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: data-science-vm
@@ -10,39 +10,39 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: overview
 ms.date: 03/05/2018
-ms.openlocfilehash: f5a094613b8722f96fccd1d1a6df359fa9b0ebd4
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.openlocfilehash: 2cefd3c7f85e043497084e2cd2b906bd546ca10d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/21/2020
-ms.locfileid: "77526070"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80282282"
 ---
-# <a name="what-is-the-geo-artificial-intelligence-data-science-virtual-machine"></a>Coğrafi yapay zeka Veri Bilimi Sanal Makinesi nedir?
+# <a name="what-is-the-geo-artificial-intelligence-data-science-virtual-machine"></a>Geo Yapay Zeka Veri Bilimi Sanal Makine Nedir?
 
-Coğrafi yapay zeka Veri Bilimi Sanal Makinesi (coğrafi AI Veri Bilimi VM'si veya coğrafi-DSVM olarak da bilinir), Azure Veri Bilimi Sanal Makinesi (DSVM) üzerinden Jeo-uzamsal analiz özellikleri sunar. Özellikle, bu VM, ERSı 'dan pazar lideri ArcGIS [Pro](https://www.esri.com/arcgis/products/arcgis-pro/overview) coğrafi bilgi sistemi ekleyerek [DSVM](overview.md) 'deki AI ve veri bilimi araç kitlerinin kapsamını genişletir.
+Geo Artificial Intelligence Data Science Virtual Machine (Geo AI Data Science VM veya Geo-DSVM olarak da bilinir) Azure Veri Bilimi Sanal Makinesi'nden (DSVM) coğrafi analiz özellikleri sunar. Özellikle, bu VM ESRI pazar lideri [ArcGIS Pro](https://www.esri.com/arcgis/products/arcgis-pro/overview) coğrafi bilgi sistemi ekleyerek [DSVM](overview.md) AI ve veri bilimi araç kitleri genişletir.
 
- Coğrafi AI Veri Bilimi VM'si, ESRI ve Microsoft arasındaki işbirliğini içermeyen bir ürün sunumudur. Sonucu yeteneği sağlayan güçlü bir ortam oluşturulur.
+ Geo AI Data Science VM, ESRI ve Microsoft arasındaki işbirliğinden kaynaklanan bir ürün teklifidir. Sonuç, aşağıdakileri yapma olanağı sağlayan güçlü bir ortamdır:
 
-- En popüler AI ve veri bilimi araçlarıyla verileri araştırma
-- Coğrafi veya uzamsal yönleri olan verilere istatistiksel analizler uygulama
-- Makine öğrenimi ve derin öğrenme algoritmalarını kullanarak tahmine dayalı analiz için modelleri eğitme
-- Zengin görselleştirmeler oluşturma
+- En popüler AI ve veri bilimi araçlarıyla verileri keşfedin
+- Coğrafi veya mekansal yönleriyle verilere istatistiksel analiz uygulayın
+- Makine öğrenimi ve derin öğrenme algoritmaları kullanarak tahmine dayalı analitik için modeller eğitin
+- Zengin görseller oluşturun
 
-Veri Bilimi VM'si coğrafi AI, Windows 2016 DSVM 'de desteklenir. ArcGIS için Python ve R arabirimleri, coğrafi DSVM 'de önceden yapılandırılmıştır ve AI uygulamalarınızda Jeo-uzamsal analizine programlı erişim sağlar. Ayrıca, Jeo-uzamsal zeka ile kullanılan AI uygulamaları oluşturmaya başlamanıza yardımcı olmak için Jupyter Notebook örnekler sağlanır.
+Geo AI Data Science VM, Windows 2016 DSVM'de desteklenir. ArcGIS'e python ve R arabirimleri de Geo-DSVM üzerinde önceden yapılandırılmıştır ve AI uygulamalarınızda jeouzamsal analizlere programlı erişim sağlar. Ayrıca, Jupyter Notebook örnekleri jeouzamsal zeka ile aşılanmış Yapay Zeka uygulamaları oluşturmaya başlamanıza yardımcı olmak için sağlanır.
 
 
-## <a name="why-geo-ai-data-science-vm"></a>Neden coğrafi AI veri bilimi VM'si? 
+## <a name="why-geo-ai-data-science-vm"></a>Neden Geo AI Veri Bilimi VM? 
 
-Coğrafya ve konum bilgilerinin verilerinize tümleştirilmesi, IoT cihazlarıyla giderek daha fazla izlenen bir dünya 'yi anlamak için güçlü bir yeni boyut sunar. Neredeyse her bir hukuki topluluğu, ticari, Kamu, akademik veya kar amacı olmayan çok sayıda uygulama vardır. Jeo-uzamsal analizler, coğrafi ve konum tabanlı verileri toplamak, yönetmek ve analiz etmek için güçlü araçlar sağlar. Ayrıca, bu tür verilerin anlam halinde benzersiz Öngörüler sağlayan güçlü bir görselleştirme sunar.
+Coğrafya ve konum bilgilerini verilerinize entegre etmek, IoT cihazlarıyla giderek daha fazla kullanılan bir dünyayı anlamak için güçlü bir yeni boyut getirir. Ticari, resmi, akademik ya da kar amacı gütmeyen sivil toplumun hemen hemen her kesiminde çok çeşitli uygulamalar bulunmaktadır. Coğrafi analiz, coğrafi ve konum tabanlı verilerin toplanması, yönetilmesi ve analiz için güçlü araçlar sağlayırıyor. Ayrıca, bu verilerin önemine benzersiz öngörüler sağlayan güçlü görselleştirme de sunarlar.
 
-Microsoft 'tan [veri bilimi sanal makinesi (DSVM)](overview.md) , bir aı, Machine Learning ve veri bilimi araçlarının bir konağını sağlayan Azure 'da popüler bir deneme ve modelleme ortamıdır. Bu platformlar ve araçlar, kolayca üretken olmanıza yardımcı olacak şekilde önceden yapılandırılmıştır.
+Microsoft'un [Data Science Virtual Machine (DSVM),](overview.md) Azure'da bir dizi Yapay Değer, Machine Learning ve veri bilimi araçları sağlayan popüler bir deneme ve modelleme ortamıdır. Bu platformlar ve araçlar, hemen üretken yardımcı olmak için uygun bir şekilde önceden yapılandırılmıştır.
 
-Coğrafi AI Veri Bilimi VM'si, DSVM 'nin tahmine dayalı yeteneklerini Azure bulutunun ölçeklenebilirliğini ve [Esri](https://www.esri.com)'deki Jeo uzamsal analiz yazılımlarını birleştirir. Bu şekilde tümleştirme tümleştirmesi, veri bilimcilerinin ve jeo-uzamsal analistlerini, verilerinden yeni zeka bilgileri elde etmek ve yeni fırsatları belirlemek için üretken bir platform sağlar.
+Geo AI Data Science VM, DSVM'nin tahmin yeteneklerini Azure bulutunun ölçeklenebilirliği ve [ESRI'nın](https://www.esri.com)jeouzamsal analiz yazılımıyla birleştirir. Bu öncü entegrasyon, veri bilimcileri ve jeouzamsal analistlere, verilerinden yeni istihbarat elde etmek ve yeni fırsatları belirlemek için üretken bir platform sağlar.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Coğrafi bir AI Veri Bilimi VM'si sağlayın ve aşağıdaki kaynaklardaki kılavuzlarla kullanmaya başlayın:
+Geo AI Data Science VM'yi sağlama ve aşağıdaki kaynaklardan kılavuzla kullanmaya başlayın:
 
-* [Coğrafi bir AI Veri Bilimi VM'si sağlama](provision-geo-ai-dsvm.md)
-* [Coğrafi AI Veri Bilimi VM'si kullanın](use-geo-ai-dsvm.md)
+* [Geo AI Veri Bilimi VM Sağlanması](provision-geo-ai-dsvm.md)
+* [Geo AI Veri Bilimi VM'yi kullanma](use-geo-ai-dsvm.md)
