@@ -1,6 +1,6 @@
 ---
-title: OAuth 2,0 ve OpenID Connect protokolleri-Microsoft Identity platform | Mavisi
-description: Microsoft Identity platform uç noktası tarafından desteklenen OAuth 2,0 ve OpenID Connect protokollerine yönelik bir kılavuz.
+title: OAuth 2.0 ve OpenID Connect protokolleri - Microsoft kimlik platformu | Azure
+description: Microsoft kimlik platformu bitiş noktası tarafından desteklenen OAuth 2.0 ve OpenID Connect protokolleri kılavuzu.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -14,75 +14,75 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.openlocfilehash: d7ed4dbbc3fddb2e21ed3cf5292ebd80fe1e3e23
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79263120"
 ---
-# <a name="oauth-20-and-openid-connect-protocols-on-the-microsoft-identity-platform"></a>Microsoft Identity platformunda OAuth 2,0 ve OpenID Connect protokolleri
+# <a name="oauth-20-and-openid-connect-protocols-on-the-microsoft-identity-platform"></a>Microsoft kimlik platformunda OAuth 2.0 ve OpenID Connect protokolleri
 
-Endüstri standardı protokoller, OpenID Connect ve OAuth 2,0 ile hizmet olarak kimlik için Microsoft Identity platform uç noktası. Hizmet standartlarla uyumlu olsa da, bu protokollerin iki uygulaması arasında hafif farklar olabilir. Buradaki bilgiler, HTTP isteklerini doğrudan gönderip işleyerek veya [Açık kaynaklı kitaplıklarımızın](reference-v2-libraries.md)birini kullanmak yerine bir üçüncü taraf açık kaynak kitaplığı kullanarak kodunuzu yazmayı tercih ediyorsanız yararlı olacaktır.
+Endüstri standardı protokolleri, OpenID Connect ve OAuth 2.0 ile hizmet olarak kimlik için Microsoft kimlik platformu bitiş noktası. Hizmet standartlara uygun olsa da, bu protokollerin herhangi iki uygulaması arasında ince farklar olabilir. Burada bilgiler, doğrudan HTTP isteklerini göndererek ve işleyerek veya [açık kaynak kitaplıklarımızdan](reference-v2-libraries.md)birini kullanmak yerine üçüncü taraf açık kaynak kitaplığını kullanarak kodunuzu yazmayı seçerseniz yararlı olacaktır.
 
 > [!NOTE]
-> Tüm Azure AD senaryoları ve özellikleri Microsoft Identity platform uç noktası tarafından desteklenmez. Microsoft Identity platform uç noktasını kullanmanız gerekip gerekmediğini öğrenmek için [Microsoft Identity platform sınırlamaları](active-directory-v2-limitations.md)hakkında bilgi edinin.
+> Tüm Azure REKLAM senaryoları ve özellikleri Microsoft kimlik platformu bitiş noktası tarafından desteklenmez. Microsoft kimlik platformu bitiş noktasını kullanmanız gerekip gerekip gerekmeden karar vermek için [Microsoft kimlik platformu sınırlamaları](active-directory-v2-limitations.md)hakkında bilgi edinin.
 
 ## <a name="the-basics"></a>Temel bilgiler
 
-Neredeyse tüm OAuth 2,0 ve OpenID Connect akışlarında, Exchange 'e dahil edilen dört taraf vardır:
+Hemen hemen tüm OAuth 2.0 ve OpenID Connect akışlarında, değişimde yer alan dört taraf vardır:
 
-![OAuth 2,0 rollerinin gösterildiği diyagram](./media/active-directory-v2-flows/protocols-roles.svg)
+![OAuth 2.0 rollerini gösteren diyagram](./media/active-directory-v2-flows/protocols-roles.svg)
 
-* **Yetkilendirme sunucusu** , Microsoft Identity platform uç noktasıdır ve kullanıcının kimliğini sağlamaktan, kaynaklara erişim verme ve iptal etme ve belirteçleri verme konusunda sorumludur. Kimlik sağlayıcısı olarak da bilinen yetkilendirme sunucusu, kullanıcının bilgileri, erişimleri ve bir akıştaki taraflar arasındaki güven ilişkilerini güvenli bir şekilde işler.
-* **Kaynak sahibi** genellikle Son Kullanıcı olur. Bu, verilerin sahibi olan ve üçüncü tarafların bu verilere veya kaynağa erişmesine izin veren bir güce sahip olan taraftır.
-* **OAuth istemcisi** , uygulama kimliğiyle tanımlanan uygulamanız. OAuth istemcisi genellikle son kullanıcının etkileşime girdiği tarafdır ve yetkilendirme sunucusundan belirteçler ister. İstemciye kaynak sahibi tarafından kaynağa erişim izni verilmesi gerekir.
-* Kaynak **sunucu** , kaynağın veya verilerin bulunduğu yerdir. OAuth Istemcisini güvenli şekilde doğrulamak ve yetkilendirmek için yetkilendirme sunucusuna güvenir ve bir kaynağa erişimin verilmesini sağlamak için taşıyıcı erişim belirteçlerini kullanır.
+* **Yetkilendirme Sunucusu,** Microsoft kimlik platformubitiş noktasıdır ve kullanıcının kimliğini sağlamaktan, kaynaklara erişim sağlamaktan ve iptal etmekten ve belirteçler vermekten sorumludur. Kimlik sağlayıcısı olarak da bilinen yetkilendirme sunucusu, kullanıcının bilgileri, erişimleri ve bir akıştaki taraflar arasındaki güven ilişkileriyle ilgili her şeyi güvenli bir şekilde işler.
+* **Kaynak Sahibi** genellikle son kullanıcıdır. Verilere sahip olan ve üçüncü tarafların bu verilere veya kaynağa erişmesine izin verme yetkisine sahip olan taraftır.
+* **OAuth İstemcisi,** uygulama kimliğiyle tanımlanan uygulamanızdır. OAuth istemcisi genellikle son kullanıcının etkileşimde olduğu taraftır ve yetkilendirme sunucusundan belirteçler ister. İstemciye kaynak sahibi tarafından kaynağa erişim izni verilmelidir.
+* **Kaynak Sunucusu,** kaynağın veya verilerin bulunduğu yerdir. OAuth İstemci'nin güvenli bir şekilde kimlik doğrulaması ve yetkilendirilmesi için Yetkilendirme Sunucusuna güvenir ve bir kaynağa erişimin sağlanabileceğinden emin olmak için Taşıyıcı erişim belirteçlerini kullanır.
 
 ## <a name="app-registration"></a>Uygulama kaydı
 
-Hem kişisel hem de iş veya okul hesaplarını kabul etmek isteyen her uygulama, OAuth 2,0 veya OpenID Connect kullanarak bu kullanıcıları imzalayabilmesi için [Azure portal](https://aka.ms/appregistrations) **uygulama kayıtları** deneyiminden kaydedilmelidir. Uygulama kayıt işlemi, uygulamanıza birkaç değer toplayacak ve atayacaktır:
+Kişisel ve iş veya okul hesaplarını kabul etmek isteyen her uygulamanın, bu kullanıcıları OAuth 2.0 veya OpenID Connect kullanarak oturum açabilmesi için [Azure portalındaki](https://aka.ms/appregistrations) **Uygulama kayıtları** deneyimi aracılığıyla kaydedilmesi gerekir. Uygulama kayıt işlemi, uygulamanız için birkaç değer toplar ve atar:
 
-* Uygulamanızı benzersiz bir şekilde tanımlayan **uygulama kimliği**
-* Yanıtları uygulamanıza geri yönlendirmek için kullanılabilen bir **yeniden yönlendirme URI 'si** (isteğe bağlı)
-* Diğer senaryoya özgü birkaç değer.
+* Uygulamanızı benzersiz olarak tanımlayan bir **Uygulama Kimliği**
+* Yanıtları uygulamanıza yönlendirmek için kullanılabilecek Bir **Yönlendirme URI** (isteğe bağlı)
+* Birkaç diğer senaryoya özgü değerler.
 
 Daha ayrıntılı bilgi için [uygulama kaydetmeyi](quickstart-register-app.md) öğrenin.
 
 ## <a name="endpoints"></a>Uç Noktalar
 
-Kaydolduktan sonra, uygulama uç noktaya istek göndererek Microsoft Identity platformu ile iletişim kurar:
+Uygulama, kaydolduktan sonra, istekleri bitiş noktasına göndererek Microsoft kimlik platformu yla iletişim kurar:
 
 ```
 https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize
 https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
 ```
 
-`{tenant}` dört farklı değerden birini alabilir:
+Dört `{tenant}` farklı değerden birini alabilecekleri yer:
 
 | Değer | Açıklama |
 | --- | --- |
-| `common` | Azure AD 'den hem kişisel Microsoft hesapları hem de iş/okul hesabı olan kullanıcıların uygulamada oturum açmasını sağlar. |
-| `organizations` | Yalnızca Azure AD 'den iş/okul hesapları olan kullanıcıların uygulamada oturum açmasını sağlar. |
-| `consumers` | Yalnızca kişisel Microsoft hesabı (MSA) olan kullanıcıların uygulamada oturum açmasına izin verir. |
-| `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` veya `contoso.onmicrosoft.com` | Yalnızca belirli bir Azure AD kiracısından iş/okul hesapları olan kullanıcıların uygulamada oturum açmasını sağlar. Azure AD kiracının kolay etki alanı adı ya da kiracının GUID tanımlayıcısı kullanılabilir. |
+| `common` | Azure AD'den hem kişisel Microsoft hesapları hem de iş/okul hesapları olan kullanıcıların uygulamada oturum açmalarına olanak tanır. |
+| `organizations` | Yalnızca Azure AD'den iş/okul hesabı olan kullanıcıların uygulamaya oturum açmasına olanak tanır. |
+| `consumers` | Yalnızca kişisel Microsoft hesapları (MSA) olan kullanıcıların uygulamada oturum açmasına izin verir. |
+| `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` veya `contoso.onmicrosoft.com` | Yalnızca belirli bir Azure AD kiracısından iş/okul hesabı olan kullanıcıların uygulamada oturum açmasına olanak tanır. Azure AD kiracısının arkadaş çaları veya kiracının GUID tanımlayıcısı kullanılabilir. |
 
-Bu uç noktalarla nasıl etkileşim kuracağınızı öğrenmek için, [protokoller](#protocols) bölümünde belirli bir uygulama türü seçin ve daha fazla bilgi için bağlantıları izleyin.
+Bu uç noktalarla nasıl etkileşimde ebileceğinizi öğrenmek için [Protokoller](#protocols) bölümünde belirli bir uygulama türünü seçin ve daha fazla bilgi için bağlantıları izleyin.
 
 > [!TIP]
-> Azure AD 'de kayıtlı tüm uygulamalar, kişisel hesaplara kaydolmasa bile Microsoft Identity platform uç noktasını kullanabilir.  Bu şekilde, uygulamanızı yeniden oluşturmadan mevcut uygulamaları Microsoft Identity platform ve [msal](reference-v2-libraries.md) 'a geçirebilirsiniz.  
+> Azure AD'de kayıtlı herhangi bir uygulama, kişisel hesaplarda oturum açmasalar bile Microsoft kimlik platformu bitiş noktasını kullanabilir.  Bu şekilde, varolan uygulamaları, uygulamanızı yeniden oluşturmadan Microsoft kimlik platformuna ve [MSAL'a](reference-v2-libraries.md) geçirebilirsiniz.  
 
 ## <a name="tokens"></a>Belirteçler
 
-OAuth 2,0 ve OpenID Connect 'in Microsoft Identity platform uygulamaları, JWTs olarak temsil edilen taşıyıcı belirteçleri dahil olmak üzere taşıyıcı belirteçlerinin yoğun bir şekilde kullanılmasını kolaylaştırır. Taşıyıcı belirteç, korunan bir kaynağa "taşıyıcı" erişimini sağlayan hafif bir güvenlik belirtecidir. Bu anlamda, "taşıyıcı" belirteci sunacak herhangi bir tarafdır. Bir tarafın, taşıyıcı belirtecini almak için öncelikle Microsoft Identity platformunda kimlik doğrulaması yapması gerekir, ancak gerekli adımlar iletim ve depolama alanındaki belirtecin güvenliğini sağlamak için alınmadığından, istenmeyen bir taraf tarafından yakalanabilir ve kullanılabilir. Bazı güvenlik belirteçlerinin, yetkisiz tarafların onları kullanmasını önlemek için yerleşik bir mekanizması vardır ancak, taşıyıcı belirteçleri bu mekanizmaya sahip değildir ve Aktarım Katmanı Güvenliği (HTTPS) gibi güvenli bir kanalda aktarılmalıdır. Bir taşıyıcı belirteci açık bir şekilde iletilebilise, kötü amaçlı bir taraf, belirteci almak ve korumalı bir kaynağa yetkisiz erişim için kullanmak üzere bir ortadaki adam saldırısı kullanabilir. Aynı güvenlik ilkeleri, daha sonra kullanılmak üzere taşıyıcı belirteçleri depolarken veya önbelleğe alırken geçerlidir. Her zaman uygulamanızın taşıyıcı belirteçlerini güvenli bir şekilde ilettiğinden ve depoladığından emin olun. Taşıyıcı belirteçleriyle ilgili daha fazla bilgi için bkz. [RFC 6750 Bölüm 5](https://tools.ietf.org/html/rfc6750).
+OAuth 2.0 ve OpenID Connect'in Microsoft kimlik platformu uygulaması, JWT olarak temsil edilen taşıyıcı belirteçleri de dahil olmak üzere taşıyıcı belirteçlerini kapsamlı bir şekilde kullanır. Taşıyıcı belirteci, korunan bir kaynağa "taşıyıcı" erişimi sağlayan hafif bir güvenlik belirtecidir. Bu anlamda, "taşıyıcı" belirteci sunabilir herhangi bir partidir. Bir tarafın taşıyıcı belirteci almak için önce Microsoft kimlik platformunda kimlik doğrulaması yapması gerekse de, iletim ve depolamadaki belirteci güvence altına almak için gerekli adımlar atılmamışsa, istenmeyen bir taraf tarafından ele geçirilebilir ve kullanılabilir. Bazı güvenlik belirteçleri yetkisiz tarafların bunları kullanmasını önlemek için yerleşik bir mekanizmaya sahip olsa da, taşıyıcı belirteçleri bu mekanizmaya sahip değildir ve aktarım katmanı güvenliği (HTTPS) gibi güvenli bir kanalda taşınması gerekir. Taşıyıcı belirteci açık olarak iletilirse, kötü niyetli bir taraf belirteci elde etmek ve korumalı bir kaynağa yetkisiz erişim için kullanmak için ortadaki adam saldırısını kullanabilir. Ayı belirteçlerini daha sonra kullanmak üzere depolama veya önbelleğe alma da aynı güvenlik ilkeleri geçerlidir. Uygulamanızın taşıyıcı belirteçleri güvenli bir şekilde iletmesini ve depoladığını her zaman emin olun. Taşıyıcı belirteçleri hakkında daha fazla güvenlik hususları için [RFC 6750 Bölüm 5'e](https://tools.ietf.org/html/rfc6750)bakın.
 
-Microsoft Identity platform uç noktasında kullanılan farklı belirteç türleri hakkında daha fazla ayrıntı [Microsoft Identity platform Endpoint Token başvurusunda](v2-id-and-access-tokens.md)bulunabilir.
+Microsoft kimlik platformu bitiş noktasında kullanılan farklı belirteç türlerinin daha ayrıntılı ayrıntılarını [Microsoft kimlik platformu uç noktası belirteç başvurusu](v2-id-and-access-tokens.md)mevcuttur.
 
 ## <a name="protocols"></a>Protokoller
 
-Bazı örnek istekleri görmeyi hazırsanız aşağıdaki öğreticilerden birini kullanmaya başlayın. Her biri belirli bir kimlik doğrulama senaryosuna karşılık gelir. Sizin için doğru Flow 'un belirlenmesi için yardıma ihtiyacınız varsa, [Microsoft Identity platform ile oluşturabileceğiniz uygulama türlerine](v2-app-types.md)göz atın.
+Bazı örnek istekleri görmeye hazırsanız, aşağıdaki öğreticilerden biriyle başlayın. Her biri belirli bir kimlik doğrulama senaryosuna karşılık gelir. Sizin için doğru akışı belirlemek için yardıma ihtiyacınız varsa, [Microsoft kimlik platformu ile oluşturabileceğiniz uygulama türlerine](v2-app-types.md)göz atın.
 
-* [OAuth 2,0 ile mobil ve yerel uygulama oluşturma](v2-oauth2-auth-code-flow.md)
-* [OpenID Connect ile Web uygulamaları oluşturun](v2-protocols-oidc.md)
-* [OAuth 2,0 örtük Flow ile tek sayfalı uygulamalar oluşturun](v2-oauth2-implicit-grant-flow.md)
-* [OAuth 2,0 istemci kimlik bilgileri akışıyla Daemon 'ları veya sunucu tarafı süreçler oluşturun](v2-oauth2-client-creds-grant-flow.md)
-* [Bir Web API 'sinde, OAuth 2,0 adına sahip akışa sahip belirteçleri edinme](v2-oauth2-on-behalf-of-flow.md)
+* [OAuth 2.0 ile mobil ve yerel uygulama oluşturun](v2-oauth2-auth-code-flow.md)
+* [OpenID Connect ile web uygulamaları oluşturun](v2-protocols-oidc.md)
+* [OAuth 2.0 Örtülü Akış ile tek sayfalı uygulamalar oluşturun](v2-oauth2-implicit-grant-flow.md)
+* [OAuth 2.0 istemci kimlik bilgileri akışı ile daemons veya sunucu tarafı işlemleri oluşturun](v2-oauth2-client-creds-grant-flow.md)
+* [OAuth 2.0 on-of Flow ile bir web API belirteçleri alın](v2-oauth2-on-behalf-of-flow.md)

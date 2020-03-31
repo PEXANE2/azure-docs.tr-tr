@@ -1,6 +1,6 @@
 ---
-title: Hata ayıklama SAML tabanlı çoklu oturum açma-Azure Active Directory | Microsoft Docs
-description: Azure Active Directory içindeki uygulamalarda SAML tabanlı çoklu oturum açma hatalarını ayıklayın.
+title: Hata ayıklama SAML tabanlı tek oturum açma - Azure Etkin Dizin | Microsoft Dokümanlar
+description: Azure Active Directory'deki uygulamalarda SAML tabanlı tek oturum açma hatası.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -12,95 +12,96 @@ ms.date: 02/18/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: luleon, hirsin, paulgarn
-ms.openlocfilehash: ad948521a376dc8bdb3d868de643ce103f56735d
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ROBOTS: NOINDEX
+ms.openlocfilehash: 5d92b43b47a20a75d2c8b6becb69cfee5829e80f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
-ms.locfileid: "77164610"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80154857"
 ---
-# <a name="debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>Azure Active Directory uygulamalarda SAML tabanlı çoklu oturum açma hatalarını ayıklama
+# <a name="debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>Azure Active Directory'deki uygulamalarda SAML tabanlı tek oturum açma hatası
 
 [!INCLUDE [active-directory-azuread-dev](../../../includes/active-directory-azuread-dev.md)]
 
-[Security assertion Markup Language (SAML) 2,0](https://en.wikipedia.org/wiki/Security_Assertion_Markup_Language)' i destekleyen Azure Active Directory (Azure AD) uygulamalarında [Çoklu oturum açma](../manage-apps/what-is-single-sign-on.md) sorunlarını bulmayı ve gidermeyi öğrenin. 
+Azure Etkin Dizini'ndeki (Azure AD) güvenlik [öne çıkarma dili (SAML) 2.0'ı](https://en.wikipedia.org/wiki/Security_Assertion_Markup_Language)destekleyen uygulamalar için tek oturum [açma](../manage-apps/what-is-single-sign-on.md) sorunlarını nasıl bulabileceğinizi ve düzelteceklerini öğrenin. 
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-[Uygulamalarımın güvenli oturum açma uzantısını](../user-help/my-apps-portal-end-user-troubleshoot.md#im-having-trouble-installing-the-my-apps-secure-sign-in-extension)yüklemenizi öneririz. Bu tarayıcı uzantısı, çoklu oturum açma ile ilgili sorunları çözmek için ihtiyaç duyduğunuz SAML isteği ve SAML yanıt bilgilerinin toplanmasını kolaylaştırır. Uzantıyı yükleyemezseniz, bu makalede, hem ile hem de uzantı yüklü olmadan sorunların nasıl çözümleneceği gösterilmektedir.
+[Uygulamalarım Güvenli Oturum Açma Uzantısı'nı](../user-help/my-apps-portal-end-user-troubleshoot.md#im-having-trouble-installing-the-my-apps-secure-sign-in-extension)yüklemenizi öneririz. Bu tarayıcı uzantısı, sorunları tek oturum açma yla çözmek için gereken SAML isteğini ve SAML yanıt bilgilerini toplamanızı kolaylaştırır. Uzantıyı yükleyemiyorsanız, bu makalede, uzantı yüklü olan ve yüklenmemiş sorunları nasıl çözeceğiniz gösterilmektedir.
 
-Uygulamalarım güvenli oturum açma uzantısını indirip yüklemek için aşağıdaki bağlantılardan birini kullanın.
+Uygulamalarım Güvenli Oturum Açma Uzantısı'nı indirmek ve yüklemek için aşağıdaki bağlantılardan birini kullanın.
 
 - [Chrome](https://go.microsoft.com/fwlink/?linkid=866367)
 - [Microsoft Edge](https://go.microsoft.com/fwlink/?linkid=845176)
-- ['U](https://go.microsoft.com/fwlink/?linkid=866366)
+- [Firefox](https://go.microsoft.com/fwlink/?linkid=866366)
 
-## <a name="test-saml-based-single-sign-on"></a>SAML tabanlı çoklu oturum açmayı sına
+## <a name="test-saml-based-single-sign-on"></a>SAML tabanlı tek oturum açma yı test edin
 
-Azure AD ile hedef uygulama arasında SAML tabanlı çoklu oturum açmayı test etmek için:
+Azure AD ile hedef uygulama arasında SAML tabanlı tek oturum açma test etmek için:
 
-1. [Azure Portal](https://portal.azure.com) bir genel yönetici veya uygulamaları yönetme yetkisine sahip başka bir yönetici olarak oturum açın.
-1. Sol dikey pencerede **Azure Active Directory**' yi seçin ve ardından **Kurumsal uygulamalar**' ı seçin. 
-1. Kurumsal uygulamalar listesinden, çoklu oturum açmayı test etmek istediğiniz uygulamayı seçin ve ardından sol taraftaki seçeneklerden **Çoklu oturum açma**seçeneğini belirleyin.
-1. SAML tabanlı çoklu oturum açma testi deneyimini açmak için, **Çoklu oturum açma** (5. adım) sayfasına gidin. **Test** düğmesi gri Ise, **temel SAML yapılandırması** bölümünde önce gerekli öznitelikleri doldurmanız ve kaydetmeniz gerekir.
-1. **Çoklu oturum açma** dikey penceresinde, hedef uygulamada oturum açmak için şirket kimlik bilgilerinizi kullanın. Geçerli Kullanıcı olarak veya farklı bir kullanıcı olarak oturum açabilirsiniz. Farklı bir kullanıcı olarak oturum açarsanız, bir istem sizden kimlik doğrulaması isteyeceğiz.
+1. [Azure portalında](https://portal.azure.com) uygulamaları yönetmeye yetkili küresel bir yönetici veya başka bir yönetici olarak oturum açın.
+1. Sol bıçakta **Azure Etkin Dizini'ni**seçin ve ardından **Kurumsal uygulamaları**seçin. 
+1. Kurumsal uygulamalar listesinden, tek oturum açma test etmek istediğiniz uygulamayı seçin ve ardından soldaki **seçeneklerden Tek oturum açma'yı**seçin.
+1. SAML tabanlı tek oturum açma testi deneyimini açmak için **Test tek oturum açma** (adım 5) gidin. **Test** düğmesi soluksa, temel **SAML Yapılandırması** bölümünde önce gerekli öznitelikleri doldurmanız ve kaydetmeniz gerekir.
+1. Test **tek oturum açma** bıçağında, hedef uygulamada oturum açabilmek için şirket kimlik bilgilerinizi kullanın. Geçerli kullanıcı olarak veya farklı bir kullanıcı olarak oturum açabilirsiniz. Farklı bir kullanıcı olarak oturum açarsanız, bir istem sizden kimlik doğrulamanızı ister.
 
-    ![Test SAML SSO sayfasını gösteren ekran görüntüsü](./media/howto-v1-debug-saml-sso-issues/test-single-sign-on.png)
+    ![Saml SSO sayfasını gösteren ekran görüntüsü](./media/howto-v1-debug-saml-sso-issues/test-single-sign-on.png)
 
-Oturumunuz başarıyla açıldı, test geçildi. Bu durumda, Azure AD uygulamaya bir SAML yanıt belirteci verdi. Uygulama, başarıyla oturumunuzu açmak için SAML belirtecini kullandı.
+Başarılı bir şekilde oturum açmışsanız, test geçmiştir. Bu durumda, Azure AD uygulamaya bir SAML yanıtı belirteci yayınladı. Uygulama, başarılı bir şekilde oturum açmanız için SAML belirteci'ni kullandı.
 
-Şirket oturum açma sayfasında veya uygulamanın sayfasında bir hata varsa, hatayı çözmek için sonraki bölümlerden birini kullanın.
+Şirket oturum açma sayfasında veya uygulamanın sayfasında bir hata varsa, hatayı gidermek için sonraki bölümlerden birini kullanın.
 
-## <a name="resolve-a-sign-in-error-on-your-company-sign-in-page"></a>Şirket oturum açma sayfanızda oturum açma hatasını çözün
+## <a name="resolve-a-sign-in-error-on-your-company-sign-in-page"></a>Şirket oturum açma sayfanızdaki oturum açma hatasını giderme
 
-Oturum açmaya çalıştığınızda, aşağıdaki örneğe benzer şekilde şirket oturum açma sayfasında bir hata görebilirsiniz.
+Oturum açmayı denediğinizde, şirket oturum açma sayfanızda aşağıdaki örneğe benzer bir hata görebilirsiniz.
 
 ![Şirket oturum açma sayfasında bir hata gösteren örnek](./media/howto-v1-debug-saml-sso-issues/error.png)
 
-Bu hatayı ayıklamak için hata iletisi ve SAML isteği gerekir. Uygulamalarım güvenli oturum açma uzantısı bu bilgileri otomatik olarak toplar ve Azure AD 'de çözüm kılavuzunu görüntüler.
+Bu hatayı hata ayıklamak için hata iletisi ve SAML isteği gerekir. Uygulamalarım Güvenli Oturum Açma Uzantısı bu bilgileri otomatik olarak toplar ve Azure AD'de çözünürlük kılavuzu görüntüler.
 
-### <a name="to-resolve-the-sign-in-error-with-the-my-apps-secure-sign-in-extension-installed"></a>Uygulamalarım güvenli oturum açma uzantısı yüklü olan oturum açma hatasını çözümlemek için
+### <a name="to-resolve-the-sign-in-error-with-the-my-apps-secure-sign-in-extension-installed"></a>Yüklü Uygulamalar Güvenli Oturum Açma Uzantısı ile oturum açma hatasını gidermek için
 
-1. Bir hata oluştuğunda, uzantı sizi Azure AD **testi çoklu oturum açma** dikey penceresine geri yönlendirir.
-1. **Çoklu oturum açma sınaması** dikey PENCERESINDE, **SAML isteğini indir**' i seçin.
-1. Hataya ve SAML isteğindeki değerlere göre belirli çözüm kılavuzlarını görmeniz gerekir.
-1. Sorunu çözmek için Azure AD 'de yapılandırmayı otomatik olarak güncellemek üzere bir sorun **giderme** düğmesini görürsünüz. Bu düğmeyi görmüyorsanız, oturum açma sorunu Azure AD 'de yanlış yapılandırma nedeniyle değildir.
+1. Bir hata oluştuğunda, uzantı sizi Azure AD **Testi tek oturum açma** bıçağına yönlendirir.
+1. Test **tek oturum açma** **bıçağında SAML isteğini indir'i**seçin.
+1. SAML isteğindeki hataya ve değerlere dayalı belirli çözünürlük kılavuzu görmeniz gerekir.
+1. Sorunu gidermek için Azure AD'deki yapılandırmayı otomatik olarak güncelleştirmek için **Bir Düzelt** düğmesi görürsünüz. Bu düğmeyi görmüyorsanız, oturum açma sorunu Azure AD'deki bir yanlış yapılandırmadan kaynaklanmaz.
 
-Oturum açma hatası için hiçbir çözüm sağlanmazsa, bize bildirmek için geri bildirim metin kutusunu kullanmanızı öneririz.
+Oturum açma hatası için herhangi bir çözüm sağlanmışsa, bizi bilgilendirmek için geri bildirim textbox'ını kullanmanızı öneririz.
 
-### <a name="to-resolve-the-error-without-installing-the-my-apps-secure-sign-in-extension"></a>Uygulamamın güvenli oturum açma uzantısını yüklemeden hatayı çözümlemek için
+### <a name="to-resolve-the-error-without-installing-the-my-apps-secure-sign-in-extension"></a>Uygulamalarım Güvenli Oturum Açma Uzantısı'nı yüklemeden hatayı gidermek için
 
-1. Sayfanın sağ alt köşesindeki hata mesajını kopyalayın. Hata iletisi şunları içerir:
-    - Bir CorrelationId ve zaman damgası. Bu değerler, mühendislerin sorununuzu belirlemesine ve sorununuzla ilgili doğru bir çözüm sağlamasına yardımcı olduklarından, Microsoft ile bir destek durumu oluşturduğunuzda önemlidir.
-    - Sorunun kök nedenini tanımlayan bir ifade.
-1. Azure AD 'ye dönün ve **Çoklu oturum açma** dikey penceresini bulun.
-1. Yukarıdaki metin kutusunda, **çözüm kılavuzunu al**' ı, hata iletisini yapıştırın.
-1. Sorunu çözmeye yönelik adımları göstermek için **çözüm kılavuzunu al** ' a tıklayın. Bu kılavuzda, SAML isteğinden veya SAML yanıtından bilgi gerekebilir. Uygulamalarım güvenli oturum açma uzantısını kullanmıyorsanız, SAML isteği ve yanıtını almak için [Fiddler](https://www.telerik.com/fiddler) gibi bir araca ihtiyacınız vardır.
-1. SAML isteğindeki hedefin Azure AD 'den alınan SAML çoklu oturum açma hizmeti URL 'sine karşılık geldiğini doğrulayın.
-1. SAML isteğindeki veren 'in, Azure AD 'de uygulama için yapılandırdığınız tanımlayıcıyla aynı olduğunu doğrulayın. Azure AD, dizininizdeki bir uygulamayı bulmak için veren 'i kullanır.
-1. AssertionConsumerServiceURL 'nin, uygulamanın Azure AD 'den SAML belirtecini almak için beklediği konum olduğunu doğrulayın. Bu değeri Azure AD 'de yapılandırabilirsiniz, ancak SAML isteğinin bir parçası ise zorunlu değildir.
+1. Sayfanın sağ alt köşesindeki hata iletisini kopyalayın. Hata iletisi şunları içerir:
+    - KorelasyonID ve Zaman Damgası. Bu değerler, mühendislerin sorununuzu belirlemesine ve sorununuza doğru bir çözüm sağlamasına yardımcı olduğundan, Microsoft ile bir destek örneği oluşturduğunuzda önemlidir.
+    - Sorunun temel nedenini tanımlayan bir deyim.
+1. Azure AD'ye geri dön ve **Test tek oturum açma** bıçağını bulun.
+1. Yukarıdaki metin kutusunda **çözünürlük kılavuzu alın,** hata iletisi yapıştırın.
+1. Sorunu çözmek için adımları görüntülemek için **çözünürlük kılavuzu al'ı** tıklatın. Kılavuz, SAML isteği veya SAML yanıtından bilgi gerektirebilir. Uygulamalarım Güvenli Oturum Açma Uzantısı'nı kullanmıyorsanız, SAML isteğini ve yanıtını almak için [Fiddler](https://www.telerik.com/fiddler) gibi bir araca ihtiyacınız olabilir.
+1. SAML isteğindeki hedefin Azure AD'den alınan SAML Tek Oturum Açma Hizmeti URL'sine karşılık geldiğini doğrulayın.
+1. SAML isteğindeki verenin, Azure AD'deki uygulama için yapılandırdığınız tanımlayıcıyla aynı olduğunu doğrulayın. Azure AD, dizininizde bir uygulama bulmak için vereni kullanır.
+1. Uygulamanın Azure AD'den SAML belirteci almayı beklediği yer, AssertionConsumerServiceURL'yi doğrulayın. Bu değeri Azure AD'de yapılandırabilirsiniz, ancak SAML isteğinin bir parçasıysa zorunlu değildir.
 
 
-## <a name="resolve-a-sign-in-error-on-the-application-page"></a>Uygulama sayfasında oturum açma hatasını çözme
+## <a name="resolve-a-sign-in-error-on-the-application-page"></a>Uygulama sayfasındaki oturum açma hatasını giderme
 
-Başarılı bir şekilde oturum açabilir ve sonra uygulamanın sayfasında bir hata görebilirsiniz. Bu durum, Azure AD uygulamaya bir belirteç verildiğinde, ancak uygulama yanıtı kabul etmediğinde oluşur.
+Başarılı bir şekilde oturum açabilirsiniz ve uygulamanın sayfasında bir hata görebilirsiniz. Bu, Azure AD uygulamaya bir belirteç verdiğinde oluşur, ancak uygulama yanıtı kabul etmez.
 
 Hatayı gidermek için aşağıdaki adımları izleyin:
 
-1. Uygulama Azure AD galerisinde ise, uygulamayı Azure AD ile tümleştirmek için tüm adımları izlediğinizden emin olun. Uygulamanıza ilişkin tümleştirme yönergelerini bulmak için, [SaaS uygulaması tümleştirme öğreticilerinin listesine](../saas-apps/tutorial-list.md)bakın.
+1. Uygulama Azure AD Galerisi'ndeyse, uygulamayı Azure AD ile tümleştirmek için tüm adımları izlediğinizi doğrulayın. Uygulamanızın tümleştirme yönergelerini bulmak için [SaaS uygulama tümleştirme öğreticilerinin listesine](../saas-apps/tutorial-list.md)bakın.
 1. SAML yanıtını alın.
-    - Uygulamalarım güvenli oturum açma uzantısı yüklüyse, **Çoklu oturum açma** DIKEY penceresinde **SAML yanıtını indir**' e tıklayın.
+    - Uygulamalarım Güvenli Oturum Açma uzantısı yüklüyse, **Test tek oturum açma** **bıçağından SAML yanıtını indir'e**tıklayın.
     - Uzantı yüklü değilse, SAML yanıtını almak için [Fiddler](https://www.telerik.com/fiddler) gibi bir araç kullanın.
-1. SAML yanıt belirtecindeki şu öğelere dikkat edin:
-   - NameID değeri ve biçiminin Kullanıcı benzersiz tanımlayıcısı
+1. SAML yanıt belirtecinde şu öğelere dikkat edin:
+   - NameID değeri ve biçiminin kullanıcı benzersiz tanımlayıcısı
    - Belirteçte verilen talepler
    - Belirteci imzalamak için kullanılan sertifika.
 
-     SAML yanıtı hakkında daha fazla bilgi için bkz. [Çoklu oturum açma SAML Protokolü](../develop/single-sign-on-saml-protocol.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json).
+     SAML yanıtı hakkında daha fazla bilgi için [Tek Oturum AÇMA SAML protokolüne](../develop/single-sign-on-saml-protocol.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)bakın.
 
-1. SAML yanıtını inceledikten sonra, sorunu çözme konusunda rehberlik için [oturum açtıktan sonra uygulamanın sayfasındaki hata](../manage-apps/application-sign-in-problem-application-error.md) başlığına bakın. 
-1. Hala başarıyla oturum açmadıysanız, SAML yanıtında uygulama satıcısına kayıp olup olmadığını sorabilirsiniz.
+1. SAML yanıtını gözden geçirdiğiniz için, sorunun nasıl çözüleceği konusunda kılavuz için [oturum açmadan sonra uygulamanın sayfasındahata](../manage-apps/application-sign-in-problem-application-error.md) sayfasına bakın. 
+1. Başarılı bir şekilde oturum açamıyorsanız, uygulama satıcısına SAML yanıtında nelerin eksik olduğunu sorabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Artık çoklu oturum açma, uygulamanız için çalışmaya başladığına göre, [SaaS uygulamalarına Kullanıcı hazırlama ve sağlamayı kaldırma Işlemini otomatikleştirebilir](../manage-apps/user-provisioning.md) veya [koşullu erişime](../conditional-access/app-based-conditional-access.md)başlamanızı sağlayabilirsiniz.
+Artık tek oturum açma uygulamanız için çalışıyorsa, [SaaS uygulamalarına kullanıcı sağlama ve de-provisioning otomatikleştirmek](../manage-apps/user-provisioning.md) veya [Koşullu Erişim ile başlamak](../conditional-access/app-based-conditional-access.md)olabilir.

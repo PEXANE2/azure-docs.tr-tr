@@ -1,6 +1,6 @@
 ---
-title: Apache Spark - Azure olay hub'ları ile tümleştirme | Microsoft Docs
-description: Bu makalede, Event Hubs ile yapılandırılmış akışı etkinleştirmek üzere Apache Spark ile tümleştirme gösterilmektedir.
+title: Apache Spark ile tümleştirme - Azure Etkinlik Hub'ları | Microsoft Dokümanlar
+description: Bu makalede, Olay Hub'ları ile Yapılandırılmış Akış etkinleştirmek için Apache Spark ile nasıl tümleştirilen gösterir.
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
@@ -15,28 +15,28 @@ ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
 ms.openlocfilehash: 4c4fd74e9123e1310be297a15090433d365d24cf
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76311691"
 ---
-# <a name="integrating-apache-spark-with-azure-event-hubs"></a>Apache Spark Azure Event Hubs ile tümleştirme
+# <a name="integrating-apache-spark-with-azure-event-hubs"></a>Apache Spark'ı Azure Etkinlik Hub'larıyla tümleştirme
 
-Azure Event Hubs ile sorunsuz bir şekilde tümleştirilir [Apache Spark](https://spark.apache.org/) dağıtılmış akış uygulamalar oluşturma olanağı. Bu tümleştirmeyi desteklemektedir [Spark Core](https://spark.apache.org/docs/latest/rdd-programming-guide.html), [Spark akışı](https://spark.apache.org/docs/latest/streaming-programming-guide.html), ve [yapılandırılmış akış](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html). Apache Spark için Event Hubs bağlayıcısını kullanılabilir [GitHub](https://github.com/Azure/azure-event-hubs-spark). Bu kitaplık ayrıca içindeki Maven projelerinde kullanılabilir [Maven Central Repository](https://search.maven.org/#artifactdetails%7Ccom.microsoft.azure%7Cazure-eventhubs-spark_2.11%7C2.1.6%7C).
+Azure Etkinlik Hub'ları, dağıtılmış akış uygulamaları oluşturmayı etkinleştirmek için [Apache Spark](https://spark.apache.org/) ile sorunsuz bir şekilde tümleşir. Bu tümleştirme [Spark Core, Spark](https://spark.apache.org/docs/latest/rdd-programming-guide.html) [Streaming](https://spark.apache.org/docs/latest/streaming-programming-guide.html)ve [Yapılandırılmış Akış](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html)destekler. Apache Spark için Olay Hub'ları bağlayıcısı [GitHub'da](https://github.com/Azure/azure-event-hubs-spark)kullanılabilir. Bu kütüphane, [Maven Merkez Deposu'ndan](https://search.maven.org/#artifactdetails%7Ccom.microsoft.azure%7Cazure-eventhubs-spark_2.11%7C2.1.6%7C)Maven projelerinde de kullanılabilir.
 
-Bu makalede, sürekli bir uygulamanın nasıl oluşturulacağını [Azure Databricks](https://azure.microsoft.com/services/databricks/). Bu makalede, Azure Databricks kullanırken, Spark kümeleri de kullanılabilen [HDInsight](../hdinsight/spark/apache-spark-overview.md).
+Bu makalede, [Azure Veri Tuğlaları'nda](https://azure.microsoft.com/services/databricks/)sürekli bir uygulamanın nasıl oluşturulacağı anlatılıyor. Bu makalede Azure Databricks kullanılırken, Spark kümeleri [HDInsight](../hdinsight/spark/apache-spark-overview.md)ile de kullanılabilir.
 
-Bu makalede bu örnek iki Scala not defterleri kullanır: biri olayları bir event hub'ı ve olayların yeniden gönderilmesi için başka bir akış.
+Bu makaledeki örnekte iki Scala dizüstü bilgisayar kullanır: biri olay hub'ından olayları akışa aktarmak, diğeri de olayları ona geri göndermek için.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* Azure aboneliği. Biri yoksa [ücretsiz bir hesap oluşturma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-* Bir olay hub'ı örneği. Biri yoksa [oluşturmak](event-hubs-create.md).
-* Bir [Azure Databricks](https://azure.microsoft.com/services/databricks/) örneği. Biri yoksa [oluşturmak](../azure-databricks/quickstart-create-databricks-workspace-portal.md).
-* [Maven koordinatları kullanarak bir kitaplığı oluşturma](https://docs.databricks.com/user-guide/libraries.html#upload-a-maven-package-or-spark-package): `com.microsoft.azure:azure‐eventhubs‐spark_2.11:2.3.1`.
+* Azure aboneliği. Hesabınız yoksa, ücretsiz [bir hesap oluşturun.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
+* Olay Hub'ları örneği. Eğer yoksa, bir [oluşturun.](event-hubs-create.md)
+* [Azure Databricks](https://azure.microsoft.com/services/databricks/) örneği. Eğer yoksa, bir [oluşturun.](../azure-databricks/quickstart-create-databricks-workspace-portal.md)
+* [Maven koordinatlarını kullanarak bir kütüphane oluşturun:](https://docs.databricks.com/user-guide/libraries.html#upload-a-maven-package-or-spark-package) `com.microsoft.azure:azure‐eventhubs‐spark_2.11:2.3.1`.
 
-Aşağıdaki kodu kullanarak, olay hub'ından Stream olayları:
+Aşağıdaki kodu kullanarak olay merkezinizden olayları akışı:
 
 ```scala
 import org.apache.spark.eventhubs._
@@ -62,7 +62,7 @@ eventhubs.writeStream
   .start()
   .awaitTermination()
 ```
-Aşağıdaki kod, Spark batch API'leri ile olay hub'ınıza olayları gönderir. Ayrıca, olay hub'ına olayları göndermek için bir akış sorgu yazabilirsiniz:
+Aşağıdaki kod, Olayları Spark toplu API'leri ile olay merkezinize gönderir. Olayları olay merkezine göndermek için bir akış sorgusu da yazabilirsiniz:
 
 ```scala
 import org.apache.spark.eventhubs._
@@ -88,7 +88,7 @@ df.write
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Apache Spark için Event Hubs bağlayıcısını kullanarak ölçeklenebilir, hataya dayanıklı bir akış ayarlamak nasıl biliyorsunuz. Bu bağlantıları takip ederek yapılandırılmış akış ve Spark akışı ile Event hubs'ı kullanma hakkında daha fazla bilgi edinin:
+Artık Apache Spark için Olay Hub'ları Bağlayıcısı'nı kullanarak ölçeklenebilir, hataya dayanıklı bir akış nasıl ayarlayabileceğinizi biliyorsunuz. Bu bağlantıları izleyerek Yapılandırılmış Akış ve Kıvılcım Akışı ile Etkinlik Hub'larını kullanma hakkında daha fazla bilgi edinin:
 
-* [Yapılandırılmış akış + Azure Event Hubs tümleştirme Kılavuzu](https://github.com/Azure/azure-event-hubs-spark/blob/master/docs/structured-streaming-eventhubs-integration.md)
-* [Spark akış + Event Hubs tümleştirme Kılavuzu](https://github.com/Azure/azure-event-hubs-spark/blob/master/docs/spark-streaming-eventhubs-integration.md)
+* [Yapılandırılmış Akış + Azure Olay Hub'ları Tümleştirme Kılavuzu](https://github.com/Azure/azure-event-hubs-spark/blob/master/docs/structured-streaming-eventhubs-integration.md)
+* [Kıvılcım Akışı + Olay Hub'ları Tümleştirme Kılavuzu](https://github.com/Azure/azure-event-hubs-spark/blob/master/docs/spark-streaming-eventhubs-integration.md)

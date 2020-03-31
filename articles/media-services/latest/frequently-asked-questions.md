@@ -1,6 +1,6 @@
 ---
-title: Azure Media Services v3 sık sorulan sorular | Microsoft Docs
-description: Bu makale, Azure Media Services v3 hakkında sık sorulan soruların yanıtlarını vermektedir.
+title: Azure Media Services v3 sık sorulan sorular| Microsoft Dokümanlar
+description: Bu makalede, Azure Medya Hizmetleri v3'e sık sorulan soruların yanıtları verebisin.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -9,149 +9,164 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/09/2020
+ms.date: 03/18/2020
 ms.author: juliako
-ms.openlocfilehash: a2619293bf3641cdca370ff528a87ae879460a3b
-ms.sourcegitcommit: 20429bc76342f9d365b1ad9fb8acc390a671d61e
+ms.openlocfilehash: 11123ee04dd02a60dff0b88e2e6e85fcd613a7d5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79086785"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80068003"
 ---
-# <a name="media-services-v3-frequently-asked-questions"></a>Media Services v3 hakkında sık sorulan sorular
+# <a name="media-services-v3-frequently-asked-questions"></a>Medya Hizmetleri v3 sık sorulan sorular
 
-Bu makale, Azure Media Services (AMS) v3 hakkında sık sorulan soruların yanıtlarını verir.
+Bu makalede, Azure Medya Hizmetleri (AMS) v3 sık sorulan soruların yanıtlarını verir.
 
 ## <a name="general"></a>Genel
 
-### <a name="what-azure-roles-can-perform-actions-on-azure-media-services-resources"></a>Azure Media Services kaynaklarda hangi Azure rolleri eylemler gerçekleştirebilir? 
+### <a name="what-azure-roles-can-perform-actions-on-azure-media-services-resources"></a>Hangi Azure rolleri Azure Medya Hizmetleri kaynaklarında eylem gerçekleştirebilir? 
 
-[Media Services hesapları Için rol tabanlı erişim denetimi (RBAC)](rbac-overview.md)konusuna bakın.
+[Medya Hizmetleri hesapları için Rol tabanlı erişim denetimine (RBAC)](rbac-overview.md)bakın.
 
-### <a name="how-do-you-stream-to-apple-ios-devices"></a>Apple iOS cihazlarına nasıl Akışlarım?
+### <a name="how-do-you-stream-to-apple-ios-devices"></a>Apple iOS aygıtlarına nasıl akış yaparsınız?
 
-Akış kaynak sunucusuna Apple iOS Native cihazlarda tüketim için içerik geri dönmesini söylemek için (URL 'nin "/manifest" kısmından sonra) "(format = M3U8-AAPL)" değerini, (Ayrıntılar için bkz. [içerik sunma](dynamic-packaging-overview.md)).
+Akış kaynağı sunucusuna Apple iOS yerel cihazlarında tüketim için HLS içeriğini geri döndürmesini söylemek için yolun uzun sonunda (URL'nin "/manifest" bölümünden sonra) "(format=m3u8-aapl)" olduğundan emin olun (ayrıntılar [için, teslim içeriği).](dynamic-packaging-overview.md)
 
-### <a name="how-do-i-configure-media-reserved-units"></a>Medya ayrılmış birimleri Nasıl yaparım? yapılandırmak mi?
+### <a name="how-do-i-configure-media-reserved-units"></a>Ortam Ayrılmış Birimleri nasıl yapılandırıyorum?
 
-Media Services v3 veya Video Indexer ile tetiklenen Ses Analizi ve Video Analizi İşleri için hesabınıza 10 S3 MRU sağlamanız önerilir. 10 ' dan fazla S3 MRU 'a ihtiyacınız varsa [Azure Portal](https://portal.azure.com/)kullanarak bir destek bileti açın.
+Media Services v3 veya Video Indexer ile tetiklenen Ses Analizi ve Video Analizi İşleri için hesabınıza 10 S3 MRU sağlamanız önerilir. 10'dan fazla S3 MRUs'a ihtiyacınız varsa, [Azure portalını](https://portal.azure.com/)kullanarak bir destek bileti açın.
 
-Ayrıntılar için bkz. [CLI ile medya Işlemeyi ölçeklendirme](media-reserved-units-cli-how-to.md).
+Ayrıntılar için [CLI ile ölçeklendirme ortamı işleme](media-reserved-units-cli-how-to.md)ye bakın.
 
 ### <a name="what-is-the-recommended-method-to-process-videos"></a>Videoları işlemek için önerilen yöntem nedir?
 
-Videoları kodlamaya veya çözümlemeye yönelik ortak görevleri yapılandırmak için [dönüşümler](https://docs.microsoft.com/rest/api/media/transforms) kullanın. Her **dönüşüm** , video veya ses dosyalarınızı işlemeye yönelik bir tarif veya bir görev iş akışını açıklar. Bir [iş](https://docs.microsoft.com/rest/api/media/jobs) , belirli bir giriş videosunun veya ses içeriğinin **dönüşümünü** uygulamak için Media Services yapılan gerçek istedir. Dönüşüm oluşturulduktan sonra, Media Services API 'Leri veya yayımlanmış SDK 'Lardan herhangi birini kullanarak işleri gönderebilirsiniz. Daha fazla bilgi için [Dönüşümler ve İşler](transforms-jobs-concept.md) konusuna bakın.
+Videoları kodlamak veya çözümlemek için ortak görevleri yapılandırmak için [Dönüşümler'i](https://docs.microsoft.com/rest/api/media/transforms) kullanın. Her **Dönüşüm,** video veya ses dosyalarınızı işlemek için bir reçete yi veya iş akışını açıklar. [İş,](https://docs.microsoft.com/rest/api/media/jobs) Medya Hizmetleri'nin **Transform'i** belirli bir giriş videosuna veya ses içeriğine uygulamak için gerçek isteğidir. Dönüşüm oluşturulduktan sonra, Medya Hizmetleri API'lerini veya yayımlanmış SDK'lardan herhangi birini kullanarak iş gönderebilirsiniz. Daha fazla bilgi için [Dönüşümler ve İşler'e](transforms-jobs-concept.md)bakın.
 
-### <a name="i-uploaded-encoded-and-published-a-video-what-would-be-the-reason-the-video-does-not-play-when-i-try-to-stream-it"></a>Karşıya yükleme, kodlama ve bir video yayımladım. Akışa almaya çalıştığımda videonun oynatılmasının nedeni ne olur?
+### <a name="i-uploaded-encoded-and-published-a-video-what-would-be-the-reason-the-video-does-not-play-when-i-try-to-stream-it"></a>Yükledim, kodladım ve bir video yayınladım. Akışı sağlamaya çalıştığımda videonun oynamamasının nedeni ne olur?
 
-En yaygın nedenlerden biri, çalışıyor durumunda kayıttan yürütmeye çalıştığınız akış uç noktasına sahip değilsiniz.
+En yaygın nedenlerden biri, Çalışan durumunda oynatmaya çalıştığınız akış bitiş noktasına sahip olmadığınızdır.
 
-### <a name="how-does-pagination-work"></a>Sayfalandırma nasıl çalışır?
+### <a name="how-does-pagination-work"></a>Pagination nasıl çalışır?
 
-Sayfalandırma kullanırken, belirli bir sayfa boyutuna bağlı olmaması için her zaman bir sonraki bağlantıyı kullanarak koleksiyonu numaralandırın. Ayrıntılar ve örnekler için bkz. [filtreleme, sıralama, sayfalama](entities-overview.md).
+Pagination kullanırken, her zaman toplama numaralandırmak için bir sonraki bağlantıyı kullanmalısınız ve belirli bir sayfa boyutuna bağlı değildir. Ayrıntılar ve örnekler için [bkz.](entities-overview.md)
 
-### <a name="what-features-are-not-yet-available-in-azure-media-services-v3"></a>Azure Media Services v3 'de henüz kullanılamayan özellikler nelerdir?
+### <a name="what-features-are-not-yet-available-in-azure-media-services-v3"></a>Azure Media Services v3'te henüz hangi özellikler mevcut değil?
 
-Ayrıntılar için bkz. [v2 API 'lerine göre Özellik boşlukları](media-services-v2-vs-v3.md#feature-gaps-with-respect-to-v2-apis).
+Ayrıntılar için [v2 API'lerine ilişkin özellik boşluklarına](media-services-v2-vs-v3.md#feature-gaps-with-respect-to-v2-apis)bakın.
 
-### <a name="what-is-the-process-of-moving-a-media-services-account-between-subscriptions"></a>Media Services bir hesabı abonelikler arasında taşıma işlemi nedir?  
+### <a name="what-is-the-process-of-moving-a-media-services-account-between-subscriptions"></a>Bir Medya Hizmetleri hesabını abonelikler arasında taşıma işlemi nedir?  
 
-Ayrıntılar için bkz. [abonelikler arasında Media Services hesabını taşıma](media-services-account-concept.md).
+Ayrıntılar için bkz: [Medya Hizmetleri hesabını abonelikler arasında taşıma.](media-services-account-concept.md)
 
 ## <a name="live-streaming"></a>Canlı akış 
 
-###  <a name="how-to-insert-breaksvideos-and-image-slates-during-live-stream"></a>Canlı akış sırasında kesmeler/videolar ve resim SLA 'ları ekleme
+### <a name="how-to-stop-the-live-stream-after-the-broadcast-is-done"></a>Yayın bittikten sonra canlı yayın nasıl durdurulabilir?
 
-Media Services v3 Live Encoding, canlı akış sırasında video veya resim SLA 'larını henüz desteklemiyor. 
+İstemci tarafından veya sunucu tarafından yaklaşabilirsiniz.
 
-Kaynak videoyu değiştirmek için [canlı bir şirket içi kodlayıcı](recommended-on-premises-live-encoders.md) kullanabilirsiniz. Birçok uygulama, Telestream kablolu dönüştürme, değiştirici Studio (iOS 'ta), OBS Studio (ücretsiz uygulama) ve birçok daha fazlası dahil olmak üzere kaynakları değiştirme yeteneği sağlar.
+#### <a name="client-side"></a>İstemci tarafı
+
+Web uygulamanız, tarayıcıyı kapatıyorsa yayını sona erdirmek isteyen kullanıcıdan istekte olmalıdır. Bu, web uygulamanızın işleyebilir bir tarayıcı olaydır.
+
+#### <a name="server-side"></a>Sunucu tarafı
+
+Olay Izgara etkinliklerine abone olarak canlı olayları izleyebilirsiniz. Daha fazla bilgi için [eventgrid olay şemasına](media-services-event-schemas.md#live-event-types)bakın.
+
+* [Microsoft.Media.LiveEventEncoderDisconnect edilebilen](media-services-event-schemas.md#liveeventencoderdisconnected) akış düzeyine [abone](reacting-to-media-services-events.md) olabilir ve canlı etkinliğinizi durdurmak ve silmek için bir süre yeniden bağlantı nın gelmediğini izleyebilirsiniz.
+* Veya, parça düzeyinde kalp [atışı](media-services-event-schemas.md#liveeventingestheartbeat) olaylarına [abone](reacting-to-media-services-events.md) olabilirsiniz. Tüm parçalar da gelen bithızı 0'a düşüyorsa; veya son zaman damgası artık artmıyorsa, canlı etkinliği de güvenli bir şekilde kapatabilirsiniz. Kalp atışı olayları her parça için her 20 saniyede bir gelir, bu yüzden biraz daha ayrıntılı olabilir.
+
+###  <a name="how-to-insert-breaksvideos-and-image-slates-during-live-stream"></a>Canlı akış sırasında molalar/videolar ve görüntü levhaları nasıl eklenir?
+
+Media Services v3 canlı kodlama henüz canlı akış sırasında video veya görüntü kayrakları eklemeyi desteklemez. 
+
+Kaynak videoyu değiştirmek için [şirket içinde canlı kodlayıcı](recommended-on-premises-live-encoders.md) kullanabilirsiniz. Telestream Wirecast, Switcher Studio (iOS' da), OBS Studio (ücretsiz uygulama) ve daha birçok uygulama gibi kaynaklar arasında geçiş yapma olanağı sağlar.
 
 ## <a name="content-protection"></a>İçerik koruma
 
-### <a name="should-i-use-an-aes-128-clear-key-encryption-or-a-drm-system"></a>AES-128 şifresiz anahtar şifrelemesi mi yoksa bir DRM sistemi mi kullanmalıyım?
+### <a name="should-i-use-an-aes-128-clear-key-encryption-or-a-drm-system"></a>AES-128 net anahtar şifrelemesi mi yoksa DRM sistemi mi kullanmalıyım?
 
-Müşteriler genellikle bunlar AES şifrelemesi veya DRM sistem kullanması gerekip gerekmediğini merak ediyor. İki sistem arasındaki birincil fark, AES şifrelemesi ile, anahtarın aktarım sırasında şifrelenmesi, ancak ek şifreleme ("açık") olmadan olması için içerik anahtarı TLS üzerinden istemciye iletilir. Sonuç olarak, içeriğin şifresini çözmek için kullanılan anahtar, istemci oynatıcı tarafından erişilebilir olur ve istemci üzerindeki bir ağ izlemede düz metin olarak görüntülenebilir. AES-128 şifresiz anahtar şifrelemesi, görüntüleyicinin güvenilir bir taraf olduğu (örneğin, çalışanlar tarafından görüntülenmek üzere şirket içinde dağıtılan şirket videolarını şifrelemek) kullanım örneklerine uygundur.
+Müşteriler genellikle AES şifreleme si mi yoksa DRM sistemi mi kullanmaları gerektiğini merak ederler. İki sistem arasındaki temel fark, AES şifrelemesi ile içerik anahtarının TLS üzerinden istemciye iletilmesidir, böylece anahtar aktarım sırasında şifrelenir, ancak ek şifreleme ("açık"). Sonuç olarak, içeriğin şifresini çözmek için kullanılan anahtar istemci oynatıcı tarafından erişilebilir ve istemci üzerinde düz metin bir ağ izleme görüntülenebilir. AES-128 net anahtar şifrelemesi, görüntüleyenin güvenilir bir taraf olduğu kullanım durumları için uygundur (örneğin, çalışanlar tarafından görüntülenecek bir şirket içinde dağıtılan şirket videolarının şifrelenmesi).
 
-PlayReady, Widevine ve FairPlay gibi DRM sistemleri, bir AES-128 şifresiz anahtarla karşılaştırılan içeriğin şifresini çözmek için kullanılan anahtarda ek bir şifreleme düzeyi sağlar. İçerik anahtarı, TLS tarafından sunulan herhangi bir aktarım düzeyi şifrelemesine ek olarak DRM çalışma zamanı tarafından korunan bir anahtara şifrelenir. Ayrıca, şifre çözme, kötü niyetli bir kullanıcı saldırı daha zor olduğu işletim sistemi düzeyinde güvenli bir ortamda ele alınır. DRM burada Görüntüleyicisi güvenilen taraf olmayabilir ve yüksek düzeyde güvenlik gerektiren kullanım durumları için önerilir.
+PlayReady, Widevine ve FairPlay gibi DRM sistemlerinin tümü, AES-128 net tuşuile karşılaştırıldığında içeriğin şifresini çözmek için kullanılan anahtarda ek bir şifreleme düzeyi sağlar. İçerik anahtarı, TLS tarafından sağlanan tüm aktarım düzeyi şifrelemesine ek olarak DRM çalışma süresi tarafından korunan bir anahtara şifrelenir. Ayrıca, şifre çözme, kötü amaçlı bir kullanıcının saldırmasının daha zor olduğu işletim sistemi düzeyinde güvenli bir ortamda işlenir. DRM, görüntüleyenin güvenilir bir taraf olmadığı ve en yüksek düzeyde güvenlik gerektiren kullanım durumları için önerilir.
 
-### <a name="how-to-show-a-video-only-to-users-who-have-a-specific-permission-without-using-azure-ad"></a>Azure AD kullanmadan yalnızca belirli bir izne sahip olan kullanıcılar için bir video nasıl gösterilir?
+### <a name="how-to-show-a-video-only-to-users-who-have-a-specific-permission-without-using-azure-ad"></a>Azure AD kullanmadan yalnızca belirli bir izni olan kullanıcılara video nasıl gösterilir?
 
-Belirli bir belirteç sağlayıcısını (Azure AD gibi) kullanmanız gerekmez. Asimetrik anahtar şifrelemesi kullanarak kendi [JWT](https://jwt.io/) sağlayıcınızı (yani STS, güvenli belirteç hizmeti) oluşturabilirsiniz. Özel STS 'de iş mantığınızı temel alarak talep ekleyebilirsiniz.
+Belirli bir belirteç sağlayıcısı (Azure AD gibi) kullanmanız gerekmemektedir. Asimetrik anahtar şifrelemesini kullanarak kendi [JWT](https://jwt.io/) sağlayıcınızı (STS, Güvenli Belirteç Hizmeti olarak adlandırılır) oluşturabilirsiniz. Özel STS'nizde, iş mantığınıza dayalı talepler ekleyebilirsiniz.
 
-Verenin, hedef kitlenin ve taleplerin, JWT içinde olanlar ve ContentKeyPolicy içinde kullanılan ContentKeyPolicyRestriction arasında tam olarak eşleştiğinden emin olun.
+İhraççının, hedef kitlenin ve taleplerinin tümü JWT'de olanla ContentKeyPolicy'de kullanılan ContentKeyPolicyRestriction arasında tam olarak eşleşti.
 
-Daha fazla bilgi için bkz. [Media Services dinamik şifrelemeyi kullanarak Içeriğinizi koruma](content-protection-overview.md).
+Daha fazla bilgi için [bkz.](content-protection-overview.md)
 
-### <a name="how-and-where-to-get-jwt-token-before-using-it-to-request-license-or-key"></a>Nasıl ve nereye isteği lisans veya anahtar için kullanmadan önce JWT belirteci almak?
+### <a name="how-and-where-to-get-jwt-token-before-using-it-to-request-license-or-key"></a>Lisans veya anahtar istemek için kullanmadan önce JWT belirteci nasıl ve nerede alınır?
 
-1. Üretim için bir HTTPS isteği üzerinde JWT belirteci veren bir güvenli belirteç Hizmetleri (STS) (Web hizmeti) olmalıdır. Test için, [program.cs](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs)Içinde tanımlanan **gettokenasync** yönteminde gösterilen kodu kullanabilirsiniz.
-2. Oynatıcı bir kullanıcı sts'ye böyle bir belirteç için doğrulandıktan sonra istekte bulunmak ve belirteç değeri olarak atamanız gerekir. [Azure MEDIA Player API](https://amp.azure.net/libs/amp/latest/docs/)'sini kullanabilirsiniz.
+1. Üretim için, BIR HTTPS isteği üzerine JWT belirteci sorunları bir Güvenli Belirteç Hizmetleri (STS) (web hizmeti) olması gerekir. Test için, **getTokenAsync** yöntemi [Program.cs](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs)tanımlanan gösterilen kodu kullanabilirsiniz.
+2. Oyuncu, bir kullanıcı nın kimliği doğrulandıktan sonra, böyle bir belirteç için STS'ye bir istekte bulunmalı ve belirteci değeri olarak atamak zorunda kalacaktır. Azure Media [Player API'sını](https://amp.azure.net/libs/amp/latest/docs/)kullanabilirsiniz.
 
-* STS çalıştırmaya ilişkin bir örnek için, simetrik ve asimetrik anahtarla, lütfen [https://aka.ms/jwt](https://aka.ms/jwt)bakın. 
-* Bu tür JWT belirtecini kullanan Azure Media Player bir oynatıcı örneği için, bkz. [https://aka.ms/amtest](https://aka.ms/amtest) (belirteç girişini görmek için "player_settings" bağlantısını genişletin).
+* Simetrik ve asimetrik anahtarla STS çalıştıran bir [https://aka.ms/jwt](https://aka.ms/jwt)örnek için lütfen bkz. 
+* Bu JWT belirteci kullanan Azure Media Player'ı [https://aka.ms/amtest](https://aka.ms/amtest) temel alan bir oynatıcı örneği player_settings için bkz.
 
-### <a name="how-do-you-authorize-requests-to-stream-videos-with-aes-encryption"></a>Nasıl video akışı AES şifreleme ile istek yetki veriyor musunuz?
+### <a name="how-do-you-authorize-requests-to-stream-videos-with-aes-encryption"></a>AES şifrelemesi ile video akışı isteklerini nasıl yetkilendirin?
 
-STS (güvenli belirteç hizmeti) yararlanmak için doğru yaklaşımdır bakın:
+Doğru yaklaşım, STS'den (Güvenli Belirteç Hizmeti) yararlanmaktır:
 
-STS 'de, Kullanıcı profiline bağlı olarak farklı talepler ("Premium Kullanıcı", "temel Kullanıcı", "ücretsiz deneme kullanıcısı") ekleyin. JWT'nin farklı Taleplerde ile kullanıcı farklı içeriğini görebilir. Elbette, farklı içerik/varlık için karşılık gelen RequiredClaims ContentKeyPolicyRestriction olacaktır.
+STS'de, kullanıcı profiline bağlı olarak farklı talepler ekleyin ("Premium Kullanıcı", "Temel Kullanıcı", "Ücretsiz Deneme Kullanıcısı") gibi). Bir JWT farklı iddiaları ile, kullanıcı farklı içeriğini görebilirsiniz. Tabii ki, farklı içerik/varlık için ContentKeyPolicyRestriction ilgili Gerekli Taleplere sahip olacaktır.
 
-Lisans/anahtar teslimini yapılandırmak ve varlıklarınızı şifrelemek için Azure Media Services API 'Leri kullanın ( [Bu örnekte](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs)gösterildiği gibi).
+Lisans/anahtar teslimini yapılandırmak ve varlıklarınızı şifrelemek için Azure Medya Hizmetleri API'lerini kullanın [(bu örnekte](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs)gösterildiği gibi).
 
 Daha fazla bilgi için bkz.
 
-- [İçerik korumaya genel bakış](content-protection-overview.md)
+- [İçerik koruma genel bakış](content-protection-overview.md)
 - [Erişim denetimi ile çoklu DRM'ye sahip içerik koruma sistemi tasarlama](design-multi-drm-system-with-access-control.md)
 
 ### <a name="http-or-https"></a>HTTP veya HTTPS?
-ASP.NET MVC oynatıcı uygulaması aşağıdaki desteklemesi gerekir:
+ASP.NET MVC oynatıcı uygulaması aşağıdakileri desteklemelidir:
 
-* HTTPS altında olduğunda Azure AD aracılığıyla kullanıcı kimlik doğrulaması.
-* JWT exchange istemciyle HTTPS altında olduğunda Azure AD arasında.
-* Media Services tarafından lisans teslim verdiyse, HTTPS altında olması gerekir istemci tarafından DRM lisans edinme. PlayReady ürün paketi HTTPS lisans dağıtımı için zorunlu değildir. Dışında Media Services PlayReady lisans sunucusu ise, HTTP veya HTTPS kullanabilirsiniz.
+* HTTPS kapsamında olan Azure AD aracılığıyla kullanıcı kimlik doğrulaması.
+* Https altında olan istemci ve Azure AD arasında JWT alışverişi.
+* Lisans teslimi Media Services tarafından sağlanıyorsa, istemci tarafından DRM lisans edinimi https altında olmalıdır. PlayReady ürün paketi, lisans teslimi için HTTPS'yi zorunlu kılmıyor. PlayReady lisans sunucunuz Medya Hizmetleri dışındaysa, HTTP veya HTTPS'yi kullanabilirsiniz.
 
-Media Player HTTPS altında sayfasında, bu nedenle ASP.NET oynatıcı uygulaması bir en iyi uygulama, HTTPS kullanır. Ancak, bu yüzden karışık içerikle ilgili bir sorun göz önünde bulundurmanız gerekir HTTP Akış için tercih edilir.
+ASP.NET player uygulaması HTTPS'yi en iyi uygulama olarak kullanır, bu nedenle Media Player HTTPS altında bir sayfadadır. Ancak, HTTP akış için tercih edilir, bu nedenle karışık içerik sorunu dikkate almanız gerekir.
 
-* Tarayıcı karışık içerik izin vermez. Ancak, eklentileri gibi Silverlight ve OSMF eklentisini için kesintisiz ve tire sağlar. Karışık içerik, risk müşteri verilerini oluşabilir kötü amaçlı JavaScript ekleme yeteneği kesilmeyen nedeniyle güvenlik konusudur. Tarayıcı varsayılan olarak bu özelliği engelleyin. Bunu çözmek için tek sunucu (kaynak) tarafında tüm etki alanları (bakılmaksızın, HTTPS veya HTTP) sağlayarak yoludur. Bu fikir ya da geçerli büyük olasılıkla değildir.
-* Karışık içerik kaçının. Oynatıcı uygulaması ve Media Player, HTTP veya HTTPS kullanmanız gerekir. Karışık içerik yürütürken, bir karışık içerik uyarı temizleme silverlightSS teknik gerektirir. Karışık içerik karışık içerik uyarmadan flashSS teknik işler.
-* Akış uç noktanızı Ağustos 2014 tarihinden önce oluşturulduysa, HTTPS'yi destekleyecek olmaz. Bu durumda, oluşturun ve yeni bir akış uç noktası için HTTPS kullanın.
+* Tarayıcı karışık içeriğe izin vermez. Ama Silverlight ve OSMF eklentisi gibi eklentileri pürüzsüz ve DASH için izin yok. Karışık içerik, müşteri verilerinin risk altında olması nedeniyle kötü amaçlı JavaScript enjekte etme tehdidi nedeniyle bir güvenlik sorunudur. Tarayıcılar varsayılan olarak bu özelliği engeller. Bunun etrafında çalışmak için tek yolu sunucu (menşe) tarafında tüm etki (ne olursa olsun HTTPS veya HTTP) izin vererek. Bu da muhtemelen iyi bir fikir değil.
+* Karışık içerikten kaçının. Hem oynatıcı uygulaması hem de Media Player HTTP veya HTTPS kullanmalıdır. Karışık içerik oynatırken, silverlightSS teknolojisi karışık içerikli bir uyarıyı temizlemeyi gerektirir. flashSS teknolojisi karışık içerik uyarısı olmadan karışık içeriği işler.
+* Akış bitiş noktanız Ağustos 2014'te oluşturulduysa, HTTPS'yi desteklemez. Bu durumda, HTTPS için yeni bir akış bitiş noktası oluşturun ve kullanın.
 
-### <a name="what-about-live-streaming"></a>Peki canlı akış?
+### <a name="what-about-live-streaming"></a>Peki ya canlı yayın?
 
-Canlı Media Services akış VOD varlık olarak bir programla ilişkili varlığı düşünerek korumak için tam olarak aynı tasarımını ve uygulamasını kullanabilirsiniz. Canlı içeriğin birden çok DRM korumasını sağlamak için, varlığı canlı çıkışla ilişkilendirdikten önce, kıymete aynı kurulum/işlemeyi bir VOD varlığı gibi uygulayın.
+Bir programla ilişkili varlığı BIR VOD varlığı olarak ele alarak Medya Hizmetleri'nde canlı akışı korumak için tam olarak aynı tasarımı ve uygulamayı kullanabilirsiniz. Canlı içeriğin çoklu DRM koruması sağlamak için, Varlığı Canlı Çıktı ile ilişkilendirmeden önce varlık bir VOD varlığıymuş gibi aynı kurulum/işlemeyi Varlık'a uygulayın.
 
-### <a name="what-about-license-servers-outside-media-services"></a>Media Services dışında lisans sunucuları hakkında neler diyeceksiniz?
+### <a name="what-about-license-servers-outside-media-services"></a>Media Services dışındaki lisans sunucuları ne olacak?
 
-Genellikle, müşterilere bir lisans sunucusu grubundaki DRM hizmet sağlayıcıları tarafından barındırılan bir ya da kendi veri merkezinde yatırım. Media Services content protection ile karma modda çalışabilir. İçeriği, barındırılan ve Media Services dışında sunucuları tarafından DRM lisanslarını teslim ederken dinamik olarak Media Services'de korumalı. Bu durumda, aşağıdaki değişiklikleri göz önünde bulundurun:
+Genellikle, müşteriler kendi veri merkezlerinde veya DRM servis sağlayıcıları tarafından barındırılan bir lisans sunucusu çiftliğine yatırım yapar. Medya Hizmetleri içerik koruması ile karma modda çalışabilirsiniz. İçerikler Medya Hizmetleri'nde barındırılabilir ve dinamik olarak korunabilir, DRM lisansları ise Medya Hizmetleri dışındaki sunucular tarafından teslim edilir. Bu durumda, aşağıdaki değişiklikleri göz önünde bulundurun:
 
-* STS, kabul edilebilir ve lisans sunucusu grubu tarafından doğrulanan belirteçleri vermek gerekiyor. Örneğin, bir yetkilendirme iletisini içeren belirli bir JWT Axinom tarafından sağlanan Widevine lisans sunucuları gerektirir. Bu nedenle, böyle bir JWT'nin vermek için bir STS'ye olması gerekir. 
-* Artık, Media Services lisans teslimat hizmetinin yapılandırma gerekmez. Lisans edinme URL'leri (PlayReady, Widevine ve FairPlay) sağlamanız gereken ContentKeyPolicies yapılandırdığınızda.
+* STS'nin kabul edilebilir ve lisans sunucusu çiftliği tarafından doğrulanabilecek belirteçleri vermesi gerekir. Örneğin, Axinom tarafından sağlanan Widevine lisans sunucuları, bir yetkilendirme iletisi içeren belirli bir JWT gerektirir. Bu nedenle, böyle bir JWT sorunu bir STS olması gerekir. 
+* Artık Medya Hizmetleri'nde lisans teslim hizmetini yapılandırmanız gerekmez. ContentKeyPolicies'i yapılandırırken lisans edinme URL'lerini (PlayReady, Widevine ve FairPlay için) sağlamanız gerekir.
 
 > [!NOTE]
-> Widevine, Google Inc. tarafından sunulan bir hizmettir ve Google, Inc 'nin hizmet koşullarına ve gizlilik Ilkesine tabidir.
+> Widevine, Google Inc. tarafından sağlanan ve Google, Inc.'in hizmet koşullarına ve Gizlilik Politikasına tabi olan bir hizmettir.
 
-## <a name="media-services-v2-vs-v3"></a>Media Services V2 vs v3 
+## <a name="media-services-v2-vs-v3"></a>Medya Hizmetleri v2 vs v3 
 
-### <a name="can-i-use-the-azure-portal-to-manage-v3-resources"></a>Azure portal v3 kaynaklarını yönetmek için kullanabilir miyim?
+### <a name="can-i-use-the-azure-portal-to-manage-v3-resources"></a>V3 kaynaklarını yönetmek için Azure portalını kullanabilir miyim?
 
-Şu anda [Azure Portal](https://portal.azure.com/) şunları yapmak için kullanabilirsiniz:
+Şu anda [Azure portalını](https://portal.azure.com/) şu şekilde kullanabilirsiniz:
 
-* Media Services v3 [canlı olaylarını](live-events-outputs-concept.md)yönetin, 
-* v3 [varlıklarını](assets-concept.md)görüntüleme (yönetme), 
-* [API 'lere erişme hakkında bilgi alın](access-api-portal.md). 
+* Medya Hizmetleri v3 [Canlı Etkinlikler](live-events-outputs-concept.md)yönetmek , 
+* görünümü (yönetilmez) v3 [Varlıklar](assets-concept.md), 
+* [API'lara erişim hakkında bilgi alın.](access-api-portal.md) 
 
-Diğer tüm yönetim görevleri (örneğin, [dönüşümler ve işler](transforms-jobs-concept.md) ve [içerik koruması](content-protection-overview.md)) için [REST API](https://aka.ms/ams-v3-rest-ref), [CLI](https://aka.ms/ams-v3-cli-ref)veya desteklenen [SDK 'lardan](media-services-apis-overview.md#sdks)birini kullanın.
+Diğer tüm yönetim görevleri için (örneğin, [Dönüşümler ve İşler ve](transforms-jobs-concept.md) [İçerik koruması),](content-protection-overview.md) [REST API,](https://docs.microsoft.com/rest/api/media/) [CLI](https://aka.ms/ams-v3-cli-ref)veya desteklenen [SDK'lardan](media-services-apis-overview.md#sdks)birini kullanın.
 
-### <a name="is-there-an-assetfile-concept-in-v3"></a>V3 'de bir AssetFile kavramı var mı?
+### <a name="is-there-an-assetfile-concept-in-v3"></a>V3'te AssetFile kavramı var mı?
 
-Assetdosyaları, depolama SDK bağımlılığıyla Media Services ayırmak için AMS API 'sinden kaldırılmıştır. Artık Media Services değil, depolama alanında yer alan bilgileri korur. 
+Varlık Dosyaları, Medya Hizmetlerini Depolama SDK bağımlılığından ayırmak için AMS API'sinden kaldırıldı. Artık Depolama, Medya Hizmetleri değil, Depolama'ya ait bilgileri saklar. 
 
-Daha fazla bilgi için bkz. [Media Services v3 'ye geçirme](media-services-v2-vs-v3.md).
+Daha fazla bilgi için bkz: [Medya Hizmetlerine Geçir v3.](media-services-v2-vs-v3.md)
 
-### <a name="where-did-client-side-storage-encryption-go"></a>İstemci tarafı depolama şifrelemesi nerede?
+### <a name="where-did-client-side-storage-encryption-go"></a>İstemci tarafı depolama şifrelemesi nereye gitti?
 
-Artık sunucu tarafı depolama şifrelemesi (varsayılan olarak açık) kullanılması önerilir. Daha fazla bilgi için bkz. [bekleyen veriler Için Azure depolama hizmeti şifrelemesi](https://docs.microsoft.com/azure/storage/common/storage-service-encryption).
+Artık sunucu tarafındaki depolama şifrelemesinin kullanılması önerilir (varsayılan olarak açık). Daha fazla bilgi [için, Veriler için Azure Depolama Hizmeti Şifrelemesi'ne](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Media Services v3 genel bakış](media-services-overview.md)
+[Medya Hizmetleri v3 genel bakış](media-services-overview.md)

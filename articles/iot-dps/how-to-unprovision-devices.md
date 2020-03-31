@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Hub cihaz sağlama hizmeti ile sağlanan cihazların sağlamasını kaldırma
-description: Azure IoT Hub cihaz sağlama hizmeti (DPS) ile sağlanan cihazların sağlamasını kaldırma
+title: Azure IoT Hub Aygıt Sağlama Hizmeti ile sağlanan sağlama silme aygıtları
+description: Azure IoT Hub Aygıt Sağlama Hizmeti (DPS) ile sağlanan aygıtları sağlama
 author: wesmc7777
 ms.author: wesmc
 ms.date: 05/11/2018
@@ -8,62 +8,62 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: 8a3677ba285f5b02407ca3d176979bf6c016ef9b
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/10/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74974845"
 ---
-# <a name="how-to-deprovision-devices-that-were-previously-auto-provisioned"></a>Daha önce otomatik olarak sağlanan cihazların sağlamasını kaldırma 
+# <a name="how-to-deprovision-devices-that-were-previously-auto-provisioned"></a>Daha önce otomatik olarak sağlanan aygıtların nasıl devre dışı sayılmalı? 
 
-Daha önce cihaz sağlama hizmeti aracılığıyla otomatik olarak sağlanan cihazların sağlanması için gerekli olduğunu fark edebilirsiniz. Örneğin, bir cihaz, farklı bir IoT Hub 'ına satılabilir veya taşınabilir ya da kaybolmuş, çalınmış veya başka bir şekilde tehlikeye girmiş olabilir. 
+Aygıt Sağlama Hizmeti aracılığıyla daha önce otomatik olarak sağlanan aygıtları iptal etmeyi gerekli bulabilirsiniz. Örneğin, bir aygıt farklı bir IoT hub'ına satılabilir veya taşınabilir veya kaybolabilir, çalınabilir veya başka bir şekilde tehlikeye atılabilir. 
 
-Genel olarak, bir cihazın sağlamasını kaldırma işlemi iki adımdan oluşur:
+Genel olarak, bir aygıtın sağlanması iki adım gerektirir:
 
-1. Gelecekteki otomatik sağlamayı engellemek için cihazı sağlama hizmetinizden kaydedin. Erişimi geçici olarak veya kalıcı olarak iptal etmek isteyip istemediğinize bağlı olarak, bir kayıt girişini devre dışı bırakmak veya silmek isteyebilirsiniz. X. 509.440 kanıtlama kullanan cihazlarda, mevcut kayıt gruplarınızın hiyerarşisindeki bir girişi devre dışı bırakmak/silmek isteyebilirsiniz.  
+1. Gelecekteki otomatik sağlamayı önlemek için cihazı sağlama hizmetinizden uzaklaştırın. Erişimi geçici veya kalıcı olarak iptal etmek isteyip istemediğiniz bağlı olarak, bir kayıt girişini devre dışı veya silmek isteyebilirsiniz. X.509 attestation kullanan aygıtlar için, varolan kayıt gruplarınızın hiyerarşisindeki bir girişi devre dışı/silmek isteyebilirsiniz.  
  
-   - Bir cihazın kaydını nasıl kaydedeceğinizi öğrenmek için bkz. [Azure IoT Hub cihaz sağlama hizmeti 'nden cihaz ayırma](how-to-revoke-device-access-portal.md).
-   - Sağlama hizmeti SDK 'larının birini kullanarak bir cihazın programlı olarak nasıl kaydedileceğini öğrenmek için bkz. cihaz kayıtlarını [hizmet SDK 'ları Ile yönetme](how-to-manage-enrollments-sdks.md).
+   - Bir aygıtı nasıl disenroll'a çevireceğimiz hakkında bilgi almak için Azure [IoT Hub Aygıt Sağlama Hizmeti'nden bir aygıtı nasıl disenroll'a çevirebilirsiniz](how-to-revoke-device-access-portal.md)konusuna bakın.
+   - Sağlama hizmeti SDK'larından birini kullanarak bir aygıtı programlı olarak nasıl disenroll'a getirebilirsiniz öğrenmek için, [bkz.](how-to-manage-enrollments-sdks.md)
 
-2. Gelecekteki iletişimleri ve veri aktarımını engellemek için IoT Hub cihazın kaydını silin. Yeniden devre dışı bırakıp, kimlik kayıt defterinde cihazın girişini, sağlandığı IoT Hub için geçici olarak devre dışı bırakabilir veya kalıcı olarak silebilirsiniz. Disablement hakkında daha fazla bilgi için bkz. [cihazları devre dışı bırakma](/azure/iot-hub/iot-hub-devguide-identity-registry#disable-devices) . [Azure portal](https://portal.azure.com)IoT Hub kaynağınız Için "cihaz yönetimi/IoT cihazları" başlığına bakın.
+2. Gelecekteki iletişim ve veri aktarımını önlemek için aygıtı IoT Hub'ınızdan silin. Yine, aygıtın kimlik kayıt defterine girişini, sağlandığı IoT Hub'ınkimlik defterine geçici olarak devre dışı layabilir veya kalıcı olarak silebilirsiniz. Devre dışı alma hakkında daha fazla bilgi edinmek için [aygıtları devre dışı](/azure/iot-hub/iot-hub-devguide-identity-registry#disable-devices) etme hakkında bkz. [Azure portalında](https://portal.azure.com)IoT Hub kaynağınız için "Aygıt Yönetimi / IoT Aygıtları" adlı kullanıcıya bakın.
 
-Bir cihazın sağlamasını kaldırmak için alacağınız tam adımlar, kanıtlama mekanizmasına ve sağlama hizmetinizdeki ilgili kayıt girişine bağlıdır. Aşağıdaki bölümlerde, kayıt ve kanıtlama türüne göre işlem için genel bir bakış sağlanmaktadır.
+Bir aygıtın hükmünü devre denarındırmak için attığınız tam adımlar, cihaz mekanizmasına ve sağlama hizmetinizle ilgili kayıt girişine bağlıdır. Aşağıdaki bölümler, kayıt ve attestation türüne bağlı olarak sürecin genel görünümünü sağlar.
 
 ## <a name="individual-enrollments"></a>Bireysel kayıtlar
-Bir yaprak sertifikayla TPM kanıtlama veya X. 509.440 kanıtlama kullanan cihazlar, tek bir kayıt girişi aracılığıyla sağlanır. 
+Yaprak sertifikası yla TPM attestation veya X.509 attestation kullanan aygıtlar, tek bir kayıt girişi aracılığıyla sağlanır. 
 
-Tek bir kaydı olan bir cihazı sağlamayı kaldırmak için: 
+Tek bir kaydı olan bir aygıtı niçin devre denecek: 
 
-1. Cihazı sağlama hizmetinizden kaldır:
+1. Cihazı sağlama hizmetinizden uzaklaştırın:
 
-   - TPM kanıtlama kullanan cihazlarda, cihazın sağlama hizmetine erişimini kalıcı olarak iptal etmek için ayrı kayıt girişini silin veya erişimi geçici olarak iptal etmek için girişi devre dışı bırakın. 
-   - X. 509.440 kanıtlama kullanan cihazlarda, girdiyi silebilir veya devre dışı bırakabilirsiniz. Bunun farkında olun, ancak X. 509.440 kullanan bir cihaz için tek bir kaydı silerseniz ve bu cihazın sertifika zincirindeki bir imzalama sertifikası için etkinleştirilmiş bir kayıt grubu varsa, cihaz yeniden kaydolabilir. Bu tür cihazlarda, kayıt girişinin devre dışı bırakılması daha güvenli olabilir. Bunun yapılması, imza sertifikalarından biri için etkinleştirilmiş bir kayıt grubunun olup olmamasına bakılmaksızın cihazın yeniden kaydedilmesini engeller.
+   - TPM attestation kullanan aygıtlar için, aygıtın sağlama hizmetine erişimini kalıcı olarak iptal etmek için tek tek kayıt girişini silin veya erişimini geçici olarak iptal etmek için girişi devre dışı bırakın. 
+   - X.509 attestation kullanan aygıtlar için girişi silebilir veya devre dışı kullanabilirsiniz. Ancak, X.509 kullanan bir aygıt için tek tek bir kaydı silerseniz ve söz le ilgili bir imza sertifikası için etkin bir kayıt grubu varsa, aygıt yeniden kaydolabilir. Bu tür aygıtlar için kayıt girişini devre dışı kılabilir. Bunu yapmak, imza sertifikalarından biri için etkin bir kayıt grubunun bulunup bulunmadığına bakılmaksızın aygıtın yeniden kaydolmasını engeller.
 
-2. Sağlanan IoT Hub 'ının kimlik kayıt defterindeki cihazı devre dışı bırakın veya silin. 
+2. IoT hub'ının kimlik kayıt defterindeki aygıtı devre dışı bırakın veya silin. 
 
 
 ## <a name="enrollment-groups"></a>Kayıt grupları
-X. 509.440 kanıtlama ile, cihazlar bir kayıt grubu aracılığıyla da sağlanabilir. Kayıt grupları bir imzalama sertifikasıyla, ara veya kök CA sertifikasıyla yapılandırılır ve sertifika zincirinde bu sertifikaya sahip cihazlar için sağlama hizmetine erişimi denetler. Sağlama hizmeti ile kayıt grupları ve X. 509.440 sertifikaları hakkında daha fazla bilgi edinmek için bkz. [X. 509.440 sertifikaları](concepts-security.md#x509-certificates). 
+X.509 attestation ile aygıtlar bir kayıt grubu aracılığıyla da sağlanabilir. Kayıt grupları, ara veya kök CA sertifikası olan bir imza sertifikasıyla yapılandırılır ve sertifika zincirinde bu sertifikaya sahip aygıtlar için sağlama hizmetine erişimi denetler. Kayıt grupları ve sağlama hizmetiyle X.509 sertifikaları hakkında daha fazla bilgi edinmek için [X.509 sertifikalarına](concepts-security.md#x509-certificates)bakın. 
 
-Bir kayıt grubu aracılığıyla sağlanmış cihazların listesini görmek için kayıt grubunun ayrıntılarını görüntüleyebilirsiniz. Bu, her bir cihazın hangi IoT Hub 'ına sağlandığını anlamanın kolay bir yoludur. Cihaz listesini görüntülemek için: 
+Bir kayıt grubu aracılığıyla sağlanan aygıtların listesini görmek için, kayıt grubunun ayrıntılarını görüntüleyebilirsiniz. Bu, her aygıtın hangi IoT hub'ına sağlandığını anlamanın kolay bir yoludur. Cihaz listesini görüntülemek için: 
 
-1. Azure portal oturum açın ve sol taraftaki menüden **tüm kaynaklar** ' a tıklayın.
-2. Kaynak listesinde sağlama hizmetinize tıklayın.
-3. Sağlama hizmetinizde kayıtları **Yönet**' e ve ardından **kayıt grupları** sekmesini seçin.
-4. Kayıt grubuna tıklayarak açın.
+1. Azure portalına giriş yapın ve sol menüdeki **Tüm kaynaklar'ı** tıklatın.
+2. Kaynaklar listesinde sağlama hizmetinizi tıklatın.
+3. Sağlama hizmetinizde, **kayıtları Yönet'i**tıklatın ve ardından **Kayıt Grupları** sekmesini seçin.
+4. Açmak için kayıt grubunu tıklatın.
 
    ![Portalda kayıt grubu girişini görüntüleme](./media/how-to-unprovision-devices/view-enrollment-group.png)
 
-Kayıt gruplarıyla, dikkate alınması gereken iki senaryo vardır:
+Kayıt gruplarında göz önünde bulundurulması gereken iki senaryo vardır:
 
-- Bir kayıt grubu aracılığıyla sağlanmış tüm cihazların sağlanması için:
-  1. İmza sertifikasını kara listeye eklemek için kayıt grubunu devre dışı bırakın. 
-  2. Her bir cihazı ilgili IoT Hub 'ının kimlik kayıt defterinden devre dışı bırakmak veya silmek için, bu kayıt grubu için sağlanan cihazların listesini kullanın. 
-  3. Tüm cihazları ilgili IoT Hub 'larından devre dışı bıraktıktan veya sildikten sonra, isteğe bağlı olarak kayıt grubunu silebilirsiniz. Bu durumda, kayıt grubunu silerseniz ve bir veya daha fazla cihazın sertifika zincirinde daha yüksek bir imzalama sertifikası için etkinleştirilmiş bir kayıt grubu varsa, bu cihazların yeniden kaydolabileceği farkında olun. 
+- Bir kayıt grubu aracılığıyla sağlanan tüm aygıtların hükmünü iptal etmek için:
+  1. Kayıt grubunu imzalama sertifikasını kara listeye almak için devre dışı kalınır. 
+  2. Her aygıtı ilgili IoT merkezinin kimlik kayıt defterinden devre dışı kakmak veya silmek için söz konusu kayıt grubu için sağlanan aygıtlar listesini kullanın. 
+  3. Tüm aygıtları ilgili IoT hub'larından devre dışı bıraktıktan veya sildikten sonra, isteğe bağlı olarak kayıt grubunu silebilirsiniz. Ancak, kayıt grubunu silerseniz ve aygıtlardan birinin veya daha fazlasının sertifika zincirinde daha yüksek bir oturum sertifikası için etkin bir kayıt grubu varsa, bu aygıtların yeniden kaydolabileceğini unutmayın. 
 
-- Bir kayıt grubundan tek bir cihazı sağlamayı kaldırmak için:
-  1. Yaprak (cihaz) sertifikası için devre dışı bir bireysel kayıt oluşturun. Bu, bu cihaz için sağlama hizmetine erişimi iptal ederken, kayıt grubunun imzalama sertifikasına sahip diğer cihazlara erişim izni almaya devam eder. Cihazın devre dışı bırakılmış kaydını silmeyin. Bunun yapılması, cihazın kayıt grubuna yeniden kaydolmasını sağlar. 
-  2. Cihazın sağlandığı IoT Hub 'ını bulmak için bu kayıt grubu için sağlanan cihazların listesini kullanın ve bu hub 'ın kimlik kayıt defterinde devre dışı bırakın ya da silin. 
+- Kayıt grubundan tek bir aygıtı ayırmak için:
+  1. Yaprak (aygıt) sertifikası için engelli bir bireysel kayıt oluşturun. Bu, bu aygıt için sağlama hizmetine erişimi iptal ederken, zincirlerinde kayıt grubunun imzalama sertifikasına sahip diğer aygıtlara erişime izin vermeye devam eder. Aygıt için engelli bireysel kaydını silmeyin. Bunu yapmak, aygıtın kayıt grubu üzerinden yeniden kaydolmasını sağlar. 
+  2. Aygıtın bulunduğu IoT merkezini bulmak ve bu hub'ın kimlik kayıt defterinden devre dışı kalmak veya silmek için bu kayıt grubu için sağlanan aygıtlar listesini kullanın. 
   
   
 

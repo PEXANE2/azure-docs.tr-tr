@@ -1,7 +1,7 @@
 ---
-title: Becerileri içinde başvuru girişleri ve çıktılar
+title: Beceri kümelerinde referans giriş ve çıktıları
 titleSuffix: Azure Cognitive Search
-description: Ek açıklama sözdizimini ve Azure Bilişsel Arama içindeki bir AI zenginleştirme ardışık düzeninde bulunan bir beceri giriş ve çıktılarında ek açıklamaya nasıl başvurululacağını açıklar.
+description: Ek açıklama sözdizimini ve Azure Bilişsel Arama'daki bir AI zenginleştirme ardışık alanında bir skillset'in giriş ve çıktılarında nasıl başvurulmayı açıklar.
 manager: nitinme
 author: LuisCabrer
 ms.author: luisca
@@ -9,33 +9,33 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: e27f61239c0631fb248217777a311b13ee48a3f9
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74113860"
 ---
-# <a name="how-to-reference-annotations-in-an-azure-cognitive-search-skillset"></a>Azure Bilişsel Arama Beceri ek açıklamalarına başvurma
+# <a name="how-to-reference-annotations-in-an-azure-cognitive-search-skillset"></a>Azure Bilişsel Arama becerilerinde ek açıklamalara başvuru nasil
 
-Bu makalede, çeşitli senaryoları göstermek için örnekler kullanarak yetenek tanımlarındaki ek açıklamaların nasıl başvurululacağını öğrenirsiniz. Bir belge içeriği bir yetenek kümesiyle akar, bu, ek açıklamalarla zenginleştirir. Ek açıklamalar, daha fazla aşağı akış zenginleştirme girişi olarak veya bir dizindeki bir çıkış alanına eşlenmiş olarak kullanılabilir. 
+Bu makalede, çeşitli senaryoları göstermek için örnekler kullanarak beceri tanımlarında ek açıklamalara nasıl başvurulmayı öğrenirsiniz. Bir belgenin içeriği bir dizi beceri den geçtikçe, ek açıklamalarla zenginleşir. Ek açıklamalar daha fazla aşağı zenginleştirme için giriş ler olarak kullanılabilir veya bir diziniçinde bir çıkış alanına eşlenebilir. 
  
-Bu makaledeki örneklerde, belge çözme aşamasının bir parçası olarak [Azure Blob Dizin oluşturucular](search-howto-indexing-azure-blob-storage.md) tarafından otomatik olarak oluşturulan *içerik* alanı temel alınır. Blob kapsayıcısından belgelere başvuru yaparken, *içerik* alanının *belgenin*bir parçası olduğu `"/document/content"`gibi bir biçim kullanın. 
+Bu makaledeki örnekler, belge çözme aşamasının bir parçası olarak [Azure Blob dizin oluşturiları](search-howto-indexing-azure-blob-storage.md) tarafından otomatik olarak oluşturulan *içerik* alanına dayanmaktadır. Blob kapsayıcısından gelen belgelere atıfta bulunulurken, `"/document/content"` *içerik* alanının *belgenin*bir parçası olduğu bir biçim kullanın. 
 
 ## <a name="background-concepts"></a>Arka plan kavramları
 
-Söz dizimini gözden geçirmeden önce, bu makalenin ilerleyen kısımlarında belirtilen örnekleri daha iyi anlamak için birkaç önemli kavramı yeniden ziyaret edelim.
+Sözdizimini gözden geçirmeden önce, bu makalede daha sonra verilen örnekleri daha iyi anlamak için birkaç önemli kavramı yeniden gözden geçirelim.
 
 | Sözleşme Dönemi | Açıklama |
 |------|-------------|
-| Zenginleştirilmiş belge | Zenginleştirilmiş bir belge, işlem hattı tarafından oluşturulan ve bir belge ile ilgili tüm ek açıklamaları tutmak için kullanılan dahili bir yapıdır. Zenginleştirilmiş bir belgeyi, ek açıklama ağacı olarak düşünün. Genellikle, önceki bir ek açıklamanın oluşturduğu bir ek açıklama alt öğesi olur.<p/>Zenginleştirilmiş belgeler yalnızca beceri yürütmesinin süresi boyunca mevcuttur. İçerik arama dizinine eşlendikten sonra, zenginleştirilmiş belge artık gerekli değildir. Zenginleştirilmiş belgelerle doğrudan etkileşim kurmasanız da, Beceri oluştururken belge için bir model olması yararlı olacaktır. |
-| Zenginleştirme bağlamı | Hangi öğenin zenginleştirmesi halinde, zenginleştirme 'nin gerçekleştiği bağlam. Varsayılan olarak, enzenginleştirme bağlamı tek tek belgeler kapsamındaki `"/document"` düzeyindedir. Bir yetenek çalıştırıldığında, bu beceriye ait çıktılar [tanımlanan bağlamın özellikleri](#example-2)haline gelir.|
+| Zenginleştirilmiş Belge | Zenginleştirilmiş belge, bir belgeyle ilgili tüm ek açıklamaları tutmak için ardışık hatlar tarafından oluşturulan ve kullanılan bir iç yapıdır. Zenginleştirilmiş bir belgeyi ek açıklamalar ağacı olarak düşünün. Genellikle, önceki bir ek açıklama oluşturulan bir ek açıklama onun alt olur.<p/>Zenginleştirilmiş belgeler sadece skillset yürütme süresi için var. İçerik arama dizinine eşlendikten sonra, zenginleştirilmiş belgeye artık gerek kalmaz. Zenginleştirilmiş belgelerle doğrudan etkileşimde bulunmayan sanız da, bir beceri oluştururken belgelerin zihinsel bir modeline sahip olmak yararlıdır. |
+| Zenginleştirme Bağlamı | Zenginleştirmenin gerçekleştiği bağlam, hangi öğenin zenginleştirilmiş olduğu açısından. Varsayılan olarak, zenginleştirme bağlamı `"/document"` tek tek belgelere yönelik düzeydedir. Bir beceri çalıştığında, bu becerinin çıktıları [tanımlanan bağlamın özellikleri](#example-2)haline gelir.|
 
 <a name="example-1"></a>
-## <a name="example-1-simple-annotation-reference"></a>Örnek 1: basit ek açıklama başvurusu
+## <a name="example-1-simple-annotation-reference"></a>Örnek 1: Basit ek açıklama başvurusu
 
-Azure Blob depolama alanında, varlık tanıma kullanarak çıkarmak istediğiniz kişilerin adlarına başvurular içeren çeşitli dosyalarınız olduğunu varsayalım. Aşağıdaki yetenek tanımında, `"/document/content"` tüm belgenin metinsel gösterimidir ve "kişiler" ise kişi olarak tanımlanan varlıkların tam adları ayıklanacaktır.
+Azure Blob depolama alanında, varlık tanıma yı kullanarak ayıklamak istediğiniz kişilerin adlarına başvurular içeren çeşitli dosyalarınız olduğunu varsayalım. Aşağıdaki beceri tanımında, `"/document/content"` belgenin tamamının metinsel gösterimi ve "kişiler" kişi olarak tanımlanan varlıklar için tam adların çıkarılmasıdır.
 
-Varsayılan bağlam `"/document"`olduğundan, kişiler listesine artık `"/document/people"`olarak başvurulabilir. Bu özel durumda `"/document/people"`, artık dizindeki bir alanla eşlenemeyen veya aynı beceri başka bir becerde kullanılan bir ek açıklama.
+Varsayılan bağlam olduğundan, `"/document"`kişi listesi artık . `"/document/people"` Bu özel `"/document/people"` durumda, şimdi bir dizin içinde bir alana eşlenen veya aynı beceri başka bir beceri kullanılan bir ek açıklama vardır.
 
 ```json
   {
@@ -59,11 +59,11 @@ Varsayılan bağlam `"/document"`olduğundan, kişiler listesine artık `"/docum
 
 <a name="example-2"></a>
 
-## <a name="example-2-reference-an-array-within-a-document"></a>Örnek 2: belge içindeki bir diziye başvuru
+## <a name="example-2-reference-an-array-within-a-document"></a>Örnek 2: Belge içindeki bir diziye başvuru
 
-Bu örnekte, bir zenginleştirme adımını aynı belgede birden çok kez nasıl çağırabileceğiniz gösterilmektedir. Önceki örneğin tek bir belgeden 10 kişi adıyla bir dize dizisi oluşturulduğunu varsayın. Makul bir sonraki adım, tam bir adın soyadını çıkaran ikinci bir zenginleştirme olabilir. 10 ad olduğundan, bu adımda her kişi için bir kez olmak üzere bu belgede 10 kez çağrılabilir. 
+Bu örnek, aynı belge üzerinde bir zenginleştirme adımı birden çok kez çağırmak için nasıl gösteren, önceki bir oluşturur. Önceki örnekte, tek bir belgeden 10 kişi adiçeren bir dizi dize oluşturduğunu varsayalım. Makul bir sonraki adım, soyadını tam bir isimden çıkaran ikinci bir zenginleştirme olabilir. 10 ad olduğundan, bu adımın bu belgede her kişi için bir kez olmak üzere 10 kez çağrılmasını istersiniz. 
 
-Doğru sayıda yinelemeyi çağırmak için, bağlamı, yıldız işareti (`"*"`), zenginleştirilmiş belgedeki tüm düğümleri `"/document/people"`alt öğeleri olarak temsil eden `"/document/people/*"`olarak ayarlayın. Bu yetenek yetenekler dizisinde yalnızca bir kez tanımlanmış olsa da, tüm Üyeler işlenene kadar belgedeki her üye için çağrılır.
+Doğru yineleme sayısını çağırmak için, bağlamı `"/document/people/*"`, yıldız işaretinin`"*"`( ) zenginleştirilmiş belgedeki tüm düğümleri soyundan gelenler olarak temsil ettiği olarak `"/document/people"`ayarlayın. Bu beceri beceri dizisinde yalnızca bir kez tanımlansa da, tüm üyeler işlenene kadar belgeiçindeki her üye için çağrılır.
 
 ```json
   {
@@ -87,15 +87,15 @@ Doğru sayıda yinelemeyi çağırmak için, bağlamı, yıldız işareti (`"*"`
   }
 ```
 
-Ek açıklamalar diziler veya dize koleksiyonları olduğunda, bir bütün olarak dizi yerine belirli üyeleri hedeflemek isteyebilirsiniz. Yukarıdaki örnek, bağlamı temsil eden her düğüm altında `"last"` adlı bir ek açıklama üretir. Bu ek açıklama ailesine başvurmak istiyorsanız `"/document/people/*/last"`sözdizimini kullanabilirsiniz. Belirli bir ek açıklamaya başvurmak isterseniz, bir açık dizin kullanabilirsiniz: `"/document/people/1/last`"belgesinde tanımlanan ilk kişinin soyadını başvuru. Bu söz dizimi diziminde "0 dizinli" olduğuna dikkat edin.
+Ek açıklamalar diziler veya dizeleri koleksiyonları olduğunda, dizi yerine belirli üyeleri bir bütün olarak hedeflemek isteyebilirsiniz. Yukarıdaki örnek, bağlam tarafından temsil `"last"` edilen her düğüm altında çağrılan bir ek açıklama oluşturur. Bu ek açıklamalar ailesine başvurmak istiyorsanız, sözdizimini `"/document/people/*/last"`kullanabilirsiniz. Belirli bir ek açıklamaya başvurmak istiyorsanız, belgede tanımlanan ilk `"/document/people/1/last`kişinin soyadına başvurmak için açık bir dizin kullanabilirsiniz: " Bu sözdizimi dizilerinde "0 dizilimi" olduğuna dikkat edin.
 
 <a name="example-3"></a>
 
-## <a name="example-3-reference-members-within-an-array"></a>Örnek 3: bir dizi içindeki başvuru üyeleri
+## <a name="example-3-reference-members-within-an-array"></a>Örnek 3: Bir dizi içindeki başvuru üyeleri
 
-Bazen belirli bir yeteneğe iletmek için belirli bir türün tüm ek açıklamalarını gruplamak gerekir. Örnek 2 ' de ayıklanan tüm son adlardan en yaygın adı tanımlayan bir kuramsal özel yetenek düşünün. Özel beceriye yalnızca soyadlarını sağlamak için, bağlamı `"/document"` ve giriş `"/document/people/*/lastname"`olarak belirtin.
+Bazen belirli bir türdeki tüm ek açıklamaları belirli bir beceriye aktarmak için gruplandırmanız gerekir. Örnek 2'de ayıklanan tüm soyadlardan en yaygın soyadını tanımlayan varsayımsal bir özel beceri düşünün. Özel beceriye sadece son adları sağlamak için `"/document"` bağlamı ve `"/document/people/*/lastname"`girişi olarak belirtin.
 
-`"/document/people/*/lastname"` kardinalitesi belgeden daha büyük olduğuna dikkat edin. Bu belge için yalnızca bir belge düğümü varken 10 LastName düğümü olabilir. Bu durumda, sistem otomatik olarak belgedeki tüm öğeleri içeren `"/document/people/*/lastname"` bir dizi oluşturur.
+Kardinallik belgenin `"/document/people/*/lastname"` daha büyük olduğuna dikkat edin. Bu belge için yalnızca bir belge düğümü varken 10 soyad düğümü olabilir. Bu durumda, sistem belgedeki tüm öğeleri `"/document/people/*/lastname"` içeren bir dizi otomatik olarak oluşturur.
 
 ```json
   {
@@ -121,7 +121,7 @@ Bazen belirli bir yeteneğe iletmek için belirli bir türün tüm ek açıklama
 
 
 ## <a name="see-also"></a>Ayrıca bkz.
-+ [Özel bir yeteneği bir zenginleştirme işlem hattı ile tümleştirme](cognitive-search-custom-skill-interface.md)
-+ [Beceri tanımlama](cognitive-search-defining-skillset.md)
-+ [Beceri oluşturma (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
-+ [Zenginleştirilmiş alanları bir dizinle eşleme](cognitive-search-output-field-mapping.md)
++ [Özel bir beceriyi zenginleştirme hattına nasıl entegre edinilir?](cognitive-search-custom-skill-interface.md)
++ [Bir skillset nasıl tanımlanır?](cognitive-search-defining-skillset.md)
++ [Skillset (REST) oluşturun](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
++ [Zenginleştirilmiş alanları bir dizine nasıl eşlersin?](cognitive-search-output-field-mapping.md)

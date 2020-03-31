@@ -5,27 +5,27 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: d579e7a4fd83c1a0ce335e0b2357dcbafb217398
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67188316"
 ---
-Bu adımda, aynı ağ üzerinde çalışan bir istemci uygulaması kullanarak kullanılabilirlik grubu dinleyicisi sınayın.
+Bu adımda, aynı ağda çalışan bir istemci uygulaması kullanarak kullanılabilirlik grubu dinleyicisini sınarsınız.
 
-İstemci bağlantısı aşağıdaki gereksinimlere sahiptir:
+İstemci bağlantısı nın aşağıdaki gereksinimleri vardır:
 
-* İstemci bağlantıları dinleyicisi olandan farklı bir bulut hizmeti barındıran her zaman açık kullanılabilirlik çoğaltmalarının bulunan makineleri gelmelidir.
-* İstemciler her zaman açık çoğaltma farklı alt ağlarda olup olmadığını belirtmeniz *MultisubnetFailover = True* bağlantı dizesindeki. Bu durum, çoğaltma çeşitli alt ağlar için paralel bağlantı denemelerinde de sonuçlanır. Bu senaryo, bir bölgeler arası Always On kullanılabilirlik grubu dağıtımının içerir.
+* Dinleyiciye istemci bağlantıları, Her Zaman Kullanılabilirlik yinelemelerini barındıran olandan farklı bir bulut hizmetinde bulunan makinelerden gelmelidir.
+* Always On kopyaları farklı alt ağlardaysa, istemciler bağlantı dizesinde *MultisubnetFailover=True* belirtmelidir. Bu durum, çeşitli alt ağlarda yinelemelere paralel bağlantı girişimleri ile sonuçlanır. Bu senaryo, her zaman kullanılabilirlik grubu dağıtımında bir çapraz bölge içerir.
 
-Dinleyici için aynı Azure sanal ağı (ancak bir çoğaltmasını barındıran bir değil) sanal makinelerin birinden bağlanmak için bir örnek verilebilir. Kullanılabilirlik grubu dinleyicisi için SQL Server Management Studio bağlanmak bu testin tamamlanması için kolay bir yolu denemektir. Başka bir basit yöntemi çalıştırmaktır [SQLCMD.exe](https://technet.microsoft.com/library/ms162773.aspx)gibi:
+Bir örnek, dinleyiciye aynı Azure sanal ağındaki VM'lerden (ancak yinelemebarındıran bir ağda olmayan) bağlanmaktır. Bu testi tamamlamanın kolay bir yolu, SQL Server Management Studio'yu kullanılabilirlik grubu dinleyicisine bağlamayı denemektir. Başka bir basit yöntem [SQLCMD.exe](https://technet.microsoft.com/library/ms162773.aspx)çalıştırmak için , aşağıdaki gibi:
 
     sqlcmd -S "<ListenerName>,<EndpointPort>" -d "<DatabaseName>" -Q "select @@servername, db_name()" -l 15
 
 > [!NOTE]
-> EndpointPort değer ise *1433*, çağrıyı belirtmeniz gerekmez. Önceki çağrı da istemci makine aynı etki alanına katılmış olan ve Windows kimlik doğrulaması kullanarak arayan veritabanı izinleri verildi varsayar.
+> EndpointPort değeri *1433*ise, çağrıda belirtmeniz gerekmez. Önceki aramada, istemci makinenin aynı etki alanına birleştiği ve arayana Windows kimlik doğrulaması kullanılarak veritabanında izin verildiği de varsayar.
 > 
 > 
 
-Dinleyiciyi test ettiğinizde istemciler arasında yük devretme işlemleri için dinleyici bağlanabildiğinden emin olmak için kullanılabilirlik grubu yük devretme emin olun.
+Dinleyiciyi sınarken, istemcilerin başarısız olduğunda dinleyiciye bağlanabilmesini sağlamak için kullanılabilirlik grubu üzerinde başarısız olduğunuzdan emin olun.
 

@@ -1,6 +1,6 @@
 ---
-title: En iyi yöntemler-Azure Batch
-description: Azure Batch çözümünüzü geliştirmeye yönelik en iyi yöntemleri ve yararlı ipuçlarını öğrenin.
+title: En iyi uygulamalar - Azure Toplu İş
+description: Azure Toplu İş çözümünüzü geliştirmek için en iyi uygulamaları ve yararlı ipuçlarını öğrenin.
 author: LauraBrenner
 ms.author: labrenne
 ms.date: 11/22/2019
@@ -8,159 +8,159 @@ ms.service: batch
 ms.topic: article
 manager: evansma
 ms.openlocfilehash: 16fb2786f180b1e28b76d9246d599a871278d00d
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
-ms.translationtype: MT
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77022741"
 ---
-# <a name="azure-batch-best-practices"></a>En iyi Azure Batch uygulamalar
+# <a name="azure-batch-best-practices"></a>Azure Toplu En iyi uygulamalar
 
-Bu makalede, Azure Batch hizmetini etkili ve verimli bir şekilde kullanmaya yönelik en iyi yöntemler koleksiyonu ele alınmaktadır. Bu en iyi yöntemler Batch ve Batch müşterilerinin deneyimleri ile deneyimimizden türetilir. , Toplu Iş için geliştirme ve kullanma sırasında tasarım engellerini, olası performans sorunlarını ve daha fazla Işlem desenlerini önlemek için bu makalenin anlaşılması önemlidir.
+Bu makalede, Azure Toplu İş hizmetini etkili ve verimli bir şekilde kullanmak için en iyi uygulamalar koleksiyonu anlatılmaktadır. Bu en iyi uygulamalar, Toplu Işla'daki deneyimlerimizden ve Toplu müşterilerin deneyimlerinden türetilmiştir. Bu tasarım tuzakları, potansiyel performans sorunları önlemek için bu makaleyi anlamak önemlidir ve anti-desenler için geliştirirken, ve kullanırken, Toplu.
 
-Bu makalede şunları öğreneceksiniz:
+Bu makalede, öğreneceksiniz:
 
 > [!div class="checklist"]
-> - En iyi uygulamalar nelerdir?
-> - Neden en iyi uygulamaları kullanmalısınız?
-> - En iyi yöntemleri takip edemezseniz ne olur?
-> - En iyi yöntemleri takip etme
+> - En iyi uygulamalar nelerdir
+> - Neden en iyi uygulamaları kullanmalısınız
+> - En iyi uygulamaları takip etmezseniz ne olabilir?
+> - En iyi uygulamaları takip etme
 
 ## <a name="pools"></a>Havuzlar
 
-Batch havuzları, Batch hizmetinde işlerin yürütülmesi için işlem kaynaklarıdır. Aşağıdaki bölümlerde, toplu Iş havuzlarıyla çalışırken izlenecek en iyi uygulamalar hakkında rehberlik sağlanmaktadır.
+Toplu iş havuzları, Toplu İşlem hizmetindeki işleri yürütmek için kullanılan işlem kaynaklarıdır. Aşağıdaki bölümler, Toplu Iş havuzları ile çalışırken izleyerek en iyi uygulamalar hakkında rehberlik sağlar.
 
 ### <a name="pool-configuration-and-naming"></a>Havuz yapılandırması ve adlandırma
 
 - **Havuz ayırma modu**  
-    Batch hesabı oluştururken iki havuz ayırma modu arasından seçim yapabilirsiniz: **Batch hizmeti** veya **Kullanıcı aboneliği**. Çoğu durumda, toplu yönetilen aboneliklerde havuzların arkasında ayrıldığı varsayılan Batch hizmeti modunu kullanmanız gerekir. Alternatif Kullanıcı aboneliği modunda, bir havuz oluşturulduğunda Batch VM'leri ve diğer kaynaklar doğrudan aboneliğinizde oluşturulur. Kullanıcı aboneliği hesapları, önemli, ancak küçük bir senaryo alt kümesini etkinleştirmek için öncelikli olarak kullanılır. Kullanıcı aboneliği modu hakkında daha fazla bilgi için kullanıcı aboneliği [modu Için ek yapılandırma](batch-account-create-portal.md#additional-configuration-for-user-subscription-mode)makalesini okuyun.
+    Toplu Iş hesabı oluştururken, iki havuz ayırma modu arasında seçim yapabilirsiniz: **Toplu iş hizmeti** veya kullanıcı **aboneliği.** Çoğu durumda, toplu iş tarafından yönetilen aboneliklerde havuzların arka planda tahsis edildiği varsayılan Toplu İşlem hizmeti modunu kullanmanız gerekir. Alternatif Kullanıcı aboneliği modunda, bir havuz oluşturulduğunda Batch VM'leri ve diğer kaynaklar doğrudan aboneliğinizde oluşturulur. Kullanıcı abonelik hesapları öncelikle önemli, ancak küçük bir senaryo alt kümesini etkinleştirmek için kullanılır. [Kullanıcı abonelik modu için Ek yapılandırmada](batch-account-create-portal.md#additional-configuration-for-user-subscription-mode)kullanıcı abonelik modu hakkında daha fazla bilgi edinebilirsiniz.
 
-- **İş ve görev çalışma süresini, havuzdan eşleme işi belirlenirken göz önünde bulundurun.**  
-    Öncelikle kısa süreli görevlerden oluşan işleriniz varsa ve beklenen toplam görev sayısı küçük olduğundan, işin genel beklenen çalışma zamanının uzun olmaması ve her iş için yeni bir havuz ayrılmaması gerekir. Düğümlerin ayırma süresi, işin çalışma süresini azaledecektir.
+- **Havuz eşleme işi belirlerken iş ve görev çalışma süresini göz önünde bulundurun.**  
+    Öncelikle kısa süren görevlerden oluşan işleriniz varsa ve beklenen toplam görev sayıları küçükse, böylece işin genel beklenen çalışma süresi uzun değilse, her iş için yeni bir havuz ayırmayın. Düğümlerin ayırma süresi, işin çalışma süresini azaltır.
 
-- **Havuzlar birden çok işlem düğümüne sahip olmalıdır.**  
-    Bağımsız düğümlerin her zaman kullanılabilir olması garanti edilmez. Yaygın olarak, donanım hataları, işletim sistemi güncelleştirmeleri ve diğer sorunların bir konağı, tek tek düğümlerin çevrimdışı olmasına neden olabilir. Batch iş yükünüz belirleyici gerektiriyorsa, garantili ilerleme durumunda birden çok düğüm içeren havuzlar ayırmanız gerekir.
+- **Havuzlarda birden fazla işlem düğümü olmalıdır.**  
+    Tek tek düğümlerin her zaman kullanılabilir olacağı garanti edilmez. Yaygın olmasa da, donanım hataları, işletim sistemi güncelleştirmeleri ve diğer birçok sorun tek tek düğümlerin çevrimdışı olmasına neden olabilir. Toplu iş yükünüz deterministik, garantili ilerleme gerektiriyorsa, birden çok düğümiçeren havuzlar ayırmanız gerekir.
 
 - **Kaynak adlarını yeniden kullanmayın.**  
-    Batch kaynakları (işler, havuzlar vb.) genellikle zaman içinde gelir ve zaman içinde gider. Örneğin, Pazartesi günü bir havuz oluşturabilir, Salı günü silebilir ve ardından Perşembe üzerinde başka bir havuz oluşturabilirsiniz. Oluşturduğunuz her yeni kaynağa, daha önce kullanmadığınız benzersiz bir ad verilmelidir. Bu, bir GUID kullanılarak (tüm kaynak adı olarak veya bunun bir parçası olarak) ya da kaynağın kaynak adında oluşturulduğu zamanı katıştırarak yapılabilir. Batch, gerçek kaynak KIMLIĞI insana sahip olmayan bir şey olsa da kaynağa okunabilir bir ad vermek için kullanılabilen [DisplayName](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.jobspecification.displayname?view=azure-dotnet)'i destekler. Benzersiz adların kullanılması, hangi belirli kaynağın günlüklerde ve ölçümlerde bir şeyler olduğunu ayırt etmenize daha kolay hale getirir. Ayrıca, bir kaynak için bir destek durumu dosyası oluşturmanız gerekiyorsa belirsizlik kaldırılır.
+    Toplu iş kaynakları (işler, havuzlar, vb.) genellikle zaman içinde gelir ve gider. Örneğin, Pazartesi günü bir havuz oluşturabilir, Salı günü silebilir ve perşembe günü başka bir havuz oluşturabilirsiniz. Oluşturduğunuz her yeni kaynağa daha önce kullanmadığınız benzersiz bir ad verilmelidir. Bu, bir GUID (tüm kaynak adı olarak veya bunun bir parçası olarak) kullanılarak veya kaynağın kaynak adına oluşturulduğu zamanı katıştırarak yapılabilir. Toplu [Iş,](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.jobspecification.displayname?view=azure-dotnet)gerçek kaynak kimliği o kadar da insan dostu olmayan bir şey olsa bile, bir kaynağa insan tarafından okunabilir bir ad vermek için kullanılabilen DisplayName'i destekler. Benzersiz adlar kullanmak, günlüklerde ve ölçümlerde hangi kaynağın bir şey yaptığını ayırt etmenizi kolaylaştırır. Ayrıca, bir kaynak için destek talebi dosyalamanız gerekirse belirsizliği de ortadan kaldırır.
 
-- **Havuz bakımı ve başarısızlık sırasında süreklilik.**  
-    İşlerinizin havuzları dinamik olarak kullanması en iyisidir. İşleriniz her şey için aynı havuzu kullanıyorsa, havuzda bir sorun oluşursa işlerin çalıştırılmayabileceği bir şansınız vardır. Bu, özellikle zamana duyarlı iş yükleri için önemlidir. Bunu çözmek için, her bir işi zamanlarken bir havuzu dinamik olarak seçin veya oluşturun veya uygun olmayan bir havuzu atlayabilmeniz için havuz adını geçersiz kılmak üzere bir yol belirtin.
+- **Havuz bakımı ve arıza sırasında süreklilik.**  
+    En iyisi, işlerinizi dinamik olarak havuzlar kullanmak tır. İşleriniz her şey için aynı havuzu kullanıyorsa, havuzda bir sorun olursa işinizin çalışmama ihtimali vardır. Bu, özellikle zamana duyarlı iş yükleri için önemlidir. Bunu düzeltmek için, her işi zamanlarken dinamik olarak bir havuz seçin veya oluşturun veya sağlıksız bir havuzu atlayabilmeniz için havuz adını geçersiz kılmanın bir yolu var.
 
-- **Havuz bakımı ve başarısızlığı sırasında iş sürekliliği**  
-    Bir havuzun, dahili hatalar, kapasite kısıtlamaları vb. gibi gerekli boyuta büyümesini engelleyebilen birçok nedeni vardır. Bu nedenle, işleri farklı bir havuzda yeniden hedeflemeniz (muhtemelen farklı bir VM boyutu ile) gerekirse bu Işlemi [Updatejob](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.protocol.joboperationsextensions.update?view=azure-dotnet)aracılığıyla destekler. Bir statik havuz KIMLIĞI kullanmaktan kaçının hiçbir şekilde silinmeyeceğinden ve hiçbir şekilde değişmeyeceğinden, beklenmez.
+- **Havuz bakımı ve arızası sırasında iş sürekliliği**  
+    Bir havuzun istediğiniz boyuta kadar büyümesini engelleyebilecek iç hatalar, kapasite kısıtlamaları gibi birçok olası nedeni vardır. Bu nedenle, gerekirse farklı bir havuzda (muhtemelen farklı bir VM boyutunda - Toplu iş [Güncelleştirme İşi](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.protocol.joboperationsextensions.update?view=azure-dotnet)ile bunu destekler) işleri yeniden hedeflemeye hazır olmalısınız. Hiçbir zaman silinmeyeceği ve asla değişmeyeceği beklentisiyle statik bir havuz kimliği kullanmaktan kaçının.
 
-### <a name="pool-lifetime-and-billing"></a>Havuz ömrü ve faturalama
+### <a name="pool-lifetime-and-billing"></a>Havuz ömrü ve faturalandırma
 
-Havuz ömrü, havuz yapılandırmasına uygulanan ayırma ve seçenekler yöntemine bağlı olarak farklılık gösterebilir. Havuzlar, zaman içinde herhangi bir zamanda, havuzda rastgele bir yaşam süresine ve farklı sayıda işlem düğümüne sahip olabilir. Havuzdaki işlem düğümlerini açıkça veya hizmet tarafından sunulan özellikler aracılığıyla (otomatik ölçeklendirme veya otomatik havuz) yönetmek sizin sorumluluğunuzdadır.
+Havuz ömrü ayırma yöntemine ve havuz yapılandırmasına uygulanan seçeneklere bağlı olarak değişebilir. Havuzlar, zaman içinde herhangi bir noktada rasgele bir kullanım ömrüne ve havuzda değişen sayıda işlem düğümüne sahip olabilir. Havuzdaki bilgi işlem düğümlerini açık bir şekilde veya hizmet tarafından sağlanan özellikler (otomatik ölçeklendirme veya otomatik havuz) aracılığıyla yönetmek sizin sorumluluğunuzdadır.
 
-- **Havuzları güncel tutun.**  
-    En son düğüm Aracısı güncelleştirmelerini ve hata düzeltmelerini aldığınızdan emin olmak için havuzlarınızı her birkaç ayda bir sıfır olacak şekilde yeniden boyutlandırmalısınız. Havuzunuz, yeniden oluşturulup 0 işlem düğümlerine yeniden boyutlandırılana kadar düğüm Aracısı güncelleştirmeleri almaz. Havuzunuzu yeniden oluşturmadan veya yeniden boyutlandırabilmeniz için, [düğümler](#nodes) bölümünde anlatıldığı gibi, hata ayıklama amacıyla herhangi bir düğüm Aracısı günlüğünü indirmeniz önerilir.
+- **Havuzları taze tutun.**  
+    En son düğüm aracısı güncelleştirmelerini ve hata düzeltmelerini aldığınızdan emin olmak için havuzlarınızı birkaç ayda bir sıfıra yeniden boyutlandırmanız gerekir. Havuzunuz yeniden oluşturulmadığı veya 0 bilgi işlem düğümüne yeniden boyutlandırılmadığı sürece düğüm aracısı güncelleştirmelerini almaz. Havuzunuzu yeniden oluşturmadan veya yeniden boyutlandırmadan önce, Düğümler bölümünde belirtildiği gibi hata ayıklama amacıyla düğüm aracısı günlüklerini [indirmeniz](#nodes) önerilir.
 
 - **Havuz yeniden oluşturma**  
-    Benzer bir notta havuzlarınızın günlük olarak silinmesi ve yeniden oluşturulması önerilmez. Bunun yerine, yeni bir havuz oluşturun, mevcut işlerinizi yeni havuza işaret etmek üzere güncelleştirin. Tüm görevler yeni havuza taşındıktan sonra eski havuzu silin.
+    Benzer bir kayda göre, havuzlarınızı günlük olarak silmek ve yeniden oluşturmak önerilmez. Bunun yerine, yeni bir havuz oluşturun, yeni havuza işaret etmek için varolan işlerinizi güncelleştirin. Tüm görevler yeni havuza taşındıktan sonra eski havuzu silin.
 
-- **Havuz verimliliği ve faturalama**  
-    Batch 'in kendisi ek ücret vermez, ancak kullanılan işlem kaynakları için ücret ödemeniz gerekir. İçindeki durum ne olursa olsun, havuzdaki her işlem düğümü için faturalandırılırsınız. Bu, düğüm için gereken depolama ve ağ maliyetleri gibi tüm ücretleri içerir. En iyi uygulamalar hakkında daha fazla bilgi edinmek için bkz. [Azure Batch Için maliyet analizi ve bütçeleri](budget.md).
+- **Havuz verimliliği ve faturalandırma**  
+    Toplu iş kendisi ekstra ücrete tabi değildir, ancak kullanılan işlem kaynakları için ücrete tabi siniz. Ne durumda olursa olsun, havuzdaki her işlem düğümü için faturalandırılırsınız. Bu, düğümün çalışması için depolama ve ağ maliyetleri gibi gerekli ücretleri içerir. Daha fazla en iyi uygulamaları öğrenmek [için Azure Toplu İşi için Maliyet çözümlemesi ve bütçeler](budget.md)hakkında bilgi edinin.
 
-### <a name="pool-allocation-failures"></a>Havuz ayırma sorunları
+### <a name="pool-allocation-failures"></a>Havuz ayırma hataları
 
-Havuz ayırma arızaları, ilk ayırma veya sonraki yeniden boyutlandırmalarda herhangi bir noktada gerçekleşebilir. Bunun nedeni, bir bölgedeki geçici kapasiteden veya toplu Işin bağımlı olduğu diğer Azure hizmetlerindeki hatalardan kaynaklanabilir. Çekirdek kotanızın garantisi, ancak bunun yerine bir sınır değildir.
+Havuz ayırma hataları ilk ayırma veya sonraki yeniden boyutlandırmalar sırasında herhangi bir noktada meydana gelebilir. Bunun nedeni, bir bölgedeki geçici kapasite tükenmesi veya Toplu İşlem'in dayandığı diğer Azure hizmetlerindeki hatalar olabilir. Çekirdek kotanız bir garanti değil, bir sınırdır.
 
 ### <a name="unplanned-downtime"></a>Planlanmamış kapalı kalma süresi
 
-Toplu Iş havuzlarının Azure 'da kesinti süresi olaylarıyla karşılaşması mümkündür. Bu, senaryonuzu veya Batch için iş akışınızı planlarken ve geliştirirken göz önünde bulundurmanız önemlidir.
+Toplu iş havuzlarının Azure'da kapalı kalma süresi etkinliklerini deneyimleması mümkündür. Toplu Iş için senaryonuzu veya iş akışınızı planlarken ve geliştirirken bunu göz önünde bulundurmanız önemlidir.
 
-Bir düğümün başarısız olması durumunda, Batch otomatik olarak bu işlem düğümlerini sizin adınıza kurtarmaya çalışır. Bu, kurtarılan düğüm üzerinde çalışan herhangi bir görevin yeniden çizelgelenmesi tetiklenebilir. Kesilen görevler hakkında daha fazla bilgi edinmek için bkz. [yeniden denemeler tasarlama](#designing-for-retries-and-re-execution) .
+Bir düğümün başarısız olması durumunda, Toplu İşlem otomatik olarak bu işlem düğümlerini sizin adınıza kurtarmaya çalışır. Bu, kurtarılan düğümdeki çalışan herhangi bir görevi yeniden zamanlamayı tetikleyebilir. Kesilen görevler hakkında daha fazla bilgi edinmek [için yeniden denemeler için Tasarım](#designing-for-retries-and-re-execution) bölümüne bakın.
 
 - **Azure bölge bağımlılığı**  
-    Zamana duyarlı veya üretim iş yükünüz varsa, tek bir Azure bölgesine bağlı olmaması önerilir. Nadir olarak, bir bölgenin tamamını etkileyebilecek sorunlar vardır. Örneğin, işlemelerinizin belirli bir zamanda başlaması gerekiyorsa, birincil bölgenizdeki havuzun ölçeğini *başlangıç zamanından önce da*ölçeklendirin. Havuz ölçeği başarısız olursa, bir yedekleme bölgesindeki (veya bölgelerde) bir havuzu ölçeklendirmeye geri dönebilirsiniz. Farklı bölgelerdeki birden çok hesap genelinde havuzlar, başka bir havuz ile yanlış bir sorun varsa, daha kolay erişilebilir bir yedekleme sağlar. Daha fazla bilgi için bkz. [uygulamanızı yüksek kullanılabilirlik Için tasarlama](high-availability-disaster-recovery.md).
+    Zamana duyarlı veya üretim iş yükünüz varsa tek bir Azure bölgesine bağlı kalmaması önerilir. Nadir olmakla birlikte, tüm bölgeyi etkileyebilecek sorunlar vardır. Örneğin, işlemeişleminizin belirli bir zamanda başlaması gerekiyorsa, *başlangıç saatinizden çok önce*birincil bölgenizdeki havuzu ölçeklemeyi düşünün. Bu havuz ölçeği başarısız olursa, yedek bölgede (veya bölgelerde) bir havuz ölçeklendirme için geri düşebilirsiniz. Farklı bölgelerdeki birden çok hesaptaki havuzlar, başka bir havuzda bir sorun olursa hazır ve kolay erişilebilir bir yedekleme sağlar. Daha fazla bilgi için, [yüksek kullanılabilirlik için uygulamanızı tasarla'ya](high-availability-disaster-recovery.md)bakın.
 
-## <a name="jobs"></a>İş
+## <a name="jobs"></a>İşler
 
-İş, yüzlerce, binlerce veya hatta milyonlarca görevi içerecek şekilde tasarlanan bir kapsayıcıdır.
+İş, yüzlerce, binlerce, hatta milyonlarca görevi içerecek şekilde tasarlanmış bir kapsayıcıdır.
 
-- **Bir işe birçok görev yerleştirme**  
-    Tek bir görevi çalıştırmak için bir iş kullanmak verimsiz değildir. Örneğin, her biri 10 görev içeren 100 iş oluşturmak yerine 1000 görevi içeren tek bir işi kullanmak daha etkilidir. Her biri tek bir görev içeren 1000 iş çalıştırmak, en az verimli, en yavaş ve en pahalı yaklaşım olacaktır.  
+- **Bir işe birçok görev koyun**  
+    Tek bir görevi çalıştırmak için bir iş kullanmak verimsizdir. Örneğin, her biri 10 görev içeren 100 iş oluşturmak yerine 1000 görev içeren tek bir işi kullanmak daha verimlidir. Her biri tek bir görev le 1000 iş çalıştırmak, alınması en az verimli, en yavaş ve en pahalı yaklaşım olacaktır.  
 
-    Aynı anda binlerce etkin işi gerektiren bir Batch çözümü tasarlamayın. Görevler için kota yoktur, bu nedenle çok sayıda iş altında çok sayıda görev yürütülerek [iş ve iş zamanlama kotalarınızı](batch-quota-limit.md#resource-quotas)verimli bir şekilde kullanır.
+    Aynı anda binlerce etkin iş gerektiren bir Toplu Iş çözümü tasarlamayın. Görevler için kota yoktur, bu nedenle mümkün olduğunca az sayıda iş altında birçok görev yürütmek [işinizi ve iş zamanlama kotalarınızı](batch-quota-limit.md#resource-quotas)verimli bir şekilde kullanır.
 
 - **İş ömrü**  
-    Toplu işin, sistemden silinene kadar sınırsız bir ömrü vardır. Bir işin durumu, zamanlama için daha fazla görevi kabul edip edemeyeceğini belirler. Açık olarak sonlandırılmadığı takdirde bir iş otomatik olarak tamamlandı durumuna taşınamaz. Bu, [Onalltasksall](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.common.onalltaskscomplete?view=azure-dotnet) özelliği veya [Maxduvara Clocktime](https://docs.microsoft.com/rest/api/batchservice/job/add#jobconstraints)aracılığıyla otomatik olarak tetiklenebilir.
+    Toplu iş, sistemden silinene kadar belirsiz bir ömrü vardır. Bir işin durumu, zamanlama için daha fazla görev kabul edip edemeyeceğini belirler. Bir iş, açıkça sonlandırılmadığı sürece otomatik olarak tamamlanmış duruma geçmez. Bu otomatik olarak [onAllTasksComplete](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.common.onalltaskscomplete?view=azure-dotnet) özelliği veya [maxWallClockTime](https://docs.microsoft.com/rest/api/batchservice/job/add#jobconstraints)üzerinden tetiklenebilir.
 
-Varsayılan bir [etkin iş ve iş zamanlaması kotası](batch-quota-limit.md#resource-quotas)vardır. İşlerin ve iş zamanlamalarının tamamlandı durumunda bu kotaya dahil sayılmaz.
+Varsayılan etkin [iş ve iş zamanlama kotası](batch-quota-limit.md#resource-quotas)vardır. Tamamlanan durumdaki iş ve iş zamanlamaları bu kotaya dahil değildir.
 
 ## <a name="tasks"></a>Görevler
 
-Görevler, bir işi oluşturan bireysel iş birimleridir. Görevler kullanıcı tarafından gönderilir ve işlem düğümleri için toplu Iş tarafından zamanlanır. Görevleri oluştururken ve yürütürken yapmanız gereken çeşitli tasarım konuları vardır. Aşağıdaki bölümlerde, sorunları ele almak ve verimli bir şekilde gerçekleştirmek için genel senaryolar ve görevlerinizi tasarlamak açıklanmaktadır.
+Görevler, bir işi oluşturan tek tek çalışma birimleridir. Görevler kullanıcı tarafından gönderilir ve Toplu İşlem tarafından işlem düğümlerine zamanlanır. Görevleri oluştururken ve yürükarırken dikkat edilmesi gereken birkaç tasarım vardır. Aşağıdaki bölümlerde sık karşılaşılan senaryolar ve sorunları işlemek ve verimli bir şekilde gerçekleştirmek için görevlerinizi nasıl tasarlayacağınızı açıklayınız.
 
 - **Görev verilerini görevin bir parçası olarak kaydedin.**  
-    İşlem düğümleri doğası gereği daha kısa. Yığın içinde otomatik havuz ve otomatik ölçeklendirme gibi birçok özellik vardır ve bu da düğümlerin kaybolmasını kolaylaştırır. Düğümler havuzdan ayrıldığında (bir yeniden boyutlandırma veya havuz silme nedeniyle), bu düğümlerdeki tüm dosyalar da silinir. Bu nedenle, bir görev tamamlanmadan önce, bir görev başarısız olduğunda, bir görevin başarısız olması durumunda, bir görevin arızalandığı düğümü dayanıklı bir depoya taşımalıdır. Toplu işlem, Azure depolama 'yı kullanarak verileri [OutputFiles](batch-task-output-files.md)aracılığıyla karşıya yüklemeyi, ayrıca çeşitli paylaşılan dosya sistemlerini de veya kendi görevlerinizde karşıya yüklemeyi gerçekleştirmek için tümleşik destek içerir.
+    İşlem düğümleri doğalarına göre geçicidir. Toplu İşlem'de düğümlerin kaybolmasını kolaylaştıran otomatik havuz ve otomatik ölçeklendirme gibi birçok özellik vardır. Düğümler havuzdan ayrıldıklarında (yeniden boyutlandırma veya havuz silme nedeniyle) bu düğümler üzerindeki tüm dosyalar da silinir. Bu nedenle, görev tamamlanmadan önce çıktısını çalıştığı düğümden çıkarıp dayanıklı bir depoya taşıması önerilir, benzer şekilde bir görev başarısız olursa, başarısız olan bir depoya hata yığmak için gerekli günlükleri taşıması gerekir. Toplu Iş, [OutputFiles](batch-task-output-files.md)aracılığıyla veri yüklemek için Azure Depolama'yı ve çeşitli paylaşılan dosya sistemlerini entegre etti veya yüklemeyi görevlerinizde kendiniz gerçekleştirebilirsiniz.
 
 ### <a name="task-lifetime"></a>Görev ömrü
 
 - **Görevleri tamamlandığında silin.**  
-    Görevleri artık gerekli olmadığında silin veya bir [retentionTime](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.taskconstraints.retentiontime?view=azure-dotnet) görev kısıtlaması ayarlayın. Bir `retentionTime` ayarlandıysa, toplu Işlem, `retentionTime` süresi dolarsa görev tarafından kullanılan disk alanını otomatik olarak temizler.  
+    Görevleri artık gerekmediğinde silin veya [bir bekletmeZamanı](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.taskconstraints.retentiontime?view=azure-dotnet) görev kısıtlaması ayarlayın. A `retentionTime` ayarlanırsa, Toplu `retentionTime` İşlem, görevin süresi dolduğunda görev tarafından kullanılan disk alanını otomatik olarak temizler.  
 
-    Görevleri silme işlemi iki şeyi gerçekleştirir. Bu, çalıştığınız görevi daha zor bir şekilde sorgulamayı/bulmayı (tamamlanan görevleri filtrelemeniz gerekecektir) sağlayan, iş içinde görev oluşturma işlemi yapılmasını sağlar. Ayrıca, düğümdeki karşılık gelen görev verilerini de temizler (belirtilen `retentionTime` zaten isabet aldıysa). Bu, düğümlerinizin görev verileriyle doldurulmamasını ve disk alanı tükenmesini sağlar.
+    Görevleri silerken iki şey gerçekleştirir. İş yerinde bir bir dizi görev inmemesini sağlayarak, ilgilendiğiniz görevi sorgulamayı/bulmayı zorlaştırır (çünkü Tamamlanan görevlere filtre uygulamanız gerekir). Ayrıca düğüm üzerinde karşılık gelen görev verilerini temizler (sağlanan `retentionTime` zaten isabet değil). Bu, düğümlerinizin görev verileriyle dolmamasını ve disk alanının tükenmesini sağlar.
 
-### <a name="task-submission"></a>Görev gönderme
+### <a name="task-submission"></a>Görev teslimi
 
-- **Bir koleksiyonda çok sayıda görev gönderebilirsiniz.**  
-    Görevler ayrı ayrı veya koleksiyonlarda gönderilebilir. Ek yükü ve gönderim süresini azaltmak için görevler toplu gönderimi yaparken bir seferde en fazla 100 olan [koleksiyonlara](https://docs.microsoft.com/rest/api/batchservice/task/addcollection) görev gönderebilirsiniz.
+- **Koleksiyonda çok sayıda görev gönderin.**  
+    Görevler bireysel olarak veya koleksiyonlarda gönderilebilir. Genel yükü ve teslim süresini azaltmak için görevlerin toplu olarak gönderilmesini yaparken bir seferde en fazla 100'e kadar [koleksiyonda](https://docs.microsoft.com/rest/api/batchservice/task/addcollection) görev gönderin.
 
 ### <a name="task-execution"></a>Görev yürütme
 
-- **Düğüm başına en fazla görevlerinizi seçme**  
-    Batch, düğümlerde fazla abone olan görevleri destekler (bir düğümden daha fazla görev çalıştırmak çekirdekler vardır). Görevlerinizin, havuzunuzdaki düğümlere "sığması" durumunda olduğundan emin olmanız gerekir. Örneğin, her birinin bir düğümde (`maxTasksPerNode = 8`sahip bir havuzda) %25 CPU kullanımı tükettiği sekiz görevi zamanlamaya çalışırsanız, düzeyi düşürülmüş bir deneyimle karşılaşabilirsiniz.
+- **Düğüm başına maksimum görevlerinizi seçme**  
+    Toplu iş, düğümlere fazla abone olan görevleri destekler (düğüm çekirdeklerinden daha fazla görev çalıştırMa). Görevlerinizin havuzdaki düğümlere "uyduğunu" sağlamak size kalmış. Örneğin, her biri %25 CPU kullanımını tek bir düğüme (havuzda) tüketen sekiz görev zamanlamaya `maxTasksPerNode = 8`çalışırsanız, bozulmuş bir deneyiminiz olabilir.
 
-### <a name="designing-for-retries-and-re-execution"></a>Yeniden denemeler ve yeniden yürütme için tasarlama
+### <a name="designing-for-retries-and-re-execution"></a>Yeniden denemeler ve yeniden yürütme için tasarım
 
-Görevler, toplu Işlem tarafından otomatik olarak yeniden denenebilir. İki tür yeniden deneme vardır: Kullanıcı denetimli ve dahili. Kullanıcı denetimli yeniden denemeler, görevin [Maxtaskretrycount](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.taskconstraints.maxtaskretrycount?view=azure-dotnet)tarafından belirtilir. Görevde belirtilen bir program sıfır dışında bir çıkış kodu ile çıktığında, görev `maxTaskRetryCount`değerine kadar yeniden denenir.
+Görevler Toplu İşlem tarafından otomatik olarak yeniden denenebilir. İki tür yeniden deneme vardır: kullanıcı denetimi ve dahili. Kullanıcı kontrollü yeniden denemeler görevin [maxTaskRetryCount](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.taskconstraints.maxtaskretrycount?view=azure-dotnet)tarafından belirtilir. Görevde belirtilen bir program sıfır olmayan bir çıkış koduyla çıktığında, görev `maxTaskRetryCount`.
 
-Nadir olarak bir görev, işlem düğümündeki hatalar nedeniyle, görev çalışırken düğüm üzerinde iç durumu veya bir başarısızlığı güncelleştirmeme gibi yeniden deneniyor olabilir. Görev, mümkünse aynı işlem düğümünde yeniden denenecektir, bu, görevde bir süre önce bir iç sınıra kadar ve bir toplu Işlem tarafından, potansiyel olarak farklı bir işlem düğümünde yeniden zamanlanmasını ertelenir.
+Nadir olsa da, bir görev, işlem düğümündeki hatalar nedeniyle dahili durumu güncelleştirememe veya görev çalışırken düğümdeki bir hata nedeniyle dahili olarak yeniden denenebilir. Görev, görevden vazgeçmeden ve görevi büyük ölçüde farklı bir işlem düğümünde Toplu Iş olarak yeniden zamanlanacak şekilde erteleyerek önce, mümkünse aynı işlem düğümünde yeniden denenecektir.
 
-- **Dayanıklı Görevler oluşturun**  
-    Görevler hatalı ve yeniden denemeye yetecek şekilde tasarlanmalıdır. Bu, özellikle uzun süre çalışan görevler için önemlidir. Bunu yapmak için, görevlerin aynı anda birden çok kez çalıştırılsa bile aynı, tek bir sonuç oluşturmasını sağlayın. Bunu başarmanın bir yolu, görevlerinizi "hedef arama" yapmak. Diğer bir yol da görevlerinizin ıdempotent olduğundan emin olmak (görevler kaç kez çalıştırıldıklarından bağımsız olarak aynı sonuca sahip olacaktır).
+- **Dayanıklı görevler oluşturun**  
+    Görevler, hataya dayanacak ve yeniden denemeye dayanacak şekilde tasarlanmalıdır. Bu, özellikle uzun süren görevler için önemlidir. Bunu yapmak için, görevlerin birden fazla kez çalıştırılsalar bile aynı, tek sonucu oluşturduğundan emin olun. Bunu başarmak için bir yolu görevlerinizi "hedef arayan" yapmaktır. Başka bir yolu, görevlerinizin iktidarlı olduğundan emin olmaktır (görevler kaç kez çalıştırılırlarsa çalıştırılırlarsa çalıştırSınlar aynı sonuca sahip olacaktır).
 
-    Ortak bir örnek, dosyaları bir işlem düğümüne kopyalamak için kullanılan bir görevdir. Basit yaklaşım, her çalıştığında belirtilen her dosyayı kopyalayan, verimsiz olan ve geldiğinde hatası için oluşturulmamış bir görevdir. Bunun yerine, dosyaların işlem düğümünde olduğundan emin olmak için bir görev oluşturun; zaten mevcut olan dosyaları yeniden kopyalamamış bir görev. Bu şekilde, görev kesintiye uğratıldığında, görev ayrıldıktan sonra açılır.
+    Sık karşılaşılan bir örnek, dosyaları bir işlem düğümüne kopyalama görevidir. Basit bir yaklaşım, her çalıştığında belirtilen tüm dosyaları kopyalayan ve verimsiz olan ve hataya dayanacak şekilde oluşturulmayan bir görevdir. Bunun yerine, dosyaların işlem düğümünde olduğundan emin olmak için bir görev oluşturun; zaten mevcut olan dosyaları yeniden kopyalamayan bir görev. Bu şekilde, görev kesintiye uğradığında kaldığı yerden devam eder.
 
 - **Düşük öncelikli düğümler**  
-    Görevlerinizi adanmış veya düşük öncelikli düğümlerde yürütürken hiçbir tasarım farkı yoktur. Bir görevin düşük öncelikli bir düğümde çalışırken geçersiz hale gelmiş veya ayrılmış bir düğümdeki bir hata nedeniyle kesintiye uğratıldığı, her iki durum da görevi withfailure hatası tasarlayarak azaltılmıştır.
+    Görevlerinizi özel veya düşük öncelikli düğümlerde yürütürken tasarım farkı yoktur. Bir görev, düşük öncelikli bir düğümüzerinde çalışırken veya özel bir düğümdeki bir hata nedeniyle kesintiye uğrarken, her iki durum da görevin hataya dayanacak şekilde tasarlanmasıyla azaltılır.
 
 - **Görev yürütme süresi**  
-    Kısa yürütme süresine sahip görevlerden kaçının. Yalnızca bir ile iki saniye çalışan görevler ideal değildir. Tek bir görevde önemli miktarda iş yapmayı denemelisiniz (en az 10 saniye, saat veya güne kadar). Her görev bir dakika (veya daha fazla) boyunca yürütülüyordur, genel işlem zamanının bir bölümü olarak zamanlama yükü küçüktür.
+    Kısa yürütme süresi ile görevlerden kaçının. Yalnızca bir ila iki saniye çalışan görevler ideal değildir. Tek bir görevde önemli miktarda iş yapmayı denemelisiniz (saat veya gün sayısına kadar 10 saniyelik minimum). Her görev bir dakika (veya daha fazla) için yürütüliyorsa, genel bilgi işlem süresinin bir bölümü olarak zamanlama yükü küçüktür.
 
 ## <a name="nodes"></a>Düğümler
 
-- **Başlangıç görevleri ıdempotent olmalıdır**  
-    Diğer görevlere benzer şekilde, düğüm başlangıç görevi, düğüm her önyüklendiğinde yeniden çalıştırılacak şekilde ıdempotent olmalıdır. Bir ıdempotent görevi, birden çok kez çalıştırıldığında tutarlı bir sonuç üreten bir görevdir.
+- **Başlangıç görevleri idempotent olmalıdır**  
+    Diğer görevlere benzer şekilde, düğüm başlangıç görevi de her düğüm önyüklemesi her seferinde yeniden çalıştırılacak gibi idempotent olmalıdır. Bir idempotent görev sadece birden çok kez çalıştırıldığında tutarlı bir sonuç üreten biridir.
 
-- **İşletim sistemi Hizmetleri arabirimi aracılığıyla uzun süre çalışan hizmetleri yönetin.**  
-    Bazen, düğümdeki verileri toplamak ve rapor etmek için, örneğin, düğümündeki Batch aracısının yanı sıra başka bir aracı da çalıştırmanız gerekir. Bu aracıların Windows hizmeti veya Linux `systemd` hizmeti gibi işletim sistemi hizmetleri olarak dağıtılmasını öneririz.  
+- **İşletim sistemi hizmetleri arabirimi aracılığıyla uzun süren hizmetleri yönetin.**  
+    Bazen düğümden veri toplamak ve bildirmek için düğümdeki Toplu İşlem aracısının yanında başka bir aracı çalıştırmaya ihtiyaç vardır, örneğin. Bu aracıların Windows hizmeti veya Linux `systemd` hizmeti gibi işletim sistemi hizmetleri olarak dağıtılmasını öneririz.  
 
-    Bu Hizmetleri çalıştırırken, düğüm üzerindeki toplu yönetilen dizinlerde bulunan dosyalarda dosya kilitleri almalıdır, aksi takdirde toplu Işlem dosya kilitleri nedeniyle bu dizinlerin silinmesine neden olur. Örneğin, başlangıç görevinde bir Windows hizmeti yüklüyorsanız, hizmeti doğrudan başlangıç görevi çalışma dizininden başlatmak yerine, dosyaları başka bir yere kopyalayın (dosyalar varsa yalnızca kopyayı atlayın). Hizmeti bu konumdan yükler. Batch, başlangıç görevinizi yeniden çalıştırdığınızda, başlangıç görevi çalışma dizinini siler ve yeniden oluşturur. Bu, hizmetin başlangıç görevi çalışma dizini değil diğer dizindeki dosya kilitleri olduğu için geçerlidir.
+    Bu hizmetleri çalıştırırken, düğümdeki Toplu iş dizilişlerinde dosya kilitlerini almamalıdır, çünkü aksi takdirde Toplu dosya kilitleri nedeniyle bu dizinleri silemez. Örneğin, bir Windows hizmetini başlangıç görevinde yüklüyorsanız, hizmeti doğrudan başlangıç görevi çalışma dizininden başlatmak yerine, dosyaları başka bir yerden kopyalayın (dosyalar varsa kopyayı atlayın). Hizmeti bu konumdan yükleyin. Toplu İşlem başlangıç görevinizi yeniden çalıştırdığında, başlangıç görevi çalışma dizinini siler ve yeniden oluşturur. Hizmetin başlangıç görevi çalışma dizininde değil, diğer dizinde dosya kilitleri olduğundan bu çalışır.
 
-- **Windows 'da Dizin geçişlerini oluşturmaktan kaçının**  
-    Bazen Dizin sabit bağlantıları olarak adlandırılan dizin junler, görev ve iş temizliği sırasında uğraşmak zordur. Sabit bağlantılar yerine çözümlemeyin (geçici bağlantılar) kullanın.
+- **Windows'da dizin bağlantıları oluşturmaktan kaçının**  
+    Dizin kavşakları, bazen dizin sabit bağlantılar denir, görev ve iş temizleme sırasında başa çıkmak zordur. Sabit bağlantılar yerine symlinks (yumuşak bağlantılar) kullanın.
 
-- **Bir sorun varsa Batch Aracısı günlüklerini toplayın**  
-    Düğüm üzerinde çalışan bir düğümün veya görevlerin davranışını içeren bir sorun fark ederseniz, söz konusu düğümlerin ayırmayı kaldırma işleminden önce Batch Aracısı günlüklerinin toplanması önerilir. Batch Aracısı günlükleri, Batch Hizmeti günlüklerini karşıya yükle API 'SI kullanılarak toplanabilir. Bu Günlükler, Microsoft 'a destek bileti kapsamında sağlanabilir ve sorun giderme ve çözümleme konularında yardımcı olur.
+- **Bir sorun varsa Toplu İşlem aracı günlüklerini toplama**  
+    Düğüm üzerinde çalışan bir düğümün veya görevlerin davranışını içeren bir sorun fark ederseniz, söz konusu düğümleri ayırmadan önce Toplu Iş aracıgünlüklerini toplamanız önerilir. Toplu İşlem günlükleri, Yükleme Toplu Hizmet günlükleri API'si kullanılarak toplanabilir. Bu günlükler Microsoft'a bir destek biletinin parçası olarak sağlanabilir ve sorun giderme ve çözümleme konusunda yardımcı olur.
 
 ## <a name="security"></a>Güvenlik
 
 ### <a name="security-isolation"></a>Güvenlik yalıtımı
 
-Yalıtım amaçları doğrultusunda, senaryonuzun işlerin yalıtılması gerekiyorsa, bu işleri ayrı havuzlarda bulundurarak yalıtabilirsiniz. Havuz, toplu Işteki güvenlik yalıtımı sınırıdır ve varsayılan olarak, iki havuz görünür değildir veya birbirleriyle iletişim kuramaz. Yalıtım yöntemi olarak ayrı Batch hesapları kullanmaktan kaçının.
+İzolasyon amacıyla, senaryonuz işleri birbirinden yalıtmak gerektiriyorsa, bu işleri ayrı havuzlarda geçirerek yalıtmalısınız. Havuz, Toplu İşlem'deki güvenlik yalıtım sınırıdır ve varsayılan olarak iki havuz görünür değildir veya birbiriyle iletişim kuramaz. Yalıtım aracı olarak ayrı Toplu Iş hesapları kullanmaktan kaçının.
 
-## <a name="moving"></a>Taşınacağı
+## <a name="moving"></a>Hareketli
 
-### <a name="move-batch-account-across-regions"></a>Batch hesabını bölgeler arasında taşıma 
+### <a name="move-batch-account-across-regions"></a>Toplu İşlem hesabını bölgeler arasında taşıma 
 
-Mevcut Batch hesabınızı bir bölgeden diğerine taşımak istediğiniz çeşitli senaryolar vardır. Örneğin, olağanüstü durum kurtarma planlamasının bir parçası olarak başka bir bölgeye geçmek isteyebilirsiniz.
+Varolan Toplu İşlem hesabınızı bir bölgeden diğerine taşımak istediğiniz çeşitli senaryolar vardır. Örneğin, olağanüstü durum kurtarma planlamasının bir parçası olarak başka bir bölgeye geçmek isteyebilirsiniz.
 
-Azure Batch hesaplar bir bölgeden diğerine taşınamaz. Ancak, Batch hesabınızın mevcut yapılandırmasını dışarı aktarmak için bir Azure Resource Manager şablonu kullanabilirsiniz.  Daha sonra, Batch hesabını bir şablona dışarı aktararak, parametreleri hedef bölgeyle eşleşecek şekilde değiştirerek ve sonra şablonu yeni bölgeye dağıtabilmeniz için kaynağı başka bir bölgede da oluşturabilirsiniz. Şablonu yeni bölgeye yükledikten sonra sertifikaların, iş zamanlamalarının ve uygulama paketlerinin yeniden oluşturulması gerekir. Değişiklikleri uygulamak ve Batch hesabını taşımayı tamamlamak için, özgün Batch hesabını veya kaynak grubunu silmeyi unutmayın.  
+Azure Toplu İş hesapları bir bölgeden diğerine taşınamaz. Ancak, Toplu İş hesabınızın varolan yapılandırmasını dışa aktarmak için bir Azure Kaynak Yöneticisi şablonu kullanabilirsiniz.  Daha sonra Toplu İşlem hesabını şablona dışlayarak, parametreleri hedef bölgeyle eşleşecek şekilde değiştirerek ve ardından şablonu yeni bölgeye dağıtarak kaynağı başka bir bölgeye ayarlayabilirsiniz. Şablonu yeni bölgeye yükledikten sonra sertifikaları, iş zamançizelgelerini ve uygulama paketlerini yeniden oluşturmanız gerekir. Değişiklikleri işlemek ve Toplu İşlem hesabının hareketini tamamlamak için, orijinal Toplu Iş hesabı veya kaynak grubunu silmeyi unutmayın.  
 
-Kaynak Yöneticisi ve şablonlar hakkında daha fazla bilgi için bkz. [hızlı başlangıç: Azure Portal kullanarak Azure Resource Manager şablonları oluşturma ve dağıtma](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal).
+Kaynak Yöneticisi ve şablonlar hakkında daha fazla bilgi için [Bkz. Hızlı Başlangıç: Azure portalını kullanarak Azure Kaynak Yöneticisi şablonları oluşturun ve dağıtın.](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal)
 
 

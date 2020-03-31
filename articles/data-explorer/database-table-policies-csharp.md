@@ -1,6 +1,6 @@
 ---
-title: Azure Veri Gezgini C# SDK kullanarak ilke oluşturma
-description: Bu makalede, kullanarak C#ilke oluşturmayı öğreneceksiniz.
+title: Azure Veri Gezgini C# SDK'yı kullanarak ilkeler oluşturun
+description: Bu makalede, C# kullanarak ilkeleri oluşturmak için öğreneceksiniz.
 author: lucygoldbergmicrosoft
 ms.author: lugoldbe
 ms.reviewer: orspodek
@@ -8,39 +8,39 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.openlocfilehash: 17312840b0081056ad04723f2b2c241c47902021
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74667300"
 ---
-# <a name="create-database-and-table-policies-for-azure-data-explorer-by-using-c"></a>Kullanarak Azure Veri Gezgini için veritabanı ve tablo ilkeleri oluşturmaC#
+# <a name="create-database-and-table-policies-for-azure-data-explorer-by-using-c"></a>C kullanarak Azure Veri Gezgini için veritabanı ve tablo ilkeleri oluşturun #
 
 > [!div class="op_single_selector"]
-> * [C#](database-table-policies-csharp.md)
+> * [C #](database-table-policies-csharp.md)
 > * [Python](database-table-policies-python.md)
 >
 
-Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve üst düzeyde ölçeklenebilir veri keşfetme hizmetidir. Bu makalede kullanarak C#Azure Veri Gezgini için veritabanı ve tablo ilkeleri oluşturacaksınız.
+Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve üst düzeyde ölçeklenebilir veri keşfetme hizmetidir. Bu makalede, C# kullanarak Azure Veri Gezgini için veritabanı ve tablo ilkeleri oluşturacaksınız.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* Visual Studio 2019. Visual Studio 2019 yoksa, *ücretsiz* [visual Studio Community 2019](https://www.visualstudio.com/downloads/)' yi indirebilir ve kullanabilirsiniz. Visual Studio Kurulumu sırasında **Azure geliştirme** ' yi seçtiğinizden emin olun.
-* Azure aboneliği. Gerekirse, başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/) oluşturabilirsiniz.
-* [Bir test kümesi ve veritabanı](create-cluster-database-csharp.md).
-* [Bir sınama tablosu](net-standard-ingest-data.md#create-a-table-on-your-test-cluster).
+* Görsel Stüdyo 2019. Visual Studio 2019'unuzun yoksa *ücretsiz* [Visual Studio Community 2019'u](https://www.visualstudio.com/downloads/)indirebilir ve kullanabilirsiniz. Visual Studio kurulumu sırasında **Azure geliştirmeyi** seçtiğinizden emin olun.
+* Azure aboneliği. Gerekirse, başlamadan önce ücretsiz bir [Azure hesabı](https://azure.microsoft.com/free/) oluşturabilirsiniz.
+* [Bir test kümesi ve veritabanı.](create-cluster-database-csharp.md)
+* [Bir test tablosu](net-standard-ingest-data.md#create-a-table-on-your-test-cluster).
 
-## <a name="install-c-nuget"></a>NuGet C# 'i yükler
+## <a name="install-c-nuget"></a>C# NuGet yükle
 
-* [Azure Veri Gezgini (kusto) NuGet paketini](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/)yükler.
-* [Microsoft. Azure. kusto. Data. NETStandard NuGet paketini](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data.NETStandard/)yükler. (İsteğe bağlı, tablo ilkelerini değiştirme için.)
-* Kimlik doğrulaması için [Microsoft. IdentityModel. clients. ActiveDirectory NuGet paketini](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/)yükler.
+* Azure [Veri Gezgini (Kusto) NuGet paketini](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/)yükleyin.
+* [Microsoft.Azure.Kusto.Data.NETStandard NuGet paketini](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Data.NETStandard/)yükleyin. (Tablo ilkelerini değiştirmek için isteğe bağlıdır.)
+* Kimlik doğrulama için [Microsoft.IdentityModel.Clients.ActiveDirectory NuGet paketini](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/)yükleyin.
 
-## <a name="authentication"></a>Kimlik Doğrulaması
-Bu makaledeki örnekleri çalıştırmak için, kaynaklara erişebilen bir Azure Active Directory (Azure AD) uygulaması ve hizmet sorumlusu olması gerekir. Aynı Azure AD uygulamasını [bir test kümesinden ve veritabanından](create-cluster-database-csharp.md#authentication)kimlik doğrulaması için kullanabilirsiniz. Farklı bir Azure AD uygulaması kullanmak istiyorsanız, ücretsiz bir Azure AD uygulaması oluşturmak ve abonelik kapsamında rol ataması eklemek için bkz. [Azure AD uygulaması oluşturma](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) . Bu makalede ayrıca `Directory (tenant) ID`, `Application ID`ve `Client secret`nasıl alınacağı gösterilmektedir. Yeni Azure AD uygulamasını veritabanına asıl olarak eklemeniz gerekebilir. Daha fazla bilgi için bkz. [Azure Veri Gezgini veritabanı Izinlerini yönetme](https://docs.microsoft.com/azure/data-explorer/manage-database-permissions).
+## <a name="authentication"></a>Kimlik doğrulaması
+Bu makaledeki örnekleri çalıştırmak için kaynaklara erişebilen bir Azure Etkin Dizin (Azure AD) uygulaması na ve hizmet ilkesine ihtiyacınız vardır. Bir [test kümesinden ve veritabanından](create-cluster-database-csharp.md#authentication)kimlik doğrulama için aynı Azure AD uygulamasını kullanabilirsiniz. Farklı bir Azure AD uygulaması kullanmak istiyorsanız, ücretsiz bir Azure AD uygulaması oluşturmak ve abonelik kapsamında rol ataması eklemek için [bir Azure AD uygulaması oluşturmaya](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) bakın. Bu makalede ayrıca nasıl `Directory (tenant) ID`almak `Application ID`için `Client secret`gösterir , , ve . Yeni Azure AD uygulamasını veritabanına ana para olarak eklemeniz gerekebilir. Daha fazla bilgi için azure [veri gezgini veritabanı izinlerini yönet'e](https://docs.microsoft.com/azure/data-explorer/manage-database-permissions)bakın.
 
-## <a name="alter-database-retention-policy"></a>Alter database bekletme ilkesi
-10 günlük geçici silme dönemi ile bir bekletme ilkesi ayarlar.
+## <a name="alter-database-retention-policy"></a>Veritabanı tutma ilkesini değiştirme
+10 günlük yumuşak silme süresiyle bekletme ilkesi ayarlar.
     
 ```csharp
 var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
@@ -65,8 +65,8 @@ var databaseName = "mykustodatabase";
 await kustoManagementClient.Databases.UpdateAsync(resourceGroupName, clusterName, databaseName, new DatabaseUpdate(softDeletePeriod: TimeSpan.FromDays(10)));
 ```
 
-## <a name="alter-database-cache-policy"></a>Alter database Cache ilkesi
-Veritabanı için önbellek ilkesi ayarlar. Önceki beş gün veri kümesi SSD 'de olacaktır.
+## <a name="alter-database-cache-policy"></a>Veritabanı önbelleği ilkesini değiştirme
+Veritabanı için bir önbellek ilkesi ayarlar. Önceki beş günlük veri SSD kümesinde olacaktır.
 
 ```csharp
 var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID
@@ -91,8 +91,8 @@ var databaseName = "mykustodatabase";
 await kustoManagementClient.Databases.UpdateAsync(resourceGroupName, clusterName, databaseName, new DatabaseUpdate(hotCachePeriod: TimeSpan.FromDays(5)));
 ```
 
-## <a name="alter-table-cache-policy"></a>Alter table Cache ilkesi
-Tablo için önbellek ilkesi ayarlar. Önceki beş gün veri kümesi SSD 'de olacaktır.
+## <a name="alter-table-cache-policy"></a>Tablo önbelleği ilkesini değiştir
+Tablo için bir önbellek ilkesi ayarlar. Önceki beş günlük veri SSD kümesinde olacaktır.
 
 ```csharp
 var kustoUri = "https://<ClusterName>.<Region>.kusto.windows.net:443/";
@@ -123,8 +123,8 @@ using (var kustoClient = KustoClientFactory.CreateCslAdminProvider(kustoConnecti
 }
 ```
 
-## <a name="add-a-new-principal-for-the-database"></a>Veritabanı için yeni bir sorumlu ekleyin
-Veritabanı için yönetici sorumlusu olarak yeni bir Azure AD uygulaması ekler.
+## <a name="add-a-new-principal-for-the-database"></a>Veritabanı için yeni bir müdür ekleme
+Veritabanı için yönetici anabilim da yeni bir Azure AD uygulaması ekler.
 
 ```csharp
 var tenantId = "xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx";//Directory (tenant) ID

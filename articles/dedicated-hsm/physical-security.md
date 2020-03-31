@@ -1,6 +1,6 @@
 ---
-title: HSM fiziksel güvenlik - Azure ayrılmış HSM | Microsoft Docs
-description: Azure ayrılmış HSM cihazlarınızın Veri merkezlerindeki fiziksel güvenliği hakkında bilgi
+title: HSM fiziksel güvenlik - Azure Özel HSM | Microsoft Dokümanlar
+description: Azure Özel HSM cihazlarının veri merkezlerinde fiziksel güvenliği hakkında bilgi
 services: dedicated-hsm
 author: msmbaldwin
 manager: rkarlin
@@ -13,50 +13,50 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: mbaldwin
 ms.openlocfilehash: ede1af4625d06af4e280eda86d09ae1db3dfdfd1
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/11/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70881035"
 ---
-# <a name="azure-dedicated-hsm-physical-security"></a>Azure ayrılmış HSM fiziksel güvenlik
+# <a name="azure-dedicated-hsm-physical-security"></a>Azure Özel HSM fiziksel güvenlik
 
-Azure ayrılmış HSM anahtar depolama alanı için Gelişmiş güvenlik gereksinimlerini karşılamanıza yardımcı olur. Bu, müşterilerin ihtiyaçlarını karşılamak için tam yaşam döngüsü boyunca yönetilen aşağıdaki katı güvenlik uygulamalarını olur.
+Azure Özel HSM, önemli depolama için gelişmiş güvenlik gereksinimlerini karşılamanıza yardımcı olur. Müşterilerin ihtiyaçlarını karşılamak için tüm yaşam döngüsü boyunca sıkı güvenlik uygulamalarını takip ederek yönetilir.
 
-## <a name="security-through-procurement"></a>Tedarik aracılığıyla güvenliği
+## <a name="security-through-procurement"></a>Satın alma yoluyla güvenlik
 
-Microsoft Güvenli tedarik süreci izler. Biz gözetim zinciri yönetmek ve söz konusu cihaz sıralı ve sevk veri merkezlerimize gelen cihaz olduğundan emin olun. Yetkisiz olay plastik telefonla geri cihazlardır. Bir veri merkezinin veri galeride yetkilendirilen kadar güvenli depolama alanında depolanır.  HSM cihazlarına içeren sunucu rafları, yüksek iş impact(HBI) olarak kabul edilir. Cihazlar kilitlidir ve ön ve arka Kameralı altında her zaman.
+Microsoft güvenli bir satın alma işlemini izler. Gözetim zincirini yönetiriz ve sipariş edilen ve gönderilen belirli cihazın veri merkezlerimize gelen cihaz olmasını sağlarız. Cihazlar kurcalama olayı plastik sırtlar bulunmaktadır. Veri merkezinin veri galerisinde görevlendirilene kadar güvenli bir depolama alanında saklanır.  HSM cihazlarını içeren raflar yüksek iş etkisi (HBI) olarak kabul edilir. Cihazlar her zaman önde ve arkada kilitli ve video gözetimi altında.
 
-## <a name="security-through-deployment"></a>Dağıtım aracılığıyla güvenliği
+## <a name="security-through-deployment"></a>Dağıtım yoluyla güvenlik
 
-HSM'ler raflar ilişkili ağ bileşenleri ile birlikte yüklenir. Kullanılabilir hale getirilmeden önce bir kez yüklendikten sonra yapılandırılmaları gerekir Azure ayrılmış HSM hizmetini bir parçası olarak. Bu yapılandırma etkinlik, bir arka plan onayı yapılmıştır Microsoft çalışanları tarafından gerçekleştirilir. "Yalnızca zamanında" (JIT) yönetim yalnızca doğru çalışanlar ve erişim için gerekli olan zamanı erişimi sınırlamak için kullanılır. Ayrıca, sistemler ve yordamları HSM cihazlarına ilişkili tüm etkinlik'in açtığınızdan emin olun.
+HSM'ler, ilişkili ağ bileşenleriyle birlikte raflara yüklenir. Yüklendikten sonra, Azure Özel HSM Hizmeti'nin bir parçası olarak kullanıma sunulmadan önce yapılandırılmalı. Bu yapılandırma etkinliği, arka plan denetimine uğramış Microsoft çalışanları tarafından gerçekleştirilir. "Just In Time" (JIT) yönetimi, yalnızca doğru çalışanlara erişimi sınırlamak için ve yalnızca erişimin gerekli olduğu süre için kullanılır. Kullanılan yordamlar ve sistemler, HSM aygıtları ile ilgili tüm etkinliklerin günlüğe kaydedilmesini de sağlar.
 
-## <a name="security-in-operations"></a>İşlem güvenliği
+## <a name="security-in-operations"></a>Operasyonlarda güvenlik
 
-HSM'ler, donanım Gereçleri (PCI kartın gereç içinde olan gerçek HSM) olan bileşen düzeyinde sorunları ortaya çıkabilir mümkündür. Olası sorunları içerir ancak fanı ve güç kaynağı hatalarını sınırlı değildir. Bu olay türü bakım gerektiren veya arıza/tamir etkinlikleri swappable bileşenleri değiştirilecek.
+HSM'ler donanım cihazlarıdır (cihazın içindeki PCI kartı olan gerçek HSM) bu nedenle bileşen düzeyinde sorunlar ortaya çıkabilir. Potansiyel sorunlar fan ve güç kaynağı arızaları içerir ancak bunlarla sınırlı değildir. Bu tür bir olay, değiştirilebilir bileşenlerin yerine bakım veya kesme/düzeltme etkinlikleri gerektirir.
 
-### <a name="component-replacement"></a>Bileşen değiştirme
+### <a name="component-replacement"></a>Bileşen değişimi
 
-Bir cihaz sağlandıktan sonra ve müşteri Yönetimi altında takılıp çıkarılabilen güç kaynağı yerine geçecekti tek bileşenler ' dir. Bu bileşen, güvenlik sınırı dışında ve kurcalamaya olay neden olmaz. Bir bilet sistemi HBI raf arka erişmek için bir Microsoft mühendisi yetkilendirmek için kullanılır. Geçici bir fiziksel anahtar, anahtar işlendiğinde verilir. Bu anahtarı cihaza mühendisi erişmenizi ve etkilenen bileşeni takas etmenizi sağlar. Herhangi bir erişim (diğer bir deyişle, olay neden değiştirmesine) bir cihaz, bu nedenle güvenlik ve kullanılabilirlik riski en aza müşteriye ayrılmamış olduğunda uygulanır.  
+Bir aygıt sağlandıktan ve müşteri yönetimi altında sağlandıktan sonra, sıcak değiştirilebilir güç kaynağı değiştirilecek tek bileşendir. Bu bileşen güvenlik sınırının dışındadır ve bir kurcalama olayına neden olmaz. Bir bilet sistemi, bir Microsoft mühendisine HBI rafının arkasına erişme yetkisi vermek için kullanılır. Bilet işlendiğinde geçici bir fiziksel anahtar verilir. Bu anahtar, mühendise aygıta erişim sağlar ve etkilenen bileşeni değiştirmelerine olanak tanır. Başka bir erişim (diğer bir deyişle, kurcalama olayına neden olan) bir aygıt müşteriye tahsis edilmediğinde yapılır ve böylece güvenlik ve kullanılabilirlik riski en aza indirilir.  
 
 ### <a name="device-replacement"></a>Cihaz değiştirme
 
-Toplam cihaz hatası durumunda bileşeni hatası sırasında kullanılan benzer bir işlem izlenir. Müşteri cihaz zeroize mümkün olmayan veya bilinmeyen bir durumda cihaz, cihaz pul veri kaldırılır ve bir raf yok etme depo yerleştirilir. Depo yerleştirilen cihazlar denetimli ve güvenli bir şekilde yok edilir. Cihazlar bir HBI raf pul veri bir Microsoft Veri merkezinde bırakır.
+Toplam aygıt arızası durumunda, bileşen arızası sırasında kullanılana benzer bir işlem izlenir. Bir müşteri aygıtı sıfırlayamazsa veya aygıt bilinmeyen bir durumdaysa, veri taşıyan aygıtlar kaldırılır ve raf içi imha kutusuna yerleştirilir. Çöp kutusuna yerleştirilen cihazlar kontrollü ve güvenli bir şekilde imha edilecektir. HBI rafından veri taşıyan aygıtlar Microsoft veri merkezi bırakmaz.
 
-### <a name="other-rack-access-activities"></a>Diğer raf erişimi etkinlikleri
+### <a name="other-rack-access-activities"></a>Diğer Raf Erişim Etkinlikleri
 
-Bir Microsoft Mühendisi (örneğin, ağ aygıtı bakım) HSM cihazlar tarafından kullanılan raf erişmesi gerekiyorsa, standart güvenliği yordamları HBI güvenli raf erişmek için kullanılır. Tüm erişim Kameralı altında olacaktır. HSM cihazlarına doğrulanmıştır [FIPS 140-2 Düzey 3](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.140-2.pdf) HSM cihazları yetkisiz erişim müşteriye sinyal ve veri zeroized.
+Bir Microsoft mühendisinin HSM aygıtları tarafından kullanılan rafa (örneğin ağ aygıtı bakımı) erişmesi gerekiyorsa, HBI güvenli rafına erişmek için standart güvenlik yordamları kullanılır. Tüm girişler video gözetimi altında olacak. HSM aygıtları [FIPS 140-2 Düzey 3](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.140-2.pdf) olarak doğrulanır, böylece HSM Cihazlarına yetkisiz erişim müşteriye sinyal verilir ve veriler sıfırlanır.
 
-## <a name="logical-level-security-considerations"></a>Mantıksal düzeyi güvenlik konuları
+## <a name="logical-level-security-considerations"></a>Mantıksal düzey güvenlik hususları
 
-HSM'ler, müşteri tarafından oluşturulmuş bir sanal ağ için sağlanır. Bir müşterinin özel IUP adres alanı budur.  Bu yapılandırma, değerli mantıksal ağ düzeyinde yalıtım sağlar ve yalnızca müşteri tarafından erişim sağlar. Bu, tüm mantıksal düzeyi güvenlik denetimleri, müşteri sorumluluğu olduğunu gösterir.
+HSM'ler müşteri tarafından oluşturulan sanal bir ağa verilir. Burası müşterinin özel IUP Adresi alanıdır.  Bu yapılandırma değerli bir mantıksal ağ düzeyi yalıtımı sağlar ve yalnızca müşteri tarafından erişim sağlar. Bu, tüm mantıksal düzey güvenlik denetimlerinin müşterinin sorumluluğunda olduğu anlamına gelir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Yüksek kullanılabilirlik ve güvenlik ve desteklenebilirliği gibi hizmete tüm temel kavramlarını gibi iyi cihaz sağlama, uygulama tasarım veya dağıtımınızın önce anlaşıldığından önerilir.
+Örneğin yüksek kullanılabilirlik, güvenlik ve desteklenebilirlik gibi hizmetin tüm temel kavramlarının cihaz sağlama, uygulama tasarımı veya dağıtımından önce iyi anlaşılması önerilir.
 
-* [Yüksek kullanılabilirlik](high-availability.md)
-* [Ağ](networking.md)
-* [Desteklenebilirliği](supportability.md)
+* [Yüksek Kullanılabilirlik](high-availability.md)
+* [Ağ Oluşturma](networking.md)
+* [Desteklenebilirlik](supportability.md)
 * [İzleme](monitoring.md)
 * [Dağıtım mimarisi](deployment-architecture.md)

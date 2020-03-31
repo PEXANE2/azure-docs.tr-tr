@@ -1,6 +1,6 @@
 ---
-title: Azure VMware çözümleri (AVS)-AVS özel bulutları için bir yük dengeleme çözümü seçin
-description: Bir AVS özel bulutu 'nda uygulama dağıtma Yük Dengeleme seçeneklerini açıklar
+title: CloudSimple tarafından Azure VMware Çözümü - CloudSimple Private Clouds için bir yük dengeleme çözümü seçin
+description: Özel Bulut'ta bir uygulama dağıtan yük dengeleme seçeneklerini açıklar
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/20/2019
@@ -8,39 +8,39 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 405bc9d95b8d82e2181e2fb828d6bcc00c8c4639
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 6c98b699b1d3aba15ce69c519d35d7ce3e90d123
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77014887"
 ---
-# <a name="choose-a-load-balancing-solution-for-avs-private-clouds"></a>AVS özel bulutları için bir yük dengeleme çözümü seçin
+# <a name="choose-a-load-balancing-solution-for-cloudsimple-private-clouds"></a>CloudSimple Private Clouds için bir yük dengeleme çözümü seçin
 
-Bir uygulama bir AVS özel bulutunda dağıtıldığında, yük dengeleme için birkaç seçenekten birini seçebilirsiniz.
+Bir uygulamayı CloudSimple Private Cloud'da dağıtırken, yük dengeleme için birkaç seçenekarasından birini seçebilirsiniz.
 
-AVS özel bulutunuzda bir sanal veya yazılım tabanlı yük dengeleyici seçebilir ya da Azure aboneliğinizde çalışan Azure L7 yük dengeleyiciyi, AVS özel bulutu 'nda çalışan Web katmanı VM 'lerinizi ön sona erdirmek için kullanabilirsiniz. Burada birkaç seçenek listeliyoruz:
+CloudSimple özel bulutunuzda sanal veya yazılım tabanlı bir yük dengeleyicisi seçebilir veya CloudSimple Private Cloud'da çalışan web katmanı VM'lerinizi ön uçta kullanmak için Azure aboneliğinizde çalışan Azure L7 yük bakiyesini bile kullanabilirsiniz. Burada, birkaç seçenek listeleyin:
 
-## <a name="virtual-load-balancers"></a>Sanal yük dengeleyiciler
+## <a name="virtual-load-balancers"></a>Sanal yük dengeleyicileri
 
-VMware ortamınızda sanal yük dengeleyici gereçlerini vCenter arabiriminden dağıtabilir ve uygulama trafiğinizi ön uca yapılandırabilirsiniz.
+VCenter arabirimi aracılığıyla Sanal yük dengeleyici cihazlarını VMware ortamınızda dağıtabilir ve uygulama trafiğinizi ön uca göre yapılandırabilirsiniz.
 
-Popüler satıcıların bazıları şunlardır: NGINX: http://nginx.org/en/docs/http/load_balancing.html F5-BigIP-Traffic Manager: https://www.f5.com/products/big-ip-services/virtual-editions Citrix ADC: https://www.citrix.com/products/citrix-adc/
+Bazı popüler satıcılar şunlardır: http://nginx.org/en/docs/http/load_balancing.html NginX: F5- https://www.f5.com/products/big-ip-services/virtual-editions BigIP - Trafik Müdürü: Citrix ADC:https://www.citrix.com/products/citrix-adc/
 
-## <a name="azure-l7-load-balancer"></a>Azure L7 yük dengeleyici
+## <a name="azure-l7-load-balancer"></a>Azure L7 yük dengeleyicisi
 
-Azure Application Gateway ' yi bir AVS özel bulutu 'nda çalıştırılan uygulamanız için bir L7 yük dengeleyici olarak kullandığınızda, yük dengeleyici yazılımını yönetmeniz gerekmez. Yük dengeleyici yazılımı Azure tarafından yönetilir. AVS özel bulutundaki tüm Web katmanı VM 'Leri özel IP adresleri kullanır ve adları çözümlemek için ek NAT kuralları ya da genel IP adresleri gerektirmez. Web katmanı VM 'Leri, Azure Application Gateway ile özel, düşük gecikmeli ve yüksek bant genişliğine sahip bir bağlantı üzerinden iletişim kurar.
+Azure Application Gateway'i Özel Bulut'ta çalışan uygulamanız için L7 yük dengeleyicisi olarak kullandığınızda, yük dengeleyici yazılımını yönetmeniz gerekmez. Yük dengeleyici yazılımı Azure tarafından yönetilir. Özel Bulut'taki tüm web katmanı VM'leri özel IP adresleri kullanır ve adları çözmek için ek NAT kuralları veya genel IP adresleri gerektirmez. Web katmanı VM'ler, özel, düşük gecikmeli, yüksek bant genişliğibağlantısı üzerinden Azure Uygulama Ağ Geçidi ile iletişim kurar.
 
-Bu çözümü yapılandırma hakkında daha fazla bilgi edinmek için Azure Application Gateway 'yi bir L7 yük dengeleyici olarak kullanmaya yönelik çözüm kılavuzuna bakın.
+Bu çözümü nasıl yapılandıracağımız hakkında daha fazla bilgi edinmek için Azure Uygulama Ağ Geçidi'ni L7 yük dengeleyicisi olarak kullanma yla ilgili çözüm kılavuzuna bakın.
 
-## <a name="azure-internal-load-balancer"></a>Azure iç yük dengeleyici
+## <a name="azure-internal-load-balancer"></a>Azure dahili yük dengeleyicisi
 
-Uygulamanızı, Web ön uç katmanının Azure aboneliğinizdeki bir Azure sanal ağı içinde çalıştığı bir karma dağıtımda çalıştırmayı tercih ederseniz ve uygulamanın DB katmanı, AVS özel bulutu 'ndaki VMware VM 'lerinde çalışıyorsa, Azure iç yük dengeleyici (L) kullanabilirsiniz. 4 yük dengeleyici), trafik yönetimi için VERITABANı katmanı sanal makinelerinizin önünde.
+Uygulamanızı, Azure aboneliğinizde bir Azure vNet'te web ön uç katmanının çalıştığı ve uygulamanın DB katmanının CloudSimple Private Cloud'daki VMware VM'lerde çalıştığı karma bir dağıtımda çalıştırmayı seçerseniz, Azure dahili yükünü kullanabilirsiniz trafik yönetimi için DB kademe VM'lerinizin önünde dengeleyici (L4 yük dengeleyici).
 
-Daha fazla bilgi için bkz. Azure [iç Load Balancer](../load-balancer/concepts-limitations.md#internalloadbalancer) belgeleri.
+Daha fazla bilgi için Azure [Dahili Yük Dengeleyici](../load-balancer/concepts-limitations.md#internalloadbalancer) belgelerine bakın.
 
-## <a name="global-server-load-balancer"></a>Küresel sunucu yük dengeleyici
+## <a name="global-server-load-balancer"></a>Genel sunucu yük dengeleyicisi
 
-DNS tabanlı yük dengeleyici arıyorsanız, Azure Marketi 'nde bulunan üçüncü taraf çözümlerini kullanabilir ya da yerel Azure çözümüne gidebilirsiniz.
+DNS tabanlı bir yük dengeleyicisi arıyorsanız, Azure Marketi'nde kullanılabilen üçüncü taraf çözümlerini kullanabilir veya yerel Azure çözümlerini kullanmaya bilirsiniz.
 
-Azure Traffic Manager, genel Azure bölgelerinde ve şirket içinde bulunan hizmetlere en uygun trafiği dağıtmanıza olanak tanıyan, yüksek kullanılabilirlik ve yanıt verme olanağı sunan bir DNS tabanlı trafik yük dengeleyicidir. Daha fazla bilgi için bkz. Azure [Traffic Manager](../traffic-manager/traffic-manager-configure-geographic-routing-method.md) belgeleri.
+Azure Trafik Yöneticisi, trafiği küresel Azure bölgeleri ve şirket içi hizmetlere en iyi şekilde dağıtmanızı sağlarken yüksek kullanılabilirlik ve yanıt verme olanağı sağlayan DNS tabanlı bir trafik yük dengeleyicisidir. Daha fazla bilgi için Azure [Trafik Yöneticisi](../traffic-manager/traffic-manager-configure-geographic-routing-method.md) belgelerine bakın.

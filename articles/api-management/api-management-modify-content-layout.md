@@ -1,5 +1,5 @@
 ---
-title: API Management geliştirici portalındaki sayfa içeriğini değiştirme
+title: API Yönetimi'nde geliştirici portalındaki sayfa içeriğini değiştirme
 titleSuffix: Azure API Management
 description: Azure API Management'ta geliştirici portalındaki sayfaların içeriğini düzenlemeyi öğrenin.
 services: api-management
@@ -15,22 +15,22 @@ ms.topic: conceptual
 ms.date: 02/09/2017
 ms.author: vlvinogr
 ms.openlocfilehash: ebf2cbd430339378a09d10d91ad61327d24842e4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75430628"
 ---
 # <a name="modify-the-content-and-layout-of-pages-on-the-developer-portal-in-azure-api-management"></a>Azure API Management geliştirici portalındaki sayfaların içeriğini ve düzenini değiştirme
 Azure API Management'ta geliştirici portalını özelleştirmek için kullanılabilecek üç temel yöntem vardır:
 
-* [Statik sayfaların ve sayfa düzeni öğelerinin Içeriğini düzenleme][modify-content-layout] (Bu kılavuzda açıklanmıştır)
-* [Geliştirici portalı genelinde sayfa öğeleri için kullanılan stilleri güncelleştirme][customize-styles]
-* [Portal tarafından oluşturulan sayfalar için kullanılan şablonları değiştirme][portal-templates] (ÖRNEĞIN, API belgeleri, ürünler, Kullanıcı kimlik doğrulaması vb.)
+* [Statik sayfaların ve sayfa düzeni öğelerinin içeriğini düzenleme][modify-content-layout] (bu kılavuzda açıklanmıştır)
+* [Geliştirici portalının tamamında sayfa öğeleri için kullanılan stilleri güncelleştirme][customize-styles]
+* [Portal tarafından oluşturulan sayfalar için kullanılan şablonları değiştirme][portal-templates] (örneğin, API belgeleri, ürünler, kullanıcı kimlik doğrulaması vs.)
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-## <a name="page-structure"> </a>Geliştirici portalı sayfalarının yapısı
+## <a name="structure-of-developer-portal-pages"></a><a name="page-structure"> </a>Geliştirici portalı sayfalarının yapısı
 
 Geliştirici portalı bir içerik yönetimi sistemini temel alır. Her sayfanın düzeni, pencere öğesi olarak bilinen küçük sayfa öğelerinin bir araya getirilmesiyle oluşturulur:
 
@@ -42,7 +42,7 @@ Tüm pencere öğeleri düzenlenebilir.
 
 Sayfaların her gün düzenlenmesi durumunda genelde yalnızca İçerik widget’ı değiştirilerek sayfalarda farklı içeriklerin yer alması sağlanır.
 
-## <a name="modify-layout-widget"> </a>Düzen pencere öğesinin içeriğini değiştirme
+## <a name="modifying-the-contents-of-a-layout-widget"></a><a name="modify-layout-widget"> </a>Bir düzen pencere öğesinin içeriğini değiştirme
 
 Geliştirici portalı Azure Portal üzerinden erişilebilir.
 
@@ -55,9 +55,9 @@ Geliştirici portalı Azure Portal üzerinden erişilebilir.
 
 Şimdi geliştirici portalındaki her sayfada yeni üst bilgiyi görüyor olmalısınız.
 
-## <a name="next-steps"> </a>Sonraki adımlar
-* [Geliştirici portalı genelinde sayfa öğeleri için kullanılan stilleri güncelleştirme][customize-styles]
-* [Portal tarafından oluşturulan sayfalar için kullanılan şablonları değiştirme][portal-templates] (ÖRNEĞIN, API belgeleri, ürünler, Kullanıcı kimlik doğrulaması vb.)
+## <a name="next-steps"></a><a name="next-steps"> </a>Sonraki adımlar
+* [Geliştirici portalının tamamında sayfa öğeleri için kullanılan stilleri güncelleştirme][customize-styles]
+* [Portal tarafından oluşturulan sayfalar için kullanılan şablonları değiştirme][portal-templates] (örneğin, API belgeleri, ürünler, kullanıcı kimlik doğrulaması vs.)
 
 [Structure of developer portal pages]: #page-structure
 [Modifying the contents of a layout widget]: #modify-layout-widget

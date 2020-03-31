@@ -1,6 +1,6 @@
 ---
-title: Azure veri Gezgini'nde Sisense kullanarak verileri Görselleştir
-description: Bu makalede, Azure Veri Gezgini'ni veri kaynağı olarak Sisense için ayarlama ve veri görselleştirme hakkında bilgi edinin.
+title: Sisense'i kullanarak Azure Veri Gezgini'nden gelen verileri görselleştirin
+description: Bu makalede, Azure Veri Gezgini'ni Sisense için bir veri kaynağı olarak nasıl ayarlayabilirsiniz ve verileri görselleştirin.
 author: orspod
 ms.author: orspodek
 ms.reviewer: rkarlin
@@ -8,118 +8,118 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 5/29/2019
 ms.openlocfilehash: f0840b90e1036c23fa58d94515bfeb035299c07f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "66358191"
 ---
-# <a name="visualize-data-from-azure-data-explorer-in-sisense"></a>Azure veri Gezgini'nde Sisense verileri görselleştirin
+# <a name="visualize-data-from-azure-data-explorer-in-sisense"></a>Sisense'de Azure Veri Gezgini'nden gelen verileri görselleştirin
 
-Sisense yüksek oranda etkileşimli kullanıcı deneyimleri sunan analytics uygulamalar oluşturmanıza olanak sağlayan bir analiz iş zekası platformudur. İş Zekası ve raporlama yazılım Pano erişme ve verileri birkaç tıklamayla birleştirmek izin verir. Yapılandırılmış ve yapılandırılmamış veri kaynağına bağlanın, en az bir betik oluşturma ve kodlama ile birden çok kaynaktan tabloları birleştirme ve etkileşimli web panolar ve raporlar oluşturabilirsiniz. Bu makalede, Azure Veri Gezgini'ni veri kaynağı olarak Sisense için ayarlama ve örnek Küme verilerini görselleştirmek öğreneceksiniz.
+Sisense, son derece etkileşimli kullanıcı deneyimleri sunan analitik uygulamalar oluşturmanıza olanak tanıyan bir analitik iş zekası platformudur. İş zekası ve pano raporlama yazılımı, verilere birkaç tıklamayla erişmenizi ve birleştirmenizi sağlar. Yapılandırılmış ve yapılandırılmamış veri kaynaklarına bağlanabilir, en az komut dosyası ve kodlama ile birden çok kaynaktan tablolara katılabilir ve etkileşimli web panoları ve raporlar oluşturabilirsiniz. Bu makalede, Azure Veri Gezgini'ni Sisense için veri kaynağı olarak nasıl ayarlayabileceğinizi ve örnek kümedeki verileri nasıl görselleştireceğinizi öğreneceksiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Bu makalede tamamlamak için şunlara ihtiyacınız vardır:
+Bu makaleyi tamamlamak için aşağıdakilere ihtiyacınız var:
 
-* [İndirme ve yükleme Sisense uygulama](https://documentation.sisense.com/latest/getting-started/download-install.htm) 
+* [Sisense uygulamasını indirin ve kurun](https://documentation.sisense.com/latest/getting-started/download-install.htm) 
 
-* Bir küme oluşturup StormEvents örnek verileri içeren veritabanı. Daha fazla bilgi için [hızlı başlangıç: Bir Azure Veri Gezgini kümesi ile veritabanı oluşturma](create-cluster-database-portal.md) ve [örnek verileri Azure veri Gezgini'ne alma](ingest-sample-data.md).
+* StormEvents örnek verilerini içeren bir küme ve veritabanı oluşturun. Daha fazla bilgi için [Bkz. Hızlı Başlangıç: Azure Veri Gezgini kümesi ve veritabanı oluşturun](create-cluster-database-portal.md) ve örnek verileri Azure Veri [Gezgini'ne alın.](ingest-sample-data.md)
 
     [!INCLUDE [data-explorer-storm-events](../../includes/data-explorer-storm-events.md)]
 
-## <a name="connect-to-sisense-dashboards-using-azure-data-explorer-jdbc-connector"></a>Azure Veri Gezgini JDBC Bağlayıcısı'nı kullanarak Sisense panolara bağlanın
+## <a name="connect-to-sisense-dashboards-using-azure-data-explorer-jdbc-connector"></a>Azure Data Explorer JDBC konektörünü kullanarak Sisense panolarına bağlanma
 
-1. İndirmek ve kopyalamak için aşağıdaki jar dosyalarının en son sürümleri *... \Sisense\DataConnectors\jdbcdrivers\adx* 
+1. Aşağıdaki kavanoz dosyalarının en son sürümlerini indirin ve *kopyalayın. \Sisense\DataConnectors\jdbcdrivers\adx* 
 
-    * 1\.1.jar etkinleştirme
-    * adal4j 1.6.0.jar
-    * Commons codec 1.10.jar
-    * Commons collections4 4.1.jar
+    * aktivasyon-1.1.jar
+    * adal4j-1.6.0.jar
+    * commons-codec-1.10.jar
+    * commons-koleksiyonları4-4.1.jar
     * commons-lang3-3.5.jar
-    * gson 2.8.0.jar
-    * Ek açıklamalar 1.0 1.jar jcip
-    * JSON akıllı 1.3.1.jar
+    * gson-2.8.0.jar
+    * jcip-ek açıklamalar-1.0-1.jar
+    * json-smart-1.3.1.jar
     * lang-tag-1.4.4.jar
-    * posta 1.4.7.jar
+    * posta-1.4.7.jar
     * mssql-jdbc-7.2.1.jre8.jar
     * nimbus-jose-jwt-7.0.1.jar
-    * oıdc sdk 5.24.1.jar oauth2
-    * slf4j API 1.7.21.jar
+    * oauth2-oidc-sdk-5.24.1.jar
+    * slf4j-api-1.7.21.jar
     
-1. Açık **Sisense** uygulama.
-1. Seçin **veri** sekmenize **+ ElastiCube** yeni bir ElastiCube modeli oluşturun.
+1. **Sisense** uygulamasını açın.
+1. Yeni bir ElastiCube modeli oluşturmak için **Veri** sekmesini seçin ve **+ElastiCube'u** seçin.
     
-    ![ElastiCube seçin](media/sisense/data-select-elasticube.png)
+    ![ElastiCube'u seçin](media/sisense/data-select-elasticube.png)
 
-1. İçinde **yeni ElastiCube Model ekleme**, ElastiCube modeli adlandırın ve **Kaydet**.
+1. **Yeni ElastiCube Model ekle**, ElastiCube modeli adı ve **Kaydet**.
    
-    ![Yeni ElastiCube modeli ekleme](media/sisense/add-new-elasticube-model.png)
+    ![Yeni ElastiCube modeli ekle](media/sisense/add-new-elasticube-model.png)
 
-1. Seçin **+ veri**.
+1. + **Veri**seçin.
 
-    ![Veri düğmeyi seçin](media/sisense/select-data.png)
+    ![Veri düğmesini seçin](media/sisense/select-data.png)
 
-1. İçinde **seçin bağlayıcı** sekmesinin **genel JDBC** bağlayıcı.
+1. **Bağlayıcıyı Seç** sekmesinde **Genel JDBC** bağlayıcısı'nı seçin.
 
-    ![JDBC bağlayıcısını seçme](media/sisense/select-connector.png)
+    ![JDBC konektörünü seçin](media/sisense/select-connector.png)
 
-1. İçinde **Connect** sekmesinde, aşağıdaki alanlar için tam **genel JDBC** Bağlayıcısı ve select **sonraki**.
+1. **Bağlan** sekmesinde, **Genel JDBC** bağlayıcısı için aşağıdaki alanları tamamlayın ve **İleri'yi**seçin.
 
-    ![JDBC bağlayıcı ayarları](media/sisense/jdbc-connector.png)
+    ![JDBC konektör ayarları](media/sisense/jdbc-connector.png)
 
     |Alan |Açıklama |
     |---------|---------|
     |Bağlantı Dizesi     |   `jdbc:sqlserver://<cluster_name.region>.kusto.windows.net:1433;database=<database_name>;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.kusto.windows.net;loginTimeout=30;authentication=ActiveDirectoryPassword`      |
-    |JDBC Jar'lar klasörü  |    `..\Sisense\DataConnectors\jdbcdrivers\adx`     |
-    |Sürücü sınıfı adı    |   `com.microsoft.sqlserver.jdbc.SQLServerDriver`      |
-    |Kullanıcı adı   |    AAD kullanıcı adı     |
+    |JDBC JARs klasörü  |    `..\Sisense\DataConnectors\jdbcdrivers\adx`     |
+    |Sürücü Sınıf Adı    |   `com.microsoft.sqlserver.jdbc.SQLServerDriver`      |
+    |User Name   |    AAD kullanıcı adı     |
     |Parola     |   AAD kullanıcı parolası      |
 
-1. İçinde **veri Seç** sekmesinde, arama **Veritabanı Seç** izinleri sahibi ilgili veritabanını seçebilirsiniz. Bu örnekte seçin *test1*.
+1. Verileri **Seç** sekmesinde, izinlere sahip olduğunuz ilgili veritabanını seçmek için **Veritabanını Seç'i** arayın. Bu örnekte, *test1'i*seçin.
 
-    ![veritabanı seçin](media/sisense/select-database.png)
+    ![veritabanını seçin](media/sisense/select-database.png)
 
-1. İçinde *test* (veritabanı adı) bölmesi:
-    1. Tablo Önizleme ve tablo sütun adlarını görmek için tablo adını seçin. Gereksiz sütunları kaldırabilirsiniz.
-    1. Bu tabloyu tablonun ilgili onay kutusunu seçin. 
+1. *Test* (veritabanı adı) bölmesinde:
+    1. Tabloyu önizlemek ve tablo sütun adlarını görmek için tablo adını seçin. Gereksiz sütunları kaldırabilirsiniz.
+    1. Bu tabloyu seçmek için ilgili tablonun onay kutusunu seçin. 
     1. **Done** (Bitti) öğesini seçin.
 
-    ![Tablo seçin](media/sisense/select-table-see-columns.png)    
+    ![tabloyu seçme](media/sisense/select-table-see-columns.png)    
 
-1. Seçin **derleme** kümenizi oluşturmak için. 
+1. Veri kümenizi oluşturmak için **Oluştur'u** seçin. 
 
-    * İçinde **derleme** penceresinde **yapı**.
+    * **Yapı** penceresinde **Yapı'yı**seçin.
 
       ![Pencere oluşturma](media/sisense/build-window.png)
 
-    * Tam ve ardından yapı işlemi tamamlanana kadar bekleyin **derleme başarılı**.
+    * Yapı işlemi tamamlanana kadar bekleyin ve ardından **Başarılı Olan Yap'ı**seçin.
 
-      ![Derleme başarılı](media/sisense/build-succeeded.png)
+      ![Yapı başarılı](media/sisense/build-succeeded.png)
 
-## <a name="create-sisense-dashboards"></a>Sisense panolar oluşturun
+## <a name="create-sisense-dashboards"></a>Sisense panoları oluşturma
 
-1. İçinde **Analytics** sekmesinde **+**  >  **yeni Pano** bu veri kümesinde panoları oluşturmak için.
+1. **Analytics** sekmesinde, **+**  > bu veri kümesinde panooluşturmak için **Yeni Pano'yu** seçin.
 
     ![Yeni pano](media/sisense/new-dashboard.png)
 
-1. Bir Pano çeker ve **Oluştur**. 
+1. Bir pano seçin ve **Oluştur'u**seçin. 
 
     ![Pano oluşturma](media/sisense/create-dashboard.png)
 
-1. Altında **yeni pencere öğesi**seçin **+ seçin veri** yeni bir pencere öğesi oluşturmak için. 
+1. **Yeni Widget**altında, yeni bir widget oluşturmak için **+ Veri seçin.** 
 
-    ![Alanları StormEvents panoya ekleme](media/sisense/storm-dashboard-add-field.png)  
+    ![StormEvents panosuna alan ekleme](media/sisense/storm-dashboard-add-field.png)  
 
-1. Seçin **+ fazla veri ekleme** grafa ek sütunlar eklemek. 
+1. Grafiğinize ek sütunlar eklemek için **+ Daha Fazla Veri Ekle'yi** seçin. 
 
     ![Grafiğe daha fazla veri ekleme](media/sisense/add-more-data.png)
 
-1. Seçin **+ pencere öğesi** başka bir pencere öğesi oluşturmak için. Panonuz yeniden düzenlemek için pencere öğelerini sürükleyip yeniden açın.
+1. Başka bir widget oluşturmak için **+ Widget'ı** seçin. Panonuzu yeniden düzenlemek için widget'ları sürükleyin ve bırakın.
 
     ![Storm panosu](media/sisense/final-dashboard.png)
 
-Artık görsel analiz ile verilerinizi keşfedin, ek panolar oluşturma ve verileri, iş etkisi yapmak için eyleme geçirilebilen öngörülere dönüştürün.
+Artık verilerinizi görsel analitikle keşfedebilir, ek panolar oluşturabilir ve işletmeniz üzerinde etki yaratmak için verilerinizi eyleme geçirilebilir öngörülere dönüştürebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

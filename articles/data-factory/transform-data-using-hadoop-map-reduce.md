@@ -1,6 +1,6 @@
 ---
 title: Hadoop MapReduce etkinliğini kullanarak verileri dönüştürme
-description: Azure Data Factory 'deki bir Azure HDInsight kümesinde Hadoop MapReduce programlarını çalıştırarak verileri nasıl işleyebileceğinizi öğrenin.
+description: Bir Azure veri fabrikasından Bir Azure HDInsight kümesinde Hadoop MapReduce programlarını çalıştırarak verileri nasıl işleyerek verileri nasıl işiteceklerini öğrenin.
 services: data-factory
 ms.service: data-factory
 ms.workload: data-services
@@ -11,23 +11,23 @@ manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 01/16/2018
 ms.openlocfilehash: 5d38e3126442bcf34c96cead2b2ea59507b50b8c
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74912858"
 ---
-# <a name="transform-data-using-hadoop-mapreduce-activity-in-azure-data-factory"></a>Azure Data Factory Hadoop MapReduce etkinliğini kullanarak verileri dönüştürme
+# <a name="transform-data-using-hadoop-mapreduce-activity-in-azure-data-factory"></a>Azure Veri Fabrikası'ndaki Hadoop MapAzaltma etkinliğini kullanarak verileri dönüştürme
 
-> [!div class="op_single_selector" title1="Kullandığınız Data Factory hizmeti sürümünü seçin:"]
+> [!div class="op_single_selector" title1="Kullandığınız Veri Fabrikası hizmetisürümünü seçin:"]
 > * [Sürüm 1](v1/data-factory-map-reduce.md)
 > * [Geçerli sürüm](transform-data-using-hadoop-map-reduce.md)
 
-Bir Data Factory işlem [hattının](concepts-pipelines-activities.md) HDInsight MapReduce etkinliği, [kendi](compute-linked-services.md#azure-hdinsight-linked-service) veya [Isteğe](compute-linked-services.md#azure-hdinsight-on-demand-linked-service) bağlı HDInsight kümenizdeki MapReduce programını çağırır. Bu makale, veri dönüştürme ve desteklenen dönüştürme etkinliklerine genel bir bakış sunan [veri dönüştürme etkinlikleri](transform-data.md) makalesinde oluşturulur.
+Bir Veri Fabrikası [boru hattındaki](concepts-pipelines-activities.md) HDInsight MapReduce etkinliği, MapReduce programını kendi veya [isteğe bağlı](compute-linked-services.md#azure-hdinsight-on-demand-linked-service) HDInsight [kümenizde](compute-linked-services.md#azure-hdinsight-linked-service) çağırır. Bu makalede, veri dönüşümü ve desteklenen dönüşüm faaliyetlerine genel bir genel bakış sunan [veri dönüştürme etkinlikleri](transform-data.md) makalesi temel almaktadır.
 
-Azure Data Factory yeni bir deyişle, [Azure Data Factory 'ye giriş](introduction.md) yapın ve öğreticiyi yapın: Öğretici: Bu makaleyi okumadan önce [verileri dönüştürün](tutorial-transform-data-spark-powershell.md) .
+Azure Veri Fabrikası'nda yeniyseniz, [Azure Veri Fabrikası'na Giriş'i](introduction.md) okuyun ve öğreticiyi yapın: Öğretici: Bu makaleyi okumadan önce verileri [dönüştürün.](tutorial-transform-data-spark-powershell.md)
 
-HDInsight Pig ve Hive etkinliklerini kullanarak bir işlem hattından HDInsight kümesinde Pig/Hive betikleri çalıştırmaya ilişkin ayrıntılar için bkz. [Pig](transform-data-using-hadoop-pig.md) and [Hive](transform-data-using-hadoop-hive.md) .
+HDInsight Pig ve [Hive](transform-data-using-hadoop-hive.md) etkinliklerini kullanarak bir boru hattından BIR HDInsight kümesinde Pig/Hive komut dosyaları çalıştırma hakkında ayrıntılı bilgi için [Pig](transform-data-using-hadoop-pig.md) ve Hive'a bakın.
 
 ## <a name="syntax"></a>Sözdizimi
 
@@ -58,26 +58,26 @@ HDInsight Pig ve Hive etkinliklerini kullanarak bir işlem hattından HDInsight 
 }
 ```
 
-## <a name="syntax-details"></a>Söz dizimi ayrıntıları
+## <a name="syntax-details"></a>Sözdizimi ayrıntıları
 
-| Özellik          | Açıklama                              | Gereklidir |
+| Özellik          | Açıklama                              | Gerekli |
 | ----------------- | ---------------------------------------- | -------- |
-| ad              | Etkinliğin adı                     | Yes      |
+| ad              | Etkinliğin adı                     | Evet      |
 | açıklama       | Etkinliğin ne için kullanıldığını açıklayan metin | Hayır       |
-| type              | MapReduce etkinliği için etkinlik türü HDinsightMapReduce | Yes      |
-| linkedServiceName | Data Factory bağlı hizmet olarak kaydedilen HDInsight kümesine başvuru. Bu bağlı hizmet hakkında bilgi edinmek için bkz. [işlem bağlı hizmetleri](compute-linked-services.md) makalesi. | Yes      |
-| className         | Yürütülecek sınıfın adı         | Yes      |
-| jarLinkedService  | Jar dosyalarını depolamak için kullanılan bir Azure depolama bağlı hizmetine başvuru. Bu bağlı hizmeti belirtmezseniz, HDInsight bağlı hizmetinde tanımlanan Azure depolama bağlı hizmeti kullanılır. | Hayır       |
-| jarFilePath       | JarLinkedService tarafından başvurulan Azure Storage 'da depolanan jar dosyalarının yolunu belirtin. Dosya adı büyük/küçük harfe duyarlıdır. | Yes      |
-| jarlibs           | JarLinkedService içinde tanımlanan Azure depolama alanında depolanan iş tarafından başvurulan jar kitaplık dosyalarının yolunun dize dizisi. Dosya adı büyük/küçük harfe duyarlıdır. | Hayır       |
-| GetDebugInfo      | Günlük dosyalarının HDInsight kümesi tarafından kullanılan Azure depolama 'ya (veya) jarLinkedService tarafından belirtilen şekilde kopyalanacağını belirtir. İzin verilen değerler: None, Always veya Failure. Varsayılan değer: Hiçbiri. | Hayır       |
-| arguments         | Bir Hadoop işi için bir bağımsız değişken dizisi belirtir. Bağımsız değişkenler her göreve komut satırı bağımsız değişkeni olarak geçirilir. | Hayır       |
-| defines           | Hive betiği içinde başvurmak için parametreleri anahtar/değer çiftleri olarak belirtin. | Hayır       |
+| type              | MapReduce Etkinliği için etkinlik türü HDinsightMapReduce | Evet      |
+| linkedServiceName | Veri Fabrikası'nda bağlantılı hizmet olarak kayıtlı HDInsight kümesine başvuru. Bu bağlantılı hizmet hakkında bilgi edinmek için [Bkz. Compute bağlantılı hizmetler](compute-linked-services.md) makalesine bakın. | Evet      |
+| Classname         | Yürütülecek Sınıfın Adı         | Evet      |
+| jarLinkedService  | Jar dosyalarını depolamak için kullanılan Azure Depolama Bağlantılı Hizmetine başvuru. Bu Bağlantılı Hizmeti belirtmezseniz, HDInsight Bağlantılı Hizmeti'nde tanımlanan Azure Depolama Bağlantılı Hizmeti kullanılır. | Hayır       |
+| jarFilePath       | JarLinkedService tarafından başvurulan Azure Depolama'da depolanan Jar dosyalarına giden yolu sağlayın. Dosya adı büyük/küçük harf duyarlıdır. | Evet      |
+| jarlibs           | JarLinkedService'te tanımlanan Azure Depolama'da depolanan iş tarafından başvurulan Jar kitaplığı dosyalarına giden yol dizisi. Dosya adı büyük/küçük harf duyarlıdır. | Hayır       |
+| getDebugInfo      | Günlük dosyalarının jarLinkedService tarafından belirtilen HDInsight kümesi (veya) tarafından kullanılan Azure Depolama alanına kopyalandığında belirtir. İzin verilen değerler: Yok, Her Zaman veya Hata. Varsayılan değer: Hiçbiri. | Hayır       |
+| Bağımsız değişken         | Hadoop işi için bir dizi bağımsız değişken belirtir. Bağımsız değişkenler her göreve komut satırı bağımsız değişkenleri olarak geçirilir. | Hayır       |
+| Tanım -lar           | Hive komut dosyası içinde başvurmak için parametreleri anahtar/değer çiftleri olarak belirtin. | Hayır       |
 
 
 
 ## <a name="example"></a>Örnek
-HDInsight MapReduce etkinliğini bir HDInsight kümesinde herhangi bir MapReduce jar dosyası çalıştırmak için kullanabilirsiniz. Aşağıdaki örnek bir işlem hattının JSON tanımında, HDInsight etkinliği Mahout JAR dosyasını çalıştıracak şekilde yapılandırılmıştır.
+Bir HDInsight kümesinde herhangi bir MapReduce jar dosyasını çalıştırmak için HDInsight MapReduce Etkinliğini kullanabilirsiniz. Aşağıdaki örnek JSON ardışık hatlar tanımında, HDInsight Etkinliği bir Mahout JAR dosyasını çalıştıracak şekilde yapılandırılır.
 
 ```json
 {
@@ -110,16 +110,16 @@ HDInsight MapReduce etkinliğini bir HDInsight kümesinde herhangi bir MapReduce
     }
 }
 ```
-**Bağımsız değişkenler** bölümünde MapReduce programı için herhangi bir bağımsız değişken belirtebilirsiniz. Çalışma zamanında, MapReduce çerçevesinden birkaç ek bağımsız değişken (örneğin: MapReduce. job. Tag) görürsünüz. Bağımsız değişkenlerinizi MapReduce bağımsız değişkenleriyle ayırt etmek için, aşağıdaki örnekte gösterildiği gibi her iki seçeneği ve değeri bağımsız değişken olarak kullanmayı düşünün (-s,--Input,--Output vb.), bu seçenekler hemen arkasından değerleri izler.
+**Bağımsız değişkenler** bölümünde MapReduce programı için herhangi bir bağımsız değişken belirtebilirsiniz. Çalışma zamanında MapReduce çerçevesinden birkaç ek bağımsız değişken (örneğin: mapreduce.job.tags) görürsünüz. Bağımsız değişkenlerinizi MapReduce bağımsız değişkenleriyle ayırt etmek için, aşağıdaki örnekte (-s, --giriş, --çıktı vb.) hem seçenek hem de değeri bağımsız değişkenolarak kullanmayı düşünün, değerleri tarafından hemen izlenen seçeneklerdir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Verileri başka yollarla nasıl dönüştürebileceğinizi açıklayan aşağıdaki makalelere bakın:
+Verileri başka şekillerde nasıl dönüştüreceklerini açıklayan aşağıdaki makalelere bakın:
 
 * [U-SQL etkinliği](transform-data-using-data-lake-analytics.md)
-* [Hive etkinliği](transform-data-using-hadoop-hive.md)
-* [Pig etkinliği](transform-data-using-hadoop-pig.md)
-* [Hadoop akışı etkinliği](transform-data-using-hadoop-streaming.md)
-* [Spark etkinliği](transform-data-using-spark.md)
+* [Kovan aktivitesi](transform-data-using-hadoop-hive.md)
+* [Domuz aktivitesi](transform-data-using-hadoop-pig.md)
+* [Hadoop Akış etkinliği](transform-data-using-hadoop-streaming.md)
+* [Kıvılcım etkinliği](transform-data-using-spark.md)
 * [.NET özel etkinliği](transform-data-using-dotnet-custom-activity.md)
-* [Machine Learning Batch yürütme etkinliği](transform-data-using-machine-learning.md)
-* [Saklı yordam etkinliği](transform-data-using-stored-procedure.md)
+* [Makine Öğrenimi Toplu Yürütme Etkinliği](transform-data-using-machine-learning.md)
+* [Depolanan yordam etkinliği](transform-data-using-stored-procedure.md)

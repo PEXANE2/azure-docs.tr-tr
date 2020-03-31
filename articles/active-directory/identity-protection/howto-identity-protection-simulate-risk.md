@@ -1,6 +1,6 @@
 ---
-title: Azure AD Kimlik Koruması risk algılamaları benzetimi yapma
-description: Kimlik koruması 'nda risk algılamalarını benzetmeyi öğrenin
+title: Azure AD Kimlik Koruması'nda risk algılamalarının benzetimi
+description: Kimlik Koruması'nda risk algılamaları nasıl simüle edilenöğrenin
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
@@ -12,123 +12,123 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e50e406e74c0b78f41830c4ea7c5b10830002ed3
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/24/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72886941"
 ---
-# <a name="simulating-risk-detections-in-identity-protection"></a>Kimlik korumasında risk algılamaları benzetimi yapma
+# <a name="simulating-risk-detections-in-identity-protection"></a>Kimlik Korumada risk tespitlerinin simüle edilmesi
 
-Yöneticiler, aşağıdaki öğeleri gerçekleştirmek için ortamlarında risk benzetimi yapmak isteyebilir:
+Yöneticiler, aşağıdaki öğeleri gerçekleştirmek için ortamlarındaki riski simüle etmek isteyebilirler:
 
-- Risk algılamalarını ve güvenlik açıklarını taklit ederek verileri kimlik koruması ortamında doldurun.
-- Risk tabanlı koşullu erişim ilkeleri ayarlayın ve bu ilkelerin etkisini test edin.
+- Risk algılamaları ve güvenlik açıklarını simüle ederek kimlik koruma ortamındaki verileri doldurun.
+- Risk tabanlı Koşullu Erişim ilkeleri ayarlayın ve bu ilkelerin etkisini test edin.
 
-Bu makalede, aşağıdaki risk algılama türlerinin benzetimini yapma adımları sunulmaktadır:
+Bu makalede, aşağıdaki risk algılama türlerini simüle etmek için adımlar sağlar:
 
 - Anonim IP adresi (kolay)
-- Bilmediğiniz oturum açma özellikleri (orta)
+- Yabancı oturum açma özellikleri (orta)
 - Atipik seyahat (zor)
 
-Diğer risk algılamaları güvenli bir şekilde benzetilemez.
+Diğer risk algılamaları güvenli bir şekilde simüle edilemez.
 
-Her risk algılaması hakkında daha fazla bilgi makalesinde, [risk nedir?](concept-identity-protection-risks.md)bölümünde bulabilirsiniz.
+Her risk tespiti hakkında daha fazla bilgi makalede bulunabilir, [Risk nedir](concept-identity-protection-risks.md).
 
 ## <a name="anonymous-ip-address"></a>Anonim IP adresi
 
-Aşağıdaki yordamı tamamlamak için şunları kullanmanız gerekir:
+Aşağıdaki yordamı tamamlamak için kullanmanız gerekmektedir:
 
-- Anonim IP adreslerinin benzetimini yapmak için [Tor tarayıcısı](https://www.torproject.org/projects/torbrowser.html.en) . Kuruluşunuz Tor tarayıcısı kullanılarak sınırlandırdıysanız bir sanal makine kullanmanız gerekebilir.
-- Henüz Azure Multi-Factor Authentication için kaydedilmemiş bir test hesabı.
+- Anonim IP adreslerini simüle etmek için [Tor Browser.](https://www.torproject.org/projects/torbrowser.html.en) Kuruluşunuz Tor tarayıcısını kullanmayı kısıtlarsa sanal bir makine kullanmanız gerekebilir.
+- Azure Çok Faktörlü Kimlik Doğrulaması için henüz kaydedilmemiş bir test hesabı.
 
-**Anonım IP 'den bir oturum açma benzetimi yapmak için aşağıdaki adımları uygulayın**:
+**Anonim bir IP'den oturum açma simüle etmek için aşağıdaki adımları gerçekleştirin:**
 
-1. [Tor tarayıcısını](https://www.torproject.org/projects/torbrowser.html.en)kullanarak [https://myapps.microsoft.com](https://myapps.microsoft.com)gidin.   
-2. **Anonım IP adreslerinden oturum açma** işlemleri raporunda görünmesini istediğiniz hesabın kimlik bilgilerini girin.
+1. [Tor Browser'ı](https://www.torproject.org/projects/torbrowser.html.en)kullanarak [https://myapps.microsoft.com](https://myapps.microsoft.com), ' e gidin.   
+2. Anonim IP adresleri raporundan **Oturum Açma'larda** görünmesini istediğiniz hesabın kimlik bilgilerini girin.
 
-Oturum açma, kimlik koruması panosunda 10-15 dakika içinde görüntülenir. 
+Oturum açma 10-15 dakika içinde Kimlik Koruması panosunda belirir. 
 
 ## <a name="unfamiliar-sign-in-properties"></a>Bilmediğiniz oturum açma özellikleri
 
-Tanıdık konumların benzetimini yapmak için, test hesabınızın öncesinde oturum açmadığı bir konumdan ve cihazdan oturum açmanız gerekir.
+Bilmediğiniz konumları simüle etmek için, test hesabınızın daha önce oturum açmadığı bir konumdan ve cihazdan oturum açmanız gerekir.
 
-Aşağıdaki yordam yeni oluşturulan bir kullanır:
+Aşağıdaki yordam, yeni oluşturulan bir kullanır:
 
-- Yeni konumun benzetimini yapmak için VPN bağlantısı.
-- Sanal makine, yeni bir cihazın benzetimini yapar.
+- VPN bağlantısı, yeni konumu simüle etmek için.
+- Sanal makine, yeni bir cihaz simüle etmek için.
 
-Aşağıdaki yordamı tamamlamak için şunları içeren bir kullanıcı hesabı kullanmanız gerekir:
+Aşağıdaki yordamı tamamlamak için aşağıdakilere sahip bir kullanıcı hesabı kullanmanız gerekmektedir:
 
-- En az 30 günlük bir oturum açma geçmişi.
-- Azure Multi-Factor Authentication etkinleştirildi.
+- En az 30 günlük bir oturum açma tarihi.
+- Azure Çok Faktörlü Kimlik Doğrulama etkinleştirildi.
 
-**Bilmediğiniz bir konumdan bir oturum açma benzetimi yapmak için aşağıdaki adımları uygulayın**:
+**Bilmediğiniz bir konumdan oturum açma yı simüle etmek için aşağıdaki adımları gerçekleştirin:**
 
-1. Test hesabınızla oturum açarken, MFA sınamasını geçirmeyecek şekilde Multi-Factor Authentication (MFA) sınamasını devreder.
-2. Yeni VPN 'nizi kullanarak [https://myapps.microsoft.com](https://myapps.microsoft.com) gidin ve test hesabınızın kimlik bilgilerini girin.
+1. Test hesabınızla oturum açtığınızda, MFA meydan okumasını geçerek çok faktörlü kimlik doğrulama (MFA) mücadelesinden başarısız olun.
+2. Yeni VPN'inizi kullanarak, test hesabınızın kimlik bilgilerine gidin [https://myapps.microsoft.com](https://myapps.microsoft.com) ve girin.
 
-Oturum açma, kimlik koruması panosunda 10-15 dakika içinde görüntülenir.
+Oturum açma 10-15 dakika içinde Kimlik Koruması panosunda belirir.
 
 ## <a name="atypical-travel"></a>Atipik seyahat
 
-Algoritma makine öğrenimini taklit ettiğinden, algoritma tanıdık cihazlardan gelen tipik seyahat veya dizindeki diğer kullanıcılar tarafından kullanılan VPN 'lerden oturum açma gibi hatalı pozitif sonuçlar almak için Machine Learning 'i kullandığından, atipik seyahat koşulunun benzetimini yapmak zordur. Ayrıca, algoritma, risk algılamalarını oluşturmaya başlamadan önce 14 gün ve Kullanıcı için 10 oturum açma geçmişi gerektirir. Karmaşık makine öğrenimi modelleri ve yukarıdaki kurallar nedeniyle, aşağıdaki adımların bir risk algılamasına neden olmayacağı bir şansınız vardır. Bu algılamanın benzetimini yapmak için bu adımları birden çok Azure AD hesabı için çoğaltmak isteyebilirsiniz.
+Algoritma, tanıdık cihazlardan atipik seyahat veya dizindeki diğer kullanıcılar tarafından kullanılan VPN'lerden oturum açma gibi yanlış pozitifleri saymak için makine öğrenimini kullandığından, atipik seyahat durumunu simüle etmek zordur. Ayrıca, algoritma risk algılamaları oluşturmaya başlamadan önce kullanıcının 14 günlük oturum açma geçmişini ve 10 oturum açmayı gerektirir. Karmaşık makine öğrenme modelleri ve yukarıdaki kurallar nedeniyle, aşağıdaki adımların risk tespitine yol açmama olasılığı vardır. Bu algılamayı simüle etmek için birden çok Azure REKLAM hesabı için bu adımları çoğaltmak isteyebilirsiniz.
 
-**Sıradan bir seyahat riskini algılamada benzetimini yapmak için aşağıdaki adımları uygulayın**:
+**Atipik bir seyahat riski algılamasını simüle etmek için aşağıdaki adımları gerçekleştirin:**
 
-1. Standart tarayıcınızı kullanarak [https://myapps.microsoft.com](https://myapps.microsoft.com)gidin.  
-2. İçin atipik bir seyahat riski algılaması oluşturmak istediğiniz hesabın kimlik bilgilerini girin.
-3. Kullanıcı aracınızı değiştirin. Microsoft Edge 'deki Kullanıcı aracısını Geliştirici Araçları (F12) olarak değiştirebilirsiniz.
-4. IP adresinizi değiştirin. Bir VPN, Tor eklentisi veya farklı bir veri merkezinde Azure 'da yeni bir sanal makine oluşturarak IP adresinizi değiştirebilirsiniz.
-5. Önceki oturum açma işleminden daha önce ve birkaç dakika içinde aynı kimlik bilgilerini kullanarak [https://myapps.microsoft.com](https://myapps.microsoft.com) için oturum açın.
+1. Standart tarayıcınızı [https://myapps.microsoft.com](https://myapps.microsoft.com)kullanarak.  
+2. Atipik bir seyahat riski algılama oluşturmak istediğiniz hesabın kimlik bilgilerini girin.
+3. Kullanıcı aracınızı değiştirin. Microsoft Edge'deki kullanıcı aracını Geliştirici Araçları'ndan (F12) değiştirebilirsiniz.
+4. IP adresinizi değiştirin. VPN, Tor eklentisi kullanarak veya Azure'da farklı bir veri merkezinde yeni bir sanal makine oluşturarak IP adresinizi değiştirebilirsiniz.
+5. Önceki oturum [https://myapps.microsoft.com](https://myapps.microsoft.com) açmadan sonra ve birkaç dakika içinde önceki yle aynı kimlik bilgilerini kullanmak için oturum açın.
 
-Oturum açma, kimlik koruması panosunda 2-4 saat içinde görüntülenir.
+Oturum açma 2-4 saat içinde Kimlik Koruması panosunda belirir.
 
-## <a name="testing-risk-policies"></a>Risk ilkelerini test etme
+## <a name="testing-risk-policies"></a>Risk politikalarını test etme
 
-Bu bölüm, makalede oluşturulan kullanıcı ve oturum açma risk ilkelerinin test edilmesine yönelik adımlar, [nasıl yapılır: risk Ilkeleri yapılandırma ve etkinleştirme](howto-identity-protection-configure-risk-policies.md)adımları sağlar.
+Bu bölümde, kullanıcıyı ve oturum açma risk ilkelerini sınamak için adımlar sağlar, [nasıl oluşturulur: Risk ilkelerini yapılandırmave etkinleştirme.](howto-identity-protection-configure-risk-policies.md)
 
 ### <a name="user-risk-policy"></a>Kullanıcı risk ilkesi
 
-Bir Kullanıcı risk güvenlik ilkesini test etmek için aşağıdaki adımları gerçekleştirin:
+Kullanıcı risk güvenlik ilkesini sınamak için aşağıdaki adımları gerçekleştirin:
 
 1. [Azure portalına](https://portal.azure.com) gidin.
-1. **Azure Active Directory** > **güvenlik** > **Genel Bakış ' a**göz atın.
-1. **Kullanıcı risk Ilkesini Yapılandır**' ı seçin.
-   1. **Atamalar** altında
-      1. **Kullanıcılar** - **tüm kullanıcılar** ' ı seçin veya dağıtımı sınırlandırdıysanız **bireyler ve gruplar ' ı seçin** .
-         1. İsteğe bağlı olarak, kullanıcıların ilkeden hariç tutulmasını seçebilirsiniz.
-      1. **Koşullar** - **Kullanıcı riski** Microsoft 'un önerisi, bu seçeneğin **yüksek**olarak ayarlanmalarıdır.
-   1. **Denetimler** altında
-      1. **Erişim** -Microsoft 'un önerisi **erişime izin vermek** ve **parola değişikliğine gerek duyar**.
-   1. **İlke** - **devre dışı bırak**
-   1. **Kaydet** -bu eylem sizi **genel bakış** sayfasına verecektir.
-1. Bir sınama hesabının kullanıcı riskini, örneğin, risk algılarından birinin birkaç kez benzetimini yaparak yükseltin.
-1. Birkaç dakika bekleyin ve ardından riskin Kullanıcı için yükseltildiğini doğrulayın. Aksi takdirde, Kullanıcı için daha fazla risk algılamalarını taklit edin.
-1. Risk ilkenize dönün **ve ilke değişikliklerinizi** **Açık** olarak ayarlayın ve ilke değişiklerinizi **kaydedin** .
-1. Artık yükseltilmiş risk düzeyine sahip bir kullanıcı kullanarak oturum açarak Kullanıcı risk tabanlı koşullu erişimi test edebilirsiniz.
+1. **Azure Etkin Dizin** > **Güvenliğine** > **Genel Bakış'a**göz atın.
+1. **Kullanıcı risk ilkesini yapılandır'ı**seçin.
+   1. **Atamalar** Altında
+      1. **Kullanıcılar** - Ürününüzü sınırlandırıyorsa **Tüm kullanıcıları** seçin veya kişileri ve **grupları seçin.**
+         1. İsteğe bağlı olarak, kullanıcıları ilkeden hariç tutmayı seçebilirsiniz.
+      1. **Koşullar** - **Kullanıcı riski** Microsoft'un önerisi yüksek bu seçeneği ayarlamaktır. **High**
+   1. **Denetimler** Altında
+      1. **Access** - Microsoft'un önerisi **erişime izin** vermek ve **parola değişikliği ni gerektirmektir.**
+   1. **İlkeYi** - **Uygulama**
+   1. **Kaydet** - Bu eylem sizi **Genel Bakış** sayfasına döndürecektir.
+1. Örneğin, bir test hesabının kullanıcı riskini birkaç kez risk tespitlerinden birini simüle ederek yükseltin.
+1. Birkaç dakika bekleyin ve ardından kullanıcınız için bu riskin yükseldiğini doğrulayın. Değilse, kullanıcı için daha fazla risk algılaması simüle edin.
+1. Risk politikanıza geri dönün ve Politika değişikliğini **uygulamak** ve **kaydetmek** için **İlkeyi** Uygulayın'ı ayarlayın.
+1. Artık yüksek risk düzeyine sahip bir kullanıcı kullanarak oturum imzalayarak kullanıcı risk tabanlı Koşullu Erişimi sınayabilirsiniz.
 
 ### <a name="sign-in-risk-security-policy"></a>Oturum açma riski güvenlik ilkesi
 
-Bir oturum açma risk ilkesini test etmek için aşağıdaki adımları gerçekleştirin:
+Risk ilkesinde bir oturum u test etmek için aşağıdaki adımları gerçekleştirin:
 
 1. [Azure portalına](https://portal.azure.com) gidin.
-1. **Azure Active Directory** > **güvenlik** > **Genel Bakış ' a**göz atın.
-1. **Oturum açma risk Ilkesini Yapılandır**' ı seçin.
-   1. **Atamalar** altında
-      1. **Kullanıcılar** - **tüm kullanıcılar** ' ı seçin veya dağıtımı sınırlandırdıysanız **bireyler ve gruplar ' ı seçin** .
-         1. İsteğe bağlı olarak, kullanıcıların ilkeden hariç tutulmasını seçebilirsiniz.
-      1. **Koşullar** - **oturum açma riskini** Microsoft 'un önerisi, bu seçeneği **Orta ve üzeri**olarak ayarlamanıza olanak sağlar.
-   1. **Denetimler** altında
-      1. **Erişim** -Microsoft 'un önerisi, **erişime izin vermek** ve **Multi-Factor Authentication gerektirir**.
-   1. **İlke** - zorla
-   1. **Kaydet** -bu eylem sizi **genel bakış** sayfasına verecektir.
-1. Artık riskli bir oturum kullanarak oturum açma riski tabanlı koşullu erişimi test edebilirsiniz (örneğin, Tor tarayıcısını kullanarak). 
+1. **Azure Etkin Dizin** > **Güvenliğine** > **Genel Bakış'a**göz atın.
+1. **Oturum açma risk ilkesini yapılandır'ı**seçin.
+   1. **Atamalar** Altında
+      1. **Kullanıcılar** - Ürününüzü sınırlandırıyorsa **Tüm kullanıcıları** seçin veya kişileri ve **grupları seçin.**
+         1. İsteğe bağlı olarak, kullanıcıları ilkeden hariç tutmayı seçebilirsiniz.
+      1. **Koşullar** - **Oturum Açma riski** Microsoft'un önerisi bu seçeneği Orta ve **üzeri**olarak ayarlamaktır.
+   1. **Denetimler** Altında
+      1. **Access** - Microsoft'un önerisi **erişime izin** vermek ve **çok faktörlü kimlik doğrulamayı**gerektirmektir.
+   1. **Politikayı** - **Uygula**
+   1. **Kaydet** - Bu eylem sizi **Genel Bakış** sayfasına döndürecektir.
+1. Artık riskli bir oturum kullanarak oturum açarak Oturum Açma Risk Tabanlı Koşullu Erişimi sınayabilirsiniz (örneğin, Tor tarayıcısını kullanarak). 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Risk nedir?](concept-identity-protection-risks.md)
 
-- [Nasıl yapılır: risk ilkelerini yapılandırma ve etkinleştirme](howto-identity-protection-configure-risk-policies.md)
+- [Nasıl Yapilir: Risk ilkelerini yapılandırma ve etkinleştirme](howto-identity-protection-configure-risk-policies.md)
 
 - [Azure Active Directory Kimlik Koruması](overview-identity-protection.md)

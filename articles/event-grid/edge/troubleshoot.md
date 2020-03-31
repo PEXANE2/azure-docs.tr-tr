@@ -1,6 +1,6 @@
 ---
-title: Sorun giderme-Azure Event Grid IoT Edge | Microsoft Docs
-description: IoT Edge Event Grid sorun giderme.
+title: Sorun Giderme - Azure Olay Izgara IoT Edge | Microsoft Dokümanlar
+description: IoT Edge'deki Event Grid'de Sorun Giderme.
 author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
@@ -10,41 +10,41 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: 95181d0eb23d5956b2c6af52c77f85714b107345
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73100149"
 ---
-# <a name="common-issues"></a>Yaygın Sorunlar
+# <a name="common-issues"></a>Genel Sorunlar
 
-Ortamınızdaki IoT Edge Azure Event Grid kullanarak sorunlarla karşılaşırsanız sorun giderme ve çözümleme için bu makaleyi kılavuz olarak kullanın.
+Ortamınızda IoT Edge'de Azure Olay Kılavuzu'nu kullanarak sorunlarla karşılaşırsanız, bu makaleyi sorun giderme ve çözüm için bir kılavuz olarak kullanın.
 
-## <a name="view-event-grid-module-logs"></a>Event Grid modül günlüklerini görüntüle
+## <a name="view-event-grid-module-logs"></a>Olay Izgara modül günlüklerini görüntüle
 
-Sorun gidermek için Event Grid modül günlüklerine erişmeniz gerekebilir. Bunu yapmak için, modülün dağıtıldığı VM 'de aşağıdaki komutu çalıştırın:
+Sorun gidermek için Olay Izgara modülü günlüklerine erişmeniz gerekebilir. Bunu yapmak için, modülün dağıtıldığı VM'de aşağıdaki komutu çalıştırın:
 
-Windows 'ta,
+Pencerelerde,
 
 ```sh
 docker -H npipe:////./pipe/iotedge_moby_engine container logs eventgridmodule
 ```
 
-Linux 'ta,
+Linux'ta,
 
 ```sh
 sudo docker logs eventgridmodule
 ```
 
-## <a name="unable-to-make-https-requests"></a>HTTPS istekleri yapılamıyor
+## <a name="unable-to-make-https-requests"></a>HTTPS isteklerini yapamamak
 
-* İlk olarak Event Grid modülün **gelen: serverAuth: tlsPolicy** **Strict** veya **Enabled**olarak ayarlanmış olduğundan emin olun.
+* Öncelikle Olay Izgara modülü gelen olduğundan emin **olun:serverAuth:tlsPolicy** **katı** veya **etkin**olarak ayarlanır.
 
-* Modülün modüle iletişimler iletişim varsa, bağlantı noktası **4438** ' de çağrıyı yaptığınızdan ve modülün adı dağıtılan ile eşleştiğinden emin olun. 
+* Modülden modüle iletişim sağlıyorsa, **4438** numaralı bağlantı noktasından arama yaptığınızdan ve modülün adının dağıtılanla eşleştiğinden emin olun. 
 
-  Örneğin, Event Grid modülü **eventgridmodule** adı ile DAĞıTıLMıŞSA, URL 'niz **https://eventgridmodule:4438** olmalıdır. Büyük/küçük harf ve bağlantı noktası numarasının doğru olduğundan emin olun.
+  Örneğin, Olay Izgara modülü ad **eventgridmodule** ile dağıtıldıysa, **https://eventgridmodule:4438**URL'niz . Kasa ve bağlantı noktası numarasının doğru olduğundan emin olun.
     
-* IoT olmayan modülden ise, dağıtım sırasında Event Grid bağlantı noktasının konak makineye eşlendiğinden emin olun.
+* IoT modülü olmayan bir modülden geliyorsa, örneğin dağıtım sırasında Olay Izgara bağlantı noktasının Ana Bilgisayar makinesine eşlenindiğinden emin olun,
 
     ```json
     "HostConfig": {
@@ -58,15 +58,15 @@ sudo docker logs eventgridmodule
      }
     ```
 
-## <a name="unable-to-make-http-requests"></a>HTTP istekleri yapılamıyor
+## <a name="unable-to-make-http-requests"></a>HTTP isteklerini yapamamak
 
-* İlk olarak Event Grid modülün **gelen: serverAuth: tlsPolicy** özelliğinin **etkin** veya **devre dışı**olarak ayarlandığını doğrulayın.
+* Önce Olay Izgara modülü gelen olduğundan emin **olun:serverAuth:tlsPolicy** **etkin** veya **devre dışı ayarlanmış**.
 
-* Modülün modüle iletişimler iletişim varsa, bağlantı noktası **5888** ' de çağrıyı yaptığınızdan ve modülün adı dağıtılan ile eşleştiğinden emin olun. 
+* Modülden modüle iletişim sağlıyorsa, **5888** numaralı bağlantı noktasında arama yaptığınızdan ve modülün adının dağıtılanla eşleştiğinden emin olun. 
 
-  Örneğin, Event Grid modülü **eventgridmodule** adı ile DAĞıTıLMıŞSA, URL 'niz **http://eventgridmodule:5888** olmalıdır. Büyük/küçük harf ve bağlantı noktası numarasının doğru olduğundan emin olun.
+  Örneğin, Olay Izgara modülü ad **eventgridmodule** ile dağıtıldıysa, **http://eventgridmodule:5888**URL'niz . Kasa ve bağlantı noktası numarasının doğru olduğundan emin olun.
     
-* IoT olmayan modülden ise, dağıtım sırasında Event Grid bağlantı noktasının konak makineye eşlendiğinden emin olun.
+* IoT modülü olmayan bir modülden geliyorsa, örneğin dağıtım sırasında Olay Izgara bağlantı noktasının Ana Bilgisayar makinesine eşlenindiğinden emin olun,
 
     ```json
     "HostConfig": {
@@ -80,32 +80,32 @@ sudo docker logs eventgridmodule
     }
     ```
 
-## <a name="certificate-chain-was-issued-by-an-authority-thats-not-trusted"></a>Sertifika zinciri, güvenilmeyen bir yetkili tarafından verilmiş
+## <a name="certificate-chain-was-issued-by-an-authority-thats-not-trusted"></a>Sertifika zinciri, güvenilmeyen bir makam tarafından verildi
 
-Varsayılan olarak, Event Grid modülü, IoT Edge güvenlik arka plan programı tarafından verilen sertifikaları kimlik doğrulamak üzere yapılandırılmıştır. İstemcinin bu zincire kök sertifika sunduğunuzdan emin olun.
+Varsayılan olarak, Olay Izgara modülü, IoT Edge güvenlik daemon tarafından verilen sertifika ile istemcileri doğrulamak için yapılandırılır. İstemcinin bu zincire köklü bir sertifika sunduğundan emin olun.
 
-[https://github.com/Azure/event-grid-iot-edge](https://github.com/Azure/event-grid-iot-edge) ' de **ıotsecurity** sınıfı, IoT Edge güvenlik arka plan programından sertifikaların nasıl alınacağını ve bunu giden çağrıları yapılandırmak için nasıl kullanılacağını gösterir.
+**IoTSecurity** sınıfında [https://github.com/Azure/event-grid-iot-edge](https://github.com/Azure/event-grid-iot-edge) IoT Edge Security daemon'dan sertifikalarınasıl alınır ve giden aramaları yapılandırmak için bunu kullanırsınız.
 
-Üretim dışı ortamındaysanız, istemci kimlik doğrulamasını kapatma seçeneğiniz vardır. Bunun nasıl yapılacağı hakkında ayrıntılı bilgi için [güvenlik ve kimlik doğrulama](security-authentication.md) bölümüne bakın.
+Üretim dışı ortamsa, istemci kimlik doğrulamasını kapatma seçeneğiniz vardır. Bunun nasıl yapılacağının ayrıntıları için [Güvenlik ve Kimlik Doğrulama'ya](security-authentication.md) bakın.
 
-## <a name="debug-events-not-received-by-subscriber"></a>Abone tarafından alınmayan hata ayıklama olayları
+## <a name="debug-events-not-received-by-subscriber"></a>Abone tarafından alınmayan Hata Ayıklama Olayları
 
 Bunun tipik nedenleri şunlardır:
 
-* Olay hiçbir şekilde başarıyla nakledilmedi. Event Grid modülüne bir olay gönderilirken 200 (Tamam) HTTP StatusCode işlemi alınmalıdır.
+* Olay hiçbir zaman başarılı bir şekilde yayınlanmadı. Olay Izgara modülüne bir olay gönderirken 200(OK) http StatusCode alınmalıdır.
 
-* Doğrulanacak olay aboneliğini denetleyin:
-    * Uç nokta URL 'SI geçerli
-    * Abonelikteki tüm filtreler olayın "bırakılmış" olmasına neden olmaz.
+* Doğrulamak için olay aboneliğini denetleyin:
+    * Uç nokta URL geçerli
+    * Abonelikteki filtreler, olayın "düşmesine" neden olmaz.
 
-* Abone modülünün çalışıp çalışmadığını doğrulama
+* Abone modülünün çalışır durumda olup olmadığını doğrulama
 
-* Event Grid modülünün dağıtıldığı VM 'de oturum açın ve günlüklerini görüntüleyin.
+* Olay Izgara modülünün dağıtıldığı VM'de oturum açın ve günlüklerini görüntüleyin.
 
-* **Aracı: logDeliverySuccess = true** ayarlayarak ve Event Grid modülünü yeniden dağıtarak ve isteği yeniden denemeden teslim günlüğü başına ' yı açın. İşlem başına günlük tutmayı açmak, hata ayıklamanın yeniden dengeleyebilmesi için iş çıkarma ve gecikme süresini etkileyebilir **: logDeliverySuccess = false** ve Event Grid modülü yeniden dağıtılıyor.
+* **Broker:logDeliverySuccess=true** ayarlayarak ve Olay Izgara modüllerini yeniden dağıtarak ve isteği yeniden deneyerek teslimat başına günlük başına açın. Teslimat başına günlüğe kaydetmenin gecikme sebebleri etkilemesi, hata ayıklama tamamlandıktan sonra önerimiz bunu komisyoncuya geri **döndürmektir: logDeliverySuccess=false** ve Olay Izgara modülü yeniden dağıtılmak.
 
-* Ölçümleri ayarlayarak ölçümleri açın **: reportertype = konsol** ve Event Grid modülünü yeniden dağıtın. Bundan sonra herhangi bir işlem, daha fazla hata ayıklamak için kullanılabilen Event Grid modülünün konsolunda, ölçümler günlüğe kaydediliyor. Ölçümleri yalnızca hata ayıklama için ve bir kez tamamladıktan sonra **ölçüm** ayarları yaparak devre dışı bırakmak için ' i etkinleştirmek ve Event Grid modülünü yeniden dağıtmak için önerimiz.
+* Ölçümleri ayarlayarak **ölçümleri açın:reportertype=console** ve Olay Izgara modüllerini yeniden dağıtın. Bundan sonraki işlemler, ölçümlerin daha fazla hata ayıklamak için kullanılabilecek Event Grid modülünün konsolunda günlüğe kaydedilmesiyle sonuçlanır. Tavsiyemiz, yalnızca hata ayıklama için ölçümleri açmak ve ölçümleri ayarlayarak kapatmak için **tamamlandığında:reportertype=none** ve Olay Izgara modüllerini yeniden dağıtmaktır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Tüm sorunları bildirin, [https://github.com/Azure/event-grid-iot-edge/issues](https://github.com/Azure/event-grid-iot-edge/issues)IoT Edge üzerinde Event Grid kullanma ile ilgili öneriler.
+IoT Edge'de [https://github.com/Azure/event-grid-iot-edge/issues](https://github.com/Azure/event-grid-iot-edge/issues)Event Grid'i kullanarak ilgili sorunları, önerileri bildirin.

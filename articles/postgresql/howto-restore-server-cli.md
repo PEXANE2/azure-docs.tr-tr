@@ -1,6 +1,6 @@
 ---
-title: Yedekleme ve geri yükleme-Azure CLı-PostgreSQL için Azure veritabanı-tek sunucu
-description: Azure CLı kullanarak, PostgreSQL için Azure veritabanı 'nda yedekleme yapılandırmalarının nasıl ayarlanacağını ve bir sunucunun nasıl geri yükleneceğini öğrenin.
+title: Yedekleme ve geri yükleme - Azure CLI - PostgreSQL için Azure Veritabanı - Tek Sunucu
+description: Azure CLI'yi kullanarak PostgreSQL - Single Server için Azure Veritabanı'nda yedekleme yapılandırmaları ve sunucuyu nasıl geri yükleyin öğrenin.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
@@ -8,121 +8,121 @@ ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.openlocfilehash: f0ea24133d7b6acdc4b099ee21a8711a2d99095d
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74775713"
 ---
-# <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-postgresql---single-server-using-the-azure-cli"></a>Azure CLı kullanarak PostgreSQL için Azure veritabanı 'nda bir sunucuyu yedekleme ve geri yükleme-tek sunucu
+# <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-postgresql---single-server-using-the-azure-cli"></a>Azure CLI'yi kullanarak PostgreSQL - Single Server için Azure Veritabanı'ndaki bir sunucuyu yedekleme ve geri yükleme
 
-PostgreSQL için Azure veritabanı sunucuları, geri yükleme özelliklerini etkinleştirmek üzere düzenli aralıklarla yedeklenir. Bu özelliği kullanarak, sunucuyu ve tüm veritabanlarını yeni bir sunucuda daha önceki bir zaman noktasına geri yükleyebilirsiniz.
+PostgreSQL sunucuları için Azure Veritabanı, Geri Yükleme özelliklerini etkinleştirmek için düzenli aralıklarla yedeklenir. Bu özelliği kullanarak, sunucuyu ve tüm veritabanlarını yeni bir sunucuda daha önceki bir zaman diliminde geri yükleyebilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
-Bu nasıl yapılır kılavuzunu tamamlayabilmeniz için şunlar gerekir:
-- [PostgreSQL Için Azure veritabanı sunucusu ve veritabanı](quickstart-create-server-database-azure-cli.md)
+## <a name="prerequisites"></a>Ön koşullar
+Bu nasıl yapılacağını kılavuzunu tamamlamak için şunları yapmanız gerekir:
+- [PostgreSQL sunucusu ve veritabanı için](quickstart-create-server-database-azure-cli.md) bir Azure Veritabanı
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
  
 
 > [!IMPORTANT]
-> Bu nasıl yapılır Kılavuzu, Azure CLı sürüm 2,0 veya üstünü kullanmanızı gerektirir. Sürümü onaylamak için, Azure CLı komut isteminde `az --version`girin. Yüklemek veya yükseltmek için bkz. [Azure CLI 'Yı yüklemek]( /cli/azure/install-azure-cli).
+> Bu nasıl yapılsa kılavuzu, Azure CLI sürüm 2.0 veya sonrası kullanmanızı gerektirir. Sürümü onaylamak için Azure CLI komut istemine girin. `az --version` Yüklemek veya yükseltmek için [Azure CLI'yi yükle'ye]( /cli/azure/install-azure-cli)bakın.
 
-## <a name="set-backup-configuration"></a>Yedekleme yapılandırmasını ayarla
+## <a name="set-backup-configuration"></a>Yedekleme yapılandırması ayarlama
 
-Sunucu oluşturma sırasında sunucunuzu yerel olarak yedekli yedeklemeler veya coğrafi olarak yedekli yedeklemeler için yapılandırma arasında seçim yaparsınız. 
+Sunucunuzu yerel olarak yedekli yedeklemeler veya sunucu oluşturmada coğrafi olarak yedek yedeklemeler için yapılandırmak arasında seçim yaparsınız. 
 
 > [!NOTE]
-> Bir sunucu oluşturulduktan sonra, coğrafi olarak yedekli ve yerel olarak yedekli olan artıklık türü değiştirilemez.
+> Bir sunucu oluşturulduktan sonra, sahip olduğu artıklık türü, coğrafi olarak gereksiz vs yerel gereksiz, değiştirilemez.
 >
 
-`az postgres server create` komutu aracılığıyla bir sunucu oluştururken, `--geo-redundant-backup` parametresi, yedekleme yedeklemenizin seçeneğine karar verir. `Enabled`, coğrafi olarak yedekli yedeklemeler alınır. Veya `Disabled` yerel olarak yedekli yedeklemeler alınırsa. 
+`az postgres server create` Komut aracılığıyla bir sunucu oluştururken, `--geo-redundant-backup` parametre Yedek Artıklık Seçeneği'ne karar verir. , `Enabled`coğrafi yedek yedekler alınırsa. Veya `Disabled` yerel olarak gereksiz yedeklemeler alınırsa. 
 
-Yedekleme saklama süresi `--backup-retention-days`parametresi tarafından ayarlanır. 
+Yedekleme bekletme süresi parametre `--backup-retention-days`tarafından ayarlanır. 
 
-Oluşturma sırasında bu değerleri ayarlama hakkında daha fazla bilgi için bkz. [PostgreSQL Için Azure veritabanı sunucu CLI hızlı başlangıç](quickstart-create-server-database-azure-cli.md).
+Oluşturma sırasında bu değerleri ayarlama hakkında daha fazla bilgi için [PostgreSQL sunucusu CLI Quickstart için Azure Veritabanı'na](quickstart-create-server-database-azure-cli.md)bakın.
 
-Bir sunucunun yedekleme saklama süresi şu şekilde değiştirilebilir:
+Bir sunucunun yedekleme bekletme süresi aşağıdaki gibi değiştirilebilir:
 
 ```azurecli-interactive
 az postgres server update --name mydemoserver --resource-group myresourcegroup --backup-retention 10
 ```
 
-Yukarıdaki örnek, demosunucum yedekleme bekletme süresini 10 gün olarak değiştirir.
+Önceki örnek, mydemoserver yedekleme bekletme süresini 10 güne değiştirir.
 
-Yedekleme bekletme süresi, kullanılabilir yedeklemeler temel aldığı için zaman içinde bir nokta geri yüklemesi alma süresinin ne kadar geri alınacağını yönetir. Zaman içinde geri yükleme sonraki bölümde daha ayrıntılı olarak açıklanmıştır.
+Yedekleme bekletme süresi, kullanılabilir yedeklemelere dayandığı için zaman içinde bir geri yüklemenin ne kadar geri alınabileceğini yönetir. Zaman içinde geri yükleme sonraki bölümde daha ayrıntılı olarak açıklanmıştır.
 
-## <a name="server-point-in-time-restore"></a>Sunucu zaman içinde geri yükleme
-Sunucuyu zaman içinde önceki bir noktaya geri yükleyebilirsiniz. Geri yüklenen veriler yeni bir sunucuya kopyalanır ve var olan sunucu olduğu gibi bırakılır. Örneğin, bir tablo yanlışlıkla öğleden sonra bırakılırsa, gece ' e kadar olan saate geri yükleyebilirsiniz. Daha sonra, eksik tablo ve verileri, sunucunun geri yüklenen kopyasından elde edebilirsiniz. 
+## <a name="server-point-in-time-restore"></a>Sunucu zamanında geri yükleme
+Sunucuyu önceki bir noktaya geri yükleyebilirsiniz. Geri yüklenen veriler yeni bir sunucuya kopyalanır ve varolan sunucu olduğu gibi bırakılır. Örneğin, bugün öğlen yanlışlıkla bir tablo düşerse, öğlenden hemen önce zamangeri yükleyebilirsiniz. Ardından, eksik tabloyu ve verileri sunucunun geri yüklenen kopyasından alabilirsiniz. 
 
-Sunucuyu geri yüklemek için, Azure CLı [az Postgres Server restore](/cli/azure/postgres/server) komutunu kullanın.
+Sunucuyu geri yüklemek için Azure CLI [az postgres sunucu geri yükleme](/cli/azure/postgres/server) komutunu kullanın.
 
-### <a name="run-the-restore-command"></a>Restore komutunu çalıştırın
+### <a name="run-the-restore-command"></a>Geri yükleme komutunu çalıştırın
 
-Sunucuyu geri yüklemek için, Azure CLı komut isteminde aşağıdaki komutu girin:
+Sunucuyu geri yüklemek için Azure CLI komut isteminde aşağıdaki komutu girin:
 
 ```azurecli-interactive
 az postgres server restore --resource-group myresourcegroup --name mydemoserver-restored --restore-point-in-time 2018-03-13T13:59:00Z --source-server mydemoserver
 ```
 
-`az postgres server restore` komutu aşağıdaki parametreleri gerektirir:
+Komut `az postgres server restore` aşağıdaki parametreleri gerektirir:
 
 | Ayar | Önerilen değer | Açıklama  |
 | --- | --- | --- |
-| resource-group |  myresourcegroup |  Kaynak sunucunun varolduğu kaynak grubu.  |
+| resource-group |  myresourcegroup |  Kaynak sunucunun bulunduğu kaynak grubu.  |
 | ad | mydemoserver-restored | Geri yükleme komutu tarafından oluşturulan yeni sunucunun adı. |
-| restore-point-in-time | 2018-03-13T13:59:00Z | Geri yüklenecek bir zaman noktası seçin. Bu tarih ve saat, kaynak sunucunun yedekleme saklama dönemi içinde olmalıdır. ISO8601 tarih ve saat biçimini kullanın. Örneğin, `2018-03-13T05:59:00-08:00`gibi kendi yerel saat diliminizi kullanabilirsiniz. UTC Zulu dili biçimini de kullanabilirsiniz; Örneğin, `2018-03-13T13:59:00Z`. |
+| restore-point-in-time | 2018-03-13T13:59:00Z | Geri yüklemek için zaman içinde bir nokta seçin. Bu tarih ve saat, kaynak sunucunun yedekleme saklama dönemi içinde olmalıdır. ISO8601 tarih ve saat biçimini kullanın. Örneğin, kendi yerel saat diliminizi kullanabilirsiniz, örneğin. `2018-03-13T05:59:00-08:00` UtC Zulu biçimini de kullanabilirsiniz, `2018-03-13T13:59:00Z`örneğin. |
 | source-server | mydemoserver | Geri yükleme kaynağı olarak kullanılacak sunucunun adı veya kimliği. |
 
-Bir sunucuyu daha önceki bir zaman noktasına geri yüklediğinizde yeni bir sunucu oluşturulur. Özgün sunucu ve belirtilen zaman içindeki veritabanları yeni sunucuya kopyalanır.
+Bir sunucuydan daha önceki bir noktaya geri yüklediğinizde, yeni bir sunucu oluşturulur. Zaman içinde belirtilen noktadan orijinal sunucu ve veritabanları yeni sunucuya kopyalanır.
 
-Geri yüklenen sunucu için konum ve fiyatlandırma katmanı değerleri, özgün sunucu ile aynı kalır. 
+Geri yüklenen sunucunun konum ve fiyatlandırma katmanı değerleri özgün sunucuyla aynı kalır. 
 
-Geri yükleme işlemi tamamlandıktan sonra, yeni sunucuyu bulun ve verilerin beklendiği gibi geri yüklendiğini doğrulayın. Yeni sunucu, geri yükleme başlatıldığı sırada mevcut sunucu için geçerli olan Sunucu Yöneticisi oturum açma adı ve parolaya sahiptir. Parola, yeni sunucunun **genel bakış** sayfasından değiştirilebilir.
+Geri yükleme işlemi bittikten sonra, yeni sunucuyu bulun ve verilerin beklendiği gibi geri yüklenmiş olduğundan doğrulayın. Yeni sunucu, geri yüklemenin başlatıldığı sırada varolan sunucu için geçerli olan sunucu yöneticisi giriş adı ve parolaya sahiptir. Parola, yeni sunucunun **Genel Bakış** sayfasından değiştirilebilir.
 
-Geri yükleme sırasında oluşturulan yeni sunucu, özgün sunucuda bulunan güvenlik duvarı kurallarına veya VNet hizmeti uç noktalarına sahip değildir. Bu kuralların bu yeni sunucu için ayrı olarak ayarlanması gerekir.
+Geri yükleme sırasında oluşturulan yeni sunucuda güvenlik duvarı kuralları veya özgün sunucuda var olan VNet hizmet bitiş noktaları yoktur. Bu yeni sunucu için bu kuralların ayrı olarak ayarlanılması gerekir.
 
 ## <a name="geo-restore"></a>Coğrafi geri yükleme
-Sunucunuzu coğrafi olarak yedekli yedeklemeler için yapılandırdıysanız, var olan sunucunun yedeklemesinden yeni bir sunucu oluşturulabilir. Bu yeni sunucu, PostgreSQL için Azure veritabanı 'nın kullanılabildiği herhangi bir bölgede oluşturulabilir.  
+Sunucunuzu coğrafi olarak gereksiz yedeklemeler için yapılandıysanız, varolan sunucunun yedeklemesinden yeni bir sunucu oluşturulabilir. Bu yeni sunucu, PostgreSQL için Azure Veritabanı'nın kullanılabilen herhangi bir bölgede oluşturulabilir.  
 
-Coğrafi olarak yedekli bir yedekleme kullanarak bir sunucu oluşturmak için Azure CLı `az postgres server georestore` komutunu kullanın.
+Coğrafi yedek liyedek için bir sunucu oluÅ `az postgres server georestore` mak için Azure CLI komutunu kullanın.
 
 > [!NOTE]
-> Sunucu ilk oluşturulduğunda coğrafi geri yükleme için hemen kullanılamayabilir. Gerekli meta verilerin doldurulması birkaç saat sürebilir.
+> Bir sunucu ilk oluşturulduğunda, coğrafi geri yükleme için hemen kullanılamayabilir. Gerekli meta verilerin doldurulması birkaç saat sürebilir.
 >
 
-Sunucuyu coğrafi olarak geri yüklemek için, Azure CLı komut isteminde aşağıdaki komutu girin:
+Sunucuyu coğrafi olarak geri yüklemek için Azure CLI komut isteminde aşağıdaki komutu girin:
 
 ```azurecli-interactive
 az postgres server georestore --resource-group myresourcegroup --name mydemoserver-georestored --source-server mydemoserver --location eastus --sku-name GP_Gen4_8 
 ```
-Bu komut, *myresourcegroup*öğesine ait olacak Doğu ABD *mydemoserver-geogeri yüklenen* adlı yeni bir sunucu oluşturur. 8 sanal çekirdeğe sahip bir Genel Amaçlı, gen 4 sunucusudur. Sunucu, *myresourcegroup* kaynak grubunda de olan, coğrafi olarak yedekli olan *demosunucum*yedeğinden oluşturulur.
+Bu komut, Doğu ABD'de *mydemoserver-georestored* adlı yeni bir sunucu oluşturur ve *bu sunucu myresourcegroup'a*ait olacaktır. Bu genel amaçlı, 8 vCores ile Gen 4 sunucu. Sunucu *mydemoserver*coğrafi yedekli yedekleme oluşturulur , aynı zamanda kaynak grubu *myresourcegrubunda*
 
-Yeni sunucuyu mevcut sunucudan farklı bir kaynak grubunda oluşturmak istiyorsanız, `--source-server` parametresinde sunucu adını aşağıdaki örnekte olduğu gibi niteleyebilirsiniz:
+Yeni sunucuyu varolan sunucudan farklı bir kaynak grubunda oluşturmak `--source-server` istiyorsanız, parametrede sunucu adını aşağıdaki örnekte olduğu gibi nitelendirebilirsiniz:
 
 ```azurecli-interactive
 az postgres server georestore --resource-group newresourcegroup --name mydemoserver-georestored --source-server "/subscriptions/$<subscription ID>/resourceGroups/$<resource group ID>/providers/Microsoft.DBforPostgreSQL/servers/mydemoserver" --location eastus --sku-name GP_Gen4_8
 
 ```
 
-`az postgres server georestore` komutu aşağıdaki parametreleri gerektirir:
+Komut `az postgres server georestore` aşağıdaki parametreleri gerektirir:
 
 | Ayar | Önerilen değer | Açıklama  |
 | --- | --- | --- |
 |resource-group| myresourcegroup | Yeni sunucunun ait olacağı kaynak grubunun adı.|
-|ad | mydemoserver-geogeri yüklendi | Yeni sunucunun adı. |
-|source-server | mydemoserver | Coğrafi olarak yedekli yedeklemeleri kullanılan mevcut sunucunun adı. |
+|ad | mydemoserver-georestored | Yeni sunucunun adı. |
+|source-server | mydemoserver | Coğrafi yedek li yedekleri kullanılan varolan sunucunun adı. |
 |location | eastus | Yeni sunucunun konumu. |
-|sku-name| GP_Gen4_8 | Bu parametre, yeni sunucunun fiyatlandırma katmanını, işlem üretimini ve sanal çekirdek sayısını ayarlar. GP_Gen4_8, 8 sanal çekirdeğe sahip bir Genel Amaçlı, gen 4 sunucusuyla eşlenir.|
+|sku-name| GP_Gen4_8 | Bu parametre, yeni sunucunun fiyatlandırma katmanını, işlem oluşturmayı ve vCore sayısını ayarlar. Genel Amaçlı, 8 vCores ile Gen 4 sunucu için haritalar GP_Gen4_8.|
 
-Coğrafi geri yükleme ile yeni bir sunucu oluştururken, kaynak sunucuyla aynı depolama boyutunu ve fiyatlandırma katmanını devralır. Bu değerler oluşturma sırasında değiştirilemez. Yeni sunucu oluşturulduktan sonra, depolama boyutu yukarı ölçeklendirilebilir.
+Coğrafi yükleme ile yeni bir sunucu oluştururken, kaynak sunucuyla aynı depolama boyutu ve fiyatlandırma katmanını devralır. Bu değerler oluşturma sırasında değiştirilemez. Yeni sunucu oluşturulduktan sonra depolama boyutu büyütülebilir.
 
-Geri yükleme işlemi tamamlandıktan sonra, yeni sunucuyu bulun ve verilerin beklendiği gibi geri yüklendiğini doğrulayın. Yeni sunucu, geri yükleme başlatıldığı sırada mevcut sunucu için geçerli olan Sunucu Yöneticisi oturum açma adı ve parolaya sahiptir. Parola, yeni sunucunun **genel bakış** sayfasından değiştirilebilir.
+Geri yükleme işlemi bittikten sonra, yeni sunucuyu bulun ve verilerin beklendiği gibi geri yüklenmiş olduğundan doğrulayın. Yeni sunucu, geri yüklemenin başlatıldığı sırada varolan sunucu için geçerli olan sunucu yöneticisi giriş adı ve parolaya sahiptir. Parola, yeni sunucunun **Genel Bakış** sayfasından değiştirilebilir.
 
-Geri yükleme sırasında oluşturulan yeni sunucu, özgün sunucuda bulunan güvenlik duvarı kurallarına veya VNet hizmeti uç noktalarına sahip değildir. Bu kuralların bu yeni sunucu için ayrı olarak ayarlanması gerekir.
+Geri yükleme sırasında oluşturulan yeni sunucuda güvenlik duvarı kuralları veya özgün sunucuda var olan VNet hizmet bitiş noktaları yoktur. Bu yeni sunucu için bu kuralların ayrı olarak ayarlanılması gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- Hizmetin [yedeklemeleri](concepts-backup.md) hakkında daha fazla bilgi edinin
-- [Çoğaltmalar](concepts-read-replicas.md) hakkında bilgi edinin
+- Hizmetin [yedekleri](concepts-backup.md) hakkında daha fazla bilgi edinin
+- [Yinelemeler](concepts-read-replicas.md) hakkında bilgi edinin
 - [İş sürekliliği](concepts-business-continuity.md) seçenekleri hakkında daha fazla bilgi edinin

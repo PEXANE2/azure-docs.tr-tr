@@ -1,97 +1,97 @@
 ---
-title: Linkerd 'ye Genel Bakış
-description: Linkerd 'ye genel bakış edinme
+title: Linkerd'a Genel Bakış
+description: Linkerd'a genel bakış elde edin
 author: paulbouwer
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 ms.openlocfilehash: 3181be62a14ec1b3450bd181172b5323ca176427
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77593776"
 ---
 # <a name="linkerd"></a>Linkerd
 
 ## <a name="overview"></a>Genel Bakış
 
-[Linkerd][linkerd] , kullanımı kolay ve hafif bir hizmet ağı.
+[Linkerd][linkerd] kullanımı kolay ve hafif servis örgü.
 
 ## <a name="architecture"></a>Mimari
 
-Linkerd, Ultralight [Linkerd][linkerd-proxy] özelleştirilmiş proxy 'lerden oluşan bir veri düzlemi sağlar. Bu akıllı proxy 'ler, yerleşik uygulamalarınızın ve iş yüklerinizin içindeki ve içindeki tüm ağ trafiğini denetler. Proxy 'ler, [Prometheus][prometheus] ölçüm uç noktaları aracılığıyla ölçümleri de kullanıma sunar.
+Linkerd ultralight [Linkerd][linkerd-proxy] özel proxy sidecars oluşan bir veri düzlemi sağlar. Bu akıllı yakınlıklar, meshed uygulamalarınıza ve iş yüklerinizdeki tüm ağ trafiğini kontrol eder. [Prometheus][prometheus] ölçümleri uç noktaları üzerinden ölçümleri de ortaya çıkarır.
 
-Denetim düzlemi, aşağıdaki [Bileşenler][linkerd-architecture]aracılığıyla yapılandırmayı ve toplu Telemetriyi yönetir:
+Kontrol düzlemi aşağıdaki [bileşenler][linkerd-architecture]aracılığıyla yapılandırmayı ve toplu telemetriyi yönetir:
 
-- **Controller** -Linkerd CLI ve panosunu yönlendiren API sağlar. Proxy 'ler için yapılandırma sağlar.
+- **Denetleyici** - Linkerd CLI ve Pano'yu yönlendiren api sağlar. Yakınlıklar için yapılandırma sağlar.
 
-- **Tap** -istekler ve yanıtlar hakkında gerçek zamanlı izler oluşturun.
+- **Dokunun** - İstek ve yanıtlar üzerinde gerçek zamanlı saatler kurun.
 
-- **Kimlik** -hizmetler arasında MTLS 'ye izin veren kimlik ve güvenlik özellikleri sağlar.
+- **Kimlik** - Hizmetler arasında mTLS'ye izin veren kimlik ve güvenlik yetenekleri sağlar.
 
-- **Web** -Linkerd panosunu sağlar.
+- **Web** - Linkerd panosusağlar.
 
 
-Aşağıdaki mimari diyagramda, veri düzlemi ve denetim düzlemi içindeki çeşitli bileşenlerin nasıl etkileşimde bulunduğu gösterilmektedir.
+Aşağıdaki mimari diyagram, veri düzlemi ve kontrol düzlemindeki çeşitli bileşenlerin nasıl etkileştiğini gösterir.
 
 
 ![Linkerd bileşenlerine ve mimarisine genel bakış.](media/servicemesh/linkerd/about-architecture.png)
 
 
-## <a name="selection-criteria"></a>Seçim ölçütü
+## <a name="selection-criteria"></a>Seçim kriterleri
 
-İş yükleriniz için Linkerd değerlendirilirken aşağıdaki alanların anlaşılması ve dikkate alınması önemlidir:
+İş yükleriniz için Linkerd'i değerlendirirken aşağıdaki alanları anlamak ve göz önünde bulundurmak önemlidir:
 
-- [Tasarım Ilkeleri](#design-principles)
-- [Yetenek](#capabilities)
+- [Tasarım İlkeleri](#design-principles)
+- [Özellikler](#capabilities)
 - [Senaryolar](#scenarios)
 
 
 ### <a name="design-principles"></a>Tasarım ilkeleri
 
-Aşağıdaki tasarım ilkeleri Linkerd projesini [gösterir][design-principles] :
+Aşağıdaki tasarım ilkeleri Linkerd projesini [yönlendirir:][design-principles]
 
-- **Basit tutun** ; kullanımı ve anlaşılması kolay olmalıdır.
+- **Basit tutun** - kullanımı ve anlaşılması kolay olmalıdır.
 
-- **Kaynak gereksinimlerini en aza indirin** -minimum performans ve kaynak maliyeti yapın.
+- **Kaynak Gereksinimlerini En Aza Indirin** - En az performans ve kaynak maliyeti uygulayın.
 
-- **Yalnızca çalışma** -var olan uygulamaları bozmayın ve karmaşık yapılandırma gerektirmez.
+- **Sadece Çalışma** - Varolan uygulamaları bozmayın ve karmaşık yapılandırma gerektirmez.
 
 
 ### <a name="capabilities"></a>Özellikler
 
-Linkerd aşağıdaki yetenek kümesini sağlar:
+Linkerd aşağıdaki yetenekleri sağlar:
 
-- **Ağ** – hata ayıklama için yerleşik seçeneği
+- **Mesh** – hata ayıklama seçeneğiyerleşik
 
-- **Trafik yönetimi** – bölme, zaman aşımları, yeniden denemeler, giriş
+- **Trafik Yönetimi** – bölme, zaman ayırma, yeniden deneme, giriş
 
-- **Güvenlik** – şifreleme (MTLS), her 24 saatte bir bir sertifika autodöndürüldüğü
+- **Güvenlik** – şifreleme (mTLS), her 24 saatte bir otomatik olarak dönen sertifikalar
 
-- **Observability** – altın ölçümler, dokunma, izleme, hizmet profilleri ve yol ölçümleri başına, topoloji grafikleri ile Web panosu, Prometheus, grafana
+- **Gözlemlenebilirlik** – altın ölçümler, musluk, izleme, servis profilleri ve rota ölçümleri başına, topoloji grafikleri ile web panosu, prometheus, grafana
 
 
 ### <a name="scenarios"></a>Senaryolar
 
-Linkerd, aşağıdaki senaryolar için uygundur ve önerilir:
+Linkerd aşağıdaki senaryolar için uygundur ve önerilir:
 
-- Yalnızca temel özellik gereksinimleri kümesiyle kullanımı basittir
+- Sadece temel yetenek gereksinimleri kümesiyle kullanımı basit
 
-- Observability ve basit trafik yönetimine odaklanarak düşük gecikme süresi, düşük yük
+- Düşük gecikme, düşük genel yük, gözlemlenebilirlik ve basit trafik yönetimi odaklı
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Aşağıdaki belgeler Azure Kubernetes Service (AKS) üzerinde Linkerd 'yi nasıl yükleyebileceğinizi anlatmaktadır:
+Aşağıdaki belgeler, Azure Kubernetes Hizmeti'ne (AKS) Linkerd'i nasıl yükleyebileceğinizi açıklar:
 
 > [!div class="nextstepaction"]
-> [Azure Kubernetes Service (AKS) içinde Linkerd 'yi kurma][linkerd-install]
+> [Azure Kubernetes Hizmetinde (AKS) Linkerd'i Yükleyin][linkerd-install]
 
-Ayrıca, Linkerd özelliklerini ve mimarisini de inceleyebilirsiniz:
+Linkerd özelliklerini ve mimarisini daha fazla keşfedebilirsiniz:
 
-- [Linkerd özellikleri][linkerd-features]
-- [Linkerd mimarisi][linkerd-architecture]
+- [Linkerd Özellikleri][linkerd-features]
+- [Linkerd Mimarlık][linkerd-architecture]
 
 <!-- LINKS - external -->
 [linkerd]: https://linkerd.io/2/overview/

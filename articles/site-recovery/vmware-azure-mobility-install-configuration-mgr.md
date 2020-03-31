@@ -1,66 +1,66 @@
 ---
-title: Azure Site Recovery 'da yüklemenin olağanüstü durum kurtarması için Mobility hizmetini otomatikleştirin
-description: Azure Site Recovery ile VMware/fiziksel sunucu olağanüstü durum kurtarma için Mobility hizmetini otomatik olarak yüklemek.
+title: Azure Site Kurtarma'daki yüklemenin olağanüstü kurtarma sıyrık kurtarma için Mobilite Hizmetini otomatikleştirin
+description: Azure Site Kurtarma ile VMware /fiziksel sunucu olağanüstü durum kurtarma için Mobilite Hizmeti otomatik olarak nasıl yüklenir?
 author: Rajeswari-Mamilla
 ms.topic: how-to
 ms.date: 2/5/2020
 ms.author: ramamill
 ms.openlocfilehash: f24d321e882024d324435498adf11694037547f7
-ms.sourcegitcommit: 79cbd20a86cd6f516acc3912d973aef7bf8c66e4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77252236"
 ---
-# <a name="automate-mobility-service-installation"></a>Mobility hizmeti yüklemesini otomatikleştirin
+# <a name="automate-mobility-service-installation"></a>Mobilite Hizmeti kurulumunu otomatikleştirin
 
-Bu makalede, [Azure Site Recovery](site-recovery-overview.md)' de Mobility hizmeti Aracısı için yükleme ve güncelleştirmelerin nasıl otomatikleştirilmesi açıklanmaktadır.
+Bu makalede, [Azure Site Kurtarma'daki](site-recovery-overview.md)Mobilite Hizmeti aracısının yükleme ve güncelleştirmeleri nasıl otomatikleştirilen açıklanmaktadır.
 
-Şirket içi VMware VM 'Leri ve fiziksel sunucuları Azure 'a olağanüstü durum kurtarma için Site Recovery dağıtırken, çoğaltmak istediğiniz her makineye Mobility hizmet aracısını yüklersiniz. Mobility hizmeti makinede veri yazmaları yakalar ve bunları çoğaltma için Site Recovery işlem sunucusuna iletir. Mobility hizmetini birkaç yolla dağıtabilirsiniz:
+Şirket içi VMware VM'lerinin ve fiziksel sunucuların olağanüstü kurtarma durumu için Site Kurtarma'yı Azure'a dağıtırken, çoğaltmak istediğiniz her makineye Mobilite Hizmeti aracısını yüklersiniz. Mobilite Hizmeti, makinedeki verileri yakalar ve çoğaltma için Site Kurtarma işlem sunucusuna iletir. Mobilite Hizmetini birkaç şekilde dağıtabilirsiniz:
 
-- **Anında yükleme**: Azure Portal bir makine için çoğaltmayı etkinleştirdiğinizde Mobility hizmet aracısını Site Recovery yüklemesine izin verin.
-- **El ile yükleme**: Mobility hizmetini her makineye el ile yükleme. Gönderim ve el ile yükleme hakkında [daha fazla bilgi edinin](vmware-physical-mobility-service-overview.md) .
-- **Otomatik dağıtım**: Microsoft uç noktası Configuration Manager gibi yazılım dağıtım araçlarıyla veya jetpatch gibi üçüncü taraf araçlarla yüklemeyi otomatikleştirin.
+- **Push yükleme**: Azure portalındaki bir makineiçin çoğaltmayı etkinleştirdiğinizde Site Kurtarma'nın Mobilite servis aracısını yüklemesine izin verin.
+- **Manuel kurulum**: Mobilite hizmetini her makineye manuel olarak yükleyin. İtme ve manuel yükleme hakkında [daha fazla bilgi edinin.](vmware-physical-mobility-service-overview.md)
+- **Otomatik dağıtım**: Yüklemeyi Microsoft Endpoint Configuration Manager gibi yazılım dağıtım araçları yla veya JetPatch gibi üçüncü taraf araçlarıyla otomatikleştirin.
 
-Otomatik yükleme ve güncelleştirme, şu durumlarda bir çözüm sağlar:
+Otomatik kurulum ve güncelleştirme, şu şekilde bir çözüm sağlar:
 
-- Kuruluşunuz, korumalı sunucularda anında yüklemeye izin vermiyor.
-- Şirket ilkeniz, parolaların düzenli aralıklarla değiştirilmesini gerektirir. Anında yükleme için bir parola belirtmeniz gerekir.
-- Güvenlik ilkeniz belirli makineler için güvenlik duvarı özel durumlarının eklenmesine izin vermez.
-- Bir barındırma hizmeti sağlayıcısı görevi gören ve Site Recovery ile anında yükleme için gereken müşteri makine kimlik bilgilerini sağlamak istemiyoruz.
+- Kuruluşunuz korumalı sunucularda itme yüklemesi için izin vermez.
+- Şirket politikanız, parolaların düzenli aralıklarla değiştirilmesini gerektirir. Push yüklemesi için bir parola belirtmeniz gerekir.
+- Güvenlik politikanız belirli makineler için güvenlik duvarı özel durumları eklemeye izin vermez.
+- Barındırma hizmeti sağlayıcısı olarak hareket ediyorsanız ve Site Kurtarma ile anında yükleme için gereken müşteri makinesi kimlik bilgilerini sağlamak istemiyorsunuz.
 - Aracı yüklemelerini aynı anda çok sayıda sunucuya ölçeklendirmeniz gerekir.
-- Planlı bakım pencereleri sırasında yüklemeleri ve yükseltmeleri zamanlamak istiyorsunuz.
+- Planlanan bakım pencereleri sırasında yüklemeleri ve yükseltmeleri zamanlamak istiyorsunuz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Yüklemeyi otomatikleştirmek için aşağıdaki öğeler gereklidir:
+Yüklemeyi otomatikleştirmek için aşağıdaki öğelere ihtiyacınız vardır:
 
-- [Configuration Manager](/configmgr/) veya [jetpatch](https://jetpatch.com/microsoft-azure-site-recovery/)gibi dağıtılan bir yazılım yükleme çözümü.
-- VMware olağanüstü durum kurtarması veya [fiziksel sunucu](physical-azure-disaster-recovery.md) olağanüstü durum kurtarma için [Azure](tutorial-prepare-azure.md) 'da ve [Şirket](vmware-azure-tutorial-prepare-on-premises.md) içinde dağıtım önkoşulları. Olağanüstü durum kurtarma için [destek gereksinimlerini](vmware-physical-azure-support-matrix.md) gözden geçirin.
+- [Configuration Manager](/configmgr/) veya [JetPatch](https://jetpatch.com/microsoft-azure-site-recovery/)gibi dağıtılmış bir yazılım yükleme çözümü.
+- VMware olağanüstü durum kurtarma veya [fiziksel sunucu](physical-azure-disaster-recovery.md) olağanüstü durum kurtarma için [Azure](tutorial-prepare-azure.md) ve [şirket içi](vmware-azure-tutorial-prepare-on-premises.md) dağıtım ön koşulları. Olağanüstü durum kurtarma için [destek gereksinimlerini](vmware-physical-azure-support-matrix.md) gözden geçirin.
 
-## <a name="prepare-for-automated-deployment"></a>Otomatik dağıtıma hazırlanma
+## <a name="prepare-for-automated-deployment"></a>Otomatik dağıtıma hazırlanın
 
-Aşağıdaki tabloda, Mobility hizmeti dağıtımını otomatikleştirmek için araçlar ve süreçler özetlenmektedir.
+Aşağıdaki tabloda, Mobilite Hizmeti dağıtımını otomatikleştirmek için araçlar ve süreçler özetlenmiştir.
 
-**Araç** | **Ayrıntılar** | **Yönergelerin**
+**Araç** | **Şey** | **Yönergeler**
 --- | --- | ---
-**Configuration Manager** | 1. yukarıda belirtilen [önkoşulların](#prerequisites) bulunduğundan emin olun. <br/><br/> 2. Site Recovery yapılandırma sunucusunu OVF şablonu kullanarak bir VMware VM 'si olarak dağıtmak üzere bir OVA dosyası indirmek üzere, kaynak ortamı ayarlayarak olağanüstü durum kurtarma dağıtın.<br/><br/> 3. yapılandırma sunucusunu Site Recovery hizmetine kaydeder, hedef Azure ortamını ayarlar ve bir çoğaltma ilkesi yapılandırırsınız.<br/><br/> 4. otomatik Mobility hizmeti dağıtımı için yapılandırma sunucusu parolasını ve Mobility hizmeti yükleme dosyalarını içeren bir ağ paylaşma oluşturursunuz.<br/><br/> 5. yükleme veya güncelleştirme içeren bir Configuration Manager paketi oluşturun ve Mobility hizmeti dağıtımına hazırlanın.<br/><br/> 6. daha sonra Mobility hizmetinin yüklü olduğu makineler için Azure 'a çoğaltmayı etkinleştirebilirsiniz. | [Configuration Manager ile Otomatikleştir](#automate-with-configuration-manager)
-**JetPatch** | 1. yukarıda belirtilen [önkoşulların](#prerequisites) bulunduğundan emin olun. <br/><br/> 2. bir OVF şablonu kullanarak Site Recovery ortamınızda Azure Site Recovery için JetPatch Aracısı yöneticisini indirmek ve dağıtmak da dahil olmak üzere, kaynak ortamı ayarlayarak olağanüstü durum kurtarma dağıtın.<br/><br/> 3. yapılandırma sunucusunu Site Recovery kaydeder, hedef Azure ortamını ayarlar ve bir çoğaltma ilkesi yapılandırırsınız.<br/><br/> 4. otomatik dağıtım için JetPatch Aracısı Yöneticisi yapılandırmasını başlatın ve doldurun.<br/><br/> 5. JetPatch 'de Mobility hizmeti aracısının dağıtımını ve yükseltmesini otomatikleştirmek için bir Site Recovery ilkesi oluşturabilirsiniz. <br/><br/> 6. daha sonra Mobility hizmetinin yüklü olduğu makineler için Azure 'a çoğaltmayı etkinleştirebilirsiniz. | [JetPatch Aracısı Yöneticisi ile otomatikleştirin](https://jetpatch.com/microsoft-azure-site-recovery-deployment-guide/)<br/><br/> [JetPatch 'de aracı yüklemesinde sorun giderme](https://kc.jetpatch.com/hc/articles/360035981812)
+**Configuration Manager** | 1. Yukarıda listelenen [ön koşullara](#prerequisites) sahip olduğunuzu doğrulayın. <br/><br/> 2. Bir OVF şablonu kullanarak Site Kurtarma yapılandırma sunucusunu VMware VM olarak dağıtmak için bir OVA dosyası indirme dahil olmak üzere kaynak ortamı nı ayarlayarak olağanüstü durum kurtarma dağıtmayı.<br/><br/> 3. Yapılandırma sunucusunu Site Kurtarma hizmetine kaydettirin, hedef Azure ortamını ayarlar ve bir çoğaltma ilkesi yapılandırın.<br/><br/> 4. Otomatik Mobilite Hizmeti dağıtımı için, yapılandırma sunucusu geçiş cümlesi ve Mobilite Hizmeti yükleme dosyalarını içeren bir ağ paylaşımı oluşturursunuz.<br/><br/> 5. Yükleme veya güncelleştirmeleri içeren bir Configuration Manager paketi oluşturur ve Mobilite Hizmeti dağıtımına hazırlanırsınız.<br/><br/> 6. Daha sonra Mobilite Hizmeti yüklü olan makineler için Azure'a çoğaltmayı etkinleştirebilirsiniz. | [Configuration Manager ile otomatikleştirin](#automate-with-configuration-manager)
+**JetPatch** | 1. Yukarıda listelenen [ön koşullara](#prerequisites) sahip olduğunuzu doğrulayın. <br/><br/> 2. Bir OVF şablonu kullanarak, Azure Site Kurtarma ortamınızda Azure Site Kurtarma için JetPatch Agent Manager'ı indirme ve dağıtma dahil olmak üzere kaynak ortamı kurarak olağanüstü durum kurtarmayı dağıtın.<br/><br/> 3. Yapılandırma sunucusunu Site Kurtarma'ya kaydettirin, hedef Azure ortamını ayarlar ve bir çoğaltma ilkesi yapılandırın.<br/><br/> 4. Otomatik dağıtım için JetPatch Agent Manager yapılandırmasını başlatma ve tamamlama.<br/><br/> 5. JetPatch'te, Mobilite Hizmeti aracısının dağıtımını ve yükseltmesini otomatikleştirmek için bir Site Kurtarma ilkesi oluşturabilirsiniz. <br/><br/> 6. Daha sonra Mobilite Hizmeti yüklü olan makineler için Azure'a çoğaltmayı etkinleştirebilirsiniz. | [JetPatch Agent Manager ile otomatikleştirin](https://jetpatch.com/microsoft-azure-site-recovery-deployment-guide/)<br/><br/> [JetPatch'te sorun giderme aracısı kurulumu](https://kc.jetpatch.com/hc/articles/360035981812)
 
-## <a name="automate-with-configuration-manager"></a>Configuration Manager ile Otomatikleştir
+## <a name="automate-with-configuration-manager"></a>Configuration Manager ile otomatikleştirin
 
 ### <a name="prepare-the-installation-files"></a>Yükleme dosyalarını hazırlama
 
-1. Önkoşulların yerinde olduğundan emin olun.
-1. Yapılandırma sunucusunu çalıştıran makine tarafından erişilebilen bir güvenli ağ dosya paylaşma (SMB paylaşma) oluşturun.
-1. Configuration Manager ' de, Mobility hizmetini yüklemek veya güncelleştirmek istediğiniz [sunucuları kategorilere ayırın](/sccm/core/clients/manage/collections/automatically-categorize-devices-into-collections) . Tek bir koleksiyon tüm Windows Server 'lar, diğer tüm Linux sunucularını içermelidir.
-1. Ağ paylaşımında, bir klasör oluşturun:
+1. Ön koşulları niçin yerine aldığınızdan emin olun.
+1. Yapılandırma sunucusunu çalıştıran makine tarafından erişilebilen güvenli bir ağ dosya paylaşımı (SMB paylaşımı) oluşturun.
+1. Configuration Manager'da, Mobilite Hizmetini yüklemek veya güncelleştirmek istediğiniz [sunucuları kategorilere](/sccm/core/clients/manage/collections/automatically-categorize-devices-into-collections) ayırın. Bir koleksiyon tüm Windows sunucularını, diğertüm Linux sunucularını içermelidir.
+1. Ağ paylaşımında bir klasör oluşturun:
 
-   - Windows makinelerine yükleme için _Mobsvcwindows_adlı bir klasör oluşturun.
-   - Linux makinelerinde yükleme için _Mobsvclinux_adlı bir klasör oluşturun.
+   - Windows makinelerine yükleme için _MobSvcWindows_adında bir klasör oluşturun.
+   - Linux makinelerine kurulum için _MobSvcLinux_adında bir klasör oluşturun.
 
 1. Yapılandırma sunucusu makinesinde oturum açın.
-1. Yapılandırma sunucusu makinesinde bir yönetim komut istemi açın.
+1. Yapılandırma sunucusu makinesinde, bir yönetim komut istemi açın.
 1. Parola dosyasını oluşturmak için şu komutu çalıştırın:
 
     ```Console
@@ -68,36 +68,36 @@ Aşağıdaki tabloda, Mobility hizmeti dağıtımını otomatikleştirmek için 
     genpassphrase.exe -v > MobSvc.passphrase
     ```
 
-1. _Mobsvc. parola_ dosyasını Windows klasörüne ve Linux klasörüne kopyalayın.
-1. Yükleme dosyalarını içeren klasöre gitmek için şu komutu çalıştırın:
+1. _MobSvc.passphrase_ dosyasını Windows klasörüne ve Linux klasörüne kopyalayın.
+1. Yükleme dosyalarını içeren klasöre göz atmak için şu komutu çalıştırın:
 
     ```Console
     cd %ProgramData%\ASR\home\svsystems\pushinstallsvc\repository
     ```
 
-1. Bu yükleme dosyalarını ağ paylaşımında Kopyala:
+1. Bu yükleme dosyalarını ağ paylaşımına kopyalayın:
 
-   - Windows için _Microsoft-ASR_UA_version_Windows_GA_date_Release. exe_ ' yi _mobsvcwindows_'a kopyalayın.
-   - Linux için aşağıdaki dosyaları _Mobsvclinux_'a kopyalayın:
-     - _Microsoft-ASR_UARHEL6 -64release. tar. gz_
-     - _Microsoft-ASR_UARHEL7 -64release. tar. gz_
-     - _Microsoft-ASR_UASLES11-SP3-64release. tar. gz_
-     - _Microsoft-ASR_UASLES11-SP4-64release. tar. gz_
-     - _Microsoft-ASR_UAOL6 -64release. tar. gz_
-     - _Microsoft-ASR_UAUBUNTU-14.04 -64release. tar. gz_
+   - Windows için, _MobSvcWindows_ _Microsoft-ASR_UA_version_Windows_GA_date_Release.exe_ kopyalayın.
+   - Linux için, _MobSvcLinux_aşağıdaki dosyaları kopyalamak:
+     - _Microsoft-ASR_UARHEL6-64release.tar.gz_
+     - _Microsoft-ASR_UARHEL7-64release.tar.gz_
+     - _Microsoft-ASR_UASLES11-SP3-64release.tar.gz_
+     - _Microsoft-ASR_UASLES11-SP4-64release.tar.gz_
+     - _Microsoft-ASR_UAOL6-64release.tar.gz_
+     - _Microsoft-ASR_UAUBUNTU-14.04-64release.tar.gz_
 
-1. Aşağıdaki yordamlarda açıklandığı gibi, kodu Windows veya Linux klasörlerine kopyalayın. Şu olduğunu varsayıyoruz:
+1. Aşağıdaki yordamlarda açıklandığı gibi, kodu Windows veya Linux klasörlerine kopyalayın. Biz varsayarak:
 
-   - Yapılandırma sunucusunun IP adresi `192.168.3.121`.
-   - Güvenli ağ dosya paylaşma `\\ContosoSecureFS\MobilityServiceInstallers`.
+   - Yapılandırma sunucusunun IP `192.168.3.121`adresi.
+   - Güvenli ağ dosya `\\ContosoSecureFS\MobilityServiceInstallers`paylaşımı .
 
-### <a name="copy-code-to-the-windows-folder"></a>Kodu Windows klasörüne kopyala
+### <a name="copy-code-to-the-windows-folder"></a>Kodu Windows klasörüne kopyalama
 
 Aşağıdaki kodu kopyalayın:
 
-- Kodu _Mobsvcwindows_ klasörüne _install. bat_olarak kaydedin.
-- Bu betikteki `[CSIP]` yer tutucuları yapılandırma sunucunuzun IP adresinin gerçek değerleriyle değiştirin.
-- Betik, Mobility hizmeti aracısının yeni yüklemelerini ve zaten yüklü olan aracıların güncelleştirmelerini destekler.
+- _Kodu MobSvcWindows_ klasörüne _install.bat_olarak kaydedin.
+- Bu `[CSIP]` komut dosyasındaki yer tutucuları yapılandırma sunucunuzun IP adresinin gerçek değerleriyle değiştirin.
+- Komut dosyası, Mobilite Hizmeti aracısının yeni yüklemelerini ve zaten yüklü olan aracılara güncelleştirmeleri destekler.
 
 ```DOS
 Time /t >> C:\Temp\logfile.log
@@ -194,13 +194,13 @@ IF NOT %ERRORLEVEL% EQU 0 (
     echo "End of script." >> C:\Temp\logfile.log
 ```
 
-### <a name="copy-code-to-the-linux-folder"></a>Kodu Linux klasörüne kopyala
+### <a name="copy-code-to-the-linux-folder"></a>Kodu Linux klasörüne kopyalama
 
 Aşağıdaki kodu kopyalayın:
 
-- Kodu _Mobsvclinux_ klasörüne _install_linux. sh_olarak kaydedin.
-- Bu betikteki `[CSIP]` yer tutucuları yapılandırma sunucunuzun IP adresinin gerçek değerleriyle değiştirin.
-- Betik, Mobility hizmeti aracısının yeni yüklemelerini ve zaten yüklü olan aracıların güncelleştirmelerini destekler.
+- _Kodu MobSvcLinux_ klasörüne _install_linux.sh_olarak kaydedin.
+- Bu `[CSIP]` komut dosyasındaki yer tutucuları yapılandırma sunucunuzun IP adresinin gerçek değerleriyle değiştirin.
+- Komut dosyası, Mobilite Hizmeti aracısının yeni yüklemelerini ve zaten yüklü olan aracılara güncelleştirmeleri destekler.
 
 ```Bash
 #!/usr/bin/env bash
@@ -338,65 +338,65 @@ cd /tmp
 
 ### <a name="create-a-package"></a>Paket oluşturma
 
-1. Configuration Manager konsolunda oturum açın ve **yazılım kitaplığı** > **uygulama yönetimi** > **paketleri**' ne gidin.
-1. **Paket oluştur** > **paketler** ' e sağ tıklayın.
-1. Bir ad, açıklama, üretici, dil ve sürüm gibi paket ayrıntılarını sağlayın.
-1. **Bu paket kaynak dosyaları içerir**' i seçin.
-1. **Araştır**' a tıklayın ve ilgili yükleyiciyi içeren ağ payını ve klasörünü (_Mobsvcwindows_ veya _mobsvclinux_) seçin. Sonra **İleri**’yi seçin.
+1. Configuration Manager konsolunda oturum açın ve **Yazılım Kitaplığı** > **Uygulama Yönetim** > **Paketleri'ne**gidin.
+1. Sağ tıkla **Paketleri** > **Oluştur Paketi**.
+1. Ad, açıklama, üretici, dil ve sürüm gibi paket ayrıntılarını sağlayın.
+1. Select **Bu paket kaynak dosyaları içerir.**
+1. **Gözat'ı**tıklatın ve ilgili yükleyiciyi _(MobSvcWindows_ veya _MobSvcLinux)_ içeren ağ paylaşımını ve klasörünü seçin. Ardından **İleri'yi**seçin.
 
-   ![Paket ve program oluşturma Sihirbazı ekran görüntüsü](./media/vmware-azure-mobility-install-configuration-mgr/create_sccm_package.png)
+   ![Paket Oluştur ve Program sihirbazının ekran görüntüsü](./media/vmware-azure-mobility-install-configuration-mgr/create_sccm_package.png)
 
-1. **Oluşturmak istediğiniz program türünü seçin** sayfasında, **Ileri**' > **standart program** ' ı seçin.
+1. Sayfa **oluşturmak istediğiniz program türünü seçin'** de **İleri'deki Standart Program'ı** > **Next**seçin.
 
-   ![Paket ve program oluşturma Sihirbazı ekran görüntüsü](./media/vmware-azure-mobility-install-configuration-mgr/sccm-standard-program.png)
+   ![Paket Oluştur ve Program sihirbazının ekran görüntüsü](./media/vmware-azure-mobility-install-configuration-mgr/sccm-standard-program.png)
 
-1. **Bu standart programla ilgili bilgileri belirtin** sayfasında, aşağıdaki değerleri belirtin:
+1. Bu standart program sayfası **yla ilgili bilgileri belirtin'de** aşağıdaki değerleri belirtin:
 
-    **Parametresinin** | **Windows değeri** | **Linux değeri**
+    **Parametre** | **Windows değeri** | **Linux değeri**
     --- | --- | ---
-    **Ad** | Microsoft Azure Mobility hizmetini (Windows) yükler | Microsoft Azure Mobility hizmeti 'ni (Linux) yükler.
-    **Komut satırı** | . bat dosyasını install | ./install_linux. sh
-    **Program çalışabilir** | Kullanıcı oturumu açsın ya da açmasın | Kullanıcı oturumu açsın ya da açmasın
-    **Diğer parametreler** | Varsayılan ayarı kullan | Varsayılan ayarı kullan
+    **Adı** | Microsoft Azure Mobilite Hizmeti (Windows) yükleme | Microsoft Azure Mobilite Hizmeti'ni (Linux) yükleyin.
+    **Komut satırı** | Install.bat | ./install_linux.ş
+    **Program çalıştırabilirsiniz** | Bir kullanıcının oturum açıp açmaması | Bir kullanıcının oturum açıp açmaması
+    **Diğer parametreler** | Varsayılan ayarını kullanma | Varsayılan ayarını kullanma
 
-   ![Paket ve program oluşturma Sihirbazı ekran görüntüsü](./media/vmware-azure-mobility-install-configuration-mgr/sccm-program-properties.png)
+   ![Paket Oluştur ve Program sihirbazının ekran görüntüsü](./media/vmware-azure-mobility-install-configuration-mgr/sccm-program-properties.png)
 
-1. **Bu standart program için gereksinimleri belirtin**bölümünde aşağıdaki görevleri yapın:
+1. **Bu standart programın gereksinimlerini belirtin,** aşağıdaki görevleri yapın:
 
-   - Windows makineleri için, **Bu program yalnızca belirtilen platformlarda çalıştırılabilir**' i seçin. Ardından, [desteklenen Windows işletim sistemlerini](vmware-physical-azure-support-matrix.md#replicated-machines) seçin ve **İleri**' yi seçin.
-   - Linux makineleri için, **Bu program herhangi bir platformda çalışabilir**' i seçin. Sonra **İleri**’yi seçin.
+   - Windows makineleri için, **Bu programın yalnızca belirtilen platformlarda çalıştırılabilen'i**seçin. Ardından, [desteklenen Windows işletim sistemlerini](vmware-physical-azure-support-matrix.md#replicated-machines) seçin ve **İleri'yi**seçin.
+   - Linux makineleri için, **bu program herhangi bir platformda çalıştırabilirsiniz**seçin. Ardından **İleri'yi**seçin.
 
-1. Sihirbazı sona erdirin.
+1. Sihirbazı tamamlayın.
 
 ### <a name="deploy-the-package"></a>Paketi dağıtma
 
-1. Configuration Manager konsolunda, pakete sağ tıklayın ve **Içeriği dağıt**' ı seçin.
+1. Configuration Manager konsolunda pakete sağ tıklayın ve **İçeriği Dağıt'ı**seçin.
 
    ![Configuration Manager konsolunun ekran görüntüsü](./media/vmware-azure-mobility-install-configuration-mgr/sccm_distribute.png)
 
-1. Paketlerin kopyalanacağı dağıtım noktalarını seçin. [Daha fazla bilgi edinin](/sccm/core/servers/deploy/configure/install-and-configure-distribution-points).
-1. Sihirbazı tamamlayın. Paket daha sonra belirtilen dağıtım noktalarına çoğaltmaya başlar.
-1. Paket dağıtımı tamamlandıktan sonra, > **Dağıt**paketine sağ tıklayın.
+1. Paketlerin kopyalandığı dağıtım noktalarını seçin. [Daha fazla bilgi edinin](/sccm/core/servers/deploy/configure/install-and-configure-distribution-points).
+1. Sihirbazı tamamlayın. Paket daha sonra belirtilen dağıtım noktalarına çoğaltmabaşlar.
+1. Paket dağıtımı bittikten **sonra, Dağıt'>** paketi sağ tıklatın.
 
    ![Configuration Manager konsolunun ekran görüntüsü](./media/vmware-azure-mobility-install-configuration-mgr/sccm_deploy.png)
 
-1. Daha önce oluşturduğunuz Windows veya Linux cihaz koleksiyonunu seçin.
-1. **İçerik hedefini belirtin** sayfasında **dağıtım noktaları**' nı seçin.
-1. **Bu yazılımın nasıl dağıtılacağını denetlemek için ayarları belirtin** sayfasında, **amacı** **gereken**olarak ayarlayın.
+1. Daha önce oluşturduğunuz Windows veya Linux aygıt koleksiyonunu seçin.
+1. İçerik **hedef** sayfasını belirtin' **de Dağıtım Noktaları'nı**seçin.
+1. **Bu yazılımın nasıl dağıtılan sayfayı denetlemek için ayarlarını belirtin,** **Amaç'ı** **Gerekli**Olarak Ayarlayın.
 
-   ![Yazılım Dağıtma Sihirbazı ekran görüntüsü](./media/vmware-azure-mobility-install-configuration-mgr/sccm-deploy-select-purpose.png)
+   ![Yazılım Dağıt sihirbazının ekran görüntüsü](./media/vmware-azure-mobility-install-configuration-mgr/sccm-deploy-select-purpose.png)
 
-1. **Bu dağıtımın zamanlamasını belirtin**bölümünde bir zamanlama ayarlayın. [Daha fazla bilgi edinin](/sccm/apps/deploy-use/deploy-applications#bkmk_deploy-sched).
+1. **Bu dağıtım için zamanlama belirtin,** bir zamanlama ayarlayın. [Daha fazla bilgi edinin](/sccm/apps/deploy-use/deploy-applications#bkmk_deploy-sched).
 
-   - Mobility hizmeti, belirttiğiniz zamanlamaya uygun olarak yüklenir.
-   - Gereksiz yeniden başlatmaların olmaması için, aylık bakım pencerenizde veya yazılım güncelleştirmeleri penceresinde paket yüklemesini zamanlayın.
+   - Mobilite Hizmeti, belirttiğiniz zamanlamaya uygun olarak yüklenir.
+   - Gereksiz yeniden başlatmaları önlemek için, aylık bakım pencereniz veya yazılım güncelleştirmeleri pencereniz sırasında paket yüklemesini zamanlayın.
 
-1. **Dağıtım noktaları** sayfasında, ayarları yapılandırın ve Sihirbazı sona erdirin.
-1. Configuration Manager konsolundaki dağıtım ilerlemesini izleyin.  > _dağıtımlarınızın\<paket adınızı\>_  > **izleme** bölümüne gidin.
+1. Dağıtım **Noktaları** sayfasında, ayarları yapılandırın ve sihirbazı bitirin.
+1. Configuration Manager konsolunda dağıtım ilerlemesini izleyin. Paket adınızı **İzleme** > **Dağıtımları'na** > _\<\>_ gidin.
 
-### <a name="uninstall-the-mobility-service"></a>Mobility hizmetini kaldırma
+### <a name="uninstall-the-mobility-service"></a>Mobilite Hizmetini Kaldırın
 
-Mobility hizmetini kaldırmak için Configuration Manager paketler oluşturabilirsiniz. Örneğin, aşağıdaki komut dosyası Mobility hizmetini kaldırır:
+Mobilite Hizmetini kaldırmak için Configuration Manager paketleri oluşturabilirsiniz. Örneğin, aşağıdaki komut dosyası Mobilite Hizmetini yükler:
 
 ```DOS
 Time /t >> C:\logfile.log
@@ -420,4 +420,4 @@ IF  %ERRORLEVEL% EQU 1 (GOTO :INSTALL) ELSE GOTO :UNINSTALL
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-VM 'Ler için [çoğaltmayı etkinleştirin](vmware-azure-enable-replication.md) .
+VM'ler için [çoğaltmayı etkinleştirin.](vmware-azure-enable-replication.md)

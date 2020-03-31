@@ -1,95 +1,95 @@
 ---
-title: 'Hızlı başlangıç: Azure Sentinel ile çalışmaya başlama'
-description: Azure Sentinel hızlı başlangıç-Azure Sentinel ile çalışmaya başlama
+title: 'Hızlı başlangıç: Azure Sentinel ile başlayın'
+description: Azure Sentinel Quickstart - Azure Sentinel ile başlayın
 services: sentinel
 author: yelevin
 manager: rkarlin
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: quickstart
-ms.custom: fasttrack-edit
+ms.custom: mvc, fasttrack-edit
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: 2b83fc6231f590b3c0765ec647101b22920058da
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.openlocfilehash: 95dcc135593c566eb1319ed52df3df6c1ada6609
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77581676"
+ms.lasthandoff: 03/26/2020
+ms.locfileid: "80067674"
 ---
-# <a name="quickstart-get-started-with-azure-sentinel"></a>Hızlı başlangıç: Azure Sentinel ile çalışmaya başlama
+# <a name="quickstart-get-started-with-azure-sentinel"></a>Hızlı başlangıç: Azure Sentinel ile başlayın
 
 
 
 
-Bu hızlı başlangıçta, Azure Sentinel kullanarak ortamınızda neler olduğunu nasıl görüntüleyebileceğinizi ve izleyebileceğinizi öğreneceksiniz. Veri kaynaklarınızı Azure Sentinel 'e bağladıktan sonra, tüm bağlı veri kaynaklarınızda neler olduğunu bilmeniz için verilerin anında görselleştirilmesini ve analizini edinirsiniz. Azure Sentinel size, Azure 'da zaten sunulan araçların tam gücünden ve günlüklerinizi ve sorgulara yönelik analiz sağlamak üzere yerleşik olarak bulunan tabloları ve grafikleri sağlayan çalışma kitapları sağlar. Yerleşik çalışma kitaplarını kullanabilir veya yeni bir çalışma kitabını, sıfırdan veya var olan bir çalışma kitabına göre kolayca oluşturabilirsiniz. 
+Bu hızlı başlangıçta, Azure Sentinel'i kullanarak çevrenizde neler olup bittiğini hızlı bir şekilde nasıl görüntüleyebilir ve izleyebilirsiniz. Veri kaynaklarınızı Azure Sentinel'e bağladıktan sonra, bağlı olduğunuz tüm veri kaynaklarında neler olduğunu öğrenebilmeniz için anında görselleştirme ve veri analizi alırsınız. Azure Sentinel, size Azure'da zaten mevcut olan araçların tam gücünü sağlayan çalışma kitaplarının yanı sıra günlükleriniz ve sorgularınız için size analiz sağlamak üzere oluşturulmuş tablolar ve grafikler sağlar. Yerleşik çalışma kitaplarını kullanabilir veya sıfırdan veya varolan bir çalışma kitabını temel alan yeni bir çalışma kitabı oluşturabilirsiniz. 
 
-## <a name="get-visualization"></a>Görselleştirmeyi al
+## <a name="get-visualization"></a>Görselleştirme alın
 
-Ortamınızda neler olduğunu görselleştirmek ve analiz etmek için öncelikle, kuruluşunuzun güvenlik duruşunu görmek üzere genel bakış panosuna göz atın. Bu kutucukların her öğesine tıklayarak oluşturuldukları ham verilerin detayına gidebilirsiniz. Azure Sentinel, paraziti azaltmanıza ve inceleyecek ve araştırmanız gereken uyarı sayısını en aza indirmenize yardımcı olmak için, uyarıları olaylar ile ilişkilendirmek için bir Fusion tekniği kullanır. **Olaylar** , birlikte araştırıp çözebileceğiniz bir işlem yapılabilir olay oluşturan ilgili uyarı gruplarıdır.
+Ortamınızda neler olup bittiğine ilişkin görselleştirmek ve analiz etmek için öncelikle kuruluşunuzun güvenlik duruşu hakkında bir fikir edinmek için genel bakış panosuna göz atın. Oluşturuldukları ham verilere sondaj yapmak için bu döşemelerin her öğesini tıklatabilirsiniz. Azure Sentinel, gürültüyü azaltmanıza ve incelemeniz ve araştırmanız gereken uyarı sayısını en aza indirmek için uyarıları olaylarla ilişkilendirmek için bir füzyon tekniği kullanır. **olaylar,** birlikte araştırıp çözebileceğiniz eyleme geçirilebilir bir olay oluşturan ilgili uyarı gruplarıdır.
 
-- Azure portal Azure Sentinel ' i seçin ve ardından izlemek istediğiniz çalışma alanını seçin.
+- Azure portalında Azure Sentinel'i seçin ve ardından izlemek istediğiniz çalışma alanını seçin.
 
-  ![Azure Sentinel genel bakış](./media/qs-get-visibility/overview.png)
+  ![Azure Sentinel'e genel bakış](./media/qs-get-visibility/overview.png)
 
-- Üstteki araç çubuğu, belirlenen zaman dilimine göre kaç olay olduğunu size bildirir ve bunu önceki 24 saat ile karşılaştırır. Araç çubuğu, bu olayları, tetiklenen uyarıları (küçük sayı, son 24 saat içindeki değişikliği temsil eder) ve ardından bu olayları, ne kadar açık, devam ediyor ve kapalı olduğunu bildirir. Olay sayısında önemli bir artış veya bırakma olmadığını kontrol edin. Bir bırakma işlemi varsa, bağlantı Azure Sentinel 'e raporlamayı durdurdu olabilir. Bir artış varsa şüpheli bir sorun oluşmuş olabilir. Yeni uyarılar olup olmadığını kontrol edin.
+- Üstteki araç çubuğu, seçilen zaman dilimi içinde kaç etkinlik aldığınızı söyler ve önceki 24 saatle karşılaştırır. Araç çubuğu, bu olaylardan, tetiklenen uyarıları (küçük sayı son 24 saat içinde değişimi temsil eder) söyler ve daha sonra bu olaylar için kaç kişinin açık, devam eden ve kapalı olduğunu söyler. Olay sayısında dramatik bir artış veya düşüş olup olmadığını kontrol edin. Bir düşüş varsa, bir bağlantı Azure Sentinel'e raporlamayı durdurmuş olabilir. Eğer bir artış varsa, şüpheli bir şey olmuş olabilir. Yeni uyarılarınız olup olmadığını kontrol edin.
 
-   ![Azure Sentinel huni](./media/qs-get-visibility/funnel.png)
+   ![Azure Sentinel hunisi](./media/qs-get-visibility/funnel.png)
 
-Genel Bakış sayfasının ana gövdesi, çalışma alanınızın güvenlik durumunu gösteren bir bakışta fikir verir:
+Genel bakış sayfasının ana gövdesi, çalışma alanınızın güvenlik durumuna bir bakışta bir bakışta içgörü sağlar:
 
-- **Zaman Içindeki olaylar ve uyarılar**: olay sayısını ve bu olaylardan kaç uyarı oluşturulduğunu listeler. Olağan dışı bir ani artış görürseniz, bunun için uyarıları görmeniz gerekir. olaylarda ani bir artış olduğunda ancak uyarı görmezseniz, sorun oluşması gerekebilir.
+- **Zaman daki olaylar ve uyarılar**: Olayların sayısını ve bu olaylardan kaç uyarı oluşturulduğunu listeler. Olağandışı bir artış görürseniz, bunun için uyarılar görmelisiniz - olaylarda bir artış olduğu ancak uyarıları görmediğiniz olağandışı bir şey varsa, bu endişe kaynağı olabilir.
 
-- **Olası kötü amaçlı olaylar**: kötü amaçlı oldukları bilinen kaynaklardan trafik algılandığında, Azure Sentinel, haritada sizi uyarır. Turuncu görürseniz, bu gelen trafiktir: birisi kuruluşunuza bilinen bir kötü amaçlı IP adresinden erişmeyi deniyor. Giden (kırmızı) etkinlik görürseniz, ağınızdaki verilerin kuruluşunuzun dışında, bilinen bir kötü amaçlı IP adresine akışını sağlarsınız.
+- **Olası kötü amaçlı olaylar**: Kötü amaçlı olduğu bilinen kaynaklardan trafik algılandığında, Azure Sentinel sizi haritada uyarır. Turuncu görürseniz, gelen trafiktir: birisi kuruluşunuza bilinen kötü amaçlı bir IP adresinden erişmeye çalışır. Giden (kırmızı) etkinliği görürseniz, bu, ağınızdaki verilerin kuruluşunuzdan bilinen kötü amaçlı bir IP adresine aktarıldığı anlamına gelir.
 
-   ![Azure Sentinel eşlemesi](./media/qs-get-visibility/map.png)
-
-
-- **Son olaylar**: son olaylarınızı, bunların önem derecesini ve olayla ilişkili uyarı sayısını görüntülemek için. Belirli bir uyarı türünde ani Tepe olarak görüyorsanız, çalışmakta olan etkin bir saldırı olduğu anlamına gelebilir. Örneğin, Azure ATP 'den en fazla 20 geçiş karma olay uygulamanız varsa, birisi şu anda sizi saldırılara çalışıyor olabilir.
-
-- **Veri kaynağı Anomali**: Microsoft 'un veri analistleri için veri kaynaklarınızdan verileri sürekli olarak arama modellerini oluşturdu. Herhangi bir sorun yoksa, hiçbir şey görüntülenmez. Bozukluklar algılanırsa, ne olduğunu görmek için bunlara ayrıntılı bir bakış uygulamanız gerekir. Örneğin, Azure 'da ani artış ' a tıklayın. Ne zaman meydana geldiğini görmek için **grafiğe** tıklayabilir ve sonra ne olduğunu görmek için o zaman diliminde gerçekleşen etkinliklere filtre uygulayabilirsiniz.
-
-   ![Azure Sentinel eşlemesi](./media/qs-get-visibility/anomolies.png)
-
-## Yerleşik çalışma kitaplarını kullanma<a name="dashboards"></a>
-
-Yerleşik çalışma kitapları, bu hizmetlerde oluşturulan olaylara derinlemesine bir bakış sağlamak için bağlı veri kaynaklarınızdan tümleşik veriler sağlar. Yerleşik çalışma kitapları arasında Azure AD, Azure etkinlik olayları ve şirket içi Windows olaylarından, ilk taraf uyarılardan, Windows 'a dayalı güvenlik duvarı trafik günlükleri, Office 365 ve güvenli olmayan protokoller dahil olmak üzere herhangi bir üçüncü tarafın verileri bulunabilir. olayları. Çalışma kitapları, kendi çalışma kitabınızı tasarlarken gelişmiş özelleştirme ve esneklik sağlamak için Azure Izleyici çalışma kitaplarını temel alır. Daha fazla bilgi için bkz. [çalışma kitapları](../azure-monitor/app/usage-workbooks.md).
-
-1. **Ayarlar**altında **çalışma kitapları**' nı seçin. **Yüklü**' ın altında, tüm yüklü çalışma kitabınızı görebilirsiniz. **Tümü**altında, yükleme için kullanılabilen yerleşik çalışma kitaplarının tamamını görebilirsiniz. 
-2. Tüm liste ve her bir tekliflerinin açıklamasını görmek için belirli bir çalışma kitabı arayın. 
-3. Azure AD 'yi kullandığınız varsayılarak, Azure Sentinel ile çalışmaya başlayın ve en azından aşağıdaki çalışma kitaplarını yüklemenizi öneririz:
-   - **Azure AD**: aşağıdakilerden birini veya her ikisini kullanın:
-       - **Azure AD oturum** açma işlemleri zaman içinde oturum açma işlemlerini çözümleyerek, bozukluklar olup olmadığını görebilir. Bu çalışma kitapları uygulamalar, cihazlar ve konumlar tarafından başarısız oturum açma işlemleri sunarak, olağan dışı bir durum meydana olursa bir bakışta fark edebilirsiniz. Birden çok başarısız oturum açma ile ilgilenmeyi ödeyin. 
-       - **Azure AD denetim günlükleri** , kullanıcılar üzerindeki değişiklikler (ekleme, kaldırma, vs.), Grup oluşturma ve değişiklikler gibi yönetici etkinliklerini analiz eder.  
-
-   - Güvenlik duvarınız için bir çalışma kitabı ekleyin. Örneğin, Palo Alto Alto çalışma kitabını ekleyin. Çalışma kitabı, güvenlik duvarı verileriniz ile tehdit olayları arasında bağıntılar sunarak ve varlıklar genelinde şüpheli olayları vurgulamaktadır. Çalışma kitapları, trafikte eğilimleri hakkında bilgi sağlar ve sonuçların ayrıntılarına inmenize ve sonuçları filtrelemenize imkan sağlar. 
-
-      ![PAL Alto panosu](./media/qs-get-visibility/palo-alto-week-query.png)
+   ![Azure Sentinel haritası](./media/qs-get-visibility/map.png)
 
 
-Ana sorgu ![düğmesini](./media/qs-get-visibility/edit-query-button.png)düzenleyerek çalışma kitaplarını özelleştirebilirsiniz. [Sorguyu düzenlemek üzere Log Analytics](../azure-monitor/log-query/get-started-portal.md)gitmek için düğme ![düğmesine](./media/qs-get-visibility/go-to-la-button.png) ve üç nokta (...) simgesini seçebilir ve **kutucuk verilerini Özelleştir**' i seçerek ana saat filtresini düzenlemenizi veya belirli kutucukları çalışma kitabından kaldırmanızı sağlayabilirsiniz.
+- **Son olaylar**: Son olayları, bunların ciddiyetini ve olayla ilişkili uyarı sayısını görüntülemek için. Belirli bir uyarı türünde ani bir tepe noktası olarak görürseniz, şu anda çalışan etkin bir saldırı olduğu anlamına gelebilir. Örneğin, Azure ATP'den 20 tane karma geçiş olayının ani bir zirvesine sahipseniz, birisi şu anda size saldırmaya çalışıyor olabilir.
 
-Sorgularla çalışma hakkında daha fazla bilgi için bkz [. Öğretici: Log Analytics Içindeki görsel veriler](../azure-monitor/learn/tutorial-logs-dashboards.md)
+- **Veri kaynağı anormallikleri**: Microsoft'un veri analistleri, veri kaynaklarınızdaki verileri sürekli olarak anomaliler için arayan modeller oluşturdu. Herhangi bir anormallik yoksa, hiçbir şey görüntülenmez. Eğer anomaliler tespit edilirse, ne olduğunu görmek için onlara derin denmelisin. Örneğin, Azure Etkinliği'ndeki ani artışa tıklayın. Ani artışne ne zaman olduğunu görmek için **Grafik'e** tıklayabilir ve ardından bu dönemde gerçekleşen etkinlikleriçin filtre uygulayarak ani artışa neyin neden olduğunu görebilirsiniz.
 
-### <a name="add-a-new-tile"></a>Yeni kutucuk Ekle
+   ![Azure Sentinel haritası](./media/qs-get-visibility/anomolies.png)
 
-Yeni bir kutucuk eklemek istiyorsanız, onu oluşturduğunuz veya Azure Sentinel yerleşik çalışma kitabının bulunduğu mevcut bir çalışma kitabına ekleyebilirsiniz. 
-1. Log Analytics, [öğretici: Log Analytics Içindeki görsel veriler](../azure-monitor/learn/tutorial-logs-dashboards.md)' de bulunan yönergeleri kullanarak bir kutucuk oluşturun. 
-2. Kutucuk oluşturulduktan sonra, **PIN**altında kutucuğun görünmesini istediğiniz çalışma kitabını seçin.
+## <a name="use-built-in-workbooks"></a>Yerleşik çalışma kitaplarını kullanma<a name="dashboards"></a>
+
+Yerleşik çalışma kitapları, bağlı veri kaynaklarınızdan gelen tümleşik verileri sağlar ve bu hizmetlerde oluşturulan olaylara derinlemesine dalan veriler sağlar. Yerleşik çalışma kitapları, Azure REKLAM'ı, Azure etkinlik etkinliklerini ve windows'a dayalı güvenli olmayan protokoller de dahil olmak üzere herhangi bir üçüncü taraftan sunuculardan, birinci taraf uyarılarından, Windows Etkinlikleri'nden veri olabilecek yerleşik çalışma kitaplarını içerir Olay. Çalışma kitapları, size kendi çalışma kitabınızı tasarlamada gelişmiş özelleştirilebilirlik ve esneklik sağlamak için Azure Monitor Çalışma Kitaplarını temel adatır. Daha fazla bilgi için [Çalışma Kitapları'na](../azure-monitor/app/usage-workbooks.md)bakın.
+
+1. **Ayarlar**altında **Çalışma Kitapları'nı**seçin. **Yüklü**altında, tüm yüklü çalışma kitabı görebilirsiniz. **Tümü**altında, yükleme için kullanılabilir yerleşik çalışma kitaplarının tüm galerisini görebilirsiniz. 
+2. Her birinin sunduğu tüm listeyi ve açıklamayı görmek için belirli bir çalışma kitabını arayın. 
+3. Azure Sentinel ile çalışmaya devam etmek için Azure AD kullandığınızı varsayarsak, en az aşağıdaki çalışma kitaplarını yüklemenizi öneririz:
+   - **Azure AD**: Aşağıdakilerden birini veya her ikisini kullanın:
+       - **Azure AD oturum açma bilgileri,** zaman içinde oturum açma oturum açma ları analiz edip anormallikolup olmadığını iyi karşılar. Bu çalışma kitapları, uygulamalar, aygıtlar ve konumlar tarafından başarısız oturum açmalar sağlar, böylece olağandışı bir şey olursa bir bakışta fark edebilirsiniz. Birden fazla başarısız oturum açma ya da oturum açma ile ilgili dikkat edin. 
+       - **Azure AD denetim günlükleri,** kullanıcılardaki değişiklikler (ekleme, kaldırma, vb.), grup oluşturma ve değişiklikler gibi yönetici etkinliklerini analiz eder.  
+
+   - Güvenlik duvarınız için bir çalışma kitabı ekleyin. Örneğin, Palo Alto çalışma kitabını ekleyin. Çalışma kitabı güvenlik duvarı trafiğinizi analiz ederek güvenlik duvarı verileriniz ve tehdit olayları nız arasında korelasyon sağlar ve taraflar arasındaki şüpheli olayları vurgular. Çalışma kitapları size trafiğinizdeki eğilimler hakkında bilgi sağlar ve sonuçları ayrıntılı olarak belirlemenize ve filtrelemenize izin verir. 
+
+      ![Pal Alto pano](./media/qs-get-visibility/palo-alto-week-query.png)
+
+
+Ana sorgu ![düğmesini](./media/qs-get-visibility/edit-query-button.png)düzenleyerek çalışma kitaplarını özelleştirebilirsiniz. Sorguyu orada ![yeniden](./media/qs-get-visibility/go-to-la-button.png) yapmak [için Log Analytics'e](../azure-monitor/log-query/get-started-portal.md)gitmek için düğme düğmesini tıklatabilir ve elipsleri (...) seçebilir ve ana zaman filtresini tıklatmanızı veya çalışma kitabından belirli kutucukları kaldırmanızı sağlayan **kutucuğu verilerini Özelleştir'i**seçebilirsiniz.
+
+Sorgularla çalışma hakkında daha fazla bilgi için [Bkz. Öğretici: Log Analytics'te görsel veriler](../azure-monitor/learn/tutorial-logs-dashboards.md)
+
+### <a name="add-a-new-tile"></a>Yeni bir döşeme ekleme
+
+Yeni bir döşeme eklemek istiyorsanız, bu döşemeyi oluşturduğunuz çalışma kitabına veya Azure Sentinel yerleşik çalışma kitabına ekleyebilirsiniz. 
+1. Log Analytics'te, [Tutorial: Visual data in Log Analytics'te](../azure-monitor/learn/tutorial-logs-dashboards.md)bulunan yönergeleri kullanarak bir döşeme oluşturun. 
+2. Döşeme oluşturulduktan sonra, **Pin'in**altında, döşemenin görünmesini istediğiniz çalışma kitabını seçin.
 
 ## <a name="create-new-workbooks"></a>Yeni çalışma kitapları oluşturma
-Sıfırdan yeni bir çalışma kitabı oluşturabilir veya yeni çalışma kitabınız için temel olarak yerleşik çalışma kitabını kullanabilirsiniz.
+Sıfırdan yeni bir çalışma kitabı oluşturabilir veya yeni çalışma kitabınızın temeli olarak yerleşik bir çalışma kitabı kullanabilirsiniz.
 
-1. Sıfırdan yeni bir çalışma kitabı oluşturmak için **çalışma kitapları** ' nı ve ardından **+ Yeni çalışma kitabı**' nı seçin.
-2. Çalışma kitabının oluşturulduğu aboneliği seçin ve açıklayıcı bir ad verin. Her çalışma kitabı, birbirleriyle aynı şekilde bir Azure kaynağıdır ve kimlerin erişebileceğini tanımlamak ve sınırlamak için BT rolleri (RBAC) atayabilirsiniz. 
-3. Görselleştirmeleri ' a sabitlemek üzere çalışma kitaplarında görünmesini sağlamak için bunu paylaşmanız gerekir. **Paylaşma** ' ya ve ardından **Kullanıcıları Yönet**' e tıklayın. 
+1. Sıfırdan yeni bir çalışma kitabı oluşturmak için **Çalışma Kitapları'nı** ve **ardından +Yeni çalışma kitabını**seçin.
+2. Çalışma kitabının oluşturulduğu aboneliği seçin ve ona açıklayıcı bir ad verin. Her çalışma kitabı da diğerleri gibi bir Azure kaynağıdır ve kimlere erişebileceğini tanımlamak ve sınırlamak için bu kitap için roller (RBAC) atayabilirsiniz. 
+3. Görselleştirmeleri sabitlemek için çalışma kitaplarınızda görünebilmesi için bunu paylaşmanız gerekir. **Paylaş'ı** tıklatın ve ardından **kullanıcıları yönetin.** 
  
-1. Diğer tüm Azure kaynakları için yaptığınız gibi erişim ve **rol atamalarını** **Denetle** öğesini kullanın. Daha fazla bilgi için bkz. [RBAC kullanarak Azure çalışma kitaplarını paylaşma](../azure-portal/azure-portal-dashboard-share-access.md).
+1. Diğer Azure kaynaklarında olduğu gibi **Denetimi erişimini** ve **Rol atamalarını** kullanın. Daha fazla bilgi için [RBAC'ı kullanarak Azure çalışma kitaplarını paylaş'a](../azure-portal/azure-portal-dashboard-share-access.md)bakın.
 
 
 ## <a name="new-workbook-examples"></a>Yeni çalışma kitabı örnekleri
 
-Aşağıdaki örnek sorgu, trafik eğilimlerini haftalar içinde karşılaştırmanızı sağlar. Sorguyu çalıştırdığınız cihaz satıcısını ve veri kaynağını kolayca geçirebilirsiniz. Bu örnek, Windows 'da SecurityEvent kullanır, diğer tüm güvenlik duvarında AzureActivity veya CommonSecurityLog üzerinde çalışacak şekilde geçiş yapabilirsiniz.
+Aşağıdaki örnek sorgu, haftalar boyunca trafik eğilimlerini karşılaştırmanızı sağlar. Sorguyu çalıştırdığınız aygıt satıcısı ve veri kaynağını kolayca değiştirebilirsiniz. Bu örnek, Windows'tan SecurityEvent kullanır, azureetkinliği veya CommonSecurityLog'da çalıştırmak için başka bir güvenlik duvarında çalıştırabilirsiniz.
 
      |where DeviceVendor == "Palo Alto Networks":
       // week over week query
@@ -99,7 +99,7 @@ Aşağıdaki örnek sorgu, trafik eğilimlerini haftalar içinde karşılaştır
       | extend Week = iff(TimeGenerated>ago(7d), "This Week", "Last Week"), TimeGenerated = iff(TimeGenerated>ago(7d), TimeGenerated, TimeGenerated + 7d)
 
 
-Katları kaynaklardan veri içeren bir sorgu oluşturmak isteyebilirsiniz. Yeni oluşturulan yeni kullanıcılar için Azure Active Directory Denetim günlüklerine bakar ve sonra kullanıcının, 24 saat içinde rol ataması değişikliği yapıp başlatmadığını görmek için Azure günlüklerinizi denetleyerek bir sorgu oluşturabilirsiniz. Bu şüpheli etkinlik bu panoda görünür:
+Katlar kaynaklardan gelen verileri içeren bir sorgu oluşturmak isteyebilirsiniz. Yeni oluşturulan yeni kullanıcılar için Azure Etkin Dizin denetim günlüklerine bakan bir sorgu oluşturabilir ve ardından kullanıcının oluşturuldundan sonraki 24 saat içinde rol atama değişiklikleri yapmaya başlayıp başlamadığını görmek için Azure günlüklerinizi denetleyebilirsiniz. Bu şüpheli etkinlik bu panoda görünecek:
 
     AuditLogs
     | where OperationName == "Add user"
@@ -109,22 +109,22 @@ Katları kaynaklardan veri içeren bir sorgu oluşturmak isteyebilirsiniz. Yeni 
     | project OperationName, RoleAssignmentTime = TimeGenerated, user = Caller) on user
     | project-away user1
 
-Verilere ve ne aradıklarını arayan kişilerin rolüne göre farklı çalışma kitapları oluşturabilirsiniz. Örneğin, ağ yöneticiniz için güvenlik duvarı verilerini içeren bir çalışma kitabı oluşturabilirsiniz. Ayrıca, bunlara ne sıklıkla bakmak istediğinizi, her gün gözden geçirmek istediğiniz bir şey olup olmadığı ve saati bir kez denetlemek istediğiniz diğer öğelerin bulunduğu çalışma kitapları oluşturabilirsiniz. Örneğin, anoıe aramak için her saat Azure AD oturum açma bilgilerinizi aramak isteyebilirsiniz olmalıdır 
+Verilere bakan kişinin rolüne ve ne aradığına göre farklı çalışma kitapları oluşturabilirsiniz. Örneğin, ağ yöneticiniz için güvenlik duvarı verilerini içeren bir çalışma kitabı oluşturabilirsiniz. Ayrıca, çalışma kitaplarına ne sıklıkta bakmak istediğinize, günlük olarak incelemek istediğiniz şeyler olup olmadığına ve örneğin saatte bir kontrol etmek istediğiniz diğer öğelere göre, anormallikleri aramak için her saat başı Azure REKLAM oturum açma günlerine bakmak isteyebilirsiniz . 
 
-## <a name="create-new-detections"></a>Yeni algılamalar oluştur
+## <a name="create-new-detections"></a>Yeni algılamalar oluşturun
 
-Kuruluşunuzdaki tehditleri araştırmak için [Azure Sentinel 'e bağladığınız veri kaynaklarında](connect-data-sources.md) algılamalar oluşturun.
+Kuruluşunuzdaki tehditleri araştırmak [için Azure Sentinel'e bağlı olduğunuz veri kaynaklarında](connect-data-sources.md) algılamalar oluşturun.
 
-Yeni bir algılama oluşturduğunuzda, Microsoft güvenlik araştırmacıları tarafından, bağlandığınız veri kaynaklarına uyarlanmış yerleşik algılamalardan yararlanın.
+Yeni bir algılama oluşturduğunuzda, Bağlı olduğunuz veri kaynaklarına göre uyarlanmış Microsoft güvenlik araştırmacıları tarafından hazırlanmış yerleşik algılamalardan yararlanın.
 
-Kullanıma hazır tüm algılamaları görüntülemek için analizler **' e ve ardından** **kural şablonları**' na gidin. Bu sekme, tüm Azure Sentinel yerleşik kurallarını içerir.
+Tüm kutudan çıkan algılamaları görüntülemek için **Analytics'e** gidin ve ardından **şablonları kuralın.** Bu sekme, tüm Azure Sentinel yerleşik kurallarını içerir.
 
-   ![Azure Sentinel ile tehditleri bulmak için yerleşik algılamaları kullanın](media/tutorial-detect-built-in/view-oob-detections.png)
+   ![Azure Sentinel ile tehditleri bulmak için yerleşik algılamaları kullanma](media/tutorial-detect-built-in/view-oob-detections.png)
 
-Kullanıma hazır algılamaları alma hakkında daha fazla bilgi için bkz. [öğretici: yerleşik analiz alma](tutorial-detect-threats-built-in.md).
+Kutudan çıkışlı algılamalar hakkında daha fazla bilgi için [Bkz. Öğretici: Yerleşik analizler alın.](tutorial-detect-threats-built-in.md)
  
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu hızlı başlangıçta, Azure Sentinel 'i kullanmaya nasıl başladığınıza öğrendiniz. [Tehditleri algılayarak](tutorial-detect-threats-built-in.md)ilgili öğreticiye devam edin.
+Bu hızlı başlangıçta, Azure Sentinel'i kullanmaya nasıl başlayacağınızı öğrendiniz. [Tehditleri algılamak için öğretici](tutorial-detect-threats-built-in.md)devam edin.
 > [!div class="nextstepaction"]
-> Tehditlere yönelik yanıtlarınızı otomatik hale getirmek için [özel tehdit algılama kuralları oluşturun](tutorial-detect-threats-custom.md) .
+> Tehditlere yanıtlarınızı otomatikleştirmek için [özel tehdit algılama kuralları oluşturun.](tutorial-detect-threats-custom.md)
 

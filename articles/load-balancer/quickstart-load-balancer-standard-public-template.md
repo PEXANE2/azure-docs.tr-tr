@@ -1,7 +1,7 @@
 ---
-title: 'Hızlı başlangıç: Load Balancer oluşturma-Azure şablonu'
+title: 'Hızlı başlangıç: Yük Dengeleyicisi Oluşturma - Azure şablonu'
 titleSuffix: Azure Load Balancer
-description: Bu hızlı başlangıçta, Azure Resource Manager şablonu kullanılarak yük dengeleyici oluşturma gösterilmektedir.
+description: Bu hızlı başlangıç, Azure Kaynak Yöneticisi şablonu kullanılarak nasıl bir yük dengeleyicisi oluşturulacak gösteriş gösterir.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -16,45 +16,45 @@ ms.date: 02/26/2020
 ms.author: allensu
 ms.custom: mvc,subject-armqs
 ms.openlocfilehash: 1f681a9a8d8547589873cff055d9f59973c27355
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78295794"
 ---
-# <a name="quickstart-create-a-load-balancer-to-load-balance-vms-by-using-azure-resource-manager-template"></a>Hızlı başlangıç: Azure Resource Manager şablonu kullanarak VM 'Lerin yükünü dengelemek için Load Balancer oluşturma
+# <a name="quickstart-create-a-load-balancer-to-load-balance-vms-by-using-azure-resource-manager-template"></a>Hızlı başlangıç: Azure Kaynak Yöneticisi şablonu kullanarak bakiye VM'lerini yüklemek için Yük Dengeleyicisi oluşturma
 
-Yük dengeleme, gelen istekleri birden fazla sanal makineye (VM) yayarak daha yüksek bir kullanılabilirlik ve ölçek düzeyi sağlar. Bu hızlı başlangıçta, VM 'Lerin yük dengelemesi için standart yük dengeleyici oluşturan bir Azure Resource Manager şablonunun nasıl dağıtılacağı gösterilir. Kaynak Yöneticisi şablonu kullanmak diğer dağıtım yöntemleriyle karşılaştırıldığında daha az adım sürer.
+Yük dengeleme, gelen istekleri birden fazla sanal makineye (VM) yayarak daha yüksek bir kullanılabilirlik ve ölçek düzeyi sağlar. Bu hızlı başlangıç, bakiye VM'leri yüklemek için Standart yük dengeleyicisi oluşturan bir Azure Kaynak Yöneticisi şablonuna nasıl dağıtılacağınızda size gösterir. Kaynak Yöneticisi şablonu kullanmak, diğer dağıtım yöntemleriyle karşılaştırarak daha az adım alır.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
 
-## <a name="create-a-load-balancer"></a>Load Balancer oluşturma
+## <a name="create-a-load-balancer"></a>Yük Dengeleyici oluşturma
 
-Load Balancer ve genel IP SKU 'Larının eşleşmesi gerekir. Bir Standart Load Balancer oluşturduğunuzda, standart yük dengeleyici için ön uç olarak yapılandırılmış yeni bir standart genel IP adresi de oluşturmanız gerekir. Temel bir Load Balancer oluşturmak istiyorsanız [Bu şablonu](https://azure.microsoft.com/resources/templates/201-2-vms-loadbalancer-natrules/)kullanın. Microsoft, üretim iş yükleri için standart SKU kullanmayı önerir.
+Yük Dengeleyici ve Genel IP SUs'lar eşleşmelidir. Standart Yük Dengeleyicisi oluşturduğunuzda, Standart yük dengeleyicisinin ön uç olarak yapılandırılan yeni bir Standart Genel IP adresi de oluşturmanız gerekir. Temel Yük Dengeleyicisi oluşturmak istiyorsanız, [bu şablonu](https://azure.microsoft.com/resources/templates/201-2-vms-loadbalancer-natrules/)kullanın. Microsoft, üretim iş yükleri için Standart SKU kullanılmasını önerir.
 
-### <a name="review-the-template"></a>Şablonu gözden geçirin
+### <a name="review-the-template"></a>Şablonu gözden geçirme
 
-Bu hızlı başlangıçta kullanılan şablon [Azure hızlı başlangıç şablonlarından](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-load-balancer-standard-create/azuredeploy.json).
+Bu hızlı başlatmada kullanılan şablon [Azure Quickstart Şablonları'ndan](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-load-balancer-standard-create/azuredeploy.json)dır.
 
 :::code language="json" source="~/quickstart-templates/101-load-balancer-standard-create/azuredeploy.json" range="1-150" highlight="58-122":::
 
-Şablonda birden çok Azure kaynağı tanımlanmış:
+Şablonda birden çok Azure kaynağı tanımlanmıştır:
 
-- [**Microsoft. Network/loadBalancers**](/azure/templates/microsoft.network/loadbalancers)
-- [**Microsoft. Network/Publicıpaddresses**](/azure/templates/microsoft.network/publicipaddresses): yük dengeleyici için ve üç sanal makinenin her biri için.
-- [**Microsoft. Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups)
-- [**Microsoft. Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)
-- [**Microsoft. COMPUTE/virutalMachines**](/azure/templates/microsoft.compute/virtualmachines) (3)
-- [**Microsoft. Network/NetworkInterfaces**](/azure/templates/microsoft.network/networkinterfaces) (3)
-- [**Microsoft. COMPUTE/virtualMachine/Extensions**](/azure/templates/microsoft.compute/virtualmachines/extensions) (3 BT): IIS 'i ve Web sayfalarını yapılandırmak için kullanın
+- [**Microsoft.Network/loadBalancers**](/azure/templates/microsoft.network/loadbalancers)
+- [**Microsoft.Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses): yük dengeleyicisi ve üç sanal makinenin her biri için.
+- [**Microsoft.Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups)
+- [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)
+- [**Microsoft.Compute/virutalMachines**](/azure/templates/microsoft.compute/virtualmachines) (3 tanesi)
+- [**Microsoft.Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces) (3 tanesi)
+- [**Microsoft.Compute/virtualMachine/extensions**](/azure/templates/microsoft.compute/virtualmachines/extensions) (3 tanesi): IIS'yi ve web sayfalarını yapılandırmak için kullanın
 
-Azure Load Balancer ilgili daha fazla şablon bulmak için bkz. [Azure hızlı başlangıç şablonları](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Network&pageNumber=1&sort=Popular).
+Azure Yük Bakiyesi ile ilgili daha fazla şablon bulmak için [Azure Hızlı Başlatma Şablonları'na](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Network&pageNumber=1&sort=Popular)bakın.
 
 ### <a name="deploy-the-template"></a>Şablonu dağıtma
 
-1. Azure Cloud Shell açmak için aşağıdaki kod bloğundan **deneyin** ' i seçin ve ardından Azure 'da oturum açmak için yönergeleri izleyin.
+1. Azure Bulut Kabuğu'nu açmak için aşağıdaki kod bloğundan **deneyin'i** seçin ve ardından Azure'da oturum açmak için yönergeleri izleyin.
 
    ```azurepowershell-interactive
    $projectName = Read-Host -Prompt "Enter a project name with 12 or less letters or numbers that is used to generate Azure resource names"
@@ -71,53 +71,53 @@ Azure Load Balancer ilgili daha fazla şablon bulmak için bkz. [Azure hızlı b
    Write-Host "Press [ENTER] to continue."
    ```
 
-   İstemi konsolundan görene kadar bekleyin.
+   Konsoldan gelen istemi görene kadar bekleyin.
 
-1. PowerShell betiğini kopyalamak için önceki kod bloğundan **Kopyala** ' yı seçin.
+1. PowerShell komut dosyasını kopyalamak için önceki kod bloğundan **Kopyala'yı** seçin.
 
-1. Kabuk konsol bölmesine sağ tıklayın ve ardından **Yapıştır**' ı seçin.
+1. Kabuk konsol bölmesine sağ tıklayın ve ardından **Yapıştır'ı**seçin.
 
 1. Değerleri girin.
 
-   Şablon dağıtımı üç kullanılabilirlik bölgesi oluşturur. Kullanılabilirlik alanları yalnızca [belirli bölgelerde](../availability-zones/az-overview.md)desteklenir. Desteklenen bölgelerden birini kullanın. Emin değilseniz, **merkezileştirme**girin.
+   Şablon dağıtımı üç kullanılabilirlik bölgesi oluşturur. Kullanılabilirlik bölgeleri yalnızca [belirli bölgelerde](../availability-zones/az-overview.md)desteklenir. Desteklenen bölgelerden birini kullanın. Emin değilseniz, **centralus**girin.
 
-   Kaynak grubu adı, **RG** eklenmiş proje adıdır. Sonraki bölümde kaynak grubu adına ihtiyacınız vardır.
+   Kaynak grubu adı **rg** eklenen proje adıdır. Bir sonraki bölümde kaynak grubu adı gerekir.
 
-Şablonun dağıtılması yaklaşık 10 dakika sürer. Tamamlandığında, çıkış şuna benzerdir:
+Şablonun dağıtılması yaklaşık 10 dakika sürer. Tamamlandığında, çıktı aşağıdakilere benzer:
 
-![Azure Standart Load Balancer Kaynak Yöneticisi şablonu PowerShell dağıtım çıkışı](./media/quickstart-load-balancer-standard-public-template/azure-standard-load-balancer-resource-manager-template-powershell-output.png)
+![Azure Standart Yük Dengeleyici Kaynak Yöneticisi şablonu PowerShell dağıtım çıktısı](./media/quickstart-load-balancer-standard-public-template/azure-standard-load-balancer-resource-manager-template-powershell-output.png)
 
-Azure PowerShell, şablonu dağıtmak için kullanılır. Azure PowerShell ek olarak, Azure portal, Azure CLı ve REST API de kullanabilirsiniz. Diğer dağıtım yöntemlerini öğrenmek için bkz. [şablonları dağıtma](../azure-resource-manager/templates/deploy-portal.md).
+Azure PowerShell şablonu dağıtmak için kullanılır. Azure PowerShell'e ek olarak Azure portalı, Azure CLI ve REST API'yi de kullanabilirsiniz. Diğer dağıtım yöntemlerini öğrenmek için [şablonları dağıt'a](../azure-resource-manager/templates/deploy-portal.md)bakın.
 
 ## <a name="test-the-load-balancer"></a>Yük dengeleyiciyi test etme
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com)oturum açın.
 
-1. Sol bölmeden **kaynak grupları** ' nı seçin.
+1. Sol bölmeden **Kaynak gruplarını** seçin.
 
-1. Önceki bölümde oluşturduğunuz kaynak grubunu seçin. Varsayılan kaynak grubu adı, **RG** eklenmiş proje adıdır.
+1. Önceki bölümde oluşturduğunuz kaynak grubunu seçin. Varsayılan kaynak grubu adı **rg** eklenen proje adıdır.
 
-1. Yük dengeleyiciyi seçin. Varsayılan adı **-lb** eklenen proje adıdır.
+1. Yük dengeleyicisini seçin. Varsayılan adı **-lb** ekli proje adıdır.
 
-1. Genel IP adresinin yalnızca IP adresi kısmını kopyalayın ve ardından tarayıcınızın adres çubuğuna yapıştırın.
+1. Herkese açık IP adresinin yalnızca IP adresi kısmını kopyalayın ve tarayıcınızın adres çubuğuna yapıştırın.
 
-   ![Azure Standart yük dengeleyici Kaynak Yöneticisi şablonu genel IP 'si](./media/quickstart-load-balancer-standard-public-template/azure-standard-load-balancer-resource-manager-template-deployment-public-ip.png)
+   ![Azure standart yük dengeleyici Kaynak Yöneticisi şablonu genel IP](./media/quickstart-load-balancer-standard-public-template/azure-standard-load-balancer-resource-manager-template-deployment-public-ip.png)
 
-    Tarayıcı Internet Information Services (IIS) Web sunucusunun varsayılan sayfasını görüntüler.
+    Tarayıcı, Internet Information Services (IIS) web sunucusunun varsayılan sayfasını görüntüler.
 
    ![IIS web sunucusu](./media/quickstart-load-balancer-standard-public-template/load-balancer-test-web-page.png)
 
-Yük dengeleyicinin trafiği üç VM 'ye dağıtmasını görmek için, istemci makinesinden Web tarayıcınızı yenilemeye zorlayabilirsiniz.
+Yük bakiyesi dağıtım trafiğini üç VM'ye de dağıtmak için, istemci makineden web tarayıcınızın yenilenmesini zorlayabilirsiniz.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık ihtiyacınız kalmadığında, kaynak grubunu, yük dengeleyiciyi ve tüm ilgili kaynakları silin. Bunu yapmak için Azure portal gidin, yük dengeleyiciyi içeren kaynak grubunu seçin ve **kaynak grubunu sil**' i seçin.
+Artık bunlara ihtiyacınız olmadığında, kaynak grubunu, yük bakiyesini ve ilgili tüm kaynakları silin. Bunu yapmak için Azure portalına gidin, yük bakiyesini içeren kaynak grubunu seçin ve ardından **kaynak grubunu sil'i**seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, bir standart yük dengeleyici oluşturdunuz, bu sanal makineye bağlı VM 'Ler, yük dengeleyici trafik kuralını yapılandırdınız, bir sistem durumu araştırması ve sonra yük dengeleyiciyi test ediyor.
+Bu hızlı başlangıçta, standart bir yük dengeleyicisi oluşturdunuz, ona VM'ler iliştirdin, yük dengeleyici trafik kuralını yapılandırdın, bir sağlık sondası yaptınız ve sonra yük dengeleyicisini test ettin.
 
-Daha fazla bilgi edinmek için Load Balancer öğreticilerine geçin.
+Daha fazla bilgi edinmek için Yük Dengeleyici öğreticilerine devam edin.
 
 > [!div class="nextstepaction"]
 > [Azure Load Balancer öğreticileri](tutorial-load-balancer-standard-public-zone-redundant-portal.md)

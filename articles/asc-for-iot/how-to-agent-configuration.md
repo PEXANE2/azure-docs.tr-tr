@@ -1,6 +1,6 @@
 ---
-title: IoT Aracısı için Azure Güvenlik Merkezi 'Ni yapılandırma | Microsoft Docs
-description: IoT güvenlik hizmeti için Azure Güvenlik Merkezi ile kullanmak üzere IoT güvenlik aracıları için Azure Güvenlik Merkezi 'ni nasıl yapılandıracağınızı öğrenin.
+title: IoT aracısı için Azure Güvenlik Merkezi'ni yapılandırın| Microsoft Dokümanlar
+description: IoT güvenlik hizmeti için Azure Güvenlik Merkezi'ni kullanmak üzere IoT güvenlik aracıları için Azure Güvenlik Merkezi'ni nasıl yapılandıracak larını öğrenin.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -16,38 +16,38 @@ ms.workload: na
 ms.date: 02/18/2020
 ms.author: mlottner
 ms.openlocfilehash: 70396cdcaf8b6e2ac66619290eea35a7b260cd9a
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77461258"
 ---
-# <a name="tutorial-configure-security-agents"></a>Öğretici: güvenlik aracılarını yapılandırma
+# <a name="tutorial-configure-security-agents"></a>Öğretici: Güvenlik aracılarını yapılandır
 
-Bu makalede IoT güvenlik aracıları için Azure Güvenlik Merkezi açıklanmakta ve bunların nasıl değiştirileceği ve yapılandırılacağı açıklanmaktadır. 
+Bu makalede, IoT güvenlik aracıları için Azure Güvenlik Merkezi açıklanmaktadır ve bunları nasıl değiştirip yapılandırılabilmek için ayrıntılar açıklanmaktadır. 
 
 > [!div class="checklist"]
 > * Güvenlik aracılarını yapılandırma
-> * İkizi özelliklerini düzenleyerek aracı davranışını değiştirme
-> * Varsayılan yapılandırmayı bul
+> * İkiz özellikleri düzenleyerek aracı davranışını değiştirme
+> * Varsayılan yapılandırmayı keşfedin
 
 ## <a name="agents"></a>Aracılar
 
-IoT güvenlik aracıları için Azure Güvenlik Merkezi, IoT cihazlarından veri toplar ve algılanan güvenlik açıklarını azaltmak için Güvenlik eylemleri gerçekleştirir. Güvenlik Aracısı yapılandırması, özelleştirebileceğiniz bir modül ikizi özellikleri kümesi kullanılarak denetlenebilir. Genel olarak, bu özelliklere yönelik ikincil güncelleştirmeler seyrek olarak görünmez.  
+IoT güvenlik aracıları için Azure Güvenlik Merkezi, IoT aygıtlarından veri toplar ve algılanan güvenlik açıklarını azaltmak için güvenlik eylemleri gerçekleştirir. Güvenlik aracısı yapılandırması, özelleştirebileceğiniz bir dizi modül ikiz özelliği kullanılarak denetlenebilir. Genel olarak, bu özelliklere ikincil güncelleştirmeler nadirdir.  
 
-IoT 'nin güvenlik Aracısı ikizi yapılandırma nesnesi için Azure Güvenlik Merkezi, bir JSON biçim nesnesidir. Yapılandırma nesnesi, aracının davranışını denetlemek için tanımlayabileceğiniz denetlenebilir bir özellikler kümesidir. 
+IoT güvenlik aracısı ikiz yapılandırma nesnesi için Azure Güvenlik Merkezi bir JSON biçimi nesnesidir. Yapılandırma nesnesi aracının davranışını denetlemek için tanımlayabileceğiniz denetlenebilir özellikler kümesidir. 
 
-Bu yapılandırma, gereken her senaryo için aracıyı özelleştirmenize yardımcı olur. Örneğin, bazı olayları otomatik olarak dışlayarak veya güç tüketimini en düşük düzeyde tutmak, bu özellikleri yapılandırarak mümkündür.  
+Bu yapılandırmalar, gereken her senaryo için aracıyı özelleştirmenize yardımcı olur. Örneğin, bazı olayları otomatik olarak dışlamak veya güç tüketimini en az düzeyde tutmak, bu özellikleri yapılandırarak mümkündür.  
 
-Değişiklik yapmak için IoT güvenlik aracısının Azure Güvenlik Merkezi yapılandırma [şemasını](https://aka.ms/iot-security-github-module-schema) kullanın.  
+Değişiklik yapmak için IoT güvenlik aracısı yapılandırma [şemasını](https://aka.ms/iot-security-github-module-schema) için Azure Güvenlik Merkezi'ni kullanın.  
 
 ## <a name="configuration-objects"></a>Yapılandırma nesneleri 
 
-IoT güvenlik aracısına yönelik her Azure Güvenlik Merkezi ile ilgili özellikler, **azureiotsecurity** modülünün istenen Özellikler bölümünde yer alan aracı yapılandırma nesnesi içinde bulunur. 
+Her Azure Güvenlik Merkezi ioT güvenlik aracısı ile ilgili özellikler, **azureiotsecurity** modülünün istenilen özellikler bölümünde aracı yapılandırma nesnesinde bulunur. 
 
-Yapılandırmayı değiştirmek için **azureiotsecurity** Module ikizi Identity içinde bu nesneyi oluşturun ve değiştirin. 
+Yapılandırmayı değiştirmek için **azureiotsecurity** modülü ikiz kimliği içinde bu nesneyi oluşturun ve değiştirin. 
 
-Aracı yapılandırma nesnesi ikizi **azureiotsecurity** modülünde yoksa, tüm güvenlik Aracısı özellik değerleri varsayılan olarak ayarlanır. 
+**Azureiotsecurity** modülü ikizinde aracı yapılandırma nesnesi yoksa, tüm güvenlik aracısı özellik değerleri varsayılan olarak ayarlanır. 
 
 ```json
 "desired": {
@@ -58,40 +58,40 @@ Aracı yapılandırma nesnesi ikizi **azureiotsecurity** modülünde yoksa, tüm
 
 ## <a name="configuration-schema-and-validation"></a>Yapılandırma şeması ve doğrulama 
 
-Aracı yapılandırmanızı bu [şemayla](https://aka.ms/iot-security-github-module-schema)doğruladığınızdan emin olun. Yapılandırma nesnesi şemayla eşleşmezse bir aracı başlatılmaz.
+Aracı yapılandırmanızı bu [şemaya](https://aka.ms/iot-security-github-module-schema)karşı doğruladığından emin olun. Yapılandırma nesnesi şema ile eşleşmiyorsa bir aracı başlatılacak.
 
  
-Aracı çalışırken, yapılandırma nesnesi geçerli olmayan bir yapılandırma olarak değiştirilir (yapılandırma şemayla eşleşmez), aracı geçersiz yapılandırmayı yoksayar ve geçerli yapılandırmayı kullanmaya devam eder. 
+Aracı çalışırken yapılandırma nesnesi geçersiz bir yapılandırmaya değiştirilirse (yapılandırma şema ile eşleşmiyorsa), aracı geçersiz yapılandırmayı yok sayacak ve geçerli yapılandırmayı kullanmaya devam eder. 
 
 ### <a name="configuration-validation"></a>Yapılandırma doğrulaması
 
-IoT güvenlik Aracısı için Azure Güvenlik Merkezi, **azureiotsecurity** Module ikizi kimliğinin bildirilen Özellikler bölümü içinde geçerli yapılandırmasını raporlar.
-Aracı tüm kullanılabilir özellikleri raporlar, bir özellik Kullanıcı tarafından ayarlanmamışsa, aracı varsayılan yapılandırmayı raporlar.
+Azure Güvenlik Merkezi ioT güvenlik aracısı için **azureiotsecurity** modülü ikiz kimliğinin bildirilen özellikleri bölümünde geçerli yapılandırmasını bildirir.
+Aracı, bir özellik kullanıcı tarafından ayarlanmadıysa, aracı varsayılan yapılandırmayı bildirir.
 
-Yapılandırmanızı doğrulamak için, istenen bölümde ayarlanan değerleri, bildirilen bölümde bildirilen değerlerle karşılaştırın.
+Yapılandırmanızı doğrulamak için, istenilen bölümde ayarlanan değerleri bildirilen bölümde bildirilen değerlerle karşılaştırın.
 
-İstenen ve raporlanan özellikler arasında uyuşmazlık varsa, aracı yapılandırmayı ayrıştıramadı.
+İstenilen ve bildirilen özellikler arasında bir uyumsuzluk varsa, aracı yapılandırmayı ayrıştıramadı.
 
-İstediğiniz özellikleri [şemaya](https://aka.ms/iot-security-github-module-schema)göre doğrulayın, hataları düzeltin ve istediğiniz özellikleri yeniden ayarlayın!
+Şema karşı istediğiniz [schema](https://aka.ms/iot-security-github-module-schema)özellikleri doğrulayın, hataları düzeltmek ve tekrar istediğiniz özellikleri ayarlayın!
 
 > [!NOTE]
-> Aracının istenen yapılandırmayı ayrıştıramadığı durumlarda aracıdan bir yapılandırma hatası uyarısı tetiklenir.
-> Uyarının hala geçerli olup olmadığını anlamak için raporlanan ve istenen bölümü karşılaştırın
+> Aracının istenen yapılandırmayı ayrıştıraması durumunda aracıdan bir yapılandırma hatası uyarısı alınır.
+> Uyarının hala geçerli olup olmadığını anlamak için bildirilen ve istenen bölümü karşılaştırın
 
-## <a name="editing-a-property"></a>Özellik düzenleniyor 
+## <a name="editing-a-property"></a>Bir özelliği düzenleme 
 
-Tüm özel özellikler **azureiotsecurity** Module ikizi içindeki aracı yapılandırma nesnesi içinde ayarlanmalıdır.
-Varsayılan özellik değerini kullanmak için yapılandırma nesnesinden özelliği kaldırın.
+Tüm özel özellikler **azureiotsecurity** modülü ikiz içinde aracı yapılandırma nesnesi içinde ayarlanmalıdır.
+Varsayılan özellik değerini kullanmak için özelliği yapılandırma nesnesinden kaldırın.
 
 ### <a name="setting-a-property"></a>Özellik ayarlama
 
-1. IoT Hub değiştirmek istediğiniz cihazı bulun ve seçin.
+1. IoT Hub'ınızda değiştirmek istediğiniz aygıtı bulun ve seçin.
 
-1. Cihazınıza ve sonra **azureiotsecurity** modülü ' ne tıklayın.
+1. Cihazınıza ve ardından **azureiotsecurity** modülüne tıklayın.
 
-1. **Modül kimliği ikizi**' na tıklayın.
+1. Modül **Kimlik İkiz'ine**tıklayınız.
 
-1. Güvenlik modülünde değiştirmek istediğiniz özellikleri düzenleyin.
+1. Güvenlik modülünde değiştirmek istediğiniz özellikleri edin.
    
    Örneğin, bağlantı olaylarını yüksek öncelikli olarak yapılandırmak ve her 7 dakikada bir yüksek öncelikli olayları toplamak için aşağıdaki yapılandırmayı kullanın.
    
@@ -108,49 +108,49 @@ Varsayılan özellik değerini kullanmak için yapılandırma nesnesinden özell
     }
     ```
 
-1. **Kaydet** düğmesine tıklayın.
+1. **Kaydet**'e tıklayın.
 
 ### <a name="using-a-default-value"></a>Varsayılan değer kullanma
 
-Varsayılan özellik değerini kullanmak için yapılandırma nesnesinden özelliği kaldırın.
+Varsayılan özellik değerini kullanmak için özelliği yapılandırma nesnesinden kaldırın.
 
-## <a name="default-properties"></a>Varsayılan Özellikler 
+## <a name="default-properties"></a>Varsayılan özellikler 
 
-Aşağıdaki tablo IoT güvenlik aracıları için Azure Güvenlik Merkezi 'nin denetlenebilir özelliklerini içerir.
+Aşağıdaki tablo, IoT güvenlik aracıları için Azure Güvenlik Merkezi'nin denetlenebilir özelliklerini içerir.
 
-Varsayılan değerler [GitHub](https\://aka.ms/iot-security-module-default)'da uygun şemada mevcuttur.
+Varsayılan değerler [GitHub'daki](https\://aka.ms/iot-security-module-default)uygun şemada kullanılabilir.
 
 | Adı| Durum | Geçerli değerler| Varsayılan değerler| Açıklama |
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------------|
-|highPriorityMessageFrequency|Gerekli: false |Geçerli değerler: ISO 8601 biçimindeki süre |Varsayılan değer: PT7M |Yüksek öncelikli iletiler gönderilmeden önce en uzun zaman aralığı.|
-|lowPriorityMessageFrequency |Gerekli: false|Geçerli değerler: ISO 8601 biçimindeki süre |Varsayılan değer: PT5H |Düşük öncelikli iletiler gönderilmeden önce geçen en uzun süre.| 
-|Anlık görüntüyle |Gerektir: false|Geçerli değerler: ISO 8601 biçimindeki süre |Varsayılan değer PT13H |Cihaz durumu anlık görüntülerinin oluşturulmasına yönelik zaman aralığı.| 
-|Maxlocalcachesizeınbytes |Gerekli: false |Geçerli değerler: |Varsayılan değer: 2560000, 8192 ' den büyük | Bir aracının ileti önbelleği için izin verilen en fazla depolama alanı (bayt cinsinden). İletiler gönderilmeden önce cihazda iletileri depolamaya izin verilen en fazla alan miktarı.| 
-|Maxiletiizeınbytes |Gerekli: false |Geçerli değerler: 8192 'den büyük pozitif bir sayı, 262144 ' den az |Varsayılan değer: 204800 |Bir aracının bulut iletisine izin verilen en büyük boyutu. Bu ayar, her iletide gönderilen en fazla veri miktarını denetler. |
-|eventPriority $ {EventName} |Gerekli: false |Geçerli değerler: yüksek, düşük, kapalı |Varsayılan değerler: |Aracılı oluşturulan her olayın önceliği | 
+|highPriorityMessageFrequency|Gerekli: false |Geçerli değerler: ISO 8601 Formatında süre |Varsayılan değer: PT7M |Yüksek öncelikli iletiler gönderilmeden önce maksimum zaman aralığı.|
+|düşükÖncelikliMesaj Frekansı |Gerekli: false|Geçerli değerler: ISO 8601 Formatında süre |Varsayılan değer: PT5H |Düşük öncelikli iletilerin gönderilmesiiçin en yüksek süre.| 
+|anlık Frekans |Require: false|Geçerli değerler: ISO 8601 Formatında süre |Varsayılan değer PT13H |Aygıt durumu anlık görüntüleri nin oluşturulması için zaman aralığı.| 
+|maxLocalCacheSizeInBytes |Gerekli: false |Geçerli değerler: |Varsayılan değer: 2560000, 8192'den büyük | Bir aracının ileti önbelleği için izin verilen maksimum depolama alanı (baytlarda). İletiler gönderilmeden önce iletilerin aygıtta depolamasına izin verilen maksimum alan miktarı.| 
+|maxMessageSizeBytes |Gerekli: false |Geçerli değerler: 8192'den büyük, 262144'ten az pozitif bir sayı |Varsayılan değer: 204800 |İletiyi bulutlamak için bir aracının izin verilen maksimum boyutu. Bu ayar, her iletide gönderilen maksimum veri miktarını denetler. |
+|eventPriority${EventName} |Gerekli: false |Geçerli değerler: Yüksek, Düşük, Kapalı |Varsayılan değerler: |Aracı tarafından oluşturulan her olayın önceliği | 
 
 ### <a name="supported-security-events"></a>Desteklenen güvenlik olayları
 
-|Olay adı| ÖzellikAdı | Varsayılan Değer| Anlık görüntü olayı| Ayrıntılar durumu  |
+|Olay adı| ÖzellikAdı | Varsayılan Değer| Anlık Görüntü Etkinliği| Ayrıntılar Durumu  |
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------------|
-|Tanılama olayı|eventPriorityDiagnostic| Kapalı| False| Aracıda ilgili tanılama olayları. Ayrıntılı günlük kaydı için bu olayı kullanın.| 
-|Yapılandırma hatası |eventPriorityConfigurationError |Düşük |False |Aracı yapılandırmayı ayrıştıramadı. Şemaya göre yapılandırmayı doğrulayın.| 
-|Bırakılan olay istatistikleri |eventPriorityDroppedEventsStatistics |Düşük |True|Aracıyla ilgili olay istatistikleri. |
-|Bağlı donanım|eventPriorityConnectedHardware |Düşük |True |Cihaza bağlı tüm donanımların anlık görüntüsü.|
-|Dinleme bağlantı noktaları|eventPriorityListeningPorts |Yüksek |True |Cihazdaki tüm açık dinleme bağlantı noktalarının anlık görüntüsü.|
-|İşlem oluşturma |eventPriorityProcessCreate |Düşük |False |Cihazda oluşturma işlemini denetler.|
-|İşlem sonlandır|eventPriorityProcessTerminate |Düşük |False |Cihazdaki işlem sonlandırmasını denetler.| 
-|Sistem bilgileri |Eventprioritysystemınformation |Düşük |True |Sistem bilgilerinin bir anlık görüntüsü (örneğin: OS veya CPU).| 
-|Yerel kullanıcılar| eventPriorityLocalUsers |Yüksek |True|Sistem içindeki kayıtlı yerel kullanıcıların anlık görüntüsü. |
-|Oturum Aç|  eventPriorityLogin |Yüksek|False|Oturum açma olaylarını cihaza (yerel ve uzak oturumlar) denetleyin.|
-|Bağlantı oluşturma |eventPriorityConnectionCreate|Düşük|False|Cihaza ve cihazdan oluşturulan TCP bağlantılarını denetler. |
-|Güvenlik duvarı yapılandırması| eventPriorityFirewallConfiguration|Düşük|True|Cihaz Güvenlik Duvarı yapılandırmasının (güvenlik duvarı kuralları) anlık görüntüsü. |
-|İşletim sistemi temeli| eventPriorityOSBaseline| Düşük|True|Cihaz işletim sistemi taban çizgisi denetiminin anlık görüntüsü.|
+|Tanılama olayı|olayÖncelikliTanı| Kapalı| False| Ajan ile ilgili tanı olayları. Ayrıntılı günlüğe kaydetme için bu olayı kullanın.| 
+|Yapılandırma hatası |eventPriorityConfigurationError |Düşük |False |Aracı yapılandırmayı ayrışdırmayı başaramadı. Yapılandırmayı şema karşı doğrulayın.| 
+|Bırakılan olaylar istatistikleri |olayPriorityDroppedEventsİstatistiki |Düşük |True|Aracıyla ilgili olay istatistikleri. |
+|Bağlı donanım|olayÖncelikliConnectedHardware |Düşük |True |Aygıta bağlı tüm donanımların anlık görüntüsü.|
+|Dinleme noktaları|eventPriorityListeningPorts |Yüksek |True |Cihazdaki tüm açık dinleme bağlantı noktalarının anlık görüntüsü.|
+|İşlem oluşturma |eventPriorityProcessCreate |Düşük |False |Denetimler aygıtta oluşturma işlemini.|
+|İşlem sonlandırma|olayPriorityProcessTerminate |Düşük |False |Denetimler aygıtta sonlandırma işlemini tamamlar.| 
+|Sistem bilgileri |eventPrioritySystemInformation |Düşük |True |Sistem bilgilerinin anlık görüntüsü (örneğin: işletim sistemi veya CPU).| 
+|Yerel kullanıcılar| olayÖncelikliLocalUsers |Yüksek |True|Sistem içinde kayıtlı yerel kullanıcıların anlık görüntüsü. |
+|Oturum Aç|  olayPriorityLogin |Yüksek|False|Aygıta giriş olaylarını (yerel ve uzak oturum açmalar) denetle.|
+|Bağlantı oluşturma |eventPriorityConnectionCreate|Düşük|False|Aygıta ve cihazdan oluşturulan TCP bağlantılarını denetler. |
+|Güvenlik duvarı yapılandırması| olayÖncelikliFirewallConfiguration|Düşük|True|Aygıt güvenlik duvarı yapılandırmasının anlık görüntüsü (güvenlik duvarı kuralları). |
+|İşletim Sistemi taban çizgisi| olayPriorityOSBaseline| Düşük|True|Aygıt işletim sistemi taban çizgisi denetiminin anlık görüntüsü.|
 |
  
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [IoT önerileri için Azure Güvenlik Merkezi 'Ni anlama](concept-recommendations.md)
-- [IoT uyarıları için Azure Güvenlik Merkezi 'Ni keşfet](concept-security-alerts.md)
-- [Ham güvenlik verilerine erişin](how-to-security-data-access.md)
+- [IoT önerileri için Azure Güvenlik Merkezi'ni anlayın](concept-recommendations.md)
+- [IoT uyarıları için Azure Güvenlik Merkezi'ni keşfedin](concept-security-alerts.md)
+- [Ham güvenlik verilerine erişme](how-to-security-data-access.md)

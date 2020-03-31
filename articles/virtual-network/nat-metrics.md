@@ -1,7 +1,7 @@
 ---
-title: Azure sanal ağ NAT için ölçümler ve uyarılar
+title: Azure Sanal Ağ NAT için ölçümler ve uyarılar
 titleSuffix: Azure Virtual Network
-description: Azure Izleyici ölçümlerini ve sanal ağ NAT için kullanılabilir uyarıları anlayın.
+description: Sanal Ağ NAT için kullanılabilen Azure Monitor ölçümlerini ve uyarılarını anlayın.
 services: virtual-network
 documentationcenter: na
 author: asudbring
@@ -15,49 +15,49 @@ ms.workload: infrastructure-services
 ms.date: 03/04/2020
 ms.author: allensu
 ms.openlocfilehash: 4f1760c32117b34d4d453964473cba3c7d07f725
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79202187"
 ---
-# <a name="azure-virtual-network-nat-metrics"></a>Azure sanal ağ NAT ölçümleri
+# <a name="azure-virtual-network-nat-metrics"></a>Azure Sanal Ağ NAT ölçümleri
 
-Azure sanal ağ NAT ağ geçidi kaynakları çok boyutlu ölçümler sağlar. Bu ölçümleri, işlemi gözlemlemek ve [sorun gidermek](nat-metrics.md)için kullanabilirsiniz.  Uyarılar, SNAT tükenmesi gibi kritik sorunlar için yapılandırılabilir.
+Azure Sanal Ağ NAT ağ geçidi kaynakları çok boyutlu ölçümler sağlar. Bu ölçümleri işlemi gözlemlemek ve [sorun giderme](nat-metrics.md)için kullanabilirsiniz.  Uyarılar, SNAT tükenmesi gibi kritik sorunlar için yapılandırılabilir.
 
 <p align="center">
-  <img src="media/nat-overview/flow-direction1.svg" width="256" title="Internet 'e giden sanal ağ NAT">
+  <img src="media/nat-overview/flow-direction1.svg" width="256" title="Internet'e giden ler için Sanal Ağ NAT">
 </p>
 
-*Şekil: Internet 'e giden sanal ağ NAT*
+*Şekil: Internet'e giden sanal ağ NAT*
 
 ## <a name="metrics"></a>Ölçümler
 
-NAT ağ geçidi kaynakları, Azure Izleyici 'de aşağıdaki çok boyutlu ölçümleri sağlar:
+NAT ağ geçidi kaynakları Azure Monitor'da aşağıdaki çok boyutlu ölçümleri sağlar:
 
-| Ölçüm | Açıklama | Önerilen toplama | Boyutlar |
+| Ölçüm | Açıklama | Önerilen Toplama | Boyutlar |
 |---|---|---|---|
-| Bayt | Gelen ve giden işlenen bayt sayısı | Toplam | Yön (Içinde; Out), protokol (6 TCP; 17 UDP) |
-| Paketleri | Gelen ve giden işlenen paketler | Toplam | Yön (Içinde; Out), protokol (6 TCP; 17 UDP) |
-| Bırakılan paketler | NAT ağ geçidi tarafından bırakılan paketler | Toplam | / |
-| SNAT bağlantı sayısı | Aralık başına durum geçişleri | Toplam | Bağlantı durumu, protokol (6 TCP; 17 UDP) |
-| Toplam SNAT bağlantı sayısı | Geçerli etkin SNAT bağlantıları (~ SNAT bağlantı noktaları kullanımda) | Toplam | Protokol (6 TCP; 17 UDP) |
+| Bayt | Baytlar gelen ve giden işlenmiş | Toplam | Yön (In; Çıkış), Protokol (6 TCP; 17 UDP) |
+| Paket | Gelen ve giden paketler işlenir | Toplam | Yön (In; Çıkış), Protokol (6 TCP; 17 UDP) |
+| Bırakılan paketler | Paketler NAT ağ geçidi tarafından bırakılan | Toplam | / |
+| SNAT Bağlantı Sayısı | Aralık başına durum geçişleri | Toplam | Bağlantı Durumu, Protokol (6 TCP; 17 UDP) |
+| Toplam SNAT bağlantı sayısı | Geçerli etkin SNAT bağlantıları (~ Kullanımdaki SNAT bağlantı noktaları) | Toplam | Protokol (6 TCP; 17 UDP) |
 
 
 ## <a name="alerts"></a>Uyarılar
 
-Ölçüm uyarıları, yukarıdaki [ölçümlerin](#metrics)her biri Için Azure izleyici 'de yapılandırılabilir.
+Ölçümlere yönelik uyarılar, önceki [ölçümlerin](#metrics)her biri için Azure Monitörü'nde yapılandırılabilir.
 
 ## <a name="limitations"></a>Sınırlamalar
 
-Kaynak Durumu desteklenmez.
+Kaynak Durumu desteklenmiyor.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Sanal ağ NAT](nat-overview.md) hakkında bilgi edinin
+* Sanal [Ağ NAT](nat-overview.md) hakkında bilgi edinin
 * [NAT ağ geçidi kaynağı](nat-gateway-resource.md) hakkında bilgi edinin
-* [Azure izleyici](../azure-monitor/overview.md) hakkında bilgi edinin
-* [NAT ağ geçidi kaynakları sorunlarını giderme](troubleshoot-nat.md)hakkında bilgi edinin.
-* [UserVoice 'Ta sanal ağ NAT için bir sonraki derleme yapmanız gerektiğini bize söyleyin](https://aka.ms/natuservoice).
+* Azure [Monitör](../azure-monitor/overview.md) hakkında bilgi edinin
+* [NAT ağ geçidi kaynaklarını sorun giderme](troubleshoot-nat.md)hakkında bilgi edinin.
+* [UserVoice Sanal Ağ NAT için sonraki oluşturmak için ne söyle.](https://aka.ms/natuservoice)
 
 

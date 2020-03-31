@@ -1,6 +1,6 @@
 ---
-title: Kullanım DıŞı Azure Kubernetes kümesini Web Kullanıcı arabirimi ile yönetme
-description: Azure Container Service 'de Kubernetes Web Kullanıcı arabirimini kullanma
+title: (AmortismanA Uğradı) Web Web Web Sürümü ile Azure Kubernetes kümesini yönetme
+description: Azure Konteyner Hizmetinde Kubernetes web UI'sini kullanma
 author: bburns
 ms.service: container-service
 ms.topic: conceptual
@@ -8,40 +8,40 @@ ms.date: 02/21/2017
 ms.author: bburns
 ms.custom: mvc
 ms.openlocfilehash: 01abcc961d1c2ad9d3e2cf35f82e62929bc2fb89
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79371146"
 ---
-# <a name="deprecated-using-the-kubernetes-web-ui-with-azure-container-service"></a>Kullanım DıŞı Azure Container Service ile Kubernetes Web Kullanıcı arabirimini kullanma
+# <a name="deprecated-using-the-kubernetes-web-ui-with-azure-container-service"></a>(AmortismanA Uğradı) Azure Konteyner Hizmeti ile Kubernetes web UI'sini kullanma
 
 > [!TIP]
-> Azure Kubernetes hizmetini kullanan Bu makalenin güncelleştirilmiş sürümü için bkz. [Azure Kubernetes hizmeti 'nde (AKS) Kubernetes web panosuna erişme](../../aks/kubernetes-dashboard.md).
+> Azure Kubernetes Hizmetini kullanan bu makalenin güncelleştirilmiş sürümü [için](../../aks/kubernetes-dashboard.md)bkz.
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
-Bu izlenecek yol, [Azure Container Service kullanarak bir Kubernetes kümesi oluşturduğunuzu](container-service-kubernetes-walkthrough.md)varsayar.
+## <a name="prerequisites"></a>Ön koşullar
+Bu izlenecek yol, [Azure Kapsayıcı Hizmeti'ni kullanarak bir Kubernetes kümesi oluşturduğunuzu](container-service-kubernetes-walkthrough.md)varsayar.
 
 
-Ayrıca, Azure CLı ve `kubectl` araçlarının yüklü olduğunu varsaymaktadır.
+Ayrıca Azure CLI ve `kubectl` araçları yüklü olduğunu varsayar.
 
-Şunu çalıştırarak `az` aracı yüklüyse test edebilirsiniz:
+Aracı çalıştırarak yüklü `az` yorurarak test edebilirsiniz:
 
 ```azurecli
 az --version
 ```
 
-`az` aracı yüklü değilse, [burada](https://github.com/azure/azure-cli#installation)yönergeler vardır.
+`az` Aracı yüklü değilseniz, [burada](https://github.com/azure/azure-cli#installation)talimatlar vardır.
 
-Şunu çalıştırarak `kubectl` aracı yüklüyse test edebilirsiniz:
+Aracı çalıştırarak yüklü `kubectl` yorurarak test edebilirsiniz:
 
 ```console
 kubectl version
 ```
 
-Yüklü `kubectl` yoksa şu şekilde çalıştırabilirsiniz:
+`kubectl` Yüklemediyseniz çalıştırabilirsiniz:
 
 ```azurecli
 az acs kubernetes install-cli
@@ -49,83 +49,83 @@ az acs kubernetes install-cli
 
 ## <a name="overview"></a>Genel Bakış
 
-### <a name="connect-to-the-web-ui"></a>Web Kullanıcı arabirimine bağlanma
-Şunu çalıştırarak Kubernetes Web Kullanıcı arabirimini başlatabilirsiniz:
+### <a name="connect-to-the-web-ui"></a>Web'e bağlantı ara
+Kubernetes web UI'sini çalıştırarak başlatabilirsiniz:
 
 ```azurecli
 az acs kubernetes browse -g [Resource Group] -n [Container service instance name]
 ```
 
-Bu, yerel makinenizi Kubernetes Web Kullanıcı arabirimine bağlayan güvenli bir ara sunucu ile konuşmak için yapılandırılmış bir Web tarayıcısını açmalı.
+Bu Kubernetes web UI yerel makine bağlayan güvenli bir proxy konuşmak için yapılandırılmış bir web tarayıcısı açmalıdır.
 
-### <a name="create-and-expose-a-service"></a>Hizmet oluşturma ve kullanıma sunma
-1. Kubernetes Web Kullanıcı arabiriminde sağ üst penceredeki **Oluştur** düğmesine tıklayın.
+### <a name="create-and-expose-a-service"></a>Bir hizmet oluşturma ve açığa çıkarma
+1. Kubernetes web UI'sinde sağ üst penceredeki **Oluştur** düğmesini tıklatın.
 
-    ![Kubernetes UI oluştur](./media/container-service-kubernetes-ui/create.png)
+    ![Kubernetes Oluşturma UI](./media/container-service-kubernetes-ui/create.png)
 
-    Uygulamanızı oluşturmaya başlayabileceğiniz bir iletişim kutusu açılır.
+    Uygulamanızı oluşturmaya başlaabileceğiniz bir iletişim kutusu açılır.
 
-2. `hello-nginx`adı verin. [Docker 'dan`nginx` kapsayıcısını](https://hub.docker.com/_/nginx/) kullanın ve bu Web hizmetinin üç çoğaltmasını dağıtın.
+2. Ona adını `hello-nginx`ver. [ `nginx` Docker'ın kapsayıcısını](https://hub.docker.com/_/nginx/) kullanın ve bu web hizmetinin üç kopyasını dağıtın.
 
-    ![Kubernetes Pod oluştur Iletişim kutusu](./media/container-service-kubernetes-ui/nginx.png)
+    ![Kubernetes Pod Oluşturma İletişim](./media/container-service-kubernetes-ui/nginx.png)
 
-3. **Hizmet**altında **Harici** ' ı seçin ve 80 numaralı bağlantı noktasını girin.
+3. **Hizmet**altında, **Dış'ı** seçin ve 80 portu girin.
 
-    Bu ayar yükü-trafiği üç çoğaltmaya dengeler.
+    Bu ayar, üç yinelemeye olan yükü dengeler.
 
-    ![Kubernetes hizmeti oluşturma Iletişim kutusu](./media/container-service-kubernetes-ui/service.png)
+    ![Kubernetes Hizmet İletişim Oluşturma](./media/container-service-kubernetes-ui/service.png)
 
-4. Bu kapsayıcıları ve hizmetleri dağıtmak için **Dağıt** ' a tıklayın.
+4. Bu kapsayıcıları ve hizmetleri dağıtmak için **Dağıt'ı** tıklatın.
 
     ![Kubernetes Dağıtımı](./media/container-service-kubernetes-ui/deploy.png)
 
-### <a name="view-your-containers"></a>Kapsayıcılarınızı görüntüleyin
-**Dağıt**' a tıkladıktan sonra, Kullanıcı arabirimi, dağıttığı için hizmetinizin bir görünümünü gösterir:
+### <a name="view-your-containers"></a>Konteynerlerinizi görüntüleme
+**Dağıt'ı**tıklattıktan sonra, UI hizmetindağıtılırken görünümünü gösterir:
 
-![Kubernetes durumu](./media/container-service-kubernetes-ui/status.png)
+![Kubernetes Durumu](./media/container-service-kubernetes-ui/status.png)
 
-Her bir Kubernetes nesnesinin durumunu, Kullanıcı arabiriminin sol tarafındaki daire içinde, **pods**altında görebilirsiniz. Kısmi bir tam daire ise, nesne hala dağıtılıyor demektir. Bir nesne tam olarak dağıtıldığında yeşil onay işareti görüntülenir:
+Pods altında, UI'nin sol tarafındaki dairedeki her Kubernetes nesnesinin **Pods**durumunu görebilirsiniz. Kısmen tam bir daireise, nesne hala dağıtılır. Bir nesne tam olarak dağıtıldığında, yeşil bir onay işareti görüntüler:
 
-![Kubernetes dağıtıldı](./media/container-service-kubernetes-ui/deployed.png)
+![Kubernetes Konuşlandırıldı](./media/container-service-kubernetes-ui/deployed.png)
 
-Her şey çalışırken, çalışan Web hizmeti hakkındaki ayrıntıları görmek için yığınlarınızın birine tıklayın.
+Her şey çalışmaya başladığında, çalışan web hizmetiyle ilgili ayrıntıları görmek için bölmelerinizden birini tıklatın.
 
-![Kubernetes pods](./media/container-service-kubernetes-ui/pods.png)
+![Kubernetes Pods](./media/container-service-kubernetes-ui/pods.png)
 
-**Pods** görünümünde, Pod 'daki kapsayıcılar ve bu kapsayıcılar tarafından kullanılan CPU ve bellek kaynakları hakkındaki bilgileri görebilirsiniz:
+Pods görünümünde, bölmedeki kapsayıcılar ve bu **kapsayıcılar** tarafından kullanılan CPU ve bellek kaynakları hakkındaki bilgileri görebilirsiniz:
 
-![Kubernetes kaynakları](./media/container-service-kubernetes-ui/resources.png)
+![Kubernetes Kaynakları](./media/container-service-kubernetes-ui/resources.png)
 
 Kaynakları görmüyorsanız, izleme verilerinin yayılması için birkaç dakika beklemeniz gerekebilir.
 
-Kapsayıcının günlüklerini görmek için **günlükleri görüntüle**' ye tıklayın.
+Kapsayıcınızın günlüklerini görmek için **günlükleri görüntüle'yi**tıklatın.
 
-![Kubernetes günlükleri](./media/container-service-kubernetes-ui/logs.png)
+![Kubernetes Günlükleri](./media/container-service-kubernetes-ui/logs.png)
 
 ### <a name="viewing-your-service"></a>Hizmetinizi görüntüleme
-Kubernetes Kullanıcı arabirimi, Kapsayıcılarınızı çalıştırmanın yanı sıra bir dış `Service` oluşturmuştur ve bu sayede trafiği kümenizdeki kapsayıcılara getirecek bir yük dengeleyici sağlar.
+Kubernetes UI, kapsayıcılarınızı çalıştırmanın yanı sıra, kümenizdeki kapsayıcılara trafik getirmek için bir yük dengeleyicisi sağlayan bir harici `Service` araç oluşturmuştur.
 
-Sol gezinti bölmesinde, tüm hizmetleri görüntülemek için **Hizmetler** ' e tıklayın (yalnızca bir tane olmalıdır).
+Sol gezinti bölmesinde, tüm hizmetleri görüntülemek için **Hizmetler'i** tıklatın (yalnızca bir tane olmalıdır).
 
 ![Kubernetes Hizmetleri](./media/container-service-kubernetes-ui/service-deployed.png)
 
-Bu görünümde, hizmetinize ayrılmış bir dış uç nokta (IP adresi) görmeniz gerekir.
-Bu IP adresine tıklarsanız, NGINX kapsayıcınızı yük dengeleyicinin arkasında çalışan bir şekilde görmeniz gerekir.
+Bu görünümde, hizmetinize ayrılmış harici bir uç nokta (IP adresi) görmeniz gerekir.
+Bu IP adresini tıklatırsanız, yük dengeleyicisinin arkasında çalışan Nginx kabınızı görmeniz gerekir.
 
-![NGINX görünümü](./media/container-service-kubernetes-ui/nginx-page.png)
+![nginx görünümü](./media/container-service-kubernetes-ui/nginx-page.png)
 
 ### <a name="resizing-your-service"></a>Hizmetinizi yeniden boyutlandırma
-Nesneleri kullanıcı arabiriminde görüntülemenin yanı sıra, Kubernetes API nesnelerini düzenleyebilir ve güncelleştirebilirsiniz.
+Kullanıcı Bira'sında nesnelerinizi görüntülemenin yanı sıra, Kubernetes API nesnelerini de güncelleyebilir ve güncelleyebilirsiniz.
 
-İlk olarak, hizmetiniz için dağıtımı görmek üzere sol gezinti bölmesindeki **dağıtımlar** ' a tıklayın.
+İlk olarak, hizmetinizin dağıtımını görmek için sol gezinti bölmesinde **Dağıtımlar'ı** tıklatın.
 
-Bu görünümde olduktan sonra, çoğaltma kümesine tıklayın ve sonra üst gezinti çubuğunda **Düzenle** ' ye tıklayın:
+Bu görünüme sahip olduktan sonra yineleme kümesini tıklatın ve ardından üst gezinti çubuğunda **Edit'i** tıklatın:
 
-![Kubernetes düzenleme](./media/container-service-kubernetes-ui/edit.png)
+![Kubernetes Edit](./media/container-service-kubernetes-ui/edit.png)
 
-`spec.replicas` alanı `2`düzenleyin ve **Güncelleştir**' e tıklayın.
+Alanı olması `spec.replicas` `2`için edin ve **Güncelleştir'i**tıklatın.
 
-Bu, yığınlarınızın birini silerek yineleme sayısının ikiye düşürümesine neden olur.
+Bu, bölmelerinizden birini silerek çoğaltma sayısının ikiye düşmesine neden olur.
 
  
 

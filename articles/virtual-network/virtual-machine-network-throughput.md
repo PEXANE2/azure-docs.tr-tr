@@ -1,6 +1,6 @@
 ---
-title: Azure sanal makine ağ aktarım hızı | Microsoft Docs
-description: Azure sanal makine ağ aktarım hızı hakkında bilgi edinin.
+title: Azure sanal makine ağı kullanımı | Microsoft Dokümanlar
+description: Azure sanal makine ağı iş buzundan bilgi edinin.
 services: virtual-network
 documentationcenter: na
 author: steveesp
@@ -16,59 +16,59 @@ ms.date: 4/26/2019
 ms.author: steveesp
 ms.reviewer: kumud, mareat
 ms.openlocfilehash: 47f58b25b082784177910d14ab95d8d242fda71a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79245440"
 ---
-# <a name="virtual-machine-network-bandwidth"></a>Sanal makine ağ bant genişliği
+# <a name="virtual-machine-network-bandwidth"></a>Sanal makine ağı bant genişliği
 
-Azure, her biri farklı performans özellikleri karışımı olan çeşitli VM boyutları ve türleri sunar. Bir özellik, saniyede megabit (Mbps) cinsinden ölçülen ağ aktarım hızı (veya bant genişliğidir). Sanal makineler paylaşılan donanımda barındırıldığından, ağ kapasitesinin aynı donanımı paylaşan sanal makineler arasında oldukça paylaşılması gerekir. Daha büyük sanal makineler daha küçük sanal makinelere göre görece daha fazla bant genişliğine ayrılır.
+Azure, her biri farklı performans özellikleri karışımına sahip çeşitli VM boyutları ve türleri sunar. Bir yetenek ağ iş kısmı (veya bant genişliği), saniyede megabit (Mbps) cinsinden ölçülür. Sanal makineler paylaşılan donanımda barındırıldığı için, ağ kapasitesi aynı donanımı paylaşan sanal makineler arasında adil bir şekilde paylaşılmalıdır. Daha büyük sanal makineler, küçük sanal makinelere göre daha fazla bant genişliği tahsis edilir.
  
-Her bir sanal makineye ayrılan ağ bant genişliği, sanal makineden çıkış (giden) trafiği üzerinden ölçülür. Sanal makineyi terk eden tüm ağ trafiği, hedefe bakılmaksızın ayrılan sınıra doğru sayılır. Örneğin, bir sanal makinede 1.000 Mbps sınırı varsa, bu sınır giden trafiğin aynı sanal ağdaki başka bir sanal makineye mi yoksa Azure dışında mı uygulanacağını uygular.
+Her sanal makineye ayrılan ağ bant genişliği, sanal makineden çıkış (giden) trafik üzerinde ölçülür. Sanal makineden ayrılan tüm ağ trafiği, hedeften bağımsız olarak ayrılan sınıra doğru sayılır. Örneğin, sanal bir makinenin 1.000 Mbps sınırı varsa, bu sınır giden trafiğin aynı sanal ağdaki başka bir sanal makineye mi yoksa Azure dışında mı yazıldığı konusunda geçerlidir.
  
-Giriş doğrudan tarifeli değil veya sınırlı değil. Ancak, bir sanal makinenin gelen verileri işleme yeteneğini etkileyebilecek CPU ve depolama sınırları gibi başka etmenler de vardır.
+Giriş doğrudan ölçülmez veya sınırlı değildir. Ancak, sanal bir makinenin gelen verileri işleme yeteneğini etkilenebilen CPU ve depolama sınırları gibi başka etkenler de vardır.
 
-Hızlandırılmış ağ, gecikme süresi, aktarım hızı ve CPU kullanımı dahil olmak üzere ağ performansını geliştirmek için tasarlanmış bir özelliktir. Hızlandırılmış ağ bir sanal makinenin aktarım hızını geliştirebileceğinden, bu işlem yalnızca sanal makinenin ayrılmış bant genişliğine kadar yapılabilir. Hızlandırılmış ağ hakkında daha fazla bilgi edinmek için bkz. [Windows](create-vm-accelerated-networking-powershell.md) veya [Linux](create-vm-accelerated-networking-cli.md) sanal makineleri için hızlandırılmış ağ.
+Hızlandırılmış ağ, gecikme, iş tükeniş ve CPU kullanımı da dahil olmak üzere ağ performansını artırmak için tasarlanmış bir özelliktir. Hızlandırılmış ağ, sanal makinenin iş bilgililiğini geliştirebilir, ancak bunu yalnızca sanal makinenin ayrılan bant genişliğine kadar yapabilir. Hızlandırılmış ağ hakkında daha fazla bilgi edinmek için [Windows](create-vm-accelerated-networking-powershell.md) veya [Linux](create-vm-accelerated-networking-cli.md) sanal makineleri için Hızlandırılmış ağ çalışmalarına bakın.
  
-Azure sanal makinelerinin bir tane olması gerekir, ancak bunlara eklenmiş birkaç ağ arabirimi olabilir. Bir sanal makineye ayrılan bant genişliği, bir sanal makineye bağlı tüm ağ arabirimleri genelinde giden tüm trafiğin toplamıdır. Diğer bir deyişle, sanal makineye kaç ağ arabirimi iliştirildiğine bakılmaksızın, ayrılan bant genişliği sanal makine başına olur. Birçok ağ arabiriminin farklı Azure VM boyutlarını desteklediğini öğrenmek için bkz. Azure [Windows](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) ve [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) VM boyutları. 
+Azure sanal makinelerinde bir tane olması gerekir, ancak bunlara bağlı birkaç ağ arabirimi olabilir. Sanal makineye ayrılan bant genişliği, sanal makineye bağlı tüm ağ arabirimlerindeki tüm giden trafiğin toplamıdır. Başka bir deyişle, ayrılan bant genişliği, sanal makineye kaç ağ arabirimi bağlı olursa olsun, sanal makine başına dır. Farklı Azure VM boyutlarının desteklediği ağ arabirimlerinin kaç tanesini öğrenmek için Azure [Windows](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) ve [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) VM boyutlarına bakın. 
 
-## <a name="expected-network-throughput"></a>Ağ aktarım hızı bekleniyor
+## <a name="expected-network-throughput"></a>Beklenen ağ iş tonu
 
-Beklenen giden aktarım hızı ve her VM boyutu tarafından desteklenen ağ arabirimlerinin sayısı, Azure [Windows](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) ve [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) VM boyutlarında ayrıntılıdır. Genel amaçlı gibi bir tür seçin ve sonuç sayfasında, Dv2-Series gibi bir boyut serisi seçin. Her serinin, **en fazla NIC/ağ performansı (MB/sn)** adlı son sütunda ağ özelliklerine sahip bir tablosu vardır. 
+Beklenen giden iş bölümü ve her VM boyutu tarafından desteklenen ağ arabirimi sayısı Azure [Windows](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) ve [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) VM boyutlarında ayrıntılı olarak açıklanmıştır. Genel amaçlı gibi bir tür seçin ve ardından ortaya çıkan sayfada Dv2 serisi gibi bir boyut serisi seçin. Her serinin son sütunda ağ özellikleri başlıklı bir tablo vardır, **Max NIC / Beklenen ağ performansı (Mbps)**. 
 
-Aktarım hızı sınırı, sanal makine için geçerlidir. Aktarım hızı aşağıdaki faktörlerden etkilenmez:
-- **Ağ arabirimi sayısı**: bant genişliği sınırı, sanal makineden giden tüm trafiğin birikimli bir sayıdır.
-- **Hızlandırılmış ağ**: Bu özellik, yayımlanan sınırı elde etmek için yararlı olabilir, ancak sınırı değiştirmez.
-- **Trafik hedefi**: tüm hedefler giden sınıra doğru sayılır.
-- **Protokol**: tüm protokollerde tüm giden trafik sınıra doğru sayılır.
+İş verme sınırı sanal makine için geçerlidir. İş mesuliyonu aşağıdaki faktörlerden etkilenmez:
+- **Ağ arabirimi sayısı**: Bant genişliği sınırı sanal makineden gelen tüm giden trafiğin birikmeli olmasıdır.
+- **Hızlandırılmış ağ :** Özellik yayımlanmış sınıra ulaşmada yararlı olsa da, sınırı değiştirmez.
+- **Trafik hedefi**: Tüm varış noktaları giden sınıra doğru sayılır.
+- **Protokol**: Tüm protokoller üzerindeki tüm giden trafik sınıra doğru sayılır.
 
-## <a name="network-flow-limits"></a>Ağ akışı sınırları
+## <a name="network-flow-limits"></a>Ağ Akış Limitleri
 
-Bant genişliğine ek olarak, belirli bir anda VM 'de bulunan ağ bağlantılarının sayısı ağ performansını etkileyebilir. Azure ağ yığını, ' Akışlar ' adlı veri yapılarında TCP/UDP bağlantısının her bir yönü için durumu korur. Tipik bir TCP/UDP bağlantısında, biri gelen ve giden yönü için bir diğeri oluşturulan 2 akışa sahip olur. 
+Bant genişliğine ek olarak, herhangi bir zamanda bir VM'de bulunan ağ bağlantısı sayısı ağ performansını etkileyebilir. Azure ağ yığını, 'akışlar' adı verilen veri yapılarında bir TCP/UDP bağlantısının her yönü için durum tutar. Tipik bir TCP/UDP bağlantısı, biri gelen ve diğeri giden yön için olmak üzere 2 akış oluşturulur. 
 
-Uç noktalar arasındaki veri aktarımı, veri aktarımını gerçekleştirenlere ek olarak birkaç akış oluşturulmasını gerektirir. Yük dengeleyici durumu araştırmaları için oluşturulan DNS çözümlemesi ve akışlar için bazı örnekler oluşturulur. Ayrıca ağ geçitleri, proxy 'ler, güvenlik duvarları gibi ağ sanal gereçlerinin (NVA 'lar), Gereç sırasında sonlandırılan ve gereç tarafından kaynaklandığı bağlantılar için oluşturulan akışları görebileceğine de göz önünde bulabilirsiniz. 
+Uç noktalar arasında veri aktarımı, veri aktarımını gerçekleştirenlere ek olarak birkaç akış oluşturulmasını gerektirir. Bazı örnekler DNS çözünürlüğü için oluşturulan akışlar ve yük dengeleyici sistem sondaları için oluşturulan akışlardır. Ayrıca ağ geçitleri, yakınlıklar, güvenlik duvarları gibi ağ sanal cihazların (NV'ler) cihazda sonlandırılan ve cihaz tarafından oluşturulan bağlantılar için akışlar oluşturacağını da unutmayın. 
 
-![Bir iletme gereci aracılığıyla TCP konuşması için akış sayısı](media/virtual-machine-network-throughput/flow-count-through-network-virtual-appliance.png)
+![Bir yönlendirme cihazı aracılığıyla TCP konuşması için akış sayısı](media/virtual-machine-network-throughput/flow-count-through-network-virtual-appliance.png)
 
-## <a name="flow-limits-and-recommendations"></a>Akış sınırları ve önerileri
+## <a name="flow-limits-and-recommendations"></a>Akış Limitleri ve Öneriler
 
-Azure ağ yığını, 8 ' den fazla CPU çekirdeği ve 100 ' den fazla CPU çekirdeği olan VM 'Ler için iyi performansa sahip olan 250K toplam ağ akışını destekler. Bu sınırı aşan ağ performansı, ek akışlar bırakıldıktan sonra 500 k gelen ve 250K giden bir sabit sınıra kadar ek akışlar için düzgün şekilde düşer.
+Bugün, Azure ağ yığını, 8 CPU çekirdeğinden büyük vm'ler için iyi performansla 250.000 toplam ağ akışını destekler ve 8 CPU çekirdeğinden az olan VM'ler için iyi performans la birlikte 100k toplam akışları destekler. Bu sınır ağ performansı, 500K toplam akışları, 250K gelen ve 250K giden sabit bir sınıra kadar ek akışlar için incelikle düşer ve sonra ek akışlar bırakılır.
 
-||< 8 CPU çekirdeği olan VM 'Ler|8 + CPU çekirdekleri olan VM 'Ler|
+||8 CPU Çekirdeği<vm'ler|8+ CPU Çekirdekli VM'ler|
 |---|---|---|
-|<b>İyi performans</b>|100K akış |250K akış|
-|<b>Azaltılmış performans</b>|100.000 akış üzerine|250K akışlar üzerinde|
-|<b>Akış sınırı</b>|500 k akış|500 k akış|
+|<b>İyi Performans</b>|100K Akar |250K Akar|
+|<b>Bozulmuş Performans</b>|100k Üstü Akışlar|250K'nın üzerinde akışlar|
+|<b>Akış Sınırı</b>|500K Akar|500K Akar|
 
-[Azure izleyici](../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines) 'de ölçümler, sanal makine veya VMSS örneklerindeki ağ akışı sayısını ve akış oluşturma hızını izlemek için kullanılabilir.
+Ölçümler, VM veya VMSS örneklerinizdeki ağ akışlarının sayısını ve akış oluşturma hızını izlemek için [Azure Monitor'da](../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines) kullanılabilir.
 
-![Azure-Monitor-Flow-Metrics. png](media/virtual-machine-network-throughput/azure-monitor-flow-metrics.png)
+![azure-monitör-akış-metrics.png](media/virtual-machine-network-throughput/azure-monitor-flow-metrics.png)
 
-Bağlantı kurma ve sonlandırma ücretleri ayrıca, paket işleme yordamlarına sahip bağlantı kurma ve sonlandırma paylaşımları olarak ağ performansını etkileyebilir. İş yüklerini beklenen trafik desenlerine göre kıyaslanmasını ve iş yüklerini performans ihtiyaçlarınızı karşılayacak şekilde ölçeklendirmenizi öneririz. 
+Bağlantı kurma ve sonlandırma oranları, bağlantı kurulumu ve sonlandırma işlemleri CPU olarak ağ performansını da etkileyebilir. İş yüklerini beklenen trafik modellerine göre kıyaslamanızı ve iş yüklerini performans gereksinimlerinize uygun şekilde ölçeklendirmenizi öneririz. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Sanal makine işletim sistemi için ağ aktarım hızını iyileştirme](virtual-network-optimize-network-bandwidth.md)
-- Sanal makine için [ağ aktarım hızını test](virtual-network-bandwidth-testing.md) edin.
+- Sanal bir makine için [ağ iş buzunu test](virtual-network-bandwidth-testing.md) edin.

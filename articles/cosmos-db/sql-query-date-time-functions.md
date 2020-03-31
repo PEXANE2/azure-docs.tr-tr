@@ -1,6 +1,6 @@
 ---
 title: Azure Cosmos DB sorgu dilinde tarih ve saat işlevleri
-description: Tarih ve saat SQL sistem işlevlerini tarih saat ve zaman damgası işlemleri gerçekleştirmek için Azure Cosmos DB hakkında bilgi edinin.
+description: DateTime ve timestamp işlemlerini gerçekleştirmek için Azure Cosmos DB'deki tarih ve saat SQL sistem işlevleri hakkında bilgi edinin.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,19 +8,19 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 93b3e90deb5e3764cb5402938c5d0e14cadb7883
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74873395"
 ---
-# <a name="date-and-time-functions-azure-cosmos-db"></a>Tarih ve saat işlevleri (Azure Cosmos DB)
+# <a name="date-and-time-functions-azure-cosmos-db"></a>Tarih ve saat fonksiyonları (Azure Cosmos DB)
 
-Tarih ve saat işlevleri Azure Cosmos DB tarih saat ve zaman damgası işlemleri gerçekleştirmenize olanak sağlar.
+Tarih ve saat işlevleri, Azure Cosmos DB'de DateTime ve timestamp işlemlerini gerçekleştirmenize izin sağlar.
 
 ## <a name="functions"></a>İşlevler
 
-Aşağıdaki skaler işlevler, geçerli UTC Tarih ve saatini iki şekilde almanızı sağlar; değeri, milisaniye cinsinden UNIX dönemi olan sayısal bir zaman damgası veya ISO 8601 biçimine uygun bir dize olarak:
+Aşağıdaki skaler fonksiyonlar geçerli UTC tarih ve saatini iki şekilde elde etmenizi sağlar; değeri milisaniye cinsinden veya ISO 8601 biçimine uygun bir dize olarak Unix çağı olan sayısal bir zaman damgası:
 
 |||
 |-|-|
@@ -29,7 +29,7 @@ Aşağıdaki skaler işlevler, geçerli UTC Tarih ve saatini iki şekilde alman�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Sistem işlevleri Azure Cosmos DB](sql-query-system-functions.md)
-- [Azure Cosmos DB giriş](introduction.md)
-- [Kullanıcı tanımlı Işlevler](sql-query-udfs.md)
-- [Toplamlar](sql-query-aggregates.md)
+- [Sistem fonksiyonları Azure Cosmos DB](sql-query-system-functions.md)
+- [Azure Cosmos DB'ye Giriş](introduction.md)
+- [Kullanıcı Tanımlı Fonksiyonlar](sql-query-udfs.md)
+- [Toplamalar](sql-query-aggregates.md)

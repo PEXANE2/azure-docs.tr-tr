@@ -1,6 +1,6 @@
 ---
-title: Hive etkinliğini kullanarak verileri dönüştürme-Azure
-description: Bir Azure Data Factory 'deki Hive etkinliğini isteğe bağlı/kendi HDInsight kümeniz üzerinde kullanarak Hive sorguları çalıştırmak için nasıl kullanabileceğinizi öğrenin.
+title: Kovan Etkinliği'ni kullanarak verileri dönüştürme - Azure
+description: İsteğe bağlı/kendi HDInsight kümenizde Hive sorgularını çalıştırmak için Bir Azure veri fabrikasındaHive Etkinliğini nasıl kullanabileceğinizi öğrenin.
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -13,32 +13,32 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: d153f8c316cbb76e063f07f7f823c8d9c4a21f87
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74703347"
 ---
-# <a name="transform-data-using-hive-activity-in-azure-data-factory"></a>Azure Data Factory Hive etkinliğini kullanarak verileri dönüştürme 
-> [!div class="op_single_selector" title1="Dönüştürme etkinlikleri"]
-> * [Hive etkinliği](data-factory-hive-activity.md) 
-> * [Pig etkinliği](data-factory-pig-activity.md)
-> * [MapReduce etkinliği](data-factory-map-reduce.md)
-> * [Hadoop akışı etkinliği](data-factory-hadoop-streaming-activity.md)
-> * [Spark etkinliği](data-factory-spark.md)
+# <a name="transform-data-using-hive-activity-in-azure-data-factory"></a>Azure Veri Fabrikası'nda Kovan Etkinliği'ni kullanarak verileri dönüştürme 
+> [!div class="op_single_selector" title1="Dönüşüm Faaliyetleri"]
+> * [Kovan Etkinliği](data-factory-hive-activity.md) 
+> * [Domuz Aktivitesi](data-factory-pig-activity.md)
+> * [MapReduce Etkinliği](data-factory-map-reduce.md)
+> * [Hadoop Akış Etkinliği](data-factory-hadoop-streaming-activity.md)
+> * [Kıvılcım Etkinliği](data-factory-spark.md)
 > * [Machine Learning Batch Yürütme Etkinliği](data-factory-azure-ml-batch-execution-activity.md)
 > * [Machine Learning Kaynak Güncelleştirme Etkinliği](data-factory-azure-ml-update-resource-activity.md)
 > * [Saklı Yordam Etkinliği](data-factory-stored-proc-activity.md)
 > * [Data Lake Analytics U-SQL Etkinliği](data-factory-usql-activity.md)
-> * [.NET özel etkinliği](data-factory-use-custom-activities.md)
+> * [.NET Özel Etkinlik](data-factory-use-custom-activities.md)
 
 > [!NOTE]
-> Bu makale, Data Factory’nin 1. sürümü için geçerlidir. Data Factory hizmetinin geçerli sürümünü kullanıyorsanız, bkz. [Data Factory Hive etkinliğini kullanarak verileri dönüştürme](../transform-data-using-hadoop-hive.md).
+> Bu makale, Data Factory’nin 1. sürümü için geçerlidir. Veri Fabrikası hizmetinin geçerli sürümünü kullanıyorsanız, [Veri Fabrikası'ndaki Kovan etkinliğini kullanarak verileri dönüştürme bölümüne](../transform-data-using-hadoop-hive.md)bakın.
 
-Bir Data Factory işlem [hattının](data-factory-create-pipelines.md) HDInsight Hive etkinliği, [kendi kendinize](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) veya [isteğe bağlı](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) Windows/Linux tabanlı HDInsight kümenizde Hive sorguları yürütür. Bu makale, veri dönüştürme ve desteklenen dönüştürme etkinliklerine genel bir bakış sunan [veri dönüştürme etkinlikleri](data-factory-data-transformation-activities.md) makalesinde oluşturulur.
+Veri Fabrikası [ardışık işlonundaki](data-factory-create-pipelines.md) HDInsight Hive etkinliği, Kovan sorgularını kendi veya [isteğe bağlı](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) Windows/Linux tabanlı HDInsight [kümenizde](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) yürütür. Bu makalede, veri dönüşümü ve desteklenen dönüşüm faaliyetlerine genel bir genel bakış sunan [veri dönüştürme etkinlikleri](data-factory-data-transformation-activities.md) makalesi temel almaktadır.
 
 > [!NOTE] 
-> Azure Data Factory yeni kullanıyorsanız, [Azure Data Factory 'ye giriş](data-factory-introduction.md) ile okuyun ve öğreticiyi yapın: Bu makaleyi okumadan önce [ilk veri Işlem hattınızı oluşturun](data-factory-build-your-first-pipeline.md) . 
+> Azure Veri Fabrikası'nda yeniyseniz, [Azure Veri Fabrikası'na Giriş'i](data-factory-introduction.md) okuyun ve öğreticiyi yapın: Bu makaleyi okumadan önce ilk veri [ardışık işleminizi oluşturun.](data-factory-build-your-first-pipeline.md) 
 
 ## <a name="syntax"></a>Sözdizimi
 
@@ -71,23 +71,23 @@ Bir Data Factory işlem [hattının](data-factory-create-pipelines.md) HDInsight
     }
 }
 ```
-## <a name="syntax-details"></a>Söz dizimi ayrıntıları
-| Özellik | Açıklama | Gereklidir |
+## <a name="syntax-details"></a>Sözdizimi ayrıntıları
+| Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
-| ad |Etkinliğin adı |Yes |
+| ad |Etkinliğin adı |Evet |
 | açıklama |Etkinliğin ne için kullanıldığını açıklayan metin |Hayır |
-| type |Hdınsighthive |Yes |
-| girişi |Hive etkinliği tarafından tüketilen girişler |Hayır |
-| çıkışı |Hive etkinliği tarafından oluşturulan çıktılar |Yes |
-| linkedServiceName |Data Factory bağlı hizmet olarak kaydedilen HDInsight kümesine başvuru |Yes |
-| betiğini çalıştırın |Hive betiğini satır içi olarak belirt |Hayır |
-| scriptPath |Hive betiğini bir Azure Blob depolama alanında depolayın ve dosyanın yolunu sağlayın. ' Script ' veya ' scriptPath ' özelliğini kullanın. İkisi birlikte kullanılamaz. Dosya adı büyük/küçük harfe duyarlıdır. |Hayır |
-| tanımlar |' Hiveconf ' kullanarak Hive betiği içinde başvurmak için bir anahtar/değer çiftleri olarak parametre belirtin |Hayır |
+| type |HDinsightHive |Evet |
+| Giriş |Hive aktivitesi tarafından tüketilen girdiler |Hayır |
+| Çıkış |Kovan aktivitesi tarafından üretilen çıktılar |Evet |
+| linkedServiceName |Veri Fabrikası'nda bağlantılı hizmet olarak kayıtlı HDInsight kümesine başvuru |Evet |
+| betiğini çalıştırın |Hive komut dosyasını satır satır belirtin |Hayır |
+| scriptPath |Hive komut dosyasını Azure blob depolama alanında saklayın ve dosyaya giden yolu sağlayın. 'Komut dosyası' veya 'scriptPath' özelliğini kullanın. Her ikisi de birlikte kullanılamaz. Dosya adı büyük/küçük harf duyarlıdır. |Hayır |
+| Tanım -lar |'Kovan' kullanarak Hive komut dosyası içinde başvurmak için parametreleri anahtar/değer çiftleri olarak belirtin |Hayır |
 
 ## <a name="example"></a>Örnek
-Kullanıcıların, şirketiniz tarafından başlatılan oyunları oynatılması için harcadığı zamanı belirlemek istediğiniz oyun günlüğü analizinin bir örneğini ele alalım. 
+Şirketiniz tarafından başlatılan oyunları oynayan kullanıcılar tarafından harcanan zamanı belirlemek istediğiniz oyun günlükleri analizine bir örnek verelim. 
 
-Aşağıdaki günlük, virgülle (`,`) ayrılmış bir oyun günlüğü örneğidir ve aşağıdaki alanları içerir: ProfileId, SessionStart, Duration, Srcıaddress ve GameType.
+Aşağıdaki günlük virgül (`,`) ayrılmış ve aşağıdaki alanları içeren örnek bir oyun günlüğü - ProfileID, SessionStart, Süre, SrcIPAddress ve GameType.
 
 ```
 1809,2014-05-04 12:04:25.3470000,14,221.117.223.75,CaptureFlag
@@ -97,7 +97,7 @@ Aşağıdaki günlük, virgülle (`,`) ayrılmış bir oyun günlüğü örneği
 .....
 ```
 
-Bu verileri işlemek için **Hive betiği** :
+Bu verileri işlemek için **Hive komut dosyası:**
 
 ```
 DROP TABLE IF EXISTS HiveSampleIn; 
@@ -124,18 +124,18 @@ Select
 FROM HiveSampleIn Group by ProfileID
 ```
 
-Bu Hive betiğini bir Data Factory işlem hattında yürütmek için, aşağıdakileri yapmanız gerekir
+Bu Hive komut dosyasını Veri Fabrikası ardışık bir şekilde yürütmek için aşağıdakileri yapmanız gerekir:
 
-1. [Kendi HDInsight işlem kümenizi](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) kaydetmek veya [isteğe bağlı HDInsight işlem kümesini](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)yapılandırmak için bağlı bir hizmet oluşturun. "HDInsightLinkedService" bağlantılı hizmetini arayalım.
-2. Verileri barındıran Azure Blob depolama ile bağlantıyı yapılandırmak için [bağlı bir hizmet](data-factory-azure-blob-connector.md) oluşturun. "StorageLinkedService" bağlantılı hizmetini arayalım
-3. Girişe ve çıkış verilerine işaret eden veri [kümeleri](data-factory-create-datasets.md) oluşturun. "HiveSampleIn" giriş veri kümesini ve "HiveSampleOut" çıkış veri kümesini arayalım
-4. Hive sorgusunu bir dosya olarak, #2 adımında yapılandırılmış Azure Blob depolama alanına kopyalayın. verilerin barındırılmasına yönelik depolama alanı, bu sorgu dosyasını barındırmakla farklıysa, ayrı bir Azure depolama bağlı hizmeti oluşturun ve etkinliğin içinde başvurun. Komut dosyası dosyasını içeren Azure depolama alanını belirtmek üzere Hive sorgu dosyası ve **Scriptlinkedservice** yolunu belirtmek Için **ScriptPath** kullanın. 
+1. [Kendi HDInsight bilgi işlem kümenizi](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) kaydetmek veya [isteğe bağlı HDInsight bilgi işlem kümesini](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)yapılandırmak için bağlantılı bir hizmet oluşturun. Bu bağlantılı hizmete "HDInsightLinkedService" diyelim.
+2. Verileri barındıran Azure Blob depolamasına olan bağlantıyı yapılandırmak için bağlantılı bir [hizmet](data-factory-azure-blob-connector.md) oluşturun. Bu bağlantılı hizmete "StorageLinkedService" diyelim.
+3. Girişve çıktı verilerini gösteren [veri kümeleri](data-factory-create-datasets.md) oluşturun. Giriş veri kümesine "HiveSampleIn" ve çıktı veri kümesini "HiveSampleOut" olarak adlandıralım.
+4. Adım #2 yapılandırılan Azure Blob Depolama'ya dosya olarak Hive sorgusunu kopyalayın. Verileri barındırma depolama alanı bu sorgu dosyasını barındıran dosyadan farklıysa, ayrı bir Azure Depolama bağlantılı hizmet oluşturun ve etkinlikte bu hizmete bakın. Komut dosyası dosyasını içeren Azure depolama alanını belirtmek için kovma sorgusu dosyasına ve **komut dosyasıLinkedService'e** giden yolu belirtmek için **scriptPath'i** kullanın. 
    
    > [!NOTE]
-   > Ayrıca, **komut dosyası** özelliğini kullanarak, Hive betiğini etkinlik tanımında satır içi olarak da sağlayabilirsiniz. JSON belgesi içindeki betikteki tüm özel karakterlerin kaçışması ve hata ayıklama sorunlarına neden olabileceği için bu yaklaşımı önermiyoruz. En iyi Yöntem #4 adımı takip etmek olacaktır.
+   > **Komut dosyası** özelliğini kullanarak etkinlik tanımında Hive komut dosyasını satır satır olarak da sağlayabilirsiniz. JSON belge içindeki komut dosyasındaki tüm özel karakterlerin kaçması gerektiğinden ve hata ayıklama sorunlarına neden olabileceğinden, bu yaklaşımı önermiyoruz. En iyi uygulama adım #4 takip etmektir.
    > 
    > 
-5. Hdınsighthive etkinliğiyle bir işlem hattı oluşturun. Etkinlik, verileri işler/dönüştürür.
+5. HDInsightHive etkinliği ile bir boru hattı oluşturun. Etkinlik verileri işler/dönüştürür.
 
     ```JSON   
     {   
@@ -169,15 +169,15 @@ Bu Hive betiğini bir Data Factory işlem hattında yürütmek için, aşağıda
         }
     }
     ```
-6. İşlem hattını dağıtın. Ayrıntılar için bkz. işlem [hatları oluşturma](data-factory-create-pipelines.md) makalesi. 
-7. Veri Fabrikası izleme ve yönetim görünümlerini kullanarak işlem hattını izleyin. Ayrıntılar için [Data Factory işlem hatlarını izleme ve yönetme](data-factory-monitor-manage-pipelines.md) makalesine bakın. 
+6. Boru hattını dağıtın. Ayrıntılar için [ardışık hatlar](data-factory-create-pipelines.md) oluşturma makalesine bakın. 
+7. Veri fabrikası izleme ve yönetim görünümlerini kullanarak boru hattını izleyin. Ayrıntılar için Veri Fabrikası boru hatları makalelerine [bakın.](data-factory-monitor-manage-pipelines.md) 
 
-## <a name="specifying-parameters-for-a-hive-script"></a>Hive betiği için parametreleri belirtme
-Bu örnekte, oyun günlükleri Azure Blob depolama alanında günlük olarak alınır ve Tarih ve saat ile bölümlenen bir klasörde depolanır. Hive betiğini parametreleştirmek ve giriş klasörü konumunu çalışma zamanında dinamik olarak geçirmek ve ayrıca tarih ve saat ile bölümlenen çıktıyı oluşturmak istersiniz.
+## <a name="specifying-parameters-for-a-hive-script"></a>Hive komut dosyası için parametreleri belirtme
+Bu örnekte, oyun günlükleri her gün Azure Blob Depolama'ya alınır ve tarih ve saatle birlikte bölümlenmiş bir klasörde depolanır. Hive komut dosyası parametreve çalışma süresi sırasında dinamik giriş klasörü konumunu geçmek ve aynı zamanda tarih ve saat ile bölümlenmiş çıkış üretmek istiyorum.
 
-Parametreli Hive betiğini kullanmak için şunları yapın
+Parametreli Hive komut dosyasını kullanmak için aşağıdakileri yapın
 
-* **Tanımlar**içindeki parametreleri tanımlayın.
+* Tanımlardaki parametreleri **tanımlayın.**
 
     ```JSON  
     {
@@ -215,7 +215,7 @@ Parametreli Hive betiğini kullanmak için şunları yapın
       }
     }
     ```
-* Hive betiğinde, **$ {hiveconf: ParameterName}** öğesini kullanarak parametreye bakın. 
+* Kovan Komut Dosyası'nda **,${hiveconf:parameterName}** kullanarak parametreye bakın. 
   
     ```
     DROP TABLE IF EXISTS HiveSampleIn; 
@@ -242,9 +242,9 @@ Parametreli Hive betiğini kullanmak için şunları yapın
     FROM HiveSampleIn Group by ProfileID
     ```
   ## <a name="see-also"></a>Ayrıca Bkz.
-* [Pig etkinliği](data-factory-pig-activity.md)
-* [MapReduce etkinliği](data-factory-map-reduce.md)
-* [Hadoop akışı etkinliği](data-factory-hadoop-streaming-activity.md)
-* [Spark programlarını çağırma](data-factory-spark.md)
-* [R betiklerini çağırma](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample)
+* [Domuz Aktivitesi](data-factory-pig-activity.md)
+* [MapReduce Etkinliği](data-factory-map-reduce.md)
+* [Hadoop Akış Etkinliği](data-factory-hadoop-streaming-activity.md)
+* [Spark programları çağırma](data-factory-spark.md)
+* [R betikleri çağırma](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample)
 

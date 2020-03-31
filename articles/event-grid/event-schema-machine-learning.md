@@ -1,6 +1,6 @@
 ---
-title: Azure Event Grid Machine Learning olay şeması
-description: Azure Event Grid Machine Learning Çalışma Alanı olaylar için belirtilen özellikleri açıklar
+title: Azure Olay Izgara Makine Öğrenme olay şeması
+description: Azure Olay Ağıtı ile Makine Öğrenimi Çalışma Alanı etkinlikleri için sağlanan özellikleri açıklar
 services: event-grid
 author: jenns
 ms.service: event-grid
@@ -8,37 +8,37 @@ ms.topic: reference
 ms.date: 10/18/2019
 ms.author: jenns
 ms.openlocfilehash: 4051598a9abd787f6707e67a8c4dab12fc6d626a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79202153"
 ---
-# <a name="azure-event-grid-event-schema-for-azure-machine-learning"></a>Azure Machine Learning için Azure Event Grid olay şeması
+# <a name="azure-event-grid-event-schema-for-azure-machine-learning"></a>Azure Makine Öğrenimi için Azure Olay Izgara etkinliği şeması
 
-Bu makalede Machine Learning çalışma alanı olayları için özellikler ve şema sağlanmaktadır. Olay şemalarına giriş için bkz. [Azure Event Grid olay şeması](event-schema.md).
+Bu makalede, makine öğrenimi çalışma alanı olayları için özellikleri ve şema sağlar. Etkinlik şemalarına giriş için [Azure Olay Izgara olay şemasına](event-schema.md)bakın.
 
-Örnek betiklerin ve öğreticilerin bir listesi için bkz. [AzureML olay kaynağı](event-sources.md#azure-machine-learning).
+Örnek komut dosyaları ve öğreticilerin listesi için [AzureML etkinlik kaynağına](event-sources.md#azure-machine-learning)bakın.
 
-## <a name="available-event-types"></a>Kullanılabilir olay türleri
+## <a name="available-event-types"></a>Kullanılabilir etkinlik türleri
 
-Azure Machine Learning aşağıdaki olay türlerini yayar:
+Azure Machine Learning aşağıdaki etkinlik türlerini yayır:
 
 | Olay türü | Açıklama |
 | ---------- | ----------- |
-| Microsoft. MachineLearningServices. ModelRegistered | Yeni bir model veya model sürümü başarıyla kaydettirilirse tetiklenir. |
-| Microsoft. MachineLearningServices. Modeldağıtıldı | Model (ler) bir uç noktaya başarıyla dağıtıldığında tetiklenir. |
-| Microsoft. MachineLearningServices. RunCompleted | Bir çalıştırma başarıyla tamamlandığında tetiklenir. |
-| Microsoft. MachineLearningServices. Datasetdriftalgılandı | Bir veri kümesi DRFT izleyici, DRFT algıladığında tetiklenir. |
-| Microsoft. MachineLearningServices. RunStatusChanged | Çalışma durumu ' başarısız ' olarak değiştiğinde tetiklenir. |
+| Microsoft.MachineLearningServices.ModelRegistered | Yeni bir Model veya Model sürümü başarıyla kaydedildiğinde yükseltilir. |
+| Microsoft.MachineLearningServices.ModelDeployed | Model(ler) bir Bitiş Noktası'na başarıyla dağıtıldığında yükseltilir. |
+| Microsoft.MachineLearningServices.RunCompleted | Bir Çalışma başarıyla tamamlandığında yükseltilir. |
+| Microsoft.MachineLearningServices.DatasetDriftDetected | Bir Dataset drift monitörü sürüklenme algıladığında yükseltilir. |
+| Microsoft.MachineLearningServices.RunStatus Değiştirildi | Çalıştırma durumu 'başarısız' olarak değiştirildiğinde yükseltilir. |
 
 ## <a name="the-contents-of-an-event-response"></a>Olay yanıtının içeriği
 
-Bir olay tetiklendiğinde, Event Grid hizmeti bu olayla ilgili verileri bu olay ile abone olacak şekilde gönderir.
+Bir olay tetiklendiğinde, Olay Izgara hizmeti bitiş noktasına abone olmak için bu olayla ilgili verileri gönderir.
 
-Bu bölüm, verilerin her olay için nasıl görüneceğine ilişkin bir örnek içerir.
+Bu bölümde, bu verilerin her olay için nasıl görüneceğine dair bir örnek yer almaktadır.
 
-### <a name="microsoftmachinelearningservicesmodelregistered-event"></a>Microsoft. MachineLearningServices. ModelRegistered olayı
+### <a name="microsoftmachinelearningservicesmodelregistered-event"></a>Microsoft.MachineLearningServices.ModelRegistered olay
 
 ```json
 [{
@@ -63,7 +63,7 @@ Bu bölüm, verilerin her olay için nasıl görüneceğine ilişkin bir örnek 
 }]
 ```
 
-### <a name="microsoftmachinelearningservicesmodeldeployed-event"></a>Microsoft. MachineLearningServices. Modeldağıtılan olay
+### <a name="microsoftmachinelearningservicesmodeldeployed-event"></a>Microsoft.MachineLearningServices.ModelDeployed olay
 
 ```json
 [{
@@ -89,7 +89,7 @@ Bu bölüm, verilerin her olay için nasıl görüneceğine ilişkin bir örnek 
 }]
 ```
 
-### <a name="microsoftmachinelearningservicesruncompleted-event"></a>Microsoft. MachineLearningServices. RunCompleted olayı
+### <a name="microsoftmachinelearningservicesruncompleted-event"></a>Microsoft.MachineLearningServices.RunCompleted olay
 
 ```json
 [{
@@ -125,7 +125,7 @@ Bu bölüm, verilerin her olay için nasıl görüneceğine ilişkin bir örnek 
 }]
 ```
 
-### <a name="microsoftmachinelearningservicesdatasetdriftdetected-event"></a>Microsoft. MachineLearningServices. Datasetdriftalgılanan olay
+### <a name="microsoftmachinelearningservicesdatasetdriftdetected-event"></a>Microsoft.MachineLearningServices.DatasetDriftDetected olay
 
 ```json
 [{
@@ -149,7 +149,7 @@ Bu bölüm, verilerin her olay için nasıl görüneceğine ilişkin bir örnek 
 }]
 ```
 
-### <a name="microsoftmachinelearningservicesrunstatuschanged-event"></a>Microsoft. MachineLearningServices. RunStatusChanged olayı
+### <a name="microsoftmachinelearningservicesrunstatuschanged-event"></a>Microsoft.MachineLearningServices.RunStatusChanged olay
 
 ```json
 [{
@@ -191,79 +191,79 @@ Bu bölüm, verilerin her olay için nasıl görüneceğine ilişkin bir örnek 
 
 ## <a name="event-properties"></a>Olay özellikleri
 
-Bir olay aşağıdaki en üst düzey verilere sahiptir:
+Bir olay aşağıdaki üst düzey verilere sahiptir:
 
 | Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
-| konu başlığı | string | Olay kaynağının tam kaynak yolu. Bu alan yazılabilir değil. Event Grid bu değeri sağlar. |
-| subject | string | Olay konusunun yayımcı tanımlı yolu. |
-| eventType | string | Bu olay kaynağı için kayıtlı olay türlerinden biri. |
-| eventTime | string | Etkinliğin UTC saatine göre oluşturulduğu zaman. |
-| id | string | Etkinliğin benzersiz tanımlayıcısı. |
-| data | object | BLOB depolama olay verileri. |
-| dataVersion | string | Veri nesnesinin şema sürümü. Yayımcı, şema sürümünü tanımlar. |
-| metadataVersion | string | Olay meta verilerinin şema sürümü. Event Grid üst düzey özelliklerin şemasını tanımlar. Event Grid bu değeri sağlar. |
+| konu başlığı | string | Olay kaynağına tam kaynak yolu. Bu alan yazılamaz. Event Grid bu değeri sağlar. |
+| Konu | string | Olay konusunun yayımcı tarafından tanımlanan yolu. |
+| Eventtype | string | Bu olay kaynağı için kayıtlı olay türlerinden biri. |
+| eventTime | string | Olayın sağlayıcının UTC zamanına bağlı olarak oluşturulan süre. |
+| id | string | Etkinlik için benzersiz tanımlayıcı. |
+| veri | object | Blob depolama olay verileri. |
+| dataVersion | string | Veri nesnesinin şema sürümü. Şema sürümünü yayımcı tanımlar. |
+| metadataVersion | string | Olay meta verilerinin şema sürümü. Event Grid en üst düzey özelliklerin şemasını tanımlar. Event Grid bu değeri sağlar. |
 
-Veri nesnesi, her olay türü için aşağıdaki özelliklere sahiptir:
+Veri nesnesi her olay türü için aşağıdaki özelliklere sahiptir:
 
-### <a name="microsoftmachinelearningservicesmodelregistered"></a>Microsoft. MachineLearningServices. ModelRegistered
+### <a name="microsoftmachinelearningservicesmodelregistered"></a>Microsoft.MachineLearningServices.ModelRegistered
 
 | Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
-| ModelName | string | Kayıtlı olan modelin adı. |
-| ModelVersion | string | Kaydedilen modelin sürümü. |
-| ModelTags | object | Kaydedilen modelin etiketleri. |
-| ModelProperties | object | Kaydedilen modelin özellikleri. |
+| ModelName | string | Kayıtlı modelin adı. |
+| ModelSürümü | string | Kayıtlı modelin sürümü. |
+| ModelEtiketler | object | Kayıtlı modelin etiketleri. |
+| Model Özellikleri | object | Kayıtlı modelin özellikleri. |
 
-### <a name="microsoftmachinelearningservicesmodeldeployed"></a>Microsoft. MachineLearningServices. Modeldağıtıldı
+### <a name="microsoftmachinelearningservicesmodeldeployed"></a>Microsoft.MachineLearningServices.ModelDeployed
 
 | Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
 | ServiceName | string | Dağıtılan hizmetin adı. |
-| ServiceComputeType | string | Dağıtılan hizmetin işlem türü (ör. ACI, AKS). |
-  | Modelıds | string | Model kimliklerinin virgülle ayrılmış listesi. Hizmette dağıtılan modellerin kimlikleri. |
-| ServiceTags | object | Dağıtılan hizmetin etiketleri. |
-| ServiceProperties | object | Dağıtılan hizmetin özellikleri. |
+| ServiceComputeType | string | Dağıtılan hizmetin işlem türü (örn. ACI, AKS). |
+  | Modelids | string | Virgülle ayrılmış model işlisi listesi. Hizmette dağıtılan modellerin disleri. |
+| ServisEtiketler | object | Dağıtılan hizmetin etiketleri. |
+| Hizmet Özellikleri | object | Dağıtılan hizmetin özellikleri. |
 
-### <a name="microsoftmachinelearningservicesruncompleted"></a>Microsoft. MachineLearningServices. RunCompleted
-
-| Özellik | Tür | Açıklama |
-| -------- | ---- | ----------- |
-| ExperimentId | string | Çalıştırmanın ait olduğu denemenin KIMLIĞI. |
-| ExperimentName | string | Çalıştırmanın ait olduğu denemenin adı. |
-| RunId | string | Tamamlanan çalıştırmanın KIMLIĞI. |
-| RunType | string | Tamamlanan çalıştırmanın çalıştırma türü. |
-| RunTags | object | Tamamlanan çalıştırmanın etiketleri. |
-| RunProperties | object | Tamamlanan çalıştırmanın özellikleri. |
-
-### <a name="microsoftmachinelearningservicesdatasetdriftdetected"></a>Microsoft. MachineLearningServices. Datasetdriftalgılandı
+### <a name="microsoftmachinelearningservicesruncompleted"></a>Microsoft.MachineLearningServices.RunCompleted
 
 | Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
-| Datadriftıd | string | Olayı tetikleyen veri Drın izleyicisinin KIMLIĞI. |
-| DataDriftName | string | Olayı tetikleyen veri Drın izleyicisinin adı. |
-| RunId | string | Veri kayması algılanan çalıştırmanın KIMLIĞI. |
-| Basedatasetıd | string | Drift ' i algılamak için kullanılan temel veri kümesinin KIMLIĞI. |
-| Targetdatasetıd | string | Drift ' i algılamak için kullanılan hedef veri kümesinin KIMLIĞI. |
-| Driftkatsayısı | double | Olayı tetikleyen katsayı sonucu. |
-| StartTime | datetime | Hedef veri kümesi zaman serisinin değişikliklerini algılamasına neden olan başlangıç saati.  |
-| EndTime | datetime | Hedef veri kümesi zaman serisinin değişikliklerini algılamasına neden olan bitiş saati. |
+| Deney Id | string | Çalıştırmanın ait olduğu denemenin kimliği. |
+| Deneme Adı | string | Çalıştırmanın ait olduğu denemenin adı. |
+| Runid | string | Tamamlanan Çalıştır kimliği. |
+| RunType | string | Tamamlanan Çalıştır'ın Çalışma Türü. |
+| RunTags | object | Tamamlanan Çalıştır etiketleri. |
+| RunProperties | object | Tamamlanan Çalıştır'ın özellikleri. |
 
-### <a name="microsoftmachinelearningservicesrunstatuschanged"></a>Microsoft. MachineLearningServices. RunStatusChanged
+### <a name="microsoftmachinelearningservicesdatasetdriftdetected"></a>Microsoft.MachineLearningServices.DatasetDriftDetected
 
 | Özellik | Tür | Açıklama |
 | -------- | ---- | ----------- |
-| ExperimentId | string | Çalıştırmanın ait olduğu denemenin KIMLIĞI. |
-| ExperimentName | string | Çalıştırmanın ait olduğu denemenin adı. |
-| RunId | string | Tamamlanan çalıştırmanın KIMLIĞI. |
-| RunType | string | Tamamlanan çalıştırmanın çalıştırma türü. |
-| RunTags | object | Tamamlanan çalıştırmanın etiketleri. |
-| RunProperties | object | Tamamlanan çalıştırmanın özellikleri. |
-| RunStatus | string | Çalıştırmanın durumu. |
+| DataDriftid | string | Olayı tetikleyen veri sürüklenme monitörünün kimliği. |
+| DataDriftName | string | Olayı tetikleyen veri sürüklenme monitörünün adı. |
+| Runid | string | Veri kayması algılayan Çalıştır kimliği. |
+| BaseDatasetId | string | Sürüklenme algılamak için kullanılan temel Dataset kimliği. |
+| TargetDatasetId | string | Sürüklenme tespit etmek için kullanılan hedef Dataset'in kimliği. |
+| Sürüklenme Katsayısı | double | Olayı tetikleyen katsayı sonucu. |
+| StartTime | datetime | Sürüklenme algılamayla sonuçlanan hedef veri kümesi zaman serisinin başlangıç saati.  |
+| EndTime | datetime | Sürüklenme algılamaile sonuçlanan hedef veri kümesi zaman serisinin bitiş saati. |
+
+### <a name="microsoftmachinelearningservicesrunstatuschanged"></a>Microsoft.MachineLearningServices.RunStatus Değiştirildi
+
+| Özellik | Tür | Açıklama |
+| -------- | ---- | ----------- |
+| Deney Id | string | Çalıştırmanın ait olduğu denemenin kimliği. |
+| Deneme Adı | string | Çalıştırmanın ait olduğu denemenin adı. |
+| Runid | string | Tamamlanan Çalıştır kimliği. |
+| RunType | string | Tamamlanan Çalıştır'ın Çalışma Türü. |
+| RunTags | object | Tamamlanan Çalıştır etiketleri. |
+| RunProperties | object | Tamamlanan Çalıştır'ın özellikleri. |
+| RunStatus | string | Run'ın durumu. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Azure Event Grid giriş için bkz. [Event Grid nedir?](overview.md)
-* Azure Event Grid aboneliği oluşturma hakkında daha fazla bilgi için bkz. [Event Grid abonelik şeması](subscription-creation-schema.md)
-* Azure Machine Learning Azure Event Grid kullanmaya giriş için bkz. [Azure Machine Learning olaylarını](/azure/machine-learning/service/concept-event-grid-integration) kullanma
-* Azure Machine Learning Azure Event Grid kullanmanın bir örneği için bkz. [olay odaklı makine öğrenimi iş akışları oluşturma](/azure/machine-learning/service/how-to-use-event-grid)
+* Azure Etkinlik Izgarasına giriş için [olay ızgarası nedir?](overview.md)
+* Azure Olay Ağı aboneliği oluşturma hakkında daha fazla bilgi için [Olay Ağı abonelik şemasına](subscription-creation-schema.md) bakın
+* Azure Machine Learning ile Azure Olay Izgarasını kullanmaya giriş için [bkz.](/azure/machine-learning/service/concept-event-grid-integration)
+* Azure Machine Learning ile Azure Olay Ağıtını kullanma örneği [için](/azure/machine-learning/service/how-to-use-event-grid) bkz.

@@ -1,6 +1,6 @@
 ---
-title: Azure 'da sorun giderme | Microsoft Docs
-description: Bu makalede, Azure savunma sorunlarını giderme hakkında bilgi edinin.
+title: Sorun Giderme Azure Kalesi | Microsoft Dokümanlar
+description: Bu makalede, Azure Kalesi'nin nasıl sorun giderilmeye başvurduğunu öğrenin.
 services: bastion
 author: cherylmc
 ms.service: bastion
@@ -8,38 +8,38 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: cherylmc
 ms.openlocfilehash: de112ff441bb53a0b3bc7f4ffa4456f1c241682c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73512957"
 ---
-# <a name="troubleshoot-azure-bastion"></a>Azure savunma sorunlarını giderme
+# <a name="troubleshoot-azure-bastion"></a>Sorun Giderme Azure Kalesi
 
-Bu makalede, Azure savunma sorunlarını giderme işlemi gösterilmektedir.
+Bu makalede, Azure Kalesi'nin nasıl sorun giderilen nasıl giderilen gösterilmektedir.
 
-## <a name="nsg"></a>AzureBastionSubnet üzerinde NSG oluşturulamıyor
+## <a name="unable-to-create-an-nsg-on-azurebastionsubnet"></a><a name="nsg"></a>AzureBastionSubnet'te NSG oluşturulamıyor
 
-**S:** Azure savunma alt ağında bir NSG oluşturmayı denediğimde şu hatayı alıyorum: *' ağ güvenlik grubu <NSG name>, Azure savunma alt ağı için gerekli kurallara sahip değil AzureBastionSubnet "* .
+**S:** Azure Bastion alt ağında bir NSG oluşturmaya çalıştığımda şu hatayı alıyorum: *'Ağ güvenlik <NSG name> grubunun Azure Bastion Subnet AzureBastionSubnet için gerekli kuralları yoktur'*.
 
-Y **:** *AzureBastionSubnet*'e BIR NSG oluşturup uygularsanız, NSG 'nize aşağıdaki kuralları eklediğinizden emin olun. Bu kuralları eklemedikçe NSG oluşturma/güncelleştirme başarısız olur.
+**A:** *AzureBastionSubnet'e*bir NSG oluşturup uygularsanız, NSG'nizde aşağıdaki kuralları eklediğinizden emin olun. Bu kuralları eklemezseniz, NSG oluşturma/güncelleştirmebaşarısız olur.
 
-1. Denetim düzlemi bağlantısı – GatewayManager 'dan 443 tarihinde gelen
-2. Tanılama günlüğü ve diğerleri: 443 ' de Azurecyüksek 'ya giden trafik (Bu hizmet etiketi içindeki bölgesel Etiketler henüz desteklenmiyor.)
-3. Hedef VM – 3389 için giden ve 22-VirtualNetwork
+1. Düzlem bağlantısını kontrol edin – GatewayManager'dan gelen 443'te
+2. Tanılama günlüğü ve diğerleri – 443'ten AzureCloud'a gidenler (Bu hizmet etiketindeki bölgesel etiketler henüz desteklenmez.)
+3. Hedef VM - 3389 ve 22 için Giden VirtualNetwork için
 
-NSG kurallarına bir örnek [hızlı başlangıç şablonunda](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azure-bastion)başvuru için kullanılabilir.
-Daha fazla bilgi için bkz. [Azure Için NSG Kılavuzu](bastion-nsg.md).
+NSG kurallarının bir örneği [hızlı başlangıç şablonunda](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azure-bastion)başvuru için kullanılabilir.
+Daha fazla bilgi [için Azure Kalesi için NSG kılavuzuna](bastion-nsg.md)bakın.
 
-## <a name="sshkey"></a>Azure ile SSH anahtarımı kullanılamıyor
+## <a name="unable-to-use-my-ssh-key-with-azure-bastion"></a><a name="sshkey"></a>Azure Bastion ile SSH anahtarımı kullanamıyor
 
-**S:** SSH anahtar dosyasına gözatmaya çalıştığımda, şu hatayı alıyorum: *' SSH özel anahtarı-----başlangıç RSA özel anahtar-----ile başlamalı ve-----End RSA özel anahtar-----' ile sona ermelidir*.
+**S:** SSH anahtar dosyama göz atmaya çalıştığımda şu hatayı alıyorum: *'SSH Private tuşu -----BEGIN RSA PRIVATE KEY----- ile başlamalı ve -----END RSA PRIVATE KEY-----' ile bitmelidir.*
 
-Y **:** Azure savunma yalnızca RSA SSH anahtarlarını destekler, bu noktada zaman içinde. Hedef VM 'de sağlanan ortak anahtarla SSH için RSA özel anahtarı olan bir anahtar dosyasına gözattığınızdan emin olun. 
+**A:** Azure Bastion, şu anda yalnızca RSA SSH tuşlarını destekler. Hedef VM'de ortak anahtar sağlanmış ssh için RSA özel anahtarı olan bir anahtar dosyaya göz attığınızdan emin olun. 
 
 Örnek olarak, yeni bir RSA SSH anahtarı oluşturmak için aşağıdaki komutu kullanabilirsiniz:
 
-**SSH-keygen-t RSA-b 4096-C "email@domain.com"**
+**ssh-keygen -t rsa -b 4096 -C "email@domain.com**
 
 Çıktı:
 
@@ -67,24 +67,24 @@ The key's randomart image is:
 +----[SHA256]-----+
 ```
 
-## <a name="domain"></a>Windows etki alanına katılmış sanal makinmda oturum açılamıyor
+## <a name="unable-to-sign-in-to-my-windows-domain-joined-virtual-machine"></a><a name="domain"></a>Windows etki alanı yla birleştirilmiş sanal makinemde oturum açamıyor
 
-**S:** Etki alanına katılmış Windows sanal makinmem ile bağlantı kuramıyor.
+**S:** Etki alanına katılan Windows sanal makineme bağlanamam.
 
-Y **:** Azure savunma, etki alanına katılmış VM 'nin Kullanıcı adı için oturum açmasını destekler-yalnızca parola tabanlı etki alanı oturum açma. Azure portal etki alanı kimlik bilgilerini belirtirken, oturum açmak için *etkialanı \ KullanıcıAdı* BIÇIMINDE değil UPN (username@domain) biçimini kullanın. Bu, etki alanına katılmış veya hibrit katılmış (hem etki alanına katılmış hem de Azure AD 'ye katılmış) sanal makineler için desteklenir. Yalnızca Azure AD 'ye katılmış sanal makinelerde desteklenmez.
+**A:** Azure Bastion, yalnızca kullanıcı adı parolası tabanlı etki alanı oturum açma için etki alanına birleştirilmiş VM oturum açma işlemini destekler. Azure portalında etki alanı kimlik bilgilerini belirtirken,username@domainoturum açmak için *etki alanı\kullanıcı adı* biçimi yerine UPN ( ) biçimini kullanın. Bu, etki alanına katılan veya karma birleştirilmiş (her ikisi de etki alanı yla birleştirilmiş ve Azure AD'ye katılan) sanal makineler için desteklenir. Azure AD'ye özel sanal makineler için desteklenmez.
 
-## <a name="filetransfer"></a>Dosya aktarımı sorunları
+## <a name="file-transfer-issues"></a><a name="filetransfer"></a>Dosya aktarım sorunları
 
-**S:** Dosya aktarımı Azure ile destekleniyor mu?
+**S:** Dosya aktarımı Azure Bastion ile desteklenir mi?
 
-Y **:** Dosya aktarımı Şu anda desteklenmiyor. Destek eklemek için çalışıyoruz.
+**A:** Dosya aktarım şu anda desteklenmez. Destek eklemek için çalışıyoruz.
 
-## <a name="blackscreen"></a>Azure portal siyah ekran
+## <a name="black-screen-in-the-azure-portal"></a><a name="blackscreen"></a>Azure portalında siyah ekran
 
-**S:** Azure savunma 'yı kullanarak bağlanmayı denediğimde Azure portal bir siyah ekran alıyorum.
+**S:** Azure Bastion kullanarak bağlanmaya çalıştığımda, Azure portalında siyah bir ekran alırım.
 
-Y **:** Bu durum, Web tarayıcınız ile Azure savunma arasında bir ağ bağlantısı sorunu olduğunda (istemci Internet güvenlik duvarınız WebSockets trafiği engelliyor veya benzer şekilde) ya da Azure savunma ile hedef sanal makinenizin arasında bir ağ bağlantısı sorunu olduğunda meydana gelir. Çoğu durumda, AzureBastionSubnet 'e veya sanal ağınızdaki RDP/SSH trafiğini engelleyen hedef VM alt ağına uygulanan bir NSG bulunur. İstemci internet güvenlik duvarınız üzerinde WebSockets trafiğe izin verin ve hedef VM alt ağınızdaki NSG 'leri kontrol edin.
+**A:** Bu durum, web tarayıcınız ile Azure Bastion (istemci Internet güvenlik duvarınız WebSockets trafiğini veya benzeri engellemeleri olabilir) veya Azure Kalesi ile hedef VM arasında bir ağ bağlantısı sorunu olduğunda gerçekleşir. Çoğu durumda AzureBastionSubnet'e veya sanal ağınızdaki RDP/SSH trafiğini engelleyen hedef VM alt ağına uygulanan bir NSG içerir. İstemci internet güvenlik duvarınızda WebSockets trafiğine izin verin ve hedef VM alt netinizdeki NSG'leri kontrol edin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla bilgi için bkz. savunma [hakkında SSS](bastion-faq.md).
+Daha fazla bilgi için [Bastion SSS'ye](bastion-faq.md)bakın.

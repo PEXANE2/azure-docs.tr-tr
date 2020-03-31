@@ -1,48 +1,48 @@
 ---
 title: StorSimple 8000 serisi cihazınızı izleyin
-description: StorSimple Aygıt Yöneticisi hizmetinin kullanımı, g/ç performansını ve kapasite kullanımını izlemek için nasıl kullanılacağını açıklar.
+description: Kullanımı, G/Ç performansını ve kapasite kullanımını izlemek için StorSimple Device Manager hizmetinin nasıl kullanılacağını açıklar.
 author: alkohli
 ms.service: storsimple
 ms.topic: conceptual
 ms.date: 10/17/2017
 ms.author: alkohli
 ms.openlocfilehash: b3b77024606c5cdb02ff7bdd357c2d14a2415efa
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76277050"
 ---
-# <a name="use-the-storsimple-device-manager-service-to-monitor-your-storsimple-device"></a>StorSimple cihazınızı izlemek için StorSimple Aygıt Yöneticisi hizmetini kullanın
+# <a name="use-the-storsimple-device-manager-service-to-monitor-your-storsimple-device"></a>StorSimple cihazınızı izlemek için StorSimple Device Manager hizmetini kullanın
 
 ## <a name="overview"></a>Genel Bakış
-StorSimple çözümünüzün içindeki belirli cihazları izlemek için StorSimple Aygıt Yöneticisi hizmetini kullanabilirsiniz. G/ç performansı, kapasite kullanımı, ağ aktarım hızı ve cihaz performans ölçümlerini temel alan özel grafikler oluşturabilir ve bunları panoya sabitleyebilirsiniz. Daha fazla bilgi için [Portal panonuzu özelleştirme](../azure-portal/azure-portal-dashboards.md)bölümüne gidin.
+StorSimple çözümünüzdeki belirli cihazları izlemek için StorSimple Device Manager hizmetini kullanabilirsiniz. G/Ç performansı, kapasite kullanımı, ağ oluşturma ve aygıt performansı ölçümlerine dayalı özel grafikler oluşturabilir ve bunları panoya sabitleyebilirsiniz. Daha fazla bilgi için [portal panonuzu özelleştirmeye](../azure-portal/azure-portal-dashboards.md)gidin.
 
-Belirli bir cihazın izleme bilgilerini görüntülemek için Azure portal, StorSimple Aygıt Yöneticisi hizmetini seçin. Cihaz listesinden cihazınızı seçin ve ardından **izleyici**'ye gidin. Daha sonra seçili cihaz için **kapasiteyi**, **kullanımı**ve **performans** grafiklerini görebilirsiniz.
+Azure portalında belirli bir aygıtın izleme bilgilerini görüntülemek için StorSimple Device Manager hizmetini seçin. Aygıtlar listesinden cihazınızı seçin ve ardından **Monitor'a**gidin. Daha sonra seçili aygıtın **Kapasite,** **Kullanım**ve **Performans** grafiklerini görebilirsiniz.
 
 ## <a name="capacity"></a>Kapasite
-**Kapasite** , sağlanan alanı ve cihazda kalan alanı izler. Kalan kapasite daha sonra yerel olarak sabitlenmiş veya katmanlı olarak görüntülenir.
+**Kapasite,** aygıtta kalan alanı ve verilen alanı izler. Kalan kapasite daha sonra yerel olarak sabitlenmiş veya katmanlı olarak görüntülenir.
 
-Sağlanan ve kalan kapasite katmanlı ve yerel olarak sabitlenmiş birimler tarafından daha fazla bölünür. Her birim için, sağlanan kapasite ve cihazdaki kalan kapasite görüntülenir.
+Sağlanan ve kalan kapasite, katmanlı ve yerel olarak sabitlenmiş hacimler tarafından daha da bölünur. Her birim için, verilen kapasite ve aygıtta kalan kapasite görüntülenir.
 
-![GÇ kapasitesi](./media/storsimple-8000-monitor-device/device-capacity.png)
+![IO kapasitesi](./media/storsimple-8000-monitor-device/device-capacity.png)
 
 
 
 ## <a name="usage"></a>Kullanım
-**Kullanım** , birimler, birim kapsayıcıları veya cihaz tarafından kullanılan veri depolama alanı miktarıyla ilgili ölçümleri izler. Birincil depolama alanınızı, bulut depolama alanınızı veya cihaz depolama alanınızı kullanma kapasitesini temel alan raporlar oluşturabilirsiniz. Kapasite kullanımı belirli bir birimde, belirli bir birim kapsayıcısında veya tüm birim kapsayıcılarında ölçülebilir.
-Varsayılan olarak, son 24 saatin kullanımı raporlanır. Şu kaynaktan seçim yaparak, kullanımın bildirildiği süreyi değiştirmek için grafiği düzenleyebilirsiniz:
+**Kullanım,** birimler, birim kapsayıcılar veya aygıt tarafından kullanılan veri depolama alanı miktarıyla ilgili ölçümleri izler. Birincil depolamanızın, bulut depolamanızın veya aygıt depolamanızın kapasite kullanımına dayalı raporlar oluşturabilirsiniz. Kapasite kullanımı belirli bir hacim, belirli bir hacim kapsayıcısı veya tüm hacim kapları üzerinde ölçülebilir.
+Varsayılan olarak, son 24 saat için kullanım bildirilir. Aşağıdakilerden birini seçerek, kullanımın raporlandığı süreyi değiştirmek için grafiği düzenleme yapabilirsiniz:
 * Son 24 saat
 * Son 7 gün
 * Son 30 gün
 * Son 90 gün
-* Son yıl
+* Geçen yıl
 
-Kullanım grafikleri için iki anahtar metrıces, büyüme ve Aralık raporlanır. Aralık, seçilen süre (Info örneği, son 7 gün) üzerinde raporlanan en büyük değeri ve kullanım en düşük değerlerini ifade eder.
+Kullanım grafikleri için iki temel ölçüm, büyüme ve aralık bildirilir. Aralık, seçilen süre boyunca bildirilen kullanımın en büyük değerini ve minimum değerlerini ifade eder (fo instance, Son 7 gün).
 
-Büyüme, kullanımdaki sürenin son gününe kadar olan kullanımdaki artışı ifade eder. 
+Büyüme, seçilen süre boyunca ilk günden son güne kadar kullanımdaki artışı ifade eder. 
 
-Büyüme ve Aralık aşağıdaki denklemlerle de gösterilebilir:
+Büyüme ve aralık da aşağıdaki denklemlerle temsil edilebilir:
 
 ```
 Range = {Usage(minimum), Usage(maximum)}
@@ -52,93 +52,93 @@ Growth = Usage(Last day) - Usage(first day)
 Growth (%) = [{Usage(last day) - Usage(first day)} X 100]/Usage(first day)
 ```
 
-Kullanılan birincil, bulut ve yerel depolama aşağıdaki gibi açıklanabilir:
+Kullanılan birincil, bulut ve yerel depolama aşağıdaki gibi tanımlanabilir:
 
 ### <a name="primary-storage-usage"></a>Birincil depolama alanı kullanımı
-Bu grafiklerde, veriler silinmeden ve sıkıştırmadan önce StorSimple birimlerine yazılan veri miktarı gösterilmektedir. Bir birim kapsayıcısındaki veya tek bir birimde bulunan tüm birimler tarafından kullanılan birincil depolamayı görüntüleyebilirsiniz. Kullanılan birincil depolama alanı, kullanılan birincil katmanlı depolama ve kullanılan birincil yerel olarak sabitlenmiş depolama tarafından daha fazla bölünmüştür.
+Bu grafikler, veriler çoğaltılmadan ve sıkıştırılmadan önce StorSimple birimlerine yazılan veri miktarını gösterir. Tüm birimler tarafından bir birim kapsayıcıda veya tek bir birim için kullanılan birincil depolama alanını görüntüleyebilirsiniz. Kullanılan birincil depolama, kullanılan birincil katmanlı depolama ve kullanılan birincil yerel sabitlenmiş depolama tarafından daha da bölünur.
 
-Aşağıdaki grafiklerde bir StorSimple cihazı için bir bulut anlık görüntüsü alınmadan önce ve sonra kullanılan birincil depolama gösterilmektedir. Bu yalnızca birim verileri olduğundan, bir bulut anlık görüntüsünün birincil depolamayı değiştirmemelidir. Görebileceğiniz gibi, grafik, bulut anlık görüntüsü alma sonucu olarak kullanılan birincil katmanlı veya yerel olarak sabitlenmiş depolamada fark göstermez. Bulut anlık görüntüsü bu cihazda 11:50 PM 'de başladı.
+Aşağıdaki grafikler, bir bulut anlık görüntüsü alınmadan önce ve sonra StorSimple aygıtı için kullanılan birincil depolama alanını gösterir. Bu yalnızca birim veri olduğundan, bulut anlık görüntüsü birincil depolama alanını değiştirmemelidir. Gördüğünüz gibi, grafik, bulut anlık görüntüsü alınması sonucunda kullanılan birincil katmanlı veya yerel olarak sabitlenmiş depolama alanında hiçbir fark göstermez. Bulut görüntüsü saat 23:50 sularında o cihazda başladı.
 
 ![Bulut anlık görüntüsünden sonra birincil kapasite kullanımı](./media/storsimple-8000-monitor-device/device-primary-storage-after-cloudsnapshot.png)
 
-StorSimple cihazınıza bağlı olan konakta artık GÇ çalıştırırsanız, birincil katmanlı depolamada veya verileri hangi birimlerin (katmanlı veya yerel olarak sabitlenmiş) bağlı olarak kullanılan birincil yerel olarak sabitlenmiş depolamanın artışını görürsünüz. StorSimple cihazının birincil depolama kullanım grafikleri aşağıda verilmiştir. Bu cihazda, StorSimple ana bilgisayarı, cihazdaki katmanlı bir birimde 2:30: etrafında yazma işlemleri sunmaya başladı. En yüksek değeri, konakta çalışan GÇ 'ye karşılık gelen yazma bayt/sn cinsinden görebilirsiniz.
+Artık StorSimple cihazınıza bağlı ana bilgisayarda IO çalıştırırsanız, verileri yazdığınız birimlere (katmanlı veya yerel olarak sabitlenmiş) bağlı olarak kullanılan birincil katmanlı depolama da veya birincil yerel olarak sabitlenmiş depolamada bir artış görürsünüz. StorSimple aygıtının birincil depolama kullanım grafikleri aşağıda veda edilebistir. Bu cihazda, StorSimple ana bilgisayar saat 14:30 civarında cihazda katmanlı bir ses üzerinde yazma hizmet vermeye başladı. Ana bilgisayarda çalışan IO'ya karşılık gelen yazma baytlarında/s'lerde tepe noktasını görebilirsiniz.
 
-![Katmanlı birimlerde çalışan GÇ performansı](./media/storsimple-8000-monitor-device/device-io-from-initiator.png)
+![Katmanlı birimlerde IO çalışırken performans](./media/storsimple-8000-monitor-device/device-io-from-initiator.png)
 
-Kullanılan birincil katmanlı depolama bölümüne bakarsanız, bu durumda yerel olarak sabitlenmiş kullanım, cihazdaki yerel olarak sabitlenmiş birimlere sunulan bir yazma işlemi olmadığından değişmeden kalır.
+Kullanılan birincil katmanlı depolama ya da depolama ya bakarsanız, bu kadar arttı, oysa birincil yerel olarak sabitlenmiş kullanım, aygıttaki yerel olarak sabitlenmiş birimlere yazı verilmediği için değişmeden kalır.
 
-![Katmanlı birimlerde GÇ çalışırken birincil kapasite kullanımı](./media/storsimple-8000-monitor-device/device-primary-storage-io-from-initiator.png)
+![IO katmanlı birimlerde çalışırken birincil kapasite kullanımı](./media/storsimple-8000-monitor-device/device-primary-storage-io-from-initiator.png)
 
-Güncelleştirme 3 veya üzeri bir sürümü çalıştırıyorsanız, birincil depolama kapasitesi kullanımını tek bir birim, tüm birimler, katmanlı birimler ve aşağıda gösterildiği gibi yerel olarak sabitlenmiş tüm birimlerde azaltabilirsiniz. Tüm yerel olarak sabitlenmiş birimlerin bölünmesi, yerel katmanın ne kadarının kullanıldığını hızlı bir şekilde değerlendirmenize olanak tanır.
+Güncelleştirme 3 veya daha yüksek bir düzeyçalıştırıyorsanız, birincil depolama kapasitesi kullanımını tek bir birim, tüm birimler, tüm katmanlı birimler ve aşağıda gösterildiği gibi yerel olarak sabitlenmiş tüm hacimleri ayırabilirsiniz. Yerel olarak sabitlenmiş tüm birimler tarafından parçalanması, yerel katmanın ne kadarının kullanıldığını hızlı bir şekilde belirlemenize olanak sağlar.
 
-![Tüm katmanlı birimlerde birincil kapasite kullanımı](./media/storsimple-8000-monitor-device/monitor-usage3.png)
+![Tüm katmanlı birimler için birincil kapasite kullanımı](./media/storsimple-8000-monitor-device/monitor-usage3.png)
 
-![Yerel olarak sabitlenmiş tüm birimlerde birincil kapasite kullanımı](./media/storsimple-8000-monitor-device/monitor-usage4.png)
+![Tüm yerel olarak sabitlenmiş birimler için birincil kapasite kullanımı](./media/storsimple-8000-monitor-device/monitor-usage4.png)
 
 Listedeki birimlerin her birine daha fazla tıklayabilir ve ilgili kullanımı görebilirsiniz.
 
-![Yerel olarak sabitlenmiş tüm birimlerde birincil kapasite kullanımı](./media/storsimple-8000-monitor-device/device-primary-storage-usage-by-volume.png)
+![Tüm yerel olarak sabitlenmiş birimler için birincil kapasite kullanımı](./media/storsimple-8000-monitor-device/device-primary-storage-usage-by-volume.png)
 
 ### <a name="cloud-storage-usage"></a>Bulut depolama alanı kullanımı
-Bu grafiklerde kullanılan bulut depolama alanı miktarı gösterilmektedir. Bu veriler yinelenenleri kaldırılmış ve sıkıştırılır. Bu miktar, herhangi bir birincil birimde yansıtılmayan ve eski veya gerekli saklama amaçlarıyla tutulan veriler içerebilen bulut anlık görüntülerini içerir. Birincil ve bulut depolama tüketimi rakamlarını, veri azaltma oranının bir fikrini alacak şekilde karşılaştırabilir, ancak sayı tam olarak olmaz.
+Bu grafikler, kullanılan bulut depolama miktarını gösterir. Bu veriler çoğaltılır ve sıkıştırılır. Bu tutar, herhangi bir birincil birimde yansıtılmayan ve eski veya gerekli bekletme amacıyla tutulan verileri içerebilecek bulut anlık görüntülerini içerir. Veri azaltma oranı hakkında bir fikir almak için birincil ve bulut depolama tüketim rakamlarını karşılaştırabilirsiniz, ancak sayı kesin olmayacaktır.
 
-Aşağıdaki grafiklerde, bir bulut anlık görüntüsü çekilirken bir StorSimple cihazının bulut depolama kullanımı gösterilmektedir.
+Aşağıdaki grafikler, bir bulut görüntüsü alındığında StorSimple aygıtının bulut depolama kullanımını gösterir.
 
-* Bulut anlık görüntüsü bu cihazda 11:50 ' den başlayarak başlatılır ve bulut anlık görüntüsünden önce, kullanılan bulut depolama olmadığını görebilirsiniz. 
-* Bulut anlık görüntüsü tamamlandığında, bulut depolaması kullanımı 0,89 GB 'yi kullanıma çekirsiniz. 
-* Bulut anlık görüntüsü devam ederken, cihazdan buluta kadar GÇ 'ye karşılık gelen bir tepe değeri de vardır.
+* Bulut anlık görüntüsü o cihazda saat 11:50 civarında başladı ve bulut anlık görüntüsünden önce bulut depolama alanı nın kullanılmadığını görebilirsiniz. 
+* Bulut anlık görüntüsü tamamlandıktan sonra, bulut depolama kullanımı 0,89 GB'a kadar yükseldi. 
+* Bulut anlık görüntüsü devam ederken, IO'da aygıttan buluta karşılık gelen bir tepe noktası da vardır.
 
-    ![Bulut anlık görüntüsünden önce bulut depolama alanı kullanımı](./media/storsimple-8000-monitor-device/device-cloud-storage-before-cloudsnapshot.png)
+    ![Bulut anlık görüntüsünden önce bulut depolama kullanımı](./media/storsimple-8000-monitor-device/device-cloud-storage-before-cloudsnapshot.png)
 
     ![Bulut anlık görüntüsünden sonra bulut depolama kullanımı](./media/storsimple-8000-monitor-device/device-cloud-storage-after-cloudsnapshot.png)
 
-    ![Bulut anlık görüntüsü sırasında cihazdan buluta GÇ](./media/storsimple-8000-monitor-device/device-io-to-cloud-during-cloudsnapshot.png)
+    ![Bulut anlık görüntüsü sırasında cihazdan buluta IO](./media/storsimple-8000-monitor-device/device-io-to-cloud-during-cloudsnapshot.png)
 
 
 ### <a name="local-storage-usage"></a>Yerel depolama alanı kullanımı
-Bu grafikler, SSD doğrusal katmanını içerdiğinden, birincil depolama kullanımından daha fazla olacak şekilde cihazın toplam kullanımını gösterir. Bu katman, cihazın diğer katmanlarında de bulunan veri miktarını içerir. SSD doğrusal katmanındaki kapasite, yeni veriler geldiği zaman, eski verilerin HDD katmanına taşınması (Bu sırada yinelenenleri kaldırılmış ve sıkıştırıldığı) ve daha sonra buluta taşınabilmesini sağlamak için de kullanılır.
+Bu grafikler, SSD doğrusal katmanı içerdiğinden birincil depolama kullanımından daha fazla olacak olan aygıtın toplam kullanımını gösterir. Bu katman, aygıtın diğer katmanlarında da bulunan bir veri miktarı içerir. SSD doğrusal katmanındaki kapasite, yeni veriler geldiğinde eski verilerin HDD katmanına (çoğaltılıp sıkıştırıldığı sırada) ve daha sonra buluta taşınacak şekilde döngüye girer.
 
-Zaman içinde, kullanılan birincil depolama alanı ve kullanılan yerel depolama büyük olasılıkla veriler buluta katmanlanana kadar artmaya başlar. Bu noktada, kullanılan yerel depolama büyük olasılıkla Plateau 'ya başlar, ancak kullanılan birincil depolama alanı daha fazla veri yazıldığı için artacaktır.
+Zaman içinde, kullanılan birincil depolama ve kullanılan yerel depolama büyük olasılıkla veriler buluta katmanlandırılmaya başlayana kadar birlikte artacaktır. Bu noktada, kullanılan yerel depolama büyük olasılıkla plato başlar, ancak daha fazla veri yazıldığında kullanılan birincil depolama artacaktır.
 
-Aşağıdaki grafiklerde, bir bulut anlık görüntüsü çekilirken StorSimple cihazı için kullanılan birincil depolama gösterilmektedir. Bulut anlık görüntüsü 11:50 ' de ve yerel depolama alanı bu zamanda azaltılmış olarak başladı. Kullanılan yerel depolama alanı 1,445 GB 'den 1,09 GB 'a kadar oldu. Bu, doğrusal SSD katmanındaki sıkıştırılmamış verilerin büyük olasılıkla yinelendiğini, sıkıştırıldığını ve HDD katmanına taşındığını gösterir. Cihazda zaten SSD ve HDD katmanlarında büyük miktarda veri varsa, bu azalmayı görmeyebilirsiniz. Bu örnekte, cihazda az miktarda veri bulunur.
+Aşağıdaki grafikler, bir bulut anlık görüntüsü alındığında StorSimple aygıtı için kullanılan birincil depolama alanını gösterir. Bulut anlık görüntüsü saat 11:50'de başladı ve yerel depolama alanı o anda azalmaya başladı. Kullanılan yerel depolama 1.445 GB'dan 1.09 GB'a düştü. Bu, doğrusal SSD katmanındaki sıkıştırılmamış verilerin büyük olasılıkla çoğaltıldığını, sıkıştırıldığını ve HDD katmanına taşındığını gösterir. Aygıtın hem SSD hem de HDD katmanlarında zaten büyük miktarda veri varsa, bu düşüşü göremeyebilirsiniz. Bu örnekte, aygıtın az miktarda verisi vardır.
 
 ![Bulut anlık görüntüsünden sonra yerel depolama kullanımı](./media/storsimple-8000-monitor-device/device-local-storage-after-cloudsnapshot.png)
 
 ## <a name="performance"></a>Performans
-**Performans** , ana bilgisayar sunucusundaki iSCSI başlatıcısı arabirimleri ile cihaz ya da cihaz ve bulut arasındaki okuma ve yazma işlemleri sayısıyla ilgili ölçümleri izler. Bu performans, belirli bir birim, belirli bir birim kapsayıcısı veya tüm birim kapsayıcıları için ölçülebilir. Performans Ayrıca, cihazınızdaki çeşitli ağ arabirimlerinin CPU kullanımını ve ağ aktarım hızını da içerir.
+**Performans,** ana bilgisayar sunucusundaki iSCSI başlatıcı arabirimleri ile aygıt veya aygıt ve bulut arasındaki okuma ve yazma işlemleri sayısıyla ilgili ölçümleri izler. Bu performans, belirli bir hacim, belirli bir birim kapsayıcısı veya tüm birim kapsayıcıları için ölçülebilir. Performans ayrıca cihazınızdaki çeşitli ağ arabirimleri için CPU kullanımı ve Ağ iş çıktısı içerir.
 
-### <a name="io-performance-for-initiator-to-device"></a>Başlatıcıdan cihaza GÇ performansı
-Aşağıdaki grafik, bir üretim cihazının tüm birimleri için, cihazınıza başlatıcıdan g/ç 'yi gösterir. Çizili ölçümler, saniye başına okuma ve yazma bayttır. Ayrıca, okuma, yazma, bekleyen GÇ veya okuma ve yazma gecikme sürelerini grafik olarak da kullanabilirsiniz.
+### <a name="io-performance-for-initiator-to-device"></a>Başlatıcıdan cihaza başlatma performansı
+Aşağıdaki grafikte, bir üretim aygıtının tüm birimleri için cihazınıza başlatıcının G/Ç'si gösterilmektedir. Çizilen ölçümler saniyede bayt okunur ve yazılır. Ayrıca okuma, yazma ve olağanüstü IO grafik veya okuma ve yazma gecikmeleri.
 
-![Başlatıcıdan cihaza GÇ performansı](./media/storsimple-8000-monitor-device/device-io-from-initiator.png)
+![Başlatıcıdan cihaza iO performansı](./media/storsimple-8000-monitor-device/device-io-from-initiator.png)
 
-### <a name="io-performance-for-device-to-cloud"></a>Cihazdan buluta g/ç performansı
-Aynı cihaz için, tüm birim kapsayıcıları için cihazdan buluta veri için g/ç işlemleri çizilir. Bu cihazda, veriler yalnızca doğrusal katmanda bulunur ve buluta hiçbir şey taşmıştır. Cihazdan buluta gerçekleştirilen okuma/yazma işlemleri yok. Bu nedenle, grafikteki en üst öğeler 5 dakikalık bir aralıktır ve bu, cihaz ile hizmet arasında sinyalin denetlenme sıklığa karşılık gelir.
+### <a name="io-performance-for-device-to-cloud"></a>Aygıtın buluta günü için G/Ç performans
+Aynı aygıt için, Tüm birim kapsayıcıları için aygıttan buluta gelen veriler için G/Ç işlemleri çizilir. Bu cihazda, veriler yalnızca doğrusal katmandadır ve buluta hiçbir şey dökülmemiştir. Aygıttan buluta okuma yazma işlemi yok. Bu nedenle, grafikteki zirveler, aygıt ve hizmet arasında sinyalin kontrol edildiği frekansa karşılık gelen 5 dakikalık bir aralıktadır.
 
-Aynı cihaz için, 11:50 ile başlayan birim verileri için bir bulut anlık görüntüsü alınmıştır. Bu, aygıttan buluta akan veri akışını sonuçlanmış. Yazma işlemleri bu süre içinde buluta sağlandı. GÇ grafiğinde, anlık görüntünün alındığı zamana karşılık gelen yazma baytları/sn cinsinden bir tepe gösterilmektedir.
+Aynı aygıt için saat 11:50'den itibaren birim verileri için bir bulut görüntüsü alındı. Bu, aygıttan buluta akan verilerle sonuçlandı. Bu süre içinde buluta yazılar sunuldu. IO grafiği, Anlık görüntünün çekildiği zamana karşılık gelen Byte/s Yaz'da bir tepe noktası gösterir.
 
-![Bulut anlık görüntüsü sırasında cihazdan buluta GÇ](./media/storsimple-8000-monitor-device/device-io-to-cloud-during-cloudsnapshot.png)
+![Bulut anlık görüntüsü sırasında cihazdan buluta IO](./media/storsimple-8000-monitor-device/device-io-to-cloud-during-cloudsnapshot.png)
 
-### <a name="network-throughput-for-device-network-interfaces"></a>Cihaz ağ arabirimleri için ağ aktarım hızı
-**Ağ aktarım hızı** , Konak sunucusundaki ve cihazdaki ve cihaz ile bulut arasındaki iSCSI başlatıcısı ağ arabirimlerinden aktarılan veri miktarı ile ilgili ölçümleri izler. Bu ölçümü, cihazınızdaki her Iscsı ağ arabirimi için izleyebilirsiniz.
+### <a name="network-throughput-for-device-network-interfaces"></a>Aygıt ağı arabirimleri için ağ çıktısı
+**Ağ iş** letimi, ana bilgisayar sunucusunda ve aygıttaki iSCSI başlatıcı ağ arabirimlerinden ve aygıt la bulut arasındaki veri miktarıyla ilgili ölçümleri izler. Cihazınızdaki iSCSI ağ arabirimlerinin her biri için bu ölçümü izleyebilirsiniz.
 
-Aşağıdaki grafiklerde, cihazınızdaki bulut özellikli (varsayılan) ve Iscsı özellikli veri 0, 1 1 GbE ağı için ağ aktarım hızı gösterilmektedir. Bu cihazda 14 Haziran 'da 9 Haziran 'da, veriler buluta katmanlanmış (Bu durumda, verileri buluta taşımak için gereken bir bulut anlık görüntüsü yoktur) ve bu da, GÇ 'nin buluta sunulduğunu gösterir. Ağ aktarım hızı grafiğinde aynı süre için karşılık gelen bir tepe noktası vardır ve ağ trafiğinin çoğu buluta giden bir işlem olur.
+Aşağıdaki grafikler, cihazınızdaki Veri 0, 1 1 GbE ağı için hem bulut etkin (varsayılan) hem de iSCSI özellikli ağ verisi sağlar. Bu cihazda 14 Haziran saat 21:00 sularında veriler buluta katmanlandı (o anda hiçbir bulut anlık görüntüsü alınmadı ve bu da katmanların verileri buluta taşıma mekanizması olduğuna işaret ediyor) ve bu da IO'nun buluta sunulmasıile sonuçlandı. Ağ iş verme grafiğinde aynı anda karşılık gelen bir tepe noktası vardır ve ağ trafiğinin çoğu buluta giden.
 
-![Veriler için ağ aktarım hızı 0](./media/storsimple-8000-monitor-device/device-network-throughput-data0.png)
+![Veri için ağ iş girişi 0](./media/storsimple-8000-monitor-device/device-network-throughput-data0.png)
 
-Veri 1 arabirim üretilen iş grafiğine baktığımızda, yalnızca Iscsı özellikli başka bir 1 GbE ağ arabirimine bakıyoruz, bu süre içinde neredeyse hiçbir ağ trafiği yoktu.
+Sadece iSCSI özellikli başka bir 1 GbE ağ arabirimi olan Data 1 arabirimi iş akış şemasına bakacak olursak, bu süre içinde neredeyse hiç ağ trafiği yoktu.
 
-![Veri 1 için ağ aktarım hızı](./media/storsimple-8000-monitor-device/device-network-throughput-data1.png)
+![Veri 1 için ağ iş birlayı](./media/storsimple-8000-monitor-device/device-network-throughput-data1.png)
 
 
 ## <a name="cpu-utilization-for-device"></a>Cihaz için CPU kullanımı
-**CPU kullanımı** , CIHAZıNıZDA kullanılan CPU ile ilgili ölçümleri izler. Aşağıdaki grafikte, üretimde bir cihaz için CPU kullanım istatistikleri gösterilmektedir.
+**CPU kullanımı,** cihazınızda kullanılan CPU ile ilgili ölçümleri izler. Aşağıdaki grafik, üretimdeki bir aygıtın CPU kullanım istatistiklerini gösterir.
 
 ![Cihaz için CPU kullanımı](./media/storsimple-8000-monitor-device/device-cpu-utilization.png)
 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [StorSimple aygıt yöneticisi hizmeti cihaz panosunu kullanmayı](storsimple-device-dashboard.md)öğrenin.
-* StorSimple [cihazınızı yönetmek Için storsimple Aygıt Yöneticisi hizmetini nasıl kullanacağınızı](storsimple-manager-service-administration.md)öğrenin.
+* [StorSimple Device Manager servis aygıtı panosunu](storsimple-device-dashboard.md)nasıl kullanacağınızı öğrenin.
+* [StorSimple cihazınızı yönetmek için StorSimple Device Manager hizmetini](storsimple-manager-service-administration.md)nasıl kullanacağınızı öğrenin.
 

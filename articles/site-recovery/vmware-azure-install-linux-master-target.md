@@ -1,6 +1,6 @@
 ---
-title: Azure Site Recovery ile Linux sanal makinesi için bir ana hedef sunucu yüklemesi
-description: Azure Site Recovery kullanarak, VMware VM 'lerinin olağanüstü durum kurtarması sırasında bir Linux ana hedef sunucusunu şirket içi siteye yeniden çalışma için ayarlamayı öğrenin.
+title: Azure Site Kurtarma ile Linux VM geri ödeme için ana hedef sunucu yükleme
+description: Azure Site Kurtarma'yı kullanarak VMware VM'lerin olağanüstü kurtarma dan Azure'a geri kazanılması sırasında şirket içi bir siteye geri dönüş için bir Linux ana hedef sunucusu nasıl ayarlayayın öğrenin.
 author: mayurigupta13
 services: site-recovery
 manager: rochakm
@@ -9,218 +9,218 @@ ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: mayg
 ms.openlocfilehash: 5b4d625d28584bb601905e9439c112c845219e54
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73954369"
 ---
-# <a name="install-a-linux-master-target-server-for-failback"></a>Yeniden çalışma için bir Linux ana hedef sunucusu yükler
-Sanal makinelerinizin yükünü Azure 'a devretmek için sanal makineleri şirket içi siteye geri alabilirsiniz. Yeniden yük devretmek için sanal makineyi Azure 'dan şirket içi siteye yeniden korumanız gerekir. Bu işlem için, trafiği almak için bir şirket içi ana hedef sunucusuna ihtiyacınız vardır. 
+# <a name="install-a-linux-master-target-server-for-failback"></a>Yeniden çalışma için bir Linux ana hedef sunucusu yükleme
+Sanal makineleriniz üzerinde Azure'da başarısız olduktan sonra, sanal makineleri şirket içi siteye geri döndürebilirsiniz. Geri başarısız olmak için sanal makineyi Azure'dan şirket içi siteye yeniden korumanız gerekir. Bu işlem için, trafiği almak için şirket içi bir ana hedef sunucuya ihtiyacınız vardır. 
 
-Korumalı sanal makineniz bir Windows sanal makinedir, bir Windows Ana hedefine ihtiyacınız vardır. Linux sanal makinesi için bir Linux ana hedefinin olması gerekir. Bir Linux ana hedefini oluşturma ve yüklemeyi öğrenmek için aşağıdaki adımları okuyun.
+Korumalı sanal makineniz bir Windows sanal makinesiyse, windows ana hedefine ihtiyacınız vardır. Bir Linux sanal makine için, bir Linux ana hedef gerekir. Linux ana hedefi oluşturmayı ve nasıl yükleyeriz öğrenmek için aşağıdaki adımları okuyun.
 
 > [!IMPORTANT]
-> 9\.10.0 ana hedef sunucusunun yayımlanmasından başlayarak, en son ana hedef sunucusu yalnızca bir Ubuntu 16,04 sunucusuna yüklenebilir. CentOS 6,6 sunucularında yeni yüklemelere izin verilmez. Ancak, 9.10.0 sürümünü kullanarak eski ana hedef sunucularınızı yükseltmeye devam edebilirsiniz.
-> LVM üzerinde ana hedef sunucu desteklenmiyor.
+> 9.10.0 ana hedef sunucusunun piyasaya sürülmesiyle başlayan en son ana hedef sunucu yalnızca Bir Ubuntu 16.04 sunucusuna yüklenebilir. CentOS6.6 sunucularında yeni yüklemelere izin verilmez. Ancak, 9.10.0 sürümünü kullanarak eski ana hedef sunucularınızı yükseltmeye devam edebilirsiniz.
+> LVM'deki ana hedef sunucu desteklenmez.
 
 ## <a name="overview"></a>Genel Bakış
-Bu makalede bir Linux ana hedefinin nasıl yükleneceğine ilişkin yönergeler sağlanmaktadır.
+Bu makalede, bir Linux ana hedefi nasıl yüklenir için talimatlar sağlar.
 
-Bu makalenin sonunda veya [Azure kurtarma hizmetleri Forumu](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)' nda yorum veya soru gönderin.
+Bu makalenin sonunda veya Azure Kurtarma [Hizmetleri Forumu'nda](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)yorum veya soru gönderin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* Ana hedefin dağıtılacağı Konağı seçmek için, yeniden çalışma 'nin mevcut bir şirket içi sanal makineye mı yoksa yeni bir sanal makinede mı olacağını belirleyin. 
-    * Mevcut bir sanal makine için, ana hedefin konağın sanal makinenin veri depolarına erişimi olmalıdır.
-    * Şirket içi sanal makine yoksa (alternatif konuma kurtarma olması durumunda), yeniden çalışma sanal makinesi ana hedefle aynı ana bilgisayarda oluşturulur. Ana hedefi yüklemek için herhangi bir ESXi konağı seçebilirsiniz.
-* Ana hedef, işlem sunucusu ve yapılandırma sunucusu ile iletişim kurabilen bir ağda olmalıdır.
-* Ana hedefin sürümü, işlem sunucusu ve yapılandırma sunucusu sürümlerine eşit veya ondan daha önceki bir sürüme eşit olmalıdır. Örneğin, yapılandırma sunucusunun sürümü 9,4 ise, ana hedefin sürümü 9,4 veya 9,3, ancak 9,5 olamaz.
-* Ana hedef, fiziksel sunucu değil yalnızca bir VMware sanal makinesi olabilir.
+* Ana hedefi dağıtacağınız ana bilgisayarı seçmek için, geri lemenin şirket içinde varolan bir sanal makineye mi yoksa yeni bir sanal makineye mi olacağını belirleyin. 
+    * Varolan bir sanal makine için, ana hedefin ana bilgisayarısanal makinenin veri depolarına erişebilmeli.
+    * Şirket içi sanal makine yoksa (Alternatif Konum Kurtarma durumunda), failback sanal makine ana hedefle aynı ana bilgisayarda oluşturulur. Ana hedefi yüklemek için herhangi bir ESXi ana bilgisayar ını seçebilirsiniz.
+* Ana hedef, işlem sunucusu ve yapılandırma sunucusuyla iletişim kurabilen bir ağüzerinde olmalıdır.
+* Ana hedefin sürümü, işlem sunucusunun ve yapılandırma sunucusunun sürümlerine eşit veya daha erken olmalıdır. Örneğin, yapılandırma sunucusunun sürümü 9,4 ise, ana hedefin sürümü 9,4 veya 9,3 olabilir, ancak 9,5 değil.
+* Ana hedef sadece bir VMware sanal makine değil, fiziksel bir sunucu olabilir.
 
-## <a name="sizing-guidelines-for-creating-master-target-server"></a>Ana hedef sunucu oluşturmak için boyutlandırma yönergeleri
+## <a name="sizing-guidelines-for-creating-master-target-server"></a>Ana hedef sunucu oluşturmak için yönergeleri boyutlandırma
 
 Ana hedefi aşağıdaki boyutlandırma yönergelerine uygun olarak oluşturun:
 - **RAM**: 6 GB veya daha fazla
-- **Işletim sistemi disk boyutu**: 100 GB veya daha fazla (işletim sistemini yüklemek için)
-- **Bekletme sürücüsü Için ek disk boyutu**: 1 TB
+- **İşletim sistemi boyutu:** 100 GB veya daha fazla (işletim sistemi yüklemek için)
+- **Bekletme sürücüsü için ek disk boyutu**: 1 TB
 - **CPU çekirdekleri**: 4 çekirdek veya daha fazla
 
-Aşağıdaki Ubuntu çekirdekler desteklenir.
+Aşağıdaki Ubuntu çekirdekleri desteklenir.
 
 
-|Çekirdek serisi  |Destek  |
+|Çekirdek Serisi  |En fazla destek  |
 |---------|---------|
 |4.4      |4.4.0-81-genel         |
-|4.8      |4.8.0-56-genel         |
-|4.10     |4.10.0-24-genel        |
+|4.8      |4.8.0-56-jenerik         |
+|4.10     |4.10.0-24-jenerik        |
 
 
 ## <a name="deploy-the-master-target-server"></a>Ana hedef sunucuyu dağıtma
 
-### <a name="install-ubuntu-16042-minimal"></a>Ubuntu 16.04.2 minimal yüklemeyi
+### <a name="install-ubuntu-16042-minimal"></a>Ubuntu 16.04.2 Minimal yükleyin
 
-Ubuntu 16.04.2 64-bit işletim sistemini yüklemek için aşağıdaki adımları uygulayın.
+Ubuntu 16.04.2 64-bit işletim sistemini kurmak için aşağıdaki adımları izleyin.
 
-1.   [İndirme bağlantısına](http://old-releases.ubuntu.com/releases/16.04.2/ubuntu-16.04.2-server-amd64.iso)gidin, en yakın yansıtmayı seçin ve Ubuntu 16.04.2 minimal 64-bit ISO dosyasını indirin.
-DVD sürücüsünde Ubuntu 16.04.2 minimal 64 bit ISO tutun ve sistemi başlatın.
+1.   [Download linkine](http://old-releases.ubuntu.com/releases/16.04.2/ubuntu-16.04.2-server-amd64.iso)gidin, en yakın aynaseçin ve bir Ubuntu 16.04.2 minimal 64-bit ISO indirin.
+DVD sürücüsünde bir Ubuntu 16.04.2 minimal 64-bit ISO tutun ve sistemi başlatın.
 
-1.  Tercih ettiğiniz dil olarak **İngilizce** ' yi seçin ve ardından **ENTER**' u seçin.
+1.  Tercih ettiğiniz dil olarak **İngilizce'yi** seçin ve sonra **Enter'u**seçin.
     
-    ![Dil Seçin](./media/vmware-azure-install-linux-master-target/image1.png)
-1. **Ubuntu sunucusunu yükleyip** **ENTER**' u seçin.
+    ![Dil seçin](./media/vmware-azure-install-linux-master-target/image1.png)
+1. **Ubuntu Server yükle'yi**seçin ve sonra **Enter'u**seçin.
 
-    ![Ubuntu sunucusu yüklemeyi seçin](./media/vmware-azure-install-linux-master-target/image2.png)
+    ![Ubuntu Server Yükle'yi seçin](./media/vmware-azure-install-linux-master-target/image2.png)
 
-1.  Tercih ettiğiniz dil olarak **İngilizce** ' yi seçin ve ardından **ENTER**' u seçin.
+1.  Tercih ettiğiniz dil olarak **İngilizce'yi** seçin ve sonra **Enter'u**seçin.
 
-    ![Tercih ettiğiniz dil olarak Ingilizce 'yi seçin](./media/vmware-azure-install-linux-master-target/image3.png)
+    ![Tercih ettiğiniz dil olarak İngilizce'yi seçin](./media/vmware-azure-install-linux-master-target/image3.png)
 
-1. **Saat dilimi** seçenekleri listesinden uygun seçeneği belirleyin ve ardından **ENTER**' u seçin.
+1. **Saat Dilimi** seçenekleri listesinden uygun seçeneği seçin ve sonra **Enter'u**seçin.
 
     ![Doğru saat dilimini seçin](./media/vmware-azure-install-linux-master-target/image4.png)
 
-1. **Hayır** (varsayılan seçenek) seçeneğini belirleyin ve ardından **ENTER**' u seçin.
+1. **Hayır** 'ı (varsayılan seçenek) seçin ve sonra **Enter'u**seçin.
 
-     ![Klavyeyi Yapılandırma](./media/vmware-azure-install-linux-master-target/image5.png)
-1. Klavye için ülke/kaynak alanı olarak **İngilizce (ABD)** seçeneğini belirleyin ve ardından **ENTER**' u seçin.
+     ![Klavyeyi yapılandırma](./media/vmware-azure-install-linux-master-target/image5.png)
+1. Klavyenin menşe ülkesi/bölgesi olarak **İngilizce (ABD)** seçin ve ardından **Enter'u**seçin.
 
-1. Klavye düzeni olarak **İngilizce (ABD)** seçeneğini belirleyin ve ardından **ENTER**' u seçin.
+1. Klavye düzeni olarak **İngilizce (ABD)** seçeneğini belirleyin ve sonra **Enter'u**seçin.
 
-1. **Ana bilgisayar** adı kutusuna sunucunuzun ana bilgisayar adını girin ve ardından **devam**' ı seçin.
+1. Sunucunuzun ana bilgisayar adını **Hostname** kutusuna girin ve ardından **Devam et'i**seçin.
 
-1. Bir kullanıcı hesabı oluşturmak için Kullanıcı adını girip **devam**' ı seçin.
+1. Bir kullanıcı hesabı oluşturmak için, kullanıcı adını girin ve sonra **Devam'ı**seçin.
 
       ![Kullanıcı hesabı oluşturma](./media/vmware-azure-install-linux-master-target/image9.png)
 
-1. Yeni Kullanıcı hesabının parolasını girip **devam**' ı seçin.
+1. Yeni kullanıcı hesabının parolasını girin ve sonra **Devam et'i**seçin.
 
-1.  Yeni Kullanıcı için parolayı onaylayın ve ardından **devam**' ı seçin.
+1.  Yeni kullanıcının parolasını onaylayın ve sonra **Devam et'i**seçin.
 
     ![Parolaları onaylama](./media/vmware-azure-install-linux-master-target/image11.png)
 
-1.  Giriş dizininizi şifrelemek için bir sonraki seçimde **Hayır** (varsayılan seçenek) seçeneğini belirleyin ve ardından **ENTER**' u seçin.
+1.  Ev dizininizi şifrelemek için bir sonraki seçimde **Hayır** 'ı (varsayılan seçenek) seçin ve sonra **Enter'u**seçin.
 
-1. Görüntülenen saat dilimi doğru ise, **Evet** ' i (varsayılan seçenek) seçin ve ardından **ENTER**' u seçin. Saat diliminizi yeniden yapılandırmak için **Hayır**' ı seçin.
+1. Görüntülenen saat dilimi doğruysa **Evet** 'i (varsayılan seçenek) seçin ve sonra **Enter'u**seçin. Saat diliminizi yeniden yapılandırmak için **Hayır'ı**seçin.
 
-1. Bölümleme yöntemi seçeneklerinde, **tüm diski kullan**' ı seçin ve ardından **ENTER**' u seçin.
+1. Bölümleme yöntemi seçeneklerinden **Rehberli'yi**seçin - diskin tamamını kullanın ve sonra **Enter'u**seçin.
 
-     ![Bölümlendirme yöntemi seçeneğini belirleyin](./media/vmware-azure-install-linux-master-target/image14.png)
+     ![Bölümleme yöntemi seçeneğini seçin](./media/vmware-azure-install-linux-master-target/image14.png)
 
-1.  **Diski bölümlemek Için seçin** seçeneklerini belirleyin ve ardından **ENTER**' u seçin.
+1.  **Bölüm seçeneklerine seç diskinden** uygun diski seçin ve sonra **Enter'u**seçin.
 
     ![Diski seçin](./media/vmware-azure-install-linux-master-target/image15.png)
 
-1.  Değişiklikleri diske yazmak için **Evet** ' i seçin ve ardından **ENTER**' u seçin.
+1.  Değişiklikleri diske yazmak için **Evet'i** seçin ve sonra **Enter'u**seçin.
 
     ![Varsayılan seçeneği seçin](./media/vmware-azure-install-linux-master-target/image16-ubuntu.png)
 
-1.  Proxy 'yi Yapılandır seçimini, varsayılan seçeneğini belirleyin, **devam**' ı seçin ve ardından **ENTER**' u seçin.
+1.  Yapılandırılan proxy seçiminde varsayılan seçeneği seçin, **Devam et'i**seçin ve sonra **Enter'u**seçin.
      
-     ![Yükseltmeleri nasıl yöneteceğinizi seçin](./media/vmware-azure-install-linux-master-target/image17-ubuntu.png)
+     ![Yükseltmeleri nasıl yöneteceklerini seçin](./media/vmware-azure-install-linux-master-target/image17-ubuntu.png)
 
-1.  Sisteminizdeki yükseltmeleri yönetmek için seçimde **Otomatik güncelleştirme yok** seçeneğini belirleyin ve ardından **ENTER**' u seçin.
+1.  Sisteminizdeki yükseltmeleri yönetmek için seçimde **otomatik güncelleştirme yok** seçeneğini seçin ve ardından **Enter'u**seçin.
 
-     ![Yükseltmeleri nasıl yöneteceğinizi seçin](./media/vmware-azure-install-linux-master-target/image18-ubuntu.png)
+     ![Yükseltmeleri nasıl yöneteceklerini seçin](./media/vmware-azure-install-linux-master-target/image18-ubuntu.png)
 
     > [!WARNING]
-    > Azure Site Recovery ana hedef sunucusu Ubuntu 'ın çok özel bir sürümünü gerektirdiğinden, sanal makine için çekirdek yükseltmelerin devre dışı bırakıldığından emin olmanız gerekir. Etkin olmaları durumunda, normal yükseltmeler ana hedef sunucunun hatalı çalışmasına neden olur. **Otomatik güncelleştirme yok** seçeneğini seçtiğinizden emin olun.
+    > Azure Site Kurtarma ana hedef sunucusu Ubuntu'nun çok özel bir sürümünü gerektirdiğinden, çekirdek yükseltmelerinin sanal makine için devre dışı bırakıldığından emin olmanız gerekir. Bunlar etkinleştirilirse, normal yükseltmeler ana hedef sunucunun arızaya neden olur. **Otomatik güncelleştirme yok** seçeneğini seçtiğinizden emin olun.
 
-1.  Varsayılan seçenekleri seçin. SSH Connect için openSSH isterseniz, **OpenSSH sunucusu** seçeneğini belirleyip **devam**' ı seçin.
+1.  Varsayılan seçenekleri seçin. SSH connect için openSSH istiyorsanız **OpenSSH sunucu** seçeneğini seçin ve ardından **Devam et'i**seçin.
 
     ![Yazılım seçin](./media/vmware-azure-install-linux-master-target/image19-ubuntu.png)
 
-1. GRUB önyükleme yükleyicisini yükleme seçiminde **Evet**' i seçin ve ardından **ENTER**' u seçin.
+1. GRUB önyükleme yükleyicisini yüklemek için yapılan seçimde **Evet'i**seçin ve sonra **Enter'u**seçin.
      
-    ![GRUB önyükleme yükleyicisi](./media/vmware-azure-install-linux-master-target/image20.png)
+    ![GRUB önyükleme yükleyici](./media/vmware-azure-install-linux-master-target/image20.png)
 
 
-1. Önyükleme yükleyicisi yüklemesi için uygun cihazı seçin (tercihen **/dev/sda**) ve ardından **ENTER**' u seçin.
+1. Önyükleme yükleyici yüklemesi için uygun cihazı seçin (tercihen **/dev/sda**), ve sonra **Enter'u**seçin.
      
-    ![Uygun cihaz seçin](./media/vmware-azure-install-linux-master-target/image21.png)
+    ![Uygun cihazı seçin](./media/vmware-azure-install-linux-master-target/image21.png)
 
-1. **Devam**' ı seçin ve ardından **ENTER** ' u seçerek yüklemeyi sona erdirin.
+1. **Devam et'i**seçin ve ardından yüklemeyi bitirmek için **Enter'u** seçin.
 
-    ![Yüklemeyi Tamamlama](./media/vmware-azure-install-linux-master-target/image22.png)
+    ![Yüklemeyi sonla](./media/vmware-azure-install-linux-master-target/image22.png)
 
-1. Yükleme tamamlandıktan sonra, VM 'de Yeni Kullanıcı kimlik bilgileriyle oturum açın. (Daha fazla bilgi için **10. adıma** bakın.)
+1. Yükleme tamamlandıktan sonra, yeni kullanıcı kimlik bilgileriyle VM'de oturum açın. (Daha fazla bilgi için **Adım 10'a** bakın.)
 
-1. KÖK kullanıcı parolasını ayarlamak için aşağıdaki ekran görüntüsünde açıklanan adımları kullanın. Ardından kök kullanıcı olarak oturum açın.
+1. ROOT kullanıcı parolasını ayarlamak için aşağıdaki ekran görüntüsünde açıklanan adımları kullanın. Ardından ROOT kullanıcısı olarak oturum açın.
 
-    ![KÖK kullanıcı parolasını ayarlama](./media/vmware-azure-install-linux-master-target/image23.png)
+    ![ROOT kullanıcı parolasını ayarlama](./media/vmware-azure-install-linux-master-target/image23.png)
 
 
 ### <a name="configure-the-machine-as-a-master-target-server"></a>Makineyi ana hedef sunucu olarak yapılandırma
 
-Bir Linux sanal makinesindeki her SCSI sabit diskinin KIMLIĞINI almak için **disk. Enableuuıd = TRUE** parametresinin etkinleştirilmesi gerekiyor. Bu parametreyi etkinleştirmek için aşağıdaki adımları uygulayın:
+Bir Linux sanal makine, disk her SCSI sabit disk için kimlik almak **için. EnableUUID = TRUE** parametresi etkinleştirilmesi gerekir. Bu parametreyi etkinleştirmek için aşağıdaki adımları izleyin:
 
 1. Sanal makinenizi kapatın.
 
-2. Sol bölmedeki sanal makine girişine sağ tıklayın ve ardından **Ayarları Düzenle**' yi seçin.
+2. Sol bölmedeki sanal makinenin girişini sağ tıklatın ve ardından **Ayarları Edit'i**seçin.
 
 3. **Seçenekler** sekmesini seçin.
 
-4. Sol bölmede **gelişmiş** > **genel**' i seçin ve ardından ekranın sağ alt kısmındaki **yapılandırma parametreleri** düğmesini seçin.
+4. Sol bölmede **Gelişmiş** > **Genel'i**seçin ve ardından ekranın sağ alt kısmındaki **Yapılandırma Parametreleri** düğmesini seçin.
 
-    ![Yapılandırma parametresini aç](./media/vmware-azure-install-linux-master-target/image24-ubuntu.png) 
+    ![Yapılandırma parametresi aç](./media/vmware-azure-install-linux-master-target/image24-ubuntu.png) 
 
-    Makine çalışırken **yapılandırma parametreleri** seçeneği kullanılamaz. Bu sekmeyi etkin hale getirmek için sanal makineyi kapatın.
+    Makine çalışırken **Yapılandırma Parametreleri** seçeneği kullanılamıyor. Bu sekmeyi etkin hale getirmek için sanal makineyi kapatın.
 
-5. Disk içeren bir satır olup olmadığını görün **. Enableuuıd** zaten var.
+5. Diskli bir satır olup olmadığını **görün. EnableUUID** zaten var.
 
-   - Değer varsa ve **false**olarak ayarlanırsa, değeri **true**olarak değiştirin. (Değerler büyük/küçük harfe duyarlı değildir.)
+   - Değer varsa ve **False**olarak ayarlanmışsa, değeri **True**olarak değiştirin. (Değerler büyük/küçük harf duyarlı değildir.)
 
-   - Değer varsa ve **true**olarak ayarlanırsa **iptal**' i seçin.
+   - Değer varsa ve **True**olarak ayarlanmışsa, **İptal**et'i seçin.
 
-   - Değer yoksa **satır ekle**' yi seçin.
+   - Değer yoksa **Satır Ekle'yi**seçin.
 
-   - Ad sütununda **disk ekleyin. Enableuuıd**ve ardından değeri **true**olarak ayarlayın.
+   - Ad sütununa **disk ekleyin. EnableUUID**ve sonra değeri **TRUE**olarak ayarlayın.
 
-     ![Disk olup olmadığı denetleniyor. Enableuuıd zaten var](./media/vmware-azure-install-linux-master-target/image25.png)
+     ![Disk olup olmadığını kontrol ediyorum. EnableUUID zaten var](./media/vmware-azure-install-linux-master-target/image25.png)
 
-#### <a name="disable-kernel-upgrades"></a>Çekirdek yükseltmelerini devre dışı bırak
+#### <a name="disable-kernel-upgrades"></a>Çekirdek yükseltmelerini devre dışı
 
-Ana hedef sunucusu Azure Site Recovery, Ubuntu 'ın belirli bir sürümünü gerektirir, sanal makine için çekirdek yükseltmelerin devre dışı bırakıldığından emin olun. Çekirdek yükseltmeleri etkinleştirilirse, ana hedef sunucunun hatalı çalışmasına neden olabilir.
+Azure Site Kurtarma ana hedef sunucusu, çekirdek yükseltmelerinin sanal makine için devre dışı bırakıldığından emin olmak için Ubuntu'nun belirli bir sürümünü gerektirir. Çekirdek yükseltmeleri etkinse, ana hedef sunucunun arızasına neden olabilir.
 
-#### <a name="download-and-install-additional-packages"></a>Ek paketleri indir ve yükle
+#### <a name="download-and-install-additional-packages"></a>Ek paketleri indirin ve yükleyin
 
 > [!NOTE]
-> Ek paketleri indirmek ve yüklemek için Internet bağlantısına sahip olduğunuzdan emin olun. Internet bağlantınız yoksa, bu deb paketlerini el ile bulmanız ve yüklemeniz gerekir.
+> Ek paketleri indirmek ve yüklemek için Internet bağlantısına sahip olduğundan emin olun. Internet bağlantınız yoksa, bu Deb paketlerini el ile bulmanız ve yüklemeniz gerekir.
 
  `apt-get install -y multipath-tools lsscsi python-pyasn1 lvm2 kpartx`
 
-### <a name="get-the-installer-for-setup"></a>Kurulum için yükleyiciyi al
+### <a name="get-the-installer-for-setup"></a>Kurulum için yükleyiciyi alın
 
-Ana hedefinizin Internet bağlantısı varsa, yükleyiciyi indirmek için aşağıdaki adımları kullanabilirsiniz. Aksi takdirde, yükleyiciyi işlem sunucusundan kopyalayabilir ve sonra yükleyebilirsiniz.
+Ana hedefiniz Internet bağlantısına sahipse, yükleyiciyi indirmek için aşağıdaki adımları kullanabilirsiniz. Aksi takdirde, yükleyiciyi işlem sunucusundan kopyalayıp yükleyebilirsiniz.
 
 #### <a name="download-the-master-target-installation-packages"></a>Ana hedef yükleme paketlerini indirin
 
-[En son Linux ana hedef yükleme bitlerini indirin](https://aka.ms/latestlinuxmobsvc).
+[En son Linux ana hedef yükleme bitlerini indirin.](https://aka.ms/latestlinuxmobsvc)
 
-Linux kullanarak indirmek için şunu yazın:
+Linux kullanarak indirmek için yazın:
 
 `wget https://aka.ms/latestlinuxmobsvc -O latestlinuxmobsvc.tar.gz`
 
 > [!WARNING]
-> Yükleyiciyi ana dizininizdeki indirip sıkıştırmasını açın. **/Usr/local**olarak unzip ederseniz yükleme başarısız olur.
+> Ev dizininizdeki yükleyiciyi indirdiğinizden ve fermuarını kaldırdığınızdan emin olun. **/usr/Local**adresine fermuarını açıyorsanız, yükleme başarısız olur.
 
 
-#### <a name="access-the-installer-from-the-process-server"></a>Yükleyiciye işlem sunucusundan erişin
+#### <a name="access-the-installer-from-the-process-server"></a>İşlem sunucusundan yükleyiciye erişin
 
-1. İşlem sunucusunda **C:\Program Files (x86) \Microsoft Azure Site Recovery\home\svsystems\pushınstallsvc\repository**adresine gidin.
+1. İşlem sunucusunda **C:\Program Files (x86)\Microsoft Azure Site Kurtarma\ev\svsystems\pushinstallsvc\repository**adresine gidin.
 
-2. Gerekli yükleyici dosyasını işlem sunucusundan kopyalayın ve giriş dizininizde **latestlinuxmobsvc. tar. gz** olarak kaydedin.
+2. İşlem sunucusundan gerekli yükleyici dosyasını kopyalayın ve ev dizininizde **en son linuxmobsvc.tar.gz** olarak kaydedin.
 
 
-### <a name="apply-custom-configuration-changes"></a>Özel yapılandırma değişikliklerini Uygula
+### <a name="apply-custom-configuration-changes"></a>Özel yapılandırma değişiklikleri uygulama
 
-Özel yapılandırma değişikliklerini uygulamak için, kök kullanıcı olarak aşağıdaki adımları kullanın:
+Özel yapılandırma değişiklikleri uygulamak için ROOT kullanıcısı olarak aşağıdaki adımları kullanın:
 
-1. İkiliyi kaldırmak için aşağıdaki komutu çalıştırın.
+1. İkiliyi untar etmek için aşağıdaki komutu çalıştırın.
 
     `tar -xvf latestlinuxmobsvc.tar.gz`
 
-    ![Çalıştırılacak komutun ekran görüntüsü](./media/vmware-azure-install-linux-master-target/image16.png)
+    ![Çalıştırılabilmek için komutun ekran görüntüsü](./media/vmware-azure-install-linux-master-target/image16.png)
 
 2. İzin vermek için aşağıdaki komutu çalıştırın.
 
@@ -232,49 +232,49 @@ Linux kullanarak indirmek için şunu yazın:
     `./ApplyCustomChanges.sh`
 
 > [!NOTE]
-> Betiği sunucuda yalnızca bir kez çalıştırın. Ardından sunucuyu kapatın. Sonraki bölümde açıklandığı gibi bir diski ekledikten sonra sunucuyu yeniden başlatın.
+> Komut dosyasını sunucuda yalnızca bir kez çalıştırın. Ardından sunucuyu kapatın. Bir sonraki bölümde açıklandığı gibi, bir disk ekledikten sonra sunucuyu yeniden başlatın.
 
-### <a name="add-a-retention-disk-to-the-linux-master-target-virtual-machine"></a>Linux ana hedef sanal makinesine bir bekletme diski ekleme
+### <a name="add-a-retention-disk-to-the-linux-master-target-virtual-machine"></a>Linux ana hedef sanal makineye bir saklama diski ekleme
 
-Bir saklama diski oluşturmak için aşağıdaki adımları kullanın:
+Bekletme diski oluşturmak için aşağıdaki adımları kullanın:
 
-1. Linux ana hedef sanal makinesine yeni bir 1 TB disk ekleyin ve ardından makineyi başlatın.
+1. Linux ana hedef sanal makineye yeni bir 1-TB disk takın ve sonra makineyi başlatın.
 
-2. Çok yollu- **ll** komutunu kullanarak bekletme diskinin çok yollu kimliğini öğrenin: **çok yollu-ll**
+2. Bekletme diskinin çok kimliğini öğrenmek için **çok -ll** komutunu kullanın: **multipath -ll**
 
-    ![Çok yollu KIMLIĞI](./media/vmware-azure-install-linux-master-target/image27.png)
+    ![Çok Kimlik](./media/vmware-azure-install-linux-master-target/image27.png)
 
-3. Sürücüyü biçimlendirin ve ardından yeni sürücüde bir dosya sistemi oluşturun: **mkfs. ext4/dev/mapper/\<bekletme diskinin çok yollu kimliği >** .
+3. Sürücüyü biçimlendirin ve yeni sürücüde bir dosya sistemi oluşturun: **mkfs.ext4 /dev/mapper/\<Saklama diskinin çoklu yol numarası>. **
     
     ![Dosya sistemi](./media/vmware-azure-install-linux-master-target/image23-centos.png)
 
-4. Dosya sistemini oluşturduktan sonra, bekletme diskini bağlayın.
+4. Dosya sistemini oluşturduktan sonra bekletme diskini monte edin.
 
     ```
     mkdir /mnt/retention
     mount /dev/mapper/<Retention disk's multipath id> /mnt/retention
     ```
 
-5. Sistem her başlatıldığında bekletme sürücüsünü bağlamak için **fstab** girişi oluşturun.
+5. Sistem her başlatında bekletme sürücüsüne monte etmek için **fstab** girişini oluşturun.
     
     `vi /etc/fstab`
     
-    Dosyayı düzenlemeyle başlamak için **Ekle** ' yi seçin. Yeni bir satır oluşturun ve ardından aşağıdaki metni ekleyin. Önceki komuttan vurgulanan çok yollu KIMLIĞE göre disk çok yollu KIMLIĞINI düzenleyin.
+    Dosyayı düzenlemeye başlamak için **Ekle'yi** seçin. Yeni bir satır oluşturun ve ardından aşağıdaki metni ekleyin. Disk çok kimliğini önceki komutun vurgulanan çok kimliğini temel alın.
 
-    **/dev/mapper/\<saklama diskleri çok yollu kimliği >/mnt/bekletme ext4 RW 0 0**
+    **/dev/mapper/\<Saklama diskleri multipath id> /mnt/retention ext4 rw 0 0**
 
-    **ESC**' yi seçin ve ardından düzenleyici penceresini kapatmak için **WQ** (yazma ve çıkış) yazın.
+    **Esc'yi**seçin ve ardından editör penceresini kapatmak için **:wq** (yazma ve bırakma) yazın.
 
-### <a name="install-the-master-target"></a>Ana hedefi yükler
+### <a name="install-the-master-target"></a>Ana hedefi yükleme
 
 > [!IMPORTANT]
-> Ana hedef sunucunun sürümü, işlem sunucusu ve yapılandırma sunucusu sürümlerine eşit veya ondan daha önceki bir sürüme eşit olmalıdır. Bu koşul karşılanmazsa, yeniden koruma başarılı olur, ancak çoğaltma başarısız olur.
+> Ana hedef sunucunun sürümü, işlem sunucusunun ve yapılandırma sunucusunun sürümlerine eşit veya daha erken olmalıdır. Bu koşul karşılanmazsa, yeniden koruma başarılı olur, ancak çoğaltma başarısız olur.
 
 
 > [!NOTE]
-> Ana hedef sunucuyu yüklemeden önce, sanal makinedeki **/etc/hosts** dosyasında, yerel ana bilgisayar adını tüm ağ bağdaştırıcıları Ile ilişkili IP adreslerine eşleyen girişler bulunduğundan emin olun.
+> Ana hedef sunucuyu yüklemeden önce, sanal makinedeki **/etc/hosts** dosyasının tüm ağ bağdaştırıcılarıyla ilişkili IP adresleriyle yerel ana bilgisayar adını eşleyen girişler içerip içerdiğini denetleyin.
 
-1. Yapılandırma sunucusundaki **C:\ProgramData\Microsoft Azure Site Recovery\private\connection.exe** klasöründen parolayı kopyalayın. Ardından, aşağıdaki komutu çalıştırarak aynı yerel dizine **parolayı. txt** olarak kaydedin:
+1. Yapılandırma sunucusundaki **C:\ProgramData\Microsoft Azure Site Kurtarma\private\connection.passphrase'den parolayı** kopyalayın. Sonra aşağıdaki komutu çalıştırarak aynı yerel dizinde **passphrase.txt** olarak kaydedin:
 
     `echo <passphrase> >passphrase.txt`
 
@@ -283,7 +283,7 @@ Bir saklama diski oluşturmak için aşağıdaki adımları kullanın:
        `echo itUx70I47uxDuUVY >passphrase.txt`
     
 
-2. Yapılandırma sunucusunun IP adresini aklınızda edin. Ana hedef sunucuyu yüklemek ve sunucuyu yapılandırma sunucusuna kaydetmek için aşağıdaki komutu çalıştırın.
+2. Yapılandırma sunucusunun IP adresini not edin. Ana hedef sunucuyu yüklemek ve sunucuyu yapılandırma sunucusuna kaydettirmek için aşağıdaki komutu çalıştırın.
 
     ```
     /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i <ConfigurationServer IP Address> -P passphrase.txt
@@ -295,26 +295,26 @@ Bir saklama diski oluşturmak için aşağıdaki adımları kullanın:
     /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i 104.40.75.37 -P passphrase.txt
     ```
 
-Komut dosyası bitene kadar bekleyin. Ana hedef başarıyla kaydolduğunda, ana hedef portalın **Site Recovery altyapı** sayfasında listelenir.
+Senaryo bitene kadar bekle. Ana hedef başarılı bir şekilde kaydolursa, ana hedef portalın **Site Kurtarma Altyapısı** sayfasında listelenir.
 
 
-#### <a name="install-the-master-target-by-using-interactive-installation"></a>Etkileşimli yükleme kullanarak ana hedefi yükleme
+#### <a name="install-the-master-target-by-using-interactive-installation"></a>Etkileşimli yükleme yi kullanarak ana hedefi yükleyin
 
-1. Ana hedefi yüklemek için aşağıdaki komutu çalıştırın. Aracı rolü için **ana hedef**' i seçin.
+1. Ana hedefi yüklemek için aşağıdaki komutu çalıştırın. Aracı rolü için **ana hedefi**seçin.
 
     ```
     ./install
     ```
 
-2. Yükleme için varsayılan konumu seçin ve sonra devam etmek için **ENTER** ' u seçin.
+2. Yükleme için varsayılan konumu seçin ve devam etmek için **Enter'u** seçin.
 
-    ![Ana hedefin yüklenmesi için varsayılan bir konum seçme](./media/vmware-azure-install-linux-master-target/image17.png)
+    ![Ana hedefin yüklenmesi için varsayılan konum seçme](./media/vmware-azure-install-linux-master-target/image17.png)
 
-Yükleme tamamlandıktan sonra, komut satırını kullanarak yapılandırma sunucusunu kaydedin.
+Yükleme tamamlandıktan sonra komut satırını kullanarak yapılandırma sunucusunu kaydedin.
 
-1. Yapılandırma sunucusunun IP adresini göz önünde edin. Bunu bir sonraki adımda yapmanız gerekir.
+1. Yapılandırma sunucusunun IP adresini not edin. Bir sonraki adımda ona ihtiyacın var.
 
-2. Ana hedef sunucuyu yüklemek ve sunucuyu yapılandırma sunucusuna kaydetmek için aşağıdaki komutu çalıştırın.
+2. Ana hedef sunucuyu yüklemek ve sunucuyu yapılandırma sunucusuna kaydettirmek için aşağıdaki komutu çalıştırın.
 
     ```
     ./install -q -d /usr/local/ASR -r MT -v VmWare
@@ -326,35 +326,35 @@ Yükleme tamamlandıktan sonra, komut satırını kullanarak yapılandırma sunu
     /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i 104.40.75.37 -P passphrase.txt
     ```
 
-     Komut dosyası bitene kadar bekleyin. Ana hedef başarıyla kaydedilmişse, ana hedef portalın **Site Recovery altyapı** sayfasında listelenir.
+     Senaryo bitene kadar bekle. Ana hedef başarıyla kaydedilirse, ana hedef portalın **Site Kurtarma Altyapısı** sayfasında listelenir.
 
 
-### <a name="install-vmware-tools--open-vm-tools-on-the-master-target-server"></a>VMware araçları/açık-VM-araçları 'nı ana hedef sunucuya yükler
+### <a name="install-vmware-tools--open-vm-tools-on-the-master-target-server"></a>Ana hedef sunucuya VMware araçları / açık vm-araçları yükleyin
 
-Veri depolarını keşfedebilmesi için, VMware araçları 'nı veya ana hedefte açık VM araçları 'nı yüklemeniz gerekir. Araçlar yüklü değilse, yeniden koru ekranı veri depolarında listelenmez. VMware araçlarının yüklenmesinden sonra yeniden başlatmanız gerekir.
+Veri depolarını keşfedebilmek için ana hedefe VMware araçları veya açık vm-araçları yüklemeniz gerekir. Araçlar yüklenmezse, yeniden koruma ekranı veri depolarında listelenmez. VMware araçlarının yüklendikten sonra yeniden başlatmanız gerekir.
 
-### <a name="upgrade-the-master-target-server"></a>Ana hedef sunucusunu yükseltme
+### <a name="upgrade-the-master-target-server"></a>Ana hedef sunucuyu yükseltme
 
-Yükleyiciyi çalıştırın. Aracının ana hedefte yüklü olduğunu otomatik olarak algılar. Yükseltmek için **Y**'yi seçin.  Kurulum tamamlandıktan sonra, aşağıdaki komutu kullanarak yüklü ana hedefin sürümünü denetleyin:
+Yükleyiciyi çalıştırın. Aracının ana hedefe yüklenmiş olduğunu otomatik olarak algılar. Yükseltmek için **Y'yi**seçin.  Kurulum tamamlandıktan sonra, aşağıdaki komutu kullanarak yüklenen ana hedefin sürümünü denetleyin:
 
 `cat /usr/local/.vx_version`
 
 
-**Sürüm** alanının ana hedefin sürüm numarasını sunabilme durumunu görürsünüz.
+**Sürüm** alanının ana hedefin sürüm numarasını verdiğini görürsünüz.
 
 ## <a name="common-issues"></a>Genel sorunlar
 
-* Ana hedef gibi yönetim bileşenlerinde Depolama vMotion 'ı etkinleştirdiğinizden emin olun. Ana hedef başarılı bir şekilde yeniden korunduktan sonra taşınırsa, sanal makine diskleri (VMDK) ayrılamıyor. Bu durumda yeniden çalışma başarısız olur.
+* Ana hedef gibi herhangi bir yönetim bileşeninde Storage vMotion'ı açmadığınızdan emin olun. Ana hedef başarılı bir yeniden korumadan sonra hareket ederse, sanal makine diskleri (VMDKs) ayrılamaz. Bu durumda, failback başarısız olur.
 
-* Ana hedefin sanal makinede anlık görüntü olmaması gerekir. Anlık görüntüler varsa, yeniden çalışma başarısız olur.
+* Ana hedefsanal makinede herhangi bir anlık görüntü olmamalıdır. Anlık görüntüler varsa, geri alma başarısız olur.
 
-* Bazı özel NIC yapılandırmalarına bağlı olarak, ağ arabirimi başlangıç sırasında devre dışıdır ve ana hedef Aracısı başlatılamaz. Aşağıdaki özelliklerin doğru ayarlandığından emin olun. Bu özellikleri Ethernet kartı dosyasının/Etc/sysconfig/Network-Scripts/ifcfg-ETH * ' de denetleyin.
-    * BOOTPROTO = DHCP
-    * ONBOOT = Evet
+* Bazı özel NIC yapılandırmaları nedeniyle, ağ arabirimi başlangıç sırasında devre dışı bırakılır ve ana hedef aracı sıcağı aparat edemez. Aşağıdaki özelliklerin doğru şekilde ayarlandıklarının emin olun. Ethernet kart dosyasının /etc/sysconfig/network-scripts/ifcfg-eth*'sinde bu özellikleri kontrol edin.
+    * BOOTPROTO=dhcp
+    * ONBOOT=Evet
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Ana hedefin yüklenmesi ve kaydı tamamlandıktan sonra, ana hedefin yapılandırma sunucusuna genel bakış altında **Site Recovery altyapısı**'nda **ana hedef** bölümünde görüntülendiğini görebilirsiniz.
+Ana hedefin kurulumu ve kaydı tamamlandıktan sonra, yapılandırma sunucusuna genel bakış **altında, Site Kurtarma Altyapısı'ndaki** **ana hedef** bölümünde ana hedefin göründüğünü görebilirsiniz.
 
-Artık yeniden çalışma sonrasında [yeniden koruma](vmware-azure-reprotect.md)ile devam edebilirsiniz.
+Şimdi [yeniden koruma](vmware-azure-reprotect.md)ile devam edebilirsiniz, failback ardından.
 

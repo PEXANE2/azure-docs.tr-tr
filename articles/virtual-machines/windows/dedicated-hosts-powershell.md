@@ -1,44 +1,44 @@
 ---
-title: Azure adanmış Konakları Azure PowerShell kullanarak dağıtma
-description: Azure PowerShell kullanarak VM 'Leri adanmış ana bilgisayarlara dağıtın.
+title: Azure PowerShell'i kullanarak Azure'a özel ana bilgisayarları dağıtma
+description: Azure PowerShell'i kullanarak özel ana bilgisayarlara VM dağıtın.
 author: cynthn
 ms.service: virtual-machines-windows
 ms.topic: article
 ms.workload: infrastructure
 ms.date: 08/01/2019
 ms.author: cynthn
-ms.openlocfilehash: 30d15970b00a81ab85cdb85d2c0a27ee23ed1b92
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.openlocfilehash: a228a83d711c84d2aa994e6de7d90af48cca7f28
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2020
-ms.locfileid: "79130315"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79530946"
 ---
-# <a name="deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>Azure PowerShell kullanarak VM 'Leri adanmış konaklara dağıtma
+# <a name="deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>Azure PowerShell'i kullanarak özel ana bilgisayarlara VM dağıtma
 
-Bu makalede, sanal makinelerinizi (VM 'Ler) barındırmak için Azure [adanmış ana bilgisayar](dedicated-hosts.md) oluşturma konusunda size kılavuzluk eder. 
+Bu makalede, sanal makinelerinizi (VM) barındırmak için [Azure'a adanmış](dedicated-hosts.md) bir ana bilgisayar oluşturma konusunda size rehberlik eder. 
 
-Azure PowerShell sürüm 2.8.0 veya sonraki bir sürümü yüklediğinizden emin olun ve içinde `Connect-AzAccount`bir Azure hesabında oturum açtığınızdan emin olun. 
+Azure PowerShell sürüm 2.8.0 veya sonraki sürümlerini yüklediğinizden ve bir Azure `Connect-AzAccount`hesabında oturum açarak oturum açabildiğinizden emin olun. 
 
 ## <a name="limitations"></a>Sınırlamalar
 
-- Sanal Makine Ölçek Kümeleri Şu anda adanmış konaklarda desteklenmiyor.
-- Adanmış konaklar için kullanılabilen Boyutlar ve donanım türleri bölgelere göre farklılık gösterir. Daha fazla bilgi edinmek için konak [fiyatlandırma sayfasına](https://aka.ms/ADHPricing) bakın.
+- Sanal makine ölçek kümeleri şu anda özel ana bilgisayarlarda desteklenmez.
+- Özel ana bilgisayarlar için kullanılabilen boyutlar ve donanım türleri bölgeye göre değişir. Daha fazla bilgi edinmek için ana bilgisayar [fiyatlandırma sayfasına](https://aka.ms/ADHPricing) bakın.
 
-## <a name="create-a-host-group"></a>Konak grubu oluştur
+## <a name="create-a-host-group"></a>Ana bilgisayar grubu oluşturma
 
-**Konak grubu** , adanmış Konakları koleksiyonunu temsil eden bir kaynaktır. Bir bölge ve kullanılabilirlik bölgesinde bir konak grubu oluşturur ve bu gruba ana bilgisayar ekleyebilirsiniz. Yüksek kullanılabilirlik için planlama yaparken ek seçenekler vardır. Aşağıdaki seçeneklerden birini veya her ikisini de adanmış konaklarınız ile kullanabilirsiniz: 
-- Birden çok kullanılabilirlik alanı arasında yayılır. Bu durumda, kullanmak istediğiniz her bölgede bir konak grubunuz olması gerekir.
-- Fiziksel raflarla eşlenen birden çok hata etki alanı arasında yayılma. 
+**Ana bilgisayar grubu,** özel ana bilgisayarkoleksiyonunu temsil eden bir kaynaktır. Bir bölgede ve kullanılabilirlik bölgesinde bir ana bilgisayar grubu oluşturur ve ona ana bilgisayarlar eklersiniz. Yüksek kullanılabilirlik için planlama yaparken, ek seçenekler vardır. İlgili ana bilgisayarlarınızla aşağıdaki seçeneklerden birini veya her ikisini de kullanabilirsiniz: 
+- Birden çok kullanılabilirlik bölgesine yayılma. Bu durumda, kullanmak istediğiniz bölgelerin her birinde bir ana bilgisayar grubuna sahip olması gerekir.
+- Fiziksel raflara eşlenen birden çok hata etki alanına yayılma alanı. 
  
-Her iki durumda da, konak grubunuz için hata etki alanı sayısını sağlamanız gerekir. Grubunuzdaki hata etki alanlarına yayılması istemiyorsanız, hata etki alanı sayısı 1 ' i kullanın. 
+Her iki durumda da, ana bilgisayar grubunuz için hata etki alanı sayısını sağlamanız gerekir. Grubunuzdaki hata etki alanlarını yayılımını istemiyorsanız, 1 hata etki alanı sayısı kullanın. 
 
-Hem kullanılabilirlik bölgelerini hem de hata etki alanlarını kullanmaya karar verebilirsiniz. Bu örnek, 2 hata etki alanı ile bölge 1 ' de bir konak grubu oluşturur. 
+Ayrıca, hem kullanılabilirlik bölgelerini hem de hata etki alanlarını kullanmaya karar verebilirsiniz. Bu örnek, bölge 1'de 2 hata etki alanı içeren bir ana bilgisayar grubu oluşturur. 
 
 
-```powershell
+```azurepowershell-interactive
 $rgName = "myDHResourceGroup"
-$location = "East US"
+$location = "EastUS"
 
 New-AzResourceGroup -Location $location -Name $rgName
 $hostGroup = New-AzHostGroup `
@@ -49,16 +49,16 @@ $hostGroup = New-AzHostGroup `
    -Zone 1
 ```
 
-## <a name="create-a-host"></a>Konak Oluşturma
+## <a name="create-a-host"></a>Ana bilgisayar oluşturma
 
-Şimdi konak grubunda adanmış bir konak oluşturalım. Konak için bir ada ek olarak, ana bilgisayar için SKU sağlamanız gerekir. Ana bilgisayar SKU 'SU, desteklenen VM serisini ve adanmış ana bilgisayarınız için donanım oluşturmayı yakalar.
+Şimdi ev sahibi grubunda özel bir ana bilgisayar oluşturalım. Ev sahibi nin adına ek olarak, ev sahibi için SKU sağlamanız gerekir. Ana bilgisayar SKU, desteklenen VM serisinin yanı sıra özel ana bilgisayarınız için donanım üretimini de yakalar.
 
-Konak SKU 'Ları ve fiyatlandırma hakkında daha fazla bilgi için bkz. [Azure ayrılmış ana bilgisayar fiyatlandırması](https://aka.ms/ADHPricing).
+Ana bilgisayar SK'leri ve fiyatlandırması hakkında daha fazla bilgi için [Azure Özel Ana Bilgisayar fiyatlandırması'na](https://aka.ms/ADHPricing)bakın.
 
-Konak grubunuz için bir hata etki alanı sayısı ayarlarsanız, ana bilgisayarınız için hata etki alanını belirtmeniz istenir. Bu örnekte, ana bilgisayar için hata etki alanını 1 olarak ayarlayacağız.
+Ana bilgisayar grubunuz için bir hata etki alanı sayısı ayarlarsanız, ev sahibiniz için hata etki alanını belirtmeniz istenir. Bu örnekte, ana bilgisayar için hata etki alanını 1 olarak ayarlıyoruz.
 
 
-```powershell
+```azurepowershell-interactive
 $dHost = New-AzHost `
    -HostGroupName $hostGroup.Name `
    -Location $location -Name myHost `
@@ -70,12 +70,12 @@ $dHost = New-AzHost `
 
 ## <a name="create-a-vm"></a>VM oluşturma
 
-Adanmış konakta bir sanal makine oluşturun. 
+Özel ana bilgisayarda sanal bir makine oluşturun. 
 
-Konak grubunuzu oluştururken bir kullanılabilirlik alanı belirttiyseniz, sanal makineyi oluştururken aynı bölgeyi kullanmanız gerekir. Bu örnekte, ana bilgisayar grubumuz bölge 1 ' de olduğundan, VM 'yi bölge 1 ' de oluşturmamız gerekiyor.  
+Ana bilgisayar grubunuzu oluştururken bir kullanılabilirlik bölgesi belirttiyseniz, sanal makineoluştururken aynı bölgeyi kullanmanız gerekir. Bu örnekte, ana bilgisayar grubumuz bölge 1'de olduğundan, bölge 1'de VM oluşturmamız gerekir.  
 
 
-```powershell
+```azurepowershell-interactive
 $cred = Get-Credential
 New-AzVM `
    -Credential $cred `
@@ -89,13 +89,13 @@ New-AzVM `
 ```
 
 > [!WARNING]
-> Yeterli kaynağı olmayan bir konakta sanal makine oluşturursanız, sanal makine başarısız durumda oluşturulur. 
+> Yeterli kaynağa sahip olmayan bir ana bilgisayarda sanal bir makine oluşturursanız, sanal makine BAŞARıSıZ durumda oluşturulur. 
 
-## <a name="check-the-status-of-the-host"></a>Konağın durumunu denetleme
+## <a name="check-the-status-of-the-host"></a>Ev sahibinin durumunu denetleme
 
-Ana bilgisayar sistem durumunu ve `-InstanceView` parametresi ile [GetAzHost](/powershell/module/az.compute/get-azhost) kullanarak konağa ne kadar sanal makine dağıtacağınızı kontrol edebilirsiniz.
+Ana bilgisayar durumu durumunu ve parametreile [GetAzHost'u](/powershell/module/az.compute/get-azhost) kullanarak ana bilgisayara `-InstanceView` kaç sanal makine dağıtabileceğinizi kontrol edebilirsiniz.
 
-```
+```azurepowershell-interactive
 Get-AzHost `
    -ResourceGroupName $rgName `
    -Name myHost `
@@ -103,7 +103,7 @@ Get-AzHost `
    -InstanceView
 ```
 
-Çıktı şuna benzer olacaktır:
+Çıktı şuna benzer:
 
 ```
 ResourceGroupName      : myDHResourceGroup
@@ -164,29 +164,75 @@ Location               : eastus
 Tags                   : {}
 ```
 
+## <a name="add-an-existing-vm"></a>Varolan bir VM ekleme 
+
+Özel bir ana bilgisayara varolan bir VM ekleyebilirsiniz, ancak VM'nin önce Stop\Deallocated olması gerekir. Bir VM'yi özel bir ana bilgisayara taşımadan önce, VM yapılandırmasının desteklendirildiğinden emin olun:
+
+- VM boyutu, özel ana bilgisayarla aynı boyutta olmalıdır. Örneğin, özel ana bilgisayarınız DSv3 ise, VM boyutu Standard_D4s_v3 olabilir, ancak Standard_A4_v2 olamaz. 
+- VM'nin özel ana bilgisayarla aynı bölgede bulunması gerekir.
+- VM yakınlık yerleştirme grubunun bir parçası olamaz. VM'yi özel bir ana bilgisayara taşımadan önce yakınlık yerleşim grubundan çıkarın. Daha fazla bilgi için bkz: [VM'yi yakınlık yerleşim grubundan taşıma](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups#move-an-existing-vm-out-of-a-proximity-placement-group)
+- VM kullanılabilirlik kümesinde olamaz.
+- VM bir kullanılabilirlik bölgesindeyse, ana bilgisayar grubuyla aynı kullanılabilirlik bölgesi olmalıdır. VM ve ana bilgisayar grubu için kullanılabilirlik bölgesi ayarları eşleşmelidir.
+
+Değişkenlerin değerlerini kendi bilgilerinizle değiştirin.
+
+```azurepowershell-interactive
+$vmRGName = "movetohost"
+$vmName = "myVMtoHost"
+$dhRGName = "myDHResourceGroup"
+$dhGroupName = "myHostGroup"
+$dhName = "myHost"
+
+$myDH = Get-AzHost `
+   -HostGroupName $dhGroupName `
+   -ResourceGroupName $dhRGName `
+   -Name $dhName
+   
+$myVM = Get-AzVM `
+   -ResourceGroupName $vmRGName `
+   -Name $vmName
+   
+$myVM.Host = New-Object Microsoft.Azure.Management.Compute.Models.SubResource
+
+$myVM.Host.Id = "$myDH.Id"
+
+Stop-AzVM `
+   -ResourceGroupName $vmRGName `
+   -Name $vmName -Force
+   
+Update-AzVM `
+   -ResourceGroupName $vmRGName `
+   -VM $myVM -Debug
+   
+Start-AzVM `
+   -ResourceGroupName $vmRGName `
+   -Name $vmName
+```
+
+
 ## <a name="clean-up"></a>Temizleme
 
-Hiçbir sanal makine dağıtılmamışsa bile adanmış ana bilgisayarlar için ücret ödersiniz. Maliyetleri kaydetmek için şu anda kullanmadığınız tüm Konakları silmelisiniz.  
+Sanal makineler dağıtılmasa bile, özel ana bilgisayarlarınız için ücretlendirilirsiniz. Maliyetleri kaydetmek için şu anda kullanmadığınız ana bilgisayarları silmeniz gerekir.  
 
-Bir konağı yalnızca, onu kullanan daha fazla sanal makine olmadığında silebilirsiniz. [Remove-AzVM](/powershell/module/az.compute/remove-azvm)' i kullanarak VM 'leri silin.
+Bir ana bilgisayarı yalnızca artık sanal makineler olmadığında silebilirsiniz. [Remove-AzVM](/powershell/module/az.compute/remove-azvm)kullanarak VM'leri silin.
 
-```powershell
+```azurepowershell-interactive
 Remove-AzVM -ResourceGroupName $rgName -Name myVM
 ```
 
-VM 'Leri sildikten sonra [Remove-AzHost](/powershell/module/az.compute/remove-azhost)komutunu kullanarak Konağı silebilirsiniz.
+VM'leri sildikten sonra [Remove-AzHost'u](/powershell/module/az.compute/remove-azhost)kullanarak ana bilgisayarı silebilirsiniz.
 
-```powershell
+```azurepowershell-interactive
 Remove-AzHost -ResourceGroupName $rgName -Name myHost
 ```
 
-Tüm konaklarınızı sildikten sonra [Remove-AzHostGroup](/powershell/module/az.compute/remove-azhostgroup)komutunu kullanarak konak grubunu silebilirsiniz. 
+Tüm ana bilgisayarlarınızı sildikten [sonra, Remove-AzHostGroup'u](/powershell/module/az.compute/remove-azhostgroup)kullanarak ana bilgisayar grubunu silebilirsiniz. 
 
-```powershell
+```azurepowershell-interactive
 Remove-AzHost -ResourceGroupName $rgName -Name myHost
 ```
 
-Ayrıca, [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup)komutunu kullanarak tüm kaynak grubunu tek bir komutta silebilirsiniz. Bu işlem, tüm VM 'Ler, konaklar ve konak grupları dahil olmak üzere grupta oluşturulan tüm kaynakları siler.
+[Ayrıca Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup)kullanarak tek bir komut tüm kaynak grubu silebilirsiniz. Bu, tüm VM'ler, ana bilgisayarlar ve ana bilgisayar grupları da dahil olmak üzere grupta oluşturulan tüm kaynakları siler.
  
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name $rgName
@@ -195,6 +241,6 @@ Remove-AzResourceGroup -Name $rgName
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Burada](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md), bir bölgedeki maksimum dayanıklılık için hem bölge hem de hata etki alanı kullanan örnek şablon vardır.
+- Bir bölgede maksimum esneklik için hem bölgeleri hem de fay etki alanlarını kullanan örnek şablon [burada](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md)bulunur.
 
-- Ayrıca, [Azure Portal](dedicated-hosts-portal.md)kullanarak adanmış konaklar da dağıtabilirsiniz.
+- Azure [portalını](dedicated-hosts-portal.md)kullanarak özel ana bilgisayarları da dağıtabilirsiniz.

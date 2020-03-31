@@ -1,36 +1,33 @@
 ---
-title: Geliştiriciler için Azure Active Directory (v 1.0) genel bakış
-description: Bu makalede, Azure Active Directory v 1.0 uç noktası ve platformu kullanılarak Microsoft iş ve okul hesaplarında oturum açmaya ilişkin bir genel bakış sunulmaktadır.
+title: Geliştiriciler için Azure Etkin Dizini (v1.0) genel bakış
+description: Bu makalede, Azure Active Directory v1.0 bitiş noktası ve platform'u kullanarak Microsoft iş ve okul hesaplarında oturum açma genel bir bakış sağlar.
 services: active-directory
 author: rwike77
 manager: CelesteDG
-editor: ''
-ms.assetid: 5c872c89-ef04-4f4c-98de-bc0c7460c7c2
 ms.service: active-directory
 ms.subservice: azuread-dev
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/24/2018
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 638c265fda3c8b331415d54047180b3c0ee2174a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ROBOTS: NOINDEX
+ms.openlocfilehash: ade350c91ebd2f3a68b52011e598f739a14c220f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79263536"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80154500"
 ---
-# <a name="azure-active-directory-for-developers-v10-overview"></a>Geliştiriciler için Azure Active Directory (v 1.0) genel bakış
+# <a name="azure-active-directory-for-developers-v10-overview"></a>Geliştiriciler için Azure Etkin Dizini (v1.0) genel bakış
 
 [!INCLUDE [active-directory-azuread-dev](../../../includes/active-directory-azuread-dev.md)]
 
 Azure Active Directory (Azure AD), geliştiricilerin Microsoft iş veya okul hesabına sahip kullanıcıların güvenli şekilde oturumunu açan uygulamalar derlemesine olanak sağlayan bir bulut kimlik hizmetidir. Azure AD, tek kiracılı, iş kolu (LOB) uygulamalarını derleyen geliştiricileri ve çok kiracılı uygulamalar geliştirmek isteyen geliştiricileri destekler. Temel oturum açmaya ek olarak Azure AD, uygulamaların hem [Microsoft Graph](https://docs.microsoft.com/graph/overview) gibi Microsoft API’lerini hem de Azure AD platformunda derlenen özel API’leri çağırmasını sağlar. Bu belgeler, OAuth2.0 ve OpenID Connect gibi sektör standardı protokolleri kullanarak Azure AD desteğini uygulamanıza nasıl ekleyeceğinizi göstermektedir.
 
 > [!NOTE]
-> Bu sayfadaki içeriğin çoğu, yalnızca Microsoft iş veya okul hesaplarını destekleyen v 1.0 uç noktası ve platformuna odaklanır. Tüketici veya kişisel Microsoft hesaplarında oturum açmak isterseniz, [v 2.0 uç noktası ve platformu](../develop/v2-overview.md)hakkında bilgi için bkz. V 2.0 uç noktası, tüm Microsoft kimliklerinizde oturum açmak isteyen uygulamalar için birleştirilmiş bir geliştirici deneyimi sunar.
+> Bu sayfadaki içeriğin çoğu, yalnızca Microsoft iş veya okul hesaplarını destekleyen v1.0 bitiş noktası ve platformuna odaklanır. Tüketici veya kişisel Microsoft hesaplarını oturum etmek istiyorsanız, [v2.0 bitiş noktası ve platformundaki](../develop/v2-overview.md)bilgilere bakın. v2.0 bitiş noktası, tüm Microsoft kimliklerinde oturum imzalamak isteyen uygulamalar için birleşik bir geliştirici deneyimi sunar.
 
 | | |
 | --- | --- |
@@ -38,13 +35,13 @@ Azure Active Directory (Azure AD), geliştiricilerin Microsoft iş veya okul hes
 |[Uygulama türleri](app-types.md) | Azure AD tarafından desteklenen kimlik doğrulama senaryolarına genel bakış. |
 | | |
 
-## <a name="get-started"></a>başlarken
+## <a name="get-started"></a>Kullanmaya başlayın
 
-V 1.0 hızlı başlangıç ve öğreticiler, Azure AD kimlik doğrulama kitaplığı (ADAL) SDK 'sını kullanarak tercih ettiğiniz platformda uygulama oluşturma konusunda size yol gösterir. Başlamak için [Microsoft Identity platform (geliştiriciler için Azure Active Directory)](index.yml) adresindeki **v 1.0 hızlı başlangıç** ve **v 1.0 öğreticilerine** bakın.
+V1.0 hızlı başlangıçlar ve öğreticiler, Azure AD Kimlik Doğrulama Kitaplığı (ADAL) SDK'yı kullanarak tercih ettiğiniz platformda bir uygulama oluşturmanızda size yol sunar. Başlamak için [Microsoft kimlik platformundaki (geliştiriciler için Azure Active Directory)](index.yml) **v1.0 Quickstarts** ve **v1.0 Öğreticilerine** bakın.
 
 ## <a name="how-to-guides"></a>Nasıl yapılır kılavuzları
 
-Azure AD 'de en yaygın görevlere yönelik ayrıntılı bilgi ve yönergeler için bkz. **v 1.0 nasıl yapılır kılavuzları** .
+Azure AD'deki en yaygın görevlerin ayrıntılı bilgi ve izthroughleri için **v1.0 Nasıl Yapılulu kılavuzlarına** bakın.
 
 ## <a name="reference-topics"></a>Başvuru konuları
 
@@ -59,6 +56,6 @@ Aşağıdaki makaleler, Azure AD’de kullanılan API'ler, protokol iletileri ve
 
 ## <a name="videos"></a>Videolar
 
-Yeni Microsoft Identity platformuna geçiş konusunda yardım için bkz. [Azure Active Directory geliştirici platformu videoları](videos.md) .
+Yeni Microsoft kimlik platformuna geçiş edersiniz yardımcı olmak için [Azure Active Directory geliştirici platformu videolarına](videos.md) bakın.
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

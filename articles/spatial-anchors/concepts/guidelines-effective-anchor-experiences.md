@@ -1,6 +1,6 @@
 ---
-title: Etkin bağlayıcı deneyimleri için yönergeler
-description: Azure uzamsal bağlayıcıları kullanarak bağlantıları etkili bir şekilde oluşturup bulmaya yönelik yönergeler ve önemli noktalar.
+title: Etkili çapa deneyimleri için yönergeler
+description: Azure Uzamsal Bağlantılarını kullanarak çapaları etkili bir şekilde oluşturmak ve bulmak için yönergeler ve göz önünde bulundurulması gereken kurallar.
 author: mattwojo
 manager: jken
 services: azure-spatial-anchors
@@ -9,107 +9,107 @@ ms.date: 02/24/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: 9a24da8d76f401f534eccf33312fbf0c2bee9f5d
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74270514"
 ---
-# <a name="create-an-effective-anchor-experience-by-using-azure-spatial-anchors"></a>Azure uzamsal bağlayıcıları kullanarak etkin bir bağlantı deneyimi oluşturma
+# <a name="create-an-effective-anchor-experience-by-using-azure-spatial-anchors"></a>Azure Uzamsal Bağlantılarını kullanarak etkili bir bağlantı deneyimi oluşturun
 
-Bu makalede, uzamsal bağlayıcıları kullanarak bağlayıcıları etkin bir şekilde oluşturmanıza ve bulmanıza yardımcı olacak yönergeler ve konular sunulmaktadır.
+Bu makalede, Uzamsal Çapalar kullanarak çapaları etkili bir şekilde oluşturmanıza ve bulmanıza yardımcı olacak yönergeler ve hususlar sağlar.
 
-## <a name="good-anchors"></a>İyi bağlantılar
+## <a name="good-anchors"></a>İyi çapalar
 
-Uzamsal bağlayıcı, iyi bağlantılar oluşturmanıza yardımcı olur. Doğru bağlantıları oluşturmak için Kullanıcı deneyiminizdeki (UX) kullanıcıları eğitmekte veya buna göre yatırım yapmanız önemlidir. Önde gelen bağlantılar oluşturmaya yatırım yaparak, son kullanıcıların bağlantıları güvenilir bir şekilde bulmasına yardımcı olursunuz:
+Uzamsal Çapalar iyi çapalar oluşturmanıza yardımcı olur. İyi çapalar oluşturmak için kullanıcıları kullanıcı deneyiminizde (UX) eğitmek veya yönlendirmek için zaman ayırabilirsiniz. Öndeiyi iyi çapalar oluşturmaya yatırım yaparak, son kullanıcıların güvenilir bir şekilde çapa bulmalarına yardımcı olursunuz:
 
-- Farklı cihazlarda.
+- Farklı cihazlar arasında.
 - Çeşitli zamanlarda.
-- Farklı aydınlatma koşullarında.
-- Alan içindeki istenen perspektiflerden.
+- Farklı ışık koşullarında.
+- Alan içinde istenilen perspektiflerden.
 
 ## <a name="static-and-dynamic-locations"></a>Statik ve dinamik konumlar
 
-Bağlantı deneyimini tasarlamanın bir parçası konumları seçmektir. Konumlar statik olacak ve alanın yöneticisi tarafından tanımlanmalıdır mi? Ya da bunlar dinamik ve Kullanıcı tarafından tanımlanacaktır mi?
+Çapa deneyimi tasarımı bir parçası yerleri seçmektir. Konumlar statik olacak ve alanın bir yöneticisi tarafından tanımlanır mı? Ya da dinamik ve kullanıcı tarafından tanımlanan olacak?
 
-Retail Store Manager, kullanıcıları ziyaret etmek için bir statik mağaza deneyimi isteyebilir. Ancak, karma gerçeklik panosu oyununun geliştiricisi, kullanıcıların nerede oynamasını seçebilmesine izin vermek istiyor.
+Bir perakende mağaza yöneticisi, kullanıcıları ziyaret etmeye ikna etmek için statik bir mağaza içi deneyim isteyebilir. Ama bir karışık gerçeklik kurulu oyunu geliştiricisi büyük olasılıkla kullanıcıların nerede oynamak için seçim izin vermek istiyorum.
 
-Statik konumlar için, yöneticilere, alanı uygun bağlayıcılarla bir süre boyunca harcamayı öğretebilir.
+Statik konumlar için yöneticilere, alanı iyi çapalarla düzenlemek için zaman harcamayı öğretebilirsiniz.
 
-Dinamik konumlar için, UX 'inizdeki kullanıcılara iyi bağlantılar oluşturma konusunda nasıl eğitim veya rehberlik ettiğiniz hakkında düşünmeniz gerekir.
+Dinamik konumlar için, iyi çapalar oluşturmak için UX'nizdeki kullanıcıları nasıl öğrettiğinizi veya yönlendirdiğinizi düşünmelisiniz.
 
 ## <a name="stable-visual-features"></a>Kararlı görsel özellikler
 
-Karma Gerçeklik ve genişletilmiş gerçeklik cihazlarında kullanılan görsel izleme sistemleri, ortamın görsel özelliklerini kullanır. En güvenilir deneyimi almak için:
+Karma gerçeklik ve artırılmış gerçeklik cihazlarında kullanılan görsel izleme sistemleri ortamın görsel özelliklerine dayanır. En güvenilir deneyimi elde etmek için:
 
-- Kararlı görsel özellikleri olan konumlarda (yani, genellikle değiştirolmayan Özellikler) *bağlayıcı oluşturun.*
+- Kararlı görsel özelliklere (diğer bir deyişle, sık sık değişmeyen özellikler) konumlarda bağlantı *lar* oluşturun.
 
-- Ayrım özelliği olmayan büyük boş yüzeyler üzerinde *bağlayıcı oluşturmayın.*
+- Ayırt edici özellikleri olmayan büyük boş yüzeylerde çapalar *oluşturmayın.*
 
-- Yüksek oranda yansıtmalı malzemelerde *bağlayıcı oluşturmayın.*
+- Son derece yansıtıcı malzemeler üzerinde çapa *oluşturmayın.*
 
-- Kuevcil hayvan veya duvar kağıdı gibi, düzenin tekrarlandığı yüzeyler üzerinde *bağlayıcı oluşturmayın.*
+- Desen tekrarlar yüzeylerde çapa lar *oluşturmayın,* örneğin halı veya duvar kağıdı gibi.
 
-![Bağlantılar için iyi bir ortam örnekleri ve bağlayıcı için hatalı ortam](./media/stable-visual.png)
+![Çapalar için iyi bir ortam ve çapalar için kötü bir ortam örnekleri](./media/stable-visual.png)
 
-## <a name="various-viewing-perspectives"></a>Çeşitli görüntüleme perspektifi
+## <a name="various-viewing-perspectives"></a>Çeşitli görüntüleme perspektifleri
 
-Bir tutturucu oluştururken, daha sonra bağlayıcıyı bulmaya çalışacak kişileri düşünün.
+Bir çapa oluştururken, daha sonra çapa bulmak için çalışacağız insanlar düşünün.
 
-Örneğin, iki kapıya sahip olan bir odanın ortasında yer alan bir yer işareti düşünün. Büyük olasılıkla kullanıcıların her iki kapıdan Oda girmesine izin vermek istersiniz. Bağlayıcıyı oluştururken, konumunu her iki doorways de taramalısınız. Kullanıcıların, her iki kapıdan bağlantı bulabilmesi için ortam verilerini bağlayıcının etrafında yakalamak üzere perspektifleri değiştirirsiniz.
+Örneğin, iki kapısı olan bir odanın ortasında bir çapa düşünün. Büyük olasılıkla kullanıcıların her iki kapıdan da odaya girmesine izin vermek istiyorsunuz. Çapayı oluştururken, konumunu her iki kapıdan da tararsınız. Kullanıcıların her iki kapıdan da çapayı bulabilmeleri için bağlantının çevresindeki ortam verilerini yakalamak için perspektifleri değiştirirsiniz.
 
-Genel olarak, bir tutturucu oluştururken onu bulmaya çalışacak kişilerin perspektiflerinden tarayın. Bu nedenle, sanal içeriği bir mekan sulpture üzerine yerleştiriyorsanız, bağlayıcıyı oluştururken, tarama sırasında Sculpture 'in etrafında dolaşmayı mantıklı hale getirir. Yer işareti, bir odanın köşesindedir, kendisine yaklaşımda yalnızca bir yön vardır. Bu bağlayıcıyı oluştururken, bu perspektiften yalnızca tarama yapabilirsiniz.
+Genel olarak, bir çapa oluştururken, onu bulmaya çalışacak kişilerin bakış açılarından tazyin. Eğer bir açık hava heykeline sanal içerik yerleştiriyorsanız, çapayı oluştururken heykeli tararken etrafında yürümek mantıklıdır. Çapanız bir odanın köşesindeyse, ona yaklaşacak tek bir yön vardır. Bu çapayı oluştururken, sadece bu perspektiften tayabilirsiniz.
 
-## <a name="multiple-anchors"></a>Birden çok bağlayıcı
+## <a name="multiple-anchors"></a>Birden çok çapa
 
-Aydınlatma, bir uygulamanın algıladığı görsel özelliklerde bir farklılık yapabilir. Güçlü doğal hafif bir şekilde oluşturulan çıpaların yapay ışık halinde bulması zor olabilir ve bunun tam tersi de geçerlidir.
+Aydınlatma, bir uygulamanın algıladığını görsel özelliklerde fark yaratabilir. Güçlü doğal ışıkta oluşturulan çapaları yapay ışıkta bulmak zor olabilir, ya da tam tersi.
 
-Bu sorunla karşılaşırsanız, iki bağlayıcı oluşturmaya yardımcı olabilir. Aynı noktada, gün içinde ve yapay hafif bir bağlantı oluşturun. Uygulamanız daha sonra her iki bağlayıcı için sorgu oluşturabilir. Bağlantı noktası bulunduğunda, uygulamanın bağlantı noktası için bir poz olur.
+Bu sorununvarsa, iki bağlantı noktası oluşturmanıza yardımcı olabilir. Aynı noktada, gün ışığında bir çapa ve yapay ışık başka oluşturun. Uygulamanız daha sonra her iki bağlantı için de sorgu yapabilir. Her iki çapa bulunduğunda, uygulama çapa için bir poz alacaktır.
 
-Benzer şekilde, çoğu nesne hareket ettiğinden görsel özelliklerin değişmediği ortamlarda birden çok bağlayıcı yardımcı olabilir. Bir bağlayıcı, ortamdaki önemli değişiklikler nedeniyle bulmak için çok zor hale geldiğinde, bağlayıcıyı yeni bir ile değiştirebilirsiniz. Bu işlemi Örneğin, düzenin her birkaç ayda bir yenilenen Retail Store 'da yapabilirsiniz.
+Benzer şekilde, çoğu nesne hareket ettiği için görsel özelliklerin değiştiği ortamlarda, birden çok bağlantı yardımcı olabilir. Bir çapa, çevredeki önemli değişiklikler nedeniyle bulunması çok zorlaştığında, çapayı yenisiyle değiştirebilirsiniz. Bunu, örneğin, düzenin birkaç ayda bir yenilendiği bir perakende satış mağazasında yapabilirsiniz.
 
-## <a name="targets-and-rooms"></a>Hedefler ve Odalar
+## <a name="targets-and-rooms"></a>Hedefler ve odalar
 
-Birçok durumda, bağlayıcı uygulamanızın deneyimine yönelik bir giriş noktasıdır. Bu adımı hızla ve güvenilir bir şekilde almak isteyeceksiniz, böylece kullanıcılar deneyiminizi girebilir. Kullanıcıların bağlayıcılarınızı nasıl bulacağız önemli bir tasarım adımındaki harcama süresi. İki geniş senaryo açısından çıpası bulmayı düşünmek yararlı olur: *hedefler* ve *Odalar*.
+Çoğu durumda, çapa uygulamanızın deneyimine bir giriş noktasıdır. Kullanıcıların deneyiminizi girebilmeleri için bu adımı hızlı ve güvenilir bir şekilde geçmek isteyeceksiniz. Kullanıcıların çapalarınızı nasıl bulacağı konusunda zaman harcamak önemli bir tasarım adımıdır. Bu iki geniş senaryolar açısından çapa bulma hakkında düşünmek yararlıdır: *hedefler* ve *odalar.*
 
 ### <a name="targets"></a>Hedefler
 
-Hedef senaryoda, bir bağlayıcının konumu iyi bilinmektedir. Örneğin, kurgusal bir karma gerçeklik boyama uygulamasında, bir Kullanıcı duvara sanal bir tuval koyar. Odadaki diğer kullanıcılara, bağlayıcıyı bulmak ve deneyime başlamak için, cihazlarını duvardaki aynı yere işaret etmelerini söyler.
+Hedef senaryoda, bir çapanın konumu iyi bilinir. Örneğin, kurgusal bir karma gerçeklik boyama uygulamasında, bir kullanıcı duvara sanal bir tuval yerleştirir. Odadaki diğer kullanıcılara, çapayı bulmak ve deneyime başlamak için cihazlarını duvardaki aynı yere doğrultmalarını emreder.
 
-Bir hedef senaryoya başka bir örnek, "anlaşmalar için tarama" okuyan bir kafeterde oturum açma olabilir. Kahve dükkanı buraya bir bağlantı yerleştirdi. Kullanıcılar işareti taradıklarında, çıpası bulur ve kafeli ile ilgili anlaşmalar bulmak için genişletilmiş gerçeklik deneyimini girer.
+Hedef senaryonun başka bir örneği, bir kafede "Anlaşmaları tarar" yazan bir tabela olabilir. Kahve dükkanı buraya bir çapa yerleştirdi. Kullanıcılar tabelayı tarayıp, kahveyle ilgili fırsatları bulmak için çapayı bulur ve artırılmış gerçeklik deneyimine girerler.
 
-Hedef senaryoda fotoğraflar yardımcı olabilir. Kullanıcıları cihazındaki hedeflenen hedefin fotoğrafını göstermezseniz, gerçek dünyada nelerin taranacağını hızlıca tanımlayabilirler. Örneğin, kullanıcıların, GPS kullanarak amaçlanan bir hedefin genel alanı içine ulaşmasını sağlayabilirsiniz. Kullanıcı geldiğinde, uygulamanız hedefin fotoğrafını gösterir. Kullanıcı alana bakar, hedefi bulur ve bağlayıcıyı tarar.
+Hedef senaryoda, fotoğraflar yardımcı olabilir. Kullanıcılara aygıtlarında hedeflenen hedefin bir fotoğrafını gösterirseniz, gerçek dünyada ne leri tizlediklerini hızlı bir şekilde belirleyebilirler. Örneğin, kullanıcılarınızın GPS kullanarak hedeflenen hedefin genel alanına ulaşmasına yardımcı olabilirsiniz. Kullanıcı geldiğinde, uygulamanız hedefin bir fotoğrafını gösterir. Kullanıcı uzayın etrafına bakar, hedefi bulur ve çapayı tarar.
 
-![Kullanıcının mobil cihazında hedefin fotoğrafını gösteren bir bağlayıcının çizimi](./media/start-here-edit.png)
+![Kullanıcının mobil cihazında hedefin fotoğrafını gösteren çapa çizimi](./media/start-here-edit.png)
 
-### <a name="rooms"></a>Odaları
+### <a name="rooms"></a>Oda -larında
 
-Oda senaryosunda, kullanıcılar burada bir yer işareti olduğunu bilmeden bir boşluk girer. Kullanıcılar, alanı cihazlarıyla tarar ve bağlayıcıyı hızlı bir şekilde bulur.
+Oda senaryosunda, kullanıcılar sadece burada bir çapa olduğunu bilerek bir alana girerler. Kullanıcılar cihazlarıyla alanı tarayıp hızlı bir şekilde çapayı bulurlar.
 
-Bu deneyim genellikle çeşitli görüntüleme perspektifleriyle anlatıldığı gibi iyi şekilde yapılan bağlantılar oluşturmanızı gerektirir. Bağlayıcıyı oluştururken birçok perspektiften odayı taradıysanız, kullanıcılar bulmayı denediğinde neredeyse her yerde tarama yapabilir.
+Bu deneyim genellikle çeşitli görüntüleme perspektiflerinde anlatıldığı gibi iyi seçilmiş çapalar oluşturmanızı gerektirir. Çapayı oluşturduğunuzda odayı birçok açıdan taradıysanız, kullanıcılar bağlantı noktasını bulmaya çalıştıklarında neredeyse her yeri tayabilirler.
 
-![Kullanıcının bir bağlantı bulmak için bir odayı nasıl tarayamayacağını gösteren resim](./media/scan-room.png)
+![Bir kullanıcının çapa bulmak için odayı nasıl tayabileceğinin çizimi](./media/scan-room.png)
 
-Temelde, daha sonra, bağlayıcıyı daha sonra tarayabilmesi ve bulabilmesi için bağlayıcıyı oluştururken alanı taramanın daha fazla zaman harcamanız gerekir. Deneyiminizi oluştururken bu önemli ticareti göz önünde bulundurmanız gerekir.
+Esasen, daha sonraki kullanıcıların çapayı hızlı bir şekilde tarayıp bulabilmeleri için çapayı oluşturduğunuzda alanı taramak için daha fazla zaman harcarsınız. Deneyiminizi oluştururken, bu önemli değiş tokuşu göz önünde bulundurmanız gerekir.
 
-Daha önce tartışdığımız karma gerçeklik boyama uygulamasının örneği Oda senaryosu olarak iyi çalışmaz. Burada, bağlayıcıyı yerleştiren Kullanıcı başka bir deneyime hızla katılabilmenizi istiyor. Kullanıcılar, odanın iyi taranmasına kadar deneyimi başlatmak istemelidir. Tüm kullanıcılar, bağlayıcıları bulmak için cihazlarını tam olarak nereye işaret ettiğinden haberdar olduğu için, bu örnek bir hedef senaryo olarak daha iyi çalışmaktadır.
+Daha önce tartıştığımız karma gerçeklik boyama uygulaması örneği bir oda senaryosu kadar iyi çalışmıyor. Burada, çapayı yerleştiren kullanıcı başkalarının deneyime hızlı bir şekilde katılmasını ister. Kullanıcılar, oda iyi taranana kadar deneyimi başlatmak için beklemek istemezler. Tüm kullanıcılar çapaları bulmak için cihazlarını tam olarak nereye yönlendireceklerini bildiğinden, bu örnek hedef senaryo olarak daha iyi çalışır.
 
-## <a name="anchor-location"></a>Yer işareti konumu
+## <a name="anchor-location"></a>Bağlantı konumu
 
-Görsel izleme sistemleri, bir ortamdaki görsel özellikleri kullanır. Taramanın içerdiği daha fazla görsel özelliği, bir tutturucu bulma olasılığının daha yüksektir.
+Görsel izleme sistemleri bir ortamdaki görsel özelliklere dayanır. Bir tama ne kadar çok görsel özellik içeriyorsa, çapa bulma olasılığı da o kadar yüksek olabilir.
 
-Ortamda yararlı bir tarama teşvik eden bir UX oluşturmak için bu bölümdeki genel yönergeleri izleyin.
+Ortamın yararlı bir tadına uymayı teşvik eden bir UX oluşturmak için bu bölümdeki genel yönergeleri izleyin.
 
-İlk olarak, Kullanıcı birkaç saniye içinde bir tutturucu bulamazsa, uygulama, kullanıcıların cihazı daha fazla perspektifle yakalamaya taşımasını teşvik etmelidir. Bu uygulama, kullanıcıların, bağlayıcıyı daha fazla perspektifden tarayabilmesi için ortama taşımasını de teşvik edebilir. Cihazın gördüğü daha fazla özellik perspektifi, daha iyidir.
+İlk olarak, kullanıcı birkaç saniye içinde bir bağlantı noktası bulamazsa, uygulama kullanıcıları daha fazla perspektif yakalamak için cihazı hareket ettirmeye teşvik etmelidir. Uygulama ayrıca, kullanıcıların daha fazla perspektiften çapa yı taramaya kendilerini çevrede taşımalarını da teşvik edebilir. Aygıtın gördüğü ne kadar çok özellik perspektifi, o kadar iyi.
 
-Hedef senaryolar için kullanıcıdan farklı perspektiflerden görüntülemek üzere hedefin etrafında hareket etmesini isteyin. Diğer bir deyişle, bağlayıcı bulunana kadar kullanıcıdan hedefi yeni perspektiflerden yakalamasını isteyin.
+Hedef senaryolar için, kullanıcıdan hedefin etrafında hareket etmesini isteyin ve farklı açılardan görüntüleyin. Başka bir deyişle, bağlantı bulunana kadar kullanıcıdan hedefi yeni perspektiflerden yakalamasını isteyin.
 
-Oda senaryolarında, kullanıcıdan odayı yavaş taramasını isteyin. Örneğin, kullanıcıdan 180 derece veya hatta 360 derece yakalamayı aramasını isteyin. Ya da kullanıcıdan yeni bir perspektiften odayı görüntülemesini isteyin.
+Oda senaryoları için, kullanıcıdan odayı yavaşça tetmesini isteyin. Örneğin, kullanıcıdan odanın 180 derece, hatta 360 derecesini yakalamak için dönmesini isteyin. Veya kullanıcıdan odayı yeni bir perspektiften görüntülemesini isteyin.
 
-En anlamlı Yöntem, odanın üzerinde tarama yapmak için kullanılır. Odadaki bir tarama, ortamın daha fazla görsel özelliklerini, örneğin yakın bir duvar taramasından daha fazla yakalar. Yakın bir duvar taraması, ortamın birçok yararlı görsel özelliğini yakalayamaz.
+En anlamlı yöntem oda genelinde taranan etmektir. Oda daki bir taramaya, örneğin yakındaki bir duvarın tadına göre çevrenin daha fazla görsel özelliği yakalar. Yakındaki bir duvarın tkişikinde ortam alabildiği kadar kullanışlı görsel özellik yakalamaz.
 
-Bir tutturucu aranırken cihazı arka tarafa dışarıdan yana taşımak yararlı değildir. Bu yalnızca aynı perspektiften aynı noktaları yakalar.
+Çapa ararken aygıtı tekrar tekrar bir taraftan diğer yana taşımak yararlı değildir. Bu sadece aynı perspektiften aynı noktaları yakalar.
 
 ## <a name="experience-tests"></a>Deneyim testleri
 
-Bu makalede, genel yönergeleri tartıştık. Uzamsal bağlayıcılarla, gerçek dünya ile etkileşime geçen uygulamalar yazıyoruz. Bu nedenle, gerçek ortamlarda uygulamanızın bağlantı senaryolarını test etmek için zaman ayırabilmeniz gerekir. Bu, özellikle kullanıcılarınızın uygulamayı kullanmasını istediğiniz yeri temsil eden ortamlar için geçerlidir.
+Bu makalede, genel yönergeleri tartıştık. Uzamsal Çapalar ile gerçek dünyayla etkileşim edebilen uygulamalar yazabilirsiniz. Bu nedenle, uygulamanızın bağlantı senaryolarını gerçek ortamlarda sınamak için zaman ayırmanız gerekir. Bu, özellikle kullanıcılarınızın uygulamayı kullanmasını beklediğiniz ortamlar için geçerlidir.

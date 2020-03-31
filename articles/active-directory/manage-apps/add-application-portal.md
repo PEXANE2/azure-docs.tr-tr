@@ -1,5 +1,5 @@
 ---
-title: Hızlı başlangıç-Azure Active Directory kiracınıza uygulama ekleme
+title: Quickstart - Azure Etkin Dizin kiracınıza uygulama ekleme
 description: Bu hızlı başlangıçta Azure portal kullanılarak Azure Active Directory (Azure AD) kiracınıza bir galeri uygulaması eklenmektedir.
 services: active-directory
 author: msmimart
@@ -12,10 +12,10 @@ ms.date: 10/29/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 650a4f643f170fc64dd0e0643d645a7dcbffdfbc
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79240495"
 ---
 # <a name="quickstart-add-an-application-to-your-azure-active-directory-tenant"></a>Hızlı başlangıç: Azure Active Directory kiracınıza uygulama ekleme
@@ -24,7 +24,7 @@ Azure Active Directory (Azure AD), önceden tümleştirilmiş binlerce uygulaman
 
 Bir uygulamayı Azure AD kiracınıza ekledikten sonra aşağıdaki işlemleri gerçekleştirebilirsiniz:
 
-- Koşullu erişim ilkesiyle uygulamaya yönelik Kullanıcı erişimini yönetin.
+- Koşullu Erişim ilkesiyle uygulamaya kullanıcı erişimini yönetin.
 - Kullanıcıları Azure AD hesapları ile uygulamada çoklu oturum açma özelliğini kullanacak şekilde yapılandırma.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
@@ -42,58 +42,58 @@ Bu öğreticideki adımları test etmek için üretim ortamı harici bir ortam k
 
 Azure AD kiracınıza galeri uygulaması eklemek için:
 
-1. [Azure Portal](https://portal.azure.com)sol gezinti panelinde **Azure Active Directory**' i seçin.
+1. Sol daki gezinti panelinde [bulunan Azure portalında](https://portal.azure.com) **Azure Etkin Dizin'i**seçin.
 
-2. **Azure Active Directory** bölmesinde **Kurumsal uygulamalar**' ı seçin. **Tüm uygulamalar** bölmesi açılır ve Azure AD kiracınızdaki uygulamaların rastgele bir örneğini görüntüler.
+2. Azure **Etkin Dizin** bölmesinde **Kurumsal uygulamaları**seçin. **Tüm uygulamalar** bölmesi açılır ve Azure AD kiracınızda uygulamaların rasgele bir örneğini görüntüler.
 
-3. Kiracınıza bir galeri uygulaması eklemek için **Yeni uygulama**' yı seçin. 
+3. Kiracınıza bir galeri uygulaması eklemek için **Yeni uygulamayı**seçin. 
 
-    ![Kiracınıza Galeri uygulaması eklemek için yeni uygulama ' yı seçin](media/add-application-portal/new-application.png)
+    ![Kiracınıza galeri uygulaması eklemek için Yeni uygulama seçin](media/add-application-portal/new-application.png)
 
- 4. Yeni Galeri önizleme deneyimine geç: **Uygulama Ekle sayfasının**en üstündeki başlıkta, **yeni ve geliştirilmiş uygulama galerisini denemek için buraya tıklayın**bağlantısını seçin.
+ 4. Yeni galeri önizleme deneyimine geçin: Uygulama ekle **sayfasının**üst kısmındaki başlıkta, **yeni ve geliştirilmiş uygulama galerisini denemek için buraya tıklayın**yazan bağlantıyı seçin.
 
-5. **Azure AD galerisine gözatıp (Önizleme)** bölmesi açılır ve bulut platformları, şirket içi uygulamalar ve öne çıkan uygulamalar için kutucukları görüntüler. **Öne çıkan uygulamalar** bölümünde listelenen uygulamaların, federe çoklu oturum açma (SSO) ve sağlamayı destekleyip desteklemediğini gösteren simgeler olduğunu unutmayın.
+5. **Azure REKLAM Galerisi'ne Gözat (Önizleme)** bölmesi bulut platformları, şirket içi uygulamalar ve öne çıkan uygulamalar için kutucukları açar ve görüntüler. **Öne Çıkan uygulamalar** bölümünde listelenen uygulamaların federe tek oturum açma (SSO) ve sağlamayı destekleyip desteklemediklerini belirten simgelere sahip olduğunu unutmayın.
 
-    ![Bir uygulamayı ada veya kategoriye göre ara](media/add-application-portal/browse-gallery.png)
+    ![Bir uygulamayı ada veya kategoriye göre arama](media/add-application-portal/browse-gallery.png)
 
-6. Eklemek istediğiniz uygulamanın galerisine gözatıp, arama kutusuna adını girerek uygulamayı arayabilirsiniz. Sonra sonuçlardan uygulamayı seçin. Formunda, kuruluşunuzun gereksinimlerini karşılayacak şekilde uygulamanın adını düzenleyebilirsiniz. Bu örnekte, adı **GitHub-test**olarak değiştirdik.
+6. Eklemek istediğiniz uygulama için galeriye göz atabilir veya arama kutusuna adını girerek uygulamayı arayabilirsiniz. Ardından sonuçlardan uygulamayı seçin. Formda, kuruluşunuzun gereksinimleriyle eşleşecek şekilde uygulamanın adını edinebilirsiniz. Bu örnekte, adı **GitHub-test**olarak değiştirdik.
 
-    ![Galeriden bir uygulamanın nasıl ekleneceğini gösterir](media/add-application-portal/create-application.png)
+    ![Galeriden uygulama eklemenin nasıl yapılacağını gösterir](media/add-application-portal/create-application.png)
 
-7. **Oluştur**’u seçin. Uygulamayı kuruluşunuza göre yapılandırmak için kullanabileceğiniz seçeneklerin bulunduğu bir başlangıç sayfası açılır.
+7. **Oluştur'u**seçin. Uygulamayı kuruluşunuza göre yapılandırmak için kullanabileceğiniz seçeneklerin bulunduğu bir başlangıç sayfası açılır.
 
-Uygulamanızı eklemeyi tamamladınız. Aşağıdaki bölümlerde uygulamanızın logosunu değiştirme ve diğer özelliklerini düzenleme adımları gösterilmektedir.
+Başvurunuzu eklemeyi bitirdiniz. Aşağıdaki bölümlerde uygulamanızın logosunu değiştirme ve diğer özelliklerini düzenleme adımları gösterilmektedir.
 
 ## <a name="find-your-azure-ad-tenant-application"></a>Azure AD kiracısı uygulamanızı bulma
 
-İşlemi burada bırakmak zorunda kaldığınızı ve uygulamayı yapılandırmaya devam etmek için daha sonra tekrar geldiğinizi düşünelim. Yapmanız gereken ilk şey, uygulamanızı bulmledir.
+İşlemi burada bırakmak zorunda kaldığınızı ve uygulamayı yapılandırmaya devam etmek için daha sonra tekrar geldiğinizi düşünelim. Yapmanız gereken ilk şey, uygulamanızı bulmaktır.
 
-1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory**' i seçin.
-1. **Azure Active Directory** bölmesinde **Kurumsal uygulamalar**' ı seçin.
-1. **Uygulama türü** açılan menüsünde, **tüm uygulamalar**' ı seçin ve ardından **Uygula**' yı seçin. Görüntüleme seçenekleri hakkında daha fazla bilgi edinmek için bkz. [Kiracı uygulamalarını görüntüleme](view-applications-portal.md).
-1. Burada Azure AD kiracınızdaki tüm uygulamaların listesini görebilirsiniz. Bu listedeki uygulamalar rastgele seçilmiştir. Daha fazla uygulama görmek için **daha fazla** bir veya daha fazla kez göster ' i seçin.
-1. Kiracınızda bir uygulamayı hızlı bir şekilde bulmak için, arama kutusuna uygulamanın adını girin ve **Uygula**' yı seçin. Bu örnek, daha önce eklenen GitHub-test uygulamasını bulur.
+1. Sol daki gezinti panelinde **[bulunan Azure portalında](https://portal.azure.com)** **Azure Etkin Dizin'i**seçin.
+1. Azure **Etkin Dizin** bölmesinde **Kurumsal uygulamaları**seçin.
+1. Uygulama **Türü** açılır menüsünden **Tüm Uygulamalar'ı**seçin ve sonra **Uygula'yı**seçin. Görüntüleme seçenekleri hakkında daha fazla bilgi edinmek için bkz. [Kiracı uygulamalarını görüntüleme](view-applications-portal.md).
+1. Burada Azure AD kiracınızdaki tüm uygulamaların listesini görebilirsiniz. Bu listedeki uygulamalar rastgele seçilmiştir. Daha fazla uygulama görmek **için, daha fazla** kez göster'i seçin.
+1. Kiracınızda bir uygulamayı hızla bulmak için, arama kutusuna uygulama adını girin ve **Uygula'yı**seçin. Bu örnek, daha önce eklenen GitHub test uygulamasını bulur.
 
-    ![Arama kutusunu kullanarak bir uygulamanın nasıl bulunacağını gösterir](media/add-application-portal/find-application.png)
+    ![Arama kutusunu kullanarak uygulamanın nasıl bulunup bulunur unu gösterir](media/add-application-portal/find-application.png)
 
 ## <a name="configure-user-sign-in-properties"></a>Kullanıcı oturum açma özelliklerini yapılandırma
 
-Uygulamayı buldığınıza göre, onu açabilir ve uygulama özelliklerini yapılandırabilirsiniz.
+Uygulamayı bulduğunuzda, uygulamayı açabilir ve uygulama özelliklerini yapılandırabilirsiniz.
 
-Uygulama özelliklerini düzenlemek için:
+Uygulama özelliklerini deletmek için:
 
 1. Açmak için uygulamayı seçin.
-2. Özellikler bölmesini düzenlenmek üzere açmak için **Özellikler** ' i seçin.
+2. Düzenleme için özellikler bölmesini açmak için **Özellikler'i** seçin.
 
-    ![Özellikler ekranını ve düzenlenebilir uygulama özelliklerini gösterir](media/add-application-portal/edit-properties.png)
+    ![Özellikler ekranını ve kullanılabilir uygulama özelliklerini gösterir](media/add-application-portal/edit-properties.png)
 
-3. Birkaç dakikanızı ayırarak oturum açma seçeneklerini inceleyin. Seçenekler, uygulamaya atanan veya atanmamış kullanıcıların uygulamada oturum açıp atamalayamadığını belirleyebilir. Ayrıca, seçenekler de kullanıcının erişim panelinde uygulamayı görüp görmediğine de sahiptir.
+3. Birkaç dakikanızı ayırarak oturum açma seçeneklerini inceleyin. Seçenekler, uygulamaya atanan veya atanamayan kullanıcıların uygulamada nasıl oturum açabileceğini belirler. Ayrıca seçenekler, kullanıcının erişimi panelde uygulamayı görüp göremeyebileceğini de belirler.
 
-    - **Kullanıcıların oturum açması Için etkinleştirildi mi?** uygulamaya atanan kullanıcıların oturum açıp açamayacağını belirler.
-    - **Kullanıcı Ataması gerekli mi?** uygulamaya atanmamış kullanıcıların oturum açıp açamayacağını belirler.
-    - **Kullanıcılara görünebilir mi?** bir uygulamaya atanan kullanıcıların onu erişim paneli ve O365 başlatıcısı 'nda göremeyeceğini belirler.
+    - **Kullanıcıların oturum açmaları için etkinleştirildi mi?** uygulamaya atanan kullanıcıların oturum açıp açamayacağını belirler.
+    - **Kullanıcı ataması gerekli mi?** uygulamaya atanmamış kullanıcıların oturum açıp açamayacağını belirler.
+    - **Kullanıcılar tarafından görülebilir mi?** bir uygulamaya atanan kullanıcıların uygulamanın erişim panelinde ve O365 başlatıcısında görüp göremeyeceğini belirler.
 
-4. Gereksinimleriniz için en iyi seçenekleri seçmenize yardımcı olması için aşağıdaki tabloları kullanın.
+4. Gereksinimleriniz için en iyi seçenekleri seçmenize yardımcı olmak için aşağıdaki tabloları kullanın.
 
    - **Atanan** kullanıcılar için davranış:
 
@@ -113,7 +113,7 @@ Uygulama özelliklerini düzenlemek için:
 
        | Uygulama özelliği ayarları | | | Atanmayan kullanıcı deneyimi | |
        |---|---|---|---|---|
-       | Kullanıcıların oturum açması için etkinleştirildi mi? | Kullanıcı ataması gerekli mi? | Kullanıcılara görünür mü? | Atanmayan kullanıcılar oturum açabilir mi? | Atanmayan kullanıcılar uygulamayı görebilir mi?* |
+       | Kullanıcıların oturum açabilmesi için etkinleştirildi mi? | Kullanıcı ataması gerekli mi? | Kullanıcılara görünür mü? | Atanmayan kullanıcılar oturum açabilir mi? | Atanmayan kullanıcılar uygulamayı görebilir mi?* |
        | evet | evet | evet | hayır  | hayır   |
        | evet | evet | hayır  | hayır  | hayır   |
        | evet | hayır  | evet | evet | hayır   |
@@ -130,20 +130,20 @@ Uygulama özelliklerini düzenlemek için:
 Özel logo kullanmak için:
 
 1. 215x215 piksel boyutunda bir logo oluşturun ve PNG biçiminde kaydedin.
-1. Uygulamanızı zaten bulduğundan, uygulamayı seçin.
-1. Sol bölmede **Özellikler**' i seçin.
+1. Başvurunuzu zaten bulduğunuza göre uygulamayı seçin.
+1. Sol bölmede **Özellikler'i**seçin.
 1. Logoyu yükleyin.
-1. İşiniz bittiğinde **Kaydet**' i seçin. 
+1. Bitirdikten sonra **Kaydet'i**seçin. 
 
-    ![Uygulamanın Özellikler sayfasından logonun nasıl değiştirileceğini gösterir](media/add-application-portal/change-logo.png)
+    ![Uygulamanın Özellikler sayfasından logoyu nasıl değiştireceğinigösterir](media/add-application-portal/change-logo.png)
 
    > [!NOTE]
-   > Bu **Özellikler** bölmesinde görünen küçük resim, hemen güncelleştirmez. Güncelleştirilmiş simgesini görmek için özellikleri kapatıp yeniden açabilirsiniz.
+   > Bu **Özellikler** bölmesindeki küçük resim hemen güncellenmez. Güncelleştirilmiş simgeyi görmek için özellikleri kapatıp yeniden açabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Artık uygulamayı Azure AD kuruluşunuza eklemişseniz, kullanmak istediğiniz [tek bir oturum açma yöntemi seçin](what-is-single-sign-on.md#choosing-a-single-sign-on-method) ve aşağıdaki ilgili makaleye başvurun:
+Uygulamayı Azure REKLAM kuruluşunuza eklediğinize göre, kullanmak istediğiniz [tek bir oturum açma yöntemini seçin](what-is-single-sign-on.md#choosing-a-single-sign-on-method) ve aşağıdaki uygun makaleye bakın:
 
 - [SAML tabanlı çoklu oturum açmayı yapılandırma](configure-single-sign-on-non-gallery-applications.md)
-- [Parola çoklu oturum açmayı yapılandırma](configure-password-single-sign-on-non-gallery-applications.md)
-- [Bağlantılı oturum açmayı Yapılandır](configure-linked-sign-on.md)
+- [Parolayı tek oturum açma yapılandırma](configure-password-single-sign-on-non-gallery-applications.md)
+- [Bağlantılı oturum açmayı yapılandırma](configure-linked-sign-on.md)

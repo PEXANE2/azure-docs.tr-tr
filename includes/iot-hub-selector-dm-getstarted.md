@@ -5,10 +5,10 @@ ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
 ms.openlocfilehash: 239ea2eb4d5bc8d326d5ca503a18b149252dc1be
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/16/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69558780"
 ---
 > [!div class="op_single_selector"]
@@ -17,19 +17,19 @@ ms.locfileid: "69558780"
 > * [Java](../articles/iot-hub/iot-hub-java-java-device-management-getstarted.md)
 > * [Python](../articles/iot-hub/iot-hub-python-python-device-management-get-started.md)
 
-Arka uç uygulamalar cihaz [ikizi][lnk-devtwin] ve [doğrudan yöntemler][lnk-c2dmethod]gibi Azure IoT Hub temel öğelerini kullanarak cihazlarda cihaz yönetimi eylemlerini uzaktan başlatabilir ve izleyebilir. Bu öğreticide, bir arka uç uygulamasının ve bir cihaz uygulamasının IoT Hub kullanarak uzak cihaz yeniden başlatma işlemini başlatmak ve izlemek için birlikte nasıl çalıştığı gösterilmektedir.
+Arka uç uygulamaları, aygıtlar üzerindeki aygıt yönetimi eylemlerini uzaktan başlatmak ve izlemek için [aygıt ikizi][lnk-devtwin] ve [doğrudan yöntemler][lnk-c2dmethod]gibi Azure IoT Hub ilkellerini kullanabilir. Bu öğretici, bir arka uç uygulaması ve bir aygıt uygulamasının IoT Hub'ı kullanarak uzak bir aygıtıyeniden başlatmayı başlatmak ve izlemek için birlikte nasıl çalışabileceğini gösterir.
 
 [!INCLUDE [iot-hub-basic](iot-hub-basic-whole.md)]
 
-Bulut içindeki bir arka uç uygulamasından cihaz yönetim eylemleri (yeniden başlatma, fabrika sıfırlaması ve bellenim güncelleştirmesi gibi) başlatmak için doğrudan bir yöntem kullanın. Cihazın sorumludur:
+Buluttaki bir arka uç uygulamasından aygıt yönetimi eylemlerini (yeniden başlatma, fabrika sıfırlama ve firmware güncelleştirmesi gibi) başlatmak için doğrudan bir yöntem kullanın. Cihaz aşağıdakilerden sorumludur:
 
-* IoT Hub gönderilen Yöntem isteği işleniyor.
+* IoT Hub'dan gönderilen yöntem isteğini işleme.
 
-* Cihazda cihaza özgü ilgili eylem başlatılıyor.
+* Aygıtta ilgili aygıta özgü eylemi başlatma.
 
-* *Bildirilen özellikler* aracılığıyla IoT Hub durum güncelleştirmeleri sağlama.
+* Bildirilen *özellikler* aracılığıyla IoT Hub'a durum güncelleştirmeleri sağlar.
 
-Cihaz yönetimi eylemlerinizin ilerlemesini raporlamak üzere cihaz ikizi sorgularını çalıştırmak için bulutta bir arka uç uygulaması kullanabilirsiniz.
+Aygıt yönetimi eylemlerinizin ilerlemesini bildirmek için aygıt ikiz sorgularını çalıştırmak için bulutta bir arka uç uygulaması kullanabilirsiniz.
 
 [lnk-devtwin]: ../articles/iot-hub/iot-hub-devguide-device-twins.md
 [lnk-c2dmethod]: ../articles/iot-hub/iot-hub-devguide-direct-methods.md

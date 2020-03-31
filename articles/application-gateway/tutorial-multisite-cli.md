@@ -1,39 +1,39 @@
 ---
-title: CLı kullanarak birden çok site barındırma-Azure Application Gateway
-description: Azure CLı kullanarak birden çok siteyi barındıran bir uygulama ağ geçidi oluşturmayı öğrenin.
+title: CLI kullanarak birden fazla site barındırma - Azure Uygulama Ağ Geçidi
+description: Azure CLI'yi kullanarak birden çok siteyi barındıran bir uygulama ağ geçidini nasıl oluşturabilirsiniz öğrenin.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 5edc2e5228146aee913027a83e495d94c003e237
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: 0e58d9ecfbd0731fc9bf91664763e73d8c56e64a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74047344"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80294760"
 ---
-# <a name="create-an-application-gateway-with-multiple-site-hosting-using-the-azure-cli"></a>Azure CLı kullanarak birden çok site barındırma ile uygulama ağ geçidi oluşturma
+# <a name="create-an-application-gateway-with-multiple-site-hosting-using-the-azure-cli"></a>Azure CLI'yi kullanarak birden çok site barındırma içeren bir uygulama ağ geçidi oluşturma
 
-Bir [uygulama ağ geçidi](application-gateway-introduction.md)oluştururken [birden çok Web sitesinin barındırmayı](application-gateway-multi-site-overview.md) yapılandırmak için Azure CLI 'yı kullanabilirsiniz. Bu öğreticide, sanal makine ölçek kümelerini kullanarak arka uç havuzları oluşturacaksınız. Ardından sahip olduğunuz dinleyicileri ve kuralları, web trafiğinin havuzlardaki uygun sunuculara ulaşması için yapılandırırsınız. Bu öğreticide birden çok etki alanına sahip olduğunuz varsayılır ve *www.contoso.com* ve *www.fabrikam.com* örnekleri kullanılır.
+Bir [uygulama ağ geçidi](application-gateway-introduction.md)oluştururken birden çok web sitesi [barındırma](application-gateway-multi-site-overview.md) yapılandırmak için Azure CLI kullanabilirsiniz. Bu öğreticide, sanal makineler ölçek kümelerini kullanarak arka uç havuzları oluşturursunuz. Ardından sahip olduğunuz dinleyicileri ve kuralları, web trafiğinin havuzlardaki uygun sunuculara ulaşması için yapılandırırsınız. Bu öğretici, birden çok etki alanına sahip `www.contoso.com` `www.fabrikam.com`olduğunuzu varsayar ve örnekler kullanır ve.
 
 Bu makalede şunları öğreneceksiniz:
 
 > [!div class="checklist"]
 > * Ağı ayarlama
 > * Uygulama ağ geçidi oluşturma
-> * Dinleyicileri ve yönlendirme kurallarını oluşturma
+> * Dinleyiciler ve yönlendirme kuralları oluşturma
 > * Arka uç havuzları ile sanal makine ölçek kümeleri oluşturma
 > * Etki alanınızda bir CNAME kaydı oluşturma
 
 ![Çok siteli yönlendirme örneği](./media/tutorial-multisite-cli/scenario.png)
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-CLI'yi yerel olarak yükleyip kullanmayı seçerseniz bu hızlı başlangıç için Azure CLI 2.0.4 veya sonraki bir sürümünü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme](/cli/azure/install-azure-cli).
+CLI'yi yerel olarak yükleyip kullanmayı seçerseniz bu hızlı başlangıç için Azure CLI 2.0.4 veya sonraki bir sürümünü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](/cli/azure/install-azure-cli).
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
@@ -47,7 +47,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>Ağ kaynakları oluşturma 
 
-*az network vnet create* komutunu kullanarak *myVNet* adlı sanal ağı ve [myAGSubnet](/cli/azure/network/vnet) adlı alt ağı oluşturun. Daha sonra *az network vnet subnet create* kullanan arka uç sunucularının gerek duyduğu [myBackendSubnet](/cli/azure/network/vnet/subnet) adlı alt ağı ekleyebilirsiniz. *az network public-ip create* komutunu kullanarak [myAGPublicIPAddress](/cli/azure/network/public-ip) adlı genel IP adresini oluşturun.
+[az network vnet create](/cli/azure/network/vnet) komutunu kullanarak *myVNet* adlı sanal ağı ve *myAGSubnet* adlı alt ağı oluşturun. Daha sonra [az network vnet subnet create](/cli/azure/network/vnet/subnet) kullanan arka uç sunucularının gerek duyduğu *myBackendSubnet* adlı alt ağı ekleyebilirsiniz. [az network public-ip create](/cli/azure/network/public-ip) komutunu kullanarak *myAGPublicIPAddress* adlı genel IP adresini oluşturun.
 
 ```azurecli-interactive
 az network vnet create \
@@ -69,7 +69,7 @@ az network public-ip create \
 
 ## <a name="create-the-application-gateway"></a>Uygulama ağ geçidi oluşturma
 
-[myAppGateway](/cli/azure/network/application-gateway) adlı uygulama ağ geçidini oluşturmak için *az network application-gateway create* komutunu kullanabilirsiniz. Azure CLI kullanarak bir uygulama ağ geçidi oluşturduğunuzda, kapasite, sku ve HTTP ayarları gibi yapılandırma bilgilerini belirtirsiniz. Uygulama ağ geçidi, *myAGSubnet*’e ve daha önce oluşturduğunuz *myAGPublicIPAddress*’e atanır. 
+*myAppGateway* adlı uygulama ağ geçidini oluşturmak için [az network application-gateway create](/cli/azure/network/application-gateway) komutunu kullanabilirsiniz. Azure CLI kullanarak bir uygulama ağ geçidi oluşturduğunuzda, kapasite, sku ve HTTP ayarları gibi yapılandırma bilgilerini belirtirsiniz. Uygulama ağ geçidi, *myAGSubnet*’e ve daha önce oluşturduğunuz *myAGPublicIPAddress*’e atanır. 
 
 ```azurecli-interactive
 az network application-gateway create \
@@ -97,7 +97,7 @@ Uygulama ağ geçidinin oluşturulması birkaç dakika sürebilir. Uygulama ağ 
 
 ### <a name="add-the-backend-pools"></a>Arka uç havuzlarını ekleme
 
-[Az Network Application-Gateway Address-Pool Create](/cli/azure/network/application-gateway)kullanılarak arka uç sunucularını içermesi Için gereken *Contosopool* ve *fabrikamPool* adlı arka uç havuzlarını ekleyin.
+[Az network application-gateway adres havuzu oluşturmak kullanarak](/cli/azure/network/application-gateway)arka uç sunucuları içermek için gerekli olan *contosoPool* ve *fabrikamPool* adlı arka uç havuzları ekleyin.
 
 ```azurecli-interactive
 az network application-gateway address-pool create \
@@ -112,9 +112,9 @@ az network application-gateway address-pool create \
 
 ### <a name="add-listeners"></a>Dinleyiciler ekleme
 
-Uygulama ağ geçidinin trafiği arka uç havuzuna uygun şekilde yönlendirmesini sağlamak için bir dinleyici gereklidir. Bu öğreticide iki etki alanınız için iki dinleyici oluşturacaksınız. Bu örnekte, dinleyiciler *www.contoso.com* ve *www.fabrikam.com* etki alanları için oluşturulur. 
+Uygulama ağ geçidinin trafiği arka uç havuzuna uygun şekilde yönlendirmesini sağlamak içn bir dinleyici gereklidir. Bu öğreticide iki etki alanınız için iki dinleyici oluşturacaksınız. Bu örnekte, dinleyiciler *www.contoso.com* ve *www.fabrikam.com* etki alanları için oluşturulur. 
 
-[Az Network Application-Gateway http-Listener Create](/cli/azure/network/application-gateway)kullanılarak trafiği yönlendirmek Için gereken *Contosolistener* ve *fabrikamListener* adlı dinleyicileri ekleyin.
+[Az ağ uygulama-ağ geçidi http-listener oluşturmak](/cli/azure/network/application-gateway)kullanarak trafik yönlendirmek için gerekli olan *contosoListener* ve *fabrikamListener* adlı dinleyici ekleyin.
 
 ```azurecli-interactive
 az network application-gateway http-listener create \
@@ -135,7 +135,7 @@ az network application-gateway http-listener create \
 
 ### <a name="add-routing-rules"></a>Yönlendirme kuralları ekleme
 
-Kurallar oluşturuldukları sırada işlenir ve trafik, uygulama ağ geçidine gönderilen URL ile eşleşen ilk kural kullanılarak yönlendirilir. Örneğin, aynı bağlantı noktasında temel bir dinleyici kullanan bir kuralınız ve çok siteli dinleyici kullanan bir kuralınız varsa çok siteli kuralın beklendiği gibi çalışması için çok siteli dinleyicinin kuralı temel dinleyici kuralından önce listelenmelidir. 
+Kurallar oluşturuldukları sırayla işlenir ve trafik, uygulama ağ geçidine gönderilen URL ile eşleşen ilk kural kullanılarak yönlendirilir. Örneğin, aynı bağlantı noktasında temel bir dinleyici kullanan bir kuralınız ve çok siteli dinleyici kullanan bir kuralınız varsa çok siteli kuralın beklendiği gibi çalışması için çok siteli dinleyicinin kuralı temel dinleyici kuralından önce listelenmelidir. 
 
 Bu örnekte, iki yeni kural oluşturursunuz ve uygulama ağ geçidini oluştururken oluşturduğunuz varsayılan kuralı silersiniz. Kuralı [az network application-gateway rule create](/cli/azure/network/application-gateway) komutunu kullanarak ekleyebilirsiniz.
 
@@ -237,7 +237,7 @@ Bu öğreticide, şunların nasıl yapıldığını öğrendiniz:
 > [!div class="checklist"]
 > * Ağı ayarlama
 > * Uygulama ağ geçidi oluşturma
-> * Dinleyicileri ve yönlendirme kurallarını oluşturma
+> * Dinleyiciler ve yönlendirme kuralları oluşturma
 > * Arka uç havuzları ile sanal makine ölçek kümeleri oluşturma
 > * Etki alanınızda bir CNAME kaydı oluşturma
 

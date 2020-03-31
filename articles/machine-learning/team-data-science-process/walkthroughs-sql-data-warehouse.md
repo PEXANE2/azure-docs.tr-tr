@@ -1,6 +1,6 @@
 ---
-title: SQL veri ambarı ile T-SQL, Python - Analizine Team Data Science Process'i
-description: SQL veri ambarı genelindeki Tahmine dayalı analiz gerçekleştirmede size yol gösteren örnekler.
+title: T-SQL, Python ile SQL Veri Ambarı Üzerine Analitik - Takım Veri Bilimi Süreci
+description: Tahmine dayalı analitik yapmak için SQL Veri Ambarı'nın kullanımından geçen örnekler.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -11,27 +11,27 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 4c8be715391f71e281ca41cc68428a2d29d78783
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: f657f02a39a023f6cb620895549105e7fd1eb233
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75864137"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80128160"
 ---
-# <a name="sql-data-warehouse-data-science-walkthroughs-using-t-sql-and-python-on-azure"></a>Azure üzerinde T-SQL ve Python kullanarak SQL veri ambarı veri bilimi kılavuzları
+# <a name="sql-data-warehouse-data-science-walkthroughs-using-t-sql-and-python-on-azure"></a>Azure'da T-SQL ve Python'u kullanarak SQL Veri Ambarı veri bilimi gözden geçirme
 
-Bu izlenecek yollar, Tahmine dayalı analiz yapmak için SQL veri ambarı'nın kullanın. Bunlar, Team Data Science Process içinde verilen adımları izleyin. Team Data Science Process genel bakış için bkz: [Data Science Process](overview.md). SQL veri ambarı için bir giriş için bkz [Azure SQL veri ambarı nedir?](../../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)
+Bu gözden geçirmeler, tahmine dayalı analizler yapmak için SQL Veri Ambarı'nı kullanır. Ekip Veri Bilimi Sürecinde belirtilen adımları izlerler. Ekip Veri Bilimi Sürecine genel bir bakış için [bkz.](overview.md) SQL Veri Ambarı'na giriş için Azure [SQL Veri Ambarı nedir'e bakın?](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)
 
-Team Data Science Process yürütme ek veri bilimi kılavuzları tarafından gruplanır **platform** kullandıkları. Bkz: [Team Data Science Process yürütme izlenecek yollar](walkthroughs.md) Bu örneklerde bir döküm için.
+Ekip Veri Bilimi İşlemi'ni yürüten ek veri bilimi gözden geçirmeleri, kullandıkları **platforma** göre gruplandırılır. Bu örneklerin bir öğeleştirme için [Takım Veri Bilimi İşlemi'ni yürüten Walkthroughs'a](walkthroughs.md) bakın.
 
 
-## <a name="predict-taxi-tips-using-t-sql-and-ipython-notebooks-with-sql-data-warehouse"></a>T-SQL Ipython not defterleri ile SQL veri ambarı ile taksi bahşişlerini tahmin etme
+## <a name="predict-taxi-tips-using-t-sql-and-ipython-notebooks-with-sql-data-warehouse"></a>SQL Veri Ambarı ile T-SQL ve IPython dizüstü bilgisayarlarını kullanarak taksi ipuçlarını tahmin etme
 
-[SQL veri ambarı kullan izlenecek yolu](sqldw-walkthrough.md) , SQL veri AMBARı (SQL DW) kullanarak makine öğrenimi sınıflandırması ve gerileme modellerini nasıl oluşturup dağıtacağınızı gösterir.  Veriler herkese açık bir NYC taksi seyahat ve tarifeli havayolu veri kümesi.
+[SQL Veri Ambarı'nı Kullan,](sqldw-walkthrough.md) SQL Veri Ambarı (SQL DW) kullanarak makine öğrenimi sınıflandırması ve regresyon modellerini nasıl oluşturabileceğinizi ve dağıtabileceğinizi gösterir.  Veriler halka açık bir NYC taksi gezisi ve ücret veri setivardır.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Team Data Science Process oluşturan anahtar bileşenleri bir tartışma için bkz [Team Data Science Process genel bakış](overview.md).
+Ekip Veri Bilimi Süreci'ni oluşturan temel bileşenlerin tartışılması [için, Takım Veri Bilimi Süreci'ne genel bakış](overview.md)bölümüne bakın.
 
-Team Data Science Işlem yaşam döngüsü hakkında bir tartışma için bkz. [Team Data Science işlem yaşam döngüsü](lifecycle.md). Bu yaşam döngüsü, başlangıçtan sonuna kadar olan adımları özetler ve bu da projeler genellikle yürütüldüğünde izler. 
+Ekip Veri Bilimi Süreci yaşam döngüsünü tartışmak [için, Bkz. Takım Veri Bilimi Süreci yaşam döngüsü.](lifecycle.md) Bu yaşam döngüsü, projelerin genellikle yürütüldüğünde takip ettiği adımları, başından sonuna kadar özetler. 

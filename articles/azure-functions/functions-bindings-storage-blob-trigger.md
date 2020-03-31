@@ -1,48 +1,48 @@
 ---
-title: Azure Işlevleri için Azure Blob depolama tetikleyicisi
-description: Azure Blob depolama veri değişiklikleri olarak bir Azure Işlevi çalıştırmayı öğrenin.
+title: Azure İşlevler için Azure Blob depolama tetikleyicisi
+description: Azure Blob depolama verileri değiştikçe Azure İşlevi'ni nasıl çalıştırırsak onu öğrenin.
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
-ms.openlocfilehash: 0cdff3ac6eb2faed0c0b6b8796fdb3b6b0411018
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 39e3521339947263161979033406fb39e397373f
+ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79277368"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80348966"
 ---
-# <a name="azure-blob-storage-trigger-for-azure-functions"></a>Azure Işlevleri için Azure Blob depolama tetikleyicisi
+# <a name="azure-blob-storage-trigger-for-azure-functions"></a>Azure İşlevler için Azure Blob depolama tetikleyicisi
 
-BLOB depolama tetikleyicisi, yeni veya güncelleştirilmiş bir blob algılandığında bir işlevi başlatır. Blob içerikleri, [işleve giriş](./functions-bindings-storage-blob-input.md)olarak sağlanır.
+Blob depolama tetikleyicisi, yeni veya güncelleştirilmiş bir blob algılandığında bir işlev başlatır. Blob içeriği [işlevine giriş](./functions-bindings-storage-blob-input.md)olarak sağlanır.
 
-Azure Blob depolama tetikleyicisi, genel amaçlı bir depolama hesabı gerektirir. Yalnızca blob hesabı kullanmak için veya uygulamanızda özelleştirilmiş gereksinimler varsa, bu tetikleyiciyi kullanmaya yönelik alternatifleri gözden geçirin.
+Azure Blob depolama tetikleyicisi genel amaçlı bir depolama hesabı gerektirir. Yalnızca blob hesabı kullanmak için veya uygulamanızın özel gereksinimleri varsa, bu tetikleyiciyi kullanma nın alternatiflerini gözden geçirin.
 
-Kurulum ve yapılandırma ayrıntıları hakkında bilgi için bkz. [genel bakış](./functions-bindings-storage-blob.md).
+Kurulum ve yapılandırma ayrıntıları hakkında daha fazla bilgi için [genel bakışa](./functions-bindings-storage-blob.md)bakın.
 
 ## <a name="alternatives"></a>Alternatifler
 
-### <a name="event-grid-trigger"></a>Event Grid tetikleyicisi
+### <a name="event-grid-trigger"></a>Olay Izgara tetikleyicisi
 
-[Event Grid tetikleyicisinin](functions-bindings-event-grid.md) [BLOB olayları](../storage/blobs/storage-blob-event-overview.md)için yerleşik desteği de vardır. Aşağıdaki senaryolar için BLOB depolama tetikleyicisi yerine Event Grid kullanın:
+[Olay Izgara tetikleyicisi](functions-bindings-event-grid.md) de [blob olaylar](../storage/blobs/storage-blob-event-overview.md)için yerleşik desteği vardır. Aşağıdaki senaryolar için Blob depolama tetikleyicisi yerine Olay Grid'i kullanın:
 
-- **Yalnızca BLOB depolama hesapları**: blob ve çıkış bağlamaları için [yalnızca BLOB depolama hesapları](../storage/common/storage-account-overview.md#types-of-storage-accounts) desteklenir, ancak blob Tetikleyicileri için desteklenmez.
+- **Blob yalnızca depolama hesapları**: Blob giriş ve çıkış bağlamaları için yalnızca [blob depolama hesapları](../storage/common/storage-account-overview.md#types-of-storage-accounts) desteklenir, ancak blob tetikleyicileri için desteklenmez.
 
-- **Yüksek ölçekli**: yüksek ölçek, bunlarda 100.000 ' den fazla BLOB veya saniyede 100 ' den fazla BLOB güncelleştirmesi olan bir depolama hesabı olan kapsayıcılar olarak esnek bir şekilde tanımlanabilir.
+- **Yüksek ölçekli**: Yüksek ölçek, içinde 100.000'den fazla blob olan kapsayıcılar veya saniyede 100'den fazla blob güncelleştirmesi olan depolama hesapları olarak gevşek olarak tanımlanabilir.
 
-- En **aza indirme gecikmesi**: Işlev uygulamanız tüketim planalıyorsa, bir işlev uygulaması boşta kalırsa, yeni Blobları işlerken 10 dakikalık bir gecikme olabilir. Bu gecikmeyi önlemek için, her zaman etkin olan bir App Service planına geçebilirsiniz. BLOB depolama hesabınızla bir [Event Grid tetikleyicisi](functions-bindings-event-grid.md) de kullanabilirsiniz. Bir örnek için [Event Grid öğreticisine](../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2Fazure%2Fazure-functions%2Ftoc.json)bakın.
+- **Gecikme süresini en aza indirmek**: İşlev uygulamanız Tüketim planındaysa, bir işlev uygulaması boşta kalmışsa yeni lekelerin işlenmesinde 10 dakikaya kadar gecikme olabilir. Bu gecikmeyi önlemek için, Her Zaman Etkinken Bir Uygulama Hizmeti planına geçebilirsiniz. Blob depolama hesabınızla bir [Olay Izgara tetikleyicisi](functions-bindings-event-grid.md) de kullanabilirsiniz. Örneğin, [Olay Izgara sıöğreticisini](../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2Fazure%2Fazure-functions%2Ftoc.json)görün.
 
-Event Grid bir örnek [Event Grid öğreticisiyle görüntü yeniden boyutlandırmaya](../event-grid/resize-images-on-storage-blob-upload-event.md) bakın.
+Olay [Izgara örneğinin Olay Izgara öğreticisiyle Görüntüyü yeniden boyutlandırma](../event-grid/resize-images-on-storage-blob-upload-event.md) konusuna bakın.
 
 ### <a name="queue-storage-trigger"></a>Kuyruk depolama tetikleyicisi
 
-Blobları işlemeye yönelik başka bir yaklaşım, oluşturulmakta veya değiştirilmekte olan bloblara karşılık gelen sıra iletilerini yazmak ve sonra işlemeye başlamak için bir [kuyruk depolama tetikleyicisi](./functions-bindings-storage-queue.md) kullanmaktır.
+Blobs işleme için başka bir yaklaşım oluşturulan veya değiştirilen blobs karşılık gelen sıra iletileri yazmak ve daha sonra işleme başlamak için bir [Kuyruk depolama tetikleyici](./functions-bindings-storage-queue.md) kullanmaktır.
 
 ## <a name="example"></a>Örnek
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
-Aşağıdaki örnek, `samples-workitems` kapsayıcısında bir blob eklendiğinde veya güncelleştirilirken bir günlüğü yazan bir [ C# işlevi](functions-dotnet-class-library.md) gösterir.
+Aşağıdaki örnekte, `samples-workitems` kapsayıcıya bir blob eklendiğinde veya güncelleştirildiğinde günlük yazan bir [C# işlevi](functions-dotnet-class-library.md) gösterilmektedir.
 
 ```csharp
 [FunctionName("BlobTriggerCSharp")]        
@@ -52,15 +52,15 @@ public static void Run([BlobTrigger("samples-workitems/{name}")] Stream myBlob, 
 }
 ```
 
-Blob tetikleyici yolunda `{name}` dize `samples-workitems/{name}` tetikleyici Blobun dosya adına erişmek için işlev kodunda kullanabileceğiniz bir [bağlama ifadesi](./functions-bindings-expressions-patterns.md) oluşturur. Daha fazla bilgi için bu makalenin ilerleyen bölümlerindeki [BLOB adı desenleri](#blob-name-patterns) bölümüne bakın.
+Blob `{name}` tetikleme yolundaki `samples-workitems/{name}` dize, tetikleyici blobun dosya adına erişmek için işlev kodunda kullanabileceğiniz bağlayıcı bir [ifade](./functions-bindings-expressions-patterns.md) oluşturur. Daha fazla bilgi için bu makalede [blob ad desenleri](#blob-name-patterns) bakın.
 
-`BlobTrigger` özniteliği hakkında daha fazla bilgi için bkz. [öznitelikler ve ek açıklamalar](#attributes-and-annotations).
+Öznitelik hakkında `BlobTrigger` daha fazla bilgi için [özniteliklere ve ek açıklamalara](#attributes-and-annotations)bakın.
 
-# <a name="c-script"></a>[C#SCRIPT](#tab/csharp-script)
+# <a name="c-script"></a>[C# Komut Dosyası](#tab/csharp-script)
 
-Aşağıdaki örnek, bir *function. JSON* dosyası ve bağlamayı kullanan kod içindeki bir blob tetikleyicisi bağlamasını gösterir. `samples-workitems` [kapsayıcısında](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources)blob eklendiğinde veya güncelleştirilirse, işlevi bir günlük yazar.
+Aşağıdaki örnek, *bir function.json* dosyasında ve bağlamayı kullanan kodda bir blob tetikleyicisi bağlamayı gösterir. Bir blob eklendiğinde veya `samples-workitems` [kapsayıcıya](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources)güncelleştirildiğinde işlev bir günlük yazar.
 
-Bu, *function. JSON* dosyasındaki bağlama verileri:
+*Function.json* dosyasındaki bağlayıcı veriler aşağıda veda eder:
 
 ```json
 {
@@ -77,11 +77,11 @@ Bu, *function. JSON* dosyasındaki bağlama verileri:
 }
 ```
 
-Blob tetikleyici yolunda `{name}` dize `samples-workitems/{name}` tetikleyici Blobun dosya adına erişmek için işlev kodunda kullanabileceğiniz bir [bağlama ifadesi](./functions-bindings-expressions-patterns.md) oluşturur. Daha fazla bilgi için bu makalenin ilerleyen bölümlerindeki [BLOB adı desenleri](#blob-name-patterns) bölümüne bakın.
+Blob `{name}` tetikleme yolundaki `samples-workitems/{name}` dize, tetikleyici blobun dosya adına erişmek için işlev kodunda kullanabileceğiniz bağlayıcı bir [ifade](./functions-bindings-expressions-patterns.md) oluşturur. Daha fazla bilgi için bu makalede [blob ad desenleri](#blob-name-patterns) bakın.
 
-*Function. JSON* dosya özellikleri hakkında daha fazla bilgi için bkz. [yapılandırma](#configuration) bölümüne bu özellikler açıklanmaktadır.
+*function.json* dosya özellikleri hakkında daha fazla bilgi için yapılandırma [bölümüne](#configuration) bakın bu özellikleri açıklar.
 
-Bir `Stream`C# bağlanan betik kodu aşağıda verilmiştir:
+Burada bir `Stream`bağlanır C# komut dosyası kodu:
 
 ```cs
 public static void Run(Stream myBlob, string name, ILogger log)
@@ -90,7 +90,7 @@ public static void Run(Stream myBlob, string name, ILogger log)
 }
 ```
 
-Bir `CloudBlockBlob`C# bağlanan betik kodu aşağıda verilmiştir:
+Burada bir `CloudBlockBlob`bağlanır C# komut dosyası kodu:
 
 ```cs
 #r "Microsoft.WindowsAzure.Storage"
@@ -103,11 +103,11 @@ public static void Run(CloudBlockBlob myBlob, string name, ILogger log)
 }
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
-Aşağıdaki örnek, bir *function. JSON* dosyası ve bağlamayı kullanan [JavaScript kodu](functions-reference-node.md) içindeki bir blob tetikleyicisi bağlamasını gösterir. `samples-workitems` kapsayıcısında blob eklendiğinde veya güncelleştirilirse, işlevi bir günlük yazar.
+Aşağıdaki örnek, bir *function.json* dosyasında ve bağlamayı kullanan [JavaScript kodunda](functions-reference-node.md) bir blob tetikleyicisini gösterir. Bir blob eklendiğinde veya `samples-workitems` kapsayıcıya güncelleştirildiğinde işlev bir günlük yazar.
 
-İşte *function. JSON* dosyası:
+Burada *function.json* dosyası:
 
 ```json
 {
@@ -124,11 +124,11 @@ Aşağıdaki örnek, bir *function. JSON* dosyası ve bağlamayı kullanan [Java
 }
 ```
 
-Blob tetikleyici yolunda `{name}` dize `samples-workitems/{name}` tetikleyici Blobun dosya adına erişmek için işlev kodunda kullanabileceğiniz bir [bağlama ifadesi](./functions-bindings-expressions-patterns.md) oluşturur. Daha fazla bilgi için bu makalenin ilerleyen bölümlerindeki [BLOB adı desenleri](#blob-name-patterns) bölümüne bakın.
+Blob `{name}` tetikleme yolundaki `samples-workitems/{name}` dize, tetikleyici blobun dosya adına erişmek için işlev kodunda kullanabileceğiniz bağlayıcı bir [ifade](./functions-bindings-expressions-patterns.md) oluşturur. Daha fazla bilgi için bu makalede [blob ad desenleri](#blob-name-patterns) bakın.
 
-*Function. JSON* dosya özellikleri hakkında daha fazla bilgi için bkz. [yapılandırma](#configuration) bölümüne bu özellikler açıklanmaktadır.
+*function.json* dosya özellikleri hakkında daha fazla bilgi için yapılandırma [bölümüne](#configuration) bakın bu özellikleri açıklar.
 
-JavaScript kod aşağıdaki gibidir:
+İşte JavaScript kodu:
 
 ```javascript
 module.exports = function(context) {
@@ -139,9 +139,9 @@ module.exports = function(context) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Aşağıdaki örnek, bir *function. JSON* dosyası ve bağlamayı kullanan [Python kodu](functions-reference-python.md) içindeki bir blob tetikleyicisi bağlamasını gösterir. `samples-workitems` [kapsayıcısında](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources)blob eklendiğinde veya güncelleştirilirse, işlevi bir günlük yazar.
+Aşağıdaki örnek, *bir function.json* dosyasında bir blob tetikleyici bağlama ve bağlama kullanan [Python kodu](functions-reference-python.md) gösterir. Bir blob eklendiğinde veya `samples-workitems` [kapsayıcıya](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources)güncelleştirildiğinde işlev bir günlük yazar.
 
-İşte *function. JSON* dosyası:
+Burada *function.json* dosyası:
 
 ```json
 {
@@ -159,11 +159,11 @@ Aşağıdaki örnek, bir *function. JSON* dosyası ve bağlamayı kullanan [Pyth
 }
 ```
 
-Blob tetikleyici yolunda `{name}` dize `samples-workitems/{name}` tetikleyici Blobun dosya adına erişmek için işlev kodunda kullanabileceğiniz bir [bağlama ifadesi](./functions-bindings-expressions-patterns.md) oluşturur. Daha fazla bilgi için bu makalenin ilerleyen bölümlerindeki [BLOB adı desenleri](#blob-name-patterns) bölümüne bakın.
+Blob `{name}` tetikleme yolundaki `samples-workitems/{name}` dize, tetikleyici blobun dosya adına erişmek için işlev kodunda kullanabileceğiniz bağlayıcı bir [ifade](./functions-bindings-expressions-patterns.md) oluşturur. Daha fazla bilgi için bu makalede [blob ad desenleri](#blob-name-patterns) bakın.
 
-*Function. JSON* dosya özellikleri hakkında daha fazla bilgi için bkz. [yapılandırma](#configuration) bölümüne bu özellikler açıklanmaktadır.
+*function.json* dosya özellikleri hakkında daha fazla bilgi için yapılandırma [bölümüne](#configuration) bakın bu özellikleri açıklar.
 
-Python kodu aşağıda verilmiştir:
+Python kodu aşağıdavelvere vermiştir:
 
 ```python
 import logging
@@ -176,7 +176,7 @@ def main(myblob: func.InputStream):
 
 # <a name="java"></a>[Java](#tab/java)
 
-Bu işlev, `myblob` kapsayıcısında bir blob eklendiğinde veya güncelleştirilirken bir günlük yazar.
+Bu işlev, `myblob` kapsayıcıya bir blob eklendiğinde veya güncelleştirildiğinde bir günlük yazar.
 
 ```java
 @FunctionName("blobprocessor")
@@ -196,13 +196,13 @@ public void run(
 
 ## <a name="attributes-and-annotations"></a>Öznitelikler ve ek açıklamalar
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
-[ C# Sınıf kitaplıkları](functions-dotnet-class-library.md)' nda, bir blob tetikleyicisi yapılandırmak için aşağıdaki öznitelikleri kullanın:
+[C# sınıfı kitaplıklarında,](functions-dotnet-class-library.md)bir blob tetikleyicisini yapılandırmak için aşağıdaki öznitelikleri kullanın:
 
 * [BlobTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Blobs/BlobTriggerAttribute.cs)
 
-  Özniteliğin Oluşturucusu, izlenecek kapsayıcıyı ve isteğe bağlı olarak bir [BLOB adı modelini](#blob-name-patterns)gösteren bir yol dizesi alır. Bir örneği aşağıda verilmiştir:
+  Özniteliğin oluşturucusu, izlenecek kapsayıcıyı ve isteğe bağlı olarak bir [blob adı deseni](#blob-name-patterns)gösteren bir yol dizesini alır. Bir örneği aşağıda verilmiştir:
 
   ```csharp
   [FunctionName("ResizeImage")]
@@ -214,7 +214,7 @@ public void run(
   }
   ```
 
-  Aşağıdaki örnekte gösterildiği gibi, kullanılacak depolama hesabını belirtmek için `Connection` özelliğini ayarlayabilirsiniz:
+  `Connection` Aşağıdaki örnekte gösterildiği gibi, özelliği kullanılacak depolama hesabını belirtecek şekilde ayarlayabilirsiniz:
 
    ```csharp
   [FunctionName("ResizeImage")]
@@ -226,11 +226,11 @@ public void run(
   }
    ```
 
-  Tüm örnek için bkz. [tetikleyici örneği](#example).
+  Tam bir örnek için tetikleyici [örneğine](#example)bakın.
 
 * [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs)
 
-  Kullanılacak depolama hesabını belirtmek için başka bir yol sağlar. Oluşturucu, depolama bağlantı dizesi içeren bir uygulama ayarının adını alır. Öznitelik parametre, yöntemi veya sınıf düzeyinde uygulanabilir. Aşağıdaki örnek, sınıf ve yöntem düzeyindeki gösterir:
+  Kullanılacak depolama hesabını belirtmek için başka bir yol sağlar. Oluşturucu, depolama bağlantısı dizesi içeren bir uygulama ayarı adını alır. Öznitelik parametre, yöntem veya sınıf düzeyinde uygulanabilir. Aşağıdaki örnek, sınıf düzeyini ve yöntem düzeyini gösterir:
 
   ```csharp
   [StorageAccount("ClassLevelStorageAppSetting")]
@@ -244,19 +244,19 @@ public void run(
   }
   ```
 
-Kullanılacak depolama hesabı aşağıdaki sırayla belirlenir:
+Kullanılacak depolama hesabı aşağıdaki sırada belirlenir:
 
-* `BlobTrigger` özniteliğin `Connection` özelliği.
-* `StorageAccount` özniteliği `BlobTrigger` özniteliğiyle aynı parametreye uygulandı.
-* İşleve uygulanan `StorageAccount` özniteliği.
-* Sınıfına uygulanan `StorageAccount` özniteliği.
+* `BlobTrigger` Özniteliğin `Connection` özelliği.
+* Öznitelik `StorageAccount` ile aynı parametreye `BlobTrigger` uygulanan öznitelik.
+* İşlev `StorageAccount` için uygulanan öznitelik.
+* Sınıfa `StorageAccount` uygulanan öznitelik.
 * İşlev uygulaması için varsayılan depolama hesabı ("AzureWebJobsStorage" uygulama ayarı).
 
-# <a name="c-script"></a>[C#SCRIPT](#tab/csharp-script)
+# <a name="c-script"></a>[C# Komut Dosyası](#tab/csharp-script)
 
-Öznitelikler komut dosyası tarafından C# desteklenmiyor.
+Öznitelikler C# Script tarafından desteklenmez.
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 Öznitelikler JavaScript tarafından desteklenmez.
 
@@ -266,101 +266,101 @@ Kullanılacak depolama hesabı aşağıdaki sırayla belirlenir:
 
 # <a name="java"></a>[Java](#tab/java)
 
-`@BlobTrigger` özniteliği, işlevi tetikleyen bloba erişim sağlamak için kullanılır. Ayrıntılar için [tetikleyici örneğine](#example) bakın.
+Öznitelik, `@BlobTrigger` işlevi tetikleyen blob'a erişim sağlamak için kullanılır. Ayrıntılar için [tetikleyici örneğe](#example) bakın.
 
 ---
 
 ## <a name="configuration"></a>Yapılandırma
 
-Aşağıdaki tabloda, *function. JSON* dosyasında ve `BlobTrigger` özniteliğinde ayarladığınız bağlama yapılandırma özellikleri açıklanmaktadır.
+Aşağıdaki *tabloda, function.json* dosyasında ayarladığınız bağlama `BlobTrigger` yapılandırma özellikleri ve öznitelik açıklanmaktadır.
 
-|Function.JSON özelliği | Öznitelik özelliği |Açıklama|
+|function.json özelliği | Öznitelik özelliği |Açıklama|
 |---------|---------|----------------------|
-|**type** | yok | `blobTrigger`olarak ayarlanmalıdır. Bu özellik, Azure portalında tetikleyicisi oluşturduğunuzda otomatik olarak ayarlanır.|
-|**direction** | yok | `in`olarak ayarlanmalıdır. Bu özellik, Azure portalında tetikleyicisi oluşturduğunuzda otomatik olarak ayarlanır. [Kullanım](#usage) bölümünde özel durumlar belirtilmiştir. |
-|**ada** | yok | İşlev kodundaki blobu temsil eden değişkenin adı. |
-|**Yolun** | **Blobpath değerini adıyla** |İzlenecek [kapsayıcı](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources) .  Bir [BLOB adı stili](#blob-name-patterns)olabilir. |
-|**bağlanma** | **Bağlanma** | Bu bağlama için kullanılacak depolama bağlantı dizesini içeren bir uygulama ayarının adı. Uygulama ayarı adı "AzureWebJobs" ile başlıyorsa, burada yalnızca adının geri kalanını belirtebilirsiniz. Örneğin, `connection` "MyStorage" olarak ayarlarsanız, Işlevler çalışma zamanı "AzureWebJobsMyStorage" adlı bir uygulama ayarı arar. `connection` boş bırakırsanız, Işlevler çalışma zamanı `AzureWebJobsStorage`adlı uygulama ayarında varsayılan depolama bağlantı dizesini kullanır.<br><br>Bağlantı dizesi, [BLOB depolama hesabı](../storage/common/storage-account-overview.md#types-of-storage-accounts)değil, genel amaçlı bir depolama hesabı için olmalıdır.|
+|**Türü** | yok | Ayarlanmış `blobTrigger`olmalı. Bu özellik, Azure portalında tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır.|
+|**Yön** | yok | Ayarlanmış `in`olmalı. Bu özellik, Azure portalında tetikleyiciyi oluşturduğunuzda otomatik olarak ayarlanır. Özel durumlar [kullanım](#usage) bölümünde belirtilir. |
+|**Adı** | yok | İşlev kodundaki blob'u temsil eden değişkenin adı. |
+|**Yolu** | **BlobPath** |İzlenecek [konteyner.](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources)  Bir [blob adı deseni](#blob-name-patterns)olabilir. |
+|**bağlantı** | **Bağlantı** | Bu bağlama için kullanılacak Depolama bağlantı dizesini içeren bir uygulama ayarının adı. Uygulama ayarı adı "AzureWebJobs" ile başlıyorsa, burada yalnızca adın geri kalanını belirtebilirsiniz. Örneğin, "MyStorage" olarak ayarlarsanız, `connection` İşlevler çalışma zamanı "AzureWebJobsMyStorage" adlı bir uygulama ayarı arar. Boş bırakırsanız, `connection` İşlevler çalışma zamanı, uygulama ayarında adı `AzureWebJobsStorage`verilen varsayılan Depolama bağlantı dizesini kullanır.<br><br>Bağlantı dizesi [blob depolama hesabı](../storage/common/storage-account-overview.md#types-of-storage-accounts)için değil, genel amaçlı bir depolama hesabı için olmalıdır.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="usage"></a>Kullanım
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
 [!INCLUDE [functions-bindings-blob-storage-trigger](../../includes/functions-bindings-blob-storage-trigger.md)]
 
-# <a name="c-script"></a>[C#SCRIPT](#tab/csharp-script)
+# <a name="c-script"></a>[C# Komut Dosyası](#tab/csharp-script)
 
 [!INCLUDE [functions-bindings-blob-storage-trigger](../../includes/functions-bindings-blob-storage-trigger.md)]
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
-`context.bindings.<NAME>` kullanarak blob verilerine erişin `<NAME>`, *function. JSON*içinde tanımlanan değerle eşleşir.
+`context.bindings.<NAME>` *Function.json'da*tanımlanan değerle eşleşen yerlerde `<NAME>` blob verilerine erişin.
 
 # <a name="python"></a>[Python](#tab/python)
 
-Blob verilerine [InputStream](https://docs.microsoft.com/python/api/azure-functions/azure.functions.inputstream?view=azure-python)olarak yazılan parametre aracılığıyla erişin. Ayrıntılar için [tetikleyici örneğine](#example) bakın.
+InputStream olarak yazılan parametre ile blob verilerine [erişin.](https://docs.microsoft.com/python/api/azure-functions/azure.functions.inputstream?view=azure-python) Ayrıntılar için [tetikleyici örneğe](#example) bakın.
 
 # <a name="java"></a>[Java](#tab/java)
 
-`@BlobTrigger` özniteliği, işlevi tetikleyen bloba erişim sağlamak için kullanılır. Ayrıntılar için [tetikleyici örneğine](#example) bakın.
+Öznitelik, `@BlobTrigger` işlevi tetikleyen blob'a erişim sağlamak için kullanılır. Ayrıntılar için [tetikleyici örneğe](#example) bakın.
 
 ---
 
-## <a name="blob-name-patterns"></a>Blob adı desenleri
+## <a name="blob-name-patterns"></a>Blob ad desenleri
 
-*Function. JSON* içindeki `path` özelliğinde veya `BlobTrigger` öznitelik oluşturucusunda bir blob adı stili belirtebilirsiniz. Ad stili bir [filtre veya bağlama ifadesi](./functions-bindings-expressions-patterns.md)olabilir. Aşağıdaki bölümlerde örnekler sağlanmaktadır.
+`path` *Özellik.json'daki* özellikte veya öznitelik oluşturucusunda `BlobTrigger` bir blob adı deseni belirtebilirsiniz. Ad deseni bir [filtre veya bağlama ifadesi](./functions-bindings-expressions-patterns.md)olabilir. Aşağıdaki bölümlerde örnekler verilmiştir.
 
-### <a name="get-file-name-and-extension"></a>Dosya adı ve uzantısını al
+### <a name="get-file-name-and-extension"></a>Dosya adı ve uzantısı alma
 
-Aşağıdaki örnek, blob dosya adına ve uzantısına ayrı olarak nasıl bağlanılacağını gösterir:
+Aşağıdaki örnek, blob dosya adı ve uzantısı ayrı ayrı nasıl bağlanılmayı gösterir:
 
 ```json
 "path": "input/{blobname}.{blobextension}",
 ```
 
-Blob *Original-Blob1. txt*olarak adlandırılmışsa, işlev kodundaki `blobname` ve `blobextension` değişkenlerinin değerleri *orijinal-Blob1* ve *txt*olur.
+Blob *original-Blob1.txt*olarak adlandırılırsa, `blobname` işlev `blobextension` kodundaki değişkenlerin ve değişkenlerin değerleri *özgün-Blob1* ve *txt'dir.*
 
-### <a name="filter-on-blob-name"></a>Blob adını filtrele
+### <a name="filter-on-blob-name"></a>Leke adı üzerine filtre
 
-Aşağıdaki örnek yalnızca, "özgün-" dizesiyle başlayan `input` kapsayıcısındaki bloblarda tetiklenir:
+Aşağıdaki örnek, yalnızca "özgün" dizesiyle başlayan `input` kapsayıcıdaki lekeleri tetikler:
 
 ```json
 "path": "input/original-{name}",
 ```
 
-Blob adı *Original-Blob1. txt*ise, işlev kodundaki `name` değişkenin değeri `Blob1`.
+Blob adı *özgün-Blob1.txt*ise, işlev `name` kodundaki değişkenin `Blob1`değeri .
 
-### <a name="filter-on-file-type"></a>Dosya türünü filtrele
+### <a name="filter-on-file-type"></a>Dosya türünde filtreleme
 
-Aşağıdaki örnek yalnızca *. png* dosyalarında tetiklenir:
+Aşağıdaki örnek yalnızca *.png* dosyalarında tetikler:
 
 ```json
 "path": "samples/{name}.png",
 ```
 
-### <a name="filter-on-curly-braces-in-file-names"></a>Dosya adlarında küme ayraçları üzerine filtrele
+### <a name="filter-on-curly-braces-in-file-names"></a>Dosya adlarında kıvırcık ayraçlara filtre uygulama
 
-Dosya adlarında küme ayraçları aramak için, iki küme ayracı kullanarak küme ayracını kaçış. Aşağıdaki örnek, adında küme ayracı olan Bloblar için filtre uygular:
+Dosya adlarında kıvırcık ayraçlar aramak için, iki parantez kullanarak ayraçları kaçış. Adında kıvırcık ayraçları olan lekeler için aşağıdaki örnek filtreler:
 
 ```json
 "path": "images/{{20140101}}-{name}",
 ```
 
-Blob *{20140101}-soundfile. mp3*olarak adlandırılmışsa, işlev kodundaki `name` değişken değeri *soundfile. mp3*olur.
+Blob * {20140101}-soundfile.mp3*adlı ise, `name` işlev kodundaki değişken değeri *soundfile.mp3'* dür.
 
 ## <a name="metadata"></a>Meta Veriler
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
 [!INCLUDE [functions-bindings-blob-storage-trigger](../../includes/functions-bindings-blob-storage-metadata.md)]
 
-# <a name="c-script"></a>[C#SCRIPT](#tab/csharp-script)
+# <a name="c-script"></a>[C# Komut Dosyası](#tab/csharp-script)
 
 [!INCLUDE [functions-bindings-blob-storage-trigger](../../includes/functions-bindings-blob-storage-metadata.md)]
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 ```javascript
 module.exports = function (context, myBlob) {
@@ -371,59 +371,59 @@ module.exports = function (context, myBlob) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Meta veriler Python 'da kullanılamıyor.
+Meta veriler Python'da kullanılamaz.
 
 # <a name="java"></a>[Java](#tab/java)
 
-Java 'da meta veriler kullanılamıyor.
+Meta veriler Java'da kullanılamaz.
 
 ---
 
-## <a name="blob-receipts"></a>Blob alındıları
+## <a name="blob-receipts"></a>Blob makbuzları
 
-Azure Işlevleri çalışma zamanı, aynı yeni veya güncelleştirilmiş blob için bir blob tetikleyici işlevinin birden çok kez çağrılmamasını sağlar. Belirli bir blob sürümünün işlenip işlenmeyeceğini anlamak için, *BLOB alındıları*saklar.
+Azure İşlevleri çalışma süresi, aynı yeni veya güncelleştirilmiş blob için blob tetikleme işlevinin birden fazla çağrılmamasını sağlar. Belirli bir blob sürümünün işlendiğini belirlemek *için, blob makbuzlarını*korur.
 
-Azure Işlevleri, blob alındıları, işlev uygulamanız için Azure depolama hesabındaki *Azure-WebJobs-Konakları* adlı bir kapsayıcıda depolar (`AzureWebJobsStorage`uygulama ayarı tarafından tanımlanır). Blob alındı bilgisi aşağıdaki bilgilere sahiptir:
+Azure İşlevleri, işlev uygulamanız için Azure depolama hesabında (uygulama ayarı `AzureWebJobsStorage`ile tanımlanan) azure depolama hesabında *azure-webişleri-ana bilgisayarları* adlı bir kapsayıcıda blob makbuzları depolar. Bir blob makbuz aşağıdaki bilgileri vardır:
 
-* Tetiklenen işlev (" *&lt;işlevi uygulama adı >* . Lerdir. *&lt;işlev adı >* ", örneğin:" MyFunctionApp. Functions. copyblob ")
+* Tetiklenen işlev ("*&lt;işlev uygulama adı>. * Işlev. işlev adı>", örneğin: "MyFunctionApp.Functions.CopyBlob") * &lt; *
 * Kapsayıcı adı
 * Blob türü ("BlockBlob" veya "PageBlob")
 * Blob adı
-* ETag (bir blob sürüm tanımlayıcısı, örneğin: "0x8D1DC6E70A277EF")
+* ETag (bir blob sürüm tanımlayıcı, örneğin: "0x8D1DC6E70A277EF")
 
-Bir Blobun yeniden işlenmesini zorlamak için, bu Blobun blob alındığını *Azure-WebJobs-hosts* kapsayıcısından el ile silin. Yeniden işleme hemen gerçekleşmeyebilir, daha sonraki bir noktada gerçekleşmesi garanti edilir.
+Bir blob'un yeniden işlenmesini zorlamak için, bu blob için blob makbuzunun *azure-webjobs-hosts* konteynerinden el ile silin. Yeniden işleme hemen gerçekleşmeyebilir, ancak daha sonraki bir zamanda gerçekleşmesi garanti.
 
-## <a name="poison-blobs"></a>Poison blob 'ları
+## <a name="poison-blobs"></a>Zehirli lekeler
 
-Belirli bir blob için bir blob tetikleme işlevi başarısız olduğunda, Azure Işlevleri varsayılan olarak toplam 5 kez çalışır.
+Bir blob tetikleme işlevi belirli bir blob için başarısız olduğunda, Azure İşlevler varsayılan olarak toplam 5 kez işlev yeniden çalışır.
 
-5 ' in tamamı başarısız olursa, Azure Işlevleri *WebJobs-blobtrigger-zeadlı*bir depolama kuyruğuna bir ileti ekler. Zarar Blobları için kuyruk iletisi aşağıdaki özellikleri içeren bir JSON nesnesidir:
+5 denemenin tümü başarısız olursa, Azure *İşlevleri web işleri-blobtrigger-poison*adlı depolama kuyruğuna bir ileti ekler. En fazla yeniden deneme sayısı yapılandırılabilir. Aynı MaxDequeueCount ayarı zehirli leke işleme ve zehir sırası ileti işleme için kullanılır. Zehirli lekeler için sıra iletisi aşağıdaki özellikleri içeren bir JSON nesnesidir:
 
-* FunctionID (biçim *&lt;işlev uygulama adı >* . Lerdir. *&lt;işlev adı >* )
+* FunctionId (format * &lt;işlevi uygulama adı>. * Işlev. fonksiyon adı>) * &lt; *
 * BlobType ("BlockBlob" veya "PageBlob")
 * ContainerName
 * BlobName
-* ETag (bir blob sürüm tanımlayıcısı, örneğin: "0x8D1DC6E70A277EF")
+* ETag (bir blob sürüm tanımlayıcı, örneğin: "0x8D1DC6E70A277EF")
 
 ## <a name="concurrency-and-memory-usage"></a>Eşzamanlılık ve bellek kullanımı
 
-Blob tetikleyicisi bir kuyruğu dahili olarak kullanır, bu nedenle maksimum eşzamanlı işlev çağırma sayısı, [Host. JSON içindeki kuyruklar yapılandırması](functions-host-json.md#queues)tarafından denetlenir. Varsayılan ayarlar eşzamanlılık, 24 çağırma ile sınırlıdır. Bu sınır, blob tetikleyicisi kullanan her bir işleve ayrı olarak uygulanır.
+Blob tetikleyicisi dahili olarak bir sıra kullanır, böylece eşzamanlı işlev çağrılarının maksimum sayısı [host.json'daki kuyrukyapılandırması](functions-host-json.md#queues)tarafından denetlenir. Varsayılan ayarlar eşzamanlılığı 24 çağrıyla sınırlandırın. Bu sınır, blob tetikleyicisi kullanan her işlev için ayrı ayrı geçerlidir.
 
-[Tüketim planı](functions-scale.md#how-the-consumption-and-premium-plans-work) bir sanal MAKINEDE (VM) bir işlev UYGULAMASıNı 1,5 GB bellek ile sınırlandırır. Bellek, her eşzamanlı çalıştırılan işlev örneği ve Işlevler çalışma zamanının kendisi tarafından kullanılır. Blob ile tetiklenen bir işlev tüm blobu belleğe yüklerse, bu işlev tarafından yalnızca blob 'lar için kullanılan en fazla bellek 24 * en yüksek blob boyutudur. Örneğin, üç blob ile tetiklenen işlevlere sahip bir işlev uygulaması ve varsayılan ayarlar en fazla VM başına eşzamanlılık 3 * 24 = 72 işlev etkinleştirmeleri olacaktır.
+[Tüketim planı,](functions-scale.md#how-the-consumption-and-premium-plans-work) bir sanal makinedeki (VM) işlev uygulamasını 1,5 GB bellekle sınırlar. Bellek, aynı anda işleyen her işlev örneği ve İşlevler çalışma zamanının kendisi tarafından kullanılır. Bir blob tarafından tetiklenen bir işlev belleğe tüm blob yükler, bu işlev tarafından kullanılan maksimum bellek sadece blobs için 24 * maksimum blob boyutudur. Örneğin, blob tarafından tetiklenen üç işlevi olan bir işlev uygulaması ve varsayılan ayarları n için maksimum VM eşzamanlılığı 3*24 = 72 işlev çağrısına sahip olur.
 
-JavaScript ve Java işlevleri, tüm Blobun belleği belleğe yükler ve C# `string`, `Byte[]`veya poco 'a bağlarsanız bu işlemleri yapar.
+JavaScript ve Java işlevleri tüm blob'u belleğe yükler ve C# `Byte[]`işlevleri bunu , , veya POCO'ya `string`bağlarsanız yapar.
 
-## <a name="polling"></a>Masını
+## <a name="polling"></a>Yoklama
 
-Yoklama, günlükleri İnceleme ve düzenli kapsayıcı taramaları çalıştırma arasında karma olarak çalışır. Blob 'lar, aralıklar arasında kullanılan devamlılık belirtecine sahip bir zamanda 10.000 gruplarında taranır.
+Yoklama, günlükleri incelemek ve periyodik konteyner taramaları çalıştırmak arasında bir melez olarak çalışır. Blobs aralıkları arasında kullanılan bir devamı belirteci ile bir seferde 10.000 gruplar halinde taranır.
 
 > [!WARNING]
-> Ayrıca, [depolama günlükleri "en iyi çaba" temelinde oluşturulur](/rest/api/storageservices/About-Storage-Analytics-Logging) . Tüm olayların yakalandığı garanti yoktur. Bazı koşullarda Günlükler eksik olabilir.
+> Buna ek olarak, [depolama günlükleri "en iyi çaba"](/rest/api/storageservices/About-Storage-Analytics-Logging) temelinde oluşturulur. Tüm olayların yakalandığının garantisi yok. Bazı koşullar altında, günlükleri cevapsız olabilir.
 > 
-> Daha hızlı veya daha güvenilir bir blob işleme ihtiyacınız varsa, blobu oluştururken bir [kuyruk iletisi](../storage/queues/storage-dotnet-how-to-use-queues.md) oluşturmayı düşünün. Sonra blobu işlemek için blob tetikleyicisi yerine bir [kuyruk tetikleyicisi](functions-bindings-storage-queue.md) kullanın. Başka bir seçenek Event Grid kullanmaktır; [Event Grid kullanarak karşıya yüklenen görüntüleri yeniden boyutlandırmayı otomatikleştirme](../event-grid/resize-images-on-storage-blob-upload-event.md)öğreticisine bakın.
+> Daha hızlı veya daha güvenilir blob işleme ye ihtiyacınız varsa, blob oluştururken bir [sıra iletisi](../storage/queues/storage-dotnet-how-to-use-queues.md) oluşturmayı düşünün. Ardından, blob'u işlemek için blob tetikleyicisi yerine sıra [tetikleyicisi](functions-bindings-storage-queue.md) kullanın. Başka bir seçenek Olay Grid kullanmaktır; [Olay Izgarasını kullanarak yüklenen görüntüleri yeniden boyutlandırmayı otomatikleştire'yi](../event-grid/resize-images-on-storage-blob-upload-event.md)görün.
 >
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Bir işlev çalıştığında BLOB depolama verilerini okuma](./functions-bindings-storage-blob-input.md)
-- [Bir işlevden BLOB depolama verileri yazma](./functions-bindings-storage-blob-output.md)
+- [Bir işlev çalıştığında blob depolama verilerini okuyun](./functions-bindings-storage-blob-input.md)
+- [Bir işlevden blob depolama verilerini yazma](./functions-bindings-storage-blob-output.md)

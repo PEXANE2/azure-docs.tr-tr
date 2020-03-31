@@ -1,6 +1,6 @@
 ---
-title: Azure Cosmos DB SQL API SQL sorgusu ölçümleri
-description: İzleme ve Azure Cosmos DB isteklerinin SQL sorgu performansı hata ayıklama hakkında bilgi edinin.
+title: Azure Cosmos DB SQL API için SQL sorgu ölçümleri
+description: Azure Cosmos DB isteklerinin SQL sorgu performansını nasıl enstrüman ve hata ayıklama hakkında bilgi edinin.
 author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
@@ -8,48 +8,48 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: sngun
 ms.openlocfilehash: ae1773ec1d470b9cff2efb00c200427b7b4c2fb4
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/19/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69614828"
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>Azure Cosmos DB ile sorgu performansını ayarlama
 
-Azure Cosmos DB sağlar bir [veri sorgulama için SQL API](how-to-sql-query.md), şema veya ikincil dizinler gerektirmeden. Bu makalede, geliştiriciler için aşağıdaki bilgileri sağlar:
+Azure Cosmos DB, şema veya ikincil dizinler gerektirmeden [verileri sorgulamak için](how-to-sql-query.md)bir SQL API sağlar. Bu makalede, geliştiriciler için aşağıdaki bilgileri sağlar:
 
-* Azure Cosmos DB SQL sorgusu yürütme birlikte nasıl çalıştığı hakkında üst düzey ayrıntıları
-* Sorgu istek ve yanıt üst bilgileri ve istemci SDK'sı seçenekleri ile ilgili ayrıntılar
-* İpuçları ve sorgu performansı için en iyi yöntemler
-* SQL yürütme istatistikleri sorgu performansı hata ayıklamak için nasıl örnekleri
+* Azure Cosmos DB'nin SQL sorgu yürütmesi nasıl çalıştığına ilişkin üst düzey ayrıntılar
+* Sorgu isteği ve yanıt üstbilgileri ve istemci SDK seçenekleri yle ilgili ayrıntılar
+* Sorgu performansı için ipuçları ve en iyi uygulamalar
+* Sorgu performansını hata ayıklamak için SQL yürütme istatistiklerini nasıl kullanabileceğine örnekler
 
-## <a name="about-sql-query-execution"></a>SQL sorgusu yürütme hakkında
+## <a name="about-sql-query-execution"></a>SQL sorgu yürütme hakkında
 
-Azure Cosmos DB'de hiçbir işlem genişleyebileceği kapsayıcılar, verileri depolamak [depolama boyutu veya istek işleme](partition-data.md). Azure Cosmos DB veri veri büyümesiyle veya sağlanan aktarım hızı artırmak için arka planda altında fiziksel bölümler arasında sorunsuz bir şekilde ölçeklendirir. REST API veya desteklenen birini kullanarak herhangi bir kapsayıcıya SQL sorgu iletebilirsiniz [SQL SDK'ları](sql-api-sdk-dotnet.md).
+Azure Cosmos DB'de, verileri herhangi bir depolama boyutuna veya [iş kaynağı isteğine](partition-data.md)kadar büyüyebilen kapsayıcılarda depolarsınız. Azure Cosmos DB, veri büyümesini veya sağlanan iş veri sini artırmak için verileri kapakların altındaki fiziksel bölümler arasında sorunsuz bir şekilde ölçeklendiriyor. REST API'yi veya desteklenen [SQL SDK'larından](sql-api-sdk-dotnet.md)birini kullanarak herhangi bir kapsayıcıya SQL sorguları verebilirsiniz.
 
-Kısa bir genel bölümleme: verileri fiziksel bölümler arasında nasıl bölünür belirler "Şehir" gibi bir bölüm anahtarı tanımlayın. Tek bölüm anahtarına ait verileri (örneğin, "city" "Seattle" ==) bir fiziksel bölüm içinde depolanır ancak genellikle tek bir fiziksel bölüm birden çok bölüm anahtarları sahiptir. Bir bölüm depolama boyutuna ulaştığında, hizmet sorunsuz bir şekilde bölüm iki yeni bölümlere ayırır ve bölüm anahtarı bu bölümler arasında eşit olarak böler. Bölümleri geçici olduğundan, "Bölüm anahtarı karmaları aralıklarını gösterir bir bölüm anahtar aralığı" bir soyutlamasıdır API'leri kullanın. 
+Bölümleme kısa bir bakış: verilerin fiziksel bölümler arasında nasıl bölündüğünü belirleyen "şehir" gibi bir bölüm anahtarı tanımlarsınız. Tek bir bölüm anahtarına ait veriler (örneğin, "şehir" == "Seattle") fiziksel bir bölüm içinde depolanır, ancak genellikle tek bir fiziksel bölümün birden çok bölüm anahtarı vardır. Bir bölüm depolama boyutuna ulaştığında, hizmet bölümü sorunsuz bir şekilde iki yeni bölüme böler ve bölüm anahtarını bu bölümler arasında eşit olarak böler. Bölümler geçici olduğundan, API'ler bölüm anahtarı işleme aralıklarını gösteren bir "bölüm anahtar aralığı" soyutlama kullanır. 
 
-Azure Cosmos DB'ye bir sorgu verdiğinizde, SDK'sı mantıksal adımları gerçekleştirir:
+Azure Cosmos DB'ye bir sorgu verdiyseniz, SDK şu mantıksal adımları gerçekleştirir:
 
-* Sorgu yürütme planını belirlemek için SQL sorgusunu ayrıştırılamıyor. 
-* Sorgu filtre bölüm anahtarı karşı içeriyorsa, ister `SELECT * FROM c WHERE c.city = "Seattle"`, tek bir bölüme yönlendirilir. Sorgu bölüm anahtarına göre bir filtre yok sonra'ındaki tüm bölümler yürütülür ve sonuçları birleştirilir, istemci tarafı.
-* Sorgunun her bölümü serisi içinde yürütülen veya paralel, istemci yapılandırmasını temel alan. Her bölüm içindeki bir sorgu yapabileceğiniz veya sorgu karmaşıklığına bağlı olarak daha fazla gidiş dönüş sayfa boyutu yapılandırılmış ve toplamanın sağlanan. Her yürütme sayısını döndürür [istek birimi](request-units.md) sorgu yürütme ve isteğe bağlı olarak, sorgu yürütme istatistikleri kullanılan. 
-* SDK'ın bölümler arasında sorgu sonuçlarının bir özetini gerçekleştirir. Bölümler arasında sorgu bir ORDER BY içerir, örneğin, daha sonra tek tek bölümler sonuçlardan birleştirme-sıralanmış içinde genel olarak sıralanmış sonuçları döndürmek için sunulur. Sorgu gibi bir toplama ise `COUNT`, genel sayısı üretmek için tek tek bölümler alınan sayımların toplanır.
+* Sorgu yürütme planını belirlemek için SQL sorgusunu ayrıştın. 
+* Sorgu, bölüm tuşuna karşı bir `SELECT * FROM c WHERE c.city = "Seattle"`filtre içeriyorsa, örneğin , tek bir bölüme yönlendirilir. Sorgunun bölüm anahtarında bir filtresi yoksa, tüm bölümlerde yürütülür ve sonuçlar istemci tarafında birleştirilir.
+* Sorgu, istemci yapılandırmasını temel alan, seri veya paralel olarak her bölüm içinde yürütülür. Her bölüm içinde, sorgu karmaşıklığına, yapılandırılmış sayfa boyutuna ve koleksiyonun sağlanan iş haline bağlı olarak bir veya daha fazla gidiş-dönüş turu yapabilir. Her yürütme sorgu yürütme tarafından tüketilen [istek birimlerinin](request-units.md) sayısını döndürür ve isteğe bağlı olarak, sorgu yürütme istatistikleri. 
+* SDK, sorgu sonuçlarının bölümler arasında özetlenmesi gerçekleştirir. Örneğin, sorgu bölümler arasında bir ORDER BY içeriyorsa, tek tek bölümlerden elde edilen sonuçlar, genel olarak sıralanmış sırada sonuçları döndürmek için birleştirilir. Sorgu gibi `COUNT`bir toplama ise, tek tek bölümlerden sayımları genel sayı üretmek için toplanır.
 
-SDK'ları, sorgu yürütme için çeşitli seçenekler sunar. Örneğin,. NET'te Bu seçenekler kullanılabilir `FeedOptions` sınıfı. Aşağıdaki tabloda bu seçeneklerin ve bunların sorgu yürütme süresini nasıl etkilediği açıklar. 
+SDK'lar sorgu yürütmeiçin çeşitli seçenekler sağlar. Örneğin, .NET'te bu seçenekler `FeedOptions` sınıfta kullanılabilir. Aşağıdaki tabloda bu seçenekleri ve sorgu yürütme süresini nasıl etkiledikleri açıklanmaktadır. 
 
 | Seçenek | Açıklama |
 | ------ | ----------- |
-| `EnableCrossPartitionQuery` | Ayarlanmalıdır birden fazla bölüm arasında yürütülecek true herhangi sorgu için gerektirir. Bu, bilinçli performans seçenekleri geliştirme zamanı sırasında yapmanız sağlamak için açık bir bayrak olur. |
-| `EnableScanInQuery` | Dizin oluşturma dışında seçtiyseniz true, ancak sorguyu bir tarama ile yine de çalıştırmak istediğiniz ayarlamanız gerekir. Yalnızca geçerli istenen filtre yolu için dizin oluşturma devre dışı bırakıldı. | 
-| `MaxItemCount` | Sunucuya gidiş dönüş döndürülecek öğe maksimum sayısı. -1, ayarına göre sunucu öğe sayısını yönetme izin verebilirsiniz. Veya yalnızca az sayıda gidiş dönüş başına öğeleri almak için bu değer düşürebilirsiniz. 
-| `MaxBufferedItemCount` | Bir istemci-tarafı seçenektir ve bölümler arası ORDER BY gerçekleştirirken bellek tüketimini sınırlamak için kullanılır. Daha yüksek bir değer bölümler arası sıralama gecikme süresini azaltmaya yardımcı olur. |
-| `MaxDegreeOfParallelism` | Azure Cosmos veritabanı hizmetinde paralel sorgu yürütme sırasında istemci tarafında çalışan eşzamanlı işlem sayısını alır veya ayarlar. Bir pozitif özellik değeri kümesi değerine eşzamanlı işlemlerin sayısını sınırlar. 0'dan düşük bir değere ayarlanırsa, sistem çalıştırmak için eşzamanlı işlemlerin sayısını otomatik olarak karar verir. |
-| `PopulateQueryMetrics` | Yük süresi sorgu yürütme derleme zamanı, döngü süresi dizini ve belge gibi çeşitli aşamaları harcanan süreyi istatistiklerin ayrıntılı günlüğü etkinleştirir. İstatistikleri sorgu çıktısı sorgu performansı sorunlarını tanılamak için Azure desteği ile paylaşabilirsiniz. |
-| `RequestContinuation` | Herhangi bir sorgu tarafından döndürülen donuk devamlılık belirteci ileterek sorgu yürütme devam edebilir. Devamlılık belirteci, sorgu yürütme için gerekli tüm durum kapsüller. |
-| `ResponseContinuationTokenLimitInKb` | Sunucu tarafından döndürülen devam belirtecini en büyük boyutunu sınırlandırabilirsiniz. Uygulama ana bilgisayarı yanıt üstbilgi boyutu sınırları varsa bunu ayarlamanız gerekebilir. Bu ayar, genel süresi ve sorgu için tüketilen RU artırabilir.  |
+| `EnableCrossPartitionQuery` | Birden fazla bölüm boyunca yürütülmesi gereken herhangi bir sorgu için doğru ayarlanmış olmalıdır. Bu, geliştirme sırasında bilinçli performans dengeleri yapmanızı sağlayan açık bir bayraktır. |
+| `EnableScanInQuery` | Dizin oluşturmayı devre dışı bıraktıysanız, ancak yine de bir tarak sorguyu çalıştırmak istiyorsanız, doğru olarak ayarlanmalıdır. Yalnızca istenen filtre yolu için dizin oluşturma devre dışı bırakılırsa uygulanabilir. | 
+| `MaxItemCount` | Sunucuya gidiş dönüş başına döndürülecek maksimum öğe sayısı. -1'e ayarlayarak, sunucunun öğe sayısını yönetmesine izin verebilirsiniz. Veya, gidiş-dönüş başına yalnızca az sayıda öğe almak için bu değeri düşürebilirsiniz. 
+| `MaxBufferedItemCount` | Bu istemci tarafı seçeneğidir ve çapraz bölümleme ORDER BY gerçekleştirirken bellek tüketimini sınırlamak için kullanılır. Daha yüksek bir değer, çapraz bölme sıralamanın gecikme süresini azaltmaya yardımcı olur. |
+| `MaxDegreeOfParallelism` | Azure Cosmos veritabanı hizmetinde paralel sorgu yürütme sırasında istemci tarafında çalışan eşzamanlı işlem sayısını alır veya ayarlar. Pozitif özellik değeri, eşzamanlı işlem sayısını ayarlanan değerle sınırlar. 0'dan az olarak ayarlanırsa, sistem otomatik olarak çalışacak eşzamanlı işlem sayısına karar verir. |
+| `PopulateQueryMetrics` | Derleme süresi, dizin döngü süresi ve belge yükleme süresi gibi sorgu yürütmenin çeşitli aşamalarında harcanan zamanın istatistiklerinin ayrıntılı günlüğe kaydedilmesini sağlar. Sorgu performansı sorunlarını tanılamak için sorgu istatistiklerinden çıktıyı Azure Desteği ile paylaşabilirsiniz. |
+| `RequestContinuation` | Herhangi bir sorgu tarafından döndürülen opak devamı belirteci geçerek sorgu yürütme devam edebilirsiniz. Devam belirteci sorgu yürütme için gerekli tüm durumu kapsüller. |
+| `ResponseContinuationTokenLimitInKb` | Sunucu tarafından döndürülen devam belirteci nin maksimum boyutunu sınırlayabilirsiniz. Uygulama ana bilgisayarınızın yanıt üstbilgi boyutunda sınırları varsa bunu ayarlamanız gerekebilir. Bunu ayarlamak, sorgu için tüketilen toplam süreyi ve US'yi artırabilir.  |
 
-Örneğin, örnek bir sorgu ile bir koleksiyon üzerinde istenen bölüm anahtarı ele alalım `/city` bölüm anahtarı ve 100.000 RU/sn aktarım hızı ile sağlanan olarak. Bu sorgu kullanarak istek `CreateDocumentQuery<T>` aşağıdaki gibi .NET içinde:
+Örneğin, bölüm anahtarı `/city` olarak bir koleksiyonda istenen ve 100.000 RU/s'lik bir iş bölümü yle birlikte verilen bölüm anahtarıyla ilgili örnek bir sorgu alalım. Bu sorguyu `CreateDocumentQuery<T>` .NET'te aşağıdaki gibi kullanarak talep esiniz:
 
 ```cs
 IDocumentQuery<dynamic> query = client.CreateDocumentQuery(
@@ -66,7 +66,7 @@ IDocumentQuery<dynamic> query = client.CreateDocumentQuery(
 FeedResponse<dynamic> result = await query.ExecuteNextAsync();
 ```
 
-Yukarıda gösterilen SDK kod parçacığını aşağıdaki REST API isteği karşılık gelmektedir:
+Yukarıda gösterilen SDK parçacığı, aşağıdaki REST API isteğine karşılık gelir:
 
 ```
 POST https://arramacquerymetrics-westus.documents.azure.com/dbs/db/colls/sample/docs HTTP/1.1
@@ -93,9 +93,9 @@ Expect: 100-continue
 {"query":"SELECT * FROM c WHERE c.city = 'Seattle'"}
 ```
 
-Her sorgu yürütme sayfası bir REST API'ye karşılık gelen `POST` ile `Accept: application/query+json` üstbilgi ve gövde SQL sorgusu. Her sorgu bir hale getirir veya daha fazla sunucuya ile yuvarlak `x-ms-continuation` belirteci, yürütme devam etmek için istemci ile sunucu arasında okunmaz. FeedOptions yapılandırma seçenekleri, sunucuya istek üst bilgilerini biçiminde geçirilir. Örneğin, `MaxItemCount` karşılık gelen `x-ms-max-item-count`. 
+Her sorgu yürütme sayfası `POST` `Accept: application/query+json` üstbilgi ile BIR REST API ve gövdedeki SQL sorgusu karşılık gelir. Her sorgu yürütme devam etmek için istemci `x-ms-continuation` ve sunucu arasında yankılanan belirteç ile sunucuya bir veya daha fazla gidiş-dönüş gezileri yapar. FeedOptions'daki yapılandırma seçenekleri istek üstbilgisi biçiminde sunucuya aktarılır. Örneğin, `MaxItemCount` karşılık `x-ms-max-item-count`gelir. 
 
-İstek (okunabilirliği artırmak için kesilmiştir) şu yanıtı döndürür:
+İstek aşağıdaki (okunabilirlik için kesilen) yanıtı döndürür:
 
 ```
 HTTP/1.1 200 Ok
@@ -122,54 +122,54 @@ x-ms-gatewayversion: version=1.14.33.2
 Date: Tue, 27 Jun 2017 21:59:49 GMT
 ```
 
-Bir sorgudan döndürülen anahtar yanıt üstbilgilerini şunları içerir:
+Sorgudan döndürülen anahtar yanıt üstbilgisi aşağıdakileri içerir:
 
 | Seçenek | Açıklama |
 | ------ | ----------- |
-| `x-ms-item-count` | Yanıtta döndürülen öğe sayısı. Sağlanan üzerinde bağımlı budur `x-ms-max-item-count`, en yüksek yanıt yükü boyutu, sağlanan aktarım hızı ve sorgu yürütme zamanı içinde uygun öğe sayısı. |  
-| `x-ms-continuation:` | Ek sonuçlar varsa, sorgu yürütme devam etmek için devamlılık belirteci. | 
-| `x-ms-documentdb-query-metrics` | Sorgu yürütme istatistikleri. İstatistikleri sorgu yürütme çeşitli aşamalarında harcanan süreyi içeren ayrılmış bir dize budur. Döndürülen if `x-ms-documentdb-populatequerymetrics` ayarlanır `True`. | 
-| `x-ms-request-charge` | Sayısını [istek birimi](request-units.md) sorgu tarafından kullanılan. | 
+| `x-ms-item-count` | Yanıtta döndürülen öğe sayısı. Bu, sağlanan `x-ms-max-item-count`, maksimum yanıt yükü boyutuna sığabilecek madde sayısına, sağlanan iş girdisi ve sorgu yürütme süresine bağlıdır. |  
+| `x-ms-continuation:` | Ek sonuçlar varsa, sorgunun yürütülmesini devam ettirmek için devam belirteci. | 
+| `x-ms-documentdb-query-metrics` | Yürütme için sorgu istatistikleri. Bu, sorgu yürütmenin çeşitli aşamalarında harcanan zamanın istatistiklerini içeren sınırlı bir dizedir. ' `x-ms-documentdb-populatequerymetrics` olarak ayarlanırsa `True`döndürülür | 
+| `x-ms-request-charge` | Sorgu tarafından tüketilen [istek birimlerinin](request-units.md) sayısı. | 
 
-REST API istek üst bilgileri ve seçenekleri hakkında daha fazla bilgi için bkz: [REST API kullanarak kaynakları sorgulama](https://docs.microsoft.com/rest/api/cosmos-db/querying-cosmosdb-resources-using-the-rest-api).
+REST API istek üstbilgileri ve seçenekleri hakkında ayrıntılı bilgi için, [REST API'yi kullanarak kaynakları sorgulama](https://docs.microsoft.com/rest/api/cosmos-db/querying-cosmosdb-resources-using-the-rest-api)ya da
 
-## <a name="best-practices-for-query-performance"></a>Sorgu performansı için en iyi yöntemler
-Azure Cosmos DB sorgu performansını etkileyen en yaygın faktörler aşağıda verilmiştir. Biz bu makalede bu konuların her daha derinlemesine.
+## <a name="best-practices-for-query-performance"></a>Sorgu performansı için en iyi uygulamalar
+Azure Cosmos DB sorgu performansını etkileyen en yaygın etkenler şunlardır. Bu makalede bu konuların her birini daha derine iniyoruz.
 
-| faktörü | İpucu | 
+| Faktörü | İpucu | 
 | ------ | -----| 
-| Sağlanan aktarım hızı | RU sorgu ölçün ve sorgularınızı gerekli sağlanan aktarım hızına sahip olduğundan emin olun. | 
-| Bölümleme ve bölüm anahtarları | Düşük gecikme süresi filtre yan tümcesi bölüm anahtar değer sorguları favor. |
-| SDK ve sorgu seçenekleri | Doğrudan bağlantı gibi SDK en iyi uygulamaları izleyin ve istemci tarafı sorgu yürütme seçeneklerini ayarlayın. |
-| Ağ gecikmesi | Ağ Yükü ölçümdeki hesaba ve en yakın bölgeden okumak için çok girişli API'lerini kullanın. |
-| Dizin Oluşturma İlkesi | Gerekli dizin yolları/ilke sorgu olduğundan emin olun. |
-| Sorgu yürütme ölçümleri | Sorgu ve veri şekillerinin olası yeniden tanımlamak için sorgu yürütme ölçümleri çözümleyin.  |
+| Sağlanan aktarım hızı | Sorgu başına RU'yu ölçün ve sorgularınız için gerekli verilen iş sonuna sahip olduğundan emin olun. | 
+| Bölümleme ve bölme tuşları | Düşük gecikme süresiyle filtre yan tümcesindeki bölüm anahtar değeriyle sorguları tercih edin. |
+| SDK ve sorgu seçenekleri | Doğrudan bağlantı gibi SDK en iyi uygulamalarını izleyin ve istemci tarafındaki sorgu yürütme seçeneklerini ayarlayın. |
+| Ağ gecikmesi | Ölçümde ağ ek yükü için hesap ve en yakın bölgeden okumak için çok yönlü API'ler kullanın. |
+| Dizin Oluşturma İlkesi | Sorgu için gerekli dizin oluşturma yollarına/ilkesine sahip olduğundan emin olun. |
+| Yürütme yi sorgula ölçümleri | Sorgu ve veri şekillerinin olası yeniden yazımlarını belirlemek için sorgu yürütme ölçümlerini çözümleyin.  |
 
 ### <a name="provisioned-throughput"></a>Sağlanan aktarım hızı
-Cosmos DB kapsayıcıları ayrılmış üretilen iş istek birimi (RU) saniye başına ifade edilen her veri oluşturun. 1 KB boyutundaki bir belgeyi okuma 1. RU ve (sorguları da dahil) her işlemin dönüşür sabit sayıda RU kendi kapsamına bağlı. Örneğin, 1000 varsa kapsayıcınız için sağlanan RU/s ve sahip olduğunuz gibi bir sorguda `SELECT * FROM c WHERE c.city = 'Seattle'` , 5 RU tüketir, sonra gerçekleştirebileceğiniz (1000 RU/sn) / (5 RU/sorgu) sorgularını saniye başına 200 Sorgu/sn =. 
+Cosmos DB'de, her biri istek birimlerinde (RU) saniyede ifade edilen ayrılmış iş ortası olan veri kapsayıcıları oluşturursunuz. 1-KB belgenin okunması 1 RU'dur ve her işlem (sorgular dahil) karmaşıklığına bağlı olarak sabit sayıda RUs'a normalleştirilmiştir. Örneğin, kabınız için 1000 RU/s'niz varsa ve 5 `SELECT * FROM c WHERE c.city = 'Seattle'` RUs tüketen bir sorgunuz varsa, saniyede 200 sorgu (1000 RU/s) / (5 RU/sorgu) = 200 sorgu/s tür sorgu gerçekleştirebilirsiniz. 
 
-200'den fazla sorgular/sn gönderirseniz, gelen istekleri yukarıda 200/sn hız sınırlama hizmetini başlatır. Otomatik olarak SDK'lar geri alma/yeniden deneme yaparak bu durumu işlemek, bu nedenle bu sorgular için daha yüksek bir gecikme fark edebilirsiniz. Gerekli değer için sağlanan aktarım hızı artırmak, sorgunun gecikme süresi ve aktarım hızını artırır. 
+200'den fazla sorgu/sn gönderirseniz, hizmet 200/s'lerin üzerinde hız sınırlayıcı gelen istekleri başlatır. SDK'lar bir geri dönüş/yeniden deneme gerçekleştirerek bu servis talebiyle otomatik olarak işleyebilir, bu nedenle bu sorgular için daha yüksek bir gecikme gecikmesi fark edebilirsiniz. Sağlanan iş girdisini gerekli değere yükseltme, sorgu gecikmenizi ve iş inizi artırır. 
 
-İstek birimleri hakkında daha fazla bilgi için bkz: [istek birimi](request-units.md).
+İstek birimleri hakkında daha fazla bilgi edinmek için [İstek birimlerine](request-units.md)bakın.
 
-### <a name="partitioning-and-partition-keys"></a>Bölümleme ve bölüm anahtarları
-Azure Cosmos DB ile genellikle aşağıdaki sırayla kadar hızlı/en verimli daha yavaş/daha az verimli sorgular gerçekleştirin. 
+### <a name="partitioning-and-partition-keys"></a>Bölümleme ve bölme tuşları
+Azure Cosmos DB ile, genellikle sorgular en hızlı/en verimliden daha yavaş/daha az verimliye doğru aşağıdaki sırada gerçekleştirir. 
 
-* Bir tek bölüm anahtarı ve öğe anahtarı alma
-* Tek bir bölüm anahtarı üzerindeki filtre yan tümcesi ile sorgulama
-* Bir eşitlik veya aralık filtre yan tümcesi olmadan herhangi bir özellikte sorgulama
-* Bir filtre içermeyen sorgulama
+* Tek bir bölüm tuşu ve öğe tuşu alın
+* Tek bir bölüm anahtarında filtre yan tümcesi ile sorgu
+* Herhangi bir özellik üzerinde eşitlik veya aralık filtresi yan tümcesi olmadan sorgula
+* Filtresiz sorgula
 
-Tüm bölümleri başvurmanız gereken sorguları gereken daha yüksek gecikme süresi ve yüksek RU'ları kullanabilir. Her bölüm tüm özellikleri karşı otomatik dizin oluşturma olduğundan, sorgu verimli bir şekilde dizinden bu durumda sunulabilir. Paralellik seçenekleri kullanarak daha hızlı bölüme yayılan sorguları yapabilirsiniz.
+Tüm bölümlere danışması gereken sorguların daha yüksek gecikme ye ihtiyacı vardır ve daha yüksek RUs'lar tüketebilir. Her bölüm tüm özelliklere karşı otomatik dizin oluşturma olduğundan, sorgu bu durumda dizin verimli bir şekilde sunulabilir. Paralellik seçeneklerini kullanarak bölümleri daha hızlı kapsayan sorgular yapabilirsiniz.
 
-Bölümlendirme ve bölüm anahtarları hakkında daha fazla bilgi için bkz: [Azure Cosmos DB'de bölümleme](partition-data.md).
+Bölümleme ve bölümleme tuşları hakkında daha fazla bilgi edinmek için [Azure Cosmos DB'de Bölümleme bölümüne](partition-data.md)bakın.
 
 ### <a name="sdk-and-query-options"></a>SDK ve sorgu seçenekleri
-Bkz: [performans ipuçları](performance-tips.md) ve [performans testi](performance-testing.md) için en iyi istemci tarafında performans Azure Cosmos DB'den alma. Bu, en son SDK'larını kullanarak, varsayılan bağlantı, çöp toplama sıklığı sayısı gibi platforma özgü yapılandırmaları yapılandırma ve doğrudan/TCP gibi basit bağlantı seçeneklerini kullanarak içerir. 
+Azure Cosmos DB'den en iyi istemci performansının nasıl elde edilebildiğini öğrenmek için [Performans İpuçları](performance-tips.md) ve [Performans testlerine](performance-testing.md) bakın. Buna en son SDK'ların kullanılması, varsayılan bağlantı sayısı, çöp toplama sıklığı gibi platforma özgü yapılandırmalar ve Direct/TCP gibi hafif bağlantı seçeneklerinin kullanılması dahildir. 
 
 
-#### <a name="max-item-count"></a>En Fazla Öğe Sayısı
-Sorgular, değerini `MaxItemCount` uçtan uca sorgu zamanında önemli bir etkisi olabilir. Her sunucuya gidiş dönüş öğe sayısından daha fazla iade `MaxItemCount` (varsayılan 100 öğe). Bu daha yüksek bir değere ayarlanması (-1'dir maksimum ve önerilen), sorgu süresi genel sorgular büyük sonuç kümeleri için özellikle bir istemci ve sunucu arasındaki gidiş dönüş sayısını sınırlayarak artırır.
+#### <a name="max-item-count"></a>Maksimum Madde Sayısı
+Sorgular için, değer `MaxItemCount` in uçtan uca sorgu süresi üzerinde önemli bir etkisi olabilir. Sunucuya yapılan her gidiş-dönüş, (Varsayılan `MaxItemCount` 100 öğe) öğe sayısından daha fazla döndürmez. Bunu daha yüksek bir değere ayarlamak (-1 maksimumdur ve önerilir) özellikle büyük sonuç kümelerine sahip sorgular için sunucu ve istemci arasındaki gidiş-dönüş sayısını sınırlayarak sorgu sürenizi genel olarak artırır.
 
 ```cs
 IDocumentQuery<dynamic> query = client.CreateDocumentQuery(
@@ -181,8 +181,8 @@ IDocumentQuery<dynamic> query = client.CreateDocumentQuery(
     }).AsDocumentQuery();
 ```
 
-#### <a name="max-degree-of-parallelism"></a>Maksimum paralellik derecesi
-Sorguları için ayarlama `MaxDegreeOfParallelism` özellikle bölümler arası sorgular (Filtresiz bölüm anahtarı değeri) çalıştırıyorsanız, uygulamanız için en iyi yapılandırmaları tanımlamak için. `MaxDegreeOfParallelism`  en fazla sayısını Paralel Görevler, başka bir deyişle, en fazla paralel olarak ziyaret etme işlemlerinin bölüm denetler. 
+#### <a name="max-degree-of-parallelism"></a>Paralelliğin Maksimum Derecesi
+Sorgular için, `MaxDegreeOfParallelism` özellikle bölümler arası sorgular gerçekleştiriyorsanız (bölüm anahtarı değerinde filtre olmadan) uygulamanız için en iyi yapılandırmaları tanımlamak için ayarlayın. `MaxDegreeOfParallelism`paralel görevlerin maksimum sayısını, yani paralel olarak ziyaret edilecek en fazla bölümü denetler. 
 
 ```cs
 IDocumentQuery<dynamic> query = client.CreateDocumentQuery(
@@ -195,31 +195,31 @@ IDocumentQuery<dynamic> query = client.CreateDocumentQuery(
     }).AsDocumentQuery();
 ```
 
-Varsayalım
-* D = varsayılan en yüksek sayısı (toplam istemci makinede işlemci sayısı =) Paralel Görevler
-* P kullanıcı tarafından belirtilen en fazla sayıda paralel görev =
-* N sorgu yanıtlarken ziyaret gereken bölüm sayısı =
+Farz edelim ki.
+* D = Varsayılan Maksimum paralel görev sayısı (= istemci makinesindeki toplam işlemci sayısı)
+* P = Kullanıcı tarafından belirtilen en fazla paralel görev sayısı
+* N = Bir sorguyu yanıtlamak için ziyaret edilmesi gereken bölüm sayısı
 
-P. farklı değerleri için paralel sorguları nasıl davranacaktır etkilerini aşağıda verilmiştir
-* (P == 0) = > seri modu
-* (P 1 ==) = > bir görevin en fazla
-* (P > 1) = > Min (P, N) Paralel Görevler 
-* (P < 1) = > Min (N, D) Paralel Görevler
+Paralel sorguların P'nin farklı değerleri için nasıl etki edeceği aşağıda veda edilmiştir.
+* (P == 0) => Seri Modu
+* (P == 1) => Bir görevin maksimum
+* (P > 1) => Min (P, N) paralel görevleri 
+* (P < 1) => Min (N, D) paralel görevleri
 
-SDK sürüm notları ve uygulanan sınıflar ve yöntemler hakkında bilgi için [SQL SDK'ları](sql-api-sdk-dotnet.md)
+SDK sürüm notları ve uygulanan sınıflar ve yöntemlerle ilgili ayrıntılar için [SQL SDK'lara](sql-api-sdk-dotnet.md) bakın
 
 ### <a name="network-latency"></a>Ağ gecikmesi
-Bkz: [Azure Cosmos DB genel dağıtımını](tutorial-global-distribution-sql-api.md) genel dağıtımını ayarlama ve en yakın bölgeyi bağlanın. Birden çok gidiş dönüş yapmak veya büyük sonuç sorgudan kümesi almak, ihtiyacınız olduğunda ağ gecikmesi sorgu performansı üzerinde önemli bir etkisi vardır. 
+Küresel dağıtımı nasıl ayarlayacak ve en yakın bölgeye bağlanmakonusunda [Azure Cosmos DB genel dağıtımına](tutorial-global-distribution-sql-api.md) bakın. Birden çok tur-trips yapmanız veya sorgudan ayarlanmış büyük bir sonuç almanız gerektiğinde ağ gecikmesi sorgu performansı üzerinde önemli bir etkiye sahiptir. 
 
-Sorgu yürütme ölçümleri bölümüne sorguları sunucu yürütme süresi almak nasıl açıklar ( `totalExecutionTimeInMs`), böylece sorgu yürütme için harcanan zaman ve ağ yolda harcadığı sürenin arasında ayırt edebilirsiniz.
+Sorgu yürütme ölçümlerine ilişkin bölüm, sorgu yürütmede harcanan `totalExecutionTimeInMs`süre ile ağ aktarımında harcanan süre arasında ayrım yapabilmeniz için sorguların sunucu yürütme süresini nasıl alabileceğinizi açıklar.
 
 ### <a name="indexing-policy"></a>Dizin oluşturma ilkesi
-Bkz: [dizin oluşturma ilkesini yapılandırma](index-policy.md) yollarını, tür ve modlarını ve bunların sorgu yürütme nasıl etkilediği dizinleme. Varsayılan olarak, dizin oluşturma ilkesini dizeler için karma dizin kullanır etkin olduğu için eşitlik sorguları, ancak aralık sorguları/sıralama ölçütü sorguları için değil. Aralık sorguları için dizeleri ihtiyacınız varsa, tüm dizeleri aralığı dizin türü belirtme öneririz. 
+Bkz. [Dizine](index-policy.md) dizini dizini oluşturma, türler ve modlar ve bunların sorgu yürütmeyi nasıl etkilediği. Varsayılan olarak, dizin oluşturma ilkesi, eşitlik sorguları için etkili olan dizeleri için Karma dizin oluşturma kullanır, ancak sorgular tarafından aralık sorguları/sırası için değil. Dizeleri için aralık sorguları gerekiyorsa, tüm dizeleri için Aralık dizin türü belirtmenizi öneririz. 
 
-Varsayılan olarak, Azure Cosmos DB tüm verilere otomatik dizin oluşturma uygular. Yüksek performanslı ekleme senaryolarında, bu işlemi her ekleme işleminin RU maliyetini azaltacak şekilde dışarıda bırakmayı düşünün. 
+Varsayılan olarak, Azure Cosmos DB tüm verilere otomatik dizin oluşturma uygular. Yüksek performanslı ekleme senaryoları için, her kesici uç işlemi için RU maliyetini azaltacağı için yolları hariç almayı düşünün. 
 
-## <a name="query-execution-metrics"></a>Sorgu yürütme ölçümleri
-İsteğe bağlı geçirerek sorgu yürütme üzerindeki ayrıntılı ölçümleri elde `x-ms-documentdb-populatequerymetrics` üst bilgisi (`FeedOptions.PopulateQueryMetrics` .NET SDK'sındaki). Döndürülen değer `x-ms-documentdb-query-metrics` Gelişmiş sorun giderme sorgunun yürütülmesi için gereken aşağıdaki anahtar-değer çiftleri sahiptir. 
+## <a name="query-execution-metrics"></a>Yürütme yi sorgula ölçümleri
+İsteğe bağlı `x-ms-documentdb-populatequerymetrics` üstbilgiden (.NET`FeedOptions.PopulateQueryMetrics` SDK'da) geçerek sorgu yürütmesi hakkında ayrıntılı ölçümler alabilirsiniz. Döndürülen `x-ms-documentdb-query-metrics` değer, sorgu yürütmesinin gelişmiş sorun giderme için dir. 
 
 ```cs
 IDocumentQuery<dynamic> query = client.CreateDocumentQuery(
@@ -239,41 +239,41 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 
 | Ölçüm | Birim | Açıklama | 
 | ------ | -----| ----------- |
-| `totalExecutionTimeInMs` | milisaniye | Sorgu yürütme süresi | 
-| `queryCompileTimeInMs` | milisaniye | Sorgu derleme zamanı  | 
-| `queryLogicalPlanBuildTimeInMs` | milisaniye | Mantıksal bir sorgu planı oluşturabilirsiniz. | 
-| `queryPhysicalPlanBuildTimeInMs` | milisaniye | Fiziksel bir sorgu planı oluşturabilirsiniz. | 
-| `queryOptimizationTimeInMs` | milisaniye | Sorgu en iyi duruma getirme için harcanan süre | 
+| `totalExecutionTimeInMs` | milisaniye | Yürütme süresini sorgula | 
+| `queryCompileTimeInMs` | milisaniye | Zamanı derleme sorgusu  | 
+| `queryLogicalPlanBuildTimeInMs` | milisaniye | Mantıksal sorgu planı oluşturma zamanı | 
+| `queryPhysicalPlanBuildTimeInMs` | milisaniye | Fiziksel sorgu planı oluşturma zamanı | 
+| `queryOptimizationTimeInMs` | milisaniye | Sorguyı en iyi duruma geçirmede harcanan süre | 
 | `VMExecutionTimeInMs` | milisaniye | Sorgu çalışma zamanında harcanan süre | 
-| `indexLookupTimeInMs` | milisaniye | Fiziksel dizini katmanda için harcanan süre | 
-| `documentLoadTimeInMs` | milisaniye | Belge yüklenirken harcanan süre  | 
-| `systemFunctionExecuteTimeInMs` | milisaniye | Milisaniye cinsinden yürütme sistemi (yerleşik) işlevleri için harcanan toplam süre  | 
-| `userFunctionExecuteTimeInMs` | milisaniye | Milisaniye cinsinden yürütme kullanıcı tarafından tanımlanan işlevler için harcanan toplam süre | 
-| `retrievedDocumentCount` | count | Toplam alınan belge sayısı  | 
-| `retrievedDocumentSize` | bayt | Bayt alınan belgelerin toplam boyutu  | 
-| `outputDocumentCount` | count | Çıkış belge sayısı | 
-| `writeOutputTimeInMs` | milisaniye | Milisaniye cinsinden sorgu yürütme süresi | 
-| `indexUtilizationRatio` | oranı (< = 1) | Belge sayısı filtre ile eşleşen belge sayısının oranını yüklendi  | 
+| `indexLookupTimeInMs` | milisaniye | Fiziksel dizin katmanında harcanan süre | 
+| `documentLoadTimeInMs` | milisaniye | Belgelerin yüklenmesinde harcanan süre  | 
+| `systemFunctionExecuteTimeInMs` | milisaniye | Milisaniye cinsinden sistem (yerleşik) işlevlerini yürütme için harcanan toplam süre  | 
+| `userFunctionExecuteTimeInMs` | milisaniye | Kullanıcı tanımlı işlevleri milisaniye cinsinden yürütmek için harcanan toplam süre | 
+| `retrievedDocumentCount` | count | Alınan toplam belge sayısı  | 
+| `retrievedDocumentSize` | Bayt | Baytlarda alınan belgelerin toplam boyutu  | 
+| `outputDocumentCount` | count | Çıktı belgelerinin sayısı | 
+| `writeOutputTimeInMs` | milisaniye | Yürütme süresini milisaniye cinsinden sorgula | 
+| `indexUtilizationRatio` | oranı (<=1) | Filtre yle eşleşen belge sayısının yüklenen belge sayısına oranı  | 
 
-İstemci SDK'ları, dahili olarak sorgu her bölüm içinde sunmak için birden çok sorgu işlemleri yapabilir. İstemci toplam sonuç aşarsanız bölüm başına birden çok çağrıda `x-ms-max-item-count`, sorgu bölüm için sağlanan aktarım hızını aşarsa veya sorgu yükü en büyük boyut sayfa başına ulaşırsa veya sorgu ayrılan sistem ulaşırsa zaman aşımı sınırı. Her kısmi sorgu yürütme döndürür bir `x-ms-documentdb-query-metrics` o sayfanın. 
+İstemci SDK'ları, her bölüm içinde sorguyu sunmak için dahili olarak birden çok sorgu işlemi yapabilir. İstemci, toplam sonuçlar aşArsa, `x-ms-max-item-count`sorgu bölüm için sağlanan iş belini aşarsa veya sorgu yükü sayfa başına maksimum boyuta ulaşırsa veya sorgu sistem tahsis edilen zaman aşımı sınırına ulaşırsa, bölüm başına birden fazla arama yapar. Her kısmi sorgu `x-ms-documentdb-query-metrics` yürütme si bu sayfa için bir döndürür. 
 
-Bazı ölçümler yorumlama sorgu yürütmeyi döndürdü ve bazı örnek sorgular'aşağıda verilmiştir: 
+Aşağıda bazı örnek sorgular ve sorgu yürütmesinden döndürülen ölçümlerden bazılarının nasıl yorumlanacağı ve aşağıdakiler ve 
 
-| Sorgu | Örnek ölçüm | Açıklama | 
+| Sorgu | Örnek Metrik | Açıklama | 
 | ------ | -----| ----------- |
-| `SELECT TOP 100 * FROM c` | `"RetrievedDocumentCount": 101` | Alınan belge sayısı TOP yan tümcesini eşleştirmek için 100'den fazla 1'dir. Sorgu zaman harcanan çoğunlukla `WriteOutputTime` ve `DocumentLoadTime` tarama olduğundan. | 
-| `SELECT TOP 500 * FROM c` | `"RetrievedDocumentCount": 501` | RetrievedDocumentCount (TOP yan tümcesini eşleştirmek için daha yüksek 500 + 1) sunulmuştur. | 
-| `SELECT * FROM c WHERE c.N = 55` | `"IndexLookupTime": "00:00:00.0009500"` | Bir dizin arama olduğu için yaklaşık 0,9 ms içinde IndexLookupTime bir anahtar arama için harcandığını `/N/?`. | 
-| `SELECT * FROM c WHERE c.N > 55` | `"IndexLookupTime": "00:00:00.0017700"` | Biraz daha fazla (1.7 ms) için harcanan süre IndexLookupTime bir aralık tarama, bir dizin arama olduğu için `/N/?`. | 
-| `SELECT TOP 500 c.N FROM c` | `"IndexLookupTime": "00:00:00.0017700"` | Aynı anda için harcanan `DocumentLoadTime` önceki sorgular, ancak daha düşük `WriteOutputTime` biz yalnızca tek bir özellik yansıtma çünkü. | 
-| `SELECT TOP 500 udf.toPercent(c.N) FROM c` | `"UserDefinedFunctionExecutionTime": "00:00:00.2136500"` | Yaklaşık 213 ms, geçen `UserDefinedFunctionExecutionTime` her değerini UDF çalıştırma `c.N`. |
-| `SELECT TOP 500 c.Name FROM c WHERE STARTSWITH(c.Name, 'Den')` | `"IndexLookupTime": "00:00:00.0006400", "SystemFunctionExecutionTime": "00:00:00.0074100"` | Yaklaşık 0,6 ms, geçen `IndexLookupTime` üzerinde `/Name/?`. Çoğu sorgu yürütme süresi (ms yaklaşık 7) `SystemFunctionExecutionTime`. |
-| `SELECT TOP 500 c.Name FROM c WHERE STARTSWITH(LOWER(c.Name), 'den')` | `"IndexLookupTime": "00:00:00", "RetrievedDocumentCount": 2491,  "OutputDocumentCount": 500` | Sorgu, bir tarama gerçekleştirilir, kullandığından `LOWER`, ve 500 2491 alınan belgeleri dışında döndürülür. |
+| `SELECT TOP 100 * FROM c` | `"RetrievedDocumentCount": 101` | Alınan belge sayısı TOP yan tümcesi ile eşleşecek şekilde 100+1'dir. Sorgu süresi çoğunlukla `WriteOutputTime` harcanıyor ve `DocumentLoadTime` bir tarayıp bu yüzden. | 
+| `SELECT TOP 500 * FROM c` | `"RetrievedDocumentCount": 501` | Alınan DocumentCount artık daha yüksektir (TOP yan tümcesi ile eşleşecek şekilde 500+1). | 
+| `SELECT * FROM c WHERE c.N = 55` | `"IndexLookupTime": "00:00:00.0009500"` | Yaklaşık 0,9 ms indexLookupTime'da anahtar araması için harcanıyor, `/N/?`çünkü bu bir dizin araması. | 
+| `SELECT * FROM c WHERE c.N > 55` | `"IndexLookupTime": "00:00:00.0017700"` | Bir dizi araması olduğu için indexLookupTime'da aralık taramak için biraz daha fazla `/N/?`zaman (1,7 ms) harcandı. | 
+| `SELECT TOP 500 c.N FROM c` | `"IndexLookupTime": "00:00:00.0017700"` | Önceki sorgularla `DocumentLoadTime` aynı zaman harcanıyor, ancak yalnızca bir özelliği yansıttığımız için daha düşük. `WriteOutputTime` | 
+| `SELECT TOP 500 udf.toPercent(c.N) FROM c` | `"UserDefinedFunctionExecutionTime": "00:00:00.2136500"` | Yaklaşık 213 ms `UserDefinedFunctionExecutionTime` her değeri üzerinde UDF `c.N`yürütülmesi harcanıyor. |
+| `SELECT TOP 500 c.Name FROM c WHERE STARTSWITH(c.Name, 'Den')` | `"IndexLookupTime": "00:00:00.0006400", "SystemFunctionExecutionTime": "00:00:00.0074100"` | Yaklaşık 0,6 ms `IndexLookupTime` harcanmış `/Name/?`. Sorgu yürütme süresinin çoğu (~7 `SystemFunctionExecutionTime`ms) içinde. |
+| `SELECT TOP 500 c.Name FROM c WHERE STARTSWITH(LOWER(c.Name), 'den')` | `"IndexLookupTime": "00:00:00", "RetrievedDocumentCount": 2491,  "OutputDocumentCount": 500` | Sorgu, kullandığı `LOWER`ndan tarayıp , 2491 alınan belgeden 500'ü döndürülderken, tarayıp gerçekleştirilir. |
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Desteklenen SQL sorgu işleçlerini ve anahtar sözcükleri hakkında bilgi edinmek için [SQL sorgusu](sql-query-getting-started.md). 
-* İstek birimleri hakkında bilgi edinmek için [istek birimi](request-units.md).
-* Dizin oluşturma ilkesi hakkında bilgi edinmek için [dizin oluşturma ilkesi](index-policy.md) 
+* Desteklenen SQL sorgu işleçleri ve anahtar kelimeler hakkında bilgi edinmek için [SQL sorgusuna](sql-query-getting-started.md)bakın. 
+* İstek birimleri hakkında bilgi edinmek için [istek birimlerine](request-units.md)bakın.
+* Dizin oluşturma ilkesi hakkında bilgi edinmek için [dizin oluşturma ilkesine](index-policy.md) bakın 
 
 

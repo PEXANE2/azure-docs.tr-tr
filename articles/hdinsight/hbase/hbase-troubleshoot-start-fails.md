@@ -1,6 +1,6 @@
 ---
-title: Azure HDInsight 'ta Apache HBase Master başlatılamadı
-description: Apache HBase Master (HMaster) Azure HDInsight 'ta başlatılamıyor
+title: Apache HBase Master Azure HDInsight'ta başlayamadı
+description: Apache HBase Master (HMaster) Azure HDInsight'ta başlayamadı
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
@@ -8,62 +8,62 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/14/2019
 ms.openlocfilehash: 290b541d9b5e86616373d2e426241fca07e780ed
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75887215"
 ---
-# <a name="apache-hbase-master-hmaster-fails-to-start-in-azure-hdinsight"></a>Apache HBase Master (HMaster) Azure HDInsight 'ta başlatılamıyor
+# <a name="apache-hbase-master-hmaster-fails-to-start-in-azure-hdinsight"></a>Apache HBase Master (HMaster) Azure HDInsight'ta başlayamadı
 
-Bu makalede, Azure HDInsight kümeleriyle etkileşim kurarken sorun giderme adımları ve olası çözümleri açıklanmaktadır.
+Bu makalede, Azure HDInsight kümeleriyle etkileşimde olurken sorun giderme adımları ve sorunlarla ilgili olası çözümler açıklanmaktadır.
 
-## <a name="scenario-atomic-renaming-failure"></a>Senaryo: atomik yeniden adlandırma hatası
+## <a name="scenario-atomic-renaming-failure"></a>Senaryo: Atomik yeniden adlandırma hatası
 
 ### <a name="issue"></a>Sorun
 
-Başlangıç işlemi sırasında beklenmeyen dosyalar tanımlandı.
+Başlatma işlemi sırasında tanımlanan beklenmeyen dosyalar.
 
 ### <a name="cause"></a>Nedeni
 
-Başlangıç işlemi sırasında, HMaster verileri sıfırdan (. tmp) klasörden veri klasörüne taşıma gibi birçok başlatma adımı gerçekleştirir. HMaster Ayrıca, yanıt vermeyen bölge sunucuları olup olmadığını görmek için yazma günlükleri (WAL) klasörüne de bakar.
+Başlatma işlemi sırasında HMaster, verileri sıfırdan (.tmp) klasörüne taşıma dahil olmak üzere birçok başlatma adımı gerçekleştirir. HMaster ayrıca yanıt vermeyen bölge sunucuları olup olmadığını görmek için önden yazma günlükleri (WAL) klasörüne de bakar.
 
-HMaster, WAL klasörlerinde temel bir liste komutu yapar. Her zaman, HMaster bu klasörlerin hiçbirinde beklenmeyen bir dosya görür ve bir özel durum oluşturur ve başlamaz.
+HMaster, WAL klasörlerinde temel bir liste komutu yapar. Herhangi bir zamanda, HMaster bu klasörlerin herhangi birinde beklenmeyen bir dosya görürse, bir özel durum atar ve başlatılamıyor.
 
-### <a name="resolution"></a>Çözünürlük
+### <a name="resolution"></a>Çözüm
 
-Çağrı yığınını denetleyin ve soruna neden olabilecek klasörü belirlemeyi deneyin (örneğin, WAL klasörü veya. tmp klasörü olabilir). Ardından, Cloud Explorer 'da veya,,, sorun dosyasını bulmaya çalışın. Genellikle bu bir `*-renamePending.json` dosyasıdır. (`*-renamePending.json` dosyası, IDB sürücüsünde atomik yeniden adlandırma işlemini uygulamak için kullanılan bir günlük dosyasıdır. Bu uygulamadaki hatalar nedeniyle, bu dosyalar işlem kilitlenmelerinden sonra bırakılabilir ve bu şekilde devam eder.) Zorla-bu dosyayı bulut Gezgini ' nde veya bir.
+Arama yığınını denetleyin ve soruna hangi klasörün neden olabileceğini belirlemeye çalışın (örneğin, WAL klasörü veya .tmp klasörü olabilir). Ardından, Bulut Gezgini'nde veya HDFS komutlarını kullanarak sorun dosyasını bulmaya çalışın. Genellikle, bu `*-renamePending.json` bir dosyadır. (Dosya `*-renamePending.json` WASB sürücüsüatomik yeniden adlandırma işlemini uygulamak için kullanılan bir günlük dosyasıdır. Bu uygulamadaki hatalar nedeniyle, bu dosyalar işlem çökmelerinden sonra bırakılabilir ve benzeri.) Cloud Explorer'da veya HDFS komutlarını kullanarak bu dosyayı zorla silin.
 
-Bazen, bu konumda `$$$.$$$` gibi bir geçici dosya da olabilir. Bu dosyayı görmek için, bir `ls` komutunu kullanmanız gerekir; dosyayı Cloud Explorer 'da göremezsiniz. Bu dosyayı silmek için, `hdfs dfs -rm /\<path>\/\$\$\$.\$\$\$`, bu komutu kullanın.
+Bazen, bu konumda ki gibi `$$$.$$$` bir şey adında geçici bir dosya da olabilir. Bu dosyayı görmek `ls` için HDFS komutunu kullanmanız gerekir; Dosyayı Cloud Explorer'da göremezsiniz. Bu dosyayı silmek için HDFS komutunu `hdfs dfs -rm /\<path>\/\$\$\$.\$\$\$`kullanın.
 
 Bu komutları çalıştırdıktan sonra, HMaster hemen başlamalıdır.
 
 ---
 
-## <a name="scenario-no-server-address-listed"></a>Senaryo: sunucu adresi listelenmedi
+## <a name="scenario-no-server-address-listed"></a>Senaryo: Listede sunucu adresi yok
 
 ### <a name="issue"></a>Sorun
 
-`hbase: meta` tablosunun çevrimiçi olmadığını belirten bir ileti görebilirsiniz. `hbck` çalıştırmak, HMaster günlüklerinde `hbase: meta table replicaId 0 is not found on any region.` rapor edebilir, şu iletiyi görebilirsiniz: `No server address listed in hbase: meta for region hbase: backup <region name>`.  
+Tablonun `hbase: meta` çevrimiçi olmadığını belirten bir ileti görebilirsiniz. Running, `hbck` HMaster günlüklerinde iletiyi görebilirsiniz: `No server address listed in hbase: meta for region hbase: backup <region name>`. `hbase: meta table replicaId 0 is not found on any region.`  
 
 ### <a name="cause"></a>Nedeni
 
-HMaster, HBase yeniden başlatıldıktan sonra başlatılamadı.
+HMaster, HBase'i yeniden başlattınktan sonra başlatılamadı.
 
-### <a name="resolution"></a>Çözünürlük
+### <a name="resolution"></a>Çözüm
 
-1. HBase kabuğunda, aşağıdaki komutları girin (gerçek değerleri uygun olarak değiştirin):
+1. HBase kabuğunda aşağıdaki komutları girin (geçerli olan gerçek değerleri değiştirin):
 
     ```hbase
     scan 'hbase:meta'
     delete 'hbase:meta','hbase:backup <region name>','<column name>'
     ```
 
-1. `hbase: namespace` girdisini silin. Bu giriş, `hbase: namespace` tablosu tarandığında bildirilen aynı hata olabilir.
+1. `hbase: namespace` Girişi silin. Bu giriş, `hbase: namespace` tablo tarandığında bildirilen aynı hata olabilir.
 
-1. Çalışan durumunda HBase 'i açmak için, etkin HMaster 'ı ambarı kullanıcı arabiriminden yeniden başlatın.
+1. Aktif HMaster'ı Ambari UI'den yeniden başlatArak HBase'i çalıştırma durumunda niçin gündeme getirin.
 
-1. HBase kabuğunda tüm çevrimdışı tabloları görüntülemek için aşağıdaki komutu çalıştırın:
+1. HBase kabuğunda, tüm çevrimdışı tabloları getirmek için aşağıdaki komutu çalıştırın:
 
     ```hbase
     hbase hbck -ignorePreCheckPermission -fixAssignments
@@ -71,33 +71,33 @@ HMaster, HBase yeniden başlatıldıktan sonra başlatılamadı.
 
 ---
 
-## <a name="scenario-javaioioexception-timedout"></a>Senaryo: Java. IO. IOException: zaman aşımına uğradı
+## <a name="scenario-javaioioexception-timedout"></a>Senaryo: java.io.IOException: Timedout
 
 ### <a name="issue"></a>Sorun
 
-HMaster, şuna benzer önemli özel durum ile zaman aşımına uğruyor: `java.io.IOException: Timedout 300000ms waiting for namespace table to be assigned`.
+HMaster zaman ölümcül özel durum `java.io.IOException: Timedout 300000ms waiting for namespace table to be assigned`benzer ile dışarı: .
 
 ### <a name="cause"></a>Nedeni
 
-Bu sorunla, HMaster hizmetlerinizi yeniden başlattığınızda temizlenen çok sayıda tablonuz ve bölgesi varsa karşılaşabilirsiniz. Zaman aşımı, HMaster ile bilinen bir sorundur. Genel küme başlangıç görevleri uzun zaman alabilir. Ad alanı tablosu henüz atanmamışsa HMaster kapanır. Uzun başlangıç görevleri, büyük miktarda temizlenen verilerin mevcut olduğu ve beş dakikalık bir zaman aşımı yeterli olmadığı durumlarda gerçekleşir.
+HMaster hizmetlerinizi yeniden başlattığınızda temizlenmeyen çok sayıda tablo nuz ve bölgeniz varsa bu sorunla karşılaşabilirsiniz. Zaman-zaman zaman HMaster ile bilinen bir kusurdur. Genel küme başlatma görevleri uzun sürebilir. Ad alanı tablosu henüz atanmamışsa HMaster kapanır. Uzun başlangıç görevleri, büyük miktarda temizlenmemiş veri bulunduğu ve beş dakikalık bir zaman anın yeterli olmadığı durumlarda gerçekleşir.
 
-### <a name="resolution"></a>Çözünürlük
+### <a name="resolution"></a>Çözüm
 
-1. Apache ambarı kullanıcı arabiriminden, **HBase** > **configs**' a gidin. Özel `hbase-site.xml` dosyasında aşağıdaki ayarı ekleyin:
+1. Apache Ambari UI itibaren, **HBase** > **Configs**gidin. Özel `hbase-site.xml` dosyaya aşağıdaki ayarı ekleyin:
 
     ```
     Key: hbase.master.namespace.init.timeout Value: 2400000  
     ```
 
-1. Gerekli hizmetleri (HMaster ve belki de diğer HBase hizmetlerini) yeniden başlatın.
+1. Gerekli hizmetleri (HMaster ve muhtemelen diğer HBase hizmetleri) yeniden başlatın.
 
 ---
 
-## <a name="scenario-frequent-region-server-restarts"></a>Senaryo: sık kullanılan bölge sunucusu yeniden başlatmaları
+## <a name="scenario-frequent-region-server-restarts"></a>Senaryo: Sık bölge sunucusu yeniden başlatılır
 
 ### <a name="issue"></a>Sorun
 
-Düğümler düzenli aralıklarla yeniden başlatılır. Bölge sunucusu günlüklerinden şuna benzer girdilerle karşılaşabilirsiniz:
+Düğümler düzenli olarak yeniden başlatılır. Bölge sunucu günlüklerinden aşağıdakilere benzer girişler görebilirsiniz:
 
 ```
 2017-05-09 17:45:07,683 WARN  [JvmPauseMonitor] util.JvmPauseMonitor: Detected pause in JVM or host machine (eg GC): pause of approximately 31000ms
@@ -107,15 +107,15 @@ Düğümler düzenli aralıklarla yeniden başlatılır. Bölge sunucusu günlü
 
 ### <a name="cause"></a>Nedeni
 
-Long `regionserver` JVM GC duraklatma. Duraklatma, `regionserver` yanıt vermemesine ve ZK oturum zaman aşımı 40s içinde HMaster 'a sinyal gönderememesine neden olur. HMaster `regionserver` ölü olduğunu düşünmeyecek ve `regionserver` durduracak ve yeniden başlatılacak.
+Uzun `regionserver` JVM GC duraklama. Duraklama yanıt `regionserver` vermeyen ve zk oturum zaman dışarı 40s içinde HMaster kalp atışı göndermek mümkün değil neden olur. HMaster öldüğüne inanacak `regionserver` ve `regionserver` iptal edip yeniden başlatacak.
 
-### <a name="resolution"></a>Çözünürlük
+### <a name="resolution"></a>Çözüm
 
-`hbase-site` `zookeeper.session.timeout` ayarı değil, Zookeeper oturum zaman aşımını değiştirin, ancak aynı zamanda Zookeeper `zoo.cfg` ayar `maxSessionTimeout` değiştirilmesi gerekir.
+Zookeeper oturum zaman ayarı `hbase-site` değiştirin, sadece ayar `zookeeper.session.timeout` değil, aynı zamanda Zookeeper `zoo.cfg` ayarı `maxSessionTimeout` değiştirilmesi gerekir.
 
-1. Ambarı Kullanıcı arabirimine erişin, **HBase-> configs-> ayarlar**' a gidin, zaman aşımları bölümünde Zookeeper oturum zaman aşımı değerini değiştirin.
+1. Ambari UI'ye erişin, Zaman Aşımları bölümünde **Kitab-> Configs -> Ayarları'na**gidin, Zookeeper Session Timeout değerini değiştirin.
 
-1. Ambarı Kullanıcı arabirimine erişin, **Zookeeper-> configs adresine gidin-özel `zoo.cfg`** , aşağıdaki ayarı ekleyin/değiştirin. Değerin HBase `zookeeper.session.timeout`ile aynı olduğundan emin olun.
+1. Ambari Kullanıcı Bira'sına erişin, **Zookeeper -> Configs -> Custom'a** `zoo.cfg`gidin, aşağıdaki ayarı ekleyin/değiştirin. Değerin HBase `zookeeper.session.timeout`ile aynı olduğundan emin olun.
 
     ```
     Key: maxSessionTimeout Value: 120000  
@@ -125,28 +125,28 @@ Long `regionserver` JVM GC duraklatma. Duraklatma, `regionserver` yanıt vermeme
 
 ---
 
-## <a name="scenario-log-splitting-failure"></a>Senaryo: günlük bölme hatası
+## <a name="scenario-log-splitting-failure"></a>Senaryo: Günlük bölme hatası
 
 ### <a name="issue"></a>Sorun
 
-Hmaster, bir HBase kümesine dönelemedi.
+HMasters bir HBase kümesi üzerinde gelmek için başarısız oldu.
 
 ### <a name="cause"></a>Nedeni
 
-İkincil depolama hesabı için yanlış yapılandırılmış ve HBase ayarları.
+İkincil bir depolama hesabı için yanlış yapılandırılmış HDFS ve HBase ayarları.
 
-### <a name="resolution"></a>Çözünürlük
+### <a name="resolution"></a>Çözüm
 
-HBase. rootdir: wasb://@.blob.core.windows.net/hbase ve ambarı üzerindeki hizmetleri yeniden başlatın.
+hbase.rootdir'ı wasb://@.blob.core.windows.net/hbase ayarlayın: ve Ambari'deki hizmetleri yeniden başlatın.
 
 ---
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Sorununuzu görmüyorsanız veya sorununuzu çözemediyseniz, daha fazla destek için aşağıdaki kanallardan birini ziyaret edin:
+Sorununuzu görmediyseniz veya sorununuzu çözemiyorsanız, daha fazla destek için aşağıdaki kanallardan birini ziyaret edin:
 
-* Azure [topluluk desteği](https://azure.microsoft.com/support/community/)aracılığıyla Azure uzmanlarından yanıt alın.
+* [Azure Topluluk Desteği](https://azure.microsoft.com/support/community/)aracılığıyla Azure uzmanlarından yanıtlar alın.
 
-* [@AzureSupport](https://twitter.com/azuresupport) ile bağlanma-müşteri deneyimini iyileştirmek için resmi Microsoft Azure hesabı. Azure Community 'yi doğru kaynaklara bağlama: yanıtlar, destek ve uzmanlar.
+* [@AzureSupport](https://twitter.com/azuresupport) Müşteri deneyimini geliştirmek için resmi Microsoft Azure hesabına bağlanın. Azure topluluğunu doğru kaynaklara bağlama: yanıtlar, destek ve uzmanlar.
 
-* Daha fazla yardıma ihtiyacınız varsa [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **destek** ' i seçin veya **Yardım + Destek** hub 'ını açın. Daha ayrıntılı bilgi için [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)konusunu inceleyin. Abonelik yönetimi ve faturalandırma desteği 'ne erişim Microsoft Azure aboneliğinize dahildir ve [Azure destek planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla teknik destek sağlanır.
+* Daha fazla yardıma ihtiyacınız varsa, [Azure portalından](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **Destek'i** seçin veya **Yardım + destek** merkezini açın. Daha ayrıntılı bilgi için [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)yı gözden geçirin. Abonelik Yönetimi'ne erişim ve faturalandırma desteği Microsoft Azure aboneliğinize dahildir ve Teknik Destek Azure [Destek Planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla sağlanır.

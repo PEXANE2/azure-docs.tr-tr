@@ -1,7 +1,7 @@
 ---
-title: Coğrafi olarak yedekli depolamayı kullanarak yüksek oranda kullanılabilir uygulamalar tasarlama
+title: Coğrafi yedekli depolama yı kullanarak yüksek kullanılabilir uygulamalar tasarla
 titleSuffix: Azure Storage
-description: Kesintileri işlemek için yeterince esnek olan yüksek oranda kullanılabilir bir uygulamayı mimarmak üzere Okuma Erişimli Coğrafi olarak yedekli depolamayı nasıl kullanacağınızı öğrenin.
+description: Kesintileri işlemek için yeterince esnek olan yüksek kullanılabilir bir uygulamayı mimar etmek için okuma erişimi coğrafi yedekli depolamayı nasıl kullanacağınızı öğrenin.
 services: storage
 author: tamram
 ms.service: storage
@@ -11,145 +11,145 @@ ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.openlocfilehash: 592be1710893791e80dfe4b20e1323e789b33e69
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77157101"
 ---
-# <a name="designing-highly-available-applications-using-read-access-geo-redundant-storage"></a>Okuma Erişimli Coğrafi olarak yedekli depolamayı kullanarak yüksek oranda kullanılabilir uygulamalar tasarlama
+# <a name="designing-highly-available-applications-using-read-access-geo-redundant-storage"></a>Okuma erişimi coğrafi yedekli depolama yı kullanarak yüksek kullanılabilir uygulamalar tasarlama
 
-Azure depolama gibi bulut tabanlı altyapılardan oluşan ortak bir özellik, uygulamaları barındırmak için yüksek oranda kullanılabilir bir platform sağlamalarına yöneliktir. Bulut tabanlı uygulamaların geliştiricileri, kullanıcılarına yüksek düzeyde kullanılabilir uygulamalar sunmak için bu platformun nasıl yararlanacağınızı dikkatle düşünmelidir. Bu makalede, geliştiricilerin Azure depolama uygulamalarının yüksek oranda kullanılabilir olmasını sağlamak için coğrafi olarak yedekli çoğaltma seçeneklerinden birini nasıl kullanabilecekleri açıklanır.
+Azure Depolama gibi bulut tabanlı altyapıların yaygın bir özelliği, uygulamaları barındırmak için son derece kullanılabilir bir platform sağlamalarıdır. Bulut tabanlı uygulamaların geliştiricileri, kullanıcılarına yüksek oranda kullanılabilir uygulamalar sunmak için bu platformdan nasıl yararlanılabileceklerini dikkatlice düşünmelidir. Bu makalede, geliştiricilerin Azure Depolama uygulamalarının yüksek oranda kullanılabilir olduğundan emin olmak için Azure'un coğrafi yedekli çoğaltma seçeneklerinden birini nasıl kullanabilecekleri üzerinde duruluyor.
 
-Coğrafi olarak yedekli çoğaltma için yapılandırılan depolama hesapları, birincil bölgede zaman uyumlu olarak çoğaltılır ve sonra yüzlerce mil olan ikincil bir bölgeye zaman uyumsuz olarak çoğaltılır. Azure depolama, iki tür coğrafi olarak yedekli çoğaltma sunar:
+Coğrafi yedekli çoğaltma için yapılandırılan depolama hesapları birincil bölgede eşzamanlı olarak çoğaltılır ve daha sonra yüzlerce mil uzaktaki ikincil bir bölgeye eşzamanlı olarak çoğaltılır. Azure Depolama iki tür coğrafi yedekli çoğaltma sunar:
 
-* [Coğrafi bölge yedekli depolama (GZRS) (Önizleme)](storage-redundancy.md) , hem yüksek kullanılabilirlik hem de maksimum dayanıklılık gerektiren senaryolar için çoğaltma sağlar. Veriler, bölgesel olarak yedekli depolama (ZRS) kullanılarak birincil bölgedeki üç Azure kullanılabilirlik alanı arasında zaman uyumlu olarak çoğaltılır, ardından ikincil bölgeye zaman uyumsuz olarak çoğaltılır. İkincil bölgedeki verilere yönelik okuma erişimi için, Okuma Erişimli Coğrafi bölge yedekli depolamayı (RA-GZRS) etkinleştirin.
-* [Coğrafi olarak yedekli depolama (GRS)](storage-redundancy.md) , bölgesel kesintilere karşı koruma sağlamak için çapraz bölgesel çoğaltma sağlar. Veriler yerel olarak yedekli depolama (LRS) kullanılarak birincil bölgede eşzamanlı olarak üç kez çoğaltılır ve ardından zaman uyumsuz olarak ikincil bölgeye çoğaltılır. İkincil bölgedeki verilere yönelik okuma erişimi için Okuma Erişimli Coğrafi olarak yedekli depolamayı (RA-GRS) etkinleştirin.
+* [Coğrafi bölge yedekli depolama (GZRS) (önizleme)](storage-redundancy.md) hem yüksek kullanılabilirlik hem de maksimum dayanıklılık gerektiren senaryolar için çoğaltma sağlar. Veriler, bölge yedekli depolama (ZRS) kullanılarak birincil bölgedeki üç Azure kullanılabilirlik bölgesinde eşzamanlı olarak çoğaltılır ve ardından ikincil bölgeye eşit olarak çoğaltılır. İkincibölgedeki verilere okuma erişimi için, okuma-erişim coğrafi bölge yedekli depolamayı (RA-GZRS) etkinleştirin.
+* [Coğrafi yedekli depolama (GRS),](storage-redundancy.md) bölgesel kesintilere karşı korumak için bölgeler arası çoğaltma sağlar. Veriler, birincil bölgede yerel olarak yedekli depolama (LRS) kullanılarak üç kez eşzamanlı olarak çoğaltılır ve ardından ikincil bölgeye eşzamanlı olarak çoğaltılır. İkincibölgedeki verilere okuma erişimi için, okuma erişimi coğrafi yedekli depolamayı (RA-GRS) etkinleştirin.
 
-Bu makalede, uygulamanızı birincil bölgedeki bir kesinti işleyecek şekilde nasıl tasarlayacağız. Birincil bölge kullanılamaz duruma gelirse, uygulamanız bunun yerine ikincil bölgeye karşı okuma işlemleri gerçekleştirmeye uyarlayabilir. Başlamadan önce depolama hesabınızın RA-GRS veya RA-GZRS için yapılandırıldığından emin olun.
+Bu makalede, birincil bölgede bir kesintisi işlemek için uygulamatasarımı nasıl gösterilmektedir. Birincil bölge kullanılamıyorsa, uygulamanız ikincil bölgeye karşı okuma işlemleri gerçekleştirmek için uyarlanabilir. Başlamadan önce depolama hesabınızın RA-GRS veya RA-GZRS için yapılandırıldığından emin olun.
 
-Hangi birincil bölgelerin hangi ikincil bölgelere eşleştirildiği hakkında bilgi için bkz. [iş sürekliliği ve olağanüstü durum kurtarma (BCDR): Azure eşleştirilmiş bölgeleri](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
+Hangi birincil bölgelerin hangi ikincil bölgelerle eşleştiği hakkında bilgi için bkz: [İş sürekliliği ve olağanüstü durum kurtarma (BCDR): Azure Eşli Bölgeler.](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)
 
-Bu makaleye dahil kod parçacıkları vardır ve sonunda, indirebileceğiniz ve çalıştırabileceğiniz bir bütün örneğe yönelik bir bağlantı bulunur.
+Bu makalede kod parçacıkları ve sonunda indirip çalıştırabileceğiniz tam bir örneğe bağlantı vardır.
 
-## <a name="application-design-considerations-when-reading-from-the-secondary"></a>İkincil sunucudan okurken uygulama tasarımında dikkat edilmesi gerekenler
+## <a name="application-design-considerations-when-reading-from-the-secondary"></a>Uygulama tasarımı nda ikincil
 
-Bu makalenin amacı, birincil veri merkezinde önemli bir olağanüstü durum oluşması durumunda bile çalışmaya devam edecek bir uygulamayı (sınırlı bir kapasiteye göre) nasıl tasarlayacağınızı gösterir. Birincil bölgeden okumayı kesintiye uğratan bir sorun olduğunda, ikincil bölgeden okuma yaparak, geçici veya uzun süreli sorunları işleyecek şekilde uygulamanızı tasarlayabilirsiniz. Birincil bölge yeniden kullanılabilir olduğunda, uygulamanız birincil bölgeden okuma 'ya dönebilir.
+Bu makalenin amacı, birincil veri merkezinde büyük bir felaket durumunda bile (sınırlı kapasitede de olsa) çalışmaya devam edecek bir uygulamanın nasıl tasarlanacağınızı göstermektir. Birincil bölgeden okumayı engelleyen bir sorun olduğunda, ikincil bölgeden okuyarak uygulamanızı geçici veya uzun süren sorunları işleyebilecek şekilde tasarlayabilirsiniz. Birincil bölge yeniden kullanılabilir olduğunda, uygulamanız birincil bölgeden okumaya geri dönebilir.
 
-Uygulamanızı RA-GRS veya RA-GZRS için tasarlarken bu önemli noktaları aklınızda bulundurun:
+RA-GRS veya RA-GZRS için uygulamanızı tasarlarken şu önemli noktaları aklınızdan tutun:
 
-* Azure depolama, birincil bölgenizde depoladığınız verilerin salt bir kopyasını bir ikincil bölgeye tutar. Yukarıda belirtildiği gibi, depolama hizmeti ikincil bölgenin konumunu belirler.
+* Azure Depolama, birincil bölgenizde depoladığınız verilerin salt okunur bir kopyasını ikincil bir bölgede tutar. Yukarıda belirtildiği gibi, depolama hizmeti ikincil bölgenin konumunu belirler.
 
-* Salt okuma kopyası sonunda birincil bölgedeki verilerle [tutarlıdır](https://en.wikipedia.org/wiki/Eventual_consistency) .
+* Salt okunur kopya [sonunda](https://en.wikipedia.org/wiki/Eventual_consistency) birincil bölgedeki verilerle tutarlıdır.
 
-* Bloblar, tablolar ve kuyruklar için ikincil bölgeyi, birincil sunucudan ikincil bölgeye yapılan son çoğaltmanın ne zaman oluştuğunu bildiren bir *son eşitleme zamanı* değeri için sorgulayabilirsiniz. (Bu, şu anda RA-GRS yedekliği olmayan Azure dosyaları için desteklenmez.)
+* Blobs, tablolar ve kuyruklar için, birincil den ikincil bölgeye son çoğaltma oluştu zaman belirten bir *Son Eşitleme Zamanı* değeri için ikincil bölge sorgulayabilirsiniz. (Bu, şu anda RA-GRS artıklığı olmayan Azure Dosyaları için desteklenmez.)
 
-* Birincil veya ikincil bölgede veri okumak ve yazmak için depolama Istemci kitaplığını kullanabilirsiniz. Ayrıca, birincil bölgeye yönelik okuma isteği zaman aşımına uğrarsa okuma isteklerini otomatik olarak ikincil bölgeye yönlendirebilirsiniz.
+* Birincil veya ikincil bölgede veri okumak ve yazmak için Depolama İstemci Kitaplığını kullanabilirsiniz. Okuma isteği nin zaman dolması durumunda okuma isteklerini otomatik olarak ikincil bölgeye yönlendirebilirsiniz.
 
-* Birincil bölge kullanılamaz duruma gelirse, hesap yük devretmesini başlatabilirsiniz. İkincil bölgeye yük devretmek için, birincil bölgeye işaret eden DNS girdileri, ikincil bölgeyi gösterecek şekilde değiştirilir. Yük devretme işlemi tamamlandıktan sonra, GRS ve RA-GRS hesapları için yazma erişimi geri yüklenir. Daha fazla bilgi için bkz. [Azure Storage 'Da olağanüstü durum kurtarma ve depolama hesabı yük devretmesi (Önizleme)](storage-disaster-recovery-guidance.md).
+* Birincil bölge kullanılamıyorsa, bir hesap başarısızı başlatabilirsiniz. İkincil bölgeye başarısız olduğunuzda, birincil bölgeye işaret eden DNS girişleri ikincil bölgeye işaret edecek şekilde değiştirilir. Başarısızlık tamamlandıktan sonra GRS ve RA-GRS hesapları için yazma erişimi geri yüklenir. Daha fazla bilgi için Azure [Depolama'da Olağanüstü Durum kurtarma ve depolama hesabı nın başarısız lığına (önizleme)](storage-disaster-recovery-guidance.md)bakın.
 
 > [!NOTE]
-> Müşteri tarafından yönetilen hesap yük devretmesi (Önizleme) GZRS/RA-GZRS destekleyici bölgelerde henüz kullanılamadığından, müşteriler şu anda GZRS ve RA-GZRS hesaplarıyla hesap yük devretme olaylarını yönetemez. Önizleme sırasında, Microsoft GZRS/RA-GZRS hesaplarını etkileyen tüm yük devretme olaylarını yönetir.
+> Müşteri tarafından yönetilen hesap başarısız olması (önizleme) Henüz GZRS/RA-GZRS'yi destekleyen bölgelerde kullanılamadığından, müşteriler şu anda GZRS ve RA-GZRS hesaplarıyla hesap başarısızlık olaylarını yönetemez. Önizleme sırasında Microsoft, GZRS/RA-GZRS hesaplarını etkileyen başarısız olayları yönetir.
 
-### <a name="using-eventually-consistent-data"></a>Sonuçta tutarlı verileri kullanma
+### <a name="using-eventually-consistent-data"></a>Sonunda tutarlı verileri kullanma
 
-Önerilen çözüm, olası eski verileri çağıran uygulamaya döndürmek için kabul edilebilir olduğunu varsayar. İkincil bölgedeki veriler sonunda tutarlı olduğundan, İkincil bölgedeki bir güncelleştirmenin çoğaltma işlemi tamamlanmadan önce birincil bölge erişilemez hale gelebilir.
+Önerilen çözüm, arama uygulamasına olası eski verileri döndürmenin kabul edilebilir olduğunu varsayar. İkincil bölgedeki veriler sonunda tutarlı olduğundan, ikincil bölgeye yapılan bir güncelleştirme çoğaltma tamamlanmadan önce birincil bölgeye erişilemez hale gelebiliyor olabilir.
 
-Örneğin, müşterinizin bir güncelleştirmeyi başarıyla gönderdiğini varsayalım, ancak güncelleştirme ikincil bölgeye yayılmadan önce birincil bölge başarısız olur. Müşteri verileri geri okumayı istediğinde, güncelleştirilmiş veriler yerine ikincil bölgeden eski verileri alırlar. Uygulamanızı tasarlarken, bu kabul edilebilir olup olmadığına ve varsa müşteriyi nasıl mesaj vereceğinize karar vermelisiniz. 
+Örneğin, müşterinizin bir güncelleştirmeyi başarıyla gönderdiğini, ancak güncelleştirme ikincil bölgeye yayılmadan önce birincil bölge başarısız olduğunu varsayalım. Müşteri verileri geri okumak istediğinde, güncelleştirilmiş veriler yerine ikincil bölgeden eski verileri alır. Uygulamanızı tasarlarken, bunun kabul edilebilir olup olmadığına ve eğer öyleyse müşteriye nasıl mesaj göndereceğinize karar vermeniz gerekir. 
 
-Bu makalenin ilerleyen kısımlarında, ikincil veriler için son eşitleme zamanının, ikincinin güncel olup olmadığını kontrol etmek için nasıl kontrol eteceğiz.
+Bu makalenin ilerleyen aylarında, ikincil verilerin güncel olup olmadığını denetlemek için Son Eşitleme Saatini nasıl denetleriz göstereceğiz.
 
-### <a name="handling-services-separately-or-all-together"></a>Hizmetleri ayrı ayrı veya birlikte işleme
+### <a name="handling-services-separately-or-all-together"></a>Hizmetleri ayrı ayrı veya hep birlikte işleme
 
-Büyük olasılıkla, diğer hizmetler hala tamamen işlevsel olduğu sürece bir hizmetin kullanılamaz hale gelmesi mümkündür. Her hizmet için yeniden denemeler ve salt okuma modunu ayrı ayrı (blob 'lar, kuyruklar, tablolar) işleyebilir veya tüm depolama hizmetleri için yeniden denemeleri idare edebilirsiniz.
+Olası olmasa da, diğer hizmetler hala tam olarak işlevsel iken bir hizmet in kullanılamaz hale gelmesi mümkündür. Her hizmet için yeniden denemeleri ve salt okunur modunu ayrı ayrı işleyebilir veya tüm depolama hizmetleri için genel olarak yeniden denemeleri birlikte işleyebilirsiniz.
 
-Örneğin, uygulamanızda kuyruklar ve Bloblar kullanıyorsanız, bunların her biri için yeniden denenebilir hataları işlemek üzere ayrı bir kod koymaya karar verebilirsiniz. Daha sonra blob hizmetinden yeniden deneme yaparsanız, ancak kuyruk hizmeti hala çalışıyorsa, yalnızca uygulamanızın Blobları işleyen kısmı etkilenecektir. Tüm depolama hizmeti yeniden denemeleri genel olarak işlemeye karar verirseniz ve BLOB hizmeti çağrısı yeniden denenebilir bir hata döndürürse, hem blob hizmetine hem de kuyruk hizmetine yönelik istekler etkilenecektir.
+Örneğin, uygulamanızda kuyruklar ve lekeler kullanıyorsanız, bunların her biri için yeniden denlenebilir hataları işlemek için ayrı bir kod koymaya karar verebilirsiniz. Daha sonra blob hizmetinden bir yeniden deneme alırsanız, ancak kuyruk hizmeti hala çalışıyorsa, uygulamanızın yalnızca blobları işleyen kısmı etkilenir. Tüm depolama hizmeti yeniden denemelerini genel olarak işlemeye karar verirseniz ve blob hizmetine yapılan bir çağrı yeniden denenebilir bir hata döndürür, sonra hem blob hizmetine hem de sıra hizmetine gelen istekler etkilenir.
 
-Sonuçta bu, uygulamanızın karmaşıklığına bağlıdır. Sorunları hizmet 'e göre işleyememeye karar verebilir, ancak tüm depolama hizmetleri için okuma isteklerini ikincil bölgeye yeniden yönlendirmek ve birincil bölgedeki herhangi bir depolama hizmetiyle ilgili bir sorun tespit ettiğinizde uygulamayı salt okuma modunda çalıştırmak isteyebilirsiniz.
+Sonuç olarak, bu uygulamanızın karmaşıklığına bağlıdır. Hataları hizmet e göre işlememeye karar verebilirsiniz, ancak bunun yerine tüm depolama hizmetleri için okuma isteklerini ikincil bölgeye yönlendirmeye ve birincil bölgedeki herhangi bir depolama hizmetiyle ilgili bir sorun algıladığında uygulamayı salt okunur modunda çalıştırabilirsiniz.
 
 ### <a name="other-considerations"></a>Diğer konular
 
-Bunlar, bu makalenin geri kalanında tartıştığımız diğer önemli noktalardır.
+Bunlar, bu makalenin geri kalanında tartışacağız diğer hususlar dır.
 
-* Devre kesici modelini kullanarak okuma isteklerinin yeniden denemelerini işleme
+* Devre Kesici deseni kullanarak okuma isteklerinin yeniden denemelerini işleme
 
-* Sonuçta tutarlı veriler ve son eşitleme zamanı
+* Sonunda tutarlı veri ve Son Eşitleme Süresi
 
-* Test Etme
+* Sınama
 
-## <a name="running-your-application-in-read-only-mode"></a>Uygulamanızı salt okuma modunda çalıştırma
+## <a name="running-your-application-in-read-only-mode"></a>Uygulamanızı salt okunur modunda çalıştırma
 
-Birincil bölgedeki bir kesinti için etkin bir şekilde hazırlanması için, hem başarısız okuma isteklerini hem de başarısız güncelleştirme isteklerini işleyebilmelisiniz (Bu durumda, bu örnekte bu durum, güncelleştirmeler ve silinmeler). Birincil bölge başarısız olursa, okuma istekleri ikincil bölgeye yeniden yönlendirilebilir. Ancak, ikincil salt okunurdur, güncelleştirme istekleri ikinciye yeniden yönlendirilemiyor. Bu nedenle, uygulamanızı salt okuma modunda çalışacak şekilde tasarlamanız gerekir.
+Birincil bölgede bir kesintiye etkili bir şekilde hazırlanmak için, hem başarısız okuma isteklerini hem de başarısız güncelleştirme isteklerini işleyebilmelisin (bu durumda eklemeler, güncelleştirmeler ve silmeler anlamına gelen güncelleştirmeyle). Birincil bölge başarısız olursa, okuma istekleri ikincil bölgeye yönlendirilebilir. Ancak, ikincil okuma okunur olduğundan güncelleştirme istekleri ikincil yönlendirilemez. Bu nedenle, uygulamanızı salt okunur modunda çalışacak şekilde tasarlamanız gerekir.
 
-Örneğin, Azure depolama 'ya herhangi bir güncelleştirme isteği gönderilmeden önce denetlenen bir bayrak ayarlayabilirsiniz. Güncelleştirme isteklerinden biri aracılığıyla geldiğinde, bunu atlayabilir ve müşteriye uygun bir yanıt döndürebilirsiniz. Sorun çözümlenene kadar belirli özellikleri devre dışı bırakmak ve kullanıcılara bu özelliklerin geçici olarak kullanılamadığını bildirmek isteyebilirsiniz.
+Örneğin, herhangi bir güncelleştirme isteği Azure Depolama'ya gönderilmeden önce denetlenen bir bayrak ayarlayabilirsiniz. Güncelleştirme isteklerinden biri geldiğinde, bunu atlayabilir ve müşteriye uygun bir yanıt döndürebilirsiniz. Sorun çözülene kadar bazı özellikleri tamamen devre dışı bırakmak ve kullanıcılara bu özelliklerin geçici olarak kullanılmayan durumu bildirmek isteyebilirsiniz.
 
-Her hizmet için hataları ayrı olarak işlemeye karar verirseniz, uygulamanızı hizmet tarafından salt okuma modunda çalıştırma özelliğini de gerçekleştirmeniz gerekir. Örneğin, etkinleştirilebilen ve devre dışı bırakılabilirler her hizmet için salt okuma bayraklarınız olabilir. Daha sonra, bu bayrağı kodunuzda uygun yerlerde işleyebilirsiniz.
+Her hizmetin hatalarını ayrı ayrı işlemeye karar verirseniz, uygulamanızı hizmete göre salt okunur modunda çalıştırma yeteneğini de işlemeniz gerekir. Örneğin, etkinleştirilebilen ve devre dışı bırakılmış her hizmet için salt okunur bayraklar olabilir. Ardından bayrağı kodunuzdaki uygun yerlerde işleyebilirsiniz.
 
-Uygulamanızı salt okuma modunda çalıştırmak, bir yandan büyük bir uygulama yükseltmesi sırasında sınırlı işlevsellik sağlama olanağı sunar. Uygulamanızı salt okuma modunda çalışacak şekilde tetikleyip ikincil veri merkezini işaret ederken, yükseltme yaparken birincil bölgedeki verilere hiç kimsenin erişemeyeceğinden emin olabilirsiniz.
+Uygulamanızı salt okunur modda çalıştırabilmek başka bir yan yarara sahiptir – büyük bir uygulama yükseltmesi sırasında sınırlı işlevsellik sağlama nızı sağlar. Uygulamanızı salt okunur modunda çalışmasını tetikleyebilir ve yükseltme yaparken birincil bölgedeki verilere kimsenin erişmemesini sağlayarak ikincil veri merkezini işaret edebilirsiniz.
 
-## <a name="handling-updates-when-running-in-read-only-mode"></a>Salt okuma modunda çalışırken güncelleştirmeleri işleme
+## <a name="handling-updates-when-running-in-read-only-mode"></a>Salt okunur modunda çalışırken güncelleştirmeleri işleme
 
-Salt okuma modunda çalışırken güncelleştirme isteklerini işlemenin birçok yolu vardır. Bu kavrama kapsamlı bir şekilde ele alınmayacağız, ancak genellikle göz önünde bulundurmanız gereken birkaç desen vardır.
+Salt okunur modunda çalışırken güncelleştirme isteklerini işlemenin birçok yolu vardır. Bunu kapsamlı bir şekilde ele alamayacağız, ama genel olarak, düşündüğünüz birkaç model vardır.
 
-1. Kullanıcıya yanıt verebilir ve şu anda güncelleştirmeleri kabul etmelerinizi söyleyebilirsiniz. Örneğin, bir iletişim yönetimi sistemi müşterilerin iletişim bilgilerine erişmesini sağlayabilir, ancak güncelleştirme yapamaz.
+1. Kullanıcınıza yanıt verebilir ve güncelleştirmeleri şu anda kabul etmediğinizi söyleyebilirsiniz. Örneğin, bir kişi yönetim sistemi müşterilerin kişi bilgilerine erişmesini sağlayabilir, ancak güncelleştirmeler yapamaz.
 
-2. Güncelleştirmelerinizi başka bir bölgede sıraya alabilirsiniz. Bu durumda, bekleyen güncelleştirme isteklerinizi farklı bir bölgedeki bir kuyruğa yazar ve ardından birincil veri merkezi yeniden çevrimiçi olduktan sonra bu istekleri işlemek için bir yola sahip olursunuz. Bu senaryoda, müşterinin, istenen güncelleştirmenin daha sonra işlenmek üzere kuyruğa alındığından emin olmanız gerekir.
+2. Güncelleştirmelerinizi başka bir bölgeye ekolarak sıralayabilirsiniz. Bu durumda, bekleyen güncelleştirme isteklerinizi farklı bir bölgedeki bir kuyruğa yazar ve birincil veri merkezi yeniden çevrimiçi olduktan sonra bu istekleri işlemenin bir yolunu bursunuz. Bu senaryoda, müşteriye istenen güncelleştirmenin daha sonraki işlemler için sıraya ait olduğunu bildirmelisiniz.
 
-3. Güncelleştirmelerinizi, başka bir bölgedeki bir depolama hesabına yazabilirsiniz. Ardından, birincil veri merkezi yeniden çevrimiçi olduğunda, verilerin yapısına bağlı olarak, bu güncelleştirmeleri birincil verilerle birleştirmenin bir yolu olabilir. Örneğin, adında bir tarih/saat damgasıyla ayrı dosyalar oluşturuyorsanız, bu dosyaları birincil bölgeye geri kopyalayabilirsiniz. Bu, günlüğe kaydetme ve IoT verileri gibi bazı iş yükleri için geçerlidir.
+3. Güncelleştirmelerinizi başka bir bölgedeki bir depolama hesabına yazabilirsiniz. Daha sonra birincil veri merkezi yeniden çevrimiçi olduğunda, verilerin yapısına bağlı olarak bu güncelleştirmeleri birincil verilerle birleştirmenin bir yolunu bulabilirsiniz. Örneğin, adında tarih/saat damgası olan ayrı dosyalar oluşturuyorsanız, bu dosyaları birincil bölgeye kopyalayabilirsiniz. Bu, günlük işleme ve iOT verileri gibi bazı iş yüklerinde çalışır.
 
 ## <a name="handling-retries"></a>Yeniden denemeleri işleme
 
-Azure Storage istemci kitaplığı, hangi hataların yeniden deneneceği tespit etmenize yardımcı olur. Örneğin, bir 404 hatası (kaynak bulunamadı) yeniden denenmeyecek ve bu durum başarılı bir şekilde sonuçlandığı için yeniden denenmez. Diğer taraftan, bir 500 hatası sunucu hatası olduğundan yeniden denenebilir ve sorun yalnızca geçici bir sorun olabilir. Daha fazla ayrıntı için .NET depolama istemci kitaplığındaki [üs Alretry sınıfına yönelik açık kaynak kodunu](https://github.com/Azure/azure-storage-net/blob/87b84b3d5ee884c7adc10e494e2c7060956515d0/Lib/Common/RetryPolicies/ExponentialRetry.cs) inceleyin. (ShouldRetry yöntemini arayın.)
+Azure Depolama istemci kitaplığı, hangi hataların yeniden denenebileceğini belirlemenize yardımcı olur. Örneğin, 404 hatası (kaynak bulunamadı) yeniden denenmez, çünkü yeniden deneme nin başarıyla sonuçlanması olası değildir. Öte yandan, bir sunucu hatası olduğu için 500 hatası yeniden denenebilir ve sorun geçici bir sorun olabilir. Daha fazla ayrıntı için ,.NET depolama istemcisi kitaplığındaki [Üstel Retry sınıfının açık kaynak koduna](https://github.com/Azure/azure-storage-net/blob/87b84b3d5ee884c7adc10e494e2c7060956515d0/Lib/Common/RetryPolicies/ExponentialRetry.cs) göz atın. (ShouldRetry yöntemini arayın.)
 
-### <a name="read-requests"></a>Okuma istekleri
+### <a name="read-requests"></a>İstekleri okuma
 
-Birincil depolamayla ilgili bir sorun varsa okuma istekleri ikincil depolamaya yönlendirilebilir. En [sonunda tutarlı verileri kullanma](#using-eventually-consistent-data)bölümünde belirtildiği gibi, uygulamanızın eski verileri okuyabilmesi için kabul edilebilir olması gerekir. İkincili verilere erişmek için depolama istemci kitaplığını kullanıyorsanız, **Locationmode** özelliği için bir değer ayarlayarak aşağıdakilerden birine bir okuma isteğinin yeniden deneme davranışını belirtebilirsiniz:
+Birincil depolamayla ilgili bir sorun varsa, okuma istekleri ikincil depolama alanına yönlendirilebilir. Yukarıda da belirtildiği [gibi, Sonunda Tutarlı Verileri Kullanma,](#using-eventually-consistent-data)uygulamanızın eski verileri okuması kabul edilebilir olmalıdır. İkincil verilerden verilere erişmek için depolama istemcisi kitaplığını kullanıyorsanız, **Konum Modu** özelliği için aşağıdakilerden birine bir değer ayarlayarak okuma isteğinin yeniden deneme davranışını belirtebilirsiniz:
 
-* **Yalnızca Primary(** varsayılan)
+* **PrimaryOnly** (varsayılan)
 
-* **PrimaryThenSecondary**
+* **İlköğretim Sonrası Ortaöğretim**
 
-* **Yalnızca Secondary**
+* **Sadece Ortaöğretim**
 
-* **SecondaryThenPrimary**
+* **İkincilThenPrimary**
 
-**Locationmode** öğesini **primarythensecondary**olarak belirlediğinizde, birincil uç noktaya ilk okuma isteği yeniden denenebilecek bir hata vererek başarısız olursa istemci, ikincil uç noktaya otomatik olarak başka bir okuma isteği oluşturur. Hata bir sunucu zaman aşımı ise, istemci, hizmetten yeniden denenebilir bir hata vermeden önce zaman aşımı süresinin dolmasını beklemek zorunda kalır.
+**LocationMode'u** **PrimaryThenSecondary**olarak ayarladığınızda, birincil bitiş noktasına ilk okuma isteği yeniden denenebilecek bir hatayla başarısız olursa, istemci otomatik olarak ikincil bitiş noktasına başka bir okuma isteği yapar. Hata bir sunucu zaman aşımı ise, istemci hizmetten yeniden denilebilir bir hata almadan önce zaman aşımı için beklemek zorunda kalacaktır.
 
-Yeniden denenebilir bir hataya nasıl yanıt vereceğinize karar verirken dikkate alınması gereken temel olarak iki senaryo vardır:
+Yeniden denilebilir bir hataya nasıl yanıt verilecenize karar verirken göz önünde bulundurmanız gereken temelde iki senaryo vardır:
 
-* Bu yalıtılmış bir sorundur ve birincil uç noktaya yapılan sonraki istekler yeniden denenebilir bir hata döndürmez. Bunun gerçekleşebileceği bir örnek, geçici bir ağ hatası olduğunda gerçekleşir.
+* Bu yalıtılmış bir sorundur ve birincil bitiş noktasına sonraki istekler yeniden denenebilir bir hata döndürmez. Bunun olabileceği bir örnek, geçici bir ağ hatası olduğunda ortaya çıkabilir.
 
-    Bu senaryoda, yalnızca seyrek olduğu için **Locationmode** 'U **primarythensecondary** olarak ayarlanmış önemli bir performans cezası yoktur.
+    Bu senaryoda, Yalnızca seyrek olarak gerçekleştiği için **LocationMode'un** **PrimaryThenSecondary** olarak ayarlamında önemli bir performans cezası yoktur.
 
-* Bu, birincil bölgedeki depolama hizmetlerinden en az birinde ve birincil bölgedeki bu hizmete yapılan tüm sonraki isteklerin bir süre için yeniden denenebilir hata döndürmesine neden olabilir. Bunun bir örneği, birincil bölgenin tamamen erişilemez olması durumunda oluşur.
+* Bu, birincil bölgedeki depolama hizmetlerinden en az birinde bir sorundur ve birincil bölgedeki bu hizmete sonraki tüm isteklerin bir süre için yeniden denenebilir hataları döndürme olasılığı yüksektir. Buna bir örnek, birincil bölgeye tamamen erişilememiş olmasıdır.
 
-    Bu senaryoda, tüm okuma istekleriniz öncelikle birincil uç noktayı deneyeceğinden, zaman aşımının süresinin dolmasını bekleyip ikincil uç noktaya geçiş yapmak için bir performans cezası vardır.
+    Bu senaryoda, tüm okuma istekleriniz önce birincil bitiş noktasını çalışacağından, zaman aşımının dolmasını bekleyeceğinden ve ardından ikincil bitiş noktasına geçeceğinden bir performans cezası vardır.
 
-Bu senaryolarda, birincil uç noktada devam eden bir sorun olduğunu ve tüm okuma isteklerini doğrudan ikincil uç noktaya göndererek **Locationmode** özelliğini **yalnızca secondaryolarak**ayarlayarak belirlemeniz gerekir. Şu anda, uygulamayı salt okuma modunda çalışacak şekilde de değiştirmelisiniz. Bu yaklaşım, [devre kesici stili](/azure/architecture/patterns/circuit-breaker)olarak bilinir.
+Bu senaryolar için, birincil bitiş noktasıyla ilgili devam eden bir sorun olduğunu belirlemeli ve **KonumModu** özelliğini **SecondaryOnly'e**ayarlayarak tüm okuma isteklerini doğrudan ikincil bitiş noktasına göndermelisiniz. Şu anda, uygulamayı salt okunur modunda çalışacak şekilde de değiştirmeniz gerekir. Bu yaklaşım Devre [Kesici Deseni](/azure/architecture/patterns/circuit-breaker)olarak bilinir.
 
-### <a name="update-requests"></a>Güncelleştirme istekleri
+### <a name="update-requests"></a>İstekleri güncelleştirme
 
-Devre kesici stili, güncelleştirme isteklerine de uygulanabilir. Ancak, güncelleştirme istekleri, salt okunurdur olan ikincil depolamaya yeniden yönlendirilemez. Bu istekler için **Locationmode** özelliği **primaryonly** (varsayılan) olarak ayarlanmalıdır. Bu hataları işlemek için, bu isteklere bir ölçü (örneğin, bir satırda 10 hata) uygulayabilir ve eşik karşılandığında, uygulamayı salt okuma moduna geçirin. Güncelleştirme moduna geri dönmek için, devre kesici deseninin sonraki bölümünde açıklandığı gibi aynı yöntemleri kullanabilirsiniz.
+Devre Kesici deseni, güncelleştirme isteklerine de uygulanabilir. Ancak, güncelleştirme istekleri salt okunur olan ikincil depolama alanına yönlendirilemez. Bu istekler **için, Konum Modu** özelliğini **PrimaryOnly** (varsayılan) olarak bırakmalısınız. Bu hataları işlemek için, bu isteklere (örneğin, üst üste 10 hata gibi) bir metrik uygulayabilirsiniz ve eşiğiniz karşılandığında uygulamayı salt okunur moduna dönüştürebilirsiniz. Devre Kesici deseni hakkında bir sonraki bölümde aşağıda açıklananlarla güncelleştirme moduna dönmek için aynı yöntemleri kullanabilirsiniz.
 
 ## <a name="circuit-breaker-pattern"></a>Devre Kesici düzeni
 
-Uygulamanızdaki devre kesici deseninin kullanılması, tekrar tekrar başarısız olan bir işlemi yeniden denemesini engelleyebilir. İşlem üstel olarak yeniden denenirken uygulamanın çalışmaya devam etmesini sağlar. Ayrıca hata düzeltildiğinde, uygulamanın işlemi yeniden denemesini de algılar.
+Uygulamanızdaki Devre Kesici deseni kullanmak, tekrar tekrar başarısız olma olasılığı olan bir işlemi yeniden denemesini engelleyebilir. İşlem katlanarak yeniden denenirken zaman almak yerine uygulamanın çalışmaya devam etmesini sağlar. Ayrıca, hatanın ne zaman düzeltildiğini algılar ve uygulama işlemi yeniden deneyebilir.
 
-### <a name="how-to-implement-the-circuit-breaker-pattern"></a>Devre kesici modelini uygulama
+### <a name="how-to-implement-the-circuit-breaker-pattern"></a>Devre kesici deseni nasıl uygulanır?
 
-Birincil uç noktayla devam eden bir sorun olduğunu belirlemek için, istemcinin yeniden denenebilir hatalar ile ne sıklıkta karşılaşduğunu izleyebilirsiniz. Her durum farklı olduğundan, ikincil uç noktaya geçiş yapmak ve uygulamayı salt okunurdur modunda çalıştırmak için kullanmak istediğiniz eşiğe karar vermeniz gerekir. Örneğin, başarılı olmayan bir satırda 10 başarısızlık varsa anahtarı gerçekleştirmeye karar verebilirsiniz. 2 dakikalık bir dönemdeki isteklerin %90 ' i başarısız olursa başka bir örnek de bu bir örnektir.
+Birincil bitiş noktasıyla ilgili devam eden bir sorun olduğunu belirlemek için, istemcinin yeniden denilebilir hatalarla ne sıklıkta karşılaştığını izleyebilirsiniz. Her servis talebi farklı olduğundan, ikincil bitiş noktasına geçme ve uygulamayı salt okunur modunda çalıştırma kararı için kullanmak istediğiniz eşiğe karar vermeniz gerekir. Örneğin, üst üste hiçbir başarı elde edemediği10 hata varsa, anahtarı gerçekleştirmeye karar verebilirsiniz. Başka bir örnek, 2 dakikalık bir süre içinde isteklerin %90'ı başarısız olursa geçiş yapmaktır.
 
-İlk senaryo için yalnızca hataların sayısını tutabilir ve en büyük sayıya ulaşmadan önce bir başarı varsa, sayıyı tekrar sıfır olarak ayarlayın. İkinci senaryo için, bunu uygulamak için bir yol MemoryCache nesnesini kullanmaktır (.NET 'te). Her bir istek için önbelleğe bir CacheItem ekleyin, değeri Success (1) veya fail (0) olarak ayarlayın ve sona erme süresini şimdi 2 dakika olarak ayarlayın (ya da zaman kısıtlamaınız olsun). Bir girdinin süre sonu zamanına ulaşıldığında, giriş otomatik olarak kaldırılır. Bu, 2 dakikalık bir pencere sağlar. Depolama hizmeti için her istek yaptığınızda, ilk olarak bellek yüzdesini hesaplamak için MemoryCache nesnesi genelinde bir LINQ sorgusu kullanırsınız ve sayı ile ayırarak toplam yüzde değerini hesaplayabilirsiniz. Toplam yüzde değeri bir eşiğin altına düştüğünde (örneğin %10), okuma istekleri için **Locationmode** özelliğini **secondaryonly** olarak ayarlayın ve devam etmeden önce uygulamayı salt okuma moduna geçirin.
+İlk senaryoiçin, hataların sayısını tutabilirsiniz ve maksimuma ulaşmadan önce bir başarı varsa, sayıyı sıfıra ayarlayın. İkinci senaryo için, bunu uygulamanın bir yolu MemoryCache nesnesini (.NET'te) kullanmaktır. Her istek için önbelleğe bir Önbellek ekleyin, değeri başarı (1) veya başarısız (0) olarak ayarlayın ve son kullanma süresini bundan 2 dakika sonraya (veya zaman kısıtlamanız ne olursa olsun) ayarlayın. Bir girişin son kullanma süresine ulaşıldığında, giriş otomatik olarak kaldırılır. Bu size 2 dakikalık bir süre verecektir. Depolama hizmetine her istekte bulunduğunuzda, önce MemoryCache nesnesi arasında değerleri toplama ve sayıma göre bölme yle yüzde başarıyı hesaplamak için bir Linq sorgusu kullanırsınız. Yüzde başarı bazı eşiğin altına düştüğünde (%10 gibi), **Saltasyonel'e** okuma istekleri için **LocationMode** özelliğini ayarlayın ve devam etmeden önce uygulamayı salt okunur moduna geçin.
 
-Anahtarın uygulamanızda hizmetten hizmete ne zaman değişebileceğini belirlemede kullanılan hata eşiği, bu nedenle bunları yapılandırılabilir parametreler yapmayı düşünmelisiniz. Bu, daha önce anlatıldığı gibi, her bir hizmetten ayrı ayrı veya tek bir yeniden denenebilir hata işlemeye karar vereceğiniz yerdir.
+Geçişin ne zaman yapılacağını belirlemek için kullanılabilen hata ların eşikleri uygulamanızdaki hizmetten hizmete değişebilir, bu yılları yapılanabilir parametreler haline getirmeyi düşünüyor. Bu, her hizmetten daha önce tartışıldığı gibi yeniden denenebilir hataları ayrı ayrı veya bir olarak işlemeye karar verdiğiniz yerdir.
 
-Diğer bir deyişle, bir uygulamanın birden çok örneğini işleme ve her bir örnekteki yeniden denenebilir hataları algılamadığınızda yapmanız gerekenler. Örneğin, aynı uygulama yüklü olan 20 VM çalıştırıyor olabilirsiniz. Her örneği ayrı olarak işlemeyin misiniz? Bir örnek sorunla karşılaşmaya başlarsa, yanıtı yalnızca bir örneğe sınırlamak ister veya bir örnek bir sorun olduğunda tüm örneklerin aynı şekilde yanıt vermesini denemek istiyor musunuz? Örneklerin ayrı olarak işlenmesi, yanıtları bunlar genelinde koordine edilmeye çalışırken çok daha basittir, ancak bunu yapma yöntemi uygulamanızın mimarisine bağlıdır.
+Başka bir göz, bir uygulamanın birden çok örneğini nasıl işleyeceğiniz ve her örnekte yeniden deneebilir hataları algıladiğinizde ne yapmanız gerektiğinin nedenidir. Örneğin, aynı uygulama yüklü 20 VM'niz çalışıyor olabilir. Her örneği ayrı ayrı mı işliyorsunuz? Bir örnekte sorun olmaya başlarsa, yanıtı sadece bir örnekle sınırlamak mı istiyorsunuz, yoksa bir örnekte sorun olduğunda tüm örneklerin aynı şekilde yanıt vermesi için mi denemek istiyorsunuz? Örnekleri ayrı ayrı işlemek, yanıtı bunlar arasında koordine etmeye çalışmaktan çok daha kolaydır, ancak bunu nasıl yapacağınız uygulamanızın mimarisine bağlıdır.
 
-### <a name="options-for-monitoring-the-error-frequency"></a>Hata sıklığını izlemeye yönelik seçenekler
+### <a name="options-for-monitoring-the-error-frequency"></a>Hata sıklığını izleme seçenekleri
 
-Birincil bölgedeki yeniden deneme sıklığını izlemek için üç ana seçeneğiniz vardır ve bu, ikincil bölgeye ne zaman geçip uygulamayı salt okuma modunda çalışacak şekilde değiştirebilir.
+İkincil bölgeye ne zaman geçeceğinizi belirlemek ve uygulamayı salt okunur modunda çalışacak şekilde değiştirmek için birincil bölgedeki yeniden denemelerin sıklığını izlemek için üç ana seçeneğiniz var.
 
-* Depolama isteklerinizi geçirdiğiniz [**OperationContext**](https://docs.microsoft.com/java/api/com.microsoft.applicationinsights.extensibility.context.operationcontext) nesnesinde yeniden [**deneme**](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.operationcontext.retrying) olayı için bir işleyici ekleyin; Bu yöntem bu makalede görüntülenir ve birlikte gelen örnekte kullanılır. Bu olaylar istemci bir isteği yeniden denediğinde, istemcinin bir birincil uç noktada yeniden denenebilir hata ile karşılaşacağını izlemenize olanak sağlar.
+* Depolama isteklerinize geçtiğiniz [**OperationContext**](https://docs.microsoft.com/java/api/com.microsoft.applicationinsights.extensibility.context.operationcontext) nesnesindeki [**Yeniden Deneme**](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.operationcontext.retrying) olayı için bir işleyici ekleyin – bu makalede görüntülenen ve beraberindeki örnekte kullanılan yöntemdir. Bu olaylar, istemci bir isteği yeniden çalıştığında, istemcinin birincil bitiş noktasında yeniden denilebilir hatalarla ne sıklıkta karşılaştığını izlemenize olanak sağlar.
 
     ```csharp
     operationContext.Retrying += (sender, arguments) =>
@@ -160,7 +160,7 @@ Birincil bölgedeki yeniden deneme sıklığını izlemek için üç ana seçene
     };
     ```
 
-* Özel bir yeniden deneme ilkesindeki [**değerlendir**](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.iextendedretrypolicy.evaluate) yönteminde, her yeniden deneme gerçekleştiğinde özel kod çalıştırabilirsiniz. Bir yeniden deneme gerçekleştiğinde kayda ek olarak, bu da yeniden deneme davranışınızı değiştirme fırsatını sağlar.
+* Özel yeniden deneme ilkesindeki [**Değerlendir**](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.table.iextendedretrypolicy.evaluate) yönteminde, yeniden deneme yapıldığında özel kod çalıştırabilirsiniz. Yeniden deneme yapıldığında kaydetmeye ek olarak, bu size yeniden deneme davranışınızı değiştirme fırsatı da verir.
 
     ```csharp 
     public RetryInfo Evaluate(RetryContext retryContext,
@@ -188,39 +188,39 @@ Birincil bölgedeki yeniden deneme sıklığını izlemek için üç ana seçene
     }
     ```
 
-* Üçüncü yaklaşım, uygulamanızda birincil depolama uç noktanıza (küçük bir blobu okumak gibi) sistem durumunu öğrenmek için sürekli okuma istekleri (örneğin, küçük bir blob okuma) ile sürekli olarak ping bir özel izleme bileşeni uygulamaktır. Bu, bazı kaynakları ele geçirebilir, ancak önemli miktarda değildir. Eşiğine ulaşan bir sorun keşfedildiğinde, anahtarı **yalnızca Secondaryve** salt okunurdur modunda gerçekleştirirsiniz.
+* Üçüncü yaklaşım, uygulamanızda, birincil depolama bitiş noktanızı sürekli olarak sahte okuma istekleriyle (küçük bir leke okuma gibi) pingleyerek, durumunu belirlemek için özel bir izleme bileşeni uygulamaktır. Bu bazı kaynaklar, ancak önemli bir miktar alacaktı. Eşiğinize ulaşan bir sorun fark edildiğinde, **Saltveli ve** salt okunur moduna geçişi gerçekleştirirsiniz.
 
-Bir noktada, birincil uç noktayı kullanmaya ve güncelleştirmelere izin vermeye geri dönmek isteyeceksiniz. Yukarıda listelenen ilk iki yöntemden birini kullanıyorsanız, yalnızca birincil uç noktaya geçiş yapmanız ve rastgele seçilmiş bir süre veya işlem sayısı gerçekleştirildikten sonra güncelleştirme modunu etkinleştirmeniz yeterlidir. Daha sonra yeniden deneme mantığı aracılığıyla yeniden çalışmaya devam edebilirsiniz. Sorun giderilmediyse, birincil uç noktayı kullanmaya ve güncelleştirmelere izin vermeyi sürdürür. Hala bir sorun varsa, ayarlamış olduğunuz ölçütlerle başarısız olduktan sonra ikincil uç noktaya ve salt okunurdur moduna daha fazla geçiş yapar.
+Bir noktada, birincil bitiş noktasını kullanarak ve güncelleştirmelere izin vermeye geri dönmek isteyeceksiniz. Yukarıda listelenen ilk iki yöntemden birini kullanıyorsanız, yalnızca birincil bitiş noktasına geri dönebilir ve rasgele seçilen bir zaman veya işlem sayısı gerçekleştirildikten sonra güncelleştirme modunu etkinleştirebilirsiniz. Daha sonra yeniden deneme mantığı üzerinden geçmesine izin verebilirsiniz. Sorun giderildiyse, birincil bitiş noktasını kullanmaya ve güncelleştirmelere izin vermeye devam edecektir. Hala bir sorun varsa, belirlediğiniz ölçütleri başarısız lığa uğrattıktan sonra bir kez daha ikincil bitiş noktasına ve salt okunur moduna geri döner.
 
-Üçüncü senaryoda, birincil depolama uç noktasının ping işlemi yeniden başarılı hale geldiğinde, anahtarı **yalnızca primaryto** 'a tetikleyip güncelleştirmelere izin vermeye devam edebilirsiniz.
+Üçüncü senaryoda, birincil depolama bitiş noktasını pingleme yeniden başarılı olduğunda, **Geçişi PrimaryOnly'e** geri tetikleyebilir ve güncelleştirmelere izin vermeye devam edebilirsiniz.
 
-## <a name="handling-eventually-consistent-data"></a>Sonuçta tutarlı verileri işleme
+## <a name="handling-eventually-consistent-data"></a>Sonunda tutarlı verileri işleme
 
-Coğrafi olarak yedekli depolama, işlemleri birincil sunucudan ikincil bölgeye çoğaltarak işe yarar. Bu çoğaltma işlemi, İkincil bölgedeki verilerin *sonunda tutarlı*olmasını güvence altına alır. Bu, birincil bölgedeki tüm işlemlerin son olarak ikincil bölgede görüneceği, ancak görüntülenmeden önce bir gecikme olabileceği ve ikincil bölgede işlemlerin ikincil bölgeye ait oldukları ve bunların aynı sırada olduğu garantisi olmaması durumunda İlk olarak birincil bölgeye uygulandı. İşlemleriniz ikincil bölgeye sıra dışında geldiğinde, İkincil bölgedeki verilerinizi hizmet bitene kadar tutarsız bir durumda olacak *şekilde düşünebilirsiniz.*
+Coğrafi yedekli depolama, birincil bölgeden ikincil bölgeye hareketleri çoğaltarak çalışır. Bu çoğaltma işlemi, ikincil bölgedeki verilerin *sonunda tutarlı*olduğunu garanti eder. Bu, birincil bölgedeki tüm işlemlerin eninde sonunda ikincil bölgede görüneceği, ancak görünmeden önce bir gecikme olabileceği ve işlemlerin ikincil bölgeye geldikleri sırada aynı sırada geleceğinin garantisi olmadığı anlamına gelir. başlangıçta birincil bölgede uygulanmıştır. İşlemleriniz ikincil bölgeye bozuk gelirse, hizmet yakalanana kadar ikincil bölgedeki verilerinizi tutarsız bir durumda olarak *düşünebilirsiniz.*
 
-Aşağıdaki tabloda, bir çalışanın ayrıntılarını *Yöneticiler* rolünün bir üyesi haline getirmek için güncelleştirdiğinizde neler gerçekleşebileceğini gösteren bir örnek gösterilmektedir. Bu örneğin, bu örnek için **çalışan** varlığını güncelleştirmenizi ve bir **yönetici rolü** varlığını, toplam yönetici sayısı sayısıyla güncelleştirmeniz gerekir. Güncelleştirmelerin ikincil bölgede nasıl uygulandığına dikkat edin.
+Aşağıdaki tablo, yöneticilerin *rolünün* bir üyesi yapmak için bir çalışanın ayrıntılarını güncelleştirdiğinizde neler olabileceğine ilişkin bir örnek gösterir. Bu örneğin iyiliği için, bu **çalışan** varlık güncelleştirmek ve yönetici rol varlık toplam yönetici sayısı nın bir sayı ile bir **yönetici rol** varlığı güncelleştirmeyi gerektirir. Güncelleştirmelerin ikincil bölgede sıra dışı nasıl uygulandığına dikkat edin.
 
-| **Işınızda** | **İşlem**                                            | **Çoğaltma**                       | **Son eşitleme zamanı** | **Kaynaklanan** |
+| **Zaman** | **Işlem**                                            | **Çoğaltma**                       | **Son Eşitleme Süresi** | **Sonuç** |
 |----------|------------------------------------------------------------|---------------------------------------|--------------------|------------| 
-| T0       | İşlem A: <br> Çalışan Ekle <br> birincil varlıktaki varlık |                                   |                    | Birincil öğesine ekli işlem<br> henüz çoğaltılmamıştır. |
-| T1       |                                                            | İşlem A <br> çoğaltma<br> İK | T1 | İşlem ikinciye çoğaltılır. <br>Son eşitleme zamanı güncelleştirildi.    |
-| T2       | İşlem B:<br>Güncelleştir<br> çalışan varlığı<br> birincil  |                                | T1                 | Birincil diske yazılan işlem B<br> henüz çoğaltılmamıştır.  |
-| T3       | İşlem C:<br> Güncelleştir <br>danışın<br>içindeki rol varlığı<br>birincil |                    | T1                 | Birincil öğesine yazılan işlem C,<br> henüz çoğaltılmamıştır.  |
-| *T4*     |                                                       | İşlem C <br>çoğaltma<br> İK | T1         | İşlem C, ikinciye çoğaltıldı.<br>LastSyncTime güncelleştirilmedi, çünkü <br>işlem B henüz çoğaltılmamıştır.|
-| *T5*     | Varlıkları oku <br>ikincili                           |                                  | T1                 | Çalışan için eski değeri alırsınız <br> işlem B işlemi olmadığı için varlık <br> henüz çoğaltıldı. İçin yeni bir değer alırsınız<br> Yönetici rolü varlığı çünkü C<br> çoğaltılamaz. Son eşitleme saati hala değil<br> işlem B nedeniyle güncelleştirildi<br> çoğaltılmadı. Şunu yapabilirsiniz<br>Yönetici rolü varlığı tutarsız <br>varlık tarih/saat sonra olduğu için <br>Son eşitleme zamanı. |
-| *T6*     |                                                      | İşlem B<br> çoğaltma<br> İK | T6                 | *T6* – C ile tüm işlemler <br>çoğaltılan, son eşitleme zamanı<br> güncelleştirildi. |
+| T0       | İşlem A: <br> Çalışan ekleme <br> birincil varlık |                                   |                    | İşlem Birincil ekime eklenen A,<br> henüz çoğaltılmadı. |
+| T1       |                                                            | İşlem A <br> için çoğaltılır<br> Ikincil | T1 | İşlem A ikincil olarak çoğaltılır. <br>Son Eşitleme Süresi güncelleştirildi.    |
+| T2       | İşlem B:<br>Güncelleştirme<br> çalışan varlık<br> birincil  |                                | T1                 | Birincil olarak yazılan Işlem B,<br> henüz çoğaltılmadı.  |
+| T3       | İşlem C:<br> Güncelleştirme <br>yönetici<br>rol varlığı<br>Birincil |                    | T1                 | Birincil olarak yazılan C işlemi,<br> henüz çoğaltılmadı.  |
+| *T4*     |                                                       | İşlem C <br>için çoğaltılır<br> Ikincil | T1         | İşlem C ikincil çoğaltılır.<br>LastSyncTime güncelleştirilemedi çünkü <br>işlem B henüz çoğaltılmadı.|
+| *T5*     | Varlıkları okuma <br>ikincil                           |                                  | T1                 | Çalışan için eski değeri elde elabilirsiniz <br> varlık, çünkü işlem B değil <br> henüz çoğaltılır. Yeni bir değer elde<br> yönetici rol varlığı, çünkü C<br> Çoğaltılmış. Son Eşitleme Süresi hala yok<br> işlem B nedeniyle güncelleştirildi<br> çoğaltılmadı. Bunu anlayabilirsin.<br>yönetici rol varlığı tutarsız <br>çünkü varlık tarihi/saati sonra <br>Son Eşitleme Zamanı. |
+| *T6*     |                                                      | İşlem B<br> için çoğaltılır<br> Ikincil | T6                 | *T6* – C üzerinden yapılan tüm işlemler, <br>çoğaltıldı, Son Eşitleme Zamanı<br> güncellenir. |
 
-Bu örnekte, istemci, T5 adresindeki ikincil bölgeden okuma yapmak için anahtar olduğunu varsayalım. Şu anda **yönetici rolü** varlığını başarıyla okuyabilir, ancak varlık, ikincil bölgede şu anda yönetici olarak işaretlenen **çalışan** varlık sayısıyla tutarlı olmayan yönetici sayısı için bir değer içerir. İstemciniz bu değeri, tutarsız bilgiler olması riskiyle tek bir şekilde görüntüleyebilir. Alternatif olarak, istemci, güncelleştirmeler sıralı olmadığından ve kullanıcıyı bu olguyu bilgilendirdiğinden, **yönetici rolünün** potansiyel olarak tutarsız bir durumda olduğunu belirlemeyi deneyebilir.
+Bu örnekte, istemcinin T5'teki ikincil bölgeden okumaya geçtiğini varsayalım. Şu anda **yönetici rol** varlığını başarıyla okuyabilir, ancak varlık, şu anda ikincil bölgede yönetici olarak işaretlenmiş **çalışan** varlık sayısıyla tutarlı olmayan yönetici sayısı için bir değer içerir. Müşteriniz, tutarsız bilgi riski ile bu değeri yalnızca görüntüleyebilir. Alternatif olarak, istemci, güncelleştirmeler sıra dışı gerçekleştiğinden **yönetici rolünün** tutarsız bir durumda olduğunu belirlemeye çalışabilir ve ardından kullanıcıyı bu gerçeği bildirebilir.
 
-İstemci potansiyel olarak tutarsız veriler olduğunu tanımak için, bir depolama hizmetini sorgulayarak istediğiniz zaman alabileceğiniz *son eşitleme zamanının* değerini kullanabilir. Bu, İkincil bölgedeki verilerin en son tutarlı olduğu ve hizmetin bu noktadan önce tüm işlemleri uyguladığı zamanı gösterir. Yukarıdaki örnekte, hizmet **çalışan** varlığı ikincil bölgeye eklendikten sonra, son eşitleme zamanı *T1*olarak ayarlanır. Hizmet, *T6*olarak ayarlandığında, İkincil bölgedeki **çalışan** varlığını güncelleştirene kadar *T1* konumunda kalır. İstemci *T5*adresinde varlığı okurken son eşitleme saatini alıyorsa, varlığı varlığındaki zaman damgasıyla karşılaştırabilir. Varlıktaki zaman damgası son eşitleme zamanından daha sonra ise, varlık potansiyel olarak tutarsız bir durumda olur ve uygulamanız için uygun eylemi gerçekleştirebilirsiniz. Bu alanın kullanılması için son birincil güncelleştirmenin ne zaman tamamlandığını bilmeniz gerekir.
+Olası tutarsız verilere sahip olduğunu anlamak için istemci, bir depolama hizmetini sorgulayarak istediğiniz zaman alabileceğiniz *Son Eşitleme Süresi'nin* değerini kullanabilir. Bu, ikincil bölgedeki verilerin en son tutarlı olduğu zamanı ve hizmetin bu noktadan önce tüm hareketleri uyguladığı zamanı gösterir. Yukarıda gösterilen örnekte, hizmet ikinci bölgedeki **çalışan** varlığı ekledikten sonra, son eşitleme süresi *T1*olarak ayarlanır. Hizmet, *T6*olarak ayarlandığında ikincil bölgedeki **çalışan** varlığını güncellene kadar *T1'de* kalır. İstemci, *T5'teki*varlığı okuduğunda son eşitleme süresini alırsa, varlık üzerindeki zaman damgasıyla karşılaştırabilir. Varlık üzerindeki zaman damgası son eşitleme süresinden daha geç sayılsa, varlık tutarsız bir durumdadır ve uygulamanız için uygun eylemi gerçekleştirebilirsiniz. Bu alanı kullanmak, birincil güncelleştirmeye yapılan son güncelleştirmenin ne zaman tamamlandığını bilmenizi gerektirir.
 
-Son eşitleme zamanını nasıl denetleyeceğinizi öğrenmek için bkz. [depolama hesabı Için Son eşitleme zamanı özelliğini denetleme](last-sync-time-get.md).
+Son eşitleme süresini nasıl denetleyeceklerini öğrenmek [için, depolama hesabı için Son Eşitleme Süresini](last-sync-time-get.md)Denetle'ye bakın.
 
-## <a name="testing"></a>Test Etme
+## <a name="testing"></a>Sınama
 
-Yeniden denenebilir hata ile karşılaştığında uygulamanızın beklendiği gibi davrandığını test etmek önemlidir. Örneğin, bir sorun algıladığında uygulamanın ikinciye ve salt okuma moduna geçiş yapması ve birincil bölge yeniden kullanılabilir olduğunda geri geçiş yapmanız gerekir. Bunu yapmak için yeniden denenebilir hata benzetimi yapmak ve ne sıklıkta gerçekleştikleri denetlemek için bir yol gerekir.
+Yeniden deneebilir hatalarla karşılaştığında uygulamanızın beklendiği gibi çalıştığını test etmek önemlidir. Örneğin, bir sorun algıladığında uygulamanın ikincil ve salt okunur moduna geçtiğini ve birincil bölge yeniden kullanılabilir olduğunda geri döndüğünü test etmeniz gerekir. Bunu yapmak için, yeniden denenebilir hataları simüle etmek ve bunların ne sıklıkta oluştuğunu denetlemek için bir yol gerekir.
 
-Bir betikteki HTTP yanıtlarını kesme ve değiştirme için [Fiddler](https://www.telerik.com/fiddler) kullanabilirsiniz. Bu betik, birincil uç noktanıza gelen yanıtları tanımlayabilir ve HTTP durum kodunu depolama Istemci kitaplığının yeniden denenebilir hatası olarak tanıdığı bir hata olarak değiştirebilir. Bu kod parçacığı, 502 durumunu döndürmek için **employeedata** tablosuna yönelik okuma isteklerine yapılan yanıtları Izleyen bir Fiddler betiğinin basit bir örneğini gösterir:
+Bir komut dosyasında HTTP yanıtlarını engellemek ve değiştirmek için [Fiddler'ı](https://www.telerik.com/fiddler) kullanabilirsiniz. Bu komut dosyası, birincil bitiş noktanızdan gelen yanıtları tanımlayabilir ve HTTP durum kodunu Depolama İstemci Kitaplığı'nın yeniden denenebilir bir hata olarak tanıdığı bir kodla değiştirebilir. Bu kod snippet 502 durumu döndürmek için **çalışan veri** tablosuna karşı okuma isteklerine yanıtları engelleyen bir Fiddler komut dosyasıbasit bir örnek gösterir:
 
 ```java
 static function OnBeforeResponse(oSession: Session) {
@@ -232,12 +232,12 @@ static function OnBeforeResponse(oSession: Session) {
 }
 ```
 
-Bu örneği, daha geniş bir istek aralığını ele geçirebilir ve yalnızca bir miktar üzerinde **yanıt kodunu** değiştirerek gerçek bir senaryoya daha iyi benzetim yapabilirsiniz. Fiddler betikleri özelleştirme hakkında daha fazla bilgi için, bkz. Fiddler belgelerindeki [bir isteği veya yanıtı değiştirme](https://docs.telerik.com/fiddler/KnowledgeBase/FiddlerScript/ModifyRequestOrResponse) .
+Bu örneği daha geniş bir istek yelpazesini engellemek için genişletebilir ve yalnızca bazılarındaki **yanıt Kodunu** değiştirerek gerçek dünya senaryosunu daha iyi simüle edebilirsiniz. Fiddler komut dosyalarını özelleştirme hakkında daha fazla bilgi için [bkz.](https://docs.telerik.com/fiddler/KnowledgeBase/FiddlerScript/ModifyRequestOrResponse)
 
-Uygulamanızı, Salt okunabilir moda yapılandırılabilir hale getirmeye yönelik eşikler yaptıysanız, bu davranışı üretim dışı işlem birimleri ile test etmek daha kolay olacaktır.
+Uygulamanızı salt okunur modda yapılandırılabilir hale getirmek için eşikleri yaptıysanız, davranışı üretim dışı işlem hacimleriyle sınamak daha kolay olacaktır.
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-* Son eşitleme zamanı özelliğinin nasıl ayarlandığı hakkında başka bir örnek de dahil olmak üzere ikincil bölgeden okuma hakkında daha fazla bilgi için bkz. [Azure Storage artıklık seçenekleri ve Okuma Erişimli Coğrafi olarak yedekli depolama](https://blogs.msdn.microsoft.com/windowsazurestorage/2013/12/11/windows-azure-storage-redundancy-options-and-read-access-geo-redundant-storage/).
+* Son Eşitleme Zamanı özelliğinin nasıl ayarlıolduğuna ilişkin başka bir örnek de dahil olmak üzere ikincil bölgeden nasıl okunacakhakkında daha fazla bilgi için [Azure Depolama Artıkları Seçenekleri ve Access Geo-Yedekdepolama'yı okuyun'](https://blogs.msdn.microsoft.com/windowsazurestorage/2013/12/11/windows-azure-storage-redundancy-options-and-read-access-geo-redundant-storage/)a bakın.
 
-* Anahtarın birincil ve ikincil uç noktalar arasında geri ve ileri nasıl yapılacağını gösteren tam bir örnek için, bkz. [Azure örnekleri – RA-GRS depolama Ile devre kesici modelini kullanma](https://github.com/Azure-Samples/storage-dotnet-circuit-breaker-pattern-ha-apps-using-ra-grs).
+* Birincil ve ikincil uç noktalar arasında geçişin nasıl ileri ve geri yapılacağını gösteren eksiksiz bir örnek için, [Bkz. Azure Örnekleri – RA-GRS depolama alanı ile Devre Kesici Deseni'ni kullanma](https://github.com/Azure-Samples/storage-dotnet-circuit-breaker-pattern-ha-apps-using-ra-grs).

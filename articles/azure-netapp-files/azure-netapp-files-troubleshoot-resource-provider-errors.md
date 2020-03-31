@@ -1,6 +1,6 @@
 ---
-title: Azure NetApp Files kaynak sağlayıcısı hatalarını giderme | Microsoft Docs
-description: Ortak Azure NetApp Files kaynak sağlayıcısı hatalarına yönelik nedenler, çözümler ve geçici çözümleri açıklar.
+title: Azure NetApp Dosyaları Kaynak Sağlayıcı hatalarını giderme | Microsoft Dokümanlar
+description: Sık karşılaşılan Azure NetApp Dosyaları Kaynak Sağlayıcısı hatalarının nedenlerini, çözümlerini ve geçici çözümlerini açıklar.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -16,514 +16,514 @@ ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: b-juche
 ms.openlocfilehash: 62e67d4965444df0e731b4387808ed3b89e4673a
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72597200"
 ---
 # <a name="troubleshoot-azure-netapp-files-resource-provider-errors"></a>Azure NetApp Files Kaynak Sağlayıcısı hatalarını giderme 
 
-Bu makalede ortak Azure NetApp Files kaynak sağlayıcısı hataları, nedenleri, çözümleri ve geçici çözümleri (varsa) açıklanmaktadır.
+Bu makalede, sık karşılaşılan Azure NetApp Dosyaları Kaynak Sağlayıcısı hataları, nedenleri, çözümleri ve geçici çözümler (varsa) açıklanmaktadır.
 
-## <a name="common-azure-netapp-files-resource-provider-errors"></a>Ortak Azure NetApp Files kaynak sağlayıcısı hataları
+## <a name="common-azure-netapp-files-resource-provider-errors"></a>Ortak Azure NetApp Dosyaları Kaynak Sağlayıcı hataları
 
 ***BareMetalTenantId değiştirilemez.***  
 
-Bu hata, bir birimi güncelleştirmeye veya düzeltme ekine çalıştığınızda ve `BaremetalTenantId` özelliği değiştirilmiş bir değere sahip olduğunda oluşur.
+Bu hata, bir birimi güncelleştirmeye veya düzeltmeye çalıştığınızda oluşur ve `BaremetalTenantId` özellik değişen bir değere sahiptir.
 
 * Neden:   
-Bir birimi güncelleştirmeye çalışıyorsunuz ve `BaremetalTenantId` özelliği Azure 'da depolanan değerden farklı bir değere sahip.
-* Çözümden   
-Patch ve Update (put) isteğine `BaremetalTenantId` eklemeyin. Alternatif olarak, `BaremetalTenantId` istekte aynı olduğundan emin olun.
+Bir birimi güncelleştirmeye çalışıyorsunuz `BaremetalTenantId` ve özelliğin Azure'da depolanan değerden farklı bir değeri var.
+* Çözüm:   
+Yama ve `BaremetalTenantId` güncelleştirme (koymak) isteğine eklemeyin. Alternatif olarak, `BaremetalTenantId` istekte aynı olduğundan emin olun.
 
 ***ServiceLevel değiştirilemez.***  
 
-Bu hata, kapasite havuzunda zaten birimler varsa, farklı bir hizmet düzeyiyle bir kapasite havuzunu güncelleştirmeyi veya düzeltme ekini çalıştırmayı denediğinizde oluşur.
+Bu hata, kapasite havuzunda zaten birimler varken, farklı bir hizmet düzeyine sahip bir kapasite havuzunu güncelleştirmeye veya düzeltmeye çalıştığınızda oluşur.
 
 * Neden:   
-Havuz birimler içerdiğinde bir kapasite havuzu hizmet düzeyini güncelleştirmeye çalışıyorsunuz.
-* Çözümden   
+Havuz birimleri içerdiğinde kapasite havuzu hizmet düzeyini güncelleştirmeye çalışıyorsunuz.
+* Çözüm:   
 Kapasite havuzundaki tüm birimleri silin ve ardından hizmet düzeyini değiştirin.
-* Sorunu   
-Başka bir kapasite havuzu oluşturun ve ardından yeni kapasite havuzunda birimleri tekrar oluşturun.
+* Geçici çözüm:   
+Başka bir kapasite havuzu oluşturun ve yeni kapasite havuzunda birimleri yeniden oluşturun.
 
 ***PoolId değiştirilemez***  
 
-Bu hata, değiştirilen bir `PoolId` özelliği ile bir kapasite havuzunu güncelleştirmeyi veya düzeltme ekini çalıştırmayı denediğinizde oluşur.
+Bu hata, değiştirilen `PoolId` bir özelliği olan bir kapasite havuzugüncelleştirme veya yama çalıştığınızda oluşur.
 
 * Neden:   
-Bir kapasite havuzunu `PoolId` özelliğini güncelleştirmeye çalışıyorsunuz. @No__t_0 özelliği salt okunurdur ve değiştirilemez.
-* Çözümden   
-Patch ve Update (put) isteğine `PoolId` eklemeyin.  Alternatif olarak, `PoolId` istekte aynı olduğundan emin olun.
+Kapasite havuzu `PoolId` özelliğini güncelleştirmeye çalışıyorsunuz. Özellik `PoolId` salt okunur bir özelliktir ve değiştirilemez.
+* Çözüm:   
+Yama ve `PoolId` güncelleştirme (koymak) isteğine eklemeyin.  Alternatif olarak, `PoolId` istekte aynı olduğundan emin olun.
 
-***CreationToken değiştirilemiyor.***
+***CreationToken değiştirilemez.***
 
-Bu hata, birim oluşturulduktan sonra dosya yolunu (`CreationToken`) değiştirmeye çalıştığınızda oluşur. Birim oluşturulduğunda dosya yolu (`CreationToken`) ayarlanmalıdır ve daha sonra değiştirilemez.
+Bu hata, birim oluşturulduktan sonra dosya`CreationToken`yolunu ( ) değiştirmeye çalıştığınızda oluşur. Dosya yolu`CreationToken`( ) birim oluşturulduğunda ayarlanmalıdır ve daha sonra değiştirilemez.
 
 * Neden:   
-Dosya yolunu (`CreationToken`), desteklenen bir işlem olmayan birim oluşturulduktan sonra değiştirmeye çalışıyorsunuz. 
-* Çözümden   
-Dosya yolunu değiştirmek gerekmiyorsa, hata iletisini kapatmak için istekten parametreyi kaldırmayı göz önünde bulundurun.
-* Sorunu   
-Dosya yolunu (`CreationToken`) değiştirmeniz gerekiyorsa, yeni bir dosya yolu ile yeni bir birim oluşturabilir ve sonra verileri yeni birime geçirebilirsiniz.
+Ses düzeyi oluşturulduktan sonra`CreationToken`dosya yolunu ( ) değiştirmeye çalışıyorsunuz, bu da desteklenen bir işlem değil. 
+* Çözüm:   
+Dosya yolunu değiştirmek gerekli değilse, hata iletisini kapatmak için istekten parametreyi kaldırmayı düşünün.
+* Geçici çözüm:   
+Dosya yolunu değiştirmeniz gerekiyorsa`CreationToken`( ), yeni bir dosya yolu ile yeni bir birim oluşturabilir ve sonra verileri yeni birime geçirebilirsiniz.
 
 ***CreationToken en az 16 karakter uzunluğunda olmalıdır.***
 
-Dosya yolu (`CreationToken`) uzunluk gereksinimini karşılamadığında bu hata oluşur. Dosya yolunun uzunluğu en az bir karakter uzunluğunda olmalıdır.
+Bu hata, dosya yolu`CreationToken`( ) uzunluk gereksinimini karşılamadığında oluşur. Dosya yolunun uzunluğu en az bir karakter uzunluğunda olmalıdır.
 
 * Neden:   
-Dosya yolu boş.  API 'yi kullanarak bir birim oluşturduğunuzda, oluşturma belirteci gereklidir. Azure portal kullanıyorsanız, dosya yolu otomatik olarak oluşturulur.
-* Çözümden   
-Dosya yolu (`CreationToken`) olarak en az bir karakter girin.
+Dosya yolu boş.  API'yi kullanarak bir birim oluşturduğunuzda, oluşturma belirteci gereklidir. Azure portalını kullanıyorsanız, dosya yolu otomatik olarak oluşturulur.
+* Çözüm:   
+Dosya yolu olarak en az`CreationToken`bir karakter girin ( ).
 
 ***Etki alanı adı değiştirilemez.***
 
-Bu hata, Active Directory etki alanı adını değiştirmeyi denediğinizde oluşur.
+Bu hata, Etkin Dizin'de etki alanı adını değiştirmeye çalıştığınızda oluşur.
 
 * Neden:   
 Etki alanı adı özelliğini güncelleştirmeye çalışıyorsunuz.
-* Çözümden    
-Hiçbiri. Etki alanı adını değiştiremezsiniz.
-* Sorunu   
-Active Directory yapılandırmasını kullanarak tüm birimleri silin. Sonra Active Directory yapılandırmasını silip birimleri yeniden oluşturun.
+* Çözüm:    
+Yok. Etki alanı adını değiştiremezsiniz.
+* Geçici çözüm:   
+Etkin Dizin yapılandırmasını kullanarak tüm birimleri silin. Ardından Active Directory yapılandırmasını silin ve birimleri yeniden oluşturun.
 
-***Nesne ExportPolicy. Rules [Ruleındex] için yinelenen değer hatası.***
+***Nesne ExportPolicy.Rules[RuleIndex]için yinelenen değer hatası.***
 
-Bu hata, dışarı aktarma ilkesi benzersiz bir dizinle tanımlanmadığında oluşur. Dışarı aktarma ilkelerini tanımladığınızda, tüm dışa aktarma ilkesi kurallarının 1 ile 5 arasında benzersiz bir dizini olmalıdır.
+Bu hata, dışa aktarma ilkesi benzersiz bir dizin ile tanımlanmadığında oluşur. Dışa aktarma ilkeleri tanımladığınızda, tüm dışa aktarma ilkesi kurallarının 1 ile 5 arasında benzersiz bir dizini olması gerekir.
 
 * Neden:   
-Tanımlanan dışarı aktarma ilkesi, ilke kuralları verme gereksinimini karşılamıyor. En düşük ve beş dışarı aktarma ilkesi kuralı için en fazla bir dışarı aktarma ilkesi kuralına sahip olmanız gerekir.
-* Çözümden   
-Dizinin zaten kullanılmadığından ve 1 ile 5 aralığında olduğundan emin olun.
-* Sorunu   
+Tanımlanan dışa aktarma ilkesi, ihracat ilkesi kuralları gereksinimini karşılamaz. En az bir ihracat ilkesi kuralına ve en fazla beş ihracat ilkesi kuralına sahip olmalısınız.
+* Çözüm:   
+Dizinin zaten kullanılmadığından ve 1 ile 5 arasında değiştiğinden emin olun.
+* Geçici çözüm:   
 Ayarlamaya çalıştığınız kural için farklı bir dizin kullanın.
 
-***{Action} {resourceTypeName} hatası***
+***Hata {action} {resourceTypeName}***
 
-Bu hata, diğer hata işleme bir kaynakta eylem gerçekleştirirken hatayı işleyemediğinde görüntülenir.   ' Error ' metnini içerir. @No__t_0 (`getting`, `creating`, `updating` veya `deleting`) olabilir.  @No__t_0 `resourceTypeName` (örneğin, `netAppAccount`, `capacityPool`, `volume`, vb.).
-
-* Neden:   
-Bu hata, nedeni bilinen işlenmemiş bir özel durumdur.
-* Çözümden   
-Günlüklerde ayrıntılı nedeni raporlamak için Azure Destek Merkezi 'ne başvurun.
-* Sorunu   
-Hiçbiri.
-
-***Dosya yolu adı yalnızca harf, sayı ve kısa çizgi (""-"") içerebilir.***
-
-Bu hata, dosya yolu desteklenmeyen karakterler (örneğin, bir nokta ("."), virgül (","), alt çizgi ("_") veya dolar işareti ("$") içerdiğinde oluşur.
+Bu hata, bir kaynak üzerinde bir eylem gerçekleştirirken diğer hata işleme hatası işlemek için başarısız olduğunda görüntülenir.   'Hata' metnini içerir. Herhangi `{action}` biri olabilir`getting`( `creating` `updating`, `deleting`, , veya ).  `{resourceTypeName}` (örneğin, `resourceTypeName` `netAppAccount`, , `capacityPool` `volume`, ve benzeri).
 
 * Neden:   
-Dosya yolu, desteklenmeyen karakterler (örneğin, bir nokta ("."), virgül (","), alt çizgi ("_") veya dolar işareti ("$") içeriyor.
-* Çözümden   
-Girdiğiniz dosya yolundan alfabetik harf, sayı veya kısa çizgi ("-") olmayan karakterleri kaldırın.
-* Sorunu   
-Yeni sözcüklerin başlangıcını göstermek için boşluk yerine bir alt çizgiyi bir tire ile değiştirebilir veya boşluk yerine büyük harfleri kullanabilirsiniz.  Örneğin, "yeni birim" yerine "NewVolume" kullanın.
+Bu hata, neden bilinmiyor bir işlenmemiş özel durumdur.
+* Çözüm:   
+Günlüklerde ayrıntılı nedeni bildirmek için Azure Destek Merkezi'ne başvurun.
+* Geçici çözüm:   
+Yok.
 
-***Filesystemıd değiştirilemez.***
+***Dosya yolu adı yalnızca harfleri, sayıları ve tireleri (""-"") içerebilir.***
 
-@No__t_0 değiştirmeyi denediğinizde bu hata oluşur.  @No__t_0 değiştirmek desteklenen bir işlem değil. 
-
-* Neden:   
-Dosya sisteminin KIMLIĞI, birim oluşturulduğunda ayarlanır. `FileSystemId` daha sonra değiştirilemez.
-* Çözümden   
-Bir yama ve güncelleştirme (put) isteğine `FileSystemId` eklemeyin.  Alternatif olarak, `FileSystemId` istekte aynı olduğundan emin olun.
-
-***Kimliği ' {String} ' olan ActiveDirectory yok.***
-
-@No__t_0 bölümü, Active Directory bağlantısı için `ActiveDirectoryId` özelliğinde girdiğiniz değerdir.
+Bu hata, dosya yolu desteklenmeyen karakterler içerdiğinde (örneğin, bir dönem ("."), virgül (","), alt puan ("_") veya dolar işareti ("$") oluşur.
 
 * Neden:   
-Active Directory yapılandırmasına sahip bir hesap oluşturduğunuzda, boş olması beklenen `ActiveDirectoryId` için bir değer girdiniz.
-* Çözümden   
-Oluşturma (put) isteğine `ActiveDirectoryId` eklemeyin.
+Dosya yolu, örneğin bir dönem ("."), virgül (","), alt puan ("_") veya dolar işareti ("$") gibi desteklenmeyen karakterler içerir.
+* Çözüm:   
+Alfabetik harf, sayı veya tire ("-") olmayan karakterleri girdiğiniz dosya yolundan kaldırın.
+* Geçici çözüm:   
+Alt bir alt sayıyı tire ile değiştirebilir veya yeni sözcüklerin başlangıcını belirtmek için boşluklar yerine büyük harf kullanabilirsiniz.  Örneğin, "yeni birim" yerine "NewVolume" kullanın.
 
-***Geçersiz api-Version.***
+***FileSystemId değiştirilemez.***
 
-API sürümü gönderilmedi ya da geçersiz bir değer içeriyor.
-
-* Neden:   
-Sorgu parametresindeki değer `api-version` geçersiz bir değer içeriyor.
-* Çözümden   
-Doğru API sürümü değerini kullanın.  Kaynak sağlayıcısı birçok API sürümünü destekler. Değer yyyy-aa-gg biçimindedir.
-
-***@No__t_1 için geçersiz ' {Value} ' değeri alındı.***
-
-Bu ileti `RuleIndex`, `AllowedClients`, `UnixReadOnly`, `UnixReadWrite`, `Nfsv3` ve `Nfsv4` alanlarında bir hata olduğunu gösterir.
+Bu hata, değiştirmeye `FileSystemId`çalıştığınızda oluşur.  Değiştirme `FileSystemdId` desteklenen bir işlem değildir. 
 
 * Neden:   
-Giriş doğrulama isteği şu alanlardan en az biri için başarısız oldu: `RuleIndex`, `AllowedClients`, `UnixReadOnly`, `UnixReadWrite`, `Nfsv`3 ve `Nfsv4`.
-* Çözümden   
-Komut satırında tüm gerekli ve çakışmayan parametreleri ayarladığınızdan emin olun. Örneğin, hem `UnixReadOnly` hem de `UnixReadWrite` parametrelerini aynı anda ayarlayamazsınız.
-* Sorunu   
+Birim oluşturulduğunda dosya sisteminin kimliği ayarlanır. `FileSystemId`sonradan değiştirilemez.
+* Çözüm:   
+Bir yama `FileSystemId` ve güncelleştirme (koymak) isteğine eklemeyin.  Alternatif olarak, `FileSystemId` istekte aynı olduğundan emin olun.
+
+***Id ile ActiveDirectory: '{string}' yok.***
+
+Bölüm, `{string}` Etkin Dizin bağlantısı `ActiveDirectoryId` için özelliğe girdiğiniz değerdir.
+
+* Neden:   
+Etkin Dizin yapılandırmasına sahip bir hesap oluşturduğunuzda, `ActiveDirectoryId` boş olması gereken bir değer girmiş siniz.
+* Çözüm:   
+Oluşturma (koy) isteğine eklemeyin. `ActiveDirectoryId`
+
+***Geçersiz api sürümü.***
+
+API sürümü gönderilmez veya geçersiz bir değer içerir.
+
+* Neden:   
+Sorgu parametresindeki `api-version` değer geçersiz bir değer içerir.
+* Çözüm:   
+Doğru API sürüm değerini kullanın.  Kaynak sağlayıcısı birçok API sürümlerini destekler. Değer yyyy-mm-dd biçimindedir.
+
+***Geçersiz bir değer '{value}' {1}için alındı.***
+
+Bu `RuleIndex`ileti, , , `AllowedClients` `UnixReadOnly` `UnixReadWrite` `Nfsv3`, , ve `Nfsv4`.
+
+* Neden:   
+Giriş doğrulama isteği aşağıdaki alanlardan en az biri `RuleIndex`için `AllowedClients` `UnixReadOnly`başarısız `UnixReadWrite` `Nfsv`oldu: `Nfsv4`, , , , 3 ve .
+* Çözüm:   
+Komut satırında gerekli ve çakışmayan tüm parametreleri ayarladıktan emin olun. Örneğin, hem parametreleri `UnixReadOnly` hem `UnixReadWrite` de parametreleri aynı anda ayarlayamazsınız.
+* Geçici çözüm:   
 Yukarıdaki çözüme bakın.
 
-***VLAN {2} {1} {0} IP aralığı zaten kullanımda***
+***Vlan {0} {2} {1} için IP aralığı zaten kullanımda***
 
-Bu hata, kullanılan IP aralıklarının iç kayıtlarının yeni atanan IP adresiyle bir çakışmaya sahip olması nedeniyle oluşur.
+Kullanılan IP aralıklarının iç kayıtları yeni atanan IP adresiyle çakıştığı için bu hata oluşur.
 
 * Neden:   
 Birim oluşturma için atanan IP adresi zaten kayıtlı.
-Nedeni, daha önce başarısız bir birim oluşturma olabilir.
-* Çözümden   
-Azure Destek Merkezi 'ne başvurun.
+Bunun nedeni daha önce başarısız bir ses oluşturma olabilir.
+* Çözüm:   
+Azure Destek Merkezi'ne başvurun.
 
-***' {Property} ' için değer eksik.***
+***'{özellik}' için eksik değer.***
 
-Bu hata, istekte gerekli bir özelliğin eksik olduğunu gösterir. {Property} dizesi eksik özelliğin adını içeriyor.
+Bu hata, istekte gerekli bir özelliğin eksik olduğunu gösterir. {özellik} dizesi eksik özelliğin adını içerir.
 
 * Neden:   
 Giriş doğrulama isteği, özelliklerden en az biri için başarısız oldu.
-* Çözümden   
-İstekte tüm gerekli ve çakışmayan özellikleri, özellikle de hata iletisinden ayarladığınızdan emin olun.
+* Çözüm:   
+İstekteki tüm gerekli ve çakışmayan özellikleri, özellikle hata iletisinden özelliği ayarladıktan emin olun.
 
-***Bağlamahedefleri değiştirilemez.***
+***MountTargets değiştirilemez.***
 
-Bu hata, bir Kullanıcı, birim bağlama hedefleri özelliğini güncelleştirmeye veya düzeltme ekine çalışırken oluşur.
-
-* Neden:   
-Volume `MountTargets` özelliğini güncelleştirmeye çalışıyorsunuz. Bu özelliğin değiştirilmesi desteklenmiyor.
-* Çözümden   
-Bir yama ve güncelleştirme (put) isteğine `MountTargets` eklemeyin.  Alternatif olarak, `MountTargets` istekte aynı olduğundan emin olun.
-
-***Ad zaten kullanımda.***
-
-Bu hata, kaynağın adının zaten kullanımda olduğunu gösterir.
+Bu hata, bir kullanıcı ses birimi MountTargets özelliğini güncelleştirmeye veya düzeltmeye çalıştığında oluşur.
 
 * Neden:   
-Mevcut bir kaynak için kullanılan bir ada sahip bir kaynak oluşturmaya çalışıyorsunuz.
-* Çözümden   
+Birim `MountTargets` özelliğini güncelleştirmeye çalışıyorsunuz. Bu özelliğin değiştirilmesi desteklenmez.
+* Çözüm:   
+Bir yama `MountTargets` ve güncelleştirme (koymak) isteğine eklemeyin.  Alternatif olarak, istekte aynı `MountTargets` olduğundan emin olun.
+
+***Zaten kullanılmakta olan ad.***
+
+Bu hata, kaynağın adının zaten kullanıldığını gösterir.
+
+* Neden:   
+Varolan bir kaynak için kullanılan bir ada sahip bir kaynak oluşturmaya çalışıyorsunuz.
+* Çözüm:   
 Kaynağı oluştururken benzersiz bir ad kullanın.
 
-***Dosya yolu zaten kullanımda.***
+***Dosya yolu zaten kullanılıyor.***
 
 Bu hata, birim için dosya yolunun zaten kullanımda olduğunu gösterir.
 
 * Neden:   
-Mevcut bir birimle aynı olan bir dosya yolu ile bir birim oluşturmaya çalışıyorsunuz.
-* Çözümden   
+Varolan bir birimle aynı olan bir dosya yolu içeren bir birim oluşturmaya çalışıyorsunuz.
+* Çözüm:   
 Birim oluştururken benzersiz bir dosya yolu kullanın.
 
-***Ad çok uzun.***
+***Çok uzun süre isim.***
 
-Bu hata, kaynak adının maksimum uzunluk gereksinimini karşılamıyor olduğunu gösterir.
+Bu hata, kaynak adının en büyük uzunluk gereksinimini karşılamadığını gösterir.
 
 * Neden:   
 Kaynak adı çok uzun.
-* Çözümden   
+* Çözüm:   
 Kaynak için daha kısa bir ad kullanın.
 
 ***Dosya yolu çok uzun.***
 
-Bu hata, birimin dosya yolunun en fazla uzunluk gereksinimini karşılamıyor olduğunu gösterir.
+Bu hata, birim için dosya yolunun maksimum uzunluk gereksinimini karşılamadığını gösterir.
 
 * Neden:   
 Birim dosya yolu çok uzun.
-* Çözümden   
+* Çözüm:   
 Daha kısa bir dosya yolu kullanın.
 
-***Ad çok kısa.***
+***İsim çok kısa.***
 
-Bu hata, kaynak adının minimum uzunluk gereksinimini karşılamıyor olduğunu gösterir.
+Bu hata, kaynak adının minimum uzunluk gereksinimini karşılamadığını gösterir.
 
 * Neden:   
 Kaynak adı çok kısa.
-* Çözümden   
+* Çözüm:   
 Kaynak için daha uzun bir ad kullanın.
 
 ***Dosya yolu çok kısa.***
 
-Bu hata, birim dosya yolunun en düşük uzunluk gereksinimini karşılamıyor olduğunu gösterir.
+Bu hata, birim dosya yolunun minimum uzunluk gereksinimini karşılamadığını gösterir.
 
 * Neden:   
 Birim dosya yolu çok kısa.
-* Çözümden   
-Birim dosyası yolunun uzunluğunu artırın.
+* Çözüm:   
+Birim dosya yolunun uzunluğunu artırın.
 
-***Azure NetApp Files API 'sine ulaşılamıyor.***
+***Azure NetApp Files API'ye erişilmaz.***
 
-Azure API 'SI, birimleri yönetmek için Azure NetApp Files API 'sini kullanır. Bu hata, API bağlantısıyla ilgili bir sorun olduğunu gösterir.
+Azure API'si, birimleri yönetmek için Azure NetApp Files API'sine güvenir. Bu hata, API bağlantısıyla ilgili bir sorunu gösterir.
 
 * Neden:   
-Temeldeki API yanıt vermiyor ve bir iç hataya neden oldu. Bu hatanın geçici olması olasıdır.
-* Çözümden   
-Sorunun geçici olması olasıdır. İstek bir süre sonra başarılı olmalıdır.
-* Sorunu   
-Hiçbiri. Temel alınan API, birimleri yönetmek için gereklidir.
+Temel API yanıt vermiyor, bu da bir iç hatayla sonuçlanır. Bu hata geçici olması muhtemeldir.
+* Çözüm:   
+Sorun geçici olması muhtemeldir. İstek bir süre sonra başarılı olmalıdır.
+* Geçici çözüm:   
+Yok. Temel API birimleri yönetmek için gereklidir.
 
-***' @No__t_1 ' için işlem sonucu kimliği bulunamadı.***
+***''{0}için işlem sonucu kimliği bulunamadı.***
 
-Bu hata, bir iç hatanın işlemin tamamlanmasını engellediğini gösterir.
+Bu hata, bir iç hata işlemin tamamlanmasını engellediğini gösterir.
 
 * Neden:   
 Bir iç hata oluştu ve işlemin tamamlanmasını engelledi.
-* Çözümden   
-Bu hatanın geçici olması olasıdır. Birkaç dakika bekleyip yeniden deneyin. Sorun devam ederse, teknik desteğe sorunu araştırmak için bir bilet oluşturun.
-* Sorunu   
-Birkaç dakika bekleyin ve sorunun devam edip etmediğini denetleyin.
+* Çözüm:   
+Bu hata geçici olması muhtemeldir. Birkaç dakika bekleyin ve tekrar deneyin. Sorun devam ederse, sorunu araştırmak için teknik destek için bir bilet oluşturun.
+* Geçici çözüm:   
+Birkaç dakika bekleyin ve sorunun devam edip olmadığını kontrol edin.
 
-***CIFS ve NFS protokol türlerini karıştırılamaz***
+***Protokol türleri CIFS ve NFS'nin karıştırılmasına izin verilmiyor***
 
-Bu hata, bir birim oluşturmaya çalışırken ve birim özelliklerinde hem CIFS (SMB) hem de NFS protokol türleri varsa oluşur.
+Bu hata, bir Birim oluşturmaya çalışırken oluşur ve birim özelliklerinde hem CIFS (SMB) hem de NFS iletişim kuralı türleri vardır.
 
 * Neden:   
-Birim özelliklerinde hem CIFS (SMB) hem de NFS protokol türleri kullanılır.
-* Çözümden   
+Hem CIFS (SMB) hem de NFS protokol türleri birim özelliklerinde kullanılır.
+* Çözüm:   
 Protokol türlerinden birini kaldırın.
-* Sorunu   
-Protokol türü özelliğini boş veya null bırakın.
+* Geçici çözüm:   
+Protokol türü özelliğini boş veya boş bırakın.
 
-***Öğe sayısı: nesne için {value}: ExportPolicy. Rules [Ruleındex] En düşük değer olan aralığın dışında.***
+***Öğe sayısı: nesne için {value}: ExportPolicy.Rules[RuleIndex] min-max aralığının dışındadır.***
 
-Bu hata verme ilkesi kuralları minimum veya maksimum Aralık gereksinimini karşılamıyorsa oluşur. Dışarı aktarma ilkesini tanımlarsanız, en yüksek ve beş dışarı aktarma ilkesi kuralında en fazla bir dışarı aktarma ilkesi kuralına sahip olmalıdır.
-
-* Neden:   
-Tanımladığınız dışarı aktarma ilkesi gerekli aralığı karşılamıyor.
-* Çözümden   
-Dizinin zaten kullanılmadığından ve 1 ile 5 aralığında olduğundan emin olun.
-* Sorunu   
-Birimlerde dışarı aktarma ilkesi kullanılması zorunlu değildir. Verme ilkesi kurallarını kullanmanız gerekmiyorsa, bu ilkeyi tamamen atlayabilirsiniz.
-
-***Yalnızca bir Active Directory 'ye izin verilir***
-
-Bu hata, bir Active Directory yapılandırması oluşturmaya çalıştığınızda ve bölgede abonelik için zaten bir tane varsa oluşur. Birden fazla Active Directory yapılandırması oluşturmaya çalıştığınızda hata da oluşabilir.
+Bu hata, dışa aktarma ilkesi kuralları minimum veya maksimum aralık gereksinimini karşılamadığında oluşur. Dışa aktarma ilkesini tanımlarsanız, en az bir dışa aktarma ilkesi kuralı ve en fazla beş ihracat ilkesi kuralı olmalıdır.
 
 * Neden:   
-Bir Active Directory (güncelleştirme değil) oluşturmaya çalışıyorsunuz, ancak bir tane zaten var.
-* Çözümden   
-Active Directory yapılandırması kullanımda değilse, önce mevcut yapılandırmayı silip sonra oluşturma işlemini yeniden deneyebilirsiniz.
-* Sorunu   
-Hiçbiri. Yalnızca bir Active Directory izin verilir.
+Tanımladığınız dışa aktarma ilkesi gerekli aralığı karşılamaz.
+* Çözüm:   
+Dizinin zaten kullanılmadığından ve bu aralıkta 1 ile 5 arasında olduğundan emin olun.
+* Geçici çözüm:   
+Hacimlerde ihracat ilkesi nin kullanılması zorunlu değildir. Dışa aktarma ilkesi kurallarını kullanmanız gerekmiyorsa, dışa aktarma ilkesini tamamen atlayabilirsiniz.
 
-***' {Operation} ' işlemi desteklenmiyor.***
+***Yalnızca bir etkin dizine izin verildi***
 
-Bu hata, işlemin etkin abonelik veya kaynak için kullanılabilir olmadığını gösterir.
+Bu hata, Etkin Dizin yapılandırması oluşturmaya çalıştığınızda oluşur ve bir zaten bölgede abonelik için var. Birden fazla Active Directory yapılandırması oluşturmaya çalıştığınızda hata da oluşabilir.
 
 * Neden:   
-İşlem abonelik veya kaynak için kullanılamıyor.
-* Çözümden   
+Etkin bir dizini oluşturmaya (güncelleştirmemeye) çalışıyorsunuz, ancak zaten varsınız.
+* Çözüm:   
+Active Directory yapılandırması kullanımda değilse, önce varolan yapılandırmayı silebilir ve ardından oluşturma işlemini yeniden deneyebilirsiniz.
+* Geçici çözüm:   
+Yok. Yalnızca bir Etkin Dizin'e izin verilir.
+
+***'{operation}' işlemi desteklenmez.***
+
+Bu hata, işlemin etkin abonelik veya kaynak için kullanılmadığını gösterir.
+
+* Neden:   
+İşlem abonelik veya kaynak için kullanılamaz.
+* Çözüm:   
 İşlemin doğru girildiğinden ve kullanmakta olduğunuz kaynak ve abonelik için kullanılabilir olduğundan emin olun.
 
 ***OwnerId değiştirilemez***
 
-Birimin OwnerId özelliğini değiştirmeyi denediğinizde bu hata oluşur. OwnerId 'nin değiştirilmesi desteklenen bir işlem değil. 
+Bu hata, birimin OwnerId özelliğini değiştirmeye çalıştığınızda oluşur. OwnerId'i değiştirmek desteklenen bir işlem değildir. 
 
 * Neden:   
-@No__t_0 özelliği birim oluşturulduğunda ayarlanır. Özellik daha sonra değiştirilemez.
-* Çözümden   
-Bir yama ve güncelleştirme (put) isteğine `OwnerId` eklemeyin. Alternatif olarak, `OwnerId` istekte aynı olduğundan emin olun.
+Birim `OwnerId` oluşturulduğunda özellik ayarlanır. Özellik daha sonra değiştirilemez.
+* Çözüm:   
+Bir yama `OwnerId` ve güncelleştirme (koymak) isteğine eklemeyin. Alternatif olarak, istekte aynı `OwnerId` olduğundan emin olun.
 
 ***Üst havuz bulunamadı***
 
-Bu hata, bir birim oluşturmaya çalıştığınızda ve birimi oluşturduğunuz kapasite havuzu bulunamadığı zaman oluşur.
+Bu hata, bir birim oluşturmaya çalıştığınızda oluşur ve birim oluşturduğunuz kapasite havuzu bulunamadı.
 
 * Neden:   
 Birimin oluşturulduğu kapasite havuzu bulunamadı.
-* Çözümden   
-Büyük olasılıkla havuz tam olarak oluşturulmamış veya birim oluşturma sırasında zaten silinmiş.
+* Çözüm:   
+Büyük olasılıkla havuz tam olarak oluşturulmamadı veya birim oluşturma sırasında zaten silindi.
 
-***Bu kaynak türü için düzeltme eki işlemi desteklenmiyor.***
+***Yama işlemi bu kaynak türü için desteklenmez.***
 
-Bu hata, bağlama hedefini veya anlık görüntüsünü değiştirmeye çalıştığınızda oluşur.
-
-* Neden:   
-Bağlama hedefi oluşturulduğunda tanımlanır ve daha sonra değiştirilemez.
-Anlık görüntüler değiştirilebilen özellikleri içermez.
-* Çözümden   
-Hiçbiri. Bu kaynaklarda değiştirilebilen hiçbir özellik yoktur.
-
-***Toplam birim boyutu için havuz boyutu çok küçük.***
-
-Bu hata, kapasite havuzu boyutunu güncelleştirirken oluşur ve boyut, bu kapasite havuzundaki tüm birimlerin toplam `usedBytes` değerinden daha küçüktür.  Bu hata, yeni bir birim oluştururken veya var olan bir birimi yeniden boyutlandırdığınızda veya yeni birim boyutu kapasite havuzundaki boş alanı aştığında de oluşabilir.
+Bu hata, montaj hedefini veya anlık görüntüsünü değiştirmeye çalıştığınızda oluşur.
 
 * Neden:   
-Kapasite havuzunu kapasite havuzundaki tüm birimlerde usedBytes 'dan daha küçük bir boyuta güncelleştirmeye çalışıyorsunuz.  Veya kapasite havuzundaki boş alandan daha büyük bir birim oluşturmaya çalışıyorsunuz.  Alternatif olarak, bir birimi yeniden boyutlandırmaya çalışıyorsunuz ve yeni boyut kapasite havuzundaki boş alanı aşıyor.
-* Çözümden   
+Montaj hedefi oluşturulduğunda tanımlanır ve sonradan değiştirilemez.
+Anlık görüntüler değiştirilebilen özellikler içermez.
+* Çözüm:   
+Yok. Bu kaynakların değiştirilebilen özellikleri yoktur.
+
+***Toplam hacim boyutu için havuz boyutu çok küçük.***
+
+Bu hata, kapasite havuzu boyutunu güncelleştirdiğinizde oluşur ve boyut, `usedBytes` bu kapasite havuzundaki tüm birimlerin toplam değerinden daha küçüktür.  Bu hata, yeni bir birim oluştururken veya varolan bir birimi yeniden boyutlandırırken ve yeni birim boyutu kapasite havuzundaki boş alanı aştığında da oluşabilir.
+
+* Neden:   
+Kapasite havuzunu, kapasite havuzundaki tüm birimlerde kullanılan Baytlardan daha küçük bir boyuta güncelleştirmeye çalışıyorsunuz.  Veya, kapasite havuzundaki boş alandan daha büyük bir hacim oluşturmaya çalışıyorsunuz.  Alternatif olarak, bir birimi yeniden boyutlandırmaya çalışıyorsunuz ve yeni boyut kapasite havuzundaki boş alanı aşıyor.
+* Çözüm:   
 Kapasite havuzu boyutunu daha büyük bir değere ayarlayın veya bir birim için daha küçük bir birim oluşturun.
-* Sorunu   
-Kapasite havuzu boyutunun bu boyuta güncelleştirilebilmesi için yeterli birimleri kaldırın.
+* Geçici çözüm:   
+Kapasite havuzu boyutunun bu boyuta güncelleştirilebilmeleri için yeterli birimleri kaldırın.
 
-***Özellik: anlık görüntü konumu birimle aynı olmalıdır***
+***Özellik: Anlık Görüntü konumu Birim ile aynı olmalıdır***
 
-Bu hata, anlık görüntünün sahibi olan birim dışında bir konum içeren bir anlık görüntü oluştururken oluşur.
-
-* Neden:   
-Anlık görüntü için location özelliğinde geçersiz değer.
-* Çözümden   
-Location özelliğinde geçerli bir dize ayarlayın.
-
-***{ResourceType} adı, kaynak tanımlayıcı adı ile aynı olmalıdır.***
-
-Bu hata, bir kaynak oluştururken oluşur ve ad özelliğini `resourceId` Name özelliğinden başka bir değerle doldurursunuz.
+Bu hata, anlık görüntünün sahibi olan birim dışında konumiçeren bir anlık görüntü oluştururken oluşur.
 
 * Neden:   
-Kaynak oluşturduğunuzda ad özelliğinde geçersiz değer.
-* Çözümden   
-Ad özelliğini boş bırakın veya `resourceId`, ad özelliği ile aynı değeri (son ters eğik çizgi "/" ve soru işareti "?" arasında) kullanmasına izin verin.
+Anlık görüntü için Konum özelliğinde geçersiz değer.
+* Çözüm:   
+Konum özelliğinde geçerli dize ayarlayın.
 
-***Protokol türü {value} bilinmiyor***
+***{resourceType} adı kaynak tanımlayıcı adı ile aynı olmalıdır.***
 
-Bu hata, bilinmeyen bir protokol türüne sahip bir birim oluştururken oluşur.  Geçerli değerler şunlardır "NFSv3", "NFSv4" ve "CIFS".
+Bu hata, bir kaynak oluştururken oluşur ve ad özelliğini `resourceId`ad özelliğinden başka bir değerle doldurursunuz.
 
 * Neden:   
-Volume `protocolType` özelliğinde geçersiz bir değer ayarlamaya çalışıyorsunuz.
-* Çözümden   
-@No__t_0 için geçerli bir dize ayarlayın.
-* Sorunu   
-@No__t_0 null olarak ayarlayın.
+Kaynak oluşturduğunuzda ad özelliğigeçersiz değer.
+* Çözüm:   
+Ad özelliğini boş bırakın veya ad özelliğiyle aynı değeri kullanmasına izin verin (son ters eğik `resourceId`çizgi "/" ile "?") arasında.
+
+***Protokol türü {değer} bilinmiyor***
+
+Bu hata, bilinmeyen bir iletişim kuralı türüne sahip bir birim oluştururken oluşur.  Geçerli değerler "NFSv3", "NFSv4" ve "CIFS"tir.
+
+* Neden:   
+Birim `protocolType` özelliğinde geçersiz bir değer ayarlamaya çalışıyorsunuz.
+* Çözüm:   
+Geçerli bir dize ayarla. `protocolType`
+* Geçici çözüm:   
+Null `protocolType` olarak ayarlayın.
 
 ***Protokol türleri değiştirilemez***
 
-Bu hata, bir birim için `ProtocolType` güncelleştirmeyi veya yama yapmayı denediğinizde oluşur.  ProtocolType değiştirilirken desteklenen bir işlem değil.
+Bu hata, bir birim için `ProtocolType` güncelleştirmeyi veya düzeltmeyi denediğinizde oluşur.  ProtocolType değiştirme desteklenen bir işlem değildir.
 
 * Neden:   
-@No__t_0 özelliği birim oluşturulduğunda ayarlanır.  Güncelleştirilemez.
-* Çözümden   
-Hiçbiri.
-* Sorunu   
-Yeni protokol türleriyle başka bir birim oluşturun.
+Birim `ProtocolType` oluşturulduğunda özellik ayarlanır.  Güncelleştirilemez.
+* Çözüm:   
+Yok.
+* Geçici çözüm:   
+Yeni iletişim kuralı türleri ile başka bir birim oluşturun.
 
-***{ResourceType} türünde kaynak oluşturmak, {parentResourceType} başına {resourceType} türündeki {Quota} kaynaklarının kotasını aşacak. Geçerli kaynak sayısı {currentCount}, yeni bir tane oluşturmadan önce lütfen bu türden bazı kaynakları silin.***
+***Türü {resourceType} kaynağı oluşturma türü {kota} kaynaklarının kotasını aşacak {resourceType} türü başına {resourceType} (parentResourceType} ) Geçerli kaynak sayısı {currentCount}, yeni bir kaynak oluşturmadan önce lütfen bu türdeki bazı kaynakları silin.***
 
-Bu hata, bir kaynak (`NetAppAccount`, `CapacityPool`, `Volume` veya `Snapshot`) oluşturmaya çalışırken oluşur, ancak kotayı sınırına ulaştı.
+Bu hata, bir kaynak oluşturmaya çalışırken`NetAppAccount`oluşur `CapacityPool` `Volume`( `Snapshot`, , , , veya ), ancak kotanız sınırına ulaştı.
 
 * Neden:   
-Bir kaynak oluşturmaya çalışıyorsunuz, ancak kota sınırına ulaşıldı (örnek: abonelik başına `NetAppAccounts` veya `NetAppAccount` başına `CapacityPools`).
-* Çözümden   
+Kaynak oluşturmaya çalışıyorsunuz, ancak kota sınırına ulaşıldı `NetAppAccounts` (örneğin: abonelik başına veya `CapacityPools` başına). `NetAppAccount`
+* Çözüm:   
 Kota sınırını artırın.
-* Sorunu   
+* Geçici çözüm:   
 Aynı türdeki kullanılmayan kaynakları silin ve yeniden oluşturun.
 
-***' {PropertyName} ' salt okunurdur özelliği için bir değer alındı.***
+***Salt okunur özellik '{propertyName}' için bir değer aldı.***
 
-Bu hata, değiştirilemeyen bir özellik için bir değer tanımladığınızda oluşur. Örneğin, birim KIMLIĞINI değiştiremezsiniz.
-
-* Neden:   
-Değiştirilemeyen bir parametreyi (örneğin, birim KIMLIĞI) değiştirmeye çalışıyorsunuz.
-* Çözümden   
-Özelliği için bir değer değiştirmeyin.
-
-***İstenen {Resource} bulunamadı.***
-
-Bu hata, var olmayan bir kaynağa (örneğin, bir birim veya anlık görüntü) başvurulmasına çalıştığınızda oluşur. Kaynak silinmiş veya yanlış yazılmış bir kaynak adına sahip olabilir.
+Değiştirilemeyen bir özellik için değer tanımladığınız zaman bu hata oluşur. Örneğin, birim kimliğini değiştiremezsiniz.
 
 * Neden:   
-Zaten silinmiş olan veya yanlış yazılmış bir kaynak adına sahip olan varolmayan bir kaynağa (örneğin, bir birim veya anlık görüntü) başvurılmaya çalışıyorsunuz.
-* Çözümden   
-Doğru Başvurulmuş olduğundan emin olmak için, yazım hataları isteğine bakın.
-* Sorunu   
-Yukarıdaki çözüm bölümüne bakın.
+Değiştirilemeyen bir parametreyi (örneğin, birim kimliği) değiştirmeye çalışıyorsunuz.
+* Çözüm:   
+Özellik için bir değer değiştirmeyin.
 
-***' {VolumeServiceLevel} ' hizmet düzeyi, ' {poolServiceLevel} ' üst öğesinden daha yüksek***
+***İstenen {kaynak} bulunamadı.***
 
-Bu hata, bir birimi oluştururken veya güncelleştirirken oluşur ve hizmet düzeyini onu içeren KAPASİTE havuzundan daha yüksek bir düzeye ayarlamış olursunuz.
+Bu hata, var olmayan bir kaynağa (örneğin, bir birim veya anlık görüntü) başvurmaya çalıştığınızda oluşur. Kaynak silinmiş veya bir misspelt kaynak adı olabilir.
 
 * Neden:   
-Üst KAPASİTE havuzundan daha yüksek bir dereceli hizmet düzeyiyle birim oluşturmaya veya güncelleştirmeye çalışıyorsunuz.
-* Çözümden   
-Hizmet düzeyini, üst KAPASİTE havuzundan aynı veya daha düşük bir dereceye ayarlayın.
-* Sorunu   
-Birimi doğru hizmet düzeyiyle başka bir kapasite havuzunda oluşturun. Alternatif olarak, kapasite havuzundaki tüm birimleri silin ve kapasite havuzunun hizmet düzeyini daha yüksek bir dereceye ayarlayın.
+Zaten silinmiş veya yanlış yazılmış bir kaynak adı olan var olmayan bir kaynağa (örneğin, bir birim veya anlık görüntü) başvurmaya çalışıyorsunuz.
+* Çözüm:   
+Doğru başvuruldığından emin olmak için yazım hataları isteğini denetleyin.
+* Geçici çözüm:   
+Yukarıdaki Çözüm bölümüne bakın.
 
-***SMB sunucu adı, 10 karakterden uzun olamaz.***
+***Hizmet düzeyi '{volumeServiceLevel}' üst '{poolServiceLevel}' daha yüksektir***
 
-Bu hata, bir hesap için Active Directory yapılandırması oluştururken veya güncelleştirirken oluşur.
-
-* Neden:   
-SMB sunucusu adının uzunluğu 10 karakteri aşıyor.
-* Çözümden   
-Daha kısa bir sunucu adı kullanın. En fazla 10 karakter uzunluğunda olur.
-* Sorunu   
-Hiçbiri.  Yukarıdaki çözüme bakın. 
-
-***SubnetID değiştirilemez.***
-
-Bu hata, birim oluşturulduktan sonra `subnetId` değiştirmeye çalıştığınızda oluşur.  birim oluşturulduğunda `SubnetId` ayarlanmalıdır ve daha sonra değiştirilemez.
+Bu hata, bir birim oluştururken veya güncellerken ve hizmet düzeyini onu içeren kapasite havuzundan daha yüksek bir düzeye ayarladığınızda oluşur.
 
 * Neden:   
-Birim oluşturulduktan sonra, desteklenmeyen bir işlem olmayan `subnetId` değiştirmeye çalışıyorsunuz. 
-* Çözümden   
-@No__t_0 değiştirmek gerekmiyorsa, hata iletisini kapatmak için istekten parametreyi kaldırmayı göz önünde bulundurun.
-* Sorunu   
-@No__t_0 değiştirmeniz gerekiyorsa, yeni bir `subnetId` yeni bir birim oluşturabilir ve sonra verileri yeni birime geçirebilirsiniz.
+Üst kapasite havuzundan daha yüksek sıralı hizmet düzeyine sahip bir birim oluşturmaya veya güncelleştirmeye çalışıyorsunuz.
+* Çözüm:   
+Hizmet düzeyini üst kapasite havuzundan aynı veya daha düşük bir dereceye ayarlayın.
+* Geçici çözüm:   
+Doğru hizmet düzeyine sahip başka bir kapasite havuzunda birim oluşturun. Alternatif olarak, kapasite havuzundaki tüm birimleri silin ve kapasite havuzu için hizmet düzeyini daha yüksek bir dereceye ayarlayın.
 
-***SubnetID geçersiz biçimde.***
+***SMB sunucu adı 10 karakterden uzun olmayabilir.***
 
-Bu hata yeni bir birim oluşturmaya çalıştığınızda oluşur, ancak `subnetId` bir alt ağ için `resourceId` değildir.
-
-* Neden:   
-Bu hata yeni bir birim oluşturmaya çalıştığınızda oluşur, ancak `subnetId` bir alt ağ için `resourceId` değildir. 
-* Çözümden   
-Kullanılan alt ağ için bir `resourceId` içerdiğinden emin olmak üzere `subnetId` değerini denetleyin.
-* Sorunu   
-Hiçbiri. Yukarıdaki çözüme bakın. 
-
-***Alt ağda ' Microsoft. NetApp/Volumes ' temsili olmalıdır.***
-
-Bu hata, bir birim oluştururken ve seçilen alt ağın `Microsoft.NetApp/volumes` için temsilci olmadığı durumlarda oluşur.
+Bu hata, bir hesap için Etkin Dizin yapılandırması oluştururken veya güncellerken oluşur.
 
 * Neden:   
-Birim oluşturmaya çalıştınız ve `Microsoft.NetApp/volumes` için temsilci olmayan bir alt ağ seçtiniz.
-* Çözümden   
-@No__t_0 için temsilci atanmış başka bir alt ağ seçin.
-* Sorunu   
-Alt ağa doğru bir temsili ekleyin.
+SMB sunucu adının uzunluğu 10 karakteri aşıyor.
+* Çözüm:   
+Daha kısa bir sunucu adı kullanın. Maksimum uzunluk 10 karakterdir.
+* Geçici çözüm:   
+Yok.  Yukarıdaki çözüme bakın. 
+
+***SubnetId değiştirilemez.***
+
+Bu hata, birim oluşturulduktan `subnetId` sonra değiştirmeye çalıştığınızda oluşur.  `SubnetId`birim oluşturulduğunda ayarlanmalıdır ve daha sonra değiştirilemez.
+
+* Neden:   
+Desteklenen bir işlem `subnetId` olmayan birim oluşturulduktan sonra değiştirmeye çalışıyorsunuz. 
+* Çözüm:   
+Değiştirme `subnetId` gerekli değilse, hata iletisini kapatmak için istekten parametreyi kaldırmayı düşünün.
+* Geçici çözüm:   
+`subnetId`Değiştirmeniz gerekirse, yeni `subnetId`bir ,'la yeni bir birim oluşturabilir ve sonra verileri yeni bir topluya geçirebilirsiniz.
+
+***SubnetId geçersiz biçimdedir.***
+
+Bu hata, yeni bir birim oluşturmaya çalıştığınızda oluşur, ancak bir alt ağ için bir `subnetId` `resourceId` hata değildir.
+
+* Neden:   
+Bu hata, yeni bir birim oluşturmaya çalıştığınızda `subnetId` oluşur, `resourceId` ancak bir alt ağ için değildir. 
+* Çözüm:   
+Kullanılan alt ağ `subnetId` için bir `resourceId` içerdiğinden emin olmak için değerini denetleyin.
+* Geçici çözüm:   
+Yok. Yukarıdaki çözüme bakın. 
+
+***Subnet'in bir 'Microsoft.NetApp/volumes' delegasyonu olmalıdır.***
+
+Bu hata, bir birim oluştururken oluşur ve seçili alt `Microsoft.NetApp/volumes`ağ .
+
+* Neden:   
+Birim oluşturmaya çalıştınız ve `Microsoft.NetApp/volumes`''ye devredilmedi.
+* Çözüm:   
+'ye `Microsoft.NetApp/volumes`devredilen başka bir alt ağ seçin
+* Geçici çözüm:   
+Alt ağa doğru bir delegasyon ekleyin.
 
 ***Belirtilen kaynak türü bilinmiyor/uygulanamaz.***
 
-Bu hata, uygulanabilir olmayan bir kaynak türü ya da bilinmeyen bir kaynak türü için bir ad denetimi istendiğinde oluşur.
+Bu hata, bir ad denetimi uygulanabilir olmayan bir kaynak türü nde veya bilinmeyen bir kaynak türü için istendiğinde oluşur.
 
 * Neden:   
 Bilinmeyen veya desteklenmeyen bir kaynak türü için ad denetimi istendi.
-* Çözümden   
-İsteği yaptığınız kaynağın desteklenip desteklenmediğini veya yazım hatası bulunmadığını denetleyin.
-* Sorunu   
+* Çözüm:   
+İsteğini yaptığınız kaynağın desteklendiğini veya yazım hatası içermediğini denetleyin.
+* Geçici çözüm:   
 Yukarıdaki çözüme bakın.
 
-***Bilinmeyen Azure NetApp Files hatası.***
+***Bilinmeyen Azure NetApp Dosyaları Hatası.***
 
-Azure API 'SI, birimleri yönetmek için Azure NetApp Files API 'sini kullanır. Hata, API iletişimdeki bir sorunu gösterir.
-
-* Neden:   
-Temeldeki API bilinmeyen bir hata gönderiyor. Bu hatanın geçici olması olasıdır.
-* Çözümden   
-Sorunun geçici olması olasıdır ve isteğin bir süre sonra başarılı olması gerekir. Sorun devam ederse, sorunu araştırılması için bir destek bileti oluşturun.
-* Sorunu   
-Hiçbiri. Temel alınan API, birimleri yönetmek için gereklidir.
-
-***Bilinmeyen ' {propertyName} ' özelliği için değer alındı.***
-
-Bu hata, birim, anlık görüntü veya bağlama hedefi gibi bir kaynak için varolmayan Özellikler sağlandığında oluşur.
+Azure API'si, birimleri yönetmek için Azure NetApp Files API'sine güvenir. Hata, API'ye iletilen iletişimde bir sorunu gösterir.
 
 * Neden:   
-İstek, her kaynakla kullanılabilecek bir özellik kümesine sahiptir. İstekte varolmayan özellikler ekleyemezsiniz.
-* Çözümden   
-Tüm özellik adlarının doğru yazıldığından ve Özellikler abonelik ve kaynak için kullanılabilir olduğundan emin olun.
-* Sorunu   
+Temel API bilinmeyen bir hata gönderiyor. Bu hata geçici olması muhtemeldir.
+* Çözüm:   
+Sorun geçici olması muhtemeldir ve istek bir süre sonra başarılı olmalıdır. Sorun devam ederse, sorunun araştırılması için bir destek bileti oluşturun.
+* Geçici çözüm:   
+Yok. Temel API birimleri yönetmek için gereklidir.
+
+***Bilinmeyen bir özellik '{propertyName}' için alınan değer.***
+
+Bu hata, birim, anlık görüntü veya montaj hedefi gibi bir kaynak için var olmayan özellikler sağlandığında oluşur.
+
+* Neden:   
+İstek, her kaynakla kullanılabilecek bir özellik kümesine sahiptir. İstekte var olmayan özellikleri dahil edemezsiniz.
+* Çözüm:   
+Tüm özellik adlarının doğru yazıldığından ve özelliklerin abonelik ve kaynak için kullanılabilir olduğundan emin olun.
+* Geçici çözüm:   
 Hataya neden olan özelliği ortadan kaldırmak için istekte tanımlanan özellik sayısını azaltın.
 
-***Bu kaynak türü için güncelleştirme işlemi desteklenmiyor.***
+***Güncelleştirme işlemi bu kaynak türü için desteklenmez.***
 
-Yalnızca birimler güncelleştirilebilen olabilir. Bu hata, desteklenmeyen bir güncelleştirme işlemini gerçekleştirmeye çalıştığınızda (örneğin, bir anlık görüntüyü güncelleştirirken) oluşur.
+Yalnızca birimler güncelleştirilebilir. Bu hata, örneğin anlık görüntü güncelleştirme gibi desteklenmeyen bir güncelleştirme işlemi gerçekleştirmeye çalıştığınızda oluşur.
 
 * Neden:   
-Güncelleştirmeye çalıştığınız kaynak güncelleştirme işlemini desteklemiyor. Yalnızca birimlerde özellikleri değiştirilebilir.
-* Çözümden   
-Hiçbiri. Güncelleştirmeye çalıştığınız kaynak güncelleştirme işlemini desteklemiyor. Bu nedenle, değiştirilemez.
-* Sorunu   
-Bir birim için, güncelleştirmenin yerinde bulunduğu yeni bir kaynak oluşturun ve verileri geçirin.
+Güncelleştirmeye çalıştığınız kaynak güncelleştirme işlemini desteklemez. Yalnızca birimlerin özellikleri değiştirilebilir.
+* Çözüm:   
+Yok. Güncelleştirmeye çalıştığınız kaynak güncelleştirme işlemini desteklemez. Bu nedenle değiştirilemez.
+* Geçici çözüm:   
+Bir birim için, güncelleştirme yerinde yeni bir kaynak oluşturun ve verileri geçirin.
 
-***Birim başarılı olmayan bir havuzda oluşturulamaz.***
+***Birim, başarılı olmayan bir havuzda oluşturulamaz.***
 
-Bu hata, başarılı durumunda olmayan bir havuzda birim oluşturmaya çalıştığınızda oluşur. Büyük olasılıkla, kapasite havuzu için oluşturma işlemi bazı nedenlerle başarısız oldu.
+Bu hata, başarılı durumda olmayan bir havuzda bir birim oluşturmaya çalıştığınızda oluşur. Büyük olasılıkla, kapasite havuzu için oluşturma işlemi bazı nedenlerden dolayı başarısız oldu.
 
 * Neden:   
 Yeni birimi içeren kapasite havuzu başarısız durumda.
-* Çözümden   
-Kapasite havuzunun başarıyla oluşturulup oluşturulmadığından ve başarısız durumda olmadığından emin olun.
-* Sorunu   
-Yeni bir kapasite havuzu oluşturun ve yeni havuzda birimi oluşturun.
+* Çözüm:   
+Kapasite havuzunun başarıyla oluşturulup oluşturulmadığını ve başarısız durumda olup olmadığını denetleyin.
+* Geçici çözüm:   
+Yeni bir kapasite havuzu oluşturun ve yeni havuzda birim oluşturun.
 
 ***Birim oluşturuluyor ve şu anda silinemiyor.***
 
@@ -531,154 +531,154 @@ Bu hata, hala oluşturulmakta olan bir birimi silmeye çalıştığınızda olu�
 
 * Neden:   
 Birimi silmeye çalıştığınızda bir birim hala oluşturuluyor.
-* Çözümden   
-Birim oluşturma işlemi tamamlanana kadar bekleyin ve sonra silme işlemini yeniden deneyin.
-* Sorunu   
+* Çözüm:   
+Birim oluşturma tamamlanana kadar bekleyin ve silme işlemini yeniden deneyin.
+* Geçici çözüm:   
 Yukarıdaki çözüme bakın.
 
-***Birim siliniyor ve şu anda silinemiyor.***
+***Ses düzeyi silinmektedir ve şu anda silinemez.***
 
-Bu hata, zaten silinmekte olan bir birimi silmeye çalıştığınızda oluşur.
+Bu hata, zaten silinmiş bir ses düzeyini silmeye çalıştığınızda oluşur.
 
 * Neden:   
-Birimi silmeye çalıştığınızda bir birim zaten silinmekte.
-* Çözümden   
+Birim silmeye çalıştığınızda zaten bir birim silinmektedir.
+* Çözüm:   
 Geçerli silme işlemi tamamlanana kadar bekleyin.
-* Sorunu   
+* Geçici çözüm:   
 Yukarıdaki çözüme bakın.
 
 ***Birim güncelleştiriliyor ve şu anda silinemiyor.***
 
-Bu hata, güncelleştirilmekte olan bir birimi silmeye çalıştığınızda oluşur.
+Bu hata, güncelleştirilen bir birimi silmeye çalıştığınızda oluşur.
 
 * Neden:   
-Birimi silmeye çalıştığınızda bir birim güncelleştiriliyor.
-* Çözümden   
-Güncelleştirme işlemi tamamlanana kadar bekleyin ve sonra silme işlemini yeniden deneyin.
-* Sorunu   
+Birim, sesi silmeye çalıştığınızda güncelleştiriliyor.
+* Çözüm:   
+Güncelleştirme işlemi tamamlanana kadar bekleyin ve silme işlemini yeniden deneyin.
+* Geçici çözüm:   
 Yukarıdaki çözüme bakın.
 
-***Birim bulunamadı veya başarıyla oluşturulmadı.***
+***Birim bulunamadı veya başarıyla oluşturulmamadı.***
 
-Bu hata, birim oluşturma işlemi başarısız olduğunda ve birimi değiştirmeye veya birim için bir anlık görüntü oluşturmaya çalışırken oluşur.
+Bu hata, birim oluşturma başarısız olduğunda oluşur ve birim değiştirmek veya birim için bir anlık görüntü oluşturmak için çalışıyoruz.
 
 * Neden:   
 Birim yok veya oluşturma başarısız oldu.
-* Çözümden   
-Doğru birimi değiştirip, birim oluşturma işleminin başarılı olduğunu denetleyin. Ya da, bir anlık görüntü oluşturduğunuz birimin var olduğundan emin olun.
-* Sorunu   
-Hiçbiri.  Yukarıdaki çözüme bakın. 
+* Çözüm:   
+Doğru birimi değiştirip değiştirmediğinizi ve birimin oluşturulmasının başarılı olduğundan denetleyin. Veya anlık görüntü oluşturduğunuz birimin var olup olmadığını denetleyin.
+* Geçici çözüm:   
+Yok.  Yukarıdaki çözüme bakın. 
 
 ***Belirtilen oluşturma belirteci zaten var***
 
-Bu hata, bir birim oluşturmaya çalıştığınızda ve bir birimin zaten bulunduğu bir oluşturma belirteci (dışarı aktarma yolu) belirttiğinizde oluşur.
+Bu hata, bir birim oluşturmaya çalıştığınızda ve bir birimin zaten var olduğu bir oluşturma belirteci (dışa aktarma yolu) belirttiğinde oluşur.
 
 * Neden:   
-Birim oluşturma sırasında belirttiğiniz oluşturma belirteci (dışarı aktarma yolu) zaten başka bir birimle ilişkili. 
-* Çözümden   
-Farklı bir oluşturma belirteci seçin.  Alternatif olarak, diğer birimi de silin.
+Birim oluşturma sırasında belirttiğiniz oluşturma belirteci (dışa aktarma yolu) zaten başka bir birimle ilişkilidir. 
+* Çözüm:   
+Farklı bir oluşturma belirteci seçin.  Alternatif olarak, diğer birim silin.
 
-***Belirtilen oluşturma belirteci ayrılmış***
+***Belirtilen oluşturma belirteci ayrılmıştır***
 
-Bu hata, bir birim oluşturmaya çalıştığınızda oluşur ve dosya yolu (oluşturma belirteci) olarak "varsayılan" veya "hiçbiri" değerini belirtmeniz gerekir.
+Bu hata, bir birim oluşturmaya çalıştığınızda ve dosya yolu (oluşturma belirteci) olarak "varsayılan" veya "yok" belirttiğiniz zaman oluşur.
 
 * Neden:    
-Bir birim oluşturmaya çalışıyorsunuz ve dosya yolu (oluşturma belirteci) olarak "default" veya "none" değerini belirtmeniz gerekir.
-* Çözümden   
+Bir birim oluşturmaya çalışıyorsunuz ve dosya yolu (oluşturma belirteci) olarak "varsayılan" veya "yok" belirtin.
+* Çözüm:   
 Farklı bir dosya yolu (oluşturma belirteci) seçin.
  
-***Active Directory kimlik bilgileri kullanımda***
+***Etkin Dizin kimlik bilgileri kullanılıyor***
 
-Bu hata, en az bir SMB biriminin hala bulunduğu bir hesaptan Active Directory yapılandırmasını silmeye çalıştığınızda oluşur.  SMB birimi, silmeye çalıştığınız Active Directory yapılandırması kullanılarak oluşturulmuştur.
-
-* Neden:   
-Active Directory yapılandırmasını bir hesaptan silmeye çalışıyorsunuz, ancak başlangıçta Active Directory yapılandırması kullanılarak oluşturulan en az bir SMB birimi hala var. 
-* Çözümden   
-İlk olarak, Active Directory yapılandırması kullanılarak oluşturulan tüm SMB birimlerini silin.  Sonra yapılandırma silme işlemini yeniden deneyin.
-
-***Kimlik bilgileri kullanımda ise kuruluş birimi ataması değiştirilemez***
-
-Bu hata, bir Active Directory yapılandırmanın kuruluş birimini değiştirmeyi denediğinizde oluşur, ancak en az bir SMB birimi hala mevcut.  SMB birimi, silmeye çalıştığınız bu Active Directory yapılandırması kullanılarak oluşturuldu.
+Bu hata, Etkin Dizin yapılandırmasını en az bir Kobİ biriminin hala bulunduğu bir hesaptan silmeye çalıştığınızda oluşur.  Silmek için çalıştığınız Active Directory yapılandırması kullanılarak SMB birimi oluşturuldu.
 
 * Neden:   
-Active Directory yapılandırmanın kuruluş birimini değiştirmeye çalışıyorsunuz.  Ancak başlangıçta Active Directory yapılandırması kullanılarak oluşturulan en az bir SMB birimi hala var.
-* Çözümden   
- İlk olarak, Active Directory yapılandırması kullanılarak oluşturulan tüm SMB birimlerini silin.  Sonra yapılandırma silme işlemini yeniden deneyin. 
+Etkin Dizin yapılandırmasını bir hesaptan silmeye çalışıyorsunuz, ancak Active Directory yapılandırması kullanılarak oluşturulan en az bir Kobİ birimi hala var. 
+* Çözüm:   
+İlk olarak, Active Directory yapılandırmasını kullanarak oluşturulan tüm Kobİ birimlerini silin.  Ardından yapılandırma silme işlemini yeniden deneyin.
 
-***Active Directory güncelleştirme zaten devam ediyor***
+***Kimlik bilgileri kullanılıyorsa Kuruluş Birimi atamasını değiştiremez***
 
-Bu hata, bir düzenleme işleminin zaten devam ettiği bir Active Directory yapılandırmasını düzenlemeye çalıştığınızda oluşur.
-
-* Neden:   
-Bir Active Directory yapılandırmasını düzenlemeye çalışıyorsunuz, ancak başka bir düzenleme işlemi zaten devam ediyor.
-* Çözümden   
-Şu anda çalışan düzenleme işlemi tamamlanana kadar bekleyin.
-
-***Önce seçilen kimlik bilgilerini kullanarak tüm birimleri Sil***
-
-Bu hata, bir Active Directory yapılandırmasını silmeye çalıştığınızda oluşur, ancak en az bir SMB birimi hala mevcut.  SMB birimi, silmeye çalıştığınız Active Directory yapılandırması kullanılarak oluşturulmuştur.
+Bu hata, Etkin Dizin yapılandırmasının Kuruluş Birimini değiştirmeye çalıştığınızda oluşur, ancak en az bir Kobİ birimi hala vardır.  Silmek için çalıştığınız Active Directory yapılandırması kullanılarak SMB birimi oluşturuldu.
 
 * Neden:   
-Bir Active Directory yapılandırmasını silmeye çalışıyorsunuz, ancak başlangıçta Active Directory yapılandırması kullanılarak oluşturulan en az bir SMB birimi hala var.
-* Çözümden   
-İlk olarak, Active Directory yapılandırması kullanılarak oluşturulan tüm SMB birimlerini silin.  Sonra yapılandırma silme işlemini yeniden deneyin. 
+Etkin Dizin yapılandırmasının Kuruluş Birimini değiştirmeye çalışıyorsunuz.  Ancak, başlangıçta Active Directory yapılandırması kullanılarak oluşturulan en az bir Kobİ birimi hala vardır.
+* Çözüm:   
+ İlk olarak, Active Directory yapılandırmasını kullanarak oluşturulan tüm Kobİ birimlerini silin.  Ardından yapılandırma silme işlemini yeniden deneyin. 
 
-***Bölgede Active Directory kimlik bilgileri bulunamadı***
+***Etkin Dizin güncelleştirmesi zaten devam ediyor***
 
-Bu hata, bir SMB birimi oluşturmaya çalıştığınızda oluşur, ancak bölge hesabına Active Directory yapılandırma eklenmez.
-
-* Neden:   
-Bir SMB birimi oluşturmaya çalışıyorsunuz, ancak hesaba Active Directory yapılandırma eklenmedi. 
-* Çözümden   
-SMB birimini oluşturmadan önce hesaba bir Active Directory yapılandırması ekleyin.
-
-***DNS sunucusu sorgulanamadı. Ağ yapılandırmasının doğru olduğundan ve DNS sunucularının kullanılabilir olduğundan emin olun.***
-
-Bu hata, bir SMB birimi oluşturmaya çalıştığınızda oluşur, ancak bir DNS sunucusuna (Active Directory yapılandırmanızda belirtilen) ulaşılamıyor. 
+Bu hata, bir düzenleme işleminin zaten devam etmekte olduğu bir Etkin Dizin yapılandırmasını düzenlemeyi denediğinizde oluşur.
 
 * Neden:   
-Bir SMB birimi oluşturmaya çalışıyorsunuz, ancak bir DNS sunucusuna (Active Directory yapılandırmanızda belirtilen) ulaşılamıyor.
-* Çözümden   
-Active Directory yapılandırmanızı gözden geçirin ve DNS sunucusu IP adreslerinin doğru ve erişilebilir olduğundan emin olun.
-DNS sunucusu IP adresleriyle ilgili bir sorun yoksa, erişimi engelleyen güvenlik duvarlarının olmadığını doğrulayın.
+Etkin Dizin yapılandırmasını düzenlemeye çalışıyorsunuz, ancak başka bir düzenleme işlemi zaten devam ediyor.
+* Çözüm:   
+Şu anda çalışan edit işlemi tamamlanana kadar bekleyin.
+
+***Önce seçili kimlik bilgilerini kullanarak tüm birimleri silme***
+
+Bu hata, Etkin Dizin yapılandırmasını silmeye çalıştığınızda oluşur, ancak en az bir Kobİ birimi hala vardır.  Silmek için çalıştığınız Active Directory yapılandırması kullanılarak SMB birimi oluşturuldu.
+
+* Neden:   
+Etkin Dizin yapılandırmasını silmeye çalışıyorsunuz, ancak Active Directory yapılandırması kullanılarak başlangıçta oluşturulan en az bir Kobİ birimi hala var.
+* Çözüm:   
+İlk olarak, Active Directory yapılandırmasını kullanarak oluşturulan tüm Kobİ birimlerini silin.  Ardından yapılandırma silme işlemini yeniden deneyin. 
+
+***Bölgede Etkin Dizin kimlik bilgileri bulunamadı***
+
+Bu hata, bir Kobİ birimi oluşturmaya çalıştığınızda oluşur, ancak bölge hesabına Etkin Dizin yapılandırması eklenmemiştir.
+
+* Neden:   
+Bir SMB birimi oluşturmaya çalışıyorsunuz, ancak hesaba Etkin Dizin yapılandırması eklenmedi. 
+* Çözüm:   
+Bir Kobİ birimi oluşturmadan önce hesaba Etkin Dizin yapılandırması ekleyin.
+
+***DNS sunucusu sorgulandı. Ağ yapılandırmasının doğru olduğunu ve DNS sunucularının kullanılabilir olduğunu doğrulayın.***
+
+Bu hata, bir Kobİ birimi oluşturmaya çalıştığınızda oluşur, ancak bir DNS sunucusu (Etkin Dizin yapılandırmanızda belirtilir) erişilemez. 
+
+* Neden:   
+Bir SMB birimi oluşturmaya çalışıyorsunuz, ancak Bir DNS sunucusuna (Etkin Dizin yapılandırmanızda belirtilen) erişilemez.
+* Çözüm:   
+Active Directory yapılandırmanızı gözden geçirin ve DNS sunucu IP adreslerinin doğru ve ulaşılabilir olduğundan emin olun.
+DNS sunucu IP adresleriyle ilgili herhangi bir sorun yoksa, erişimi engelleyen güvenlik duvarları olmadığını doğrulayın.
 
 ***Çok fazla eşzamanlı iş***
 
-Bu hata, abonelik için şu anda üç anlık görüntü oluşturma işlemi devam ederken bir anlık görüntü oluşturmaya çalıştığınızda oluşur.
+Bu hata, abonelik için üç anlık görüntü oluşturma işlemi zaten devam ederken anlık görüntü oluşturmaya çalıştığınızda oluşur.
 
 * Neden:   
-Abonelik için diğer üç anlık görüntü oluşturma işlemi zaten devam ederken bir anlık görüntü oluşturmaya çalışıyorsunuz. 
-* Çözümden   
-Anlık görüntü oluşturma işlerinin tamamlanması birkaç saniye sürer.  Birkaç saniye bekleyip anlık görüntü oluşturma işlemini yeniden deneyin.
+Abonelik için üç anlık görüntü oluşturma işlemi zaten devam ederken anlık görüntü oluşturmaya çalışıyorsunuz. 
+* Çözüm:   
+Anlık görüntü oluşturma işlerinin tamamlanması en fazla birkaç saniye sürer.  Birkaç saniye bekleyin ve anlık görüntü oluşturma işlemini yeniden deneyin.
 
-***Ek işler üretilemedi. Lütfen devam eden işlerin bitmesini bekleyin ve yeniden deneyin***
+***Ek işler doğuramaz. Lütfen devam eden işlerin bitmesini ve yeniden denemesini bekleyin***
 
-Bu hata, belirli koşullarda bir birimi oluşturmaya veya silmeye çalıştığınızda ortaya çıkabilir.
+Bu hata, belirli koşullar altında bir birim oluşturmaya veya silmeye çalıştığınızda oluşabilir.
 
 * Neden:   
-Belirli koşullarda bir birimi oluşturmaya veya silmeye çalışıyorsunuz.
-* Çözümden   
-Bir dakika bekleyin ve işlemi yeniden deneyin.
+Belirli koşullar altında bir birim oluşturmaya veya silmeye çalışıyorsunuz.
+* Çözüm:   
+Bir dakika kadar bekleyin ve işlemi yeniden deneyin.
 
-***Birim, durumlar arasında zaten geçiyor***
+***Birim zaten durumlar arasında geçiş***
 
-Bu hata, şu anda geçiş durumunda olan bir birimi silmeye çalıştığınızda (yani, şu anda oluşturma, güncelleştirme veya silme durumunda) oluşabilir.
+Bu hata, şu anda geçiş durumunda olan bir birimi silmeye çalıştığınızda (şu anda oluşturma, güncelleştirme veya silme durumunda) oluşabilir.
 
 * Neden:   
 Şu anda geçiş durumunda olan bir birimi silmeye çalışıyorsunuz.
-* Çözümden   
-Şu anda çalışan (durum geçişi) işlemi tamamlanana kadar bekleyin ve sonra işlemi yeniden deneyin.
+* Çözüm:   
+Şu anda çalışan (durum geçiş) işlemi tamamlanana kadar bekleyin ve sonra işlemi yeniden deneyin.
 
-***Kaynak birim anlık görüntüsünden yeni birim ayrılamadı***
+***Kaynak birim anlık görüntüden yeni birim bölmede başarısız oldu***
 
- Bu hata, bir anlık görüntüden birim oluşturmaya çalıştığınızda ortaya çıkabilir.  
+ Anlık görüntüden bir birim oluşturmaya çalıştığınızda bu hata oluşabilir.  
 
 * Neden:   
-Bir anlık görüntüden birim oluşturmaya çalışırsınız ve birim bir hata durumunda sona erer.
-* Çözümden   
-Birimi silin, sonra anlık görüntüden birim oluşturma işlemini yeniden deneyin.
+Anlık görüntüden bir birim oluşturmaya çalışırsınız ve birim bir hata durumunda sona erer.
+* Çözüm:   
+Ses düzeyini silin ve anlık görüntüden birim oluşturma işlemini yeniden deneyin.
 
  
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [REST API Azure NetApp Files için geliştirme](azure-netapp-files-develop-with-rest-api.md)
+* [REST API'li Azure NetApp Dosyaları için geliştirin](azure-netapp-files-develop-with-rest-api.md)

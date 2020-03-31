@@ -1,6 +1,6 @@
 ---
-title: Azure Data Factory Azure Veri Gezgini denetim komutlarını kullanma
-description: Bu konuda, Azure Data Factory içindeki Azure Veri Gezgini denetim komutlarını kullanın
+title: Azure Veri Fabrikası'nda Azure Veri Gezgini denetim komutlarını kullanma
+description: Bu konuda, Azure Veri Fabrikası'nda Azure Veri Gezgini denetim komutlarını kullanın
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -9,89 +9,89 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/15/2019
 ms.openlocfilehash: 20da2d54ea54674656b2c1006d094c63133baf79
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72264496"
 ---
-# <a name="use-azure-data-factory-command-activity-to-run-azure-data-explorer-control-commands"></a>Azure Veri Gezgini denetim komutlarını çalıştırmak için Azure Data Factory komut etkinliğini kullanma
+# <a name="use-azure-data-factory-command-activity-to-run-azure-data-explorer-control-commands"></a>Azure Veri Gezgini denetim komutlarını çalıştırmak için Azure Veri Fabrikası komut etkinliğini kullanma
 
-[Azure Data Factory](/azure/data-factory/) (ADF), veriler üzerinde etkinliklerin birleşimini gerçekleştirmenize olanak tanıyan bulut tabanlı bir veri tümleştirme hizmetidir. Veri taşıma ve veri dönüştürmeyi düzenlemek ve otomatikleştirmek için veri odaklı iş akışları oluşturmak üzere ADF 'yi kullanın. Azure Data Factory **azure Veri Gezgini komut** etkinliği, bir ADF iş akışı içinde [Azure Veri Gezgini denetim komutlarını](/azure/kusto/concepts/#control-commands) çalıştırmanıza olanak sağlar. Bu makalede, bir arama etkinliği ve bir Azure Veri Gezgini komut etkinliği içeren ForEach etkinliği ile işlem hattı oluşturma öğretilir.
+[Azure Veri Fabrikası](/azure/data-factory/) (ADF), veriler üzerinde bir dizi etkinlik gerçekleştirmenize olanak tanıyan bulut tabanlı bir veri tümleştirme hizmetidir. Veri hareketini ve veri dönüşümlerini düzenlemek ve otomatikleştirmek için veri tabanlı iş akışları oluşturmak için ADF'yi kullanın. Azure Veri Fabrikası'ndaki **Azure Veri Gezgini Komutu** etkinliği, Bir ADF iş akışı içinde [Azure Veri Gezgini denetim komutlarını](/azure/kusto/concepts/#control-commands) çalıştırmanızı sağlar. Bu makalede, bir arama etkinliği ve Bir Azure Veri Gezgini komut etkinliği içeren ForEach etkinliği içeren bir ardışık yapı oluşturma yı öğretir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/) oluşturun.
 * [Azure Veri Gezgini kümesi ve veritabanı](create-cluster-database-portal.md)
-* Veri kaynağı.
-* [Veri Fabrikası](data-factory-load-data.md#create-a-data-factory)
+* Bir veri kaynağı.
+* [Bir veri fabrikası](data-factory-load-data.md#create-a-data-factory)
 
-## <a name="create-a-new-pipeline"></a>Yeni işlem hattı oluşturma
+## <a name="create-a-new-pipeline"></a>Yeni bir ardışık hat lar oluşturma
 
-1. **Yazar** Kurşun Kalem aracını seçin. 
-1. **@No__t-1** ' i seçerek yeni bir işlem hattı oluşturun ve ardından açılır listeden işlem **hattı** ' nı seçin.
+1. **Yazar** kalem aracını seçin. 
+1. Açılan kaynaktan **+** **Pipeline'ı** seçip seçerek yeni bir ardışık kaynak oluştur.
 
-   ![Yeni işlem hattı oluştur](media/data-factory-command-activity/create-pipeline.png)
+   ![yeni boru hattı oluşturmak](media/data-factory-command-activity/create-pipeline.png)
 
 ## <a name="create-a-lookup-activity"></a>Arama etkinliği oluşturma
 
-Bir [arama etkinliği](/azure/data-factory/control-flow-lookup-activity) , Azure Data Factory tarafından desteklenen herhangi bir veri kaynağından bir veri kümesi alabilir. Arama etkinliğinin çıktısı bir ForEach veya diğer bir etkinlikte kullanılabilir.
+Bir [arama etkinliği,](/azure/data-factory/control-flow-lookup-activity) Azure Veri Fabrikası tarafından desteklenen herhangi bir veri kaynağından bir veri kümesi alabilir. Arama etkinliğinden çıktı bir ForEach veya başka bir etkinlikte kullanılabilir.
 
-1. **Etkinlikler** bölmesinde, **genel**altında, **arama** etkinliğini seçin. Sağ taraftaki ana tuvale sürükleyip bırakın.
+1. **Etkinlikler** bölmesinde, **Genel** **altında, Arama** etkinliğini seçin. Sürükleyin ve sağdaki ana tuval içine bırakın.
  
-    ![arama etkinliği Seç](media/data-factory-command-activity/select-activity.png)
+    ![arama etkinliğini seçin](media/data-factory-command-activity/select-activity.png)
 
-1. Tuval şimdi oluşturduğunuz arama etkinliğini içerir. İlgili parametreleri değiştirmek için tuvalin altındaki sekmeleri kullanın. **Genel**olarak, etkinliği yeniden adlandırın. 
+1. Tuval şimdi oluşturduğunuz Arama etkinliğini içerir. İlgili parametreleri değiştirmek için tuvalin altındaki sekmeleri kullanın. **Genel**olarak, etkinliği yeniden adlandırın. 
 
-    ![Arama etkinliğini Düzenle](media/data-factory-command-activity/edit-lookup-activity.PNG)
+    ![arama etkinliğini edin](media/data-factory-command-activity/edit-lookup-activity.PNG)
 
     > [!TIP]
-    > Ardışık düzen özelliklerini görüntülemek için boş tuval alanına tıklayın. İşlem hattını yeniden adlandırmak için **genel** sekmesini kullanın. İşlem hatmız, *ardışık düzen-4-docs*olarak adlandırılır.
+    > Boru hattı özelliklerini görüntülemek için boş tuval alanına tıklayın. Ardışık mayısu yeniden adlandırmak için **Genel** sekmesini kullanın. Boru hattımızın adı *boru hattı-4-docs.*
 
 ### <a name="create-an-azure-data-explorer-dataset-in-lookup-activity"></a>Arama etkinliğinde Azure Veri Gezgini veri kümesi oluşturma
 
-1. **Ayarlar**' da, önceden oluşturulmuş Azure Veri Gezgini **kaynak veri kümenizi**seçin veya yeni bir veri kümesi oluşturmak için **+ Yeni** ' yi seçin.
+1. Ayarlar'da, önceden oluşturulmuş Azure Veri Gezgini **Kaynak veri setinizi**seçin veya yeni bir veri kümesi oluşturmak için **+ Yeni'yi** seçin. **Settings**
  
-    ![Arama ayarlarına veri kümesi Ekle](media/data-factory-command-activity/lookup-settings.png)
+    ![arama ayarlarına veri kümesi ekleme](media/data-factory-command-activity/lookup-settings.png)
 
-1. **Yeni veri kümesi** penceresinden **Azure Veri Gezgini (kusto)** veri kümesini seçin. Yeni veri kümesini eklemek için **devam** ' ı seçin.
+1. **Yeni Veri Kümesi** penceresinden Azure Veri **Gezgini (Kusto)** veri kümesini seçin. Yeni veri kümesini eklemek için **Devam** et'i seçin.
 
-   ![Yeni veri kümesi seçin](media/data-factory-command-activity/select-new-dataset.png) 
+   ![yeni veri kümesini seçin](media/data-factory-command-activity/select-new-dataset.png) 
 
-1. Yeni Azure Veri Gezgini veri kümesi parametreleri **Ayarlar**' da görünür. Parametreleri güncelleştirmek için **Düzenle**' yi seçin.
+1. Yeni Azure Veri Gezgini veri kümesi parametreleri **Ayarlar'da**görülebilir. Parametreleri güncelleştirmek için **Edit'i**seçin.
 
-    ![Azure Veri Gezgini veri kümesiyle arama ayarları](media/data-factory-command-activity/lookup-settings-with-adx-dataset.png)
+    ![Azure Veri Gezgini veri seti ile arama ayarları](media/data-factory-command-activity/lookup-settings-with-adx-dataset.png)
 
 1. **AzureDataExplorerTable** yeni sekmesi ana tuvalde açılır. 
-    * **Genel** ' i seçin ve veri kümesi adını düzenleyin. 
-    * Veri kümesi özelliklerini düzenlemek için **bağlantı** ' yı seçin. 
-    * Açılan listeden **bağlı hizmeti** seçin veya yeni bir bağlı hizmet oluşturmak Için **+ Yeni** ' yi seçin.
+    * **Genel'i** seçin ve veri kümesi adını ayarlayın. 
+    * Veri kümesi özelliklerini ayarlamak için **Bağlantı'yı** seçin. 
+    * Açılan hizmetten **Bağlantılı hizmeti** seçin veya yeni bir bağlantılı hizmet oluşturmak için **+ Yeni'yi** seçin.
 
-    ![Azure Veri Gezgini veri kümesi özelliklerini düzenleme](media/data-factory-command-activity/adx-dataset-properties-edit-connections.png)
+    ![Azure Veri Gezgini veri kümesi özelliklerini ayarlama](media/data-factory-command-activity/adx-dataset-properties-edit-connections.png)
 
-1. Yeni bir bağlı hizmet oluştururken **yeni bağlı hizmet (Azure Veri Gezgini)** sayfası açılır:
+1. Yeni bağlantılı bir hizmet oluştururken, **Yeni Bağlantılı Hizmet (Azure Veri Gezgini)** sayfası açılır:
 
-    ![ADX yeni bağlı hizmet](media/data-factory-command-activity/adx-new-linked-service.png)
+    ![ADX yeni bağlantılı hizmet](media/data-factory-command-activity/adx-new-linked-service.png)
 
-   * Azure Veri Gezgini bağlı hizmeti için **ad** ' ı seçin. Gerekirse **Açıklama** ekleyin.
-   * **Tümleştirme çalışma zamanı aracılığıyla Bağlan**bölümünde, gerekirse geçerli ayarları değiştirin. 
-   * **Hesap seçim yönteminde** , iki yöntemden birini kullanarak kümenizi seçin: 
-        * **Azure aboneliği** radyo düğmesini seçin ve **Azure abonelik** hesabınızı seçin. Sonra, **kümenizi**seçin. Açılan listede yalnızca kullanıcıya ait kümeler listelenir.
-        * Bunun yerine **el ile** radyo düğmesini girin ' i seçin ve **uç** NOKTANıZA (küme URL 'si) girin.
+   * Azure Veri Gezgini bağlantılı hizmet için **Ad'ı** seçin. Gerekirse **Açıklama** ekleyin.
+   * **Tümleştirme çalışma süresi yle**Bağlan'da, gerekirse geçerli ayarları değiştirin. 
+   * **Hesap seçiminde iki** yöntemden birini kullanarak kümenizi seçin: 
+        * Azure **abonelik** radyosundan seçin ve **Azure abonelik** hesabınızı seçin. Ardından **Kümenizi**seçin. Açılan listenin yalnızca kullanıcıya ait kümeleri listeleeceğini unutmayın.
+        * Bunun yerine, **el ile** radyo yu gir düğmesini seçin ve **Bitiş Noktanızı** girin (küme URL'nizi).
     * **Kiracıyı**belirtin.
-    * **Hizmet sorumlusu kimliğini**girin. Asıl KIMLIK, kullanılan komutun gerektirdiği izin düzeyine göre yeterli izinlere sahip olmalıdır.
-    * **Hizmet sorumlusu anahtar** düğmesini seçin ve **hizmet sorumlusu anahtarını**girin.
-    * Açılır menüden **veritabanınızı** seçin. Alternatif olarak, **Düzenle** onay kutusunu seçin ve veritabanınızın adını girin.
-    * Oluşturduğunuz bağlı hizmet bağlantısını test etmek için **Bağlantıyı Sına** ' yı seçin. Kuruluma bağlanıyorsanız, bir yeşil onay işareti **bağlantısı başarılı** olur.
-    * Bağlı hizmet oluşturmayı tamamladıktan sonra **son** ' u seçin.
+    * **Hizmet ana kimliğini**girin. Asıl kimliğin, kullanılan komutun gerektirdiği izin düzeyine göre yeterli izinlere sahip olması gerekir.
+    * **Servis ana anahtarı nı** seçin ve Servis Ana **anahtarını**girin.
+    * Açılan menüden **Veritabanınızı** seçin. Alternatif olarak, Denetim Kutusunu **Edit'i** seçin ve veritabanı adınızı girin.
+    * Oluşturduğunuz bağlantılı servis bağlantısını sınamak için **Test Bağlantısı'nı** seçin. Kurulumunuza bağlanabilirseniz, yeşil bir onay işareti **Bağlantısı başarılı** görünür.
+    * Bağlantılı hizmet oluşturmayı tamamlamak için **Finish'i** seçin.
 
-1. Bağlı bir hizmet ayarladıktan sonra, **AzureDataExplorerTable** > **bağlantısı**' nda **tablo** adı ekleyin. Verilerin düzgün şekilde sunulduğundan emin olmak için **Verileri Önizle**' yi seçin.
+1. **AzureDataExplorerTable** > **Bağlantısı'nda**bağlantılı bir hizmet ayarladıktan sonra **Tablo** adı ekleyin. Verilerin düzgün sunulduğundan emin olmak için **Verileri Önizleme'yi**seçin.
 
-   Veri kümeniz artık hazır ve işlem hattınızı düzenlemeyle devam edebilirsiniz.
+   Veri kümeniz artık hazır ve ardışık alanınızı düzenlemeye devam edebilirsiniz.
 
-### <a name="add-a-query-to-your-lookup-activity"></a>Arama etkinliğinizi bir sorgu ekleme
+### <a name="add-a-query-to-your-lookup-activity"></a>Arama etkinliğinize sorgu ekleme
 
-1. İşlem **hattı-4-docs** > **ayarları** **sorgu** metin kutusuna bir sorgu ekleyin, örneğin:
+1. **Pipeline-4-docs** > **Ayarlar'da** **Sorgu** metin kutusuna örneğin bir sorgu ekleyin:
 
     ```kusto
     ClusterQueries
@@ -99,39 +99,39 @@ Bir [arama etkinliği](/azure/data-factory/control-flow-lookup-activity) , Azure
     | summarize count() by Database
     ```
 
-1. Gerektiğinde **sorgu zaman aşımını** veya **kesme** ve **yalnızca ilk satır** özelliklerini değiştirin. Bu akışta varsayılan **sorgu zaman aşımını** tutar ve onay kutularının işaretini kaldırın. 
+1. Sorgu **zaman arasını** veya **Hiçbir kesintive** **İlk satır yalnızca** özelliklerini gerektiği gibi değiştirin. Bu akışta, varsayılan **Sorgu zaman ını** tutar ve onay kutularının denetimini geri alıyoruz. 
 
     ![Arama etkinliğinin son ayarları](media/data-factory-command-activity/lookup-activity-final-settings.png)
 
-## <a name="create-a-for-each-activity"></a>Her etkinlik Için bir oluşturma 
+## <a name="create-a-for-each-activity"></a>Herkes İçin etkinlik oluşturma 
 
-[For-each](/azure/data-factory/control-flow-for-each-activity) etkinliği bir koleksiyon üzerinde yinelemek ve belirtilen etkinlikleri bir döngüde yürütmek için kullanılır. 
+[For-Each](/azure/data-factory/control-flow-for-each-activity) etkinliği, bir koleksiyon üzerinde yinelemek ve belirtilen etkinlikleri bir döngü içinde yürütmek için kullanılır. 
 
-1. Artık işlem hattına bir for-each etkinliği eklersiniz. Bu etkinlik, arama etkinliğinden döndürülen verileri işleyecek. 
-    * **Etkinlikler** bölmesinde, **yineleme & conditionals**altında, **foreach** etkinliğini seçin ve sürükleyip tuvale bırakın.
-    * Arama etkinliğinin çıkışı ile, bunları bağlamak için tuvaldeki ForEach etkinliğinin girişi arasına bir çizgi çizin.
+1. Şimdi boru hattına her biri için bir etkinlik ekleyin. Bu etkinlik, Arama etkinliğinden döndürülen verileri işler. 
+    * **Etkinlikler** bölmesinde, **Yineleme & Koşullular**altında, **ForEach** etkinliğini seçin ve sürükleyip tuvale bırakın.
+    * Arama etkinliğinin çıktısı ile bunları bağlamak için tuvaldeki ForEach etkinliğinin girişi arasında bir çizgi çizin.
 
         ![ForEach etkinliği](media/data-factory-command-activity/for-each-activity.png)
 
-1.  Tuvalde ForEach etkinliğini seçin. Aşağıdaki **Ayarlar** sekmesinde:
-    * Arama sonuçlarının sıralı bir işlem için **sıralı** onay kutusunu işaretleyin veya paralel işleme oluşturmak için işaretini işaretsiz bırakın.
-    * **Toplu iş sayısını**ayarlayın.
-    * **Öğeler**' de çıkış değerine şu başvuruyu sağlayın: *@activity (' Lookup1 '). Output. Value*
+1.  Tuvaldeki ForEach etkinliğini seçin. Aşağıdaki **Ayarlar** sekmesinde:
+    * Arama sonuçlarının sıralı bir işleme için **Sıralı** onay kutusunu işaretleyin veya paralel işleme oluşturmak için işaretsiz bırakın.
+    * **Toplu Iş sayısını**ayarla.
+    * **Maddelerde,** çıktı değerine aşağıdaki başvuruyu sağlayın: * @activity('Arama1').output.value*
 
        ![ForEach etkinliği ayarları](media/data-factory-command-activity/for-each-activity-settings.png)
 
-## <a name="create-an-azure-data-explorer-command-activity-within-the-foreach-activity"></a>ForEach etkinliği içinde Azure Veri Gezgini komut etkinliği oluşturma
+## <a name="create-an-azure-data-explorer-command-activity-within-the-foreach-activity"></a>ForEach etkinliği içinde bir Azure Veri Gezgini Komutu etkinliği oluşturun
 
-1. ForEach içindeki etkinlikleri belirtmek için tuvaldeki ForEach etkinliğine çift tıklayın ve yeni bir tuvalde açın.
-1. **Etkinlikler** bölmesinde, **Azure Veri Gezgini**altında **Azure Veri Gezgini komut** etkinliğini seçin ve sürükleyip tuvale bırakın.
+1. ForEach içindeki etkinlikleri belirtmek için yeni bir tuvalde açmak için tuvaldeki ForEach etkinliğini çift tıklatın.
+1. **Etkinlikler** bölmesinde, **Azure Veri Gezgini**altında, **Azure Veri Gezgini Komutu etkinliğini** seçin ve sürükleyip tuvale bırakın.
 
     ![Azure Veri Gezgini komut etkinliği](media/data-factory-command-activity/adx-command-activity.png)
 
-1.  **Bağlantı** sekmesinde, daha önce oluşturulmuş bağlı hizmeti seçin.
+1.  **Bağlantı** sekmesinde, daha önce oluşturulmuş aynı Bağlantılı Hizmeti seçin.
 
-    ![Azure Data Explorer komut etkinlik bağlantısı sekmesi](media/data-factory-command-activity/adx-command-activity-connection-tab.png)
+    ![azure veri gezgini komutu etkinlik bağlantısı sekmesi](media/data-factory-command-activity/adx-command-activity-connection-tab.png)
 
-1. **Komut** sekmesinde, aşağıdaki komutu sağlayın:
+1. **Komut** sekmesinde aşağıdaki komutu sağlayın:
 
     ```kusto
     .export
@@ -143,34 +143,34 @@ Bir [arama etkinliği](/azure/data-factory/control-flow-lookup-activity) , Azure
     <| ClusterQueries | where Database == "@{item().Database}"
     ```
 
-    **Komut** , Azure Veri Gezgini, belirli bir sorgunun sonuçlarını bir BLOB depolama alanına sıkıştırılmış bir biçimde dışarı aktarmak için yönlendirir. Zaman uyumsuz olarak çalışır (zaman uyumsuz değiştirici kullanılarak).
-    Sorgu, arama etkinlik sonucunda her bir satırın veritabanı sütununu ele alınmaktadır. **Komut zaman aşımı** değişmeden bırakılabilir.
+    **Komut,** Azure Veri Gezgini'ne belirli bir sorgunun sonuçlarını sıkıştırılmış bir biçimde bir blob depolama alanına dışa aktarmasını bildirir. Eşsenkronize çalışır (async değiştirici kullanarak).
+    Sorgu, Arama etkinliği sonucundaki her satırın veritabanı sütununa gider. **Komut zaman ayarı** değişmeden bırakılabilir.
 
     ![komut etkinliği](media/data-factory-command-activity/command.png)   
 
     > [!NOTE]
     > Komut etkinliği aşağıdaki sınırlara sahiptir:
     > * Boyut sınırı: 1 MB yanıt boyutu
-    > * Süre sınırı: 20 dakika (varsayılan), 1 saat (en fazla).
-    > * Gerekirse, sonuç boyutunu/süreyi azaltmak için [Adminthenquery](/azure/kusto/management/index#combining-queries-and-control-commands)kullanarak sonuca bir sorgu ekleyebilirsiniz.
+    > * Zaman sınırı: 20 dakika (varsayılan), 1 saat (maksimum).
+    > * Gerekirse, ortaya çıkan boyutu/zamanı azaltmak için [AdminThenQuery'yi](/azure/kusto/management/index#combining-queries-and-control-commands)kullanarak sonuca bir sorgu ekleyebilirsiniz.
 
-1.  Artık işlem hattı hazır. Ardışık düzen adına tıklayarak ana ardışık düzen görünümüne dönebilirsiniz.
+1.  Boru hattı hazır. Ardışık hatlar adını tıklatarak ana ardışık görünüme geri dönebilirsiniz.
 
-    ![Azure Veri Gezgini komut işlem hattı](media/data-factory-command-activity/adx-command-pipeline.png)
+    ![Azure Veri Gezgini komut ardışık](media/data-factory-command-activity/adx-command-pipeline.png)
 
-1. İşlem hattını yayımlamadan önce **Hata Ayıkla** ' yı seçin. Ardışık düzen ilerlemesi, **Çıkış** sekmesinde izlenebilir.
+1. Ardışık bölümü yayımlamadan önce **Hata Ayıklama'yı** seçin. Ardışık hat ilerlemesi **Çıktı** sekmesinde izlenebilir.
 
-    ![Azure Data Explorer komut etkinliği çıkışı](media/data-factory-command-activity/command-activity-output.png)
+    ![azure veri gezgini komutu etkinlik çıktısı](media/data-factory-command-activity/command-activity-output.png)
 
-1. İşlem hattını çalıştırmak için **Tümünü yayımlayabilir** ve sonra **tetikleyici ekleyebilirsiniz** . 
+1. **Tümlerini Yayımla** ve ardından ardışık hattı çalıştırmak için **tetikleyici ekleyebilirsiniz.** 
 
-## <a name="control-command-outputs"></a>Komut çıktılarını denetleme
+## <a name="control-command-outputs"></a>Denetim komutu çıktıları
 
-Komut etkinlik çıktısının yapısı aşağıda ayrıntılı olarak verilmiştir. Bu çıktı, ardışık düzendeki bir sonraki etkinlik tarafından kullanılabilir.
+Komut etkinlik çıktısının yapısı aşağıda ayrıntılı olarak açıklanmıştır. Bu çıktı, ardışık ardışık işlemdeki bir sonraki etkinlik tarafından kullanılabilir.
 
-### <a name="returned-value-of-a-non-async-control-command"></a>Async olmayan bir denetim komutunun değeri döndürüldü
+### <a name="returned-value-of-a-non-async-control-command"></a>Async olmayan bir denetim komutunun döndürülen değeri
 
-Async olmayan bir denetim komutunda, döndürülen değerin yapısı, arama etkinliği sonucunun yapısına benzerdir. @No__t-0 alanı döndürülen kayıt sayısını gösterir. @No__t-0 sabit dizi alanı bir kayıt listesi içerir. 
+Eşit olmayan bir denetim komutunda, döndürülen değerin yapısı Arama etkinliği sonucunun yapısına benzer. Alan `count` döndürülen kayıt sayısını gösterir. Sabit bir `value` dizi alanı, bir kayıt listesi içerir. 
 
 ```json
 { 
@@ -190,9 +190,9 @@ Async olmayan bir denetim komutunda, döndürülen değerin yapısı, arama etki
 } 
 ```
  
-### <a name="returned-value-of-an-async-control-command"></a>Zaman uyumsuz denetim komutunun değeri döndürüldü
+### <a name="returned-value-of-an-async-control-command"></a>Async denetim komutunun döndürülen değeri
 
-Zaman uyumsuz denetim komutunda, etkinlik zaman uyumsuz işlem tamamlanana veya zaman aşımına uğrayana kadar, arka planda işlemler tablosunu yoklar. Bu nedenle, döndürülen değer söz konusu **operationId** özelliği için `.show operations OperationId` sonucunu içerecektir. İşlemin başarıyla tamamlandığını doğrulamak için **durum** ve **durum** özelliklerinin değerlerini denetleyin.
+Bir async denetim komutunda, etkinlik, async işlemi tamamlanana veya zaman dışarı çıkana kadar işlem tablosunu arka planda yoklar. Bu nedenle, döndürülen değer, `.show operations OperationId` verilen **OperationId** özelliği için sonucu içerecektir. İşlemin başarılı bir şekilde tamamlanıp tamamlanınmasını doğrulamak için **Durum** ve **Durum** özelliklerinin değerlerini denetleyin.
 
 ```json
 { 
@@ -219,5 +219,5 @@ Zaman uyumsuz denetim komutunda, etkinlik zaman uyumsuz işlem tamamlanana veya 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Data Factory kullanarak Azure Veri Gezgini veri kopyalama](data-factory-load-data.md)hakkında bilgi edinin.
-* [Veritabanından Azure Veri Gezgini toplu kopyalama için Azure Data Factory şablonu](data-factory-template.md)kullanma hakkında bilgi edinin.
+* Azure Veri [Fabrikası'nı kullanarak verileri Azure Veri Gezgini'ne](data-factory-load-data.md)kopyalama hakkında bilgi edinin.
+* [Veritabanından Azure Veri Gezgini'ne toplu kopya için Azure Veri Fabrikası şablonu](data-factory-template.md)kullanma hakkında bilgi edinin.

@@ -8,41 +8,41 @@ ms.topic: include
 ms.date: 07/25/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 1fc63dc53d61a8b2e26f97cc09a359b3f2c7665c
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: d1402bcc0c46003429e1809e8d09e9662218cd82
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75901949"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80334608"
 ---
-| Kaynak | Varsayılan/en yüksek sınır |
+| Kaynak | Sınır |
 | --- | --- |
 | Abonelik başına ExpressRoute devreleri |10 |
-| Abonelik başına her bölge için ExpressRoute devreleri, Azure Resource Manager ile |10 |
-| ExpressRoute standardı ile Azure özel eşlemesine tanıtılan en fazla yol sayısı |4,000 |
-| ExpressRoute Premium eklentisi ile Azure özel eşleme 'ye tanıtılan en fazla yol sayısı |10,000 |
-| ExpressRoute bağlantısı için VNet adres alanından Azure özel eşlemeden tanıtılan en fazla yol sayısı |200 |
-| ExpressRoute standardı ile Microsoft eşlemesine tanıtılan en fazla yol sayısı |200 |
-| ExpressRoute Premium eklentisi ile Microsoft eşlemesi 'ne tanıtılan en fazla yol sayısı |200 |
-| Aynı eşleme konumunda aynı sanal ağa bağlı olan maksimum ExpressRoute bağlantı hattı sayısı |4 |
-| Farklı eşleme konumlarında aynı sanal ağa bağlı olan maksimum ExpressRoute bağlantı hattı sayısı |4 |
-| ExpressRoute bağlantı hattı başına izin verilen sanal ağ bağlantısı sayısı |[ExpressRoute bağlantı hattı başına sanal ağ sayısını](#vnetpercircuit) görüntüleyin.  |
+| Azure Kaynak Yöneticisi ile abonelik başına bölge başına ExpressRoute devreleri |10 |
+| ExpressRoute Standard ile Azure özel eşlemelerine reklamı yapılan maksimum rota sayısı |4.000 |
+| ExpressRoute Premium eklentisi ile Azure özel eşlemelerine reklamı yapılan maksimum rota sayısı |10,000 |
+| ExpressRoute bağlantısı için VNet adres alanından Azure özel eşlemelerinden reklamı yapılan maksimum rota sayısı |200 |
+| ExpressRoute Standard ile eşleyen Microsoft'a reklamı yapılan maksimum rota sayısı |200 |
+| ExpressRoute Premium eklentisi ile microsoft'a verilen maksimum rota sayısı |200 |
+| Aynı sanal ağa aynı eşleme konumunda ki bağlantılı maksimum ExpressRoute devresi sayısı |4 |
+| Farklı eşleme konumlarında aynı sanal ağa bağlı maksimum ExpressRoute devresi sayısı |4 |
+| ExpressRoute devresi başına izin verilen sanal ağ bağlantısı sayısı |ExpressRoute devre tablosu [başına sanal ağ sayısına](#vnetpercircuit) bakın.  |
 
-#### <a name="vnetpercircuit"></a>ExpressRoute bağlantı hattı başına sanal ağ sayısı
-| **Devre boyutu** | **Standart için sanal ağ bağlantısı sayısı** | **Premium eklentisi olan sanal ağ bağlantısı sayısı** |
+#### <a name="number-of-virtual-networks-per-expressroute-circuit"></a><a name="vnetpercircuit"></a>ExpressRoute devresi başına sanal ağ sayısı
+| **Devre boyutu** | **Standart için sanal ağ bağlantısı sayısı** | **Premium eklentiile sanal ağ bağlantısı sayısı** |
 | --- | --- | --- |
-| 50 Mb/sn |10 |20 |
-| 100 Mb/sn |10 |25 |
-| 200 Mbps |10 |25 |
-| 500 Mb/sn |10 |40 |
+| 50 Mbps |10 |20 |
+| 100 Mbps |10 |25 |
+| 200 Mb/sn |10 |25 |
+| 500 Mbps |10 |40 |
 | 1 Gbps |10 |50 |
 | 2 Gbps |10 |60 |
 | 5 Gbps |10 |75 |
-| 10 Gb/sn |10 |100 |
+| 10 Gbps |10 |100 |
 | 40 Gbps* |10 |100 |
 | 100 Gbps* |10 |100 |
 
-*yalnızca *100 Gbps ExpressRoute doğrudan*
+**Sadece 100 Gbps ExpressRoute Direct*
 
 > [!NOTE]
-> Global Reach bağlantı sayısı ExpressRoute bağlantı hattı başına sanal ağ bağlantısı sınırına göre sayılır. Örneğin, 10 Gbps Premium bir bağlantı, ExpressRoute ağ geçitlerine veya 95 Global Reach bağlantılara ve 95 bağlantıya ve ExpressRoute ağ geçitlerine yönelik 5 bağlantıya ve 100 bağlantı sınırına kadar olan diğer herhangi bir bileşime Global Reach izin verir devre için.
+> Global Reach bağlantıları ExpressRoute Circuit başına sanal ağ bağlantıları sınırına göre sayılır. Örneğin, 10 Gbps Premium Devre, ExpressRoute Ağ Geçitleri'ne 5 Global Erişim bağlantısı ve 95 bağlantı veya 95 Global Reach bağlantısı ve ExpressRoute Ağ GeçitLeri'ne veya 100 bağlantı sınırına kadar olan diğer kombinasyonlara 5 bağlantı için izin verir. devre için.

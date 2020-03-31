@@ -1,6 +1,6 @@
 ---
-title: Uygulama proxy 'Si tanımlama bilgisi ayarları-Azure Active Directory | Microsoft Docs
-description: Azure Active Directory (Azure AD), uygulama proxy 'Si aracılığıyla şirket içi uygulamalara erişmek için erişim ve oturum tanımlama bilgilerine sahiptir. Bu makalede, tanımlama bilgisi ayarlarını nasıl kullanacağınızı ve yapılandırabileceğinizi öğreneceksiniz.
+title: Uygulama Proxy çerez ayarları - Azure Active Directory | Microsoft Dokümanlar
+description: Azure Active Directory (Azure AD), Uygulama Proxy aracılığıyla şirket içi uygulamalara erişmek için erişim ve oturum tanımlama bilgilerine sahiptir. Bu makalede, çerez ayarlarını nasıl kullanacağınızı ve yapılandıracağınızı öğreneceksiniz.
 services: active-directory
 author: msmimart
 manager: CelesteDG
@@ -12,76 +12,76 @@ ms.date: 01/16/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7287e32fbeff751bddf91bed32afeeae84f9378c
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: bcedb24a0efdbabaaef150fc3d5aff07d210ce23
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014530"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79481373"
 ---
-# <a name="cookie-settings-for-accessing-on-premises-applications-in-azure-active-directory"></a>Azure Active Directory içindeki şirket içi uygulamalara erişim için tanımlama bilgisi ayarları
+# <a name="cookie-settings-for-accessing-on-premises-applications-in-azure-active-directory"></a>Azure Active Directory'de şirket içi uygulamalara erişmek için çerez ayarları
 
-Azure Active Directory (Azure AD), uygulama proxy 'Si aracılığıyla şirket içi uygulamalara erişmek için erişim ve oturum tanımlama bilgilerine sahiptir. Uygulama proxy 'Si tanımlama bilgisi ayarlarını nasıl kullanacağınızı öğrenin. 
+Azure Active Directory (Azure AD), Uygulama Proxy aracılığıyla şirket içi uygulamalara erişmek için erişim ve oturum tanımlama bilgilerine sahiptir. Uygulama Proxy çerez ayarlarını nasıl kullanacağınızı öğrenin. 
 
-## <a name="what-are-the-cookie-settings"></a>Tanımlama bilgisi ayarları nelerdir?
+## <a name="what-are-the-cookie-settings"></a>Çerez ayarları nelerdir?
 
-[Uygulama proxy 'si](application-proxy.md) aşağıdaki erişim ve oturum tanımlama bilgisi ayarlarını kullanır.
+[Application Proxy](application-proxy.md) aşağıdaki erişim ve oturum çerez ayarlarını kullanır.
 
-| Tanımlama bilgisi ayarı | Varsayılan | Açıklama | Öneriler |
+| Çerez ayarı | Varsayılan | Açıklama | Öneriler |
 | -------------- | ------- | ----------- | --------------- |
-| Yalnızca HTTP tanımlama bilgisini kullan | **Hayır** | **Evet** seçeneği, uygulama proxy 'sinin http yanıt üst bilgilerinde HTTPOnly bayrağını içermesini sağlar. Bu bayrak ek güvenlik avantajları sağlar, örneğin, istemci tarafı komut dosyasının (CSS) tanımlama bilgilerini kopyalamasını veya değiştirmesini engeller.<br></br><br></br>Yalnızca HTTP ayarını destekliyoruz, uygulama proxy 'Si, değişikliklere karşı koruma sağlamak için güvenli bir SSL kanalı üzerinden şifrelenmiş ve iletilen tanımlama bilgilerini. | Ek güvenlik avantajları nedeniyle **Evet** ' i kullanın.<br></br><br></br>Oturum tanımlama bilgisine erişmesi gereken istemciler veya kullanıcı aracıları için **Hayır** kullanın. Örneğin, uygulama proxy 'Si aracılığıyla bir Uzak Masaüstü Ağ Geçidi sunucusuna bağlanan bir RDP veya MTSC istemcisi için **Hayır** ' ı kullanın.|
-| Güvenli tanımlama bilgisi kullan | **Hayır** | **Evet** seçeneği, uygulama proxy 'sinin http yanıt üst bilgilerinde güvenli bayrağını içermesini sağlar. Güvenli tanımlama bilgileri, HTTPS gibi bir TLS güvenli kanalı üzerinden tanımlama bilgilerini ileterek güvenliği geliştirir. Bu, tanımlama bilgisinin şifresiz taraflar tarafından gösterilmesini engeller. | Ek güvenlik avantajları nedeniyle **Evet** ' i kullanın.|
-| Kalıcı tanımlama bilgisi kullan | **Hayır** | **Evet** seçeneği, Web tarayıcısı kapalıyken uygulama proxy 'sinin erişim tanımlama bilgilerini süre sonu olarak ayarlamasına izin verir. Kalıcılık, erişim belirtecinin süresi dolana kadar veya Kullanıcı kalıcı tanımlama bilgilerini elle silinceye kadar sürer. | Kullanıcıları kimlik doğrulamasından tutarak ilişkili güvenlik riski nedeniyle **Hayır** 'ı kullanın.<br></br><br></br>Yalnızca süreçler arasında tanımlama bilgilerini paylaşabilen eski uygulamalar için **Evet 'i** kullanmanızı öneririz. Kalıcı tanımlama bilgileri kullanmak yerine, uygulamanızı süreçler arasında paylaşım tanımlama bilgilerini işleyecek şekilde güncelleştirmek daha iyidir. Örneğin, bir kullanıcının Office belgelerini bir SharePoint sitesinden gezgin görünümünde açmasına izin vermek için kalıcı tanımlama bilgilerine ihtiyacınız vardır. Kalıcı tanımlama bilgileri olmadan, erişim tanımlama bilgileri tarayıcı, Gezgin işlemi ve Office işlemi arasında paylaşılmaması durumunda bu işlem başarısız olabilir. |
+| Yalnızca HTTP Çerezi Kullanma | **Hayır** | **Evet,** Uygulama Proxy'nin HTTP yanıt üstbilgilerine HTTPOnly bayrağını eklemesine izin verir. Bu bayrak ek güvenlik avantajları sağlar, örneğin, istemci tarafı komut dosyası (CSS) tanımlama bilgilerini kopyalamasını veya değiştirmesini engeller.<br></br><br></br>Yalnızca HTTP ayarını desteklemeden önce, Uygulama Proxy'si çerezleri güvenli bir TLS kanalı üzerinden şifreledi ve ileterek değişikliklere karşı koruma sağladı. | Ek güvenlik avantajları nedeniyle **Evet'i** kullanın.<br></br><br></br>Oturum çerezine erişim gerektiren istemciler veya kullanıcı aracıları için **Hayır'ı** kullanın. Örneğin, Uygulama Proxy üzerinden Uzak Masaüstü Ağ Geçidi sunucusuna bağlanan bir RDP veya MTSC istemcisi için **Hayır'ı** kullanın.|
+| Güvenli Çerez Kullanın | **Hayır** | **Evet,** Uygulama Proxy'nin HTTP yanıt başlıklarına Güvenli bayrağı eklemesine izin verir. Güvenli Çerezler, https gibi TLS güvenli bir kanal üzerinden çerezleri ileterek güvenliği artırır. Bu, tanımlama bilgilerinin açık metin olarak iletilmesi nedeniyle çerezlerin yetkisiz taraflarca gözlemlemesini önler. | Ek güvenlik avantajları nedeniyle **Evet'i** kullanın.|
+| Kalıcı Çerez Kullanın | **Hayır** | **Evet,** Uygulama Proxy'nin erişim çerezlerini web tarayıcısı kapatıldığında süresinin dolmasına göre ayarlamasına olanak tanır. Kalıcılık, erişim belirteci sona erene veya kullanıcı kalıcı tanımlama bilgilerini el ile silene kadar sürer. | Kullanıcıların kimliğinin doğrulanmış tutulmasıyla ilişkili güvenlik riski nedeniyle **Hayır'ı** kullanın.<br></br><br></br>Çerezleri işlemler arasında paylaşamayan eski uygulamalar için yalnızca **Evet** kullanmanızı öneririz. Kalıcı tanımlama bilgileri kullanmak yerine çerezleri işlemler arasında paylaşmayı işlemek için uygulamanızı güncelleştirmek daha iyidir. Örneğin, bir kullanıcının Office belgelerini SharePoint sitesinden explorer görünümünde açmasına izin vermek için kalıcı tanımlama bilgilerine ihtiyacınız olabilir. Kalıcı tanımlama bilgileri olmadan, erişim çerezleri tarayıcı, explorer işlemi ve Office işlemi arasında paylaşılmazsa bu işlem başarısız olabilir. |
 
-## <a name="samesite-cookies"></a>SameSite tanımlama bilgileri
-Sürüm Chrome 80 ve sonuç olarak, Kmıum kullanan tarayıcılarda, [SameSite](https://web.dev/samesite-cookies-explained) özniteliğini belirtmeyen tanımlama bilgileri, **SameSite = LAX**olarak ayarlanmış gibi kabul edilir. SameSite özniteliği, tanımlama bilgilerinin aynı site bağlamıyla nasıl kısıtlanması gerektiğini bildirir. LAX olarak ayarlandığında, tanımlama bilgisi yalnızca aynı site isteklerine veya üst düzey gezintiye gönderilir. Ancak, uygulama proxy 'Si, kullanıcıların oturumu sırasında düzgün bir şekilde oturum açabilmesi için bu tanımlama bilgilerinin üçüncü taraf bağlamında korunması gerekir. Bu nedenle, bu değişiklikten olumsuz etkileri önlemek için uygulama proxy 'Si erişimi ve oturum tanımlama bilgilerinde güncelleştirmeler yapıyoruz. Güncelleştirmeler şunları içerir:
+## <a name="samesite-cookies"></a>SameSite Çerezleri
+Chrome 80 sürümünden başlayarak ve sonunda Krom'dan yararlanan tarayıcılarda, [SameSite](https://web.dev/samesite-cookies-explained) özniteliğini belirtmeyan tanımlama bilgileri **SameSite=Lax**olarak ayarlanmış gibi ele alınacaktır. SameSite özniteliği, tanımlama bilgilerinin aynı site bağlamıyla nasıl sınırlandırılması gerektiğini bildirir. Lax olarak ayarlandığında, çerez yalnızca aynı site isteklerine veya üst düzey gezinmeye gönderilir. Ancak, Uygulama Proxy kullanıcıların oturum sırasında düzgün oturum tutmak için bu çerezleri üçüncü taraf bağlamında korunmasını gerektirir. Bu nedenle, bu değişikliğin olumsuz etkilerini önlemek için Uygulama Proxy erişimi ve oturum tanımlama bilgileri için güncelleştirmeler yapıyoruz. Güncelleştirmeler şunlardır:
 
-* **SameSite** özniteliği **none**olarak ayarlanıyor. Bu, uygulama proxy 'Si erişiminin ve oturum tanımlama bilgilerinin üçüncü taraf bağlamında düzgün şekilde gönderilmesini sağlar.
-* **Güvenli tanımlama bilgisi kullan** ayarını varsayılan olarak **Evet** ' i kullanacak şekilde ayarlama. Chrome Ayrıca tanımlama bilgilerinin güvenli bayrağı belirtmesini gerektirir veya reddedildi. Bu değişiklik, uygulama proxy 'Si aracılığıyla yayımlanan tüm mevcut uygulamalar için geçerli olacaktır. Uygulama proxy 'Si erişim tanımlama bilgilerinin her zaman güvenli olarak ayarlandığını ve yalnızca HTTPS üzerinden iletildiğini unutmayın. Bu değişiklik yalnızca oturum tanımlama bilgileri için geçerlidir.
+* Aynı **Site** özniteliğini **Yok'a**ayarlama. Bu, Uygulama Proxy erişimine ve oturum tanımlama bilgilerinin üçüncü taraf bağlamında düzgün bir şekilde gönderilmesine olanak tanır.
+* Varsayılan olarak **Evet'i** kullanacak **Güvenli Çerez kullan** ayarını ayarlama. Chrome ayrıca çerezlerin Güvenli bayrağı belirtebini veya reddedilmesini gerektirir. Bu değişiklik, Application Proxy aracılığıyla yayınlanan tüm varolan uygulamalar için geçerli olacaktır. Application Proxy erişim tanımlama bilgilerinin her zaman Güvenli olarak ayarlandığını ve yalnızca HTTPS üzerinden aktarıldığını unutmayın. Bu değişiklik yalnızca oturum tanımlama bilgileri için geçerli olacaktır.
 
-Uygulama proxy 'Si tanımlama bilgilerinde yapılan bu değişiklikler, Chrome 80 yayın tarihinden önceki birkaç haftada bir gelecek şekilde ele alınacaktır.
+Uygulama Proxy tanımlama bilgilerinde yapılan bu değişiklikler, Chrome 80 çıkış tarihinden önceki birkaç hafta boyunca kullanıma sunulacaktır.
 
-Ayrıca, arka uç uygulamanızın bir üçüncü taraf bağlamında kullanılabilir olması gereken tanımlama bilgileri varsa, uygulamanızı bu tanımlama bilgileri için SameSite = None kullanacak şekilde değiştirerek açıkça tercih etmeniz gerekir. Uygulama proxy 'Si, set-Cookie üst bilgisini, URL 'lerine çevirir ve arka uç uygulaması tarafından ayarlanan bu tanımlama bilgilerinin ayarlarına göre değişir.
+Ayrıca, arka uç uygulamanızda üçüncü taraf bağlamında kullanılabilir olması gereken tanımlama bilgileri varsa, bu çerezler için SameSite=None kullanmak üzere uygulamanızı değiştirerek açıkça kabul etmeniz gerekir. Application Proxy, Set-Cookie üstbilgisini URL'lerine çevirir ve arka uç uygulaması tarafından ayarlanan bu tanımlama bilgilerinin ayarlarına saygı gösterir.
 
 
 
-## <a name="set-the-cookie-settings---azure-portal"></a>Tanımlama bilgisi ayarlarını ayarla-Azure portal
-Azure portal kullanarak tanımlama bilgisi ayarlarını yapmak için:
+## <a name="set-the-cookie-settings---azure-portal"></a>Çerez ayarlarını ayarlama - Azure portalı
+Azure portalını kullanarak çerez ayarlarını ayarlamak için:
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. 
-2.  **Tüm uygulamalar**>  **kurumsal uygulamalar** >**Azure Active Directory** gidin.
-3. Tanımlama bilgisi ayarını etkinleştirmek istediğiniz uygulamayı seçin.
-4. **Uygulama proxy 'si**' ne tıklayın.
-5. **Ek ayarlar**altında, tanımlama bilgisi ayarını **Evet** veya **Hayır**olarak ayarlayın.
-6. Tıklayın **Kaydet** yaptığınız değişiklikleri uygulamak için. 
+1. [Azure portalında](https://portal.azure.com)oturum açın. 
+2. Azure **Active Directory** > **Enterprise uygulamalarına** >gidin **Tüm uygulamalar**.
+3. Çerez ayarını etkinleştirmek istediğiniz uygulamayı seçin.
+4. **Uygulama Proxy'yi**tıklatın.
+5. **Ek Ayarlar**altında, çerez ayarını **Evet** veya **Hayır**olarak ayarlayın.
+6. Değişikliklerinizi uygulamak için **Kaydet**’e tıklayın. 
 
-## <a name="view-current-cookie-settings---powershell"></a>Geçerli tanımlama bilgisi ayarlarını görüntüleme-PowerShell
+## <a name="view-current-cookie-settings---powershell"></a>Geçerli çerez ayarlarını görüntüleyin - PowerShell
 
-Uygulamanın geçerli tanımlama bilgisi ayarlarını görmek için şu PowerShell komutunu kullanın:  
+Uygulamaiçin geçerli çerez ayarlarını görmek için şu PowerShell komutunu kullanın:  
 
 ```powershell
 Get-AzureADApplicationProxyApplication -ObjectId <ObjectId> | fl * 
 ```
 
-## <a name="set-cookie-settings---powershell"></a>Tanımlama bilgisi ayarlarını belirleme-PowerShell
+## <a name="set-cookie-settings---powershell"></a>Çerez ayarlarını ayarlama - PowerShell
 
-Aşağıdaki PowerShell komutlarında, uygulamanın ObjectID ```<ObjectId>```. 
+Aşağıdaki PowerShell komutlarında, ```<ObjectId>``` uygulamanın ObjectId'si ve 
 
-**Yalnızca http tanımlama bilgisi** 
+**Sadece Çerez** 
 
 ```powershell
 Set-AzureADApplicationProxyApplication -ObjectId <ObjectId> -IsHttpOnlyCookieEnabled $true 
 Set-AzureADApplicationProxyApplication -ObjectId <ObjectId> -IsHttpOnlyCookieEnabled $false 
 ```
 
-**Güvenli tanımlama bilgisi**
+**Güvenli Çerez**
 
 ```powershell
 Set-AzureADApplicationProxyApplication -ObjectId <ObjectId> -IsSecureCookieEnabled $true 
 Set-AzureADApplicationProxyApplication -ObjectId <ObjectId> -IsSecureCookieEnabled $false 
 ```
 
-**Kalıcı tanımlama bilgileri**
+**Kalıcı Çerezler**
 
 ```powershell
 Set-AzureADApplicationProxyApplication -ObjectId <ObjectId> -IsPersistentCookieEnabled $true 

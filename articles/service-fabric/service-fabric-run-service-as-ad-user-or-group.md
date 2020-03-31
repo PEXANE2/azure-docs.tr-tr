@@ -1,25 +1,25 @@
 ---
-title: Azure Service Fabric hizmetini bir AD Kullanıcı veya grup olarak çalıştırma
-description: Bir hizmeti Service Fabric Windows bağımsız kümesinde Active Directory Kullanıcı veya grup olarak çalıştırmayı öğrenin.
+title: BIR AD kullanıcısı veya grup olarak Azure Hizmet Kumaşı hizmetini çalıştırma
+description: Bir Hizmeti, Service Fabric Windows bağımsız kümesinde Active Directory kullanıcısı veya grubu olarak nasıl çalıştırılabildiğinizi öğrenin.
 author: dkkapur
 ms.topic: conceptual
 ms.date: 03/29/2018
 ms.author: dekapur
 ms.openlocfilehash: d440aadb66562e32331c9725a9367c12440a315d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75464254"
 ---
-# <a name="run-a-service-as-an-active-directory-user-or-group"></a>Bir hizmeti Active Directory Kullanıcı veya grup olarak çalıştırma
-Windows Server tek başına kümesinde, RunAs ilkesini kullanarak bir hizmeti Active Directory Kullanıcı veya grup olarak çalıştırabilirsiniz.  Varsayılan olarak, Service Fabric uygulamalar yapı. exe işleminin altında çalıştığı hesap altında çalışır. Uygulamaları, paylaşılan barındırılan bir ortamda bile farklı hesaplar altında çalıştırmak, bunları diğerinden daha güvenli hale getirir. Bunun Active Directory Azure Active Directory (Azure AD) değil, etki alanınız içinde şirket içinde kullandığını unutmayın.  Ayrıca, bir hizmeti [Grup yönetilen hizmet hesabı (gMSA)](service-fabric-run-service-as-gmsa.md)olarak da çalıştırabilirsiniz.
+# <a name="run-a-service-as-an-active-directory-user-or-group"></a>Etkin Dizin kullanıcısı veya grup olarak bir hizmeti çalıştırma
+Windows Server bağımsız kümesinde, bir Hizmeti Bir RunAs ilkesini kullanarak Etkin Dizin kullanıcısı veya grup olarak çalıştırabilirsiniz.  Varsayılan olarak, Service Fabric uygulamaları Fabric.exe işleminin altında çalıştığı hesabın altında çalışır. Uygulamaları paylaşılan barındırılan bir ortamda bile farklı hesaplar altında çalıştırmak, uygulamaları birbirinden daha güvenli hale getirir. Bunun, Azure Etkin Dizini (Azure AD) değil, etki alanınızda etkin dizin kullandığını unutmayın.  Ayrıca bir hizmeti grup [Yönetilen Hizmet Hesabı (gMSA)](service-fabric-run-service-as-gmsa.md)olarak da çalıştırabilirsiniz.
 
-Bir etki alanı kullanıcısı veya grubu kullanarak, izin verilen etki alanındaki diğer kaynaklara (örneğin, dosya paylaşımları) erişebilirsiniz.
+Bir etki alanı kullanıcısını veya grubunu kullanarak, izin verilmiş etki alanındaki diğer kaynaklara (örneğin, dosya paylaşımları) erişebilirsiniz.
 
-Aşağıdaki örnek, *Benimcert*adlı bir sertifika kullanarak etki alanı parolalarını şifreleyen *testuser* adlı bir Kullanıcı Active Directory gösterir. Gizli şifreleme metnini oluşturmak için `Invoke-ServiceFabricEncryptText` PowerShell komutunu kullanabilirsiniz. Ayrıntılar için bkz. [Service Fabric uygulamalarında gizli dizileri yönetme](service-fabric-application-secret-management.md) .
+Aşağıdaki örnekte, *MyCert*adlı bir sertifika kullanılarak şifrelenmiş etki alanı şifresi ile *TestUser* adlı bir Active Directory kullanıcısı gösterilmektedir. Gizli şifreleme `Invoke-ServiceFabricEncryptText` metnini oluşturmak için PowerShell komutunu kullanabilirsiniz. Ayrıntılar için [Service Fabric uygulamalarında sırları yönetme](service-fabric-application-secret-management.md) ye bakın.
 
-Bant dışı bir yöntem kullanarak yerel makineye parolanın şifresini çözmek için sertifikanın özel anahtarını dağıtmanız gerekir (Azure 'da bu, Azure Resource Manager aracılığıyla yapılır). Daha sonra, Service Fabric hizmet paketini makineye dağıttığında, bu kimlik bilgileri altında çalıştırmak için Active Directory ve (Kullanıcı adıyla birlikte) kimlik doğrulaması yapabilir.
+Bant dışı bir yöntem kullanarak (Azure'da, bu Azure Kaynak Yöneticisi aracılığıyla) parolayı yerel makinenin şifresini çözmek için sertifikanın özel anahtarını dağıtmanız gerekir. Daha sonra, Service Fabric servis paketini makineye dağıttığında, gizlinin şifresini çözebilir ve (kullanıcı adı ile birlikte) Active Directory ile bu kimlik bilgileri altında çalışmak üzere kimlik doğrulaması yapabiliyor.
 
 ```xml
 <Principals>
@@ -37,13 +37,13 @@ Bant dışı bir yöntem kullanarak yerel makineye parolanın şifresini çözme
 ```
 
 > [!NOTE] 
-> Bir hizmete RunAs ilkesi uygularsanız ve hizmet bildirimi uç nokta kaynaklarını HTTP protokolüyle bildirirse, bir **Securityaccesspolicy**de belirtmeniz gerekir.  Daha fazla bilgi için bkz. [http ve HTTPS uç noktaları için güvenlik erişimi Ilkesi atama](service-fabric-assign-policy-to-endpoint.md). 
+> Bir hizmete RunAs ilkesi uygularsanız ve hizmet bildirimi HTTP protokolü ile uç nokta kaynaklarını bildirirse, bir **SecurityAccessPolicy**belirtmeniz gerekir.  Daha fazla bilgi için [http ve HTTPS uç noktaları için bir güvenlik erişim ilkesi atay'a](service-fabric-assign-policy-to-endpoint.md)bakın. 
 >
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
-Sonraki adım olarak, aşağıdaki makaleleri okuyun:
+Bir sonraki adım olarak, aşağıdaki makaleleri okuyun:
 * [Uygulama modelini anlama](service-fabric-application-model.md)
-* [Hizmet bildiriminde kaynakları belirtme](service-fabric-service-manifest-resources.md)
+* [Hizmet bildiriminde kaynakları belirtin](service-fabric-service-manifest-resources.md)
 * [Uygulama dağıtma](service-fabric-deploy-remove-applications.md)
 
 [image1]: ./media/service-fabric-application-runas-security/copy-to-output.png

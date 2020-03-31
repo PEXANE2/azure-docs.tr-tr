@@ -9,13 +9,13 @@ ms.date: 02/14/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 13089a2514229c5c5bc7b40d9447719247b23405
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67188208"
 ---
-### <a name="noconnection"></a>Yerel ağ geçidinin IP adresi ön eklerini değiştirmek için - ağ geçidi bağlantısı yok
+### <a name="to-modify-local-network-gateway-ip-address-prefixes---no-gateway-connection"></a><a name="noconnection"></a>Yerel ağ geçidinin IP adresi ön eklerini değiştirmek için - ağ geçidi bağlantısı yok
 
 Başka adres ön ekleri eklemek için:
 
@@ -33,21 +33,21 @@ Başka adres ön ekleri eklemek için:
 
 Adres ön eklerini kaldırmak için:
 
-  Artık gereği olmayan önekleri bırakın. Bu örnekte, artık 10.101.2.0/24 öneki koyduk (önceki örnekten), yerel ağ geçidi güncelleştiriyoruz. Bu nedenle, bu ön eki hariç tutuyoruz.
+  Artık gereği olmayan önekleri bırakın. Bu örnekte, artık öneki 10.101.2.0/24 (önceki örnekten) gerekmez, bu nedenle bu önek hariç yerel ağ ağ ağ geçidini güncelliyoruz.
 
 1. LocalNetworkGateway için değişkeni ayarlayın.
 
    ```azurepowershell-interactive
    $local = Get-AzLocalNetworkGateway -Name Site1 -ResourceGroupName TestRG1
    ```
-2. Güncelleştirilmiş ön ekine sahip bir ağ geçidi'ni ayarlayın.
+2. Ağ geçidini güncelleştirilmiş öneklerle ayarlayın.
 
    ```azurepowershell-interactive
    Set-AzLocalNetworkGateway -LocalNetworkGateway $local `
    -AddressPrefix @('10.101.0.0/24','10.101.1.0/24')
    ```
 
-### <a name="withconnection"></a>Yerel ağ geçidinin IP adresi ön eklerini değiştirmek için - ağ geçidi bağlantısı var
+### <a name="to-modify-local-network-gateway-ip-address-prefixes---existing-gateway-connection"></a><a name="withconnection"></a>Yerel ağ geçidinin IP adresi ön eklerini değiştirmek için - ağ geçidi bağlantısı var
 
 Ağ geçidi bağlantınız varsa ve yerel ağ geçidinizde bulunan IP adresi ön eklerini eklemek veya kaldırmak istiyorsanız aşağıdaki adımları sırasıyla uygulamanız gerekir. Bunun sonucunda, VPN bağlantınızda kesinti oluşur. IP adresi öneklerini değiştirirken, VPN ağ geçidini silmeniz gerekmez. Yalnızca bağlantıyı kaldırmanız gerekir.
 
@@ -56,7 +56,7 @@ Ağ geçidi bağlantınız varsa ve yerel ağ geçidinizde bulunan IP adresi ön
    ```azurepowershell-interactive
    Remove-AzVirtualNetworkGatewayConnection -Name VNet1toSite1 -ResourceGroupName TestRG1
    ```
-2. Yerel ağ geçidi değiştirilmiş adres ön ekine sahip ayarlayın.
+2. Değiştirilen adres önekleri ile yerel ağ ağ ağ geçidini ayarlayın.
    
    LocalNetworkGateway için değişkeni ayarlayın.
 
