@@ -1,6 +1,6 @@
 ---
-title: Karma kimlik tasarımı - Azure çok faktörlü kimlik doğrulaması gereksinimleri | Microsoft Docs
-description: Koşullu erişim denetimi ile Azure Active Directory kullanıcı kimlik doğrulaması yapılırken ve uygulamaya erişime izin vermeden önce çekme belirli koşullara bakar. Bu koşullar sağlandığında, kullanıcı kimlik doğrulaması ve uygulamaya erişim izni.
+title: Karma kimlik tasarımı - çok faktörlü kimlik doğrulama gereksinimleri Azure | Microsoft Dokümanlar
+description: Koşullu Erişim denetimi ile Azure Etkin Dizin, kullanıcının kimliğini doğrularken ve uygulamaya erişime izin vermeden önce seçtiğiniz belirli koşulları denetler. Bu koşullar yerine getirildiğinde, kullanıcı nın kimliği doğrulanır ve uygulamaya erişime izin verilir.
 documentationcenter: ''
 services: active-directory
 author: billmath
@@ -18,45 +18,45 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4743195fc79d43571ec79a13b8518edc7e81379b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67109303"
 ---
 # <a name="determine-multi-factor-authentication-requirements-for-your-hybrid-identity-solution"></a>Karma kimlik çözümünüz için çok faktörlü kimlik doğrulama gereksinimlerini belirleme
-Bu dünyada Mobility, veri ve uygulamaları bulutta ve herhangi bir CİHAZDAN erişen kullanıcılar ile bu bilgiyi güvenli hale getirme güvenemediği haline gelmiştir.  Her gün bir güvenlik ihlali hakkında yeni bir başlık yoktur.  Olmasa da, bu tür İhlallerin karşı garanti, çok faktörlü kimlik doğrulaması, bir ek bu ihlallerini önlemeye yardımcı olmak için güvenlik katmanı sağlar.
-Çok faktörlü kimlik doğrulaması için kuruluşların gereksinimleri değerlendirerek başlatın. Diğer bir deyişle, güvenli hale getirmek ne kuruluş çalışıyor.  Bu değerlendirme ayarlama ve kuruluşların kullanıcıları çok faktörlü kimlik doğrulaması için etkinleştirme teknik gereksinimlerini tanımlamak önemlidir.
+Bu mobilite dünyasında, kullanıcıların buluttaki verilere ve uygulamalara erişmesiyle ve herhangi bir cihazdan, bu bilgilerin güvenliğini sağlamak çok önemli hale gelmiştir.  Her gün bir güvenlik ihlali hakkında yeni bir başlık var.  Bu tür ihlallere karşı bir garanti olmamasına rağmen, çok faktörlü kimlik doğrulama, bu ihlalleri önlemeye yardımcı olacak ek bir güvenlik katmanı sağlar.
+Çok faktörlü kimlik doğrulama için kuruluş gereksinimlerini değerlendirerek başlayın. Yani, ne organizasyon güvenli çalışıyor.  Bu değerlendirme, çok faktörlü kimlik doğrulaması için kuruluş kullanıcılarının kurulması ve etkinleştirilmesi için teknik gereksinimleri tanımlamak için önemlidir.
 
-Aşağıda yanıtlanacak emin olun:
+Aşağıdakileri yanıtlayabilmek için şunlara yanıt verin:
 
-* Şirketiniz Microsoft uygulamaları güvenli hale getirmek çalışıyor? 
-* Bu uygulama nasıl yayımlanır?
-* Şirket, çalışanların şirket içi uygulamalara erişmesine izin vermek için uzaktan erişim sağlar mı?
+* Şirketiniz Microsoft uygulamalarını korumaya mı çalışıyor? 
+* Bu uygulamalar nasıl yayınlanır?
+* Şirketiniz, çalışanların şirket içi uygulamalara erişmesine izin vermek için uzaktan erişim sağlıyor mu?
 
-Yanıt Evet ise, uzaktan erişimi ne tür? Ayrıca bu uygulamalara erişen kullanıcılar konumlandırılacağı değerlendirilecek gerekir. Bu değerlendirme uygun çok faktörlü kimlik doğrulama stratejisi tanımlamak için başka bir önemli bir adımdır. Aşağıdaki soruları yanıtlamak emin olun:
+Evet ise, ne tür bir uzaktan erişim? Ayrıca, bu uygulamalara erişen kullanıcıların nerede bulunacağını da değerlendirmeniz gerekir. Bu değerlendirme, uygun çok faktörlü kimlik doğrulama stratejisini tanımlamak için önemli bir adımdır. Aşağıdaki soruları yanıtladıklısa mutlaka:
 
-* Kullanıcılarınızın bulunduğu nereye gittiğini?
-* Bunlar herhangi bir yerde bulunan olabilir?
-* Şirketiniz kullanıcının konumuna göre kısıtlamaları kurmak istiyor mu?
+* Kullanıcılar nerede bulunacak?
+* Herhangi bir yerde bulunabilirler mi?
+* Şirketiniz kullanıcının konumuna göre kısıtlamalar oluşturmak istiyor mu?
 
-Bu gereksinimler anladığınızda, ayrıca çok faktörlü kimlik doğrulaması kullanıcının gereksinimlerini değerlendirmek önemlidir. Bu değerlendirme önemlidir, çünkü çok faktörlü kimlik doğrulaması alma için gereksinimleri tanımlar. Aşağıdaki soruları yanıtlamak emin olun:
+Bu gereksinimleri anladıktan sonra, kullanıcının çok faktörlü kimlik doğrulama gereksinimlerini de değerlendirmek önemlidir. Bu değerlendirme önemlidir, çünkü çok faktörlü kimlik doğrulaması için gereksinimleri tanımlar. Aşağıdaki soruları yanıtladıklısa mutlaka:
 
-* Kullanıcıların multi-Factor authentication ile tanıyor musunuz?
-* Bazı kullanan ek kimlik doğrulaması sağlamak için gerekli olacak mı?  
-  * Yanıt Evet ise, her zaman dış ağlara ya da erişimi belirli uygulamalara veya diğer koşullar altında Bekletmeden çıkarken?
-* Kullanıcıların, Kurulum ve çok faktörlü kimlik doğrulaması uygulamak için eğitim gerekiyor mu?
-* Şirket kullanıcıları için çok faktörlü kimlik doğrulamasını etkinleştirmek isteyen önemli senaryolar nelerdir?
+* Kullanıcılar çok faktörlü kimlik doğrulamayı biliyor mu?
+* Ek kimlik doğrulaması sağlamak için bazı kullanımlar gerekli olacak mı?  
+  * Evet ise, her zaman, harici ağlardan gelirken veya belirli uygulamalara erişirken veya başka koşullar altında?
+* Kullanıcılar çok faktörlü kimlik doğrulamayı nasıl kurup uygulayacakları konusunda eğitime ihtiyaç duyar lar mı?
+* Şirketinizin kullanıcıları için çok faktörlü kimlik doğrulaması etkinleştirmek istediği önemli senaryolar nelerdir?
 
-Önceki soruyu yanıtlayarak sonra şirket içinde çok faktörlü kimlik doğrulamasını zaten uygulanmış olup olmadığının anlaşılması mümkün olacaktır. Bu değerlendirme ayarlama ve kuruluşların kullanıcıları çok faktörlü kimlik doğrulaması için etkinleştirme teknik gereksinimlerini tanımlamak önemlidir. Aşağıdaki soruları yanıtlamak emin olun:
+Önceki soruları yanıtladıktan sonra, şirket içinde zaten uygulanan çok faktörlü kimlik doğrulaması olup olmadığını anlayabilirsiniz. Bu değerlendirme, çok faktörlü kimlik doğrulaması için kuruluş kullanıcılarının kurulması ve etkinleştirilmesi için teknik gereksinimleri tanımlamak için önemlidir. Aşağıdaki soruları yanıtladıklısa mutlaka:
 
-* MFA ile ayrıcalıklı hesapları korumak şirketinizin gerekiyor mu?
-* Şirketiniz, mfa'yı uyumluluk nedenleriyle belirli uygulama etkinleştirme gerekiyor mu?
-* Şirketiniz tüm kullanıcılar bu uygulamayı ya da yalnızca Yöneticiler için mfa'yı etkinleştirme gerekiyor mu?
-* Mfa'yı her zaman etkin veya yalnızca kullanıcılar, kuruluş ağının dışında olduğunda açmış mı?
+* Şirketinizin MFA ile ayrıcalıklı hesapları koruması gerekiyor mu?
+* Şirketinizin uyumluluk nedenleriyle belirli bir uygulama için MFA'yı etkinleştirmesi gerekiyor mu?
+* Şirketinizin bu uygulamanın tüm uygun kullanıcıları veya yalnızca yöneticiler için MFA'yı etkinleştirmesi gerekiyor mu?
+* MFA'nın her zaman etkin leştirilmiş olması mı gerekiyor yoksa yalnızca kullanıcılar şirket ağınızın dışında oturum açtıklarında mı?
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Karma kimlik benimseme stratejinizi tanımlayın](plan-hybrid-identity-design-considerations-identity-adoption-strategy.md)
+[Karma kimlik benimseme stratejisi tanımlayın](plan-hybrid-identity-design-considerations-identity-adoption-strategy.md)
 
 ## <a name="see-also"></a>Ayrıca bkz.
 [Tasarım konularına genel bakış](plan-hybrid-identity-design-considerations-overview.md)

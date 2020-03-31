@@ -1,166 +1,166 @@
 ---
-title: Aktör tanılama ve izleme
-description: Bu makalede, tarafından oluşturulan olaylar ve performans sayaçları da dahil olmak üzere Service Fabric Reliable Actors çalışma zamanındaki tanılama ve performans izleme özellikleri açıklanmaktadır.
+title: Aktörler teşhis ve izleme
+description: Bu makalede, Hizmet Kumaşı Güvenilir Aktörler çalışma süresindeki tanılama ve performans izleme özellikleri açıklanmaktadır, bunlar arasında yayılan olaylar ve performans sayaçları da yer al.) yer al.)
 author: abhishekram
 ms.topic: conceptual
 ms.date: 10/26/2017
 ms.author: abhisram
 ms.openlocfilehash: e6e9fb66368461e0d3ebdd2709f4ced0e796bea5
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79282334"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-actors"></a>Reliable Actors için tanılama ve performans izlemesi
-Reliable Actors Runtime, [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) olaylarını ve [performans sayaçlarını](https://msdn.microsoft.com/library/system.diagnostics.performancecounter.aspx)yayar. Bunlar, çalışma zamanının nasıl çalıştığı hakkında Öngörüler ve sorun giderme ve performans izleme konularında yardım sağlar.
+Güvenilir Aktörler çalışma zamanı [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) olaylar ve [performans sayaçları](https://msdn.microsoft.com/library/system.diagnostics.performancecounter.aspx)yakar. Bunlar, çalışma zamanının nasıl çalıştığına ilişkin öngörüler sağlar ve sorun giderme ve performans izleme konusunda yardımcı olur.
 
-## <a name="eventsource-events"></a>EventSource olayları
-Reliable Actors Runtime için EventSource sağlayıcı adı "Microsoft-ServiceFabric-aktör" ' dir. Bu olay kaynağının olayları, aktör uygulamasının [Visual Studio 'da hata ayıklaması](service-fabric-debugging-your-application.md)yapıldığında [Tanılama olayları](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md#view-service-fabric-system-events-in-visual-studio) penceresinde görüntülenir.
+## <a name="eventsource-events"></a>EventSource etkinlikleri
+Güvenilir Aktörler çalışma zamanı için EventSource sağlayıcı adı "Microsoft-ServiceFabric-Actors". Bu olay kaynağından olaylar, aktör uygulaması [Visual Studio'da debugged](service-fabric-debugging-your-application.md)ediliyor [zaman Tanılama Olayları](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md#view-service-fabric-system-events-in-visual-studio) penceresinde görünür.
 
-EventSource olaylarını toplama ve/veya görüntüleme konusunda yardımcı olan araç ve teknolojilerin örnekleri şunlardır. [PerfView](https://www.microsoft.com/download/details.aspx?id=28567), [Azure tanılama](../cloud-services/cloud-services-dotnet-diagnostics.md), [anlam günlüğü](https://msdn.microsoft.com/library/dn774980.aspx)ve [Microsoft TraceEvent Library](https://www.nuget.org/packages/Microsoft.Diagnostics.Tracing.TraceEvent).
+EventSource etkinliklerinin toplanması ve/veya görüntülenmesinde yardımcı olan araçlara ve teknolojilere örnek olarak [PerfView,](https://www.microsoft.com/download/details.aspx?id=28567) [Azure Tanılama,](../cloud-services/cloud-services-dotnet-diagnostics.md) [Anlamsal Günlük leme](https://msdn.microsoft.com/library/dn774980.aspx)ve Microsoft [TraceEvent Kitaplığı](https://www.nuget.org/packages/Microsoft.Diagnostics.Tracing.TraceEvent)verilebilir.
 
-### <a name="keywords"></a>Anahtar sözcükler
-Reliable Actors EventSource 'e ait olan tüm olaylar bir veya daha fazla anahtar sözcük ile ilişkilendirilir. Bu, toplanan olayların filtrelenmesini mümkün bir şekilde sunar. Aşağıdaki anahtar sözcük bitleri tanımlanmıştır.
+### <a name="keywords"></a>Anahtar Sözcükler
+Güvenilir Aktörler EventSource'a ait tüm olaylar bir veya daha fazla anahtar kelimeyle ilişkilidir. Bu, toplanan olayların filtrelemesini sağlar. Aşağıdaki anahtar sözcük bitleri tanımlanır.
 
-| bit | Açıklama |
+| Bit | Açıklama |
 | --- | --- |
-| 0x1 |Yapı aktör çalışma zamanının işlemini özetleyen önemli olaylar kümesi. |
-| 0x2 |Aktör yöntemi çağrılarını tanımlayan olay kümesi. Daha fazla bilgi için [aktörlerin giriş konusuna](service-fabric-reliable-actors-introduction.md)bakın. |
-| 0x4 |Aktör durumuyla ilgili olay kümesi. Daha fazla bilgi için [aktör durum yönetimi](service-fabric-reliable-actors-state-management.md)konusuna bakın. |
-| 0x8 |Aktör içinde çift tabanlı eşzamanlılık ile ilgili olay kümesi. Daha fazla bilgi için [eşzamanlılık](service-fabric-reliable-actors-introduction.md#concurrency)sayfasındaki konusuna bakın. |
+| 0x1 |Kumaş Aktörler çalışma zamanı çalışmasını özetleyen önemli olaylar kümesi. |
+| 0x2 |Aktör yöntemi çağrılarını açıklayan olaylar kümesi. Daha fazla bilgi için [aktörler hakkındaki tanıtım konusuna](service-fabric-reliable-actors-introduction.md)bakın. |
+| 0x4 |Aktör durumuyla ilgili olaylar kümesi. Daha fazla bilgi için [aktör devlet yönetimi](service-fabric-reliable-actors-state-management.md)konusuna bakın. |
+| 0x8 |Aktörde sıra tabanlı eşzamanlılıkla ilgili olaylar kümesi. Daha fazla bilgi için [eşzamanlılık](service-fabric-reliable-actors-introduction.md#concurrency)konusuna bakın. |
 
 ## <a name="performance-counters"></a>Performans sayaçları
-Reliable Actors çalışma zamanı aşağıdaki performans sayacı kategorilerini tanımlar.
+Güvenilir Aktörler çalışma süresi aşağıdaki performans sayacı kategorilerini tanımlar.
 
 | Kategori | Açıklama |
 | --- | --- |
-| Aktör Service Fabric |Azure Service Fabric aktörlerini özel sayaçlar, ör. aktör durumunu kaydetmek için geçen süre |
-| Service Fabric aktör yöntemi |Service Fabric aktörleri tarafından uygulanan yöntemlere özgü sayaçlar, ör. aktör yöntemi ne sıklıkla çağrılır |
+| Servis Kumaş Aktör |Azure Hizmet Kumaşı aktörlerine özgü sayaçlar , örneğin aktör durumunu kurtarmak için gereken süre |
+| Servis Kumaş Aktör Yöntemi |Service Fabric aktörleri tarafından uygulanan yöntemlere özgü sayaçlar, örneğin bir aktör yönteminin ne sıklıkta çağrıldığı |
 
-Yukarıdaki kategorilerin her birinde bir veya daha fazla sayaç bulunur.
+Yukarıdaki kategorilerin her biri bir veya daha fazla sayaç vardır.
 
-Windows işletim sisteminde varsayılan olarak kullanılabilir olan [Windows Performans İzleyicisi](https://technet.microsoft.com/library/cc749249.aspx) uygulaması, performans sayacı verilerini toplamak ve görüntülemek için kullanılabilir. [Azure tanılama](../cloud-services/cloud-services-dotnet-diagnostics.md) , performans sayacı verilerini toplamaya ve Azure tablolarına yüklemeye yönelik başka bir seçenektir.
+Windows işletim sisteminde varsayılan olarak kullanılabilen [Windows Performans İzleyicisi](https://technet.microsoft.com/library/cc749249.aspx) uygulaması, performans sayacı verilerini toplamak ve görüntülemek için kullanılabilir. [Azure Tanılama,](../cloud-services/cloud-services-dotnet-diagnostics.md) performans sayacı verilerini toplamak ve Azure tablolarına yüklemek için başka bir seçenektir.
 
 ### <a name="performance-counter-instance-names"></a>Performans sayacı örnek adları
-Çok sayıda aktör hizmeti veya aktör hizmeti bölümü olan bir küme, çok sayıda aktör performans sayacı örneğine sahip olacaktır. Performans sayacı örneği adları, performans sayacı örneğinin ilişkilendirildiği belirli [bölümü](service-fabric-reliable-actors-platform.md#service-fabric-partition-concepts-for-actors) ve aktör yöntemini (varsa) tanımlamaya yardımcı olabilir.
+Çok sayıda aktör hizmeti ne de aktör hizmeti bölümleri olan bir küme, çok sayıda aktör performans sayacı örneğine sahip olur. Performans sayacı örnek adları, performans sayacı örneğinin ilişkili olduğu belirli [bölüm](service-fabric-reliable-actors-platform.md#service-fabric-partition-concepts-for-actors) ve aktör yöntemini (varsa) tanımlamada yardımcı olabilir.
 
-#### <a name="service-fabric-actor-category"></a>Aktör kategorisi Service Fabric
-Kategori `Service Fabric Actor`için, sayaç örneği adları aşağıdaki biçimdedir:
+#### <a name="service-fabric-actor-category"></a>Servis Kumaş Oyuncu kategorisi
+Kategori `Service Fabric Actor`için sayaç örnek adları aşağıdaki biçimdedir:
 
 `ServiceFabricPartitionID_ActorsRuntimeInternalID`
 
-*Servicefabricpartitionıd* , performans sayacı örneğinin ilişkilendirildiği SERVICE fabrıc bölüm kimliğinin dize gösterimidir. Bölüm KIMLIĞI bir GUID 'dir ve dize temsili, Biçim belirleyicisi "D" olan [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) yöntemiyle oluşturulur.
+*ServiceFabricPartitionID,* performans sayacı örneğinin ilişkili olduğu Hizmet Kumaşı bölümleme kimliğinin dize gösterimidir. Bölüm kimliği bir GUID'dir ve dize [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) gösterimi biçim belirteci "D" olan yöntem aracılığıyla oluşturulur.
 
-*Actorruntimeınternalıd* , iç kullanımı Için yapı aktörleri çalışma zamanı tarafından oluşturulan 64 bitlik bir tamsayının dize gösterimidir. Bu, benzersizlik sağlamak ve diğer performans sayacı örneği adlarıyla çakışmamak için performans sayacı örneği adına dahildir. Kullanıcılar, performans sayacı örneği adının bu bölümünü yorumlama denememelidir.
+*ActorRuntimeInternalID,* Kumaş Aktörleri tarafından kendi iç kullanımı için çalışma zamanı tarafından oluşturulan 64 bit'lik bir tamsayı dize gösterimidir. Bu, benzersizliğini sağlamak ve diğer performans sayacı örnek adlarıyla çakışmayı önlemek için performans sayacı örnek adına dahildir. Kullanıcılar performans sayacı örnek adının bu bölümünü yorumlamaya çalışmamalıdır.
 
-Aşağıda, `Service Fabric Actor` kategorisine ait bir sayaç için sayaç örneği adı örneği verilmiştir:
+Kategoriye ait `Service Fabric Actor` bir sayaç için sayaç örneği adı örneği aşağıdaki leri verilmiştir:
 
 `2740af29-78aa-44bc-a20b-7e60fb783264_635650083799324046`
 
-Yukarıdaki örnekte, `2740af29-78aa-44bc-a20b-7e60fb783264` Service Fabric bölüm KIMLIĞININ dize gösterimidir ve `635650083799324046` çalışma zamanının iç kullanımı için oluşturulan 64 bitlik KIMLIĞIDIR.
+Yukarıdaki örnekte, `2740af29-78aa-44bc-a20b-7e60fb783264` Hizmet Kumaşı bölümleme kimliğinin `635650083799324046` dize gösterimi ve çalışma zamanının iç kullanımı için oluşturulan 64 bit lik kimliktir.
 
-#### <a name="service-fabric-actor-method-category"></a>Service Fabric aktör yöntemi kategorisi
-Kategori `Service Fabric Actor Method`için, sayaç örneği adları aşağıdaki biçimdedir:
+#### <a name="service-fabric-actor-method-category"></a>Servis Kumaş Oyuncu Yöntemi kategorisi
+Kategori `Service Fabric Actor Method`için sayaç örnek adları aşağıdaki biçimdedir:
 
 `MethodName_ActorsRuntimeMethodId_ServiceFabricPartitionID_ActorsRuntimeInternalID`
 
-*MethodName* , performans sayacı örneğinin ilişkilendirildiği aktör yönteminin adıdır. Yöntem adının biçimi, yapı aktör çalışma zamanındaki bir mantığa göre belirlenir. Bu ad, adın okunabilirliğini Windows üzerinde performans sayacı örnek adlarının en büyük uzunluğuna göre dengeler.
+*MethodName,* performans sayacı örneğinin ilişkili olduğu aktör yönteminin adıdır. Yöntem adının biçimi, Windows'daki performans sayacı örnek adlarının maksimum uzunluğuüzerindeki kısıtlamalarla adın okunabilirliğini dengeleyen Kumaş Aktörleri çalışma zamanındaki bazı mantığa göre belirlenir.
 
-*Actorsruntimemethodıd* , iç kullanımı Için yapı aktör çalışma zamanı tarafından oluşturulan 32 bitlik bir tamsayının dize gösterimidir. Bu, benzersizlik sağlamak ve diğer performans sayacı örneği adlarıyla çakışmamak için performans sayacı örneği adına dahildir. Kullanıcılar, performans sayacı örneği adının bu bölümünü yorumlama denememelidir.
+*ActorsRuntimeMethodId,* Kumaş Aktörleri tarafından kendi iç kullanımı için oluşturulan 32 bit'lik bir tamsayı dize gösterimidir. Bu, benzersizliğini sağlamak ve diğer performans sayacı örnek adlarıyla çakışmayı önlemek için performans sayacı örnek adına dahildir. Kullanıcılar performans sayacı örnek adının bu bölümünü yorumlamaya çalışmamalıdır.
 
-*Servicefabricpartitionıd* , performans sayacı örneğinin ilişkilendirildiği SERVICE fabrıc bölüm kimliğinin dize gösterimidir. Bölüm KIMLIĞI bir GUID 'dir ve dize temsili, Biçim belirleyicisi "D" olan [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) yöntemiyle oluşturulur.
+*ServiceFabricPartitionID,* performans sayacı örneğinin ilişkili olduğu Hizmet Kumaşı bölümleme kimliğinin dize gösterimidir. Bölüm kimliği bir GUID'dir ve dize [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) gösterimi biçim belirteci "D" olan yöntem aracılığıyla oluşturulur.
 
-*Actorruntimeınternalıd* , iç kullanımı Için yapı aktörleri çalışma zamanı tarafından oluşturulan 64 bitlik bir tamsayının dize gösterimidir. Bu, benzersizlik sağlamak ve diğer performans sayacı örneği adlarıyla çakışmamak için performans sayacı örneği adına dahildir. Kullanıcılar, performans sayacı örneği adının bu bölümünü yorumlama denememelidir.
+*ActorRuntimeInternalID,* Kumaş Aktörleri tarafından kendi iç kullanımı için çalışma zamanı tarafından oluşturulan 64 bit'lik bir tamsayı dize gösterimidir. Bu, benzersizliğini sağlamak ve diğer performans sayacı örnek adlarıyla çakışmayı önlemek için performans sayacı örnek adına dahildir. Kullanıcılar performans sayacı örnek adının bu bölümünü yorumlamaya çalışmamalıdır.
 
-Aşağıda, `Service Fabric Actor Method` kategorisine ait bir sayaç için sayaç örneği adı örneği verilmiştir:
+Kategoriye ait `Service Fabric Actor Method` bir sayaç için sayaç örneği adı örneği aşağıdaki leri verilmiştir:
 
 `ivoicemailboxactor.leavemessageasync_2_89383d32-e57e-4a9b-a6ad-57c6792aa521_635650083804480486`
 
-Yukarıdaki örnekte `ivoicemailboxactor.leavemessageasync` yöntem adıdır, `2` çalışma zamanının iç kullanımı için oluşturulan 32 bitlik KIMLIK `89383d32-e57e-4a9b-a6ad-57c6792aa521`, Service Fabric bölüm KIMLIĞININ dize gösterimidir ve `635650083804480486` çalışma zamanının iç kullanımı için oluşturulan 64 bit KIMLIĞIDIR.
+Yukarıdaki örnekte, `ivoicemailboxactor.leavemessageasync` yöntem adı, `2` çalışma zamanının iç kullanımı için oluşturulan 32 `89383d32-e57e-4a9b-a6ad-57c6792aa521` bit lik kimlik, Hizmet Dokusu bölüm `635650083804480486` kimliği dize gösterimi ve çalışma zamanının iç kullanımı için oluşturulan 64 bit lik kimliktir.
 
 ## <a name="list-of-events-and-performance-counters"></a>Olaylar ve performans sayaçları listesi
-### <a name="actor-method-events-and-performance-counters"></a>Aktör yöntemi olayları ve performans sayaçları
-Reliable Actors Runtime, [aktör yöntemleriyle](service-fabric-reliable-actors-introduction.md)ilgili aşağıdaki olayları yayar.
+### <a name="actor-method-events-and-performance-counters"></a>Aktör yöntemi etkinlikleri ve performans sayaçları
+Güvenilir Aktörler çalışma zamanı [aktör yöntemleri](service-fabric-reliable-actors-introduction.md)ile ilgili aşağıdaki olayları yayır.
 
-| Olay adı | Olay Kimliği | Düzey | Anahtar sözcüğü | Açıklama |
+| Olay adı | Olay Kimliği | Düzey | Anahtar kelime | Açıklama |
 | --- | --- | --- | --- | --- |
-| ActorMethodStart |7 |Ayrıntılı |0x2 |Aktör çalışma zamanı bir aktör yöntemi çağırmak için. |
-| ActorMethodStop |8 |Ayrıntılı |0x2 |Aktör yöntemi yürütmeyi bitirdi. Diğer bir deyişle, çalışma zamanının aktör metoduna zaman uyumsuz çağrısı döndürülür ve aktör yöntemi tarafından döndürülen görev tamamlanmıştır. |
-| ActorMethodThrewException |9 |Uyarı |0x3 |Bir aktör yönteminin yürütülmesi sırasında, çalışma zamanının aktör yöntemine yönelik zaman uyumsuz çağrı sırasında veya aktör yöntemi tarafından döndürülen görevin yürütülmesi sırasında bir özel durum oluştu. Bu olay, araştırma gerektiren aktör kodundaki bir hata sıralamasını gösterir. |
+| ActorMethodStart |7 |Ayrıntılı |0x2 |Aktörler çalışma zamanı bir aktör yöntemi çağırmak üzeredir. |
+| ActorMethodStop |8 |Ayrıntılı |0x2 |Bir aktör yöntemi yürütmeyi tamamladı. Diğer bir tarihte, çalışma zamanının aktör yöntemine çağrı yaptığı eşzamanlı çağrı döndürülür ve aktör yöntemiyle döndürülen görev tamamlanır. |
+| ActorMethodThrewException |9 |Uyarı |0x3 |Bir özel durum, bir aktör yönteminin yürütülmesi sırasında, çalışma zamanının aktör yöntemine eşzamanlı araması sırasında veya aktör yöntemi yle döndürülen görevin yürütülmesi sırasında atıldı. Bu olay, aktör kodunda incelenmesi gereken bir tür hata olduğunu gösterir. |
 
-Reliable Actors Runtime, aktör yöntemlerinin yürütülmesi ile ilgili aşağıdaki performans sayaçlarını yayımlar.
+Güvenilir Aktörler runtime aktör yöntemlerinin yürütülmesi ile ilgili aşağıdaki performans sayaçları yayınlar.
 
 | Kategori adı | Sayaç adı | Açıklama |
 | --- | --- | --- |
-| Service Fabric aktör yöntemi |Saniyedeki çağırma sayısı |Aktör hizmeti metodunun saniye başına çağrılme sayısı |
-| Service Fabric aktör yöntemi |Çağrı başına ortalama milisaniye |Aktör hizmeti yönteminin yürütülmesi için harcanan süre (milisaniye) |
-| Service Fabric aktör yöntemi |Oluşturulan özel durumlar/sn |Aktör hizmeti metodunun saniye başına özel durum kaç kez aldığı |
+| Servis Kumaş Aktör Yöntemi |Davetler/Sn |Aktör hizmet yönteminin saniyede çağrılma sayısı |
+| Servis Kumaş Aktör Yöntemi |Çağırma başına ortalama milisaniye |Aktör hizmeti yöntemini milisaniye cinsinden yürütmek için alınan süre |
+| Servis Kumaş Aktör Yöntemi |Atılan özel durumlar/Sn |Aktör hizmet yönteminin saniyede bir özel durum fırlattık sayısı |
 
 ### <a name="concurrency-events-and-performance-counters"></a>Eşzamanlılık olayları ve performans sayaçları
-Reliable Actors Runtime [eşzamanlılık](service-fabric-reliable-actors-introduction.md#concurrency)ile ilgili aşağıdaki olayları yayar.
+Güvenilir Aktörler çalışma süresi [eşzamanlılık](service-fabric-reliable-actors-introduction.md#concurrency)ile ilgili aşağıdaki olayları yayır.
 
-| Olay adı | Olay Kimliği | Düzey | Anahtar sözcüğü | Açıklama |
+| Olay adı | Olay Kimliği | Düzey | Anahtar kelime | Açıklama |
 | --- | --- | --- | --- | --- |
-| ActorMethodCallsWaitingForLock |12 |Ayrıntılı |0x8 |Bu olay, bir aktör içindeki her yeni bir öğenin başlangıcında yazılır. Bu, çift tabanlı eşzamanlılık uygulayan aktör başına kilidi almak için bekleyen, bekleyen aktör çağrılarının sayısını içerir. |
+| AktörMeAramalarWaitingForLock |12 |Ayrıntılı |0x8 |Bu olay bir aktör her yeni dönüş başında yazılır. Sıra tabanlı eşzamanlılığı zorlayan aktör başına kilidi elde etmek için bekleyen aktör çağrılarının sayısını içerir. |
 
-Reliable Actors Runtime eşzamanlılık ile ilgili aşağıdaki performans sayaçlarını yayınlar.
+Güvenilir Aktörler çalışma zamanı eşzamanlılıkla ilgili aşağıdaki performans sayaçlarını yayımlar.
 
 | Kategori adı | Sayaç adı | Açıklama |
 | --- | --- | --- |
-| Aktör Service Fabric |aktör kilidi için bekleyen aktör çağrısı sayısı |Etkinleştirme başına eşzamanlılık uygulayan, aktör başına kilit elde etmek için bekleyen aktör çağrısı sayısı |
-| Aktör Service Fabric |Kilit bekleme başına ortalama milisaniye |Çift tabanlı eşzamanlılık uygulayan aktör başına kilidi almak için geçen süre (milisaniye cinsinden) |
-| Aktör Service Fabric |Ortalama milisaniye aktör kilidi tutuldu |Aktör kilidi 'nin tutulduğu süre (milisaniye cinsinden) |
+| Servis Kumaş Aktör |# aktör kilit bekleyen aktör aramaları |Sıra tabanlı eşzamanlılığı zorlayan aktör başına kilidi elde etmek için bekleyen aktör çağrılarının sayısı |
+| Servis Kumaş Aktör |Kilit başına ortalama milisaniye bekleme |Sıra tabanlı eşzamanlılığı zorlayan aktör başına kilidi elde etmek için alınan süre (milisaniye cinsinden) |
+| Servis Kumaş Aktör |Ortalama milisaniye aktör kilidi tutuldu |Aktör başına kilidin tutulduğu saat (milisaniye cinsinden) |
 
-### <a name="actor-state-management-events-and-performance-counters"></a>Aktör durumu yönetim olayları ve performans sayaçları
-Reliable Actors Runtime, [aktör durumu yönetimiyle](service-fabric-reliable-actors-state-management.md)ilgili aşağıdaki olayları yayar.
+### <a name="actor-state-management-events-and-performance-counters"></a>Aktör devlet yönetimi etkinlikleri ve performans sayaçları
+Güvenilir Aktörler çalışma zamanı [aktör devlet yönetimi](service-fabric-reliable-actors-state-management.md)ile ilgili aşağıdaki olayları yayır.
 
-| Olay adı | Olay Kimliği | Düzey | Anahtar sözcüğü | Açıklama |
+| Olay adı | Olay Kimliği | Düzey | Anahtar kelime | Açıklama |
 | --- | --- | --- | --- | --- |
-| ActorSaveStateStart |10 |Ayrıntılı |0x4 |Aktör çalışma zamanı aktör durumunu kaydetmek için kullanılır. |
-| ActorSaveStateStop |11 |Ayrıntılı |0x4 |Aktör çalışma zamanı aktör durumunu kaydetmeyi tamamladı. |
+| AktörSaveStateStart |10 |Ayrıntılı |0x4 |Aktörler çalışma zamanı aktör devlet kaydetmek üzeredir. |
+| AktörSaveStateStop |11 |Ayrıntılı |0x4 |Aktörler runtime aktör devlet tasarrufu bitirdi. |
 
-Reliable Actors Runtime, aktör durumu yönetimiyle ilgili aşağıdaki performans sayaçlarını yayınlar.
+Güvenilir Aktörler runtime aktör devlet yönetimi ile ilgili aşağıdaki performans sayaçları yayınlar.
 
 | Kategori adı | Sayaç adı | Açıklama |
 | --- | --- | --- |
-| Aktör Service Fabric |Durum kaydetme işlemi başına ortalama milisaniye |Aktör durumunu milisaniye olarak kaydetmek için geçen süre |
-| Aktör Service Fabric |Yük durumu işlemi başına ortalama milisaniye |Aktör durumu yükleme için harcanan süre (milisaniye) |
+| Servis Kumaş Aktör |Kaydet durumu çalışması başına ortalama milisaniye |Milisaniye cinsinden aktör durumunu kurtarmak için alınan süre |
+| Servis Kumaş Aktör |Yük durumu çalışması başına ortalama milisaniye |Aktör durumunu milisaniye cinsinden yüklemek için alınan süre |
 
-### <a name="events-related-to-actor-replicas"></a>Aktör çoğaltmalarıyla ilgili olaylar
-Reliable Actors Runtime, [aktör çoğaltmalarıyla](service-fabric-reliable-actors-platform.md#service-fabric-partition-concepts-for-actors)ilgili aşağıdaki olayları yayar.
+### <a name="events-related-to-actor-replicas"></a>Aktör yinelemeleri ile ilgili olaylar
+Güvenilir Aktörler çalışma zamanı [aktör yinelemeleri](service-fabric-reliable-actors-platform.md#service-fabric-partition-concepts-for-actors)ile ilgili aşağıdaki olayları yayır.
 
-| Olay adı | Olay Kimliği | Düzey | Anahtar sözcüğü | Açıklama |
+| Olay adı | Olay Kimliği | Düzey | Anahtar kelime | Açıklama |
 | --- | --- | --- | --- | --- |
-| Replicachangeroletoprımary |1 |Bilgilendirici |0x1 |Aktör çoğaltma rolü birincil olarak değiştirildi. Bu, bu bölümün aktörleri bu çoğaltma içinde oluşturulacak anlamına gelir. |
-| ReplicaChangeRoleFromPrimary |2 |Bilgilendirici |0x1 |Aktör çoğaltma rolü birincil olmayan olarak değiştirildi. Bu, bu bölümün aktörlerin artık bu çoğaltma içinde oluşturulmayacağı anlamına gelir. Bu çoğaltma içinde önceden oluşturulmuş aktörler için yeni istek teslim edilecek. Tüm sürmekte olan istekler tamamlandıktan sonra aktörler yok edilir. |
+| ReplicaChangeRoletoPrimary |1 |Bilgilendirici |0x1 |Aktör çoğaltma birincil rolü değiştirdi. Bu, bu bölümün aktörlerini bu yineleme içinde oluşturulacağı anlamına gelir. |
+| ReplicaChangeRoleFromPrimary |2 |Bilgilendirici |0x1 |Aktör çoğaltma rolünü Birincil olmayan olarak değiştirdi. Bu, bu bölümün aktörlerini artık bu yineleme içinde oluşturulmayacak anlamına gelir. Bu yineleme içinde zaten oluşturulan aktörlere yeni istekler teslim edilecektir. Devam eden istekler tamamlandıktan sonra aktörler yok edilecek. |
 
 ### <a name="actor-activation-and-deactivation-events-and-performance-counters"></a>Aktör etkinleştirme ve devre dışı bırakma olayları ve performans sayaçları
-Reliable Actors Runtime, [aktör etkinleştirme ve devre dışı bırakma](service-fabric-reliable-actors-lifecycle.md)ile ilgili aşağıdaki olayları yayar.
+Güvenilir Aktörler çalışma süresi [aktör etkinleştirme ve devre dışı bırakma](service-fabric-reliable-actors-lifecycle.md)ile ilgili aşağıdaki olayları yayır.
 
-| Olay adı | Olay Kimliği | Düzey | Anahtar sözcüğü | Açıklama |
+| Olay adı | Olay Kimliği | Düzey | Anahtar kelime | Açıklama |
 | --- | --- | --- | --- | --- |
-| ActorActivated |5 |Bilgilendirici |0x1 |Aktör etkinleştirildi. |
-| Actora devre dışı |6 |Bilgilendirici |0x1 |Aktör devre dışı bırakıldı. |
+| AktörAktif |5 |Bilgilendirici |0x1 |Bir aktör etkinleştirildi. |
+| Aktör Devre Dışı Bırakıldı |6 |Bilgilendirici |0x1 |Bir aktör devre dışı bırakıldı. |
 
-Reliable Actors Runtime, aktör etkinleştirme ve devre dışı bırakma ile ilgili aşağıdaki performans sayaçlarını yayınlar.
+Güvenilir Aktörler çalışma zamanı, aktör etkinleştirme ve devre dışı bırakma ile ilgili aşağıdaki performans sayaçlarını yayımlar.
 
 | Kategori adı | Sayaç adı | Açıklama |
 | --- | --- | --- |
-| Aktör Service Fabric |Ortalama OnActivateAsync milisaniyesi |OnActivateAsync yönteminin yürütülmesi için harcanan süre (milisaniye) |
+| Servis Kumaş Aktör |Ortalama OnActivateAsync miliseconds |OnActivateAsync yöntemini milisaniye cinsinden yürütmek için alınan süre |
 
 ### <a name="actor-request-processing-performance-counters"></a>Aktör isteği işleme performans sayaçları
-İstemci bir aktör proxy nesnesi aracılığıyla bir yöntemi çağırdığında, ağ üzerinden aktör hizmetine bir istek iletisi gönderilmesine neden olur. Hizmet, istek iletisini işler ve istemciye geri yanıt gönderir. Reliable Actors Runtime, aktör isteği işlemeyle ilgili aşağıdaki performans sayaçlarını yayınlar.
+İstemci, bir aktör proxy nesnesi aracılığıyla bir yöntem çağırdığında, ağ üzerinden aktör hizmetine bir istek iletisi gönderilmesiyle sonuçlanır. Hizmet istek iletisini işler ve istemciye bir yanıt gönderir. Güvenilir Aktörler çalışma zamanı, aktör isteği işlemeyle ilgili aşağıdaki performans sayaçlarını yayımlar.
 
 | Kategori adı | Sayaç adı | Açıklama |
 | --- | --- | --- |
-| Aktör Service Fabric |bekleyen istek sayısı |Hizmette işlenmekte olan istek sayısı |
-| Aktör Service Fabric |İstek başına ortalama milisaniye |Bir isteği işlemek için hizmete göre geçen süre (milisaniye cinsinden) |
-| Aktör Service Fabric |İstek seri durumundan çıkarma için ortalama milisaniye |Hizmette alındığı sırada aktör isteği iletisinin serisini kaldırmak için geçen süre (milisaniye cinsinden) |
-| Aktör Service Fabric |Yanıt serileştirme ortalama milisaniyesi |Yanıt istemciye gönderilmeden önce hizmette aktör yanıt iletisini serileştirmek için geçen süre (milisaniye cinsinden) |
+| Servis Kumaş Aktör |# bekleyen isteklerin |Hizmette işlenen istek sayısı |
+| Servis Kumaş Aktör |İstek başına ortalama milisaniye |Bir isteği işlemek için hizmet tarafından alınan süre (milisaniye cinsinden) |
+| Servis Kumaş Aktör |İstek deserialization için ortalama milisaniye |Hizmetten alındığında aktör istek iletisini deserialize etmek için (milisaniye cinsinden) alınan süre |
+| Servis Kumaş Aktör |Yanıt serileştirme için ortalama milisaniye |Yanıt istemciye gönderilmeden önce hizmetteki aktör yanıt iletisini serihale getirmek için alınan süre (milisaniye cinsinden) |
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Reliable Actors Service Fabric platformunu kullanma](service-fabric-reliable-actors-platform.md)
-* [Aktör API 'SI başvuru belgeleri](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+* [Güvenilir Aktörler Service Fabric platformını nasıl kullanır?](service-fabric-reliable-actors-platform.md)
+* [Aktör API başvuru belgeleri](https://msdn.microsoft.com/library/azure/dn971626.aspx)
 * [Örnek kod](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
-* [PerfView 'da EventSource sağlayıcıları](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/)
+* [PerfView'deki EventSource sağlayıcıları](https://blogs.msdn.microsoft.com/vancem/2012/07/09/introduction-tutorial-logging-etw-events-in-c-system-diagnostics-tracing-eventsource/)
