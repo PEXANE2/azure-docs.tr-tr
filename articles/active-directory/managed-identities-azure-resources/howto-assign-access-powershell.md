@@ -1,6 +1,6 @@
 ---
-title: PowerShell kullanarak bir kaynağa yönetilen kimlik erişimi atama-Azure AD
-description: Bir kaynakta yönetilen kimlik atamaya, başka bir kaynağa erişim için PowerShell kullanarak adım adım yönergeler.
+title: PowerShell - Azure AD'yi kullanarak kaynağa yönetilen bir kimlik erişimi atama
+description: PowerShell'i kullanarak bir kaynağa yönetilen bir kimlik atamak, başka bir kaynağa erişim için adım adım yönergeler.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -16,36 +16,36 @@ ms.date: 12/06/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a2283ac076ef761fd098d75e7120e6557a959574
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/26/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74547258"
 ---
-# <a name="assign-a-managed-identity-access-to-a-resource-using-powershell"></a>PowerShell kullanarak bir kaynağa yönetilen kimlik erişimi atama
+# <a name="assign-a-managed-identity-access-to-a-resource-using-powershell"></a>PowerShell'i kullanarak kaynağa yönetilen kimlik erişimi atama
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Yönetilen kimliğe sahip bir Azure kaynağı yapılandırdıktan sonra, herhangi bir güvenlik sorumlusu gibi, yönetilen kimliğe başka bir kaynağa erişim izni verebilirsiniz. Bu örnekte, PowerShell kullanarak bir Azure depolama hesabına Azure sanal makinesinin yönetilen kimlik erişimi verme yöntemi gösterilmektedir.
+Bir Azure kaynağını yönetilen bir kimliğe göre yapılandırdıktan sonra, yönetilen kimlik erişimini herhangi bir güvenlik ilkesi gibi başka bir kaynağa verebilirsiniz. Bu örnek, PowerShell kullanarak bir Azure sanal makinesinin yönetilen kimlik erişimini bir Azure depolama hesabına nasıl vereceğinizi gösterir.
 
 [!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-- Azure kaynakları için Yönetilen kimlikler hakkında bilginiz varsa [genel bakış bölümüne](overview.md)bakın. **[Sistem tarafından atanan ve Kullanıcı tarafından atanan yönetilen kimlik arasındaki farkı](overview.md#how-does-the-managed-identities-for-azure-resources-work)gözden geçirdiğinizden emin**olun.
+- Azure kaynakları için yönetilen kimliklere aşina değilseniz, [genel bakış bölümüne](overview.md)göz atın. ** [Sistem tarafından atanan ve kullanıcı tarafından atanan yönetilen kimlik arasındaki farkı](overview.md#how-does-the-managed-identities-for-azure-resources-work)gözden geçirin.**
 - Henüz bir Azure hesabınız yoksa, devam etmeden önce [ücretsiz bir hesaba kaydolun](https://azure.microsoft.com/free/).
-- Henüz yapmadıysanız [Azure PowerShell en son sürümünü](/powershell/azure/install-az-ps) yükleyebilirsiniz.
+- Azure [PowerShell'in en son sürümünü](/powershell/azure/install-az-ps) yükleyin.
 
-## <a name="use-rbac-to-assign-a-managed-identity-access-to-another-resource"></a>Başka bir kaynağa yönetilen kimlik erişimi atamak için RBAC kullanma
+## <a name="use-rbac-to-assign-a-managed-identity-access-to-another-resource"></a>Başka bir kaynağa yönetilen kimlik erişimi atamak için RBAC'ı kullanma
 
-Azure [VM](qs-configure-powershell-windows-vm.md)gibi bir Azure kaynağında yönetilen kimlik etkinleştirildikten sonra:
+[Azure VM gibi](qs-configure-powershell-windows-vm.md)bir Azure kaynağında yönetilen kimliği etkinleştirdikten sonra:
 
-1. `Connect-AzAccount` cmdlet 'ini kullanarak Azure 'da oturum açın. Yönetilen kimliği yapılandırdığınız Azure aboneliğiyle ilişkili bir hesabı kullanın:
+1. Cmdlet'i `Connect-AzAccount` kullanarak Azure'da oturum açın. Yönetilen kimliği yapılandırdığınız Azure aboneliğiyle ilişkili bir hesap kullanın:
 
    ```powershell
    Connect-AzAccount
    ```
-2. Bu örnekte, bir depolama hesabına Azure VM erişimi veriyoruz. İlk olarak, yönetilen kimliği etkinleştirdiğimiz sırada oluşturulan `myVM`adlı sanal makineye yönelik hizmet sorumlusunu almak için [Get-AzVM](/powershell/module/az.compute/get-azvm) ' i kullanırız. Ardından, `myStorageAcct`adlı bir depolama hesabına VM **okuyucusu** erişimi sağlamak için [New-azroleatama](/powershell/module/Az.Resources/New-AzRoleAssignment) kullanın:
+2. Bu örnekte, bir depolama hesabına Azure VM erişimi veriyoruz. Önce, yönetilen kimliği etkinleştirdiğimizde oluşturulan VM adlı `myVM`VM'nin servis ilkesini almak için [Get-AzVM'yi](/powershell/module/az.compute/get-azvm) kullanıyoruz. Daha sonra, VM **Reader'a** aşağıdaki adlı depolama hesabına `myStorageAcct`erişim sağlamak için [Yeni-AzRoleAssignment'ı](/powershell/module/Az.Resources/New-AzRoleAssignment) kullanın:
 
     ```powershell
     $spID = (Get-AzVM -ResourceGroupName myRG -Name myVM).identity.principalid
@@ -55,4 +55,4 @@ Azure [VM](qs-configure-powershell-windows-vm.md)gibi bir Azure kaynağında yö
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Azure kaynaklarına genel bakış için yönetilen kimlik](overview.md)
-- Azure VM 'de yönetilen kimliği etkinleştirmek için bkz. [PowerShell kullanarak Azure VM 'de Azure kaynakları için yönetilen kimlikleri yapılandırma](qs-configure-powershell-windows-vm.md).
+- Azure VM'de yönetilen kimliği etkinleştirmek [için PowerShell'i kullanarak Azure kaynakları için yönetilen kimlikleri Yapılandırma'ya](qs-configure-powershell-windows-vm.md)bakın.

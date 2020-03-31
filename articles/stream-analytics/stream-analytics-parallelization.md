@@ -1,81 +1,81 @@
 ---
-title: Azure Stream Analytics'te sorgu paralelleştirme ve ölçek kullanın
-description: Bu makalede, giriş bölümlerini yapılandırma, Sorgu tanımını ayarlayarak ve akış birimleri iş ayarlama Stream Analytics işlerini ölçeklendirme açıklar.
+title: Azure Akış Analizi'nde sorgu paralelleştirmeve ölçek kullanma
+description: Bu makalede, giriş bölümlerini yapılandırarak, sorgu tanımını ayarlayarak ve iş akışı birimleri ayarlayarak Akış Analizi işlerinin nasıl ölçeklendirileni açıklanmaktadır.
 author: JSeb225
 ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/07/2018
-ms.openlocfilehash: d1afb6037b5fc290de93faba405982ebd1fb68ea
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 31ac43ec796d305b8a8f4b62ea09481e262b6b3f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79254345"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80256989"
 ---
-# <a name="leverage-query-parallelization-in-azure-stream-analytics"></a>Azure Stream analytics'te sorgu paralelleştirmesinden
-Bu makalede, Azure Stream Analytics'te paralelleştirme yararlanmak işlemini göstermektedir. Giriş bölümlerini yapılandırma ve analytics Sorgu tanımını ayarlayarak Stream Analytics işlerini ölçeklendirmeyi öğrenin.
-Bir önkoşul olarak, [akış birimlerinin anlaşılması ve ayarlanması](stream-analytics-streaming-unit-consumption.md)bölümünde açıklanan akış birimi kavramı hakkında bilgi sahibi olmak isteyebilirsiniz.
+# <a name="leverage-query-parallelization-in-azure-stream-analytics"></a>Azure Akış Analitiği'nde sorgu paralellemi'ni kinle
+Bu makalede, Azure Akış Analizi'nde paralelleştirmeden nasıl yararlanabileceğiniz gösterilmektedir. Giriş bölümlerini yapılandırarak ve analitik sorgu tanımını ayarlayarak Akış Analizi işlerini nasıl ölçeklendireceklerini öğrenirsiniz.
+Ön koşul olarak, [Akış Birimlerini Anlayın ve ayarlayın'da](stream-analytics-streaming-unit-consumption.md)açıklanan Akış Birimi kavramına aşina olmak isteyebilirsiniz.
 
-## <a name="what-are-the-parts-of-a-stream-analytics-job"></a>Bir Stream Analytics işi bölümlerini nelerdir?
-Stream Analytics iş tanımı girişleri, sorgu ve çıkış içerir. Burada işi veri akışından okur girişlerdir. Veri giriş akışını dönüştürmek için kullanılan sorgu ve iş için iş sonuçlarını göndereceği yeri çıkış alınır.
+## <a name="what-are-the-parts-of-a-stream-analytics-job"></a>Akış Analizi işinin bölümleri nelerdir?
+Akış Analizi iş tanımı girişleri, sorguve çıktıiçerir. Girişler, işin veri akışını okuduğu yerdir. Sorgu, veri giriş akışını dönüştürmek için kullanılır ve çıktı işin iş sonuçlarını gönderdiği yerdir.
 
-Bir iş akış verileri için en az bir giriş kaynağı gerektirir. Veri akışı giriş kaynağı, bir Azure olay hub'ı veya Azure blob depolama alanında depolanabilir. Daha fazla bilgi için bkz. [Azure Stream Analytics giriş](stream-analytics-introduction.md) ve [Azure Stream Analytics kullanmaya başlama](stream-analytics-real-time-fraud-detection.md).
+Bir iş veri akışı için en az bir giriş kaynağı gerektirir. Veri akışı giriş kaynağı bir Azure olay hub'ında veya Azure blob depolama alanında depolanabilir. Daha fazla bilgi için azure [akış analizine giriş](stream-analytics-introduction.md) ve [Azure Akış Analitiği'ni kullanmaya başlayın'](stream-analytics-real-time-fraud-detection.md)a bakın.
 
-## <a name="partitions-in-sources-and-sinks"></a>Kaynaklar ve havuzlar bölümler
-Bir Stream Analytics işi ölçeklendirme, giriş veya çıkış bölümlerinde avantajlarından yararlanır. Verileri bölüm anahtarına göre alt kümelerini böler sağlar bölümleme. Verileri (örneğin, bir akış analizi işi) kullanan bir işlem kullanabilir ve aktarım hızını artıran paralel olarak, farklı bölümler yazma. 
+## <a name="partitions-in-sources-and-sinks"></a>Kaynaklardaki ve lavabolarda bölümler
+Bir Akış Analizi işini ölçekleme, giriş veya çıktıdaki bölümlerden yararlanır. Bölümleme, verileri bir bölüm anahtarına dayalı alt kümelere bölmenizi sağlar. Verileri tüketen bir işlem (Akış Analizi işi gibi) farklı bölümleri paralel olarak tüketebilir ve yazabilir ve bu da iş akışını artırır. 
 
 ### <a name="inputs"></a>Girişler
-Tüm Azure Stream Analytics giriş bölümleme yararlanabilirsiniz:
--   EventHub (bölüm anahtarı PARTITION BY anahtar sözcüğü ile açıkça ayarlamak için gereklidir)
--   IOT hub'ı (bölüm anahtarı PARTITION BY anahtar sözcüğü ile açıkça ayarlamak için gereklidir)
+Tüm Azure Akış Analizi girişi bölümleme avantajlarından yararlanabilir:
+-   EventHub (partition by anahtar kelime ile bölüm anahtarını açıkça ayarlamanız gerekir)
+-   IoT Hub (partition by anahtar kelime ile açıkça bölüm anahtarını ayarlamanız gerekir)
 -   Blob depolama
 
 ### <a name="outputs"></a>Çıkışlar
 
-Stream Analytics ile çalışırken, yapılandırma çıkışları bölümleme yararlanabilirsiniz:
+Stream Analytics ile çalışırken, çıktılardaki bölümleme avantajlarından yararlanabilirsiniz:
 -   Azure Data Lake Storage
 -   Azure İşlevleri
 -   Azure Tablosu
--   Blob depolama (bölüm anahtarı, açıkça ayarlayabilirsiniz)
--   Cosmos DB (Bölüm anahtarını açıkça ayarlamanız gerekir)
--   Event Hubs (Bölüm anahtarını açıkça ayarlamanız gerekir)
--   IOT hub'ı (bölüm anahtarı açıkça ayarlamak için gereklidir)
+-   Blob depolama (bölüm anahtarını açıkça ayarlayabilir)
+-   Cosmos DB (bölüm anahtarını açıkça ayarlamanız gerekir)
+-   Olay Hub'ları (bölüm anahtarını açıkça ayarlamanız gerekir)
+-   IoT Hub (bölüm anahtarını açıkça ayarlamanız gerekir)
 -   Service Bus
-- İsteğe bağlı bölümlendirme ile SQL ve SQL veri ambarı: [Azure SQL veritabanı 'Na çıkış](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-sql-output-perf)hakkında daha fazla bilgi için bkz.
+- İsteğe bağlı bölümleme ile SQL ve SQL Veri Ambarı: [Azure SQL Veritabanı na Çıktı sayfasında](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-sql-output-perf)daha fazla bilgi edinin.
 
-Power BI Bölümlendirmeyi desteklemiyor. Ancak, [Bu bölümde](#multi-step-query-with-different-partition-by-values) açıklandığı gibi girişi yine de bölümleyebilirsiniz 
+Power BI bölümleme desteklemez. Ancak yine de [bu bölümde](#multi-step-query-with-different-partition-by-values) açıklandığı gibi giriş bölümleyebilirsiniz 
 
-Bölümleri hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
+Bölümler hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
 * [Event Hubs özelliklerine genel bakış](../event-hubs/event-hubs-features.md#partitions)
 * [Veri bölümleme](https://docs.microsoft.com/azure/architecture/best-practices/data-partitioning)
 
 
-## <a name="embarrassingly-parallel-jobs"></a>Utandırıcı derecede paralel işleri
-Azure Stream Analytics olduğumuz en ölçeklenebilir senaryo, *emantik bir paralel* iş. Bu çıkış bir bölüm için bir bölüm bir örnek sorgu girişi bağlanır. Bu paralellik aşağıdaki gereksinimlere sahiptir:
+## <a name="embarrassingly-parallel-jobs"></a>Utanç verici paralel işler
+*Utanç verici derecede paralel* bir iş, Azure Akış Analizi'nde sahip olduğumuz en ölçeklenebilir senaryodur. Girişin bir bölümü, sorgunun bir örneğine çıktının bir bölümüne bağlanır. Bu paralellik aşağıdaki gereksinimlere sahiptir:
 
-1. Sorgu mantığınızı aynı sorgu örneği tarafından işlenmekte olan aynı anahtara bağlı olduğu durumlarda olayları girişlerinizin aynı bölüme gideceği emin olmanız gerekir. Event Hubs veya IoT Hub için, bu, olay verilerinin **Partitionkey** değer kümesine sahip olması gerektiği anlamına gelir. Alternatif olarak, bölümlenmiş Gönderenler kullanabilirsiniz. BLOB Depolama için bu olaylar aynı bölüm klasörüne gönderilir anlamına gelir. Sorgu mantığınızı aynı sorgu örneği tarafından işlenmek üzere aynı anahtar gerektirmiyorsa, bu gereksinim yoksayabilirsiniz. Bu mantık örneği basit bir select proje filtresi sorgusu olacaktır.  
+1. Sorgu mantığınız aynı anahtara aynı sorgu örneği tarafından işlenen bağlıdırsa, olayların girişinizin aynı bölümüne gittiğine emin olmalısınız. Olay Hub'ları veya IoT Hub'ı için bu, olay verilerinin **PartitionKey** değer kümesine sahip olması gerektiği anlamına gelir. Alternatif olarak, bölümlenmiş gönderenler kullanabilirsiniz. Blob depolama için bu, olayların aynı bölüm klasörüne gönderildiği anlamına gelir. Sorgu mantığınız aynı anahtaraynı sorgu örneği tarafından işlenmesini gerektirmiyorsa, bu gereksinimi yok sayabilirsiniz. Bu mantığa örnek basit bir select-project-filter sorgusu olacaktır.  
 
-2. Veri giriş tarafında düzenlendiğini sonra sorgunuzu bölümlenen emin olmanız gerekir. Bu, tüm adımlarda **bölüm** kullanmanızı gerektirir. Birden çok adım izin verilir, ancak bunların tümü aynı anahtarla bölümlenmesi gerekir. Uyumluluk düzeyi 1,0 ve 1,1 altında, işin tam olarak paralel olması için bölümleme anahtarı **PartitionID** olarak ayarlanmalıdır. Uyumluluk düzeyi 1,2 ve üzeri olan işler için, özel sütun giriş ayarlarında bölüm anahtarı olarak belirtilebilir ve iş, Bölüm BY yan tümcesi olmadan bile otomatik olarak paralellized olacaktır. Olay Hub 'ı çıkışı için "bölüm anahtarı sütunu" özelliği "PartitionID" kullanılacak şekilde ayarlanmalıdır.
+2. Veriler giriş tarafında ortaya konduktan sonra, sorgunuzun bölümlenmiş olduğundan emin olmalısınız. Bu, tüm adımlarda **PARTITION BY'yi** kullanmanızı gerektirir. Birden çok adıma izin verilir, ancak bunların tümü aynı anahtarla bölümlere ayrılmıştır. Uyumluluk düzeyi 1.0 ve 1.1 altında, işin tamamen paralel olabilmesi için bölümleme anahtarı bölümleme anahtarının **PartitionId** olarak ayarlanması gerekir. Uyumluluk düzeyi 1.2 ve üzeri olan işleriçin, giriş ayarlarında özel sütun Bölüm Anahtarı olarak belirtilebilir ve iş BÖLÜM BY yan tümcesi olmadan bile otomatik olarak paralellenir. Olay hub çıkışı için "Partition key column" özelliği "PartitionId" kullanmak üzere ayarlanmalıdır.
 
-3. Bizim çıkış çoğunu bölümleme avantajından yararlanmak, bir çıkış türü kullanıyorsanız, bölümleme desteklemez ancak işinizi tam olarak paralel olmayacaktır. Daha fazla ayrıntı için [çıkış bölümüne](#outputs) bakın.
+3. Çıktımızın çoğu bölümlemeden yararlanabilir, ancak işinizi bölmeyi desteklemeyen bir çıktı türü kullanırsanız tam olarak paralel olmayacaktır. Olay Hub çıktıları **için, Bölüm tuşu sütununsorgu** bölümü anahtarıyla aynı şekilde ayarlandığından emin olun. Daha fazla ayrıntı için [çıktı bölümüne](#outputs) bakın.
 
-4. Giriş bölüm sayısı, çıkış bölüm sayısına eşit olmalıdır. BLOB Depolama çıkışı bölümler destekleyebilir ve Yukarı Akış sorgunun bölümleme düzeni devralır. Blob Depolama belirtilmişse, veri için bölüm anahtarı giriş bölümünü bölümlenmiş, bu nedenle yine de tam olarak paralel sonucudur. Tam olarak paralel bir iş çalıştırılmasına izin bölüm değerlerini örnekleri aşağıda verilmiştir:
+4. Giriş bölümlerinin sayısı çıktı bölüm sayısına eşit olmalıdır. Blob depolama çıkışı bölümleri destekleyebilir ve yukarı akış sorgusunun bölümleme düzenini devralır. Blob depolama için bir bölüm anahtarı belirtildiğinde, veri giriş bölümü başına bölümlenir, böylece sonuç hala tamamen paraleldir. Burada tam olarak paralel bir iş izin bölüm değerleri örnekleri şunlardır:
 
-   * Bölüm 8 olay hub'ı giriş bölümleri ve 8 olay hub'ı çıkışı
-   * 8 olay hub'ı giriş bölümleri ve blob depolama çıkışı
-   * 8 olay hub'ı giriş bölümleri ve özel bir alana göre rastgele kardinaliteyle bölümlenmiş blob depolama çıkışı
-   * 8 blob depolama giriş bölüm ve blob depolama çıkışı
-   * Depolama giriş bölümleri ve 8 olay hub'ı çıkış bölüm 8 blob
+   * 8 olay hub giriş bölümleri ve 8 olay hub çıkış bölümleri
+   * 8 olay hub giriş bölümleri ve blob depolama çıkışı
+   * Rasgele kardinallik ile özel bir alan tarafından bölümlenmiş 8 olay hub giriş bölümleri ve blob depolama çıkışı
+   * 8 blob depolama giriş bölümleri ve blob depolama çıkışı
+   * 8 blob depolama giriş bölümleri ve 8 olay hub çıkış bölümleri
 
-Aşağıdaki bölümlerde utandırıcı derecede paralel bazı örnek senaryolar açıklanmaktadır.
+Aşağıdaki bölümlerde utanç verici paralel bazı örnek senaryolar tartışılmaktadır.
 
 ### <a name="simple-query"></a>Basit sorgu
 
-* Giriş: 8 bölüm olay hub'ı
-* Çıkış: 8 bölümlü Olay Hub 'ı ("bölüm anahtarı sütunu" "PartitionID" kullanacak şekilde ayarlanmalıdır)
+* Giriş: 8 bölümlü olay merkezi
+* Çıktı: 8 bölümlü olay hub'ı ("Partition tuşu sütun" "PartitionId" kullanmak üzere ayarlanmalıdır)
 
 Sorgu:
 
@@ -85,12 +85,12 @@ Sorgu:
     WHERE TollBoothId > 100
 ```
 
-Bu sorguyu basit bir filtredir. Bu nedenle, olay hub'ına gönderilen giriş bölümlendirme hakkında endişe etmeniz gerekmez. Uyumluluk düzeyi 1,2 ' dan önce **bölüm PartitionID** yan tümcesini içermelidir, bu nedenle daha önce gereksinim #2 gereksinimini karşılar. Çıktı için, Bölüm anahtarının **PartitionID**olarak ayarlanması için, işteki Olay Hub 'ı çıkışını yapılandırmamız gerekir. Bir son onay giriş bölüm sayısı çıkış bölüm sayısına eşit olduğundan emin olmaktır.
+Bu sorgu basit bir filtredir. Bu nedenle, olay hub'ına gönderilen girişi bölümleme konusunda endişelenmemize gerek yoktur. 1.2'den önce uyumluluk düzeyine sahip işlerin **Partition BY PartitionId** yan tümcesi içermesi gerektiğine dikkat edin, bu nedenle daha önceki #2 gereksinimini yerine getirmektedir. Çıktı için, **bölüm anahtarının PartitionId'e**ayarlamıştırılmak için işteki olay hub çıktısını yapılandırmamız gerekir. Son bir denetim, giriş bölümleri sayısının çıktı bölüm sayısına eşit olduğundan emin olmaktır.
 
-### <a name="query-with-a-grouping-key"></a>Bir gruplandırma anahtar ile sorgulama
+### <a name="query-with-a-grouping-key"></a>Gruplandırma anahtarıyla sorgula
 
-* Giriş: 8 bölüm olay hub'ı
-* Çıkış: Blob Depolama
+* Giriş: 8 bölümlü olay merkezi
+* Çıktı: Blob depolama
 
 Sorgu:
 
@@ -100,27 +100,27 @@ Sorgu:
     GROUP BY TumblingWindow(minute, 3), TollBoothId, PartitionId
 ```
 
-Bu sorgu, bir gruplandırma anahtarına sahiptir. Bu nedenle, gruplandırılmış olayları olay hub'ı aynı bölüme gönderilmesi gerekir. Bu örnekte biz tarafından TollBoothID grubunda olduğundan, biz olayları olay Hub'ına gönderildiğinde TollBoothID bölüm anahtarı olarak kullanıldığından emin olmalıdır. Ardından, bu bölüm düzeninden devralması ve tam paralelleştirme özelliğini etkinleştirmek için, bu bölüm **tarafından PartitionID Ile bölüm** kullanabiliriz. Çıktı blob depolama olduğundan, gereksinim #4 ilişkin bir bölüm anahtarı değerini yapılandırma hakkında endişe etmeniz gerekmez.
+Bu sorgunun bir gruplandırma anahtarı vardır. Bu nedenle, birlikte gruplanan olaylar aynı Olay Hub bölümüne gönderilmelidir. Bu örnekte TollBoothID tarafından gruplanınca, olaylar Olay Hub'ına gönderildiğinde TollBoothID'nin bölüm anahtarı olarak kullanıldığından emin olmalıyız. Daha sonra ASA'da, bu bölüm düzeninden devralmak ve tam paralelleştirmeyi etkinleştirmek için **PARTITION BY PartitionId'i** kullanabiliriz. Çıktı blob depolama olduğundan, gereksinim #4 göre, bir bölüm anahtar değeri yapılandırma konusunda endişelenmenize gerek yok.
 
-## <a name="example-of-scenarios-that-are-not-embarrassingly-parallel"></a>Emsanki paralel *olmayan* senaryolara örnek
+## <a name="example-of-scenarios-that-are-not-embarrassingly-parallel"></a>Utanç verici paralel *olmayan* senaryoörneği
 
-Önceki bölümde, biz utandırıcı derecede paralel bazı senaryolar gösterilmiştir. Bu bölümde, utandırıcı derecede paralel olarak tüm gereksinimlerini senaryoları ele alır. 
+Bir önceki bölümde, bazı utanç verici paralel senaryolar gösterdi. Bu bölümde, utanç verici bir şekilde paralel olmak için tüm gereksinimleri karşılamayan senaryoları tartışıyoruz. 
 
-### <a name="mismatched-partition-count"></a>Uyuşmayan bölüm sayısı
-* Giriş: 8 bölüm olay hub'ı
-* Çıkış: Olay hub'ı ile 32 bölümlü
+### <a name="mismatched-partition-count"></a>Eşleşmemiş bölüm sayısı
+* Giriş: 8 bölümlü olay merkezi
+* Çıktı: 32 bölümlü olay merkezi
 
-Bu durumda, sorgu nedir önemi yoktur. Giriş bölüm sayısı olan çıkış bölüm sayısı eşleşmezse, topoloji utandırıcı derecede değil paralel. + ancak biz yine de bazı düzeyi veya paralelleştirme elde edebilirsiniz.
+Bu durumda, sorgunun ne olduğu önemli değildir. Giriş bölümü sayısı çıktı bölüm sayısıyla eşleşmiyorsa, topoloji utanç verici bir şekilde paralel değildir.+ Ancak yine de bir seviye veya paralelleştirme elde edebiliriz.
 
-### <a name="query-using-non-partitioned-output"></a>Bölümlenmemiş çıkış kullanarak sorgulama
-* Giriş: 8 bölüm olay hub'ı
-* Çıkış: Power BI
+### <a name="query-using-non-partitioned-output"></a>Bölümlenmemiş çıktıyı kullanarak sorgula
+* Giriş: 8 bölümlü olay merkezi
+* Çıkış: Güç BI
 
-Power BI çıktısı şu anda Bölümlendirmeyi desteklemiyor. Bu nedenle, bu senaryo utandırıcı derecede paralel değil.
+Power BI çıkışı şu anda bölümleme desteklemez. Bu nedenle, bu senaryo utanç verici paralel değildir.
 
-### <a name="multi-step-query-with-different-partition-by-values"></a>Çok adımlı sorgunun PARTITION BY farklı değerlerle
-* Giriş: 8 bölüm olay hub'ı
-* Çıkış: Olay hub'ı 8 bölüm ile
+### <a name="multi-step-query-with-different-partition-by-values"></a>Farklı PARTITION BY değerleri ile çok adımlı sorgu
+* Giriş: 8 bölümlü olay merkezi
+* Çıktı: 8 bölümlü olay merkezi
 
 Sorgu:
 
@@ -136,13 +136,13 @@ Sorgu:
     GROUP BY TumblingWindow(minute, 3), TollBoothId
 ```
 
-Gördüğünüz gibi, ikinci adım bölümlendirme anahtarı olarak **Tollboothıd** kullanır. Bu adım ilk adım ile aynı değildir ve bu nedenle bize bir karışık yapmanız gerekir. 
+Gördüğünüz gibi, ikinci adım bölümleme anahtarı olarak **TollBoothId** kullanır. Bu adım ilk adımla aynı değildir ve bu nedenle bir karıştırma yapmamızı gerektirir. 
 
-Önceki örneklerde utandırıcı derecede paralel bir topoloji uygun (veya yok) bazı Stream Analytics işleri gösterir. Uygun, en yüksek ölçek olası sahiptirler. Bir kılavuz ölçeklendirme, bu profillerin uygun olmayan işler gelecekte kullanıma sunulacak yönelik güncelleştirmeler. Şu an için genel kılavuz aşağıdaki bölümlerde kullanın.
+Önceki örnekler, utanç verici derecede paralel bir topolojiye uyan (veya uymayan) bazı Akış Analizi işlerini göstermektedir. Eğer uygun yaparlarsa, maksimum ölçek potansiyeline sahip olurlar. Bu profillerden birine uymayan işlerde ölçekleme kılavuzu gelecekteki güncelleştirmelerde kullanılabilir. Şimdilik, aşağıdaki bölümlerde genel kılavuzu kullanın.
 
-### <a name="compatibility-level-12---multi-step-query-with-different-partition-by-values"></a>Uyumluluk düzeyi 1,2-değerlere göre farklı BÖLÜMLERI olan çok adımlı sorgu 
-* Giriş: 8 bölüm olay hub'ı
-* Çıkış: 8 bölümlü ("bölüm anahtarı sütunu") Olay Hub 'ı "Tollboothıd" kullanılacak şekilde ayarlanmalıdır
+### <a name="compatibility-level-12---multi-step-query-with-different-partition-by-values"></a>Uyumluluk düzeyi 1.2 - Farklı PARTITION BY değerleri ile çok adımlı sorgu 
+* Giriş: 8 bölümlü olay merkezi
+* Çıktı: 8 bölümlü olay hub'ı ("Partition anahtar sütunu" "TollBoothId"i kullanacak şekilde ayarlanmalıdır)
 
 Sorgu:
 
@@ -158,13 +158,13 @@ Sorgu:
     GROUP BY TumblingWindow(minute, 3), TollBoothId
 ```
 
-Uyumluluk düzeyi 1,2, paralel sorgu yürütmeyi varsayılan olarak sunar. Örneğin, önceki bölümden sorgu, "Tollboothıd" sütunu giriş bölümü anahtarı olarak ayarlandığı sürece parteklenecektir. Parttionıd yan tümcesine göre bölüm gerekli değil.
+Uyumluluk düzeyi 1.2 varsayılan olarak paralel sorgu yürütme sağlar. Örneğin, "TollBoothId" sütunu giriş Bölümü Anahtarı olarak ayarlanakadar önceki bölümdeki sorgu bölümlenir. PartitionId yan tümcesi ile BÖLÜMLEME gerekli değildir.
 
-## <a name="calculate-the-maximum-streaming-units-of-a-job"></a>Akış birimleri, bir işin en büyük hesaplayın
-Stream Analytics işi tarafından kullanılan akış birimlerinin toplam sayısı, iş ve her adım için bölüm sayısı için tanımlanan sorgu, adım sayısı bağlıdır.
+## <a name="calculate-the-maximum-streaming-units-of-a-job"></a>Bir işin maksimum akış birimlerini hesaplama
+Bir Akış Analizi işi tarafından kullanılabilecek toplam akış birimi sayısı, iş için tanımlanan sorgudaki adım sayısına ve her adım için bölüm sayısına bağlıdır.
 
-### <a name="steps-in-a-query"></a>Sorgu adımları
-Bir sorgu, bir veya daha fazla adım olabilir. Her adım **WITH** anahtar sözcüğü tarafından tanımlanan bir alt sorgu olur. WITH anahtar sözcüğü dışında (yalnızca bir sorgu) sorgu, aşağıdaki sorgudaki **Select** ifadesiyle **birlikte** bir adım olarak da sayılır:
+### <a name="steps-in-a-query"></a>Sorgudaki adımlar
+Bir sorgunun bir veya çok adımı olabilir. Her **adım, WITH** anahtar sözcüğü tarafından tanımlanan bir alt sorgudur. **WITH** anahtar sözcüğünün dışında olan sorgu (yalnızca bir sorgu) da aşağıdaki sorgudaki **SELECT** deyimi gibi bir adım olarak sayılır:
 
 Sorgu:
 
@@ -179,35 +179,35 @@ Sorgu:
     GROUP BY TumblingWindow(minute,3), TollBoothId
 ```
 
-Bu sorgu, iki adımı vardır.
+Bu sorgunun iki adımı vardır.
 
 > [!NOTE]
-> Bu sorgu, makalenin ilerleyen bölümlerinde daha ayrıntılı olarak ele alınmıştır.
+> Bu sorgu daha sonra makalede daha ayrıntılı olarak ele alınmıştır.
 >  
 
-### <a name="partition-a-step"></a>Bir adım bölümleme
-Bir adım bölümleme aşağıdaki koşulları gerektirir:
+### <a name="partition-a-step"></a>Bölüm bir adım
+Bir adımı bölümleme için aşağıdaki koşullar aranır:
 
-* Giriş kaynağı bölümlenmiş olması gerekir. 
-* Sorgunun **Select** ifadesinin bölümlenmiş bir giriş kaynağından okuması gerekir.
-* Adım içindeki sorgunun **bölüm** anahtar sözcüğüne sahip olması gerekir.
+* Giriş kaynağı bölümlenmiş olmalıdır. 
+* Sorgunun **SELECT** deyimi bölümlenmiş bir giriş kaynağından okunmalıdır.
+* Adım içindeki sorguda ANAHTAR **SÖZCÜK BÖLÜMLÜ** olması gerekir.
 
-Bir sorgu bölümlenmiş, işlenen ve toplu olarak ayrı bölüm grupları giriş olaylardır ve olayları çıkışlar grupların her biri için oluşturulur. Birleşik toplama istiyorsanız, bölümlenmemiş bir ikinci adım oluşturmalısınız toplanacak.
+Sorgu bölümlendiğinde, giriş olayları ayrı bölüm gruplarında işlenir ve toplanır ve çıktı olayları her grup için oluşturulur. Birleşik bir toplam istiyorsanız, toplamak için ikinci bir bölümlenmemiş adım oluşturmanız gerekir.
 
-### <a name="calculate-the-max-streaming-units-for-a-job"></a>Akış birimleri, bir iş için en fazla Hesapla
-Tüm adımları bölümlenmemiş en fazla altı akış birimleri (su) için bir Stream Analytics işi birlikte ölçeklendirebilirsiniz. Buna ek olarak, bölümlenmiş bir adımda her bölüm 6 SUs ekleyebilirsiniz.
-Aşağıdaki tabloda bazı **örnekleri** görebilirsiniz.
+### <a name="calculate-the-max-streaming-units-for-a-job"></a>Bir iş için maksimum akış birimlerini hesaplama
+Bölümlenmemiş tüm adımlar, Bir Stream Analytics işi için altı akış birimine (SUS) kadar ölçeklenebilir. Buna ek olarak, bölümlenmiş bir adımda her bölüm için 6 SUs ekleyebilirsiniz.
+Aşağıdaki tabloda bazı **örnekler** görebilirsiniz.
 
-| Sorgu                                               | İş için en çok SUs |
+| Sorgu                                               | Max SUs iş için |
 | --------------------------------------------------- | ------------------- |
-| <ul><li>Sorgu bir adım içerir.</li><li>Adım bölümlenmiş değil.</li></ul> | 6 |
-| <ul><li>Giriş veri akışını 16 göre bölümlenir.</li><li>Sorgu bir adım içerir.</li><li>Adım bölümlenir.</li></ul> | 96 (6 * 16 bölümler) |
-| <ul><li>Sorgu iki adımı içeriyor.</li><li>Adımları hiçbiri bölümlenir.</li></ul> | 6 |
-| <ul><li>Giriş veri akışını 3 göre bölümlenir.</li><li>Sorgu iki adımı içeriyor. Giriş adım bölümlenmiş ve ikinci adım değil.</li><li><strong>Select</strong> deyimleri bölümlenmiş girişten okur.</li></ul> | 24 (bölümlenmiş adımları 18 + bölümlenmemiş adımları için 6 |
+| <ul><li>Sorgu bir adım içerir.</li><li>Adım bölümlenmiyor.</li></ul> | 6 |
+| <ul><li>Giriş veri akışı 16 ile bölümlere ayrılmıştır.</li><li>Sorgu bir adım içerir.</li><li>Adım bölümlenmiş.</li></ul> | 96 (6 * 16 bölüm) |
+| <ul><li>Sorgu iki adım içerir.</li><li>Adımların hiçbiri bölümlenmiş değil.</li></ul> | 6 |
+| <ul><li>Giriş veri akışı 3 ile bölümlere ayrılmıştır.</li><li>Sorgu iki adım içerir. Giriş adımı bölümlenir ve ikinci adım değildir.</li><li><strong>SELECT</strong> deyimi bölümlenmiş girişten okur.</li></ul> | 24 (Bölümlenmiş adımlar için 18 + 6 bölümsüz adımlar için |
 
-### <a name="examples-of-scaling"></a>Ölçeklendirme örnekleri
+### <a name="examples-of-scaling"></a>Ölçekleme örnekleri
 
-Aşağıdaki sorgu, üç tollbooths sahip Ücretli istasyonu giderek bir üç dakikalık penceresi içinde otomobiller sayısını hesaplar. Bu sorgu, altı SUs kadar ölçeklendirilebilir.
+Aşağıdaki sorgu, üç gişesi olan bir gişeden geçen üç dakikalık bir penceredeki araç sayısını hesaplar. Bu sorgu altı SUs'a kadar ölçeklendirilebilir.
 
 ```SQL
     SELECT COUNT(*) AS Count, TollBoothId
@@ -215,7 +215,7 @@ Aşağıdaki sorgu, üç tollbooths sahip Ücretli istasyonu giderek bir üç da
     GROUP BY TumblingWindow(minute, 3), TollBoothId, PartitionId
 ```
 
-Sorgu için daha fazla SUs kullanmak için giriş veri akışını hem de sorgu bölümlenmiş olması gerekir. Veri akışı bölüm 3 olarak ayarlandığından, aşağıdaki değiştirilen sorguyu en fazla 18 SUs ölçeklendirilebilir:
+Sorgu için daha fazla SUs kullanmak için hem giriş veri akışı hem de sorgu bölümlenmiş olmalıdır. Veri akışı bölümü 3 olarak ayarlandığından, aşağıdaki değiştirilmiş sorgu 18 SUs'a kadar ölçeklendirilebilir:
 
 ```SQL
     SELECT COUNT(*) AS Count, TollBoothId
@@ -223,9 +223,9 @@ Sorgu için daha fazla SUs kullanmak için giriş veri akışını hem de sorgu 
     GROUP BY TumblingWindow(minute, 3), TollBoothId, PartitionId
 ```
 
-Bir sorgu bölümlenmiş, giriş olayları işlenir ve ayrı bölüm grupları içinde toplanır. Çıkış olayları da grupların her biri için oluşturulur. **Gruplandırma** alanı, giriş veri akışındaki bölüm anahtarı olmadığında bölümlendirme bazı beklenmedik sonuçlara neden olabilir. Örneğin, önceki sorgudaki **Tollboothıd** alanı **Input1**bölüm anahtarı değildir. Birden çok bölüm gişe #1 verilerden yayılabilen sonucudur.
+Sorgu bölümlendiğinde, giriş olayları işlenir ve ayrı bölüm gruplarında toplanır. Çıktı olayları da her grup için oluşturulur. **GROUP BY** alanı giriş veri akışındaki bölüm anahtarı olmadığında bölümleme bazı beklenmeyen sonuçlara neden olabilir. Örneğin, önceki sorgudaki **TollBoothId** alanı **Giriş1'in**bölüm anahtarı değildir. Sonuç olarak, TollBooth #1 gelen veriler birden çok bölüme yayılabilir.
 
-**Input1** bölümlerinin her biri Stream Analytics tarafından ayrı olarak işlenir. Sonuç olarak, araba sayısı aynı atlayan pencere içinde aynı gişe için birden çok kayıt oluşturulur. Giriş bölüm anahtarı değiştirilemez, aşağıdaki örnekte olduğu gibi bölümler arasında toplama değerleri için bir bölüm olmayan adım ekleyerek bu sorun düzeltilebilir:
+**Input1** bölümlerinin her biri Stream Analytics tarafından ayrı ayrı işlenir. Sonuç olarak, aynı Takla penceresinde aynı gişe için araç sayısının birden fazla kaydı oluşturulur. Giriş bölümü anahtarı değiştirilemezse, aşağıdaki örnekte olduğu gibi, bölümler arasında değerleri toplamak için bölümolmayan bir adım eklenerek bu sorun giderilebilir:
 
 ```SQL
     WITH Step1 AS (
@@ -239,48 +239,48 @@ Bir sorgu bölümlenmiş, giriş olayları işlenir ve ayrı bölüm grupları i
     GROUP BY TumblingWindow(minute, 3), TollBoothId
 ```
 
-Bu sorgu için 24 SUs ölçeklendirilebilir.
+Bu sorgu 24 SUs'a ölçeklenebilir.
 
 > [!NOTE]
-> İki birleştirilecekse, akışları birleştirmeler oluşturmak için kullandığınız bir sütun bölüm anahtarı bölümlenir emin olun. Ayrıca her iki akış bölümleri aynı sayıda sahip olduğunuzdan emin olun.
+> İki akışa katılıyorsanız, akışların birleştirmeleri oluşturmak için kullandığınız sütunun bölümleme anahtarıyla bölümlere katıldığından emin olun. Ayrıca, her iki akışta da aynı sayıda bölümolduğundan emin olun.
 > 
 > 
 
-## <a name="achieving-higher-throughputs-at-scale"></a>Daha yüksek olan Through, ölçeğe göre elde
+## <a name="achieving-higher-throughputs-at-scale"></a>Ölçekte daha yüksek iş elde etme
 
-Büyük bir [paralel](#embarrassingly-parallel-jobs) iş gereklidir, ancak ölçeğe göre daha yüksek bir üretilen işi sürdürmek için yeterli değildir. Her depolama sistemi ve buna karşılık gelen Stream Analytics çıktısı, olası en iyi yazma verimini elde etme hakkında değişimlere sahiptir. Her türlü ölçeklendirme senaryosunda olduğu gibi, doğru yapılandırma kullanılarak çözülebilecek bazı zorluklar vardır. Bu bölümde, birkaç ortak çıkış için yapılandırma ele alınmaktadır ve saniye başına 1 k, 5K ve 10.000 olay alma fiyatları için örnekler sağlanmaktadır.
+Utanç [verici derecede paralel](#embarrassingly-parallel-jobs) bir iş gereklidir, ancak ölçekte daha yüksek bir iş elde etmek için yeterli değildir. Her depolama sistemi ve buna karşılık gelen Stream Analytics çıktısı, mümkün olan en iyi yazma verime nasıl elde edilene ilişkin varyasyonlara sahiptir. Herhangi bir ölçekte senaryoda olduğu gibi, doğru yapılandırmaları kullanarak çözülebilecek bazı zorluklar vardır. Bu bölümde, birkaç ortak çıktı için yapılandırmalar açıklanır ve saniyede 1K, 5K ve 10K olaylarının sürekli olarak yutulma oranları için örnekler sağlar.
 
-Aşağıdaki gözlemler, Olay Hub 'ı, Azure SQL DB 'ye veya Cosmos DB yazan temel bir JavaScript UDF 'i olan durum bilgisiz (PASSTHROUGH) sorgusuyla bir Stream Analytics işi kullanır.
+Aşağıdaki gözlemler, Event Hub, Azure SQL DB veya Cosmos DB'ye yazan temel bir JavaScript UDF olan stateless (geçiş) sorgusuna sahip bir Akış Analizi işi kullanır.
 
 #### <a name="event-hub"></a>Olay Hub'ı
 
-|Alım oranı (saniye başına olay) | Akış birimleri | Çıkış kaynakları  |
+|Yutma Oranı (saniyedeki olaylar) | Akış Birimleri | Çıktı Kaynakları  |
 |--------|---------|---------|
-| 1000     |    1    |  2 TU   |
+| 1K     |    1    |  2 TU   |
 | 5K     |    6    |  6 TU   |
-| Kesme    |    12   |  10 TU  |
+| 10K    |    12   |  10 TU  |
 
-[Olay Hub 'ı](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-eventhubs) çözümü, akış BIRIMLERI (su) ve verimlilik açısından doğrusal bir şekilde ölçeklendirirken, verileri Stream Analytics çözümlemek ve veri akışı yapmak için en verimli ve performanslı bir yoldur. İşler 192 SU 'e kadar ölçeklendirilebilir ve bu da günde en fazla 200 MB/sn veya 19.000.000.000.000 olay olarak çeviri yapılabilir.
+[Olay Hub](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-eventhubs) çözümü akış birimleri (SU) ve iş hacmi açısından doğrusal olarak ölçeklendirerek, verileri Akış Analizi'nden analiz etmenin ve akışla geçirmenin en verimli ve en etkili yolu haline getirir. İşler 192 SU'ya kadar büyütülebilir ve bu da kabaca günde 200 MB/s'ye veya günde 19 trilyon olaya kadar işlenme anlamına gelir.
 
 #### <a name="azure-sql"></a>Azure SQL
-|Alım oranı (saniye başına olay) | Akış birimleri | Çıkış kaynakları  |
+|Yutma Oranı (saniyedeki olaylar) | Akış Birimleri | Çıktı Kaynakları  |
 |---------|------|-------|
-|    1000   |   3  |  S3   |
+|    1K   |   3  |  S3   |
 |    5K   |   18 |  P4   |
-|    Kesme  |   36 |  P6   |
+|    10K  |   36 |  P6   |
 
-[Azure SQL](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-azuresql) , yazmayı devralma adlı paralel olarak yazmayı destekler, ancak varsayılan olarak etkinleştirilmemiştir. Ancak, tümüyle paralel bir sorgu ile birlikte Bölümlendirmeyi etkinleştirmek, daha yüksek bir yük devretmede elde etmek için yeterli olmayabilir. SQL Write Through, SQL Azure veritabanı yapılandırmanıza ve tablo şemanıza önemli ölçüde bağlıdır. [SQL çıkış performansı](./stream-analytics-sql-output-perf.md) makalesi, yazma aktarım hızını en üst düzeye çıkarabileceğiniz parametreler hakkında daha fazla ayrıntı içerir. Bu çözüm, [Azure SQL veritabanı 'na Azure Stream Analytics çıkışı](./stream-analytics-sql-output-perf.md#azure-stream-analytics) bölümünde belirtildiği gibi, 8 bölümden daha büyük bir paralel işlem hattı olarak doğrusal şekilde ölçeklendirmez ve SQL çıktısından önce yeniden bölümlenmesi gerekebilir ( [bkz.](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count)). Premium SKU 'Lar, çok sayıda dakikada bir oluşan günlük yedeklerinden gelen ek yükün yanı sıra yüksek GÇ ücretleri için de gereklidir.
+[Azure SQL,](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-azuresql) Devralma Bölümü adı verilen paralel yazmayı destekler, ancak varsayılan olarak etkinleştirmez. Ancak, Devralma Bölümlemesini etkinleştirmek, tamamen paralel bir sorguyla birlikte, daha yüksek iş girdilerine ulaşmak için yeterli olmayabilir. SQL yazma iş girişleri önemli ölçüde SQL Azure veritabanı yapılandırmanıza ve tablo şemanıza bağlıdır. [SQL Output Performance](./stream-analytics-sql-output-perf.md) makalesi, yazma iş parçacığınızı en üst düzeye çıkarabilecek parametreler hakkında daha fazla ayrıntıya sahiptir. Azure Akış [Analizi çıktısında azure SQL Veritabanı makalesinde](./stream-analytics-sql-output-perf.md#azure-stream-analytics) belirtildiği gibi, bu çözüm doğrusal olarak 8 bölümün ötesinde tam paralel bir ardışık işlem olarak ölçeklendirilmez ve SQL çıkışından önce yeniden bölümlenmesi gerekebilir (bkz. [INTO).](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count) Premium SK'lar, birkaç dakikada bir gerçekleşen günlük yedeklemelerinden gelen genel merkezlerle birlikte yüksek IO oranlarını sürdürmek için gereklidir.
 
 #### <a name="cosmos-db"></a>Cosmos DB
-|Alım oranı (saniye başına olay) | Akış birimleri | Çıkış kaynakları  |
+|Yutma Oranı (saniyedeki olaylar) | Akış Birimleri | Çıktı Kaynakları  |
 |-------|-------|---------|
-|  1000   |  3    | 20K RU  |
+|  1K   |  3    | 20K RU  |
 |  5K   |  24   | 60K RU  |
-|  Kesme  |  48   | 120K RU |
+|  10K  |  48   | 120K RU |
 
-Stream Analytics çıkış [Cosmos DB](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-cosmosdb) , [Uyumluluk düzeyi 1,2](./stream-analytics-documentdb-output.md#improved-throughput-with-compatibility-level-12)altında yerel tümleştirmeyi kullanacak şekilde güncelleştirilmiştir. Uyumluluk düzeyi 1,2, önemli ölçüde daha yüksek aktarım hızı sağlar ve yeni işler için varsayılan uyumluluk düzeyi olan 1,1 ile karşılaştırıldığında RU tüketimini azaltır. Çözüm,/DeviceID üzerinde bölümlenmiş CosmosDB kapsayıcılarını kullanır ve geri kalan çözüm de aynı şekilde yapılandırılmıştır.
+Stream Analytics'in [Cosmos DB](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-cosmosdb) çıktısı, [uyumluluk düzeyi 1.2](./stream-analytics-documentdb-output.md#improved-throughput-with-compatibility-level-12)altında yerel tümleştirmeyi kullanacak şekilde güncelleştirildi. Uyumluluk düzeyi 1.2 önemli ölçüde daha yüksek iş elde edilmesini sağlar ve yeni işler için varsayılan uyumluluk düzeyi olan 1.1'e kıyasla RU tüketimini azaltır. Çözüm , /deviceId'de bölümlenmiş CosmosDB kapları kullanır ve çözümün geri kalanı aynı şekilde yapılandırılmıştır.
 
-[Azure örnekleri ölçeğinde tüm akışlar](https://github.com/Azure-Samples/streaming-at-scale) , test istemcilerinin giriş olarak benzetimini yaparak yük tarafından beslenen bir olay hub 'ı kullanır. Her giriş olayı bir 1 KB JSON belgesidir. Bu, yapılandırılan Alım tarifelerinin hızını işleme oranlarına (1MB/s, 5 MB/s ve 10 GB/sn) kolayca dönüştürür. Olaylar, en fazla 1K cihaz için aşağıdaki JSON verilerini (kısaltılmış bir biçimde) gönderen bir IoT cihazının benzetimini yapar:
+[Ölçekte Tüm Akış azure örnekleri,](https://github.com/Azure-Samples/streaming-at-scale) test istemcilerini girdi olarak yükleyerek beslenen bir Olay Hub'ı kullanır. Her giriş olayı, yapılandırılmış alım oranlarını kolayca işlenme hızlarına (1MB/s, 5MB/sve 10MB ve 10MB/s) kolayca çeviren bir 1KB JSON belgesidir. Olaylar, 1K'ya kadar aygıtlar için aşağıdaki JSON verilerini (kısaltılmış biçimde) gönderen bir IoT aygıtını simüle eder:
 
 ```
 {
@@ -297,18 +297,18 @@ Stream Analytics çıkış [Cosmos DB](https://github.com/Azure-Samples/streamin
 ```
 
 > [!NOTE]
-> Yapılandırmalarda kullanılan çeşitli bileşenler nedeniyle yapılandırmaların değiştirilmesi tabidir. Daha doğru bir tahmin için, örnekleri senaryonuza uyacak şekilde özelleştirin.
+> Yapılandırmalar, çözümde kullanılan çeşitli bileşenler nedeniyle değişebilir. Daha doğru bir tahmin için, örnekleri senaryonuza uyacak şekilde özelleştirin.
 
-### <a name="identifying-bottlenecks"></a>Performans sorunlarını belirleme
+### <a name="identifying-bottlenecks"></a>Darboğazları Tanımlama
 
-İşlem hattınızdaki performans sorunlarını belirlemek için Azure Stream Analytics işinizin ölçümler bölmesini kullanın. İşin giriş oranına sahip olup olmadığını görmek için üretilen iş ve ["filigran gecikmesi"](https://azure.microsoft.com/blog/new-metric-in-azure-stream-analytics-tracks-latency-of-your-streaming-pipeline/) veya **biriktirme listesi olayları** Için **giriş/çıkış olaylarını** gözden geçirin. Olay Hub 'ı ölçümleri için, **Kısıtlanmış istekleri** bulun ve eşik birimlerini uygun şekilde ayarlayın. Cosmos DB ölçümleri için, bölüm anahtarı aralıklarınızın her bir şekilde tüketildiğinden emin olmak için üretilen Iş birimi **anahtar aralığı başına en fazla ru/sn** 'yi gözden geçirin. Azure SQL DB için **günlük GÇ** ve **CPU 'yu**izleyin.
+Ardışık hattınızdaki darboğazları belirlemek için Azure Akış Analizi işinizdeki Ölçümler bölmesini kullanın. İş giriş hızına ayak uydurup uymadın mı görmek için **giriş/Çıkış Olaylarını** ve ["Filigran Gecikmesi"](https://azure.microsoft.com/blog/new-metric-in-azure-stream-analytics-tracks-latency-of-your-streaming-pipeline/) veya **Backlogged Olayları** gözden geçirin. Olay Hub ölçümleri **için, Daraltılmış İstekleri** arayın ve Eşik Birimlerini buna göre ayarlayın. Cosmos DB ölçümleri için, bölüm anahtar aralıklarınızın eşit şekilde tüketilmesini sağlamak için İşlem altında **bölüm başına RU/s tüketilen Max'i** gözden geçirin. Azure SQL DB için **Log IO** ve **CPU'yı**izleyin.
 
 ## <a name="get-help"></a>Yardım alın
 
-Daha fazla yardım için [Azure Stream Analytics Forumumuzu](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)deneyin.
+Daha fazla yardım için [Azure Akışı Analizi forumumuzu](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)deneyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Azure Stream Analytics giriş](stream-analytics-introduction.md)
+* [Azure Akış Analizine Giriş](stream-analytics-introduction.md)
 * [Azure Akış Analizi'ni kullanmaya başlama](stream-analytics-real-time-fraud-detection.md)
 * [Azure Akış Analizi Sorgu Dili Başvurusu](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure Akış Analizi Yönetimi REST API'si Başvurusu](https://msdn.microsoft.com/library/azure/dn835031.aspx)

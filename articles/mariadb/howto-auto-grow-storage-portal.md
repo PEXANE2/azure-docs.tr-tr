@@ -1,45 +1,45 @@
 ---
-title: Depolamayı otomatik Büyüt-Azure portal-MariaDB için Azure veritabanı
-description: Bu makalede, Azure portal kullanarak MariaDB için Azure veritabanı için otomatik büyüme depolamayı nasıl etkinleştirebileceğinizi açıklamaktadır.
+title: Otomatik büyütme depolama - Azure portalı - MariaDB için Azure Veritabanı
+description: Bu makalede, Azure portalLarını kullanarak MariaDB için Azure Veritabanı için otomatik büyütme depolamasını nasıl etkinleştirebileceğiniz açıklanmaktadır
 author: ambhatna
 ms.author: ambhatna
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 5c5e9154260a255d9e9b8bc5775a479df7e41522
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: 7ec4c7a61725fa02f00bf38048182d640666ae8f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74767509"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79528906"
 ---
-# <a name="auto-grow-storage-in-azure-database-for-mariadb-using-the-azure-portal"></a>Azure portal kullanarak MariaDB için Azure veritabanı 'nda depolamayı otomatik olarak büyüt
-Bu makalede, bir MariaDB sunucu depolaması için Azure veritabanı 'nı, iş yükünü etkilemeden büyümeden nasıl yapılandırabileceğiniz açıklanmaktadır.
+# <a name="auto-grow-storage-in-azure-database-for-mariadb-using-the-azure-portal"></a>Azure portalını kullanarak MariaDB için Azure Veritabanı'nda otomatik depolama büyütün
+Bu makalede, MariaDB sunucu depolama için bir Azure Veritabanını iş yükünü etkilemeden büyüyecek şekilde nasıl yapılandırabileceğiniz açıklanmaktadır.
 
-Sunucu ayrılmış depolama sınırına ulaştığında, sunucu salt okunurdur olarak işaretlenir. Ancak, depolama otomatik büyümeye olanak belirtirseniz, sunucu depolaması büyüyen verileri kapsayacak şekilde artar. 100 GB 'den az kullanılabilir depolama alanı olan sunucularda, ücretsiz depolama alanı sağlanan depolamanın en fazla 1 GB veya %10 ' u altına düşdükten sonra sağlanan depolama boyutu 5 GB ile artar. 100 GB 'tan fazla kullanılabilir depolama alanı olan sunucularda, boş depolama alanı sağlanan depolama boyutunun %5 ' inden az olduğunda sağlanan depolama boyutu %5 oranında artar. [Burada](https://docs.microsoft.com/azure/mariadb/concepts-pricing-tiers#storage) belirtilen en fazla depolama sınırı geçerlidir.
+Bir sunucu ayrılan depolama sınırına ulaştığında, sunucu salt okunur olarak işaretlenir. Ancak, depolama otomatik büyümesini etkinleştirirseniz, sunucu depolama büyüyen verileri karşılamak için artar. 100 GB'dan az depoya sahip sunucular için, ücretsiz depolama alanı 1 GB'ın altında veya sağlanan depolama alanının %10'unun altında olduğu anda sağlanan depolama boyutu 5 GB artırılır. 100 GB'dan fazla depoya sahip sunucular için, ücretsiz depolama alanı sağlanan depolama alanının %5'in altında olduğunda, sağlanan depolama boyutu %5 artırılır. [Burada](https://docs.microsoft.com/azure/mariadb/concepts-pricing-tiers#storage) belirtildiği gibi maksimum depolama limitleri geçerlidir.
 
-## <a name="prerequisites"></a>Önkoşullar
-Bu nasıl yapılır kılavuzunu tamamlayabilmeniz için şunlar gerekir:
-- [MariaDB sunucusu Için Azure veritabanı](./quickstart-create-mariadb-server-database-using-azure-portal.md)
+## <a name="prerequisites"></a>Ön koşullar
+Bu nasıl yapılacağını kılavuzunu tamamlamak için şunları yapmanız gerekir:
+- [MariaDB sunucusu için bir Azure Veritabanı](./quickstart-create-mariadb-server-database-using-azure-portal.md)
 
-## <a name="enable-storage-auto-grow"></a>Depolama otomatik büyümesini etkinleştir 
+## <a name="enable-storage-auto-grow"></a>Depolama otomatik büyümesini etkinleştirin 
 
-MariaDB Server Storage otomatik büyümesini ayarlamak için şu adımları izleyin:
+MariaDB sunucu depolama otomatik büyümek ayarlamak için aşağıdaki adımları izleyin:
 
-1. [Azure Portal](https://portal.azure.com/), var olan MariaDB sunucusu Için Azure veritabanınızı seçin.
+1. Azure [portalında,](https://portal.azure.com/)MariaDB sunucusu için mevcut Azure Veritabanınızı seçin.
 
-2. MariaDB sunucusu sayfasında, **Ayarlar** başlığı altında **fiyatlandırma** katmanı ' nı tıklatarak Fiyatlandırma Katmanı sayfasını açın.
+2. MariaDB sunucu sayfasında, **Ayarlar** başlığı altında, fiyatlandırma katmanı sayfasını açmak için **Fiyatlandırma katmanını** tıklatın.
 
-3. Otomatik büyüme bölümünde, depolama otomatik büyümesini etkinleştirmek için **Evet** ' i seçin.
+3. Otomatik büyüme bölümünde, depolama otomatik büyümesini etkinleştirmek için **Evet'i** seçin.
 
-    ![MariaDB için Azure veritabanı-Settings_Pricing_tier-otomatik büyüme](./media/howto-auto-grow-storage-portal/3-auto-grow.png)
+    ![MariaDB için Azure Veritabanı - Settings_Pricing_tier - Otomatik büyüme](./media/howto-auto-grow-storage-portal/3-auto-grow.png)
 
 4. Değişiklikleri kaydetmek için **Tamam**’a tıklayın.
 
-5. Bir bildirim otomatik büyüme 'nın başarıyla etkinleştirildiğini doğrulayacaktır.
+5. Bir bildirim, otomatik büyümenin başarıyla etkinleştirildiğini doğrular.
 
-    ![MariaDB için Azure veritabanı-otomatik büyüme başarılı](./media/howto-auto-grow-storage-portal/5-auto-grow-successful.png)
+    ![MariaDB için Azure Veritabanı - otomatik büyüme başarısı](./media/howto-auto-grow-storage-portal/5-auto-grow-successful.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Ölçümler üzerinde uyarılar oluşturma](howto-alert-metric.md)hakkında bilgi edinin.
+Ölçümler [de nasıl uyarı oluşturacağınız](howto-alert-metric.md)hakkında bilgi edinin.

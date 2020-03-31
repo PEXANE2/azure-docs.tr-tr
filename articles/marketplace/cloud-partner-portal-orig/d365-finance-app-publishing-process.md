@@ -1,24 +1,23 @@
 ---
-title: Uygulama yayımlama adımları | Azure Marketi
-description: Kullanım dışı ve ilgili PC makaleleriyle bağlantılı; "Azure Marketi 'Nde bir uygulama yayımlama adımları" idi.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: ChJenk
+title: Uygulama Yayımlama Adımları | Azure Marketi
+description: Amortismana uymak ve ilgili PC makalelerine bağlı; "Azure Marketi'nde bir uygulama yayımlama adımları" idi.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/18/2019
-ms.author: pabutler
-ms.openlocfilehash: a6f79ab25efc73692cef6b5fa58044b5ce83847d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 9e9eccebbc92d54e6f2392f7cf813e5047da3b46
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820095"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80276113"
 ---
-# <a name="app-publishing-steps"></a>Uygulama yayımlama adımları
+# <a name="app-publishing-steps"></a>Uygulama Yayımlama Adımları
 
-[Bulut iş ortağı portalı](https://cloudpartner.azure.com/) artık Dynamics 365 İş Merkezi tekliflerinin oluşturulmasını ve yönetilmesini desteklememektedir. Bunun yerine, bu işlevsellik Microsoft [Iş Ortağı Merkezi portalına](https://partner.microsoft.com/)taşınmıştır. Daha fazla bilgi için bkz. [Yeni Dynamics 365 Iş Merkezi teklifi oluşturma](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-business-central-offer).
+[Cloud İş Ortağı Portalı](https://cloudpartner.azure.com/) artık Dynamics 365 Business Central tekliflerinin oluşturulmasını ve yönetimini desteklemez. Bunun yerine, bu işlev Microsoft [İş Ortağı Merkezi portalına](https://partner.microsoft.com/)taşındı. Daha fazla bilgi için bkz: [Yeni Dynamics 365 Business Central teklifi oluşturun.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-business-central-offer)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Yeni bir Dynamics 365 Iş Merkezi teklifi oluşturmadan önce, [Iş Ortağı Merkezi hesabı oluştur](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) ' u okuyup **genel bakış** sayfası seçili olarak [ticari Market panosunu](https://partner.microsoft.com/dashboard/directory) açmanız gerekir. Teklifinizi oluşturmak için [Yeni Dynamics 365 Iş Merkezi teklifi oluşturma](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-business-central-offer) bölümündeki yönergeleri izleyin.
+Yeni bir Dynamics 365 Business Central teklifi oluşturmadan önce, [Bir İş Ortağı Merkezi hesabı oluştur'u](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) okumalı ve ardından seçilen Genel **Bakış** sayfasıyla Ticari [Pazar panosunu](https://partner.microsoft.com/dashboard/directory) açmalısınız. Teklifinizi oluşturmak için [yeni bir Dynamics 365 Business Central teklifi oluşturun'daki](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-business-central-offer) talimatları izleyin.

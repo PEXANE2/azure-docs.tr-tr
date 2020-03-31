@@ -1,6 +1,6 @@
 ---
-title: IoT için Azure Güvenlik Merkezi 'ni Azure Sentinel 'e bağlama | Microsoft Docs
-description: IoT verileri için Azure Güvenlik Merkezi 'ni Azure Sentinel 'e bağlamayı öğrenin.
+title: IoT için Azure Güvenlik Merkezi'ni Azure Sentinel'e bağlayın | Microsoft Dokümanlar
+description: IoT verileri için Azure Güvenlik Merkezi'ni Azure Sentinel'e nasıl bağlayabilirsiniz öğrenin.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,60 +15,60 @@ ms.workload: na
 ms.date: 02/18/2020
 ms.author: yelevin
 ms.openlocfilehash: 3af51110a4c4604444573f62be65077c786db606
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77588646"
 ---
-# <a name="connect-your-data-from-azure-security-center-for-iot-to-azure-sentinel"></a>IoT için Azure Güvenlik Merkezi 'nden verilerinizi Azure Sentinel 'e bağlama 
+# <a name="connect-your-data-from-azure-security-center-for-iot-to-azure-sentinel"></a>Verilerinizi Azure Güvenlik Merkezi'nden IoT için Azure Sentinel'e bağlayın 
 
 
 > [!IMPORTANT]
-> IoT veri Bağlayıcısı için Azure Güvenlik Merkezi şu anda genel önizlemededir. Bu özellik, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> IoT veri bağlayıcısı için Azure Güvenlik Merkezi şu anda genel önizlemededir. Bu özellik bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için Microsoft [Azure Önizlemeleri için Ek Kullanım Koşulları'na](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)bakın.
 
-IoT olayları için Azure Güvenlik Merkezi 'ni Azure Sentinel 'e aktarmak üzere IoT Bağlayıcısı için Azure Güvenlik Merkezi 'ni kullanın. 
+Tüm Azure Güvenlik Merkezi'nizi IoT etkinlikleri için Azure Güvenlik Merkezi'ne aktarmak için IoT konektörü için Azure Güvenlik Merkezi'ni kullanın. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-- Azure Sentinel 'in dağıtıldığı çalışma alanında **okuma** ve **yazma** izinleri
-- **IoT Için Azure Güvenlik Merkezi** 'nin ilgili IoT Hub **etkinleştirilmiş** olması gerekir
-- Bağlanmak istediğiniz **Azure IoT Hub** **okuma** ve **yazma** izinleri
-- **Azure IoT Hub kaynak grubunda** **okuma** ve **yazma** izinleri
-
-> [!NOTE]
-> IoT kaynak uyarılarını Azure Sentinel 'e aktarmak için aboneliğinizde Azure Güvenlik Merkezi **Standart** katmanı lisansını etkinleştirmeniz gerekir, ancak Azure Sentinel 'de IoT uyarıları Için Azure Güvenlik Merkezi 'ni görüntülemek için aboneliğinizdeki Azure Güvenlik Merkezi **ücretsiz** katman lisansını etkinleştirmeniz gerekir. 
-
-## <a name="connect-to-azure-security-center-for-iot"></a>IoT için Azure Güvenlik Merkezi 'ne bağlanma
-
-1. Azure Sentinel 'de **veri bağlayıcıları** ' nı ve ardından **IoT Için Azure Güvenlik Merkezi** ' ni seçin.
-1. Sağ alt bölmeden **bağlayıcı sayfasını aç**' a tıklayın. 
-1. Uyarıları ve cihaz uyarılarını Azure Sentinel 'e aktarmak istediğiniz her bir IoT Hub aboneliğinin yanındaki **Bağlan**' a tıklayın. 
-    - IoT için Azure Güvenlik Merkezi bu hub 'da etkinleştirilmemişse, bir **etkinleştirme** uyarı iletisi görürsünüz. Hizmeti başlatmak için **Etkinleştir** bağlantısına tıklayın. 
-1. IoT için Azure Güvenlik Merkezi 'ndeki uyarıların Azure Sentinel 'de otomatik olarak olay oluşturmasını isteyip istemediğinize karar verebilirsiniz. **Olayları oluştur**' un altında, bağlı güvenlik hizmetinde oluşturulan uyarılardan olayları otomatik olarak oluşturmak üzere varsayılan analitik kuralını etkinleştirmek için **Etkinleştir** ' i seçin. Bu kural, **analiz** > **etkin** kurallar altında değiştirilebilir veya düzenlenebilir.
+- Azure Sentinel'in dağıtıldığı Çalışma Alanında İzinleri **Okuma** ve **Yazma**
+- **IoT için Azure Güvenlik Merkezi, ilgili IoT** Hub(lar) üzerinde **etkinleştirilmelidir**
+- Bağlanmak istediğiniz **Azure IoT** Hub'ında izinleri **okuma** ve **yazma**
+- **Azure IoT Hub kaynak grubunda** izinleri **okuma** ve **yazma**
 
 > [!NOTE]
-> Bağlantı değişiklikleri yapıldıktan sonra hub listesinin yenilenmesi biraz zaman alabilir. 
+> IoT kaynak uyarılarını Azure Sentinel'e aktarmak için aboneliğinizdeki Azure Güvenlik Merkezi **Standart** katman lisansını etkinleştirmeniz gerekirken, Aboneliğinizdeki Azure Güvenlik Merkezi **Ücretsiz** katman lisansını Azure Sentinel'de IoT uyarıları için Azure Güvenlik Merkezi'ni görüntülemek için etkinleştirmeniz gerekir. 
 
-## <a name="log-analytics-alert-display"></a>Uyarı görüntüsünü Log Analytics
+## <a name="connect-to-azure-security-center-for-iot"></a>IoT için Azure Güvenlik Merkezi'ne bağlanın
 
-IoT uyarıları için Azure Güvenlik Merkezi 'ni göstermek üzere Log Analytics 'de ilgili şemayı kullanmak için:
+1. Azure Sentinel'de **Veri bağlayıcılarını** seçin ve ardından **IoT döşemesi için Azure Güvenlik Merkezi'ni** tıklatın.
+1. Sağ alt bölmeden **Bağlayıcı yı aç sayfasını**tıklatın. 
+1. Uyarıları ve aygıt uyarılarını Azure Sentinel'e aktarmak istediğiniz her IoT Hub aboneliğinin yanındaki **Bağlan'ı**tıklatın. 
+    - Bu Hub'da Azure Güvenlik Merkezi IoT etkin değilse, bir **Etkinleştir** uyarı iletisi görürsünüz. Hizmeti başlatmak için **Etkinleştir** bağlantısını tıklatın. 
+1. IoT için Azure Güvenlik Merkezi'ndeki uyarıların Azure Sentinel'de otomatik olarak olay oluşturmasını isteyip istemediğiniz konusunda karar verebilirsiniz. **Olayları Oluştur**altında, bağlı güvenlik hizmetinde oluşturulan uyarılardan otomatik olarak olay oluşturmak için varsayılan analitik kuralını etkinleştir'i **seçin.** Bu kural **Analytics** > **Active** kuralları altında değiştirilebilir veya düzenlenebilir.
 
-1. **Günlükleri** > **Securityınsights** > **securityalert**' ya açın veya **securityalert**araması yapın. 
-2. Aşağıdaki KQL filtresi kullanılarak IoT tarafından oluşturulan uyarılar için yalnızca Azure Güvenlik Merkezi 'ni görmek üzere filtreleyin:
+> [!NOTE]
+> Bağlantı değişiklikleri yaptıktan sonra hub listesinin yenilenmesi biraz zaman alabilir. 
+
+## <a name="log-analytics-alert-display"></a>Log Analytics uyarı ekranı
+
+IoT uyarıları için Azure Güvenlik Merkezi'ni görüntülemek için Log Analytics'teki ilgili şemayı kullanmak için:
+
+1. **Açık Günlükleri** > **SecurityInsights** > **SecurityAlert,** ya da **SecurityAlert**arayın. 
+2. Aşağıdaki kql filtresini kullanarak yalnızca IoT oluşturulan uyarıları görmek için filtre uygulayın:
 
 ```kusto
 SecurityAlert | where ProductName == "Azure Security Center for IoT"
 ``` 
 
-### <a name="service-notes"></a>Hizmet notları
+### <a name="service-notes"></a>Servis notları
 
-Bir IoT Hub bağlandıktan sonra merkez verileri yaklaşık 15 dakika sonra Azure 'da kullanılabilir.
+Bir IoT Hub'ı bağladıktan sonra hub verileri Yaklaşık 15 dakika sonra Azure Sentinel'de kullanılabilir.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu belgede IoT verileri için Azure Güvenlik Merkezi 'ni Azure Sentinel 'e bağlamayı öğrendiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
-- [Verilerinize nasıl görünürlük alabileceğinizi ve olası tehditleri](quickstart-get-visibility.md)öğrenin.
-- [Azure Sentinel ile tehditleri algılamaya](tutorial-detect-threats-built-in.md)başlayın.
-- Verilerinizi izlemek için [çalışma kitaplarını kullanın](tutorial-monitor-your-data.md) .
+Bu belgede, IoT verileri için Azure Güvenlik Merkezi'ni Azure Sentinel'e nasıl bağlayabileceğinizi öğrendiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
+- [Verilerinize ve olası tehditlere](quickstart-get-visibility.md)nasıl görünürlük elde edebilirsiniz öğrenin.
+- Azure [Sentinel ile tehditleri algılamaya](tutorial-detect-threats-built-in.md)başlayın.
+- Verilerinizi izlemek için [çalışma kitaplarını kullanın.](tutorial-monitor-your-data.md)

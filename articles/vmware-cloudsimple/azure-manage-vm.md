@@ -1,6 +1,6 @@
 ---
-title: Azure VMware çözümleri (AVS)-Azure 'da AVS özel bulut VM 'lerini yönetme
-description: Diskler ekleme, VM kapasitesini değiştirme ve ağ arabirimleri ekleme dahil olmak üzere Azure portal AVS özel bulut VM 'lerinin nasıl yönetileceğini açıklar
+title: CloudSimple'a göre Azure VMware Çözümü - Azure'da Özel Bulut VM'lerini Yönet
+description: Disk ekleme, VM kapasitesini değiştirme ve ağ arabirimleri ekleme dahil olmak üzere Azure portalında CloudSimple Private Cloud VM'lerin nasıl yönetilenini açıklar
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/16/2019
@@ -8,77 +8,77 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 0cce1dc7ff3935a3174d4e96b553a5485950df73
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 44a0b8fe56477620c0ac47d5c5de8830dac46214
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77015006"
 ---
-# <a name="manage-your-avs-private-cloud-virtual-machines-in-azure"></a>Azure 'da AVS özel bulut sanal makinelerinizi yönetin
+# <a name="manage-your-cloudsimple-private-cloud-virtual-machines-in-azure"></a>CloudSimple Private Cloud sanal makinelerinizi Azure'da yönetin
 
-[AVS özel bulutunuz için oluşturduğunuz](azure-create-vm.md)sanal makineleri yönetmek için [Azure Portal](https://portal.azure.com)oturum açın. Sanal ( **tüm hizmetler** ' in altında veya yan menüdeki **sanal makineler** ' de ara ' yı) arayın ve seçin.
+[CloudSimple Private Cloud'unuzun için oluşturduğunuz](azure-create-vm.md)sanal makineleri yönetmek için [Azure portalında](https://portal.azure.com)oturum açın. Sanal'ı arayın ve seçin (yan menüdeki **Tüm Hizmetler** veya **Sanal Makineler** altında arama yapın).
 
-## <a name="control-virtual-machine-operation"></a>Sanal makine işlemini denetleme
+## <a name="control-virtual-machine-operation"></a>Sanal makine işlemini kontrol edin
 
-Aşağıdaki denetimler, seçtiğiniz sanal makinenizin **genel bakış** sayfasında bulunur.
+Aşağıdaki denetimler, seçtiğiniz sanal makine için **Genel Bakış** sayfasından edinilebilir.
 
 | Denetim | Açıklama |
 | ------------ | ------------- |
-| Bağlayın | Belirtilen VM 'ye bağlanın.  |
-| Başlayın | Belirtilen VM 'yi başlatın.  |
-| Yeniden Başlatma | Kapatın ve ardından belirtilen VM 'yi kapatın.  |
-| Durdur | Belirli bir sanal makineyi kapatın.  |
-| Yakalama | Başka VM 'Ler oluşturmak için görüntü olarak kullanılabilmesi için belirtilen VM 'nin bir görüntüsünü yakalayın. Bkz. [Azure 'da Genelleştirilmiş BIR VM 'nin yönetilen görüntüsünü oluşturma](../virtual-machines/windows/classic/capture-image.md).   |
-| Taşı | Belirtilen VM 'ye taşıyın.  |
-| Sil | Belirtilen VM 'yi kaldırın.  |
-| Yenile | Ekranda verileri yenileyin.  |
+| Bağlan | Belirtilen VM'ye bağlanın.  |
+| Başlangıç | Belirtilen VM'yi başlatın.  |
+| Yeniden Başlatma | Kapatın ve ardından belirtilen VM'yi kapatın.  |
+| Durdur | Belirli VM'yi kapatın.  |
+| Capture | Diğer VM'ler oluşturmak için görüntü olarak kullanılabilmek için belirtilen VM'nin görüntüsünü yakalayın. Bkz. [Azure'da genelleştirilmiş bir VM'nin yönetilen görüntüsünü oluşturun.](../virtual-machines/windows/classic/capture-image.md)   |
+| Taşı | Belirtilen VM'ye geçin.  |
+| Sil | Belirtilen VM'yi kaldırın.  |
+| Yenile | Ekrandaki verileri yenileyin.  |
 
-### <a name="view-performance-information"></a>Performans bilgilerini görüntüle
+### <a name="view-performance-information"></a>Performans bilgilerini görüntüleme
 
-**Genel bakış** sayfasının alt bölümündeki grafikler, seçili Aralık (son saat-son 30 güne kadar) için performans verilerini sunar; varsayılan süre son saattir. Her bir grafikte, imlecinizi grafiğin üzerinde geri ve ileri taşıyarak Aralık dahilinde herhangi bir zaman için sayısal değerleri görüntüleyebilirsiniz.
+**Genel Bakış** sayfasının alt alanındaki grafikler, seçili aralığın performans verilerini sunar (son saat 30 gün; varsayılan son saattir). Her grafikte, imlecinizi grafik üzerinde ileri geri hareket ettirerek, aralık içinde istediğiniz zaman sayısal değerleri görüntüleyebilirsiniz.
 
 Aşağıdaki grafikler görüntülenir.
 
 | Öğe | Açıklama |
 | ------------ | ------------- |
-| CPU (Ortalama) | Seçilen Aralık üzerinde ortalama CPU kullanımı yüzdesi.   |
-| Ağ | Seçili aralığa göre ağın içindeki ve giden trafiği (MB).  |
-| Disk baytları | Diskten okunan ve seçilen aralığa göre diske (MB) yazılan toplam veri.  |
-| Disk İşlemleri | Seçilen Aralık üzerinde disk işlemlerinin ortalama oranı (işlem/saniye). |
+| CPU (ortalama) | Seçilen aralık üzerinden yüzde olarak ortalama CPU kullanımı.   |
+| Ağ | Seçili aralık üzerinden ağa (MB) girip çıkan trafik.  |
+| Disk Baytları | Diskten okunan ve seçilen aralık ta diske (MB) yazılan toplam veri.  |
+| Disk İşlemleri | Disk işlemlerinin (işlem/saniye) seçili aralıktaki ortalama hızı. |
 
-## <a name="manage-vm-disks"></a>VM disklerini yönetme
+## <a name="manage-vm-disks"></a>VM diskleri yönetme
 
-Bir VM diski eklemek için, seçilen VM için **diskler** sayfasını açın. Bir disk eklemek için **Disk Ekle**' ye tıklayın. Satır içi bir seçenek girerek veya seçerek aşağıdaki ayarların her birini yapılandırın. **Save (Kaydet)** düğmesine tıklayın.
+VM disk eklemek için, seçili VM için **Diskler** sayfasını açın. Disk eklemek için **disk ekle'yi**tıklatın. Satır çizgisi seçeneği girerek veya seçerek aşağıdaki ayarların her birini yapılandırın. **Kaydet**'e tıklayın.
 
    | Öğe | Açıklama |
    | ------------ | ------------- |
-   | Ad | Diski tanımlamak için bir ad girin.  |
+   | Adı | Diski tanımlamak için bir ad girin.  |
    | Boyut | Kullanılabilir boyutlardan birini seçin.  |
-   | SCSI denetleyicisi | Bir SCSI denetleyicisi seçin. Kullanılabilir denetleyiciler, desteklenen farklı işletim sistemleri için farklılık gösterir.  |
-   | Mod | Diskin anlık görüntülere nasıl katıldığını belirler. Bu seçeneklerden birini seçin: <br> -Bağımsız kalıcı: diske yazılan tüm veriler kalıcı olarak yazılmıştır.<br> -Bağımsız, kalıcı olmayan: diske yazılan değişiklikler, sanal makineyi kapattığınızda veya sıfırladığınızda atılır. Bu mod, sanal makineyi her zaman aynı durumda yeniden başlatmanıza olanak tanır. Daha fazla bilgi için bkz. [VMware belgeleri](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-8B6174E6-36A8-42DA-ACF7-0DA4D8C5B084.html). |
+   | SCSI Denetleyici | Bir SCSI denetleyicisi seçin. Kullanılabilir denetleyiciler farklı desteklenen işletim sistemleri için değişir.  |
+   | Mod | Diskin anlık görüntülere nasıl katıldığını belirler. Bu seçeneklerden birini seçin: <br> - Bağımsız kalıcı: Diske yazılan tüm veriler kalıcı olarak yazılır.<br> - Bağımsız, kalıcı olmayan: Sanal makineyi kapattığınızda veya sıyrettiğinizde diske yazılan değişiklikler atılır.  Bu mod, VM'yi her zaman aynı durumda yeniden başlatmanızı sağlar. Daha fazla bilgi için [VMware belgelerine](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-8B6174E6-36A8-42DA-ACF7-0DA4D8C5B084.html)bakın. |
 
-Bir diski silmek için, seçin ve **Sil**' e tıklayın.
+Bir diski silmek için, diski seçin ve **Sil'i**tıklatın.
 
-## <a name="change-the-capacity-of-the-vm"></a>VM kapasitesini değiştirme
+## <a name="change-the-capacity-of-the-vm"></a>VM'nin kapasitesini değiştirme
 
-VM kapasitesini değiştirmek için, seçilen VM 'nin **Boyut** sayfasını açın. Aşağıdakilerden birini belirtin ve **Kaydet**' e tıklayın.
+VM'nin kapasitesini değiştirmek için, seçili VM'nin **Boyut** sayfasını açın. Aşağıdakilerden herhangi birini belirtin ve **Kaydet'i**tıklatın.
 
 | Öğe | Açıklama |
 | ------------ | ------------- |
-| Çekirdek sayısı | VM 'ye atanan çekirdek sayısı.  |
-| Donanım sanallaştırma | Konuk işletim sistemi için donanım sanallaştırmayı kullanıma sunma onay kutusunu seçin. VMware [donanım yardımlı sanallaştırmayı kullanıma](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-2A98801C-68E8-47AF-99ED-00C63E4857F6.html)sunma VMware makalesine bakın. |
-| Bellek Boyutu | SANAL makineye ayrılacak bellek miktarını seçin.  
+| Çekirdek sayısı | VM'ye atanan çekirdek sayısı.  |
+| Donanım sanallaştırma | Donanım sanallaştırmasını konuk işletim sistemi yle ortaya çıkarmak için onay kutusunu seçin. VMware makaleye bakın [VMware Donanım Destekli Sanallaştırma maruz.](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-2A98801C-68E8-47AF-99ED-00C63E4857F6.html) |
+| Bellek Boyutu | VM'ye tahsis etmek için bellek miktarını seçin.  
 
 ## <a name="manage-network-interfaces"></a>Ağ arabirimlerini yönetme
 
-Arabirim eklemek için **ağ arabirimi Ekle**' ye tıklayın. Satır içi bir seçenek girerek veya seçerek aşağıdaki ayarların her birini yapılandırın. **Save (Kaydet)** düğmesine tıklayın.
+Arabirim eklemek için **ağ arabirimi ekle'yi**tıklatın. Satır çizgisi seçeneği girerek veya seçerek aşağıdaki ayarların her birini yapılandırın. **Kaydet**'e tıklayın.
 
    | Denetim | Açıklama |
    | ------------ | ------------- |
-   | Ad | Arabirimi tanımlamak için bir ad girin.  |
-   | Ağ | AVS özel bulut vSphere 'unuzda yapılandırılmış ağlar listesinden seçim yapın.  |
-   | Örünü | VM için yapılandırılmış kullanılabilir türler listesinden bir vSphere bağdaştırıcısı seçin. Daha fazla bilgi için bkz. [sanal makineniz için bir ağ bağdaştırıcısı seçme](https://kb.vmware.com/s/article/1001805)VMware Bilgi Bankası makalesi. |
-   | Önyüklemede açma | VM önyüklendiğinde NIC donanımını etkinleştirip etkinleştirmeyeceğinizi seçin. Varsayılan olarak **etkinleştirilir**. |
+   | Adı | Arabirimi tanımlamak için bir ad girin.  |
+   | Ağ | Özel Bulut vSphere'inizde yapılandırılan ağlar listesinden seçim inizi seçin.  |
+   | Bağdaştırıcı | VM için yapılandırılan kullanılabilir türler listesinden bir vSphere bağdaştırıcısı seçin. Daha fazla bilgi için, [sanal makine için bir ağ bağdaştırıcıseçimi seçimi](https://kb.vmware.com/s/article/1001805)nde VMware bilgi bankası makalesine bakın. |
+   | Boot'ta güç | VM önyüklendiğinde NIC donanımını etkinleştirip etkinleştirmeyeceğinizi seçin. Varsayılan **enable**olduğunu. |
 
-Bir ağ arabirimini silmek için, seçin ve **Sil**' e tıklayın.
+Ağ arabirimini silmek için, onu seçin ve **Sil'i**tıklatın.

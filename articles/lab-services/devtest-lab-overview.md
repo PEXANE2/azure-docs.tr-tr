@@ -1,6 +1,6 @@
 ---
-title: Azure DevTest Labs hakkında | Microsoft Docs
-description: Nasıl DevTest Labs oluşturmak, yönetmek ve Azure sanal makinelerini izlemek kolaylaştırmak bilgi edinin
+title: Azure Devtest Labs Hakkında | Microsoft Dokümanlar
+description: DevTest Laboratuvarlarının Azure sanal makinelerini oluşturmayı, yönetmeyi ve izlemeyi nasıl kolaylaştırabileceğini öğrenin
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -15,77 +15,77 @@ ms.topic: article
 ms.date: 03/21/2019
 ms.author: spelluru
 ms.openlocfilehash: b7cd6bb1fd0377ca1440d9c667453df922aacbd4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60561464"
 ---
 # <a name="about-azure-devtest-labs"></a>Azure DevTest Labs hakkında
-Azure DevTest Labs geliştiriciler takımlar verimli bir şekilde sanal makineler (VM'ler) ve PaaS kaynaklarına onay beklemeden otomatik yönetmek etkinleştirir.
+Azure DevTest Labs, ekiplerdeki geliştiricilerin onay beklemeden sanal makineleri (VM' ler) ve PaaS kaynaklarını verimli bir şekilde kendi kendine yönetmelerini sağlar.
 
-DevTest Labs, önceden yapılandırılmış tabanları veya Azure Resource Manager şablonları oluşan labs oluşturur. Bu, tüm gerekli araçlara ve ortamlar oluşturmak için kullanabileceğiniz yazılım vardır. Ortamlar, saatler veya günler yerine birkaç dakika içinde oluşturabilirsiniz.
+DevTest Labs, önceden yapılandırılmış tabanlardan veya Azure Kaynak Yöneticisi şablonlarından oluşan laboratuvarlar oluşturur. Bunlar, ortam oluşturmak için kullanabileceğiniz tüm gerekli araçlara ve yazılımlara sahiptir. Saatler veya günler yerine birkaç dakika içinde ortamlar oluşturabilirsiniz.
 
-DevTest Labs kullanarak aşağıdaki görevleri gerçekleştirerek uygulamalarınızı en son sürümlerini test edebilirsiniz:
+DevTest Labs'ı kullanarak, aşağıdaki görevleri yaparak uygulamalarınızın en son sürümlerini test edebilirsiniz:
 
-- Yeniden kullanılabilir şablonları ve yapıtları kullanarak Windows ve Linux ortamlarını hızla sağlayın.
-- Kolayca, dağıtım işlem hattı talep üzerine ortamları sağlamak için DevTest Labs ile tümleştirin.
-- Birden çok test aracısına sağlayarak sınama yük ölçeğini ve eğitim ve tanıtım için önceden hazırlanan ortamlar oluşturun.
+- Yeniden kullanılabilir şablonlar ve yapılar kullanarak Windows ve Linux ortamlarını hızla sağlar.
+- İsteğe bağlı ortamlar sağlamak için, dağıtım işlem hattınızı DevTest Labs ile kolayca tümleştirin.
+- Birden fazla test aracısı sağlayarak yük testinizi ölçeklendirin ve eğitim ve demolar için önceden sağlanmış ortamlar oluşturun.
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/What-is-Azure-DevTest-Labs/player]
 
 ## <a name="capabilities"></a>Özellikler
-DevTest Labs sanal makineleri ile çalışan geliştiriciler için aşağıdaki özellikleri sağlar:
+DevTest Labs, VM'lerle çalışan geliştiricilere aşağıdaki özellikleri sağlar:
 
-- Vm'leri hızla Beşten az basit adımları izleyerek oluşturun.
-- Yapılandırılmış, onaylanan ve Ekip Lideri ya Orta düzenlemeyle VM tabanlarını düzenlenmiş bir listesini arasından BT.
-- Tüm yazılım ve araçlar zaten yüklü olan önceden oluşturulmuş özel görüntülerden VM'ler oluşturun. 
-- Vm'leri oluştururken, yüklü yazılımların en yeni derlemeleri ile birlikte aslında özel görüntüleri formüllerden VM'ler oluşturun. 
-- Sağlanan sonra Vm'lerine dağıtılmış uzantıları yapıtları yükleme.
-- Otomatik kapatmayı ayarlamayı ve zamanlamaları vm'lerde otomatik olarak başlat.
-- Önceden oluşturulmuş bir sanal makine oluşturma sürecine gitmeden talep.
+- Beşten az basit adımı izleyerek vm'leri hızlı bir şekilde oluşturun.
+- Takım müşteri adayı veya merkezi BT tarafından yapılandırılan, onaylanan ve yetkilendirilen VM üslerinin seçilmiş bir listesinden seçim yapın.
+- Tüm yazılım ve araçları zaten yüklü olan önceden oluşturulmuş özel görüntülerden VM'ler oluşturun. 
+- VM'ler oluşturulduğunda yüklenen yazılımın en son yapılarıyla birleştirilmiş özel görüntüler olan formüllerden VM'ler oluşturun. 
+- VM'lerde dağıtılan uzantılar olan yapıları, bunlar sağlandıktan sonra yükleyin.
+- VM'lerde otomatik kapatma ve otomatik başlatma zamanlamalarını ayarlayın.
+- Oluşturma işleminden geçmeden önceden oluşturulmuş bir VM talep edin.
 
-DevTest Labs ile PaaS ortamlar çalışan geliştiriciler için aşağıdaki özellikleri sağlar:
+DevTest Labs, PaaS ortamlarıyla çalışan geliştiricilere aşağıdaki özellikleri sağlar:
 
-- Üçten basit adımları izleyerek PaaS ortamları hızlıca oluşturma için Kaynak Yöneticisi'ni kullanın.
-- Yapılandırılmış ve Ekip Lideri ya Orta düzenlemeyle Resource Manager şablonlarını düzenlenmiş bir listesini arasından seçim BT.
-- Bir laboratuvar bağlamında Azure keşfetmek için Resource Manager şablonu kullanarak boş bir kaynak grubu (sanal) çalıştırın.
+- Üçten az basit adımı izleyerek PaaS ortamlarını hızla oluşturmak için Kaynak Yöneticisi'ni kullanın.
+- Takım müşteri adayı veya merkezi BT tarafından yapılandırılan ve yetkilendirilen Kaynak Yöneticisi şablonları listesinden seçim yapın.
+- Bir laboratuvar bağlamında Azure'u keşfetmek için Kaynak Yöneticisi şablonu kullanarak boş bir kaynak grubunu (sandbox) döndürün.
 
-DevTest Labs da sağlayan merkezi BT wastes denetlemek, kaynakları maliyetlerini en iyi duruma getirmek ve bütçelerini içinde aşağıdaki görevleri gerçekleştirerek kalın için:  
+DevTest Labs ayrıca merkezi BT'nin atıkları kontrol etmesini, kaynaklardaki maliyetleri optimize etmesini ve aşağıdaki görevleri yaparak bütçeler dahilinde kalmasını sağlar:  
 
-- Otomatik kapatma ve otomatik başlatma zamanlamalar Vm'lerde ayarlanıyor.
-- İlke kullanıcılar oluşturabileceğiniz VM sayısını ayarlama.
-- Sanal makinelerin boyutlarını ve kullanıcıların arasından seçim galeri görüntüleri ilkeleri ayarlama.
-- Laboratuvarları izleme, maliyetleri ve ayarı hedefler.
-- Böylece, gerekli eylemleri yüksek tahmini maliyetleri Laboratuvarları için bildirim alarak.
+- VM'lerde otomatik kapatma ve otomatik başlatma zamanlamalarını ayarlama.
+- Kullanıcıların oluşturabileceği VM sayısına ilişkin ilkeleri ayarlama.
+- Kullanıcıların seçtiği VM'lerin boyutları na ve galeri resimlerine ilişkin ilkeleri ayarlama.
+- Maliyetleri izleme ve laboratuvarlarda hedefler belirleme.
+- Gerekli eylemleri yapabilmeniz için laboratuvarlar için yüksek öngörülen maliyetler hakkında bilgilendirilme.
 
-DevTest Labs, oluşturma, yapılandırma ve bulut ortamları yönetme aşağıdaki avantajları sağlar.
+DevTest Labs, bulutta ortam oluşturma, yapılandırma ve yönetme de aşağıdaki avantajları sağlar.
 
-## <a name="cost-control-and-governance"></a>Maliyet denetim ve idare
-DevTest Labs, maliyetlerin aşağıdaki görevleri gerçekleştirmenize izin vererek kolaylaştırır:
+## <a name="cost-control-and-governance"></a>Maliyet kontrolü ve yönetişim
+DevTest Labs, aşağıdaki görevleri yapmanıza izin vererek maliyetleri kontrol etmeyi kolaylaştırır:
 
-- [Üzerinde Laboratuvar ilkelerini ayarlama](devtest-lab-get-started-with-lab-policies.md), kullanıcı başına veya Laboratuvar başına sanal makinelerin sayısı gibi. 
-- Oluşturma [otomatik olarak kapatmak için ilkeleri](devtest-lab-set-lab-policy.md) ve Vm'leri başlatın.
-- Vm'leri ve PaaS kaynakları maliyetlerini izlemek içinde kalmak için labs içinde hazırladık yukarı [bütçenizi](devtest-lab-configure-cost-management.md).
-- Bunları dışında kaynakları aşamasında olmayan şekilde laboratuvarlarınızı bağlamı içinde kalır.
+- [Laboratuvarlarınızda](devtest-lab-get-started-with-lab-policies.md)kullanıcı başına veya laboratuvar başına VM sayısı gibi ilkeler ayarlayın. 
+- [Otomatik olarak kapatmak](devtest-lab-set-lab-policy.md) ve VM'leri başlatmak için ilkeler oluşturun.
+- [Bütçeniz](devtest-lab-configure-cost-management.md)dahilinde kalmak için laboratuvarların içinde dönen VM'ler ve PaaS kaynaklarındaki maliyetleri izleyin.
+- Laboratuvarlarınızın bağlamında kalın, böylece kaynakları bunların dışında çevirmeyin.
 
-## <a name="quickly-get-to-ready-to-test"></a>Hızlı bir şekilde hazır test Al
-DevTest Labs, ekibinizin uygulama geliştirip test etmek için ihtiyaç duyduğu her şeyi ile donatılmış önceden hazırlanan ortamlar oluşturmanızı sağlar. Yalnızca [bu ortamları talep etmek](devtest-lab-add-claimable-vm.md) uygulamanızın son iyi derlemesinin yüklü olduğu ve başlangıç çalışır. Veya daha hızlı, daha yalın bir ortam oluşturmak için kapsayıcıları kullanabilirsiniz.
+## <a name="quickly-get-to-ready-to-test"></a>Hızlı bir şekilde teste hazır olun
+DevTest Labs, ekibinizin uygulamaları geliştirmesi ve test etmesi için ihtiyaç duyduğu her şeyle donatılmış önceden sağlanmış ortamlar oluşturmanıza olanak tanır. Uygulamanızın son iyi yapısının yüklü olduğu [ortamları talep](devtest-lab-add-claimable-vm.md) edin ve çalışmaya başlayın. Veya daha hızlı, daha yalın ortam oluşturma için kapları kullanın.
 
 ## <a name="create-once-use-everywhere"></a>Bir kez oluşturun, her yerde kullanın
-Yakalama ve paylaşma PaaS [ortam şablonlarını](devtest-lab-create-environment-from-arm.md) ve [yapıtları](add-artifact-repository.md) ekip veya kuruluş içinde — tüm kaynak denetiminde — kolayca Geliştirici oluşturma ve test ortamları.
+Geliştirici ve test [ortamları](devtest-lab-create-environment-from-arm.md) oluşturmak için ekibinizde veya kuruluşunuzdaki PaaS ortam şablonlarını ve [yapılarını](add-artifact-repository.md) (hepsi kaynak denetiminde) yakalayın ve paylaşın.
 
-## <a name="worry-free-self-service"></a>Sorunsuz Self Servis
-DevTest Labs, geliştiricilere ve test edicilere hızla ve kolayca sağlayan [Iaas sanal makineleri oluşturma](devtest-lab-add-vm.md) ve [PaaS kaynaklarına](devtest-lab-create-environment-from-arm.md) bir önceden yapılandırılmış bir kaynak kümesini kullanarak.
+## <a name="worry-free-self-service"></a>Sorunsuz self servis
+DevTest Labs, geliştiricilerinizin ve test edenlerin önceden yapılandırılmış bir dizi kaynak kullanarak [IaaS VM'leri](devtest-lab-add-vm.md) ve [PaaS kaynaklarını](devtest-lab-create-environment-from-arm.md) hızlı ve kolay bir şekilde oluşturmalarını sağlar.
 
-## <a name="use-iaas-and-paas-resources"></a>Iaas ve PaaS kaynakları kullan 
-Geliştiriciler ayrıca Azure Service Fabric kümeleri gibi PaaS kaynakları Web Apps özelliği, Azure App Service ve SharePoint grupları Resource Manager şablonları kullanarak yavaşlatabilir. PaaS üzerinde Labs'de kullanmaya başlamak için şablonları kullanın. [genel ortam depo](devtest-lab-configure-use-public-environments.md) veya [Laboratuvar kendi Git deposuna bağlanın](devtest-lab-create-environment-from-arm.md#configure-your-own-template-repositories). Bu kaynaklardaki bütçeniz dahilinde, maliyetleri de izleyebilirsiniz.
+## <a name="use-iaas-and-paas-resources"></a>IaaS ve PaaS kaynaklarını kullanma 
+Geliştiriciler ayrıca Kaynak Yöneticisi şablonlarını kullanarak Azure Hizmet Kumaşı kümeleri, Azure Uygulama Hizmeti'nin Web Uygulamaları özelliği ve SharePoint çiftlikleri gibi PaaS kaynaklarını da döndürebilir. Laboratuvarlarda PaaS'a başlamak [için, ortak ortam deposundan](devtest-lab-configure-use-public-environments.md) şablonları kullanın veya [laboratuarı kendi Git deponuza bağlayın.](devtest-lab-create-environment-from-arm.md#configure-your-own-template-repositories) Bütçeniz dahilinde kalmak için bu kaynakların maliyetlerini de izleyebilirsiniz.
 
-## <a name="integrate-with-your-existing-toolchain"></a>Mevcut araç zincirinizle tümleştirin
-Eklentiler veya API için geliştirme/test ortamlarını sağlama doğrudan tercih ettiğiniz önceden yapılan kullanım [sürekli tümleştirme (CI) aracı](devtest-lab-integrate-ci-cd-vsts.md), tümleşik geliştirme ortamı (IDE) veya otomatik yayın ardışık düzeni. Ayrıca, kapsamlı komut satırı aracını kullanabilirsiniz.
+## <a name="integrate-with-your-existing-toolchain"></a>Mevcut araç zincirinizle tümleştirme
+Tercih ettiğiniz [sürekli tümleştirme (CI) aracı,](devtest-lab-integrate-ci-cd-vsts.md)entegre geliştirme ortamı (IDE) veya otomatik sürüm boru hattından doğrudan geliştirme/test ortamlarını sağlamak için önceden yapılmış eklentileri veya API'yi kullanın. Kapsamlı komut satırı aracını da kullanabilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Aşağıdaki makalelere bakın:
 
-- DevTest Labs hakkında daha fazla bilgi için bkz: [DevTest Labs kavramları](devtest-lab-concepts.md).
-- Adım adım yönergeler içeren bir kılavuz için bkz. [Öğreticisi: Azure DevTest Labs'i kullanarak bir laboratuvarı ayarlama ayarlamak](tutorial-create-custom-lab.md).
+- DevTest Labs hakkında daha fazla bilgi edinmek için [DevTest Labs konseptlerine](devtest-lab-concepts.md)bakın.
+- Adım adım yönergeleri içeren bir yol için [Bkz.](tutorial-create-custom-lab.md)

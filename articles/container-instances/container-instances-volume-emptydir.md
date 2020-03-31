@@ -1,53 +1,53 @@
 ---
-title: EmptyDir birimini kapsayıcı grubuna bağla
-description: Azure Container Instances bir kapsayıcı grubundaki kapsayıcılar arasında veri paylaşmak için emptyDir birimini nasıl bağlayacağınızı öğrenin
+title: Boşolan hacmi konteyner grubuna monte etme
+description: Azure Kapsayıcı Örnekleri'ndeki bir kapsayıcı grubundaki kapsayıcılar arasında veri paylaşmak için boşdir hacmini nasıl monte edebilirsiniz öğrenin
 ms.topic: article
 ms.date: 01/31/2020
 ms.openlocfilehash: 64a3c83008f163167528a5e5987fe2316942d5bc
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77117744"
 ---
-# <a name="mount-an-emptydir-volume-in-azure-container-instances"></a>Azure Container Instances bir emptyDir birimi bağlama
+# <a name="mount-an-emptydir-volume-in-azure-container-instances"></a>Azure Kapsayıcı Örneklerinde boşdir hacmini takma
 
-Azure Container Instances bir kapsayıcı grubundaki kapsayıcılar arasında veri paylaşmak için *Emptydir* birimini nasıl bağlayacağınızı öğrenin. Kapsayıcılı iş yükleriniz için *Emptydir* birimlerini kısa ömürlü önbellekler olarak kullanın.
+Azure Kapsayıcı Örnekleri'ndeki bir kapsayıcı grubundaki kapsayıcılar arasında veri paylaşmak için *boş* dir hacmini nasıl monte edebilirsiniz öğrenin. Konteynerleştirilmiş iş yüklerin için geçici önbellek ler olarak *emptyDir* hacimlerini kullanın.
 
 > [!NOTE]
-> Bir *Emptydir* birimi bağlamak Şu anda Linux kapsayıcılarıyla kısıtlıdır. Tüm özellikleri Windows kapsayıcılarına getirmek için çalıştık, ancak geçerli platform farklarını [genel bakışta](container-instances-overview.md#linux-and-windows-containers)bulabilirsiniz.
+> Boş bir *Dir* hacmine montaj şu anda Linux kapsayıcıları ile sınırlıdır. Tüm özellikleri Windows kapsayıcılarına getirmek için çalışırken, güncel platform farklılıklarını [genel bakışta](container-instances-overview.md#linux-and-windows-containers)bulabilirsiniz.
 
-## <a name="emptydir-volume"></a>emptyDir birimi
+## <a name="emptydir-volume"></a>emptyDir hacmi
 
-*Emptydir* birimi bir kapsayıcı grubundaki her bir kapsayıcıya erişilebilen yazılabilir bir dizin sağlar. Gruptaki kapsayıcılar birimdeki aynı dosyaları okuyabilir ve yazabilir ve her kapsayıcıda aynı veya farklı yollar kullanılarak bağlanabilir.
+*emptyDir* birimi, bir kapsayıcı grubundaki her kapsayıcıiçin erişilebilir bir yazılabilir dizin sağlar. Gruptaki kapsayıcılar ses biriminde aynı dosyaları okuyabilir ve yazabilir ve her kapsayıcıda aynı veya farklı yollar kullanılarak monte edilebilir.
 
-Bir *Emptydir* birimi için bazı örnekler kullanılmıştır:
+Bazı *örnek, boşdir* birimi için kullanır:
 
-* Karalama alanı
-* Uzun süre çalışan görevler sırasında işaret noktası oluşturma
-* Bir sepet kapsayıcısı tarafından alınan ve uygulama kapsayıcısı tarafından sunulan verileri depolayın
+* Scratch alanı
+* Uzun süren görevlerde denetim noktası
+* Bir kenar araba kapsayıcısı tarafından alınan ve uygulama kapsayıcısı tarafından sunulan verileri depolama
 
-*Emptydir* birimindeki veriler, kapsayıcı Kilitlenmelerinde kalıcı hale getirilir. Ancak yeniden başlatılan kapsayıcılar, verileri bir *Emptydir* biriminde kalıcı hale getirmek için garanti edilmez. Bir kapsayıcı grubunu durdurursanız *Emptydir* birimi kalıcı olmaz.
+*Boşbir dir* hacmindeki veriler konteyner çökmeleri ile devam eder. Ancak yeniden başlatılan kapsayıcıların verileri *boşdir* biriminde devam etmesi garanti edilmez. Bir kapsayıcı grubunu durdurursanız, *boşDir* hacmi kalıcı değildir.
 
-Linux *Emptydir* biriminin en büyük boyutu 50 GB 'dir.
+Bir Linux *emptyDir* hacminin maksimum boyutu 50 GB'dır.
 
-## <a name="mount-an-emptydir-volume"></a>EmptyDir birimi bağlama
+## <a name="mount-an-emptydir-volume"></a>Boşbir Dir hacmini monte edin
 
-Bir dizin birimini bir kapsayıcı örneğine bağlamak için, bir [Azure Resource Manager şablonu](/azure/templates/microsoft.containerinstance/containergroups), [YAML dosyası](container-instances-reference-yaml.md)ya da bir kapsayıcı grubunu dağıtmak için diğer programlı yöntemler kullanarak dağıtabilirsiniz.
+Bir kapsayıcı örneğine boşdir birimi takmak için, bir Azure [Kaynak Yöneticisi şablonu](/azure/templates/microsoft.containerinstance/containergroups),YAML [dosyası](container-instances-reference-yaml.md)veya kapsayıcı grubunu dağıtmak için diğer programlı yöntemleri kullanarak dağıtabilirsiniz.
 
-İlk olarak, dosyanın kapsayıcı grubu `properties` bölümünde `volumes` diziyi doldurun. Ardından, bir kapsayıcı grubundaki *Emptydir* birimini bağlamak istediğiniz her bir kapsayıcı için, kapsayıcı tanımının `properties` bölümündeki `volumeMounts` dizisini doldurun.
+İlk olarak, `volumes` diziyi dosyanın `properties` kapsayıcı grubu bölümünde doldurun. Ardından, *boşDir* hacmini monte etmek istediğiniz konteyner grubundaki her kapsayıcı için, diziyi `volumeMounts` konteyner tanımının `properties` bölümünde doldurun.
 
-Örneğin, aşağıdaki Kaynak Yöneticisi şablonu, her biri *Emptydir* birimini bağlayan iki kapsayıcıyı içeren bir kapsayıcı grubu oluşturur:
+Örneğin, aşağıdaki Kaynak Yöneticisi şablonu, her biri *boşDir* birimine monte edilen iki kapsayıcıdan oluşan bir kapsayıcı grubu oluşturur:
 
 <!-- https://github.com/Azure/azure-docs-json-samples/blob/master/container-instances/aci-deploy-volume-emptydir.json -->
 [!code-json[volume-emptydir](~/azure-docs-json-samples/container-instances/aci-deploy-volume-emptydir.json)]
 
-Kapsayıcı grubu dağıtımına ait örnekleri görmek için bkz. [Kaynak Yöneticisi şablonu kullanarak çok kapsayıcılı bir grup dağıtma](container-instances-multi-container-group.md) ve [YAML dosyası kullanarak çok kapsayıcılı bir grup dağıtma](container-instances-multi-container-yaml.md).
+Kapsayıcı grubu dağıtımı örneklerini görmek için kaynak [yöneticisi şablonu kullanarak çok kapsayıcılı bir grup dağıt](container-instances-multi-container-group.md) ve [YAML dosyasını kullanarak çok kapsayıcılı bir grup dağıt'a](container-instances-multi-container-yaml.md)bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Container Instances diğer birim türlerini nasıl bağlayacağınızı öğrenin:
+Azure Kapsayıcı Örnekleri'nde diğer birim türlerini nasıl monte edebilirsiniz öğrenin:
 
 * [Azure Container Instances'ta Azure dosya paylaşımı bağlama](container-instances-volume-azure-files.md)
-* [Azure Container Instances bir gitRepo birimi bağlama](container-instances-volume-gitrepo.md)
-* [Azure Container Instances bir gizli birimi bağlama](container-instances-volume-secret.md)
+* [Azure Kapsayıcı Örneklerinde gitRepo hacmini takma](container-instances-volume-gitrepo.md)
+* [Azure Kapsayıcı Örneklerinde gizli bir ses birimi takma](container-instances-volume-secret.md)

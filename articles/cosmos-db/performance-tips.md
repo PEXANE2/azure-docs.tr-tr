@@ -1,17 +1,17 @@
 ---
 title: .NET için Azure Cosmos DB performans ipuçları
-description: Azure Cosmos veritabanı performansını geliştirmek için istemci yapılandırma seçeneklerini öğrenin
+description: Azure Cosmos DB performansını artırmak için istemci yapılandırma seçeneklerini öğrenin.
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: sngun
-ms.openlocfilehash: dc9d10a6539c7fc3a7c5c8b3db290cc951c24883
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 68a9a7d5f90831bb2e0c9284cb71ae4b92edffad
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79252473"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80131413"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Azure Cosmos DB ve .NET için performans ipuçları
 
@@ -21,250 +21,268 @@ ms.locfileid: "79252473"
 > * [.NET](performance-tips.md)
 > 
 
-Azure Cosmos DB, garantili gecikme ve verimlilik ile sorunsuz bir şekilde ölçeklenen hızlı ve esnek bir dağıtılmış veritabanıdır. Veritabanınızı Azure Cosmos DB ölçeklendirmek için önemli mimari değişiklikler yapmanız veya karmaşık kod yazmanız gerekmez. Ölçeği artırma ve azaltma, tek bir API çağrısı yapmak kadar kolaydır. Daha fazla bilgi edinmek için bkz. [kapsayıcı verimini sağlama](how-to-provision-container-throughput.md) veya [veritabanı verimini sağlama](how-to-provision-database-throughput.md). Ancak, Azure Cosmos DB ağ çağrılarıyla erişildiği için, [SQL .NET SDK](sql-api-sdk-dotnet-standard.md)kullanırken en yüksek performans elde etmek için, istemci tarafı iyileştirmeler vardır.
+Azure Cosmos DB, garantili gecikme sonu ve iş ortası ile sorunsuz ölçeklendirilebilen hızlı ve esnek dağıtılmış bir veritabanıdır. Veritabanınızı Azure Cosmos DB ile ölçeklendirmek için büyük mimari değişiklikleri yapmak veya karmaşık kod yazmak zorunda değilsiniz. Yukarı ve aşağı ölçekleme tek bir API araması yapmak kadar kolaydır. Daha fazla bilgi edinmek [için, kapsayıcı iş verisini nasıl sağtayabildiğini](how-to-provision-container-throughput.md) veya [veritabanı iş verisini nasıl sağlarınızı](how-to-provision-database-throughput.md)görün. Ancak Azure Cosmos DB'ye ağ aramaları üzerinden erişildiğinden, [SQL .NET SDK'yı](sql-api-sdk-dotnet-standard.md)kullandığınızda en yüksek performansı elde etmek için yapabileceğiniz istemci tarafı optimizasyonları vardır.
 
-Bu nedenle "veritabanı performanmy nasıl iyileştirebilirim?" diye soruyoruz Aşağıdaki seçenekleri göz önünde bulundurun:
+Bu nedenle, veritabanı performansınızı artırmaya çalışıyorsanız, şu seçenekleri göz önünde bulundurun:
 
-## <a name="hosting-recommendations"></a>Barındırma önerileri
+## <a name="hosting-recommendations"></a>Hosting önerileri
 
-1.  **Sorgu yoğunluğu yoğun iş yükleri için Linux veya Windows 32 konak işleme yerine Windows 64-bit kullanın**
+**Sorgu yoğun iş yükleri için Linux veya Windows 32 bit ana bilgisayar işleme yerine Windows 64-bit'i kullanın**
 
-    Windows 64 bit ana bilgisayar işleme, gelişmiş performans için önerilir. SQL SDK, sorguları yerel olarak ayrıştırmak ve iyileştirmek için yerel bir Serviceınterop. dll dosyası içerir ve yalnızca Windows x64 platformunda desteklenir. Serviceınterop. dll ' nin kullanılamadığı Linux ve diğer desteklenmeyen platformlar için, iyileştirilmiş sorguyu almak üzere ağ geçidine ek bir ağ çağrısı yapılır. Aşağıdaki uygulama türleri varsayılan olarak 32 bitlik ana bilgisayar işlemine sahiptir ve bu nedenle, bunu 64 bit olarak değiştirmek için uygulamanızın türüne göre şu adımları izleyin:
+Gelişmiş performans için Windows 64 bit ana bilgisayar işlemeyi öneririz. SQL SDK, sorguları yerel olarak ayrışdırmak ve optimize etmek için yerel serviceInterop.dll içerir. ServiceInterop.dll yalnızca Windows x64 platformunda desteklenir. Linux ve ServiceInterop.dll'nin kullanılamadığı diğer desteklenmeyen platformlar için, optimize edilmiş sorguyu almak için ağ geçidine ek bir ağ çağrısı yapılır. Aşağıdaki uygulama türleri varsayılan olarak 32 bit ana bilgisayar işleme kullanır. Ana bilgisayar işlemeyi 64 bit işlemeye değiştirmek için, uygulamanızın türüne bağlı olarak aşağıdaki adımları izleyin:
 
-    - Yürütülebilir uygulamalar için bu işlem, [Platform hedefini](https://docs.microsoft.com/visualstudio/ide/how-to-configure-projects-to-target-platforms?view=vs-2019) , **derleme** sekmesindeki **Proje özellikleri** penceresinde **x64** olarak ayarlanarak yapılabilir.
+- Çalıştırılabilir uygulamalar için, **Yapı** sekmesinde **Proje Özellikleri** penceresinde ki [platform hedefini](https://docs.microsoft.com/visualstudio/ide/how-to-configure-projects-to-target-platforms?view=vs-2019) **x64** olarak ayarlayarak ana bilgisayar işlemeyi değiştirebilirsiniz.
 
-    - VSTest **tabanlı test projeleri** Için, **Visual Studio test** menü seçeneğinden **X64 olarak varsayılan Işlemci mimarisi**->test->**Test ayarları** ' nı seçerek bu işlemi gerçekleştirebilirsiniz.
+- VSTest tabanlı test projeleri için, Visual Studio **Test** menüsünde **Test** > **Test Ayarları** > Varsayılan**İşlemci Mimarisi'ni X64 olarak** seçerek ana bilgisayar işlemini değiştirebilirsiniz.
 
-    - Yerel olarak dağıtılan ASP.NET Web uygulamaları için 64 Bu, Web **siteleri ve projeler için IIS Express->bit sürümü** **->,** **Web projeleri**->**Projeler ve çözümler** ' in altında kullanılabilir.
+- Yerel olarak dağıtılan ASP.NET web uygulamaları için, **Araçlar** > **Seçenekleri** > **Projeleri ve Çözümleri** > **Web Projeleri**kapsamındaki web siteleri ve projeler **için IIS Express'in 64 bit sürümünü kullanın'ı** seçerek ana bilgisayar işlemlerini değiştirebilirsiniz.
 
-    - Azure 'da dağıtılan ASP.NET Web uygulamaları için, Azure portal **uygulama ayarlarında** **Platform 64-bit olarak** seçilerek bu yapılabilir.
+- Azure'da dağıtılan ASP.NET web uygulamaları için, Azure portalındaki **Uygulama ayarlarında** **64 bit** platform'u seçerek ana bilgisayar işlemlerini değiştirebilirsiniz.
 
-    > [!NOTE] 
-    > Visual Studio, yeni projeleri herhangi bir CPU 'ya varsayılan olarak belirler. X86 'ya geçiş yapmaktan kaçınmak için projeyi x64 olarak ayarlamanız önerilir. Yalnızca x86 olan herhangi bir bağımlılık eklenirse herhangi bir CPU projesi kolayca x86 'ya geçiş yapabilir.<br/>
-    > Serviceınterop. dll ' nin, SDK dll 'inin yürütüldüğü klasörde olması gerekir. Bu, yalnızca dll 'leri el ile oluşturan veya özel derleme/dağıtım sistemlerine sahip olan kullanıcılar için yapılmalıdır.
+> [!NOTE] 
+> Varsayılan olarak, yeni Visual Studio projeleri **Herhangi bir CPU**olarak ayarlanır. Projenizi **x64** olarak ayarlamanızı öneririz, böylece **x86'ya**geçmez. Herhangi bir **CPU'ya** ayarlanan bir proje, yalnızca x86 bağımlılık eklenirse **kolayca x86'ya** geçebilir.<br/>
+> ServiceInterop.dll'nin SDK DLL'nin yürütüldettiği klasörde olması gerekir. Bu, yalnızca DL'leri el ile kopyalarsanız veya özel yapı/dağıtım sistemlerine sahipseniz sorun olmalıdır.
     
-2. **Sunucu tarafı atık toplamayı aç (GC)**
+**Sunucu tarafındaki çöp toplamayı açma (GC)**
 
-    Çöp toplamanın sıklığını azaltmak bazı durumlarda yardımcı olabilir. .NET sürümünde [gcServer](https://msdn.microsoft.com/library/ms229357.aspx) değerini true olarak ayarlayın.
+Çöp toplama sıklığını azaltmak bazı durumlarda yardımcı olabilir. .NET'te [gcServer'ı](https://msdn.microsoft.com/library/ms229357.aspx) `true`.
 
-3. **İstemcinizi genişletme-iş yükü**
+**İstemci iş yükünüzü ölçeklendirin**
 
-    Yüksek aktarım hızı düzeylerinde (> 50000 RU/sn) test ediyorsanız, istemci uygulaması makine CPU veya ağ kullanımında kullanıma hazır hale geldiği için performans sorunlarına neden olabilir. Bu noktaya ulaştığınızda, istemci uygulamalarınızı birden çok sunucu arasında ölçeklendirerek Azure Cosmos DB hesabını daha fazla göndermeye devam edebilirsiniz.
+Yüksek iş düzeyi düzeylerinde (50.000'den fazla RU/s) test ediyorsanız, istemci uygulaması işlemci veya ağ kullanımında dışarı atlama makine nedeniyle darboğaz haline gelebilir. Bu noktaya ulaşırsanız, istemci uygulamalarınızı birden çok sunucuda ölçekleyerek Azure Cosmos DB hesabını daha da zorlamaya devam edebilirsiniz.
 
-    > [!NOTE] 
-    > Yüksek CPU kullanımı, artan gecikme süresine ve istek zaman aşımı özel durumlarına neden olabilir.
+> [!NOTE] 
+> Yüksek CPU kullanımı gecikme süresinin artmasına ve zaman adabı isteğine neden olabilir.
 
-## <a name="networking"></a>Ağ
+## <a name="networking"></a>Ağ Oluşturma
 <a id="direct-connection"></a>
 
-1. **Bağlantı ilkesi: doğrudan bağlantı modunu kullan**
+**Bağlantı ilkesi: Doğrudan bağlantı modunu kullanma**
 
-    İstemcinin Azure Cosmos DB'ye nasıl bağlandığının performans üzerinde, özellikle de gözlemlenen istemci tarafı gecikme süresi olarak önemli etkileri olur. İstemci bağlantı Ilkesini yapılandırmak için kullanılabilecek iki temel yapılandırma ayarı vardır: bağlantı *modu* ve bağlantı *Protokolü*.  Kullanılabilir iki mod şunlardır:
+Bir istemcinin Azure Cosmos DB'ye nasıl bağlandığı, özellikle gözlenen istemci tarafı gecikmesi için önemli performans etkileri vardır. İstemci bağlantı ilkesini yapılandırmak için iki temel yapılandırma ayarı vardır: bağlantı *modu* ve bağlantı *protokolü.*  Kullanılabilir iki mod şunlardır:
 
-   * Ağ Geçidi modu
+   * Ağ geçidi modu
       
-     Ağ Geçidi modu tüm SDK platformlarında desteklenir ve [Microsoft. Azure. DOCUMENTDB SDK](sql-api-sdk-dotnet.md)için yapılandırılmış varsayılandır. Uygulamanız, katı güvenlik duvarı kısıtlamalarına sahip bir kurumsal ağda çalışıyorsa, standart HTTPS bağlantı noktasını ve tek bir uç noktayı kullandığından, ağ geçidi modu en iyi seçimdir. Ancak performans zorunluluğunu getirir, ağ geçidi modunun, verilerin her okunduğu veya Azure Cosmos DB yazıldığı her seferinde ek bir ağ atlaması içerir. Bu nedenle, daha az ağ atlaması nedeniyle doğrudan mod daha iyi performans sunar. Uygulamaları sınırlı sayıda soket bağlantısı olan ortamlarda çalıştırdığınızda, ağ geçidi bağlantı modu da önerilir. 
+     Ağ geçidi modu tüm SDK platformlarında desteklenir ve [Microsoft.Azure.DocumentDB SDK](sql-api-sdk-dotnet.md)için yapılandırılan varsayılandır. Uygulamanız sıkı güvenlik duvarı kısıtlamaları olan bir şirket ağında çalışıyorsa, standart HTTPS bağlantı noktasını ve tek bir bitiş noktasını kullandığından ağ geçidi modu en iyi seçimdir. Ancak performans dengelemesi, ağ geçidi modunun azure Cosmos DB'den her veri okunduveya yazıldığında ek bir ağ atlama içerir. Yani daha az ağ atlamaları olduğundan doğrudan mod daha iyi performans sunar. Sınırlı sayıda soket bağlantısı olan ortamlarda uygulamaları çalıştırdığınızda ağ geçidi bağlantı modunu da öneririz.
 
-     Azure Işlevlerinde SDK kullanılırken, özellikle [Tüketim planında](../azure-functions/functions-scale.md#consumption-plan), [bağlantılardaki geçerli limitlerin](../azure-functions/manage-connections.md)en az olması gerekir. Bu durumda, Azure Işlevleri uygulamanızdaki diğer HTTP tabanlı istemcilerle de çalışıyorsanız ağ geçidi modu önerilir.
+     SDK'yı Azure İşlevlerinde, özellikle [Tüketim planında](../azure-functions/functions-scale.md#consumption-plan)kullandığınızda, bağlantılardaki geçerli [sınırlamalara](../azure-functions/manage-connections.md)dikkat edin. Bu durumda, Azure İşlevleri uygulamanızdaki diğer HTTP tabanlı istemcilerle de çalışıyorsanız ağ geçidi modu daha iyi olabilir.
 
    * Doğrudan mod
 
-     Doğrudan mod, TCP protokolü ile bağlantıyı destekler ve [Microsoft. Azure. Cosmos/.net v3 SDK](sql-api-sdk-dotnet-standard.md)kullanıyorsanız varsayılan bağlantı modudur.
+     Doğrudan mod, TCP protokolü aracılığıyla bağlantıyı destekler ve [Microsoft.Azure.Cosmos/.NET V3 SDK](sql-api-sdk-dotnet-standard.md)kullanıyorsanız varsayılan bağlantı modudur.
 
-     Cosmos DB, ağ geçidi modu kullanırken, MongoDB için Azure Cosmos DB API 'SI kullanılırken bağlantı noktası 443 ve 10250, 10255 ve 10256 bağlantı noktalarını kullanır. 10250 bağlantı noktası, coğrafi çoğaltma işlevselliği ile MongoDB örneğine eşlenen coğrafi çoğaltma ve 10255/10256 bağlantı noktaları olmadan bir varsayılan MongoDB örneğine eşlenir. Doğrudan modda TCP kullanırken, ağ geçidi bağlantı noktalarına ek olarak, Azure Cosmos DB dinamik TCP bağlantı noktalarını kullandığından 10000 ve 20000 arasındaki bağlantı noktası aralığının açık olduğundan emin olmanız gerekir. Bu bağlantı noktaları açık değilse ve TCP kullanmaya çalışırsanız, 503 hizmetinde kullanılamayan bir hata alırsınız. Aşağıdaki tabloda, her API için farklı API 'Ler ve hizmet bağlantı noktaları kullanıcısı için kullanılabilen bağlantı modları gösterilmektedir:
+Ağ geçidi modunda, Azure Cosmos DB, MongoDB için Azure Cosmos DB API'sini kullanırken 443 ve 10250, 10255 ve 10256 bağlantı noktalarını kullanır. Port 10250, varsayılan bir MongoDB örneğine coğrafi çoğaltma olmadan eşler. Port10255 ve 10256 coğrafi çoğaltma olan MongoDB örneğine harita.
+     
+TCP'yi doğrudan modda kullandığınızda, ağ geçidi bağlantı noktalarına ek olarak, Azure Cosmos DB dinamik TCP bağlantı noktalarını kullandığından, 10000 ile 20000 arasındaki bağlantı noktası aralığının açık olduğundan emin olmanız gerekir. Bu bağlantı noktaları açık değilse ve TCP'yi kullanmaya çalışırsanız, 503 Hizmet Kullanılamıyor hatası alırsınız. Bu tablo, çeşitli API'ler için kullanılabilir bağlantı modlarını ve her API için kullanılan servis bağlantı noktalarını gösterir:
 
-     |Bağlantı modu  |Desteklenen Protokol  |Desteklenen SDK 'lar  |API/hizmet bağlantı noktası  |
-     |---------|---------|---------|---------|
-     |Ağ geçidi  |   HTTPS    |  Tüm SDK 'lar    |   SQL (443), Mongo (10250, 10255, 10256), Table (443), Cassandra (10350), Graph (443)    |
-     |Direct    |     TCP    |  .NET SDK    | 10000-20000 aralığındaki bağlantı noktaları |
+|Bağlantı modu  |Desteklenen protokol  |Desteklenen SDK'lar  |API/Servis bağlantı noktası  |
+|---------|---------|---------|---------|
+|Ağ geçidi  |   HTTPS    |  Tüm SDK'lar    |   SQL (443), MongoDB (10250, 10255, 10256), Tablo (443), Cassandra (10350), Grafik (443)    |
+|Direct    |     TCP    |  .NET SDK    | 10000 ile 20000 aralığındaki bağlantı noktaları |
 
-     Azure Cosmos DB, HTTPS üzerinden basit ve açık bir yeniden programlama modeli sunar. Ayrıca, bu, iletişim modelinde da daha da fazla olan ve .NET istemci SDK 'Sı aracılığıyla kullanılabilen etkin bir TCP protokolünü sunmaktadır. TCP protokolü ilk kimlik doğrulaması ve trafiği şifrelemek için SSL kullanır. En iyi performans için, mümkün olduğunda TCP protokolünü kullanın.
+Azure Cosmos DB, HTTPS üzerinden basit ve açık bir yeniden programlama modeli sunar. Ayrıca, iletişim modelinde de etkili bir TCP protokolü sunar ve .NET istemciSi SDK üzerinden kullanılabilir. TCP protokolü, ilk kimlik doğrulama ve trafiği şifrelemek için SSL kullanır. En iyi performans için mümkün olduğunda TCP protokolünü kullanın.
 
-     SDK V3 için bağlantı modu, CosmosClientOptions 'ın bir parçası olarak CosmosClient örneği oluşturulurken yapılandırılır, doğrudan modunun varsayılan olduğunu unutmayın.
+SDK V3 için, `CosmosClient` 'deki `CosmosClientOptions`örneği oluştururken bağlantı modunu yapılandırırsınız. Doğrudan modun varsayılan olduğunu unutmayın.
 
-     ```csharp
-     var serviceEndpoint = new Uri("https://contoso.documents.net");
-     var authKey = "your authKey from the Azure portal";
-     CosmosClient client = new CosmosClient(serviceEndpoint, authKey,
-     new CosmosClientOptions
-     {
-        ConnectionMode = ConnectionMode.Gateway // ConnectionMode.Direct is the default
-     });
-     ```
+```csharp
+var serviceEndpoint = new Uri("https://contoso.documents.net");
+var authKey = "your authKey from the Azure portal";
+CosmosClient client = new CosmosClient(serviceEndpoint, authKey,
+new CosmosClientOptions
+{
+    ConnectionMode = ConnectionMode.Gateway // ConnectionMode.Direct is the default
+});
+```
 
-     Microsoft. Azure. DocumentDB SDK 'Sı için bağlantı modu, DocumentClient örneğinin oluşturulması sırasında ConnectionPolicy parametresiyle yapılandırılır. Doğrudan mod kullanılıyorsa, protokol ConnectionPolicy parametresi içinde de ayarlanabilir.
+Microsoft.Azure.DocumentDB SDK için, `DocumentClient` örneğin yapısı sırasında bağlantı modunu `ConnectionPolicy` parametreyi kullanarak yapılandırırsınız. Doğrudan mod kullanıyorsanız, parametreyi `Protocol` `ConnectionPolicy` kullanarak da ayarlayabilirsiniz.
 
-     ```csharp
-     var serviceEndpoint = new Uri("https://contoso.documents.net");
-     var authKey = "your authKey from the Azure portal";
-     DocumentClient client = new DocumentClient(serviceEndpoint, authKey,
-     new ConnectionPolicy
-     {
-        ConnectionMode = ConnectionMode.Direct, //ConnectionMode.Gateway is the default
-        ConnectionProtocol = Protocol.Tcp
-     });
-     ```
+```csharp
+var serviceEndpoint = new Uri("https://contoso.documents.net");
+var authKey = "your authKey from the Azure portal";
+DocumentClient client = new DocumentClient(serviceEndpoint, authKey,
+new ConnectionPolicy
+{
+   ConnectionMode = ConnectionMode.Direct, // ConnectionMode.Gateway is the default
+   ConnectionProtocol = Protocol.Tcp
+});
+```
 
-     TCP yalnızca doğrudan modda desteklendiğinden, ağ geçidi modu kullanılıyorsa, HTTPS protokolü her zaman ağ geçidiyle iletişim kurmak için kullanılır ve ConnectionPolicy içindeki protokol değeri yok sayılır.
+TCP yalnızca doğrudan modda desteklendirilmeden, ağ geçidi modunu kullanırsanız, HTTPS `Protocol` protokolü `ConnectionPolicy` her zaman ağ geçidiyle iletişim kurmak için kullanılır ve değer yoksayılır.
 
-     ![Azure Cosmos DB bağlantı ilkesinin çizimi](./media/performance-tips/connection-policy.png)
+![Azure Cosmos DB bağlantı ilkesi](./media/performance-tips/connection-policy.png)
 
-2. **İlk istekte başlangıç gecikmesini önlemek için OpenAsync çağrısı yapın**
+**İlk istekte başlangıç gecikmesini önlemek için OpenAsync'i arayın**
 
-    Varsayılan olarak, ilk isteğin bir gecikme süresi daha yüksektir çünkü adres yönlendirme tablosunu getirmek zorunda olur. [SDK v2](sql-api-sdk-dotnet.md)'yi kullanırken, ilk istekte bu başlangıç gecikmesini önlemek için, başlatma sırasında aşağıdaki gibi bir kez openAsync () çağrısı yapmanız gerekir.
+Varsayılan olarak, adres yönlendirme tablosunu getirmesi gerektiğinden ilk istek daha yüksek gecikme ye sahiptir. [SDK V2](sql-api-sdk-dotnet.md)kullandığınızda, `OpenAsync()` ilk istekte bu başlangıç gecikmesini önlemek için başlatma sırasında bir kez arayın:
 
-        await client.OpenAsync();
+    await client.OpenAsync();
 
-    > [!NOTE] 
-    > OpenAsync yöntemi, hesaptaki tüm kapsayıcılar için adres yönlendirme tablosunu elde etmek üzere istekleri oluşturacak. Birçok kapsayıcı içeren hesaplar, ancak uygulamaları bunların bir alt kümesine eriştiğinde, başlatmanın yavaş olmasını sağlayan gereksiz bir trafik miktarı oluşturur. Bu nedenle, OpenAsync yönteminin kullanılması, uygulama başlangıcını yavaşlattığı için bu senaryoda yararlı olmayabilir.
+> [!NOTE] 
+> `OpenAsync`hesaptaki tüm kapsayıcılar için adres yönlendirme tablosunu almak için istekler oluşturur. Çok sayıda kapsayıcısı olan ancak uygulaması bunların bir `OpenAsync` alt kümesine erişen hesaplar için gereksiz miktarda trafik oluşturur ve bu da başlatmayı yavaşlatır. Bu `OpenAsync` nedenle, uygulama başlatmayı yavaşlattığı için bu senaryoda kullanmak yararlı olmayabilir.
 
    <a id="same-region"></a>
-3. **Aynı Azure bölgesindeki istemcileri performans için birlikte bulun**
+**Performans için, aynı Azure bölgesindeki istemcileri harmanla**
 
-    Mümkün olduğunda Azure Cosmos veritabanıyla aynı bölgedeki Azure Cosmos DB çağıran tüm uygulamaları yerleştirin. Yaklaşık bir karşılaştırma için, 1-2 ms içinde aynı bölgedeki Azure Cosmos DB çağrıları tamamlanır, ancak ABD 'nin batı ve Doğu yakası arasındaki gecikme 50 MS >. Bu gecikme süresi büyük olasılıkla istemciden Azure veri merkezi sınırına geçerken istek tarafından alınan yola bağlı olarak istek üzerine farklılık gösterebilir. Olası en düşük gecikme süresi, çağıran uygulamanın sağlanan Azure Cosmos DB uç noktası ile aynı Azure bölgesinde bulunduğundan emin olarak elde edilir. Kullanılabilir bölgelerin listesi için bkz. [Azure bölgeleri](https://azure.microsoft.com/regions/#services).
+Mümkün olduğunda, Azure Cosmos DB olarak adlandırdığı uygulamaları Azure Cosmos DB veritabanıyla aynı bölgeye yerleştirin. Burada yaklaşık bir karşılaştırma: aynı bölgede Azure Cosmos DB aramaları 1 ms ile 2 ms içinde tamamlanır, ancak ABD'nin Batı ve Doğu kıyıları arasındaki gecikme 50 ms'den fazladır. Bu gecikme sonu, istemciden Azure veri merkezi sınırına geçerken isteğin aldığı rotaya bağlı olarak istekten isteğe değişebilir. Arama uygulamasının, sağlanan Azure Cosmos DB bitiş noktasıyla aynı Azure bölgesinde bulunmasını sağlayarak mümkün olan en düşük gecikme süresine ulaşabilirsiniz. Kullanılabilir bölgelerin listesi için [Azure bölgelerine](https://azure.microsoft.com/regions/#services)bakın.
 
-    Azure Cosmos DB bağlantı ilkesinin ![çizimi](./media/performance-tips/same-region.png)
-   <a id="increase-threads"></a>
+![Azure Cosmos DB](./media/performance-tips/same-region.png) bağlantı ilkesi<a id="increase-threads"></a>
 
-4. **İş parçacığı sayısını/görevleri artır**
+**İş parçacığı/görev sayısını artırma**
 
-    Azure Cosmos DB çağrıları ağ üzerinden yapıldığından, istemci uygulamanın istekler arasında çok az zaman harcamasını sağlamak için isteklerinizin paralellik derecesini değiştirmeniz gerekebilir. Örneğin, kullanıyorsanız. NET ' in [görevi paralel kitaplığı](https://msdn.microsoft.com//library/dd460717.aspx), okuma veya Azure Cosmos DB yazma görevlerinin 100s ' da oluşturun.
+Azure Cosmos DB'ye çağrılar ağ üzerinden yapıldığından, istemci uygulamasının istekler arasında en az süreyi beklemek için isteklerinizin paralellik derecesini değiştirmeniz gerekebilir. Örneğin, .NET [Görev Paralel Kitaplığını](https://msdn.microsoft.com//library/dd460717.aspx)kullanıyorsanız, Azure Cosmos DB'den okuyan veya yazan yüzlerce görevin sırasına göre oluşturun.
 
-5. **Hızlandırılmış ağı etkinleştir**
-
-   Gecikme süresini ve CPU azalmasını azaltmak için, istemci sanal makinelerinin hızlandırılmış ağ etkin olmasını öneririz. Hızlandırılmış ağı etkinleştirmek için [hızlandırılmış ağ Ile Windows sanal makinesi oluşturma](../virtual-network/create-vm-accelerated-networking-powershell.md) veya [hızlandırılmış ağ makalelerine bir Linux sanal makinesi oluşturma](../virtual-network/create-vm-accelerated-networking-cli.md) bölümüne bakın.
-
+**Hızlandırılmış ağ etkinleştirme**
+ 
+ Gecikme süresini ve CPU gerginliğini azaltmak için, istemci sanal makinelerde hızlandırılmış ağ etkinleştirmenizi öneririz. Bkz. [Hızlandırılmış ağ ile bir Windows sanal makine oluşturun](../virtual-network/create-vm-accelerated-networking-powershell.md) veya [hızlandırılmış ağ ile bir Linux sanal makine oluşturun.](../virtual-network/create-vm-accelerated-networking-cli.md)
 
 ## <a name="sdk-usage"></a>SDK kullanımı
-1. **En son SDK 'Yı yükler**
+**En son SDK'yı yükleyin**
 
-    Azure Cosmos DB SDK 'Ları, en iyi performansı sağlamak için sürekli geliştirilmiştir. En son SDK 'Yı öğrenmek ve geliştirmeleri gözden geçirmek için [Azure Cosmos DB SDK](sql-api-sdk-dotnet-standard.md) sayfalarına bakın.
+Azure Cosmos DB SDK'lar en iyi performansı sağlamak için sürekli olarak geliştirilmektedir. En son SDK'yı belirlemek ve iyileştirmeleri gözden geçirmek için [Azure Cosmos DB SDK](sql-api-sdk-dotnet-standard.md) sayfalarına bakın.
 
-2. **Stream API 'Lerini kullanma**
+**Akış API'lerini kullanma**
 
-    [.NET SDK V3](sql-api-sdk-dotnet-standard.md) , Serileştirmeden veri alabilen ve döndüresağlayan Stream API 'leri içerir. 
+[.NET SDK V3,](sql-api-sdk-dotnet-standard.md) serileştirmeden veri alabilen ve döndürebilen akış API'leri içerir. 
 
-    Doğrudan SDK 'dan yanıtları tüketmeyen ancak diğer uygulama katmanlarına geçiş yapan orta katmanlı uygulamalar, Stream API 'Lerinden yararlanabilir. Akış işleme örnekleri için [öğe yönetimi](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ItemManagement) örneklerine bakın.
+Yanıtları doğrudan SDK'dan tüketmeyen ancak bunları diğer uygulama katmanlarına aktaran orta katman uygulamaları akış API'lerinden yararlanabilir. Akış işleme örnekleri için [madde yönetimi](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ItemManagement) örneklerine bakın.
 
-3. **Uygulamanızın ömrü boyunca tek bir Azure Cosmos DB istemcisi kullanın**
+**Uygulamanızın kullanım ömrü boyunca tek ton Azure Cosmos DB istemcisi kullanın**
 
-    Her DocumentClient ve CosmosClient örneği iş parçacığı açısından güvenlidir ve doğrudan modda çalışırken verimli bağlantı yönetimi ve adres önbelleği gerçekleştirir. Etkin bağlantı yönetimine ve SDK istemcisi tarafından daha iyi performansa izin vermek için uygulama ömrü boyunca AppDomain başına tek bir örnek kullanılması önerilir.
+Her `DocumentClient` `CosmosClient` ve örnek iş parçacığı güvenlidir ve doğrudan modda çalışırken verimli bağlantı yönetimi ve adres önbelleğe alma gerçekleştirir. Verimli bağlantı yönetimi ve daha iyi SDK istemci performansı sağlamak `AppDomain` için, uygulamanın kullanım ömrü için başına tek bir örnek kullanmanızı öneririz.
 
    <a id="max-connection"></a>
 
-4. **Ağ Geçidi modu kullanırken konak başına System.Net MaxConnections 'yi artırma**
+**Ağ geçidi modunu kullanırken ana bilgisayar başına System.Net MaxConnections'ı artırın**
 
-    Azure Cosmos DB istekleri, ağ geçidi modu kullanılırken HTTPS/REST üzerinden yapılır ve ana bilgisayar adı veya IP adresi başına varsayılan bağlantı sınırına tabi. İstemci kitaplığının Azure Cosmos DB birden çok eş zamanlı bağlantıyı kullanabilmesi için, MaxConnections 'yi daha yüksek bir değere (100-1000) ayarlamanız gerekebilir. .NET SDK 1.8.0 ve üzeri sürümlerde, [ServicePointManager. DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit.aspx) için varsayılan değer 50 ' dir ve değeri değiştirmek için [belgeler. Client. Connectionpolicy. maxconnectionlimit](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.connectionpolicy.maxconnectionlimit.aspx) değerini daha yüksek bir değere ayarlayabilirsiniz.
+Azure Cosmos DB istekleri, ağ geçidi modunu kullandığınızda HTTPS/REST üzerinden yapılır. Ana bilgisayar adı veya IP adresi başına varsayılan bağlantı sınırına tabi tutulurlar. İstemci kitaplığı Azure Cosmos DB'ye birden çok eşzamanlı bağlantı kullanabilmek için daha yüksek bir değere (100 ila 1.000) ayarlamanız `MaxConnections` gerekebilir. .NET SDK 1.8.0 ve sonraki durumlarda [ServicePointManager.DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit.aspx) için varsayılan değer 50'dir. Değeri değiştirmek için [Documents.Client.ConnectionPolicy.MaxConnectionLimit'i](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.connectionpolicy.maxconnectionlimit.aspx) daha yüksek bir değere ayarlayabilirsiniz.
 
-5. **Bölümlenmiş koleksiyonlar için Paralel sorguları ayarlama**
+**Bölümlenmiş koleksiyonlar için paralel sorguları ayarlama**
 
-     SQL .NET SDK sürüm 1.9.0 ve üzeri, bölümlenmiş bir koleksiyonu paralel olarak sorgulamanızı sağlayan paralel sorguları destekler. Daha fazla bilgi için bkz. SDK 'lar ile çalışma ile ilgili [kod örnekleri](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs) . Paralel sorgular, kendi seri karşılarındaki sorgu gecikmesini ve aktarım hızını artırmak için tasarlanmıştır. Paralel sorgular, kullanıcıların gereksinimlerine göre özel olarak ayarlayabilen iki parametre sağlar: (a) Maxdegreeofparalellik: en fazla bölüm sayısını denetlemek için paralel olarak sorgulanabilir ve (b) MaxBufferedItemCount: sayısını denetlemek için önceden getirilen sonuçlar.
+SQL .NET SDK 1.9.0 ve daha sonra paralel sorguları destekler, bu da bölümlenmiş bir koleksiyonu paralel olarak sorgulayabilmenizi sağlar. Daha fazla bilgi için, SDK'larla çalışmayla ilgili [kod örneklerine](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs) bakın. Paralel sorgular, seri karşılıklarından daha iyi sorgu gecikmesi ve iş sonu sağlamak üzere tasarlanmıştır. Paralel sorgular, gereksinimlerinize uyacak şekilde ayarlayabileceğiniz iki parametre sağlar: 
+- `MaxDegreeOfParallelism`paralel olarak sorgulanabilecek en fazla bölüm sayısını denetler. 
+- `MaxBufferedItemCount`önceden getirilen sonuç sayısını denetler.
 
-    (a) paralel sorgu ***\:paralellik ayarlama derecesi*** paralel olarak birden çok bölümü sorgulayarak, paralel sorgu kullanılır. Ancak, tek bir bölümden alınan veriler sorguya göre işlem içine alınır. SDK [v2](sql-api-sdk-dotnet.md) 'de `MaxDegreeOfParallelism` veya [sdk v3](sql-api-sdk-dotnet-standard.md) 'teki `MaxConcurrency`, bölüm sayısının en yüksek performanslı bir sorgu elde etmemesi durumunda, diğer tüm sistem koşullarının aynı kalması şartıyla, bu sorgunun en fazla olması ihtimaline sahip olur. Bölüm sayısını bilmiyorsanız, paralellik derecesini yüksek bir sayı olarak ayarlayabilirsiniz ve sistem paralellik derecesi olarak en az (bölüm sayısı, Kullanıcı tarafından girilen giriş) seçer.
+***Paralelliğin tuning derecesi***
 
-    Verilerin sorguya göre tüm bölümler arasında eşit bir şekilde dağıtılması halinde paralel sorguların en iyi avantajları ürettiğine dikkat edin. Bölümlenmiş koleksiyon, bir sorgu tarafından döndürülen verilerin tümünün veya çoğunluğunun birkaç bölümde (en kötü durumda bir bölüm) yoğunlaşarak bir şekilde bölümlenmişse, sorgunun performansı bu bölümler tarafından bottlenecked olacaktır.
+Paralel sorgu, birden çok bölümü paralel olarak sorgulayarak çalışır. Ancak, tek bir bölümden gelen veriler sorguyla ilgili olarak seri olarak getirilir. `MaxDegreeOfParallelism` [SDK V2'de](sql-api-sdk-dotnet.md) veya `MaxConcurrency` [SDK V3'te](sql-api-sdk-dotnet-standard.md) bölüm sayısına ayar yapmak, diğer tüm sistem koşullarının aynı kalması koşuluyla en çok performans gösteren sorguyu elde etme şansına sahiptir. Bölüm sayısını bilmiyorsanız, paralellik derecesini yüksek bir sayıya ayarlayabilirsiniz. Sistem paralellik derecesi olarak minimum (bölüm sayısı, kullanıcı sağlanan giriş) seçecektir.
 
-    (b) ***MaxBufferedItemCount\:ayarlama*** paralel sorgu, geçerli sonuç toplu işi istemci tarafından işlendiği sırada sonuçları önceden getirmek üzere tasarlanmıştır. Önceden getirme, bir sorgunun genel gecikme artışında yardımcı olur. MaxBufferedItemCount, önceden getirilen sonuçların sayısını sınırlayan parametredir. MaxBufferedItemCount değeri döndürülen beklenen sonuç sayısına (veya daha yüksek bir sayıya) ayarlandığında sorgunun ön alma işleminden en fazla avantaj almasına izin verir.
+Veriler sorguyla ilgili olarak tüm bölümlere eşit olarak dağıtılırsa paralel sorguların en fazla faydayı sağladığını unutmayın. Bölümlenmiş koleksiyon, sorgu tarafından döndürülen verilerin tamamının veya çoğunun birkaç bölümde yoğunlaştırılacak şekilde bölümlenirse (bir bölüm en kötü durumdur), bu bölümler sorgunun performansını darboğaza sokar.
 
-    Önceden getirme, paralellik derecesi ne olursa olsun aynı şekilde çalışıyor ve tüm bölümlerdeki veriler için tek bir arabellek vardır.  
-
-6. **RetryAfter aralıklarında geri alma Uygula**
-
-    Performans testi sırasında, küçük bir istek hızı kısıtlanana kadar yükü artırmanız gerekir. Kısıtlanmamışsa, sunucu tarafından belirtilen yeniden deneme aralığı için istemci uygulamanın azaltılmasından geri dönüş olması gerekir. Geri alma işleminin en düşük olması, yeniden denemeler arasında bekleyen minimum süreyi harcamanızı sağlar. Yeniden deneme ilkesi desteği, [Node. js](sql-api-sdk-node.md) ve [Python](sql-api-sdk-python.md)sürümlerinin yanı sıra [.NET Core](sql-api-sdk-dotnet-core.md) SDK 'larının desteklenen tüm sürümlerini içeren SQL [.net](sql-api-sdk-dotnet.md) ve [Java](sql-api-sdk-java.md), sürüm 1.9.0 ve üzeri sürüm 1.8.0 ve üzeri sürümlerde bulunur. Daha fazla bilgi için, [RetryAfter](https://msdn.microsoft.com/library/microsoft.azure.documents.documentclientexception.retryafter.aspx).
+***Tuning MaxBufferedItemCount***
     
-    .NET SDK 'nın 1,19 ve üzeri sürümleri ile ek tanılama bilgilerini günlüğe kaydetmek ve aşağıdaki örnekte gösterildiği gibi gecikme sorunlarını gidermek için bir mekanizma vardır. Daha yüksek okuma gecikmesi olan istekler için tanılama dizesini günlüğe kaydedebilirsiniz. Yakalanan tanılama dizesi, belirli bir istek için 429s 'yi gözlemlediğiniz zamanların sayısını anlamanıza yardımcı olur.
-    ```csharp
-    ResourceResponse<Document> readDocument = await this.readClient.ReadDocumentAsync(oldDocuments[i].SelfLink);
-    readDocument.RequestDiagnosticsString 
-    ```
+Paralel sorgu, geçerli sonuç grubu istemci tarafından işlenirken sonuçları önceden almak üzere tasarlanmıştır. Bu ön alma, bir sorgunun genel gecikmesini artırmaya yardımcı olur. Parametre, `MaxBufferedItemCount` önceden getirilen sonuç sayısını sınırlar. Sorgunun ön almadan maksimum faydayı almasına izin vermek için döndürülen beklenen sonuç sayısına (veya daha yüksek bir sayıya) ayarlayın. `MaxBufferedItemCount`
 
-7. **Daha düşük okuma gecikmesi için önbellek belgesi URI 'Leri**
+Ön alma, paralelliğin derecesine bakılmaksızın aynı şekilde çalışır ve tüm bölümlerden gelen veriler için tek bir arabellek vardır.  
 
-    En iyi okuma performansı için mümkün olduğunda önbellek belgesi URI 'Leri. Kaynağı oluştururken kaynak KIMLIĞINI önbelleğe almak için mantığı tanımlamanız gerekir. Kaynak KIMLIĞI tabanlı aramalar ad tabanlı aramalardan daha hızlıdır, bu nedenle bu değerlerin önbelleğe alınması performansı geliştirir. 
+**RetryAfter aralıklarında geri tepme uygulayın**
+
+Performans testi sırasında, küçük bir istek oranı azaltılına kadar yükü artırmalısınız. İstekler azaltılırsa, istemci uygulaması sunucu tarafından belirtilen yeniden deneme aralığı için azaltma da geri almalıdır. Geri tepmeye saygı duymak, yeniden denemeler arasında en az miktarda beklemenizi sağlar. 
+
+Yeniden deneme ilkesi desteği bu SDK'lara dahildir:
+- Sql [için .NET SDK](sql-api-sdk-dotnet.md) ve SQL için Java [SDK](sql-api-sdk-java.md) sürüm 1.8.0 ve daha sonra
+- Sürüm 1.9.0 ve daha sonra [SQL için Node.js SDK](sql-api-sdk-node.md) ve [SQL için Python SDK](sql-api-sdk-python.md)
+- [.NET Core](sql-api-sdk-dotnet-core.md) SDK'ların tüm desteklenen sürümleri 
+
+Daha fazla bilgi için [RetryAfter'a](https://msdn.microsoft.com/library/microsoft.azure.documents.documentclientexception.retryafter.aspx)bakın.
+    
+.NET SDK'nın 1.19 sürümünde ve daha sonrasında, aşağıdaki örnekte gösterildiği gibi ek tanılama bilgilerini ve sorun giderme gecikmesi sorunlarını günlüğe kaydetmeye yönelik bir mekanizma vardır. Daha yüksek okuma gecikmesi olan istekler için tanılama dizesini kaydedebilirsiniz. Yakalanan tanılama dizesi, belirli bir istek için kaç kez 429 hata aldığınızı anlamanıza yardımcı olur.
+
+```csharp
+ResourceResponse<Document> readDocument = await this.readClient.ReadDocumentAsync(oldDocuments[i].SelfLink);
+readDocument.RequestDiagnosticsString 
+```
+
+**Daha düşük okuma gecikmesi için önbellek belge URI'leri**
+
+En iyi okuma performansı için mümkün olduğunda Önbellek belge URI'leri. Kaynak oluştururken kaynak kimliğini önbelleğe almak için mantık tanımlamanız gerekir. Kaynak aramalarına dayalı aramalar ad tabanlı aramalardan daha hızlıdır, bu nedenle bu değerlerin önbelleğe getirilmesi performansı artırır.
 
    <a id="tune-page-size"></a>
-8. **Daha iyi performans için, sorguların/okunan akışların sayfa boyutunu ayarlayın**
+**Daha iyi performans için sorgular/okuma akışları için sayfa boyutunu ayarlama**
 
-   Okuma akışı işlevselliğini (örneğin, ReadDocumentFeedAsync) kullanarak veya bir SQL sorgusu verirken belgelerin toplu olarak okunmasını gerçekleştirirken, sonuç kümesi çok büyükse sonuçlar bölümlenmiş bir biçimde döndürülür. Varsayılan olarak, sonuçlar 100 öğe veya 1 MB Öbekle döndürülür, bu sınır ilk önce dönüştürülür.
+Okuma akışı işlevini kullanarak (örneğin, `ReadDocumentFeedAsync`) veya bir SQL sorgusu verdiyseniz, sonuç kümesi çok büyükse, sonuçlar parçalı bir şekilde döndürülür. Varsayılan olarak, sonuçlar 100 öğe veya 1 MB'den oluşan parçalar halinde döndürülür (önce hangi sınıra vurulursa).
 
-   Tüm geçerli sonuçları almak için gereken ağ gidiş dönüşlerin sayısını azaltmak için, [x-MS-Max-item-Count](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) istek üst bilgisini 1000 'e kadar kullanarak sayfa boyutunu artırabilirsiniz. Örneğin, Kullanıcı arabiriminiz veya uygulama API 'niz bir kez yalnızca 10 sonuç döndürürse, okuma ve sorgular için tüketilen aktarım hızını azaltmak için sayfa boyutunu 10 ' a da azaltabilirsiniz.
+Tüm geçerli sonuçları almak için gereken ağ turu gezileri sayısını azaltmak için, 1.000 üstbilgi istemek için [x-ms-max-item-count](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) kullanarak sayfa boyutunu artırabilirsiniz. Yalnızca birkaç sonuç görüntülemeniz gerektiğinde, örneğin, kullanıcı arabirimi veya uygulama API'niz aynı anda yalnızca 10 sonuç döndürürse, okuma lar ve sorgular için tüketilen iş buzunazaltılması için sayfa boyutunu 10'a düşürebilirsiniz.
 
-   > [!NOTE] 
-   > Maxıtemcount özelliği yalnızca sayfalandırma amacıyla kullanılmamalıdır. Tek bir sayfada döndürülen en fazla öğe sayısını azaltarak sorguların performansını artırmak için bu asıl kullanım önemlidir.  
+> [!NOTE] 
+> Mülkiyet `maxItemCount` sadece pagination için kullanılmamalıdır. Ana kullanımı, tek bir sayfada döndürülen en fazla öğe sayısını azaltarak sorguların performansını artırmaktır.  
 
-   Sayfa boyutunu kullanılabilir Azure Cosmos DB SDK 'Ları kullanarak da ayarlayabilirsiniz. [Feedosay 'Daki Maxıtemcount](/dotnet/api/microsoft.azure.documents.client.feedoptions.maxitemcount?view=azure-dotnet) özelliği, sabit listesi işleminde döndürülecek en fazla öğe sayısını ayarlamanıza olanak sağlar. `maxItemCount`-1 olarak ayarlandığında, SDK, belge boyutuna bağlı olarak en uygun değeri otomatik olarak bulur. Örnek:
+Ayrıca, kullanılabilir Azure Cosmos DB SDK'larını kullanarak sayfa boyutunu da ayarlayabilirsiniz. [MaxItemCount](/dotnet/api/microsoft.azure.documents.client.feedoptions.maxitemcount?view=azure-dotnet) özelliği, `FeedOptions` numaralandırma işleminde döndürülecek en fazla öğe sayısını ayarlamanızı sağlar. -1 olarak ayarlandığında, `maxItemCount` SDK belge boyutuna bağlı olarak otomatik olarak en uygun değeri bulur. Örnek:
     
-   ```csharp
-    IQueryable<dynamic> authorResults = client.CreateDocumentQuery(documentCollection.SelfLink, "SELECT p.Author FROM Pages p WHERE p.Title = 'About Seattle'", new FeedOptions { MaxItemCount = 1000 });
-   ```
+```csharp
+IQueryable<dynamic> authorResults = client.CreateDocumentQuery(documentCollection.SelfLink, "SELECT p.Author FROM Pages p WHERE p.Title = 'About Seattle'", new FeedOptions { MaxItemCount = 1000 });
+```
     
-   Bir sorgu yürütüldüğünde, sonuçta elde edilen veriler bir TCP paketi içinde gönderilir. `maxItemCount`için çok düşük değer belirtirseniz, verileri TCP paketi içinde göndermek için gereken gidiş sayısı yüksektir ve bu da performansı etkiler. `maxItemCount` özelliği için hangi değerin ayarlanacağını bilmiyorsanız, bunu-1 olarak ayarlamak ve SDK 'nın varsayılan değeri seçmesini sağlamak en iyisidir. 
+Sorgu yürütüldüğünde, elde edilen veriler bir TCP paketine gönderilir. Çok düşük bir değer `maxItemCount`belirtirseniz, TCP paketindeki verileri göndermek için gereken gezi sayısı yüksektir ve bu da performansı etkiler. Bu nedenle, özellik için hangi değeri `maxItemCount` ayarladığınızdan emin değilseniz, en iyisi -1 olarak ayarlamak ve SDK'nın varsayılan değeri seçmesine izin vermek.
 
-9. **İş parçacığı sayısını/görevleri artır**
+**İş parçacığı/görev sayısını artırma**
 
-    Bkz. Ağ bölümünde [iş parçacığı sayısı/görev sayısını artırma](#increase-threads) .
+Bkz. Bu makalenin Ağ [bölümündeki iş parçacığı/görev sayısını artırın.](#increase-threads)
 
-## <a name="indexing-policy"></a>Dizin Oluşturma İlkesi
+## <a name="indexing-policy"></a>Dizin oluşturma ilkesi
  
-1. **Daha hızlı yazma işlemleri için, kullanılmayan yolları dizin oluşturmanın dışında bırakma**
+**Daha hızlı yazma işlemleri için, kullanılmayan yolları dizin oluşturmanın dışında bırakma**
 
-    Cosmos DB Dizin oluşturma ilkesi, dizin oluşturma yollarından (ındexingpolicy. ıncludedpaths ve ındexingpolicy. ExcludedPaths) yararlanarak dizin oluşturma işleminden hangi belge yollarının ekleneceğini veya dışlanacağını belirtmenize olanak tanır. Dizin oluşturma yollarının kullanımı, sorgu desenlerinin önceden bildiği senaryolar için gelişmiş yazma performansı ve daha düşük dizin depolaması sunabilir, dizin oluşturma maliyetleri doğrudan dizinli benzersiz yolların sayısıyla bağıntılı olur.  Örneğin, aşağıdaki kod, "*" joker karakterini kullanarak, belgelerin tamamını (bir alt ağacı) dizin oluşturma işleminden nasıl dışlayacak gösterir.
+Azure Cosmos DB dizin oluşturma ilkesi, dizin oluşturma yollarını (IndexingPolicy.IncludedPaths and IndexingPolicy.ExcludedPaths) kullanarak hangi belge yollarının eklenecek veya dizin oluşturma dışında belirtebilirsiniz. Dizin oluşturma yolları yazma performansını artırabilir ve sorgu desenleri önceden bilinen senaryolar için dizin depolama azaltabilir. Bunun nedeni, dizin oluşturma maliyetlerinin doğrudan dizine eklenmiş benzersiz yolların sayısıyla ilişkili olmasıdır. Örneğin, bu kod, "*" joker kartını kullanarak belgelerin (bir alt ağaç) tüm bölümünün dizin oluşturmadan nasıl dışlanır:
 
-    ```csharp
-    var collection = new DocumentCollection { Id = "excludedPathCollection" };
-    collection.IndexingPolicy.IncludedPaths.Add(new IncludedPath { Path = "/*" });
-    collection.IndexingPolicy.ExcludedPaths.Add(new ExcludedPath { Path = "/nonIndexedContent/*");
-    collection = await client.CreateDocumentCollectionAsync(UriFactory.CreateDatabaseUri("db"), excluded);
-    ```
+```csharp
+var collection = new DocumentCollection { Id = "excludedPathCollection" };
+collection.IndexingPolicy.IncludedPaths.Add(new IncludedPath { Path = "/*" });
+collection.IndexingPolicy.ExcludedPaths.Add(new ExcludedPath { Path = "/nonIndexedContent/*");
+collection = await client.CreateDocumentCollectionAsync(UriFactory.CreateDatabaseUri("db"), excluded);
+```
 
-    Daha fazla bilgi için bkz. [Azure Cosmos DB Dizin oluşturma ilkeleri](index-policy.md).
+Daha fazla bilgi için [Azure Cosmos DB dizin oluşturma ilkelerine](index-policy.md)bakın.
 
 ## <a name="throughput"></a>Aktarım hızı
 <a id="measure-rus"></a>
 
-1. **Düşük istek birimleri/ikinci kullanım için ölçme ve ayarlama**
+**Daha düşük İstek Birimleri/saniye kullanımı için ölçün ve ayarlayın**
 
-    Azure Cosmos DB, UDF 'ler, saklı yordamlar ve tetikleyicilerle ilişkisel ve hiyerarşik sorgular dahil olmak üzere zengin bir veritabanı işlemleri kümesi sunar ve bunların tümü bir veritabanı koleksiyonu içindeki belgeler üzerinde çalışıyor. Bu işlemlerden her biriyle ilişkilendirilmiş maliyet, işlemi tamamlamak için gereken CPU, GÇ ve belleğe göre değişiklik gösterir. Donanım kaynaklarını düşünmek ve yönetmek yerine, çeşitli veritabanı işlemlerini gerçekleştirmek ve bir uygulama isteğine hizmet vermek için gereken kaynaklar için bir istek birimi (RU) tek bir ölçü olarak düşünebilirsiniz.
+Azure Cosmos DB zengin bir veritabanı işlemleri kümesi sunar. Bu işlemler, udf'ler, depolanan yordamlar ve tetikleyiciler ile ilişkisel ve hiyerarşik sorguları içerir, hepsi bir veritabanı koleksiyonundaki belgeler üzerinde çalışan. Bu işlemlerin her biriyle ilişkili maliyet, işlemi tamamlamak için gereken CPU, IO ve belleğe bağlı olarak değişir. Donanım kaynaklarını düşünmek ve yönetmek yerine, bir İstek Birimi'ni (RU) çeşitli veritabanı işlemlerini gerçekleştirmek ve bir uygulama isteğine hizmet etmek için gereken kaynaklar için tek bir ölçü olarak düşünebilirsiniz.
 
-    Aktarım hızı, her bir kapsayıcı için ayarlanan [istek birimi](request-units.md) sayısına göre sağlanır. İstek birimi tüketimi, saniye başına bir hız olarak değerlendirilir. Kapsayıcı için sağlanan istek birimi oranını aşan uygulamalar, oran için sağlanan düzeyin altına düşene kadar sınırlandırılır. Uygulamanız daha yüksek bir işleme düzeyi gerektiriyorsa, ek istek birimleri sağlayarak aktarım hızını artırabilirsiniz. 
+Elde etme, her konteyner için ayarlanan [İstek Birimleri](request-units.md) sayısına göre sağlanır. İstek Birimi tüketimi saniye başına bir oran olarak değerlendirilir. Konteynerleri için verilen Talep Birimi oranını aşan uygulamalar, konteyner için verilen seviyenin altına düşene kadar sınırlıdır. Uygulamanız daha yüksek bir üretim düzeyi gerektiriyorsa, ek İstek Birimleri sağlayarak iş inizi artırabilirsiniz.
 
-    Bir sorgunun karmaşıklığı, bir işlem için kaç Istek biriminin tüketildiğini etkiler. Koşulların sayısı, koşulların doğası, UDF sayısı ve kaynak veri kümesinin boyutu, sorgu işlemlerinin maliyetini etkiler.
+Sorgunun karmaşıklığı, bir işlem için kaç İstek Birimi nin tüketilmesini etkiler. Yüklemlerin sayısı, yüklemlerin yapısı, UDF sayısı ve kaynak veri kümesinin boyutu sorgu işlemlerinin maliyetini etkiler.
 
-    Herhangi bir işlemin ek yükünü ölçmek için (oluşturma, güncelleştirme veya silme), bu işlemler tarafından tüketilen istek birimlerinin sayısını ölçmek üzere [x-MS-Request-ücret](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) üst bilgisini (veya .NET SDK 'Da bulunan Resourcereslik\<t > veya feedresponse\<t >) inceleyin.
+Herhangi bir işlemin genel yükünü ölçmek için (oluşturma, güncelleme veya silme), işlemler tarafından tüketilen İstek `ResourceResponse\<T>` Birimi `FeedResponse\<T>` sayısını ölçmek için [x-ms-request-charge](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) üstbilgisini (veya .NET SDK'daki veya .NET SDK'daki eşdeğer `RequestCharge` özelliği) inceleyin:
 
-    ```csharp
-    // Measure the performance (request units) of writes
-    ResourceResponse<Document> response = await client.CreateDocumentAsync(collectionSelfLink, myDocument);
-    Console.WriteLine("Insert of document consumed {0} request units", response.RequestCharge);
-    // Measure the performance (request units) of queries
-    IDocumentQuery<dynamic> queryable = client.CreateDocumentQuery(collectionSelfLink, queryString).AsDocumentQuery();
-    while (queryable.HasMoreResults)
-         {
-              FeedResponse<dynamic> queryResponse = await queryable.ExecuteNextAsync<dynamic>();
-              Console.WriteLine("Query batch consumed {0} request units", queryResponse.RequestCharge);
-         }
-    ```             
+```csharp
+// Measure the performance (Request Units) of writes
+ResourceResponse<Document> response = await client.CreateDocumentAsync(collectionSelfLink, myDocument);
+Console.WriteLine("Insert of document consumed {0} request units", response.RequestCharge);
+// Measure the performance (Request Units) of queries
+IDocumentQuery<dynamic> queryable = client.CreateDocumentQuery(collectionSelfLink, queryString).AsDocumentQuery();
+while (queryable.HasMoreResults)
+    {
+        FeedResponse<dynamic> queryResponse = await queryable.ExecuteNextAsync<dynamic>();
+        Console.WriteLine("Query batch consumed {0} request units", queryResponse.RequestCharge);
+    }
+```             
 
-    Bu üst bilgide döndürülen istek ücreti, sağlanan aktarım hızını (ör. 2000 ru/saniye) bir kesri. Örneğin, yukarıdaki sorgu 1000 kb-belge döndürürse, işlemin maliyeti 1000 ' dir. Bu nedenle, bir saniye içinde sunucu, sonraki istekleri sınırlayan orandan önce yalnızca iki istek için geçerlidir. Daha fazla bilgi için bkz. [İstek birimleri](request-units.md) ve [istek birimi Hesaplayıcısı](https://www.documentdb.com/capacityplanner).
+Bu üstbilgide döndürülen istek ücreti, sağlanan iş ınızın bir kısmıdır (yani 2.000 RUs / saniye). Örneğin, önceki sorgu 1.000 1-KB belgedöndürürse, işlemin maliyeti 1.000'dir. Bu nedenle, bir saniye içinde sunucu, sonraki istekleri sınırlamadan önce yalnızca iki tür isteği onurlandırır. Daha fazla bilgi için, [İstek Birimleri](request-units.md) ve [İstek Birimi hesap makinesine](https://www.documentdb.com/capacityplanner)bakın.
 <a id="429"></a>
-2. **Tanıtıcı hız sınırlandırma/istek hızı çok büyük**
 
-    Bir istemci bir hesap için ayrılan aktarım hızını aşmaya çalıştığında, sunucuda bir performans düşüşü olmaz ve ayrılan düzeyin ötesinde üretilen iş kapasitesi yoktur. Sunucu, isteği RequestRateTooLarge (HTTP durum kodu 429) ile sona erpreemptively ve kullanıcının isteği yeniden denemeden önce beklemesi gereken süreyi milisaniye olarak belirten [x-MS-retry-After-MS](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) üst bilgisini döndürür.
+**Oran sınırlama/istek oranını çok büyük işleme**
 
-        HTTP Status 429,
-        Status Line: RequestRateTooLarge
-        x-ms-retry-after-ms :100
+İstemci bir hesap için ayrılmış iş düzeyini aşmaya çalıştığında, sunucuda performans bozulması olmaz ve ayrılmış düzeyin ötesinde iş gücü kapasitesi kullanılmaz. Sunucu, RequestRateTooLarge (HTTP durum kodu 429) ile isteği önceden sona erdirecektir. Kullanıcının isteği yeniden denemeden önce beklemesi gereken süreyi milisaniye cinsinden gösteren bir [x-ms-retry-after-ms](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) üstbilgisini döndürür.
 
-    SDK 'lar, sunucu tarafından belirtilen yeniden deneme üst bilgisine göre bu yanıtı dolaylı olarak yakalar ve isteği yeniden dener. Hesabınız birden çok istemci tarafından aynı anda erişilmediği takdirde, sonraki yeniden deneme başarılı olur.
+    HTTP Status 429,
+    Status Line: RequestRateTooLarge
+    x-ms-retry-after-ms :100
 
-    İstek hızının sürekli olarak birden fazla istemciniz varsa, bu, şu anda istemci tarafından dahili olarak 9 olarak ayarlanmış olan varsayılan yeniden deneme sayısı çalışmayabilir; Bu durumda, istemci uygulamaya 429 durum kodu ile bir DocumentClientException oluşturur. Varsayılan yeniden deneme sayısı, ConnectionPolicy örneğindeki RetryOptions ayarlanarak değiştirilebilir. Varsayılan olarak, durum kodu 429 olan DocumentClientException, istek istek hızının üzerinde çalışmaya devam ederse, 30 saniyelik birikimli bir bekleme süresi dolduktan sonra döndürülür. Bu durum, geçerli yeniden deneme sayısı en fazla yeniden deneme sayısından az olduğunda bile, varsayılan olarak 9 veya Kullanıcı tanımlı bir değer olmalıdır.
+SDK'ların tümü bu yanıtı dolaylı olarak yakalar, sunucu tarafından belirtilen yeniden deneme üstbilgine saygı duyar ve isteği yeniden deneyin. Hesabınıza aynı anda birden çok istemci erişilmediği sürece, bir sonraki yeniden deneme başarılı olur.
 
-    Otomatik yeniden deneme davranışı, çoğu uygulama için esneklik ve kullanılabilirliği artırmaya yardımcı olmakla birlikte, özellikle gecikmeyi ölçirken performans kıyaslamaları yapılırken gürültü 'ye gelebilir.  Deneme sunucu tarafından azaldıysanız, istemci SDK 'sının sessizce yeniden denenmesine neden olursa istemci gözlenen gecikme süresi izlenir. Performans denemeleri sırasında gecikme sürelerini önlemek için, her bir işlem tarafından döndürülen ücreti ölçün ve isteklerin ayrılan istek oranının altında çalıştığından emin olun. Daha fazla bilgi için bkz. [İstek birimleri](request-units.md).
-3. **Daha yüksek aktarım hızı için daha küçük belgeler tasarlama**
+İstem oranının üzerinde sürekli olarak çalışan birden fazla istemciniz varsa, istemci tarafından dahili olarak şu anda 9 olarak ayarlanan varsayılan yeniden deneme sayısı yeterli olmayabilir. Bu durumda, istemci uygulamaya durum kodu 429 içeren bir DocumentClientException atar. 
 
-    Belirli bir işlemin istek ücreti (yani, istek işleme maliyeti), belgenin boyutuyla doğrudan bağıntılı olur. Büyük belgelerle ilgili işlemler, küçük belgeler için işlemlerden daha fazla maliyetlidir.
+`ConnectionPolicy` Örneği ayarlayarak `RetryOptions` varsayılan yeniden deneme sayısını değiştirebilirsiniz. Varsayılan olarak, durum kodu 429'a sahip DocumentClientException, istek isteği oranının üzerinde çalışmaya devam ederse, 30 saniyelik bir toplu bekleme süresinden sonra döndürülür. Bu hata, geçerli yeniden deneme sayısı, geçerli değerin varsayılan 9 veya kullanıcı tanımlı değeri olup olmadığı en yüksek yeniden deneme sayısından az olsa bile geri döner.
+
+Otomatik yeniden deneme davranışı, çoğu uygulama için esnekliği ve kullanılabilirliği artırmaya yardımcı olur. Ancak performans kriterleri yaparken, özellikle gecikme yi ölçerken en iyi davranış olmayabilir. Deneme sunucu gaza çarparsa ve istemci SDK'nın sessizce yeniden denemesine neden olursa istemcitarafından gözlenen gecikme söker. Performans denemeleri sırasında gecikme artışlarını önlemek için, her işlem tarafından döndürülen ücreti ölçün ve isteklerin ayrılmış istek oranının altında çalıştığından emin olun. Daha fazla bilgi için [İstek Birimleri'ne](request-units.md)bakın.
+
+**Daha yüksek iş için, daha küçük belgeler için tasarım**
+
+Belirli bir işlemin istek ücreti (diğer bir şekilde, istek işleme maliyeti) doğrudan belgenin boyutuyla ilişkilidir. Büyük belgelerdeki işlemler, küçük belgelerdeki işlemlerden daha pahalıdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Birkaç istemci makinede yüksek performanslı senaryolar için Azure Cosmos DB değerlendirmek üzere kullanılan örnek bir uygulama için bkz. [Azure Cosmos DB Ile performans ve ölçek testi](performance-testing.md).
+Birkaç istemci makinede yüksek performanslı senaryolar için Azure Cosmos DB'yi değerlendirmek için kullanılan örnek bir uygulama için Azure [Cosmos DB ile Performans ve ölçek testine](performance-testing.md)bakın.
 
-Ayrıca, uygulamanızı ölçek ve yüksek performans için tasarlama hakkında daha fazla bilgi edinmek için bkz. [Azure Cosmos DB bölümleme ve ölçeklendirme](partition-data.md).
+Uygulamanızı ölçeklendirme ve yüksek performans için tasarlama hakkında daha fazla bilgi edinmek için [Azure Cosmos DB'de Bölümleme ve ölçeklendirme](partition-data.md)bölümüne bakın.

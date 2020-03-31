@@ -1,6 +1,6 @@
 ---
 title: Azure Cosmos DB sorgu dilinde COS
-description: Azure Cosmos DB içindeki kosinüs (COS) SQL sistem işlevinin, belirtilen ifadede radyan cinsinden belirtilen açıdaki trigonometrik kosinüs değerini nasıl döndürdüğünü öğrenin
+description: Azure Cosmos DB'deki Cosine (COS) SQL sisteminin işlevi, belirtilen ifadede radyanlarda belirtilen açının trigonometrik kosinüsünü nasıl döndürdebildiğini öğrenin
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 40d277ff38691e2cb74bd4d5d78a666c304acfcd
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78304030"
 ---
 # <a name="cos-azure-cosmos-db"></a>COS (Azure Cosmos DB)
- Radyan cinsinden belirtilen ifade trigonometrik belirtilen bir açının kosinüsünü döndürür.  
+ Belirtilen açının trigonometrik kosinüsünü radyanlarda, belirtilen ifadede verir.  
   
 ## <a name="syntax"></a>Sözdizimi
   
@@ -28,13 +28,13 @@ COS(<numeric_expr>)
 *numeric_expr*  
    Sayısal bir ifadedir.  
   
-## <a name="return-types"></a>Dönüş türleri
+## <a name="return-types"></a>İade türleri
   
-  Sayısal bir ifade döndürür.  
+  Sayısal bir ifade verir.  
   
 ## <a name="examples"></a>Örnekler
   
-  Aşağıdaki örnek, belirtilen açının `COS` hesaplar.  
+  Aşağıdaki örnek, belirtilen `COS` açıyı hesaplar.  
   
 ```sql
 SELECT COS(14.78) AS cos  
@@ -48,10 +48,10 @@ SELECT COS(14.78) AS cos
 
 ## <a name="remarks"></a>Açıklamalar
 
-Bu sistem işlevi dizinden yararlanmayacak.
+Bu sistem işlevi dizini kullanmaz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Matematik işlevleri Azure Cosmos DB](sql-query-mathematical-functions.md)
-- [Sistem işlevleri Azure Cosmos DB](sql-query-system-functions.md)
-- [Azure Cosmos DB giriş](introduction.md)
+- [Matematiksel fonksiyonlar Azure Cosmos DB](sql-query-mathematical-functions.md)
+- [Sistem fonksiyonları Azure Cosmos DB](sql-query-system-functions.md)
+- [Azure Cosmos DB'ye Giriş](introduction.md)

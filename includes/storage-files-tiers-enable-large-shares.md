@@ -9,20 +9,20 @@ ms.date: 12/27/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 8a2e5defd0672516d52d4f3477641f39eca63368
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77597847"
 ---
-Varsayılan olarak, standart dosya paylaşımları yalnızca 5 TiB 'ye kadar yayılabilir, ancak paylaşım sınırı 100 TiB 'ye artırılabilir. Bunu yapmak için, depolama hesabı düzeyinde *büyük dosya paylaşma* özelliğinin etkinleştirilmesi gerekir. Premium Depolama hesapları (*FileStorage* depolama hesapları), tüm Premium dosya paylaşımları tam 100 TİB kapasitesine sağlanması için zaten etkinleştirildiğinden büyük dosya paylaşım özelliği bayrağına sahip değildir.
+Varsayılan olarak, standart dosya paylaşımları yalnızca 5 TiB'ye kadar yayılabilir, ancak paylaşım sınırı 100 TiB'ye yükseltilebilir. Bunu yapmak için, *büyük dosya paylaşımı* özelliği depolama hesabı düzeyinde etkinleştirilmelidir. Tüm premium dosya paylaşımları 100 TiB'nin tam kapasitesine kadar sağlanması için etkinleştirildiğinden, premium depolama hesapları *(FileStorage* depolama hesapları) büyük dosya paylaşımı özelliği bayrağına sahip değildir.
 
-Yalnızca yerel olarak yedekli veya bölge yedekli standart depolama hesaplarında büyük dosya paylaşımlarını etkinleştirebilirsiniz. Büyük dosya paylaşma özelliği bayrağını etkinleştirdikten sonra, artıklık düzeyini coğrafi olarak yedekli veya coğrafi bölgeye yedekli depolama olarak değiştiremezsiniz.
+Yalnızca yerel olarak gereksiz veya bölge gereksiz standart depolama hesaplarında büyük dosya paylaşımlarını etkinleştirebilirsiniz. Büyük dosya paylaşımı özelliği bayrağını etkinleştirdikten sonra, artıklık düzeyini coğrafi yedekli veya coğrafi bölge yedekli depolama yla değiştiremezsiniz.
 
-Mevcut bir depolama hesabında büyük dosya paylaşımlarını etkinleştirmek için, depolama hesabının İçindekiler tablosundaki **yapılandırma** görünümüne gidin ve büyük dosya paylaşımı rocker anahtarını etkin olarak değiştirin:
+Varolan bir depolama hesabında büyük dosya paylaşımlarını etkinleştirmek için, depolama hesabının içindekiler tablosundaki **Yapılandırma** görünümüne gidin ve büyük dosya paylaşımı rocker anahtarını etkin olarak değiştirin:
 
-![Azure portal büyük dosya paylaşımının rocker anahtarının bir ekran görüntüsü](media/storage-files-tiers-enable-large-shares/enable-lfs-0.png)
+![Azure portalında etkinleştirme büyük dosya paylaşımı rocker anahtarının ekran görüntüsü](media/storage-files-tiers-enable-large-shares/enable-lfs-0.png)
 
-Ayrıca, [`Set-AzStorageAccount`](https://docs.microsoft.com/powershell/module/az.storage/set-azstorageaccount) PowerShell cmdlet 'i ve [`az storage account update`](https://docs.microsoft.com/cli/azure/storage/account#az-storage-account-update) Azure CLI komutu aracılığıyla 100 tib dosya paylaşımlarını etkinleştirebilirsiniz.
+PowerShell cmdlet ve [`Set-AzStorageAccount`](https://docs.microsoft.com/powershell/module/az.storage/set-azstorageaccount) [`az storage account update`](https://docs.microsoft.com/cli/azure/storage/account#az-storage-account-update) Azure CLI komutu aracılığıyla 100 TiB dosya paylaşımını da etkinleştirebilirsiniz.
 
-Yeni depolama hesaplarında büyük dosya paylaşımlarının nasıl etkinleştirileceği hakkında daha fazla bilgi edinmek için bkz. [Azure dosya paylaşımı oluşturma](../articles/storage/files/storage-how-to-create-file-share.md).
+Yeni depolama hesaplarında büyük dosya paylaşımlarını etkinleştirme hakkında daha fazla bilgi edinmek için Azure [dosya paylaşımı oluşturmaya](../articles/storage/files/storage-how-to-create-file-share.md)bakın.

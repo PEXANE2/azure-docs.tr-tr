@@ -1,40 +1,40 @@
 ---
-title: Azure Izleyici günlüklerinin yapısı | Microsoft Docs
-description: Azure Izleyici 'den günlük verilerini almak için bir günlük sorgusu gerekir.  Bu makalede, yeni günlük sorgularının Azure Izleyici 'de nasıl kullanıldığı açıklanır ve bir tane oluşturmadan önce anlamanız gereken kavramlar sağlanır.
+title: Azure Monitör Günlüklerinin Yapısı | Microsoft Dokümanlar
+description: Azure Monitor'dan günlük verilerini almak için günlük sorgusuna ihtiyacınız var.  Bu makalede, Azure Monitor'da yeni günlük sorgularının nasıl kullanıldığı açıklanır ve bir tane oluşturmadan önce anlamanız gereken kavramlar sağlar.
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/22/2019
 ms.openlocfilehash: 1d647ba7e8d4f0e29252dfff95099e39bab87895
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77662085"
 ---
-# <a name="structure-of-azure-monitor-logs"></a>Azure Izleyici günlüklerinin yapısı
-[Günlük sorgusu](log-query-overview.md) kullanarak verilerinize hızlı bir şekilde Öngörüler elde etme özelliği, Azure izleyici 'nin güçlü bir özelliğidir. Etkili ve yararlı sorgular oluşturmak için, istediğiniz verilerin bulunduğu yer ve nasıl yapılandırıldığı gibi bazı temel kavramları anlamanız gerekir. Bu makalede, başlamak için ihtiyacınız olan temel kavramlar sağlanmaktadır.
+# <a name="structure-of-azure-monitor-logs"></a>Azure Monitör Günlüklerinin Yapısı
+[Günlük sorgusunu](log-query-overview.md) kullanarak verilerinize hızlı bir şekilde bakış açısı elde edebilme yeteneği Azure Monitor'un güçlü bir özelliğidir. Verimli ve yararlı sorgular oluşturmak için, istediğiniz verilerin nerede bulunduğu ve nasıl yapılandırıldığı gibi bazı temel kavramları anlamanız gerekir. Bu makalede, başlamak için gereken temel kavramları sağlar.
 
 ## <a name="overview"></a>Genel Bakış
-Azure Izleyici günlüklerindeki veriler Log Analytics çalışma alanında veya Application Insights uygulamasında depolanır. Her ikisi de [Azure Veri Gezgini](/azure/data-explorer/) tarafından desteklenir ve güçlü veri motoru ve sorgu dilinden faydalanır.
+Azure Monitör Günlükleri'ndeki veriler, Log Analytics çalışma alanında veya Application Insights uygulamasında depolanır. Her ikisi de [Azure Veri Gezgini](/azure/data-explorer/) tarafından desteklenmektedir, bu da güçlü veri motoru ve sorgu dilinden yararlandıkları anlamına gelir.
 
-Her iki çalışma alanında ve uygulamada bulunan veriler, her biri farklı veri türlerini depolayan ve kendi benzersiz özellik kümesine sahip olan tablolar halinde düzenlenmiştir. Çoğu [veri kaynağı](../platform/data-sources.md) bir Log Analytics çalışma alanında kendi tablolarına yazılır, ancak Application Insights bir Application Insights uygulamasındaki önceden tanımlanmış bir tablo kümesine yazar. Günlük sorguları, birden çok tablodan verileri kolayca birleştirebilmenizi ve hatta birden fazla çalışma alanındaki tablolardan verileri birleştirmek ya da çalışma alanını ve uygulama verilerini birleştiren sorgular yazmak için bir çapraz kaynak sorgusu kullanmak çok esnektir.
+Hem çalışma alanlarındaki hem de uygulamalardaki veriler, her biri farklı türde verileri depolayan ve kendine özgü özellikleri olan tablolar halinde düzenlenir. Çoğu [veri kaynağı](../platform/data-sources.md) Log Analytics çalışma alanında kendi tablolarına yazarken, Application Insights bir Application Insights uygulamasında önceden tanımlanmış bir tablo kümesine yazar. Günlük sorguları, birden çok tablodaki verileri kolayca birleştirmenize ve hatta birden çok çalışma alanında tablolardaki verileri birleştirmek veya çalışma alanı ve uygulama verilerini birleştiren sorgular yazmak için bir çapraz kaynak sorgusu kullanmanıza olanak tanıyan çok esnektir.
 
-Aşağıdaki görüntüde, örnek sorgularda kullanılan farklı tablolara yazan veri kaynağı örnekleri gösterilmektedir.
+Aşağıdaki resimde, örnek sorgularda kullanılan farklı tablolara yazan veri kaynakları örnekleri gösterilmektedir.
 
 ![Tablolar](media/logs-structure/queries-tables.png)
 
 ## <a name="log-analytics-workspace"></a>Log Analytics çalışma alanı
-Azure Izleyici günlükleri tarafından toplanan tüm veriler, Application Insights dışında bir [Log Analytics çalışma alanında](../platform/manage-access.md)depolanır. Gereksinimlerinize bağlı olarak bir veya daha fazla çalışma alanı oluşturabilirsiniz. Azure kaynaklarından etkinlik günlükleri ve kaynak günlükleri gibi [veri kaynakları](../platform/data-sources.md) , sanal makinelerdeki aracılar ve Öngörüler ve izleme çözümlerinin verileri, kendi ekleme kapsamında yapılandırdığınız bir veya daha fazla çalışma alanına veri yazar. [Azure Güvenlik Merkezi](/azure/security-center/) ve [Azure Sentinel](/azure/sentinel/) gibi diğer hizmetler aynı zamanda verilerini depolamak için bir Log Analytics çalışma alanı kullanır. böylece, diğer kaynaklardaki izleme verileriyle birlikte günlük sorguları kullanılarak analiz edilebilir.
+Uygulama Öngörüleri dışında Azure Monitor Günlükleri tarafından toplanan tüm veriler bir [Log Analytics çalışma alanında](../platform/manage-access.md)depolanır. Özel gereksinimlerinize bağlı olarak bir veya daha fazla çalışma alanı oluşturabilirsiniz. Azure kaynaklarından gelen etkinlik günlükleri ve kaynak günlükleri, sanal makinelerdeki aracılar ve öngörüler ve izleme çözümlerinden elde edilen veriler gibi veri [kaynakları,](../platform/data-sources.md) biniş lerinin bir parçası olarak yapılandırdığınız bir veya daha fazla çalışma alanlarına veri yazar. Azure Güvenlik [Merkezi](/azure/security-center/) ve [Azure Sentinel](/azure/sentinel/) gibi diğer hizmetler de verilerini depolamak için günlük analizleri ve diğer kaynaklardan gelen verileri izleme yöntemiyle analiz edilebilir.
 
-Farklı veri türleri çalışma alanındaki farklı tablolarda depolanır ve her tablo benzersiz bir özellik kümesine sahiptir. Standart bir tablo kümesi oluşturulduğunda çalışma alanına eklenir ve farklı veri kaynakları, çözümler ve hizmetler için eklendi oldukları gibi yeni tablolar eklenir. Ayrıca, [veri TOPLAYıCı API](../platform/data-collector-api.md)'sini kullanarak özel tablolar oluşturabilirsiniz.
+Çalışma alanındaki farklı tablolarda farklı türde veriler depolanır ve her tablonun benzersiz bir özellik kümesi vardır. Standart bir tablo kümesi oluşturulduğunda çalışma alanına eklenir ve farklı veri kaynakları, çözümler ve hizmetler için yerleşik olarak yeni tablolar eklenir. [Veri Toplayıcı API'sini](../platform/data-collector-api.md)kullanarak özel tablolar da oluşturabilirsiniz.
 
-Çalışma alanı için Log Analytics **şema** sekmesinde bir çalışma alanındaki tablolara ve bunların şemasına gözatabilmeniz gerekir.
+Çalışma alanı için Log Analytics'teki **Schema** sekmesinde bir çalışma alanında ve şemalarındaki tablolara göz atabilirsiniz.
 
 ![Çalışma alanı şeması](media/scope/workspace-schema.png)
 
-Çalışma alanındaki tabloları ve bir önceki gün içinde her birine toplanan kayıt sayısını listelemek için aşağıdaki sorguyu kullanın. 
+Çalışma alanındaki tabloları ve bir önceki gün içinde her birinde toplanan kayıt sayısını listelemek için aşağıdaki sorguyu kullanın. 
 
 ```Kusto
 union withsource = table * 
@@ -42,44 +42,44 @@ union withsource = table *
 | summarize count() by table
 | sort by table asc
 ```
-Oluşturdukları tabloların ayrıntıları için her bir veri kaynağı için belgelere bakın. Örnek olarak, [aracı veri kaynakları](../platform/agent-data-sources.md), [kaynak günlükleri](../platform/diagnostic-logs-schema.md)ve [izleme çözümleri](../insights/solutions-inventory.md)için makaleler bulunur.
+Oluşturdukları tabloların ayrıntıları için her veri kaynağı için belgelere bakın. Örnek olarak [aracı veri kaynakları,](../platform/agent-data-sources.md) [kaynak günlükleri](../platform/diagnostic-logs-schema.md)ve [izleme çözümleri](../insights/solutions-inventory.md)için makaleler verilebilir.
 
 ### <a name="workspace-permissions"></a>Çalışma alanı izinleri
-Çalışma alanındaki verilere erişim sağlama önerilerini ve erişim denetimi stratejisini anlamak için bkz. [Azure Izleyici günlükleri dağıtımı tasarlama](../platform/design-logs-deployment.md) . Çalışma alanına erişim vermeye ek olarak, [tablo DÜZEYI RBAC](../platform/manage-access.md#table-level-rbac)kullanarak tek tek tablolarla erişimi sınırlayabilirsiniz.
+Bkz. Bir çalışma alanındaki verilere erişim sağlamak için erişim denetimi stratejisini ve önerileri anlamak için [Bir Azure Monitörü Günlükleri Dağıtımı Tasarlama.](../platform/design-logs-deployment.md) Çalışma alanının kendisine erişim izni vermenin yanı sıra, [Tablo Düzeyi RBAC'ı](../platform/manage-access.md#table-level-rbac)kullanarak tablolara erişimi sınırlandırabilirsiniz.
 
-## <a name="application-insights-application"></a>Application Insights uygulaması
-Application Insights bir uygulama oluşturduğunuzda, Azure Izleyici günlüklerinde ilgili bir uygulama otomatik olarak oluşturulur. Veri toplamak için yapılandırma gerekmez ve uygulama sayfa görünümleri, istekler ve özel durumlar gibi izleme verilerini otomatik olarak yazar.
+## <a name="application-insights-application"></a>Uygulama Öngörüleri uygulaması
+Application Insights'ta bir uygulama oluşturduğunuzda, Azure Monitör Günlükleri'nde ilgili bir uygulama otomatik olarak oluşturulur. Veri toplamak için yapılandırma gerekmez ve uygulama sayfa görünümleri, istekler ve özel durumlar gibi izleme verilerini otomatik olarak yazar.
 
-Log Analytics çalışma alanının aksine, bir Application Insights uygulamasının sabit bir tablo kümesi vardır. Başka veri kaynaklarını uygulamaya yazacak şekilde yapılandıramazsınız, böylece başka bir tablo oluşturulamaz. 
+Günlük Analizi çalışma alanının aksine, Application Insights uygulamasının sabit bir tablo kümesi vardır. Ek tablo oluşturulamaz, böylece uygulamaya yazmak için diğer veri kaynaklarını yapılandıramazsınız. 
 
 | Tablo | Açıklama | 
 |:---|:---|
-| availabilityResults | Kullanılabilirlik testlerinden özet veriler. |
-| Browserzamanlamalar      | Gelen verileri işlemek için geçen süre gibi istemci performansı hakkındaki veriler. |
-| customEvents        | Uygulamanız tarafından oluşturulan özel olaylar. |
-| customMetrics       | Uygulamanız tarafından oluşturulan özel ölçümler. |
-| bağlantılıdır        | Uygulamadan dış bileşenlere çağrılar. |
-| özel durumlar          | Uygulama çalışma zamanı tarafından oluşturulan özel durumlar. |
-| pageViews           | Tarayıcı bilgileriyle her bir Web sitesi görünümüyle ilgili veriler. |
-| performanceCounters | Uygulamayı destekleyen işlem kaynaklarından performans ölçümleri. |
-| istekler            | Her uygulama isteğinin ayrıntıları.  |
-| Lerin              | Dağıtılmış izlemenin sonuçları. |
+| availabilitySonuçlar | Kullanılabilirlik testlerinden özet veriler. |
+| browserZamanlamalar      | Gelen verileri işlemek için geçen süre gibi istemci performansı yla ilgili veriler. |
+| Customevents        | Uygulamanız tarafından oluşturulan özel olaylar. |
+| özelMetrikler       | Uygulamanız tarafından oluşturulan özel ölçümler. |
+| bağımlılıklar        | Uygulamadan dış bileşenlere çağrılar. |
+| Özel durum          | Uygulama çalışma zamanı tarafından atılan özel durumlar. |
+| Pageviews           | Tarayıcı bilgileriyle her web sitesi görünümüyle ilgili veriler. |
+| performansSayaçları | Uygulamayı destekleyen bilgi işlem kaynaklarından performans ölçümleri. |
+| Istek            | Her başvuru isteğinin ayrıntıları.  |
+| Izler              | Dağıtılmış izleme sonuçları. |
 
-Her tablo için şemayı, uygulama için Log Analytics **şema** sekmesinde görüntüleyebilirsiniz.
+Uygulama için Log Analytics'teki **Şema** sekmesinde her tabloiçin şema görüntüleyebilirsiniz.
 
 ![Uygulama şeması](media/scope/application-schema.png)
 
 ## <a name="standard-properties"></a>Standart özellikler
-Azure Izleyici günlüklerindeki her tablo kendi şemasına sahip olsa da, tüm tablolar tarafından paylaşılan standart özellikler vardır. Her birinin ayrıntıları için bkz. [Azure Izleyici günlüklerinde standart özellikler](../platform/log-standard-properties.md) .
+Azure Monitör Günlükleri'ndeki her tablonun kendi şeması olsa da, tüm tablolar tarafından paylaşılan standart özellikler vardır. Her birinin ayrıntıları için [Azure Monitör Günlükleri'ndeki Standart özelliklere](../platform/log-standard-properties.md) bakın.
 
-| Log Analytics çalışma alanı | Application Insights uygulaması | Açıklama |
+| Log Analytics çalışma alanı | Uygulama Öngörüleri uygulaması | Açıklama |
 |:---|:---|:---|
 | TimeGenerated | timestamp  | Kaydın oluşturulduğu tarih ve saat. |
-| Tür          | ItemType   | Kaydın alındığı tablonun adı. |
-| _ResourceId   |            | Kaydın ilişkilendirildiği kaynak için benzersiz tanımlayıcı. |
-| _IsBillable   |            | Alınan verilerin faturalandırılabilir olup olmadığını belirtir. |
-| _BilledSize   |            | Faturalanacak verilerin bayt cinsinden boyutunu belirtir. |
+| Tür          | ıtemtype   | Kaydın alındığı tablonun adı. |
+| _ResourceId   |            | Kaydın ilişkili olduğu kaynak için benzersiz tanımlayıcı. |
+| _IsBillable   |            | Yutulan verilerin faturalandırılabilir olup olmadığını belirtir. |
+| _BilledSize   |            | Faturalandırılacak verilerin baytlarında boyutu belirtir. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Günlük aramaları oluşturmak ve düzenlemek için Log Analytics](../log-query/portals.md)kullanma hakkında bilgi edinin.
-- Yeni sorgu dilini kullanarak [sorgu yazma hakkında öğreticiye](../log-query/get-started-queries.md) göz atın.
+- [Günlük aramaları oluşturmak ve yeniden oluşturmak için Log Analytics'i](../log-query/portals.md)kullanma hakkında bilgi edinin.
+- Yeni sorgu dilini kullanarak sorgu yazma yla ilgili bir [öğreticiye](../log-query/get-started-queries.md) göz atın.

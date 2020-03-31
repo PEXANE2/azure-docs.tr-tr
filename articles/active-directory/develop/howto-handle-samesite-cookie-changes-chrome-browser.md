@@ -1,7 +1,7 @@
 ---
-title: Chrome tarayıcısında SameSite tanımlama bilgisi değişikliklerini işleme | Mavisi
+title: Chrome tarayıcısında SameSite çerez değişiklikleri nasıl ele | Azure
 titleSuffix: Microsoft identity platform
-description: Chrome tarayıcısında SameSite tanımlama bilgisi değişikliklerini nasıl işleyeceğinizi öğrenin.
+description: Chrome tarayıcısında SameSite çerez değişiklikleri nasıl ele öğrenin.
 services: active-directory
 documentationcenter: ''
 author: jmprieur
@@ -14,67 +14,67 @@ ms.date: 01/27/2020
 ms.author: jmprieur
 ms.reviewer: kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: 8fc1fab89a89fbf7e20414f292a1b02f77ac7907
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 056b787bbbcde6ba7f9510043deabdcf85ac7467
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76776371"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80050533"
 ---
 # <a name="handle-samesite-cookie-changes-in-chrome-browser"></a>Chrome tarayıcısında SameSite tanımlama bilgisi değişikliklerini işleme
 
 ## <a name="what-is-samesite"></a>SameSite nedir?
 
-`SameSite`, Web uygulamalarında siteler arası Istek sahteciliği (CSRF) saldırılarını engellemek için HTTP tanımlama bilgilerinde ayarlanabilecek bir özelliktir:
+`SameSite`web uygulamalarında Site Arası İstek Sahteciliği (CSRF) saldırılarını önlemek için HTTP tanımlama bilgilerinde ayarlanabilen bir özelliktir:
 
-- `SameSite` **LAX**olarak ayarlandığında, tanımlama bilgisi aynı site içindeki isteklere ve diğer sitelerden alınan isteklere gönderilir. Etki alanları arası olan GET isteklerinde gönderilmez.
-- **Katı** değeri, tanımlama bilgisinin yalnızca aynı site içindeki isteklere gönderilmesini sağlar.
+- Lax `SameSite` olarak **Lax**ayarlandığında, çerez aynı site içinde istekler ve diğer sitelerden GET istekleri gönderilir. Get isteklerinde çapraz etki alanı olan gönderilmez.
+- **Strict** değeri, çerezin yalnızca aynı site içinde istekler halinde gönderilmesini sağlar.
 
-Varsayılan olarak, `SameSite` değeri tarayıcılarda ayarlı DEĞILDIR ve isteklerde gönderilen tanımlama bilgilerinde hiçbir kısıtlama yoktur. Bir uygulamanın, gereksinimleri uyarınca **LAX** veya **katı** ayarlayarak CSRF korumasını kabul etmeniz gerekir.
+Varsayılan olarak, `SameSite` değer tarayıcılarda ayarlanmaz ve bu nedenle isteklerde gönderilen tanımlama bilgilerinde herhangi bir kısıtlama yoktur. Bir uygulama, gereksinimlerine göre **Lax** veya **Strict** ayarlayarak CSRF korumasını kabul etmek gerekir.
 
-## <a name="samesite-changes-and-impact-on-authentication"></a>SameSite değişiklikleri ve kimlik doğrulaması üzerindeki etki
+## <a name="samesite-changes-and-impact-on-authentication"></a>SameSite değişiklikleri ve kimlik doğrulama üzerindeki etkisi
 
-[SameSite standartlarına yönelik son güncelleştirmeler,](https://tools.ietf.org/html/draft-west-cookie-incrementalism-00) LAX olarak hiçbir değer ayarlanmamışsa `SameSite` varsayılan davranışını yaparak uygulamaları korumayı önerin. Bu hafifletme, diğer sitelerden yapılan GET dışındaki HTTP isteklerinde tanımlama bilgilerinin kısıtlandığı anlamına gelir. Ayrıca, gönderilen tanımlama bilgilerinde kısıtlamaları kaldırmak için **none** değeri de eklenmiştir. Bu güncelleştirmeler yakında Chrome tarayıcısının gelecek bir sürümünde yayımlanacak.
+[SameSite'deki standartlara](https://tools.ietf.org/html/draft-west-cookie-incrementalism-00) yapılan son güncellemeler, hiçbir `SameSite` değer Lax olarak ayarlandığında varsayılan davranışı yaparak uygulamaları korumayı önerir. Bu azaltma, çerezlerin diğer sitelerden GET dışında HTTP isteklerinde kısıtlanacağı anlamına gelir. Ayrıca, gönderilen tanımlama bilgileriyle ilgili kısıtlamaları kaldırmak için **Hiçbiri** değeri getirilir. Bu güncellemeler yakında Chrome tarayıcısının yaklaşan bir sürümünde yayımlanacaktır.
 
-Web Apps, "form_post" Yanıt modunu kullanarak Microsoft Identity platformu ile kimlik doğrulaması yaparken, oturum açma sunucusu, belirteçleri veya kimlik doğrulama kodunu göndermek için HTTP POST kullanarak uygulamaya yanıt verir. Bu istek bir etki alanları arası istek (`login.microsoftonline.com` etki https://contoso.com/auth) alanına göre) olduğundan, uygulamanız tarafından ayarlanan tanımlama bilgileri artık Chrome 'daki yeni kurallara girer. Siteler arası senaryolarda kullanılması gereken tanımlama bilgileri, oturum açma isteğinde de gönderilen *durum* ve *nonce* değerlerini tutan tanımlama bilgileriylardır. Oturumu tutmak için Azure AD tarafından bırakılan diğer tanımlama bilgileri vardır.
+Web uygulamaları "form_post" yanıt modunu kullanarak Microsoft Identity platformunda kimlik doğruladığında, giriş sunucusu belirteçleri veya auth kodunu göndermek için bir HTTP POST kullanarak uygulamaya yanıt verir. Bu istek bir etki alanı arası `login.microsoftonline.com` istek olduğundan (örneğin, `https://contoso.com/auth`etki alanınızdan), uygulamanız tarafından ayarlanan tanımlama bilgileri artık Chrome'daki yeni kurallara girer. Siteler arası senaryolarda kullanılması gereken tanımlama bilgileri, giriş isteğinde de gönderilen *durum* ve *nonce* değerlerini tutan tanımlama bilgileridir. Oturumu tutmak için Azure AD tarafından bırakılan başka tanımlama bilgileri de vardır.
 
-Web uygulamalarınızı güncelleştirmemeniz durumunda, bu yeni davranış kimlik doğrulama hatalarıyla sonuçlanır.
+Web uygulamalarınızı güncellemezseniz, bu yeni davranış kimlik doğrulama hatalarına neden olur.
 
-## <a name="mitigation-and-samples"></a>Risk azaltma ve örnekler
+## <a name="mitigation-and-samples"></a>Azaltma ve numuneler
 
-Kimlik doğrulama başarısızlıklarını aşmak için, Microsoft Identity platformunda kimlik doğrulayan Web Apps `SameSite` özelliğini, Chrome tarayıcısında çalışırken etki alanları arası senaryolarda kullanılan tanımlama bilgileri için `None` olarak ayarlayabilir.
-Diğer tarayıcılar (tüm liste için [buraya](https://www.chromium.org/updates/same-site/incompatible-clients) bakın) `SameSite` önceki davranışını izleyin ve `SameSite=None` ayarlandıysa tanımlama bilgilerini içermez.
-Bu nedenle, birden çok tarayıcıda kimlik doğrulamasını desteklemek için Web uygulamalarında `SameSite` değeri yalnızca Chrome üzerinde `None` ve değeri boş bırakmak gerekecektir.
+Kimlik doğrulama hatalarını aşmak için, Microsoft kimlik platformuyla kimlik `SameSite` doğrulaması `None` yapan web uygulamaları, özelliği Chrome tarayıcısında çalışırken etki alanı arası senaryolarda kullanılan tanımlama bilgileriiçin ayarlayabilir.
+Diğer tarayıcılar (tam bir liste için [buraya](https://www.chromium.org/updates/same-site/incompatible-clients) `SameSite` bakın) önceki davranışını `SameSite=None` izler ve ayarlanmışsa çerezleri içermez.
+Bu nedenle, birden çok tarayıcıda kimlik doğrulamayı desteklemek için `SameSite` web `None` uygulamalarının değeri yalnızca Chrome'a ayarlaması ve değeri diğer tarayıcılarda boş bırakması gerekir.
 
 Bu yaklaşım aşağıdaki kod örneklerimizde gösterilmiştir.
 
-# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+# <a name="net"></a>[.NET](#tab/dotnet)
 
-Aşağıdaki tabloda, ASP.NET ve ASP.NET Core örneklerimizde, SameSite değişiklikleri etrafında çalışan çekme istekleri gösterilmektedir.
+Aşağıdaki tabloda, ASP.NET ve ASP.NET Core örneklerimizde Aynı Site değişiklikleri etrafında çalışan çekme istekleri ni ASP.NET.
 
 | Örnek | Çekme isteği |
 | ------ | ------------ |
-|  [ASP.NET Core Web uygulaması artımlı öğreticisi](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2)  |  [Aynı site tanımlama bilgisi onarımı #261](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/pull/261)  |
-|  [ASP.NET MVC web uygulaması örneği](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect)  |  [Aynı site tanımlama bilgisi onarımı #35](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/pull/35)  |
-|  [Active-Directory-DotNet-admin-Restricted-Scopes-v2](https://github.com/azure-samples/active-directory-dotnet-admin-restricted-scopes-v2)  |  [Aynı site tanımlama bilgisi onarımı #28](https://github.com/Azure-Samples/active-directory-dotnet-admin-restricted-scopes-v2/pull/28)  |
+|  [ASP.NET Core Web App artımlı öğretici](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2)  |  [Aynı site çerez düzeltme #261](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/pull/261)  |
+|  [ASP.NET MVC Web Uygulaması örneği](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect)  |  [Aynı site çerez düzeltme #35](https://github.com/Azure-Samples/ms-identity-aspnet-webapp-openidconnect/pull/35)  |
+|  [active-directory-dotnet-admin-sınırlı kapsamlar-v2](https://github.com/azure-samples/active-directory-dotnet-admin-restricted-scopes-v2)  |  [Aynı site çerez düzeltme #28](https://github.com/Azure-Samples/active-directory-dotnet-admin-restricted-scopes-v2/pull/28)  |
 
-ASP.NET ve ASP.NET Core ' de SameSite tanımlama bilgilerinin nasıl işleneceği hakkında ayrıntılı bilgi için bkz:
+ASP.NET ve ASP.NET Core'da SameSite çerezlerinin nasıl işleyeceğiniz hakkında ayrıntılı bilgi için ayrıca bkz:
 
-- [ASP.NET Core ' de SameSite tanımlama bilgileriyle çalışın](https://docs.microsoft.com/aspnet/core/security/samesite) .
-- [ASP.NET blogu, SameSite sorunu](https://devblogs.microsoft.com/aspnet/upcoming-samesite-cookie-changes-in-asp-net-and-asp-net-core/)
+- [ASP.NET Core'da SameSite çerezleri ile çalışın.](https://docs.microsoft.com/aspnet/core/security/samesite)
+- [SameSite sayısında ASP.NET blog](https://devblogs.microsoft.com/aspnet/upcoming-samesite-cookie-changes-in-asp-net-and-asp-net-core/)
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 | Örnek |
 | ------ |
-|  [MS-Identity-Python-WebApp](https://github.com/Azure-Samples/ms-identity-python-webapp)  |
+|  [ms-kimlik-python-webapp](https://github.com/Azure-Samples/ms-identity-python-webapp)  |
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 | Örnek | Çekme isteği |
 | ------ | ------------ |
-|  [MS-Identity-Java-WebApp](https://github.com/Azure-Samples/ms-identity-java-webapp)  | [Aynı site tanımlama bilgisi onarımı #24](https://github.com/Azure-Samples/ms-identity-java-webapp/pull/24)
-|  [MS-Identity-Java-WebApi](https://github.com/Azure-Samples/ms-identity-java-webapi)  | [Aynı site tanımlama bilgisi onarımı #4](https://github.com/Azure-Samples/ms-identity-java-webapi/pull/4)
+|  [ms-kimlik-java-webapp](https://github.com/Azure-Samples/ms-identity-java-webapp)  | [Aynı site çerez düzeltme #24](https://github.com/Azure-Samples/ms-identity-java-webapp/pull/24)
+|  [ms-kimlik-java-webapi](https://github.com/Azure-Samples/ms-identity-java-webapi)  | [Aynı site çerez düzeltme #4](https://github.com/Azure-Samples/ms-identity-java-webapi/pull/4)
 
 ---
 
@@ -83,10 +83,10 @@ ASP.NET ve ASP.NET Core ' de SameSite tanımlama bilgilerinin nasıl işleneceğ
 SameSite ve Web uygulaması senaryosu hakkında daha fazla bilgi edinin:
 
 > [!div class="nextstepaction"]
-> [Google Chrome 'un SameSite hakkında SSS](https://www.chromium.org/updates/same-site/faq)
+> [Google Chrome'un Aynı Sitedeki SSS'si](https://www.chromium.org/updates/same-site/faq)
 
 > [!div class="nextstepaction"]
-> [Kmıum SameSite sayfası](https://www.chromium.org/updates/same-site)
+> [Krom SameSite sayfası](https://www.chromium.org/updates/same-site)
 
 > [!div class="nextstepaction"]
-> [Senaryo: kullanıcılarda oturum açan Web uygulaması](scenario-web-app-sign-user-overview.md)
+> [Senaryo: Kullanıcılarda işaretleyen Web uygulaması](scenario-web-app-sign-user-overview.md)

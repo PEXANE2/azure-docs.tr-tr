@@ -1,61 +1,61 @@
 ---
-title: Gelişmiş tehdit koruması-Azure portal-MariaDB için Azure veritabanı
-description: Tehdit koruması, veritabanına ilişkin olası güvenlik tehditlerini gösteren anormal veritabanı etkinliklerini algılar.
+title: Gelişmiş Tehdit Koruması - Azure portalı - MariaDB için Azure Veritabanı
+description: Tehdit Koruması, veritabanına yönelik olası güvenlik tehditlerini gösteren anormal veritabanı etkinliklerini algılar.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 1d6eafd38d418066ddf5933139bd4caf6e69ddea
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: de056f61337311642589ba937c6d9842d8354d36
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74766982"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79530147"
 ---
-# <a name="advanced-threat-protection-for-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı için Gelişmiş tehdit koruması
+# <a name="advanced-threat-protection-for-azure-database-for-mariadb"></a>MariaDB için Azure Veritabanı için Gelişmiş Tehdit Koruması
 
-MariaDB için Azure veritabanı için Gelişmiş tehdit koruması, veritabanları için olağandışı ve potansiyel olarak zararlı girişimleri gösteren anormal etkinlikleri algılar.
+MariaDB için Azure Veritabanı için Gelişmiş Tehdit Koruması, veritabanlarına erişmek veya veritabanlarından yararlanmak için olağandışı ve zararlı olabilecek girişimleri gösteren anormal etkinlikleri algılar.
 
-Gelişmiş tehdit koruması, gelişmiş güvenlik özelliklerine yönelik Birleşik bir paket olan gelişmiş veri güvenliği sunumunun bir parçasıdır. Gelişmiş tehdit korumasına [Azure Portal](https://portal.azure.com)aracılığıyla erişilebilir ve yönetebilirsiniz.
+Gelişmiş Tehdit Koruması, gelişmiş güvenlik yetenekleri için birleşik bir paket olan Gelişmiş Veri Güvenliği teklifinin bir parçasıdır. Gelişmiş Tehdit Koruması'na [Azure portalı](https://portal.azure.com)üzerinden erişilebilir ve yönetilebilir.
 
 > [!IMPORTANT]
-> Gelişmiş tehdit koruması genel önizlemede. Bu özellik, Azure 'un, MariaDB için Azure veritabanı 'nın Genel Amaçlı ve bellek için Iyileştirilmiş sunucular için dağıtıldığı tüm Azure bölgelerinde kullanılabilir.
+> Gelişmiş Tehdit Koruması genel önizlemede. Bu özellik, Genel Amaç ve Bellek Optimize Edilmiş sunucular için MariaDB için Azure Veritabanı'nın dağıtıldığı Azure'un tüm bölgelerinde kullanılabilir.
 
 > [!NOTE]
-> Gelişmiş tehdit koruması özelliği şu Azure Kamu ve bağımsız bulut **bölgelerinde kullanılamaz:** US gov Teksas, US gov Arizona, US gov Iowa, US, gov Virginia, US DOD Doğu, US DOD orta, Almanya Orta, Almanya Kuzey, Çin Doğu, Çin Doğu 2. Genel ürün kullanılabilirliği için lütfen [bölgeye göre sunulan ürünleri](https://azure.microsoft.com/global-infrastructure/services/) ziyaret edin.
+> Gelişmiş Tehdit Koruması özelliği aşağıdaki Azure devlet ve egemen bulut bölgelerinde **kullanılamaz:** US Gov Texas, US Gov Arizona, US Gov Iowa, ABD, Gov Virginia, US DoD East, US DoD Central, Germany Central, Almanya Kuzey, Çin Doğu, Çin Doğu 2. Genel ürün kullanılabilirliği için [lütfen bölgeye göre mevcut ürünleri](https://azure.microsoft.com/global-infrastructure/services/) ziyaret edin.
 
 ## <a name="set-up-threat-detection"></a>Tehdit algılamayı ayarlama
-1. [https://portal.azure.com](https://portal.azure.com)Azure Portal başlatın.
-2. Korumak istediğiniz MariaDB sunucusu için Azure veritabanı 'nın yapılandırma sayfasına gidin. Güvenlik ayarları ' nda **Gelişmiş tehdit koruması (Önizleme)** öğesini seçin.
-3. **Gelişmiş tehdit koruması (Önizleme)** yapılandırma sayfasında:
+1. Azure portalını [https://portal.azure.com](https://portal.azure.com)' dan başlatın.
+2. Korumak istediğiniz MariaDB sunucusu için Azure Veritabanı'nın yapılandırma sayfasına gidin. Güvenlik ayarlarında **Gelişmiş Tehdit Koruması (Önizleme) seçeneğini**belirleyin.
+3. Gelişmiş **Tehdit Koruması (Önizleme)** yapılandırma sayfasında:
 
-   - Sunucuda Gelişmiş tehdit koruması 'nı etkinleştirin.
-   - **Gelişmiş tehdit koruması ayarları**' nda, **uyarıları gönder** metin kutusunda, anormal veritabanı etkinliklerinin algılanması üzerine güvenlik uyarılarını alacak e-postaların listesini belirtin.
+   - Sunucuda Gelişmiş Tehdit Koruması'nı etkinleştirin.
+   - **Gelişmiş Tehdit Koruması Ayarları'nda,** metin **kutusuna uyarı** gönder'de, anormal veritabanı etkinliklerinin algılanması üzerine güvenlik uyarıları almak için e-postaların listesini sağlayın.
   
    ![Tehdit algılamayı ayarlama](./media/howto-database-threat-protection-portal/set-up-threat-protection.png)
 
-## <a name="explore-anomalous-database-activities"></a>Anormal veritabanı etkinliklerini keşfet
+## <a name="explore-anomalous-database-activities"></a>Anormal veritabanı etkinliklerini keşfedin
 
-Anormal veritabanı etkinliklerinin algılanmasıyla bir e-posta bildirimi alırsınız. E-posta, anormal etkinlikler, veritabanı adı, sunucu adı, uygulama adı ve olay saatinin doğası dahil şüpheli güvenlik olayı hakkında bilgi sağlar. Buna ek olarak, e-posta olası nedenler ve veritabanı için olası tehdidi araştırmak ve azaltmak için önerilen eylemler hakkında bilgi sağlar.
+Anormal veritabanı etkinliklerinin algılanması üzerine bir e-posta bildirimi alırsınız. E-posta, anormal etkinliklerin niteliği, veritabanı adı, sunucu adı, uygulama adı ve olay saati gibi şüpheli güvenlik olayı hakkında bilgi sağlar. Buna ek olarak, e-posta, veritabanına yönelik olası tehdidi araştırmak ve azaltmak için olası nedenler ve önerilen eylemler hakkında bilgi sağlar.
  
-1. Azure portal başlatmak ve SQL veritabanında algılanan etkin tehditlere genel bir bakış sağlayan Azure Güvenlik Merkezi uyarıları sayfasını görüntülemek için e-postadaki **son Uyarıları görüntüle** bağlantısına tıklayın.
+1. Azure portalını başlatmak ve SQL veritabanında algılanan etkin tehditlere genel bir bakış sağlayan Azure Güvenlik Merkezi uyarıları sayfasını göstermek için e-postadaki **son uyarıları Görüntüle** bağlantısını tıklatın.
     
-    ![Anormal etkinlik raporu](./media/howto-database-threat-protection-portal/anomalous-activity-report.png)
+    ![Anormal faaliyet raporu](./media/howto-database-threat-protection-portal/anomalous-activity-report.png)
 
-    Etkin tehditleri görüntüle:
+    Etkin tehditleri görüntüleyin:
 
     ![Etkin tehditler](./media/howto-database-threat-protection-portal/active-threats.png)
 
-2. Bu tehdidi araştırmaya ve gelecekteki tehditleri incelemeye yönelik ek ayrıntılar ve eylemler almak için belirli bir uyarıya tıklayın.
+2. Bu tehdidi araştırmak ve gelecekteki tehditleri düzeltmek için ek ayrıntılar ve eylemler almak için belirli bir uyarıyı tıklatın.
     
-    ![Özel uyarı](./media/howto-database-threat-protection-portal/specific-alert.png)
+    ![Belirli uyarı](./media/howto-database-threat-protection-portal/specific-alert.png)
 
-## <a name="explore-threat-detection-alerts"></a>Tehdit algılama uyarılarını keşfet
+## <a name="explore-threat-detection-alerts"></a>Tehdit algılama uyarılarını keşfedin
 
-SQL veritabanı tehdit algılama, uyarılarını [Azure Güvenlik Merkezi](https://azure.microsoft.com/services/security-center/)ile tümleştirir. Veritabanı içindeki canlı bir SQL tehdit algılama kutucukları ve Azure portal SQL ATP dikey pencereleri, etkin tehditler durumunu izler.
+SQL Veritabanı Tehdit Algılama, uyarılarını [Azure Güvenlik Merkezi](https://azure.microsoft.com/services/security-center/)ile tümleştirir. Veritabanıiçindeki canlı BIR SQL tehdit algılama kutucukları ve Azure portalındaki SQL ATP bıçakları etkin tehditlerin durumunu izler.
 
-**Tehdit algılama uyarısı** ' na tıklayarak Azure Güvenlik Merkezi uyarıları sayfasını başlatın ve veritabanında ALGıLANAN etkin SQL tehditleri hakkında genel bir bakış alın.
+Azure Güvenlik Merkezi uyarıları sayfasını başlatmak ve veritabanında algılanan etkin SQL tehditlerine genel bir bakış almak için **Tehdit algılama uyarısını** tıklatın.
 
    ![Tehdit algılama uyarısı](./media/howto-database-threat-protection-portal/threat-detection-alert-asc.png)
    
@@ -63,4 +63,4 @@ SQL veritabanı tehdit algılama, uyarılarını [Azure Güvenlik Merkezi](https
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure Güvenlik Merkezi](https://docs.microsoft.com/azure/security-center/security-center-intro) hakkında daha fazla bilgi edinin
-* Fiyatlandırma hakkında daha fazla bilgi için bkz. [MariaDB Için Azure veritabanı fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/mariadb/)  
+* Fiyatlandırma hakkında daha fazla bilgi için [MariaDB Fiyatlandırması için Azure Veritabanı sayfasına](https://azure.microsoft.com/pricing/details/mariadb/) bakın  

@@ -1,6 +1,6 @@
 ---
 title: Azure Cosmos DB sorgu dilinde ARRAY_SLICE
-description: Azure Cosmos DB ' deki dizi dilimi SQL sistem işlevinin bir dizi ifadesinin bir parçasını nasıl döndürdüğünü öğrenin
+description: Azure Cosmos DB'deki Dizi dilimi SQL sisteminin işlevinin dizi ifadesinin bir parçasını nasıl döndürttekleri hakkında bilgi edinin
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: a98cb17d22f41776ff788d12ced6aa988ad0b10e
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78303333"
 ---
 # <a name="array_slice-azure-cosmos-db"></a>ARRAY_SLICE (Azure Cosmos DB)
- Bir dizi ifadesi bölümünü döndürür.
+ Dizi ifadesinin bir parçasını döndürür.
   
 ## <a name="syntax"></a>Sözdizimi
   
@@ -26,20 +26,20 @@ ARRAY_SLICE (<arr_expr>, <num_expr> [, <num_expr>])
 ## <a name="arguments"></a>Bağımsız Değişkenler
   
 *arr_expr*  
-   Herhangi bir dizi ifadesi.  
+   Herhangi bir dizi ifadesi dir.  
   
 *num_expr*  
-   Dizi başlanan sıfır tabanlı sayısal dizini. Negatif değerler dizisi yani -1 başvuruları son öğesi göreli başlangıç dizini dizideki son öğeyi belirtmek için kullanılabilir.  
+   Diziye başlamak için sıfır tabanlı sayısal dizin. Negatif değerler, dizinin son öğesine göre başlangıç dizini belirtmek için kullanılabilir, yani -1 dizideki son öğeye başvurur.  
 
-*num_expr* Elde edilen dizideki en fazla öğe sayısını ayarlayan isteğe bağlı sayısal ifade.    
+*num_expr* Ortaya çıkan dizideki en fazla öğe sayısını ayarlayan isteğe bağlı sayısal ifade.    
 
-## <a name="return-types"></a>Dönüş türleri
+## <a name="return-types"></a>İade türleri
   
-  Bir dizi ifadesi döndürür.  
+  Dizi ifadesini döndürür.  
   
 ## <a name="examples"></a>Örnekler
   
-  Aşağıdaki örnek, `ARRAY_SLICE`kullanarak bir dizinin farklı dilimlerinin nasıl alınacağını gösterir.  
+  Aşağıdaki örnekte, bir diziden farklı dilimler nasıl alınış `ARRAY_SLICE`gösterilmektedir.  
   
 ```sql
 SELECT
@@ -69,10 +69,10 @@ SELECT
 
 ## <a name="remarks"></a>Açıklamalar
 
-Bu sistem işlevi dizinden yararlanmayacak.
+Bu sistem işlevi dizini kullanmaz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Dizi işlevleri Azure Cosmos DB](sql-query-array-functions.md)
-- [Sistem işlevleri Azure Cosmos DB](sql-query-system-functions.md)
-- [Azure Cosmos DB giriş](introduction.md)
+- [Sistem fonksiyonları Azure Cosmos DB](sql-query-system-functions.md)
+- [Azure Cosmos DB'ye Giriş](introduction.md)

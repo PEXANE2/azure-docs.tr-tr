@@ -1,7 +1,7 @@
 ---
-title: Portalı kullanarak eşdüzey ASN 'yi Azure aboneliğine ilişkilendirin
+title: Portalı kullanarak eşdüzey ASN’yi Azure aboneliğiyle ilişkilendirme
 titleSuffix: Azure
-description: Portalı kullanarak eşdüzey ASN 'yi Azure aboneliğine ilişkilendirin
+description: Portalı kullanarak eşdüzey ASN’yi Azure aboneliğiyle ilişkilendirme
 services: internet-peering
 author: prmitiki
 ms.service: internet-peering
@@ -9,113 +9,113 @@ ms.topic: article
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: cee548aff49cd5e4a57eed994b8ade2d157c6313
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75912216"
 ---
-# <a name="associate-peer-asn-to-azure-subscription-using-the-portal"></a>Portalı kullanarak eşdüzey ASN 'yi Azure aboneliğine ilişkilendirin
+# <a name="associate-peer-asn-to-azure-subscription-using-the-portal"></a>Portalı kullanarak eşdüzey ASN’yi Azure aboneliğiyle ilişkilendirme
 
-Bir eşleme isteği göndermeden önce, aşağıdaki adımları kullanarak ASN 'nizi Azure aboneliğiyle ilişkilendirmeniz gerekir.
+Bir eşleme isteği göndermeden önce, asn aboneliğinizi aşağıdaki adımları kullanarak Azure aboneliğiyle ilişkilendirmelisiniz.
 
-İsterseniz, [PowerShell](howto-subscription-association-powershell.md)'i kullanarak bu kılavuzu tamamlayabilirsiniz.
+İsterseniz, [PowerShell](howto-subscription-association-powershell.md)kullanarak bu kılavuzu tamamlayabilirsiniz.
 
-## <a name="create-peerasn-to-associate-your-asn-with-azure-subscription"></a>ASN 'nizi Azure aboneliğiyle ilişkilendirmek için PeerAsn oluşturun
+## <a name="create-peerasn-to-associate-your-asn-with-azure-subscription"></a>ASN'nizi Azure Aboneliği ile ilişkilendirmek için PeerAsn'ı oluşturun
 
 ### <a name="sign-in-to-the-portal"></a>Portalda oturum açın
 [!INCLUDE [Account](./includes/account-portal.md)]
 
-### <a name="register-for-peering-resource-provider"></a>Eşleme kaynak sağlayıcısı için kaydolun
-Aşağıdaki adımları izleyerek aboneliğinizde eşleme kaynak sağlayıcısına kaydolun. Bunu yürütütemezsiniz, eşlemeyi ayarlamak için gereken Azure kaynaklarına erişilemez.
+### <a name="register-for-peering-resource-provider"></a>Eşleyen kaynak sağlayıcısına kaydolun
+Aşağıdaki adımları izleyerek aboneliğinizde eşleyen kaynak sağlayıcısına kaydolun. Bunu yürütmezseniz, eşleme ayarlamak için gereken Azure kaynaklarına erişilemez.
 
-1. Portalın sol üst köşesindeki **abonelikler** ' e tıklayın. Bunu görmüyorsanız, **daha fazla hizmet** ' e tıklayın ve arama yapın.
-
-    > [!div class="mx-imgBorder"]
-    > ![açık abonelikler](./media/rp-subscriptions-open.png)
-
-1. Eşleme için kullanmak istediğiniz aboneliğe tıklayın.
+1. Portalın sol üst köşesindeki **Abonelikler'e** tıklayın. Görmüyorsanız, **Daha Fazla hizmete** tıklayın ve arayın.
 
     > [!div class="mx-imgBorder"]
-    > ![](./media/rp-subscriptions-launch.png) aboneliği Başlat
+    > ![Açık abonelikler](./media/rp-subscriptions-open.png)
 
-1. Abonelik açıldıktan sonra, sol taraftaki **kaynak sağlayıcıları**' na tıklayın. Sonra sağ bölmede, ara penceresinde *eşleme* araması yapın veya **Microsoft. eşleme** ' yi bulmak için kaydırma çubuğunu kullanın ve **duruma**bakın. Durum ***kayıtlıysa***, aşağıdaki adımları atlayın ve bölüm **peerasn oluşturun**bölümüne ilerleyin. Durum ***Notregistered***Ise, **Microsoft. eşleme** ' yi seçin ve **Kaydet**' e tıklayın.
-
-    > [!div class="mx-imgBorder"]
-    > ![kayıt başlatma](./media/rp-register-start.png)
-
-1. Durumunun ***kayıt***olarak değiştiğini gözlemleyin.
+1. Bakmak için kullanmak istediğiniz aboneliği tıklatın.
 
     > [!div class="mx-imgBorder"]
-    > ![kayıt devam ediyor](./media/rp-register-progress.png)
+    > ![Başlatma aboneliği](./media/rp-subscriptions-launch.png)
 
-1. Kayıt işleminin tamamlanabilmesi için en az bir dakika bekleyin. Ardından **Yenile** ' ye tıklayın ve durumun ***kayıtlı***olduğunu doğrulayın.
+1. Abonelik açıldıktan sonra, solda Kaynak **sağlayıcıları**tıklatın. Daha sonra, sağ bölmede, arama penceresinde *bakma* yı arayın veya **Microsoft.Peering'i** bulmak ve **Durum'a**bakmak için kaydırma çubuğunu kullanın. Durum ***Kayıtlıysa,*** aşağıdaki adımları atlayın ve **PeerAsn oluştur**bölümüne gidin. Durum Kayıtlı ***değilse,*** **Microsoft.Peering'i** seçin ve **Kaydol'a**tıklayın.
 
     > [!div class="mx-imgBorder"]
-    > ![kaydı tamamlandı](./media/rp-register-completed.png)
+    > ![Kayıt başlangıcı](./media/rp-register-start.png)
+
+1. Durum'un ***Kayıt'ta***değiştiğini gözlemleyin.
+
+    > [!div class="mx-imgBorder"]
+    > ![Kayıt devam ediyor](./media/rp-register-progress.png)
+
+1. Kayıt tamamlamak için bir dakika kadar bekleyin. Ardından, **Yenile'yi** tıklatın ve durumun ***Kayıtlı***olduğunu doğrulayın.
+
+    > [!div class="mx-imgBorder"]
+    > ![Kayıt tamamlandı](./media/rp-register-completed.png)
 
 ### <a name="create-peerasn"></a>PeerAsn oluştur
-Bir otonom sistem numarası 'nı (ASN) Azure aboneliğiyle ilişkilendirmek için yeni bir PeerAsn kaynağı oluşturabilirsiniz. İlişkilendirmeniz gereken her ASN için bir **Peerasn** oluşturarak, birden fazla ASNs 'yi bir abonelikle ilişkilendirebilirsiniz.
+Azure aboneliğiyle Özerk Sistem Numarası (ASN) ilişkilendirme için yeni bir PeerAsn kaynağı oluşturabilirsiniz. Ilişkilendirmeniz gereken her ASN için bir **PeerAsn** oluşturarak birden çok ASN'yi bir abonelikle ilişkilendirebilirsiniz.
 
-1. **Kaynak oluştur** > **Tümünü gör**' e tıklayın.
-
-    > [!div class="mx-imgBorder"]
-    > ![arama PeerAsn](./media/peerasn-seeall.png)
-
-1. Arama kutusunda *Peerasn* araması yapın ve klavyenizde *ENTER* tuşuna basın. Sonuçlardan **Peerasn** kaynağı ' na tıklayın.
+1. **Kaynak** > Oluştur'u tıklatın**Tümlerini Görün**.
 
     > [!div class="mx-imgBorder"]
-    > ![PeerAsn](./media/peerasn-launch.png) Başlat
+    > ![PeerAsn'ı ara](./media/peerasn-seeall.png)
 
-1. **Peerasn** başlatıldıktan sonra **Oluştur**' a tıklayın.
-
-    > [!div class="mx-imgBorder"]
-    > ![PeerAsn](./media/peerasn-create.png) oluştur
-
-1. **Eş ASN 'Yi ilişkilendir** sayfasında, **temel bilgiler** sekmesinde, alanları aşağıda gösterildiği gibi doldurun.
+1. Arama kutusunda *PeerAsn'ı* arayın ve klavyenizde *Enter* tuşuna basın. Sonuçlardan **PeerAsn** kaynağını tıklatın.
 
     > [!div class="mx-imgBorder"]
-    > ![PeerAsn temel sekmesi](./media/peerasn-basics-tab.png)
+    > ![PeerAsn'ı başlat](./media/peerasn-launch.png)
 
-    * **Ad** , kaynak adına karşılık gelir ve seçtiğiniz herhangi bir şey olabilir.  
-    * ASN 'yi ilişkilendirmek için ihtiyacınız olan **aboneliği** seçin.
-    * **Eş adı** , şirketinizin adına karşılık gelir ve PeeringDB profilinize olabildiğince yakın olması gerekir. Değerin yalnızca a-z, A-Z ve boşluk karakterlerini desteklediğini unutmayın
-    * **EŞDÜZEY ASN** alanına ASN 'nizi girin.
-    * **Yeni oluştur** ' a tıklayın ve ağ işlemleri merkezinize yönelik **e-posta adresı** ve **telefon numarası** girin (NOC)
-1. Ardından, **gözden geçir + oluştur** ' a tıklayın ve bu portalın, girdiğiniz bilgilerin temel doğrulamasını çalıştırmasını sağlayabilirsiniz. Bu, *son doğrulama çalıştırılırken*en üstteki şeritte görüntülenir....
+1. **PeerAsn** başlatıldıktan sonra **Oluştur'a**tıklayın.
 
     > [!div class="mx-imgBorder"]
-    > ![PeerAsn Inceleme sekmesi](./media/peerasn-review-tab-validation.png)
+    > ![PeerAsn oluştur](./media/peerasn-create.png)
 
-1. Şeritteki ileti, *doğrulama başarılı*olduktan sonra, **Oluştur**' a tıklayarak bilgilerinizi doğrulayın ve isteği iletin. Doğrulama geçmezse, daha sonra **geri** ' ye tıklayın ve isteğinizi değiştirmek için yukarıdaki adımları tekrarlayın ve girdiğiniz değerlerin hata olmadığından emin olun.
-
-    > [!div class="mx-imgBorder"]
-    > ![PeerAsn Inceleme sekmesi](./media/peerasn-review-tab.png)
-
-1. İsteği gönderdikten sonra, dağıtımın tamamlanmasını bekleyin. Dağıtım başarısız olursa, [Microsoft eşleme](mailto:peering@microsoft.com)ile iletişime geçin. Başarılı bir dağıtım aşağıda gösterildiği gibi görünür.
+1. Eş **Leş atla ilişkilendir** sayfasında, **Temel Bilgiler** sekmesinin altında, aşağıda gösterildiği gibi alanları doldurun.
 
     > [!div class="mx-imgBorder"]
-    > ![PeerAsn başarılı](./media/peerasn-success.png)
+    > ![PeerAsn Temelleri Sekmesi](./media/peerasn-basics-tab.png)
 
-### <a name="view-status-of-a-peerasn"></a>PeerAsn durumunu görüntüleme
-PeerAsn kaynağı başarıyla dağıtıldıktan sonra Microsoft 'un ilişkilendirme isteğini onaylaması için beklemeniz gerekir. Onay için 12 saate kadar zaman alabilir. Onaylandığında, yukarıdaki bölümde girilen e-posta adresine bir bildirim alırsınız.
+    * **Ad** kaynak adına karşılık gelir ve seçtiğiniz herhangi bir şey olabilir.  
+    * ASN ile ilişkilendirmeniz gereken **Aboneliği** seçin.
+    * **Eş adı** şirketinizin adına karşılık gelir ve PeeringDB profilinize mümkün olduğunca yakın olması gerekir. Değerin yalnızca a-z, A-Z ve boşluk karakterlerini desteklediğini unutmayın
+    * AsN'nizi **Peer ASN** alanına girin.
+    * Yeni **Oluştur'a** tıklayın ve Ağ Operasyon Merkeziniz (NOC) için **E-POSTA ADRESİ** ve **TELEFON NUMARASI** girin
+1. Ardından, **Gözden Geçir +'ya** tıklayın ve portalın girdiğiniz bilgilerin temel doğrulamasını çalıştırdığını gözlemleyin. Bu, *son doğrulamayı çalıştırırken*üstteki şeritte görüntülenir... .
+
+    > [!div class="mx-imgBorder"]
+    > ![PeerAsn İnceleme Sekmesi](./media/peerasn-review-tab-validation.png)
+
+1. Şeritteki ileti *Validation Geçti'ye*döndükten sonra, bilgilerinizi doğrulayın ve **Oluştur'u**tıklatarak isteğinizi gönderin. Doğrulama geçmezse, sonra **Önceki'ye** tıklayın ve isteğinizi değiştirmek ve girdiğiniz değerlerin hata olmadığından emin olmak için yukarıdaki adımları yineleyin.
+
+    > [!div class="mx-imgBorder"]
+    > ![PeerAsn İnceleme Sekmesi](./media/peerasn-review-tab.png)
+
+1. İsteği gönderdikten sonra, dağıtımı niçin tamamlamasını bekleyin. Dağıtım başarısız olursa, [Microsoft'a başvurun.](mailto:peering@microsoft.com) Başarılı bir dağıtım aşağıdaki gibi görünür.
+
+    > [!div class="mx-imgBorder"]
+    > ![PeerAsn Başarı](./media/peerasn-success.png)
+
+### <a name="view-status-of-a-peerasn"></a>PeerAsn'ın durumunu görüntüleme
+PeerAsn kaynağı başarıyla dağıtıldıktan sonra, Microsoft'un ilişkilendirme isteğini onaylamasını beklemeniz gerekir. Onay 12 saat kadar sürebilir. Onaylandıktan sonra, yukarıdaki bölümde girilen e-posta adresine bir bildirim alacaksınız.
 
 > [!IMPORTANT]
-> Bir eşleme isteği göndermeden önce ValidationState durumunun "Onaylandı" olmasını bekleyin. Bu onay için 12 saate kadar zaman alabilir.
+> Bir eşleme isteği göndermeden önce Doğrulama Durumunun "Onaylandı"yı döndürmesini bekleyin. Bu onay 12 saat kadar sürebilir.
 
-## <a name="modify-peerasn"></a>PeerAsn 'yi Değiştir
-PeerAsn değiştirme Şu anda desteklenmiyor. Değiştirmeniz gerekiyorsa, [Microsoft eşleme](mailto:peering@microsoft.com)ile iletişim kurun.
+## <a name="modify-peerasn"></a>PeerAsn değiştir
+PeerAsn'ı değiştirmek şu anda desteklenmiyor. Değiştirmeniz gerekiyorsa, [Microsoft'a başvurun.](mailto:peering@microsoft.com)
 
-## <a name="delete-peerasn"></a>PeerAsn 'yi Sil
-PeerAsn silme işlemi şu anda desteklenmiyor. PeerAsn 'yi silmeniz gerekiyorsa, [Microsoft eşleme](mailto:peering@microsoft.com)ile iletişim kurun.
+## <a name="delete-peerasn"></a>PeerAsn'ı sil
+PeerAsn silme şu anda desteklenmez. PeerAsn'ı silmeniz gerekiyorsa, [Microsoft'a başvurun.](mailto:peering@microsoft.com)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Portalı kullanarak doğrudan eşleme oluşturma veya değiştirme](howto-direct-portal.md)
-* [Portalı kullanarak eski bir doğrudan eşlemeyi Azure kaynağına dönüştürme](howto-legacy-direct-portal.md)
-* [Portalı kullanarak Exchange eşlemesi oluşturma veya değiştirme](howto-exchange-portal.md)
-* [Portalı kullanarak eski bir Exchange eşlemesini Azure kaynağına dönüştürme](howto-legacy-exchange-portal.md)
+* [Portalı kullanarak Doğrudan eşleme oluşturma veya değiştirme](howto-direct-portal.md)
+* [Portalı kullanarak eski bir Doğrudan eşlemeyi bir Azure kaynağına dönüştürme](howto-legacy-direct-portal.md)
+* [Portalı kullanarak Exchange eşlemi oluşturma veya değiştirme](howto-exchange-portal.md)
+* [Portalı kullanarak eski bir Exchange eşlemesini bir Azure kaynağına dönüştürme](howto-legacy-exchange-portal.md)
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-Daha fazla bilgi için [Internet eşlemesi SSS](faqs.md) ' yi ziyaret edin
+Daha fazla bilgi için [Internet'e bakan SSS'leri](faqs.md) ziyaret edin

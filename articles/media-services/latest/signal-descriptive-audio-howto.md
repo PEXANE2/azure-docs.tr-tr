@@ -1,6 +1,6 @@
 ---
-title: Azure Media Services v3 ile açıklayıcı sesli parçalar sinyali | Microsoft Docs
-description: Bu öğreticinin adımlarını izleyerek bir dosyayı karşıya yükleyin, videoyu kodlayın, açıklayıcı ses parçaları ekleyin ve içeriğinizi Media Services v3 ile akışın.
+title: Azure Media Services v3 ile tanımlayıcı ses parçaları sinyali | Microsoft Dokümanlar
+description: Bir dosya yüklemek, videoyu kodlamak, açıklayıcı ses parçaları eklemek ve Medya Hizmetleri v3 ile içeriğinizi aktarmak için bu öğreticinin adımlarını izleyin.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,58 +13,58 @@ ms.custom: ''
 ms.date: 09/25/2019
 ms.author: juliako
 ms.openlocfilehash: 0d8f88e6c2fe273efa969278146de67ba18eaecf
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72392195"
 ---
-# <a name="signal-descriptive-audio-tracks"></a>Sinyal açıklayıcı ses parçaları
+# <a name="signal-descriptive-audio-tracks"></a>Sinyal tanımlayıcı ses parçaları
 
-Görsel açıdan görme istemcilerinin, konuşmayı dinleyerek video kaydını izlemesini sağlamak için videonuza konuşma izi ekleyebilirsiniz. Media Services v3 'de, bildirim dosyasındaki ses izlemesine açıklama ekleyerek açıklayıcı ses izlemelerinin sinyalini görürsünüz.
+Görsel engelli istemcilerin anlatımı dinleyerek video kaydını takip edemelerine yardımcı olmak için videonuza bir anlatım parçası ekleyebilirsiniz. Media Services v3'te, bildirim dosyasındaki ses parçasına açıklama ekleyerek açıklayıcı ses parçalarını işaret emzebilirsiniz.
 
-Bu makalede, bir videoyu kodlama, çıktı varlığına açıklayıcı ses içeren bir salt ses MP4 dosyasını (AAC codec) karşıya yükleme ve açıklama sesini dahil etmek için. ISM dosyasını düzenleme işlemlerinin nasıl yapılacağı gösterilir.
+Bu makalede, bir videonun nasıl kodlanılması, çıktı varlığına açıklayıcı ses içeren yalnızca ses mp4 dosyasının (AAC codec) nasıl yüklenilen ve .ism dosyasını açıklayıcı sesi içerecek şekilde nasıl düzeltilir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-- [Media Services hesabı oluşturun](create-account-cli-how-to.md).
-- [Azure CLI Ile Access Azure Media Services API 'sindeki](access-api-cli-how-to.md) adımları izleyin ve kimlik bilgilerini kaydedin. API 'ye erişmek için bunları kullanmanız gerekir.
-- [Dinamik paketlemeyi](dynamic-packaging-overview.md)gözden geçirin.
-- [Karşıya yükleme, kodlama ve akış videoları](stream-files-tutorial-with-api.md) öğreticisini gözden geçirin.
+- [Bir Medya Hizmetleri hesabı oluşturun.](create-account-cli-how-to.md)
+- [Azure CLI ile Azure Medya Hizmetleri API'sindeki](access-api-cli-how-to.md) adımları izleyin ve kimlik bilgilerini kaydedin. API'ye erişmek için bunları kullanmanız gerekir.
+- Dinamik ambalajı gözden [geçirin.](dynamic-packaging-overview.md)
+- Video [yükle, kodlama ve akış videolarını](stream-files-tutorial-with-api.md) inceleyin.
 
 ## <a name="create-an-input-asset-and-upload-a-local-file-into-it"></a>Bir giriş varlığı oluşturma ve içine yerel dosya yükleme 
 
-**CreateInputAsset** işlevi yeni bir giriş [Varlığı](https://docs.microsoft.com/rest/api/media/assets) oluşturur ve içine belirtilen yerel video dosyasını yükler. Bu **varlık** , kodlama işinize giriş olarak kullanılır. Media Services v3 'de, bir **işin** girişi bir **varlık**olabilir ya da HTTPS URL 'leri aracılığıyla Media Services hesabınız için kullanılabilir hale getirebilmeniz gereken içerik olabilir. 
+**CreateInputAsset** işlevi yeni bir giriş [Varlığı](https://docs.microsoft.com/rest/api/media/assets) oluşturur ve içine belirtilen yerel video dosyasını yükler. Bu **Varlık,** kodlama İşinize giriş olarak kullanılır. Medya Hizmetleri v3'te, **Bir İş'e** giriş bir **Varlık**veya HTTPS URL'leri aracılığıyla Medya Hizmetleri hesabınıza sunduğunuz içerik olabilir. 
 
-HTTPS URL 'sinden kodlama hakkında bilgi edinmek istiyorsanız [Bu makaleye](job-input-from-http-how-to.md) bakın.  
+HTTPS URL'sinden kodlama yı öğrenmek istiyorsanız, [bu makaleye](job-input-from-http-how-to.md) bakın.  
 
 Media Services v3’te dosyaları karşıya yüklemek için Azure Depolama API’lerini kullanırsınız. Aşağıdaki .NET kod parçacığı bunun nasıl yapıldığını gösterir.
 
 Aşağıdaki işlev şu eylemleri gerçekleştirir:
 
-* Bir **varlık** oluşturur 
-* [Depolama alanındaki varlığın kapsayıcısına](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-dotnet#upload-blobs-to-a-container) yazılabilir bir [SAS URL 'si](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) alır
+* **Varlık** Oluşturur 
+* Depodaki varlığın konteynerine yazılabilir bir [SAS](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) [URL'si](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-dotnet#upload-blobs-to-a-container) alır
 * SAS URL’sini kullanarak dosyayı depolamadaki kapsayıcıya yükler
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CreateInputAsset)]
 
-Oluşturulan giriş varlığının adını diğer yöntemlere geçirmeniz gerekiyorsa, `CreateInputAssetAsync` ' den döndürülen varlık nesnesindeki `Name` özelliğini kullandığınızdan emin olun. Örneğin, inputAsset.Name. 
+Oluşturulan giriş kıymetinin adını diğer yöntemlere geçirmeniz gerekiyorsa, dönen `Name` varlık nesnesi `CreateInputAssetAsync`üzerindeki özelliği (örneğin, inputAsset.Name. 
 
-## <a name="create-an-output-asset-to-store-the-result-of-the-encoding-job"></a>Kodlama işinin sonucunu depolamak için bir çıkış varlığı oluşturma
+## <a name="create-an-output-asset-to-store-the-result-of-the-encoding-job"></a>Kodlama işinin sonucunu depolamak için bir çıktı kıymeti oluşturma
 
-Çıktı [Varlığı](https://docs.microsoft.com/rest/api/media/assets), kodlama işinizin sonucunu depolar. Aşağıdaki işlev bir çıkış varlığının nasıl oluşturulacağını gösterir.
+Çıktı [Varlığı](https://docs.microsoft.com/rest/api/media/assets), kodlama işinizin sonucunu depolar. Aşağıdaki işlev, bir çıktı varlığının nasıl oluşturulabildiğini gösterir.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CreateOutputAsset)]
 
-Oluşturulan çıkış varlığının adını diğer yöntemlere geçirmeniz gerekiyorsa, `CreateIOutputAssetAsync` ' den döndürülen varlık nesnesindeki `Name` özelliğini kullandığınızdan emin olun. Örneğin, outputAsset.Name. 
+Oluşturulan çıktı varlığının adını diğer yöntemlere geçirmeniz gerekiyorsa, örneğin `Name` outputAsset.Name' dan döndürülen varlık nesnesindeki özelliği kullandığınızdan `CreateIOutputAssetAsync`emin olun. 
 
-Bu makale söz konusu olduğunda, `outputAsset.Name` değerini `SubmitJobAsync` ve `UploadAudioIntoOutputAsset` işlevlerine geçirin.
+Bu makalede, `outputAsset.Name` değeri `SubmitJobAsync` ve `UploadAudioIntoOutputAsset` işlevleri geçmek.
 
-## <a name="create-a-transform-and-a-job-that-encodes-the-uploaded-file"></a>Karşıya yüklenen dosyayı kodlayan bir dönüşüm ve iş oluşturma
+## <a name="create-a-transform-and-a-job-that-encodes-the-uploaded-file"></a>Yüklenen dosyayı kodlayan bir dönüşüm ve iş oluşturma
 
-Media Services’te içerik kodlarken veya işlerken, kodlama ayarlarını bir tarif olarak ayarlamak yaygın bir modeldir. Daha sonra bu tarifi bir videoya uygulamak üzere bir **İş** gönderirsiniz. Her yeni video için yeni işler göndererek, bu tarifi kitaplığınızdaki tüm videolarınıza uygulayacaksanız. Media Services içinde tarif, **Dönüşüm** olarak adlandırılır. Daha fazla bilgi için [Dönüşümler ve İşler](transform-concept.md) konusuna bakın. Bu öğreticide açıklanan örnek, videoyu çeşitli iOS ve Android cihazlarına akışla aktarmak için kodlayan bir tarifi tanımlar. 
+Media Services’te içerik kodlarken veya işlerken, kodlama ayarlarını bir tarif olarak ayarlamak yaygın bir modeldir. Daha sonra bu tarifi bir videoya uygulamak üzere bir **İş** gönderirsiniz. Her yeni video için yeni iş göndererek, bu tarifi kitaplığınızdaki tüm videolara uyguluyorsunuz. Media Services içinde tarif, **Dönüşüm** olarak adlandırılır. Daha fazla bilgi için [Dönüşümler ve İşler'e](transform-concept.md)bakın. Bu öğreticide açıklanan örnek, videoyu çeşitli iOS ve Android cihazlarına akışla aktarmak için kodlayan bir tarifi tanımlar. 
 
-Aşağıdaki örnek, bir dönüşüm (yoksa, yoksa) oluşturur.
+Aşağıdaki örnek bir dönüştürme oluşturur (varsa).
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#EnsureTransformExists)]
 
@@ -74,15 +74,15 @@ Aşağıdaki işlev bir iş gönderir.
 
 ## <a name="wait-for-the-job-to-complete"></a>İşin tamamlanmasını bekleyin
 
-İşin tamamlanması biraz sürüyor ve tamamlandığında bildirim almak istiyorsunuz. İşin tamamlanmasını beklemek için Event Grid kullanmanızı öneririz.
+İşin tamamlanması biraz sürüyor ve tamamlandığında bildirim almak istiyorsunuz. İşin tamamlanmasını beklemek için Olay Izgarasını kullanmanızı öneririz.
 
-İş, genellikle şu durumlardan geçer: **Zamanlanmış**, **sıraya alınmış**, **işleme**, **tamamlandı** (son durum). İş bir hatayla karşılaştıysa **Hata** durumunu alırsınız. İş iptal edilme sürecindeyse **İptal Ediliyor** ve **İptal Edildi** durumunu alırsınız.
+İş genellikle aşağıdaki durumlardan geçer: **Zamanlanmış**, **Sıralı**, **İşleme**, **Bitmiş** (son durum). İş bir hatayla karşılaştıysa **Hata** durumunu alırsınız. İş iptal edilme sürecindeyse **İptal Ediliyor** ve **İptal Edildi** durumunu alırsınız.
 
-Daha fazla bilgi için bkz. [Event Grid olaylarını işleme](reacting-to-media-services-events.md).
+Daha fazla bilgi için olay [kılavuzlarını işleme konusuna](reacting-to-media-services-events.md)bakın.
 
-## <a name="upload-the-audio-only-mp4-file"></a>Yalnızca ses MP4 dosyasını karşıya yükle
+## <a name="upload-the-audio-only-mp4-file"></a>Yalnızca sese özel MP4 dosyasını yükleme
 
-Çıktı varlığına açıklayıcı ses içeren ek salt ses MP4 dosyasını (AAC codec) karşıya yükleyin.  
+Çıkış varlığına açıklayıcı ses içeren yalnızca sese özel MP4 dosyasını (AAC codec) yükleyin.  
 
 ```csharp
 private static async Task UpoadAudioIntoOutputAsset(
@@ -127,22 +127,22 @@ private static async Task UpoadAudioIntoOutputAsset(
 }
 ```
 
-@No__t-0 işlevine yapılan çağrıya bir örnek aşağıda verilmiştir:
+Burada `UpoadAudioIntoOutputAsset` işlev için bir çağrı örneği:
 
 ```csharp
 await UpoadAudioIntoOutputAsset(client, config.ResourceGroup, config.AccountName, outputAsset.Name, "audio_description.m4a");
 ```
 
-## <a name="edit-the-ism-file"></a>. ISM dosyasını düzenleme
+## <a name="edit-the-ism-file"></a>.ism dosyasını edin
 
-Kodlama işiniz bittiğinde, çıkış varlığı kodlama işi tarafından oluşturulan dosyaları içerir. 
+Kodlama işiniz bittiğinde, çıktı kıymeti kodlama işi tarafından oluşturulan dosyaları içerir. 
 
-1. Azure portal, Media Services hesabınızla ilişkili depolama hesabına gidin. 
-1. Çıkış varlığınızın adı ile kapsayıcıyı bulun. 
-1. Kapsayıcıda. ISM dosyasını bulun ve **blobu Düzenle** ' ye tıklayın (sağ pencerede). 
-1. Açıklayıcı ses içeren karşıya yüklenen salt-tek MP4 dosyası (AAC codec) hakkındaki bilgileri ekleyerek ve tamamlandığında **Kaydet** ' e basarak. ISM dosyasını düzenleyin.
+1. Azure portalında, Medya Hizmetleri hesabınızla ilişkili depolama hesabına gidin. 
+1. Çıktı kıymetinizin adını içeren kapsayıcıyı bulun. 
+1. Kapsayıcıda .ism dosyasını bulun ve (sağ pencerede) **blob'u düzelt'i** tıklatın. 
+1. Açıklayıcı ses içeren yüklenen yalnızca ses eit MP4 dosyası (AAC codec) hakkındaki bilgileri ekleyerek .ism dosyasını düzenleme ve bittiğinde **Kaydet** tuşuna basın.
 
-    Açıklayıcı ses izlerini bildirmek için. ISM dosyasına "Erişilebilirlik" ve "rol" parametreleri eklemeniz gerekir. Ses açıklaması olarak bir ses izini bildirmek üzere bu parametreleri doğru bir şekilde ayarlamak sizin sorumluluğunuzdadır. Örneğin, aşağıdaki örnekte gösterildiği gibi, belirli bir ses izi için. ISM dosyasına `<param name="accessibility" value="description" />` ve `<param name="role" value="alternate" />` ekleyin.
+    Tanımlayıcı ses parçalarını işaret etmek için .ism dosyasına "erişilebilirlik" ve "rol" parametreleri eklemeniz gerekir. Bir ses parçasına ses açıklaması olarak sinyal vermek için bu parametreleri doğru şekilde ayarlamak sizin sorumluluğunuzdadır. Örneğin, aşağıdaki `<param name="accessibility" value="description" />` `<param name="role" value="alternate" />` örnekte gösterildiği gibi, belirli bir ses parçası için .ism dosyasına ekleyin ve .ism dosyasına ekleyin.
  
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -200,29 +200,29 @@ Kodlama işiniz bittiğinde, çıkış varlığı kodlama işi tarafından oluş
 </smil>
 ```
 
-## <a name="get-a-streaming-locator"></a>Akış Bulucu alma
+## <a name="get-a-streaming-locator"></a>Akış bulucusu alın
 
-Kodlama tamamlandıktan sonra sıradaki adım, çıktı Varlığındaki videoyu yürütmek için istemcilerin kullanımına sunmaktır. Bunu iki adımda gerçekleştirebilirsiniz: ilk olarak, bir [akış Bulucu](https://docs.microsoft.com/rest/api/media/streaminglocators)oluşturun ve ikinci olarak, istemcilerin kullanabileceği akış URL 'lerini oluşturun. 
+Kodlama tamamlandıktan sonra sıradaki adım, çıktı Varlığındaki videoyu yürütmek için istemcilerin kullanımına sunmaktır. Bunu iki adımda gerçekleştirebilirsiniz: birincisi, [bir Akış Bulucu](https://docs.microsoft.com/rest/api/media/streaminglocators)oluşturun ve ikincisi, istemcilerin kullanabileceği akış URL'lerini oluşturun. 
 
-**Akış Bulucu** oluşturma işlemine yayımlama denir. Varsayılan olarak, **akış Bulucu** , API çağrılarını yaptıktan hemen sonra geçerli olur ve isteğe bağlı başlangıç ve bitiş zamanlarını yapılandırmadıkça silinene kadar sürer. 
+**Akış Lı Bulucu** oluşturma işlemine yayımlama denir. Varsayılan olarak, **Akış Bulucu,** API aramalarını yaptıktan hemen sonra geçerlidir ve isteğe bağlı başlangıç ve bitiş saatlerini yapılandırmadığınız sürece silinene kadar sürer. 
 
 Bir [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) oluştururken istenen **StreamingPolicyName** değerini belirtmeniz gerekir. Bu örnekte, temiz (şifrelenmemiş) içeriğin akışını yapacağınız için önceden tanımlı temiz akış ilkesi **PredefinedStreamingPolicy.ClearStreamingOnly** kullanılır.
 
 > [!IMPORTANT]
-> Özel bir [akış ilkesi](https://docs.microsoft.com/rest/api/media/streamingpolicies)kullanırken, medya hizmeti hesabınız için sınırlı sayıda ilke kümesi tasarlamalı ve aynı şifreleme seçenekleri ve protokoller gerektiğinde bunları streamingbulucular için yeniden kullanmanız gerekir. Medya hizmeti hesabınızın akış Ilkesi girişi sayısı için bir kotası vardır. Her bir akış bulucu için yeni bir akış Ilkesi oluşturmamalısınız.
+> Özel bir [Akış İlkesi](https://docs.microsoft.com/rest/api/media/streamingpolicies)kullanırken, Medya Hizmeti hesabınız için sınırlı sayıda bu tür ilke ler tasarlamalı ve aynı şifreleme seçenekleri ve protokolleri gerektiğinde Bunları StreamingLocators'Larınız için yeniden kullanmalısınız. Medya Hizmeti hesabınızda Akış İlkesi girişi sayısı için bir kota vardır. Her Akış Bulucu için yeni bir Akış İlkesi oluşturmamalısınız.
 
 Aşağıdaki kod, benzersiz bir locatorName ile işlevi çağırdığınızı varsayar.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CreateStreamingLocator)]
 
-Bu konudaki örnek akışı ele alırken, aşamalı indirme yoluyla video teslim etmek için bir akış Bulucu oluşturmak için aynı çağrıyı kullanabilirsiniz.
+Bu konudaki örnek akıştan bahsederken, aşamalı indirme yoluyla video sunmak için bir Akış Bulucu oluşturmak için aynı aramayı kullanabilirsiniz.
 
 ### <a name="get-streaming-urls"></a>Akış URL'leri alma
 
-Artık [akış bulucunun](https://docs.microsoft.com/rest/api/media/streaminglocators) oluşturulduğuna göre, **Getstreamingurls**Içinde gösterildiği gibi akış URL 'lerini alabilirsiniz. URL oluşturmak için, [akış uç noktası](https://docs.microsoft.com/rest/api/media/streamingendpoints) ana bilgisayar adını ve **akış Bulucu** yolunu birleştirmeniz gerekir. Bu örnekte, *varsayılan* **akış uç noktası** kullanılır. İlk olarak bir medya hizmeti hesabı oluşturduğunuzda, bu *varsayılan* **akış uç noktası** durdurulmuş durumda olacaktır, bu yüzden **Start**'ı çağırmanız gerekir.
+[Artık Akış Bulucu](https://docs.microsoft.com/rest/api/media/streaminglocators) oluşturulduğuna göre, **GetStreamingURLs'da**gösterildiği gibi akış URL'lerini alabilirsiniz. URL oluşturmak [için, Akış Uç Nokta](https://docs.microsoft.com/rest/api/media/streamingendpoints) ana bilgisayar adını ve **Akış Lı Konum belirleme** yolunu oluşturmanız gerekir. Bu örnekte, *varsayılan* **Akış Bitiş Noktası** kullanılır. Bir Medya Hizmeti hesabı ilk oluşturduğunuzda, bu *varsayılan* **Akış Bitiş Noktası** durdurulmuş durumda olacaktır, bu nedenle **Başlat'ı**aramanız gerekir.
 
 > [!NOTE]
-> Bu yöntemde, çıkış varlığı için **akış bulucuyu** oluştururken kullanılan locatorname öğesine ihtiyacınız vardır.
+> Bu yöntemde, çıkış Varlığı için **Akış Bulucu'yu** oluştururken kullanılan yer bulucu Adı gerekir.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#GetStreamingURLs)]
 
@@ -233,10 +233,10 @@ Bu makalede, akışı test etmek için Azure Media Player kullanılmaktadır.
 > [!NOTE]
 > Oynatıcı bir https sitesinde barındırılıyorsa, "https" URL’sini güncelleştirdiğinizden emin olun.
 
-1. Bir web tarayıcısı açın ve [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/) sayfasına gidin.
-2. **URL:** kutusunda, uygulamanızdan ALDıĞıNıZ akış URL değerlerinden birini yapıştırın. 
+1. Bir web tarayıcısı [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/)açın ve 'ye gidin.
+2. **URL'ye:** kutu, uygulamanızdan aldığınız akışlı URL değerlerinden birini yapıştırın. 
  
-     URL 'yi HLS, Dash veya kesintisiz biçimde yapıştırabilir ve Azure Media Player cihazınızda otomatik olarak kayıttan yürütmek için uygun bir akış protokolüne geçiş yapar.
+     URL'yi HLS, Dash veya Smooth biçiminde yapıştırabilirsiniz ve Azure Media Player cihazınızda otomatik olarak oynatılmak üzere uygun bir akış protokolüne geçer.
 3. **Oynatıcıyı Güncelleştir** düğmesine basın.
 
 Azure Media Player, test için kullanılabilir, ancak üretim ortamında kullanılmamalıdır. 

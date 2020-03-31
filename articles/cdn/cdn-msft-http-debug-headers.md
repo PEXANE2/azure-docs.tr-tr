@@ -1,6 +1,6 @@
 ---
-title: Microsoft 'tan Azure CDN için HTTP üstbilgilerini hata ayıkla | Microsoft Docs
-description: Hata ayıklama önbelleği istek üstbilgileri, istenen varlığa uygulanan önbellek ilkesi hakkında ek bilgiler sağlar. Bu üstbilgiler, Microsoft 'tan Azure CDN özgüdür.
+title: Microsoft'tan Azure CDN için HTTP üstbilgisini hata ayıklama | Microsoft Dokümanlar
+description: Hata ayıklama önbellek istek üstbilgileri, istenen varlığa uygulanan önbellek ilkesi hakkında ek bilgiler sağlar. Bu üstbilgi, Microsoft'un Azure CDN'ine özgüdir.
 services: cdn
 documentationcenter: ''
 author: mdgattuso
@@ -15,21 +15,21 @@ ms.topic: article
 ms.date: 07/31/2019
 ms.author: magattus
 ms.openlocfilehash: 297c65c1cd89163b8663819f844dc6c2a83fd1bf
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68814079"
 ---
-# <a name="debug-http-header-for-azure-cdn-from-microsoft"></a>Microsoft 'tan Azure CDN için HTTP üst bilgisinde hata ayıkla
-Hata ayıklama yanıt üst bilgisi `X-Cache`, içerik tarafından hangi CDN yığınının hangi katmana sunulduğunu, ayrıntılar sağlar. Bu üst bilgi, Microsoft 'tan Azure CDN özgüdür.
+# <a name="debug-http-header-for-azure-cdn-from-microsoft"></a>Microsoft'tan Azure CDN için HTTP üstbilgisini hata ayıklama
+Hata ayıklama yanıtı `X-Cache`üstbilgisi, içeriğin hangi katmandan sunulduğuna ilişkin ayrıntıları sağlar. Bu üstbilgi Microsoft'tan Azure CDN'ye özgüdür.
 
-### <a name="response-header-format"></a>Yanıt üst bilgisi biçimi
+### <a name="response-header-format"></a>Yanıt üstbilgi biçimi
 
-Üstbilgi | Açıklama
+Üst bilgi | Açıklama
 -------|------------
-X-önbellek: TCP_HIT | Bu üst bilgi, içerik CDN Edge önbelleğinden sunulduğunda döndürülür. 
-X-önbellek: TCP_REMOTE_HIT | Bu üst bilgi, içerik CDN bölgesel önbelleğinden (kaynak kalkan katmanı) sunulduğunda döndürülür
-X-önbellek: TCP_MISS | Bu üst bilgi, bir önbellek isabetsizliği olduğunda ve içerik kaynaktan sunulduğunda döndürülür. 
+X-Önbellek: TCP_HIT | Bu üstbilgi, içerik CDN kenar önbelleğinden sunulduğunda döndürülür. 
+X-Önbellek: TCP_REMOTE_HIT | Bu üstbilgi, içerik CDN bölgesel önbelleğinden (Başlangıç kalkanı katmanı) sunulduğunda döndürülür
+X-Önbellek: TCP_MISS | Bu üstbilgi, önbellek miss olduğunda döndürülür ve içerik Origin'den sunulur. 
 
 

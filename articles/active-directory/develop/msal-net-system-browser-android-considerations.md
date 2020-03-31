@@ -1,7 +1,7 @@
 ---
-title: Xamarin Android Sistem tarayıcısı konuları (MSAL.NET) | Mavisi
+title: Xamarin Android sistemi tarayıcı hususlar (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
-description: .NET için Microsoft kimlik doğrulama kitaplığı (MSAL.NET) ile Xamarin Android üzerinde sistem tarayıcıları kullanmayla ilgili önemli noktalar hakkında bilgi edinin.
+description: .NET (MSAL.NET) için Microsoft Kimlik Doğrulama Kitaplığı ile Xamarin Android'de sistem tarayıcılarını kullanmak için dikkat edilmesi gereken hususlar hakkında bilgi edinin.
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -15,62 +15,62 @@ ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ad26a4d619a7984f08a8decc87f9339adae47cdd
-ms.sourcegitcommit: f718b98dfe37fc6599d3a2de3d70c168e29d5156
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77132604"
 ---
-#  <a name="xamarin-android-system-browser-considerations-for-using-msalnet"></a>MSAL.NET kullanmaya yönelik Xamarin Android Sistem tarayıcısı konuları
+#  <a name="xamarin-android-system-browser-considerations-for-using-msalnet"></a>MSAL.NET kullanmak için Xamarin Android sistemi tarayıcı hususlar
 
-Bu makalede, .NET için Microsoft kimlik doğrulama kitaplığı (MSAL.NET) ile Xamarin Android 'de sistem tarayıcısını kullandığınızda göz önünde bulundurmanız gerekenler açıklanmaktadır.
+Bu makalede, .NET (MSAL.NET) için Microsoft Kimlik Doğrulama Kitaplığı ile Xamarin Android'deki sistem tarayıcısını kullandığınızda nelere dikkat edilmesi gerektiğini anlatılmaktadır.
 
-MSAL.NET 2.4.0 Preview sürümünden itibaren, MSAL.NET Chrome dışındaki tarayıcıları destekler. Artık, kimlik doğrulaması için Android cihazında Chrome 'un yüklü olmasını gerektirmez.
+MSAL.NET 2.4.0 Önizleme ile başlayan MSAL.NET, Chrome dışındaki tarayıcıları destekler. Artık chrome'un kimlik doğrulaması için Android cihaza yüklenmesini gerektirmez.
 
-Özel sekmeleri destekleyen tarayıcılar kullanmanızı öneririz. Bu tarayıcıların bazı örnekleri aşağıda verilmiştir:
+Özel sekmeleri destekleyen tarayıcılar kullanmanızı öneririz. Aşağıda bu tarayıcılardan bazı örnekler verilmiştir:
 
-| Özel sekmeler desteği olan tarayıcılar | Paket adı |
+| Özel sekme desteğine sahip tarayıcılar | Paket adı |
 |------| ------- |
-|Chrome | com. Android. Chrome|
-|Microsoft Edge | com. Microsoft. emmx|
-|'U | org. Mozilla. Firefox|
-|Eko | com. ekosı. Android|
-|Kivi | com. kiwibrowser. Browser|
-|Brave | com. brave. Browser|
+|Chrome | com.android.chrome|
+|Microsoft Edge | com.microsoft.emmx|
+|Firefox | org.mozilla.firefox|
+|Ecosia | com.ecosia.android|
+|Kivi | com.kiwibrowser.browser|
+|Cesur | com.brave.browser|
 
-Sınamamız, özel sekme desteği sunan tarayıcıları tanımlamaya ek olarak, özel sekmeleri desteklemeyen birkaç tarayıcının kimlik doğrulaması için de çalıştığını gösterir. Bu tarayıcılarda Opera, Opera Mini, InBrowser ve Maxthon bulunur. 
+Özel sekmedesteği sunan tarayıcıları tanımlamaya ek olarak, testlerimiz özel sekmeleri desteklemeyen birkaç tarayıcının da kimlik doğrulama için çalıştığını gösterir. Bu tarayıcılar Opera, Opera Mini, InBrowser ve Maxthon içerir. 
 
-## <a name="tested-devices-and-browsers"></a>Test edilen cihazlar ve tarayıcılar
-Aşağıdaki tabloda, kimlik doğrulama uyumluluğu için test edilmiş cihazlar ve tarayıcılar listelenmektedir.
+## <a name="tested-devices-and-browsers"></a>Test edilmiş cihazlar ve tarayıcılar
+Aşağıdaki tabloda kimlik doğrulama uyumluluğu için test edilmiş aygıtlar ve tarayıcılar listelenir.
 
 | Cihaz | Tarayıcı     |  Sonuç  | 
 | ------------- |:-------------:|:-----:|
-| Huawei/One + | Chrome\* | Geç|
-| Huawei/One + | Edge\* | Geç|
-| Huawei/One + | Firefox\* | Geç|
-| Huawei/One + | Brave\* | Geç|
-| Tek + | Eko\* | Geç|
-| Tek + | Kiwi\* | Geç|
-| Huawei/One + | Opera | Geç|
-| Huawei | İşletimsel mini | Geç|
-| Huawei/One + | InBrowser | Geç|
-| Tek + | Maxthon | Geç|
-| Huawei/One + | DuckDuckGo | Kullanıcı kimlik doğrulamasını iptal etti|
-| Huawei/One + | UC tarayıcısı | Kullanıcı kimlik doğrulamasını iptal etti|
-| Tek + | Dolphin | Kullanıcı kimlik doğrulamasını iptal etti|
-| Tek + | CM tarayıcısı | Kullanıcı kimlik doğrulamasını iptal etti|
-| Huawei/One + | hiçbiri yüklü değil | AndroidActivityNotFound özel durumu|
+| Huawei/Bir+ | Chrome\* | Geçirmek|
+| Huawei/Bir+ | Edge\* | Geçirmek|
+| Huawei/Bir+ | Firefox\* | Geçirmek|
+| Huawei/Bir+ | Cesur\* | Geçirmek|
+| Bir+ | Ecosia\* | Geçirmek|
+| Bir+ | Kivi\* | Geçirmek|
+| Huawei/Bir+ | Opera | Geçirmek|
+| Huawei | OperaMini | Geçirmek|
+| Huawei/Bir+ | Tarayıcı Nın | Geçirmek|
+| Bir+ | Maxthon | Geçirmek|
+| Huawei/Bir+ | DuckDuckGo | Kullanıcı kimlik doğrulaması iptal|
+| Huawei/Bir+ | UC Tarayıcı | Kullanıcı kimlik doğrulaması iptal|
+| Bir+ | Yunus | Kullanıcı kimlik doğrulaması iptal|
+| Bir+ | CM Tarayıcı | Kullanıcı kimlik doğrulaması iptal|
+| Huawei/Bir+ | Hiçbiri yüklü değil | AndroidActivityNotFound özel durum|
 
-\* özel sekmeleri destekler
+\*Özel sekmeleri destekler
 
 ## <a name="known-issues"></a>Bilinen sorunlar
 
-Kullanıcı cihazda etkin bir tarayıcı yoksa, MSAL.NET bir `AndroidActivityNotFound` özel durumu oluşturur.  
-  - **Risk azaltma**: kullanıcıdan cihazındaki bir tarayıcıyı etkinleştirmesini isteyin. Özel sekmeleri destekleyen bir tarayıcı önerin.
+Kullanıcının aygıtta tarayıcısı etkin değilse, MSAL.NET `AndroidActivityNotFound` bir özel durum oluşturur.  
+  - **Azaltma**: Kullanıcıdan cihazında bir tarayıcıyı etkinleştirmesini isteyin. Özel sekmeleri destekleyen bir tarayıcı önerin.
 
-Kimlik doğrulaması başarısız olursa (örneğin, kimlik doğrulaması DuckDuckGo ile başlatırsa), MSAL.NET `AuthenticationCanceled MsalClientException`döndürür. 
-  - **Kök sorun**: cihazda özel sekmeleri destekleyen bir tarayıcı etkinleştirilmemiş. Kimlik doğrulaması, kimlik doğrulamasını tamamlayamadık bir tarayıcıyla başlatıldı. 
-  - **Risk azaltma**: kullanıcıdan cihazındaki bir tarayıcıyı etkinleştirmesini isteyin. Özel sekmeleri destekleyen bir tarayıcı önerin.
+Kimlik doğrulama başarısız olursa (örneğin, kimlik doğrulama DuckDuckGo ile `AuthenticationCanceled MsalClientException`başlatılırsa), MSAL.NET geri döner. 
+  - **Kök sorunu**: Aygıtta özel sekmeleri destekleyen bir tarayıcı etkinleştirilen değildi. Kimlik doğrulaması, kimlik doğrulamasını tamamlayamayan bir tarayıcıyla başlatılır. 
+  - **Azaltma**: Kullanıcıdan cihazında bir tarayıcıyı etkinleştirmesini isteyin. Özel sekmeleri destekleyen bir tarayıcı önerin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Daha fazla bilgi ve kod örneği için bkz. Xamarin Android ve [Embedded sistem Web Kullanıcı arabiriminde](msal-net-web-browsers.md#embedded-vs-system-web-ui)bir [Katıştırılmış Web tarayıcısı ve bir sistem tarayıcısı arasında seçim yapma](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/MSAL.NET-uses-web-browser#choosing-between-embedded-web-browser-or-system-browser-on-xamarinandroid) .  
+Daha fazla bilgi ve kod örnekleri için, [gömülü bir web tarayıcısı ile Xamarin Android](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/MSAL.NET-uses-web-browser#choosing-between-embedded-web-browser-or-system-browser-on-xamarinandroid) ve Gömülü karşı sistem web Kullanıcı Arabirimi'nde bir sistem tarayıcısı arasında seçim ebakına bakın. [Embedded versus system web UI](msal-net-web-browsers.md#embedded-vs-system-web-ui)  

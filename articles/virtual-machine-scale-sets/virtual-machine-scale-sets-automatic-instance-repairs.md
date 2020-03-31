@@ -1,6 +1,6 @@
 ---
 title: Azure sanal makine ölçek kümeleri ile otomatik örnek onarımları
-description: Ölçek kümesindeki sanal makine örnekleri için otomatik onarımlar ilkesini yapılandırma hakkında bilgi edinin
+description: VM örnekleri için otomatik onarım ilkesini ölçek kümesinde nasıl yapılandırılabildiğini öğrenin
 author: avirishuv
 manager: vashan
 tags: azure-resource-manager
@@ -11,28 +11,28 @@ ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: avverma
 ms.openlocfilehash: f335b0fb3396103c321d740bcf6d125e60e95086
-ms.sourcegitcommit: d45fd299815ee29ce65fd68fd5e0ecf774546a47
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/04/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78274820"
 ---
 # <a name="preview-automatic-instance-repairs-for-azure-virtual-machine-scale-sets"></a>Önizleme: Azure sanal makine ölçek kümeleri için otomatik örnek onarımları
 
-Azure sanal makine ölçek kümeleri için otomatik örnek onarımlarını etkinleştirmek, sağlıklı bir örnek kümesini korurken uygulamalar için yüksek kullanılabilirlik elde etmenize yardımcı olur. Ölçek kümesindeki bir örnek, [uygulama sistem durumu uzantısı](./virtual-machine-scale-sets-health-extension.md) ya da [Yük Dengeleyici Sistem durumu araştırmaları](../load-balancer/load-balancer-custom-probe-overview.md)tarafından bildirildiği şekilde sağlıksız olarak bulunursa, bu özellik sağlıksız örneği silerek örnek onarımı gerçekleştirir ve bunu değiştirmek için yeni bir tane oluşturur.
+Azure sanal makine ölçek kümeleri için otomatik örnek onarımlarını etkinleştirmek, bir dizi sağlıklı örnek sağlayarak uygulamalar için yüksek kullanılabilirlik elde etmenize yardımcı olur. Ölçek kümesindeki bir [örneğin, Uygulama Durumu uzantısı](./virtual-machine-scale-sets-health-extension.md) veya Yük [dengeleyici sabunu sondaları](../load-balancer/load-balancer-custom-probe-overview.md)tarafından bildirilen sağlıksız olduğu tespit edilirse, bu özellik sağlıksız örneği silerek ve değiştirmek için yeni bir örnek oluşturarak otomatik olarak örnek onarımı gerçekleştirir.
 
 > [!NOTE]
-> Bu önizleme özelliği, bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez.
+> Bu önizleme özelliği hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önerilmez.
 
 ## <a name="requirements-for-using-automatic-instance-repairs"></a>Otomatik örnek onarımları kullanma gereksinimleri
 
-**Otomatik örnek onarımları önizlemeyi kabul et**
+**Otomatik örnek onarım önizlemesini tercih edin**
 
-Otomatik örnek onarma önizlemesi için kabul etmek üzere REST API veya Azure PowerShell kullanın. Bu adımlar, aboneliğinizi önizleme özelliği için kaydeder. Bu özelliği kullanmak için yalnızca bir kerelik kurulum gereklidir. Aboneliğiniz zaten otomatik örnek onarımları önizlemesi için kaydedilmişse, yeniden kaydolmanız gerekmez. 
+Otomatik örnek onarım önizlemesini tercih etmek için REST API veya Azure PowerShell'i kullanın. Bu adımlar, önizleme özelliği için aboneliğinizi kaydeder. Bu özelliği kullanmak için yalnızca bir kerelik kurulum gerektiğini unutmayın. Aboneliğiniz otomatik örnek onarım önizlemesi için zaten kayıtlıysa, yeniden kaydolmanız gerekmez. 
 
 REST API kullanma 
 
-1. Özellikleri kullanarak özelliğe kaydolun [-Kaydet](/rest/api/resources/features/register) 
+1. Özellikler ' i kullanarak özellik için kaydolun [- Register](/rest/api/resources/features/register) 
 
 ```
 POST on '/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/Microsoft.Compute/features/RepairVMScaleSetInstancesPreview/register?api-version=2015-12-01'
@@ -49,7 +49,7 @@ POST on '/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/
 }
 ```
 
-2. *Durumun* *kayıtlı*olarak değiştirilmesi için birkaç dakika bekleyin. Bunu doğrulamak için aşağıdaki API 'YI kullanabilirsiniz.
+2. *Devletin* *Kayıtlı*olarak değişmesi için birkaç dakika bekleyin. Bunu onaylamak için aşağıdaki API'yi kullanabilirsiniz.
 
 ```
 GET on '/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/Microsoft.Compute/features/RepairVMScaleSetInstancesPreview?api-version=2015-12-01'
@@ -66,7 +66,7 @@ GET on '/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/M
 }
 ```
 
-3. *Durum* *kayıtlı*olarak değiştirildikten sonra, aşağıdakileri çalıştırın.
+3. *Devlet* *Kayıtlı*olarak değiştirildikten sonra aşağıdakileri çalıştırın.
 
 ```
 POST on '/subscriptions/{subscriptionId}/providers/Microsoft.Compute/register?api-version=2015-12-01'
@@ -74,7 +74,7 @@ POST on '/subscriptions/{subscriptionId}/providers/Microsoft.Compute/register?ap
 
 Azure PowerShell’i kullanma
 
-1. Cmdlet [register-AzureRmResourceProvider](/powershell/module/azurerm.resources/register-azurermresourceprovider) öğesini ve ardından [register-AzureRmProviderFeature](/powershell/module/azurerm.resources/register-azurermproviderfeature) öğesini kullanarak özelliğe kaydolun
+1. Cmdlet [Register-AzureRmResourceProvider](/powershell/module/azurerm.resources/register-azurermresourceprovider) ve ardından [Register-AzureRmProviderFeature'ı](/powershell/module/azurerm.resources/register-azurermproviderfeature) kullanarak özellik için kaydolun
 
 ```azurepowershell-interactive
 Register-AzureRmResourceProvider `
@@ -85,7 +85,7 @@ Register-AzureRmProviderFeature `
  -FeatureName RepairVMScaleSetInstancesPreview
 ```
 
-2. *Registrationstate* 'in *kayıtlı*olarak değiştirilmesi için birkaç dakika bekleyin. Bunu doğrulamak için aşağıdaki cmdlet 'i kullanabilirsiniz.
+2. *RegistrationState'in* *Kayıtlı*olarak değişmesi için birkaç dakika bekleyin. Bunu onaylamak için aşağıdaki cmdlet'i kullanabilirsiniz.
 
 ```azurepowershell-interactive
 Get-AzureRmProviderFeature `
@@ -95,78 +95,78 @@ Get-AzureRmProviderFeature `
 
  Yanıt aşağıdaki gibi olmalıdır.
 
-| FeatureName                           | Adı            | RegistrationState       |
+| Özellik Adı                           | Sağlayıcı Adı            | Kayıt Durumu       |
 |---------------------------------------|-------------------------|-------------------------|
 | RepairVMScaleSetInstancesPreview      | Microsoft.Compute       | Kaydedildi              |
 
-3. *Registrationstate* , *kayıtlı*olarak değiştirilecek şekilde değiştikten sonra aşağıdaki cmdlet 'i çalıştırın.
+3. *RegistrationState'in* *Kayıtlı*olarak değiştirilmesinden sonra aşağıdaki cmdlet'i çalıştırın.
 
 ```azurepowershell-interactive
 Register-AzureRmResourceProvider `
  -ProviderNamespace Microsoft.Compute
 ```
 
-**Ölçek kümesi için uygulama sistem durumu izlemeyi etkinleştir**
+**Ölçek kümesi için uygulama durumu izlemesini etkinleştirme**
 
-Ölçek kümesi, etkin örnekler için uygulama sistem durumu izleme içermelidir. Bu, [uygulama durumu uzantısı](./virtual-machine-scale-sets-health-extension.md) ya da [yük dengeleyici durum araştırmaları](../load-balancer/load-balancer-custom-probe-overview.md)kullanılarak yapılabilir. Tek seferde bunlardan yalnızca biri etkinleştirilebilir. Uygulama sistem durumu uzantısı veya yük dengeleyici, uygulama sistem durumunu tespit etmek için sanal makine örneklerinde yapılandırılan uygulama uç noktasının ping olarak araştırmasını sağlar. Bu sistem durumu, ölçek kümesi Orchestrator tarafından örnek durumunu izlemek ve gerektiğinde onarım gerçekleştirmek için kullanılır.
+Ölçek kümesi, örneğin uygulama durumu izleme etkin olmalıdır. Bu uygulama sağlık [uzantısı](./virtual-machine-scale-sets-health-extension.md) veya [Yük dengeleyici sağlık probları](../load-balancer/load-balancer-custom-probe-overview.md)kullanılarak yapılabilir. Bunlardan yalnızca biri aynı anda etkinleştirilebilir. Uygulama durumu uzantısı veya yük dengeleyici, uygulama durumu durumunu belirlemek için sanal makine örneklerinde yapılandırılan uygulama bitiş noktasını pingler. Bu sistem durumu, örnek durumu izlemek ve gerektiğinde onarım yapmak için ölçek kümesi orchestrator tarafından kullanılır.
 
-**Sistem durumunu sağlamak için uç noktayı yapılandırma**
+**Sistem durumu durumu sağlamak için bitiş noktasını yapılandırma**
 
-Otomatik örnek onarım ilkesini etkinleştirmeden önce, ölçek kümesi örneklerinin uygulama sistem durumunu göstermek için yapılandırılmış uygulama uç noktasına sahip olduğundan emin olun. Bir örnek bu uygulama uç noktasında 200 (Tamam) durumunu döndürdüğünde, örnek "sağlıklı" olarak işaretlenir. Diğer tüm durumlarda, aşağıdaki senaryolar da dahil olmak üzere örnek "sağlıksız" olarak işaretlenir:
+Otomatik örnek onarım ilkesini etkinleştirmeden önce, ölçek kümesi örneklerinin uygulama sistem durumu durumunu yayarlar için uygulama bitiş noktası nı yapılandırdığından emin olun. Bir örnek bu uygulama bitiş noktasında 200 (Tamam) durumunu döndürdüğünde, örnek "Sağlıklı" olarak işaretlenir. Diğer tüm durumlarda, örnek aşağıdaki senaryolar da dahil olmak üzere "Sağlıksız" olarak işaretlenir:
 
-- Uygulama sistem durumu sağlamak için sanal makine örnekleri içinde yapılandırılmış bir uygulama uç noktası yok
-- Uygulama uç noktası yanlış yapılandırıldığında
-- Uygulama uç noktasına erişilemiyorsa
+- Uygulama durumu durumunu sağlamak için sanal makine örnekleri içinde yapılandırılan bir uygulama bitiş noktası olmadığında
+- Uygulama bitiş noktası yanlış yapılandırıldığında
+- Uygulama bitiş noktasına ulaşılamadığında
 
-"Sağlıksız" olarak işaretlenmiş örnekler için otomatik onarımlar ölçek kümesi tarafından tetiklenir. Uç nokta yapılandırılırken, istenmeyen örnek onarımlarını önlemek için otomatik onarımlar ilkesini etkinleştirmeden önce uygulama uç noktasının doğru yapılandırıldığından emin olun.
+"Sağlıksız" olarak işaretlenmiş örneklerde, otomatik onarımlar ölçek kümesi tarafından tetiklenir. Bitiş noktası yapılandırılırken, istenmeyen örnek onarımlarını önlemek için otomatik onarım ilkesini etkinleştirmeden önce uygulama bitiş noktasının doğru şekilde yapılandırıldığından emin olun.
 
-**Tek yerleşim grubunu etkinleştir**
+**Tek yerleşim grubunu etkinleştirme**
 
-Bu önizleme Şu anda yalnızca tek bir yerleştirme grubu olarak dağıtılan ölçek kümeleri için kullanılabilir. *Tekplacementgroup* özelliği, ölçek kümesinin otomatik örnek onarımları özelliğini kullanması için *true* olarak ayarlanmalıdır. [Yerleştirme grupları](./virtual-machine-scale-sets-placement-groups.md#placement-groups)hakkında daha fazla bilgi edinin.
+Bu önizleme şu anda yalnızca tek bir yerleşim grubu olarak dağıtılan ölçek kümeleri için kullanılabilir. Özellik *singlePlacementGroup* otomatik örnek onarım özelliği ni kullanmak için ölçek ayarınız için *doğru* olarak ayarlanmalıdır. [Yerleşim grupları](./virtual-machine-scale-sets-placement-groups.md#placement-groups)hakkında daha fazla bilgi edinin.
 
 **API sürümü**
 
-İşlem API 'SI sürüm 2018-10-01 veya üzeri için otomatik onarım ilkesi desteklenir.
+Otomatik onarım ilkesi, 2018-10-01 veya daha yüksek işlem API sürümü için desteklenir.
 
-**Kaynak veya abonelik taşınmasındaki kısıtlamalar**
+**Kaynak veya abonelik hamlelerinde kısıtlamalar**
 
-Bu önizlemenin bir parçası olarak, otomatik onarımlar ilkesi etkinleştirildiğinde, kaynak veya abonelik taşınanlar ölçek kümeleri için şu anda desteklenmiyor.
+Bu önizlemenin bir parçası olarak, otomatik onarım ilkesi etkinleştirildiğinde, kaynak veya abonelik hareketleri şu anda ölçek kümeleri için desteklenmez.
 
-**Service Fabric ölçek kümeleri için kısıtlama**
+**Hizmet kumaş ölçek setleri için kısıtlama**
 
-Bu önizleme özelliği şu anda Service Fabric ölçek kümeleri için desteklenmiyor.
+Bu önizleme özelliği şu anda servis kumaş ölçek kümeleri için desteklenmez.
 
 ## <a name="how-do-automatic-instance-repairs-work"></a>Otomatik örnek onarımları nasıl çalışır?
 
-Otomatik örnek onarma özelliği, bir ölçek kümesindeki tek tek örneklerin sistem durumunu izlemeye dayanır. Ölçek kümesindeki sanal makine örnekleri, uygulama durumu [Uzantısı](./virtual-machine-scale-sets-health-extension.md) veya [Yük Dengeleyici Sistem durumu araştırmaları](../load-balancer/load-balancer-custom-probe-overview.md)kullanılarak uygulama sistem durumunu göstermek üzere yapılandırılabilir. Bir örneğin sağlıksız olduğu bulunursa, ölçek kümesi sorunlu örneği silerek ve yeni bir tane oluşturarak onarım eylemi gerçekleştirir. Bu özellik, *Automaticrepairspolicy* nesnesi kullanılarak sanal makine ölçek kümesi modelinde etkinleştirilebilir.
+Otomatik örnek onarım özelliği, bir ölçek kümesindeki tek tek örneklerin sistem durumu izlemesine dayanır. Bir ölçek kümesindeki VM [örnekleri, Uygulama Durumu uzantısı](./virtual-machine-scale-sets-health-extension.md) veya [Yük dengeleyici sistem sondaları](../load-balancer/load-balancer-custom-probe-overview.md)kullanılarak uygulama durumu durumunu yayarlar şekilde yapılandırılabilir. Bir örneğin sağlıksız olduğu tespit edilirse, ölçek kümesi sağlıksız örneği silerek ve değiştirmek için yeni bir örnek oluşturarak onarım eylemi gerçekleştirir. Bu özellik *otomatikRepairsPolicy* nesnesi kullanılarak sanal makine ölçeği kümesi modelinde etkinleştirilebilir.
 
 ### <a name="batching"></a>Toplu İşleme
 
-Otomatik örnek onarma işlemleri toplu olarak gerçekleştirilir. Belirli bir zamanda, ölçek kümesindeki örneklerin %5 ' inden fazlası otomatik onarımlar ilkesi aracılığıyla onarılamamakta. Bu, aynı anda sağlıksız bir şekilde bulunursa çok sayıda örnek için eşzamanlı silme ve yeniden oluşturma yapmaktan kaçınmaya yardımcı olur.
+Otomatik örnek onarım işlemleri toplu olarak gerçekleştirilir. Herhangi bir zamanda, ölçek kümesindeki örneklerin en fazla %5'i otomatik onarım ilkesi yle onarılır. Bu, aynı anda sağlıksız bulunursa, aynı anda silinmesini ve çok sayıda örneğin yeniden oluşturulmasını önlemeye yardımcı olur.
 
 ### <a name="grace-period"></a>Yetkisiz kullanım süresi
 
-Bir örnek, ölçek kümesinde gerçekleştirilen bir PUT, PATCH veya POST eylemi nedeniyle bir durum değişikliği işleminden geçtiğinde (örneğin, yeniden görüntü, yeniden dağıtma, güncelleştirme, vb.), söz konusu örnekteki herhangi bir onarım eylemi yalnızca yetkisiz kullanım süresi dolduktan sonra gerçekleştirilir. Yetkisiz kullanım süresi, örneğin sağlıklı duruma dönmesi için izin verilen sürenin miktarıdır. Yetkisiz kullanım süresi, durum değişikliği tamamlandıktan sonra başlar. Bu, zamanından önce veya yanlışlıkla onarım işlemlerinden kaçınmaya yardımcı olur. Kullanım süresi, ölçek kümesindeki yeni oluşturulan her örnek için kabul edilir (onarım işleminin sonucu olarak oluşturulan diğeri dahil). Kullanım süresi, ISO 8601 biçimindeki dakikalar içinde belirtilir ve *Automaticrepairspolicy. gracePeriod*özelliği kullanılarak ayarlanabilir. Yetkisiz kullanım süresi 30 dakika ile 90 dakika arasında değişebilir ve varsayılan değer olan 30 dakika olabilir.
+Bir örnek, ölçek kümesinde gerçekleştirilen bir PUT, PATCH veya POST eylemi (örneğin yeniden görüntüle, yeniden dağıtma, güncelleştirme, vb.) nedeniyle bir durum değişikliği işleminden geçtiğinde, bu örnekteki herhangi bir onarım eylemi yalnızca yetkisiz kullanım süresi bekledikten sonra gerçekleştirilir. Yetkisiz kullanım süresi, örneğin sağlıklı duruma dönmesine izin veren süredir. Yetkisiz kullanım süresi, durum değişikliği tamamlandıktan sonra başlar. Bu, herhangi bir erken veya kazara onarım işlemlerini önlemeye yardımcı olur. Yetkisiz kullanım süresi, ölçek kümesinde yeni oluşturulan herhangi bir örnek için (onarım işlemi sonucunda oluşturulan örnek dahil) onurlandırıldı. Yetkisiz kullanım süresi ISO 8601 formatında dakikalar içinde belirtilir ve *özellik otomatikRepairsPolicy.gracePeriod*kullanılarak ayarlanabilir. Yetkisiz kullanım süresi 30 dakika ile 90 dakika arasında değişebilir ve varsayılan değeri 30 dakikadır.
 
-Otomatik örnek onarımları işlemi aşağıdaki gibi işler:
+Otomatik örnek onarım işlemi aşağıdaki gibi çalışır:
 
-1. [Uygulama durumu uzantısı](./virtual-machine-scale-sets-health-extension.md) veya [Yük Dengeleyici Sistem durumu araştırmaları](../load-balancer/load-balancer-custom-probe-overview.md) , her bir örnek için uygulama sistem durumunu almak üzere ölçek kümesindeki her bir sanal makinenin içindeki uygulama uç noktasına ping yapar.
-2. Uç nokta 200 (Tamam) durumu ile yanıt verirse, örnek "sağlıklı" olarak işaretlenir. Diğer tüm durumlarda (uç nokta ulaşılamaz durumdaysa dahil), örnek "sağlıksız" olarak işaretlenir.
-3. Bir örneğin sağlıksız olduğu bulunursa, ölçek kümesi sağlıksız örneği silerek bir onarım eylemi tetikler ve bunu değiştirmek için yeni bir tane oluşturur.
-4. Örnek onarımlar toplu olarak gerçekleştirilir. Belirli bir zamanda, ölçek kümesindeki toplam örneklerin %5 ' inden fazlası onarılamamakta. Ölçek kümesinde 20 ' den az örnek varsa, onarımlar tek seferde sağlıksız bir örnek için yapılır.
-5. Yukarıdaki işlem, ölçek kümesindeki sağlıksız bir örnek onarılana kadar devam eder.
+1. [Uygulama Durumu uzantısı](./virtual-machine-scale-sets-health-extension.md) veya [Yük dengeleyici sağlık probları](../load-balancer/load-balancer-custom-probe-overview.md) her örnek için uygulama durumu durumu almak için ayarlanmış ölçekte her sanal makine içinde uygulama bitiş noktası ping.
+2. Bitiş noktası 200 (Tamam) durumuyla yanıt veriyorsa, örnek "Sağlıklı" olarak işaretlenir. Diğer tüm durumlarda (bitiş noktası erişilemez sa yılabilir sa da dahil olmak üzere), örnek "Sağlıksız" olarak işaretlenir.
+3. Bir örneğin sağlıksız olduğu tespit edildiğinde, ölçek kümesi sağlıksız örneği silerek ve değiştirmek için yeni bir örnek oluşturarak bir onarım eylemini tetikler.
+4. Örnek onarımlar toplu olarak gerçekleştirilir. Herhangi bir zamanda, ölçek kümesindeki toplam örneklerin en fazla %5'i onarılır. Bir ölçek kümesinde 20'den az örnek varsa, onarımlar aynı anda sağlıksız bir örnek için yapılır.
+5. Yukarıdaki işlem, ölçek kümesindeki tüm sağlıksız örnek onarılana kadar devam ediyor.
 
-## <a name="instance-protection-and-automatic-repairs"></a>Örnek koruması ve otomatik onarımlar
+## <a name="instance-protection-and-automatic-repairs"></a>Örnek koruma ve otomatik onarımlar
 
-Ölçek kümesindeki bir örnek, *[ölçek ayarlama eylemleri koruma ilkesi](./virtual-machine-scale-sets-instance-protection.md#protect-from-scale-set-actions)* uygulanarak korunduğunda, bu örnekte otomatik onarımlar yapılmaz.
+Ölçek kümesindeki bir *[örnek, ölçek ayarlı eylemlerden koruma ilkesine](./virtual-machine-scale-sets-instance-protection.md#protect-from-scale-set-actions)* karşı koruma uygulanarak korunuyorsa, bu örnekte otomatik onarımlar gerçekleştirilmez.
 
 ## <a name="enabling-automatic-repairs-policy-when-creating-a-new-scale-set"></a>Yeni bir ölçek kümesi oluştururken otomatik onarım ilkesini etkinleştirme
 
-Yeni bir ölçek kümesi oluştururken otomatik onarım ilkesini etkinleştirmek için, bu özelliğe yönelik tüm [gereksinimlerin](#requirements-for-using-automatic-instance-repairs) karşılandığından emin olun. Uç nokta yapılandırılırken, istenmeyen onarımlar tetiklenmemek için uygulama uç noktasının ölçek kümesi örnekleri için doğru şekilde yapılandırılması gerekir. Yeni oluşturulan ölçek kümeleri için tüm örnek onarımları yalnızca yetkisiz kullanım süresi dolduktan sonra gerçekleştirilir. Ölçek kümesinde otomatik örnek onarımını etkinleştirmek için, sanal makine ölçek kümesi modelinde *Automaticrepairspolicy* nesnesini kullanın.
+Yeni bir ölçek kümesi oluştururken otomatik onarım ilkesini etkinleştirmek için, bu özelliğe katılmanın tüm [gereksinimlerinin](#requirements-for-using-automatic-instance-repairs) karşılandığından emin olun. Uygulama bitiş noktası, bitiş noktası yapılandırılırken istenmeyen onarımları tetiklememek için ölçek kümesi örnekleri için doğru şekilde yapılandırılmalıdır. Yeni oluşturulan ölçek kümeleri için, herhangi bir örnek onarım yalnızca yetkisiz kullanım süresi süresi bekledikten sonra gerçekleştirilir. Bir ölçek kümesinde otomatik örnek onarımını etkinleştirmek için, sanal makine ölçeği kümesi modelinde *automaticRepairsPolicy* nesnesini kullanın.
 
 ### <a name="rest-api"></a>REST API
 
-Aşağıdaki örnekte, bir ölçek kümesi modelinde otomatik örnek onarımın nasıl etkinleştirileceği gösterilmektedir. API sürüm 2018-10-01 veya üstünü kullanın.
+Aşağıdaki örnek, ölçek kümesi modelinde otomatik örnek onarımını nasıl etkinleştirileceğinizi gösterir. API sürümünü 2018-10-01 veya daha yüksek kullanın.
 
 ```
 PUT or PATCH on '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}?api-version=2019-07-01'
@@ -185,7 +185,7 @@ PUT or PATCH on '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupNa
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-[Yeni-AzVmssConfig](/powershell/module/az.compute/new-azvmssconfig) cmdlet 'i kullanılarak yeni bir ölçek kümesi oluşturulurken otomatik örnek onarma özelliği etkinleştirilebilir. Bu örnek betik, yapılandırma dosyasını kullanarak bir ölçek kümesinin ve ilişkili kaynakların oluşturulmasını adım adım göstermektedir: [tamamen sanal makine ölçek kümesi oluşturma](./scripts/powershell-sample-create-complete-scale-set.md). Ölçek kümesini oluşturmak için Configuration nesnesine *Enableautomaticrepair* ve *AutomaticRepairGracePeriod* parametrelerini ekleyerek otomatik örnek onarımları ilkesini yapılandırabilirsiniz. Aşağıdaki örnek, özelliği 30 dakikalık yetkisiz kullanım süresine sahip olacak şekilde sunar.
+[Yeni-AzVmssConfig](/powershell/module/az.compute/new-azvmssconfig) cmdlet kullanılarak yeni bir ölçek kümesi oluşturulurken otomatik örnek onarım özelliği etkinleştirilebilir. Bu örnek komut dosyası yapılandırma dosyasını kullanarak bir ölçek kümesi ve ilişkili kaynakların oluşturulması ile yürür: [Tam bir sanal makine ölçek kümesi oluşturun.](./scripts/powershell-sample-create-complete-scale-set.md) Ölçek kümesini oluşturmak için yapılandırma nesnesine *EnableAutomaticRepair* ve *AutomaticRepairGracePeriod* parametrelerini ekleyerek otomatik örnek onarım ilkesini yapılandırabilirsiniz. Aşağıdaki örnek, özelliği 30 dakikalık bir yetkisiz kullanım süresiyle etkinleştirmektedir.
 
 ```azurepowershell-interactive
 New-AzVmssConfig `
@@ -197,13 +197,13 @@ New-AzVmssConfig `
  -AutomaticRepairGracePeriod "PT30M"
 ```
 
-## <a name="enabling-automatic-repairs-policy-when-updating-an-existing-scale-set"></a>Mevcut bir ölçek kümesini güncelleştirirken otomatik onarım ilkesini etkinleştirme
+## <a name="enabling-automatic-repairs-policy-when-updating-an-existing-scale-set"></a>Varolan bir ölçek kümesini güncellerken otomatik onarım ilkesini etkinleştirme
 
-Mevcut bir ölçek kümesinde otomatik onarım ilkesini etkinleştirmeden önce, bu özelliğe yönelik tüm [gereksinimlerin](#requirements-for-using-automatic-instance-repairs) karşılandığından emin olun. Uç nokta yapılandırılırken, istenmeyen onarımlar tetiklenmemek için uygulama uç noktasının ölçek kümesi örnekleri için doğru şekilde yapılandırılması gerekir. Ölçek kümesinde otomatik örnek onarımını etkinleştirmek için, sanal makine ölçek kümesi modelinde *Automaticrepairspolicy* nesnesini kullanın.
+Varolan bir ölçek kümesinde otomatik onarım ilkesini etkinleştirmeden önce, bu özelliğe katılmanın tüm [gereksinimlerinin](#requirements-for-using-automatic-instance-repairs) karşılandığından emin olun. Uygulama bitiş noktası, bitiş noktası yapılandırılırken istenmeyen onarımları tetiklememek için ölçek kümesi örnekleri için doğru şekilde yapılandırılmalıdır. Bir ölçek kümesinde otomatik örnek onarımını etkinleştirmek için, sanal makine ölçeği kümesi modelinde *automaticRepairsPolicy* nesnesini kullanın.
 
 ### <a name="rest-api"></a>REST API
 
-Aşağıdaki örnek, ilke için 40 dakikalık yetkisiz kullanım süresi sunar. API sürüm 2018-10-01 veya üstünü kullanın.
+Aşağıdaki örnek, 40 dakikalık yetkisiz kullanım süresine sahip ilkeyi sağlar. API sürümünü 2018-10-01 veya daha yüksek kullanın.
 
 ```
 PUT or PATCH on '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}?api-version=2019-07-01'
@@ -222,7 +222,7 @@ PUT or PATCH on '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupNa
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-Var olan bir ölçek kümesindeki otomatik örnek onarma özelliğinin yapılandırmasını değiştirmek için [Update-AzVmss](/powershell/module/az.compute/update-azvmss) cmdlet 'ini kullanın. Aşağıdaki örnek, yetkisiz kullanım süresini 40 dakikaya güncelleştirir.
+Varolan bir ölçek kümesinde otomatik örnek onarım özelliğinin yapılandırmasını değiştirmek için [Update-AzVmss](/powershell/module/az.compute/update-azvmss) cmdlet'i kullanın. Aşağıdaki örnek, yetkisiz kullanım süresini 40 dakikaya güncelleştirir.
 
 ```azurepowershell-interactive
 Update-AzVmss `
@@ -234,18 +234,18 @@ Update-AzVmss `
 
 ## <a name="troubleshoot"></a>Sorun giderme
 
-**Otomatik onarım ilkesini etkinleştirme hatası**
+**Otomatik onarım ilkesinin etkinleştirilmemesi**
 
-"' Properties ' türündeki nesne üzerinde" automaticRepairsPolicy ' üyesi bulunamadı "iletisiyle bir ' Rozrequest ' hatası alırsanız, sonra sanal makine ölçek kümesi için kullanılan API sürümünü denetleyin. Bu özellik için API sürüm 2018-10-01 veya üzeri gereklidir.
+"'Özellikler' türünesnesi üzerinde üye 'automaticRepairsPolicy' bulamadım" belirten bir iletiyle bir 'BadRequest' hatası alırsanız, sanal makine ölçeği kümesi için kullanılan API sürümünü denetleyin. BU özellik için API sürümü 2018-10-01 veya daha yüksek olması gerekir.
 
-**İlke etkin olsa bile örnek onarılmadı**
+**İlke etkinleştirildiğinde bile örnek onarılamadı**
 
-Örnek, yetkisiz kullanım süresi içinde olabilir. Bu, onarım gerçekleştirilmeden önce örnekteki durum değişikliğinden sonra beklenecek sürenin miktarıdır. Bu, zamanından önce veya yanlışlıkla onarımların önüne geçmek. Örnek için yetkisiz kullanım süresi tamamlandıktan sonra onarım eylemi gerçekleşmelidir.
+Örnek yetkisiz kullanım süresi içinde olabilir. Bu, onarım gerçekleştirmeden önce örnekte herhangi bir durum değişikliğinden sonra bekleme süresidir. Bu herhangi bir erken veya kazara onarım önlemek içindir. Onarım eylemi, yetkisiz kullanım süresi tamamlandıktan sonra gerçekleşmelidir.
 
-**Ölçek kümesi örnekleri için uygulama sistem durumu görüntüleme**
+**Ölçek kümesi örnekleri için uygulama sistem durumu durumunu görüntüleme**
 
-Uygulamanın sistem durumunu görüntülemek için bir sanal makine ölçek kümesindeki örnekler için [örnek görünümü al API](/rest/api/compute/virtualmachinescalesetvms/getinstanceview) 'sini kullanabilirsiniz. Azure PowerShell ile [Get-AzVmssVM](/powershell/module/az.compute/get-azvmssvm) cmdlet 'ini *-InstanceView* bayrağıyla birlikte kullanabilirsiniz. Uygulama sistem durumu, *Vmhealth*özelliği altında verilmiştir.
+Uygulama durumu durumunu görüntülemek için sanal makine ölçeğinde örnek [görüntüapi](/rest/api/compute/virtualmachinescalesetvms/getinstanceview) sini kullanabilirsiniz. Azure PowerShell ile cmdlet [Get-AzVmssVM'i](/powershell/module/az.compute/get-azvmssvm) *-InstanceView* bayrağı ile kullanabilirsiniz. Uygulama sağlık durumu özelliği *vmHealth*altında sağlanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Ölçek kümeleriniz için [uygulama durumu uzantısının](./virtual-machine-scale-sets-health-extension.md) veya [Yük Dengeleyici Sistem durumu araştırmalarının](../load-balancer/load-balancer-custom-probe-overview.md) nasıl yapılandırılacağını öğrenin.
+Ölçek kümeleriniz için [Uygulama Durumu uzantısını](./virtual-machine-scale-sets-health-extension.md) veya [Yük dengeleyici sistem sondalarını](../load-balancer/load-balancer-custom-probe-overview.md) nasıl yapılandıracağımız hakkında bilgi edinin.

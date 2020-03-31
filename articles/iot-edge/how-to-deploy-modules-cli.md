@@ -1,6 +1,6 @@
 ---
-title: Azure CLı komut satırından modüller dağıtma-Azure IoT Edge
-description: IoT Hub bir IoT Edge modülünü bir dağıtım bildirimiyle yapılandırıldığı şekilde IoT Edge cihazınıza iletmek için Azure IoT uzantısıyla Azure CLı 'yi kullanın.
+title: Azure CLI komut satırından modülleri dağıtma - Azure IoT Edge
+description: IoT Hub'ınızdan ioT Edge modülünüzü bir dağıtım bildirimi tarafından yapılandırılan IoT Edge aygıtınıza itmek için Azure IoT Uzantısı ile Azure CLI'yi kullanın.
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -9,35 +9,35 @@ ms.topic: conceptual
 ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: e93360d4045f9c97d45abe2af489804a4c3c85f0
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: 619ba7cb2d99e0137fd1834096dd5b66ffcd6ec9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78673515"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240377"
 ---
-# <a name="deploy-azure-iot-edge-modules-with-azure-cli"></a>Azure CLI ile Azure IOT Edge modüllerini dağıtmak
+# <a name="deploy-azure-iot-edge-modules-with-azure-cli"></a>Azure CLI ile Azure IoT Edge modüllerini dağıtma
 
-IOT Edge modülleri, iş mantığı ile oluşturduktan sonra bunları ucuna çalışılacak cihazlarınıza dağıtmak istiyorsanız. Toplamak ve veri işlemek için birlikte çalışan birden çok modül varsa, bunları tamamını aynı anda dağıtabilir ve bunları bağlayan yönlendirme kurallarını bildirin.
+İş mantığınızla IoT Edge modülleri oluşturduktan sonra, bunları kenarda çalışması için aygıtlarınıza dağıtmak istersiniz. Verileri toplamak ve işlemek için birlikte çalışan birden çok modülüz varsa, bunları aynı anda dağıtabilir ve bunları bağlayan yönlendirme kurallarını bildirebilirsiniz.
 
-[Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) , IoT Edge gibi Azure kaynaklarını yönetmeye yönelik açık kaynaklı bir platformlar arası komut satırı aracıdır. Azure IOT Hub kaynaklarını, cihaz sağlama hizmeti örneklerini ve bağlı hub'ları hazır yönetmenizi sağlar. Yeni IOT uzantısı, Azure CLI cihaz yönetimi ve tam IOT Edge özelliği gibi özelliklerle zenginleştirir.
+[Azure CLI,](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) IoT Edge gibi Azure kaynaklarını yönetmek için açık kaynaklı çapraz platform komut satırı aracıdır. Azure IoT Hub kaynaklarını, aygıt sağlama hizmeti örneklerini ve bağlantılı hub'ları kutudan yönetmenize olanak tanır. Yeni IoT uzantısı, Azure CLI'yi aygıt yönetimi ve tam IoT Edge özelliği gibi özelliklerle zenginleştirir.
 
-Bu makalede, bir JSON dağıtım bildirimi oluşturun, sonra IOT Edge cihazına dağıtım göndermek için bu dosyayı kullanma gösterilmektedir. Paylaşılan etiketlerine göre birden çok cihazı hedefleyen bir dağıtım oluşturma hakkında bilgi için bkz. [IoT Edge modüllerini ölçeklendirerek dağıtma ve izleme](how-to-deploy-monitor-cli.md)
+Bu makalede, json dağıtım bildirimi nin nasıl oluşturulacak, ardından dağıtımı bir IoT Edge aygıtına itmek için bu dosyayı kullanın. Paylaşılan etiketlerine göre birden çok cihazı hedefleyen bir dağıtım oluşturma hakkında bilgi [için](how-to-deploy-monitor-cli.md) bkz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* Azure aboneliğinizdeki bir [IoT Hub 'ı](../iot-hub/iot-hub-create-using-cli.md) .
-* IoT Edge çalışma zamanı yüklü [IoT Edge bir cihaz](how-to-register-device.md#register-with-the-azure-cli) .
-* Ortamınızdaki [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) . Azure CLı sürümünüz en azından 2.0.70 veya üzeri olmalıdır. Doğrulamak için `az --version` kullanın. Bu sürüm, az uzantı komutlarını destekler ve Knack komut çerçevesini kullanıma sunar.
-* [Azure CLI Için IoT uzantısı](https://github.com/Azure/azure-iot-cli-extension).
+* Azure aboneliğinizde bir [IoT hub'ı.](../iot-hub/iot-hub-create-using-cli.md)
+* IoT Edge çalışma zamanı yüklü bir [IoT Edge aygıtı.](how-to-register-device.md#register-with-the-azure-cli)
+* Ortamınızda [Azure CLI.](https://docs.microsoft.com/cli/azure/install-azure-cli) Azure CLI sürümünüz en az 2.0.70 veya üzeri olmalıdır. Doğrulamak için `az --version` kullanın. Bu sürüm, az uzantı komutlarını destekler ve Knack komut çerçevesini kullanıma sunar.
+* [Azure CLI için IoT uzantısı.](https://github.com/Azure/azure-iot-cli-extension)
 
-## <a name="configure-a-deployment-manifest"></a>Bir dağıtım bildirimi yapılandırma
+## <a name="configure-a-deployment-manifest"></a>Dağıtım bildirimini yapılandırma
 
-Bir dağıtım bildirimi dağıtmak için modülleri ve modül ikizlerini istenen özellikleri arasında verilerin nasıl aktığını modüllerine açıklayan bir JSON belgesidir. Dağıtım bildirimlerinin nasıl çalıştığı ve nasıl oluşturulacağı hakkında daha fazla bilgi için bkz. [IoT Edge modüllerinin nasıl kullanılabileceğini, yapılandırılacağını ve yeniden kullanıldığını anlayın](module-composition.md).
+Dağıtım bildirimi, hangi modüllerin dağıtılabildiğini, modüller arasında verilerin nasıl aktığını ve modülün istenilen özelliklerini açıklayan bir JSON belgesidir. Dağıtım bildirimlerinin nasıl çalıştığı ve bunların nasıl oluşturulabileceği hakkında daha fazla bilgi için [bkz.](module-composition.md)
 
-Azure CLI kullanarak modüllerini dağıtmak için dağıtım bildirimi yerel olarak bir .json dosyası kaydedin. Cihazınıza yapılandırmayı uygulamak için komutu çalıştırdığınızda, sonraki bölümde dosya yolu kullanır.
+Azure CLI'yi kullanarak modülleri dağıtmak için dağıtım bildirimini yerel olarak .json dosyası olarak kaydedin. Yapılandırmayı cihazınıza uygulamak için komutu çalıştırdığınızda bir sonraki bölümdeki dosya yolunu kullanırsınız.
 
-Örnek olarak bir modülü ile temel bir dağıtım bildirimi şöyledir:
+Aşağıda, örnek olarak bir modüle sahip temel bir dağıtım bildirimi verilmiştir:
 
 ```json
 {
@@ -110,34 +110,34 @@ Azure CLI kullanarak modüllerini dağıtmak için dağıtım bildirimi yerel ol
 
 ## <a name="deploy-to-your-device"></a>Cihazınıza dağıtma
 
-Modül bilgileri yapılandırdığınız dağıtım bildirimini uygulayarak modülleri cihazınıza dağıtın.
+Modül bilgileriyle yapılandırdığınız dağıtım bildirimini uygulayarak modülleri cihazınıza dağıtırsınız.
 
-Dağıtım bildiriminin kaydedildiği klasöre dizinleri değiştirin. VS Code IoT Edge şablonlarından birini kullandıysanız, `deployment.template.json` dosyasına değil çözüm dizininizin **config** klasöründeki `deployment.json` dosyasını kullanın.
+Dizinleri dağıtım bildiriminizin kaydedildiği klasöre değiştirin. VS Code IoT Edge şablonlarından birini kullandıysanız, `deployment.json` `deployment.template.json` dosyayı dosyayı değil, çözüm dizininizin **config** klasöründeki kullanın.
 
-IOT Edge cihazına yapılandırmayı uygulamak için aşağıdaki komutu kullanın:
+Yapılandırmayı bir IoT Edge aygıtına uygulamak için aşağıdaki komutu kullanın:
 
-   ```cli
+   ```azurecli
    az iot edge set-modules --device-id [device id] --hub-name [hub name] --content [file path]
    ```
 
-Cihaz KIMLIĞI parametresi, büyük/küçük harfe duyarlıdır. İçerik parametresi dağıtım noktalarına bildirim kaydettiğiniz dosyası.
+Aygıt kimliği parametresi büyük/küçük harf duyarlıdır. İçerik parametresi, kaydettiğiniz dağıtım bildirimi dosyasına işaret eder.
 
-   ![az IOT edge modülleri kümesini çıktı](./media/how-to-deploy-cli/set-modules.png)
+   ![az iot kenar set-modülleri çıkışı](./media/how-to-deploy-cli/set-modules.png)
 
-## <a name="view-modules-on-your-device"></a>Cihazınızda modülleri görüntüleme
+## <a name="view-modules-on-your-device"></a>Cihazınızdaki modülleri görüntüleme
 
-Cihazınıza modülleri dağıttıktan sonra tüm bunları aşağıdaki komutla görebilirsiniz:
+Modülleri cihazınıza dağıttıktan sonra, aşağıdaki komutla tümmodülleri görüntüleyebilirsiniz:
 
 IoT Edge cihazınızda modülleri görüntüleme:
 
-   ```cli
+   ```azurecli
    az iot hub module-identity list --device-id [device id] --hub-name [hub name]
    ```
 
-Cihaz KIMLIĞI parametresi, büyük/küçük harfe duyarlıdır.
+Aygıt kimliği parametresi büyük/küçük harf duyarlıdır.
 
-   ![az IOT hub kimlik modülü liste çıkışı](./media/how-to-deploy-cli/list-modules.png)
+   ![az iot hub modülü-kimlik listesi çıktı](./media/how-to-deploy-cli/list-modules.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[IoT Edge modüllerini ölçekli olarak dağıtmayı ve izlemeyi](how-to-deploy-monitor.md) öğrenin
+[IoT Edge modüllerini ölçekte nasıl dağıtılayacağım ve izleyeceğiz](how-to-deploy-monitor.md)

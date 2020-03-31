@@ -1,6 +1,6 @@
 ---
-title: Azure CLı betik örneği-Azure CLı ile birden çok Web sitesinin yükünü dengeleme | Microsoft Docs
-description: Azure CLı betik örneği-aynı sanal makineye birden çok Web sitesinin yükünü dengeleme
+title: Azure CLI Script Örneği - Azure CLI ile birden fazla web sitesini yükleyin | Microsoft Dokümanlar
+description: Azure CLI Script Örneği - Bakiye bakiyesi birden çok web sitesini aynı sanal makineye yükleyin
 services: load-balancer
 documentationcenter: load-balancer
 author: asudbring
@@ -13,15 +13,15 @@ ms.workload: infrastructure
 ms.date: 07/07/2017
 ms.author: allensu
 ms.openlocfilehash: 568934d6b5ecc2fbb3b6fc6588ecfd48c8306490
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73889463"
 ---
-# <a name="load-balance-multiple-websites"></a>Birden çok Web sitesinin yükünü dengelemek
+# <a name="load-balance-multiple-websites"></a>Birden çok web sitesini yükleme dengesi
 
-Bu betik örneği, bir kullanılabilirlik kümesinin üyesi olan iki sanal makineye (VM) sahip bir sanal ağ oluşturur. Yük dengeleyici iki ayrı IP adresi için trafiği iki VM’ye yönlendirir. Betiği çalıştırdıktan sonra, web sunucusu yazılımını VM’lere dağıtabilir ve her biri kendi IP adresine sahip birden fazla web sitesi barındırabilirsiniz.
+Bu komut dosyası örneği, kullanılabilirlik kümesinin üyeleri olan iki sanal makine (VM) içeren bir sanal ağ oluşturur. Yük dengeleyici iki ayrı IP adresi için trafiği iki VM’ye yönlendirir. Betiği çalıştırdıktan sonra, web sunucusu yazılımını VM’lere dağıtabilir ve her biri kendi IP adresine sahip birden fazla web sitesi barındırabilirsiniz.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -56,7 +56,7 @@ Bu betik bir kaynak grubu, sanal ağ, yük dengeleyici ve tüm ilgili kaynaklar�
 | [az network lb address-pool create](https://docs.microsoft.com/cli/azure/network/lb/address-pool) | Arka uç adres havuzu oluşturur. |
 | [az network nic create](https://docs.microsoft.com/cli/azure/network/nic) | Sanal makine kartı oluşturur ve sanal ağa ve alt ağa bağlar. |
 | [az vm availability-set create](https://docs.microsoft.com/cli/azure/network/lb/rule) | Bir kullanılabilirlik kümesi oluşturur. Kullanılabilirlik kümeleri, hata oluşması durumunda tüm kümenin etkilenmemesi için sanal makineleri fiziksel kaynaklara yayarak uygulama çalışma süresi sağlar. |
-| [az network nic ip-config create](https://docs.microsoft.com/cli/azure/network/nic/ip-config) | Bir IP yapılandırması oluşturur. Aboneliğiniz için Microsoft.Network/AllowMultipleIpConfigurationsPerNic özelliğini etkinleştirmeniz gerekir. Yalnızca bir yapılandırma, --make-primary flag kullanılarak her bir NIC için ana IP yapılandırması olarak atanabilir. |
+| [az network nic ip-config create](https://docs.microsoft.com/cli/azure/network/nic/ip-config) | BIR IP yapılandırması oluşturur. Aboneliğiniz için Microsoft.Network/AllowMultipleIpConfigurationsPerNic özelliğini etkinleştirmeniz gerekir. Yalnızca bir yapılandırma, --make-primary flag kullanılarak her bir NIC için ana IP yapılandırması olarak atanabilir. |
 | [az vm create](https://docs.microsoft.com/cli/azure/vm/availability-set) | Sanal makine oluşturur ve ağ kartına, sanal ağa, alt ağa ve NSG’ye bağlar. Bu komut ayrıca kullanılacak sanal makine görüntüsünü ve yönetici kimlik bilgilerini belirtir.  |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension) | Bir kaynak grubunu tüm iç içe geçmiş kaynaklar dahil siler. |
 

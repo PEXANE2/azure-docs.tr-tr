@@ -1,16 +1,16 @@
 ---
 title: Azure Cosmos DB'de veritabanı hesaplarını yönetmeyi öğrenin
-description: Azure portal, PowerShell, CLı ve Azure Resource Manager şablonlarını kullanarak Azure Cosmos DB kaynaklarını yönetmeyi öğrenin
+description: Azure portalı, PowerShell, CLI ve Azure Kaynak Yöneticisi şablonlarını kullanarak Azure Cosmos DB kaynaklarını nasıl yönetebilirsiniz öğrenin
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: mjbrown
 ms.openlocfilehash: 61670d757611bd0c1dd11c389282b18edb3d7fa1
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79247390"
 ---
 # <a name="manage-an-azure-cosmos-account"></a>Azure Cosmos hesabını yönetme
@@ -19,69 +19,69 @@ Bu makalede Azure portalını, Azure PowerShell’i, Azure CLI’yı ve Azure Re
 
 ## <a name="create-an-account"></a>Hesap oluşturma
 
-### <a id="create-database-account-via-portal"></a>Azure portal
+### <a name="azure-portal"></a><a id="create-database-account-via-portal"></a>Azure portalında
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
-### <a id="create-database-account-via-cli"></a>Azure CLI
+### <a name="azure-cli"></a><a id="create-database-account-via-cli"></a>Azure CLI
 
-Lütfen bkz. [Azure CLI ile Azure Cosmos DB hesabı oluşturma](manage-with-cli.md#create-an-azure-cosmos-db-account)
+Lütfen [Azure CLI ile Azure Cosmos DB hesabı oluşturma](manage-with-cli.md#create-an-azure-cosmos-db-account)
 
-### <a id="create-database-account-via-ps"></a>Azure PowerShell
+### <a name="azure-powershell"></a><a id="create-database-account-via-ps"></a>Azure PowerShell
 
-Lütfen bkz. [PowerShell ile Azure Cosmos DB hesabı oluşturma](manage-with-powershell.md#create-account)
+Powershell [ile Azure Cosmos DB hesabı oluşturma](manage-with-powershell.md#create-account)
 
-### <a id="create-database-account-via-arm-template"></a>Azure Resource Manager şablonu
+### <a name="azure-resource-manager-template"></a><a id="create-database-account-via-arm-template"></a>Azure Resource Manager şablonu
 
-Bu Azure Resource Manager şablonu, tutarlılık düzeyi, otomatik yük devretme ve çoklu yönetici seçeneklerini belirlemek için iki bölge ve seçenek ile yapılandırılmış SQL API 'SI için bir Azure Cosmos hesabı oluşturur. Bu şablonu dağıtmak için Benioku sayfasında Azure 'a Dağıt ' a tıklayın, [Azure Cosmos hesabı oluşturun](https://github.com/Azure/azure-quickstart-templates/tree/master/101-cosmosdb-sql)
+Bu Azure Kaynak Yöneticisi şablonu, tutarlılık düzeyi, otomatik hata ve çoklu ana düzeyi seçmek için iki bölge ve seçenekle yapılandırılan SQL API için bir Azure Cosmos hesabı oluşturur. Bu şablonu dağıtmak için, okuma sayfasında Azure'a Dağıt'ı tıklatın, [Azure Cosmos hesabı oluşturun](https://github.com/Azure/azure-quickstart-templates/tree/master/101-cosmosdb-sql)
 
 ## <a name="addremove-regions-from-your-database-account"></a>Veritabanı hesabınızda bölge ekleme/çıkarma işlemi gerçekleştirme
 
-### <a id="add-remove-regions-via-portal"></a>Azure portal
+### <a name="azure-portal"></a><a id="add-remove-regions-via-portal"></a>Azure portalında
 
-1. [Azure portalda](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com)oturum açın.
 
-1. Azure Cosmos hesabınıza gidin ve **verileri genel olarak Çoğalt** menüsünü açın.
+1. Azure Cosmos hesabınıza gidin ve **verileri genel olarak çoğalt** menüsünü açın.
 
-1. Bölge eklemek için, istediğiniz bölge (ler) e ait **+** etiketiyle haritada altıons 'yi seçin. Alternatif olarak, bir bölge eklemek için **+ bölge Ekle** seçeneğini belirleyip açılan menüden bir bölge seçin.
+1. Bölge eklemek için, haritadaki altıgenleri istediğiniz **+** bölgeye karşılık gelen etiketle seçin. Alternatif olarak, bölge eklemek için **+ Bölge Ekle** seçeneğini seçin ve açılan menüden bir bölge seçin.
 
-1. Bölgeleri kaldırmak için, bir veya daha fazla bölgeyi onay işaretleri içeren mavi altıgenler seçerek haritalardan kaldırın. Ya da sağ taraftaki bölgenin yanındaki "wastesepet" (🗑) simgesini seçin.
+1. Bölgeleri kaldırmak için, kontrol işaretli mavi altıgenleri seçerek bir veya daha fazla bölgeyi haritadan temizleyin. Veya sağ taraftaki bölgenin🗑yanındaki "çöp sepeti" simgesini seçin.
 
-1. Değişikliklerinizi kaydetmek için **Tamam**' ı seçin.
+1. Değişikliklerinizi kaydetmek için **Tamam'ı**seçin.
 
-   ![Bölge Ekle veya Kaldır menüsü](./media/how-to-manage-database-account/add-region.png)
+   ![Bölgeler menüsü ekleme veya kaldırma](./media/how-to-manage-database-account/add-region.png)
 
 Tek bölgeli yazma modunda yazma bölgesini kaldıramazsınız. Geçerli yazma bölgesini silebilmeniz için önce farklı bir bölgeye yük devretme gerçekleştirmeniz gerekir.
 
 Çok bölgeli yazma modunda, en az bir bölgeniz varsa istediğiniz bölgeyi ekleyebilir veya kaldırabilirsiniz.
 
-### <a id="add-remove-regions-via-cli"></a>Azure CLI
+### <a name="azure-cli"></a><a id="add-remove-regions-via-cli"></a>Azure CLI
 
-Lütfen bkz. [Azure CLI ile bölge ekleme veya kaldırma](manage-with-cli.md#add-or-remove-regions)
+Azure [CLI ile bölgeler ekle veya kaldır'a](manage-with-cli.md#add-or-remove-regions) bakın
 
-### <a id="add-remove-regions-via-ps"></a>Azure PowerShell
+### <a name="azure-powershell"></a><a id="add-remove-regions-via-ps"></a>Azure PowerShell
 
-Lütfen bkz. [PowerShell ile bölge ekleme veya kaldırma](manage-with-powershell.md#update-account)
+Powershell [ile bölgeler ekle veya kaldır'a](manage-with-powershell.md#update-account) bakın
 
-## <a id="configure-multiple-write-regions"></a>Çoklu yazma bölgelerini yapılandırma
+## <a name="configure-multiple-write-regions"></a><a id="configure-multiple-write-regions"></a>Birden fazla yazma bölgesi yapılandırma
 
-### <a id="configure-multiple-write-regions-portal"></a>Azure portal
+### <a name="azure-portal"></a><a id="configure-multiple-write-regions-portal"></a>Azure portalında
 
-**Verileri genel olarak Çoğalt** sekmesini açın ve çok bölgeli yazmaları etkinleştirmek için **Etkinleştir** ' i seçin. Çok bölgeli yazmaları etkinleştirdikten sonra, şu anda hesapta yer alan tüm okuma bölgeleri okuma ve yazma bölgeleri olur.
+Verileri **Genel Olarak Çoğaltma** sekmesini açın ve çok bölgeli yazmaları etkinleştirmek için **Etkinleştir'i** seçin. Çok bölgeli yazmaları etkinleştirdikten sonra, şu anda hesapta bulunan tüm okuma bölgeleri okuma ve yazma bölgeleri haline gelir.
 
-![Azure Cosmos hesabı, çok yöneticili ekran görüntüsünü yapılandırır](./media/how-to-manage-database-account/single-to-multi-master.png)
+![Azure Cosmos hesabı çok ekran lı ekran görüntüsü yapılandırır](./media/how-to-manage-database-account/single-to-multi-master.png)
 
-### <a id="configure-multiple-write-regions-cli"></a>Azure CLI
+### <a name="azure-cli"></a><a id="configure-multiple-write-regions-cli"></a>Azure CLI
 
-Lütfen bkz. [Azure CLI ile birden çok yazma bölgesini etkinleştirme](manage-with-cli.md#enable-multiple-write-regions)
+Azure [CLI ile birden çok yazma yı etkinleştir meslekle](manage-with-cli.md#enable-multiple-write-regions) bakın
 
-### <a id="configure-multiple-write-regions-ps"></a>Azure PowerShell
+### <a name="azure-powershell"></a><a id="configure-multiple-write-regions-ps"></a>Azure PowerShell
 
-Lütfen bkz. [PowerShell ile birden çok yazma bölgelerini etkinleştirme](manage-with-powershell.md#multi-master)
+Powershell [ile birden çok yazma bölgesini etkinleştir mesle](manage-with-powershell.md#multi-master)
 
-### <a id="configure-multiple-write-regions-arm"></a>Resource Manager şablonu
+### <a name="resource-manager-template"></a><a id="configure-multiple-write-regions-arm"></a>Kaynak Yöneticisi şablonu
 
-Hesap oluşturmak için kullanılan Kaynak Yöneticisi şablonunu dağıtarak ve `enableMultipleWriteLocations: true`ayarlamak için bir hesap tek ASILDAN çoklu ana 'e geçirilebilir. Aşağıdaki Azure Resource Manager şablonu, iki bölgeyle SQL API için bir Azure Cosmos hesabı ve birden çok yazma konumu etkinleştirilmiş olan en az bir şablondur.
+Bir hesap, hesabı oluşturmak ve ayarlamak `enableMultipleWriteLocations: true`için kullanılan Kaynak Yöneticisi şablonu dağıtılarak tek ana kalıptan çoklu ana'ya geçirilebilir. Aşağıdaki Azure Kaynak Yöneticisi şablonu, iki bölge ve birden çok yazma konumu etkinleştirilmiş SQL API için bir Azure Cosmos hesabı dağıtacak en az şablondur.
 
 ```json
 {
@@ -139,98 +139,98 @@ Hesap oluşturmak için kullanılan Kaynak Yöneticisi şablonunu dağıtarak ve
 }
 ```
 
-## <a id="automatic-failover"></a>Azure Cosmos hesabınız için otomatik yük devretmeyi etkinleştirin
+## <a name="enable-automatic-failover-for-your-azure-cosmos-account"></a><a id="automatic-failover"></a>Azure Cosmos hesabınız için otomatik yük devretmeyi etkinleştirme
 
-Otomatik yük devretme seçeneği, bir bölgenin kullanılamaz duruma gelmesi için en yüksek yük devretme önceliğine sahip bölgeye yük devretmesinin Azure Cosmos DB sağlar. Otomatik yük devretme etkinleştirildiğinde bölge önceliği değiştirilebilir. Otomatik yük devretmeyi etkinleştirmek için hesabın iki veya daha fazla bölgesi olmalıdır.
+Otomatik başarısız olma seçeneği, Azure Cosmos DB'nin bir bölgenin kullanılamaması halinde kullanıcı eylemi olmadan en yüksek başarısız lığa sahip bölgeye başarısız olmasını sağlar. Otomatik hata olduğunda, bölge önceliği değiştirilebilir. Hesabın otomatik olarak başarısız olmasını sağlamak için iki veya daha fazla bölgesi olmalıdır.
 
-### <a id="enable-automatic-failover-via-portal"></a>Azure portal
+### <a name="azure-portal"></a><a id="enable-automatic-failover-via-portal"></a>Azure portalında
 
-1. Azure Cosmos hesabınızdan **verileri genel olarak Çoğalt** bölmesini açın.
+1. Azure Cosmos hesabınızdan, **verileri genel olarak çoğaltma** bölmesini açın.
 
-2. Bölmenin en üstünde **otomatik yük devretme**' yı seçin.
+2. Bölmenin üst kısmında Otomatik **Failover'ı**seçin.
 
    ![Verileri genel olarak çoğaltma menüsü](./media/how-to-manage-database-account/replicate-data-globally.png)
 
-3. **Otomatik yük devretme** bölmesinde, **otomatik yük devretmeyi etkinleştir** ' in **Açık**olarak ayarlandığından emin olun. 
+3. Otomatik **Failover** bölmesinde, **Otomatik Failover'ı Etkinleştir'in** **AÇIYA**AYARLI OLDUĞUNDAN EMIN OLUN. 
 
-4. **Kaydet**’i seçin.
+4. **Kaydet'i**seçin.
 
    ![Otomatik yük devretme portal menüsü](./media/how-to-manage-database-account/automatic-failover.png)
 
-### <a id="enable-automatic-failover-via-cli"></a>Azure CLI
+### <a name="azure-cli"></a><a id="enable-automatic-failover-via-cli"></a>Azure CLI
 
-Lütfen bkz. [Azure CLI ile otomatik yük devretmeyi etkinleştirme](manage-with-cli.md#enable-automatic-failover)
+Azure [CLI ile otomatik arızayı etkinleştir mesuliyetini etkinleştir meslekle](manage-with-cli.md#enable-automatic-failover) bakın
 
-### <a id="enable-automatic-failover-via-ps"></a>Azure PowerShell
+### <a name="azure-powershell"></a><a id="enable-automatic-failover-via-ps"></a>Azure PowerShell
 
-Lütfen bkz. [PowerShell ile otomatik yük devretmeyi etkinleştirme](manage-with-powershell.md#enable-automatic-failover)
+Powershell [ile otomatik arızayı etkinleştir mesuliye](manage-with-powershell.md#enable-automatic-failover) bakın
 
 ## <a name="set-failover-priorities-for-your-azure-cosmos-account"></a>Azure Cosmos hesabınız için yük devretme önceliklerini ayarlama
 
-Bir Cosmos hesabı otomatik yük devretme için yapılandırıldıktan sonra, bölgeler için yük devretme önceliği değiştirilebilir.
+Cosmos hesabı otomatik hata için yapılandırıldıktan sonra, bölgeler için hata önceliği değiştirilebilir.
 
 > [!IMPORTANT]
-> Hesap otomatik yük devretme için yapılandırıldığında yazma bölgesini (sıfır yük devretme önceliği) değiştiremezsiniz. Yazma bölgesini değiştirmek için otomatik yük devretmeyi devre dışı bırakıp el ile yük devretme yapmanız gerekir.
+> Hesap otomatik hata için yapılandırıldıklarında yazma bölgesini (sıfırın yerine geçme önceliği) değiştiremezsiniz. Yazma bölgesini değiştirmek için otomatik başarısızolmayı devre dışı bırakıp el ile başarısız olmalısınız.
 
-### <a id="set-failover-priorities-via-portal"></a>Azure portal
+### <a name="azure-portal"></a><a id="set-failover-priorities-via-portal"></a>Azure portalında
 
-1. Azure Cosmos hesabınızdan **verileri genel olarak Çoğalt** bölmesini açın.
+1. Azure Cosmos hesabınızdan, **verileri genel olarak çoğaltma** bölmesini açın.
 
-2. Bölmenin en üstünde **otomatik yük devretme**' yı seçin.
+2. Bölmenin üst kısmında Otomatik **Failover'ı**seçin.
 
    ![Verileri genel olarak çoğaltma menüsü](./media/how-to-manage-database-account/replicate-data-globally.png)
 
-3. **Otomatik yük devretme** bölmesinde, **otomatik yük devretmeyi etkinleştir** ' in **Açık**olarak ayarlandığından emin olun.
+3. Otomatik **Failover** bölmesinde, **Otomatik Failover'ı Etkinleştir'in** **AÇIYA**AYARLI OLDUĞUNDAN EMIN OLUN.
 
-4. Yük devretme önceliğini değiştirmek için, okuma bölgelerini, üzerine geldiğinizde görüntülenen satırın sol tarafındaki üç nokta ile sürükleyin.
+4. Başarısız lık önceliğini değiştirmek için, okundukları bölgeleri, üzerlerinde gezinirken görünen satırın sol tarafındaki üç nokta üzerinden sürükleyin.
 
-5. **Kaydet**’i seçin.
+5. **Kaydet'i**seçin.
 
    ![Otomatik yük devretme portal menüsü](./media/how-to-manage-database-account/automatic-failover.png)
 
-### <a id="set-failover-priorities-via-cli"></a>Azure CLI
+### <a name="azure-cli"></a><a id="set-failover-priorities-via-cli"></a>Azure CLI
 
-Lütfen bkz. [Azure CLI ile yük devretme önceliğini ayarlama](manage-with-cli.md#set-failover-priority)
+Azure [CLI ile set başarısız önceliğine](manage-with-cli.md#set-failover-priority) bakın
 
-### <a id="set-failover-priorities-via-ps"></a>Azure PowerShell
+### <a name="azure-powershell"></a><a id="set-failover-priorities-via-ps"></a>Azure PowerShell
 
-Lütfen bkz. [PowerShell ile yük devretme önceliğini ayarlama](manage-with-powershell.md#modify-failover-priority)
+Powershell [ile Set failover önceliğine](manage-with-powershell.md#modify-failover-priority) bakın
 
-## <a id="manual-failover"></a>Azure Cosmos hesabında el ile yük devretme gerçekleştirme
+## <a name="perform-manual-failover-on-an-azure-cosmos-account"></a><a id="manual-failover"></a>Azure Cosmos hesabında el ile yük devretme gerçekleştirme
 
 > [!IMPORTANT]
-> Bu işlemin başarılı olması için Azure Cosmos hesabının el ile yük devretme için yapılandırılmış olması gerekir.
+> Bu işlemin başarılı olabilmesi için Azure Cosmos hesabının el ile başarısız olması için yapılandırılmalıdır.
 
-El ile yük devretme gerçekleştirme süreci, hesabın yazma bölgesinin (yük devretme önceliği = 0) hesap için yapılandırılmış başka bir bölgeye değiştirilmesini gerektirir.
+El ile hata gerçekleştirme işlemi, hesabın yazma bölgesinin (başarısız öncelik = 0) hesap için yapılandırılan başka bir bölgeye değiştirilmesini içerir.
 
 > [!NOTE]
-> Çoklu yönetici hesaplara el ile yük devredilemez. Azure Cosmos SDK 'sını kullanan uygulamalar için SDK, bir bölgenin ne zaman kullanılamaz hale geldiğini algılar ve ardından SDK 'da çoklu barındırma API 'SI kullanılıyorsa otomatik olarak sonraki en yakın bölgeye yeniden yönlendirilir.
+> Çok büyük hesaplar el ile başarısız olamaz. Azure Cosmos SDK'yı kullanan uygulamalarda, SDK bir bölgenin ne zaman kullanılamaz hale geldigini algılar, ardından SDK' da çok yönlü API kullanıyorsanız otomatik olarak bir sonraki en yakın bölgeye yönlendirir.
 
-### <a id="enable-manual-failover-via-portal"></a>Azure portal
+### <a name="azure-portal"></a><a id="enable-manual-failover-via-portal"></a>Azure portalında
 
-1. Azure Cosmos hesabınıza gidin ve **verileri genel olarak Çoğalt** menüsünü açın.
+1. Azure Cosmos hesabınıza gidin ve **verileri genel olarak çoğalt** menüsünü açın.
 
-2. Menünün üst kısmında **El Ile yük devretme**' yı seçin.
+2. Menünün üst **kısmında, Manuel Failover'ı**seçin.
 
    ![Verileri genel olarak çoğaltma menüsü](./media/how-to-manage-database-account/replicate-data-globally.png)
 
-3. **El Ile yük devretme** menüsünde Yeni yazma bölgenizi seçin. Bu seçeneği, yazma bölgenizi değiştirdiğinize işaret eden onay kutusunu seçin.
+3. Manuel **Failover** menüsünde yeni yazma bölgenizi seçin. Bu seçeneğin yazma bölgenizi değiştirdiğini anladığınızı belirtmek için onay kutusunu seçin.
 
-4. Yük devretmeyi tetiklemek için **Tamam**' ı seçin.
+4. Başarısız olmayı tetiklemek için **Tamam'ı**seçin.
 
    ![El ile yük devretme portal menüsü](./media/how-to-manage-database-account/manual-failover.png)
 
-### <a id="enable-manual-failover-via-cli"></a>Azure CLI
+### <a name="azure-cli"></a><a id="enable-manual-failover-via-cli"></a>Azure CLI
 
-Lütfen bkz. [Azure CLI ile el ile yük devretmeyi tetikleme](manage-with-cli.md#trigger-manual-failover)
+Azure [CLI ile Tetikleme kılavuzu na](manage-with-cli.md#trigger-manual-failover) bakın
 
-### <a id="enable-manual-failover-via-ps"></a>Azure PowerShell
+### <a name="azure-powershell"></a><a id="enable-manual-failover-via-ps"></a>Azure PowerShell
 
-Lütfen bkz. [PowerShell ile el ile yük devretmeyi tetikleme](manage-with-powershell.md#trigger-manual-failover)
+Powershell [ile Tetik manuel failover](manage-with-powershell.md#trigger-manual-failover) bakın
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Cosmos hesabının yanı sıra veritabanı ve kapsayıcıları yönetme hakkında daha fazla bilgi ve örnek için aşağıdaki makaleleri okuyun:
+Azure Cosmos hesabının yanı sıra veritabanı ve kapsayıcıların nasıl yönetilenlerine ilişkin daha fazla bilgi ve örnekler için aşağıdaki makaleleri okuyun:
 
-* [Azure PowerShell kullanarak Azure Cosmos DB yönetme](manage-with-powershell.md)
+* [Azure PowerShell'i kullanarak Azure Cosmos DB'yi yönetme](manage-with-powershell.md)
 * [Azure CLI kullanarak Azure Cosmos DB'yi yönetme](manage-with-cli.md)

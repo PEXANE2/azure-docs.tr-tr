@@ -1,60 +1,60 @@
 ---
-title: Xamarin. Forms uygulamanıza anında iletme bildirimleri ekleme
-description: Azure hizmetlerini kullanarak Xamarin. Forms uygulamalarınıza çok platformlu anında iletme bildirimleri gönderme hakkında bilgi edinin.
+title: Xamarin.Forms uygulamanıza anında iletme bildirimleri ekleme
+description: Xamarin.Forms uygulamalarınız için çok platformlu anında iletme bildirimleri göndermek için Azure hizmetlerini nasıl kullanacağınızı öğrenin.
 ms.assetid: d9b1ba9a-b3f2-4d12-affc-2ee34311538b
 ms.tgt_pltfrm: mobile-xamarin
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
 ms.openlocfilehash: f23ac2d693492695c398893c103d5a77a0e93129
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77461479"
 ---
-# <a name="add-push-notifications-to-your-xamarinforms-app"></a>Xamarin. Forms uygulamanıza anında iletme bildirimleri ekleme
+# <a name="add-push-notifications-to-your-xamarinforms-app"></a>Xamarin.Forms uygulamanıza anında iletme bildirimleri ekleme
 
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
 
 ## <a name="overview"></a>Genel Bakış
 
-Bu öğreticide, [Xamarin. Forms hızlı başlatmasından](app-service-mobile-xamarin-forms-get-started.md)kaynaklanan tüm projelere anında iletme bildirimleri eklersiniz. Bu, bir kayıt her eklendiğinde bir anında iletme bildiriminin tüm platformlar arası istemcilere gönderilmesi anlamına gelir.
+Bu öğreticide, [Xamarin.Forms hızlı başlangıç](app-service-mobile-xamarin-forms-get-started.md)sonucu tüm projelere anında iletme bildirimleri ekleyin. Bu, bir kayıt her ekildiğinde tüm platformlar arası istemcilere bir anında iletme bildirimi gönderildiği anlamına gelir.
 
-İndirilen hızlı başlangıç sunucusu projesini kullanmıyorsanız, anında iletme bildirimi uzantı paketine ihtiyacınız olacaktır. Daha fazla bilgi için bkz. [Azure için .net arka uç sunucu SDK 'sı Mobile Apps çalışma](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
+İndirilen hızlı başlangıç sunucusu projesini kullanmazsanız, anında iletme bildirimi uzantısı paketine ihtiyacınız olacaktır. Daha fazla bilgi için Azure [Mobil Uygulamaları için .NET arka uç sunucusu SDK ile çalışma](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)'ya bakın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-İOS için bir [Apple Geliştirici Programı üyeliğine](https://developer.apple.com/programs/ios/) ve fiziksel bir iOS cihazına ihtiyacınız olacaktır. [İOS simülatörü anında iletme bildirimlerini desteklemez](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/iOS_Simulator_Guide/TestingontheiOSSimulator.html).
+iOS için bir [Apple Geliştirici Programı üyeliğine](https://developer.apple.com/programs/ios/) ve fiziksel bir iOS aygıtına ihtiyacınız olacaktır. [iOS simülatörü anında iletme bildirimlerini desteklemiyor.](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/iOS_Simulator_Guide/TestingontheiOSSimulator.html)
 
-## <a name="configure-hub"></a>Bildirim Hub 'ı yapılandırma
+## <a name="configure-a-notification-hub"></a><a name="configure-hub"></a>Bildirim hub’ını yapılandırma
 
 [!INCLUDE [app-service-mobile-configure-notification-hub](../../includes/app-service-mobile-configure-notification-hub.md)]
 
-## <a name="update-the-server-project-to-send-push-notifications"></a>Sunucu projesini anında iletme bildirimleri gönderecek şekilde Güncelleştir
+## <a name="update-the-server-project-to-send-push-notifications"></a>Anında iletme bildirimleri göndermek için sunucu projesini güncelleştirme
 
 [!INCLUDE [app-service-mobile-update-server-project-for-push-template](../../includes/app-service-mobile-update-server-project-for-push-template.md)]
 
 ## <a name="configure-and-run-the-android-project-optional"></a>Android projesini yapılandırma ve çalıştırma (isteğe bağlı)
 
-Android için Xamarin. Forms DROID projesi anında iletme bildirimlerini etkinleştirmek için bu bölümü doldurun.
+Android için Xamarin.Forms Droid projesi için anında iletme bildirimlerini etkinleştirmek için bu bölümü tamamlayın.
 
-### <a name="enable-firebase-cloud-messaging-fcm"></a>Firebase Cloud Messaging (FCM) özelliğini etkinleştir
+### <a name="enable-firebase-cloud-messaging-fcm"></a>Firebase Bulut Mesajlaşmasını Etkinleştir (FCM)
 
 [!INCLUDE [notification-hubs-enable-firebase-cloud-messaging](../../includes/notification-hubs-enable-firebase-cloud-messaging.md)]
 
-### <a name="configure-the-mobile-apps-back-end-to-send-push-requests-by-using-fcm"></a>FCM kullanarak anında iletme istekleri gönderecek Mobile Apps arka ucu yapılandırın
+### <a name="configure-the-mobile-apps-back-end-to-send-push-requests-by-using-fcm"></a>FCM kullanarak anında iletme istekleri göndermek için Mobil Uygulamaları arka uçta yapılandırın
 
 [!INCLUDE [app-service-mobile-android-configure-push](../../includes/app-service-mobile-android-configure-push.md)]
 
 ### <a name="add-push-notifications-to-the-android-project"></a>Android projesine anında iletme bildirimleri ekleme
 
-Arka ucu FCM ile yapılandırılmışsa, FCM ile kaydolmak için istemciye bileşen ve kod ekleyebilirsiniz. Ayrıca, Azure Notification Hubs ile anında iletme bildirimlerini Mobile Apps arka ucu aracılığıyla kaydedebilir ve bildirim alabilirsiniz.
+FCM ile yapılandırılan arka uçla, FCM'ye kaydolmak için istemciye bileşenler ve kodlar ekleyebilirsiniz. Ayrıca Mobil Uygulamalar arka uç üzerinden Azure Bildirim Hub'ları ile anında iletme bildirimleri için kayıt ve bildirimler ilerler.
 
-1. **DROID** projesinde,, **NuGet Paketlerini Yönet > başvurular**' a sağ tıklayın....
-1. NuGet Paket Yöneticisi penceresinde, **Xamarin. Firebase. Messaging** paketini arayın ve projeye ekleyin.
-1. **DROID** projesinin proje özellikleri ' nde, uygulamayı Android sürüm 7,0 veya üstünü kullanarak derlemek üzere ayarlayın.
-1. Firebase konsolundan indirilen **Google-Services. JSON** dosyasını, **DROID** projesinin köküne ekleyin ve Build eylemini **GoogleServicesJson**olarak ayarlayın. Daha fazla bilgi için bkz. [Google SERVICES JSON dosyası ekleme](https://developer.xamarin.com/guides/android/data-and-cloud-services/google-messaging/remote-notifications-with-fcm/#Add_the_Google_Services_JSON_File).
+1. **Droid** projesinde, **NuGet Paketlerini Yönet> Doğru**Tıklama Referanslar ... .
+1. NuGet Package Manager penceresinde **Xamarin.Firebase.Messaging** paketini arayın ve projeye ekleyin.
+1. **Droid** projesinin proje özelliklerinde, uygulamayı Android sürüm 7.0 veya daha yüksek kullanarak derlemek üzere ayarlayın.
+1. Firebase konsolundan indirilen **google-services.json** dosyasını **Droid** projesinin köküne ekleyin ve **googleServicesJson'a**yapı eylemini ayarlayın. Daha fazla bilgi için bkz: [Google Hizmetleri JSON Dosyasını Ekle.](https://developer.xamarin.com/guides/android/data-and-cloud-services/google-messaging/remote-notifications-with-fcm/#Add_the_Google_Services_JSON_File)
 
 #### <a name="registering-with-firebase-cloud-messaging"></a>Firebase Cloud Messaging ile kaydolma
 
@@ -71,9 +71,9 @@ Arka ucu FCM ile yapılandırılmışsa, FCM ile kaydolmak için istemciye bile�
     </receiver>
     ```
 
-#### <a name="implementing-the-firebase-instance-id-service"></a>Firebase örnek kimlik hizmetinin uygulama
+#### <a name="implementing-the-firebase-instance-id-service"></a>Firebase Instance ID Hizmetinin Uygulanması
 
-1. `FirebaseRegistrationService`adlı **DROID** projesine yeni bir sınıf ekleyin ve aşağıdaki `using` deyimlerinin dosyanın en üstünde bulunduğundan emin olun:
+1. **Droid** projesine adlı `FirebaseRegistrationService`yeni bir sınıf ekleyin ve `using` aşağıdaki ifadelerin dosyanın üst kısmında bulunduğundan emin olun:
 
     ```csharp
     using System.Threading.Tasks;
@@ -83,7 +83,7 @@ Arka ucu FCM ile yapılandırılmışsa, FCM ile kaydolmak için istemciye bile�
     using Microsoft.WindowsAzure.MobileServices;
     ```
 
-1. Boş `FirebaseRegistrationService` sınıfını şu kodla değiştirin:
+1. Boş `FirebaseRegistrationService` sınıfı aşağıdaki kodla değiştirin:
 
     ```csharp
     [Service]
@@ -110,13 +110,13 @@ Arka ucu FCM ile yapılandırılmışsa, FCM ile kaydolmak için istemciye bile�
     }
     ```
 
-    `FirebaseRegistrationService` sınıfı, uygulamanın FCM 'ye erişmesini yetkilendirecek güvenlik belirteçleri oluşturmaktan sorumludur. Uygulama FCM 'den bir kayıt belirteci aldığında `OnTokenRefresh` yöntemi çağrılır. Yöntemi, FCM tarafından zaman uyumsuz olarak güncellenen `FirebaseInstanceId.Instance.Token` özelliğinden belirteci alır. `OnTokenRefresh` yöntemi nadiren çağrılır, çünkü belirteç yalnızca uygulama yüklendiğinde veya kaldırıldığında, Kullanıcı uygulama verilerini sildiğinde, uygulama örnek KIMLIĞINI sildiğinde veya belirtecin güvenliği tehlikeye atıldığında güncelleştirilir. Ayrıca, uygulama, belirteci düzenli olarak, genellikle her 6 ayda bir yenileme FCM örnek kimliği hizmeti ister.
+    Sınıf, `FirebaseRegistrationService` fcm'e erişim için uygulama yetkisi veren güvenlik belirteçleri oluşturmakla yükümlüdür. Yöntem, `OnTokenRefresh` uygulama FCM'den bir kayıt jetonu aldığında çağrılır. Yöntem, FCM tarafından eşzamanlı `FirebaseInstanceId.Instance.Token` olarak güncelleştirilen özellikten belirteci alır. Belirteç `OnTokenRefresh` yalnızca uygulama yüklendiğinde veya kaldırıldığında, kullanıcı uygulama verilerini sildiğinde, uygulama Örnek Kimliğini sildiğinde veya belirteç güvenliği tehlikeye girdiğinden, yöntem sık sık çağrılır. Buna ek olarak, FCM Instance ID hizmeti, uygulamanın belirtecidüzenli olarak her 6 ayda bir düzenli olarak yenilenmesini talep eder.
 
-    `OnTokenRefresh` yöntemi, kullanıcının kayıt belirtecini Azure Bildirim Hub 'ı ile ilişkilendirmek için kullanılan `SendRegistrationTokenToAzureNotificationHub` yöntemini de çağırır.
+    Yöntem, `OnTokenRefresh` kullanıcının `SendRegistrationTokenToAzureNotificationHub` kayıt belirteciyle Azure Bildirim Hub'ı ile ilişkilendirmek için kullanılan yöntemi de çağırır.
 
-#### <a name="registering-with-the-azure-notification-hub"></a>Azure bildirim Hub'ıyla
+#### <a name="registering-with-the-azure-notification-hub"></a>Azure Bildirim Merkezi'ne kaydolmak
 
-1. `AzureNotificationHubService`adlı **DROID** projesine yeni bir sınıf ekleyin ve aşağıdaki `using` deyimlerinin dosyanın en üstünde bulunduğundan emin olun:
+1. **Droid** projesine adlı `AzureNotificationHubService`yeni bir sınıf ekleyin ve `using` aşağıdaki ifadelerin dosyanın üst kısmında bulunduğundan emin olun:
 
     ```csharp
     using System;
@@ -126,7 +126,7 @@ Arka ucu FCM ile yapılandırılmışsa, FCM ile kaydolmak için istemciye bile�
     using Newtonsoft.Json.Linq;
     ```
 
-1. Boş `AzureNotificationHubService` sınıfını şu kodla değiştirin:
+1. Boş `AzureNotificationHubService` sınıfı aşağıdaki kodla değiştirin:
 
     ```csharp
     public class AzureNotificationHubService
@@ -155,11 +155,11 @@ Arka ucu FCM ile yapılandırılmışsa, FCM ile kaydolmak için istemciye bile�
     }
     ```
 
-    `RegisterAsync` yöntemi, JSON olarak basit bir bildirim iletisi şablonu oluşturur ve Firebase kayıt belirtecini kullanarak Bildirim Hub 'ından şablon bildirimleri almak için kayıt yapar. Bu, Azure bildirim Hub'ından gönderilen tüm bildirimler kayıt belirtecinizi tarafından temsil edilen cihaz hedeflediğiniz sağlar.
+    Yöntem, `RegisterAsync` JSON olarak basit bir bildirim iletisi şablonu oluşturur ve Firebase kayıt belirteci kullanarak bildirim merkezinden şablon bildirimleri almak için kaydolur. Bu, Azure Bildirim Hub'ından gönderilen bildirimlerin kayıt belirteci tarafından temsil edilen aygıtı hedeflemesini sağlar.
 
-#### <a name="displaying-the-contents-of-a-push-notification"></a>Anında iletme bildirimi içeriğini görüntüleme
+#### <a name="displaying-the-contents-of-a-push-notification"></a>Anında İtme Bildiriminin İçeriğini Görüntüleme
 
-1. `FirebaseNotificationService`adlı **DROID** projesine yeni bir sınıf ekleyin ve aşağıdaki `using` deyimlerinin dosyanın en üstünde bulunduğundan emin olun:
+1. **Droid** projesine adlı `FirebaseNotificationService`yeni bir sınıf ekleyin ve `using` aşağıdaki ifadelerin dosyanın üst kısmında bulunduğundan emin olun:
 
     ```csharp
     using Android.App;
@@ -170,7 +170,7 @@ Arka ucu FCM ile yapılandırılmışsa, FCM ile kaydolmak için istemciye bile�
     using Firebase.Messaging;
     ```
 
-1. Boş `FirebaseNotificationService` sınıfını şu kodla değiştirin:
+1. Boş `FirebaseNotificationService` sınıfı aşağıdaki kodla değiştirin:
 
     ```csharp
     [Service]
@@ -213,44 +213,44 @@ Arka ucu FCM ile yapılandırılmışsa, FCM ile kaydolmak için istemciye bile�
     }
     ```
 
-    Bir uygulama FCM 'den bildirim aldığında çağrılan `OnMessageReceived` yöntemi, ileti içeriğini ayıklar ve `SendNotification` yöntemini çağırır. Bu yöntem, uygulama çalışırken bildirim alanında görüntülenen bildirim ile başlatılan bir yerel bildirim iletisi içeriği dönüştürür.
+    Bir `OnMessageReceived` uygulama FCM'den bir bildirim aldığında çağrılan yöntem, ileti içeriğini ayıklar `SendNotification` ve yöntemi çağırır. Bu yöntem, bildirimin bildirim alanında görünmesiyle ileti içeriğini uygulama çalışırken başlatılan yerel bir bildirime dönüştürür.
 
-Şimdi, Android cihazda veya Öykünücüde çalışan uygulamada test anında iletme bildirimleri hazır olursunuz.
+Şimdi, bir Android cihaz veya emülatör üzerinde çalışan uygulamada test push bildirimleri hazırsınız.
 
-### <a name="test-push-notifications-in-your-android-app"></a>Android uygulamanızda anında iletme bildirimlerini test etme
+### <a name="test-push-notifications-in-your-android-app"></a>Android uygulamanızda anında iletme bildirimlerini test edin
 
-İlk iki adım yalnızca bir öykünücü üzerinde test edilirken gereklidir.
+İlk iki adım yalnızca bir emülatör üzerinde test yaparken gereklidir.
 
-1. Google Play Hizmetleri ile yapılandırılmış bir cihaza veya öykünücüye dağıtım veya hata ayıklama yaptığınızdan emin olun. Bu, **Play** uygulamalarının cihaza veya öykünücüsünde yüklü olup olmadığını denetleyerek doğrulanabilir.
-2. **Uygulamalar** > **Ayarlar** > **Hesap Ekle**' ye tıklayarak Android cihazına bir Google hesabı ekleyin. Ardından, var olan bir Google hesabını cihaza eklemek veya yeni bir tane oluşturmak için istemleri izleyin.
-3. Visual Studio veya Xamarin Studio ' de, **DROID** projesine sağ tıklayın ve **Başlangıç projesi olarak ayarla**' ya tıklayın.
-4. Projeyi derlemek ve uygulamayı Android cihazınızda veya öykünücüsünde başlatmak için **Çalıştır** ' a tıklayın.
-5. Uygulamada bir görev yazın ve ardından artı ( **+** ) simgesine tıklayın.
-6. Bir öğe eklendiğinde bildirim alındığını doğrulayın.
+1. Google Play Hizmetleri ile yapılandırılan bir aygıta veya emülatöre dağıtıldığınızı veya hata ayıklama yaptığından emin olun. Bu, **Yürüt** uygulamalarının aygıta veya emülatöre yüklü olup olmadığını kontrol ederek doğrulanabilir.
+2. **Uygulamalar** > **Ayarları** > **Hesap Ekle'ye**tıklayarak Android cihazına bir Google hesabı ekleyin. Ardından, aygıta varolan bir Google hesabı eklemek veya yeni bir hesap oluşturmak için istemleri izleyin.
+3. Visual Studio veya Xamarin Studio'da **Droid** projesine sağ tıklayın ve **başlangıç projesi olarak ayarla'yı**tıklatın.
+4. Projeyi oluşturmak ve uygulamayı Android cihazınızda veya emülatörünüzü başlatmak için **Çalıştır'ı** tıklatın.
+5. Uygulamada, bir görev yazın ve sonra artı**+**( ) simgesini tıklatın.
+6. Bir öğe eklendiğinde bildirimin alındığını doğrulayın.
 
-## <a name="configure-and-run-the-ios-project-optional"></a>İOS projesini yapılandırma ve çalıştırma (isteğe bağlı)
+## <a name="configure-and-run-the-ios-project-optional"></a>iOS projesini yapılandırma ve çalıştırma (isteğe bağlı)
 
 Bu bölüm iOS cihazları için Xamarin iOS projesi çalıştırmaya yöneliktir. iOS cihazlarıyla çalışmıyorsanız, bu bölümü atlayabilirsiniz.
 
 [!INCLUDE [Enable Apple Push Notifications](../../includes/notification-hubs-enable-apple-push-notifications.md)]
 
-#### <a name="configure-the-notification-hub-for-apns"></a>APNS için Bildirim Hub 'ını yapılandırma
+#### <a name="configure-the-notification-hub-for-apns"></a>APNS için bildirim merkezini yapılandırma
 
 [!INCLUDE [app-service-mobile-apns-configure-push](../../includes/app-service-mobile-apns-configure-push.md)]
 
-Daha sonra, Xamarin Studio veya Visual Studio 'da iOS proje ayarını yapılandıracaksınız.
+Ardından, Xamarin Studio veya Visual Studio'daki iOS proje ayarını yapılandıracak.
 
 [!INCLUDE [app-service-mobile-xamarin-ios-configure-project](../../includes/app-service-mobile-xamarin-ios-configure-project.md)]
 
-#### <a name="add-push-notifications-to-your-ios-app"></a>İOS uygulamanıza anında iletme bildirimleri ekleme
+#### <a name="add-push-notifications-to-your-ios-app"></a>iOS uygulamanıza anında iletme bildirimleri ekleme
 
-1. **İOS** projesinde, AppDelegate.cs açın ve aşağıdaki ifadeyi kod dosyasının en üstüne ekleyin.
+1. **iOS** projesinde, AppDelegate.cs açın ve kod dosyasının üst bölümüne aşağıdaki deyimi ekleyin.
 
     ```csharp
     using Newtonsoft.Json.Linq;
     ```
 
-2. **Appdelegate** sınıfında, bildirimlere kaydolmak için **RegisteredForRemoteNotifications** olayı için bir geçersiz kılma ekleyin:
+2. **AppDelegate** sınıfında, bildirimler için kaydolmak için **RegisteredForRemoteBildirimler** olayı için bir geçersiz kılma ekleyin:
 
     ```csharp
     public override void RegisteredForRemoteNotifications(UIApplication application,
@@ -270,7 +270,7 @@ Daha sonra, Xamarin Studio veya Visual Studio 'da iOS proje ayarını yapıland�
     }
     ```
 
-3. **Appdelegate**Içinde, **DidReceiveRemoteNotification** olay işleyicisi için aşağıdaki geçersiz kılmayı da ekleyin:
+3. **AppDelegate'de** **DidReceiveRemoteNotification** olay işleyicisi için aşağıdaki geçersiz kılmayı da ekleyin:
 
     ```csharp
     public override void DidReceiveRemoteNotification(UIApplication application,
@@ -293,7 +293,7 @@ Daha sonra, Xamarin Studio veya Visual Studio 'da iOS proje ayarını yapıland�
 
     Bu yöntem, uygulama çalışırken gelen bildirimleri işler.
 
-4. **Appdelegate** sınıfında, aşağıdaki kodu **Sonlandırhedbaşlatırken** yöntemine ekleyin:
+4. **AppDelegate** sınıfında, **FinishedLaunching** yöntemine aşağıdaki kodu ekleyin:
 
     ```csharp
     // Register for push notifications.
@@ -307,36 +307,36 @@ Daha sonra, Xamarin Studio veya Visual Studio 'da iOS proje ayarını yapıland�
     UIApplication.SharedApplication.RegisterForRemoteNotifications();
     ```
 
-    Bu, uzak bildirimler ve istekleri anında kaydetme desteği sunar.
+    Bu, uzak bildirimler ve push kaydı istekleri için destek sağlar.
 
 Uygulamanız artık anında iletme bildirimlerini destekleyecek şekilde güncelleştirildi.
 
-#### <a name="test-push-notifications-in-your-ios-app"></a>İOS uygulamanızda anında iletme bildirimlerini test etme
+#### <a name="test-push-notifications-in-your-ios-app"></a>iOS uygulamanızda anında iletme bildirimlerini test edin
 
-1. İOS projesine sağ tıklayın ve **Başlangıç projesi olarak ayarla**' ya tıklayın.
-2. Projeyi derlemek ve uygulamayı bir iOS cihazında başlatmak için, Visual Studio 'da **Çalıştır** düğmesine veya **F5** tuşuna basın. Sonra anında iletme bildirimlerini kabul etmek için **Tamam** ' ı tıklatın.
+1. iOS projesini sağ tıklatın ve **Başlangıç Projesi olarak ayarla'yı**tıklatın.
+2. Projeyi oluşturmak ve uygulamayı bir iOS aygıtında başlatmak için Visual Studio'da **Çalıştır** düğmesine veya **F5'e** basın. Ardından anında **iletme** bildirimlerini kabul etmek için Tamam'ı tıklatın.
 
    > [!NOTE]
-   > Uygulamanızın anında iletme bildirimlerini kabul etmelisiniz. Bu istek yalnızca uygulamanın ilk kez çalıştırıldığı zaman gerçekleşir.
+   > Uygulamanızdan gelen anında iletme bildirimlerini açıkça kabul etmelisiniz. Bu istek yalnızca uygulamailk kez çalıştırılır.
 
-3. Uygulamada bir görev yazın ve ardından artı ( **+** ) simgesine tıklayın.
-4. Bildirimin alındığını doğrulayın ve sonra bildirimi kapatmak için **Tamam** ' ı tıklatın.
+3. Uygulamada, bir görev yazın ve sonra artı**+**( ) simgesini tıklatın.
+4. Bildirimin alındığını doğrulayın ve bildirimi kapatmak için **Tamam'ı** tıklatın.
 
 ## <a name="configure-and-run-windows-projects-optional"></a>Windows projelerini yapılandırma ve çalıştırma (isteğe bağlı)
 
-Bu bölüm, Windows cihazları için Xamarin. Forms WinApp ve WinPhone81 projelerini çalıştırmaya yöneliktir. Bu adımlar Evrensel Windows Platformu (UWP) projelerini da destekler. Windows cihazlarıyla çalışmıyorsanız, bu bölümü atlayabilirsiniz.
+Bu bölüm Windows cihazları için Xamarin.Forms WinApp ve WinPhone81 projelerini çalıştırmak içindir. Bu adımlar, Evrensel Windows Platformu (UWP) projelerini de destekler. Windows cihazlarıyla çalışmıyorsanız, bu bölümü atlayabilirsiniz.
 
-#### <a name="register-your-windows-app-for-push-notifications-with-windows-notification-service-wns"></a>Windows Notification Service ile Windows uygulamanızı anında iletme bildirimleri için kaydetme (WNS)
+#### <a name="register-your-windows-app-for-push-notifications-with-windows-notification-service-wns"></a>Anında iletme bildirimleri için Windows uygulamanızı Windows Bildirim Hizmeti (WNS) ile kaydedin
 
 [!INCLUDE [app-service-mobile-register-wns](../../includes/app-service-mobile-register-wns.md)]
 
-#### <a name="configure-the-notification-hub-for-wns"></a>WNS için Bildirim Hub 'ını yapılandırma
+#### <a name="configure-the-notification-hub-for-wns"></a>WNS için bildirim merkezini yapılandırma
 
 [!INCLUDE [app-service-mobile-configure-wns](../../includes/app-service-mobile-configure-wns.md)]
 
 #### <a name="add-push-notifications-to-your-windows-app"></a>Windows uygulamanıza anında iletme bildirimleri ekleme
 
-1. Visual Studio 'da bir Windows projesinde **app.xaml.cs** açın ve aşağıdaki deyimleri ekleyin.
+1. Visual Studio'da, bir Windows projesinde **App.xaml.cs** açın ve aşağıdaki ifadeleri ekleyin.
 
     ```csharp
     using Newtonsoft.Json.Linq;
@@ -346,9 +346,9 @@ Bu bölüm, Windows cihazları için Xamarin. Forms WinApp ve WinPhone81 projele
     using <your_TodoItemManager_portable_class_namespace>;
     ```
 
-    `<your_TodoItemManager_portable_class_namespace>`, `TodoItemManager` sınıfını içeren taşınabilir projenizin ad alanıyla değiştirin.
+    Sınıfı `<your_TodoItemManager_portable_class_namespace>` içeren taşınabilir projenizin ad `TodoItemManager` alanıyla değiştirin.
 
-2. App.xaml.cs ' de, aşağıdaki **ınitnotificationsasync** yöntemini ekleyin:
+2. App.xaml.cs olarak, aşağıdaki **InitNotificationsAsync** yöntemini ekleyin:
 
     ```csharp
     private async Task InitNotificationsAsync()
@@ -374,42 +374,42 @@ Bu bölüm, Windows cihazları için Xamarin. Forms WinApp ve WinPhone81 projele
     }
     ```
 
-    Bu yöntem, anında iletme bildirimi kanalını alır ve Bildirim Hub 'ınızdan şablon bildirimleri almak için bir şablon kaydeder. *Messageparam* destekleyen bir şablon bildirimi bu istemciye teslim edilecek.
+    Bu yöntem anında iletme bildirimi kanalını alır ve bildirim merkezinizden şablon bildirimleri almak için bir şablon kaydeder. İletiyi destekleyen bir şablon *bildirimiParam* bu istemciye teslim edilecektir.
 
-3. App.xaml.cs ' de, `async` değiştiricisini ekleyerek **Onbaşlatılan** olay işleyicisi yöntem tanımını güncelleştirin. Ardından, yönteminin sonuna aşağıdaki kod satırını ekleyin:
+3. App.xaml.cs, değiştirici ekleyerek **Başlatılan Olay** Işleyicisi `async` yöntem tanımını güncelleştirin. Ardından yöntemin sonuna aşağıdaki kod satırını ekleyin:
 
     ```csharp
     await InitNotificationsAsync();
     ```
 
-    Bu, uygulama her başlatıldığında anında iletme bildirimi kaydının oluşturulmasını veya yenilenmesini sağlar. WNS Push kanalının her zaman etkin olduğunu garantilemek için bunu yapmanız önemlidir.  
+    Bu, uygulama her başlatılında anında iletme bildirimi kaydının oluşturulmasını veya yenilenmesini sağlar. WNS push kanalının her zaman etkin olmasını garanti etmek için bunu yapmak önemlidir.  
 
-4. Visual Studio için Çözüm Gezgini ' de **Package. appxmanifest** dosyasını açın ve **Bildirimler**altında **bildirim özellikli** ' i **Evet** olarak ayarlayın.
-5. Uygulamayı derleyin ve hata olmadığını doğrulayın. İstemci uygulamanız artık Mobile Apps arka uçtaki şablon bildirimlerine kaydolmalıdır. Çözümünüzde her Windows projesi için bu bölümü tekrarlayın.
+4. Visual Studio için Solution Explorer'da **Package.appxmanifest** dosyasını açın ve **Bildirimler**altında **Tost'u** **Evet** olarak ayarlayın.
+5. Uygulamayı oluşturun ve hiçbir hatanız olmadığını doğrulayın. Müşteri uygulamanız artık Mobil Uygulamalar arka uçtan gelen şablon bildirimleri için kaydolmalıdır. Çözümünüzdeki her Windows projesi için bu bölümü tekrarlayın.
 
 #### <a name="test-push-notifications-in-your-windows-app"></a>Windows uygulamanızda anında iletme bildirimlerini test etme
 
-1. Visual Studio 'da bir Windows projesine sağ tıklayın ve **Başlangıç projesi olarak ayarla**' ya tıklayın.
+1. Visual Studio'da bir Windows projesine sağ tıklayın ve **başlangıç projesi olarak ayarla'yı**tıklatın.
 2. Projeyi oluşturmak ve uygulamayı başlatmak için **Çalıştır** düğmesine basın.
-3. Uygulamada, yeni bir TodoItem için bir ad yazın ve ardından eklemek için artı ( **+** ) simgesine tıklayın.
-4. Öğe eklendiğinde bir bildirimin alındığını doğrulayın.
+3. Uygulamada, yeni bir todoöğe için bir ad yazın ve**+** eklemek için artı ( ) simgesine tıklayın.
+4. Öğe eklendiğinde bildirimin alındığını doğrulayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Anında iletme bildirimleri hakkında daha fazla bilgi edinebilirsiniz:
 
-* [Azure Mobile Apps anında Iletme bildirimleri gönderme](https://developer.xamarin.com/guides/xamarin-forms/cloud-services/push-notifications/azure/)
-* [Firebase bulut mesajlaşma](https://developer.xamarin.com/guides/android/data-and-cloud-services/google-messaging/firebase-cloud-messaging/)
-* [Firebase Cloud Messaging ile uzak bildirimler](https://developer.xamarin.com/guides/android/data-and-cloud-services/google-messaging/remote-notifications-with-fcm/)
+* [Azure Mobil Uygulamalarından Anında Ödeme Gönderme](https://developer.xamarin.com/guides/xamarin-forms/cloud-services/push-notifications/azure/)
+* [Firebase Cloud Messaging](https://developer.xamarin.com/guides/android/data-and-cloud-services/google-messaging/firebase-cloud-messaging/)
+* [Firebase Bulut Mesajlaşma ile Uzaktan Bildirimler](https://developer.xamarin.com/guides/android/data-and-cloud-services/google-messaging/remote-notifications-with-fcm/)
 * [Anında iletme bildirimi sorunlarını tanılama](../notification-hubs/notification-hubs-push-notification-fixer.md)  
-  Bildirimlerin bırakılmış olmasının çeşitli nedenleri vardır veya cihazlar üzerinde bitmeyebilir. Bu konuda, anında iletme bildirimi hatalarının asıl nedenini çözümleme ve oluşturma işlemlerinin nasıl yapılacağı gösterilmektedir.
+  Bildirimlerin düşmesinin veya aygıtlara düşmemelerinin çeşitli nedenleri vardır. Bu konu, anında iletme bildirimi hatalarının temel nedenini nasıl çözümleyip çözersiniz gösterir.
 
-Aşağıdaki öğreticilerden birine de devam edebilirsiniz:
+Ayrıca aşağıdaki öğreticilerden birine devam edebilirsiniz:
 
 * [Uygulamanıza kimlik doğrulaması ekleme](app-service-mobile-xamarin-forms-get-started-users.md)  
   Uygulamanızdaki kullanıcıların kimliklerini bir kimlik sağlayıcısı ile nasıl doğrulayacağınızı öğrenin.
 * [Uygulamanız için çevrimdışı eşitlemeyi etkinleştirme](app-service-mobile-xamarin-forms-get-started-offline-data.md)  
-  Mobile Apps arka ucu kullanarak uygulamanıza çevrimdışı destek eklemeyi öğrenin. Çevrimdışı eşitleme sayesinde, kullanıcılar bir mobil uygulamayla etkileşime geçerek, ağ bağlantısı olmasa bile veri&mdash;görüntüleme, ekleme veya değiştirme&mdash;.
+  Mobile Apps arka ucu kullanarak uygulamanıza çevrimdışı destek eklemeyi öğrenin. Çevrimdışı eşitleme yle, kullanıcılar ağ&mdash;bağlantısı olmasa bile bir&mdash;mobil uygulamayı görüntüleme, ekleme veya değiştirme ile etkileşimkurabilir.
 
 <!-- Images. -->
 

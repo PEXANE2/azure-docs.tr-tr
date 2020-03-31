@@ -1,6 +1,6 @@
 ---
-title: Microsoft Authenticator uygulamasına kişisel Microsoft hesabı ekleme-Azure AD
-description: İki öğeli doğrulama kullanırken kimliğinizi doğrulamak için Outlook.com veya Xbox LIVE gibi kişisel Microsoft hesaplarını Microsoft Authenticator uygulamasına ekleyin.
+title: Microsoft Authenticator uygulamasına kişisel bir Microsoft hesabı ekleme - Azure AD
+description: İki faktörlü doğrulama kullanırken kimliğinizi doğrulamak için Microsoft Authenticator uygulamasına Outlook.com veya Xbox LIVE gibi kişisel Microsoft hesapları ekleyin.
 services: active-directory
 author: curtand
 manager: daveba
@@ -12,63 +12,63 @@ ms.date: 01/24/2019
 ms.author: curtand
 ms.reviewer: olhaun
 ms.openlocfilehash: 289c00e28fd82b78b321732628ff85d22c64cabf
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77062311"
 ---
 # <a name="add-personal-microsoft-accounts-to-the-microsoft-authenticator-app"></a>Microsoft Authenticator uygulamasına kişisel Microsoft hesapları ekleme
 
-Outlook.com ve Xbox gibi kişisel Microsoft hesaplarınızı, hem standart iki öğeli doğrulama işlemi hem de passwordless telefon oturum açma yöntemi için Microsoft Authenticator uygulamasına ekleyin.
+Standart iki faktörlü doğrulama işlemi ve şifresiz telefon oturum açma yöntemi için microsoft authenticator uygulamasına Outlook.com ve Xbox LIVE gibi kişisel Microsoft hesaplarınızı ekleyin.
 
-- **Standart iki öğeli doğrulama yöntemi.** Oturum açmak için kullandığınız cihaza Kullanıcı adınızı ve parolanızı yazın ve ardından Microsoft Authenticator uygulamasının bir bildirim gönderip göndermediğini veya ilgili doğrulama kodunu Microsoft Authenticator uygulamasının **hesaplar** ekranından kopyalamayı tercih ediyorsanız seçin.
+- **Standart iki faktörlü doğrulama yöntemi.** Oturum açmakta olduğunuz cihaza kullanıcı adınızı ve parolanızı yazın ve ardından Microsoft Authenticator uygulamasının bildirim gönderip göndermediğini veya ilişkili doğrulama kodunu Microsoft Kimlik Doğrulayıcı uygulamasının **Hesaplar** ekranından kopyalamayı tercih edip etmediğinizi seçin.
 
-- **Passwordless oturum açma yöntemi.** Kişisel Microsoft hesabı için oturum açarken kullandığınız cihaza Kullanıcı adınızı yazın ve ardından parmak izinizi, yüzünüzü veya PIN 'inizi kullanarak bunu doğrulamak için mobil cihazınızı kullanın. Bu yöntem için parolanızı girmeniz gerekmez.
+- **Şifresiz oturum açma yöntemi.** Kişisel Microsoft hesabınız için oturum açtığınız cihaza kullanıcı adınızı yazın ve parmak izinizi, yüzünüzü veya PIN'inizi kullanarak mobil cihazınızı kullanın. Bu yöntem için parolanızı girmeniz gerekmez.
 
 >[!Important]
->Hesabınızı ekleyebilmeniz için önce Microsoft Authenticator uygulamasını indirmeniz ve kurmanız gerekir. Henüz yapmadıysanız, [uygulamayı indirme ve yükleme](user-help-auth-app-download-install.md) makalesindeki adımları izleyin.
+>Hesabınızı eklemeden önce Microsoft Authenticator uygulamasını indirmeniz ve yüklemeniz gerekir. Bunu henüz yapmadıysanız, İndir'deki adımları izleyin [ve uygulama makalesini yükleyin.](user-help-auth-app-download-install.md)
 
-## <a name="add-your-personal-microsoft-account"></a>Kişisel Microsoft hesabı ekleyin
+## <a name="add-your-personal-microsoft-account"></a>Kişisel Microsoft hesabınızı ekleyin
 
-İlk olarak iki öğeli doğrulamayı açıp daha sonra hesabı uygulamaya ekleyerek kişisel Microsoft hesabı ekleyebilirsiniz.
+Kişisel Microsoft hesabınızı önce iki faktörlü doğrulamayı açarak ve ardından hesabı uygulamaya ekleyerek ekleyebilirsiniz.
 
 >[!Note]
->Kişisel Microsoft hesabı için yalnızca passwordless telefon oturum açma özelliğini kullanmayı planlıyorsanız iki öğeli doğrulamayı açmanız gerekmez. Bununla birlikte, ek hesap güvenliği için iki öğeli doğrulamayı etkinleştirmenizi öneririz.
+>Kişisel Microsoft hesabınız için yalnızca parolasız telefon oturum açma kullanmayı planlıyorsanız, iki faktörlü doğrulamayı açmanız gerekmez. Ancak, ek hesap güvenliği için iki faktörlü doğrulamayı açmanızı öneririz.
 
-### <a name="turn-on-two-factor-verification"></a>İki öğeli doğrulamayı açma
+### <a name="turn-on-two-factor-verification"></a>İki faktörlü doğrulamayı açma
 
-1. Bilgisayarınızda [güvenlik temel bilgileri](https://account.microsoft.com/security) sayfanıza gidin ve kişisel Microsoft hesabı oturum açın. Örneğin, alain@outlook.com.
+1. Bilgisayarınızda, kişisel Microsoft hesabınızı kullanarak [Güvenlik temelleri](https://account.microsoft.com/security) sayfanıza gidin ve oturum açın. Örneğin, alain@outlook.com.
 
-2. **Güvenlik temel bilgileri** sayfasının en altında, **daha fazla güvenlik seçenekleri** bağlantısını seçin.
+2. **Güvenlik temelleri** sayfasının alt kısmında, **daha fazla güvenlik seçeneği** bağlantısını seçin.
 
-    !["Daha fazla güvenlik seçenekleri" bağlantısı vurgulanmış güvenlik temelleri sayfası](./media/user-help-auth-app-add-personal-ms-account/more-security-options-link.png)
+    !["Daha fazla güvenlik seçeneği" bağlantısı vurgulanan güvenlik temelleri sayfası](./media/user-help-auth-app-add-personal-ms-account/more-security-options-link.png)
 
-3. **İki adımlı doğrulama** bölümüne gidin ve **özelliği açmak için seçin.** Artık kişisel hesabınızla kullanmak istemiyorsanız, buradan da kapatabilirsiniz.
+3. **İki aşamalı doğrulama** bölümüne gidin ve özelliği **Açma**özelliğini açmayı seçin. Kişisel hesabınızla kullanmak istemiyorsanız, buradan da kapatabilirsiniz.
 
-### <a name="add-your-microsoft-account-to-the-app"></a>Microsoft hesabı uygulamaya ekleyin
+### <a name="add-your-microsoft-account-to-the-app"></a>Microsoft hesabınızı uygulamaya ekleme
 
 1. Mobil cihazınızda Microsoft Authenticator uygulamasını açın.
 
-2. Sağ üst köşedeki **Özelleştir ve denetim** simgesinden **Hesap Ekle** ' yi seçin.
+2. Sağ üstteki **Özelleştir ve kontrol** simgesinden **hesap ekle'yi** seçin.
 
-    ![Özelleştir ve denetim simgesi vurgulanmış şekilde hesaplar sayfası](./media/user-help-auth-app-add-personal-ms-account/customize-and-control-icon.png)
+    ![Hesaplar sayfası, Özelleştir ve denetim simgesi vurgulanır](./media/user-help-auth-app-add-personal-ms-account/customize-and-control-icon.png)
 
-3. **Hesap Ekle** sayfasında **kişisel hesap**' ı seçin.
+3. Hesap **Ekle** sayfasında **Kişisel hesap'ı**seçin.
 
-4. Uygun e-posta adresini (örneğin, alain@outlook.com) kullanarak kişisel hesabınızda oturum açın ve ardından **İleri**' yi seçin.
+4. Uygun e-posta adresini kullanarak alain@outlook.comkişisel hesabınızda oturum açın ve ardından **İleri'yi**seçin.
 
     >[!Note]
-    >Kişisel bir Microsoft hesabı yoksa, burada bir tane oluşturabilirsiniz.
+    >Kişisel bir Microsoft hesabınız yoksa, burada bir hesap oluşturabilirsiniz.
 
-5. Parolanızı girin ve **oturum aç**' ı seçin.
+5. Parolanızı girin ve oturum **aç'ı**seçin.
 
     Kişisel hesabınız Microsoft Authenticator uygulamasına eklenir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Hesaplarınızı uygulamaya ekledikten sonra, cihazınızda kimlik doğrulayıcı uygulamasını kullanarak oturum açabilirsiniz. Daha fazla bilgi için bkz. [uygulamayı kullanarak oturum açma](user-help-auth-app-sign-in.md).
+- Hesaplarınızı uygulamaya ekledikten sonra cihazınızdaki Authenticator uygulamasını kullanarak oturum açabilirsiniz. Daha fazla bilgi için [uygulamayı kullanarak Oturum Aç'a](user-help-auth-app-sign-in.md)bakın.
 
-- Kişisel Microsoft hesabı doğrulama kodunuzu alırken sorun yaşıyorsanız, [Microsoft hesabı güvenlik bilgileri & doğrulama kodları](https://support.microsoft.com/help/12428/microsoft-account-security-info-verification-codes) makalesinin **sorun giderme doğrulama sorunları** bölümüne bakın.
+- Kişisel Microsoft hesabınız için doğrulama kodunuzu almakta sorun yaşıyorsanız, Microsoft hesap [güvenlik bilgileri & doğrulama kodları](https://support.microsoft.com/help/12428/microsoft-account-security-info-verification-codes) makalesinin Sorun **Giderme doğrulama kodu sorunları** bölümüne bakın.
 
-- İOS çalıştıran cihazlarda, hesap kimlik bilgilerinizi ve hesaplarınızın sırası gibi ilgili uygulama ayarlarınızı buluta da yedekleyebilirsiniz. Daha fazla bilgi için bkz. [Microsoft Authenticator App Ile yedekleme ve kurtarma](user-help-auth-app-backup-recovery.md).
+- iOS çalıştıran aygıtlar için, hesap kimlik bilgilerinizi ve hesaplarınızın sırası gibi ilgili uygulama ayarlarını da buluta yedekleyebilirsiniz. Daha fazla bilgi için [Yedekleme'ye bakın ve Microsoft Authenticator uygulamasıyla kurtarın.](user-help-auth-app-backup-recovery.md)

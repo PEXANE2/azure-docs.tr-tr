@@ -1,69 +1,69 @@
 ---
-title: REST API bir Linux sanal makinesi oluşturma
-description: Azure REST API ile yönetilen diskler ve SSH kimlik doğrulaması kullanan Azure 'da Linux sanal makinesi oluşturmayı öğrenin.
+title: REST API ile bir Linux VM oluşturma
+description: Azure'da Yönetilen Diskler ve Azure REST API ile SSH kimlik doğrulamasını kullanan bir Linux sanal makinesini nasıl oluşturabilirsiniz öğrenin.
 author: cynthn
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: cynthn
 ms.openlocfilehash: 1594c030839cccdd48c4b032c6ad92f746f78e26
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78970266"
 ---
-# <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>REST API ile SSH kimlik doğrulaması kullanan bir Linux sanal makinesi oluşturma
+# <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>REST API ile SSH kimlik doğrulamasını kullanan bir Linux sanal makinesi oluşturun
 
-Azure 'daki bir Linux sanal makinesi (VM), diskler ve ağ arabirimleri gibi çeşitli kaynaklardan oluşur ve konum, boyut ve işletim sistemi görüntüsü ve kimlik doğrulama ayarları gibi parametreleri tanımlar.
+Azure'daki Bir Linux sanal makinesi (VM), diskler ve ağ arabirimleri gibi çeşitli kaynaklardan oluşur ve konum, boyut ve işletim sistemi görüntüsü ve kimlik doğrulama ayarları gibi parametreleri tanımlar.
 
-Azure portal, Azure CLı 2,0, birçok Azure SDK, Azure Resource Manager şablon ve anormal ya da Terırform gibi birçok üçüncü taraf araç aracılığıyla bir Linux sanal makinesi oluşturabilirsiniz. Bu araçların hepsi, Linux VM oluşturmak için REST API kullanır.
+Azure portalı, Azure CLI 2.0, çok sayıda Azure SDK'sı, Azure Kaynak Yöneticisi şablonu ve Ansible veya Terraform gibi birçok üçüncü taraf aracı aracılığıyla bir Linux VM oluşturabilirsiniz. Tüm bu araçlar sonuçta Linux VM oluşturmak için REST API kullanın.
 
-Bu makalede, yönetilen diskler ve SSH kimlik doğrulamasıyla Ubuntu 18,04-LTS çalıştıran bir Linux sanal makinesi oluşturmak için REST API nasıl kullanılacağı gösterilmektedir.
+Bu makalede, yönetilen diskler ve SSH kimlik doğrulaması ile Ubuntu 18.04-LTS çalıştıran bir Linux VM oluşturmak için REST API nasıl kullanılacağını gösterir.
 
 ## <a name="before-you-start"></a>Başlamadan önce
 
 İsteği oluşturmadan ve göndermeden önce şunları yapmanız gerekir:
 
-* Aboneliğiniz için `{subscription-id}`
-  * Birden çok aboneliğiniz varsa bkz. [birden çok abonelikle çalışma](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)
-* Zaman önce oluşturduğunuz bir `{resourceGroupName}`
-* Aynı kaynak grubundaki bir [sanal ağ arabirimi](../../virtual-network/virtual-network-network-interface.md)
-* Bir SSH anahtar çifti (bir tane yoksa [Yeni bir tane](mac-create-ssh-keys.md) oluşturabilirsiniz)
+* Aboneliğiniz `{subscription-id}` için
+  * Birden çok aboneliğiniz [varsa,](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest) bkz.
+* Önceden `{resourceGroupName}` yarattığınız bir
+* Aynı kaynak grubunda [sanal ağ arabirimi](../../virtual-network/virtual-network-network-interface.md)
+* Bir SSH anahtar çifti (yoksa yeni bir anahtar [çifti oluşturabilirsiniz)](mac-create-ssh-keys.md)
 
-## <a name="request-basics"></a>İstek temelleri
+## <a name="request-basics"></a>Temel leri isteme
 
-Bir sanal makine oluşturmak veya güncelleştirmek için aşağıdaki *PUT* işlemini kullanın:
+Sanal bir makine oluşturmak veya güncelleştirmek için aşağıdaki *PUT* işlemini kullanın:
 
 ``` http
 PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}?api-version=2017-12-01
 ```
 
-`{subscription-id}` ve `{resourceGroupName}` parametrelerine ek olarak `{vmName}` belirtmeniz gerekir (`api-version` isteğe bağlıdır, ancak bu makale `api-version=2017-12-01`ile test edilmiştir)
+`{subscription-id}` Ve `{resourceGroupName}` parametrelere ek olarak, `{vmName}` (isteğe`api-version` bağlı, ancak bu makale ile `api-version=2017-12-01`test edildi) belirtmeniz gerekir
 
 Aşağıdaki üstbilgiler gereklidir:
 
 | İstek üst bilgisi   | Açıklama |
 |------------------|-----------------|
-| *Content-Type:*  | Gereklidir. `application/json` olarak ayarlayın. |
+| *İçerik Türü:*  | Gereklidir. `application/json` olarak ayarlayın. |
 | *Yetkilendirme:* | Gereklidir. Geçerli bir `Bearer` [erişim belirtecine](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients) ayarlayın. |
 
-REST API isteklerle çalışma hakkında genel bilgi için, bkz. [bir REST API isteği/yanıtı bileşenleri](/rest/api/azure/#components-of-a-rest-api-requestresponse).
+REST API istekleriyle çalışma hakkında genel bilgi için, [REST API isteğinin/yanıtının bileşenlerine](/rest/api/azure/#components-of-a-rest-api-requestresponse)bakın.
 
 ## <a name="create-the-request-body"></a>İstek gövdesini oluşturma
 
-Aşağıdaki ortak tanımlar bir istek gövdesi oluşturmak için kullanılır:
+Bir istek gövdesi oluşturmak için aşağıdaki yaygın tanımlar kullanılır:
 
 | Adı                       | Gerekli | Tür                                                                                | Açıklama  |
 |----------------------------|----------|-------------------------------------------------------------------------------------|--------------|
 | location                   | True     | string                                                                              | Kaynak konumu. |
 | ad                       |          | string                                                                              | Sanal makinenin adı. |
-| Properties. hardwareProfile |          | [HardwareProfile](/rest/api/compute/virtualmachines/createorupdate#hardwareprofile) | Sanal makine için donanım ayarlarını belirtir. |
-| Properties. storageProfile  |          | [StorageProfile](/rest/api/compute/virtualmachines/createorupdate#storageprofile)   | Sanal makine disklerinin depolama ayarlarını belirtir. |
-| Properties. osProfile       |          | [OSProfile](/rest/api/compute/virtualmachines/createorupdate#osprofile)             | Sanal makine için işletim sistemi ayarlarını belirtir. |
-| Properties. networkProfile  |          | [NetworkProfile](/rest/api/compute/virtualmachines/createorupdate#networkprofile)   | Sanal makinenin ağ arabirimlerini belirtir. |
+| properties.hardwareProfil |          | [Donanım Profili](/rest/api/compute/virtualmachines/createorupdate#hardwareprofile) | Sanal makinenin donanım ayarlarını belirtir. |
+| properties.storageProfil  |          | [Depolama Profili](/rest/api/compute/virtualmachines/createorupdate#storageprofile)   | Sanal makine disklerinin depolama ayarlarını belirtir. |
+| properties.osProfil       |          | [OSProfil](/rest/api/compute/virtualmachines/createorupdate#osprofile)             | Sanal makinenin işletim sistemi ayarlarını belirtir. |
+| properties.networkProfil  |          | [Ağ Profili](/rest/api/compute/virtualmachines/createorupdate#networkprofile)   | Sanal makinenin ağ arabirimlerini belirtir. |
 
-Örnek bir istek gövdesi aşağıda verilmiştir. VM adını `{computerName}` ve `{name}` parametrelerinde, `networkInterfaces`altında oluşturduğunuz ağ arabiriminin adını, `adminUsername` ve `path`Kullanıcı adınızı ve SSH KeyPair 'nin (örneğin, `~/.ssh/id_rsa.pub`) *ortak* bölümünü `keyData`belirttiğinizden emin olun. Değiştirmek isteyebileceğiniz diğer parametreler `location` ve `vmSize`içerir.  
+Örnek bir istek gövdesi aşağıdadır. `{computerName}` VM adını ve `{name}` parametrelerini, oluşturduğunuz ağ arabiriminin `networkInterfaces`adını, içinde kullanıcı `adminUsername` adınız `path`ve , SSH anahtar çiftinizin *ortak* bölümünü (örneğin, `~/.ssh/id_rsa.pub` `keyData`) . Değiştirmek isteyebileceğin diğer `location` parametreler `vmSize`şunlardır ve .  
 
 ```json
 {
@@ -118,22 +118,22 @@ Aşağıdaki ortak tanımlar bir istek gövdesi oluşturmak için kullanılır:
 }
 ```
 
-İstek gövdesindeki kullanılabilir tanımlarının tüm listesi için bkz. [sanal makineler istek gövdesi tanımları oluşturma veya güncelleştirme](/rest/api/compute/virtualmachines/createorupdate#definitions).
+İstek gövdesindeki kullanılabilir tanımların tam listesi için, [Sanal makinelerin istek gövdesi tanımlarını oluşturması veya güncellmesini](/rest/api/compute/virtualmachines/createorupdate#definitions)görün.
 
-## <a name="sending-the-request"></a>İstek gönderiliyor
+## <a name="sending-the-request"></a>İsteğin gönderilmesi
 
-Bu HTTP isteğini göndermek için tercih ettiğiniz istemciyi kullanabilirsiniz. Ayrıca, **deneyin** düğmesine tıklayarak [tarayıcı içi bir araç](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate) da kullanabilirsiniz.
+Bu HTTP isteğini göndermek için tercih ettiğiniz istemciyi kullanabilirsiniz. **Ayrıca, Try it** düğmesini tıklatarak [tarayıcı içi](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate) bir araç da kullanabilirsiniz.
 
 ### <a name="responses"></a>Yanıtlar
 
-Bir sanal makineyi oluşturma veya güncelleştirme işlemi için iki başarılı yanıt vardır:
+Sanal bir makine oluşturmak veya güncelleştirmek için işlem için iki başarılı yanıt vardır:
 
 | Adı        | Tür                                                                              | Açıklama |
 |-------------|-----------------------------------------------------------------------------------|-------------|
 | 200 TAMAM      | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | Tamam          |
-| 201 oluşturuldu | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | Oluşturulan     |
+| 201 Oluşturuldu | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | Oluşturulan     |
 
-Bir VM oluşturan önceki örnek istek gövdesinden sıkıştırılmış *201 tarafından oluşturulan* bir yanıt, bir *VMID* atandığını ve *provisioningstate* 'in *oluşturuyor*olduğunu gösterir:
+Bir yoğunlaştırılmış *201* Bir VM oluşturur önceki örnek istek gövdesinden oluşturulan yanıt bir *vmId* atanmış olduğunu gösterir ve *provisioningState* *Oluşturma:*
 
 ```json
 {
@@ -142,13 +142,13 @@ Bir VM oluşturan önceki örnek istek gövdesinden sıkıştırılmış *201 ta
 }
 ```
 
-REST API yanıtları hakkında daha fazla bilgi için bkz. [Yanıt Iletisini işleme](/rest/api/azure/#process-the-response-message).
+REST API yanıtları hakkında daha fazla bilgi için [yanıt iletisini işleme](/rest/api/azure/#process-the-response-message)ye bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure REST API 'Leri veya Azure CLı veya Azure PowerShell gibi diğer yönetim araçları hakkında daha fazla bilgi için aşağıdakilere bakın:
+Azure REST API'leri veya Azure CLI veya Azure PowerShell gibi diğer yönetim araçları hakkında daha fazla bilgi için aşağıdakilere bakın:
 
-- [Azure Işlem sağlayıcısı REST API](/rest/api/compute/)
+- [Azure İşlem sağlayıcısı REST API](/rest/api/compute/)
 - [Azure REST API’yi kullanmaya başlayın](/rest/api/azure/)
 - [Azure CLI](/cli/azure/)
 - [Azure PowerShell modülü](/powershell/azure/overview)

@@ -1,49 +1,49 @@
 ---
-title: Azure Işlevleri SignalR hizmeti bağlamaları
-description: Azure Işlevleri ile SignalR hizmeti bağlamalarını nasıl kullanacağınızı anlayın.
+title: Azure Fonksiyonları SignalR Hizmet bağlamaları
+description: Azure İşlevleriyle SignalR Hizmet bağlamalarının nasıl kullanılacağını öğrenin.
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/28/2019
 ms.author: cshoe
 ms.openlocfilehash: 863620ce6f0af33b05ef290ae95ccdc99a53a54d
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77523045"
 ---
 # <a name="signalr-service-bindings-for-azure-functions"></a>Azure İşlevleri için SignalR Service bağlamaları
 
-Bu makale kümesi, Azure Işlevleri 'nde SignalR hizmeti bağlamaları kullanılarak [Azure SignalR hizmetine](https://azure.microsoft.com/services/signalr-service/) bağlı istemcilere nasıl kimlik doğrulaması yapılacağını ve gerçek zamanlı iletilerin gönderileceğini açıklar. Azure İşlevleri, SignalR Hizmeti’ne yönelik giriş ve çıkış bağlamalarını destekler.
+Bu makale kümesi, Azure İşlerinden Sinyal Hizmeti bağlamalarını kullanarak [Azure SinyalR Hizmeti'ne](https://azure.microsoft.com/services/signalr-service/) bağlı istemcilerin gerçek zamanlı iletilerinin nasıl doğrulaşdırılabildiğini ve gönderilebildiğini açıklar. Azure İşlevleri, SignalR Hizmeti’ne yönelik giriş ve çıkış bağlamalarını destekler.
 
 | Eylem | Tür |
 |---------|---------|
-| Hizmet uç noktası URL 'sini ve erişim belirtecini döndür | [Giriş bağlama](./functions-bindings-signalr-service-input.md) |
-| SignalR hizmeti iletilerini gönder |[Çıkış bağlama](./functions-bindings-signalr-service-output.md) |
+| Hizmet bitiş noktası URL'sini ve erişim jetonunu döndür | [Giriş bağlama](./functions-bindings-signalr-service-input.md) |
+| SignalR Hizmeti mesajları gönder |[Çıkış bağlama](./functions-bindings-signalr-service-output.md) |
 
-## <a name="add-to-your-functions-app"></a>Işlevler uygulamanıza ekleme
+## <a name="add-to-your-functions-app"></a>Fonksiyonlar uygulamanıza ekleme
 
-### <a name="functions-2x-and-higher"></a>İşlevler 2. x ve üzeri
+### <a name="functions-2x-and-higher"></a>Fonksiyonlar 2.x ve üzeri
 
-Tetikleyici ve bağlamalarla çalışma, uygun pakete başvurmanız gerekir. Diğer tüm uygulama türleri için Uzantı paketi kullanıldığında, .NET sınıf kitaplıkları için NuGet paketi kullanılır.
+Tetikleyici ve bağlamalarla çalışmak, uygun pakete başvurmanızı gerektirir. NuGet paketi .NET sınıf kitaplıkları için kullanılırken, uzantı paketi diğer tüm uygulama türleri için kullanılır.
 
-| Dil                                        | Ekleme ölçütü...                                   | Açıklamalar 
+| Dil                                        | Tarafından ekle...                                   | Açıklamalar 
 |-------------------------------------------------|---------------------------------------------|-------------|
-| C#                                              | [NuGet paketi]yükleniyor, sürüm 3. x | |
-| C#Betik, Java, JavaScript, Python, PowerShell | [Uzantı paketi] kaydediliyor          | [Azure Araçları uzantısı] Visual Studio Code ile kullanılması önerilir. |
-| C#Betik (yalnızca çevrimiçi-Azure portal)         | Bağlama ekleme                            | İşlev uygulamanızı yeniden yayımlamak zorunda kalmadan mevcut bağlama uzantılarını güncelleştirmek için bkz. [uzantılarınızı güncelleştirme]. |
+| C#                                              | [NuGet paketini]yükleme , sürüm 3.x | |
+| C# Script, Java, JavaScript, Python, PowerShell | [Uzantı paketini] kaydetme          | [Azure Araçları uzantısı] Visual Studio Code ile kullanılması önerilir. |
+| C# Script (yalnızca Azure portalında çevrimiçi)         | Bağlama ekleme                            | İşlev uygulamanızı yeniden yayımlamak zorunda kalmadan varolan bağlama uzantılarını güncelleştirmek için [bkz.] |
 
 [NuGet paketi]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SignalRService
 [core tools]: ./functions-run-local.md
-[Uzantı paketi]: ./functions-bindings-register.md#extension-bundles
-[Uzantılarınızı güncelleştirme]: ./install-update-binding-extensions-manual.md
+[uzatma paketi]: ./functions-bindings-register.md#extension-bundles
+[Uzantılarınızı güncelleştirin]: ./install-update-binding-extensions-manual.md
 [Azure Araçları uzantısı]: https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack
 
-SignalR hizmetini ve Azure Işlevlerini birlikte yapılandırma ve kullanma hakkında ayrıntılı bilgi için Azure [SignalR hizmeti Ile Azure işlevleri geliştirme ve yapılandırma](../azure-signalr/signalr-concept-serverless-development-config.md)konusuna bakın.
+SignalR Hizmeti ve Azure Fonksiyonlarının birlikte nasıl yapılandırılabildiğini ve kullanılacağı hakkında ayrıntılı bilgi için Azure [İşlevleri geliştirme ve Azure SinyalR Hizmeti ile yapılandırmaya](../azure-signalr/signalr-concept-serverless-development-config.md)bakın.
 
-### <a name="annotations-library-java-only"></a>Ek açıklamalar kitaplığı (yalnızca Java)
+### <a name="annotations-library-java-only"></a>Ek Açıklamalar kitaplığı (yalnızca Java)
 
-Java işlevlerinde SignalR hizmeti ek açıklamalarını kullanmak için, *pom. xml* dosyanıza *Azure-Functions-Java-Library-SignalR* Yapıt (sürüm 1,0 veya üzeri) için bir bağımlılık eklemeniz gerekir.
+Java işlevlerindeki SignalR Hizmeti ek açıklamalarını kullanmak *için, pom.xml* dosyanıza *azure-functions-java-library-signalr* artifakı (sürüm 1.0 veya daha yüksek sürüm) bir bağımlılık eklemeniz gerekir.
 
 ```xml
 <dependency>
@@ -55,5 +55,5 @@ Java işlevlerinde SignalR hizmeti ek açıklamalarını kullanmak için, *pom. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Hizmet uç noktası URL 'sini ve erişim belirtecini (giriş bağlaması) döndürün](./functions-bindings-signalr-service-input.md)
-- [SignalR hizmet iletileri gönderme (çıkış bağlama)](./functions-bindings-signalr-service-output.md) 
+- [Hizmet bitiş noktası URL'sini ve erişim belirteci (Giriş bağlama) döndürme](./functions-bindings-signalr-service-input.md)
+- [SignalR Hizmeti mesajları gönder (Çıkış bağlama)](./functions-bindings-signalr-service-output.md) 

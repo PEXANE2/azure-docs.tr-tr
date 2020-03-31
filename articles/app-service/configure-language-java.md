@@ -1,7 +1,7 @@
 ---
 title: Windows Java uygulamalarını yapılandırma
-description: Java uygulamalarını Azure App Service Windows sanal makine örneklerinde çalışacak şekilde nasıl yapılandıracağınızı öğrenin. Bu makalede en sık kullanılan yapılandırma görevleri gösterilmektedir.
-keywords: Azure App Service, Web uygulaması, Windows, Oss, Java
+description: Azure Uygulama Hizmeti'ndeki Windows VM örneklerinde çalışacak şekilde Java uygulamalarını nasıl yapılandıracak şekilde yapılandırılabildiğini öğrenin. Bu makalede, en yaygın yapılandırma görevleri gösterir.
+keywords: azure uygulama hizmeti, web uygulaması, windows, oss, java
 author: jasonfreeberg
 ms.devlang: java
 ms.topic: article
@@ -9,64 +9,82 @@ ms.date: 04/12/2019
 ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: e5beb60107b3632da336a20f167e1c2f5b53140a
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.openlocfilehash: 2b21061e8a939b91c637ef05bbe6375c0b3f82e8
+ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/19/2020
-ms.locfileid: "77461275"
+ms.lasthandoff: 03/29/2020
+ms.locfileid: "80383982"
 ---
-# <a name="configure-a-windows-java-app-for-azure-app-service"></a>Azure App Service için bir Windows Java uygulaması yapılandırma
+# <a name="configure-a-windows-java-app-for-azure-app-service"></a>Azure Uygulama Hizmeti için bir Windows Java uygulamasını yapılandırma
 
-Azure App Service, Java geliştiricilerinin tam olarak yönetilen bir Windows tabanlı hizmette Tomcat Web uygulamalarını hızlıca oluşturmasına, dağıtmasına ve ölçeklendirmesine olanak tanır. Maven eklentilerine sahip uygulamaları, komut satırından veya IntelliJ, tutulma veya Visual Studio Code gibi düzenleyicilerde dağıtın.
+Azure Uygulama Hizmeti, Java geliştiricilerinin Tomcat web uygulamalarını tam olarak yönetilen Windows tabanlı bir hizmette hızla oluşturmalarına, dağıtmalarına ve ölçeklendirmelerine olanak tanır. Uygulamaları Komut satırından veya IntelliJ, Eclipse veya Visual Studio Code gibi editörlerden Maven eklentileriyle dağıtın.
 
-Bu kılavuz, App Service ' de kullanarak Java geliştiricileri için temel kavramlar ve yönergeler sağlar. Azure App Service hiç kullanmadıysanız, önce [Java hızlı](app-service-web-get-started-java.md) başlangıcı ' nı okumanız gerekir. Java geliştirmeye özgü olmayan App Service kullanımı hakkında genel sorular, [App Service WINDOWS SSS](faq-configuration-and-management.md)' de yanıtlanmıştır.
+Bu kılavuz, Uygulama Hizmeti'ni kullanan Java geliştiricileri için temel kavramlar ve yönergeler sağlar. Azure Uygulama Hizmeti'ni hiç kullanmadıysanız, önce [Java hızlı başlat'ı](app-service-web-get-started-java.md) okumalısınız. Java geliştirmeye özgü olmayan Uygulama Hizmeti'ni kullanma yla ilgili genel sorular [App Service Windows SSS'de](faq-configuration-and-management.md)yanıtlanır.
 
 ## <a name="deploying-your-app"></a>Uygulamanızı dağıtma
 
-[Maven Için Azure Web App eklentisini](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme) ,. war dosyalarınızı dağıtmak için kullanabilirsiniz. Popüler Ides ile dağıtım, [Azure Toolkit for IntelliJ](/java/azure/intellij/azure-toolkit-for-intellij) veya [Azure Toolkit for Eclipse](/java/azure/eclipse/azure-toolkit-for-eclipse)ile de desteklenir.
+.war dosyalarınızı dağıtmak [için Maven için Azure Web Uygulama Eklentisi'ni](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme) kullanabilirsiniz. Popüler IDE'lerle dağıtım, [IntelliJ için Azure Araç Seti](/java/azure/intellij/azure-toolkit-for-intellij) veya Eclipse için Azure Araç [Seti](/java/azure/eclipse/azure-toolkit-for-eclipse)ile de desteklenir.
 
-Aksi takdirde, dağıtım yönteminiz arşiv türüne bağlı olacaktır:
+Aksi takdirde, dağıtım yönteminiz arşiv türünüze bağlıdır:
 
-- . War dosyalarını Tomcat 'e dağıtmak için `/api/wardeploy/` uç noktasını kullanarak arşiv dosyanızı GÖNDERIN. Bu API hakkında daha fazla bilgi için lütfen [Bu belgelere](https://docs.microsoft.com/azure/app-service/deploy-zip#deploy-war-file)bakın.
-- . Jar dosyalarını Java &AMP; 'a dağıtmak için kudu sitesinin `/api/zipdeploy/` uç noktasını kullanın. Bu API hakkında daha fazla bilgi için lütfen [Bu belgelere](https://docs.microsoft.com/azure/app-service/deploy-zip#rest)bakın.
+- .war dosyalarını Tomcat'a `/api/wardeploy/` dağıtmak için arşiv dosyanızı göndermek için bitiş noktasını kullanın. Bu API hakkında daha fazla bilgi için lütfen [bu belgelere](https://docs.microsoft.com/azure/app-service/deploy-zip#deploy-war-file)bakın.
+- .jar dosyalarını Java SE'ye `/api/zipdeploy/` dağıtmak için Kudu sitesinin bitiş noktasını kullanın. Bu API hakkında daha fazla bilgi için lütfen [bu belgelere](https://docs.microsoft.com/azure/app-service/deploy-zip#rest)bakın.
 
-FTP kullanarak. war 'nizi dağıtmayın. FTP aracı başlangıç betiklerini, bağımlılıklarını veya diğer çalışma zamanı dosyalarını karşıya yüklemek üzere tasarlanmıştır. Web uygulamalarını dağıtmak için en iyi seçenek değildir.
+.war'ınızı FTP kullanarak konuşlandırmayın. FTP aracı başlangıç komut dosyalarını, bağımlılıkları veya diğer çalışma zamanı dosyalarını yüklemek için tasarlanmıştır. Bu, web uygulamalarını dağıtmak için en uygun seçim değildir.
 
 ## <a name="logging-and-debugging-apps"></a>Uygulamaları günlüğe kaydetme ve hata ayıklama
 
-Performans raporları, trafik görselleştirmeleri ve sistem durumu sağlaması, Azure portal aracılığıyla her uygulama için kullanılabilir. Daha fazla bilgi için bkz. [Azure App Service tanılamayı genel bakış](overview-diagnostics.md).
+Azure portalı üzerinden her uygulama için performans raporları, trafik görselleştirmeleri ve sistem durumu denetimleri mevcuttur. Daha fazla bilgi için Azure [Uygulama Hizmeti tanılama](overview-diagnostics.md)genel bakış bakın.
+
+### <a name="use-flight-recorder"></a>Uçuş Kaydedici'yi Kullanın
+
+Azul JVM'leri kullanarak App Service'deki tüm Java çalışma saatleri Zulu Flight Recorder ile birlikte gelir. Java uygulamalarınızdaki davranışları ve sorun giderme sorunlarını izlemek için JVM, sistem ve Java düzeyindeki olayları kaydetmek için bunu kullanabilirsiniz.
+
+Zamanlı bir kayıt almak için Java uygulamasının PID (İşlem Kimliği) gerekir. PID'yi bulmak için web uygulamanızın SCM sitesine https://<site nizin adı>.scm.azurewebsites.net/ProcessExplorer/ adresinden bir tarayıcı açın. Bu sayfa, web uygulamanızda çalışan işlemleri gösterir. Tabloda "java" adlı işlemi bulun ve ilgili PID'yi (İşlem Kimliği) kopyalayın.
+
+Ardından, Hata **Ayıklama Konsolu'nu** SCM sitesinin üst araç çubuğunda açın ve aşağıdaki komutu çalıştırın. Daha `<pid>` önce kopyaladığınız işlem kimliğiyle değiştirin. Bu komut, Java uygulamanızın 30 saniyelik profil oluşturucu `timed_recording_example.jfr` kaydını başlatacak ve `D:\home` dizinde adı geçen bir dosya oluşturur.
+
+```
+jcmd <pid> JFR.start name=TimedRecording settings=profile duration=30s filename="D:\home\timed_recording_example.JFR"
+```
+
+Daha fazla bilgi için lütfen [Jcmd Komut Başvurusu'na](https://docs.oracle.com/javacomponents/jmc-5-5/jfr-runtime-guide/comline.htm#JFRRT190)bakın.
+
+#### <a name="analyze-jfr-files"></a>Dosyaları `.jfr` analiz et
+
+JFR dosyanızı yerel makinenize indirmek için [FTPS'yi](deploy-ftp.md) kullanın. JFR dosyasını analiz etmek için Zulu Görev Kontrol'ü indirip [kurun.](https://www.azul.com/products/zulu-mission-control/) Zulu Görev Kontrol ile ilgili talimatlar [için, Azul belgelerine](https://docs.azul.com/zmc/) ve [kurulum talimatlarına](https://docs.microsoft.com/java/azure/jdk/java-jdk-flight-recorder-and-mission-control)bakın.
 
 ### <a name="stream-diagnostic-logs"></a>Tanılama günlüklerini akışla aktarma
 
 [!INCLUDE [Access diagnostic logs](../../includes/app-service-web-logs-access-no-h.md)]
 
-Daha fazla bilgi için bkz. [Cloud Shell akış günlükleri](troubleshoot-diagnostic-logs.md#in-cloud-shell).
+Daha fazla bilgi için [Bulut Kabuğu'ndaki Akış günlüklerine](troubleshoot-diagnostic-logs.md#in-cloud-shell)bakın.
 
 ### <a name="app-logging"></a>Uygulama günlüğü
 
-Uygulamanızın standart konsol çıkışını ve standart konsol hatası akışlarını yerel dosya sistemine veya Azure Blob depolama alanına yazmak üzere App Service yapılandırmak için Azure portal veya [Azure CLI](/cli/azure/webapp/log#az-webapp-log-config) aracılığıyla [Uygulama günlüğünü](troubleshoot-diagnostic-logs.md#enable-application-logging-windows) etkinleştirin. Yerel App Service dosya sistemi örneğine günlük kaydı, yapılandırıldıktan sonra 12 saat devre dışı bırakılır. Daha uzun süre bekletmeye ihtiyacınız varsa, uygulamayı bir BLOB depolama kapsayıcısına çıktı yazacak şekilde yapılandırın. Java ve Tomcat uygulama günlüklerinizi */LogFiles/Application/* dizininde bulabilirsiniz.
+Uygulamanızın standart konsol çıktısını ve standart konsol hata akışlarını yerel dosya sistemine veya Azure Blob Depolamasına yazmak üzere Uygulama Hizmetini yapılandırmak için Azure portalı veya [Azure CLI](/cli/azure/webapp/log#az-webapp-log-config) üzerinden [uygulama günlüğe kaydetmeyi](troubleshoot-diagnostic-logs.md#enable-application-logging-windows) etkinleştirin. Yerel Uygulama Hizmeti dosya sistemi örneğine günlüğe kaydetme, yapılandırıldıktan 12 saat sonra devre dışı bırakılır. Daha uzun bekletme gerekiyorsa, çıktıyı blob depolama kabına yazmak için uygulamayı yapılandırın. Java ve Tomcat uygulama günlükleriniz */LogFiles/Application/* dizininde bulunabilir.
 
-Uygulamanız izleme için [Logback](https://logback.qos.ch/) veya [Log4J](https://logging.apache.org/log4j) kullanıyorsa, bu izlemeleri gözden geçirme için [Application Insights Java izleme günlüklerini keşfet](/azure/application-insights/app-insights-java-trace-logs)' de günlüğe kaydetme çerçevesi yapılandırma yönergelerini kullanarak Azure Application Insights iletebilirsiniz.
+Uygulamanız izleme için [Logback](https://logback.qos.ch/) veya [Log4j](https://logging.apache.org/log4j) kullanıyorsa, Bu izleri, [Uygulama Öngörüleri'ndeki Java izleme günlüklerini Keşfedin'deki](/azure/application-insights/app-insights-java-trace-logs)günlük çerçeve yapılandırma yönergelerini kullanarak gözden geçirilmeüzere Azure Uygulama Öngörüleri'ne iletebilirsiniz.
 
 
-## <a name="customization-and-tuning"></a>Özelleştirme ve ayarlama
+## <a name="customization-and-tuning"></a>Özelleştirme ve aetme
 
-Azure App Service, Azure portal ve CLı aracılığıyla kullanıma hazır ayarlama ve özelleştirmeyi destekler. Java 'a özgü olmayan Web uygulaması yapılandırması için aşağıdaki makaleleri gözden geçirin:
+Azure Uygulama Hizmeti, Azure portalı ve CLI aracılığıyla kutu atonlama ve özelleştirme dışında destekler. Java'ya özgü olmayan web uygulaması yapılandırması için aşağıdaki makaleleri inceleyin:
 
-- [Uygulama ayarlarını yapılandır](configure-common.md#configure-app-settings)
-- [Özel etki alanı ayarlama](app-service-web-tutorial-custom-domain.md)
+- [Uygulama ayarlarını yapılandırma](configure-common.md#configure-app-settings)
+- [Özel bir etki alanı ayarlama](app-service-web-tutorial-custom-domain.md)
 - [SSL bağlamalarını yapılandırma](configure-ssl-bindings.md)
-- [CDN ekleme](../cdn/cdn-add-to-web-app.md)
-- [Kudu sitesini yapılandırma](https://github.com/projectkudu/kudu/wiki/Configurable-settings)
+- [CDN ekle](../cdn/cdn-add-to-web-app.md)
+- [Kudu sitesini yapılandırın](https://github.com/projectkudu/kudu/wiki/Configurable-settings)
 
-### <a name="set-java-runtime-options"></a>Java çalışma zamanı seçeneklerini ayarla
+### <a name="set-java-runtime-options"></a>Java çalışma zamanı seçeneklerini ayarlama
 
-Ayrılan belleği veya diğer JVM çalışma zamanı seçeneklerini ayarlamak için, seçeneklerle `JAVA_OPTS` adlı bir [uygulama ayarı](configure-common.md#configure-app-settings) oluşturun. App Service, bu ayarı başlatıldığında Java çalışma zamanına bir ortam değişkeni olarak geçirir.
+Ayrılmış bellek veya diğer JVM çalışma zamanı seçeneklerini ayarlamak `JAVA_OPTS` için, seçeneklerle birlikte bir [uygulama ayarı](configure-common.md#configure-app-settings) oluşturun. Uygulama Hizmeti, bu ayarı bir ortam değişkeni olarak java çalışma süresine geçirir.
 
-Azure portal, Web uygulaması için **uygulama ayarları** altında, `-Xms512m -Xmx1204m`gibi ek ayarları içeren `JAVA_OPTS` adlı yeni bir uygulama ayarı oluşturun.
+Azure portalında, web uygulaması için **Uygulama Ayarları** altında, `JAVA_OPTS` ', ', ', `-Xms512m -Xmx1204m`', ', ', 'ler gibi ek ayarları içeren yeni bir uygulama ayarı oluşturun.
 
-Uygulama ayarını Maven eklentisi ' nden yapılandırmak için, Azure eklentisi bölümüne ayar/değer etiketleri ekleyin. Aşağıdaki örnek, belirli bir minimum ve en büyük Java yığın boyutunu ayarlar:
+Maven eklentisinden uygulama ayarını yapılandırmak için Azure eklentisi bölümüne ayar/değer etiketleri ekleyin. Aşağıdaki örnek, belirli bir minimum ve maksimum Java yığın boyutu ayarlar:
 
 ```xml
 <appSettings>
@@ -77,36 +95,36 @@ Uygulama ayarını Maven eklentisi ' nden yapılandırmak için, Azure eklentisi
 </appSettings>
 ```
 
-Tek bir uygulama çalıştıran geliştiriciler App Service planında bir dağıtım yuvası ile, aşağıdaki seçenekleri kullanabilir:
+Uygulama Hizmeti planında tek bir dağıtım yuvası olan tek bir uygulama çalıştıran geliştiriciler aşağıdaki seçenekleri kullanabilir:
 
-- B1 ve S1 örnekleri: `-Xms1024m -Xmx1024m`
-- B2 ve S2 örnekleri: `-Xms3072m -Xmx3072m`
-- B3 ve S3 örnekleri: `-Xms6144m -Xmx6144m`
+- B1 ve S1 örnekleri:`-Xms1024m -Xmx1024m`
+- B2 ve S2 örnekleri:`-Xms3072m -Xmx3072m`
+- B3 ve S3 örnekleri:`-Xms6144m -Xmx6144m`
 
-Uygulama yığını ayarlarını ayarladığınızda, en iyi bellek ayırmayı bulmak için App Service planı ayrıntılarınızı gözden geçirin ve birden çok uygulama ve dağıtım yuvası ihtiyaçlarına sahip olmak üzere birden fazla uygulama ve dağıtım yuvası
+Uygulama yığını ayarlarını ayarlarken, Uygulama Hizmeti planı ayrıntılarınızı gözden geçirin ve en uygun bellek tahsisini bulmak için birden çok uygulama ve dağıtım yuvası nın gerekeni göz önünde bulundurun.
 
-### <a name="turn-on-web-sockets"></a>Web yuvalarını aç
+### <a name="turn-on-web-sockets"></a>Web soketlerini açın
 
-Uygulamanın **uygulama ayarlarındaki** Azure Portal Web Yuvaları desteğini açın. Ayarın etkili olması için uygulamayı yeniden başlatmanız gerekir.
+Uygulama için **Uygulama ayarlarında** Azure portalındaki web soketleri için desteği açın. Ayarın etkili olması için uygulamayı yeniden başlatmanız gerekir.
 
-Aşağıdaki komutla Azure CLı kullanarak Web soketi desteğini açın:
+Azure CLI'yi kullanarak web soketi desteğini aşağıdaki komutla açın:
 
 ```azurecli-interactive
 az webapp config set --name <app-name> --resource-group <resource-group-name> --web-sockets-enabled true
 ```
 
-Sonra uygulamanızı yeniden başlatın:
+Ardından başvurunuzu yeniden başlatın:
 
 ```azurecli-interactive
 az webapp stop --name <app-name> --resource-group <resource-group-name>
 az webapp start --name <app-name> --resource-group <resource-group-name>
 ```
 
-### <a name="set-default-character-encoding"></a>Varsayılan karakter kodlamasını ayarla
+### <a name="set-default-character-encoding"></a>Varsayılan karakter kodlamayı ayarlama
 
-Azure portal, Web uygulaması için **uygulama ayarları** altında, `JAVA_OPTS` adlı yeni bir uygulama ayarı oluşturun `-Dfile.encoding=UTF-8`değeri.
+Azure portalında, web uygulaması için **Uygulama Ayarları** altında, `JAVA_OPTS` değer `-Dfile.encoding=UTF-8`içeren yeni bir uygulama ayarı oluşturun.
 
-Alternatif olarak, App Service Maven eklentisini kullanarak uygulama ayarını yapılandırabilirsiniz. Eklenti yapılandırmasına ayar adı ve değer etiketlerini ekleyin:
+Alternatif olarak, App Service Maven eklentisini kullanarak uygulama ayarını yapılandırabilirsiniz. Eklenti yapılandırmasında ayar adı ve değer etiketlerini ekleyin:
 
 ```xml
 <appSettings>
@@ -117,27 +135,27 @@ Alternatif olarak, App Service Maven eklentisini kullanarak uygulama ayarını y
 </appSettings>
 ```
 
-### <a name="pre-compile-jsp-files"></a>JSP dosyalarını önceden derle
+### <a name="pre-compile-jsp-files"></a>JSP dosyalarını Önceden Derle
 
-Tomcat uygulamalarının performansını artırmak için, App Service dağıtım yapmadan önce JSP dosyalarınızı derleyebilirsiniz. Apache Sling tarafından sağlanmış [Maven eklentisini](https://sling.apache.org/components/jspc-maven-plugin/plugin-info.html) veya bu [ant derleme dosyasını](https://tomcat.apache.org/tomcat-9.0-doc/jasper-howto.html#Web_Application_Compilation)kullanarak kullanabilirsiniz.
+Tomcat uygulamalarının performansını artırmak için, Uygulama Hizmeti'ne dağıtmadan önce JSP dosyalarınızı derleyebilirsiniz. Apache Sling tarafından sağlanan [Maven eklentisini](https://sling.apache.org/components/jspc-maven-plugin/plugin-info.html) veya bu [Ant yapı dosyasını](https://tomcat.apache.org/tomcat-9.0-doc/jasper-howto.html#Web_Application_Compilation)kullanabilirsiniz.
 
-## <a name="secure-applications"></a>Güvenli uygulamalar
+## <a name="secure-applications"></a>Uygulamaları güvenli hale getirme
 
-App Service çalıştıran Java uygulamaları, diğer uygulamalarla aynı [güvenlik en iyi](/azure/security/security-paas-applications-using-app-services) uygulamaları kümesine sahiptir.
+App Service'te çalışan Java uygulamaları, diğer uygulamalarla aynı [güvenlik en iyi uygulama](/azure/security/security-paas-applications-using-app-services) kümesine sahiptir.
 
-### <a name="authenticate-users-easy-auth"></a>Kullanıcıların kimliğini doğrulama (kolay kimlik doğrulaması)
+### <a name="authenticate-users-easy-auth"></a>Kullanıcıları kimlik doğrulaması (Easy Auth)
 
-**Kimlik doğrulama ve yetkilendirme** seçeneğiyle Azure Portal uygulama kimlik doğrulamasını ayarlayın. Buradan, Facebook, Google veya GitHub gibi Azure Active Directory veya sosyal oturum açma bilgilerini kullanarak kimlik doğrulamasını etkinleştirebilirsiniz. Azure portal yapılandırma yalnızca tek bir kimlik doğrulama sağlayıcısı yapılandırılırken kullanılabilir. Daha fazla bilgi için bkz. [App Service uygulamanızı Azure Active Directory oturum açma](configure-authentication-provider-aad.md) bilgilerini ve diğer kimlik sağlayıcılarının ilgili makalelerini kullanacak şekilde yapılandırma. Birden çok oturum açma sağlayıcısını etkinleştirmeniz gerekiyorsa, [App Service kimlik doğrulamasını özelleştirme](app-service-authentication-how-to.md) makalesindeki yönergeleri izleyin.
+Azure portalında uygulama kimlik doğrulamasını **Kimlik Doğrulama ve Yetkilendirme** seçeneğiyle ayarlayın. Buradan, Azure Active Directory'yi veya Facebook, Google veya GitHub gibi sosyal girişleri kullanarak kimlik doğrulamayı etkinleştirebilirsiniz. Azure portalı yapılandırması yalnızca tek bir kimlik doğrulama sağlayıcısını yapılandırırken çalışır. Daha fazla bilgi için Azure Active Directory oturumunu ve diğer kimlik sağlayıcıları için ilgili makaleleri [kullanmak için Uygulama Hizmeti uygulamanızı yapılandır'](configure-authentication-provider-aad.md) a bakın. Birden çok oturum açma sağlayıcısını etkinleştirmeniz gerekiyorsa, [Özel Servis kimlik doğrulama](app-service-authentication-how-to.md) makalesindeki yönergeleri izleyin.
 
 #### <a name="tomcat"></a>Tomcat
 
-Tomcat uygulamanız, birincil nesneyi bir harita nesnesine aktararak kullanıcının taleplerine doğrudan erişim sağlayabilir. Map nesnesi her talep türünü, bu tür için talepler koleksiyonuna eşler. Aşağıdaki kodda, `request` bir `HttpServletRequest`örneğidir.
+Tomcat uygulamanız, Temel nesneyi bir Harita nesnesine atlayarak kullanıcının taleplerine doğrudan servletten erişebilir. Harita nesnesi, her talep türünü bu türdeki taleplerin bir koleksiyonuyla eşler. Aşağıdaki kodda, `request` bir `HttpServletRequest`örneğidir.
 
 ```java
 Map<String, Collection<String>> map = (Map<String, Collection<String>>) request.getUserPrincipal();
 ```
 
-Artık belirli bir talep için `Map` nesnesini inceleyebilirsiniz. Örneğin, aşağıdaki kod parçacığı tüm talep türleri boyunca yinelenir ve her bir koleksiyonun içeriğini yazdırır.
+Artık nesneyi `Map` belirli bir hak talebi için inceleyebilirsiniz. Örneğin, aşağıdaki kod tüm talep türlerini snippet iterates ve her koleksiyonun içeriğini yazdırır.
 
 ```java
 for (Object key : map.keySet()) {
@@ -151,7 +169,7 @@ for (Object key : map.keySet()) {
     }
 ```
 
-Kullanıcıları imzalamak için `/.auth/ext/logout` yolunu kullanın. Diğer eylemleri gerçekleştirmek için lütfen [App Service kimlik doğrulaması ve yetkilendirme kullanımı](https://docs.microsoft.com/azure/app-service/app-service-authentication-how-to)hakkındaki belgelere bakın. Ayrıca, Tomcat [Httpservletrequest arabiriminde](https://tomcat.apache.org/tomcat-5.5-doc/servletapi/javax/servlet/http/HttpServletRequest.html) ve yöntemleri için resmi belgeler vardır. Aşağıdaki servlet yöntemleri App Service yapılandırmanıza göre de alınır:
+Kullanıcıları oturum dışı etmek `/.auth/ext/logout` için yolu kullanın. Diğer işlemleri gerçekleştirmek için lütfen [Uygulama Hizmeti Kimlik Doğrulaması ve Yetkilendirme kullanımına](https://docs.microsoft.com/azure/app-service/app-service-authentication-how-to)ilişkin belgelere bakın. Ayrıca Tomcat [HttpServletRequest arayüzü](https://tomcat.apache.org/tomcat-5.5-doc/servletapi/javax/servlet/http/HttpServletRequest.html) ve yöntemleri hakkında resmi belgeler bulunmaktadır. Aşağıdaki servlet yöntemleri, Uygulama Hizmeti yapılandırmanıza bağlı olarak da sulandırılır:
 
 ```java
 public boolean isSecure()
@@ -161,62 +179,62 @@ public String getScheme()
 public int getServerPort()
 ```
 
-Bu özelliği devre dışı bırakmak için, `1`değeri olan `WEBSITE_AUTH_SKIP_PRINCIPAL` adlı bir uygulama ayarı oluşturun. App Service tarafından eklenen tüm servlet filtrelerini devre dışı bırakmak için, `1`değeriyle `WEBSITE_SKIP_FILTERS` adında bir ayar oluşturun.
+Bu özelliği devre dışı düşürmek için `WEBSITE_AUTH_SKIP_PRINCIPAL` , `1`. değeri ile adlandırılan bir Uygulama Ayarı oluşturun App Service tarafından eklenen tüm servlet filtrelerini devre `WEBSITE_SKIP_FILTERS` dışı bırakmak `1`için , .değeri olan bir ayar oluşturun
 
-### <a name="configure-tlsssl"></a>TLS/SSL 'yi yapılandırma
+### <a name="configure-tlsssl"></a>TLS/SSL yapılandırma
 
-Var olan bir SSL sertifikasını karşıya yüklemek ve uygulamanızın etki alanı adına bağlamak için, [Özel BIR DNS adını Azure App Service BIR SSL bağlamasıyla güvenli hale](configure-ssl-bindings.md) getirin. Varsayılan olarak, uygulamanız HTTP bağlantılarına hala izin verir-SSL ve TLS 'yi zorlamak için öğreticideki belirli adımları izleyin.
+Varolan bir SSL sertifikasını yüklemek ve uygulamanızın etki alanı adına bağlamak için [Azure Uygulama Hizmeti'nde SSL bağlayıcısı olan özel bir DNS adını Güvenli'deki](configure-ssl-bindings.md) yönergeleri izleyin. Varsayılan olarak uygulamanız, HTTP bağlantılarının SSL ve TLS'yi uygulamak için öğreticideki belirli adımları izlemesine izin vermeye devam edecektir.
 
-### <a name="use-keyvault-references"></a>Keykasası başvurularını kullanma
+### <a name="use-keyvault-references"></a>KeyVault Referanslarını Kullanma
 
-[Azure Keykasası](../key-vault/key-vault-overview.md) , erişim ilkeleri ve denetim geçmişi ile merkezi gizli yönetim sağlar. Gizli dizileri (parolalar veya bağlantı dizeleri gibi) anahtar kasasında saklayabilir ve ortam değişkenleri aracılığıyla uygulamanızdaki bu gizli dizilere erişebilirsiniz.
+[Azure KeyVault,](../key-vault/key-vault-overview.md) erişim ilkeleri ve denetim geçmişiyle merkezi leştirilmiş gizli yönetim sağlar. KeyVault'ta sırları (parolalar veya bağlantı dizeleri gibi) depolayabilir ve uygulamanızdaki bu sırlara ortam değişkenleri aracılığıyla erişebilirsiniz.
 
-İlk olarak, uygulamanıza [Key Vault erişim verme](app-service-key-vault-references.md#granting-your-app-access-to-key-vault) ve [bir uygulama ayarında gizli diziniz Için bir Anahtar Kasası başvurusu yapma](app-service-key-vault-references.md#reference-syntax)yönergelerini izleyin. App Service terminaline uzaktan erişirken ortam değişkenini yazdırarak başvurunun gizli olarak çözümlendiğini doğrulayabilirsiniz.
+İlk olarak, [Uygulamanızın Key Vault'a erişimini sağlamak](app-service-key-vault-references.md#granting-your-app-access-to-key-vault) ve [Uygulama Ayarında sırrınıza KeyVault göndermesi yapmak](app-service-key-vault-references.md#reference-syntax)için talimatları izleyin. Uygulama Hizmeti terminaline uzaktan erişirken ortam değişkenini yazdırarak başvurunun gizliye çözüldüğünü doğrulayabilirsiniz.
 
-Bu gizli dizileri Spring veya Tomcat yapılandırma dosyasına eklemek için ortam değişkeni ekleme söz dizimini (`${MY_ENV_VAR}`) kullanın. Spring yapılandırma dosyaları için lütfen [externalized yapılandırmalarında](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html)bu belgelere bakın.
+Bahar veya Tomcat yapılandırma dosyanızda bu sırları enjekte etmek`${MY_ENV_VAR}`için, ortam değişkenenjeksiyon sözdizimini kullanın ( ). Yay yapılandırma dosyaları için lütfen [dışa uygun yapılandırmalarla](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html)ilgili bu belgelere bakın.
 
 
 ## <a name="configure-apm-platforms"></a>APM platformlarını yapılandırma
 
-Bu bölümde, Newrelik ve AppDynamics uygulama performansı izleme (APM) platformlarıyla Linux üzerinde Azure App Service dağıtılan Java uygulamalarının nasıl bağlanacağı gösterilmektedir.
+Bu bölümde, Linux'ta Azure Uygulama Hizmeti'nde dağıtılan Java uygulamalarının NewRelic ve AppDynamics uygulama performans izleme (APM) platformlarına nasıl bağlanılacakları gösterilmektedir.
 
-### <a name="configure-new-relic"></a>Yeni relik yapılandırma
+### <a name="configure-new-relic"></a>Yeni Emaneti Yapılandır
 
-1. [NewRelic.com](https://newrelic.com/signup) adresinde yeni bir relik hesabı oluşturun
-2. Newrelik 'ten Java aracısını indirin, *newrelic-Java-x. x. x. zip*dosyasına benzer bir dosya adı olacaktır.
-3. Lisans anahtarınızı kopyalayın, aracıyı daha sonra yapılandırmak için gerekir.
-4. [Kudu konsolunu](https://github.com/projectkudu/kudu/wiki/Kudu-console) kullanarak */Home/site/Wwwroot/APM*adlı yeni bir dizin oluşturun.
-5. Paketi açılan yeni relik Java aracı dosyalarını */Home/site/Wwwroot/APM*altındaki bir dizine yükleyin. Aracınızın dosyaları */Home/site/Wwwroot/APM/newrelik*konumunda olmalıdır.
-6. */Home/site/Wwwroot/APM/newrelic/newrelic.exe* konumundaki YAML dosyasını değiştirin ve yer tutucu lisans değerini kendi lisans anahtarınızla değiştirin.
-7. Azure portal, App Service uygulamanıza gidin ve yeni bir uygulama ayarı oluşturun.
-    - Uygulamanız **Java SE**kullanıyorsa, `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar`değeri ile `JAVA_OPTS` adlı bir ortam değişkeni oluşturun.
-    - **Tomcat**kullanıyorsanız, `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar`değeri ile `CATALINA_OPTS` adlı bir ortam değişkeni oluşturun.
+1. [NewRelic.com'da](https://newrelic.com/signup) Yeni Emanet hesabı oluşturma
+2. NewRelic Java aracısını indirin, *newrelic-java-x.x.x.zip*benzer bir dosya adı olacaktır.
+3. Lisans anahtarınızı kopyalayın, aracıyı daha sonra yapılandırmak için ihtiyacınız olacak.
+4. Yeni bir dizin */ev/site/wwwroot/apm*oluşturmak için [Kudu konsolunu](https://github.com/projectkudu/kudu/wiki/Kudu-console) kullanın.
+5. Paketlenmemiş Yeni Emanet Java aracısı dosyalarını */home/site/wwwroot/apm*altında bir dizine yükleyin. Aracınızın dosyaları */home/site/wwwroot/apm/newrelic*adresinde olmalıdır.
+6. YAML dosyasını */home/site/wwwroot/apm/newrelic/newrelic.yml* adresindedeğiştirin ve yer tutucu lisans değerini kendi lisans anahtarınızla değiştirin.
+7. Azure portalında, Uygulama Hizmeti'nde uygulamanıza göz atın ve yeni bir Uygulama Ayarı oluşturun.
+    - Uygulamanız Java **SE**kullanıyorsa, değeri `JAVA_OPTS` `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar`ile adlı bir ortam değişkeni oluşturun.
+    - **Tomcat**kullanıyorsanız, değeri `CATALINA_OPTS` `-javaagent:/home/site/wwwroot/apm/newrelic/newrelic.jar`ile adlı bir ortam değişkeni oluşturun.
 
-### <a name="configure-appdynamics"></a>AppDynamics 'i yapılandırma
+### <a name="configure-appdynamics"></a>AppDynamics'i Yapılandır
 
-1. [AppDynamics.com](https://www.appdynamics.com/community/register/) adresinde bir AppDynamics hesabı oluşturun
-2. AppDynamics Web sitesinden Java aracısını indirin, dosya adı *AppServerAgent-x. x. x. xxxxx. zip* ile benzerdir.
-3. [Kudu konsolunu](https://github.com/projectkudu/kudu/wiki/Kudu-console) kullanarak */Home/site/Wwwroot/APM*adlı yeni bir dizin oluşturun.
-4. Java aracı dosyalarını */Home/site/Wwwroot/APM*altındaki bir dizine yükleyin. Aracınızın dosyaları */Home/site/Wwwroot/APM/AppDynamics*konumunda olmalıdır.
-5. Azure portal, App Service uygulamanıza gidin ve yeni bir uygulama ayarı oluşturun.
-    - **Java SE**kullanıyorsanız, `JAVA_OPTS` adında bir ortam değişkeni oluşturun; burada `<app-name>` App Service adınız `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>`.
-    - **Tomcat**kullanıyorsanız, `CATALINA_OPTS` adında bir ortam değişkeni oluşturun; burada `<app-name>` App Service adınız `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>`.
+1. [AppDynamics.com'da](https://www.appdynamics.com/community/register/) bir AppDynamics hesabı oluşturun
+2. AppDynamics web sitesinden Java aracısını indirin, dosya adı *AppServerAgent-x.x.x.xxxxx.zip* benzer olacaktır
+3. Yeni bir dizin */ev/site/wwwroot/apm*oluşturmak için [Kudu konsolunu](https://github.com/projectkudu/kudu/wiki/Kudu-console) kullanın.
+4. Java aracısı dosyalarını */home/site/wwwroot/apm*altında bir dizine yükleyin. Aracınızın dosyaları */home/site/wwwroot/apm/appdynamics*adresinde olmalıdır.
+5. Azure portalında, Uygulama Hizmeti'nde uygulamanıza göz atın ve yeni bir Uygulama Ayarı oluşturun.
+    - **Java SE**kullanıyorsanız, Uygulama Hizmeti adınızın `JAVA_OPTS` olduğu `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>` `<app-name>` değeri içeren bir ortam değişkeni oluşturun.
+    - **Tomcat**kullanıyorsanız, Uygulama Hizmeti adınızın `CATALINA_OPTS` olduğu `<app-name>` `-javaagent:/home/site/wwwroot/apm/appdynamics/javaagent.jar -Dappdynamics.agent.applicationName=<app-name>` değeri içeren bir ortam değişkeni oluşturun.
 
->  `JAVA_OPTS` veya `CATALINA_OPTS`için bir ortam değişkeni zaten varsa, `-javaagent:/...` seçeneğini geçerli değerin sonuna ekleyin.
+>  Zaten bir `JAVA_OPTS` ortam değişkeninvarsa `CATALINA_OPTS`veya geçerli `-javaagent:/...` değerin sonuna seçeneği ekleyin.
 
 ## <a name="data-sources"></a>Veri kaynakları
 
 ### <a name="tomcat"></a>Tomcat
 
-Bu yönergeler tüm veritabanı bağlantıları için geçerlidir. Yer tutucuları, seçtiğiniz veritabanının sürücü sınıfı adı ve JAR dosyası ile doldurmanız gerekir. , Ortak veritabanları için sınıf adları ve sürücü indirmeleri içeren bir tablodur.
+Bu yönergeler tüm veritabanı bağlantıları için geçerlidir. Yer tutucuları seçtiğiniz veritabanının sürücü sınıfı adı ve JAR dosyasıyla doldurmanız gerekir. Sağlanan sınıf adları ve ortak veritabanları için sürücü indirme içeren bir tablodur.
 
-| Database   | Sürücü sınıfı adı                             | JDBC sürücüsü                                                                      |
+| Database   | Sürücü Sınıf Adı                             | JDBC Sürücüsü                                                                      |
 |------------|-----------------------------------------------|------------------------------------------------------------------------------------------|
 | PostgreSQL | `org.postgresql.Driver`                        | [İndir](https://jdbc.postgresql.org/download.html)                                    |
-| MySQL      | `com.mysql.jdbc.Driver`                        | [İndir](https://dev.mysql.com/downloads/connector/j/) ("platformdan bağımsız" seçeneğini belirleyin) |
-| SQL Server | `com.microsoft.sqlserver.jdbc.SQLServerDriver` | [İndir](https://docs.microsoft.com/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server?view=sql-server-2017#available-downloads-of-jdbc-driver-for-sql-server)                                                           |
+| MySQL      | `com.mysql.jdbc.Driver`                        | [İndir](https://dev.mysql.com/downloads/connector/j/) ("Platform Bağımsız"ı seçin) |
+| SQL Server | `com.microsoft.sqlserver.jdbc.SQLServerDriver` | [İndir](https://docs.microsoft.com/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server?view=sql-server-2017#download)                                                           |
 
-Tomcat 'i Java veritabanı bağlantısı (JDBC) veya Java Kalıcılık API 'SI (JPA) kullanacak şekilde yapılandırmak için, önce başlangıçta Tomcat tarafından okunan `CATALINA_OPTS` ortam değişkenini özelleştirin. Bu değerleri [App Service Maven eklentisindeki](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md)bir uygulama ayarı aracılığıyla ayarlayın:
+Tomcat'ı Java Veritabanı Bağlantısı (JDBC) veya Java Kalıcılık API'sını (JPA) kullanacak şekilde yapılandırmak için, önce Başlangıç sırasında Tomcat tarafından okunan `CATALINA_OPTS` ortam değişkenini özelleştirin. Bu değerleri [App Service Maven eklentisinde](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md)bir uygulama ayarı üzerinden ayarlayın:
 
 ```xml
 <appSettings>
@@ -227,15 +245,15 @@ Tomcat 'i Java veritabanı bağlantısı (JDBC) veya Java Kalıcılık API 'SI (
 </appSettings>
 ```
 
-Ya da Azure portal içindeki **yapılandırma** > **uygulama ayarları** sayfasında ortam değişkenlerini ayarlayın.
+Veya Azure portalındaki **Yapılandırma** > **Uygulama Ayarları** sayfasında ortam değişkenlerini ayarlayın.
 
-Daha sonra, veri kaynağının bir uygulama için mi yoksa Tomcat servlet üzerinde çalışan tüm uygulamalar için mi kullanılabilir olacağını saptayın.
+Ardından, veri kaynağının bir uygulama için mi yoksa Tomcat servlet'inde çalışan tüm uygulamalarda mı kullanılabileceğini belirleyin.
 
-#### <a name="application-level-data-sources"></a>Uygulama düzeyi veri kaynakları
+#### <a name="application-level-data-sources"></a>Uygulama düzeyinde veri kaynakları
 
-1. Projenizin *meta INF/* dizininde bir *Context. xml* dosyası oluşturun. Yoksa *meta INF/* dizin oluşturun.
+1. Projenizin *META-INF/* dizininde bir *context.xml* dosyası oluşturun. YOKSA *META-INF/* dizini oluşturun.
 
-2. *Context. xml*dosyasında veri kaynağını bir JNDI adresine bağlamak için bir `Context` öğesi ekleyin. `driverClassName` yer tutucusunu, yukarıdaki tablodaki sürücünüzün sınıf adıyla değiştirin.
+2. *Context.xml*olarak, `Context` bir JNDI adresine veri kaynağı bağlamak için bir öğe ekleyin. Yer `driverClassName` tutucuyu yukarıdaki tablodan sürücünüzün sınıf adı ile değiştirin.
 
     ```xml
     <Context>
@@ -250,7 +268,7 @@ Daha sonra, veri kaynağının bir uygulama için mi yoksa Tomcat servlet üzeri
     </Context>
     ```
 
-3. Uygulamanızdaki veri kaynağını kullanmak için uygulamanızın *Web. xml* ' i güncelleştirin.
+3. Uygulamanızdaki veri kaynağını kullanmak için uygulamanızın *web.xml'ini* güncelleyin.
 
     ```xml
     <resource-env-ref>
@@ -259,74 +277,74 @@ Daha sonra, veri kaynağının bir uygulama için mi yoksa Tomcat servlet üzeri
     </resource-env-ref>
     ```
 
-#### <a name="finalize-configuration"></a>Yapılandırmayı Sonlandır
+#### <a name="finalize-configuration"></a>Yapılandırmayı sonuçlandırın
 
-Son olarak, sürücü JARs ' ı Tomcat Sınıfyoluna yerleştireceğiz ve App Service yeniden başlatacağız. JDBC sürücü dosyalarının, */Home/Tomcat/lib* dizinine yerleştirerek Tomcat ClassLoader için kullanılabilir olduğundan emin olun. (Henüz yoksa, bu dizini oluşturun.) Bu dosyaları App Service örneğine yüklemek için aşağıdaki adımları uygulayın:
+Son olarak, sürücü JARs'i Tomcat classpath'e yerleştireceğiz ve Uygulama Hizmetinizi yeniden başlatacağız. JDBC sürücü dosyalarının */home/tomcat/lib* dizinine yerleştirerek Tomcat sınıf yükleyicisinin kullanımına sunulduğundan emin olun. (Zaten yoksa bu dizini oluşturun.) Bu dosyaları Uygulama Hizmeti örneğinize yüklemek için aşağıdaki adımları gerçekleştirin:
 
-1. [Cloud Shell](https://shell.azure.com), WebApp uzantısını yüklerken:
+1. Bulut [Kabuğu'nda](https://shell.azure.com)webapp uzantısını yükleyin:
 
     ```azurecli-interactive
     az extension add -–name webapp
     ```
 
-2. App Service için yerel sisteminizden bir SSH tüneli oluşturmak için aşağıdaki CLı komutunu çalıştırın:
+2. Yerel sisteminizden Uygulama Hizmeti'ne bir SSH tüneli oluşturmak için aşağıdaki CLI komutunu çalıştırın:
 
     ```azurecli-interactive
     az webapp remote-connection create --resource-group <resource-group-name> --name <app-name> --port <port-on-local-machine>
     ```
 
-3. SFTP istemcinizdeki yerel tünel oluşturma bağlantı noktasına bağlanın ve dosyaları */Home/Tomcat/lib* klasörüne yükleyin.
+3. SFTP istemcinizle yerel tünel bağlantı noktasına bağlanın ve dosyaları */home/tomcat/lib* klasörüne yükleyin.
 
-Alternatif olarak, bir FTP istemcisini kullanarak JDBC sürücüsünü karşıya yükleyebilirsiniz. [FTP kimlik bilgilerinizi almak için bu yönergeleri](deploy-configure-credentials.md)izleyin.
+Alternatif olarak, JDBC sürücüsünü yüklemek için bir FTP istemcisi kullanabilirsiniz. [FTP kimlik bilgilerinizi almak için](deploy-configure-credentials.md)aşağıdaki yönergeleri izleyin.
 
-## <a name="configuring-tomcat"></a>Tomcat yapılandırma
+## <a name="configuring-tomcat"></a>Tomcat'ı Yapılandırma
 
-Tomcat 'in `server.xml` veya diğer yapılandırma dosyalarını düzenlemek için önce portalda Tomcat ana sürümünüzü bir yere göz atın.
+Tomcat'ın veya `server.xml` diğer yapılandırma dosyalarını düzenlemek için öncelikle portaldaki Tomcat ana sürümünüze bir not alın.
 
-1. `env` komutunu çalıştırarak sürümünüz için Tomcat giriş dizinini bulun. `AZURE_TOMCAT`başlayan ve ana sürümünüzle eşleşen ortam değişkenini arayın. Örneğin, `AZURE_TOMCAT85_HOME` Tomcat 8,5 için Tomcat dizinine işaret eder.
-1. Sürümünüz için Tomcat giriş dizinini tanımladıktan sonra yapılandırma dizinini `D:\home`kopyalayın. Örneğin, `AZURE_TOMCAT85_HOME` bir `D:\Program Files (x86)\apache-tomcat-8.5.37`değeri varsa, kopyalanmış dizinin yeni yolu `D:\home\apache-tomcat-8.5.37`olur.
+1. Komutu çalıştırarak sürümünüz için Tomcat `env` ev dizinini bulun. Ana sürümünüzle başlayan `AZURE_TOMCAT`ve eşleşen ortam değişkenini arayın. Örneğin, `AZURE_TOMCAT85_HOME` Tomcat 8.5 için Tomcat dizinine işaret.
+1. Sürümünüz için Tomcat ev dizini belirledikten sonra yapılandırma `D:\home`dizini 'ne kopyalayın. Örneğin, bir `AZURE_TOMCAT85_HOME` değeri `D:\Program Files (x86)\apache-tomcat-8.5.37`olsaydı, kopyalanan dizinin yeni yolu . `D:\home\apache-tomcat-8.5.37`
 
-Son olarak, App Service yeniden başlatın. Dağıtımlarınız daha önce olduğu gibi `D:\home\site\wwwroot\webapps` gitmelidir.
+Son olarak, Uygulama Hizmetinizi yeniden başlatın. Dağıtımlarınız eskisi `D:\home\site\wwwroot\webapps` gibi yapılmalıdır.
 
-## <a name="configure-java-se"></a>Java 'yi yapılandırma
+## <a name="configure-java-se"></a>Java SE'yi yapılandır
 
-Çalıştıran bir. Windows üzerinde bir Java 'da JAR uygulaması, `server.port` uygulamanız başladığı için bir komut satırı seçeneği olarak geçirilir. HTTP bağlantı noktasını, `HTTP_PLATFORM_PORT`ortam değişkeninden el ile çözebilirsiniz. Bu ortam değişkeninin değeri, uygulamanızın dinlemesi gereken HTTP bağlantı noktasıdır. 
+Bir çalıştırırken . Windows'da Java SE'deki JAR uygulaması, `server.port` uygulamanız başlarken komut satırı seçeneği olarak geçirilir. HTTP bağlantı noktasını ortam değişkeninden el `HTTP_PLATFORM_PORT`ile çözebilirsiniz. Bu ortam değişkeninin değeri, uygulamanızın dinlemesi gereken HTTP bağlantı noktası olacaktır. 
 
-## <a name="java-runtime-statement-of-support"></a>Java Runtime desteği
+## <a name="java-runtime-statement-of-support"></a>Java çalışma zamanı destek bildirimi
 
-### <a name="jdk-versions-and-maintenance"></a>JDK sürümleri ve bakım
+### <a name="jdk-versions-and-maintenance"></a>JDK versiyonları ve bakımı
 
-Azure 'un desteklenen Java Geliştirme Seti (JDK), [Azul sistemleri](https://www.azul.com/)aracılığıyla bir [Zulu](https://www.azul.com/downloads/azure-only/zulu/) dili olarak sunulmaktadır.
+Azure'un desteklenen Java Geliştirme Kiti (JDK), [Azul Systems](https://www.azul.com/)aracılığıyla sağlanan [Zulu'dur.](https://www.azul.com/downloads/azure-only/zulu/)
 
-Ana sürüm güncelleştirmeleri, Windows için Azure App Service yeni çalışma zamanı seçenekleri aracılığıyla sağlanacaktır. Müşteriler, App Service dağıtımını yapılandırarak ve ana güncelleştirmenin ihtiyaçlarını karşıladığından sorumlu olduğundan, bu yeni Java sürümlerine güncelleştirir.
+Windows için Azure Uygulama Hizmeti'ndeki yeni çalışma zamanı seçenekleri yle ana sürüm güncelleştirmeleri sağlanacaktır. Müşteriler, Uygulama Hizmeti dağıtımlarını yapılandırarak Java'nın bu yeni sürümlerini günceller ve büyük güncelleştirmenin gereksinimlerini karşılamasını test etmek ve sağlamaktan sorumludur.
 
-Desteklenen JDKs, her yıl Ocak, Nisan, Temmuz ve Ekim ayında otomatik olarak üç ayda bir düzeltme eki uygulanır. Azure 'da Java hakkında daha fazla bilgi için lütfen [Bu destek belgesine](https://docs.microsoft.com/azure/java/jdk/)bakın.
+Desteklenen JDK'lar her yılın Ocak, Nisan, Temmuz ve Ekim aylarında üç ayda bir otomatik olarak yamalı olur. Azure'da Java hakkında daha fazla bilgi için lütfen [bu destek belgesine](https://docs.microsoft.com/azure/java/jdk/)bakın.
 
 ### <a name="security-updates"></a>Güvenlik güncelleştirmeleri
 
-Önemli güvenlik açıklarına yönelik düzeltme ekleri ve düzeltmeler Azul sistemlerinden kullanılabilir hale geldiğinde serbest bırakılır. "Ana" güvenlik açığı, [NIST ortak güvenlik açığı Puanlama sistemi, sürüm 2](https://nvd.nist.gov/cvss.cfm)üzerinde 9,0 veya üzeri bir taban puanı tarafından tanımlanır.
+Büyük güvenlik açıklarına yönelik düzeltmeler ve düzeltmeler, Azul Systems'den kullanıma sunulduğu anda piyasaya sürülecek. "Büyük" bir güvenlik [açığı, NIST Ortak Güvenlik Açığı Puanlama Sistemi,sürüm 2'de](https://nvd.nist.gov/cvss.cfm)9,0 veya daha yüksek bir taban puanla tanımlanır.
 
-Tomcat 8,0 [, 30 eylül 2018 Itibariyle yaşam sonuna (EOL)](https://tomcat.apache.org/tomcat-80-eol.html)ulaştı. Çalışma zamanı Azure App Service devam ederken, Azure, Tomcat 8,0 güvenlik güncelleştirmelerini uygulamacaktır. Mümkünse, uygulamalarınızı Tomcat 8,5 veya 9,0 ' ye geçirin. Azure App Service hem Tomcat 8,5 hem de 9,0 kullanılabilir. Daha fazla bilgi için [resmi Tomcat sitesine](https://tomcat.apache.org/whichversion.html) bakın. 
+Tomcat 8.0 [30 Eylül 2018 itibariyle Yaşam Sonu (EOL)](https://tomcat.apache.org/tomcat-80-eol.html)ulaştı. Azure Uygulama Hizmeti'nde çalışma süresi hala kullanılabilir olsa da, Azure Güvenlik güncelleştirmelerini Tomcat 8.0'a uygulamaz. Mümkünse, başvurularınızı Tomcat 8.5 veya 9.0'a geçirin. Hem Tomcat 8.5 hem de 9.0 Azure Uygulama Hizmeti'nde kullanılabilir. Daha fazla bilgi için [resmi Tomcat sitesine](https://tomcat.apache.org/whichversion.html) bakın. 
 
-### <a name="deprecation-and-retirement"></a>Kullanımdan kaldırma ve kullanımdan kaldırma
+### <a name="deprecation-and-retirement"></a>Amortisman ve emeklilik
 
-Desteklenen bir Java çalışma zamanı devre dışı bırakırsa, etkilenen çalışma zamanını kullanan Azure geliştiricileri, çalışma zamanı kullanımdan kalkmadan önce en az altı ayda bir kullanımdan kaldırma olarak verilmeyecektir.
+Desteklenen bir Java çalışma süresi kullanımdan kaldırılacaksa, etkilenen çalışma süresini kullanan Azure geliştiricilere çalışma süresinin kullanım süresinin kullanımdan kaldırılmasına en az altı ay kala bir amortisman bildirimi verilir.
 
 ### <a name="local-development"></a>Yerel geliştirme
 
-Geliştiriciler, Azul ['nin indirme sitesinden](https://www.azul.com/downloads/azure-only/zulu/)yerel geliştirme Için Azul Zulu kurumsal JDK üretim sürümünü indirebilir.
+Geliştiriciler [Azul'un indirme sitesinden](https://www.azul.com/downloads/azure-only/zulu/)yerel kalkınma için Azul Zulu Enterprise JDK Üretim Sürümü indirebilirsiniz.
 
 ### <a name="development-support"></a>Geliştirme desteği
 
-Azure [tarafından desteklenen Azul Zulu JDK](https://www.azul.com/downloads/azure-only/zulu/) için ürün desteği, Azure için geliştirme sırasında veya [nitelikli bir Azure destek planı](https://azure.microsoft.com/support/plans/)ile [Azure Stack](https://azure.microsoft.com/overview/azure-stack/) Microsoft aracılığıyla edinilebilir.
+Azure destekli [Azul Zulu JDK](https://www.azul.com/downloads/azure-only/zulu/) için ürün desteği, Azure veya [Azure Stack](https://azure.microsoft.com/overview/azure-stack/) için nitelikli bir Azure destek [planı](https://azure.microsoft.com/support/plans/)yla geliştirilirken Microsoft aracılığıyla kullanılabilir.
 
 ### <a name="runtime-support"></a>Çalışma zamanı desteği
 
-Geliştiriciler, [tam destek planına](https://azure.microsoft.com/support/plans/)sahip olmaları durumunda Azul Zulu JDKs ile ilgili [bir sorunu](/azure/azure-portal/supportability/how-to-create-azure-support-request) , Azure desteği aracılığıyla açabilir.
+Geliştiriciler, nitelikli bir [destek planları](https://azure.microsoft.com/support/plans/)varsa Azure Desteği aracılığıyla Azul Zulu JDK'larla ilgili bir [sorun açabilirler.](/azure/azure-portal/supportability/how-to-create-azure-support-request)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu konuda, Windows üzerinde Azure App Service için desteklenen Java çalışma zamanı açıklaması sağlanmaktadır.
+Bu konu, Windows'taki Azure Uygulama Hizmeti için Java Runtime destek bildirimini sağlar.
 
-- Web uygulamalarını barındırma hakkında daha fazla bilgi için Azure App Service [App Service genel bakış](overview.md)bölümüne bakın.
-- Azure 'da Java hakkında daha fazla bilgi için bkz. [Java Için Azure Geliştirme Merkezi](https://docs.microsoft.com/java/azure/?view=azure-java-stable).
+- Azure Uygulama Hizmeti ile web uygulamalarını barındırma hakkında daha fazla bilgi edinmek için [Uygulama Hizmetine genel bakış](overview.md)alabakın.
+- Azure geliştirme de Java hakkında daha fazla bilgi [için Java Geliştirme Merkezi için Azure'a](https://docs.microsoft.com/java/azure/?view=azure-java-stable)bakın.

@@ -1,6 +1,6 @@
 ---
-title: Web uç noktası - Azure CLI için Azure Blob Depolama olayları gönderme | Microsoft Docs
-description: Blob depolama olaylarına abone olmak için Azure Event Grid’i kullanın. Olayları, Web kancası'na gönderin. Bir web uygulamasında olayları işleyin.
+title: Azure Blob depolama etkinliklerini web bitiş noktasına gönderme - Azure CLI | Microsoft Dokümanlar
+description: Blob depolama olaylarına abone olmak için Azure Event Grid’i kullanın. Olayları bir Webhook'a gönderin. Olayları bir web uygulamasında ele alın.
 author: normesta
 ms.author: normesta
 ms.reviewer: cbrooks
@@ -9,13 +9,13 @@ ms.topic: how-to
 ms.service: storage
 ms.subservice: blobs
 ms.openlocfilehash: 93a146e481e6bb8b9180012d8c569d45521b4450
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79269321"
 ---
-# <a name="quickstart-route-storage-events-to-web-endpoint-with-azure-cli"></a>Hızlı Başlangıç: Azure CLI ile web uç noktasına rota depolama olaylarına
+# <a name="quickstart-route-storage-events-to-web-endpoint-with-azure-cli"></a>Hızlı başlangıç: Azure CLI ile depolama etkinliklerini web bitiş noktasına yönlendirin
 
 Azure Event Grid, bulut için bir olay oluşturma hizmetidir. Bu makalede, Azure CLI aracını kullanarak Blob depolama olaylarına abone olur ve sonucu görüntülemek için olayı tetiklersiniz.
 
@@ -29,7 +29,7 @@ Bu makalede açıklanan adımları tamamladıktan sonra olay verilerinin web uyg
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu makale, Azure CLı 'nın en son sürümünü (2.0.70 veya üzeri) kullanmanızı gerektirir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme](/cli/azure/install-azure-cli).
+CLI'yi yerel olarak yüklemeyi ve kullanmayı seçerseniz, bu makalede Azure CLI'nin en son sürümünü (2.0.70 veya sonraki) çalıştırdığınız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](/cli/azure/install-azure-cli).
 
 Cloud Shell kullanmıyorsanız önce `az login` kullanarak oturum açmanız gerekir.
 
@@ -39,7 +39,7 @@ Event Grid konuları Azure kaynaklarıdır ve bir Azure kaynak grubuna yerleşti
 
 [az group create](/cli/azure/group) komutuyla bir kaynak grubu oluşturun. 
 
-Aşağıdaki örnek `<resource_group_name>`westcentralus*konumunda* adlı bir kaynak grubu oluşturur.  `<resource_group_name>` değerini kaynak grubunuz için benzersiz bir adla değiştirin.
+Aşağıdaki örnek *westcentralus* konumunda `<resource_group_name>` adlı bir kaynak grubu oluşturur.  `<resource_group_name>` değerini kaynak grubunuz için benzersiz bir adla değiştirin.
 
 ```azurecli-interactive
 az group create --name <resource_group_name> --location westcentralus

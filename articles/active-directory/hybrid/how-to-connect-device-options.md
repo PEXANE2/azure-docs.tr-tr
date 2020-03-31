@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: Cihaz seçenekleri | Microsoft Docs'
-description: Bu belge Azure AD Connect cihaz seçenekleri ayrıntıları
+title: 'Azure AD Connect: Aygıt seçenekleri | Microsoft Dokümanlar'
+description: Bu belge, Azure AD Connect'te bulunan aygıt seçeneklerini ayrıntılarıyla birlikte
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -17,34 +17,34 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 96ddcdb67ef079cfa23902a1dcb03b0ec61077fe
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67109536"
 ---
-# <a name="azure-ad-connect-device-options"></a>Azure AD Connect: Cihaz seçenekleri
+# <a name="azure-ad-connect-device-options"></a>Azure AD Bağlantısı: Aygıt seçenekleri
 
-Aşağıdaki belgeler Azure AD Connect çeşitli cihaz seçenekleri hakkında bilgi sağlar. Azure AD Connect, aşağıdaki iki işlemlerini yapılandırmak için kullanabilirsiniz: 
-* **Hibrit Azure AD'ye katılma**: Şirket içi ortamınız varsa, AD Ayak izi ve Azure AD'nin avantajlarını istiyorsanız, hibrit Azure AD'ye katılmış cihazlara uygulayabilirsiniz. Bu cihazları hem şirket içi Active Directory'niz ve Azure Active Directory'nize katılmış.
-* **Cihaz geri yazmayı**: Cihaz geri yazma, AD FS cihazlara dayalı koşullu erişimi etkinleştirmek için kullanılır (2012 R2 veya üzeri) korunan cihazlar
+Aşağıdaki belgeler, Azure AD Connect'te bulunan çeşitli aygıt seçenekleri hakkında bilgi sağlar. Aşağıdaki iki işlemi yapılandırmak için Azure AD Connect'i kullanabilirsiniz: 
+* **Karma Azure AD join**: Ortamınızda şirket içi BIR AD ayak izi varsa ve Azure AD'nin avantajlarından yararlanmak istiyorsanız, karma Azure AD birleştirilmiş aygıtlar uygulayabilirsiniz. Bu aygıtlar hem şirket içi Active Dizininize hem de Azure Etkin Dizininize katılır.
+* **Aygıt geri yazma**: Aygıt geri yazımı, aygıtlara dayalı Koşullu Erişimi AD FS (2012 R2 veya daha yüksek) korumalı aygıtlara etkinleştirmek için kullanılır
 
-## <a name="configure-device-options-in-azure-ad-connect"></a>Azure AD Connect cihaz seçeneklerini yapılandır
+## <a name="configure-device-options-in-azure-ad-connect"></a>Azure AD Connect'te aygıt seçeneklerini yapılandırma
 
-1.  Çalıştırma Azure AD'ye bağlanın. İçinde **ek görevler** sayfasında **cihaz seçeneklerini yapılandır**.  **İleri**’ye tıklayın.
-    ![Cihaz seçeneklerini yapılandır](./media/how-to-connect-device-options/deviceoptions.png) 
+1.  Azure AD Connect'i çalıştırın. Ek **görevler** sayfasında, **aygıtı yapılandır seçeneklerini**seçin.  **İleri**'ye tıklayın.
+    ![Aygıt seçeneklerini yapılandırma](./media/how-to-connect-device-options/deviceoptions.png) 
 
-    **Genel bakış** sayfası ayrıntılarını görüntüler.
+    **Genel Bakış** sayfası ayrıntıları görüntüler.
     ![Genel bakış](./media/how-to-connect-device-options/deviceoverview.png)
 
     >[!NOTE]
-    > Yeni yapılandırma cihaz seçenekleri, yalnızca sürüm 1.1.819.0 kullanılabilir ve daha yeni.
+    > Yeni Yapılandırma aygıtı seçenekleri yalnızca sürüm 1.1.819.0 ve daha yeni sürümlerde kullanılabilir.
 
-2.  Azure AD için kimlik bilgilerini girdikten sonra seçebilirsiniz cihaz seçenekleri sayfasında gerçekleştirilecek işlemi.
+2.  Azure AD kimlik bilgilerini sağladıktan sonra, Aygıt seçenekleri sayfasında gerçekleştirilecek işlemi seçebilirsiniz.
     ![Cihaz işlemleri](./media/how-to-connect-device-options/deviceoptionsselection.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Karma Azure AD katılımını Yapılandır](../device-management-hybrid-azuread-joined-devices-setup.md)
-* [Yapılandırma / cihaz geri yazmayı devre dışı bırak](how-to-connect-device-writeback.md)
+* [Karma Azure AD birleştirme yapılandırma](../device-management-hybrid-azuread-joined-devices-setup.md)
+* [Aygıt yazmayı yapılandırma / devre dışı bırakın](how-to-connect-device-writeback.md)
 

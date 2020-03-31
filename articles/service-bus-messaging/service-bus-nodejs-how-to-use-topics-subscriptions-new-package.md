@@ -1,6 +1,6 @@
 ---
-title: Node. js ile Azure/Service-Bus konuları ve abonelikleri kullanma
-description: "Hızlı başlangıç: bir Node. js uygulamasından Azure 'da Service Bus konuları ve abonelikleri nasıl kullanacağınızı öğrenin."
+title: Node.js ile azure/servis veri meskeni konularını ve abonelikleri kullanma
+description: "Hızlı başlangıç: Bir Node.js uygulamasından Azure'daki Hizmet Veri Yolu konularını ve aboneliklerini nasıl kullanacağınızı öğrenin."
 services: service-bus-messaging
 documentationcenter: nodejs
 author: axisc
@@ -15,35 +15,35 @@ ms.topic: quickstart
 ms.date: 01/16/2020
 ms.author: aschhab
 ms.openlocfilehash: 6088b4c54ed16c5ef46d2c0671e619884cad29d4
-ms.sourcegitcommit: 021ccbbd42dea64d45d4129d70fff5148a1759fd
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "78330626"
 ---
-# <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azureservice-bus-package"></a>Hızlı başlangıç: node. js ve Azure/Service-Bus paketiyle Service Bus konuları ve abonelikleri kullanma
-Bu öğreticide, bir Service Bus konusuna ileti göndermek ve yeni [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) paketini kullanarak Service Bus aboneliğinden ileti almak Için bir Node. js programı yazmayı öğreneceksiniz. Bu paket, [rest çalışma zamanı API 'leri Service Bus](/rest/api/servicebus/service-bus-runtime-rest)kullanılan daha eski [Azure-SB](https://www.npmjs.com/package/azure-sb) paketi olan daha hızlı [AMQP 1,0 protokolünü](service-bus-amqp-overview.md) kullanır. Örnekler JavaScript 'e yazılır.
+# <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azureservice-bus-package"></a>Quickstart: Node.js ve azure/servis-veri-servis paketi ile Servis Veri Servisi konuları ve abonelikleri nasıl kullanılır?
+Bu eğitimde, Bir Hizmet Veri Yolu konusuna ileti göndermek ve yeni [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) paketi kullanarak bir Servis Veri yolu aboneliğinden ileti almak için bir Düğüm.js programı yazmayı öğrenirsiniz. Bu paket daha hızlı [AMQP 1.0 protokolünü](service-bus-amqp-overview.md) kullanırken, eski [azure-sb](https://www.npmjs.com/package/azure-sb) paketi [Service Bus REST çalışma zamanı API'lerini](/rest/api/servicebus/service-bus-runtime-rest)kullansın. Örnekler JavaScript ile yazılmıştır.
 
-## <a name="prerequisites"></a>Önkoşullar
-- Azure aboneliği. Bu öğreticiyi tamamlamak için bir Azure hesabınızın olması gerekir. [MSDN abone avantajlarınızı](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) etkinleştirebilir veya [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)için kaydolabilirsiniz.
-- Birlikte çalışmak için bir konu ve aboneliğiniz yoksa, bunları oluşturmak için [Service Bus konu ve abonelik oluşturmak üzere Azure Portal kullanma](service-bus-quickstart-topics-subscriptions-portal.md) adımlarını izleyin. Service Bus örneğiniz için bağlantı dizesini ve oluşturduğunuz konunun ve aboneliğin adlarını göz önünde bulabilirsiniz. Bu değerleri örneklerde kullanacağız.
+## <a name="prerequisites"></a>Ön koşullar
+- Azure aboneliği. Bu öğreticiyi tamamlamak için bir Azure hesabınızın olması gerekir. [MSDN abone avantajlarınızı](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) etkinleştirebilir veya ücretsiz bir [hesaba](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)kaydolabilirsiniz.
+- Üzerinde çalışabileceğiniz bir konu ve aboneliğiniz yoksa, bunları oluşturmak için bir Hizmet Veri Servisi konuları ve abonelikler makalesi [oluşturmak için Azure'u kullan portalındaki](service-bus-quickstart-topics-subscriptions-portal.md) adımları izleyin. Hizmet Veri Servisi örneğinizin bağlantı dizesini ve oluşturduğunuz konu nun ve aboneliğin adlarını not edin. Bu değerleri örneklerde kullanacağız.
 
 > [!NOTE]
-> - Bu öğretici, [NodeJS](https://nodejs.org/)kullanarak kopyalayıp çalıştırabileceğiniz örneklerle çalışır. Node. js uygulamasının nasıl oluşturulacağı hakkında yönergeler için bkz. [bir Node. js uygulamasını Azure Web sitesine](../app-service/app-service-web-get-started-nodejs.md)veya [Node. js bulut hizmetini Windows PowerShell kullanarak](../cloud-services/cloud-services-nodejs-develop-deploy-app.md)oluşturma ve dağıtma.
-> - Yeni [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) paketi henüz topcıs ve abonelik oluşturmayı desteklemez. Program aracılığıyla bunları oluşturmak istiyorsanız lütfen [@azure/arm-servicebus](https://www.npmjs.com/package/@azure/arm-servicebus) paketini kullanın.
+> - Bu öğretici, [Nodejs](https://nodejs.org/)kullanarak kopyalayıp çalıştırabileceğiniz örneklerle çalışır. Bir Düğüm.js uygulamasının nasıl oluşturulacağına ilişkin talimatlar için [bkz.](../app-service/app-service-web-get-started-nodejs.md) [Node.js Cloud Service using Windows PowerShell](../cloud-services/cloud-services-nodejs-develop-deploy-app.md)
+> - Yeni [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) paket henüz topcis ve aboneliklerin oluşturulmasını desteklemiyor. Programlı [@azure/arm-servicebus](https://www.npmjs.com/package/@azure/arm-servicebus) bir şekilde oluşturmak istiyorsanız lütfen paketi kullanın.
 
 ### <a name="use-node-package-manager-npm-to-install-the-package"></a>Paketi yüklemek için Düğüm Paket Yöneticisi’ni (NPM) kullanma
-Service Bus için NPM paketini yüklemek için, yolunda `npm` olan bir komut istemi açın, dizini örneklerinizin olmasını istediğiniz klasörle değiştirin ve ardından bu komutu çalıştırın.
+Servis Veri Yolu için npm paketini yüklemek için, yoluna çıkan bir komut istemi `npm` açın, dizini örneklerinizi almak istediğiniz klasöre değiştirin ve bu komutu çalıştırın.
 
 ```bash
 npm install @azure/service-bus
 ```
 
 ## <a name="send-messages-to-a-topic"></a>Konu başlığına ileti gönderme
-Service Bus konusuyla etkileşim kurmak [Servicebusclient](https://docs.microsoft.com/javascript/api/@azure/service-bus/servicebusclient) sınıfının örneğini oluşturma ve bunu [topicclient](https://docs.microsoft.com/javascript/api/%40azure/service-bus/topicclient) sınıfının örneğini oluşturmak için kullanma ile başlar. Konu istemciye sahip olduktan sonra, ileti göndermek için bir gönderici oluşturabilir ve üzerinde [Send](https://docs.microsoft.com/javascript/api/%40azure/service-bus/sender#send-sendablemessageinfo-) ya da [sendbatch](https://docs.microsoft.com/javascript/api/@azure/service-bus/sender#sendbatch-sendablemessageinfo---) metodunu kullanabilirsiniz.
+Bir Servis Veri Servisi konusuyla etkileşim kurmak [ServiceBusClient](https://docs.microsoft.com/javascript/api/@azure/service-bus/servicebusclient) sınıfını anlık olarak kullanmak ve [TopicClient](https://docs.microsoft.com/javascript/api/%40azure/service-bus/topicclient) sınıfını anında kullanmakla başlar. Konu istemcisini aldıktan sonra, bir gönderen oluşturabilir ve ileti göndermek için üzerinde [gönder](https://docs.microsoft.com/javascript/api/%40azure/service-bus/sender#send-sendablemessageinfo-) veya [gönderyöntemini](https://docs.microsoft.com/javascript/api/@azure/service-bus/sender#sendbatch-sendablemessageinfo---) kullanabilirsiniz.
 
 1. [Visual Studio Code](https://code.visualstudio.com/) gibi en sevdiğiniz düzenleyiciyi açın
-2. `send.js` adlı bir dosya oluşturun ve içine aşağıdaki kodu yapıştırın. Bu kod, konuya 10 ileti gönderir.
+2. Çağrılan `send.js` bir dosya oluşturun ve aşağıdaki kodu içine yapıştırın. Bu kod, konunuza 10 ileti gönderir.
 
     ```javascript
     const { ServiceBusClient } = require("@azure/service-bus"); 
@@ -80,20 +80,20 @@ Service Bus konusuyla etkileşim kurmak [Servicebusclient](https://docs.microsof
       console.log("Error occurred: ", err);
     });
     ```
-3. Yukarıdaki koda sitenizin bağlantı dizesini ve adını girin.
-4. Sonra bu dosyayı yürütmek için komut isteminde komut `node send.js` çalıştırın. 
+3. Yukarıdaki koda bağlantı dizesini ve konunuzun adını girin.
+4. Ardından bu `node send.js` dosyayı çalıştırmak için komut isteminde komutu çalıştırın. 
 
-Tebrikler! Service Bus kuyruğuna ileti gönderdiniz.
+Tebrikler! Servis Veri Servisi kuyruğuna ileti gönderdiniz.
 
-İletiler, gönderirken ayarlayabileceğiniz `label` ve `messageId` gibi bazı standart özelliklere sahiptir. Herhangi bir özel özellik ayarlamak istiyorsanız, özel verilerinizin anahtar-değer çiftlerini tutabilecek bir JSON nesnesi olan `userProperties`kullanın.
+İletiler gibi `label` bazı standart `messageId` özelliklere sahiptir ve gönderirken ayarlayabilirsiniz. Özel özellikler ayarlamak istiyorsanız, özel `userProperties`verilerinizin anahtar değeri çiftlerini tutabilen bir json nesnesi olan nesneyi kullanın.
 
-Service Bus konu başlıkları, [Standart katmanda](service-bus-premium-messaging.md) maksimum 256 KB ve [Premium katmanda](service-bus-premium-messaging.md) maksimum 1 MB ileti boyutunu destekler. Bir konuda tutulan ileti sayısında sınır yoktur, ancak bir konu tarafından tutulan iletilerin toplam boyutu için bir sınır vardır. Bu konu başlığı boyutu, üst sınır 5 GB olacak şekilde oluşturulma zamanında belirlenir. Kotalar hakkında daha fazla bilgi için bkz. [Service Bus kotaları](service-bus-quotas.md).
+Service Bus konu başlıkları, [Standart katmanda](service-bus-premium-messaging.md) maksimum 256 KB ve [Premium katmanda](service-bus-premium-messaging.md) maksimum 1 MB ileti boyutunu destekler. Bir konuda tutulan ileti sayısında bir sınır yoktur, ancak bir konu tarafından tutulan iletilerin toplam boyutunda bir sınır vardır. Bu konu başlığı boyutu, üst sınır 5 GB olacak şekilde oluşturulma zamanında belirlenir. Kotalar hakkında daha fazla bilgi için [Servis Otobüsü kotalarına](service-bus-quotas.md)bakın.
 
-## <a name="receive-messages-from-a-subscription"></a>Bir abonelikten ileti alma
-Service Bus abonelikle etkileşim kurmak, [Servicebusclient](https://docs.microsoft.com/javascript/api/@azure/service-bus/servicebusclient) sınıfının örneğini oluşturma ve bunu kullanarak [subscriptionclient](https://docs.microsoft.com/javascript/api/%40azure/service-bus/subscriptionclient) sınıfının örneğini oluşturmaya başlar. Abonelik istemcisini aldıktan sonra, bir alıcı oluşturabilir ve ileti almak için üzerinde [Receivemessages](https://docs.microsoft.com/javascript/api/%40azure/service-bus/receiver#receivemessages-number--undefined---number-) ya da [registermessagehandler](https://docs.microsoft.com/javascript/api/%40azure/service-bus/receiver#registermessagehandler-onmessage--onerror--messagehandleroptions-) metodunu kullanabilirsiniz.
+## <a name="receive-messages-from-a-subscription"></a>Abonelikten ileti alma
+Service Bus aboneliğiyle etkileşim kurmak, [ServiceBusClient](https://docs.microsoft.com/javascript/api/@azure/service-bus/servicebusclient) sınıfını anlık olarak kullanmak ve [Aboneliği İstemlemi](https://docs.microsoft.com/javascript/api/%40azure/service-bus/subscriptionclient) sınıfını anında kullanmakla başlar. Abonelik istemcisine sahip olduğunuzda, bir alıcı oluşturabilir ve ileti almak için [iletileri almak](https://docs.microsoft.com/javascript/api/%40azure/service-bus/receiver#receivemessages-number--undefined---number-) veya [registerMessageHandler](https://docs.microsoft.com/javascript/api/%40azure/service-bus/receiver#registermessagehandler-onmessage--onerror--messagehandleroptions-) yöntemini kullanabilirsiniz.
 
 1. [Visual Studio Code](https://code.visualstudio.com/) gibi en sevdiğiniz düzenleyiciyi açın
-2. `recieve.js` adlı bir dosya oluşturun ve içine aşağıdaki kodu yapıştırın. Bu kod, aboneliğinizden 10 ileti almaya çalışır. Aldığınız gerçek sayı, abonelik ve ağ gecikmesi içindeki ileti sayısına bağlıdır.
+2. Çağrılan `recieve.js` bir dosya oluşturun ve aşağıdaki kodu içine yapıştırın. Bu kod, aboneliğinizden 10 ileti almaya çalışır. Aldığınız gerçek sayım, abonelikteki ileti sayısına ve ağ gecikme durumuna bağlıdır.
 
     ```javascript
     const { ServiceBusClient, ReceiveMode } = require("@azure/service-bus"); 
@@ -123,32 +123,32 @@ Service Bus abonelikle etkileşim kurmak, [Servicebusclient](https://docs.micros
       console.log("Error occurred: ", err);
     });
     ```
-3. Yukarıdaki koda konu ve aboneliğinizin bağlantı dizesini ve adlarını girin.
-4. Sonra bu dosyayı yürütmek için komut isteminde komut `node receiveMessages.js` çalıştırın.
+3. Yukarıdaki koda bağlantı dizesini ve konu ve aboneliğinizin adlarını girin.
+4. Ardından bu `node receiveMessages.js` dosyayı çalıştırmak için komut isteminde komutu çalıştırın.
 
-Tebrikler! Service Bus aboneliğinden yalnızca ileti aldınız.
+Tebrikler! Bir Servis Veri Servisi aboneliğinden ileti ler aldınız.
 
-[Createreceiver](https://docs.microsoft.com/javascript/api/%40azure/service-bus/subscriptionclient#createreceiver-receivemode-) yöntemi, [receiveanddelete](message-transfers-locks-settlement.md#settling-receive-operations) ve [PeekLock](message-transfers-locks-settlement.md#settling-receive-operations)değerlerine sahip bir sabit listesi olan bir `ReceiveMode` alır. İleti üzerinde `complete()`, `abandon()`, `defer()`veya `deadletter()` yöntemlerinden birini kullanarak `PeekLock` modunu kullanıyorsanız, [iletilerinizi kapatmanız](message-transfers-locks-settlement.md#settling-receive-operations) gerektiğini unutmayın.
+[CreateReceiver](https://docs.microsoft.com/javascript/api/%40azure/service-bus/subscriptionclient#createreceiver-receivemode-) yöntemi `ReceiveMode` [receiveAndDelete](message-transfers-locks-settlement.md#settling-receive-operations) ve [PeekLock](message-transfers-locks-settlement.md#settling-receive-operations)değerleri ile bir enum alır. İletideki `PeekLock` herhangi `complete()`bir yöntemi `abandon()` `defer()` `deadletter()` kullanarak modu kullanıyorsanız [iletilerinizi kapatmayı](message-transfers-locks-settlement.md#settling-receive-operations) unutmayın.
 
 ## <a name="subscription-filters-and-actions"></a>Abonelik filtreleri ve eylemleri
-Service Bus, [aboneliklerdeki filtreleri ve eylemleri](topic-filters.md)destekler, bu da gelen iletileri bir aboneliğe filtrelemenizi ve özelliklerini düzenlemenizi sağlar.
+Service Bus, gelen iletileri aboneye filtrelemenize ve özelliklerini nida edebilmenize olanak tanıyan [aboneliklerle ilgili filtreleri](topic-filters.md)ve eylemleri destekler.
 
-Bir `SubscriptionClient` örneğine sahip olduktan sonra, filtre ve eylemleri denetlemek için abonelikte kuralları almak, eklemek ve kaldırmak için aşağıdaki yöntemleri kullanabilirsiniz.
+Bir örnek `SubscriptionClient` aldıktan sonra, filtreleri ve eylemleri denetlemek için abonelik kurallarını almak, eklemek ve kaldırmak için aşağıdaki yöntemleri kullanabilirsiniz.
 
 - getRules
-- addRule
+- Addrule
 - removeRule
 
-Her aboneliğin, tüm gelen iletilere izin vermek için doğru filtreyi kullanan bir varsayılan kuralı vardır. Yeni bir kural eklediğinizde, yeni kuraldaki filtrenin çalışması için varsayılan filtreyi kaldırmayı unutmayın. Bir aboneliğin kuralları yoksa, hiçbir ileti almaz.
+Her aboneliğin, gelen tüm iletilere izin vermek için gerçek filtreyi kullanan bir varsayılan kuralı vardır. Yeni bir kural eklediğinizde, yeni kuralınızdaki filtrenin çalışması için varsayılan filtreyi kaldırmayı unutmayın. Bir aboneliğin kuralları yoksa, ileti almaz.
 
 > [!NOTE]
-> Service Bus kaynaklarını [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/)ile yönetebilirsiniz. Service Bus gezgin, kullanıcıların bir Service Bus ad alanına bağlanmasına ve mesajlaşma varlıklarını kolay bir şekilde yönetmesine olanak tanır. Araç içeri/dışarı aktarma işlevselliği gibi gelişmiş özellikler ya da konu, kuyruk, abonelik, geçiş Hizmetleri, Bildirim Hub 'ları ve Olay Hub 'larını test etme yeteneği sağlar. 
+> [Servis](https://github.com/paolosalvatori/ServiceBusExplorer/)Veri Servisi Explorer ile Servis Veri Servisi kaynaklarını yönetebilirsiniz. Service Bus Explorer, kullanıcıların bir Service Bus ad alanına bağlanmasına ve ileti varlıklarını kolay bir şekilde yönetmesine olanak tanır. Araç, alma/dışa aktarma işlevselliği veya konuyu, kuyrukları, abonelikleri, geçiş hizmetlerini, bildirim hub'larını ve olay hub'larını test etme olanağı gibi gelişmiş özellikler sağlar. 
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 Daha fazla bilgi edinmek için aşağıdaki kaynaklara bakın.
 
-- [Kuyruklar, konu başlıkları ve abonelikler](service-bus-queues-topics-subscriptions.md)
-- [GitHub üzerinde Service Bus için diğer NodeJS örneklerini](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/servicebus/service-bus/samples/javascript) kullanıma al
+- [Kuyruklar, konular ve abonelikler](service-bus-queues-topics-subscriptions.md)
+- [GitHub'daki Servis Otobüsü için diğer Nodejs örneklerini](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/servicebus/service-bus/samples/javascript) ödeme
 - [Node.js Geliştirici Merkezi](https://azure.microsoft.com/develop/nodejs/)
 
 

@@ -1,59 +1,58 @@
 ---
-title: Azure SQL veritabanı Edge önizlemesinde ONNX ile Machine Learning ve AI | Microsoft Docs
-description: Azure SQL veritabanı Edge önizlemesinde makine öğrenimi, Open sinir Network Exchange (ONNX) biçimindeki modelleri destekler. ONNX, çeşitli makine öğrenimi çerçeveleri ve araçları arasındaki modelleri değiş tokuş etmek için kullanabileceğiniz bir açık biçimdir.
-keywords: SQL veritabanı ucunu dağıtma
+title: Azure SQL Veritabanı Kenarı Önizlemesinde ONNX ile makine öğrenimi ve Yapay AI | Microsoft Dokümanlar
+description: Azure SQL Veritabanı Kenarı Önizleme'de makine öğrenimi, Açık Nöral Ağ Değişimi (ONNX) biçimindeki modelleri destekler. ONNX, çeşitli makine öğrenimi çerçeveleri ve araçları arasında modelleri değiştirmek için kullanabileceğiniz açık bir biçimdir.
+keywords: sql veritabanı kenarını dağıtmak
 services: sql-database-edge
 ms.service: sql-database-edge
 ms.subservice: machine-learning
 ms.topic: conceptual
-author: ronychatterjee
-ms.author: achatter
-ms.reviewer: davidph
-ms.date: 11/07/2019
-ms.openlocfilehash: bdb602598f3d8b4aaed5d6061542d540a82ebc75
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+author: dphansen
+ms.author: davidph
+ms.date: 03/26/2020
+ms.openlocfilehash: 7813a08b6b18e517b81e8c4bfac660d198eba7f7
+ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74114604"
+ms.lasthandoff: 03/27/2020
+ms.locfileid: "80366266"
 ---
-# <a name="machine-learning-and-ai-with-onnx-in-sql-database-edge-preview"></a>SQL veritabanı Edge önizlemesinde ONNX ile Machine Learning ve AI
+# <a name="machine-learning-and-ai-with-onnx-in-sql-database-edge-preview"></a>SQL Database Edge Preview'da ONNX ile makine öğrenimi ve Yapay AI
 
-Azure SQL veritabanı Edge önizlemesinde makine öğrenimi, [Open sinir Network Exchange (ONNX)](https://onnx.ai/) biçimindeki modelleri destekler. ONNX, çeşitli [makine öğrenimi çerçeveleri ve araçları](https://onnx.ai/supported-tools)arasındaki modelleri değiş tokuş etmek için kullanabileceğiniz bir açık biçimdir.
+Azure SQL Veritabanı Kenarı Önizleme'de makine [öğrenimi, Açık Nöral Ağ Değişimi (ONNX)](https://onnx.ai/) biçimindeki modelleri destekler. ONNX çeşitli [makine öğrenme çerçeveleri ve araçları](https://onnx.ai/supported-tools)arasında modelleri değiştirmek için kullanabileceğiniz açık bir formattır.
 
 ## <a name="overview"></a>Genel Bakış
 
-Azure SQL veritabanı Edge 'de makine öğrenimi modellerini çıkarsmak için öncelikle bir model almanız gerekir. Bu, önceden eğitilen bir model veya tercih ettiğiniz çerçeveye eğitilen özel bir model olabilir. Azure SQL veritabanı Edge ONNX biçimini destekler ve modeli bu biçime dönüştürmeniz gerekir. Model doğruluğunun etkilenmemesi gerekir ve ONNX modeline sahip olduğunuzda modeli Azure SQL veritabanı Edge 'de dağıtabilir ve [ön tahmin T-SQL işleviyle yerel Puanlama](/sql/advanced-analytics/sql-native-scoring/)kullanabilirsiniz.
+Azure SQL Veritabanı Kenarı'ndaki makine öğrenimi modellerini çıkarmak için öncelikle bir model almanız gerekir. Bu önceden eğitilmiş bir model veya seçtiğiniz çerçeve ile eğitilmiş özel bir model olabilir. Azure SQL Veritabanı Kenarı ONNX biçimini destekler ve modeli bu biçime dönüştürmeniz gerekir. Model doğruluğu üzerinde hiçbir etkisi olmamalıdır ve ONNX modeline sahip olduktan sonra, modeli Azure SQL Veritabanı Kenarı'nda dağıtabilir ve [PREDICT T-SQL işlevi ile yerel puanlamayı](/sql/advanced-analytics/sql-native-scoring/)kullanabilirsiniz.
 
-## <a name="get-onnx-models"></a>ONNX modelleri Al
+## <a name="get-onnx-models"></a>ONNX modellerini alın
 
-ONNX biçiminde bir model elde etmek için:
+ONNX formatında bir model elde etmek için:
 
-- **Model oluşturma hizmetleri**: Azure Machine Learning ve [Azure özel görüntü işleme hizmeti](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier) [Otomatik Machine Learning özelliği](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb) gibi hizmetler, eğitilen modelin onnx biçiminde doğrudan verilmesini destekler.
+- **Model Oluşturma Hizmetleri**: Azure Machine Learning ve Azure Custom Vision [Service'deki otomatik Machine Learning özelliği](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb) gibi hizmetler, eğitilmiş modeli DOĞRUDAN ONNX formatında dışa aktarır. [Azure Custom Vision Service](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier)
 
-- [**Mevcut modelleri dönüştürme ve/veya dışa aktarma**](https://github.com/onnx/tutorials#converting-to-onnx-format): çeşitli eğitim çerçeveleri (ör. [pytorch](https://pytorch.org/docs/stable/onnx.html), Chainer ve Caffe2), eğitilen modelinizi onnx biçiminin belirli bir sürümüne kaydetmenizi sağlayan onnx 'e yerel dışarı aktarma işlevselliğini destekler. Yerel dışarı aktarmayı desteklemeyen çerçeveler için, farklı makine öğrenme çerçevelerinden eğitilen modelleri ONNX biçimine dönüştürmenizi sağlayan, tek başına ONNX Dönüştürücüsü yüklenebilir paketleri vardır.
+- [**Mevcut modelleri dönüştürün ve/veya dışa aktarın**](https://github.com/onnx/tutorials#converting-to-onnx-format): Çeşitli eğitim çerçeveleri (örneğin [PyTorch,](https://pytorch.org/docs/stable/onnx.html)Chainer ve Caffe2) yerel ihracat işlevselliğini ONNX'e destekler ve bu da eğitimli modelinizi ONNX biçiminin belirli bir sürümüne kaydetmenizi sağlar. Yerel dışa aktarmayı desteklemeyen çerçeveler için, farklı makine öğrenimi çerçevelerinden eğitilmiş modelleri ONNX biçimine dönüştürmenize olanak tanıyan bağımsız ONNX Dönüştürülebilir paketler vardır.
 
      **Desteklenen çerçeveler**
    * [PyTorch](http://pytorch.org/docs/master/onnx.html)
-   * [Tensorflow](https://github.com/onnx/tensorflow-onnx)
+   * [Tensör akışı](https://github.com/onnx/tensorflow-onnx)
    * [Keras](https://github.com/onnx/keras-onnx)
-   * [Scikit-learn](https://github.com/onnx/sklearn-onnx)
+   * [Scikit-öğren](https://github.com/onnx/sklearn-onnx)
    * [CoreML](https://github.com/onnx/onnxmltools)
     
-    Desteklenen çerçeveler ve örneklerin tam listesi için bkz. [ONNX biçimine dönüştürme](https://github.com/onnx/tutorials#converting-to-onnx-format).
+    Desteklenen çerçeveler ve örneklerin tam listesi [için](https://github.com/onnx/tutorials#converting-to-onnx-format)bkz.
 
 ## <a name="limitations"></a>Sınırlamalar
 
-Şu anda tüm ONNX modelleri Azure SQL veritabanı Edge tarafından desteklenmez. Destek, **sayısal veri türleri**olan modellerle sınırlıdır:
+Şu anda, tüm ONNX modelleri Azure SQL Database Edge tarafından desteklenmez. Destek **sayısal veri tipleri**olan modeller ile sınırlıdır:
 
 - [int ve bigint](https://docs.microsoft.com/sql/t-sql/data-types/int-bigint-smallint-and-tinyint-transact-sql)
 - [gerçek ve float](https://docs.microsoft.com/sql/t-sql/data-types/float-and-real-transact-sql).
   
-Diğer sayısal türler, [dönüştürme ve dönüştürme](https://docs.microsoft.com/sql/t-sql/functions/cast-and-convert-transact-sql)kullanılarak desteklenen türlere dönüştürülebilir.
+Diğer sayısal türler [CAST ve CONVERT](https://docs.microsoft.com/sql/t-sql/functions/cast-and-convert-transact-sql)kullanılarak desteklenen türlere dönüştürülebilir.
 
-Model girişleri, modeldeki her girdinin tablodaki tek bir sütuna karşılık gelmesi için yapılandırılmalıdır. Örneğin, bir modeli eğitebilmeniz için bir Pandas dataframe kullanıyorsanız, her giriş modele ayrı bir sütun olmalıdır.
+Model girişleri, modele yapılan her girişin bir tablodaki tek bir sütuna karşılık gelecek şekilde yapılandırılmalıdır. Örneğin, bir modeli eğitmek için bir pandalar veri çerçevesi kullanıyorsanız, her giriş modeliçin ayrı bir sütun olmalıdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure portal aracılığıyla SQL veritabanı ucunu dağıtma](deploy-portal.md)
-- [Azure SQL veritabanı Edge önizlemesine bir ONNX modeli dağıtma](deploy-onnx.md)
+- [Azure portalı üzerinden SQL Veritabanı Kenarı dağıtma](deploy-portal.md)
+- [Azure SQL Veritabanı Kenarı Önizlemesi'nde bir ONNX modeli dağıtma](deploy-onnx.md)

@@ -1,5 +1,5 @@
 ---
-title: Azure portal ile çoklu bit hızına sahip akışlar oluşturmak için Azure Media Services kullanarak canlı akış gerçekleştirme | Microsoft Docs
+title: Azure portalı ile çok bit hızında akışlar oluşturmak için Azure Medya Hizmetleri'ni kullanarak canlı akış gerçekleştirin | Microsoft Dokümanlar
 description: Bu öğreticide, tek bit hızında bir canlı akışı alıp Azure portalını kullanarak çoklu bit hızında akışa kodlayan bir Kanal oluşturulması adım adım anlatılmaktadır.
 services: media-services
 documentationcenter: ''
@@ -15,13 +15,13 @@ ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: 7d2e4274e6feaebac6536eed2f8a99d251cd5ceb
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77162574"
 ---
-# <a name="perform-live-streaming-using-media-services-to-create-multi-bitrate-streams-with-azure-portal"></a>Azure portal ile çoklu bit hızına sahip akışlar oluşturmak için Media Services kullanarak canlı akış gerçekleştirme  
+# <a name="perform-live-streaming-using-media-services-to-create-multi-bitrate-streams-with-azure-portal"></a>Azure portalı ile çok bit hızında akışlar oluşturmak için Medya Hizmetleri'ni kullanarak canlı akış gerçekleştirin  
 > [!div class="op_single_selector"]
 > * [Portal](media-services-portal-creating-live-encoder-enabled-channel.md)
 > * [.NET](media-services-dotnet-creating-live-encoder-enabled-channel.md)
@@ -29,7 +29,7 @@ ms.locfileid: "77162574"
 > 
 
 > [!NOTE]
-> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>En son sürüm olan [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/)’ü inceleyin. Ayrıca bkz. [v2 'den v3 'e geçiş kılavuzu](../latest/migrate-from-v2-to-v3.md)
+> Media Services v2’ye herhangi bir yeni özellik veya işlevsellik eklenmemektedir. <br/>En son sürümü göz atın, [Medya Hizmetleri v3](https://docs.microsoft.com/azure/media-services/latest/). Ayrıca, [v2'den v3'e geçiş kılavuzuna](../latest/migrate-from-v2-to-v3.md) bakın
 
 Bu öğreticide, tek bit hızında bir canlı akışı alıp çoklu bit hızında akışa kodlayan bir **Kanal** oluşturulması adım adım anlatılmaktadır.
 
@@ -41,10 +41,10 @@ Yaygın canlı akış uygulamaları oluşturmak için gerekli olan genel adımla
 > [!NOTE]
 > Canlı bir etkinlik için önerilen en uzun süre şu anda 8 saattir. Daha uzun bir süre için bir Kanal çalıştırmanız gerekiyorsa lütfen amshelp@microsoft.com adresine başvurun.
 
-1. Bilgisayara bir video kamera bağlayın. <br/>Kurulum fikirleri için [basit ve taşınabilir olay video dişli kurulumuna]( https://link.medium.com/KNTtiN6IeT)göz atın.
+1. Bilgisayara bir video kamera bağlayın. <br/>Kurulum fikirleri için, [Basit ve taşınabilir olay video dişli kurulum]( https://link.medium.com/KNTtiN6IeT)göz atın.
 
-    Bir kameraya erişiminiz yoksa, [Telestream kablolu dönüştürme](media-services-configure-wirecast-live-encoder.md) gibi araçlar, bir video dosyasından canlı bir akış oluşturmak için kullanılabilir.
-1. Şu protokollerin birinde tek bit hızlı bir akış çıktısı sağlayabilecek şirket içi bir gerçek zamanlı kodlayıcı başlatıp bunu yapılandırın: RTMP veya Kesintisiz Akış. Daha fazla bilgi için bkz. [Azure Media Services RTMP Desteği ve Gerçek Zamanlı Kodlayıcılar](https://go.microsoft.com/fwlink/?LinkId=532824). <br/>Ayrıca, bu bloga göz atın: [OBS Ile canlı akış üretimi](https://link.medium.com/ttuwHpaJeT).
+    Bir kameraya erişiminiz yoksa, [Telestream Wirecast](media-services-configure-wirecast-live-encoder.md) gibi araçlar bir video dosyasından canlı yayın oluşturmak için kullanılabilir.
+1. Şu protokollerin birinde tek bit hızlı bir akış çıktısı sağlayabilecek şirket içi bir gerçek zamanlı kodlayıcı başlatıp bunu yapılandırın: RTMP veya Kesintisiz Akış. Daha fazla bilgi için bkz. [Azure Media Services RTMP Desteği ve Gerçek Zamanlı Kodlayıcılar](https://go.microsoft.com/fwlink/?LinkId=532824). <br/>Ayrıca, bu bloggöz atın: [OBS ile canlı akış üretimi](https://link.medium.com/ttuwHpaJeT).
 
     Bu adım, Kanalınızı oluşturduktan sonra da gerçekleştirilebilir.
 1. Bir Kanal oluşturup başlatın. 
@@ -61,12 +61,12 @@ Yaygın canlı akış uygulamaları oluşturmak için gerekli olan genel adımla
 1. Olay akışını ve arşivlemeyi durdurmak istediğinizde, olayı durdurun.
 1. Olayı silin (ve isteğe bağlı olarak varlığı silin).   
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Öğreticiyi tamamlamak için aşağıdakiler gereklidir.
 
-* Bu öğreticiyi tamamlamak için bir Azure hesabınızın olması gerekir. Hesabınız yoksa yalnızca birkaç dakika içinde ücretsiz bir deneme sürümü hesabı oluşturabilirsiniz. 
-  Ayrıntılar için bkz. [Azure Ücretsiz Deneme Sürümü](https://azure.microsoft.com/pricing/free-trial/).
+* Bu öğreticiyi tamamlamak için bir Azure hesabınızın olması gerekir. Bir hesabınız yoksa, yalnızca birkaç dakika içinde ücretsiz bir deneme hesabı oluşturabilirsiniz. 
+  Ayrıntılı bilgi için bkz. [Azure Ücretsiz Deneme Sürümü](https://azure.microsoft.com/pricing/free-trial/).
 * Bir Media Services hesabı. Media Services hesabı oluşturma konusunda bilgi edinmek için bkz. [Hesap Oluşturma](media-services-portal-create-account.md).
 * Bir web kamerası ve tek bit hızlı bir canlı akış gönderebilen bir kodlayıcı.
 
@@ -94,7 +94,7 @@ Yaygın canlı akış uygulamaları oluşturmak için gerekli olan genel adımla
         Kanal veya ilişkili olayları/programları çalışıyorken protokol seçeneğini değiştiremezsiniz. Farklı protokollere ihtiyacınız varsa her bir akış protokolü için farklı bir kanal oluşturmalısınız.  
    2. Alma işlemine IP kısıtlaması uygulayabilirsiniz. 
 
-       Bu kanala video almasına izin verilen IP adreslerini tanımlayabilirsiniz. İzin verilen IP adresleri tek bir IP adresi (örn. ' 10.0.0.1 '), bir IP adresi ve CıDR alt ağ maskesi (örn. ' 10.0.0.1/22 ') kullanan bir IP aralığı ya da bir IP adresi ve noktalı ondalık alt ağ maskesi kullanarak bir IP aralığı (örn. ' 10.0.0.1 (255.255.252.0) ') olarak belirtilebilir.
+       Bu kanala video almasına izin verilen IP adreslerini tanımlayabilirsiniz. İzin verilen IP adresleri tek bir IP adresi olarak belirtilebilir (örn. '10.0.0.1'), IP adresi ve CIDR alt ağ maskesi (örn. '10.0.0.1/22' veya IP adresi ve noktalı ondalık alt ağ maskesi (örn. '10.0.0.1(255.252.0)') kullanan bir IP aralığı.
 
        Herhangi bir IP adresi belirtilmezse ve bir kural tanımı yoksa hiçbir IP adresine izin verilmez. Tüm IP adreslerine izin vermek için, bir kural oluşturun ve 0.0.0.0/0 olarak ayarlayın.
 6. **Önizleme** sekmesinde önizlemeye IP kısıtlaması uygulayın.
@@ -114,7 +114,7 @@ Daha fazla bilgi için bkz. [Çoklu bit hızına sahip akışlar oluşturmak üz
 ## <a name="get-ingest-urls"></a>Alma URL’leri alma
 Kanal oluşturulduktan sonra, gerçek zamanlı kodlayıcıya sağlayacağınız alma URL’lerini alabilirsiniz. Kodlayıcı bu URL'leri canlı akış girişi için kullanır.
 
-![Alma URL 'leri](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-ingest-urls.png)
+![url'leri yutmak](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-ingest-urls.png)
 
 ## <a name="create-and-manage-events"></a>Olay oluşturma ve yönetme
 
@@ -141,7 +141,7 @@ Arşivlenen içeriği tutmak istiyor ancak bu içeriğin akış için kullanılm
 Akışın Kanala akması sağlandıktan sonra bir Varlık, Program ve Akış Bulucu oluşturarak akış olayını başlatabilirsiniz. Bu olay, akışı arşivler ve akışın Akış Uç Noktası aracılığıyla izleyiciler tarafından kullanılabilmesini sağlar. 
 
 >[!NOTE]
->AMS hesabınız oluşturulduğunda hesabınıza **Durdurulmuş** durumda bir **varsayılan** akış uç noktası eklenir. İçerik akışını başlatmak ve dinamik paketleme ile dinamik şifrelemeden yararlanmak için içerik akışı yapmak istediğiniz akış uç noktasının **Çalışıyor** durumda olması gerekir. 
+>AMS hesabınız **oluşturulduğunda,** **Durduruldu** durumunda hesabınıza varsayılan akış bitiş noktası eklenir. İçerik akışını başlatmak ve dinamik paketleme ile dinamik şifrelemeden yararlanmak için içerik akışı yapmak istediğiniz akış uç noktasının **Çalışıyor** durumda olması gerekir. 
 
 Olayı başlatmanın iki yolu vardır: 
 
@@ -149,7 +149,7 @@ Olayı başlatmanın iki yolu vardır:
 
     Şunları belirleyin: olay adı, varlık adı, arşiv penceresi ve şifreleme seçeneği.
 
-    ![program oluştur](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-create-program.png)
+    ![program oluşturma](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-create-program.png)
 
     **Bu canlı olayı şimdi yayımla** seçeneğini işaretli bıraktıysanız URL'leri YAYIMLAMA olayı oluşturulacaktır.
 

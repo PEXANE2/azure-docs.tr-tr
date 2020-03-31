@@ -1,70 +1,70 @@
 ---
-title: SSL 'yi yapılandırma-MariaDB için Azure veritabanı
-description: MariaDB için Azure veritabanı 'nı ve ilişkili uygulamaları doğru şekilde SSL bağlantıları kullanacak şekilde yapılandırma yönergeleri
+title: MariaDB için SSL - Azure Veritabanını Yapılandırma
+description: SSL bağlantılarını doğru kullanmak için MariaDB ve ilişkili uygulamalar için Azure Veritabanı'nın doğru şekilde nasıl yapılandırılacaklarına ilişkin yönergeler
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: a0fb1bdf1aac9b3c5a2d8c83d0597326de38caaf
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 3/18/2020
+ms.openlocfilehash: 668b72fa89916de6d2aa5971543b0ec085de8263
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74767373"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79530691"
 ---
-# <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mariadb"></a>MariaDB için Azure veritabanı 'na güvenli bir şekilde bağlanmak üzere uygulamanızda SSL bağlantısı yapılandırma
-MariaDB için Azure veritabanı, MariaDB sunucusu için Azure veritabanınızı Güvenli Yuva Katmanı (SSL) kullanarak istemci uygulamalarına bağlamayı destekler. Veritabanı sunucunuzla istemci uygulamalarınız arasında SSL bağlantılarının zorunlu tutulması, sunucuya uygulamanız arasındaki veri akışını şifreleyerek "bağlantıyı izinsiz izleme" saldırılarına karşı korumaya yardımcı olur.
+# <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mariadb"></a>MariaDB için Azure Veritabanına güvenli bir şekilde bağlanmak için uygulamanızdaki SSL bağlantısını yapılandırın
+MariaDB için Azure Veritabanı, Güvenli Soketkatmanı (SSL) kullanarak MariaDB sunucusu için Azure Veritabanınızı istemci uygulamalarına bağlamayı destekler. Veritabanı sunucunuzla istemci uygulamalarınız arasında SSL bağlantılarının zorunlu tutulması, sunucuya uygulamanız arasındaki veri akışını şifreleyerek "bağlantıyı izinsiz izleme" saldırılarına karşı korumaya yardımcı olur.
 
-## <a name="obtain-ssl-certificate"></a>SSL sertifikası al
-[https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) 'Den MariaDB sunucusu Için Azure VERITABANı ile SSL üzerinden iletişim kurmak için gereken sertifikayı indirin ve sertifika dosyasını yerel sürücünüze kaydedin (Bu öğreticide c:\ssl kullanılır).
-**Microsoft Internet Explorer ve Microsoft Edge için:** İndirme tamamlandıktan sonra, sertifikayı BaltimoreCyberTrustRoot. CRT. ped olarak yeniden adlandırın.
+## <a name="obtain-ssl-certificate"></a>SSL sertifikası alma
+MariaDB sunucusu için Azure Veritabanınızla SSL üzerinden iletişim [https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) kurmak için gereken sertifikayı indirin ve sertifika dosyasını yerel sürücünüze kaydedin (bu öğretici örneğin c:\ssl kullanır).
+**Microsoft Internet Explorer ve Microsoft Edge için:** İndirme tamamlandıktan sonra sertifikayı BaltimoreCyberTrustRoot.crt.pem olarak yeniden adlandırın.
 
-## <a name="bind-ssl"></a>SSL bağlama
+## <a name="bind-ssl"></a>Bağlama SSL
 
-### <a name="connecting-to-server-using-mysql-workbench-over-ssl"></a>SSL üzerinde MySQL çalışma ekranı kullanarak sunucuya bağlanma
-MySQL çalışma ekranı 'nı SSL üzerinden güvenli bir şekilde bağlanacak şekilde yapılandırın. 
+### <a name="connecting-to-server-using-mysql-workbench-over-ssl"></a>SSL üzerinden MySQL Workbench kullanarak sunucuya bağlanma
+MySQL Workbench'i SSL üzerinden güvenli bir şekilde bağlanmak için yapılandırın. 
 
-1. Yeni bağlantı kur iletişim kutusunda **SSL** sekmesine gidin. 
+1. Kurulum Yeni Bağlantı iletişiminden **SSL** sekmesine gidin. 
 
-1. **SSL kullan** alanını "gerektir" olarak güncelleştirin.
+1. **SSL kullan** alanını "İsteyin" olarak güncelleştirin.
 
-1. **SSL CA dosyası:** alanına, **Baltimorecybertrustroot. CRT. ped**dosyasının konumunu girin. 
+1. **SSL CA Dosyasında:** alan, **BaltimoreCyberTrustRoot.crt.pem**dosya konumunu girin. 
     
-    ![SSL yapılandırmasını Kaydet](./media/howto-configure-ssl/mysql-workbench-ssl.png)
+    ![SSL yapılandırması kaydet](./media/howto-configure-ssl/mysql-workbench-ssl.png)
 
-Mevcut bağlantılar için, bağlantı simgesine sağ tıklayıp Düzenle ' yi seçerek SSL 'yi bağlayabilirsiniz. Ardından **SSL** sekmesine gidin ve sertifika dosyasını bağlayın.
+Varolan bağlantılar için, bağlantı simgesine sağ tıklayarak SSL'yi bağlayabilir ve düzenlemeyi seçebilirsiniz. Ardından **SSL** sekmesine gidin ve sertifika dosyasını bağlayın.
 
-### <a name="connecting-to-server-using-the-mysql-cli-over-ssl"></a>SSL üzerinde MySQL CLı kullanarak sunucuya bağlanma
-SSL sertifikasını bağlamak için başka bir yöntem de aşağıdaki komutları yürüterek MySQL komut satırı arabirimini kullanmaktır. 
+### <a name="connecting-to-server-using-the-mysql-cli-over-ssl"></a>SSL üzerinden MySQL CLI'yi kullanarak sunucuya bağlanma
+SSL sertifikasını bağlamanın başka bir yolu da aşağıdaki komutları uygulayarak MySQL komut satırı arabirimini kullanmaktır. 
 
 ```bash
 mysql.exe -h mydemoserver.mariadb.database.azure.com -u Username@mydemoserver -p --ssl-mode=REQUIRED --ssl-ca=c:\ssl\BaltimoreCyberTrustRoot.crt.pem
 ```
 
 > [!NOTE]
-> Windows üzerinde MySQL komut satırı arabirimini kullanırken `SSL connection error: Certificate signature check failed`bir hata alabilirsiniz. Bu durumda `--ssl-mode=REQUIRED --ssl-ca={filepath}` parametrelerini `--ssl`ile değiştirin.
+> Windows'da MySQL komut satırı arabirimini kullanırken `SSL connection error: Certificate signature check failed`bir hata alabilirsiniz. Bu durumda, parametreleri `--ssl-mode=REQUIRED --ssl-ca={filepath}` `--ssl`.
 
-## <a name="enforcing-ssl-connections-in-azure"></a>Azure 'da SSL bağlantılarını zorunlu tutma 
+## <a name="enforcing-ssl-connections-in-azure"></a>Azure'da SSL bağlantılarını uygulama 
 ### <a name="using-the-azure-portal"></a>Azure portalını kullanma
-Azure portal kullanarak, MariaDB sunucusu için Azure veritabanı ' nı ziyaret edin ve **bağlantı güvenliği**' ne tıklayın. **SSL bağlantısını zorla** ayarını etkinleştirmek veya devre dışı bırakmak için iki durumlu düğmeyi kullanın ve ardından **Kaydet**' e tıklayın. Microsoft, gelişmiş güvenlik için her zaman **SSL bağlantısını zorla** ayarını etkinleştirmenizi önerir.
-![Enable-SSL](./media/howto-configure-ssl/enable-ssl.png)
+Azure portalını kullanarak, MariaDB sunucusu için Azure Veritabanınızı ziyaret edin ve ardından **Bağlantı güvenliğini**tıklatın. **SSL bağlantı** ayarını zorlamak veya devre dışı katmak için geçiş düğmesini kullanın ve ardından **Kaydet'i**tıklatın. Microsoft, gelişmiş güvenlik için **SSL bağlantı** ayarını her zaman etkinleştirmenizi önerir.
+![enable-ssl](./media/howto-configure-ssl/enable-ssl.png)
 
 ### <a name="using-azure-cli"></a>Azure CLI’yı kullanma
-Azure CLı 'de sırasıyla etkin veya devre dışı değerler kullanarak **SSL zorlama** parametresini etkinleştirebilir veya devre dışı bırakabilirsiniz.
+Azure CLI'de sırasıyla Etkin veya Devre dışı bırakılan değerleri kullanarak **ssl zorlama** parametresini etkinleştirebilir veya devre dışı bırakabilirsiniz.
 ```azurecli-interactive
 az mariadb server update --resource-group myresource --name mydemoserver --ssl-enforcement Enabled
 ```
 
 ## <a name="verify-the-ssl-connection"></a>SSL bağlantısını doğrulama
-SSL kullanarak MariaDB sunucunuza bağlandığınızı doğrulamak için MySQL **Status** komutunu yürütün:
+SSL kullanarak MariaDB sunucunuza bağlı olduğunuzu doğrulamak için mysql **durum** komutunu uygulayın:
 ```sql
 status
 ```
-Çıktıyı inceleyerek bağlantının şifrelendiğini onaylayın; bu, şunu göstermelidir: **SSL: kullanımdaki ŞIFRE AES256-SHA** 
+Bağlantının çıktıyı gözden geçirerek şifrelenerek şifrelenerek doğrulanın: **SSL: Kullanımdaki şifreleme AES256-SHA** 
 
 ## <a name="sample-code"></a>Örnek kod
-Uygulamanızdan SSL üzerinden MariaDB için Azure veritabanı 'na güvenli bir bağlantı kurmak için aşağıdaki kod örneklerine bakın:
+Uygulamanızdan SSL üzerinden MariaDB için Azure Veritabanı'na güvenli bir bağlantı kurmak için aşağıdaki kod örneklerine bakın:
 
 ### <a name="php"></a>PHP
 ```php

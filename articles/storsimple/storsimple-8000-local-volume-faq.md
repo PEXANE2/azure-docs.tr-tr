@@ -1,6 +1,6 @@
 ---
-title: StorSimple'ı yerel olarak sabitlenmiş birimler hakkında SSS | Microsoft Docs
-description: StorSimple yerel olarak sabitlenmiş birimler hakkında sık sorulan soruların yanıtlarını sağlar.
+title: StorSimple yerel olarak sabitlenmiş hacimler SSS| Microsoft Dokümanlar
+description: StorSimple yerel olarak sabitlenmiş ciltler hakkında sık sorulan soruların yanıtlarını sağlar.
 services: storsimple
 documentationcenter: NA
 author: manuaery
@@ -15,191 +15,191 @@ ms.workload: NA
 ms.date: 06/26/2017
 ms.author: manuaery
 ms.openlocfilehash: aa69d8b07d31b5cf0386e34c113475cbf4191891
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60319556"
 ---
-# <a name="storsimple-locally-pinned-volumes-frequently-asked-questions-faq"></a>StorSimple'ı yerel olarak sabitlenmiş birimler: sık sorulan sorular (SSS)
+# <a name="storsimple-locally-pinned-volumes-frequently-asked-questions-faq"></a>StorSimple yerel olarak sabitlenmiş ciltler: sık sorulan sorular (SSS)
 ## <a name="overview"></a>Genel Bakış
-Sorular ve cevaplar, StorSimple yerel olarak sabitlenmiş birim oluşturma, bir katmanlı birimin yerel olarak sabitlenmiş bir birim için (ve tersi) dönüştürme veya yedekleme ve yerel olarak sabitlenmiş bir birim geri yükleme sırasında karşılaşabileceğiniz aşağıda verilmiştir.
+Aşağıda, StorSimple yerel olarak sabitlenmiş bir birim oluşturduğunuzda, katmanlı bir birimi yerel olarak sabitlenmiş bir topluya dönüştürdüğünüzde (veya tam tersi) veya yerel olarak sabitlenmiş bir birimi yedekleyip geri yüklediğinizde sahip olabileceğiniz sorular ve yanıtlar ve yanıtlar vecevaplarınız verebilirsiniz.
 
-Sorular ve cevaplar Aşağıdaki kategorilerde düzenlenir
+Sorular ve cevaplar aşağıdaki kategorilerde düzenlenir
 
-* Yerel olarak sabitlenmiş birim oluşturma
-* Yerel olarak sabitlenmiş yedekleme
-* Yerel olarak sabitlenmiş bir birim için katmanlı birim dönüştürme
-* Yerel olarak sabitlenmiş bir birim geri yükleme
-* Yerel olarak sabitlenmiş bir birim yük devrediliyor
+* Yerel olarak sabitlenmiş bir birim oluşturma
+* Yerel olarak sabitlenmiş bir yedekleme
+* Katmanlı bir birimi yerel olarak sabitlenmiş bir birime dönüştürme
+* Yerel olarak sabitlenmiş bir ses düzeyini geri alma
+* Yerel olarak sabitlenmiş bir birim üzerinde başarısız
 
-## <a name="questions-about-creating-a-locally-pinned-volume"></a>Yerel olarak sabitlenmiş birim oluşturma hakkında sorular
-**S.** 8000 serisi cihazlarda oluşturabilmeniz için bir yerel olarak sabitlenmiş birimin boyutu üst sınır nedir?
+## <a name="questions-about-creating-a-locally-pinned-volume"></a>Yerel olarak sabitlenmiş bir birim oluşturma yla ilgili sorular
+**S.** 8000 serisi cihazlarda oluşturabileceğim yerel olarak sabitlenmiş bir birimin maksimum boyutu nedir?
 
-**A** yerel olarak sabitlenmiş birimler, StorSimple 8000 serisi güncelleştirme 3.0 çalıştıran cihazlarda sağlayabilirsiniz 8,5 TB'a kadar veya katmanlı birimlerin 200 TB'a kadar 8100 cihazında. Daha büyük olan 8600 cihazında 22,5 TB'a kadar yerel olarak sabitlenmiş birim ya da 500 TB'a kadar katmanlı birim sağlayabilirsiniz.
+**A** A StorSimple 8000 Serisi Güncelleme 3.0 çalıştıran cihazlarda, 8100 aygıtında yerel olarak sabitlenmiş hacimleri 8,5 TB'a kadar veya katmanlı hacimlerde 200 TB'a kadar sağlayabilirsiniz. Daha büyük olan 8600 cihazında 22,5 TB'a kadar yerel olarak sabitlenmiş birim ya da 500 TB'a kadar katmanlı birim sağlayabilirsiniz.
 
-**S.** Ben en son 8100 model Cihazınızı güncelleştirme 3. 0'için yükseltme ve yerel olarak sabitlenmiş bir birim oluşturmayı denediğinizde kullanılabilir en büyük boyutu yalnızca 6 TB ve 8,5 TB boyutunda değil. 8,5 TB birim neden oluşturamıyorum?
+**S.** Geçenlerde Güncelleme 3.0 benim 8100 cihaz yükseltilmiş ve yerel olarak sabitlenmiş bir hacim oluşturmaya çalıştığınızda, maksimum kullanılabilir boyutu sadece 6 TB değil, 8,5 TB olduğunu. Neden 8,5 TB hacim oluşturamıyorum?
 
-**Bir** Cihazınızı güncelleştirme 3.0 çalışıyorsa, 8.5 kadar yerel olarak sabitlenmiş birimler sağlayabilir veya TB katmanlı birimlerin 200 TB'a kadar 8100 cihazında. Cihazınızı birimleri ve oluşturmak için kullanılabilir alan zaten katmanlı yerel olarak sabitlenmiş bir birim orantılı olarak bu en yüksek boyuttan daha düşük olacaktır. Yaklaşık 106 TB katmanlı birimlerin (olan katmanlı kapasitesi yarısını) 8100 Cihazınızda sağlanmamışsa, örneğin, daha sonra oluşturabileceğiniz 8100 cihazda yerel bir birimi en büyük boyutunu gelenlere 4 TB (yaklaşık azalır en fazla yerel olarak yarısını birim kapasitesi sabitlenmiş).
+**A** Cihazınız güncelleştirme 3.0 çalıştırıyorsa, 8100 aygıtında yerel olarak sabitlenmiş 8,5 TB VEYA katmanlı hacimler sağlayabilirsiniz. Cihazınızzaten katmanlı birimlere sahipse, yerel olarak sabitlenmiş bir birim oluşturmak için kullanılabilen alan bu maksimum sınırdan orantılı olarak daha düşük olacaktır. Örneğin, 8100 aygıtınızda yaklaşık 106 TB katmanlı birim sağlanmışsa (katmanlı kapasitenin yarısıdır), 8100 aygıtında oluşturabileceğiniz yerel bir birimin maksimum boyutu buna karşılık 4 TB'ye düşürülür (kabaca maksimum yerel olarak sabitlenmiş hacim kapasitesinin yarısı).
 
-Bazı cihazda yerel alan, katmanlı birimlerin çalışma kümesini barındırmak için kullanıldığından, cihaz katmanlı birimleri, bir yerel olarak sabitlenmiş birim oluşturmak için kullanılabilir alan azalır. Buna karşılık, orantılı olarak yerel olarak sabitlenmiş birim oluşturma, katmanlı birimler kullanılabilir alanı azaltır. Aşağıdaki tablolarda, yerel olarak sabitlenmiş birimlerin oluşturulması sırasında 8100 ve 8600 cihazlarında kullanılabilir katmanlı kapasitesi özetler.
+Aygıttaki bazı yerel alan katmanlı birimlerin çalışma kümesini barındırmak için kullanıldığından, aygıt katmanlı birimlere sahipse, yerel olarak sabitlenmiş bir birim oluşturmak için kullanılabilir alan azalır. Tersine, yerel olarak sabitlenmiş bir birim oluşturmak, katmanlı birimler için kullanılabilir alanı orantılı olarak azaltır. Aşağıdaki tablolar, yerel olarak sabitlenmiş birimler oluşturulduğunda 8100 ve 8600 aygıtlarında kullanılabilir katmanlı kapasiteyi özetler.
 
-#### <a name="update-30"></a>Güncelleştirme 3.0 
+#### <a name="update-30"></a>Güncelleme 3.0 
 
-| Sağlanan kapasiteyi yerel olarak sabitlenmiş birimler | 8100 için katmanlı birim - sağlanacak kullanılabilir kapasite | 8600 için katmanlı birim - sağlanacak kullanılabilir kapasite |
+| Yerel olarak sabitlenmiş hacimler sağlanan kapasite | Katmanlı hacimler için sağlanacak kullanılabilir kapasite - 8100 | Katmanlı hacimler için sağlanacak kullanılabilir kapasite - 8600 |
 | --- | --- | --- |
 | 0 |200 TB |500 TB |
-| 1 TB |176.5 TB |477.8 TB |
+| 1 TB |176,5 TB |477.8 TB |
 | 4 TB |105.9 TB |411.1 TB |
-| 8,5 TB |0 TB |311.1 TB |
+| 8.5 TB |0 TB |311.1 TB |
 | 10 TB |NA |277.8 TB |
 | 15 TB |NA |166.7 TB |
-| 22.5 TB |NA |0 TB |
+| 22,5 TB |NA |0 TB |
 
-**S.** Neden yerel olarak sabitlenmiş birim oluşturma, uzun süren bir işlem mi?
+**S.** Neden yerel olarak sabitlenmiş ses oluşturma uzun süren bir işlemdir?
 
-**C.** Yerel olarak sabitlenmiş birimler bol sağlanır. Cihaz yerel katmanlarda alanı oluşturmak için bazı verileri var olan katmanlı birimler buluta sağlama işlemi sırasında klasörüdür. Ve bunu hala uygulanmakta cihazınız ve bulut için kullanılabilir bant genişliğini var olan verilere birimin boyutuna bağlıdır olduğundan yerel birim oluşturmak için harcanan süre birkaç saat olabilir.
+**A.** Yerel olarak sabitlenmiş hacimler kalın olarak karşılanır. Aygıtın yerel katmanlarında alan oluşturmak için, sağlama işlemi sırasında varolan katmanlı birimlerden bazı veriler buluta itilebilir. Bu, sağlanan birimin boyutuna, cihazınızdaki varolan verilere ve buluta sunulan bant genişliğine bağlı olduğundan, yerel bir birim oluşturmak için geçen süre birkaç saat olabilir.
 
-**S.** Ne kadar yerel olarak sabitlenmiş birim oluşturmak için sürer?
+**S.** Yerel olarak sabitlenmiş bir birim oluşturmak ne kadar sürer?
 
-**C.** Yerel olarak sabitlenmiş birimler bol sağlanan olduğundan, katmanlı birimlerin varolan bazı veriler buluta sağlama işlemi sırasında itilecek. Bu nedenle, yerel olarak sabitlenmiş birim oluşturmak için harcanan süre birimi, cihazınızın ve kullanılabilir bant genişliğini veri boyutu gibi birden çok etkene bağlıdır. Birim yok olan yeni yüklenmiş bir cihaz üzerinde yerel olarak sabitlenmiş birim oluşturmak için yaklaşık 10 dakika veri terabayt başına zamandır. Ancak, yerel birimlerin oluşturulması, kullanımda olan bir cihazda, yukarıda açıklanan faktörleri temel birkaç saat sürebilir.
+**A.** Yerel olarak sabitlenmiş birimler kalın olarak sağlandığı için, katmanlı birimlerden gelen bazı varolan veriler sağlama işlemi sırasında buluta itilebilir. Bu nedenle, yerel olarak sabitlenmiş bir birim oluşturmak için geçen süre, ses düzeyinin boyutu, cihazınızdaki veriler ve kullanılabilir bant genişliği gibi birden çok etkene bağlıdır. Birimleri olmayan yeni yüklenmiş bir aygıtta, yerel olarak sabitlenmiş bir birim oluşturma süresi terabayt başına yaklaşık 10 dakikadır. Ancak, yerel birimlerin oluşturulması, kullanılmakta olan bir aygıtta yukarıda açıklanan etkenlere bağlı olarak birkaç saat sürebilir.
 
-**S.** Yerel olarak sabitlenmiş bir birim oluşturmak istiyorsunuz. Tüm en iyi uygulamalarını dikkat edilmesi gereken ihtiyacım var mı?
+**S.** Yerel olarak sabitlenmiş bir birim oluşturmak istiyorum. Farkında olmam gereken en iyi uygulamalar var mı?
 
-**C.** Yerel olarak sabitlenmiş birimlerin her zaman verilerin yerel GARANTİLERİN gerektiren ve gecikme buluta hassas iş yükleri için uygundur. Herhangi bir iş yükünüz için yerel birimler kullanımını göz, lütfen aşağıdakilere dikkat edin:
+**A.** Yerel olarak sabitlenmiş birimler, her zaman yerel veri garantisi gerektiren ve bulut gecikmelerine karşı hassas olan iş yükleri için uygundur. İş yüklerinizden herhangi biri için yerel birimlerin kullanımını düşünürken, lütfen aşağıdakilere dikkat edin:
 
-* Yerel olarak sabitlenmiş birimler bol sağlanır ve yerel birimler oluşturmak için katmanlı birimler kullanılabilir alanı etkiler. Bu nedenle, daha küçük boyutlu birimler ile başlayın ve, depolama gereksinimi arttıkça ölçeği öneririz.
-* Yerel birimlerin sağlanması, mevcut veri katmanlı birimlerden buluta gönderme gerektirebilir uzun süren bir işlemdir. Sonuç olarak, bu birimlerde düşük performansla karşılaşabilirsiniz.
-* Yerel hacimlerdeki sağlama uzun süren bir işlemdir. Gerçek zaman dahil birden çok unsura bağlıdır: birim sağlanırken, cihaz ve kullanılabilir bant genişliğini veri boyutu. Var olan birimlerinizi buluta yedeklemediyseniz, birim oluşturma yavaştır. Yerel birim sağlamadan önce var olan birimlerinizi bulut anlık görüntüsünü öneririz.
-* Yerel olarak sabitlenmiş birimler için var olan katmanlı birimler dönüştürebilir ve alanı (ek olarak, katmanlı verileri varsa, buluttan getirme) elde edilen yerel olarak sabitlenmiş birim için cihaz sağlama bu dönüştürmeyi içerir. Yukarıda kısıtlayabildiğinden faktöre bağlıdır uzun süre çalışan bir işlemin yeniden budur. İşlem var olan birimler yedeklenmez, hatta daha yavaş olması gibi dönüştürme önce var olan birimlerinizi yedeklemenizi öneririz. Cihazınız, ayrıca bu işlem sırasında performansın düşmesine karşılaşabilirsiniz.
+* Yerel olarak sabitlenmiş birimler kalın olarak karşılanır ve yerel birimler oluşturmak katmanlı birimler için kullanılabilir alanı etkiler. Bu nedenle, depolama gereksiniminiz arttıkça daha küçük hacimlerle başlamanızı ve ölçeklendirmenizi öneririz.
+* Yerel birimlerin sağlanması, varolan verileri katmanlı birimlerden buluta itmeyi gerektirebilecek uzun süren bir işlemdir. Sonuç olarak, bu birimlerde düşük performans yaşayabilirsiniz.
+* Yerel birimlerin sağlanması zaman alan bir işlemdir. Söz konusu gerçek süre birden çok etkene bağlıdır: sağlanan birimin boyutu, cihazınızdaki veriler ve kullanılabilir bant genişliği. Varolan birimlerinizi buluta yedeklemediyseniz, birim oluşturma daha yavaştır. Yerel bir birim sağlamadan önce varolan birimlerinizin bulut anlık görüntülerini almanızı öneririz.
+* Varolan katmanlı birimleri yerel olarak sabitlenmiş birimlere dönüştürebilirsiniz ve bu dönüştürme, elde edilen yerel olarak sabitlenmiş birim için aygıtta alan sağlanmasını içerir (varsa katmanlı verileri buluttan aşağı indirebilir). Yine, bu yukarıda tartıştık faktörlere bağlı olarak uzun süren bir işlemdir. Varolan birimler yedeklenmezse işlem daha da yavaş olacağından, dönüşümden önce varolan birimlerinizi yedeklemenizi öneririz. Cihazınız da bu işlem sırasında daha düşük performans yaşayabilir.
 
-Hakkında daha fazla bilgi [yerel olarak sabitlenmiş bir birim oluşturun](storsimple-8000-manage-volumes-u2.md#add-a-volume)
+[Yerel olarak sabitlenmiş bir birim oluşturma](storsimple-8000-manage-volumes-u2.md#add-a-volume) hakkında daha fazla bilgi
 
-**S.** Aynı anda birden çok yerel olarak sabitlenmiş birimler oluşturabilir miyim?
+**S.** Aynı anda birden çok yerel olarak sabitlenmiş birim oluşturabilir miyim?
 
-**C.** Evet, ancak tüm yerel olarak sabitlenmiş birim oluşturma ve genişletme işlemlerini sıralı olarak işlenir.
+**A.** Evet, ancak yerel olarak sabitlenmiş birim oluşturma ve genişletme işleri sırayla işlenir.
 
-Yerel olarak sabitlenmiş birimler bol sağlanır ve bu (Bu katmanlı birimler buluta sağlama işlemi sırasında itilecek bulunan mevcut verilerden neden olabilir) cihazda yerel alan oluşturulmasını gerektirir. Sağlama işi devam ediyorsa, bu iş tamamlanana kadar bu nedenle, diğer yerel birim oluşturma işlerini kuyruğa alınır.
+Yerel olarak sabitlenmiş birimler kalın bir şekilde karşılanır ve bu aygıtta yerel alan oluşturulmasını gerektirir (bu da katmanlı birimlerden gelen varolan verilerin sağlama işlemi sırasında buluta itilmesine neden olabilir). Bu nedenle, bir sağlama işi devam ediyorsa, diğer yerel birim oluşturma işleri bu iş tamamlanana kadar sıraya alınır.
 
-Önceki iş tamamlanana kadar benzer şekilde, var olan bir yerel birim Genişletilmekte olan veya katmanlı birim için yerel olarak sabitlenmiş bir birim dönüştürülür, sonra yeni bir yerel olarak sabitlenmiş birim oluşturma kuyruğa alınır. Yerel olarak sabitlenmiş bir birim boyutunu genişletme, genişletme, birim için var olan yerel alanı içerir. Dönüştürme için yerel olarak sabitlenmiş bir katmanlı birim ortaya çıkan yerel olarak sabitlenmiş birim için yerel alan oluşturulmasını da içerir. Bu işlem, oluşturma ya da yerel alanı genişletme hem uzun işi çalışıyor.
+Benzer şekilde, varolan bir yerel birim genişletiliyorsa veya katmanlı bir birim yerel olarak sabitlenmiş bir derme dönüştürülürse, önceki iş tamamlanana kadar yerel olarak sabitlenmiş yeni bir birim oluşturulması sıralanır. Yerel olarak sabitlenmiş bir birimin boyutunu genişletmek, o birim için varolan yerel alanın genişletilmesini içerir. Katmanlı bir birimden yerel olarak sabitlenmiş bir birimden dönüştürme, ortaya çıkan yerel olarak sabitlenmiş birim için yerel alan oluşturulmasını da içerir. Bu operasyonların her ikisinde de, yerel alanın oluşturulması veya genişletilmesi uzun süren bir iştir.
 
-Bu işleri görüntüleyebilirsiniz **işleri** StorSimple cihaz Yöneticisi hizmet dikey penceresi. Etkin olarak işlenmekte olan iş sürekli olarak alanı hazırlama işleminizin ilerleme durumunu yansıtacak şekilde güncelleştirilir. Kalan yerel olarak sabitlenmiş birim işleri çalıştırma olarak işaretlenmiş, ancak ilerleme durumunu durduruldu ve sıraya alınan sırayla çekilen.
+Bu işleri StorSimple Device Manager hizmetinin **İşler** bıçak bölümünde görüntüleyebilirsiniz. Etkin olarak işlenen iş, alan sağlamanın ilerlemesini yansıtacak şekilde sürekli olarak güncelleştirilir. Kalan yerel olarak sabitlenmiş birim işleri çalışan olarak işaretlenir, ancak ilerlemeleri durdurulur ve sıraya alındıkları sırada seçilir.
 
-**S.** I yerel olarak sabitlenmiş bir birim silindi. Yeni birim oluşturmak çalıştığınızda kullanılabilir alana yansıtılan geri kazanılan alanı neden göremiyorum?
+**S.** Yerel olarak sabitlenmiş bir ses düzeyini sildim. Yeni bir hacim oluşturmaya çalıştığımda neden geri alınan alanın kullanılabilir alana yansıdığını göremiyorum?
 
-**C.** Yerel olarak sabitlenmiş bir birim silerseniz, yeni birimler için mevcut olan alanı hemen güncelleştirilmeyebilir. StorSimple cihaz Yöneticisi hizmeti, kullanılabilir yerel alanın yaklaşık saatte güncelleştirir. Yeni birim oluşturmak denemeden önce bir saat bekleyin öneririz.
+**A.** Yerel olarak sabitlenmiş bir birimi silerseniz, yeni birimler için kullanılabilir alan hemen güncelleştirilemeyebilir. StorSimple Aygıt Yöneticisi Hizmeti, yaklaşık her saat kullanılabilen yerel alanı güncelleştirir. Yeni bir birim oluşturmaya çalışmadan önce bir saat beklemenizi öneririz.
 
-**S.** Bulut gerecinde yerel olarak sabitlenmiş birimler destekleniyor mu?
+**S.** Bulut cihazında yerel olarak sabitlenmiş birimler desteklenir mi?
 
-**C.** Bulut Gereci (eski adıyla StorSimple sanal cihazı olarak başvurulan 8010 ve 8020 cihazlar) yerel olarak sabitlenmiş birimler desteklenmez.
+**A.** Yerel olarak sabitlenmiş birimler bulut aygıtında desteklenmez (eskiden StorSimple sanal aygıt olarak adlandırılan 8010 ve 8020 aygıtlar).
 
-**S.** Oluşturma ve yerel olarak sabitlenmiş birimler yönetmek için Azure PowerShell cmdlet'lerini kullanabilir miyim?
+**S.** Azure PowerShell cmdlets'i yerel olarak sabitlenmiş hacimler oluşturmak ve yönetmek için kullanabilir miyim?
 
-**C.** Hayır, Azure PowerShell cmdlet'leri (Azure PowerShell ile oluşturduğunuz herhangi bir birim katmanlı) aracılığıyla yerel olarak sabitlenmiş birimler oluşturamazsınız. Ayrıca birim türünü değiştirme istenmeyen etkisi olacağından, Azure PowerShell cmdlet'lerinin herhangi bir yerel olarak sabitlenmiş birimin özelliklerini değiştirmek için kullanmamanızı öneririz çok katmanlı.
+**A.** Hayır, Azure PowerShell cmdlets üzerinden yerel olarak sabitlenmiş hacimler oluşturamazsınız (Azure PowerShell üzerinden oluşturduğunuz tüm birimler katmanlıdır). Ayrıca, ses düzeyini katmanlı olarak değiştirmenin istenmeyen etkisi olacağından, azure PowerShell cmdlets'i yerel olarak sabitlenmiş bir birimin özelliklerini değiştirmek için kullanmamanızı öneririz.
 
-## <a name="questions-about-backing-up-a-locally-pinned-volume"></a>Bir yerel olarak sabitlenmiş birimin yedeklenmesiyle ilgili sorular
-**S.** Desteklenen yerel olarak sabitlenmiş birimlerin yerel anlık görüntüleri misiniz?
+## <a name="questions-about-backing-up-a-locally-pinned-volume"></a>Yerel olarak sabitlenmiş bir birimi yedekleme yle ilgili sorular
+**S.** Yerel olarak sabitlenmiş birimlerin yerel anlık görüntüleri desteklendi mi?
 
-**C.** Evet, yerel olarak sabitlenmiş birimlerinizin yerel anlık görüntüler alabilir. Ancak, düzenli olarak bir olağanüstü planlıyorsanız verilerinizin korunduğundan emin olmak için bulut anlık görüntüleri ile yerel olarak sabitlenmiş birimlerinizin yedeklemenizi öneririz.
+**A.** Evet, yerel olarak sabitlenmiş birimlerinizin yerel anlık görüntülerini alabilirsiniz. Ancak, verilerinizin bir felaket durumunda korunduğundan emin olmak için yerel olarak sabitlenmiş birimlerinizi bulut anlık görüntüleriyle düzenli olarak yedeklemenizi öneririz.
 
-Yerel olarak sabitlenmiş birimlerin yerel anlık görüntüler de kullanıma buluta katmanı ve cihazın yerel katmanında kalmak için garanti edilmez unutmayın.
+Yerel olarak sabitlenmiş birimlerin yerel anlık görüntülerinin de buluta katmanlanabildiği ve aygıtın yerel katmanında kalacağı garanti edilmez.
 
-**S.** Yerel olarak sabitlenmiş birimler için yerel anlık görüntüleri yönetme için yönergeler var mı?
+**S.** Yerel olarak sabitlenmiş birimler için yerel anlık görüntüleri yönetmek için herhangi bir yönerge var mı?
 
-**C.** Yüksek oranda yerel olarak sabitlenmiş birim veri değişim sıklığının yanı sıra sık yerel anlık görüntüler, katmanlı birimler buluta gönderilen verileri sonuçlanır ve hızlı bir şekilde kullanılması için cihazda yerel alan neden olabilir. Bu nedenle, yerel anlık görüntü sayısını en aza öneririz.
+**A.** Yerel olarak sabitlenmiş birimdeki yüksek veri karmaşasının yanı sıra sık sık yerel anlık görüntüler, aygıttaki yerel alanın hızlı bir şekilde tüketilmesine ve katmanlı birimlerden gelen verilerin buluta itilmesine neden olabilir. Bu nedenle, yerel anlık görüntü sayısını en aza indirmenizi öneririz.
 
-**S.** Yerel olarak sabitlenmiş birimlerin yerel Bilgisayarım anlık görüntüleri geçersiz kılındı bildiren bir uyarı aldım. Bu ne?
+**S.** Yerel olarak sabitlenmiş birimlerin yerel anlık görüntülerinin geçersiz kılınabileceğini belirten bir uyarı aldım. Bu ne zaman olabilir?
 
-**C.** Yüksek oranda yerel olarak sabitlenmiş birim veri değişim sıklığının yanı sıra sık yerel anlık görüntüler, hızlı bir şekilde kullanılması için cihazda yerel alan neden olabilir. Cihaz yerel katmanlarda yoğun olarak kullanılır, genişletilmiş bulut kesinti dolmasını cihazı neden olabilir ve birime gelen yazma işlemleri (eski bloklarını başvurmak için anlık görüntüleri güncelleştirmek için boşluk mevcut olduğundan anlık görüntüleri geçersiz kılma neden olabilir veriler) üzerine yazıldı. Böyle bir durumda birime yazma bölgesinden devam eder, ancak yerel anlık görüntüleri geçersiz olabilir. Var olan bulut anlık görüntüleri için herhangi bir etkisi yoktur.
+**A.** Yerel olarak sabitlenmiş birimdeki yüksek veri karmaşasının yanı sıra sık sık yerel anlık görüntüler, aygıttaki yerel alanın hızlı bir şekilde tüketilmesine neden olabilir. Aygıtın yerel katmanları yoğun olarak kullanılıyorsa, genişletilmiş bir bulut kesintisi aygıtın dolmasına neden olabilir ve gelen yazılar anlık görüntünün geçersiz sayılmasına neden olabilir (anlık görüntüleri eski bloklara başvurmak için enstantaneleri güncelleştirmek için yer olmadığı için üzerine yazılmış veriler). Böyle bir durumda, ses eyazı servis olmaya devam edecektir, ancak yerel anlık görüntüler geçersiz olabilir. Varolan bulut anlık görüntüleriniz üzerinde hiçbir etkisi yoktur.
 
-Uyarı bildirimi, böyle bir durum ortaya çıkar ve aynı zamanında daha az sıklıkta yerel anlık görüntüler, yerel anlık görüntü zamanlamalarını gözden geçirme veya artık gerekli olmayan eski yerel anlık görüntülerin silinmesi adresini olun bildirim sağlamaktır.
+Uyarı uyarısı, böyle bir durumun ortaya çıkabileceğini size bildirmek ve yerel anlık görüntü zamanlamalarınızı gözden geçirerek veya artık gerekli olmayan eski yerel anlık görüntüleri silerek aynı adresi zamanında ele aldığınızdan emin olmaktır.
 
-Yerel anlık görüntüleri doğrulanamazsa, zaman damgaları geçersiz kılınan yerel anlık görüntüleri listesinde yanı sıra belirli yedekleme ilkesinin yerel anlık görüntüleri geçersiz kılındı bildiren bir bilgi uyarısı alırsınız. Bu anlık görüntüler otomatik silindi ve artık görüntülemeye erişemeyeceksiniz **yedekleme katalogları** Azure portalındaki dikey penceresinde.
+Yerel anlık görüntüler geçersiz kılındıysa, belirli yedekleme ilkesinin yerel anlık görüntülerinin geçersiz kılındığını bildiren bir bilgi uyarısı alırsınız. Bu anlık görüntüler otomatik olarak silinir ve azure portalındaki **Yedek Kataloglar** bıtır'da artık görüntüleyebilirsiniz.
 
-## <a name="questions-about-converting-a-tiered-volume-to-a-locally-pinned-volume"></a>Yerel olarak sabitlenmiş bir birim için katmanlı birim dönüştürme hakkında sorular
-**S.** Bazı yavaşlık cihazda yerel olarak sabitlenmiş bir birim için katmanlı birim dönüştürülürken gözleme. Bunun nedeni nedir?
+## <a name="questions-about-converting-a-tiered-volume-to-a-locally-pinned-volume"></a>Katmanlı bir birimi yerel olarak sabitlenmiş bir birime dönüştürme yle ilgili sorular
+**S.** Katmanlı bir sesi yerel olarak sabitlenmiş bir ses hacmine dönüştürürken cihazdaki bazı yavaşlıkları gözlemliyorum. Bu neden oluyor?
 
-**C.** Dönüştürme işlemi iki adımdan oluşur:
+**A.** Dönüştürme işlemi iki adım içerir:
 
-1. Alan için olan en kısa sürede-için--dönüştürülmesi yerel olarak cihazda sağlama birim sabitlendi.
-2. Yerel emin olmak için buluttan herhangi bir katmanlı veri indirme garanti eder.
+1. Yakında dönüştürülecek olan yerel olarak sabitlenmiş birim için cihazda yer sağlanması.
+2. Yerel garantiler sağlamak için buluttan herhangi bir katmanlı veri indirme.
 
-Bu adımlar hem de uzun süreli dönüştürülecek, cihaz ve kullanılabilir bant genişliğini veri birimin boyutuna bağlı işlemler. Hazırlama işleminin bir parçası olarak bazı verileri var olan katmanlı birimler buluta sığdırmaya gibi Cihazınızı bu süre boyunca düşük performansla karşılaşabilirsiniz. Ayrıca, dönüştürme işlemi daha yavaş olabilir varsa:
+Bu adımların her ikisi de dönüştürülen birimin boyutuna, aygıttaki verilere ve kullanılabilir bant genişliğine bağlı olarak uzun süren işlemlerdir. Varolan katmanlı birimlerden elde edilen bazı veriler sağlama işleminin bir parçası olarak buluta dökülebileceğinden, cihazınız bu süre içinde daha düşük performans yaşayabilir. Buna ek olarak, aşağıdaki durumlarda dönüştürme işlemi daha yavaş olabilir:
 
-* Var olan birimler buluta yedeklenmiş değil; önerdiğimiz biçimde bir dönüştürme başlatmadan önce birimleri yedekleme.
-* Bulut için kullanılabilir bant genişliğini kısıtlayabilir, bant genişliği azaltma ilkeleri uygulanmış; Bu nedenle, ayrılmış bir 40 MB/sn veya daha fazla bağlantı buluta sahip öneririz.
-* Dönüştürme işlemi, yukarıda açıklanan çoklu faktörlerle nedeniyle birkaç saat sürebilir; Bu nedenle, en yüksek sayılar olmayan saatlerde veya bir hafta sonu tüketiciler üzerindeki etkiyi önlemek için bu işlemi gerçekleştirmenizi öneririz.
+* Varolan birimler buluta yedeklenmedi; bu nedenle, bir dönüşüm başlatmadan önce birimlerinizi yedeklemenizi öneririz.
+* Kullanılabilir bant genişliğini buluta sınırlandırabilecek bant genişliği azaltma ilkeleri uygulanmıştır; bu nedenle buluta özel bir 40 Mbps veya daha fazla bağlantınız olmasını öneririz.
+* Dönüştürme işlemi, yukarıda açıklanan birden fazla etken nedeniyle birkaç saat sürebilir; bu nedenle, son tüketiciler üzerindeki etkiyi önlemek için bu işlemi zirve dışı zamanlarda veya bir hafta sonu gerçekleştirmenizi öneririz.
 
-Hakkında daha fazla bilgi [yerel olarak sabitlenmiş bir birim için katmanlı birim dönüştürme](storsimple-8000-manage-volumes-u2.md#change-the-volume-type)
+[Katmanlı bir birimin yerel olarak sabitlenmiş bir birime nasıl dönüştürüldüğü](storsimple-8000-manage-volumes-u2.md#change-the-volume-type) hakkında daha fazla bilgi
 
-**S.** Birim dönüştürme işlemi iptal edebilir miyim?
+**S.** Birim dönüştürme işlemini iptal edebilir miyim?
 
-**C.** Hayır, başlatıldıktan sonra dönüştürme işlemini iptal edilemez. Önceki soruda açıklanan olabileceğiniz işlemi sırasında karşılaştığınız ve, dönüştürme planlarken, yukarıda listelenen en iyi uygulamaları izleyin, olası performans sorunlarını lütfen unutmayın.
+**A.** Hayır, başlatıldıktan sonra dönüşüm işlemini iptal edemezsiniz. Önceki soruda da belirtildiği gibi, lütfen işlem sırasında karşılaşabileceğiniz olası performans sorunlarının farkında olun ve dönüşümünüzü planlarken yukarıda listelenen en iyi uygulamaları izleyin.
 
-**S.** My birime, dönüştürme işlemi başarısız olursa ne olur?
+**S.** Dönüşüm işlemi başarısız olursa sesime ne olur?
 
-**C.** Birim dönüştürme, bulut bağlantı sorunları nedeniyle başarısız olabilir. Cihaz, sonunda bir dizi buluttan katmanlı verileri getirmek için başarısız deneme sonrasında dönüştürme işlemi durdurabilir. Böyle bir senaryoda, birim türü dönüştürme önce kaynak birim türünü olmaya devam edecek ve:
+**A.** Bulut bağlantısı sorunları nedeniyle birim dönüştürme başarısız olabilir. Aygıt, buluttan katmanlı verileri düşürmek için yapılan bir dizi başarısız denemeden sonra dönüşüm işlemini durdurabilir. Böyle bir senaryoda, birim türü dönüştürmeden önce kaynak birim türü olmaya devam eder ve:
 
-* Birim dönüştürme hatası bildiren kritik bir uyarı gerçekleştirilecektir. Daha fazla bilgi [uyarılarla ilgili yerel olarak sabitlenmiş birimler](storsimple-8000-manage-alerts.md#locally-pinned-volume-alerts)
-* Bir katmanlı yerel olarak sabitlenmiş bir birim için dönüştürüyorsanız, birim veri yine de bulutta bulunabilecek şekilde katmanlı birimin özelliklerini sergilemesini devam eder. Bağlantı sorunları çözün ve sonra dönüştürme işlemi yeniden deneyin öneririz.
-* Birimin yerel olarak sabitlenmiş bir birim işaretlenir ancak dönüştürme bir yerel olarak sabitlenmiş bir katmanlı birim başarısız olduğunda, (verileri buluta geçmiş çünkü) benzer şekilde, bu bir katmanlı birim çalışır. Ancak, cihaz yerel katmanlarda alanı kaplayan devam eder. Bu alan için diğer yerel olarak sabitlenmiş birimler kullanılabilir olmayacaktır. Birim dönüştürme tamamlandıktan ve cihazda yerel alan geri alınabilmesini sağlamak için bu işlemi yeniden deneyin öneririz.
+* Birim dönüştürme hatasını size bildirmek için kritik bir uyarı yükseltilir. [Yerel olarak sabitlenmiş ciltlerle ilgili uyarılar](storsimple-8000-manage-alerts.md#locally-pinned-volume-alerts) hakkında daha fazla bilgi
+* Katmanlı bir birimi yerel olarak sabitlenmiş bir biri dönüştürüyorsanız, veriler bulutta hala ikamet edebileceğinden, birim katmanlı bir birimin özelliklerini göstermeye devam eder. Bağlantı sorunlarını çözmenizi ve ardından dönüştürme işlemini yeniden denemenizi öneririz.
+* Benzer şekilde, yerel olarak sabitlenmiş bir birimden katmanlı bir biri için dönüştürme başarısız olduğunda, birim yerel olarak sabitlenmiş bir birim olarak işaretlenmiş olsa da, katmanlı bir birim olarak işlev görür (çünkü veriler buluta dökülmüş olabilir). Ancak, aygıtın yerel katmanlarında yer kaplamaya devam eder. Bu alan, diğer yerel olarak sabitlenmiş birimler için kullanılamaz. Birim dönüştürmeişleminin tamamlandığından ve aygıttaki yerel alanın geri alınabilmesi için bu işlemi yeniden denemenizi öneririz.
 
-## <a name="questions-about-restoring-a-locally-pinned-volume"></a>Yerel olarak sabitlenmiş bir birim geri yükleme hakkında sorular
-**S.** Yerel olarak sabitlenmiş birimler anında geri misiniz?
+## <a name="questions-about-restoring-a-locally-pinned-volume"></a>Yerel olarak sabitlenmiş bir birimi geri alma yla ilgili sorular
+**S.** Yerel olarak sabitlenmiş birimler anında geri yüklenir mi?
 
-**C.** Evet, yerel olarak sabitlenmiş birimler anında geri yüklenir. Meta veri bilgilerini birimi için buluttan geri yükleme işleminin bir parçası olarak çekilen hemen sonra birimi çevrimiçi duruma getirildikten ve konak tarafından erişilebilir. Ancak, birim için yerel GARANTİLERİN veri tüm verileri, buluttan indirilen ve karşılaşabileceğiniz kadar mevcut olmaz geri yükleme işlemi boyunca bu birimlerde performans azaltıldı.
+**A.** Evet, yerel olarak sabitlenmiş birimler anında geri yüklenir. Geri yükleme işleminin bir parçası olarak birim için meta veri bilgileri buluttan çekilir çekilmez, birim çevrimiçi duruma getirilir ve ana bilgisayar tarafından erişilebilir. Ancak, tüm veriler buluttan indirilene kadar birim verilerinyerel garantileri bulunmaz ve geri yükleme süresince bu birimlerde düşük performans karşılaşabilirsiniz.
 
-**S.** Ne kadar yerel olarak sabitlenmiş bir birim sağlamaya sürer?
+**S.** Yerel olarak sabitlenmiş bir birimi geri yüklemek ne kadar sürer?
 
-**C.** Yerel olarak sabitlenmiş birimler anında geri ve arka planda yüklenecek birimdeki verileri devam ederken birim meta veri bilgilerini buluttan alınan hemen sonra çevrimiçi. Yerel GARANTİLERİN toplu verileri için geri alma geri yükleme işlemi--bu ikinci bölümü, uzun süreli bir işlemdir ve tekrar yerel olarak yapılması tüm veriler için birkaç saat sürebilir. Aynı tamamlamak için geçen süre kurtarılan birimin boyutuna ve kullanılabilir bant genişliği gibi birden çok etkene bağlıdır. Geri yüklenen özgün birimin silinmiş olması durumunda, geri yükleme işleminin bir parçası olarak cihazda yerel alan oluşturmak için ek süre alınır.
+**A.** Yerel olarak sabitlenmiş birimler anında geri yüklenir ve birim meta veri bilgileri buluttan alınır alınmaz çevrimiçi duruma getirilirken, birim verileri arka planda indirilmeye devam eder. Geri yükleme işleminin bu ikinci bölümü --birim verilerin yerel garantilerini geri almak- uzun süren bir işlemdir ve tüm verilerin yeniden yerel hale getirilmesi birkaç saat sürebilir. Aynı şeyi tamamlamak için geçen süre, geri yüklenen ses düzeyinin boyutu ve kullanılabilir bant genişliği gibi birden çok etkene bağlıdır. Geri yüklenen özgün birim silinmişse, geri yükleme işleminin bir parçası olarak aygıtta yerel alan oluşturmak için ek süre alınır.
 
-**S.** Uygulamam var olan yerel olarak sabitlenmiş birim (birimin katmanlı zaman taken) daha eski bir anlık görüntüye geri yüklemek gerekir. Birim, bu durumda katmanlı olarak geri yüklenir?
+**S.** Varolan yerel olarak sabitlenmiş sesimi eski bir anlık görüntüye geri yüklemem gerekir (ses seviyesi katmanlı yken alınır). Bu durumda ses seviyesi katmanlı olarak geri yüklenecek mi?
 
-**C.** Hayır, birimin yerel olarak sabitlenmiş bir birim geri yüklenir. Şu anda mevcut olduğundan anlık görüntü tarih zaman birimin katmanlı, saat için var olan birimler geri yüklerken, StorSimple her zaman birim türünü diskte kullansa da.
+**A.** Hayır, birim yerel olarak sabitlenmiş bir birim olarak geri yüklenir. Anlık görüntü, birimin katmanlandırılma zamanıyla tarihlendirilmiş olsa da, varolan birimleri geri getirirken, StorSimple her zaman şu anda var olduğu gibi diskteki birim türünü kullanır.
 
-**S.** My yerel olarak sabitlenmiş birim kısa bir süre önce genişletilmiş ancak miyim artık zaman birimin boyutu daha küçük bir saat verileri geri yüklemeniz gerekir. Geri yükleme geçerli birim boyutlandırma ve geri yükleme tamamlandıktan sonra birim boyutunu genişletmek ihtiyacım olacak?
+**S.** Ben son zamanlarda benim yerel olarak sabitlenmiş ses genişletilmiş, ama şimdi hacmi boyutu daha küçük olduğu bir zamana verileri geri yüklemem gerekir. Geçerli birimi yeniden boyutlandırmak geri yüklenecek ve geri yükleme tamamlandıktan sonra ses boyutunu genişletmek gerekir?
 
-**C.** Evet, geri yükleme birim boyutlandırma ve geri yükleme tamamlandıktan sonra birim boyutunu genişletmek ihtiyacınız olacak.
+**A.** Evet, geri yükleme birimi yeniden boyutlandıracak ve geri yükleme tamamlandıktan sonra birimin boyutunu genişletmeniz gerekir.
 
-**S.** Geri yükleme sırasında bir birim türünü değiştirebilir miyim?
+**S.** Geri yükleme sırasında ses düzeyini değiştirebilir miyim?
 
-**C.** Hayır, geri yükleme sırasında birim türünü değiştiremezsiniz.
+**A.** Hayır, geri yükleme sırasında ses düzeyini değiştiremezsiniz.
 
-* Silinmiş olan birimler anlık görüntüde depolanan tür olarak geri yüklenir.
-* Var olan birimler geri yüklenir anlık görüntüde depolanan tür bağımsız olarak geçerli tipine göre (önceki iki sorulara bakın).
+* Silinen birimler anlık görüntüde depolanan tür olarak geri yüklenir.
+* Varolan birimler, anlık görüntüde depolanan türe bakılmaksızın geçerli türüne göre geri yüklenir (önceki iki soruya bakın).
 
-**S.** My yerel olarak sabitlenmiş birim geri gerekir, ancak miyim yanlış noktanız zaman anlık görüntüde Çekildi. Geçerli geri yükleme işlemini iptal edebilir miyim?
+**S.** Yerel olarak sabitlenmiş sesimi geri yüklemem gerekiyor, ancak zaman anlık görüntüsünde yanlış bir nokta seçtim. Geçerli geri yükleme işlemini iptal edebilir miyim?
 
-**C.** Evet, devam eden bir geri yükleme işlemi iptal edebilirsiniz. Biriminin durumunu geri yükleme başındaki durumuna geri alınacak. Bununla birlikte, geri yükleme devam ederken, birime yapılan herhangi bir yazma kaybolur.
+**A.** Evet, devam etme işlemi iptal edebilirsiniz. Ses düzeyi, geri yüklemenin başlangıcında duruma geri alınır. Ancak, geri yükleme devam ederken sese yapılan tüm yazmalar kaybolur.
 
-**S.** Ben bir my yerel olarak sabitlenmiş birimlerin geri yükleme işlemi başlatıldı ve anlık görüntü oluşturma gerçekleşti yoksa benim biriktirme listesi kataloğunda artık görüyorum. Ne için kullanılır?
+**S.** Yerel olarak sabitlenmiş birimlerimden birinde bir geri yükleme işlemi başlattım ve şimdi biriktirme listesi kataloğumda oluşturduğunu hatırlayamadığım bir anlık görüntü görüyorum. Bu ne için kullanılır?
 
-**C.** Geri yükleme işlemi önce oluşturulan ve geri yükleme işlemi iptal edildi veya başarısız durumunda geri almak için kullanılan geçici bir anlık görüntü budur. Bu anlık görüntüyü silmeyin; geri yükleme işlemi tamamlandıktan sonra otomatik olarak silinir. Bu davranış, geri yükleme iş birimleri veya yerel olarak sabitlenmiş ve katmanlı birimlerden oluşan bir karışımı yalnızca yerel olarak sabitlenmiş ortaya çıkabilir. Geri yükleme işi yalnızca katmanlı birimleri içeriyorsa, bu davranışı gerçekleşmez.
+**A.** Bu, geri yükleme işleminden önce oluşturulan geçici anlık görüntüdür ve geri yüklemenin iptal edilmesi veya başarısız olması durumunda geri alma için kullanılır. Bu anlık görüntüsünü silmeyin; geri yükleme tamamlandığında otomatik olarak silinir. Geri yükleme işinizyalnızca yerel olarak sabitlenmiş birimlere veya yerel olarak sabitlenmiş ve katmanlı birimlerin bir karışımına sahipse, bu davranış oluşabilir. Geri yükleme işi yalnızca katmanlı birimleri içeriyorsa, bu davranış oluşmaz.
 
-**S.** Yerel olarak sabitlenmiş bir birim kopyalayabilir miyim?
+**S.** Yerel olarak sabitlenmiş bir ses düzeyini klonlayabilir miyim?
 
-**C.** Evet, uygulayabilirsiniz. Ancak, yerel olarak sabitlenmiş birimin katmanlı birim varsayılan olarak kopyalanır. Hakkında daha fazla bilgi [yerel olarak sabitlenmiş bir birimi kopyalama](storsimple-8000-clone-volume-u2.md)
+**A.** Evet, bunu yapabilirsiniz. Ancak, yerel olarak sabitlenmiş birim varsayılan olarak katmanlı bir birim olarak klonlanır. [Yerel olarak sabitlenmiş bir hacmin](storsimple-8000-clone-volume-u2.md) nasıl klonlanabildiğini hakkında daha fazla bilgi
 
-## <a name="questions-about-failing-over-a-locally-pinned-volume"></a>Yerel olarak sabitlenmiş bir birim yük devrediliyor hakkında sorular
-**S.** Cihazımı başka bir fiziksel cihaza yük devretme gerekir. My yerel olarak sabitlenmiş birimler üzerinde yerel olarak sabitlenmiş veya katmanlı başarısız?
+## <a name="questions-about-failing-over-a-locally-pinned-volume"></a>Yerel olarak sabitlenmiş bir birim üzerinde başarısız hakkında sorular
+**S.** Cihazım da başka bir fiziksel cihazda başarısız olmak zorunda. Yerel olarak sabitlenmiş birimlerim yerel olarak sabitlenmiş veya katmanlı olarak başarısız olacak mı?
 
-**C.** Yerel olarak sabitlenmiş birimler hedef cihaz StorSimple 8000 serisi güncelleştirme 3 veya üzeri çalıştırıyorsa, yerel olarak sabitlenmiş yük devredildi.
+**A.** Hedef aygıt StorSimple 8000 serisi güncelleştirme3 veya daha yüksek bir süredir çalışıyorsa, yerel olarak sabitlenmiş olan yerel olarak sabitlenmiş birimler üzerinde başarısız olur.
 
-Daha fazla bilgi [yük devretme ve DR, yerel olarak sabitlenmiş birimler sürümler arasında](storsimple-8000-device-failover-disaster-recovery.md#device-failover-across-software-versions)
+[Sürümler arasında yerel olarak sabitlenmiş birimlerin failover ve DR](storsimple-8000-device-failover-disaster-recovery.md#device-failover-across-software-versions) hakkında daha fazla bilgi
 
-**S.** Olağanüstü Durum Kurtarma (DR) sırasında yerel olarak sabitlenmiş birimler anında geri yüklenir?
+**S.** Olağanüstü durum kurtarma (DR) sırasında yerel olarak sabitlenmiş birimler anında geri yüklenir mi?
 
-**C.** Evet, yerel olarak sabitlenmiş birimler anında yük devretme sırasında geri yüklenir. Yük devretme işleminin bir parçası olarak birim için meta veri bilgilerini buluttan çekilen hemen sonra birim hedef cihazda çevrimiçi duruma getirildikten ve konak tarafından erişilebilir. Bu arada, birimdeki verileri, arka planda karşıdan yüklemeye devam eder ve yük devretme boyunca bu birimlerde performans azaltılmış yaşayabilirsiniz.
+**A.** Evet, yerel olarak sabitlenmiş birimler, başarısız lık sırasında anında geri yüklenir. Hata üzerinde çalışma işleminin bir parçası olarak birimiçin meta veri bilgileri buluttan çekilir çekilmez, birim hedef aygıtta çevrimiçi duruma getirilir ve ana bilgisayar tarafından erişilebilir. Bu arada, birim verileri arka planda karşıdan yükmeye devam eder ve bu birimlerde başarısızlık süresince düşük performans la karşılaşabilirsiniz.
 
-**S.** Yük devretme işi tamamlandı, nasıl miyim hedef cihaza geri yükleniyorsa, yerel olarak sabitlenmiş birim ilerlemesini izleyebilirsiniz görüyorum?
+**S.** Başarısız işin tamamlandığını görüyorum, hedef aygıtta geri yüklenen yerel olarak sabitlenmiş hacmin ilerlemesini nasıl izleyebilirim?
 
-**C.** Bir yük devretme işlemi sırasında yük devretme işi tamamlandığında tüm birimleri yük devretme kümesindeki alınan anında geri ve hedef cihazda çevrimiçi olarak işaretlenir. Bu, yük Devredilmiş herhangi bir yerel olarak sabitlenmiş birimler içerir; tüm veri birimi için indirilen ancak yerel GARANTİLERİN verilerin yalnızca kullanılabilir. Yük devretme işleminin bir parçası oluşturulan ilgili geri yükleme işleri izleme tarafından devralınırsa başarısız olan her yerel olarak sabitlenmiş bir birim için bu ilerlemeyi izleyebilirsiniz. Bu tek tek geri yükleme işleri, yalnızca yerel olarak sabitlenmiş birimler için oluşturulur.
+**A.** Bir arıza işlemi sırasında, başarısız setteki tüm birimler anında geri yüklendikten ve hedef aygıtta çevrimiçi duruma getirildikten sonra başarısız iş tamamlandı olarak işaretlenir. Bu, üzerinde başarısız olmuş olabilecek yerel olarak sabitlenmiş tüm birimleri içerir; ancak, verilerin yerel garantileri yalnızca birimiçin tüm veriler karşıdan yüklendiğinde kullanılabilir olacaktır. Başarısız ın bir parçası olarak oluşturulan karşılık gelen geri yükleme işlerini izleyerek başarısız olan her yerel olarak sabitlenmiş birim için bu ilerlemeyi izleyebilirsiniz. Bu tek tek geri yükleme işleri yalnızca yerel olarak sabitlenmiş birimler için oluşturulur.
 
-**S.** Yük devretme sırasında bir birim türünü değiştirebilir miyim?
+**S.** Başarısız olurken ses düzeyini değiştirebilir miyim?
 
-**C.** Hayır, bir yük devretme sırasında birim türünü değiştiremezsiniz. Başarısız olan üzerinden StorSimple 8000 çalışmakta olan başka bir fiziksel cihaz serisi güncelleştirme 3, birimler anlık görüntüde depolanan birim türünü temel yük devredildi.
+**A.** Hayır, bir hata sırasında ses düzeyini değiştiremezsiniz. StorSimple 8000 serisi güncelleştirme 3'u çalıştıran başka bir fiziksel aygıtta başarısız oluyorsanız, ses birimleri anlık görüntüde depolanan ses türüne bağlı olarak başarısız olur.
 
-**S.** Bir birim kapsayıcısı ile bulut Gereci için yerel olarak sabitlenmiş birimler üzerinde başarısız olabilir?
+**S.** Bulut cihazına yerel olarak sabitlenmiş hacimleri olan bir birim kapsayıcı üzerinde başarısız olabilir miyim?
 
-**C.** Evet, uygulayabilirsiniz. Yerel olarak sabitlenmiş birimler üzerinde katmanlı birimler olarak getirilir. Daha fazla bilgi [yük devretme ve DR, yerel olarak sabitlenmiş birimler sürümler arasında](storsimple-8000-device-failover-disaster-recovery.md#common-considerations-for-device-failover)
+**A.** Evet, bunu yapabilirsiniz. Yerel olarak sabitlenmiş birimler katmanlı birimler olarak başarısız olur. [Sürümler arasında yerel olarak sabitlenmiş birimlerin failover ve DR](storsimple-8000-device-failover-disaster-recovery.md#common-considerations-for-device-failover) hakkında daha fazla bilgi
 

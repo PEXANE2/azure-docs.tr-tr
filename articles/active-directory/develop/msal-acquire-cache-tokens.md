@@ -1,7 +1,7 @@
 ---
-title: MSAL ile & önbellek belirteçleri alma | Mavisi
+title: MSAL ile & önbellek belirteçleri edinin | Azure
 titleSuffix: Microsoft identity platform
-description: Microsoft kimlik doğrulama kitaplığı 'nı (MSAL) kullanarak belirteçleri edinme ve önbelleğe alma hakkında bilgi edinin.
+description: Microsoft Kimlik Doğrulama Kitaplığı'nı (MSAL) kullanarak belirteçler edinme ve önbelleğe alma hakkında bilgi edinin.
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -14,101 +14,101 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: c1f1cbf85b96aade745cc4248aed4bc89e41b450
-ms.sourcegitcommit: cfbea479cc065c6343e10c8b5f09424e9809092e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/08/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77085157"
 ---
-# <a name="acquire-and-cache-tokens-using-the-microsoft-authentication-library-msal"></a>Microsoft kimlik doğrulama kitaplığı (MSAL) kullanarak belirteçleri alma ve önbelleğe alma
+# <a name="acquire-and-cache-tokens-using-the-microsoft-authentication-library-msal"></a>Microsoft kimlik doğrulama kitaplığını (MSAL) kullanarak belirteçleri edinme ve önbellek
 
-[Erişim belirteçleri](access-tokens.md) , istemcilerin Azure tarafından korunan Web API 'lerini güvenli bir şekilde çağırmasını sağlar. Microsoft kimlik doğrulama kitaplığı 'nı (MSAL) kullanarak bir belirteç edinmenin birçok yolu vardır. Bazı yollarla bir Web tarayıcısı aracılığıyla Kullanıcı etkileşimi gerekir. Bazıları hiçbir Kullanıcı etkileşimi gerektirmez. Genel olarak, bir belirteç alma yöntemi, uygulamanın ortak bir istemci uygulaması (masaüstü veya mobil uygulama) veya gizli bir istemci uygulaması (bir Windows hizmeti gibi Web uygulaması, Web API 'SI veya Daemon uygulaması) olması halinde değişir.
+[Erişim belirteçleri, istemcilerin](access-tokens.md) Azure tarafından korunan web API'lerini güvenli bir şekilde aramasını sağlar. Microsoft Kimlik Doğrulama Kitaplığı 'nı (MSAL) kullanarak bir belirteç edinmenin birçok yolu vardır. Bazı yollar bir web tarayıcısı üzerinden kullanıcı etkileşimleri gerektirir. Bazıları kullanıcı etkileşimi gerektirmez. Genel olarak, bir belirteç edinme nin yolu, uygulamanın bir kamu istemcisi uygulaması (masaüstü veya mobil uygulama) veya gizli bir istemci uygulaması (Web Uygulaması, Web API veya Windows hizmeti gibi daemon uygulaması) olup olmadığını bağlıdır.
 
-MSAL bir belirteci aldıktan sonra önbelleğe alır.  Uygulama kodu, belirteci başka yollarla almadan önce sessizce (önbellekten) bir belirteç almayı denemelidir.
+MSAL satın alındıktan sonra bir belirteci önbelleğe alınr.  Uygulama kodu, başka yollarla bir belirteç edinmeden önce, önce sessizce (önbellekten) bir belirteç almaya çalışmalıdır.
 
-Ayrıca, hesapları önbellekten kaldırarak elde edilen belirteç önbelleğini temizleyebilirsiniz. Bu, tarayıcıda bulunan oturum tanımlama bilgisini kaldırmaz, ancak.
+Ayrıca, hesapları önbellekten kaldırarak elde edilen belirteç önbelleğini de temizleyebilirsiniz. Bu olsa da, tarayıcıda oturum çerez kaldırmaz.
 
-## <a name="scopes-when-acquiring-tokens"></a>Belirteçleri alırken kapsamlar
+## <a name="scopes-when-acquiring-tokens"></a>Belirteçleri edinirken kapsamlar
 
-[Kapsamlar](v2-permissions-and-consent.md) , BIR Web API 'sinin istemci uygulamalar için erişim istemesi için sunduğu izinlerdir. İstemci uygulamaları, Web API 'Lerine erişmek için belirteçleri almak üzere kimlik doğrulama istekleri yaparken kullanıcının bu kapsamlar için izin vermesini ister. MSAL, geliştiriciler için Azure AD 'ye (v 1.0) ve Microsoft Identity platform (v 2.0) API 'Lerine erişme belirteçleri almanızı sağlar. v 2.0 protokolü isteklerde kaynak yerine kapsamları kullanır. Daha fazla bilgi için, [v 1.0 ve v 2.0 karşılaştırması](active-directory-v2-compare.md)makalesini okuyun. Web API 'sinin kabul ettiği belirteç sürümünün yapılandırmasına bağlı olarak, v 2.0 uç noktası erişim belirtecini MSAL öğesine döndürür.
+[Kapsamlar,](v2-permissions-and-consent.md) istemci uygulamalarının erişim istemesi için bir web API'sinin ortaya çıkardığı izinlerdir. İstemci uygulamaları, web API'lerine erişmek için belirteçleri almak için kimlik doğrulama istekleri yaparken bu kapsamlar için kullanıcının onayını ister. MSAL, geliştiriciler için Azure AD (v1.0) ve Microsoft kimlik platformu (v2.0) API'lerine erişmek için belirteçler elde etmenizi sağlar. v2.0 protokolü isteklerde kaynak yerine kapsamları kullanır. Daha fazla bilgi için [v1.0 ve v2.0 karşılaştırmasını](active-directory-v2-compare.md)okuyun. Web API'nin kabul edilen belirteç sürümünü yapılandırmasına bağlı olarak, v2.0 bitiş noktası erişim belirtecisini MSAL'a döndürür.
 
-Bir dizi MSAL alma belirteci yöntemi bir *kapsamlar* parametresi gerektirir. Bu parametre, istenen izinleri ve istenen kaynakları bildiren dizelerin basit bir listesidir. İyi bilinen kapsamlar [Microsoft Graph izinleridir](/graph/permissions-reference).
+MSAL edinme belirteç yöntemlerinin bir dizi *kapsam* parametresi gerektirir. Bu parametre, istenen izinleri ve kaynakları bildiren dizelerin basit bir listesidir. İyi bilinen kapsamlar [Microsoft Graph izinleridir.](/graph/permissions-reference)
 
-V 1.0 kaynaklarına erişmek için MSAL de mümkündür. Daha fazla bilgi için, [bir v 1.0 uygulaması Için kapsamları](msal-v1-app-scopes.md)okuyun.
+MSAL'da v1.0 kaynaklarına erişmek de mümkündür. Daha fazla bilgi [için, v1.0 uygulaması için Kapsamlar'ı](msal-v1-app-scopes.md)okuyun.
 
-### <a name="request-specific-scopes-for-a-web-api"></a>Bir Web API 'SI için belirli kapsamlar isteme
+### <a name="request-specific-scopes-for-a-web-api"></a>Web API'sı için belirli kapsamlar isteme
 
-Uygulamanızın bir kaynak API 'SI için belirli izinlerle belirteç istemesi gerektiğinde, API 'nin uygulama KIMLIĞI URI 'sini içeren kapsamları aşağıdaki biçimde geçirmeniz gerekir: *&lt;uygulama KIMLIĞI URI 'si&gt;/&lt;kapsam&gt;*
+Uygulamanızın kaynak API'si için belirli izinlere sahip belirteçler istemesi gerektiğinde, API'nin uygulama kimliği URI'sini içeren kapsamları aşağıdaki biçimde geçirmeniz gerekir: * &lt;uygulama Kimliği URI&gt;/&lt;kapsamı&gt;*
 
-Örneğin, Microsoft Graph API için kapsamlar: `https://graph.microsoft.com/User.Read`
+Örneğin, Microsoft Graph API için kapsamlar:`https://graph.microsoft.com/User.Read`
 
-Ya da, örneğin, özel bir Web API 'SI için kapsamlar: `api://abscdefgh-1234-abcd-efgh-1234567890/api.read`
+Veya, örneğin, özel bir web API için kapsamlar:`api://abscdefgh-1234-abcd-efgh-1234567890/api.read`
 
-Yalnızca Microsoft Graph API 'SI için, bir kapsam değeri `user.read` `https://graph.microsoft.com/User.Read` biçimine eşlenir ve birbirlerinin yerine kullanılabilir.
+Microsoft Graph API için yalnızca, `user.read` biçimlendirilecek `https://graph.microsoft.com/User.Read` bir kapsam değeri eşlemleri ve birbirinin yerine kullanılabilir.
 
 > [!NOTE]
-> Azure Resource Manager API (https://management.core.windows.net/) gibi bazı Web API 'Leri, erişim belirtecinin hedef kitle talebinde (AUD) sonunda bir '/' bekliyor. Bu durumda, belirtecin API 'de geçerli olması için kapsamı https://management.core.windows.net//user_impersonation (çift eğik çizgiye dikkat edin) olarak geçirmek önemlidir.
+> Azure Kaynak Yöneticisi API'sihttps://management.core.windows.net/) gibi belirli web API'leri ( hedef kitlenin erişim jetonuna (aud) sahip olduğu bir '/' beklentisi içindedir. Bu durumda, belirteç API https://management.core.windows.net//user_impersonation geçerli olması için kapsam (çift eğik çizgi not) olarak geçmek önemlidir.
 
-### <a name="request-dynamic-scopes-for-incremental-consent"></a>Artımlı izin için dinamik kapsamlar isteyin
+### <a name="request-dynamic-scopes-for-incremental-consent"></a>Artımlı onay için dinamik kapsamlar isteme
 
-V 1.0 kullanarak uygulamalar oluştururken, kullanıcının oturum açma sırasında izin vermesini sağlamak için uygulamanın gerektirdiği tüm izin (statik kapsamlar) kümesini kaydetmeniz gerekiyordu. V 2.0 'da kapsam parametresini kullanarak gerektiğinde ek izinler isteyebilirsiniz. Bunlara dinamik kapsamlar denir ve kullanıcının kapsamlar için artımlı onay sağlamasına izin verir.
+v1.0 kullanarak uygulama yaparken, kullanıcının oturum açma sırasında onay alması için uygulamanın gerektirdiği tüm izinleri (statik kapsamlar) kaydetmeniz gerekir. v2.0'da, kapsam parametresini kullanarak gerektiğinde ek izinler isteyebilirsiniz. Bunlara dinamik kapsamlar denir ve kullanıcının kapsamlara artımlı onay sağlamasına izin verir.
 
-Örneğin, başlangıçta Kullanıcı oturumu açabilir ve her türlü erişimi reddedebilirsiniz. Daha sonra, belirteç al yöntemlerinde takvim kapsamını isteyerek ve kullanıcının iznini elde ederek kullanıcının takvimini okuma özelliği verebilirsiniz.
+Örneğin, başlangıçta kullanıcıoturum açabilir ve herhangi bir erişim inkar edebilirsiniz. Daha sonra, edinme belirteç yöntemlerinde takvim kapsamını isteyerek kullanıcının takvimini okuma ve kullanıcının onayını alma olanağı verebilirsiniz.
 
-Örneğin: `https://graph.microsoft.com/User.Read` ve `https://graph.microsoft.com/Calendar.Read`
+Örneğin: `https://graph.microsoft.com/User.Read` ve`https://graph.microsoft.com/Calendar.Read`
 
-## <a name="acquiring-tokens-silently-from-the-cache"></a>Belirteçleri sessizce alma (önbellekten)
+## <a name="acquiring-tokens-silently-from-the-cache"></a>Belirteçleri sessizce edinme (önbellekten)
 
-MSAL, bir belirteç önbelleğini (veya gizli istemci uygulamaları için iki önbellek) tutar ve alındıktan sonra bir belirteci önbelleğe alır.  Çoğu durumda, bir belirteci sessizce almaya çalışmak, önbellekteki bir belirtece göre daha fazla kapsam içeren başka bir belirteç elde eder. Ayrıca, süresi dolmak üzere (belirteç önbelleği de bir yenileme belirteci içerdiğinden) bir belirteci yenileyebilme özelliği de vardır.
+MSAL bir belirteç önbelleği (veya gizli istemci uygulamaları için iki önbellek) tutar ve satın alındıktan sonra bir belirteç önbelleğe gelir.  Çoğu durumda, sessizce bir belirteç almaya çalışırken önbellekte bir belirteç dayalı daha fazla kapsamları ile başka bir belirteç elde edecektir. Ayrıca, son kullanma tarihi yaklaştıkça bir belirteci yenileme yeteneğine sahiptir (belirteç önbelleği de yenileme belirteci içerdiğinden).
 
-### <a name="recommended-call-pattern-for-public-client-applications"></a>Ortak istemci uygulamaları için önerilen çağrı deseninin
+### <a name="recommended-call-pattern-for-public-client-applications"></a>Kamu istemcisi uygulamaları için önerilen çağrı deseni
 
-Uygulama kodu, önce bir belirteci sessizce (önbellekten) almayı denemelidir.  Yöntem çağrısı bir "UI gerekli" hatası veya özel durum döndürürse, bir belirteci başka yollarla aramayı deneyin. 
+Uygulama kodu, önce sessizce (önbellekten) bir belirteç almaya çalışmalıdır.  Yöntem çağrısı bir "UI gerekli" hata veya özel durum döndürür, başka yollarla bir belirteç edinmeyi deneyin. 
 
-Bununla birlikte, sessizce bir belirteç elde etmek zorunda kalmadan iki akış vardır:
+Ancak, önce sessizce bir belirteç elde etmeye **çalışmamanız gereken** iki akış vardır:
 
-- Kullanıcı belirteci önbelleğini kullanmayan [istemci kimlik bilgileri akışı](msal-authentication-flows.md#client-credentials), ancak uygulama belirteci önbelleği. Bu yöntem, STS 'ye bir istek göndermeden önce bu uygulama belirteci önbelleğini doğrulama işlemini gerçekleştirir.
-- Web Apps ' de [yetkilendirme kodu akışı](msal-authentication-flows.md#authorization-code) , uygulamanın aldığı bir kodu, kullanıcının oturum açtığı ve daha fazla kapsam için izin vermesini sağlayarak. Bir kod bir hesap değil, bir parametre olarak geçirildiğinden, bir hizmet için bir çağrı gerektiren ve bu durumda, bir hizmetin önüne girmeden önce önbellekte arama yapılamaz.
+- kullanıcı belirteç önbelleğini kullanmayan istemci [kimlik bilgileri akışı,](msal-authentication-flows.md#client-credentials)ancak bir uygulama belirteç önbelleği. Bu yöntem, STS'ye bir istek göndermeden önce bu uygulama belirteç önbelleğini doğrulamayı dikkate alır.
+- kullanıcıoturum imzalayarak ve daha fazla kapsam için onay ını alarak uygulamanın aldığı bir kodu kullandığından, Web Apps'ta [yetkilendirme kodu akışı.](msal-authentication-flows.md#authorization-code) Bir kod hesap olarak değil, parametre olarak geçirildiği için, yöntem kodu kullanmadan önce önbelleğe bakamaz ve bu da yine de hizmete çağrı gerektirir.
 
-### <a name="recommended-call-pattern-in-web-apps-using-the-authorization-code-flow"></a>Yetkilendirme kodu akışını kullanarak Web Apps önerilen çağrı deseninin
+### <a name="recommended-call-pattern-in-web-apps-using-the-authorization-code-flow"></a>Yetkilendirme Kodu akışını kullanarak Web Apps'ta önerilen çağrı deseni
 
-[OpenID Connect yetkilendirme kodu akışını](v2-protocols-oidc.md)kullanan Web uygulamaları için, denetleyicilerde önerilen model:
+[OpenID Connect yetkilendirme kodu akışını](v2-protocols-oidc.md)kullanan Web uygulamaları için denetleyicilerde önerilen desen aşağıdakileri yapmaktır:
 
-- Özelleştirilmiş serileştirme ile bir belirteç önbelleği ile gizli bir istemci uygulaması örneğini oluşturun. 
-- Yetkilendirme kodu akışını kullanarak belirteci alma
+- Gizli bir istemci uygulamasını, özelleştirilmiş serileştirme yle belirteç önbelleğiyle anında leştirin. 
+- Yetkilendirme kodu akışını kullanarak belirteci edinme
 
-## <a name="acquiring-tokens"></a>Belirteçler alınıyor
+## <a name="acquiring-tokens"></a>Belirteçlerin edinilmesi
 
-Genellikle, bir belirteç alma yöntemi, bir genel istemci veya gizli istemci uygulaması olmasına bağlıdır.
+Genellikle, bir belirteç edinme yöntemi, bir kamu istemcisi veya gizli istemci uygulaması olup olmadığına bağlıdır.
 
-### <a name="public-client-applications"></a>Ortak istemci uygulamaları
+### <a name="public-client-applications"></a>Kamu müşteri başvuruları
 
-Ortak istemci uygulamaları için (masaüstü veya mobil uygulama) şunları yapabilirsiniz:
-- Genellikle belirteçleri etkileşimli olarak alarak kullanıcı ARABIRIMI veya açılır pencere aracılığıyla oturum açmasını ister.
-- Masaüstü uygulaması, etki alanına veya Azure 'a katılmış bir Windows bilgisayarında çalışıyorsa tümleşik Windows kimlik doğrulaması (ıWA/Kerberos) kullanan [oturum açmış kullanıcı için sessizce bir belirteç alabilir](msal-authentication-flows.md#integrated-windows-authentication) .
-- , .NET Framework masaüstü istemci uygulamalarında [Kullanıcı adı ve parola içeren bir belirteç alabilir](msal-authentication-flows.md#usernamepassword) , ancak bu önerilmez. Gizli istemci uygulamalarında Kullanıcı adı/parola kullanmayın.
-- , Bir Web tarayıcısına sahip olmayan cihazlarda çalışan uygulamalarda [cihaz kod akışı](msal-authentication-flows.md#device-code) aracılığıyla bir belirteç alabilir. Kullanıcı bir URL ve kod ile sağlanır, daha sonra başka bir cihazdaki bir Web tarayıcısına gider ve kodu girer ve oturum açar.  Daha sonra Azure AD, tarayıcı-daha seyrek cihaza bir belirteç gönderir.
+Genel istemci uygulamaları (masaüstü veya mobil uygulama) için şunları yapıyorsuniz:
+- Kullanıcının kullanıcı veya açılır pencere üzerinden oturum açmasını sağlamak için genellikle etkileşimli olarak belirteçler edinin.
+- Masaüstü uygulaması bir etki alanına veya Azure'a katılan bir Windows bilgisayarında çalışıyorsa, Tümleşik Windows Kimlik Doğrulama (IWA/Kerberos) kullanarak [oturum açmış kullanıcı için sessizce bir belirteç alabilir.](msal-authentication-flows.md#integrated-windows-authentication)
+- .NET framework masaüstü istemci uygulamalarında [kullanıcı adı ve parola içeren bir belirteç alabilirsiniz,](msal-authentication-flows.md#usernamepassword) ancak bu önerilmez. Gizli istemci uygulamalarında kullanıcı adı/şifre kullanmayın.
+- Web tarayıcısı olmayan cihazlarda çalışan uygulamalarda [cihaz kodu akışı](msal-authentication-flows.md#device-code) üzerinden bir belirteç elde edebilirsiniz. Kullanıcıya bir URL ve kod sağlanır, bu da daha sonra başka bir cihazdaki bir web tarayıcısına gider ve kodu girer ve kodu girer.  Azure AD daha sonra tarayıcısız aygıta bir belirteç gönderir.
 
-### <a name="confidential-client-applications"></a>Gizli istemci uygulamaları
+### <a name="confidential-client-applications"></a>Gizli müşteri uygulamaları
 
-Gizli istemci uygulamaları (Web uygulaması, Web API 'SI veya Windows hizmeti gibi Daemon uygulaması) için şunları yapmanız gerekir:
-- [İstemci kimlik bilgileri akışını](msal-authentication-flows.md#client-credentials)kullanarak, bir kullanıcı için değil, **uygulamanın kendisi için** belirteç alın. Bu, araçları eşitlemek için veya belirli bir kullanıcı değil, genel olarak kullanıcıları işleyen araçlar için kullanılabilir. 
-- Bir Web API 'si için Kullanıcı adına bir API çağrısı yapmak üzere, bir Web API 'si için [Şirket adına akışını](msal-authentication-flows.md#on-behalf-of) kullanın. Uygulama, Kullanıcı onayını temel alan bir belirteç almak için istemci kimlik bilgileriyle tanımlanır (örneğin, SAML veya JWT belirteci). Bu akış, hizmet-hizmet çağrılarında belirli bir kullanıcının kaynaklarına erişmesi gereken uygulamalar tarafından kullanılır.
-- Kullanıcı yetkilendirme isteği URL 'SI aracılığıyla oturum açtıktan sonra Web Apps 'teki [yetkilendirme kodu akışını](msal-authentication-flows.md#authorization-code) kullanarak belirteçleri alın. OpenID Connect uygulaması genellikle bu mekanizmayı kullanarak kullanıcının açık KIMLIK bağlantısı kullanarak oturum açmasını sağlar ve ardından Kullanıcı adına Web API 'Lerine erişin.
+Gizli istemci uygulamaları (Web Uygulaması, Web API veya Windows hizmeti gibi daemon uygulaması) için:
+- [İstemci kimlik bilgilerini kullanarak](msal-authentication-flows.md#client-credentials)kullanıcı için değil, **uygulamanın kendisi için** belirteçler edinin. Bu, belirli bir kullanıcıyı değil, kullanıcıları genel olarak işleyen araçları veya araçları eşitleme için kullanılabilir. 
+- Kullanıcı adına BIR API çağırmak için bir web API'si için [On-behalf akışını](msal-authentication-flows.md#on-behalf-of) kullanın. Uygulama, kullanıcı iddiasına (örneğin SAML veya JWT belirteci) dayalı bir belirteç elde etmek için istemci kimlik bilgileriyle tanımlanır. Bu akış, hizmet-servis aramalarında belirli bir kullanıcının kaynaklarına erişimi gereken uygulamalar tarafından kullanılır.
+- Kullanıcı yetkilendirme isteği URL'si aracılığıyla giriş yaptıktan sonra web uygulamalarındaki [yetkilendirme kodu akışını](msal-authentication-flows.md#authorization-code) kullanarak belirteçler edinin. OpenID Connect uygulaması genellikle bu mekanizmayı kullanır ve bu mekanizma, kullanıcının Açık Kimlik'i kullanarak oturum açmasına ve ardından kullanıcı adına web API'lere erişmesini sağlar.
 
 ## <a name="authentication-results"></a>Kimlik doğrulama sonuçları
 
-İstemciniz bir erişim belirteci istediğinde, Azure AD, erişim belirteci hakkında bazı meta veriler içeren bir kimlik doğrulama sonucu da döndürür. Bu bilgiler, erişim belirtecinin süre sonu süresini ve geçerli olduğu kapsamları içerir. Bu veriler, uygulamanızın erişim belirtecinin kendisini ayrıştırmasına gerek kalmadan erişim belirteçlerinin akıllı önbelleğe alınmasına izin verir.  Kimlik doğrulama sonucu şunları gösterir:
+Müşteriniz bir erişim jetonu istediğinde, Azure AD erişim belirteciyle ilgili bazı meta verileri içeren bir kimlik doğrulama sonucu da verir. Bu bilgiler, erişim belirtecinin son kullanma süresini ve geçerli olduğu kapsamları içerir. Bu veriler, uygulamanızın erişim belirteci girişini ayrıştırmak zorunda kalmadan akıllı erişim belirteçleri önbelleğe alma masına olanak tanır.  Kimlik doğrulama sonucu şunları ortaya çıkarır:
 
-- Kaynaklara erişmek için Web API 'sinin [erişim belirteci](access-tokens.md) . Bu bir dizedir, genellikle Base64 kodlamalı JWT ancak istemci, erişim belirtecinin içinde asla görünmemelidir. Biçim kararlı kalacak şekilde garanti edilmez ve kaynak için şifrelenebilir. İstemci üzerindeki erişim belirteci içeriğine bağlı olarak kod yazan kişiler, hata ve istemci mantıksal sonlarının en büyük kaynaklarından biridir.
-- Kullanıcının [kimlik belirteci](id-tokens.md) (JWT).
-- Belirtecin süresinin dolacağı tarih/saate bildiren belirteç süre sonu.
-- Kiracı KIMLIĞI, kullanıcının bulunduğu kiracıyı içerir. Konuk kullanıcılar (Azure AD B2B senaryoları) için kiracı KIMLIĞI, benzersiz kiracı değil Konuk kiracıya ait değildir. Belirteç bir kullanıcı adına teslim edildiğinde, kimlik doğrulama sonucu bu kullanıcı hakkındaki bilgileri de içerir. Belirteçleri Kullanıcı (uygulama için) olmadan istenen gizli istemci akışları için, bu kullanıcı bilgileri null olur.
-- Belirtecin verildiği kapsamlar.
-- Kullanıcının benzersiz KIMLIĞI.
+- Kaynaklara erişmek için web API'sinin [erişim belirteci.](access-tokens.md) Bu bir dize, genellikle bir base64 kodlanmış JWT ama istemci erişim belirteci içinde bakmak asla. Biçimkararlı kalması garanti değildir ve kaynak için şifrelenebilir. İstemci deki erişim belirteç içeriğine bağlı olarak kod yazan kişiler, hataların ve istemci mantığının kırılmalarının en büyük kaynaklarından biridir.
+- Kullanıcı için [kimlik belirteci](id-tokens.md) (bu bir JWT' dir).
+- Belirteç süresinin dolduğu tarihi/saati söyleyen belirteç süresi.
+- Kiracı kimliği, kullanıcının bulunduğu kiracıyı içerir. Konuk kullanıcılar için (Azure AD B2B senaryoları), kiracı kimliği tekil kiracı değil, konuk kiracıdır. Belirteç bir kullanıcı adına teslim edildiğinde, kimlik doğrulama sonucu da bu kullanıcı hakkında bilgi içerir. Jetonların kullanıcı olmadan talep edildiği gizli istemci akışları için (uygulama için), bu kullanıcı bilgileri geçersizdir.
+- Belirteci verilen kapsamlar.
+- Kullanıcı için benzersiz kimlik.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Java için MSAL kullanıyorsanız, [Java IÇIN msal Içindeki özel belirteç önbelleği serileştirme](msal-java-token-cache-serialization.md)hakkında bilgi edinin.
+Java için MSAL kullanıyorsanız, [Java için MSAL'da Özel belirteç önbelleği serileştirme](msal-java-token-cache-serialization.md)si hakkında bilgi edinin.
 
-[Hataları ve özel durumları işleme](msal-handling-exceptions.md)hakkında bilgi edinin.
+İşlem [hataları ve özel durumlar](msal-handling-exceptions.md)hakkında bilgi edinin.

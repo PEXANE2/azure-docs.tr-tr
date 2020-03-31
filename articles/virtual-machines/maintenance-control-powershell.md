@@ -1,66 +1,66 @@
 ---
-title: PowerShell kullanarak Azure sanal makineleri için bakım denetimi
-description: Bakım denetimini ve PowerShell 'i kullanarak Azure VM 'lerinize bakım uygulandığını nasıl denetleyeceğinizi öğrenin.
+title: PowerShell kullanan Azure sanal makineleri için bakım kontrolü
+description: Bakım Denetimi ve PowerShell'i kullanarak Azure VM'lerinize ne zaman bakım uygulandığını nasıl kontrol edebilirsiniz.
 author: cynthn
 ms.service: virtual-machines
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: cynthn
-ms.openlocfilehash: 7e4586a5fba91fbc7432aa352b9608be728e8654
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: dc47afe9cb6eca1b10f8caca7b85087023c5eadf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79267033"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80060127"
 ---
-# <a name="preview-control-updates-with-maintenance-control-and-azure-powershell"></a>Önizleme: bakım denetimi ve Azure PowerShell güncelleştirmelerini denetleme
+# <a name="preview-control-updates-with-maintenance-control-and-azure-powershell"></a>Önizleme: Bakım Denetimi ve Azure PowerShell ile güncelleştirmeleri denetleme
 
-Bakım denetimini kullanarak yeniden başlatma gerektirmeyen platform güncelleştirmelerini yönetin. Azure, güvenilirliği, performansı, güvenliği geliştirmek veya yeni özellikleri başlatmak için altyapısını sıklıkla güncelleştirir. Çoğu güncelleştirme kullanıcılara saydamdır. Oyun, medya akışı ve finans işlemleri gibi bazı hassas iş yükleri, bir VM 'nin bakım için donuyor veya bağlantısı kesilmesinin birkaç saniyesini de kabul edemez. Bakım denetimi, platform güncelleştirmelerini bekleme ve bunları 35 günlük bir sıralı pencere içinde uygulama seçeneği sunar. 
+Bakım denetimini kullanarak yeniden başlatma gerektirmeyen platform güncelleştirmelerini yönetin. Azure, güvenilirliği, performansı, güvenliği artırmak veya yeni özellikler başlatmak için altyapısını sık sık güncelleştirir. Güncelleştirmelerin çoğu kullanıcılar için saydamdır. Oyun, medya akışı ve finansal işlemler gibi bazı hassas iş yükleri, birkaç saniyelik VM donma veya bakım için bağlantının kesilmesine bile tahammül edemez. Bakım denetimi, platform güncelleştirmelerini bekleme ve bunları 35 günlük bir haddeleme süresi içinde uygulama seçeneği sunar. 
 
-Bakım denetimi, yalıtılmış sanal makinelerinize güncelleştirmelerin ne zaman uygulanacağına karar vermenizi sağlar.
+Bakım denetimi, güncelleştirmeleri yalıtılmış VM'lerinize ne zaman uygulayacağınıza karar vermenizi sağlar.
 
-Bakım denetimi ile şunları yapabilirsiniz:
-- Toplu güncelleştirmeler tek bir güncelleştirme paketine sahiptir.
-- Güncelleştirmelerin uygulanması için 35 güne kadar bekleyin. 
-- Azure Işlevleri 'ni kullanarak bakım pencereniz için platform güncelleştirmelerini otomatikleştirin.
-- Bakım yapılandırması abonelikler ve kaynak grupları arasında çalışır. 
+Bakım kontrolü ile şunları yapabilirsiniz:
+- Toplu güncelleştirmeleri tek bir güncelleştirme paketinde tamamlar.
+- Güncelleştirmeleri uygulamak için 35 güne kadar bekleyin. 
+- Azure İşlevlerini kullanarak bakım pencereniz için platform güncelleştirmelerini otomatikleştirin.
+- Bakım yapılandırmaları abonelikler ve kaynak grupları arasında çalışır. 
 
 > [!IMPORTANT]
-> Bakım denetimi şu anda genel önizlemededir.
-> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Bakım Denetimi şu anda genel önizlemede.
+> Önizleme sürümü bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için Microsoft [Azure Önizlemeleri için Ek Kullanım Koşulları'na](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)bakın.
 > 
 
 ## <a name="limitations"></a>Sınırlamalar
 
-- VM 'Lerin [ayrılmış bir konakta](./linux/dedicated-hosts.md)olması veya [yalıtılmış bir VM boyutu](./linux/isolation.md)kullanılarak oluşturulması gerekir.
-- 35 gün sonra, bir güncelleştirme otomatik olarak uygulanır.
-- Kullanıcının, **kaynak katılımcısı** erişimi olmalıdır.
+- VM'ler özel bir [ana bilgisayarda](./linux/dedicated-hosts.md)olmalı veya [yalıtılmış VM boyutu](./linux/isolation.md)kullanılarak oluşturulmalıdır.
+- 35 gün sonra otomatik olarak bir güncelleştirme uygulanır.
+- Kullanıcı **kaynak katkıda bulunan** erişimi ne olmalıdır.
 
 
-## <a name="enable-the-powershell-module"></a>PowerShell modülünü etkinleştir
+## <a name="enable-the-powershell-module"></a>PowerShell modüllerini etkinleştirme
 
-`PowerShellGet` güncel olduğundan emin olun.
+Güncel `PowerShellGet` olduğundan emin olun.
 
 ```azurepowershell-interactive
 Install-Module -Name PowerShellGet -Repository PSGallery -Force
 ```
 
-Az. Maintenance PowerShell cmdlet 'leri önizlemededir, bu nedenle modülü Cloud Shell veya yerel PowerShell yüklemenizde `AllowPrerelease` parametresiyle yüklemeniz gerekir.   
+Az.Maintenance PowerShell cmdlets önizlemede olduğundan, modülü Cloud Shell'de veya yerel PowerShell kurulumunuzda `AllowPrerelease` parametreyle yüklemeniz gerekir.   
 
 ```azurepowershell-interactive
 Install-Module -Name Az.Maintenance -AllowPrerelease
 ```
 
-Yerel olarak yüklüyorsanız, PowerShell komut dosyanızı yönetici olarak açtığınızdan emin olun.
+Yerel olarak yüklüyorsanız, PowerShell komut isteminizi yönetici olarak açtığınızdan emin olun.
 
-Ayrıca, *Güvenilmeyen bir depodan*yüklemek istediğinizi onaylamanız istenebilir. Modülü yüklemek için `Y` yazın veya **Tümüne Evet** ' i seçin.
+Ayrıca, güvenilmeyen bir depodan yüklemek *istediğinizi*onaylamanız da istenebilir. Modülü `Y` yüklemek **için Tümüne Evet** yazın veya seçin.
 
 
 
 ## <a name="create-a-maintenance-configuration"></a>Bakım yapılandırması oluşturma
 
-Yapılandırmanız için kapsayıcı olarak bir kaynak grubu oluşturun. Bu örnekte, *eastus*içinde *myMaintenanceRG* adlı bir kaynak grubu oluşturulur. Kullanmak istediğiniz bir kaynak grubunuz zaten varsa, bu bölümü atlayabilir ve örneklerin geri kalanında kaynak grubu adını sahipsiz olarak değiştirebilirsiniz.
+Yapılandırmanız için kapsayıcı olarak bir kaynak grubu oluşturun. Bu örnekte *eastus'ta* *myMaintenanceRG* adlı bir kaynak grubu oluşturulur. Kullanmak istediğiniz bir kaynak grubunuz zaten varsa, bu bölümü atlayabilir ve örneklerin geri kalanında kaynak grubu adını sizinkiyle değiştirebilirsiniz.
 
 ```azurepowershell-interactive
 New-AzResourceGroup `
@@ -68,7 +68,7 @@ New-AzResourceGroup `
    -Name myMaintenanceRG
 ```
 
-Bir bakım yapılandırması oluşturmak için [New-AzMaintenanceConfiguration](https://docs.microsoft.com/powershell/module/az.maintenance/new-azmaintenanceconfiguration) kullanın. Bu örnek, konakta *MyConfig* adlı bir bakım yapılandırması oluşturur. 
+Bakım yapılandırması oluşturmak için [Yeni-AzMaintenanceConfiguration'ı](https://docs.microsoft.com/powershell/module/az.maintenance/new-azmaintenanceconfiguration) kullanın. Bu örnek, ana bilgisayara kapsamı *myConfig* adlı bir bakım yapılandırması oluşturur. 
 
 ```azurepowershell-interactive
 $config = New-AzMaintenanceConfiguration `
@@ -78,23 +78,23 @@ $config = New-AzMaintenanceConfiguration `
    -Location  eastus
 ```
 
-`-MaintenanceScope host` kullanmak, bakım yapılandırmasının konaktaki güncelleştirmeleri denetlemek için kullanılmasını sağlar.
+Bakım `-MaintenanceScope host` yapılandırmasının ana bilgisayara güncelleştirmeleri denetlemek için kullanılmasını sağlar.
 
-Aynı ada sahip bir yapılandırma oluşturmaya çalışırsanız, ancak farklı bir konumda hata alırsınız. Yapılandırma adları, aboneliğiniz için benzersiz olmalıdır.
+Aynı ada sahip, ancak farklı bir konumda bir yapılandırma oluşturmaya çalışırsanız, bir hata alırsınız. Yapılandırma adları aboneliğinize özgü olmalıdır.
 
-[Get-AzMaintenanceConfiguration](https://docs.microsoft.com/powershell/module/az.maintenance/get-azmaintenanceconfiguration)kullanarak kullanılabilir bakım yapılandırması için sorgulama yapabilirsiniz.
+[Get-AzMaintenanceConfiguration'ı](https://docs.microsoft.com/powershell/module/az.maintenance/get-azmaintenanceconfiguration)kullanarak kullanılabilir bakım yapılandırmalarını sorgulayabilirsiniz.
 
 ```azurepowershell-interactive
 Get-AzMaintenanceConfiguration | Format-Table -Property Name,Id
 ```
 
-## <a name="assign-the-configuration"></a>Yapılandırmayı ata
+## <a name="assign-the-configuration"></a>Yapılandırmayı atama
 
-Yapılandırmayı yalıtılmış sanal makinenize veya Azure adanmış ana bilgisayarınıza atamak için [New-Azconfigurationatama](https://docs.microsoft.com/powershell/module/az.maintenance/new-azconfigurationassignment) ' yı kullanın.
+Yapılandırmayı yalıtılmış VM'nize veya Azure Özel Ana Bilgisayarınıza atamak için [Yeni YapılandırmaAtama'yı](https://docs.microsoft.com/powershell/module/az.maintenance/new-azconfigurationassignment) kullanın.
 
 ### <a name="isolated-vm"></a>Yalıtılmış VM
 
-Yapılandırma KIMLIĞINI kullanarak yapılandırmayı bir VM 'ye uygulayın. `-ResourceType VirtualMachines` belirtin ve `-ResourceName`sanal makinenin adını ve `-ResourceGroupName`için VM 'nin kaynak grubunu sağlayın. 
+Yapılandırmanın kimliğini kullanarak yapılandırmayı bir VM'ye uygulayın. VM'nin adını ve VM'nin `-ResourceType VirtualMachines` `-ResourceName`kaynak grubunu belirtin `-ResourceGroupName`ve tedarik edin. 
 
 ```azurepowershell-interactive
 New-AzConfigurationAssignment `
@@ -109,7 +109,7 @@ New-AzConfigurationAssignment `
 
 ### <a name="dedicated-host"></a>Ayrılmış konak
 
-Bir yapılandırmayı adanmış bir konağa uygulamak için `-ResourceType hosts`, konak grubunun adı ile `-ResourceParentName` ve `-ResourceParentType hostGroups`de eklemeniz gerekir. 
+Özel bir ana bilgisayara yapılandırma uygulamak için, `-ResourceParentName` ana bilgisayar grubunun adını `-ResourceParentType hostGroups`ve `-ResourceType hosts`. 
 
 
 ```azurepowershell-interactive
@@ -125,11 +125,11 @@ New-AzConfigurationAssignment `
    -MaintenanceConfigurationId $config.Id
 ```
 
-## <a name="check-for-pending-updates"></a>Bekleyen güncelleştirmeleri denetle
+## <a name="check-for-pending-updates"></a>Bekleyen güncelleştirmeleri denetleme
 
-Bekleyen güncelleştirmeler olup olmadığını görmek için [Get-AzMaintenanceUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/get-azmaintenanceupdate) kullanın. Oturum açmış olduğunuz sunucudan farklıysa VM 'nin Azure aboneliğini belirtmek için `-subscription` kullanın.
+Bekleyen güncelleştirmeler olup olmadığını görmek için [Get-AzMaintenanceUpdate'i](https://docs.microsoft.com/powershell/module/az.maintenance/get-azmaintenanceupdate) kullanın. VM'nin Azure aboneliğini, oturum açtığınız abonelikten farklıysa belirtmek için kullanın. `-subscription`
 
-Gösterilecek güncelleştirme yoksa, bu komut hiçbir şey döndürmez. Aksi takdirde, bir PSApplyUpdate nesnesi döndürür:
+Gösterilecek güncelleştirme yoksa, bu komut hiçbir şey döndürmez. Aksi takdirde, bir PSApplyUpdate nesnedöndürecek:
 
 ```json
 {
@@ -145,7 +145,7 @@ Gösterilecek güncelleştirme yoksa, bu komut hiçbir şey döndürmez. Aksi ta
 
 ### <a name="isolated-vm"></a>Yalıtılmış VM
 
-Yalıtılmış bir VM için bekleyen güncelleştirmeleri denetleyin. Bu örnekte, çıkış okunabilirlik için bir tablo olarak biçimlendirilir.
+Yalıtılmış bir VM için bekleyen güncelleştirmeleri denetleyin. Bu örnekte, çıktı okunabilirlik için bir tablo olarak biçimlendirilir.
 
 ```azurepowershell-interactive
 Get-AzMaintenanceUpdate `
@@ -158,7 +158,7 @@ Get-AzMaintenanceUpdate `
 
 ### <a name="dedicated-host"></a>Ayrılmış konak
 
-Adanmış bir ana bilgisayar için bekleyen güncelleştirmeleri denetlemek için. Bu örnekte, çıkış okunabilirlik için bir tablo olarak biçimlendirilir. Kaynakların değerlerini kendi değerlerinizle değiştirin.
+Özel bir ana bilgisayar için bekleyen güncelleştirmeleri denetlemek için. Bu örnekte, çıktı okunabilirlik için bir tablo olarak biçimlendirilir. Kaynakların değerlerini kendi değerlerinizle değiştirin.
 
 ```azurepowershell-interactive
 Get-AzMaintenanceUpdate `
@@ -173,11 +173,11 @@ Get-AzMaintenanceUpdate `
 
 ## <a name="apply-updates"></a>Güncelleştirme uygulama
 
-Bekleyen güncelleştirmeleri uygulamak için [New-AzApplyUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/new-azapplyupdate) kullanın.
+Bekleyen güncelleştirmeleri uygulamak için [Yeni-AzApplyUpdate'i](https://docs.microsoft.com/powershell/module/az.maintenance/new-azapplyupdate) kullanın.
 
 ### <a name="isolated-vm"></a>Yalıtılmış VM
 
-Yalıtılmış bir VM 'ye güncelleştirme uygulamak için bir istek oluşturun.
+Güncelleştirmeleri yalıtılmış bir VM'ye uygulamak için bir istek oluşturun.
 
 ```azurepowershell-interactive
 New-AzApplyUpdate `
@@ -187,11 +187,11 @@ New-AzApplyUpdate `
    -ProviderName Microsoft.Compute
 ```
 
-Başarı durumunda bu komut `PSApplyUpdate` nesnesi döndürür. Güncelleştirme durumunu denetlemek için `Get-AzApplyUpdate` komutunda ad özniteliğini kullanabilirsiniz. Bkz. [güncelleştirme durumunu denetleme](#check-update-status).
+Başarı da, bu komut `PSApplyUpdate` bir nesneyi döndürecek. Güncelleştirme durumunu denetlemek için komuttaki `Get-AzApplyUpdate` Ad özniteliğini kullanabilirsiniz. Bkz. [Güncelleştirme durumunu denetle.](#check-update-status)
 
 ### <a name="dedicated-host"></a>Ayrılmış konak
 
-Güncelleştirmeleri adanmış bir konağa uygulayın.
+Güncelleştirmeleri özel bir ana bilgisayara uygulayın.
 
 ```azurepowershell-interactive
 New-AzApplyUpdate `
@@ -204,7 +204,7 @@ New-AzApplyUpdate `
 ```
 
 ## <a name="check-update-status"></a>Güncelleştirme durumunu denetle
-Bir güncelleştirmenin durumunu denetlemek için [Get-AzApplyUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/get-azapplyupdate) kullanın. Aşağıda gösterilen komutlar, `-ApplyUpdateName` parametresi için `default` kullanarak en son güncelleştirmenin durumunu gösterir. Belirli bir güncelleştirmenin durumunu almak için, güncelleştirmenin adını ( [New-AzApplyUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/new-azapplyupdate) komutu tarafından döndürülen) kullanabilirsiniz.
+Bir güncelleştirmenin durumunu kontrol etmek için [Get-AzApplyUpdate'i](https://docs.microsoft.com/powershell/module/az.maintenance/get-azapplyupdate) kullanın. Aşağıda gösterilen komutlar `default` `-ApplyUpdateName` parametre için kullanarak en son güncelleştirmenin durumunu gösterir. Belirli bir güncelleştirmenin durumunu almak için güncelleştirmenin adını [(Yeni-AzApplyUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/new-azapplyupdate) komutu yla döndürülen) değiştirebilirsiniz.
 
 ```text
 Status         : Completed
@@ -216,11 +216,11 @@ ute/virtualMachines/DXT-test-04-iso/providers/Microsoft.Maintenance/applyUpdates
 Name           : default
 Type           : Microsoft.Maintenance/applyUpdates
 ```
-LastUpdateTime, güncelleştirme tamamlandığında sizin tarafınızdan ya da kendi kendine bakım penceresi kullanılmadığınızda platform tarafından başlatılan zaman olacaktır. Bakım denetimi aracılığıyla uygulanan bir güncelleştirme olmamışsa, varsayılan değer gösterilir.
+LastUpdateTime, güncelleştirmenin tamamlandığını, sizin veya kendi bakım penceresinin kullanılmaması durumunda platform tarafından başlatıldığı zaman olacaktır. Bakım denetimi yoluyla hiç güncelleştirme uygulanmamışsa, varsayılan değeri gösterir.
 
 ### <a name="isolated-vm"></a>Yalıtılmış VM
 
-Belirli bir sanal makinede güncelleştirmeleri denetleyin.
+Belirli bir sanal makinenin güncelleştirmelerini denetleyin.
 
 ```azurepowershell-interactive
 Get-AzApplyUpdate `
@@ -233,7 +233,7 @@ Get-AzApplyUpdate `
 
 ### <a name="dedicated-host"></a>Ayrılmış konak
 
-Adanmış bir konaktaki güncelleştirmeleri denetleyin.
+Özel bir ana bilgisayara güncelleştirmeleri denetleyin.
 
 ```azurepowershell-interactive
 Get-AzApplyUpdate `
@@ -246,15 +246,15 @@ Get-AzApplyUpdate `
    -ApplyUpdateName myUpdateName
 ```
 
-## <a name="remove-a-maintenance-configuration"></a>Bakım yapılandırmasını kaldırma
+## <a name="remove-a-maintenance-configuration"></a>Bakım yapılandırması kaldırma
 
-Bir bakım yapılandırmasını silmek için [Remove-AzMaintenanceConfiguration](https://docs.microsoft.com/powershell/module/az.maintenance/remove-azmaintenanceconfiguration) kullanın.
+Bakım yapılandırmasını silmek için [Kaldır-AzMaintenanceConfiguration'ı](https://docs.microsoft.com/powershell/module/az.maintenance/remove-azmaintenanceconfiguration) kullanın.
 
-```azurecli-interactive
+```azurepowershell-interactive
 Remove-AzMaintenanceConfiguration `
    -ResourceGroupName myResourceGroup `
    -Name $config.Name
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Daha fazla bilgi için bkz. [bakım ve güncelleştirmeler](maintenance-and-updates.md).
+Daha fazla bilgi için [Bkz. Bakım ve güncelleştirmeler.](maintenance-and-updates.md)

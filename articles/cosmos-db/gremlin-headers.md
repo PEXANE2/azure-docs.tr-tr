@@ -1,6 +1,6 @@
 ---
-title: Azure Cosmos DB Gremlin yanıt üst bilgileri
-description: Ek sorun gidermeyi sağlayan sunucu yanıtı meta verileri için başvuru belgeleri
+title: Azure Cosmos DB Gremlin yanıt başlıkları
+description: Ek sorun giderme sağlayan sunucu yanıt meta verileri için başvuru belgeleri
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: reference
@@ -8,29 +8,29 @@ ms.date: 09/03/2019
 author: luisbosquez
 ms.author: lbosq
 ms.openlocfilehash: 95677f4c45c0213de5ffac5521bac1c6bf7294e4
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72755091"
 ---
-# <a name="azure-cosmos-db-gremlin-server-response-headers"></a>Azure Cosmos DB Gremlin sunucu yanıtı üstbilgileri
-Bu makalede, Gremlin Server Cosmos DB, istek yürütme sonrasında çağırana döndüren üstbilgiler ele alınmaktadır. Bu üst bilgiler, istek performansının giderilmesi, yerel olarak Cosmos DB hizmeti ile tümleştirilen ve müşteri desteğini basitleştirecek uygulamalar oluşturma için yararlıdır.
+# <a name="azure-cosmos-db-gremlin-server-response-headers"></a>Azure Cosmos DB Gremlin sunucu yanıt üstgeçitleri
+Bu makalede, istek yürütmesi sırasında Cosmos DB Gremlin sunucusunun çağırana döndürdüğü başlıklar ele alınır. Bu üst bilgiler, istek performansı sorunlarının giderilmesi, Cosmos DB hizmetiyle yerel olarak tümleştirilen uygulamaların oluşturulması ve müşteri desteğinin basitleştirilmesi için kullanışlıdır.
 
-Bu üst bilgilere bağımlılık alan diğer Gremlin uygulamalarına yönelik taşınabilirlik sınırlandırdığını aklınızda bulundurun. Sonuç olarak, Cosmos DB Gremlin ile daha sıkı bir tümleştirme elde edersiniz. Bu üstbilgiler bir TinkerPop standardı değildir.
+Bu üstelere bağımlı olduğunuzu ve uygulamanızın taşınabilirliğini diğer Gremlin uygulamalarıyla sınırladığınızı unutmayın. Karşılığında, Cosmos DB Gremlin ile daha sıkı entegrasyon kazanıyor. Bu başlıklar TinkerPop standardı değildir.
 
 ## <a name="headers"></a>Üst bilgiler
 
-| Üst bilgi | Tür | Örnek değer | Dahil edildiğinde | Açıklama |
+| Üst bilgi | Tür | Örnek Değer | Dahil Edildiğinde | Açıklama |
 | --- | --- | --- | --- | --- |
-| **x-ms-request-charge** | double | 11,3243 | Başarı ve başarısızlık | Kısmi bir yanıt iletisi için [istek birimlerinde (ru/s veya ru)](request-units.md) tüketilen koleksiyon veya veritabanı aktarım hızı. Bu üst bilgi, birden çok öbekteki isteklerin her devamlıında bulunur. Belirli bir yanıt öbeğinin ücretlendirisini yansıtır. Yalnızca tek bir yanıt öbeklerinden oluşan istekler için bu üst bilgi, toplam çapraz geçiş maliyetiyle eşleşir. Ancak, karmaşık traversals çoğu için bu değer kısmi bir maliyeti temsil eder. |
-| **x-ms-total-request-charge** | double | 423,987 | Başarı ve başarısızlık | İsteğin tamamına yönelik [İstek birimleri (ru/s veya ru)](request-units.md) cinsinden tüketilen koleksiyon veya veritabanı verimlilik miktarı. Bu üst bilgi, birden çok öbekteki isteklerin her devamlıında bulunur. İsteğin başlangıcından bu yana birikmiş ücreti gösterir. Son öbekteki bu üstbilginin değeri, tüm istek ücretlendirdiğini gösterir. |
-| **x-MS-sunucu-zaman-MS** | double | 13,75 | Başarı ve başarısızlık | Bu üst bilgi, gecikme sorun giderme amaçları için eklenmiştir. Cosmos DB Gremlin Server 'ın yürütülmesi ve kısmi bir yanıt iletisi üretmek için geçen milisaniye cinsinden süreyi belirtir. Bu üst bilginin değerini kullanmak ve genel istek gecikme süresi uygulamalarıyla karşılaştırmak, ağ gecikmesi yükünü hesaplayabilir. |
-| **x-MS-Total-Server-Time-MS** | double | 130,512 | Başarı ve başarısızlık | Cosmos DB Gremlin sunucusunun tüm çapraz geçişi yürütebilmesi için geçen toplam süre (milisaniye cinsinden). Bu üst bilgi, her kısmi yanıta dahildir. İstek başlangıcından bu yana toplu yürütme süresini temsil eder. Son Yanıt toplam yürütme süresini gösterir. Bu üst bilgi, bir gecikme kaynağı olarak istemci ve sunucu arasında ayrım yapmak için yararlıdır. İstemci üzerindeki çapraz geçiş süresini, bu üst bilginin değerine göre karşılaştırabilirsiniz. |
-| **x-ms-status-code** | Kalacağını | 200 | Başarı ve başarısızlık | Üstbilgi, istek tamamlamada veya sonlandırmasının iç nedenini gösterir. Uygulamanın bu üst bilgiyi değere bakmamız ve düzeltici eylem yapması önerilir. |
-| **x-MS-alt durumu-kod** | Kalacağını | 1003 | Yalnızca hata | Cosmos DB, Birleşik depolama katmanının üzerine yerleştirilmiş çok modelli bir veritabanıdır. Bu üst bilgi, yüksek kullanılabilirlik yığınının alt katmanlarında hata oluştuğunda oluşan hata nedeni hakkında ek bilgiler içerir. Uygulamanın bu üstbilgiyi depolaması ve Cosmos DB müşteri desteğiyle iletişim kurarken kullanması önerilir. Bu üstbilginin değeri, hızlı sorun giderme için Cosmos DB mühendis için yararlıdır. |
-| **x-ms-retry-after-ms** | dize (TimeSpan) | "00:00:03.9500000" | Yalnızca hata | Bu üst bilgi, bir .NET [TimeSpan](https://docs.microsoft.com/dotnet/api/system.timespan) türünün dize gösterimidir. Bu değer yalnızca sağlanan üretilen iş tükenmesi nedeniyle başarısız olan isteklere dahil edilecek. Uygulama, geçen süre sonunda çapraz geçişi yeniden göndermelidir. |
-| **x-ms-activity-id** | dize (GUID) | "A9218E01-3A3A-4716-9636-5BD86B056613" | Başarı ve başarısızlık | Üst bilgi, bir isteğin benzersiz sunucu tarafı tanımlayıcısını içerir. Her isteğe, izleme amacıyla sunucu tarafından benzersiz bir tanımlayıcı atanır. Uygulamalar, müşterilerin müşteri desteğiyle iletişim kurmak isteyebileceğiniz istekler için sunucu tarafından döndürülen etkinlik tanımlayıcılarını günlüğe içermemelidir. Cosmos DB destek personeli, Bu tanımlayıcılara yönelik belirli istekleri Cosmos DB hizmeti telemetrisinde bulabilir. |
+| **x-ms-istek-şarj** | double | 11.3243 | Başarı ve Hata | Kısmi yanıt iletisi için [istek birimlerinde (RU/s veya RUs)](request-units.md) tüketilen toplama veya veritabanı iş miktarı. Bu üstbilgi, birden çok öbek olan istekler için her devamı bulunur. Belirli bir yanıt yığınının yükünü yansıtır. Yalnızca tek bir yanıt ödeneğinden oluşan istekler için bu üstbilgi, toplam geçiş maliyetiyle eşleşir. Ancak, karmaşık geçişlerin çoğunluğu için bu değer kısmi bir maliyeti temsil eder. |
+| **x-ms-toplam-istek-şarj** | double | 423.987 | Başarı ve Hata | [İstek birimlerinde (RU/s veya RUs)](request-units.md) tüm istek için tüketilen toplama veya veritabanı iş miktarı. Bu üstbilgi, birden çok öbek olan istekler için her devamı bulunur. İsteğin başlangıcından bu yana kümülatif ücret gösterir. Bu üstbilginin son yığındaki değeri tam istek ücretini gösterir. |
+| **x-ms-sunucu-zaman-ms** | double | 13.75 | Başarı ve Hata | Bu üstbilgi, gecikme sorunu giderme amacıyla dahil edilir. Cosmos DB Gremlin sunucusunun kısmi bir yanıt iletisi yürütmek ve üretmek için aldığı süreyi milisaniye cinsinden gösterir. Bu üstbilginin değerini kullanarak ve genel istek gecikme satıruygulamalarıyla karşılaştırmak ağ gecikme yükü hesaplayabilir. |
+| **x-ms-toplam-sunucu-zaman-ms** | double | 130.512 | Başarı ve Hata | Toplam süre, milisaniye cinsinden, Cosmos DB Gremlin sunucusunun tüm geçişi yürütmek için aldığı. Bu üstbilgi her kısmi yanıta dahildir. İsteğin başlangıcından bu yana kümülatif yürütme süresini temsil eder. Son yanıt, toplam yürütme süresini gösterir. Bu üstbilgi, istemci ve sunucu arasında bir gecikme kaynağı olarak ayırt etmek için yararlıdır. İstemcinin geçiş yürütme süresini bu üstbilginin değeriyle karşılaştırabilirsiniz. |
+| **x-ms-durum kodu** | long | 200 | Başarı ve Hata | Üstbilgi, istek tamamlama veya sonlandırma için iç nedeni gösterir. Uygulama bu üstbilginin değerine bakmak ve düzeltici eylemde bulunmalı önerilir. |
+| **x-ms-alt durum kodu** | long | 1003 | Yalnızca Hata | Cosmos DB, birleşik depolama katmanının üzerine inşa edilmiş çok modelli bir veritabanıdır. Bu üstbilgi, hata yüksek kullanılabilirlik yığınının alt katmanları içinde oluştuğunda hata nedeni hakkında ek bilgiler içerir. Uygulamanın bu üstbilgide saklanması ve Cosmos DB müşteri desteğiyle iletişime geçerken kullanması önerilir. Bu üstbilginin değeri, cosmos DB mühendisi için hızlı sorun giderme için yararlıdır. |
+| **x-ms-retry-sonrası-ms** | dize (TimeSpan) | "00:00:03.9500000" | Yalnızca Hata | Bu üstbilgi,.NET [TimeSpan](https://docs.microsoft.com/dotnet/api/system.timespan) türünün dize gösterimidir. Bu değer yalnızca verilen iş artışı nedeniyle başarısız olan isteklere dahil edilecektir. Başvuru, talimat süresinden sonra geçiş tekrar gönderilmelidir. |
+| **x-ms-etkinlik-id** | dize (Kılavuz) | "A9218E01-3A3A-4716-9636-5BD86B056613" | Başarı ve Hata | Üstbilgi, bir isteğin sunucu tarafındaki benzersiz bir tanımlayıcısı içerir. Her istek, izleme amacıyla sunucu tarafından benzersiz bir tanımlayıcı atanır. Uygulamalar, müşterilerin müşteri desteğine başvurmak isteyebileceği istekler için sunucu tarafından döndürülen etkinlik tanımlayıcılarını günlüğe kaydetmelidir. Cosmos DB destek personeli, cosmos DB servis telemetrisinde bu tanımlayıcılar tarafından belirli istekler bulabilir. |
 
 ## <a name="status-codes"></a>Durum kodları
 
@@ -38,23 +38,23 @@ Sunucu tarafından döndürülen en yaygın durum kodları aşağıda listelenmi
 
 | Durum | Açıklama |
 | --- | --- |
-| **401** | Kimlik doğrulama parolası Cosmos DB hesap anahtarıyla eşleşmediği zaman `"Unauthorized: Invalid credentials provided"` hata iletisi döndürülür. Azure portal Gremlin hesabınıza Cosmos DB gidin ve anahtarın doğru olduğundan emin olun.|
-| **404** | Aynı kenarı veya köşeyi aynı anda silmeye ve güncelleştirmeye çalışacak eşzamanlı işlemler. `"Owner resource does not exist"` hata iletisi bağlantı parametrelerinde `/dbs/<database name>/colls/<collection or graph name>` biçiminde belirtilen veritabanı veya koleksiyonun doğru olmadığını gösterir.|
-| **408** | `"Server timeout"`, geçiş geçişinin **30 saniyeden** fazla sürdüğünü ve sunucu tarafından iptal edildiğini gösterir. Çapraz arama kapsamını daraltmak için her geçiş atlamada köşeleri veya kenarları filtreleyerek, traversals uygulamanızı en uygun şekilde gerçekleştirin.|
-| **409** | `"Conflicting request to resource has been attempted. Retry to avoid conflicts."` bunun nedeni genellikle grafikte bir tanımlayıcıya sahip olan köşe veya bir kenar zaten mevcut olduğunda meydana gelir.| 
-| **412** | Durum kodu `"PreconditionFailedException": One of the specified pre-condition is not met` hata iletisi ile tamamlanalınmıştır. Bu hata, bir kenar veya köşeyi okumak ve değiştirildikten sonra depoya geri yazmak arasındaki iyimser eşzamanlılık denetim ihlalinin göstergesi olur. Bu hatanın oluştuğu yaygın durumlar, örneğin `g.V('identifier').property('name','value')` Özellik değişimdir. Gremlin motoru köşeyi okur, değiştirir ve tekrar yazar. Paralel olarak çalışan başka bir geçiş geçişi varsa, aynı köşeyi veya bir kenarı yazmaya çalışırken, bunlardan biri bu hatayı alır. Uygulamanın çapraz geçişi sunucuya yeniden göndermesi gerekir.| 
-| **429** | İstek kısıtlandı ve **x-MS-retry-After-MS** ' deki değer sonrasında yeniden denenmelidir| 
-| **500** | @No__t_0 içeren hata iletisi bir veritabanının ve/veya koleksiyonun aynı adla yeniden oluşturulduğunu gösterir. Değişikliğin dağıtılması ve farklı Cosmos DB bileşenlerindeki önbellekleri geçersiz kılmasıyla bu hata 5 dakika içinde görüntüden kaldırılır. Bu sorundan kaçınmak için her zaman benzersiz veritabanı ve koleksiyon adları kullanın.| 
-| **1000** | Bu durum kodu, sunucu başarıyla bir ileti ayrıştırdığında ancak yürütülemediğinden döndürülür. Genellikle sorguyla ilgili bir sorun olduğunu gösterir.| 
-| **1001** | Bu kod, sunucu geçiş yürütmeyi tamamladığında döndürülür, ancak yanıtı istemciye geri serileştirmezse. Geçiş, çok büyük olan veya TinkerPop protokol belirtimine uygun olmayan bir karmaşık sonuç oluşturduğunda bu hata oluşabilir. Uygulamanın bu hatayla karşılaştığında geçiş geçişini basitleştirmesi gerekir. | 
-| **1003** | geçiş, izin verilen bellek sınırını aştığında `"Query exceeded memory limit. Bytes Consumed: XXX, Max: YYY"` döndürülür. Bellek sınırı, çapraz geçiş başına **2 GB** 'dir.| 
-| **1004** | Bu durum kodu hatalı biçimlendirilmiş grafik isteğini gösterir. Seri durumdan çıkarma işlemi başarısız olduğunda istek hatalı olabilir, değer türü veya desteklenmeyen Gremlin işlemi istendi olarak değer olmayan türün serisi kaldırılıyor. Uygulama başarılı olmayacak, isteği yeniden denememelidir. | 
-| **1007** | Genellikle bu durum kodu `"Could not process request. Underlying connection has been closed."` hata iletisiyle döndürülür. İstemci sürücüsü sunucu tarafından kapatılan bir bağlantıyı kullanmayı denerse bu durum oluşabilir. Uygulamanın çapraz geçişi farklı bir bağlantıda yeniden denemesi gerekir.
-| **1008** | Cosmos DB Gremlin Server, kümedeki trafiği yeniden dengelemek için bağlantıları sonlandırabilirler. İstemci sürücüleri bu durumu işlemeli ve istekleri sunucuya göndermek için yalnızca canlı bağlantıları kullanmalıdır. Bazen istemci sürücüleri bağlantının kapatıldığını algılayamayabilir. Uygulama bir hatayla karşılaştığında, farklı bir bağlantıda geçişi yeniden denemelidir `"Connection is too busy. Please retry after sometime or open more connections."`.
+| **401** | Kimlik `"Unauthorized: Invalid credentials provided"` doğrulama parolası Cosmos DB hesap anahtarıyla eşleşmediğinde hata iletisi döndürülür. Azure portalındaki Cosmos DB Gremlin hesabınıza gidin ve anahtarın doğru olduğunu onaylayın.|
+| **404** | Aynı kenarı veya tepe yi aynı anda silmeye ve güncelleştirmeye çalışan eşzamanlı işlemler. `"Owner resource does not exist"` hata iletisi bağlantı parametrelerinde `/dbs/<database name>/colls/<collection or graph name>` biçiminde belirtilen veritabanı veya koleksiyonun doğru olmadığını gösterir.|
+| **408** | `"Server timeout"`geçişin **30 saniyeden** fazla sürdüğünü ve sunucu tarafından iptal edildiğini gösterir. Arama kapsamını daraltmak için geçişlerinizi her geçiş atlamada vertices veya kenarları filtreleyerek hızlı çalışması için optimize edin.|
+| **409** | `"Conflicting request to resource has been attempted. Retry to avoid conflicts."` Bu durum genellikle grafta zaten aynı tanımlayıcıya sahip bir köşe veya kenar bulunduğunda oluşur.| 
+| **412** | Durum kodu hata iletisi `"PreconditionFailedException": One of the specified pre-condition is not met`ile tamamlanır. Bu hata, bir kenarı veya tepe noktasını okuma ve değişiklikten sonra mağazaya geri yazma arasında iyimser bir eşzamanlılık denetimi ihlalinin göstergesidir. Bu hata oluştuğunda en sık karşılaşılan `g.V('identifier').property('name','value')`durumlar özellik değişikliğidir, örneğin. Gremlin motoru tepe yi okur, değiştirir ve cevap yazardı. Aynı tepe noktası veya kenarı yazmaya çalışırken paralel olarak çalışan başka bir geçiş varsa, bunlardan biri bu hatayı alır. Uygulama yine sunucuya geçiş göndermelidir.| 
+| **429** | İstek azaltıldı ve **x-ms-retry-after-ms** değeri kadar süre sonra yeniden denenmelidir| 
+| **500** | `"NotFoundException: Entity with the specified id does not exist in the system."` ifadesini içeren hata iletisi bir veritabanı ve/veya koleksiyonun aynı adla yeniden oluşturulduğunu gösterir. Değişikliğin dağıtılması ve farklı Cosmos DB bileşenlerindeki önbellekleri geçersiz kılmasıyla bu hata 5 dakika içinde görüntüden kaldırılır. Bu sorundan kaçınmak için her zaman benzersiz veritabanı ve koleksiyon adları kullanın.| 
+| **1000** | Sunucu bir iletiyi başarıyla ayrıştırdığında ancak yürütülemediğinde bu durum kodu döndürülür. Genellikle sorguyla ilgili bir sorunu gösterir.| 
+| **1001** | Bu kod, sunucu geçiş yürütmesini tamamladığında döndürülür, ancak istemciye yanıtı seri hale getiremediğinde. Bu hata, geçiş çok büyük veya TinkerPop protokol belirtimine uymayan karmaşık bir sonuç oluşturduğunda ortaya çıkabilir. Uygulama, bu hatayla karşılaştığında geçişi basitleştirmelidir. | 
+| **1003** | `"Query exceeded memory limit. Bytes Consumed: XXX, Max: YYY"`geçiş izin verilen bellek sınırını aştığında döndürülür. Bellek sınırı geçiş başına **2 GB'dır.**| 
+| **1004** | Bu durum kodu hatalı grafik isteğini gösterir. İstek deserialization başarısız olduğunda yanlış biçimlendirilmiş olabilir, değer olmayan türü değer türü veya desteklenmeyen gremlin işlemi talep olarak deserialized ediliyor. Uygulama, başarılı olmayacaktır, çünkü isteği yeniden denememelidir. | 
+| **1007** | Genellikle bu durum kodu hata `"Could not process request. Underlying connection has been closed."`iletisi ile döndürülür. İstemci sürücüsü sunucu tarafından kapatılan bir bağlantıyı kullanmaya çalışırsa bu durum olabilir. Uygulama, geçişi farklı bir bağlantıda yeniden denemelidir.
+| **1008** | Cosmos DB Gremlin sunucusu kümedeki trafiği yeniden dengelemek için bağlantıları sonlandırabilir. İstemci sürücüleri bu durumu ele almalı ve sunucuya istek göndermek için yalnızca canlı bağlantıları kullanmalıdır. Bazen istemci sürücüleri bağlantının kapalı olduğunu algılayamayabilir. Uygulama bir hatayla `"Connection is too busy. Please retry after sometime or open more connections."` karşılaştığında, farklı bir bağlantıda geçişi yeniden denemelidir.
 
 ## <a name="samples"></a>Örnekler
 
-Bir durum özniteliğini okuyan Gremlin.Net tabanlı örnek bir istemci uygulaması:
+Bir durum özniteliğini okuyan Gremlin.Net dayalı örnek istemci uygulaması:
 
 ```csharp
 // Following example reads a status code and total request charge from server response attributes.
@@ -69,7 +69,7 @@ using (GremlinClient client = new GremlinClient(server, new GraphSON2Reader(), n
 }
 ```
 
-Gremlin Java istemcisinden durum özniteliğinin nasıl okunacağını gösteren bir örnek:
+Gremlin java istemcisinden durum özniteliğinin nasıl okunduğunu gösteren bir örnek:
 
 ```java
 try {
@@ -108,5 +108,5 @@ try {
 
 ## <a name="next-steps"></a>Sonraki adımlar
 * [Azure Cosmos DB için HTTP durum kodları](https://docs.microsoft.com/rest/api/cosmos-db/http-status-codes-for-cosmosdb) 
-* [Ortak Azure Cosmos DB REST yanıt üst bilgileri](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers)
-* [Inkerpop Graph sürücü sağlayıcısı gereksinimleri]( http://tinkerpop.apache.org/docs/current/dev/provider/#_graph_driver_provider_requirements)
+* [Ortak Azure Cosmos DB REST yanıt üstbilgi](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers)
+* [TinkerPop Grafik Sürücü Sağlayıcı Gereksinimleri]( http://tinkerpop.apache.org/docs/current/dev/provider/#_graph_driver_provider_requirements)

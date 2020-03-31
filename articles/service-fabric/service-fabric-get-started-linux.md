@@ -4,10 +4,10 @@ description: Linux üzerinde çalışma zamanını ve SDK'yı yükleyip yerel bi
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: 572b1509f45a7f5bf2c63619809f01d17c3493d1
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79258440"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Linux üzerinde geliştirme ortamınızı hazırlama
@@ -25,7 +25,7 @@ Bu makaledeki adımlarda, Linux’a yerel olarak yükleme yaptığınız veya Se
 Linux için Windows Alt Sistemine SDK ve Service Fabric çalışma zamanının yüklenmesi desteklenmez. Desteklenen Azure Service Fabric komut satırı arabirimiyle (CLI) bulutta veya şirket içinde başka herhangi bir yerde barındırılan Service Fabric varlıklarını yönetebilirsiniz. CLI'yi yükleme hakkında bilgi için bkz. [Service Fabric CLI'sini ayarlama](./service-fabric-cli.md).
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Geliştirme için şu işletim sistemi sürümleri desteklenir.
 
@@ -92,7 +92,7 @@ SDK ve ilişkili çalışma zamanı paketini apt-get komut satırı aracıyla y�
     sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
     ```
 
-7. APT kimlik anahtarlığı 'e Azul JDK anahtarını ekleyin ve deposunu ayarlayın.
+7. APT anahtarlığınıza Azul JDK Anahtarı ekleyin ve deposunu düzene sin.
 
     ```bash
     sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0xB1998361219BD9C9
@@ -167,7 +167,7 @@ SDK yüklemesiyle birlikte gelen Service Fabric çalışma zamanı, aşağıdaki
 
  | | DotNetCore | Java | Python | NodeJS | 
 --- | --- | --- | --- |---
-Ubuntu | 2.0.0 | AzulJDK 1,8 | Npm’de örtük | en son |
+Ubuntu | 2.0.0 | AzulJDK 1.8 | Npm’de örtük | en son |
 RHEL | - | OpenJDK 1.8 | Npm’de örtük | en son |
 
 ## <a name="set-up-a-local-cluster"></a>Yerel küme oluşturma
@@ -179,7 +179,7 @@ Yükleme tamamlandıktan sonra yerel bir küme başlatın.
     sudo /opt/microsoft/sdk/servicefabric/common/clustersetup/devclustersetup.sh
     ```
 
-2. Bir web tarayıcısı açın ve [Service Fabric Explorer](http://localhost:19080/Explorer) (`http://localhost:19080/Explorer`) adresine gidin. Küme başlatıldığında, Service Fabric Explorer panosunu görürsünüz. Kümenin tamamen ayarlanması birkaç dakika sürebilir. Tarayıcınız URL’yi açamazsa veya Service Fabric Explorer sistemin hazır olduğunu göstermezse, birkaç dakika bekleyip tekrar deneyin.
+2. Bir web tarayıcısı açın ve`http://localhost:19080/Explorer`Service Fabric [Explorer](http://localhost:19080/Explorer) 'a gidin ( ). Küme başlatıldığında, Service Fabric Explorer panosunu görürsünüz. Kümenin tamamen ayarlanması birkaç dakika sürebilir. Tarayıcınız URL’yi açamazsa veya Service Fabric Explorer sistemin hazır olduğunu göstermezse, birkaç dakika bekleyip tekrar deneyin.
 
     ![Linux üzerinde Service Fabric Explorer][sfx-linux]
 
@@ -224,11 +224,11 @@ Oluşturucuları yükledikten sonra, sırasıyla `yo azuresfguest` ve `yo azures
 
 ## <a name="set-up-net-core-20-development"></a>.NET Core 2.0 ile geliştirmeyi ayarlama
 
-[C# Service Fabric uygulamaları oluşturmaya](https://www.microsoft.com/net/core#linuxubuntu) başlamak amacıyla [Ubuntu için .NET Core 2.0 SDK'sını](service-fabric-create-your-first-linux-application-with-csharp.md) yükleyin. NuGet.org, şu anda önizleme aşamasında olan .NET Core 2.0 Service Fabric uygulamalarının paketlerini barındırır.
+[C# Service Fabric uygulamaları oluşturmaya](service-fabric-create-your-first-linux-application-with-csharp.md) başlamak amacıyla [Ubuntu için .NET Core 2.0 SDK'sını](https://www.microsoft.com/net/core#linuxubuntu) yükleyin. NuGet.org, şu anda önizleme aşamasında olan .NET Core 2.0 Service Fabric uygulamalarının paketlerini barındırır.
 
 ## <a name="set-up-java-development"></a>Java ile geliştirmeyi ayarlama
 
-Java kullanarak Service Fabric Hizmetleri derlemek için, derleme görevlerini çalıştırmak için Gradle ' yi kullanın. Gradle yüklemek için aşağıdaki komutu çalıştırın. Service Fabric Java kitaplıkları Maven’dan alınır.
+Java'yı kullanarak Service Fabric hizmetleri oluşturmak için, yapı görevlerini çalıştırmak için Gradle'yi yükleyin. Gradle'yi yüklemek için aşağıdaki komutu çalıştırın. Service Fabric Java kitaplıkları Maven’dan alınır.
 
 
 * Ubuntu
@@ -261,13 +261,13 @@ Service Fabric için Eclipse eklentisini Java EE Geliştiricileri veya Java Geli
 > 
 > Ubuntu üzerinde, paket yükleyici (`apt` veya `apt-get`) kullanmak yerine doğrudan Eclipse sitesinden yükleme yapılmasını öneririz. Böylece, Eclipse’in en güncel sürümünü elde etmeniz sağlanır. Java EE Geliştiricileri için veya Java Geliştiricileri için Eclipse IDE’yi yükleyebilirsiniz.
 
-1. Eclipse’te, Eclipse Neon veya sonraki bir sürümünün ve Buildship 2.2.1 veya sonraki bir sürümünün yüklü olduğundan emin olun. **Yardım** > **Eclipse Hakkında** > **Yükleme Ayrıntıları**’nı seçerek yüklü bileşenlerin sürümlerini denetleyin. [Gradle için, çakışan küreler buildby: tutulma Eklentilerindeki][buildship-update]yönergeleri kullanarak buildsevkiyat ' i güncelleştirebilirsiniz.
+1. Eclipse’te, Eclipse Neon veya sonraki bir sürümünün ve Buildship 2.2.1 veya sonraki bir sürümünün yüklü olduğundan emin olun. Eclipse > **Kurulum Ayrıntıları****Hakkında** **Yardım'ı** > seçerek yüklü bileşenlerin sürümlerini kontrol edin. [Eclipse Buildship: Gradle için Eclipse eklentileri][buildship-update] bölümünde sağlanan yönergelerden yararlanarak Buildship’i güncelleştirebilirsiniz.
 
-2. Service Fabric eklentisini yüklemek için **Yardım** > **Yeni Yazılım Yükle**’yi seçin.
+2. Service Fabric eklentisini yüklemek için**Yeni Yazılım Yüklemeye** **Yardım'ı** > seçin.
 
 3. **Birlikte çalış** kutusuna **https://dl.microsoft.com/eclipse** girin.
 
-4. **Add (Ekle)** seçeneğini belirleyin.
+4. **Ekle'yi**seçin.
 
     ![Kullanılabilir Yazılım sayfası][sf-eclipse-plugin]
 
@@ -275,7 +275,7 @@ Service Fabric için Eclipse eklentisini Java EE Geliştiricileri veya Java Geli
 
 6. Yükleme adımlarını gerçekleştirin. Ardından son kullanıcı lisans sözleşmesini kabul edin.
 
-Service Fabric Eclipse eklentisi zaten yüklüyse, en yeni sürümü kullandığınızdan emin olun. **Yardım** > **Eclipse hakkında** > **Yükleme Ayrıntıları**'nı seçerek denetleyin. Ardından, yüklü eklentiler listesinde Service Fabric arayın. daha yeni bir sürüm varsa **Güncelleştir** ' i seçin.
+Service Fabric Eclipse eklentisi zaten yüklüyse, en yeni sürümü kullandığınızdan emin olun. Eclipse > **Kurulum Ayrıntıları****Hakkında** **Yardım'ı** > seçerek kontrol edin. Ardından, yüklenen eklentiler listesinde Hizmet Kumaşı'nı arayın. Yeni bir sürüm varsa **Güncelleştirme'yi** seçin.
 
 Daha fazla bilgi için bkz. [Eclipse Java uygulama geliştirmesi için Service Fabric eklentisi](service-fabric-get-started-eclipse.md).
 
@@ -287,7 +287,7 @@ SDK ve çalışma zamanının son sürümüne güncelleştirmek için aşağıda
 sudo apt-get update
 sudo apt-get install servicefabric servicefabricsdkcommon
 ```
-Maven’dan alınan Java SDK'sı ikili dosyalarını güncelleştirmek için ``build.gradle`` dosyasında karşılık gelen ikili sürüm ayrıntılarını en son sürüme işaret edecek şekilde güncelleştirmeniz gerekir. Sürümü tam olarak nerede güncelleştirmeniz gerektiğini öğrenmek için ``build.gradle``Service Fabric başlangıç örneklerindeki[ herhangi bir ](https://github.com/Azure-Samples/service-fabric-java-getting-started) dosyasına bakın.
+Maven’dan alınan Java SDK'sı ikili dosyalarını güncelleştirmek için ``build.gradle`` dosyasında karşılık gelen ikili sürüm ayrıntılarını en son sürüme işaret edecek şekilde güncelleştirmeniz gerekir. Sürümü tam olarak nerede güncelleştirmeniz gerektiğini öğrenmek için [Service Fabric başlangıç örneklerindeki](https://github.com/Azure-Samples/service-fabric-java-getting-started) herhangi bir ``build.gradle`` dosyasına bakın.
 
 > [!NOTE]
 > Paketlerin güncelleştirilmesi, yerel geliştirme kümenizin çalışmayı durdurmasına neden olabilir. Yükseltme sonrasında bu makaledeki yönergeleri izleyerek yerel kümenizi yeniden başlatın.

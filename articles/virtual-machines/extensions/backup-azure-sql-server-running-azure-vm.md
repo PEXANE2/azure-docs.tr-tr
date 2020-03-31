@@ -1,6 +1,6 @@
 ---
-title: Azure VM 'de çalışan SQL Server için Azure Backup
-description: Bu makalede, Azure sanal makinesinde çalışan SQL Server Azure Backup nasıl kaydedeceğinizi öğrenin.
+title: Azure VM'de çalışan SQL Server için Azure Yedekleme
+description: Bu makalede, Azure sanal makinede çalışan SQL Server'da Azure Yedekleme'yi nasıl kaydedebilirsiniz öğrenin.
 services: backup
 author: dcurwin
 manager: carmonm
@@ -8,29 +8,29 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: dacurwin
-ms.openlocfilehash: 77492454e2519c98cadfb6819c850c4830015b59
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: b17e4031edaedc6b0a63d305d20a77e5b58f91ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748948"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80247393"
 ---
-# <a name="azure-backup-for-sql-server-running-in-azure-vm"></a>Azure VM 'de çalışan SQL Server için Azure Backup
+# <a name="azure-backup-for-sql-server-running-in-azure-vm"></a>Azure VM'de çalışan SQL Server için Azure Yedekleme
 
-Diğer tekliflerde Azure Backup, Azure VM 'lerinde çalışan SQL Server gibi iş yüklerini yedeklemeye yönelik destek sağlar. SQL uygulaması bir Azure VM içinde çalıştığından, yedekleme hizmeti uygulamaya erişmek ve gerekli ayrıntıları getirmek için izne ihtiyaç duyuyor.
-Bunu yapmak için Azure Backup, Kullanıcı tarafından tetiklenen kayıt işlemi sırasında SQL Server çalıştığı sanal makineye **AzureBackupWindowsWorkload** uzantısını yüklenir.
+Azure Yedekleme, diğer tekliflerin yanı sıra, Azure VM'lerde çalışan SQL Server gibi iş yüklerini yedeklemek için destek sağlar. SQL uygulaması bir Azure VM içinde çalışıyor olduğundan, yedekleme hizmetinin uygulamaya erişmek ve gerekli ayrıntıları almak için izin alması gerekir.
+Bunu yapmak için Azure Yedekleme, kullanıcı tarafından tetiklenen kayıt işlemi sırasında SQL Server'ın çalışmakta olduğu VM'ye **AzureBackupWindowsİş iş yükü** uzantısını yükler.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Desteklenen senaryolar listesi için Azure Backup tarafından desteklenen [desteklenebilirlik matrisine](https://docs.microsoft.com/azure/backup/backup-azure-sql-database#scenario-support) bakın.
+Desteklenen senaryolar listesi için Azure Yedekleme tarafından desteklenen [desteklenebilirlik matrisine](../../backup/sql-support-matrix.md#scenario-support) bakın.
 
 ## <a name="network-connectivity"></a>Ağ bağlantısı
 
-Azure Backup, bir proxy sunucu veya listelenen IP aralıklarını dağıtmak için NSG etiketlerini destekler; yöntemlerin her biri hakkında ayrıntılı bilgi edinmek için bu [makaleye](https://docs.microsoft.com/azure/backup/backup-sql-server-database-azure-vms#establish-network-connectivity)bakın.
+Azure Yedekleme, bir proxy sunucusu veya listelenen IP aralıkları dağıtarak NSG Etiketlerini destekler; yöntemlerin her biri hakkında ayrıntılı bilgi için bu [makaleye](https://docs.microsoft.com/azure/backup/backup-sql-server-database-azure-vms#establish-network-connectivity)bakın.
 
 ## <a name="extension-schema"></a>Uzantı şeması
 
-Uzantı şeması ve özellik değerleri, hizmetin CRP API 'sine geçirme yapılandırma değerleridir (çalışma zamanı ayarları). Bu yapılandırma değerleri kayıt ve yükseltme sırasında kullanılır. **AzureBackupWindowsWorkload** uzantısı bu şemayı de kullanır. Şema önceden ayarlanmıştır; objectStr alanına yeni bir parametre eklenebilir
+Uzantı şeması ve özellik değerleri, hizmetin CRP API'ye geçtiği yapılandırma değerleri (çalışma zamanı ayarları) dır. Bu config değerleri kayıt ve yükseltme sırasında kullanılır. **AzureBackupWindowsWorkload** uzantısı da bu şema kullanır. Şema önceden ayarlanmıştır; objectStr alanına yeni bir parametre eklenebilir
 
   ```json
       "runtimeSettings": [{
@@ -53,7 +53,7 @@ Uzantı şeması ve özellik değerleri, hizmetin CRP API 'sine geçirme yapıla
       }
   ```
 
-Aşağıdaki JSON, WorkloadBackup uzantısının şemasını gösterir.  
+Aşağıdaki JSON, WorkloadBackup uzantısı için şema gösterir.  
 
   ```json
   {
@@ -85,33 +85,33 @@ Aşağıdaki JSON, WorkloadBackup uzantısının şemasını gösterir.
 
 ### <a name="property-values"></a>Özellik değerleri
 
-Ad | Değer/örnek | Veri türü
+Adı | Değer/örnek | Veri türü
  --- | --- | ---
-ayarlar | En-US  |  string
-TaskID | "1c0ae461-9d3b-418c-a505-bb31dfe2095d"  | string
-objectStr <br/> (publicSettings)  | "eyJjb250YWluZXJQcm9wZXJ0aWVzIjp7IkNvbnRhaW5lcklEIjoiMzVjMjQxYTItOGRjNy00ZGE5LWI4NTMtMjdjYTJhNDZlM2ZkIiwiSWRNZ210Q29udGFpbmVySWQiOjM0NTY3ODg5LCJSZXNvdXJjZUlkIjoiMDU5NWIwOGEtYzI4Zi00ZmFlLWE5ODItOTkwOWMyMGVjNjVhIiwiU3Vic2NyaXB0aW9uSWQiOiJkNGEzOTliNy1iYjAyLTQ2MWMtODdmYS1jNTM5O DI3ZTgzNTQiLCJVbmlxdWVDb250YWluZXJOYW1lIjoiODM4MDZjODUtNTQ4OS00NmNhLWEyZTctNWMzNzNhYjg3OTcyIn0sInN0YW1wTGlzdCI6W3siU2VydmljZU5hbWUiOjUsIlNlcnZpY2VTdGFtcFVybCI6Imh0dHA6XC9cL015V0xGYWJTdmMuY29tIn1dfQ = = " | string
-commandStartTimeUTCTicks | "636967192566036845"  | string
-vmType  | "Microsoft. COMPUTE/virtualmachines"  | string
-objectStr <br/> (protectedSettings) | "eyJjb250YWluZXJQcm9wZXJ0aWVzIjp7IkNvbnRhaW5lcklEIjoiMzVjMjQxYTItOGRjNy00ZGE5LWI4NTMtMjdjYTJhNDZlM2ZkIiwiSWRNZ210Q29udGFpbmVySWQiOjM0NTY3ODg5LCJSZXNvdXJjZUlkIjoiMDU5NWIwOGEtYzI4Zi00ZmFlLWE5ODItOTkwOWMyMGVjNjVhIiwiU3Vic2NyaXB0aW9uSWQiOiJkNGEzOTliNy1iYjAyLTQ2MWMtODdmYS1jNTM5O DI3ZTgzNTQiLCJVbmlxdWVDb250YWluZXJOYW1lIjoiODM4MDZjODUtNTQ4OS00NmNhLWEyZTctNWMzNzNhYjg3OTcyIn0sInN0YW1wTGlzdCI6W3siU2VydmljZU5hbWUiOjUsIlNlcnZpY2VTdGFtcFVybCI6Imh0dHA6XC9cL015V0xGYWJTdmMuY29tIn1dfQ = = " | string
-logsBlobUri | <https://seapod01coord1exsapk732.blob.core.windows.net/bcdrextensionlogs-d45d8a1c-281e-4bc8-9d30-3b25176f68ea/sopattna-vmubuntu1404ltsc.v2.Logs.txt?sv=2014-02-14&sr=b&sig=DbwYhwfeAC5YJzISgxoKk%2FEWQq2AO1vS1E0rDW%2FlsBw%3D&st=2017-11-09T14%3A33%3A29Z&se=2017-11-09T17%3A38%3A29Z&sp=rw> | string
-statusBlobUri | <https://seapod01coord1exsapk732.blob.core.windows.net/bcdrextensionlogs-d45d8a1c-281e-4bc8-9d30-3b25176f68ea/sopattna-vmubuntu1404ltsc.v2.Status.txt?sv=2014-02-14&sr=b&sig=96RZBpTKCjmV7QFeXm5IduB%2FILktwGbLwbWg6Ih96Ao%3D&st=2017-11-09T14%3A33%3A29Z&se=2017-11-09T17%3A38%3A29Z&sp=rw> | string
+yerel ayar | tr-tr  |  string
+taskId | "1c0ae461-9d3b-418c-a505-bb31dfe2095d"  | string
+nesneStr <br/> (genel Ayarlar)  | "eyJjb250YWluZXJQcm9wZXJ0aWVzIjp7IkNvbnRhaW5lcklEIJoiMzVjMjQXYTItOGRjNy00ZGE5LWI4NTMtMjjJHHNDM2ZKIwiSWRNZ210Q29ud GGFpbmVySWQiOjM0NTY3ODg5LCJSZXNvdXJjZUlkIjoiMDU5NWIwOGEtYzI4Zi00ZmFlLWE5ODItOTtwOWMyMGVJNjVhIiwiU3Vic2NyaXB0aW9uSWQiOiJKNG EzOTliNy1iYjAyLTQ2MWMtODmYS1jNTM5ODI3ZTgzNTQiLCJVbmlxdWVDb250YWluZXJOYW1lIjoiODM4MDZJODUtNTTQ4OS00NMNhLWEyZTCtNMZNMZNzNhYjg3OTcyIn0sInN0YW1wTGlzdCI6W3siU2VydmljZU5hbWUiOjUsIlNlcnZpY2VTdGFtcFVybCI6Imh0dHA6XC9cL015V0xGYWJTdMuY29t1dfQ ==" | string
+komutStartTimeUTCTicks | "636967192566036845"  | string
+vmType  | "microsoft.compute/virtualmachines"  | string
+nesneStr <br/> (protectedAyarlar) | "eyJjb250YWluZXJQcm9wZXJ0aWVzIjp7IkNvbnRhaW5lcklEIJoiMzVjMjQXYTItOGRjNy00ZGE5LWI4NTMtMjjJHHNDM2ZKIwiSWRNZ210Q29ud GGFpbmVySWQiOjM0NTY3ODg5LCJSZXNvdXJjZUlkIjoiMDU5NWIwOGEtYzI4Zi00ZmFlLWE5ODItOTtwOWMyMGVJNjVhIiwiU3Vic2NyaXB0aW9uSWQiOiJKNG EzOTliNy1iYjAyLTQ2MWMtODmYS1jNTM5ODI3ZTgzNTQiLCJVbmlxdWVDb250YWluZXJOYW1lIjoiODM4MDZJODUtNTTQ4OS00NMNhLWEyZTCtNMZNMZNzNhYjg3OTcyIn0sInN0YW1wTGlzdCI6W3siU2VydmljZU5hbWUiOjUsIlNlcnZpY2VTdGFtcFVybCI6Imh0dHA6XC9cL015V0xGYWJTdMuY29t1dfQ ==" | string
+kütüklerBlobUri | <https://seapod01coord1exsapk732.blob.core.windows.net/bcdrextensionlogs-d45d8a1c-281e-4bc8-9d30-3b25176f68ea/sopattna-vmubuntu1404ltsc.v2.Logs.txt?sv=2014-02-14&sr=b&sig=DbwYhwfeAC5YJzISgxoKk%2FEWQq2AO1vS1E0rDW%2FlsBw%3D&st=2017-11-09T14%3A33%3A29Z&se=2017-11-09T17%3A38%3A29Z&sp=rw> | string
+durumBlobUri | <https://seapod01coord1exsapk732.blob.core.windows.net/bcdrextensionlogs-d45d8a1c-281e-4bc8-9d30-3b25176f68ea/sopattna-vmubuntu1404ltsc.v2.Status.txt?sv=2014-02-14&sr=b&sig=96RZBpTKCjmV7QFeXm5IduB%2FILktwGbLwbWg6Ih96Ao%3D&st=2017-11-09T14%3A33%3A29Z&se=2017-11-09T17%3A38%3A29Z&sp=rw> | string
 
 ## <a name="template-deployment"></a>Şablon dağıtımı
 
-Sanal makinede SQL Server yedeklemeyi etkinleştirerek bir sanal makineye AzureBackupWindowsWorkload uzantısının eklenmesinin önerildiğini öneririz. Bu, SQL Server VM yedeklemenin otomatikleştirilmesi için tasarlanan [Kaynak Yöneticisi şablonu](https://github.com/Azure/azure-quickstart-templates/tree/master/101-recovery-services-vm-workload-backup) aracılığıyla elde edilebilir.
+Sanal makineye AzureBackupWindowsWorkload uzantısı eklemenin, sanal makinede SQL Server yedeklemesini etkinleştirmenizi tavsiye ettik. Bu, SQL Server VM'de yedeklemeyi otomatikleştirmek için tasarlanan [Kaynak Yöneticisi şablonu](https://github.com/Azure/azure-quickstart-templates/tree/master/101-recovery-services-vm-workload-backup) aracılığıyla elde edilebilir.
 
 ## <a name="powershell-deployment"></a>PowerShell dağıtımı
 
-Kurtarma Hizmetleri kasasıyla SQL uygulamasını içeren Azure VM 'yi ' kaydetmeniz ' gerekir. Kayıt sırasında, AzureBackupWindowsWorkload uzantısı VM 'ye yüklenir. VM 'yi kaydettirmek için [register-AzRecoveryServicesBackupContainerPS](https://docs.microsoft.com/powershell/module/az.recoveryservices/Register-AzRecoveryServicesBackupContainer?view=azps-1.5.0) cmdlet 'ini kullanın.
+Kurtarma hizmetleri kasasıyla SQL uygulamasını içeren Azure VM'sini 'kaydetmeniz' gerekir. Kayıt sırasında AzureBackupWindowsİş uzantısı VM'ye yüklenir. VM'yi kaydetmek için [Register-AzRecoveryServicesBackupContainerPS](https://docs.microsoft.com/powershell/module/az.recoveryservices/Register-AzRecoveryServicesBackupContainer?view=azps-1.5.0) cmdlet kullanın.
 
 ```powershell
 $myVM = Get-AzVM -ResourceGroupName <VMRG Name> -Name <VMName>
 Register-AzRecoveryServicesBackupContainer -ResourceId $myVM.ID -BackupManagementType AzureWorkload -WorkloadType MSSQL -VaultId $targetVault.ID -Force
 ```
 
-Komut bu kaynağın bir **yedekleme kapsayıcısını** döndürür ve durum **kaydedilir**.
+Komut bu kaynağın **yedek kapsayıcısını** döndürecek ve durum **kaydedilecek.**
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Azure SQL Server VM yedekleme sorunlarını giderme yönergeleri hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/azure/backup/backup-sql-server-azure-troubleshoot)
-- Azure sanal makinelerinde (VM 'Ler) çalışan ve Azure Backup hizmetini kullanan SQL Server veritabanlarının yedeklenmesi hakkında [genel sorular](https://docs.microsoft.com/azure/backup/faq-backup-sql-server) .
+- Azure SQL Server VM yedekleme sorun giderme yönergeleri hakkında [daha fazla bilgi edinin](https://docs.microsoft.com/azure/backup/backup-sql-server-azure-troubleshoot)
+- Azure sanal makinelerde (VM) çalışan ve Azure Yedekleme hizmetini kullanan SQL Server veritabanlarını yedekleme hakkında [sık sorulan sorular.](https://docs.microsoft.com/azure/backup/faq-backup-sql-server)

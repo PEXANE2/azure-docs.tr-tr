@@ -1,6 +1,6 @@
 ---
-title: Apache Spark App 'ten Requestbodytoobüyük hatası-Azure HDInsight
-description: NativeAzureFileSystem ... Azure HDInsight 'ta Apache Spark akış uygulaması günlüğünde RequestBodyTooLarge görünüyor
+title: Apache Spark uygulamasından BodyTooLarge hatası İsteği - Azure HDInsight
+description: NativeAzureFileSystem ... RequestBodyTooLarge, Azure HDInsight'ta Apache Spark akış uygulaması için günlükte görünür
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
@@ -8,44 +8,44 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/29/2019
 ms.openlocfilehash: 777d06670238a7625d190c92f78a55cd4794d226
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/11/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75894392"
 ---
-# <a name="nativeazurefilesystemrequestbodytoolarge-appear-in-apache-spark-streaming-app-log-in-hdinsight"></a>"NativeAzureFileSystem... HDInsight 'ta Apache Spark akış uygulama günlüğünde RequestBodyTooLarge "görüntülenir
+# <a name="nativeazurefilesystemrequestbodytoolarge-appear-in-apache-spark-streaming-app-log-in-hdinsight"></a>"NativeAzureFileSystem... RequestBodyTooLarge" HDInsight'ta Apache Spark akış uygulaması günlüğünde görünür
 
-Bu makalede, Azure HDInsight kümelerinde Apache Spark bileşenleri kullanılırken sorunlar için sorun giderme adımları ve olası çözümleri açıklanmaktadır.
+Bu makalede, Azure HDInsight kümelerinde Apache Spark bileşenleri kullanılırken sorun giderme adımları ve sorunların olası çözümleri açıklanmaktadır.
 
 ## <a name="issue"></a>Sorun
 
-Hata: `NativeAzureFileSystem ... RequestBodyTooLarge`, bir Apache Spark akış uygulamasının sürücü günlüğünde görüntülenir.
+Hata: `NativeAzureFileSystem ... RequestBodyTooLarge` Bir Apache Spark akış uygulamasının sürücü günlüğünde görünür.
 
 ## <a name="cause"></a>Nedeni
 
-Spark olay günlüğü dosyanız muhtemelen LıBB 'nin dosya uzunluğu sınırına ulaşıyordur.
+Kıvılcım olay günlüğü dosyanız büyük olasılıkla WASB için dosya uzunluk sınırına isabet ediyor.
 
-Spark 2,3 ' de, her Spark uygulaması bir Spark olay günlüğü dosyası oluşturur. Spark akış uygulamasının Spark olay günlüğü dosyası, uygulama çalışırken büyümeye devam eder. Günümüzde IDB 'deki bir dosya 50000 blok sınırına sahiptir ve varsayılan blok boyutu 4 MB 'tır. Bu nedenle, varsayılan yapılandırmada en büyük dosya boyutu 195 GB 'tır. Ancak, Azure Storage en büyük blok boyutunu 100 MB olarak artırmıştır ve bu, tek dosya sınırını 4,75 TB 'ye etkin bir şekilde getirdi. Daha fazla bilgi için bkz. [BLOB depolama Için ölçeklenebilirlik ve performans hedefleri](../../storage/blobs/scalability-targets.md).
+Spark 2.3'te, her Spark uygulaması bir Spark olay günlüğü dosyası oluşturur. Bir Spark akış uygulamasının Spark olay günlüğü dosyası, uygulama çalışırken büyümeye devam eder. Bugün WASB'deki bir dosya50000 blok sınırına sahiptir ve varsayılan blok boyutu 4 MB'dır. Yani varsayılan yapılandırmada maksimum dosya boyutu 195 GB'dır. Ancak Azure Depolama, maksimum blok boyutunu 100 MB'a çıkararak tek dosya sınırını etkin bir şekilde 4,75 TB'ye çıkardı. Daha fazla bilgi için [Blob depolama için Ölçeklenebilirlik ve performans hedeflerine](../../storage/blobs/scalability-targets.md)bakın.
 
-## <a name="resolution"></a>Çözünürlük
+## <a name="resolution"></a>Çözüm
 
-Bu hata için üç çözüm bulunmaktadır:
+Bu hata için üç çözüm vardır:
 
-* Blok boyutunu 100 MB 'a kadar artırın. Ambarı Kullanıcı arabiriminde, `fs.azure.write.request.size` suconfiguration özelliğini değiştirin (veya `Custom core-site` bölümünde oluşturun). Özelliği daha büyük bir değere ayarlayın, örneğin: 33554432. Güncelleştirilmiş yapılandırmayı kaydedin ve etkilenen bileşenleri yeniden başlatın.
+* Blok boyutunu 100 MB'a kadar artırın. Ambari UI'de, HDFS `fs.azure.write.request.size` yapılandırma özelliğini `Custom core-site` değiştirin (veya bölümde oluşturun). Özelliği daha büyük bir değere ayarlayın, örneğin: 33554432. Güncelleştirilmiş yapılandırmayı kaydedin ve etkilenen bileşenleri yeniden başlatın.
 
-* Spark akış işini düzenli aralıklarla durdurup yeniden gönderin.
+* Düzenli olarak durdurun ve kıvılcım akışı işini yeniden gönderin.
 
-* Spark olay günlüklerini depolamak için, "kullanın. Depolama için, bellek kullanımı, küme ölçekleme veya Azure yükseltmeleri sırasında Spark olay verilerinin kaybedilmesine neden olabilir.
+* Spark olay günlüklerini depolamak için HDFS'yi kullanın. Depolama için HDFS'nin kullanılması, küme ölçekleme veya Azure yükseltmeleri sırasında Kıvılcım olay verilerinin kaybolmasına neden olabilir.
 
-    1. `spark.eventlog.dir` ve `spark.history.fs.logDirectory` ambarı Kullanıcı arabirimi aracılığıyla değişiklik yapın:
+    1. Ambari `spark.eventlog.dir` UI ile ve `spark.history.fs.logDirectory` bu değişiklikler yapın:
 
         ```
         spark.eventlog.dir = hdfs://mycluster/hdp/spark2-events
         spark.history.fs.logDirectory = "hdfs://mycluster/hdp/spark2-events"
         ```
 
-    1. Şu sunucuda dizin oluşturma:
+    1. HDFS'de dizin oluşturma:
 
         ```
         hadoop fs -mkdir -p hdfs://mycluster/hdp/spark2-events
@@ -54,14 +54,14 @@ Bu hata için üç çözüm bulunmaktadır:
         hadoop fs -chmod -R o+t hdfs://mycluster/hdp/spark2-events
         ```
 
-    1. Tüm etkilenen Hizmetleri, ambarı Kullanıcı arabirimi aracılığıyla yeniden başlatın.
+    1. Ambari UI aracılığıyla etkilenen tüm hizmetleri yeniden başlatın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Sorununuzu görmüyorsanız veya sorununuzu çözemediyseniz, daha fazla destek için aşağıdaki kanallardan birini ziyaret edin:
+Sorununuzu görmediyseniz veya sorununuzu çözemiyorsanız, daha fazla destek için aşağıdaki kanallardan birini ziyaret edin:
 
-* Azure [topluluk desteği](https://azure.microsoft.com/support/community/)aracılığıyla Azure uzmanlarından yanıt alın.
+* [Azure Topluluk Desteği](https://azure.microsoft.com/support/community/)aracılığıyla Azure uzmanlarından yanıtlar alın.
 
-* [@AzureSupport](https://twitter.com/azuresupport) ile bağlanma-Azure Community 'yi doğru kaynaklara bağlayarak müşteri deneyimini iyileştirmeye yönelik resmi Microsoft Azure hesabı: yanıtlar, destek ve uzmanlar.
+* [@AzureSupport](https://twitter.com/azuresupport) Azure topluluğunu doğru kaynaklara bağlayarak müşteri deneyimini geliştirmek için resmi Microsoft Azure hesabına bağlanın: yanıtlar, destek ve uzmanlar.
 
-* Daha fazla yardıma ihtiyacınız varsa [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **destek** ' i seçin veya **Yardım + Destek** hub 'ını açın. Daha ayrıntılı bilgi için lütfen [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)konusunu inceleyin. Abonelik yönetimi ve faturalandırma desteği 'ne erişim Microsoft Azure aboneliğinize dahildir ve [Azure destek planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla teknik destek sağlanır.
+* Daha fazla yardıma ihtiyacınız varsa, [Azure portalından](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Menü çubuğundan **Destek'i** seçin veya **Yardım + destek** merkezini açın. Daha ayrıntılı bilgi için lütfen [Azure destek isteği nin nasıl oluşturulabildiğini](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)gözden geçirin. Abonelik Yönetimi'ne erişim ve faturalandırma desteği Microsoft Azure aboneliğinize dahildir ve Teknik Destek Azure [Destek Planlarından](https://azure.microsoft.com/support/plans/)biri aracılığıyla sağlanır.

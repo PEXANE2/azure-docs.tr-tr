@@ -1,51 +1,51 @@
 ---
-title: Azure Işlevleri HTTP Tetikleyicileri ve bağlamaları
-description: Azure Işlevleri 'nde HTTP Tetikleyicileri ve bağlamaları kullanmayı öğrenin.
+title: Azure İşlevleri HTTP tetikleyicileri ve bağlamalar
+description: Azure İşlevleri'nde HTTP tetikleyicilerini ve bağlamalarını kullanmayı öğrenin.
 author: craigshoemaker
 ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
 ms.openlocfilehash: 29b5e9c7673b4a730a41bf7cf2b1c4a2a86209ed
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77462114"
 ---
-# <a name="azure-functions-http-triggers-and-bindings-overview"></a>Azure Işlevleri HTTP Tetikleyicileri ve bağlamaları genel bakış
+# <a name="azure-functions-http-triggers-and-bindings-overview"></a>Azure İşlevleri HTTP tetikler ve bağlamalara genel bakış
 
-Azure Işlevleri, sunucusuz API 'Ler oluşturmak ve [Web kancalarına](https://en.wikipedia.org/wiki/Webhook)yanıt vermek için http istekleri aracılığıyla çağrılabilir.
+Azure Fonksiyonları, sunucusuz API'ler oluşturmak ve [webhook'lara](https://en.wikipedia.org/wiki/Webhook)yanıt vermek için HTTP istekleri aracılığıyla çağrılabilir.
 
 | Eylem | Tür |
 |---------|---------|
-| HTTP isteğinden bir işlev çalıştırma | [Tetikleyici](./functions-bindings-http-webhook-trigger.md) |
-| Bir işlevden HTTP yanıtı döndürme |[Çıkış bağlama](./functions-bindings-http-webhook-output.md) |
+| BIR HTTP isteğinden bir işlev çalıştırma | [Tetikleyici](./functions-bindings-http-webhook-trigger.md) |
+| Bir işlevden bir HTTP yanıtı döndürme |[Çıkış bağlama](./functions-bindings-http-webhook-output.md) |
 
-Bu makaledeki kod, sürüm 2. x ve üzeri Işlevlerde kullanılan .NET Core söz dizimini varsayılan olarak kullanır. 1\. x sözdizimi hakkında daha fazla bilgi için, bkz. [1. x işlevleri şablonları](https://github.com/Azure/azure-functions-templates/tree/v1.x/Functions.Templates/Templates).
+Bu makaledeki kod, Fonksiyonlar sürüm 2.x ve üstü kullanılan .NET Core sözdizimini varsayılan olarak kullanır. 1.x sözdizimi hakkında bilgi için [1.x işlevleri şablonlarına](https://github.com/Azure/azure-functions-templates/tree/v1.x/Functions.Templates/Templates)bakın.
 
-## <a name="add-to-your-functions-app"></a>Işlevler uygulamanıza ekleme
+## <a name="add-to-your-functions-app"></a>Fonksiyonlar uygulamanıza ekleme
 
-### <a name="functions-2x-and-higher"></a>İşlevler 2. x ve üzeri
+### <a name="functions-2x-and-higher"></a>Fonksiyonlar 2.x ve üzeri
 
-Tetikleyici ve bağlamalarla çalışma, uygun pakete başvurmanız gerekir. Diğer tüm uygulama türleri için Uzantı paketi kullanıldığında, .NET sınıf kitaplıkları için NuGet paketi kullanılır.
+Tetikleyici ve bağlamalarla çalışmak, uygun pakete başvurmanızı gerektirir. NuGet paketi .NET sınıf kitaplıkları için kullanılırken, uzantı paketi diğer tüm uygulama türleri için kullanılır.
 
-| Dil                                        | Ekleme ölçütü...                                   | Açıklamalar 
+| Dil                                        | Tarafından ekle...                                   | Açıklamalar 
 |-------------------------------------------------|---------------------------------------------|-------------|
-| C#                                              | [NuGet paketi]yükleniyor, sürüm 3. x | |
-| C#Betik, Java, JavaScript, Python, PowerShell | [Uzantı paketi] kaydediliyor          | [Azure Araçları uzantısının](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack) Visual Studio Code ile kullanılması önerilir. |
-| C#Betik (yalnızca çevrimiçi-Azure portal)         | Bağlama ekleme                            | İşlev uygulamanızı yeniden yayımlamak zorunda kalmadan mevcut bağlama uzantılarını güncelleştirmek için bkz. [uzantılarınızı güncelleştirme]. |
+| C#                                              | [NuGet paketini]yükleme , sürüm 3.x | |
+| C# Script, Java, JavaScript, Python, PowerShell | [Uzantı paketini] kaydetme          | [Azure Araçları uzantısı](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack) Visual Studio Code ile kullanılması önerilir. |
+| C# Script (yalnızca Azure portalında çevrimiçi)         | Bağlama ekleme                            | İşlev uygulamanızı yeniden yayımlamak zorunda kalmadan varolan bağlama uzantılarını güncelleştirmek için [bkz.] |
 
 [core tools]: ./functions-run-local.md
-[Uzantı paketi]: ./functions-bindings-register.md#extension-bundles
+[uzatma paketi]: ./functions-bindings-register.md#extension-bundles
 [NuGet paketi]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Http
-[Uzantılarınızı güncelleştirme]: ./install-update-binding-extensions-manual.md
+[Uzantılarınızı güncelleştirin]: ./install-update-binding-extensions-manual.md
 [Azure Tools extension]: https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-node-azure-pack
 
 ### <a name="functions-1x"></a>İşlevler 1.x
 
-1\. x uygulamalarının [Microsoft. Azure. WebJobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) NuGet paketine, sürüm 2. x 'e başvuran bir başvurusu otomatik olarak vardır.
+Fonksiyonlar 1.x uygulamaları otomatik olarak [Microsoft.Azure.WebJobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) NuGet paketi, sürüm 2.x bir başvuru var.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [HTTP isteğinden bir işlev çalıştırma](./functions-bindings-http-webhook-trigger.md)
-- [Bir işlevden HTTP yanıtı döndürme](./functions-bindings-http-webhook-output.md)
+- [BIR HTTP isteğinden bir işlev çalıştırma](./functions-bindings-http-webhook-trigger.md)
+- [Bir işlevden bir HTTP yanıtı döndürme](./functions-bindings-http-webhook-output.md)

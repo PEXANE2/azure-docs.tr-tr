@@ -1,6 +1,6 @@
 ---
-title: Oturum davranışını Yapılandırma-Azure Active Directory B2C | Microsoft Docs
-description: Azure Active Directory B2C 'de oturum davranışını yapılandırın.
+title: Oturum davranışını yapılandırma - Azure Active Directory B2C | Microsoft Dokümanlar
+description: Azure Etkin Dizin B2C'de oturum davranışını yapılandırın.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -11,51 +11,51 @@ ms.date: 04/16/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: c1d39fdbca9484f47ce0c8537c82247b75b2e3db
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78186820"
 ---
-# <a name="configure-session-behavior-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 'de oturum davranışını yapılandırma
+# <a name="configure-session-behavior-in-azure-active-directory-b2c"></a>Azure Etkin Dizin B2C'de oturum davranışını yapılandırma
 
-Bu özellik, [Kullanıcı başına akış temelinde](user-flow-overview.md)ayrıntılı denetim sağlar:
+Bu özellik, [kullanıcı başına akış bazında,](user-flow-overview.md)ince taneli denetim sağlar:
 
-- Azure AD B2C tarafından yönetilen Web uygulaması oturumlarının yaşam süreleri.
-- Azure AD B2C kiracınızdaki birden çok uygulama ve Kullanıcı akışı genelinde çoklu oturum açma (SSO) davranışı.
+- Azure AD B2C tarafından yönetilen web uygulama oturumlarının ömür boyu.
+- Azure AD B2C kiracınızda birden çok uygulama ve kullanıcı akışı nda tek oturum açma (SSO) davranışı.
 
-Bu ayarlar, parola sıfırlama Kullanıcı akışları için kullanılamaz.
+Bu ayarlar parola sıfırlama kullanıcı akışları için kullanılamaz.
 
-Azure AD B2C, Web uygulamalarında güvenli oturum açmayı etkinleştirmek için [OpenID Connect kimlik doğrulama protokolünü](openid-connect.md) destekler. Web uygulaması oturumlarını yönetmek için aşağıdaki özellikleri kullanabilirsiniz:
+Azure AD B2C, web uygulamalarında güvenli oturum açmasağlamak için [OpenID Connect kimlik doğrulama protokolünü](openid-connect.md) destekler. Web uygulama oturumlarını yönetmek için aşağıdaki özellikleri kullanabilirsiniz:
 
-## <a name="session-behavior-properties"></a>Oturum davranışı özellikleri
+## <a name="session-behavior-properties"></a>Oturum davranış özellikleri
 
-- **Web uygulaması oturumu ömrü (dakika)** -başarılı kimlik doğrulaması sırasında kullanıcının tarayıcısında depolanan Azure AD B2C's oturum tanımlama bilgisinin ömrü.
+- **Web uygulaması oturumu nun ömrü (dakika)** - Azure AD B2C'nin oturum çerezinin kullanım ömrü, başarılı bir kimlik doğrulaması üzerine kullanıcının tarayıcısında depolanır.
     - Varsayılan = 1440 dakika.
-    - En düşük (kapsamlı) = 15 dakika.
+    - Minimum (dahil) = 15 dakika.
     - Maksimum (dahil) = 1440 dakika.
-- **Web uygulaması oturumu zaman aşımı** -bu anahtar **mutlak**olarak ayarlandıysa, **Web uygulaması oturumu yaşam süresi (dakika)** tarafından belirtilen süre dolduktan sonra Kullanıcı yeniden kimlik doğrulamaya zorlanır. Bu anahtar **kayan** olarak ayarlandıysa (varsayılan ayar), Kullanıcı Web uygulamanızda sürekli olarak etkin olduğu sürece Kullanıcı oturum açmış olarak kalır.
-- **Çoklu oturum açma yapılandırması** B2C kiracınızda birden çok uygulamanız ve Kullanıcı akışınız varsa, **Çoklu oturum açma yapılandırma** özelliğini kullanarak bunlar genelinde kullanıcı etkileşimini yönetebilirsiniz. Özelliğini aşağıdaki ayarlardan birine ayarlayabilirsiniz:
-    - **Kiracı** -Bu ayar varsayılan ayardır. Bu ayarın kullanılması, B2C kiracınızdaki birden fazla uygulamanın ve Kullanıcı akışının aynı kullanıcı oturumunu paylaşmasına izin verir. Örneğin, bir Kullanıcı bir uygulamada oturum açtıktan sonra, Kullanıcı, contoso Boğmacy ' a erişerek, daha da sorunsuz bir şekilde oturum açabilir.
-    - **Uygulama** -Bu ayar, başka uygulamalardan bağımsız olarak bir uygulama için Kullanıcı oturumunu korumanıza olanak sağlar. Örneğin, kullanıcının contoso sahte Macy 'de (aynı kimlik bilgileriyle) oturum açmasını isterseniz, Kullanıcı zaten contoso alışverişe kaydolsa bile, aynı B2C kiracısındaki başka bir uygulama da vardır.
-    - **İlke** -Bu ayar, bir kullanıcı oturumunun, kendisini kullanan uygulamalardan bağımsız olarak bir Kullanıcı akışı için bakımını yapmanıza olanak sağlar. Örneğin, Kullanıcı oturum açmışsa ve çok faktörlü kimlik doğrulaması (MFA) adımını tamamlamışsa, Kullanıcı akışına bağlı olan oturumun süresi dolana kadar, kullanıcıya birden fazla uygulamanın daha yüksek güvenlik bölümlerine erişim verilebilir.
-    - **Devre dışı** -Bu ayar, kullanıcıyı ilkenin her çalıştırmasında Kullanıcı akışının tamamı boyunca çalışmaya zorlar.
+- **Web uygulaması oturum zaman aşımı** - Bu anahtar **Mutlak**olarak ayarlanırsa, kullanıcı Web **uygulaması oturum süresi (dakika)** tarafından belirtilen süre geçtikten sonra yeniden kimlik doğrulaması yapmak zorunda kalır. Bu anahtar **Rolling** (varsayılan ayar) olarak ayarlanmışsa, kullanıcı web uygulamanızda sürekli olarak etkin olduğu sürece oturum açmış olarak kalır.
+- **Tek oturum açma yapılandırması** B2C kiracınızda birden çok uygulama nız ve kullanıcı akışınız varsa, **Tek oturum açma yapılandırma** özelliğini kullanarak kullanıcı etkileşimlerini yönetebilirsiniz. Özelliği aşağıdaki ayarlardan birine ayarlayabilirsiniz:
+    - **Kiracı** - Bu ayar varsayılandır. Bu ayarı kullanmak, B2C kiracınızdaki birden çok uygulamanın ve kullanıcı akışının aynı kullanıcı oturumunu paylaşmasına olanak tanır. Örneğin, bir kullanıcı bir uygulamayı oturum alabildiği zaman, kullanıcı bir uygulamaya erişerek başka bir uygulama olan Contoso Pharmacy'de sorunsuz bir şekilde oturum açabilir.
+    - **Uygulama** - Bu ayar, diğer uygulamalardan bağımsız olarak yalnızca bir uygulama için bir kullanıcı oturumu tutmanızı sağlar. Örneğin, kullanıcının Contoso Pharmacy'de (aynı kimlik bilgileriyle) oturum açmasını istiyorsanız, kullanıcı aynı B2C kiracısı üzerinde başka bir uygulama olan Contoso Shopping'de zaten oturum açmış olsa bile.
+    - **İlke** - Bu ayar, kullanıcı oturumunu yalnızca kullanan uygulamalardan bağımsız olarak bir kullanıcı akışı için korumanızı sağlar. Örneğin, kullanıcı zaten oturum açmış ve çok faktörlü bir kimlik doğrulama (MFA) adımını tamamlamışsa, kullanıcı akışına bağlı oturumun süresi dolmadığı sürece, kullanıcıya birden çok uygulamanın daha yüksek güvenlikli bölümlerine erişim izni verilebilir.
+    - **Devre Dışı -** Bu ayar, kullanıcıyı ilkenin her yürütülmesinde tüm kullanıcı akışını çalıştırmaya zorlar.
 
-Aşağıdaki kullanım örnekleri şu özellikler kullanılarak etkinleştirilir:
+Aşağıdaki kullanım örnekleri bu özellikler kullanılarak etkinleştirilir:
 
-- Uygun Web uygulaması oturum ömrünü ayarlayarak sektörün güvenlik ve uyumluluk gereksinimlerini karşılayın.
-- Kullanıcının Web uygulamanızın yüksek güvenlikli bir bölümüyle etkileşimi sırasında ayarlanan süre dolduktan sonra kimlik doğrulamaya zorla.
+- Uygun web uygulaması oturumu yaşam ömürlerini ayarlayarak endüstrinizin güvenlik ve uyumluluk gereksinimlerini karşılayın.
+- Kullanıcının web uygulamanızın yüksek güvenlikli bir bölümüyle etkileşimi sırasında belirli bir süre sonra kimlik doğrulamasını zorlar.
 
 ## <a name="configure-the-properties"></a>Özellikleri yapılandırma
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
-2. Üst menüdeki **Dizin + abonelik** filtresini seçip Azure AD B2C kiracınızı içeren dizini seçerek Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun.
-3. Azure portal sol üst köşesindeki **tüm hizmetler** ' i seçin ve ardından **Azure AD B2C**' i arayıp seçin.
-4. **Kullanıcı akışları (ilkeler)** seçeneğini belirleyin.
+1. [Azure portalında](https://portal.azure.com)oturum açın.
+2. Üst menüdeki **Dizin + abonelik** filtresini seçerek ve Azure AD B2C kiracınızı içeren dizin seçerek Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun.
+3. Azure portalının sol üst köşesindeki **tüm hizmetleri** seçin ve ardından Azure **AD B2C'yi**arayın ve seçin.
+4. **Kullanıcı akışlarını (ilkeler)** seçin.
 5. Daha önce oluşturduğunuz kullanıcı akışını açın.
-6. **Özellikler**’i seçin.
-7. **Web uygulaması oturumu yaşam süresi (dakika)** , **Web uygulaması oturumu zaman aşımı**, **Çoklu oturum açma yapılandırması**yapılandırın ve gerektiğinde **oturum kapatma isteklerinde kimlik belirteci gerektir** .
+6. **Özellikleri**seçin.
+7. Web **uygulaması oturum ömrünü (dakika)**, **Web uygulaması oturum zaman aşım**, Tek oturum **yapılandırma**ve gerektiğinde oturum **açma isteklerinde Kimlik Belirteci gerektiren** yapılandırma.
 
-    ![Azure portal oturum davranışı özelliği ayarları](./media/session-behavior/session-behavior.png)
+    ![Azure portalında oturum davranışı özelliği ayarları](./media/session-behavior/session-behavior.png)
 
-8. **Kaydet**’e tıklayın.
+8. **Kaydet**'e tıklayın.

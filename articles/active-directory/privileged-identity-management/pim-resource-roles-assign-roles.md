@@ -1,6 +1,6 @@
 ---
-title: Privileged Identity Management Azure Active Directory Azure Kaynak rolleri atama | Microsoft Docs
-description: Azure AD Privileged Identity Management (PıM) içinde Azure Kaynak rolleri atamayı öğrenin.
+title: Ayrıcalıklı Kimlik Yönetimi'nde Azure kaynak rolleri atama - Azure Etkin Dizini | Microsoft Dokümanlar
+description: Azure AD Ayrıcalıklı Kimlik Yönetimi'nde (PIM) Azure kaynak rollerini nasıl atadiğinizi öğrenin.
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -16,15 +16,15 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 34051a31c6ccf69356f330d7c5ecb009f760857a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79266565"
 ---
-# <a name="assign-azure-resource-roles-in-privileged-identity-management"></a>Privileged Identity Management Azure Kaynak rolleri atama
+# <a name="assign-azure-resource-roles-in-privileged-identity-management"></a>Ayrıcalıklı Kimlik Yönetimi'nde Azure kaynak rollerini atama
 
-Azure Active Directory (Azure AD) Privileged Identity Management (PıM), yerleşik Azure Kaynak rollerinin yanı sıra (ancak bunlarla sınırlı olmamak üzere) özel roller yönetebilir:
+Azure Etkin Dizin (Azure AD) Ayrıcalıklı Kimlik Yönetimi (PIM), yerleşik Azure kaynak rollerinin yanı sıra aşağıdakiler dahil (ancak bunlarla sınırlı olmamak üzere) özel rolleri yönetebilir:
 
 - Sahip
 - Kullanıcı Erişimi Yöneticisi
@@ -33,98 +33,98 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PıM), yerleş
 - Güvenlik Yöneticisi
 
 > [!NOTE]
-> Sahibine veya Kullanıcı erişimi Yöneticisi abonelik rollerine atanan bir grubun kullanıcıları veya üyeleri ve Azure AD 'de abonelik yönetimine olanak tanıyan Azure AD Genel yöneticileri, varsayılan olarak Kaynak Yöneticisi izinlerine sahiptir. Bu yöneticiler, rol atayabilir, rol ayarlarını yapılandırabilir ve Azure kaynakları için Privileged Identity Management kullanarak erişimi gözden geçirebilir. Kullanıcı, Kaynak Yöneticisi izinleri olmayan kaynaklar için Privileged Identity Management yönetemez. [Azure kaynakları için yerleşik rollerin](../../role-based-access-control/built-in-roles.md)listesini görüntüleyin.
+> Sahibi veya Kullanıcı Erişim Yöneticisi abonelik rollerine atanan bir grubun kullanıcıları veya üyeleri ve Azure AD'de abonelik yönetimini etkinleştiren Azure AD Global yöneticileri varsayılan olarak Kaynak yöneticisi izinlerine sahiptir. Bu yöneticiler, Azure kaynakları için Ayrıcalıklı Kimlik Yönetimi'ni kullanarak roller atayabilir, rol ayarlarını yapılandırabilir ve erişimi gözden geçirebilir. Bir kullanıcı, Kaynak yöneticisinin izinleri olmadan Kaynaklar için Ayrıcalıklı Kimlik Yönetimi'ni yönetemez. Azure kaynakları için yerleşik roller listesini [görüntüleyin.](../../role-based-access-control/built-in-roles.md)
 
 ## <a name="assign-a-role"></a>Rol atama
 
-Bir kullanıcıyı Azure Kaynak rolüne uygun hale getirmek için aşağıdaki adımları izleyin.
+Bir kullanıcıyı Azure kaynak rolü için uygun hale getirmek için aşağıdaki adımları izleyin.
 
-1. [Ayrıcalıklı rol yöneticisi](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) rolünün üyesi olan bir kullanıcıyla [Azure Portal](https://portal.azure.com/) oturum açın.
+1. [Ayrıcalıklı rol yöneticisi](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) rolünün bir üyesi olan bir kullanıcıyla Azure [portalında](https://portal.azure.com/) oturum açın.
 
-    Privileged Identity Management yönetmek için başka bir yöneticiye erişim verme hakkında daha fazla bilgi için bkz. [Privileged Identity Management yönetmek için diğer yöneticilere erişim verme](pim-how-to-give-access-to-pim.md).
+    Ayrıcalıklı Kimlik Yönetimi'ni yönetmek için başka bir yöneticiye erişim izni verme hakkında bilgi için, [Ayrıcalıklı Kimlik Yönetimi'ni yönetmek için diğer yöneticilere erişim izni verilmesi bölümüne](pim-how-to-give-access-to-pim.md)bakın.
 
-1. **Azure AD Privileged Identity Management**açın.
+1. **Azure AD Ayrıcalıklı Kimlik Yönetimi'ni**açın.
 
-1. **Azure kaynakları**' nı seçin.
+1. **Azure kaynaklarını**seçin.
 
-1. Yönetilen kaynakların listesini filtrelemek için **kaynak filtresini** kullanın.
+1. Yönetilen kaynaklar listesini filtrelemek için **Kaynak filtresini** kullanın.
 
-    ![Yönetilecek Azure kaynakları listesi](./media/pim-resource-roles-assign-roles/resources-list.png)
+    ![Yönetilen Azure kaynakları listesi](./media/pim-resource-roles-assign-roles/resources-list.png)
 
-1. Yönetmek istediğiniz kaynağı bir abonelik veya yönetim grubu gibi seçin.
+1. Abonelik veya yönetim grubu gibi yönetmek istediğiniz kaynağı seçin.
 
-1. Yönet altında, Azure kaynakları rollerinin listesini görmek için **Roller** ' i seçin.
+1. Yönet'in altında, Azure kaynaklarının rol listesini görmek için **Roller'i** seçin.
 
     ![Azure kaynakları rolleri](./media/pim-resource-roles-assign-roles/resources-roles.png)
 
-1. Yeni atama bölmesini açmak için **üye Ekle** ' yi seçin.
+1. Yeni atama bölmesini açmak için **üye ekle'yi** seçin.
 
-1. Rol Seç bölmesini açmak için **Rol Seç** ' i seçin.
+1. Rol bölmesini seçmek için **rol seçin'i** seçin.
 
     ![Yeni atama bölmesi](./media/pim-resource-roles-assign-roles/resources-select-role.png)
 
-1. Atamak istediğiniz bir rol seçin ve ardından **Seç**' e tıklayın.
+1. Atamak istediğiniz bir rolü seçin ve sonra **Seç'i**tıklatın.
 
-    Üye Seç veya grup bölmesi açılır.
+    Üye seç veya grup bölmesi açılır.
 
-1. Role atamak istediğiniz üye veya grubu seçin ve ardından **Seç**' e tıklayın.
+1. Role atamak istediğiniz bir üye veya grubu seçin ve ardından **Seç'i**tıklatın.
 
     ![Üye veya grup bölmesi seçin](./media/pim-resource-roles-assign-roles/resources-select-member-or-group.png)
 
     Üyelik ayarları bölmesi açılır.
 
-1. **Atama türü** listesinde **uygun** veya **etkin**' i seçin.
+1. Atama **türü** listesinde **Uygun** veya **Etkin'i**seçin.
 
-    ![Üyelik ayarları bölmesi](./media/pim-resource-roles-assign-roles/resources-membership-settings-type.png)
+    ![Üyelikler ayarları bölmesi](./media/pim-resource-roles-assign-roles/resources-membership-settings-type.png)
 
-    Azure kaynakları için Privileged Identity Management iki farklı atama türü sağlar:
+    Azure kaynakları için ayrıcalıklı kimlik yönetimi iki farklı atama türü sağlar:
 
-    - **Uygun** atamalar, rolü kullanmak için bir eylem gerçekleştirmek üzere rolün üyesini gerektirir. Eylemler, bir Multi-Factor Authentication (MFA) denetimi gerçekleştirmeye, iş gerekçesinin sağlanmasından veya belirlenen onaylayanlardan onay isteğinde bulunabilir.
+    - **Uygun** atamalar, rolü kullanmak için bir eylem gerçekleştirmek için rolün üyesigerektirir. Eylemler, çok faktörlü bir kimlik doğrulama (MFA) denetimi gerçekleştirmeyi, bir iş gerekçesi sağlamayı veya atanan onaylayıcılardan onay istemeyi içerebilir.
 
-    - **Etkin** atamalar, üyenin rolü kullanmak için herhangi bir eylem gerçekleştirmesini gerektirmez. Etkin olarak atanan üyelerin her zaman role atanan ayrıcalıkları vardır.
+    - **Etkin** atamalar, üyenin rolü kullanmak için herhangi bir eylem gerçekleştirmesini gerektirmez. Etkin olarak atanan üyeler, her zaman bu role atanan ayrıcalıklara sahiptir.
 
-1. Atama kalıcı olmalıdır (kalıcı olarak uygun veya kalıcı olarak atanabilir), **kalıcı** onay kutusunu seçin.
+1. Atama kalıcı (kalıcı olarak uygun veya kalıcı olarak atanmış) olmalıdır, **Kalıcı** onay kutusunu seçin.
 
-    Rol ayarlarına bağlı olarak, onay kutusu görünmeyebilir veya hiç değiştirilebilir olmayabilir.
+    Rol ayarlarına bağlı olarak, onay kutusu görünmeyebilir veya değiştirilemez olabilir.
 
-1. Belirli bir atama süresi belirtmek için onay kutusunu temizleyin ve başlangıç ve/veya bitiş tarih ve saat kutularını değiştirin.
+1. Belirli bir atama süresini belirtmek için onay kutusunu temizleyin ve başlangıç ve/veya bitiş tarihi ve saat kutularını değiştirin.
 
-    ![Üyelik ayarları-Tarih ve saat](./media/pim-resource-roles-assign-roles/resources-membership-settings-date.png)
+    ![Üyelik ayarları - tarih ve saat](./media/pim-resource-roles-assign-roles/resources-membership-settings-date.png)
 
-1. İşiniz bittiğinde **bitti**' yi seçin.
+1. Tamamlandığında, **Bitti'yi**seçin.
 
-    ![Yeni atama-Ekle](./media/pim-resource-roles-assign-roles/resources-new-assignment-add.png)
+    ![Yeni atama - Ekle](./media/pim-resource-roles-assign-roles/resources-new-assignment-add.png)
 
-1. Yeni rol atamasını oluşturmak için **Ekle**' yi seçin. Durum bildirimi görüntülenir.
+1. Yeni rol ataması oluşturmak için **Ekle'yi**seçin. Durum bildirimi görüntülenir.
 
-    ![Yeni atama-bildirim](./media/pim-resource-roles-assign-roles/resources-new-assignment-notification.png)
+    ![Yeni atama - Bildirim](./media/pim-resource-roles-assign-roles/resources-new-assignment-notification.png)
 
-## <a name="update-or-remove-an-existing-role-assignment"></a>Var olan bir rol atamasını güncelleştirme veya kaldırma
+## <a name="update-or-remove-an-existing-role-assignment"></a>Varolan bir rol atamayı güncelleştirme veya kaldırma
 
-Varolan bir rol atamasını güncelleştirmek veya kaldırmak için bu adımları izleyin.
+Varolan bir rol atamasını güncelleştirmek veya kaldırmak için aşağıdaki adımları izleyin.
 
-1. **Azure AD Privileged Identity Management**açın.
+1. **Azure AD Ayrıcalıklı Kimlik Yönetimi'ni**açın.
 
-1. **Azure kaynakları**' nı seçin.
+1. **Azure kaynaklarını**seçin.
 
-1. Yönetmek istediğiniz kaynağı bir abonelik veya yönetim grubu gibi seçin.
+1. Abonelik veya yönetim grubu gibi yönetmek istediğiniz kaynağı seçin.
 
-1. Yönet altında, Azure kaynakları rollerinin listesini görmek için **Roller** ' i seçin.
+1. Yönet'in altında, Azure kaynaklarının rol listesini görmek için **Roller'i** seçin.
 
-    ![Azure Kaynak rolleri-rol seçin](./media/pim-resource-roles-assign-roles/resources-update-select-role.png)
+    ![Azure kaynak rolleri - Rolü seçin](./media/pim-resource-roles-assign-roles/resources-update-select-role.png)
 
 1. Güncelleştirmek veya kaldırmak istediğiniz rolü seçin.
 
-1. **Uygun roller** veya **etkin roller** sekmelerinde rol atamasını bulun.
+1. **Uygun rollerdeki** veya Etkin **roller** sekmelerindeki rol atamasını bulun.
 
-    ![Rol atamasını güncelleştirme veya kaldırma](./media/pim-resource-roles-assign-roles/resources-update-remove.png)
+    ![Rol atamayı güncelleştirme veya kaldırma](./media/pim-resource-roles-assign-roles/resources-update-remove.png)
 
-1. Rol atamasını güncelleştirmek veya kaldırmak için **Güncelleştir** ' i veya **Kaldır** ' ı seçin.
+1. Rol atamasını güncelleştirmek veya kaldırmak için **Güncelleştir** veya **Kaldır'ı** seçin.
 
-    Rol atamasını genişletme hakkında daha fazla bilgi için, bkz. [Privileged Identity Management Azure Kaynak rollerini genişletme veya yenileme](pim-resource-roles-renew-extend.md).
+    Rol ataması genişletme hakkında bilgi için [bkz.](pim-resource-roles-renew-extend.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Privileged Identity Management Azure Kaynak rollerini genişletme veya yenileme](pim-resource-roles-renew-extend.md)
-- [Privileged Identity Management Azure Kaynak rolü ayarlarını yapılandırma](pim-resource-roles-configure-role-settings.md)
-- [Privileged Identity Management Azure AD rolleri atama](pim-how-to-add-role-to-user.md)
+- [Ayrıcalıklı Kimlik Yönetimi'nde Azure kaynak rollerini genişletme veya yenileme](pim-resource-roles-renew-extend.md)
+- [Ayrıcalıklı Kimlik Yönetimi'nde Azure kaynak rol ayarlarını yapılandırma](pim-resource-roles-configure-role-settings.md)
+- [Ayrıcalıklı Kimlik Yönetiminde Azure AD rollerini atama](pim-how-to-add-role-to-user.md)

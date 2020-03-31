@@ -1,80 +1,80 @@
 ---
-title: Azure Güvenlik Merkezi 'nde özel güvenlik ilkeleri oluşturma | Microsoft Docs
+title: Azure Güvenlik Merkezi'nde özel güvenlik ilkeleri oluşturma | Microsoft Dokümanlar
 description: Azure Güvenlik Merkezi tarafından izlenen Azure özel ilke tanımları.
 services: security-center
 author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 03/25/2020
 ms.author: memildin
-ms.openlocfilehash: 34dbace304ccf70891ef53dd768de60d87e26967
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.openlocfilehash: c709890ae6c57a001c6a0e9df4e973bd3bd24602
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75666644"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80258269"
 ---
-# <a name="using-custom-security-policies-preview"></a>Özel güvenlik ilkeleri kullanma (Önizleme)
+# <a name="using-custom-security-policies"></a>Özel güvenlik ilkelerini kullanma
 
-Azure Güvenlik Merkezi, sistem ve ortamınızın güvenliğini sağlamaya yardımcı olmak için güvenlik önerileri oluşturur. Bu öneriler, tüm müşterilere sağlanan genel, varsayılan güvenlik ilkesine dahil olan sektör en iyi uygulamalarına dayalıdır. Ayrıca, güvenlik merkezi 'nin sektör ve mevzuat standartları hakkında bilgi edinmeleri de gelebilir.
+Azure Güvenlik Merkezi, sistemlerinizin ve ortamınızın güvenliğini sağlamaya yardımcı olmak için güvenlik önerileri oluşturur. Bu öneriler, tüm müşterilere sağlanan genel, varsayılan güvenlik ilkesine dahil edilen endüstrinin en iyi uygulamalarını temel alır. Ayrıca Güvenlik Merkezi'nin endüstri ve mevzuat standartları hakkındaki bilgisinden de gelebilirler.
 
-Bu önizleme özelliği ile kendi *özel* girişimlerinizi ekleyebilirsiniz. Daha sonra ortamınız oluşturduğunuz ilkeleri izmazsa öneriler alacaksınız. Oluşturmakta olduğunuz özel girişimler, mevzuat uyumluluklarını [geliştirme](security-center-compliance-dashboard.md)öğreticisinde açıklanan, mevzuat uyumluluk panosundaki yerleşik girişimlerin yanında görüntülenir.
+Bu özellik sayesinde, kendi *özel* girişimlerinizi ekleyebilirsiniz. Ortamınız oluşturduğunuz ilkelere uymuyorsa öneriler alırsınız. Oluşturduğunuz özel girişimler, [öğreticide](security-center-compliance-dashboard.md)açıklanan mevzuata uygunluk panosunda yerleşik girişimlerin yanında görünür.
 
-[Burada](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#definition-location) açıklandığı gibi, Azure ilke belgelerinde, özel girişim'niz için bir konum belirttiğinizde bir yönetim grubu veya abonelik olması gerekir. 
+Azure İlkesi belgelerinde [burada](https://docs.microsoft.com/azure/governance/policy/concepts/definition-structure#definition-location) tartışıldığı gibi, özel girişiminiz için bir konum belirttiğinizde, bir yönetim grubu veya abonelik olmalıdır. 
 
 ## <a name="to-add-a-custom-initiative-to-your-subscription"></a>Aboneliğinize özel bir girişim eklemek için 
 
-1. Güvenlik Merkezi 'nin kenar çubuğundan **güvenlik ilkesi** sayfasını açın.
+1. Güvenlik Merkezi'nin kenar çubuğundan **Güvenlik ilkesi** sayfasını açın.
 
-1. Özel bir girişim eklemek istediğiniz bir abonelik veya yönetim grubu seçin.
+1. Özel bir girişim eklemek istediğiniz bir abonelik veya Yönetim Grubu seçin.
 
-    [Özel ilkenizi oluşturacağınız bir abonelik ![seçin](media/custom-security-policies/custom-policy-selecting-a-subscription.png)](media/custom-security-policies/custom-policy-selecting-a-subscription.png#lightbox)
+    [![Özel politikanızı oluşturacağınız bir abonelik seçme](media/custom-security-policies/custom-policy-selecting-a-subscription.png)](media/custom-security-policies/custom-policy-selecting-a-subscription.png#lightbox)
 
     > [!NOTE]
-    > Güvenlik Merkezi 'nde değerlendirilmek ve gösterilmesi için, abonelik düzeyinde (veya üzeri) özel standartlar eklemeniz gerekir. 
+    > Güvenlik Merkezi'nde değerlendirilmeleri ve görüntülenmeleri için abonelik düzeyinde (veya daha yüksek) özel standartlar eklemeniz gerekir. 
     >
     > Özel bir standart eklediğinizde, bu kapsama bir *girişim* atar. Bu nedenle, bu atama için gereken en geniş kapsamı seçmenizi öneririz.
 
-1. Güvenlik İlkesi sayfasında, özel girişimlerinizin (Önizleme) altında **özel girişim Ekle**' ye tıklayın.
+1. Güvenlik ilkesi sayfasında, özel girişimleriniz **altında, özel bir girişim ekle'yi**tıklatın.
 
-    [![* * özel girişim Ekle * * öğesine tıklayın.](media/custom-security-policies/custom-policy-add-initiative.png)](media/custom-security-policies/custom-policy-add-initiative.png#lightbox)
+    [![**Özel bir girişim ekle** seçeneğini tıklatın**](media/custom-security-policies/custom-policy-add-initiative.png)](media/custom-security-policies/custom-policy-add-initiative.png#lightbox)
 
     Aşağıdaki sayfa görüntülenir:
 
     ![İlke oluşturma veya ekleme](media/custom-security-policies/create-or-add-custom-policy.png)
 
-1. Özel girişimler Ekle sayfasında, kuruluşunuzda önceden oluşturulmuş özel ilkelerin listesini gözden geçirin. Aboneliğinize atamak istediğiniz bir tane görürseniz **Ekle**' ye tıklayın. Listede gereksinimlerinizi karşılayan bir girişim yoksa, bu adımı atlayın.
+1. Özel girişimler ekle sayfasında, kuruluşunuzda zaten oluşturulmuş özel ilkelerin listesini gözden geçirin. Aboneliğinize atamak istediğiniz birini görürseniz **Ekle'yi**tıklatın. Listede ihtiyaçlarınızı karşılayan bir girişim yoksa, bu adımı atlayın.
 
 1. Yeni bir özel girişim oluşturmak için:
 
-    1. **Yeni oluştur**' a tıklayın.
+    1. **Yeni Oluştur'u**tıklatın.
     1. Tanımın konumunu ve adını girin.
-    1. Dahil edilecek ilkeleri seçin ve **Ekle**' ye tıklayın.
-    1. İstediğiniz parametreleri girin.
-    1. **Save (Kaydet)** düğmesine tıklayın.
-    1. Özel girişimler Ekle sayfasında Yenile ' ye tıklayın ve yeni girişim kullanılabilir olarak gösterilir.
-    1. **Ekle** ' ye tıklayın ve aboneliğinize atayın.
+    1. Eklemek için ilkeleri seçin ve **Ekle'yi**tıklatın.
+    1. İstenilen parametreleri girin.
+    1. **Kaydet**'e tıklayın.
+    1. Özel girişimler ekle sayfasında, yenile'yi tıklatın ve yeni girişiminiz kullanılabilir olarak gösterilir.
+    1. **Ekle'yi** tıklatın ve aboneliğinize atayın.
 
     > [!NOTE]
-    > Yeni girişimler oluşturmak için abonelik sahibi kimlik bilgileri gerekir. Azure rolleri hakkında daha fazla bilgi için bkz. [Azure Güvenlik Merkezi 'Nde izinler](security-center-permissions.md).
+    > Yeni girişimler oluşturmak için abonelik sahibi kimlik bilgileri gerekir. Azure rolleri hakkında daha fazla bilgi için Azure [Güvenlik Merkezi'ndeki İzinler'e](security-center-permissions.md)bakın.
 
-    Yeni girişim devreye girer ve etkiyi aşağıdaki iki yolla görebilirsiniz:
+    Yeni girişiminiz yürürlüğe girer ve etkisini aşağıdaki iki şekilde görebilirsiniz:
 
-    * Güvenlik Merkezi kenar çubuğundan Ilke & uyumluluğu altında, **mevzuat uyumluluğu**' nu seçin. Uyumluluk panosu, yeni özel girişiminizi yerleşik girişimlerle birlikte göstermek için açılır.
+    * Güvenlik Merkezi kenar çubuğundan, Politika & Uyumluluk **kapsamında, Mevzuata uygunluk'u**seçin. Uyumluluk panosu, yerleşik girişimlerin yanı sıra yeni özel girişiminizi göstermek için açılır.
     
-    * Ortamınız tanımladığınız ilkeleri izmazsa öneriler almaya başlar.
+    * Ortamınız tanımladığınız ilkeleri izlemezse öneriler almaya başlarsınız.
 
-1. İlkenize yönelik sonuç önerilerini görmek için kenar çubuğundan **öneriler** ' e tıklayarak öneriler sayfasını açın. Öneriler "özel" bir etiketle görüntülenir ve yaklaşık bir saat içinde kullanılabilir.
+1. İlkiniz için ortaya çıkan önerileri görmek için, öneriler sayfasını açmak için kenar çubuğundan **Öneriler'i** tıklatın. Öneriler bir "Özel" etiketiyle görünür ve yaklaşık bir saat içinde kullanılabilir.
 
-    [![özel öneriler](media/custom-security-policies/custom-policy-recommendations.png)](media/custom-security-policies/custom-policy-recommendations-in-context.png#lightbox)
+    [![Özel öneriler](media/custom-security-policies/custom-policy-recommendations.png)](media/custom-security-policies/custom-policy-recommendations-in-context.png#lightbox)
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Bu makalede, özel güvenlik ilkeleri oluşturmayı öğrendiniz. 
 
-Diğer ilgili malzemeler için aşağıdaki makalelere bakın: 
+Diğer ilgili materyaller için aşağıdaki makalelere bakın: 
 
 - [Güvenlik ilkelerine genel bakış](tutorial-security-policy.md)
 - [Yerleşik güvenlik ilkelerinin listesi](security-center-policy-definitions.md)

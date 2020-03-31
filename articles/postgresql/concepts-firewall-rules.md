@@ -1,74 +1,74 @@
 ---
-title: Güvenlik duvarı kuralları-PostgreSQL için Azure veritabanı-tek sunucu
-description: Bu makalede, PostgreSQL için Azure veritabanı 'na bağlanmak üzere Güvenlik Duvarı kurallarının nasıl kullanılacağı açıklanır-tek sunucu.
+title: Güvenlik duvarı kuralları - PostgreSQL için Azure Veritabanı - Tek Sunucu
+description: Bu makalede, PostgreSQL - Single Server için Azure Veritabanı'na bağlanmak için güvenlik duvarı kurallarının nasıl kullanılacağı açıklanmaktadır.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/15/2020
 ms.openlocfilehash: 5d462be1caa3787cb7ff9a455be595ec5784eefe
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/16/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76157279"
 ---
-# <a name="firewall-rules-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure veritabanı 'nda güvenlik duvarı kuralları-tek sunucu
-PostgreSQL için Azure veritabanı sunucu güvenlik duvarı, hangi bilgisayarların izin olduğunu belirtene kadar veritabanı sunucunuza tüm erişimi engeller. Güvenlik Duvarı, her isteğin kaynak IP adresini temel alarak sunucuya erişim izni verir.
+# <a name="firewall-rules-in-azure-database-for-postgresql---single-server"></a>PostgreSQL için Azure Veritabanı'nda Güvenlik Duvarı kuralları - Tek Sunucu
+PostgreSQL sunucu güvenlik duvarı için Azure Veritabanı, hangi bilgisayarların izni olduğunu belirtene kadar veritabanı sunucunuza tüm erişimi engeller. Güvenlik duvarı, her isteğin menşeli IP adresine bağlı olarak sunucuya erişim sağlar.
 Güvenlik duvarınızı yapılandırmak için kabul edilebilir IP adreslerinin aralıklarını belirten güvenlik duvarı kuralları oluşturun. Sunucu düzeyinde güvenlik duvarı kuralları oluşturabilirsiniz.
 
-**Güvenlik duvarı kuralları:** Bu kurallar, istemcilerin tüm PostgreSQL sunucusu için Azure veritabanı 'na, diğer bir deyişle, aynı mantıksal sunucu içindeki tüm veritabanlarına erişmesini sağlar. Sunucu düzeyinde güvenlik duvarı kuralları Azure portal veya Azure CLı komutları kullanılarak yapılandırılabilir. Sunucu düzeyinde güvenlik duvarı kuralları oluşturmak için, abonelik sahibi veya abonelik katılımcısı olmanız gerekir.
+**Güvenlik duvarı kuralları:** Bu kurallar, istemcilerin PostgreSQL Server için tüm Azure Veritabanınıza, yani aynı mantıksal sunucudaki tüm veritabanlarına erişmesini sağlar. Sunucu düzeyinde güvenlik duvarı kuralları, Azure portalı kullanılarak veya Azure CLI komutları kullanılarak yapılandırılabilir. Sunucu düzeyinde güvenlik duvarı kuralları oluşturmak için abonelik sahibi veya abonelik katılımcısı olmalısınız.
 
 ## <a name="firewall-overview"></a>Güvenlik duvarına genel bakış
-PostgreSQL için Azure veritabanı sunucunuza yönelik tüm veritabanı erişimi, güvenlik duvarı tarafından varsayılan olarak engellenir. Sunucunuzu başka bir bilgisayardan kullanmaya başlamak için, sunucunuza erişimi etkinleştirmek üzere bir veya daha fazla sunucu düzeyi güvenlik duvarı kuralı belirtmeniz gerekir. Internet 'ten izin verilecek IP adresi aralıklarını belirtmek için güvenlik duvarı kurallarını kullanın. Azure portal web sitesinin kendisi için erişim, güvenlik duvarı kurallarından etkilenmez.
-Internet 'ten ve Azure 'dan gelen bağlantı girişimleri, aşağıdaki diyagramda gösterildiği gibi ilk olarak, PostgreSQL veritabanınıza ulaşabilmesi için önce güvenlik duvarından geçmesi gerekir:
+PostgreSQL sunucusu için Azure Veritabanınıza tüm veritabanı erişimi varsayılan olarak güvenlik duvarı tarafından engellenir. Sunucunuzu başka bir bilgisayardan kullanmaya başlamak için, sunucunuza erişimi etkinleştirmek için bir veya daha fazla sunucu düzeyinde güvenlik duvarı kuralı belirtmeniz gerekir. İzin vermek için Internet'ten hangi IP adresinin aralıklarını belirtecek güvenlik duvarı kurallarını kullanın. Azure portalı web sitesine erişim güvenlik duvarı kurallarından etkilenmez.
+Aşağıdaki diyagramda gösterildiği gibi, Internet ve Azure'dan gelen bağlantı girişimlerinin, PostgreSQL Veritabanınıza erişebilmeleri için önce güvenlik duvarından geçmesi gerekir:
 
-![Güvenlik duvarının nasıl çalıştığına ilişkin örnek akış](media/concepts-firewall-rules/1-firewall-concept.png)
+![Güvenlik duvarının nasıl çalıştığına örnek akış](media/concepts-firewall-rules/1-firewall-concept.png)
 
 ## <a name="connecting-from-the-internet"></a>İnternet'ten bağlanma
-Sunucu düzeyinde güvenlik duvarı kuralları, PostgreSQL için Azure veritabanı sunucusu üzerindeki tüm veritabanları için geçerlidir. İstek IP adresi sunucu düzeyinde güvenlik duvarı kurallarında belirtilen aralıklardan biri içindeyse, bağlantı izni verilir.
-İsteğin IP adresi sunucu düzeyinde güvenlik duvarı kurallarında belirtilen aralıklar dahilinde değilse, bağlantı isteği başarısız olur.
-Örneğin, uygulamanız PostgreSQL için JDBC sürücüsüyle bağlanıyorsa, güvenlik duvarı bağlantıyı engellediği zaman bu hatayla karşılaşabilirsiniz.
-> Java. util. eşzamanlı. ExecutionException: Java. lang. RuntimeException: org. PostgreSQL. util. PSQLException: ÖNEMLI: Ana bilgisayar "123.45.67.890", Kullanıcı "AdminUser", veritabanı "PostgreSQL", SSL için bir PG\_HBA. conf girdisi
+Sunucu düzeyinde güvenlik duvarı kuralları, PostgreSQL sunucusu için aynı Azure Veritabanı'ndaki tüm veritabanları için geçerlidir. İstek IP adresi sunucu düzeyinde güvenlik duvarı kurallarında belirtilen aralıklardan biri içindeyse, bağlantı izni verilir.
+İsteğin IP adresi sunucu düzeyindegüvenlik duvarı kurallarının herhangi birinde belirtilen aralıklarda değilse, bağlantı isteği başarısız olur.
+Örneğin, uygulamanız PostgreSQL için JDBC sürücüsüne bağlanıyorsa, güvenlik duvarı bağlantıyı engellediğinde bağlanmaya çalışan bu hatayla karşılaşabilirsiniz.
+> java.util.concurrent.ExecutionException: java.lang.RuntimeException: org.postgresql.util.PSQLException: FATAL: host "123.45.67.890", kullanıcı "adminuser", veritabanı "postgresql", SSL için hiçbir pg\_hba.conf giriş
 
 ## <a name="connecting-from-azure"></a>Azure'dan bağlanma
-Herhangi bir uygulamanın veya hizmetin giden IP adresini bulmanız ve bu IP adreslerine veya aralıklarına açıkça erişim izni vermeniz önerilir. Örneğin, bir Azure App Service giden IP adresini bulabilir veya bir sanal makineye ya da başka bir kaynağa bağlı bir genel IP kullanabilirsiniz (sanal makinenin hizmet uç noktaları üzerinden özel IP 'si ile bağlanma hakkında bilgi için aşağıya bakın). 
+Herhangi bir uygulamanın veya hizmetin giden IP adresini bulmanız ve bu bireysel IP adreslerine veya aralıklarına erişime açıkça izin vermeniz önerilir. Örneğin, bir Azure Uygulama Hizmetinin giden IP adresini bulabilir veya sanal bir makineye veya başka bir kaynağa bağlı genel bir IP kullanabilirsiniz (hizmet bitiş noktaları üzerinden sanal makinenin özel IP'sine bağlanma hakkında bilgi için aşağıya bakın). 
 
-Azure hizmetiniz için sabit bir giden IP adresi yoksa, tüm Azure veri merkezi IP adreslerinden gelen bağlantıları etkinleştirmeyi deneyebilirsiniz. Bu ayar, **bağlantı güvenliği** bölmesinden **Açık '** a ve **Kaydet**' e basarak **Azure hizmetlerine erişime izin ver** seçeneği ayarlanarak Azure Portal etkinleştirilebilir. Azure CLı 'dan, başlangıç ve bitiş adreslerini 0.0.0.0 değerine eşit bir güvenlik duvarı kuralı ayarı eşdeğerdir. Bağlantı girişimine izin verilmiyorsa, istek PostgreSQL için Azure veritabanı sunucusuna ulaşmaz.
+Azure hizmetiniz için sabit giden bir IP adresi kullanılamıyorsa, tüm Azure veri merkezi IP adreslerinden bağlantılar etkinleştirmeyi düşünebilirsiniz. Bu ayar, **Azure hizmetlerine Erişime İzin Verme** seçeneğini Bağlantı **güvenlik** bölmesinden **A.C.'ye** ayarlayarak ve **Kaydet'e**vurarak Azure portalından etkinleştirilebilir. Azure CLI'den, 0.0.0.0'a eşit başlangıç ve bitiş adresine sahip bir güvenlik duvarı kuralı ayarı eşdeğeri yapar. Bağlantı denemesine izin verilmezse, istek PostgreSQL sunucusu için Azure Veritabanı'na ulaşmaz.
 
 > [!IMPORTANT]
-> **Azure hizmetlerine erişime Izin ver** seçeneği, güvenlik duvarını diğer müşterilerin aboneliklerinden gelen bağlantılar da dahil olmak üzere Azure 'daki tüm bağlantılara izin verecek şekilde yapılandırır. Bu seçeneği belirlerken, oturum açma ve kullanıcı izinlerinizin erişimi yalnızca yetkili kullanıcılarla sınırladığından emin olun.
+> **Azure hizmetlerine Erişime İzin Verme** seçeneği, güvenlik duvarını diğer müşterilerin aboneliklerinden gelen bağlantılar da dahil olmak üzere Azure'daki tüm bağlantılara izin verecek şekilde yapılandırır. Bu seçeneği belirlerken, oturum açma ve kullanıcı izinlerinizin erişimi yalnızca yetkili kullanıcılarla sınırladığından emin olun.
 > 
 
-![Portalda Azure hizmetlerine erişime Izin ver yapılandırma](media/concepts-firewall-rules/allow-azure-services.png)
+![Yapılandırma Portalında Azure hizmetlerine erişime izin ver](media/concepts-firewall-rules/allow-azure-services.png)
 
-### <a name="connecting-from-a-vnet"></a>VNet 'ten bağlanma
-VNet 'ten PostgreSQL için Azure veritabanı sunucusuna güvenli bir şekilde bağlanmak için [sanal ağ hizmet uç noktalarını](./concepts-data-access-and-security-vnet.md)kullanmayı göz önünde bulundurun. 
+### <a name="connecting-from-a-vnet"></a>VNet'ten bağlanma
+Bir VNet'ten PostgreSQL sunucusu için Azure Veritabanınıza güvenli bir şekilde bağlanmak için [VNet hizmet uç noktalarını](./concepts-data-access-and-security-vnet.md)kullanmayı düşünün. 
 
 ## <a name="programmatically-managing-firewall-rules"></a>Güvenlik duvarı kurallarını programlı bir şekilde yönetme
-Azure portal ek olarak, güvenlik duvarı kuralları Azure CLı kullanılarak programlı bir şekilde yönetilebilir.
-Ayrıca bkz. [Azure CLI kullanarak PostgreSQL Için Azure veritabanı güvenlik duvarı kuralları oluşturma ve yönetme](howto-manage-firewall-using-cli.md)
+Azure portalına ek olarak, güvenlik duvarı kuralları Azure CLI kullanılarak programlı olarak yönetilebilir.
+Ayrıca Azure [CLI'yi kullanarak PostgreSQL güvenlik duvarı kuralları için Azure Veritabanı oluşturma ve yönetme](howto-manage-firewall-using-cli.md)
 
-## <a name="troubleshooting-firewall-issues"></a>Güvenlik Duvarı sorunlarını giderme
-PostgreSQL için Microsoft Azure veritabanına erişim beklendiği gibi davranmıyorsa aşağıdaki noktaları göz önünde bulundurun:
+## <a name="troubleshooting-firewall-issues"></a>Sorun giderme güvenlik duvarı sorunları
+PostgreSQL Server hizmeti için Microsoft Azure Veritabanı'na erişim beklediğiniz gibi görünmüyorsa aşağıdaki noktaları göz önünde bulundurun:
 
-* **İzin verilenler listesindeki değişiklikler henüz uygulanmadı:** PostgreSQL için Azure veritabanı sunucu güvenlik duvarı yapılandırmasının etkili olması için beş dakikalık bir gecikme olabilir.
+* **İzin listesindeyapılan değişiklikler henüz yürürlüğe ekolmadı:** PostgreSQL Server güvenlik duvarı yapılandırması için Azure Veritabanı'nda yapılan değişikliklerin etkili olması için beş dakika kadar gecikme olabilir.
 
-* **Oturum açma yetkisi yok veya yanlış parola kullanıldı:** Bir oturum açma işlemi PostgreSQL için Azure veritabanı sunucusunda izinlere sahip değilse veya kullanılan parola yanlışsa, PostgreSQL için Azure veritabanı sunucusuna bağlantı reddedilir. Bir güvenlik duvarı ayarı oluşturmak, istemcilere yalnızca sunucunuza bağlanmayı denemek için bir fırsat sağlar; her istemci yine de gerekli güvenlik kimlik bilgilerini sağlamalıdır.
+* **Giriş yetkisi ne de yanlış bir parola kullanılmıştır:** Bir girişte PostgreSQL sunucusu için Azure Veritabanı'nda izin yoksa veya kullanılan parola yanlışsa, PostgreSQL sunucusu için Azure Veritabanı'na bağlantı reddedilir. Güvenlik duvarı ayarı oluşturmak, istemcilere yalnızca sunucunuza bağlanmayı deneme fırsatı sağlar; her istemci hala gerekli güvenlik kimlik bilgilerini sağlamalıdır.
 
    Örneğin, bir JDBC istemcisi kullanarak aşağıdaki hata görünebilir.
-   > Java. util. eşzamanlı. ExecutionException: Java. lang. RuntimeException: org. PostgreSQL. util. PSQLException: ÖNEMLI: "YourUserName" kullanıcısı için parola kimlik doğrulaması başarısız oldu
+   > java.util.concurrent.ExecutionException: java.lang.RuntimeException: org.postgresql.util.PSQLException: FATAL: password authentication kullanıcı "kullanıcı adı" için başarısız oldu
 
 * **Dinamik IP adresi:** Dinamik IP adresiyle kurulmuş bir İnternet bağlantınız varsa ve güvenlik duvarını aşmakta sorun yaşıyorsanız aşağıdaki çözümlerden birini deneyebilirsiniz:
 
-   * PostgreSQL için Azure veritabanı sunucusuna erişen istemci bilgisayarlarınıza atanan IP adresi aralığı için Internet servis sağlayıcınıza (ISS) sorun ve IP adresi aralığını bir güvenlik duvarı kuralı olarak ekleyin.
+   * Internet Servis Sağlayıcınızdan (ISS) PostgreSQL Server için Azure Veritabanı'na erişen istemci bilgisayarlarınıza atanan IP adresi aralığını isteyin ve ardından IP adresi aralığını güvenlik duvarı kuralı olarak ekleyin.
 
-   * İstemci bilgisayarlarınız yerine statik IP adresleme alın ve statik IP adresini bir güvenlik duvarı kuralı olarak ekleyin.
+   * İstemci bilgisayarlarınız için statik IP adresi alın ve ardından statik IP adresini güvenlik duvarı kuralı olarak ekleyin.
 
-* **Sunucunun IP 'si genel gibi görünür:** PostgreSQL için Azure veritabanı sunucusuna yapılan bağlantılar, genel olarak erişilebilen bir Azure ağ geçidiyle yönlendirilir. Bununla birlikte gerçek sunucu IP'si güvenlik duvarı tarafından korunur. Daha fazla bilgi için [bağlantı mimarisi makalesi](concepts-connectivity-architecture.md) adresini ziyaret edin. 
+* **Sunucunun IP'si herkese açık gibi görünür:** PostgreSQL sunucusu için Azure Veritabanı'na bağlantılar, herkese açık bir Azure ağ geçidi üzerinden yönlendirilir. Bununla birlikte gerçek sunucu IP'si güvenlik duvarı tarafından korunur. Daha fazla bilgi için [bağlantı mimarisi makalesini](concepts-connectivity-architecture.md)ziyaret edin. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Sunucu düzeyinde ve veritabanı düzeyinde güvenlik duvarı kuralları oluşturma makaleleri için bkz.:
-* [Oluşturma ve Azure veritabanı PostgreSQL güvenlik duvarı kuralları için Azure Portalı'nı kullanarak yönetme](howto-manage-firewall-using-portal.md)
-* [Azure CLı kullanarak PostgreSQL için Azure veritabanı güvenlik duvarı kuralları oluşturma ve yönetme](howto-manage-firewall-using-cli.md)
-- [PostgreSQL için Azure veritabanı 'ndaki VNet hizmet uç noktaları](./concepts-data-access-and-security-vnet.md)
+Sunucu düzeyi ve veritabanı düzeyinde güvenlik duvarı kuralları oluşturma yla ilgili makaleler için bkz:
+* [Azure portalını kullanarak PostgreSQL güvenlik duvarı kuralları için Azure Veritabanı oluşturma ve yönetme](howto-manage-firewall-using-portal.md)
+* [Azure CLI'yi kullanarak PostgreSQL güvenlik duvarı kuralları için Azure Veritabanı oluşturma ve yönetme](howto-manage-firewall-using-cli.md)
+- [PostgreSQL için Azure Veritabanı'ndaki VNet hizmet bitiş noktaları](./concepts-data-access-and-security-vnet.md)

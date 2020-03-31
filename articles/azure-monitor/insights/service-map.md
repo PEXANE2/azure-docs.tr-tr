@@ -1,501 +1,501 @@
 ---
-title: Azure 'da Hizmet Eşlemesi çözüm kullanma | Microsoft Docs
-description: Hizmet Eşlemesi, Windows ve Linux sistemleri üzerindeki uygulama bileşenlerini otomatik olarak bulan ve hizmetler arasındaki iletişimi eşleyen bir Azure çözümüdür. Bu makalede, ortamınızda hizmet eşlemesi dağıtmak ve çeşitli senaryoları de kullanım için Ayrıntılar sağlanır.
+title: Azure'da Hizmet Haritası çözümlerini kullanma | Microsoft Dokümanlar
+description: Hizmet Eşlemesi, Windows ve Linux sistemleri üzerindeki uygulama bileşenlerini otomatik olarak bulan ve hizmetler arasındaki iletişimi eşleyen bir Azure çözümüdür. Bu makalede, Hizmet Eşlemi'ni ortamınızda dağıtmak ve çeşitli senaryolarda kullanmak için ayrıntılar verilmektedir.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2019
-ms.openlocfilehash: c177589bea76770f8f72dd3267b856b00d57699c
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: f2f3e84462307f43ffe432fe878476d979f489f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79275249"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79480921"
 ---
-# <a name="using-service-map-solution-in-azure"></a>Azure 'da Hizmet Eşlemesi çözümü kullanma
+# <a name="using-service-map-solution-in-azure"></a>Azure’da Hizmet Eşlemesi çözümünü kullanma
 
 Hizmet Eşlemesi, Windows ve Linux sistemleri üzerindeki uygulama bileşenlerini otomatik olarak bulur ve hizmetler arasındaki iletişimi eşler. Hizmet Eşlemesi ile, sunucularınızı planladığınız şekilde kullanabilirsiniz: kritik hizmetler sunabilen birbirine bağlı sistemler. Hizmet Eşlemesi, aracının yüklenmesi dışında herhangi bir yapılandırma gerektirmeden sunucular, işlemler, gelen ve giden bağlantıların gecikme süresi ile TCP aracılığıyla bağlı mimarilerdeki bağlantı noktaları arasındaki bağlantıları gösterir.
 
-Bu makalede Hizmet Eşlemesi Ekleme ve kullanma ayrıntıları açıklanmaktadır. Bu çözüme yönelik önkoşulları yapılandırma hakkında daha fazla bilgi için bkz. [VM'ler için Azure izleyici genel bakışı etkinleştirme](vminsights-enable-overview.md#prerequisites). Özetlemek gerekirse, şunlar gerekir:
+Bu makalede, onboarding ve Hizmet Haritası kullanarak ayrıntıları açıklanmaktadır. Bu çözüm için ön koşulları yapılandırma hakkında daha fazla bilgi için [vm'lere genel bakış için Azure Monitörünü Etkinleştir'e](vminsights-enable-overview.md#prerequisites)bakın. Özetlemek gerekirse, aşağıdakilere ihtiyacınız var:
 
 * Bu çözümü etkinleştirmek için bir Log Analytics çalışma alanı.
 
-* Çözümü etkinleştirdiğiniz aynı çalışma alanını raporlamak üzere yapılandırılmış Windows bilgisayarına veya Linux sunucusuna yüklenmiş Log Analytics Aracısı.
+* Windows bilgisayarına veya Linux sunucusuna yüklenen Log Analytics aracısı, çözümü etkinleştirdiğiniz çalışma alanını rapor etmek üzere yapılandırılmıştır.
 
-* Windows bilgisayara veya Linux sunucusuna yüklenmiş bağımlılık Aracısı.
+* Bağımlılık aracısı Windows bilgisayarına veya Linux sunucusuna yüklenir.
 
 >[!NOTE]
->Zaten Hizmet Eşlemesi dağıttıysanız, Ayrıca, sanal makine sistem durumunu ve performansını izlemek için ek özellikler içeren haritalarınızı VM'ler için Azure İzleyici görüntüleyebilirsiniz. Daha fazla bilgi için bkz. [VM'ler için Azure izleyici genel bakış](../../azure-monitor/insights/vminsights-overview.md). Hizmet Eşlemesi çözümü ve VM'ler için Azure İzleyici eşleme özelliği arasındaki farklar hakkında bilgi edinmek için aşağıdaki [SSS](../faq.md#azure-monitor-for-vms-preview)bölümüne bakın.
+>Hizmet Haritası'nı zaten dağıttıysanız, artık haritalarınızı VM'ler için Azure Monitörü'nde de görüntüleyebilirsiniz, bu da VM durumunu ve performansını izlemek için ek özellikler içerir. Daha fazla bilgi edinmek [için VM'lere genel bakış için Azure Monitor'a](../../azure-monitor/insights/vminsights-overview.md)bakın. Hizmet Haritası çözümü ile VM Haritası için Azure Monitörü arasındaki farklar hakkında bilgi edinmek için aşağıdaki [SSS'ye](../faq.md#azure-monitor-for-vms)bakın.
 
 ## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-[https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın.
+Azure portalında oturum [https://portal.azure.com](https://portal.azure.com)aç.
 
-## <a name="enable-service-map"></a>Hizmet Eşlemesi etkinleştir
+## <a name="enable-service-map"></a>Hizmet Haritasını Etkinleştir
 
-1. Hizmet Eşlemesi çözümünü [Azure Marketi](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ServiceMapOMS?tab=Overview) 'nden veya [Çözüm Galerisi izleme çözümlerini ekleme](solutions.md)bölümünde açıklanan işlemi kullanarak etkinleştirin.
-1. [Windows 'A bağımlılık aracısını yükler](vminsights-enable-hybrid-cloud.md#install-the-dependency-agent-on-windows) veya veri almak istediğiniz her bilgisayara [Linux 'a bağımlılık Aracısı 'nı yükler](vminsights-enable-hybrid-cloud.md#install-the-dependency-agent-on-linux) . Bağımlılık Aracısı en yakındaki komşularla bağlantıları izleyebildiğinden her bilgisayarda bir aracıya ihtiyacınız olmayabilir.
+1. Hizmet Haritası çözümünü [Azure pazar](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ServiceMapOMS?tab=Overview) alanından veya [Çözüm Galerisi'nden İzleme Ekle çözümleri ekle'de](solutions.md)açıklanan işlemi kullanarak etkinleştirin.
+1. [Windows'a Bağımlılık aracısını yükleyin](vminsights-enable-hybrid-cloud.md#install-the-dependency-agent-on-windows) veya veri almak istediğiniz her bilgisayara [Linux'taki Bağımlılık aracısını yükleyin.](vminsights-enable-hybrid-cloud.md#install-the-dependency-agent-on-linux) Bağımlılık Aracısı en yakındaki komşularla bağlantıları izleyebildiğinden her bilgisayarda bir aracıya ihtiyacınız olmayabilir.
 
-Log Analytics çalışma alanınızdan Azure portal Hizmet Eşlemesi erişin ve sol bölmeden **çözümler** seçeneğini belirleyin.<br><br> ![çalışma alanı](./media/service-map/select-solution-from-workspace.png)çözüm seçeneğini belirleyin.<br> Çözümler listesinden **Servicemap (Çalışmaalanıadı)** öğesini seçin ve hizmet eşlemesi çözüme genel bakış sayfasında hizmet eşlemesi Özet kutucuğuna tıklayın.<br><br> ![Özet kutucuk](./media/service-map/service-map-summary-tile.png)Hizmet Eşlemesi.
+Azure portalındaki Hizmet Haritası'na Log Analytics çalışma alanınızdan erişin ve sol bölmeden **Seçenek Çözümleri'ni** seçin.<br><br> ![Çalışma alanında](./media/service-map/select-solution-from-workspace.png)Çözümler seçeneğini seçin.<br> Çözümler listesinden **ServiceMap(workspaceName)** seçeneğini belirleyin ve Hizmet Haritası çözümüne genel bakış sayfasında Hizmet Haritası özet döşemesini tıklatın.<br><br> ![Hizmet Haritası özet](./media/service-map/service-map-summary-tile.png)döşeme .
 
-## <a name="use-cases-make-your-it-processes-dependency-aware"></a>Kullanım örnekleri: BT süreçlerinizi bağımlılıktan haberdar edin
+## <a name="use-cases-make-your-it-processes-dependency-aware"></a>Kullanım örnekleri: BT işlemlerinizi bağımlılıkbilincine hale getirin
 
 ### <a name="discovery"></a>Bulma
 
-Hizmet Eşlemesi, sunucularınız, süreçleriniz ve üçüncü taraf hizmetlerinizde bulunan bağımlılıkların ortak başvuru haritasını otomatik olarak oluşturur. Tüm TCP bağımlılıklarını bulur ve eşler arası bağlantıları, bağlı olduğunuz uzak üçüncü taraf sistemleri ve Active Directory gibi ağınızın geleneksel karanlık bölümlerine bağımlılıklar. Hizmet Eşlemesi, yönetilen sistemlerinizin oluşturmaya çalıştığından başarısız olan ağ bağlantılarını bulur, bu da olası sunucu yanlış yapılandırma, hizmet kesintisi ve ağ sorunlarını tanımanıza yardımcı olur.
+Hizmet Haritası, sunucularınız, süreçleriniz ve üçüncü taraf hizmetleriniz genelinde bağımlılıkların ortak bir başvuru haritasını otomatik olarak oluşturur. Tüm TCP bağımlılıklarını keşfeder ve eşler, sürpriz bağlantıları, bağlı olduğunuz uzak üçüncü taraf sistemleri ve Etkin Dizin gibi ağınızın geleneksel karanlık alanlarına bağımlılıkları tanımlar. Hizmet Haritası, yönetilen sistemlerinizin yapmaya çalıştığı başarısız ağ bağlantılarını keşfederek olası sunucu yapılandırmasını, hizmet kesintisini ve ağ sorunlarını belirlemenize yardımcı olur.
 
 ### <a name="incident-management"></a>Olay yönetimi
 
-Hizmet Eşlemesi, sistemlerin birbirine bağlı ve birbirini etkileyen sorunları göstererek sorun yalıtımının tahmin düzeyini ortadan kaldırmaya yardımcı olur. Başarısız bağlantıları tanımlamaya ek olarak, yanlış yapılandırılmış yük dengeleyiciler, kritik hizmetlerde fazla yük veya aşırı yük yükü ve geliştirici makineleri üretim sistemleriyle konuşuyor gibi standart dışı istemciler tanımlamaya yardımcı olur. Değişiklik İzleme ile tümleşik iş akışlarını kullanarak, bir arka uç makinesinde veya hizmette bulunan bir değişiklik olayının, bir olayın kök nedenini de açıklıyor olduğunu görebilirsiniz.
+Hizmet Haritası, sistemlerin nasıl bağdaştırdığını ve birbirini nasıl etkilediğini göstererek sorun yalıtımı tahminini ortadan kaldırmaya yardımcı olur. Başarısız bağlantıları tanımlamaya ek olarak, yanlış yapılandırılmış yük dengeleyicilerinin, kritik hizmetlere şaşırtıcı veya aşırı yük lerin ve üretim sistemleriyle konuşan geliştirici makineleri gibi sahte istemcilerin belirlenmesine yardımcı olur. Değişiklik İzleme ile tümleşik iş akışlarını kullanarak, arka uç taki bir makinedeki veya hizmetteki bir değişiklik olayının bir olayın temel nedenini açıklayıp açıklamadığını da görebilirsiniz.
 
-### <a name="migration-assurance"></a>Geçiş güvencesi
+### <a name="migration-assurance"></a>Göç güvencesi
 
-Hizmet Eşlemesi kullanarak Azure geçişlerini verimli bir şekilde planlayabilir, hızlandırabilir ve doğrulayabilirsiniz, bu da herhangi bir şeyin arkasında kalmaması ve beklenmedik kesintilerin gerçekleşmemesini sağlamaya yardımcı olur. Birlikte geçirilmesi gereken tüm bağımlı sistemleri bulabilir, sistem yapılandırmasını ve kapasitesini değerlendirebilir, çalışan bir sistemin hala kullanıcılara hizmet verip vermediğini veya geçiş yerine yetki alma için bir aday olup olmadığını belirleyebilirsiniz. Taşıma işlemi tamamlandıktan sonra, test sistemlerinin ve müşterilerinin bağlandığını doğrulamak için istemci yükünü ve kimliğini kontrol edebilirsiniz. Alt ağ planlama ve güvenlik duvarı tanımlarınızda sorunlar varsa Hizmet Eşlemesi Maps 'ta başarısız olan bağlantılar sizi bağlantı gerektiren sistemlere işaret ediyor.
+Hizmet Haritası'nı kullanarak, azure geçişlerini etkili bir şekilde planlayabilir, hızlandırabilir ve doğrulayabilir, bu da geride hiçbir şey kalmamasını ve sürpriz kesintilerin oluşmamasını sağlamaya yardımcı olur. Birlikte geçiş yapmak, sistem yapılandırmasını ve kapasitesini değerlendirmek ve çalışan bir sistemin kullanıcılara hizmet vermeye devam edip etmediğini veya geçiş yerine hizmet dışı bırakma için aday olup olmadığını belirlemek için birbirine bağlı tüm sistemleri keşfedebilirsiniz. Taşıma tamamlandıktan sonra, test sistemlerinin ve müşterilerin bağladığını doğrulamak için istemci yükünü ve kimliğini denetleyebilirsiniz. Alt ağ planlamanız ve güvenlik duvarı tanımlarınızın sorunları varsa, Hizmet Haritası eşlemlerinde başarısız bağlantılar sizi bağlantı gerektiren sistemlere yönlendirir.
 
 ### <a name="business-continuity"></a>İş sürekliliği
 
-Azure Site Recovery kullanıyorsanız ve uygulama ortamınız için kurtarma sırasını tanımlamaya yardımcı olması gerekiyorsa, Hizmet Eşlemesi, kurtarma planınızın güvenilir olmasını sağlamak için sistemlerin birbirlerine nasıl bağlı olduğunu otomatik olarak gösterebilir. Kritik bir sunucu veya grup seçerek ve istemcilerini görüntüleyerek, sunucu geri yüklendikten ve kullanılabilir olduktan sonra hangi ön uç sistemlerini kurtaracağınızı belirleyebilirsiniz. Buna karşılık, kritik sunucuların arka uç bağımlılıklarını inceleyerek, odak sistemleriniz geri yüklenmeden önce hangi sistemlerin kurtarılacağını belirleyebilirsiniz.
+Azure Site Kurtarma kullanıyorsanız ve uygulama ortamınız için kurtarma sırasını tanımlamaya yardıma ihtiyacınız varsa, Servis Eşlemi, kurtarma planınızın güvenilir olduğundan emin olmak için sistemlerin birbirine nasıl güvendiğini otomatik olarak gösterebilir. Kritik bir sunucu veya grup seçerek ve istemcilerini görüntüleyerek, sunucu geri yüklendikten ve kullanılabilir hale geldikten sonra hangi ön uç sistemlerini kurtaracağını belirleyebilirsiniz. Tam tersine, kritik sunucuların arka uç bağımlılıklarına bakarak, odak sistemleriniz geri yüklenmeden önce hangi sistemlerin kurtarılacağını belirleyebilirsiniz.
 
 ### <a name="patch-management"></a>Düzeltme eki yönetimi
 
-Hizmet Eşlemesi, diğer takımlar ve sunucuların hizmetinize bağlı olduğunu göstererek sistem güncelleştirme değerlendirmesi kullanımını geliştirir. bu sayede, bunları yama için sistemlerinizi kapatmadan önce daha önce bildirimde bulabilirsiniz. Hizmet Eşlemesi Ayrıca, hizmetlerinizin kullanılabilir olduğunu ve düzeltme eki uygulandıktan ve yeniden başlatıldıktan sonra düzgün bağlanıp bağlanmadığını göstererek yama yönetimini geliştirir.
+Hizmet Haritası, hangi takımların ve sunucuların hizmetinize bağlı olduğunu göstererek Sistem Güncelleştirme Değerlendirmesi'ni kullanımınızı artırır, böylece yama için sistemlerinizi kaldırmadan önce bunları önceden bildirebilirsiniz. Hizmet Haritası ayrıca, hizmetlerinizin kullanılabilir olup olmadığını ve yamalı ve yeniden başlatıldıktan sonra düzgün bir şekilde bağlanıp bağlanmadığınızı göstererek yama yönetimini geliştirir.
 
-## <a name="mapping-overview"></a>Eşlemeye genel bakış
+## <a name="mapping-overview"></a>Haritalama genel bakış
 
-Hizmet Eşlemesi aracıları, yüklü oldukları sunucudaki tüm TCP-bağlantılı işlemler ve her bir işlem için gelen ve giden bağlantılar hakkında bilgi toplar.
+Hizmet Haritası aracıları, yüklendikleri sunucudaki TCP'ye bağlı tüm işlemler ve her işlem için gelen ve giden bağlantılar hakkında ayrıntılı bilgi toplar.
 
-Sol bölmedeki listeden, belirli bir zaman aralığında bağımlılıklarını görselleştirmek için Hizmet Eşlemesi aracıları olan makineleri veya grupları seçebilirsiniz. Makine bağımlılığı eşlemeleri belirli bir makineye odaklanırlar ve bu makinenin doğrudan TCP istemcileri veya sunucuları olan tüm makineleri gösterir.  Makine grubu eşlemeleri sunucu kümelerini ve bağımlılıklarını gösterir.
+Sol bölmedeki listeden, belirli bir zaman aralığında bağımlılıklarını görselleştirmek için Hizmet Haritası aracıları olan makineleri veya grupları seçebilirsiniz. Makine bağımlılık haritaları belirli bir makineye odaklanır ve bu makineler, doğrudan TCP istemcileri veya o makinenin sunucuları olan tüm makineleri gösterir.  Machine Group eşlemleri sunucu kümelerini ve bunların bağımlılıklarını gösterir.
 
-![Hizmet Eşlemesi Genel Bakış](media/service-map/service-map-overview.png)
+![Hizmet Haritasına genel bakış](media/service-map/service-map-overview.png)
 
-Makineler, seçili zaman aralığı sırasında etkin ağ bağlantılarıyla çalışan işlem gruplarını ve işlemleri göstermek üzere haritada genişletilebilir. Hizmet Eşlemesi aracısına sahip bir uzak makine işlem ayrıntılarını göstermek üzere genişletildiğinde, yalnızca odak makinesiyle iletişim kuran işlemler gösterilir. Odak makinesine bağlanan aracısız ön uç makinelerin sayısı, bağlandıkları işlemlerin sol tarafında belirtilmiştir. Odak makinesi aracısına sahip olmayan bir arka uç makineyle bağlantı yapıyor ise, arka uç sunucusu aynı bağlantı noktası numarasına diğer bağlantılarla birlikte sunucu bağlantı noktası grubuna dahil edilir.
+Makineler, seçilen zaman aralığında etkin ağ bağlantıları olan çalışan işlem gruplarını ve süreçleri göstermek için haritada genişletilebilir. İşlem ayrıntılarını göstermek için Bir Hizmet Eşlemi aracısı olan uzak bir makine genişletildiğinde, yalnızca odak makinesiyle iletişim sağlayan işlemler gösterilir. Odak makinesine bağlanan aracısız ön uç makinelerin sayısı, bağlandıkları işlemlerin sol tarafında gösterilir. Odak makinesi aracısı olmayan bir arka uç makinesine bağlantı yapıyorsa, arka uç sunucusu aynı bağlantı noktası numarasına diğer bağlantılarla birlikte bir Server Port Group'a dahil edilir.
 
-Varsayılan olarak, Hizmet Eşlemesi Maps son 30 dakikalık bağımlılık bilgilerini gösterir. Sol üst taraftaki zaman denetimlerini kullanarak, bağımlılıkların geçmişte nasıl arandığı (örneğin, bir olay sırasında veya bir değişikliğin meydana gelmeden önce) göstermek için geçmiş zaman aralıkları için haritaları bir saate göre sorgulayabilirsiniz. Hizmet Eşlemesi veriler, ücretli çalışma alanlarında 30 gün boyunca ve ücretsiz çalışma alanlarında 7 gün boyunca depolanır.
+Varsayılan olarak, Hizmet Eşlemi eşlemleri bağımlılık bilgilerinin son 30 dakikasını gösterir. Sol üstteki zaman denetimlerini kullanarak, bağımlılıkların geçmişte nasıl göründüğünü (örneğin, bir olay sırasında veya değişiklik meydana gelmeden önce) göstermek için bir saate kadar geçmiş zaman aralıkları için haritaları sorgulayabilirsiniz. Hizmet Haritası verileri ücretli çalışma alanlarında 30 gün, ücretsiz çalışma alanlarında ise 7 gün saklanır.
 
-## <a name="status-badges-and-border-coloring"></a>Durum rozetleri ve kenarlık renklendirme
+## <a name="status-badges-and-border-coloring"></a>Durum rozetleri ve kenarlık boyama
 
-Haritadaki her sunucunun en altında, sunucu hakkında durum bilgilerini kaplayan durum rozetlerinin listesi olabilir. Rozet, çözüm tümleştirmalarından birinden sunucu için bazı ilgili bilgiler olduğunu gösterir. Bir rozet tıklamak sizi doğrudan sağ bölmedeki durumun ayrıntılarına götürür. Şu anda kullanılabilir durumda olan durum rozetleri uyarılar, hizmet masası, değişiklikler, güvenlik ve güncelleştirmeleri içerir.
+Haritadaki her sunucunun alt kısmında, sunucu hakkında durum bilgilerini ileten durum rozetlerinin listesi olabilir. Rozetler, çözüm tümleştirmelerinden birinden sunucu için bazı ilgili bilgiler olduğunu gösterir. Rozeti tıklattığınızda, doğrudan sağ bölmedeki durumun ayrıntılarına götürür. Şu anda kullanılabilen durum rozetleri Uyarılar, Servis Masası, Değişiklikler, Güvenlik ve Güncelleştirmeleri içerir.
 
-Durum rozetlerinin önem derecesine bağlı olarak, makine düğümü kenarlıkları kırmızı (kritik), sarı (uyarı) veya mavi (bilgilendirici) olabilir. Renk, durum rozetlerinin herhangi birinin en ciddi durumunu temsil eder. Gri kenarlık, durum göstergeleri olmayan bir düğümü gösterir.
+Durum rozetlerinin önem derecesine bağlı olarak, makine düğümü kenarlıkları kırmızı (kritik), sarı (uyarı) veya mavi (bilgilendirici) renklendirilebilir. Renk, durum rozetlerinden herhangi birinin en ağır durumunu temsil eder. Gri kenarlık, durum göstergesi olmayan bir düğümü gösterir.
 
 ![Durum rozetleri](media/service-map/status-badges.png)
 
-## <a name="process-groups"></a>İşlem grupları
+## <a name="process-groups"></a>Süreç Grupları
 
-İşlem grupları ortak bir ürün veya hizmetle ilişkili işlemleri bir işlem grubuyla birleştirir.  Bir makine düğümü genişletildiğinde, tek başına işlemleri işlem gruplarıyla birlikte görüntüler.  Bir işlem grubundaki bir işleme gelen ve giden bağlantı başarısız olduysa, bağlantı tüm işlem grubu için başarısız olarak gösterilir.
+İşlem Grupları, ortak bir ürün veya hizmetle ilişkili işlemleri bir işlem grubunda birleştirir.  Bir makine düğümü genişletildiğinde, işlem gruplarıyla birlikte bağımsız işlemler görüntüler.  Bir işlem grubu içindeki bir işleme gelen ve giden bağlantılar başarısız olduysa, bağlantı tüm işlem grubu için başarısız olarak gösterilir.
 
 ## <a name="machine-groups"></a>Makine Grupları
 
-Makine grupları bir sunucu kümesi çevresinde ortalanmış olan haritaları görmenizi sağlar, böylece çok katmanlı bir uygulamanın veya sunucu kümesinin tüm üyelerini tek bir haritada görüntüleyebilirsiniz.
+Makine Grupları, çok katmanlı bir uygulamanın veya sunucu kümesinin tüm üyelerini tek bir haritada görebilmeniz için sadece bir sunucu kümesietrafında ortalanmış haritaları görmenizi sağlar.
 
-Kullanıcılar bir gruba ait olan sunucuları seçer ve grup için bir ad seçer.  Daha sonra, tüm işlem ve bağlantılarıyla grubu görüntülemeyi seçebilir veya yalnızca grubun diğer üyeleriyle bağlantılı olan işlem ve bağlantılarla görüntüleyebilirler.
+Kullanıcılar bir gruba hangi sunucuların ait olduğunu birlikte seçer ve grup için bir ad seçer.  Daha sonra grubu tüm süreçleri ve bağlantılarıyla görüntülemeyi seçebilir veya grubu yalnızca grubun diğer üyeleriyle doğrudan ilişkili işlemler ve bağlantılarla görüntüleyebilirsiniz.
 
-![Makine grubu](media/service-map/machine-group.png)
+![Makine Grubu](media/service-map/machine-group.png)
 
-### <a name="creating-a-machine-group"></a>Makine grubu oluşturma
+### <a name="creating-a-machine-group"></a>Makine Grubu Oluşturma
 
-Bir grup oluşturmak için, makineler listesinde istediğiniz makine veya makineleri seçin ve **gruba ekle**' ye tıklayın.
+Bir grup oluşturmak için, Makineler listesinde istediğiniz makine yi veya makineleri seçin ve **gruba Ekle'yi**tıklatın.
 
 ![Grup Oluşturma](media/service-map/machine-groups-create.png)
 
-Burada, **Yeni oluştur** ' u seçip gruba bir ad verebilirsiniz.
+Burada, yeni **oluştur'u** seçebilir ve gruba bir ad verebilirsiniz.
 
-![Ad grubu](media/service-map/machine-groups-name.png)
+![Ad Grubu](media/service-map/machine-groups-name.png)
 
 >[!NOTE]
->Makine grupları 10 sunucu ile sınırlıdır.
+>Makine grupları 10 sunucuyla sınırlıdır.
 
-### <a name="viewing-a-group"></a>Bir grubu görüntüleme
+### <a name="viewing-a-group"></a>Grubu Görüntüleme
 
-Bazı grupları oluşturduktan sonra gruplar sekmesini seçerek bunları görüntüleyebilirsiniz.
+Bazı gruplar oluşturduktan sonra, Gruplar sekmesini seçerek bunları görüntüleyebilirsiniz.
 
 ![Gruplar sekmesi](media/service-map/machine-groups-tab.png)
 
-Sonra bu makine grubu için Haritayı görüntülemek üzere Grup adını seçin.
-![makine grubu](media/service-map/machine-group.png) gruba ait makineler, haritada beyaz olarak özetlenmiştir.
+Ardından, bu Makine Grubu'nun eşlemini görüntülemek için Grup adını seçin.
+![Makine](media/service-map/machine-group.png) Grubu Gruba ait makineler haritada beyaz renkte özetlenmiştir.
 
-Grup genişletildiğinde makine grubunu oluşturan makineler listelenir.
+Grubu genişletmek, Makine Grubunu oluşturan makineleri listeler.
 
-![Makine grubu makineleri](media/service-map/machine-groups-machines.png)
+![Makine Grubu makineleri](media/service-map/machine-groups-machines.png)
 
-### <a name="filter-by-processes"></a>İşlemlere göre filtrele
+### <a name="filter-by-processes"></a>İşleme göre filtreleme
 
-Gruptaki tüm işlemlerin ve bağlantıların gösterilmesi ve yalnızca makine grubuyla bağlantılı olanlar arasında harita görünümünü değiştirebilirsiniz.  Varsayılan görünüm tüm işlemlerin gösterilmesi için kullanılır.  Haritanın üzerindeki filtre simgesine tıklayarak görünümü değiştirebilirsiniz.
+Gruptaki tüm işlemleri ve bağlantıları göstermekle yalnızca Makine Grubuile doğrudan ilişkili olanları göstermek arasında harita görünümünü geçişyapabilirsiniz.  Varsayılan görünüm tüm işlemleri göstermektir.  Haritanın üzerindeki filtre simgesine tıklayarak görünümü değiştirebilirsiniz.
 
-![Filtre grubu](media/service-map/machine-groups-filter.png)
+![Filtre Grubu](media/service-map/machine-groups-filter.png)
 
-**Tüm süreçler** seçildiğinde, eşleme gruptaki makinelerin her birinde tüm işlem ve bağlantıları içerir.
+**Tüm işlemler** seçildiğinde, harita Gruptaki her makinedeki tüm işlemleri ve bağlantıları içerir.
 
-![Makine grubu tüm süreçler](media/service-map/machine-groups-all.png)
+![Makine Grubu tüm süreçler](media/service-map/machine-groups-all.png)
 
-Görünümü yalnızca **Grup ile bağlantılı süreçler**gösterecek şekilde değiştirirseniz, harita yalnızca gruptaki diğer makinelere doğrudan bağlı olan işlemlere ve bağlantılara daha kolay bir şekilde dönüştürülür, Basitleştirilmiş bir görünüm oluşturulur.
+Görünümü yalnızca gruba bağlı **işlemleri**göstermek için değiştirirseniz, eşlemi yalnızca gruptaki diğer makinelere doğrudan bağlanan işlemlere ve bağlantılara göre daraltılacak ve basitleştirilmiş bir görünüm oluşturulur.
 
-![Makine grubu filtrelenmiş işlem sayısı](media/service-map/machine-groups-filtered.png)
+![Makine Grubu filtrelenmiş prosesler](media/service-map/machine-groups-filtered.png)
  
-### <a name="adding-machines-to-a-group"></a>Makineleri bir gruba ekleme
+### <a name="adding-machines-to-a-group"></a>Gruba makine ekleme
 
-Mevcut bir gruba makineler eklemek için istediğiniz makinelerin yanındaki kutuları işaretleyin ve **gruba ekle**' ye tıklayın.  Ardından, makineleri eklemek istediğiniz grubu seçin.
+Varolan bir gruba makine eklemek için, istediğiniz makinelerin yanındaki kutuları işaretleyin ve ardından **gruba Ekle'yi**tıklatın.  Ardından, makineleri eklemek istediğiniz grubu seçin.
  
-### <a name="removing-machines-from-a-group"></a>Makineleri gruptan kaldırma
+### <a name="removing-machines-from-a-group"></a>Makineleri bir gruptan çıkarma
 
-Gruplar listesinde, makine grubundaki makineleri listelemek için Grup adını genişletin.  Ardından, kaldırmak istediğiniz makinenin yanındaki üç nokta menüsüne tıklayın ve **Kaldır**' ı seçin.
+Gruplar Listesinde, Makine Grubu'ndaki makineleri listelemek için grup adını genişletin.  Ardından kaldırmak istediğiniz makinenin yanındaki elips menüsüne tıklayın ve **Kaldır'ı**seçin.
 
-![Makineyi gruptan Kaldır](media/service-map/machine-groups-remove.png)
+![Makineyi gruptan çıkarma](media/service-map/machine-groups-remove.png)
 
-### <a name="removing-or-renaming-a-group"></a>Bir grubu kaldırma veya yeniden adlandırma
+### <a name="removing-or-renaming-a-group"></a>Grubu kaldırma veya yeniden adlandırma
 
-Grup listesindeki Grup adının yanındaki üç nokta menüsüne tıklayın.
+Grup Listesindeki grup adının yanındaki elips menüsüne tıklayın.
 
 ![Makine grubu menüsü](media/service-map/machine-groups-menu.png)
 
 
 ## <a name="role-icons"></a>Rol simgeleri
 
-Bazı süreçler makinelerde belirli rollere sahiptir: Web sunucuları, uygulama sunucuları, veritabanı vb. Bir işlemin veya sunucunun oynadığı rolü bir bakışta belirlemesine yardımcı olmak için rol simgeleriyle birlikte hizmet eşlemesi açıklıyor süreci ve makine kutuları.
+Bazı işlemler makinelerde belirli rollere hizmet eder: web sunucuları, uygulama sunucuları, veritabanı, ve benzeri. Hizmet Haritası, bir işlemin veya sunucunun oynadığı rolü bir bakışta tanımlamaya yardımcı olmak için işlem ve makine kutularını rol simgeleriyle açıklamaolarak tanımlar.
 
 | Rol simgesi | Açıklama |
 |:--|:--|
 | ![Web sunucusu](media/service-map/role-web-server.png) | Web sunucusu |
-| ![Uygulama sunucusu](media/service-map/role-application-server.png) | Uygulama sunucusu |
-| ![Veritabanı sunucusu](media/service-map/role-database.png) | Veritabanı sunucusu |
+| ![Uygulama Sunucusu](media/service-map/role-application-server.png) | Uygulama sunucusu |
+| ![Veritabanı adı](media/service-map/role-database.png) | Veritabanı adı |
 | ![LDAP sunucusu](media/service-map/role-ldap.png) | LDAP sunucusu |
-| ![SMB sunucusu](media/service-map/role-smb.png) | SMB sunucusu |
+| ![Kobİ sunucusu](media/service-map/role-smb.png) | Kobİ sunucusu |
 
 ![Rol simgeleri](media/service-map/role-icons.png)
 
 
 ## <a name="failed-connections"></a>Başarısız bağlantılar
 
-Başarısız bağlantılar, bir istemci sisteminin bir işlem veya bağlantı noktasına ulaşamamakta olduğunu belirten kesik çizgili kırmızı bir çizgiyle, işlemler ve bilgisayarlar için Hizmet Eşlemesi haritaları içinde gösterilir. Bu sistem, başarısız bağlantıyı denemezse, dağıtılan bir Hizmet Eşlemesi aracısına sahip herhangi bir sistemden başarısız olan bağlantılar bildirilir. Hizmet Eşlemesi, bağlantı kurvermeyen TCP yuvalarını gözlemleyerek bu işlemi ölçer. Bu hata, bir güvenlik duvarının, istemci veya sunucudaki bir yanlış yapılandırmanın veya bir uzak hizmetin kullanılamamasına neden olabilir.
+Başarısız bağlantılar, işlemler ve bilgisayarlar için Hizmet Haritası eşlerinde gösterilir ve istemci sisteminin bir işlem veya bağlantı noktasına ulaşamadığini gösteren kesik li kırmızı bir çizgi bulunur. Başarısız bağlantılar, başarısız bağlantıyı deneyen sistemse, dağıtılmış bir Hizmet Haritası aracısı olan herhangi bir sistemden bildirilir. Hizmet Haritası, bağlantı kuramayan TCP soketlerini gözlemleyerek bu işlemi ölçer. Bu hata, bir güvenlik duvarı, istemci veya sunucuda bir yanlış yapılandırma veya uzak bir hizmetin kullanılamamasından kaynaklanabilir.
 
 ![Başarısız bağlantılar](media/service-map/failed-connections.png)
 
-Hatalı bağlantıları anlamak, sorun giderme, geçiş doğrulama, güvenlik Analizi ve genel mimari anlama konusunda yardımcı olabilir. Başarısız olan bağlantılar bazen zararsız olur, ancak genellikle yük devretme ortamı gibi bir doğrudan bir soruna işaret ederler ya da bir bulut geçişinden sonra bir veya iki uygulama katmanı konuşamazlar.
+Başarısız bağlantıları anlamak sorun giderme, geçiş doğrulama, güvenlik çözümlemesi ve genel mimari anlayışla yardımcı olabilir. Başarısız bağlantılar bazen zararsızdır, ancak genellikle bir başarısız ortamın aniden erişilemez hale gelmesi veya iki uygulama katmanının bulut geçişinden sonra konuşamaması gibi doğrudan bir soruna işaret eder.
 
-## <a name="client-groups"></a>İstemci grupları
+## <a name="client-groups"></a>İstemci Grupları
 
-İstemci grupları, bağımlılık aracıları olmayan istemci makinelerini temsil eden haritada yer alan kutulardır. Tek bir Istemci grubu, tek bir işlem veya makinenin istemcilerini temsil eder.
+İstemci Grupları, haritada Bağımlılık Aracıları olmayan istemci makinelerini temsil eden kutulardır. Tek bir İstemci Grubu, tek bir işlem veya makine için istemcileri temsil eder.
 
-![İstemci grupları](media/service-map/client-groups.png)
+![İstemci Grupları](media/service-map/client-groups.png)
 
-Bir Istemci grubundaki sunucuların IP adreslerini görmek için grubunu seçin. Grubun içeriği **Istemci grubu Özellikler** bölmesinde listelenir.
+İstemci Grubundaki sunucuların IP adreslerini görmek için grubu seçin. Grubun içeriği **İstemci Grubu Özellikleri** bölmesinde listelenir.
 
-![İstemci grubu özellikleri](media/service-map/client-group-properties.png)
+![İstemci Grubu özellikleri](media/service-map/client-group-properties.png)
 
-## <a name="server-port-groups"></a>Sunucu bağlantı noktası grupları
+## <a name="server-port-groups"></a>Sunucu Bağlantı Noktası Grupları
 
-Sunucu bağlantı noktası grupları, bağımlılık aracıları olmayan sunuculardaki sunucu bağlantı noktalarını temsil eden kutulardır. Kutu, sunucu bağlantı noktasını ve bu bağlantı noktasına bağlantıları olan sunucu sayısı sayısını içerir. Tek tek sunucuları ve bağlantıları görmek için kutuyu genişletin. Kutuda yalnızca bir sunucu varsa, ad veya IP adresi listelenir.
+Sunucu Bağlantı Noktası Grupları, Bağımlılık Aracıları olmayan sunucularda sunucu bağlantı noktalarını temsil eden kutulardır. Kutu sunucu bağlantı noktasını ve bu bağlantı noktasına bağlantı olan sunucu sayısının sayısını içerir. Tek tek sunucuları ve bağlantıları görmek için kutuyu genişletin. Kutuda yalnızca bir sunucu varsa, ad veya IP adresi listelenir.
 
-![Sunucu bağlantı noktası grupları](media/service-map/server-port-groups.png)
+![Sunucu Bağlantı Noktası Grupları](media/service-map/server-port-groups.png)
 
 ## <a name="context-menu"></a>Bağlam menüsü
 
-Herhangi bir sunucunun sağ üst köşesindeki üç nokta (...) simgesine tıklanması söz konusu sunucunun bağlam menüsünü görüntüler.
+Herhangi bir sunucunun sağ üst kısmındaki elipsis 'i (...) tıklattığınızda, bu sunucunun bağlam menüsü görüntülenir.
 
 ![Başarısız bağlantılar](media/service-map/context-menu.png)
 
-### <a name="load-server-map"></a>Sunucu haritasını yükle
+### <a name="load-server-map"></a>Sunucu haritasını yükleyin
 
-**Sunucu haritasını yükle** ' ye tıklamak, yeni odak makinesi olarak seçili sunucu ile yeni bir haritaya götürür.
+Yükle **Sunucu Haritası'nı** tıklattığınızda, yeni odak makinesi olarak seçilen sunucuyla yeni bir haritaya geçersiniz.
 
-### <a name="show-self-links"></a>Kendi kendine bağlantıları göster
+### <a name="show-self-links"></a>Kendi bağlantılarını göster
 
-**Kendi kendine bağlantıları göster** ' i tıklamak sunucu düğümünü yeniden çizer, bu da sunucu içindeki işlemlere başlayan ve biten TCP bağlantısı olan tüm kendine bağlantılar da dahildir. Kendi kendine bağlantılar gösteriliyorsa, menü komutu **kendi kendine bağlantıları gizleyecek**şekilde değişir, böylece devre dışı bırakabilirsiniz.
+**Self-Links'i Göster'i** tıklattığınızda, sunucu içindeki işlemlerde başlayıp biten TCP bağlantıları olan öz bağlantılar da dahil olmak üzere sunucu düğümünü yeniden çizer. Kendi kendine bağlantılar gösterilirse, menü komutu **Kendi Kendine Bağlantıları Gizle**olarak değişir, böylece onları kapatabilirsiniz.
 
-## <a name="computer-summary"></a>Bilgisayar Özeti
+## <a name="computer-summary"></a>Bilgisayar özeti
 
-**Makine Özeti** bölmesi, bir sunucunun işletim sistemine, bağımlılık sayısına ve diğer çözümlerdeki verilere ilişkin bir genel bakış içerir. Bu veriler performans ölçümlerini, hizmet masası biletlerini, değişiklik izlemeyi, güvenliği ve güncelleştirmeleri içerir.
+**Makine Özeti** bölmesi, sunucunun işletim sistemine, bağımlılık sayılarına ve diğer çözümlerden gelen verilere genel bir bakış içerir. Bu tür veriler performans ölçümlerini, servis masası biletlerini, değişiklik izlemeyi, güvenliği ve güncelleştirmeleri içerir.
 
-![Makine Özet bölmesi](media/service-map/machine-summary.png)
+![Makine Özeti bölmesi](media/service-map/machine-summary.png)
 
 ## <a name="computer-and-process-properties"></a>Bilgisayar ve işlem özellikleri
 
-Bir Hizmet Eşlemesi haritasında gezindiğinizde, özellikleri hakkında ek bağlam kazanmak için makineler ve süreçler seçebilirsiniz. Makineler DNS adı, IPv4 adresleri, CPU ve bellek kapasitesi, VM türü, işletim sistemi ve sürüm, son yeniden başlatma zamanı ve OMS ve Hizmet Eşlemesi aracılarının kimlikleri hakkında bilgi sağlar.
+Bir Hizmet Haritası haritasında gezinirken, özellikleri hakkında ek bağlam kazanmak için makineleri ve işlemleri seçebilirsiniz. Makineler DNS adı, IPv4 adresleri, CPU ve bellek kapasitesi, VM türü, işletim sistemi ve sürümü, son yeniden başlatma zamanı ve OMS ve Hizmet Haritası aracılarının kimliklerini hakkında bilgi sağlar.
 
-![Makine özellikleri bölmesi](media/service-map/machine-properties.png)
+![Makine Özellikleri bölmesi](media/service-map/machine-properties.png)
 
-İşlem adı, işlem açıklaması, Kullanıcı adı ve etki alanı (Windows 'ta), şirket adı, ürün adı, ürün sürümü, çalışma dizini, komut satırı ve işlem dahil çalışan işlemler hakkında işletim sistemi meta verilerinden işlem ayrıntılarını toplayabilirsiniz. başlangıç zamanı.
+İşlem adı, işlem açıklaması, kullanıcı adı ve etki alanı (Windows'ta), şirket adı, ürün adı, ürün sürümü, çalışma dizini, komut satırı ve işlem dahil olmak üzere çalışma süreçleri yle ilgili işletim sistemi meta verilerinden işlem ayrıntılarını toplayabilirsiniz başlangıç zamanı.
 
-![İşlem özellikleri bölmesi](media/service-map/process-properties.png)
+![İşlem Özellikleri bölmesi](media/service-map/process-properties.png)
 
-**Işlem Özeti** bölmesi, bağlı bağlantı noktaları, gelen ve giden bağlantılar ve başarısız bağlantılar dahil olmak üzere işlemin bağlantısı hakkında ek bilgiler sağlar.
+**İşlem Özeti** bölmesi, bağlı bağlantı noktaları, gelen ve giden bağlantılar ve başarısız bağlantılar da dahil olmak üzere işlemin bağlantısı hakkında ek bilgiler sağlar.
 
 ![İşlem Özeti bölmesi](media/service-map/process-summary.png)
 
-## <a name="alerts-integration"></a>Uyarı tümleştirmesi
+## <a name="alerts-integration"></a>Uyarıları entegrasyonu
 
-Hizmet Eşlemesi seçili zaman aralığında seçili sunucu için tetiklenen uyarıları göstermek üzere Azure uyarıları ile tümleşir. Geçerli uyarılar varsa sunucu bir simge görüntüler ve **makine uyarıları** bölmesi uyarıları listeler.
+Hizmet Haritası, seçili zaman aralığında seçilen sunucu için uyarıları göstermek için Azure Uyarıları ile tümleşir. Sunucu geçerli uyarılar varsa bir simge görüntüler ve **Makine Uyarıları** bölmesi uyarıları listeler.
 
-![Makine uyarıları bölmesi](media/service-map/machine-alerts.png)
+![Makine Uyarıları bölmesi](media/service-map/machine-alerts.png)
 
-Hizmet Eşlemesi ilgili uyarıları görüntüleyecek şekilde etkinleştirmek için, belirli bir bilgisayar için tetiklenen bir uyarı kuralı oluşturun. Uygun uyarılar oluşturmak için:
-- Bilgisayara göre gruplandırmak için bir yan tümce ekleyin (örneğin, **bilgisayar aralığı 1 dakika**).
-- Ölçüm ölçüsüne göre uyarı almak için seçin.
+Hizmet Haritası'nın ilgili uyarıları görüntülemesini sağlamak için, belirli bir bilgisayar için yangın yapan bir uyarı kuralı oluşturun. Uygun uyarılar oluşturmak için:
+- Bilgisayara göre gruplandırmak için bir yan tümce ekleyin (örneğin, **Bilgisayar aralığına göre 1 dakika).**
+- Metrik ölçüme göre uyarı yapmayı seçin.
 
-## <a name="log-events-integration"></a>Günlük olayları tümleştirmesi
+## <a name="log-events-integration"></a>Günlük olayları entegrasyonu
 
-Hizmet Eşlemesi, seçili zaman aralığında seçili sunucu için tüm kullanılabilir günlük olaylarının sayımını göstermek üzere günlük arama ile tümleşir. Günlük aramasına geçmek ve günlük olaylarını tek tek görmek için olay sayısı listesinden herhangi bir satıra tıklayabilirsiniz.
+Hizmet Haritası, seçilen zaman aralığında seçilen sunucu için kullanılabilir tüm günlük olaylarının sayısını göstermek için Günlük Arama ile tümleşir. Günlük Arama'ya atlamak ve tek tek günlük olaylarını görmek için olay sayımları listesindeki herhangi bir satırı tıklatabilirsiniz.
 
-![Makine günlüğü olayları bölmesi](media/service-map/log-events.png)
+![Makine Günlüğü Etkinlikleri bölmesi](media/service-map/log-events.png)
 
-## <a name="service-desk-integration"></a>Hizmet Masası tümleştirmesi
+## <a name="service-desk-integration"></a>Servis Masası entegrasyonu
 
-Hizmet Eşlemesi BT Hizmet Yönetimi Bağlayıcısı tümleştirme, her iki çözüm de Log Analytics çalışma alanınızda etkinleştirildiğinde ve yapılandırıldıktan sonra otomatik olarak oluşturulur. Hizmet Eşlemesi tümleştirme "Service Desk" olarak etiketlenir. Daha fazla bilgi için bkz. [BT hizmet yönetimi Bağlayıcısı kullanarak ITSM iş öğelerini merkezi olarak yönetme](https://docs.microsoft.com/azure/log-analytics/log-analytics-itsmc-overview).
+Bt Hizmeti Yönetimi Konektörü ile Hizmet Haritası entegrasyonu, her iki çözüm etkinleştirildiğinde ve Log Analytics çalışma alanınızda yapılandırıldığında otomatiktir. Hizmet Haritası'ndaki tümleştirme "Servis Masası" olarak etiketlenir. Daha fazla bilgi için BT [Hizmet Yönetimi Bağlayıcısı'nı kullanarak ITSM iş öğelerini merkezi olarak yönetin.](https://docs.microsoft.com/azure/log-analytics/log-analytics-itsmc-overview)
 
-**Makine hizmeti** bölmesi bölmesi seçilen zaman aralığında seçili sunucu IÇIN tüm BT hizmet yönetimi olaylarını listeler. Sunucu, geçerli öğeler varsa ve makine hizmeti bölmesi bölmesi tarafından listeleniyorsa bir simge görüntüler.
+**Makine Servis Masası** bölmesi, seçili sunucunun seçili zaman aralığındaki tüm BT Hizmet Yönetimi olaylarını listeler. Sunucu, geçerli öğeler varsa bir simge görüntüler ve Makine Servis Masası bölmesi bunları listeler.
 
-![Makine hizmeti masası bölmesi](media/service-map/service-desk.png)
+![Makine Servis Masası bölmesi](media/service-map/service-desk.png)
 
-Öğeyi bağlı ıTSM çözümünüzde açmak için **Iş öğesini görüntüle**' ye tıklayın.
+Bağlı ITSM çözümünüzdeki öğeyi açmak için **Çalışma Öğesini Görüntüle'yi**tıklatın.
 
-Günlük aramasında öğenin ayrıntılarını görüntülemek için **günlük aramasında göster**' e tıklayın.
-Bağlantı ölçümleri Log Analytics içindeki iki yeni tabloya yazılır 
+Günlük Arama'da öğenin ayrıntılarını görüntülemek **için, Günlük Arama'da Göster'i**tıklatın.
+Bağlantı ölçümleri Log Analytics'teki iki yeni tabloya yazılır 
 
-## <a name="change-tracking-integration"></a>Değişiklik İzleme tümleştirme
+## <a name="change-tracking-integration"></a>İzleme tümleştirmeyi değiştir
 
-Hizmet Eşlemesi tümleştirme, her iki çözüm de Log Analytics çalışma alanınızda etkinleştirildiğinde ve yapılandırıldıktan sonra otomatik olarak Değişiklik İzleme.
+Her iki çözüm etkinleştirildiğinde ve Log Analytics çalışma alanınızda yapılandırıldığında Değişiklik İzleme ile Hizmet Haritası tümleştirmesi otomatiktir.
 
-**Makine değişiklik izleme** bölmesi, daha önce en son bulunan tüm değişiklikleri, daha fazla ayrıntı Için günlük aramasının detayına bir bağlantı ile birlikte listeler.
+**Makine Değişikliği İzleme** bölmesi, en son ilk ilerle birlikte, ek ayrıntılar için Günlük Arama'ya ayrıntıya inmek üzere bir bağlantıyla birlikte tüm değişiklikleri listeler.
 
-![Makine Değişiklik İzleme Bölmesi](media/service-map/change-tracking.png)
+![Makine Değiştirme İzleme bölmesi](media/service-map/change-tracking.png)
 
-Aşağıdaki görüntü, **Log Analytics Içinde göster '** i seçtikten sonra görebileceğiniz bir ConfigurationChange olayının ayrıntılı görünümüdür.
+Aşağıdaki resim, **Log Analytics'te Göster'i**seçtikten sonra görebileceğiniz configurationChange olayının ayrıntılı görünümüdür.
 
 ![ConfigurationChange olayı](media/service-map/configuration-change-event-01.png)
 
-## <a name="performance-integration"></a>Performans tümleştirmesi
+## <a name="performance-integration"></a>Performans entegrasyonu
 
-**Makine performansı** bölmesi, seçilen sunucu için standart performans ölçümlerini görüntüler. Ölçümler CPU kullanımı, bellek kullanımı, gönderilen ve alınan ağ baytları ve gönderilen ve alınan ağ baytlarına göre en üst işlemlerin bir listesini içerir.
+**Makine Performansı** bölmesi seçili sunucu için standart performans ölçümlerini görüntüler. Ölçümler CPU kullanımı, bellek kullanımı, gönderilen ve alınan ağ baytları ve gönderilen ve alınan ağ baytları tarafından üst süreçlerin bir listesini içerir.
 
-![Makine performansı bölmesi](media/service-map/machine-performance.png)
+![Makine Performans bölmesi](media/service-map/machine-performance.png)
 
-Performans verilerini görmek için [uygun Log Analytics performans sayaçlarını etkinleştirmeniz](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-sources-performance-counters)gerekebilir.  Etkinleştirmek istediğiniz sayaçlar:
+Performans verilerini görmek [için, uygun Log Analytics performans sayaçlarını etkinleştirmeniz](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-sources-performance-counters)gerekebilir.  Etkinleştirmek isteyeceğiniz sayaçlar:
 
 Windows:
-- İşlemci (*)\\% Işlemci zamanı
-- Bellek\\kullanılan kaydedilmiş bayt yüzdesi
-- Ağ bağdaştırıcısı (*)\\gönderilen bayt/sn
-- Ağ bağdaştırıcısı (*)\\alınan bayt/sn
+- İşlemci(*)\\% İşlemci Süresi
+- Bellek\\% Kullanımda Bayt Taahhüt
+- Ağ Bağdaştırıcısı(*)\\Gönderilen/sn
+- Ağ Bağdaştırıcısı(*)\\Alınan/sn
 
 Linux:
-- İşlemci (*)\\% Işlemci zamanı
-- Bellek (*)\\% kullanılan bellek
-- Ağ bağdaştırıcısı (*)\\gönderilen bayt/sn
-- Ağ bağdaştırıcısı (*)\\alınan bayt/sn
+- İşlemci(*)\\% İşlemci Süresi
+- Bellek(*)\\% Kullanılan Bellek
+- Ağ Bağdaştırıcısı(*)\\Gönderilen/sn
+- Ağ Bağdaştırıcısı(*)\\Alınan/sn
 
-Ağ performansı verilerini almak için, çalışma alanınızdaki Wire Data 2.0 çözümünü da etkinleştirmiş olmanız gerekir.
+Ağ performansı verilerini almak için çalışma alanınızda Tel Verileri 2.0 çözümünüzü de etkinleştirmiş olmalısınız.
  
-## <a name="security-integration"></a>Güvenlik Tümleştirmesi
+## <a name="security-integration"></a>Güvenlik entegrasyonu
 
-Hizmet Eşlemesi tümleştirme, her iki çözüm de Log Analytics çalışma alanınızda etkinleştirildiğinde ve yapılandırıldıktan sonra otomatik olarak Güvenlik ve Denetim.
+Her iki çözüm etkinleştirildiğinde ve Log Analytics çalışma alanınızda yapılandırıldığında Güvenlik ve Denetim ile Hizmet Haritası tümleştirmesi otomatiktir.
 
-**Makine güvenliği** bölmesi, seçilen sunucu için güvenlik ve denetim çözümünden verileri gösterir. Bölmesi, seçili zaman aralığı boyunca sunucu için tüm bekleyen güvenlik sorunlarının özetini listeler. Güvenlik sorunlarından herhangi birine tıklayarak bunlarla ilgili ayrıntılar için bir günlük araması yapın.
+**Makine Güvenliği** bölmesi, seçili sunucuiçin Güvenlik ve Denetim çözümünden gelen verileri gösterir. Bölme, seçili zaman aralığında sunucu için bekleyen güvenlik sorunlarının bir özetini listeler. Güvenlik sorunlarından herhangi birini tıklattığınızda, bunlarla ilgili ayrıntılar için Bir Günlük Araması'na girebilirsiniz.
 
-![Makine güvenliği bölmesi](media/service-map/machine-security.png)
+![Makine Güvenlik bölmesi](media/service-map/machine-security.png)
 
-## <a name="updates-integration"></a>Güncelleştirme tümleştirmesi
+## <a name="updates-integration"></a>Tümleştirmeyi güncelleştirir
 
-Hizmet Eşlemesi tümleştirme, her iki çözüm de Log Analytics çalışma alanınızda etkinleştirildiğinde ve yapılandırıldıktan sonra otomatik olarak Güncelleştirme Yönetimi.
+Her iki çözüm etkinleştirildiğinde ve Log Analytics çalışma alanınızda yapılandırıldığında, Güncelleştirme Yönetimi ile Hizmet Haritası tümleştirmesi otomatiktir.
 
-**Makine güncelleştirmeleri** bölmesi, seçili sunucu için güncelleştirme yönetimi çözümünden verileri görüntüler. Bölmesi, seçili zaman aralığı boyunca sunucu için eksik güncelleştirmelerin özetini listeler.
+**Machine Updates** bölmesi, seçili sunucu için Güncelleştirme Yönetimi çözümünden gelen verileri görüntüler. Bölme, seçili zaman aralığında sunucu için eksik güncelleştirmelerin bir özetini listeler.
 
-![Makine Değişiklik İzleme Bölmesi](media/service-map/machine-updates.png)
+![Makine Değiştirme İzleme bölmesi](media/service-map/machine-updates.png)
 
 ## <a name="log-analytics-records"></a>Log Analytics kayıtları
 
-Hizmet Eşlemesi bilgisayar ve işlem envanter verileri Log Analytics [arama](../../azure-monitor/log-query/log-query-overview.md) için kullanılabilir. Bu verileri, geçiş planlama, Kapasite Analizi, bulma ve isteğe bağlı performans sorunlarını gidermeyle ilgili senaryolara uygulayabilirsiniz.
+Servis Haritası bilgisayar ve proses envanteri verileri Log Analytics'te [arama](../../azure-monitor/log-query/log-query-overview.md) için kullanılabilir. Bu verileri geçiş planlaması, kapasite çözümlemesi, bulma ve isteğe bağlı performans sorun giderme gibi senaryolara uygulayabilirsiniz.
 
-Her benzersiz bilgisayar ve işlem için saat başına bir kayıt oluşturulur; bir işlem veya bilgisayar başlatıldığında ya da Hizmet Eşlemesi eklenmediyse üzerinde olduğunda oluşturulan kayıtlara ek olarak. Bu kayıtlar aşağıdaki tablolardaki özelliklere sahiptir. ServiceMapComputer_CL olaylardaki alanlar ve değerler, ServiceMap Azure Resource Manager API 'sindeki makine kaynağının alanlarıyla eşlenir. ServiceMapProcess_CL olaylardaki alanlar ve değerler, ServiceMap Azure Resource Manager API 'sindeki Işlem kaynağının alanlarıyla eşlenir. ResourceName_s alanı, karşılık gelen Kaynak Yöneticisi kaynağındaki ad alanıyla eşleşir. 
+Bir işlem veya bilgisayar Hizmet Haritası'na başladığında veya yerleşik olduğunda oluşturulan kayıtlara ek olarak, her benzersiz bilgisayar ve işlem için saat başına bir kayıt oluşturulur. Bu kayıtlar aşağıdaki tablolarda özelliklere sahiptir. ServiceMapComputer_CL olaylardaki alanlar ve değerler, ServiceMap Azure Kaynak Yöneticisi API'deki Makine kaynağının alanlarıyla eşlenin. ServiceMapProcess_CL olaylardaki alanlar ve değerler, ServiceMap Azure Kaynak Yöneticisi API'deki İşlem kaynağının alanlarına eşlenir. ResourceName_s alanı, ilgili Kaynak Yöneticisi kaynağındaki ad alanıyla eşleşir. 
 
 >[!NOTE]
->Hizmet Eşlemesi Özellikler büyüdükçe, bu alanlar değiştirilebilir.
+>Hizmet Haritası özellikleri büyüdükçe, bu alanlar değişebilir.
 
-Benzersiz işlem ve bilgisayarları tanımlamak için kullanabileceğiniz, dahili olarak oluşturulan özellikler vardır:
+Benzersiz işlemleri ve bilgisayarları tanımlamak için kullanabileceğiniz dahili olarak oluşturulmuş özellikler vardır:
 
-- Bilgisayar: bir Log Analytics çalışma alanındaki bilgisayarı benzersiz şekilde tanımlamak için *RESOURCEID* veya *ResourceName_s* kullanın.
-- İşlem: Log Analytics çalışma alanındaki bir işlemi benzersiz şekilde tanımlamak için *RESOURCEID* kullanın. *ResourceName_s* , işlemin üzerinde çalıştığı makinenin bağlamı içinde benzersizdir (MachineResourceName_s) 
+- Bilgisayar: Log Analytics çalışma alanı içindeki bir bilgisayarı benzersiz olarak tanımlamak için *ResourceId* veya *ResourceName_s* kullanın.
+- İşlem: Log Analytics çalışma alanındaki bir işlemi benzersiz olarak tanımlamak için *ResourceId'yi* kullanın. *ResourceName_s,* işlemin yürütüldettiği makine bağlamında benzersizdir (MachineResourceName_s) 
 
-Belirli bir zaman aralığında belirtilen bir işlem ve bilgisayar için birden çok kayıt olabileceğinden, sorgular aynı bilgisayar veya işlem için birden fazla kayıt döndürebilir. Yalnızca en son kaydı dahil etmek için, Ekle "| RESOURCEID "ile sorgu için Yinelenenleri kaldırma.
+Belirli bir işlem ve belirli bir zaman aralığındaki bilgisayar için birden çok kayıt bulunabildiği için, sorgular aynı bilgisayar veya işlem için birden fazla kayıt döndürebilir. Yalnızca en son kaydı eklemek için "| dedup ResourceId" sorgusuna.
 
 ### <a name="connections"></a>Bağlantılar
 
-Bağlantı ölçümleri Log Analytics-VMConnection 'daki yeni bir tabloya yazılır. Bu tablo, bir makinenin (gelen ve giden) bağlantıları hakkında bilgi sağlar. Bağlantı ölçümleri Ayrıca bir zaman penceresi sırasında belirli bir ölçümü elde etmek için bir yol sağlayan API 'Ler ile birlikte sunulur.  Bir dinleme yuvasında kabul edilmeden kaynaklanan TCP bağlantıları gelen, belirli bir IP ve bağlantı noktasına bağlanarak oluşturulanlar gidendir. Bir bağlantının yönü, **gelen** veya **giden**olarak ayarlanabilen Direction özelliği ile temsil edilir. 
+Bağlantı ölçümleri Log Analytics - VMConnection'daki yeni bir tabloya yazılır. Bu tablo, bir makinenin bağlantıları (gelen ve giden) hakkında bilgi sağlar. Bağlantı Ölçümleri, bir zaman penceresi sırasında belirli bir metrik elde etmek için araçlar sağlayan API'lerle de ortaya çıkarır.  Dinleme soketinde kabul etmekten kaynaklanan TCP bağlantıları gelen, belirli bir IP ve bağlantı noktasına bağlanarak oluşturulanlar ise giden. Bir bağlantının yönü, **gelen** veya **giden**olarak ayarlanabilen Yön özelliği yle temsil edilir. 
 
-Bu tablolardaki kayıtlar, bağımlılık Aracısı tarafından bildirilen verilerden oluşturulur. Her kayıt, bir dakikalık bir zaman aralığı üzerinde bir gözlemme temsil eder. TimeGenerated özelliği zaman aralığının başlangıcını gösterir. Her kayıt, ilgili varlığın, yani bağlantının veya bağlantı noktasının yanı sıra söz konusu varlıkla ilişkili ölçümleri belirlemek için bilgiler içerir. Şu anda yalnızca IPv4 üzerinden TCP kullanılarak gerçekleşen ağ etkinliği raporlanır.
+Bu tablolardaki kayıtlar Bağımlılık aracısı tarafından bildirilen verilerden oluşturulur. Her kayıt bir dakikalık zaman aralığında bir gözlemtemsil eder. TimeGenerated özelliği zaman aralığının başlangıcını gösterir. Her kayıt, ilgili varlığı, yani bağlantı veya bağlantı noktasını tanımlamak için bilgiler ve bu varlıkla ilişkili ölçümleri içerir. Şu anda, yalnızca IPv4 üzerinden TCP kullanılarak oluşan ağ etkinliği bildirilir.
 
-Maliyet ve karmaşıklığı yönetmek için, bağlantı kayıtları tek tek fiziksel ağ bağlantılarını temsil etmez. Birden çok fiziksel ağ bağlantısı, daha sonra ilgili tabloya yansıtılmış bir mantıksal bağlantı halinde gruplandırılır.  Yani, *Vmconnection* tablosundaki kayıtlar, gözlemlenen ayrı fiziksel bağlantıları değil, mantıksal gruplandırmayı temsil eder. Belirli bir dakika aralığı sırasında aşağıdaki öznitelikler için aynı değeri paylaşan fiziksel ağ bağlantısı, *Vmconnection*'daki tek bir mantıksal kayıtta toplanır. 
+Maliyet ve karmaşıklığı yönetmek için bağlantı kayıtları tek tek fiziksel ağ bağlantılarını temsil etmez. Birden çok fiziksel ağ bağlantısı, daha sonra ilgili tabloya yansıtılan mantıksal bir bağlantı halinde gruplandırılır.  Anlamı, *VMConnection* tablosundaki kayıtlar, gözlemlenen tek tek fiziksel bağlantıları değil, mantıksal bir gruplamayı temsil eder. Belirli bir dakika aralığında aşağıdaki öznitelikler için aynı değeri paylaşan fiziksel ağ bağlantısı, *VMConnection'da*tek bir mantıksal kayda toplanır. 
 
 | Özellik | Açıklama |
 |:--|:--|
 | `Direction` |Bağlantının yönü, değer *gelen* veya *giden* |
-| `Machine` |Bilgisayar FQDN 'SI |
-| `Process` |İşlemin veya işlem gruplarının kimliği, bağlantıyı başlatma/kabul etme |
+| `Machine` |Bilgisayar FQDN |
+| `Process` |Sürecin veya süreç gruplarının kimliği, bağlantıyı başlatma/kabul etme |
 | `SourceIp` |Kaynağın IP adresi |
 | `DestinationIp` |Hedefin IP adresi |
 | `DestinationPort` |Hedefin bağlantı noktası numarası |
-| `Protocol` |Bağlantı için kullanılan protokol.  Değerler *TCP*'dir. |
+| `Protocol` |Bağlantı için kullanılan protokol.  Değerler *tcp'dir.* |
 
-Gruplandırmanın etkisini hesaba eklemek için, kaydın aşağıdaki özelliklerinde gruplanmış fiziksel bağlantı sayısıyla ilgili bilgiler verilmiştir:
+Gruplandırmanın etkisini hesaba katmak için, gruplanmış fiziksel bağlantı sayısı hakkında bilgiler kaydın aşağıdaki özelliklerinde sağlanır:
 
 | Özellik | Açıklama |
 |:--|:--|
 | `LinksEstablished` |Raporlama süresi penceresi sırasında kurulan fiziksel ağ bağlantısı sayısı |
-| `LinksTerminated` |Raporlama süresi penceresi sırasında sonlandırılan fiziksel ağ bağlantısı sayısı |
-| `LinksFailed` |Raporlama zaman penceresi sırasında başarısız olan fiziksel ağ bağlantısı sayısı. Bu bilgiler şu anda yalnızca giden bağlantılar için kullanılabilir. |
-| `LinksLive` |Raporlama zamanı penceresinin sonunda açık olan fiziksel ağ bağlantısı sayısı|
+| `LinksTerminated` |Raporlama süresi sırasında sonlandırılan fiziksel ağ bağlantısı sayısı |
+| `LinksFailed` |Raporlama süresi penceresinde başarısız olan fiziksel ağ bağlantısı sayısı. Bu bilgiler şu anda yalnızca giden bağlantılar için kullanılabilir. |
+| `LinksLive` |Raporlama süresi penceresinin sonunda açık olan fiziksel ağ bağlantısı sayısı|
 
 #### <a name="metrics"></a>Ölçümler
 
-Bağlantı sayısı ölçümlerine ek olarak, belirli bir mantıksal bağlantı veya ağ bağlantı noktası üzerinde gönderilen ve alınan veri hacmi hakkındaki bilgiler, kaydın aşağıdaki özelliklerine de dahildir:
+Bağlantı sayısı ölçümlerine ek olarak, belirli bir mantıksal bağlantı veya ağ bağlantı noktasına gönderilen ve alınan verilerin hacmi hakkındaki bilgiler de kaydın aşağıdaki özelliklerine dahil edilir:
 
 | Özellik | Açıklama |
 |:--|:--|
-| `BytesSent` |Raporlama süresi penceresi sırasında gönderilen toplam bayt sayısı |
-| `BytesReceived` |Raporlama süresi penceresi sırasında alınan toplam bayt sayısı |
-| `Responses` |Raporlama zaman penceresi sırasında gözlemlenen yanıt sayısı. 
-| `ResponseTimeMax` |Raporlama zaman penceresi sırasında gözlenen en büyük yanıt süresi (milisaniye).  Değer yoksa, özellik boştur.|
-| `ResponseTimeMin` |Raporlama zamanı penceresi sırasında gözlenen en küçük yanıt süresi (milisaniye).  Değer yoksa, özellik boştur.|
-| `ResponseTimeSum` |Raporlama zamanı penceresi sırasında gözlenen tüm yanıt sürelerinin (milisaniye) toplamı.  Değer yoksa, özellik boştur|
+| `BytesSent` |Raporlama süresi sırasında gönderilen toplam bayt sayısı |
+| `BytesReceived` |Raporlama süresi sırasında alınan toplam bayt sayısı |
+| `Responses` |Raporlama süresi penceresinde gözlenen yanıt ların sayısı. 
+| `ResponseTimeMax` |Raporlama süresi sırasında gözlenen en büyük yanıt süresi (milisaniye).  Değer yoksa, özellik boştur.|
+| `ResponseTimeMin` |Raporlama süresi sırasında gözlenen en küçük yanıt süresi (milisaniye).  Değer yoksa, özellik boştur.|
+| `ResponseTimeSum` |Raporlama süresi penceresinde gözlenen tüm yanıt sürelerinin (milisaniye) toplamı.  Değer yoksa, özellik boş|
 
-Bildirilen üçüncü veri türü yanıt süresi-bir çağıran bir bağlantı üzerinden gönderilen bir isteğin, uzak uç nokta tarafından işlenmek ve yanıt vermek için ne kadar süre harcadığını bekliyor. Raporlanan yanıt süresi, temel uygulama protokolünün doğru yanıt süresinin bir tahmindir. Fiziksel bir ağ bağlantısının kaynak ve hedef sonu arasındaki veri akışının gözlemine bağlı olarak buluşsal yöntemler kullanılarak hesaplanır. Kavramsal olarak, bir isteğin son baytındaki zaman arasındaki fark, yanıtın son baytının geri ulaştığı zaman arasındaki farktır. Bu iki zaman damgası, belirli bir fiziksel bağlantıda istek ve yanıt olaylarını belirtmek için kullanılır. Aralarındaki fark, tek bir isteğin yanıt süresini temsil eder. 
+Bildirilen üçüncü veri türü yanıt süresidir - bir arayanın bir bağlantı üzerinden gönderilen bir isteği bekleyerek ne kadar zaman harcadığı ve uzak bitiş noktası tarafından yanıtlandığıdır. Bildirilen yanıt süresi, temel uygulama protokolünün gerçek yanıt süresinin tahminidir. Fiziksel ağ bağlantısının kaynak ve hedef sonu arasındaki veri akışının gözlemine dayalı sezgisel kullanılarak hesaplanır. Kavramsal olarak, bir isteğin son baytının gönderenden ayrıldığı saat ile yanıtın son baytının ona geri geldiği saat arasındaki farktır. Bu iki zaman damgası, belirli bir fiziksel bağlantıdaki istek ve yanıt olaylarını ifade etmek için kullanılır. Aralarındaki fark, tek bir isteğin yanıt süresini temsil eder. 
 
-Bu özelliğin ilk sürümünde, algoritmız, belirli bir ağ bağlantısı için kullanılan gerçek uygulama protokolüne bağlı olarak değişen başarı derecesine sahip olabilecek bir yaklaşık dır. Örneğin, geçerli yaklaşım HTTP (S) gibi istek yanıt tabanlı protokoller için iyi çalışır, ancak tek yönlü veya ileti kuyruğu tabanlı protokollerle çalışmaz.
+Bu özelliğin bu ilk sürümünde, algoritmamız, belirli bir ağ bağlantısı için kullanılan gerçek uygulama protokolüne bağlı olarak değişen başarı dereceleriyle çalışabilecek bir yaklaşımdır. Örneğin, geçerli yaklaşım HTTP(S) gibi istek yanıtı tabanlı protokoller için iyi çalışır, ancak tek yönlü veya ileti sıra tabanlı iletişim ile çalışmaz.
 
-Göz önünde bulundurmanız gereken bazı önemli noktaları aşağıda bulabilirsiniz:
+Göz önünde bulundurulması gereken bazı önemli noktalar şunlardır:
 
-1. Bir işlem aynı IP adresinde ancak birden çok ağ arabiriminden bağlantı kabul ederse, her arabirim için ayrı bir kayıt raporlanır. 
-2. Joker IP içeren kayıtlar hiçbir etkinlik içermez. Bunlar, makinedeki bir bağlantı noktasının gelen trafiğe açık olduğunu göstermek için dahil edilmiştir.
-3. Ayrıntı ve veri hacmini azaltmak için, belirli bir IP adresi ile eşleşen bir kayıt (aynı işlem, bağlantı noktası ve protokol) olduğunda joker IP 'si olan kayıtlar atlanır. Joker karakter bir IP kaydı atlandığında, belirli IP adresine sahip ıyaya Cardbind kaydı özelliği, bağlantı noktasının raporlama makinesinin her arabiriminden açığa çıkardığını göstermek için "true" olarak ayarlanır.
-4. Yalnızca belirli bir arabirim üzerinde bağlı olan bağlantı noktaları, ıyaya Cardbind ' i "false" olarak ayarlanmış.
+1. Bir işlem aynı IP adresindeki ancak birden çok ağ arabirimi üzerindeki bağlantıları kabul ederse, her arabirim için ayrı bir kayıt bildirilir. 
+2. Joker karakter IP'si içeren kayıtlar etkinlik içermez. Bunlar, makinedeki bir bağlantı noktasının gelen trafiğe açık olduğu gerçeğini temsil etmek için dahildir.
+3. Ayrıntılı bilgi ve veri hacmini azaltmak için, belirli bir IP adresiyle eşleşen bir kayıt (aynı işlem, bağlantı noktası ve protokol için) olduğunda joker KARAKTER IP'li kayıtlar atlanır. Bir joker IP kaydı atlandığında, belirli IP adresine sahip IsWildcardBind kayıt özelliği, bağlantı noktasının raporlama makinesinin her arabirimi üzerinde açıkta olduğunu belirtmek için "True" olarak ayarlanır.
+4. Yalnızca belirli bir arabirimde bağlanan bağlantı noktaları IsWildcardBind "False" olarak ayarlanmıştır.
 
-#### <a name="naming-and-classification"></a>Adlandırma ve sınıflandırma
+#### <a name="naming-and-classification"></a>Adlandırma ve Sınıflandırma
 
-Kolaylık olması için, bir bağlantının uzak ucunun IP adresi Remoteıp özelliğinde yer alır. Gelen bağlantılarda, Remoteıp, SourceIP ile aynıdır, ancak giden bağlantılar için de Destinationıp ile aynıdır. RemoteDnsCanonicalNames özelliği, Remoteıp için makine tarafından raporlanan DNS kurallı adlarını temsil eder. Remotednssorular ve RemoteClassification özellikleri ileride kullanılmak üzere ayrılmıştır. 
+Kolaylık sağlamak için, bir bağlantının uzak ucunun IP adresi RemoteIp özelliğine dahildir. Gelen bağlantılar için RemoteIp SourceIp ile aynıdır, giden bağlantılar için ise DestinationIp ile aynıdır. RemoteDnsCanonicalNames özelliği, RemoteIp için makine tarafından bildirilen DNS kanonik adlarını temsil eder. RemoteDnsQuestions ve RemoteClassification özellikleri ileride kullanılmak üzere ayrılmıştır. 
 
-#### <a name="geolocation"></a>Konumu
+#### <a name="geolocation"></a>Coğrafi Konum
 
-*Vmconnection* Ayrıca, kaydın aşağıdaki özelliklerindeki her bir bağlantı kaydının uzak ucuna ait coğrafi konum bilgilerini de içerir: 
+*VMConnection* ayrıca, her bağlantı kaydının uzak ucuiçin aşağıdaki kayıtlardaki coğrafi konum bilgilerini de içerir: 
 
 | Özellik | Açıklama |
 |:--|:--|
-| `RemoteCountry` |Remoteıp 'yi barındıran ülkenin/bölgenin adı.  Örneğin, *Birleşik Devletler* |
-| `RemoteLatitude` |Coğrafi konum enlem.  Örneğin, *47,68* |
+| `RemoteCountry` |RemoteIp'e ev sahipliği yapan ülke/bölgenin adı.  Örneğin, *Amerika Birleşik Devletleri* |
+| `RemoteLatitude` |Coğrafi konum enlemi.  Örneğin, *47,68* |
 | `RemoteLongitude` |Coğrafi konum boylam.  Örneğin, *-122,12* |
 
-#### <a name="malicious-ip"></a>Kötü amaçlı IP
+#### <a name="malicious-ip"></a>Kötü niyetli IP
 
-*Vmconnection* tablosundaki her remoteıp özelliği, bilinen kötü amaçlı etkinliklerle bir IP kümesine karşı denetlenir. Remoteıp kötü amaçlı olarak tanımlanmışsa, kaydın aşağıdaki özelliklerinde aşağıdaki özellikler doldurulur (boş olan, IP kötü amaçlı olarak kabul edilmez).
+*VMConnection* tablosundaki her RemoteIp özelliği, bilinen kötü amaçlı etkinlik le ilgili bir ip kümesiyle karşılaştırılır. RemoteIp kötü niyetli olarak tanımlanırsa, aşağıdaki özellikler kaydın aşağıdaki özelliklerinde doldurulur (IP kötü amaçlı olarak kabul edilmezse boşturlar)
 
 | Özellik | Açıklama |
 |:--|:--|
-| `MaliciousIp` |Remoteıp adresi |
-| `IndicatorThreadType` |Algılanan tehdit göstergesi, *botnet*, *C2*, *cryptoaraştırma*, *koyu ağ*, *DDoS*, *MaliciousUrl*, *kötü amaçlı yazılım*, *kimlik avı*, *proxy*, *Pua*, *listem*değerlerinden biridir.   |
-| `Description` |Gözlemlenen tehdit açıklaması. |
-| `TLPLevel` |Trafik ışığı Protokolü (TLP) düzeyi, tanımlı değerlerden biridir, *beyaz*, *yeşil* *,,* ve *kırmızı*. |
-| `Confidence` |Değerler *0 – 100*' dir. |
-| `Severity` |Değerler *0 – 5*' dir; burada *5* en önemdir ve *0* , hiç önemli değildir. Varsayılan değer *3*' dir.  |
-| `FirstReportedDateTime` |Sağlayıcı göstergeyi ilk kez raporladı. |
-| `LastReportedDateTime` |Göstergenin Interflow tarafından en son görüldüğü zaman. |
-| `IsActive` |Göstergelerin *true* veya *false* değeriyle devre dışı bırakıldığını gösterir. |
-| `ReportReferenceLink` |Verilen bir observable ile ilgili raporların bağlantıları. |
-| `AdditionalInformation` |, Gözlemlenen tehdit hakkında, varsa ek bilgiler sağlar. |
+| `MaliciousIp` |RemoteIp adresi |
+| `IndicatorThreadType` |Tespit edilen tehdit göstergesi aşağıdaki değerlerden biridir, *Botnet*, *C2*, *CryptoMining*, *Darknet*, *DDos*, *MalwareUrl*, *Malware*, *Phishing*, *Proxy*, *PUA*, *İzleme Listesi*.   |
+| `Description` |Gözlenen tehdidin tanımı. |
+| `TLPLevel` |Trafik Işık Protokolü (TLP) Düzeyi tanımlanan değerlerden biridir, *Beyaz,* *Yeşil,* *Kehribar,* *Kırmızı*. |
+| `Confidence` |Değerler *0 - 100 arasındadır.* |
+| `Severity` |Değerler *0 - 5,* *5* en şiddetli ve *0* hiç şiddetli değildir. Varsayılan değer *3*3'dür.  |
+| `FirstReportedDateTime` |Sağlayıcı göstergeyi ilk kez rapor etti. |
+| `LastReportedDateTime` |Gösterge interflow tarafından en son görüldüğünde. |
+| `IsActive` |Göstergelerin *True* veya *False* değeriyle devre dışı bırakıldığını gösterir. |
+| `ReportReferenceLink` |Belirli bir gözlemlenebilir ile ilgili raporlara bağlantılar. |
+| `AdditionalInformation` |Varsa, gözlenen tehdit hakkında ek bilgi sağlar. |
 
 ### <a name="servicemapcomputer_cl-records"></a>ServiceMapComputer_CL kayıtları
 
-*ServiceMapComputer_CL* bir türdeki kayıtlar, hizmet eşlemesi aracıları olan sunucular için envanter verileri vardır. Bu kayıtlar aşağıdaki tabloda özelliklere sahiptir:
+*ServiceMapComputer_CL* türüne sahip kayıtlar, Hizmet Haritası aracıları olan sunucular için envanter verilerine sahiptir. Bu kayıtların özellikleri aşağıdaki tabloda dır:
 
 | Özellik | Açıklama |
 |:--|:--|
 | `Type` | *ServiceMapComputer_CL* |
 | `SourceSystem` | *OpsManager* |
-| `ResourceId` | Çalışma alanı içindeki bir makinenin benzersiz tanımlayıcısı |
-| `ResourceName_s` | Çalışma alanı içindeki bir makinenin benzersiz tanımlayıcısı |
-| `ComputerName_s` | Bilgisayar FQDN 'SI |
+| `ResourceId` | Çalışma alanı içindeki bir makine için benzersiz tanımlayıcı |
+| `ResourceName_s` | Çalışma alanı içindeki bir makine için benzersiz tanımlayıcı |
+| `ComputerName_s` | Bilgisayar FQDN |
 | `Ipv4Addresses_s` | Sunucunun IPv4 adreslerinin listesi |
 | `Ipv6Addresses_s` | Sunucunun IPv6 adreslerinin listesi |
 | `DnsNames_s` | Bir dizi DNS adı |
 | `OperatingSystemFamily_s` | Windows veya Linux |
 | `OperatingSystemFullName_s` | İşletim sisteminin tam adı  |
-| `Bitness_s` | Makinenin bit genişliği (32-bit veya 64-bit)  |
-| `PhysicalMemory_d` | MB cinsinden fiziksel bellek |
+| `Bitness_s` | Makinenin bitliği (32-bit veya 64-bit)  |
+| `PhysicalMemory_d` | MB'de fiziksel bellek |
 | `Cpus_d` | CPU sayısı |
-| `CpuSpeed_d` | MHz cinsinden CPU hızı|
-| `VirtualizationState_s` | *bilinmiyor*, *fiziksel*, *sanal*, *hiper yönetici* |
-| `VirtualMachineType_s` | *hyperv*, *VMware*, vb. |
-| `VirtualMachineNativeMachineId_g` | Hiper Yöneticisi tarafından atanan VM KIMLIĞI |
-| `VirtualMachineName_s` | VM 'nin adı |
-| `BootTime_t` | Önyükleme saati |
+| `CpuSpeed_d` | MHz'de CPU hızı|
+| `VirtualizationState_s` | *bilinmeyen*, *fiziksel*, *sanal*, *hipervizör* |
+| `VirtualMachineType_s` | *hyperv*, *vmware*, ve benzeri |
+| `VirtualMachineNativeMachineId_g` | Hypervisor tarafından atanan VM Kimliği |
+| `VirtualMachineName_s` | VM adı |
+| `BootTime_t` | Önyükleme süresi |
 
-### <a name="servicemapprocess_cl-type-records"></a>Tür kayıtlarını ServiceMapProcess_CL
+### <a name="servicemapprocess_cl-type-records"></a>ServiceMapProcess_CL Türü kayıtları
 
-*ServiceMapProcess_CL* bir türdeki kayıtlar, hizmet eşlemesi aracıları olan sunuculardaki TCP bağlantılı işlemlere yönelik envanter verileri vardır. Bu kayıtlar aşağıdaki tabloda özelliklere sahiptir:
+Bir *ServiceMapProcess_CL* türüne sahip kayıtlar, Hizmet Haritası aracıları olan sunucularda TCP'ye bağlı işlemler için envanter verilerine sahiptir. Bu kayıtların özellikleri aşağıdaki tabloda dır:
 
 | Özellik | Açıklama |
 |:--|:--|
 | `Type` | *ServiceMapProcess_CL* |
 | `SourceSystem` | *OpsManager* |
-| `ResourceId` | Çalışma alanı içindeki bir işlemin benzersiz tanımlayıcısı |
-| `ResourceName_s` | Üzerinde çalıştığı makine içindeki bir işlemin benzersiz tanımlayıcısı|
+| `ResourceId` | Çalışma alanı içindeki bir işlem için benzersiz tanımlayıcı |
+| `ResourceName_s` | Üzerinde çalışan makine içinde bir işlem için benzersiz tanımlayıcı|
 | `MachineResourceName_s` | Makinenin kaynak adı |
-| `ExecutableName_s` | İşlemin yürütülebilir dosyasının adı |
-| `StartTime_t` | İşlem havuzu başlangıç zamanı |
+| `ExecutableName_s` | Çalıştırılabilen işlemin adı |
+| `StartTime_t` | İşlem havuzu başlangıç saati |
 | `FirstPid_d` | İşlem havuzundaki ilk PID |
 | `Description_s` | İşlem açıklaması |
 | `CompanyName_s` | Şirketin adı |
-| `InternalName_s` | İç ad |
+| `InternalName_s` | Dahili ad |
 | `ProductName_s` | Ürünün adı |
 | `ProductVersion_s` | Ürün sürümü |
 | `FileVersion_s` | Dosya sürümü |
 | `CommandLine_s` | Komut satırı |
-| `ExecutablePath _s` | Yürütülebilir dosyanın yolu |
+| `ExecutablePath _s` | Yürütülebilir dosyaya giden yol |
 | `WorkingDirectory_s` | Çalışma dizini |
-| `UserName` | İşlemin üzerinde yürütüldüğü hesap |
-| `UserDomain` | İşlemin üzerinde yürütüldüğü etki alanı |
+| `UserName` | İşlemin yürütüldettiği hesap |
+| `UserDomain` | İşlemin yürütüldettiği etki alanı |
 
 ## <a name="sample-log-searches"></a>Örnek günlük aramaları
 
-### <a name="list-all-known-machines"></a>Tüm bilinen makineleri Listele
+### <a name="list-all-known-machines"></a>Bilinen tüm makineleri listele
 
-ServiceMapComputer_CL | RESOURCEID tarafından arg_max (TimeGenerated, *) özetleme
+ServiceMapComputer_CL | arg_max özetleyin(TimeGenerated, *) tarafından ResourceId
 
-### <a name="list-the-physical-memory-capacity-of-all-managed-computers"></a>Tüm yönetilen bilgisayarların fiziksel bellek kapasitesini listeleyin.
+### <a name="list-the-physical-memory-capacity-of-all-managed-computers"></a>Yönetilen tüm bilgisayarların fiziksel bellek kapasitesini listele.
 
-ServiceMapComputer_CL | RESOURCEID tarafından arg_max (TimeGenerated, *) özetleme | Proje PhysicalMemory_d, ComputerName_s
+ServiceMapComputer_CL | arg_max özetlemek(TimeGenerated, *) tarafından ResourceId | proje PhysicalMemory_d, ComputerName_s
 
-### <a name="list-computer-name-dns-ip-and-os"></a>Bilgisayar adını, DNS, IP ve işletim sistemini listeleyin.
+### <a name="list-computer-name-dns-ip-and-os"></a>Bilgisayar adını, DNS, IP ve Işletim Sistemi'ni listele.
 
-ServiceMapComputer_CL | RESOURCEID tarafından arg_max (TimeGenerated, *) özetleme | Proje ComputerName_s, OperatingSystemFullName_s, DnsNames_s Ipv4Addresses_s
+ServiceMapComputer_CL | arg_max özetlemek(TimeGenerated, *) tarafından ResourceId | proje ComputerName_s, OperatingSystemFullName_s, DnsNames_s, Ipv4Addresses_s
 
-### <a name="find-all-processes-with-sql-in-the-command-line"></a>Komut satırında "SQL" ile tüm süreçler bul
+### <a name="find-all-processes-with-sql-in-the-command-line"></a>Komut satırında "sql" olan tüm işlemleri bulun
 
-ServiceMapProcess_CL | Burada CommandLine_s contains_cs "SQL" | RESOURCEID tarafından arg_max (TimeGenerated, *) özetleme
+ServiceMapProcess_CL | nerede CommandLine_s contains_cs "sql" | arg_max özetleyin(TimeGenerated, *) tarafından ResourceId
 
-### <a name="find-a-machine-most-recent-record-by-resource-name"></a>Kaynak adına göre bir makine (en son kayıt) bulun
+### <a name="find-a-machine-most-recent-record-by-resource-name"></a>Kaynak adına göre bir makine (en son kayıt) bulma
 
-Arama (ServiceMapComputer_CL) "m-4b9c93f9-bc37-46DF-B43C-899ba829e07b" | RESOURCEID tarafından arg_max (TimeGenerated, *) özetleme
+arama (ServiceMapComputer_CL) "m-4b9c93f9-bc37-46df-b43c-899ba829e07b" | arg_max özetleyin(TimeGenerated, *) tarafından ResourceId
 
-### <a name="find-a-machine-most-recent-record-by-ip-address"></a>IP adresine göre bir makine (en son kayıt) bulun
+### <a name="find-a-machine-most-recent-record-by-ip-address"></a>IP adresine göre bir makine (en son kayıt) bulma
 
-Arama (ServiceMapComputer_CL) "10.229.243.232" | RESOURCEID tarafından arg_max (TimeGenerated, *) özetleme
+arama (ServiceMapComputer_CL) "10.229.243.232" | arg_max özetleyin(TimeGenerated, *) tarafından ResourceId
 
-### <a name="list-all-known-processes-on-a-specified-machine"></a>Belirtilen makinedeki tüm bilinen işlemlerin listesini Listele
+### <a name="list-all-known-processes-on-a-specified-machine"></a>Bilinen tüm işlemleri belirli bir makinede listele
 
-ServiceMapProcess_CL | Burada MachineResourceName_s = = "a-559dbcd8-3130-454D-8d1d-f624e57961bc" | RESOURCEID tarafından arg_max (TimeGenerated, *) özetleme
+ServiceMapProcess_CL | nerede MachineResourceName_s == "m-559dbcd8-3130-454d-8d1d-f624e57961bc" | arg_max özetleyin(TimeGenerated, *) tarafından ResourceId
 
-### <a name="list-all-computers-running-sql"></a>SQL çalıştıran tüm bilgisayarları listeleme
+### <a name="list-all-computers-running-sql"></a>SQL çalıştıran tüm bilgisayarları listele
 
-ServiceMapComputer_CL | içinde ResourceName_s ((ServiceMapProcess_CL) "\*SQL\*" | ayrı MachineResourceName_s)) | ayrı ComputerName_s
+ServiceMapComputer_CL | nerede ResourceName_s ((search in (ServiceMapProcess_CL) "\*sql\*" | farklı MachineResourceName_s)) | farklı ComputerName_s
 
-### <a name="list-all-unique-product-versions-of-curl-in-my-datacenter"></a>Veri merkezindeki tüm benzersiz ürün sürümlerini listeleyin
+### <a name="list-all-unique-product-versions-of-curl-in-my-datacenter"></a>Curl'ün tüm benzersiz ürün sürümlerini veri merkezimde listele
 
-ServiceMapProcess_CL | Burada ExecutableName_s = = "kıvır" | ayrı ProductVersion_s
+ServiceMapProcess_CL | nerede ExecutableName_s == "curl" | farklı ProductVersion_s
 
-### <a name="create-a-computer-group-of-all-computers-running-centos"></a>CentOS çalıştıran tüm bilgisayarların bilgisayar grubunu oluşturma
+### <a name="create-a-computer-group-of-all-computers-running-centos"></a>CentOS çalıştıran tüm bilgisayarlardan oluşan bir bilgisayar grubu oluşturma
 
-ServiceMapComputer_CL | where OperatingSystemFullName_s contains_cs "CentOS" | distinct ComputerName_s
+ServiceMapComputer_CL | nerede OperatingSystemFullName_s contains_cs "CentOS" | farklı ComputerName_s
 
-### <a name="summarize-the-outbound-connections-from-a-group-of-machines"></a>Bir makine grubundan giden bağlantıları özetleme
+### <a name="summarize-the-outbound-connections-from-a-group-of-machines"></a>Bir grup makineden giden bağlantıları özetle
 
 ```
 // the machines of interest
@@ -540,66 +540,66 @@ let remoteMachines = remote | summarize by RemoteMachine;
 
 ## <a name="rest-api"></a>REST API
 
-Hizmet Eşlemesi içindeki tüm sunucu, işlem ve bağımlılık verileri, [Hizmet Eşlemesi REST API](https://docs.microsoft.com/rest/api/servicemap/)ile kullanılabilir.
+Hizmet Haritası'ndaki tüm sunucu, işlem ve bağımlılık verilerine [Hizmet Haritası REST API](https://docs.microsoft.com/rest/api/servicemap/)üzerinden ulaşılabilir.
 
 ## <a name="diagnostic-and-usage-data"></a>Tanılama ve kullanım verileri
 
-Microsoft hizmet eşlemesi hizmeti kullanımınız vasıtasıyla kullanım ve performans verilerini otomatik olarak toplar. Microsoft, kalite, güvenlik ve hizmet eşlemesi hizmeti bütünlüğünü geliştirmek için bu verileri kullanır. Doğru ve verimli sorun giderme özellikleri sağlamak için, veriler işletim sistemi ve sürümü, IP adresi, DNS adı ve iş istasyonu adı gibi yazılımınızın yapılandırması hakkında bilgiler içerir. Microsoft ad, adres veya diğer iletişim bilgileri toplamaz.
+Microsoft, Hizmet Haritası hizmetini kullanımınız yoluyla kullanım ve performans verilerini otomatik olarak toplar. Microsoft bu verileri Hizmet Haritası hizmetinin kalitesini, güvenliğini ve bütünlüğünü sağlamak ve geliştirmek için kullanır. Doğru ve verimli sorun giderme özellikleri sağlamak için veriler, işletim sistemi ve sürüm, IP adresi, DNS adı ve iş istasyonu adı gibi yazılımınızın yapılandırması hakkında bilgiler içerir. Microsoft adlar, adresler veya diğer iletişim bilgileri toplamaz.
 
-Veri toplama ve kullanım hakkında daha fazla bilgi için [Microsoft Online Services gizlilik bildirimi](https://go.microsoft.com/fwlink/?LinkId=512132)' ne bakın.
+Veri toplama ve kullanım hakkında daha fazla bilgi için [Microsoft Çevrimiçi Hizmetler Gizlilik Bildirimi'ne](https://go.microsoft.com/fwlink/?LinkId=512132)bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Hizmet Eşlemesi tarafından toplanan verileri almak için Log Analytics 'de [günlük aramaları](../../azure-monitor/log-query/log-query-overview.md) hakkında daha fazla bilgi edinin.
+Service Map tarafından toplanan verileri almak için Log Analytics'teki [günlük aramaları](../../azure-monitor/log-query/log-query-overview.md) hakkında daha fazla bilgi edinin.
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
-Bu bölümde, yüklenmesini veya çalıştırılmasını hizmet eşlemesi herhangi bir sorun varsa, size yardımcı olabilir. Sorununuzu hala çözümleyememesi durumunda Microsoft Support'ne başvurun.
+Hizmet Haritası'nı yüklerken veya çalıştırmakta sorun yaşıyorsanız, bu bölüm size yardımcı olabilir. Sorununuzu hala çözemediyseniz, lütfen Microsoft Destek'e başvurun.
 
-### <a name="dependency-agent-installation-problems"></a>Bağımlılık Aracısı yükleme sorunları
+### <a name="dependency-agent-installation-problems"></a>Bağımlılık aracıyükleme sorunları
 
-#### <a name="installer-prompts-for-a-reboot"></a>Yükleyici için yeniden başlatma ister
-Bağımlılık Aracısı *genellikle* yükleme veya kaldırma sonrasında yeniden başlatma gerektirmez. Ancak, bazı nadir durumlarda, Windows Server bir yükleme işlemine devam etmek için bir yeniden başlatma gerektirir. Bu durum, bir bağımlılık olduğunda, genellikle Microsoft Visual C++ yeniden dağıtılabilir kitaplığı, kilitli bir dosya nedeniyle yeniden başlatma gerektirdiğinde oluşur.
+#### <a name="installer-prompts-for-a-reboot"></a>Yükleyici yeniden başlatma istemi
+Bağımlılık aracısı *genellikle* yükleme veya kaldırma üzerine yeniden başlatma gerektirmez. Ancak, bazı nadir durumlarda, Windows Server yüklemeile devam etmek için yeniden başlatma gerektirir. Bu, genellikle Microsoft Visual C++ Yeniden Dağıtılabilir kitaplığı kilitli bir dosya nedeniyle yeniden başlatmayı gerektirdiğinde bir bağımlılık gerçekleşir.
 
-#### <a name="message-unable-to-install-dependency-agent-visual-studio-runtime-libraries-failed-to-install-code--code_number-appears"></a>İleti "bağımlılık aracısını yükleme yüklenemiyor: Visual Studio çalışma zamanı kitaplıkları yüklenemedi (kod [code_number] =)" görünür
+#### <a name="message-unable-to-install-dependency-agent-visual-studio-runtime-libraries-failed-to-install-code--code_number-appears"></a>"Bağımlılık aracısı yüklenemez: Visual Studio Runtime kitaplıkları yüklenemedi (kod = [code_number])" görüntülenir
 
-Microsoft Dependency Aracısı, Microsoft Visual Studio çalışma zamanı kitaplıkları oluşturulmuştur. Kitaplık yüklenirken bir sorun varsa bir ileti alırsınız. 
+Microsoft Bağımlılık aracısı, Microsoft Visual Studio çalışma zamanı kitaplıkları üzerine kuruludur. Kitaplıkların yüklenmesi sırasında bir sorun varsa bir ileti alırsınız. 
 
-Çalışma Zamanı Kitaplığı yükleyicileri %LOCALAPPDATA%\temp klasöründe günlükleri oluşturun. Dosya `dd_vcredist_arch_yyyymmddhhmmss.log`, *arch* `x86` veya `amd64` ve *yyyyaaggssddss* , günlük oluşturulduğu tarih ve saat (24 saatlik saat). Günlük yükleme engelleme sorunu hakkında ayrıntılar sağlar.
+Çalışma zamanı kitaplığı yükleyiciler %LOCALAPPDATA%\temp klasöründe günlükler oluşturur. Dosya, `dd_vcredist_arch_yyyymmddhhmmss.log` *kemer* `x86` veya `amd64` *yyyymmddhhmmss* tarih ve saat (24 saat saat) günlük oluşturulduğu yerdir. Günlük, yüklemeyi engelleyen sorun hakkında ayrıntılı bilgi sağlar.
 
 Önce [en son çalışma zamanı kitaplıklarını](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) yüklemek yararlı olabilir.
 
-Aşağıdaki tabloda, kod sayıları ve önerilen çözümler listelenmektedir.
+Aşağıdaki tabloda kod numaraları ve önerilen çözünürlükler listelenir.
 
 | Kod | Açıklama | Çözüm |
 |:--|:--|:--|
-| 0x17 | Kitaplık yükleyici, yüklü olmayan bir Windows update gerektirir. | En son kitaplık yükleyicisi günlüğe bakın.<br><br>`Windows8.1-KB2999226-x64.msu` başvurunun ardından bir satır `Error 0x80240017: Failed to execute MSU package,`, KB2999226 yüklemek için önkoşullara sahip olmanız gerekmez. [Windows makalesinde evrensel C çalışma zamanı](https://support.microsoft.com/kb/2999226) 'nın Önkoşullar bölümündeki yönergeleri izleyin. Windows Update'i çalıştırın ve birden çok kez önkoşulları yüklemek için yeniden başlatma gerekebilir.<br><br>Microsoft Dependency aracı yükleyiciyi yeniden çalıştırın. |
+| 0x17 | Kitaplık yükleyici, yüklenmemiş bir Windows güncelleştirmesi gerektirir. | En son kitaplık yükleyici günlüğüne bakın.<br><br>Bir başvuru `Windows8.1-KB2999226-x64.msu` bir satır `Error 0x80240017: Failed to execute MSU package,` tarafından takip edilirse KB2999226 yüklemek için ön koşullar yok. Windows makalesinde [Evrensel C Runtime'daki](https://support.microsoft.com/kb/2999226) önkoşullar bölümündeki yönergeleri izleyin. Ön koşulları yüklemek için Windows Update'i çalıştırmanız ve birden çok kez yeniden başlatmanız gerekebilir.<br><br>Microsoft Bağımlılık aracısı yükleyicisini yeniden çalıştırın. |
 
-### <a name="post-installation-issues"></a>Yükleme sonrası sorunları
+### <a name="post-installation-issues"></a>Kurulum sonrası sorunlar
 
-#### <a name="server-doesnt-appear-in-service-map"></a>Sunucu hizmeti haritada görünmüyor
+#### <a name="server-doesnt-appear-in-service-map"></a>Sunucu Hizmet Haritası'nda görünmüyor
 
-Bağımlılık aracısı yüklemeniz başarılı olduysa, ancak makinenizi Hizmet Eşlemesi çözümde görmezsiniz:
-* Bağımlılık Aracısı'nı başarıyla yüklü mü? Bu hizmet yüklü olup olmadığını denetliyor ve çalıştırarak doğrulayabilirsiniz.<br><br>
-**Windows**: **Microsoft bağımlılık Aracısı**adlı hizmeti arayın.
-**Linux**: çalışan işlem **Microsoft-Dependency-Agent**' ı arayın.
+Bağımlılık aracısı yüklemeniz başarılı olduysa, ancak makinenizi Hizmet Haritası çözümünde görmüyorsanız:
+* Bağımlılık aracısı başarıyla yüklendi mi? Hizmetin yüklü olup olmadığını ve çalıştırılıp çalışmadığınızı denetleyerek bunu doğrulayabilirsiniz.<br><br>
+**Windows**: **Microsoft Bağımlılık aracısı**adlı hizmeti arayın.
+**Linux**: **Microsoft-dependency-agent**çalışma süreci arayın.
 
-* [Log Analytics ücretsiz katmanda](https://azure.microsoft.com/pricing/details/monitor/)misiniz? Ücretsiz plan, beş adede kadar benzersiz Hizmet Eşlemesi makineye izin verir. Önceki beş, artık veri göndermese bile, sonraki tüm makineler Hizmet Eşlemesi görünmez.
+* [Log Analytics ücretsiz katmanında](https://azure.microsoft.com/pricing/details/monitor/)mısın? Ücretsiz plan, en fazla beş benzersiz Servis Haritası makinesine izin verir. Önceki beş makine artık veri göndermese bile, sonraki makineler Hizmet Haritası'nda görünmez.
 
-* Sunucunuz Azure Izleyici günlüklerine günlük ve performans verileri gönderiyor mu? Azure Monitor\Logs ' e gidin ve bilgisayarınız için aşağıdaki sorguyu çalıştırın: 
+* Sunucunuz Azure Monitor Günlükleri'ne günlük ve perf veri gönderiyor mu? Azure Monitor\Logs'a gidin ve bilgisayarınız için aşağıdaki sorguyu çalıştırın: 
 
     ```kusto
     Usage | where Computer == "admdemo-appsvr" | summarize sum(Quantity), any(QuantityUnit) by DataType
     ```
 
-Sonuçlar arasında olaylar çeşitli mı aldınız? Verilerin güncel mi? Bu durumda, Log Analytics aracınız doğru şekilde çalışıyor ve çalışma alanıyla iletişim kuruyor. Aksi takdirde, makinenizde aracı denetleyin: [Windows sorun giderme için Log Analytics Aracısı](../platform/agent-windows-troubleshoot.md) veya [Linux sorun giderme için Log Analytics Aracısı](../platform/agent-linux-troubleshoot.md).
+Sonuçlarda çeşitli etkinlikler aldınız mı? Veriler yeni mi? Bu nedenle, Log Analytics temsilciniz doğru çalışıyor ve çalışma alanıyla iletişim kuruyor. Değilse, makinenizdeki aracıyı kontrol edin: [Windows sorun giderme için Log Analytics aracısı](../platform/agent-windows-troubleshoot.md) veya [Linux sorun giderme için Log Analytics aracısı.](../platform/agent-linux-troubleshoot.md)
 
-#### <a name="server-appears-in-service-map-but-has-no-processes"></a>Sunucu, hizmet eşlemesinde görünür ancak hiçbir işlem sahiptir
+#### <a name="server-appears-in-service-map-but-has-no-processes"></a>Sunucu Hizmet Haritası'nda görünür, ancak işlem yoktur
 
-Makinenizde Hizmet Eşlemesi görürseniz, ancak işlem veya bağlantı verisi yoksa, bağımlılık aracısının yüklü ve çalışır durumda olduğunu ancak çekirdek sürücüsünün yüklenmediğini gösterir. 
+Makinenizi Hizmet Haritası'nda görürseniz, ancak işlem veya bağlantı verisi yoksa, bu Bağımlılık aracısının yüklü ve çalıştığını, ancak çekirdek sürücüsünün yüklemediğini gösterir. 
 
-`C:\Program Files\Microsoft Dependency Agent\logs\wrapper.log file` (Windows) veya `/var/opt/microsoft/dependency-agent/log/service.log file` (Linux) denetleyin. Dosyanın son satırları çekirdek neden yüklenmedi belirtmeniz gerekir. Örneğin, çekirdek güncelleştirilmiş çekirdek Linux üzerinde desteklenmeyebilir.
+(Windows) veya `C:\Program Files\Microsoft Dependency Agent\logs\wrapper.log file` `/var/opt/microsoft/dependency-agent/log/service.log file` (Linux) kontrol edin. Dosyanın son satırları çekirdeğin neden yüklenmediğini belirtmelidir. Örneğin, çekirdeğinizi güncellediyseniz çekirdek Linux'ta desteklenmeyebilir.
 
 ## <a name="feedback"></a>Geri Bildirim
 
-Hizmet Eşlemesi veya bu belgeler hakkında bizimle ilgili geri bildiriminiz var mı?  Özellik önerdiğiniz veya mevcut önerilere oy oluşturabileceğiniz [Kullanıcı ses](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map)sayfamızı ziyaret edin.
+Hizmet Haritası veya bu belgeler hakkında herhangi bir geri bildiriminiz var mı?  Özellikler önerebileceğiniz veya mevcut önerileri oylayabileceğiniz [Kullanıcı Sesi sayfamızı](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map)ziyaret edin.

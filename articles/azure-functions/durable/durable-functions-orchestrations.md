@@ -1,63 +1,63 @@
 ---
-title: Dayanıklı düzenlemeler-Azure Işlevleri
-description: Azure Dayanıklı İşlevler düzenleme özelliğine giriş.
+title: Dayanıklı Orkestrasyonlar - Azure Fonksiyonları
+description: Azure Dayanıklı İşlevler için orkestrasyon özelliğine giriş.
 author: cgillum
 ms.topic: overview
 ms.date: 09/08/2019
 ms.author: azfuncdf
 ms.openlocfilehash: caa62483373a240991cfec96437cea7849d9b19c
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79241363"
 ---
-# <a name="durable-orchestrations"></a>Dayanıklı düzenlemeler
+# <a name="durable-orchestrations"></a>Dayanıklı Orkestrasyonlar
 
-Dayanıklı İşlevler, [Azure işlevleri](../functions-overview.md)'nin bir uzantısıdır. Bir işlev uygulaması içindeki diğer dayanıklı işlevlerin yürütülmesini düzenlemek için bir *Orchestrator işlevi* kullanabilirsiniz. Orchestrator işlevleri aşağıdaki özelliklere sahiptir:
+Dayanıklı Işlevler, [Azure İşlevlerinin](../functions-overview.md)bir uzantısıdır. Bir işlev uygulaması içindeki diğer Dayanıklı işlevlerin yürütülmesini düzenlemek için bir *orkestratör işlevi* kullanabilirsiniz. Orkestratör işlevleri aşağıdaki özelliklere sahiptir:
 
-* Orchestrator işlevleri, yordamsal kodu kullanarak işlev iş akışlarını tanımlar. Bildirime dayalı şemalar veya tasarımcı gerekmez.
-* Orchestrator işlevleri, diğer dayanıklı işlevleri eşzamanlı ve zaman uyumsuz olarak çağırabilir. Çağrılan işlevlerden alınan çıkış, yerel değişkenlere güvenilir bir şekilde kaydedilebilir.
-* Orchestrator işlevleri dayanıklı ve güvenilirdir. "Await" veya "The" işlevi, yürütme ilerlemesi otomatik olarak onay işareti oluşturur. İşlem geri dönüştürüldüğünde veya VM yeniden başlatıldığında yerel durum hiçbir zaman kaybedilmez.
-* Orchestrator işlevleri uzun çalışıyor olabilir. Bir *Orchestration örneğinin* toplam kullanım ömrü saniye, gün, ay veya hiçbir şekilde bitmez.
+* Orchestrator işlevleri yordam kodunu kullanarak işlev iş akışlarını tanımlar. Hiçbir bildirimşeya veya tasarımcıya ihtiyaç yoktur.
+* Orchestrator işlevleri diğer dayanıklı işlevleri eşzamanlı ve eşzamanlı olarak çağırabilir. Çağrılan işlevlerden elde edilen çıktılar güvenilir bir şekilde yerel değişkenlere kaydedilebilir.
+* Orchestrator fonksiyonları dayanıklı ve güvenilirdir. Yürütme ilerlemesi, işlev "beklediğinde" veya "verildiğinde" otomatik olarak kontrol edilir. İşlem geri dönüşümleri veya VM yeniden başlatıldığında yerel durum hiçbir zaman kaybolmaz.
+* Orchestrator fonksiyonları uzun soluklu olabilir. Bir *orkestrasyon örneğinin* toplam ömrü saniye, gün, ay veya hiç bitmeyen olabilir.
 
-Bu makale, Orchestrator işlevlerine genel bakış ve bunların çeşitli uygulama geliştirme sorunlarını çözmenize nasıl yardımcı olabilecekleri hakkında bilgiler sunar. Dayanıklı İşlevler bir uygulamada kullanılabilen işlevlerin türleri hakkında bilginiz yoksa, önce [dayanıklı işlev türleri](durable-functions-types-features-overview.md) makalesini okuyun.
+Bu makalede, orkestratör işlevleri ve çeşitli uygulama geliştirme zorluklarını çözmenize nasıl yardımcı olabilecekleri hakkında genel bir bakış sunar. Dayanıklı İşlevler uygulamasında bulunan işlev türlerini zaten bilmiyorsanız, önce [Dayanıklı İşlev türleri](durable-functions-types-features-overview.md) makalesini okuyun.
 
-## <a name="orchestration-identity"></a>Düzenleme kimliği
+## <a name="orchestration-identity"></a>Orkestrasyon kimliği
 
-Bir Orchestration 'un her *örneğinin* bir örnek tanımlayıcısı vardır ( *örnek kimliği*olarak da bilinir). Varsayılan olarak, her örnek KIMLIĞI bir otomatik oluşturulan GUID 'dir. Ancak, örnek kimlikleri Kullanıcı tarafından oluşturulan herhangi bir dize değeri de olabilir. Her orchestration örneği KIMLIĞI, bir [Görev Merkezi](durable-functions-task-hubs.md)içinde benzersiz olmalıdır.
+Bir orkestrasyonun her *örneğinde* bir örnek tanımlayıcısı *(örnek kimliği*olarak da bilinir) vardır. Varsayılan olarak, her örnek kimliği otomatik olarak oluşturulmuş bir GUID'dir. Ancak, örnek iD'ler de herhangi bir kullanıcı tarafından oluşturulan dize değeri olabilir. Her düzenleme örneği kimliği bir [görev hub'ı](durable-functions-task-hubs.md)içinde benzersiz olmalıdır.
 
-Örnek kimlikleri hakkında bazı kurallar aşağıda verilmiştir:
+Örnek adlarla ilgili bazı kurallar şunlardır:
 
-* Örnek kimlikleri 1 ile 256 karakter arasında olmalıdır.
-* Örnek kimlikleri `@`ile başlamamalıdır.
-* Örnek kimlikleri `/`, `\`, `#`veya `?` karakterler içermemelidir.
-* Örnek kimlikleri denetim karakterleri içermemelidir.
+* Örnek iLikler 1 ile 256 karakter arasında olmalıdır.
+* Örnek IYT'ler `@`ile başlamamalıdır.
+* Örnek IYT'ler `/` `\`, `#`, `?` , veya karakter içermemelidir.
+* Örnek IYT'ler denetim karakterleri içermemelidir.
 
 > [!NOTE]
-> Mümkün olan her durumda otomatik olarak oluşturulan örnek kimliklerini kullanmanız önerilir. Kullanıcı tarafından oluşturulan örnek kimlikleri, bir düzenleme örneği ve bir satınalma siparişi veya belge gibi bir dış uygulamaya özgü varlık arasında bire bir eşleme olduğu senaryolar için tasarlanmıştır.
+> Genellikle mümkün olduğunda otomatik olarak oluşturulmuş örnek iD'ler kullanılması önerilir. Kullanıcı tarafından oluşturulan örnek kimlikler, bir düzenleme örneği ile satınalma siparişi veya belge gibi bazı dış uygulamaya özgü varlık arasında bire bir eşleme bulunan senaryolar için tasarlanmıştır.
 
-Bir Orchestration örnek KIMLIĞI, çoğu [Örnek Yönetimi işlemi](durable-functions-instance-management.md)için gerekli bir parametredir. Bunlar, sorun giderme veya analiz amaçları için Application Insights [düzenleme izleme verilerini arama](durable-functions-diagnostics.md#application-insights) gibi tanılama için de önemlidir. Bu nedenle, üretilen örnek kimliklerini daha sonra kolayca başvurulabilecekleri bir dış konuma (örneğin, bir veritabanı veya uygulama günlüklerinde) kaydetmeniz önerilir.
+Bir orkestrasyonun örnek kimliği, çoğu [örnek yönetim işlemleri](durable-functions-instance-management.md)için gerekli bir parametredir. Sorun giderme veya analiz amacıyla Application Insights'taki [düzenleme izleme verilerini arama](durable-functions-diagnostics.md#application-insights) gibi tanılama için de önemlidir. Bu nedenle, oluşturulan örnek iDilerin daha sonra kolayca başvurulanabilecekleri bazı dış konuma (örneğin, bir veritabanı veya uygulama günlüklerinde) kaydedilmesi önerilir.
 
 ## <a name="reliability"></a>Güvenilirlik
 
-Orchestrator işlevleri, yürütme durumlarını [olay](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing) kaynağını belirleme tasarım düzenini kullanarak güvenilir bir şekilde korur. Bir Orchestration 'un geçerli durumunu doğrudan depolamak yerine, dayanıklı görev çerçevesi, bir yalnızca bir Append deposu kullanarak, düzenleme işlevinin aldığı tüm eylem serisini kaydeder. Yalnızca bir Append deposunda, tam çalışma zamanı durumunun "dökümünü alma" ile karşılaştırıldığında birçok avantaj bulunur. Avantajlar, performansı, ölçeklenebilirliği ve yanıt hızını daha da içerir. Ayrıca işlem verileri için nihai tutarlılık ve tam denetim izleri ve geçmişi de alırsınız. Denetim izleri güvenilir telafi eylemlerini destekler.
+Orchestrator [fonksiyonları, olay kaynak](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing) tasarım deseni kullanarak yürütme durumunu güvenilir bir şekilde korur. Dayanıklı Görev Çerçevesi, bir düzenlemenin geçerli durumunu doğrudan depolamak yerine, işlev düzenlemenin gerçekleştirdiği eylemlerin tamamını kaydetmek için yalnızca ek bir mağaza kullanır. Yalnızca ek bir mağazanın, tam çalışma süresi durumunu "boşaltma" ile karşılaştırıldığında birçok faydası vardır. Avantajları artan performans, ölçeklenebilirlik ve yanıt içerir. Ayrıca işlem verileri ve tam denetim izleri ve geçmiş için nihai tutarlılık elde edersiniz. Denetim izleri güvenilir telafi edici eylemleri destekler.
 
-Dayanıklı İşlevler, saydam olarak olay kaynağını kullanır. Arka planda, bir Orchestrator işlevindeki `await`C#() veya `yield` (JavaScript) işleci, Orchestrator iş parçacığının denetimini dayanıklı görev çerçevesi dağıtıcısına verir. Dağıtıcı daha sonra Orchestrator işlevinin zamanladığı (bir veya daha fazla alt işlevi çağırma ya da dayanıklı bir Zamanlayıcı zamanlama gibi) tüm yeni eylemleri depolamaya kaydeder. Saydam işleme eylemi Orchestration örneğinin yürütme geçmişine ekler. Geçmiş bir depolama tablosunda depolanır. Sonra Kaydet eylemi, gerçek işi zamanlamak için bir kuyruğa ileti ekler. Bu noktada, Orchestrator işlevi bellekten bellekten kaldırılabilir.
+Dayanıklı Fonksiyonlar, olayı saydam bir şekilde kullanır. Sahne arkasında, `await` bir orkestratör `yield` işlevindeki (C#) veya (JavaScript) işleci, orkestratör ipliği denetimini Dayanıklı Görev Çerçevesi göndericisine geri verir. Gönderici daha sonra, orkestratörün planladığı yeni eylemleri (örneğin, bir veya daha fazla alt işlevi çağırmak veya dayanıklı bir zamanlayıcıyı zamanlamak gibi) depolamaya adatır. Saydam işleme eylemi, orkestrasyon örneğinin yürütme geçmişine ekler. Geçmiş bir depolama tablosunda depolanır. Daha sonra eylem işleme, fiili çalışmayı zamanlamak için sıraya iletiekler. Bu noktada, orkestratör işlevi bellekten boşaltılabilir.
 
-Bir Orchestration işlevine daha fazla iş verildiğinde (örneğin, bir yanıt iletisi alındığında veya dayanıklı Zamanlayıcı sona erdiğinde), Orchestrator başlatılır ve yerel durumu yeniden derlemek için başlangıçtan itibaren tüm işlevi yeniden yürütür. Yeniden yürütme sırasında, kod bir işlevi çağırmaya çalışırsa (veya başka bir zaman uyumsuz çalışma yaparsanız), dayanıklı görev çerçevesi geçerli düzenleme 'nin yürütme geçmişini çağırır. [Etkinlik işlevinin](durable-functions-types-features-overview.md#activity-functions) zaten yürütüldüğünü ve bir sonuç verdiğini belirlerse, bu işlevin sonucunu yeniden yürütür ve Orchestrator kodu çalışmaya devam eder. Yeniden yürütme, işlev kodu tamamlanana kadar veya yeni zaman uyumsuz çalışmayı zamanlana kadar devam eder.
-
-> [!NOTE]
-> Yeniden yürütme deseninin doğru ve güvenilir bir şekilde çalışması için Orchestrator işlev kodu *belirleyici*olmalıdır. Orchestrator işlevlerine yönelik kod kısıtlamaları hakkında daha fazla bilgi için bkz. [Orchestrator işlev kodu kısıtlamaları](durable-functions-code-constraints.md) konusu.
+Bir düzenleme işlevine yapılacak daha fazla iş verildiğinde (örneğin, yanıt iletisi alınır veya dayanıklı bir zamanlayıcının süresi dolduğunda), orkestratör uyanır ve yerel durumu yeniden oluşturmak için tüm işlevi baştan yeniden yürütür. Yeniden yürütme sırasında, kod bir işlevi çağırmaya çalışırsa (veya başka bir async çalışması yaparsa), Dayanıklı Görev Çerçevesi geçerli yürütme nin yürütme geçmişine başvurur. [Etkinlik işlevinin](durable-functions-types-features-overview.md#activity-functions) zaten yürütülmüş ve sonuç vermiş olduğunu bulursa, bu işlevin sonucunu yeniden çalar ve orkestratör kodu çalışmaya devam eder. Yeniden oynatma, işlev kodu tamamlanana veya yeni async çalışması zamanlanana kadar devam eder.
 
 > [!NOTE]
-> Orchestrator işlevi günlük iletilerini yayar, yeniden yürütme davranışı yinelenen günlük iletilerinin oluşturulmasına neden olabilir. Bu davranışın neden olduğu ve geçici olarak nasıl çalışılacağı hakkında daha fazla bilgi edinmek için [günlüğe kaydetme](durable-functions-diagnostics.md#logging) konusuna bakın.
+> Yeniden oynatma deseninin doğru ve güvenilir bir şekilde çalışabilmesi için, orkestratör işlev *kodunun belirleyici*olması gerekir. Orkestratör işlevleri için kod kısıtlamaları hakkında daha fazla bilgi [için, orkestratör işlev kodu kısıtlamaları](durable-functions-code-constraints.md) konusuna bakın.
 
-## <a name="orchestration-history"></a>Düzenleme geçmişi
+> [!NOTE]
+> Bir orkestratör işlevi günlük iletileri yayansa, yinelenen günlük iletilerinin yayımlayabılmasına neden olabilir. Bu davranışın neden oluştuğu ve nasıl çözüm emredilen hakkında daha fazla bilgi edinmek için [Günlüğe Kaydetme](durable-functions-diagnostics.md#logging) konusuna bakın.
 
-Dayanıklı görev çerçevesinin olay kaynağını belirleme davranışı yazdığınız Orchestrator işlevi koduyla yakından ilişkilidir. Aşağıdaki Orchestrator işlevi gibi bir etkinlik zincirleme Orchestrator işlevinizin olduğunu varsayalım:
+## <a name="orchestration-history"></a>Orkestrasyon tarihi
 
-# <a name="c"></a>[C#](#tab/csharp)
+Dayanıklı Görev Çerçevesi'nin olay kaynağı davranışı, yazdığınız orkestratör işlev koduyla yakından birleştiğinde yapılır. Aşağıdaki orkestratör işlevi gibi bir etkinlik zincirleme orkestratör işleviniz olduğunu varsayalım:
+
+# <a name="c"></a>[C #](#tab/csharp)
 
 ```csharp
 [FunctionName("E1_HelloSequence")]
@@ -75,7 +75,7 @@ public static async Task<List<string>> Run(
 }
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -93,104 +93,104 @@ module.exports = df.orchestrator(function*(context) {
 
 ---
 
-Her bir `await` (C#) veya `yield` (JavaScript) bildiriminde, dayanıklı görev çerçevesi, işlevin yürütme durumunu, bazı dayanıklı depolama arka ucuna (genellikle Azure Tablo Depolaması) kontrol noktaları. Bu durum, *düzenleme geçmişi*olarak adlandırılan şeydir.
+Her `await` (C#) `yield` veya (JavaScript) deyiminde, Dayanıklı Görev Çerçevesi işlevin yürütme durumunu bazı dayanıklı depolama arka ucuna (genellikle Azure Tablo depolama alanı) sınırlar. Bu *durum, orkestrasyon tarihi*olarak adlandırılır.
 
 ### <a name="history-table"></a>Geçmiş tablosu
 
-Genellikle, dayanıklı görev çerçevesi her denetim noktasında aşağıdakileri yapar:
+Genel olarak konuşursak, Dayanıklı Görev Çerçevesi her denetim noktasında aşağıdakileri yapar:
 
-1. Yürütme geçmişini Azure depolama tablolarına kaydeder.
-2. Orchestrator 'ın çağırmak istediği işlevlere yönelik iletileri sıraya alır.
-3. Orchestrator için iletileri kuyruğa alır &mdash; Örneğin, dayanıklı Zamanlayıcı iletileri.
+1. Yürütme geçmişini Azure Depolama tablolarına kaydeder.
+2. Orkestratörün çağırmak istediği işlevler için iletileri sıralar.
+3. Örneğin, dayanıklı zamanlayıcı iletileri &mdash; için orkestratör kendisi için enqueues mesajları.
 
-Kontrol noktası tamamlandıktan sonra Orchestrator işlevi, kendisi için daha fazla iş tamamlanana kadar bellekten kaldırılabilir.
+Denetim noktası tamamlandıktan sonra, orkestratör işlevi, yapması gereken daha fazla iş olana kadar bellekten kaldırılmak için ücretsizdir.
 
 > [!NOTE]
-> Azure depolama, verileri tablo depolama ve kuyruklara kaydetme arasında herhangi bir işlem garantisi sağlamaz. Dayanıklı İşlevler depolama sağlayıcısı, sorunları işlemek için *nihai tutarlılık* düzenlerini kullanır. Bu desenler, bir denetim noktasının ortasında kilitlenme veya bağlantı kaybı olursa hiçbir veri kaybolmamasını önler.
+> Azure Depolama, tablo depolama sına veri kaydetme ile kuyruklar arasında işlem garantisi sağlamaz. Dayanıklı Işlevler depolama sağlayıcısı, hataları işlemek için *nihai tutarlılık desenleri* kullanır. Bu desenler, bir denetim noktasının ortasında bir kilitlenme veya bağlantı kaybı olduğunda hiçbir veri kaybedilmesini sağlar.
 
-Tamamlandıktan sonra, daha önce gösterilen işlevin geçmişi, Azure Tablo Depolaması 'nda aşağıdaki tabloya benzer bir şekilde görünür (çizim amaçları için kısaltılmış):
+Tamamlandıktan sonra, daha önce gösterilen işlevin geçmişi Azure Tablo Depolama 'daki aşağıdaki tabloya benzer (çizim amacıyla kısaltılır):
 
-| PartitionKey (InstanceId)                     | Türü             | Zaman damgası               | Girdi | Adı             | Sonuç                                                    | Durum |
+| PartitionKey (InstanceId)                     | Olay türü             | Zaman damgası               | Giriş | Adı             | Sonuç                                                    | Durum |
 |----------------------------------|-----------------------|----------|--------------------------|-------|------------------|-----------------------------------------------------------|
-| eaee885b | ExecutionStarted      | 2017-05-05T18:45:28.852 Z | null  | E1_HelloSequence |                                                           |                     |
-| eaee885b | OrchestratorStarted   | 2017-05-05T18:45:32.362 Z |       |                  |                                                           |                     |
-| eaee885b | Taskzamanlandı         | 2017-05-05T18:45:32.670 Z |       | E1_SayHello      |                                                           |                     |
-| eaee885b | OrchestratorCompleted | 2017-05-05T18:45:32.670 Z |       |                  |                                                           |                     |
-| eaee885b | TaskCompleted         | 2017-05-05T18:45:34.201 Z |       |                  | "" "Merhaba Tokyo!" ""                                        |                     |
-| eaee885b | OrchestratorStarted   | 2017-05-05T18:45:34.232 Z |       |                  |                                                           |                     |
-| eaee885b | Taskzamanlandı         | 2017-05-05T18:45:34.435 Z |       | E1_SayHello      |                                                           |                     |
-| eaee885b | OrchestratorCompleted | 2017-05-05T18:45:34.435 Z |       |                  |                                                           |                     |
-| eaee885b | TaskCompleted         | 2017-05-05T18:45:34.763 Z |       |                  | "" "Merhaba Seattle!" ""                                      |                     |
-| eaee885b | OrchestratorStarted   | 2017-05-05T18:45:34.857 Z |       |                  |                                                           |                     |
-| eaee885b | Taskzamanlandı         | 2017-05-05T18:45:34.857 Z |       | E1_SayHello      |                                                           |                     |
-| eaee885b | OrchestratorCompleted | 2017-05-05T18:45:34.857 Z |       |                  |                                                           |                     |
-| eaee885b | TaskCompleted         | 2017-05-05T18:45:34.919 Z |       |                  | "" "Merhaba Londra!" ""                                       |                     |
-| eaee885b | OrchestratorStarted   | 2017-05-05T18:45:35.032 Z |       |                  |                                                           |                     |
-| eaee885b | OrchestratorCompleted | 2017-05-05T18:45:35.044 Z |       |                  |                                                           |                     |
-| eaee885b | ExecutionCompleted    | 2017-05-05T18:45:35.044 Z |       |                  | "[" "Merhaba Tokyo!" "," "Merhaba Seattle!" "," "Merhaba Londra!" "]" | Tamamlandı           |
+| eaee885b | Yürütme Başlatıldı      | 2017-05-05T18:45:28.852Z | null  | E1_HelloSequence |                                                           |                     |
+| eaee885b | OrchestratorStarted   | 2017-05-05T18:45:32.362Z |       |                  |                                                           |                     |
+| eaee885b | Görev Zamanlandı         | 2017-05-05T18:45:32.670Z |       | E1_SayHello      |                                                           |                     |
+| eaee885b | OrchestratorTamamlandı | 2017-05-05T18:45:32.670Z |       |                  |                                                           |                     |
+| eaee885b | Görev Tamamlandı         | 2017-05-05T18:45:34.201Z |       |                  | ""Merhaba Tokyo!"""                                        |                     |
+| eaee885b | OrchestratorStarted   | 2017-05-05T18:45:34.232Z |       |                  |                                                           |                     |
+| eaee885b | Görev Zamanlandı         | 2017-05-05T18:45:34.435Z |       | E1_SayHello      |                                                           |                     |
+| eaee885b | OrchestratorTamamlandı | 2017-05-05T18:45:34.435Z |       |                  |                                                           |                     |
+| eaee885b | Görev Tamamlandı         | 2017-05-05T18:45:34.763Z |       |                  | ""Merhaba Seattle!"""                                      |                     |
+| eaee885b | OrchestratorStarted   | 2017-05-05T18:45:34.857Z |       |                  |                                                           |                     |
+| eaee885b | Görev Zamanlandı         | 2017-05-05T18:45:34.857Z |       | E1_SayHello      |                                                           |                     |
+| eaee885b | OrchestratorTamamlandı | 2017-05-05T18:45:34.857Z |       |                  |                                                           |                     |
+| eaee885b | Görev Tamamlandı         | 2017-05-05T18:45:34.919Z |       |                  | ""Merhaba Londra!"""                                       |                     |
+| eaee885b | OrchestratorStarted   | 2017-05-05T18:45:35.032Z |       |                  |                                                           |                     |
+| eaee885b | OrchestratorTamamlandı | 2017-05-05T18:45:35.044Z |       |                  |                                                           |                     |
+| eaee885b | Yürütme Tamamlandı    | 2017-05-05T18:45:35.044Z |       |                  | "[""Merhaba Tokyo!"","Merhaba Seattle!"","Merhaba Londra!""" | Tamamlandı           |
 
-Sütun değerlerinde birkaç Not:
+Sütun değerleri hakkında birkaç not:
 
-* **Partitionkey**: Orchestration 'un örnek kimliğini içerir.
-* **EventType**: olayın türünü temsil eder. Aşağıdaki türlerden biri olabilir:
-  * **Orchestrationstarted**: Orchestrator işlevi bir await 'den devam ettirildi veya ilk kez çalışıyor. `Timestamp` sütunu, `CurrentUtcDateTime` (.NET) ve `currentUtcDateTime` (JavaScript) API 'Lerinin belirleyici değerini doldurmak için kullanılır.
-  * **Executionstarted**: Orchestrator işlevi ilk kez yürütülmeye başladı. Bu olay `Input` sütununda işlev girişini de içerir.
-  * **Taskzamanlandı**: bir etkinlik işlevi zamanlandı. Etkinlik işlevinin adı `Name` sütununda yakalanır.
-  * **TaskCompleted**: etkinlik işlevi tamamlandı. İşlevin sonucu `Result` sütundur.
-  * **Timercreated**: dayanıklı bir Zamanlayıcı oluşturuldu. `FireAt` sütunu, zamanlayıcının süresinin dolacağı zamanlanmış UTC saatini içerir.
-  * **Timertetiklenme**: bir dayanıklı süreölçer tetiklendi.
-  * **Eventraıda**: Orchestration örneğine bir dış olay gönderildi. `Name` sütunu olayın adını yakalar ve `Input` sütunu olayın yükünü yakalar.
-  * **Orchestratorcompleted**: Orchestrator işlevi bekletildi.
-  * **Continueasnew**: Orchestrator işlevi tamamlandı ve yeni durumla birlikte yeniden başlatıldı. `Result` sütunu, yeniden başlatılan örnekte girdi olarak kullanılan değerini içerir.
-  * **Executioncompleted**: Orchestrator işlevi tamamlanana (veya başarısız) çalıştı. İşlevin veya hata ayrıntılarının çıkışları `Result` sütununda depolanır.
-* **Zaman damgası**: geçmış olayının UTC zaman damgası.
-* **Ad**: çağrılan işlevin adı.
-* **Giriş**: işlevin JSON biçimli girişi.
-* **Sonuç**: işlevin çıktısı; diğer bir deyişle, dönüş değeridir.
+* **PartitionKey**: Orkestrasyonun örnek kimliğini içerir.
+* **EventType**: Olayın türünü temsil eder. Aşağıdaki türlerden biri olabilir:
+  * **OrkestrasyonBaşladı**: Orkestratör işlevi bir bekleme den devam veya ilk kez çalışıyor. Sütun, `Timestamp` (.NET) ve `CurrentUtcDateTime` `currentUtcDateTime` (JavaScript) API'leri için deterministik değeri doldurmak için kullanılır.
+  * **ExecutionStarted**: Orkestratör işlevi ilk kez yürütmeye başladı. Bu olay, sütundaki işlev `Input` girişini de içerir.
+  * **TaskScheduled**: Bir etkinlik işlevi zamanlandı. Etkinlik işlevinin adı `Name` sütunda yakalanır.
+  * **Görev Tamamlandı**: Tamamlanan bir etkinlik işlevi. İşlevin sonucu `Result` sütundadır.
+  * **TimerCreated**: Dayanıklı bir zamanlayıcı oluşturuldu. Sütun, `FireAt` zamanlayıcının süresinin dolduğu zamanlanan UTC süresini içerir.
+  * **TimerFired**: Dayanıklı bir zamanlayıcı ateş.
+  * **EventRaised**: Orkestrasyon örneğine harici bir olay gönderildi. Sütun `Name` olayın adını yakalar ve `Input` sütun olayın yükünü yakalar.
+  * **OrchestratorCompleted**: Orkestratör işlevi bekleniyor.
+  * **ContinueAsNew**: Orkestratör işlevi tamamlandı ve yeni durumla kendini yeniden başlattı. Sütun, `Result` yeniden başlatılan örnekte giriş olarak kullanılan değeri içerir.
+  * **Yürütme Tamamlandı**: Orkestratör işlevi tamamlanmak üzere koştu (veya başarısız oldu). İşlevin çıktıları veya hata ayrıntıları `Result` sütunda depolanır.
+* **Zaman damgası**: Tarih olayının UTC zaman damgası.
+* **Adı**: Çağrılan işlevin adı.
+* **Giriş**: Fonksiyonun JSON biçimlendirilmiş girişi.
+* **Sonuç**: Fonksiyonun çıktısı; yani, onun iade değeri.
 
 > [!WARNING]
-> Hata ayıklama aracı olarak yararlı olsa da, bu tablo üzerinde hiçbir bağımlılığı olmaz. Dayanıklı İşlevler uzantısı geliştikçe değişiklik gösterebilir.
+> Hata ayıklama aracı olarak yararlı olsa da, bu tabloya herhangi bir bağımlılık almayın. Dayanıklı Fonksiyonlar uzantısı geliştikçe değişebilir.
 
-İşlev bir `await` (C#) veya `yield` (JavaScript) ' den her başlatıldığında, dayanıklı görev çerçevesi Orchestrator işlevini sıfırdan yeniden çalıştırır. Her yeniden çalıştırmada, geçerli zaman uyumsuz işlemin yapılıp yapılmayacağını belirlemede yürütme geçmişine bakar.  İşlem gerçekleştiyse, çerçeve o işlemin çıkışını hemen yeniden yürütür ve sonraki `await` (C#) veya `yield` (JavaScript) ' e gider. Bu işlem, tüm geçmiş yeniden yürütülene kadar devam eder. Geçerli geçmiş yeniden yürütüldüğünde, yerel değişkenler önceki değerlerine geri yüklenmiş olur.
+İşlev bir `await` (C#) veya `yield` (JavaScript)'den devam edilse, Dayanıklı Görev Çerçevesi orkestratör işlevini sıfırdan yeniden çalıştırır. Her yeniden çalıştırmada, geçerli async işleminin gerçekleşip gerçekleşmediğini belirlemek için yürütme geçmişine başvurur.  İşlem gerçekleştiyse, çerçeve bu işlemin çıktısını hemen yeniden alır ve `await` bir sonraki `yield` (C#) veya (JavaScript) bölümüne geçer. Bu işlem, tüm geçmiş yeniden oynatıldıncaya kadar devam ediyor. Geçerli geçmiş yeniden oynatıldıktan sonra, yerel değişkenler önceki değerlerine geri yüklenmiş olur.
 
 ## <a name="features-and-patterns"></a>Özellikler ve desenler
 
-Sonraki bölümlerde Orchestrator işlevlerinin özellikleri ve desenleri açıklanır.
+Sonraki bölümlerde orkestratör işlevlerinin özellikleri ve desenleri açıklanabilir.
 
 ### <a name="sub-orchestrations"></a>Alt düzenlemeler
 
-Orchestrator işlevleri, etkinlik işlevlerini, diğer Orchestrator işlevlerini de çağırabilir. Örneğin, bir Orchestrator işlevleri kitaplığından daha büyük bir düzenleme oluşturabilirsiniz. Ya da, bir Orchestrator işlevinin birden fazla örneğini paralel olarak çalıştırabilirsiniz.
+Orchestrator işlevleri etkinlik işlevlerini değil, diğer orkestratör işlevlerini de çağırabilir. Örneğin, orkestratör işlevleri kitaplığından daha büyük bir orkestrasyon oluşturabilirsiniz. Veya, bir orkestratör işlevinin birden çok örneğini paralel olarak çalıştırabilirsiniz.
 
-Daha fazla bilgi ve örnekler için bkz. [alt](durable-functions-sub-orchestrations.md) düzenlemeler makalesi.
+Daha fazla bilgi ve örnekler için [Alt orkestrasyon](durable-functions-sub-orchestrations.md) makalesine bakın.
 
 ### <a name="durable-timers"></a>Dayanıklı zamanlayıcılar
 
-Düzenlemeler, gecikmeler uygulamak veya zaman uyumsuz eylemlerde zaman aşımı işlemeyi ayarlamak için *sürekli zamanlayıcılar* zamanlayabilir. `Thread.Sleep` ve `Task.Delay` (C#) veya `setTimeout()` ve `setInterval()` (JavaScript) yerine Orchestrator işlevlerinde dayanıklı zamanlayıcılar kullanın.
+Orkestrasyonlar gecikmeleri uygulamak veya async eylemleri üzerinde zaman çizelgesi işleme ayarlamak için *dayanıklı zamanlayıcılar* zamanlayabilirsiniz. `Thread.Sleep` Ve `Task.Delay` (C#) veya `setTimeout()` `setInterval()` (JavaScript) yerine orchestrator işlevlerinde dayanıklı zamanlayıcılar kullanın.
 
-Daha fazla bilgi ve örnekler için bkz. [dayanıklı zamanlayıcılar](durable-functions-timers.md) makalesi.
+Daha fazla bilgi ve örnekler için [Dayanıklı zamanlayıcılar](durable-functions-timers.md) makalesine bakın.
 
 ### <a name="external-events"></a>Dış olaylar
 
-Orchestrator işlevleri, dış olayların bir düzenleme örneğini güncelleştirmesini bekleyebilir. Bu Dayanıklı İşlevler özelliği genellikle insan etkileşimini veya diğer dış geri çağırmaları işlemek için yararlıdır.
+Orchestrator işlevleri harici olayların bir orkestrasyon örneğini güncelleştirmesini bekleyebilir. Bu Dayanıklı Fonksiyonlar özelliği genellikle bir insan etkileşimi veya diğer harici geri arama işleme için yararlıdır.
 
-Daha fazla bilgi ve örnekler için bkz. [dış olaylar](durable-functions-external-events.md) makalesi.
+Daha fazla bilgi ve örnekler için [Dış Olaylar](durable-functions-external-events.md) makalesine bakın.
 
 ### <a name="error-handling"></a>Hata işleme
 
-Orchestrator işlevleri, programlama dilinin hata işleme özelliklerini kullanabilir. `try`/`catch` gibi mevcut desenler düzenleme kodunda desteklenir.
+Orchestrator işlevleri programlama dilinin hata işleme özelliklerini kullanabilir. Varolan `try` / `catch` desenler orkestrasyon kodunda desteklenir.
 
-Orchestrator işlevleri, çağrıduydukları etkinliğe veya alt Orchestrator işlevlerine yeniden deneme ilkeleri de ekleyebilir. Bir etkinlik veya alt Orchestrator işlevi bir özel durumla başarısız olursa, belirtilen yeniden deneme ilkesi, yürütmeyi belirtilen sayıda otomatik olarak erteleyebilir ve yeniden deneyebilir.
+Orchestrator işlevleri, aradıkları etkinlik veya alt orchestrator işlevlerine yeniden deneme ilkeleri de ekleyebilir. Bir etkinlik veya alt orchestrator işlevi bir istisna dışında başarısız olursa, belirtilen yeniden deneme ilkesi otomatik olarak geciktirebilir ve yürütmeyi belirtilen sayıda yeniden deneyebilir.
 
 > [!NOTE]
-> Orchestrator işlevinde işlenmeyen bir özel durum varsa, düzenleme örneği `Failed` durumunda tamamlanır. Bir Orchestration örneği başarısız olduktan sonra yeniden denenemez.
+> Bir orkestratör işlevinde işlenmemiş bir özel durum varsa, orkestrasyon örneği bir `Failed` durumda tamamlanır. Bir orkestrasyon örneği başarısız olduktan sonra yeniden denenemez.
 
-Daha fazla bilgi ve örnekler için bkz. [hata işleme](durable-functions-error-handling.md) makalesi.
+Daha fazla bilgi ve örnekler için [Hata işleme](durable-functions-error-handling.md) makalesine bakın.
 
-### <a name="critical-sections-durable-functions-2x-currently-net-only"></a>Kritik bölümler (Dayanıklı İşlevler 2. x, şu anda yalnızca .NET)
+### <a name="critical-sections-durable-functions-2x-currently-net-only"></a>Kritik bölümler (Dayanıklı Fonksiyonlar 2.x, şu anda sadece .NET)
 
-Düzenleme örnekleri tek iş parçacıklıdır, bu nedenle bir düzenleme *içindeki* yarış koşullarına endişelenmek için gerekli değildir. Ancak, bir yandan dış sistemlerle etkileşim kurarken yarış durumları mümkündür. Dış sistemlerle etkileşim kurarken yarış koşullarını azaltmak için, Orchestrator işlevleri .NET 'teki bir `LockAsync` yöntemi kullanarak *kritik bölümleri* tanımlayabilir.
+Orkestrasyon örnekleri tek dişlidir, bu nedenle bir orkestrasyon *içindeki* Yarış koşulları hakkında endişelenmenize gerek yoktur. Ancak, orkestrasyonlar dış sistemlerle etkileşime girdiğinde Yarış koşulları mümkündür. Harici sistemlerle etkileşimde bulunan yarış koşullarını azaltmak için, orkestratör işlevleri `LockAsync` .NET'te bir yöntem kullanarak *kritik bölümleri* tanımlayabilir.
 
-Aşağıdaki örnek kod, kritik bir bölümü tanımlayan bir Orchestrator işlevini gösterir. `LockAsync` yöntemi kullanılarak kritik bölüme girer. Bu yöntem, bir veya daha fazla başvuruyu dayanıklı bir [varlığa](durable-functions-entities.md)geçirmeyi gerektirir ve bu, kilit durumunu sürekli olarak yönetir. Bu Orchestration 'un yalnızca tek bir örneği, her seferinde kritik bölümde kodu yürütebilir.
+Aşağıdaki örnek kod, kritik bir bölümü tanımlayan bir orkestratör işlevini gösterir. Yöntemi kullanarak kritik bölüme `LockAsync` girer. Bu yöntem, kilit durumunu kalıcı olarak yöneten [Dayanıklı Varlık'a](durable-functions-entities.md)bir veya daha fazla başvuru nun geçirilmesini gerektirir. Bu düzenlemenin yalnızca tek bir örneği, kodu kritik bölümdeki bir anda yürütebilir.
 
 ```csharp
 [FunctionName("Synchronize")]
@@ -205,20 +205,20 @@ public static async Task Synchronize(
 }
 ```
 
-`LockAsync`, dayanıklı kilitler alır ve aktiften çıkarıldığı zaman kritik bölümü sonlandıran bir `IDisposable` döndürür. Bu `IDisposable` sonucu, kritik bölümün sözdizimsel bir gösterimini almak için bir `using` bloğuyla birlikte kullanılabilir. Orchestrator işlevi kritik bir bölüme girdiğinde yalnızca bir örnek bu kod bloğunu yürütebilir. Kritik bölümü girmeye çalışacak diğer tüm örnekler, önceki örnek kritik bölümden çıkana kadar engellenir.
+Dayanıklı `LockAsync` kilidi(ler) elde eder ve `IDisposable` imha edildiğinde kritik bölümü sona erdiren bir döndürür. Bu `IDisposable` sonuç, kritik bölümün `using` sözdizimi temsilini almak için bir blokla birlikte kullanılabilir. Bir orkestratör işlevi kritik bir bölüme girdiğinde, bu kod bloğunu yalnızca bir örnek yürütebilir. Kritik bölüme girmeye çalışan diğer örnekler, önceki örnek kritik bölümden çıkana kadar engellenir.
 
-Kritik bölüm özelliği, dayanıklı varlıklarda yapılan değişiklikleri koordine etmek için de kullanışlıdır. Kritik bölümler hakkında daha fazla bilgi için bkz. [dayanıklı varlıklar "varlık düzenlemesi"](durable-functions-entities.md#entity-coordination) konusu.
+Kritik bölüm özelliği, dayanıklı varlıklardaki değişiklikleri koordine etmek için de yararlıdır. Kritik bölümler hakkında daha fazla bilgi için [Dayanıklı varlıklar "Varlık koordinasyonu"](durable-functions-entities.md#entity-coordination) konusuna bakın.
 
 > [!NOTE]
-> Kritik bölümler Dayanıklı İşlevler 2,0 ve üzeri sürümlerde kullanılabilir. Şu anda bu özelliği yalnızca .NET düzenlemeleri uygular.
+> Kritik bölümler Dayanıklı Fonksiyonlar 2.0 ve üzeri mevcuttur. Şu anda bu özelliği yalnızca .NET orkestrasyonları uygular.
 
-### <a name="calling-http-endpoints-durable-functions-2x"></a>HTTP uç noktalarını çağırma (Dayanıklı İşlevler 2. x)
+### <a name="calling-http-endpoints-durable-functions-2x"></a>HTTP uç noktalarını arama (Dayanıklı Fonksiyonlar 2.x)
 
-Orchestrator işlevlerinin, [Orchestrator işlev kodu kısıtlamalarında](durable-functions-code-constraints.md)açıklandığı gibi g/ç yapmasına izin verilmez. Bu sınırlamaya yönelik tipik geçici çözüm, bir etkinlik işlevinde g/ç yapması gereken her türlü kodu sarmasıdır. Dış sistemlerle etkileşime geçen düzenlemeler, HTTP çağrıları yapmak ve sonucu düzenlemeye döndürmek için sık sık etkinlik işlevlerini kullanır.
+Orchestrator işlevleri, [orchestrator işlev kodu kısıtlamalarında](durable-functions-code-constraints.md)açıklandığı gibi G/Ç yapmak için izin verilmez. Bu sınırlama için tipik geçici çözüm, bir etkinlik işlevinde G/Ç yapması gereken herhangi bir kodu kaydırmaktır. Dış sistemlerle etkileşimedebilen orkestrasyonlar, HTTP aramaları yapmak ve sonucu orkestrasyona döndürmek için etkinlik işlevlerini sık sık kullanır.
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
-Bu ortak kalıbı basitleştirmek için Orchestrator işlevleri, HTTP API 'Lerini doğrudan çağırmak için `CallHttpAsync` yöntemini kullanabilir.
+Bu ortak deseni basitleştirmek için, `CallHttpAsync` orkestratör işlevleri http API'leri doğrudan çağırmak için yöntemi kullanabilir.
 
 ```csharp
 [FunctionName("CheckSiteAvailable")]
@@ -238,7 +238,7 @@ public static async Task CheckSiteAvailable(
 }
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -254,20 +254,20 @@ module.exports = df.orchestrator(function*(context) {
 
 ---
 
-Yöntemi, temel istek/yanıt düzenlerini desteklemeye ek olarak, ortak zaman uyumsuz HTTP 202 yoklama desenlerinin otomatik işlemesini destekler ve ayrıca [yönetilen kimlikleri](../../active-directory/managed-identities-azure-resources/overview.md)kullanarak dış hizmetlerle kimlik doğrulamasını destekler.
+Temel istek/yanıt kalıplarını desteklemeye ek olarak, yöntem ortak async HTTP 202 yoklama desenleri otomatik işleme destekler ve aynı zamanda [Yönetilen Kimlikleri](../../active-directory/managed-identities-azure-resources/overview.md)kullanarak dış hizmetler ile kimlik doğrulama destekler.
 
-Daha fazla bilgi ve ayrıntılı örnekler için bkz. [http özellikleri](durable-functions-http-features.md) makalesi.
+Daha fazla bilgi ve ayrıntılı örnekler için [HTTP özellikleri](durable-functions-http-features.md) makalesine bakın.
 
 > [!NOTE]
-> HTTP uç noktalarını doğrudan Orchestrator işlevlerinden çağırma Dayanıklı İşlevler 2,0 ve üzeri sürümlerde kullanılabilir.
+> Doğrudan orchestrator işlevlerinden HTTP uç noktaları arama Dayanıklı Fonksiyonlar 2.0 ve üzeri mevcuttur.
 
-### <a name="passing-multiple-parameters"></a>Birden çok parametre geçirme
+### <a name="passing-multiple-parameters"></a>Birden çok parametre nin geçirilmesi
 
-Birden çok parametreyi doğrudan bir etkinlik işlevine geçirmek mümkün değildir. Öneri bir nesne veya bileşik nesne dizisinde geçmektir.
+Birden çok parametreyi doğrudan bir etkinlik işlevine aktarmak mümkün değildir. Öneri, bir dizi nesne veya bileşik nesnede geçmektir.
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
-.NET ' te, [Valuetuples](https://docs.microsoft.com/dotnet/csharp/tuples) nesnelerini de kullanabilirsiniz. Aşağıdaki örnek, [ C# 7](https://docs.microsoft.com/dotnet/csharp/whats-new/csharp-7#tuples)ile eklenen [valuetuples](https://docs.microsoft.com/dotnet/csharp/tuples) 'in yeni özelliklerini kullanıyor:
+.NET'te [ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples) nesnelerini de kullanabilirsiniz. Aşağıdaki [örnek, C# 7](https://docs.microsoft.com/dotnet/csharp/whats-new/csharp-7#tuples)ile eklenen [ValueTuples'ın](https://docs.microsoft.com/dotnet/csharp/tuples) yeni özelliklerini kullanıyor:
 
 ```csharp
 [FunctionName("GetCourseRecommendations")]
@@ -304,7 +304,7 @@ public static async Task<object> Mapper([ActivityTrigger] IDurableActivityContex
 }
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 #### <a name="orchestrator"></a>Orchestrator
 
@@ -337,4 +337,4 @@ module.exports = async function (context, location) {
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Orchestrator kod kısıtlamaları](durable-functions-code-constraints.md)
+> [Düzenleyici kodu kısıtlamaları](durable-functions-code-constraints.md)

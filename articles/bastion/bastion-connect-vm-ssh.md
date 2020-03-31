@@ -1,6 +1,6 @@
 ---
-title: Azure savunma kullanarak bir Linux VM 'ye bağlanma
-description: Bu makalede, Azure savunma kullanarak Linux sanal makinesine nasıl bağlanacağınızı öğrenin.
+title: Azure Bastion'u kullanarak Bir Linux VM'ine bağlanma
+description: Bu makalede, Azure Bastion'u kullanarak Linux Virtual Machine'e nasıl bağlanışlarınızı öğrenin.
 services: bastion
 author: cherylmc
 ms.service: bastion
@@ -8,79 +8,79 @@ ms.topic: conceptual
 ms.date: 02/24/2020
 ms.author: cherylmc
 ms.openlocfilehash: 381f45a51002188c72174cff83c26b829912a0b9
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77596836"
 ---
-# <a name="connect-using-ssh-to-a-linux-virtual-machine-using-azure-bastion"></a>Azure savunma kullanarak bir Linux sanal makinesine SSH kullanarak bağlanma
+# <a name="connect-using-ssh-to-a-linux-virtual-machine-using-azure-bastion"></a>Azure Bastion'u kullanarak SSH kullanarak Linux sanal makinesine bağlanın
 
-Bu makalede, bir Azure sanal ağındaki Linux VM 'lerinize güvenli ve sorunsuz bir şekilde SSH ekleyebilirsiniz. Bir VM 'ye doğrudan Azure portal bağlanabilirsiniz. Azure savunma kullanılırken, VM 'Ler bir istemci, aracı veya ek yazılım gerektirmez. Azure savunma hakkında daha fazla bilgi için bkz. [genel bakış](bastion-overview.md).
+Bu makalede, bir Azure sanal ağında Linux VM'lerinize güvenli ve sorunsuz bir şekilde SSH'yi nasıl ekleyip sağlayamadığınızı gösterir. Doğrudan Azure portalından bir VM'ye bağlanabilirsiniz. Azure Bastion kullanırken, VM'ler istemci, aracı veya ek yazılım gerektirmez. Azure Kalesi hakkında daha fazla bilgi için [Genel Bakış'a](bastion-overview.md)bakın.
 
-SSH kullanarak bir Linux sanal makinesine bağlanmak için Azure savunma kullanabilirsiniz. Kimlik doğrulaması için hem Kullanıcı adı/parola hem de SSH anahtarlarını kullanabilirsiniz. VM 'nize şu iki kullanarak SSH anahtarlarıyla bağlanabilirsiniz:
+Azure Bastion'u Kullanarak Bir Linux sanal makinesine bağlanmak için SSH'yi kullanabilirsiniz. Kimlik doğrulaması için hem kullanıcı adı/parola hem de SSH tuşlarını kullanabilirsiniz. Aşağıdakilerden birini kullanarak SSH tuşları ile VM'nize bağlanabilirsiniz:
 
 * El ile girdiğiniz özel bir anahtar
 * Özel anahtar bilgilerini içeren bir dosya
 
-SSH özel anahtarı `"-----BEGIN RSA PRIVATE KEY-----"` ile başlayan ve `"-----END RSA PRIVATE KEY-----"`biten bir biçimde olmalıdır.
+SSH özel anahtarı ile `"-----BEGIN RSA PRIVATE KEY-----"` başlayan ve `"-----END RSA PRIVATE KEY-----"`onunla biten bir biçimde olmalıdır.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-VM 'nin bulunduğu sanal ağ için bir Azure savunma ana bilgisayarı ayarladığınızdan emin olun. Daha fazla bilgi için bkz. [Azure savunma Konağı oluşturma](bastion-create-host-portal.md). Savunma hizmeti, sanal ağınıza sağlandıktan ve dağıtıldıktan sonra, bu sanal ağdaki herhangi bir VM 'ye bağlanmak için kullanabilirsiniz. 
+VM'nin bulunduğu sanal ağ için bir Azure Bastion ana bilgisayarı ayarladığınızdan emin olun. Daha fazla bilgi için [bkz.](bastion-create-host-portal.md) Bastion hizmeti sağlanıp sanal ağınızda dağıtıldıktan sonra, bu sanal ağdaki herhangi bir VM'ye bağlanmak için kullanabilirsiniz. 
 
-Bağlanmak için savunma kullandığınızda, Windows VM 'ye bağlanmak için RDP kullandığınızı ve Linux sanal makinelerinize bağlanmak için SSH 'yi kullandığınızı varsayar. Bir Windows VM 'ye bağlanma hakkında daha fazla bilgi için bkz. [VM 'ye bağlanma-Windows](bastion-connect-vm-rdp.md).
+Bağlanmak için Bastion'u kullandığınızda, Bir Windows VM'ye bağlanmak için RDP ve Linux VM'lerinize bağlanmak için SSH kullandığınızı varsayar. Windows VM'ye bağlanma hakkında daha fazla bilgi için [vm- Windows'a bağlan'a](bastion-connect-vm-rdp.md)bakın.
 
 ### <a name="required-roles"></a>Gerekli roller
 
-Bir bağlantı oluşturmak için aşağıdaki roller gereklidir:
+Bağlantı kurmak için aşağıdaki roller gereklidir:
 
 * Sanal makinede okuyucu rolü
-* Sanal makinenin özel IP 'si ile NIC 'de okuyucu rolü
-* Azure savunma kaynağında okuyucu rolü
+* Sanal makinenin özel IP'si ile NIC'de okuyucu rolü
+* Azure Bastion kaynağında okuyucu rolü
 
 ### <a name="ports"></a>Bağlantı Noktaları
 
-Linux VM 'sine SSH aracılığıyla bağlanmak için, VM 'niz üzerinde aşağıdaki bağlantı noktalarının açık olması gerekir:
+Linux VM'ye SSH üzerinden bağlanabilmek için VM'nizde aşağıdaki bağlantı noktalarının açık olması gerekir:
 
 * Gelen bağlantı noktası: SSH (22)
 
-## <a name="username"></a>Bağlan: Kullanıcı adı ve parola kullanma
+## <a name="connect-using-username-and-password"></a><a name="username"></a>Bağlan: Kullanıcı adı ve parola kullanma
 
-1. [Azure portalını](https://portal.azure.com) açın. Bağlanmak istediğiniz sanal makineye gidin, ardından **Bağlan** ' a tıklayın ve **açılan listeden savunma** ' yi seçin.
-
-   ![Bağlan](./media/bastion-connect-vm-ssh/connect.png)
-1. Atlama ' ye tıkladıktan sonra, üç sekmeye (RDP, SSH ve savunma) sahip bir yan çubuk görüntülenir. Sanal ağ için bir savunma sağlandıysa, savunma sekmesi varsayılan olarak etkindir. Sanal ağ için savunma sağlamadıysanız bkz. [yapılandırmayı yapılandırma](bastion-create-host-portal.md).
-
-   ![Bastion](./media/bastion-connect-vm-ssh/bastion.png)
-1. Sanal makinenize SSH için Kullanıcı adı ve parola girin.
-1. Anahtarı girdikten sonra **Bağlan** düğmesine tıklayın.
-
-## <a name="privatekey"></a>Bağlan: El Ile özel bir anahtar girin
-
-1. [Azure portalını](https://portal.azure.com) açın. Bağlanmak istediğiniz sanal makineye gidin, ardından **Bağlan** ' a tıklayın ve **açılan listeden savunma** ' yi seçin.
+1. Azure [portalını](https://portal.azure.com)açın. Bağlanmak istediğiniz sanal makineye gidin, ardından **Bağlan'ı** tıklatın ve açılır menüden **Bastion'u** seçin.
 
    ![Bağlan](./media/bastion-connect-vm-ssh/connect.png)
-1. Atlama ' ye tıkladıktan sonra, üç sekmeye (RDP, SSH ve savunma) sahip bir yan çubuk görüntülenir. Sanal ağ için bir savunma sağlandıysa, savunma sekmesi varsayılan olarak etkindir. Sanal ağ için savunma sağlamadıysanız bkz. [yapılandırmayı yapılandırma](bastion-create-host-portal.md).
+1. Bastion'u tıklattıktan sonra, rdp, SSH ve Bastion olmak üzere üç sekmesi olan bir yan çubuk görüntülenir. Bastion sanal ağ için sağlanmışsa, Bastion sekmesi varsayılan olarak etkindir. Sanal ağ için Bastion'u sağlamadıysanız, [Bkz.](bastion-create-host-portal.md)
 
    ![Bastion](./media/bastion-connect-vm-ssh/bastion.png)
-1. Kullanıcı adını girin ve **SSH özel anahtarı**' nı seçin.
-1. Özel anahtarınızı **SSH özel anahtarı** metin alanına girin (veya doğrudan yapıştırın).
-1. Anahtarı girdikten sonra **Bağlan** düğmesine tıklayın.
+1. Sanal makinenize SSH için kullanıcı adı ve şifre girin.
+1. Tuşa girdikten sonra **Bağlan** düğmesini tıklatın.
 
-## <a name="ssh"></a>Bağlan: özel anahtar dosyası kullanma
+## <a name="connect-manually-enter-a-private-key"></a><a name="privatekey"></a>Bağlan: Özel bir anahtarı el ile girin
 
-1. [Azure portalını](https://portal.azure.com) açın. Bağlanmak istediğiniz sanal makineye gidin, ardından **Bağlan** ' a tıklayın ve **açılan listeden savunma** ' yi seçin.
+1. Azure [portalını](https://portal.azure.com)açın. Bağlanmak istediğiniz sanal makineye gidin, ardından **Bağlan'ı** tıklatın ve açılır menüden **Bastion'u** seçin.
 
    ![Bağlan](./media/bastion-connect-vm-ssh/connect.png)
-1. Atlama ' ye tıkladıktan sonra, üç sekmeye (RDP, SSH ve savunma) sahip bir yan çubuk görüntülenir. Sanal ağ için bir savunma sağlandıysa, savunma sekmesi varsayılan olarak etkindir. Sanal ağ için savunma sağlamadıysanız bkz. [yapılandırmayı yapılandırma](bastion-create-host-portal.md).
+1. Bastion'u tıklattıktan sonra, rdp, SSH ve Bastion olmak üzere üç sekmesi olan bir yan çubuk görüntülenir. Bastion sanal ağ için sağlanmışsa, Bastion sekmesi varsayılan olarak etkindir. Sanal ağ için Bastion'u sağlamadıysanız, [Bkz.](bastion-create-host-portal.md)
 
    ![Bastion](./media/bastion-connect-vm-ssh/bastion.png)
-1. Kullanıcı adını girin ve **yerel dosyadan SSH özel anahtarı**' nı seçin.
-1. (Yerel dosyadaki klasör simgesi **) düğmesine tıklayın** .
-1. Dosyaya gözatıp açın, sonra **Aç**' a tıklayın.
-1. SANAL makineye bağlanmak için **Bağlan** ' a tıklayın. Bağlan ' a tıkladığınızda bu sanal makineye SSH doğrudan Azure portal açılır. Bu bağlantı, sanal makinenizin özel IP 'si üzerinde savunma hizmetinde 443 numaralı bağlantı noktasını kullanan HTML5 'in üstünden fazla.
+1. Kullanıcı adını girin ve **SSH Private Key'i**seçin.
+1. Özel anahtarınızı metin alanına girin **SSH Private Key** (veya doğrudan yapıştırın).
+1. Tuşa girdikten sonra **Bağlan** düğmesini tıklatın.
+
+## <a name="connect-using-a-private-key-file"></a><a name="ssh"></a>Bağlanma: Özel anahtar dosyakullanma
+
+1. Azure [portalını](https://portal.azure.com)açın. Bağlanmak istediğiniz sanal makineye gidin, ardından **Bağlan'ı** tıklatın ve açılır menüden **Bastion'u** seçin.
+
+   ![Bağlan](./media/bastion-connect-vm-ssh/connect.png)
+1. Bastion'u tıklattıktan sonra, rdp, SSH ve Bastion olmak üzere üç sekmesi olan bir yan çubuk görüntülenir. Bastion sanal ağ için sağlanmışsa, Bastion sekmesi varsayılan olarak etkindir. Sanal ağ için Bastion'u sağlamadıysanız, [Bkz.](bastion-create-host-portal.md)
+
+   ![Bastion](./media/bastion-connect-vm-ssh/bastion.png)
+1. Kullanıcı adını girin ve **Yerel Dosya'dan SSH Private Key'i**seçin.
+1. **Gözat** düğmesini (yerel dosyadaki klasör simgesi) tıklatın.
+1. Dosyaya göz atın, ardından **Aç'ı**tıklatın.
+1. VM'ye bağlanmak için **Bağlan'ı** tıklatın. Bağlan'ı tıklattığınızda, bu sanal makineye SSH doğrudan Azure portalında açılır. Bu bağlantı HTML5 üzerinde sanal makinenin özel IP üzerinden Bastion hizmeti port 443 kullanarak.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Savunma [hakkında SSS](bastion-faq.md) makalesini okuyun
+Burç [SSS'sini](bastion-faq.md) okuyun

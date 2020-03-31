@@ -1,6 +1,6 @@
 ---
-title: CEF verilerini Azure Sentinel Preview 'a bağlamak için aracıyı dağıtın | Microsoft Docs
-description: CEF verilerini Azure Sentinel 'e bağlamak için aracıyı dağıtmayı öğrenin.
+title: CEF verilerini Azure Sentinel Preview'a bağlamak için aracıyı dağıtın| Microsoft Dokümanlar
+description: CEF verilerini Azure Sentinel'e bağlamak için aracıyı nasıl dağıtılayabilirsiniz öğrenin.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,38 +15,38 @@ ms.workload: na
 ms.date: 11/26/2019
 ms.author: yelevin
 ms.openlocfilehash: b0c9335357cb793ea76e1dbe68575f716a50372a
-ms.sourcegitcommit: 7f929a025ba0b26bf64a367eb6b1ada4042e72ed
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77588476"
 ---
-# <a name="step-1-deploy-the-agent"></a>1\. Adım: aracıyı dağıtma
+# <a name="step-1-deploy-the-agent"></a>Adım 1: Aracıyı dağıtın
 
 
-Bu adımda, Azure Sentinel ve güvenlik çözümünüz arasında proxy görevi görecek Linux makinesini seçmeniz gerekir. Proxy makinede şu komutu çalıştırmanız gerekir:
-- Log Analytics aracısını yükleyip syslog iletilerini dinlemek için gerektiğinde yapılandırır.
-- , TCP bağlantı noktası 514 kullanarak syslog iletilerini dinlemek ve sonra yalnızca CEF iletilerini Log Analytics aracısına, TCP bağlantı noktası 25226 kullanarak iletmek için Syslog Daemon programını yapılandırır.
-- Verileri toplamak ve Azure Sentinel 'e güvenli bir şekilde göndermek için Syslog aracısını ayarlar ve burada ayrıştırılıp zenginleştirir.
+Bu adımda, Azure Sentinel ile güvenlik çözümünüz arasında proxy olarak hareket edecek Linux makinesini seçmeniz gerekir. Proxy makinesinde bir komut dosyası çalıştırmak zorunda kalacak:
+- Log Analytics aracısını yükler ve Syslog iletilerini dinlemek için gerektiği gibi yapılandırır.
+- Syslog daemon'u, TCP portu 514'ü kullanarak Syslog iletilerini dinleyecek şekilde yapılandırır ve ardından yalnızca CEF iletilerini TCP portu 25226'yı kullanarak Log Analytics temsilcisine ileter.
+- Syslog aracısını verileri toplayacak ve güvenli bir şekilde ayrıştırıldığı ve zenginleştiği Azure Sentinel'e gönderecek şekilde ayarlar.
  
-## <a name="deploy-the-agent"></a>Aracıyı dağıtma
+## <a name="deploy-the-agent"></a>Aracıyı dağıtın
  
-1. Azure Sentinel portalında, **veri bağlayıcıları** ' na tıklayın ve **ortak olay biçimi (CEF)** öğesini seçin ve ardından **bağlayıcı sayfasını açın**. 
+1. Azure Sentinel portalında **Veri bağlayıcılarını** tıklatın ve **Ortak Etkinlik Biçimi'ni (CEF)** seçin ve ardından **bağlayıcı sayfasını açın.** 
 
-1. **Syslog aracısını yükleyip yapılandırma**altında, Azure, diğer bulut ya da şirket içi makine türünü seçin. 
+1. **Syslog aracısını yükle ve yapılandırma**altında, Azure, diğer bulut veya şirket içi makine türünüzü seçin. 
    > [!NOTE]
-   > Sonraki adımdaki betik Log Analytics aracısını yükleyip makineyi Azure Sentinel çalışma alanınıza bağladığından, bu makinenin başka bir çalışma alanına bağlı olmadığından emin olun.
-1. Makinenizde yükseltilmiş izinleriniz (sudo) olmalıdır. Aşağıdaki komutu kullanarak makinenizde Python olduğundan emin olun: `python –version`
+   > Bir sonraki adımdaki komut dosyası Log Analytics aracısını yüklediğinden ve makineyi Azure Sentinel çalışma alanınıza bağladığı için, bu makinenin başka bir çalışma alanına bağlı olmadığından emin olun.
+1. Makinenizde yüksek izinler (sudo) olmalıdır. Aşağıdaki komutu kullanarak makinenizde Python olduğundan emin olun:`python –version`
 
-1. Proxy makinenizde aşağıdaki betiği çalıştırın.
+1. Proxy makinenizde aşağıdaki komut dosyasını çalıştırın.
    `sudo wget https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_installer.py&&sudo python cef_installer.py [WorkspaceID] [Workspace Primary Key]`
-1. Betik çalışırken, herhangi bir hata veya uyarı iletisi aldığınızdan emin olmak için kontrol edin.
+1. Komut dosyası çalışırken, herhangi bir hata veya uyarı iletisi almadığınızdan emin olun.
 
-2\. [Adım: CEF iletilerini iletmek için Güvenlik çözümünüzü yapılandırma](connect-cef-solution-config.md) .
+ADIM 2'ye devam [et: Güvenlik çözümünüzü CEF iletilerini iletmek için yapılandırın.](connect-cef-solution-config.md)
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu belgede CEF gereçlerini Azure Sentinel 'e bağlamayı öğrendiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
-- [Verilerinize nasıl görünürlük alabileceğinizi ve olası tehditleri](quickstart-get-visibility.md)öğrenin.
-- [Azure Sentinel ile tehditleri algılamaya](tutorial-detect-threats.md)başlayın.
+Bu belgede, CEF cihazlarını Azure Sentinel'e nasıl bağlayabileceğinizi öğrendiniz. Azure Sentinel hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
+- [Verilerinize ve olası tehditlere](quickstart-get-visibility.md)nasıl görünürlük elde edebilirsiniz öğrenin.
+- Azure [Sentinel ile tehditleri algılamaya](tutorial-detect-threats.md)başlayın.
 

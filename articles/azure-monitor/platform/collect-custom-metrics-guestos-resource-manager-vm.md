@@ -1,6 +1,6 @@
 ---
-title: Azure Izleyici 'de şablon ile Windows VM ölçümleri toplama
-description: Windows sanal makinesi için Kaynak Yöneticisi şablonu kullanarak Azure Izleyici ölçüm deposuna Konuk işletim sistemi ölçümleri gönderme
+title: Şablonla Azure Monitor'da Windows VM ölçümlerini toplama
+description: Windows sanal makinesi için Kaynak Yöneticisi şablonu kullanarak konuk işletim sistemi ölçümlerini Azure Monitor metrik deposuna gönderme
 author: anirudhcavale
 services: azure-monitor
 ms.topic: conceptual
@@ -8,57 +8,57 @@ ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
 ms.openlocfilehash: e747ca89912c36538bfb9d02986629fe57c5adcb
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77657376"
 ---
-# <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-using-a-resource-manager-template-for-a-windows-virtual-machine"></a>Windows sanal makinesi için Kaynak Yöneticisi şablonu kullanarak Azure Izleyici ölçüm deposuna Konuk işletim sistemi ölçümleri gönderme
+# <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-using-a-resource-manager-template-for-a-windows-virtual-machine"></a>Windows sanal makinesi için Kaynak Yöneticisi şablonu kullanarak Konuk İşletim Sistemi ölçümlerini Azure Monitor metrik deposuna gönderme
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Azure Izleyici [Tanılama uzantısını](diagnostics-extension-overview.md)kullanarak, sanal makine, bulut hizmeti veya Service Fabric kümesinin bir parçası olarak çalışan konuk işletim sisteminden (konuk işletim sistemi) ölçümleri ve günlükleri toplayabilirsiniz. Uzantı [birçok farklı konuma](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json) telemetri gönderebilir.
+Azure Monitör [Tanılama uzantısını](diagnostics-extension-overview.md)kullanarak, sanal makine, bulut hizmeti veya Service Fabric kümesinin bir parçası olarak çalışan konuk işletim sisteminden (Konuk İşletim Sistemi) ölçümleri ve günlükleri toplayabilirsiniz. Uzantı, telemetriyi [birçok farklı konuma gönderebilir.](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json)
 
-Bu makalede, bir Windows sanal makinesine yönelik Konuk işletim sistemi performans ölçümlerini Azure Izleyici veri deposuna gönderme işlemi açıklanır. Tanılama sürüm 1,11 ' den başlayarak, ölçümleri doğrudan Azure Izleyici ölçümleri deposuna yazabilirsiniz; burada standart platform ölçümleri zaten toplanır.
+Bu makalede, Bir Windows sanal makine için Konuk İşletim Sistemi performans ölçümlerini Azure Monitor veri deposuna gönderme işlemi açıklanmaktadır. Diagnostics sürüm 1.11'den başlayarak, ölçümleri standart platform ölçümlerinin zaten toplandığı Azure Monitor ölçüm mağazasına doğrudan yazabilirsiniz.
 
-Bu konumda depolamak, platform ölçümleri için aynı eylemlere erişmenize olanak tanır. Eylemler, bir REST API ve daha fazlasını içeren neredeyse gerçek zamanlı uyarı, grafik oluşturma, Yönlendirme ve erişim içerir. Geçmişte, tanılama uzantısı Azure depolama 'ya yazdı, ancak Azure Izleyici veri deposuna değil.
+Bunları bu konumda depolamak, platform ölçümleri için aynı eylemlere erişmenizi sağlar. Eylemler neredeyse gerçek zamanlı uyarı, grafik, yönlendirme ve REST API ve daha fazla erişim içerir. Geçmişte, Tanılama uzantısı Azure Depolama'ya yazdı, ancak Azure Monitor veri deposuna yazmadı.
 
-Kaynak Yöneticisi şablonlarına yeni başladıysanız, [şablon dağıtımları](../../azure-resource-manager/management/overview.md) ve bunların yapısı ve sözdizimi hakkında bilgi edinin.
+Kaynak Yöneticisi şablonlarında yeniyseniz, şablon [dağıtımları](../../azure-resource-manager/management/overview.md) ve bunların yapısı ve sözdizimi hakkında bilgi edinin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-- Aboneliğinizin [Microsoft. Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services)'a kayıtlı olması gerekir.
+- Aboneliğiniz [Microsoft.Insights'a](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services)kayıtlı olmalıdır.
 
-- [Azure PowerShell](/powershell/azure) veya [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) yüklemiş olmanız gerekir.
+- [Azure PowerShell](/powershell/azure) veya Azure [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) yüklü olması gerekir.
 
-- VM kaynağınızın [özel ölçümleri destekleyen bir bölgede](metrics-custom-overview.md#supported-regions)olması gerekir. 
+- VM kaynağınız özel [ölçümleri destekleyen](metrics-custom-overview.md#supported-regions)bir bölgede olmalıdır. 
 
 
-## <a name="set-up-azure-monitor-as-a-data-sink"></a>Azure Izleyiciyi bir veri havuzu olarak ayarlama
-Azure Tanılama uzantısı, ölçümleri ve günlükleri farklı konumlara yönlendirmek için "veri havuzları" adlı bir özellik kullanır. Aşağıdaki adımlarda, yeni "Azure Izleyici" veri havuzunu kullanarak bir VM dağıtmak için Kaynak Yöneticisi şablonu ve PowerShell 'in nasıl kullanılacağı gösterilmektedir.
+## <a name="set-up-azure-monitor-as-a-data-sink"></a>Azure Monitörünü veri lavabosu olarak ayarlama
+Azure Tanılama uzantısı, ölçümleri ve günlükleri farklı konumlara yönlendirmek için "veri lavaboları" adı verilen bir özellik kullanır. Aşağıdaki adımlar, yeni "Azure Monitor" veri lavabosunu kullanarak bir VM dağıtmak için Kaynak Yöneticisi şablonu ve PowerShell'in nasıl kullanılacağını gösterir.
 
-## <a name="author-resource-manager-template"></a>Kaynak Yöneticisi şablonu yaz
-Bu örnekte, genel kullanıma açık bir örnek şablon kullanabilirsiniz. Başlangıç şablonları https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows.
+## <a name="author-resource-manager-template"></a>Yazar Kaynak Yöneticisi şablonu
+Bu örnekte, herkese açık bir örnek şablon u kullanabilirsiniz. Başlangıç şablonları ' https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windowsda'
 
-- **Azuredeploy. JSON** , bir sanal makinenin dağıtımı için önceden yapılandırılmış bir kaynak yöneticisi şablonudur.
+- **Azuredeploy.json,** sanal bir makinenin dağıtımı için önceden yapılandırılmış bir Kaynak Yöneticisi şablonudur.
 
-- **Azuredeploy. Parameters. JSON** , VM 'niz için ayarlamak istediğiniz Kullanıcı adı ve parola gibi bilgileri depolayan bir parametre dosyasıdır. Dağıtım sırasında Kaynak Yöneticisi şablonu bu dosyada ayarlanan parametreleri kullanır.
+- **Azuredeploy.parameters.json,** VM'niz için hangi kullanıcı adı ve parola gibi bilgileri depolayan bir parametre dosyasıdır. Dağıtım sırasında Kaynak Yöneticisi şablonu bu dosyada ayarlanan parametreleri kullanır.
 
 Her iki dosyayı da yerel olarak indirin ve kaydedin.
 
-### <a name="modify-azuredeployparametersjson"></a>Azuredeploy. Parameters. JSON öğesini Değiştir
-*Azuredeploy. Parameters. JSON* dosyasını açın
+### <a name="modify-azuredeployparametersjson"></a>azuredeploy.parameters.json'u değiştirin
+*azuredeploy.parameters.json* dosyasını aç
 
-1. **AdminUserName** ve VM için **adminPassword** değerlerini girin. Bu parametreler VM 'ye uzaktan erişim için kullanılır. VM 'nizin ele geçirilmesini önlemek için bu şablondaki değerleri kullanmayın. Botlar, genel GitHub depolarında Kullanıcı adları ve parolalar için internet 'i tarar. Bu varsayılanlar ile VM 'Leri test etmek olasıdır.
+1. VM için **adminUsername** ve **adminPassword** için değerleri girin. Bu parametreler VM'ye uzaktan erişim için kullanılır. VM'nizin ele geçirilmesini önlemek için bu şablondaki değerleri KULLANMAYIN. Botlar, herkese açık GitHub depolarında kullanıcı adları ve parolalar için interneti tarar. Bu varsayılanlarla VM'leri sınama olasılıkları yüksektir.
 
-1. VM için benzersiz bir DnsName oluşturun.
+1. VM için benzersiz bir dnsname oluşturun.
 
-### <a name="modify-azuredeployjson"></a>Azuredeploy. JSON öğesini değiştirme
+### <a name="modify-azuredeployjson"></a>azuredeploy.json'u değiştirin
 
-*Azuredeploy. JSON* dosyasını açın
+*azuredeploy.json* dosyasını açma
 
-**StorageAccountName** girdisinden sonra şablonun **değişkenler** bölümüne bir depolama hesabı kimliği ekleyin.
+**DepolamaHesap Adı** girişinden sonra şablonun **değişkenler** bölümüne bir depolama hesabı kimliği ekleyin.
 
 ```json
 // Find these lines.
@@ -69,7 +69,7 @@ Her iki dosyayı da yerel olarak indirin ve kaydedin.
     "accountid": "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]",
 ```
 
-Bu Yönetilen Hizmet Kimliği (MSI) uzantısını **kaynaklar** bölümünün en üstündeki şablona ekleyin. Uzantı, Azure Izleyici 'nin yayılmakta olan ölçümleri kabul etmesini sağlar.
+Bu Yönetilen Hizmet Kimliği (MSI) uzantısını **kaynaklar** bölümünün üst kısmındaki şablona ekleyin. Uzantı, Azure Monitor'un yayılan ölçümleri kabul edilmesini sağlar.
 
 ```json
 //Find this code.
@@ -94,7 +94,7 @@ Bu Yönetilen Hizmet Kimliği (MSI) uzantısını **kaynaklar** bölümünün en
     },
 ```
 
-Azure 'un MSI uzantısına bir sistem kimliği atamasını sağlamak için **kimlik** yapılandırmasını VM kaynağına ekleyin. Bu adım, sanal makinenin kendisi hakkındaki Konuk ölçümlerini Azure Izleyici 'ye yaymasını sağlar.
+Azure'un MSI uzantısına bir sistem kimliği atadığından emin olmak için **kimlik** yapılandırmasını VM kaynağına ekleyin. Bu adım, VM'nin kendisi hakkında konuk ölçümleri Azure Monitor'a yatmasını sağlar.
 
 ```json
 // Find this section
@@ -125,7 +125,7 @@ Azure 'un MSI uzantısına bir sistem kimliği atamasını sağlamak için **kim
     ...
 ```
 
-Windows sanal makinesinde tanılama uzantısını etkinleştirmek için aşağıdaki yapılandırmayı ekleyin. Basit Kaynak Yöneticisi tabanlı bir sanal makine için uzantı yapılandırmasını, sanal makine için kaynaklar dizisine ekleyebiliriz. "AzMonSink" satırı ve ilgili "SinksConfig" satırı, "daha sonra gelen" havuz "&mdash;&mdash;. Gerektiğinde performans sayaçlarını ekleme veya kaldırma ücretsizdir.
+Windows sanal makinesinde Tanılama uzantısını etkinleştirmek için aşağıdaki yapılandırmayı ekleyin. Basit bir Kaynak Yöneticisi tabanlı sanal makine için, uzantı yapılandırmasını sanal makinenin kaynak dizisine ekleyebiliriz. "Lavabolar"&mdash; "AzMonSink" ve ilgili "SinksConfig" bölümü&mdash;daha sonra uzantısı doğrudan Azure Monitor ölçümleri yatmak için etkinleştirmek. Gerektiğinde performans sayaçları eklemekveya kaldırmak için çekinmeyin.
 
 
 ```json
@@ -234,57 +234,57 @@ Her iki dosyayı da kaydedin ve kapatın.
 ## <a name="deploy-the-resource-manager-template"></a>Kaynak Yöneticisi şablonu dağıtma
 
 > [!NOTE]
-> Azure Tanılama uzantısı sürüm 1,5 veya üstünü çalıştırıyor olmanız ve Kaynak Yöneticisi şablonunuzda ' true 'olarak ayarlanmış olan ' true ' olarak ayarlamanız gerekir. Ardından Azure, VM 'yi başlattığında uygun uzantıyı yükler. Şablonunuzda bu ayarlara sahip değilseniz, onları değiştirin ve şablonu yeniden dağıtın.
+> Azure Diagnostics uzantısı sürüm 1.5 veya daha yüksek sürümü çalıştırıyor ve **otomatik YükseltmeMinorVersion**sahip olmalıdır: özellik Kaynak Yöneticisi şablonunuzda 'true' olarak ayarlanmış. Azure, VM'yi başlattığında uygun uzantıyı yükler. Şablonunuzda bu ayarlar yoksa, bunları değiştirin ve şablonu yeniden dağıtın.
 
 
-Kaynak Yöneticisi şablonu dağıtmak için Azure PowerShell faydalanır.
+Kaynak Yöneticisi şablonunu dağıtmak için Azure PowerShell'den yararlanıyoruz.
 
-1. PowerShell 'i başlatın.
-1. `Login-AzAccount`kullanarak Azure 'da oturum açın.
-1. `Get-AzSubscription`kullanarak abonelik listenizi alın.
-1. ' De sanal makineyi oluşturmak/güncelleştirmek için kullandığınız aboneliği ayarlayın:
+1. PowerShell’i başlatın.
+1. Azure'da oturum `Login-AzAccount`açarak oturum açın.
+1. Kullanarak abonelik listenizi `Get-AzSubscription`alın.
+1. Sanal makineyi oluşturmak/güncellemek için kullandığınız aboneliği ayarlayın:
 
    ```powershell
    Select-AzSubscription -SubscriptionName "<Name of the subscription>"
    ```
-1. Dağıtılan VM için yeni bir kaynak grubu oluşturmak için aşağıdaki komutu çalıştırın:
+1. Dağıtılmakta olan VM için yeni bir kaynak grubu oluşturmak için aşağıdaki komutu çalıştırın:
 
    ```powershell
     New-AzResourceGroup -Name "<Name of Resource Group>" -Location "<Azure Region>"
    ```
    > [!NOTE]
-   > [Özel ölçümler için etkin olan bir Azure bölgesi kullanmayı](metrics-custom-overview.md)unutmayın.
+   > Özel [ölçümler için etkin leştirilmiş bir Azure bölgesi kullanmayı](metrics-custom-overview.md)unutmayın.
 
-1. Kaynak Yöneticisi şablonunu kullanarak VM 'yi dağıtmak için aşağıdaki komutları çalıştırın.
+1. Kaynak Yöneticisi şablonunu kullanarak VM'yi dağıtmak için aşağıdaki komutları çalıştırın.
    > [!NOTE]
-   > Var olan bir VM 'yi güncelleştirmek isterseniz, aşağıdaki komutun sonuna kadar *artımlı bir mod* eklemeniz yeterlidir.
+   > Varolan bir VM'yi güncelleştirmek istiyorsanız, aşağıdaki komutun sonuna *-Mod Artımlı'yı* eklemeniz yeterlidir.
 
    ```powershell
    New-AzResourceGroupDeployment -Name "<NameThisDeployment>" -ResourceGroupName "<Name of the Resource Group>" -TemplateFile "<File path of your Resource Manager template>" -TemplateParameterFile "<File path of your parameters file>"
    ```
 
-1. Dağıtımınız başarılı olduktan sonra, sanal makinenin Azure portal olması gerekir ve ölçümleri Azure Izleyici 'ye yayın.
+1. Dağıtımınız başarılı olduktan sonra, VM Azure portalında olmalı ve Azure Monitor'a ölçümler yayMalıdır.
 
    > [!NOTE]
-   > Seçili vmSkuSize etrafında hatalarla karşılaşabilirsiniz. Bu durumda, azuredeploy. JSON dosyanıza dönün ve vmSkuSize parametresinin varsayılan değerini güncelleştirin. Bu durumda, "Standard_DS1_v2" seçeneğini denemeyi öneririz.
+   > Seçili vmSkuSize etrafında hatalarla karşınıza çıkabilir. Bu durumda azuredeploy.json dosyanıza geri dön ve vmSkuSize parametresinin varsayılan değerini güncelleştirin. Bu durumda, "Standard_DS1_v2" denemenizi öneririz.
 
-## <a name="chart-your-metrics"></a>Ölçümlerinizi grafik yapın
+## <a name="chart-your-metrics"></a>Ölçümlerinizi grafik
 
 1. Azure portalında oturum açın.
 
-2. Sol taraftaki menüden **izleyici**' yi seçin.
+2. Sol menüde **Monitör'ü**seçin.
 
-3. Izleyici sayfasında **ölçümler**' i seçin.
+3. Monitör **sayfasında, Ölçümler'i**seçin.
 
    ![Ölçümler sayfası](media/collect-custom-metrics-guestos-resource-manager-vm/metrics.png)
 
-4. Toplama süresini **son 30 dakika**olarak değiştirin.
+4. Toplama süresini **Son 30 dakika**olarak değiştirin.
 
-5. Kaynak açılan menüsünde, oluşturduğunuz VM 'yi seçin. Şablonda adı değiştirmediyseniz, *SimpleWinVM2*olması gerekir.
+5. Kaynak açılır menüsünde, oluşturduğunuz VM'yi seçin. Şablondaki adı değiştirmediyseniz, *SimpleWinVM2*olmalıdır.
 
-6. Ad alanları açılan menüsünde **Azure. VM. Windows. Guest** ' i seçin.
+6. Ad boşlukları açılır menüsünde **azure.vm.windows.guest'i** seçin
 
-7. Ölçümler açılan menüsünde **bellek\%kaydedilmiş bayt kullanımda**' yı seçin.
+7. Ölçümler açılır menüsünde, **Kullanımda\%Memory Committed Bytes'ı**seçin.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

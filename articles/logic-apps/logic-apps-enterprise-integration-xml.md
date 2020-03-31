@@ -1,6 +1,6 @@
 ---
 title: XML iletileri ve düz dosyalar
-description: Enterprise Integration Pack ile Azure Logic Apps XML iletilerini işleme, doğrulama ve dönüştürme
+description: Kurumsal Tümleştirme Paketi ile Azure Mantıksal Uygulamalarında XML mesajlarını işleme, doğrulama ve dönüştürme
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
@@ -9,32 +9,32 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/27/2017
 ms.openlocfilehash: 3cb3472572abbd891f8d36ea036b371c1224f38c
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74792140"
 ---
-# <a name="xml-messages-and-flat-files-in-azure-logic-apps-with-enterprise-integration-pack"></a>Enterprise Integration Pack ile Azure Logic Apps içindeki XML iletileri ve düz dosyalar
+# <a name="xml-messages-and-flat-files-in-azure-logic-apps-with-enterprise-integration-pack"></a>Kurumsal Tümleştirme Paketi ile Azure Logic Apps'ta XML mesajları ve düz dosyalar
 
-[Azure Logic Apps](logic-apps-overview.md), Enterprise Integration Pack kullanarak gönderme ve alma yaptığınız xml iletilerini işleyebilirsiniz. BizTalk Server kullandıysanız, Enterprise Integration Pack iletileri dönüştürmek ve doğrulamak, düz dosyalarla çalışmak ve hatta belirli özellikleri bir iletiden zenginleştirmek veya ayıklamak için XPath 'i kullanmak için benzer özellikler sağlar. Bu alana yeni başladıysanız, bu özellikler mantıksal uygulamanızın iş akışındaki iletileri nasıl işleyeceğini genişletir. Örneğin, işletmeden işletmeye (B2B) senaryonuz varsa ve belirli XML şemalarıyla çalışıyorsanız, şirketinizin bu iletileri nasıl işleceğini geliştirmek için Enterprise Integration Pack kullanabilirsiniz.
+[Azure Logic Apps'ta,](logic-apps-overview.md)Kurumsal Tümleştirme Paketi'ni kullanarak gönderdiğiniz ve aldığınız XML iletilerini işleyebilirsiniz. BizTalk Server'ı kullandıysanız, Kurumsal Tümleştirme Paketi iletileri dönüştürmek ve doğrulamak, düz dosyalarla çalışmak ve hatta bir iletideki belirli özellikleri zenginleştirmek veya ayıklamak için XPath'i kullanmak için benzer özellikler sağlar. Bu alanda yeniyseniz, bu özellikler mantık uygulamanızın iş akışındaki iletileri işleme şeklinizi genişletir. Örneğin, bir işletmeden işletmeye (B2B) senaryonuz varsa ve belirli XML şemalarıyla çalışıyorsanız, şirketinizin bu iletileri nasıl işlediğini geliştirmek için Kurumsal Tümleştirme Paketini kullanabilirsiniz.
 
-Örneğin, Enterprise Integration Pack şu özellikleri içerir:
+Örneğin, Kurumsal Tümleştirme Paketi şu özellikleri içerir:
 
-* [XML doğrulaması](logic-apps-enterprise-integration-xml-validation.md): belirli bir şemaya karşı gelen veya gıden bir XML iletisini doğrulayın.
+* [XML doğrulama](logic-apps-enterprise-integration-xml-validation.md): Gelen veya giden bir XML iletisi belirli bir şemaya karşı doğrulayın.
 
-* [XML Transform](logic-apps-enterprise-integration-transform.md): Haritalar kullanarak bir iş ortağının gereksinimlerine veya gereksinimlerinize göre bir XML iletisini dönüştürün veya özelleştirin.
+* [XML dönüşümü](logic-apps-enterprise-integration-transform.md): Haritaları kullanarak gereksinimlerinize veya bir ortağın gereksinimlerine göre bir XML iletisini dönüştürün veya özelleştirin.
 
-* [Düz dosya kodlama ve düz dosya kod çözme](logic-apps-enterprise-integration-flatfile.md): düz bir dosyayı kodla veya kodunu çözün.
+* [Düz dosya kodlama ve düz dosya çözme](logic-apps-enterprise-integration-flatfile.md): Düz bir dosyayı kodlama veya çözme.
 
-  Örneğin SAP, ıDOC dosyalarını düz dosya biçiminde kabul eder ve gönderir. Birçok tümleştirme platformu, Logic Apps dahil olmak üzere XML iletileri oluşturur. Bu nedenle, düz dosya kodlayıcısını kullanarak "XML dosyalarını düz dosyalara" dönüştürmek için bir mantıksal uygulama oluşturabilirsiniz.
+  Örneğin, SAP IDOC dosyalarını düz dosya biçiminde kabul eder ve gönderir. Birçok tümleştirme platformu, Logic Apps da dahil olmak üzere XML iletileri oluşturur. Böylece, XML dosyalarını düz dosyalara "dönüştürmek" için düz dosya kodlayıcısını kullanan bir mantık uygulaması oluşturabilirsiniz.
 
-* [XPath](workflow-definition-language-functions-reference.md#xpath): bir iletiyi zenginleştirin ve iletiden belirli özellikleri ayıklayın. Sonra, iletiyi bir hedefe veya bir ara uç noktasına yönlendirmek için ayıklanan özellikleri kullanabilirsiniz.
+* [XPath](workflow-definition-language-functions-reference.md#xpath): İletiyi zenginleştirin ve iletiden belirli özellikleri ayıklayın. Daha sonra, iletiyi bir hedefe veya ara bitiş noktasına yönlendirmek için ayıklanan özellikleri kullanabilirsiniz.
 
 ## <a name="sample"></a>Örnek
 
-Azure Logic Apps içindeki XML özelliklerini kullanarak [tam işletimsel mantıksal uygulama](https://github.com/Azure/azure-quickstart-templates/tree/master/201-logic-app-veter-pipeline) (GitHub örneği) dağıtın.
+Azure [Logic Apps'taki](https://github.com/Azure/azure-quickstart-templates/tree/master/201-logic-app-veter-pipeline) XML özelliklerini kullanarak tam işlevsel bir mantık uygulaması (GitHub örneği) dağıtın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md) hakkında daha fazla bilgi edinin
+Kurumsal Entegrasyon [Paketi](logic-apps-enterprise-integration-overview.md) hakkında daha fazla bilgi edinin
