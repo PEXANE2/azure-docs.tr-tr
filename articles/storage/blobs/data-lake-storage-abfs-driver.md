@@ -1,6 +1,6 @@
 ---
-title: Azure Data Lake Storage 2. için Azure blob dosya sistemi sürücüsü
-description: ABFS Hadoop dosya sistemi sürücüsü
+title: Azure Veri Gölü Depolama Gen2 için Azure Blob Dosya Sistemi sürücüsü
+description: ABFS Hadoop Filesystem sürücüsü
 author: normesta
 ms.topic: conceptual
 ms.author: normesta
@@ -9,29 +9,29 @@ ms.date: 12/06/2018
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.openlocfilehash: 3db039d39ef532ea51143dc9cbdb6bd5f29d6225
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75970269"
 ---
-# <a name="the-azure-blob-filesystem-driver-abfs-a-dedicated-azure-storage-driver-for-hadoop"></a>Azure blob dosya sistemi sürücüsü (ABFS): Hadoop için adanmış bir Azure depolama sürücüsü
+# <a name="the-azure-blob-filesystem-driver-abfs-a-dedicated-azure-storage-driver-for-hadoop"></a>Azure Blob Filesystem sürücüsü (ABFS): Hadoop için özel bir Azure Depolama sürücüsü
 
-Azure Data Lake Storage 2. veri için birincil erişim yöntemlerinden biri [Hadoop FileSystem](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/index.html)'ı aracılığıyla yapılır. Data Lake Storage 2., Azure Blob depolama 'ya yönelik kullanıcıların yeni bir sürücüye, Azure blob dosya sistemi sürücüsüne veya `ABFS`erişmesini sağlar. ABFS Apache Hadoop bir parçasıdır ve Hadoop 'un birçok ticari dağılımlarına dahil edilmiştir. Bu sürücüyü kullanarak, birçok uygulama ve çerçeve Data Lake Storage 2. açıkça başvuran hiçbir kod olmadan Azure Blob depolama alanındaki verilere erişebilir.
+Azure Veri Gölü Depolama Gen2'deki veriler için birincil erişim yöntemlerinden biri [Hadoop FileSystem'dir.](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/index.html) Data Lake Storage Gen2, Azure Blob Depolama kullanıcılarının yeni bir sürücüye, Azure Blob Dosya Sistemi sürücüsüne veya `ABFS`. ABFS, Apache Hadoop'un bir parçasıdır ve Hadoop'un ticari dağıtımlarının çoğunda yer alan bir dizi reklamda yer alan bir dizi şirkettir. Bu sürücüyü kullanarak, birçok uygulama ve çerçeve, Veri Gölü Depolama Gen2'ye açıkça atıfta bulunan herhangi bir kod olmadan Azure Blob Depolama'daki verilere erişebilir.
 
-## <a name="prior-capability-the-windows-azure-storage-blob-driver"></a>Önceki Özellik: Windows Azure Depolama Blobu sürücüsü
+## <a name="prior-capability-the-windows-azure-storage-blob-driver"></a>Önceki özellik: Windows Azure Depolama Blob sürücüsü
 
-Windows Azure Depolama Blobu sürücüsü veya [Lıbb sürücüsü](https://hadoop.apache.org/docs/current/hadoop-azure/index.html) , Azure Blob depolama için özgün desteği sağladı. Bu sürücü, Azure Blob depolama tarafından sunulan nesne deposu stil arabirimine dosya sistemi semantiğinin (Hadoop dosya arabirimi için gerekli olduğu gibi) eşlenmesinin karmaşık görevini gerçekleştirdi. Bu sürücü, bloblarda depolanan verilere yüksek performans erişimi sağlamak için bu modeli desteklemeye devam eder, ancak bu eşlemeyi gerçekleştiren önemli miktarda kod içerir ve devam etmek zordur. Ayrıca, dizinlere uygulandığında [FileSystem. Rename ()](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/filesystem.html#boolean_renamePath_src_Path_d) ve [FileSystem. Delete ()](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/filesystem.html#boolean_deletePath_p_boolean_recursive) gibi bazı işlemler, sürücünün çok sayıda işlemi gerçekleştirmesini gerektirir (nesne, Dizin desteğinin olmamasından kaynaklanır) ve genellikle performansın düşmesine neden olur. ABFS sürücüsü, IDB 'nin devralınan eksiklerini aşmak için tasarlandı.
+Windows Azure Depolama Blob sürücüsü veya [WASB sürücüsü](https://hadoop.apache.org/docs/current/hadoop-azure/index.html) Azure Blob Depolama için özgün desteği sağladı. Bu sürücü, dosya sistemi semantiklerini (Hadoop FileSystem arabirimi nin gerektirdiği şekilde) Azure Blob Depolama tarafından açığa çıkarılan nesne deposu stili arabirimininkiyle eşleme karmaşık görevini yerine getirir. Bu sürücü, blobs depolanan verilere yüksek performanslı erişim sağlayarak bu modeli desteklemeye devam eder, ancak bu eşlemi gerçekleştiren kod önemli miktarda içerir, bu da bakımı zor hale. Ayrıca, [filesystem.rename()](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/filesystem.html#boolean_renamePath_src_Path_d) ve [FileSystem.delete()](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/filesystem.html#boolean_deletePath_p_boolean_recursive) dizinlere uygulandığında bazı işlemler, sürücünün çok sayıda işlem gerçekleştirmesini gerektirir (nesne depolarının dizinler için destek eksikliği nedeniyle) genellikle performansın düşmesine neden olur. ABFS sürücüsü WASB'ın doğal eksikliklerini gidermek için tasarlanmıştır.
 
-## <a name="the-azure-blob-file-system-driver"></a>Azure blob dosya sistemi sürücüsü
+## <a name="the-azure-blob-file-system-driver"></a>Azure Blob Dosya Sistemi sürücüsü
 
-[Azure Data Lake Storage Rest arabirimi](https://docs.microsoft.com/rest/api/storageservices/data-lake-storage-gen2) , Azure Blob depolama üzerinden dosya sistemi semantiğini destekleyecek şekilde tasarlanmıştır. Hadoop FileSystem aynı semantiğini desteklemek için de tasarlandığına göre, sürücüde karmaşık bir eşleme gereksinimi yoktur. Bu nedenle, Azure blob dosya sistemi sürücüsü (veya ABFS) REST API için bir boyutundaydı istemci Shim idir.
+[Azure Veri Gölü Depolama REST arabirimi,](https://docs.microsoft.com/rest/api/storageservices/data-lake-storage-gen2) Azure Blob Depolama üzerinden dosya sistemi semantikini desteklemek üzere tasarlanmıştır. Hadoop FileSystem da aynı semantik desteklemek için tasarlanmış olduğu göz önüne alındığında sürücü karmaşık bir haritalama için bir gereklilik yoktur. Bu nedenle, Azure Blob Dosya Sistemi sürücüsü (veya ABFS), REST API için yalnızca bir istemci şim'dir.
 
-Ancak, sürücünün hala gerçekleştirmesi gereken bazı işlevler vardır:
+Ancak, sürücünün yine de gerçekleştirmesi gereken bazı işlevler vardır:
 
-### <a name="uri-scheme-to-reference-data"></a>Başvuru verilerine URI şeması
+### <a name="uri-scheme-to-reference-data"></a>Uri şeması veri referans
 
-Hadoop içindeki diğer dosya sistemi uygulamalarıyla tutarlı olduğunda, ABFS sürücüsü kaynakların (dizinlerin ve dosyaların) tutarlı bir şekilde giderilmesi için kendi URI düzenini tanımlar. URI şeması [Azure Data Lake Storage 2. URI 'Sini kullanın](./data-lake-storage-introduction-abfs-uri.md). URI yapısı: `abfs[s]://file_system@account_name.dfs.core.windows.net/<path>/<path>/<file_name>`
+Hadoop'taki diğer FileSystem uygulamalarıyla tutarlı olarak, ABFS sürücüsü kendi URI düzenini tanımlar, böylece kaynaklar (dizinler ve dosyalar) belirgin bir şekilde ele alınabilir. URI şeması [Azure Veri Gölü Depolama Gen2 URI'yi kullanın'da](./data-lake-storage-introduction-abfs-uri.md)belgelenmiştir. URI'nin yapısı:`abfs[s]://file_system@account_name.dfs.core.windows.net/<path>/<path>/<file_name>`
 
 Yukarıdaki URI biçimini kullanarak, standart Hadoop araçları ve çerçeveleri bu kaynaklara başvurmak için kullanılabilir:
 
@@ -40,30 +40,30 @@ hdfs dfs -mkdir -p abfs://fileanalysis@myanalytics.dfs.core.windows.net/tutorial
 hdfs dfs -put flight_delays.csv abfs://fileanalysis@myanalytics.dfs.core.windows.net/tutorials/flightdelays/data/
 ```
 
-Dahili olarak, ABFS sürücüsü URI 'de belirtilen kaynakları dosya ve dizinlere çevirir ve bu başvurularla Azure Data Lake Storage REST API çağrıları yapar.
+Dahili olarak, ABFS sürücüsü URI'de belirtilen kaynak(lar)ı dosyalara ve dizinlere çevirir ve bu referanslarla Azure Veri Gölü Depolama REST API'sine çağrı yapar.
 
-### <a name="authentication"></a>Kimlik Doğrulaması
+### <a name="authentication"></a>Kimlik doğrulaması
 
-ABFS sürücüsü, Hadoop uygulamasının Data Lake Storage 2. özellikli bir hesapta bulunan kaynaklara güvenli bir şekilde erişebilmesi için iki kimlik doğrulama biçimini destekler. Kullanılabilir kimlik doğrulama düzenlerinin tam ayrıntıları, [Azure Depolama Güvenliği Kılavuzu](security-recommendations.md)'nda verilmiştir. Bunlar:
+ABFS sürücüsü, Hadoop uygulamasının Veri Gölü Depolama Gen2 özellikli bir hesapta bulunan kaynaklara güvenli bir şekilde erişebilmesi için iki kimlik doğrulama biçimini destekler. Kullanılabilir kimlik doğrulama şemalarının tüm ayrıntıları [Azure Depolama güvenlik kılavuzunda](security-recommendations.md)verilmiştir. Bunlar:
 
-- **Paylaşılan anahtar:** Bu, kullanıcıların hesaptaki tüm kaynaklara erişmesine izin verir. Anahtar şifrelenir ve Hadoop yapılandırmasında depolanır.
+- **Paylaşılan Anahtar:** Bu, kullanıcıların hesaptaki TÜM kaynaklara erişmelerine izin verir. Anahtar şifrelenir ve Hadoop yapılandırmasında saklanır.
 
-- **Azure Active Directory OAuth taşıyıcı belirteci:** Azure AD taşıyıcı belirteçleri, son kullanıcının kimliği veya yapılandırılmış bir hizmet sorumlusu kullanılarak sürücü tarafından alınır ve yenilenir. Bu kimlik doğrulama modelini kullanarak tüm erişim, sağlanan belirteçle ilişkilendirilen kimlik kullanılarak çağrı başına ve atanan POSIX Access Control listesi (ACL) ile değerlendirilir.
+- **Azure Etkin Dizin OAuth Taşıyıcı Belirteci:** Azure AD taşıyıcı belirteçleri, son kullanıcının veya yapılandırılmış Hizmet Sorumlusunun kimliği kullanılarak sürücü tarafından elde edilir ve yenilenir. Bu kimlik doğrulama modeli kullanılarak, tüm erişim, sağlanan belirteçile ilişkili kimlik kullanılarak her çağrı başına yetkilendirilir ve atanan POSIX Erişim Kontrol Listesi (ACL) karşısında değerlendirilir.
 
    > [!NOTE]
-   > Azure Data Lake Storage 2. yalnızca Azure AD v 1.0 uç noktalarını destekler.
+   > Azure Veri Gölü Depolama Gen2 yalnızca Azure AD v1.0 uç noktalarını destekler.
 
 ### <a name="configuration"></a>Yapılandırma
 
-ABFS sürücüsüne yönelik tüm yapılandırma <code>core-site.xml</code> yapılandırma dosyasında depolanır. [Ambarı](https://ambari.apache.org/)sağlayan Hadoop dağıtımları üzerinde, yapılandırma ayrıca Web portalı veya ambarı REST API kullanılarak yönetilebilir.
+ABFS sürücüsü için tüm yapılandırma <code>core-site.xml</code> yapılandırma dosyasında depolanır. [Ambari](https://ambari.apache.org/)içeren Hadoop dağıtımlarında, yapılandırma web portalı veya Ambari REST API kullanılarak da yönetilebilir.
 
-Desteklenen tüm yapılandırma girişlerinin ayrıntıları [resmi Hadoop belgelerinde](https://hadoop.apache.org/docs/stable/hadoop-azure/abfs.html)belirtilmiştir.
+Desteklenen tüm yapılandırma girişlerinin ayrıntıları [Resmi Hadoop belgelerinde](https://hadoop.apache.org/docs/stable/hadoop-azure/abfs.html)belirtilir.
 
 ### <a name="hadoop-documentation"></a>Hadoop belgeleri
 
-ABFS sürücüsü [resmi Hadoop belgelerinde](https://hadoop.apache.org/docs/stable/hadoop-azure/abfs.html) tam olarak belgelenmiştir
+ABFS sürücüsü, [Resmi Hadoop belgelerinde](https://hadoop.apache.org/docs/stable/hadoop-azure/abfs.html) tam olarak belgelenmiştir
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure Databricks kümesi oluşturma](./data-lake-storage-quickstart-create-databricks-account.md)
+- [Azure Veri Tuğlaları Kümesi Oluşturma](./data-lake-storage-quickstart-create-databricks-account.md)
 - [Azure Data Lake Storage 2. Nesil URI'sini kullanma](./data-lake-storage-introduction-abfs-uri.md)

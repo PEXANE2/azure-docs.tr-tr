@@ -1,6 +1,6 @@
 ---
-title: 'Hızlı başlangıç: Azure CLı ile Apache Spark kümeleri-Azure HDInsight'
-description: Bu hızlı başlangıçta, Azure HDInsight 'ta Apache Spark kümesi oluşturmak için Azure CLı 'nin nasıl kullanılacağı gösterilmektedir.
+title: 'Hızlı başlangıç: Azure CLI ile Apache Spark kümeleri - Azure HDInsight'
+description: Bu hızlı başlangıç, Azure HDInsight'ta Bir Apache Spark kümesi oluşturmak için Azure CLI'nin nasıl kullanılacağını gösterir.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,26 +8,26 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.date: 02/03/2020
 ms.openlocfilehash: e4679d5a04be7b8c0145fd93818e4187170b4194
-ms.sourcegitcommit: 57669c5ae1abdb6bac3b1e816ea822e3dbf5b3e1
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/06/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "77049674"
 ---
-# <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-azure-cli"></a>Hızlı başlangıç: Azure CLı kullanarak Azure HDInsight 'ta Apache Spark kümesi oluşturma
+# <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-azure-cli"></a>Hızlı başlangıç: Azure CLI'yi kullanarak Azure HDInsight'ta Apache Spark kümesi oluşturma
 
-Bu hızlı başlangıçta Azure komut satırı arabirimi 'ni (CLı) kullanarak Azure HDInsight 'ta Apache Spark kümesi oluşturmayı öğreneceksiniz. Azure HDInsight kuruluşlara yönelik, yönetilen, tam spektrumlu ve açık kaynaklı bir analiz hizmetidir. HDInsight için Apache Spark Framework, bellek içi işleme kullanarak hızlı veri analizi ve küme bilgi işlem desteği sunar. Azure CLI, Azure kaynaklarını yönetmek için Microsoft tarafından sunulan platformlar arası komut satırı deneyimidir.
+Bu hızlı başlangıçta, Azure komut satırı arabirimini (CLI) kullanarak Azure HDInsight'ta Apache Spark kümesioluşturmayı öğrenirsiniz. Azure HDInsight kuruluşlara yönelik, yönetilen, tam spektrumlu ve açık kaynaklı bir analiz hizmetidir. HDInsight için Apache Spark çerçevesi, bellek içi işleme yi kullanarak hızlı veri analitiği ve küme hesaplaması sağlar. Azure CLI, Azure kaynaklarını yönetmek için Microsoft tarafından sunulan platformlar arası komut satırı deneyimidir.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-- Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- Azure Cloud Shell kullanmak istemiyorsanız [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
+- Etkin bir aboneliği olan bir Azure hesabı. [Ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
+- [Azure CLI,](https://docs.microsoft.com/cli/azure/install-azure-cli)Azure Bulut Uyp'ı kullanmak istemiyorsanız.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-an-apache-spark-cluster"></a>Apache Spark kümesi oluşturma
 
-1. Azure aboneliğinizde oturum açın. Azure Cloud Shell kullanmayı planlıyorsanız, aşağıdaki kod bloğunun sağ üst köşesinde bulunan **bunu dene** ' yi seçin. Aksi takdirde, aşağıdaki komutu girin:
+1. Azure aboneliğinizde oturum açın. Azure Bulut Su Şurası'nı kullanmayı planlıyorsanız, aşağıdaki kod bloğunun sağ üst köşesinde **deneyin'i** seçin. Else, aşağıdaki komutu girin:
 
     ```azurecli-interactive
     az login
@@ -36,7 +36,7 @@ Bu hızlı başlangıçta Azure komut satırı arabirimi 'ni (CLı) kullanarak A
     # az account set --subscription "SUBSCRIPTIONID"
     ```
 
-2. Ortam değişkenlerini ayarlayın. Bu hızlı başlangıçta değişkenlerin kullanımı Bash 'i temel alır. Diğer ortamlar için hafif Çeşitlemeler gerekecektir. Aşağıdaki kod parçacığındaki RESOURCEGROUPNAME, LOCATION, CLUSTERNAME, STORAGEACCOUNTNAME ve PASSWORD değerlerini istenen değerlerle değiştirin. Ardından, ortam değişkenlerini ayarlamak için CLı komutlarını girin.
+2. Ortam değişkenlerini ayarlayın. Bu hızlı başlatmada değişkenlerin kullanımı Bash'e dayanır. Diğer ortamlar için küçük varyasyonlar gerekecektir. Aşağıdaki kod snippetinde KAYNAKGROUPNAME, YER, KÜME ADI, STORAGEACCOUNTNAME ve PASSWORD'i istenilen değerlerle değiştirin. Ardından ortam değişkenlerini ayarlamak için CLI komutlarını girin.
 
     ```azurecli-interactive
     export resourceGroupName=RESOURCEGROUPNAME
@@ -53,7 +53,7 @@ Bu hızlı başlangıçta Azure komut satırı arabirimi 'ni (CLı) kullanarak A
     export componentVersion=Spark=2.3
     ```
 
-3. Aşağıdaki komutu girerek kaynak grubunu oluşturun:
+3. Aşağıdaki komutu girerek kaynak grubu oluşturun:
 
     ```azurecli-interactive
     az group create \
@@ -73,7 +73,7 @@ Bu hızlı başlangıçta Azure komut satırı arabirimi 'ni (CLı) kullanarak A
         --sku Standard_LRS
     ```
 
-5. Azure Storage hesabından birincil anahtarı ayıklayın ve aşağıdaki komutu girerek bir değişkende saklayın:
+5. Birincil anahtarı Azure depolama hesabından çıkarın ve aşağıdaki komutu girerek bir değişkende saklayın:
 
     ```azurecli-interactive
     export AZURE_STORAGE_KEY=$(az storage account keys list \
@@ -113,9 +113,9 @@ Bu hızlı başlangıçta Azure komut satırı arabirimi 'ni (CLı) kullanarak A
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Hızlı başlangıcı tamamladıktan sonra kümeyi silmek isteyebilirsiniz. HDInsight ile Verileriniz Azure Storage 'da depolanır, bu sayede bir kümeyi kullanımda olmadığında güvenle silebilirsiniz. Ayrıca, kullanımda olmasa bile bir HDInsight kümesi için de ücretlendirilirsiniz. Kümenin ücretleri depolama ücretinden çok daha fazla olduğundan, kullanımda olmadıkları zaman kümeleri silmek ekonomik bir anlam sağlar.
+Hızlı başlatmayı tamamladıktan sonra, kümeyi silmek isteyebilirsiniz. HDInsight ile verileriniz Azure Depolama'da depolanır, böylece kullanılmadığında bir kümeyi güvenle silebilirsiniz. Kullanılmamış olsa bile bir HDInsight kümesi için de ücretlendirilirsiniz. Küme ücretleri depolama ücretlerinden kat kat daha fazla olduğundan, kümeleri kullanılmadıklarında silmek ekonomik açıdan mantıklıdır.
 
-Kaynakları kaldırmak için aşağıdaki komutlardan tümünü veya bazılarını girin:
+Kaynakları kaldırmak için aşağıdaki komutların tümlerini veya bazılarını girin:
 
 ```azurecli-interactive
 # Remove cluster
@@ -140,7 +140,7 @@ az group delete \
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta Azure CLı kullanarak Azure HDInsight 'ta Apache Spark kümesi oluşturmayı öğrendiniz.  Örnek verilerde etkileşimli sorgular çalıştırmak için bir HDInsight kümesi kullanmayı öğrenmek üzere bir sonraki öğreticiye ilerleyin.
+Bu hızlı başlangıçta, Azure CLI'yi kullanarak Azure HDInsight'ta Bir Apache Spark kümesi oluşturmayı öğrendiniz.  Örnek verilerüzerinde etkileşimli sorguları çalıştırmak için HDInsight kümesini nasıl kullanacağınızı öğrenmek için bir sonraki öğreticiye ilerleyin.
 
 > [!div class="nextstepaction"]
-> [Apache Spark etkileşimli sorgular çalıştırma](./apache-spark-load-data-run-query.md)
+> [Apache Spark'ta etkileşimli sorgular çalıştırma](./apache-spark-load-data-run-query.md)

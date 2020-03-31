@@ -1,7 +1,7 @@
 ---
-title: Azure Active Directory B2CLearn ile MSAL kullanma | Mavisi
+title: Azure Active Directory B2CLearn ile MSAL'ı Kullanın | Azure
 titleSuffix: Microsoft identity platform
-description: Microsoft kimlik doğrulama kitaplığı (MSAL), uygulamaların, güvenli Web API 'Lerini çağırmak için Azure AD B2C birlikte çalışabilmesine ve belirteçleri almasına olanak sağlar. Bu Web API 'Leri Microsoft Graph, diğer Microsoft API 'Leri, başkalarından Web API 'Leri veya kendi Web API 'niz olabilir.
+description: Microsoft Kimlik Doğrulama Kitaplığı (MSAL), uygulamaların Azure AD B2C ile birlikte çalışmasını ve güvenli Web API'lerini aramak için belirteçler edinmesini sağlar. Bu web API'leri Microsoft Graph, diğer Microsoft API'leri, başkalarından gelen web API'leri veya kendi web API'niz olabilir.
 services: active-directory
 author: negoe
 manager: CelesteDG
@@ -14,45 +14,45 @@ ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev
 ms.openlocfilehash: e25564e64410701754390024a5bcfd39321343e2
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76696461"
 ---
-# <a name="use-microsoft-authentication-library-to-interoperate-with-azure-active-directory-b2c"></a>Azure Active Directory B2C ile birlikte çalışmak için Microsoft kimlik doğrulama kitaplığı 'nı kullanın
+# <a name="use-microsoft-authentication-library-to-interoperate-with-azure-active-directory-b2c"></a>Azure Active Directory B2C ile birlikte çalışmak için Microsoft Kimlik Doğrulama Kitaplığını kullanma
 
-Microsoft kimlik doğrulama kitaplığı (MSAL), uygulama geliştiricilerinin [Azure Active Directory B2C (Azure AD B2C)](https://docs.microsoft.com/azure/active-directory-b2c/)kullanarak sosyal ve yerel kimliklere sahip kullanıcıların kimliğini doğrulamasını sağlar. Azure AD B2C bir kimlik yönetimi hizmetidir. Bu uygulamayı kullanarak, uygulamalarınızı kullandıklarında müşterilerin nasıl kaydolup oturum açmasını ve profillerini nasıl yönetebileceğinizi denetleyebilir.
+Microsoft Kimlik Doğrulama Kitaplığı (MSAL), uygulama geliştiricilerin [Azure Active Directory B2C (Azure AD B2C)](https://docs.microsoft.com/azure/active-directory-b2c/)kullanarak kullanıcıların sosyal ve yerel kimliklerini doğrulamalarını sağlar. Azure AD B2C bir kimlik yönetimi hizmetidir. Bunu kullanarak, müşterilerin uygulamalarınızı kullanırken profillerini nasıl kaydolduklarını, kaydolabileceğini ve yönetebileceğini özelleştirebilir ve denetleyebilirsiniz.
 
-Azure AD B2C Ayrıca, müşterilerinize sorunsuz bir deneyim sunmak için uygulamalarınızın Kullanıcı arabirimini markalamanıza ve özelleştirmenize olanak sağlar.
+Azure AD B2C, müşterilerinize sorunsuz bir deneyim sunmak için uygulamalarınızın kullanıcı arabirimi'ni markalamanızı ve özelleştirmenizi de sağlar.
 
-Bu öğreticide, Azure AD B2C ile birlikte çalışmak için MSAL kullanımı gösterilmektedir.
+Bu öğretici, Azure AD B2C ile birlikte çalışmak için MSAL'ın nasıl kullanılacağını gösterir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Kendi [Azure AD B2C kiracınızı](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant)önceden oluşturmadıysanız, şimdi bir tane oluşturun. Ayrıca, mevcut bir Azure AD B2C kiracısını de kullanabilirsiniz.
+Kendi [Azure AD B2C kiracınızı](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant)henüz oluşturmadıysanız, şimdi bir tane oluşturun. Ayrıca varolan bir Azure AD B2C kiracısı da kullanabilirsiniz.
 
 ## <a name="javascript"></a>JavaScript
 
-Aşağıdaki adımlarda, tek sayfalı bir uygulamanın, oturum açmak, oturum açmak ve korumalı bir Web API 'SI çağırmak için Azure AD B2C nasıl kullanabileceği gösterilmektedir.
+Aşağıdaki adımlar, tek sayfalı bir uygulamanın kaydolmak, oturum açmak ve korumalı web API'sini aramak için Azure AD B2C'yi nasıl kullanabileceğini gösterir.
 
-### <a name="step-1-register-your-application"></a>1\. Adım: Uygulamanızı kaydetme
+### <a name="step-1-register-your-application"></a>1. Adım: Uygulamanızı kaydetme
 
-Kimlik doğrulaması uygulamak için öncelikle uygulamanızı kaydetmeniz gerekir. Bkz. ayrıntılı adımlar için [Uygulamanızı kaydetme](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp#step-4-register-your-own-web-application-with-azure-ad-b2c) .
+Kimlik doğrulamasını uygulamak için öncelikle uygulamanızı kaydetmeniz gerekir. Bkz. Ayrıntılı adımlar için [başvurunuzu kaydedin.](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp#step-4-register-your-own-web-application-with-azure-ad-b2c)
 
-### <a name="step-2-download-the-sample-application"></a>2\. Adım: örnek uygulamayı Indirme
+### <a name="step-2-download-the-sample-application"></a>Adım 2: Örnek uygulamayı indirin
 
-Örneği bir zip dosyası olarak indirin veya GitHub 'dan kopyalayın:
+Örneği zip dosyası olarak indirin veya GitHub'dan klonla:
 
 ```
 git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp.git
 ```
 
-### <a name="step-3-configure-authentication"></a>3\. Adım: kimlik doğrulamasını yapılandırma
+### <a name="step-3-configure-authentication"></a>Adım 3: Kimlik doğrulamasını yapılandırma
 
-1. Örnekteki **index. html** dosyasını açın.
+1. Örnekteki **index.html** dosyasını açın.
 
-1. Uygulamanızı kaydederken daha önce kaydettiğiniz istemci KIMLIĞI ve anahtarı ile örneği yapılandırın. Aşağıdaki kod satırlarını, değerlerini dizininizin ve API 'lerinizin adlarıyla değiştirerek değiştirin:
+1. Uygulamanızı kaydederken örneği daha önce kaydettiğiniz istemci kimliği ve anahtarla yapılandırın. Değerleri dizininizin ve API'lerin adlarıyla değiştirerek aşağıdaki kod satırlarını değiştirin:
 
    ```javascript
    // The current application coordinates were pre-registered in a B2C tenant.
@@ -78,22 +78,22 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-
 
    ```
 
-Bu öğreticideki [Kullanıcı akışının](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-policies) adı **B2C_1_signupsignin1**. Farklı bir Kullanıcı akış adı kullanıyorsanız, **yetkili** değerini bu ad olarak ayarlayın.
+Bu öğreticide [kullanıcı akışının](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-policies) adı **B2C_1_signupsignin1.** Farklı bir kullanıcı akışı adı kullanıyorsanız, **yetki** değerini bu ada ayarlayın.
 
-### <a name="step-4-configure-your-application-to-use-b2clogincom"></a>4\. Adım: Uygulamanızı kullanacak şekilde yapılandırma `b2clogin.com`
+### <a name="step-4-configure-your-application-to-use-b2clogincom"></a>Adım 4: Uygulamanızı kullanmak üzere yapılandırın`b2clogin.com`
 
-`b2clogin.com` yeniden yönlendirme URL 'SI olarak `login.microsoftonline.com` yerine kullanabilirsiniz. Kaydolma ve oturum açma için bir kimlik sağlayıcısı ayarlarken Azure AD B2C uygulamanızda bunu yapabilirsiniz.
+Yönlendirme `b2clogin.com` URL'si `login.microsoftonline.com` olarak yerine kullanabilirsiniz. Kaydolmak ve kaydolmak için bir kimlik sağlayıcısı ayarladığınızda Azure AD B2C uygulamanızda bunu yaparsınız.
 
-`https://your-tenant-name.b2clogin.com/your-tenant-guid` bağlamında `b2clogin.com` kullanımı aşağıdaki etkilere sahiptir:
+`b2clogin.com` Bağlamında kullanımı aşağıdaki `https://your-tenant-name.b2clogin.com/your-tenant-guid` etkilere sahiptir:
 
-- Microsoft Hizmetleri, tanımlama bilgisi üstbilgisinde daha az alan tüketir.
-- URL 'niz artık Microsoft 'a bir başvuru içermiyor. Örneğin, Azure AD B2C uygulamanız muhtemelen `login.microsoftonline.com`anlamına gelir.
+- Microsoft hizmetleri çerez üstbilgisinde daha az yer tüketir.
+- URL'leriniz artık Microsoft'a başvuruda bulunmaz. Örneğin, Azure AD B2C uygulamanız `login.microsoftonline.com`büyük olasılıkla .
 
- `b2clogin.com`kullanmak için uygulamanızın yapılandırmasını güncelleştirmeniz gerekir.  
+ Kullanmak `b2clogin.com`için, uygulamanızın yapılandırmasını güncelleştirmeniz gerekir.  
 
-- `b2clogin.com` kullanarak yeniden yönlendirmeler gerçekleşebilmesi için **Validateauthority** özelliğini `false`olarak ayarlayın.
+- **DoğrulamaYetkisi** özelliğini `false`, yeniden `b2clogin.com` yönlendirmelerin oluşabilmesi için ayarlayın.
 
-Aşağıdaki örnek, özelliği nasıl ayarlayabileceğini göstermektedir:
+Aşağıdaki örnek, özelliği nasıl ayarlayabileceğinizi gösterir:
 
 ```javascript
 // The current application coordinates were pre-registered in a B2C directory.
@@ -112,9 +112,9 @@ const myMSALObj = new UserAgentApplication(msalConfig);
 ```
 
 > [!NOTE]
-> Azure AD B2C uygulamanız muhtemelen Kullanıcı akışı başvuruları ve belirteç uç noktaları gibi birkaç yerde `login.microsoftonline.com` anlamına gelir. Yetkilendirme uç noktanızın, belirteç uç noktasının ve verenin `your-tenant-name.b2clogin.com`kullanacak şekilde güncelleştirildiğinden emin olun.
+> Azure AD B2C uygulamanız `login.microsoftonline.com` büyük olasılıkla kullanıcı akışı başvurularınız ve belirteç uç noktalarınız gibi çeşitli yerlerde başvurur. Yetkilendirme bitiş noktanızın, belirteç bitiş noktanızın ve vereninin kullanmak `your-tenant-name.b2clogin.com`üzere güncelleştirdiğinden emin olun.
 
-JavaScript (MSAL. js) için MSAL önizlemesini nasıl kullanacağınızı öğrenmek için [Bu msal JavaScript örneğini](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp#single-page-application-built-on-msaljs-with-azure-ad-b2c) izleyin. Örnek, bir erişim belirteci alır ve Azure AD B2C tarafından güvenliği sağlanmış bir API çağırır.
+JavaScript (MSAL.js) için MSAL Preview'un nasıl kullanılacağıyla ilgili [bu MSAL JavaScript örneğini](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp#single-page-application-built-on-msaljs-with-azure-ad-b2c) izleyin. Örnek bir erişim belirteci alır ve Azure AD B2C tarafından güvenli bir API çağırır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

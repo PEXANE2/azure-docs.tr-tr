@@ -1,31 +1,31 @@
 ---
-title: Redsıs için Azure önbelleği ile bir ASP.NET Web uygulaması oluşturma
-description: Bu hızlı başlangıçta, Redsıs için Azure önbelleği ile bir ASP.NET Web uygulaması oluşturmayı öğreneceksiniz.
+title: Redis için Azure Önbelleği ile ASP.NET bir web uygulaması oluşturun
+description: Bu hızlı başlangıçta, Redis için Azure Önbelleği ile ASP.NET bir web uygulaması oluşturmayı öğrenirsiniz
 author: yegu-ms
 ms.service: cache
 ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 3da1902906c4fb12bf5eef473ee39e721e4efe3a
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 155993bb3da781e698398ed8ddffa626e8f6cb2d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74927062"
 ---
-# <a name="quickstart-use-azure-cache-for-redis-with-an-aspnet-web-app"></a>Hızlı başlangıç: ASP.NET Web uygulamasıyla Redsıs için Azure önbelleğini kullanma 
+# <a name="quickstart-use-azure-cache-for-redis-with-an-aspnet-web-app"></a>Hızlı başlangıç: ASP.NET bir web uygulamasıyla Redis için Azure Önbelleğini kullanma 
 
-Bu hızlı başlangıçta, önbellekteki verileri depolamak ve almak üzere Redsıs için Azure önbelleğine bağlanan bir ASP.NET Web uygulaması oluşturmak için Visual Studio 2019 ' u kullanırsınız. Ardından uygulamayı Azure App Service ' ye dağıtırsınız.
+Bu hızlı başlangıçta, Visual Studio 2019'u kullanarak Redis'in önbellekten veri depolaması ve alması için Azure Önbelleğine bağlanan ASP.NET bir web uygulaması oluşturursunuz. Ardından uygulamayı Azure Uygulama Hizmeti'ne dağırsınız.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-- Azure aboneliği- [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/)
-- **ASP.net ve Web geliştirme** ve **Azure geliştirme** Iş yükleriyle [Visual Studio 2019](https://www.visualstudio.com/downloads/) .
+- Azure aboneliği - [ücretsiz bir abonelik oluşturun](https://azure.microsoft.com/free/)
+- [Visual Studio 2019](https://www.visualstudio.com/downloads/) **ile ASP.NET ve web geliştirme** ve Azure **geliştirme** iş yükleri.
 
 ## <a name="create-the-visual-studio-project"></a>Visual Studio projesini oluşturma
 
-1. Visual Studio'yu açın ve **Dosya** >**Yeni** > **Proje**'yi seçin.
+1. Visual Studio'u açın ve ardından **Dosya** >**Yeni** > **Projesi'ni**seçin.
 
 2. **Yeni Proje** iletişim kutusunda aşağıdaki adımları uygulayın:
 
@@ -33,7 +33,7 @@ Bu hızlı başlangıçta, önbellekteki verileri depolamak ve almak üzere Reds
 
     a. **Şablonlar** listesinde **Visual C#** düğümünü genişletin.
 
-    b. **Bulut**’u seçin.
+    b. **Bulut'u**seçin.
 
     c. **ASP.NET Web Uygulaması**'nı seçin.
 
@@ -41,7 +41,7 @@ Bu hızlı başlangıçta, önbellekteki verileri depolamak ve almak üzere Reds
 
     e. **Ad** kutusunda projeye bir ad verin. Bu örnekte biz **ContosoTeamStats** kullandık.
 
-    f. **Tamam**’ı seçin.
+    f. **Tamam'ı**seçin.
    
 3. Proje türü olarak **MVC**’yi seçin.
 
@@ -59,7 +59,7 @@ Daha sonra, uygulama için önbellek oluşturursunuz.
 
 #### <a name="to-edit-the-cachesecretsconfig-file"></a>*CacheSecrets.config* dosyasını düzenlemek için
 
-1. Bilgisayarınızda *Cachegizlilikler. config*adlı bir dosya oluşturun. Örnek uygulamanızın kaynak koduyla iade edilmeyeceği bir konuma koyun. Bu hızlı başlangıç için *CacheSecrets.config* dosyası şu konumda bulunur: *C:\AppSecrets\CacheSecrets.config*.
+1. Bilgisayarınızda *CacheSecrets.config*adlı bir dosya oluşturun. Örnek uygulamanızın kaynak koduyla iade edilmeyeceği bir konuma koyun. Bu hızlı başlangıç için *CacheSecrets.config* dosyası şu konumda bulunur: *C:\AppSecrets\CacheSecrets.config*.
 
 1. *CacheSecrets.config* dosyasını düzenleyin. Ardından aşağıdaki içeriği ekleyin:
 
@@ -80,16 +80,16 @@ Daha sonra, uygulama için önbellek oluşturursunuz.
 
 ## <a name="update-the-mvc-application"></a>MVC uygulamasını güncelleştirme
 
-Bu bölümde, Redsıs için Azure önbelleğine yönelik basit bir testi görüntüleyen yeni bir görünümü destekleyecek şekilde uygulamayı güncelliyoruz.
+Bu bölümde, Redis için Azure Önbelleğine karşı basit bir test görüntüleyen yeni bir görünümü desteklemek için uygulamayı güncelleştirebilirsiniz.
 
 * [Önbellek için uygulama ayarı ile web.config dosyasını güncelleştirme](#update-the-webconfig-file-with-an-app-setting-for-the-cache)
-* Uygulamayı StackExchange. Redsıs istemcisini kullanacak şekilde yapılandırma
+* StackExchange.Redis istemcisini kullanmak için uygulamayı yapılandırma
 * HomeController ve Düzeni güncelleştirme
 * Yeni RedisCache görünümü ekleme
 
 ### <a name="update-the-webconfig-file-with-an-app-setting-for-the-cache"></a>Önbellek için uygulama ayarı ile web.config dosyasını güncelleştirme
 
-Uygulamayı yerel olarak çalıştırdığınızda, *Cachegizlilikler. config* dosyasındaki bilgiler redsıs örneği Için Azure önbelleğinize bağlanmak için kullanılır. Daha sonra bu uygulamayı Azure’a dağıtırsınız. O aşamada, uygulamanın bu dosya yerine önbellek bağlantı bilgilerini almak için kullandığı Azure’daki bir uygulama ayarını yapılandırırsınız. 
+Uygulamayı yerel olarak çalıştırdığınızda, *CacheSecrets.config'deki* bilgiler Redis örneğiniz için Azure Önbelleğinize bağlanmak için kullanılır. Daha sonra bu uygulamayı Azure’a dağıtırsınız. O aşamada, uygulamanın bu dosya yerine önbellek bağlantı bilgilerini almak için kullandığı Azure’daki bir uygulama ayarını yapılandırırsınız. 
 
 *CacheSecrets.config* dosyası uygulamanızla Azure’a dağıtılmadığından bunu yalnızca uygulamayı yerel olarak test ederken kullanırsınız. Önbellek verilerinize kötü amaçlı erişimi önlemek için bu bilgileri olabildiğince güvende tutun.
 
@@ -101,9 +101,9 @@ Uygulamayı yerel olarak çalıştırdığınızda, *Cachegizlilikler. config* d
 2. *Web.config* dosyasında `<appSetting>` öğesini bulun. Ardından, aşağıdaki `file` özniteliğini ekleyin. Farklı bir dosya adı veya konumu kullandıysanız, örnekte gösterilenlerin yerine bu değerleri koyun.
 
 * Önce: `<appSettings>`
-* Sonra: `<appSettings file="C:\AppSecrets\CacheSecrets.config">`
+* Sonra:`<appSettings file="C:\AppSecrets\CacheSecrets.config">`
 
-ASP.NET çalışma zamanı, `<appSettings>` öğesindeki biçimlendirmeye sahip harici dosyasının içeriğini birleştirir. Belirtilen dosya bulunamazsa, çalışma zamanı dosya özniteliğini yok sayar. Gizli anahtarlarınız (önbelleğinize bağlantı dizisi) uygulamanız için kaynak kodun bir parçası olarak dahil edilmez. Web uygulamanızı Azure 'a dağıttığınızda, *Cachegizlilikler. config* dosyası dağıtılmaz.
+ASP.NET çalışma zamanı, `<appSettings>` öğesindeki biçimlendirmeye sahip harici dosyasının içeriğini birleştirir. Belirtilen dosya bulunamazsa, çalışma zamanı dosya özniteliğini yok sayar. Gizli anahtarlarınız (önbelleğinize bağlantı dizisi) uygulamanız için kaynak kodun bir parçası olarak dahil edilmez. Web uygulamanızı Azure'a *dağıttığınızda, CacheSecrets.config* dosyası dağıtılamıyor.
 
 ### <a name="to-configure-the-application-to-use-stackexchangeredis"></a>Uygulamayı StackExchange.Redis kullanacak şekilde yapılandırmak için
 
@@ -115,7 +115,7 @@ ASP.NET çalışma zamanı, `<appSettings>` öğesindeki biçimlendirmeye sahip 
     Install-Package StackExchange.Redis
     ```
 
-3. NuGet paketi indirir ve istemci uygulamanızı Azure Cache Redis StackExchange.Azure önbelleği için Redis istemcisini ile erişmek için gerekli derleme başvurularını ekler. `StackExchange.Redis` istemci kitaplığının tanımlayıcı adlı bir sürümünü kullanmak istiyorsanız `StackExchange.Redis.StrongName` paketini yükleyin.
+3. NuGet paketi indirir ve Redis istemcisi için StackExchange.Azure Önbelleği ile Redis için Azure Önbelleğine erişmek için istemci uygulamanız için gerekli montaj başvurularını ekler. `StackExchange.Redis` istemci kitaplığının tanımlayıcı adlı bir sürümünü kullanmak istiyorsanız `StackExchange.Redis.StrongName` paketini yükleyin.
 
 ### <a name="to-update-the-homecontroller-and-layout"></a>HomeController ve Layout'u güncelleştirmek için
 
@@ -143,7 +143,7 @@ ASP.NET çalışma zamanı, `<appSettings>` öğesindeki biçimlendirmeye sahip 
 
             // Connection refers to a property that returns a ConnectionMultiplexer
             // as shown in the previous example.
-            IDatabase cache = lazyConnection.GetDatabase();
+            IDatabase cache = lazyConnection.Value.GetDatabase();
 
             // Perform cache operations using the cache object...
 
@@ -166,7 +166,7 @@ ASP.NET çalışma zamanı, `<appSettings>` öğesindeki biçimlendirmeye sahip 
             ViewBag.command5 = "CLIENT LIST";
             ViewBag.command5Result = cache.Execute("CLIENT", "LIST").ToString().Replace(" id=", "\rid=");
 
-            lazyConnection.Dispose();
+            lazyConnection.Value.Dispose();
 
             return View();
         }
@@ -188,7 +188,7 @@ ASP.NET çalışma zamanı, `<appSettings>` öğesindeki biçimlendirmeye sahip 
 
 ### <a name="to-add-a-new-rediscache-view"></a>Yeni RedisCache görünümü eklemek için
 
-1. **Çözüm Gezgini**’nde **Görünümler** klasörünü genişletin ve **Giriş** klasörüne sağ tıklayın. **Ekle** > **Görünüm...** seçeneğini belirleyin.
+1. **Çözüm Gezgini**’nde **Görünümler** klasörünü genişletin ve **Giriş** klasörüne sağ tıklayın.  > **Görünüm Ekle'yi seçin...**. **Add**
 
 2. **Görünüm Ekle** iletişim kutusunda Görünüm Adı olarak **RedisCache** girin. Ardından **Ekle**'yi seçin.
 
@@ -232,14 +232,14 @@ ASP.NET çalışma zamanı, `<appSettings>` öğesindeki biçimlendirmeye sahip 
 
 ## <a name="run-the-app-locally"></a>Uygulamayı yerel olarak çalıştırma
 
-Varsayılan olarak proje, test ve hata ayıklama için uygulamayı [IIS Express](https://docs.microsoft.com/iis/extensions/introduction-to-iis-express/iis-express-overview)’te yerel olarak barındırmak üzere yapılandırılır.
+Varsayılan olarak, proje test ve hata ayıklama için [Uygulamayı IIS Express'te](https://docs.microsoft.com/iis/extensions/introduction-to-iis-express/iis-express-overview) yerel olarak barındıracak şekilde yapılandırılır.
 
 ### <a name="to-run-the-app-locally"></a>Uygulamayı yerel olarak çalıştırmak için
-1. Visual Studio’da **Hata Ayıklama** > **Hata Ayıklamayı Başlat**'ı seçerek test ve hata ayıklama için uygulamayı yerel olarak derleyip başlatın.
+1. Visual Studio'da, uygulamayı test etmek ve hata ayıklamak için yerel olarak oluşturmak ve başlatmak için **Hata** > Ayıklama Başlat hata**ayıklama'yı** seçin.
 
-2. Tarayıcıda, gezinti çubuğunda **Redsıs testi Için Azure önbelleği** ' ni seçin.
+2. Tarayıcıda, gezinti çubuğunda **Redis Testi için Azure Önbelleği'ni** seçin.
 
-3. Aşağıdaki örnekte, `Message` anahtarında önceden önbelleğe alınmış bir değer vardı ve bu, portalda Redsıs konsolu için Azure önbelleği kullanılarak ayarlanmıştır. Uygulama, önbelleğe alınan bu değeri güncelleştirdi. Ayrıca uygulama, `PING` ve `CLIENT LIST` komutlarını da yürüttü.
+3. Aşağıdaki örnekte, `Message` anahtar daha önce portaldaki Redis için Azure Önbelleği kullanılarak ayarlanan önbelleğe alınmış bir değere sahipti. Uygulama, önbelleğe alınan bu değeri güncelleştirdi. Ayrıca uygulama, `PING` ve `CLIENT LIST` komutlarını da yürüttü.
 
     ![Yerel olarak basit bir test tamamlanmıştır](./media/cache-web-app-howto/cache-simple-test-complete-local.png)
 
@@ -264,7 +264,7 @@ Uygulamayı yerel olarak başarıyla test ettikten sonra Azure’a dağıtabilir
     | **Uygulama adı** | Varsayılan değeri kullanın. | Uygulama adı, Azure’a dağıtıldığında uygulamanın ana bilgisayar adı olur. Gerekirse adı benzersiz hale getirmek için ada bir zaman damgası soneki eklenebilir. |
     | **Abonelik** | Azure aboneliğinizi seçin. | Tüm ilgili barındırma maliyetleri bu aboneliğe yansıtılır. Birden çok Azure aboneliğiniz varsa, istediğiniz aboneliğin seçildiğini doğrulayın.|
     | **Kaynak grubu** | Önbelleği oluşturduğunuz aynı kaynak grubunu kullanın (örneğin, *TestResourceGroup*). | Kaynak grubu, tüm kaynakları bir grup olarak yönetmenize yardımcı olur. Daha sonra uygulamayı silmek istediğinizde, grubu silmeniz yeterli olacaktır. |
-    | **App Service planı** | **Yeni**’yi seçin ve *TestingPlan* adlı yeni bir App Service planı oluşturun. <br />Önbelleğinizi oluştururken kullandığınız aynı **Konumu** kullanın. <br />Boyut için **Serbest**’i seçin. | App Service planı, bir web uygulamasının birlikte çalıştırılacağı işlem kaynakları kümesini tanımlar. |
+    | **Uygulama Hizmeti planı** | **Yeni**’yi seçin ve *TestingPlan* adlı yeni bir App Service planı oluşturun. <br />Önbelleğinizi oluştururken kullandığınız aynı **Konumu** kullanın. <br />Boyut için **Serbest**’i seçin. | App Service planı, bir web uygulamasının birlikte çalıştırılacağı işlem kaynakları kümesini tanımlar. |
 
     ![App Service iletişim kutusu](./media/cache-web-app-howto/cache-create-app-service-dialog.png)
 
@@ -292,7 +292,7 @@ Yeni uygulama yayımlandıktan sonra, yeni uygulama ayarını ekleyin. Bu ayar, 
 
 Tarayıcınızda, uygulamanın URL'sine gidin. URL, Visual Studio çıkış penceresindeki yayımlama işleminin sonuçlarında gösterilir. Ayrıca Azure portalında, oluşturduğunuz uygulamanın Genel Bakış sayfasında da sağlanır.
 
-Önbellek erişimini test etmek için gezinme çubuğunda **Redsıs testi Için Azure önbelleği** ' ni seçin.
+Önbellek erişimini test etmek için gezinti çubuğunda **Redis Testi için Azure Önbelleği'ni** seçin.
 
 ![Azure’da basit bir test tamamlanmıştır](./media/cache-web-app-howto/cache-simple-test-complete-azure.png)
 
@@ -319,7 +319,7 @@ Birkaç dakika sonra kaynak grubu ve bu gruptaki kaynakların tümü silinir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bir sonraki öğreticide, bir uygulamanın performansını geliştirmek için daha gerçekçi bir senaryoda Redsıs için Azure önbelleğini kullanırsınız. ASP.NET ve veritabanı ile edilgen önbellekli düzeni kullanarak puan tablosu sonuçlarını önbelleğe almak için bu uygulamayı güncelleştirirsiniz.
+Bir sonraki öğreticide, bir uygulamanın performansını artırmak için daha gerçekçi bir senaryoda Redis için Azure Önbelleğini kullanırsınız. ASP.NET ve veritabanı ile edilgen önbellekli düzeni kullanarak puan tablosu sonuçlarını önbelleğe almak için bu uygulamayı güncelleştirirsiniz.
 
 > [!div class="nextstepaction"]
 > [ASP.NET üzerinde edilgen önbellekli puan tablosu oluşturma](cache-web-app-cache-aside-leaderboard.md)

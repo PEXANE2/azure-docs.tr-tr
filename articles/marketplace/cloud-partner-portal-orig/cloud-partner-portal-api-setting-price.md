@@ -1,30 +1,29 @@
 ---
 title: Sanal makine teklifleri için fiyatlandırma | Azure Marketi
-description: Sanal makine tekliflerinin Fiyatlandırmasını belirtmenin üç yöntemini açıklar.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+description: Sanal makine tekliflerinin fiyatlandırmasını belirtmenin üç yöntemini açıklar.
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: c7ea5afeb46c30837c2ae53e871bb64f5d8cf292
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: b96dcfa6a140d5c16208fd8183003a7462b1aa56
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827330"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80280448"
 ---
 <a name="pricing-for-virtual-machine-offers"></a>Sanal makine tekliflerinin fiyatlandırması
 ==================================
 
-Sanal makine teklifleri için fiyatlandırma belirtmek için üç yol vardır: özelleştirilmiş çekirdek fiyatlandırma, çekirdek başına fiyatlandırma ve elektronik tablo fiyatlandırması.
+Sanal makine teklifleri için fiyatlandırma belirlemenin üç yolu vardır: özelleştirilmiş çekirdek fiyatlandırma, çekirdek başına fiyatlandırma ve elektronik tablo fiyatlandırması.
 
 
 <a name="customized-core-pricing"></a>Özelleştirilmiş çekirdek fiyatlandırma
 -----------------------
 
-Fiyatlandırma her bölge ve çekirdek birleşimine özgüdür. Satış listesindeki her bölge, tanımın **Virtualmachinefiyatlandırma**/**regionfiyatlar** bölümünde belirtilmelidir.  İsteğinizin her bir [bölgesi](#regions) için doğru para birimi kodlarını kullanın.  Aşağıdaki örnek bu gereksinimleri göstermektedir:
+Fiyatlandırma her bölge ve çekirdek kombinasyonu için özeldir. Satış listesindeki her bölge **sanalMachinePricing**/**bölgesiFiyatları** bölümünde tanım belirtilmelidir.  İsteğinizdeki her [bölge](#regions) için doğru para birimi kodlarını kullanın.  Aşağıdaki örnekte bu gereksinimleri gösteriş verilmiştir:
 
 ``` json
     "virtualMachinePricing": 
@@ -70,7 +69,7 @@ Fiyatlandırma her bölge ve çekirdek birleşimine özgüdür. Satış listesin
 <a name="per-core-pricing"></a>Çekirdek başına fiyatlandırma
 ----------------
 
-Bu durumda, yayımcılar SKU 'ları için ABD Doları cinsinden bir fiyat belirtir ve diğer tüm fiyatlar otomatik olarak oluşturulur. İstekteki **tek** parametrede çekirdek başına fiyat belirtilir.
+Bu durumda, yayıncılar SKU için USD olarak bir fiyat belirtir ler ve diğer tüm fiyatlar otomatik olarak oluşturulur. Çekirdek başına fiyat, istekteki **tek** parametrede belirtilir.
 
 ``` json
      "virtualMachinePricing": 
@@ -88,7 +87,7 @@ Bu durumda, yayımcılar SKU 'ları için ABD Doları cinsinden bir fiyat belirt
 <a name="spreadsheet-pricing"></a>Elektronik tablo fiyatlandırması
 -------------------
 
-Yayımcı Ayrıca fiyatlandırma elektronik tablosunu geçici bir depolama konumuna yükleyebilir ve sonra diğer dosya yapıtları gibi isteğe URI 'yi dahil edebilir. Daha sonra bu elektronik tablo yüklenir, belirtilen fiyat zamanlamasını değerlendirmek için çevrilir ve son olarak teklifi fiyatlandırma bilgileriyle güncelleştirir. Teklifin sonraki GET istekleri, bölge için elektronik tablo URI 'sini ve değerlendirilen fiyatları döndürür.
+Yayımcı ayrıca fiyatlandırma elektronik tablosunu geçici bir depolama konumuna yükleyebilir, ardından uri'yi diğer dosya yapıları gibi isteğe dahil edebilir. Elektronik tablo daha sonra yüklenir, belirtilen fiyat çizelgesini değerlendirmek için tercüme edilir ve son olarak teklifi fiyatlandırma bilgileriyle güncelleştirir. Sonraki TEKLIF için GET istekleri elektronik tablo URI ve bölge için değerlendirilen fiyatlar döndürür.
 
 ``` json
      "virtualMachinePricing": 
@@ -101,39 +100,39 @@ Yayımcı Ayrıca fiyatlandırma elektronik tablosunu geçici bir depolama konum
      }
 ```
 
-<a name="new-core-sizes-added-on-722019"></a>7/2/2019 üzerine yeni temel boyutlar eklendi
+<a name="new-core-sizes-added-on-722019"></a>7/2/2019 tarihinde eklenen yeni çekirdek boyutları
 ---------------------------
 
-VM yayımcılarının, yeni Azure sanal makine boyutlarına (çekirdek sayısına göre) yeni fiyatlara ek olarak, 2 Temmuz 2019 tarihinde bilgilendirildi.  Yeni fiyatlar, 10, 44, 48, 60, 120, 208 ve 416 temel boyutlarına yöneliktir.  Mevcut VM için, bu çekirdek boyutları için yeni fiyatlar, geçerli fiyatlara göre otomatik olarak hesaplanır.  Yayımcılar, ek fiyatları gözden geçirmek ve istediğiniz değişiklikleri yapmak için 1 Ağustos 2019 ' e kadar.  Bu tarihten sonra, yayımcı tarafından zaten yeniden yayımlanmamışsa, bu yeni çekirdek boyutları için otomatik olarak hesaplanan fiyatlar geçerli olur.
+VM yayıncılarına 2 Temmuz 2019'da yeni Azure sanal makine boyutları için yeni fiyatların eklenmesi (çekirdek sayısına bağlı olarak) bildirilir.  Yeni fiyatlar çekirdek boyutları 10, 44, 48, 60, 120, 208 ve 416 içindir.  Mevcut VM için bu çekirdek boyutları için yeni fiyatlar otomatik olarak cari fiyatlara göre hesaplanmıştır sunuyor.  Yayıncıların ek fiyatları gözden geçirmek ve istenen değişiklikleri yapmak için 1 Ağustos 2019'a kadar zamanları vardır.  Bu tarihten sonra, yayımcı tarafından yeniden yayımlanmazsa, bu yeni çekirdek boyutları için otomatik olarak hesaplanan fiyatlar geçerli olacaktır.
 
 
 <a name="regions"></a>Bölgeler
 -------
 
-Aşağıdaki tabloda, özelleştirilmiş çekirdek fiyatlandırma için belirtebileceğiniz farklı bölgeler ve bunlara karşılık gelen para birimi kodları gösterilmektedir.
+Aşağıdaki tablo, özelleştirilmiş çekirdek fiyatlandırma için belirtebileceğiniz farklı bölgeleri ve bunların karşılık gelen para birimi kodlarını gösterir.
 
-| **Bölge** | **Ad**             | **Para birimi kodu** |
+| **Bölge** | **Adı**             | **Para birimi kodu** |
 |------------|----------------------|-------------------|
-| DZ         | Cezayir              | DZD               |
+| DZ         | Cezayir              | Dzd               |
 | AR         | Arjantin            | ARS               |
 | AU         | Avustralya            | AUD               |
 | AT         | Avusturya              | EUR               |
-| BH         | Bahreyn              | BHD               |
+| BH         | Bahreyn              | Bhd               |
 | BY         | Belarus              | RUB               |
 | BE         | Belçika              | EUR               |
 | BR         | Brezilya               | USD               |
-| BG         | Bulgaristan             | BGN               |
+| BG         | Bulgaristan             | Bgn               |
 | CA         | Kanada               | CAD               |
-| CL         | Şili                | CLP               |
-| CO         | Kolombiya             | COP               |
-| CR         | Kosta Rika           | CRC               |
-| HR         | Hırvatistan              | HRK dili               |
+| CL         | Şili                | Clp               |
+| CO         | Kolombiya             | Polis               |
+| CR         | Kosta Rika           | Crc               |
+| HR         | Hırvatistan              | Hrk               |
 | CY         | Kıbrıs               | EUR               |
-| CZ         | Çek Cumhuriyeti       | CZK dili               |
+| CZ         | Çek Cumhuriyeti       | Czk               |
 | DK         | Danimarka              | DKK               |
 | DO         | Dominik Cumhuriyeti   | USD               |
 | EC         | Ekvador              | USD               |
-| EG         | Mısır                | EGP               |
+| EG         | Mısır                | Egp               |
 | SV         | El Salvador          | USD               |
 | EE         | Estonya              | EUR               |
 | FI         | Finlandiya              | EUR               |
@@ -142,47 +141,47 @@ Aşağıdaki tabloda, özelleştirilmiş çekirdek fiyatlandırma için belirteb
 | GR         | Yunanistan               | EUR               |
 | GT         | Guatemala            | GTQ               |
 | HK         | Hong Kong ÖİB        | HKD               |
-| HU         | Macaristan              | KUF               |
-| IS         | İzlanda              | ISK               |
+| HU         | Macaristan              | Huf               |
+| IS         | İzlanda              | ısk               |
 | IN         | Hindistan                | INR               |
 | Kimlik         | Endonezya            | IDR               |
 | IE         | İrlanda              | EUR               |
-| IL         | İsrail               | ÖR               |
+| IL         | İsrail               | ıls               |
 | BT         | İtalya                | EUR               |
 | JP         | Japonya                | JPY               |
-| JO         | Ürdün               | JOD               |
-| KZ         | Kazakistan           | KZT               |
-| KE         | Kenya                | KAR               |
+| JO         | Ürdün               | Jod               |
+| KZ         | Kazakistan           | Kzt               |
+| KE         | Kenya                | KES               |
 | KR         | Güney Kore                | KRW               |
-| KW         | Kuveyt               | KWD               |
+| KW         | Kuveyt               | Kwd               |
 | LV         | Letonya               | EUR               |
 | LI         | Lihtenştayn        | CHF               |
 | LT         | Litvanya            | EUR               |
 | LU         | Lüksemburg           | EUR               |
-| MK         | Kuzey Makedonya      | MKD               |
+| MK         | Kuzey Makedonya      | Mkd               |
 | MY         | Malezya             | MYR               |
 | MT         | Malta                | EUR               |
 | MX         | Meksika               | MXN               |
-| YAPA         | Karadağ           | EUR               |
-| MA         | Fas              | MAD               |
+| ME         | Karadağ           | EUR               |
+| MA         | Fas              | Mad               |
 | NL         | Hollanda          | EUR               |
 | NZ         | Yeni Zelanda          | NZD               |
-| NG         | Nijerya              | NGN               |
+| NG         | Nijerya              | Ngn               |
 | NO         | Norveç               | NOK               |
-| OM         | Umman                 | OMR               |
-| PK         | Pakistan             | PKR               |
+| OM         | Umman                 | Özgen               |
+| PK         | Pakistan             | Pkr               |
 | PA         | Panama               | USD               |
 | PY         | Paraguay             | PYG               |
-| PE         | Peru                 | KADAR               |
+| PE         | Peru                 | Kalem               |
 | PH         | Filipinler          | PHP               |
-| PL         | Polonya               | PLN               |
+| PL         | Polonya               | Pln               |
 | PT         | Portekiz             | EUR               |
 | PR         | Porto Riko          | USD               |
-| QA         | Katar                | QAR               |
-| RO         | Romanya              | IR               |
+| QA         | Katar                | Qar               |
+| RO         | Romanya              | Ron               |
 | RU         | Rusya               | RUB               |
 | SA         | Suudi Arabistan         | SAR               |
-| RS         | Sırbistan               | RSD               |
+| RS         | Sırbistan               | Rsd               |
 | SG         | Singapur            | SGD               |
 | SK         | Slovakya             | EUR               |
 | SI         | Slovenya             | EUR               |
@@ -192,11 +191,11 @@ Aşağıdaki tabloda, özelleştirilmiş çekirdek fiyatlandırma için belirteb
 | SE         | İsveç               | SEK               |
 | CH         | İsviçre          | CHF               |
 | TW         | Tayvan               | TWD               |
-| TH         | Tayland             | THB               |
-| TT         | Trinidad ve Tobago  | TTD               |
-| TN         | Tunus              | TND               |
+| TH         | Tayland             | Thb               |
+| TT         | Trinidad ve Tobago  | Ttd               |
+| TN         | Tunus              | Tnd               |
 | TR         | Türkiye               | TRY               |
-| UA         | Ukrayna              | UAH               |
+| UA         | Ukrayna              | Uah               |
 | AE         | Birleşik Arap Emirlikleri | EUR               |
 | GB         | Birleşik Krallık       | GBP               |
 | ABD         | Amerika Birleşik Devletleri        | USD               |

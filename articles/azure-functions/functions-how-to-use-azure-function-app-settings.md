@@ -1,58 +1,58 @@
 ---
-title: Azure 'da işlev uygulaması ayarlarını yapılandırma
-description: Azure işlevi uygulama ayarlarını yapılandırmayı öğrenin.
+title: Azure'da işlev uygulama ayarlarını yapılandırma
+description: Azure işlev uygulama ayarlarını nasıl yapılandırıyarıştıracaklarını öğrenin.
 ms.assetid: 81eb04f8-9a27-45bb-bf24-9ab6c30d205c
 ms.topic: conceptual
 ms.date: 08/14/2019
 ms.custom: cc996988-fb4f-47
 ms.openlocfilehash: 662a04dbcc39f3fa95b0098eb8fe556b18b3495b
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79276952"
 ---
 # <a name="manage-your-function-app"></a>İşlev uygulamanızı yönetme 
 
-Azure Işlevlerinde bir işlev uygulaması, bireysel işlevleriniz için yürütme bağlamı sağlar. İşlev uygulaması davranışları, belirli bir işlev uygulaması tarafından barındırılan tüm işlevler için geçerlidir. Bir işlev uygulamasındaki tüm işlevler aynı [dilde](supported-languages.md)olmalıdır. 
+Azure İşlevler'de bir işlev uygulaması, bireysel işlevleriniz için yürütme bağlamını sağlar. İşlev uygulaması davranışları, belirli bir işlev uygulaması tarafından barındırılan tüm işlevler için geçerlidir. Bir işlev uygulamasındaki tüm işlevler aynı [dilde](supported-languages.md)olmalıdır. 
 
-Bir işlev uygulamasındaki tek işlevler birlikte dağıtılır ve birlikte ölçeklendirilir. İşlev uygulaması ölçeklenirken, aynı işlev uygulamasındaki tüm işlevler, örnek başına kaynakları paylaşır. 
+Bir işlev uygulamasındaki tek tek işlevler birlikte dağıtılır ve birlikte ölçeklendirilir. İşlev uygulaması ölçeklendikçe, aynı işlev uygulamasındaki tüm işlevler, örnek başına kaynakları paylaşır. 
 
-Bağlantı dizeleri, ortam değişkenleri ve diğer uygulama ayarları her bir işlev uygulaması için ayrı olarak tanımlanır. İşlev uygulamaları arasında paylaşılması gereken tüm veriler, kalıcı bir mağazada dışarıdan depolanmalıdır.
+Bağlantı dizeleri, ortam değişkenleri ve diğer uygulama ayarları her işlev uygulaması için ayrı ayrı tanımlanır. İşlev uygulamaları arasında paylaşılması gereken tüm veriler, kalıcı bir depoda harici olarak depolanmalıdır.
 
-Bu makalede, işlev uygulamalarınızın nasıl yapılandırılacağı ve yönetileceği açıklanmaktadır. 
+Bu makalede, işlev uygulamalarınızı nasıl yapılandırıştırıp yönetileyişiniz açıklanmaktadır. 
 
 > [!TIP]  
-> Birçok yapılandırma seçeneği de [Azure CLI]kullanılarak yönetilebilir. 
+> Birçok yapılandırma seçeneği, [Azure CLI]kullanılarak da yönetilebilir. 
 
-## <a name="get-started-in-the-azure-portal"></a>Azure portal kullanmaya başlayın
+## <a name="get-started-in-the-azure-portal"></a>Azure portalında kullanmaya başlama
 
-Başlamak için [Azure portalında] gidin ve Azure hesabınızda oturum açın. Portalın en üstündeki arama çubuğunda, işlev uygulamanızın adını yazın ve uygulamayı listeden seçin. İşlev uygulamanızı seçtikten sonra aşağıdaki sayfayı görürsünüz:
+Başlangıç olarak Azure [portalına] gidin ve Azure hesabınızda oturum açın. Portalın en üstündeki arama çubuğunda, işlev uygulamanızın adını yazın ve uygulamayı listeden seçin. İşlev uygulamanızı seçtikten sonra aşağıdaki sayfayı görürsünüz:
 
-![Azure portal işlev uygulamasına genel bakış](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-main.png)
+![Azure portalında işlev uygulamasına genel bakış](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-main.png)
 
-Özel bakış sayfasından, özellikle **[uygulama ayarları](#settings)** ve **[platform özellikleri](#platform-features)** ' nde, işlev uygulamanızı yönetmek için ihtiyacınız olan her şeye gidebilirsiniz.
+İşlev uygulamanızı yönetmek için ihtiyacınız olan her şeye genel bakış sayfasından, özellikle **[de Uygulama ayarları](#settings)** ve Platform **[özelliklerine](#platform-features)** gidebilirsiniz.
 
-## <a name="settings"></a>Uygulama ayarları
+## <a name="application-settings"></a><a name="settings"></a>Uygulama ayarları
 
-**Uygulama ayarları** sekmesi, işlev uygulamanız tarafından kullanılan ayarları korur. Bu ayarlar şifreli olarak depolanır ve portalda değerleri görmek için **değerleri göster** ' i seçmeniz gerekir. Ayrıca, Azure CLı kullanarak uygulama ayarlarına erişebilirsiniz.
+**Uygulama Ayarları** sekmesi, işlev uygulamanız tarafından kullanılan ayarları korur. Bu ayarlar şifreli olarak depolanır ve portaldaki değerleri görmek için **değerleri göster'i** seçmeniz gerekir. Azure CLI'yi kullanarak uygulama ayarlarına da erişebilirsiniz.
 
 ### <a name="portal"></a>Portal
 
-Portalda bir ayar eklemek için **Yeni uygulama ayarı** ' nı seçin ve yeni anahtar-değer çiftini ekleyin.
+Portala ayar eklemek için **Yeni uygulama ayarını** seçin ve yeni anahtar değeri çiftini ekleyin.
 
-![Azure portal işlev uygulaması ayarları.](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-settings-tab.png)
+![Azure portalındaki işlev uygulaması ayarları.](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-settings-tab.png)
 
 ### <a name="azure-cli"></a>Azure CLI
 
-[`az functionapp config appsettings list`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-list) komutu, aşağıdaki örnekte olduğu gibi var olan uygulama ayarlarını döndürür:
+Komut, [`az functionapp config appsettings list`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-list) aşağıdaki örnekte olduğu gibi varolan uygulama ayarlarını döndürür:
 
 ```azurecli-interactive
 az functionapp config appsettings list --name <FUNCTION_APP_NAME> \
 --resource-group <RESOURCE_GROUP_NAME>
 ```
 
-[`az functionapp config appsettings set`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) komutu bir uygulama ayarı ekler veya güncelleştirir. Aşağıdaki örnek, `CUSTOM_FUNCTION_APP_SETTING` adlı bir anahtar ve `12345`değeri olan bir ayar oluşturur:
+Komut [`az functionapp config appsettings set`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) bir uygulama ayarı ekler veya güncelleştirir. Aşağıdaki örnek, adlı `CUSTOM_FUNCTION_APP_SETTING` bir anahtar ve bir `12345`değeri olan bir ayar oluşturur:
 
 
 ```azurecli-interactive
@@ -65,68 +65,68 @@ az functionapp config appsettings set --name <FUNCTION_APP_NAME> \
 
 [!INCLUDE [functions-environment-variables](../../includes/functions-environment-variables.md)]
 
-Yerel olarak bir işlev uygulaması geliştirirken, bu değerlerin yerel kopyalarını yerel. Settings. JSON proje dosyasında korumanız gerekir. Daha fazla bilgi için bkz. [yerel ayarlar dosyası](functions-run-local.md#local-settings-file).
+Yerel olarak bir işlev uygulaması geliştirdiğinizde, bu değerlerin yerel kopyalarını local.settings.json project dosyasında tutmanız gerekir. Daha fazla bilgi için [Yerel ayarlar dosyasına](functions-run-local.md#local-settings-file)bakın.
 
 ## <a name="platform-features"></a>Platform özellikleri
 
-![İşlev uygulaması platform özellikleri sekmesi.](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-features-tab.png)
+![Fonksiyon uygulama platformu özellikleri sekmesi.](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-features-tab.png)
 
-İşlev uygulamaları ' de çalışır ve Azure App Service platformu tarafından korunur. Bu nedenle, işlev uygulamalarınızın Azure 'un çekirdek Web barındırma platformu özelliklerinin çoğuna erişimi vardır. **Platform özellikleri** sekmesi, işlev uygulamalarınızda kullanabileceğiniz App Service platformunun birçok özelliğine erişirsiniz. 
+İşlev uygulamaları Azure Uygulama Hizmeti platformu tarafından çalıştırılır ve korunur. Bu nedenle, işlev uygulamalarınız Azure'un temel web barındırma platformunun özelliklerinin çoğuna erişebilir. **Platform özellikleri** sekmesi, uygulama uygulamalarınızda kullanabileceğiniz Uygulama Hizmeti platformunun birçok özelliğine eriştiğiniz yerdir. 
 
 > [!NOTE]
-> Bir işlev uygulaması tüketim barındırma planı üzerinde çalıştırıldığında tüm App Service özellikleri kullanılamaz.
+> Bir işlev uygulaması Tüketim barındırma planında çalıştığında tüm App Service özellikleri kullanılamaz.
 
-Bu makalenin geri kalanı, Işlevler için yararlı olan Azure portal aşağıdaki App Service özelliklerine odaklanmaktadır:
+Bu makalenin geri kalanı, Azure portalında Işlevler için yararlı olan aşağıdaki Uygulama Hizmeti özelliklerine odaklanır:
 
-+ [App Service Düzenleyicisi](#editor)
++ [Uygulama Hizmeti editörü](#editor)
 + [Konsol](#console)
-+ [Gelişmiş araçlar (kudu)](#kudu)
++ [Gelişmiş araçlar (Kudu)](#kudu)
 + [Dağıtım seçenekleri](#deployment)
 + [CORS](#cors)
 + [Kimlik doğrulaması](#auth)
 
-App Service ayarları ile çalışma hakkında daha fazla bilgi için bkz. [Configure Azure App Service Settings](../app-service/configure-common.md).
+Uygulama Hizmeti ayarlarıyla nasıl çalışacağınız hakkında daha fazla bilgi için Azure [Uygulama Hizmeti Ayarlarını Yapılandır'a](../app-service/configure-common.md)bakın.
 
-### <a name="editor"></a>App Service Düzenleyicisi
+### <a name="app-service-editor"></a><a name="editor"></a>Uygulama Servis Editörü
 
-![App Service Düzenleyicisi](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-appservice-editor.png)
+![Uygulama Hizmeti düzenleyicisi](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-appservice-editor.png)
 
-App Service Düzenleyicisi, JSON yapılandırma dosyalarını ve kod dosyalarını benzer şekilde değiştirmek için kullanabileceğiniz, gelişmiş bir yerleşik düzenleyici düzenleyicidir. Bu seçeneğin belirlenmesi, temel bir düzenleyici ile ayrı bir tarayıcı sekmesi başlatır. Bu, git deposu ile tümleştirmenize, kod çalıştırmanıza ve hata ayıklamanıza ve işlev uygulaması ayarlarını değiştirmenize olanak sağlar. Bu düzenleyici, işlevleriniz için yerleşik işlev Düzenleyicisi ile karşılaştırıldığında gelişmiş bir geliştirme ortamı sağlar.  
+App Service düzenleyicisi, JSON yapılandırma dosyalarını ve kod dosyalarını değiştirmek için kullanabileceğiniz gelişmiş bir portal içi düzenleyicidir. Bu seçeneği seçmek, temel bir düzenleyiciile ayrı bir tarayıcı sekmesi ni başlatır. Bu, Git deposuyla tümleştirmenize, kodu çalıştırmanıza ve hata ayıklamanıza ve işlev uygulaması ayarlarını değiştirmenize olanak tanır. Bu düzenleyici, yerleşik işlev düzenleyicisiyle karşılaştırıldığında işlevleriniz için gelişmiş bir geliştirme ortamı sağlar.  
 
-Yerel bilgisayarınızda işlevlerinizi geliştirmeyi düşünmenizi öneririz. Yerel olarak geliştirip Azure 'da yayımladığınızda, proje dosyalarınız portalda salt okunurdur. Daha fazla bilgi edinmek için bkz. [Azure işlevlerini yerel olarak kod ve test](functions-develop-local.md)etme.
+Yerel bilgisayarınızda işlevlerinizi geliştirmeyi düşünmenizi öneririz. Yerel olarak geliştirip Azure'da yayımladığınızda, proje dosyalarınız portalda salt okunur. Daha fazla bilgi edinmek için [Kod'a bakın ve Azure İşlevlerini yerel olarak test edin.](functions-develop-local.md)
 
-### <a name="console"></a>Konsola
+### <a name="console"></a><a name="console"></a>Konsol
 
-![İşlev uygulaması konsolu](./media/functions-how-to-use-azure-function-app-settings/configure-function-console.png)
+![Fonksiyon uygulama konsolu](./media/functions-how-to-use-azure-function-app-settings/configure-function-console.png)
 
-Portal içi konsol, komut satırından işlev uygulamanız ile etkileşime geçmeyi tercih ettiğiniz durumlarda ideal bir geliştirici aracıdır. Ortak komutlar dizin ve dosya oluşturma ve gezinmeyi ve toplu iş dosyalarını ve betikleri yürütmeyi içerir. 
+Portal konsolu, komut satırından işlev uygulamanızla etkileşimde çalışmayı tercih ettiğinizde ideal bir geliştirici aracıdır. Ortak komutlar dizin ve dosya oluşturma ve gezinme yanı sıra toplu dosya ve komut yürütme içerir. 
 
-Yerel olarak geliştirilirken [Azure Functions Core Tools](functions-run-local.md) ve [Azure CLI]kullanmanızı öneririz.
+Yerel olarak geliştirirken, [Azure İşlevler Temel Araçları](functions-run-local.md) ve [Azure CLI'yi]kullanmanızı öneririz.
 
-### <a name="kudu"></a>Gelişmiş araçlar (kudu)
+### <a name="advanced-tools-kudu"></a><a name="kudu"></a>Gelişmiş araçlar (Kudu)
 
-![Kudu yapılandırma](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-kudu.png)
+![Kudu'u yapılandır](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-kudu.png)
 
-App Service için gelişmiş araçlar (kudu olarak da bilinir), işlev uygulamanızın gelişmiş yönetim özelliklerine erişim sağlar. Kudu 'den sistem bilgilerini, uygulama ayarlarını, ortam değişkenlerini, site uzantılarını, HTTP üstbilgilerini ve sunucu değişkenlerini yönetirsiniz. Ayrıca, işlev uygulamanız için `https://<myfunctionapp>.scm.azurewebsites.net/` gibi SCM uç noktasına göz atarak **kudu** 'yi de başlatabilirsiniz. 
+App Service için gelişmiş araçlar (Kudu olarak da bilinir) işlev uygulamanızın gelişmiş yönetim özelliklerine erişim sağlar. Kudu'dan sistem bilgilerini, uygulama ayarlarını, ortam değişkenlerini, site uzantılarını, HTTP üstbilgilerini ve sunucu değişkenlerini yönetirsiniz. Ayrıca, işlev uygulamanız için SCM bitiş noktasına göz atarak **Kudu'yu** başlatabilirsiniz, örneğin`https://<myfunctionapp>.scm.azurewebsites.net/` 
 
 
-### <a name="deployment"></a>Dağıtım Merkezi
+### <a name="deployment-center"></a><a name="deployment"></a>Dağıtım Merkezi
 
-İşlev kodunuzu geliştirmek ve sürdürmek için bir kaynak denetimi çözümü kullandığınızda, dağıtım merkezi kaynak denetiminden derleme ve dağıtım yapmanızı sağlar. Projeniz, güncelleştirmeler yaptığınızda Azure 'a oluşturulup dağıtılır. Daha fazla bilgi için bkz. [Azure Işlevlerinde dağıtım teknolojileri](functions-deployment-technologies.md).
+İşlev kodunuzu geliştirmek ve korumak için bir kaynak denetimi çözümü kullandığınızda, Dağıtım Merkezi kaynak denetiminden oluşturmanıza ve dağıtmanıza olanak tanır. Güncelleştirmeler yaptığınızda projeniz oluşturulur ve Azure'a dağıtılır. Daha fazla bilgi için Azure [İşlevlerinde Dağıtım teknolojilerine](functions-deployment-technologies.md)bakın.
 
-### <a name="cors"></a>Çıkış noktaları arası kaynak paylaşımı
+### <a name="cross-origin-resource-sharing"></a><a name="cors"></a>Çıkış noktaları arası kaynak paylaşma
 
-Modern tarayıcılar istemcide kötü amaçlı kod yürütmeyi engellemek için Web uygulamalarından gelen istekleri ayrı bir etki alanında çalışan kaynaklara engeller. [Çıkış noktaları arası kaynak paylaşımı (CORS)](https://developer.mozilla.org/docs/Web/HTTP/CORS) , bir `Access-Control-Allow-Origin` üst bilgisinin, işlev uygulamanızda uç noktalar çağırmasını izin verileceğini tanımlamasına olanak sağlar.
+İstemcide kötü amaçlı kod yürütülmesini önlemek için, modern tarayıcılar web uygulamalarından ayrı bir etki alanında çalışan kaynaklara isteklerini engeller. [Başlangıçlar arası kaynak paylaşımı (CORS),](https://developer.mozilla.org/docs/Web/HTTP/CORS) üstbilginin `Access-Control-Allow-Origin` işlev uygulamanızda uç noktaları aramasına hangi kökenlerin izin verildiğini bildirmesine olanak tanır.
 
 #### <a name="portal"></a>Portal
 
-İşlev uygulamanız için **Izin verilen** kaynaklar listesini yapılandırdığınızda, `Access-Control-Allow-Origin` üstbilgisi, Işlev uygulamanızdaki HTTP uç noktalarından gelen tüm yanıtlara otomatik olarak eklenir. 
+İşlev uygulamanız için **İzin Verilen başlangıçlar** `Access-Control-Allow-Origin` listesini yapılandırdığınızda, üstbilgi işlev uygulamanızdaki HTTP uç noktalarından gelen tüm yanıtlara otomatik olarak eklenir. 
 
-![İşlev uygulamasının CORS listesini yapılandır](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-cors.png)
+![Fonksiyon uygulamasının CORS listesini yapılandırma](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-cors.png)
 
-Joker karakter (`*`) kullanıldığında, diğer tüm etki alanları yok sayılır. 
+Joker karakter (`*`) kullanıldığında, diğer tüm etki alanları yoksayılır. 
 
-İzin verilen çıkış noktaları listesine bir etki alanı eklemek için [`az functionapp cors add`](/cli/azure/functionapp/cors#az-functionapp-cors-add) komutunu kullanın. Aşağıdaki örnek contoso.com etki alanını ekler:
+İzin [`az functionapp cors add`](/cli/azure/functionapp/cors#az-functionapp-cors-add) verilen başlangıçlar listesine etki alanı eklemek için komutu kullanın. Aşağıdaki örnek, contoso.com etki alanını ekler:
 
 ```azurecli-interactive
 az functionapp cors add --name <FUNCTION_APP_NAME> \
@@ -134,19 +134,19 @@ az functionapp cors add --name <FUNCTION_APP_NAME> \
 --allowed-origins https://contoso.com
 ```
 
-İzin verilen mevcut kaynakları listelemek için [`az functionapp cors show`](/cli/azure/functionapp/cors#az-functionapp-cors-show) komutunu kullanın.
+Geçerli [`az functionapp cors show`](/cli/azure/functionapp/cors#az-functionapp-cors-show) izin verilen kökenleri listelemek için komutu kullanın.
 
-### <a name="auth"></a>Yetkilendirmesi
+### <a name="authentication"></a><a name="auth"></a>Kimlik doğrulaması
 
-![İşlev uygulaması için kimlik doğrulamasını yapılandırma](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-authentication.png)
+![İşlev uygulaması için kimlik doğrulamayı yapılandırma](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-authentication.png)
 
-İşlevler bir HTTP tetikleyicisi kullanırken, önce kimlik doğrulamasından geçmek için çağrılar yapmanız gerekebilir. App Service, Facebook, Microsoft ve Twitter gibi sosyal sağlayıcılarla Azure Active Directory kimlik doğrulamasını ve oturum açmayı destekler. Belirli kimlik doğrulama sağlayıcılarını yapılandırma hakkında ayrıntılı bilgi için bkz. [Azure App Service kimlik doğrulamasına genel bakış](../app-service/overview-authentication-authorization.md). 
+Işlevler bir HTTP tetikleyicisi kullandığında, çağrıların önce kimlik doğrulaması yapılmasını gerektirebilirsiniz. Uygulama Hizmeti, Azure Active Directory kimlik doğrulamasını ve Facebook, Microsoft ve Twitter gibi sosyal sağlayıcılarla oturum açmayı destekler. Belirli kimlik doğrulama sağlayıcılarının yapılandırılmasıyla ilgili ayrıntılar için [Azure Uygulama Hizmeti kimlik doğrulama genel bakışı'na](../app-service/overview-authentication-authorization.md)bakın. 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-+ [Azure App Service ayarlarını yapılandırma](../app-service/configure-common.md)
-+ [Azure İşlevleri için sürekli dağıtım](functions-continuous-deployment.md)
++ [Azure Uygulama Hizmeti Ayarlarını Yapılandırma](../app-service/configure-common.md)
++ [Azure İşlevler için sürekli dağıtım](functions-continuous-deployment.md)
 
 [Azure CLI]: /cli/azure/
 [Azure portalında]: https://portal.azure.com

@@ -1,6 +1,6 @@
 ---
-title: Azure Lab Services bir sınıf Laboratuvarı için Pano kullanma | Microsoft Docs
-description: Azure Lab Services bir sınıf Laboratuvarı için panoyu nasıl kullanacağınızı öğrenin.
+title: Azure Lab Hizmetleri'nde sınıf laboratuvarı için pano kullanma | Microsoft Dokümanlar
+description: Azure Lab Hizmetleri'ndeki bir sınıf laboratuvarı için pano kullanmayı öğrenin.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -14,59 +14,59 @@ ms.topic: article
 ms.date: 02/20/2020
 ms.author: spelluru
 ms.openlocfilehash: 363e5705e9ccf4aa207ff7e5cafb615bc01bc7d3
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77538949"
 ---
-# <a name="dashboard-for-classroom-labs"></a>Sınıf laboratuvarları panosu
-Bu makalede, Azure Lab Services bir sınıf laboratuvarının pano görünümü açıklanmaktadır. 
+# <a name="dashboard-for-classroom-labs"></a>Sınıf laboratuvarları için pano
+Bu makalede, Azure Lab Hizmetleri'ndeki bir sınıf laboratuvarının pano görünümü açıklanmaktadır. 
 
 ![Pano](../media/use-dashboard/dashboard.png)
 
-## <a name="costs-and-billing-tile"></a>Maliyetler ve faturalandırma kutucuğu
-Bu kutucuk, aşağıdaki maliyet tahmini ayrıntılarını sağlar:
+## <a name="costs-and-billing-tile"></a>Maliyetler ve faturalandırma döşemesi
+Bu döşeme aşağıdaki maliyet tahmini ayrıntılarını sağlar:
 
 | Ayar | Değer | 
 | ------- | ----- | 
-| Kota saatleri | Kullanıcının VM 'yi zamanlanan saatlerin dışında kullanabileceği en fazla saat sayısı. |
-| Zamanlanan saatler | Laboratuvarda ayarlanan zamanlama temelinde tahakkuk edilecek saatler. Bu değer yalnızca tüm zamanlama olaylarında bir Kimden/bitiş tarihi ayarlanırsa kullanılabilir. |
-| Saatler/Kullanıcı | Kota saatlerinin ve zamanlanan saatlerin toplamı. |
-| Maksimum Kullanıcı sayısı | Talep edilecek tüm sanal makineleri temel alan laboratuvardaki en fazla kullanıcı sayısı. |
-| Saat x Kullanıcı | Saatler/Kullanıcı Kullanıcı sayısına göre çarpılır. |
+| Kota saatleri | Bir kullanıcının VM'yi planlanan saatler dışında kullanabileceği maksimum saat sayısı. |
+| Zamanlanan saatler | Laboratuvarda ayarlanan zamanlamaya göre tahakkuk edecek saatler. Bu değer yalnızca tüm zamanlama olaylarında ayarlanan bir kişi/tarih varsa kullanılabilir. |
+| Saatler/kullanıcı | Kota saatleri ve zamanlanan saatlerin toplamı. |
+| Maksimum kullanıcılar | İddia edilecek tüm sanal makinelere göre laboratuvarda maksimum kullanıcı sayısı. |
+| Saatler x kullanıcılar | Saatler/kullanıcı kullanıcı sayısıile çarpılır. |
 | Ayarlanmış kota | Belirli kullanıcılara eklenen kota saatlerinin toplamı. |
-| Toplam saat * $/saat | Seçilen VM boyutuna bağlı olarak saat başına maliyet. Bu, Kullandıkça Öde fiyatı üzerinden normal ücret ödemenize dayanır. |
-| Toplam tahmini maliyet | Bu, geçerli ayarlara bağlı olarak bu laboratuvar için en yüksek fiyata yöneliktir. |
+| Toplam saat * $/saat | Seçilen VM boyutuna göre saat başına maliyet. Bu fiyat gitmek gibi düzenli ödeme dayanmaktadır. |
+| Toplam tahmini maliyet | Bu, geçerli ayarlara göre bu laboratuvar için en yüksek fiyattır. |
 
-## <a name="template-tile"></a>Şablon kutucuğu
-Bu kutucukta aşağıdaki bilgileri görürsünüz:
+## <a name="template-tile"></a>Şablon döşemesi
+Bu döşemede aşağıdaki bilgileri görürsünüz:
 
 - Şablonun oluşturulduğu tarih 
 - Şablonun en son yayımlandığı tarih 
 
-Ayrıca, sınıf için [şablon VM 'yi yönetebileceğiniz](how-to-create-manage-template.md) **şablon** sayfasına gitmek için bir bağlantıya sahiptir. 
+Ayrıca, sınıf için [VM şablonlarını yönetebileceğiniz](how-to-create-manage-template.md) **Şablon** sayfasına gitmek için bir bağlantıda da vardır. 
 
-## <a name="virtual-machine-pool-tile"></a>Sanal makine havuzu kutucuğu
+## <a name="virtual-machine-pool-tile"></a>Sanal makine havuzu döşemesi
 
-Bu kutucukta aşağıdaki bilgileri görürsünüz:
+Bu döşemede aşağıdaki bilgileri görürsünüz:
 
-- Öğrencilere atanan sanal makine sayısı (kullanıcılar)
-- Henüz öğrencilerine atanmamış sanal makine sayısı
+- Öğrencilere (kullanıcılara) atanan sanal makine sayısı
+- Henüz öğrencilere atanmamış sanal makinelerin sayısı
 
-Ayrıca, laboratuvardaki [sanal makine havuzunu yönetebileceğiniz](how-to-set-virtual-machine-passwords.md) **sanal makine havuzu** sayfasına gitmek için bir bağlantıya sahiptir. 
+Ayrıca, laboratuvardaki [sanal makineler havuzunu yönetebileceğiniz](how-to-set-virtual-machine-passwords.md) **Sanal makine havuzu** sayfasına gitmek için bir bağlantıya sahiptir. 
 
-## <a name="users-tile"></a>Kullanıcılar kutucuğu
+## <a name="users-tile"></a>Kullanıcı döşemesi
 
-Bu kutucukta aşağıdaki bilgileri görürsünüz:
+Bu döşemede aşağıdaki bilgileri görürsünüz:
 
-- Sınıfa kayıtlı Kullanıcı sayısı
-- Laboratuvara eklenen ancak sınıfa kaydedilmeyen Kullanıcı sayısı 
+- Sınıfa kayıtlı kullanıcı sayısı
+- Laboratuvara eklenen ancak sınıfa kayıtlı olmayan kullanıcı sayısı 
 
-Ayrıca, kullanıcıları laboratuvar için [yönetebileceğiniz](how-to-configure-student-usage.md) **Kullanıcılar** sayfasına gitmek için bir bağlantıya sahiptir. 
+Ayrıca, laboratuvar için [kullanıcıları yönetebileceğiniz](how-to-configure-student-usage.md) **Kullanıcılar** sayfasına gitmek için bir bağlantı da vardır. 
 
-## <a name="schedules-tile"></a>Zamanlamalar bölmesi
-Kutucukta laboratuvar için geçerli zamanlanmış olayları görürsünüz. Ayrıca, [zamanlamaları oluşturabileceğiniz ve yönetebileceğiniz](how-to-create-schedules.md) **zamanlama** sayfasına gitmek için bir bağlantıya sahiptir. Kutucukta yalnızca iki zamanlanmış olay ve laboratuvar için kalan zamanlanmış olay sayısı için ayrıntılar gösterilir. 
+## <a name="schedules-tile"></a>Zamanlamalar döşeme
+Döşemedeki laboratuvar için geçerli zamanlanmış olayları görüyorsunuz. Ayrıca, [zamanlamaları oluşturabileceğiniz ve yönetebileceğiniz](how-to-create-schedules.md) **Zamanlama** sayfasına gitmek için bir bağlantıda da vardır. Döşeme, yalnızca iki zamanlanmış olayın ayrıntılarını ve laboratuvar için kalan zamanlanan olayların sayısını gösterir. 
 
 ![Zamanlanmış olaylar](../media/use-dashboard/scheduled-events.png)
 

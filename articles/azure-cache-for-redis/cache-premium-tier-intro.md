@@ -1,97 +1,97 @@
 ---
-title: Redsıs Premium katmanı için Azure önbelleğine giriş
-description: Redsıs kalıcılığı oluşturma ve yönetme hakkında bilgi edinin ve redsıs örnekleri için Premium katmanınız için Azure önbelleğiniz için sanal ağ desteği
+title: Redis Premium katmanı için Azure Önbelleğine Giriş
+description: Redis örnekleri için Premium katman Azure Önbelleği için Redis Kalıcılığı, Redis kümeleme ve VNET desteğini nasıl oluşturup yöneteceğinizi öğrenin
 author: yegu-ms
 ms.service: cache
 ms.topic: conceptual
 ms.date: 07/05/2017
 ms.author: yegu
 ms.openlocfilehash: aadcc13d2397f10ea40f06d1259c86b9a179c38b
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/15/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74121660"
 ---
-# <a name="introduction-to-the-azure-cache-for-redis-premium-tier"></a>Redsıs Premium katmanı için Azure önbelleğine giriş
-Redsıs için Azure önbelleği, verilerinize Çok hızlı erişme olanağı sunarak yüksek düzeyde ölçeklenebilir ve hızlı uygulamalar oluşturmanıza yardımcı olan dağıtılmış, yönetilen bir önbelleğidir. 
+# <a name="introduction-to-the-azure-cache-for-redis-premium-tier"></a>Redis Premium katmanı için Azure Önbelleğine Giriş
+Redis için Azure Önbelleği, verilerinize süper hızlı erişim sağlayarak yüksek ölçeklenebilir ve yanıt veren uygulamalar oluşturmanıza yardımcı olan dağıtılmış, yönetilen bir önbellektir. 
 
-Yeni Premium katmanı, daha iyi performans, daha büyük iş yükleri, olağanüstü durum kurtarma, içeri/dışarı aktarma ve gelişmiş güvenlik gibi tüm standart katman özelliklerini ve daha fazlasını içeren bir kurumsal özellikli katmandır. Premium önbellek katmanının ek özellikleri hakkında daha fazla bilgi edinmek için okumaya devam edin.
+Yeni Premium katmanı, daha iyi performans, daha büyük iş yükleri, olağanüstü durum kurtarma, alma/dışa aktarma ve gelişmiş güvenlik gibi tüm Standart katman özelliklerini ve daha fazlasını içeren bir Enterprise hazır katmanıdır. Premium önbellek katmanının ek özellikleri hakkında daha fazla bilgi edinmek için okumaya devam edin.
 
-## <a name="better-performance-compared-to-standard-or-basic-tier"></a>Standart veya temel katmana kıyasla daha iyi performans
-**Standart veya temel katman üzerinde daha iyi performans.** Premium katmandaki önbellekler, daha hızlı işlemcilere sahip ve temel veya Standart katmana kıyasla daha iyi performans sağlayan donanımlar üzerine dağıtılır. Premium katman önbelleklerine daha yüksek aktarım hızı ve düşük gecikme süreleri vardır. 
+## <a name="better-performance-compared-to-standard-or-basic-tier"></a>Standart veya Temel katmana göre daha iyi performans
+**Standart veya Temel katmana göre daha iyi performans.** Premium katmandaki önbellekler, daha hızlı işlemcilere sahip olan ve Temel veya Standart Katman'a göre daha iyi performans sağlayan donanımda dağıtılır. Premium katman önbellekleri daha yüksek iş sahibi ve daha düşük gecikme süreleri vardır. 
 
-**Aynı boyutlu önbellek için üretilen iş, Standart katmana kıyasla Premium 'da daha yüksektir.** Örneğin, 53 GB P4 (Premium) önbelleğinin üretilen iş hacmi, C6 (Standart) için 150K ile karşılaştırıldığında saniyede 250 KB istektir.
+**Aynı boyuttaki Önbellek için üretim, Premium'da Standart katmana göre daha yüksektir.** Örneğin, 53 GB P4 (Premium) önbelleğinin iş kısmı, C6 için 150K (Standart) ile karşılaştırıldığında saniyede 250K istektir.
 
-Premium önbellekler ile boyut, aktarım hızı ve bant genişliği hakkında daha fazla bilgi için bkz. [redsıs Için Azure ÖNBELLEĞI SSS](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)
+Boyut, iş ortası ve birinci sınıf önbelleklerle bant genişliği hakkında daha fazla bilgi için [Redis SSS için Azure Önbelleği'ne](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use) bakın
 
 ## <a name="redis-data-persistence"></a>Redis veri kalıcılığı
-Premium katmanı, önbellek verilerini bir Azure depolama hesabında kalıcı hale bırakmanıza olanak tanır. Temel/standart önbellekte tüm veriler yalnızca bellekte depolanır. Temeldeki altyapı sorunları söz konusu olduğunda olası veri kaybı olabilir. Veri kaybına karşı dayanıklılığı artırmak için Premium katmanda Redsıs veri kalıcılığı özelliğini kullanmanızı öneririz. Redsıs için Azure önbelleği, [redsıs kalıcılığı](https://redis.io/topics/persistence)içindeki RDB ve AOF (çok yakında) seçenekleri sunar. 
+Premium katmanı, önbellek verilerini bir Azure Depolama hesabında devam etmenizi sağlar. Temel/Standart önbelleğinde tüm veriler yalnızca bellekte depolanır. Altta yatan altyapı sorunları söz konusu olduğunda potansiyel veri kaybı olabilir. Veri kaybına karşı dayanıklılığı artırmak için Premium katmanındaki Redis veri kalıcılığı özelliğini kullanmanızı öneririz. Redis için Azure Önbellek RdB ve AOF (yakında) Seçenekleri [Redis kalıcılık](https://redis.io/topics/persistence)sunuyor. 
 
-Kalıcılığı yapılandırma hakkında yönergeler için bkz. [redsıs Için Premium Azure önbelleği için kalıcılığı yapılandırma](cache-how-to-premium-persistence.md).
+Kalıcılığı yapılandırma yönergeleri [için, Redis için Premium Azure Önbelleği için kalıcılığı nasıl yapılandıracağınız](cache-how-to-premium-persistence.md)abakın.
 
 ## <a name="redis-cluster"></a>Redis kümesi
-53 GB 'den büyük önbellekler oluşturmak veya birden çok redin düğümüne veri eklemek istiyorsanız, Premium katmanda kullanılabilen reddo kümeleme kullanabilirsiniz. Her düğüm, yüksek kullanılabilirlik için Azure tarafından yönetilen birincil/çoğaltma önbellek çiftinin oluşur. 
+53 GB'dan büyük önbellekler oluşturmak veya birden çok Redis düğümünde veri parçalamak istiyorsanız, Premium katmanında bulunan Redis kümelemasını kullanabilirsiniz. Her düğüm, yüksek kullanılabilirlik için Azure tarafından yönetilen bir birincil/yineleme önbellek çiftinden oluşur. 
 
-**Redsıs Kümelemesi, size maksimum ölçek ve aktarım hızı sağlar.** Küme içindeki parça sayısını (düğümler) artırdıkça üretilen iş miktarı artar. Örn. 10 parçalı bir P4 kümesi oluşturursanız, kullanılabilir üretilen iş miktarı 250K * 10 = 2.500.000 istek/saniye olur. Premium önbellekler ile boyut, aktarım hızı ve bant genişliği hakkında daha fazla ayrıntı için lütfen [REDSıS SSS Için Azure önbelleğine](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use) bakın.
+**Redis kümeleme maksimum ölçek ve verim verir.** Kümedeki parça (düğüm) sayısını artırdıkça üretim doğrusal olarak artar. Örn. 10 parçadan oluşan bir P4 kümesi oluşturursanız, kullanılabilir iş parçacığı saniyede 250K *10 = 2,5 Milyon istek olur. Boyut, iş ortası ve bant genişliği hakkında daha fazla bilgi için lütfen [Redis SSS için Azure](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use) Önbelleği'ne bakın.
 
-Kümeleme ile çalışmaya başlamak için bkz. [redsıs Için Premium Azure önbelleği için kümeleme yapılandırma](cache-how-to-premium-clustering.md).
+Kümeleme ile başlamak [için Redis için Premium Azure Önbelleği için kümeleme yapılandırmayı nasıl yapılandıracağınız](cache-how-to-premium-clustering.md)ı görün.
 
-## <a name="enhanced-security-and-isolation"></a>Geliştirilmiş güvenlik ve yalıtım
-Temel veya Standart katmanda oluşturulan önbelleklere genel İnternet üzerinden erişilebilir. Önbelleğe erişim, erişim anahtarına göre kısıtlıdır. Premium katmanla birlikte yalnızca belirtilen bir ağ içindeki istemcilerin önbelleğe erişebildiğinden emin olabilirsiniz. Redsıs için Azure önbellek 'yi bir [Azure sanal ağı 'nda (VNet)](https://azure.microsoft.com/services/virtual-network/)dağıtabilirsiniz. Redis’e erişimi daha da fazla kısıtlamak için alt ağlar, erişim denetimi, ilkeler gibi VNet’in tüm özelliklerini ve diğer özellikleri kullanabilirsiniz.
+## <a name="enhanced-security-and-isolation"></a>Gelişmiş güvenlik ve yalıtım
+Temel veya Standart katmanda oluşturulan önbellekler herkese açık internet üzerinden erişilebilir. Önbellek erişimi erişim anahtarına bağlı olarak kısıtlanır. Premium katmanı ile önbelleğe yalnızca belirli bir ağdaki istemcilerin Önbelleğe erişebilmesini sağlayabilirsiniz. Redis için Azure Önbelleğini bir [Azure Sanal Ağı'nda (VNet)](https://azure.microsoft.com/services/virtual-network/)dağıtabilirsiniz. Redis’e erişimi daha da fazla kısıtlamak için alt ağlar, erişim denetimi, ilkeler gibi VNet’in tüm özelliklerini ve diğer özellikleri kullanabilirsiniz.
 
-Daha fazla bilgi için bkz. [bir Premium Azure önbelleği için bkz. redsıs Için sanal ağ desteğini yapılandırma](cache-how-to-premium-vnet.md).
+Daha fazla bilgi için [Redis için Premium Azure Önbelleği için Sanal Ağ desteğini nasıl yapılandıracağınız](cache-how-to-premium-vnet.md)abakın.
 
 ## <a name="importexport"></a>İçeri/Dışarı Aktarma
-İçeri/dışarı aktarma, redsıs veritabanı (RDB) anlık görüntüsüne yönelik bir Azure önbelleğini bir Azure depolama hesabındaki bir sayfa blobuna içeri aktarıp dışarı aktararak redsıs için Azure önbelleğine veri aktarmanıza veya redsıs için Azure önbelleğinden veri aktarmaya olanak tanıyan Redsıs veri yönetimi işlemi için bir Azure önbelleğidir. Bu, Redsıs örnekleri için farklı Azure önbelleği arasında geçiş yapmanızı veya kullanılmadan önce verileri kullanarak önbelleğin doldurulmasını sağlar.
+Alma/Dışa Aktarma, Redis için Verileri Azure Önbelleğine aktarmanıza veya Redis için Azure Önbelleğinden veri dışa aktarmanıza olanak tanıyan bir Azure Önbelleğidir, bir Azure Depolama Hesabı'ndaki bir sayfa kalıbından Redis Veritabanı için Bir Azure Önbelleği (RDB) anlık görüntüsünü içe aktarıp dışa aktarabilirsiniz. Bu, Redis örnekleri için farklı Azure Önbelleği arasında geçiş yapmanızı veya kullanmadan önce önbelleği verilerle doldurmanızı sağlar.
 
-İçeri aktarma, Linux, Windows veya Amazon Web Services ve diğer bulut sağlayıcıları üzerinde çalışan bir bulut veya ortamda çalışan redsıs uyumlu RDB dosyalarını getirmek için kullanılabilir. Verilerin içeri aktarılması, önceden doldurulmuş verilerle bir önbellek oluşturmanın kolay bir yoludur. İçeri aktarma işlemi sırasında Redsıs için Azure önbelleği, RDB dosyalarını Azure depolama alanından belleğe yükler ve ardından anahtarları önbelleğe ekler.
+Alma, Linux, Windows veya Amazon Web Hizmetleri ve diğerleri gibi herhangi bir bulut sağlayıcısında çalışan Redis de dahil olmak üzere herhangi bir bulut veya ortamda çalışan herhangi bir Redis sunucusundan Redis uyumlu RDB dosya(ları) getirmek için kullanılabilir. Veri alma, önceden doldurulmuş verilerle bir önbellek oluşturmanın kolay bir yoludur. Alma işlemi sırasında, Redis için Azure Önbelleği RDB dosyalarını Azure depolama alanından belleğe yükler ve anahtarları önbelleğe ekler.
 
-Dışarı aktarma, redin için Azure önbelleğinde depolanan verileri Redsıs uyumlu RDB dosyaları 'na dışarı aktarıp verbırakmanıza olanak tanır. Bu özelliği, Redsıs örneği için bir Azure önbelleğinden diğerine veya başka bir Redsıs sunucusuna veri taşımak için kullanabilirsiniz. Dışarı aktarma işlemi sırasında, Redsıs sunucu örneği için Azure önbelleğini barındıran VM 'de geçici bir dosya oluşturulur ve dosya belirtilen depolama hesabına yüklenir. Dışarı aktarma işlemi başarı veya başarısızlık durumu ile tamamlandığında geçici dosya silinir.
+Dışa aktarma, Redis için Azure Önbelleğinde depolanan verileri Redis uyumlu RDB dosyasına(lar) dışa aktarmanızı sağlar. Bu özelliği, Redis örneği için bir Azure Önbelleğinden diğerine veya başka bir Redis sunucusuna taşımak için kullanabilirsiniz. Dışa aktarma işlemi sırasında, Redis sunucusu örneği için Azure Önbelleğini barındıran VM'de geçici bir dosya oluşturulur ve dosya belirlenen depolama hesabına yüklenir. Dışa aktarma işlemi başarı veya hata durumuyla tamamlandığında, geçici dosya silinir.
 
-Daha fazla bilgi için bkz. [redin Için Azure önbelleğinden veri aktarma ve verileri dışarı aktarma](cache-how-to-import-export-data.md).
+Daha fazla bilgi için, [Redis için Azure Önbelleğinden verileri nasıl içe aktarAcağınız ve dışa aktarmayı](cache-how-to-import-export-data.md)öğrenin.
 
 ## <a name="reboot"></a>Yeniden başlatma
-Premium katmanı, önbelleğinizin bir veya daha fazla düğümünü isteğe bağlı olarak yeniden başlatmanızı sağlar. Bu, hata durumunda uygulamanızı dayanıklılık açısından test etmenizi sağlar. Aşağıdaki düğümleri yeniden başlatabilirsiniz.
+Premium katman, önbelleğinizin isteğe bağlı bir veya daha fazla düğümlerini yeniden başlatmanızı sağlar. Bu, bir hata durumunda uygulamanızı esneklik açısından test etmenizi sağlar. Aşağıdaki düğümleri yeniden başlatabilirsiniz.
 
 * Önbelleğinizin ana düğümü
 * Önbelleğinizin ikincil düğümü
-* Önbelleğinizin birincil ve ikincil düğümleri
-* Kümeleme ile Premium önbellek kullanırken, önbellekteki bireysel parçalar için birincil, ikincil veya her iki düğümü yeniden başlatabilirsiniz
+* Önbelleğinizin hem birincil hem de ikincil düğümleri
+* Kümeleme ile premium önbellek kullanırken, önbellekteki tek tek kırıklar için birincil, ikincil veya her iki düğümü yeniden başlatabilirsiniz
 
-Daha fazla bilgi için bkz. [yeniden başlatma](cache-administration.md#reboot) ve [yeniden başlatma SSS](cache-administration.md#reboot-faq).
+Daha fazla bilgi için [Reboot FAQ](cache-administration.md#reboot-faq) [bkz.](cache-administration.md#reboot)
 
 >[!NOTE]
->Önyükleme işlevselliği artık Redsıs katmanları için tüm Azure önbelleğinde etkinleştirilmiştir.
+>Redis katmanları için tüm Azure Önbelleği işlevleri artık etkinleştirildi.
 >
 >
 
 ## <a name="schedule-updates"></a>Güncelleştirmeleri zamanlama
-Zamanlanan Güncelleştirmeler özelliği önbelleğiniz için bir bakım penceresi atamanıza olanak tanır. Bakım penceresi belirtildiğinde, bu pencere sırasında tüm Red, Server güncelleştirmeleri yapılır. Bir bakım penceresi belirlemek için, istenen günleri seçin ve her gün için bakım penceresi başlangıç saatini belirtin. Bakım penceresi saatinin UTC olarak olduğunu unutmayın. 
+Zamanlanmış güncelleştirmeler özelliği önbelleğiniz için bir bakım penceresi belirlemenize olanak tanır. Bakım penceresi belirtildiğinde, bu pencere sırasında redis sunucu güncelleştirmeleri yapılır. Bakım penceresi belirlemek için istediğiniz günleri seçin ve her gün için bakım penceresi başlangıç saatini belirtin. Bakım penceresi süresinin UTC'de olduğunu unutmayın. 
 
-Daha fazla bilgi için bkz. [güncelleştirmeleri zamanlama](cache-administration.md#schedule-updates) ve [güncelleştirmeleri zamanlama SSS](cache-administration.md#schedule-updates-faq).
+Daha fazla bilgi için zamanlama [güncelleştirmeleri](cache-administration.md#schedule-updates) ve [Zamanlama güncelleştirmeleri SSS'ye](cache-administration.md#schedule-updates-faq)bakın.
 
 > [!NOTE]
-> Zamanlanan bakım penceresi sırasında yalnızca Redsıs sunucu güncelleştirmeleri yapılır. Bakım penceresi, Azure güncelleştirmeleri veya VM işletim sistemi güncelleştirmeleri için geçerlidir.
+> Yalnızca Redis sunucu güncelleştirmeleri zamanlanan bakım penceresi sırasında yapılır. Bakım penceresi Azure güncelleştirmeleri veya VM işletim sistemindeki güncelleştirmeler için geçerli değildir.
 > 
 > 
 
 ## <a name="geo-replication"></a>Coğrafi çoğaltma
 
-**Coğrafi çoğaltma** , redsıs örnekleri Için iki Premium katman Azure önbelleğinin bağlanmasına yönelik bir mekanizma sağlar. Bir önbellek, birincil bağlı önbellek ve diğeri ikincil bağlantılı önbellek olarak atanır. İkincil bağlantılı önbellek salt okunurdur ve birincil önbelleğe yazılan veriler ikincil bağlantılı önbelleğe çoğaltılır. Bu işlev, Azure bölgeleri arasında bir önbelleği çoğaltmak için kullanılabilir.
+**Coğrafi çoğaltma,** Redis örnekleri için iki Premium katmanAzure Önbelleği bağlamak için bir mekanizma sağlar. Bir önbellek birincil bağlı önbellek olarak, diğeri ise ikincil bağlantılı önbellek olarak belirlenir. İkincil bağlantılı önbellek salt okunur olur ve birincil önbelleğe yazılan veriler ikincil bağlantılı önbelleğe kopyalanır. Bu işlev, Azure bölgelerinde bir önbelleği çoğaltmak için kullanılabilir.
 
-Daha fazla bilgi için bkz. [redsıs Için Azure önbelleği Için Coğrafi çoğaltmayı yapılandırma](cache-how-to-geo-replication.md).
+Daha fazla bilgi için [Redis için Azure Önbelleği için Coğrafi çoğaltma yı nasıl yapılandıracağınız](cache-how-to-geo-replication.md)abakın.
 
 
 ## <a name="to-scale-to-the-premium-tier"></a>Premium katmana ölçeklendirmek için
-Premium katmana ölçeklendirmek için, **fiyatlandırma katmanını Değiştir** dikey penceresinde Premium katmanlardan birini seçmeniz yeterlidir. Ayrıca, PowerShell ve CLı kullanarak önbelleğinizi Premium katmana ölçeklendirebilirsiniz. Adım adım yönergeler için bkz. [Azure önbelleğini redne ölçeklendirme](cache-how-to-scale.md) ve [bir ölçeklendirme işlemini otomatikleştirme](cache-how-to-scale.md#how-to-automate-a-scaling-operation).
+Premium katmana ölçeklendirmek için, **Değiştir fiyatlandırma katmanı** bıçağındaki premium katmanlardan birini seçmeniz yeterlidir. Önbelleğinizi PowerShell ve CLI'yi kullanarak premium katmana ölçeklendirebilirsiniz. Adım adım yönergeler [için, Redis için Azure Önbelleği Nasıl Ölçeklendirilir](cache-how-to-scale.md) ve [ölçeklendirme işlemini otomatikleştirin.](cache-how-to-scale.md#how-to-automate-a-scaling-operation)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bir önbellek oluşturun ve yeni Premium katman özelliklerini araştırın.
+Bir önbellek oluşturun ve yeni premium katman özelliklerini keşfedin.
 
-* [Redsıs için Premium Azure önbelleği için kalıcılığı yapılandırma](cache-how-to-premium-persistence.md)
-* [Redsıs için Premium Azure önbelleği için sanal ağ desteğini yapılandırma](cache-how-to-premium-vnet.md)
-* [Redsıs için Premium Azure önbelleği için kümeleme yapılandırma](cache-how-to-premium-clustering.md)
-* [Redsıs için Azure önbelleğinden veri aktarma ve verileri dışarı aktarma](cache-how-to-import-export-data.md)
-* [Redsıs için Azure önbelleğini yönetme](cache-administration.md)
+* [Redis için Premium Azure Önbelleği için kalıcılığı yapılandırma](cache-how-to-premium-persistence.md)
+* [Redis için Premium Azure Önbelleği için Sanal Ağ desteği nasıl yapılandırılır?](cache-how-to-premium-vnet.md)
+* [Redis için Premium Azure Önbelleği için kümeleme yapılandırma](cache-how-to-premium-clustering.md)
+* [Redis için Azure Önbelleğinden veri alma ve dışa aktarma](cache-how-to-import-export-data.md)
+* [Redis için Azure Önbelleği nasıl uygulanır?](cache-administration.md)
 

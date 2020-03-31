@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 05/27/2019
 ms.author: glenga
 ms.openlocfilehash: d697334fe56fb9133a06cee79067c60bc3a37281
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/30/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "68639156"
 ---
-Bağlama uzantılarını yüklemenin en kolay yolu, [uzantı](../articles/azure-functions/functions-bindings-register.md#extension-bundles)paketlerinin etkinleştirilme yöntemidir. Paketleri etkinleştirdiğinizde, önceden tanımlanmış bir uzantı paketleri kümesi otomatik olarak yüklenir.
+Bağlama uzantılarını yüklemenin en kolay yolu [uzantı demetlerini](../articles/azure-functions/functions-bindings-register.md#extension-bundles)etkinleştirmektir. Paketleri etkinleştirdiğinizde, önceden tanımlanmış bir uzatma paketi kümesi otomatik olarak yüklenir.
 
-Uzantı paketleri 'ni etkinleştirmek için, Host. json dosyasını açın ve içeriğini aşağıdaki kodla eşleşecek şekilde güncelleştirin:
+Uzantı demetlerini etkinleştirmek için host.json dosyasını açın ve içeriğini aşağıdaki kodla eşleşecek şekilde güncelleştirin:
 
 ```json
 {

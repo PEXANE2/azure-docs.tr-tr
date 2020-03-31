@@ -1,6 +1,6 @@
 ---
-title: PowerShell ile bir abonelikteki tüm VM 'Lerle ilgili ayrıntıları toplama
-description: PowerShell ile bir abonelikteki tüm VM 'Lerle ilgili ayrıntıları toplama
+title: PowerShell ile abonelikteki tüm VM'ler hakkında bilgi toplama
+description: PowerShell ile abonelikteki tüm VM'ler hakkında bilgi toplama
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: v-miegge
@@ -16,23 +16,23 @@ ms.date: 07/01/2019
 ms.author: v-miegge
 ms.custom: mvc
 ms.openlocfilehash: 237081380445f2b2e4168ee3afe9a3ed7544fc89
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/06/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74900193"
 ---
-# <a name="collect-details-about-all-vms-in-a-subscription-with-powershell"></a>PowerShell ile bir abonelikteki tüm VM 'Lerle ilgili ayrıntıları toplama
+# <a name="collect-details-about-all-vms-in-a-subscription-with-powershell"></a>PowerShell ile abonelikteki tüm VM'ler hakkında bilgi toplama
 
-Bu betik VM adı, kaynak grubu adı, bölge, sanal ağ, alt ağ, özel IP adresi, işletim sistemi türü ve belirtilen abonelikteki VM 'Lerin genel IP adresini içeren bir CSV oluşturur.
+Bu komut dosyası, sağlanan abonelikte VM'lerin VM Adı, Kaynak Grubu Adı, Bölge, Sanal Ağ, Altnet, Özel IP Adresi, İşletim Sistemi Türü ve Genel IP Adresini içeren bir csv oluşturur.
 
-[Azure aboneliğiniz](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing)yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free) oluşturun.
+[Azure aboneliğiniz](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing) yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free) oluşturun.
 
 ## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell'i başlatma
 
 Azure Cloud Shell, bu makaledeki adımları çalıştırmak için kullanabileceğiniz ücretsiz bir etkileşimli kabuktur. Yaygın Azure araçları, kabuğa önceden yüklenmiştir ve kabuk, hesabınızla birlikte kullanılacak şekilde yapılandırılmıştır. 
 
-Cloud Shell'i açmak için kod bloğunun sağ üst köşesinden **Deneyin**'i seçmeniz yeterlidir. İsterseniz [https://shell.azure.com/powershell](https://shell.azure.com/powershell) adresine giderek Cloud Shell'i ayrı bir tarayıcı sekmesinde de başlatabilirsiniz. **Kopyala**’yı seçerek kod bloğunu kopyalayın, Cloud Shell’e yapıştırın ve Enter tuşuna basarak çalıştırın.
+Cloud Shell'i açmak için kod bloğunun sağ üst köşesinden **Deneyin**'i seçmeniz yeterlidir. Ayrıca bulut shell'i ayrı bir tarayıcı [https://shell.azure.com/powershell](https://shell.azure.com/powershell)sekmesinde başlatabilirsiniz. **Kopyala**’yı seçerek kod bloğunu kopyalayın, Cloud Shell’e yapıştırın ve Enter tuşuna basarak çalıştırın.
 
 ## <a name="sample-script"></a>Örnek betik
 
@@ -70,14 +70,14 @@ $report | Export-CSV "$home/$reportName"
 ```
 
 ## <a name="script-explanation"></a>Betik açıklaması
-Bu betik, bir abonelikteki VM 'lerin ayrıntılarının CSV dışa aktarılmasını oluşturmak için aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü belgelere yönlendirir.
+Bu komut dosyası, bir abonelikteki VM'lerin ayrıntılarının csv dışa aktarımını oluşturmak için aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü belgelere yönlendirir.
 
 |Komut|Notlar|
 |-|-|
-|[Select-AzSubscription](https://docs.microsoft.com/powershell/module/Az.Accounts/Set-AzContext)|Geçerli oturumda kullanılacak cmdlet 'lerin kiracı, abonelik ve ortamını ayarlar.|
-|[Get-AzVM](https://docs.microsoft.com/powershell/module/Az.Compute/Get-AzVM)|Sanal makinenin özelliklerini alır.|
-|[Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/Az.Network/Get-AzPublicIpAddress)|Genel bir IP adresi alır.|
-|[Get-Aznetworkınterface](https://docs.microsoft.com/powershell/module/Az.Network/Get-AzNetworkInterface)|Bir ağ arabirimini alır.|
+|[Seç-AzSubscription](https://docs.microsoft.com/powershell/module/Az.Accounts/Set-AzContext)|Kiracıyı, aboneliği ve ortamı geçerli oturumda kullanmak üzere ayarlar.|
+|[Al-AzVM](https://docs.microsoft.com/powershell/module/Az.Compute/Get-AzVM)|Sanal makinenin özelliklerini alır.|
+|[Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/Az.Network/Get-AzPublicIpAddress)|Herkese açık bir IP adresi alır.|
+|[Get-AzNetworkInterface](https://docs.microsoft.com/powershell/module/Az.Network/Get-AzNetworkInterface)|Bir ağ arabirimi alır.|
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

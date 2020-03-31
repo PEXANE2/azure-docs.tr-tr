@@ -1,6 +1,6 @@
 ---
-title: Azure Resource Manager şablonu kullanarak Azure Veri Gezgini yönelik küme sorumlularını ekleme
-description: Bu makalede, Azure Veri Gezgini için küme sorumlularını bir Azure Resource Manager şablonu kullanarak nasıl ekleyeceğinizi öğreneceksiniz.
+title: Azure Kaynak Yöneticisi şablonu kullanarak Azure Veri Gezgini için küme ilkeleri ekleme
+description: Bu makalede, Azure Kaynak Yöneticisi şablonu kullanarak Azure Veri Gezgini için küme ilkelerini nasıl ekleyeceğinizi öğrenirsiniz.
 author: lucygoldbergmicrosoft
 ms.author: lugoldbe
 ms.reviewer: orspodek
@@ -8,29 +8,29 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.openlocfilehash: 22423568ab0b3b55d8d9566df4829eb6070b5f8c
-ms.sourcegitcommit: 42517355cc32890b1686de996c7913c98634e348
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76965053"
 ---
-# <a name="add-cluster-principals-for-azure-data-explorer-by-using-an-azure-resource-manager-template"></a>Azure Resource Manager şablonu kullanarak Azure Veri Gezgini yönelik küme sorumlularını ekleme
+# <a name="add-cluster-principals-for-azure-data-explorer-by-using-an-azure-resource-manager-template"></a>Azure Kaynak Yöneticisi şablonu kullanarak Azure Veri Gezgini için küme ilkeleri ekleme
 
 > [!div class="op_single_selector"]
-> * [C#](cluster-principal-csharp.md)
+> * [C #](cluster-principal-csharp.md)
 > * [Python](cluster-principal-python.md)
 > * [Azure Resource Manager şablonu](cluster-principal-resource-manager.md)
 
-Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve üst düzeyde ölçeklenebilir veri keşfetme hizmetidir. Bu makalede, Azure Veri Gezgini için küme sorumlularını bir Azure Resource Manager şablonu kullanarak eklersiniz.
+Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve üst düzeyde ölçeklenebilir veri keşfetme hizmetidir. Bu makalede, Azure Kaynak Yöneticisi şablonu kullanarak Azure Veri Gezgini için küme ilkeleri eklersiniz.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/) oluşturun.
-* [Bir küme oluşturun](create-cluster-database-portal.md).
+* [Bir küme oluşturun.](create-cluster-database-portal.md)
 
-## <a name="azure-resource-manager-template-for-adding-a-cluster-principal"></a>Küme sorumlusu eklemek için şablon Azure Resource Manager
+## <a name="azure-resource-manager-template-for-adding-a-cluster-principal"></a>Küme sorumlusu eklemek için Azure Kaynak Yöneticisi şablonu
 
-Aşağıdaki örnekte, bir küme sorumlusu eklemek için bir Azure Resource Manager şablonu gösterilmektedir.  Formunu kullanarak [Azure Portal şablonu düzenleyebilir ve dağıtabilirsiniz](/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal#edit-and-deploy-the-template) .
+Aşağıdaki örnekte, küme sorumlusu eklemek için bir Azure Kaynak Yöneticisi şablonu gösterilmektedir.  Formu kullanarak [şablonu Azure portalında düzenleme yapabilir ve dağıtabilirsiniz.](/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal#edit-and-deploy-the-template)
 
 ```json
 {
@@ -97,4 +97,4 @@ Aşağıdaki örnekte, bir küme sorumlusu eklemek için bir Azure Resource Mana
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Veritabanı sorumluları Ekle](database-principal-resource-manager.md)
+* [Veritabanı ilkeleri ekleme](database-principal-resource-manager.md)

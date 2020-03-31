@@ -1,6 +1,6 @@
 ---
-title: Windows VM 'yi Azure 'a katmak için şablon kullanma AD DS | Microsoft Docs
-description: Yeni veya mevcut bir Windows Server VM 'sini Azure Active Directory Domain Services yönetilen bir etki alanına katmak için Azure Resource Manager şablonlarını nasıl kullanacağınızı öğrenin.
+title: Windows VM'den Azure AD DS'ye katılmak için şablon kullanma | Microsoft Dokümanlar
+description: Azure Etkin Dizin Etki Alanı Hizmetleri yönetilen yeni veya varolan bir Windows Server VM'ye katılmak için Azure Kaynak Yöneticisi şablonlarını nasıl kullanacağınızı öğrenin.
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -12,35 +12,35 @@ ms.topic: conceptual
 ms.date: 09/17/2019
 ms.author: iainfou
 ms.openlocfilehash: c9b25fe7bc47e05972aebb194e9d94c1ea6dd247
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78298743"
 ---
-# <a name="join-a-windows-server-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain-using-a-resource-manager-template"></a>Kaynak Yöneticisi şablonu kullanarak Windows Server sanal makinesini Azure Active Directory Domain Services yönetilen bir etki alanına katma
+# <a name="join-a-windows-server-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain-using-a-resource-manager-template"></a>Kaynak Yöneticisi şablonu kullanarak Windows Server sanal makinesine Azure Active Directory Etki Alanı Hizmetleri yönetilen bir etki alanına katılma
 
-Azure sanal makinelerinin (VM 'Ler) dağıtımını ve yapılandırmasını otomatik hale getirmek için bir Kaynak Yöneticisi şablonu kullanabilirsiniz. Bu şablonlar her seferinde tutarlı dağıtımlar oluşturmanıza olanak sağlar. Uzantılar, dağıtımın parçası olarak bir VM 'yi otomatik olarak yapılandırmak için şablonlara da dahil edilebilir. Bir faydalı uzantı VM 'Leri, Azure Active Directory Domain Services (Azure AD DS) tarafından yönetilen etki alanları ile kullanılabilecek bir etki alanına birleştirir.
+Azure sanal makinelerinin (VM) dağıtımını ve yapılandırmasını otomatikleştirmek için Kaynak Yöneticisi şablonu kullanabilirsiniz. Bu şablonlar, her seferinde tutarlı dağıtımlar oluşturmanıza izin verir. Uzantılar, dağıtımın bir parçası olarak bir VM'i otomatik olarak yapılandırmak için şablonlara da eklenebilir. Kullanışlı bir uzantı, Azure Active Directory Domain Services (Azure AD DS) yönetilen etki alanlarında kullanılabilen bir etki alanına VM'lere katılır.
 
-Bu makalede, bir Windows Server VM 'sini Kaynak Yöneticisi şablonları kullanarak Azure AD DS yönetilen bir etki alanına nasıl oluşturacağınız ve katılalacağı gösterilmektedir. Ayrıca, mevcut bir Windows Server VM 'sini Azure AD DS etki alanına nasıl katılacağınızı öğreneceksiniz.
+Bu makalede, Kaynak Yöneticisi şablonlarını kullanarak Bir Windows Server VM'yi Azure AD DS yönetilen etki alanına nasıl oluşturup katılacağınız gösterilmektedir. Ayrıca, varolan bir Windows Server VM'e Azure AD DS etki alanına nasıl katılacağınızı da öğrenirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğreticiyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar gereklidir:
+Bu öğreticiyi tamamlamak için aşağıdaki kaynaklara ve ayrıcalıklara ihtiyacınız vardır:
 
 * Etkin bir Azure aboneliği.
-    * Azure aboneliğiniz yoksa [bir hesap oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Abonelikle ilişkili bir Azure Active Directory kiracısı, şirket içi bir dizinle veya yalnızca bulut diziniyle eşitlenir.
-    * Gerekirse, [bir Azure Active Directory kiracı oluşturun][create-azure-ad-tenant] veya [bir Azure aboneliğini hesabınızla ilişkilendirin][associate-azure-ad-tenant].
-* Azure AD kiracınızda etkinleştirilmiş ve yapılandırılmış Azure Active Directory Domain Services yönetilen bir etki alanı.
-    * Gerekirse, ilk öğretici [bir Azure Active Directory Domain Services örneği oluşturur ve yapılandırır][create-azure-ad-ds-instance].
+    * Azure aboneliğiniz yoksa [bir hesap oluşturun.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* Aboneliğinizle ilişkili bir Azure Etkin Dizin kiracısı, şirket içi bir dizini veya yalnızca bulut dizininizle eşitlenir.
+    * Gerekirse, [bir Azure Etkin Dizin kiracısı oluşturun][create-azure-ad-tenant] veya [bir Azure aboneliğini hesabınızla ilişkilendirin.][associate-azure-ad-tenant]
+* Azure Etkin Dizin Etki Alanı Hizmetleri, Azure AD kiracınızda etkin leştirilmiş ve yapılandırılan bir etki alanı yönetildi.
+    * Gerekirse, ilk öğretici [bir Azure Active Directory Etki Alanı Hizmetleri örneği oluşturur ve yapılandırır.][create-azure-ad-ds-instance]
 * Azure AD DS yönetilen etki alanının bir parçası olan bir kullanıcı hesabı.
 
-## <a name="azure-resource-manager-template-overview"></a>Azure Resource Manager şablonuna genel bakış
+## <a name="azure-resource-manager-template-overview"></a>Azure Kaynak Yöneticisi şablonuna genel bakış
 
-Kaynak Yöneticisi şablonlar, Azure altyapısını kodda tanımlamanıza olanak sağlar. Gerekli kaynaklar, ağ bağlantıları ya da VM 'lerin yapılandırılması bir şablonda tanımlanabilir. Bu şablonlar her seferinde tutarlı, tekrarlanabilir dağıtımlar oluşturur ve değişiklik yaptığınız sürece sürümlenebilir. Daha fazla bilgi için bkz. [Azure Resource Manager şablonlarına genel bakış][template-overview].
+Kaynak Yöneticisi şablonları, Azure altyapınızı kod olarak tanımlamanıza izin verir. Gerekli kaynaklar, ağ bağlantıları veya VM yapılandırması şablonda tanımlanabilir. Bu şablonlar her seferinde tutarlı, tekrarlanabilir dağıtımlar oluşturur ve siz değişiklik yaptığınızda sürümlenebilir. Daha fazla bilgi için Azure [Kaynak Yöneticisi şablonlarına genel bakış][template-overview]bakın.
 
-Her kaynak JavaScript Nesne Gösterimi (JSON) kullanılarak bir şablonda tanımlanır. Aşağıdaki JSON örneği, Active Directory etki alanına JOIN uzantısını yüklemek için *Microsoft. COMPUTE/virtualMachines/Extensions* kaynak türünü kullanır. Dağıtım zamanında belirttiğiniz parametreler kullanılır. Uzantı dağıtıldığında, VM belirtilen Azure AD DS yönetilen etki alanına katılır.
+Her kaynak, JavaScript Nesne Gösterimi (JSON) kullanılarak bir şablonda tanımlanır. Aşağıdaki JSON örneği, Active Directory join uzantısını yüklemek için *Microsoft.Compute/virtualMachines/extensions* kaynak türünü kullanır. Dağıtım zamanında belirttiğiniz parametreler kullanılır. Uzantı dağıtıldığında, VM belirtilen Azure AD DS yönetilen etki alanına katılır.
 
 ```json
  {
@@ -70,74 +70,74 @@ Her kaynak JavaScript Nesne Gösterimi (JSON) kullanılarak bir şablonda tanım
     }
 ```
 
-Aynı şablonda bir VM oluşturmazsanız, bu VM uzantısı da dağıtılabilir. Bu makaledeki örneklerde aşağıdaki yaklaşımların her ikisi de gösterilmektedir:
+Bu VM uzantısı, aynı şablonda bir VM oluşturmasanız bile dağıtılabilir. Bu makaledeki örnekler aşağıdaki yaklaşımların her ikisini de gösterir:
 
-* [Windows Server VM oluşturma ve yönetilen bir etki alanına katma](#create-a-windows-server-vm-and-join-to-a-managed-domain)
-* [Mevcut bir Windows Server sanal makinesini yönetilen bir etki alanına katma](#join-an-existing-windows-server-vm-to-a-managed-domain)
+* [Windows Server VM oluşturun ve yönetilen bir etki alanına katılın](#create-a-windows-server-vm-and-join-to-a-managed-domain)
+* [Yönetilen bir etki alanına varolan bir Windows Server VM'ye katılma](#join-an-existing-windows-server-vm-to-a-managed-domain)
 
-## <a name="create-a-windows-server-vm-and-join-to-a-managed-domain"></a>Windows Server VM oluşturma ve yönetilen bir etki alanına katma
+## <a name="create-a-windows-server-vm-and-join-to-a-managed-domain"></a>Windows Server VM oluşturun ve yönetilen bir etki alanına katılın
 
-Bir Windows Server sanal makinesine ihtiyacınız varsa, bir Kaynak Yöneticisi şablonu kullanarak bir tane oluşturup yapılandırabilirsiniz. VM dağıtıldığında, VM 'yi Azure AD DS yönetilen bir etki alanına katmak için bir uzantı yüklenir. Azure AD DS yönetilen bir etki alanına katmak istediğiniz bir VM zaten varsa, [var olan bir Windows Server sanal makinesini yönetilen bir etki alanına katmak](#join-an-existing-windows-server-vm-to-a-managed-domain)için atlayın.
+Windows Server VM'ye ihtiyacınız varsa, Kaynak Yöneticisi şablonu kullanarak bir tane oluşturabilir ve yapılandırabilirsiniz. VM dağıtıldığında, VM'ye Azure AD DS yönetilen etki alanına katılmak için bir uzantı yüklenir. Azure AD DS yönetilen bir etki alanına katılmak istediğiniz bir VM'niz varsa, [varolan bir Windows Server VM'ini yönetilen bir etki alanına katılmak için](#join-an-existing-windows-server-vm-to-a-managed-domain)atlayın.
 
-Bir Windows Server sanal makinesi oluşturup Azure AD DS yönetilen bir etki alanına katmak için aşağıdaki adımları izleyin:
+Bir Windows Server VM oluşturmak ve ardından Azure AD DS yönetilen bir etki alanına katılmak için aşağıdaki adımları tamamlayın:
 
-1. [Hızlı başlangıç şablonuna](https://azure.microsoft.com/resources/templates/201-vm-domain-join/)gidin. **Azure 'A dağıtma**seçeneğini belirleyin.
-1. **Özel dağıtım** sayfasında, bir WINDOWS Server VM 'sini oluşturmak ve Azure AD DS yönetilen etki alanına katmak için aşağıdaki bilgileri girin:
-
-    | Ayar                   | Değer |
-    |---------------------------|-------|
-    | Abonelik              | Azure AD Domain Services etkinleştirdiğiniz Azure aboneliğini seçin. |
-    | Kaynak grubu            | VM 'niz için kaynak grubunu seçin. |
-    | Konum                  | SANAL makinenizin konumunu seçin. |
-    | Mevcut VNET adı        | VM 'nin bağlanacağı, *Myvnet*gibi mevcut sanal ağın adı. |
-    | Mevcut alt ağ adı      | Var olan sanal ağ alt ağının adı (örneğin, *Iş yükleri*). |
-    | DNS etiketi öneki          | VM için kullanmak üzere *myvm*gıbı bir DNS adı girin. |
-    | VM boyutu                   | *Standard_DS2_v2*gıbı bir VM boyutu belirtin. |
-    | Katılacak etki alanı            | Azure AD DS yönetilen etki alanı DNS adı, örneğin *aaddscontoso.com*. |
-    | Etki alanı Kullanıcı adı           | Azure AD DS yönetilen etki alanındaki, sanal makineyi, `contosoadmin@aaddscontoso.com`gibi yönetilen etki alanına katmak için kullanılması gereken kullanıcı hesabı. Bu hesap, Azure AD DS yönetilen etki alanının bir parçası olmalıdır. |
-    | Etki alanı parolası           | Önceki ayarda belirtilen kullanıcı hesabının parolası. |
-    | İsteğe bağlı OU yolu          | VM 'nin ekleneceği özel OU. Bu parametre için bir değer belirtmezseniz, VM varsayılan *AAD DC bilgisayarları* OU 'ya eklenir. |
-    | VM Yöneticisi Kullanıcı adı         | VM 'de oluşturulacak bir yerel yönetici hesabı belirtin. |
-    | VM yönetici parolası         | VM için bir yerel yönetici parolası belirtin. Parola deneme yanılma saldırılarına karşı korumak için güçlü bir yerel yönetici parolası oluşturun. |
-
-1. Hüküm ve koşulları gözden geçirin, ardından **yukarıda belirtilen hüküm ve koşulları kabul ediyorum**kutusunu işaretleyin. Hazırlandığınızda, sanal makineyi oluşturmak ve Azure AD DS yönetilen etki alanına katmak için **satın al** ' ı seçin.
-
-> [!WARNING]
-> **Parolaları dikkatle işleyin.**
-> Şablon parametre dosyası, Azure AD DS yönetilen etki alanının bir parçası olan bir kullanıcı hesabının parolasını ister. Bu dosyaya el ile değer girmeyin ve dosya paylaşımlarında veya diğer paylaşılan konumlarda erişilebilir durumda bırakın.
-
-Dağıtımın başarıyla tamamlanabilmesi birkaç dakika sürer. İşiniz bittiğinde, Windows VM oluşturulup Azure AD DS yönetilen etki alanına birleştirilir. VM, etki alanı hesapları kullanılarak yönetilebilir veya oturum açabilir.
-
-## <a name="join-an-existing-windows-server-vm-to-a-managed-domain"></a>Mevcut bir Windows Server sanal makinesini yönetilen bir etki alanına katma
-
-Azure AD DS yönetilen bir etki alanına katmak istediğiniz mevcut bir sanal makine veya VM grubunuz varsa, yalnızca VM uzantısını dağıtmak için bir Kaynak Yöneticisi şablonu kullanabilirsiniz.
-
-Mevcut bir Windows Server VM 'sini Azure AD DS yönetilen bir etki alanına katmak için aşağıdaki adımları izleyin:
-
-1. [Hızlı başlangıç şablonuna](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/)gidin. **Azure 'A dağıtma**seçeneğini belirleyin.
-1. **Özel dağıtım** sayfasında, VM 'yi Azure AD DS yönetilen etki alanına katmak için aşağıdaki bilgileri girin:
+1. Hızlı başlangıç [şablonuna](https://azure.microsoft.com/resources/templates/201-vm-domain-join/)göz atın. Azure'a **Dağıtma**seçeneğini seçin.
+1. Özel **dağıtım** sayfasında, Bir Windows Server VM oluşturmak ve Azure AD DS yönetilen etki alanına katılmak için aşağıdaki bilgileri girin:
 
     | Ayar                   | Değer |
     |---------------------------|-------|
-    | Abonelik              | Azure AD Domain Services etkinleştirdiğiniz Azure aboneliğini seçin. |
-    | Kaynak grubu            | Mevcut VM 'niz ile kaynak grubunu seçin. |
-    | Konum                  | Var olan sanal makinenizin konumunu seçin. |
-    | VM listesi                   | *MyVM1, myVM2*gibi Azure AD DS yönetilen etki alanına KATıLACAK mevcut VM 'ler için virgülle ayrılmış bir liste girin. |
-    | Etki alanına katılması Kullanıcı adı     | Azure AD DS yönetilen etki alanındaki, sanal makineyi, `contosoadmin@aaddscontoso.com`gibi yönetilen etki alanına katmak için kullanılması gereken kullanıcı hesabı. Bu hesap, Azure AD DS yönetilen etki alanının bir parçası olmalıdır. |
-    | Etki alanına katılması Kullanıcı parolası | Önceki ayarda belirtilen kullanıcı hesabının parolası. |
-    | İsteğe bağlı OU yolu          | VM 'nin ekleneceği özel OU. Bu parametre için bir değer belirtmezseniz, VM varsayılan *AAD DC bilgisayarları* OU 'ya eklenir. |
+    | Abonelik              | Azure AD Etki Alanı Hizmetlerini etkinleştirdiğiniz aynı Azure aboneliğini seçin. |
+    | Kaynak grubu            | VM'niz için kaynak grubunu seçin. |
+    | Konum                  | VM'nizin konumunu seçin. |
+    | Varolan VNET Adı        | VM'yi *myVnet*gibi bağlamak için varolan sanal ağın adı. |
+    | Varolan Subnet Adı      | *İş Yükleri*gibi varolan sanal ağ alt ağının adı. |
+    | DNS Etiket Öneki          | *Myvm*gibi VM için kullanılacak bir DNS adı girin. |
+    | VM boyutu                   | *Standard_DS2_v2*gibi bir VM boyutu belirtin. |
+    | Katılacak Etki Alanı            | Azure AD DS, *aaddscontoso.com*gibi etki alanı DNS adını yönetti. |
+    | Etki Alanı Kullanıcı Adı           | VM'yi yönetilen etki alanına katılmak için kullanılması gereken Azure AD DS yönetilen `contosoadmin@aaddscontoso.com`etki alanındaki kullanıcı hesabı. Bu hesap, Azure AD DS yönetilen etki alanının bir parçası olmalıdır. |
+    | Etki Alanı Şifresi           | Önceki ayarda belirtilen kullanıcı hesabının parolası. |
+    | İsteğe bağlı OU Yolu          | VM eklemek için özel OU. Bu parametre için bir değer belirtmezseniz, VM varsayılan *AAD DC Bilgisayar* OU eklenir. |
+    | VM Yönetici Kullanıcı Adı         | VM'de oluşturmak için yerel bir yönetici hesabı belirtin. |
+    | VM Yönetici Şifresi         | VM için yerel yönetici parolası belirtin. Parola kaba kuvvet saldırılarına karşı korumak için güçlü bir yerel yönetici parolası oluşturun. |
 
-1. Hüküm ve koşulları gözden geçirin, ardından **yukarıda belirtilen hüküm ve koşulları kabul ediyorum**kutusunu işaretleyin. Hazırlandığınızda, VM 'yi Azure AD DS yönetilen etki alanına katmak için **satın al** ' ı seçin.
+1. Hüküm ve koşulları gözden geçirin, daha sonra **yukarıda belirtilen hüküm ve koşulları kabul ettiğim için**kutuyu işaretleyin. Hazır olduğunuzda, VM'yi oluşturmak ve Azure AD DS yönetilen etki alanına katılmak için **Satın Al'ı** seçin.
 
 > [!WARNING]
-> **Parolaları dikkatle işleyin.**
-> Şablon parametre dosyası, Azure AD DS yönetilen etki alanının bir parçası olan bir kullanıcı hesabının parolasını ister. Bu dosyaya el ile değer girmeyin ve dosya paylaşımlarında veya diğer paylaşılan konumlarda erişilebilir durumda bırakın.
+> **Parolaları dikkatli bir şekilde işleyebilir.**
+> Şablon parametre dosyası, Azure AD DS yönetilen etki alanının bir parçası olan bir kullanıcı hesabı için parola ister. Bu dosyaya değerleri el ile girmeyin ve dosya paylaşımlarında veya diğer paylaşılan konumlarda erişilebilir bırakmayın.
 
-Dağıtımın başarıyla tamamlanabilmesi birkaç dakika sürer. İşiniz bittiğinde, belirtilen Windows VM 'Leri Azure AD DS yönetilen etki alanına katılır ve etki alanı hesapları kullanılarak yönetilebilir veya oturum açabilir.
+Dağıtımın başarıyla tamamlanması birkaç dakika sürer. Tamamlandığında, Windows VM oluşturulur ve Azure AD DS yönetilen etki alanına katılır. VM etki alanı hesapları kullanılarak yönetilebilir veya oturum açabilir.
+
+## <a name="join-an-existing-windows-server-vm-to-a-managed-domain"></a>Yönetilen bir etki alanına varolan bir Windows Server VM'ye katılma
+
+Azure AD DS yönetilen bir etki alanına katılmak istediğiniz varolan bir VM veya VM grubunuz varsa, VM uzantısını dağıtmak için kaynak yöneticisi şablonu kullanabilirsiniz.
+
+Varolan bir Windows Server VM'ine Azure AD DS yönetilen bir etki alanına katılmak için aşağıdaki adımları tamamlayın:
+
+1. Hızlı başlangıç [şablonuna](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/)göz atın. Azure'a **Dağıtma**seçeneğini seçin.
+1. Özel **dağıtım** sayfasında, VM'ye Azure AD DS yönetilen etki alanına katılmak için aşağıdaki bilgileri girin:
+
+    | Ayar                   | Değer |
+    |---------------------------|-------|
+    | Abonelik              | Azure AD Etki Alanı Hizmetlerini etkinleştirdiğiniz aynı Azure aboneliğini seçin. |
+    | Kaynak grubu            | Mevcut VM'niz ile kaynak grubunu seçin. |
+    | Konum                  | Mevcut VM'nizin konumunu seçin. |
+    | VM listesi                   | *MyVM1,myVM2*gibi Azure AD DS yönetilen etki alanına katılmak için varolan VM(ler)in virgülle ayrılmış listesini girin. |
+    | Etki Alanına Katılma Kullanıcı Adı     | VM'yi yönetilen etki alanına katılmak için kullanılması gereken Azure AD DS yönetilen `contosoadmin@aaddscontoso.com`etki alanındaki kullanıcı hesabı. Bu hesap, Azure AD DS yönetilen etki alanının bir parçası olmalıdır. |
+    | Etki Alanına Katılma Kullanıcı Şifresi | Önceki ayarda belirtilen kullanıcı hesabının parolası. |
+    | İsteğe bağlı OU Yolu          | VM eklemek için özel OU. Bu parametre için bir değer belirtmezseniz, VM varsayılan *AAD DC Bilgisayar* OU eklenir. |
+
+1. Hüküm ve koşulları gözden geçirin, daha sonra **yukarıda belirtilen hüküm ve koşulları kabul ettiğim için**kutuyu işaretleyin. Hazır olduğunuzda, Azure AD DS yönetilen etki alanına VM'ye katılmak için **Satın Al'ı** seçin.
+
+> [!WARNING]
+> **Parolaları dikkatli bir şekilde işleyebilir.**
+> Şablon parametre dosyası, Azure AD DS yönetilen etki alanının bir parçası olan bir kullanıcı hesabı için parola ister. Bu dosyaya değerleri el ile girmeyin ve dosya paylaşımlarında veya diğer paylaşılan konumlarda erişilebilir bırakmayın.
+
+Dağıtımın başarıyla tamamlanması birkaç dakika sürer. Tamamlandığında, belirtilen Windows VM'leri Azure AD DS yönetilen etki alanına katılır ve etki alanı hesapları kullanılarak yönetilebilir veya oturum açılabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, şablonları kullanarak kaynakları yapılandırmak ve dağıtmak için Azure portal kullandınız. Ayrıca, [Azure PowerShell][deploy-powershell] veya [Azure CLI][deploy-cli]kullanarak kaynak yöneticisi şablonlarıyla kaynak dağıtabilirsiniz.
+Bu makalede, kaynakları şablonları kullanarak yapılandırmak ve dağıtmak için Azure portalını kullandınız. Azure [PowerShell][deploy-powershell] veya [Azure CLI'yi][deploy-cli]kullanarak Kaynak Yöneticisi şablonlarıyla da kaynak dağıtabilirsiniz.
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md

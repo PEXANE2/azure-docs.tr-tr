@@ -1,6 +1,6 @@
 ---
-title: REST API kullanarak Azure Ilke güvenlik ilkeleri oluşturma ve düzenleme
-description: REST API aracılığıyla Azure Ilke ilkesi yönetimi hakkında bilgi edinin.
+title: REST API'sini kullanarak Azure İlkesi güvenlik ilkeleri oluşturma ve değiştirme
+description: REST API aracılığıyla Azure İlkesi ilkesi yönetimi hakkında bilgi edinin.
 services: security-center
 author: memildin
 manager: rkarlin
@@ -9,37 +9,37 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
 ms.openlocfilehash: c218b5dc8ca3bfa0358a9b6a0d4867696762a8d4
-ms.sourcegitcommit: dfa543fad47cb2df5a574931ba57d40d6a47daef
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77430950"
 ---
-# <a name="configure-a-security-policy-in-azure-policy-using-the-rest-api"></a>Azure Ilkesinde REST API kullanarak bir güvenlik ilkesi yapılandırma
+# <a name="configure-a-security-policy-in-azure-policy-using-the-rest-api"></a>REST API'sini kullanarak Azure İlkesi'nde bir güvenlik ilkesini yapılandırma
 
-Azure Güvenlik Merkezi, Azure Ilkesi ile yerel tümleştirmenin bir parçası olarak, ilke atamaları oluşturmak için Azure Ilkesinin REST API avantajlarından yararlanmanızı sağlar. Aşağıdaki yönergelerde, ilke atamalarının oluşturulması ve var olan atamaların özelleştirilmesi adım adım açıklanmaktadır. 
+Azure Güvenlik Merkezi, Azure İlkesi ile yerel tümleştirmenin bir parçası olarak, ilke atamaları oluşturmak için Azure İlkesi'nin REST API'sinden yararlanmanızı sağlar. Aşağıdaki yönergeler, ilke atamalarının oluşturulmasının yanı sıra varolan atamaların özelleştirilmesinde size yol kat eder. 
 
-Azure Ilkesinde önemli kavramlar: 
+Azure İlkesi'ndeki önemli kavramlar: 
 
 - **İlke tanımı** bir kuraldır 
 
-- **Girişim** , ilke tanımlarının koleksiyonudur (kurallar) 
+- **Girişim,** ilke tanımları (kurallar) koleksiyonudur 
 
-- **Atama** , bir girişim veya ilkenin belirli bir kapsama (Yönetim grubu, abonelik vb.) bir uygulamasıdır. 
+- **Atama,** bir girişimin veya politikanın belirli bir kapsama (yönetim grubu, abonelik, vb.) uygulanmasıdır. 
 
-Güvenlik Merkezi 'nin tüm güvenlik ilkelerini içeren yerleşik bir girişimi vardır. Güvenlik Merkezi 'nin Azure kaynaklarınızın ilkelerini değerlendirmek için, yönetim grubunda veya değerlendirmek istediğiniz abonelikte bir atama oluşturmanız gerekir.
+Güvenlik Merkezi, tüm güvenlik ilkelerini içeren yerleşik bir girişime sahiptir. Güvenlik Merkezi'nin Azure kaynaklarınızdaki ilkelerini değerlendirmek için, yönetim grubunda veya değerlendirmek istediğiniz abonelikte bir atama oluşturmanız gerekir.
 
-Yerleşik girişim, tüm güvenlik merkezi ilkelerinin varsayılan olarak etkinleştirilmiş olduğunu içerir. Yerleşik girişimden belirli ilkeleri devre dışı bırakmayı seçebilirsiniz. Örneğin, **Web uygulaması güvenlik duvarı**hariç tüm güvenlik merkezi ilkelerini uygulamak için, ilkenin efekt parametresinin değerini **devre dışı**olarak değiştirin. 
+Yerleşik girişim, Varsayılan olarak Güvenlik Merkezi'nin tüm ilkelerini etkinleştirmiştir. Yerleşik girişimden belirli ilkeleri devre dışı bırakmayı seçebilirsiniz. Örneğin, **web uygulaması güvenlik duvarı**dışındaki Güvenlik Merkezi'nin tüm ilkelerini uygulamak için, ilkeğin efekt parametresinin değerini Devre Dışı **Bırakılmış**olarak değiştirin. 
 
 ## <a name="api-examples"></a>API örnekleri
 
-Aşağıdaki örneklerde şu değişkenleri değiştirin:
+Aşağıdaki örneklerde, bu değişkenleri değiştirin:
 
-- **{scope}** ilkeyi uyguladığınız yönetim grubunun veya aboneliğin adını girin.
-- **{Policyassignmentname}** [ilgili ilke atamasının adını](#policy-names)girin.
-- **{Name}** adınızı veya ilke değişikliğini onaylayan yöneticinin adını girin.
+- **{scope}** ilkeyi uyguladığınız yönetim grubunun veya aboneliğinin adını girin.
+- **{policyAssignmentName}** [ilgili ilke atamasının adını](#policy-names)girin.
+- **{name}** adınızı veya ilke değişikliğini onaylayan yöneticinin adını girin.
 
-Bu örnekte, yerleşik güvenlik merkezi girişiminin bir abonelikte veya yönetim grubunda nasıl atanacağı gösterilmektedir
+Bu örnek, yerleşik Güvenlik Merkezi girişimini bir abonelik veya yönetim grubunda nasıl atayabileceğinizi gösterir
  
  ```
     PUT  
@@ -68,13 +68,13 @@ Bu örnekte, yerleşik güvenlik merkezi girişiminin bir abonelikte veya yönet
     } 
  ```
 
-Bu örnekte, aşağıdaki ilkeler devre dışı bırakıldığında yerleşik güvenlik merkezi girişiminin bir abonelikte nasıl atanacağı gösterilmektedir: 
+Bu örnek, aşağıdaki ilkeler devre dışı bırakılmış bir abonelik için yerleşik Güvenlik Merkezi girişimini nasıl atayabileceğinizi gösterir: 
 
-- Sistem güncelleştirmeleri ("systemUpdatesMonitoringEffect") 
+- Sistem güncellemeleri ("systemUpdatesMonitoringEffect") 
 
-- Güvenlik Yapılandırması ("systemConfigurationsMonitoringEffect") 
+- Güvenlik yapılandırmaları ("systemConfigurationsMonitoringEffect") 
 
-- Endpoint Protection ("endpointProtectionMonitoringEffect") 
+- Uç nokta koruması ("endpointProtectionMonitoringEffect") 
 
  ```
     PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}?api-version=2018-05-01 
@@ -109,34 +109,34 @@ Bu örnekte, aşağıdaki ilkeler devre dışı bırakıldığında yerleşik g�
     
     } 
  ```
-Bu örnek, bir atamanın nasıl kaldırılacağını gösterir:
+Bu örnek, bir atamayı nasıl kaldırabileceğinizi gösterir:
  ```
     DELETE   
     https://management.azure.com/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}?api-version=2018-05-01 
  ```
 
-## İlke adları başvurusu<a name="policy-names"></a>
+## <a name="policy-names-reference"></a>İlke adları başvurusu<a name="policy-names"></a>
 
-|Güvenlik Merkezi 'nde ilke adı|Azure Ilkesinde görünen ilke adı |İlke etkisi parametre adı|
+|Güvenlik Merkezi'nde ilke adı|Azure İlkesi'nde görüntülenen ilke adı |İlke etkisi parametre adı|
 |----|----|----|
-|SQL Şifrelemesi |Azure Güvenlik Merkezi 'nde şifrelenmemiş SQL veritabanını izleme |sqlEncryptionMonitoringEffect| 
-|SQL Denetimi |Azure Güvenlik Merkezi 'nde denetlenen SQL veritabanını izleme |sqlAuditingMonitoringEffect|
-|Sistem güncelleştirmeleri |Azure Güvenlik Merkezi 'nde eksik sistem güncelleştirmelerini izleme |systemUpdatesMonitoringEffect|
+|SQL Şifrelemesi |Azure Güvenlik Merkezi'nde şifrelenmemiş SQL veritabanını izleme |sqlEncryptionMonitoringEffect| 
+|SQL Denetimi |Azure Güvenlik Merkezi'nde denetlenmeyen SQL veritabanını izleme |sqlAuditingMonitoringEffect|
+|Sistem güncelleştirmeleri |Azure Güvenlik Merkezi'nde eksik sistem güncelleştirmelerini izleme |systemUpdatesMonitoringEffect|
 |Depolama şifrelemesi |Depolama hesapları için eksik blob şifrelemesini denetle |storageEncryptionMonitoringEffect|
-|JıT ağ erişimi |Azure Güvenlik Merkezi 'nde olası ağ tam zamanında (JıT) erişimi izleme |jitNetworkAccessMonitoringEffect |
-|Uyarlamalı uygulama denetimleri |Azure Güvenlik Merkezi 'nde olası uygulama beyaz listesini izleme |adaptiveApplicationControlsMonitoringEffect|
-|Ağ güvenlik grupları |Azure Güvenlik Merkezi 'nde izin veren ağ erişimini izleme |networkSecurityGroupsMonitoringEffect| 
-|Güvenlik yapılandırmaları |Azure Güvenlik Merkezi 'nde işletim sistemi güvenlik açıklarını izleme |systemConfigurationsMonitoringEffect| 
-|Uç nokta koruması |Azure Güvenlik Merkezi 'nde eksik Endpoint Protection izleme |endpointProtectionMonitoringEffect |
-|Disk şifrelemesi |Azure Güvenlik Merkezi 'nde şifrelenmemiş VM disklerini izleme |diskEncryptionMonitoringEffect|
-|Güvenlik açığı değerlendirmesi |Azure Güvenlik Merkezi 'nde VM güvenlik açıklarını izleme |vulnerabilityAssessmentMonitoringEffect|
-|Web uygulaması güvenlik duvarı |Azure Güvenlik Merkezi 'nde korumasız Web uygulamasını izleme |webApplicationFirewallMonitoringEffect |
-|Yeni nesil güvenlik duvarı |Azure Güvenlik Merkezi 'nde korumasız ağ uç noktalarını izleme| |
+|JIT Ağ erişimi |Azure Güvenlik Merkezi'nde olası ağ erişimini tam zamanında (JIT) izleme |jitNetworkAccessMonitoringEffect |
+|Uyarlamalı uygulama denetimleri |Azure Güvenlik Merkezi'nde olası uygulama Beyaz Liste'yi izleyin |adaptifApplicationControlsMonitoringEffect|
+|Ağ güvenlik grupları |Azure Güvenlik Merkezi'nde izin verilen ağ erişimini izleme |ağSecurityGroupsMonitoringEffect| 
+|Güvenlik yapılandırmaları |Azure Güvenlik Merkezi'ndeki işletim sistemi güvenlik açıklarını izleme |systemConfigurationsMonitoringEffect| 
+|Uç nokta koruması |Azure Güvenlik Merkezi'nde eksik Uç Nokta Koruması'nı izleme |endpointProtectionMonitoringEtkisi |
+|Disk şifrelemesi |Azure Güvenlik Merkezi'nde şifrelenmemiş VM Diskleri izleme |diskEncryptionMonitoringEffect|
+|Güvenlik açığı değerlendirmesi |Azure Güvenlik Merkezi'ndeki VM Güvenlik Açıklarını Izleyin |güvenlik açığıAssessmentMonitoringEffect|
+|Web uygulaması güvenlik duvarı |Azure Güvenlik Merkezi'nde korumasız web uygulamasını izleme |webApplicationFirewallMonitoringEtkisi |
+|Yeni nesil güvenlik duvarı |Azure Güvenlik Merkezi'nde korumasız ağ uçnoktalarını izleme| |
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Diğer ilgili malzemeler için aşağıdaki makalelere bakın: 
+Diğer ilgili materyaller için aşağıdaki makalelere bakın: 
 
 - [Özel güvenlik ilkeleri](custom-security-policies.md)
 - [Güvenlik ilkesine genel bakış](tutorial-security-policy.md)

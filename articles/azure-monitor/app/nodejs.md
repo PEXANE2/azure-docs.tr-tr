@@ -4,15 +4,15 @@ description: Application Insights ile Node.js hizmetlerindeki performansı izley
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.openlocfilehash: 320ec62e642155002e42c59d4656f51673249eb1
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
-ms.translationtype: MT
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77670024"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>Application Insights ile Node.js hizmetlerinizi ve uygulamalarınızı izleme
 
-[Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) , performansı ve diğer sorunları keşfetmenize ve hızlı bir şekilde tanılamanıza yardımcı olması için arka uç hizmetlerinizi ve bileşenlerinizi dağıtımdan sonra izler. Application Insights'ı veri merkezinizde, Azure VM'lerinde, web uygulamalarında ve hatta diğer genel bulutlarda barındırılan Node.js hizmetleri için kullanabilirsiniz.
+[Azure Application Insights,](../../azure-monitor/app/app-insights-overview.md) performansı ve diğer sorunları keşfetmenize ve hızla tanılamanıza yardımcı olmak için dağıtımdan sonra arka uç hizmetlerinizi ve bileşenlerinizi izler. Application Insights'ı veri merkezinizde, Azure VM'lerinde, web uygulamalarında ve hatta diğer genel bulutlarda barındırılan Node.js hizmetleri için kullanabilirsiniz.
 
 İzleme verilerinizi almak, depolamak ve araştırmak için SDK'yı kodunuza ekleyin ve Azure'da karşılık gelen Application Insights kaynağını ayarlayın. SDK daha fazla analiz ve araştırma için verileri bu kaynağa gönderir.
 
@@ -20,27 +20,27 @@ Node.js SDK'sı gelen ve giden HTTP isteklerini, özel durumları ve bazı siste
 
 TelemetryClient API'sini kullanarak uygulamanızın ve sisteminizin ek özelliklerini el ile işaretleyebilir ve izleyebilirsiniz. TelemetryClient API'si bu makalenin ilerleyen bölümlerinde ayrıntılı bir şekilde anlatılmıştır.
 
-## <a name="get-started"></a>başlarken
+## <a name="get-started"></a>Kullanmaya başlayın
 
 Bir uygulama veya hizmet için izlemeyi ayarlamak üzere aşağıdaki görevleri tamamlayın.
 
-### <a name="prerequisites"></a>Önkoşullar
+### <a name="prerequisites"></a>Ön koşullar
 
-Başlamadan önce, bir Azure aboneliğiniz olduğundan emin olun veya ücretsiz olarak yeni bir [tane alın][azure-free-offer]. Kuruluşunuzun zaten bir Azure aboneliği varsa, bir yönetici sizi size eklemek için [Bu talimatları][add-aad-user] izleyebilir.
+Başlamadan önce, bir Azure aboneliğine sahip olduğunuzdan emin olun veya [ücretsiz olarak yeni bir tane edinin][azure-free-offer]. Kuruluşunuzun bir Azure aboneliğini zaten varsa, yöneticiniz [bu yönergeleri][add-aad-user] izleyerek sizi aboneliğe ekleyebilir.
 
 [azure-free-offer]: https://azure.microsoft.com/free/
 [add-aad-user]: https://docs.microsoft.com/azure/active-directory/active-directory-users-create-azure-portal
 
 
-### <a name="resource"></a> Bir Application Insights kaynağını ayarlama
+### <a name="set-up-an-application-insights-resource"></a><a name="resource"></a>Uygulama Öngörüleri kaynağı ayarlama
 
 
-1. [Azure Portal][portal] oturum açın.
-2. **Kaynak oluştur** > **Geliştirici araçları** > **Application Insights** seçeneğini belirleyin. Kaynak; telemetri verilerini, bu veriler için depolamayı, kayıtlı rapor ve panoları, kural ve uyarı yapılandırmasını almak ve diğer işlemlere yönelik bir uç nokta içerir.
+1. [Azure portalında][portal]oturum açın.
+2. **Kaynak** > **Oluştur Geliştirici araçları** > **Uygulama Öngörüleri'ni**seçin. Kaynak; telemetri verilerini, bu veriler için depolamayı, kayıtlı rapor ve panoları, kural ve uyarı yapılandırmasını almak ve diğer işlemlere yönelik bir uç nokta içerir.
 
 3. Kaynak oluşturma sayfasındaki **Uygulama Türü** kutusundan **Node.js Uygulaması**'nı seçin. Uygulama türü oluşturulan varsayılan pano ve raporları belirler. (Herhangi bir Application Insights kaynağı herhangi bir dil ve platformdan veri toplayabilir.)
 
-### <a name="sdk"></a> Node.js SDK'sını ayarlama
+### <a name="set-up-the-nodejs-sdk"></a><a name="sdk"></a> Node.js SDK'sını ayarlama
 
 Veri toplayabilmesi için SDK'yı uygulamanıza ekleyin. 
 
@@ -64,17 +64,17 @@ Veri toplayabilmesi için SDK'yı uygulamanıza ekleyin.
    appInsights.start();
    ```
    
-   Ayrıca \_ veya `setup()` konumuna el ile geçirmek yerine APPINSIGHTS`new appInsights.TelemetryClient()`INSTRUMENTATIONKEY ortam değişkeni aracılığıyla bir ikey sağlayabilirsiniz. Bu uygulama, ikey değerlerini yürütülen kaynak kodunun dışında tutmanıza ve farklı ortamlar için farklı ikey değerleri belirtmenize olanak tanır.
+   Ayrıca `setup()` veya `new appInsights.TelemetryClient()` konumuna el ile geçirmek yerine APPINSIGHTS\_INSTRUMENTATIONKEY ortam değişkeni aracılığıyla bir ikey sağlayabilirsiniz. Bu uygulama, ikey değerlerini yürütülen kaynak kodunun dışında tutmanıza ve farklı ortamlar için farklı ikey değerleri belirtmenize olanak tanır.
 
    Ek yapılandırma seçenekleri için aşağıdaki bölümlere bakın.
 
    SDK'yı telemetri verileri göndermeden denemek için `appInsights.defaultClient.config.disableAppInsights = true` ayarını yapın.
 
-### <a name="monitor"></a> Uygulamanızı izleme
+### <a name="monitor-your-app"></a><a name="monitor"></a> Uygulamanızı izleme
 
 SDK, Node.js çalışma zamanı ve bazı yaygın üçüncü taraf modülleriyle ilgili telemetriyi otomatik olarak toplar. Uygulamanızı kullanarak bu verilerin bazılarını oluşturun.
 
-Ardından [Azure Portal][portal] , daha önce oluşturduğunuz Application Insights kaynağına gidin. **Genel bakış zaman çizelgesinde** ilk birkaç veri noktasını bulun. Ayrıntılı verileri görmek için grafikteki farklı bileşenleri seçin.
+Ardından [Azure portalında][portal] önceden oluşturduğunuz Application Insights kaynağına gidin. **Genel bakış zaman çizelgesinde** ilk birkaç veri noktasını bulun. Ayrıntılı verileri görmek için grafikteki farklı bileşenleri seçin.
 
 Uygulamanız için bulunan topolojiyi görüntülemek için **Uygulama eşlemesi** düğmesini seçin. Ayrıntılı bilgi için eşlemedeki bileşenleri seçin.
 
@@ -92,7 +92,7 @@ SDK gönderilecek verileri toplu hale getirdiği için öğelerin portalde göst
 * Portal kaynak görünümünde **Yenile**’ye tıklayın. Grafikler belirli aralıklarla otomatik olarak yenilenir ancak el ile yenilerseniz anında yenilenir.
 * [Gerekli giden bağlantı noktalarının](../../azure-monitor/app/ip-addresses.md) açık olduğunu doğrulayın.
 * Belirli olayları aramak için [Arama](../../azure-monitor/app/diagnostic-search.md) sekmesini kullanın.
-* [SSS][FAQ] sayfasını inceleyin.
+* [SSS'yi][FAQ]kontrol edin.
 
 
 ## <a name="sdk-configuration"></a>SDK yapılandırması
@@ -193,7 +193,7 @@ server.on("listening", () => {
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Portalda telemetrinizi izleme](../../azure-monitor/app/overview-dashboard.md)
+* [Portalda telemetrinizi izleyin](../../azure-monitor/app/overview-dashboard.md)
 * [Telemetriniz üzerinden Analiz sorguları yazma](../../azure-monitor/log-query/get-started-portal.md)
 
 <!--references-->

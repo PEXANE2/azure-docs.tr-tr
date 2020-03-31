@@ -1,60 +1,60 @@
 ---
-title: REST API ve şablonla kaynakları dağıtma
-description: Kaynakları Azure 'a dağıtmak için Azure Resource Manager ve Kaynak Yöneticisi REST API kullanın. Kaynaklar, bir Resource Manager şablonunda tanımlanır.
+title: REST API ve şablonu yla kaynakları dağıtma
+description: Kaynakları Azure'a dağıtmak için Azure Kaynak Yöneticisi ve Kaynak Yöneticisi REST API'yi kullanın. Kaynaklar, bir Resource Manager şablonunda tanımlanır.
 ms.topic: conceptual
 ms.date: 06/04/2019
-ms.openlocfilehash: fc386f51073c256fd083a04bbed39316784827b1
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 9cdb7b668e5170917b41ef49639bd9a17e538766
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79273819"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80153242"
 ---
-# <a name="deploy-resources-with-resource-manager-templates-and-resource-manager-rest-api"></a>Kaynakları Resource Manager şablonları ve Resource Manager REST API’si ile dağıtma
+# <a name="deploy-resources-with-arm-templates-and-resource-manager-rest-api"></a>ARM şablonları ve Kaynak Yöneticisi REST API ile kaynakları dağıtma
 
-Bu makalede, kaynaklarınızı Azure 'a dağıtmak için Kaynak Yöneticisi şablonlarla birlikte Kaynak Yöneticisi REST API nasıl kullanılacağı açıklanmaktadır.
+Bu makalede, kaynaklarınızı Azure'a dağıtmak için Azure Kaynak Yöneticisi (ARM) şablonlarıyla Kaynak Yöneticisi REST API'sinin nasıl kullanılacağı açıklanmaktadır.
 
-Şablonunuzu istek gövdesine ekleyebilir veya bir dosyaya bağlayabilirsiniz. Bir dosya kullanılırken, yerel bir dosya veya bir URI aracılığıyla kullanılabilen bir dış dosya olabilir. Şablonunuz bir depolama hesabsunsa, şablona erişimi kısıtlayabilir ve dağıtım sırasında bir paylaşılan erişim imzası (SAS) belirtebilirsiniz.
+Şablonunuzu istek gövdesine veya bir dosyaya bağlantıya ekleyebilirsiniz. Bir dosya kullanırken, yerel bir dosya veya URI üzerinden kullanılabilen harici bir dosya olabilir. Şablonunuzun bir depolama hesabında olması durumunda, şablona erişimi kısıtlayabilir ve dağıtım sırasında paylaşılan bir erişim imzası (SAS) belirteci sağlayabilirsiniz.
 
 ## <a name="deployment-scope"></a>Dağıtım kapsamı
 
-Dağıtımınızı bir yönetim grubuna, bir Azure aboneliğine veya bir kaynak grubuna hedefleyebilirsiniz. Çoğu durumda, dağıtımları bir kaynak grubuna hedefleyebilirsiniz. Belirtilen kapsamda ilke ve rol atamaları uygulamak için yönetim grubu veya abonelik dağıtımlarını kullanın. Ayrıca, abonelik dağıtımlarını bir kaynak grubu oluşturmak ve kaynakları dağıtmak için de kullanabilirsiniz. Dağıtımın kapsamına bağlı olarak, farklı komutlar kullanırsınız.
+Dağıtımınızı bir yönetim grubuna, bir Azure aboneliğine veya kaynak grubuna hedefleyebilirsiniz. Çoğu durumda, bir kaynak grubuna dağıtımları hedeflersiniz. Belirtilen kapsamda ilkeleri ve rol atamaları uygulamak için yönetim grubunu veya abonelik dağıtımlarını kullanın. Ayrıca, bir kaynak grubu oluşturmak ve kaynakları ona dağıtmak için abonelik dağıtımlarını da kullanırsınız. Dağıtımın kapsamına bağlı olarak, farklı komutlar kullanırsınız.
 
-Bir **kaynak grubuna**dağıtmak Için, [dağıtımlar-oluştur](/rest/api/resources/deployments/createorupdate)' u kullanın. İsteğin gönderildiği yer:
+Bir kaynak **grubuna**dağıtmak [için, Dağıtımlar](/rest/api/resources/deployments/createorupdate)' ı kullanın - Oluştur . İstek aşağıdakilere gönderilir:
 
 ```HTTP
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2019-05-01
 ```
 
-Bir **aboneliğe**dağıtmak için [dağıtımlar-abonelik kapsamında oluştur](/rest/api/resources/deployments/createorupdateatsubscriptionscope)' u kullanın. İsteğin gönderildiği yer:
+Bir **aboneye**dağıtmak için [Dağıtımlar '](/rest/api/resources/deployments/createorupdateatsubscriptionscope)ı kullanın - Abonelik Kapsamında Oluştur . İstek aşağıdakilere gönderilir:
 
 ```HTTP
 PUT https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2019-05-01
 ```
 
-Abonelik düzeyi dağıtımları hakkında daha fazla bilgi için bkz. [abonelik düzeyinde kaynak grupları ve kaynaklar oluşturma](deploy-to-subscription.md).
+Abonelik düzeyi dağıtımları hakkında daha fazla bilgi için [bkz.](deploy-to-subscription.md)
 
-Bir **yönetim grubuna**dağıtmak Için, [dağıtımlar-yönetim grubu kapsamında oluştur](/rest/api/resources/deployments/createorupdateatmanagementgroupscope)' u kullanın. İsteğin gönderildiği yer:
+Bir yönetim **grubuna**dağıtmak [için, Dağıtımları kullanın - Yönetim Grubu Kapsamı'nda Oluştur.](/rest/api/resources/deployments/createorupdateatmanagementgroupscope) İstek aşağıdakilere gönderilir:
 
 ```HTTP
 PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/{groupId}/providers/Microsoft.Resources/deployments/{deploymentName}?api-version=2019-05-01
 ```
 
-Yönetim grubu düzeyi dağıtımları hakkında daha fazla bilgi için bkz. [Yönetim grubu düzeyinde kaynak oluşturma](deploy-to-management-group.md).
+Yönetim grubu düzeyindeki dağıtımlar hakkında daha fazla bilgi için [bkz.](deploy-to-management-group.md)
 
-Bu makaledeki örnekler, kaynak grubu dağıtımlarını kullanır.
+Bu makaledeki örneklerkaynak grubu dağıtımlarını kullanır.
 
 ## <a name="deploy-with-the-rest-api"></a>REST API ile dağıtma
 
-1. Kimlik doğrulama belirteçleri dahil olmak üzere [ortak parametreleri ve üst bilgileri](/rest/api/azure/)ayarlayın.
+1. Kimlik doğrulama belirteçleri de dahil olmak üzere [ortak parametreleri ve üstbilgi](/rest/api/azure/)ayarlayın.
 
-1. Mevcut bir kaynak grubunuz yoksa, bir kaynak grubu oluşturun. Abonelik KIMLIĞINIZI, yeni kaynak grubunun adını ve çözümünüz için gereken konumu belirtin. Daha fazla bilgi için bkz. [kaynak grubu oluşturma](/rest/api/resources/resourcegroups/createorupdate).
+1. Varolan bir kaynak grubunuz yoksa, bir kaynak grubu oluşturun. Abonelik kimliğinizi, yeni kaynak grubunun adını ve çözümünüz için ihtiyacınız olan konumu sağlayın. Daha fazla bilgi için [bkz.](/rest/api/resources/resourcegroups/createorupdate)
 
    ```HTTP
    PUT https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>?api-version=2019-05-01
    ```
 
-   Şunun gibi bir istek gövdesi ile:
+   Gibi bir istek gövdesi ile:
 
    ```json
    {
@@ -65,17 +65,17 @@ Bu makaledeki örnekler, kaynak grubu dağıtımlarını kullanır.
    }
    ```
 
-1. [Bir şablon dağıtımını doğrulama](/rest/api/resources/deployments/validate) işlemini çalıştırarak yürütmeden önce dağıtımınızı doğrulayın. Dağıtımı sınarken, dağıtımı yürütürken yaptığınız gibi parametreleri tam olarak sağlayın (bir sonraki adımda gösterilmektedir).
+1. [Bir şablon dağıtımını doğrula](/rest/api/resources/deployments/validate) işlemini çalıştırarak dağıtımınızı gerçekleştirmeden önce doğrulayın. Dağıtımı sınarken, dağıtımı yürürken tam olarak yaptığınız parametreleri sağlayın (bir sonraki adımda gösterilir).
 
-1. Bir şablonu dağıtmak için, abonelik KIMLIĞINIZI, kaynak grubunun adını, istek URI 'sindeki dağıtımın adını belirtin.
+1. Bir şablon dağıtmak için abonelik kimliğinizi, kaynak grubunun adını, istek URI'sinde dağıtımın adını sağlayın.
 
    ```HTTP
    PUT https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>/providers/Microsoft.Resources/deployments/<YourDeploymentName>?api-version=2019-05-01
    ```
 
-   İstek gövdesinde, şablonunuz ve parametre dosyanıza bir bağlantı sağlayın. Parametre dosyası hakkında daha fazla bilgi için bkz. [Kaynak Yöneticisi parametre dosyası oluşturma](parameter-files.md).
+   İstek gövdesinde, şablon ve parametre dosyanıza bir bağlantı sağlayın. Parametre dosyası hakkında daha fazla bilgi için [kaynak yöneticisi parametre dosyası oluştur'a](parameter-files.md)bakın.
 
-   **Modun** **artımlı**olarak ayarlandığını unutmayın. Dağıtımı tamamen çalıştırmak için **modu** , **tamamlanmış**olarak ayarlayın. Şablonunuzda olmayan kaynakları yanlışlıkla silebilmeniz için, tüm modunu kullanırken dikkatli olun.
+   **Modun** Artımlı olarak ayarlıolduğuna dikkat **edin.** Tam bir dağıtım çalıştırmak için **modu** **Tamamla'ya**ayarlayın. Şablonunuzda olmayan kaynakları yanlışlıkla silebileceğiniz için tam modu kullanırken dikkatli olun.
 
    ```json
    {
@@ -93,7 +93,7 @@ Bu makaledeki örnekler, kaynak grubu dağıtımlarını kullanır.
    }
    ```
 
-    Yanıt içeriğini günlüğe kaydetmek, içerik istemek veya her ikisini de kullanmak istiyorsanız, istekte **Debugsetting** 'i ekleyin.
+    Yanıt içeriğini günlüğe kaydetmek istiyorsanız, istek içeriği isteyin veya her ikisi de isteğe **hata ayıklama** ekleyin.
 
    ```json
    {
@@ -114,11 +114,11 @@ Bu makaledeki örnekler, kaynak grubu dağıtımlarını kullanır.
    }
    ```
 
-    Depolama hesabınızı, paylaşılan erişim imzası (SAS) belirtecini kullanacak şekilde ayarlayabilirsiniz. Daha fazla bilgi için bkz. [paylaşılan erişim Imzasıyla erişim yetkisi verme](/rest/api/storageservices/delegating-access-with-a-shared-access-signature).
+    Depolama hesabınızı paylaşılan erişim imzası (SAS) belirteci kullanacak şekilde ayarlayabilirsiniz. Daha fazla bilgi için [bkz.](/rest/api/storageservices/delegating-access-with-a-shared-access-signature)
 
-    Bir parametre (örneğin, parola) için hassas bir değer sağlamanız gerekiyorsa, bu değeri bir anahtar kasasına ekleyin. Önceki örnekte gösterildiği gibi dağıtım sırasında anahtar kasasını alın. Daha fazla bilgi için bkz. [dağıtım sırasında güvenli değerleri geçirme](key-vault-parameter.md).
+    Bir parametre (parola gibi) için hassas bir değer sağlamanız gerekiyorsa, bu değeri bir anahtar kasasına ekleyin. Önceki örnekte gösterildiği gibi dağıtım sırasında anahtar kasasını alın. Daha fazla bilgi için [dağıtım sırasında güvenli değerleri geçir'e](key-vault-parameter.md)bakın.
 
-1. Şablon ve parametreler için dosyalara bağlantı yapmak yerine, bunları istek gövdesine dahil edebilirsiniz. Aşağıdaki örnek, şablon ve parametre satır içi olan istek gövdesini gösterir:
+1. Şablon ve parametreler için dosyalara bağlanmak yerine, bunları istek gövdesine ekleyebilirsiniz. Aşağıdaki örnek, şablon ve parametre satırlı istek gövdesini gösterir:
 
    ```json
    {
@@ -181,7 +181,7 @@ Bu makaledeki örnekler, kaynak grubu dağıtımlarını kullanır.
    }
    ```
 
-1. Şablon dağıtımının durumunu almak için [dağıtımlar-al](/rest/api/resources/deployments/get)' ı kullanın.
+1. Şablon dağıtımının durumunu almak için [Dağıtımlar '](/rest/api/resources/deployments/get)ı kullanın - Get .
 
    ```HTTP
    GET https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>/providers/Microsoft.Resources/deployments/<YourDeploymentName>?api-version=2018-05-01
@@ -189,8 +189,8 @@ Bu makaledeki örnekler, kaynak grubu dağıtımlarını kullanır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Hata aldığınızda başarılı bir dağıtıma geri dönmek için, [başarılı bir dağıtımda hata durumunda geri alma](rollback-on-error.md)konusuna bakın.
-- Kaynak grubunda var olan, ancak şablonda tanımlanmamış kaynakların nasıl işleneceğini belirtmek için bkz. [Azure Resource Manager Dağıtım modları](deployment-modes.md).
-- Zaman uyumsuz REST işlemlerini işleme hakkında bilgi edinmek için bkz. [zaman uyumsuz Azure Işlemlerini izleme](../management/async-operations.md).
-- Şablonlar hakkında daha fazla bilgi edinmek için bkz. [Azure Resource Manager şablonlarının yapısını ve sözdizimini anlayın](template-syntax.md).
+- Bir hata aldığınızda başarılı bir dağıtıma geri dönmek [için, başarılı dağıtımhatasında Rollback'i](rollback-on-error.md)görün.
+- Kaynak grubunda bulunan ancak şablonda tanımlanmayan kaynakların nasıl işleyeceğini belirtmek için Azure [Kaynak Yöneticisi dağıtım modlarına](deployment-modes.md)bakın.
+- Eşzamanlı REST işlemlerini işleme hakkında bilgi edinmek için eş [senkronize Azure işlemlerini izleyin'e](../management/async-operations.md)bakın.
+- Şablonlar hakkında daha fazla bilgi edinmek için [bkz.](template-syntax.md)
 

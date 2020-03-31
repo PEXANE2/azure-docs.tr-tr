@@ -1,6 +1,6 @@
 ---
-title: Ölçümler ile Azure Veri Gezgini performansını, sağlık & kullanımını izleyin
-description: Kümenin performansını, sistem durumunu ve kullanımını izlemek için Azure Veri Gezgini ölçümlerini nasıl kullanacağınızı öğrenin.
+title: Azure Veri Gezgini performansını, sistem durumu & kullanımını ölçümlerle izleme
+description: Kümenin performansını, durumunu ve kullanımını izlemek için Azure Veri Gezgini ölçümlerini nasıl kullanacağınızı öğrenin.
 author: orspod
 ms.author: orspodek
 ms.reviewer: gabil
@@ -8,108 +8,108 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/19/2020
 ms.openlocfilehash: 1319b8cd6ac8a0eb83381c24bcde9996458e47a7
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77560313"
 ---
-# <a name="monitor-azure-data-explorer-performance-health-and-usage-with-metrics"></a>Ölçümler ile Azure Veri Gezgini performansını, sistem durumunu ve kullanımını izleyin
+# <a name="monitor-azure-data-explorer-performance-health-and-usage-with-metrics"></a>Azure Veri Gezgini performansını, sistem durumunu ve kullanımını ölçümlerle izleme
 
-Azure Veri Gezgini uygulamalar, web siteleri, IoT cihazları ve daha fazlasından akışı yapılan büyük miktarda veri üzerinde gerçek zamanlı analiz yapmaya yönelik hızlı ve tam olarak yönetilen bir veri analizi hizmetidir. Azure Veri Gezgini kullanmak için, önce bir küme oluşturun ve bu kümede bir veya daha fazla veritabanı oluşturursunuz. Daha sonra sorguları bu verilere karşı çalıştırmak için bir veritabanına (yükleme) sahip olursunuz. Azure Veri Gezgini ölçümleri, küme kaynaklarının sistem durumu ve performansına göre önemli göstergeler sağlar. Azure Veri Gezgini küme durumunu ve belirli bir senaryonuzdaki performansı tek başına ölçümler olarak izlemek için bu makalede ayrıntılı ölçümleri kullanın. Ölçümleri, işletimsel [Azure panoları](/azure/azure-portal/azure-portal-dashboards) ve [Azure uyarıları](/azure/azure-monitor/platform/alerts-metric-overview)temeli olarak da kullanabilirsiniz.
+Azure Veri Gezgini uygulamalar, web siteleri, IoT cihazları ve daha fazlasından akışı yapılan büyük miktarda veri üzerinde gerçek zamanlı analiz yapmaya yönelik hızlı ve tam olarak yönetilen bir veri analizi hizmetidir. Azure Veri Gezgini'ni kullanmak için öncelikle bir küme ve bu kümenin içinde bir veya daha fazla veritabanı oluşturmanız gerekir. Ardından veritabanına veri alarak (yükleyerek) sorgu çalıştırabilirsiniz. Azure Veri Gezgini ölçümleri, küme kaynaklarının durumu ve performansı yla ilgili önemli göstergeler sağlar. Azure Veri Gezgini küme durumunu ve performansını belirli senaryonuzda tek başına ölçümler olarak izlemek için bu makalede ayrıntılı olarak kullanılan ölçümleri kullanın. Ölçümleri, operasyonel [Azure Panoları](/azure/azure-portal/azure-portal-dashboards) ve [Azure Uyarıları](/azure/azure-monitor/platform/alerts-metric-overview)için temel olarak da kullanabilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* Azure aboneliği. Bir tane yoksa, [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/)oluşturabilirsiniz.
-* Bir [küme ve veritabanı](create-cluster-database-portal.md).
+* Azure aboneliği. Hesabınız yoksa, ücretsiz bir [Azure hesabı](https://azure.microsoft.com/free/)oluşturabilirsiniz.
+* Bir [küme ve veritabanı.](create-cluster-database-portal.md)
 
 ## <a name="using-metrics"></a>Ölçümleri kullanma
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
-1. Azure Veri Gezgini kümenizde **ölçümler** ' i seçerek ölçümler bölmesini açın ve kümenizdeki Analize başlayın.
-    Ölçüm](media/using-metrics/select-metrics.png)![seçin.
-1. Ölçümler bölmesinde: ölçüm bölmesinde ![](media/using-metrics/metrics-pane.png)
-    1. Ölçüm grafiği oluşturmak için **ölçüm adı '** nı ve ölçüm başına ilgili **toplamayı** seçin. **Kaynak** ve **ölçüm ad alanı** seçiciler, Azure Veri Gezgini kümeniz için önceden seçilmiştir. Farklı ölçümler hakkında daha fazla bilgi için bkz. [desteklenen Azure Veri Gezgini ölçümleri](#supported-azure-data-explorer-metrics).
-    1. Aynı grafikte çizilen birden çok ölçümü görmek için **ölçüm Ekle** ' yi seçin.
-    1. Birden çok grafiği tek bir görünümde görmek için **+ yeni grafik** ' i seçin.
-    1. Zaman aralığını değiştirmek için saat seçiciyi kullanın (varsayılan: son 24 saat).
-    1. Boyutları olan ölçümler için [ **Filtre Ekle** ve **bölmeyi Uygula** '](/azure/azure-monitor/platform/metrics-getting-started#apply-dimension-filters-and-splitting) yı kullanın.
-    1. Grafik yapılandırmanızı Pano 'ya eklemek için **panoya sabitle** ' yi seçerek yeniden görüntüleyebilirsiniz.
-    1. Küme ölçütlerini kullanarak ölçümlerinizi görselleştirmek için **Yeni bir uyarı kuralı** ayarlayın. Yeni uyarı kuralı, grafiğinizdeki hedef kaynağı, ölçümü, bölmeyi ve filtre boyutlarını içerir. [Uyarı kuralı oluşturma bölmesinde](/azure/azure-monitor/platform/metrics-charts#create-alert-rules)bu ayarları değiştirin.
+1. [Azure portalında](https://portal.azure.com/)oturum açın.
+1. Azure Veri Gezgini kümenizde, ölçümler bölmesini açmak ve kümenizde analize başlamak için **Ölçümler'i** seçin.
+    ![Ölçümler'i](media/using-metrics/select-metrics.png)seçin.
+1. Ölçüler bölmesinde: ![Ölçümler bölmesi](media/using-metrics/metrics-pane.png)
+    1. Metrik grafik oluşturmak için **Metrik** adını ve metrik başına ilgili **Toplama'yı** seçin. **Kaynak** ve **Metrik Ad Alanı** toplayıcıları Azure Veri Gezgini kümeniz için önceden seçilir. Farklı ölçümler hakkında daha fazla bilgi için [desteklenen Azure Veri Gezgini ölçümlerine](#supported-azure-data-explorer-metrics)bakın.
+    1. Aynı grafikte çizilen birden çok ölçümü görmek için **metrik ekle'yi** seçin.
+    1. Tek bir görünümde birden çok grafiği görmek için **+ Yeni grafik** seçin.
+    1. Zaman aralığını değiştirmek için zaman seçiciyi kullanın (varsayılan: son 24 saat).
+    1. Boyutlara sahip ölçümler için [ **Filtre Ekle** ve **Uygula'yı** ](/azure/azure-monitor/platform/metrics-getting-started#apply-dimension-filters-and-splitting) kullanın.
+    1. Grafik yapılandırmanızı yeniden görüntüleyebilmeniz için grafik yapılandırmanızı panolara eklemek için **panoya Pin'i** seçin.
+    1. Belirlenen ölçütleri kullanarak ölçümlerinizi görselleştirmek için **Yeni uyarı kuralını** ayarlayın. Yeni uyarı kuralı, hedef kaynağınızı, metrik, bölme ve filtre boyutlarınızı grafiğinizden içerir. Bu ayarları [uyarı kuralı oluşturma bölmesinde değiştirin.](/azure/azure-monitor/platform/metrics-charts#create-alert-rules)
 
-[Ölçüm Gezgini](/azure/azure-monitor/platform/metrics-getting-started)kullanımı hakkında ek bilgi.
+[Ölçümler Explorer'ı](/azure/azure-monitor/platform/metrics-getting-started)kullanma hakkında ek bilgiler.
 
 ## <a name="supported-azure-data-explorer-metrics"></a>Desteklenen Azure Veri Gezgini ölçümleri
 
-Desteklenen Azure Veri Gezgini ölçümleri, kullanıma göre çeşitli kategorilere ayrılmıştır. 
+Desteklenen Azure Veri Gezgini Ölçümleri kullanıma göre çeşitli kategorilere ayrılır. 
 
 ### <a name="cluster-health-metrics"></a>Küme durumu ölçümleri
 
-Küme durumu ölçümleri kümenin genel durumunu izler. Bu, kaynak ve Alım kullanımını ve yanıt hızını içerir.
+Küme sistem durumu ölçümleri kümenin genel durumunu izler. Bu kaynak ve yutma kullanımı ve yanıt içerir.
 
-**Ölçüm** | **Birim** | **Toplama** | **Ölçüm açıklaması** | **Boyutlarına** |
+**Ölçüm** | **Birim** | **Toplama** | **Metrik açıklama** | **Boyutlar** |
 |---|---|---|---|---|
-| Önbellek kullanımı | Yüzde | Ortalama, en fazla, en az | Küme tarafından şu anda kullanılan ayrılmış önbellek kaynaklarının yüzdesi. Önbellek, tanımlı önbellek ilkesine göre Kullanıcı etkinliği için ayrılan SSD 'nin boyutudur. Ortalama önbellek kullanımı %80 veya daha az bir küme için sürdürülebilir bir durumdur. Ortalama önbellek kullanımı %80 ' den fazla ise, küme, depolama için iyileştirilmiş bir fiyatlandırma katmanına [ölçeklendirilebilir](manage-cluster-vertical-scaling.md) veya daha fazla örneğe [ölçeklenmelidir](manage-cluster-horizontal-scaling.md) . Alternatif olarak, önbellek ilkesini uyarlayın (önbellekte daha az gün). Önbellek kullanımı %100 ' den fazlaysa, önbelleğe alma ilkesine göre önbelleğe alınacak verilerin boyutu, kümedeki toplam önbellek boyutudur. | None |
-| CPU | Yüzde | Ortalama, en fazla, en az | Kümedeki makineler tarafından şu anda kullanılmakta olan ayrılmış işlem kaynaklarının yüzdesi. Bir küme için bir ortalama %80 veya daha az CPU, sürdürülebilirlik. En yüksek CPU değeri %100 ' dir, bu da verileri işlemek için ek işlem kaynakları olmadığı anlamına gelir. Bir küme iyi gerçekleştirmediğinde, engellenen belirli CPU 'ların olup olmadığını öğrenmek için CPU 'nun en büyük değerini denetleyin. | None |
-| Alım kullanımı | Yüzde | Ortalama, en fazla, en az | Kapasite ilkesinde, alma işlemini gerçekleştirmek için ayrılan toplam kaynaklardan verileri almak için kullanılan gerçek kaynakların yüzdesi. Varsayılan kapasite ilkesi 512 ' den fazla eşzamanlı alım işlemi veya kaynak için yatırılan küme kaynaklarının %75 ' inden fazla değil. %80 veya daha az% ' un ortalama alım kullanımı, bir küme için sürdürülebilir bir durumdur. Alım kullanımının en büyük değeri %100 ' dir, bu da tüm küme alma yeteneğinin kullanıldığı ve bir alım sırasının neden olabileceği anlamına gelir. | None |
-| Canlı tut | Sayı | Ort | Kümenin yanıt hızını izler. Tam yanıt veren bir küme 1 değerini döndürür ve Engellenen veya bağlantısı kesik bir küme 0 döndürür. |
-| Kısıtlanmış komutların toplam sayısı | Sayı | Ort, Max, min, Sum | İzin verilen en fazla sayıda eşzamanlı (paralel) komuta ulaşıldığından kümedeki kısıtlı (reddedilen) komutların sayısı. | None |
-| Toplam kapsam sayısı | Sayı | Ort, Max, min, Sum | Kümedeki toplam veri uzantısı sayısı. Bu ölçümdeki değişiklikler, veri kapsamlarını birleştirme, CPU ağır bir etkinlik olduğundan büyük miktarda veri yapısı değişikliği ve kümede yüksek yük anlamına gelmez. | None |
+| Önbellek kullanımı | Yüzde | Avg, Max, Min | Küme tarafından kullanılmakta olan ayrılan önbellek kaynaklarının yüzdesi. Önbellek, tanımlanan önbellek ilkesine göre kullanıcı etkinliği için ayrılan SSD boyutudur. %80 veya daha az bir önbellek kullanımı, bir küme için sürdürülebilir bir durumdur. Ortalama önbellek kullanımı %80'in üzerindeyse, küme depolama için optimize edilmiş bir fiyatlandırma katmanına [ölçeklendirilmelidir](manage-cluster-vertical-scaling.md) veya daha fazla örneğe [ölçeklendirilmelidir.](manage-cluster-horizontal-scaling.md) Alternatif olarak, önbellek ilkesini (önbellekte daha az gün) uyarla. Önbellek kullanımı %100'ün üzerindeyse, önbelleğe alma ilkesine göre önbelleğe alınacak verilerin boyutu kümedeki toplam önbelleğin boyutundan daha büyüktür. | None |
+| CPU | Yüzde | Avg, Max, Min | Kümedeki makineler tarafından kullanılmakta olan ayrılan işlem kaynaklarının yüzdesi. Bir küme için ortalama %80 veya daha az CPU sürdürülebilirdir. CPU'nun maksimum değeri %100'dür, bu da verileri işlemek için ek bilgi işlem kaynakları olmadığı anlamına gelir. Bir küme iyi performans gösterdiğinde, engellenen belirli CPU'lar olup olmadığını belirlemek için CPU'nun maksimum değerini denetleyin. | None |
+| Yutma kullanımı | Yüzde | Avg, Max, Min | Satın alma gerçekleştirmek için kapasite ilkesinde ayrılan toplam kaynaktan veri yutmak için kullanılan gerçek kaynakların yüzdesi. Varsayılan kapasite ilkesi, 512 eşzamanlı yutma işleminden veya alıma yatırılan küme kaynaklarının %75'inden fazla değildir. Ortalama %80 veya daha az alım kullanımı bir küme için sürdürülebilir bir durumdur. Yutma kullanımının maksimum değeri %100'dür, bu da tüm kümeleme yeteneğinin kullanıldığı ve yutma kuyruğunun neden olabileceği anlamına gelir. | None |
+| Canlı tutun | Sayı | Ort. | Kümenin yanıt verme yeteneğini izler. Tam yanıt veren bir küme değeri 1'i döndürür ve engellenmiş veya bağlantısı kesilen küme 0 döndürür. |
+| Toplam daraltılmış komut sayısı | Sayı | Avg, Max, Min, Toplam | İzin verilen en fazla eşzamanlı (paralel) komut sayısına ulaşıldığından, kümedeki daraltılmış (reddedilen) komutların sayısı. | None |
+| Toplam kapsam sayısı | Sayı | Avg, Max, Min, Toplam | Kümedeki toplam veri kapsamı sayısı. Bu metrikteki değişiklikler, veri kapsamlarını birleştirme CPU ağırlıklı bir etkinlik olduğundan, büyük veri yapısı değişiklikleri ve kümeüzerindeki yüksek yük anlamına gelebilir. | None |
 | | | | |
 
-### <a name="export-health-and-performance-metrics"></a>Durum ve performans ölçümlerini dışarı aktarma
+### <a name="export-health-and-performance-metrics"></a>Sistem durumu ve performans ölçümlerini dışa aktarma
 
-Durum ve performans ölçümlerini dışarı aktarma, genel sistem durumunu ve genel durum, sonuçlar, kayıt sayısı ve kullanım gibi dışarı aktarma işlemlerinin performansını izler.
+İhracat sağlık ve performans ölçümleri, gecikme, sonuç, kayıt sayısı ve kullanım gibi ihracat işlemlerinin genel sağlığını ve performansını izler.
 
-**Ölçüm** | **Birim** | **Toplama** | **Ölçüm açıklaması** | **Boyutlarına** |
+**Ölçüm** | **Birim** | **Toplama** | **Metrik açıklama** | **Boyutlar** |
 |---|---|---|---|---|
-Dışarı aktarılmış kayıtların sürekli dışa aktarma sayısı    | Sayı | Toplam | Tüm sürekli dışa aktarma işlerinde dışarı aktarılmış kayıt sayısı. | None |
-Sürekli dışarı aktarma maksimum değeri |    Sayı   | Maks   | Kümedeki sürekli dışarı aktarma işleri tarafından raporlanan süre (dakika cinsinden). | None |
-Sürekli dışarı aktarma bekleyen sayısı | Sayı | Maks   | Bekleyen sürekli dışarı aktarma işi sayısı. Bu işler, büyük olasılıkla yetersiz kapasiteden dolayı bir kuyrukta çalışmaya hazırlanıyor ancak bir kuyruk bekleniyor. 
-Sürekli dışarı aktarma sonucu    | Sayı |   Sayı   | Her bir sürekli dışarı aktarma çalıştırmasının hata/başarı sonucu. | ContinuousExportName |
-Kullanım verme |    Yüzde | Maks   | Küme içindeki toplam dışa aktarma kapasitesinin dışında, kullanılan dışarı aktarma kapasitesi (0 ile 100 arasında). | None |
+Dışa aktarılan kayıtların sürekli ihracat sayısı    | Sayı | Toplam | Tüm sürekli dışa aktarma işlerinde dışa aktarılan kayıtların sayısı. | None |
+Sürekli ihracat max gecikmesi |    Sayı   | Maks   | Kümedeki sürekli dışa aktarım işleri tarafından bildirilen gecikme (dakika içinde). | None |
+Sürekli ihracat bekleyen sayısı | Sayı | Maks   | Bekleyen sürekli dışa aktarma işlerinin sayısı. Bu işler çalışmaya hazırdır, ancak büyük olasılıkla yetersiz kapasite nedeniyle kuyrukta bekler). 
+Sürekli ihracat sonucu    | Sayı |   Sayı   | Her sürekli dışa aktarım çalışmasının Hata/Başarı sonucu. | SürekliExportName |
+İhracat kullanımı |    Yüzde | Maks   | Kullanılan dışa aktarma kapasitesi, kümedeki toplam ihracat kapasitesinin dışında (0 ile 100 arasında). | None |
 | | | | |
 
-### <a name="ingestion-health-and-performance-metrics"></a>Alım durumu ve performans ölçümleri
+### <a name="ingestion-health-and-performance-metrics"></a>Yutma durumu ve performans ölçümleri
 
-Alım durumu ve performans ölçümleri, gecikme, sonuçlar ve birim gibi alma işlemlerinin genel durumunu ve performansını izler.
+Yutma sağlığı ve performans ölçümleri, gecikme, sonuç ve hacim gibi yutma işlemlerinin genel sağlığını ve performansını izler.
 
-**Ölçüm** | **Birim** | **Toplama** | **Ölçüm açıklaması** | **Boyutlarına** |
+**Ölçüm** | **Birim** | **Toplama** | **Metrik açıklama** | **Boyutlar** |
 |---|---|---|---|---|
-| İşlenen Olaylar (olay/IoT Hub 'Ları için) | Sayı | Max, min, Sum | Olay Hub 'larından okunan ve küme tarafından işlenen toplam olay sayısı. Olaylar, reddedilen olaylara bölünür ve küme altyapısı tarafından kabul edilen olaylar. | EventStatus |
-| Alma gecikmesi | Saniyeden | Ortalama, en fazla, en az | Sorgu için hazırlanana kadar, verilerin kümede alındığı zamandan itibaren alınan veri gecikmesi. Alım gecikmesi dönemi alma senaryosuna bağlıdır. | None |
-| Alım sonucu | Sayı | Sayı | Başarısız ve başarılı olan alma işlemlerinin toplam sayısı. Başarı ve başarısızlık sonuçlarının demetlerini oluşturmak ve boyutları çözümlemek için **bölmeyi Uygula** ' yı kullanın (**değer** > **durumu**).| Inestionresultdetails |
-| Alım birimi (MB) | Sayı | Maksimum, toplam | Sıkıştırmadan önce kümeye alınan verilerin toplam boyutu (MB cinsinden). | Database |
+| İşlenen olaylar (Olay/IoT Hub'ları için) | Sayı | Max, Min, Toplam | Olay merkezlerinden okunan ve küme tarafından işlenen toplam olay sayısı. Olaylar reddedilen olaylara ve küme altyapısı tarafından kabul edilen olaylara bölünür. | EventStatus |
+| Yutma gecikmesi | Saniye | Avg, Max, Min | Verilerin kümede alındığı andan sorgu için hazır olana kadar, verilerin gecikme süresi. Yutma gecikme süresi yutma senaryosuna bağlıdır. | None |
+| Yutma sonucu | Sayı | Sayı | Başarısız olan ve başarılı olan toplam yutma işlemi sayısı. Başarı kovaları oluşturmak ve sonuçları başarısız ve boyutları analiz etmek için **splitting uygulayın** **(Değer** > **Durumu)** kullanın.| Yutma Sonucu Ayrıntıları |
+| Yutma hacmi (MB'de) | Sayı | Max, Toplam | Sıkıştırmadan önce kümeye (MB olarak) alınan toplam veri boyutu. | Database |
 | | | | |  
 
 ### <a name="query-performance"></a>Sorgu performansı
 
-Sorgu performans ölçümleri sorgu süresini ve toplam eşzamanlı veya kısıtlanmış sorgu sayısını izler.
+Sorgu performans ölçümleri sorgu süresini ve eşzamanlı veya daraltılmış sorguların toplam sayısını izler.
 
-**Ölçüm** | **Birim** | **Toplama** | **Ölçüm açıklaması** | **Boyutlarına** |
+**Ölçüm** | **Birim** | **Toplama** | **Metrik açıklama** | **Boyutlar** |
 |---|---|---|---|---|
-| Sorgu süresi | Milisaniye | Ort, min, Max, Sum | Sorgu sonuçları alınana kadar geçen toplam süre (ağ gecikmesi dahil değil). | QueryStatus |
-| Toplam eşzamanlı sorgu sayısı | Sayı | Ort, Max, min, Sum | Kümede paralel olarak çalışan sorgu sayısı. Bu ölçüm, kümedeki yükü tahmin etmenin iyi bir yoludur. | None |
-| Toplam kısıtlanmış sorgu sayısı | Sayı | Ort, Max, min, Sum | Kümedeki kısıtlanmış (reddedilen) sorguların sayısı. İzin verilen en fazla eşzamanlı (paralel) sorgu sayısı, eşzamanlı sorgu ilkesinde tanımlanmıştır. | None |
+| Sorgu süresi | Milisaniye | Avg, Min, Max, Toplam | Sorgu sonuçları alınana kadar toplam süre (ağ gecikmesi içermez). | Sorgu Durumu |
+| Toplam eşzamanlı sorgu sayısı | Sayı | Avg, Max, Min, Toplam | Kümede paralel olarak çalışan sorgu sayısı. Bu metrik küme üzerindeki yükü tahmin etmek için iyi bir yoldur. | None |
+| Toplam daraltılmış sorgu sayısı | Sayı | Avg, Max, Min, Toplam | Kümedeki daraltılmış (reddedilen) sorguların sayısı. İzin verilen en fazla eşzamanlı (paralel) sorgu sayısı eşzamanlı sorgu ilkesinde tanımlanır. | None |
 | | | | |
 
-### <a name="streaming-ingest-metrics"></a>Akış alma ölçümleri
+### <a name="streaming-ingest-metrics"></a>Akış ölçümleri
 
-Akış alma ölçümleri akış alma verilerini ve istek hızını, süresini ve sonuçlarını izler.
+Akış ölçümleri akış veri ve istek oranı, süresi ve sonuçları izler.
 
-**Ölçüm** | **Birim** | **Toplama** | **Ölçüm açıklaması** | **Boyutlarına** |
+**Ölçüm** | **Birim** | **Toplama** | **Metrik açıklama** | **Boyutlar** |
 |---|---|---|---|---|
-Akış alma verileri oranı |    Sayı   | Kterequestspersecond | Kümeye alınan toplam veri hacmi. | None |
-Akış alma süresi   | Milisaniye  | Ortalama, en fazla, en az | Tüm akış alma isteklerinin toplam süresi. | None |
-Akış alma Isteği oranı   | Sayı | Count, AVG, Max, min, Sum | Toplam akış alma isteği sayısı. | None |
-Akış alma sonucu | Sayı | Ort   | Sonuç türüne göre akış alımı isteklerinin toplam sayısı. | Sonuç |
+Veri Hızı Akış |    Sayı   | RateRequestsPerSecond | Kümeye alınan toplam veri hacmi. | None |
+Akış Alma Süresi   | Milisaniye  | Avg, Max, Min | Tüm akış alma isteklerinin toplam süresi. | None |
+Akış Alma İstek Oranı   | Sayı | Kont, Avg, Max, Min, Toplam | Toplam akış alma isteği sayısı. | None |
+Akış Ingest Sonucu | Sayı | Ort.   | Sonuç türüne göre toplam akış alma isteği sayısı. | Sonuç |
 | | | | |
 
-[Desteklenen Azure Veri Gezgini kümesi ölçümleri](/azure/azure-monitor/platform/metrics-supported#microsoftkustoclusters)hakkında ek bilgiler.
+[Desteklenen Azure Veri Gezgini küme ölçümleri](/azure/azure-monitor/platform/metrics-supported#microsoftkustoclusters)hakkında ek bilgiler.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Öğretici: Azure Veri Gezgini veri alma ve sorgu izleme](/azure/data-explorer/ingest-data-no-code)
-* [Tanılama günlüklerini kullanarak Azure Veri Gezgini alma işlemlerini izleme](/azure/data-explorer/using-diagnostic-logs)
-* [Hızlı başlangıç: Azure Veri Gezgini'ndeki verileri sorgulama](web-query-data.md)
+* [Öğretici: Azure Veri Gezgini'nde izleme verilerini alma ve sorgulama](/azure/data-explorer/ingest-data-no-code)
+* [Tanılama günlüklerini kullanarak Azure Veri Gezgini işlemlerine izleme](/azure/data-explorer/using-diagnostic-logs)
+* [Hızlı başlangıç: Azure Veri Gezgini'nde verileri sorgulama](web-query-data.md)
