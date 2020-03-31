@@ -1,6 +1,6 @@
 ---
-title: İçeriğinizi kayıttan yürütmek için mevcut oyuncuları kullanın-Azure | Microsoft Docs
-description: Bu makalede, içeriğinizi kayıttan yürütmek için kullanabileceğiniz mevcut oynatıcılar listelenmektedir.
+title: İçeriğinizi oynatmak için mevcut oyuncuları kullanma - Azure | Microsoft Dokümanlar
+description: Bu makalede, içeriğinizi oynatmak için kullanabileceğiniz varolan oyuncular listelenmektedir.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 07537d3d67e41f7e1179a709ffa19f3d84aa4539
-ms.sourcegitcommit: f27b045f7425d1d639cf0ff4bcf4752bf4d962d2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/23/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77565834"
 ---
-# <a name="playing-your-content-with-existing-players"></a>Mevcut oyuncularla içeriğinizi oynama
-Azure Media Services, Kesintisiz Akış, HTTP Canlı Akışı ve MPEG-Dash gibi birçok popüler akış biçimini destekler. Bu konu, akışlarınızı test etmek için kullanabileceğiniz mevcut oyunculara işaret eder.
+# <a name="playing-your-content-with-existing-players"></a>İçeriğinizi mevcut oynatıcılarda oynatma
+Azure Medya Hizmetleri, Düzgün Akış, HTTP Live Streaming ve MPEG-Dash gibi birçok popüler akış biçimini destekler. Bu konu, akışlarınızı test etmek için kullanabileceğiniz mevcut oyunculara işaret eder.
 
-### <a name="the-azure-portal-media-services-content-player"></a>Azure portal Media Services içerik yürütücüsü
-**Azure** Portal, videonuzu test etmek için kullanabileceğiniz bir içerik oynatıcı sağlar.
+### <a name="the-azure-portal-media-services-content-player"></a>Azure portalı Medya Hizmetleri içerik oynatıcı
+**Azure** portalı, videonuzu test etmek için kullanabileceğiniz bir içerik oynatıcı sağlar.
 
-İstediğiniz videoya tıklayın ( [yayımlanmış](media-services-portal-publish.md)olduğundan emin olun) ve portalın altındaki **oynat** düğmesine tıklayın.
+İstediğin videoya tıklayın [(yayınlandığından](media-services-portal-publish.md)emin olun) ve portalın altındaki **Oynat** düğmesine tıklayın.
 
 Bazı dikkate alınması gereken noktalar vardır:
 
@@ -37,36 +37,36 @@ Bazı dikkate alınması gereken noktalar vardır:
 
 ### <a name="azure-media-player"></a>Azure Media Player
 
-İçeriğinizi (şifresiz veya korumalı) aşağıdaki biçimlerden birinde kayıttan yürütmek için [Azure Media Player](https://aka.ms/azuremediaplayer) kullanın:
+İçeriğinizi aşağıdaki biçimlerden herhangi birinde oynatmak için [Azure Media Player'ı](https://aka.ms/azuremediaplayer) kullanın (açık veya korumalı) aşağıdaki biçimlerden herhangi birinde:
 
 * Kesintisiz Akış
 * MPEG DASH
 * HLS
-* İlerleyen MP4
+* Progresif MP4
 
-### <a name="flash-player"></a>Flash oynatıcı
+### <a name="flash-player"></a>Flash Oyuncu
 
-#### <a name="aes-encrypted-with-token"></a>AES-belirteç ile şifrelendi
+#### <a name="aes-encrypted-with-token"></a>Token ile AES şifreli
 
 [https://aestoken.azurewebsites.net](https://aestoken.azurewebsites.net)
 
-#### <a name="playready-with-token"></a>Belirteç ile PlayReady
+#### <a name="playready-with-token"></a>Jetonile PlayReady
 
 [https://sltoken.azurewebsites.net](https://sltoken.azurewebsites.net)
 
-### <a name="dash-players"></a>DASH çalarlar
+### <a name="dash-players"></a>DASH Oyuncuları
 
 [https://dashplayer.azurewebsites.net](https://dashplayer.azurewebsites.net)
 
 [https://dashif.org](https://dashif.org)
 
 ### <a name="other"></a>Diğer
-HLS URL 'Leri test etmek için aşağıdakileri de kullanabilirsiniz:
+HLS URL'lerini test etmek için şunları da kullanabilirsiniz:
 
-* İOS cihazında **Safari** veya
-* Windows üzerinde **3ivx HLS oynatıcı** .
+* Bir iOS aygıtında **safari** veya
+* Windows'da **3ivx HLS Oynatıcı.**
 
-## <a name="media-services-learning-paths"></a>Media Services öğrenme yolları
+## <a name="media-services-learning-paths"></a>Media Services’i öğrenme yolları
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Geri bildirimde bulunma

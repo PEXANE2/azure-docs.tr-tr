@@ -1,6 +1,6 @@
 ---
-title: "Excel, Python veya R 'tan Azure Databricks bağlanma "
-description: Excel, Python veya R 'ye Azure Databricks bağlanmak için Simba sürücüsünü nasıl kullanacağınızı öğrenin.
+title: "Excel, Python veya R'den Azure Veri Tuğlalarına bağlanma "
+description: Azure Databricks'i Excel, Python veya R'ye bağlamak için Simba sürücüsünü nasıl kullanacağınızı öğrenin.
 services: azure-databricks
 author: mamccrea
 ms.reviewer: jasonh
@@ -10,106 +10,106 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: mamccrea
 ms.openlocfilehash: f7494d36cf9b16ac6c7a1287a6ff96dd2285c6e2
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/05/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73601939"
 ---
-# <a name="connect-to-azure-databricks-from-excel-python-or-r"></a>Excel, Python veya R 'tan Azure Databricks bağlanma
+# <a name="connect-to-azure-databricks-from-excel-python-or-r"></a>Excel, Python veya R'den Azure Veri Tuğlalarına bağlanma
 
-Bu makalede, Microsoft Excel, Python veya R diliyle Azure Databricks bağlanmak için Databricks ODBC sürücüsünü nasıl kullanacağınızı öğreneceksiniz. Bağlantıyı oluşturduktan sonra Excel, Python veya R istemcilerinden Azure Databricks verilere erişebilirsiniz. Ayrıca, verileri daha fazla analiz etmek için istemcileri de kullanabilirsiniz. 
+Bu makalede, Azure Databricks'i Microsoft Excel, Python veya R diline bağlamak için Databricks ODBC sürücüsünü nasıl kullanacağınızı öğreneceksiniz. Bağlantıyı kurduktan sonra, Azure Veri Tuğlaları'ndaki verilere Excel, Python veya R istemcilerinden erişebilirsiniz. Verileri daha fazla çözümlemek için istemcileri de kullanabilirsiniz. 
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* Kümenizle ilişkili bir Azure Databricks çalışma alanınız, bir Spark kümeniz ve örnek verileriniz olmalıdır. Bu önkoşullara zaten sahip değilseniz, [Azure Portal kullanarak Azure Databricks Spark Işi çalıştırma](quickstart-create-databricks-workspace-portal.md)' da hızlı başlangıcı doldurun.
+* Bir Azure Databricks çalışma alanınız, Bir Kıvılcım kümesiniz ve kümenizle ilişkili örnek verilere sahip olmalısınız. Bu ön koşullara zaten sahip değilseniz, Azure [portalını kullanarak Azure Databricks'te Bir Spark çalıştır işini](quickstart-create-databricks-workspace-portal.md)hızlı bir şekilde tamamlayın.
 
-* Databricks [sürücü indirme sayfasından](https://databricks.com/spark/odbc-driver-download)DATABRICKS ODBC sürücüsünü indirin. Azure Databricks bağlanmak istediğiniz uygulamaya bağlı olarak 32-bit veya 64-bit sürümünü yükleyebilirsiniz. Örneğin, Excel 'den bağlanmak için sürücünün 32 bit sürümünü yüklemelisiniz. R ve Python 'dan bağlanmak için sürücünün 64 bit sürümünü yüklemelisiniz.
+* [Databricks sürücü indirme sayfasından Databricks](https://databricks.com/spark/odbc-driver-download)ODBC sürücüsünü indirin. Azure Databricks'e bağlanmak istediğiniz uygulamadan bağlı olarak 32 bit veya 64 bit sürümü yükleyin. Örneğin, Excel'den bağlanmak için sürücünün 32 bit sürümünü yükleyin. R ve Python'dan bağlanmak için sürücünün 64 bit sürümünü yükleyin.
 
-* Databricks 'te kişisel erişim belirteci ayarlayın. Yönergeler için bkz. [belirteç yönetimi](/azure/databricks/dev-tools/api/latest/authentication).
+* Databricks'te kişisel erişim jetonu ayarlayın. Talimatlar [için, Bkz. Token yönetimi.](/azure/databricks/dev-tools/api/latest/authentication)
 
-## <a name="set-up-a-dsn"></a>DSN ayarlama
+## <a name="set-up-a-dsn"></a>Bir DSN ayarlama
 
-Veri kaynağı adı (DSN), belirli bir veri kaynağıyla ilgili bilgileri içerir. ODBC sürücüsü, bir veri kaynağına bağlanmak için bu DSN 'ye ihtiyaç duyuyor. Bu bölümde, Microsoft Excel, Python veya R gibi istemcilerden Azure Databricks bağlanmak için Databricks ODBC sürücüsüyle birlikte kullanılabilecek bir DSN ayarlarsınız.
+Bir veri kaynağı adı (DSN) belirli bir veri kaynağı hakkında bilgi içerir. Bir ODBC sürücüsünün bir veri kaynağına bağlanmak için bu DSN'ye ihtiyacı vardır. Bu bölümde, Microsoft Excel, Python veya R gibi istemcilerden Azure Databricks'e bağlanmak için Databricks ODBC sürücüsüyle birlikte kullanılabilecek bir DSN ayarlarsınız.
 
 1. Azure Databricks çalışma alanından Databricks kümesine gidin.
 
-    ![Databricks kümesini aç](./media/connect-databricks-excel-python-r/open-databricks-cluster.png "Databricks kümesini aç")
+    ![Açık Databricks kümesi](./media/connect-databricks-excel-python-r/open-databricks-cluster.png "Açık Databricks kümesi")
 
-2. **Yapılandırma** sekmesinde, **JDBC/ODBC** sekmesine tıklayın ve **sunucu konak adı** ve **http yolu**değerlerini kopyalayın. Bu makaledeki adımları tamamlayabilmeniz için bu değerlere ihtiyacınız vardır.
+2. **Yapılandırma** sekmesinin **altında, JDBC/ODBC** sekmesini tıklatın ve **Server Hostname** ve **HTTP Path**değerlerini kopyalayın. Bu makaledeki adımları tamamlamak için bu değerlere ihtiyacınız var.
 
-    ![Databricks yapılandırmasını al](./media/connect-databricks-excel-python-r/get-databricks-jdbc-configuration.png "Databricks yapılandırmasını al")
+    ![Databricks yapılandırması alın](./media/connect-databricks-excel-python-r/get-databricks-jdbc-configuration.png "Databricks yapılandırması alın")
 
-3. Bilgisayarınızda, uygulamaya bağlı olarak **ODBC veri kaynakları** uygulamasını (32-bit veya 64 bit) başlatın. Excel 'den bağlanmak için 32 bit sürümünü kullanın. R ve Python 'dan bağlanmak için 64 bit sürümünü kullanın.
+3. Bilgisayarınızda, uygulamaya bağlı olarak **ODBC Veri Kaynakları** uygulamasını (32 bit veya 64 bit) başlatın. Excel'den bağlanmak için 32 bit sürümünü kullanın. R ve Python'dan bağlanmak için 64 bit sürümünü kullanın.
 
-    ![ODBC 'yi Başlat](./media/connect-databricks-excel-python-r/launch-odbc-app.png "ODBC uygulamasını Başlat")
+    ![Fırlatma ODBC](./media/connect-databricks-excel-python-r/launch-odbc-app.png "ODBC uygulamasını başlatın")
 
-4. **Kullanıcı DSN 'si** sekmesinde **Ekle**' ye tıklayın. **Yeni veri kaynağı oluştur** iletişim kutusunda, **SIMBA Spark ODBC sürücüsünü**seçin ve ardından **son**' a tıklayın.
+4. Kullanıcı **DSN** sekmesinin altında **Ekle'yi**tıklatın. Yeni **Veri Kaynağı Oluştur** iletişim kutusunda **Simba Spark ODBC Sürücüsü'nü**seçin ve ardından **Bitir'i**tıklatın.
 
-    ![ODBC 'yi Başlat](./media/connect-databricks-excel-python-r/add-new-user-dsn.png "ODBC uygulamasını Başlat")
+    ![Fırlatma ODBC](./media/connect-databricks-excel-python-r/add-new-user-dsn.png "ODBC uygulamasını başlatın")
 
-5. **Simba Spark ODBC sürücüsü** iletişim kutusunda, aşağıdaki değerleri sağlayın:
+5. **Simba Spark ODBC Sürücüsü** iletişim kutusunda aşağıdaki değerleri sağlayın:
 
-    ![DSN 'yi yapılandırma](./media/connect-databricks-excel-python-r/odbc-dsn-setup.png "DSN 'yi yapılandırma")
+    ![DSN'yi yapılandırma](./media/connect-databricks-excel-python-r/odbc-dsn-setup.png "DSN'yi yapılandırma")
 
-    Aşağıdaki tabloda, iletişim kutusunda sağlanacak değerler hakkında bilgi verilmektedir.
+    Aşağıdaki tablo, iletişim kutusunda sağlayabilecek değerler hakkında bilgi sağlar.
     
     |Alan  | Değer  |
     |---------|---------|
-    |**Veri kaynağı adı**     | Veri kaynağı için bir ad sağlayın.        |
-    |**Ana bilgisayar (ler)**     | *Sunucu konak adı*Için Databricks çalışma alanından kopyaladığınız değeri belirtin.        |
-    |**Bağlantı Noktası**     | *443*girin.        |
-    |**Kimlik doğrulama** > **mekanizması**     | *Kullanıcı adı ve parola '* yı seçin.        |
-    |**Kullanıcı adı**     | *Belirteç*girin.        |
+    |**Data Source Name**     | Veri kaynağı için bir ad sağlayın.        |
+    |**Ana bilgisayar(lar)**     | *Sunucu ana bilgisayar adı*için Databricks çalışma alanından kopyaladığınız değeri sağlayın.        |
+    |**Bağlantı noktası**     | *443'e*girin.        |
+    |**Kimlik Doğrulama****Mekanizması**  >      | *Kullanıcı adı ve parolayı*seçin.        |
+    |**Kullanıcı adı**     | *Belirteci*girin.        |
     |**Parola**     | Databricks çalışma alanından kopyaladığınız belirteç değerini girin. |
     
-    DSN Kurulumu iletişim kutusunda aşağıdaki ek adımları gerçekleştirin.
+    DSN kurulum iletişim kutusunda aşağıdaki ek adımları gerçekleştirin.
     
-    * **Http seçenekleri**' ne tıklayın. Açılan iletişim kutusunda, Databricks çalışma alanından kopyaladığınız *http yolunun* değerini yapıştırın. **Tamam** düğmesine tıklayın.
-    * **SSL seçenekleri**' ne tıklayın. Açılan iletişim kutusunda **SSL 'Yi etkinleştir** onay kutusunu işaretleyin. **Tamam** düğmesine tıklayın.
-    * Azure Databricks bağlantısını test etmek için **Test** ' e tıklayın. Yapılandırmayı kaydetmek için **Tamam** ' ı tıklatın.
-    * **ODBC veri kaynağı Yöneticisi** Iletişim kutusunda **Tamam**' a tıklayın.
+    * **HTTP Seçenekleri'ni**tıklatın. Açılan iletişim kutusuna, Databricks çalışma alanından kopyaladığınız *HTTP Yolu* değerini yapıştırın. **Tamam**'a tıklayın.
+    * **SSL Seçenekleri'ni**tıklatın. Açılan iletişim **kutusunda, SSL'yi etkinleştir** onay kutusunu seçin. **Tamam**'a tıklayın.
+    * Azure Veri Tuğlaları bağlantısını test etmek için **Test'i** tıklatın. Yapılandırmayı kaydetmek için **Tamam'ı** tıklatın.
+    * **ODBC Veri Kaynağı Yöneticisi** iletişim kutusunda **Tamam'ı**tıklatın.
 
-Artık DSN 'nizin kurulumunu tamamladınız. Sonraki bölümlerde, bu DSN 'yi Excel, Python veya R 'den Azure Databricks bağlanmak için kullanırsınız.
+Artık DSN'nizi ayarladınız. Sonraki bölümlerde, Excel, Python veya R'den Azure Veri Tuğlalarına bağlanmak için bu DSN'yi kullanırsınız.
 
-## <a name="connect-from-microsoft-excel"></a>Microsoft Excel 'den Bağlan
+## <a name="connect-from-microsoft-excel"></a>Microsoft Excel'den bağlan
 
-Bu bölümde, daha önce oluşturduğunuz DSN 'yi kullanarak Azure Databricks verileri Microsoft Excel 'e çekebilirsiniz. Başlamadan önce, bilgisayarınızda Microsoft Excel yüklü olduğundan emin olun. Excel 'in deneme sürümünü, [Microsoft Excel deneme bağlantısı](https://products.office.com/excel)'ndan kullanabilirsiniz.
+Bu bölümde, daha önce oluşturduğunuz DSN'yi kullanarak Azure Databricks'ten Microsoft Excel'e veri çekersiniz. Başlamadan önce bilgisayarınızda Microsoft Excel yüklü olduğundan emin olun. [Microsoft Excel deneme bağlantısından](https://products.office.com/excel)Excel'in deneme sürümünü kullanabilirsiniz.
 
-1. Microsoft Excel 'de boş bir çalışma kitabı açın. **Veri** şeridinde **veri al**' a tıklayın. **Diğer kaynaklardan** ve ardından **ODBC**' ye tıklayın.
+1. Microsoft Excel'de boş bir çalışma kitabı açın. **Veri** şeridinden **Veri Al'ı**tıklatın. **Diğer Kaynaklardan'ı** tıklatın ve sonra **ODBC'den'i**tıklatın.
 
-    ![Excel 'den ODBC 'yi Başlat](./media/connect-databricks-excel-python-r/launch-odbc-from-excel.png "Excel 'den ODBC 'yi Başlat")
+    ![Excel'den ODBC başlat](./media/connect-databricks-excel-python-r/launch-odbc-from-excel.png "Excel'den ODBC başlat")
 
-2. **ODBC 'den** iletişim kutusunda, daha önce oluşturduğunuz DSN 'yi seçin ve ardından **Tamam**' a tıklayın.
+2. **ODBC** iletişim kutusunda, daha önce oluşturduğunuz DSN'yi seçin ve ardından **Tamam'ı**tıklatın.
 
-    ![DSN Seç](./media/connect-databricks-excel-python-r/excel-select-dsn.png "DSN Seç")
+    ![DSN'yi seçin](./media/connect-databricks-excel-python-r/excel-select-dsn.png "DSN'yi seçin")
 
-3. Kimlik bilgileri istenirse, Kullanıcı adı için **belirteç**girin. Parola için, Databricks çalışma alanından aldığınız belirteç değerini sağlayın.
+3. Kimlik bilgileri için istenirse, kullanıcı adı için **belirteç**girin. Parola için, Databricks çalışma alanından aldığınız belirteç değerini sağlayın.
 
-    ![Databricks için kimlik bilgilerini sağlayın](./media/connect-databricks-excel-python-r/excel-databricks-token.png "DSN Seç")
+    ![Databricks için kimlik bilgileri sağlama](./media/connect-databricks-excel-python-r/excel-databricks-token.png "DSN'yi seçin")
 
-4. Gezgin penceresinden, Databricks içinde Excel 'e yüklemek istediğiniz tabloyu seçin ve ardından **Yükle**' ye tıklayın. 
+4. Gezgin penceresinden, Excel'e yüklemek istediğiniz Databricks tablosunu seçin ve sonra **Yükle'yi**tıklatın. 
 
-    ![DTA 'i Excel 'e yükle](./media/connect-databricks-excel-python-r/excel-load-data.png "DTA 'i Excel 'e yükle")
+    ![DTA'yı Excel'e yükleme](./media/connect-databricks-excel-python-r/excel-load-data.png "DTA'yı Excel'e yükleme")
 
-Excel çalışma kitabınızda verileri aldıktan sonra, üzerinde analitik işlemler yapabilirsiniz.
+Excel çalışma kitabınızda verileri aldıktan sonra, bu veriler üzerinde analitik işlemler gerçekleştirebilirsiniz.
 
-## <a name="connect-from-r"></a>R 'den Bağlan
+## <a name="connect-from-r"></a>R'den bağlan
 
 > [!NOTE]
-> Bu bölümde, masaüstünüzde çalışan bir R Studio istemcisinin Azure Databricks ile nasıl tümleştirileceği hakkında bilgi verilmektedir. Azure Databricks kümesi üzerinde R Studio 'Nun nasıl kullanılacağına ilişkin yönergeler için, bkz. [Azure Databricks üzerinde r Studio](/azure/databricks/spark/latest/sparkr/rstudio).
+> Bu bölümde, masaüstünüzde çalışan bir R Studio istemcisini Azure Veri Tuğlaları ile nasıl tümleştirileştiriniz hakkında bilgi verilmektedir. Azure Databricks kümesinde R Studio'nun nasıl kullanılacağına ilişkin talimatlar için [Azure Databricks'teki R Studio'ya](/azure/databricks/spark/latest/sparkr/rstudio)bakın.
 
-Bu bölümde, Azure Databricks bulunan verilere başvurmak için R Language IDE kullanırsınız. Başlamadan önce, bilgisayarda aşağıdakilerin yüklü olması gerekir.
+Bu bölümde, Azure Veri Tuğlaları'nda bulunan verilere başvurmak için Bir R dili IDE'si kullanırsınız. Başlamadan önce, aşağıdakileri bilgisayara yüklemiş olmalısınız.
 
-* R dili için IDE. Bu makale, masaüstü için RStudio 'Yu kullanır. Bunu, [R Studio](https://www.rstudio.com/products/rstudio/download/)'dan yükleyebilirsiniz.
-* IDE olarak masaüstü için RStudio kullanıyorsanız, [https://aka.ms/rclient/](https://aka.ms/rclient/)Microsoft R Client de yükleyebilirsiniz. 
+* R dili için bir IDE. Bu makalede Masaüstü için RStudio kullanır. [R Studio indir](https://www.rstudio.com/products/rstudio/download/)yükleyebilirsiniz.
+* IDE olarak Masaüstü için RStudio kullanıyorsanız, microsoft [https://aka.ms/rclient/](https://aka.ms/rclient/)r istemcisi de yükleyin. 
 
-RStudio 'Yu açın ve aşağıdaki adımları uygulayın:
+RStudio'yu açın ve aşağıdaki adımları yapın:
 
-- `RODBC` paketine başvurun. Bu, daha önce oluşturduğunuz DSN 'yi kullanarak Azure Databricks bağlanmanızı sağlar.
-- DSN kullanarak bağlantı kurun.
-- Azure Databricks verilerde bir SQL sorgusu çalıştırın. Aşağıdaki kod parçacığında, *radio_sample_data* zaten var olan bir tablodur Azure Databricks.
-- Çıktıyı doğrulamak için sorgu üzerinde bazı işlemler gerçekleştirin. 
+- Pakete `RODBC` başvurun. Bu, daha önce oluşturduğunuz DSN'yi kullanarak Azure Veri Tuğlaları'na bağlanmanızı sağlar.
+- DSN'yi kullanarak bir bağlantı kurun.
+- Azure Databricks'teki verilerüzerinde bir SQL sorgusu çalıştırın. Aşağıdaki snippet'te, *radio_sample_data* Azure Veri Tuğlaları'nda zaten var olan bir tablodur.
+- Çıktıyı doğrulamak için sorguda bazı işlemler gerçekleştirin. 
 
 Aşağıdaki kod parçacığı şu görevleri gerçekleştirir:
 
@@ -128,22 +128,22 @@ Aşağıdaki kod parçacığı şu görevleri gerçekleştirir:
     # print out the number of rows in the query output
     nrow (res)
 
-## <a name="connect-from-python"></a>Python 'dan Bağlan
+## <a name="connect-from-python"></a>Python'dan bağlan
 
-Bu bölümde, Azure Databricks bulunan verilere başvurmak için bir Python IDE (boş gibi) kullanırsınız. Başlamadan önce, aşağıdaki önkoşulları doldurun:
+Bu bölümde, Azure Veri Tuğlaları'nda bulunan verilere başvurmak için bir Python IDE (IDLE gibi) kullanırsınız. Başlamadan önce aşağıdaki ön koşulları tamamlayın:
 
-* Python uygulamasını [buradan](https://www.python.org/downloads/)ekleyin. Python 'un bu bağlantıdan yüklenmesi de boşta olarak yüklenir.
+* Python'u [buradan](https://www.python.org/downloads/)yükleyin. Python'u bu bağlantıdan yüklemek de IDLE'yi yükler.
 
-* Bilgisayardaki bir komut isteminden `pyodbc` paketini yükledikten sonra. Şu komutu çalıştırın:
+* Bilgisayardaki komut isteminden paketi `pyodbc` yükleyin. Şu komutu çalıştırın:
 
       pip install pyodbc
 
-BOŞTA ' i açın ve aşağıdaki adımları uygulayın:
+IDLE'yi açın ve aşağıdaki adımları yapın:
 
-- `pyodbc` paketini içeri aktarın. Bu, daha önce oluşturduğunuz DSN 'yi kullanarak Azure Databricks bağlanmanızı sağlar.
-- Daha önce oluşturduğunuz DSN 'yi kullanarak bağlantı kurun.
--  Oluşturduğunuz bağlantıyı kullanarak bir SQL sorgusu çalıştırın. Aşağıdaki kod parçacığında, *radio_sample_data* zaten var olan bir tablodur Azure Databricks.
-- Çıktıyı doğrulamak için sorgu üzerinde işlemler gerçekleştirin.
+- Paketi `pyodbc` içeri aktarın. Bu, daha önce oluşturduğunuz DSN'yi kullanarak Azure Veri Tuğlaları'na bağlanmanızı sağlar.
+- Daha önce oluşturduğunuz DSN'yi kullanarak bir bağlantı kurun.
+-  Oluşturduğunuz bağlantıyı kullanarak bir SQL sorgusu çalıştırın. Aşağıdaki snippet'te, *radio_sample_data* Azure Veri Tuğlaları'nda zaten var olan bir tablodur.
+- Çıktıyı doğrulamak için sorguda işlemleri gerçekleştirin.
 
 Aşağıdaki kod parçacığı şu görevleri gerçekleştirir:
 
@@ -165,6 +165,6 @@ for row in cursor.fetchall():
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Azure Databricks verileri içeri aktarabileceğiniz kaynaklar hakkında bilgi edinmek için bkz. [Azure Databricks Için veri kaynakları](/azure/databricks/data/data-sources/index)
+* Verileri Azure Databricks'e aktarabileceğiniz kaynaklar hakkında bilgi edinmek için Azure [Veri Tuğlaları için Veri kaynaklarına](/azure/databricks/data/data-sources/index) bakın
 
 

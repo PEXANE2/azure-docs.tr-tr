@@ -1,6 +1,6 @@
 ---
-title: VS Code-Azure Veri Gezgini kullanarak hata ayıklama kusto sorgu dili satır içi Python
-description: VS Code kullanarak kusto sorgu dili (KQL) satır içi Python hatalarını ayıklamayı öğrenin.
+title: VS Code kullanarak Sıralı Kod hata Ayıklama Kusto sorgu dili Python - Azure Veri Gezgini
+description: VS Kodu kullanarak Kusto sorgu dilini (KQL) satır içinde Python'u nasıl hata ayıklayarak öğreneceğiz.
 author: orspod
 ms.author: orspodek
 ms.reviewer: adieldar
@@ -8,48 +8,48 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 12/04/2019
 ms.openlocfilehash: 96bd66f96b04bd7032d976ba9ebbbeb60c8415e7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75444464"
 ---
-# <a name="debug-kusto-query-language-inline-python-using-vs-code"></a>VS Code kullanarak kusto sorgu dili satır içi Python hatalarını ayıklama
+# <a name="debug-kusto-query-language-inline-python-using-vs-code"></a>VS Kodu kullanarak Sıralı Kod lu Kusto sorgu dili
 
-Azure Veri Gezgini, [Python () eklentisi](/azure/kusto/query/pythonplugin)kullanılarak kusto sorgu dilinde Embedded Python kodunun çalıştırılmasını destekler. Eklenti çalışma zamanı, yalıtılmış ve güvenli bir Python ortamında bir korumalı alan içinde barındırılır. Python () eklenti özelliği, kusto sorgu dili yerel işlevlerini, OSS Python paketlerinin çok büyük arşiviyle genişletir. Bu uzantı, sorgunun parçası olarak makine öğrenimi, yapay zeka, istatistiksel ve zaman serisi gibi gelişmiş algoritmaları çalıştırmanızı sağlar.
+Azure Veri Gezgini, [python() eklentisini](/azure/kusto/query/pythonplugin)kullanarak Kusto sorgu diline katıştırılmış Python kodunu çalıştırmayı destekler. Eklenti çalışma süresi, izole edilmiş ve güvenli bir Python ortamında bir kum havuzunda barındırılır. Python() eklenti yeteneği, OSS Python paketlerinin büyük arşivi yle Kusto sorgu dili yerel işlevlerini genişletir. Bu uzantı, sorgunun bir parçası olarak makine öğrenimi, yapay zeka, istatistiksel ve zaman serileri gibi gelişmiş algoritmalar çalıştırmanızı sağlar.
 
-Kusto sorgu dili araçları, Python algoritmalarının geliştirilmesi ve hata ayıklaması için uygun değildir. Bu nedenle, Jupyıter, Pydüğme, VS veya VS Code gibi, en sevdiğiniz Python tümleşik geliştirme ortamınızda algoritmayı geliştirin. Algoritma tamamlandığında, kopyalayın ve KQL içine yapıştırın. Azure Veri Gezgini, bu iş akışını geliştirmek ve kolaylaştırmak için kusto Explorer veya Web UI istemcileri arasındaki tümleştirmeyi ve KQL satır içi Python kodunu yazma ve hata ayıklama için VS Code destekler. 
+Kusto sorgu dil araçları Python algoritmaları geliştirmek ve hata ayıklamak için uygun değildir. Bu nedenle, Jupyter, PyCharm, VS veya VS Kodu gibi favori Python entegre geliştirme ortamında algoritmayı geliştirin. Algoritma tamamlandığında, Kopyalayıp KQL'ye yapıştırın. Bu iş akışını iyileştirmek ve kolaylaştırmak için Azure Veri Gezgini, Kusto Explorer veya Web UI istemcileri ile KQL satır arasını Python kodunu yazma ve hata ayıklama için VS Kodu arasındaki tümleştirmeyi destekler. 
 
 > [!NOTE]
-> Bu iş akışı, yalnızca görece küçük giriş tablolarında (en fazla MB) hata ayıklamak için kullanılabilir. Bu nedenle, hata ayıklama için girişi sınırlandırlamanız gerekebilir.  Büyük bir tabloyu işlemek gerekirse, `| take`, `| sample`veya `where rand() < 0.x`kullanarak hata ayıklama için sınırlayın.
+> Bu iş akışı yalnızca nispeten küçük giriş tabloları (en az MB) hata ayıklamak için kullanılabilir. Bu nedenle, hata ayıklama için girişi sınırlamanız gerekebilir.  Büyük bir tabloyu işlemeniz gerekiyorsa, hata ayıklama `| take` `| sample`için `where rand() < 0.x`sınırlayın, veya .
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-1. Python [Anaconda dağıtımını](https://www.anaconda.com/distribution/#download-section)yükler. **Gelişmiş Seçenekler**' de, **path ortam değişkenine Anaconda Ekle**' yi seçin.
-2. [Visual Studio Code](https://code.visualstudio.com/Download)'u yükleme
-3. [Visual Studio Code Için Python uzantısını](https://marketplace.visualstudio.com/items?itemName=ms-python.python)yükler.
+1. Python [Anaconda Dağıtım](https://www.anaconda.com/distribution/#download-section)yükleyin. **Gelişmiş**Seçenekler'de, PATH **ortamı değişkenime Anaconda ekle'yi**seçin.
+2. [Visual Studio Kodunu](https://code.visualstudio.com/Download) Yükleyin
+3. [Visual Studio Code için Python uzantısını](https://marketplace.visualstudio.com/items?itemName=ms-python.python)yükleyin.
 
 ## <a name="run-your-query-in-your-client-application"></a>Sorgunuzu istemci uygulamanızda çalıştırın
 
-1. İstemci uygulamanızda, `set query_python_debug;` satır içi Python içeren bir sorgu öneki
+1. İstemci uygulamanızda, satır içinde Python içeren bir sorgu öne`set query_python_debug;`
 1. Sorguyu çalıştırın.
-    * Kusto Explorer: VS Code otomatik olarak *debug_python. Kopyala* betiği ile başlatılır.
-    * Kusto Web Kullanıcı arabirimi: 
-        1. *Debug_python. Kopyala*, *df. txt*ve *kargs. txt*dosyasını indirip kaydedin. Penceresinde **Izin ver**' i seçin. Dosyaları seçili dizine **kaydedin** . 
+    * Kusto Explorer: VS Kodu *debug_python.py* komut dosyası ile otomatik olarak başlatılır.
+    * Kusto Web UI: 
+        1. *Debug_python.py,* *df.txt*ve *kargs.txt dosyasını*indirip kaydedin. Pencerede **İzin Ver'i**seçin. Dosyaları seçili dizine **kaydedin.** 
 
-            ![Web Kullanıcı arabirimi, satır içi Python dosyalarını indirir](media/debug-inline-python/webui-inline-python.png)
+            ![Web UI satır içinde python dosyalarını karşıdan yükler](media/debug-inline-python/webui-inline-python.png)
 
-        1. *Debug_python. Kopyala* öğesine sağ tıklayın ve vs Code ile açın. 
-        *Debug_python. Kopyala* betiği, KQL sorgusundan, giriş veri çerçevesini *df. txt* ' den ve *kargs. txt*' den parametrelerin sözlüğünden başlatmak için şablon kodunun ön eki olan satır içi Python kodunu içerir.    
+        1. *debug_python.py'ye* sağ tıklayın ve VS koduyla açın. 
+        *debug_python.py* komut dosyası, *df.txt'den* giriş veri çerçevesini ve *kargs.txt'den*parametre sözlüğüne para girişi ni sorgulamak için şablon kodu tarafından önceden belirlenmiş KQL sorgusundan satır altı Python kodunu içerir.    
             
-1. VS Code 'da VS **Code hata ayıklayıcısını başlatın: hata** **ayıklamayı başlatın > (F5)** , **Python** yapılandırması ' nı seçin. Hata ayıklayıcı başlatılır ve satır içi kodda hata ayıklamak için otomatik olarak kesme noktası oluşturulur.
+1. VS kodunda, VS kod hata ayıklayıcısını başlatın: **Hata Ayıklama** > **Hata Ayıklama (F5)**, **Python** yapılandırmasını seçin. Hata ayıklayıcı satır ara kodunu hata ayıklamak için başlatılır ve otomatik olarak kesme noktası.
 
-### <a name="how-does-inline-python-debugging-in-vs-code-work"></a>VS Code 'da satır içi Python hata ayıklaması nasıl çalışır?
+### <a name="how-does-inline-python-debugging-in-vs-code-work"></a>VS Kodu'nda satır ara Python hata ayıklama nasıl çalışır?
 
-1. Sorgu, gerekli `| evaluate python()` yan tümcesine ulaşılana kadar sunucuda ayrıştırılır ve yürütülür.
-1. Python korumalı alanı çağrılır, ancak kodu çalıştırmak yerine, giriş tablosu, parametrelerin sözlüğü ve kod sözlüğü serileştirir ve bunları istemciye geri gönderir.
-1. Bu üç nesne üç dosyaya kaydedilir: *df. txt*, *kargs. txt*ve *debug_python.* , seçili dizinde (Web Kullanıcı arabirimi) veya% Temp% Directory (kusto Explorer) istemcisinde.
-1. VS Code başlatılır, ilgili dosyalarından df ve kargs 'yi başlatmak için bir ön ek kodu içeren *debug_python. Kopyala* dosyası ve sonra KQL sorgusuna gömülü Python betiği gelir.
+1. Sorgu ayrıştırılır ve gerekli `| evaluate python()` yan tümceye ulaşılıncaya kadar sunucuda yürütülür.
+1. Python sandbox çağrılır, ancak kodu çalıştırmak yerine, giriş tablosunu, parametrelersözlüğünü ve kodu seri hale getirerek istemciye geri gönderir.
+1. Bu üç nesne üç dosyaya kaydedilir: *df.txt*, *kargs.txt*, ve *debug_python.py* seçili dizinde (Web UI) veya istemcide %TEMP% dizini (Kusto Explorer).
+1. VS kodu başlatılır, kendi dosyalarından df ve kargs başlatmak için bir önek kodu içeren *debug_python.py* dosyası ile önceden yüklenir, ardından KQL sorgusuna gömülü Python komut dosyası.
 
 ## <a name="query-example"></a>Sorgu örneği
 
@@ -64,7 +64,7 @@ Kusto sorgu dili araçları, Python algoritmalarının geliştirilmesi ve hata a
     , pack('exp', 4))
     ```
 
-    Elde edilen tabloya bakın:
+    Ortaya çıkan tabloya bakın:
 
     | x  | x4  |
     |---------|---------|
@@ -73,7 +73,7 @@ Kusto sorgu dili araçları, Python algoritmalarının geliştirilmesi ve hata a
     | 3     |   81      |
     | 4     |    256     |
     
-1. İstemci uygulamanızda `set query_python_debug;`kullanarak aynı KQL sorgusunu çalıştırın:
+1. İstemci uygulamanızda aynı KQL `set query_python_debug;`sorgusunu aşağıdakileri kullanarak çalıştırın:
 
     ```kusto
     set query_python_debug;
@@ -85,13 +85,13 @@ Kusto sorgu dili araçları, Python algoritmalarının geliştirilmesi ve hata a
     , pack('exp', 4))
     ```
 
-1. VS Code başlatıldı:
+1. VS Kodu başlatıldı:
 
-    ![VS Code 'u Başlat](media/debug-inline-python/launch-vs-code.png)
+    ![vs kodu başlatmak](media/debug-inline-python/launch-vs-code.png)
 
-1. Hata ayıklamalar VS Code ve hata ayıklama konsolundaki ' Result ' veri çerçevesini yazdırır:
+1. VS Kodu hata ayıklama konsolunda 'sonuç' veri çerçevesi nin hatasını ayıklar ve yazdırır:
 
-    ![VS Code hata ayıklaması](media/debug-inline-python/debug-vs-code.png)
+    ![VS kodu hata ayıklama](media/debug-inline-python/debug-vs-code.png)
 
 > [!NOTE]
-> Python korumalı alan görüntüsü ile yerel yüklemeniz arasında farklılıklar olabilir. [Eklentiyi sorgulayarak belirli paketler için korumalı alan görüntüsünü kontrol edin](https://github.com/Azure/azure-kusto-analytics-lib/blob/master/Utils/functions/get_modules_version.csl).
+> Python kum havuzu görüntüsü ile yerel yüklemeniz arasında farklılıklar olabilir. [Eklentiyi sorgulayarak belirli paketler için kum havuzu görüntüsünü işaretleyin.](https://github.com/Azure/azure-kusto-analytics-lib/blob/master/Utils/functions/get_modules_version.csl)

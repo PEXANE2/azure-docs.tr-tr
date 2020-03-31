@@ -1,6 +1,6 @@
 ---
-title: Hızlı başlangıç-Azure portal Azure Storage tablosu oluşturma
-description: Bu hızlı başlangıçta Azure portal bir Azure Depolama Tablo hizmeti tablosu oluşturun.
+title: Hızlı başlangıç - Azure portalında Azure Depolama tablosu oluşturma
+description: Bu hızlı başlangıçta, Azure portalında bir Azure depolama Tablosu hizmet tablosu oluşturun.
 services: storage
 author: MarkMcGeeAtAquent
 ms.service: storage
@@ -9,10 +9,10 @@ ms.date: 12/02/2019
 ms.author: sngun
 ms.subservice: tables
 ms.openlocfilehash: 63495206ffffc57a895a9ec1efc88410a02ea097
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/15/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75979960"
 ---
 # <a name="quickstart-create-an-azure-storage-table-in-the-azure-portal"></a>Hızlı Başlangıç: Azure portalda bir Azure Depolama tablosu oluşturma 
@@ -31,15 +31,15 @@ Bir tablo oluşturmak için artık Azure portaldaki Tablo Depolamayı kullanabil
 
 1. Genel Bakış > Tablolar seçeneğine tıklayın.
 
-   ![Azure Portal](media/table-storage-quickstart-portal/table-storage-quickstart-01.png)
+   ![Azure portalında](media/table-storage-quickstart-portal/table-storage-quickstart-01.png)
 
 2. **+ Tablo**’ya tıklayın.
 
-   ![Azure Portal](media/table-storage-quickstart-portal/table-storage-quickstart-02.png)
+   ![Azure portalında](media/table-storage-quickstart-portal/table-storage-quickstart-02.png)
 
 3. **Tablo adı** kutusundaki tablonuz için bir ad yazın ve ardından **Tamam**’a tıklayın. 
 
-   ![Azure Portal](media/table-storage-quickstart-portal/table-storage-quickstart-03.png)
+   ![Azure portalında](media/table-storage-quickstart-portal/table-storage-quickstart-03.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

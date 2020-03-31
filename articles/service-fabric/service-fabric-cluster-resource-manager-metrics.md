@@ -1,86 +1,86 @@
 ---
-title: Ölçümleri kullanarak Azure Service Fabric uygulama yükünü yönetme
-description: Hizmet kaynak tüketimini yönetmek için Service Fabric ölçümleri yapılandırma ve kullanma hakkında bilgi edinin.
+title: Ölçümleri kullanarak Azure Hizmet Kumaşı uygulama yükünü yönetme
+description: Hizmet kaynağı tüketimini yönetmek için Hizmet Kumaşı'ndaki ölçümleri nasıl yapılandıracağınız ve kullanacağınız hakkında bilgi edinin.
 author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: ea21502cdab35b261e20af7f23b7b522f77c6667
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75451991"
 ---
-# <a name="managing-resource-consumption-and-load-in-service-fabric-with-metrics"></a>Ölçümlerle Service Fabric kaynak tüketimini yönetme ve yükleme
-*Ölçümler* , hizmetlerinizin önem verdiği ve kümedeki düğümler tarafından sağlandığı kaynaklardır. Bir ölçüm, hizmetlerinizin performansını artırmak veya izlemek için yönetmek istediğiniz her şey olur. Örneğin, hizmetinizin aşırı yüklenmiş olup olmadığını bilmeniz için bellek tüketimini izleyebilirsiniz. Başka bir kullanım, daha iyi performans sağlamak için, belleğin daha az kısıtlandığı yerde hizmetin hareket etmeyeceğini anlayabilir.
+# <a name="managing-resource-consumption-and-load-in-service-fabric-with-metrics"></a>Hizmet Kumaşında kaynak tüketimini ve yükü ölçümlerle yönetme
+*Ölçümler,* hizmetlerinizin önemsediği ve kümedeki düğümler tarafından sağlanan kaynaklardır. Metrik, hizmetlerinizin performansını iyileştirmek veya izlemek için yönetmek istediğiniz her şeydir. Örneğin, hizmetinizin aşırı yüklenip yüklenmediğinizi öğrenmek için bellek tüketimini izleyebilirsiniz. Başka bir kullanım, daha iyi performans elde etmek için hizmetin belleğin daha az kısıtlandığı başka bir yere taşınıp taşınamayacağını anlamaktır.
 
-Bellek, disk ve CPU kullanımı gibi şeyler, ölçüm örnekleridir. Bu ölçümler fiziksel ölçümlerdir ve yönetilmesi gereken düğümde fiziksel kaynaklara karşılık gelen kaynaklardır. Ölçümler ayrıca mantıksal ölçümler de (ve yaygın olarak) olabilir. Mantıksal ölçümler "MyWorkQueueDepth" veya "Iletitoprocess" veya "TotalRecords" gibi bir işlemdir. Mantıksal ölçümler uygulama tanımlı ve dolaylı olarak bazı fiziksel kaynak tüketimine karşılık gelir. Mantıksal ölçümler, hizmet başına temelinde fiziksel kaynakların tüketimini ölçmek ve raporlamak zor olabileceğinden yaygındır. Kendi fiziksel ölçümlerinizi ölçmenize ve raporlamaya yönelik karmaşıklık, Service Fabric bazı varsayılan ölçümleri de sağlar.
+Bellek, Disk ve CPU kullanımı gibi şeyler ölçümlere örnektir. Bu ölçümler, yönetilmesi gereken düğümdeki fiziksel kaynaklara karşılık gelen fiziksel ölçümlerdir. Ölçümler de (ve genellikle) mantıksal ölçümler olabilir. Mantıksal ölçümler "MyWorkQueueDepth" veya "MessagesToProcess" veya "TotalRecords" gibi şeylerdir. Mantıksal ölçümler uygulama tanımlı dır ve dolaylı olarak bazı fiziksel kaynak tüketimine karşılık gelir. Fiziksel kaynakların tüketimini hizmet başına olarak ölçmek ve raporlamak zor olabileceğinden, mantıksal ölçümler yaygındır. Service Fabric'in bazı varsayılan ölçümler sağlamasının nedeni, kendi fiziksel ölçümlerinizi ölçme nin ve raporlamanın karmaşıklığıdır.
 
-## <a name="default-metrics"></a>Varsayılan ölçümleri
-Şimdi, hizmetinizi yazmaya ve dağıtmaya başlamak istediğinizi varsayalım. Bu noktada, tükettiği fiziksel veya mantıksal kaynakları bilemezsiniz. Bu güzel! Service Fabric kümesi Kaynak Yöneticisi başka ölçüm belirtilmediğinde bazı varsayılan ölçümleri kullanır. Bunlar:
+## <a name="default-metrics"></a>Varsayılan ölçümler
+Hizmetinizi yazmaya ve dağıtmaya başlamak istediğinizi varsayalım. Bu noktada hangi fiziksel veya mantıksal kaynakları tükettiğinizi bilemezsinz. Sorun değil! Hizmet Kumaş Küme Kaynak Yöneticisi, başka ölçümler belirtilmediğinde bazı varsayılan ölçümler kullanır. Bunlar:
 
-  - PrimaryCount-düğümdeki birincil çoğaltmaların sayısı 
-  - ReplicaCount-düğümdeki toplam durum bilgisi olan çoğaltma sayısı
-  - Düğüm üzerindeki tüm hizmet nesnelerinin sayısı (durum bilgisiz ve durum bilgisi olmayan)
+  - PrimaryCount - düğümdeki Birincil yineleme sayısı 
+  - ReplicaCount - düğümdeki toplam durum lu yinelemesayısı
+  - Sayı - düğümdeki tüm hizmet nesnelerinin (durumsuz ve durumlu) sayısı
 
-| Ölçüm | Durum bilgisi olmayan örnek yükü | Durum bilgisi olan Ikincil yük | Durum bilgisi olan birincil yük | Ağırlık |
+| Ölçüm | Stateless Instance Load | Stateful İkincil Yük | Stateful Birincil Yük | Ağırlık |
 | --- | --- | --- | --- | --- |
-| PrimaryCount |0 |0 |1 |Yüksek |
-| ReplicaCount |0 |1 |1 |Orta |
+| Birincil Sayma |0 |0 |1 |Yüksek |
+| Çoğaltma Sayısı |0 |1 |1 |Orta |
 | Sayı |1 |1 |1 |Düşük |
 
 
-Temel iş yükleri için varsayılan ölçümler, kümede işin daha iyi bir dağıtımını sağlar. Aşağıdaki örnekte, iki hizmet oluşturduğumuz ve dengeleme için varsayılan ölçümleri temel alarak ne olacağını görelim. İlk hizmet, üç bölümden oluşan ve üç bölümlü bir hedef çoğaltma kümesi boyutu ile durum bilgisi olan bir hizmettir. İkinci hizmet, bir bölüm ve örnek sayısı üç olan durum bilgisi olmayan bir hizmettir.
+Temel iş yükleri için varsayılan ölçümler kümedeki düzgün bir çalışma dağılımı sağlar. Aşağıdaki örnekte, iki hizmet oluşturduğumuzda ve dengeleme için varsayılan ölçümlere güvendiğimizde neler olacağını görelim. İlk hizmet üç bölüm ve üç hedef çoğaltma kümesi boyutu ile devlet hizmetidir. İkinci hizmet, bir bölümve üç örnek sayısı ile devletsiz bir hizmettir.
 
-İşte şunları edinebilirsiniz:
+İşte elde etmek:
 
 <center>
 
-Varsayılan ölçümler ile küme düzeni ![][Image1]
+![Varsayılan Ölçümlerle Küme Düzeni][Image1]
 </center>
 
 Dikkat edilecek bazı noktalar:
-  - Durum bilgisi olan hizmetin birincil çoğaltmaları çeşitli düğümlere dağıtılır
-  - Aynı bölümün çoğaltmaları farklı düğümlerde
-  - Kümede dağıtılan toplam ve ikincil değer sayısı
-  - Toplam hizmet nesnesi sayısı her bir düğümde eşit olarak ayrılır
+  - Devlet hizmeti için birincil yinelemeler birkaç düğüm e göre dağıtılır
+  - Aynı bölüm için yinelemeler farklı düğümlerde
+  - Toplam öncelik ve ikincilik sayısı kümede dağıtılır
+  - Toplam hizmet nesnesi sayısı her düğüme eşit olarak ayrılır
 
-İyi!
+Iyi!
 
-Varsayılan ölçümler bir başlangıç olarak harika çalışır. Ancak, varsayılan ölçümler sizi yalnızca şu ana kadar taşıyacaktır. Örneğin: seçtiğiniz bölümlendirme düzeninin tüm bölümlerin tam olarak kullanımı için ne olduğu da Belirli bir hizmetin yükünün zaman içinde sabit olması veya yalnızca birden çok bölümde de aynı anda aynı olması olasılığı nedir?
+Varsayılan ölçümler başlangıç olarak harika çalışır. Ancak, varsayılan ölçümler sizi yalnızca şimdiye kadar taşıyacaktır. Örneğin: Seçtiğiniz bölümleme şemasının tüm bölümler tarafından mükemmel bir şekilde kullanılması olasılığı nedir? Belirli bir hizmetin yükünün zaman içinde sabit olma, hatta şu anda birden fazla bölüm arasında aynı olma olasılığı nedir?
 
-Yalnızca varsayılan ölçülerle çalıştırabilirsiniz. Bununla birlikte, genellikle küme kullanımlarınızın daha az ve daha düzensiz olduğu anlamına gelir. Bunun nedeni, varsayılan ölçümlerin Uyarlamalı olmadığı ve her şeyin eşit olduğu varsayılır. Örneğin, meşgul olan bir birincil olan ve her ikisi de PrimaryCount ölçüsüne "1" katkıda bulunmayan bir birincil. En kötü durumda, yalnızca varsayılan ölçümlerin kullanılması, fazla zamanlanmış düğümlerin performans sorunlarına neden olabilir. Kümenizden en iyi şekilde yararlanmak ve performans sorunlarından kaçınmak istiyorsanız, özel ölçümler ve dinamik yük raporlama kullanmanız gerekir.
+Varsayılan ölçümlerle çalıştırabilirsiniz. Ancak, bunu yapmak genellikle küme kullanımının istediğinizden daha düşük ve daha düzensiz olduğu anlamına gelir. Bunun nedeni, varsayılan ölçümlerin uyarlanabilir olmaması ve her şeyin eşdeğer olduğunu varsaymaolmasıdır. Örneğin, meşgul olan ve her ikisi de birincilsayı ölçümüne "1" katkıda bulunmayan bir Birincil. En kötü durumda, yalnızca varsayılan ölçümleri kullanmak da fazla zamanlanmış düğümlere neden olabilir ve performans sorunlarına neden olabilir. Kümenizden en iyi şekilde yararlanmak ve performans sorunlarından kaçınmak istiyorsanız, özel ölçümler ve dinamik yük raporlaması kullanmanız gerekir.
 
 ## <a name="custom-metrics"></a>Özel ölçümler
-Ölçümler, hizmeti oluştururken adlandırılmış hizmet örneği temelinde yapılandırılır.
+Ölçümler, hizmeti oluştururken hizmet başına örnek bazında yapılandırılır.
 
-Her türlü ölçüm, onu tanımlayan bazı özelliklere sahiptir: bir ad, ağırlık ve varsayılan yükleme.
+Herhangi bir metnin bunu açıklayan bazı özellikleri vardır: ad, ağırlık ve varsayılan yük.
 
-* Ölçüm adı: ölçümün adı. Ölçüm adı, Kaynak Yöneticisi perspektifinden küme içindeki ölçüm için benzersiz bir tanımlayıcıdır.
-* Ağırlık: Ölçüm ağırlığı, bu ölçümün bu hizmet için diğer ölçümlere ne kadar önemli olduğunu tanımlar.
-* Varsayılan yükleme: varsayılan Yük, hizmetin durum bilgisiz veya durum bilgisiz olmasına bağlı olarak farklı şekilde temsil edilir.
-  * Durum bilgisi olmayan hizmetler için, her ölçümün DefaultLoad adlı tek bir özelliği vardır
-  * Durum bilgisi olan hizmetler için şunları tanımlarsınız:
-    * PrimaryDefaultLoad: Bu hizmetin birincil olduğu zaman kullandığı bu ölçümün varsayılan miktarı
-    * SecondaryDefaultLoad: Bu hizmet, Ikincil olduğunda bu ölçümün kullandığı varsayılan miktar
+* Metrik Adı: Metrik adı. Metrik ad, Kaynak Yöneticisi'nin bakış açısından küme içindeki metrik için benzersiz bir tanımlayıcıdır.
+* Ağırlık: Metrik ağırlık, bu ölçümün bu hizmet için diğer ölçümlere göre ne kadar önemli olduğunu tanımlar.
+* Varsayılan Yük: Hizmetin durumsuz veya durum dolu olup olmadığına bağlı olarak varsayılan yük farklı şekilde temsil edilir.
+  * Durum disun hizmetler için her metnin Varsayılan Yük adında tek bir özelliği vardır
+  * Devlet hizmetleri için şunları tanımlarsınız:
+    * PrimaryDefaultLoad: Birincil olduğunda bu hizmetin tükettiği bu metnin varsayılan tutarı
+    * İkincil Varsayılan Yük: Bu hizmetin ikincil olduğunda tükettiği bu ölçümün varsayılan tutarı
 
 > [!NOTE]
-> Özel ölçümleri tanımlayabilir ve varsayılan ölçümleri _de_ kullanmak istiyorsanız, varsayılan ölçümleri _açıkça_ eklemeniz ve bunların ağırlıklarını ve değerlerini tanımlamanız gerekir. Bunun nedeni, varsayılan ölçümler ve özel ölçümleriniz arasındaki ilişkiyi tanımlamanız gerekir. Örneğin, ConnectionCount veya WorkQueueDepth özelliğinden daha fazla birincil dağıtım olabilir. Varsayılan olarak, PrimaryCount ölçüsünün ağırlığı yüksektir. bu nedenle, diğer ölçümlerinizi eklediğinizde daha fazla öncelik aldığından emin olmak için bunu orta düzeyde azaltmak istersiniz.
+> Özel ölçümler tanımlıyorsanız ve varsayılan ölçümleri _de_ kullanmak istiyorsanız, varsayılan ölçümleri _açıkça_ geri eklemeniz ve bunlar için ağırlıkları ve değerleri tanımlamanız gerekir. Bunun nedeni, varsayılan ölçümler ve özel ölçümleriniz arasındaki ilişkiyi tanımlamanız gerektiğidir. Örneğin, Belki De ConnectionCount veya WorkQueueDepth birincil dağıtım daha fazla bakım. Varsayılan olarak Birincil Sayım ölçümünün ağırlığı Yüksektir, bu nedenle önceliklerini sağlamak için diğer ölçümlerinizi eklediğinizde bu ölçüyü Orta'ya düşürmek istersiniz.
 >
 
-### <a name="defining-metrics-for-your-service---an-example"></a>Hizmetiniz için ölçümleri tanımlama-bir örnek
+### <a name="defining-metrics-for-your-service---an-example"></a>Hizmetiniz için ölçümleri tanımlama - bir örnek
 Aşağıdaki yapılandırmayı istediğinizi varsayalım:
 
-  - Hizmetiniz "ConnectionCount" adlı bir ölçüm bildiriyor
+  - Hizmetiniz "ConnectionCount" adlı bir metrik rapor
   - Varsayılan ölçümleri de kullanmak istiyorsunuz 
-  - Bazı ölçümleri tamamladınız ve normalde bu hizmetin birincil kopyasının "ConnectionCount" 20 birim aldığını öğrendiniz
-  - İkincislik 5 birim "ConnectionCount" kullanır
-  - "ConnectionCount" öğesinin bu hizmetin performansını yönetme açısından en önemli ölçüm olduğunu bilirsiniz
-  - Hala birincil çoğaltmaların dengelenmesi istiyorsunuz. Birincil çoğaltmaların dengelenmesi genellikle önemli bir fikirdir. Bu, bazı düğüm veya hata etki alanının büyük bir kısmını ve onunla birlikte etkilememelerini önlemeye yardımcı olur. 
-  - Aksi takdirde, varsayılan ölçümler iyidir
+  - Bazı ölçümler yaptınız ve normalde bu hizmetin birincil bir kopyasının 20 birim "ConnectionCount" kapladığını biliyorsunuz.
+  - İkinciller 5 adet "ConnectionCount" kullanır
+  - "ConnectionCount"ın, bu hizmetin performansını yönetme açısından en önemli ölçüt olduğunu biliyorsunuz.
+  - Yine de Birincil kopyaların dengede olmasını istiyorsunuz. Birincil kopyaları dengeleme genellikle ne olursa olsun iyi bir fikirdir. Bu, bazı düğüm veya hata etki alanının kaybolmasının birincil yinelemelerin büyük bir çoğunluğunu etkilemesini önlemeye yardımcı olur. 
+  - Aksi takdirde, varsayılan ölçümler iyi
 
-Bu ölçüm yapılandırmasına sahip bir hizmet oluşturmak için yazdığınız kod aşağıda verilmiştir:
+Bu metrik yapılandırmaya sahip bir hizmet oluşturmak için yazacağınız kod aşağıda veda edebilirsiniz:
 
 Kod:
 
@@ -125,47 +125,47 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 ```
 
 > [!NOTE]
-> Yukarıdaki örnekler ve bu belgenin geri kalanı, ölçümleri adlandırılmış hizmet temelinde yönetmeyi anlatmaktadır. Hizmet _türü_ düzeyinde hizmetleriniz için ölçüm tanımlamak da mümkündür. Bu, hizmet bildirimlerinizde belirtilerek yapılır. Tür düzeyi ölçümlerinin tanımlanması çeşitli nedenlerle önerilmez. İlk neden, ölçüm adlarının genellikle ortama özgüdür. Bir kesin sözleşme olmadığı takdirde, bir ortamdaki "çekirdekler" ölçüsünün başkalarının "Milfreres" veya "çekirdek" olmadığından emin olabilirsiniz. Ölçümleriniz bildiriminiz tanımlıysa, ortam başına yeni bildirimler oluşturmanız gerekir. Bu, genellikle düşük farklılığı olan farklı bildirimlerin tek bir şekilde oluşturulmasına yol açar ve bu da yönetim zorluklara yol açabilir.  
+> Yukarıdaki örnekler ve bu belgenin geri kalanı, her hizmet için ayrı ayrı ölçüm yönetmeyi açıklar. Hizmetleriniz için ölçümleri hizmet türü düzeyinde tanımlamak da _mümkündür._ Bu, bunları hizmet bildirimlerinizde belirterek gerçekleştirilir. Tür düzeyi ölçümlerinin tanımlanması çeşitli nedenlerden dolayı önerilmez. İlk neden, metrik adlar genellikle ortama özgü olmasıdır. Yerinde sağlam bir sözleşme olmadığı sürece, bir ortamda metrik "Çekirdekler" diğerlerinde "MiliCores" veya "CoReS" olmadığından emin olamaz. Ölçümleriniz bildiriminizde tanımlanmışsa, ortam başına yeni bildirimler oluşturmanız gerekir. Bu genellikle yönetim zorluklarına yol açabilir sadece küçük farklılıklar ile farklı manifestolar, bir çoğalması yol açar.  
 >
-> Ölçüm yüklemeleri genellikle adlandırılmış hizmet örneği temelinde atanır. Örneğin, bu hizmetin yalnızca kendi kullanımını planlayan müşterinin bir örneğini oluşturduğunuzu varsayalım. Ayrıca, daha büyük bir iş yüküne sahip olan CustomerB için bir tane oluşturun. Bu durumda, büyük olasılıkla bu hizmetler için varsayılan yüklemeleri ince ayar isteyeceksiniz. Bildirimler aracılığıyla tanımlanan ölçümler ve yükleriniz varsa ve bu senaryoyu desteklemek istiyorsanız, her müşteri için farklı uygulama ve hizmet türleri gerekir. Hizmet oluşturma zamanında tanımlanan değerler bildirimde tanımlı olanları geçersiz kılar, bu nedenle söz konusu varsayılanları ayarlamak için kullanabilirsiniz. Ancak bunun yapılması, bildirimde belirtilen değerlerin, hizmet ile birlikte çalıştığı hizmetle eşleşmesine neden olur. Bu, karışıklıklara yol açabilir. 
+> Metrik yükler genellikle hizmet başına örnek olarak atanır. Örneğin, CustomerA için hizmetin yalnızca hafifçe kullanmayı planlayan bir örneğini oluşturduğunuzu varsayalım. Ayrıca, daha büyük bir iş yüküne sahip CustomerB için başka bir iş yükü oluşturduğunuzu da varsayalım. Bu durumda, büyük olasılıkla bu hizmetler için varsayılan yükleri tweak istiyorum. Bildirimler aracılığıyla tanımlanmış ölçümlerinve yüklerin varsa ve bu senaryoyu desteklemek istiyorsanız, her müşteri için farklı uygulama ve hizmet türleri gerektirir. Hizmet oluşturma zamanında tanımlanan değerler, bildirimde tanımlananları geçersiz kılar, böylece belirli varsayılanları ayarlamak için bunu kullanabilirsiniz. Ancak, bunu yapmak, bildirimlerde bildirilen değerlerin hizmetin gerçekte çalıştığı değerlerle eşleşmemesi için neden olur. Bu karışıklığa yol açabilir. 
 >
 
-Anımsatıcı olarak: yalnızca varsayılan ölçümleri kullanmak istiyorsanız, ölçüm koleksiyonuna her şeyi dokunarak veya hizmetinizi oluştururken özel bir şey yapmanız gerekmez. Varsayılan ölçümler, diğerleri tanımlanmadığında otomatik olarak kullanılır. 
+Bir hatırlatma olarak: yalnızca varsayılan ölçümleri kullanmak istiyorsanız, yalnızca varsayılan ölçümleri kullanmak istiyorsanız, yalnızca metrik koleksiyonuna dokunmanız veya hizmetinizi oluştururken özel bir şey yapmanız gerekmez. Varsayılan ölçümler, başka sıyrık tanımlanmadığında otomatik olarak kullanılır. 
 
-Şimdi bu ayarların her birini daha ayrıntılı bir şekilde inceleyelim ve etkilediği davranış hakkında konuşalım.
+Şimdi, bu ayarların her birini daha ayrıntılı olarak gözden geçirelim ve etkilediği davranışlardan bahsedelim.
 
-## <a name="load"></a>Yükle
-Ölçümlerin tanımlanmasıyla bir bütün yük temsil edilir. *Yük* , belirli bir düğümdeki bazı hizmet örneği veya çoğaltma tarafından tüketilen bir metriğin ne kadarının tüketildiğini yükler. Yükleme, neredeyse her noktada yapılandırılabilir. Örneğin:
+## <a name="load"></a>Yükleme
+Ölçümleri tanımlamanın tüm amacı bazı yükü temsil etmektir. *Yük,* belirli bir metnin belirli bir düğümüzerinde belirli bir hizmet örneği veya yineleme tarafından ne kadarının tüketilme nedenidir. Yük hemen hemen her noktada yapılandırılabilir. Örnek:
 
-  - Yükleme, bir hizmet oluşturulduğunda tanımlanabilir. Bu, _varsayılan yükleme_olarak adlandırılır.
-  - Hizmet oluşturulduktan sonra bir hizmetin varsayılan yükleri dahil ölçüm bilgileri güncelleştirilir. Bu, _bir hizmetin güncelleştirilmesi_olarak adlandırılır. 
-  - Belirli bir bölümün yükleri bu hizmet için varsayılan değerlere sıfırlanabilir. Bu, _bölüm yükünü sıfırlama_olarak adlandırılır.
-  - Yük, çalışma zamanında dinamik olarak hizmet başına nesne başına bildirilebilir. Buna _Raporlama yükü_denir. 
+  - Bir hizmet oluşturulduğunda yük tanımlanabilir. Buna _varsayılan yük_denir.
+  - Hizmet oluşturulduktan sonra bir hizmet için varsayılan yükler de dahil olmak üzere metrik bilgiler güncelleştirilebilir. Buna _bir hizmeti güncelleştirme_denir. 
+  - Belirli bir bölümün yükleri, bu hizmetin varsayılan değerlerine sıfırlanabilir. Buna _bölüm yükünü sıfırlama_denir.
+  - Yük, çalışma süresi boyunca dinamik olarak hizmet nesnesi bazında raporlanabilir. Buna _raporlama yükü_denir. 
   
-Bu stratejilerin hepsi ömrü boyunca aynı hizmet içinde kullanılabilir. 
+Tüm bu stratejiler ömrü boyunca aynı hizmet içinde kullanılabilir. 
 
-## <a name="default-load"></a>Varsayılan yükleme
-*Varsayılan Yük* , bu hizmetin her bir hizmet nesnesi (durum bilgisiz örneği veya durum bilgisi olmayan çoğaltma) tarafından tükettiği ölçüdür. Küme Kaynak Yöneticisi, bu numarayı, bir dinamik yük raporu gibi diğer bilgileri alıncaya kadar hizmet nesnesinin yükü için kullanır. Daha basit hizmetler için, varsayılan yükleme statik bir tanımdır. Varsayılan yükleme hiçbir şekilde güncellenmez ve hizmetin kullanım süresi boyunca kullanılır. Varsayılan Yüklemeler, belirli miktardaki kaynakların farklı iş yüklerine ayrılmasının ve değişmediğinden basit kapasite planlama senaryolarında harika bir şekilde çalışmaktadır.
+## <a name="default-load"></a>Varsayılan yük
+*Varsayılan yük,* bu hizmetin her hizmet nesnesinin (durum durumu belirteç örneği veya durum lu yineleme) ne kadarının tükettiğidir. Küme Kaynak Yöneticisi, dinamik yük raporu gibi başka bilgiler alana kadar hizmet nesnesinin yükü için bu numarayı kullanır. Daha basit hizmetler için varsayılan yük statik bir tanımdır. Varsayılan yük hiçbir zaman güncelleştirilemez ve hizmetin ömrü boyunca kullanılır. Varsayılan yükler, belirli miktarda kaynağın farklı iş yüklerine adandığı ve değişmediği basit kapasite planlama senaryoları için harika çalışır.
 
 > [!NOTE]
-> Kapasite yönetimi hakkında daha fazla bilgi edinmek ve kümenizdeki düğümlere yönelik kapasiteleri tanımlamak için lütfen [Bu makaleye](service-fabric-cluster-resource-manager-cluster-description.md#capacity)bakın.
+> Kümenizdeki düğümler için kapasite yönetimi ve kapasiteleri tanımlama hakkında daha fazla bilgi için lütfen [bu makaleye](service-fabric-cluster-resource-manager-cluster-description.md#capacity)bakın.
 > 
 
-Küme Kaynak Yöneticisi, durum bilgisi olan hizmetlerin, kendi ve Ikincil öğeler için farklı bir varsayılan Yük belirlemesine izin verir. Durum bilgisi olmayan hizmetler, yalnızca tüm örneklere uygulanan bir değer belirtebilir. Durum bilgisi olan hizmetler için, birincil ve Ikincil çoğaltmalara yönelik varsayılan Yük genellikle farklıdır çünkü çoğaltmalar her rolde farklı iş türlerine sahiptir. Örneğin, bu durumlar genellikle hem okuma hem de yazma işlemleri yapar ve ikincil öğeler olmasa da çoğu işlem yükünü işler. Genellikle birincil çoğaltma için varsayılan Yük, ikincil çoğaltmalar için varsayılan yükün daha yüksektir. Gerçek sayıların kendi ölçümlerinize bağlı olması gerekir.
+Küme Kaynak Yöneticisi, devlet hizmetlerinin Öncelikler ve İkinciler için farklı bir varsayılan yük belirtmesine olanak tanır. Devletsiz hizmetler yalnızca tüm örnekler için geçerli olan bir değer belirtebilir. Devlet hizmetleri için, birincil ve ikincil yinelemeler için varsayılan yük genellikle farklı, çünkü yinelemeler her rolde farklı türde iş yapar. Örneğin, Öncelikler genellikle hem okuma hem de yazma hizmeti ve hesaplama yükünün çoğunu ele, ikinci basamak ise yok. Genellikle birincil yineleme için varsayılan yük ikincil yinelemeler için varsayılan yükdaha yüksektir. Gerçek sayılar kendi ölçülerinize bağlı olmalıdır.
 
 ## <a name="dynamic-load"></a>Dinamik yük
-Hizmetinizi bir süredir çalıştırdığınızı varsayalım. Bazı izlemelerle şunları fark etmiş olursunuz:
+Diyelim ki bir süredir hizmetini yürütüyorsun. Bazı izleme ile, fark ettik ki:
 
 1. Belirli bir hizmetin bazı bölümleri veya örnekleri diğerlerinden daha fazla kaynak tüketir
-2. Bazı hizmetlerde zamana göre farklılık gösteren yükleme vardır.
+2. Bazı hizmetlerin zaman içinde değişen yükü vardır.
 
-Bu tür yük dalgalanmalarına neden olabilecek birçok şey vardır. Örneğin, farklı hizmetler veya bölümler farklı gereksinimlere sahip farklı müşterilerle ilişkilendirilir. Ayrıca, hizmetin gün boyunca gösterdiği iş miktarı farklılık gösterdiğinden, yükleme da değişebilir. Nedeninden bağımsız olarak, genellikle varsayılan olarak kullanabileceğiniz tek bir sayı yoktur. Kümeden en fazla kullanımı sağlamak istiyorsanız bu özellikle doğrudur. Varsayılan yükleme için seçtiğiniz herhangi bir değer, bazı zamandan dolayı yanlış. Hatalı varsayılan Yüklemeler, kaynak ayırma üzerinde veya altında küme Kaynak Yöneticisi sonucunu elde edebilir. Sonuç olarak, Küme Kaynak Yöneticisi kümenin dengeli olmasına rağmen, daha fazla veya daha fazla düğüm vardır. İlk yerleştirme için bazı bilgiler sağladıklarından varsayılan yüklemeler hala iyidir, ancak gerçek iş yükleri için tamamen bir hikaye değildir. Değişen kaynak gereksinimlerini doğru bir şekilde yakalamak için Küme Kaynak Yöneticisi, her bir hizmet nesnesinin çalışma zamanı sırasında kendi yükünü güncelleştirmesine izin verir. Bu, dinamik yük raporlama olarak adlandırılır.
+Bu tür yük dalgalanmalarına neden olabilecek bir sürü şey var. Örneğin, farklı hizmetler veya bölümler farklı gereksinimleri olan farklı müşterilerle ilişkilidir. Hizmetin yaptığı iş miktarı gün boyunca değiştiğinden yük de değişebilir. Nedeni ne olursa olsun, genellikle varsayılan olarak kullanabileceğiniz tek bir sayı yoktur. Kümeden en iyi şekilde yararlanmak istiyorsanız, bu özellikle doğrudur. Varsayılan yük için seçtiğiniz herhangi bir değer bazen yanlıştır. Yanlış varsayılan yükler, Küme Kaynak Yöneticisi'nin kaynakların üzerinde veya altında ayrılmasıyla sonuçlanır. Sonuç olarak, Küme Kaynak Yöneticisi kümenin dengeli olduğunu düşünse de, üzerinde veya altında kullanılan düğümler vardır. Varsayılan yükler, ilk yerleşim için bazı bilgiler sağladıkları için hala iyidir, ancak gerçek iş yükleri için tam bir hikaye değildir. Değişen kaynak gereksinimlerini doğru bir şekilde yakalamak için Cluster Kaynak Yöneticisi, her hizmet nesnesinin çalışma süresi sırasında kendi yükünü güncelleştirmesine izin verir. Buna dinamik yük raporlaması denir.
 
-Dinamik yük raporları, çoğaltmalarının/rapor verme sürelerinin kullanım ömrü boyunca kendilerine ait ayırma/raporlama yükünü ayarlamasına olanak tanır. Soğuk olan ve herhangi bir iş yapmamayan bir hizmet çoğaltması veya örneği genellikle belirli bir metriğin düşük miktarlarda kullandığını bildirir. Meşgul bir çoğaltma veya örnek, daha fazla kullandıklarından rapor verebilir.
+Dinamik yük raporları, yinelemelerin veya örneklerin kullanım ömürleri boyunca ayırma/bildirilen metrik yükünü ayarlamalarına olanak sağlar. Soğuk olan ve herhangi bir iş yapmayan bir hizmet çoğaltma veya örneği genellikle belirli bir metrik düşük miktarda kullandığını bildirir. Meşgul bir yineleme veya örnek daha fazla kullandıklarını bildirir.
 
-Çoğaltma veya örnek başına raporlama yükü Küme Kaynak Yöneticisi kümedeki tek tek hizmet nesnelerini yeniden düzenleyecek şekilde izin verir. Hizmetleri yeniden düzenlemek, ihtiyaç duydukları kaynakları aldığından emin olmanıza yardımcı olur. Meşgul hizmetler, diğer çoğaltmalardan veya şu anda soğuk veya daha az iş yapan örneklerden "geri kazanma" kaynaklarını etkin bir şekilde alır.
+Yineleme veya örnek başına yük raporlama, Küme Kaynak Yöneticisi'nin kümedeki tek tek hizmet nesnelerini yeniden düzenlemesine olanak tanır. Hizmetleri yeniden düzenlemek, gereksinim duydukları kaynakları elde etmelerine yardımcı olur. Meşgul hizmetler, şu anda soğuk olan veya daha az iş yapan diğer yinelemelerden veya örneklerden kaynakları etkili bir şekilde "geri almak" için alır.
 
-Reliable Services içinde, yükü dinamik olarak raporlamak için kod şöyle görünür:
+Güvenilir Hizmetler içinde, yükü dinamik olarak bildiren kod aşağıdaki gibi görünür:
 
 Kod:
 
@@ -173,28 +173,28 @@ Kod:
 this.Partition.ReportLoad(new List<LoadMetric> { new LoadMetric("CurrentConnectionCount", 1234), new LoadMetric("metric1", 42) });
 ```
 
-Bir hizmet, oluşturma sırasında kendisi için tanımlanan ölçümleri rapor edebilir. Bir hizmet, kullanılmak üzere yapılandırılmadığı bir ölçüm için yük bildirirse Service Fabric, bu raporu yoksayar. Aynı anda geçerli olan başka ölçümler varsa, bu raporlar kabul edilir. Hizmet kodu, sahip olduğu tüm ölçümleri ölçebilir ve rapor verebilir ve işleçler hizmet kodunu değiştirmek zorunda kalmadan kullanılacak ölçüm yapılandırmasını belirtebilir. 
+Bir hizmet, oluşturma zamanında tanımlanan ölçümlerden herhangi birini raporedebilir. Bir hizmet, kullanmak üzere yapılandırılmamış bir metrik için yük bildiriyorsa, Service Fabric bu raporu yoksa. Geçerli olan aynı anda bildirilen başka ölçümler varsa, bu raporlar kabul edilir. Hizmet kodu, bildiği tüm ölçümleri ölçebilir ve bildirebilir ve operatörler hizmet kodunu değiştirmek zorunda kalmadan kullanılacak metrik yapılandırmayı belirtebilir. 
 
-### <a name="updating-a-services-metric-configuration"></a>Hizmetin ölçüm yapılandırmasını güncelleştirme
-Hizmetle ilişkili ölçümlerin listesi ve bu ölçümlerin özellikleri, hizmet canlı olduğu sürece dinamik olarak güncellenebilir. Bu, deneme ve esneklik sağlar. Bunun yararlı olması için bazı örnekler şunlardır:
+### <a name="updating-a-services-metric-configuration"></a>Bir hizmetin metrik yapılandırmasını güncelleştirme
+Hizmetle ilişkili ölçümlerlistesi ve bu ölçümlerin özellikleri, hizmet canlıyken dinamik olarak güncelleştirilebilir. Bu deneme ve esneklik sağlar. Bu yararlı olduğunda bazı örnekler şunlardır:
 
-  - belirli bir hizmet için önemlidir Report ile bir ölçümü devre dışı bırakma
-  - ölçüm ağırlıklarını istenen davranışa göre yeniden yapılandırma
-  - yalnızca kod dağıtıldıktan ve diğer mekanizmalar aracılığıyla doğrulandıktan sonra yeni bir ölçüm etkinleştiriliyor
-  - gözlemlenen davranış ve tüketim temelinde bir hizmetin varsayılan yükünü değiştirme
+  - belirli bir hizmet için bir buggy raporu ile bir metrik devre dışı bırakma
+  - ölçümlerin ağırlıklarını istenilen davranışa göre yeniden yapılandırma
+  - kod dağıtıldıktan ve diğer mekanizmalar aracılığıyla doğrulandıktan sonra yeni bir metriği etkinleştirme
+  - gözlemlenen davranış ve tüketime dayalı olarak bir hizmetiçin varsayılan yükü değiştirme
 
-Ölçüm yapılandırmasını değiştirmek için ana API 'Ler `FabricClient.ServiceManagementClient.UpdateServiceAsync` C# ve PowerShell içinde `Update-ServiceFabricService`. Bu API 'lerle belirttiğiniz bilgiler, hizmet için mevcut ölçüm bilgilerinin hemen yerini alır. 
+Metrik yapılandırmayı değiştirmek için `FabricClient.ServiceManagementClient.UpdateServiceAsync` ana API'ler C# ve `Update-ServiceFabricService` PowerShell'dedir. Bu API'lerle belirttiğiniz bilgiler, hizmetiçin varolan metrik bilgilerin hemen yerini alır. 
 
-## <a name="mixing-default-load-values-and-dynamic-load-reports"></a>Varsayılan yükleme değerlerini ve dinamik yükleme raporlarını karıştırma
-Varsayılan yükleme ve dinamik yüklemeler aynı hizmet için kullanılabilir. Bir hizmet hem varsayılan yükleme hem de dinamik yükleme raporlarını kullanırsa, dinamik raporların görünmesi için varsayılan yükleme tahmini olarak görev yapar. Varsayılan yükleme iyi bir şeydir çünkü kümeye birlikte çalışmak üzere Kaynak Yöneticisi. Varsayılan yükleme, Küme Kaynak Yöneticisi, hizmet nesnelerini oluşturuldukları sırada iyi konumlara yerleştirmesini sağlar. Varsayılan yükleme bilgisi sağlanmazsa, hizmetlerin yerleştirilmesi etkili bir şekilde rasgele olur. Yükleme raporları daha sonra geldiğinde ilk rastgele yerleştirme genellikle yanlıştır ve Küme Kaynak Yöneticisi Hizmetleri taşımak zorunda olur.
+## <a name="mixing-default-load-values-and-dynamic-load-reports"></a>Varsayılan yük değerlerini ve dinamik yük raporlarını karıştırma
+Varsayılan yük ve dinamik yükler aynı hizmet için kullanılabilir. Bir hizmet hem varsayılan yük hem de dinamik yük raporlarını kullandığında, varsayılan yük dinamik raporlar ortaya çıkana kadar bir tahmin görevi gösterir. Varsayılan yük iyidir, çünkü Küme Kaynak Yöneticisi'ne çalışmak için bir şey verir. Varsayılan yük, Cluster Resource Manager'ın hizmet nesnelerini oluşturulduklarında iyi konumlara yerleştirmesine olanak tanır. Varsayılan yük bilgisi sağlanmadıysa, hizmetlerin yerleşimi etkin bir şekilde rasgele olur. Yük raporları daha sonra geldiğinde ilk rasgele yerleşim genellikle yanlıştır ve Küme Kaynak Yöneticisi hizmetleri taşımak zorundadır.
 
-Daha önceki örneğimize bakalım ve bazı özel ölçümler ve dinamik yük raporlama eklediğimiz zaman ne olacağını görün. Bu örnekte, örnek ölçüm olarak "Memorınmb" kullanırız.
+Önceki örneğimizi ele alalım ve bazı özel ölçümler ve dinamik yük raporlaması eklediğimizde neler olacağını görelim. Bu örnekte, örnek metrik olarak "MemoryInMb" kullanıyoruz.
 
 > [!NOTE]
-> Bellek, Service Fabric [kaynak](service-fabric-resource-governance.md)tarafından okunabilir ve kendi kendinize bildirimde bulunan sistem ölçümlerinden biridir. Bellek tüketimini raporlamak için gerçekten beklenmezsiniz; Bellek, burada Küme Kaynak Yöneticisi özellikleri hakkında bilgi edinmeye yönelik bir yardım olarak kullanılır.
+> Bellek, Service Fabric'in [yönetebileceği](service-fabric-resource-governance.md)sistem ölçümlerinden biridir ve bunu kendiniz bildirmek genellikle zordur. Bellek tüketimi hakkında rapor vermenizi beklemiyoruz; Bellek burada Küme Kaynak Yöneticisi'nin yetenekleri hakkında bilgi edinmeye yardımcı olarak kullanılır.
 >
 
-İlk olarak aşağıdaki komutla durum bilgisi olan hizmeti oluşturduğumuz kabul edelim:
+Devlet hizmetinin ilk olarak aşağıdaki komutla oluşturulduğunu varsayalım:
 
 Powershell:
 
@@ -202,68 +202,68 @@ Powershell:
 New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -MinReplicaSetSize 3 -TargetReplicaSetSize 3 -PartitionSchemeSingleton –Metric @("MemoryInMb,High,21,11”,"PrimaryCount,Medium,1,0”,"ReplicaCount,Low,1,1”,"Count,Low,1,1”)
 ```
 
-Anımsatıcı olarak, bu söz dizimi ("MetricName, MetricWeight, PrimaryDefaultLoad, SecondaryDefaultLoad") ' dir.
+Bir hatırlatma olarak, bu sözdizimi ("MetricName, MetricWeight, PrimaryDefaultLoad, SecondaryDefaultLoad") olur.
 
-Olası bir küme düzeninin nasıl görünebileceklerini görelim:
-
-<center>
-
-![küme hem varsayılan hem de özel ölçümlerle dengeli][Image2]
-</center>
-
-Dikkat edilmesi gereken bazı şeyler:
-
-* Bir bölüm içindeki ikincil çoğaltmaların her biri kendi yüküne sahip olabilir
-* Genel ölçümler dengeli şekilde görünür. Bellek için, en yüksek ve en düşük yük arasındaki oran 1,75 ' dir (en fazla yükün bulunduğu düğüm N3, en az N2 ve 28/16 = 1,75).
-
-Yine de açıklanbilmemiz gereken bazı şeyler vardır:
-
-* 1,75 oranının makul olup olmadığını ne belirler? Kümenin yeterince iyi olduğunu veya daha fazla iş olduğunu belirten küme Kaynak Yöneticisi nasıl bilir?
-* Dengeleme ne zaman gerçekleşir?
-* Belleğin "yüksek" ağırlıklı olduğunu ne anlama geliyor?
-
-## <a name="metric-weights"></a>Ölçüm ağırlıkları
-Farklı hizmetler genelinde aynı ölçümleri izlemek önemlidir. Bu genel görünüm, Küme Kaynak Yöneticisi kümedeki tüketimi izlemelerine, düğümlerde tüketim dengelemeye ve düğümlerin kapasiteye gitmemesini sağlamaya olanak tanır. Ancak, hizmetler aynı ölçümün önem derecesine göre farklı görünümlere sahip olabilir. Ayrıca, çok sayıda ölçüm ve çok hizmet içeren bir kümede, tüm ölçümler için kusursuz dengelenmiş çözümler bulunmayabilir. Küme Kaynak Yöneticisi bu durumları nasıl işleymelidir?
-
-Ölçüm ağırlıkları, tam yanıt olmadığında Küme Kaynak Yöneticisi kümenin nasıl dengelemeye karar vermesini sağlar. Ölçüm ağırlıkları, Küme Kaynak Yöneticisi belirli hizmetleri farklı şekilde dengelemenize de olanak tanır. Ölçümler dört farklı ağırlık düzeyine sahip olabilir: sıfır, düşük, orta ve yüksek. Sıfır ağırlığa sahip bir ölçüm, öğelerin dengelenmesi düşünüldüğünde hiçbir şey yapmaz. Ancak, yükü hala kapasite yönetimine katkıda bulunur. Sıfır ağırlığa sahip ölçümler hala yararlı olur ve genellikle hizmet davranışı ve performans izlemenin bir parçası olarak kullanılır. [Bu makalede](service-fabric-diagnostics-event-generation-infra.md) , hizmetlerinizin izlenmesi ve tanılanmasına yönelik ölçümlerin kullanımı hakkında daha fazla bilgi verilmektedir. 
-
-Kümedeki farklı ölçüm ağırlıklarının gerçek etkisi, Küme Kaynak Yöneticisi farklı çözümler üretmeleridir. Ölçüm ağırlıkları, belirli ölçümlerin diğerlerinden daha önemli olduğunu Kaynak Yöneticisi kümeye bildirir. Kusursuz çözüm olmadığında Küme Kaynak Yöneticisi, daha yüksek ağırlıklı ölçümleri dengelemeye yönelik çözümleri tercih edebilir. Belirli bir ölçümü önemli olmayan bir hizmet, bu ölçüm 'in kullanımını bulabilir. Bu, başka bir hizmetin, sizin için önemli olan bazı ölçüm için eşit bir dağıtım almasına olanak tanır.
-
-Bazı yükleme raporlarının bir örneğine ve farklı ölçümün kümedeki farklı ayırmalara neden olduğunu inceleyelim. Bu örnekte, ölçümlerin göreli ağırlığını değiştirme, Küme Kaynak Yöneticisi farklı hizmet düzenlemeleri oluşturmasına neden olur.
+Olası bir küme düzeninin nasıl görünebileceğini görelim:
 
 <center>
 
-![ölçüm ağırlığı örneği ve bu çözümün][Image3]
+![Küme Varsayılan ve Özel ölçümlerle dengelenmiş][Image2]
 </center>
 
-Bu örnekte, hepsi iki farklı ölçüm, MetricA ve Metrıcb için farklı değerler bildiren dört farklı hizmet vardır. Tek bir durumda, MetricA 'yı tanımlayan tüm hizmetler en önemli bir (ağırlık = yüksek) ve metrik ICB 'nin önemli olmayan (ağırlık = düşük) olduğunu tanımlar. Sonuç olarak,, metriyonun Metrıcb 'den daha iyi dengeli olması için kümenin Kaynak Yöneticisi Hizmetleri yerleştirdiğinin görüyoruz. "Daha iyi dengeli", Metrıca 'ın daha düşük bir standart sapma olan Metrıcb 'den daha düşük bir sapmasıdır. İkinci durumda, ölçüm ağırlıklarını tersine çevriyoruz. Sonuç olarak, Küme Kaynak Yöneticisi A ve B hizmetlerini, Metrıcb 'nin MetricA 'dan daha iyi dengelendiği bir ayırma ile birlikte gelmesini sağlar.
+Kayda değer bazı şeyler:
+
+* Bir bölüm içindeki ikincil yinelemelerin her birinin kendi yükü olabilir
+* Genel ölçümler dengeli görünüyor. Bellek için, maksimum ve minimum yük arasındaki oran 1,75'tir (en fazla yüke sahip düğüm N3, en az N2 ve 28/16 = 1,75'tir).
+
+Hala açıklamamız gereken bazı şeyler var:
+
+* 1.75'lik bir oranın makul olup olmadığını ne belirledi? Küme Kaynak Yöneticisi bunun yeterli olup olmadığını veya yapılacak daha çok iş olup olmadığını nasıl anlar?
+* Dengeleme ne zaman olur?
+* Memory'nin "Yüksek" ağırlıklı olması ne anlama geliyor?
+
+## <a name="metric-weights"></a>Metrik ağırlıklar
+Farklı hizmetler arasında aynı ölçümleri izlemek önemlidir. Küme Kaynak Yöneticisi'nin kümedeki tüketimi izlemesine, düğümler arasında tüketimi dengelemesine ve düğümlerin kapasitenin üzerine çıkmamasını sağlamasına olanak tanıyan bu genel görünümdür. Ancak, hizmetler aynı ölçümün önemi konusunda farklı görünümlere sahip olabilir. Ayrıca, birçok ölçüm ve çok sayıda hizmetiçeren bir kümede, tüm ölçümler için mükemmel dengelenmiş çözümler olmayabilir. Küme Kaynak Yöneticisi bu durumları nasıl ele almalıdır?
+
+Metrik ağırlıklar, cluster Kaynak Yöneticisi'nin mükemmel bir yanıt olmadığında kümeyi nasıl dengeleneceğe karar vermesine olanak sağlar. Metrik ağırlıklar, Küme Kaynak Yöneticisi'nin belirli hizmetleri farklı şekilde dengelemesine de olanak sağlar. Ölçümler dört farklı ağırlık düzeyine sahip olabilir: Sıfır, Düşük, Orta ve Yüksek. Sıfır ağırlığına sahip bir metrik, şeylerin dengeli olup olmadığını göz önünde bulundurarak hiçbir şey katkıda bulunmaz. Ancak, yükü hala kapasite yönetimine katkıda bulunur. Sıfır ağırlığı olan ölçümler hala yararlıdır ve sık sık hizmet davranışı ve performans izlemenin bir parçası olarak kullanılır. [Bu makalede,](service-fabric-diagnostics-event-generation-infra.md) hizmetlerinizin izlenmesi ve tanılanması için ölçümlerin kullanımı hakkında daha fazla bilgi verilmektedir. 
+
+Kümedeki farklı metrik ağırlıkların gerçek etkisi, Küme Kaynak Yöneticisi'nin farklı çözümler üretmesidir. Metrik ağırlıklar Küme Kaynak Yöneticisi'ne belirli ölçümlerin diğerlerinden daha önemli olduğunu söyler. Mükemmel bir çözüm olmadığında Cluster Resource Manager, yüksek ağırlıklı ölçümleri daha iyi dengeleyen çözümleri tercih edebilir. Bir hizmet belirli bir ölçümün önemsiz olduğunu düşünüyorsa, bu ölçümün kullanımını dengesiz bulabilir. Bu, başka bir hizmetin, önemli olan bazı ölçümlerin eşit dağılımını elde etmesine olanak tanır.
+
+Bazı yük raporlarının bir örneğine ve farklı metrik ağırlıkların kümedeki farklı ayırmalarla nasıl sonuçdoğurduğuna bakalım. Bu örnekte, ölçümlerin göreli ağırlığının değiştirilmesinin Küme Kaynak Yöneticisi'nin farklı hizmetler düzenlemeleri oluşturmasına neden olduğunu görüyoruz.
+
+<center>
+
+![Metrik Ağırlık Örneği ve Dengeleme Çözümlerine Etkisi][Image3]
+</center>
+
+Bu örnekte, tümü iki farklı ölçüm, MetricA ve MetricB için farklı değerler bildiren dört farklı hizmet vardır. Bir durumda, metrica tanımlamak tüm hizmetler en önemli (Ağırlık = Yüksek) ve MetricB önemsiz olarak (Ağırlık = Düşük). Sonuç olarak, Cluster Resource Manager'ın hizmetleri MetricA'nın MetricB'den daha dengeli olması için yerleştirdiğini görüyoruz. "Daha dengeli", MetricA'nın MetricB'den daha düşük standart sapmaya sahip olduğu anlamına gelir. İkinci durumda, metrik ağırlıkları tersine çeviriyoruz. Sonuç olarak, Cluster Resource Manager, MetricB'nin MetricA'dan daha dengeli olduğu bir ayırma bulmak için A ve B hizmetlerini değiştirir.
 
 > [!NOTE]
-> Ölçüm ağırlıkları, Küme Kaynak Yöneticisi dengelenmesinin ne zaman dengelenmesi gerektiğini, ancak dengelemenin ne zaman yapılacağını belirleyebilir. Dengeleme hakkında daha fazla bilgi için [Bu makaleye](service-fabric-cluster-resource-manager-balancing.md) göz atın
+> Metrik ağırlıklar Küme Kaynak Yöneticisi'nin nasıl dengelenmesi gerektiğini belirler, ancak dengeleme ne zaman gerçekleşmeyeceğini belirler. Dengeleme hakkında daha fazla bilgi için [bu makaleye](service-fabric-cluster-resource-manager-balancing.md) göz atın
 >
 
-### <a name="global-metric-weights"></a>Küresel ölçüm ağırlıkları
-Diyelim ki, metrika 'ı yüksek ağırlık olarak tanımlıyor ve ServiceB, metrika ağırlığını düşük veya sıfır olarak ayarlıyor. Kullanılan gerçek ağırlık ne kadar doluyor?
+### <a name="global-metric-weights"></a>Küresel metrik ağırlıklar
+ServiceA'nın MetricA'yı Yüksek ağırlık olarak tanımladığını ve ServiceB'in MetricA'nın ağırlığını Düşük veya Sıfır olarak ayarlayıştı. Alıştıktan sonraki gerçek ağırlık nedir?
 
-Her ölçüm için izlenen birden çok ağırlık vardır. İlk ağırlık, hizmet oluşturulduğunda ölçüm için tanımlanan bir tanımdır. Diğer ağırlık, otomatik olarak hesaplanan küresel bir ağırlıkdır. Küme Kaynak Yöneticisi, Puanlama çözümlerinde bu ağırlıkları kullanır. Her iki ağırlıkların de hesaba alınması önemlidir. Bu, Küme Kaynak Yöneticisi her hizmeti kendi önceliklerine göre dengeleyebilir ve Ayrıca kümenin bir bütün olarak doğru bir şekilde ayrıldığından emin olmanızı sağlar.
+Her metrik için izlenen birden çok ağırlık vardır. İlk ağırlık, hizmet oluşturulduğunda metrik için tanımlanan ağırlıktır. Diğer ağırlık otomatik olarak hesaplanan küresel bir ağırlıktır. Küme Kaynak Yöneticisi, çözümleri puanlamada bu ağırlıkları her iki ağırlıkkullanır. Her iki ağırlığı da hesaba katmak önemlidir. Bu, Küme Kaynak Yöneticisi'nin her hizmeti kendi önceliklerine göre dengelemesine ve kümenin bir bütün olarak doğru şekilde ayrılmasını sağlamasına olanak tanır.
 
-Küme Kaynak Yöneticisi hem genel hem de yerel bakiyeyle ilgilenmemişse ne olur? Ayrıca, genel olarak dengeli çözümler oluşturmak kolaydır, ancak bireysel hizmetler için düşük kaynak dengelemeye neden olur. Aşağıdaki örnekte, yalnızca varsayılan ölçümler ile yapılandırılmış bir hizmete bakalım ve yalnızca genel bakiye dikkate alındıklarında ne olacağını görebilirsiniz:
+Küme Kaynak Yöneticisi hem küresel hem de yerel dengeyi önemsemezse ne olur? Küresel olarak dengeli, ancak bireysel hizmetler için kaynak dengesinin düşük olmasına neden olan çözümler oluşturmak kolaydır. Aşağıdaki örnekte, yalnızca varsayılan ölçümlerle yapılandırılan bir hizmete bakalım ve yalnızca genel bakiye dikkate alınınca neler olduğunu görelim:
 
 <center>
 
-Yalnızca genel çözüm][Image4]
-etkisini ![</center>
+![Küresel Tek Çözümün Etkisi][Image4]
+</center>
 
-En üstteki örnekte, yalnızca küresel dengelemeye göre kümenin tamamı dengeli olur. Tüm düğümler aynı sayıda baş ve toplam çoğaltma sayısına sahiptir. Ancak, bu ayırmadan ilgili gerçek etki bölümüne bakarsanız, bu durum iyi değildir: herhangi bir düğümün kaybı, belirli bir iş yükünü olumsuz şekilde etkiler, çünkü tüm alt özelliklerini açığa çıkar. Örneğin, ilk düğüm, Circle hizmetinin üç farklı bölümünün üç için de başarısız olursa, hepsi kaybedilir. Buna karşılık, üçgenin ve altıgen hizmetlerin bölümleri bir çoğaltmayı kaybeder. Bu, düşük çoğaltmayı kurtarmak zorunda kalmadan kesintiye neden olmaz.
+Sadece küresel dengeye dayalı en iyi örnekte, küme bir bütün olarak gerçekten dengelidir. Tüm düğümler aynı sayıda öncelikler ve aynı sayı toplam yinelemeleri vardır. Ancak, bu ayırmanın gerçek etkisine bakarsanız o kadar da iyi değildir: herhangi bir düğümün kaybı belirli bir iş yükünü orantısız olarak etkiler, çünkü tüm önceliklerini devre dışı alır. Örneğin, ilk düğüm Circle hizmetinin üç farklı bölümü için üç ön öncelik başarısız olursa tüm kaybolur. Tersine, Üçgen ve Altıgen hizmetleri kendi bölümleri bir kopyasını kaybetmek var. Bu, aşağı yinelemekurtarmak zorunda dışında hiçbir bozulmaya neden olur.
 
-Alt örnekte, Küme Kaynak Yöneticisi çoğaltmaları hem genel hem de hizmet başına bakiyeye göre dağıtmıştır. Çözümün puanı hesaplanırken genel çözüme ağırlığı ve bireysel hizmetlere (yapılandırılabilir) bir bölümü verir. Bir ölçüm için küresel Bakiye, her bir hizmetten ölçüm ağırlıklarının ortalaması temel alınarak hesaplanır. Her hizmet kendi tanımlı ölçüm ağırlıklarına göre dengelenir. Bu, hizmetlerin kendi ihtiyaçlarına uygun olarak kendi içinde dengelenmesini sağlar. Sonuç olarak, aynı ilk düğüm başarısız olursa, hata tüm hizmetlerin tüm bölümlerine dağıtılır. Her birinin etkisi aynı olur.
+Alttaki örnekte, Küme Kaynak Yöneticisi yinelemeleri hem genel hem de hizmet başına dengeyi temel alan dağıtmıştır. Çözümün puanını hesaplarken ağırlığın çoğunu küresel çözüme, (yapılandırılabilir) kısmı da tek tek hizmetlere verir. Bir metrin genel bakiyesi, her hizmetteki metrik ağırlıkların ortalamasına göre hesaplanır. Her hizmet kendi tanımlanmış metrik ağırlıklarına göre dengelenir. Bu, hizmetlerin kendi ihtiyaçlarına göre kendi içlerinde dengeli olmasını sağlar. Sonuç olarak, aynı ilk düğüm başarısız olursa, hata tüm hizmetlerin tüm bölümlerine dağıtılır. Her birinin etkisi aynıdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- Hizmetleri yapılandırma hakkında daha fazla bilgi için, [Hizmetleri yapılandırma hakkında bilgi edinin](service-fabric-cluster-resource-manager-configure-services.md)(Service-Fabric-Cluster-Resource-Manager-configure-Services.MD)
-- Birleştirme ölçümlerini tanımlamak yerine düğümlerin yükünü birleştirmek için bir yoldur. Birleştirme yapılandırma hakkında bilgi edinmek için [Bu makaleye](service-fabric-cluster-resource-manager-defragmentation-metrics.md) bakın
-- Kaynak Yöneticisi kümenin, kümedeki yükü nasıl yönettiğini ve dengelemediğini öğrenmek için [Yük Dengeleme](service-fabric-cluster-resource-manager-balancing.md) sayfasındaki makaleye göz atın
-- Baştan başlayın ve [Service Fabric kümesine giriş yapın Kaynak Yöneticisi](service-fabric-cluster-resource-manager-introduction.md)
-- Taşıma maliyeti, belirli hizmetlerin diğerlerine göre daha pahalı olduğunu Kaynak Yöneticisi küme sinyalinden bir yoldur. Taşıma maliyeti hakkında daha fazla bilgi edinmek için [Bu makaleye](service-fabric-cluster-resource-manager-movement-cost.md) bakın
+- Hizmetlerin yapılandırılması hakkında daha fazla bilgi [için, Hizmetleri yapılandırma hakkında bilgi edinin](service-fabric-cluster-resource-manager-configure-services.md)(service-fabric-cluster-resource-manager-configure-services.md)
+- Parçalanma Ölçümleri tanımlamak, düğümleri yaymak yerine yükü birleştirmenin bir yoludur. Parçalanmayı nasıl yapılandırıştırılabildiğini öğrenmek için [bu makaleye](service-fabric-cluster-resource-manager-defragmentation-metrics.md) bakın
+- Küme Kaynak Yöneticisi'nin kümedeki yükü nasıl yönettiği ve dengeler yaptığı hakkında bilgi edinmek [için, yükü dengeleme](service-fabric-cluster-resource-manager-balancing.md) makalesine göz atın
+- Baştan başlayın ve [Hizmet Kumaş Küme Kaynak Yöneticisi'ne Giriş alın](service-fabric-cluster-resource-manager-introduction.md)
+- Hareket Maliyeti, Küme Kaynak Yöneticisi'ne belirli hizmetlerin taşınmasının diğerlerinden daha pahalı olduğunu bildiren bir yoldur. Hareket maliyeti hakkında daha fazla bilgi edinmek için [bu makaleye](service-fabric-cluster-resource-manager-movement-cost.md) bakın
 
 [Image1]:./media/service-fabric-cluster-resource-manager-metrics/cluster-resource-manager-cluster-layout-with-default-metrics.png
 [Image2]:./media/service-fabric-cluster-resource-manager-metrics/Service-Fabric-Resource-Manager-Dynamic-Load-Reports.png

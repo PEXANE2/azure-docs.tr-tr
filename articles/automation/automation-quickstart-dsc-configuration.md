@@ -8,13 +8,13 @@ ms.date: 11/06/2018
 ms.topic: quickstart
 ms.custom: mvc
 ms.openlocfilehash: 6c3ff10f37233294b75eceddd62c0a33f8864484
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75421639"
 ---
-# <a name="configure-a-virtual-machine-with-desired-state-configuration"></a>Istenen durum yapılandırması ile bir sanal makine yapılandırın
+# <a name="configure-a-virtual-machine-with-desired-state-configuration"></a>İstenilen Durum Yapılandırması ile sanal makineyi yapılandırma
 
 İstenen Durum Yapılandırması'nı (DSC) etkinleştirerek Windows ve Linux sunucularınızın yapılandırmalarını yönetebilir ve izleyebilirsiniz. İstenen yapılandırmadan farklı olan yapılandırmalar tanımlanabilir veya otomatik olarak düzeltilebilir. Bu hızlı başlangıçta Linux VM ekleme ve DSC ile LAMP yığını dağıtma adımlarına yer verilmiştir.
 
@@ -22,11 +22,11 @@ ms.locfileid: "75421639"
 
 Bu hızlı başlangıcı tamamlamak için şunlar gerekir:
 
-* Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
+* Azure aboneliği. Azure aboneliğiniz yoksa, ücretsiz [bir hesap oluşturun.](https://azure.microsoft.com/free/)
 * Azure Otomasyonu hesabı. Bir Azure Otomasyonu Garklı Çalıştır hesabı oluşturma yönergeleri için bkz. [Azure Farklı Çalıştır Hesabı](automation-sec-configure-azure-runas-account.md).
 * Red Hat Enterprise Linux, CentOS veya Oracle Linux çalıştıran bir Azure Resource Manager VM (Klasik değil). VM oluşturma yönergeleri için bkz. [Azure portalında ilk Linux sanal makinenizi oluşturma](../virtual-machines/linux/quick-create-portal.md)
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açın
+## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 https://portal.azure.com adresinden Azure'da oturum açın
 
 ## <a name="onboard-a-virtual-machine"></a>Sanal makine ekleme
@@ -39,7 +39,7 @@ Makine eklemek ve İstenen Durum Yapılandırması'nı etkinleştirmek için kul
 3. DSC özelliğini etkinleştirmek istediğiniz sanal makineyi bulun. Aradığınız sanal makineyi bulmak için arama alanını ve filtre seçeneklerini kullanabilirsiniz.
 4. Sanal makineye ve ardından **Bağlan**'a tıklayın
 5. Sanal makineye uygun DSC ayarlarını seçin. Hazır yapılandırmanız varsa *Düğüm Yapılandırmasının Adı* alanında belirtebilirsiniz. Makinenin yapılandırma davranışını denetlemek için [yapılandırma modunu](https://docs.microsoft.com/powershell/scripting/dsc/managing-nodes/metaConfig) ayarlayabilirsiniz.
-6. **Tamam**’a tıklayın.
+6. **Tamam'ı** tıklatın
 
 ![DSC'ye Azure VM ekleme](./media/automation-quickstart-dsc-configuration/dsc-onboard-azure-vm.png)
 
@@ -52,7 +52,7 @@ Modüllerde DSC Kaynakları bulunur ve bunların çoğuna [PowerShell Galerisi](
 1. Otomasyon hesabının sol tarafındaki bölmede **Modül Galerisi**'ni (Paylaşılan Kaynaklar'ın altında) seçin.
 1. Adının bir bölümünü yazarak içeri aktarmak istediğiniz modülü arayın: *nx*
 1. İçeri aktarmak istediğiniz modüle tıklayın
-1. **İçeri Aktar**'a tıklayın
+1. **İçe Aktar'ı** tıklatın
 
 ![DSC Modülünü içeri aktarma](./media/automation-quickstart-dsc-configuration/dsc-import-module-nx.png)
 
@@ -98,9 +98,9 @@ configuration LAMPServer {
 Yapılandırmayı içeri aktarmak için:
 
 1. Otomasyon hesabının sol bölmesinde **Durum yapılandırması (DSC)** öğesini seçin ve ardından **Yapılandırmalar** sekmesine tıklayın.
-2. **+ Ekle**'ye tıklayın
+2. + **Ekle'yi** tıklatın
 3. Önceki adımda kaydettiğiniz *Yapılandırma dosyasını* seçin
-4. **Tamam**’a tıklayın.
+4. **Tamam'ı** tıklatın
 
 ## <a name="compile-a-configuration"></a>Yapılandırma derleme
 
@@ -108,7 +108,7 @@ DSC Yapılandırmalarının bir düğüme atanabilmesi için bir Düğüm Yapıl
 
 Yapılandırmayı derlemek için:
 
-1. Otomasyon hesabının sol bölmesinde **Durum yapılandırması (DSC)** öğesini seçin ve ardından **Yapılandırmalar** sekmesine tıklayın.
+1. Otomasyon hesabının sol bölmesinde **Durum Yapılandırması'nı (DSC)** seçin ve ardından **Yapılandırmalar** sekmesini tıklatın.
 1. Önceki adımda içeri aktardığınız yapılandırmayı seçin: "LAMPServer"
 1. Menü seçeneklerinden **Derle**'ye ve ardından **Evet**'e tıklayın
 1. Yapılandırma görünümünde kuyruğa eklenmiş yeni bir *Derleme işi* görürsünüz. İş başarıyla tamamlandıktan sonra bir sonraki adıma geçebilirsiniz. Hata oluşursa ayrıntılar için Derleme işinin üzerine tıklayabilirsiniz.
@@ -120,7 +120,7 @@ Derlenmiş *Düğüm Yapılandırması* DSC Düğümlerine atanabilir. Atama yap
 1. Otomasyon hesabının sol bölmesinde **Durum Yapılandırması (DSC) öğesini seçin ve ardından **Düğümler** sekmesine tıklayın.
 1. Yapılandırma atamak istediğiniz düğümü seçin
 1. **Düğüm Yapılandırması Ata**'ya tıklayın
-1. Atamak için *Düğüm Yapılandırması* - **LAMPServer.localhost** seçimini yapın ve **Tamam**'a tıklayın
+1. Düğüm - **YapılandırmaLAMPServer.localhost** seçin - atamak ve **Tamam'ı** tıklatın *Node Configuration*
 1. Derlenmiş yapılandırma düğüme atanır ve düğüm durumu *Beklemede* olarak değişir. Bir sonraki düzenli denetimde düğüm yapılandırmayı alır, uygular ve durumu bildirir. Düğümün ayarlarına bağlı olarak yapılandırmayı alma süresi 30 dakikaya kadar çıkabilir. Düğümü hemen denetim gerçekleştirmeye zorlamak için şu komutu Linux sanal makinesinde yerel olarak çalıştırabilirsiniz: `sudo /opt/microsoft/dsc/Scripts/PerformRequiredConfigurationChecks.py`
 
 ![Düğüm Yapılandırması Atama](./media/automation-quickstart-dsc-configuration/dsc-assign-node-configuration.png)
@@ -140,5 +140,5 @@ Bu hızlı başlangıçta DSC'ye bir Linux VM eklediniz, LAMP yığını için y
 
 * PowerShell İstenen Durum Yapılandırması hakkında daha fazla bilgi edinmek için bkz. [PowerShell İstenen Durum Yapılandırması'na Genel Bakış](https://docs.microsoft.com/powershell/scripting/dsc/overview/overview).
 * PowerShell'den Automation DSC yönetimi hakkında daha fazla bilgi edinmek için bkz. [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.automation/)
-* DSC raporlarını raporlama ve uyarma için Azure Izleyici günlüklerine iletme hakkında bilgi edinmek için bkz. [DSC raporlamasını Azure izleyici günlüklerine iletme](https://docs.microsoft.com/azure/automation/automation-dsc-diagnostics) 
+* Raporlama ve uyarı için DSC raporlarını Azure Monitor günlüklerine nasıl ileteceklerini öğrenmek [için](https://docs.microsoft.com/azure/automation/automation-dsc-diagnostics) bkz. 
 

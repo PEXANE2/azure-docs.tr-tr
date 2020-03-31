@@ -1,29 +1,29 @@
 ---
-title: Kaynak bulunamadı hataları
-description: Azure Resource Manager şablonuyla dağıtıldığında bir kaynak bulunamadığında hataların nasıl çözümleneceğini açıklar.
+title: Kaynak hataları bulunamadı
+description: Azure Kaynak Yöneticisi şablonuyla dağıtılırken kaynak bulunamadığında hataların nasıl çözüleceğini açıklar.
 ms.topic: troubleshooting
 ms.date: 01/21/2020
 ms.openlocfilehash: b6f433118092e46f734d4b65040dd97c2fcb58d9
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76773256"
 ---
-# <a name="resolve-not-found-errors-for-azure-resources"></a>Azure kaynakları için bulunamadı hatalarını çözümleme
+# <a name="resolve-not-found-errors-for-azure-resources"></a>Azure kaynakları için bulunamadı hataları çözme
 
-Bu makalede, dağıtım sırasında bir kaynak bulunamadığında görebileceğiniz hatalar açıklanır.
+Bu makalede, dağıtım sırasında bir kaynak bulunamadığında görebileceğiniz hataları açıklanmaktadır.
 
 ## <a name="symptom"></a>Belirti
 
-Şablonunuz çözülemeyen bir kaynağın adını içerdiğinde şuna benzer bir hata alırsınız:
+Şablonunuz çözülemeyen bir kaynağın adını içeriyorsa, aşağıdakilere benzer bir hata alırsınız:
 
 ```
 Code=NotFound;
 Message=Cannot find ServerFarm with name exampleplan.
 ```
 
-[Başvuru](template-functions-resource.md#reference) veya [ListKeys](template-functions-resource.md#listkeys) işlevlerini çözülemeyen bir kaynakla birlikte kullanırsanız, şu hatayı alırsınız:
+[Çözümlenemez](template-functions-resource.md#reference) bir kaynakile başvuru veya [listKeys](template-functions-resource.md#listkeys) işlevlerini kullanırsanız, aşağıdaki hatayı alırsınız:
 
 ```
 Code=ResourceNotFound;
@@ -33,11 +33,11 @@ group {resource group name} was not found.
 
 ## <a name="cause"></a>Nedeni
 
-Kaynak Yöneticisi bir kaynağın özelliklerini alması gerekiyor, ancak aboneliğinizde kaynağı tanımlayamıyor.
+Kaynak Yöneticisi'nin bir kaynak için özellikleri alması gerekir, ancak aboneliğinizdeki kaynağı tanımlayamaz.
 
-## <a name="solution-1---set-dependencies"></a>Çözüm 1-bağımlılıkları ayarlama
+## <a name="solution-1---set-dependencies"></a>Çözüm 1 - küme bağımlılıkları
 
-Şablonda eksik kaynağı dağıtmaya çalışıyorsanız, bir bağımlılık eklemeniz gerekip gerekmediğini kontrol edin. Kaynak Yöneticisi, mümkün olduğunda, paralel olarak kaynakları oluşturarak dağıtımı iyileştirir. Bir kaynak başka bir kaynaktan sonra dağıtılması gerekiyorsa, şablonunuzda **Bağımlıdson** öğesini kullanmanız gerekir. Örneğin, bir Web uygulaması dağıtıldığında App Service planının mevcut olması gerekir. Web uygulamasının App Service planına bağlı olduğunu belirtmediyse Kaynak Yöneticisi her iki kaynak de aynı anda oluşturulur. Yalnızca Web uygulamasında bir özellik ayarlamaya çalışırken mevcut olmadığından App Service planı kaynağının bulunamadığını belirten bir hata alırsınız. Web uygulamasındaki bağımlılığı ayarlayarak bu hatayı önleyebilirsiniz.
+Şablonda eksik kaynağı dağıtmaya çalışıyorsanız, bağımlılık eklemeniz gerekip gerekmediğini denetleyin. Kaynak Yöneticisi, mümkün olduğunda paralel olarak kaynak oluşturarak dağıtımı en iyi duruma getirmektedir. Bir kaynağın başka bir kaynaktan sonra dağıtılması gerekiyorsa, şablonunuzdaki **Bağlı Öğe** öğesini kullanmanız gerekir. Örneğin, bir web uygulaması dağıtılırken, Uygulama Hizmeti planının bulunması gerekir. Web uygulamasının Uygulama Hizmeti planına bağlı olduğunu belirtmediysen, Kaynak Yöneticisi her iki kaynağı da aynı anda oluşturur. Web uygulamasında bir özellik ayarlamaya çalışırken henüz var olmadığından, Uygulama Hizmeti planı kaynağının bulunamadığını belirten bir hata alırsınız. Web uygulamasındaki bağımlılığı ayarlayarak bu hatayı önlersiniz.
 
 ```json
 {
@@ -50,29 +50,29 @@ Kaynak Yöneticisi bir kaynağın özelliklerini alması gerekiyor, ancak abonel
 }
 ```
 
-Ancak, gerekmeyen bağımlılıkları ayarlamayı önlemek isteyebilirsiniz. Gereksiz bağımlılıklara sahip olduğunuzda, birbirlerine bağımlı olmayan kaynakların paralel olarak dağıtılmasını önleyecek şekilde dağıtım süresini uzattınız. Ayrıca, dağıtımı engelleyen döngüsel bağımlılıklar da oluşturabilirsiniz. [Başvuru](template-functions-resource.md#reference) işlevi ve [liste *](template-functions-resource.md#list) işlevleri, başvurulan kaynak üzerinde bu kaynak aynı şablonda dağıtıldığında ve adına (kaynak kimliği değil) başvurduğu zaman bir örtük bağımlılık oluşturur. Bu nedenle, **Bağımlıdson** özelliğinde belirtilen bağımlılıklardan daha fazla bağımlılığı olabilir. [RESOURCEID](template-functions-resource.md#resourceid) işlevi örtük bir bağımlılık oluşturmaz veya kaynağın mevcut olduğunu doğrular. [Başvuru](template-functions-resource.md#reference) işlevi ve [liste *](template-functions-resource.md#list) IŞLEVLERI, kaynağa kaynak kimliği tarafından bahsedildiğinde örtülü bir bağımlılık oluşturmaz. Örtük bir bağımlılık oluşturmak için, aynı şablonda dağıtılan kaynağın adını geçirin.
+Ancak, gerekli olmayan bağımlılıkları ayarlamaktan kaçınmak istersiniz. Gereksiz bağımlılıklarınız olduğunda, birbirine bağımlı olmayan kaynakların paralel olarak dağıtılmasını engelleyerek dağıtım süresini uzatırsınız. Ayrıca, dağıtımı engelleyen dairesel bağımlılıklar oluşturabilirsiniz. [Başvuru](template-functions-resource.md#reference) işlevi ve [liste*](template-functions-resource.md#list) işlevleri, kaynak aynı şablonda dağıtıldığında ve adı (kaynak kimliği yle değil) başvurulduğunda, başvurulan kaynağa örtülü bir bağımlılık oluşturur. Bu nedenle, bağlı **özelliği** belirtilen bağımlılıklar daha fazla bağımlılık olabilir. [ResourceId](template-functions-resource.md#resourceid) işlevi örtük bir bağımlılık oluşturmaz veya kaynağın var olduğunu doğrulamaz. Kaynak kaynağı kimliğitarafından atıfta [bulunulduğunda, başvuru](template-functions-resource.md#reference) işlevi ve [liste*](template-functions-resource.md#list) işlevleri örtük bir bağımlılık oluşturmaz. Örtük bağımlılık oluşturmak için, aynı şablonda dağıtılan kaynağın adını geçirin.
 
-Bağımlılık sorunlarını gördüğünüzde, kaynak dağıtımının sırası hakkında öngörü elde etmeniz gerekir. Dağıtım işlemlerinin sırasını görüntülemek için:
+Bağımlılık sorunlarını gördüğünüzde, kaynak dağıtım sırası hakkında bilgi edinmeniz gerekir. Dağıtım işlemlerinin sırasını görüntülemek için:
 
-1. Kaynak grubunuz için dağıtım geçmişini seçin.
+1. Kaynak grubunuzun dağıtım geçmişini seçin.
 
-   ![Dağıtım geçmişini seçin](./media/error-not-found/select-deployment.png)
+   ![dağıtım geçmişini seçin](./media/error-not-found/select-deployment.png)
 
-2. Geçmişten bir dağıtım seçin ve **Olaylar**' ı seçin.
+2. Geçmişten bir dağıtım seçin ve **Olaylar'ı**seçin.
 
-   ![Dağıtım olaylarını seçin](./media/error-not-found/select-deployment-events.png)
+   ![dağıtım olaylarını seçme](./media/error-not-found/select-deployment-events.png)
 
-3. Her kaynak için olay sırasını inceleyin. Her işlemin durumuna dikkat edin. Örneğin, aşağıdaki görüntüde paralel olarak dağıtılan üç depolama hesabı gösterilmektedir. Üç depolama hesabının aynı anda başlatıldığını unutmayın.
+3. Her kaynak için olayların sırasını inceleyin. Her operasyonun durumuna dikkat edin. Örneğin, aşağıdaki resim paralel olarak dağıtılan üç depolama hesabı gösterir. Üç depolama hesabının aynı anda başlatıldığuna dikkat edin.
 
    ![paralel dağıtım](./media/error-not-found/deployment-events-parallel.png)
 
-   Sonraki görüntüde paralel olarak dağıtılmayan üç depolama hesabı gösterilmektedir. İkinci depolama hesabı, ilk depolama hesabına bağlıdır ve üçüncü depolama hesabı ikinci depolama hesabına bağlıdır. İlk depolama hesabı, bir sonraki başlatılmadan önce başlatılır, kabul edilir ve tamamlanır.
+   Sonraki resimde, paralel olarak dağıtılmamaüç depolama hesabı gösterilmektedir. İkinci depolama hesabı ilk depolama hesabına, üçüncü depolama hesabı ise ikinci depolama hesabına bağlıdır. İlk depolama hesabı başlatılır, kabul edilir ve sonraki başlatılmadan önce tamamlanır.
 
    ![sıralı dağıtım](./media/error-not-found/deployment-events-sequence.png)
 
-## <a name="solution-2---get-resource-from-different-resource-group"></a>Çözüm 2-farklı kaynak grubundan kaynak al
+## <a name="solution-2---get-resource-from-different-resource-group"></a>Çözüm 2 - farklı kaynak grubundan kaynak almak
 
-Kaynak, dağıtılmasından farklı bir kaynak grubunda mevcut olduğunda, kaynağın tam adını almak için [RESOURCEID işlevini](template-functions-resource.md#resourceid) kullanın.
+Kaynak, dağıtılan kaynaktan farklı bir kaynak grubunda varsa, kaynağın tam nitelikli adını almak için [resourceId işlevini](template-functions-resource.md#resourceid) kullanın.
 
 ```json
 "properties": {
@@ -81,21 +81,21 @@ Kaynak, dağıtılmasından farklı bir kaynak grubunda mevcut olduğunda, kayna
 }
 ```
 
-## <a name="solution-3---check-reference-function"></a>Çözüm 3-başvuru işlevini denetle
+## <a name="solution-3---check-reference-function"></a>Çözüm 3 - kontrol referans fonksiyonu
 
-[Başvuru](template-functions-resource.md#reference) işlevini içeren bir ifade arayın. Sağladığınız değerler, kaynağın aynı şablonda, kaynak grubunda ve abonelikte olup olmadığına göre farklılık gösterir. Senaryonuz için gerekli parametre değerlerini sağlayıp sağlamadığınızı iki kez denetleyin. Kaynak farklı bir kaynak grubsunda, tam kaynak KIMLIĞI sağlayın. Örneğin, başka bir kaynak grubundaki bir depolama hesabına başvurmak için şunu kullanın:
+[Başvuru](template-functions-resource.md#reference) işlevini içeren bir ifade arayın. Sağladığınız değerler, kaynağın aynı şablonda, kaynak grubunda ve abonelikte olup olmadığına bağlı olarak değişir. Senaryonuz için gerekli parametre değerlerini sağladığınızı iki kez denetleyin. Kaynak farklı bir kaynak grubundaysa, tam kaynak kimliğini sağlayın. Örneğin, başka bir kaynak grubundaki bir depolama hesabına başvurmak için şunları kullanın:
 
 ```json
 "[reference(resourceId('exampleResourceGroup', 'Microsoft.Storage/storageAccounts', 'myStorage'), '2017-06-01')]"
 ```
 
-## <a name="solution-4---get-managed-identity-from-resource"></a>Çözüm 4-kaynaktan yönetilen kimliği al
+## <a name="solution-4---get-managed-identity-from-resource"></a>Çözüm 4 - kaynaktan yönetilen kimlik almak
 
-[Yönetilen kimliği](../../active-directory/managed-identities-azure-resources/overview.md)dolaylı olarak oluşturan bir kaynak dağıtıyorsanız, yönetilen kimlik değerlerini almadan önce bu kaynak dağıtılana kadar beklemeniz gerekir. Yönetilen kimlik adını [başvuru](template-functions-resource.md#reference) işlevine geçirirseniz, kaynak ve kimlik dağıtılmadan önce başvuruyu çözümlemeye çalışır Kaynak Yöneticisi. Bunun yerine, kimliğin uygulandığı kaynağın adını geçirin. Bu yaklaşım, başvuru işlevini çözümlediği Kaynak Yöneticisi önce kaynak ve yönetilen kimliğin dağıtılmasını sağlar.
+Yönetilen bir kimlik oluşturan bir kaynağı dağıtıyorsanız, yönetilen [kimlikteki](../../active-directory/managed-identities-azure-resources/overview.md)değerleri almadan önce bu kaynağın dağıtılmasını beklemeniz gerekir. Yönetilen kimlik adını [başvuru](template-functions-resource.md#reference) işlevine geçirirseniz, Kaynak Yöneticisi kaynak ve kimlik dağıtılmadan önce başvuruyu çözmeye çalışır. Bunun yerine, kimliğin uygulandığı kaynağın adını geçirin. Bu yaklaşım, Kaynak Yöneticisi başvuru işlevini çözmeden önce kaynağın ve yönetilen kimliğin dağıtılmasını sağlar.
 
-Başvuru işlevinde, yönetilen kimlik dahil tüm özellikleri almak için `Full` kullanın.
+Başvuru işlevinde, `Full` yönetilen kimlik de dahil olmak üzere tüm özellikleri almak için kullanın.
 
-Örneğin, bir sanal makine ölçek kümesine uygulanan bir yönetilen kimliğin kiracı KIMLIĞINI almak için şunu kullanın:
+Örneğin, sanal makine ölçeği kümesine uygulanan yönetilen bir kimlik için kiracı kimliğini almak için şunları kullanın:
 
 ```json
 "tenantId": "[reference(resourceId('Microsoft.Compute/virtualMachineScaleSets',  variables('vmNodeType0Name')), variables('vmssApiVersion'), 'Full').Identity.tenantId]"

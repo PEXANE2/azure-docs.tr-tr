@@ -1,100 +1,100 @@
 ---
-title: Yedekleme ve geri yükleme-Azure portal-PostgreSQL için Azure veritabanı-tek sunucu
-description: Bu makalede, Azure portal kullanarak PostgreSQL için Azure veritabanı 'na yönelik bir sunucunun nasıl geri yükleneceği açıklanmaktadır.
+title: Yedekleme ve geri yükleme - Azure portalı - PostgreSQL için Azure Veritabanı - Tek Sunucu
+description: Bu makalede, Azure portalını kullanarak PostgreSQL - Single Server için Azure Veritabanı'ndaki bir sunucunun nasıl geri yüklenir.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.openlocfilehash: fb13e4f062976e39c3cec607001e6982db228873
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74765639"
 ---
-# <a name="how-to-backup-and-restore-a-server-in-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>Azure portal kullanarak, PostgreSQL için Azure veritabanı 'nda bir sunucuyu yedekleme ve geri yükleme-tek sunucu
+# <a name="how-to-backup-and-restore-a-server-in-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>Azure portalını kullanarak PostgreSQL - Single Server için Azure Veritabanı'ndaki bir sunucuyu yedekleme ve geri yükleme
 
 ## <a name="backup-happens-automatically"></a>Yedekleme otomatik olarak gerçekleşir
-PostgreSQL için Azure veritabanı sunucuları, geri yükleme özelliklerini etkinleştirmek üzere düzenli aralıklarla yedeklenir. Bu özelliği kullanarak, sunucuyu ve tüm veritabanlarını yeni bir sunucuda daha önceki bir zaman noktasına geri yükleyebilirsiniz.
+PostgreSQL sunucuları için Azure Veritabanı, Geri Yükleme özelliklerini etkinleştirmek için düzenli aralıklarla yedeklenir. Bu özelliği kullanarak, sunucuyu ve tüm veritabanlarını yeni bir sunucuda daha önceki bir zaman diliminde geri yükleyebilirsiniz.
 
-## <a name="set-backup-configuration"></a>Yedekleme yapılandırmasını ayarla
+## <a name="set-backup-configuration"></a>Yedekleme yapılandırması ayarlama
 
-Sunucu oluşturma sırasında, **fiyatlandırma katmanı** penceresinde yerel olarak yedekli yedeklemeler veya coğrafi olarak yedekli yedeklemeler için sunucunuzu yapılandırma arasında seçim yaparsınız.
+**Sunucunuzu** yerel olarak yedekli yedeklemeler veya coğrafi olarak yedek li yedeklemeler için fiyatlandırma katmanı penceresinde sunucu oluşturma da yapılandırmak arasında seçim yaparsınız.
 
 > [!NOTE]
-> Bir sunucu oluşturulduktan sonra, coğrafi olarak yedekli ve yerel olarak yedekli olan artıklık türü değiştirilemez.
+> Bir sunucu oluşturulduktan sonra, sahip olduğu artıklık türü, coğrafi olarak gereksiz vs yerel gereksiz, değiştirilemez.
 >
 
-Azure portal aracılığıyla bir sunucu oluştururken, **fiyatlandırma katmanı** penceresi sunucunuz Için **yerel olarak yedekli** veya **coğrafi olarak yedekli** yedeklemeleri seçtiğiniz yerdir. Bu pencere Ayrıca, **yedekleme bekletme dönemini** (gün sayısı cinsinden) sunucu yedeklemelerinin ne kadar süreyle depolandığını seçtiğiniz yerdir.
+Azure portalı üzerinden bir sunucu oluştururken, **Fiyatlandırma Katmanı** penceresi sunucunuz için Yerel **Olarak Yedekli** veya Coğrafi Olarak **Yedekli** yedeklemeleri seçtiğiniz yerdir. Bu pencere aynı zamanda **Yedekleme Bekletme Dönemi'ni** seçtiğiniz yerdir - sunucu yedeklemelerinin ne kadar süreyle (gün sayısı olarak) depolanmasını istediğiniz.
 
-   ![Fiyatlandırma Katmanı-yedek yedeklilik seçin](./media/howto-restore-server-portal/pricing-tier.png)
+   ![Fiyatlandırma Katmanı - Yedek Artıklığı Seçin](./media/howto-restore-server-portal/pricing-tier.png)
 
-Oluşturma sırasında bu değerleri ayarlama hakkında daha fazla bilgi için bkz. [PostgreSQL Için Azure veritabanı sunucu hızlı başlangıç](quickstart-create-server-database-portal.md).
+Oluşturma sırasında bu değerleri ayarlama hakkında daha fazla bilgi için [PostgreSQL sunucusu için Azure Veritabanı'na bakın.](quickstart-create-server-database-portal.md)
 
-Bir sunucunun yedekleme saklama süresi aşağıdaki adımlarla değiştirilebilir:
-1. [Azure portal](https://portal.azure.com/) oturum açın.
-2. PostgreSQL için Azure Veritabanı sunucunuzu seçin. Bu eylem **genel bakış** sayfasını açar.
-3. Menüde, **Ayarlar**' ın altında **fiyatlandırma katmanı** ' nı seçin. Kaydırıcıyı kullanarak **yedekleme saklama süresini** 7 ila 35 gün süreyle tercihlerinize göre değiştirebilirsiniz.
-Aşağıdaki ekran görüntüsünde 34 güne yükselmiştir.
-![yedekleme bekletme süresi arttı](./media/howto-restore-server-portal/3-increase-backup-days.png)
+Bir sunucunun yedekleme bekletme süresi aşağıdaki adımlarla değiştirilebilir:
+1. [Azure portalında](https://portal.azure.com/)oturum açın.
+2. PostgreSQL için Azure Veritabanı sunucunuzu seçin. Bu eylem **Genel Bakış** sayfasını açar.
+3. **AYARLAR**altında menüden **Fiyatlandırma Katmanı'nı** seçin. Kaydırıcıyı kullanarak Yedekleme **Bekletme Süresini** 7 ile 35 gün arasında tercihinize göre değiştirebilirsiniz.
+Aşağıdaki ekran görüntüsünde 34 güne çıkarılmıştır.
+![Yedekleme bekletme süresi artırıldı](./media/howto-restore-server-portal/3-increase-backup-days.png)
 
-4. Değişikliği onaylamak için **Tamam** ' ı tıklatın.
+4. Değişikliği onaylamak için **Tamam'ı** tıklatın.
 
-Yedekleme bekletme süresi, kullanılabilir yedeklemeler temel aldığı için zaman içinde bir nokta geri yüklemesi alma süresinin ne kadar geri alınacağını yönetir. Bir noktadan sonra geri yükleme aşağıdaki bölümde daha ayrıntılı olarak açıklanmıştır. 
+Yedekleme bekletme süresi, kullanılabilir yedeklemelere dayandığı için zaman içinde bir geri yüklemenin ne kadar geri alınabileceğini yönetir. Zaman içinde geri yükleme aşağıdaki bölümde daha ayrıntılı olarak açıklanmıştır. 
 
 ## <a name="point-in-time-restore"></a>Belirli bir noktaya geri yükleme
-PostgreSQL için Azure veritabanı, sunucuyu bir zaman noktasına geri yüklemenize ve sunucunun yeni bir kopyasına geri yüklemenize olanak tanır. Verilerinizi kurtarmak için bu yeni sunucuyu kullanabilir veya istemci uygulamalarınızın bu yeni sunucuyu işaret edebilir.
+PostgreSQL için Azure Veritabanı, sunucuyu bir noktada niçin geri yüklemenize ve sunucunun yeni bir kopyasına geri yüklemenize olanak tanır. Verilerinizi kurtarmak için bu yeni sunucuyu kullanabilir veya istemci uygulamalarınızın bu yeni sunucuyu işaret etmesini sağlayabilirsiniz.
 
-Örneğin, bir tablo bugün öğleden sonra yanlışlıkla bırakıldıysa, daha önce geçen saate geri yükleyebilir ve eksik tablo ve verileri sunucunun bu yeni kopyasından elde edebilirsiniz. Zaman içinde geri yükleme, veritabanı düzeyinde değil, sunucu düzeyindedir.
+Örneğin, bugün öğlen yanlışlıkla bir tablo düştüyse, öğlenden hemen önce zamana geri yükleyebilir ve eksik tabloyu ve verileri sunucunun yeni kopyasından alabilirsiniz. Zaman içinde geri yükleme, veritabanı düzeyinde değil, sunucu düzeyindedir.
 
-Aşağıdaki adımlar örnek sunucuyu bir zaman noktasına geri yükler:
-1. Azure portal, PostgreSQL için Azure veritabanı sunucunuzu seçin. 
+Aşağıdaki adımlar örnek sunucuyu zamanında bir noktaya geri yüklenir:
+1. Azure portalında, PostgreSQL sunucusu için Azure Veritabanınızı seçin. 
 
-2. Sunucunun **genel bakış** sayfasının araç çubuğunda **geri yükle**' yi seçin.
+2. Sunucunun **Genel Bakış** sayfasının araç çubuğunda **Geri Yükle'yi**seçin.
 
-   ![PostgreSQL için Azure veritabanı-genel bakış-geri yükleme düğmesi](./media/howto-restore-server-portal/2-server.png)
+   ![PostgreSQL için Azure Veritabanı - Genel Bakış - Geri Yükleme düğmesi](./media/howto-restore-server-portal/2-server.png)
 
-3. Geri yükleme formunu gereken bilgilerle doldurun:
+3. Geri Yükleme formunu gerekli bilgilerle doldurun:
 
-   ![PostgreSQL için Azure veritabanı-geri yükleme bilgileri](./media/howto-restore-server-portal/3-restore.png)
-   - **Geri yükleme noktası**: geri yüklemek istediğiniz zaman noktasını seçin.
-   - **Hedef sunucu**: yeni sunucu için bir ad sağlayın.
-   - **Konum**: bölgeyi seçemezsiniz. Varsayılan olarak, kaynak sunucu ile aynıdır.
-   - **Fiyatlandırma katmanı**: bir zaman içinde geri yükleme yaparken bu parametreleri değiştiremezsiniz. Kaynak sunucuyla aynıdır. 
+   ![PostgreSQL için Azure Veritabanı - Bilgileri geri yükleme](./media/howto-restore-server-portal/3-restore.png)
+   - **Geri Yükleme noktası**: Geri yüklemek istediğiniz zamanı seçin.
+   - **Hedef sunucu**: Yeni sunucu için bir ad sağlayın.
+   - **Konum**: Bölgeyi seçemezsiniz. Varsayılan olarak kaynak sunucu ile aynıdır.
+   - **Fiyatlandırma katmanı**: Bu parametreleri zamanında geri yükleme yaparken değiştiremezsiniz. Kaynak sunucuyla aynıdır. 
 
-4. Sunucuyu bir zaman noktasına geri yüklemek üzere geri yüklemek için **Tamam** ' a tıklayın. 
+4. Sunucuyu geri yüklemek için **tamam'ı** tıklatın. 
 
-5. Geri yükleme tamamlandıktan sonra, verilerin beklendiği gibi geri yüklendiğini doğrulamak için oluşturulan yeni sunucuyu bulun.
+5. Geri yükleme tamamlandığında, verilerin beklendiği gibi geri yüklenmiş olduğunu doğrulamak için oluşturulan yeni sunucuyu bulun.
 
-Noktadan noktaya geri yükleme tarafından oluşturulan yeni sunucu, mevcut sunucu için geçerli olan Sunucu Yöneticisi oturum açma adı ve parolası ile aynı zamanda, Parolayı yeni sunucunun **genel bakış** sayfasından değiştirebilirsiniz.
+Zaman içinde geri yükleme tarafından oluşturulan yeni sunucu, zaman içinde seçilen noktada varolan sunucu için geçerli olan sunucu yönetici giriş adı ve parolaya sahiptir. Parolayı yeni sunucunun **Genel Bakış** sayfasından değiştirebilirsiniz.
 
-Geri yükleme sırasında oluşturulan yeni sunucu, özgün sunucuda bulunan güvenlik duvarı kurallarına veya VNet hizmeti uç noktalarına sahip değildir. Bu kuralların bu yeni sunucu için ayrı olarak ayarlanması gerekir.
+Geri yükleme sırasında oluşturulan yeni sunucuda güvenlik duvarı kuralları veya özgün sunucuda var olan VNet hizmet bitiş noktaları yoktur. Bu yeni sunucu için bu kuralların ayrı olarak ayarlanılması gerekir.
 
 
 ## <a name="geo-restore"></a>Coğrafi geri yükleme
 
-Sunucunuzu coğrafi olarak yedekli yedeklemeler için yapılandırdıysanız, var olan sunucunun yedeklemesinden yeni bir sunucu oluşturulabilir. Bu yeni sunucu, PostgreSQL için Azure veritabanı 'nın kullanılabildiği herhangi bir bölgede oluşturulabilir.  
+Sunucunuzu coğrafi olarak gereksiz yedeklemeler için yapılandıysanız, varolan sunucunun yedeklemesinden yeni bir sunucu oluşturulabilir. Bu yeni sunucu, PostgreSQL için Azure Veritabanı'nın kullanılabilen herhangi bir bölgede oluşturulabilir.  
 
-1. Portalın sol üst köşesinde bulunan **Kaynak oluştur** düğmesini (+) seçin. **Veritabanları** > **PostgreSQL için Azure Veritabanı**'nı seçin.
+1. Portalın sol üst köşesinde **kaynak oluştur** düğmesini (+) seçin. PostgreSQL için **Veritabanları** > **Azure Veritabanı'nı**seçin.
 
    !["PostgreSQL için Azure Veritabanı" seçeneği](./media/howto-restore-server-portal/1-navigate-to-postgres.png)
 
-2. Formun **Kaynak Seç** açılan menüsünde **Yedekle**' yi seçin. Bu eylem, coğrafi olarak yedekli yedeklemelerin etkinleştirildiği sunucuların listesini yükler. Yeni sunucunuzun kaynağı olacak şekilde bu Yedeklerden birini seçin.
-   ![kaynak seçin: coğrafi olarak yedekli yedeklemelerin yedeklenmesi ve listesi](./media/howto-restore-server-portal/2-georestore.png)
+2. Formun **Kaynak** seç açılır düşüşünde **Yedekleme'yi**seçin. Bu eylem, coğrafi yedekli yedeklemeleri etkin leştirilmiş sunucuların listesini yükler. Yeni sunucunuzun kaynağı olması için bu yedeklemelerden birini seçin.
+   ![Kaynak'ı seçin: Yedekleme ve coğrafi yedek li yedeklerin listesi](./media/howto-restore-server-portal/2-georestore.png)
 
    > [!NOTE]
-   > Sunucu ilk oluşturulduğunda coğrafi geri yükleme için hemen kullanılamayabilir. Gerekli meta verilerin doldurulması birkaç saat sürebilir.
+   > Bir sunucu ilk oluşturulduğunda, coğrafi geri yükleme için hemen kullanılamayabilir. Gerekli meta verilerin doldurulması birkaç saat sürebilir.
    >
 
-3. Formun geri kalanını tercihlerinize göre doldurun. Herhangi bir **konum**seçebilirsiniz. Konumu seçtikten sonra **fiyatlandırma katmanını**seçebilirsiniz. Varsayılan olarak, geri yüklemekte olduğunuz mevcut sunucunun parametreleri görüntülenir. Bu ayarları devralması için herhangi bir değişiklik yapmadan **Tamam** ' a tıklayabilirsiniz. Ya da **Işlem üretimini** (seçtiğiniz bölgede varsa), **sanal çekirdek**sayısı, **yedekleme saklama süresi**ve **yedekleme artıklığı seçeneğinin**sayısını değiştirebilirsiniz. Geri yükleme sırasında **fiyatlandırma katmanını** (temel, genel amaçlı veya bellek için iyileştirilmiş) veya **depolama** boyutunu değiştirme desteklenmiyor.
+3. Formun geri kalanını tercihlerinizle doldurun. Herhangi bir **Konumu**seçebilirsiniz. Konumu seçtikten sonra Fiyatlandırma **Katmanı'nı**seçebilirsiniz. Varsayılan olarak, geri aldığınız varolan sunucunun parametreleri görüntülenir. Bu ayarları devralmak için herhangi bir değişiklik yapmadan **Tamam'ı** tıklatabilirsiniz. Veya İşlem **Oluşturma** (seçtiğiniz bölgede varsa), **vCore**sayısı, **Yedekleme Bekletme Süresi**ve **Yedek Artıklık Seçeneğini**değiştirebilirsiniz. Geri yükleme sırasında **Fiyatlandırma Katmanını** (Temel, Genel Amaç veya Bellek Optimize Edilen) veya **Depolama** boyutunu değiştirme desteklenmez.
 
 
-Coğrafi geri yükleme tarafından oluşturulan yeni sunucu, geri yükleme başlatıldığı sırada mevcut sunucu için geçerli olan Sunucu Yöneticisi oturum açma adı ve parolaya sahiptir. Parola, yeni sunucunun **genel bakış** sayfasından değiştirilebilir.
+Geo geri yükleme tarafından oluşturulan yeni sunucu, geri yükleme nin başlatıldığı anda varolan sunucu için geçerli olan sunucu yöneticisi giriş adı ve parolaya sahiptir. Parola, yeni sunucunun **Genel Bakış** sayfasından değiştirilebilir.
 
-Geri yükleme sırasında oluşturulan yeni sunucu, özgün sunucuda bulunan güvenlik duvarı kurallarına veya VNet hizmeti uç noktalarına sahip değildir. Bu kuralların bu yeni sunucu için ayrı olarak ayarlanması gerekir.
+Geri yükleme sırasında oluşturulan yeni sunucuda güvenlik duvarı kuralları veya özgün sunucuda var olan VNet hizmet bitiş noktaları yoktur. Bu yeni sunucu için bu kuralların ayrı olarak ayarlanılması gerekir.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- Hizmetin [yedeklemeleri](concepts-backup.md)hakkında daha fazla bilgi edinin.
+- Hizmetin [yedekleri](concepts-backup.md)hakkında daha fazla bilgi edinin.
 - [İş sürekliliği](concepts-business-continuity.md) seçenekleri hakkında daha fazla bilgi edinin.

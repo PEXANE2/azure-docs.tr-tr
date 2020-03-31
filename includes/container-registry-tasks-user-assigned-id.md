@@ -9,21 +9,21 @@ ms.date: 07/12/2019
 ms.author: danlep
 ms.custom: include file
 ms.openlocfilehash: ceda7bd6bd165df1eece555c6ce8a9a6c863b2c1
-ms.sourcegitcommit: 323c3f2e518caed5ca4dd31151e5dee95b8a1578
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/10/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77112289"
 ---
 ### <a name="create-a-user-assigned-identity"></a>Kullanıcı tarafından atanan kimlik oluşturma
 
-[Az Identity Create][az-identity-create] komutunu kullanarak aboneliğinizde *Myacrtasksıd* adlı bir kimlik oluşturun. Daha önce bir kapsayıcı kayıt defteri oluşturmak için kullandığınız kaynak grubunu kullanabilir veya farklı bir tane oluşturabilirsiniz.
+Az kimlik oluşturma komutunu kullanarak aboneliğinizde *myACRTasksId* adlı bir [kimlik oluşturun.][az-identity-create] Bir kapsayıcı kayıt defteri veya farklı bir kayıt defteri oluşturmak için daha önce kullandığınız aynı kaynak grubunu kullanabilirsiniz.
 
 ```azurecli-interactive
 az identity create --resource-group myResourceGroup --name myACRTasksId
 ```
 
-Aşağıdaki adımlarda Kullanıcı tarafından atanan kimliği yapılandırmak için, kimliğin kaynak KIMLIĞI, asıl KIMLIĞI ve istemci KIMLIĞINI değişkenlerde depolamak üzere [az Identity Show][az-identity-show] komutunu kullanın.
+Aşağıdaki adımlarda kullanıcı tarafından atanan kimliği yapılandırmak için, kimliğin kaynak kimliğini, ana kimliğini ve istemci kimliğini değişkenlerde depolamak için [az identity show][az-identity-show] komutunu kullanın.
 
 ```azurecli
 # Get resource ID of the user-assigned identity

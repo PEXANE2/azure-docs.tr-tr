@@ -1,6 +1,6 @@
 ---
-title: 'Azure ExpressRoute: ARP tabloları-sorun giderme'
-description: Bu sayfa, bir ExpressRoute devresine ait ARP tablolarını alma hakkında yönergeler sağlar
+title: 'Azure ExpressRoute: ARP tabloları - Sorun giderme'
+description: Bu sayfa, ExpressRoute devresi için ARP tabloları alma hakkında talimatlar sağlar
 services: expressroute
 author: ganesr
 ms.service: expressroute
@@ -9,10 +9,10 @@ ms.date: 01/30/2017
 ms.author: ganesr
 ms.custom: seodec18
 ms.openlocfilehash: 4f1bd064dbc0909be3deba9180be1d8b3c066fd4
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/14/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74076573"
 ---
 # <a name="getting-arp-tables-in-the-resource-manager-deployment-model"></a>Kaynak Yöneticisi dağıtım modelinde ARP tabloları alma
@@ -22,25 +22,25 @@ ms.locfileid: "74076573"
 > 
 > 
 
-Bu makalede, ExpressRoute bağlantı hattı için ARP tablolarını öğrenme adımlarında izlenecek yol gösterilmektedir.
+Bu makalede, ExpressRoute devreniz için ARP tablolarını öğrenmek için aşağıdaki adımlar size yol gösterir.
 
 > [!IMPORTANT]
-> Bu belge, basit sorunları tanılamanıza ve düzeltmenize yardımcı olmaya yöneliktir. Microsoft desteği için bir değişiklik olması amaçlanmamıştır. Aşağıdaki adımları kullanarak sorunu çözemediğiniz [Microsoft desteği](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) ile bir destek bileti açmanız gerekir.
+> Bu belge, basit sorunları tanılamanıza ve düzeltmenize yardımcı olmak için tasarlanmıştır. Microsoft desteğinin yerine geçmesi amaçlanmamıştır. Aşağıda açıklanan kılavuzu kullanarak sorunu çözemiyorsanız, [Microsoft desteği](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) ile bir destek bileti açmanız gerekir.
 > 
 > 
 
 [!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
 
 ## <a name="address-resolution-protocol-arp-and-arp-tables"></a>Adres Çözümleme Protokolü (ARP) ve ARP tabloları
-Adres Çözümleme Protokolü (ARP), [RFC 826](https://tools.ietf.org/html/rfc826)' de tanımlanan bir katman 2 protokolüdür. ARP, Ethernet adresini (MAC adresi) bir IP adresi ile eşlemek için kullanılır.
+Adres Çözümleme Protokolü (ARP), [RFC 826'da](https://tools.ietf.org/html/rfc826)tanımlanan katman 2 protokolüdür. ARP, Ethernet adresini (MAC adresi) ip adresiyle eşlemek için kullanılır.
 
-ARP tablosu, belirli bir eşleme için IPv4 adresi ve MAC adresi eşleştirmesi sağlar. Bir ExpressRoute bağlantı hattı eşlemesi için ARP tablosu, her arabirim için aşağıdaki bilgileri sağlar (birincil ve ikincil)
+ARP tablosu, belirli bir eşleme için ipv4 adresinin ve MAC adresinin eşlenemesini sağlar. ExpressRoute devre si leşme için ARP tablosu her arabirim için aşağıdaki bilgileri sağlar (birincil ve ikincil)
 
-1. Şirket içi yönlendirici arabirimi IP adresini MAC adresine eşleme
-2. ExpressRoute yönlendirici arabirimi IP adresini MAC adresine eşleme
-3. Eşlemenin yaşı
+1. Şirket içi yönlendirici arabirimi ip adresinin MAC adresine eşleneme
+2. ExpressRoute yönlendirici arabirimi ip adresinin MAC adresine eşleneme
+3. Haritalama yaşı
 
-ARP tabloları katman 2 yapılandırmasını doğrulamaya ve temel katman 2 bağlantı sorunlarını gidermenize yardımcı olabilir. 
+ARP tabloları katman 2 yapılandırmayı doğrulamaya ve temel katman 2 bağlantı sorunlarını gidermede yardımcı olabilir. 
 
 Örnek ARP tablosu: 
 
@@ -50,26 +50,26 @@ ARP tabloları katman 2 yapılandırmasını doğrulamaya ve temel katman 2 bağ
           0 Microsoft         10.0.0.2   aaaa.bbbb.cccc
 
 
-Aşağıdaki bölümde, ExpressRoute Edge yönlendiricileri tarafından görülen ARP tablolarını nasıl görüntüleyegörebileceğiniz hakkında bilgi verilmektedir. 
+Aşağıdaki bölümde, ExpressRoute kenar yönlendiricileri tarafından görülen ARP tablolarını nasıl görüntülediğiniz hakkında bilgi verilmektedir. 
 
-## <a name="prerequisites-for-learning-arp-tables"></a>ARP tablolarını öğrenme önkoşulları
-Devam etmeden önce aşağıdakilere sahip olduğunuzdan emin olun
+## <a name="prerequisites-for-learning-arp-tables"></a>ARP tablolarını öğrenmek için ön koşullar
+İlerlemeden önce aşağıdakileri aldığınızdan emin olun
 
-* En az bir eşleme ile yapılandırılmış geçerli bir ExpressRoute devresi. Devre bağlantı sağlayıcısı tarafından tam olarak yapılandırılmalıdır. Siz (veya bağlantı sağlayıcınız) Bu bağlantı üzerinde en az bir eşleme (Azure Private, Azure genel ve Microsoft) yapılandırılmış olmalıdır.
-* Eşayarları yapılandırmak için kullanılan IP adresi aralıkları (Azure özel, Azure genel ve Microsoft). IP adreslerinin, sizin ve ExpressRoute tarafında bulunan arabirimlere nasıl eşlenildiğini anlamak için [ExpressRoute yönlendirme gereksinimleri sayfasındaki](expressroute-routing.md) IP adresi atama örneklerini gözden geçirin. [ExpressRoute eşleme yapılandırması sayfasını](expressroute-howto-routing-arm.md)inceleyerek eşleme yapılandırması hakkında bilgi edinebilirsiniz.
-* Bu IP adresleriyle kullanılan arabirimlerin MAC adreslerinde ağ takımınızdan/bağlantı sağlayıcınızdan alınan bilgiler.
-* Azure için en son PowerShell modülüne (sürüm 1,50 veya daha yeni) sahip olmanız gerekir.
+* En az bir eşleme ile yapılandırılan Geçerli Bir ExpressRoute devresi. Devre tamamen bağlantı sağlayıcısı tarafından yapılandırılmalıdır. Siz (veya bağlantı sağlayıcınız) bu devredeki eşlemelerden (Azure özel, Azure geneli ve Microsoft) en az birini yapılandırmış olmalısınız.
+* Eşlemeleri yapılandırmak için kullanılan IP adresi aralıkları (Azure özel, Azure genel ve Microsoft). Ip adreslerinin sizin tarafınızdaki ve ExpressRoute tarafındaki arabirimlere nasıl eşlendirildiğini anlamak için [ExpressRoute yönlendirme gereksinimleri sayfasındaki](expressroute-routing.md) ip adresi atama örneklerini gözden geçirin. [ExpressRoute peering yapılandırma sayfasını](expressroute-howto-routing-arm.md)inceleyerek eşleme yapılandırması hakkında bilgi alabilirsiniz.
+* Bu IP adresleriile kullanılan arabirimlerin MAC adreslerindeki ağ ekibinizden / bağlantı sağlayıcınızdan gelen bilgiler.
+* Azure için en son PowerShell modülüne sahip olmalısınız (sürüm 1.50 veya daha yeni).
 
 > [!NOTE]
-> Katman 3, hizmet sağlayıcısı tarafından sağlanıyorsa ve ARP tabloları aşağıdaki portalda/çıktıda boşsa, portalda Yenile düğmesini kullanarak devre yapılandırmasını yenileyin. Bu işlem, devreniz için doğru yönlendirme yapılandırmasını uygular. 
+> Katman 3 servis sağlayıcı tarafından sağlanıyorsa ve Aşağıdaki portal/çıktıda ARP tabloları boşsa, portaldaki yenileme düğmesini kullanarak Devre yapılandırmasını yenileyin. Bu işlem, devrenize doğru yönlendirme yapılandırmasını uygular. 
 >
 >
 
 ## <a name="getting-the-arp-tables-for-your-expressroute-circuit"></a>ExpressRoute devreniz için ARP tablolarını alma
-Bu bölüm, PowerShell kullanarak her eşleme için ARP tablolarını nasıl görüntüleyekullanabileceğinizi gösteren yönergeler sağlar. Siz veya bağlantı sağlayıcınız daha fazla ilerlemeden eşlemeyi yapılandırmış olmalıdır. Her devrenin iki yolu vardır (birincil ve ikincil). Her yol için ARP tablosuna bağımsız olarak bakabilirsiniz.
+Bu bölümde, PowerShell kullanarak her eşleme başına ARP tablolarını nasıl görüntülediğinize ilişkin yönergeler verilmektedir. Siz veya bağlantı sağlayıcınız daha fazla ilerlemeden önce eşlemi yapılandırmış olmalıdır. Her devrenin iki yolu vardır (birincil ve ikincil). Her yol için ARP tablosunu bağımsız olarak denetleyebilirsiniz.
 
 ### <a name="arp-tables-for-azure-private-peering"></a>Azure özel eşleme için ARP tabloları
-Aşağıdaki cmdlet, Azure özel eşlemesi için ARP tabloları sağlar
+Aşağıdaki cmdlet, Azure özel eşleme için ARP tabloları sağlar
 
         # Required Variables
         $RG = "<Your Resource Group Name Here>"
@@ -81,7 +81,7 @@ Aşağıdaki cmdlet, Azure özel eşlemesi için ARP tabloları sağlar
         # ARP table for Azure private peering - Secondary path
         Get-AzExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType AzurePrivatePeering -DevicePath Secondary 
 
-Örnek çıktı, yollardan biri için aşağıda gösterilmektedir
+Örnekler, yollardan biri için aşağıda gösterilmiştir
 
         Age InterfaceProperty IpAddress  MacAddress    
         --- ----------------- ---------  ----------    
@@ -89,8 +89,8 @@ Aşağıdaki cmdlet, Azure özel eşlemesi için ARP tabloları sağlar
           0 Microsoft         10.0.0.2   aaaa.bbbb.cccc
 
 
-### <a name="arp-tables-for-azure-public-peering"></a>Azure genel eşlemesi için ARP tabloları
-Aşağıdaki cmdlet, Azure genel eşleme için ARP tabloları sağlar
+### <a name="arp-tables-for-azure-public-peering"></a>Azure genel ekimi için ARP tabloları
+Aşağıdaki cmdlet, Azure genel ekimi için ARP tabloları sağlar
 
         # Required Variables
         $RG = "<Your Resource Group Name Here>"
@@ -103,7 +103,7 @@ Aşağıdaki cmdlet, Azure genel eşleme için ARP tabloları sağlar
         Get-AzExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType AzurePublicPeering -DevicePath Secondary 
 
 
-Örnek çıktı, yollardan biri için aşağıda gösterilmektedir
+Örnekler, yollardan biri için aşağıda gösterilmiştir
 
         Age InterfaceProperty IpAddress  MacAddress    
         --- ----------------- ---------  ----------    
@@ -111,8 +111,8 @@ Aşağıdaki cmdlet, Azure genel eşleme için ARP tabloları sağlar
           0 Microsoft         64.0.0.2   aaaa.bbbb.cccc
 
 
-### <a name="arp-tables-for-microsoft-peering"></a>Microsoft eşlemesi için ARP tabloları
-Aşağıdaki cmdlet, Microsoft eşlemesi için ARP tabloları sağlar
+### <a name="arp-tables-for-microsoft-peering"></a>Microsoft'un bakışları için ARP tabloları
+Aşağıdaki cmdlet Microsoft'un bakış için ARP tabloları sağlar
 
         # Required Variables
         $RG = "<Your Resource Group Name Here>"
@@ -125,7 +125,7 @@ Aşağıdaki cmdlet, Microsoft eşlemesi için ARP tabloları sağlar
         Get-AzExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType MicrosoftPeering -DevicePath Secondary 
 
 
-Örnek çıktı, yollardan biri için aşağıda gösterilmektedir
+Örnekler, yollardan biri için aşağıda gösterilmiştir
 
         Age InterfaceProperty IpAddress  MacAddress    
         --- ----------------- ---------  ----------    
@@ -133,28 +133,28 @@ Aşağıdaki cmdlet, Microsoft eşlemesi için ARP tabloları sağlar
           0 Microsoft         65.0.0.2   aaaa.bbbb.cccc
 
 
-## <a name="how-to-use-this-information"></a>Bu bilgileri kullanma
-Eşleme ARP tablosu, katman 2 yapılandırmasını ve bağlantısını Doğrula ' yı tespit etmek için kullanılabilir. Bu bölümde, ARP tablolarının farklı senaryolarda nasıl görüneceğine ilişkin bir genel bakış sunulmaktadır.
+## <a name="how-to-use-this-information"></a>Bu bilgilerin nasıl kullanılacağı
+Bir eşlemenin ARP tablosu, katman 2 yapılandırmasını ve bağlantısını doğrulamak için kullanılabilir. Bu bölümde, ARP tablolarının farklı senaryolar altında nasıl görüneceğine genel bir bakış sağlanmıştır.
 
-### <a name="arp-table-when-a-circuit-is-in-operational-state-expected-state"></a>Bir devre çalışma durumunda olduğunda ARP tablosu (beklenen durum)
-* ARP tablosu, şirket içi taraf için geçerli bir IP adresi ve MAC adresi ve Microsoft tarafı için benzer bir giriş içeren bir girişe sahip olacaktır. 
-* Şirket içi IP adresinin son sekizlisinin her zaman tek bir sayı olması gerekir.
-* Microsoft IP adresinin son sekizlisinin her zaman çift sayı olması gerekir.
-* Aynı MAC adresi, tüm 3 eşleme (birincil/ikincil) için Microsoft tarafında görünür. 
+### <a name="arp-table-when-a-circuit-is-in-operational-state-expected-state"></a>Bir devre çalışma durumundayken ARP tablosu (beklenen durum)
+* ARP tablosu, geçerli bir IP adresi ve MAC adresi ve Microsoft tarafı için benzer bir giriş ile şirket içi yan için bir giriş olacaktır. 
+* Şirket içi ip adresinin son sekizlisi her zaman tek bir sayı olacaktır.
+* Microsoft ip adresinin son sekizlisi her zaman çift sayı olacaktır.
+* Aynı MAC adresi tüm 3 eşleme (birincil / ikincil) için Microsoft tarafında görünür. 
 
         Age InterfaceProperty IpAddress  MacAddress    
         --- ----------------- ---------  ----------    
          10 On-Prem           65.0.0.1   ffff.eeee.dddd
           0 Microsoft         65.0.0.2   aaaa.bbbb.cccc
 
-### <a name="arp-table-when-on-premises--connectivity-provider-side-has-problems"></a>Şirket içi/bağlantı sağlayıcı tarafında sorunlar olduğunda ARP tablosu
-Şirket içi veya bağlantı sağlayıcısında sorun varsa, ARP tablosunda yalnızca bir girişin göründüğünü veya şirket içi MAC adresi ' nin tamamlanmamış olduğunu görebilirsiniz. Bu işlem, Microsoft tarafında kullanılan MAC adresi ve IP adresi arasındaki eşlemeyi gösterir. 
+### <a name="arp-table-when-on-premises--connectivity-provider-side-has-problems"></a>Şirket içi / bağlantı sağlayıcı tarafında sorunlar olduğunda ARP tablosu
+Şirket içi veya bağlantı sağlayıcısıyla ilgili sorunlar varsa, ARP tablosunda yalnızca bir girişin görüneceğini veya şirket içi MAC adresinin eksik göstereceğini görebilirsiniz. Bu, Mac adresi ile Microsoft tarafında kullanılan IP adresi arasındaki eşleşmeyi gösterir. 
   
        Age InterfaceProperty IpAddress  MacAddress    
        --- ----------------- ---------  ----------    
          0 Microsoft         65.0.0.2   aaaa.bbbb.cccc
 
-veya
+or
        
        Age InterfaceProperty IpAddress  MacAddress    
        --- ----------------- ---------  ----------   
@@ -163,20 +163,20 @@ veya
 
 
 > [!NOTE]
-> Bu tür sorunların hatalarını ayıklamak için bağlantı sağlayıcınızla bir destek isteği açın. ARP tablosunun MAC adreslerine eşlenen arabirimlerin IP adresleri yoksa, aşağıdaki bilgileri gözden geçirin:
+> Bu tür sorunları hata ayıklamak için bağlantı sağlayıcınızla bir destek isteği açın. ARP tablosunda MAC adreslerine eşlenen arabirimlerin IP adresleri yoksa, aşağıdaki bilgileri gözden geçirin:
 > 
-> 1. MSEE-PR ve MSEE arasında bağlantı için atanan/30 alt ağının ilk IP adresi MSEE-PR arabiriminde kullanılırsa. Azure, Mgördüğü için her zaman ikinci IP adresini kullanır.
-> 2. Müşterinin (C-Tag) ve hizmet (S-Tag) VLAN etiketlerinin hem MSEE-PR hem de MSEE çiftinin ile eşleşip eşleşmediğinden emin olun.
+> 1. MSEE-PR ve MSEE arasındaki bağlantı için atanan /30 alt netin ilk IP adresi MSEE-PR'ın arayüzünde kullanılırsa. Azure her zaman MSEE'ler için ikinci IP adresini kullanır.
+> 2. Müşteri (C-Tag) ve hizmet (S-Tag) VLAN etiketlerinin hem MSEE-PR hem de MSEE çifti yle eşleşip eşleşmeyin.
 > 
 
-### <a name="arp-table-when-microsoft-side-has-problems"></a>Microsoft tarafında sorun olduğunda ARP tablosu
-* Microsoft tarafında sorun varsa, eşleme için gösterilen bir ARP tablosu görmezsiniz. 
-* [Microsoft desteği](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ile bir destek bileti açın. Katman 2 bağlantısıyla ilgili bir sorun olduğunu belirtin. 
+### <a name="arp-table-when-microsoft-side-has-problems"></a>Microsoft tarafında sorunlar olduğunda ARP tablosu
+* Microsoft tarafında sorunlar varsa, bir bakış için gösterilen bir ARP tablosu görmezsiniz. 
+* Microsoft desteği ile bir destek bileti [açın.](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) Katman 2 bağlantısıyla ilgili bir sorununuzun olduğunu belirtin. 
 
 ## <a name="next-steps"></a>Sonraki Adımlar
-* ExpressRoute devreniz için katman 3 yapılandırmasını doğrulama
-  * BGP oturumlarının durumunu öğrenmek için rota özeti al 
-  * ExpressRoute genelinde hangi öneklerinin tanıtıldığı için yol tablosu al
-* Gelen/giden baytları inceleyerek veri aktarımını doğrulama
-* Bir destek bileti açın [Microsoft Destek](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) sorunları yaşamaya devam ediyorsanız.
+* ExpressRoute devreniz için Katman 3 yapılandırmalarını doğrulayın
+  * BGP oturumlarının durumunu belirlemek için rota özeti ni alın 
+  * ExpressRoute'da hangi öneklerin reklamının verilebilen rota tablosunu alın
+* /out baytlarını gözden geçirerek veri aktarımLarını doğrulayın
+* Sorun yaşamaya devam ediyorsanız [Microsoft desteğiyle](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) bir destek bileti açın.
 

@@ -4,17 +4,17 @@ description: Bu en iyi yöntemleri izleyerek Azure kapsayıcı kayıt defteriniz
 ms.topic: article
 ms.date: 09/27/2018
 ms.openlocfilehash: 233d84b8bfa6f3d8c800e76032ef74a643db11ca
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79247078"
 ---
 # <a name="best-practices-for-azure-container-registry"></a>Azure Container Registry için en iyi yöntemler
 
 Bu en iyi yöntemleri izlemek, Azure’daki özel Docker kayıt defterinizin performansını ve maliyetini en iyi duruma getirmenize yardımcı olabilir.
 
-Ayrıca bkz. kayıt defterinizde resimleri etiketlendirme ve sürüm görüntülerinin yer aldığı stratejiler için [kapsayıcı görüntülerini etiketleme ve oluşturma önerilerine](container-registry-image-tag-version.md) bakın. 
+Ayrıca kayıt defterinizdeki görüntüleri etiketleme ve sürüm stratejileri için kapsayıcı görüntülerini etiketleme ve [sürüm önerilerine](container-registry-image-tag-version.md) bakın. 
 
 ## <a name="network-close-deployment"></a>Yakın ağ dağıtımı
 
@@ -33,7 +33,7 @@ Coğrafi çoğaltma özelliğini kullanmayı öğrenmek için [Azure Container R
 
 Depo ad alanlarından yararlanarak kuruluşunuz içinde tek bir kayıt defterinin birden çok grupta paylaşılmasına imkan tanıyabilirsiniz. Kayıt defterleri farklı dağıtımlarla ve takımlarla paylaşılabilir. İç içe ad alanlarını destekleyen Azure Container Registry, grup yalıtımı imkanı sunar.
 
-Örneğin, aşağıdaki kapsayıcı görüntüsü etiketlerini göz önünde bulundurun. `aspnetcore`gibi şirket genelinde kullanılan görüntüler kök ad alanına yerleştirilir, ancak ürünlere ve pazarlama gruplarına ait kapsayıcı görüntülerinin her biri kendi ad alanlarını kullanır.
+Örneğin, aşağıdaki kapsayıcı görüntüsü etiketlerini göz önünde bulundurun. Şirket genelinde kullanılan görüntüler, `aspnetcore`kök ad alanına yerleştirilir, Ürünler ve Pazarlama gruplarına ait kapsayıcı görüntülerin her biri kendi ad alanlarını kullanır.
 
 - *contoso.azurecr.io/aspnetcore:2.0*
 - *contoso.azurecr.io/products/widget/web:1*
@@ -42,11 +42,11 @@ Depo ad alanlarından yararlanarak kuruluşunuz içinde tek bir kayıt defterini
 
 ## <a name="dedicated-resource-group"></a>Ayrılmış kaynak grubu
 
-Kapsayıcı kayıt defterleri birden çok kapsayıcı ana bilgisayar genelinde kullanılan kaynaklar olduğundan, kayıt defteri kendi kaynak grubunda yer almalıdır.
+Kapsayıcı kayıt defterleri birden çok kapsayıcı ana bilgisayararasında kullanılan kaynaklar olduğundan, bir kayıt defteri kendi kaynak grubunda yer almalıdır.
 
 Azure Container Instances gibi belirli bir konak türüyle denemeler yapabilecek olsanız da muhtemelen işiniz bittiğinde kapsayıcı örneğini silmek isteyeceksinizdir. Bununla birlikte, Azure Container Registry’ye gönderdiğiniz görüntü koleksiyonunu korumak da isteyebilirsiniz. Kayıt defterinizi kendi kaynak grubuna yerleştirerek, kapsayıcı örneğinin kaynak grubunu silerken yanlışlıkla kayıt defterindeki görüntü koleksiyonunu da silme riskini en aza indirirsiniz.
 
-## <a name="authentication"></a>Kimlik Doğrulaması
+## <a name="authentication"></a>Kimlik doğrulaması
 
 Bir Azure kapsayıcı kayıt defteri ile kimlik doğrulama için iki ana senaryo vardır: bireysel kimlik doğrulama ve hizmet (veya "gözetimsiz") kimlik doğrulaması. Aşağıdaki tabloda, bu senaryolara kısa bir genel bakış ve her biri için önerilen kimlik doğrulama yöntemi sağlanmıştır.
 
@@ -59,9 +59,9 @@ Azure Container Registry kimlik doğrulaması hakkında ayrıntılı bilgi edinm
 
 ## <a name="manage-registry-size"></a>Kayıt defteri boyutunu yönetme
 
-Her [kapsayıcı kayıt DEFTERI SKU][container-registry-skus] 'sunun depolama kısıtlamaları tipik bir senaryoya göre hizalanmaya yöneliktir: başlangıç için **temel** , üretim uygulamalarının çoğunluğu için **Standart** ve Hyper-ölçek performansı ve [coğrafi çoğaltma][container-registry-geo-replication]için **Premium** . Kayıt defterinizin kullanım ömrü boyunca kullanılmayan içerikleri düzenli olarak silerek boyutunu yönetmeniz gerekir.
+Her bir [kapsayıcı kayıt defteri SKU][container-registry-skus] öğesinde tipik senaryolara uygun depolama alanı kısıtlamaları mevcuttur: Başlangıç için **Temel**, üretim uygulamalarının çoğu için **Standart**, çok geniş ölçekli performans ve [coğrafi çoğaltma][container-registry-geo-replication] için **Premium**. Kayıt defterinizin kullanım ömrü boyunca kullanılmayan içerikleri düzenli olarak silerek boyutunu yönetmeniz gerekir.
 
-Kayıt defterinizin geçerli boyutunu görüntülemek için [az ACR Show-Usage][az-acr-show-usage] Azure CLI komutunu kullanın:
+Kayıt defterinizin geçerli boyutunu görüntülemek [için][az-acr-show-usage] Azure CLI kısaltması komutunu kullanın:
 
 ```azurecli
 az acr show-usage --resource-group myResourceGroup --name myregistry --output table
@@ -74,15 +74,15 @@ Size      536870912000  185444288        Bytes
 Webhooks  100                            Count
 ```
 
-Azure portal Kayıt defterinize **genel bakış** bölümünde kullanılan geçerli depolamayı da bulabilirsiniz:
+Kayıt defterinize **Genel Bakış'ta** kullanılan geçerli depolama alanını Azure portalında da bulabilirsiniz:
 
 ![Azure portalındaki kayıt defteri kullanım bilgileri][registry-overview-quotas]
 
-### <a name="delete-image-data"></a>Görüntü verilerini sil
+### <a name="delete-image-data"></a>Resim verilerini silme
 
-Azure Container Registry, kapsayıcı Kayıt defterinizden görüntü verilerini silmeye yönelik çeşitli yöntemleri destekler. Resimleri etiketle veya bildirim özetine göre silebilir veya bir depoyu tümüyle silebilirsiniz.
+Azure Kapsayıcı Kayıt Defteri, görüntü verilerini kapsayıcı kayıt defterinizden silen çeşitli yöntemleri destekler. Resimleri etikete veya özete göre silebilir veya tüm depoyu silebilirsiniz.
 
-Etiketsiz (bazen "Dangling" veya "yalnız bırakılmış" olarak adlandırılır) görüntü verilerini kayıt defterinizden silme hakkında daha fazla bilgi için, bkz. [Azure Container Registry kapsayıcı görüntülerini silme](container-registry-delete.md).
+Etiketlenmemiş (bazen "sarkan" veya "öksüz" olarak da adlandırılır) görüntüler de dahil olmak üzere kayıt defterinizdeki resim verilerini silme yle ilgili ayrıntılar [için](container-registry-delete.md)bkz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

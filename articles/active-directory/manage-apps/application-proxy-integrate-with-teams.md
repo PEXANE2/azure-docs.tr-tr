@@ -1,6 +1,6 @@
 ---
-title: Azure AD uygulama ara sunucusu uygulamaları teams'de erişim | Microsoft Docs
-description: Şirket içi uygulamanızı Microsoft Teams erişmek için Azure AD uygulama proxy'si kullanın.
+title: Ekipler'de Azure AD App Proxy uygulamalarına erişin | Microsoft Dokümanlar
+description: Şirket içi uygulamanıza Microsoft Teams aracılığıyla erişmek için Azure AD Application Proxy'yi kullanın.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -17,43 +17,43 @@ ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 037e005993a54e525560571a6d893197af99b6a0
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67807768"
 ---
-# <a name="access-your-on-premises-applications-through-microsoft-teams"></a>Şirket içi uygulamalarınızı, Microsoft Teams erişim
+# <a name="access-your-on-premises-applications-through-microsoft-teams"></a>Microsoft Teams aracılığıyla şirket içi uygulamalarınıza erişin
 
-Azure Active Directory Uygulama Ara sunucusu, çoklu oturum açma nerede olursa olsun şirket içi uygulamalara sağlar. Microsoft Teams, tek bir yerde işbirliği çalışmalarınızı kolaylaştırır. İki birlikte tümleştirilmesi, kullanıcılarınızın üretken ekip herhangi bir durumda olabilir anlamına gelir.
+Azure Active Directory Application Proxy, nerede olursanız olun şirket içi uygulamalarda tek oturum açma olanağı sağlar. Microsoft Teams, ortak çabalarınızı tek bir yerde kolaylaştırır. Bu ikisini bir araya getirmek, kullanıcılarınızın her durumda takım arkadaşlarıyla üretken olabileceği anlamına gelir.
 
-Kullanıcılarınıza bulut uygulamaları için takımlar kanallarını da ekleyebilirsiniz [sekmeleri kullanarak](https://support.office.com/article/Video-Using-Tabs-7350a03e-017a-4a00-a6ae-1c9fe8c497b3?ui=en-US&rs=en-US&ad=US), ancak ne şirket içi SharePoint siteleri veya olan planlama aracı barındırılan? Uygulama proxy'si çözümüdür. Bunlar her zaman uygulamalarını uzaktan erişmek için kullandıkları aynı dış URL'leri kullanarak kendi kanallara uygulama proxy'si aracılığıyla yayımlanan uygulamalar ekleyebilirsiniz. Ve uygulama proxy'si Azure Active Directory doğruladığından, kullanıcılarınızın çoklu oturum açma deneyimini elde edin.
+Kullanıcılarınız [sekmeleri kullanarak](https://support.office.com/article/Video-Using-Tabs-7350a03e-017a-4a00-a6ae-1c9fe8c497b3?ui=en-US&rs=en-US&ad=US)Ekipleri kanallarına bulut uygulamaları ekleyebilir, ancak SharePoint siteleri veya şirket içinde barındırılan planlama aracı ne olacak? Uygulama Proxy çözümdür. Uygulamalarına uzaktan erişmek için her zaman kullandıkları aynı harici URL'leri kullanarak Uygulamalarına Application Proxy aracılığıyla yayınlanan uygulamaları kanallarına ekleyebilirler. Uygulama Proxy'si Azure Active Directory aracılığıyla kimlik doğrulaması yaptığı için, kullanıcılarınız tek bir oturum açma deneyimi elde eder.
 
-## <a name="install-the-application-proxy-connector-and-publish-your-app"></a>Uygulama Ara sunucusu bağlayıcısını yüklemek ve uygulamanızı yayımlayın
+## <a name="install-the-application-proxy-connector-and-publish-your-app"></a>Uygulama Proxy bağlayıcısını yükleyin ve uygulamanızı yayınlayın
 
-Henüz kaydolmadıysanız [kiracınızda uygulama proxy'sini yapılandırmak ve bağlayıcıyı yükleyin](application-proxy-add-on-premises-application.md). Ardından, [şirket içi uygulamanızı yayımlayın](application-proxy-add-on-premises-application.md) uzaktan erişim için. Uygulamayı yayımlarken Teams'e uygulama ekleme için kullanıldığından dış URL'yi not edin.
+Henüz yapmadıysanız, [kiracınız için Uygulama Proxy'sini yapılandırın ve bağlayıcıyı yükleyin.](application-proxy-add-on-premises-application.md) Ardından, uzaktan erişim için [şirket içi uygulamanızı yayınlayın.](application-proxy-add-on-premises-application.md) Uygulamayı yayınlarken, uygulamayı Takımlar'a eklemek için kullanıldığından harici URL'ye dikkat edin.
 
-Zaten varsa yayımlanan uygulamalarınızı ancak kendi URL'lere hatırlamıyorum bunları içinde aramak [Azure portalında](https://portal.azure.com). Oturum açın ve ardından gitmek **Azure Active Directory** > **kurumsal uygulamalar** > **tüm uygulamaları** > uygulamanızı seçin >  **Uygulama proxy'si**.
+Uygulamalarınızın zaten yayınlanması varsa ancak harici URL'lerini hatırlamıyorsanız, bunları [Azure portalında](https://portal.azure.com)arayın. Oturum açın, ardından **Azure Active Directory** > **Enterprise uygulamalarına** > gidin**Tüm uygulamalar** uygulamanızı seçin > uygulamanızı > **Uygulama proxy'nizi**seçin.
 
-## <a name="add-your-app-to-teams"></a>Teams'e uygulama ekleme
+## <a name="add-your-app-to-teams"></a>Uygulamanızı Takımlara Ekleyin
 
-Uygulama proxy'si aracılığıyla uygulama yayımladıktan sonra bunlar bir sekmeyi doğrudan kendi takımlar kanalları olarak ekleyebilir ve ardından uygulamayı herkes kullanmak için takım bilmeniz imkan sağlar. Şu üç adımı takip sağlayın:
+Uygulamayı Uygulama Proxy aracılığıyla yayımladıktan sonra, kullanıcılarınıza uygulamayı doğrudan Takımlar kanallarına sekme olarak ekleyebileceğini ve ardından uygulamanın takımdaki herkesin kullanabileceği şekilde kullanılabildiğini bildirin. Bu üç adımı izlemelerini söylesinler:
 
-1. Bu uygulama ekleme ve seçmek için istediğiniz Teams kanalına gidin **+** sekme eklemek için.
+1. Bu uygulamayı eklemek istediğiniz Takımlar kanalına gidin **+** ve sekme eklemeyi seçin.
 
-   ![Seçin + Teams'de sekme eklemek için](./media/application-proxy-integrate-with-teams/add-tab.png)
+   ![Takımlar'da sekme eklemek için + seçin](./media/application-proxy-integrate-with-teams/add-tab.png)
 
-1. Seçin **Web sitesi** sekmesi seçenekleri.
+1. Sekme seçeneklerinden **Web Sitesi'ni** seçin.
 
-   ![Web sitesi Ekle sekmesi ekran seçin](./media/application-proxy-integrate-with-teams/website.png)
+   ![Sekme ekle ekranından Web Sitesini seçin](./media/application-proxy-integrate-with-teams/website.png)
 
-1. Sekme bir ad verin ve URL için uygulama proxy'si dış URL'yi ayarlayın.
+1. Sekmeye bir ad verin ve URL'yi Uygulama Proxy'si harici URL'sine ayarlayın.
 
-   ![Sekme adını ve dış URL Ekle](./media/application-proxy-integrate-with-teams/tab-name-url.png)
+   ![Sekmeyi adlandırın ve harici URL ekleyin](./media/application-proxy-integrate-with-teams/tab-name-url.png)
 
-Bir takım üyesi sekmesi ekler. sonra bu kanal herkes için gösterilir. Uygulamaya sahip tüm kullanıcılar için Microsoft Teams kullandıkları kimlik bilgileri ile çoklu oturum açma erişimi alın. Uygulamaya sahip olmayan kullanıcılardan teams'de sekmesinde görebilirsiniz, ancak bunları izinleri şirket içi uygulama ve uygulamayı Azure portalı yayımlanmış sürümüne size kadar engellenir.
+Bir takımın bir üyesi sekmeyi ekledikten sonra, kanaldaki herkes için gösterir. Uygulamaya erişimi olan tüm kullanıcılar, Microsoft Teams için kullandıkları kimlik bilgileriyle tek oturum açma erişimine erişir. Uygulamaya erişimi olmayan tüm kullanıcılar Sekmeyi Takımlar'da görebilir, ancak siz şirket içi uygulamaya ve uygulamanın yayınlanan Azure portalı sürümüne izin verene kadar engellenir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Bilgi edinmek için nasıl [şirket içi SharePoint siteleri yayımlama](application-proxy-integrate-with-sharepoint-server.md) uygulama ara sunucusu ile.
-- Uygulamalarınızı kullanmak için yapılandırma [özel etki alanları](application-proxy-configure-custom-domain.md) , dış URL.
+- Uygulama Proxy ile [şirket içi SharePoint sitelerini](application-proxy-integrate-with-sharepoint-server.md) nasıl yayınlayacağınızı öğrenin.
+- Uygulamalarınızı harici [URL'leri](application-proxy-configure-custom-domain.md) için özel etki alanlarını kullanacak şekilde yapılandırın.

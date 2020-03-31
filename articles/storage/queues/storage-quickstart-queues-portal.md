@@ -1,6 +1,6 @@
 ---
-title: 'Hızlı başlangıç: portalda Azure depolama kuyrukları oluşturma'
-description: Bir kuyruk oluşturmak için Azure portal kullanın. Ardından, bir ileti eklemek, ileti özelliklerini görüntülemek ve iletiyi sıradan almak için Azure portal kullanın.
+title: 'Quickstart: Portalda Azure Depolama kuyrukları oluşturma'
+description: Kuyruk oluşturmak için Azure portalını kullanın. Ardından, ileti eklemek, ileti özelliklerini görüntülemek ve iletiyi sıradan çıkarmak için Azure portalını kullanın.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 03/06/2019
@@ -9,61 +9,61 @@ ms.subservice: queues
 ms.topic: quickstart
 ms.reviewer: cbrooks
 ms.openlocfilehash: 2876d2a680aa41372557a9f04c1d6a5eed56b8ae
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/21/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74269240"
 ---
-# <a name="quickstart-create-a-queue-and-add-a-message-with-the-azure-portal"></a>Hızlı başlangıç: kuyruk oluşturma ve Azure portal bir ileti ekleme
+# <a name="quickstart-create-a-queue-and-add-a-message-with-the-azure-portal"></a>Hızlı başlangıç: Azure portalı ile kuyruk oluşturun ve ileti ekleyin
 
-Bu hızlı başlangıçta, Azure depolama 'da bir sıra oluşturmak ve ileti eklemek ve sıradan çıkarma için [Azure Portal](https://portal.azure.com/) kullanmayı öğreneceksiniz.
+Bu hızlı başlangıçta, Azure Depolama'da kuyruk oluşturmak ve ileti eklemek ve sırayı çıkarmak için [Azure portalını](https://portal.azure.com/) nasıl kullanacağınızı öğrenirsiniz.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
-## <a name="create-a-queue"></a>Kuyruk oluşturma
+## <a name="create-a-queue"></a>Bir kuyruk oluşturma
 
-Azure portal bir sıra oluşturmak için aşağıdaki adımları izleyin:
+Azure portalında kuyruk oluşturmak için aşağıdaki adımları izleyin:
 
 1. Azure portalında yeni depolama hesabınıza gidin.
-2. Depolama hesabının sol menüsünde **kuyruk hizmeti** bölümüne gidin ve **Kuyruklar**' ı seçin.
-3. **+ Queue** düğmesini seçin.
-4. Yeni kuyruğunuz için bir ad yazın. Kuyruk adı küçük harfle yazılmalıdır, bir harf veya sayıyla başlamalıdır ve yalnızca harf, rakam ve tire (-) karakterini içerebilir.
-6. Kuyruğu oluşturmak için **Tamam ' ı** seçin.
+2. Depolama hesabının sol menüsünde Sıra **hizmeti** bölümüne gidin ve **ardından Kuyruklar'ı**seçin.
+3. + **Sıra** düğmesini seçin.
+4. Yeni sıranız için bir ad yazın. Sıra adı küçük olmalı, bir harf veya sayıyla başlamalı ve yalnızca harfleri, sayıları ve tire (-) karakterini içermelidir.
+6. Sırayı oluşturmak için **Tamam'ı** seçin.
 
-    ![Azure portal sıranın nasıl oluşturulacağını gösteren ekran görüntüsü](media/storage-quickstart-queues-portal/create-queue.png)
+    ![Azure portalında nasıl kuyruk oluşturulacak larını gösteren ekran görüntüsü](media/storage-quickstart-queues-portal/create-queue.png)
 
 ## <a name="add-a-message"></a>İleti ekleme
 
-Sonra, yeni kuyruğa bir ileti ekleyin. İleti boyutu 64 KB 'ye kadar olabilir.
+Ardından, yeni kuyruğa bir ileti ekleyin. Bir ileti nin boyutu 64 KB'ye kadar olabilir.
 
-1. Depolama hesabındaki kuyruk listesinden yeni kuyruğu seçin.
-1. Kuyruğa bir ileti eklemek için **+ Ileti Ekle** düğmesini seçin. **İleti metni** alanına bir ileti girin. 
-1. İletinin ne zaman sona ereceğini belirtin. Bir iletinin sıra kalabileceği en uzun süre 7 gündür.
-1. İletiyi Base64 olarak kodlamak isteyip istemediğinizi belirtin. İkili verileri kodlama önerilir.
+1. Depolama hesabındaki kuyruklar listesinden yeni sırayı seçin.
+1. Sıraya ileti eklemek için **+ İleti ekle** düğmesini seçin. **İleti metin** alanına bir ileti girin. 
+1. İletinin süresinin ne zaman dolduğunu belirtin. İletinin kuyrukta kalabileceğinin maksimum süresi 7 gündür.
+1. İletiyi Base64 olarak kodlayıp kodlamayacağını belirtin. İkili verilerin kodlanması önerilir.
 1. İletiyi eklemek için **Tamam** düğmesini seçin.
 
-    ![Bir sıraya nasıl ileti ekleneceğini gösteren ekran görüntüsü](media/storage-quickstart-queues-portal/add-message.png)
+    ![Kuyruğa ileti eklemeyi gösteren ekran görüntüsü](media/storage-quickstart-queues-portal/add-message.png)
 
-## <a name="view-message-properties"></a>İleti özelliklerini görüntüle
+## <a name="view-message-properties"></a>İleti özelliklerini görüntüleme
 
-Bir ileti ekledikten sonra Azure portal kuyruktaki tüm iletilerin bir listesini görüntüler. İleti KIMLIĞINI, iletinin içeriğini, ileti ekleme süresini ve ileti sona erme süresini görüntüleyebilirsiniz. Ayrıca, bu iletinin kaç kez kuyruğa alınmış olduğunu da görebilirsiniz.
+Bir ileti ekledikten sonra, Azure portalı kuyruktaki tüm iletilerin listesini görüntüler. İleti kimliğini, iletinin içeriğini, ileti ekleme süresini ve iletinin son kullanma süresini görüntüleyebilirsiniz. Bu iletinin kaç kez sıradan silindiğini de görebilirsiniz.
 
 ![İleti özelliklerini gösteren ekran görüntüsü](media/storage-quickstart-queues-portal/view-message-properties.png)
 
-## <a name="dequeue-a-message"></a>Bir iletiyi sıradan çıkarma
+## <a name="dequeue-a-message"></a>Bir iletiyi kuyruktan çıkarma
 
-Azure portal kuyruğun önünden bir iletiyi sıradan silebilirsiniz. İletiyi sıradan kaldırdığınızda ileti silinir. 
+Azure portalından sıranın önünden gelen bir iletiyi dequeue'den çıkarabilirsiniz. Bir iletiyi sıradan ayırdığınızda, ileti silinir. 
 
-Sıradan çıkarıcı her zaman kuyruktaki en eski iletiyi kaldırır. 
+Dequeueing her zaman kuyruktaki en eski iletiyi kaldırır. 
 
-![Portaldan bir iletinin nasıl sıradan alınacağını gösteren ekran görüntüsü](media/storage-quickstart-queues-portal/dequeue-message.png)
+![Portaldan bir iletinin nasıl sıradan çıkarılabildiğini gösteren ekran görüntüsü](media/storage-quickstart-queues-portal/dequeue-message.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, bir kuyruk oluşturma, ileti ekleme, ileti özelliklerini görüntüleme ve Azure portal bir iletiyi sıradan çıkarma hakkında öğrenirsiniz.
+Bu hızlı başlangıçta, bir sıra oluşturmayı, ileti eklemeyi, ileti özelliklerini görüntülemeyi ve Azure portalındaki bir iletiyi nasıl sıradan ayırabileceğinizi öğrendiniz.
 
 > [!div class="nextstepaction"]
-> [Azure Kuyrukları nelerdir?](storage-queues-introduction.md)
+> [Azure Kuyrukları nedir?](storage-queues-introduction.md)

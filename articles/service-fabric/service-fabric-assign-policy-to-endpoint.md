@@ -1,17 +1,17 @@
 ---
-title: Hizmet uç noktalarına erişim ilkeleri atama
-description: Service Fabric hizmetinizde HTTP veya HTTPS uç noktalarına güvenlik erişimi ilkeleri atamayı öğrenin.
+title: Hizmet bitiş noktalarına erişim ilkeleri atama
+description: Hizmet Kumaşı hizmetinizdeki HTTP veya HTTPS uç noktalarına güvenlik erişim polislerini nasıl atayacaklarınız öğrenin.
 ms.topic: conceptual
 ms.date: 03/21/2018
 ms.openlocfilehash: c7d30e85848f045b5724bb8bdc6e5c810102c044
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/02/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75614664"
 ---
 # <a name="assign-a-security-access-policy-for-http-and-https-endpoints"></a>HTTP ve HTTPS uç noktaları için bir güvenlik erişim ilkesi atama
-Bir farklı çalıştır ilkesi uygularsanız ve hizmet bildirimi HTTP uç noktası kaynaklarını bildiriyorsa, bir **Securityaccesspolicy**belirtmeniz gerekir.  **Securityaccesspolicy** , bu uç noktalara ayrılan bağlantı noktalarının hizmetin çalıştığı kullanıcı hesabıyla doğru bir şekilde kısıtlanmasını sağlar. Aksi halde, **http. sys** ' nin hizmete erişimi yoktur ve istemciden gelen çağrılarla ilgili hatalarla ilgilenirsiniz. Aşağıdaki örnek, tam erişim hakları sağlayan **EndpointName**adlı bir uç noktaya Customer1 hesabını uygular.
+Bir run-as ilkesi uygularsanız ve hizmet bildirimi HTTP uç noktası kaynaklarını bildirirse, bir **SecurityAccessPolicy**belirtmeniz gerekir.  **SecurityAccessPolicy,** bu uç noktalara tahsis edilen bağlantı noktalarının, hizmetin çalıştığı kullanıcı hesabıyla doğru bir şekilde sınırlandırılmasını sağlar. Aksi takdirde, **http.sys** hizmeterişimi yok ve istemci aramaları ile hataları olsun. Aşağıdaki örnek, Customer1 hesabını **EndpointName**adlı bir bitiş noktasına uygular ve bu da ona tam erişim hakkı verir.
 
 ```xml
 <Policies>
@@ -21,7 +21,7 @@ Bir farklı çalıştır ilkesi uygularsanız ve hizmet bildirimi HTTP uç nokta
 </Policies>
 ```
 
-Bir HTTPS uç noktası için, istemciye döndürülecek sertifikanın adını da belirtin. Bu sertifikaya **Endpointbindingpolicy**kullanarak başvurulamıyor.  Sertifika, uygulama bildiriminin **Sertifikalar** bölümünde tanımlanmıştır.
+HTTPS bitiş noktası için, istemciye dönmek için sertifikanın adını da belirtin. **Sertifikaya EndpointBindingPolicy'yi**kullanarak başvurursunuz.  Sertifika, başvuru bildiriminin **Sertifikalar** bölümünde tanımlanır.
 
 ```xml
 <Policies>
@@ -34,13 +34,13 @@ Bir HTTPS uç noktası için, istemciye döndürülecek sertifikanın adını da
 ```
 
 > [!WARNING] 
-> HTTPS kullanırken, aynı düğüme dağıtılan farklı hizmet örnekleri (uygulamadan bağımsız) için aynı bağlantı noktasını ve sertifikayı kullanmayın. Farklı uygulama örneklerinde aynı bağlantı noktasını kullanarak iki farklı hizmetin yükseltilmesi, yükseltme hatasına neden olur. Daha fazla bilgi için bkz. [https uç noktaları ile birden çok uygulamayı yükseltme ](service-fabric-application-upgrade.md#upgrading-multiple-applications-with-https-endpoints).
+> HTTPS kullanırken, aynı düğüme dağıtılan farklı hizmet örnekleri (uygulamadan bağımsız) için aynı bağlantı noktasını ve sertifikayı kullanmayın. Farklı uygulama örneklerinde aynı bağlantı noktasını kullanarak iki farklı hizmetin yükseltilmesi bir yükseltme hatasına neden olur. Daha fazla bilgi için bkz: [HTTPS uç noktalarıyla birden çok uygulamayı yükseltme. ](service-fabric-application-upgrade.md#upgrading-multiple-applications-with-https-endpoints)
 > 
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 Sonraki adımlar için aşağıdaki makaleleri okuyun:
 * [Uygulama modelini anlama](service-fabric-application-model.md)
-* [Hizmet bildiriminde kaynakları belirtme](service-fabric-service-manifest-resources.md)
+* [Hizmet bildiriminde kaynakları belirtin](service-fabric-service-manifest-resources.md)
 * [Uygulama dağıtma](service-fabric-deploy-remove-applications.md)
 
 [image1]: ./media/service-fabric-application-runas-security/copy-to-output.png

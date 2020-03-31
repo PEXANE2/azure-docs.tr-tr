@@ -1,6 +1,6 @@
 ---
-title: Azure DevTest Labs yapıtlarla ilgili sorunları giderme | Microsoft Docs
-description: Azure DevTest Labs bir sanal makinede yapıtlar uygulanırken oluşan sorunları nasıl giderebileceğinizi öğrenin.
+title: Azure DevTest Labs'daki yapıtlarla ilgili sorunları giderme | Microsoft Dokümanlar
+description: Azure DevTest Labs sanal makinesinde yapı talimi uygularken oluşan sorunları nasıl gideracağınızı öğrenin.
 services: devtest-lab
 documentationcenter: na
 author: spelluru
@@ -13,27 +13,27 @@ ms.topic: article
 ms.date: 12/03/2019
 ms.author: spelluru
 ms.openlocfilehash: fc5051667100a2ebaa01b7815f825fadd766b08f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75456981"
 ---
-# <a name="troubleshoot-issues-when-applying-artifacts-in-an-azure-devtest-labs-virtual-machine"></a>Azure DevTest Labs sanal makinesine yapıtlar uygulanırken sorunları giderme
-Yapıları bir sanal makineye uygulamak çeşitli nedenlerle başarısız olabilir. Bu makale, olası nedenleri belirlemenize yardımcı olmak için bazı yöntemlerle size rehberlik eder.
+# <a name="troubleshoot-issues-when-applying-artifacts-in-an-azure-devtest-labs-virtual-machine"></a>Azure DevTest Labs sanal makinesinde yapıtları uygularken sorunları giderme sorunları
+Sanal bir makinede eserler uygulamak çeşitli nedenlerle başarısız olabilir. Bu makalede, olası nedenleri belirlemeye yardımcı olmak için bazı yöntemler size rehberlik eder.
 
-Bu makalenin herhangi bir noktasında daha fazla yardıma ihtiyacınız varsa, [MSDN Azure ve Stack Overflow forumlarında](https://azure.microsoft.com/support/forums/)Azure DevTest Labs (DTL) uzmanlarıyla iletişim kurun. Alternatif olarak, bir Azure destek olayına dosya. [Azure destek sitesine](https://azure.microsoft.com/support/options/) gidin ve Destek Al ' ı seçin.   
+Bu makalenin herhangi bir noktasında daha fazla yardıma ihtiyacınız varsa, [MSDN Azure ve Yığın Taşma forumlarında](https://azure.microsoft.com/support/forums/)Azure Engel Laboratuvarları (DTL) uzmanlarıyla iletişime geçebilirsiniz. Alternatif olarak, bir Azure destek olayı dosyalayabilirsiniz. [Azure destek sitesine](https://azure.microsoft.com/support/options/) gidin ve Destek Al'ı seçin.   
 
 > [!NOTE]
-> Bu makale hem Windows hem de Windows dışı sanal makineler için geçerlidir. Bazı farklılıklar olsa da bu makalede açıkça çağrılacaktır.
+> Bu makale, hem Windows hem de Windows olmayan sanal makineler için geçerlidir. Bazı farklılıklar olsa da, bu makalede açıkça çağrılacaktır.
 
 ## <a name="quick-troubleshooting-steps"></a>Hızlı sorun giderme adımları
-VM 'nin çalıştığından emin olun. DevTest Labs, VM 'nin çalıştırılmasını ve [Microsoft Azure sanal makine aracısının (VM Aracısı)](../virtual-machines/extensions/agent-windows.md) yüklü ve kullanılabilir olmasını gerektirir.
+VM'nin çalışır durumda olup olmadığını kontrol edin. DevTest Labs, VM'nin çalışmasını ve [Microsoft Azure Sanal Makine Aracısı'nın (VM Agent)](../virtual-machines/extensions/agent-windows.md) yüklü ve hazır olmasını gerektirir.
 
 > [!TIP]
-> **Azure Portal**, VM 'nin yapıtları uygulamaya hazırlanma bölümüne bakmak için VM 'nin **yapıtları Yönet** sayfasına gidin. Bu sayfanın en üstünde bir ileti görürsünüz. 
+> Azure **portalında,** VM'nin yapıtları uygulamaya hazır olup olmadığını görmek için VM'nin **yapılarını yönet** sayfasına gidin. Bu sayfanın en üstünde bir ileti görüyorsunuz. 
 > 
-> **Azure PowerShell**kullanarak, yalnızca bir get işleminde genişlettikten sonra döndürülen **Canapplyartıtei**bayrağını inceleyin. Aşağıdaki örnek komutuna bakın:
+> **Azure PowerShell'i**kullanarak, yalnızca GET işlemini genişletdiğinizde döndürülen **canApplyArts**bayrağını inceleyin. Aşağıdaki örnek komutuna bakın:
 
 ```powershell
 Select-AzSubscription -SubscriptionId $SubscriptionId | Out-Null
@@ -46,48 +46,48 @@ $vm = Get-AzResource `
 $vm.Properties.canApplyArtifacts
 ```
 
-## <a name="ways-to-troubleshoot"></a>Sorun gidermeye yönelik yollar 
-Aşağıdaki yöntemlerden birini kullanarak DevTest Labs ve Kaynak Yöneticisi dağıtım modeli kullanılarak oluşturulan sanal makinelerin sorunlarını giderebilirsiniz:
+## <a name="ways-to-troubleshoot"></a>Sorun giderme yolları 
+DevTest Labs ve Kaynak Yöneticisi dağıtım modeli kullanılarak oluşturulan VM'leri aşağıdaki yöntemlerden birini kullanarak sorun giderebilirsiniz:
 
-- **Azure Portal** , soruna neden olabilecek bir görsel ipucu hızla almanız gerekiyorsa harika.
-- **Azure PowerShell** -bir PowerShell istemiyle rahat bir şekilde çalışıyorsanız, Azure PowerShell cmdlet 'Lerini kullanarak DevTest Labs kaynaklarını hızlıca sorgulayın.
+- **Azure portalı** - soruna neyin neden olabileceğine dair görsel bir ipucunu hızlı bir şekilde almanız gerekiyorsa harika.
+- **Azure PowerShell** - PowerShell komut istemiyle rahatsanız, Azure PowerShell cmdlets'i kullanarak DevTest Labs kaynaklarını hızlı bir şekilde sorgulayın.
 
 > [!TIP]
-> Bir VM içinde yapıt yürütmeyi İnceleme hakkında daha fazla bilgi için bkz. [laboratuvardaki yapıt başarısızlıklarını tanılama](devtest-lab-troubleshoot-artifact-failure.md).
+> Bir VM içinde yapı yürütme gözden geçirmek için nasıl daha fazla bilgi için, [laboratuarda yapı hataları tanıla](devtest-lab-troubleshoot-artifact-failure.md)bakın.
 
 ## <a name="symptoms-causes-and-potential-resolutions"></a>Belirtiler, nedenler ve olası çözümler 
 
-### <a name="artifact-appears-to-hang"></a>Yapıt askıda görünüyor   
-Önceden tanımlanmış bir zaman aşımı süresi dolana kadar bir yapıt askıda kalır ve yapıt **başarısız**olarak işaretlenir.
+### <a name="artifact-appears-to-hang"></a>Artefakt askıda görünüyor   
+Bir yapı, önceden tanımlanmış bir zaman aşımı süresi sona erene kadar askıda görünüyor ve yapı **Başarısız**olarak işaretlenir.
 
-Bir yapıtı asılı göründüğünde ilk olarak takılmış olduğunu saptayın. Yürütme sırasında aşağıdaki adımlardan birinde bir yapıt engellenebilir:
+Bir obje asılmış gibi göründüğünde, önce nerede sıkıştığını belirleyin. Bir yapı yürütme sırasında aşağıdaki adımlardan herhangi birinde engellenebilir:
 
-- **İlk Istek sırasında**. DevTest Labs özel betik uzantısının (CSE) kullanımını istemek için bir Azure Resource Manager şablonu oluşturur. Bu nedenle, arka planda bir kaynak grubu dağıtımı tetiklenir. Bu düzeydeki bir hata oluştuğunda, söz konusu VM için kaynak grubunun **etkinlik günlüklerinde** ayrıntılara ulaşabilirsiniz.  
-    - Etkinlik günlüğüne laboratuvar VM sayfası gezinti çubuğundan erişebilirsiniz. Bunu seçtiğinizde, **sanal makineye yapıtları uygulama** (yapıtları Uygula işlemi doğrudan tetikleolduysa) veya **sanal makineler ekleme veya değiştirme** (yapıtlar işlemi VM oluşturma işleminin bir parçasıysa) için bir giriş görürsünüz.
-    - Bu girişlerin altındaki hataları arayın. Bazen hata buna uygun şekilde etiketlenmez ve her bir girdiyi araştırmanız gerekir.
-    - Her girişin ayrıntılarını incelerken, JSON yükünün içeriğini gözden geçirdiğinizden emin olun. Bu belgenin altında bir hata görebilirsiniz.
-- **Yapıt yürütülmeye çalışılırken**. Bu, ağ veya depolama sorunlarından dolayı olabilir. Ayrıntılar için bu makalenin devamındaki ilgili bölüme bakın. Ayrıca, betiğin yazıldığı gibi bir durum da oluşabilir. Örneğin:
-    - Bir PowerShell betiği **zorunlu parametrelere**sahiptir, ancak kullanıcının boş bırakmasını sağladığından veya artifactfile. JSON tanım dosyasında özellik için varsayılan bir değer olmadığından, bu değere bir değer geçirilemez. Komut dosyası, Kullanıcı girişi beklediği için askıda kalacak.
-    - Bir PowerShell betiği, yürütmenin parçası olarak **Kullanıcı girişi gerektirir** . Betiklerin, herhangi bir kullanıcı müdahalesi gerektirmeden sessizce çalışacak şekilde yazılması gerekir.
-- **VM aracısının hazırlanmaya uzun sürme**. VM ilk başlatıldığında veya özel Betik uzantısı ilk kez, yapıtları uygulamak için isteği sunacak şekilde yüklendiğinde, VM, VM Aracısı 'nı yükseltmeyi veya VM aracısının başlamasını beklemek isteyebilir. VM aracısının başlatılması uzun süren bir hizmet olabilir. Bu gibi durumlarda, daha fazla sorun giderme için bkz. [Azure sanal makine aracısına genel bakış](../virtual-machines/extensions/agent-windows.md) .
+- **İlk istek sırasında**. DevTest Labs, Özel Komut Dosyası Uzantısı'nın (CSE) kullanımını istemek için bir Azure Kaynak Yöneticisi şablonu oluşturur. Bu nedenle, arka planda, bir kaynak grubu dağıtımı tetiklenir. Bu düzeyde bir hata olduğunda, söz konusu VM için kaynak grubunun **Etkinlik Günlükleri** ayrıntıları alırsınız.  
+    - Etkinlik günlüğüne laboratuvar VM sayfa gezinti çubuğundan erişebilirsiniz. Bunu seçtiğinizde, **ya sanal makineye yapıtuygulamak** için bir giriş görürsünüz (uygulamalı yapılar işlemi doğrudan tetiklendiyse) veya **sanal makineleri ekleme veya değiştirme** (uygulanan yapılar işlemi VM oluşturma işleminin bir parçasıysa).
+    - Bu girişlerin altındaki hataları arayın. Bazen hata buna göre etiketlendirilmez ve her girişi araştırmanız gerekir.
+    - Her girişin ayrıntılarını araştırırken, JSON yükünün içeriğini gözden geçirdiğinizden emin olun. Bu belgenin alt kısmında bir hata görebilirsiniz.
+- **Yapıyı yürütmeye çalışırken.** Ağ veya depolama sorunları nedeniyle olabilir. Ayrıntılar için bu makalenin ilerleyen bölümlerinde ilgili bölüme bakın. Ayrıca, komut dosyasının yazarlık biçimi nedeniyle de olabilir. Örnek:
+    - PowerShell komut dosyasının **zorunlu parametreleri**vardır, ancak kullanıcının boş bırakmasına izin verdiğiniz veya artifactfile.json tanım dosyasındaki özellik için varsayılan bir değere sahip olmadığınız için bir değer geçirilemez. Komut dosyası askıda kalır, çünkü kullanıcı girişi bekliyor.
+    - PowerShell komut dosyası yürütmenin bir parçası olarak **kullanıcı girişi gerektirir.** Komut dosyaları herhangi bir kullanıcı müdahalesi gerektirmeden sessizce çalışmak için yazılmalıdır.
+- **VM Agent hazır olması uzun sürer.** VM ilk başlatıldığında veya özel komut dosyası uzantısı, yapıtları uygulama isteğini sunmak için ilk yüklendiğinde, VM VM Aracısını yükseltmeyi veya VM Aracısının başlatılmasını bekleyebilir. VM Aracısı'nın bağlı olduğu ve başlatılması uzun zaman alan hizmetler olabilir. Bu gibi durumlarda, daha fazla sorun giderme için [Azure Sanal Makine Aracısı genel görünümüne](../virtual-machines/extensions/agent-windows.md) bakın.
 
-### <a name="to-verify-if-the-artifact-appears-to-hang-because-of-the-script"></a>Betik nedeniyle yapıtın askıda görünüp göründüğünü doğrulamak için
+### <a name="to-verify-if-the-artifact-appears-to-hang-because-of-the-script"></a>Yapının komut dosyası nedeniyle askıda görünip görünmediği doğrulamak için
 
-1. Söz konusu sanal makinede oturum açın.
-2. Betiği sanal makinede yerel olarak kopyalayın veya `C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\<version>`altında sanal makinede bulun. Bu, yapıt betiklerinin indirileceği konumdur.
-3. Yükseltilmiş bir komut istemi kullanarak, soruna neden olmak için aynı parametre değerlerini sağlayarak betiği yerel olarak yürütün.
-4. Betiğin istenmeyen davranışların olup olmadığını belirleme. Varsa, yapıt için bir güncelleştirme isteyin (ortak depodan ise); ya da düzeltmeleri kendiniz yapın (özel deponuz varsa).
+1. Söz konusu sanal makineye giriş yapın.
+2. Komut dosyasını sanal makinede yerel olarak kopyalayın `C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\<version>`veya altındaki sanal makinede bulun. Eser komut dosyalarının indirildiği yer.
+3. Yükseltilmiş bir komut istemi kullanarak, soruna neden olmak için kullanılan aynı parametre değerlerini sağlayarak komut dosyasını yerel olarak çalıştırın.
+4. Komut dosyasının istenmeyen davranışlardan muzdarip olup olmadığını belirleyin. Bu nedenle, yapı için bir güncelleştirme isteyin (genel repo'dan geliyorsa); veya düzeltmeleri kendiniz yapın (özel repo'nuzdan ise).
 
 > [!TIP]
-> [Genel](https://github.com/Azure/azure-devtestlab) depolarımızda barındırılan yapıtlarla ilgili sorunları düzeltebilir ve gözden geçirdiğimiz ve onayımız için değişiklikleri gönderebilirsiniz. [README.MD](https://github.com/Azure/azure-devtestlab/blob/master/Artifacts/README.md) belgesindeki **katkıları** bölümüne bakın.
+> [Genel repo'muzda](https://github.com/Azure/azure-devtestlab) barındırılan eserlerle ilgili sorunları düzeltebilir ve değişiklikleri incelememiz ve onayımız için gönderebilirsiniz. [README.md](https://github.com/Azure/azure-devtestlab/blob/master/Artifacts/README.md) belgedeki **Katkılar** bölümüne bakın.
 > 
-> Kendi yapılarınızı yazma hakkında daha fazla bilgi için bkz. [AUTHORING.MD](https://github.com/Azure/azure-devtestlab/blob/master/Artifacts/AUTHORING.md) Document.
+> Kendi yapılarınızı yazma hakkında bilgi için [belgeAUTHORING.md](https://github.com/Azure/azure-devtestlab/blob/master/Artifacts/AUTHORING.md) bakın.
 
-### <a name="to-verify-if-the-artifact-appears-to-hang-because-of-the-vm-agent"></a>VM Aracısı nedeniyle yapıtın askıda görünüp göründüğünü doğrulamak için:
-1. Söz konusu sanal makinede oturum açın.
-2. Dosya Gezgini 'ni kullanarak **C:\windowsazure\logs dizinine**gidin.
-3. **Waappagent. log**dosyasını bulun ve açın.
-4. VM aracısının başladığı zaman ve başlatmayı bitirmediği zaman (yani, ilk sinyal gönderildiğinde) gösteren girişleri arayın. Daha yeni girişler veya özellikle sorunu yaşayabileceğiniz zaman dilimiyle ilgili olanları tercih edin.
+### <a name="to-verify-if-the-artifact-appears-to-hang-because-of-the-vm-agent"></a>El yapının VM Aracısı yüzünden askıda görünip takılmadığı doğrulamak için:
+1. Söz konusu sanal makineye giriş yapın.
+2. Dosya Gezgini'ni kullanarak **C:\WindowsAzure\günlüklerine**gidin.
+3. Bul ve dosya **WaAppAgent.log**açın.
+4. VM Aracısı'nın ne zaman başladığını ve başlatmayı ne zaman bitirdiğini gösteren girişleri arayın (diğer bir süre önce ilk sinyal gönderilir). Yeni girişleri veya özellikle sorunu yaşadığınız zaman dilimindekileri tercih edin.
 
     ```
     [00000006] [11/14/2019 05:52:13.44] [INFO]  WindowsAzureGuestAgent starting. Version 2.7.41491.949
@@ -98,43 +98,43 @@ Bir yapıtı asılı göründüğünde ilk olarak takılmış olduğunu saptayı
     [00000006] [11/14/2019 06:02:33.43] [INFO]  StateExecutor initialization completed.
     [00000020] [11/14/2019 06:02:33.43] [HEART] WindowsAzureGuestAgent Heartbeat.
     ```
-    Bu örnekte, bir sinyal gönderildiği için VM Aracısı başlangıç zamanının 10 dakika ve 20 saniye sürdüğünü görebilirsiniz. Bu durumda, OOBE hizmetinin başlaması uzun sürüyor.
+    Bu örnekte, vm aracısı başlangıç zamanının 10 dakika 20 saniye sürdüğünü görebilirsiniz, çünkü bir sinyal gönderildi. Bu durumda nedeni BAŞLATMAK için uzun bir zaman alan OOBE hizmeti oldu.
 
 > [!TIP]
-> Azure uzantıları hakkında genel bilgi için bkz. [Azure sanal makine uzantıları ve özellikleri](../virtual-machines/extensions/overview.md).
+> Azure uzantıları hakkında genel bilgi için [Azure sanal makine uzantıları ve özelliklerine](../virtual-machines/extensions/overview.md)bakın.
 
 ## <a name="storage-errors"></a>Depolama hataları
-DevTest Labs, bir laboratuvarın önbellek yapıtları için oluşturulan depolama hesabına erişmesi gerekir. DevTest Labs bir yapıt uygularsa, yapı yapılandırmasını ve dosyalarını yapılandırılan depolardan okur. Varsayılan olarak, DevTest Labs **ortak yapıt**deposuna erişimi yapılandırır.
+DevTest Labs, yapıları önbelleğe almak için oluşturulan laboratuvarın depolama hesabına erişim gerektirir. DevTest Labs bir yapı yı uyguladığında, yapı yapılandırmasını ve dosyalarını yapılandırılan depolardan okur. Varsayılan olarak, DevTest Labs **ortak yapı düzeltme repo'ya**erişimi yapılandırır.
 
-VM 'nin nasıl yapılandırıldığına bağlı olarak, bu depoya doğrudan erişimi olmayabilir. Bu nedenle, tasarım, DevTest Labs, yapıtları laboratuvar ilk başlatıldığında oluşturulan bir depolama hesabında önbelleğe alır.
+VM'nin nasıl yapılandırıldığına bağlı olarak, bu repo'ya doğrudan erişimi olmayabilir. Bu nedenle, tasarım gereği, DevTest Labs, laboratuvar ilk kez başlatılmasında oluşturulan bir depolama hesabında ki yapıları önbelleğe alar.
 
-Bu depolama hesabına erişim herhangi bir şekilde engellenirse, trafiğin VM 'den Azure Storage hizmetine engellenmesi gibi, aşağıdakine benzer bir hata görebilirsiniz:
+Bu depolama hesabına erişim herhangi bir şekilde engellenirse, vm'den Azure Depolama hizmetine trafik engellendiğinde, aşağıdakilere benzer bir hata görebilirsiniz:
 
 ```shell
 CSE Error: Failed to download all specified files. Exiting. Exception: Microsoft.WindowsAzure.Storage.StorageException: The remote server returned an error: (403) Forbidden. ---> System.Net.WebException: The remote server returned an error: (403) Forbidden.
 ```
 
-Yukarıdaki hata, **yapıtları Yönet**altındaki **yapıt sonuçları** sayfasının **dağıtım iletisi** bölümünde görüntülenir. Ayrıca, söz konusu sanal makinenin kaynak grubu altındaki **etkinlik günlüklerinde** de görüntülenir.
+Yukarıdaki hata, Yapı denetimleri **Artifact results** **sayfasındaki Dağıtım İletisi** bölümünde **görünür.** Ayrıca, söz konusu sanal makinenin kaynak grubu altında **Etkinlik Günlükleri** görünür.
 
-### <a name="to-ensure-communication-to-the-azure-storage-service-isnt-being-blocked"></a>Azure depolama hizmeti ile iletişimin engellenmediğinden emin olmak için:
+### <a name="to-ensure-communication-to-the-azure-storage-service-isnt-being-blocked"></a>Azure Depolama hizmetiyle iletişimin engellenmediğinden emin olmak için:
 
-- **Eklenen ağ güvenlik grupları (NSG) olup olmadığını denetleyin**. NSG 'lerin tüm sanal ağlarda otomatik olarak yapılandırıldığı bir abonelik ilkesi eklenmiş olabilir. Ayrıca, sanal makinelerin oluşturulması için kullanılan laboratuvar veya laboratuvarınızda yapılandırılmış başka bir sanal ağ olan varsayılan sanal ağı da etkiler.
-- **Varsayılan laboratuvarın depolama hesabını** (diğer bir deyişle, laboratuvar oluşturulduğunda oluşturulan ilk depolama hesabı, adı genellikle "a" harfiyle başlar ve\<labname\>#) ile biten çok basamaklı bir sayıyla biter.
+- **Eklenen ağ güvenlik grupları (NSG) için denetleyin.** NSG'lerin tüm sanal ağlarda otomatik olarak yapılandırıldığı bir abonelik ilkesi eklenmiş olabilir. Ayrıca, kullanılırsa laboratuvarın varsayılan sanal ağını veya laboratuarınızda VM'lerin oluşturulması için kullanılan diğer sanal ağı da etkiler.
+- **Varsayılan laboratuvarın depolama hesabını kontrol edin** (diğer bir tarihte, laboratuvar oluşturulduğunda oluşturulan, adı genellikle "a" harfiyle başlayan ve\<çok\>basamaklı bir sayı yla biten ilk depolama hesabı #).
     1. Laboratuvarın kaynak grubuna gidin.
-    2. Adı kuralıyla eşleşen **depolama hesabı**türü kaynağını bulun.
-    3. **Güvenlik duvarları ve sanal ağlar**adlı depolama hesabı sayfasına gidin.
-    4. **Tüm ağlara**ayarlandığından emin olun. **Seçili ağlar** seçeneği işaretliyse, sanal makineleri oluşturmak için kullanılan laboratuvarın sanal ağlarının listeye eklendiğinden emin olun.
+    2. Adı sözleşmeyle eşleşen tür **depolama hesabının**kaynağını bulun.
+    3. **Güvenlik Duvarları ve sanal ağlar**adı verilen depolama hesabı sayfasına gidin.
+    4. **Tüm ağlara**ayarlandığından emin olun. **Seçili ağlar** seçeneği seçilirse, laboratuvarda VM oluşturmak için kullanılan sanal ağların listeye eklenmiştir.
 
-Daha ayrıntılı sorun giderme için bkz. [Azure Storage güvenlik duvarlarını ve sanal ağları yapılandırma](../storage/common/storage-network-security.md).
+Daha ayrıntılı sorun giderme için Azure [Depolama güvenlik duvarlarını ve sanal ağları Yapılandırma'ya](../storage/common/storage-network-security.md)bakın.
 
 > [!TIP]
-> **Ağ güvenlik grubu kurallarını doğrulayın**. Bir ağ güvenlik grubundaki bir kuralın bir sanal makineye giden trafiği engellediğini onaylamak için [IP akışı doğrulama](../network-watcher/diagnose-vm-network-traffic-filtering-problem.md#use-ip-flow-verify) kullanın. Ayrıca, gelen **Izin verme** NSG kuralının mevcut olduğundan emin olmak için geçerli güvenlik grubu kurallarını gözden geçirebilirsiniz. Daha fazla bilgi için bkz. [sanal makine trafiği akışı sorunlarını gidermek için etkin güvenlik kurallarını kullanma](../virtual-network/diagnose-network-traffic-filter-problem.md).
+> **Ağ güvenlik grubu kurallarını doğrulayın.** Ağ güvenlik grubundaki bir kuralın sanal makineye veya sanal makineden gelen trafiği engellediğini doğrulamak için [IP akışı doğrulamayı](../network-watcher/diagnose-vm-network-traffic-filtering-problem.md#use-ip-flow-verify) kullanın. Gelen **NSG** kuralının var olduğundan emin olmak için etkili güvenlik grubu kurallarını da gözden geçirebilirsiniz. Daha fazla bilgi için [vm trafik akışını gidermek için etkili güvenlik kurallarını kullanma'ya](../virtual-network/diagnose-network-traffic-filter-problem.md)bakın.
 
 ## <a name="other-sources-of-error"></a>Diğer hata kaynakları
-Daha az sık olası hata kaynakları vardır. Servis talebi için geçerli olup olmadığını görmek üzere her bir değerlendirme yaptığınızdan emin olun. Bunlardan biri aşağıdadır: 
+Daha az sıklıkta hata olası kaynakları vardır. Servis talebinize uygun olup olmadığını görmek için her birinin değerlendirmesinden emin olun. İşte bunlardan biri: 
 
-- **Özel depo Için zaman aşımına uğradı kişisel erişim belirteci**. Süre dolduğunda, yapıt listelenmez ve zaman aşımına uğradı bir özel erişim belirtecine sahip bir depodan yapıtları ifade eden betikler buna göre başarısız olur.
+- **Özel repo için süresi dolmuş kişisel erişim belirteci.** Süresi dolduğunda, yapı listelenmez ve süresi dolmuş özel erişim belirteci olan bir depodaki yapılara atıfta bulunan tüm komut dosyaları buna göre başarısız olur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu hatalardan hiçbiri oluşmazsa ve yapıtları hala uygulayadıysanız, bir Azure destek olayı da oluşturabilirsiniz. [Azure destek sitesine](https://azure.microsoft.com/support/options/) gidin ve **Destek Al**' ı seçin.
+Bu hataların hiçbiri oluştuysa ve hala yapıtları uygulayamıyorsanız, bir Azure destek olayı dosyalayabilirsiniz. [Azure destek sitesine](https://azure.microsoft.com/support/options/) gidin ve Destek **Al'ı**seçin.
 
