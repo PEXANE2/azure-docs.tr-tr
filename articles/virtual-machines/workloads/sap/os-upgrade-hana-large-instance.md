@@ -1,6 +1,6 @@
 ---
-title: Azure 'daki SAP HANA için işletim sistemi yükseltmesi (büyük örnekler) | Microsoft Docs
-description: Azure 'da SAP HANA için Işletim sistemi yükseltmesi gerçekleştirme (büyük örnekler)
+title: Azure'daki SAP HANA için işletim sistemi yükseltmesi (Büyük Örnekler)| Microsoft Dokümanlar
+description: Azure'da SAP HANA için İşletim sistemi yükseltmesi gerçekleştirin (Büyük Örnekler)
 services: virtual-machines-linux
 documentationcenter: ''
 author: saghorpa
@@ -14,111 +14,111 @@ ms.date: 07/04/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 3a0a5d39a7cb2162186291ea534a623ef45c40d4
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78675621"
 ---
-# <a name="operating-system-upgrade"></a>İşletim sistemi yükseltme
-Bu belgede, HANA büyük örneklerinde işletim sistemi yükseltmeleriyle ilgili ayrıntılar açıklanmaktadır.
+# <a name="operating-system-upgrade"></a>İşletim Sistemi Yükseltme
+Bu belge, HANA Büyük Örnekleri işletim sistemi yükseltmeleri ile ilgili ayrıntıları açıklar.
 
 >[!NOTE]
->İşletim sistemi yükseltmesi müşterinin sorumluluğundadır, Microsoft operasyon desteği yükseltme sırasında izlenecek önemli alanlara kılavuzluk edebilir. Bir yükseltmeyi planlayabilmeniz için, işletim sistemi satıcınıza da başvurmanız gerekir.
+>İşletim sistemi yükseltmesi müşterinin sorumluluğundadır, Microsoft operasyon desteği yükseltme sırasında dikkat etilen önemli alanlara yönlendirebilir. Yükseltme planlamadan önce işletim sistemi satıcınıza da danışmalısınız.
 
-HLI birim sağlama sırasında, Microsoft operasyon ekibi işletim sistemini de yüklüyor.
-Zaman içinde, işletim sistemini (örnek: düzeltme eki uygulama, ayarlama, yükseltme vb.), HLI birim üzerinde korumanız gerekir.
+HLI birim sağlama sırasında, Microsoft operasyon ekibi işletim sistemini yükler.
+Zaman içinde, HLI biriminde işletim sistemini (Örnek: Yama, ayar, yükseltme vb.) korumanız gerekir.
 
-İşletim sisteminde büyük değişiklikler yapmadan önce (örneğin, SP1 'i SP2'YE yükseltmek için), bir destek bileti açarak Microsoft Operasyon ekibine başvurmanız gerekir.
+İşletim sisteminde büyük değişiklikler yapmadan önce (örneğin, SP1'i SP2'ye yükseltin), danışmak için bir destek bileti açarak Microsoft Operasyonları ekibine başvurmanız gerekir.
 
-Biletini ekleyin:
+Biletinize dahil edin:
 
-* HLI abonelik KIMLIĞINIZ.
+* HLI abonelik kimliğiniz.
 * Sunucu adınız.
-* Uygulanmasını planladığınız düzeltme eki düzeyi.
-* Bu değişikliği planlamanızın tarihi. 
+* Uygulamayı planladığınız yama düzeyi.
+* Bu değişikliği planladığınız tarih. 
 
-Bu bileti, Işlem ekibinin, sunucu dikey penceresinde bellenim yükseltmesinin gerekli olup olmadığını denetlemesi nedeniyle, istenen yükseltme tarihinden önce en az bir hafta önce açmanız önerilir.
+Bu bileti, sunucu bıçağınızda bir firmware yükseltmesi gerekip gerekmeyeceğini kontrol etme lerinden dolayı, istenilen yükseltme tarihinden en az bir hafta önce açmanızı öneririz.
 
 
-Farklı Linux sürümlerindeki farklı SAP HANA sürümlerinin destek matrisi için bkz. [SAP Note #2235581](https://launchpad.support.sap.com/#/notes/2235581).
+Farklı Linux sürümlerine sahip farklı SAP HANA sürümlerinin destek matrisi için [SAP Note #2235581](https://launchpad.support.sap.com/#/notes/2235581)bakın.
 
 
 ## <a name="known-issues"></a>Bilinen sorunlar
 
-Yükseltme sırasında yaygın olarak karşılaşılan birkaç sorun aşağıda verilmiştir:
-- SKU türü II sınıf SKU 'sunda, yazılım altyapısı yazılımı (SFS) işletim sistemi yükseltmesinden sonra kaldırılır. İşletim sistemi yükseltmesinden sonra uyumlu SFS 'yi yeniden yüklemeniz gerekir.
-- Ethernet kartı sürücüleri (ENIC ve FNıC) eski sürüme geri döndürüldü. Yükseltmeden sonra sürücülerin uyumlu sürümünü yeniden yüklemeniz gerekir.
+Yükseltme sırasında bilinen birkaç yaygın sorun şunlardır:
+- SKU Tip II sınıfı SKU'da, yazılım temel yazılımı (SFS) işletim sistemi yükseltmesinden sonra kaldırılır. İşletim sistemi yükseltmesi sonrasında uyumlu SFS'yi yeniden yüklemeniz gerekir.
+- Ethernet kartı sürücüleri (ENIC ve FNIC) eski sürüme geri döndü. Yükseltmeden sonra sürücülerin uyumlu sürümünü yeniden yüklemeniz gerekir.
 
-## <a name="sap-hana-large-instance-type-i-recommended-configuration"></a>SAP HANA büyük örnek (tür I) önerilen yapılandırma
+## <a name="sap-hana-large-instance-type-i-recommended-configuration"></a>SAP HANA Büyük Örnek (Tip I) önerilen yapılandırma
 
-Düzeltme eki uygulama, sistem yükseltmeleri ve müşteriler tarafından yapılan değişiklikler nedeniyle, işletim sistemi yapılandırması zaman içinde Önerilen ayarlardan fazla olabilir. Ayrıca, Microsoft, mevcut sistemler için gereken güncelleştirmeleri tanımlar ve en iyi performans ve dayanıklılık için en iyi şekilde yapılandırılmasını sağlar. Aşağıdaki yönergeler ağ performansını, sistem kararlılığını ve en iyi HANA performansını ele alan önerilerin ana hatlarıyla yapılır.
+İşletim sistemi yapılandırması, yama, sistem yükseltmeleri ve müşteriler tarafından yapılan değişiklikler nedeniyle zaman içinde önerilen ayarlardan sürüklenebilir. Ayrıca, Microsoft, en iyi performans ve esneklik için en iyi şekilde yapılandırıldığından emin olmak için varolan sistemler için gereken güncelleştirmeleri tanımlar. Aşağıdaki yönergeleri, ağ performansını, sistem kararlılığını ve en iyi HANA performansını ele veren önerileri ana hatlar.
 
-### <a name="compatible-enicfnic-driver-versions"></a>Uyumlu eNIC/Fnıc sürücü sürümleri
-  Doğru ağ performansına ve sistem kararlılığını sağlamak için, aşağıdaki uyumluluk tablosunda belirtilen eNIC ve Fnıc sürücülerinin işletim sistemine özgü sürümünün yüklendiğinden emin olmanız önerilir. Sunucular, uyumlu sürümlere sahip müşterilere dağıtılır. Bazı durumlarda, işletim sistemi/çekirdek düzeltme eki uygulama sırasında sürücülerin varsayılan sürücü sürümlerine geri alınacağını unutmayın. Uygun sürücü sürümünün işletim sistemi/çekirdek düzeltme eki uygulama işlemlerini çalıştırdığından emin olun.
+### <a name="compatible-enicfnic-driver-versions"></a>Uyumlu eNIC/fNIC sürücü sürümleri
+  Uygun ağ performansına ve sistem kararlılığına sahip olmak için, aşağıdaki uyumluluk tablosunda betimlenen eNIC ve fNIC sürücülerinin işletim sistemine özgü uygun sürümünün yüklendiğinden emin olunması önerilir. Sunucular uyumlu sürümlere sahip müşterilere teslim edilir. Bazı durumlarda, OS/Kernel yama sırasında sürücülerin varsayılan sürücü sürümlerine geri dönebileceğini unutmayın. Uygun sürücü sürümünün OS/Kernel sonrası yama işlemleri yürüttüğünden emin olun.
        
       
-  |  İşletim sistemi satıcısı    |  İşletim sistemi paketi sürümü     |  Üretici Yazılımı Sürümü  |  eNIC sürücüsü |  Fnıc sürücüsü | 
+  |  İşletim Sistemi Satıcısı    |  İşletim Sistemi Paketi Sürümü     |  Üretici Yazılımı Sürümü  |  eNIC Sürücüsü |  fNIC Sürücüsü | 
   |---------------|-------------------------|--------------------|--------------|--------------|
-  |   SuSE        |  SLES 12 SP2            |   3.1.3 h           |  2.3.0.40    |   1.6.0.34   |
-  |   SuSE        |  SLES 12 SP3            |   3.1.3 h           |  2.3.0.44    |   1.6.0.36   |
-  |   Red Hat     |  RHEL 7,2               |   3.1.3 h           |  2.3.0.39    |   1.6.0.34   |
+  |   Suse        |  SLES 12 SP2            |   3.1.3h           |  2.3.0.40    |   1.6.0.34   |
+  |   Suse        |  SLES 12 SP3            |   3.1.3h           |  2.3.0.44    |   1.6.0.36   |
+  |   Red Hat     |  RHEL 7.2               |   3.1.3h           |  2.3.0.39    |   1.6.0.34   |
  
 
-### <a name="commands-for-driver-upgrade-and-to-clean-old-rpm-packages"></a>Sürücü yükseltme ve eski RPM paketlerini Temizleme komutları
+### <a name="commands-for-driver-upgrade-and-to-clean-old-rpm-packages"></a>Sürücü yükseltme ve eski rpm paketlerini temizlemek için komutlar
 ```
 rpm -U driverpackage.rpm
 rpm -e olddriverpackage.rpm
 ```
 
-#### <a name="commands-to-confirm"></a>Onaylanacak komutlar
+#### <a name="commands-to-confirm"></a>Onaylamak için komutlar
 ```
 modinfo enic
 modinfo fnic
 ```
 
-### <a name="suse-hlis-grub-update-failure"></a>SuSE HLIs GRUB güncelleştirme hatası
-Azure HANA büyük örneklerinde (tür ı) SAP, yükseltmeden sonra önyüklenebilir olmayan bir durumda olabilir. Aşağıdaki yordam bu sorunu düzeltir.
-#### <a name="execution-steps"></a>Yürütme adımları
+### <a name="suse-hlis-grub-update-failure"></a>SuSE HLIs GRUB güncelleme hatası
+Azure HANA Büyük Örneklerindeki SAP (Tip I), yükseltmeden sonra önyükleme mümkün olmayan bir durumda olabilir. Aşağıdaki yordam bu sorunu giderir.
+#### <a name="execution-steps"></a>Yürütme Adımları
 
 
-*   `multipath -ll` komutunu yürütün.
-*   Boyutu yaklaşık 50G olan LUN KIMLIĞINI alın veya şu komutu kullanın: `fdisk -l | grep mapper`
-*   `/etc/default/grub_installdevice` dosyayı satır `/dev/mapper/<LUN ID>`güncelleştir. Örnek:/dev/mapper/3600a09803830372f483f495242534a56
+*   Komutu yürütün. `multipath -ll`
+*   Boyutu yaklaşık 50G olan LUN kimliğini alın veya komutu kullanın:`fdisk -l | grep mapper`
+*   Dosyayı satırla `/etc/default/grub_installdevice` `/dev/mapper/<LUN ID>`güncelleştirin. Örnek: /dev/mapper/3600a09803830372f483f495242534a56
 >[!NOTE]
->LUN KIMLIĞI sunucudan sunucuya farklılık gösterir.
+>LUN KIMLIĞI sunucudan sunucuya değişir.
 
 
-### <a name="disable-edac"></a>EDAC 'yi devre dışı bırak 
-   Hata algılama ve düzeltme (EDAC) modülü bellek hatalarını algılamada ve düzeltmenize yardımcı olur. Ancak, Azure üzerinde SAP HANA Büyük Örnekleri (tür ı) için temel alınan donanım zaten aynı işlevi gerçekleştiriyor. Aynı özelliğin donanım ve işletim sistemi (OS) düzeylerinde etkinleştirilmiş olması çakışmaya neden olabilir ve sunucunun zaman zaman, planlanmamış kapanmasına yol açabilir. Bu nedenle, modülün IŞLETIM sisteminden devre dışı bırakılması önerilir.
+### <a name="disable-edac"></a>EDAC'ı devre dışı 
+   Hata Algılama ve Düzeltme (EDAC) modülü bellek hatalarının algılanmasına ve düzeltilmesine yardımcı olur. Ancak, Azure Büyük Örnekleri (Tip I) sap HANA için temel donanım zaten aynı işlevi gerçekleştirilmektedir. Donanım ve işletim sistemi (OS) düzeylerinde aynı özelliğin etkin olması çakışmalara neden olabilir ve sunucunun zaman zaman planlanmamış kapatmalarına neden olabilir. Bu nedenle, modülü işletim sistemi devre dışı bilebilir önerilir.
 
-#### <a name="execution-steps"></a>Yürütme adımları
+#### <a name="execution-steps"></a>Yürütme Adımları
 
-* EDAC modülünün etkinleştirilip etkinleştirilmediğini denetleyin. Aşağıdaki komutta bir çıkış döndürülürse, bu, modülün etkin olduğu anlamına gelir. 
+* EDAC modülü etkin olup olmadığını kontrol edin. Bir çıktı komutun altında döndürülürse, bu modülün etkin olduğu anlamına gelir. 
 ```
 lsmod | grep -i edac 
 ```
-* Aşağıdaki satırları dosyaya ekleyerek modülleri devre dışı bırakın `/etc/modprobe.d/blacklist.conf`
+* Aşağıdaki satırları dosyaya ekleyerek modülleri devre dışı`/etc/modprobe.d/blacklist.conf`
 ```
 blacklist sb_edac
 blacklist edac_core
 ```
-Değişikliklerin yerine gelmesi için yeniden başlatma gerekiyor. `lsmod` komutunu yürütün ve modülün çıkışta mevcut olmadığını doğrulayın.
+Değişiklikleri yerinde almak için yeniden başlatma gerekir. Komutu çalıştırın `lsmod` ve modülün çıktıda bulunmadığını doğrulayın.
 
 
 ### <a name="kernel-parameters"></a>Çekirdek parametreleri
-   `transparent_hugepage`, `numa_balancing`, `processor.max_cstate`, `ignore_ce` ve `intel_idle.max_cstate` için doğru ayarların uygulandığından emin olun.
+   `transparent_hugepage`Doğru ayarın , `numa_balancing`, `processor.max_cstate` `ignore_ce` , `intel_idle.max_cstate` ve uygulandığından emin olun.
 
-* intel_idle. max_cstate = 1
-* işlemci. max_cstate = 1
-* transparent_hugepage = hiçbir bir
-* numa_balancing = devre dışı bırak
-* MCE = ignore_ce
+* intel_idle.max_cstate=1
+* işlemci.max_cstate=1
+* transparent_hugepage=asla
+* numa_balancing=devre dışı
+* mce=ignore_ce
 
 
-#### <a name="execution-steps"></a>Yürütme adımları
+#### <a name="execution-steps"></a>Yürütme Adımları
 
-* Bu parametreleri dosyadaki `GRB_CMDLINE_LINUX` satırına ekleyin `/etc/default/grub`
+* Bu parametreleri `GRB_CMDLINE_LINUX` dosyadaki satıra ekleme`/etc/default/grub`
 ```
 intel_idle.max_cstate=1 processor.max_cstate=1 transparent_hugepage=never numa_balancing=disable mce=ignore_ce
 ```
@@ -126,9 +126,9 @@ intel_idle.max_cstate=1 processor.max_cstate=1 transparent_hugepage=never numa_b
 ```
 grub2-mkconfig -o /boot/grub2/grub.cfg
 ```
-* Sistemi yeniden Başlat.
+* Sistemi yeniden başlatın.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- İşletim sistemi yedekleme türü ı SKU sınıfı için [yedekleme ve geri yükleme](hana-overview-high-availability-disaster-recovery.md) bölümüne bakın.
-- Tür II SKU sınıfı için [Düzeltme 3 damgalarının tür II SKU 'ları Için Işletim sistemi yedeklemesi](os-backup-type-ii-skus.md) ' ne bakın.
+- OS yedekleme Türü I SKU sınıfı için [Yedekleme ve geri yükleme](hana-overview-high-availability-disaster-recovery.md) bakın.
+- [Tip II SKU sınıfı için Revizyon 3 pullarının Tip II SKU'ları için OS Yedekleme'ye](os-backup-type-ii-skus.md) başvurun.

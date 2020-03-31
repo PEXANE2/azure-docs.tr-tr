@@ -1,6 +1,6 @@
 ---
-title: Web uygulamasındaki IoT Hub verilerinizin gerçek zamanlı veri görselleştirmesi
-description: Bir sensörden toplanan ve IoT Hub 'ınıza gönderilen sıcaklık ve nem verilerini görselleştirmek için bir Web uygulaması kullanın.
+title: Bir web uygulamasında IoT hub verilerinizin gerçek zamanlı veri görselleştirmesi
+description: Bir sensörden toplanan ve Iot hub'ınıza gönderilen sıcaklık ve nem verilerini görselleştirmek için bir web uygulaması kullanın.
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
@@ -9,115 +9,115 @@ ms.tgt_pltfrm: arduino
 ms.date: 05/31/2019
 ms.author: robinsh
 ms.openlocfilehash: 138e077f7b47fa9f38a4710db95eb7208cef78e3
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78675311"
 ---
-# <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-in-a-web-application"></a>Azure IoT Hub 'ınızdaki gerçek zamanlı algılayıcı verilerini bir Web uygulamasında görselleştirin
+# <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-in-a-web-application"></a>Azure IoT hub'ınızdaki gerçek zamanlı sensör verilerini bir web uygulamasında görselleştirin
 
-![Uçtan uca diyagram](./media/iot-hub-live-data-visualization-in-web-apps/1_iot-hub-end-to-end-diagram.png)
+![Uçuça diyagram](./media/iot-hub-live-data-visualization-in-web-apps/1_iot-hub-end-to-end-diagram.png)
 
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
 ## <a name="what-you-learn"></a>Öğrenecekleriniz
 
-Bu öğreticide, IoT Hub 'ınızın yerel bilgisayarınızda çalışan bir Node. js web uygulamasıyla aldığı gerçek zamanlı algılayıcı verilerini görselleştirmeyi öğreneceksiniz. Web uygulamasını yerel olarak çalıştırdıktan sonra, isteğe bağlı olarak, Azure App Service Web uygulamasını barındırmak için adımları izleyebilirsiniz. Power BI kullanarak IoT Hub 'ınızdaki verileri görselleştirmeye denemek istiyorsanız bkz. [Azure IoT Hub 'deki gerçek zamanlı algılayıcı verilerini görselleştirmek için Power BI kullanma](iot-hub-live-data-visualization-in-power-bi.md).
+Bu eğitimde, IoT hub'ınızın yerel bilgisayarınızda çalışan bir düğüm.js web uygulamasıyla aldığı gerçek zamanlı sensör verilerini nasıl görselleştireceğimizi öğrenirsiniz. Web uygulamasını yerel olarak çalıştırdıktan sonra, web uygulamasını Azure Uygulama Hizmeti'nde barındırma katmak için isteğe bağlı olarak adımları izleyebilirsiniz. Power BI'yi kullanarak IoT hub'ınızdaki verileri görselleştirmek istiyorsanız, [Azure IoT Hub'ından gerçek zamanlı sensör verilerini görselleştirmek için Power BI'yi kullanın'a](iot-hub-live-data-visualization-in-power-bi.md)bakın.
 
-## <a name="what-you-do"></a>Yapabilecekleriniz
+## <a name="what-you-do"></a>Ne yaparsınız
 
-* Web uygulamasının algılayıcı verilerini okumak için kullanacağı IoT Hub 'ınıza bir tüketici grubu ekleyin
-* Web uygulaması kodunu GitHub 'dan indirin
-* Web uygulaması kodunu inceleyin
-* Ortam değişkenlerini, Web uygulamanız için gereken IoT Hub yapıtları tutacak şekilde yapılandırma
-* Geliştirme makinenizde Web uygulamasını çalıştırma
-* IoT Hub 'ınızdan gerçek zamanlı sıcaklık ve nem verilerini görmek için bir Web sayfası açın
-* Seçim Azure CLı kullanarak Web uygulamanızı barındırma Azure App Service
+* Web uygulamasının sensör verilerini okumak için kullanacağı IoT hub'ınıza bir tüketici grubu ekleme
+* Web uygulama kodunu GitHub'dan indirin
+* Web uygulama kodunu inceleyin
+* Web uygulamanızın gerektirdiği IoT Hub yapılarını tutacak şekilde ortam değişkenlerini yapılandırın
+* Web uygulamasını geliştirme makinenizde çalıştırın
+* IoT hub'ınızdaki gerçek zamanlı sıcaklık ve nem verilerini görmek için bir web sayfası açın
+* (İsteğe bağlı) Web uygulamanızı Azure Uygulama Hizmeti'nde barındırmak için Azure CLI'yi kullanın
 
 ## <a name="what-you-need"></a>Ne gerekiyor
 
-* [Raspberry PI Çevrimiçi simülatör](iot-hub-raspberry-pi-web-simulator-get-started.md) öğreticisini veya cihaz öğreticilerinin birini doldurun; Örneğin, [Node. js Ile Raspberry Pi](iot-hub-raspberry-pi-kit-node-get-started.md). Bu, aşağıdaki gereksinimleri kapsar:
+* [Raspberry Pi online simülatör](iot-hub-raspberry-pi-web-simulator-get-started.md) öğretici veya cihaz öğreticiler birini tamamlayın; örneğin, [ahududu Pi düğüm ile.js](iot-hub-raspberry-pi-kit-node-get-started.md). Bunlar aşağıdaki gereksinimleri kapsar:
 
   * Etkin bir Azure aboneliği
-  * Aboneliğiniz kapsamındaki bir IoT Hub 'ı
-  * IoT Hub 'ınıza ileti gönderen bir istemci uygulaması
+  * Aboneliğiniz altında bir Iot hub'ı
+  * Iot hub'ınıza ileti gönderen istemci uygulaması
 
-* [Git 'i indir](https://www.git-scm.com/downloads)
+* [Git'i İndir](https://www.git-scm.com/downloads)
 
-* Bu makaledeki adımlarda bir Windows geliştirme makinesi varsayılır; Ancak, bu adımları tercih ettiğiniz kabukta bir Linux sisteminde kolayca yapabilirsiniz.
+* Bu makaledeki adımlar bir Windows geliştirme makinesi varsayalım; ancak, tercih ettiğiniz kabuk bir Linux sisteminde kolayca bu adımları gerçekleştirebilirsiniz.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Azure CLı için Microsoft Azure IoT uzantısını Cloud Shell örneğinize eklemek için aşağıdaki komutu çalıştırın. IOT uzantısı, Azure CLı 'ye IoT Hub, IoT Edge ve IoT cihaz sağlama hizmeti 'ne (DPS) özel komutlar ekler.
+Bulut Kabuğu örneğinize Azure CLI için Microsoft Azure IoT Uzantısı'nı eklemek için aşağıdaki komutu çalıştırın. IOT Uzantı, Azure CLI'ye IoT Hub, IoT Edge ve IoT Aygıt Sağlama Hizmeti (DPS) özel komutlarını ekler.
 
 ```azurecli-interactive
 az extension add --name azure-iot
 ```
 
-## <a name="add-a-consumer-group-to-your-iot-hub"></a>IoT Hub 'ınıza bir tüketici grubu ekleme
+## <a name="add-a-consumer-group-to-your-iot-hub"></a>IoT hub'ınıza bir tüketici grubu ekleme
 
-[Tüketici grupları](https://docs.microsoft.com/azure/event-hubs/event-hubs-features#event-consumers) , uygulama ve Azure hizmetlerinin aynı Olay Hub 'ı uç noktasından bağımsız olarak verileri kullanmasını sağlayan olay akışına bağımsız görünümler sağlar. Bu bölümde, IoT Hub 'ınızın yerleşik uç noktasına, Web uygulamasının verileri okumak için kullanacağı bir tüketici grubu eklersiniz.
+[Tüketici grupları,](https://docs.microsoft.com/azure/event-hubs/event-hubs-features#event-consumers) uygulamaların ve Azure hizmetlerinin aynı Event Hub bitiş noktasından bağımsız olarak veri tüketmesini sağlayan etkinlik akışına bağımsız görünümler sağlar. Bu bölümde, IoT hub'ınızın yerleşik bitiş noktasına, web uygulamasının verileri okumak için kullanacağı bir tüketici grubu eklersiniz.
 
-IoT Hub 'ınızın yerleşik uç noktasına bir tüketici grubu eklemek için aşağıdaki komutu çalıştırın:
+IoT hub'ınızın yerleşik bitiş noktasına bir tüketici grubu eklemek için aşağıdaki komutu çalıştırın:
 
 ```azurecli-interactive
 az iot hub consumer-group create --hub-name YourIoTHubName --name YourConsumerGroupName
 ```
 
-Seçtiğiniz adı aklınızda, bu öğreticide daha sonra ihtiyacınız olacaktır.
+Seçtiğiniz adı not edin, daha sonra bu öğreticide ihtiyacınız olacak.
 
-## <a name="get-a-service-connection-string-for-your-iot-hub"></a>IoT Hub 'ınız için bir hizmet bağlantı dizesi alın
+## <a name="get-a-service-connection-string-for-your-iot-hub"></a>IoT hub'ınız için bir servis bağlantı dizesi alın
 
-IoT Hub 'ları, çeşitli varsayılan erişim ilkeleriyle oluşturulur. Bu tür bir ilke, bir hizmetin IoT Hub 'ın uç noktalarını okuması ve yazması için yeterli izinleri sağlayan **hizmet** ilkesidir. IoT Hub 'ınız için hizmet ilkesine uyan bir bağlantı dizesi almak için aşağıdaki komutu çalıştırın:
+IoT hub'ları birkaç varsayılan erişim ilkeleriyle oluşturulur. Bu tür bir ilke, bir hizmetin IoT hub'ın uç noktalarını okuyup yazması için yeterli izinsağlayan **hizmet** ilkesidir. IoT hub'ınız için hizmet ilkesine uygun bir bağlantı dizesi almak için aşağıdaki komutu çalıştırın:
 
 ```azurecli-interactive
 az iot hub show-connection-string --hub-name YourIotHub --policy-name service
 ```
 
-Bağlantı dizesi şuna benzer olmalıdır:
+Bağlantı dizesi aşağıdakilere benzer olmalıdır:
 
 ```javascript
 "HostName={YourIotHubName}.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey={YourSharedAccessKey}"
 ```
 
-Hizmet bağlantı dizesi ' ni aklınızda, bu öğreticide daha sonra ihtiyacınız olacaktır.
+Hizmet bağlantı dizesini not edin, daha sonra bu öğreticide ihtiyacınız olacak.
 
-## <a name="download-the-web-app-from-github"></a>Web uygulamasını GitHub 'dan indirin
+## <a name="download-the-web-app-from-github"></a>Web uygulamasını GitHub'dan indirin
 
-Bir komut penceresi açın ve örneği GitHub 'dan indirmek ve örnek dizine değiştirmek için aşağıdaki komutları girin:
+Bir komut penceresi açın ve örneği GitHub'dan indirmek ve örnek dizine değiştirmek için aşağıdaki komutları girin:
 
 ```cmd
 git clone https://github.com/Azure-Samples/web-apps-node-iot-hub-data-visualization.git
 cd web-apps-node-iot-hub-data-visualization
 ```
 
-## <a name="examine-the-web-app-code"></a>Web uygulaması kodunu inceleyin
+## <a name="examine-the-web-app-code"></a>Web uygulama kodunu inceleyin
 
-Web Apps-node-IoT-Hub-veri görselleştirme dizininden Web uygulamasını en sevdiğiniz düzenleyicide açın. Aşağıda VS Code görüntülenen dosya yapısı gösterilmektedir:
+Web uygulamaları-düğüm-iot-hub-veri-görselleştirme dizininden, web uygulamasını en sevdiğiniz düzenleyicide açın. Aşağıdaki, VS Kodu'nda görüntülenen dosya yapısını gösterir:
 
 ![Web uygulaması dosya yapısı](./media/iot-hub-live-data-visualization-in-web-apps/web-app-files.png)
 
-Aşağıdaki dosyaları incelemek için bir dakikanızı ayırın:
+Aşağıdaki dosyaları incelemek için bir dakikaayırın:
 
-* **Server. js** , Web yuvasını ve Olay Hub sarmalayıcı sınıfını başlatan hizmet tarafı bir betiktir. Bu, sınıfın, gelen iletileri Web yuvasına yayımlamak için kullandığı olay hub sarmalayıcı sınıfına bir geri çağırma sağlar.
+* **Server.js,** web soketi ve Event Hub sarıcı sınıfını açan bir hizmet tarafı komut dosyasıdır. Gelen iletileri web yuvasına yayınlamak için sınıfın kullandığı Event Hub sarıcı sınıfına geri arama sağlar.
 
-* **Event-hub-Reader. js** , belirtilen bağlantı dizesini ve tüketici grubunu kullanarak IoT Hub 'ın yerleşik uç noktasına bağlanan bir hizmet tarafı betiğidir. Gelen iletilerde DeviceID ve EnqueuedTimeUtc 'yi ayıklar ve ardından Server. js tarafından kaydedilen geri arama yöntemini kullanarak iletiyi geçirir.
+* **Olay hub-reader.js,** belirtilen bağlantı dizesini ve tüketici grubunu kullanarak IoT hub'ın yerleşik bitiş noktasına bağlanan bir hizmet tarafı komut dosyasıdır. DeviceId ve EnqueuedTimeUtc'ı gelen iletilerle ilgili meta verilerden ayıklar ve sunucu.js tarafından kayıtlı geri arama yöntemini kullanarak iletiyi aktarır.
 
-* **Chart-Device-Data. js** , Web yuvasını dinleyen, her bir DeviceID 'nin izlenmesini tutan ve her bir cihaz için gelen verilerin son 50 noktasını depolayan bir istemci tarafı komut dosyası. Daha sonra seçili cihaz verilerini grafik nesnesine bağlar.
+* **Chart-device-data.js,** web soketinde dinleyen, her DeviceId'i izleyen ve her aygıt için gelen verilerin son 50 noktasını depolayan istemci tarafı komut dosyasıdır. Daha sonra seçili aygıt verilerini grafik nesnesine bağlar.
 
-* **Index. html** , Web sayfası için Kullanıcı arabirimi yerleşimini işler ve istemci tarafı mantığı için gerekli betiklerine başvurur.
+* **Index.html** web sayfası için Web-u Arama birimi düzenini işler ve istemci tarafı mantığı için gerekli komut dosyalarını başvurur.
 
 ## <a name="configure-environment-variables-for-the-web-app"></a>Web uygulaması için ortam değişkenlerini yapılandırma
 
-IoT Hub 'ınızdaki verileri okumak için, Web uygulamasının IoT Hub 'ının bağlantı dizesine ve okuması gereken tüketici grubunun adına ihtiyacı vardır. Bu dizeleri, Server. js ' de aşağıdaki satırlardaki işlem ortamından alır:
+IoT hub'ınızdaki verileri okumak için web uygulamanızın IoT hub'ınızın bağlantı dizesine ve okuması gereken tüketici grubunun adına ihtiyacı vardır. Bu işlem ortamından bu dizeleri server.js aşağıdaki satırlarda alır:
 
 ```javascript
 const iotHubConnectionString = process.env.IotHubConnectionString;
 const eventHubConsumerGroup = process.env.EventHubConsumerGroup;
 ```
 
-Aşağıdaki komutlarla, komut pencerenizde ortam değişkenlerini ayarlayın. Yer tutucu değerlerini IoT Hub 'ınız için hizmet bağlantı dizesiyle ve daha önce oluşturduğunuz tüketici grubunun adına değiştirin. Dizeleri tırnak içine mayın.
+Komut pencerenizdeki ortam değişkenlerini aşağıdaki komutlarla ayarlayın. Yer tutucu değerlerini IoT hub'ınız için servis bağlantı dizesiyle ve daha önce oluşturduğunuz tüketici grubunun adıyla değiştirin. İplerden alıntı yapma.
 
 ```cmd
 set IotHubConnectionString=YourIoTHubConnectionString
@@ -126,91 +126,91 @@ set EventHubConsumerGroup=YourConsumerGroupName
 
 ## <a name="run-the-web-app"></a>Web uygulamasını çalıştırma
 
-1. Cihazınızın çalıştığından ve veri göndermekle emin olun.
+1. Cihazınızın çalışırken ve veri gönderdiğinden emin olun.
 
-2. Komut penceresinde, başvurulan paketleri indirip yüklemek ve Web sitesini başlatmak için aşağıdaki satırları çalıştırın:
+2. Komut penceresinde, başvurulan paketleri indirmek ve yüklemek ve web sitesini başlatmak için aşağıdaki satırları çalıştırın:
 
    ```cmd
    npm install
    npm start
    ```
 
-3. Web uygulamasının IoT Hub 'ınıza başarıyla bağlandığını ve 3000 numaralı bağlantı noktasını dinlediğini belirten konsolda çıktı görmeniz gerekir:
+3. Konsolda, web uygulamasının IoT hub'ınıza başarıyla bağladığını ve 3000 no'l'da dinlediğini gösteren çıktıyı görmeniz gerekir:
 
-   ![Konsol üzerinde Web uygulaması başlatıldı](./media/iot-hub-live-data-visualization-in-web-apps/web-app-console-start.png)
+   ![Web uygulaması konsolda başladı](./media/iot-hub-live-data-visualization-in-web-apps/web-app-console-start.png)
 
-## <a name="open-a-web-page-to-see-data-from-your-iot-hub"></a>IoT Hub 'ınızdaki verileri görmek için bir Web sayfası açın
+## <a name="open-a-web-page-to-see-data-from-your-iot-hub"></a>IoT hub'ınızdaki verileri görmek için bir web sayfası açın
 
-`http://localhost:3000`için bir tarayıcı açın.
+Bir tarayıcı `http://localhost:3000`yı aç.
 
-Cihaz **seçin** listesinde, cihaz tarafından IoT Hub 'ınıza gönderilen son 50 sıcaklık ve nem veri noktalarının çalışan bir çizim listesini görmek için cihazınızı seçin.
+Aygıt **seç** listesinde, aygıt tarafından IoT hub'ınıza gönderilen son 50 sıcaklık ve nem veri noktasının çalışan çizimini görmek için cihazınızı seçin.
 
-![Gerçek zamanlı sıcaklık ve nem gösteren Web uygulaması sayfası](./media/iot-hub-live-data-visualization-in-web-apps/web-page-output.png)
+![Gerçek zamanlı sıcaklık ve nemi gösteren web uygulaması sayfası](./media/iot-hub-live-data-visualization-in-web-apps/web-page-output.png)
 
-Ayrıca, konsolunda Web uygulamanızın tarayıcı istemcisine yayınlamasını belirten iletileri gösteren çıktıyı görmeniz gerekir:  
+Ayrıca, web uygulamanızın tarayıcı istemcisine yayınladığı iletileri gösteren konsolda çıktı yı görmeniz gerekir:  
 
-![Konsol üzerinde Web uygulaması yayın çıkışı](./media/iot-hub-live-data-visualization-in-web-apps/web-app-console-broadcast.png)
+![Konsolda web uygulaması yayını çıktısı](./media/iot-hub-live-data-visualization-in-web-apps/web-app-console-broadcast.png)
 
-## <a name="host-the-web-app-in-app-service"></a>Web uygulamasını App Service barındırın
+## <a name="host-the-web-app-in-app-service"></a>Web uygulamasını App Service'de barındırın
 
-[Azure App Service Web Apps özelliği](https://docs.microsoft.com/azure/app-service/overview) , Web uygulamalarını barındırmak için hizmet olarak platform (PaaS) sağlar. Azure App Service barındırılan Web uygulamaları, ek güvenlik, yük dengeleme ve ölçeklenebilirlik gibi güçlü Azure özelliklerinden ve sürekli dağıtım, paket yönetimi gibi Azure ve iş ortağı DevOps çözümlerinin avantajlarından yararlanabilir. Azure App Service birçok popüler dilde geliştirilen ve Windows veya Linux altyapısına dağıtılan Web uygulamalarını destekler.
+[Azure Uygulama Hizmeti'nin Web Apps özelliği,](https://docs.microsoft.com/azure/app-service/overview) web uygulamalarını barındırmak için hizmet olarak bir platform (PAAS) sağlar. Azure Uygulama Hizmeti'nde barındırılan Web uygulamaları, ek güvenlik, yük dengeleme ve ölçeklenebilirlik gibi güçlü Azure özelliklerinin yanı sıra Azure ve sürekli dağıtım, paket yönetimi gibi iş ortağı DevOps çözümlerinden de yararlanabilir. Azure Uygulama Hizmeti, birçok popüler dilde geliştirilen ve Windows veya Linux altyapısında dağıtılan web uygulamalarını destekler.
 
-Bu bölümde, Azure CLı komutlarını kullanarak App Service bir Web uygulaması hazırlarsınız ve kodunuzu buna dağıtırsınız. [Az WebApp](https://docs.microsoft.com/cli/azure/webapp?view=azure-cli-latest) belgelerinde kullanılan komutların ayrıntılarını bulabilirsiniz. Başlamadan önce, [IoT Hub 'ınıza bir kaynak grubu eklemek](#add-a-consumer-group-to-your-iot-hub), [IoT Hub 'ınız için bir hizmet bağlantı dizesi almak](#get-a-service-connection-string-for-your-iot-hub)ve [Web uygulamasını GitHub 'dan indirmek](#download-the-web-app-from-github)için adımları tamamladığınızdan emin olun.
+Bu bölümde, Uygulama Hizmeti'nde bir web uygulaması sağlamanız ve Azure CLI komutlarını kullanarak kodunuzu bu uygulamaya dağıtabilirsiniz. [Az webapp](https://docs.microsoft.com/cli/azure/webapp?view=azure-cli-latest) belgelerinde kullanılan komutların ayrıntılarını bulabilirsiniz. Başlamadan önce, [IoT hub'ınıza bir kaynak grubu eklemek,](#add-a-consumer-group-to-your-iot-hub) [IoT hub'ınız için bir servis bağlantı dizesi almak](#get-a-service-connection-string-for-your-iot-hub)ve [Web uygulamasını GitHub'dan indirmek](#download-the-web-app-from-github)için adımları tamamladığınızdan emin olun.
 
-1. [App Service planı](https://docs.microsoft.com/azure/app-service/overview-hosting-plans) , App Service çalıştırılmak üzere barındırılan bir uygulama için bir işlem kaynakları kümesi tanımlar. Bu öğreticide, Web uygulamasını barındırmak için geliştirici/ücretsiz katmanını kullanırız. Ücretsiz katman sayesinde, Web uygulamanız diğer müşterilerin uygulamaları dahil olmak üzere diğer App Service uygulamalarla paylaşılan Windows kaynakları üzerinde çalışır. Azure Ayrıca, Linux işlem kaynaklarında Web Apps dağıtmak için App Service planlar sunmaktadır. Kullanmak istediğiniz bir App Service planınız zaten varsa, bu adımı atlayabilirsiniz.
+1. [Uygulama Hizmeti planı,](https://docs.microsoft.com/azure/app-service/overview-hosting-plans) App Service'de barındırılan bir uygulamanın çalışması için bir dizi işlem kaynağı tanımlar. Bu eğitimde, web uygulamasını barındırmak için Geliştirici/Ücretsiz katmanı nı kullanıyoruz. Ücretsiz katmanla, web uygulamanız diğer müşterilerin uygulamaları da dahil olmak üzere diğer Uygulama Hizmeti uygulamalarıyla paylaşılan Windows kaynaklarında çalışır. Azure ayrıca Uygulama Hizmeti'nin Linux hesaplama kaynaklarına web uygulamaları dağıtma yı planladığını da sunar. Kullanmak istediğiniz bir Uygulama Hizmeti planınız varsa bu adımı atlayabilirsiniz.
 
-   Windows ücretsiz katmanını kullanarak bir App Service planı oluşturmak için aşağıdaki komutu çalıştırın. IoT Hub 'ınızın bulunduğu kaynak grubunu kullanın. Hizmet planı adınız büyük ve küçük harf, rakam ve kısa çizgi içerebilir.
+   Windows ücretsiz katmanını kullanarak bir Uygulama Hizmeti planı oluşturmak için aşağıdaki komutu çalıştırın. IoT hub'ınızın içinde olduğu kaynak grubunu kullanın. Hizmet planı adınız büyük ve küçük harfleri, sayıları ve tireleri içerebilir.
 
    ```azurecli-interactive
    az appservice plan create --name <app service plan name> --resource-group <your resource group name> --sku FREE
    ```
 
-2. Şimdi App Service planınızda bir Web uygulaması sağlayın. `--deployment-local-git` parametresi, Web uygulaması kodunun yerel makinenize git deposundan yüklenmesini ve dağıtılmasını sağlar. Web uygulamanızın adı genel olarak benzersiz olmalıdır ve büyük ve küçük harf, sayı ve kısa çizgi karakterlerini içerebilir. Kullandığınız Node. js çalışma zamanının sürümüne bağlı olarak `--runtime` parametresi için düğüm sürüm 10,6 veya üstünü belirttiğinizden emin olun. Desteklenen çalışma zamanlarının listesini almak için `az webapp list-runtimes` komutunu kullanabilirsiniz.
+2. Şimdi App Service planınızda bir web uygulaması bulundurun. Parametre, `--deployment-local-git` web uygulama kodunun yerel makinenizdeki Git deposundan yüklenmesini ve dağıtılmasını sağlar. Web uygulama adınız genel olarak benzersiz olmalıdır ve büyük ve küçük harfler, sayılar ve tireler içerebilir. Kullandığınız Düğüm.js çalışma süresinin sürümüne `--runtime` bağlı olarak, parametre için Düğüm sürüm 10.6 veya daha sonra belirttiğinden emin olun. Desteklenen çalışma `az webapp list-runtimes` sürelerinin listesini almak için komutu kullanabilirsiniz.
 
    ```azurecli-interactive
    az webapp create -n <your web app name> -g <your resource group name> -p <your app service plan name> --runtime "node|10.6" --deployment-local-git
    ```
 
-3. Şimdi IoT Hub bağlantı dizesini ve Olay Hub 'ı tüketici grubunu belirten ortam değişkenlerine yönelik uygulama ayarlarını ekleyin. Tek tek ayarlar `-settings` parametresinde ayrılmış alandır. IoT Hub 'ınız ve bu öğreticide daha önce oluşturduğunuz tüketici grubu için hizmet bağlantı dizesini kullanın. Değerleri tırnak içine mayın.
+3. Şimdi, IoT hub bağlantı dizesini ve Olay merkezi tüketici grubunu belirten ortam değişkenleri için Uygulama Ayarları ekleyin. Tek tek ayarlar `-settings` parametrede uzatır. IoT hub'ınız ve bu öğreticide daha önce oluşturduğunuz tüketici grubu için hizmet bağlantı dizesini kullanın. Değerlerden alıntı yapma.
 
    ```azurecli-interactive
    az webapp config appsettings set -n <your web app name> -g <your resource group name> --settings EventHubConsumerGroup=<your consumer group> IotHubConnectionString=<your IoT hub connection string>
    ```
 
-4. Web uygulaması için Web soketi protokolünü etkinleştirin ve Web uygulamasını yalnızca HTTPS isteklerini alacak şekilde ayarlayın (HTTP istekleri HTTPS 'ye yönlendirilir).
+4. Web uygulaması için Web Soketleri protokolünü etkinleştirin ve web uygulamasını yalnızca HTTPS isteklerini alacak şekilde ayarlayın (HTTP istekleri HTTPS'ye yönlendirilir).
 
    ```azurecli-interactive
    az webapp config set -n <your web app name> -g <your resource group name> --web-sockets-enabled true
    az webapp update -n <your web app name> -g <your resource group name> --https-only true
    ```
 
-5. Kodu App Service dağıtmak için [Kullanıcı düzeyinde dağıtım kimlik bilgilerinizi](https://docs.microsoft.com/azure/app-service/deploy-configure-credentials)kullanacaksınız. Kullanıcı düzeyi dağıtım kimlik bilgileriniz Azure kimlik bilgilerinizle farklıdır ve bir Web uygulamasına git yerel ve FTP dağıtımları için kullanılır. Bu ayarlar bir kez ayarlandıktan sonra Azure hesabınızdaki tüm aboneliklerdeki tüm App Service uygulamalarınız arasında geçerlidir. Daha önce Kullanıcı düzeyinde dağıtım kimlik bilgilerini ayarladıysanız, bunları kullanabilirsiniz.
+5. Kodu Uygulama Hizmetine dağıtmak için kullanıcı [düzeyindedağıtım kimlik bilgilerinizi](https://docs.microsoft.com/azure/app-service/deploy-configure-credentials)kullanırsınız. Kullanıcı düzeyindeki dağıtım kimlik bilgileriniz Azure kimlik bilgilerinizden farklıdır ve bir web uygulamasında Git yerel ve FTP dağıtımları için kullanılır. Ayarlandıktan sonra, Azure hesabınızdaki tüm aboneliklerde tüm Uygulama Hizmeti uygulamalarınızda geçerli olurlar. Daha önce kullanıcı düzeyinde dağıtım kimlik bilgilerini ayarladıysanız, bunları kullanabilirsiniz.
 
-   Daha önce Kullanıcı düzeyinde dağıtım kimlik bilgilerini ayarlamadıysanız veya parolanızı hatırlayamıyorsanız, aşağıdaki komutu çalıştırın. Dağıtım Kullanıcı adınız Azure içinde benzersiz olmalıdır ve yerel git gönderimleri için ' @ ' sembolünü içermemelidir. İstendiğinde, yeni parolanızı girip onaylayın. Parola en az sekiz karakter uzunluğunda olmalıdır ve şu üç öğeden ikisi vardır: harfler, rakamlar ve semboller.
+   Daha önce kullanıcı düzeyinde dağıtım kimlik bilgilerini ayarlamadıysanız veya parolanızı hatırlayamıyorsanız, aşağıdaki komutu çalıştırın. Dağıtım kullanıcı adınız Azure'da benzersiz olmalıdır ve yerel Git itmeleri için '@' simgesi içermemelidir. Sizden istendiğinde, yeni parolanızı girin ve onaylayın. Parola, aşağıdaki üç öğeden ikisi olan en az sekiz karakter uzunluğunda olmalıdır: harfler, sayılar ve semboller.
 
    ```azurecli-interactive
    az webapp deployment user set --user-name <your deployment user name>
    ```
 
-6. Kodunuzu App Service 'ye göndermek için kullanılacak git URL 'sini alın.
+6. Kodunuzu Uygulama Hizmeti'ne itmek için kullanılacak Git URL'sini alın.
 
    ```azurecli-interactive
    az webapp deployment source config-local-git -n <your web app name> -g <your resource group name>
    ```
 
-7. App Service içindeki Web uygulaması için git deposuna başvuran bir uzak kopya ekleyin. Git kopyası URL 'SI\>\<için, önceki adımda döndürülen URL 'YI kullanın. Komut pencerenizde aşağıdaki komutu çalıştırın.
+7. Uygulama Hizmeti'ndeki web uygulaması için Git deposuna atıfta bulunan bir uzaktan kumandayı klonunuza ekleyin. \<Git klon URL'si için,\>önceki adımda döndürülen URL'yi kullanın. Komut pencerenizde aşağıdaki komutu çalıştırın.
 
    ```cmd
    git remote add webapp <Git clone URL>
    ```
 
-8. Kodu App Service dağıtmak için komut pencerenizde aşağıdaki komutu girin. Kimlik bilgileri istenirse, 5. adımda oluşturduğunuz Kullanıcı düzeyinde dağıtım kimlik bilgilerini girin. App Service uzak ana dalına gönderdiğinizden emin olun.
+8. Kodu Uygulama Hizmeti'ne dağıtmak için komut pencerenize aşağıdaki komutu girin. Kimlik bilgileri için istenirse, adım 5'te oluşturduğunuz kullanıcı düzeyindedağıtım kimlik bilgilerini girin. Uygulama Hizmeti uzaktan kumandasının ana şubesine bastığınıza emin olun.
 
     ```cmd
     git push webapp master:master
     ```
 
-9. Dağıtım ilerleme durumu, komut pencerenizde güncelleştirilecek. Başarılı bir dağıtım, aşağıdaki çıktıya benzer satırlar ile sona acaktır:
+9. Dağıtımın ilerlemesi komut pencerenizde güncellenir. Başarılı bir dağıtım, aşağıdaki çıktıya benzer satırlarla sona erer:
 
     ```cmd
     remote:
@@ -221,44 +221,44 @@ Bu bölümde, Azure CLı komutlarını kullanarak App Service bir Web uygulamas�
     6b132dd..7cbc994  master -> master
     ```
 
-10. Web uygulamanızın durumunu sorgulamak ve çalıştığından emin olmak için aşağıdaki komutu çalıştırın:
+10. Web uygulamanızın durumunu sorgulamak ve çalışırken olduğundan emin olmak için aşağıdaki komutu çalıştırın:
 
     ```azurecli-interactive
     az webapp show -n <your web app name> -g <your resource group name> --query state
     ```
 
-11. Bir tarayıcıda `https://<your web app name>.azurewebsites.net` sayfasına gidin. Web uygulamasını yerel olarak çalıştırdığınızda gördüğünüzle benzer bir Web sayfası. Cihazınızın çalıştığını ve veri gönderdiğini varsayarak, cihaz tarafından gönderilen 50 en son sıcaklık ve nem okumalardan oluşan, çalışan bir çizim görmeniz gerekir.
+11. Bir tarayıcıda `https://<your web app name>.azurewebsites.net` sayfasına gidin. Web uygulamasını çalıştırdığınızda gördüğünüze benzer bir web sayfası yerel olarak görüntülenir. Cihazınızın çalıştığını ve veri gönderdiğini varsayarsak, cihaz tarafından gönderilen en son 50 sıcaklık ve nem okumasının çalışan bir çizimini görmeniz gerekir.
 
 ## <a name="troubleshooting"></a>Sorun giderme
 
-Bu örnekle ilgili herhangi bir sorun yaşıyorsanız, aşağıdaki bölümlerdeki adımları deneyin. Hala sorun yaşıyorsanız, bu konunun en altında bize geri bildirim gönderin.
+Bu örnekle ilgili herhangi bir sorunla karşılaşırsanız, aşağıdaki bölümlerdeki adımları deneyin. Hala sorunlarınız varsa, bu konunun alt kısmında bize geribildirim gönderin.
 
 ### <a name="client-issues"></a>İstemci sorunları
 
-* Bir cihaz listede görünmezse veya hiçbir grafik çizilmezse cihaz kodunun cihazınızda çalıştığından emin olun.
+* Listede bir aygıt görünmüyorsa veya grafik çizilmiyorsa, aygıt kodunun cihazınızda çalıştığını unutmayın.
 
-* Tarayıcıda Geliştirici Araçları ' nı açın (birçok tarayıcıda F12 tuşu açılır ve konsolu bulunur). Burada yazdırılan uyarıları veya hataları arayın.
+* Tarayıcıda geliştirici araçlarını açın (birçok tarayıcıda F12 tuşu açılır) ve konsolu bulun. Orada yazdırılan herhangi bir uyarı veya hata arayın.
 
-* /JS/chat-Device-Data.js. içinde istemci tarafı betikte hata ayıklaması yapabilirsiniz
+* /js/chat-device-data.js adresindeistemci tarafı komut dosyası hata ayıklayabilirsiniz.
 
-### <a name="local-website-issues"></a>Yerel Web sitesi sorunları
+### <a name="local-website-issues"></a>Yerel web sitesi sorunları
 
-* Konsol çıktısı için düğümü başlattığınız penceredeki çıktıyı izleyin.
+* Konsol çıkışı için düğümü başlattığınız penceredeki çıkışı izleyin.
 
-* Sunucu kodunda özel olarak Server. js ve/Scripts/Event-hub-Reader.exe hatalarını ayıklayın.
+* Sunucu kodunu, özellikle server.js ve /scripts/event-hub-reader.js hata ayıklama.
 
-### <a name="azure-app-service-issues"></a>Azure App Service sorunları
+### <a name="azure-app-service-issues"></a>Azure Uygulama Hizmeti sorunları
 
-* Azure portal, Web uygulamanıza gidin. Sol bölmedeki **izleme** altında **App Service Günlükler**' i seçin. **Uygulama günlüğünü (dosya sistemi)** açın, **düzeyi** hata olarak ayarlayın ve ardından **Kaydet**' i seçin. Ardından **günlük akışı** ' nı açın ( **izleme**altında).
+* Azure portalında web uygulamanıza gidin. Sol bölmede **İzleme** **altında, Uygulama Hizmeti günlüklerini**seçin. **Uygulama Günlüğe Kaydetme'yi (Dosya Sistemi)** açın, **Düzeyi** Hatay'a ayarlayın ve sonra **Kaydet'i**seçin. Ardından **Log akışını** açın **(İzleme**altında).
 
-* Web uygulamanızdan Azure portal, **geliştirme araçları** altında **konsol** ' ı seçin ve `node -v` ve `npm -v`ile NPM sürümlerini doğrulayın.
+* Azure portalındaki web uygulamanızdan, **Geliştirme Araçları** altında **Konsol'u** seçin `node -v` `npm -v`ve düğüm ve npm sürümlerini doğrulayın ve .
 
-* Bir paket bulmayla ilgili bir hata görürseniz, adımları sıra dışı olarak çalıştırmanız gerekebilir. Site dağıtıldığında (`git push`ile) App Service, yapılandırılan düğümün geçerli sürümüne göre çalışan `npm install`çalıştırır. Bu yapılandırmada daha sonra değiştirilirse kodda daha az bir değişiklik yapmanız ve yeniden göndermeniz gerekir.
+* Paket bulamama konusunda bir hata görürseniz, adımları sıradışı çalıştırmış olabilirsiniz. Site dağıtıldığında (ile) `git push`uygulama hizmeti, `npm install`yapılandırdığı düğümün geçerli sürümüne göre çalışan çalışır. Bu daha sonra yapılandırmada değiştirilirse, kodda anlamsız bir değişiklik yapmanız ve yeniden itmeniz gerekir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-IoT Hub 'ınızdaki gerçek zamanlı algılayıcı verilerini görselleştirmek için Web uygulamanızı başarıyla kullandınız.
+IoT hub'ınızdaki gerçek zamanlı sensör verilerini görselleştirmek için web uygulamanızı başarıyla kullandınız.
 
-Azure IoT Hub 'den verileri görselleştirmenin başka bir yolu için bkz. [IoT Hub 'ınızdaki gerçek zamanlı algılayıcı verilerini görselleştirmek için Power BI kullanma](iot-hub-live-data-visualization-in-power-bi.md).
+Azure IoT Hub'ından gelen verileri görselleştirmenin başka bir yolu için, [IoT hub'ınızdaki gerçek zamanlı sensör verilerini görselleştirmek için Power BI'yi kullanın'a](iot-hub-live-data-visualization-in-power-bi.md)bakın.
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

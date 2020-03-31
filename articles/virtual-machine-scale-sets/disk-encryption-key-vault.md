@@ -1,6 +1,6 @@
 ---
-title: Azure disk şifrelemesi için bir Anahtar Kasası oluşturma ve yapılandırma
-description: Bu makalede, Azure disk şifrelemesi ile kullanmak üzere bir Anahtar Kasası oluşturma ve yapılandırma adımları sağlanır
+title: Azure Disk Şifrelemesi için anahtar kasası oluşturma ve yapılandırma
+description: Bu makale, Azure Disk Şifrelemesi ile kullanılmak üzere önemli bir kasa oluşturmak ve yapılandırmak için adımlar sağlar
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 author: msmbaldwin
@@ -8,33 +8,33 @@ ms.author: mbaldwin
 ms.date: 10/10/2019
 ms.custom: seodec18
 ms.openlocfilehash: eec5b42da709ab5e79da42f11600f6ffc81d247e
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76279009"
 ---
-# <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption"></a>Azure disk şifrelemesi için bir Anahtar Kasası oluşturma ve yapılandırma
+# <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption"></a>Azure Disk Şifrelemesi için anahtar kasası oluşturma ve yapılandırma
 
-Azure disk şifrelemesi, disk şifreleme anahtarlarını ve gizli dizileri denetlemek ve yönetmek için Azure Key Vault kullanır.  Anahtar kasası hakkında daha fazla bilgi için bkz: [Azure anahtar kasası ile çalışmaya başlama](../key-vault/key-vault-get-started.md) ve [anahtar kasanızın güvenliğini sağlama](../key-vault/key-vault-secure-your-key-vault.md).
+Azure Disk Şifreleme, disk şifreleme anahtarlarını ve sırlarını kontrol etmek ve yönetmek için Azure Key Vault'u kullanır.  Anahtar kasaları hakkında daha fazla bilgi için Azure Key Vault ve [Secure anahtar kasanızı](../key-vault/key-vault-secure-your-key-vault.md) [ile işe başlayın.](../key-vault/key-vault-get-started.md)
 
-Azure disk şifrelemesi ile kullanım için bir Anahtar Kasası oluşturmak ve yapılandırmak üç adımdan oluşur:
+Azure Disk Şifrelemesi ile kullanılmak üzere anahtar kasa oluşturma ve yapılandırma üç adım içerir:
 
 1. Gerekirse bir kaynak grubu oluşturma.
-2. Anahtar Kasası oluşturma. 
-3. Anahtar Kasası Gelişmiş erişim ilkeleri ayarlanıyor.
+2. Anahtar kasası oluşturuyor. 
+3. Anahtar kasası gelişmiş erişim ilkeleri ayarlama.
 
 Bu adımlar aşağıdaki hızlı başlangıçlarda gösterilmiştir:
 
-Ayrıca, anahtar şifreleme anahtarı (KEK) oluşturabilir veya içeri aktarabilirsiniz.
+Ayrıca, isterseniz bir anahtar şifreleme anahtarı (KEK) oluşturabilir veya içe aktarabilirsiniz.
 
-## <a name="install-tools-and-connect-to-azure"></a>Araçları yükleyip Azure 'a bağlanın
+## <a name="install-tools-and-connect-to-azure"></a>Araçları yükleyin ve Azure'a bağlanın
 
-Bu makaledeki adımlar [Azure CLI](/cli/azure/), [Azure PowerShell Az Module](/powershell/azure/overview)veya [Azure Portal](https://portal.azure.com)ile tamamlanabilir.
+Bu makaledeki adımlar [Azure CLI](/cli/azure/), [Azure PowerShell Az modülü](/powershell/azure/overview)veya Azure [portalı](https://portal.azure.com)ile tamamlanabilir.
 
 ### <a name="connect-to-your-azure-account"></a>Azure hesabınıza bağlanma
 
-Azure CLı veya Azure PowerShell kullanmadan önce, önce Azure aboneliğinize bağlanmanız gerekir. [Azure CLI Ile oturum](/cli/azure/authenticate-azure-cli?view=azure-cli-latest)açarak, [Azure PowerShell ile oturum](/powershell/azure/authenticate-azureps?view=azps-2.5.0)açarak veya istendiğinde kimlik bilgilerinizi Azure Portal sağlayarak bunu yapabilirsiniz.
+Azure CLI veya Azure PowerShell'i kullanmadan önce öncelikle Azure aboneliğinize bağlanmanız gerekir. Bunu, [Azure CLI ile oturum açarak](/cli/azure/authenticate-azure-cli?view=azure-cli-latest), [Azure Powershell ile oturum açarak](/powershell/azure/authenticate-azureps?view=azps-2.5.0)veya istendiğinde kimlik bilgilerinizi Azure portalına sağlayarak yaparsınız.
 
 ```azurecli-interactive
 az login
@@ -48,6 +48,6 @@ Connect-AzAccount
  
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure disk şifrelemeye genel bakış](disk-encryption-overview.md)
-- [Azure CLı kullanarak sanal makine ölçek kümelerini şifreleme](disk-encryption-cli.md)
-- [Azure PowerShell kullanarak bir sanal makine ölçek kümelerini şifreleme](disk-encryption-powershell.md)
+- [Azure Disk Şifreleme'ye genel bakış](disk-encryption-overview.md)
+- [Azure CLI'yi kullanarak sanal makine ölçeği kümelerini şifreleme](disk-encryption-cli.md)
+- [Azure PowerShell'i kullanarak sanal makine ölçeği kümelerini şifreleme](disk-encryption-powershell.md)

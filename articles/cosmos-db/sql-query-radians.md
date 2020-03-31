@@ -1,6 +1,6 @@
 ---
-title: Azure Cosmos DB sorgu dilinde radyan
-description: Azure Cosmos DB 'de SQL sistem işlev RADYANNı hakkında bilgi edinin.
+title: Azure Cosmos DB sorgu dilinde RADYANS
+description: Azure Cosmos DB'de SQL sistem fonksiyonu RADIANS hakkında bilgi edinin.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 7831ef4bbd65bce7329b1ecf0f602b110a16834b
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78302245"
 ---
-# <a name="radians-azure-cosmos-db"></a>RADYAN (Azure Cosmos DB)
- Derece sayısal bir ifadenin girildiğinde radyan cinsinden döndürür.  
+# <a name="radians-azure-cosmos-db"></a>RADIANS (Azure Cosmos DB)
+ Sayısal bir ifade, derece olarak girildiğinde radyanları döndürür.  
   
 ## <a name="syntax"></a>Sözdizimi
   
@@ -28,13 +28,13 @@ RADIANS (<numeric_expr>)
 *numeric_expr*  
    Sayısal bir ifadedir.  
   
-## <a name="return-types"></a>Dönüş türleri
+## <a name="return-types"></a>İade türleri
   
-  Sayısal bir ifade döndürür.  
+  Sayısal bir ifade verir.  
   
 ## <a name="examples"></a>Örnekler
   
-  Aşağıdaki örnek, birkaç açıları girdi olarak alır ve bunlara karşılık gelen radian değerler döndürür.  
+  Aşağıdaki örnek, giriş olarak birkaç açı alır ve karşılık gelen radyan değerlerini döndürür.  
   
 ```sql
 SELECT RADIANS(-45.01) AS r1, RADIANS(-181.01) AS r2, RADIANS(0) AS r3, RADIANS(0.1472738) AS r4, RADIANS(197.1099392) AS r5  
@@ -54,10 +54,10 @@ SELECT RADIANS(-45.01) AS r1, RADIANS(-181.01) AS r2, RADIANS(0) AS r3, RADIANS(
 
 ## <a name="remarks"></a>Açıklamalar
 
-Bu sistem işlevi dizinden yararlanmayacak.
+Bu sistem işlevi dizini kullanmaz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Matematik işlevleri Azure Cosmos DB](sql-query-mathematical-functions.md)
-- [Sistem işlevleri Azure Cosmos DB](sql-query-system-functions.md)
-- [Azure Cosmos DB giriş](introduction.md)
+- [Matematiksel fonksiyonlar Azure Cosmos DB](sql-query-mathematical-functions.md)
+- [Sistem fonksiyonları Azure Cosmos DB](sql-query-system-functions.md)
+- [Azure Cosmos DB'ye Giriş](introduction.md)

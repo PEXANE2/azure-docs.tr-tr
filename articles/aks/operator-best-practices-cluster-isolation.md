@@ -1,64 +1,64 @@
 ---
-title: Operatör en iyi yöntemleri-Azure Kubernetes hizmetlerinde küme yalıtımı (AKS)
-description: Azure Kubernetes Service (AKS) ' de yalıtım için küme işletmeni en iyi uygulamalarını öğrenin
+title: Operatör en iyi uygulamaları - Azure Kubernetes Hizmetlerinde Küme yalıtımı (AKS)
+description: Azure Kubernetes Hizmeti'nde (AKS) yalıtım için küme operatörünün en iyi yalıtım uygulamalarını öğrenin
 services: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.openlocfilehash: 228b856d5c5ffa2bfac7df12094667e02f797690
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77594864"
 ---
-# <a name="best-practices-for-cluster-isolation-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) içindeki küme yalıtımı için en iyi yöntemler
+# <a name="best-practices-for-cluster-isolation-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Hizmetinde (AKS) küme yalıtımı için en iyi uygulamalar
 
-Azure Kubernetes Service (AKS) içindeki kümeleri yönetirken, genellikle takımları ve iş yüklerini yalıtmanız gerekir. AKS, çok kiracılı kümelerin nasıl çalıştırılabilme ve kaynakları yalıtmak için esneklik sağlar. Kubernetes 'te yatırımınızı en üst düzeye çıkarmak için, bu çok kiracılı ve yalıtım özelliklerinin anlaşılması ve uygulanması gerekir.
+Azure Kubernetes Hizmeti'nde (AKS) kümeleri yönetirken, genellikle ekipleri ve iş yüklerini yalıtmanız gerekir. AKS, çok kiracılı kümeleri çalıştırma ve kaynakları yalıtma konusunda esneklik sağlar. Kubernetes'e olan yatırımınızı en üst düzeye çıkarmak için, bu çoklu kira ve izolasyon özellikleri anlaşılmalıdır ve uygulanmalıdır.
 
-Bu en iyi yöntemler makalesi, küme işleçleri yalıtımına odaklanır. Bu makalede şunları öğreneceksiniz:
+Bu en iyi uygulamalar makalesi küme işleçleri için yalıtım üzerinde duruluyor. Bu makalede şunları öğreneceksiniz:
 
 > [!div class="checklist"]
-> * Çok kiracılı kümeler ve kaynak ayrımı için plan yapın
+> * Çok kiracılı kümeler ve kaynakların ayrılması için plan
 > * AKS kümelerinizde mantıksal veya fiziksel yalıtım kullanın
 
-## <a name="design-clusters-for-multi-tenancy"></a>Çoklu kiracı için küme tasarlama
+## <a name="design-clusters-for-multi-tenancy"></a>Çoklu kira için tasarım kümeleri
 
-Kubernetes, takımları ve iş yüklerini aynı kümede mantıksal olarak yalıtmanızı sağlayan özellikler sağlar. Amaç, her ekibin ihtiyacı olan kaynaklara göre en az sayıda ayrıcalıkların sağlanması gerekir. Kubernetes içindeki bir [ad alanı][k8s-namespaces] , mantıksal bir yalıtım sınırı oluşturur. Yalıtım ve çoklu kiracı için ek Kubernetes özellikleri ve konuları aşağıdaki alanlarda yer alır:
+Kubernetes, aynı kümede yer alan ekipleri ve iş yüklerini mantıksal olarak yalıtmanızı sağlayan özellikler sunar. Burada amaç, en az sayıda ayrıcalığı vermek ve kapsamı, ekiplerin ihtiyacı olan kaynaklarla sınırlı tutmaktır. Kubernetes'teki Bir [Ad Alanı][k8s-namespaces] mantıksal bir yalıtım sınırı oluşturur. Ek Kubernetes özellikleri ve izolasyon ve çoklu kira için hususlar aşağıdaki alanları içerir:
 
-* **Zamanlama** , kaynak kotaları ve pod kesintisi bütçeleri gibi temel özelliklerin kullanımını içerir. Bu özellikler hakkında daha fazla bilgi için bkz. [AKS 'deki temel Zamanlayıcı özellikleri Için en iyi uygulamalar][aks-best-practices-scheduler].
-  * Daha gelişmiş Zamanlayıcı özellikleri, litre ve tolerans, düğüm seçicileri, düğüm ve pod benzeşimi veya benzeşim toleransı içerir. Bu özellikler hakkında daha fazla bilgi için bkz. [AKS 'de gelişmiş Zamanlayıcı özellikleri Için en iyi uygulamalar][aks-best-practices-advanced-scheduler].
-* **Ağ** , dışarıda ve dışı trafik akışını denetlemek için ağ ilkelerinin kullanımını içerir.
-* **Kimlik doğrulama ve yetkilendirme** , rol tabanlı erişim denetımı (RBAC) ve Azure ACTIVE DIRECTORY (ad) tümleştirmesi, Pod kimlikleri ve Azure Key Vault gizli dizi kullanıcısını içerir. Bu özellikler hakkında daha fazla bilgi için bkz. [AKS 'de kimlik doğrulama ve yetkilendirme Için en iyi uygulamalar][aks-best-practices-identity].
-* **Kapsayıcılar** , güvenlik açıkları için pod güvenlik ilkelerini, Pod güvenlik bağlamlarını, görüntüleri taramayı ve çalışma zamanlarını içerir. Ayrıca, temel alınan düğüme kapsayıcı erişimini kısıtlamak için App koruma sağlamak veya Seccomp (güvenli bilgi Işlem) kullanmayı da içerir.
+* **Zamanlama,** kaynak kotaları ve bölme kesintisi bütçeleri gibi temel özelliklerin kullanımını içerir. Bu özellikler hakkında daha fazla bilgi [için, AKS'deki temel zamanlayıcı özellikleri için en iyi uygulamalara][aks-best-practices-scheduler]bakın.
+  * Daha gelişmiş zamanlayıcı özellikleri, leke ve tolerasyonlar, düğüm seçicileri ve düğüm ve pod afinite veya anti-afiity içerir. Bu özellikler hakkında daha fazla bilgi [için, AKS'deki gelişmiş zamanlayıcı özellikleri için en iyi uygulamalara][aks-best-practices-advanced-scheduler]bakın.
+* **Ağ,** bölmelere gelen ve çıkan trafik akışını denetlemek için ağ ilkelerinin kullanımını içerir.
+* **Kimlik doğrulama ve yetkilendirme,** Azure Anahtar Kasası'nda rol tabanlı erişim denetimi (RBAC) ve Azure Active Directory (AD) tümleştirmesi, bölme kimlikleri ve sırları içerir. Bu özellikler hakkında daha fazla bilgi için [AKS'de kimlik doğrulama ve yetkilendirme için en iyi uygulamalara][aks-best-practices-identity]bakın.
+* **Kapsayıcılar** arasında bakla güvenlik ilkeleri, pod güvenlik bağlamları, tarama görüntüleri ve güvenlik açıkları için çalışma süreleri bulunur. Ayrıca, kapsayıcı erişimini temel düğüme kısıtlamak için App Armor veya Seccomp (Secure Computing) kullanmayı da içerir.
 
 ## <a name="logically-isolate-clusters"></a>Kümeleri mantıksal olarak yalıtma
 
-**En iyi Yöntem Kılavuzu** -takımları ve projeleri ayırmak için mantıksal yalıtım kullanın. Takımları veya uygulamaları yalıtmak için dağıttığınız fiziksel AKS kümelerinin sayısını en aza indirmeye çalışın.
+**En iyi uygulama kılavuzu** - Takımları ve projeleri ayırmak için mantıksal yalıtım kullanın. Ekipleri veya uygulamaları yalıtmak için dağıttığınız fiziksel AKS kümelerinin sayısını en aza indirmeye çalışın.
 
-Mantıksal yalıtımda, tek bir AKS kümesi çoklu iş yükleri, takımlar veya ortamlar için kullanılabilir. Kubernetes [ad alanları][k8s-namespaces] , iş yükleri ve kaynaklar için mantıksal yalıtım sınırı oluşturur.
+Mantıksal yalıtım ile, tek bir AKS kümesi birden çok iş yükü, takım veya ortam için kullanılabilir. Kubernetes [Ad alanları][k8s-namespaces] iş yükleri ve kaynaklar için mantıksal yalıtım sınırını oluşturur.
 
-![AKS 'teki bir Kubernetes kümesinin mantıksal yalıtımı](media/operator-best-practices-cluster-isolation/logical-isolation.png)
+![AKS'de bir Kubernetes kümesinin mantıksal yalıtımı](media/operator-best-practices-cluster-isolation/logical-isolation.png)
 
-Kümelerin mantıksal ayrımı genellikle fiziksel olarak yalıtılmış kümelerden daha yüksek bir pod yoğunluğu sağlar. Kümede boşta kalan daha fazla bilgi işlem kapasitesi vardır. Kubernetes kümesi otomatik olarak birleştirildiğinde, talepleri karşılamak için düğüm sayısını yukarı veya aşağı ölçeklendirebilirsiniz. Otomatik ölçeklendirmeye yönelik bu en iyi yöntem, yalnızca gerekli olan düğüm sayısını ve maliyetleri en aza indirecek şekilde çalışır.
+Kümelerin mantıksal olarak ayrılması genellikle fiziksel olarak yalıtılmış kümelerden daha yüksek bir bakla yoğunluğu sağlar. Kümede boşta kalan daha az fazla işlem kapasitesi vardır. Kubernetes küme otomatik ölçekleyicisi ile birleştirildiğinde, talepleri karşılamak için düğüm sayısını yukarı veya aşağı ölçeklendirebilirsiniz. Otomatik ölçekleme için bu en iyi uygulama yaklaşımı, yalnızca gerekli düğüm sayısını çalıştırmanızı sağlar ve maliyetleri en aza indirir.
 
-Kubernetes ortamları, AKS veya başka bir yerde, çok kiracılı Kullanıcı kullanımı için tamamen güvenli değildir. Çok kiracılı bir ortamda birden çok kiracı ortak, paylaşılan bir altyapı üzerinde çalışıyor. Sonuç olarak, tüm kiracıların güvenilemediği durumlarda, bir kiracının güvenlik ve hizmet tarafından etkilenmesini önlemek için ek planlama yapmanız gerekir. Tüm düğümler için *Pod güvenlik ilkesi* ve daha ayrıntılı rol tabanlı erişim DENETIMLERI (RBAC) gibi ek güvenlik özellikleri, güvenli hale getirme daha zordur. Ancak, çok kiracılı çoklu kiracı iş yüklerini çalıştırırken doğru güvenlik için bir hiper yönetici, güvenmeniz gereken tek güvenlik düzeyidir. Kubernetes güvenlik etki alanı, tek bir düğüm değil, tüm küme haline gelir. Bu tür çok kiracılı iş yükleri için, fiziksel olarak yalıtılmış kümeler kullanmanız gerekir.
+Kubernetes ortamları, AKS veya başka bir yerde, düşmanca çok kiracı kullanımı için tamamen güvenli değildir. Çok kiracılı bir ortamda, birden çok kiracı ortak, paylaşılan bir altyapı üzerinde çalışmaktadır. Sonuç olarak, tüm kiracılara güvenilemiyorsa, bir kiracının diğerinin güvenliğini ve hizmetini etkilemesini önlemek için ek planlama yapmanız gerekir. *Pod Güvenlik İlkesi* ve düğümler için daha ince taneli rol tabanlı erişim denetimleri (RBAC) gibi ek güvenlik özellikleri, yararlanmaları daha da zorlaştırır. Ancak, düşmanca çok kiracılı iş yüklerini çalıştırırken gerçek güvenlik için, bir hipervizör güvenmeniz gereken tek güvenlik düzeyidir. Kubernetes için güvenlik etki alanı tek bir düğüm değil, tüm küme olur. Bu tür çok kiracılı çok kiracılı iş yükleri için fiziksel olarak yalıtılmış kümeler kullanmalısınız.
 
-## <a name="physically-isolate-clusters"></a>Kümeleri fiziksel olarak yalıtma
+## <a name="physically-isolate-clusters"></a>Fiziksel olarak yalıtma kümeleri
 
-**En iyi Yöntem Kılavuzu** -her ayrı takım veya uygulama dağıtımı için fiziksel yalıtımın kullanımını en aza indirin. Bunun yerine, önceki bölümde anlatıldığı gibi *mantıksal* yalıtım kullanın.
+**En iyi uygulama kılavuzu** - Her ayrı takım veya uygulama dağıtımı için fiziksel yalıtım kullanımını en aza indirin. Bunun yerine, önceki bölümde belirtildiği gibi *mantıksal* yalıtım kullanın.
 
-Küme yalıtımına yönelik yaygın bir yaklaşım, fiziksel olarak ayrı AKS kümelerini kullanmaktır. Bu yalıtım modelinde, takımlara veya iş yüklerine kendi AKS kümesi atanır. Bu yaklaşım genellikle iş yüklerini veya takımları yalıtmak için en kolay yol gibi görünür, ancak ek yönetim ve mali ek yük ekler. Artık bu birden çok kümeyi korumanız gerekir ve tek tek erişim ve izin atama izinleri sağlamanız gerekir. Tek tek tüm düğümler için de faturalandırılırsınız.
+Küme yalıtımı için ortak bir yaklaşım fiziksel olarak ayrı AKS kümeleri kullanmaktır. Bu yalıtım modelinde, takımlar veya iş yükleri kendi AKS kümelerine atanır. Bu yaklaşım genellikle iş yüklerini veya ekipleri yalıtmanın en kolay yolu gibi görünür, ancak ek yönetim ve mali ek yük ekler. Şimdi bu birden çok kümeyi korumanız ve tek tek erişim sağlamanız ve izinleri atamanız gerekir. Ayrıca tüm tek tek düğümler için faturalandırılırsınız.
 
-![AKS 'de tek bir Kubernetes kümesi fiziksel yalıtımı](media/operator-best-practices-cluster-isolation/physical-isolation.png)
+![AKS'de tek tek Kubernetes kümelerinin fiziksel yalıtımı](media/operator-best-practices-cluster-isolation/physical-isolation.png)
 
-Fiziksel olarak ayrı kümelerin genellikle düşük Pod yoğunluğu vardır. Her bir ekip veya iş yükünün kendi AKS kümesi olduğundan, küme genellikle işlem kaynaklarıyla sağlanır. Genellikle, bu düğümlerde az sayıda düğüm zamanlanır. Düğümlerde kullanılmayan kapasite, diğer takımlar tarafından geliştirilmekte olan uygulamalar veya hizmetler için kullanılamaz. Bu fazlalık kaynaklar, fiziksel olarak ayrı kümelerdeki ek maliyetlere katkıda bulunur.
+Fiziksel olarak ayrı kümeler genellikle düşük pod yoğunluğuna sahiptir. Her takım veya iş yükü kendi AKS kümesine sahip olduğundan, küme genellikle hesaplama kaynaklarıyla aşırı şekilde karşılanır. Genellikle, bu düğümlerde az sayıda bölme zamanlanır. Düğümlerde kullanılmayan kapasite, diğer takımlar tarafından geliştirilmekte olan uygulamalar veya hizmetler için kullanılamaz. Bu fazla kaynaklar, fiziksel olarak ayrı kümelerde ek maliyetlere katkıda bulunur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makale, küme yalıtımına odaklanılmıştır. AKS 'deki küme işlemleri hakkında daha fazla bilgi için aşağıdaki en iyi yöntemlere bakın:
+Bu makalede küme yalıtımı üzerinde duruldu. AKS'deki küme işlemleri hakkında daha fazla bilgi için aşağıdaki en iyi uygulamalara bakın:
 
-* [Temel Kubernetes Zamanlayıcı özellikleri][aks-best-practices-scheduler]
-* [Gelişmiş Kubernetes Zamanlayıcı özellikleri][aks-best-practices-advanced-scheduler]
+* [Temel Kubernetes zamanlayıcı özellikleri][aks-best-practices-scheduler]
+* [Gelişmiş Kubernetes zamanlayıcı özellikleri][aks-best-practices-advanced-scheduler]
 * [Kimlik doğrulama ve yetkilendirme][aks-best-practices-identity]
 
 <!-- EXTERNAL LINKS -->

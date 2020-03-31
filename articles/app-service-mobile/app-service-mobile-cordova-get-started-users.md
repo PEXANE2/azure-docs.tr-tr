@@ -1,62 +1,62 @@
 ---
-title: Apache Cordova kimlik doğrulaması ekle
-description: Google, Facebook, Twitter ve Microsoft gibi kimlik sağlayıcılarıyla Apache Cordova uygulamanızın kullanıcılarının kimliğini doğrulamak için Azure App Service Mobile Apps nasıl kullanacağınızı öğrenin.
+title: Apache Cordova üzerinde kimlik doğrulama ekleme
+description: Google, Facebook, Twitter ve Microsoft gibi kimlik sağlayıcılarıyla Apache Cordova uygulamanızın kullanıcılarını doğrulamak için Azure Uygulama Hizmeti'ndeki Mobil Uygulamaları nasıl kullanacağınızı öğrenin.
 ms.assetid: 10dd6dc9-ddf5-423d-8205-00ad74929f0d
 ms.tgt_pltfrm: mobile-html
 ms.devlang: javascript
 ms.topic: article
 ms.date: 06/25/2019
 ms.openlocfilehash: 3714ce2a8098608851991115aa82afdc00d08a47
-ms.sourcegitcommit: 6ee876c800da7a14464d276cd726a49b504c45c5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/19/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77459428"
 ---
-# <a name="add-authentication-to-your-apache-cordova-app"></a>Apache Cordova uygulamanıza kimlik doğrulaması ekleme
+# <a name="add-authentication-to-your-apache-cordova-app"></a>Apache Cordova uygulamanıza kimlik doğrulama ekleme
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
 
 ## <a name="summary"></a>Özet
-Bu öğreticide, desteklenen bir kimlik sağlayıcısı kullanarak Apache Cordova ToDoList hızlı başlangıç projesine kimlik doğrulaması eklersiniz. Bu öğretici, ilk olarak gerçekleştirmeniz gereken Mobile Apps öğreticiye [Mobile Apps kullanmaya başlayın] ' i temel alır.
+Bu öğreticide, desteklenen bir kimlik sağlayıcısı nı kullanarak Apache Cordova'daki todolist quickstart projesine kimlik doğrulamaeklersiniz. Bu öğretici, önce tamamlamanız gereken [Mobil Uygulamalar öğreticisini] başlatın'a dayanmaktadır.
 
-## <a name="register"></a>Uygulamanızı kimlik doğrulaması için kaydedin ve App Service yapılandırın
+## <a name="register-your-app-for-authentication-and-configure-the-app-service"></a><a name="register"></a>Uygulamanızı kimlik doğrulama için kaydedin ve Uygulama Hizmetini yapılandırın
 [!INCLUDE [app-service-mobile-register-authentication](../../includes/app-service-mobile-register-authentication.md)]
 
 [Benzer adımları gösteren bir video izleyin](https://channel9.msdn.com/series/Azure-connected-services-with-Cordova/Azure-connected-services-task-8-Azure-authentication)
 
-## <a name="permissions"></a>Kimliği doğrulanmış kullanıcılar için izinleri kısıtla
+## <a name="restrict-permissions-to-authenticated-users"></a><a name="permissions"></a>İzinleri kimlik doğrulaması verilen kullanıcılarla sınırlama
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
-Şimdi, arka ucunuza anonim erişimin devre dışı bırakıldığını doğrulayabilirsiniz. Visual Studio'da:
+Şimdi, arka uca anonim erişimin devre dışı bırakıldığını doğrulayabilirsiniz. Görsel Stüdyo'da:
 
-* Öğreticiyi tamamladığınızda oluşturduğunuz projeyi açın [Mobile Apps kullanmaya başlayın].
-* Uygulamanızı **Google Android Emulator**içinde çalıştırın.
-* Uygulama başladıktan sonra beklenmeyen bir bağlantı hatasının gösterildiğini doğrulayın.
+* Öğreticiyi tamamladığınızda oluşturduğunuz projeyi açın [Mobil Uygulamalar ile başlayın.]
+* Uygulamanızı Google **Android Emülatörü'nde**çalıştırın.
+* Uygulama başladıktan sonra Beklenmeyen Bağlantı Hatası nın gösterildiğini doğrulayın.
 
-Ardından, mobil uygulama arka ucundan kaynakları isteyerek önce kullanıcıların kimliğini doğrulamak üzere uygulamayı güncelleştirin.
+Ardından, Mobil Uygulama arka ucundan kaynak istemeden önce kullanıcıların kimliğini doğrulamak için uygulamayı güncelleştirin.
 
-## <a name="add-authentication"></a>Uygulamaya kimlik doğrulaması ekleme
-1. Projenizi **Visual Studio**'da açın, sonra `www/index.html` dosyasını düzenlenmek üzere açın.
-2. Baş bölümünde `Content-Security-Policy` meta etiketini bulun.  OAuth ana bilgisayarını izin verilen kaynaklar listesine ekleyin.
+## <a name="add-authentication-to-the-app"></a><a name="add-authentication"></a>Uygulamaya kimlik doğrulama ekleme
+1. **Visual Studio'da**projenizi açın, ardından düzenleme için dosyayı `www/index.html` açın.
+2. Baş `Content-Security-Policy` bölümündeki meta etiketibulun.  OAuth ana bilgisayarını izin verilen kaynaklar listesine ekleyin.
 
-   | Sağlayıcı | SDK sağlayıcı adı | OAuth ana bilgisayar |
+   | Sağlayıcı | SDK Sağlayıcı Adı | OAuth Ev Sahibi |
    |:--- |:--- |:--- |
-   | Azure Active Directory | aad | https://login.microsoftonline.com |
-   | Facebook | 'a | https://www.facebook.com |
+   | Azure Active Directory | Acar | https://login.microsoftonline.com |
+   | Facebook | Facebook | https://www.facebook.com |
    | Google | Google | https://accounts.google.com |
-   | Microsoft | MicrosoftAccount | https://login.live.com |
+   | Microsoft | microsoftaccount | https://login.live.com |
    | Twitter | Twitter | https://api.twitter.com |
 
-    Örnek Içerik-Güvenlik-Ilkesi (Azure Active Directory için uygulanır) aşağıdaki gibidir:
+    Örnek bir İçerik-Güvenlik-İlkes (Azure Etkin Dizin için uygulanan) aşağıdaki gibidir:
 
         <meta http-equiv="Content-Security-Policy" content="default-src 'self'
             data: gap: https://login.microsoftonline.com https://yourapp.azurewebsites.net; style-src 'self'">
 
-    `https://login.microsoftonline.com` önceki tablodaki OAuth ana bilgisayarıyla değiştirin.  Content-Security-Policy meta etiketi hakkında daha fazla bilgi için bkz. [İçerik-güvenlik-Ilke belgeleri].
+    Önceki `https://login.microsoftonline.com` tablodan OAuth ana bilgisayar ile değiştirin.  İçerik-güvenlik-ilke meta etiketi hakkında daha fazla bilgi için [İçerik-Güvenlik-İlke belgelerine]bakın.
 
-    Bazı kimlik doğrulama sağlayıcıları, uygun mobil cihazlarda kullanıldığında Içerik Güvenlik Ilkesi değişiklikleri gerektirmez.  Örneğin, bir Android cihazında Google kimlik doğrulaması kullanılırken Içerik Güvenlik Ilkesi değişikliği yapmanız gerekir.
+    Bazı kimlik doğrulama sağlayıcıları, uygun mobil cihazlarda kullanıldığında İçerik-Güvenlik-İlke değişiklikleri gerektirmez.  Örneğin, bir Android cihazda Google kimlik doğrulaması kullanırken İçerik-Güvenlik-İlke değişikliği gerekmez.
 
-3. Düzenlenmek üzere `www/js/index.js` dosyasını açın, `onDeviceReady()` metodunu bulun ve istemci oluşturma kodu altına aşağıdaki kodu ekleyin:
+3. Düzenleme `www/js/index.js` için dosyayı `onDeviceReady()` açın, yöntemi bulun ve istemci oluşturma kodu altında aşağıdaki kodu ekleyin:
 
         // Login to the service
         client.login('SDK_Provider_Name')
@@ -78,16 +78,16 @@ Ardından, mobil uygulama arka ucundan kaynakları isteyerek önce kullanıcıla
 
             }, handleError);
 
-    Bu kod, tablo başvurusunu oluşturan mevcut kodu değiştirir ve Kullanıcı arabirimini yeniler.
+    Bu kod, tablo başvurularını oluşturan varolan kodun yerine geçive UI'yi yeniler.
 
-    Login () yöntemi sağlayıcıyla kimlik doğrulaması başlatır. Login () yöntemi bir JavaScript Promise döndüren zaman uyumsuz bir işlevdir.  Başlatmanın geri kalanı Promise yanıtının içine yerleştirilir, böylece Login () yöntemi tamamlanana kadar yürütülecektir.
+    Giriş() yöntemi sağlayıcı ile kimlik doğrulama başlar. Giriş() yöntemi, JavaScript Promise döndüren bir async işlevidir.  Başlatmanın geri kalanı, oturum açma() yöntemi tamamlanana kadar yürütülmemesi için söz yanıtı içine yerleştirilir.
 
-4. Yeni eklediğiniz kodda `SDK_Provider_Name`, oturum açma sağlayıcınızın adıyla değiştirin. Örneğin, Azure Active Directory için `client.login('aad')`kullanın.
-5. Projenizi çalıştırın.  Projenin başlatılması tamamlandığında, uygulamanız seçilen kimlik doğrulama sağlayıcısı için OAuth oturum açma sayfasını gösterir.
+4. Az önce eklediğiniz kodda, oturum açma sağlayıcınızın adıyla değiştirin. `SDK_Provider_Name` Örneğin, Azure Etkin Dizini `client.login('aad')`için .
+5. Projenizi çalıştırın.  Proje başlatma tamamlandığında, uygulamanız seçilen kimlik doğrulama sağlayıcısının OAuth giriş sayfasını gösterir.
 
-## <a name="next-steps"></a>Sonraki adımlar
-* Azure App Service ile [Kimlik doğrulaması hakkında] daha fazla bilgi edinin.
-* Apache Cordova uygulamanıza [anında Iletme bildirimleri] ekleyerek öğreticiye devam edin.
+## <a name="next-steps"></a><a name="next-steps"></a>Sonraki Adımlar
+* Azure Uygulama Hizmeti ile [Kimlik Doğrulama hakkında] daha fazla bilgi edinin.
+* Apache Cordova uygulamanıza [Anında Iletme Bildirimleri] ekleyerek öğreticiye devam edin.
 
 SDK'ları kullanmayı öğrenin.
 
@@ -96,10 +96,10 @@ SDK'ları kullanmayı öğrenin.
 * [Node.js Sunucusu SDK]
 
 <!-- URLs. -->
-[Mobile Apps kullanmaya başlayın]: app-service-mobile-cordova-get-started.md
-[İçerik-güvenlik-Ilke belgeleri]: https://cordova.apache.org/docs/en/latest/guide/appdev/whitelist/index.html
-[Anında İletme Bildirimleri]: app-service-mobile-cordova-get-started-push.md
-[Kimlik doğrulaması hakkında]: app-service-mobile-auth.md
+[Mobil Uygulamalarla başlayın]: app-service-mobile-cordova-get-started.md
+[İçerik-Güvenlik-Politika dokümantasyonu]: https://cordova.apache.org/docs/en/latest/guide/appdev/whitelist/index.html
+[Anında İletme Bildirimleri ]: app-service-mobile-cordova-get-started-push.md
+[Kimlik Doğrulama Hakkında]: app-service-mobile-auth.md
 [Apache Cordova SDK]: app-service-mobile-cordova-how-to-use-client-library.md
 [ASP.NET Sunucusu SDK]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
 [Node.js Sunucusu SDK]: app-service-mobile-node-backend-how-to-use-server-sdk.md

@@ -1,66 +1,84 @@
 ---
-title: Azure Geçişi'nde bağımlılık görselleştirme
-description: Azure geçişi 'nde sunucu değerlendirmesi hizmeti 'nde değerlendirme hesaplamalarına genel bakış sağlar
+title: Azure Geçir Sunucu Değerlendirmesinde Bağımlılık analizi
+description: Azure Geçir Sunucu Değerlendirmesi'ni kullanarak değerlendirme için bağımlılık çözümlemesi nasıl kullanılacağını açıklar.
 ms.topic: conceptual
-ms.date: 02/24/2020
-ms.openlocfilehash: fd069ed98fa34fd6f281c98a061925f96c7bb2cd
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.date: 03/11/2020
+ms.openlocfilehash: f96496b66d6bcfd397fb0a7303d3dbfb4fd6f6b6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79269711"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79455647"
 ---
-# <a name="dependency-visualization"></a>Bağımlılık görselleştirme
+# <a name="dependency-analysis"></a>Bağımlılık analizi
 
-Bu makalede Azure geçişi: Sunucu değerlendirmesi ' nde bağımlılık görselleştirmesi açıklanmaktadır.
+Bu makalede, Azure Geçir:Sunucu Değerlendirmesi'nde bağımlılık çözümlemesi açıklanmaktadır.
 
-## <a name="what-is-dependency-visualization"></a>Bağımlılık görselleştirmesi nedir?
+## <a name="overview"></a>Genel Bakış
 
-Bağımlılık görselleştirme, değerlendirmek ve Azure 'a geçirmek istediğiniz şirket içi makineler arasındaki bağımlılıkları belirlemenize yardımcı olur. 
+Bağımlılık çözümlemesi, değerlendirmek ve Azure'a geçirmek istediğiniz şirket içi makineler arasındaki bağımlılıkları belirlemenize yardımcı olur. 
 
-- Azure geçişi: Sunucu değerlendirmesi ' nde, makineleri bir gruba toplayın ve sonra grubu değerlendirin. Bağımlılık görselleştirmesi, makineleri değerlendirme için yüksek güvenilirlikle daha doğru şekilde gruplandırmanıza yardımcı olur.
-- Bağımlılık görselleştirme, birlikte geçirilmesi gereken makineleri tanımlamanızı sağlar. Makinelerin kullanımda olup olmadığını veya geçişi yerine kullanımdan engellenmeyeceğini belirleyebilirsiniz.
-- Bağımlılıkların görselleştirilmesi, hiçbir şeyin geri ayrılmaması ve geçiş sırasında beklenmedik kesintilerden kaçınılması sağlar.
-- Görselleştirme özellikle, makinelerin Azure 'a geçirmek istediğiniz bir uygulama dağıtımının parçası olup olmadığından emin olmadığınız durumlarda faydalıdır.
+- Azure Geçir:Sunucu Değerlendirmesi'nde makineleri bir gruba toplar ve grubu değerlendirirsiniz. Bağımlılık çözümlemesi, değerlendirme için yüksek güvenle makineleri daha doğru bir şekilde gruplandırmanıza yardımcı olur.
+- Bağımlılık çözümlemesi, birlikte geçirilmesi gereken makineleri belirlemenize olanak tanır. Makinelerin kullanımda olup olmadığını veya geçirilme yerine kullanımdan kaldırılıp kaldırılamayacağını belirleyebilirsiniz.
+- Bağımlılıkları çözümleme, geride hiçbir şey kalmamasını sağlamaya ve geçiş sırasında sürpriz kesintileri önlemeye yardımcı olur.
+- Analiz, özellikle makinelerin Azure'a geçirmek istediğiniz bir uygulama dağıtımının parçası olup olmadığından emin değilseniz yararlıdır.
+- Bağımlılık çözümlemesi ile ilgili sık sorulan soruları [gözden geçirin.](common-questions-discovery-assessment.md#what-is-dependency-visualization)
 
+Bağımlılık çözümlemesi dağıtmak için iki seçenek vardır
+
+- **Aracı tabanlı**: Aracı tabanlı bağımlılık çözümlemesi, analiz etmek istediğiniz her şirket içi makineye aracıların yüklenmesini gerektirir.
+- **Agentless**: Aracısız analiz ile çapraz kontrol yapmak istediğiniz makinelere aracı yüklemenize gerek yoktur. Bu seçenek şu anda önizlemededir ve yalnızca VMware VM'leri için kullanılabilir.
 
 > [!NOTE]
-> Bağımlılık görselleştirmesi Azure Kamu 'da kullanılamaz.
+> Bağımlılık çözümlemesi Azure Kamu'da kullanılamaz.
 
-## <a name="agent-basedagentless-visualization"></a>Aracı tabanlı/aracısız görselleştirme
+## <a name="agentless-analysis"></a>Aracısız analiz
 
-Bağımlılık görselleştirmesini dağıtmaya yönelik iki seçenek vardır:
+Aracısız bağımlılık çözümlemesi, etkin olduğu makinelerden TCP bağlantı verilerini yakalayarak çalışır. Çözümlemek istediğiniz makinelere aracı yüklenmez.
 
-- **Aracı**tabanlı: aracı tabanlı bağımlılık görselleştirme, analiz etmek istediğiniz her şirket içi makineye aracıların yüklenmesini gerektirir.
-- **Aracısız**: Bu seçenekle, çapraz denetlemek istediğiniz makinelere aracılar yüklemeniz gerekmez. Bu seçenek şu anda önizleme aşamasındadır ve yalnızca VMware VM 'Leri için kullanılabilir.
+### <a name="collected-data"></a>Toplanan veriler
+
+Bağımlılık bulma başladıktan sonra, cihaz verileri toplamak için her beş dakikada bir makinelerden veri anketleri. Bu veriler vCenter Server üzerinden konuk VM'lerden vSphere API'leri kullanılarak toplanır. Toplanan veriler, kimlik bilgilerini çıkarmak için Azure Geçir cihazında işlenir ve her altı saatte bir Azure Geçir'e gönderilir.
+
+Yoklama bu verileri makinelerden toplar: 
+- Etkin bağlantıları olan işlemlerin adı.
+- Etkin bağlantıları olan işlemleri çalıştıran uygulamanın adı.
+- Etkin bağlantılardaki hedef bağlantı noktası.
+
+## <a name="agent-based-analysis"></a>Ajan tabanlı analiz
+
+Aracı tabanlı analiz için Sunucu Değerlendirmesi, bağımlılık görselleştirme ve çözümlemesini etkinleştirmek için Azure Monitor'da [Hizmet Haritası çözümünü](../azure-monitor/insights/service-map.md) kullanır. [Microsoft Monitoring Agent/Log Analytics aracısı](../azure-monitor/platform/agents-overview.md#log-analytics-agent) ve [Bağımlılık aracısı,](../azure-monitor/platform/agents-overview.md#dependency-agent)analiz etmek istediğiniz her makineye yüklenmelidir.
+
+### <a name="collected-data"></a>Toplanan veriler
+
+Aracı tabanlı görselleştirme için aşağıdaki veriler toplanır:
+
+- Kaynak makine sunucu adı, işlem, uygulama adı.
+- Hedef makine sunucusu adı, işlem, uygulama adı ve bağlantı noktası.
+- Bağlantı sayısı, gecikme sonu ve veri aktarım bilgileri toplanır ve Log Analytics sorguları için kullanılabilir. 
 
 
-## <a name="agent-based-visualization"></a>Aracı tabanlı görselleştirme
+## <a name="compare-agentless-and-agent-based"></a>Aracısız ve aracı tabanlı karşılaştırın
 
-**Gereksinim** | **Ayrıntılar** | **Daha fazla bilgi**
+Aracısız görselleştirme ile aracı tabanlı görselleştirme arasındaki farklar tabloda özetlenmiştir.
+
+**Gereksinim** | **Aracısız** | **Aracı tabanlı**
 --- | --- | ---
-**Dağıtımdan önce** | Azure geçişi: Sunucu değerlendirmesi aracı projeye eklenmiş bir Azure geçişi projesi olması gerekir.<br/><br/>  Şirket içi makinelerinizi bulmaya yönelik bir Azure geçiş gereci ayarladıktan sonra bağımlılık görselleştirmesini dağıtırsınız. | İlk kez bir proje oluşturmayı [öğrenin](create-manage-projects.md) .<br/><br/> Mevcut bir projeye değerlendirme aracı eklemeyi [öğrenin](how-to-assess.md) .<br/><br/> [Hyper-V](how-to-set-up-appliance-hyper-v.md), [VMware](how-to-set-up-appliance-vmware.md)veya fiziksel sunucu değerlendirmesi için Azure geçişi gerecini ayarlamayı öğrenin.
-**Gerekli aracılar** | Çözümlemek istediğiniz her makinede aşağıdaki aracıları yükleyebilirsiniz:<br/><br/> [Microsoft Monitoring Agent (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows).<br/><br/> [Bağımlılık Aracısı](../azure-monitor/platform/agents-overview.md#dependency-agent).<br/><br/> Şirket içi makineler Internet 'e bağlı değilse, bunlara Log Analytics ağ geçidi indirip yüklemeniz gerekir. | [Bağımlılık aracısını](how-to-create-group-machine-dependencies.md#install-the-dependency-agent) yükleme ve [MMA](how-to-create-group-machine-dependencies.md#install-the-mma)hakkında daha fazla bilgi edinin.
-**Log Analytics** | Azure geçişi, bağımlılık görselleştirmesi için [Azure izleyici günlüklerinde](../log-analytics/log-analytics-overview.md) [hizmet eşlemesi](../operations-management-suite/operations-management-suite-service-map.md) çözümünü kullanır.<br/><br/> Yeni veya mevcut bir Log Analytics çalışma alanını Azure geçişi projesiyle ilişkilendirirsiniz. Bir Azure geçişi projesi çalışma alanı eklendikten sonra değiştirilemez. <br/><br/> Çalışma alanı, Azure geçişi projesiyle aynı abonelikte olmalıdır.<br/><br/> Çalışma alanı Doğu ABD, Güneydoğu Asya veya Batı Avrupa bölgelerinde bulunmalıdır. Diğer bölgelerdeki çalışma alanları bir projeyle ilişkilendirilemez.<br/><br/> Çalışma alanının [hizmet eşlemesi desteklendiği](../azure-monitor/insights/vminsights-enable-overview.md#prerequisites)bir bölgede olması gerekir.<br/><br/> Log Analytics, Azure geçişi ile ilişkili çalışma alanı, geçiş projesi anahtarıyla ve proje adıyla etiketlenir.
-**Malarını** | Hizmet Eşlemesi çözümü ilk 180 gün boyunca ücret almaz (Log Analytics çalışma alanını Azure geçişi projesi ile ilişkilendirdiğinizden itibaren)/<br/><br/> 180 gün sonra standart Log Analytics ücretleri uygulanır.<br/><br/> İlişkili Log Analytics çalışma alanında Hizmet Eşlemesi dışında herhangi bir çözümün kullanılması Log Analytics için [Standart ücretler](https://azure.microsoft.com/pricing/details/log-analytics/) doğurur.<br/><br/> Azure geçişi projesi silindiğinde, çalışma alanı onunla birlikte silinmez. Projeyi sildikten sonra Hizmet Eşlemesi kullanımı ücretsizdir ve her düğüm, Log Analytics çalışma alanının ücretli katmanına göre ücretlendirilir/<br/><br/>Azure genel kullanım (GA-28 Şubat 2018) geçirmeden önce oluşturduğunuz projeleriniz varsa, ek Hizmet Eşlemesi ücretleri tahakkuk etmeyebilirsiniz. Yalnızca 180 günden sonra ödemeyi sağlamak için, GA 'nin mevcut çalışma alanları Ücretlendirilebilir olmaya devam ettiğinden yeni bir proje oluşturmanızı öneririz.
-**Yönetme** | Aracıları çalışma alanına kaydettiğinizde, Azure geçişi projesi tarafından sunulan KIMLIĞI ve anahtarı kullanırsınız.<br/><br/> Log Analytics çalışma alanını Azure geçişi dışında kullanabilirsiniz.<br/><br/> İlişkili Azure geçişi projesini silerseniz, çalışma alanı otomatik olarak silinmez. [El Ile silin](../azure-monitor/platform/manage-access.md).<br/><br/> Azure geçişi projesini silmediğiniz takdirde Azure geçişi tarafından oluşturulan çalışma alanını silmeyin. Bunu yaparsanız, bağımlılık görselleştirme işlevselliği beklendiği gibi çalışmaz.
+Destek | Bu seçenek şu anda önizlemededir ve yalnızca VMware VM'leri için kullanılabilir. Desteklenen işletim sistemlerini [gözden geçirin.](migrate-support-matrix-vmware.md#agentless-dependency-analysis-requirements) | Genel kullanılabilirlik (GA).
+Aracı | Çapraz kontrol yapmak istediğiniz makinelere aracı yüklemenize gerek yoktur. | Analiz etmek istediğiniz her şirket içi makineye kurulacak aracılar: [Microsoft İzleme aracısı (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows)ve [Bağımlılık aracısı.](https://docs.microsoft.com/azure/azure-monitor/platform/agents-overview#dependency-agent) 
+Log Analytics | Gerek yok. | Azure Geçir, bağımlılık çözümlemesi için [Azure Monitor günlüklerinde](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) [Hizmet Haritası](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-service-map) çözümünü kullanır. 
+Nasıl çalışır? | Bağımlılık görselleştirme için etkinleştirilen makinelerde TCP bağlantı verilerini yakalar. Keşiften sonra, verileri beş dakikalık aralıklarla toplar. | Bir makineye yüklenen Servis Haritası aracıları, her işlem için TCP işlemleri ve gelen/giden bağlantılar hakkında veri toplar.
+Veri | Kaynak makine sunucu adı, işlem, uygulama adı.<br/><br/> Hedef makine sunucusu adı, işlem, uygulama adı ve bağlantı noktası. | Kaynak makine sunucu adı, işlem, uygulama adı.<br/><br/> Hedef makine sunucusu adı, işlem, uygulama adı ve bağlantı noktası.<br/><br/> Bağlantı sayısı, gecikme sonu ve veri aktarım bilgileri toplanır ve Log Analytics sorguları için kullanılabilir. 
+Görselleştirme | Tek bir sunucunun bağımlılık haritası bir saat ile 30 gün arasında görüntülenebilir. | Tek bir sunucunun bağımlılık haritası.<br/><br/> Harita yalnızca bir saatten fazla görüntülenebilir.<br/><br/> Bir sunucu grubunun bağımlılık haritası.<br/><br/> Gruptaki sunucuları harita görünümünden ekleyin ve kaldırın.
+Veri dışarı aktarma | Şu anda tabular biçiminde indirilemez. | Veriler Log Analytics ile sorgulanabilir.
 
-## <a name="agentless-visualization"></a>Aracısız görselleştirme
-
-
-**Gereksinim** | **Ayrıntılar** | **Daha fazla bilgi**
---- | --- | ---
-**Dağıtımdan önce** | Azure geçişi: Sunucu değerlendirmesi aracı projeye eklenmiş bir Azure geçişi projesi olması gerekir.<br/><br/>  Şirket içi VMWare makinelerinizi bulmaya yönelik bir Azure geçiş gereci ayarladıktan sonra bağımlılık görselleştirmesini dağıtırsınız. | İlk kez bir proje oluşturmayı [öğrenin](create-manage-projects.md) .<br/><br/> Mevcut bir projeye değerlendirme aracı eklemeyi [öğrenin](how-to-assess.md) .<br/><br/> [VMware](how-to-set-up-appliance-vmware.md) VM 'lerinin değerlendirmesi Için Azure geçişi gerecini ayarlamayı öğrenin.
-**Gerekli aracılar** | Çözümlemek istediğiniz makinelerde aracı gerekmez.
-**Desteklenen işletim sistemleri** | Aracısız görselleştirme için desteklenen [işletim sistemlerini](migrate-support-matrix-vmware.md#agentless-dependency-visualization) gözden geçirin.
-**VM’ler** | **VMware araçları**: çözümlemek istediğiniz VM 'Lerde VMware araçları yüklü ve çalışır olmalıdır.<br/><br/> **Hesap**: Azure geçişi gereci üzerinde, analiz Için VM 'lere erişmek üzere kullanılabilecek bir kullanıcı hesabı eklemeniz gerekir.<br/><br/> **Windows VM 'leri**: Kullanıcı hesabının makinede yerel veya etki alanı yöneticisi olması gerekir.<br/><br/> **Linux VM 'leri**: hesapta kök ayrıcalık gereklidir. Alternatif olarak, Kullanıcı hesabı/bin/netstat ve/bin/ls dosyalarında şu iki özelliği gerektirir: CAP_DAC_READ_SEARCH ve CAP_SYS_PTRACE. | Azure geçişi gereci [hakkında bilgi edinin](migrate-appliance.md) .
-**VMware** | **vCenter**: gereç, salt okuma erişimi olan bir vCenter Server hesabına ve konuk Işlemleri > sanal makineler için etkinleştirilmiş ayrıcalıklara ihtiyaç duyuyor.<br/><br/> **ESXi Konakları**: çözümlemek Istediğiniz VM 'Leri çalıştıran ESXi konaklarında Azure geçişi gereci 443 numaralı TCP bağlantı noktasına bağlanabiliyor olmalıdır.
-**Toplanan veriler** |  Aracısız bağımlılık analizi, etkin olduğu makinelerden gelen TCP bağlantısı verilerini yakalayarak işe yarar. Bağımlılık bulma etkinleştirildikten sonra, Gereç Konuk VM 'lerden 5 dakikada bir TCP bağlantı verilerini toplar. Bu veriler, vSphere API 'Leri kullanılarak vCenter Server aracılığıyla konuk VM 'lerden toplanır. Toplanan veriler, bağımlılık bilgilerini bırakmak ve 6 saatte bir Azure 'a gönderilmek üzere gereç üzerinde işlenir. Her makineden aşağıdaki veriler toplanır: <br/> -Etkin bağlantıları olan işlemlerin adları.<br/> -İşlemi etkin bağlantılarla çalıştıran uygulamaların adları.<br/> -Etkin bağlantılardaki hedef bağlantı noktası.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-- [Bağımlılık görselleştirmesini ayarlama](how-to-create-group-machine-dependencies.md)
-- VMware VM 'Leri için [aracısız bağımlılık görselleştirmesini deneyin](how-to-create-group-machine-dependencies-agentless.md) .
-- Bağımlılık görselleştirmesine ilişkin [genel soruları](common-questions-discovery-assessment.md#what-is-dependency-visualization) gözden geçirin.
+- [VMware VM'ler,](migrate-support-matrix-vmware.md#agent-based-dependency-analysis-requirements)fiziksel [sunucular](migrate-support-matrix-physical.md#agent-based-dependency-analysis-requirements)ve [Hyper-V VM'ler](migrate-support-matrix-hyper-v.md#agent-based-dependency-analysis-requirements)için aracı tabanlı analiz ayarlama gereksinimlerini gözden geçirin.
+- VMware VM'lerin aracısız analizi için gereksinimleri [gözden geçirin.](migrate-support-matrix-vmware.md#agentless-dependency-analysis-requirements)
+- Aracı tabanlı bağımlılık görselleştirmeyi [ayarlama](how-to-create-group-machine-dependencies.md)
+- VMware VM'ler için aracısız bağımlılık görselleştirmeyi [deneyin.](how-to-create-group-machine-dependencies-agentless.md)
+- Bağımlılık görselleştirme [sıkça sorulan soruları](common-questions-discovery-assessment.md#what-is-dependency-visualization) gözden geçirin.
 
 

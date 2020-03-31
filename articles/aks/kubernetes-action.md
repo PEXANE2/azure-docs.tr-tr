@@ -1,43 +1,43 @@
 ---
-title: GitHub eylemlerini kullanarak kapsayıcıları Azure Kubernetes hizmetine oluşturun, test edin ve dağıtın
-description: Kapsayıcısını Kubernetes 'e dağıtmak için GitHub eylemlerini nasıl kullanacağınızı öğrenin
+title: GitHub Eylemlerini kullanarak kapsayıcıları Azure Kubernetes Hizmetine oluşturun, test edin ve dağıtın
+description: Kapsayıcınızı Kubernetes'e dağıtmak için GitHub Eylemleri'ni nasıl kullanacağınızı öğrenin
 services: container-service
 author: azooinmyluggage
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: atulmal
 ms.openlocfilehash: 5ee8ee4d2c9e225d82e58daffeef9e5f09e43e6b
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77595374"
 ---
-# <a name="github-actions-for-deploying-to-kubernetes-service"></a>Kubernetes hizmetine dağıtmaya yönelik GitHub eylemleri
+# <a name="github-actions-for-deploying-to-kubernetes-service"></a>Kubernetes hizmetine dağıtım için GitHub Eylemleri
 
-[GitHub eylemleri](https://help.github.com/en/articles/about-github-actions) size otomatik yazılım geliştirme yaşam döngüsü iş akışı oluşturma esnekliği sağlar. Kubernetes eylemi [azure/aks-set-context@v1](https://github.com/Azure/aks-set-context) Azure Kubernetes hizmet kümelerine dağıtımları kolaylaştırır. Eylem, [Azure/k8s-Deploy](https://github.com/Azure/k8s-deploy/tree/master), [Azure/k8s-Create-Secret](https://github.com/Azure/k8s-create-secret/tree/master) vb. gibi diğer eylemler tarafından kullanılabilecek hedef aks kümesi bağlamını ayarlar veya herhangi bir kubectl komutunu çalıştırın.
+[GitHub Eylemleri,](https://help.github.com/en/articles/about-github-actions) otomatik bir yazılım geliştirme yaşam döngüsü iş akışı oluşturma esnekliği sağlar. Kubernetes eylemi, [azure/aks-set-context@v1](https://github.com/Azure/aks-set-context) Azure Kubernetes Hizmet kümelerine dağıtımları kolaylaştırır. Eylem, [azure/k8s-deploy,](https://github.com/Azure/k8s-deploy/tree/master) [azure/k8s-create-secret](https://github.com/Azure/k8s-create-secret/tree/master) vb. gibi diğer eylemler tarafından kullanılabilecek hedef AKS küme bağlamını ayarlar veya kubectl komutlarını çalıştırın.
 
-Bir iş akışı, deponuzdaki `/.github/workflows/` yolundaki bir YAML (. yıml) dosyası tarafından tanımlanır. Bu tanım, iş akışını oluşturan çeşitli adımları ve parametreleri içerir.
+İş akışı, deponuzdaki `/.github/workflows/` yoldaki BIR YAML (.yml) dosyası yla tanımlanır. Bu tanım, iş akışını oluşturan çeşitli adımları ve parametreleri içerir.
 
-AKS 'i hedefleyen bir iş akışı için, dosyanın üç bölümü vardır:
+AKS'yi hedefleyen bir iş akışı için dosyanın üç bölümü vardır:
 
 |Section  |Görevler  |
 |---------|---------|
-|**Kimlik doğrulaması** | Özel bir kapsayıcı kayıt defterinde (ACR) oturum açma |
-|**Derlemeyi** | Kapsayıcı görüntüsünü oluşturun & gönderin  |
-|**Dağıtma** | 1. hedef AKS kümesini ayarlama |
-| |2. Kubernetes kümesinde genel/Docker-Registry gizli dizisi oluşturma  |
-||3. Kubernetes kümesine dağıtın|
+|**Kimlik doğrulaması** | Özel bir konteyner kayıt defterine (ACR) giriş |
+|**Oluşturma** | Yapı & kapsayıcı görüntüsünü itin  |
+|**Dağıt** | 1. Hedef AKS kümesini ayarlama |
+| |2. Kubernetes kümesinde genel/docker-kayıt defteri sırrı oluşturma  |
+||3. Kubernetes kümesine dağıl|
 
 ## <a name="create-a-service-principal"></a>Hizmet sorumlusu oluşturma
 
-[Azure CLI](https://docs.microsoft.com/cli/azure/)'de [az ad SP Create-for-RBAC](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) komutunu kullanarak bir [hizmet sorumlusu](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object) oluşturabilirsiniz. Bu komutu Azure portal [Azure Cloud Shell](https://shell.azure.com/) kullanarak veya **deneyin** düğmesini seçerek çalıştırabilirsiniz.
+[Azure CLI'deki](https://docs.microsoft.com/cli/azure/)az [reklam sp create-for-rbac](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) komutunu kullanarak bir [hizmet ilkesi](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object) oluşturabilirsiniz. Bu komutu Azure portalında [Azure Bulut Su şutu'nu](https://shell.azure.com/) kullanarak veya **Try it** düğmesini seçerek çalıştırabilirsiniz.
 
 ```azurecli-interactive
 az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP> --sdk-auth
 ```
 
-Yukarıdaki komutta yer tutucuları abonelik KIMLIĞINIZ ve kaynak grubuyla değiştirin. Çıktı, kaynağına erişim sağlayan rol atama kimlik bilgileridir. Komut şuna benzer bir JSON nesnesinin çıktısını almalıdır.
+Yukarıdaki komutta, yer tutucuları abonelik kimliğiniz ve kaynak grubunuzla değiştirin. Çıktı, kaynağınıza erişim sağlayan rol atama kimlik bilgileridir. Komut buna benzer bir JSON nesnesi çıktı gerekir.
 
 ```json
   {
@@ -48,42 +48,42 @@ Yukarıdaki komutta yer tutucuları abonelik KIMLIĞINIZ ve kaynak grubuyla değ
     (...)
   }
 ```
-GitHub 'dan kimlik doğrulamak için kullanabileceğiniz bu JSON nesnesini kopyalayın.
+GitHub'dan kimlik doğrulaması yapmak için kullanabileceğiniz bu JSON nesnesini kopyalayın.
 
-## <a name="configure-the-github-secrets"></a>GitHub gizli dizilerini yapılandırma
+## <a name="configure-the-github-secrets"></a>GitHub sırlarını yapılandırma
 
-Gizli dizileri yapılandırmak için aşağıdaki adımları izleyin:
+Sırları yapılandırmak için aşağıdaki adımları izleyin:
 
-1. [GitHub](https://github.com/)'da deponuza gidin, **Ayarlar > gizlilikler ' ı seçin > yeni bir gizli dizi ekleyin**.
+1. [GitHub'da,](https://github.com/)deponuza göz atın, **Yeni bir sır eklemek > Ayarlar > Sırlar'ı**seçin.
 
-    ![kaynaklanır](media/kubernetes-action/secrets.png)
+    ![Sır -larını](media/kubernetes-action/secrets.png)
 
-2. Yukarıdaki `az cli` komutunun içeriğini gizli değişkenin değeri olarak yapıştırın. Örneğin, `AZURE_CREDENTIALS`.
+2. Yukarıdaki `az cli` komutun içeriğini gizli değişkenin değeri olarak yapıştırın. Örneğin, `AZURE_CREDENTIALS`.
 
-3. Benzer şekilde, kapsayıcı kayıt defteri kimlik bilgileri için aşağıdaki ek gizli dizileri tanımlayın ve bunları Docker oturum açma eyleminde ayarlayın. 
+3. Benzer şekilde, kapsayıcı kayıt defteri kimlik bilgileri için aşağıdaki ek sırları tanımlayın ve Bunları Docker giriş eylemine ayarlayın. 
 
     - REGISTRY_USERNAME
     - REGISTRY_PASSWORD
 
-4. Gizli dizileri, tanımlandıktan sonra aşağıda gösterildiği gibi göreceksiniz.
+4. Aşağıda tanımlandığı gibi sırları göreceksiniz.
 
-    ![Kubernetes-gizlilikler](media/kubernetes-action/kubernetes-secrets.png)
+    ![kubernetes-sırları](media/kubernetes-action/kubernetes-secrets.png)
 
-##  <a name="build-a-container-image-and-deploy-to-azure-kubernetes-service-cluster"></a>Bir kapsayıcı görüntüsü oluşturun ve Azure Kubernetes hizmet kümesine dağıtın
+##  <a name="build-a-container-image-and-deploy-to-azure-kubernetes-service-cluster"></a>Bir kapsayıcı görüntüsü oluşturun ve Azure Kubernetes Hizmet kümesine dağıtın
 
-Kapsayıcı görüntülerinin oluşturulması ve gönderimi `Azure/docker-login@v1` eylem kullanılarak yapılır. AKS 'e bir kapsayıcı görüntüsü dağıtmak için `Azure/k8s-deploy@v1` eylemini kullanmanız gerekir. Bu eylem beş parametreye sahiptir:
+Kapsayıcı görüntülerinin oluşturulması ve itme `Azure/docker-login@v1` eylemi kullanılarak yapılır. AKS'ye bir kapsayıcı görüntüsü dağıtmak için `Azure/k8s-deploy@v1` eylemi kullanmanız gerekir. Bu eylemin beş parametresi vardır:
 
-| **Parametresinin**  | **Açıklama**  |
+| **Parametre**  | **Açıklama**  |
 |---------|---------|
-| **uzayına** | Seçim Hedef Kubernetes ad alanını seçin. Ad alanı sağlanmazsa, komutlar varsayılan ad alanında çalıştırılır | 
-| **listeleri** |  Istenir Dağıtım için kullanılacak olan bildirim dosyalarının yolu |
-| **yansımasını** | Seçim Bildirim dosyalarındaki değişimler için kullanılacak görüntünün tam kaynak URL 'SI |
-| **ımagepullgizlilikler** | Seçim Küme içinde zaten ayarlanmış olan Docker-Registry parolasının adı. Bu gizli adların her biri, giriş bildirimi dosyalarında bulunan iş yükleri için ımagepullsecret alanı altına eklenir |
-| **kubectl-sürüm** | Seçim Belirli bir kubectl ikili sürümünü yüklüyor |
+| **ad alanı** | (İsteğe bağlı) Hedef Kubernetes ad alanını seçin. Ad alanı sağlanmazsa, komutlar varsayılan ad alanında çalışır | 
+| **Bildirim** |  (Gerekli) Dağıtım için kullanılacak bildirim dosyalarına giden yol |
+| **Görüntü** | (İsteğe bağlı) Bildirim dosyalarındaki ikameler için kullanılacak resmin(ler) tam nitelikli kaynak URL'si |
+| **imagepullsecrets** | (İsteğe bağlı) Küme içinde zaten ayarlanmış bir docker-registry sırrının adı. Bu gizli adların her biri giriş bildirimi dosyalarında bulunan iş yükleri için imagePullSecrets alanına eklenir |
+| **kubectl sürümü** | (İsteğe bağlı) Kubectl ikili belirli bir sürümünü yükler |
 
-### <a name="deploy-to-azure-kubernetes-service-cluster"></a>Azure Kubernetes hizmet kümesine dağıtma
+### <a name="deploy-to-azure-kubernetes-service-cluster"></a>Azure Kubernetes Hizmet kümesine dağıt
 
-Kapsayıcı görüntüleri oluşturmak ve bir Azure Kubernetes hizmet kümesine dağıtmak için uçtan uca iş akışı.
+Kapsayıcı görüntüleri oluşturmak ve bir Azure Kubernetes Hizmet kümesine dağıtmak için uçuca iş akışı.
 
 ```yaml
 on: [push]
@@ -131,18 +131,18 @@ jobs:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-GitHub 'daki farklı depolarda, her biri, CI/CD için GitHub ' ı kullanmanıza ve uygulamalarınızı Azure 'a dağıtmanıza yardımcı olacak belgeler ve örnekler içeren eylemler kümesini bulabilirsiniz.
+Eylem setimizi, Ci/CD için GitHub'ı kullanmanıza ve uygulamalarınızı Azure'a dağıtmanıza yardımcı olacak belgeler ve örnekler içeren, GitHub'daki farklı depolarda bulabilirsiniz.
 
-- [Kurulum-kubectl](https://github.com/Azure/setup-kubectl)
+- [kurulum-kubectl](https://github.com/Azure/setup-kubectl)
 
-- [k8s-set-Context](https://github.com/Azure/k8s-set-context)
+- [k8s-set-bağlam](https://github.com/Azure/k8s-set-context)
 
-- [aks-set-Context](https://github.com/Azure/aks-set-context)
+- [aks-set-bağlam](https://github.com/Azure/aks-set-context)
 
-- [k8s-oluştur-gizli](https://github.com/Azure/k8s-create-secret)
+- [k8s-oluşturma-gizli](https://github.com/Azure/k8s-create-secret)
 
-- [k8s-dağıt](https://github.com/Azure/k8s-deploy)
+- [k8s-dağıtmak](https://github.com/Azure/k8s-deploy)
 
-- [webapps-Container-Deploy](https://github.com/Azure/webapps-container-deploy)
+- [webapps-konteyner-dağıtmak](https://github.com/Azure/webapps-container-deploy)
 
-- [eylemler-iş akışı-örnekler](https://github.com/Azure/actions-workflow-samples)
+- [eylemler-iş akışı-örnekleri](https://github.com/Azure/actions-workflow-samples)

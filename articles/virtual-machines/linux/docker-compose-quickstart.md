@@ -1,39 +1,39 @@
 ---
 title: Docker Compose kullanma
-description: Azure CLı ile Docker 'ı yüklemek ve kullanmak ve Linux sanal makinelerinde oluşturma.
+description: Azure CLI ile Linux sanal makinelerinde Docker ve Beste'i yükleme ve kullanma.
 author: cynthn
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 02/14/2019
 ms.author: cynthn
 ms.openlocfilehash: 434a3ef8c9bc1738252d59a5dca5bec16d85e45e
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78970298"
 ---
-# <a name="get-started-with-docker-and-compose-to-define-and-run-a-multi-container-application-in-azure"></a>Azure 'da çok kapsayıcılı bir uygulama tanımlamak ve çalıştırmak için Docker ve Compose kullanmaya başlama
-[Oluşturma](https://github.com/docker/compose)ile birden çok Docker kapsayıcılarından oluşan bir uygulamayı tanımlamak için basit bir metin dosyası kullanın. Sonra uygulamanızı, tanımlı ortamınızı dağıtmak üzere her şeyi yapan tek bir komutta çalıştırabilirsiniz. Örnek olarak, bu makalede bir Ubuntu VM üzerinde bir arka uç MariaDB SQL veritabanı ile bir WordPress blogunu hızlı bir şekilde nasıl ayarlayabileceğinizi gösterir. Ayrıca, daha karmaşık uygulamalar oluşturmak için Oluştur ' a da yararlanabilirsiniz.
+# <a name="get-started-with-docker-and-compose-to-define-and-run-a-multi-container-application-in-azure"></a>Azure'da çok kapsayıcılı bir uygulamayı tanımlamak ve çalıştırmak için Docker ve Compose ile başlayın
+[Compose](https://github.com/docker/compose)ile, birden çok Docker kapsayıcısı içeren bir uygulama tanımlamak için basit bir metin dosyası kullanırsınız. Daha sonra, tanımlı ortamınızı dağıtmak için her şeyi yapan tek bir komutla uygulamanızı döndürür. Örnek olarak, bu makalede, bir Ubuntu VM bir backend MariaDB SQL veritabanı ile hızlı bir şekilde bir WordPress blog kurmak için nasıl gösterir. Daha karmaşık uygulamalar ayarlamak için Oluştur'u da kullanabilirsiniz.
 
-Bu makale, [Azure Cloud Shell](https://shell.azure.com/bash) ve [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) sürümü 2.0.58 kullanılarak 2/14/2019 ' de son test edilmiştir.
+Bu makale en son 14/2019 tarihinde [Azure Bulut Kabuğu](https://shell.azure.com/bash) ve Azure [CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) sürümü 2.0.58 kullanılarak test edilmiştir.
 
-## <a name="create-docker-host-with-azure-cli"></a>Azure CLı ile Docker Konağı oluşturma
-En son [Azure CLI](/cli/azure/install-az-cli2) 'yı yükleyip [az Login](/cli/azure/reference-index)kullanarak bir Azure hesabında oturum açın.
+## <a name="create-docker-host-with-azure-cli"></a>Azure CLI ile Docker ana bilgisayar oluşturma
+En son [Azure CLI'sini](/cli/azure/install-az-cli2) yükleyin ve az giriş 'i kullanarak bir Azure [hesabına](/cli/azure/reference-index)giriş yapın.
 
-İlk olarak, [az Group Create](/cli/azure/group)komutuyla Docker ortamınız için bir kaynak grubu oluşturun. Aşağıdaki örnek *eastus* konumunda *myResourceGroup* adlı bir kaynak grubu oluşturur:
+İlk olarak, az grup oluşturmak ile Docker ortamı için bir kaynak grubu [oluşturun.](/cli/azure/group) Aşağıdaki örnek, *eastus* konumda *myResourceGroup* adlı bir kaynak grubu oluşturur:
 
 ```azurecli-interactive
 az group create --name myDockerGroup --location eastus
 ```
 
-*Kabuğunuzda Cloud-init. txt* adlı bir dosya oluşturun ve aşağıdaki yapılandırmayı yapıştırın. Dosyayı oluşturmak ve kullanılabilir düzenleyicilerin listesini görmek için `sensible-editor cloud-init.txt` adını girin. 
+*cloud-init.txt* adlı bir dosya oluşturun ve aşağıdaki yapılandırmayı yapıştırın. Dosyayı oluşturmak ve kullanılabilir düzenleyicilerin listesini görmek için `sensible-editor cloud-init.txt` adını girin. 
 
 ```yaml
 #include https://get.docker.com
 ```
 
-Şimdi [az vm create](/cli/azure/vm#az-vm-create) ile bir VM oluşturun. `--custom-data` parametresini kullanarak cloud-init yapılandırma dosyanızı geçirin. Dosyayı mevcut çalışma dizininizin dışına kaydettiyseniz *cloud-init.txt* yapılandırmasının tam yolunu belirtin. Aşağıdaki örnek, *Mydockervm* adlı bir sanal makine oluşturur ve 80 numaralı bağlantı noktasını Web trafiğine açar.
+Şimdi [az vm create](/cli/azure/vm#az-vm-create) ile bir VM oluşturun. `--custom-data` parametresini kullanarak cloud-init yapılandırma dosyanızı geçirin. Dosyayı mevcut çalışma dizininizin dışına kaydettiyseniz *cloud-init.txt* yapılandırmasının tam yolunu belirtin. Aşağıdaki örnek, *myDockerVM* adında bir VM oluşturur ve 80 no'l'u web trafiğine açar.
 
 ```azurecli-interactive
 az vm create \
@@ -52,32 +52,32 @@ VM’nin oluşturulması, paketlerin yüklenmesi ve uygulamanın başlatılması
 
                  
 
-## <a name="install-compose"></a>Yüklemeyi oluştur
+## <a name="install-compose"></a>Oluştur'u Yükle
 
 
-Yeni Docker Konağı Sanal makinenize SSH. Kendi IP adresinizi sağlayın.
+SSH yeni Docker ev sahibi VM için. Kendi IP adresinizi girin.
 
 ```bash
 ssh azureuser@10.10.111.11
 ```
 
-VM 'ye oluşturma ' yı yükler.
+VM'de Oluştur'u yükleyin.
 
 ```bash
 sudo apt install docker-compose
 ```
 
 
-## <a name="create-a-docker-composeyml-configuration-file"></a>Docker-Compose. yıml yapılandırma dosyası oluşturma
-VM 'de çalıştırılacak Docker kapsayıcılarını tanımlamak için bir `docker-compose.yml` yapılandırma dosyası oluşturun. Dosya, her kapsayıcıda çalıştırılacak görüntüyü, gerekli ortam değişkenlerini ve bağımlılıklarını, bağlantı noktalarını ve kapsayıcılar arasındaki bağlantıları belirtir. YML dosya sözdizimi hakkında daha fazla bilgi için bkz. [dosya başvurusu oluşturma](https://docs.docker.com/compose/compose-file/).
+## <a name="create-a-docker-composeyml-configuration-file"></a>Docker-compose.yml yapılandırma dosyası oluşturma
+VM `docker-compose.yml` üzerinde çalışacak Docker kapsayıcılarını tanımlamak için bir yapılandırma dosyası oluşturun. Dosya, her kapsayıcıda çalışacak görüntüyü, gerekli ortam değişkenlerini ve bağımlılıkları, bağlantı noktalarını ve kapsayıcılar arasındaki bağlantıları belirtir. YML dosya sözdizimi ile ilgili ayrıntılar için dosya [başvurusunda oluştur'a](https://docs.docker.com/compose/compose-file/)bakın.
 
-Bir *Docker-Compose. yıml* dosyası oluşturun. Dosyaya veri eklemek için en sevdiğiniz metin düzenleyiciyi kullanın. Aşağıdaki örnek, kullanmak istediğiniz bir düzenleyiciyi seçmek `sensible-editor` için bir komut istemi ile dosyayı oluşturur.
+*Docker-compose.yml* dosyası oluşturun. Dosyaya bazı veriler eklemek için sık kullandığınız metin düzenleyicisini kullanın. Aşağıdaki örnek, kullanmak istediğiniz bir `sensible-editor` düzenleyiciyi seçmek için bir komut istemi ile dosya oluşturur.
 
 ```bash
 sensible-editor docker-compose.yml
 ```
 
-Aşağıdaki örneği Docker Compose dosyanıza yapıştırın. Bu yapılandırma, WordPress (açık kaynak blog ve içerik yönetim sistemi) ve bağlı bir arka uç MariaDB SQL veritabanı 'nı yüklemek için [Dockerhub kayıt defterindeki](https://registry.hub.docker.com/_/wordpress/) görüntüleri kullanır. Kendi *MYSQL_ROOT_PASSWORD*girin.
+Aşağıdaki örneği Docker Compose dosyanıza yapıştırın. Bu yapılandırma WordPress (açık kaynak bloglama ve içerik yönetim sistemi) ve bağlantılı bir arka uç MariaDB SQL veritabanı yüklemek için [DockerHub Registry](https://registry.hub.docker.com/_/wordpress/) görüntüleri kullanır. Kendi *MYSQL_ROOT_PASSWORD*girin.
 
 ```yml
 wordpress:
@@ -93,14 +93,14 @@ db:
     MYSQL_ROOT_PASSWORD: <your password>
 ```
 
-## <a name="start-the-containers-with-compose"></a>Oluşturma ile kapsayıcıları başlatma
-*Docker-Compose. yml* dosyanızdaki aynı dizinde aşağıdaki komutu çalıştırın (ortamınıza bağlı olarak, `sudo`kullanarak `docker-compose` çalıştırmanız gerekebilir):
+## <a name="start-the-containers-with-compose"></a>Oluştur ile kapları başlatın
+*Docker-compose.yml* dosyanızla aynı dizinde aşağıdaki komutu çalıştırın (ortamınıza bağlı olarak, `docker-compose` `sudo`kullanarak çalıştırmanız gerekebilir):
 
 ```bash
 sudo docker-compose up -d
 ```
 
-Bu komut, *Docker-Compose. yıml*Içinde belirtilen Docker kapsayıcılarını başlatır. Bu adımın tamamlanabilmesi için bir veya iki dakika sürer. Aşağıdakine benzer bir çıktı görürsünüz:
+Bu komut *docker-compose.yml'de*belirtilen Docker kapsayıcılarını başlatır. Bu adımın tamamlanması bir veya iki dakika sürer. Aşağıdakilere benzer çıktı görürsünüz:
 
 ```
 Creating wordpress_db_1...
@@ -109,7 +109,7 @@ Creating wordpress_wordpress_1...
 ```
 
 
-Kapsayıcıların yukarı doğru olduğunu doğrulamak için `sudo docker-compose ps`yazın. Şöyle bir şey görmeniz gerekir:
+Kapsayıcıların dolduğunu doğrulamak için `sudo docker-compose ps`yazın. Şuna benzer bir şey görmeniz gerekir:
 
 ```
         Name                       Command               State         Ports
@@ -118,12 +118,12 @@ azureuser_db_1          docker-entrypoint.sh mysqld      Up      3306/tcp
 azureuser_wordpress_1   docker-entrypoint.sh apach ...   Up      0.0.0.0:80->80/tcp
 ```
 
-Artık, 80 numaralı bağlantı noktasındaki VM 'ye doğrudan WordPress 'e bağlanabilirsiniz. Bir Web tarayıcısı açın ve sanal makinenizin IP adresi adını girin. Şimdi yüklemeyi tamamlayabileceğiniz ve uygulamayı kullanmaya başlayabileceğiniz WordPress başlangıç ekranını görmeniz gerekir.
+Artık WordPress'e doğrudan 80 bağlantı noktasındaki VM'den bağlanabilirsiniz. Bir web tarayıcısı açın ve VM'nizin IP adresi adını girin. Şimdi wordpress başlangıç ekranını görmelisiniz, burada yüklemeyi tamamlamak ve uygulama ile başlamak.
 
 ![WordPress başlangıç ekranı](./media/docker-compose-quickstart/wordpressstart.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* Çok Kapsayıcılı uygulamalar oluşturma ve dağıtma hakkında daha fazla örnek için [oluşturma komut satırı başvurusunu](https://docs.docker.com/compose/reference/) ve [Kullanıcı kılavuzunu](https://docs.docker.com/compose/) inceleyin.
-* Docker ile bir Azure VM ve oluşturma ile ayarlanmış bir uygulama dağıtmak için kendi veya [topluluğınızdan](https://azure.microsoft.com/documentation/templates/)katkıdan bir Azure Resource Manager şablonu kullanın. Örneğin, [Docker şablonuyla bir WordPress blogu dağıtma](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-wordpress-mysql) , bir Ubuntu VM üzerinde bir MySQL arka ucuna sahip WordPress 'yi hızlıca dağıtmak Için Docker ve Compose kullanır.
-* Docker Compose bir Docker Sısınma kümesiyle tümleştirmeyi deneyin. Senaryolar için [Sısınma Ile oluşturma kullanma](https://docs.docker.com/compose/swarm/) konusuna bakın.
+* Çoklu kapsayıcı uygulamaları oluşturma ve dağıtma yla ilgili daha fazla örnek için [Komut Satırı Başvuruve](https://docs.docker.com/compose/reference/) [Kullanıcı](https://docs.docker.com/compose/) Kılavuzu'na göz atın.
+* Azure Kaynak Yöneticisi şablonunu kullanın, kendi veya [topluluktan](https://azure.microsoft.com/documentation/templates/)katkıda bulunan bir şablon, Docker ile bir Azure VM'si ve Compose ile ayarlanmış bir uygulama dağıtmak için. Örneğin, Docker şablonuna [sahip bir WordPress blogunu dağıt'](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-wordpress-mysql) ta, Bir Ubuntu VM'de MySQL arka ucuyla WordPress'i hızla dağıtmak için Docker ve Compose kullanır.
+* Docker Compose'u Docker Swarm kümesiyle bütünleştirmeyi deneyin. Senaryolar için [Swarm ile Oluştur'u Kullanma'ya](https://docs.docker.com/compose/swarm/) bakın.
 

@@ -1,52 +1,51 @@
 ---
-title: Pazara alma hizmetleri-Market 'te nasıl öne çıkanlar | Mavisi
-description: Go-to-market Services-Bu bölümde, Azure Marketi 'nde öne çıkan bir listenin nasıl alınacağı açıklanmaktadır
-services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
+title: Go-To-Market Hizmetleri - Pazarda nasıl öne çıkarsınız | Azure
+description: Markete Git Hizmetleri - Bu bölümde Azure Marketi'nde bir girişin nasıl yer aldığı açıklanmaktadır
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/21/2018
-ms.author: ellacroi
-ms.openlocfilehash: 12dcdff082ce1bac350d0e3a426df6acec6efe99
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: dsindona
+ms.openlocfilehash: 266070a6292e41af6ce1b4258774d20a9bd90312
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819015"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80286294"
 ---
-# <a name="how-to-get-featured-in-appsource-and-azure-marketplace"></a>AppSource ve Azure Marketi 'nde öne çıkanlar
+# <a name="how-to-get-featured-in-appsource-and-azure-marketplace"></a>AppSource ve Azure Marketplace'te öne çıkma
 
-Azure Marketi ve AppSource, uygulamanızın öne çıkan **uygulamalar** bölümlerine sahiptir:
+Azure Marketplace ve AppSource, uygulamanızın öne çıkarılabildiği **özellikli uygulamalar** bölümlerine sahiptir:
 
-* İlk olarak, bir deneme veya Işlem teklifiniz varsa, [ticari Market avantajları](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits)aracılığıyla "Kategori yükseltme" avantajınızı kullanabilirsiniz.
-* İkinci olarak, bir nokta kazanmak için aşağıdaki en iyi uygulama ve ölçüt listesini gözden geçirin.
+* İlk olarak, bir DENEME veya İşlem teklifiniz varsa, ticari [pazar avantajları](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits)aracılığıyla "kategori promosyonu" avantajınızı kullanabilirsiniz.
+* İkinci olarak, bir yer kazanmak için aşağıdaki en iyi uygulamalar ve kriterler listesini gözden geçirin.
 
-Öne çıkan uygulamalar seçim algoritması, bir kişinin ABD 'deki kredi puanı gibi Microsoft tarafından bir uygulama puanı oluşturur.  Öne çıkan uygulamaların haftalık seçimi, uygulama ve hizmet performansının hesaplanmasına göre yapılır.
+Öne çıkan uygulama seçim algoritması, tıpkı ABD'deki bir kişinin kredi puanı gibi Microsoft'un bir uygulamaya puan laması gibi bir puan oluşturur.  Özellikli uygulamaların haftalık seçimi, uygulama ve hizmet performansının hesaplanmasına dayalı olacaktır.
 
-## <a name="steps-to-take"></a>Gerçekleştirilecek adımlar
+## <a name="steps-to-take"></a>Atılması gereken adımlar
 
-Puanınızı geliştirmek için aşağıdaki eylem öğelerini alabilirsiniz:
+Puanınızı artırmak için aşağıdaki eylem öğelerini alabilirsiniz:
 
-1. *Uygulamanızın veya hizmetinizin uygun şekilde sınıflandırıldığından emin olun*: uygulamanızı veya hizmetinizin yeteneklerini temsil eden üç kategori seçin.
-2. *Azure Market uygulamaları: aylık Azure kullanım aylarınızı büyütün.* Ayda 1.000 saat Azure kullanımı elde ediyorsanız, öne çıkan olasılığınızı önemli ölçüde artıracaksınız.
-3. *AppSource uygulamaları: teklifize gelen alımları artırın.* Ayda 10 alma elde edebiliyorsanız, önemli ölçüde öne çıkmanız ihtimalini büyük ölçüde artıracaksınız. 
-4. *Ortak satış için hazırlık durumuna ulaşın*: ortak satış için gereksinimleri doldurun.
-5. *Teklifinizin kalitesini artırabilirsiniz*: teklifinizin nasıl değiştirileceği hakkında bilgi için bkz. [içerik listeleme kılavuzları](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation)
-6. Market 'te birden çok teklif yayımlama: tüm çekirdek Uygulamalarınız ve hizmetleriniz listelenir mi? Deneme deneyiminize sahipsiniz musunuz?
-7. Müşterilerinizin İncelemeleri yazmasını önerin.
+1. *Uygulamanızın veya hizmetinizin uygun şekilde kategorilere ayırdığından emin olun:* uygulamanızın veya hizmetinizin yeteneklerini temsil eden üç kategori seçin.
+2. *Azure MarketI Uygulamaları: Azure tüketiminizi aydan aya kadar büyütün.* Ayda 1.000 saat Azure kullanımı elde edebiliyoruzsa, öne çıkarma şansınızı büyük ölçüde artırırsınız.
+3. *AppSource Apps: teklifinize gelen satın almaları artırın.* Ayda 10 satın alma elde edebiliyoruz, büyük ölçüde özellikli olma şansınızı artıracaktır. 
+4. *Co-Sell hazır durumunu elde edin:* co-satmak için gerekli olan gereksinimleri hazır layın.
+5. *Teklifinizin kalitesini artırın:* teklifinizi nasıl değiştireceğinize ilişkin bilgi için [içerik listeleme yönergelerine](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation) bakın
+6. Market'te birden fazla teklif yayınlayın: tüm temel uygulamalarınız ve hizmetleriniz listelendi mi? Deneme tecrüben var mı?
+7. Müşterilerinizi yorum yazmaya teşvik edin.
 
-Öne çıkan uygulama yükseltmeleri, arama algoritmasından ayrı olarak çalışır.
+Öne Çıkan Uygulamalar promosyonları arama algoritmasından ayrı olarak çalışır.
 
 >[!Note]
->Çözümünüz arama sonuçlarında doğru görünmüyorsa, [bulut iş ortağı portalı](https://cloudpartner.azure.com/)yardım menüsü aracılığıyla bir destek bileti dosyası yapın.
+>Çözümünüz arama sonuçlarında doğru görünmüyorsa, Bulut İş Ortağı [Portalı'ndaki](https://cloudpartner.azure.com/)Yardım menüsünden bir destek bileti gönderin.
 
-GTM desteğiniz Ayrıca, listelerinizi ve işinizi daha fazla yükseltebilmeniz için kendi kendine yardım şablonlarının, Web içeriğinin, eğitimin ve araçların tam bir kitaplığını içerir.
+GTM desteğiniz ayrıca, girişlerinizi ve işletmenizi daha fazla tanıtmanıza yardımcı olacak tam bir kişisel gelişim şablonları, web içeriği, eğitim ve araçlardan oluşan bir kitaplığı da içerir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Ticari Market avantajlarınız](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits)hakkında daha fazla bilgi edinin.
+Ticari pazar [avantajlarınız](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits)hakkında daha fazla bilgi edinin.
 
-Teklifinizi oluşturmak ve yapılandırmak için [bulut iş ortağı portalı](https://cloudpartner.azure.com) oturum açın.
+Teklifinizi oluşturmak ve yapılandırmak için [Bulut İş Ortağı Portalı'nda](https://cloudpartner.azure.com) oturum açın.
 
 ---

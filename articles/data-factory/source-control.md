@@ -1,6 +1,6 @@
 ---
 title: Kaynak denetimi
-description: Azure Data Factory 'da kaynak denetimini yapılandırmayı öğrenin
+description: Azure Veri Fabrikası'nda kaynak denetimini nasıl yapılandırılabildiğini öğrenin
 services: data-factory
 ms.service: data-factory
 ms.workload: data-services
@@ -11,183 +11,183 @@ ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/09/2019
-ms.openlocfilehash: 1cc5932eca520b0bbc0c592b54d36ea8b5942b08
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 6645c2672e15c562216b4347f779ef3634a2f124
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79260611"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80130863"
 ---
-# <a name="source-control-in-azure-data-factory"></a>Azure Data Factory kaynak denetimi
+# <a name="source-control-in-azure-data-factory"></a>Azure Veri Fabrikası'nda kaynak denetimi
 
-Azure Data Factory Kullanıcı arabirimi deneyimi (UX), Visual Authoring için iki deneyimle sahiptir:
+Azure Veri Fabrikası kullanıcı arabirimi deneyimi (UX) görsel yazarlık için iki deneyime sahiptir:
 
-- Data Factory hizmeti ile doğrudan yazar
-- Azure Repos git veya GitHub tümleştirmesiyle yazar
+- Doğrudan Veri Fabrikası hizmetiile yazar
+- Azure Repos Git veya GitHub tümleştirmesi ile yazar
 
 > [!NOTE]
-> Azure Kamu bulutunda yalnızca Data Factory hizmeti ile doğrudan yazma desteklenir.
+> Azure Kamu Bulutu'nda yalnızca doğrudan Veri Fabrikası hizmetiyle yazma desteklenir.
 
-## <a name="author-directly-with-the-data-factory-service"></a>Data Factory hizmeti ile doğrudan yazar
+## <a name="author-directly-with-the-data-factory-service"></a>Doğrudan Veri Fabrikası hizmetiile yazar
 
-Data Factory hizmetiyle doğrudan yazma sırasında, değişiklikleri kaydetmek için tek yol **Tümünü Yayımla** düğmesi aracılığıyla yapılır. Tıklatıldıktan sonra, yaptığınız tüm değişiklikler doğrudan Data Factory hizmetine yayımlanır. 
+Doğrudan Veri Fabrikası hizmetiyle yazarken, değişiklikleri kaydetmenin tek yolu **Tümlerini Yayımla** düğmesi üzerinden dir. Tıkladıktan sonra yaptığınız tüm değişiklikler doğrudan Veri Fabrikası hizmetine yayınlanır. 
 
 ![Yayımlama modu](media/author-visually/data-factory-publish.png)
 
-Data Factory hizmeti ile doğrudan yazma aşağıdaki sınırlamalara sahiptir:
+Doğrudan Veri Fabrikası hizmetiyle yazmanın aşağıdaki sınırlamalar vardır:
 
-- Data Factory hizmeti, değişikliklerinizin JSON varlıklarını depolamak için bir depo içermez.
-- Data Factory hizmeti işbirliği veya sürüm denetimi için en iyi duruma getirilmemiştir.
-
-> [!NOTE]
-> Git deposu yapılandırıldığında Data Factory hizmeti ile doğrudan yazma Azure Data Factory UX içinde devre dışıdır. Değişiklikler doğrudan hizmete PowerShell veya SDK aracılığıyla yapılabilir.
-
-## <a name="author-with-azure-repos-git-integration"></a>Azure Repos git tümleştirmesiyle yazar
-
-Azure Repos git tümleştirmesi ile görsel yazma, Veri Fabrikası işlem hatlarınız üzerinde iş için kaynak denetimi ve işbirliğini destekler. Kaynak denetimi, işbirliği, sürüm oluşturma vb. için bir Azure Repos git kuruluş deposu ile bir veri fabrikası ilişkilendirebilirsiniz. Tek bir Azure Repos git kuruluşunda birden çok depo bulunabilir, ancak bir Azure Repos git deposu yalnızca bir veri fabrikası ile ilişkilendirilebilir. Azure Repos kuruluşunuz veya deponuz yoksa kaynaklarınızı oluşturmak için [Bu yönergeleri](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization-msa-or-work-student) izleyin.
+- Veri Fabrikası hizmeti, değişiklikleriniz için JSON varlıklarını depolamak için bir depo içermez.
+- Veri Fabrikası hizmeti işbirliği veya sürüm denetimi için optimize edilmiş değildir.
 
 > [!NOTE]
-> Betik ve veri dosyalarını bir Azure Repos git deposunda saklayabilirsiniz. Ancak, dosyaları Azure depolama 'ya el ile yüklemeniz gerekir. Data Factory işlem hattı, bir Azure Repos git deposunda depolanan betiği veya veri dosyalarını Azure depolama 'ya otomatik olarak yüklemez.
+> Git deposu yapılandırıldığında Azure Veri Fabrikası UX'de doğrudan Veri Fabrikası hizmetiyle yazma devre dışı bırakılır. Değişiklikler powershell veya SDK üzerinden doğrudan hizmete yapılabilir.
 
-### <a name="configure-an-azure-repos-git-repository-with-azure-data-factory"></a>Azure Data Factory ile Azure Repos git deposu yapılandırma
+## <a name="author-with-azure-repos-git-integration"></a>Azure Repos Git tümleştirmesi ile yazma
 
-Bir Azure Repos Git deposunu, veri fabrikasının iki yöntemi aracılığıyla yapılandırabilirsiniz.
+Azure Repos Git tümleştirmesi ile görsel yazma, veri fabrikası ardışık hatlarınızda çalışmak için kaynak denetimini ve işbirliğini destekler. Bir veri fabrikasını kaynak denetimi, işbirliği, sürümleme ve benzeri için bir Azure Repos Git kuruluş deposuyla ilişkilendirebilirsiniz. Tek bir Azure Repos Git kuruluşunun birden çok deposu olabilir, ancak Azure Depoları Git deposu yalnızca bir veri fabrikasıyla ilişkilendirilebilir. Bir Azure Deposu kuruluşunuz veya deponuz yoksa, kaynaklarınızı oluşturmak için [aşağıdaki yönergeleri](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization-msa-or-work-student) izleyin.
 
-#### <a name="configuration-method-1-azure-data-factory-home-page"></a>Yapılandırma yöntemi 1: Azure Data Factory giriş sayfası
+> [!NOTE]
+> Komut dosyası ve veri dosyalarını Azure Repos Git deposunda depolayabilirsiniz. Ancak, dosyaları el ile Azure Depolama'ya yüklemeniz gerekir. Veri Fabrikası ardışık hattı, Azure Deposu'nda depolanan komut dosyalarını veya veri dosyalarını otomatik olarak Azure Depolama'ya yüklemez.
 
-Azure Data Factory giriş sayfasında **kod deposunu ayarla**' yı seçin.
+### <a name="configure-an-azure-repos-git-repository-with-azure-data-factory"></a>Azure Veri Fabrikası ile Azure Repos Git deposunu yapılandırma
 
-![Azure Repos kod deposu yapılandırma](media/author-visually/configure-repo.png)
+Bir Azure Repos Git deposunu veri fabrikasıyla iki yöntemle yapılandırabilirsiniz.
 
-#### <a name="configuration-method-2-ux-authoring-canvas"></a>Yapılandırma yöntemi 2: UX yazma tuvali
-Azure Data Factory UX yazma tuvalinde **Data Factory** açılan menüsünü ve ardından **kod deposunu ayarla**' yı seçin.
+#### <a name="configuration-method-1-azure-data-factory-home-page"></a>Yapılandırma yöntemi 1: Azure Veri Fabrikası ana sayfası
 
-![UX yazma için kod deposu ayarlarını yapılandırma](media/author-visually/configure-repo-2.png)
+Azure Veri Fabrikası ana sayfasında **Kod Deposu Ayarla'yı**seçin.
+
+![Azure Deposu kod deposunu yapılandırma](media/author-visually/configure-repo.png)
+
+#### <a name="configuration-method-2-ux-authoring-canvas"></a>Yapılandırma yöntemi 2: UX yazma tuval
+Azure Veri Fabrikası UX yazma tuvalinde, **Veri Fabrikası** açılır menüsünü seçin ve ardından **Kod Deposu'nu Ayarla'yı**seçin.
+
+![UX yazarlık için kod deposu ayarlarını yapılandırın](media/author-visually/configure-repo-2.png)
 
 Her iki yöntem de depo ayarları yapılandırma bölmesini açar.
 
 ![Kod deposu ayarlarını yapılandırma](media/author-visually/repo-settings.png)
 
-Yapılandırma bölmesinde aşağıdaki Azure Repos kod deposu ayarları gösterilmektedir:
+Yapılandırma bölmesi aşağıdaki Azure Repos kod deposu ayarlarını gösterir:
 
 | Ayar | Açıklama | Değer |
 |:--- |:--- |:--- |
-| **Depo türü** | Azure Repos kod deposunun türü.<br/> | Azure DevOps git veya GitHub |
+| **Depo Tipi** | Azure Depoları kod deposunun türü.<br/> | Azure DevOps Git veya GitHub |
 | **Azure Active Directory** | Azure AD kiracı adınız. | `<your tenant name>` |
-| **Azure Repos kuruluş** | Azure Repos kuruluşunuzun adı. Azure Repos kuruluşunuzun adını `https://{organization name}.visualstudio.com`adresinde bulabilirsiniz. Visual Studio profilinize erişmek ve depolarınızı ve projelerinizi görmek için [Azure Repos kuruluşunuzda oturum](https://www.visualstudio.com/team-services/git/) açabilirsiniz. | `<your organization name>` |
-| **ProjectName** | Azure Repos projenizin adı. Azure Repos projenizin adını `https://{organization name}.visualstudio.com/{project name}`adresinde bulabilirsiniz. | `<your Azure Repos project name>` |
-| **RepositoryName** | Azure Repos kod deposu adınız. Azure Repos projeler, projeniz büyüdükçe kaynak kodunuzu yönetmek için Git depoları içerir. Yeni bir depo oluşturabilir veya projenizde zaten var olan bir depoyu kullanabilirsiniz. | `<your Azure Repos code repository name>` |
-| **İşbirliği dalı** | Yayımlamak için kullanılan Azure Repos işbirliği dalı. Varsayılan olarak, `master`. Başka bir daldan kaynak yayınlamak istiyorsanız bu ayarı değiştirin. | `<your collaboration branch name>` |
-| **Kök klasör** | Azure Repos işbirliği dalınızdaki kök klasörünüz. | `<your root folder name>` |
-| **Mevcut Data Factory kaynaklarını depoya aktar** | UX **yazma tuvalinden** bir Azure Repos git deposuna var olan veri fabrikası kaynaklarının içeri aktarılmayacağını belirtir. Veri Fabrikası kaynaklarınızı JSON biçiminde ilişkili git deposuna aktarmak için kutuyu seçin. Bu eylem, her kaynağı ayrı ayrı dışarı aktarır (yani, bağlı hizmetler ve veri kümeleri ayrı Jdönemleri içine aktarılır). Bu kutu seçili olmadığında, mevcut kaynaklar içeri aktarılmaz. | Seçili (varsayılan) |
-| **Kaynağı içeri aktarma dalı** | Veri Fabrikası kaynaklarının (işlem hatları, veri kümeleri, bağlı hizmetler vs.) içe aktarıldığı dalı belirtir. Kaynakları şu dallardan birine içeri aktarabilirsiniz: a. İşbirliği b. Yeni c oluştur. Var Olanı Kullan |  |
+| **Azure Repos Organizasyonu** | Azure Repos kuruluş adınız. Azure Repos kuruluş adınızı ' `https://{organization name}.visualstudio.com`da bulabilirsiniz. Visual Studio profilinize erişmek ve depolarınızı ve projelerinizi görmek için [Azure Repos kuruluşunuzda oturum](https://www.visualstudio.com/team-services/git/) açabilirsiniz. | `<your organization name>` |
+| **Projeadı** | Azure Repos proje adınız. Azure Repos proje adınızı ' `https://{organization name}.visualstudio.com/{project name}`da bulabilirsiniz. | `<your Azure Repos project name>` |
+| **DepoAdı** | Azure Depo kodu depo adınız. Azure Repos projeleri, projeniz büyüdükçe kaynak kodunuzu yönetmek için Git depoları içerir. Yeni bir depo oluşturabilir veya projenizde zaten bulunan varolan bir depoyı kullanabilirsiniz. | `<your Azure Repos code repository name>` |
+| **İşbirliği şubesi** | Yayımlama için kullanılan Azure Repos işbirliği dalınız. Varsayılan olarak, `master`bu. Başka bir daldan kaynak yayımlamak istiyorsanız bu ayarı değiştirin. | `<your collaboration branch name>` |
+| **Kök klasörü** | Azure Repos işbirliği dalınızdaki kök klasörünüz. | `<your root folder name>` |
+| **Varolan Veri Fabrikası kaynaklarını depoya aktarma** | Varolan veri fabrikası kaynaklarını UX Yazma **tuvalinden** Azure Repos Git deposuna aktarıp aktarmayacağı belirtir. Veri fabrikası kaynaklarınızı JSON formatında ilişkili Git deposuna almak için kutuyu seçin. Bu eylem her kaynağı ayrı ayrı dışa aktarıyor (diğer bir süre, bağlı hizmetler ve veri kümeleri ayrı JSON'lara dışa aktarılır). Bu kutu seçilmediğinde, varolan kaynaklar içe aktarılmaz. | Seçili (varsayılan) |
+| **Kaynak almak için şube** | Veri fabrikası kaynaklarının (boru hatları, veri kümeleri, bağlantılı hizmetler vb.) hangi dalda alındığını belirtir. Kaynakları aşağıdaki dallardan birine aktarabilirsiniz: a. İşbirliği b. Yeni c oluşturun. Mevcut Kullanımı |  |
 
 > [!NOTE]
-> Microsoft Edge kullanıyorsanız ve Azure DevOps hesabı açılır listenizde herhangi bir değer görmüyorsanız, güvenilen siteler listesine https://*. VisualStudio. com ekleyin.
+> Microsoft Edge kullanıyorsanız ve Azure DevOps Hesabı açılır bırakma nızda herhangi bir değer görmüyorsanız, https://*.visualstudio.com adresini güvenilir siteler listesine ekleyin.
 
-### <a name="use-a-different-azure-active-directory-tenant"></a>Farklı bir Azure Active Directory kiracı kullanın
+### <a name="use-a-different-azure-active-directory-tenant"></a>Farklı bir Azure Etkin Dizin kiracısı kullanma
 
-Azure Repos Git deposunu farklı bir Azure Active Directory kiracısında oluşturabilirsiniz. Farklı bir Azure AD kiracısı belirtmek için, kullanmakta olduğunuz Azure aboneliği için yönetici izinlerinizin olması gerekir.
+Azure Repos Git deposunu farklı bir Azure Active Directory kiracısında oluşturabilirsiniz. Farklı bir Azure AD kiracısı belirtmek için kullandığınız Azure aboneliğinde yönetici izinlerine sahip olmanız gerekir.
 
-### <a name="use-your-personal-microsoft-account"></a>Kişisel Microsoft hesabı kullanın
+### <a name="use-your-personal-microsoft-account"></a>Kişisel Microsoft hesabınızı kullanma
 
-Git tümleştirmesi için kişisel Microsoft hesabı kullanmak istiyorsanız, kişisel Azure deponuzu kuruluşunuzun Active Directory bağlayabilirsiniz.
+Git tümleştirmesi için kişisel bir Microsoft hesabı kullanmak için, kişisel Azure Repo'nuzu kuruluşunuzun Etkin Dizini'ne bağlayabilirsiniz.
 
-1. Kişisel Microsoft hesabı kuruluşunuzun Active Directory Konuk olarak ekleyin. Daha fazla bilgi için, bkz. [Azure portal Azure ACTIVE DIRECTORY B2B işbirliği kullanıcıları ekleme](../active-directory/b2b/add-users-administrator.md).
+1. Kişisel Microsoft hesabınızı kuruluşunuzun Etkin Dizini'ne konuk olarak ekleyin. Daha fazla bilgi için azure [portalındaki Azure Etkin Dizin B2B işbirliği kullanıcıları ekle'ye](../active-directory/b2b/add-users-administrator.md)bakın.
 
-2. Kişisel Microsoft hesabı Azure portal oturum açın. Sonra kuruluşunuzun Active Directory geçin.
+2. Kişisel Microsoft hesabınızla Azure portalında oturum açın. Ardından kuruluşunuzun Etkin Dizini'ne geçin.
 
-3. Kişisel deponuzu şimdi gördüğünüz Azure DevOps bölümüne gidin. Depoyu seçin ve Active Directory bağlanın.
+3. Azure DevOps bölümüne gidin ve burada artık kişisel reponuzu görün. Repo'yu seçin ve Active Directory'ye bağlanın.
 
-Bu yapılandırma adımlarında sonra, Data Factory Kullanıcı arabiriminde git tümleştirmesini ayarlarken kişisel deponuz kullanılabilir.
+Bu yapılandırma adımlarını takiben, Veri Fabrikası UI'sinde Git tümleştirmesini ayarladığınızda kişisel repo'nuz kullanılabilir.
 
-Kuruluşunuzun Active Directory Azure Repos bağlama hakkında daha fazla bilgi için bkz. [Azure DevOps kuruluşunuzu Azure Active Directory 'e bağlama](/azure/devops/organizations/accounts/connect-organization-to-azure-ad).
+Azure Repos'u kuruluşunuzun Etkin Dizinine bağlama hakkında daha fazla bilgi için Azure [DevOps kuruluşunuzu Azure Etkin Dizine Bağlayın'a](/azure/devops/organizations/accounts/connect-organization-to-azure-ad)bakın.
 
-## <a name="author-with-github-integration"></a>GitHub tümleştirmesiyle yazar
+## <a name="author-with-github-integration"></a>GitHub tümleştirmesi ile yazma
 
-GitHub tümleştirmesiyle Visual Authoring, Veri Fabrikası işlem hatlarınız üzerinde iş için kaynak denetimi ve işbirliğini destekler. Kaynak denetimi, işbirliği ve sürüm oluşturma için bir GitHub hesap deposuyla bir veri fabrikasını ilişkilendirebilirsiniz. Tek bir GitHub hesabının birden çok deposu olabilir, ancak bir GitHub deposu yalnızca bir veri fabrikası ile ilişkilendirilebilir. GitHub hesabınız veya deponuz yoksa kaynaklarınızı oluşturmak için [Bu yönergeleri](https://github.com/join) izleyin.
+GitHub tümleştirmesi ile görsel yazma, veri fabrikası ardışık hatlarınızda çalışmak için kaynak denetimini ve işbirliğini destekler. Bir veri fabrikasını kaynak denetimi, işbirliği ve sürüm için github hesap deposuyla ilişkilendirebilirsiniz. Tek bir GitHub hesabının birden çok deposu olabilir, ancak GitHub deposu yalnızca bir veri fabrikasıyla ilişkilendirilebilir. GitHub hesabınız veya deponuz yoksa, kaynaklarınızı oluşturmak için [aşağıdaki yönergeleri](https://github.com/join) izleyin.
 
-Data Factory ile GitHub tümleştirmesi hem genel GitHub (yani, [https://github.com](https://github.com)) hem de GitHub Enterprise 'u destekler. GitHub 'daki depoya okuma ve yazma izniniz olduğu sürece hem ortak hem de özel GitHub depolarını Data Factory ile birlikte kullanabilirsiniz.
+Veri Fabrikası ile GitHub entegrasyonu hem ortak GitHub (yani) [https://github.com](https://github.com)ve GitHub Enterprise destekler. GitHub'daki depoya izin okuduğunuz ve yazdığınız sürece Veri Fabrikası ile hem genel hem de özel GitHub depolarını kullanabilirsiniz.
 
-Bir GitHub deposunu yapılandırmak için, kullanmakta olduğunuz Azure aboneliği için yönetici izinlerinizin olması gerekir.
+Bir GitHub repo'su yapılandırmak için, kullanmakta olduğunuz Azure aboneliği için yönetici izinlerine sahip olmalısınız.
 
-Bu özelliği dokuz dakikalık bir giriş ve tanıtım için aşağıdaki videoyu izleyin:
+Bu özelliğin dokuz dakikalık tanıtımı ve gösterimi için aşağıdaki videoyu izleyin:
 
 > [!VIDEO https://channel9.msdn.com/shows/azure-friday/Azure-Data-Factory-visual-tools-now-integrated-with-GitHub/player]
 
-### <a name="configure-a-github-repository-with-azure-data-factory"></a>Azure Data Factory ile GitHub deposu yapılandırma
+### <a name="configure-a-github-repository-with-azure-data-factory"></a>Azure Veri Fabrikası ile GitHub deposunu yapılandırma
 
-Bir GitHub deposunu, veri fabrikasının iki yöntemi aracılığıyla yapılandırabilirsiniz.
+Bir GitHub deposunu veri fabrikasıyla iki yöntemle yapılandırabilirsiniz.
 
-#### <a name="configuration-method-1-azure-data-factory-home-page"></a>Yapılandırma yöntemi 1: Azure Data Factory giriş sayfası
+#### <a name="configuration-method-1-azure-data-factory-home-page"></a>Yapılandırma yöntemi 1: Azure Veri Fabrikası ana sayfası
 
-Azure Data Factory giriş sayfasında **kod deposunu ayarla**' yı seçin.
+Azure Veri Fabrikası ana sayfasında **Kod Deposu Ayarla'yı**seçin.
 
-![Azure Repos kod deposu yapılandırma](media/author-visually/configure-repo.png)
+![Azure Deposu kod deposunu yapılandırma](media/author-visually/configure-repo.png)
 
-#### <a name="configuration-method-2-ux-authoring-canvas"></a>Yapılandırma yöntemi 2: UX yazma tuvali
+#### <a name="configuration-method-2-ux-authoring-canvas"></a>Yapılandırma yöntemi 2: UX yazma tuval
 
-Azure Data Factory UX yazma tuvalinde **Data Factory** açılan menüsünü ve ardından **kod deposunu ayarla**' yı seçin.
+Azure Veri Fabrikası UX yazma tuvalinde, **Veri Fabrikası** açılır menüsünü seçin ve ardından **Kod Deposu'nu Ayarla'yı**seçin.
 
-![UX yazma için kod deposu ayarlarını yapılandırma](media/author-visually/configure-repo-2.png)
+![UX yazarlık için kod deposu ayarlarını yapılandırın](media/author-visually/configure-repo-2.png)
 
 Her iki yöntem de depo ayarları yapılandırma bölmesini açar.
 
 ![GitHub depo ayarları](media/author-visually/github-integration-image2.png)
 
-Yapılandırma bölmesinde aşağıdaki GitHub deposu ayarları gösterilmektedir:
+Yapılandırma bölmesi aşağıdaki GitHub depo ayarlarını gösterir:
 
 | **Ayar** | **Açıklama**  | **Değer**  |
 |:--- |:--- |:--- |
-| **Depo türü** | Azure Repos kod deposunun türü. | GitHub |
-| **GitHub Enterprise kullanma** | GitHub Enterprise 'ı seçme onay kutusu | seçilmemiş (varsayılan) |
-| **GitHub Enterprise URL 'SI** | GitHub Enterprise root URL 'SI. Örneğin: https://github.mydomain.com. Yalnızca **GitHub Enterprise kullan** seçilirse gereklidir | `<your GitHub enterprise url>` |                                                           
-| **GitHub hesabı** | GitHub hesabınızın adı. Bu ad https 'den bulunabilir:\//GitHub.exe com/{Account Name}/{Repository Name}. Bu sayfaya gidildiğinde GitHub hesabınıza GitHub OAuth kimlik bilgilerini girmeniz istenir. | `<your GitHub account name>` |
-| **Depo adı**  | GitHub kod deposu adınız. GitHub hesapları, kaynak kodunuzu yönetmek için Git depoları içerir. Yeni bir depo oluşturabilir veya hesabınızda zaten var olan bir depoyu kullanabilirsiniz. | `<your repository name>` |
-| **İşbirliği dalı** | Yayımlamak için kullanılan GitHub işbirliği dalınız. Varsayılan olarak, yöneticisidir. Başka bir daldan kaynak yayınlamak istiyorsanız bu ayarı değiştirin. | `<your collaboration branch>` |
-| **Kök klasör** | GitHub işbirliği dalınızdaki kök klasörünüz. |`<your root folder name>` |
-| **Mevcut Data Factory kaynaklarını depoya aktar** | UX yazma tuvalinden bir GitHub deposuna var olan veri fabrikası kaynaklarının içeri aktarılmayacağını belirtir. Veri Fabrikası kaynaklarınızı JSON biçiminde ilişkili git deposuna aktarmak için kutuyu seçin. Bu eylem, her kaynağı ayrı ayrı dışarı aktarır (yani, bağlı hizmetler ve veri kümeleri ayrı Jdönemleri içine aktarılır). Bu kutu seçili olmadığında, mevcut kaynaklar içeri aktarılmaz. | Seçili (varsayılan) |
-| **Kaynağı içeri aktarma dalı** | Veri Fabrikası kaynaklarının (işlem hatları, veri kümeleri, bağlı hizmetler vs.) içe aktarıldığı dalı belirtir. Kaynakları şu dallardan birine içeri aktarabilirsiniz: a. İşbirliği b. Yeni c oluştur. Var Olanı Kullan |  |
+| **Depo Tipi** | Azure Depoları kod deposunun türü. | GitHub |
+| **GitHub Kurumsal'ı kullanma** | GitHub Enterprise'ı seçmek için onay kutusu | seçilmemiş (varsayılan) |
+| **GitHub Kurumsal URL** | GitHub Enterprise kök URL'si (yerel GitHub Enterprise sunucusu için HTTPS olmalıdır). Örneğin: https://github.mydomain.com. Yalnızca **GitHub Kurumsal'ı Kullan** seçilirse gereklidir | `<your GitHub enterprise url>` |                                                           
+| **GitHub hesabı** | GitHub hesap adınız. Bu ad https:\//github.com/{account name}/{repository name} adresindebulunabilir. Bu sayfada gezinmek, GitHub OAuth kimlik bilgilerini GitHub hesabınıza girmenizi ister. | `<your GitHub account name>` |
+| **Depo Adı**  | GitHub kod depo adınız. GitHub hesapları, kaynak kodunuzu yönetmek için Git depoları içerir. Yeni bir depo oluşturabilir veya hesabınızda zaten bulunan varolan bir depoyı kullanabilirsiniz. | `<your repository name>` |
+| **İşbirliği şubesi** | Yayımlama için kullanılan GitHub işbirliği dalın. Varsayılan olarak, bu ana. Başka bir daldan kaynak yayımlamak istiyorsanız bu ayarı değiştirin. | `<your collaboration branch>` |
+| **Kök klasörü** | GitHub işbirliği dalınızdaki kök klasörünüz. |`<your root folder name>` |
+| **Varolan Veri Fabrikası kaynaklarını depoya aktarma** | Varolan veri fabrikası kaynaklarının UX yazma tuvalinden GitHub deposuna aktarılıp aktarılmayacağını belirtir. Veri fabrikası kaynaklarınızı JSON formatında ilişkili Git deposuna almak için kutuyu seçin. Bu eylem her kaynağı ayrı ayrı dışa aktarıyor (diğer bir süre, bağlı hizmetler ve veri kümeleri ayrı JSON'lara dışa aktarılır). Bu kutu seçilmediğinde, varolan kaynaklar içe aktarılmaz. | Seçili (varsayılan) |
+| **Kaynak almak için şube** | Veri fabrikası kaynaklarının (boru hatları, veri kümeleri, bağlantılı hizmetler vb.) hangi dalda alındığını belirtir. Kaynakları aşağıdaki dallardan birine aktarabilirsiniz: a. İşbirliği b. Yeni c oluşturun. Mevcut Kullanımı |  |
 
 ### <a name="known-github-limitations"></a>Bilinen GitHub sınırlamaları
 
-- Betik ve veri dosyalarını bir GitHub deposunda saklayabilirsiniz. Ancak, dosyaları Azure depolama 'ya el ile yüklemeniz gerekir. Data Factory işlem hattı, GitHub deposunda depolanan betiği veya veri dosyalarını Azure depolama 'ya otomatik olarak yüklemez.
+- Komut dosyası ve veri dosyalarını GitHub deposunda depolayabilirsiniz. Ancak, dosyaları el ile Azure Depolama'ya yüklemeniz gerekir. Veri Fabrikası ardışık hattı, GitHub deposunda depolanan komut dosyalarını veya veri dosyalarını otomatik olarak Azure Depolama'ya yüklemez.
 
-- 2\.14.0 'den eski bir sürüme sahip GitHub Enterprise, Microsoft Edge tarayıcısında çalışmaz.
+- 2.14.0'dan eski bir sürümü olan GitHub Enterprise, Microsoft Edge tarayıcısında çalışmaz.
 
-- Data Factory görsel yazma araçları ile GitHub tümleştirmesi yalnızca, Data Factory genel kullanıma sunulan sürümünde çalışmaktadır.
+- Veri Fabrikası görsel yazma araçları ile GitHub entegrasyonu yalnızca Veri Fabrikası'nın genel sürümünde çalışır.
 
-- Her kaynak türü için (işlem hatları ve veri kümeleri gibi) en fazla 1.000 varlık tek bir GitHub dalında getirilebilir. Bu sınıra ulaşıldığında, kaynaklarınızı ayrı fabrikalar halinde bölmek için önerilir. Azure DevOps git 'in bu sınırlaması yoktur.
+- Tek bir GitHub dalından kaynak türü başına en fazla 1.000 varlık (ardışık hatlar ve veri kümeleri gibi) alınabilir. Bu sınıra ulaşılırsa, kaynaklarınızı ayrı fabrikalara bölmeniz önerilir. Azure DevOps Git'in bu sınırlaması yoktur.
 
-## <a name="switch-to-a-different-git-repo"></a>Farklı bir git deposuna geç
+## <a name="switch-to-a-different-git-repo"></a>Farklı bir Git repo'ya geçiş
 
-Farklı bir git deposuna geçiş yapmak için, Data Factory Genel Bakış sayfasının sağ üst köşesindeki **Git deposu ayarları** simgesine tıklayın. Simgeyi göremiyorsanız, yerel tarayıcı önbelleğinizi temizleyin. Geçerli depoyla ilişkilendirmeyi kaldırmak için simgeyi seçin.
+Farklı bir Git repo'ya geçmek için, Veri Fabrikası genel bakış sayfasının sağ üst köşesindeki **Git Repo Ayarları** simgesine tıklayın. Simgeyi göremiyorsanız, yerel tarayıcı önbelleğinizi temizleyin. Geçerli repo ile ilişkilendirme kaldırmak için simgeyi seçin.
 
 ![Git simgesi](media/author-visually/remove-repo.png)
 
-Depo ayarları bölmesi göründüğünde **Git 'ı kaldır**' ı seçin. Data Factory adınızı girin ve veri fabrikanızın ilişkili Git deposunu kaldırmak için **Onayla** ' ya tıklayın.
+Depo Ayarları bölmesi görüntüledikten sonra **Git'i kaldır'ı**seçin. Veri fabrikanızla ilişkili Git deposunu kaldırmak için veri fabrika adınızı girin ve **onayla'yı** tıklatın.
 
-![Geçerli git deposundan ilişkilendirmeyi kaldırma](media/author-visually/remove-repo2.png)
+![Geçerli Git reposuyla ilişkilendirme kaldırma](media/author-visually/remove-repo2.png)
 
-Geçerli depoyla ilişkilendirmeyi kaldırdıktan sonra, git ayarlarınızı farklı bir depoyu kullanacak şekilde yapılandırabilir ve ardından mevcut Data Factory kaynaklarını yeni depoya içeri aktarabilirsiniz. 
+Geçerli repo ile ilişkilendirme kaldırdıktan sonra, git ayarlarınızı farklı bir repo kullanacak şekilde yapılandırabilir ve sonra varolan Veri Fabrikası kaynaklarını yeni repo'ya aktarabilirsiniz. 
 
 ## <a name="version-control"></a>Sürüm denetimi
 
-Sürüm denetimi sistemleri ( _kaynak denetimi_olarak da bilinir), geliştiricilerin kod üzerinde işbirliği yapmasına ve kod tabanında yapılan değişiklikleri izlemesine izin verir. Kaynak denetimi, çoklu geliştirici projelerine yönelik temel bir araçtır.
+Sürüm denetim sistemleri _(kaynak denetimi_olarak da bilinir), geliştiricilerin kod üzerinde işbirliği yapmasına ve kod tabanında yapılan değişiklikleri izlemesine izin verir. Kaynak denetimi, çok geliştiricili projeler için önemli bir araçtır.
 
 ### <a name="creating-feature-branches"></a>Özellik dalları oluşturma
 
-Bir veri fabrikası ile ilişkili her bir Azure Repos git deposu bir işbirliği dalına sahiptir. (`master` varsayılan işbirliği daldır). Kullanıcılar, dal açılan menüsünde **+ yeni dal** ' a tıklayarak da özellik dalları oluşturabilir. Yeni dal bölmesi göründüğünde, özellik dalınızın adını girin.
+Bir veri fabrikasıyla ilişkili her Azure Repos Git deposunun bir işbirliği dalı vardır. (`master` varsayılan işbirliği dalıdır). Kullanıcılar ayrıca şube açılır ayında **+ Yeni Şube'yi** tıklayarak özellik dalları oluşturabilirler. Yeni dal bölmesi görüntüledikten sonra özellik dalının adını girin.
 
-![Yeni dal oluştur](media/author-visually/new-branch.png)
+![Yeni bir dal oluşturma](media/author-visually/new-branch.png)
 
-Özellik dalınızdaki değişiklikleri işbirliği dalınızla birleştirmeye hazırsanız, dal açılan listesine tıklayın ve **çekme Isteği oluştur**' u seçin. Bu eylem, çekme istekleri oluşturabileceğiniz, kod İncelemeleri yapabileceğiniz ve değişiklikleri işbirliği dalınızda birleştirebileceğiniz git Azure Repos için sizi yönlendirir. (`master` varsayılandır). Yalnızca Data Factory hizmetine işbirliği dalınızdan yayımlama izni verilir. 
+Özellik dalınızdaki değişiklikleri işbirliği dalınıza birleştirmeye hazır olduğunuzda, şube açılır düğmesine tıklayın ve **çekme isteği oluştur'u**seçin. Bu eylem, çekme isteklerini yükseltebileceğiniz, kod incelemeleri yapabileceğiniz ve işbirliği dalınızdaki değişiklikleri birleştirebileceğiniz Azure Repos Git'e götürür. (`master` varsayılan dır). Yalnızca işbirliği şubenizden Veri Fabrikası hizmetinde yayımlama izniniz vardır. 
 
-![Yeni bir çekme isteği oluştur](media/author-visually/create-pull-request.png)
+![Yeni çekme isteği oluşturma](media/author-visually/create-pull-request.png)
 
 ### <a name="configure-publishing-settings"></a>Yayımlama ayarlarını yapılandırma
 
-Yayımla dalını yapılandırmak için-diğer bir deyişle, Kaynak Yöneticisi şablonlarının kaydedildiği dal-işbirliği dalında kök klasöre bir `publish_config.json` dosyası ekleyin. Data Factory, bu dosyayı okur, alanı `publishBranch`arar ve belirtilen değere sahip yeni bir dal (zaten yoksa) oluşturur. Ardından, tüm Kaynak Yöneticisi şablonlarını belirtilen konuma kaydeder. Örnek:
+Yayımlama dalını yapılandırmak için - yani Kaynak Yöneticisi şablonlarının `publish_config.json` kaydedildiği dal - işbirliği dalındaki kök klasörüne bir dosya ekleyin. Veri Fabrikası bu dosyayı okur, alanı `publishBranch`arar ve sağlanan değerle birlikte yeni bir dal (zaten yoksa) oluşturur. Ardından, tüm Kaynak Yöneticisi şablonlarını belirtilen konuma kaydeder. Örnek:
 
 ```json
 {
@@ -195,74 +195,74 @@ Yayımla dalını yapılandırmak için-diğer bir deyişle, Kaynak Yöneticisi 
 }
 ```
 
-Yeni bir yayımlama dalı belirttiğinizde, Data Factory önceki yayımlama dalını silmez. Önceki yayımlama dalını kaldırmak istiyorsanız el ile silin.
+Yeni bir yayımlama dalı belirttiğiniz zaman, Veri Fabrikası önceki yayımlama dalını silmez. Önceki yayımlama dalını kaldırmak istiyorsanız, el ile silin.
 
 > [!NOTE]
-> Data Factory, fabrikası yüklerken yalnızca `publish_config.json` dosyayı okur. Portalda zaten fabrika yüklüyse, değişikliklerinizin geçerli olması için tarayıcıyı yenileyin.
+> Veri Fabrikası dosyayı yalnızca fabrikayı `publish_config.json` yüklerken okur. Fabrikayı zaten portala yüklediyseniz, değişikliklerinizin etkili olması için tarayıcıyı yenileyin.
 
-### <a name="publish-code-changes"></a>Kod değişikliklerini Yayımla
+### <a name="publish-code-changes"></a>Kod değişikliklerini yayımlama
 
-İşbirliği dalındaki değişiklikleri (`master` varsayılan) birleştirdikten sonra, kod değişikliklerinizi ana dalda Data Factory hizmetine el ile yayımlamak için **Yayımla** ' ya tıklayın.
+İşbirliği dalındaki değişiklikleri birleştirdikten sonra`master` (varsayılan değerdir), ana daldaki kod değişikliklerinizi Veri Fabrikası hizmetinde el ile yayımlamak için **Yayımla'yı** tıklatın.
 
-![Değişiklikleri Data Factory hizmette yayımlayın](media/author-visually/publish-changes.png)
+![Veri Fabrikası hizmetinde değişiklik yayımlama](media/author-visually/publish-changes.png)
 
-Yayın dalının ve bekleyen değişikliklerin doğru olduğunu onaylamak için bir yan bölme açılır. Değişikliklerinizi doğruladıktan sonra, yayımlamayı onaylamak için **Tamam** ' ı tıklatın.
+Yayımlama dalı ve bekleyen değişikliklerin doğru olduğunu onayladığınız bir yan bölme açılır. Değişikliklerinizi doğruladıktan sonra yayımlamayı onaylamak için **Tamam'ı** tıklatın.
 
-![Doğru yayımlama dalını onaylayın](media/author-visually/configure-publish-branch.png)
+![Doğru yayımlama dalını onaylama](media/author-visually/configure-publish-branch.png)
 
 > [!IMPORTANT]
-> Ana dal, Data Factory hizmetine dağıtılan özellikleri temsil etmez. Ana dalın Data Factory hizmetine el ile yayımlanması *gerekir* .
+> Ana şube, Veri Fabrikası hizmetinde dağıtılanları temsil etmez. Ana *şube,* Veri Fabrikası hizmetine el ile yayınlanmalıdır.
 
 ## <a name="advantages-of-git-integration"></a>Git tümleştirmesinin avantajları
 
--   **Kaynak denetimi**. Data Factory iş yükleriniz önemli olmaya yönelik olarak, aşağıdaki gibi çeşitli kaynak denetimi avantajlarından yararlanmak için fabrikanızı git ile tümleştirmeniz gerekir:
-    -   Değişiklikleri izleme/denetleme özelliği.
-    -   Hataları ortaya çıkan değişiklikleri döndürmenize olanak tanır.
--   **Kısmi olarak kaydedilir**. Fabrikanızdaki çok sayıda değişiklik yaparken, sizin için yaptığınız değişiklikleri taslak olarak kaydedememeniz veya bilgisayarınızın çöktüğü durumunda yaptığınız değişiklikleri kaybetmek istemediğiniz fark edersiniz. Git tümleştirmesi sayesinde yaptığınız değişiklikleri artımlı olarak kaydetmeye devam edebilir ve yalnızca hazırsanız fabrika üzerinde yayımlayabilirsiniz. Git, yaptığınız değişiklikleri sizin için test edinceye kadar çalışmanız için bir hazırlama yeri görevi görür.
--   **İşbirliği ve denetim**. Aynı fabrikaya katılan birden fazla ekip üyesine sahipseniz, bir kod inceleme işlemi aracılığıyla ekip malarınızın birbirleriyle işbirliği yapmasına izin vermek isteyebilirsiniz. Fabrikanızın, fabrikaya katkıda bulunan her katkıda bulunan fabrika için dağıtım iznine sahip olduğu şekilde de ayarlayabilirsiniz. Takım üyelerinin yalnızca git aracılığıyla değişiklik yapmasına izin verilebilir, ancak yalnızca ekipteki belirli kişilerin fabrika değişikliklerini "yayımlamasına" izin verilir.
--   **Difüzler gösteriliyor**. Git modunda, fabrikada yayımlanmakta olan yükün iyi bir farkını görmeniz gerekir. Bu fark, fabrikanıza son kez yayımladığınızdan beri değiştirilen/eklenen/silinen tüm kaynakları/varlıkları gösterir. Bu fark temelinde, yayımlama ile devam edebilir veya geri dönüp değişikliklerinizi denetleyebilir ve sonra daha sonra geri dönebilirsiniz.
--   **Daha ıyı CI/CD**. Git modunu kullanıyorsanız, geliştirme fabrikasında yapılan herhangi bir değişiklik olduğu anda yayın işlem hattınızı otomatik olarak tetikleyebilmeniz için yapılandırabilirsiniz. Ayrıca, fabrikanızın Kaynak Yöneticisi şablonunda parametreler olarak kullanılabilen özellikleri de özelleştirmeniz gerekir. Yalnızca gerekli özellikler kümesini parametre olarak tutmak ve her şeyin sabit olarak kodlanmasını sağlamak yararlı olabilir.
--   **Daha Iyi performans**. Bir ortalama fabrika, kaynaklar git aracılığıyla indirildiğinden git modunda, normal canlı moddan çok daha hızlı yüklenir.
+-   **Kaynak Denetimi**. Veri fabrikası iş yüklerin önemli hale geldikçe, aşağıdaki gibi çeşitli kaynak denetimi avantajlarından yararlanmak için fabrikanızı Git ile bütünleştirmek isteyebilirsiniz:
+    -   Değişiklikleri izleme/denetleme becerisi.
+    -   Hataları ortaya çıkan değişiklikleri geri alabilme yeteneği.
+-   **Kısmi Kaydeder.** Fabrikanızda birçok değişiklik yaptığınızda, normal LIVE modunda, değişikliklerinizi taslak olarak kaydedemediğinizi, hazır olmadığınız veya bilgisayarınızın çökmesi durumunda değişikliklerinizi kaybetmek istemediğiniz için fark esiniz. Git tümleştirmesi ile değişikliklerinizi aşamalı olarak kaydetmeye devam edebilir ve yalnızca hazır olduğunuzda fabrikada yayımlayabilirsiniz. Git, memnuniyetinizdeki değişikliklerinizi test edene kadar işiniz için bir sahneleme yeri görevi görür.
+-   **İşbirliği ve Kontrol**. Aynı fabrikaya katılan birden fazla ekip üyeniz varsa, bir kod inceleme işlemi yoluyla takım arkadaşlarınızın birbiriyle işbirliği yapmasına izin vermek isteyebilirsiniz. Ayrıca, fabrikaya katkıda bulunan her katılımcının fabrikaya dağıtım izni olmayacak şekilde fabrikanızı da ayarlayabilirsiniz. Ekip üyelerinin Git aracılığıyla değişiklik yapmasına izin verilebilir, ancak yalnızca takımdaki belirli kişilerin değişiklikleri fabrikada "Yayımlamasına" izin verilebilir.
+-   **Diffs gösteriliyor.** Git modunda, fabrikaya yayınlanmak üzere olan yükün güzel bir kısmını görebilirsiniz. Bu diff, fabrikanızda son yayınladığınızdan beri değiştirilen/eklenen/silinen tüm kaynakları/varlıkları gösterir. Bu diff dayanarak, ya yayımlama ile daha fazla devam edebilir, ya da geri dönüp değişikliklerinizi kontrol ve sonra geri gel.
+-   **Daha iyi CI / CD**. Git modunu kullanıyorsanız, geliştirme fabrikasında herhangi bir değişiklik yapılır yapılmaz sürüm ardışık sisteminizi otomatik olarak tetiklemek üzere yapılandırabilirsiniz. Ayrıca, Fabrikanızda Kaynak Yöneticisi şablonunda parametre olarak kullanılabilen özellikleri özelleştirebilirsiniz. Yalnızca gerekli özellik kümesini parametreler olarak tutmak ve diğer her şeyin sabit kodlanmış olması yararlı olabilir.
+-   **Daha Iyi Performans**. Kaynaklar Git üzerinden indirilir, çünkü ortalama bir fabrika, git modunda normal LIVE modundan on kat daha hızlı yükler.
 
-## <a name="best-practices-for-git-integration"></a>Git tümleştirmesi için en iyi uygulamalar
+## <a name="best-practices-for-git-integration"></a>Git entegrasyonu için en iyi uygulamalar
 
 ### <a name="permissions"></a>İzinler
 
-Genellikle, her bir takım üyesinin fabrikası güncelleştirme izinlerine sahip olmasını istemezsiniz. Aşağıdaki izin ayarları önerilir:
+Genellikle her ekip üyesinin fabrikayı güncelleştirme izinlerine sahip olmasını istemezsiniz. Aşağıdaki izin ayarları önerilir:
 
-*   Tüm takım üyeleri, Veri Fabrikası için okuma izinlerine sahip olmalıdır.
-*   Yalnızca bir SELECT kişinin fabrikada yayımlamasına izin verilmelidir. Bunu yapmak için, fabrikada **Data Factory katkıda** bulunan rolüne sahip olmaları gerekir. İzinler hakkında daha fazla bilgi için bkz. [Azure Data Factory roller ve izinler](concepts-roles-permissions.md).
+*   Tüm ekip üyelerinin veri fabrikasına izinleri okumuş olması gerekir.
+*   Yalnızca belirli bir kişi kümesinin fabrikada yayımlamasına izin verilmelidir. Bunu yapmak için, fabrikada **Veri Fabrikası katılımcısıfatıne** sahip olmaları gerekir. İzinler hakkında daha fazla bilgi için [Azure Veri Fabrikası'nın Rolleri ve izinlerine](concepts-roles-permissions.md)bakın.
    
-İşbirliği dalında doğrudan iadelere izin vermeniz önerilir. Bu kısıtlama, her iade etme işleminin [özellik dalları oluşturma](source-control.md#creating-feature-branches)bölümünde açıklanan bir çekme isteği gözden geçirme süreci boyunca ilerlemesinin önlenmesi için hataları önlemeye yardımcı olabilir.
+İşbirliği şubesine doğrudan check-in'lere izin vermemek önerilir. Bu kısıtlama, her iade [özelliği daloluşturma'da](source-control.md#creating-feature-branches)açıklanan bir çekme isteği gözden geçirme sürecinden geçeceği için hataları önlemeye yardımcı olabilir.
 
-### <a name="using-passwords-from-azure-key-vault"></a>Azure Key Vault parolaları kullanma
+### <a name="using-passwords-from-azure-key-vault"></a>Azure Key Vault'tan parola kullanma
 
-Data Factory bağlı hizmetler için bağlantı dizelerini veya parolaları depolamak üzere Azure Key Vault kullanmanız önerilir. Güvenlik nedenleriyle, bu tür gizli bilgileri git 'te depolamadığımızda, bağlantılı hizmetlerde yapılan tüm değişiklikler Azure Data Factory hizmetine anında yayımlanır.
+Veri Fabrikası Bağlantılı Hizmetler için bağlantı dizelerini veya parolalarını depolamak için Azure Key Vault'un kullanılması önerilir. Güvenlik nedeniyle, bu tür gizli bilgileri Git'de saklamayız, bu nedenle Bağlantılı Hizmetlerdeki değişiklikler hemen Azure Veri Fabrikası hizmetine yayınlanır.
 
-Key Vault kullanmak, Kaynak Yöneticisi Şablon dağıtımı sırasında bu gizli dizileri sağlamanız gerektiği için sürekli tümleştirme ve dağıtımı kolaylaştırır.
+Anahtar Kasa'yı kullanmak, Kaynak Yöneticisi şablonu dağıtımı sırasında bu sırları sağlamak zorunda kalmadığınız için sürekli tümleştirme ve dağıtımı da kolaylaştırır.
 
-## <a name="troubleshooting-git-integration"></a>Git tümleştirmesi sorunlarını giderme
+## <a name="troubleshooting-git-integration"></a>Sorun giderme Git tümleştirmesi
 
-### <a name="stale-publish-branch"></a>Eski yayımlama dalı
+### <a name="stale-publish-branch"></a>Bayat yayımlama dalı
 
-Yayımla dalı ana Dalla eşitlenmemiş ve son bir yayımlamaya rağmen güncel olmayan kaynaklar içeriyorsa, aşağıdaki adımları izleyin:
+Yayımlama dalı ana dalla eşitlenmemişse ve son yayımlamaya rağmen güncel olmayan kaynaklar içeriyorsa, aşağıdaki adımları izleyin:
 
-1. Geçerli git deponuzu kaldırma
-1. Git 'i aynı ayarlarla yeniden yapılandırın, ancak **mevcut Data Factory kaynaklarını depoya Içeri aktarma** işleminin seçili olduğundan emin olun ve **yeni dal** seçin
-1. İşbirliği dalında yapılan değişiklikleri birleştirmek için bir çekme isteği oluşturun 
+1. Geçerli Git deponuzu kaldırın
+1. Git'i aynı ayarlarla yeniden yapılandırın, ancak **varolan Veri Fabrikası kaynaklarını depoya aktarıldığından** emin olun ve **Yeni şubeyi** seçin
+1. Değişiklikleri işbirliği dalında birleştirmek için çekme isteği oluşturma 
 
-Aşağıda, eski bir yayımlama dalına neden olabilecek durumlara ilişkin bazı örnekler verilmiştir:
-- Bir kullanıcının birden çok dalı vardır. Tek bir özellik dalında, AKV ile ilişkili olmayan bağlı bir hizmeti sildi (gitmeyen veya olmayan bağlı hizmetler, git ' te olup olmadığı ve özellik dalını hiçbir şekilde birlikte çalışma işbirliğiyle birleştirmelidir).
-- Kullanıcı SDK veya PowerShell kullanarak veri fabrikasını değiştirdi
-- Bir Kullanıcı tüm kaynakları yeni bir dala taşıdı ve ilk kez yayımlamayı denedi. Bağlı hizmetler, kaynakları içeri aktarırken el ile oluşturulmalıdır.
-- Kullanıcı, bir AKG bağlı hizmetini veya bir JSON Integration Runtime el ile karşıya yükler. Veri kümesi, bağlantılı hizmet veya işlem hattı gibi başka bir kaynaktan bu kaynağa başvurur. UX aracılığıyla oluşturulan bir AKıŞ olmayan bağlantılı hizmet, kimlik bilgilerinin şifrelenmesi gerektiği için hemen yayımlanır. Bağlı hizmete başvuran bir veri kümesini karşıya yükler ve yayımlamayı denerseniz, git ortamında mevcut olduğundan UX buna izin verir. Veri Fabrikası hizmetinde mevcut olmadığından, yayımlama sırasında reddedilir.
+Aşağıda, eski bir yayımlama dalı neden olabilecek durumlara bazı örnekler verilmiştir:
+- Bir kullanıcının birden çok şubesi vardır. Bir özellik dalında, AKV ilişkili olmayan bir bağlantılı hizmeti sildiler (AKV bağlantılı olmayan hizmetler Git'de olup olmadıklarına bakılmaksızın hemen yayınlanır) ve özellik dalını işbirliği brnach'ında birleştirmediler.
+- Bir kullanıcı SDK veya PowerShell kullanarak veri fabrikasını değiştirdi
+- Bir kullanıcı tüm kaynakları yeni bir dala taşıdı ve ilk kez yayımlamaya çalıştı. Bağlantılı hizmetler kaynakları aktarırken el ile oluşturulmalıdır.
+- Kullanıcı, AKV'ye bağlı olmayan bir hizmeti veya Integration Runtime JSON'u el ile yükler. Bu kaynağa veri kümesi, bağlantılı hizmet veya ardışık sistem gibi başka bir kaynaktan başvururlar. Kimlik bilgilerinin şifrelenilmesi gerektiğinden, UX aracılığıyla oluşturulan AKV bağlantısı olmayan bir hizmet hemen yayımlanır. Bağlı hizmete atıfta bulunan bir veri kümesi yükler ve yayımlamaya çalışırsanız, UX buna izin verir, çünkü git ortamında bulunur. Veri fabrikası hizmetinde bulunmadığından yayımlama zamanında reddedilir.
 
 ## <a name="provide-feedback"></a>Geri bildirimde bulunma
-Özellikler hakkında yorum yapmak veya araçla ilgili sorunları bildirmek için **geri bildirim** ' ı seçin:
+Özellikler hakkında yorum yapmak veya araçla ilgili sorunlar hakkında Microsoft'a bilgi vermek için **Geri Bildirim'i** seçin:
 
 ![Geri Bildirim](media/author-visually/provide-feedback.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* İşlem hatlarını izleme ve yönetme hakkında daha fazla bilgi edinmek için bkz. işlem [hatlarını programlama yoluyla izleme ve yönetme](monitor-programmatically.md).
-* Sürekli tümleştirme ve dağıtım uygulamak için [Azure Data Factory Içinde sürekli tümleştirme ve teslim (CI/CD)](continuous-integration-deployment.md)konusuna bakın.
+* Boru hatlarını izleme ve yönetme hakkında daha fazla bilgi edinmek [için, denetim kanallarını programlı olarak izleyin ve yönetin.](monitor-programmatically.md)
+* Sürekli tümleştirme ve dağıtım uygulamak için [Azure Veri Fabrikası'nda Sürekli tümleştirme ve teslim (CI/CD)](continuous-integration-deployment.md)bakın.

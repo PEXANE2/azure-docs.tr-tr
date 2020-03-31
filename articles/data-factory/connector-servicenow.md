@@ -1,6 +1,6 @@
 ---
-title: ServiceNow 'dan veri kopyalama
-description: Desteklenen bir havuz veri depolarına ServiceNow bir Azure Data Factory işlem hattında kopyalama etkinliği'ni kullanarak veri kopyalama hakkında bilgi edinin.
+title: ServiceNow'dan verileri kopyalama
+description: Azure Veri Fabrikası ardışık bir ardışık ardışık ardışık ardışık bir kopyalama etkinliği kullanarak ServiceNow'dan desteklenen lavabo veri depolarına verileri nasıl kopyalayatılayışimditiz öğrenin.
 services: data-factory
 ms.author: jingwang
 author: linda33wj
@@ -12,49 +12,49 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2019
 ms.openlocfilehash: dabcc5afe4a092e4919c854071a698c6e6ebf0b3
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74926166"
 ---
-# <a name="copy-data-from-servicenow-using-azure-data-factory"></a>Servicenow'ı Azure Data Factory kullanarak verileri kopyalama
+# <a name="copy-data-from-servicenow-using-azure-data-factory"></a>Azure Veri Fabrikasını kullanarak ServiceNow'dan veri kopyalama
 
-Bu makalede, kopyalama etkinliği Azure Data Factory'de ServiceNow verileri kopyalamak için nasıl kullanılacağını özetlenmektedir. Yapılar [kopyalama etkinliği'ne genel bakış](copy-activity-overview.md) kopyalama etkinliği genel bir bakış sunan makalesi.
+Bu makalede, ServiceNow'daki verileri kopyalamak için Azure Veri Fabrikası'ndaki Kopyalama Etkinliği'nin nasıl kullanılacağı açıklanmaktadır. Kopyalama etkinliğine genel bir genel bakış sunan [kopyalama etkinliğine genel bakış](copy-activity-overview.md) makalesi üzerine inşa edin.
 
-## <a name="supported-capabilities"></a>Desteklenen özellikler
+## <a name="supported-capabilities"></a>Desteklenen yetenekler
 
-Bu ServiceNow Bağlayıcısı aşağıdaki etkinlikler için desteklenir:
+Bu ServiceNow bağlayıcısı aşağıdaki etkinlikler için desteklenir:
 
-- [Desteklenen kaynak/havuz matrisi](copy-activity-overview.md) ile [kopyalama etkinliği](copy-activity-overview.md)
+- [Desteklenen kaynak/lavabo matrisi](copy-activity-overview.md) ile [etkinliği](copy-activity-overview.md) kopyalama
 - [Arama etkinliği](control-flow-lookup-activity.md)
 
-Servicenow'ı tüm desteklenen havuz veri deposuna veri kopyalayabilirsiniz. Kaynakları/havuz kopyalama etkinliği tarafından desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablo.
+ServiceNow'daki verileri desteklenen herhangi bir lavabo veri deposuna kopyalayabilirsiniz. Kopyalama etkinliği tarafından kaynak/lavabo olarak desteklenen veri depolarının listesi için [Desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats) tablosuna bakın.
 
-Azure Data Factory bağlantısını etkinleştirmek için yerleşik bir sürücü sağlar, bu nedenle bu bağlayıcıyı kullanarak herhangi bir sürücü el ile yüklemeniz gerekmez.
+Azure Veri Fabrikası, bağlantıyı etkinleştirmek için yerleşik bir sürücü sağlar, bu nedenle bu bağlayıcıyı kullanarak herhangi bir sürücüyü el ile yüklemeniz gerekmez.
 
-## <a name="getting-started"></a>Başlangıç
+## <a name="getting-started"></a>Başlarken
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Aşağıdaki bölümler, Data Factory varlıklarını belirli ServiceNow bağlayıcıya tanımlamak için kullanılan özellikleri hakkında ayrıntılı bilgi sağlar.
+Aşağıdaki bölümler, ServiceNow bağlayıcısına özgü Veri Fabrikası varlıklarını tanımlamak için kullanılan özellikler hakkında ayrıntılı bilgi sağlar.
 
-## <a name="linked-service-properties"></a>Bağlı hizmeti özellikleri
+## <a name="linked-service-properties"></a>Bağlantılı hizmet özellikleri
 
-Servicenow'ı bağlı hizmeti için aşağıdaki özellikleri destekler:
+ServiceNow bağlantılı hizmet için aşağıdaki özellikler desteklenir:
 
-| Özellik | Açıklama | Gereklidir |
+| Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Type özelliği ayarlanmalıdır: **ServiceNow** | Yes |
-| endpoint | ServiceNow sunucu uç noktası (`http://<instance>.service-now.com`).  | Yes |
-| authenticationType | Kullanılacak kimlik doğrulaması türü. <br/>İzin verilen değerler: **temel**, **OAuth2** | Yes |
-| kullanıcı adı | Temel ve OAuth2 kimlik doğrulaması için ServiceNow sunucusuna bağlanmak için kullanılan kullanıcı adı.  | Yes |
-| password | Temel ve OAuth2 kimlik doğrulaması için kullanıcı adına karşılık gelen parola. Data Factory'de güvenle depolamak için bir SecureString olarak bu alanı işaretleyin veya [Azure Key Vault'ta depolanan bir gizli dizi başvuru](store-credentials-in-key-vault.md). | Yes |
-| clientID | OAuth2 kimlik doğrulaması için istemci kimliği.  | Hayır |
-| clientSecret | OAuth2 kimlik doğrulaması için istemci gizli anahtarı. Data Factory'de güvenle depolamak için bir SecureString olarak bu alanı işaretleyin veya [Azure Key Vault'ta depolanan bir gizli dizi başvuru](store-credentials-in-key-vault.md). | Hayır |
-| useEncryptedEndpoints | Veri kaynağı uç noktaları HTTPS kullanılarak şifrelenmiş olup olmadığını belirtir. Varsayılan değer true olur.  | Hayır |
-| useHostVerification | Ana bilgisayar adı sunucunun sertifikasında SSL üzerinden bağlanırken sunucu ana bilgisayar adıyla eşleşmesi gerekip gerekmediğini belirtir. Varsayılan değer true olur.  | Hayır |
-| usePeerVerification | SSL üzerinden bağlanırken sunucu kimliğinin doğrulanıp doğrulanmayacağını belirtir. Varsayılan değer true olur.  | Hayır |
+| type | Tür özelliği ayarlanmalıdır: **ServiceNow** | Evet |
+| endpoint | ServiceNow sunucusunun bitiş noktası`http://<instance>.service-now.com`( ).  | Evet |
+| authenticationType | Kullanılacak kimlik doğrulama türü. <br/>İzin verilen değerler şunlardır: **Temel**, **OAuth2** | Evet |
+| kullanıcı adı | Temel ve OAuth2 kimlik doğrulaması için ServiceNow sunucusuna bağlanmak için kullanılan kullanıcı adı.  | Evet |
+| password | Temel ve OAuth2 kimlik doğrulaması için kullanıcı adına karşılık gelen parola. Bu alanı, Veri Fabrikası'nda güvenli bir şekilde depolamak için SecureString olarak işaretleyin veya [Azure Key Vault'ta depolanan bir gizliye başvurun.](store-credentials-in-key-vault.md) | Evet |
+| clientId | OAuth2 kimlik doğrulaması için istemci kimliği.  | Hayır |
+| clientSecret | OAuth2 kimlik doğrulamaiçin müşteri sırrı. Bu alanı, Veri Fabrikası'nda güvenli bir şekilde depolamak için SecureString olarak işaretleyin veya [Azure Key Vault'ta depolanan bir gizliye başvurun.](store-credentials-in-key-vault.md) | Hayır |
+| useEncryptedEndpoints | Veri kaynağı uç noktalarının HTTPS kullanılarak şifrelenip şifrelenmediğini belirtir. Varsayılan değer true şeklindedir.  | Hayır |
+| useHostVerification | SSL üzerinden bağlanırken sunucunun sertifikasındaki ana bilgisayar adının sunucunun ana bilgisayar adıile eşleşip eşleşmeyeceğini belirtir. Varsayılan değer true şeklindedir.  | Hayır |
+| usePeerVerification | SSL üzerinden bağlanırken sunucunun kimliğinin doğrulanıp doğrulamayacağı belirtilir. Varsayılan değer true şeklindedir.  | Hayır |
 
 **Örnek:**
 
@@ -78,14 +78,14 @@ Servicenow'ı bağlı hizmeti için aşağıdaki özellikleri destekler:
 
 ## <a name="dataset-properties"></a>Veri kümesi özellikleri
 
-Bölümleri ve veri kümeleri tanımlamak için mevcut özelliklerin tam listesi için bkz: [veri kümeleri](concepts-datasets-linked-services.md) makalesi. Bu bölümde, ServiceNow veri kümesi tarafından desteklenen özelliklerin bir listesini sağlar.
+Veri kümelerini tanımlamak için kullanılabilen bölümlerin ve özelliklerin tam listesi için [veri kümeleri](concepts-datasets-linked-services.md) makalesine bakın. Bu bölümde ServiceNow veri kümesi tarafından desteklenen özelliklerin bir listesi sağlar.
 
-Servicenow'ı verileri kopyalamak için dataset öğesinin type özelliği ayarlamak **ServiceNowObject**. Aşağıdaki özellikler desteklenir:
+ServiceNow'dan veri kopyalamak için, veri kümesinin tür özelliğini **ServiceNowObject**olarak ayarlayın. Aşağıdaki özellikler desteklenir:
 
-| Özellik | Açıklama | Gereklidir |
+| Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Dataset öğesinin type özelliği ayarlanmalıdır: **ServiceNowObject** | Yes |
-| tableName | Tablonun adı. | Hayır (etkinlik kaynağı "query" belirtilmişse) |
+| type | Veri kümesinin tür özelliği şu şekilde ayarlanmalıdır: **ServiceNowObject** | Evet |
+| tableName | Masanın adı. | Hayır (etkinlik kaynağında "sorgu" belirtilirse) |
 
 **Örnek**
 
@@ -106,24 +106,24 @@ Servicenow'ı verileri kopyalamak için dataset öğesinin type özelliği ayarl
 
 ## <a name="copy-activity-properties"></a>Kopyalama etkinliğinin özellikleri
 
-Bölümleri ve etkinlikleri tanımlamak için mevcut özelliklerin tam listesi için bkz: [işlem hatları](concepts-pipelines-activities.md) makalesi. Bu bölümde, ServiceNow kaynak tarafından desteklenen özelliklerin bir listesini sağlar.
+Etkinlikleri tanımlamak için kullanılabilen bölümlerin ve özelliklerin tam listesi [için, Pipelines](concepts-pipelines-activities.md) makalesine bakın. Bu bölümde ServiceNow kaynağı tarafından desteklenen özelliklerin bir listesi sağlar.
 
 ### <a name="servicenow-as-source"></a>Kaynak olarak ServiceNow
 
-Servicenow'ı verileri kopyalamak için kopyalama etkinliği için kaynak türünü ayarlayın. **ServiceNowSource**. Kopyalama etkinliği aşağıdaki özellikler desteklenir **source** bölümü:
+ServiceNow'dan veri kopyalamak için, kopyalama etkinliğindeki kaynak türünü **ServiceNowSource**olarak ayarlayın. Aşağıdaki özellikler kopyalama etkinliği **kaynak** bölümünde desteklenir:
 
-| Özellik | Açıklama | Gereklidir |
+| Özellik | Açıklama | Gerekli |
 |:--- |:--- |:--- |
-| type | Kopyalama etkinliği kaynağı öğesinin type özelliği ayarlanmalıdır: **ServiceNowSource** | Yes |
-| sorgu | Verileri okumak için özel bir SQL sorgusu kullanın. Örneğin: `"SELECT * FROM Actual.alm_asset"`. | Yok (veri kümesinde "tableName" değeri belirtilmişse) |
+| type | Kopyalama etkinlik kaynağının türü özelliği ayarlanmalıdır: **ServiceNowSource** | Evet |
+| sorgu | Verileri okumak için özel SQL sorgusunu kullanın. Örneğin: `"SELECT * FROM Actual.alm_asset"`. | Hayır (veri kümesinde "tablo Adı" belirtilirse) |
 
-Şema ve sütun için ServiceNow sorguda belirtirken, aşağıdakilere dikkat edin ve **başvurmak [performans ipuçları](#performance-tips) kopyalama performans olduğu çıkarımında üzerinde**.
+Sorguda ServiceNow için şema ve sütun belirtirken aşağıdakileri not edin ve **kopyalama performansı imasına ilişkin [Performans ipuçlarına](#performance-tips) bakın.**
 
-- **Şema:** şeması olarak belirtmek `Actual` veya `Display` adresinden parametresi olarak bakabilirsiniz ServiceNow sorgusunda `sysparm_display_value` true veya false çağırırken olarak [ServiceNow restful API'leri](https://developer.servicenow.com/app.do#!/rest_api_doc?v=jakarta&id=r_AggregateAPI-GET). 
-- **Sütun:** altında gerçek değer için sütun adı `Actual` şeması `[column name]_value`sırada altında görüntüleme değeri için `Display` şeması `[column name]_display_value`. Not sütun adı, sorguda kullanılan şema eşlemesine gerekir.
+- **Şema:** ServiceNow `Actual` [dinlendirici API'leri](https://developer.servicenow.com/app.do#!/rest_api_doc?v=jakarta&id=r_AggregateAPI-GET)ararken doğru veya yanlış `sysparm_display_value` olarak bakabileceğiniz ServiceNow `Display` sorgusunda şema belirtin. 
+- **Sütun:** şema `Actual` altında gerçek değeri için `[column name]_value`sütun adı , `Display` şema `[column name]_display_value`altında görüntü değeri için ise . Sütun adının sorguda kullanılan şemaya eşleneihtiyacı olduğunu unutmayın.
 
-**Örnek Sorgu:** 
- `SELECT col_value FROM Actual.alm_asset` veya 
+**Örnek sorgu:** 
+ `SELECT col_value FROM Actual.alm_asset` OR 
 `SELECT col_display_value FROM Display.alm_asset`
 
 **Örnek:**
@@ -159,20 +159,20 @@ Servicenow'ı verileri kopyalamak için kopyalama etkinliği için kaynak türü
 ```
 ## <a name="performance-tips"></a>Performans ipuçları
 
-### <a name="schema-to-use"></a>Kullanılacak şema
+### <a name="schema-to-use"></a>Schema kullanmak için
 
-Servicenow'ı olan 2 farklı şemalar, biri **"Gerçek"** gerçek veri döndürür, diğeri ise **"Görüntüler"** veri görüntüleme değerleri döndürür. 
+ServiceNow 2 farklı şema vardır, bir gerçek veri döndürür **"Gerçek",** diğer veri ekran değerlerini döndürür **"Ekran".** 
 
-Sorgunuzdaki bir filtreniz varsa, daha iyi performans kopyalama "Gerçek" şema kullanın. "Gerçek" şemasına göre sorgulama yapıldığında, servicenow'ı yerel olarak destekleyen filtre "Display" şema sorgulanırken ADF verilerin tümünü alamadı ve dahili olarak Filtre Uygula filtrelenmiş sonuç kümesi yalnızca döndürülecek veri getirilirken.
+Sorgunuzda bir filtre varsa, daha iyi kopyalama performansına sahip "Gerçek" şeması kullanın. "Gerçek" şemaya karşı sorgu yaparken ServiceNow, verileri yalnızca filtrelenen sonuç kümesini döndürmek için alırken filtreyi yerel olarak desteklerken, "Görüntüle" şemasını sorgularken ADF tüm verileri alır ve dahili olarak filtre uygular.
 
-### <a name="index"></a>Dizin
+### <a name="index"></a>Dizin oluşturma
 
-ServiceNow tablo dizin sorgu performansını artırmak, başvurmak yardımcı [tablo dizin oluşturma](https://docs.servicenow.com/bundle/geneva-servicenow-platform/page/administer/table_administration/task/t_CreateCustomIndex.html).
+ServiceNow tablo dizini sorgu performansını artırmaya yardımcı olabilir, [tablo dizini oluştur'a](https://docs.servicenow.com/bundle/geneva-servicenow-platform/page/administer/table_administration/task/t_CreateCustomIndex.html)bakın.
 
-## <a name="lookup-activity-properties"></a>Arama etkinliği özellikleri
+## <a name="lookup-activity-properties"></a>Arama etkinlik özellikleri
 
-Özelliklerle ilgili ayrıntıları öğrenmek için [arama etkinliğini](control-flow-lookup-activity.md)denetleyin.
+Özellikler hakkında daha fazla bilgi edinmek için [Arama etkinliğini](control-flow-lookup-activity.md)kontrol edin.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Azure Data Factory kopyalama etkinliği tarafından kaynak ve havuz olarak desteklenen veri depolarının listesi için bkz. [desteklenen veri depoları](copy-activity-overview.md#supported-data-stores-and-formats).
+Azure Veri Fabrikası'ndaki kopyalama etkinliği tarafından kaynak ve lavabo olarak desteklenen veri depolarının listesi için [desteklenen veri depolarına](copy-activity-overview.md#supported-data-stores-and-formats)bakın.

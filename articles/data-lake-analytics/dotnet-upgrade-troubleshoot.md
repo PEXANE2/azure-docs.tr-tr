@@ -1,6 +1,6 @@
 ---
-title: .NET Framework 4.7.2 yükseltmesi nedeniyle Azure Data Lake Analytics U-SQL iş hatalarıyla ilgili sorunları giderme
-description: .NET Framework 4.7.2 yükseltmesi nedeniyle U-SQL iş hatalarıyla ilgili sorunları giderin.
+title: .NET Framework 4.7.2 yükseltmesi nedeniyle Azure Veri Gölü Analytics U-SQL iş hatalarını giderme
+description: .NET Framework 4.7.2'ye yükseltme nedeniyle U-SQL iş hatalarını giderin.
 services: data-lake-analytics
 author: guyhay
 ms.author: guyhay
@@ -10,96 +10,96 @@ ms.topic: troubleshooting
 ms.workload: big-data
 ms.date: 10/11/2019
 ms.openlocfilehash: f909419810cbd837e57b19a13b2df6ae9ad2ee97
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79213579"
 ---
-# <a name="azure-data-lake-analytics-is-upgrading-to-the-net-framework-v472"></a>Azure Data Lake Analytics .NET Framework v 4.7.2 sürümüne yükseltiyor
+# <a name="azure-data-lake-analytics-is-upgrading-to-the-net-framework-v472"></a>Azure Veri Gölü Analitiği .NET Framework v4.7.2'ye yükseltiyor
 
-Azure Data Lake Analytics varsayılan çalışma zamanı .NET Framework v 4.5.2 'den .NET Framework v 4.7.2 'e yükseltiyor. Bu değişiklik, U-SQL kodunuz özel derlemeler kullanıyorsa ve bu özel derlemeler .NET kitaplıklarını kullanıyorsa, küçük değişikliklere karşı küçük bir risk sunar.
+Azure Veri Gölü Analizi varsayılan çalışma süresi .NET Framework v4.5.2'den .NET Framework v4.7.2'ye yükseltilir. Bu değişiklik, U-SQL kodunuz özel derlemeler kullanıyorsa ve bu özel derlemeler .NET kitaplıklarını kullanıyorsa, değişiklikleri kırma riski oluşturur.
 
-Bu .NET Framework 4.5.2 sürümüne yükseltme, bir U-SQL çalışma zamanına (varsayılan çalışma zamanı) dağıtılan .NET Framework artık her zaman 4.7.2 olacağı anlamına gelir. .NET Framework sürümleri için yan yana bir seçenek yoktur.
+.NET Framework 4.5.2'den sürüm 4.7.2'ye yapılan bu yükseltme, U-SQL çalışma zamanında (varsayılan çalışma süresi) dağıtılan .NET Framework'ün artık her zaman 4,7.2 olacağı anlamına gelir. .NET Framework sürümleri için yan yana seçenek yoktur.
 
-.NET Framework 4.7.2 ' ye yükseltme işlemi tamamlandıktan sonra, sistemin yönetilen kodu sürüm 4.7.2 olarak çalıştırılır; U-SQL özel derlemeler gibi kullanıcı tarafından sunulan kitaplıklar, derlemenin bulunduğu sürüme uygun olan geriye dönük uyumlu modda çalışacaktır için oluşturulur.
+.NET Framework 4.7.2'ye yapılan bu yükseltme tamamlandıktan sonra, sistemin yönetilen kodu sürüm 4.7.2 olarak çalışacak, kullanıcı sağlanan kitaplıklar U-SQL özel derlemeleri gibi derlemenin olduğu sürüme uygun geriye dönük uyumlu modda çalışacaktır için oluşturulur.
 
-- Derleme dll 'larınız 4.5.2 sürümü için oluşturulduysa, dağıtılan Framework bunları 4.5.2 kitaplıkları olarak değerlendirir, bu da (birkaç özel durum ile) 4.5.2 semantiğini sağlar.
-- Artık .NET Framework 4.7.2 ' i hedefliyorsanız, sürüm 4.7.2 özelliklerini kullanan U-SQL özel derlemelerini kullanabilirsiniz.
+- Derleme DL'leriniz sürüm 4.5.2 için oluşturulursa, dağıtılan çerçeve bunları 4,5.2 kitaplıkları olarak ele alır ve (birkaç istisna dışında) 4.5.2 anlambilimi sağlar.
+- Artık .NET Framework 4.7.2'yi hedefliyorsanız, sürüm 4.7.2 özelliklerinden yararlanan U-SQL özel derlemelerini kullanabilirsiniz.
 
-Bu .NET Framework 4.7.2 sürümüne yükseltme nedeniyle, .NET özel derlemeleri kullanan U-SQL işleriniz üzerinde önemli değişiklikler yapmanızı sağlar. Aşağıdaki yordamı kullanarak geriye doğru uyumluluk sorunlarını kontrol etmeniz önerilir.
+.NET Framework 4.7.2'ye yapılan bu yükseltme nedeniyle, .NET özel derlemelerini kullanan U-SQL işlerinizde çığır açan değişiklikler başlatma potansiyeli vardır. Aşağıdaki yordamı kullanarak geriye dönük uyumluluk sorunlarını kontrol etmenizi öneririz.
 
-## <a name="how-to-check-for-backwards-compatibility-issues"></a>Geriye dönük uyumluluk sorunlarını denetleme
+## <a name="how-to-check-for-backwards-compatibility-issues"></a>Geriye dönük uyumluluk sorunları nasıl kontrol ediletilir?
 
-U-SQL özel derlemelerinizdeki .NET kodunuzda .NET uyumluluk denetimlerini çalıştırarak geriye doğru uyumluluk sorunları olup olmadığını denetleyin.
+U-SQL özel derlemelerinizde .NET kodunuzda .NET uyumluluk denetimlerini çalıştırarak geriye dönük uyumluluk bozma sorunlarının potansiyelini denetleyin.
 
 > [!Note]
-> Araç gerçek son değişiklikleri algılamaz. yalnızca (bazı girişler için) sorunlara neden olabilecek bilinen .NET API 'Lerini tanımlar. Bir sorunla karşılaşırsanız, kodunuz yine de iyi olabilir, ancak daha fazla ayrıntı denetlemeniz gerekir.
+> Araç gerçek kırılma değişikliklerini algılamaz. yalnızca .NET API'leri olarak adlandırılan ve (belirli girişler için) sorunlara neden olabilecek leri tanımlar. Bir sorun dan haberdar olursanız, kodunuz hala iyi olabilir, ancak daha fazla ayrıntı iade etmelisiniz.
 
-1. Geriye doğru uyumluluk denetleyicisi 'ni .NET DLL 'lerinizin üzerinde çalıştırın
-   1. [.Net taşınabilirlik Çözümleyicisi Visual Studio uzantısı](https://marketplace.visualstudio.com/items?itemName=ConnieYau.NETPortabilityAnalyzer) 'Nda Visual Studio uzantısı 'nı kullanma
-   1. [GitHub dotnetapiport](https://github.com/microsoft/dotnet-apiport)'tan tek başına aracı indiriliyor ve kullanılıyor. Tek başına aracı çalıştırmaya ilişkin yönergeler [GitHub dotnetapiport](https://github.com/microsoft/dotnet-apiport/blob/dev/docs/HowTo/BreakingChanges.md) ile ilgili değişiklikler
-   1. 4\.7.2 için. uyumluluk, `read isRetargeting == True` olası sorunları tanımlar.
-2. Araç, kodunuzun olası geri uyumsuzlukların herhangi biri tarafından etkilenip etkilenmeyeceğini gösteriyorsa (bazı yaygın uyumsuzluklar örnekleri aşağıda listelenmiştir), aşağıdakileri yaparak daha fazla kontrol edebilirsiniz
-   1. Kodunuzun çözümlenmesi ve kodunuzun etkilenen API 'lere değer geçirirse tanımlanması
-   1. Çalışma zamanı denetimi gerçekleştirin. Çalışma zamanı dağıtımı ADLA içinde yan yana yapılmaz. Bir temsilci veri kümesine karşı bir yerel .NET Framework 4.7.2 ile, VisualStudio 'in yerel çalıştırmasını kullanarak yükseltmeden önce bir çalışma zamanı denetimi yapabilirsiniz.
-3. Gerçekten geriye dönük uyumsuzlukta etkilenirse, düzeltmek için gerekli adımları gerçekleştirin (örneğin, verilerinizi veya kod mantığınızı düzeltme).
+1. .NET DL'lerinizde geriye dönük uyumluluk denetleyicisini
+   1. [.NET Taşınabilirlik Çözümleyicisi Visual Studio Extension](https://marketplace.visualstudio.com/items?itemName=ConnieYau.NETPortabilityAnalyzer) adresindeki Visual Studio Uzantısını Kullanma
+   1. [GitHub dotnetapiport'tan](https://github.com/microsoft/dotnet-apiport)bağımsız aracı indirme ve kullanma. Tek başına araç çalıştırmak için talimatlar [GitHub dotnetapiport kesme değişiklikleri](https://github.com/microsoft/dotnet-apiport/blob/dev/docs/HowTo/BreakingChanges.md) bulunmaktadır
+   1. 4.7.2 için. uyumluluk, `read isRetargeting == True` olası sorunları tanımlar.
+2. Araç, kodunuzun olası geriye dönük uyumsuzluklardan etkilenip etkilenmediğini gösterirse (bazı yaygın uyumsuzluk örnekleri aşağıda listelenmiştir),
+   1. Kodunuzu çözümleme ve kodunuzu etkilenen API'lere değerleri geçirip geçirmeme
+   1. Çalışma zamanı denetimi gerçekleştirin. AdLA'da çalışma zamanı dağıtımı yan yana yapılmaz. VisualStudio'nun yerel çalışmasını yerel bir .NET Framework 4.7.2 ile temsili bir veri kümesine karşı kullanarak yükseltmeden önce çalışma zamanı denetimi gerçekleştirebilirsiniz.
+3. Gerçekten bir geriye dönük uyumsuzluk tarafından etkilenir, bunu düzeltmek için gerekli adımları (örneğin veri veya kod mantığı sabitleme gibi) atın.
 
-Çoğu durumda, geriye dönük uyumsuzluğun etkilenmemesi gerekir.
+Çoğu durumda, geriye dönük uyumsuzlukluluk etkilenmemelidir.
 
 ## <a name="timeline"></a>Zaman çizelgesi
 
-Yeni çalışma zamanının dağıtımını, [sorun giderme sorunlarını gidermeye](runtime-troubleshoot.md)ve önceki başarılı bir işe bakarak denetleyebilirsiniz.
+Yeni çalışma zamanının dağıtımını burada [Runtime sorun giderme](runtime-troubleshoot.md)olarak ve daha önce başarılı olan herhangi bir işe bakarak denetleyebilirsiniz.
 
-### <a name="what-if-i-cant-get-my-code-reviewed-in-time"></a>Kodumu zaman içinde gözden geçirmem için ne yapmalıyım?
+### <a name="what-if-i-cant-get-my-code-reviewed-in-time"></a>Kodumu zamanında gözden geçiremezsem ne olur?
 
-İşinizi, .NET Framework yan yana yeteneklerin olmaması nedeniyle, ancak yalnızca 4.5.2 uyumluluk modunda çalışacak olan eski çalışma zamanı sürümüne (hedefleme 4.5.2) karşı gönderebilirsiniz. Bu davranış nedeniyle geriye doğru uyumluluk sorunlarından bazılarını yaşamaya devam edebilirsiniz.
+İşinizi eski çalışma zamanı sürümüne (4.5.2 hedeflemesi hedeflenen) karşı gönderebilirsiniz, ancak .NET Framework yan yana özelliklerinin olmaması nedeniyle, yine de yalnızca 4.5.2 uyumluluk modunda çalışır. Bu davranış nedeniyle geriye dönük uyumluluk sorunlarıyla karşılaşabilirsiniz.
 
-### <a name="what-are-the-most-common-backwards-compatibility-issues-you-may-encounter"></a>Karşılaşabileceğiniz en yaygın geriye doğru uyumluluk sorunları nelerdir?
+### <a name="what-are-the-most-common-backwards-compatibility-issues-you-may-encounter"></a>Karşılaşabileceğiniz en yaygın geriye dönük uyumluluk sorunları nelerdir
 
-Denetleyicinin tanımlanmasının olası en yaygın geri uyumsuzluklarını (Bu listeyi kendi iç ADLA işleriniz üzerinde çalıştırarak oluşturuyoruz), hangi kitaplıkların etkilendiğini (unutmayın: kitaplıkları yalnızca dolaylı olarak çağırabileceğinizi, bu nedenle, işlerinizin etkilenip etkilenmediğini denetlemek için gerekli işlemleri yapmak #1) ve olası çözüm eylemleri. Note: kendi işlerimizin neredeyse tüm durumlarında, en önemli değişikliklerden oluşan dar değişiklikler nedeniyle uyarılar hatalı pozitif olarak açılır.
+Denetleyicinin belirleyebileceği en yaygın geriye dönük uyumsuzluklar (bu listeyi kendi dahili ADLA işlerimizde denetleyerek oluşturduk), hangi kitaplıklar etkilenir (not: kitaplıkları yalnızca dolaylı olarak çağırabileceğiniz, bu nedenle işlerinizi etkileyip etkilemediğini kontrol etmek için gerekli eylemi #1 önemli dir) ve çözüm için olası eylemlerdir. Not: Kendi işlerimiz için hemen hemen her durumda, uyarılar çoğu kırılma değişikliklerindar doğası nedeniyle yanlış pozitif olduğu ortaya çıktı.
 
-- Sonuç görevinin tamamlanabilmesi için IAsyncResult. CompletedSynchronously özelliğinin doğru olması gerekir
-  - TaskFactory. FromAsync çağrılırken, sonuçta elde edilen görevin tamamlanabilmesi için IAsyncResult. CompletedSynchronously özelliğinin uygulanması doğru olmalıdır. Diğer bir deyişle, özelliğinin true döndürmesi gerekir ve yalnızca uygulama eşzamanlı olarak tamamlanırsa. Daha önce özellik denetlenmedi.
-  - Etkilenen kitaplıklar: mscorlib, System. Threading. Tasks
-  - Önerilen eylem: TaskFactory. FromAsync ' nin doğru doğru döndürdüğünden emin olun
+- IAsyncResult.CompletedSynchronously özelliği tamamlamak için ortaya çıkan görev için doğru olmalıdır
+  - TaskFactory.FromAsync'i ararken, iAsyncResult.CompletedSynchronously özelliğinin uygulanması, elde edilen görevin tamamlanması için doğru olmalıdır. Diğer bir süre, uygulama eşzamanlı olarak tamamlanırsa, özelliğin doğru olarak döndürülmesi gerekir. Daha önce özellik denetlenmedi.
+  - Etkilenen Kütüphaneler: mscorlib, System.Threading.Tasks
+  - Önerilen Eylem: TaskFactory.FromAsync doğru doğru döndürür emin olun
 
-- DataObject. GetData artık verileri UTF-8 olarak alıyor
-  - .NET Framework 4 ' ü hedefleyen veya .NET Framework 4.5.1 veya önceki sürümlerde çalışan uygulamalar için DataObject. GetData HTML biçimli verileri bir ASCII dizesi olarak alır. Sonuç olarak, ASCII olmayan karakterler (ASCII kodları 0x7F 'den büyük olan karakterler) iki rastgele karakterle temsil edilir. .NET Framework 4,5 veya sonraki bir sürümü hedefleyen ve .NET Framework 4.5.2 üzerinde çalışan uygulamalar Için # #N # #N `DataObject.GetData`, "0x7F 'den büyük karakterleri temsil eden UTF-8 olarak HTML biçimli verileri alır.
-  - Etkilenen kitaplıklar: GLO
-  - Önerilen eylem: alınan verilerin istediğiniz biçimde olduğundan emin olun
+- DataObject.GetData artık UTF-8 olarak veri alır
+  - .NET Framework 4'e yönelik veya .NET Framework 4.5.1 veya önceki sürümlerde çalışan uygulamalar için DataObject.GetData, HTML biçimli verileri ASCII dizesi olarak alır. Sonuç olarak, ASCII olmayan karakterler (ASCII kodları 0x7F'den büyük olan karakterler) iki rasgele karakterle temsil edilir.#N##N#.NET Framework 4.5 veya sonraki lerini hedefleyen `DataObject.GetData` ve .NET Framework 4.5.2 üzerinde çalışan uygulamalar için HTML biçimli verileri 0x7F'den daha büyük karakterleri doğru temsil eden UTF-8 olarak alır.
+  - Etkilenen Kütüphaneler: Glo
+  - Önerilen Eylem: Alınan verilerin istediğiniz biçim olduğundan emin olun
 
-- XmlWriter, geçersiz vekil çiftlerine atar
-  - .NET Framework 4.5.2 veya önceki sürümleri hedefleyen uygulamalar için, özel durum geri dönüş işleme kullanarak geçersiz bir yedek çifti yazmak her zaman bir özel durum oluşturmaz. .NET Framework 4,6 ' i hedefleyen uygulamalar için geçersiz bir yedek çifti yazma girişimi bir `ArgumentException`oluşturur.
-  - Etkilenen kitaplıklar: System. xml, System. xml. ReaderWriter
-  - Önerilen eylem: bağımsız değişken özel durumuna neden olacak geçersiz bir yedek çifti yazmatığınızdan emin olun
+- XmlWriter geçersiz vekil çiftleri atar
+  - .NET Framework 4.5.2 veya önceki sürümleri hedefleyen uygulamalar için, özel durum geri dönüş işlemesini kullanarak geçersiz bir vekil çifti yazmak her zaman bir özel durum oluşturmaz. .NET Framework 4.6'yı hedefleyen uygulamalar için, geçersiz bir vekil `ArgumentException`çifti yazmaya çalışmak bir .
+  - Etkilenen Kütüphaneler: System.Xml, System.Xml.ReaderWriter
+  - Önerilen Eylem: Bağımsız değişken özel durum neden olacak geçersiz bir vekil çifti yazmadığınızdan emin olun
 
-- HtmlTextWriter `<br/>` öğeyi doğru bir şekilde işlemiyor
-  - .NET Framework 4,6 ' den başlayarak, `HtmlTextWriter.RenderBeginTag()` ve `HtmlTextWriter.RenderEndTag()` bir `<BR />` öğesiyle çağırmak doğru şekilde yalnızca bir `<BR />` ekler (iki yerine)
-  - Etkilenen kitaplıklar: System. Web
-  - Önerilen eylem: istediğiniz `<BR />` miktarını yerleştirdiğinizden emin olun. bu nedenle, üretim işinde rastgele bir davranış görülmemelidir
+- HtmlTextWriter öğeyi `<br/>` doğru işlemez
+  - .NET Framework 4.6'dan `HtmlTextWriter.RenderBeginTag()` başlayarak, arama ve `HtmlTextWriter.RenderEndTag()` bir `<BR />` öğeyle yalnızca bir `<BR />` tane (iki yerine) doğru bir şekilde ekler
+  - Etkilenen Kütüphaneler: System.Web
+  - Önerilen Eylem: Üretim işinde rastgele bir `<BR />` davranış görülmemesi için görmeyi beklediğiniz miktarı eklediğinizden emin olun
 
-- CreateDefaultAuthorizationContext 'in null bir bağımsız değişkenle çağrılması değiştirildi
-  - Null authorizationPolicies bağımsız değişkeniyle `CreateDefaultAuthorizationContext(IList<IAuthorizationPolicy>)` çağrısı tarafından döndürülen AuthorizationContext 'in uygulanması, .NET Framework 4,6 ' deki uygulamasını değiştirdi.
-  - Etkilenen kitaplıklar: System. IdentityModel
-  - Önerilen eylem: null yetkilendirme ilkesi olduğunda, beklenen yeni davranışı işlediğinizden emin olun
+- CreateDefaultAuthorizationContext'ı null bağımsız değişkenle arama
+  - Null authorizationPolicies argümanı `CreateDefaultAuthorizationContext(IList<IAuthorizationPolicy>)` ile bir çağrı ile döndürülen Yetkilendirme Bağlamının uygulanması .NET Framework 4.6'daki uygulamasını değiştirmiştir.
+  - Etkilenen Kütüphaneler: System.IdentityModel
+  - Önerilen Eylem: Null yetkilendirme ilkesi olduğunda yeni beklenen davranışı ele aldığınızdan emin olun
   
-- RSACng artık standart olmayan anahtar boyutunun RSA anahtarlarını doğru şekilde yükler
-  - 4\.6.2 ' den önceki .NET Framework sürümlerde, RSA sertifikaları için standart olmayan anahtar boyutlarına sahip müşteriler bu anahtarlara `GetRSAPublicKey()` ve `GetRSAPrivateKey()` uzantı yöntemleri aracılığıyla erişemez. "İstenen anahtar boyutu desteklenmiyor" iletisiyle bir `CryptographicException` oluşturulur. .NET Framework 4.6.2 Bu sorun düzeltildi. Benzer şekilde, `RSA.ImportParameters()` ve `RSACng.ImportParameters()` artık `CryptographicException`' i oluşturmadan standart olmayan anahtar boyutlarıyla çalışır.
-  - Etkilenen kitaplıklar: mscorlib, System. Core
-  - Önerilen eylem: RSA anahtarlarının beklendiği gibi çalıştığından emin olun
+- RSACng artık standart olmayan anahtar boyutundaki RSA tuşlarını doğru bir şekilde yükler
+  - 4.6.2'den önceki .NET Framework sürümlerinde, RSA sertifikaları için standart olmayan anahtar boyutlarına `GetRSAPublicKey()` `GetRSAPrivateKey()` sahip müşteriler bu anahtarlara ve uzantı yöntemleriyle erişemez. "İstenen anahtar boyutu desteklenmiyor" iletisi `CryptographicException` ile bir atılıyor. .NET Framework 4.6.2 ile bu sorun giderilmiştir. Benzer `RSA.ImportParameters()` şekilde, `RSACng.ImportParameters()` ve şimdi 's atmadan `CryptographicException`standart olmayan anahtar boyutları ile çalışır.
+  - Etkilenen Kütüphaneler: mscorlib, System.Core
+  - Önerilen Eylem: RSA anahtarlarının beklendiği gibi çalıştığından emin olun
 
-- Yol noktalı virgül denetimleri daha sıkı
-  - .NET Framework 4.6.2 ' de, daha önce desteklenmeyen yolları (hem length hem de biçiminde) desteklemeye yönelik bir dizi değişiklik yapılmıştır. Uygun sürücü ayırıcı (iki nokta üst üste) olup olmadığını denetler ve daha doğru bir şekilde, birkaç seçim yolu API 'SI ile kullanım dışı olarak kullanıldıkları yerde bazı URI yollarını engellemenin yan etkisi vardı.
-  - Etkilenen kitaplıklar: mscorlib, System. Runtime. Extensions
-  - Önerilen eylem:
+- Yol kolon denetimleri daha sıkıdır
+  - .NET Framework 4.6.2'de, daha önce desteklenmeyen yolları (hem uzunluk hem de biçim olarak) desteklemek için bir dizi değişiklik yapıldı. Uygun sürücü ayırıcısı (üst üste) sözdizimi için kontroller daha doğru yapıldı, hangi tolere edilmesi için kullanılan birkaç seçin Yol API'lerinde bazı URI yollarını engelleme yan etkisi vardı.
+  - Etkilenen Kütüphaneler: mscorlib, System.Runtime.Extensions
+  - Önerilen Eylem:
 
-- ClaimsIdentity oluşturucuları çağrıları
-  - .NET Framework 4.6.2 ile başlayarak, bir `T:System.Security.Principal.IIdentity` parametresine sahip `T:System.Security.Claims.ClaimsIdentity` oluşturucularının `P:System.Security.Claims.ClaimsIdentify.Actor` özelliğini nasıl ayarlayabir değişikliği vardır. `T:System.Security.Principal.IIdentity` bağımsız değişkeni bir `T:System.Security.Claims.ClaimsIdentity` nesnedir ve bu `T:System.Security.Claims.ClaimsIdentity` nesnesinin `P:System.Security.Claims.ClaimsIdentify.Actor` özelliği `null`değilse, `P:System.Security.Claims.ClaimsIdentify.Actor` özelliği `M:System.Security.Claims.ClaimsIdentity.Clone` yöntemi kullanılarak iliştirilir. Framework 4.6.1 ve önceki sürümlerde `P:System.Security.Claims.ClaimsIdentify.Actor` özelliği var olan bir başvuru olarak eklenir. Bu değişiklik nedeniyle .NET Framework 4.6.2 ile başlayarak, yeni `T:System.Security.Claims.ClaimsIdentity` nesnesinin `P:System.Security.Claims.ClaimsIdentify.Actor` özelliği oluşturucunun `T:System.Security.Principal.IIdentity` bağımsız değişkeninin `P:System.Security.Claims.ClaimsIdentify.Actor` özelliğine eşit değildir. .NET Framework 4.6.1 ve önceki sürümlerde, eşittir.
-  - Etkilenen kitaplıklar: mscorlib
-  - Önerilen eylem: yeni çalışma zamanında beklenen ClaimsIdentity 'nin çalıştığından emin olun
+- İddialara ÇağrıLarKimlik yapıcıları
+  - .NET Framework 4.6.2 ile başlayarak, parametreli `T:System.Security.Claims.ClaimsIdentity` yapıcıların `T:System.Security.Principal.IIdentity` `P:System.Security.Claims.ClaimsIdentify.Actor` özelliği nasıl ayarlayıştAma şeklinde bir değişiklik vardır. `T:System.Security.Principal.IIdentity` Bağımsız değişken bir `T:System.Security.Claims.ClaimsIdentity` nesneise `P:System.Security.Claims.ClaimsIdentify.Actor` ve bu `T:System.Security.Claims.ClaimsIdentity` nesnenin `null`özelliği `P:System.Security.Claims.ClaimsIdentify.Actor` değilse, özellik `M:System.Security.Claims.ClaimsIdentity.Clone` yöntem kullanılarak eklenir. Çerçeve 4.6.1 ve önceki sürümlerde, `P:System.Security.Claims.ClaimsIdentify.Actor` özellik varolan bir başvuru olarak eklenir. Bu değişiklik ten dolayı, .NET Framework 4.6.2 ile `T:System.Security.Claims.ClaimsIdentity` başlayarak, yeni `P:System.Security.Claims.ClaimsIdentify.Actor` nesnenin `T:System.Security.Principal.IIdentity` `P:System.Security.Claims.ClaimsIdentify.Actor` özelliği oluşturucubağımsız değişkeninin özelliğine eşit değildir. .NET Framework 4.6.1 ve önceki sürümlerinde eşittir.
+  - Etkilenen Kütüphaneler: mscorlib
+  - Önerilen Eylem: ClaimsIdentity'in yeni çalışma zamanında beklendiği gibi çalıştığından emin olun
 
-- DataContractJsonSerializer ile denetim karakterlerinin serileştirilmesi artık ECMAScript V6 ve V8 ile uyumludur
-  - .NET Framework 4.6.2 ve önceki sürümlerinde, DataContractJsonSerializer, \b, \f ve \t gibi bazı özel denetim karakterlerini ECMAScript V6 ve V8 standartlarıyla uyumlu olacak şekilde serileştirmedi. 4,7 .NET Framework başlayarak, bu denetim karakterlerinin serileştirilmesi ECMAScript V6 ve V8 ile uyumludur.
-  - Etkilenen kitaplıklar: System. Runtime. Serialization. JSON
-  - Önerilen eylem: DataContractJsonSerializer ile aynı davranışa sahip olun
+- DataContractJsonSerializer ile kontrol karakterlerinin serileştirilmesi artık ECMAScript V6 ve V8 ile uyumludur
+  - .NET çerçevesi 4.6.2 ve önceki sürümlerinde DataContractJsonSerializer, \b, \f ve \t gibi bazı özel denetim karakterlerini ECMAScript V6 ve V8 standartlarıyla uyumlu bir şekilde serihale getiremedi. .NET Framework 4.7 ile başlayarak, bu kontrol karakterlerinin serileştirilmesi ECMAScript V6 ve V8 ile uyumludur.
+  - Etkilenen Kütüphaneler: System.Runtime.Serialization.Json
+  - Önerilen Eylem: DataContractJsonSerializer ile aynı davranışı sağlamak

@@ -1,52 +1,52 @@
 ---
-title: Dayanıklı İşlevler tanılama-Azure
-description: Azure Işlevleri için Dayanıklı İşlevler uzantısıyla ilgili sorunları tanılamayı öğrenin.
+title: Dayanıklı İşlevlerde Tanılama - Azure
+description: Azure İşlevler için Dayanıklı İşlevler uzantısı ile ilgili sorunları nasıl tanılayarak tanılamayı öğrenin.
 author: cgillum
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 4cb832f8fe11ac2581e97d9cdcc777eaff702ee9
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79278200"
 ---
-# <a name="diagnostics-in-durable-functions-in-azure"></a>Azure 'da Dayanıklı İşlevler tanılama
+# <a name="diagnostics-in-durable-functions-in-azure"></a>Azure'da Dayanıklı İşlevler'de Tanılama
 
-[Dayanıklı işlevler](durable-functions-overview.md)sorunları tanılamaya yönelik çeşitli seçenekler vardır. Bu seçeneklerden bazıları normal işlevlerle aynıdır ve bazıları da Dayanıklı İşlevler için benzersizdir.
+[Dayanıklı İşlevler](durable-functions-overview.md)ile sorunları tanılama için çeşitli seçenekler vardır. Bu seçeneklerden bazıları normal işlevlerle aynıdır ve bazıları da Dayanıklı İşlevler için benzersizdir.
 
 ## <a name="application-insights"></a>Application Insights
 
-[Application Insights](../../azure-monitor/app/app-insights-overview.md) , Azure işlevlerinde tanılama ve izleme yapmak için önerilen yoldur. Aynı Dayanıklı İşlevler için de geçerlidir. İşlev uygulamanızda Application Insights nasıl yararlanacağınızı gösteren bir genel bakış için bkz. [Azure Işlevlerini izleme](../functions-monitoring.md).
+[Uygulama Öngörüleri,](../../azure-monitor/app/app-insights-overview.md) Azure İşlevleri'nde tanılama ve izleme yapmanın önerilen yoludur. Aynı kalıcı fonksiyonlar için de geçerlidir. İşlev uygulamanızda Uygulama Öngörüleri'nden nasıl yararlanılanıza ilişkin genel bir bakış [için](../functions-monitoring.md)bkz.
 
-Azure Işlevleri dayanıklı uzantısı, bir Orchestration 'un uçtan uca yürütülmesini izlemenize imkan tanıyan *olayları izleme* özelliği de yayar. Bu izleme olayları, Azure portal [Application Insights Analytics](../../azure-monitor/app/analytics.md) Aracı kullanılarak bulunabilir ve sorgulanır.
+Azure İşlerinden Dayanıklı Uzatma, bir orkestrasyonun uçtan uca yürütülmesini izlemenize olanak tanıyan *izleme olayları* da yayır. Bu izleme olayları, Azure portalındaki [Application Insights Analytics](../../azure-monitor/app/analytics.md) aracı kullanılarak bulunabilir ve sorgulanabilir.
 
-### <a name="tracking-data"></a>İzleme verileri
+### <a name="tracking-data"></a>Verileri izleme
 
-Bir Orchestration örneğinin her yaşam döngüsü olayı, bir izleme olayının Application Insights **İziz** koleksiyonuna yazılmasına neden olur. Bu olay, birkaç alan içeren bir **Customdimensions** yükü içerir.  Alan adlarının tümü `prop__`ile sona erer.
+Bir orkestrasyon örneğinin her yaşam döngüsü olayı, Application Insights'taki **izleme** koleksiyonuna bir izleme olayının yazılmasına neden olur. Bu olay, çeşitli alanları içeren bir **özelBoyut** yükü içerir.  Alan adlarının tümü `prop__`.
 
-* **hubname**: düzenleyiclerinizin çalıştığı görev hub 'ının adı.
-* **appname**: işlev uygulamasının adı. Aynı Application Insights örneğini paylaşan birden çok işlevli uygulamanız olduğunda bu alan faydalıdır.
-* **slotname**: geçerli işlev uygulamasının çalıştığı [dağıtım yuvası](../functions-deployment-slots.md) . Bu alan, ayarlarınızı yönetmek için dağıtım yuvalarından yararlandığınızda yararlıdır.
-* **fonksiyonadı**: Orchestrator veya Activity işlevinin adı.
-* **FunctionType**: **Orchestrator** veya **Activity**gibi işlevin türü.
-* **InstanceId**: Orchestration ÖRNEĞININ benzersiz kimliği.
+* **hubName**: Orkestrasyonlarınızın çalıştırıldığı görev merkezinin adı.
+* **appName**: Fonksiyon uygulamasının adı. Bu alan, aynı Application Insights örneğini paylaşan birden çok işlevli uygulamanız olduğunda yararlıdır.
+* **slotName**: Geçerli işlev uygulamasının çalıştığı [dağıtım yuvası.](../functions-deployment-slots.md) Bu alan, orkestrasyonlarınızı sürümlemek için dağıtım yuvalarından yararlanırken kullanışlıdır.
+* **functionName**: Orkestratörün veya etkinlik fonksiyonunun adıdır.
+* **functionType**: **Orchestrator** veya **Activity**gibi işlevin türü.
+* **instanceId**: Orkestrasyon örneğinin benzersiz kimliği.
 * **durum**: Örneğin yaşam döngüsü yürütme durumu. Geçerli değerler şunlardır:
-  * **Zamanlandı**: işlev yürütme için zamanlandı ancak henüz çalışmaya başlamadı.
-  * **Başlatıldı**: işlev çalışmaya başladı ancak henüz beklememiş veya tamamlanmamış.
-  * **Beklenen: Orchestrator**bazı işleri zamanladı ve bunun tamamlanmasını bekliyor.
-  * **Dinleme**: Orchestrator bir dış olay bildirimini dinliyor.
-  * **Tamamlandı**: işlev başarıyla tamamlandı.
-  * **Başarısız oldu**: işlev bir hata ile başarısız oldu.
-* **neden**: izleme olayı ile ilişkili ek veriler. Örneğin, bir örnek bir dış olay bildirimi bekliyorsa Bu alan, beklediği olayın adını gösterir. Bir işlev başarısız olduysa, bu alan hata ayrıntılarını içerir.
-* **ısreplay**: izleme olayının yeniden yürütülmüş yürütme için olup olmadığını gösteren Boole değeri.
-* **extensionversion**: dayanıklı görev uzantısının sürümü. Sürüm bilgileri, uzantıdaki olası hatalar bildirildiğinde özellikle önemli veriler olur. Uzun süre çalışan örnekler, çalışırken bir güncelleştirme gerçekleşirse birden çok sürümü bildirebilir.
-* **sequenceNumber**: bir olay için yürütme sıra numarası. Zaman damgasıyla birlikte, olayları yürütme zamanına göre sipariş etmeye yardımcı olur. *Örnek çalışırken konağın yeniden başlatılması durumunda bu sayının sıfıra sıfırlandığını unutmayın, bu nedenle her zaman zaman damgasına göre sıralamak önemlidir, sonra sequenceNumber.*
+  * **Zamanlanan**: İşlev yürütme için zamanlandı, ancak henüz çalışmaya başlamadı.
+  * **Başlangıç**: İşlev çalışmaya başladı, ancak henüz beklemedi veya tamamlanmadı.
+  * **Beklenen**: Orkestratör bazı çalışmalar planladı ve tamamlanmasını bekliyor.
+  * **Dinleme**: Orkestratör harici bir olay bildirimi dinliyor.
+  * **Tamamlandı**: İşlev başarıyla tamamlandı.
+  * **Failed**: İşlev bir hata ile başarısız oldu.
+* **neden**: İzleme olayıyla ilişkili ek veriler. Örneğin, bir örnek harici olay bildirimi bekliyorsa, bu alan beklediği olayın adını gösterir. Bir işlev başarısız olduysa, bu alan hata ayrıntılarını içerir.
+* **isReplay**: İzleme olayının yeniden yürütülüyor olup olmadığını gösteren boolean değeri.
+* **extensionVersion**: Dayanıklı Görev uzantısı sürümü. Sürüm bilgileri, uzantıdaki olası hataları rapor ederken özellikle önemli verilerdir. Uzun süren örnekler, çalışırken bir güncelleştirme oluşursa birden çok sürümü bildirebilir.
+* **sequenceNumber**: Bir olayın yürütme sıra numarası. Zaman damgası ile birlikte yürütme süresine göre olayların sipariş yardımcı olur. *Örnek çalışırken ana bilgisayar yeniden başlatılırsa bu sayının sıfırlanacağını unutmayın, bu nedenle önce önce zaman damgasına, sonra sequenceNumber'a göre sıralamak önemlidir.*
 
-Application Insights yayılan izleme verilerinin ayrıntı düzeyi, `host.json` dosyasının `logger` (Işlevler 1. x) veya `logging` (Işlevler 2,0) bölümünde yapılandırılabilir.
+Uygulama Öngörüleri'ne yayılan verileri izlemenin ayrıntılılığı `logger` `logging` `host.json` dosyanın (Fonksiyonlar 1.x) veya (Fonksiyonlar 2.0) bölümünde yapılandırılabilir.
 
-#### <a name="functions-10"></a>İşlevler 1,0
+#### <a name="functions-10"></a>Fonksiyonlar 1.0
 
 ```json
 {
@@ -60,7 +60,7 @@ Application Insights yayılan izleme verilerinin ayrıntı düzeyi, `host.json` 
 }
 ```
 
-#### <a name="functions-20"></a>İşlevler 2,0
+#### <a name="functions-20"></a>Fonksiyonlar 2.0
 
 ```json
 {
@@ -72,11 +72,11 @@ Application Insights yayılan izleme verilerinin ayrıntı düzeyi, `host.json` 
 }
 ```
 
-Varsayılan olarak, tüm yeniden yürütme olmayan izleme olayları yayınlanır. `Host.Triggers.DurableTask` `"Warning"` veya `"Error"`, bu durum izleme olaylarının yalnızca olağanüstü durumlar için yayınlandığı, veri hacmi azaltılabilir.
+Varsayılan olarak, tüm yeniden oynatmayan izleme olayları yayılır. Veri hacmi ayarlayarak `Host.Triggers.DurableTask` `"Warning"` azaltılabilir veya `"Error"` bu durumda izleme olayları yalnızca istisnai durumlar için yayılan olacaktır.
 
-Ayrıntılı düzenleme yeniden yürütme olaylarını yaymayı etkinleştirmek için `LogReplayEvents` gösterildiği gibi `durableTask` altındaki `host.json` dosyasında `true` olarak ayarlanabilir:
+Ayrıntılı orkestrasyon yeniden oynatma olaylarını yayan `LogReplayEvents` etkinleştirmek `true` için, `host.json` aşağıdaki `durableTask` gibi dosyada ayarlanabilir:
 
-#### <a name="functions-10"></a>İşlevler 1,0
+#### <a name="functions-10"></a>Fonksiyonlar 1.0
 
 ```json
 {
@@ -86,7 +86,7 @@ Ayrıntılı düzenleme yeniden yürütme olaylarını yaymayı etkinleştirmek 
 }
 ```
 
-#### <a name="functions-20"></a>İşlevler 2,0
+#### <a name="functions-20"></a>Fonksiyonlar 2.0
 
 ```javascript
 {
@@ -99,11 +99,11 @@ Ayrıntılı düzenleme yeniden yürütme olaylarını yaymayı etkinleştirmek 
 ```
 
 > [!NOTE]
-> Application Insights telemetri, verileri çok sık yaymamak için Azure Işlevleri çalışma zamanı tarafından örneklenir. Bu, kısa bir süre içinde birçok yaşam döngüsü olayı gerçekleştiğinde izleme bilgilerinin kaybolmasına neden olabilir. [Azure Işlevleri izleme makalesinde](../functions-monitoring.md#configure-sampling) , bu davranışın nasıl yapılandırılacağı açıklanmaktadır.
+> Varsayılan olarak, Application Insights telemetrisi, çok sık veri yayan verileri önlemek için Azure İşlevleri çalışma zamanı tarafından örneklenir. Bu, kısa bir süre içinde birçok yaşam döngüsü olayı meydana geldiğinde izleme bilgilerinin kaybolmasına neden olabilir. [Azure İşlevlerini İzleme makalesi,](../functions-monitoring.md#configure-sampling) bu davranışın nasıl yapılandırılabildiğini açıklar.
 
-### <a name="single-instance-query"></a>Tek örnekli sorgu
+### <a name="single-instance-query"></a>Tek örnek sorgusu
 
-Aşağıdaki sorgu, bir [Merhaba sıra](durable-functions-sequence.md) işlevi düzenleme işlevinin tek bir örneği için geçmiş izleme verilerini gösterir. [Application Insights sorgu dili (AIQL)](https://aka.ms/LogAnalyticsLanguageReference)kullanılarak yazılmıştır. Yalnızca *mantıksal* yürütme yolunun gösterilmesi için yeniden yürütme yürütmesini filtreler. Olaylar, aşağıdaki sorguda gösterildiği gibi `timestamp` ve `sequenceNumber` sıralaması tarafından sıralanabilir:
+Aşağıdaki sorgu, [Hello Sequence](durable-functions-sequence.md) işlev in tek bir örneği için geçmiş izleme verilerini gösterir. [Bu Uygulama Insights Sorgu Dili (AIQL)](https://aka.ms/LogAnalyticsLanguageReference)kullanılarak yazılmıştır. Yalnızca *mantıksal* yürütme yolunun gösterilmesi için yeniden yürütmeyi filtreler. Olaylar, aşağıdaki sorguda gösterildiği `timestamp` `sequenceNumber` gibi sıralayarak sıralanabilir:
 
 ```AIQL
 let targetInstanceId = "ddd1aaa685034059b545eb004b15d4eb";
@@ -122,13 +122,13 @@ traces
 | project timestamp, functionName, state, instanceId, sequenceNumber, appName = cloud_RoleName
 ```
 
-Sonuç, yürütme süresi tarafından artan düzende sıralanan etkinlik işlevleri dahil olmak üzere Orchestration yürütme yolunu gösteren izleme olaylarının bir listesidir.
+Sonuç, yürütme süresinin artan sırada emrettiği etkinlik işlevleri de dahil olmak üzere, yürütmenin yürütme yolunu gösteren izleme olaylarının listesidir.
 
-![Application Insights sorgu](./media/durable-functions-diagnostics/app-insights-single-instance-ordered-query.png)
+![Uygulama Öngörüleri sorgusu](./media/durable-functions-diagnostics/app-insights-single-instance-ordered-query.png)
 
-### <a name="instance-summary-query"></a>Örnek Özet sorgusu
+### <a name="instance-summary-query"></a>Örnek özet sorgusu
 
-Aşağıdaki sorgu, belirli bir zaman aralığında çalıştırılan tüm düzenleme örneklerinin durumunu görüntüler.
+Aşağıdaki sorgu, belirli bir zaman aralığında çalıştırılabilen tüm düzenleme örneklerinin durumunu görüntüler.
 
 ```AIQL
 let start = datetime(2017-09-30T04:30:00);
@@ -146,15 +146,15 @@ traces
 | order by timestamp asc
 ```
 
-Sonuç, örnek kimliklerinin ve bunların geçerli çalışma zamanı durumlarının bir listesidir.
+Sonuç, örnek kimliklerinin ve bunların geçerli çalışma zamanı durumunun bir listesidir.
 
-![Application Insights sorgu](./media/durable-functions-diagnostics/app-insights-single-summary-query.png)
+![Uygulama Öngörüleri sorgusu](./media/durable-functions-diagnostics/app-insights-single-summary-query.png)
 
-## <a name="logging"></a>Günlüğe kaydetme
+## <a name="logging"></a>Günlüğe Kaydetme
 
-Doğrudan bir Orchestrator işlevinden Günlükler yazarken Orchestrator yeniden yürütme davranışının aklınızda tutulması önemlidir. Örneğin, aşağıdaki Orchestrator işlevini göz önünde bulundurun:
+Doğrudan bir orkestratör işlevinden günlükler yazarken orkestratör tekrar davranışını göz önünde bulundurmak önemlidir. Örneğin, aşağıdaki orkestratör işlevini göz önünde bulundurun:
 
-### <a name="precompiled-c"></a>DerlemesiC#
+### <a name="precompiled-c"></a>Önceden derlenmiş C #
 
 ```csharp
 [FunctionName("FunctionChain")]
@@ -172,7 +172,7 @@ public static async Task Run(
 }
 ```
 
-### <a name="c-script"></a>C#SCRIPT
+### <a name="c-script"></a>C# Komut Dosyası
 
 ```csharp
 public static async Task Run(
@@ -189,7 +189,7 @@ public static async Task Run(
 }
 ```
 
-### <a name="javascript-functions-20-only"></a>JavaScript (yalnızca Işlevler 2,0)
+### <a name="javascript-functions-20-only"></a>JavaScript (Yalnızca 2.0 Fonksiyonları)
 
 ```javascript
 const df = require("durable-functions");
@@ -205,7 +205,7 @@ module.exports = df.orchestrator(function*(context){
 });
 ```
 
-Elde edilen günlük verileri aşağıdaki örnek çıkışa benzer bir şekilde görünür:
+Elde edilen günlük verileri aşağıdaki örnek çıktıgibi bir şey görünecektir:
 
 ```txt
 Calling F1.
@@ -221,11 +221,11 @@ Done!
 ```
 
 > [!NOTE]
-> Günlük, F1, F2 ve F3 çağrısı yaparken, bu *işlevlerin yalnızca ilk* kez karşılaştığı zaman adlandırıldığını unutmayın. Yeniden yürütme sırasında gerçekleşen sonraki çağrılar atlanır ve çıktılar Orchestrator mantığına yeniden yürütülür.
+> Günlükler F1, F2 ve F3'ün çağrıldığını iddia ederken, bu işlevlerin *yalnızca* ilk kez karşılaştıklarında çağrıldığını unutmayın. Yeniden oynatma sırasında meydana gelen sonraki çağrılar atlanır ve çıktılar orkestratör mantığına yeniden çalınır.
 
-Yalnızca yeniden denenmesiz yürütme oturumu açmak istiyorsanız, yalnızca `IsReplaying` `false`olduğunda günlüğe bir koşullu ifade yazabilirsiniz. Yukarıdaki örneği, ancak bu kez yeniden yürütme denetimlerini göz önünde bulundurun.
+Yalnızca yeniden yürütülmeyen yürütmede oturum açmak istiyorsanız, yalnızca `IsReplaying` . `false` Yukarıdaki örneği göz önünde bulundurun, ancak bu sefer tekrar denetimleri ile.
 
-#### <a name="precompiled-c"></a>DerlemesiC#
+#### <a name="precompiled-c"></a>Önceden derlenmiş C #
 
 ```csharp
 [FunctionName("FunctionChain")]
@@ -260,7 +260,7 @@ public static async Task Run(
 }
 ```
 
-#### <a name="javascript-functions-20-only"></a>JavaScript (yalnızca Işlevler 2,0)
+#### <a name="javascript-functions-20-only"></a>JavaScript (Yalnızca 2.0 Fonksiyonları)
 
 ```javascript
 const df = require("durable-functions");
@@ -276,7 +276,7 @@ module.exports = df.orchestrator(function*(context){
 });
 ```
 
-Dayanıklı İşlevler 2,0 ' den başlayarak, .NET Orchestrator işlevlerinin yeniden yürütme sırasında günlük deyimlerini otomatik olarak filtreleyen bir `ILogger` oluşturma seçeneği de vardır. Bu otomatik filtreleme `IDurableOrchestrationContext.CreateReplaySafeLogger(ILogger)` API kullanılarak yapılır.
+Dayanıklı Fonksiyonlar 2.0'dan başlayarak,.NET orkestratör işlevleri, yeniden oynatma sırasında günlük deyimlerini otomatik olarak filtreleyen bir `ILogger` işlev de oluşturma seçeneğine sahiptir. Bu otomatik filtreleme `IDurableOrchestrationContext.CreateReplaySafeLogger(ILogger)` API kullanılarak yapılır.
 
 ```csharp
 [FunctionName("FunctionChain")]
@@ -295,7 +295,7 @@ public static async Task Run(
 }
 ```
 
-Daha önce bahsedilen değişikliklerle, günlük çıktısı aşağıdaki gibidir:
+Daha önce belirtilen değişikliklerle, günlük çıktısı aşağıdaki gibidir:
 
 ```txt
 Calling F1.
@@ -305,13 +305,13 @@ Done!
 ```
 
 > [!NOTE]
-> Önceki C# örnekler dayanıklı işlevler 2. x içindir. Dayanıklı İşlevler 1. x için `IDurableOrchestrationContext`yerine `DurableOrchestrationContext` kullanmanız gerekir. Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
+> Önceki C# örnekleri Dayanıklı Fonksiyonlar 2.x içindir. Dayanıklı Fonksiyonlar 1.x `DurableOrchestrationContext` `IDurableOrchestrationContext`için, 'yi yerine kullanmalısınız. Sürümler arasındaki farklar hakkında daha fazla bilgi için [Dayanıklı Işlevler sürümleri](durable-functions-versions.md) makalesine bakın.
 
-## <a name="custom-status"></a>Özel durum
+## <a name="custom-status"></a>Özel Durum
 
-Özel düzenleme durumu, Orchestrator işleviniz için özel bir durum değeri ayarlamanıza olanak sağlar. Bu durum HTTP durumu sorgu API 'SI veya `IDurableOrchestrationClient.GetStatusAsync` API 'si aracılığıyla sağlanır. Özel düzenleme durumu Orchestrator işlevleri için daha zengin izleme imkanı sunar. Örneğin, Orchestrator işlev kodu, uzun süreli bir işlemin ilerlemesini güncelleştirmek için `IDurableOrchestrationContext.SetCustomStatus` çağrılar içerebilir. Web sayfası veya diğer dış sistem gibi bir istemci, daha zengin ilerleme bilgileri için HTTP durum sorgusu API 'Lerini düzenli aralıklarla sorgulayabilir. `IDurableOrchestrationContext.SetCustomStatus` kullanan bir örnek aşağıda verilmiştir:
+Özel orkestrasyon durumu, orkestratör işleviniz için özel bir durum değeri ayarlamanızı sağlar. Bu durum HTTP durum sorgusu API `IDurableOrchestrationClient.GetStatusAsync` veya API üzerinden sağlanır. Özel orkestrasyon durumu, orkestratör işlevleri için daha zengin izleme sağlar. Örneğin, orkestratör işlev kodu, `IDurableOrchestrationContext.SetCustomStatus` uzun süren bir işlem için ilerlemeyi güncelleştirmek için çağrılar içerebilir. Web sayfası veya başka bir dış sistem gibi bir istemci, daha zengin ilerleme bilgileri için HTTP durum sorgusu API'lerini düzenli olarak sorgulayabilir. Bir örnek `IDurableOrchestrationContext.SetCustomStatus` kullanılarak aşağıda verilmiştir:
 
-### <a name="precompiled-c"></a>DerlemesiC#
+### <a name="precompiled-c"></a>Önceden derlenmiş C #
 
 ```csharp
 [FunctionName("SetStatusTest")]
@@ -328,9 +328,9 @@ public static async Task SetStatusTest([OrchestrationTrigger] IDurableOrchestrat
 ```
 
 > [!NOTE]
-> Önceki C# örnek dayanıklı işlevler 2. x içindir. Dayanıklı İşlevler 1. x için `IDurableOrchestrationContext`yerine `DurableOrchestrationContext` kullanmanız gerekir. Sürümler arasındaki farklılıklar hakkında daha fazla bilgi için [dayanıklı işlevler sürümler](durable-functions-versions.md) makalesine bakın.
+> Önceki C# örneği Dayanıklı Fonksiyonlar 2.x içindir. Dayanıklı Fonksiyonlar 1.x `DurableOrchestrationContext` `IDurableOrchestrationContext`için, 'yi yerine kullanmalısınız. Sürümler arasındaki farklar hakkında daha fazla bilgi için [Dayanıklı Işlevler sürümleri](durable-functions-versions.md) makalesine bakın.
 
-### <a name="javascript-functions-20-only"></a>JavaScript (yalnızca Işlevler 2,0)
+### <a name="javascript-functions-20-only"></a>JavaScript (Yalnızca 2.0 Fonksiyonları)
 
 ```javascript
 const df = require("durable-functions");
@@ -346,14 +346,14 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-Düzenleme çalışırken, dış istemciler şu özel durumu getirebilir:
+Orkestrasyon çalışırken, dış istemciler bu özel durumu getirebilir:
 
 ```http
 GET /admin/extensions/DurableTaskExtension/instances/instance123
 
 ```
 
-İstemciler aşağıdaki yanıtı alır:
+İstemciler aşağıdaki yanıtı alırsınız:
 
 ```http
 {
@@ -367,32 +367,32 @@ GET /admin/extensions/DurableTaskExtension/instances/instance123
 ```
 
 > [!WARNING]
-> Özel durum yükü, bir Azure Tablo depolama sütununa sığamayacak olması gerektiğinden, 16 KB 'lık UTF-16 JSON metniyle sınırlandırılmıştır. Daha büyük yük gerekiyorsa dış depolama alanını kullanabilirsiniz.
+> Özel durum yükü, Bir Azure Tablo Depolama sütununa sığabilmesi gerektiğinden UTF-16 JSON metninin 16 KB'si ile sınırlıdır. Daha büyük taşıma kapasitesine ihtiyacınız varsa harici depolama alanı kullanabilirsiniz.
 
-## <a name="debugging"></a>Hata ayıklama
+## <a name="debugging"></a>Hata Ayıklama
 
-Azure Işlevleri, işlev kodu doğrudan hata ayıklamayı destekler ve aynı destek, Azure 'da veya yerel olarak çalıştırılmasının yanı sıra Dayanıklı İşlevler ileri taşır. Ancak, hata ayıklarken farkında olacak birkaç davranış vardır:
+Azure İşlevler hata ayıklama işlev kodunu doğrudan destekler ve aynı destek, ister Azure'da ister yerel olarak çalışır, Dayanıklı Işlevler'e taşınır. Ancak, hata ayıklama yaparken dikkat edilmesi gereken birkaç davranış vardır:
 
-* Yeniden **Yürüt**: yeni girişler alındığında Orchestrator işlevleri düzenli olarak yeniden [tekrarlanır](durable-functions-orchestrations.md#reliability) . Bu davranış, bir Orchestrator işlevinin tek bir *mantıksal* yürütmesi, özellikle işlev kodunda daha önce ayarlandıysa, aynı kesme noktasına birden çok kez ulaşabilme anlamına gelir.
-* **Await**: bir orchestrator işlevinde `await` her karşılaşıldığında, kalıcı görev çerçevesi dağıtıcısına denetim verir. Belirli bir `await` ilk kez karşılaşılırsa, ilişkili görev *hiçbir zaman sürdürülmez* . Görev hiçbir şekilde devam etmeyeceğinden, await (Visual Studio 'da F10) *üzerinde* Adımlama mümkün değildir. Yalnızca bir görev yeniden yürütüldüğünde, üzerinde adımlamayı yapın.
-* **Mesajlaşma zaman aşımları**: dayanıklı işlevler Orchestrator, etkinlik ve varlık işlevlerinin yürütülmesini sağlamak için sıra iletilerini dahili olarak kullanır. Çoklu VM ortamında, uzun bir süre için hata ayıklamanın kesilmesi, başka bir VM 'nin iletiyi seçmesini ve yinelenen yürütmeye neden olabilir. Bu davranış düzenli sıra tetikleyicisi işlevleri için de bulunur, ancak kuyruklar bir uygulama ayrıntısı olduğundan bu bağlamda işaret etmek önemlidir.
-* **Durduruluyor ve başlatılıyor**: dayanıklı işlevlerde iletiler hata ayıklama oturumları arasında kalır. Kalıcı bir işlev yürütülürken hata ayıklamayı durdurur ve yerel ana bilgisayar işlemini sonlandırabilirsiniz, bu işlev gelecekteki bir hata ayıklama oturumunda otomatik olarak yeniden çalıştırılabilir. Bu davranış, beklenmediği zaman kafa karıştırıcı olabilir. Bu davranışı önlemek için, hata ayıklama oturumları arasındaki [iç depolama sıralarındaki](durable-functions-perf-and-scale.md#internal-queue-triggers) tüm iletileri temizleme işlemi bir tekniktir.
+* **Replay**: Orchestrator fonksiyonları yeni girişler geldiğinde düzenli olarak [yeniden oynatılır.](durable-functions-orchestrations.md#reliability) Bu davranış, bir orchestrator işlevinin tek bir *mantıksal* yürütme, özellikle işlev kodunda erken ayarlanmışsa, aynı kesme noktasına birden çok kez çarpmayla sonuçlanabilir anlamına gelir.
+* **Bekle**: Bir `await` orkestratör işlevinde bir şeyle karşılaşıldığında, denetimi Dayanıklı Görev Çerçevesi göndericisine geri verir. Belirli `await` bir sorunla ilk kez karşılaşıldıysa, ilişkili görev *hiçbir zaman* sürdürülmez. Görev hiçbir zaman devam etmediğinden, bekleme (Visual Studio'da F10) *üzerine* adım atmak mümkün değildir. Üzerine basma yalnızca bir görev yeniden yürütülüyorsa çalışır.
+* **İleti zaman zaman ları**: Dayanıklı Işlevler, düzenleyicinin, etkinliğin ve varlık işlevlerinin yürütülmesini sağlamak için sıra iletilerini dahili olarak kullanır. Çok VM ortamında, uzun süre hata ayıklama içine kırma başka bir VM iletialmak için neden olabilir, yinelenen yürütme ile sonuçlanan. Bu davranış, düzenli sıra tetikleyici işlevleri için de vardır, ancak kuyruklar bir uygulama ayrıntısı olduğundan bu bağlamda işaret etmek önemlidir.
+* **Durdurma ve başlatma**: Kalıcı işlevlerde iletiler hata ayıklama oturumları arasında devam eder. Hata ayıklamayı durdurur ve dayanıklı bir işlev yürütülürken yerel ana bilgisayar işlemini sonlandırırsanız, bu işlev gelecekteki bir hata ayıklama oturumunda otomatik olarak yeniden çalıştırılabilir. Bu davranış, beklenmiyorsa kafa karıştırıcı olabilir. Hata ayıklama oturumları arasındaki [iç depolama kuyruklarından](durable-functions-perf-and-scale.md#internal-queue-triggers) tüm iletileri temizlemek, bu davranışı önlemek için bir tekniktir.
 
 > [!TIP]
-> Orchestrator işlevlerinde kesme noktaları ayarlarken yalnızca yeniden denenmeyen yürütmeyi bölmek istiyorsanız, yalnızca `IsReplaying` `false`olan bir koşullu kesme noktası ayarlayabilirsiniz.
+> Orchestrator işlevlerinde kesme noktaları ayarlarken, yalnızca yeniden yürütülmeyemede kesmeyapmak istiyorsanız, yalnızca `IsReplaying` . `false`
 
 ## <a name="storage"></a>Depolama
 
-Varsayılan olarak, Dayanıklı İşlevler durumu Azure Storage 'da depolar. Bu davranış, [Microsoft Azure Depolama Gezgini](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)gibi araçları kullanarak, düzenleyiclarınızın durumunu inceleyebilmeniz anlamına gelir.
+Varsayılan olarak, Dayanıklı Işlevler depoları Azure Depolama'da durumu belirtir. Bu davranış, [Microsoft Azure Depolama Gezgini](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)gibi araçları kullanarak orkestrasyonlarınızın durumunu inceleyebileceğiniz anlamına gelir.
 
 ![Azure Depolama Gezgini ekran görüntüsü](./media/durable-functions-diagnostics/storage-explorer.png)
 
-Bu, bir düzenleme için tam olarak hangi durum olduğunu görtiğinden hata ayıklama için yararlıdır. Kuyruklarda bulunan iletiler, hangi çalışmanın beklendiğini (veya bazı durumlarda takılı olduğunu) öğrenmek için de incelenebilir.
+Bu hata ayıklama için yararlıdır, çünkü bir orkestrasyonun tam olarak hangi durumda olabileceğini görürsünüz. Kuyruktaki iletiler, hangi işin beklemede olduğunu (veya bazı durumlarda takılıp kaldığını) öğrenmek için de incelenebilir.
 
 > [!WARNING]
-> Tablo depolamada yürütme geçmişini görmek uygun olsa da, bu tablo üzerinde herhangi bir bağımlılık yapmaktan kaçının. Dayanıklı İşlevler uzantısı geliştikçe değişiklik gösterebilir.
+> Yürütme geçmişini tablo depolamada görmek uygun olsa da, bu tabloya herhangi bir bağımlılık uygulamaktan kaçının. Dayanıklı Fonksiyonlar uzantısı geliştikçe değişebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Azure Işlevleri 'nde izleme hakkında daha fazla bilgi edinin](../functions-monitoring.md)
+> [Azure İşlevleri'nde izleme hakkında daha fazla bilgi edinin](../functions-monitoring.md)

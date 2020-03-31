@@ -1,42 +1,42 @@
 ---
-title: Yönetilen kimlik Azure Stream Analytics blob çıkışının kimliğini doğrulama
-description: Bu makalede, Azure Blob depolama çıktısında Azure Stream Analytics işinizin kimliğini doğrulamak için yönetilen kimliklerin nasıl kullanılacağı açıklanır.
+title: Yönetilen Kimlik Azure Akışı Analizi ile blob çıktısını doğrula
+description: Bu makalede, Azure Akış Analizi işinizi Azure Blob depolama çıktısına doğrulamak için yönetilen kimliklerin nasıl kullanılacağı açıklanmaktadır.
 author: cedarbaum
 ms.author: sacedarb
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.openlocfilehash: 13f48a9e0bc3ed8f8c4d5f1b7da4b6c03f54cdf8
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79129981"
 ---
-# <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-azure-blob-storage-output"></a>Azure Stream Analytics işinizin Azure Blob depolama çıkışına kimliğini doğrulamak için yönetilen kimlik kullanma
+# <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-azure-blob-storage-output"></a>Azure Akış Analizi işinizi Azure Blob Depolama çıktısına doğrulamak için Yönetilen Kimliği kullanın
 
-Azure Blob depolama 'ya çıkış için [yönetilen kimlik kimlik doğrulaması](../active-directory/managed-identities-azure-resources/overview.md) , Stream Analytics işlerinin bağlantı dizesi kullanmak yerine bir depolama hesabına doğrudan erişmesini sağlar. Bu özellik, geliştirilmiş güvenliğe ek olarak Azure içindeki bir sanal ağdaki (VNET) bir depolama hesabına veri yazmanızı de sağlar.
+Azure Blob depolamasına çıktı için [yönetilen Kimlik kimlik doğrulaması,](../active-directory/managed-identities-azure-resources/overview.md) Stream Analytics iş yerlerine bağlantı dizesini kullanmak yerine doğrudan bir depolama hesabına erişim sağlar. Geliştirilmiş güvenliğe ek olarak, bu özellik Azure'daki sanal ağdaki (VNET) bir depolama hesabına veri yazmanızı da sağlar.
 
-Bu makalede, Azure portal ve Azure Resource Manager dağıtımı aracılığıyla bir Stream Analytics işinin blob çıkışları için yönetilen kimliğin nasıl etkinleştirileceği gösterilmektedir.
+Bu makalede, Azure portalı ve Azure Kaynak Yöneticisi dağıtımı aracılığıyla Bir Akış Analizi işinin Blob çıktısı için Yönetilen Kimlik(ler) nasıl etkinleştirilebilirsiniz.
 
-## <a name="create-the-stream-analytics-job-using-the-azure-portal"></a>Azure portal kullanarak Stream Analytics işi oluşturun
+## <a name="create-the-stream-analytics-job-using-the-azure-portal"></a>Azure portalını kullanarak Akış Analizi işini oluşturun
 
-1. Yeni bir Stream Analytics işi oluşturun veya Azure portal var olan bir işi açın. Ekranın sol tarafındaki menü çubuğundan **Yapılandır**' ın altında bulunan **yönetilen kimlik** ' i seçin. "Sistem tarafından atanan yönetilen kimliği kullan" öğesinin seçili olduğundan emin olun ve ardından ekranın alt kısmındaki **Kaydet** düğmesine tıklayın.
+1. Azure portalında yeni bir Akış Analizi işi oluşturun veya varolan bir işi açın. Ekranın sol tarafında bulunan menü çubuğundan, **Yapıl'ın**altında bulunan **Yönetilen Kimlik'i** seçin. "Sistem le atanmış Yönetilen Kimliği Kullan" seçildiğinden emin olun ve ardından ekranın altındaki **Kaydet** düğmesini tıklatın.
 
-   ![Stream Analytics yönetilen kimliği yapılandırma](./media/common/stream-analytics-enable-managed-identity.png)
+   ![Akış Analizi yönetilen kimliğini yapılandırma](./media/common/stream-analytics-enable-managed-identity.png)
 
-2. Azure Blob depolama çıkış havuzunun çıkış özellikleri penceresinde kimlik doğrulama modu açılan listesini seçin ve **yönetilen kimlik**' i seçin. Diğer çıkış özellikleriyle ilgili daha fazla bilgi için bkz. [Azure Stream Analytics çıkışları anlama](./stream-analytics-define-outputs.md). İşiniz bittiğinde **Kaydet**' e tıklayın.
+2. Azure Blob depolama çıkışı lavabonun çıktı özellikleri penceresinde, Kimlik Doğrulama modunu açılır pencereyi seçin ve **Yönetilen Kimlik'i**seçin. Diğer çıktı özellikleriyle ilgili bilgi için Azure [Akış Analizi'nden çıktıları anlayın'](./stream-analytics-define-outputs.md)a bakın. İşiniz bittiğinde **Kaydet**’e tıklayın.
 
-   ![Azure Blob depolama çıkışını yapılandırma](./media/stream-analytics-managed-identities-blob-output-preview/stream-analytics-blob-output-blade.png)
+   ![Azure Blob depolama çıktısını yapılandırma](./media/stream-analytics-managed-identities-blob-output-preview/stream-analytics-blob-output-blade.png)
 
-3. Artık iş oluşturulduktan sonra, bu makalenin [depolama hesabınıza Stream Analytics işi erişimi verme](#give-the-stream-analytics-job-access-to-your-storage-account) bölümüne bakın.
+3. İş oluşturulduğuna göre, bu [makalenin depolama hesabı bölümünüze Akış Analizi iş erişimi verin bölümüne](#give-the-stream-analytics-job-access-to-your-storage-account) bakın.
 
 ## <a name="azure-resource-manager-deployment"></a>Azure Resource Manager dağıtımı
 
-Azure Resource Manager kullanmak Stream Analytics işinizin dağıtımını tamamen otomatikleştirmenizi sağlar. Azure PowerShell ya da [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)kullanarak kaynak yöneticisi şablonlarını dağıtabilirsiniz. Aşağıdaki örneklerde Azure CLı kullanılır.
+Azure Kaynak Yöneticisi'ni kullanmak, Akış Analizi işinizin dağıtımını tam olarak otomatikleştirmenize olanak tanır. Kaynak Yöneticisi şablonlarını Azure PowerShell veya [Azure CLI'yi](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)kullanarak dağıtabilirsiniz. Aşağıdaki örneklerde Azure CLI'yi kullanın.
 
 
-1. Kaynak Yöneticisi şablonunuzun kaynak bölümüne aşağıdaki özelliği ekleyerek, yönetilen bir kimlikle bir **Microsoft. StreamAnalytics/streamingjobs** kaynağı oluşturabilirsiniz:
+1. Kaynak Yöneticisi şablonunuzun kaynak bölümüne aşağıdaki özelliği ekleyerek Yönetilen Kimliğe sahip bir **Microsoft.StreamAnalytics/streamingjobs** kaynağı oluşturabilirsiniz:
 
     ```json
     "Identity": {
@@ -44,7 +44,7 @@ Azure Resource Manager kullanmak Stream Analytics işinizin dağıtımını tama
     },
     ```
 
-   Bu özellik, Azure Resource Manager Stream Analytics işiniz için kimlik oluşturup yönetmeyeceğini söyler. Aşağıda yönetilen kimlik etkin bir Stream Analytics iş dağıtan ve yönetilen kimlik kullanan bir blob çıkış havuzu olan bir örnek Kaynak Yöneticisi şablonu verilmiştir:
+   Bu özellik, Azure Kaynak Yöneticisi'ne Akış Analizi işinizin kimliğini oluşturmasını ve yönetmesini söyler. Aşağıda, Yönetilen Kimlik etkinleştirilmiş bir Akış Analizi işi ve Yönetilen Kimlik kullanan bir Blob çıktı sıcağına dağıtan örnek bir Kaynak Yöneticisi şablonu verilmiştir:
 
     ```json
     {
@@ -95,19 +95,19 @@ Azure Resource Manager kullanmak Stream Analytics işinizin dağıtımını tama
     }
     ```
 
-    Yukarıdaki iş, aşağıdaki Azure CLı komutu kullanılarak kaynak grubu **examplegroup** 'a dağıtılabilir:
+    Yukarıdaki iş, aşağıdaki Azure CLI komutunu kullanarak Kaynak grubu **Örnek Grubu'na** dağıtılabilir:
 
     ```azurecli
     az group deployment create --resource-group ExampleGroup -template-file StreamingJob.json
     ```
 
-2. İş oluşturulduktan sonra, işin tam tanımını almak için Azure Resource Manager kullanabilirsiniz.
+2. İş oluşturulduktan sonra, işin tam tanımını almak için Azure Kaynak Yöneticisi'ni kullanabilirsiniz.
 
     ```azurecli
     az resource show --ids /subscriptions/{SUBSCRIPTION_ID}/resourceGroups/{RESOURCE_GROUP}/providers/Microsoft.StreamAnalytics/StreamingJobs/{RESOURCE_NAME}
     ```
 
-    Yukarıdaki komut aşağıdaki gibi bir yanıt döndürür:
+    Yukarıdaki komut aşağıdaki gibi bir yanıt döndürecektir:
 
     ```json
     {
@@ -146,96 +146,96 @@ Azure Resource Manager kullanmak Stream Analytics işinizin dağıtımını tama
     }
     ```
 
-   İş tanımından, işinizin yönetilen kimliğini tanımlayan Azure Active Directory ve depolama hesabına Stream Analytics iş erişimi vermek için bir sonraki adımda kullanılacak olan **PrincipalId** ' yi bir yere göz atın.
+   İşinizin Azure Etkin Dizini içinde Yönetilen Kimliğini tanımlayan ve akış Analizi iş erişimini depolama hesabına vermek için bir sonraki adımda kullanılacak olan işin tanımından **principalId'e** dikkat edin.
 
-3. Artık iş oluşturulduktan sonra, bu makalenin [depolama hesabınıza Stream Analytics işi erişimi verme](#give-the-stream-analytics-job-access-to-your-storage-account) bölümüne bakın.
+3. İş oluşturulduğuna göre, bu [makalenin depolama hesabı bölümünüze Akış Analizi iş erişimi verin bölümüne](#give-the-stream-analytics-job-access-to-your-storage-account) bakın.
 
 
-## <a name="give-the-stream-analytics-job-access-to-your-storage-account"></a>Stream Analytics işi depolama hesabınıza erişmesine izin verin
+## <a name="give-the-stream-analytics-job-access-to-your-storage-account"></a>Akış Analizi'ne depolama hesabınıza iş erişimi verme
 
-Stream Analytics işinizi sağlamak için seçebileceğiniz iki erişim düzeyi vardır:
+Akış Analizi işinizi vermeyi seçebileceğiniz iki erişim düzeyi vardır:
 
-1. **Kapsayıcı düzeyinde erişim:** Bu seçenek, iş için var olan belirli bir kapsayıcıya erişim sağlar.
-2. **Hesap düzeyinde erişim:** Bu seçenek, yeni kapsayıcılar oluşturma özelliği de dahil olmak üzere, depolama hesabına genel erişim sağlar.
+1. **Kapsayıcı düzeyi erişimi:** Bu seçenek, iş için belirli bir varolan kapsayıcıya erişim sağlar.
+2. **Hesap düzeyi erişimi:** Bu seçenek, yeni kapsayıcılar oluşturma olanağı da dahil olmak üzere, iş alanına depolama hesabına genel erişim sağlar.
 
-İş yerinize kapsayıcı oluşturmaya gerek duymadığınız takdirde, bu seçenek iş için gereken en düşük erişim düzeyine izin verdiklerinden, **kapsayıcı düzeyi erişim** ' i seçmeniz gerekir. Her iki seçenek de Azure portal ve komut satırı için aşağıda açıklanmıştır.
+Sizin adınıza kapsayıcılar oluşturmak için işe ihtiyacınız yoksa, bu seçenek işe gereken minimum erişim düzeyini verecektir, çünkü **Kapsayıcı düzeyi erişimini** seçmeniz gerekir. Azure portalı ve komut satırı için her iki seçenek de aşağıda açıklanmıştır.
 
-### <a name="grant-access-via-the-azure-portal"></a>Azure portal ile erişim izni verme
+### <a name="grant-access-via-the-azure-portal"></a>Azure portalı üzerinden erişim izni verme
 
-#### <a name="container-level-access"></a>Kapsayıcı düzeyinde erişim
+#### <a name="container-level-access"></a>Konteyner düzeyinde erişim
 
-1. Depolama hesabınızın içindeki kapsayıcının yapılandırma bölmesine gidin.
+1. Depolama hesabınızdaki kapsayıcının yapılandırma bölmesine gidin.
 
-2. Sol taraftaki **Access Control (IAM)** seçeneğini belirleyin.
+2. Sol tarafta **KiErişim Denetimi'ni (IAM)** seçin.
 
-3. "Rol ataması Ekle" bölümünde **Ekle**' ye tıklayın.
+3. "Rol ataması ekle" bölümünün altında **Ekle'yi**tıklatın.
 
 4. Rol atama bölmesinde:
 
-    1. **Rolü** "Depolama Blobu verileri katılımcısı" olarak ayarlayın
-    2. Açılan listeye **erişim ata erişimi** 'Nin "Azure AD Kullanıcı, Grup veya hizmet sorumlusu" olarak ayarlandığından emin olun.
-    3. Arama alanına Stream Analytics işinizin adını yazın.
-    4. Stream Analytics işinizi seçin ve **Kaydet**' e tıklayın.
+    1. **Rolü** "Depolama Blob Veri Katkıda Bulunan" olarak ayarlama
+    2. Açılan **girişe Atama erişiminin** "Azure AD kullanıcısı, grubu veya hizmet sorumlusu" olarak ayarlandığından emin olun.
+    3. Arama alanına Stream Analytics işünüzün adını yazın.
+    4. Akış Analizi işinizi seçin ve **Kaydet'i**tıklatın.
 
-   ![Kapsayıcı erişimi verme](./media/stream-analytics-managed-identities-blob-output-preview/stream-analytics-container-access-portal.png)
+   ![Konteyner erişimini hibe](./media/stream-analytics-managed-identities-blob-output-preview/stream-analytics-container-access-portal.png)
 
-#### <a name="account-level-access"></a>Hesap düzeyinde erişim
+#### <a name="account-level-access"></a>Hesap düzeyi erişimi
 
 1. Depolama hesabınıza gidin.
 
-2. Sol taraftaki **Access Control (IAM)** seçeneğini belirleyin.
+2. Sol tarafta **KiErişim Denetimi'ni (IAM)** seçin.
 
-3. "Rol ataması Ekle" bölümünde **Ekle**' ye tıklayın.
+3. "Rol ataması ekle" bölümünün altında **Ekle'yi**tıklatın.
 
 4. Rol atama bölmesinde:
 
-    1. **Rolü** "Depolama Blobu verileri katılımcısı" olarak ayarlayın
-    2. Açılan listeye **erişim ata erişimi** 'Nin "Azure AD Kullanıcı, Grup veya hizmet sorumlusu" olarak ayarlandığından emin olun.
-    3. Arama alanına Stream Analytics işinizin adını yazın.
-    4. Stream Analytics işinizi seçin ve **Kaydet**' e tıklayın.
+    1. **Rolü** "Depolama Blob Veri Katkıda Bulunan" olarak ayarlama
+    2. Açılan **girişe Atama erişiminin** "Azure AD kullanıcısı, grubu veya hizmet sorumlusu" olarak ayarlandığından emin olun.
+    3. Arama alanına Stream Analytics işünüzün adını yazın.
+    4. Akış Analizi işinizi seçin ve **Kaydet'i**tıklatın.
 
-   ![Hesap erişimi verme](./media/stream-analytics-managed-identities-blob-output-preview/stream-analytics-account-access-portal.png)
+   ![Hesap erişimini hibe](./media/stream-analytics-managed-identities-blob-output-preview/stream-analytics-account-access-portal.png)
 
-### <a name="grant-access-via-the-command-line"></a>Komut satırı aracılığıyla erişim izni verme
+### <a name="grant-access-via-the-command-line"></a>Komut satırı üzerinden erişim izni verme
 
-#### <a name="container-level-access"></a>Kapsayıcı düzeyinde erişim
+#### <a name="container-level-access"></a>Konteyner düzeyinde erişim
 
-Belirli bir kapsayıcıya erişim vermek için, Azure CLı kullanarak aşağıdaki komutu çalıştırın:
+Belirli bir kapsayıcıya erişim sağlamak için Azure CLI'yi kullanarak aşağıdaki komutu çalıştırın:
 
    ```azurecli
    az role assignment create --role "Storage Blob Data Contributor" --assignee <principal-id> --scope /subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/blobServices/default/containers/<container-name>
    ```
 
-#### <a name="account-level-access"></a>Hesap düzeyinde erişim
+#### <a name="account-level-access"></a>Hesap düzeyi erişimi
 
-Tüm hesaba erişim vermek için, Azure CLı kullanarak aşağıdaki komutu çalıştırın:
+Hesabın tamamına erişim sağlamak için Azure CLI'yi kullanarak aşağıdaki komutu çalıştırın:
 
    ```azurecli
    az role assignment create --role "Storage Blob Data Contributor" --assignee <principal-id> --scope /subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>
    ```
 
-## <a name="enable-vnet-access"></a>VNET erişimini etkinleştir
+## <a name="enable-vnet-access"></a>VNET erişimini etkinleştirme
 
-Depolama hesabınızın **güvenlik duvarlarını ve sanal ağlarını**yapılandırırken, isteğe bağlı olarak diğer güvenilir Microsoft hizmetlerinden gelen ağ trafiğine izin verebilirsiniz. Yönetilen kimliği kullanarak kimlik doğrulaması Stream Analytics, isteğin güvenilir bir hizmetten kaynaklanan kanıt sağlar. Aşağıda, bu VNET erişim özel durumunun etkinleştirilmesi için yönergeler verilmiştir.
+Depolama hesabınızın **Güvenlik Duvarlarını ve sanal ağlarını**yapılandırırken, isteğe bağlı olarak diğer güvenilen Microsoft hizmetlerinden ağ trafiğine izin verebilirsiniz. Akış Analizi Yönetilen Kimlik kullanarak kimlik doğrulaması yaptığında, isteğin güvenilir bir hizmetten kaynaklandığına dair kanıt sağlar. Aşağıda bu VNET erişim özel durum etkinleştirmek için talimatlar verilmiştir.
 
-1.  Depolama hesabının yapılandırma bölmesi içindeki "güvenlik duvarları ve sanal ağlar" bölmesine gidin.
-2.  "Güvenilen Microsoft hizmetlerinin bu depolama hesabına erişmesine Izin ver" seçeneğinin etkin olduğundan emin olun.
-3.  Etkinleştirilirse **Kaydet**' e tıklayın.
+1.  Depolama hesabının yapılandırma bölmesindeki "Güvenlik Duvarları ve sanal ağlar" bölmesine gidin.
+2.  "Güvenilen Microsoft hizmetlerine bu depolama hesabına erişmesine izin ver" seçeneğinin etkinleştirildiğinden emin olun.
+3.  Etkinleştirdiyseniz **Kaydet'i**tıklatın.
 
-   ![VNET erişimini etkinleştir](./media/stream-analytics-managed-identities-blob-output-preview/stream-analytics-vnet-exception.png)
+   ![VNET erişimini etkinleştirme](./media/stream-analytics-managed-identities-blob-output-preview/stream-analytics-vnet-exception.png)
 
 ## <a name="limitations"></a>Sınırlamalar
-Bu özelliğin geçerli sınırlamaları aşağıda verilmiştir:
+Aşağıda bu özelliğin geçerli sınırlamaları verilmiştir:
 
-1. Klasik Azure depolama hesapları.
+1. Klasik Azure Depolama hesapları.
 
-2. Azure Active Directory olmayan Azure hesapları.
+2. Azure Etkin Dizini olmayan Azure hesapları.
 
-3. Çok kiracılı erişim desteklenmez. Belirli bir Stream Analytics iş için oluşturulan hizmet sorumlusu, işin oluşturulduğu Azure Active Directory kiracısında bulunmalı ve farklı bir Azure Active Directory kiracısında bulunan bir kaynakla birlikte kullanılamaz.
+3. Çok kiracılı erişim desteklenmez. Belirli bir Akış Analizi işi için oluşturulan Hizmet ilkesi, işin oluşturulduğu aynı Azure Etkin Dizin kiracısında ikamet etmeli ve farklı bir Azure Etkin Dizin kiracısında bulunan bir kaynakla kullanılamaz.
 
-4. [Kullanıcı tarafından atanan kimlik](../active-directory/managed-identities-azure-resources/overview.md) desteklenmiyor. Bu, kullanıcının Stream Analytics işleri tarafından kullanılmak üzere kendi hizmet sorumlusunu giremediği anlamına gelir. Hizmet sorumlusu Azure Stream Analytics ile oluşturulmalıdır.
+4. [Kullanıcı Atanan Kimlik](../active-directory/managed-identities-azure-resources/overview.md) desteklenmez. Bu, kullanıcının Stream Analytics işi tarafından kullanılmak üzere kendi hizmet ilkesini giremeyecekleri anlamına gelir. Hizmet sorumlusu Azure Akış Analizi tarafından oluşturulmalıdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Stream Analytics çıkışlarını anlayın](./stream-analytics-define-outputs.md)
-* [Özel blob çıkış bölümlendirme Azure Stream Analytics](./stream-analytics-custom-path-patterns-blob-storage-output.md)
+* [Azure Akış Analitiği'nden çıktıları anlama](./stream-analytics-define-outputs.md)
+* [Azure Stream Analytics özel blob çıktı bölümleme](./stream-analytics-custom-path-patterns-blob-storage-output.md)

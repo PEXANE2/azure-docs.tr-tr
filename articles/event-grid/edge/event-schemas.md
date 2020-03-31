@@ -1,6 +1,6 @@
 ---
-title: Olay şemaları — Azure Event Grid IoT Edge | Microsoft Docs
-description: IoT Edge üzerinde Event Grid olay şemaları.
+title: Olay şemaları — Azure Olay Izgara IoT Edge | Microsoft Dokümanlar
+description: IoT Edge'deki Event Grid'deki olay şemaları.
 author: VidyaKukke
 manager: rajarv
 ms.author: vkukke
@@ -10,28 +10,28 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: ba261aeedf6574f69d3c05f8fd005c912dcc59d1
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/31/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73242473"
 ---
 # <a name="event-schemas"></a>Olay şemaları
 
-Event Grid modülü olayları JSON biçiminde kabul eder ve sunar. Şu anda Event Grid tarafından desteklenen üç şema var:-
+Olay Izgara modülü JSON formatında olayları kabul eder ve sunar. Şu anda Olay Izgara tarafından desteklenen üç şema vardır: -
 
 * **EventGridSchema**
 * **CustomSchema**
 * **CloudEventSchema**
 
-Bir yayımcının konu oluşturma sırasında uyması gereken şemayı yapılandırabilirsiniz. Belirtilmemişse, varsayılan olarak **Eventgridschema**kullanılır. Beklenen şemayla uyumlu olmayan olaylar reddedilir.
+Konu oluşturma sırasında yayımcının uyması gereken şemayı yapılandırabilirsiniz. Belirtilmemişse, varsayılan olarak **EventGridSchema'ya**.. Beklenen şemaya uymayan olaylar reddedilir.
 
-Aboneler, olayların teslim edilmesini istedikleri şemayı de yapılandırabilir. Belirtilmemişse, varsayılan konunun şemadır.
-Şu anda abone teslim şeması, konusunun giriş şemasıyla eşleşmelidir. 
+Aboneler ayrıca, olayların teslim edilmesini istedikleri şemada da yapılandırabilirler. Belirtilmemişse, varsayılan konunun şemasıdır.
+Şu anda abone teslimat şeması, konusunun giriş şemasıyla eşleşmeli. 
 
-## <a name="eventgrid-schema"></a>EventGrid şeması
+## <a name="eventgrid-schema"></a>EventGrid şema
 
-EventGrid şeması, bir yayımlama varlığının uyması gereken özellikler kümesinden oluşur. Her yayımcının en üst düzey alanları doldurması vardır.
+EventGrid şeması, yayımcı bir varlığın uyması gereken bir dizi gerekli özellikiçerir. Her yayımcının üst düzey alanları doldurması gerekiyor.
 
 ```json
 [
@@ -52,18 +52,18 @@ EventGrid şeması, bir yayımlama varlığının uyması gereken özellikler k�
 
 ### <a name="eventgrid-schema-properties"></a>EventGrid şema özellikleri
 
-Tüm olaylar aşağıdaki en üst düzey verilere sahiptir:
+Tüm olaylar aşağıdaki üst düzey verilere sahiptir:
 
-| Özellik | Tür | Gereklidir | Açıklama |
+| Özellik | Tür | Gerekli | Açıklama |
 | -------- | ---- | ----------- |-----------
-| konu başlığı | string | Hayır | Yayımlandığı konuyla eşleşmelidir. Event Grid,, belirtilmemişse yayımlandığı konunun adı ile doldurulur. |
-| Konu | string | Yes | Olay konusunun yayımcı tanımlı yolu. |
-| Türü | string | Yes | Bu olay kaynağı için olay türü, örneğin BlobCreated. |
-| eventTime | string | Yes | Etkinliğin UTC saatine göre oluşturulduğu zaman. |
-| Kimlik | string | Hayır | Etkinliğin benzersiz tanımlayıcısı. |
-| Verileri | object | Hayır | Yayımlama varlığına özgü olay verilerini yakalamak için kullanılır. |
-| Veri sürümü | string | Yes | Veri nesnesinin şema sürümü. Yayımcı, şema sürümünü tanımlar. |
-| metadataVersion | string | Hayır | Olay meta verilerinin şema sürümü. Event Grid üst düzey özelliklerin şemasını tanımlar. Event Grid bu değeri sağlar. |
+| konu başlığı | string | Hayır | Yayımlandığı konuyla eşleşmelidir. Olay Izgarası, belirtilmemişse yayımlandığı konunun adı ile doldurulur. |
+| Konu | string | Evet | Olay konusunun yayımcı tarafından tanımlanan yolu. |
+| Eventtype | string | Evet | Bu olay kaynağı için olay türü, örneğin, BlobCreated. |
+| eventTime | string | Evet | Olayın sağlayıcının UTC zamanına bağlı olarak oluşturulan süre. |
+| Kimlik | string | Hayır | Etkinlik için benzersiz tanımlayıcı. |
+| veri | object | Hayır | Yayımlama kuruluşuna özgü olay verilerini yakalamak için kullanılır. |
+| dataVersion | string | Evet | Veri nesnesinin şema sürümü. Şema sürümünü yayımcı tanımlar. |
+| metadataVersion | string | Hayır | Olay meta verilerinin şema sürümü. Event Grid en üst düzey özelliklerin şemasını tanımlar. Event Grid bu değeri sağlar. |
 
 ### <a name="example--eventgrid-schema-event"></a>Örnek — EventGrid şema olayı
 
@@ -83,15 +83,15 @@ Tüm olaylar aşağıdaki en üst düzey verilere sahiptir:
 ]
 ```
 
-## <a name="customevent-schema"></a>CustomEvent şeması
+## <a name="customevent-schema"></a>CustomEvent şema
 
-Özel şemada, EventGrid şeması gibi zorlanan zorunlu özellikler yoktur. Yayımlama varlığı olay şemasını tamamen denetleyebilir. En yüksek esnekliği sağlar ve zaten bir olay tabanlı sisteminizin olduğu ve var olan olayları yeniden kullanmak ve/veya belirli bir şemaya bağlı olmasını istemediğiniz senaryolara olanak tanır.
+Özel şemada, EventGrid şeması gibi uygulanan zorunlu özellikler yoktur. Yayımlama kuruluşu olay şeasını tamamen denetleyebilir. Maksimum esneklik sağlar ve zaten yerinde olan olay tabanlı bir sisteme sahip olduğunuz ve varolan olayları yeniden kullanmak istediğiniz ve/veya belirli bir şemaya bağlanmak istemediğiniz senaryolara olanak tanır.
 
 ### <a name="custom-schema-properties"></a>Özel şema özellikleri
 
-Zorunlu özellik yok. Bu, yükü belirlemede yayımlama varlığına kadar yapılır.
+Zorunlu özellik yok. Yükü belirlemek yayın kuruluşuna kalmış.
 
-### <a name="example--custom-schema-event"></a>Örnek — özel şema olayı
+### <a name="example--custom-schema-event"></a>Örnek — Özel Şema Etkinliği
 
 ```json
 [
@@ -106,11 +106,11 @@ Zorunlu özellik yok. Bu, yükü belirlemede yayımlama varlığına kadar yapı
 
 ## <a name="cloudevent-schema"></a>CloudEvent şeması
 
-Yukarıdaki şemalara ek olarak, Event Grid [Cloudevents JSON şemasındaki](https://github.com/cloudevents/spec/blob/master/json-format.md)olayları yerel olarak destekler. CloudEvents, olay verilerini tanımlamaya yönelik açık bir belirtimdir. Yayımlama için ortak bir olay şeması sağlayarak ve olayları tüketen birlikte çalışabilirliği basitleştirir. Bu, [Cncf](https://www.cncf.io/) 'in bir parçasıdır ve şu anda kullanılabilir olan sürüm 1,0-RC1 ' dir.
+Yukarıdaki şemalara ek olarak, Olay Izgarası [cloudevents JSON şemasındaki](https://github.com/cloudevents/spec/blob/master/json-format.md)olayları doğal olarak destekler. CloudEvents olay verilerini açıklamak için açık bir belirtimdir. Yayımlamak ve etkinlikleri tüketmek için ortak bir olay şeması sağlayarak birlikte çalışabilirliği kolaylaştırır. Bu [CNCF](https://www.cncf.io/) bir parçasıdır ve şu anda mevcut sürümü 1.0-rc1 olduğunu.
 
 ### <a name="cloudevent-schema-properties"></a>CloudEvent şema özellikleri
 
-Zorunlu zarf özelliklerindeki [Cloudevents belirtimine](https://github.com/cloudevents/spec/blob/master/json-format.md#3-envelope) bakın.
+Zorunlu zarf özellikleriyle ilgili [CloudEvents belirtimine](https://github.com/cloudevents/spec/blob/master/json-format.md#3-envelope) bakın.
 
 ### <a name="example--cloud-event"></a>Örnek — bulut olayı
 ```json

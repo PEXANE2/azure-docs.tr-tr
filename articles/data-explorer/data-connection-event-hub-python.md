@@ -1,6 +1,6 @@
 ---
-title: Python kullanarak Azure Veri Gezgini için bir olay hub 'ı veri bağlantısı oluşturma
-description: Bu makalede, Python kullanarak Azure Veri Gezgini için bir olay hub 'ı veri bağlantısı oluşturmayı öğreneceksiniz.
+title: Python kullanarak Azure Veri Gezgini için Bir Olay Hub veri bağlantısı oluşturma
+description: Bu makalede, Python'u kullanarak Azure Veri Gezgini için Olay Hub veri bağlantısı oluşturmayı öğrenirsiniz.
 author: lucygoldbergmicrosoft
 ms.author: lugoldbe
 ms.reviewer: orspodek
@@ -8,43 +8,43 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.openlocfilehash: c08271286373ab8c3e621ee6fa59782ba2d16fb4
-ms.sourcegitcommit: 6e87ddc3cc961945c2269b4c0c6edd39ea6a5414
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77444188"
 ---
-# <a name="create-an-event-hub-data-connection-for-azure-data-explorer-by-using-python"></a>Python kullanarak Azure Veri Gezgini için bir olay hub 'ı veri bağlantısı oluşturma
+# <a name="create-an-event-hub-data-connection-for-azure-data-explorer-by-using-python"></a>Python kullanarak Azure Veri Gezgini için Bir Olay Hub veri bağlantısı oluşturma
 
 > [!div class="op_single_selector"]
 > * [Portal](ingest-data-event-hub.md)
-> * [C#](data-connection-event-hub-csharp.md)
+> * [C #](data-connection-event-hub-csharp.md)
 > * [Python](data-connection-event-hub-python.md)
 > * [Azure Resource Manager şablonu](data-connection-event-hub-resource-manager.md)
 
-Bu makalede, Python kullanarak Azure Veri Gezgini için bir olay hub 'ı veri bağlantısı oluşturacaksınız. Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve üst düzeyde ölçeklenebilir veri keşfetme hizmetidir. Azure Veri Gezgini, Event Hubs, IoT Hub 'larından ve BLOB kapsayıcılarına yazılan bloblardan alma veya veri yükleme işlemi sunar.
+Bu makalede, Python kullanarak Azure Veri Gezgini için bir Olay Hub veri bağlantısı oluşturursunuz. Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve üst düzeyde ölçeklenebilir veri keşfetme hizmetidir. Azure Veri Gezgini, Olay Hub'larından, IoT Hub'larından ve blob kapsayıcılarına yazılmış lekelerden yutma veya veri yükleme söner.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* Etkin aboneliği olan bir Azure hesabı. [Ücretsiz hesap oluşturun](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+* Etkin bir aboneliği olan bir Azure hesabı. [Ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
 
-* [Python 3.4 +](https://www.python.org/downloads/).
+* [Python 3.4+](https://www.python.org/downloads/).
 
-* [Bir küme ve veritabanı](create-cluster-database-python.md).
+* [Bir küme ve veritabanı.](create-cluster-database-python.md)
 
-* [Tablo ve sütun eşleme](net-standard-ingest-data.md#create-a-table-on-your-test-cluster).
+* [Tablo ve sütun eşleme.](net-standard-ingest-data.md#create-a-table-on-your-test-cluster)
 
 * [Veritabanı ve tablo ilkeleri](database-table-policies-python.md) (isteğe bağlı).
 
-* Alma [için verileri Içeren Olay Hub 'ı](ingest-data-event-hub.md#create-an-event-hub).
+* [Yutma için veri ile Olay Hub](ingest-data-event-hub.md#create-an-event-hub).
 
 [!INCLUDE [data-explorer-data-connection-install-package-python](../../includes/data-explorer-data-connection-install-package-python.md)]
 
 [!INCLUDE [data-explorer-authentication](../../includes/data-explorer-authentication.md)]
 
-## <a name="add-an-event-hub-data-connection"></a>Olay Hub 'ı veri bağlantısı ekleme
+## <a name="add-an-event-hub-data-connection"></a>Olay Hub veri bağlantısı ekleme
 
-Aşağıdaki örnek, bir olay hub 'ı veri bağlantısının programlı bir şekilde nasıl ekleneceğini gösterir. Azure portal kullanarak bir olay hub 'ı veri bağlantısı eklemek için bkz. [Olay Hub 'ına bağlanma](ingest-data-event-hub.md#connect-to-the-event-hub) .
+Aşağıdaki örnekte, Olay Hub veri bağlantısının nasıl programsal olarak eklenilebildiğini gösterilmektedir. Azure [portalını](ingest-data-event-hub.md#connect-to-the-event-hub) kullanarak Bir Olay Hub veri bağlantısı eklemek için etkinlik merkezine bağlan'a bakın.
 
 ```Python
 from azure.mgmt.kusto import KustoManagementClient
@@ -86,19 +86,19 @@ poller = kusto_management_client.data_connections.create_or_update(resource_grou
 
 |**Ayar** | **Önerilen değer** | **Alan açıklaması**|
 |---|---|---|
-| tenant_id | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | Kiracı KIMLIĞINIZ. Dizin KIMLIĞI olarak da bilinir.|
-| subscriptionId | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | Kaynak oluşturma için kullandığınız abonelik KIMLIĞI.|
-| client_id | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | Kiracınızdaki kaynaklara erişebilen uygulamanın istemci KIMLIĞI.|
-| client_secret | *xxxxxxxxxxxxxx* | Kiracınızdaki kaynaklara erişebilen uygulamanın istemci gizli anahtarı. |
+| tenant_id | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | Kiracı kimliğiniz. Dizin kimliği olarak da bilinir.|
+| subscriptionId | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | Kaynak oluşturma için kullandığınız abonelik kimliği.|
+| client_id | *xxxxxxxx-xxxxx-xxxx-xxxx-xxxxxxxxx* | Kiracınızdaki kaynaklara erişebilen uygulamanın istemci kimliği.|
+| client_secret | *xxxxxxxxxxxxxxx* | Kiracınızdaki kaynaklara erişebilen uygulamanın istemci sırrı. |
 | resource_group_name | *testrg* | Kümenizi içeren kaynak grubunun adı.|
 | cluster_name | *mykustocluster* | Kümenizin adı.|
-| database_name | *mykustodatabase* | Kümenizdeki hedef veritabanının adı.|
-| data_connection_name | *myeventhubconnect* | Veri bağlantınızın istenen adı.|
-| table_name | *StormEvents* | Hedef veritabanındaki hedef tablonun adı.|
-| mapping_rule_name | *StormEvents_CSV_Mapping* | Hedef tabloyla ilişkili sütun eşlemenin adı.|
-| data_format | *CSV* | İletinin veri biçimi.|
-| event_hub_resource_id | *Kaynak KIMLIĞI* | Alma için verileri tutan Olay Hub 'ınızın kaynak KIMLIĞI. |
-| consumer_group | *$Default* | Olay Hub 'ınızın Tüketici grubu.|
+| Veritabanı_adı | *mykustoveritabanı* | Kümenizdeki hedef veritabanının adı.|
+| data_connection_name | *myeventhubconnect* | Veri bağlantınızın istenilen adı.|
+| Table_name | *Fırtına Etkinlikleri* | Hedef veritabanındaki hedef tablonun adı.|
+| mapping_rule_name | *StormEvents_CSV_Mapping* | Hedef tabloyla ilgili sütun eşlemenizin adı.|
+| data_format | *Csv* | İletinin veri biçimi.|
+| event_hub_resource_id | *Kaynak kimliği* | Bilgi alma için verileri tutan Olay Hub'ınızın kaynak kimliği. |
+| consumer_group | *$Default* | Etkinlik Hub'ınızın tüketici grubu.|
 | location | *Orta ABD* | Veri bağlantısı kaynağının konumu.|
 
 [!INCLUDE [data-explorer-data-connection-clean-resources-python](../../includes/data-explorer-data-connection-clean-resources-python.md)]

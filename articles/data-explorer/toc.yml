@@ -15,6 +15,8 @@
       href: web-query-data.md
 - name: Öğreticiler
   items:
+    - name: Sorgu yazma
+      href: write-queries.md
     - name: E2E program aracılığıyla Blob alma
       items:
         - name: 'C#'
@@ -32,14 +34,22 @@
         - name: Veri almaya genel bakış
           displayName: 'pipelines, connectors, plugins, Python, .NET, Java, Node, REST'
           href: ingest-data-overview.md
+        - name: Veri alma özellikleri
+          href: ingestion-properties.md
+        - name: Veri alımı için biçimler
+          href: ingestion-supported-formats.md
     - name: Kusto Sorgu Dili
       items:
         - name: Hızlı başvuru kılavuzu
           href: kql-quick-reference.md
     - name: Veri görselleştirmeye genel bakış
       href: viz-overview.md
-    - name: Güvenliğe genel bakış
-      href: security.md
+    - name: Güvenlik
+      items:
+        - name: Güvenliğe genel bakış
+          href: security.md
+        - name: Güvenlik temeli
+          href: security-baseline.md
 - name: Nasıl yapılır kılavuzları
   items:
     - name: Küme ve veritabanı oluşturma
@@ -60,6 +70,8 @@
           href: ingest-data-one-click.md
         - name: Akış alımı
           href: ingest-data-streaming.md
+        - name: LightIngest’i kullanma
+          href: lightingest.md
         - name: Olay Hub'ı
           items:
             - name: Azure portal
@@ -106,8 +118,6 @@
           href: ingest-json-formats.md
     - name: Verileri sorgulama
       items:
-        - name: Sorgu yazma
-          href: write-queries.md
         - name: Azure Data Lake’te verileri sorgulama
           href: data-lake-query-data.md
         - name: Azure İzleyici’de verileri sorgulama
@@ -158,12 +168,22 @@
           href: k2bridge.md
     - name: Güvenlik
       items:
+        - name: Ağ yalıtımı (Sanal ağ)
+          items:
+            - name: Sanal ağınızda küme oluşturma - Portal
+              href: vnet-create-cluster-portal.md
+            - name: Kümenizi sanal ağınızda dağıtma
+              href: vnet-deployment.md
+            - name: 'Sanal ağ kümesi oluşturma, bağlantı ve işlem sorunlarını giderme'
+              href: vnet-deploy-troubleshoot.md
         - name: Küme güvenliğini yönetme
           href: manage-cluster-security.md
         - name: Yönetilen kimlikleri yapılandırma
           href: managed-identities.md
         - name: Müşteri tarafından yönetilen anahtarları yapılandırma
           items:
+            - name: Portal
+              href: customer-managed-keys-portal.md
             - name: 'C#'
               href: customer-managed-keys-csharp.md
             - name: Azure Resource Manager şablonu
@@ -214,10 +234,6 @@
               href: delete-data.md
             - name: Yinelenen verilerle ilgilenme
               href: dealing-with-duplicates.md
-    - name: Dağıtma
-      items:
-        - name: Kümenizi sanal ağınıza dağıtma
-          href: vnet-deployment.md
     - name: İzleme
       items:
         - name: Veri alımını izlemek için tanılama günlüklerini kullanma
@@ -236,6 +252,12 @@
               href: data-factory-template.md
             - name: Azure Data Factory kullanarak denetim komutlarını çalıştırma
               href: data-factory-command-activity.md
+        - name: Microsoft Flow bağlayıcısı
+          items:
+            - name: Microsoft Flow bağlayıcısı
+              href: flow.md
+            - name: Microsoft Flow bağlayıcısı kullanım örnekleri
+              href: flow-usage.md
         - name: Apache Spark Bağlayıcısı
           href: spark-connector.md
         - name: Python kullanarak Databricks'ten bağlanma

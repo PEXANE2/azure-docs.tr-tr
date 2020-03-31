@@ -1,6 +1,6 @@
 ---
-title: "ExpressRoute: devreleri klasik 'dan Azure Resource Manager taşıyın"
-description: Klasik ve Resource Manager dağıtım modellerinde köprüleme genel bakış.
+title: "ExpressRoute: Devreleri klasikten Azure Kaynak Yöneticisi'ne taşıyın"
+description: Klasik ve Kaynak Yöneticisi dağıtım modellerini köprülemeye genel bakış.
 services: expressroute
 author: ganesr
 ms.service: expressroute
@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: ganesr
 ms.openlocfilehash: c4fed30f7f4b723f04cd59b2a987b498e3d614a5
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75645914"
 ---
 # <a name="moving-expressroute-circuits-from-the-classic-to-the-resource-manager-deployment-model"></a>ExpressRoute bağlantı hatlarını klasikten Resource Manager dağıtım modeline taşıma
@@ -57,7 +57,7 @@ ExpressRoute bağlantı hattının **allowClassicOperations** parametresini ayar
 * Klasik sanal ağlara sanal ağ bağlantıları oluşturma/güncelleştirme/alma/silme
 * çapraz abonelik bağlantısı için sanal ağ bağlantı yetkilerini oluşturma/güncelleştirme/alma/silme
 
-Ancak, **allowClassicOperations** olan TRUE olarak ayarlanırsa, şu Klasik işlemleri gerçekleştiremezsiniz:
+Ancak, **allowClassicOperations** TRUE olarak ayarlandığında, aşağıdaki klasik işlemleri gerçekleştiremezsiniz:
 
 * Azure özel, Azure genel ve Microsoft eşlemeleri için Sınır Ağ Geçidi Protokolü (BGP) eşlemeleri oluşturma/güncelleştirme/alma/silme
 * ExpressRoute bağlantı hatlarını silme
@@ -65,7 +65,7 @@ Ancak, **allowClassicOperations** olan TRUE olarak ayarlanırsa, şu Klasik işl
 ## <a name="communication-between-the-classic-and-the-resource-manager-deployment-models"></a>Klasik ve Resource Manager dağıtım modelleri arasında iletişim
 ExpressRoute bağlantı hattı klasik ve Resource Manager dağıtım modelleri arasında bir köprü gibi davranır. Her iki sanal ağ aynı ExpressRoute bağlantı hattına bağlıysa klasik dağıtım modelinde sanal ağlardaki sanal makineler ve Resource Manager dağıtım modelinde sanal ağlardaki sanal makineler arasındaki trafik ExpressRoute aracılığıyla akar.
 
-Toplu işleme, sanal ağa ait ağ geçidi işleme kapasitesi tarafından sınırlandırılmıştır. Bu gibi durumlarda trafik, bağlantı sağlayıcısı ve sizin ağlarınıza girmez. Sanal ağlar arasındaki trafik akışı tam olarak Microsoft ağı içerisinde yer alır.
+Toplu işleme, sanal ağa ait ağ geçidi işleme kapasitesi tarafından sınırlandırılmıştır. Bu gibi durumlarda trafik, bağlantı sağlayıcısı ve sizin ağlarınıza girmez.  Sanal ağlar arasındaki trafik akışı tam olarak Microsoft ağı içerisinde yer alır.
 
 ## <a name="access-to-azure-public-and-microsoft-peering-resources"></a>Azure genel ve Microsoft eşleme kaynaklarına erişim
 Azure genel eşleme ve Microsoft eşleme aracılığıyla normalde erişilebilen kaynaklara erişmeye kesintisiz devam edebilirsiniz.  
@@ -97,5 +97,5 @@ Bu bölümde ExpressRoute bağlantı hatları için desteklenmeyen durumlar aç�
   
   * [ExpressRoute bağlantı hattı oluşturma](expressroute-howto-circuit-arm.md)
   * [Yönlendirmeyi yapılandırma](expressroute-howto-routing-arm.md)
-  * [ExpressRoute bağlantı hattına bir sanal ağ bağlama](expressroute-howto-linkvnet-arm.md)
+  * [ExpressRoute bağlantı hattına bir sanal ağı bağlama](expressroute-howto-linkvnet-arm.md)
 

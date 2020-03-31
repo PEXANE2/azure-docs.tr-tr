@@ -1,6 +1,6 @@
 ---
-title: SQL bölüm tablolarından - Team Data Science Process içinde paralel toplu veri alma
-description: Hızlı paralel toplu veri bir SQL Server veritabanına içeri aktarmak için bölümlenmiş tabloları oluşturun.
+title: SQL bölme tablolarında paralel toplu veri alma - Takım Veri Bilimi Süreci
+description: Sql Server veritabanına hızlı paralel toplu veri aktarım için bölümlenmiş tablolar oluşturun.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -12,28 +12,28 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 673a801e218d055bf482dc97972e36584cddd402
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76721345"
 ---
-# <a name="build-and-optimize-tables-for-fast-parallel-import-of-data-into-a-sql-server-on-an-azure-vm"></a>Derleme ve bir Azure VM'deki SQL Server'a hızlı paralel içeri aktarılacak veri tabloları iyileştirin
+# <a name="build-and-optimize-tables-for-fast-parallel-import-of-data-into-a-sql-server-on-an-azure-vm"></a>Azure VM'de sql sunucusuna hızlı paralel veri aktarımı için tablolar oluşturma ve optimize edin
 
-Bu makalede, derleme hızlı paralel toplu veri bir SQL Server veritabanına içeri aktarmak için bölümlenmiş tabloları açıklar. Büyük veri yükleme/bir SQL veritabanına aktarma için, verileri SQL DB 'ye içeri aktarma ve sonraki sorgularda, *bölümlenmiş tablolar ve görünümler*kullanılarak iyileştirilen olabilir. 
+Bu makalede, bir SQL Server veritabanına veri hızlı paralel toplu alma için bölümlenmiş tablolar oluşturmak için nasıl açıklanır. Büyük veri yükleme/sql veritabanına aktarımı için, SQL DB'ye veri alma ve sonraki sorgular *Bölümlenmiş Tablolar ve Görünümler*kullanılarak geliştirilebilir. 
 
 ## <a name="create-a-new-database-and-a-set-of-filegroups"></a>Yeni bir veritabanı ve dosya grupları kümesi oluşturma
-* Henüz yoksa [Yeni bir veritabanı oluşturun](https://technet.microsoft.com/library/ms176061.aspx).
-* Veritabanı dosya grupları bölümlenmiş fiziksel dosyalarını tutan veritabanına eklenir. 
-* Bu, veritabanı zaten varsa [Create Database](https://technet.microsoft.com/library/ms176061.aspx) for New veya [alter database](https://msdn.microsoft.com/library/bb522682.aspx) ile yapılabilir.
-* Bir veya daha fazla dosya (gereken şekilde) için her veritabanı dosya ekleyin.
+* Zaten yoksa, [yeni bir veritabanı oluşturun.](https://technet.microsoft.com/library/ms176061.aspx)
+* Bölümlenmiş fiziksel dosyaları tutan veritabanı dosya gruplarını veritabanına ekleyin. 
+* Veritabanı zaten varsa, bu create [DATABASE](https://technet.microsoft.com/library/ms176061.aspx) ile [yapılabilir.](https://msdn.microsoft.com/library/bb522682.aspx)
+* Her veritabanı dosya grubuna bir veya daha fazla dosya (gerektiği gibi) ekleyin.
   
   > [!NOTE]
-  > Bu bölüm için veri içeren hedef dosya grubunda ve dosya verilerinin depolandığı fiziksel veritabanı dosya adı belirtin.
+  > Bu bölüm için veri tutan hedef dosya grubunu ve dosya grubu verilerinin depolandığı fiziksel veritabanı dosya adını(lar) belirtin.
   > 
   > 
 
-Aşağıdaki örnek, üç birincil dışındaki dosya grupları ve günlük grupları, her bir fiziksel dosya içeren yeni bir veritabanı oluşturur. Veritabanı dosyaları, yapılandırılan SQL Server örneğinde varsayılan SQL Server veri klasöründe oluşturulur. Varsayılan dosya konumları hakkında daha fazla bilgi için bkz. [varsayılan ve adlandırılmış SQL Server örnekleri Için dosya konumları](https://msdn.microsoft.com/library/ms143547.aspx).
+Aşağıdaki örnek, birincil ve günlük grupları dışında üç dosya grubundan içeren ve her birinde bir fiziksel dosya içeren yeni bir veritabanı oluşturur. Veritabanı dosyaları, SQL Server örneğinde yapılandırıldığı gibi varsayılan SQL Server Data klasöründe oluşturulur. Varsayılan dosya konumları hakkında daha fazla bilgi için Varsayılan [ve SQL Server'ın Adlandırılmış Örnekleri için Dosya Konumları'na](https://msdn.microsoft.com/library/ms143547.aspx)bakın.
 
     DECLARE @data_path nvarchar(256);
     SET @data_path = (SELECT SUBSTRING(physical_name, 1, CHARINDEX(N'master.mdf', LOWER(physical_name)) - 1)
@@ -54,11 +54,11 @@ Aşağıdaki örnek, üç birincil dışındaki dosya grupları ve günlük grup
         ( NAME = ''LogFileGroup'', FILENAME = ''' + @data_path + '<log_file_name>.ldf'' , SIZE = 1024KB , FILEGROWTH = 10%)
     ')
 
-## <a name="create-a-partitioned-table"></a>Bölümlenmiş bir tablo oluşturma
-Önceki adımda oluşturduğunuz veritabanı dosya grupları için eşlenmiş veri şemasını göre bölümlenmiş tabloları oluşturmak için öncelikle bir bölüm işlevini ve düzeni oluşturmanız gerekir. Veriler için bölümlenmiş tabloları içeri toplu olduğunda, kayıtları arasında bir bölüm düzeni göre dosya gruplarını aşağıda açıklandığı şekilde dağıtılır.
+## <a name="create-a-partitioned-table"></a>Bölümlenmiş tablo oluşturma
+Önceki adımda oluşturulan veritabanı dosya gruplarına eşlenen veri şemasına göre bölümlenmiş tablo(lar) oluşturmak için önce bir bölüm işlevi ve düzeni oluşturmanız gerekir. Veriler bölümlenmiş tablo(lar)a toplu olarak alındığında, kayıtlar aşağıda açıklandığı gibi, bir bölüm düzenine göre dosya grupları arasında dağıtılır.
 
 ### <a name="1-create-a-partition-function"></a>1. Bölüm işlevi oluşturma
-[Bölüm Işlevi oluşturma](https://msdn.microsoft.com/library/ms187802.aspx) Bu işlev, her bir bölüm tablosuna dahil edilecek değer/sınır aralığını tanımlar, örneğin, bölümleri aya göre sınırlandırmak için (bazı\_DateTime\_alanı) 2013 yılında:
+[Bölüm işlevi oluşturma](https://msdn.microsoft.com/library/ms187802.aspx) Bu işlev, 2013 yılında bölümleri aya göre sınırlamak (bazı\_tarih alanı)\_gibi, her bir bölüm tablosuna eklenecek değerler/sınırlar aralığını tanımlar:
   
         CREATE PARTITION FUNCTION <DatetimeFieldPFN>(<datetime_field>)  
         AS RANGE RIGHT FOR VALUES (
@@ -66,8 +66,8 @@ Aşağıdaki örnek, üç birincil dışındaki dosya grupları ve günlük grup
             '20130501', '20130601', '20130701', '20130801',
             '20130901', '20131001', '20131101', '20131201' )
 
-### <a name="2-create-a-partition-scheme"></a>2. Bölüm şeması oluşturma
-[Bölüm Şeması oluşturun](https://msdn.microsoft.com/library/ms179854.aspx). Bu düzen, her bölüm aralığı bölüm işlevindeki örneğin fiziksel bir dosya grubu eşler:
+### <a name="2-create-a-partition-scheme"></a>2. Bir bölüm düzeni oluşturma
+[Bir bölüm düzeni oluşturun.](https://msdn.microsoft.com/library/ms179854.aspx) Bu şema, bölüm işlevindeki her bölüm aralığını fiziksel bir dosya grubuyla eşler:
   
         CREATE PARTITION SCHEME <DatetimeFieldPScheme> AS  
         PARTITION <DatetimeFieldPFN> TO (
@@ -75,7 +75,7 @@ Aşağıdaki örnek, üç birincil dışındaki dosya grupları ve günlük grup
         <filegroup_5>, <filegroup_6>, <filegroup_7>, <filegroup_8>,
         <filegroup_9>, <filegroup_10>, <filegroup_11>, <filegroup_12> )
   
-  İşlevi/düzeni göre her bir bölümdeki geçerli aralıklar doğrulamak için aşağıdaki sorguyu çalıştırın:
+  Her bölümde işleve/düzene göre geçerli olan aralıkları doğrulamak için aşağıdaki sorguyu çalıştırın:
   
         SELECT psch.name as PartitionScheme,
             prng.value AS PartitionValue,
@@ -85,23 +85,23 @@ Aşağıdaki örnek, üç birincil dışındaki dosya grupları ve günlük grup
         INNER JOIN sys.partition_range_values prng ON prng.function_id=pfun.function_id
         WHERE pfun.name = <DatetimeFieldPFN>
 
-### <a name="3-create-a-partition-table"></a>3. bölüm tablosu oluşturma
-Veri şemanıza göre [bölümlenmiş tablolar oluşturun](https://msdn.microsoft.com/library/ms174979.aspx)ve tabloyu bölümlemek için kullanılan bölüm şemasını ve kısıtlama alanını belirtin, örneğin:
+### <a name="3-create-a-partition-table"></a>3. Bölüm tablosu oluşturma
+Veri şemanıza göre [bölümlenmiş tablo](https://msdn.microsoft.com/library/ms174979.aspx)(lar) oluşturun ve tabloyu bölmek için kullanılan bölümşemasını ve kısıtlama alanını belirtin, örneğin:
   
         CREATE TABLE <table_name> ( [include schema definition here] )
         ON <TablePScheme>(<partition_field>)
 
-Daha fazla bilgi için bkz. [bölümlenmiş tablolar ve dizinler oluşturma](https://msdn.microsoft.com/library/ms188730.aspx).
+Daha fazla bilgi için [bkz.](https://msdn.microsoft.com/library/ms188730.aspx)
 
-## <a name="bulk-import-the-data-for-each-individual-partition-table"></a>Toplu her tek bölüm tablosu için veri alma
+## <a name="bulk-import-the-data-for-each-individual-partition-table"></a>Her bir bölüm tablosu için verileri toplu alma
 
-* BCP, BULK INSERT ya da [SQL Server Geçiş Sihirbazı](https://sqlazuremw.codeplex.com/)gibi diğer yöntemleri kullanabilirsiniz. Sağlanan örnek BCP yöntemini kullanır.
-* Günlüğe kaydetme yükünü en aza indirmek için, işlem günlüğü düzenini BULK_LOGGED değiştirmek üzere [veritabanını](https://msdn.microsoft.com/library/bb522682.aspx) değiştirin, örneğin:
+* BCP, BULK INSERT veya SQL Server [Geçiş Sihirbazı](https://sqlazuremw.codeplex.com/)gibi diğer yöntemleri kullanabilirsiniz. Sağlanan örnek BCP yöntemini kullanır.
+* [Örneğin,](https://msdn.microsoft.com/library/bb522682.aspx) günlüğe kaydetme nin ek yükü en aza indirmek için işlem günlüğe kaydetme düzenini BULK_LOGGED değiştirmek için veritabanını değiştirin:
   
         ALTER DATABASE <database_name> SET RECOVERY BULK_LOGGED
-* Veri yükleme hızlandırmak için paralel toplu içeri aktarma işlemlerinde başlatın. Büyük verilerin SQL Server veritabanlarına toplu olarak içe aktarılması hakkında ipuçları için [1 saatten az bir süre içinde 1 TB yükleme](https://blogs.msdn.com/b/sqlcat/archive/2006/05/19/602142.aspx)bölümüne bakın.
+* Veri yüklemesini hızlandırmak için toplu alma işlemlerini paralel olarak başlatın. Büyük verilerin SQL Server veritabanlarına toplu olarak aktarılmasını hızlandırmayla ilgili ipuçları için, [1 saatten kısa bir sürede Load 1 TB'ye](https://blogs.msdn.com/b/sqlcat/archive/2006/05/19/602142.aspx)bakın.
 
-Aşağıdaki PowerShell betiğini bir paralel veri BCP kullanarak yükleme örneğidir.
+Aşağıdaki PowerShell komut dosyası, BCP kullanılarak paralel veri yüklemesi örneğidir.
 
     # Set database name, input data directory, and output log directory
     # This example loads comma-separated input data files
@@ -165,22 +165,22 @@ Aşağıdaki PowerShell betiğini bir paralel veri BCP kullanarak yükleme örne
     date
 
 
-## <a name="create-indexes-to-optimize-joins-and-query-performance"></a>Birleştirme ve sorgu performansını iyileştirmek için dizinleri oluşturma
-* Birden çok tablodan veri modelleme için ayıklama, birleştirme performansını artırmak için join anahtarlar üzerinde dizin oluşturun.
-* Her bölüm için aynı dosya grubunu hedefleyen dizinler (kümelenmiş veya kümelenmemiş) [oluşturun](https://technet.microsoft.com/library/ms188783.aspx) , örneğin:
+## <a name="create-indexes-to-optimize-joins-and-query-performance"></a>Birleştirmeleri en iyi duruma getirmek ve performansı sorgulamak için dizinler oluşturma
+* Birden çok tablodan modelleme için veri ayıklarsanız, birleştirme performansını artırmak için birleştirme anahtarlarında dizinler oluşturun.
+* Her bölüm için aynı dosya grubunu hedefleyen [dizinler](https://technet.microsoft.com/library/ms188783.aspx) (kümelenmiş veya kümelenmemiş) oluşturun, örneğin:
   
         CREATE CLUSTERED INDEX <table_idx> ON <table_name>( [include index columns here] )
         ON <TablePScheme>(<partition)field>)
-  veya,
+  Veya
   
         CREATE INDEX <table_idx> ON <table_name>( [include index columns here] )
         ON <TablePScheme>(<partition)field>)
   
   > [!NOTE]
-  > Toplu veri almadan önce bir dizin oluşturmak tercih edebilirsiniz. Toplu içe aktarmadan önce dizin oluşturmayı, veri yükleme yavaşlatır.
+  > Verileri toplu olarak aktarmadan önce dizinleri oluşturmayı seçebilirsiniz. Toplu içe aktarmadan önce dizin oluşturma veri yüklemesini yavaşlatıyor.
   > 
   > 
 
-## <a name="advanced-analytics-process-and-technology-in-action-example"></a>Gelişmiş analitik işlemi ve teknolojisi eylem örnekte
-Ortak bir veri kümesiyle ekip veri bilimi Işlemini kullanan uçtan uca bir anlatım örneği için, bkz. [Team Data Science Process ın Action: using SQL Server](sql-walkthrough.md).
+## <a name="advanced-analytics-process-and-technology-in-action-example"></a>İş Başında Gelişmiş Analitik Süreci ve Teknolojisi Örneği
+Ortak bir veri kümesiyle Takım Veri Bilimi İşlemi'ni kullanan uçtan uca bir gözden geçirme örneği için, [Team Data Science Process in Action: SQL Server'ı kullanma](sql-walkthrough.md)' ya bakın.
 

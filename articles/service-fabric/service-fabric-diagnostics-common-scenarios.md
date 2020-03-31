@@ -1,141 +1,141 @@
 ---
-title: Azure Service Fabric genel senaryoları tanılayın
-description: Azure Service Fabric uygulamalarında yaygın izleme ve tanılama senaryolarıyla ilgili sorun giderme hakkında bilgi edinin.
+title: Azure Hizmet Kumaşı Sık Karşılaşılan Senaryoları Tanıla
+description: Azure Service Fabric uygulamalarında sık karşılaşılan izleme ve tanılama senaryoları ile ilgili sorun giderme hakkında bilgi edinin.
 ms.topic: article
 ms.date: 02/25/2019
 ms.openlocfilehash: 3c7f027bad71d48db5fba002f778f23db8225fa5
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76906955"
 ---
-# <a name="diagnose-common-scenarios-with-service-fabric"></a>Service Fabric ile yaygın senaryoları tanılayın
+# <a name="diagnose-common-scenarios-with-service-fabric"></a>Service Fabric ile sık karşılaşılan senaryoları tanılama
 
-Bu makalede, kullanıcıların Service Fabric ile izleme ve tanılama alanında karşılaştığı yaygın senaryolar gösterilmektedir. Sunulan senaryolar, Service Fabric 'in tüm 3 katmanlarını kapsar: uygulama, küme ve altyapı. Her çözüm, her bir senaryoyu tamamlamaya yönelik Application Insights ve Azure Izleyici günlüklerini, Azure izleme araçlarını kullanır. Her çözümdeki adımlarda, kullanıcılara Application Insights ve Azure Izleyici günlüklerinin Service Fabric bağlamında nasıl kullanılacağına ilişkin bir giriş sunulmaktadır.
+Bu makalede, kullanıcıların Hizmet Kumaşı ile izleme ve tanılama alanında karşılaştıkları yaygın senaryolar gösterilmiştir. Sunulan senaryolar hizmet dokusunun 3 katmanının tümünü kapsar: Uygulama, Küme ve Altyapı. Her çözüm, her senaryoyu tamamlamak için Uygulama Öngörüleri ve Azure Monitör günlükleri, Azure izleme araçları kullanır. Her çözümdeki adımlar, kullanıcılara Hizmet Dokusu bağlamında Uygulama Öngörüleri ve Azure Monitör günlüklerinin nasıl kullanılacağı hakkında bir giriş sağlar.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="prerequisites-and-recommendations"></a>Önkoşullar ve öneriler
+## <a name="prerequisites-and-recommendations"></a>Önkoşullar ve Öneriler
 
-Bu makaledeki çözümler aşağıdaki araçları kullanacaktır. Bu ayarı ayarlamış ve yapılandırmış olmanız önerilir:
+Bu makaledeki çözümler aşağıdaki araçları kullanır. Bunları ayarlamanızı ve yapılandırmanızı öneririz:
 
-* [Service Fabric Application Insights](service-fabric-tutorial-monitoring-aspnet.md)
-* [Kümenizde Azure Tanılama etkinleştirme](service-fabric-diagnostics-event-aggregation-wad.md)
+* [Hizmet Kumaşı ile Uygulama Öngörüleri](service-fabric-tutorial-monitoring-aspnet.md)
+* [Kümenizde Azure Tanılama'yı etkinleştirme](service-fabric-diagnostics-event-aggregation-wad.md)
 * [Log Analytics çalışma alanı ayarlama](service-fabric-diagnostics-oms-setup.md)
-* [Performans sayaçlarını izlemek için aracı Log Analytics](service-fabric-diagnostics-oms-agent.md)
+* [Performans Sayaçlarını izlemek için Günlük Analytics aracısı](service-fabric-diagnostics-oms-agent.md)
 
-## <a name="how-can-i-see-unhandled-exceptions-in-my-application"></a>Uygulamamda işlenmeyen özel durumları nasıl görebilirim?
+## <a name="how-can-i-see-unhandled-exceptions-in-my-application"></a>Uygulamamda işlenmemiş özel durumları nasıl görebiliyorum?
 
-1. Uygulamanızın ile yapılandırıldığı Application Insights kaynağına gidin.
-2. Sol üstteki *Ara* ' ya tıklayın. Sonra bir sonraki panelde filtre ' ye tıklayın.
+1. Uygulamanızın yapılandırıldıdığı Application Insights kaynağınıza gidin.
+2. Sol üstteki *Arama'ya* tıklayın. Ardından bir sonraki panelde filtreyi tıklatın.
 
-    ![AI genel bakış](media/service-fabric-diagnostics-common-scenarios/ai-search-filter.png)
+    ![AI Genel Bakış](media/service-fabric-diagnostics-common-scenarios/ai-search-filter.png)
 
-3. Çok sayıda olay türü görürsünüz (izlemeler, istekler, özel olaylar). Filtreniz olarak "özel durum" ı seçin.
+3. Birçok olay türü (izlemeler, istekler, özel olaylar) görürsünüz. Filtreniz olarak "Özel Durum"u seçin.
 
-    ![AI filtre listesi](media/service-fabric-diagnostics-common-scenarios/ai-filter-list.png)
+    ![AI Filtre Listesi](media/service-fabric-diagnostics-common-scenarios/ai-filter-list.png)
 
-    Listede bir özel duruma tıkladığınızda, Service Fabric Application Insights SDK kullanıyorsanız hizmet bağlamı dahil daha fazla ayrıntıya bakabilirsiniz.
+    Listedeki bir özel durumu tıklatarak, Service Fabric Application Insights SDK kullanıyorsanız hizmet bağlamı da dahil olmak üzere daha fazla ayrıntıya bakabilirsiniz.
 
-    ![AI özel durumu](media/service-fabric-diagnostics-common-scenarios/ai-exception.png)
+    ![AI Özel Durum](media/service-fabric-diagnostics-common-scenarios/ai-exception.png)
 
-## <a name="how-do-i-view-which-http-calls-are-used-in-my-services"></a>Nasıl yaparım? Hizmetlerim 'de hangi HTTP çağrılarının kullanıldığını görüntüleyin?
+## <a name="how-do-i-view-which-http-calls-are-used-in-my-services"></a>Hizmetlerimde hangi HTTP çağrılarının kullanıldığını nasıl görüntüleyebilirim?
 
-1. Aynı Application Insights kaynağında, özel durumlar yerine "istekler" ile filtre uygulayabilir ve yapılan tüm istekleri görüntüleyebilirsiniz
-2. Service Fabric Application Insights SDK 'sını kullanıyorsanız, hizmetlerinizin birine bağlı bir görsel temsilini ve başarılı ve başarısız isteklerin sayısını görebilirsiniz. Sol tarafta "uygulama haritası" na tıklayın
+1. Aynı Application Insights kaynağında, özel durumlar yerine "isteklere" filtre uygulayabilir ve yapılan tüm istekleri görüntüleyebilirsiniz
+2. Service Fabric Application Insights SDK'yı kullanıyorsanız, hizmetlerinizin birbirine bağlı görsel bir temsilini ve başarılı ve başarısız isteklerin sayısını görebilirsiniz. Soldaki "Uygulama Haritası"
 
-    ![AI uygulama Haritası dikey penceresi](media/service-fabric-diagnostics-common-scenarios/app-map-blade.png) ![AI uygulama Haritası](media/service-fabric-diagnostics-common-scenarios/app-map-new.png)
+    ![AI App](media/service-fabric-diagnostics-common-scenarios/app-map-blade.png) ![Harita Blade AI Uygulama Haritası](media/service-fabric-diagnostics-common-scenarios/app-map-new.png)
 
-    Uygulama haritası hakkında daha fazla bilgi için [uygulama Haritası belgelerini](../azure-monitor/app/app-map.md) ziyaret edin
+    Başvuru haritası hakkında daha fazla bilgi için [Başvuru Haritası belgelerini](../azure-monitor/app/app-map.md) ziyaret edin
 
-## <a name="how-do-i-create-an-alert-when-a-node-goes-down"></a>Düğüm aşağı gittiğinde uyarı oluşturma Nasıl yaparım?
+## <a name="how-do-i-create-an-alert-when-a-node-goes-down"></a>Düğüm küçüldüğünde nasıl bir uyarı oluştururum?
 
-1. Düğüm olayları Service Fabric kümeniz tarafından izlenir. **Servicefabric (NameofResourceGroup)** adlı Service Fabric Analytics çözüm kaynağına gidin
-2. "Özet" başlıklı dikey pencerenin alt kısmındaki grafiğe tıklayın
+1. Düğüm olayları Servis Kumaşı kümeniz tarafından izlenir. **ServiceFabric(NameofResourceGroup)** adlı Service Fabric Analytics çözüm kaynağına gidin
+2. Bıçağın altındaki "Özet" başlıklı grafiğe tıklayın
 
-    ![Azure Izleyici günlükleri çözümü](media/service-fabric-diagnostics-common-scenarios/oms-solution-azure-portal.png)
+    ![Azure Monitor günlükleri çözümü](media/service-fabric-diagnostics-common-scenarios/oms-solution-azure-portal.png)
 
-3. Burada çeşitli ölçümleri görüntüleyen birçok grafik ve kutucuk vardır. Grafiklerinden birine tıkladığınızda günlük aramasına bu işlem uygulanır. Burada herhangi bir küme olayı veya performans sayacı için sorgulama yapabilirsiniz.
-4. Aşağıdaki sorguyu girin. Bu olay kimlikleri [düğüm olayları başvurusunda](service-fabric-diagnostics-event-generation-operational.md#application-events) bulunur
+3. Burada çeşitli ölçümleri görüntüleyen birçok grafik ve kutucuk bulunmaktadır. Grafiklerden birine tıkladığınızda sizi Günlük Arama'ya götürür. Burada herhangi bir küme olayları veya performans sayaçları için sorgulayabilirsiniz.
+4. Aşağıdaki sorguyu girin. Bu olay iAnda'ları [Düğüm olayları referansbulunur](service-fabric-diagnostics-event-generation-operational.md#application-events)
 
     ```kusto
     ServiceFabricOperationalEvent
     | where EventID >= 25622 and EventID <= 25626
     ```
 
-5. En üstteki "yeni uyarı kuralı" na tıklayın ve artık bu sorguya bağlı olarak bir olay ulaştığında, seçtiğiniz iletişim yönteminde bir uyarı alırsınız.
+5. En üstteki "Yeni Uyarı Kuralı"nı tıklayın ve şimdi bu sorguya dayalı bir olay geldiğinde seçtiğiniz iletişim yönteminde bir uyarı alırsınız.
 
-    ![Azure Izleyici günlükleri yeni uyarısı](media/service-fabric-diagnostics-common-scenarios/oms-create-alert.png)
+    ![Azure Monitör yeni uyarıyı kaydeder](media/service-fabric-diagnostics-common-scenarios/oms-create-alert.png)
 
-## <a name="how-can-i-be-alerted-of-application-upgrade-rollbacks"></a>Uygulama yükseltme geri alma işlemlerinin nasıl uyarılendirilirim?
+## <a name="how-can-i-be-alerted-of-application-upgrade-rollbacks"></a>Uygulama yükseltme geri almalar konusunda nasıl uyarılabilirim?
 
-1. Aynı günlük araması penceresinde, önceki yükseltme geri alma için aşağıdaki sorguyu girin. Bu olay kimlikleri, [uygulama olayları başvurusu](service-fabric-diagnostics-event-generation-operational.md#application-events) altında bulunur
+1. Yükseltme geri dönüşleri için aşağıdaki sorguyu girmeden önce olduğu gibi aynı Günlük Arama penceresinde. Bu olay iT'leri [Uygulama olayları başvurusu](service-fabric-diagnostics-event-generation-operational.md#application-events) altında bulunur
 
     ```kusto
     ServiceFabricOperationalEvent
     | where EventID == 29623 or EventID == 29624
     ```
 
-2. Üstteki "yeni uyarı kuralı" na tıklayın ve artık bu sorguya bağlı olarak bir olay geldiğinde bir uyarı alırsınız.
+2. En üstteki "Yeni Uyarı Kuralı"nı tıklatın ve şimdi bu sorguya dayalı bir olay geldiğinde bir uyarı alırsınız.
 
-## <a name="how-do-i-see-container-metrics"></a>Nasıl yaparım? kapsayıcı ölçümlerini görmek mi istiyorsunuz?
+## <a name="how-do-i-see-container-metrics"></a>Konteyner ölçümlerini nasıl görebiliyorum?
 
-Tüm grafiklerle aynı görünümde, kapsayıcılarınızın performansı için bazı kutucuklar görürsünüz. Bu kutucukların doldurulması için Log Analytics Aracısı ve [kapsayıcı izleme çözümüne](service-fabric-diagnostics-oms-containers.md) ihtiyacınız vardır.
+Tüm grafiklerle aynı görünümde, kapsayıcılarınızın performansı için bazı döşemeler görürsünüz. Bu döşemelerin doldurulması için Log Analytics Agent ve [Konteyner İzleme çözümüne](service-fabric-diagnostics-oms-containers.md) ihtiyacınız vardır.
 
-![Log Analytics kapsayıcı ölçümleri](media/service-fabric-diagnostics-common-scenarios/containermetrics.png)
+![Log Analytics Konteyner Ölçümleri](media/service-fabric-diagnostics-common-scenarios/containermetrics.png)
 
 >[!NOTE]
->Kapsayıcılarınızın **içinden** Telemetriyi işaretlemek için [kapsayıcılar için Application Insights NuGet paketini](https://github.com/Microsoft/ApplicationInsights-servicefabric#microsoftapplicationinsightsservicefabric--for-service-fabric-lift-and-shift-scenarios)eklemeniz gerekir.
+>Kabınızın **içinden** telemetri yapmak [için kaplar için Uygulama Öngörüleri nuget paketini](https://github.com/Microsoft/ApplicationInsights-servicefabric#microsoftapplicationinsightsservicefabric--for-service-fabric-lift-and-shift-scenarios)eklemeniz gerekir.
 
 ## <a name="how-can-i-monitor-performance-counters"></a>Performans sayaçlarını nasıl izleyebilirim?
 
-1. Log Analytics aracısını kümenize ekledikten sonra, izlemek istediğiniz belirli performans sayaçlarını eklemeniz gerekir. Portaldaki Log Analytics çalışma alanının sayfasına gidin; çözüm sayfasında çalışma alanı sekmesi sol menüde bulunur.
+1. Log Analytics aracısını kümenize ekledikten sonra, izlemek istediğiniz belirli performans sayaçlarını eklemeniz gerekir. Portaldaki Log Analytics çalışma alanının sayfasına gidin – çözümün sayfasından çalışma alanı sekmesi sol menüde yer almaktadır.
 
-    ![Log Analytics çalışma alanı sekmesi](media/service-fabric-diagnostics-common-scenarios/workspacetab.png)
+    ![Günlük Analitik Çalışma Alanı Sekmesi](media/service-fabric-diagnostics-common-scenarios/workspacetab.png)
 
-2. Çalışma alanının sayfasından sonra, aynı Sol menüdeki "Gelişmiş ayarlar" a tıklayın.
+2. Çalışma alanının sayfasına çıktıktan sonra, aynı sol menüdeki "Gelişmiş ayarlar"a tıklayın.
 
-    ![Gelişmiş ayarları Log Analytics](media/service-fabric-diagnostics-common-scenarios/advancedsettingsoms.png)
+    ![Günlük Analitik Gelişmiş Ayarlar](media/service-fabric-diagnostics-common-scenarios/advancedsettingsoms.png)
 
-3. Log Analytics Aracısı aracılığıyla düğümlerinizin belirli sayaçlarını toplamaya başlamak için veri > Windows performans sayaçları (Linux makineler için veri > Linux performans sayaçları) seçeneğine tıklayın. Eklenecek sayaçların biçimi örnekleri aşağıda verilmiştir
+3. Log Analytics aracısı aracılığıyla düğümlerinizden belirli sayaçları toplamaya başlamak için Windows Performans Sayaçları > (Linux makineleri için Linux performans sayaçları > Veri) tıklayın. Aşağıda sayaçların ekleyleyebileceği biçim örnekleri verilmiştir
 
    * `.NET CLR Memory(<ProcessNameHere>)\\# Total committed Bytes`
    * `Processor(_Total)\\% Processor Time`
 
-     Hızlı başlangıçta, VotingData ve VotingWeb, kullanılan işlem adlarıdır. bu nedenle, bu sayaçların izlenmesi şu şekilde görünür.
+     Hızlı başlangıçta, VotingData ve VotingWeb kullanılan işlem adlarıdır, bu nedenle bu sayaçları izleme
 
    * `.NET CLR Memory(VotingData)\\# Total committed Bytes`
    * `.NET CLR Memory(VotingWeb)\\# Total committed Bytes`
 
-     ![Performans sayaçlarını Log Analytics](media/service-fabric-diagnostics-common-scenarios/omsperfcounters.png)
+     ![Log Analytics Perf Sayaçları](media/service-fabric-diagnostics-common-scenarios/omsperfcounters.png)
 
-4. Bu, altyapınızın iş yüklerinizi nasıl ele almakta olduğunu görmenizi ve kaynak kullanımına göre ilgili uyarıları ayarlamanızı sağlar. Örneğin, toplam Işlemci kullanımı %90 veya %5 ' in üzerinde olursa bir uyarı ayarlamak isteyebilirsiniz. Bu için kullanacağınız sayaç adı "% Işlemci zamanı". Bunu, aşağıdaki sorgu için bir uyarı kuralı oluşturarak yapabilirsiniz:
+4. Bu, altyapınızın iş yüklerinizi nasıl ele aldığını görmenizi ve kaynak kullanımına göre ilgili uyarıları ayarlamanızı sağlar. Örneğin - toplam İşlemci kullanımı %90'ın üzerinde veya %5'in altındaysa bir uyarı ayarlamak isteyebilirsiniz. Bunun için kullanacağınız sayaç adı "%İşlemci Zamanı" dır. Bunu, aşağıdaki sorgu için bir uyarı kuralı oluşturarak yapabilirsiniz:
 
     ```kusto
     Perf | where CounterName == "% Processor Time" and InstanceName == "_Total" | where CounterValue >= 90 or CounterValue <= 5.
     ```
 
-## <a name="how-do-i-track-performance-of-my-reliable-services-and-actors"></a>Nasıl yaparım? Reliable Services ve aktörlerimin performansı İzmi?
+## <a name="how-do-i-track-performance-of-my-reliable-services-and-actors"></a>Güvenilir Hizmetlerimin ve Aktörlerimin performansını nasıl takip edebilirim?
 
-Uygulamalarınızda Reliable Services veya aktörlerin performansını izlemek için, Service Fabric aktör, aktör yöntemi, hizmet ve hizmet yöntemi sayaçlarını da toplamalısınız. Toplanacak güvenilir hizmet ve aktör performans sayacı örnekleri aşağıda verilmiştir
+Uygulamalarınızdaki Güvenilir Hizmetlerin veya Aktörlerin performansını izlemek için, Servis Kumaşı Aktörü, Aktör Yöntemi, Hizmet ve Hizmet Yöntemi sayaçlarını da toplamanız gerekir. Burada toplamak için güvenilir hizmet ve aktör performans sayaçları örnekleri
 
 >[!NOTE]
->Service Fabric performans sayaçları Şu anda Log Analytics Aracısı tarafından toplanamaz, ancak [diğer tanılama çözümleriyle](service-fabric-diagnostics-partners.md) toplanabilir
+>Service Fabric performans sayaçları şu anda Log Analytics aracısı tarafından toplanamaz, ancak [diğer tanılama çözümleri](service-fabric-diagnostics-partners.md) tarafından toplanabilir
 
 * `Service Fabric Service(*)\\Average milliseconds per request`
 * `Service Fabric Service Method(*)\\Invocations/Sec`
 * `Service Fabric Actor(*)\\Average milliseconds per request`
 * `Service Fabric Actor Method(*)\\Invocations/Sec`
 
-Güvenilir [Hizmetler](service-fabric-reliable-serviceremoting-diagnostics.md) ve [aktörlerdeki](service-fabric-reliable-actors-diagnostics.md) performans sayaçlarının tam listesi için bu bağlantıları denetleyin
+Güvenilir [Hizmetler](service-fabric-reliable-serviceremoting-diagnostics.md) ve [Aktörler'deki](service-fabric-reliable-actors-diagnostics.md) performans sayaçlarının tam listesi için bu bağlantıları kontrol edin
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Ortak kod paketi etkinleştirme hatalarını ara](./service-fabric-diagnostics-code-package-errors.md)
-* Performans veya kullanımlardaki değişiklikler hakkında bildirim almak için [AI 'Deki uyarıları ayarlama](../azure-monitor/app/alerts.md)
-* [Application Insights akıllı algılama](../azure-monitor/app/proactive-diagnostics.md) , olası performans sorunları konusunda sizi uyarmak üzere AI 'ye gönderilen telemetrinin proaktif analizini yapar
-* Algılama ve tanılama konusunda yardımcı olması için Azure Izleyici günlükleri [uyarısı](../log-analytics/log-analytics-alerts.md) hakkında daha fazla bilgi edinin.
-* Azure Izleyici günlükleri, şirket içi kümeler için Azure Izleyici günlüklerine veri göndermek için kullanılabilen bir ağ geçidi (HTTP Iletme proxy) sunar. [Log Analytics ağ geçidini kullanarak Internet erişimi olmadan bilgisayarları Azure izleyici günlüklerine bağlama](../azure-monitor/platform/gateway.md) konusunda daha fazla bilgi edinin
-* Azure Izleyici günlüklerinin bir parçası olarak sunulan [günlük araması ve sorgulama](../log-analytics/log-analytics-log-searches.md) özellikleriyle familiarized alın
-* Azure Izleyici günlüklerine ve bu günlüklere yönelik daha ayrıntılı bir genel bakış edinin, [Azure izleyici günlüklerini](../operations-management-suite/operations-management-suite-overview.md) okuyun.
+* [Ortak Kod Paketi Etkinleştirme Hatalarını Ara](./service-fabric-diagnostics-code-package-errors.md)
+* Performans veya kullanımdaki değişikliklerden haberdar olmak için [AI'deki Uyarıları ayarlama](../azure-monitor/app/alerts.md)
+* [Uygulama Öngörülerinde Akıllı Algılama,](../azure-monitor/app/proactive-diagnostics.md) olası performans sorunları konusunda sizi uyarmak için AI'ye gönderilen telemetrinin proaktif bir analizini gerçekleştirir
+* Algılama ve tanılama konusunda [uyarı sağlayan](../log-analytics/log-analytics-alerts.md) Azure Monitor günlükleri hakkında daha fazla bilgi edinin.
+* Şirket içi kümeler için Azure Monitor günlükleri, Azure Monitor günlüklerine veri göndermek için kullanılabilecek bir ağ geçidi (HTTP Forward Proxy) sunar. [Log Analytics ağ geçidini kullanarak Azure Monitor günlüklerine Internet erişimi olmayan bilgisayarları bağlama](../azure-monitor/platform/gateway.md) da bu konuda daha fazla bilgi edinin
+* Azure Monitor [günlüklerinin](../log-analytics/log-analytics-log-searches.md) bir parçası olarak sunulan günlük arama ve sorgulama özelliklerine aşina olun
+* Azure Monitor günlükleri ve neler sunduğunun daha ayrıntılı bir özetini alın, [Azure Monitor günlükleri nedir okuyun?](../operations-management-suite/operations-management-suite-overview.md)

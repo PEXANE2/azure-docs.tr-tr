@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: ADSyncConfig PowerShell başvurusu | Microsoft Docs'
-description: Bu belge ADSyncConfig.psm1 PowerShell modülü için başvuru bilgileri sağlar.
+title: 'Azure AD Connect: ADSyncConfig PowerShell Başvuru | Microsoft Dokümanlar'
+description: Bu belge, ADSyncConfig.psm1 PowerShell modülü için referans bilgileri sağlar.
 author: billmath
 manager: daveba
 ms.service: active-directory
@@ -11,20 +11,20 @@ ms.author: billmath
 ms.topic: reference
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 554bb99121190198982f64deb6ee0674aa8831ed
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "60381204"
 ---
-# <a name="azure-ad-connect--adsyncconfig-powershell-reference"></a>Azure AD Connect:  ADSyncConfig PowerShell başvurusu
-Aşağıdaki belgeler Azure AD Connect ile birlikte sağlanan ADSyncConfig.psm1 PowerShell modülü için başvuru bilgileri sağlar.
+# <a name="azure-ad-connect--adsyncconfig-powershell-reference"></a>Azure AD Connect: ADSyncConfig PowerShell Başvurusu
+Aşağıdaki belgeler, Azure AD Connect ile birlikte verilen ADSyncConfig.psm1 PowerShell Modülü için referans bilgileri sağlar.
 
 
 ## <a name="get-adsyncadconnectoraccount"></a>Get-ADSyncADConnectorAccount
 
 ### <a name="synopsis"></a>ÖZET
-Her AD bağlayıcısında yapılandırılmış etki alanı ve hesabı adını alır
+Her AD Bağlayıcısı'nda yapılandırılan hesap adını ve etki alanını alır
 
 ### <a name="syntax"></a>SÖZ DİZİMİ
 
@@ -33,7 +33,7 @@ Get-ADSyncADConnectorAccount
 ```
 
 ### <a name="description"></a>AÇIKLAMA
-Bu işlev, AD Bağlayıcısı hesabını gösteren bir tablo bağlantı parametrelerini almak için AAD Connect mevcut olduğundan 'Get-ADSyncConnector' cmdlet kullanır.
+Bu işlev, Bağlantı Parametreleri'nden AD Bağlayıcısı(lar) hesabını gösteren bir tablo almak için AAD Connect'te bulunan 'Get-ADSyncConnector' cmdlet'i kullanır.
 
 ### <a name="examples"></a>ÖRNEKLER
 
@@ -42,10 +42,10 @@ Bu işlev, AD Bağlayıcısı hesabını gösteren bir tablo bağlantı parametr
 Get-ADSyncADConnectorAccount
 ```
 
-## <a name="get-adsyncobjectswithinheritancedisabled"></a>Get-ADSyncObjectsWithInheritanceDisabled
+## <a name="get-adsyncobjectswithinheritancedisabled"></a>Al-ADSyncObjectsWithInheritanceDisabled
 
 ### <a name="synopsis"></a>ÖZET
-İzin devralma devre dışı AD nesnelerini alır
+İzin devralma devre dışı bırakılmış AD nesnelerini alır
 
 ### <a name="syntax"></a>SÖZ DİZİMİ
 
@@ -54,7 +54,7 @@ Get-ADSyncObjectsWithInheritanceDisabled [-SearchBase] <String> [[-ObjectClass] 
 ```
 
 ### <a name="description"></a>AÇIKLAMA
-SearchBase parametresinden itibaren AD arar ve şu anda devre dışı ACL kalıtıma sahip ObjectClass parametresi tarafından filtrelenen tüm nesneleri döndürür.
+SearchBase parametresinden başlayarak AD'de aramalar ve ObjectClass parametresi tarafından filtre uygulanmış, şu anda devre dışı bırakılan ACL Kalıtım'ı olan tüm nesneleri döndürür.
 
 ### <a name="examples"></a>ÖRNEKLER
 
@@ -63,26 +63,26 @@ SearchBase parametresinden itibaren AD arar ve şu anda devre dışı ACL kalıt
 Find objects with disabled inheritance in 'Contoso' domain (by default returns 'organizationalUnit' objects only)
 ```
 
-Get-ADSyncObjectsWithInheritanceDisabled - SearchBase 'Contoso'
+Get-ADSyncObjectsWithInheritanceDisabled -SearchBase 'Contoso'
 
 #### <a name="example-2"></a>ÖRNEK 2
 ```
 Find 'user' objects with disabled inheritance in 'Contoso' domain
 ```
 
-Get-ADSyncObjectsWithInheritanceDisabled - SearchBase 'Contoso' - ObjectClass 'user'
+Get-ADSyncObjectsWithInheritanceDisabled -SearchBase 'Contoso' -ObjectClass 'kullanıcı'
 
 #### <a name="example-3"></a>ÖRNEK 3
 ```
 Find all types of objects with disabled inheritance in a OU
 ```
 
-Get-ADSyncObjectsWithInheritanceDisabled - SearchBase OU AzureAD, DC = Contoso, DC = com - ObjectClass = ' *'
+Get-ADSyncObjectsWithInheritanceDisabled -SearchBase OU=AzureAD,DC=Contoso,DC=com -ObjectClass '*'
 
 ### <a name="parameters"></a>PARAMETRELER
 
-#### <a name="-searchbase"></a>-SearchBase
-Bir AD etki alanı DistinguishedName ya da bir FQDN LDAP sorgusu için SearchBase
+#### <a name="-searchbase"></a>-Arama Üssü
+AD Etki Alanı DistinguishedName veya FQDN olabilecek LDAP sorgusu için SearchBase
 
 ```yaml
 Type: String
@@ -97,7 +97,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-objectclass"></a>-ObjectClass
-Sınıfı, aranacak nesne olabilir ' *' (tüm nesne sınıfı için), 'user', 'group', 'kapsayıcısı' vb. Varsayılan olarak, bu işlev, 'organizationalUnit' nesne sınıfı için arama yapar.
+'*' (herhangi bir nesne sınıfı için), 'kullanıcı', 'grup', 'kapsayıcı' vb. olabilecek arama nesnelerinin sınıfı Varsayılan olarak, bu işlev 'organizationalUnit' nesne sınıfara.
 
 ```yaml
 Type: String
@@ -113,12 +113,12 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Bu cmdlet şu genel parametreleri destekler: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction ve -WarningVariable.
-Daha fazla bilgi için bkz. about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+Daha fazla bilgi içinhttps://go.microsoft.com/fwlink/?LinkID=113216)about_CommonParameters ( .
 
 ## <a name="set-adsyncbasicreadpermissions"></a>Set-ADSyncBasicReadPermissions
 
 ### <a name="synopsis"></a>ÖZET
-Active Directory ormanı ve etki alanı için temel Okuma izinleri başlatın.
+Temel okuma izinleri için Active Directory ormanınızı ve etki alanınızı başlangıç olarak edinin.
 
 ### <a name="syntax"></a>SÖZ DİZİMİ
 
@@ -128,31 +128,31 @@ Set-ADSyncBasicReadPermissions -ADConnectorAccountName <String> -ADConnectorAcco
  [-ADobjectDN <String>] [-SkipAdminSdHolders] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-#### <a name="distinguishedname"></a>DistinguishedName
+#### <a name="distinguishedname"></a>Seçkin Ad
 ```
 Set-ADSyncBasicReadPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>] [-SkipAdminSdHolders]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### <a name="description"></a>AÇIKLAMA
-Set-ADSyncBasicReadPermissions işlevi şunlardır AD eşitleme hesabı için gerekli izinleri verecektir:
+Set-ADSyncBasicReadPermissions Fonksiyonu, aşağıdakileri içeren AD eşitleme hesabına gerekli izinleri verir:
 1.
-Tüm alt bilgisayar nesneleri için tüm öznitelikler üzerinde okuma özellik erişimi
+Tüm soyundan gelen bilgisayar nesneleri için tüm özniteliklerde Özellik erişimi okuma
 2.
-Tüm alt cihaz nesneler için tüm öznitelikler üzerinde okuma özellik erişimi
+Tüm soyundan gelen aygıt nesneleri için tüm özniteliklerde Özellik erişimini okuma
 3.
-Tüm alt foreignsecurityprincipal nesneler için tüm öznitelikler üzerinde okuma özellik erişimi
+Tüm soyundan gelen yabancı güvenlik nesneleri için tüm özniteliklerde Özellik erişimi okuyun
 5.
-Tüm alt kullanıcı nesneleri için tüm öznitelikler üzerinde okuma özellik erişimi
+Tüm soyundan gelen kullanıcı nesneleri için tüm özniteliklerde Özellik erişimini okuma
 6.
-Tüm alt inetorgperson nesnelerine için tüm öznitelikleri okuma özellik erişimi
+Tüm soyundan gelen inetorgperson nesneleri için tüm özniteliklerde Özellik erişimini okuyun
 7.
-Tüm alt grubu nesnelerinin tüm öznitelikler üzerinde okuma özellik erişimi
+Tüm soyundan gelen grup nesneleri için tüm özniteliklerde Özellik erişimini okuma
 8.
-Tüm öznitelikler kişi tüm alt nesneleri için okuma özelliği erişimi
+Tüm soyundan gelen kişi nesneleri için tüm özniteliklerde Özellik erişimini okuma
 
-Bu izinleri, ormandaki tüm etki alanları için uygulanır.
-İsteğe bağlı olarak, yalnızca (dahil devralma alt nesneleri için), AD nesnesi üzerinde bu izinleri ayarlamak için bir DistinguishedName ADobjectDN parametresi olarak sağlayabilirsiniz.
+Bu izinler ormandaki tüm etki alanlarında uygulanır.
+İsteğe bağlı olarak, bu izinleri yalnızca bu AD Nesnesi üzerinde ayarlamak için (alt nesnelere devralma dahil) ADobjectDN parametresinde bir DistinguishedName sağlayabilirsiniz.
 
 ### <a name="examples"></a>ÖRNEKLER
 
@@ -178,8 +178,8 @@ Set-ADSyncBasicReadPermissions -ADConnectorAccountName 'ADConnector' -ADConnecto
 
 ### <a name="parameters"></a>PARAMETRELER
 
-#### <a name="-adconnectoraccountname"></a>-ADConnectorAccountName
-Veya Azure AD Connect Sync tarafından directory içindeki nesneleri yönetmek için kullanılan Active Directory hesabının adıdır.
+#### <a name="-adconnectoraccountname"></a>-ADConnectorHesap Adı
+Dizindeki nesneleri yönetmek için Azure AD Connect Eşitle'si tarafından kullanılan veya kullanılacak Olan Etkin Dizin hesabının Adı.
 
 ```yaml
 Type: String
@@ -194,7 +194,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adconnectoraccountdomain"></a>-ADConnectorAccountDomain
-Veya Azure AD Connect Sync tarafından directory içindeki nesneleri yönetmek için kullanılan Active Directory hesabının etki alanı.
+Dizindeki nesneleri yönetmek için Azure AD Connect Sync Eşitleme'de olan veya bu hesap tarafından kullanılacak Olan Etkin Dizin hesabının Etki Alanı.
 
 ```yaml
 Type: String
@@ -209,7 +209,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adconnectoraccountdn"></a>-ADConnectorAccountDN
-DistinguishedName veya Azure AD Connect Sync tarafından directory içindeki nesneleri yönetmek için kullanılan Active Directory hesabı.
+Dizindeki nesneleri yönetmek için Azure AD Connect Sync Eşitle'si olan veya bu hesap tarafından kullanılacak Olan Etkin Dizin hesabının Seçkin Adı.
 
 ```yaml
 Type: String
@@ -224,7 +224,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adobjectdn"></a>-ADobjectDN
-(İsteğe bağlı) izinlerini ayarlamak için hedef AD nesnenin DistinguishedName
+İzinleri ayarlamak için hedef AD nesnesinin Ayırt Edici Adı (isteğe bağlı)
 
 ```yaml
 Type: String
@@ -238,8 +238,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-skipadminsdholders"></a>-SkipAdminSdHolders
-AdminSDHolder kapsayıcı bu izinlere sahip güncelleştirilmemelidir olmadığını belirtmek için isteğe bağlı parametre
+#### <a name="-skipadminsdholders"></a>-SkipAdminSdSahipleri
+AdminSDHolder kapsayıcının bu izinlerle güncelleştirilmemesi gerekip gerekmediğini belirtmek için isteğe bağlı parametre
 
 ```yaml
 Type: SwitchParameter
@@ -269,8 +269,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-confirm"></a>-Onaylayın
-Cmdlet'i çalıştırmadan önce onaylamanız istenir.
+#### <a name="-confirm"></a>-Confirm
+Cmdlet'i çalıştırmadan önce sizden onay ister.
 
 ```yaml
 Type: SwitchParameter
@@ -286,12 +286,12 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Bu cmdlet şu genel parametreleri destekler: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction ve -WarningVariable.
-Daha fazla bilgi için bkz. about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+Daha fazla bilgi içinhttps://go.microsoft.com/fwlink/?LinkID=113216)about_CommonParameters ( .
 
 ## <a name="set-adsyncexchangehybridpermissions"></a>Set-ADSyncExchangeHybridPermissions
 
 ### <a name="synopsis"></a>ÖZET
-Active Directory ormanı ve etki alanı için Exchange karma özelliğini başlatır.
+Exchange Hybrid özelliği için Active Directory ormanınızı ve etki alanınızı başlangıç olarak ele alanın.
 
 ### <a name="syntax"></a>SÖZ DİZİMİ
 
@@ -301,25 +301,25 @@ Set-ADSyncExchangeHybridPermissions -ADConnectorAccountName <String> -ADConnecto
  [-ADobjectDN <String>] [-SkipAdminSdHolders] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-#### <a name="distinguishedname"></a>DistinguishedName
+#### <a name="distinguishedname"></a>Seçkin Ad
 ```
 Set-ADSyncExchangeHybridPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>] [-SkipAdminSdHolders]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### <a name="description"></a>AÇIKLAMA
-Set-ADSyncExchangeHybridPermissions işlevi şunlardır AD eşitleme hesabı için gerekli izinleri verecektir:
+Set-ADSyncExchangeHybridPermissions Fonksiyonu, aşağıdakileri içeren AD eşitleme hesabına gerekli izinleri verecektir:
 1.
-Tüm alt kullanıcı nesneleri için tüm öznitelikler üzerinde okuma/yazma özellik erişimi
+Tüm soyundan gelen kullanıcı nesneleri için tüm özniteliklere özellik erişimini okuma/yazma
 2.
-Tüm alt inetorgperson nesnelerine için tüm öznitelikler özelliği okuma/yazma erişimi
+Tüm soyundan gelen inetorgperson nesneleri için tüm özniteliklere özellik erişimini okuma/yazma
 3.
-Tüm alt grubu nesnelerinin tüm öznitelikler üzerinde okuma/yazma özellik erişimi
+Tüm soyundan gelen grup nesneleri için tüm özniteliklere özellik erişimini okuma/yazma
 4.
-Tüm öznitelikler kişi tüm alt nesneleri için okuma/yazma özelliği erişimi
+Tüm soyundan gelen kişi nesneleri için tüm özniteliklere özellik erişimini okuma/yazma
 
-Bu izinleri, ormandaki tüm etki alanları için uygulanır.
-İsteğe bağlı olarak, yalnızca (dahil devralma alt nesneleri için), AD nesnesi üzerinde bu izinleri ayarlamak için bir DistinguishedName ADobjectDN parametresi olarak sağlayabilirsiniz.
+Bu izinler ormandaki tüm etki alanlarında uygulanır.
+İsteğe bağlı olarak, bu izinleri yalnızca bu AD Nesnesi üzerinde ayarlamak için (alt nesnelere devralma dahil) ADobjectDN parametresinde bir DistinguishedName sağlayabilirsiniz.
 
 ### <a name="examples"></a>ÖRNEKLER
 
@@ -345,8 +345,8 @@ Set-ADSyncExchangeHybridPermissions -ADConnectorAccountName 'ADConnector' -ADCon
 
 ### <a name="parameters"></a>PARAMETRELER
 
-#### <a name="-adconnectoraccountname"></a>-ADConnectorAccountName
-Veya Azure AD Connect Sync tarafından directory içindeki nesneleri yönetmek için kullanılan Active Directory hesabının adıdır.
+#### <a name="-adconnectoraccountname"></a>-ADConnectorHesap Adı
+Dizindeki nesneleri yönetmek için Azure AD Connect Eşitle'si tarafından kullanılan veya kullanılacak Olan Etkin Dizin hesabının Adı.
 
 ```yaml
 Type: String
@@ -361,7 +361,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adconnectoraccountdomain"></a>-ADConnectorAccountDomain
-Veya Azure AD Connect Sync tarafından directory içindeki nesneleri yönetmek için kullanılan Active Directory hesabının etki alanı.
+Dizindeki nesneleri yönetmek için Azure AD Connect Sync Eşitleme'de olan veya bu hesap tarafından kullanılacak Olan Etkin Dizin hesabının Etki Alanı.
 
 ```yaml
 Type: String
@@ -376,7 +376,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adconnectoraccountdn"></a>-ADConnectorAccountDN
-DistinguishedName veya Azure AD Connect Sync tarafından directory içindeki nesneleri yönetmek için kullanılan Active Directory hesabı.
+Dizindeki nesneleri yönetmek için Azure AD Connect Sync Eşitle'si olan veya bu hesap tarafından kullanılacak Olan Etkin Dizin hesabının Seçkin Adı.
 
 ```yaml
 Type: String
@@ -391,7 +391,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adobjectdn"></a>-ADobjectDN
-(İsteğe bağlı) izinlerini ayarlamak için hedef AD nesnenin DistinguishedName
+İzinleri ayarlamak için hedef AD nesnesinin Ayırt Edici Adı (isteğe bağlı)
 
 ```yaml
 Type: String
@@ -405,8 +405,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-skipadminsdholders"></a>-SkipAdminSdHolders
-AdminSDHolder kapsayıcı bu izinlere sahip güncelleştirilmemelidir olmadığını belirtmek için isteğe bağlı parametre
+#### <a name="-skipadminsdholders"></a>-SkipAdminSdSahipleri
+AdminSDHolder kapsayıcının bu izinlerle güncelleştirilmemesi gerekip gerekmediğini belirtmek için isteğe bağlı parametre
 
 ```yaml
 Type: SwitchParameter
@@ -436,8 +436,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-confirm"></a>-Onaylayın
-Cmdlet'i çalıştırmadan önce onaylamanız istenir.
+#### <a name="-confirm"></a>-Confirm
+Cmdlet'i çalıştırmadan önce sizden onay ister.
 
 ```yaml
 Type: SwitchParameter
@@ -453,12 +453,12 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Bu cmdlet şu genel parametreleri destekler: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction ve -WarningVariable.
-Daha fazla bilgi için bkz. about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+Daha fazla bilgi içinhttps://go.microsoft.com/fwlink/?LinkID=113216)about_CommonParameters ( .
 
 ## <a name="set-adsyncexchangemailpublicfolderpermissions"></a>Set-ADSyncExchangeMailPublicFolderPermissions
 
 ### <a name="synopsis"></a>ÖZET
-Active Directory ormanı ve etki alanı için Exchange posta ortak klasör özelliğini başlatır.
+Exchange Mail Public Folder özelliği için Active Directory ormanınızı ve etki alanınızı kullanıma açın.
 
 ### <a name="syntax"></a>SÖZ DİZİMİ
 
@@ -469,19 +469,19 @@ Set-ADSyncExchangeMailPublicFolderPermissions -ADConnectorAccountName <String>
  [<CommonParameters>]
 ```
 
-#### <a name="distinguishedname"></a>DistinguishedName
+#### <a name="distinguishedname"></a>Seçkin Ad
 ```
 Set-ADSyncExchangeMailPublicFolderPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>]
  [-SkipAdminSdHolders] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### <a name="description"></a>AÇIKLAMA
-Set-ADSyncExchangeMailPublicFolderPermissions işlevi şunlardır AD eşitleme hesabı için gerekli izinleri verecektir:
+Set-ADSyncExchangeMailPublicFolderPermissions Fonksiyonu, aşağıdakileri içeren AD eşitleme hesabına gerekli izinleri verecektir:
 1.
-Tüm alt publicfolder nesneler için tüm öznitelikler üzerinde okuma özellik erişimi
+Tüm soyundan gelen publicfolder nesnelerinin tüm özniteliklerinde Özellik erişimini okuma
 
-Bu izinleri, ormandaki tüm etki alanları için uygulanır.
-İsteğe bağlı olarak, yalnızca (dahil devralma alt nesneleri için), AD nesnesi üzerinde bu izinleri ayarlamak için bir DistinguishedName ADobjectDN parametresi olarak sağlayabilirsiniz.
+Bu izinler ormandaki tüm etki alanlarında uygulanır.
+İsteğe bağlı olarak, bu izinleri yalnızca bu AD Nesnesi üzerinde ayarlamak için (alt nesnelere devralma dahil) ADobjectDN parametresinde bir DistinguishedName sağlayabilirsiniz.
 
 ### <a name="examples"></a>ÖRNEKLER
 
@@ -507,8 +507,8 @@ Set-ADSyncExchangeMailPublicFolderPermissions -ADConnectorAccountName 'ADConnect
 
 ### <a name="parameters"></a>PARAMETRELER
 
-#### <a name="-adconnectoraccountname"></a>-ADConnectorAccountName
-Veya Azure AD Connect Sync tarafından directory içindeki nesneleri yönetmek için kullanılan Active Directory hesabının adıdır.
+#### <a name="-adconnectoraccountname"></a>-ADConnectorHesap Adı
+Dizindeki nesneleri yönetmek için Azure AD Connect Eşitle'si tarafından kullanılan veya kullanılacak Olan Etkin Dizin hesabının Adı.
 
 ```yaml
 Type: String
@@ -523,7 +523,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adconnectoraccountdomain"></a>-ADConnectorAccountDomain
-Veya Azure AD Connect Sync tarafından directory içindeki nesneleri yönetmek için kullanılan Active Directory hesabının etki alanı.
+Dizindeki nesneleri yönetmek için Azure AD Connect Sync Eşitleme'de olan veya bu hesap tarafından kullanılacak Olan Etkin Dizin hesabının Etki Alanı.
 
 ```yaml
 Type: String
@@ -538,7 +538,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adconnectoraccountdn"></a>-ADConnectorAccountDN
-DistinguishedName veya Azure AD Connect Sync tarafından directory içindeki nesneleri yönetmek için kullanılan Active Directory hesabı.
+Dizindeki nesneleri yönetmek için Azure AD Connect Sync Eşitle'si olan veya bu hesap tarafından kullanılacak Olan Etkin Dizin hesabının Seçkin Adı.
 
 ```yaml
 Type: String
@@ -553,7 +553,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adobjectdn"></a>-ADobjectDN
-(İsteğe bağlı) izinlerini ayarlamak için hedef AD nesnenin DistinguishedName
+İzinleri ayarlamak için hedef AD nesnesinin Ayırt Edici Adı (isteğe bağlı)
 
 ```yaml
 Type: String
@@ -567,8 +567,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-skipadminsdholders"></a>-SkipAdminSdHolders
-AdminSDHolder kapsayıcı bu izinlere sahip güncelleştirilmemelidir olmadığını belirtmek için isteğe bağlı parametre
+#### <a name="-skipadminsdholders"></a>-SkipAdminSdSahipleri
+AdminSDHolder kapsayıcının bu izinlerle güncelleştirilmemesi gerekip gerekmediğini belirtmek için isteğe bağlı parametre
 
 ```yaml
 Type: SwitchParameter
@@ -598,8 +598,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-confirm"></a>-Onaylayın
-Cmdlet'i çalıştırmadan önce onaylamanız istenir.
+#### <a name="-confirm"></a>-Confirm
+Cmdlet'i çalıştırmadan önce sizden onay ister.
 
 ```yaml
 Type: SwitchParameter
@@ -615,12 +615,12 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Bu cmdlet şu genel parametreleri destekler: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction ve -WarningVariable.
-Daha fazla bilgi için bkz. about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+Daha fazla bilgi içinhttps://go.microsoft.com/fwlink/?LinkID=113216)about_CommonParameters ( .
 
 ## <a name="set-adsyncmsdsconsistencyguidpermissions"></a>Set-ADSyncMsDsConsistencyGuidPermissions
 
 ### <a name="synopsis"></a>ÖZET
-Active Directory ormanı ve etki alanı için mS-DS-ConsistencyGuid özelliğini başlatır.
+MS-DS-ConsistencyGuid özelliği için Active Directory ormanınızı ve etki alanınızı başlangıç olarak adlandırın.
 
 ### <a name="syntax"></a>SÖZ DİZİMİ
 
@@ -630,19 +630,19 @@ Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountName <String> -ADCon
  [-ADobjectDN <String>] [-SkipAdminSdHolders] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-#### <a name="distinguishedname"></a>DistinguishedName
+#### <a name="distinguishedname"></a>Seçkin Ad
 ```
 Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>]
  [-SkipAdminSdHolders] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### <a name="description"></a>AÇIKLAMA
-Set-ADSyncMsDsConsistencyGuidPermissions işlevi şunlardır AD eşitleme hesabı için gerekli izinleri verecektir:
+Set-ADSyncMsDsConsistencyGuidPermissions İşlevi, aşağıdakileri içeren AD eşitleme hesabına gerekli izinleri verir:
 1.
-Tüm alt kullanıcı nesneleri için mS-DS-ConsistencyGuid özniteliği özelliği okuma/yazma erişimi
+Tüm soyundan gelen kullanıcı nesneleri için mS-DS-ConsistencyGuid özniteliği üzerinde Özellik erişimini okuma/Yazma
 
-Bu izinleri, ormandaki tüm etki alanları için uygulanır.
-İsteğe bağlı olarak, yalnızca (dahil devralma alt nesneleri için), AD nesnesi üzerinde bu izinleri ayarlamak için bir DistinguishedName ADobjectDN parametresi olarak sağlayabilirsiniz.
+Bu izinler ormandaki tüm etki alanlarında uygulanır.
+İsteğe bağlı olarak, bu izinleri yalnızca bu AD Nesnesi üzerinde ayarlamak için (alt nesnelere devralma dahil) ADobjectDN parametresinde bir DistinguishedName sağlayabilirsiniz.
 
 ### <a name="examples"></a>ÖRNEKLER
 
@@ -668,8 +668,8 @@ Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountName 'ADConnector' -
 
 ### <a name="parameters"></a>PARAMETRELER
 
-#### <a name="-adconnectoraccountname"></a>-ADConnectorAccountName
-Veya Azure AD Connect Sync tarafından directory içindeki nesneleri yönetmek için kullanılan Active Directory hesabının adıdır.
+#### <a name="-adconnectoraccountname"></a>-ADConnectorHesap Adı
+Dizindeki nesneleri yönetmek için Azure AD Connect Eşitle'si tarafından kullanılan veya kullanılacak Olan Etkin Dizin hesabının Adı.
 
 ```yaml
 Type: String
@@ -684,7 +684,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adconnectoraccountdomain"></a>-ADConnectorAccountDomain
-Veya Azure AD Connect Sync tarafından directory içindeki nesneleri yönetmek için kullanılan Active Directory hesabının etki alanı.
+Dizindeki nesneleri yönetmek için Azure AD Connect Sync Eşitleme'de olan veya bu hesap tarafından kullanılacak Olan Etkin Dizin hesabının Etki Alanı.
 
 ```yaml
 Type: String
@@ -699,7 +699,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adconnectoraccountdn"></a>-ADConnectorAccountDN
-DistinguishedName veya Azure AD Connect Sync tarafından directory içindeki nesneleri yönetmek için kullanılan Active Directory hesabı.
+Dizindeki nesneleri yönetmek için Azure AD Connect Sync Eşitle'si olan veya bu hesap tarafından kullanılacak Olan Etkin Dizin hesabının Seçkin Adı.
 
 ```yaml
 Type: String
@@ -714,7 +714,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adobjectdn"></a>-ADobjectDN
-(İsteğe bağlı) izinlerini ayarlamak için hedef AD nesnenin DistinguishedName
+İzinleri ayarlamak için hedef AD nesnesinin Ayırt Edici Adı (isteğe bağlı)
 
 ```yaml
 Type: String
@@ -728,8 +728,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-skipadminsdholders"></a>-SkipAdminSdHolders
-AdminSDHolder kapsayıcı bu izinlere sahip güncelleştirilmemelidir olmadığını belirtmek için isteğe bağlı parametre
+#### <a name="-skipadminsdholders"></a>-SkipAdminSdSahipleri
+AdminSDHolder kapsayıcının bu izinlerle güncelleştirilmemesi gerekip gerekmediğini belirtmek için isteğe bağlı parametre
 
 ```yaml
 Type: SwitchParameter
@@ -759,8 +759,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-confirm"></a>-Onaylayın
-Cmdlet'i çalıştırmadan önce onaylamanız istenir.
+#### <a name="-confirm"></a>-Confirm
+Cmdlet'i çalıştırmadan önce sizden onay ister.
 
 ```yaml
 Type: SwitchParameter
@@ -776,12 +776,12 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Bu cmdlet şu genel parametreleri destekler: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction ve -WarningVariable.
-Daha fazla bilgi için bkz. about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+Daha fazla bilgi içinhttps://go.microsoft.com/fwlink/?LinkID=113216)about_CommonParameters ( .
 
 ## <a name="set-adsyncpasswordhashsyncpermissions"></a>Set-ADSyncPasswordHashSyncPermissions
 
 ### <a name="synopsis"></a>ÖZET
-Active Directory ormanı ve etki alanı için parola karması eşitlemeyi başlatır.
+Parola karma eşitleme için Active Directory ormanınızı ve etki alanınızı başlatma.
 
 ### <a name="syntax"></a>SÖZ DİZİMİ
 
@@ -791,19 +791,19 @@ Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountName <String> -ADConnec
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-#### <a name="distinguishedname"></a>DistinguishedName
+#### <a name="distinguishedname"></a>Seçkin Ad
 ```
 Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountDN <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### <a name="description"></a>AÇIKLAMA
-Set-ADSyncPasswordHashSyncPermissions işlevi şunlardır AD eşitleme hesabı için gerekli izinleri verecektir:
+Set-ADSyncPasswordHashSyncPermissions Fonksiyonu, aşağıdakileri içeren AD eşitleme hesabına gerekli izinleri verir:
 1.
 Dizin Değişikliklerini Çoğaltma
 2.
-Dizini çoğaltmak yapılan tüm değişiklikler
+Çoğaltma Dizin Değişiklikleri Tümü
 
-Bu izinler, ormandaki tüm etki alanları için verilir.
+Bu izinler ormandaki tüm etki alanları için verilir.
 
 ### <a name="examples"></a>ÖRNEKLER
 
@@ -819,8 +819,8 @@ Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountDN 'CN=ADConnector,OU=A
 
 ### <a name="parameters"></a>PARAMETRELER
 
-#### <a name="-adconnectoraccountname"></a>-ADConnectorAccountName
-Azure AD Connect Sync tarafından directory içindeki nesneleri yönetmek için kullanılan Active Directory hesabının adıdır.
+#### <a name="-adconnectoraccountname"></a>-ADConnectorHesap Adı
+Dizindeki nesneleri yönetmek için Azure AD Connect Sync tarafından kullanılacak Olan Etkin Dizin hesabının adı.
 
 ```yaml
 Type: String
@@ -835,7 +835,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adconnectoraccountdomain"></a>-ADConnectorAccountDomain
-Azure AD Connect Sync tarafından directory içindeki nesneleri yönetmek için kullanılan Active Directory hesabı etki alanı.
+Dizindeki nesneleri yönetmek için Azure AD Connect Sync tarafından kullanılacak Olan Etkin Dizin hesabının Etki Alanı.
 
 ```yaml
 Type: String
@@ -850,7 +850,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adconnectoraccountdn"></a>-ADConnectorAccountDN
-DistinguishedName directory içindeki nesneleri yönetmek için Azure AD Connect Sync tarafından kullanılacak Active Directory hesabı.
+Dizindeki nesneleri yönetmek için Azure AD Connect Sync tarafından kullanılacak Olan Etkin Dizin hesabının Seçkin Adı.
 
 ```yaml
 Type: String
@@ -880,8 +880,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-confirm"></a>-Onaylayın
-Cmdlet'i çalıştırmadan önce onaylamanız istenir.
+#### <a name="-confirm"></a>-Confirm
+Cmdlet'i çalıştırmadan önce sizden onay ister.
 
 ```yaml
 Type: SwitchParameter
@@ -897,12 +897,12 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Bu cmdlet şu genel parametreleri destekler: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction ve -WarningVariable.
-Daha fazla bilgi için bkz. about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+Daha fazla bilgi içinhttps://go.microsoft.com/fwlink/?LinkID=113216)about_CommonParameters ( .
 
 ## <a name="set-adsyncpasswordwritebackpermissions"></a>Set-ADSyncPasswordWritebackPermissions
 
 ### <a name="synopsis"></a>ÖZET
-Active Directory ormanı ve etki alanı için parola geri yazma özelliğini Azure AD'den başlatın.
+Azure AD'den parola geri yazmak için Active Directory ormanınızı ve etki alanınızı başlangıç olarak alın.
 
 ### <a name="syntax"></a>SÖZ DİZİMİ
 
@@ -912,23 +912,23 @@ Set-ADSyncPasswordWritebackPermissions -ADConnectorAccountName <String> -ADConne
  [-ADobjectDN <String>] [-SkipAdminSdHolders] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-#### <a name="distinguishedname"></a>DistinguishedName
+#### <a name="distinguishedname"></a>Seçkin Ad
 ```
 Set-ADSyncPasswordWritebackPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>]
  [-SkipAdminSdHolders] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### <a name="description"></a>AÇIKLAMA
-Set-ADSyncPasswordWritebackPermissions işlevi şunlardır AD eşitleme hesabı için gerekli izinleri verecektir:
+Set-ADSyncPasswordWritebackPermissions İşlevi, aşağıdakileri içeren AD eşitleme hesabına gerekli izinleri verir:
 1.
-Alt kullanıcı nesneleri üzerinde parola sıfırlama
+Soyundan gelen kullanıcı nesnelerinde Parolayı Sıfırlama
 2.
-Özellik erişimini lockoutTime özniteliği tüm alt kullanıcı nesneleri için yazma
+Tüm soyundan gelen kullanıcı nesneleri için kilitlemeZaman özniteliği üzerinde Özellik erişimi yazın
 3.
-Özellik erişimini pwdLastSet özniteliği tüm alt kullanıcı nesneleri için yazma
+Tüm soyundan gelen kullanıcı nesneleri için pwdLastSet özniteliği özellik erişimi yazın
 
-Bu izinleri, ormandaki tüm etki alanları için uygulanır.
-İsteğe bağlı olarak, yalnızca (dahil devralma alt nesneleri için), AD nesnesi üzerinde bu izinleri ayarlamak için bir DistinguishedName ADobjectDN parametresi olarak sağlayabilirsiniz.
+Bu izinler ormandaki tüm etki alanlarında uygulanır.
+İsteğe bağlı olarak, bu izinleri yalnızca bu AD Nesnesi üzerinde ayarlamak için (alt nesnelere devralma dahil) ADobjectDN parametresinde bir DistinguishedName sağlayabilirsiniz.
 
 ### <a name="examples"></a>ÖRNEKLER
 
@@ -954,8 +954,8 @@ Set-ADSyncPasswordWritebackPermissions -ADConnectorAccountName 'ADConnector' -AD
 
 ### <a name="parameters"></a>PARAMETRELER
 
-#### <a name="-adconnectoraccountname"></a>-ADConnectorAccountName
-Veya Azure AD Connect Sync tarafından directory içindeki nesneleri yönetmek için kullanılan Active Directory hesabının adıdır.
+#### <a name="-adconnectoraccountname"></a>-ADConnectorHesap Adı
+Dizindeki nesneleri yönetmek için Azure AD Connect Eşitle'si tarafından kullanılan veya kullanılacak Olan Etkin Dizin hesabının Adı.
 
 ```yaml
 Type: String
@@ -970,7 +970,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adconnectoraccountdomain"></a>-ADConnectorAccountDomain
-Veya Azure AD Connect Sync tarafından directory içindeki nesneleri yönetmek için kullanılan Active Directory hesabının etki alanı.
+Dizindeki nesneleri yönetmek için Azure AD Connect Sync Eşitleme'de olan veya bu hesap tarafından kullanılacak Olan Etkin Dizin hesabının Etki Alanı.
 
 ```yaml
 Type: String
@@ -985,7 +985,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adconnectoraccountdn"></a>-ADConnectorAccountDN
-DistinguishedName veya Azure AD Connect Sync tarafından directory içindeki nesneleri yönetmek için kullanılan Active Directory hesabı.
+Dizindeki nesneleri yönetmek için Azure AD Connect Sync Eşitle'si olan veya bu hesap tarafından kullanılacak Olan Etkin Dizin hesabının Seçkin Adı.
 
 ```yaml
 Type: String
@@ -1000,7 +1000,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adobjectdn"></a>-ADobjectDN
-(İsteğe bağlı) izinlerini ayarlamak için hedef AD nesnenin DistinguishedName
+İzinleri ayarlamak için hedef AD nesnesinin Ayırt Edici Adı (isteğe bağlı)
 
 ```yaml
 Type: String
@@ -1014,8 +1014,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-skipadminsdholders"></a>-SkipAdminSdHolders
-AdminSDHolder kapsayıcı bu izinlere sahip güncelleştirilmemelidir olmadığını belirtmek için isteğe bağlı parametre
+#### <a name="-skipadminsdholders"></a>-SkipAdminSdSahipleri
+AdminSDHolder kapsayıcının bu izinlerle güncelleştirilmemesi gerekip gerekmediğini belirtmek için isteğe bağlı parametre
 
 ```yaml
 Type: SwitchParameter
@@ -1045,8 +1045,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-confirm"></a>-Onaylayın
-Cmdlet'i çalıştırmadan önce onaylamanız istenir.
+#### <a name="-confirm"></a>-Confirm
+Cmdlet'i çalıştırmadan önce sizden onay ister.
 
 ```yaml
 Type: SwitchParameter
@@ -1062,14 +1062,14 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Bu cmdlet şu genel parametreleri destekler: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction ve -WarningVariable.
-Daha fazla bilgi için bkz. about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+Daha fazla bilgi içinhttps://go.microsoft.com/fwlink/?LinkID=113216)about_CommonParameters ( .
 
 ## <a name="set-adsyncrestrictedpermissions"></a>Set-ADSyncRestrictedPermissions
 
 ### <a name="synopsis"></a>ÖZET
-Aksi takdirde herhangi bir AD korumalı güvenlik grubunda yer almayan bir AD nesne izinleri sıkılaştıran.
-Genel bir örnek AAD Connect tarafından otomatik olarak oluşturulan AD Connect'i (MSOL) hesaptır.
-Bu hesap tüm etki alanları üzerinde çoğaltma izinlerine sahip, korumalı gibi ancak kolayca tehlikeye girebilir.
+Ad korumalı güvenlik grubuna başka şekilde dahil olmayan bir AD nesnesi üzerindeki izinleri sıkılaştırın.
+Tipik bir örnek, AAD Connect tarafından otomatik olarak oluşturulan AD Connect hesabıdır (MSOL).
+Bu hesap, tüm etki alanlarında izinleri çoğaltmavardır, ancak korumalı olmadığı için kolayca tehlikeye atılabilir.
 
 ### <a name="syntax"></a>SÖZ DİZİMİ
 
@@ -1079,15 +1079,15 @@ Set-ADSyncRestrictedPermissions [-ADConnectorAccountDN] <String> [-Credential] <
 ```
 
 ### <a name="description"></a>AÇIKLAMA
-Set-ADSyncRestrictedPermissions işlevi sağlanan hesabın izinleri paylaşımlarınızda sıkılaştıran.
-İzinleri sıkılaştırma aşağıdaki adımları içerir:
+Set-ADSyncRestrictedPermissions İşlevi, sağlanan hesapoo izinleri sıkılaştırır.
+Sıkılaştırma izinleri aşağıdaki adımları içerir:
 1.
-Belirtilen nesnenin devralma devre dışı bırak
+Belirtilen nesnede devralmayı devre dışı
 2.
-Kendi KENDİNE özgü ACE dışında belirli nesne üzerindeki tüm ACE kaldırın.
-Kendi KENDİNE söz konusu olduğunda, varsayılan izinleri korumak istiyoruz.
+SELF'e özgü ACE'ler dışında, belirli bir nesnedeki tüm ACE'leri kaldırın.
+SELF söz konusu olduğunda varsayılan izinleri sağlam tutmak istiyoruz.
 3.
-Bu özel izinler atayın:
+Bu özel izinleri atama:
 
         Type    Name                                        Access              Applies To
         =============================================================================================
@@ -1114,8 +1114,8 @@ Set-ADSyncRestrictedPermissions -ADConnectorAccountDN "CN=TestAccount1,CN=Users,
 ### <a name="parameters"></a>PARAMETRELER
 
 #### <a name="-adconnectoraccountdn"></a>-ADConnectorAccountDN
-DistinguishedName Active Directory hesabının izinlerini sıkılaştırıldığını gerekir.
-Bu, genellikle MSOL_nnnnnnnnnn hesabın veya AD Bağlayıcınızı yapılandırılan özel etki alanı hesabı olacaktır.
+İzinleri sıkılaştırılması gereken Active Directory hesabının Seçkin Adı.
+Bu genellikle MSOL_nnnnnnnnnn hesabı veya AD Bağlayıcısı'nda yapılandırılan özel bir etki alanı hesabıdır.
 
 ```yaml
 Type: String
@@ -1130,7 +1130,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-credential"></a>-Credential
-ADConnectorAccountDN hesap izinlerini kısıtlamak için gerekli ayrıcalıklara sahip yönetici kimlik bilgileri. Genellikle kuruluş veya etki alanı yönetici budur. Hesap arama hatalarını önlemek için yönetici hesabının tam etki alanı adını kullanın.
+ADConnectorAccountDN hesabındaki izinleri kısıtlamak için gerekli ayrıcalıklara sahip yönetici kimlik bilgisi. Bu genellikle Enterprise veya Domain yöneticisidir. Hesap arama hatalarını önlemek için yönetici hesabının tam nitelikli alan adını kullanın.
 Örnek: CONTOSO\admin
 
 ```yaml
@@ -1145,8 +1145,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-disablecredentialvalidation"></a>-DisableCredentialValidation
-DisableCredentialValidation kullanıldığında, işlev-sağlanan kimlik bilgileri, kimlik bilgisi AD'de geçerli ve sağlanan hesabı ADConnectorAccountDN hesap izinlerini kısıtlamak için gerekli ayrıcalıklara sahip olmadığını denetlemez.
+#### <a name="-disablecredentialvalidation"></a>-Devre Dışı BırakmaCredentialValidation
+DisableCredentialValidation kullanıldığında, işlev -Kimlik Bilgileri'nde sağlanan kimlik bilgilerinin AD'de geçerli olup olmadığını ve sağlanan hesabın ADConnectorAccountDN hesabındaki izinleri kısıtlamak için gerekli ayrıcalıklara sahip olup olmadığını denetlemez.
 
 ```yaml
 Type: SwitchParameter
@@ -1176,8 +1176,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-confirm"></a>-Onaylayın
-Cmdlet'i çalıştırmadan önce onaylamanız istenir.
+#### <a name="-confirm"></a>-Confirm
+Cmdlet'i çalıştırmadan önce sizden onay ister.
 
 ```yaml
 Type: SwitchParameter
@@ -1193,12 +1193,12 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Bu cmdlet şu genel parametreleri destekler: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction ve -WarningVariable.
-Daha fazla bilgi için bkz. about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+Daha fazla bilgi içinhttps://go.microsoft.com/fwlink/?LinkID=113216)about_CommonParameters ( .
 
 ## <a name="set-adsyncunifiedgroupwritebackpermissions"></a>Set-ADSyncUnifiedGroupWritebackPermissions
 
 ### <a name="synopsis"></a>ÖZET
-Active Directory ormanı ve etki alanı için Azure ad grup geri yazma'yı başlatın.
+Azure AD'den Grup geri yazma için Active Directory ormanınızı ve etki alanınızı başlangıç olarak yazın.
 
 ### <a name="syntax"></a>SÖZ DİZİMİ
 
@@ -1208,20 +1208,20 @@ Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountName <String> -ADC
  [-ADobjectDN <String>] [-SkipAdminSdHolders] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-#### <a name="distinguishedname"></a>DistinguishedName
+#### <a name="distinguishedname"></a>Seçkin Ad
 ```
 Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountDN <String> [-ADobjectDN <String>]
  [-SkipAdminSdHolders] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### <a name="description"></a>AÇIKLAMA
-Set-ADSyncUnifiedGroupWritebackPermissions işlevi şunlardır AD eşitleme hesabı için gerekli izinleri verecektir:
+Set-ADSyncUnifiedGroupWritebackPermissions İşlevi, aşağıdakileri içeren AD eşitleme hesabına gerekli izinleri verir:
 1.
-Genel okuma/yazma, silme, ağaç silin ve tüm Create\Delete alt nesne türlerini ve alt nesnelerinin Grup
+Tüm grup Nesne türleri ve Alt Nesneler için Genel Okuma/Yazma, Silme, Ağacı Sil ve Oluştur\Delete Alt
 
-Bu izinleri, ormandaki tüm etki alanları için uygulanır.
-İsteğe bağlı olarak, yalnızca (dahil devralma alt nesneleri için), AD nesnesi üzerinde bu izinleri ayarlamak için bir DistinguishedName ADobjectDN parametresi olarak sağlayabilirsiniz.
-Bu durumda, ADobjectDN GroupWriteback özelliğiyle bağlamak istediğiniz kapsayıcının ayırt edici adı olacaktır.
+Bu izinler ormandaki tüm etki alanlarında uygulanır.
+İsteğe bağlı olarak, bu izinleri yalnızca bu AD Nesnesi üzerinde ayarlamak için (alt nesnelere devralma dahil) ADobjectDN parametresinde bir DistinguishedName sağlayabilirsiniz.
+Bu durumda, ADobjectDN GroupWriteback özelliği ile bağlamak istediğiniz Kapsayıcının Ayırt Edici Adı olacaktır.
 
 ### <a name="examples"></a>ÖRNEKLER
 
@@ -1247,8 +1247,8 @@ Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountName 'ADConnector'
 
 ### <a name="parameters"></a>PARAMETRELER
 
-#### <a name="-adconnectoraccountname"></a>-ADConnectorAccountName
-Veya Azure AD Connect Sync tarafından directory içindeki nesneleri yönetmek için kullanılan Active Directory hesabının adıdır.
+#### <a name="-adconnectoraccountname"></a>-ADConnectorHesap Adı
+Dizindeki nesneleri yönetmek için Azure AD Connect Eşitle'si tarafından kullanılan veya kullanılacak Olan Etkin Dizin hesabının Adı.
 
 ```yaml
 Type: String
@@ -1263,7 +1263,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adconnectoraccountdomain"></a>-ADConnectorAccountDomain
-Veya Azure AD Connect Sync tarafından directory içindeki nesneleri yönetmek için kullanılan Active Directory hesabının etki alanı.
+Dizindeki nesneleri yönetmek için Azure AD Connect Sync Eşitleme'de olan veya bu hesap tarafından kullanılacak Olan Etkin Dizin hesabının Etki Alanı.
 
 ```yaml
 Type: String
@@ -1278,7 +1278,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adconnectoraccountdn"></a>-ADConnectorAccountDN
-DistinguishedName veya Azure AD Connect Sync tarafından directory içindeki nesneleri yönetmek için kullanılan Active Directory hesabı.
+Dizindeki nesneleri yönetmek için Azure AD Connect Sync Eşitle'si olan veya bu hesap tarafından kullanılacak Olan Etkin Dizin hesabının Seçkin Adı.
 
 ```yaml
 Type: String
@@ -1293,7 +1293,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-adobjectdn"></a>-ADobjectDN
-(İsteğe bağlı) izinlerini ayarlamak için hedef AD nesnenin DistinguishedName
+İzinleri ayarlamak için hedef AD nesnesinin Ayırt Edici Adı (isteğe bağlı)
 
 ```yaml
 Type: String
@@ -1307,8 +1307,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-skipadminsdholders"></a>-SkipAdminSdHolders
-AdminSDHolder kapsayıcı bu izinlere sahip güncelleştirilmemelidir olmadığını belirtmek için isteğe bağlı parametre
+#### <a name="-skipadminsdholders"></a>-SkipAdminSdSahipleri
+AdminSDHolder kapsayıcının bu izinlerle güncelleştirilmemesi gerekip gerekmediğini belirtmek için isteğe bağlı parametre
 
 ```yaml
 Type: SwitchParameter
@@ -1338,8 +1338,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-#### <a name="-confirm"></a>-Onaylayın
-Cmdlet'i çalıştırmadan önce onaylamanız istenir.
+#### <a name="-confirm"></a>-Confirm
+Cmdlet'i çalıştırmadan önce sizden onay ister.
 
 ```yaml
 Type: SwitchParameter
@@ -1355,12 +1355,12 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Bu cmdlet şu genel parametreleri destekler: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction ve -WarningVariable.
-Daha fazla bilgi için bkz. about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+Daha fazla bilgi içinhttps://go.microsoft.com/fwlink/?LinkID=113216)about_CommonParameters ( .
 
-## <a name="show-adsyncadobjectpermissions"></a>ADSyncADObjectPermissions Göster
+## <a name="show-adsyncadobjectpermissions"></a>Göster-ADSyncADObjectPermissions
 
 ### <a name="synopsis"></a>ÖZET
-Belirtilen bir AD nesne izinleri gösterilir.
+Belirtilen bir AD nesnesinin izinlerini gösterir.
 
 ### <a name="syntax"></a>SÖZ DİZİMİ
 
@@ -1369,8 +1369,8 @@ Show-ADSyncADObjectPermissions [-ADobjectDN] <String> [<CommonParameters>]
 ```
 
 ### <a name="description"></a>AÇIKLAMA
-Bu işlev parametre sağlanan belirli bir AD nesne için ayarlanmış olan tüm AD izinleri döndürür - ADobjectDN.
-ADobjectDN DistinguishedName biçiminde sağlanmalıdır.
+Bu işlev, parametre -ADobjectDN sağlanan belirli bir AD nesnesi için şu anda ayarlanan tüm AD izinleri döndürür.
+ADobjectDN Bir DistinguishedName biçiminde sağlanmalıdır.
 
 ### <a name="examples"></a>ÖRNEKLER
 
@@ -1382,7 +1382,7 @@ Show-ADSyncADObjectPermissions -ADobjectDN 'OU=AzureAD,DC=Contoso,DC=com'
 ### <a name="parameters"></a>PARAMETRELER
 
 #### <a name="-adobjectdn"></a>-ADobjectDN
-{{ADobjectDN açıklamasını doldurun}}
+{{DDobjectDN Açıklamasını Doldurun}}
 
 ```yaml
 Type: String
@@ -1398,4 +1398,4 @@ Accept wildcard characters: False
 
 #### <a name="commonparameters"></a>CommonParameters
 Bu cmdlet şu genel parametreleri destekler: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction ve -WarningVariable.
-Daha fazla bilgi için bkz. about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216).
+Daha fazla bilgi içinhttps://go.microsoft.com/fwlink/?LinkID=113216)about_CommonParameters ( .

@@ -10,10 +10,10 @@ ms.date: 06/18/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand what Data Box Disk is and how it works so I can use it to import on-premises data into Azure.
 ms.openlocfilehash: 067d818b7d23fc0b83cb1d4255bfbb8659149412
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79240733"
 ---
 # <a name="what-is-azure-data-box-disk"></a>Azure Data Box Disk nedir?
@@ -84,17 +84,17 @@ Daha fazla bilgi için bkz. [Azure Data Box Disk güvenliği ve veri koruması](
 | Veri arabirimi                                          | USB   |
 | Güvenlik                                                | BitLocker ile önceden şifreleme ve güvenli güncelleştirme <br> Destek anahtarı korumalı diskler <br> Veriler her zaman şifrelenir  |
 | Veri aktarımı hızı                                      | dosya boyutuna bağlı olarak en fazla 430 MB/sn      |
-|Yönetim                                               | Azure portalı |
+|Yönetim                                               | Azure portalında |
 
 
 ## <a name="region-availability"></a>Bölge kullanılabilirliği
 
-Bölge kullanılabilirliği hakkında daha fazla bilgi için [bölgeye göre kullanılabilir Azure ürünlerine](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)gidin. Data Box Disk, Azure Kamu Bulutu 'nda da dağıtılabilir. Daha fazla bilgi için bkz. [Azure Kamu nedir?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome).
+Bölge kullanılabilirliği hakkında bilgi için [bölgeye göre kullanılabilen Azure ürünlerine](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)gidin. Veri Kutusu Diski, Azure Devlet Bulutu'nda da dağıtılabilir. Daha fazla bilgi için azure [devlet nedir?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)
 
 
 ## <a name="pricing"></a>Fiyatlandırma
 
-Fiyatlandırma hakkında daha fazla bilgi için [fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/databox/disk/)gidin.
+Fiyatlandırma hakkında daha fazla bilgi için [Fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/databox/disk/)gidin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

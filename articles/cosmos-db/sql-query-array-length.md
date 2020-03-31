@@ -1,6 +1,6 @@
 ---
 title: Azure Cosmos DB sorgu dilinde ARRAY_LENGTH
-description: Azure Cosmos DB ' deki dizi uzunluğu SQL sistem işlevinin, belirtilen dizi ifadesinin öğe sayısını nasıl döndürdüğü hakkında bilgi edinin
+description: Azure Cosmos DB'deki Dizi uzunluğu SQL sisteminin işlevinin belirtilen dizi ifadesinin öğelerinin sayısını nasıl döndürdebildiğini öğrenin
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 3596ce4bc702d5e54225d8c90db2f9563feab670
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78303996"
 ---
 # <a name="array_length-azure-cosmos-db"></a>ARRAY_LENGTH (Azure Cosmos DB)
- Belirtilen bir dizi ifadesinin öğelerin sayısını döndürür.  
+ Belirtilen dizi ifadesinin öğelerinin sayısını döndürür.  
   
 ## <a name="syntax"></a>Sözdizimi
   
@@ -28,13 +28,13 @@ ARRAY_LENGTH(<arr_expr>)
 *arr_expr*  
    Bir dizi ifadesidir.  
   
-## <a name="return-types"></a>Dönüş türleri
+## <a name="return-types"></a>İade türleri
   
-  Sayısal bir ifade döndürür.  
+  Sayısal bir ifade verir.  
   
 ## <a name="examples"></a>Örnekler
   
-  Aşağıdaki örnek, `ARRAY_LENGTH`kullanarak bir dizinin uzunluğunu alma.  
+  Aşağıdaki örnek kullanarak bir dizi uzunluğunu `ARRAY_LENGTH`almak için nasıl .  
   
 ```sql
 SELECT ARRAY_LENGTH(["apples", "strawberries", "bananas"]) AS len  
@@ -48,10 +48,10 @@ SELECT ARRAY_LENGTH(["apples", "strawberries", "bananas"]) AS len
   
 ## <a name="remarks"></a>Açıklamalar
 
-Bu sistem işlevi dizinden yararlanmayacak.
+Bu sistem işlevi dizini kullanmaz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Dizi işlevleri Azure Cosmos DB](sql-query-array-functions.md)
-- [Sistem işlevleri Azure Cosmos DB](sql-query-system-functions.md)
-- [Azure Cosmos DB giriş](introduction.md)
+- [Sistem fonksiyonları Azure Cosmos DB](sql-query-system-functions.md)
+- [Azure Cosmos DB'ye Giriş](introduction.md)

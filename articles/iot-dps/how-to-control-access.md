@@ -1,6 +1,6 @@
 ---
-title: IoT cihaz sağlama hizmeti 'nde güvenlik uç noktaları | Microsoft Docs
-description: Kavramlar-arka uç uygulamaları için IoT cihaz sağlama hizmeti 'ne (DPS) erişimi denetleme. Güvenlik belirteçleri hakkında bilgi içerir.
+title: IoT Cihaz Sağlama Hizmeti'nde güvenlik bitiş noktaları | Microsoft Dokümanlar
+description: Kavramlar - arka uç uygulamaları için IoT Cihaz Sağlama Hizmeti'ne (DPS) erişimin nasıl kontrol edilebildiğini. Güvenlik belirteçleri hakkında bilgi içerir.
 author: wesmc7777
 manager: philmea
 ms.service: iot-dps
@@ -9,46 +9,46 @@ ms.topic: conceptual
 ms.date: 04/09/2019
 ms.author: wesmc
 ms.openlocfilehash: 2a7e0932d226b1533c039b8529c2c11de06cf525
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79285155"
 ---
-# <a name="control-access-to-azure-iot-hub-device-provisioning-service"></a>Azure IoT Hub cihaz sağlama hizmeti 'ne erişimi denetleme
+# <a name="control-access-to-azure-iot-hub-device-provisioning-service"></a>Azure IoT Hub Aygıt Sağlama Hizmetine erişimi denetleme
 
-Bu makalede IoT cihaz sağlama hizmetinizi güvenli hale getirme seçenekleri açıklanmaktadır. Sağlama Hizmeti, her uç noktaya erişim vermek için *izinleri* kullanır. İzinler, işlevselliği temel alarak bir hizmet örneğine erişimi sınırlar.
+Bu makalede, IoT Aygıt Sağlama hizmetinizi güvence altına alma seçenekleri açıklanmaktadır. Sağlama hizmeti, her bitiş noktasına erişim sağlamak için *izinleri* kullanır. İzinler, işlevselliği temel alan bir hizmet örneğine erişimi sınırlar.
 
 Bu makalede açıklanır:
 
-* Bir arka uç uygulamasına, sağlama hizmetinize erişmek için vereceğiniz farklı izinler.
+* Sağlama hizmetinize erişmek için bir arka uç uygulamasına verebileceğiniz farklı izinler.
 * Kimlik doğrulama işlemi ve izinleri doğrulamak için kullandığı belirteçler.
 
 ### <a name="when-to-use"></a>Kullanılması gereken durumlar
 
-Sağlama Hizmeti uç noktalarına erişmek için uygun izinlere sahip olmanız gerekir. Örneğin, bir arka uç uygulaması, hizmete gönderdiği her iletiyle birlikte güvenlik kimlik bilgilerini içeren bir belirteç içermelidir.
+Sağlama hizmeti bitiş noktalarından herhangi biri sine erişmek için uygun izinlere sahip olmalısınız. Örneğin, bir arka uç uygulaması, hizmete gönderdiği her iletiyle birlikte güvenlik kimlik bilgilerini içeren bir belirteç içermelidir.
 
 ## <a name="access-control-and-permissions"></a>Erişim denetimi ve izinler
 
-Aşağıdaki yollarla [izin](#device-provisioning-service-permissions) verebilirsiniz:
+[İzinleri](#device-provisioning-service-permissions) aşağıdaki yollarla verebilirsiniz:
 
-* **Paylaşılan erişim yetkilendirme ilkeleri**. Paylaşılan erişim ilkeleri, [izinlerin](#device-provisioning-service-permissions)herhangi bir birleşimini verebilir. [Azure Portal][lnk-management-portal]ilkeleri tanımlayabilir veya [CIHAZ sağlama hizmeti REST API 'lerini][lnk-resource-provider-apis]kullanarak programlı bir şekilde kullanabilirsiniz. Yeni oluşturulan bir sağlama hizmeti aşağıdaki varsayılan ilkeye sahiptir:
+* **Paylaşılan erişim yetkilendirme ilkeleri.** Paylaşılan erişim ilkeleri, herhangi bir [izin](#device-provisioning-service-permissions)bileşimi verebilir. [Azure portalında][lnk-management-portal]veya [Aygıt Sağlama Hizmeti REST API'lerini][lnk-resource-provider-apis]kullanarak programlı bir şekilde ilkeleri tanımlayabilirsiniz. Yeni oluşturulan bir sağlama hizmeti aşağıdaki varsayılan ilkeyi vardır:
 
-* **provisioningserviceowner**: tüm izinlerle ilke.
-
-> [!NOTE]
-> Ayrıntılı bilgi için bkz. [izinler](#device-provisioning-service-permissions) .
-
-## <a name="authentication"></a>Kimlik Doğrulaması
-
-Azure IoT Hub cihaz sağlama hizmeti, paylaşılan erişim ilkelerine karşı bir belirteci doğrulayarak uç noktalara erişim izni verir. Simetrik anahtarlar gibi güvenlik kimlik bilgileri hiçbir şekilde kablo üzerinden gönderilmez.
+* **provisioningserviceowner**: Tüm izinleri ile politika.
 
 > [!NOTE]
-> Cihaz sağlama hizmeti kaynak sağlayıcısı, [Azure Resource Manager][lnk-azure-resource-manager]tüm sağlayıcılar gibi Azure aboneliğiniz aracılığıyla güvenli hale getirilir.
+> Ayrıntılı bilgi için [izinlere](#device-provisioning-service-permissions) bakın.
 
-Güvenlik belirteçleri oluşturma ve kullanma hakkında daha fazla bilgi için sonraki bölüme bakın.
+## <a name="authentication"></a>Kimlik doğrulaması
 
-HTTP desteklenen tek protokoldür ve **Yetkilendirme** isteği üstbilgisine geçerli bir belirteç ekleyerek kimlik doğrulamasını uygular.
+Azure IoT Hub Aygıt Sağlama Hizmeti, paylaşılan erişim ilkelerine karşı bir belirteç doğrulayarak uç noktalara erişim sağlar. Simetrik anahtarlar gibi güvenlik kimlik bilgileri hiçbir zaman tel üzerinden gönderilmez.
+
+> [!NOTE]
+> Azure [Kaynak Yöneticisi'ndeki][lnk-azure-resource-manager]tüm sağlayıcılar gibi Aygıt Sağlama Hizmeti kaynak sağlayıcısı da Azure aboneliğiniz aracılığıyla güvence altına alınmıştır.
+
+Güvenlik belirteçlerinin nasıl oluşturup kullanılacağı hakkında daha fazla bilgi için bir sonraki bölüme bakın.
+
+HTTP desteklenen tek protokoldür ve **Yetkilendirme** isteği üstbilgisine geçerli bir belirteç ekleyerek kimlik doğrulaması uygular.
 
 #### <a name="example"></a>Örnek
 ```csharp
@@ -57,19 +57,19 @@ SharedAccessSignature sr =
 ```
 
 > [!NOTE]
-> [Azure IoT cihaz sağlama hizmeti SDK 'ları][lnk-sdks] , hizmete bağlanırken belirteçleri otomatik olarak oluşturur.
+> [Azure IoT Aygıt Sağlama Hizmeti SDK'ları,][lnk-sdks] hizmete bağlanırken otomatik olarak belirteçler oluşturur.
 
 ## <a name="security-tokens"></a>Güvenlik belirteçleri
 
-Cihaz sağlama hizmeti, kablolu anahtar göndermekten kaçınmak için hizmetlerin kimliğini doğrulamak üzere güvenlik belirteçlerini kullanır. Ayrıca, güvenlik belirteçleri zaman geçerliliği ve kapsamında sınırlıdır. [Azure IoT cihaz sağlama hizmeti SDK 'ları][lnk-sdks] özel yapılandırma gerektirmeden belirteçleri otomatik olarak oluşturur. Bazı senaryolarda güvenlik belirteçlerini doğrudan oluşturup kullanmanız gerekir. Bu tür senaryolar, HTTP yüzeyinin doğrudan kullanımını içerir.
+Aygıt Sağlama Hizmeti, kabloya anahtar göndermemek için hizmetlerin doğruluğunu doğrulamak için güvenlik belirteçleri kullanır. Ayrıca, güvenlik belirteçleri zaman geçerliliği ve kapsamı sınırlıdır. [Azure IoT Aygıt Sağlama Hizmeti SDK'ları,][lnk-sdks] özel bir yapılandırma gerektirmeden otomatik olarak belirteçler oluşturur. Bazı senaryolar, güvenlik belirteçlerini doğrudan oluşturmanızı ve kullanmanızı gerektirir. Bu tür senaryolar, HTTP yüzeyinin doğrudan kullanımını içerir.
 
-### <a name="security-token-structure"></a>Güvenlik belirteci yapısı
+### <a name="security-token-structure"></a>Güvenlik belirteç yapısı
 
-IoT cihaz sağlama hizmeti 'nde hizmetler için zamana sınırlı erişim sağlamak üzere güvenlik belirteçlerini kullanırsınız. Sağlama hizmetine bağlanma yetkilendirmesi almak için, hizmetler paylaşılan erişim veya simetrik anahtarla imzalanmış güvenlik belirteçleri göndermelidir.
+IoT Aygıt Sağlama Hizmeti'ndeki belirli işlevlere hizmetleriçin zamana bağlı erişim sağlamak için güvenlik belirteçlerini kullanırsınız. Sağlama hizmetine bağlanmak için yetki almak için, hizmetlerin paylaşılan bir erişim veya simetrik anahtarla imzalanmış güvenlik belirteçleri göndermesi gerekir.
 
-Paylaşılan erişim anahtarı ile imzalanmış bir belirteç, paylaşılan erişim ilkesi izinleriyle ilişkili tüm işlevlere erişim verir. 
+Paylaşılan erişim anahtarıyla imzalanmış bir belirteç, paylaşılan erişim ilkesi izinleriyle ilişkili tüm işlevlere erişim sağlar. 
 
-Güvenlik belirtecinin biçimi aşağıdaki biçimdedir:
+Güvenlik belirteci aşağıdaki biçimi vardır:
 
 `SharedAccessSignature sig={signature}&se={expiry}&skn={policyName}&sr={URL-encoded-resourceURI}`
 
@@ -77,14 +77,14 @@ Beklenen değerler şunlardır:
 
 | Değer | Açıklama |
 | --- | --- |
-| imza |Şu biçimdeki HMAC-SHA256 imza dizesi: `{URL-encoded-resourceURI} + "\n" + expiry`. **Önemli**: anahtarın Base64 olarak kodu çözülür ve HMAC-SHA256 hesaplamayı gerçekleştirmek için anahtar olarak kullanılır.|
-| kaç |Süre 00:00:00 UTC 'den bu yana 1 Ocak 1970 ' de geçen saniye sayısı için UTF8 dizeleri. |
-| {URL-Encoded-resourceURI} | Küçük harf URL 'SI-küçük harf Kaynak URI 'sinin kodlaması. IoT cihaz sağlama hizmeti 'nin (protokol yok) ana bilgisayar adıyla başlayarak, bu belirteçle erişilebilen uç noktaların URI ön eki (kesimine göre). Örneğin, `mydps.azure-devices-provisioning.net`. |
-| PolicyName |Bu belirtecin başvurduğu paylaşılan erişim ilkesinin adı. |
+| {imza} |Formun Bir HMAC-SHA256 imza `{URL-encoded-resourceURI} + "\n" + expiry`dizesi: . **Önemli**: Anahtar base64'ten deşifre edilir ve HMAC-SHA256 hesaplamasını gerçekleştirmek için anahtar olarak kullanılır.|
+| {son kullanma tarihi} |UTF8 dizeleri 1 Ocak 1970 tarihinde 00:00:00 UTC beri saniye sayısı için. |
+| {URL kodlanmış-resourceURI} | Küçük harf kaynağı URI'nin küçük harfurl kodlaması. Uri öneki (segmente göre) bu belirteç ile erişilebilen uç noktaların, IoT Aygıt Sağlama Hizmeti (protokol yok) ana adı ile başlayan. Örneğin, `mydps.azure-devices-provisioning.net`. |
+| {policyName} |Bu belirteç için başvuran paylaşılan erişim ilkesinin adı. |
 
-**Ön eke Not**: URI öneki, karakterle değil, segmente göre hesaplanır. Örneğin `/a/b`, `/a/b/c` için bir ön ektir, ancak `/a/bc`için değildir.
+**Önek üzerine not**: URI öneki karaktere göre değil, segmente göre hesaplanır. Örneğin `/a/b` bir `/a/b/c` önek tir, `/a/bc`ancak için değil.
 
-Aşağıdaki Node. js kod parçacığında, `resourceUri, signingKey, policyName, expiresInMins`giriş belirtecini hesaplayan **Generatesastoken** adlı bir işlev gösterilmektedir. Sonraki bölümlerde farklı belirteç kullanım durumları için farklı girişlerin nasıl başlatılacağını ayrıntılı olarak anlatılmaktadır.
+Aşağıdaki Düğüm.js snippet girişleri `resourceUri, signingKey, policyName, expiresInMins`belirteci bilgisayara **SasToken adlı** bir işlev gösterir. Sonraki bölümlerde, farklı belirteç kullanım örnekleri için farklı girdilerin nasıl başharflere yararlanılakullanılacağı ayrıntılı olarak açıklanmıştır.
 
 ```javascript
 var generateSasToken = function(resourceUri, signingKey, policyName, expiresInMins) {
@@ -107,7 +107,7 @@ var generateSasToken = function(resourceUri, signingKey, policyName, expiresInMi
 };
 ```
 
-Bir karşılaştırma olarak, bir güvenlik belirteci oluşturmak için eşdeğer Python kodu şunlardır:
+Karşılaştırma olarak, bir güvenlik belirteci oluşturmak için eşdeğer Python kodu:
 
 ```python
 from base64 import b64encode, b64decode
@@ -133,29 +133,29 @@ def generate_sas_token(uri, key, policy_name, expiry=3600):
 ```
 
 > [!NOTE]
-> IoT cihaz sağlama hizmeti makinelerinde belirtecin zaman geçerliliği doğrulandıktan sonra, belirteci üreten makinenin saatinin en az olması gerekir.
+> Belirteç zaman geçerliliği IoT Cihaz Sağlama Hizmeti makinelerinde doğrulanır olduğundan, belirteci oluşturan makinenin saatindeki sürüklenme en az olmalıdır.
 
-### <a name="use-security-tokens-from-service-components"></a>Hizmet bileşenlerinden güvenlik belirteçlerini kullanma
+### <a name="use-security-tokens-from-service-components"></a>Hizmet bileşenlerinden gelen güvenlik belirteçlerini kullanma
 
-Hizmet bileşenleri yalnızca daha önce açıklandığı gibi, gerekli izinleri veren paylaşılan erişim ilkeleri kullanılarak güvenlik belirteçleri oluşturabilir.
+Hizmet bileşenleri, yalnızca daha önce açıklandığı gibi uygun izinleri veren paylaşılan erişim ilkelerini kullanarak güvenlik belirteçleri oluşturabilir.
 
-Uç noktalarda sunulan hizmet işlevleri aşağıda verilmiştir:
+Uç noktalarda açığa çıkan hizmet işlevleri şunlardır:
 
 | Uç Nokta | İşlev |
 | --- | --- |
-| `{your-service}.azure-devices-provisioning.net/enrollments` |Cihaz sağlama hizmeti ile cihaz kayıt işlemleri sağlar. |
-| `{your-service}.azure-devices-provisioning.net/enrollmentGroups` |Cihaz kayıt gruplarını yönetmeye yönelik işlemler sağlar. |
+| `{your-service}.azure-devices-provisioning.net/enrollments` |Aygıt Sağlama Hizmeti ile cihaz kayıt işlemleri sağlar. |
+| `{your-service}.azure-devices-provisioning.net/enrollmentGroups` |Aygıt kayıt gruplarını yönetmek için işlemler sağlar. |
 | `{your-service}.azure-devices-provisioning.net/registrations/{id}` |Cihaz kayıtlarının durumunu almak ve yönetmek için işlemler sağlar. |
 
 
-Örnek olarak, kayıtları **kayıtoku** adlı önceden oluşturulmuş bir paylaşılan erişim ilkesi kullanılarak oluşturulan bir hizmet, aşağıdaki parametrelerle bir belirteç oluşturur:
+Örnek olarak, **enrollmentread** adı verilen önceden oluşturulmuş paylaşılan erişim ilkesi kullanılarak oluşturulan bir hizmet, aşağıdaki parametrelere sahip bir belirteç oluşturur:
 
-* Kaynak URI 'SI: `{mydps}.azure-devices-provisioning.net`,
-* imzalama anahtarı: `enrollmentread` ilkesi anahtarlarından biri,
-* ilke adı: `enrollmentread`,
-* herhangi bir süre sonu süresi. backn
+* kaynak URI: `{mydps}.azure-devices-provisioning.net`,
+* imzalama anahtarı: `enrollmentread` ilke nin anahtarlarından biri,
+* politika adı: `enrollmentread`,
+* herhangi bir son kullanma süresi.backn
 
-![Portalda cihaz sağlama hizmeti örneğiniz için bir paylaşılan erişim ilkesi oluşturma][img-add-shared-access-policy]
+![Portalda Cihaz Sağlama hizmeti örneğiniz için paylaşılan bir erişim ilkesi oluşturun][img-add-shared-access-policy]
 
 ```javascript
 var endpoint ="mydps.azure-devices-provisioning.net";
@@ -165,25 +165,25 @@ var policyKey = '...';
 var token = generateSasToken(endpoint, policyKey, policyName, 60);
 ```
 
-Tüm kayıt kayıtlarını okumak için erişim izni veren sonuç şöyle olacaktır:
+Tüm kayıt kayıtlarını okumak için erişim sağlayacak sonuç:
 
 `SharedAccessSignature sr=mydps.azure-devices-provisioning.net&sig=JdyscqTpXdEJs49elIUCcohw2DlFDR3zfH5KqGJo4r4%3D&se=1456973447&skn=enrollmentread`
 
-## <a name="reference-topics"></a>Başvuru konuları:
+## <a name="reference-topics"></a>Referans konuları:
 
-Aşağıdaki başvuru konuları, IoT cihazı sağlama hizmetinize erişimi denetleme hakkında daha fazla bilgi sağlar.
+Aşağıdaki başvuru konuları, IoT Aygıt Sağlama Hizmetinize erişimi denetleme hakkında daha fazla bilgi sağlar.
 
-### <a name="device-provisioning-service-permissions"></a>Cihaz sağlama hizmeti izinleri
+### <a name="device-provisioning-service-permissions"></a>Cihaz Sağlama Hizmeti izinleri
 
-Aşağıdaki tabloda, IoT cihazı sağlama hizmetinize erişimi denetlemek için kullanabileceğiniz izinler listelenmektedir.
+Aşağıdaki tabloda, IoT Aygıt Sağlama Hizmetinize erişimi denetlemek için kullanabileceğiniz izinler listelenir.
 
 | İzin | Notlar |
 | --- | --- |
-| **ServiceConfig** |Hizmet yapılandırmasını değiştirme erişimi verir. <br/>Bu izin, arka uç bulut Hizmetleri tarafından kullanılır. |
-| **Kayıtları oku** |Cihaz kayıtları ve kayıt gruplarına okuma erişimi verir. <br/>Bu izin, arka uç bulut Hizmetleri tarafından kullanılır. |
-| **EnrollmentWrite** |Cihaz kayıtları ve kayıt gruplarına yazma erişimi verir. <br/>Bu izin, arka uç bulut Hizmetleri tarafından kullanılır. |
-| **RegistrationStatusRead** |Cihaz kayıt durumuna okuma erişimi verir. <br/>Bu izin, arka uç bulut Hizmetleri tarafından kullanılır. |
-| **RegistrationStatusWrite**  |Cihaz kayıt durumuna silme erişimi verir. <br/>Bu izin, arka uç bulut Hizmetleri tarafından kullanılır. |
+| **Serviceconfig** |Hizmet yapılandırmalarını değiştirmeye erişim sağlar. <br/>Bu izin arka uç bulut hizmetleri tarafından kullanılır. |
+| **KayıtOkuma** |Verilenler, aygıt kayıtlarına ve kayıt gruplarına erişim okunur. <br/>Bu izin arka uç bulut hizmetleri tarafından kullanılır. |
+| **KayıtYazma** |Aygıt kayıtlarıve kayıt gruplarına erişim sağlar. <br/>Bu izin arka uç bulut hizmetleri tarafından kullanılır. |
+| **Kayıt DurumuOku** |Aygıt kayıt durumuna okuma erişimi sağlar. <br/>Bu izin arka uç bulut hizmetleri tarafından kullanılır. |
+| **Kayıt DurumuYazma**  |Aygıt kayıt durumuna erişimi silme izni verir. <br/>Bu izin arka uç bulut hizmetleri tarafından kullanılır. |
 
 <!-- links and images -->
 

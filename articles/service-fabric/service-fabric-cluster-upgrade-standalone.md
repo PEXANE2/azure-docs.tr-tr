@@ -1,45 +1,45 @@
 ---
-title: Azure Service Fabric tek başına kümesini yükseltme
-description: Azure Service Fabric tek başına kümesinin sürümünü veya yapılandırmasını yükseltme hakkında bilgi edinin.  T
+title: Azure Hizmet Kumaşı bağımsız kümeyi yükseltme
+description: Azure Hizmet Kumaşı bağımsız kümesinin sürümünü veya yapılandırmasını yükseltme hakkında bilgi edinin.  T
 ms.topic: conceptual
 ms.date: 11/12/2018
 ms.openlocfilehash: 6da9b4c6890895141ecc419382f05f667614fb31
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75451833"
 ---
-# <a name="upgrading-and-updating-a-service-fabric-standalone-cluster"></a>Service Fabric tek başına Kümeyi yükseltme ve güncelleştirme
+# <a name="upgrading-and-updating-a-service-fabric-standalone-cluster"></a>Service Fabric bağımsız kümeyi yükseltme ve güncelleştirme
 
-Tüm modern bir sistem için, ürününüzün uzun süreli başarısını sağlamak üzere yükselme için tasarlanmaya yönelik bir anahtar vardır. Azure Service Fabric tek başına kümesi, sahip olduğunuz bir kaynaktır. Bu makalede, nelerin yükseltileceğini veya güncelleştirileceğini açıklanmaktadır.
+Herhangi bir modern sistem için, yükseltme için tasarım ürününüzün uzun vadeli başarı elde etmek için anahtardır. Azure Hizmet Kumaşı bağımsız küme, sahip olduğunuz bir kaynaktır. Bu makalede, yükseltilebilir veya güncelleştirilebilenler açıklanmaktadır.
 
-## <a name="controlling-the-fabric-version-that-runs-on-your-cluster"></a>Kümenizde çalışan yapı sürümünü denetleme
-Kümenizin her zaman [desteklenen bir Service Fabric sürümü](service-fabric-versions.md)çalıştırmasını sağlayın. Microsoft yeni bir Service Fabric sürümü duyurusu yaparken, önceki sürüm, duyuru tarihinden itibaren en az 60 gün sonra destek sonuna kadar işaretlenir. Yeni yayınlar [Service Fabric ekip blogundan](https://blogs.msdn.microsoft.com/azureservicefabric/)duyurulur. Yeni sürüm, bu noktada seçim yapmak için kullanılabilir.
+## <a name="controlling-the-fabric-version-that-runs-on-your-cluster"></a>Kümenizde çalışan kumaş sürümünü denetleme
+Kümenizin her zaman [desteklenen](service-fabric-versions.md)bir Service Fabric sürümünü çalıştırdığından emin olun. Microsoft, Service Fabric'in yeni bir sürümünüduyurduğunda, önceki sürüm, duyuru tarihinden itibaren en az 60 gün sonra desteğin sona erdirilme üzere işaretlenir. Yeni sürümler [Service Fabric takım blogunda](https://blogs.msdn.microsoft.com/azureservicefabric/)duyurulur. Yeni sürüm bu noktada seçmek için kullanılabilir.
 
-Kümenizi, Microsoft tarafından yayımlandıklarında otomatik yapı yükseltmeleri alacak şekilde ayarlayabilir veya kümenizin açık olmasını istediğiniz desteklenen bir yapı sürümünü el ile seçebilirsiniz. Daha fazla bilgi için, [kümenizde çalışan Service Fabric sürümünü yükseltin](service-fabric-cluster-upgrade-windows-server.md).
+Kümenizi, Microsoft tarafından yayımlandıkları için otomatik kumaş yükseltmeleri alacak şekilde ayarlayabilir veya kümenizin üzerinde olmasını istediğiniz desteklenen kumaş sürümünü el ile seçebilirsiniz. Daha fazla bilgi [için, kümenizde çalışan Hizmet Kumaşı sürümünü yükselt'i](service-fabric-cluster-upgrade-windows-server.md)okuyun.
 
 ## <a name="customize-configuration-settings"></a>Yapılandırma ayarlarını özelleştirme
 
-Küme ve düğüm özelliklerinin güvenilirlik düzeyi gibi *clusterConfig. JSON* dosyasında birçok farklı [yapılandırma ayarı](service-fabric-cluster-manifest.md) ayarlanabilir.  Daha fazla bilgi edinmek için [tek başına kümenin yapılandırmasını yükseltin](service-fabric-cluster-config-upgrade-windows-server.md).  Diğer birçok gelişmiş ayar de özelleştirilebilir.  Daha fazla bilgi için [Service Fabric Cluster Fabric ayarlarını](service-fabric-cluster-fabric-settings.md)okuyun.
+*ClusterConfig.json* dosyasında küme ve düğüm özelliklerinin güvenilirlik düzeyi gibi birçok farklı [yapılandırma ayarı](service-fabric-cluster-manifest.md) ayarlanabilir.  Daha fazla bilgi için [bağımsız bir kümenin yapılandırmasını yükselt'i](service-fabric-cluster-config-upgrade-windows-server.md)okuyun.  Diğer birçok, daha gelişmiş, ayarları da özelleştirilebilir.  Daha fazla bilgi için [Service Fabric küme kumaş ayarlarını](service-fabric-cluster-fabric-settings.md)okuyun.
 
-## <a name="define-node-properties"></a>Düğüm özelliklerini tanımla
-Bazen bazı iş yüklerinin kümedeki belirli düğüm türlerinde çalışmasını sağlamak isteyebilirsiniz. Örneğin, bazı iş yükleri GPU 'Lar ya da SSD 'Ler gerektirebilir, diğerleri de olmayabilir. Kümedeki düğüm türlerinin her biri için, küme düğümlerine özel düğüm özellikleri ekleyebilirsiniz. Yerleştirme kısıtlamaları, bir veya daha fazla düğüm özelliği için seçim yapan ayrı hizmetlere eklenmiş deyimlerdir. Yerleştirme kısıtlamaları, hizmetlerin nerede çalışacağını tanımlar.
+## <a name="define-node-properties"></a>Düğüm özelliklerini tanımlama
+Bazen belirli iş yüklerinin kümedeki belirli düğüm türlerinde çalıştığından emin olmak isteyebilirsiniz. Örneğin, bazı iş yükleri GPU'lar veya SSD'ler gerektirebilirken, diğerleri gerekmeyebilir. Kümedeki düğüm türlerinin her biri için küme düğümlerine özel düğüm özellikleri ekleyebilirsiniz. Yerleşim kısıtlamaları, bir veya daha fazla düğüm özelliği için seçen tek tek hizmetlere eklenen deyimlerdir. Yerleşim kısıtlamaları, hizmetlerin nerede çalışması gerektiğini tanımlar.
 
-Yerleştirme kısıtlamalarının, düğüm özelliklerinin kullanımı ve bunların nasıl tanımlanacağı hakkında ayrıntılar için, [düğüm özelliklerini ve yerleştirme kısıtlamalarını](service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints)okuyun.
+Yerleşim kısıtlamaları, düğüm özellikleri ve bunları nasıl tanımlayacakayrıntıları için [düğüm özelliklerini ve yerleşim kısıtlamalarını](service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints)okuyun.
  
 
 ## <a name="add-capacity-metrics"></a>Kapasite ölçümleri ekleme
-Düğüm türlerinin her biri için, yük bildirmek üzere uygulamalarınızda kullanmak istediğiniz özel kapasite ölçümlerini ekleyebilirsiniz. Yük raporlamak için kapasite ölçümlerinin kullanımı hakkında daha fazla bilgi için, [küme](service-fabric-cluster-resource-manager-cluster-description.md) ve [ölçümleri ve yük](service-fabric-cluster-resource-manager-metrics.md)hakkındaki bilgileri Kaynak Yöneticisi Service Fabric kümesine bakın.
+Düğüm türlerinin her biri için, yüklemeyi bildirmek için uygulamalarınızda kullanmak istediğiniz özel kapasite ölçümleri ekleyebilirsiniz. Yükü bildirmek için kapasite ölçümlerinin kullanımı yla ilgili ayrıntılar için, Kümenizi ve [Ölçümlerinizi](service-fabric-cluster-resource-manager-metrics.md)ve [Yüklemenizi Açıklayan](service-fabric-cluster-resource-manager-cluster-description.md) Hizmet Kumaş Kümesi Kaynak Yöneticisi Belgelerine bakın.
 
-## <a name="patch-the-os-in-the-cluster-nodes"></a>Küme düğümlerinde işletim sistemini yama
-Düzeltme Eki düzenleme uygulaması (POA), kapalı kalma süresi olmadan bir Service Fabric kümesinde işletim sistemi düzeltme eki uygulamayı otomatikleştiren Service Fabric bir uygulamadır. [Windows Için düzeltme eki düzenleme uygulaması](service-fabric-patch-orchestration-application.md) , her zaman kullanılabilir durumda tutulması sırasında düzeltme eklerini düzenli olarak yüklemek üzere kümenize dağıtılabilir. 
+## <a name="patch-the-os-in-the-cluster-nodes"></a>Küme düğümlerinde işletim sistemi yama
+Yama orkestrasyon uygulaması (POA), bir Servis Kumaşı kümesinde çalışma sistemi yamasını kesinti olmadan otomatikleştiren bir Service Fabric uygulamasıdır. [Windows için Patch Orchestration Application,](service-fabric-patch-orchestration-application.md) hizmetleri her zaman kullanılabilir tutarken yamaları düzenlenmiş bir şekilde yüklemek için kümenizde dağıtılabilir. 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [Service Fabric kümesi doku ayarlarından](service-fabric-cluster-fabric-settings.md) bazılarını özelleştirmeyi öğrenin
-* [Kümenizi ve dışarı ölçeklendirmeyi nasıl ölçeklentireceğinizi](service-fabric-cluster-scale-up-down.md) öğrenin
-* [Uygulama yükseltmeleri](service-fabric-application-upgrade.md) hakkında bilgi edinin
+* Bazı hizmet kumaş küme [kumaş ayarlarını](service-fabric-cluster-fabric-settings.md) özelleştirmek öğrenin
+* [Kümenizi nasıl ölçeklendirecek ve dışarı çıkarmayı](service-fabric-cluster-scale-up-down.md) öğrenin
+* Uygulama [yükseltmeleri](service-fabric-application-upgrade.md) hakkında bilgi edinin
 
 <!--Image references-->
 [CertificateUpgrade]: ./media/service-fabric-cluster-upgrade/CertificateUpgrade2.png

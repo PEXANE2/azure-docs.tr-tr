@@ -1,6 +1,6 @@
 ---
-title: Azure Notification Hubs ile kullanıcılara platformlar arası bildirimler gönderme (ASP.NET)
-description: Tüm platformları hedefleyen platformdan bağımsız bir bildirim olan tek bir istekte göndermek için Notification Hubs şablonlarını nasıl kullanacağınızı öğrenin.
+title: Azure Bildirim Hub'larına (ASP.NET) sahip kullanıcılara platform ötesi bildirimler gönderme
+description: Bildirim Hub'ları şablonlarını kullanarak, tek bir istekte, tüm platformları hedefleyen bir platform-agnostik bildirim göndermeyi öğrenin.
 services: notification-hubs
 documentationcenter: ''
 author: sethmanheim
@@ -16,34 +16,34 @@ ms.date: 09/30/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 10/02/2019
-ms.openlocfilehash: 8f4de88ed79ee802866579448681cfe6cee3e654
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: fc3cec348517244c8a7f54d2d3d17298c58e4262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72293420"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80127041"
 ---
-# <a name="send-cross-platform-notifications-to-users-with-notification-hubs"></a>Notification Hubs ile kullanıcılara platformlar arası bildirimler gönderme
+# <a name="send-cross-platform-notifications-with-azure-notification-hubs"></a>Azure Bildirim Hub'ları ile platform ötesi bildirimler gönderme
 
-Bu öğretici, önceki öğreticide derleme [Azure Notification Hubs kullanarak belirli kullanıcılara bildirimler gönderme]. Bu öğreticide, belirli bir kimliği doğrulanmış kullanıcıya kayıtlı tüm cihazlara nasıl bildirim gönderinin açıklanmaktadır. Bu yaklaşım, desteklenen her istemci platformuna bildirim göndermek için birden çok istek gerektirdi. Azure Notification Hubs, belirli bir cihazın nasıl bildirim almak istediğini belirtebileceğiniz şablonları destekler. Bu yöntem platformlar arası bildirimlerin gönderilmesini basitleştirir.
+Bu öğretici, azure bildirim [hub'larını kullanarak belirli kullanıcılara bildirim gönderme,]önceki öğreticiye dayanmaktadır. Bu öğretici, belirli bir kimlik doğrulaması kullanıcıya kayıtlı tüm aygıtlara bildirimlerin nasıl iletilen açıklanır. Bu yaklaşım, desteklenen her istemci platformuna bildirim göndermek için birden çok istek gerekti. Azure Bildirim Hub'ları, belirli bir aygıtın bildirimleri nasıl almak istediğini belirtebileceğiniz şablonları destekler. Bu yöntem, platformlar arası bildirimler göndermeyi kolaylaştırır.
 
-Bu makalede, tüm platformları hedefleyen bir bildirim göndermek için şablonlardan nasıl yararlanulacağı gösterilmektedir. Bu makalede, platformdan bağımsız bir bildirim göndermek için tek bir istek kullanılmaktadır. Şablonlar hakkında daha ayrıntılı bilgi için bkz. [Notification Hubs genel bakış][Templates].
+Bu makalede, tüm platformları hedefleyen bir bildirim göndermek için şablonlardan nasıl yararlanılanın caizdir. Bu makalede, bir platform nötr bildirim göndermek için tek bir istek kullanır. Şablonlar hakkında daha ayrıntılı bilgi için [Bildirim Hub'larına Genel Bakış'a][Templates]bakın.
 
 > [!IMPORTANT]
-> Windows Phone projeler 8,1 ve önceki sürümleri Visual Studio 2019 ' de desteklenmez. Daha fazla bilgi için bkz. [Visual Studio 2019 Platform hedefleme ve uyumluluk](/visualstudio/releases/2019/compatibility).
+> Windows Phone 8.1 ve önceki projeleri Visual Studio 2019'da desteklenmez. Daha fazla bilgi için [Visual Studio 2019 Platform Hedefleme ve Uyumluluk](/visualstudio/releases/2019/compatibility)bilgisine bakın.
 
 > [!NOTE]
-> Notification Hubs, bir cihaz aynı etiketi kullanarak birden çok şablonu kaydedebilir. Bu durumda, etiketi hedefleyen bir gelen ileti, her şablon için bir tane olmak üzere cihaza birden çok bildirim teslim edildiğinde oluşur. Bu işlem, bir Windows Mağazası uygulamasında hem rozet hem de bildirim olarak aynı iletiyi birden çok görsel bildirimde görüntülemenizi sağlar.
+> Bildirim Hub'ları ile aygıt aynı etiketi kullanarak birden çok şablon kaydedebilir. Bu durumda, etiketi hedefleyen gelen bir ileti, aygıta her şablon için bir tane olmak üzere birden çok bildirimin gönderilmesiyle sonuçlanır. Bu işlem, aynı iletiyi hem rozet hem de bir Windows Mağazası uygulamasında tost bildirimi gibi birden çok görsel bildirimde görüntülemenize olanak tanır.
 
-## <a name="send-cross-platform-notifications-using-templates"></a>Şablonları kullanarak platformlar arası bildirimler gönderme
+## <a name="send-cross-platform-notifications-using-templates"></a>Şablonları kullanarak platform ötesi bildirimler gönderme
 
-Bu bölüm, [Azure Notification Hubs kullanarak belirli kullanıcılara bildirimler gönderme] bölümünde oluşturduğunuz örnek kodu kullanır. Örneği [GitHub](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/NotifyUsers)'dan indirebilirsiniz.
+Bu bölümde, [Azure Bildirim Hub'ları] öğreticisini kullanarak belirli kullanıcılara bildirim gönder'de oluşturduğun örnek kod kullanır. Örneği [GitHub](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/NotifyUsers)'dan indirebilirsiniz.
 
-Şablonları kullanarak platformlar arası bildirimler göndermek için aşağıdaki adımları uygulayın:
+Şablonları kullanarak platformlar arası bildirimler göndermek için aşağıdaki adımları yapın:
 
-1. **Çözüm Gezgini**'Deki Visual Studio 'Da, **denetleyiciler** klasörünü genişletin ve ardından *RegisterController.cs* dosyasını açın.
+1. **Solution Explorer'daki**Visual Studio'da **Denetleyiciler** klasörünü genişletin ve *RegisterController.cs* dosyasını açın.
 
-1. Yeni bir kayıt oluşturan `Put` yöntemindeki kod bloğunu bulun ve ardından `switch` içeriğini aşağıdaki kodla değiştirin:
+1. Yeni bir kayıt oluşturan `Put` yöntemde kod bloğunu bulun ve `switch` ardından içeriği aşağıdaki kodla değiştirin:
 
     ```csharp
     switch (deviceUpdate.Platform)
@@ -74,9 +74,9 @@ Bu bölüm, [Azure Notification Hubs kullanarak belirli kullanıcılara bildirim
     }
     ```
 
-    Bu kod, yerel kayıt yerine bir şablon kaydı oluşturmak için platforma özgü yöntemi çağırır. Şablon kayıtları yerel kayıtlardan türetiğinden, var olan kayıtları değiştirmenize gerek yoktur.
+    Bu kod, yerel kayıt yerine şablon kaydı oluşturmak için platforma özgü yöntemi çağırır. Şablon kayıtları yerel kayıtlardan türediği için, varolan kayıtları değiştirmeniz gerekmez.
 
-1. **Çözüm Gezgini**, **denetleyiciler** klasöründe, *NotificationsController.cs* dosyasını açın. `Post` yöntemini aşağıdaki kod ile değiştirin:
+1. **Çözüm Gezgini'nde,** **Denetleyiciler** klasöründe *NotificationsController.cs* dosyasını açın. `Post` yöntemini aşağıdaki kod ile değiştirin:
 
     ```csharp
     public async Task<HttpResponseMessage> Post()
@@ -91,20 +91,20 @@ Bu bölüm, [Azure Notification Hubs kullanarak belirli kullanıcılara bildirim
     }
     ```
 
-    Bu kod, aynı anda tüm platformlara bir bildirim gönderir. Yerel yük belirtmezsiniz. Notification Hubs, kayıtlı şablonlarda belirtildiği gibi, belirtilen etiket değeri ile her cihaza doğru yükü oluşturur ve gönderir.
+    Bu kod, tüm platformlara aynı anda bildirim gönderir. Yerel bir yük belirtmedin. Bildirim Hub'ları, kayıtlı şablonlarda belirtildiği gibi, sağlanan etiket değerine sahip her cihaza doğru yükü oluşturur ve teslim eder.
 
 1. Web API projenizi yeniden yayımlayın.
 
 1. Kaydın başarılı olduğunu doğrulamak için istemci uygulamasını yeniden çalıştırın.
 
-1. İsteğe bağlı olarak, istemci uygulamasını ikinci bir cihaza dağıtın ve uygulamayı çalıştırın. Her cihazda bir bildirim görüntülenir.
+1. İsteğe bağlı olarak, istemci uygulamasını ikinci bir cihaza dağıtın ve ardından uygulamayı çalıştırın. Her aygıtta bir bildirim görüntülenir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticiyi tamamladığınıza göre, bu makalelerde Notification Hubs ve şablonlar hakkında daha fazla bilgi edinebilirsiniz:
+Bu öğreticiyi tamamladığınızda, bildirim hub'ları ve şablonları hakkında daha fazla bilgi edinin:
 
-* Şablonları kullanmaya yönelik farklı senaryolar için, [Evrensel Windows platformu uygulamaları çalıştıran belirli Windows cihazlarına anında iletme bildirimleri][Use Notification Hubs to send breaking news] öğreticisine bakın.
-* Şablonlar hakkında daha ayrıntılı bilgi için bkz. [Notification Hubs genel bakış][Templates].
+* Şablonları kullanmak için farklı bir senaryo için, Evrensel Windows Platformu uygulamaları öğretici [çalıştıran belirli Windows aygıtlarına Anında Bildirimleri'ne][Use Notification Hubs to send breaking news] bakın.
+* Şablonlar hakkında daha ayrıntılı bilgi için [Bildirim Hub'larına Genel Bakış'a][Templates]bakın.
 
 <!-- Anchors. -->
 
@@ -117,6 +117,6 @@ Bu öğreticiyi tamamladığınıza göre, bu makalelerde Notification Hubs ve �
 
 [Use Notification Hubs to send breaking news]: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
 [Azure Notification Hubs]: https://go.microsoft.com/fwlink/p/?LinkId=314257
-[Azure Notification Hubs kullanarak belirli kullanıcılara bildirimler gönderme]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
+[Azure Bildirim Hub'larını kullanarak belirli kullanıcılara bildirim gönderme]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
 [Templates]: https://go.microsoft.com/fwlink/p/?LinkId=317339
 [Notification Hub How to for Windows Store]: https://msdn.microsoft.com/library/windowsazure/jj927172.aspx

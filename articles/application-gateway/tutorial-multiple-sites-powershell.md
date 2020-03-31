@@ -1,5 +1,5 @@
 ---
-title: PowerShell kullanarak birden çok Web sitesi barındırma
+title: PowerShell'i kullanarak birden fazla web sitesi barındırın
 titleSuffix: Azure Application Gateway
 description: Azure PowerShell kullanarak, birden çok web sitesi barındıran bir uygulama ağ geçidi oluşturmayı öğrenin.
 services: application-gateway
@@ -9,16 +9,16 @@ ms.topic: article
 ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 432604dd3db1629a4c9b10d0d5c8649f3817d97f
-ms.sourcegitcommit: bc792d0525d83f00d2329bea054ac45b2495315d
+ms.openlocfilehash: e05d84e8e06dbe63a1bc8e8ae1d401f186baac77
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78673147"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80133054"
 ---
 # <a name="create-an-application-gateway-that-hosts-multiple-web-sites-using-azure-powershell"></a>Azure PowerShell kullanarak birden çok web sitesi barındıran bir uygulama ağ geçidi oluşturma
 
-Bir [uygulama ağ geçidi](multiple-site-overview.md) oluştururken Azure PowerShell’i [birden çok web sitesi barındırmayı yapılandırmak](overview.md) için kullanabilirsiniz. Bu makalede, sanal makine ölçek kümelerini kullanarak arka uç adres havuzları tanımlarsınız. Ardından sahip olduğunuz dinleyicileri ve kuralları, web trafiğinin havuzlardaki uygun sunuculara ulaşması için yapılandırırsınız. Bu makalede, birden çok etki alanına sahip olduğunuz ve *www.contoso.com* ve *www.fabrikam.com*örneklerini kullanan varsayılmaktadır.
+Bir [uygulama ağ geçidi](overview.md) oluştururken Azure PowerShell’i [birden çok web sitesi barındırmayı yapılandırmak](multiple-site-overview.md) için kullanabilirsiniz. Bu makalede, sanal makine ölçek kümelerini kullanarak arka uç adres havuzlarını tanımlarsınız. Ardından sahip olduğunuz dinleyicileri ve kuralları, web trafiğinin havuzlardaki uygun sunuculara ulaşması için yapılandırırsınız. Bu makalede, birden çok etki alanına sahip olduğunuzu varsayar ve *www.contoso.com* ve *www.fabrikam.com*örneklerini kullanır.
 
 Bu makalede şunları öğreneceksiniz:
 
@@ -32,17 +32,17 @@ Bu makalede şunları öğreneceksiniz:
 
 ![Çok siteli yönlendirme örneği](./media/tutorial-multiple-sites-powershell/scenario.png)
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-PowerShell 'i yerel olarak yükleyip kullanmayı tercih ederseniz, bu makale Azure PowerShell Module sürümü 1.0.0 veya üstünü gerektirir. Sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell 'i yerel olarak çalıştırıyorsanız Azure ile bağlantı oluşturmak için `Login-AzAccount` çalıştırmanız da gerekir.
+PowerShell'i yerel olarak yüklemeyi ve kullanmayı seçerseniz, bu makalede Azure PowerShell modülü sürümü 1.0.0 veya daha sonra gerekir. Sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-az-ps). PowerShell'i yerel olarak çalıştırıyorsanız, Azure `Login-AzAccount` ile bağlantı oluşturmak için de çalışmanız gerekir.
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
-Kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)kullanarak bir Azure Kaynak grubu oluşturun.  
+Kaynak grubu, Azure kaynaklarının dağıtıldığı ve yönetildiği bir mantıksal kapsayıcıdır. [Yeni-AzResourceGroup'u](/powershell/module/az.resources/new-azresourcegroup)kullanarak bir Azure kaynak grubu oluşturun.  
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name myResourceGroupAG -Location eastus
@@ -50,7 +50,7 @@ New-AzResourceGroup -Name myResourceGroupAG -Location eastus
 
 ## <a name="create-network-resources"></a>Ağ kaynakları oluşturma
 
-[New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig)kullanarak alt ağ yapılandırmalarını oluşturun. Alt ağ yapılandırmalarına sahip [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) kullanarak sanal ağ oluşturun. Son olarak, [New-Azpublicıpaddress](/powershell/module/az.network/new-azpublicipaddress)kullanarak genel IP adresini oluşturun. Bu kaynaklar, uygulama ağ geçidi ve ilişkili kaynakları ile ağ bağlantısı sağlamak için kullanılır.
+[New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig)kullanarak alt ağ yapılandırmaları oluşturun. Alt ağ yapılandırmaları ile [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) kullanarak sanal ağ oluşturun. Ve son olarak, [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress)kullanarak genel IP adresi oluşturun. Bu kaynaklar, uygulama ağ geçidi ve ilişkili kaynakları ile ağ bağlantısı sağlamak için kullanılır.
 
 ```azurepowershell-interactive
 $backendSubnetConfig = New-AzVirtualNetworkSubnetConfig `
@@ -79,7 +79,7 @@ $pip = New-AzPublicIpAddress `
 
 ### <a name="create-the-ip-configurations-and-frontend-port"></a>IP yapılandırmaları ve ön uç bağlantı noktası oluşturma
 
-[Yeni-Azapplicationgatewayıp yapılandırması](/powershell/module/az.network/new-azapplicationgatewayipconfiguration)kullanarak daha önce oluşturduğunuz alt ağı uygulama ağ geçidine ilişkilendirin. [New-Azapplicationgatewayfrontendıpconfig](/powershell/module/az.network/new-azapplicationgatewayfrontendipconfig)kullanarak genel IP adresini uygulama ağ geçidine atayın.
+Daha önce oluşturduğunuz alt ağı [New-AzApplicationGatewayIPConfiguration](/powershell/module/az.network/new-azapplicationgatewayipconfiguration)kullanarak uygulama ağ geçidine ilişkilendirin. [Yeni-AzApplicationGatewayFrontendIPConfig](/powershell/module/az.network/new-azapplicationgatewayfrontendipconfig)kullanarak uygulama ağ geçidine ortak IP adresini atama.
 
 ```azurepowershell-interactive
 $vnet = Get-AzVirtualNetwork `
@@ -103,7 +103,7 @@ $frontendport = New-AzApplicationGatewayFrontendPort `
 
 ### <a name="create-the-backend-pools-and-settings"></a>Arka uç havuzları ve ayarları oluşturma
 
-[New-Azapplicationgatewaybackendadspool kuyruğu](/powershell/module/az.network/new-azapplicationgatewaybackendaddresspool)kullanarak uygulama ağ geçidi için ilk arka uç adres havuzunu oluşturun. [New-AzApplicationGatewayBackendHttpSettings](/powershell/module/az.network/new-azapplicationgatewaybackendhttpsetting)kullanarak havuzun ayarlarını yapılandırın.
+[New-AzApplicationGatewayBackendAddressPool](/powershell/module/az.network/new-azapplicationgatewaybackendaddresspool)kullanarak uygulama ağ geçidi için ilk arka uç adres havuzunu oluşturun. [Yeni-AzApplicationGatewayBackendHttpSettings](/powershell/module/az.network/new-azapplicationgatewaybackendhttpsetting)kullanarak havuz ayarlarını yapılandırın.
 
 ```azurepowershell-interactive
 $contosoPool = New-AzApplicationGatewayBackendAddressPool `
@@ -122,9 +122,9 @@ $poolSettings = New-AzApplicationGatewayBackendHttpSettings `
 
 ### <a name="create-the-listeners-and-rules"></a>Dinleyiciler ve kurallar oluşturma
 
-Uygulama ağ geçidinin trafiği arka uç havuzlarına uygun şekilde yönlendirmesi için dinleyiciler gereklidir. Bu makalede, iki etki alanı için iki dinleyici oluşturacaksınız. *Contoso.com* ve *fabrikam.com* etki alanları için dinleyiciler oluşturulur.
+Uygulama ağ geçidinin trafiği arka uç havuzlarına uygun şekilde yönlendirmesi için dinleyiciler gereklidir. Bu makalede, iki etki alanınız için iki dinleyici oluşturursunuz. Dinleyiciler *contoso.com* ve *fabrikam.com* etki alanları için oluşturulur.
 
-[Yeni-AzApplicationGatewayHttpListener](/powershell/module/az.network/new-azapplicationgatewayhttplistener) kullanarak, önceden oluşturduğunuz ön uç yapılandırması ve ön uç bağlantı noktasıyla ilk dinleyiciyi oluşturun. Dinleyicinin gelen trafik için kullanacağı arka uç havuzunu bilmesi için bir kural gerekir. [New-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule)kullanarak *contosoRule* adlı temel bir kural oluşturun.
+Daha önce oluşturduğunuz ön uç yapılandırması ve önuç bağlantı noktası yla [New-AzApplicationGatewayHttpListener'ı](/powershell/module/az.network/new-azapplicationgatewayhttplistener) kullanarak ilk dinleyiciyi oluşturun. Dinleyicinin gelen trafik için kullanacağı arka uç havuzunu bilmesi için bir kural gerekir. [New-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule)kullanarak *contosoRule* adlı temel bir kural oluşturun.
 
 ```azurepowershell-interactive
 $contosolistener = New-AzApplicationGatewayHttpListener `
@@ -158,7 +158,7 @@ $fabrikamRule = New-AzApplicationGatewayRequestRoutingRule `
 
 ### <a name="create-the-application-gateway"></a>Uygulama ağ geçidi oluşturma
 
-Artık gerekli destekleyici kaynakları oluşturduğunuza göre, [New-AzApplicationGatewaySku](/powershell/module/az.network/new-azapplicationgatewaysku)kullanarak uygulama ağ geçidi için parametreleri belirtin ve ardından [New-azapplicationgateway](/powershell/module/az.network/new-azapplicationgateway)kullanarak oluşturun.
+Şimdi gerekli destekleyici kaynakları oluşturduğunuzda, [New-AzApplicationGatewaySku](/powershell/module/az.network/new-azapplicationgatewaysku)kullanarak uygulama ağ geçidi için parametreleri belirtin ve sonra [New-AzApplicationGateway](/powershell/module/az.network/new-azapplicationgateway)kullanarak oluşturun.
 
 ```azurepowershell-interactive
 $sku = New-AzApplicationGatewaySku `
@@ -276,7 +276,7 @@ for ($i=1; $i -le 2; $i++)
 
 ## <a name="create-cname-record-in-your-domain"></a>Etki alanınızda CNAME kaydı oluşturma
 
-Uygulama ağ geçidi genel IP adresiyle oluşturulduktan sonra DNS adresini alabilir ve etki alanınızda bir CNAME kaydı oluşturmak için kullanabilirsiniz. Uygulama ağ geçidinin DNS adresini almak için [Get-Azpublicıpaddress](/powershell/module/az.network/get-azpublicipaddress) komutunu kullanabilirsiniz. DNSSetting için *fqdn* değerini kopyalayın ve bu değeri oluşturduğunuz CNAME kaydının değeri olarak kullanın. Uygulama ağ geçidi yeniden başlatıldığında VIP değiştirebileceğinden,-Records kullanılması önerilmez.
+Uygulama ağ geçidi genel IP adresiyle oluşturulduktan sonra DNS adresini alabilir ve etki alanınızda bir CNAME kaydı oluşturmak için kullanabilirsiniz. Uygulama ağ geçidinin DNS adresini almak için [Get-AzPublicIPAddress'i](/powershell/module/az.network/get-azpublicipaddress) kullanabilirsiniz. DNSSetting için *fqdn* değerini kopyalayın ve bu değeri oluşturduğunuz CNAME kaydının değeri olarak kullanın. V1 SKU'da uygulama ağ geçidi yeniden başlatıldığında VIP değişebileceğinden A kayıtlarının kullanılması önerilmez.
 
 ```azurepowershell-interactive
 Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAddress
@@ -284,7 +284,7 @@ Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAdd
 
 ## <a name="test-the-application-gateway"></a>Uygulama ağ geçidini test etme
 
-Tarayıcınızın adres çubuğuna, etki alanı adınızı girin. Örneğin, http:\//www.contoso.com.
+Tarayıcınızın adres çubuğuna, etki alanı adınızı girin. Mesela, http:\//www.contoso.com.
 
 ![Uygulama ağ geçidinde contoso test etme](./media/tutorial-multiple-sites-powershell/application-gateway-iistest.png)
 
@@ -294,7 +294,7 @@ Adresi diğer etki alanınızla değiştirin, aşağıdaki örneğe benzer bir �
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık gerekli değilse, [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup)komutunu kullanarak kaynak grubunu, uygulama ağ geçidini ve ilgili tüm kaynakları kaldırın.
+Artık gerekmediğinde, Kaynak grubunu, uygulama ağ geçidini ve ilgili tüm kaynakları [Kaldır-AzResourceGroup'u](/powershell/module/az.resources/remove-azresourcegroup)kullanarak kaldırın.
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroupAG

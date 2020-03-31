@@ -1,59 +1,59 @@
 ---
-title: Şablon işlevleri-kaynaklar
-description: Kaynaklarla ilgili değerleri almak için bir Azure Resource Manager şablonunda kullanmak için işlevleri açıklar.
+title: Şablon işlevleri - kaynaklar
+description: Kaynaklarla ilgili değerleri almak için Azure Kaynak Yöneticisi şablonunda kullanılacak işlevleri açıklar.
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 10476f5a29c12d7437beb9a9f707feda815d7ba1
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: e9e1d700282652304f0bede5e697ba8625f5a5d6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79248677"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80156302"
 ---
-# <a name="resource-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager şablonları için kaynak işlevleri
+# <a name="resource-functions-for-arm-templates"></a>ARM şablonları için kaynak işlevleri
 
-Resource Manager kaynak değerlerini almak için aşağıdaki işlevleri sunar:
+Kaynak Yöneticisi, Azure Kaynak Yöneticisi (ARM) şablonunuzda kaynak değerleri almak için aşağıdaki işlevleri sağlar:
 
-* [Extensionresourceıd](#extensionresourceid)
-* [Listele](#list)
-* [sağlayıcılarla](#providers)
-* [başvurunun](#reference)
-* [Kaynak](#resourcegroup)
-* [RESOURCEID](#resourceid)
-* [aboneliği](#subscription)
-* [Subscriptionresourceıd](#subscriptionresourceid)
-* [Tenantresourceıd](#tenantresourceid)
+* [uzantısıResourceId](#extensionresourceid)
+* [liste*](#list)
+* [Sağlayıcı](#providers)
+* [Başvuru](#reference)
+* [resourceGroup](#resourcegroup)
+* [Resourceıd](#resourceid)
+* [Abonelik](#subscription)
+* [abonelikResourceId](#subscriptionresourceid)
+* [tenantResourceId](#tenantresourceid)
 
-Parametrelerden, değişkenlerden veya geçerli dağıtımdan değer almak için bkz. [dağıtım değeri işlevleri](template-functions-deployment.md).
+Parametrelerden, değişkenlerden veya geçerli dağıtımdan değer elde etmek için [dağıtım değeri işlevlerine](template-functions-deployment.md)bakın.
 
-## <a name="extensionresourceid"></a>Extensionresourceıd
+## <a name="extensionresourceid"></a>uzantısıResourceId
 
 ```json
 extensionResourceId(resourceId, resourceType, resourceName1, [resourceName2], ...)
 ```
 
-Özelliklerine eklemek için başka bir kaynağa uygulanan bir kaynak türü olan [uzantı kaynağı](../management/extension-resource-types.md)IÇIN kaynak kimliğini döndürür.
+Yeteneklerine eklemek için başka bir kaynağa uygulanan bir kaynak türü olan [uzantı kaynağının](../management/extension-resource-types.md)kaynak kimliğini döndürür.
 
 ### <a name="parameters"></a>Parametreler
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| resourceId |Yes |string |Uzantı kaynağının uygulandığı kaynağın kaynak KIMLIĞI. |
-| resourceType |Yes |string |Kaynak sağlayıcısı ad alanı dahil olmak üzere kaynak türü. |
-| resourceName1 |Yes |string |Kaynağın adı. |
-| resourceName2 |Hayır |string |Gerekirse, sonraki kaynak adı segmenti. |
+| resourceId |Evet |string |Uzantı kaynağının uygulandığı kaynak için kaynak kimliği. |
+| resourceType |Evet |string |Kaynak sağlayıcı ad alanı da dahil olmak üzere kaynak türü. |
+| resourceName1 |Evet |string |Kaynağın adı. |
+| resourceName2 |Hayır |string |Gerekirse sonraki kaynak adı kesimi. |
 
-Kaynak türü daha fazla kesim içerdiğinde kaynak adlarını parametre olarak eklemeye devam edin.
+Kaynak türü daha fazla kesim içeriyorsa, kaynak adlarını parametre olarak eklemeye devam edin.
 
-### <a name="return-value"></a>Dönüş değeri
+### <a name="return-value"></a>Döndürülen değer
 
-Bu işlev tarafından döndürülen kaynak KIMLIĞININ temel biçimi:
+Bu işlevle döndürülen kaynak kimliğinin temel biçimi:
 
 ```json
 {scope}/providers/{extensionResourceProviderNamespace}/{extensionResourceType}/{extensionResourceName}
 ```
 
-Kapsam segmenti, genişletilmekte olan kaynağa göre değişir.
+Kapsam kesimi, genişletilen kaynağa göre değişir.
 
 Uzantı kaynağı bir **kaynağa**uygulandığında, kaynak kimliği aşağıdaki biçimde döndürülür:
 
@@ -61,27 +61,27 @@ Uzantı kaynağı bir **kaynağa**uygulandığında, kaynak kimliği aşağıdak
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{baseResourceProviderNamespace}/{baseResourceType}/{baseResourceName}/providers/{extensionResourceProviderNamespace}/{extensionResourceType}/{extensionResourceName}
 ```
 
-Uzantı kaynağı bir **kaynak grubuna**uygulandığında, biçim şu şekilde olur:
+Uzantı kaynağı bir **kaynak grubuna**uygulandığında, biçim:
 
 ```json
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{extensionResourceProviderNamespace}/{extensionResourceType}/{extensionResourceName}
 ```
 
-Uzantı kaynağı bir **aboneliğe**uygulandığında, biçim şu şekilde olur:
+Uzantı kaynağı bir **aboneye**uygulandığında, biçim aşağıdakigibi dir:
 
 ```json
 /subscriptions/{subscriptionId}/providers/{extensionResourceProviderNamespace}/{extensionResourceType}/{extensionResourceName}
 ```
 
-Uzantı kaynağı bir **yönetim grubuna**uygulandığında, biçim şu şekilde olur:
+Uzantı kaynağı bir **yönetim grubuna**uygulandığında, biçim:
 
 ```json
 /providers/Microsoft.Management/managementGroups/{managementGroupName}/providers/{extensionResourceProviderNamespace}/{extensionResourceType}/{extensionResourceName}
 ```
 
-### <a name="extensionresourceid-example"></a>Extensionresourceıd örneği
+### <a name="extensionresourceid-example"></a>uzantısıResourceId örneği
 
-Aşağıdaki örnek, bir kaynak grubu kilidinin kaynak KIMLIĞINI döndürür.
+Aşağıdaki örnek, kaynak grubu kilidi için kaynak kimliğini döndürür.
 
 ```json
 {
@@ -106,159 +106,159 @@ Aşağıdaki örnek, bir kaynak grubu kilidinin kaynak KIMLIĞINI döndürür.
 <a id="listkeys" />
 <a id="list" />
 
-## <a name="list"></a>Listele
+## <a name="list"></a>liste*
 
 ```json
 list{Value}(resourceName or resourceIdentifier, apiVersion, functionValues)
 ```
 
-Bu işlevin sözdizimi, liste işlemlerinin adına göre değişir. Her uygulama, bir liste işlemini destekleyen kaynak türünün değerlerini döndürür. İşlem adı `list`başlamalıdır. Bazı yaygın kullanımlar `listKeys` ve `listSecrets`.
+Bu işlevin sözdizimi liste işlemlerinin adına göre değişir. Her uygulama, bir liste çalışmasını destekleyen kaynak türü için değerleri döndürür. İşlem adı `list`ile başlanmalıdır. Bazı yaygın kullanımlar `listSecrets`ve `listKeys` .
 
 ### <a name="parameters"></a>Parametreler
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| resourceName veya Resourceıdentifier |Yes |string |Kaynağın benzersiz tanımlayıcısı. |
-| apiVersion |Yes |string |Kaynak çalışma zamanı durumu API sürümü. Genellikle, **yyyy-aa-gg**biçiminde. |
-| functionValues |Hayır |object | İşlev için değerleri içeren nesne. Bu nesneyi yalnızca bir depolama hesabındaki **Listaccountsas** gibi parametre değerleriyle bir nesne almayı destekleyen işlevler için sağlayın. Bu makalede işlev değerlerini geçirme örneği gösterilmektedir. |
+| resourceName veya resourceIdentifier |Evet |string |Kaynak için benzersiz tanımlayıcı. |
+| apiVersion |Evet |string |Kaynak çalışma zamanı durumunun API sürümü. Tipik olarak, biçiminde, **yyyy-mm-dd**. |
+| fonksiyonDeğerleri |Hayır |object | İşlev için değerleri olan bir nesne. Bu nesneyi yalnızca depolama **hesabındaki listAccountSas** gibi parametre değerlerine sahip bir nesneyi almayı destekleyen işlevler için sağlayın. Bu makalede, geçen işlev değerlerinin bir örneği gösterilmiştir. |
 
 ### <a name="valid-uses"></a>Geçerli kullanımlar
 
-Liste işlevleri yalnızca bir kaynak tanımı ve bir şablon ya da dağıtımın çıktılar bölümünün özelliklerinde kullanılabilir. [Özellik yinelemesi](copy-properties.md)ile kullanıldığında, ifade kaynak özelliğine atandığından `input` için liste işlevlerini kullanabilirsiniz. Count, liste işlevi çözümlenmeden önce belirlenmesi gerektiğinden, bunları `count` kullanamazsınız.
+Liste işlevleri yalnızca kaynak tanımının özelliklerinde ve şablon veya dağıtımın çıktılar bölümünde kullanılabilir. [Özellik yinelemesi](copy-properties.md)ile kullanıldığında, ifade kaynak `input` özelliğine atandığı için liste işlevlerini kullanabilirsiniz. Liste işlevi çözülmeden `count` önce sayım belirlenmelidir, çünkü bunları kullanamazsınız.
 
 ### <a name="implementations"></a>Uygulamalar
 
-Listenin olası kullanımları aşağıdaki tabloda gösterilmiştir.
+Listenin olası kullanımları* aşağıdaki tabloda gösterilmiştir.
 
 | Kaynak türü | İşlev adı |
 | ------------- | ------------- |
-| Microsoft. AnalysisServices/sunucuları | [listGatewayStatus](/rest/api/analysisservices/servers/listgatewaystatus) |
-| Microsoft. AppConfiguration/Configurationmağazaları | ListKeys 'i al |
-| Microsoft. Automation/automationAccounts | [ListKeys 'i al](/rest/api/automation/keys/listbyautomationaccount) |
-| Microsoft.Batch/batchAccounts | [ListKeys 'i al](/rest/api/batchmanagement/batchaccount/getkeys) |
-| Microsoft. Batchaı/Workspaces/denemeleri/Jobs | [lıutputfiles](/rest/api/batchai/jobs/listoutputfiles) |
-| Microsoft. Blockzincirine/blockchainMembers | [listApiKeys](/rest/api/blockchain/2019-06-01-preview/blockchainmembers/listapikeys) |
-| Microsoft. Blockzincirine/blockchainMembers/transactionNodes | [listApiKeys](/rest/api/blockchain/2019-06-01-preview/transactionnodes/listapikeys) |
-| Microsoft. Cache/redsıs | [ListKeys 'i al](/rest/api/redis/redis/listkeys) |
-| Microsoft.CognitiveServices/accounts | [ListKeys 'i al](/rest/api/cognitiveservices/accountmanagement/accounts/listkeys) |
-| Microsoft. ContainerRegistry/kayıt defterleri | [listBuildSourceUploadUrl 'Si](/rest/api/containerregistry/registries%20(tasks)/getbuildsourceuploadurl) |
-| Microsoft. ContainerRegistry/kayıt defterleri | [listCredentials](/rest/api/containerregistry/registries/listcredentials) |
-| Microsoft. ContainerRegistry/kayıt defterleri | [Listkullanımlar](/rest/api/containerregistry/registries/listusages) |
-| Microsoft. ContainerRegistry/kayıt defterleri/Web kancaları | [listEvents](/rest/api/containerregistry/webhooks/listevents) |
-| Microsoft. ContainerRegistry/kayıt defterleri/çalıştırmaları | [listLogSasUrl 'Si](/rest/api/containerregistry/runs/getlogsasurl) |
-| Microsoft. ContainerRegistry/kayıt defterleri/görevler | [listDetails](/rest/api/containerregistry/tasks/getdetails) |
-| Microsoft. ContainerService/Managedkümeler | [listClusterAdminCredential](/rest/api/aks/managedclusters/listclusteradmincredentials) |
-| Microsoft. ContainerService/Managedkümeler | [listClusterUserCredential](/rest/api/aks/managedclusters/listclusterusercredentials) |
-| Microsoft. ContainerService/Managedkümeler/accessProfiles | [listCredential](/rest/api/aks/managedclusters/getaccessprofile) |
-| Microsoft. DataBox/Jobs | listCredentials |
-| Microsoft. DataFactory/DataFactory/ağ geçitleri | listauthkeys |
-| Microsoft. DataFactory/Factory/ıntegrationçalışma zamanları | [listauthkeys](/rest/api/datafactory/integrationruntimes/listauthkeys) |
-| Microsoft. DataLakeAnalytics/hesaplar/storageAccounts/kapsayıcılar | [listSasTokens](/rest/api/datalakeanalytics/storageaccounts/listsastokens) |
-| Microsoft. DataShare/hesaplar/paylaşımlar | [Listeşitlemeler](/rest/api/datashare/shares/listsynchronizations) |
-| Microsoft. DataShare/accounts/shareSubscriptions | [Listsourcesharesynitizationsettings](/rest/api/datashare/sharesubscriptions/listsourcesharesynchronizationsettings) |
-| Microsoft. DataShare/accounts/shareSubscriptions | [listSynchronizationDetails](/rest/api/datashare/sharesubscriptions/listsynchronizationdetails) |
-| Microsoft. DataShare/accounts/shareSubscriptions | [Listeşitlemeler](/rest/api/datashare/sharesubscriptions/listsynchronizations) |
-| Microsoft. Devices/iotHubs | [ListKeys 'i al](/rest/api/iothub/iothubresource/listkeys) |
-| Microsoft. Devices/ıothubs/iotHubKeys | [ListKeys 'i al](/rest/api/iothub/iothubresource/getkeysforkeyname) |
-| Microsoft. Devices/provisioningServices/anahtarlar | [ListKeys 'i al](/rest/api/iot-dps/iotdpsresource/listkeysforkeyname) |
-| Microsoft. Devices/provisioningServices | [ListKeys 'i al](/rest/api/iot-dps/iotdpsresource/listkeys) |
-| Microsoft. DevTestLab/Labs | [Listvhd 'ler](/rest/api/dtl/labs/listvhds) |
-| Microsoft. DevTestLab/Labs/zamanlamaları | [ListApplicable](/rest/api/dtl/schedules/listapplicable) |
-| Microsoft. DevTestLab/Labs/Users/Serviceyapılar | [Listapperepblezamanlamalar](/rest/api/dtl/servicefabrics/listapplicableschedules) |
-| Microsoft. DevTestLab/Labs/virtualMachines | [Listapperepblezamanlamalar](/rest/api/dtl/virtualmachines/listapplicableschedules) |
-| Microsoft. DocumentDB/databaseAccounts | [listConnectionStrings](/rest/api/cosmos-db-resource-provider/databaseaccounts/listconnectionstrings) |
-| Microsoft. DocumentDB/databaseAccounts | [ListKeys 'i al](/rest/api/cosmos-db-resource-provider/databaseaccounts/listkeys) |
-| Microsoft.DomainRegistration | [Listdomainönerilere](/rest/api/appservice/domains/listrecommendations) |
-| Microsoft. DomainRegistration/topLevelDomains | [listAgreements](/rest/api/appservice/topleveldomains/listagreements) |
-| Microsoft. EventGrid/Domains | [ListKeys 'i al](/rest/api/eventgrid/domains/listsharedaccesskeys) |
-| Microsoft. EventGrid/konuları | [ListKeys 'i al](/rest/api/eventgrid/topics/listsharedaccesskeys) |
-| Microsoft. EventHub/ad alanları/authorizationRules | [ListKeys 'i al](/rest/api/eventhub/namespaces/listkeys) |
-| Microsoft. EventHub/namespaces/Disyıldız Recoveryconfigs/authorizationRules | [ListKeys 'i al](/rest/api/eventhub/disasterrecoveryconfigs/listkeys) |
-| Microsoft. EventHub/namespaces/eventhubs/authorizationRules | [ListKeys 'i al](/rest/api/eventhub/eventhubs/listkeys) |
-| Microsoft. ımportexport/işler | [listBitLockerKeys](/rest/api/storageimportexport/bitlockerkeys/list) |
-| Microsoft. kusto/kümeler/veritabanları | [Listsorumlularını](/rest/api/azurerekusto/databases/listprincipals) |
-| Microsoft. LabServices/kullanıcılar | [Listortamortamları](/rest/api/labservices/globalusers/listenvironments) |
-| Microsoft. LabServices/kullanıcılar | [ListLabs](/rest/api/labservices/globalusers/listlabs) |
-| Microsoft. Logic/ıntegrationaccounts/sözleşmeleri | [listContentCallbackUrl](/rest/api/logic/agreements/listcontentcallbackurl) |
-| Microsoft. Logic/ıntegrationaccounts/derlemeler | [listContentCallbackUrl](/rest/api/logic/integrationaccountassemblies/listcontentcallbackurl) |
-| Microsoft.Logic/integrationAccounts | [listCallbackUrl](/rest/api/logic/integrationaccounts/getcallbackurl) |
-| Microsoft.Logic/integrationAccounts | [listKeyVaultKeys](/rest/api/logic/integrationaccounts/listkeyvaultkeys) |
-| Microsoft. Logic/ıntegrationaccounts/Maps | [listContentCallbackUrl](/rest/api/logic/maps/listcontentcallbackurl) |
-| Microsoft. Logic/ıntegrationaccounts/iş ortakları | [listContentCallbackUrl](/rest/api/logic/partners/listcontentcallbackurl) |
-| Microsoft. Logic/ıntegrationaccounts/schemas | [listContentCallbackUrl](/rest/api/logic/schemas/listcontentcallbackurl) |
-| Microsoft.Logic/workflows | [listCallbackUrl](/rest/api/logic/workflows/listcallbackurl) |
-| Microsoft.Logic/workflows | [listSwagger](/rest/api/logic/workflows/listswagger) |
-| Microsoft. Logic/iş akışları/çalıştırmalar/eylemler | [Listexpressionizlemeleri](/rest/api/logic/workflowrunactions/listexpressiontraces) |
-| Microsoft. Logic/iş akışları/çalıştırmalar/Actions/tekrarları | [Listexpressionizlemeleri](/rest/api/logic/workflowrunactionrepetitions/listexpressiontraces) |
-| Microsoft. Logic/iş akışları/Tetikleyiciler | [listCallbackUrl](/rest/api/logic/workflowtriggers/listcallbackurl) |
-| Microsoft. Logic/iş akışları/sürümler/Tetikleyiciler | [listCallbackUrl](/rest/api/logic/workflowversions/listcallbackurl) |
-| Microsoft. Machinöğrenim/webServices | [ListKeys 'i al](/rest/api/machinelearning/webservices/listkeys) |
-| Microsoft. Machinöğrenim/çalışma alanları | listworkspacekeys |
-| Microsoft. MachineLearningServices/çalışma alanları/hesaplar | [ListKeys 'i al](/rest/api/azureml/workspacesandcomputes/machinelearningcompute/listkeys) |
-| Microsoft. MachineLearningServices/çalışma alanları/hesaplar | [listNodes](/rest/api/azureml/workspacesandcomputes/machinelearningcompute/listnodes) |
-| Microsoft. MachineLearningServices/çalışma alanları | [ListKeys 'i al](/rest/api/azureml/workspacesandcomputes/workspaces/listkeys) |
-| Microsoft. Maps/hesaplar | [ListKeys 'i al](/rest/api/maps-management/accounts/listkeys) |
-| Microsoft. Media/mediaservices/varlıkları | [listContainerSas](/rest/api/media/assets/listcontainersas) |
-| Microsoft. Media/mediaservices/varlıkları | [Liststreamingkonumlandırıcı](/rest/api/media/assets/liststreaminglocators) |
-| Microsoft. Media/mediaservices/Streamingkonumlandırıcı | [listContentKeys](/rest/api/media/streaminglocators/listcontentkeys) |
-| Microsoft. Media/mediaservices/Streamingkonumlandırıcı | [listPaths](/rest/api/media/streaminglocators/listpaths) |
-| Microsoft. Network/applicationSecurityGroups | Liztipi yapılandırması |
-| Microsoft. Notificationhub 'Lar/ad alanları/authorizationRules | [ListKeys 'i al](/rest/api/notificationhubs/namespaces/listkeys) |
-| Microsoft. Notificationhub 'Lar/ad alanları/Notificationhub/authorizationRules | [ListKeys 'i al](/rest/api/notificationhubs/notificationhubs/listkeys) |
-| Microsoft. Operationalınsights/çalışma alanları | [ListKeys 'i al](/rest/api/loganalytics/workspaces%202015-03-20/listkeys) |
-| Microsoft. Poliyeleghts/düzeltmelere | [Listdağıtımlar](/rest/api/policy-insights/remediations/listdeploymentsatresourcegroup) |
-| Microsoft. Relay/Namespace/authorizationRules | [ListKeys 'i al](/rest/api/relay/namespaces/listkeys) |
-| Microsoft. Relay/namespaces/Disyıldız Recoveryconfigs/authorizationRules | ListKeys 'i al |
-| Microsoft. Relay/Namespace/HybridConnections/authorizationRules | [ListKeys 'i al](/rest/api/relay/hybridconnections/listkeys) |
-| Microsoft. Relay/namespaces/Wcfreyerleştir/authorizationRules | [ListKeys 'i al](/rest/api/relay/wcfrelays/listkeys) |
-| Microsoft.Search/searchServices | [listAdminKeys](/rest/api/searchmanagement/adminkeys/get) |
-| Microsoft.Search/searchServices | [listQueryKeys](/rest/api/searchmanagement/querykeys/listbysearchservice) |
-| Microsoft. ServiceBus/namespaces/authorizationRules | [ListKeys 'i al](/rest/api/servicebus/namespaces/listkeys) |
-| Microsoft. ServiceBus/namespaces/Diskalrecoveryconfigs/authorizationRules | [ListKeys 'i al](/rest/api/servicebus/disasterrecoveryconfigs/listkeys) |
-| Microsoft. ServiceBus/namespaces/kuyruklar/authorizationRules | [ListKeys 'i al](/rest/api/servicebus/queues/listkeys) |
-| Microsoft. ServiceBus/namespaces/konular/authorizationRules | [ListKeys 'i al](/rest/api/servicebus/topics/listkeys) |
-| Microsoft. SignalRService/SignalR | [ListKeys 'i al](/rest/api/signalr/signalr/listkeys) |
-| Microsoft.Storage/storageAccounts | [listAccountSas](/rest/api/storagerp/storageaccounts/listaccountsas) |
-| Microsoft.Storage/storageAccounts | [ListKeys 'i al](/rest/api/storagerp/storageaccounts/listkeys) |
-| Microsoft.Storage/storageAccounts | [listServiceSas](/rest/api/storagerp/storageaccounts/listservicesas) |
-| Microsoft. StorSimple/yöneticileri/cihazları | [listFailoverSets](/rest/api/storsimple/devices/listfailoversets) |
-| Microsoft. StorSimple/yöneticileri/cihazları | [listFailoverTargets](/rest/api/storsimple/devices/listfailovertargets) |
-| Microsoft. StorSimple/yöneticileri | [listActivationKey](/rest/api/storsimple/managers/getactivationkey) |
-| Microsoft. StorSimple/yöneticileri | [listPublicEncryptionKey](/rest/api/storsimple/managers/getpublicencryptionkey) |
-| Microsoft. Web/Connectiongateway 'ler | ListStatus |
-| Microsoft. Web/Connections | listconsentlinks |
-| Microsoft. Web/Customapsıs | Listwsdlınterfaces |
-| Microsoft. Web/konumlar | listwsdlınterfaces |
-| Microsoft. Web/apimanagementaccounts/API/bağlantı | listconnectionkeys |
-| Microsoft. Web/apimanagementaccounts/API/bağlantı | listgizlilikler |
-| Microsoft. Web/siteler/yedeklemeler | [list](/rest/api/appservice/webapps/listbackups) |
-| Microsoft. Web/Sites/config | [list](/rest/api/appservice/webapps/listconfigurations) |
-| Microsoft. Web/Sites/işlevleri | [ListKeys 'i al](/rest/api/appservice/webapps/listfunctionkeys)
-| Microsoft. Web/Sites/işlevleri | [listgizlilikler](/rest/api/appservice/webapps/listfunctionsecrets) |
-| Microsoft. Web/Sites/hybridconnectionnamespaces/geçişler | [ListKeys 'i al](/rest/api/appservice/appserviceplans/listhybridconnectionkeys) |
-| Microsoft. Web/siteler | [listsyncfunctiontriggerstatus](/rest/api/appservice/webapps/listsyncfunctiontriggers) |
-| Microsoft. Web/Sites/yuvaları/işlevleri | [listgizlilikler](/rest/api/appservice/webapps/listfunctionsecretsslot) |
-| Microsoft. Web/siteler/yuvalar/yedeklemeler | [list](/rest/api/appservice/webapps/listbackupsslot) |
-| Microsoft. Web/siteler/yuvalar/yapılandırma | [list](/rest/api/appservice/webapps/listconfigurationsslot) |
-| Microsoft. Web/Sites/yuvaları/işlevleri | [listgizlilikler](/rest/api/appservice/webapps/listfunctionsecretsslot) |
+| Microsoft.AnalysisServices/sunucular | [listeGatewayDurum](/rest/api/analysisservices/servers/listgatewaystatus) |
+| Microsoft.AppConfiguration/configurationStores | ListKeys |
+| Microsoft.Automation/automationHesapları | [listeTuşları](/rest/api/automation/keys/listbyautomationaccount) |
+| Microsoft.Batch/batchHesapları | [listkeys](/rest/api/batchmanagement/batchaccount/getkeys) |
+| Microsoft.BatchAI/çalışma alanları/denemeler/işler | [listoutputfiles](/rest/api/batchai/jobs/listoutputfiles) |
+| Microsoft.Blockchain/blockchainÜyeler | [listeApiKeys](/rest/api/blockchain/2019-06-01-preview/blockchainmembers/listapikeys) |
+| Microsoft.Blockchain/blockchainÜyeler/transactionNodes | [listeApiKeys](/rest/api/blockchain/2019-06-01-preview/transactionnodes/listapikeys) |
+| Microsoft.Önbellek/redis | [listeTuşları](/rest/api/redis/redis/listkeys) |
+| Microsoft.CognitiveServices/hesapları | [listeTuşları](/rest/api/cognitiveservices/accountmanagement/accounts/listkeys) |
+| Microsoft.ContainerRegistry/registries | [listeBuildSourceUploadUrl](/rest/api/containerregistry/registries%20(tasks)/getbuildsourceuploadurl) |
+| Microsoft.ContainerRegistry/registries | [listCredentials](/rest/api/containerregistry/registries/listcredentials) |
+| Microsoft.ContainerRegistry/registries | [listeKullanımlar](/rest/api/containerregistry/registries/listusages) |
+| Microsoft.ContainerRegistry/registries/webhooks | [listeEtkinlikler](/rest/api/containerregistry/webhooks/listevents) |
+| Microsoft.ContainerRegistry/registries/runs | [listLogSasUrl](/rest/api/containerregistry/runs/getlogsasurl) |
+| Microsoft.ContainerRegistry/registries/tasks | [listeAyrıntılar](/rest/api/containerregistry/tasks/getdetails) |
+| Microsoft.ContainerService/managedClusters | [listClusterAdminCredential](/rest/api/aks/managedclusters/listclusteradmincredentials) |
+| Microsoft.ContainerService/managedClusters | [listClusterUserCredential](/rest/api/aks/managedclusters/listclusterusercredentials) |
+| Microsoft.ContainerService/managedClusters/accessProfiles | [listeCredential](/rest/api/aks/managedclusters/getaccessprofile) |
+| Microsoft.DataBox/jobs | listCredentials |
+| Microsoft.DataFactory/datafactorys/ağ geçitleri | listauthkeys |
+| Microsoft.DataFactory/fabrikalar/integrationruntimes | [listauthkeys](/rest/api/datafactory/integrationruntimes/listauthkeys) |
+| Microsoft.DataLakeAnalytics/accounts/storageAccounts/Containers | [listeSasTokens](/rest/api/datalakeanalytics/storageaccounts/listsastokens) |
+| Microsoft.DataShare/accounts/shares | [listeSenkronizasyonlar](/rest/api/datashare/shares/listsynchronizations) |
+| Microsoft.DataShare/accounts/shareSubscriptions | [listSourceShareSynchronizationSettings](/rest/api/datashare/sharesubscriptions/listsourcesharesynchronizationsettings) |
+| Microsoft.DataShare/accounts/shareSubscriptions | [listeSenkronizasyonAyrıntılar](/rest/api/datashare/sharesubscriptions/listsynchronizationdetails) |
+| Microsoft.DataShare/accounts/shareSubscriptions | [listeSenkronizasyonlar](/rest/api/datashare/sharesubscriptions/listsynchronizations) |
+| Microsoft.Devices/iotHubs | [listkeys](/rest/api/iothub/iothubresource/listkeys) |
+| Microsoft.Devices/iotHubs/iotHubKeys | [listkeys](/rest/api/iothub/iothubresource/getkeysforkeyname) |
+| Microsoft.Devices/provisioningServices/keys | [listkeys](/rest/api/iot-dps/iotdpsresource/listkeysforkeyname) |
+| Microsoft.Devices/provisioningServices | [listkeys](/rest/api/iot-dps/iotdpsresource/listkeys) |
+| Microsoft.DevTestLab/laboratuvarları | [ListVhds](/rest/api/dtl/labs/listvhds) |
+| Microsoft.DevTestLab/labs/zamanlamaları | [ListeUygulanabilir](/rest/api/dtl/schedules/listapplicable) |
+| Microsoft.DevTestLab/labs/users/serviceFabrics | [ListeUygulanabilir Programlar](/rest/api/dtl/servicefabrics/listapplicableschedules) |
+| Microsoft.DevTestLab/labs/virtualMachines | [ListeUygulanabilir Programlar](/rest/api/dtl/virtualmachines/listapplicableschedules) |
+| Microsoft.DocumentDB/databaseHesapları | [listeConnectionStrings](/rest/api/cosmos-db-resource-provider/databaseaccounts/listconnectionstrings) |
+| Microsoft.DocumentDB/databaseHesapları | [listeTuşları](/rest/api/cosmos-db-resource-provider/databaseaccounts/listkeys) |
+| Microsoft.DomainRegistration | [listeDomainRecommendations](/rest/api/appservice/domains/listrecommendations) |
+| Microsoft.DomainRegistration/topLevelDomains | [listSözleşmeler](/rest/api/appservice/topleveldomains/listagreements) |
+| Microsoft.EventGrid/etki alanları | [listeTuşları](/rest/api/eventgrid/domains/listsharedaccesskeys) |
+| Microsoft.EventGrid/konular | [listeTuşları](/rest/api/eventgrid/topics/listsharedaccesskeys) |
+| Microsoft.EventHub/namespaces/authorizationRules | [listkeys](/rest/api/eventhub/namespaces/listkeys) |
+| Microsoft.EventHub/namespaces/disasterRecoveryConfigs/authorizationRules | [listkeys](/rest/api/eventhub/disasterrecoveryconfigs/listkeys) |
+| Microsoft.EventHub/namespaces/eventhubs/authorizationRules | [listkeys](/rest/api/eventhub/eventhubs/listkeys) |
+| Microsoft.ImportExport/jobs | [listeBitLockerKeys](/rest/api/storageimportexport/bitlockerkeys/list) |
+| Microsoft.Kusto/Kümeler/Veritabanları | [Liste İlkeleri](/rest/api/azurerekusto/databases/listprincipals) |
+| Microsoft.LabServices/kullanıcılar | [ListEnvironments](/rest/api/labservices/globalusers/listenvironments) |
+| Microsoft.LabServices/kullanıcılar | [ListLabs](/rest/api/labservices/globalusers/listlabs) |
+| Microsoft.Logic/integrationAccounts/agreements | [listeContentCallbackUrl](/rest/api/logic/agreements/listcontentcallbackurl) |
+| Microsoft.Logic/integrationAccounts/assemblies | [listeContentCallbackUrl](/rest/api/logic/integrationaccountassemblies/listcontentcallbackurl) |
+| Microsoft.Logic/integrationAccounts | [listeCallbackUrl](/rest/api/logic/integrationaccounts/getcallbackurl) |
+| Microsoft.Logic/integrationAccounts | [listeKeyVaultKeys](/rest/api/logic/integrationaccounts/listkeyvaultkeys) |
+| Microsoft.Logic/integrationAccounts/maps | [listeContentCallbackUrl](/rest/api/logic/maps/listcontentcallbackurl) |
+| Microsoft.Logic/integrationAccounts/partners | [listeContentCallbackUrl](/rest/api/logic/partners/listcontentcallbackurl) |
+| Microsoft.Logic/integrationAccounts/şema | [listeContentCallbackUrl](/rest/api/logic/schemas/listcontentcallbackurl) |
+| Microsoft.Logic/iş akışları | [listeCallbackUrl](/rest/api/logic/workflows/listcallbackurl) |
+| Microsoft.Logic/iş akışları | [listeSwagger](/rest/api/logic/workflows/listswagger) |
+| Microsoft.Logic/iş akışları/çalıştırmalar/eylemler | [listeExpressionTraces](/rest/api/logic/workflowrunactions/listexpressiontraces) |
+| Microsoft.Logic/iş akışları/çalıştırmalar/eylemler/yinelemeler | [listeExpressionTraces](/rest/api/logic/workflowrunactionrepetitions/listexpressiontraces) |
+| Microsoft.Logic/iş akışları/tetikleyiciler | [listeCallbackUrl](/rest/api/logic/workflowtriggers/listcallbackurl) |
+| Microsoft.Logic/iş akışları/sürümleri/tetikleyicileri | [listeCallbackUrl](/rest/api/logic/workflowversions/listcallbackurl) |
+| Microsoft.MachineLearning/webServices | [listkeys](/rest/api/machinelearning/webservices/listkeys) |
+| Microsoft.MachineLearning/Çalışma Alanları | listworkspacekeys |
+| Microsoft.MachineLearningServices/workspaces/computes | [listeTuşları](/rest/api/azureml/workspacesandcomputes/machinelearningcompute/listkeys) |
+| Microsoft.MachineLearningServices/workspaces/computes | [listeDüğümler](/rest/api/azureml/workspacesandcomputes/machinelearningcompute/listnodes) |
+| Microsoft.MachineLearningServices/çalışma alanları | [listeTuşları](/rest/api/azureml/workspacesandcomputes/workspaces/listkeys) |
+| Microsoft.Haritalar/hesapları | [listeTuşları](/rest/api/maps-management/accounts/listkeys) |
+| Microsoft.Media/mediaservices/assets | [listeContainerSas](/rest/api/media/assets/listcontainersas) |
+| Microsoft.Media/mediaservices/assets | [listStreamingLocators](/rest/api/media/assets/liststreaminglocators) |
+| Microsoft.Media/mediaservices/streamingLocators | [listContentKeys](/rest/api/media/streaminglocators/listcontentkeys) |
+| Microsoft.Media/mediaservices/streamingLocators | [listeYolları](/rest/api/media/streaminglocators/listpaths) |
+| Microsoft.Network/applicationSecurityGroups | listIpConfigurations |
+| Microsoft.NotificationHubs/Namespaces/authorizationRules | [listkeys](/rest/api/notificationhubs/namespaces/listkeys) |
+| Microsoft.NotificationHubs/Namespaces/NotificationHubs/authorizationRules | [listkeys](/rest/api/notificationhubs/notificationhubs/listkeys) |
+| Microsoft.OperationalInsights/çalışma alanları | [listeTuşları](/rest/api/loganalytics/workspaces%202015-03-20/listkeys) |
+| Microsoft.PolicyInsights/düzeltmeler | [listeDağıtımlar](/rest/api/policy-insights/remediations/listdeploymentsatresourcegroup) |
+| Microsoft.Relay/namespaces/authorizationRules | [listkeys](/rest/api/relay/namespaces/listkeys) |
+| Microsoft.Relay/namespaces/disasterRecoveryConfigs/authorizationRules | listkeys |
+| Microsoft.Relay/namespaces/HybridConnections/authorizationRules | [listkeys](/rest/api/relay/hybridconnections/listkeys) |
+| Microsoft.Relay/namespaces/WcfRelays/authorizationRules | [listkeys](/rest/api/relay/wcfrelays/listkeys) |
+| Microsoft.Search/searchServices | [listeAdminKeys](/rest/api/searchmanagement/adminkeys/get) |
+| Microsoft.Search/searchServices | [listeQueryKeys](/rest/api/searchmanagement/querykeys/listbysearchservice) |
+| Microsoft.ServiceBus/namespaces/authorizationRules | [listkeys](/rest/api/servicebus/namespaces/listkeys) |
+| Microsoft.ServiceBus/namespaces/disasterRecoveryConfigs/authorizationRules | [listkeys](/rest/api/servicebus/disasterrecoveryconfigs/listkeys) |
+| Microsoft.ServiceBus/namespaces/queues/authorizationRules | [listkeys](/rest/api/servicebus/queues/listkeys) |
+| Microsoft.ServiceBus/namespaces/topics/authorizationRules | [listkeys](/rest/api/servicebus/topics/listkeys) |
+| Microsoft.SignalRService/SignalR | [listkeys](/rest/api/signalr/signalr/listkeys) |
+| Microsoft.Storage/storageHesapları | [listeAccountSas](/rest/api/storagerp/storageaccounts/listaccountsas) |
+| Microsoft.Storage/storageHesapları | [listkeys](/rest/api/storagerp/storageaccounts/listkeys) |
+| Microsoft.Storage/storageHesapları | [listeServiceSas](/rest/api/storagerp/storageaccounts/listservicesas) |
+| Microsoft.StorSimple/yöneticileri/cihazları | [listeFailoverSets](/rest/api/storsimple/devices/listfailoversets) |
+| Microsoft.StorSimple/yöneticileri/cihazları | [listeFailoverHedefler](/rest/api/storsimple/devices/listfailovertargets) |
+| Microsoft.StorSimple/yöneticileri | [listeActivationKey](/rest/api/storsimple/managers/getactivationkey) |
+| Microsoft.StorSimple/yöneticileri | [listePublicEncryptionKey](/rest/api/storsimple/managers/getpublicencryptionkey) |
+| Microsoft.Web/connectionAğ Geçit Leri | ListStatus |
+| microsoft.web/bağlantılar | listconsentlinks |
+| Microsoft.Web/customApis | listeWsdlInterfaces |
+| microsoft.web/locations | listwsdlinterfaces |
+| microsoft.web/apimanagementaccounts/apis/connections | listconnection tuşları |
+| microsoft.web/apimanagementaccounts/apis/connections | listsecrets |
+| microsoft.web/sites/backups | [list](/rest/api/appservice/webapps/listbackups) |
+| Microsoft.Web/siteler/config | [list](/rest/api/appservice/webapps/listconfigurations) |
+| microsoft.web/siteler/fonksiyonlar | [listkeys](/rest/api/appservice/webapps/listfunctionkeys)
+| microsoft.web/siteler/fonksiyonlar | [listsecrets](/rest/api/appservice/webapps/listfunctionsecrets) |
+| microsoft.web/sites/hybridconnectionnamespaces/relays | [listkeys](/rest/api/appservice/appserviceplans/listhybridconnectionkeys) |
+| microsoft.web/siteler | [listsyncfunctiontriggerstatus](/rest/api/appservice/webapps/listsyncfunctiontriggers) |
+| microsoft.web/sites/slots/functions | [listsecrets](/rest/api/appservice/webapps/listfunctionsecretsslot) |
+| microsoft.web/sites/slots/backups | [list](/rest/api/appservice/webapps/listbackupsslot) |
+| Microsoft.Web/siteler/yuvalar/config | [list](/rest/api/appservice/webapps/listconfigurationsslot) |
+| microsoft.web/sites/slots/functions | [listsecrets](/rest/api/appservice/webapps/listfunctionsecretsslot) |
 
-Hangi kaynak türlerinin bir listesini işlemi olduğunu belirlemek için aşağıdaki seçenekleriniz vardır:
+Hangi kaynak türlerinin bir liste çalışması olduğunu belirlemek için aşağıdaki seçeneklere sahipsiniz:
 
-* Bir kaynak sağlayıcısı için [REST API işlemleri](/rest/api/) görüntüleyin ve liste işlemlerine bakın. Örneğin, depolama hesaplarının [ListKeys işlemi](/rest/api/storagerp/storageaccounts)vardır.
-* [Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) PowerShell cmdlet 'ini kullanın. Aşağıdaki örnek, depolama hesapları için tüm listeleme işlemleri alır:
+* Bir kaynak sağlayıcısının [REST API işlemlerini](/rest/api/) görüntüleyin ve liste işlemlerine bakın. Örneğin, depolama hesapları [listKeys işlemi](/rest/api/storagerp/storageaccounts)var.
+* [Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) PowerShell cmdlet'i kullanın. Aşağıdaki örnek, depolama hesapları için tüm liste işlemlerini alır:
 
   ```powershell
   Get-AzProviderOperation -OperationSearchString "Microsoft.Storage/*" | where {$_.Operation -like "*list*"} | FT Operation
   ```
-* Listeleme işlemleri filtrelemek için aşağıdaki Azure CLI komutunu kullanın:
+* Yalnızca liste işlemlerini filtrelemek için aşağıdaki Azure CLI komutunu kullanın:
 
   ```azurecli
   az provider operation show --namespace Microsoft.Storage --query "resourceTypes[?name=='storageAccounts'].operations[].name | [?contains(@, 'list')]"
   ```
 
-### <a name="return-value"></a>Dönüş değeri
+### <a name="return-value"></a>Döndürülen değer
 
-Döndürülen nesne, kullandığınız liste işlevine göre değişir. Örneğin, bir depolama hesabı için listKeys aşağıdaki biçimi döndürür:
+Döndürülen nesne kullandığınız liste işlevine göre değişir. Örneğin, bir depolama hesabının listKeys aşağıdaki biçimi döndürür:
 
 ```json
 {
@@ -277,19 +277,19 @@ Döndürülen nesne, kullandığınız liste işlevine göre değişir. Örneği
 }
 ```
 
-Diğer liste işlevleri farklı dönüş biçimlerine sahip. Bir işlev biçimini görmek için örnek şablonda görüldüğü gibi çıktıların bölüme ekleyin.
+Diğer liste işlevlerinin farklı dönüş biçimleri vardır. Bir işlevin biçimini görmek için, örnek şablonda gösterildiği gibi çıktılar bölümüne ekleyin.
 
 ### <a name="remarks"></a>Açıklamalar
 
-Kaynak adı ya da [RESOURCEID işlevini](#resourceid)kullanarak kaynağı belirtin. Başvurulan kaynağı dağıtan şablonda bir liste işlevi kullanırken, kaynak adını kullanın.
+Kaynak adını veya resourceId işlevini kullanarak kaynağı [belirtin.](#resourceid) Başvurulan kaynağı dağıtan aynı şablonda bir liste işlevi kullanırken, kaynak adını kullanın.
 
-Koşullu olarak dağıtılan bir kaynakta bir **liste** işlevi kullanıyorsanız, işlev, kaynak dağıtılmasa bile değerlendirilir. **List** işlevi mevcut olmayan bir kaynağa başvuruyorsa bir hata alırsınız. İşlevin yalnızca kaynak dağıtıldığında değerlendirildiğinden emin olmak için **IF** işlevini kullanın. Koşullu olarak dağıtılan bir kaynakla IF ve List kullanan bir örnek şablon için [IF işlevine](template-functions-logical.md#if) bakın.
+Koşullu olarak dağıtılan bir kaynakta bir **liste** işlevi kullanırsanız, kaynak dağıtılsa bile işlev değerlendirilir. **Liste** işlevi var olmayan bir kaynağa başvuruyorsa bir hata alırsınız. İşlevin yalnızca kaynak dağıtılırken değerlendirildiğinden emin olmak için **if** işlevini kullanın. Koşullu olarak dağıtılan bir kaynağa sahip if ve list kullanan örnek şabloniçin [if işlevini](template-functions-logical.md#if) görün.
 
 ### <a name="list-example"></a>Liste örneği
 
-Aşağıdaki [örnek şablonda](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/listkeys.json) , çıktılar bölümündeki bir depolama hesabından birincil ve ikincil anahtarların nasıl döndürülayarlanacağı gösterilmektedir. Ayrıca, depolama hesabı için bir SAS belirtecini döndürür.
+Aşağıdaki [örnek şablon,](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/listkeys.json) çıktılar bölümündeki bir depolama hesabından birincil ve ikincil anahtarların nasıl döndürüleceklerini gösterir. Ayrıca depolama hesabı için bir SAS belirteci döndürür.
 
-SAS belirtecini almak için bir nesneyi süre sonu zamanına geçirin. Süre sonu zamanı gelecekte olmalıdır. Bu örnekte liste işlevlerini nasıl kullanacağınız göstermek için tasarlanmıştır. Genellikle, bir kaynak değerinde bir SAS belirteci kullanabilir yerine, bir çıkış değeri döndürür. Çıkış değerleri dağıtım geçmişini depolanır ve güvenli değildir.
+SAS belirteci almak için, son kullanma süresi için bir nesne geçirin. Son kullanma süresi gelecekte olmalıdır. Bu örnek, liste işlevlerini nasıl kullandığınızı göstermek için tasarlanmıştır. Genellikle, SAS belirteci bir kaynak değeri yerine bir çıktı değeri olarak döndürün kullanır. Çıktı değerleri dağıtım geçmişinde depolanır ve güvenli değildir.
 
 ```json
 {
@@ -354,24 +354,24 @@ SAS belirtecini almak için bir nesneyi süre sonu zamanına geçirin. Süre son
 }
 ```
 
-## <a name="providers"></a>sağlayıcılar
+## <a name="providers"></a>Sağlayıcı
 
 ```json
 providers(providerNamespace, [resourceType])
 ```
 
-Bir kaynak sağlayıcısı ve desteklenen kaynak türleri hakkında bilgi döndürür. Bir kaynak türü sağlamazsanız, işlev kaynak sağlayıcısı için desteklenen tüm türleri döndürür.
+Kaynak sağlayıcısı ve desteklenen kaynak türleri hakkında bilgi verir. Kaynak türü sağlamazsanız, işlev kaynak sağlayıcısı için desteklenen tüm türleri döndürür.
 
 ### <a name="parameters"></a>Parametreler
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| providerNamespace |Yes |string |Namespace sağlayıcısı |
-| resourceType |Hayır |string |Belirtilen ad alanı içinde kaynak türü. |
+| sağlayıcıNamealanı |Evet |string |Sağlayıcının ad alanı |
+| resourceType |Hayır |string |Belirtilen ad alanı içindeki kaynak türü. |
 
-### <a name="return-value"></a>Dönüş değeri
+### <a name="return-value"></a>Döndürülen değer
 
-Desteklenen her türü, şu biçimde döndürülür:
+Desteklenen her tür aşağıdaki biçimde döndürülür:
 
 ```json
 {
@@ -381,11 +381,11 @@ Desteklenen her türü, şu biçimde döndürülür:
 }
 ```
 
-Döndürülen değerleri dizi sıralama garantisi yoktur.
+Döndürülen değerlerin dizi sırası garanti edilmez.
 
 ### <a name="providers-example"></a>Sağlayıcılar örneği
 
-Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/providers.json) , sağlayıcı işlevinin nasıl kullanılacağını gösterir:
+Aşağıdaki [örnek şablon,](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/providers.json) sağlayıcı işlevinin nasıl kullanılacağını gösterir:
 
 ```json
 {
@@ -409,7 +409,7 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-**Microsoft. Web** kaynak sağlayıcısı ve **siteleri** kaynak türü için, önceki örnek aşağıdaki biçimde bir nesne döndürür:
+**Microsoft.Web** kaynak sağlayıcısı ve **siteler** kaynak türü için, önceki örnek aşağıdaki biçimde bir nesne döndürür:
 
 ```json
 {
@@ -431,31 +431,31 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-## <a name="reference"></a>Başvuru
+## <a name="reference"></a>reference
 
 ```json
 reference(resourceName or resourceIdentifier, [apiVersion], ['Full'])
 ```
 
-Bir kaynağın çalışma zamanı durumunu temsil eden bir nesne döndürür.
+Kaynağın çalışma zamanı durumunu temsil eden bir nesne döndürür.
 
 ### <a name="parameters"></a>Parametreler
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| resourceName veya Resourceıdentifier |Yes |string |Adı veya bir kaynağın benzersiz tanımlayıcısı. Geçerli şablon kaynağında başvuran bir parametre olarak yalnızca kaynak adı belirtin. Daha önce dağıtılan bir kaynağa ya da kaynağın adı belirsiz olduğunda kaynak KIMLIĞI sağlayın. |
-| apiVersion |Hayır |string |Belirtilen kaynak API sürümü. Kaynak, aynı şablonu içinde sağlanan değil, bu parametreyi dahil edin. Genellikle, **yyyy-aa-gg**biçiminde. Kaynağınız için geçerli API sürümleri için bkz. [şablon başvurusu](/azure/templates/). |
-| 'Full' |Hayır |string |Tam kaynak nesnesini döndürülüp döndürülmeyeceğini belirleyen değer. `'Full'`belirtmezseniz, yalnızca kaynağın Özellikler nesnesi döndürülür. Tam nesne, konum ve kaynak kimliği gibi değerlerini içerir. |
+| resourceName veya resourceIdentifier |Evet |string |Kaynağın adı veya benzersiz tanımlayıcısı. Geçerli şablonda bir kaynağa başvururken, yalnızca kaynak adını parametre olarak sağlayın. Daha önce dağıtılan bir kaynağa başvururken veya kaynağın adı belirsiz olduğunda kaynak kimliğini sağlayın. |
+| apiVersion |Hayır |string |Belirtilen kaynağın API sürümü. Kaynak aynı şablon içinde sağlanmış değilken bu parametreyi ekleyin. Tipik olarak, biçiminde, **yyyy-mm-dd**. Kaynağınız için geçerli API sürümleri için [şablon başvurusuna](/azure/templates/)bakın. |
+| 'Tam' |Hayır |string |Tam kaynak nesnesinin döndürülüp döndürülmeyeceğini belirten değer. Belirtmezseniz, `'Full'`yalnızca kaynağın özellikleri nesnesi döndürülür. Tam nesne kaynak kimliği ve konum gibi değerleri içerir. |
 
-### <a name="return-value"></a>Dönüş değeri
+### <a name="return-value"></a>Döndürülen değer
 
-Her kaynak türü için başvuru işlevi farklı özellikleri döndürür. İşlevi, önceden tanımlanmış tek bir biçim döndürmüyor. Ayrıca, döndürülen değer tam nesne belirtilip göre farklılık gösterir. Bir kaynak türü için özellikleri görmek için örnekte gösterildiği gibi çıkış bölümü nesneyi döndürür.
+Her kaynak türü, başvuru işlevi için farklı özellikler döndürür. İşlev, önceden tanımlanmış tek bir biçimi döndürmez. Ayrıca, döndürülen değer, tam nesneyi belirtip belirtmediğinize bağlı olarak değişir. Kaynak türü özelliklerini görmek için, örnekte gösterildiği gibi çıktılar bölümündeki nesneyi döndürün.
 
 ### <a name="remarks"></a>Açıklamalar
 
-Başvuru işlevi, daha önceden dağıtılan bir kaynak ya da geçerli şablon dağıtılan bir kaynak çalışma zamanı durumunu alır. Bu makalede her iki senaryo için örnekler gösterilmektedir.
+Başvuru işlevi, daha önce dağıtılan bir kaynağın veya geçerli şablonda dağıtılan bir kaynağın çalışma zamanı durumunu alır. Bu makalede, her iki senaryo için örnekler gösterir.
 
-Genellikle, blob uç noktası URI 'SI veya tam etki alanı adı gibi bir nesneden belirli bir değer döndürmek için **başvuru** işlevini kullanırsınız.
+Genellikle, blob bitiş noktası URI veya tam nitelikli etki alanı adı gibi bir nesneden belirli bir değer döndürmek için **başvuru** işlevini kullanırsınız.
 
 ```json
 "outputs": {
@@ -470,7 +470,7 @@ Genellikle, blob uç noktası URI 'SI veya tam etki alanı adı gibi bir nesnede
 }
 ```
 
-Özellikler şemasının parçası olmayan kaynak değerlerine ihtiyacınız olduğunda `'Full'` kullanın. Örneğin, anahtar kasası erişim ilkeleri ayarlamak için bir sanal makine için kimlik özelliklerini alır.
+Şema özelliklerinin bir parçası olmayan kaynak değerlerine ihtiyacınız olduğunda kullanın. `'Full'` Örneğin, anahtar kasa erişim ilkeleri ayarlamak için sanal bir makinenin kimlik özelliklerini alın.
 
 ```json
 {
@@ -496,57 +496,57 @@ Genellikle, blob uç noktası URI 'SI veya tam etki alanı adı gibi bir nesnede
 
 ### <a name="valid-uses"></a>Geçerli kullanımlar
 
-Başvuru işlevi yalnızca bir kaynak tanımı özelliklerini ve bir şablonu veya dağıtım çıktılar bölümünü kullanılabilir. [Özellik yinelemesi](copy-properties.md)ile kullanıldığında, ifade kaynak özelliğine atandığından `input` için başvuru işlevini kullanabilirsiniz. Count, başvuru işlevi çözümlenmeden önce belirlenmesi gerektiğinden, bunu `count` kullanamazsınız.
+Başvuru işlevi yalnızca kaynak tanımının özelliklerinde ve şablon veya dağıtımın çıktılar bölümünde kullanılabilir. [Özellik yinelemesi](copy-properties.md)ile kullanıldığında, ifade kaynak `input` özelliğine atandığı için başvuru işlevini kullanabilirsiniz. Başvuru işlevi çözülmeden `count` önce sayım belirlenmelidir, çünkü bunu kullanamazsınız.
 
-İç içe yerleştirilmiş şablonda dağıttığınız bir kaynağı döndürmek için, [iç içe geçmiş bir şablonun](linked-templates.md#nested-template) çıktılarında başvuru işlevini kullanamazsınız. Bunun yerine, [bağlantılı bir şablon](linked-templates.md#linked-template)kullanın.
+İç içe olan şablonda dağıttığınız bir kaynağı döndürmek için [iç içe kullanılan şablonun](linked-templates.md#nested-template) çıktılarında başvuru işlevini kullanamazsınız. Bunun yerine, bağlantılı bir [şablon](linked-templates.md#linked-template)kullanın.
 
-Koşullu olarak dağıtılan bir kaynakta **başvuru** işlevini kullanırsanız, işlev, kaynak dağıtılmasa bile değerlendirilir.  **Başvuru** işlevi mevcut olmayan bir kaynağa başvuruyorsa bir hata alırsınız. İşlevin yalnızca kaynak dağıtıldığında değerlendirildiğinden emin olmak için **IF** işlevini kullanın. Koşullu olarak dağıtılan bir kaynakla IF ve Reference kullanan bir örnek şablon için [IF işlevine](template-functions-logical.md#if) bakın.
+**Başvuru** işlevini koşullu olarak dağıtılan bir kaynakta kullanırsanız, kaynak dağıtılsa bile işlev değerlendirilir.  **Başvuru** işlevi var olmayan bir kaynağa başvuruyorsa bir hata alırsınız. İşlevin yalnızca kaynak dağıtılırken değerlendirildiğinden emin olmak için **if** işlevini kullanın. Koşullu olarak dağıtılan bir kaynakla if ve başvuru kullanan örnek şabloniçin [if işlevini](template-functions-logical.md#if) görün.
 
 ### <a name="implicit-dependency"></a>Örtük bağımlılık
 
-Başvuru işlevini kullanarak, aynı şablonu içinde başvurulan kaynak sağlandıktan ve kaynağa adıyla (kaynak kimliği değil) başvurun bir kaynak başka bir kaynaktaki bağlıdır örtük olarak bildirdiğiniz. Ayrıca dependsOn özelliği kullanmanız gerekmez. Başvurulan kaynak dağıtımı tamamlanana kadar işlevi değerlendirilmez.
+Başvuru işlevini kullanarak, başvurulan kaynak aynı şablon içinde sağlanmışsa ve kaynağa adıyla (kaynak kimliğine değil) başvurursanız, bir kaynağın başka bir kaynağa bağlı olduğunu dolaylı olarak beyan emiş olursunuz. Ayrıca bağlı özelliği kullanmanız gerekmez. Başvurulan kaynak dağıtımı tamamlanana kadar işlev değerlendirilmez.
 
 ### <a name="resource-name-or-identifier"></a>Kaynak adı veya tanımlayıcı
 
-Aynı şablonda dağıtılan bir kaynağa başvururken kaynağın adını belirtin.
+Aynı şablonda dağıtılan bir kaynağa başvururken, kaynağın adını sağlayın.
 
 ```json
 "value": "[reference(parameters('storageAccountName'))]"
 ```
 
-Aynı şablonda dağıtılan bir kaynağa başvururken kaynak KIMLIĞI ' ni belirtin.
+Aynı şablonda dağıtılmadı bir kaynağa başvururken, kaynak kimliğini sağlayın.
 
 ```json
 "value": "[reference(resourceId(parameters('storageResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('storageAccountName')), '2018-07-01')]"
 ```
 
-Hangi kaynağı başvurduğunuz hakkında belirsizliğe engel olmak için, tam nitelikli kaynak tanımlayıcısı sağlayabilirsiniz.
+Hangi kaynağa atıfta bulunduğunuz konusunda belirsizliği önlemek için tam nitelikli bir kaynak tanımlayıcısı sağlayabilirsiniz.
 
 ```json
 "value": "[reference(resourceId('Microsoft.Network/publicIPAddresses', parameters('ipAddressName')))]"
 ```
 
-Bir kaynağa tam nitelikli bir başvuru oluştururken, kesimleri tür ve ad ile birleştirme sırası yalnızca iki birleştirme değildir. Bunun yerine, ad alanından sonra en az belirli bir *türe/ad* çiftinden en belirgin bir dizi kullanın:
+Bir kaynağa tam nitelikli bir başvuru yaparken, tür ve addan segmentleri birleştirme sırası yalnızca ikisinin bir araya getirilmesi değildir. Bunun yerine, ad alanından sonra, en az belirli olandan en spesifik *tür/ad* çiftleri dizisi kullanın:
 
-**{Resource-Provider-Namespace}/{Parent-Resource-Type}/{Parent-Resource-Name} [/{Child-Resource-Type}/{Child-Resource-Name}]**
+**{kaynak sağlayıcı-ad alanı}/{üst kaynak-türü}/{üst kaynak-adı}[/{alt kaynak türü}/{alt kaynak-adı}/{alt kaynak adı}]**
 
 Örnek:
 
-`Microsoft.Compute/virtualMachines/myVM/extensions/myExt` doğru `Microsoft.Compute/virtualMachines/extensions/myVM/myExt` doğru değil
+`Microsoft.Compute/virtualMachines/myVM/extensions/myExt`doğru `Microsoft.Compute/virtualMachines/extensions/myVM/myExt` değil doğru
 
-Herhangi bir kaynak KIMLIĞININ oluşturulmasını basitleştirmek için, `concat()` işlevi yerine bu belgede açıklanan `resourceId()` işlevleri kullanın.
+Herhangi bir kaynak kimliğinin oluşturulmasını `resourceId()` kolaylaştırmak için, `concat()` işlev yerine bu belgede açıklanan işlevleri kullanın.
 
-### <a name="get-managed-identity"></a>Yönetilen kimliği al
+### <a name="get-managed-identity"></a>Yönetilen kimlik elde edin
 
-[Azure kaynakları Için Yönetilen kimlikler](../../active-directory/managed-identities-azure-resources/overview.md) , bazı kaynaklar için örtük olarak oluşturulan [uzantı kaynak türleridir](../management/extension-resource-types.md) . Yönetilen kimlik şablonda açıkça tanımlanmadığı için, kimliğin uygulandığı kaynağa başvurmanız gerekir. Örtük olarak oluşturulan kimlik dahil olmak üzere tüm özellikleri almak için `Full` kullanın.
+[Azure kaynakları için yönetilen kimlikler,](../../active-directory/managed-identities-azure-resources/overview.md) bazı kaynaklar için örtülü olarak oluşturulan [uzantı lı kaynak türleridir.](../management/extension-resource-types.md) Yönetilen kimlik şablonda açıkça tanımlanmadığından, kimliğin uygulandığı kaynağa başvurmanız gerekir. Örtülü `Full` olarak oluşturulan kimlik de dahil olmak üzere tüm özellikleri almak için kullanın.
 
-Örneğin, bir sanal makine ölçek kümesine uygulanan bir yönetilen kimliğin kiracı KIMLIĞINI almak için şunu kullanın:
+Örneğin, sanal makine ölçeği kümesine uygulanan yönetilen bir kimlik için kiracı kimliğini almak için şunları kullanın:
 
 ```json
 "tenantId": "[reference(resourceId('Microsoft.Compute/virtualMachineScaleSets',  variables('vmNodeType0Name')), '2019-03-01', 'Full').Identity.tenantId]"
 ```
 
-### <a name="reference-example"></a>Başvuru örneği
+### <a name="reference-example"></a>Referans örneği
 
 Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/referencewithstorage.json) bir kaynak dağıtır ve bu kaynağa başvurur.
 
@@ -587,7 +587,7 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Yukarıdaki örnekte, iki nesne döndürür. Özellikler nesnesinin aşağıdaki biçimdedir:
+Önceki örnek iki nesneyi döndürür. Özellikler nesnesi aşağıdaki biçimdedir:
 
 ```json
 {
@@ -642,7 +642,7 @@ Tam nesne aşağıdaki biçimdedir:
 }
 ```
 
-Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/reference.json) , bu şablonda dağıtılan bir depolama hesabına başvurur. Depolama hesabı aynı abonelik içinde zaten var.
+Aşağıdaki [örnek şablon,](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/reference.json) bu şablonda dağıtılmamasa bir depolama hesabına başvurur. Depolama hesabı zaten aynı abonelik içinde bulunmaktadır.
 
 ```json
 {
@@ -674,7 +674,7 @@ resourceGroup()
 
 Geçerli kaynak grubunu temsil eden bir nesne döndürür.
 
-### <a name="return-value"></a>Dönüş değeri
+### <a name="return-value"></a>Döndürülen değer
 
 Döndürülen nesne aşağıdaki biçimdedir:
 
@@ -693,13 +693,13 @@ Döndürülen nesne aşağıdaki biçimdedir:
 }
 ```
 
-**ManagedBy** özelliği yalnızca başka bir hizmet tarafından yönetilen kaynakları içeren kaynak grupları için döndürülür. Yönetilen uygulamalar, Databricks ve AKS için, özelliğinin değeri, yöneten kaynağın kaynak KIMLIĞIDIR.
+**Yönetilen By** özelliği yalnızca başka bir hizmet tarafından yönetilen kaynakları içeren kaynak grupları için döndürülür. Yönetilen Uygulamalar, Databricks ve AKS için özelliğin değeri, yönetici kaynağın kaynak kimliğidir.
 
 ### <a name="remarks"></a>Açıklamalar
 
-`resourceGroup()` işlevi, [abonelik düzeyinde dağıtılan](deploy-to-subscription.md)bir şablonda kullanılamaz. Yalnızca bir kaynak grubuna dağıtılan şablonlarda kullanılabilir. Ana şablon aboneliğe dağıtıldığında bile, bir kaynak grubunu hedefleyen [bağlantılı veya iç içe bir şablonda (iç kapsam ile)](linked-templates.md) `resourceGroup()` işlevini kullanabilirsiniz. Bu senaryoda, bağlantılı veya iç içe yerleştirilmiş şablon kaynak grubu düzeyinde dağıtılır. Abonelik düzeyi dağıtımında bir kaynak grubunu hedefleme hakkında daha fazla bilgi için bkz. [Azure kaynaklarını birden fazla aboneliğe veya kaynak grubuna dağıtma](cross-resource-group-deployment.md).
+İşlev, `resourceGroup()` abonelik düzeyinde dağıtılan bir [şablonda](deploy-to-subscription.md)kullanılamaz. Yalnızca bir kaynak grubuna dağıtılan şablonlarda kullanılabilir. İşlev, `resourceGroup()` üst şablon aboneye dağıtılsa bile, bir kaynak grubunu hedefleyen [bağlantılı veya iç içe bir şablonda (iç kapsamda)](linked-templates.md) kullanabilirsiniz. Bu senaryoda, bağlı veya iç içe şablon kaynak grubu düzeyinde dağıtılır. Abonelik düzeyi dağıtımında bir kaynak grubunu hedefleme hakkında daha fazla bilgi için azure [kaynaklarını birden fazla abonelik veya kaynak grubuna dağıt'a](cross-resource-group-deployment.md)bakın.
 
-Bir ortak resourceGroup işlevin kaynak grubu ile aynı konumda kaynakları oluşturmak için kullanılır. Aşağıdaki örnek, varsayılan bir parametre değeri için kaynak grubu konumunu kullanır.
+Kaynak Grubu işlevinin yaygın kullanımı, kaynak grubuyla aynı konumda kaynak oluşturmaktır. Aşağıdaki örnekte varsayılan parametre değeri için kaynak grubu konumu kullanır.
 
 ```json
 "parameters": {
@@ -710,13 +710,13 @@ Bir ortak resourceGroup işlevin kaynak grubu ile aynı konumda kaynakları olu�
 }
 ```
 
-Kaynak grubundaki etiketleri bir kaynağa uygulamak için resourceGroup işlevini de kullanabilirsiniz. Daha fazla bilgi için bkz. [kaynak grubundan etiket uygulama](../management/tag-resources.md#apply-tags-from-resource-group).
+Kaynak grubundan bir kaynağa etiketleruygulamak için kaynak Grubu işlevini de kullanabilirsiniz. Daha fazla bilgi için [kaynak grubundan etiketleri uygula'ya](../management/tag-resources.md#apply-tags-from-resource-group)bakın.
 
-Birden çok kaynak grubuna dağıtmak için iç içe geçmiş şablonlar kullanırken, resourceGroup işlevini değerlendirmek için kapsamı belirtebilirsiniz. Daha fazla bilgi için bkz. [Azure kaynaklarını birden fazla aboneliğe veya kaynak grubuna dağıtma](cross-resource-group-deployment.md).
+Birden çok kaynak grubuna dağıtmak için iç içe yönelik şablonları kullanırken, kaynak Grubu işlevini değerlendirmek için kapsamı belirtebilirsiniz. Daha fazla bilgi için bkz: [Azure kaynaklarını birden fazla abonelik veya kaynak grubuna dağıtın.](cross-resource-group-deployment.md)
 
 ### <a name="resource-group-example"></a>Kaynak grubu örneği
 
-Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/resourcegroup.json) , kaynak grubunun özelliklerini döndürür.
+Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/resourcegroup.json) kaynak grubunun özelliklerini döndürür.
 
 ```json
 {
@@ -732,7 +732,7 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Yukarıdaki örnekte, aşağıdaki biçimde bir nesne döndürür:
+Önceki örnek aşağıdaki biçimde bir nesne döndürür:
 
 ```json
 {
@@ -752,75 +752,75 @@ Yukarıdaki örnekte, aşağıdaki biçimde bir nesne döndürür:
 resourceId([subscriptionId], [resourceGroupName], resourceType, resourceName1, [resourceName2], ...)
 ```
 
-Bir kaynağın benzersiz tanımlayıcısını döndürür. Kaynak adı belirsiz veya aynı şablon içinde sağlanan olduğunda bu işlevi kullanın. Döndürülen Tanımlayıcının biçimi, dağıtımın bir kaynak grubunun, aboneliğin, yönetim grubunun veya kiracının kapsamında gerçekleşmediğine göre farklılık gösterir.
+Kaynağın benzersiz tanımlayıcısını döndürür. Kaynak adı belirsiz olduğunda veya aynı şablon içinde sağlanmadığında bu işlevi kullanırsınız. Döndürülen tanımlayıcının biçimi, dağıtımın kaynak grubu, abonelik, yönetim grubu veya kiracı kapsamında gerçekleşip gerçekleşmediğine bağlı olarak değişir.
 
 ### <a name="parameters"></a>Parametreler
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| subscriptionId |Hayır |dize (içinde GUID biçimi) |Varsayılan değer geçerli bir aboneliktir. Başka bir Abonelikteki kaynak almak, ihtiyacınız olduğunda bu değeri belirtin. Bu değeri yalnızca bir kaynak grubunun veya aboneliğin kapsamına dağıtma sırasında belirtin. |
-| resourceGroupName |Hayır |string |Geçerli kaynak grubu varsayılan değerdir. Başka bir kaynak grubunda kaynak almak, ihtiyacınız olduğunda bu değeri belirtin. Yalnızca bir kaynak grubunun kapsamına dağıtım yaparken bu değeri sağlayın. |
-| resourceType |Yes |string |Kaynak sağlayıcısı ad alanı dahil olmak üzere kaynak türü. |
-| resourceName1 |Yes |string |Kaynağın adı. |
-| resourceName2 |Hayır |string |Gerekirse, sonraki kaynak adı segmenti. |
+| subscriptionId |Hayır |string (GUID formatında) |Varsayılan değer geçerli aboneliktir. Başka bir abonelikte kaynak almanız gerektiğinde bu değeri belirtin. Bu değeri yalnızca kaynak grubu veya abonelik kapsamında dağıtırken sağlayın. |
+| resourceGroupName |Hayır |string |Varsayılan değer geçerli kaynak grubudur. Başka bir kaynak grubunda kaynak almanız gerektiğinde bu değeri belirtin. Bu değeri yalnızca kaynak grubunun kapsamında dağıtırken sağlayın. |
+| resourceType |Evet |string |Kaynak sağlayıcı ad alanı da dahil olmak üzere kaynak türü. |
+| resourceName1 |Evet |string |Kaynağın adı. |
+| resourceName2 |Hayır |string |Gerekirse sonraki kaynak adı kesimi. |
 
-Kaynak türü daha fazla kesim içerdiğinde kaynak adlarını parametre olarak eklemeye devam edin.
+Kaynak türü daha fazla kesim içeriyorsa, kaynak adlarını parametre olarak eklemeye devam edin.
 
-### <a name="return-value"></a>Dönüş değeri
+### <a name="return-value"></a>Döndürülen değer
 
-Şablon bir kaynak grubunun kapsamına dağıtıldığında, kaynak KIMLIĞI aşağıdaki biçimde döndürülür:
+Şablon bir kaynak grubunun kapsamında dağıtıldığında, kaynak kimliği aşağıdaki biçimde döndürülür:
 
 ```json
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 ```
 
-[Abonelik düzeyinde bir dağıtımda](deploy-to-subscription.md)kullanıldığında, kaynak kimliği aşağıdaki biçimde döndürülür:
+Abonelik düzeyinde bir [dağıtımda](deploy-to-subscription.md)kullanıldığında, kaynak kimliği aşağıdaki biçimde döndürülür:
 
 ```json
 /subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 ```
 
-[Yönetim grubu düzeyinde bir dağıtımda](deploy-to-management-group.md) veya kiracı düzeyinde dağıtımda kullanıldığında, kaynak kimliği aşağıdaki biçimde döndürülür:
+Yönetim grubu [düzeyinde dağıtım](deploy-to-management-group.md) veya kiracı düzeyinde dağıtım kullanıldığında, kaynak kimliği aşağıdaki biçimde döndürülür:
 
 ```json
 /providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
 ```
 
-Diğer biçimlerdeki KIMLIĞI almak için bkz.:
+Kimliği başka biçimlerde almak için bkz:
 
-* [Extensionresourceıd](#extensionresourceid)
-* [Subscriptionresourceıd](#subscriptionresourceid)
-* [Tenantresourceıd](#tenantresourceid)
+* [uzantısıResourceId](#extensionresourceid)
+* [abonelikResourceId](#subscriptionresourceid)
+* [tenantResourceId](#tenantresourceid)
 
 ### <a name="remarks"></a>Açıklamalar
 
-Sağladığınız parametrelerin sayısı, kaynağın bir üst veya alt kaynak olduğunu ve kaynağın aynı abonelikte veya kaynak grubunda olup olmamasına göre farklılık gösterir.
+Sağladığınız parametrelerin sayısı, kaynağın üst veya alt kaynak olup olmamasına ve kaynağın aynı abonelik veya kaynak grubunda olup olmadığına bağlı olarak değişir.
 
-Aynı abonelik ve kaynak grubundaki bir üst kaynağın kaynak KIMLIĞINI almak için kaynağın türünü ve adını belirtin.
+Aynı abonelik ve kaynak grubundaki bir üst kaynağın kaynak kimliğini almak için kaynağın türünü ve adını sağlayın.
 
 ```json
 "[resourceId('Microsoft.ServiceBus/namespaces', 'namespace1')]"
 ```
 
-Bir alt kaynağın kaynak KIMLIĞINI almak için, kaynak türündeki parçaların sayısına dikkat edin. Kaynak türünün her segmenti için bir kaynak adı belirtin. Segmentin adı, hiyerarşinin o parçası için var olan kaynağa karşılık gelir.
+Alt kaynak için kaynak kimliğini almak için kaynak türündeki segment sayısına dikkat edin. Kaynak türünün her kesimi için bir kaynak adı sağlayın. Kesimin adı, hiyerarşinin o bölümü için var olan kaynağa karşılık gelir.
 
 ```json
 "[resourceId('Microsoft.ServiceBus/namespaces/queues/authorizationRules', 'namespace1', 'queue1', 'auth1')]"
 ```
 
-Aynı abonelikte ancak farklı kaynak grubunda bulunan bir kaynağın kaynak KIMLIĞINI almak için, kaynak grubu adını sağlayın.
+Aynı abonelikteki ancak farklı kaynak grubundaki bir kaynağın kaynak kimliğini almak için kaynak grubu adını sağlayın.
 
 ```json
 "[resourceId('otherResourceGroup', 'Microsoft.Storage/storageAccounts', 'examplestorage')]"
 ```
 
-Farklı bir abonelik ve kaynak grubundaki bir kaynağın kaynak KIMLIĞINI almak için abonelik KIMLIĞI ve kaynak grubu adını sağlayın.
+Farklı bir abonelik ve kaynak grubundaki bir kaynağın kaynak kimliğini almak için abonelik kimliği ve kaynak grubu adı sağlayın.
 
 ```json
 "[resourceId('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx', 'otherResourceGroup', 'Microsoft.Storage/storageAccounts','examplestorage')]"
 ```
 
-Genellikle, bu işlev bir alternatif bir kaynak grubuna bir depolama hesabı veya sanal ağ kullanılırken kullanmanız gerekir. Aşağıdaki örnek, bir dış kaynak grubundan kaynak kolayca nasıl kullanılabileceğini gösterir:
+Genellikle, alternatif bir kaynak grubunda bir depolama hesabı veya sanal ağ kullanırken bu işlevi kullanmanız gerekir. Aşağıdaki örnek, dış kaynak grubundan bir kaynağın nasıl kolayca kullanılabileceğini gösterir:
 
 ```json
 {
@@ -864,9 +864,9 @@ Genellikle, bu işlev bir alternatif bir kaynak grubuna bir depolama hesabı vey
 }
 ```
 
-### <a name="resource-id-example"></a>Kaynak KIMLIĞI örneği
+### <a name="resource-id-example"></a>Kaynak Kimliği örneği
 
-Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/resourceid.json) , kaynak grubundaki bir depolama HESABıNıN kaynak kimliğini döndürür:
+Aşağıdaki [örnek şablon,](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/resourceid.json) kaynak grubundaki bir depolama hesabının kaynak kimliğini döndürür:
 
 ```json
 {
@@ -894,14 +894,14 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 }
 ```
 
-Önceki örnekte varsayılan değerlere sahip çıktı.
+Varsayılan değerlerle önceki örnekten çıktı:
 
 | Adı | Tür | Değer |
 | ---- | ---- | ----- |
-| sameRGOutput | Dize | /Subscriptions/{Current-Sub-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
-| differentRGOutput | Dize | /Subscriptions/{Current-Sub-id}/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
-| differentSubOutput | Dize | /Subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
-| nestedResourceOutput | Dize | /Subscriptions/{Current-Sub-id}/resourceGroups/examplegroup/providers/Microsoft.SQL/Servers/ServerName/Databases/databaseName |
+| sameRGOutput | Dize | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
+| differentRGOutput | Dize | /subscriptions/{current-sub-id}/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
+| differentSubOutput | Dize | /subscriptions/1111111-1111-11111111111111/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
+| iç içe Kaynak Çıktısı | Dize | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.SQL/servers/serverName/databasename |
 
 ## <a name="subscription"></a>aboneliği
 
@@ -909,11 +909,11 @@ Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/b
 subscription()
 ```
 
-Geçerli dağıtım için abonelik ayrıntılarını döndürür.
+Geçerli dağıtım aboneliği yle ilgili ayrıntıları verir.
 
-### <a name="return-value"></a>Dönüş değeri
+### <a name="return-value"></a>Döndürülen değer
 
-İşlev aşağıdaki biçimde veri döndürür:
+İşlev aşağıdaki biçimi döndürür:
 
 ```json
 {
@@ -926,11 +926,11 @@ Geçerli dağıtım için abonelik ayrıntılarını döndürür.
 
 ### <a name="remarks"></a>Açıklamalar
 
-Birden çok aboneliğe dağıtmak için iç içe geçmiş şablonlar kullanırken, abonelik işlevini değerlendirmek için kapsamı belirtebilirsiniz. Daha fazla bilgi için bkz. [Azure kaynaklarını birden fazla aboneliğe veya kaynak grubuna dağıtma](cross-resource-group-deployment.md).
+Birden çok aboneye dağıtmak için iç içe yönelik şablonları kullanırken, abonelik işlevini değerlendirmek için kapsamı belirtebilirsiniz. Daha fazla bilgi için bkz: [Azure kaynaklarını birden fazla abonelik veya kaynak grubuna dağıtın.](cross-resource-group-deployment.md)
 
 ### <a name="subscription-example"></a>Abonelik örneği
 
-Aşağıdaki [örnek şablonda](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/subscription.json) , çıktılar bölümünde çağrılan abonelik işlevi gösterilmektedir.
+Aşağıdaki [örnek şablon,](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/subscription.json) çıktılar bölümünde çağrılan abonelik işlevini gösterir.
 
 ```json
 {
@@ -946,7 +946,7 @@ Aşağıdaki [örnek şablonda](https://github.com/Azure/azure-docs-json-samples
 }
 ```
 
-## <a name="subscriptionresourceid"></a>Subscriptionresourceıd
+## <a name="subscriptionresourceid"></a>abonelikResourceId
 
 ```json
 subscriptionResourceId([subscriptionId], resourceType, resourceName1, [resourceName2], ...)
@@ -958,16 +958,16 @@ Abonelik düzeyinde dağıtılan bir kaynak için benzersiz tanımlayıcıyı d�
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| subscriptionId |Hayır |dize (GUID biçiminde) |Varsayılan değer geçerli bir aboneliktir. Başka bir Abonelikteki kaynak almak, ihtiyacınız olduğunda bu değeri belirtin. |
-| resourceType |Yes |string |Kaynak sağlayıcısı ad alanı dahil olmak üzere kaynak türü. |
-| resourceName1 |Yes |string |Kaynağın adı. |
-| resourceName2 |Hayır |string |Gerekirse, sonraki kaynak adı segmenti. |
+| subscriptionId |Hayır |string (GUID formatında) |Varsayılan değer geçerli aboneliktir. Başka bir abonelikte kaynak almanız gerektiğinde bu değeri belirtin. |
+| resourceType |Evet |string |Kaynak sağlayıcı ad alanı da dahil olmak üzere kaynak türü. |
+| resourceName1 |Evet |string |Kaynağın adı. |
+| resourceName2 |Hayır |string |Gerekirse sonraki kaynak adı kesimi. |
 
-Kaynak türü daha fazla kesim içerdiğinde kaynak adlarını parametre olarak eklemeye devam edin.
+Kaynak türü daha fazla kesim içeriyorsa, kaynak adlarını parametre olarak eklemeye devam edin.
 
-### <a name="return-value"></a>Dönüş değeri
+### <a name="return-value"></a>Döndürülen değer
 
-Tanımlayıcısı şu biçimde döndürülür:
+Tanımlayıcı aşağıdaki biçimde döndürülür:
 
 ```json
 /subscriptions/{subscriptionId}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -975,11 +975,11 @@ Tanımlayıcısı şu biçimde döndürülür:
 
 ### <a name="remarks"></a>Açıklamalar
 
-Bu işlevi, bir kaynak grubu yerine [aboneliğe dağıtılan](deploy-to-subscription.md) KAYNAKLARıN kaynak kimliğini almak için kullanırsınız. Döndürülen KIMLIK, bir kaynak grubu değeri dahil değil [RESOURCEID](#resourceid) işlevi tarafından döndürülen değerden farklı.
+Bu işlevi, kaynak grubu yerine [aboneliğe dağıtılan](deploy-to-subscription.md) kaynaklar için kaynak kimliğini almak için kullanırsınız. Döndürülen kimlik, kaynak grubu değeri dahil değil, [resourceId](#resourceid) işlevi tarafından döndürülen değerden farklıdır.
 
-### <a name="subscriptionresourceid-example"></a>Subscriptionresourceıd örneği
+### <a name="subscriptionresourceid-example"></a>abonelikResourceID örneği
 
-Aşağıdaki şablon yerleşik bir rol atar. Bunu bir kaynak grubuna veya aboneliğe dağıtabilirsiniz. Yerleşik rollerin kaynak KIMLIĞINI almak için Subscriptionresourceıd işlevini kullanır.
+Aşağıdaki şablon yerleşik bir rol atar. Kaynak grubuna veya aboneye dağıtabilirsiniz. Yerleşik roller için kaynak kimliğini almak için subscriptionResourceId işlevini kullanır.
 
 ```json
 {
@@ -1030,7 +1030,7 @@ Aşağıdaki şablon yerleşik bir rol atar. Bunu bir kaynak grubuna veya abonel
 }
 ```
 
-## <a name="tenantresourceid"></a>Tenantresourceıd
+## <a name="tenantresourceid"></a>tenantResourceId
 
 ```json
 tenantResourceId(resourceType, resourceName1, [resourceName2], ...)
@@ -1042,15 +1042,15 @@ Kiracı düzeyinde dağıtılan bir kaynak için benzersiz tanımlayıcıyı dö
 
 | Parametre | Gerekli | Tür | Açıklama |
 |:--- |:--- |:--- |:--- |
-| resourceType |Yes |string |Kaynak sağlayıcısı ad alanı dahil olmak üzere kaynak türü. |
-| resourceName1 |Yes |string |Kaynağın adı. |
-| resourceName2 |Hayır |string |Gerekirse, sonraki kaynak adı segmenti. |
+| resourceType |Evet |string |Kaynak sağlayıcı ad alanı da dahil olmak üzere kaynak türü. |
+| resourceName1 |Evet |string |Kaynağın adı. |
+| resourceName2 |Hayır |string |Gerekirse sonraki kaynak adı kesimi. |
 
-Kaynak türü daha fazla kesim içerdiğinde kaynak adlarını parametre olarak eklemeye devam edin.
+Kaynak türü daha fazla kesim içeriyorsa, kaynak adlarını parametre olarak eklemeye devam edin.
 
-### <a name="return-value"></a>Dönüş değeri
+### <a name="return-value"></a>Döndürülen değer
 
-Tanımlayıcısı şu biçimde döndürülür:
+Tanımlayıcı aşağıdaki biçimde döndürülür:
 
 ```json
 /providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
@@ -1058,12 +1058,12 @@ Tanımlayıcısı şu biçimde döndürülür:
 
 ### <a name="remarks"></a>Açıklamalar
 
-Kiracıya dağıtılan bir kaynağın kaynak KIMLIĞINI almak için bu işlevi kullanın. Döndürülen KIMLIK, kaynak grubu veya abonelik değerleri dahil değil, diğer kaynak KIMLIĞI işlevleri tarafından döndürülen değerlerden farklıdır.
+Bu işlevi, kiracıya dağıtılan bir kaynağın kaynak kimliğini almak için kullanırsınız. Döndürülen kimlik, kaynak grubu veya abonelik değerlerini dahil etmeyerek diğer kaynak kimliği işlevleri tarafından döndürülen değerlerden farklıdır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Azure Resource Manager şablonundaki bölümlerin açıklaması için bkz. [yazma Azure Resource Manager şablonları](template-syntax.md).
-* Birden çok şablonu birleştirmek için bkz. [Azure Resource Manager ile bağlı şablonları kullanma](linked-templates.md).
-* Kaynak türünü oluştururken belirtilen sayıda yinelemek için, bkz. [Azure Resource Manager birden fazla kaynak örneği oluşturma](copy-resources.md).
-* Oluşturduğunuz şablonun nasıl dağıtılacağını görmek için bkz. [Azure Resource Manager şablonuyla uygulama dağıtma](deploy-powershell.md).
+* Azure Kaynak Yöneticisi şablonundaki bölümlerin açıklaması için [bkz.](template-syntax.md)
+* Birden çok şablonu birleştirmek için bkz: [Azure Kaynak Yöneticisi ile bağlantılı şablonları kullanma.](linked-templates.md)
+* Bir kaynak türü oluştururken belirli sayıda kez yeniden sıralamak için azure [kaynak yöneticisinde birden çok kaynak örneği oluşturma](copy-resources.md)bölümüne bakın.
+* Oluşturduğunuz şablonu nasıl dağıtabileceğinizi görmek için Azure [Kaynak Yöneticisi şablonuyla bir uygulama dağıt'a](deploy-powershell.md)bakın.
 

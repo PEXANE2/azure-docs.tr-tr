@@ -4,16 +4,16 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
-ms.openlocfilehash: a1bedf97f5ae7c48e5bcb47880a25ee1219b917b
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: e5213a20036385ff25373252e6670d8bd86a4b07
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67188155"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80056684"
 ---
-Bu koleksiyondaki diğer hızlı başlangıçlar, bu hızlı başlangıca göre belirlenir. Sonraki hızlı başlangıçlar, öğreticiler veya bu hızlı başlangıçta oluşturduğunuz hizmetlerin herhangi biri ile çalışmayı planlıyorsanız, kaynakları temizlemeyin.
+Bu koleksiyondaki diğer hızlı başlangıçlar, bu hızlı başlangıcı temel alır. Sonraki hızlı başlangıçlarla, öğreticilerle veya bu hızlı başlatmada oluşturduğunuz hizmetlerden herhangi biriyle çalışmayı planlıyorsanız, kaynakları temizlemeyin.
 
-Azure’da *Kaynaklar*; işlev uygulamalarını, işlevleri, depolama hesaplarını ve benzeri öğeleri ifade eder. *Kaynak grupları* halinde gruplandırılırlar ve bir grubu silerek içindeki her şeyi silebilirsiniz. 
+Azure’da *Kaynaklar*; işlev uygulamalarını, işlevleri, depolama hesaplarını ve benzeri öğeleri ifade eder. Kaynak *gruplarına*ayrılırlar ve grubu silerek gruptaki her şeyi silebilirsiniz. 
 
 Bu hızlı başlangıçları tamamlamak için kaynaklar oluşturdunuz. [Hesap durumunuza](https://azure.microsoft.com/account/) ve [hizmet fiyatlandırmanıza](https://azure.microsoft.com/pricing/) bağlı olarak size bu kaynakların ücretleri yansıtılabilir. Kaynaklara artık ihtiyacınız yoksa, şunları yaparak silebilirsiniz:
 
@@ -25,7 +25,7 @@ Bu hızlı başlangıçları tamamlamak için kaynaklar oluşturdunuz. [Hesap du
 
    Söz konusu sayfaya panodan ulaşmak için **Kaynak grupları**’nı ve ardından bu hızlı başlangıç için kullandığınız kaynak grubunu seçin.
 
-2. **Kaynak grubu** sayfasında, dahil edilen kaynakların listesini gözden geçirin ve silmek istediğiniz kaynakların bunlar olduğunu doğrulayın.
+2. Kaynak **grubu** sayfasında, eklenen kaynakların listesini gözden geçirin ve bunların silmek istediğiniz kaynaklar olduğunu doğrulayın.
  
 3. **Kaynak grubunu sil**’i seçin ve yönergeleri izleyin.
 

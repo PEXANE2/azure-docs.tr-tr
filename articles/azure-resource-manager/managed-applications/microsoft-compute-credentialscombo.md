@@ -1,38 +1,38 @@
 ---
-title: CredentialsCombo UI öğesi
-description: Azure portal için Microsoft. COMPUTE. CredentialsCombo UI öğesini açıklar.
+title: Kimlik BilgileriCombo UI öğesi
+description: Azure portalı için Microsoft.Compute.CredentialsCombo UI öğesini açıklar.
 author: tfitzmac
 ms.topic: conceptual
 ms.date: 09/29/2018
 ms.author: tomfitz
 ms.openlocfilehash: baee83e08505ddabb4680b5bbb4101479010ea47
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75652144"
 ---
-# <a name="microsoftcomputecredentialscombo-ui-element"></a>Microsoft. COMPUTE. CredentialsCombo UI öğesi
+# <a name="microsoftcomputecredentialscombo-ui-element"></a>Microsoft.Compute.CredentialsCombo UI öğesi
 
 Windows ve Linux parolaları ve SSH ortak anahtarları için yerleşik doğrulamaya sahip bir denetim grubu.
 
 ## <a name="ui-sample"></a>UI örneği
 
-Windows için kullanıcılar şunları görürler:
+Windows için kullanıcılar şunları görür:
 
-![Microsoft. COMPUTE. CredentialsCombo pencere](./media/managed-application-elements/microsoft.compute.credentialscombo-windows.png)
+![Microsoft.Compute.CredentialsCombo Windows](./media/managed-application-elements/microsoft.compute.credentialscombo-windows.png)
 
-Parola seçiliyken Linux için kullanıcılar şunları görür:
+Seçilen parolaile Linux için, kullanıcılar bkz:
 
-![Microsoft. COMPUTE. CredentialsCombo Linux parolası](./media/managed-application-elements/microsoft.compute.credentialscombo-linux-password.png)
+![Microsoft.Compute.CredentialsCombo Linux şifresi](./media/managed-application-elements/microsoft.compute.credentialscombo-linux-password.png)
 
-SSH ortak anahtarı seçiliyken Linux için kullanıcılar şunları görür:
+SSH ortak anahtarı nın seçili Olduğu Linux için kullanıcılar şunları görür:
 
-![Microsoft. COMPUTE. CredentialsCombo Linux anahtarı](./media/managed-application-elements/microsoft.compute.credentialscombo-linux-key.png)
+![Microsoft.Compute.CredentialsCombo Linux anahtarı](./media/managed-application-elements/microsoft.compute.credentialscombo-linux-key.png)
 
 ## <a name="schema"></a>Şema
 
-Windows için aşağıdaki şemayı kullanın:
+Windows için aşağıdaki şema'yı kullanın:
 
 ```json
 {
@@ -58,7 +58,7 @@ Windows için aşağıdaki şemayı kullanın:
 }
 ```
 
-**Linux**için aşağıdaki şemayı kullanın:
+**Linux**için aşağıdaki şemaları kullanın:
 
 ```json
 {
@@ -91,7 +91,7 @@ Windows için aşağıdaki şemayı kullanın:
 
 ## <a name="sample-output"></a>Örnek çıktı
 
-`osPlatform` **Windows**veya `osPlatform` **Linux** ise ve Kullanıcı SSH ortak anahtarı yerine bir parola sağladıysa, Denetim aşağıdaki çıktıyı döndürür:
+Windows `osPlatform` **Windows**ise veya `osPlatform` **Linux** ise ve kullanıcı SSH ortak anahtarı yerine bir parola sağlamışsa, denetim aşağıdaki çıktıyı döndürür:
 
 ```json
 {
@@ -100,7 +100,7 @@ Windows için aşağıdaki şemayı kullanın:
 }
 ```
 
-`osPlatform` **Linux** ise ve Kullanıcı SSH ortak anahtarı sağladıysa, Denetim aşağıdaki çıktıyı döndürür:
+Linux `osPlatform` **Linux** ise ve kullanıcı bir SSH ortak anahtarı sağlamışsa, denetim aşağıdaki çıktıyı döndürür:
 
 ```json
 {
@@ -111,13 +111,13 @@ Windows için aşağıdaki şemayı kullanın:
 
 ## <a name="remarks"></a>Açıklamalar
 
-- `osPlatform` belirtilmelidir ve **Windows** ya da **Linux**olabilir.
-- `constraints.required` **true**olarak ayarlanırsa, parola veya SSH ortak anahtar metin kutularının başarıyla doğrulanacak değerleri olmalıdır. Varsayılan değer **true**'dur.
-- `options.hideConfirmation` **true**olarak ayarlanırsa, kullanıcının parolasını onaylamak için ikinci metin kutusu gizlenir. Varsayılan değer **false**.
-- `options.hidePassword` **true**olarak ayarlanırsa, parola kimlik doğrulamasını kullanma seçeneği gizlenir. Bu, yalnızca `osPlatform` **Linux**olduğunda kullanılabilir. Varsayılan değer **false**.
-- İzin verilen parolalarla ilgili ek kısıtlamalar `customPasswordRegex` özelliği kullanılarak uygulanabilir. `customValidationMessage` dize, bir parola özel doğrulama başarısız olduğunda görüntülenir. Her iki özellik için varsayılan değer **null**.
+- `osPlatform`belirtilmelidir ve **Windows** veya **Linux**olabilir.
+- Doğru `constraints.required` olarak **true**ayarlanmışsa, parola veya SSH ortak anahtar metin kutuları başarıyla doğrulamak için değerlere sahip olmalıdır. Varsayılan değer **doğrudur.**
+- Doğru `options.hideConfirmation` olarak **true**ayarlanmışsa, kullanıcının parolasını onaylamak için ikinci metin kutusu gizlenir. Varsayılan değer **false** şeklindedir.
+- Doğru `options.hidePassword` olarak **true**ayarlanmışsa, parola kimlik doğrulaması kullanma seçeneği gizlenir. Sadece `osPlatform` **Linux**olduğunda kullanılabilir. Varsayılan değer **false** şeklindedir.
+- İzin verilen parolalar üzerindeki ek kısıtlamalar `customPasswordRegex` özelliği kullanılarak uygulanabilir. Parola özel `customValidationMessage` doğrulamabaşarısız olduğunda dize görüntülenir. Her iki özellik için varsayılan değer **null'** dur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* UI tanımları oluşturmaya giriş için bkz. [Createuıdefinition ile çalışmaya başlama](create-uidefinition-overview.md).
-* UI öğelerindeki ortak özelliklerin açıklaması için bkz. [Createuıdefinition Elements](create-uidefinition-elements.md).
+* UI tanımlarını oluşturmaya giriş için create [UiDefinition 'a](create-uidefinition-overview.md)bakın.
+* UI öğelerindeki ortak özelliklerin açıklaması için [createUiDefinition öğelerine](create-uidefinition-elements.md)bakın.

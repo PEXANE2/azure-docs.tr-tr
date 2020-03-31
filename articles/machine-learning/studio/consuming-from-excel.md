@@ -1,7 +1,7 @@
 ---
-title: Web hizmetini Excel 'de kullanma
+title: Excel'de web hizmeti tüketin
 titleSuffix: ML Studio (classic) - Azure
-description: Azure Machine Learning Studio (klasik), herhangi bir kod yazmaya gerek kalmadan Web hizmetlerini doğrudan Excel 'den çağırmayı kolaylaştırır.
+description: Azure Machine Learning Studio (klasik), herhangi bir kod yazmaya gerek kalmadan web hizmetlerini doğrudan Excel'den aramayı kolaylaştırır.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -11,60 +11,60 @@ ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/01/2018
 ms.openlocfilehash: 333ed411ab818cff77a7cba6c7de4f42c36f5b6b
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79218223"
 ---
-# <a name="consuming-an-azure-machine-learning-studio-classic-web-service-from-excel"></a>Excel 'den bir Azure Machine Learning Studio (klasik) Web hizmeti kullanma
+# <a name="consuming-an-azure-machine-learning-studio-classic-web-service-from-excel"></a>Excel'den Azure Machine Learning Studio (klasik) Web Hizmeti tüketme
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
-Azure Machine Learning Studio (klasik), herhangi bir kod yazmaya gerek kalmadan Web hizmetlerini doğrudan Excel 'den çağırmayı kolaylaştırır.
+Azure Machine Learning Studio (klasik), herhangi bir kod yazmaya gerek kalmadan web hizmetlerini doğrudan Excel'den aramayı kolaylaştırır.
 
-Excel 2013 (veya üzeri) veya Excel Online kullanıyorsanız, Excel [Excel eklentisini](excel-add-in-for-web-services.md)kullanmanızı öneririz.
+Excel 2013 (veya daha sonra) veya Excel Online kullanıyorsanız, Excel [Excel eklentisini](excel-add-in-for-web-services.md)kullanmanızı öneririz.
 
 
 
 ## <a name="steps"></a>Adımlar
-Web hizmeti yayımlama. [Öğretici 3: Kredi risk modelini dağıtma](tutorial-part3-credit-risk-deploy.md) , bunun nasıl yapılacağını açıklar. Şu anda Excel çalışma kitabını özelliği yalnızca tek bir çıkış (diğer bir deyişle, tek bir Puanlama etiketi) sahip istek/yanıt hizmetler için desteklenir. 
+Bir web hizmeti yayımlayın. [Öğretici 3: Dağıtım kredi riski modeli](tutorial-part3-credit-risk-deploy.md) nasıl yapılacağını açıklar. Şu anda Excel çalışma kitabı özelliği yalnızca tek bir çıktısı olan İstek/Yanıt hizmetleri (yani tek bir puanlama etiketi) için desteklenir. 
 
-Bir Web hizmetiniz olduktan sonra, Studio 'nun sol tarafındaki **Web Hizmetleri** bölümüne tıklayın ve sonra Excel 'den kullanmak için Web hizmeti ' ni seçin.
+Bir web hizmetiniz olduktan sonra stüdyonun solundaki **WEB HİzMETLerİ** bölümüne tıklayın ve ardından Excel'den tüketmek üzere web hizmetini seçin.
 
-**Klasik Web hizmeti**
+**Klasik Web Hizmeti**
 
-1. Web hizmetinin **Pano** sekmesinde, **istek/yanıt** hizmeti için bir satırdır. Bu hizmetin tek bir çıkışı varsa, bu satırda **Excel çalışma kitabı indir** bağlantısını görmeniz gerekir.
+1. Web hizmeti için **PANO** sekmesinde **İSTEK/YANıT** hizmeti için bir satır vardır. Bu hizmetin tek bir çıktısı varsa, bu satırdaki **Excel Çalışma Kitabı İndir** bağlantısını görmeniz gerekir.
 
-    ![Studio (klasik) Web hizmeti portalını kullanarak Excel çalışma kitabını indirme](./media/consuming-from-excel/excellink.png)
-2. **Excel çalışma kitabını indir**' e tıklayın.
+    ![Studio (klasik) Web Hizmeti portalını kullanarak Excel Çalışma Kitabını İndirin](./media/consuming-from-excel/excellink.png)
+2. Excel **Çalışma Kitabını İndir'e**tıklayın.
 
-**Yeni Web hizmeti**
+**Yeni Web Hizmeti**
 
-1. Azure Machine Learning Web hizmeti portalında **tüketme**' yi seçin.
-2. Kullanım sayfasında, **Web hizmeti tüketim seçenekleri** bölümünde, Excel simgesine tıklayın.
+1. Azure Machine Learning Web Service **portalında, Tüket'i**seçin.
+2. Tüketim sayfasında, Web **hizmeti tüketim seçenekleri** bölümünde Excel simgesini tıklatın.
 
 **Çalışma kitabını kullanma**
 
-1. Çalışma kitabını açın.
-2. Bir güvenlik uyarısı görünür; **Düzenle 'Yi etkinleştir** düğmesine tıklayın.
+1. Çalışma kitabını aç.
+2. Bir Güvenlik Uyarısı görüntülenir; **Düzenlemeyi Etkinleştir** düğmesine tıklayın.
 
-    ![Korumalı Görünüm güvenlik uyarısını kaldırmak için Düzenle 'yi etkinleştir](./media/consuming-from-excel/enableeditting.png)
-3. Bir güvenlik uyarısı görüntülenir. Elektronik tablonuzun makrolarını çalıştırmak için **Içeriği etkinleştir** düğmesine tıklayın.
+    ![Korumalı görünüm güvenlik uyarısını kaldırmak için düzenlemeyi etkinleştirme](./media/consuming-from-excel/enableeditting.png)
+3. Bir Güvenlik Uyarısı görüntülenir. Elektronik tablonuzdaki makroları çalıştırmak için **İçeriği Etkinleştir** düğmesini tıklatın.
 
-    ![Makroları devre dışı bırakma güvenlik uyarısını kapatmak için Içeriği etkinleştirin](./media/consuming-from-excel/enablecontent.png)
-4. Makrolar etkinleştirildikten sonra bir tablo oluşturulur. , RR 'ler Web hizmetine veya **parametrelerine**giriş olarak Blue sütunları gereklidir. RR hizmetinin çıkışını, **tahmin EDILEN değerleri** yeşil olarak dikkate alın. Belirli bir satır için tüm sütunları dolduğunda, çalışma kitabına otomatik olarak Puanlama API'yi çağıran ve puanlanmış sonuçların görüntüler.
+    ![Makroları devre dışı bırakarak Güvenlik Uyarısını kapatmak için İçeriği etkinleştirme](./media/consuming-from-excel/enablecontent.png)
+4. Makrolar etkinleştirildikten sonra bir tablo oluşturulur. RRS web hizmetine veya **PARAMETRELERE**giriş olarak mavi sütunlar gereklidir. RRS hizmetinin çıktısını not edin, TAHMIN **DEĞERLerİ** yeşil. Belirli bir satırın tüm sütunları doldurulduğunda, çalışma kitabı otomatik olarak puanlama API'sini çağırır ve puanalan sonuçları görüntüler.
 
-    ![Parametre girişleri ve sonuç tahmini değerleri için tablo](./media/consuming-from-excel/sampletable.png)
-5. Birden fazla satır puanlamak için dolgu verileri ve tahmin edilen değerler ikinci satırı oluşturulur. Aynı anda birden çok satır bile yapıştırabilirsiniz.
+    ![Parametre girişleri ve ortaya çıkan tahmin edilen değerler için tablo](./media/consuming-from-excel/sampletable.png)
+5. Birden fazla satır puan lamak için ikinci satırı verilerle doldurun ve öngörülen değerler üretilir. Hatta aynı anda birkaç satır yapıştırabilirsiniz.
 
-Verileri görselleştirme yardımcı olmak için tahmin edilen değerleri (grafikleri power map, koşullu biçimlendirme, vb.) Excel özelliklerinden herhangi birini kullanabilirsiniz.
+Verileri görselleştirmeye yardımcı olmak için öngörülen değerlerle Excel özelliklerinden herhangi birini (grafikler, güç eşlemi, koşullu biçimlendirme, vb.) kullanabilirsiniz.
 
 ## <a name="sharing-your-workbook"></a>Çalışma kitabınızı paylaşma
-İş için makrolar, API anahtarınızı elektronik bir parçası olmalıdır. Bu çalışma kitabını yalnızca varlık/güvenilir kişiler ile paylaşmalıdır anlamına gelir.
+Makroların çalışması için API Anahtarınızın elektronik tablonun bir parçası olması gerekir. Bu, çalışma kitabını yalnızca güvendiğiniz varlıklarla/kişilerle paylaşmanız gerektiği anlamına gelir.
 
 ## <a name="automatic-updates"></a>Otomatik güncelleştirmeler
-Bu iki durumda bir RRS çağrısıyla yapılır:
+Bu iki durumda RRS çağrısı yapılır:
 
-1. Bir satırda, tüm **parametrelerinde** içerik olduğunda ilk kez
-2. **Parametrelerin** tüm **parametreleri** girilen bir satırdaki herhangi bir zaman değişir.
+1. Bir satırın tüm **PARAMETRELERİnDE** İlk KEZ İçERİğİ
+2. PARAMETRELERDEN herhangi biri, tüm **PARAMETRELERInE** girilen bir satırda **değişir.**

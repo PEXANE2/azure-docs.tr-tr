@@ -1,44 +1,44 @@
 ---
-title: Küme için Azure Load Balancer kuralı oluşturma
-description: Azure Service Fabric kümeniz için bağlantı noktaları açmak üzere bir Azure Load Balancer yapılandırın.
+title: Küme için Azure Yük Dengeleyici seçimi oluş
+description: Azure Hizmet Kumaşı kümeniz için bağlantı noktalarını açacak şekilde bir Azure Yük Dengeleyicisi yapılandırın.
 ms.topic: conceptual
 ms.date: 12/06/2017
 ms.openlocfilehash: f4599b2e0174381ab7df04aeeb33db7e3ee60f26
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77025393"
 ---
-# <a name="open-ports-for-a-service-fabric-cluster"></a>Service Fabric kümesi için bağlantı noktalarını açma
+# <a name="open-ports-for-a-service-fabric-cluster"></a>Service Fabric kümesi için bağlantı noktası açma
 
-Azure Service Fabric kümeniz ile dağıtılan yük dengeleyici, trafiği bir düğümde çalışan uygulamanıza yönlendirir. Uygulamanızı farklı bir bağlantı noktası kullanacak şekilde değiştirirseniz, bu bağlantı noktasını (veya farklı bir bağlantı noktasını yönlendirmelisiniz) Azure Load Balancer.
+Azure Hizmet Kumaş kümenizle dağıtılan yük dengeleyicisi, trafiği bir düğüm üzerinde çalışan uygulamanıza yönlendirir. Uygulamanızı farklı bir bağlantı noktası kullanacak şekilde değiştirirseniz, söz konusu bağlantı noktasını (veya farklı bir bağlantı noktasını yönlendiren) Azure Yük Dengeleyicisi'nde ortaya çıkarmanız gerekir.
 
-Service Fabric kümenizi Azure 'a dağıttığınızda, sizin için otomatik olarak bir yük dengeleyici oluşturulur. Yük dengeleyiciniz yoksa, bkz. [Internet 'e yönelik yük dengeleyici yapılandırma](../load-balancer/load-balancer-get-started-internet-portal.md).
+Service Fabric kümenizi Azure'a dağıttığınızda, sizin için otomatik olarak bir yük dengeleyici oluşturuldu. Yük dengeleyiciniz yoksa, [bkz.](../load-balancer/load-balancer-get-started-internet-portal.md)
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="configure-service-fabric"></a>Service Fabric 'i yapılandırma
+## <a name="configure-service-fabric"></a>Hizmet dokusunun yapılandırılması
 
-Service Fabric uygulamanızın **Servicemanifest. xml** yapılandırma dosyası, uygulamanızın kullanmasını beklediği uç noktaları tanımlar. Yapılandırma dosyası bir uç nokta tanımlamak üzere güncelleştirildikten sonra, bu (veya farklı) bir bağlantı noktasını göstermek için yük dengeleyici 'nin güncellenmesi gerekir. Service Fabric uç noktası oluşturma hakkında daha fazla bilgi için bkz. [bir uç nokta kurma](service-fabric-service-manifest-resources.md).
+Servis Kumaşı uygulama **ServiceManifest.xml** config dosyanız uygulamanızın kullanmayı beklediği uç noktaları tanımlar. Config dosyası bir bitiş noktası tanımlamak için güncelleştirildikten sonra, yük dengeleyicisi bu (veya farklı) bağlantı noktasını ortaya çıkarmak için güncelleştirilmelidir. Hizmet dokusu bitiş noktasının nasıl oluşturulacığı hakkında daha fazla bilgi için [bkz.](service-fabric-service-manifest-resources.md)
 
 ## <a name="create-a-load-balancer-rule"></a>Yük dengeleyici kuralı oluşturma
 
-Bir Load Balancer kuralı, internet 'e yönelik bir bağlantı noktası açar ve trafiği, uygulamanız tarafından kullanılan iç düğümün bağlantı noktasına iletir. Yük dengeleyiciniz yoksa, bkz. [Internet 'e yönelik yük dengeleyici yapılandırma](../load-balancer/load-balancer-get-started-internet-portal.md).
+Yük Dengeleyici kuralı, internete bakan bir bağlantı noktası açar ve trafiği uygulamanız tarafından kullanılan iç düğümün bağlantı noktasına iletin. Yük dengeleyiciniz yoksa, [bkz.](../load-balancer/load-balancer-get-started-internet-portal.md)
 
-Load Balancer kuralı oluşturmak için aşağıdaki bilgileri toplamanız gerekir:
+Yük Dengeleyici kuralı oluşturmak için aşağıdaki bilgileri toplamanız gerekir:
 
 - Yük dengeleyici adı.
-- Yük dengeleyici ve Service Fabric kümesinin kaynak grubu.
+- Yük dengeleyici ve hizmet kumaş kümesikaynak grubu.
 - Dış bağlantı noktası.
 - İç bağlantı noktası.
 
 ## <a name="azure-cli"></a>Azure CLI
-Yalnızca **Azure CLI**ile yük dengeleyici kuralı oluşturmak için tek bir komut alır. Yeni bir kural oluşturmak için yalnızca yük dengeleyici ve kaynak grubunun adını bilmeniz gerekir.
+**Azure CLI**ile yük dengeleyici kuralı oluşturmak için yalnızca tek bir komut gerekiyor. Yeni bir kural oluşturmak için hem yük dengeleyicisinin hem de kaynak grubunun adını bilmeniz gerekir.
 
 >[!NOTE]
->Yük dengeleyicinin adını belirlemeniz gerekiyorsa, tüm yük dengeleyiciler ve ilişkili kaynak gruplarının listesini hızlıca almak için bu komutu kullanın.
+>Yük dengeleyicisinin adını belirlemeniz gerekiyorsa, tüm yük dengeleyicilerinin ve ilişkili kaynak gruplarının listesini hızlı bir şekilde almak için bu komutu kullanın.
 >
 >`az network lb list --query "[].{ResourceGroup: resourceGroup, Name: name}"`
 >
@@ -48,31 +48,31 @@ Yalnızca **Azure CLI**ile yük dengeleyici kuralı oluşturmak için tek bir ko
 az network lb rule create --backend-port 40000 --frontend-port 39999 --protocol Tcp --lb-name LB-svcfab3 -g svcfab_cli -n my-app-rule
 ```
 
-Azure CLı komutu, aşağıdaki tabloda açıklanan birkaç parametreye sahiptir:
+Azure CLI komutu aşağıdaki tabloda açıklanan birkaç parametreye sahiptir:
 
 | Parametre | Açıklama |
 | --------- | ----------- |
-| `--backend-port`  | Service Fabric uygulamanın dinlediği bağlantı noktası. |
-| `--frontend-port` | Yük dengeleyicinin dış bağlantılar için sunduğu bağlantı noktası. |
-| `-lb-name` | Değiştirilecek yük dengeleyicinin adı. |
-| `-g`       | Hem yük dengeleyici hem de Service Fabric kümesine sahip olan kaynak grubu. |
-| `-n`       | Kuralın istenen adı. |
+| `--backend-port`  | Service Fabric uygulamasının dinlediği bağlantı noktası. |
+| `--frontend-port` | Yük dengeleyicisinin dış bağlantılar için açığa çıkardığı bağlantı noktası. |
+| `-lb-name` | Değiştirmek için yük dengeleyiciadı. |
+| `-g`       | Hem yük dengeleyicisi hem de Hizmet Kumaşı kümesine sahip kaynak grubu. |
+| `-n`       | Kuralın istenilen adı. |
 
 
 >[!NOTE]
->Azure CLı ile yük dengeleyici oluşturma hakkında daha fazla bilgi için bkz. [Azure CLI ile yük dengeleyici oluşturma](../load-balancer/load-balancer-get-started-ilb-arm-cli.md).
+>Azure CLI ile yük dengeleyicisi oluşturma hakkında daha fazla bilgi için [bkz.](../load-balancer/load-balancer-get-started-ilb-arm-cli.md)
 
 ## <a name="powershell"></a>PowerShell
 
-PowerShell, Azure CLı 'den biraz daha karmaşıktır. Bir kural oluşturmak için bu kavramsal adımları izleyin:
+PowerShell, Azure CLI'den biraz daha karmaşıktır. Bir kural oluşturmak için aşağıdaki kavramsal adımları izleyin:
 
-1. Azure 'dan yük dengeleyiciyi alın.
+1. Yük bakiyesini Azure'dan alın.
 2. Bir kural oluşturun.
-3. Kuralı yük dengeleyiciye ekleyin.
-4. Yük dengeleyiciyi güncelleştirin.
+3. Kuralı yük dengeleyicisine ekleyin.
+4. Yük dengeleyicisini güncelleştirin.
 
 >[!NOTE]
->Yük dengeleyicinin adını belirlemeniz gerekiyorsa, tüm yük dengeleyiciler ve ilişkili kaynak gruplarının listesini hızlıca almak için bu komutu kullanın.
+>Yük bakiyesi sahibinin adını belirlemeniz gerekiyorsa, tüm yük dengeleyicilerinin ve ilişkili kaynak gruplarının listesini hızla almak için bu komutu kullanın.
 >
 >`Get-AzLoadBalancer | Select Name, ResourceGroupName`
 
@@ -93,11 +93,11 @@ $lb.LoadBalancingRules.Add($lbrule)
 $lb | Set-AzLoadBalancer
 ```
 
-`New-AzLoadBalancerRuleConfig` komutuyla ilgili olarak, `-FrontendPort`, yük dengeleyicinin dış bağlantılar için sunduğu bağlantı noktasını temsil eder ve `-BackendPort` Service Fabric uygulamasının dinlediği bağlantı noktasını temsil eder.
+Komutla `New-AzLoadBalancerRuleConfig` ilgili olarak, `-FrontendPort` yük dengeleyicisinin dış bağlantılar için açığa `-BackendPort` çıkardığı bağlantı noktasını ve servis kumaşı uygulamasının dinlediği bağlantı noktasını temsil eder.
 
 >[!NOTE]
->PowerShell ile yük dengeleyici oluşturma hakkında daha fazla bilgi için bkz. [PowerShell ile yük dengeleyici oluşturma](../load-balancer/load-balancer-get-started-ilb-arm-ps.md).
+>PowerShell ile yük dengeleyicisi oluşturma hakkında daha fazla bilgi için [PowerShell ile yük dengeleyicisi oluşturma](../load-balancer/load-balancer-get-started-ilb-arm-ps.md)konusuna bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Service Fabric 'de ağ oluşturma](service-fabric-patterns-networking.md)hakkında daha fazla bilgi edinin.
+[Service Fabric'te ağ ağı](service-fabric-patterns-networking.md)hakkında daha fazla bilgi edinin.

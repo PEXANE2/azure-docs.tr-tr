@@ -1,97 +1,97 @@
 ---
-title: Azure IoT Gezginini yüklemeyi ve kullanmayı | Microsoft Docs
-description: Azure IoT gezgin aracını yükleyip IoT Hub 'ma bağlı IoT Tak ve Kullan önizleme cihazlarıyla etkileşim kurmak için bu aracı kullanın.
+title: Azure IoT gezginini yükleyin ve kullanın | Microsoft Dokümanlar
+description: Azure IoT gezgini aracını yükleyin ve IoT hub'ıma bağlı IoT Tak ve Çalıştır Önizleme aygıtlarıyla etkileşim kurmak için kullanın.
 author: miagdp
 ms.author: miag
 ms.date: 12/27/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: fd180404ca18b5ea84c745a543ae7e87bf16c27d
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 963421fa1ef06599448c9a4197f0d7a6ad2e142d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75529635"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80159192"
 ---
-# <a name="install-and-use-azure-iot-explorer"></a>Azure IoT Gezginini yükleyip kullanma
+# <a name="install-and-use-azure-iot-explorer"></a>Azure IoT gezginini yükleme ve kullanma
 
-Azure IoT Explorer, IoT Tak ve Kullan önizleme cihazlarınızı etkileşimli ve test etmeye yönelik bir grafik aracıdır. Aracı yerel makinenize yükledikten sonra bir cihaza bağlanmak için kullanabilirsiniz. Aracı, cihazın gönderdiği Telemetriyi görüntülemek, cihaz özellikleriyle çalışmak ve komutları çağırmak için kullanabilirsiniz.
+Azure IoT gezgini, IoT Tak ve Çalıştır Önizleme aygıtlarınızla etkileşim kurmak ve test etmek için kullanılan bir grafik aracıdır. Aracı yerel makinenize yükledikten sonra, bir aygıta bağlanmak için kullanabilirsiniz. Aracı, aygıtın gönderdiği telemetriyi görüntülemek, aygıt özellikleriyle çalışmak ve komutları aramak için kullanabilirsiniz.
 
 Bu makale, şunları nasıl yapacağınızı gösterir:
 
-- Azure IoT gezgin aracını yükleyip yapılandırın.
-- Cihazlarınızla etkileşim kurmak ve bunları test etmek için aracını kullanın.
+- Azure IoT gezgini aracını yükleyin ve yapılandırır.
+- Aygıtlarınızla etkileşimkurmak ve test etmek için aracı kullanın.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-Azure IoT gezgin aracını kullanmak için şunlar gerekir:
+Azure IoT gezgini aracını kullanmak için şunları yapmanız gerekir:
 
-- Azure IoT Hub 'ı. Azure aboneliğinize Azure [CLI kullanarak](../iot-hub/iot-hub-create-using-cli.md)IoT Hub 'ı oluşturma gibi bir IoT Hub 'ı eklemenin birçok yolu vardır. Azure IoT gezgin aracını çalıştırmak için IoT Hub bağlantı dizesine ihtiyacınız vardır. Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
-- IoT Hub 'ınıza kayıtlı bir cihaz. Bir cihazı kaydetmek için aşağıdaki Azure CLı komutunu kullanabilirsiniz. `{YourIoTHubName}` ve `{YourDeviceID}` yer tutucuları değerlerinizle değiştirdiğinizden emin olun:
+- Azure IoT hub'ı. [Azure CLI'yi kullanarak IoT hub'ı oluşturma](../iot-hub/iot-hub-create-using-cli.md)gibi Azure aboneliğinize IoT hub'ı eklemenin birçok yolu vardır. Azure IoT gezgini aracını çalıştırmak için IoT hub bağlantı dizesine ihtiyacınız vardır. Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
+- IoT hub'ınıza kayıtlı bir aygıt. Bir aygıtı kaydetmek için aşağıdaki Azure CLI komutunu kullanabilirsiniz. Yer tutucuları `{YourIoTHubName}` değerlerinizle değiştirdiğinizden emin olun: `{YourDeviceID}`
 
     ```azurecli-interactive
     az iot hub device-identity create --hub-name {YourIoTHubName} --device-id {YourDeviceID}
     ```
 
-## <a name="install-azure-iot-explorer"></a>Azure IoT Explorer 'ı yükler
+## <a name="install-azure-iot-explorer"></a>Azure IoT gezginini yükleme
 
-[Azure IoT Explorer sürümleri](https://github.com/Azure/azure-iot-explorer/releases) ' ne gidin ve en son sürümün varlık listesini genişletin. Uygulamanın en son sürümünü indirip yükleyin.
+Azure [IoT gezgini sürümlerine](https://github.com/Azure/azure-iot-explorer/releases) gidin ve en son sürüm için varlık listesini genişletin. Uygulamanın en son sürümünü indirin ve yükleyin.
 
-## <a name="use-azure-iot-explorer"></a>Azure IoT Gezginini Kullanma
+## <a name="use-azure-iot-explorer"></a>Azure IoT gezginini kullanma
 
-Bir cihaz için kendi cihazınızı bağlanabilir veya örnek sanal cihazlarımızın birini kullanabilirsiniz. Sanal cihaz örneğini çalıştırmak için [Bu yönergeleri](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview/iothub_client/samples) izleyin.
+Bir aygıt için, kendi aygıtınızı bağlayabilir veya örnek simüle edilmiş aygıtlarımızdan birini kullanabilirsiniz. Benzetimli aygıt [örneğini](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview/iothub_client/samples) çalıştırmak için bu yönergeleri izleyin.
 
-### <a name="connect-to-your-hub"></a>Hub 'ınıza bağlanın
+### <a name="connect-to-your-hub"></a>Hub'ınıza bağlanma
 
-Azure IoT Gezginini ilk kez çalıştırdığınızda IoT Hub 'ınızın bağlantı dizesi istenir. Bağlantı dizesini ekledikten sonra **Bağlan**' ı seçin. Bağlantı dizesini güncelleştirerek, aracın ayarlarını başka bir IoT Hub 'ına geçiş yapmak için kullanabilirsiniz.
+Azure IoT gezginini ilk çalıştırdığınızda, IoT hub'ınızın bağlantı dizesi istenir. Bağlantı dizesini ekledikten sonra **Bağlan'ı**seçin. Bağlantı dizesini güncelleyerek başka bir IoT hub'ına geçmek için aracın ayarlarını kullanabilirsiniz.
 
-IoT Tak ve Kullan cihazının model tanımı, genel depoda, bir şirket deposunda veya bağlı cihazınızda saklanır. Varsayılan olarak araç, model tanımınızı ortak model deposunda ve bağlı cihazınızda arar. Kaynak ekleyebilir ve kaldırabilir veya **Ayarlar**' da kaynakların önceliğini yapılandırabilirsiniz:
+IoT Tak ve Çalıştır aygıtının model tanımı, genel depoda, şirket deposunda veya bağlı aygıtınızda depolanır. Varsayılan olarak, araç ortak model deposunda ve bağlı aygıtınızda model tanımınızı arar. Kaynak ekleyebilir ve kaldırabilir veya **Ayarlar'daki**kaynakların önceliğini yapılandırabilirsiniz:
 
 Kaynak eklemek için:
 
-1. Git **ayarları**.
-1. **Yeni** ' yi seçin ve kaynağınızı seçin.
-1. Şirket modeli deponuzu ekliyorsanız bağlantı dizesini belirtin.
+1. **Ayarlar'a**gidin.
+1. **Yeni'yi** seçin ve kaynağınızı seçin.
+1. Şirket model deponuzu ekliyorsanız, bağlantı dizesini sağlayın.
 
 Bir kaynağı kaldırmak için:
 
-1. Git **ayarları**.
+1. **Ayarlar'a**gidin.
 1. Kaldırmak istediğiniz kaynağı bulun.
-1. **X** seçimini kaldırmak için seçin. Ortak arabirim tanımları bu depodan geldiği için ortak model deposunu kaldıramazsınız.
+1. Kaldırmak için **X'i** seçin. Ortak arabirim tanımları bu depodan geldiğinden, ortak model deposunu kaldıramazsınız.
 
 Kaynak önceliklerini değiştirin:
 
-Model tanımı kaynaklarından birini, listedeki farklı bir derecelendirmeye sürükleyip bırakabilirsiniz. Bir çakışma varsa, daha yüksek derecelendirici içeren tanım kaynakları, kaynakları daha düşük derecelendirimiyle geçersiz kılar.
+Model tanım kaynaklarından birini listedeki farklı bir sıralamaya sürükleyip bırakabilirsiniz. Bir çakışma varsa, daha yüksek sıralamalara sahip tanım kaynakları daha düşük sıralamalara sahip kaynakları geçersiz kılar.
 
 ### <a name="view-devices"></a>Cihazları görüntüleme
 
-Araç IoT Hub 'ınıza bağlandıktan sonra, IoT Hub 'ınıza kayıtlı cihaz kimliklerini listeleyen **cihazlar** listesi sayfasını görüntüler. Daha fazla bilgi görmek için listedeki herhangi bir girdiyi genişletebilirsiniz.
+Araç IoT hub'ınıza bağlandıktan sonra, IoT hub'ınıza kayıtlı aygıt kimliklerini listeleyen **Cihazlar** listesi sayfasını görüntüler. Daha fazla bilgi görmek için listedeki herhangi bir girişi genişletebilirsiniz.
 
 **Cihazlar** listesi sayfasında şunları yapabilirsiniz:
 
-- Hub 'ınıza yeni bir cihaz kaydetmek için **Ekle** ' yi seçin. Ardından bir cihaz KIMLIĞI girin. Otomatik olarak kimlik doğrulama anahtarları oluşturmak ve hub 'ınız ile bağlantıyı etkinleştirmek için varsayılan ayarları kullanın.
-- Bir cihaz seçin ve ardından bir cihaz kimliğini silmek için **Sil** ' i seçin. Doğru cihaz kimliğini sildiğinizden emin olmak için bu eylemi tamamlamadan önce cihaz ayrıntılarını gözden geçirin.
-- `capabilityID` ve `interfaceID`göre sorgulama. Cihazlarınızı sorgulamak için `capabilityID` ya da `interfaceID` bir parametre olarak ekleyin.
+- Hub'ınıza yeni bir aygıt kaydettirmek için **Ekle'yi** seçin. Ardından bir aygıt kimliği girin. Kimlik doğrulama anahtarlarını otomatik olarak oluşturmak ve hub'ınıza bağlantıyı etkinleştirmek için varsayılan ayarları kullanın.
+- Bir aygıt seçin ve ardından aygıt kimliğini silmek için **Sil'i** seçin. Doğru aygıt kimliğini silediğinizden emin olmak için bu eylemi tamamlamadan önce aygıt ayrıntılarını gözden geçirin.
+- Tarafından `capabilityID` sorgula ve `interfaceID`. Aygıtlarınızı `capabilityID` sorgulamak için parametrenizi veya `interfaceID` parametrenizi ekleyin.
 
-## <a name="interact-with-a-device"></a>Cihazla etkileşim kurma
+## <a name="interact-with-a-device"></a>Bir aygıtla etkileşim
 
-**CIHAZ** **kimliği** sütununda, kayıtlı cihazın ayrıntı sayfasını görüntülemek için bir değer seçin. Her bir cihaz için iki bölüm vardır: **Device** ve **Digital ikizi**.
+**Cihazlar** listesi sayfasında, kayıtlı aygıtın ayrıntı sayfasını görüntülemek için **Aygıt Kimliği** sütunundaki bir değer seçin. Her cihaz için iki bölüm vardır: **Aygıt** ve **Dijital İkiz**.
 
 ### <a name="device"></a>Cihaz
 
-Bu bölüm **cihaz kimliği**, **cihaz ikizi**, **telemetri**, **doğrudan yöntem** ve **buluttan cihaza ileti** sekmelerini içerir.
+Bu bölümde **Aygıt Kimliği,** **Aygıt İkiz,** **Telemetri,** **Doğrudan yöntem** ve **Buluttan cihaza ileti** sekmeleri bulunur.
 
-- [Cihaz kimlik bilgilerini](../iot-hub/iot-hub-devguide-identity-registry.md) **cihaz kimliği** sekmesinden görüntüleyebilir ve güncelleştirebilirsiniz.
-- Device [ikizi](../iot-hub/iot-hub-devguide-device-twins.md) bilgilerine **Device ikizi** sekmesinden erişebilirsiniz.
-- Bir cihaz bağlıysa ve etkin bir şekilde veri [gönderiyorsanız telemetri '](../iot-hub/iot-hub-devguide-messages-read-builtin.md) i **telemetri** sekmesinden görüntüleyebilirsiniz.
-- Doğrudan **Yöntem** sekmesinde cihazda [doğrudan yöntem](../iot-hub/iot-hub-devguide-direct-methods.md) çağırabilirsiniz.
-- Buluttan cihaza **iletiler** sekmesinden [buluta cihaz iletisi](../iot-hub/iot-hub-devguide-messages-c2d.md) gönderebilirsiniz.
+- **Aygıt kimlik** sekmesinde [aygıt kimlik](../iot-hub/iot-hub-devguide-identity-registry.md) bilgilerini görüntüleyebilir ve güncelleştirebilirsiniz.
+- **Aygıt İkiz** sekmesinden [aygıta ikiz](../iot-hub/iot-hub-devguide-device-twins.md) bilgilere erişebilirsiniz.
+- Bir aygıt bağlıysa ve etkin olarak veri gönderiyorsa, **Telemetri** sekmesinde [telemetriyi](../iot-hub/iot-hub-devguide-messages-read-builtin.md) görüntüleyebilirsiniz.
+- **Doğrudan yöntem** sekmesinde cihazda doğrudan bir [yöntem](../iot-hub/iot-hub-devguide-direct-methods.md) çağırabilirsiniz.
+- **Buluttan cihaza iletiler** sekmesinde [buluttan cihaza ileti](../iot-hub/iot-hub-devguide-messages-c2d.md) gönderebilirsiniz.
 
-### <a name="digital-twin"></a>Dijital ikizi
+### <a name="digital-twin"></a>Dijital ikiz
 
-Aracı bir görüntüleme dijital ikizi örneğine yönelik olarak kullanabilirsiniz. IoT Tak ve Kullan cihazında cihaz yetenek modeliyle ilişkili tüm arabirimler aracın bu bölümünde görüntülenir. Karşılık gelen [ıot Tak ve Kullan temel](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL)öğelerini genişletmek için bir arabirim seçin.
+Aracı, aygıtın dijital ikiz örneğini görüntülemek için kullanabilirsiniz. Bir IoT Tak ve Çalıştır aygıtı için, aygıt yetenek modeliyle ilişkili tüm arabirimler aracın bu bölümünde görüntülenir. İlgili [IoT Tak'ını genişletmek ve ilkelleri oynatmak](https://github.com/Azure/IoTPlugandPlay/tree/master/DTDL)için bir arayüz seçin.
 
 ### <a name="interface"></a>Arabirim
 
@@ -99,29 +99,29 @@ Aracı bir görüntüleme dijital ikizi örneğine yönelik olarak kullanabilirs
 
 #### <a name="properties"></a>Özellikler
 
-**Yazılabilir olmayan özellikler** sayfasındaki bir arabirimde tanımlanmış salt okuma özelliklerini görüntüleyebilirsiniz. **Yazılabilir** Özellikler sayfasındaki bir arabirimde tanımlanan yazılabilir özellikleri güncelleştirebilirsiniz:
+**Yazılamaz özellikler** sayfasında bir arabirimde tanımlanan salt okunur özelliklerini görüntüleyebilirsiniz. **Yazılabilir özellikler** sayfasındaki bir arabirimde tanımlanan yazılabilir özellikleri güncelleştirebilirsiniz:
 
-1. **Yazılabilir Özellikler** sayfasına gidin.
-1. Güncelleştirmek istediğiniz özelliğe tıklayın.
-1. Özellik için yeni bir değer girin.
-1. Cihaza gönderilecek yükün önizlemesini görüntüleyin.
-1. Değişikliği gönder.
+1. **Writable özellikleri** sayfasına gidin.
+1. Güncelleştirmek istediğiniz özelliği tıklatın.
+1. Özellik için yeni değeri girin.
+1. Aygıta gönderilmek üzere yükü önizleyin.
+1. Değişikliği gönderin.
 
-Bir değişiklik gönderdikten sonra, güncelleştirme durumunu takip edebilirsiniz: **eşitleniyor**, **başarılı**veya **hata**. Eşitleme tamamlandığında, **bildirilen özellik** sütununda, özelliğinin yeni değerini görürsünüz. Eşitleme tamamlanmadan önce diğer sayfalara gittiğinizde, güncelleştirme tamamlandığında araç sizi size bildirir. Ayrıca, bildirim geçmişini görmek için aracın bildirim merkezini de kullanabilirsiniz.
+Bir değişiklik gönderdikten sonra güncelleştirme durumunu izleyebilirsiniz: **synching,** **başarı**veya **hata**. Sözleç tamamlandığında, **Bildirilen Özellik** sütununda mülkünüzün yeni değerini görürsünüz. Synching tamamlanmadan önce diğer sayfalara gidin, araç güncelleştirme tamamlandığında yine de sizi haber verirken. Bildirim geçmişini görmek için aracın bildirim merkezini de kullanabilirsiniz.
 
 #### <a name="commands"></a>Komutlar
 
-Bir cihaza komut göndermek için, **Komutlar** sayfasına gidin:
+Bir aygıta komut göndermek için **Komutlar** sayfasına gidin:
 
-1. Komut listesinde, tetiklemek istediğiniz komutu genişletin.
+1. Komutlar listesinde, tetiklemek istediğiniz komutu genişletin.
 1. Komut için gerekli değerleri girin.
-1. Cihaza gönderilecek yükün önizlemesini görüntüleyin.
-1. Komutunu gönder.
+1. Aygıta gönderilmek üzere yükü önizleyin.
+1. Komutu gönderin.
 
 #### <a name="telemetry"></a>Telemetri
 
-Seçili arabirime yönelik Telemetriyi görüntülemek için **telemetri** sayfasına gidin.
+Seçili arabirimin telemetrisini görüntülemek için **Telemetri** sayfasına gidin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu nasıl yapılır makalesinde IoT Tak ve Kullan cihazlarınızla etkileşim kurmak için Azure IoT Gezginini yüklemeyi ve kullanmayı öğrendiniz. Önerilen bir sonraki adım [Azure CLI uzantısını yüklemeyi ve kullanmayı](./howto-install-pnp-cli.md)öğreneceksiniz.
+Bu nasıl yapılabilir makalesinde, IoT Tak ve Çalıştır aygıtlarınizle etkileşim kurmak için Azure IoT gezginini nasıl yükleyip kullanacağınızı öğrendiniz. Önerilen bir sonraki adım, [Azure CLI uzantısını nasıl yükleyip kullanacağınızı](./howto-install-pnp-cli.md)öğrenmektir.

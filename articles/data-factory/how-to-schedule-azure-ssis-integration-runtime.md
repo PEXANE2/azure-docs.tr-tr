@@ -1,6 +1,6 @@
 ---
-title: Azure-SSIS Integration Runtime zamanlama
-description: Bu makalede Azure Data Factory kullanılarak Azure-SSIS Integration Runtime başlatma ve durdurma işlemlerinin nasıl planlanmasının nasıl yapılacağı açıklanır.
+title: Azure-SSIS Tümleştirme Tümleştirme Çalışma Süresi nasıl zamanlanır?
+description: Bu makalede, Azure Veri Fabrikası'nı kullanarak Azure-SSIS Tümleştirme Çalışma Zamanı'nın başlangıç ve durdurulmasınasıl zamanlanır.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -14,180 +14,180 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: anandsub
 ms.openlocfilehash: 5263af2708ee30566e90cdf59ef69f52f76a9d32
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75440311"
 ---
-# <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>Azure-SSIS Integration Runtime bir zamanlamaya göre başlatma ve durdurma
-Bu makalede, Azure Data Factory (ADF) kullanılarak Azure-SSIS Integration Runtime (IR) başlatma ve durdurma işlemlerinin nasıl planlanmasının nasıl yapılacağı açıklanır. Azure-SSIS IR, SQL Server Integration Services (SSIS) paketlerini yürütmek için adanmış, ADF işlem kaynağıdır. Azure-SSIS IR çalıştırmak, onunla ilişkili bir maliyettir. Bu nedenle, genellikle yalnızca Azure 'da SSIS paketlerini yürütmeniz gerektiğinde ve artık ihtiyacınız olmadığında IR 'nizi durdurmak istediğinizde IR 'nizi çalıştırmak istersiniz. Ayrıca, [IR 'yi el ile başlatmak veya durdurmak](manage-azure-ssis-integration-runtime.md)Için ADF kullanıcı ARABIRIMI (UI)/app veya Azure PowerShell kullanabilirsiniz.
+# <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>Azure-SSIS Integration Runtime'ı belirli bir zamanlamaya göre başlatma ve durdurma
+Bu makalede, Azure Veri Fabrikası 'nı (ADF) kullanarak Azure-SSIS Tümleştirme Çalışma Zamanı'nın (IR) başlangıç ve durdurma zamanlanması nasıl zamanlanır. Azure-SSIS IR, SQL Server Tümleştirme Hizmetleri (SSIS) paketlerini yürütmek için ayrılmış ADF bilgi işlem kaynağıdır. Azure-SSIS IR'nin çalıştırılanın bununla ilişkili bir maliyeti vardır. Bu nedenle, IR'nizi yalnızca Azure'da SSIS paketlerini yürütmeniz gerektiğinde çalıştırmak ve artık ihtiyacınız olmadığında IR'nizi durdurmak istersiniz. [IR'nizi el ile başlatmak veya durdurmak](manage-azure-ssis-integration-runtime.md)için ADF Kullanıcı Arabirimi (UI)/uygulaması veya Azure PowerShell'i kullanabilirsiniz).
 
-Alternatif olarak, günlük ETL iş yüklerinizi yürütmeden ve bu işlemi tamamladıktan sonra öğleden sonra durdurmadan önce, örneğin günde bir başlangıç yapmak/durdurmak için ADF işlem hatları 'nda Web etkinlikleri oluşturabilirsiniz.  Ayrıca, IR 'nizi başlatan ve durduran iki Web etkinliği arasında bir SSIS paketi yürütme etkinliğini zincirleyebilirsiniz. böylece, IR 'niz, paket yürütmeden önce/sonra isteğe bağlı olarak başlayacak/bu şekilde durdurulur. SSIS paketi yürütme etkinliği hakkında daha fazla bilgi için bkz. [ADF işlem hattı 'NDAKI SSIS paketi yürütme etkinliğini kullanarak SSIS paketi çalıştırma](how-to-invoke-ssis-package-ssis-activity.md) .
+Alternatif olarak, IR'nizi zamanında başlatmak/durdurmak için ADF ardışık işaklerinde Web etkinlikleri oluşturabilir, örneğin günlük ETL iş yüklerinizi çalıştırmadan önce sabah başlatabilir ve yapıldıktan sonra öğleden sonra durdurabilirsiniz.  Ir'nizi başlatan ve durduran iki Web etkinliği arasında bir Execute SSIS Paketi etkinliğini de zincirleyebilirsiniz, böylece IR'niz paket yürütmenizden hemen önce/sonra isteğe bağlı olarak başlar/durur. Execute SSIS Paketi etkinliği hakkında daha fazla bilgi için [bkz.](how-to-invoke-ssis-package-ssis-activity.md)
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Ön koşullar
-Azure-SSIS IR zaten sağlamadıysanız [öğreticideki](tutorial-create-azure-ssis-runtime-portal.md)yönergeleri izleyerek sağlayın. 
+Azure-SSIS IR'nizi zaten sağlamadıysanız, öğreticideki talimatları izleyerek bunu [uygulayın.](tutorial-create-azure-ssis-runtime-portal.md) 
 
-## <a name="create-and-schedule-adf-pipelines-that-start-and-or-stop-azure-ssis-ir"></a>Azure-SSIS IR başlatılan ve durduran ADF işlem hatlarını oluşturma ve zamanlama
-Bu bölümde, Azure-SSIS IR zamanlamaya göre başlatmak/durdurmak için Web etkinliklerinin nasıl kullanılacağı ve isteğe bağlı olarak & başlatılması gösterilmektedir. Üç işlem hattı oluşturmak için size kılavuzluk ederiz: 
+## <a name="create-and-schedule-adf-pipelines-that-start-and-or-stop-azure-ssis-ir"></a>Azure-SSIS IR'yi başlatan ve durduran ADF ardışık hatlar oluşturma ve zamanlama
+Bu bölümde, Azure-SSIS IR'nizi zamanında başlatmak/durdurmak veya isteğe bağlı olarak durdurmak & başlatmak için ADF ardışık işdizilerinde Web etkinliklerini nasıl kullanacağınızı gösterir. Üç boru hattı oluşturmanız için size rehberlik edeceğiz: 
 
-1. İlk işlem hattı, Azure-SSIS IR Başlatan bir Web etkinliği içerir. 
-2. İkinci işlem hattı, Azure-SSIS IR durduran bir Web etkinliği içerir.
-3. Üçüncü işlem hattı, Azure-SSIS IR başlayan/durduran iki Web etkinliği arasında zincirleme bir SSIS paketi yürütme etkinliği içerir. 
+1. İlk ardışık iş, Azure-SSIS IR'nizi başlatan bir Web etkinliği içerir. 
+2. İkinci ardışık alan, Azure-SSIS IR'nizi durduran bir Web etkinliği içerir.
+3. Üçüncü ardışık iş, Azure-SSIS IR'nizi başlatan/durduran iki Web etkinliği arasında zincirlenmiş bir Execute SSIS Paketi etkinliği içerir. 
 
-Bu işlem hatlarını oluşturup test ettikten sonra, bir zamanlama tetikleyicisi oluşturabilir ve bunu herhangi bir ardışık düzen ile ilişkilendirebilirsiniz. Zamanlama tetikleyicisi, ilişkili ardışık düzeni çalıştırmaya yönelik bir zamanlama tanımlar. 
+Bu ardışık lıkları oluşturduktan ve test ettikten sonra, bir zamanlama tetikleyicisi oluşturabilir ve herhangi bir ardışık lıkla ilişkilendirebilirsiniz. Zamanlama tetikleyicisi ilişkili ardışık alanı çalıştırmak için bir zamanlama tanımlar. 
 
-Örneğin, ilki 6 ' da günlük çalışacak şekilde zamanlanır ve birinci işlem hattı ile ilişkilendirilirken ikinci diğeri 6 PM 'de günlük çalışacak şekilde zamanlanır ve ikinci işlem hattı ile ilişkilendirilir.  Bu şekilde, IR 'nin çalıştığı her gün, günlük ETL iş yüklerinizi yürütmeye hazırlamak için 6 ila 6 saat arasında bir süre vardır.  
+Örneğin, iki tetikleyici oluşturabilirsiniz, ilki günlük olarak 6 ve ilk ardışık durumla ilişkili olarak zamanlanırken, ikincisi günlük olarak 18:00'de çalışacak ve ikinci ardışık alanla ilişkili olarak zamanlanır.  Bu şekilde, IR'niz çalışırken her gün 06:00 ile 18:00 arasında günlük ETL iş yüklerinizi çalıştırmaya hazır bir süreniz vardır.  
 
-Her gün gece yarısı çalışacak şekilde zamanlanan ve üçüncü işlem hattı ile ilişkilendirilen üçüncü bir tetikleyici oluşturursanız, bu işlem hattı her gün gece yarısı çalışır, yalnızca paket yürütmeden önce, daha sonra paketinizi yürütmeden ve hemen paket yürütmeden hemen sonra IR 'niz durduruluyor, bu nedenle IR 'niz bu şekilde çalışmıyor.
+Her gün gece yarısı çalışması planlanan ve üçüncü ardışık işlem le ilişkili üçüncü bir tetikleyici oluşturursanız, bu ardışık işlem her gün gece yarısı çalışır, paket yürütülmesinden hemen önce IR'nizi başlatır, ardından paketinizi çalıştırır ve hemen paket yürütülmesinden hemen sonra IR'nizi durdurur, böylece IR'niz boş çalışmaz.
 
-### <a name="create-your-adf"></a>ADF 'nizi oluşturma
+### <a name="create-your-adf"></a>ADF'nizi oluşturun
 
-1. [Azure portalda](https://portal.azure.com/) oturum açın.    
+1. [Azure portalında](https://portal.azure.com/)oturum açın.    
 2. Soldaki menüde **Yeni**, **Veri + Analiz** ve **Data Factory** öğesine tıklayın. 
    
    ![Yeni->DataFactory](./media/tutorial-create-azure-ssis-runtime-portal/new-data-factory-menu.png)
    
-3. **Yeni Veri Fabrikası** sayfasında ad Için **Myazuressisdatafactory** **adını**girin. 
+3. Yeni **veri fabrikası** sayfasına, **MyAzureSsisDataFactory** for **Name'i**girin. 
       
    ![Yeni veri fabrikası sayfası](./media/tutorial-create-azure-ssis-runtime-portal/new-azure-data-factory.png)
  
-   ADF 'nizin adı genel olarak benzersiz olmalıdır. Aşağıdaki hatayı alırsanız ADF 'nizin adını (ör. yournameMyAzureSsisDataFactory) değiştirin ve yeniden oluşturmayı deneyin. ADF yapıtları için adlandırma kuralları hakkında bilgi edinmek için [Data Factory adlandırma kuralları](naming-rules.md) makalesine bakın.
+   ADF'nizin adı genel olarak benzersiz olmalıdır. Aşağıdaki hatayı alırsanız, ADF'nizin adını (örn. adınızMyAzureSsisDataFactory) değiştirin ve yeniden oluşturmayı deneyin. Bkz. [Veri Fabrikası -](naming-rules.md) ADF yapıtlarının adlandırma kuralları hakkında bilgi edinmek için Adlandırma Kuralları makalesi.
   
    `Data factory name MyAzureSsisDataFactory is not available`
       
-4. ADF 'nizi oluşturmak istediğiniz Azure **aboneliğinizi** seçin. 
+4. ADF'nizi oluşturmak istediğiniz Azure **Aboneliğinizi** seçin. 
 5. **Kaynak Grubu** için aşağıdaki adımlardan birini uygulayın:
      
    - **Var olanı kullan**’ı seçin ve ardından açılır listeden var olan bir kaynak grubu belirleyin. 
-   - **Yeni oluştur**' u seçin ve yeni kaynak grubunuzun adını girin.   
+   - **Yeni Oluştur'u**seçin ve yeni kaynak grubunuzun adını girin.   
          
-   Kaynak grupları hakkında bilgi edinmek için bkz. [Azure kaynaklarınızı yönetmek için kaynak gruplarını kullanma](../azure-resource-manager/management/overview.md) makalesi.
+   Kaynak grupları hakkında bilgi edinmek için Azure [kaynakları makalenizi yönetmek için kaynak gruplarını kullanma'ya](../azure-resource-manager/management/overview.md) bakın.
    
-6. **Sürüm**için **v2** 'yi seçin.
-7. **Konum**için, açılır listeden ADF oluşturma için desteklenen konumlardan birini seçin.
+6. **Sürüm**için **V2'yi** seçin.
+7. **Konum**için açılan listeden ADF oluşturma için desteklenen konumlardan birini seçin.
 8. **Panoya sabitle**’yi seçin.     
-9. **Oluştur**'a tıklayın.
-10. Azure panosu 'nda şu durum ile şu kutucuğu görürsünüz: **dağıtım Data Factory**. 
+9. **Oluştur'u**tıklatın.
+10. Azure panosunda, durumiçeren aşağıdaki döşemeyi görürsünüz: **Veri Fabrikası'nı dağıtma.** 
 
     ![veri fabrikası dağıtılıyor kutucuğu](media/tutorial-create-azure-ssis-runtime-portal/deploying-data-factory.png)
    
-11. Oluşturma işlemi tamamlandıktan sonra, ADF sayfanıza aşağıda gösterildiği gibi bakabilirsiniz.
+11. Oluşturma tamamlandıktan sonra, ADF sayfanızı aşağıda gösterildiği gibi görebilirsiniz.
    
     ![Data factory giriş sayfası](./media/tutorial-create-azure-ssis-runtime-portal/data-factory-home-page.png)
    
-12. ADF Kullanıcı arabirimini/uygulamayı ayrı bir sekmede başlatmak için **& Izleyiciyi yaz** ' a tıklayın.
+12. ADF Kullanıcı İyiu/uygulamasını ayrı bir sekmede başlatmak için **Yazar & Monitör'ü** tıklatın.
 
-### <a name="create-your-pipelines"></a>İşlem hatlarınızı oluşturun
+### <a name="create-your-pipelines"></a>Boru hatlarınızı oluşturun
 
-1. **Haydi başlayalım** sayfasında Işlem **hattı oluştur**' u seçin. 
+1. **Başlatalım** **sayfasında, ardışık hat oluştur'u**seçin. 
 
    ![Başlarken sayfası](./media/how-to-schedule-azure-ssis-integration-runtime/get-started-page.png)
    
-2. **Etkinlikler** araç kutusunda **genel** menü ' i genişletin ve bir **Web** etkinliğini ardışık düzen Tasarımcısı yüzeyine bırakın & sürükleyin. Etkinlik özellikleri penceresinin **genel** sekmesinde, etkinlik adını **startmyar**olarak değiştirin. **Ayarlar** sekmesine geçin ve aşağıdaki eylemleri yapın.
+2. **Etkinlikler** araç kutusunda, **Genel** menüyü genişletin ve bir **Web** etkinliğini boru hattı tasarımcısı yüzeyine & sürükleyin. Etkinlik özellikleri penceresinin **Genel** sekmesinde, **miyir başlatmak**için etkinlik adını değiştirin. **Ayarlar** sekmesine geçin ve aşağıdaki işlemleri yapın.
 
-    1. **URL**için, `{subscriptionId}`Azure-SSIS IR başlayan REST API için aşağıdaki URL 'yi girin: `{factoryName}`, `{resourceGroupName}`, `{integrationRuntimeName}` ve `https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/start?api-version=2018-06-01`, IR 'nizin gerçek değerleriyle değiştirin: & Alternatif olarak, yukarıdaki URL 'nin aşağıdaki kısmını değiştirmek IÇIN, IR 'NIZIN kaynak kimliğini ADF Kullanıcı arabirimi/uygulama üzerindeki izleme sayfasından da kopyalayabilir `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}` yapıştırabilirsiniz:
+    1. **URL**için, Azure-SSIS IR'yi başlatan REST API `{subscriptionId}`için `{resourceGroupName}` `{factoryName}`aşağıdaki `{integrationRuntimeName}` URL'yi girin, IR'nizin gerçek değerlerini değiştirerek, ve IR'nizin gerçek değerleriyle birlikte: `https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/start?api-version=2018-06-01` Alternatif olarak, yukarıdaki URL'nin aşağıdaki bölümünü değiştirmek için Ir'nizin kaynak kimliğini ADF Kullanıcı Arabirimi/uygulamasındaki izleme sayfasından kopyalayabilir & yapıştırabilirsiniz:`/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}`
     
-       ![ADF SSIS IR kaynak KIMLIĞI](./media/how-to-schedule-azure-ssis-integration-runtime/adf-ssis-ir-resource-id.png)
+       ![ADF SSIS IR Kaynak Kimliği](./media/how-to-schedule-azure-ssis-integration-runtime/adf-ssis-ir-resource-id.png)
   
-    2. **Yöntemi**için **gönderi**' ı seçin. 
-    3. **Gövde**için `{"message":"Start my IR"}`girin. 
-    4. **Kimlik doğrulaması**IÇIN, ADF 'niz için yönetilen kimliği kullanmak üzere **MSI** ' yi seçin. daha fazla bilgi için bkz. [Data Factory için yönetilen kimlik](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity) makalesi.
-    5. **Kaynak**için `https://management.azure.com/`girin.
+    2. **Yöntem**için **POST'u**seçin. 
+    3. **Vücut**için `{"message":"Start my IR"}`, girin . 
+    4. **Kimlik Doğrulama**için, ADF'nizin yönetilen kimliğini kullanmak için **MSI'ı** seçin, daha fazla bilgi [için Veri Fabrikası için Yönetilen kimlik](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity) makalesine bakın.
+    5. **Kaynak**için `https://management.azure.com/`, girin .
     
-       ![ADF Web etkinlik zamanlaması SSIS IR](./media/how-to-schedule-azure-ssis-integration-runtime/adf-web-activity-schedule-ssis-ir.png)
+       ![ADF Web Etkinlik Programı SSIS IR](./media/how-to-schedule-azure-ssis-integration-runtime/adf-web-activity-schedule-ssis-ir.png)
   
-3. İkinci bir tane oluşturmak için ilk işlem hattını klonlayın, etkinlik adını **Stopmyır** olarak değiştirin ve aşağıdaki özellikleri değiştirin.
+3. İkinci bir tane oluşturmak için ilk ardışık lığı klonlayarak, etkinlik adını **durdurup MyIR'ı durdurun** ve aşağıdaki özellikleri değiştirin.
 
-    1. **URL**için, Azure-SSIS IR durduran REST API, `{subscriptionId}`, `{resourceGroupName}`, `{factoryName}`ve `{integrationRuntimeName}`, IR 'nizin gerçek değerleriyle değiştirerek aşağıdaki URL 'yi girin: `https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/stop?api-version=2018-06-01`
+    1. **URL**için, Azure-SSIS IR'yi durduran REST API `{subscriptionId}` `{resourceGroupName}`için `{factoryName}`aşağıdaki `{integrationRuntimeName}` URL'yi girin, IR'nizin gerçek değerlerini değiştirin ve değiştirin:`https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataFactory/factories/{factoryName}/integrationRuntimes/{integrationRuntimeName}/stop?api-version=2018-06-01`
     
-    2. **Gövde**için `{"message":"Stop my IR"}`girin. 
+    2. **Vücut**için `{"message":"Stop my IR"}`, girin . 
 
-4. Üçüncü bir işlem hattı oluşturun, **Eylemler** araç kutusundan bir **SSIS paketi yürütme** etkinliğini bir işlem hattı Tasarımcısı yüzeyine bırakın & SÜRÜKLEYIP, [ADF makalesinde SSIS paketi yürütme etkinliğini kullanarak SSIS paketini çağırma](how-to-invoke-ssis-package-ssis-activity.md) bölümündeki yönergeleri izleyerek yapılandırın.  Alternatif olarak, bir **saklı yordam** etkinliği kullanarak, [ADF makalesinde saklı yordam ETKINLIĞINI kullanarak bir SSIS paketini çağırma](how-to-invoke-ssis-package-stored-procedure-activity.md) bölümündeki yönergeleri izleyerek yapılandırabilirsiniz.  Ardından, ilk/ikinci işlem hatlarındaki bu Web etkinliklerine benzer şekilde, IR 'yi Başlatan/durduran iki Web etkinliği arasında Execute SSIS Package/saklı yordam etkinliğini zincirler.
+4. Üçüncü bir ardışık kaynak oluştur, Bir **Execute SSIS Paketi** etkinliğini **Etkinlikler** araç kutusundan boru hattı tasarımcısı yüzeyine & sürükleyin ve [ADF makalesinde SSIS Paketini Yürüt'ünü kullanarak Bir SSIS paketini çağır'daki](how-to-invoke-ssis-package-ssis-activity.md) yönergeleri izleyerek yapılandırın.  Alternatif olarak, bunun yerine Bir **Saklı** Yordam etkinliği kullanabilir ve [ADF makalesinde Depolanan Yordam etkinliğini kullanarak bir SSIS paketindeki](how-to-invoke-ssis-package-stored-procedure-activity.md) yönergeleri izleyerek yapılandırabilirsiniz.  Ardından, SSIS Paketini/Depolanmış Yordametkinliğini, birinci/ikinci ardışık işlemlerdeki Web etkinliklerine benzer şekilde IR'nizi başlatan/durduran iki Web etkinliği arasında zincirleyin.
 
-   ![Istek üzerine ADF Web etkinliği, SSIS IR](./media/how-to-schedule-azure-ssis-integration-runtime/adf-web-activity-on-demand-ssis-ir.png)
+   ![ADF Web Etkinliği İsteğe Bağlı SSIS IR](./media/how-to-schedule-azure-ssis-integration-runtime/adf-web-activity-on-demand-ssis-ir.png)
 
-5. ADF, **katkıda** bulunan bir rolün yönetilen kimliğini kendisine atayın. böylece, işlem hatlarında Web etkinlikleri, sağlanan Azure-SSIS IRS 'yi başlatmak/durdurmak için REST API çağırabilir.  Azure portal ADF sayfanızda, **erişim denetimi (IAM)** öğesine tıklayın, **+ rol ataması Ekle**' ye tıklayın ve ardından **rol ataması Ekle** dikey penceresinde aşağıdaki eylemleri yapın.
+5. ADF'niz için yönetilen kimliği kendisine **bir Katılımcı** rolü atayın, böylece boru hatlarındaki Web etkinlikleri, içinde bulunan Azure-SSIS IR'lerini başlatmak/durdurmak için REST API'sini arayabilir.  Azure portalındaki ADF sayfanızda **Access denetimi (IAM) ,+** **Rol ataması ekle'yi**tıklatın ve ardından rol atama bıçağı ekle'yi tıklatın ve ardından rol atama bıçağı **ekle'de** aşağıdaki işlemleri yapın.
 
-    1. **Rol**Için **katkıda bulunan**' ı seçin. 
-    2. **Erişim atama**Için, **Azure AD Kullanıcı, Grup veya hizmet sorumlusu**' nı seçin. 
-    3. **Seç**için ADF adınızı arayın ve seçin. 
-    4. **Save (Kaydet)** düğmesine tıklayın.
+    1. **Rol** **için, Katkıda Bulunan'ı**seçin. 
+    2. **Erişim atamak için** **Azure AD kullanıcısı, grubu veya hizmet sorumlusunu**seçin. 
+    3. **Select**için, ADF adınızı arayın ve seçin. 
+    4. **Kaydet**'e tıklayın.
     
-   ![ADF yönetilen kimlik rolü ataması](./media/how-to-schedule-azure-ssis-integration-runtime/adf-managed-identity-role-assignment.png)
+   ![ADF Yönetilen Kimlik Rol Atama](./media/how-to-schedule-azure-ssis-integration-runtime/adf-managed-identity-role-assignment.png)
 
-6. Fabrika/ardışık düzen araç çubuğunda **Tümünü doğrula/Doğrula ' ya** tıklayarak ADF ve tüm işlem hattı ayarlarınızı doğrulayın. **>>** düğmesine tıklayarak **fabrika/Işlem hattı doğrulama çıkışını** kapatın.  
+6. Fabrika/boru hattı araç çubuğundaki **Tümlerini Doğrula/Doğrula'yı** tıklatarak ADF'nizi ve tüm boru hattı ayarlarınızı doğrulayın. Düğmeyi tıklatarak **Fabrika/Boru Hattı Doğrulama Çıktısını** **>>** kapatın.  
 
    ![İşlem hattını doğrulama](./media/how-to-schedule-azure-ssis-integration-runtime/validate-pipeline.png)
 
-### <a name="test-run-your-pipelines"></a>İşlem hatlarınızı test edin
+### <a name="test-run-your-pipelines"></a>Boru hatlarınızı test edin
 
-1. Her işlem hattı için araç çubuğunda **test çalıştırması** ' nı seçin ve alt bölmedeki **Çıkış** penceresi ' ni görüntüleyin. 
+1. Her ardışık alan için araç çubuğunda **Test Çalıştır'ı** seçin ve alt bölmedeki **Çıktı** penceresine bakın. 
 
-   ![Test çalıştırması](./media/how-to-schedule-azure-ssis-integration-runtime/test-run-output.png)
+   ![Test Çalıştır](./media/how-to-schedule-azure-ssis-integration-runtime/test-run-output.png)
     
-2. Üçüncü işlem hattını test etmek için SQL Server Management Studio başlatın (SSMS). **Sunucuya Bağlan** penceresinde aşağıdaki eylemleri yapın. 
+2. Üçüncü ardışık hattı test etmek için SQL Server Management Studio'yu (SSMS) başlatın. **Sunucuya Bağlan** penceresinde aşağıdaki işlemleri yapın. 
 
-    1. **Sunucu adı**IÇIN **Azure SQL veritabanı sunucunuzun adını&lt;girin&gt;. Database.Windows.net**.
-    2. **> > seçeneklerini**belirleyin.
-    3. **Veritabanına Bağlan**Için **SSISDB**' yi seçin.
+    1. **Sunucu adı için**Azure SQL Veritabanı sunucu adınızı ** &lt;&gt;.database.windows.net**girin.
+    2. **Seçenekler >>'yi **seçin.
+    3. **Veritabanına Bağlan**için **SSISDB'yi**seçin.
     4. **Bağlan**’ı seçin. 
-    5.  -> **Sssısdb** ->, SSIS proje-> **paketleriniz**>, ssıs **projeniz->** **Tümleştirme Hizmetleri katalogları** ' nı genişletin. 
-    6. Çalıştırmak için belirtilen SSIS paketine sağ tıklayın ve **raporlar** -> **Standart raporlar** -> **Tüm yürütmeler**' i seçin. 
-    7. Çalıştığını doğrulayın. 
+    5. **Entegrasyon Hizmetleri Kataloglarını** -> Genişlet**SSISDB** -> Klasörünüz -> **Projeleri** -> SSIS projeniz -> **Paketleri.** 
+    6. Çalıştırmak için belirtilen SSIS paketini sağ tıklatın ve**Tüm Yürütmeleri** **Raporlar** -> Standart**Raporlar'ı** -> seçin. 
+    7. Koştukuzun doğrula. 
 
-   ![SSIS paketi çalıştırmasını doğrula](./media/how-to-schedule-azure-ssis-integration-runtime/verify-ssis-package-run.png)
+   ![SSIS paket çalışmasını doğrulayın](./media/how-to-schedule-azure-ssis-integration-runtime/verify-ssis-package-run.png)
 
-### <a name="schedule-your-pipelines"></a>İşlem hatlarınızı zamanlama
+### <a name="schedule-your-pipelines"></a>Boru hatlarınızı zamanlama
 
-İşlem hatlarınız beklediğiniz gibi çalışmadığına göre, bunları belirtilen bir noktada çalıştırmak için Tetikleyiciler de oluşturabilirsiniz. Tetikleyicileri işlem hatlarıyla ilişkilendirme hakkında ayrıntılar için bkz. [bir zamanlama](quickstart-create-data-factory-portal.md#trigger-the-pipeline-on-a-schedule) makalesinde Işlem hattını tetikleme.
+Artık ardışık ardışık hatlarınız beklediğiniz gibi çalıştığına göre, bunları belirtilen cadences'de çalıştırmak için tetikleyiciler oluşturabilirsiniz. Tetikleyicileri ardışık hatlarla ilişkilendirme hakkında ayrıntılar için, [bir zamanlama makalesinde ardışık programı tetikle'ye](quickstart-create-data-factory-portal.md#trigger-the-pipeline-on-a-schedule) bakın.
 
-1. İşlem hattı araç çubuğunda **tetikleyici** ' i seçin ve **Yeni/Düzenle**' yi seçin. 
+1. Ardışık takım çubuğunda **Tetikle'yi** seçin ve **Yeni/Edit'i**seçin. 
 
-   ![Tetikleyici-> Yeni/Düzenle](./media/how-to-schedule-azure-ssis-integration-runtime/trigger-new-menu.png)
+   ![Tetikleyici -> Yeni/Edit](./media/how-to-schedule-azure-ssis-integration-runtime/trigger-new-menu.png)
 
-2. **Tetikleyici Ekle** bölmesinde **+ Yeni**' yi seçin.
+2. **Tetikleyiciekle** bölmesinde + **Yeni'** yi seçin.
 
-   ![Tetikleyici Ekle-yeni](./media/how-to-schedule-azure-ssis-integration-runtime/add-triggers-new.png)
+   ![Tetikleyici Ekle - Yeni](./media/how-to-schedule-azure-ssis-integration-runtime/add-triggers-new.png)
 
-3. **Yeni tetikleyici** bölmesinde aşağıdaki eylemleri yapın: 
+3. **Yeni Tetikleyici** bölmesinde aşağıdaki eylemleri yapın: 
 
-    1. **Ad**için tetikleyici için bir ad girin. Aşağıdaki örnekte **günlük Çalıştır** tetikleyici adıdır. 
-    2. **Tür**için **zamanlama**' yı seçin. 
-    3. **Başlangıç tarihi (UTC)** IÇIN, UTC olarak bir başlangıç tarihi ve saati girin. 
-    4. **Yinelenme**için, tetikleyici için bir temposunda girin. Aşağıdaki örnekte, **günlük** olarak bir kez kullanılır. 
-    5. **Son**için **Hayır** ' ı seçin veya **Tarih '** i seçtikten sonra bitiş tarihi ve saati girin. 
-    6. ADF ayarlarını tamamen yayımladıktan sonra tetikleyiciyi etkinleştirmek için **etkinleştirildi** ' i seçin. 
-    7. **İleri**’yi seçin.
+    1. **Ad**için, tetikleyici için bir ad girin. Aşağıdaki örnekte, **Run daily** tetikleyici adıdır. 
+    2. **Türü**için , **Zamanlama'yı**seçin. 
+    3. **Başlangıç Tarihi (UTC)** için UTC'ye bir başlangıç tarihi ve saati girin. 
+    4. **Yineleme**için, tetikleyici için bir cadence girin. Aşağıdaki örnekte, bir kez **Günlük.** 
+    5. **Bitiş için,** **Bitiş Yok'u** seçin veya **Tarih'i**seçtikten sonra bitiş tarihi ve saati girin. 
+    6. Tüm ADF ayarlarını yayımladıktan hemen sonra tetikleyiciyi etkinleştirmek için **Etkin'i** seçin. 
+    7. **Sonraki'ni**seçin.
 
-   ![Tetikleyici-> Yeni/Düzenle](./media/how-to-schedule-azure-ssis-integration-runtime/new-trigger-window.png)
+   ![Tetikleyici -> Yeni/Edit](./media/how-to-schedule-azure-ssis-integration-runtime/new-trigger-window.png)
     
-4. **Tetikleyici çalıştırma parametreleri** sayfasında, tüm uyarıları gözden geçirin ve **son**' u seçin. 
-5. Tüm ADF ayarlarını fabrika araç çubuğundan **Yayımla** ' yı seçerek yayımlayın. 
+4. **Tetikleyici Çalıştır Parametreleri** sayfasında, herhangi bir uyarıyı gözden geçirin ve **Finish'i**seçin. 
+5. Tümünü fabrika araç çubuğunda **Yayımla'yı** seçerek tüm ADF ayarlarını yayımlayın. 
 
-   ![Tümünü Yayımla](./media/how-to-schedule-azure-ssis-integration-runtime/publish-all.png)
+   ![Tümlerini Yayınla](./media/how-to-schedule-azure-ssis-integration-runtime/publish-all.png)
 
-### <a name="monitor-your-pipelines-and-triggers-in-azure-portal"></a>Azure portal işlem hatlarınızı ve tetiklerinizi izleyin
+### <a name="monitor-your-pipelines-and-triggers-in-azure-portal"></a>Azure portalında boru hatlarınızı ve tetikleyicilerinizi izleyin
 
-1. Tetikleyici çalıştırmalarını ve işlem hattı çalıştırmalarını izlemek için ADF Kullanıcı arabirimi/uygulamanın solundaki **izleyici** sekmesini kullanın. Ayrıntılı adımlar için bkz. işlem [hattı izleme](quickstart-create-data-factory-portal.md#monitor-the-pipeline) makalesi.
+1. Tetikleyici çalıştırmaları ve ardışık hatlar çalıştırmalarını izlemek için ADF Kullanıcı Birası/uygulamasının solundaki **Monitör** sekmesini kullanın. Ayrıntılı adımlar için [bkz.](quickstart-create-data-factory-portal.md#monitor-the-pipeline)
 
    ![İşlem hattı çalıştırmaları](./media/how-to-schedule-azure-ssis-integration-runtime/pipeline-runs.png)
 
-2. Bir Işlem hattı çalıştırmasıyla ilişkili etkinlik çalıştırmalarını görüntülemek için **Eylemler** sütunundaki ilk bağlantıyı (**etkinlik çalıştırmalarını görüntüle**) seçin. Üçüncü işlem hattı için, bir işlem hattındaki her zincirleme etkinlik (IR 'yi başlatmak için Web etkinliği, paketinizi yürütmek için saklı yordam etkinliği ve IR 'nizi durdurmak için Web etkinliği) için bir tane olmak üzere üç etkinlik çalıştırması görürsünüz. İşlem hattı çalıştırmalarını yeniden görüntülemek için üstteki işlem **hatları** bağlantısını seçin.
+2. Bir dizi adlı diziyle ilişkin etkinlik çalışanını günü günü günü günü bulunmak için, **Eylemler** sütunundaki ilk**View Activity Runs** Üçüncü ardışık işlem için, ardışık işlem deki her zincirleme etkinlik için bir tane olmak üzere üç etkinlik çalıştırır (IR'nizi başlatmak için Web etkinliği, paketinizi çalıştırmak için Depolanmış Yordam etkinliği ve IR'nizi durdurmak için Web etkinliği). Ardışık listenin yeniden çalıştığını görmek için, en üstteki **Boru Hatları** bağlantısını seçin.
 
    ![Etkinlik çalıştırmaları](./media/how-to-schedule-azure-ssis-integration-runtime/activity-runs.png)
 
-3. Tetikleyici çalıştırmalarını görüntülemek için en üstteki işlem **hattı çalıştırmaları** altında bulunan açılan listeden **tetikleme çalıştırmaları** ' nı seçin. 
+3. Tetikleyici çalışır görüntülemek için, üstteki **Pipeline Runs** altında açılan listeden **Tetik Çalışır'ı** seçin. 
 
    ![Tetikleyici çalıştırmaları](./media/how-to-schedule-azure-ssis-integration-runtime/trigger-runs.png)
 
-### <a name="monitor-your-pipelines-and-triggers-with-powershell"></a>İşlem hatlarınızı ve tetiklerinizi PowerShell ile izleme
+### <a name="monitor-your-pipelines-and-triggers-with-powershell"></a>PowerShell ile boru hatlarınızı ve tetikleyicilerinizi izleyin
 
-İşlem hatlarınızı ve tetiklerinizi izlemek için aşağıdaki örneklerde olduğu gibi betikler kullanın.
+Ardışık hatlarınızı ve tetikleyicilerinizi izlemek için aşağıdaki örneklerdeki gibi komut dosyalarını kullanın.
 
-1. İşlem hattı çalıştırmasının durumunu alır.
+1. Bir boru hattı çalıştırının durumunu alın.
 
    ```powershell
    Get-AzDataFactoryV2PipelineRun -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -PipelineRunId $myPipelineRun
@@ -199,7 +199,7 @@ Her gün gece yarısı çalışacak şekilde zamanlanan ve üçüncü işlem hat
    Get-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name  "myTrigger"
    ```
 
-3. Tetikleyici çalıştırmasının durumunu alır.
+3. Tetikleyici çalıştırma durumunu alın.
 
    ```powershell
    Get-AzDataFactoryV2TriggerRun -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -TriggerName "myTrigger" -TriggerRunStartedAfter "2018-07-15" -TriggerRunStartedBefore "2018-07-16"
@@ -207,69 +207,69 @@ Her gün gece yarısı çalışacak şekilde zamanlanan ve üçüncü işlem hat
 
 ## <a name="create-and-schedule-azure-automation-runbook-that-startsstops-azure-ssis-ir"></a>Azure-SSIS IR'yi başlatan/durduran Azure Otomasyonu runbook'unu oluşturma ve zamanlama
 
-Bu bölümde, PowerShell betiğini yürüten Azure Otomasyonu runbook 'u oluşturmayı, Azure-SSIS IR bir zamanlamaya göre başlatmayı/durdurmayı öğreneceksiniz.  Bu, ön/son işleme için IR 'nizi başlattıktan veya durdurmadan önce ek betikler yürütmek istediğinizde yararlıdır.
+Bu bölümde, PowerShell komut dosyasını çalıştıran ve Azure-SSIS IR'nizi bir zamanlamada başlatma/durdurma yı öğrenen Azure Otomasyon runbook'u oluşturmayı öğreneceksiniz.  Bu, ön/post-processing için IR'nizi başlatmadan/durdurduktan sonra/başlatmadan/durdurduktan sonra ek komut dosyaları yürütmek istediğinizde kullanışlıdır.
 
-### <a name="create-your-azure-automation-account"></a>Azure Otomasyonu hesabınızı oluşturun
+### <a name="create-your-azure-automation-account"></a>Azure Otomasyon hesabınızı oluşturun
 
-Zaten bir Azure Otomasyonu hesabınız yoksa, bu adımdaki yönergeleri izleyerek bir tane oluşturun. Ayrıntılı adımlar için bkz. [Azure Otomasyonu hesabı oluşturma](../automation/automation-quickstart-create-account.md) makalesi. Bu adımın bir parçası olarak, bir **Azure farklı çalıştır** hesabı (Azure Active Directory bir hizmet sorumlusu) oluşturup Azure aboneliğinizde **katkıda** bulunan bir rol atamanız gerekir. Azure SSIS IR ile ADF 'nizi içeren aboneliğin aynı olduğundan emin olun. Azure Otomasyonu, Azure Resource Manager kimlik doğrulamak ve kaynaklarınızın üzerinde çalışmak için bu hesabı kullanır. 
+Zaten bir Azure Otomasyon hesabınız yoksa, bu adımdaki yönergeleri izleyerek bir hesap oluşturun. Ayrıntılı adımlar için [bkz.](../automation/automation-quickstart-create-account.md) Bu adımın bir parçası olarak, bir **Azure Run As** hesabı (Azure Etkin Dizininizde bir hizmet yöneticisi) oluşturur ve Azure aboneliğinizde bir **Katılımcı** rolü atarsınız. Azure SSIS IR ile ADF'nizi içeren abonelikten emin olun. Azure Otomasyonu bu hesabı Azure Kaynak Yöneticisi'ne kimlik doğrulamak ve kaynaklarınızı çalıştırmak için kullanır. 
 
-1. **Microsoft Edge** veya **Google Chrome** web tarayıcısını açın. Şimdilik, ADF Kullanıcı arabirimi/uygulama yalnızca Microsoft Edge ve Google Chrome Web tarayıcılarında desteklenir.
-2. [Azure portalda](https://portal.azure.com/) oturum açın.    
-3. Sol menüden **Yeni** ' yi seçin, **izleme ve yönetim**' yi seçin ve **Otomasyon**' u seçin. 
+1. **Microsoft Edge** veya **Google Chrome** web tarayıcısını açın. Şu anda, ADF Kullanıcı Arabirimi/uygulaması yalnızca Microsoft Edge ve Google Chrome web tarayıcılarında desteklenir.
+2. [Azure portalında](https://portal.azure.com/)oturum açın.    
+3. Sol menüde **Yeni'yi** seçin, **İzleme + Yönetim'i**seçin ve **Otomasyon'u**seçin. 
 
-   ![New-> İzleme ve Yönetim-> Otomasyonu](./media/how-to-schedule-azure-ssis-integration-runtime/new-automation.png)
+   ![Yeni -> İzleme + Yönetim -> Otomasyonu](./media/how-to-schedule-azure-ssis-integration-runtime/new-automation.png)
     
-2. **Otomasyon hesabı ekle** bölmesinde aşağıdaki eylemleri yapın.
+2. **Otomasyon Hesabı Ekle** bölmesinde aşağıdaki işlemleri yapın.
 
-    1. **Ad**Için Azure Otomasyonu hesabınız için bir ad girin. 
-    2. **Abonelik**IÇIN Azure-SSIS IR ADF 'niz olan aboneliği seçin. 
-    3. **Kaynak grubu**Için yeni **Oluştur** ' u seçerek yeni bir kaynak grubu **oluşturun veya mevcut** bir kaynak grubunu seçin. 
-    4. **Konum**Için, Azure Otomasyonu hesabınız için bir konum seçin. 
-    5. **Azure farklı çalıştır hesabı oluşturmayı** **Evet**olarak onaylayın. Azure Active Directory bir hizmet sorumlusu oluşturulur ve Azure aboneliğinizde **katkıda bulunan** bir rol atanır.
-    6. Azure panosu 'nda kalıcı olarak göstermek için **panoya sabitle ' yi** seçin. 
-    7. **Oluştur**’u seçin. 
+    1. **Ad**için Azure Otomasyon hesabınıza bir ad girin. 
+    2. **Abonelik**için, Azure-SSIS IR ile ADF'niz olan aboneliği seçin. 
+    3. **Kaynak grubu**için, yeni bir kaynak grubu oluşturmak için **yeni oluştur'u** veya varolan bir taneseçmek için varolan ı **kullan'ı** seçin. 
+    4. **Konum**için Azure Otomasyon hesabınız için bir konum seçin. 
+    5. **Azure Çalıştır'ı** **Evet**olarak hesap olarak oluştur'u onaylayın. Azure Etkin Dizininizde bir hizmet ilkesi oluşturulur ve Azure aboneliğinizde bir **Katılımcı** rolü atanır.
+    6. Azure panosunda kalıcı olarak görüntülemek için **panoya** Sabitle'yi seçin. 
+    7. **Oluştur'u**seçin. 
 
-   ![New-> İzleme ve Yönetim-> Otomasyonu](./media/how-to-schedule-azure-ssis-integration-runtime/add-automation-account-window.png)
+   ![Yeni -> İzleme + Yönetim -> Otomasyonu](./media/how-to-schedule-azure-ssis-integration-runtime/add-automation-account-window.png)
    
-3. Azure panosu ve bildirimler ' de Azure Otomasyonu hesabınızın dağıtım durumunu görürsünüz. 
+3. Azure Otomasyon hesabınızın dağıtım durumunu Azure panosunda ve bildirimlerinde görürsünüz. 
     
-   ![Otomasyon dağıtılıyor](./media/how-to-schedule-azure-ssis-integration-runtime/deploying-automation.png) 
+   ![Otomasyondağıtma](./media/how-to-schedule-azure-ssis-integration-runtime/deploying-automation.png) 
     
-4. Başarılı bir şekilde oluşturulduktan sonra Azure Otomasyonu hesabınızın giriş sayfasını görürsünüz. 
+4. Azure Otomasyon hesabınızın ana sayfasını başarıyla oluşturulduktan sonra görürsünüz. 
 
-   ![Otomasyon giriş sayfası](./media/how-to-schedule-azure-ssis-integration-runtime/automation-home-page.png)
+   ![Otomasyon ana sayfası](./media/how-to-schedule-azure-ssis-integration-runtime/automation-home-page.png)
 
-### <a name="import-adf-modules"></a>ADF modüllerini içeri aktar
+### <a name="import-adf-modules"></a>ADF modüllerini içe aktarma
 
-1. Sol taraftaki menüdeki **PAYLAŞıLAN kaynaklarda** **modüller** ' i seçin ve **az. DataFactory** + az. DataFactory ' nin modüller listesinde **az. Profile** olduğunu doğrulayın.
+1. Sol menüdeki **PAYLAŞıLAN KAYNAKLAR** **bölümündeki Modülleri** seçin ve modüller listesinde **Az.DataFactory** + **Az.Profile** olup olmadığını doğrulayın.
 
-   ![Gerekli modülleri doğrulama](media/how-to-schedule-azure-ssis-integration-runtime/automation-fix-image1.png)
+   ![Gerekli modülleri doğrulayın](media/how-to-schedule-azure-ssis-integration-runtime/automation-fix-image1.png)
 
-2.  **Az. DataFactory**'niz yoksa, [az. datafactory modülüne](https://www.powershellgallery.com/packages/Az.DataFactory/)yönelik PowerShell Galerisi gidin, **Azure Otomasyonu 'na dağıt**' ı seçin, Azure Otomasyonu hesabınızı seçin ve ardından **Tamam**' ı seçin. Sol menüdeki **PAYLAŞıLAN kaynaklarda** **modülleri** görüntüleyin bölümüne geri dönün ve **az. DataFactory** modülünün **kullanılabilir**olarak değiştiğini bekleyin.
+2.  **Az.DataFactory'niz**yoksa, [Az.DataFactory modülü](https://www.powershellgallery.com/packages/Az.DataFactory/)için PowerShell Galerisi'ne gidin , **Azure Otomasyonuna Dağıt'ı**seçin, Azure Otomasyon uğrama hesabınızı seçin ve ardından **Tamam'ı**seçin. Sol menüdeki PAYLAŞıLAN **KAYNAKLAR** bölümündeki **Modülleri** görüntülemek **için**geri gidin ve **Az.DataFactory** modülünün Kullanılabilir olarak değiştirilme **durumunu** görene kadar bekleyin.
 
-    ![Data Factory modülünü doğrulama](media/how-to-schedule-azure-ssis-integration-runtime/automation-fix-image2.png)
+    ![Veri Fabrikası modüllerini doğrulayın](media/how-to-schedule-azure-ssis-integration-runtime/automation-fix-image2.png)
 
-3.  **Az. Profile**yoksa, [az. profile Module](https://www.powershellgallery.com/packages/Az.profile/)Için PowerShell Galerisi gidin, **Azure Otomasyonu 'na dağıt**' ı seçin, Azure Otomasyonu hesabınızı seçin ve ardından **Tamam**' ı seçin. Sol menüdeki **PAYLAŞıLAN kaynaklarda** **modülleri** görüntüle bölümüne dönün ve **az. Profile** **modülünün,** **kullanılabilir**olarak değiştiğini bekleyin.
+3.  **Az.Profile'ınız**yoksa, [Az.Profile modülü](https://www.powershellgallery.com/packages/Az.profile/)için PowerShell Galerisi'ne gidin , **Azure Otomasyonuna Dağıt'ı**seçin, Azure Otomasyon uğrama hesabınızı seçin ve ardından **Tamam'ı**seçin. Sol menüdeki PAYLAŞıLAN **KAYNAKLAR** bölümündeki **Modülleri** görüntülemek için geri gidin ve **Az.Profile** modülünün **Durumu'nun Kullanılabilir**olarak değiştirilmesini görene kadar bekleyin. **STATUS**
 
-    ![Profil modülünü doğrulama](media/how-to-schedule-azure-ssis-integration-runtime/automation-fix-image3.png)
+    ![Profil modüllerini doğrulayın](media/how-to-schedule-azure-ssis-integration-runtime/automation-fix-image3.png)
 
-### <a name="create-your-powershell-runbook"></a>PowerShell runbook 'unuzu oluşturma
+### <a name="create-your-powershell-runbook"></a>PowerShell runbook'unuzu oluşturun
 
-Aşağıdaki bölümde PowerShell runbook 'u oluşturma adımları sağlanmaktadır. Runbook 'iyle ilişkili komut dosyası, **işlem** parametresi için belirttiğiniz komuta göre başlar/duraklar Azure-SSIS IR. Bu bölüm, runbook oluşturmaya yönelik tüm ayrıntıları sağlamaz. Daha fazla bilgi için bkz. [runbook oluşturma](../automation/automation-quickstart-create-runbook.md) makalesi.
+Aşağıdaki bölümde PowerShell runbook oluşturmak için adımlar sağlar. Çalışma kitabınızla ilişkili komut dosyası, **IŞLEM** parametresi için belirttiğiniz komuta göre Azure-SSIS IR'yi başlatır/durdurur. Bu bölümde runbook oluşturmak için tüm ayrıntıları sağlamaz. Daha fazla bilgi için [bkz.](../automation/automation-quickstart-create-runbook.md)
 
-1. **Runbook 'lar** sekmesine geçin ve araç çubuğundan **+ runbook Ekle** ' yi seçin. 
+1. **Runbook** sekmesine geçin ve araç çubuğundan **runbook ekle seçeneğini** belirleyin. 
 
-   ![Runbook ekleme düğmesi](./media/how-to-schedule-azure-ssis-integration-runtime/runbooks-window.png)
+   ![Runbook düğmesi ekleme](./media/how-to-schedule-azure-ssis-integration-runtime/runbooks-window.png)
    
-2. **Yeni runbook oluştur** ' u seçin ve aşağıdaki eylemleri yapın: 
+2. **Yeni bir runbook oluştur'u** seçin ve aşağıdaki işlemleri yapın: 
 
-    1. **Ad**için **StartStopAzureSsisRuntime**girin.
-    2. **Runbook türü**için **PowerShell**' i seçin.
-    3. **Oluştur**’u seçin.
+    1. **Ad**için, **StartStopAzureSsisRuntime**girin.
+    2. **Runbook türü için** **PowerShell'i**seçin.
+    3. **Oluştur'u**seçin.
     
-   ![Runbook ekleme düğmesi](./media/how-to-schedule-azure-ssis-integration-runtime/add-runbook-window.png)
+   ![Runbook düğmesi ekleme](./media/how-to-schedule-azure-ssis-integration-runtime/add-runbook-window.png)
    
-3. Aşağıdaki PowerShell betiğini Kopyala & runbook betik pencerenize yapıştırın. Araç çubuğundaki **Kaydet** ve **Yayımla** düğmelerini kullanarak runbook 'unuzu kaydedin ve sonra yayımlayın. 
+3. Aşağıdaki PowerShell komut dosyasını runbook komut dosyası pencerenize & yapıştırın. Araç çubuğundaki **Kaydet** ve **Yayımla** düğmelerini kullanarak runbook'unuzu kaydedin ve yayımlayın. 
 
     ```powershell
     Param
@@ -324,65 +324,65 @@ Aşağıdaki bölümde PowerShell runbook 'u oluşturma adımları sağlanmaktad
     "##### Completed #####"    
     ```
 
-   ![PowerShell runbook 'unu Düzenle](./media/how-to-schedule-azure-ssis-integration-runtime/edit-powershell-runbook.png)
+   ![PowerShell runbook'u edin](./media/how-to-schedule-azure-ssis-integration-runtime/edit-powershell-runbook.png)
     
-4. Araç çubuğundaki **Başlat** düğmesini seçerek runbook 'unuzu test edin. 
+4. Araç çubuğundaki **Başlat** düğmesini seçerek runbook'unuzu test edin. 
 
-   ![Runbook 'u Başlat düğmesi](./media/how-to-schedule-azure-ssis-integration-runtime/start-runbook-button.png)
+   ![Runbook düğmesini başlat](./media/how-to-schedule-azure-ssis-integration-runtime/start-runbook-button.png)
     
-5. **Runbook 'U Başlat** bölmesinde aşağıdaki işlemleri yapın: 
+5. **RunBook'u Başlat** bölmesinde aşağıdaki eylemleri yapın: 
 
-    1. **Kaynak grubu adı**IÇIN Azure-SSIS IR ADF 'niz olan kaynak grubunun adını girin. 
-    2. **Data Factory adı**IÇIN Azure-SSIS IR ADF 'nizin adını girin. 
-    3. **Azuressisname**için Azure-SSIS IR adını girin. 
-    4. **İşlem**için **Başlat**girin. 
-    5. **Tamam**’ı seçin.  
+    1. **KAYNAK GRUBU ADInA,** Azure-SSIS IR ile ADF'niz olan kaynak grubunun adını girin. 
+    2. **DATA FACTORY NAME**için Azure-SSIS IR ile ADF'nizin adını girin. 
+    3. **AZURESSISNAME**için Azure-SSIS IR adını girin. 
+    4. **OPERASYON**için **START'ı**girin. 
+    5. **Tamam'ı**seçin.  
 
-   ![Runbook 'u Başlat penceresi](./media/how-to-schedule-azure-ssis-integration-runtime/start-runbook-window.png)
+   ![Çalışma defteri pencereni başlat](./media/how-to-schedule-azure-ssis-integration-runtime/start-runbook-window.png)
    
-6. İş penceresinde **Çıkış** Kutucuğu ' nı seçin. Çıkış penceresinde **# # # # # tamamlandı # #** # # # iletisini gördüğünüzde # # # # **# ile # #** # # # # # # # # # # # # # # #. Azure-SSIS IR başlamak yaklaşık 20 dakika sürer. **İş** penceresini kapatın ve **runbook** penceresine geri dönün.
+6. İş penceresinde Çıktı **döşemesini** seçin. Çıkış penceresinde, ##### İletiyi bekleyin **##### Tamamlandı #####** **##### Başlangıç ####** iletisini gördükten sonra. Azure-SSIS IR'yi başlatmak yaklaşık 20 dakika sürer. **İş** penceresini kapatın ve **Runbook** penceresine geri dön.
 
-   ![Azure SSIS IR-başlatıldı](./media/how-to-schedule-azure-ssis-integration-runtime/start-completed.png)
+   ![Azure SSIS IR - başladı](./media/how-to-schedule-azure-ssis-integration-runtime/start-completed.png)
     
-7. **İşlem**değeri olarak **stop** kullanarak önceki iki adımı tekrarlayın. Araç çubuğundaki **Başlat** düğmesini seçerek runbook 'unuzu yeniden başlatın. Kaynak grubunuzu, ADF 'yi ve Azure-SSIS IR adlarını girin. **İşlem**için **Durdur**yazın. Çıkış penceresinde **# # # # # tamamlandı # # # #** # iletisini gördüğünüzde # # # **# # durduruluyor # #** # # #. Azure-SSIS IR durdurulduğunda, başlatma uzun sürmez. **İş** penceresini kapatın ve **runbook** penceresine geri dönün.
+7. **İşlem**değeri olarak **STOP'u** kullanarak önceki iki adımı yineleyin. Araç çubuğundaki **Başlat** düğmesini seçerek runbook'unuzu yeniden başlatın. Kaynak grubunuzu, ADF'yi ve Azure-SSIS IR adlarınızı girin. **OPERASYON**için **STOP**girin. Çıkış penceresinde, **##### Tamamlandı #####** iletisini bekleyin **##### ##### Stop #####** mesajını gördün. Azure-SSIS IR'yi durdurmak, başlatmak kadar uzun sürmez. **İş** penceresini kapatın ve **Runbook** penceresine geri dön.
 
-8. Ayrıca, **Web kancaları** menü öğesini seçerek veya aşağıda belirtildiği gibi **zamanlamalar** menü öğesini seçerek oluşturulabilen bir zamanlamaya göre runbook 'unuzu de tetikleyebilirsiniz.  
+8. Ayrıca, **Webhooks** menü öğesini seçerek veya aşağıda belirtildiği gibi **Zamanlamalar** menü öğesini seçerek oluşturulabilecek bir zamanlamada oluşturulabilecek bir webhook aracılığıyla runbook'unuzu tetikleyebilirsiniz.  
 
-## <a name="create-schedules-for-your-runbook-to-startstop-azure-ssis-ir"></a>Runbook 'larınız için başlatılacak/durdurulacak zamanlamalar oluşturun Azure-SSIS IR
+## <a name="create-schedules-for-your-runbook-to-startstop-azure-ssis-ir"></a>Azure-SSIS IR'yi başlatmak/durdurmak için runbook'unuzun zamanlamaları oluşturma
 
-Önceki bölümde, Azure-SSIS IR başlatabilir veya durdurabilir Azure Otomasyonu runbook 'unuzu oluşturdunuz. Bu bölümde, runbook 'niz için iki zamanlama oluşturacaksınız. İlk zamanlamayı yapılandırırken, **Işlemi** **Başlat** ' ı belirlersiniz. Benzer şekilde, ikincisini yapılandırırken **Işlemi** **Durdur** ' u belirtirsiniz. Zamanlamalar oluşturma hakkında ayrıntılı adımlar için bkz. [zamanlama oluşturma](../automation/shared-resources/schedules.md#creating-a-schedule) makalesi.
+Önceki bölümde, Azure-SSIS IR'yi başlatabilecek veya durdurabilen Azure Otomasyon runbook'unuzu oluşturdunuz. Bu bölümde, runbook için iki zamanlama oluşturur. İlk zamanlamayı yapılandırırken, **OPERASYON**için **START'ı** belirtirsiniz. Benzer şekilde, ikincisini yapılandırırken, **OPERASYON**İçİn **STOP'u** belirtirsiniz. Zamanlamaoluşturmak için ayrıntılı adımlar için zamanlama makalesi [oluştur'a](../automation/shared-resources/schedules.md#creating-a-schedule) bakın.
 
-1. **Runbook** penceresinde **zamanlamalar**' ı seçin ve + araç çubuğunda **bir zamanlama Ekle** ' yi seçin. 
+1. **Runbook** **penceresinde, Zamanlamalar'ı**seçin ve araç çubuğuna **zamanlama + ekle'yi** seçin. 
 
-   ![Azure SSIS IR-başlatıldı](./media/how-to-schedule-azure-ssis-integration-runtime/add-schedules-button.png)
+   ![Azure SSIS IR - başladı](./media/how-to-schedule-azure-ssis-integration-runtime/add-schedules-button.png)
    
-2. **Runbook 'U zamanla** bölmesinde aşağıdaki işlemleri yapın: 
+2. **Zamanlama Runbook** bölmesinde aşağıdaki eylemleri yapın: 
 
-    1. **Runbook 'a bir zamanlama bağla**' yı seçin. 
-    2. **Yeni zamanlama oluştur**' u seçin.
-    3. **Yeni zamanlama** bölmesinde, **ad**için **günlük başlangıç IR** girin. 
-    4. İçin **,** geçerli zamandan birkaç dakika geçmiş bir saat girin. 
-    5. **Yinelenme**için **yineleme**' yi seçin. 
-    6. **Her yineleme**için **1** girin ve **günü**seçin. 
-    7. **Oluştur**’u seçin. 
+    1. **Runbook'unuza bir zamanlama**bağla'yı seçin. 
+    2. **Yeni bir zamanlama oluştur'u**seçin.
+    3. **Yeni Zamanlama** bölmesinde, **Ad**için günlük **Başlat IR'yi** girin. 
+    4. **Başlangıçlar**için, geçerli saati birkaç dakika geçmiş bir zaman girin. 
+    5. **Yineleme**için **Yinelenen'i**seçin. 
+    6. **Her Yineleme**için, **1** girin ve **Gün**seçin. 
+    7. **Oluştur'u**seçin. 
 
-   ![Azure SSIS IR başlangıç zamanlaması](./media/how-to-schedule-azure-ssis-integration-runtime/new-schedule-start.png)
+   ![Azure SSIS IR başlangıcı için zamanlama](./media/how-to-schedule-azure-ssis-integration-runtime/new-schedule-start.png)
     
-3. **Parametrelere ve çalışma ayarları** sekmesine geçin. kaynak grubunuzu, ADF 'yi ve Azure-SSIS IR adlarını belirtin. **İşlem**için **Başlat** girin ve **Tamam**' ı seçin. Runbook 'larınızın **zamanlamalar** üzerinde zamanlama sayfasını görmek Için yeniden **Tamam ' ı** seçin. 
+3. Parametrelere geç **ve ayarlar sekmesini çalıştır.** Kaynak grubunuzu, ADF'nizi ve Azure-SSIS IR adlarınızı belirtin. **OPERASYON**için **START'ı** girin ve **Tamam'ı**seçin. Runbook'unuzun **Zamanlamalar** sayfasındaki zamanlamayı görmek için yeniden **Tamam'ı** seçin. 
 
-   ![Azure SSIS IR 'yi başlama için zamanlama](./media/how-to-schedule-azure-ssis-integration-runtime/start-schedule.png)
+   ![Azure SSIS IR'ye bakma programı](./media/how-to-schedule-azure-ssis-integration-runtime/start-schedule.png)
     
-4. **Günde stop ar**adlı bir zamanlama oluşturmak için önceki iki adımı tekrarlayın. **Başlangıç IR günlük** zamanlamasını en az 30 dakika sonra belirlediğiniz zamandan sonra girin. **İşlem**için **Durdur** yazın ve **Tamam**' ı seçin. Runbook 'larınızın **zamanlamalar** üzerinde zamanlama sayfasını görmek Için yeniden **Tamam ' ı** seçin. 
+4. Günlük **Stop IR**adlı bir zamanlama oluşturmak için önceki iki adımı yineleyin. **Başlangıç IR günlük** zamanlaması için belirttiğiniz süreden en az 30 dakika sonra bir süre girin. **OPERASYON**için **STOP'a** girin ve **Tamam'ı**seçin. Runbook'unuzun **Zamanlamalar** sayfasındaki zamanlamayı görmek için yeniden **Tamam'ı** seçin. 
 
-5. **Runbook** penceresinde Sol menüdeki **işler** ' i seçin. Zamanlamalarınız tarafından oluşturulan işleri belirtilen saatlerde ve bunların durumlarına göre görmeniz gerekir. Runbook 'unuzu test ettikten sonra gördüklerinize benzer şekilde, çıktısı gibi iş ayrıntılarını görebilirsiniz. 
+5. **Runbook** penceresinde, sol menüde **İşler'i** seçin. Zamanlamalarınızın belirlediği saatlerde ve durumları tarafından oluşturulan işleri görmeniz gerekir. Çalışma kitabınızı test ettikten sonra gördüklerinize benzer çıktısı gibi iş ayrıntılarını görebilirsiniz. 
 
-   ![Azure SSIS IR 'yi başlama için zamanlama](./media/how-to-schedule-azure-ssis-integration-runtime/schedule-jobs.png)
+   ![Azure SSIS IR'ye bakma programı](./media/how-to-schedule-azure-ssis-integration-runtime/schedule-jobs.png)
     
-6. Testi tamamladıktan sonra, bunları düzenleyerek zamanlamalarınızı devre dışı bırakın. Sol menüdeki **zamanlamalar** ' ı seçin, günde günlük **/IR 'Yi günde bir Başlat**' ı seçin ve **etkin**için **Hayır** ' ı seçin. 
+6. Sınama bittikten sonra, bunları düzenleyerek zamanlamalarınızı devre dışı bırakın. Sol menüde **Zamanlamaları** seçin, **günlük Başlat IR/Stop IR'yi**seçin ve **Etkin emene** **Hayır'ı** seçin. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Aşağıdaki blog gönderisine bakın:
--   [ADF/ELT iş akışlarınızı, ADF işlem hatlarında SSIS etkinlikleri ile modernleştirin ve genişletme](https://techcommunity.microsoft.com/t5/SQL-Server-Integration-Services/Modernize-and-Extend-Your-ETL-ELT-Workflows-with-SSIS-Activities/ba-p/388370)
+Aşağıdaki blog gönderisini görün:
+-   [ADF boru hatlarındaki SSIS faaliyetleri ile ETL/ELT iş akışlarınızı modernize edin ve genişletin](https://techcommunity.microsoft.com/t5/SQL-Server-Integration-Services/Modernize-and-Extend-Your-ETL-ELT-Workflows-with-SSIS-Activities/ba-p/388370)
 
 SSIS belgelerinde aşağıdaki makalelere bakın: 
 

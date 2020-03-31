@@ -1,6 +1,6 @@
 ---
-title: Azure Data Factory 'de yinelemeli geliştirme ve hata ayıklama
-description: Azure portal Data Factory işlem hatlarını nasıl geliştirebileceğinizi ve hata ayıklacağınızı öğrenin.
+title: Azure Veri Fabrikası'nda yinelemeli geliştirme ve hata ayıklama
+description: Azure portalında veri fabrikası boru hatlarını yinelemeli olarak nasıl geliştirip hata ayıklamayı öğrenin.
 ms.date: 09/26/2018
 ms.topic: conceptual
 ms.service: data-factory
@@ -11,67 +11,67 @@ author: djpmsft
 ms.author: daperlov
 manager: anandsub
 ms.openlocfilehash: 3a771181f8f2785339cbc47e0a0234b9c4e39adc
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74926842"
 ---
 # <a name="iterative-development-and-debugging-with-azure-data-factory"></a>Azure Data Factory ile yinelemeli geliştirme ve hata ayıklama
 
-Azure Data Factory, Data Factory işlem hatlarını tekrarlayarak geliştirmenize ve hata ayıklamanıza olanak tanır.
+Azure Veri Fabrikası, Veri Fabrikası ardışık hatlarını yinelemeli olarak geliştirmenize ve hata ayıklamanıza olanak tanır.
 
-Bu özelliğin sekiz dakikalık bir girişi ve gösterimi için aşağıdaki videoyu izleyin:
+Bu özelliğin sekiz dakikalık tanıtımı ve gösterimi için aşağıdaki videoyu izleyin:
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Iterative-development-and-debugging-with-Azure-Data-Factory/player]
 
 ## <a name="iterative-debugging-features"></a>Yinelemeli hata ayıklama özellikleri
-Tek bir kod satırı yazmadan işlem hattı tuvalindeki **hata ayıklama** özelliğini kullanarak işlem hatları oluşturun ve test çalıştırmaları yapın.
+Tek bir kod satırı yazmadan ardışık hatlar oluşturun ve boru hattı tuvalindeki **Hata Ayıklama** özelliğini kullanarak test çalıştırmaları yapın.
 
-![İşlem hattı tuvalindeki hata ayıklama özelliği](media/iterative-development-debugging/iterative-development-image1.png)
+![Boru hattı tuvalinde hata ayıklama özelliği](media/iterative-development-debugging/iterative-development-image1.png)
 
-İşlem hattı tuvalinin **Çıkış** penceresinde, test çalıştırmalarının sonuçlarını görüntüleyin.
+Test çalışmalarınızın sonuçlarını boru hattı tuvalinin **Çıktı** penceresinde görüntüleyin.
 
-![İşlem hattı tuvalinin çıkış penceresi](media/iterative-development-debugging/iterative-development-image2.png)
+![Boru hattı tuvalinin çıkış penceresi](media/iterative-development-debugging/iterative-development-image2.png)
 
-Bir test çalıştırması başarılı olduktan sonra, işlem hattınızda daha fazla etkinlik ekleyin ve hata ayıklamaya yinelemeli bir şekilde devam edin. Ayrıca, devam ederken bir test çalıştırmasını **iptal** edebilirsiniz.
+Bir test çalışması başarılı olduktan sonra, ardınıza daha fazla etkinlik ekleyin ve yinelemeli bir şekilde hata ayıklama devam edin. Devam ederken bir test çalışmasını da **iptal** edebilirsiniz.
 
-![Test çalıştırmasını iptal et](media/iterative-development-debugging/iterative-development-image3.png)
+![Test çalışmasını iptal etme](media/iterative-development-debugging/iterative-development-image3.png)
 
-Test çalıştırmalarını gerçekleştirdiğinizde, **Hata Ayıkla**' yı seçmeden önce veri fabrikasında yaptığınız değişiklikleri yayımlamanız gerekmez. Bu özellik, Data Factory iş akışını güncelleştirmeden önce değişikliklerin beklendiği gibi çalıştığından emin olmak istediğiniz senaryolarda yararlıdır.
+Test çalışmaları yaptığınızda, Hata Ayıklama'yı seçmeden önce değişikliklerinizi **Debug**veri fabrikasında yayımlamanız gerekmez. Bu özellik, veri fabrikası iş akışını güncelleştirmeden önce değişikliklerin beklendiği gibi çalıştığından emin olmak istediğiniz senaryolarda yararlıdır.
 
 > [!IMPORTANT]
-> **Hata ayıklamayı** seçtiğinizde işlem hattı çalıştırılır. Bu nedenle, örneğin, işlem hattı kopyalama etkinliği içeriyorsa, test çalıştırması verileri kaynaktan hedefe kopyalar. Sonuç olarak, hata ayıklama sırasında kopyalama etkinliklerinizde ve diğer etkinliklerinizde test klasörleri kullanmanızı öneririz. İşlem hattının hata ayıkladıktan sonra, normal işlemlerde kullanmak istediğiniz gerçek klasörlere geçin.
+> Hata **Ayıklama'yı** seçmek aslında ardışık bölümü çalıştırıyor. Örneğin, ardışık hatlar kopyalama etkinliği içeriyorsa, test çalışması verileri kaynaktan hedefe kopyalar. Sonuç olarak, hata ayıklama yaparken kopyalama etkinliklerinizde ve diğer etkinliklerde test klasörleri kullanmanızı öneririz. Ardışık işlemi debugged sonra, normal işlemlerde kullanmak istediğiniz gerçek klasörlere geçin.
 
-## <a name="visualizing-debug-runs"></a>Hata ayıklama çalıştırmaları görselleştiriliyor
+## <a name="visualizing-debug-runs"></a>Hata ayıklama çalıştırmalarını görselleştirme
 
-Veri fabrikanızın sürmekte olan tüm hata ayıklama çalıştırmalarını tek bir yerde görselleştirebilirsiniz. Sayfanın sağ üst köşesindeki **hata ayıklama çalıştırmalarını görüntüle** ' yi seçin. Bu özellik, alt işlem hatları için hata ayıklama çalıştırmalarının ana işlem hatlarından oluşan senaryolarda ve tüm etkin hata ayıklama çalıştırmalarını görmek için tek bir görünüm istediğinizde yararlıdır.
+Veri fabrikanız için devam eden tüm hata ayıklama çalıştırmalarını tek bir yerde görselleştirebilirsiniz. Sayfanın sağ üst köşesinde **hata ayıklama çalışır'ı seçin.** Bu özellik, alt aksama akdesi yardımcı hatları için yardımcı ardışık ardışık hatlar var ve tüm etkin hata ayıklama çalışır görmek için tek bir görünüm istediğiniz senaryolarda yararlıdır.
 
-![Etkin hata ayıklama çalıştırmalarını görüntüle simgesini seçin](media/iterative-development-debugging/view-debug-runs-image1.png)
+![Etkin hata ayıklama çalışır simgesini görüntüle'yi seçin](media/iterative-development-debugging/view-debug-runs-image1.png)
 
 ![Etkin hata ayıklama çalıştırmalarının örnek listesi](media/iterative-development-debugging/view-debug-runs-image2.png)
 
-Etkin veri akışı hata ayıklama oturumlarınız varsa, Bu oturumlar etkin hata ayıklama penceresinin alt kısmında görünür. Etkin bir veri akışı oturumu seçebilir ve ilgili kümeyi durdurabilirsiniz.
+Etkin Veri Akışı hata ayıklama oturumları varsa, bu oturumlar etkin hata ayıklama penceresinin alt kısmında görünür. Etkin bir veri akışı oturumu seçebilir ve ilgili kümeyi durdurabilirsiniz.
 
 ![Etkin veri akışı hata ayıklama çalıştırmalarının örnek listesi](media/data-flow/dfsessions.png)
 
 ## <a name="monitoring-debug-runs"></a>Hata ayıklama çalıştırmalarını izleme
 
-**Hata ayıklama** özelliğiyle başlatılan test çalıştırmaları, **izleyici** sekmesindeki listede kullanılamaz. Yalnızca **tetikleyici sekmesinde Tetikle** **,** **zamanlamaya**veya atlayan **pencere** tetikleyicilerle tetiklenen çalıştırmaları görebilirsiniz. İşlem hattı tuvalinin **Çıkış** penceresinde **hata ayıklama** özelliğiyle başlatılan son test çalıştırmasını görebilirsiniz.
+**Hata Ayıklama** özelliğiyle başlatılan test çalıştırmaları, **Monitör** sekmesindeki listede kullanılamaz. Yalnızca **Tetikle Şimdi**, **Zamanlama**veya **Yuvarlanan Pencere** tetikleyicileri ile tetiklenen çalıştırmaları **Monitör** sekmesinde görebilirsiniz. Hata **Ayıklama** özelliğiyle başlatılan son test çalışmasını, ardışık hatun tuvalinin **Çıktı** penceresinde görebilirsiniz.
 
-## <a name="setting-breakpoints-for-debugging"></a>Hata ayıklama için kesme noktaları ayarlanıyor
+## <a name="setting-breakpoints-for-debugging"></a>Hata ayıklama için kesme noktaları ayarlama
 
-Data Factory, işlem hattı tuvalindeki belirli bir etkinliğe ulaşana kadar hata ayıklamanıza da olanak tanır. Test etmek istediğiniz kadar etkinliğe bir kesme noktası koymanız ve **Hata Ayıkla**' yı seçmeniz yeterlidir. Data Factory, testin yalnızca işlem hattı tuvalindeki kesme noktası etkinliğine kadar çalışmasını sağlar. İşlem hattının tamamını test etmek istemediğiniz durumlarda bu *hata ayıklama* işlemi, yalnızca işlem hattının içindeki etkinliklerin bir alt kümesi yararlı olur.
+Veri Fabrikası, boru hattı tuvalinde belirli bir faaliyete ulaşana kadar hata ayıklamanızı da sağlar. Yalnızca, test etmek istediğinize kadar aktiviteye bir kesme noktası koyun ve **Hata Ayıklama'yı**seçin. Veri Fabrikası, testin yalnızca boru hattı tuvalindeki kesme noktası etkinliğine kadar çalıştırılmasını sağlar. Bu *Hata Ayıklama Özelliği,* tüm ardışık işlem hattını sınamak istemediğiniz, ancak ardışık işlem hattının içindeki bir alt kümesini test etmek istediğinizde yararlıdır.
 
-![İşlem hattı tuvalindeki kesme noktaları](media/iterative-development-debugging/iterative-development-image4.png)
+![Boru hattı tuvalindeki kesme noktaları](media/iterative-development-debugging/iterative-development-image4.png)
 
-Kesme noktası ayarlamak için işlem hattı tuvalinde bir öğe seçin. Öğenin sağ üst köşesinde boş bir kırmızı daire olarak bir *hata ayıklama* seçeneği belirir.
+Kesme noktası ayarlamak için, ardışık hatlar tuvalinde bir öğe seçin. Hata *Ayıklama Kadar* seçeneği öğenin sağ üst köşesinde boş bir kırmızı daire olarak görünür.
 
-![Seçili öğede bir kesme noktası ayarlamadan önce](media/iterative-development-debugging/iterative-development-image5.png)
+![Seçili öğeüzerinde bir kesme noktası ayarlamadan önce](media/iterative-development-debugging/iterative-development-image5.png)
 
-*Hata ayıklamayı Until* seçeneğini belirledikten sonra, kesme noktasının etkin olduğunu göstermek için dolgulu kırmızı bir daireye dönüşür.
+*Hata Ayıklama Ta'yı* seçtikten sonra, kesme noktasının etkin olduğunu belirtmek için dolu kırmızı daireye dönüşür.
 
-![Seçili öğe üzerinde bir kesme noktası ayarladıktan sonra](media/iterative-development-debugging/iterative-development-image6.png)
+![Seçili öğeüzerinde bir kesme noktası ayarladıktan sonra](media/iterative-development-debugging/iterative-development-image6.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Azure Data Factory 'de sürekli tümleştirme ve dağıtım](continuous-integration-deployment.md)
+[Azure Veri Fabrikası'nda sürekli tümleştirme ve dağıtım](continuous-integration-deployment.md)

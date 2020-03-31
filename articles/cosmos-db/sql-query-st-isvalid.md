@@ -1,6 +1,6 @@
 ---
 title: Azure Cosmos DB sorgu dilinde ST_ISVALID
-description: Azure Cosmos DB 'de SQL sistem işlevi ST_ISVALID hakkında bilgi edinin.
+description: Azure Cosmos DB'de SQL sistem fonksiyonu ST_ISVALID hakkında bilgi edinin.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 8fbddbe82ae13585b8259a66dffaeef8024baf5d
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/27/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "71349369"
 ---
 # <a name="st_isvalid-azure-cosmos-db"></a>ST_ISVALID (Azure Cosmos DB)
- Belirtilen GeoJSON noktası, çokgen veya LineString ifade geçerli olup olmadığını gösteren bir Boole değeri döndürür.  
+ Belirtilen GeoJSON Point, Polygon veya LineString ifadesinin geçerli olup olmadığını belirten bir Boolean değeri döndürür.  
   
 ## <a name="syntax"></a>Sözdizimi
   
@@ -26,25 +26,25 @@ ST_ISVALID(<spatial_expr>)
 ## <a name="arguments"></a>Bağımsız Değişkenler
   
 *spatial_expr*  
-   Bir GeoJSON noktası, çokgen veya LineString ifadesi.  
+   GeoJSON Noktası, Çokgen veya LineString ifadesidir.  
   
-## <a name="return-types"></a>Dönüş türleri
+## <a name="return-types"></a>İade türleri
   
-  Bir Boolean ifadesi döndürür.  
+  Boolean ifadesini döndürür.  
   
 ## <a name="examples"></a>Örnekler
   
-  Aşağıdaki örnek, bir nokta ST_VALID kullanarak geçerli olup olmadığını denetlemek gösterilmektedir.  
+  Aşağıdaki örnekte, ST_VALID kullanarak bir noktanın geçerli olup olmadığının nasıl denetlenir.  
   
-  Örneğin, bu nokta geçerli değerler [-90, 90] aralığında böylece sorgu döndürür false değil bir enlem değeri vardır.  
+  Örneğin, bu noktanın geçerli değerler aralığında olmayan bir enlem değeri vardır [-90, 90], bu nedenle sorgu yanlış döndürür.  
   
-  Çokgen için GeoJSON belirtimi sağlanan son koordinat çifti kapalı şekli oluşturmak için birinci ile aynı olması gerekir. İçinde bir Çokgen noktalarının saat yönünün tersi düzende belirtilmesi gerekir. Bir çokgenin belirtilen saat yönünde sırayla bölgesinde tersini temsil eder.  
+  Çokgenler için GeoJSON belirtimi, kapalı bir şekil oluşturmak için sağlanan son koordinat çiftinin ilki ile aynı olmasını gerektirir. Çokgen içindeki noktalar saat yönünün tersine belirtilmelidir. Saat yönünde belirtilen çokgen, içindeki bölgenin tersini temsil eder.  
   
 ```sql
 SELECT ST_ISVALID({ "type": "Point", "coordinates": [31.9, -132.8] }) AS b 
 ```  
   
- Sonuç kümesini burada verilmiştir.  
+ Sonuç kümesini burada bulabilirsiniz.  
   
 ```json
 [{ "b": false }]  
@@ -52,6 +52,6 @@ SELECT ST_ISVALID({ "type": "Point", "coordinates": [31.9, -132.8] }) AS b
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Uzamsal işlevler Azure Cosmos DB](sql-query-spatial-functions.md)
-- [Sistem işlevleri Azure Cosmos DB](sql-query-system-functions.md)
-- [Azure Cosmos DB giriş](introduction.md)
+- [Mekansal işlevler Azure Cosmos DB](sql-query-spatial-functions.md)
+- [Sistem fonksiyonları Azure Cosmos DB](sql-query-system-functions.md)
+- [Azure Cosmos DB'ye Giriş](introduction.md)

@@ -1,6 +1,6 @@
 ---
-title: Rol atamaları oluşturma ve yönetme-Azure dijital TWINS | Microsoft Docs
-description: Azure dijital TWINS 'te rol atamaları oluşturma ve yönetme hakkında bilgi edinin.
+title: Rol atamaları oluşturma ve yönetme - Azure Digital Twins | Microsoft Dokümanlar
+description: Azure Digital Twins'te rol atamaları oluşturma ve yönetme hakkında bilgi edinin.
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -10,19 +10,19 @@ ms.topic: conceptual
 ms.date: 02/07/2020
 ms.custom: seodec18
 ms.openlocfilehash: 1c83ca0abfd17db873bec62f0a0d052703862a45
-ms.sourcegitcommit: 9add86fb5cc19edf0b8cd2f42aeea5772511810c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77110412"
 ---
-# <a name="create-and-manage-role-assignments-in-azure-digital-twins"></a>Azure dijital TWINS 'de rol atamaları oluşturma ve yönetme
+# <a name="create-and-manage-role-assignments-in-azure-digital-twins"></a>Azure Digital Twins'te rol atamaları oluşturma ve yönetme
 
-Azure dijital TWINS, kaynaklara erişimi yönetmek için rol tabanlı erişim denetimi ([RBAC](./security-role-based-access-control.md)) kullanır.
+Azure Digital Twins, kaynaklara erişimi yönetmek için rol tabanlı erişim denetimini[(RBAC)](./security-role-based-access-control.md)kullanır.
 
 ## <a name="role-assignments-overview"></a>Rol atamalarına genel bakış
 
-Her rol ataması aşağıdaki tanıma uyar:
+Her rol ataması aşağıdaki tanıma uygundur:
 
 ```JSON
 {
@@ -34,33 +34,33 @@ Her rol ataması aşağıdaki tanıma uyar:
 }
 ```
 
-Aşağıdaki tabloda her bir öznitelik açıklanmaktadır:
+Aşağıdaki tabloda her öznitelik açıklanmaktadır:
 
-| Öznitelik | Ad | Gerekli | Tür | Açıklama |
+| Öznitelik | Adı | Gerekli | Tür | Açıklama |
 | --- | --- | --- | --- | --- |
-| RoleID | Rol tanımı tanımlayıcısı | Yes | Dize | İstenen rol atamasının benzersiz KIMLIĞI. Aşağıdaki sistem API 'sini veya İnceleme tablosunu sorgulayarak rol tanımlarını ve bunların tanımlayıcılarını bulun. |
-| objectId | Nesne tanımlayıcısı | Yes | Dize | Azure Active Directory KIMLIĞI, hizmet sorumlusu nesne KIMLIĞI veya etki alanı adı. Rol atamasının atandığı durum. Rol ataması, ilişkili türüne göre biçimlendirilmelidir. `DomainName` Objectıdtype için ObjectID `“@”` karakteriyle başlamalıdır. |
-| Objectıdtype | Nesne tanımlayıcı türü | Yes | Dize | Kullanılan nesne tanımlayıcısı türü. Aşağıdaki **desteklenen Objectıdtypes** bölümüne bakın. |
-| yol | Boşluk yolu | Yes | Dize | `Space` nesnesine yönelik tam erişim yolu. `/{Guid}/{Guid}` bunun bir örneğidir. Bir tanımlayıcının tüm grafik için rol ataması gerekiyorsa, `"/"`belirtin. Bu karakter kökü belirler, ancak kullanımı önerilmez. Her zaman en az ayrıcalık Ilkesini izleyin. |
-| tenantId | Kiracı tanımlayıcısı | Değişir | Dize | Çoğu durumda, bir Azure Active Directory kiracı KIMLIĞI. `DeviceId` ve `TenantId` Objectıdtypes için izin verilmedi. `UserId` ve `ServicePrincipalId` Objectıdtypes için gereklidir. DomainName Objectıdtype için isteğe bağlı. |
+| Roleıd | Rol tanımı tanımlayıcısı | Evet | Dize | İstenilen rol atamasının benzersiz kimliği. Sistem API'sini sorgulayarak veya aşağıdaki tabloyu gözden geçirerek rol tanımlarını ve bunların tanımlayıcısını bulun. |
+| Objectıd | Nesne tanımlayıcısı | Evet | Dize | Azure Etkin Dizin Kimliği, hizmet temel nesne kimliği veya etki alanı adı. Rol atamasının neye veya kime atandığı. Rol ataması ilişkili türüne göre biçimlendirilmelidir. objectIdType için `DomainName` objectId `“@”` karakteriyle başlamalıdır. |
+| objectIdType | Nesne tanımlayıcı türü | Evet | Dize | Kullanılan Nesne Tanımlayıcısı türü. Aşağıdaki **Desteklenen ObjectIdTypes'a** bakın. |
+| yol | Uzay yolu | Evet | Dize | `Space` Nesneye tam erişim yolu. `/{Guid}/{Guid}` bunun bir örneğidir. Bir tanımlayıcının tüm grafik için rol ataması gerekiyorsa, belirtin. `"/"` Bu karakter kökü belirtir, ancak kullanımı önerilmez. Her zaman En Az Ayrıcalık Prensibi'ne uyun. |
+| tenantId | Kiracı tanımlayıcısı | Değişir | Dize | Çoğu durumda, bir Azure Etkin Dizin kiracı kimliği. İzin `DeviceId` verilmez ve `TenantId` ObjectIdTypes. Için `UserId` gerekli `ServicePrincipalId` ve ObjectIdTypes. DomainName ObjectIdType için isteğe bağlıdır. |
 
 ### <a name="supported-role-definition-identifiers"></a>Desteklenen rol tanımı tanımlayıcıları
 
-Her rol ataması, bir rol tanımını Azure dijital TWINS ortamınızdaki bir varlıkla ilişkilendirir.
+Her rol ataması, Azure Digital Twins ortamınızdaki bir varlıkla bir rol tanımını ilişkilendirer.
 
 [!INCLUDE [digital-twins-roles](../../includes/digital-twins-roles.md)]
 
 ### <a name="supported-object-identifier-types"></a>Desteklenen nesne tanımlayıcı türleri
 
-Daha önce **Objectıdtype** özniteliği tanıtılmıştı.
+Daha önce, **objectIdType** özniteliği tanıtıldı.
 
 [!INCLUDE [digital-twins-object-types](../../includes/digital-twins-object-id-types.md)]
 
 ## <a name="role-assignment-operations"></a>Rol atama işlemleri
 
-Azure Digital TWINS, rol atamaları için tam *oluşturma*, *okuma*ve *silme* işlemlerini destekler. *Güncelleştirme* işlemleri, rol atamaları eklenerek, rol atamaları kaldırılarak veya rol atamalarının erişim Izni veren [uzamsal zeka grafik](./concepts-objectmodel-spatialgraph.md) düğümlerinin değiştirilerek işlenir.
+Azure Digital Twins, rol atamaları için tam *CREATE*, *READ*ve *DELETE* işlemlerini destekler. *UPDATE* işlemleri rol atamaları ekleyerek, rol atamaları kaldırarak veya rol atamaları erişim verdiği [Uzamsal İstihbarat Grafiği](./concepts-objectmodel-spatialgraph.md) düğümleri değiştirerek işlenir.
 
-[![rol atama uç noktaları](media/security-roles/role-assignments.png)](media/security-roles/role-assignments.png#lightbox)
+[![Rol atama sıyrıkları](media/security-roles/role-assignments.png)](media/security-roles/role-assignments.png#lightbox)
 
 Sağlanan Swagger başvuru belgeleri, kullanılabilir tüm API uç noktaları, istek işlemleri ve tanımlar hakkında daha fazla bilgi içerir.
 
@@ -68,37 +68,37 @@ Sağlanan Swagger başvuru belgeleri, kullanılabilir tüm API uç noktaları, i
 
 [!INCLUDE [Digital Twins Management API](../../includes/digital-twins-management-api.md)]
 
-### <a name="grant-permissions-to-your-service-principal"></a>Hizmet sorumlusuna izin verme
+### <a name="grant-permissions-to-your-service-principal"></a>Hizmet müdürünüze izin verme
 
-Hizmet sorumlusuna izin verilmesi, genellikle Azure dijital TWINS ile çalışırken yapmanız gereken ilk adımlardan biridir. Şunları gerektirir:
+Hizmet müdürünüze izin vermek genellikle Azure Digital Twins ile çalışırken atacağınız ilk adımlardan biridir. Bu gerektirir:
 
-1. Azure [CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) veya [PowerShell](https://docs.microsoft.com/powershell/azure/)aracılığıyla Azure örneğiniz üzerinde oturum açma.
-1. Hizmet sorumlusu bilgileriniz alınıyor.
-1. Hizmet sorumlusuna istenen rolü atama.
+1. [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) veya [PowerShell](https://docs.microsoft.com/powershell/azure/)üzerinden Azure örneğinize giriş yapmak.
+1. Hizmet temel bilgilerinizi edinme.
+1. İstenilen rolü hizmet müdürünüze atamak.
 
-Uygulama KIMLIĞINIZ Azure Active Directory ' de size sağlanır. Active Directory ' de bir Azure dijital TWINS yapılandırma ve sağlama hakkında daha fazla bilgi edinmek için [hızlı](./quickstart-view-occupancy-dotnet.md)başlangıcı okuyun.
+Uygulama kimliğiniz Azure Active Directory'de size verilir. Active Directory'de Azure Dijital İkizler'i yapılandırma ve sağlama hakkında daha fazla bilgi edinmek için [Quickstart'ı](./quickstart-view-occupancy-dotnet.md)okuyun.
 
-Uygulama KIMLIĞI ' ne sahip olduktan sonra aşağıdaki komutlardan birini yürütün. Azure CLı 'de:
+Uygulama kimliğini aldıktan sonra, aşağıdaki komutlardan birini uygulayın. Azure CLI'de:
 
 ```azurecli
 az login
 az ad sp show --id <ApplicationId>
 ```
 
-PowerShell 'de:
+Powershell içinde:
 
 ```powershell
 Login-AzAccount
 Get-AzADServicePrincipal -ApplicationId <ApplicationId>
 ```
 
-**Yönetici** rolüne sahip bir Kullanıcı, URL 'ye kimliği DOĞRULANMıŞ BIR http post Isteği yaparak alan yöneticisi rolünü bir kullanıcıya atayabilir:
+**Yönetici** rolüne sahip bir kullanıcı, URL'ye kimlik doğrulaması yapılan bir HTTP POST isteği yaparak Alan Yöneticisi rolünü kullanıcıya atayabilir:
 
 ```URL
 YOUR_MANAGEMENT_API_URL/roleassignments
 ```
 
-Aşağıdaki JSON gövdesiyle:
+Aşağıdaki JSON gövdesi ile:
 
 ```JSON
 {
@@ -110,17 +110,17 @@ Aşağıdaki JSON gövdesiyle:
 }
 ```
 
-### <a name="retrieve-all-roles"></a>Tüm rolleri al
+### <a name="retrieve-all-roles"></a>Tüm rolleri alma
 
-[![sistem rolleri](media/security-roles/system-api.png)](media/security-roles/system-api.png#lightbox)
+[![Sistem rolleri](media/security-roles/system-api.png)](media/security-roles/system-api.png#lightbox)
 
-Tüm kullanılabilir rolleri (rol tanımları) listelemek için, kimliği doğrulanmış bir HTTP GET isteği oluşturun:
+Kullanılabilir tüm rolleri (rol tanımlarını) listelemek için, kimlik doğrulaması http GET isteğinde bulunun:
 
 ```URL
 YOUR_MANAGEMENT_API_URL/system/roles
 ```
 
-Başarılı bir istek, atanabilecek her bir rol için girdilerle bir JSON dizisi döndürür:
+Başarılı bir istek, atanabilecek her rol için girişleri olan bir JSON dizidöndürecektir:
 
 ```JSON
 [
@@ -153,9 +153,9 @@ Başarılı bir istek, atanabilecek her bir rol için girdilerle bir JSON dizisi
 ]
 ```
 
-### <a name="check-a-specific-role-assignment"></a>Belirli bir rol atamasını denetleme
+### <a name="check-a-specific-role-assignment"></a>Belirli bir rol ataması denetleme
 
-Belirli bir rol atamasını denetlemek için, kimliği doğrulanmış bir HTTP GET isteği oluşturun:
+Belirli bir rol atamasını denetlemek için, kimlik doğrulaması http GET isteğinde bulunun:
 
 ```URL
 YOUR_MANAGEMENT_API_URL/roleassignments/check?userId=YOUR_USER_ID&path=YOUR_PATH&accessType=YOUR_ACCESS_TYPE&resourceType=YOUR_RESOURCE_TYPE
@@ -163,16 +163,16 @@ YOUR_MANAGEMENT_API_URL/roleassignments/check?userId=YOUR_USER_ID&path=YOUR_PATH
 
 | **Parametre değeri** | **Gerekli** |  **Tür** |  **Açıklama** |
 | --- | --- | --- | --- |
-| YOUR_USER_ID |  True | Dize |   UserID Objectıdtype için ObjectID. |
+| YOUR_USER_ID |  True | Dize |   UserId objectIdType için objectId. |
 | YOUR_PATH | True | Dize |   Erişimi denetlemek için seçilen yol. |
-| YOUR_ACCESS_TYPE |  True | Dize |   *Okuma*, *oluşturma*, *güncelleştirme*veya *silme* |
-| YOUR_RESOURCE_TYPE | True | Dize |  *Cihaz*, *deviceblobmetadata*, *deviceextendedproperty*, *extendedpropertykey*, *ExtendedType*, *uç nokta*, *keystore*, *Matcher*, *ontology*, *Report*, *roledefinition*, *algılayıcı*, *sensorextendedproperty*, *Space*, *spaceblobmetadata*, *spaceextendedproperty*, *SpaceResource*, *spaceroleatama*, *sistem*,  *UerDefinedFunction*, *User*, *Userblobmetadata*veya *userextendedproperty* |
+| YOUR_ACCESS_TYPE |  True | Dize |   *Oku*, *Oluştur*, *Güncelleştir*veya *Sil* |
+| YOUR_RESOURCE_TYPE | True | Dize |  *Cihaz*, *DeviceBlobMetadata*, *DeviceExtendedProperty*, *ExtendedPropertyKey*, *ExtendedType*, *Endpoint*, *KeyStore*, *Matcher*, *Ontoloji*, *Rapor*, *RoleDefinition*, *Sensör*, *SensorExtendedProperty*, *Space* *, SpaceBlobMetadata*, *SpaceExtendedProperty*, *SpaceResource*, *SpaceRoleAssignment*, *Sistem*, * UerDefinedFunction*, *Kullanıcı*, *UserBlobMetadata*, veya *UserExtendedProperty* |
 
-Başarılı bir istek, belirtilen yol ve kaynak için erişim türünün kullanıcıya atanıp atanmadığını belirten bir Boole `true` veya `false` döndürür.
+Başarılı bir istek bir `true` boolean döndürür veya `false` erişim türünün verilen yol ve kaynak için kullanıcıya atanmış olup olmadığını gösterir.
 
-### <a name="get-role-assignments-by-path"></a>Yola göre rol atamaları al
+### <a name="get-role-assignments-by-path"></a>Rol atamalarını yola göre alma
 
-Bir yolun tüm rol atamalarını almak için, kimliği doğrulanmış bir HTTP GET isteği oluşturun:
+Bir yol için tüm rol atamaları almak için, doğrulanmış bir HTTP GET isteği yapmak için:
 
 ```URL
 YOUR_MANAGEMENT_API_URL/roleassignments?path=YOUR_PATH
@@ -180,9 +180,9 @@ YOUR_MANAGEMENT_API_URL/roleassignments?path=YOUR_PATH
 
 | Değer | Şununla değiştir |
 | --- | --- |
-| YOUR_PATH | Alanın tam yolu |
+| YOUR_PATH | Boşluğa giden tam yol |
 
-Başarılı bir istek, seçili **yol** parametresiyle ilişkili her bir rol atamasının bulunduğu bir JSON dizisi döndürür:
+Başarılı bir istek, seçili **yol** parametresi ile ilişkili her rol ataması ile bir JSON dizi döndürecek:
 
 ```JSON
 [
@@ -196,9 +196,9 @@ Başarılı bir istek, seçili **yol** parametresiyle ilişkili her bir rol atam
 ]
 ```
 
-### <a name="revoke-a-permission"></a>Bir izni iptal etme
+### <a name="revoke-a-permission"></a>İznini iptal edin
 
-Bir alıcıdan bir izni iptal etmek için, kimliği doğrulanmış bir HTTP SILME isteği yaparak rol atamasını silin:
+Alıcıdan izin almak için, kimlik doğrulaması http delete isteği yaparak rol atamasını silin:
 
 ```URL
 YOUR_MANAGEMENT_API_URL/roleassignments/YOUR_ROLE_ASSIGNMENT_ID
@@ -208,17 +208,17 @@ YOUR_MANAGEMENT_API_URL/roleassignments/YOUR_ROLE_ASSIGNMENT_ID
 | --- | --- |
 | *YOUR_ROLE_ASSIGNMENT_ID* | Kaldırılacak rol atamasının **kimliği** |
 
-Başarılı bir SILME isteği, 204 yanıt durumu döndürür. Rol atamasının hala saklanıp saklanmadığını [denetleyerek](#check-a-specific-role-assignment) rol atamasının kaldırılmasını doğrulayın.
+Başarılı bir DELETE isteği 204 yanıt durumunu döndürecek. Rol atamasının hala geçerli olup olmadığını [denetleyerek](#check-a-specific-role-assignment) rol atamasının kaldırılmasını doğrulayın.
 
 ### <a name="create-a-role-assignment"></a>Rol ataması oluşturma
 
-Rol ataması oluşturmak için, URL 'ye kimliği doğrulanmış bir HTTP POST isteği oluşturun:
+Bir rol ataması oluşturmak için URL'ye doğrulanmış bir HTTP POST isteği yapın:
 
 ```URL
 YOUR_MANAGEMENT_API_URL/roleassignments
 ```
 
-JSON gövdesinin aşağıdaki şemaya uygun olduğunu doğrulayın:
+JSON gövdesinin aşağıdaki şemaya uyduğundan doğrulayın:
 
 ```JSON
 {
@@ -230,7 +230,7 @@ JSON gövdesinin aşağıdaki şemaya uygun olduğunu doğrulayın:
 }
 ```
 
-Başarılı bir istek, yeni oluşturulan rol atamasının **kimliğiyle** birlikte 201 yanıt durumu döndürür:
+Başarılı bir istek, yeni oluşturulan rol atamasının **kimliğiyle** birlikte 201 yanıt durumunu döndürecektir:
 
 ```JSON
 "d92c7823-6e65-41d4-aaaa-f5b32e3f01b9"
@@ -238,9 +238,9 @@ Başarılı bir istek, yeni oluşturulan rol atamasının **kimliğiyle** birlik
 
 ## <a name="configuration-examples"></a>Yapılandırma örnekleri
 
-Aşağıdaki örneklerde, yaygın olarak karşılaşılan birkaç rol atama senaryosunda JSON gövdesinin nasıl yapılandırılacağı gösterilmektedir.
+Aşağıdaki örnekler, JSON gövdenizi sık karşılaşılan birkaç rol atama senaryosunda nasıl yapılandırılabildiğini göstermektedir.
 
-* **Örnek**: bir kullanıcının kiracı alanının katında yönetici erişimi olması gerekir.
+* **Örnek**: Bir kullanıcının kiracı alanının bir katına yönetimerişimi ne gerekvardır.
 
    ```JSON
    {
@@ -252,7 +252,7 @@ Aşağıdaki örneklerde, yaygın olarak karşılaşılan birkaç rol atama sena
    }
    ```
 
-* **Örnek**: bir uygulama, test senaryolarını bir cihaz ve algılayıcı çalıştırır.
+* **Örnek**: Bir uygulama, aygıtlar ve sensörlerle alay eden test senaryoları çalıştırıyor.
 
    ```JSON
    {
@@ -264,7 +264,7 @@ Aşağıdaki örneklerde, yaygın olarak karşılaşılan birkaç rol atama sena
    }
     ```
 
-* **Örnek**: bir etki alanının parçası olan tüm kullanıcılar boşluklar, sensörler ve kullanıcılar için okuma erişimi alır. Bu erişim, ilgili ilgili nesnelerini içerir.
+* **Örnek**: Bir etki alanının parçası olan tüm kullanıcılar, alanlar, sensörler ve kullanıcılar için okuma erişimi alır. Bu erişim, karşılık gelen ilgili nesneleri içerir.
 
    ```JSON
    {
@@ -277,6 +277,6 @@ Aşağıdaki örneklerde, yaygın olarak karşılaşılan birkaç rol atama sena
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Azure dijital TWINS rol tabanlı erişim denetimini gözden geçirmek için, [rol-temel erişim denetimi](./security-authenticating-apis.md)makalesini okuyun.
+- Azure Digital Twins rol tabanlı erişim denetimini gözden geçirmek için [Rol tabanı-erişim denetimi'ni](./security-authenticating-apis.md)okuyun.
 
-- Azure dijital TWINS API kimlik doğrulaması hakkında bilgi edinmek için [API kimlik doğrulamasını](./security-authenticating-apis.md)okuyun.
+- Azure Digital Twins API kimlik doğrulaması hakkında bilgi edinmek için [API kimlik doğrulamasını](./security-authenticating-apis.md)okuyun.

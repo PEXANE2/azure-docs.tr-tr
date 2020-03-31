@@ -1,97 +1,101 @@
 ---
-title: Dosya ve klasörlerin yavaş yedeklenmesinde sorun giderme
-description: Azure Backup performans sorunlarının nedenini tanılamanıza yardımcı olması için sorun giderme kılavuzu sağlar
+title: Dosya ve klasörlerin yavaş yedekleme sorunu
+description: Azure Yedekleme performans sorunlarının nedenini tanılamanıza yardımcı olacak sorun giderme kılavuzu sağlar
 ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: ed91a1cd8600f4e1ac208b0036c3d4ba74c0e6bb
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.openlocfilehash: 6c650ee735ffcdd50f4361a867fa592f4965ab68
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
-ms.locfileid: "78295972"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79408701"
 ---
 # <a name="troubleshoot-slow-backup-of-files-and-folders-in-azure-backup"></a>Azure Backup’ta dosya ve klasörlerin yavaş yedekleme sorunlarını giderme
 
-Bu makalede, Azure Backup kullanırken dosyalar ve klasörler için yavaş yedekleme performansının Nedenini tanılamanıza yardımcı olacak sorun giderme kılavuzu sağlanmıştır. Dosyaları yedeklemek için Azure Backup Aracısı 'nı kullandığınızda, yedekleme işlemi beklenenden uzun sürebilir. Bu gecikmeye aşağıdakilerden biri veya birkaçı neden olmuş olabilir:
+Bu makalede, Azure Yedekleme kullanırken dosya ve klasörler için yavaş yedekleme performansı nın nedenini tanılamanıza yardımcı olacak sorun giderme kılavuzu bulunur. Dosyaları yedeklemek için Azure Yedekleme aracısını kullandığınızda, yedekleme işlemi beklenenden uzun sürebilir. Bu gecikme, aşağıdakilerden biri veya birkaçı tarafından neden olabilir:
 
-* [Yedeklenmekte olan bilgisayarda performans sorunları var.](#cause1)
-* [Başka bir işlem veya virüsten koruma yazılımı Azure Backup işlemini engelliyor.](#cause2)
+* [Bilgisayarda yedeklenen performans darboğazları var.](#cause1)
+* [Başka bir işlem veya virüsten koruma yazılımı Azure Yedekleme işlemini engelliyor.](#cause2)
 * [Yedekleme aracısı bir Azure sanal makinesinde (VM) çalışıyor.](#cause3)  
-* [Çok sayıda (milyonlarca) dosyayı yedekliyorsunuz.](#cause4)
+* [Çok sayıda (milyonlarca) dosyayı yedekliyoruz.](#cause4)
 
-Sorun giderme sorunlarını gidermeye başlamadan önce [en son Azure Backup aracısını](https://aka.ms/azurebackup_agent)indirip yüklemenizi öneririz. Çeşitli sorunları gidermek, özellikler eklemek ve performansı artırmak için yedekleme aracısında sık sık güncelleştirmeler yaptık.
+Sorun giderme sorunlarını başlatmadan önce, en [son Azure Yedekleme aracısını](https://aka.ms/azurebackup_agent)indirmenizi ve yüklemenizi öneririz. Çeşitli sorunları gidermek, özellikler eklemek ve performansı artırmak için Yedekleme aracısına sık sık güncellemeler yaparız.
 
-Ayrıca, yaygın yapılandırma sorunlarından biriyle karşılaşmadığınızdan emin olmak için [Azure Backup hizmeti hakkında SSS](backup-azure-backup-faq.md) 'yi incelemenizi öneririz.
+Ayrıca, ortak yapılandırma sorunlarından herhangi birini yaşamadığınızdan emin olmak için [Azure Yedekleme hizmeti SSS'sini](backup-azure-backup-faq.md) incelemenizi öneririz.
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
-## <a name="cause-backup-job-running-in-unoptimized-mode"></a>Neden: yedekleme işi iyileştirilmemiş modda çalışıyor
+## <a name="cause-backup-job-running-in-unoptimized-mode"></a>Neden: En iyi duruma getirilmemiş modda çalışan yedekleme işi
 
-* MARS Aracısı, tüm birimi tarayarak dizin veya dosyalardaki değişiklikleri denetleyerek, USN (güncelleştirme sıra numarası) değişiklik günlüğü veya **en iyi duruma getirilmiş modu** kullanarak yedekleme işini **iyileştirilmiş modda** çalıştırabilir.
-* En iyi duruma getirilmiş mod, aracının birim üzerindeki her dosyayı tarayabilmesi ve değiştirilen dosyaları belirlemede meta verilere göre karşılaştırılabilmesi için yavaş bir moddur.
-* Bunu doğrulamak için, MARS Aracısı konsolundan **Iş ayrıntıları** ' nı açın ve **verilerin aktarımını (iyileştirilmez, daha fazla zaman alabilir)** aşağıda gösterildiği gibi denetleyin:
+* MARS aracısı, tüm birimi tarayarak dizin veya dosya değişiklikleri olup yok olup yok edilerek USN (güncelleştirme sıra numarası) değişiklik günlüğü veya **en iyi duruma getirilmemiş modu** kullanarak yedekleme işini en iyi duruma **getirilmiş modda** çalıştırabilir.
+* Aracının birimdeki her dosyayı tarayıp değiştirilen dosyaları belirlemek için meta verilerle karşılaştırması olduğundan, en iyi duruma getirilmemiş mod yavaştır.
+* Bunu doğrulamak için, MARS aracısı konsolundan **İş Ayrıntıları'nı** açın ve aşağıda gösterildiği gibi **veri aktarımı (en iyi duruma getirilmemiş, daha fazla zaman alabilir)** olup olmadığını görmek için durumu kontrol edin:
 
-    ![İyileştirilmemiş modda çalışıyor](./media/backup-azure-troubleshoot-slow-backup-performance-issue/unoptimized-mode.png)
+    ![En iyi duruma getirilmemiş modda çalıştırma](./media/backup-azure-troubleshoot-slow-backup-performance-issue/unoptimized-mode.png)
 
-* Aşağıdaki koşullar yedekleme işinin iyileştirilmemiş modda çalışmasına neden olabilir:
-  * İlk yedekleme (Ilk çoğaltma olarak da bilinir), her zaman iyileştirilmemiş modda çalıştırılır
-  * Önceki yedekleme işi başarısız olursa, sonraki zamanlanmış yedekleme işi en iyileştirilmemiş olarak çalışacaktır.
+* Aşağıdaki koşullar yedekleme işinin en iyi duruma getirilmemiş modda çalışmasına neden olabilir:
+  * İlk yedekleme (İlk Çoğaltma olarak da bilinir) her zaman en iyi duruma getirilmemiş modda çalışır
+  * Önceki yedekleme işi başarısız olursa, bir sonraki zamanlanmış yedekleme işi en iyi duruma getirilmemiş olarak çalışır.
 
 <a id="cause1"></a>
 
-## <a name="cause-performance-bottlenecks-on-the-computer"></a>Neden: bilgisayardaki performans sorunları
+## <a name="cause-performance-bottlenecks-on-the-computer"></a>Neden: Bilgisayardaki performans darboğazları
 
-Yedeklenen bilgisayardaki performans sorunları gecikmelere neden olabilir. Örneğin, bilgisayarın disk okuma veya diske yazma veya ağ üzerinden veri göndermek için kullanılabilir bant genişliği gibi performans sorunlarına neden olabilir.
+Yedeklenen bilgisayardaki darboğazlar gecikmelere neden olabilir. Örneğin, bilgisayarın diske okuma veya yazma yeteneği veya ağ üzerinden veri göndermek için kullanılabilir bant genişliği, darboğazlara neden olabilir.
 
-Windows, bu performans sorunlarını algılamak için [Performans İzleyicisi](https://techcommunity.microsoft.com/t5/ask-the-performance-team/windows-performance-monitor-overview/ba-p/375481) (PerfMon) adlı yerleşik bir araç sağlar.
+Windows, bu darboğazları algılamak için [Performans İzleyicisi](https://techcommunity.microsoft.com/t5/ask-the-performance-team/windows-performance-monitor-overview/ba-p/375481) (Perfmon) adında yerleşik bir araç sağlar.
 
-En iyi yedeklemeler için performans sorunlarını tanılamaya yardımcı olabilecek bazı performans sayaçları ve aralıkları aşağıda verilmiştir.
+Aşağıda, en iyi yedeklemeler için darboğazları tanılamada yardımcı olabilecek bazı performans sayaçları ve aralıkları ve dahilleri verebilirsiniz.
 
 | Sayaç | Durum |
 | --- | --- |
-| Mantıksal disk (fiziksel disk)--% boşta |* %100 boşta = %50 boşta = sağlıklı</br>* %49 boşta = %20 boşta = uyarı ya da Izleyici</br>* %19 boşta %0 boşta = kritik veya spec dışı |
-| Mantıksal disk (fiziksel disk)--% ort. Disk sn okuma veya yazma |* 0,001 MS ile 0,015 MS = sağlıklı</br>* 0,015 MS ile 0,025 MS = uyarı veya Izleyici</br>* 0,026 MS veya daha uzun = kritik veya spec dışı |
-| Mantıksal disk (fiziksel disk)--geçerli disk sırası uzunluğu (tüm örnekler için) |6 dakikadan uzun süre 80 istek |
-| Bellek--Sayfalamayan baytlar |* Havuzun %60 ' inden azı tüketildi = sağlıklı<br>* %61, kullanılan havuzun %80 ' i = uyarı veya Izleyici</br>* %80 taneden fazla% havuz kullanıldı = kritik veya spec dışı |
-| Bellek--havuzda disk belleğine alınan baytlar |* Havuzun %60 ' inden azı tüketildi = sağlıklı</br>* %61, kullanılan havuzun %80 ' i = uyarı veya Izleyici</br>* %80 taneden fazla% havuz kullanıldı = kritik veya spec dışı |
-| Bellek--kullanılabilir megabayt |* %50 boş bellek kullanılabilir veya daha fazla = sağlıklı</br>* boş belleğin %25 ' i kullanılabilir = Izleyici</br>* boş belleğin %10 ' ü kullanılabilir = uyarı</br>* 100 MB 'tan az veya kullanılabilir boş belleğin %5 ' inden az olması = kritik veya spec dışı |
-| İşlemci--\%Işlemci zamanı (tüm örnekler) |* %60 daha az tüketilen = sağlıklı</br>* %61-90% tüketilen = Izleyici veya uyarı</br>* %91-100% tüketilen = kritik |
+| Mantıksal Disk(Fiziksel Disk)--%boşta |* % 100 boşta % 50 boşta = Sağlıklı</br>* %49 boşta % 20 boşta = Uyarı veya Monitör</br>* %19 boşta % 0 boşta = Kritik veya Spec dışında |
+| Mantıksal Disk(Fiziksel Disk)--%Avg. Disk Sn Oku veya Yaz |* 0.001 ms ile 0,015 ms = Sağlıklı</br>* 0,015 ms ile 0,025 ms = Uyarı veya Monitör</br>* 0.026 ms veya daha uzun = Kritik veya Spec Dışında |
+| Mantıksal Disk(Fiziksel Disk)--Geçerli Disk Sıra Uzunluğu (tüm örnekler için) |6 dakikadan fazla 80 istek |
+| Bellek-Havuz Non Paged Bayt |* Tüketilen havuzun %60'ından azı = Sağlıklı<br>* Tüketilen havuzun %61 ila %80'i = Uyarı veya Monitör</br>* Tüketilen % 80'den büyük havuz = Kritik veya Spec Dışında |
+| Bellek--Havuz Sayfalı Baytlar |* Tüketilen havuzun %60'ından azı = Sağlıklı</br>* Tüketilen havuzun %61 ila %80'i = Uyarı veya Monitör</br>* Tüketilen % 80'den büyük havuz = Kritik veya Spec Dışında |
+| Bellek-- Kullanılabilir Megabaytlar |* 50% ücretsiz bellek mevcut veya daha fazla = Sağlıklı</br>* Boş belleğin %25'i kullanılabilir = Monitör</br>* Ücretsiz bellek mevcut % 10 = Uyarı</br>* 100 MB'dan az veya boş belleğin %5'i kullanılabilir = Kritik veya Spec dışında |
+| İşlemci--\%İşlemci Zamanı (tüm örnekler) |* Az% 60 tüketilen = Sağlıklı</br>* 61% ila% 90 tüketilen = Monitör veya Dikkat</br>* 91% için% 100 tüketilen = Kritik |
 
 > [!NOTE]
-> Altyapının külün olduğunu belirlerseniz, daha iyi performans için diskleri düzenli olarak birleştirmeniz önerilir.
+> Altyapının suçlu olduğunu belirlerseniz, daha iyi performans için diskleri düzenli olarak parçalandırmanızı öneririz.
 >
 >
 
 <a id="cause2"></a>
 
-## <a name="cause-another-process-or-antivirus-software-interfering-with-azure-backup"></a>Neden: başka bir işlem veya virüsten koruma yazılımı Azure Backup engelliyor
+## <a name="cause-another-process-or-antivirus-software-interfering-with-azure-backup"></a>Neden: Azure Yedekleme'yi destekleyen başka bir işlem veya virüsten koruma yazılımı
 
-Windows sistemindeki diğer işlemlerin Azure Backup Aracısı işleminin performansını olumsuz yönde etkilediği birkaç örnek gördük. Örneğin, verileri yedeklemek için hem Azure Backup Aracısı hem de başka bir program kullanıyorsanız veya virüsten koruma yazılımı çalışıyorsa ve yedeklenmek üzere dosyalar üzerinde bir kilit varsa, dosyalardaki birden fazla kilit çekişmeye neden olabilir. Bu durumda, yedekleme başarısız olabilir veya iş beklenenden uzun sürebilir.
+Windows sistemindeki diğer işlemlerin Azure Yedekleme aracısı işleminin performansını olumsuz etkilediği birkaç örnek gördük. Örneğin, verileri yedeklemek için hem Azure Yedekleme aracısını hem de başka bir programı kullanıyorsanız veya virüsten koruma yazılımı çalışıyorsa ve yedeklenecek dosyalarda kilit varsa, dosyalardaki birden çok kilit çekişmeye neden olabilir. Bu durumda, yedekleme başarısız olabilir veya iş beklenenden daha uzun sürebilir.
 
-Bu senaryodaki en iyi öneri, Azure Backup Aracısı için yedekleme saatinin değişmediğini görmek üzere diğer Yedekleme programını kapatmmsudur. Genellikle, birden çok yedekleme işinin aynı anda çalışmadığı ve birbirini etkilemelerini engellemek için yeterli olduğundan emin olun.
+Bu senaryodaki en iyi öneri, Azure Yedekleme aracısının yedekleme zamanının değişip değişmediğini görmek için diğer yedekleme programını kapatmaktır. Genellikle, birden çok yedekleme işinin aynı anda çalışmadığından emin olmak, birbirlerini etkilemelerini önlemek için yeterlidir.
 
-Virüsten koruma programları için aşağıdaki dosyaları ve konumları dışlanmasını öneririz:
+Virüsten koruma programları için aşağıdaki dosyaları ve konumları hariç tutmanızı öneririz:
 
-* C:\Program Files\Microsoft Azure kurtarma hizmetleri bir işlem olarak Agent\bin\cbengine.exe
-* C:\Program Files\Microsoft Azure kurtarma hizmetleri Aracısı \ klasörler
-* Karalama konumu (Standart konumu kullanmıyorsanız)
+* C:\Program Files\Microsoft Azure Kurtarma Hizmetleri Aracısı\bin\cbengine.exe bir işlem olarak
+* C:\Program Files\Microsoft Azure Kurtarma Hizmetleri Aracısı\ klasörleri
+* Scratch konumu (standart konumu kullanmıyorsanız)
 
 <a id="cause3"></a>
 
-## <a name="cause-backup-agent-running-on-an-azure-virtual-machine"></a>Neden: bir Azure sanal makinesinde çalışan yedekleme Aracısı
+## <a name="cause-backup-agent-running-on-an-azure-virtual-machine"></a>Neden: Azure sanal makinesinde çalışan yedekleme aracısı
 
-Yedekleme aracısını bir VM üzerinde çalıştırıyorsanız, performans fiziksel bir makinede çalıştırılırken daha yavaş olur. Bu, ıOPS sınırlamaları nedeniyle beklenmektedir.  Ancak, Azure Premium depolamaya yedeklenmekte olan veri sürücülerine geçerek performansı iyileştirebilirsiniz. Bu sorunu düzeltmek için çalışıyoruz ve düzeltme gelecekteki bir sürümde kullanıma sunulacaktır.
+Yedek aracıyı bir VM'de çalıştırıyorsanız, performans fiziksel bir makinede çalıştırdığınızdan daha yavaş olacaktır. Bu IOPS sınırlamaları nedeniyle bekleniyor.  Ancak, Azure Premium Depolama'ya yedeklenen veri sürücülerini değiştirerek performansı en iyi duruma getirebilirsiniz. Bu sorunu gidermek için çalışıyoruz ve düzeltme gelecekteki bir sürümde kullanılabilir olacak.
 
 <a id="cause4"></a>
 
-## <a name="cause-backing-up-a-large-number-millions-of-files"></a>Neden: çok sayıda (milyonlarca) dosyayı yedekleme
+## <a name="cause-backing-up-a-large-number-millions-of-files"></a>Neden: Çok sayıda (milyonlarca) dosyayı yedekleme
 
-Büyük hacimli verilerin taşınması, daha küçük bir veri hacmi taşımadan daha uzun sürer. Bazı durumlarda, yedekleme zamanı yalnızca verilerin boyutuyla ve ayrıca dosya veya klasör sayısıyla ilgilidir. Bu özellikle, milyonlarca küçük dosya (birkaç kilobayt kadar bayt) yedeklendiğinde geçerlidir.
+Büyük miktarda veriyi taşımak, daha küçük bir veri hacmini taşımaktan daha uzun sürer. Bazı durumlarda, yedekleme süresi yalnızca verilerin boyutuyla değil, aynı zamanda dosya veya klasör sayısıyla da ilişkilidir. Bu özellikle küçük milyonlarca dosya (birkaç kilobayt için birkaç bayt) yedekleniyor zaman doğrudur.
 
-Bu davranış, verileri yedeklemekte ve Azure 'a taşırken, Azure 'un aynı anda dosyalarınızı kataloglarken meydana gelir. Nadir bazı senaryolarda, Katalog işlemi beklenenden uzun sürebilir.
+Bu davranış, siz verileri yedekleyip Azure'a taşımakla birlikte Azure'un aynı anda dosyalarınızı katalogladığı için oluşur. Bazı nadir senaryolarda, katalog işlemi beklenenden daha uzun sürebilir.
 
-Aşağıdaki göstergeler, bir sonraki adımlarda performans sorunlarını ve buna uygun işi anlamanıza yardımcı olabilir:
+Aşağıdaki göstergeler darboğaz anlamanıza yardımcı olabilir ve buna göre sonraki adımlar üzerinde çalışmak:
 
-* **Kullanıcı arabirimi, veri aktarımının ilerlemesini gösteriyor**. Veriler hala aktarılmakta. Ağ bant genişliği veya veri boyutu gecikmelere neden olabilir.
-* **UI veri aktarımı için ilerlemeyi gösterilmiyor**. C:\Program Files\Microsoft Azure Recovery Services \Temp dizininde bulunan günlükleri açın ve sonra günlüklerde FileProvider:: EndData girdisini kontrol edin. Bu giriş, veri aktarımının bittiğini ve Katalog işleminin gerçekleştiğini belirtir. Yedekleme işlerini iptal etmeyin. Bunun yerine, Katalog işleminin bitmesini biraz daha uzun süre bekleyin. Sorun devam ederse [Azure desteği](https://portal.azure.com/#create/Microsoft.Support)'ne başvurun.
+* **UI veri aktarımı için ilerleme gösteriyor.** Veriler hala aktarılıyor. Ağ bant genişliği veya veri boyutu gecikmelere neden olabilir.
+* **UI veri aktarımı için ilerleme göstermiyor.** C:\Program Files\Microsoft Azure Recovery Services Agent\Temp adresinde bulunan günlükleri açın ve ardından FileProvider::EndData girişinde günlükleri olup yok edin. Bu giriş, veri aktarımını tamamladığını ve katalog işleminin gerçekleştiğini belirtir. Yedekleme işlerini iptal etmeyin. Bunun yerine, katalog işleminin tamamlanması için biraz daha bekleyin. Sorun devam ederse, [Azure desteğine](https://portal.azure.com/#create/Microsoft.Support)başvurun.
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+* [Dosya ve klasörleri yedekleme hakkında sık sorulan sorular](backup-azure-file-folder-backup-faq.md)

@@ -1,6 +1,6 @@
 ---
 title: Azure Cosmos DB sorgu dilinde IS_DEFINED
-description: Azure Cosmos DB IS_DEFINED SQL sistem işlevi hakkında bilgi edinin.
+description: Azure Cosmos DB'de SQL sistem fonksiyonu IS_DEFINED hakkında bilgi edinin.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: a5fcaf52d8e9e6b942a95f0b0c43f3f654c5d5d2
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78303860"
 ---
 # <a name="is_defined-azure-cosmos-db"></a>IS_DEFINED (Azure Cosmos DB)
- Özellik değeri atanıp atanmadığını gösteren bir Boole değeri döndürür.  
+ Özellik bir değer atanmış olup olmadığını belirten bir Boolean döndürür.  
   
 ## <a name="syntax"></a>Sözdizimi
   
@@ -25,16 +25,16 @@ IS_DEFINED(<expr>)
   
 ## <a name="arguments"></a>Bağımsız Değişkenler
   
-*ifadeyi*  
-   Herhangi bir ifadedir.  
+*expr*  
+   Herhangi bir ifade dir.  
   
-## <a name="return-types"></a>Dönüş türleri
+## <a name="return-types"></a>İade türleri
   
-  Bir Boolean ifadesi döndürür.  
+  Boolean ifadesini döndürür.  
   
 ## <a name="examples"></a>Örnekler
   
-  Aşağıdaki örnek, bir özelliği belirtilen JSON belgesi içinde varlığını denetler. İlk "a" var, ancak "b" eksik olduğundan ikinci false döndürürse bu yana true döndürür.  
+  Aşağıdaki örnek, belirtilen JSON belgesinde bir özelliğin varlığını denetler. "a" olduğundan ilk döndürür, ancak "b" olmadığı için ikinci döndürür yanlış.  
   
 ```sql
 SELECT IS_DEFINED({ "a" : 5 }.a) AS isDefined1, IS_DEFINED({ "a" : 5 }.b) AS isDefined2 
@@ -48,10 +48,10 @@ SELECT IS_DEFINED({ "a" : 5 }.a) AS isDefined1, IS_DEFINED({ "a" : 5 }.b) AS isD
 
 ## <a name="remarks"></a>Açıklamalar
 
-Bu sistem işlevi, bir [Aralık dizininden](index-policy.md#includeexclude-strategy)faydalanır.
+Bu sistem işlevi bir [aralık dizini](index-policy.md#includeexclude-strategy)yararlanacaktır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [Tür denetimi işlevleri Azure Cosmos DB](sql-query-type-checking-functions.md)
-- [Sistem işlevleri Azure Cosmos DB](sql-query-system-functions.md)
-- [Azure Cosmos DB giriş](introduction.md)
+- [Sistem fonksiyonları Azure Cosmos DB](sql-query-system-functions.md)
+- [Azure Cosmos DB'ye Giriş](introduction.md)

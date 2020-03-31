@@ -1,66 +1,65 @@
 ---
-title: Sanal makine (VM) görüntülerini Azure Marketi 'nde yönetilen disk depolama alanına taşııyoruz
-description: Yeni Market özellikleri ve özellikleri için daha hızlı, daha güvenilir depolama ve destek sağlamak üzere Market VM görüntülerini yönetilen disk depolama alanına taşıyoruz.
-author: MaggiePucciEvans
-manager: evansma
-ms.author: evansma
+title: Sanal makine (VM) görüntülerini Azure Marketi'nde yönetilen disk depolamasına taşıyoruz
+description: Yeni pazar özellikleri ve yetenekleri için daha hızlı, daha güvenilir depolama ve destek sağlamak için, pazar daki VM görüntülerini yönetilen disk depolamaya taşıyoruz.
+author: dsindona
+ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/22/2019
-ms.openlocfilehash: 683b35661a41325cfd5baa877acdb0e37529bb94
-ms.sourcegitcommit: 333af18fa9e4c2b376fa9aeb8f7941f1b331c11d
+ms.openlocfilehash: 17b418ab82cc88b4368efe247b06c0c8bbb27453
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77198743"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80285121"
 ---
-# <a name="were-moving-virtual-machine-vm-images-on-azure-marketplace-to-managed-disk-storage"></a>Azure Marketi 'ndeki sanal makine (VM) görüntülerini yönetilen disk depolama alanına taşııyoruz
+# <a name="were-moving-virtual-machine-vm-images-on-azure-marketplace-to-managed-disk-storage"></a>Azure Marketi'ndeki sanal makine (VM) görüntülerini yönetilen disk depolamaya taşıyoruz
 
-Yeni Market özellikleri ve özellikleri için daha hızlı, daha güvenilir depolama ve destek sağlamak üzere Market VM görüntülerini yönetilen disk depolama alanına taşıyoruz.
+Yeni pazar özellikleri ve yetenekleri için daha hızlı, daha güvenilir depolama ve destek sağlamak için, pazar daki VM görüntülerini yönetilen disk depolamaya taşıyoruz.
 
-2 Ocak 2020 tarihinden itibaren, VM görüntülerini aşamalar halinde yönetilen disk depolama alanına taşıyacağız. İlk aşamada, yalnızca Yeni dağıtımlar olmadan veya önceki 90 gün içinde VM 'Leri çalıştıran resimleri taşıyacağız. Görüntüleri taşımadan önce, yayımcının hangi görüntülerin taşınacağını ve ne zaman taşınacağını bilmesini sağlamak için bir e-posta göndereceğiz.
+2 Ocak 2020'den itibaren VM görüntülerini aşamalı olarak yönetilen disk depolamasına taşıyacağız. İlk aşamada, görüntüleri yalnızca önceki 90 gün içinde yeni dağıtımlar veya çalışan VM'ler olmadan taşıyacağız. Resimlerden herhangi birini taşımadan önce, yayımcıya hangi görüntülerin taşınacağını ve ne zaman taşınacağını bildirmek için bir e-posta göndeririz.
 
-Yayımcılar veya tüketiciler hiçbir işlem yapması gerekmez ve kullanıcılar etkilenmez. Market teklifleri kullanılabilir olmaya devam eder ve müşteriler, taşıma sırasında ve sonrasında bu görüntülerden yönetilen VM 'Leri dağıtabilecektir.
+Yayıncıların veya tüketicilerin herhangi bir işlem yapmalarına gerek yoktur ve kullanıcılar bundan etkilenmez. Pazar teklifleri kullanılabilir kalır ve müşteriler hareket sırasında ve sonrasında, bu görüntülerden yönetilen VM'leri dağıtmaya devam edecektir.
 
-Sorularınız varsa lütfen [bizimle iletişime geçin](https://support.microsoft.com/supportforbusiness/productselection?sapId=48734891-ee9a-5d77-bf29-82bf8d8111ff).
+Herhangi bir sorunuz varsa, [lütfen bize ulaşın.](https://support.microsoft.com/supportforbusiness/productselection?sapId=48734891-ee9a-5d77-bf29-82bf8d8111ff)
 
 ## <a name="faqs"></a>SSS
 
-### <a name="would-the-users-of-my-vm-images-experience-an-outage"></a>VM görüntülerimin kullanıcıları kesinti yaşar mı?
+### <a name="would-the-users-of-my-vm-images-experience-an-outage"></a>VM görüntülerimin kullanıcıları bir kesinti yaşar mı?
 
-VM görüntülerinin kullanıcıları kesinti yaşamacaktır. 
+VM görüntülerinin kullanıcıları bir kesinti yaşamayacaktır. 
 
-İlk aşamada yalnızca çalışan VM 'Leri olmayan VM görüntülerini taşıyacağız. Bu görüntüler için Kullanıcı olmadığı için herhangi bir etki olmayacaktır. Sonraki aşamalar için de kullanıcılar üzerinde hiçbir etkisi olmaz.
+İlk aşamada, yalnızca çalışan VM'leri olmayan VM görüntülerini taşıyacağız. Bu görüntüler için hiçbir kullanıcı olduğundan, herhangi bir etkisi olmayacaktır. Sonraki aşamalar için de, kullanıcılar üzerinde hiçbir etkisi olmayacaktır.
 
 ### <a name="how-long-does-it-take-for-the-process-to-complete"></a>İşlemin tamamlanması ne kadar sürer?
 
-Geçişin tamamlanması 24 saate kadar sürebilir.
+Geçişin tamamlanması 24 saat kadar sürebilir.
 
-### <a name="do-i-need-to-take-any-action"></a>Herhangi bir eylemde olması gerekiyor mu?
+### <a name="do-i-need-to-take-any-action"></a>Herhangi bir işlem yapmam gerekiyor mu?
 
-Hayır. Yayımcılar veya tüketiciler için herhangi bir işlem yapması gerekmez.
+Hayır. Yayıncıların veya tüketicilerin herhangi bir işlem yapmalarına gerek yoktur.
 
-### <a name="do-i-have-to-update-my-system-to-call-the-cloud-portal-apis-in-a-different-way-after-they-are-moved-to-managed-disk-storage"></a>Bulut portalı API 'Lerini, yönetilen disk depolama alanına taşındıktan sonra farklı bir şekilde çağırmak için sistemmi güncelleştirmem gerekir mi?
+### <a name="do-i-have-to-update-my-system-to-call-the-cloud-portal-apis-in-a-different-way-after-they-are-moved-to-managed-disk-storage"></a>Yönetilen Disk depolamasına taşındıktan sonra Bulut Portalı API'lerini farklı bir şekilde aramak için sistemimi güncelleştirmem gerekiyor mu?
 
-Hayır. Mevcut API çağrılarınız çalışmaya devam edecektir.
+Hayır. Varolan API çağrılarınız çalışmaya devam edecektir.
 
-### <a name="would-all-my-vm-images-be-moved-to-managed-disk-at-the-same-time"></a>Tüm sanal makine görüntülerimin aynı anda yönetilen diske taşınmasını ister misiniz?
+### <a name="would-all-my-vm-images-be-moved-to-managed-disk-at-the-same-time"></a>Tüm VM görüntülerim aynı anda Yönetilen Disk'e taşınır mı?
 
-Tüm VM görüntülerinizi aynı güne taşıcağız. Taşındıktan sonra sizi bilgilendireceğiz.
+Tüm VM görüntülerinizi aynı gün içinde taşıyacağız. Taşındıklarında sizi bilgilendireceğiz.
 
-### <a name="can-i-request-to-schedule-the-move-of-my-vm-images-to-a-later-time"></a>VM görüntülerimin daha sonraki bir zamanda taşınmasını isteyebilir miyim?
+### <a name="can-i-request-to-schedule-the-move-of-my-vm-images-to-a-later-time"></a>VM görüntülerimin daha sonraki bir zamana taşınmasını zamanlamayı isteyebilir miyim?
 
-Görüntülerin zamanlanan tarihte taşınmasını öneririz. Ancak endişeleriniz varsa, lütfen taşımayı yeniden zamanlamak için bize ulaşın.
+Görüntüleri planlanan tarihte taşımanızı öneririz. Ancak, endişeleriniz varsa, lütfen taşımayı yeniden planlamamız için bize ulaşın.
 
-### <a name="can-i-publish-updates-to-my-vm-images-during-the-move"></a>Taşıma sırasında VM görüntülerimin güncelleştirmelerini yayımlayabilir miyim?
+### <a name="can-i-publish-updates-to-my-vm-images-during-the-move"></a>Taşıma sırasında VM Görüntülerimdeki güncellemeleri yayımlayabilir miyim?
 
-Taşıma sırasında VM görüntülerine yönelik güncelleştirmeler yapılamaz.
+VM görüntülerinde güncelleştirmeler taşıma sırasında yapılamaz.
 
-### <a name="will-the-publishing-process-change-after-my-vm-image-is-moved-to-managed-disk"></a>VM görüntümi yönetilen diske taşındıktan sonra yayımlama işlemi değişsin mi?
+### <a name="will-the-publishing-process-change-after-my-vm-image-is-moved-to-managed-disk"></a>VM Görüntüm Yönetilen Disk'e taşındıktan sonra yayımlama işlemi değişecek mi?
 
 Hayır, yayımlama işlemi aynı kalacaktır. 
 
-### <a name="can-the-publisher-move-their-offers-to-managed-disk"></a>Yayımcı teklifleri yönetilen diske taşıyabilir mi?
+### <a name="can-the-publisher-move-their-offers-to-managed-disk"></a>Yayımcı tekliflerini Yönetilen Disk'e taşıyabilir mi?
 
-Hayır, yayımcılar teklifleri yönetilen diske taşıyamıyor. Bunların beklemesi gerekecektir ve görüntüleri otomatik olarak taşınır. Herhangi bir değişiklik yapmadan önce yayımcıya bildirim göndereceğiz.
+Hayır, yayıncılar tekliflerini Yönetilen Disk'e taşıyamaz. Beklemek zorunda kalacaklar ve görüntüleri otomatik olarak taşınacak. Herhangi bir değişiklik yapmadan önce yayımcıya bildirimler göndeririz.

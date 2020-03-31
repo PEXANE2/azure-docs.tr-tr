@@ -1,7 +1,7 @@
 ---
-title: Azure VMware çözümleri (AVS) hızlı başlangıç-hizmet oluşturma
-description: AVS hizmetini oluşturma, düğümleri satın alma ve düğümleri ayırma hakkında bilgi edinin
-titleSuffix: Azure VMware Solutions (AVS)
+title: 'Quickstart: VMware CloudSimple hizmeti oluşturun'
+titleSuffix: Azure VMware Solution by CloudSimple
+description: CloudSimple hizmetini oluşturmayı, düğüm satın alma ve düğüm rezerve etme
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/16/2019
@@ -9,82 +9,82 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: e7eb414e51ca38f524ab83bfb51f80f771524287
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.openlocfilehash: 8ca8c5cacd2b1a1a7b4f70615831d2901510045e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77024441"
 ---
-# <a name="quickstart---create-azure-vmware-solutions-avs-service"></a>Hızlı başlangıç-Azure VMware çözümleri (AVS) hizmeti oluşturma
+# <a name="quickstart---create-azure-vmware-solution-by-cloudsimple-service"></a>Quickstart - CloudSimple hizmetine göre Azure VMware Çözümü Oluşturun
 
-Başlamak için Azure portal Azure VMware çözümlerini (AVS) oluşturun.
+Başlamak için Azure portalında CloudSimple tarafından Azure VMware Çözümlü'nu oluşturun.
 
-## <a name="vmware-solutions-avs---service-overview"></a>VMware çözümleri (AVS)-hizmete genel bakış
+## <a name="vmware-solution-by-cloudsimple---service-overview"></a>CloudSimple tarafından VMware Çözüm - Hizmet genel bakış
 
-AVS hizmeti, AVS tarafından Azure VMware çözümünü kullanmanıza olanak sağlar. Hizmetin oluşturulması, düğüm sağlamanıza, düğümleri ayırmanızı ve AVS özel bulutları oluşturmanıza olanak sağlar. AVS hizmetini, AVS hizmetinin kullanılabildiği her bir Azure bölgesine eklersiniz. Hizmet, AVS tarafından Azure VMware çözümünün Edge ağını tanımlar. Bu uç ağ, AVS özel Bulutlarınıza VPN, ExpressRoute ve Internet bağlantısı içeren hizmetler için kullanılır.
+CloudSimple hizmeti, CloudSimple tarafından Azure VMware Solution'ı tüketmenizi sağlar.  Hizmeti oluşturmak düğümleri sağlamanızı, düğümleri rezerve etmenizi ve özel bulutlar oluşturmanıza olanak tanır.  CloudSimple hizmetinin kullanılabildiği her Azure bölgesine CloudSimple hizmetini eklersiniz.  Hizmet, CloudSimple tarafından Azure VMware Solution'ın kenar ağını tanımlar.  Bu kenar ağı, vpn, ExpressRoute ve özel bulutlarınıza Internet bağlantısı içeren hizmetler için kullanılır.
 
-AVS hizmetini eklemek için bir ağ geçidi alt ağı oluşturmanız gerekir. Ağ geçidi alt ağı, Edge ağı oluşturulurken kullanılır ve bir/28 CıDR bloğu gerektirir. Ağ geçidi alt ağ adresi alanı benzersiz olmalıdır. Şirket içi ağ adresi alanları veya Azure sanal ağ adres alanı ile çakışamaz.
+CloudSimple hizmetini eklemek için bir ağ geçidi alt ağı oluşturmanız gerekir. Ağ geçidi alt ağı oluşturulurken kullanılır ve /28 CIDR bloğu gerektirir. Ağ geçidi alt ağ adresi alanı benzersiz olmalıdır. Şirket içi ağ adres alanlarınız veya Azure sanal ağ adres alanınızla çakışamaz.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Ağ geçidi alt ağı için bir/28 CıDR bloğu ayırın. Bir ağ geçidi alt ağı her bir AVS hizmeti için gereklidir ve oluşturulduğu bölgeye özeldir. Ağ geçidi alt ağı, AVS uç ağ hizmetleri tarafından Azure VMware çözümü için kullanılır ve bir/28 CıDR bloğu gerektirir. Ağ geçidi alt ağ adresi alanı benzersiz olmalıdır. Bu, AVS ortamıyla iletişim kuran herhangi bir ağla çakışmamalıdır. AVS ile iletişim kuran ağlarda şirket içi ağlar ve Azure sanal ağları bulunur.
+Ağ geçidi alt ağı için bir /28 CIDR bloğu ayırın.  CloudSimple hizmeti başına bir ağ geçidi alt ağı gereklidir ve oluşturulduğu bölgeye özgüdür. Ağ geçidi alt ağı, CloudSimple kenar ağ hizmetleri tarafından Azure VMware Çözümü için kullanılır ve /28 CIDR bloğu gerektirir. Ağ geçidi alt ağ adresi alanı benzersiz olmalıdır. CloudSimple ortamıyla iletişim kuranabilecek herhangi bir ağla örtüşmemelidir.  CloudSimple ile iletişim sağlayan ağlar şirket içi ağları ve Azure sanal ağları içerir.
 
-[Ağ önkoşullarını](cloudsimple-network-checklist.md)gözden geçirin. 
+Ağ Önkoşulları Gözden [Geçirin.](cloudsimple-network-checklist.md) 
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açın
+## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
-[https://portal.azure.com](https://portal.azure.com) adresinden Azure portalında oturum açın.
+Azure portalında oturum [https://portal.azure.com](https://portal.azure.com)aç.
 
 ## <a name="create-the-service"></a>Hizmeti oluşturma
 
 1. **Tüm Hizmetler**’i seçin.
-2. **AVS hizmeti**için arama yapın.
+2. **CloudSimple Service**için arama .
 
-    ![AVS hizmetinde ara](media/create-cloudsimple-service-search.png)
+    ![Search CloudSimple Service](media/create-cloudsimple-service-search.png)
 
-3. **AVS Hizmetleri**' ni seçin.
-4. Yeni bir hizmet oluşturmak için **Ekle** ' ye tıklayın.
+3. **CloudSimple Services'ı**seçin.
+4. Yeni bir hizmet oluşturmak için **Ekle'yi** tıklatın.
 
-    ![AVS hizmeti Ekle](media/create-cloudsimple-service-add.png)
+    ![CloudSimple Hizmeti Ekle](media/create-cloudsimple-service-add.png)
 
-5. AVS hizmetini oluşturmak istediğiniz aboneliği seçin.
-6. Hizmet için kaynak grubunu seçin. Yeni bir kaynak grubu eklemek için **Yeni oluştur**' a tıklayın.
+5. CloudSimple hizmetini oluşturmak istediğiniz aboneliği seçin.
+6. Hizmet için kaynak grubunu seçin. Yeni bir kaynak grubu eklemek için **Yeni Oluştur'u**tıklatın.
 7. Hizmeti tanımlamak için ad girin.
-8. Hizmet ağ geçidi için CıDR girin. Şirket içi alt ağlarınızın, Azure alt ağlarının veya planlı AVS alt ağlarının hiçbiriyle çakışmayacak bir/28 alt ağı belirtin. Hizmet oluşturulduktan sonra CıDR 'yi değiştiremezsiniz.
+8. Hizmet ağ geçidi için CIDR'yi girin. Şirket içi alt ağların, Azure alt ağların veya planlanan CloudSimple alt ağlarınizle çakışan bir /28 alt ağı belirtin. Hizmet oluşturulduktan sonra CIDR'yi değiştiremezsiniz.
 
-    ![AVS hizmeti oluşturma](media/create-cloudsimple-service.png)
+    ![CloudSimple hizmetini oluşturma](media/create-cloudsimple-service.png)
 
-9. **Tamam**’a tıklayın.
+9. **Tamam**'a tıklayın.
 
 Hizmet oluşturulur ve hizmetler listesine eklenir.
 
 ## <a name="provision-nodes"></a>Sağlama düğümleri
 
-Bir AVS özel bulut ortamı için Kullandıkça Öde kapasitesini ayarlamak için, önce Azure portal düğümleri sağlayın.
+CloudSimple Private Cloud ortamı için ödeme olarak ödeme kapasitesi ayarlamak için, ilk hüküm düğümleri Azure portalında.
 
 1. **Tüm Hizmetler**’i seçin.
-2. **AVS düğümlerini**arayın.
+2. **CloudSimple Düğümleri**arayın.
 
-    ![AVS düğümlerinde ara](media/create-cloudsimple-node-search.png)
+    ![Arama BulutuBasit Düğümler](media/create-cloudsimple-node-search.png)
 
-3. **AVS düğümlerini**seçin.
-4. Düğüm oluşturmak için **Ekle** ' ye tıklayın.
+3. **CloudSimple Düğümlerini**seçin.
+4. Düğüm oluşturmak için **Ekle'yi** tıklatın.
 
-    ![AVS düğümleri Ekle](media/create-cloudsimple-node-add.png)
+    ![CloudSimple Düğümleri Ekle](media/create-cloudsimple-node-add.png)
 
-5. AVS düğümlerini sağlamak istediğiniz aboneliği seçin.
-6. Düğümlerin kaynak grubunu seçin. Yeni bir kaynak grubu eklemek için **Yeni oluştur**' a tıklayın.
-7. Düğümleri tanımlamak için ön eki girin.
+5. CloudSimple düğümlerini sağlamak istediğiniz aboneliği seçin.
+6. Düğümler için kaynak grubunu seçin. Yeni bir kaynak grubu eklemek için **Yeni Oluştur'u**tıklatın.
+7. Düğümleri tanımlamak için önek girin.
 8. Düğüm kaynaklarının konumunu seçin.
-9. Düğüm kaynaklarını barındıracak ayrılmış konumu seçin.
-10. [Düğüm türünü](cloudsimple-node.md)seçin.
-11. Sağlanacak düğüm sayısını seçin.
-12. **Gözden geçir + oluştur**' u seçin.
-13. Ayarları gözden geçirin. Ayarları değiştirmek için **önceki**'ni tıklatın.
-14. **Oluştur**'u seçin.
+9. Düğüm kaynaklarını barındırmak için özel konumu seçin.
+10. Düğüm [türünü](cloudsimple-node.md)seçin.
+11. Hükmetmek için düğüm sayısını seçin.
+12. **Gözden Geçir + Oluştur'u**seçin.
+13. Ayarları gözden geçirin. Herhangi bir ayarı değiştirmek için **Önceki'yi**tıklatın.
+14. **Oluştur'u**seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [AVS özel bulutu oluşturma ve ortamı yapılandırma](quickstart-create-private-cloud.md)
-* [AVS hizmeti](https://docs.azure.cloudsimple.com/cloudsimple-service) hakkında daha fazla bilgi edinin
+* [Özel Bulut oluşturun ve ortamı yapılandırın](quickstart-create-private-cloud.md)
+* [CloudSimple hizmeti](https://docs.azure.cloudsimple.com/cloudsimple-service) hakkında daha fazla bilgi edinin
