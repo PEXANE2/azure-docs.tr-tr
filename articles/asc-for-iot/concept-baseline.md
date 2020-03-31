@@ -1,6 +1,6 @@
 ---
-title: IoT temeli için Azure Güvenlik Merkezi 'Ni anlama | Microsoft Docs
-description: IoT temeli için Azure Güvenlik Merkezi kavramı hakkında bilgi edinin.
+title: IoT taban çizgisi için Azure Güvenlik Merkezi'ni anlayın| Microsoft Dokümanlar
+description: IoT taban çizgisi için Azure Güvenlik Merkezi kavramı hakkında bilgi edinin.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -16,31 +16,31 @@ ms.workload: na
 ms.date: 10/07/2019
 ms.author: mlottner
 ms.openlocfilehash: ce5a0625a16c5a02d03ee74f894c585820414fa4
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/09/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72176610"
 ---
-# <a name="azure-security-center-for-iot-baseline-and-custom-checks"></a>IoT temeli ve özel denetimler için Azure Güvenlik Merkezi
+# <a name="azure-security-center-for-iot-baseline-and-custom-checks"></a>IoT taban çizgisi ve özel denetimler için Azure Güvenlik Merkezi
 
-Bu makalede IoT temeli için Azure Güvenlik Merkezi açıklanmakta ve temel özel denetimlerin tüm ilişkili özellikleri özetlenmektedir.
+Bu makalede, IoT taban çizgisi için Azure Güvenlik Merkezi açıklanmaktadır ve temel özel denetimlerin ilişkili tüm özelliklerini özetler.
 
-## <a name="baseline"></a>Çizgisi
+## <a name="baseline"></a>Taban çizgisi
 
-Taban çizgisi her cihaz için standart davranış oluşturur ve beklenen Norms 'den olağan dışı davranış veya sapma oluşturmayı kolaylaştırır.  
+Bir taban çizgisi her aygıt için standart davranış kurar ve beklenen normlardan olağandışı davranış veya sapma oluşturmayı kolaylaştırır.  
 
-## <a name="baseline-custom-checks"></a>Taban çizgisi özel denetimleri
+## <a name="baseline-custom-checks"></a>Temel özel denetimler
 
-Taban çizgisi özel denetimleri, cihazın **modül kimliği ikizi** kullanarak her bir cihaz temeli için özel bir denetim listesi kurar. 
+Temel özel denetimler, aygıtın **Modül kimlik ikizini** kullanarak her aygıt taban çizgisi için özel bir denetim listesi belirler. 
 
 ## <a name="setting-baseline-properties"></a>Taban çizgisi özelliklerini ayarlama
 
-1. IoT Hub değiştirmek istediğiniz cihazı bulun ve seçin.
-1. Cihaza tıklayın ve sonra **azureiotsecurity** modülüne tıklayın.
-1. **Modül kimliği ikizi**' na tıklayın.
-1. Ana **hat özel denetim** dosyasını cihaza yükleyin.
-1. Güvenlik modülüne temel özellikler ekleyin ve **Kaydet**' e tıklayın.
+1. IoT Hub'ınızda değiştirmek istediğiniz aygıtı bulun ve seçin.
+1. Aygıta tıklayın ve ardından **azureiotsecurity** modüllerini tıklatın.
+1. **Modül Kimlik İkiz'ini**tıklatın.
+1. Temel **özel denetim** dosyasını aygıta yükleyin.
+1. Güvenlik modülüne temel özellikleri ekleyin ve **Kaydet'i**tıklatın.
 
 ### <a name="baseline-custom-check-file-example"></a>Temel özel denetim dosyası örneği
 
@@ -62,19 +62,19 @@ Temel özel denetimleri yapılandırmak için:
     },
    ```
 
-## <a name="baseline-custom-check-properties"></a>Taban çizgisi özel denetim özellikleri
+## <a name="baseline-custom-check-properties"></a>Temel özel denetim özellikleri
 
-| Ad| Durum | Geçerli değerler| Varsayılan değerler| Description |
+| Adı| Durum | Geçerli değerler| Varsayılan değerler| Açıklama |
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------------|
-|baselineCustomChecksEnabled|Gerekli: true |Geçerli değerler: **Boolean** |Varsayılan değer: **false** |Yüksek öncelikli iletiler gönderilmeden önce en uzun zaman aralığı.|
-|baselineCustomChecksFilePath |Gerekli: true|Geçerli değerler: **String**, **null** |Varsayılan değer: **null** |Taban çizgisi XML yapılandırmasının tam yolu|
-|baselineCustomChecksFileHash |Gerekli: true|Geçerli değerler: **String**, **null** |Varsayılan değer: **null** |XML yapılandırma dosyasının `sha256sum` ' dır. Ek bilgi için [SHA256sum başvurusunu](https://linux.die.net/man/1/sha256sum) kullanın. |
+|taban çizgisiCustomChecksEnabled|Gerekli: doğru |Geçerli değerler: **Boolean** |Varsayılan değer: **false** |Yüksek öncelikli iletiler gönderilmeden önce maksimum zaman aralığı.|
+|taban çizgisiCustomChecksFilePath |Gerekli: doğru|Geçerli değerler: **String**, **null** |Varsayılan değer: **null** |Temel xml yapılandırmasının tam yolu|
+|taban çizgisiCustomChecksFileHash |Gerekli: doğru|Geçerli değerler: **String**, **null** |Varsayılan değer: **null** |`sha256sum`xml yapılandırma dosyasının. Ek bilgi için [sha256sum referansını](https://linux.die.net/man/1/sha256sum) kullanın. |
 
-Ek temel örnekleri gözden geçirmek için bkz. [özel taban çizgisi örneği-1](https://ascforiot.blob.core.windows.net/public/custom_baseline_example_hyperv_ubuntu1804.xml) ve [özel taban çizgisi örneği-2](https://ascforiot.blob.core.windows.net/public/oms_audits.xml).
+Ek taban çizgisi örneklerini gözden geçirmek için [bkz: özel taban çizgisi örneği -1](https://ascforiot.blob.core.windows.net/public/custom_baseline_example_hyperv_ubuntu1804.xml) ve [özel taban çizgisi örneği -2.](https://ascforiot.blob.core.windows.net/public/oms_audits.xml)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Ham güvenlik verilerinize](how-to-security-data-access.md) erişin
-- [Bir cihazı araştırın](how-to-investigate-device.md)
-- [Güvenlik önerilerini](concept-recommendations.md) anlayın ve araştırın
-- [Güvenlik uyarılarını](concept-security-alerts.md) anlama ve araştırma
+- Ham [güvenlik verilerinize](how-to-security-data-access.md) erişin
+- [Cihazı araştırma](how-to-investigate-device.md)
+- [Güvenlik önerilerini](concept-recommendations.md) anlama ve keşfetme
+- [Güvenlik uyarılarını](concept-security-alerts.md) anlama ve keşfetme

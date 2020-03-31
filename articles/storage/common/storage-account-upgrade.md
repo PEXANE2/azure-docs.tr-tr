@@ -8,51 +8,51 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 02/25/2019
 ms.author: tamram
-ms.openlocfilehash: 42cef26143eaeb49c4aa80dc5e1b05eb7be943cc
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 9afbade408d6f95fcd3a61aa1ba65bc09c7a875b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79268463"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80067224"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Genel amaçlı v2 depolama hesabına yükseltme
 
-Genel amaçlı v2 depolama hesapları, en son Azure depolama özelliklerini destekler ve genel amaçlı v1 ve BLOB depolama hesaplarının tüm işlevlerini dahil edin. Genel amaçlı v2 hesapları çoğu depolama senaryosunda önerilir. Genel amaçlı v2 hesapları, Azure depolama için en düşük gigabayt başına kapasite fiyatlarını ve sektör rekabetçi işlem fiyatlarını sunar. Genel amaçlı v2 hesapları, sık erişimli, seyrek erişimli veya Arşiv arasında sık erişimli veya seyrek erişimli ve BLOB düzeyinde katmanlama varsayılan hesap erişim katmanlarını destekler.
+Genel amaçlı v2 depolama hesapları en son Azure Depolama özelliklerini destekler ve genel amaçlı v1 ve Blob depolama hesaplarının tüm işlevselliğini içerir. Çoğu depolama senaryosu için genel amaçlı v2 hesapları önerilir. Genel amaçlı v2 hesapları, Azure Depolama için gigabayt başına en düşük kapasite fiyatlarının yanı sıra endüstriyle rekabet eden işlem fiyatlarını da sunar. Genel amaçlı v2 hesapları, sıcak, serin veya arşiv arasında sıcak veya serin ve blob düzeyinde katmanlama varsayılan hesap erişim katmanları destekler.
 
-Genel amaçlı v1 veya blob depolama hesaplarınızdan genel amaçlı v2 depolama hesabına yükseltme işlemi basittir. Azure portal, PowerShell veya Azure CLı kullanarak yükseltebilirsiniz. Genel amaçlı v2 depolama hesabına yükseltmeyle ilişkili bir kesinti veya veri kaybı riski yoktur. Hesap yükseltme, hesap türünü değiştiren basit bir Azure Resource Manager işlem aracılığıyla gerçekleşir.
+Genel amaçlı v1 veya Blob depolama hesaplarınızdan genel amaçlı v2 depolama hesabına yükseltme yapmak kolaydır. Azure portalını, PowerShell'i veya Azure CLI'yi kullanarak yükseltme yapabilirsiniz. Genel amaçlı bir v2 depolama hesabına yükseltme ile ilişkili herhangi bir kesinti veya veri kaybı riski yoktur. Hesap yükseltme, hesap türünü değiştiren basit bir Azure Kaynak Yöneticisi işlemi yle gerçekleşir.
 
 > [!IMPORTANT]
-> Genel amaçlı v1 veya blob depolama hesabını genel amaçlı v2 'ye yükseltme kalıcı olur ve geri alınamaz.
+> Genel amaçlı bir v1 veya Blob depolama hesabını genel amaçlı v2'ye yükseltmek kalıcıdır ve geri alınamaz.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com)oturum açın.
 2. Depolama hesabınıza gidin.
-3. **Ayarlar** bölümünde **yapılandırma**' ya tıklayın.
-4. **Hesap Türü** altında **Yükselt**’e tıklayın.
-5. **Yükseltmeyi Onayla** altında, hesabınızın adını yazın.
-6. Dikey pencerenin alt kısmındaki **Yükselt** ' e tıklayın.
+3. **Ayarlar** bölümünde **Yapılandırma'yı**tıklatın.
+4. **Hesap türü**altında , **Yükseltme'ye**tıklayın.
+5. **Yükseltmeyi Onayla**altında, hesabınızın adını yazın.
+6. Bıçağın altındaki **Yükseltme'yi** tıklatın.
 
-    ![Yükseltme hesabı türü](../blobs/media/storage-blob-account-upgrade/upgrade-to-gpv2-account.png)
+    ![Hesap Türünü Yükseltme](../blobs/media/storage-blob-account-upgrade/upgrade-to-gpv2-account.png)
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-PowerShell kullanarak genel amaçlı bir v1 hesabını genel amaçlı v2 hesabına yükseltmek için, önce PowerShell 'i **az. Storage** modülünün en son sürümünü kullanacak şekilde güncelleştirin. PowerShell’i yükleme hakkında bilgi edinmek için bkz. [Azure PowerShell’i yükleme ve yapılandırma](https://docs.microsoft.com/powershell/azure/install-Az-ps).
+PowerShell'i kullanarak genel amaçlı bir v1 hesabını genel amaçlı bir v2 hesabına yükseltmek için, Önce PowerShell'i **Az.Storage** modülünün en son sürümünü kullanmak için güncelleyin. PowerShell’i yükleme hakkında bilgi edinmek için bkz. [Azure PowerShell’i yükleme ve yapılandırma](https://docs.microsoft.com/powershell/azure/install-Az-ps).
 
-Ardından, hesabı yükseltmek için, kaynak grubu adı, depolama hesabı adı ve istenen hesap erişim katmanınızı değiştirerek aşağıdaki komutu çağırın.
+Ardından, kaynak grup adınızı, depolama hesabı adınızı ve istediğiniz hesap erişim katmanını yerine koymak için hesabı yükseltmek için aşağıdaki komutu arayın.
 
 ```powershell
 Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-account> -UpgradeToStorageV2 -AccessTier <Hot/Cool>
 ```
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Genel amaçlı v1 hesabını Azure CLı kullanarak genel amaçlı v2 hesabına yükseltmek için önce Azure CLı 'nın en son sürümünü yüklemeniz gerekir. CLI yüklemesi hakkında bilgi için bkz. [Azure CLI 2.0’ı yükleme](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+Azure CLI'yi kullanarak genel amaçlı bir v1 hesabını genel amaçlı bir v2 hesabına yükseltmek için önce Azure CLI'nin en son sürümünü yükleyin. CLI yüklemesi hakkında bilgi için bkz. [Azure CLI 2.0’ı yükleme](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-Ardından, hesabı yükseltmek için, kaynak grubu adı, depolama hesabı adı ve istenen hesap erişim katmanınızı değiştirerek aşağıdaki komutu çağırın.
+Ardından, kaynak grup adınızı, depolama hesabı adınızı ve istediğiniz hesap erişim katmanını yerine koymak için hesabı yükseltmek için aşağıdaki komutu arayın.
 
-```cli
+```azurecli
 az storage account update -g <resource-group> -n <storage-account> --set kind=StorageV2 --access-tier=<Hot/Cool>
 ```
 
@@ -60,26 +60,26 @@ az storage account update -g <resource-group> -n <storage-account> --set kind=St
 
 ## <a name="specify-an-access-tier-for-blob-data"></a>Blob verileri için bir erişim katmanı belirtin
 
-Genel amaçlı v2 hesapları tüm Azure depolama hizmetleri ve veri nesnelerini destekler, ancak erişim katmanları yalnızca BLOB depolama alanındaki blok Blobları için geçerlidir. Genel amaçlı v2 depolama hesabına yükselttiğinizde, tek bir blob erişim katmanı parametresi belirtilmediyse blob verilerinizin karşıya yükleneceği varsayılan katmanı belirten, varsayılan bir hesap erişim katmanı olan sık erişimli veya seyrek erişimli ' i belirtebilirsiniz.
+Genel amaçlı v2 hesapları tüm Azure depolama hizmetlerini ve veri nesnelerini destekler, ancak erişim katmanları yalnızca Blob depolama alanındaki blob'ları engellemek için kullanılabilir. Genel amaçlı bir v2 depolama hesabına yükselttiğinizde, tek tek blob erişim katmanı parametresi belirtilmemiş gibi varsayılan katmanı gösterir sıcak veya serin bir varsayılan hesap erişim katmanı belirtebilirsiniz.
 
-Blob erişim katmanları, tahmin edilen kullanım desenlerinize göre en düşük maliyetli depolamayı seçmenizi sağlar. Blok Blobları, sık erişimli, seyrek erişimli veya arşiv katmanlarında depolanabilir. Erişim katmanları hakkında daha fazla bilgi için bkz. [Azure Blob depolama: sık erişimli, seyrek erişimli ve arşiv depolama katmanları](../blobs/storage-blob-storage-tiers.md).
+Blob erişim katmanları, beklenen kullanım alışkanlıklarınıza göre en uygun maliyetli depolama alanını seçmenizi sağlar. Blok lekeleri sıcak, serin veya arşiv katmanlarında saklanabilir. Erişim katmanları hakkında daha fazla bilgi için [Azure Blob depolama alanı: Sıcak, Serin ve Arşiv depolama katmanlarına](../blobs/storage-blob-storage-tiers.md)bakın.
 
-Varsayılan olarak, etkin erişim katmanında yeni bir depolama hesabı oluşturulur ve genel amaçlı v1 depolama hesabı, sık veya seyrek erişimli hesap katmanına yükseltilebilir. Yükseltme sırasında bir hesap erişim katmanı belirtilmemişse, varsayılan olarak etkin ' e yükseltilir. Yükseltmeniz için hangi erişim katmanının kullanılacağını araştırıyorsanız, geçerli veri kullanımı senaryonuzu değerlendirin. Genel amaçlı v2 hesabına geçiş için iki tipik Kullanıcı senaryosu vardır:
+Varsayılan olarak, sıcak erişim katmanında yeni bir depolama hesabı oluşturulur ve genel amaçlı bir v1 depolama hesabı sıcak veya havalı hesap katmanına yükseltilebilir. Yükseltmede bir hesap erişim katmanı belirtilmemişse, varsayılan olarak sıcak olarak yükseltilir. Yükseltmeniz için hangi erişim katmanının kullanılacağını keşfediyorsanız, geçerli veri kullanım senaryonuzu göz önünde bulundurun. Genel amaçlı bir v2 hesabına geçiş için iki tipik kullanıcı senaryosu vardır:
 
-* Genel amaçlı bir v1 depolama hesabınız var ve genel amaçlı v2 depolama hesabına yükseltmeyi, blob verileri için doğru depolama erişim katmanıyla birlikte değerlendirmek istiyorsunuz.
-* Genel amaçlı v2 depolama hesabı kullanmaya karar verdiniz veya zaten bir tane var ve blob verileri için sık veya seyrek erişimli depolama erişim katmanını kullanmanız gerekip gerekmediğini değerlendirmek istediğinizi değerlendirin.
+* Varolan genel amaçlı bir v1 depolama hesabınız var ve blob verileri için doğru depolama erişim katmanıyla genel amaçlı v2 depolama hesabına yükseltmeyi değerlendirmek istiyorsunuz.
+* Genel amaçlı bir v2 depolama hesabı kullanmaya karar verdiniz veya zaten bir hesabınız var ve blob verileri için sıcak veya serin depolama erişim katmanını kullanıp kullanmadığınızı değerlendirmek istiyorsunuz.
 
-Her iki durumda da ilk öncelik, genel amaçlı v2 depolama hesabında depolanan verilerinize depolama, erişme ve bu verileri çalıştırma maliyetini tahmin etmek ve bunu geçerli maliyetlerle karşılaştırmaktır.
+Her iki durumda da, ilk öncelik, genel amaçlı bir v2 depolama hesabında depolanan verilerinizi depolama, erişim ve işletme maliyetini tahmin etmek ve bunu geçerli maliyetlerinizle karşılaştırmaktır.
 
 ## <a name="pricing-and-billing"></a>Fiyatlandırma ve Faturalama
 
-Bir v1 depolama hesabını genel amaçlı v2 hesabına yükseltmek ücretsizdir. Yükseltme işlemi sırasında istenen hesap katmanını belirtebilirsiniz. Yükseltme sırasında bir hesap katmanı belirtilmemişse, yükseltilen hesabın varsayılan hesap katmanı `Hot`olacaktır. Bununla birlikte, yükseltme sonrasında depolama erişim katmanını değiştirmek faturanızda değişikliklere neden olabilir, böylece yükseltme sırasında yeni hesap katmanının belirtilmesi önerilir.
+V1 depolama hesabını genel amaçlı bir v2 hesabına yükseltmek ücretsizdir. Yükseltme işlemi sırasında istenen hesap katmanını belirtebilirsiniz. Yükseltmede bir hesap katmanı belirtilmemişse, yükseltilen hesabın `Hot`varsayılan hesap katmanı . Ancak, yükseltmeden sonra depolama erişim katmanının değiştirilmesi faturanızda değişikliklere neden olabilir, bu nedenle yükseltme sırasında yeni hesap katmanının belirtilen bir durum dur.
 
 Tüm depolama hesapları, blob depolama için her blobun katmanını temel alan bir fiyatlandırma modelini kullanır. Bir depolama hesabını kullanırken aşağıdaki fatura değerlendirmeleri geçerlidir:
 
-* **Depolama maliyetleri**: depolanan veri miktarına ek olarak, veri depolamanın maliyeti depolama erişim katmanına göre farklılık gösterir. Katmanın erişim sıklığı düştükçe gigabayt başına ücret de azalır.
+* **Depolama maliyetleri**: Depolanan veri miktarına ek olarak, veri depolama maliyeti depolama erişim katmanına bağlı olarak değişir. Katmanın erişim sıklığı düştükçe gigabayt başına ücret de azalır.
 
-* **Veri erişimi maliyetleri**: Katmanın erişimi sıklığı düştükçe veri erişimi ücretleri artar. Seyrek erişimli ve arşiv depolama erişim katmanındaki veriler için, okuma için gigabayt başına veri erişim ücreti üzerinden ücretlendirilirsiniz.
+* **Veri erişimi maliyetleri**: Katmanın erişimi sıklığı düştükçe veri erişimi ücretleri artar. Serin ve arşiv depolama erişim katmanındaki veriler için, okumalar için gigabayt başına veri erişim ücreti ücretlendirilirsiniz.
 
 * **İşlem maliyetleri**: Tüm katmanlarda, erişim sıklığı düştükçe artan bir işlem başına ücret uygulanır.
 
@@ -87,24 +87,24 @@ Tüm depolama hesapları, blob depolama için her blobun katmanını temel alan 
 
 * **Giden veri aktarımı maliyetleri**: Giden veri aktarımları (bir Azure bölgesinin dışına aktarılan veriler), genel amaçlı depolama hesapları ile tutarlı şekilde gigabayt başına esaslı olarak bant genişliği kullanımı için fatura doğurur.
 
-* **Depolama erişim katmanını değiştirme**: hesap depolama erişim katmanını seyrek erişimli iken sık erişimli olarak değiştirmek, depolama hesabında mevcut olan tüm verileri okumaya eşit bir ücret doğurur. Ancak, hesap erişim katmanını sık erişimli iken seyrek erişimli olarak değiştirmek, tüm verileri seyrek erişimli katmana (yalnızca GPv2 hesapları) yazmaya eşit bir ücret doğurur.
+* **Depolama erişim katmanının değiştirilmesi**: Hesap depolama erişim katmanının serinden sıcaka değiştirilmesi, depolama hesabında bulunan tüm verilerin okunmasına eşit bir ücrete neden olur. Ancak, hesap erişim katmanının sıcaktan soğuğa değiştirilmesi, tüm verilerin serin katmana yazılmasına eşit bir ücrete neden olur (yalnızca GPv2 hesapları).
 
 > [!NOTE]
 > Depolama hesaplarına ilişkin fiyatlandırma modeli hakkında daha fazla bilgi için [Azure Depolama Fiyatlandırması](https://azure.microsoft.com/pricing/details/storage/) sayfasına bakın. Giden veri aktarımı ücretlerine ilişkin daha fazla bilgi için [Veri Aktarımları Fiyatlandırma Bilgileri](https://azure.microsoft.com/pricing/details/data-transfers/) sayfasına bakın.
 
-### <a name="estimate-costs-for-your-current-usage-patterns"></a>Geçerli kullanım desenleriniz için maliyetleri tahmin etme
+### <a name="estimate-costs-for-your-current-usage-patterns"></a>Geçerli kullanım deleleriniz için tahmini maliyetler
 
-Belirli bir katmandaki genel amaçlı v2 depolama hesabında blob verilerine depolama ve erişim maliyetini tahmin etmek için var olan kullanım modelinizi değerlendirin veya beklenen kullanım modelinizi yaklaşık olarak değerlendirin. Genel olarak, şunları bilmek istersiniz:
+Blob verilerini belirli bir katmandaki genel amaçlı bir v2 depolama hesabında depolama ve erişme maliyetini tahmin etmek için, varolan kullanım dedurumunuzu değerlendirin veya beklenen kullanım deseninize yaklaşın. Genel olarak, şunları bilmek istersiniz:
 
-* BLOB depolama tüketiminize, gigabayt cinsinden şunlar dahildir:
+* Blob depolama tüketiminiz, gigabaytlar, dahil:
   * Depolama hesabınızda ne kadar veri depolanıyor?
   * Aylık temelde veri hacmi nasıl değişiyor; yeni veriler sürekli eski verilerin yerini alıyor mu?
 
-* BLOB depolama verilerinize yönelik birincil erişim deseninin yanı sıra:
-  * Ne kadar veri okunmakta ve depolama hesabına yazıldı?
-  * Depolama hesabındaki verilerde kaç okuma işlemi ve yazma işlemi meydana gelir?
+* Blob depolama verileriniz için birincil erişim deseni:
+  * Depolama hesabından ne kadar veri okunuyor ve yazılıyor?
+  * Depolama hesabındaki verilerde kaç okuma işlemi ve yazma işlemleri oluşur?
 
-Gereksinimlerinize uygun en iyi erişim katmanına karar vermek için, blob veri kapasitenizi ve bu verilerin nasıl kullanıldığını belirlemek yararlı olabilir. Bu, hesabınız için izleme ölçümlerine bakarak en iyi şekilde yapılabilir.
+İhtiyaçlarınız için en iyi erişim katmanına karar vermek için, blob veri kapasitenizi ve bu verilerin nasıl kullanıldığını belirlemek yararlı olabilir. Bu, hesabınızın izleme ölçümlerine bakarak en iyi şekilde yapılabilir.
 
 ### <a name="monitoring-existing-storage-accounts"></a>Var olan depolama hesaplarını izleme
 
@@ -116,7 +116,7 @@ Daha fazla bilgi için bkz. [Storage Analytics Ölçümleri hakkında](https://m
 > Blob depolama hesapları, Tablo hizmeti uç noktasını yalnızca ilgili hesabın ölçüm verilerini depolamak ve bunlara erişmek için kullanıma sunar.
 
 Blob depolamada depolama tüketimini izlemek için kapasite ölçümlerini etkinleştirmeniz gerekir.
-Bu özellik etkinleştirildiğinde bir depolama hesabının Blob hizmeti için kapasite verileri günlük olarak kaydedilir ve aynı depolama hesabı içindeki *$MetricsCapacityBlob* tablosuna yazılan bir tablo girişi olarak kaydedilir.
+Bu etkinle, kapasite verileri bir depolama hesabının Blob hizmeti için günlük olarak kaydedilir ve aynı depolama hesabı içinde *$MetricsCapacityBlob* tabloya yazılmış bir tablo girişi olarak kaydedilir.
 
 Blob depolama hizmetinin veri erişim desenlerini izlemek için API’den saatlik işlem ölçümlerini etkinleştirmeniz gerekir. Saatlik işlem ölçümleri etkinleştirildiğinde API başına işlemler saatte bir toplanır ve aynı depolama hesabındaki *$MetricsHourPrimaryTransactionsBlob* tablosuna yazılan bir tablo girişi olarak kaydedilir. RA-GRS depolama hesapları kullanılırken *$MetricsHourSecondaryTransactionsBlob* tablosu, işlemleri ikincil uç noktaya kaydeder.
 
@@ -125,7 +125,7 @@ Blob depolama hizmetinin veri erişim desenlerini izlemek için API’den saatli
 
 Veri tüketim ve erişim modelinizi yaklaşık olarak tahmin etmek için, ölçümler için düzenli kullanımınızı temsil eden bir elde tutma süresi seçmeniz ve tahmin etmeniz önerilir. Seçeneklerden biri son yedi güne ait ölçüm verilerinin tutulması ve verilerin ay sonunda analiz için haftada bir toplanmasıdır. Diğer bir seçenek ise son 30 güne ait ölçüm verilerinin tutulması ve verilerin 30 günlük süre sonunda toplanıp çözümlenmesidir.
 
-Ölçüm verilerini etkinleştirme, toplama ve görüntüleme hakkında daha fazla bilgi için bkz. [Storage Analytics ölçümleri](../common/storage-analytics-metrics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+Metrik verileri etkinleştirme, toplama ve görüntüleme hakkındaki ayrıntılar için [Depolama analizi ölçümlerine](../common/storage-analytics-metrics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)bakın.
 
 > [!NOTE]
 > Analiz verilerinin depolanması, erişimi ve indirilmesi de normal kullanıcı verileri gibi ücretlendirilir.
@@ -144,7 +144,7 @@ Hem kullanıcı verileri hem de analiz günlükleri (etkinse) tarafından kullan
 
 Blob depolama hesaplarına ilişkin işlem maliyetlerini tahmin etmek için, farklı şekilde fiyatlandırıldıkları için işlemleri üç gruba ayırmanız gerekir.
 
-* *'PutBlob'* , *'PutBlock'* , *'PutBlockList'* , *'AppendBlock'* , *'ListBlobs'* , *'ListContainers'* , *'CreateContainer'* , *'SnapshotBlob'* ve *'CopyBlob'* gibi yazma işlemleri.
+* *'PutBlob'*, *'PutBlock'*, *'PutBlockList'*, *'AppendBlock'*, *'ListBlobs'*, *'ListContainers'*, *'CreateContainer'*, *'SnapshotBlob'* ve *'CopyBlob'* gibi yazma işlemleri.
 * *'DeleteBlob'* ve *'DeleteContainer'* gibi silme işlemleri.
 * Diğer tüm işlemler.
 
@@ -158,12 +158,12 @@ Blob depolama hesaplarına ilişkin veri erişimi maliyetlerini hesaplamak için
 
 * Depolama hesabından alınan veri miktarı birincil olarak *'GetBlob'* ve *'CopyBlob'* işlemleri için *'TotalEgress'* toplamına bakılarak tahmin edilebilir.
 
-* Depolama hesabına yazılan veri miktarı birincil olarak *'PutBlob'* , *'PutBlock'* , *'CopyBlob'* ve *'AppendBlock'* işlemleri için *'TotalIngress'* toplamına bakılarak tahmin edilebilir.
+* Depolama hesabına yazılan veri miktarı birincil olarak *'PutBlob'*, *'PutBlock'*, *'CopyBlob'* ve *'AppendBlock'* işlemleri için *'TotalIngress'* toplamına bakılarak tahmin edilebilir.
 
 Blob depolama hesaplarında coğrafi çoğaltma veri aktarımı maliyeti de bir GRS veya RA-GRS depolama hesabı kullanılırken yazılan veri miktarı tahmini kullanılarak hesaplanabilir.
 
 > [!NOTE]
-> Sık veya seyrek erişimli depolama erişim katmanını kullanma maliyetlerini hesaplama hakkında daha ayrıntılı bir örnek için, *' sık kullanılan ve seyrek erişimli erişim katmanları nelerdir ve hangisinin kullanılacağını nasıl belirlemeliyim? '* başlıklı SSS bölümüne göz atın. bkz. [Azure Depolama Fiyatlandırma Sayfası](https://azure.microsoft.com/pricing/details/storage/).
+> Sıcak veya havalı depolama erişim katmanını kullanmanın maliyetlerini hesaplama hakkında daha ayrıntılı bir örnek için, *'Sıcak ve Cool erişim katmanları nedir ve hangisini kullanacağımı nasıl belirlemem gerekir?'* başlıklı SSS'ye bir göz atın. bkz. [Azure Depolama Fiyatlandırma Sayfası](https://azure.microsoft.com/pricing/details/storage/).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

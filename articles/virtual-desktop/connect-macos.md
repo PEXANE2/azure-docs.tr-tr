@@ -1,6 +1,6 @@
 ---
-title: MacOS-Azure ' dan Windows sanal masaüstüne bağlanma
-description: MacOS istemcisini kullanarak Windows sanal masaüstüne bağlanma.
+title: macOS'tan Windows Sanal Masaüstüne bağlanın - Azure
+description: macOS istemcisini kullanarak Windows Sanal Masaüstüne nasıl bağlanabilirsiniz?
 services: virtual-desktop
 author: heidilohr
 ms.service: virtual-desktop
@@ -9,39 +9,39 @@ ms.date: 12/13/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 673c20355e9ad4abf2c8318b3eb2ebbcc36ed8fd
-ms.sourcegitcommit: f97d3d1faf56fb80e5f901cd82c02189f95b3486
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/11/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79128237"
 ---
 # <a name="connect-with-the-macos-client"></a>macOS istemcisiyle bağlanma
 
-> Uygulama hedefi: macOS 10,12 veya üzeri
+> Şu şekilde uygulanır: macOS 10.12 veya sonraki
 
-Windows sanal masaüstü kaynaklarına, macOS cihazlarınızdan indirilebilir istemcimizi kullanarak erişebilirsiniz. Bu kılavuz, istemcisini nasıl ayarlayacağınızı bildirir.
+İndirilebilir istemcimiz ile macOS aygıtlarınızdan Windows Sanal Masaüstü kaynaklarına erişebilirsiniz. Bu kılavuz, istemciyi nasıl ayarlayacağınızı size söyleyecektir.
 
-## <a name="install-the-client"></a>İstemciyi yükler
+## <a name="install-the-client"></a>İstemciyi yükleme
 
-Başlamak için [indirin](https://apps.apple.com/app/microsoft-remote-desktop/id1295203466?mt=12) ve Istemciyi MacOS cihazınıza yükleyin.
+Başlamak için istemciyi macOS aygıtınıza [indirin](https://apps.apple.com/app/microsoft-remote-desktop/id1295203466?mt=12) ve yükleyin.
 
-## <a name="subscribe-to-a-feed"></a>Bir akışa abone olma
+## <a name="subscribe-to-a-feed"></a>Özet akışına abone ol
 
-Size, macOS cihazınızda kullanabileceğiniz yönetilen kaynakların listesini almak için yöneticinize verdiği akışa abone olun.
+Yöneticinizin macOS aygıtınızda kullanabileceğiniz yönetilen kaynakların listesini almak için size verdiği özet akışına abone olun.
 
-Bir akışa abone olmak için:
+Özet akışına abone olmak için:
 
-1. Hizmete bağlanmak ve kaynaklarınızı almak için ana sayfada **akış Ekle** ' yi seçin.
-2. Akış URL 'sini girin. Bu bir URL veya e-posta adresi olabilir:
-   - Bir URL kullanıyorsanız, yöneticinizin size verdiği bir URL 'yi kullanın. Genellikle, URL <https://rdweb.wvd.microsoft.com>.
-   - E-posta kullanmak için e-posta adresinizi girin. Bu, yönetici sunucuyu bu şekilde yapılandırdıysa, istemciye e-posta adresinizle ilişkili bir URL aramasını söyler.
-3. **Abone ol**' u seçin.
+1. Hizmete bağlanmak ve kaynaklarınızı almak için ana sayfadaki **Yayın Ekle'yi** seçin.
+2. Özet Akışı URL'sini girin. Bu bir URL veya e-posta adresi olabilir:
+   - BIR URL kullanıyorsanız, yöneticinizin size verdiği URL'yi kullanın. Normalde, URL' <https://rdweb.wvd.microsoft.com>dir.
+   - E-postakullanmak için e-posta adresinizi girin. Bu, yöneticiniz sunucuyu bu şekilde yapılandırırsa istemciye e-posta adresinizle ilişkili bir URL aramasını söyler.
+3. **Abone Ol'u**seçin.
 4. İstendiğinde kullanıcı hesabınızla oturum açın.
 
-Oturum açtıktan sonra, kullanılabilir kaynakların bir listesini görmeniz gerekir.
+Oturum imzaladıktan sonra kullanılabilir kaynakların bir listesini görmeniz gerekir.
 
-Bir akışa abone olduktan sonra, akışın içeriği düzenli aralıklarla otomatik olarak güncelleşmeyecektir. Kaynaklar, yöneticiniz tarafından yapılan değişikliklere göre eklenebilir, değiştirilebilir veya kaldırılabilir.
+Bir özet akışına abone olduktan sonra, özet akışının içeriği düzenli olarak otomatik olarak güncellenir. Kaynaklar, yöneticiniz tarafından yapılan değişikliklere göre eklenebilir, değiştirilebilir veya kaldırılabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-MacOS istemcisi hakkında daha fazla bilgi edinmek için [MacOS istemcisini kullanmaya başlama](/windows-server/remote/remote-desktop-services/clients/remote-desktop-mac/) belgesine göz atın.
+macOS istemcisi hakkında daha fazla bilgi edinmek için [macOS istemci belgeleriyle başlayın'a](/windows-server/remote/remote-desktop-services/clients/remote-desktop-mac/) göz atın.

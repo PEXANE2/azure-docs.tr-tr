@@ -1,6 +1,6 @@
 ---
-title: Apache Phoenix ile Azure HDInsight 'ta Apache temel sorguları çalıştırma
-description: Apache Zeppelin kullanarak Apache temel sorgularını Phoenix ile çalıştırma hakkında bilgi edinin.
+title: Apache Phoenix ile Azure HDInsight'ta Apache Base sorgularını çalıştırın
+description: Apache Zeppelin'i Phoenix ile Apache Base sorgularını çalıştırmak için nasıl kullanacağınızı öğrenin.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,44 +9,44 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.openlocfilehash: 28eeb446e55213f1ffa0a638878f6432fd15a05a
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/16/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "72392247"
 ---
-# <a name="use-apache-zeppelin-to-run-apache-phoenix-queries-over-apache-hbase-in-azure-hdinsight"></a>Azure HDInsight 'ta Apache HBase üzerinde Apache Phoenix sorguları çalıştırmak için Apache Zeppelin kullanma
+# <a name="use-apache-zeppelin-to-run-apache-phoenix-queries-over-apache-hbase-in-azure-hdinsight"></a>Azure HDInsight'ta Apache HBase üzerinden Apache Phoenix sorgularını çalıştırmak için Apache Zeppelin'i kullanın
 
-Apache Phoenix, HBase üzerinde oluşturulan açık kaynaklı, yüksek düzeyde paralel ilişkisel veritabanı katmanıdır. Phoenix, HBase üzerinde SQL gibi sorgular kullanmanıza olanak sağlar. Phoenix, SQL tabloları, dizinleri, görünümleri ve dizileri oluşturmanıza, silebilmeniz, bunları silmenizi sağlamak için, altında JDBC sürücülerini kullanır.  Ayrıca, satırları ayrı ayrı ve toplu olarak güncelleştirmek için Phoenix 'i de kullanabilirsiniz. Phoenix, sorguları derlemek için MapReduce kullanmak yerine bir NOSQL yerel derleme kullanır ve bu, HBase üzerinde düşük gecikmeli uygulamalar oluşturulmasını sağlar.
+Apache Phoenix açık kaynak kodlu, kitlesel paralel ilişkisel veritabanı katmanı HBase üzerine inşa edilmiştir. Phoenix HBase üzerinde sorguları gibi SQL kullanmanıza olanak sağlar. Phoenix, SQL tablolarını, dizinleri, görünümleri ve dizileri oluşturmanızı, silmenizi, değiştirmenizi sağlamak için altında JDBC sürücülerini kullanır.  Satırları tek tek ve toplu olarak güncelleştirmek için Phoenix'i de kullanabilirsiniz. Phoenix, sorguları derlemek için MapReduce'ı kullanmak yerine NOSQL yerel derlemesi kullanarak HBase'in üstünde düşük gecikmeli uygulamalar oluşturulmasını sağlar.
 
-Apache Zeppelin, etkileşimli veri analizlerini ve SQL ve Scala gibi dilleri kullanarak veri odaklı, işbirlikçi belgeler oluşturmanızı sağlayan açık kaynaklı, Web tabanlı bir not Defterinizdir. Veri geliştiricilerinin veri uzmanları tarafından veri işleme için kod geliştirme, düzenleme, yürütme ve paylaşma & yardımcı olur. Bu, komut satırına başvurmadan veya küme ayrıntılarına gerek kalmadan sonuçları görselleştirmenize olanak tanır.
+Apache Zeppelin, etkileşimli veri analitiği ve SQL ve Scala gibi dilleri kullanarak veri odaklı, işbirlikçi belgeler oluşturmanıza olanak tanıyan açık kaynaklı web tabanlı bir dizüstü bilgisayardır. Veri geliştiricilerin, veri bilimcileri & veri işleme için kod geliştirmelerine, düzenlemelerine, yürütmelerine ve paylaşmamıza yardımcı olur. Komut satırına atıfta bulunmaksızın veya küme ayrıntılarına ihtiyaç duymadan sonuçları görselleştirmenizi sağlar.
 
-HDInsight kullanıcıları, Phoenix tablolarını sorgulamak için Apache Zeppelin kullanabilirler. Apache Zeppelin, HDInsight kümesiyle tümleşiktir ve bunu kullanmak için başka bir adım yoktur. JDBC yorumlayıcı ile Zeppelin Not defteri oluşturmanız ve Phoenix SQL sorgularınızı yazmaya başlamanız yeterlidir
+HDInsight kullanıcıları Phoenix tablolarını sorgulamak için Apache Zeppelin'i kullanabilir. Apache Zeppelin HDInsight kümesi ile entegre edilmiştir ve kullanmak için ek adım yoktur. JDBC tercümanı ile bir Zeppelin Notebook oluşturmanız ve Phoenix SQL sorgularınızı yazmaya başlamanız yeterlidir
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-HDInsight 'ta Apache HBase kümesi. Bkz. [Apache HBase ile çalışmaya başlama](./apache-hbase-tutorial-get-started-linux.md).
+HDInsight'ta bir Apache HBase kümesi. Bkz. [Apache HBase ile başlayın.](./apache-hbase-tutorial-get-started-linux.md)
 
-## <a name="create-an-apache-zeppelin-note"></a>Apache Zeppelin notunun oluşturulması
+## <a name="create-an-apache-zeppelin-note"></a>Apache Zeppelin Notu Oluşturma
 
-1. @No__t-0 değerini aşağıdaki URL `https://CLUSTERNAME.azurehdinsight.net/zeppelin` ' de kümenizin adıyla değiştirin. Sonra URL 'YI bir Web tarayıcısına girin. Küme oturum açma kullanıcı adınızı ve parolanızı girin.
+1. Aşağıdaki `CLUSTERNAME` URL'de `https://CLUSTERNAME.azurehdinsight.net/zeppelin`kümenizin adı ile değiştirin. Ardından URL'yi bir web tarayıcısı girin. Küme giriş kullanıcı adınızı ve şifrenizi girin.
 
-1. Zeppelin sayfasında **Yeni dekont oluştur**' u seçin.
+1. Zeppelin sayfasından **yeni not oluştur'u**seçin.
 
-    ![HDInsight etkileşimli sorgu Zeppelin](./media/apache-hbase-phoenix-zeppelin/hbase-zeppelin-create-note.png)
+    ![HDInsight İnteraktif Sorgu zeplin](./media/apache-hbase-phoenix-zeppelin/hbase-zeppelin-create-note.png)
 
-1. **Yeni nota oluştur** iletişim kutusunda aşağıdaki değerleri yazın veya seçin:
+1. Yeni **not oluştur** iletişim kutusundan aşağıdaki değerleri yazın veya seçin:
 
-    - Note adı: nota bir ad girin.
-    - Varsayılan yorumlayıcı: açılan listeden **JDBC** ' ı seçin.
+    - Not Adı: Notun adını girin.
+    - Varsayılan yorumlayıcı: Açılan listeden **jdbc'yi** seçin.
 
-    Ardından, **Note oluştur**' u seçin.
+    Ardından **Not Oluştur'u**seçin.
 
-1. Not defteri üstbilgisinin bağlı bir durum belirttiğinden emin olun. Sağ üst köşedeki yeşil noktayla gösterilir.
+1. Not defteri üstbilginin bağlı bir durum gösterdiğinden emin olun. Sağ üst köşedeki yeşil bir noktayla gösterilir.
 
-    ![Zeppelin Not defteri durumu](./media/apache-hbase-phoenix-zeppelin/hbase-zeppelin-connected.png "Zeppelin Not defteri durumu")
+    ![Zeppelin not defteri durumu](./media/apache-hbase-phoenix-zeppelin/hbase-zeppelin-connected.png "Zeppelin not defteri durumu")
 
-1. Bir HBase tablosu oluşturun. Aşağıdaki komutu girin ve ardından **SHIFT + enter**tuşlarına basın:
+1. Bir HBase tablosu oluşturun. Aşağıdaki komutu girin ve sonra **Shift + Enter**tuşuna basın :
 
     ```sql
     %jdbc(phoenix)
@@ -56,7 +56,7 @@ HDInsight 'ta Apache HBase kümesi. Bkz. [Apache HBase ile çalışmaya başlama
     );
     ```
 
-    İlk satırdaki **% JDBC (Phoenix)** deyimleri, Not DEFTERINE Phoenix JDBC yorumlayıcı kullanmasını söyler.
+    İlk satırdaki **%jdbc(phoenix)** deyimi not defterine Phoenix JDBC yorumlayıcısını kullanmasını söyler.
 
 1. Oluşturulan tabloları görüntüleyin.
 
@@ -67,7 +67,7 @@ HDInsight 'ta Apache HBase kümesi. Bkz. [Apache HBase ile çalışmaya başlama
     WHERE table_schem is null or table_schem <> 'SYSTEM';
     ```
 
-1. Tablodaki değerleri ekleyin.
+1. Tabloya değerleri ekleyin.
 
     ```sql
     %jdbc(phoenix)
@@ -75,7 +75,7 @@ HDInsight 'ta Apache HBase kümesi. Bkz. [Apache HBase ile çalışmaya başlama
     UPSERT INTO dbo.Company (name, company_id) VALUES('Apache', 2);
     ```
 
-1. Tabloyu sorgulayın.
+1. Tabloyu sorgula.
 
     ```sql
     %jdbc(phoenix)
@@ -89,7 +89,7 @@ HDInsight 'ta Apache HBase kümesi. Bkz. [Apache HBase ile çalışmaya başlama
     DELETE FROM dbo.Company WHERE COMPANY_ID=1;
     ```
 
-1. Tabloyu bırakın.
+1. Masayı bırak.
 
     ```sql
     %jdbc(phoenix)
@@ -98,5 +98,5 @@ HDInsight 'ta Apache HBase kümesi. Bkz. [Apache HBase ile çalışmaya başlama
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Apache Phoenix artık Azure HDInsight 'ta Zeppelin 'i destekliyor](https://blogs.msdn.microsoft.com/ashish/2018/08/17/apache-phoenix-now-supports-zeppelin-in-azure-hdinsight/)
+- [Apache Phoenix artık Azure HDInsight'ta Zeppelin'i destekliyor](https://blogs.msdn.microsoft.com/ashish/2018/08/17/apache-phoenix-now-supports-zeppelin-in-azure-hdinsight/)
 - [Apache Phoenix dilbilgisi](https://phoenix.apache.org/language/index.html)

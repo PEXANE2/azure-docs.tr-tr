@@ -1,6 +1,6 @@
 ---
-title: Azure Cosmos DB sorgu dilinde daha düşük
-description: Büyük harfli karakter verilerini küçük harfe dönüştürdükten sonra bir dize ifadesi döndürmek için Azure Cosmos DB alt SQL sistem işlevi hakkında bilgi edinin
+title: Azure Cosmos DB sorgu dilinde ALT
+description: Azure Cosmos DB'deki ALT SQL sistem işlevi hakkında bilgi edinin ve büyük harf karakter verilerini küçük harfe dönüştürdükten sonra dize ifadesini döndürün
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,16 +8,16 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 80dba57d4fe05630eb5ae4f8fc96bd0aa214c6d4
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78302279"
 ---
-# <a name="lower-azure-cosmos-db"></a>DAHA düşük (Azure Cosmos DB)
- Büyük harf karakter verileri küçük harfe dönüştürmenin sonra bir dize ifadesi döndürür.  
+# <a name="lower-azure-cosmos-db"></a>ALT (Azure Cosmos DB)
+ Büyük harf karakter verilerini küçük harfe dönüştürdükten sonra bir dize ifadesi döndürür.  
 
-ALT sistem işlevi dizin kullanmaz. Büyük/küçük harfe duyarsız karşılaştırmalar yapmak için plan yaparsanız, alt sistem işlevi önemli miktarda RU 'yı kullanabilir. Bu durumda, karşılaştırmalar için her seferinde verileri normalleştirmek için alt sistem işlevini kullanmak yerine, ekleme sırasında büyük/küçük harfleri normalleştirin. Ardından, SELECT * FROM c, LOWER (c. Name) = ' Bob ' gibi bir sorgu yalnızca c.name = ' Bob ' olarak SELECT * FROM c.
+LOWER sistem işlevi dizini kullanmaz. Sık sık duyarsız karşılaştırmalar yapmayı planlıyorsanız, ALT sistem işlevi önemli miktarda RU tüketebilir. Bu durumda, karşılaştırmalar için her seferinde verileri normalleştirmek için ALT sistem işlevini kullanmak yerine, ekleme üzerine kasanormalleştirebilirsiniz. Daha sonra SELECT * FROM c WHERE LOWER(c.name) = 'bob' gibi bir sorgu sadece SELECT * FROM c WHERE c.name = 'bob' olur.
 
 ## <a name="syntax"></a>Sözdizimi
   
@@ -30,13 +30,13 @@ LOWER(<str_expr>)
 *str_expr*  
    Bir dize ifadesidir.  
   
-## <a name="return-types"></a>Dönüş türleri
+## <a name="return-types"></a>İade türleri
   
-  Bir dize ifadesi döndürür.  
+  Dize ifadesini döndürür.  
   
 ## <a name="examples"></a>Örnekler
   
-  Aşağıdaki örnek, `LOWER` bir sorguda nasıl kullanılacağını gösterir.  
+  Aşağıdaki örnekte, sorguda nasıl kullanılacağı `LOWER` gösterilmektedir.  
   
 ```sql
 SELECT LOWER("Abc") AS lower
@@ -51,10 +51,10 @@ SELECT LOWER("Abc") AS lower
 
 ## <a name="remarks"></a>Açıklamalar
 
-Bu sistem işlevi dizinden yararlanmayacak.
+Bu sistem işlevi dizini kullanmaz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Dize işlevleri Azure Cosmos DB](sql-query-string-functions.md)
-- [Sistem işlevleri Azure Cosmos DB](sql-query-system-functions.md)
-- [Azure Cosmos DB giriş](introduction.md)
+- [String fonksiyonları Azure Cosmos DB](sql-query-string-functions.md)
+- [Sistem fonksiyonları Azure Cosmos DB](sql-query-system-functions.md)
+- [Azure Cosmos DB'ye Giriş](introduction.md)

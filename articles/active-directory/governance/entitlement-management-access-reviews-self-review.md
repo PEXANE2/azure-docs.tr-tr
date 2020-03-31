@@ -1,6 +1,6 @@
 ---
-title: Azure AD Yetkilendirme Yönetimi 'nde bir erişim paketini kendi kendine gözden geçirme
-description: Azure Active Directory erişim gözden geçirmeleri (Önizleme) içinde, Yetkilendirme Yönetimi erişim paketlerine yönelik Kullanıcı erişimini gözden geçirmeyi öğrenin.
+title: Azure AD yetkilendirme yönetiminde bir erişim paketinin kendi kendine gözden geçirilmesi
+description: Azure Active Directory erişim incelemelerinde yetkilendirme yönetimi erişim paketlerinin kullanıcı erişimini nasıl inceleyiş olarak inceleyiş gösterebilirsiniz (Önizleme).
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -17,48 +17,48 @@ ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 45da1170705bab1206a98c59e02c7616c25ce502
-ms.sourcegitcommit: 5f39f60c4ae33b20156529a765b8f8c04f181143
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/10/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78967765"
 ---
-# <a name="self-review-of-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD Yetkilendirme Yönetimi 'nde bir erişim paketini kendi kendine gözden geçirme
+# <a name="self-review-of-an-access-package-in-azure-ad-entitlement-management"></a>Azure AD yetkilendirme yönetiminde bir erişim paketinin kendi kendine gözden geçirilmesi
 
-Azure AD Yetkilendirme Yönetimi, kuruluşların gruplara, uygulamalara ve SharePoint sitelerine erişimi nasıl yöneteceğini basitleştirir. Bu makalede, bir kullanıcının kendilerine atanan erişim paketleri için nasıl kendi kendini gözden geçirme yöntemi açıklanır.
+Azure AD yetkilendirme yönetimi, işletmelerin gruplara, uygulamalara ve SharePoint sitelerine erişimi nasıl yönettiğini basitleştirir. Bu makalede, bir kullanıcının atanan erişim paketini (ler) nasıl kendi kendine gözden geçirdiğini açıklamaktadır.
 
-## <a name="open-the-access-review"></a>Erişim gözden geçirmesini açın
+## <a name="open-the-access-review"></a>Erişim incelemesini açma
 
-Erişim gözden geçirmesi yapmak için, önce erişim gözden geçirmeyi açmanız gerekir. Erişim gözden geçirmesini bulmak ve açmak için aşağıdaki yordamı kullanın:
+Erişim incelemesi yapmak için önce erişim incelemesini açmanız gerekir. Erişim incelemesini bulmak ve açmak için aşağıdaki yordamı kullanın:
 
-1. Microsoft 'tan erişimi incelemenizi isteyen bir e-posta alabilirsiniz. Erişim gözden geçirmesini açmak için e-postayı bulun. Erişim gözden geçirmesi isteyen bir e-posta örneği aşağıda verilmiştir: 
+1. Microsoft'tan erişimi gözden geçirmenizi isteyen bir e-posta alabilirsiniz. Erişim incelemesini açmak için e-postayı bulun. Erişimin gözden geçirilmesini isteyen bir e-posta örneği aşağıda verilmiştir: 
     
-    ![Erişim gözden geçiren kendi e-postası](./media/entitlement-management-access-reviews-review-access/self-review-reviewer-email.png)
+    ![Kendi kendini gözden geçiren e-postaya erişin](./media/entitlement-management-access-reviews-review-access/self-review-reviewer-email.png)
 
-1. **Erişimi gözden geçir** bağlantısına tıklayın.
+1. Erişim bağlantısını **gözden geçir'i** tıklatın.
 
-1. Ayrıca, e-posta almazsanız bekleyen erişim incelemelerinizi bulmak için https://myaccess.microsoft.com doğrudan da gidebilirsiniz.  (ABD kamu için bunun yerine `https://myaccess.microsoft.us` kullanın.)
+1. Ayrıca, e-posta https://myaccess.microsoft.com almazsanız bekleyen erişim yorumlarınızı bulmak için doğrudan gidebilirsiniz.  (ABD Hükümeti için, bunun yerine kullanın.) `https://myaccess.microsoft.us`
 
-1. Size atanan bekleyen erişim incelemelerinin listesini görmek için sol gezinti çubuğundaki **erişim İncelemeleri** ' ne tıklayın.
+1. Size atanan bekleyen erişim yorumlarının listesini görmek için sol daki gezinti çubuğundaki **Erişim yorumlarını** tıklatın.
 
 
-1.  Başlamak istediğiniz gözden geçirmeyi tıklatın.
+1.  Başlamak istediğiniz incelemeyi tıklatın.
 
-## <a name="perform-the-access-review"></a>Erişim gözden geçirmesini gerçekleştir
+## <a name="perform-the-access-review"></a>Erişim incelemesini gerçekleştirme
 
-Erişim gözden geçirmesini açtığınızda erişiminizi görebilirsiniz. Erişim gözden geçirmesini yapmak için aşağıdaki yordamı kullanın:
+Erişim incelemesini açtıktan sonra erişiminizi görebilirsiniz. Erişim incelemesini yapmak için aşağıdaki yordamı kullanın:
 
-1.  Erişim paketine erişmeye hala ihtiyacınız olup olmadığına karar verin. Örneğin, üzerinde çalıştığınız proje tamamlanmamış olduğundan proje üzerinde çalışmaya devam etmek için hala erişmeniz gerekir.
+1.  Erişim paketine hala erişmeye ihtiyacınız olup olmadığına karar verin. Örneğin, üzerinde çalıştığınız proje tamamlanmadığından, proje üzerinde çalışmaya devam etmek için yine de erişime ihtiyacınız var.
 
-1.  Erişiminizi korumak için **Evet** ' e tıklayın veya erişiminizi kaldırmak için **Hayır** ' a tıklayın.
+1.  Erişiminizi korumak için **Evet'i** tıklatın veya erişiminizi kaldırmak için **Hayır'ı** tıklatın.
     >[!NOTE]
-    >Artık erişime ihtiyaç duymadığını belirtirseniz, erişim paketinden hemen kaldırılmamıştır. İnceleme sona erdiğinde veya bir yönetici incelemeyi durdurduğu zaman erişim paketinden kaldırılır.
+    >Artık erişime ihtiyacınız olmadığını belirttiyseniz, erişim paketinden hemen kaldırılmaz. İnceleme sona erdiğinde veya yönetici incelemeyi durdurursa erişim paketinden kaldırılırsınız.
 
-1.  **Evet**' e tıkladıysanız, **neden** kutusuna bir gerekçe açıklaması eklemeniz gerekebilir.
+1.  **Evet'i**tıklattıysanız, **Neden** kutusuna bir yama bildirimi eklemeniz gerekebilir.
 
-1.  **Gönder**'e tıklayın.
+1.  **Gönder'i**tıklatın.
 
-Fikrinizi değiştirirseniz ve gözden geçirmeyi sonlandırmadan önce yanıtınızı değiştirmeye karar verirseniz incelemeye geri dönebilirsiniz.
+Fikrinizi değiştirir ve inceleme nin bitiminden önce yanıtınızı değiştirmeye karar verirseniz incelemeye geri dönebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

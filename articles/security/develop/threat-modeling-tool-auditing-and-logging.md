@@ -1,6 +1,6 @@
 ---
-title: Denetleme ve günlüğe kaydetme-Microsoft Threat Modeling Tool-Azure | Microsoft Docs
-description: Threat Modeling Tool kullanıma sunulan tehditler için azaltmaları
+title: Denetim ve Günlük - Microsoft Tehdit Modelleme Aracı - Azure | Microsoft Dokümanlar
+description: Tehdit Modelleme Aracı'nda açığa çıkan tehditler için azaltıcı etkenler
 services: security
 documentationcenter: na
 author: jegeib
@@ -16,159 +16,159 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.openlocfilehash: c9d20b3259cf4ea7af263d5e31145ad372db0c77
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "68728407"
 ---
-# <a name="security-frame-auditing-and-logging--mitigations"></a>Güvenlik çerçevesi: Denetleme ve günlüğe kaydetme | Karşı 
+# <a name="security-frame-auditing-and-logging--mitigations"></a>Güvenlik Çerçevesi: Denetim ve Günlük | Azaltıcı etken 
 
-| Ürün/hizmet | Makale |
+| Ürün / Hizmet | Makale |
 | --------------- | ------- |
-| **Dynamics CRM**    | <ul><li>[Çözümünüzde hassas varlıkları tanımla ve değişiklik denetimini Uygula](#sensitive-entities)</li></ul> |
-| **Web uygulaması** | <ul><li>[Uygulama üzerinde denetim ve günlük uygulanmasını sağlayın](#auditing)</li><li>[Günlük dönüşü ve ayrımı olduğundan emin olun](#log-rotation)</li><li>[Uygulamanın hassas kullanıcı verilerini günlüğe içermediğinden emin olun](#log-sensitive-data)</li><li>[Denetim ve günlük dosyalarının kısıtlı erişime sahip olduğundan emin olun](#log-restricted-access)</li><li>[Kullanıcı yönetimi olaylarının günlüğe kaydedildiğinden emin olun](#user-management)</li><li>[Sistemin kötüye kullanılmasına karşı savunmaları olmadığından emin olun](#inbuilt-defenses)</li><li>[Azure App Service'te web apps için tanılama günlüğünü etkinleştirme](#diagnostics-logging)</li></ul> |
-| **Veritabanı** | <ul><li>[SQL Server oturum açma denetiminin etkinleştirildiğinden emin olun](#identify-sensitive-entities)</li><li>[Azure SQL 'de tehdit algılamayı etkinleştirme](#threat-detection)</li></ul> |
-| **Azure Depolama** | <ul><li>[Azure Storage erişimini denetlemek için Azure Depolama Analizi kullanma](#analytics)</li></ul> |
-| **WCF** | <ul><li>[Yeterli günlüğü uygulama](#sufficient-logging)</li><li>[Yeterli denetim hatası Işleme uygulama](#audit-failure-handling)</li></ul> |
-| **Web API** | <ul><li>[Web API 'sinde denetim ve günlük uygulanmasını sağlayın](#logging-web-api)</li></ul> |
-| **IoT alan ağ geçidi** | <ul><li>[Alan ağ geçidinde uygun denetim ve günlüğün uygulanmasını sağlayın](#logging-field-gateway)</li></ul> |
-| **IoT bulut ağ geçidi** | <ul><li>[Bulut ağ geçidinde uygun denetim ve günlüğün zorlandığından emin olun](#logging-cloud-gateway)</li></ul> |
+| **Dynamics CRM**    | <ul><li>[Çözümünüzdeki hassas varlıkları belirleyin ve değişiklik denetimi uygulayın](#sensitive-entities)</li></ul> |
+| **Web Uygulaması** | <ul><li>[Uygulama üzerinde denetim ve günlüğe kaydetmenin uygulandığından emin olun](#auditing)</li><li>[Günlük döndürme ve ayırmanın yerinde olduğundan emin olun](#log-rotation)</li><li>[Uygulamanın hassas kullanıcı verilerini günlüğe kaydetmediğinden emin olun](#log-sensitive-data)</li><li>[Denetim ve Günlük Dosyalarının Sınırlı Erişime sahip olduğundan emin olun](#log-restricted-access)</li><li>[Kullanıcı Yönetimi Etkinliklerinin Günlüğe Kaydedilmesini Sağlayın](#user-management)</li><li>[Sistemin kötüye kullanıma karşı dahili savunmaya sahip olduğundan emin olun](#inbuilt-defenses)</li><li>[Azure Uygulama Hizmeti'nde web uygulamaları için tanılama günlemesini etkinleştirme](#diagnostics-logging)</li></ul> |
+| **Database** | <ul><li>[SQL Server'da oturum açma denetiminin etkin olduğundan emin olun](#identify-sensitive-entities)</li><li>[Azure SQL'de Tehdit algılamayı etkinleştirme](#threat-detection)</li></ul> |
+| **Azure Depolama** | <ul><li>[Azure Depolama'nın erişimini denetlemek için Azure Depolama Analizi'ni kullanın](#analytics)</li></ul> |
+| **WCF** | <ul><li>[Yeterli Günlük Uygulama](#sufficient-logging)</li><li>[Yeterli Denetim Hatası İşleme Uygulama](#audit-failure-handling)</li></ul> |
+| **Web API** | <ul><li>[Web API'de denetim ve günlüğe kaydetmenin uygulandığından emin olun](#logging-web-api)</li></ul> |
+| **IoT Alan Ağ Geçidi** | <ul><li>[Alan Ağ Geçidi'nde uygun denetim ve günlüğe kaydetmenin uygulandığından emin olun](#logging-field-gateway)</li></ul> |
+| **IoT Bulut Ağ Geçidi** | <ul><li>[Cloud Ağ Geçidi'nde uygun denetim ve günlüğe kaydetmenin uygulandığından emin olun](#logging-cloud-gateway)</li></ul> |
 
-## <a id="sensitive-entities"></a>Çözümünüzde hassas varlıkları tanımla ve değişiklik denetimini Uygula
+## <a name="identify-sensitive-entities-in-your-solution-and-implement-change-auditing"></a><a id="sensitive-entities"></a>Çözümünüzdeki hassas varlıkları belirleyin ve değişiklik denetimi uygulayın
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Dynamics CRM | 
-| **SDL aşaması**               | Oluşturma |  
-| **İlgili teknolojiler** | Genel |
+| **SDL Fazı**               | Oluşturma |  
+| **Uygulanabilir Teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
-| **Başvur**              | Yok  |
-| **Adımları**                   | Çözümünüzde hassas verileri içeren varlıkları ve bu varlıklar ve alanlara değişiklik denetimi uygulamayı tanımla |
+| **Başvurular**              | Yok  |
+| **Adımlar**                   | Çözümünüzde hassas veriler içeren varlıkları belirleyin ve bu varlıklar ve alanlar üzerinde değişiklik denetimi uygulayın |
 
-## <a id="auditing"></a>Uygulama üzerinde denetim ve günlük uygulanmasını sağlayın
+## <a name="ensure-that-auditing-and-logging-is-enforced-on-the-application"></a><a id="auditing"></a>Uygulama üzerinde denetim ve günlüğe kaydetmenin uygulandığından emin olun
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL aşaması**               | Oluşturma |  
-| **İlgili teknolojiler** | Genel |
+| **SDL Fazı**               | Oluşturma |  
+| **Uygulanabilir Teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
-| **Başvur**              | Yok  |
-| **Adımları**                   | Tüm bileşenlerde denetim ve günlüğe kaydetmeyi etkinleştirin. Denetim günlükleri kullanıcı bağlamını yakalemelidir. Tüm önemli olayları belirleyip bu olayları günlüğe kaydedin. Merkezi günlük uygulama |
+| **Başvurular**              | Yok  |
+| **Adımlar**                   | Tüm bileşenlerde denetim ve günlüğe kaydetmeyi etkinleştirin. Denetim günlükleri kullanıcı bağlamı yakalamalıdır. Tüm önemli olayları tanımlayın ve bu olayları günlüğe kaydedin. Merkezi günlüğe kaydetmeyi uygulama |
 
-## <a id="log-rotation"></a>Günlük dönüşü ve ayrımı olduğundan emin olun
+## <a name="ensure-that-log-rotation-and-separation-are-in-place"></a><a id="log-rotation"></a>Günlük döndürme ve ayırmanın yerinde olduğundan emin olun
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL aşaması**               | Oluşturma |  
-| **İlgili teknolojiler** | Genel |
+| **SDL Fazı**               | Oluşturma |  
+| **Uygulanabilir Teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
-| **Başvur**              | Yok  |
-| **Adımları**                   | <p>Günlük döndürme, sistem yönetiminde kullanılan ve oluşturulan günlük dosyalarının arşivlendiği otomatikleştirilmiş bir işlemdir. Büyük uygulamaları çalıştıran sunucular genellikle her isteği günlüğe kaydeder: bulkulu günlüklerin yanında, günlük döndürme, son olayların analizine izin verirken günlüklerin toplam boyutunu sınırlamak için bir yoldur. </p><p>Günlük ayrımı temel olarak, bir hizmet reddi saldırısı veya uygulamanızın performansını daha eski sürüme düşürme amacıyla, işletim sistemi/uygulamanızın üzerinde çalıştığı farklı bir bölüme günlük dosyaları depolamanız gerektiği anlamına gelir</p>|
+| **Başvurular**              | Yok  |
+| **Adımlar**                   | <p>Günlük döndürme, tarihli günlük dosyalarının arşivlendiği sistem yönetiminde kullanılan otomatik bir işlemdir. Büyük uygulamalar çalıştıran sunucular genellikle her isteği kaydeder: hantal günlükler karşısında, günlük döndürme hala son olayların analizine izin verirken günlüklerin toplam boyutunu sınırlamak için bir yoldur. </p><p>Günlük ayrımı temel olarak, hizmet reddi saldırısını veya uygulamanızın performansını düşürmeyi önlemek için, işletim sisteminizin/uygulamanızın çalıştığı yerde ki günlük dosyalarınızı farklı bir bölümüzerinde depolamanız gerektiği anlamına gelir</p>|
 
-## <a id="log-sensitive-data"></a>Uygulamanın hassas kullanıcı verilerini günlüğe içermediğinden emin olun
+## <a name="ensure-that-the-application-does-not-log-sensitive-user-data"></a><a id="log-sensitive-data"></a>Uygulamanın hassas kullanıcı verilerini günlüğe kaydetmediğinden emin olun
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL aşaması**               | Oluşturma |  
-| **İlgili teknolojiler** | Genel |
+| **SDL Fazı**               | Oluşturma |  
+| **Uygulanabilir Teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
-| **Başvur**              | Yok  |
-| **Adımları**                   | <p>Bir kullanıcının sitenize gönderdiği gizli verileri günlüğe kaydetme izniniz olup olmadığını denetleyin. Kasıtlı olarak günlüğe kaydetme işleminin yanı sıra tasarım sorunlarından kaynaklanan yan etkileri da kontrol edin. Hassas verilere örnek olarak şunlar verilebilir:</p><ul><li>Kullanıcı Kimlik Bilgileri</li><li>Sosyal güvenlik numarası veya diğer tanımlama bilgileri</li><li>Kredi kartı numaraları veya diğer finansal bilgiler</li><li>Sağlık bilgileri</li><li>Şifrelenmiş bilgilerin şifresini çözmek için kullanılabilecek özel anahtarlar veya diğer veriler</li><li>Uygulamaya daha etkin bir şekilde saldırmak için kullanılabilen sistem veya uygulama bilgileri</li></ul>|
+| **Başvurular**              | Yok  |
+| **Adımlar**                   | <p>Bir kullanıcının sitenize gönderdiği hassas verileri günlüğe kaydetmediğinizi kontrol edin. Tasarım sorunlarının neden olduğu yan etkilerin yanı sıra kasıtlı günlüğe kaydetmeyi de denetleyin. Hassas verilere örnek olarak şunlar verilebilir:</p><ul><li>Kullanıcı Kimlik Bilgileri</li><li>Sosyal Güvenlik numarası veya diğer tanımlayıcı bilgiler</li><li>Kredi kartı numaraları veya diğer finansal bilgiler</li><li>Sağlık bilgileri</li><li>Şifrelenmiş bilgilerin şifresini çözmek için kullanılabilecek özel anahtarlar veya diğer veriler</li><li>Uygulamaya daha etkili bir şekilde saldırmak için kullanılabilecek sistem veya uygulama bilgileri</li></ul>|
 
-## <a id="log-restricted-access"></a>Denetim ve günlük dosyalarının kısıtlı erişime sahip olduğundan emin olun
+## <a name="ensure-that-audit-and-log-files-have-restricted-access"></a><a id="log-restricted-access"></a>Denetim ve Günlük Dosyalarının Sınırlı Erişime sahip olduğundan emin olun
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL aşaması**               | Oluşturma |  
-| **İlgili teknolojiler** | Genel |
+| **SDL Fazı**               | Oluşturma |  
+| **Uygulanabilir Teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
-| **Başvur**              | Yok  |
-| **Adımları**                   | <p>Günlük dosyalarına erişim haklarının uygun şekilde ayarlandığından emin olun. Uygulama hesapları salt yazılır erişime ve işleçlere sahip olmalıdır ve destek personeli gerektiğinde salt okuma erişimine sahip olmalıdır.</p><p>Yönetici hesapları, tam erişimi olması gereken tek hesaplardır. Doğru kısıtlandıklarından emin olmak için günlük dosyalarında Windows ACL 'sini kontrol edin:</p><ul><li>Uygulama hesaplarının salt yazılır erişimi olmalıdır</li><li>Operatörler ve destek personeli gerektiğinde salt okuma erişimine sahip olmalıdır</li><li>Yöneticiler, tam erişimi olması gereken tek hesaplardır</li></ul>|
+| **Başvurular**              | Yok  |
+| **Adımlar**                   | <p>Günlük dosyalarına erişim haklarının uygun şekilde ayarlandığından emin olun. Uygulama hesapları yalnızca yazma erişimine sahip olmalı ve operatörler ve destek personeli gerektiğinde salt okunur erişime sahip olmalıdır.</p><p>Yönetici hesapları, tam erişime sahip olması gereken tek hesaplardır. Düzgün bir şekilde kısıtlandıklarından emin olmak için günlük dosyalarında Windows ACL'yi denetleyin:</p><ul><li>Uygulama hesapları yalnızca yazma erişimine sahip olmalıdır</li><li>Operatörler ve destek personeli gerektiğinde salt okunur erişime sahip olmalıdır</li><li>Yöneticiler tam erişime sahip olması gereken tek hesaplardır</li></ul>|
 
-## <a id="user-management"></a>Kullanıcı yönetimi olaylarının günlüğe kaydedildiğinden emin olun
+## <a name="ensure-that-user-management-events-are-logged"></a><a id="user-management"></a>Kullanıcı Yönetimi Etkinliklerinin Günlüğe Kaydedilmesini Sağlayın
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL aşaması**               | Oluşturma |  
-| **İlgili teknolojiler** | Genel |
+| **SDL Fazı**               | Oluşturma |  
+| **Uygulanabilir Teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
-| **Başvur**              | Yok  |
-| **Adımları**                   | <p>Uygulamanın başarılı ve başarısız Kullanıcı oturum açmaları, parola sıfırlama, parola değişiklikleri, hesap kilitleme, Kullanıcı kaydı gibi Kullanıcı yönetimi olaylarını izlemediğinden emin olun. Bunun yapılması, potansiyel olarak şüpheli davranışları algılamaya ve bunlara tepki sağlanmasına yardımcı olur. İşlem verilerinin toplanmasını da sağlar; Örneğin, uygulamaya kimlerin eriştiğini izlemek için</p>|
+| **Başvurular**              | Yok  |
+| **Adımlar**                   | <p>Uygulamanın başarılı ve başarısız kullanıcı girişleri, parola sıfırlama, parola değişiklikleri, hesap kilitleme, kullanıcı kaydı gibi kullanıcı yönetimi olaylarını izlediğinden emin olun. Bunu yapmak, şüpheli olabilecek davranışları algılamaya ve bunlara tepki vermeye yardımcı olur. Ayrıca işlem verilerinin toplanmasına olanak sağlar; örneğin, uygulamaya kimlerin eriştiyi izlemek için</p>|
 
-## <a id="inbuilt-defenses"></a>Sistemin kötüye kullanılmasına karşı savunmaları olmadığından emin olun
+## <a name="ensure-that-the-system-has-inbuilt-defenses-against-misuse"></a><a id="inbuilt-defenses"></a>Sistemin kötüye kullanıma karşı dahili savunmaya sahip olduğundan emin olun
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL aşaması**               | Oluşturma |  
-| **İlgili teknolojiler** | Genel |
+| **SDL Fazı**               | Oluşturma |  
+| **Uygulanabilir Teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
-| **Başvur**              | Yok  |
-| **Adımları**                   | <p>Uygulamanın kötüye kullanılması durumunda güvenlik özel durumu oluşturan denetimler yerinde olmalıdır. Örneğin, giriş doğrulama gerçekleşiyorsa ve bir saldırgan, Regex ile eşleşmeyen kötü amaçlı kod eklemeye çalışırsa, sistem kötüye kullanımı için bir ifade olabilecek bir güvenlik özel durumu oluşabilir</p><p>Örneğin, güvenlik özel durumlarının günlüğe kaydedilmesini ve aşağıdaki sorunlar için gerçekleştirilecek eylemleri yapmanız önerilir:</p><ul><li>Giriş doğrulaması</li><li>CSRF ihlalleri</li><li>Deneme yanılma (her kaynak için Kullanıcı başına istek sayısı üst sınırı)</li><li>Karşıya dosya yükleme ihlalleri</li><ul>|
+| **Başvurular**              | Yok  |
+| **Adımlar**                   | <p>Uygulamanın kötüye kullanılması durumunda güvenlik özel durum larını oluşturan denetimler yapılmalıdır. Örneğin, giriş doğrulama yerinde ise ve bir saldırgan regex eşleşmiyor kötü amaçlı kod enjekte etmeye çalışırsa, sistem kötüye bir göstergesi olabilir bir güvenlik özel durum atılabilir</p><p>Örneğin, güvenlik özel durumlarının günlüğe kaydedilmesi ve aşağıdaki sorunlar için eylemlerin alınması önerilir:</p><ul><li>Giriş doğrulaması</li><li>CSRF ihlalleri</li><li>Kaba kuvvet (kaynak başına kullanıcı başına istek sayısı için üst sınır)</li><li>Dosya yükleme ihlalleri</li><ul>|
 
-## <a id="diagnostics-logging"></a>Azure App Service Web Apps için tanılama günlüğünü etkinleştirme
+## <a name="enable-diagnostics-logging-for-web-apps-in-azure-app-service"></a><a id="diagnostics-logging"></a>Azure Uygulama Hizmeti'nde web uygulamaları için tanılama günlemesini etkinleştirme
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Web Uygulaması | 
-| **SDL aşaması**               | Oluşturma |  
-| **İlgili teknolojiler** | Genel |
-| **Öznitelikler**              | EnvironmentType-Azure |
-| **Başvur**              | Yok  |
-| **Adımları** | <p>Azure, bir App Service web uygulamasının hatalarını ayıklamaya yardımcı olmak üzere yerleşik tanılama sağlar. Ayrıca API uygulamaları ve mobil uygulamalar için de geçerlidir. App Service Web Apps, hem Web sunucusundan hem de Web uygulamasından günlüğe bilgi kaydetmeye yönelik Tanılama işlevleri sağlar.</p><p>Bunlar, Web sunucusu tanılama ve Uygulama Tanılama 'ya mantıksal olarak ayrılmıştır</p>|
+| **SDL Fazı**               | Oluşturma |  
+| **Uygulanabilir Teknolojiler** | Genel |
+| **Öznitelikler**              | EnvironmentType - Azure |
+| **Başvurular**              | Yok  |
+| **Adımlar** | <p>Azure, bir App Service web uygulamasının hata ayıklanmasına yardımcı olmak için yerleşik tanılama sağlar. ApI uygulamaları ve mobil uygulamalar için de geçerlidir. App Service web uygulamaları, hem web sunucusundan hem de web uygulamasından bilgi günlüğe kaydetme için tanılama işlevselliği sağlar.</p><p>Bunlar mantıksal olarak web sunucusu tanılama ve uygulama tanılama ayrılır</p>|
 
-## <a id="identify-sensitive-entities"></a>SQL Server oturum açma denetiminin etkinleştirildiğinden emin olun
+## <a name="ensure-that-login-auditing-is-enabled-on-sql-server"></a><a id="identify-sensitive-entities"></a>SQL Server'da oturum açma denetiminin etkin olduğundan emin olun
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Database | 
-| **SDL aşaması**               | Oluşturma |  
-| **İlgili teknolojiler** | Genel |
+| **SDL Fazı**               | Oluşturma |  
+| **Uygulanabilir Teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
-| **Başvur**              | [Oturum açma denetimini yapılandırma](https://msdn.microsoft.com/library/ms175850.aspx) |
-| **Adımları** | <p>Parola tahmin saldırılarını algılamak/onaylamak için veritabanı sunucusu oturum açma denetiminin etkinleştirilmesi gerekir. Başarısız oturum açma girişimlerini yakalamak önemlidir. Hem başarılı hem de başarısız oturum açma girişimlerinin yakalanması, Forli araştırmalar sırasında ek avantaj sağlar</p>|
+| **Başvurular**              | [Oturum Açma Denetimini Yapılandır](https://msdn.microsoft.com/library/ms175850.aspx) |
+| **Adımlar** | <p>Parola tahmin saldırılarını algılamak/onaylamak için Veritabanı Sunucusu giriş denetimi etkinleştirilmelidir. Başarısız oturum açma denemelerini yakalamak önemlidir. Hem başarılı hem de başarısız giriş denemelerini yakalamak adli soruşturmalar sırasında ek fayda sağlar</p>|
 
-## <a id="threat-detection"></a>Azure SQL 'de tehdit algılamayı etkinleştirme
+## <a name="enable-threat-detection-on-azure-sql"></a><a id="threat-detection"></a>Azure SQL'de Tehdit algılamayı etkinleştirme
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Database | 
-| **SDL aşaması**               | Oluşturma |  
-| **İlgili teknolojiler** | SQL Azure |
-| **Öznitelikler**              | SQL sürümü-V12 |
-| **Başvur**              | [SQL veritabanı tehdit algılamayı kullanmaya başlama](https://azure.microsoft.com/documentation/articles/sql-database-threat-detection-get-started/)|
-| **Adımları** |<p>Tehdit algılama, veritabanına ilişkin olası güvenlik tehditlerini gösteren anormal veritabanı etkinliklerini algılar. Müşterilerin anormal etkinliklerde güvenlik uyarıları sunarak meydana gelebilecek olası tehditleri algılamasına ve yanıt vermesine olanak tanıyan yeni bir güvenlik katmanı sağlar.</p><p>Kullanıcılar, Azure SQL veritabanı denetimini kullanarak kuşkulu olayları keşfedebilir, bu da veritabanındaki verilere erişme, ihlalin veya açıktan yararlanma denemesinden kaynaklanan verileri tespit edebilir.</p><p>Tehdit algılama, bir güvenlik uzmanı olması veya gelişmiş güvenlik izleme sistemlerini yönetmek zorunda kalmadan, olası tehditleri veritabanına yönelik olarak ele almanızı kolaylaştırır</p>|
+| **SDL Fazı**               | Oluşturma |  
+| **Uygulanabilir Teknolojiler** | SQL Azure |
+| **Öznitelikler**              | SQL Versiyon - V12 |
+| **Başvurular**              | [SQL Veritabanı Tehdit Algılama ile Başlayın](https://azure.microsoft.com/documentation/articles/sql-database-threat-detection-get-started/)|
+| **Adımlar** |<p>Tehdit Algılama veritabanına potansiyel güvenlik tehditleri gösteren anormal veritabanı etkinlikleri algılar. Müşterilerin anormal etkinliklerde güvenlik uyarıları sağlayarak olası tehditleri algılamalarını ve bunlara yanıt vermelerini sağlayan yeni bir güvenlik katmanı sağlar.</p><p>Kullanıcılar, veritabanındaki verilere erişme, ihlal etme veya yararlanma girişiminden kaynaklanmaktadır.</p><p>Tehdit Algılama, bir güvenlik uzmanı olmaya veya gelişmiş güvenlik izleme sistemlerini yönetmeye gerek kalmadan veritabanına yönelik olası tehditleri ele almamayı kolaylaştırır</p>|
 
-## <a id="analytics"></a>Azure Storage erişimini denetlemek için Azure Depolama Analizi kullanma
+## <a name="use-azure-storage-analytics-to-audit-access-of-azure-storage"></a><a id="analytics"></a>Azure Depolama'nın erişimini denetlemek için Azure Depolama Analizi'ni kullanın
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | Azure Storage | 
-| **SDL aşaması**               | Dağıtım |  
-| **İlgili teknolojiler** | Genel |
+| **SDL Fazı**               | Dağıtım |  
+| **Uygulanabilir Teknolojiler** | Genel |
 | **Öznitelikler**              | Yok |
-| **Başvur**              | [Yetkilendirme türünü izlemek için Depolama Analizi kullanma](https://azure.microsoft.com/documentation/articles/storage-security-guide/#storage-analytics) |
-| **Adımları** | <p>Her bir depolama hesabı için, Azure Depolama Analizi günlüğe kaydetme ve ölçüm verilerini depolama işlemleri gerçekleştirebilir. Depolama Analizi günlükleri, depolama erişimi olduğunda birisi tarafından kullanılan kimlik doğrulama yöntemi gibi önemli bilgileri sağlar.</p><p>Bu, depolamaya erişimi sıkı bir şekilde koruyarak yararlı olabilir. Örneğin, BLOB depolama alanında tüm kapsayıcıları özel olarak ayarlayabilir ve uygulamalarınızın tamamında bir SAS hizmetinin kullanımını uygulayabilirsiniz. Daha sonra, bloblarınızın depolama hesabı anahtarları kullanılarak erişilip erişilmeyeceğini, güvenliğin ihlal olabileceğini veya Blobların genel olduğunu, ancak bunların olmaması gerektiğini görmek için günlükleri düzenli olarak kontrol edebilirsiniz.</p>|
+| **Başvurular**              | [Yetkilendirme türünü izlemek için Depolama Analizi'ni kullanma](https://azure.microsoft.com/documentation/articles/storage-security-guide/#storage-analytics) |
+| **Adımlar** | <p>Her depolama hesabı için, Azure Depolama Analitiği'nin günlük işlemleri gerçekleştirmesini ve metrik verilerini depolamasını etkinleştirebilirsiniz. Depolama analizi günlükleri, birisi tarafından depolama alanına erişirken kullanılan kimlik doğrulama yöntemi gibi önemli bilgiler sağlar.</p><p>Depolama alanına erişimi sıkı bir şekilde koruyorsanız, bu gerçekten yararlı olabilir. Örneğin, Blob Depolama'da tüm kapsayıcıları özel olarak ayarlayabilir ve uygulamalarınız boyunca bir SAS hizmetinin kullanımını uygulayabilirsiniz. Ardından, bloblarınıza güvenlik ihlalini gösteren depolama hesabı anahtarlarını kullanarak erişilip erişilmediğini veya lekelerin herkese açık olup olmadığını ancak erişilmediğini görmek için günlükleri düzenli olarak kontrol edebilirsiniz.</p>|
 
-## <a id="sufficient-logging"></a>Yeterli günlüğü uygulama
+## <a name="implement-sufficient-logging"></a><a id="sufficient-logging"></a>Yeterli Günlük Uygulama
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | WCF | 
-| **SDL aşaması**               | Oluşturma |  
-| **İlgili teknolojiler** | .NET Framework |
+| **SDL Fazı**               | Oluşturma |  
+| **Uygulanabilir Teknolojiler** | .NET Framework |
 | **Öznitelikler**              | Yok  |
-| **Başvur**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [fortify Krallığı](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_insufficient_logging) |
-| **Adımları** | <p>Bir güvenlik olayından sonra uygun bir denetim izinin olmaması, yasaklama çabalarına engel olabilir. Windows Communication Foundation (WCF), başarılı ve/veya başarısız kimlik doğrulama girişimlerini günlüğe kaydetme olanağı sunar.</p><p>Başarısız kimlik doğrulama denemeleri, olası deneme yanılma saldırılarının yöneticilerini uyarabilir. Benzer şekilde, başarılı kimlik doğrulama olaylarını günlüğe kaydetme, meşru bir hesap tehlikeye düştüğünde yararlı bir denetim izi sağlayabilir. WCF 'nin hizmet güvenliği denetim özelliğini etkinleştir |
+| **Başvurular**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Fortify Türkiye](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_insufficient_logging) |
+| **Adımlar** | <p>Bir güvenlik olayından sonra düzgün bir denetim izinin olmaması adli tıp çabalarını engelleyebilir. Windows Communication Foundation (WCF), başarılı ve/veya başarısız kimlik doğrulama denemelerini günlüğe kaydetme olanağı sunar.</p><p>Günlük başarısız kimlik doğrulama girişimleri, yöneticileri olası kaba kuvvet saldırılarına karşı uyarabilir. Benzer şekilde, başarılı kimlik doğrulama olayları günlüğe kaydetme, yasal bir hesap tehlikeye girdiğinde yararlı bir denetim izi sağlayabilir. WCF'nin hizmet güvenliği denetimi özelliğini etkinleştirin |
 
 ### <a name="example"></a>Örnek
-Aşağıda, denetim etkin olan örnek bir yapılandırma verilmiştir
+Aşağıda denetim etkin bir örnek yapılandırma
 ```
 <system.serviceModel>
     <behaviors>
@@ -185,19 +185,19 @@ Aşağıda, denetim etkin olan örnek bir yapılandırma verilmiştir
 </system.serviceModel>
 ```
 
-## <a id="audit-failure-handling"></a>Yeterli denetim hatası Işleme uygulama
+## <a name="implement-sufficient-audit-failure-handling"></a><a id="audit-failure-handling"></a>Yeterli Denetim Hatası İşleme Uygulama
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
 | **Bileşen**               | WCF | 
-| **SDL aşaması**               | Oluşturma |  
-| **İlgili teknolojiler** | .NET Framework |
+| **SDL Fazı**               | Oluşturma |  
+| **Uygulanabilir Teknolojiler** | .NET Framework |
 | **Öznitelikler**              | Yok  |
-| **Başvur**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [fortify Krallığı](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_insufficient_audit_failure_handling) |
-| **Adımları** | <p>Geliştirilmiş çözüm, bir denetim günlüğüne yazamazsa bir özel durum oluşturmamakta değil. WCF bir denetim günlüğüne yazamayan bir özel durum oluşturmayacak şekilde yapılandırıldıysa, programa hata bildirilmez ve kritik güvenlik olaylarının denetimi gerçekleşmeyebilir.</p>|
+| **Başvurular**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [Fortify Türkiye](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_insufficient_audit_failure_handling) |
+| **Adımlar** | <p>Geliştirilen çözüm, denetim günlüğüne yazamayınca bir özel durum oluşturmamak için yapılandırılır. WCF bir denetim günlüğüne yazamadığı zaman bir özel durum atmayacak şekilde yapılandırılırsa, program arızası hakkında bilgilendirilmez ve kritik güvenlik olaylarının denetlenebileceği bildirilmez.</p>|
 
 ### <a name="example"></a>Örnek
-Aşağıdaki `<behavior/>` WCF yapılandırma dosyasının öğesi, WCF bir denetim günlüğüne yazamazsa, WCF 'yi uygulamayı bilgilendirmez.
+Aşağıdaki `<behavior/>` WCF yapılandırma dosyasının öğesi, WCF denetim günlüğüne yazmazsa WCF'ye uygulamayı bildirmemesini bildirir.
 ```
 <behaviors>
     <serviceBehaviors>
@@ -210,37 +210,37 @@ Aşağıdaki `<behavior/>` WCF yapılandırma dosyasının öğesi, WCF bir dene
     </serviceBehaviors>
 </behaviors>
 ```
-WCF 'yi, bir denetim günlüğüne yazamadığında programa bildirmek için yapılandırın. Programın, denetim izlerini yapılmadığından emin olmak için alternatif bir bildirim şeması olması gerekir. 
+WCF'yi, denetim günlüğüne yazamadığı zaman programı bildirecek şekilde yapılandırın. Program, denetim izlerinin korunmadığı konusunda kuruluşu uyarmak için alternatif bir bildirim şemasına sahip olmalıdır. 
 
-## <a id="logging-web-api"></a>Web API 'sinde denetim ve günlük uygulanmasını sağlayın
-
-| Başlık                   | Ayrıntılar      |
-| ----------------------- | ------------ |
-| **Bileşen**               | Web API'si | 
-| **SDL aşaması**               | Oluşturma |  
-| **İlgili teknolojiler** | Genel |
-| **Öznitelikler**              | Yok  |
-| **Başvur**              | Yok  |
-| **Adımları** | Web API 'Lerinde denetim ve günlüğe kaydetmeyi etkinleştirin. Denetim günlükleri kullanıcı bağlamını yakalemelidir. Tüm önemli olayları belirleyip bu olayları günlüğe kaydedin. Merkezi günlük uygulama |
-
-## <a id="logging-field-gateway"></a>Alan ağ geçidinde uygun denetim ve günlüğün uygulanmasını sağlayın
+## <a name="ensure-that-auditing-and-logging-is-enforced-on-web-api"></a><a id="logging-web-api"></a>Web API'de denetim ve günlüğe kaydetmenin uygulandığından emin olun
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
-| **Bileşen**               | IoT alan ağ geçidi | 
-| **SDL aşaması**               | Oluşturma |  
-| **İlgili teknolojiler** | Genel |
+| **Bileşen**               | Web API | 
+| **SDL Fazı**               | Oluşturma |  
+| **Uygulanabilir Teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
-| **Başvur**              | Yok  |
-| **Adımları** | <p>Bir alan ağ geçidine birden çok cihaz bağlandığında, tek tek cihazlar için bağlantı girişimlerinin ve kimlik doğrulama durumunun (başarı veya başarısızlık), alan ağ geçidinde günlüğe kaydedildiğinden ve korunduğundan emin olun.</p><p>Ayrıca, alan ağ geçidinin tek tek cihazların IoT Hub kimlik bilgilerini sürdürme durumlarında, bu kimlik bilgileri alındığında denetimin gerçekleştirildiğinden emin olun. Uzun süreli saklama için günlükleri Azure IoT Hub/depolama 'ya düzenli aralıklarla yüklemek için bir işlem geliştirin.</p> |
+| **Başvurular**              | Yok  |
+| **Adımlar** | Web API'lerinde denetlemeyi ve günlüğe kaydetmeyi etkinleştirin. Denetim günlükleri kullanıcı bağlamı yakalamalıdır. Tüm önemli olayları tanımlayın ve bu olayları günlüğe kaydedin. Merkezi günlüğe kaydetmeyi uygulama |
 
-## <a id="logging-cloud-gateway"></a>Bulut ağ geçidinde uygun denetim ve günlüğün zorlandığından emin olun
+## <a name="ensure-that-appropriate-auditing-and-logging-is-enforced-on-field-gateway"></a><a id="logging-field-gateway"></a>Alan Ağ Geçidi'nde uygun denetim ve günlüğe kaydetmenin uygulandığından emin olun
 
 | Başlık                   | Ayrıntılar      |
 | ----------------------- | ------------ |
-| **Bileşen**               | IoT bulut ağ geçidi | 
-| **SDL aşaması**               | Oluşturma |  
-| **İlgili teknolojiler** | Genel |
+| **Bileşen**               | IoT Alan Ağ Geçidi | 
+| **SDL Fazı**               | Oluşturma |  
+| **Uygulanabilir Teknolojiler** | Genel |
 | **Öznitelikler**              | Yok  |
-| **Başvur**              | [IoT Hub işlemler izlemeye giriş](https://azure.microsoft.com/documentation/articles/iot-hub-operations-monitoring/) |
-| **Adımları** | <p>IoT Hub Işlemleri Izlemeye göre toplanan denetim verilerinin toplanması ve depolanması için tasarım. Aşağıdaki izleme kategorilerini etkinleştirin:</p><ul><li>Cihaz kimliği işlemleri</li><li>Cihazdan buluta iletişimler</li><li>Buluttan cihaza iletişimler</li><li>Bağlantılar</li><li>Dosya yüklemeleri</li></ul>|
+| **Başvurular**              | Yok  |
+| **Adımlar** | <p>Birden çok aygıt bir Alan Ağ Geçidi'ne bağlandığında, tek tek aygıtlar için bağlantı denemelerinin ve kimlik doğrulama durumunun (başarı veya başarısızlık) Alan Ağ Geçidi'nde günlüğe kaydedildiğinden ve korunurken emin olun.</p><p>Ayrıca, Alan Ağ Geçidi'nin tek tek aygıtlar için IoT Hub kimlik bilgilerini koruduğu durumlarda, bu kimlik bilgileri alındığında denetim gerçekleştirildiğinden emin olun. Günlükleri uzun süreli bekletme için düzenli aralıklarla Azure IoT Hub/depolama alanına yüklemek için bir işlem geliştirin.</p> |
+
+## <a name="ensure-that-appropriate-auditing-and-logging-is-enforced-on-cloud-gateway"></a><a id="logging-cloud-gateway"></a>Cloud Ağ Geçidi'nde uygun denetim ve günlüğe kaydetmenin uygulandığından emin olun
+
+| Başlık                   | Ayrıntılar      |
+| ----------------------- | ------------ |
+| **Bileşen**               | IoT Bulut Ağ Geçidi | 
+| **SDL Fazı**               | Oluşturma |  
+| **Uygulanabilir Teknolojiler** | Genel |
+| **Öznitelikler**              | Yok  |
+| **Başvurular**              | [IoT Hub operasyon izleme girişi](https://azure.microsoft.com/documentation/articles/iot-hub-operations-monitoring/) |
+| **Adımlar** | <p>IoT Hub İşlemleri İzleme yoluyla toplanan denetim verilerinin toplanması ve depolanması için tasarım. Aşağıdaki izleme kategorilerini etkinleştirin:</p><ul><li>Cihaz kimlik işlemleri</li><li>Aygıt-bulut iletişimi</li><li>Bulut-aygıt iletişimi</li><li>Bağlantılar</li><li>Dosya karşıya yüklemeleri</li></ul>|

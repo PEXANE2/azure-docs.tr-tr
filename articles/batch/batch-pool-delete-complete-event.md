@@ -1,6 +1,6 @@
 ---
-title: Azure Batch havuzu silme Tamam olayı
-description: Toplu Işlem havuzu silme Tamam olayı başvurusu. Bu olay, bir havuz silme işlemi tamamlandığında yayınlanır.
+title: Azure Toplu İşlem havuzu tüm olayı silme
+description: Toplu iş havuzu için başvuru, tüm olayı siler. Bu olay, bir havuz silme işlemi tamamlandığında yayılır.
 services: batch
 author: LauraBrenner
 manager: evansma
@@ -12,17 +12,17 @@ ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: labrenne
 ms.openlocfilehash: d317d7395a8246c109073a72338b55960cb50954
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77023625"
 ---
 # <a name="pool-delete-complete-event"></a>Havuz silme tamamlama olayı
 
- Bu olay, bir havuz silme işlemi tamamlandığında yayınlanır.
+ Bu olay, bir havuz silme işlemi tamamlandığında yayılır.
 
- Aşağıdaki örnekte, bir havuz silme Tamam olayının gövdesi gösterilmektedir.
+ Aşağıdaki örnek, bir havuzun gövdesini tam olayı siler.
 
 ```
 {
@@ -34,9 +34,9 @@ ms.locfileid: "77023625"
 
 |Öğe|Tür|Notlar|
 |-------------|----------|-----------|
-|`id`|Dize|Havuzun KIMLIĞI.|
-|`startTime`|Tarih Saat|Havuzun silmenin başladığı zaman.|
-|`endTime`|Tarih Saat|Havuzun silineceği zaman tamamlandı.|
+|`id`|Dize|Havuzun kimliği.|
+|`startTime`|DateTime|Havuz silmenin başladığı saat.|
+|`endTime`|DateTime|Havuzun silinme süresi.|
 
 ## <a name="remarks"></a>Açıklamalar
-Havuz yeniden boyutlandırma işleminin durumları ve hata kodları hakkında daha fazla bilgi için bkz. bir [hesaptan havuz silme](https://docs.microsoft.com/rest/api/batchservice/delete-a-pool-from-an-account).
+Havuz yeniden boyutlandırma işlemi için durumlar ve hata kodları hakkında daha fazla bilgi için [bkz.](https://docs.microsoft.com/rest/api/batchservice/delete-a-pool-from-an-account)

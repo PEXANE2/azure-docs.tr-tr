@@ -1,46 +1,46 @@
 ---
-title: Ortak ağ erişimini reddetme-Azure portal-MySQL için Azure veritabanı
-description: MySQL için Azure veritabanınız için Azure portal kullanarak genel ağ erişimini reddetme hakkında bilgi edinin
+title: Genel Ağ Erişimini Reddet - Azure portalı - MySQL için Azure Veritabanı
+description: MySQL için Azure Veritabanınız için Azure portalı kullanarak Genel Ağ Erişimini Reddet'i nasıl yapılandıracaklarını öğrenin
 author: kummanish
 ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.openlocfilehash: b5f93f3a3583900810ca75f925c6a88df9102652
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/14/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79374959"
 ---
-# <a name="deny-public-network-access-in-azure-database-for-mysql-using-azure-portal"></a>Azure portal kullanarak MySQL için Azure veritabanı 'nda genel ağ erişimini reddetme
+# <a name="deny-public-network-access-in-azure-database-for-mysql-using-azure-portal"></a>Azure portalını kullanarak MySQL için Azure Veritabanı'nda Genel Ağ Erişimini Reddetme
 
-Bu makalede, bir MySQL için Azure veritabanı sunucusunu tüm genel yapılandırmaların erişimini engelleyecek şekilde nasıl yapılandırabileceğiniz ve ağ güvenliğini daha da geliştirmek için özel uç noktalar aracılığıyla yalnızca bağlantılara izin veren açıklanır.
+Bu makalede, MySQL sunucusu için bir Azure Veritabanını tüm genel yapılandırmaları reddalacak şekilde nasıl yapılandırabileceğiniz ve ağ güvenliğini daha da artırmak için yalnızca özel uç noktalar üzerinden bağlantılara izin vermek üzere nasıl yapılandırabileceğiniz açıklanmaktadır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Bu nasıl yapılır kılavuzunda tamamlanması gerekir:
+Bu nasıl yapılacağını kılavuzunu tamamlamak için şunları yapmanız gerekir:
 
-* [MySQL Için Azure veritabanı](quickstart-create-mysql-server-database-using-azure-portal.md)
+* [MySQL için Azure Veritabanı](quickstart-create-mysql-server-database-using-azure-portal.md)
 
-## <a name="set-deny-public-network-access"></a>Ortak ağ erişimini reddet ayarla
+## <a name="set-deny-public-network-access"></a>Genel Ağ Erişimini Reddet'i Ayarla
 
-MySQL Server 'ın ortak ağ erişimini reddetme Iznini ayarlamak için şu adımları izleyin:
+MySQL sunucusu Deny Public Network Access'i ayarlamak için aşağıdaki adımları izleyin:
 
-1. [Azure Portal](https://portal.azure.com/), var olan MySQL Için Azure veritabanı sunucunuzu seçin.
+1. Azure [portalında](https://portal.azure.com/)MySQL sunucusu için mevcut Azure Veritabanınızı seçin.
 
-1. MySQL sunucusu sayfasında, **Ayarlar**altında **bağlantı güvenliği** ' ne tıklayarak bağlantı güvenliği yapılandırması sayfasını açın.
+1. MySQL sunucu sayfasında, **Ayarlar**altında bağlantı güvenliği yapılandırma sayfasını açmak için **Bağlantı güvenliği'ni** tıklatın.
 
-1. **Ortak ağ erişimini engelle**' de, MySQL sunucunuz için genel erişimi Reddet ' i etkinleştirmek için **Evet** ' i seçin.
+1. **Genel Ağ Erişimini Reddet'te,** MySQL sunucunuz için genel erişimi reddetmek için **Evet'i** seçin.
 
-    ![MySQL için Azure veritabanı ağ erişimini reddetme](./media/howto-deny-public-network-access/setting-deny-public-network-access.PNG)
+    ![MySQL Ağ erişimini reddet için Azure Veritabanı](./media/howto-deny-public-network-access/setting-deny-public-network-access.PNG)
 
 1. Değişiklikleri kaydetmek için **Kaydet**’e tıklayın.
 
-1. Bildirim, bağlantı güvenliği ayarının başarıyla etkinleştirildiğini onaylanır.
+1. Bildirim, bağlantı güvenlik ayarının başarıyla etkinleştirildiğini onaylar.
 
-    ![MySQL için Azure veritabanı ağ erişimini reddetme başarısı](./media/howto-deny-public-network-access/setting-deny-public-network-access-success.png)
+    ![MySQL Ağ erişim başarısını reddet için Azure Veritabanı](./media/howto-deny-public-network-access/setting-deny-public-network-access-success.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Ölçümler üzerinde uyarılar oluşturma](howto-alert-on-metric.md)hakkında bilgi edinin.
+Ölçümler [de nasıl uyarı oluşturacağınız](howto-alert-on-metric.md)hakkında bilgi edinin.

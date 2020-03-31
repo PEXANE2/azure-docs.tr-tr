@@ -1,6 +1,6 @@
 ---
-title: SQL Server 2008 & 2008 R2 desteğini uzat
-description: SQL Server örneğinizi Azure 'a geçirerek ve örnekleri şirket içinde tutmak için genişletilmiş destek satın alarak SQL Server 2008 ve SQL Server 2008 R2 desteğini genişletin.
+title: SQL Server 2008 & 2008 R2 desteğini genişletin
+description: SQL Server örneğini Azure'a geçirerek veya örnekleri şirket içinde tutmak için genişletilmiş destek satın alarak SQL Server 2008 ve SQL Server 2008 R2 desteğini genişletin.
 services: virtual-machines-windows
 documentationcenter: ''
 author: MashaMSFT
@@ -14,82 +14,82 @@ ms.date: 04/08/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 7c93538982b7fd7bb2f5ac25027ed92cc6ccbfa3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6c27fa8f80140e6db92ea0f998852507260cc278
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75357858"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80159549"
 ---
-# <a name="extend-support-for-sql-server-2008-and-sql-server-2008-r2-with-azure"></a>Azure ile SQL Server 2008 ve SQL Server 2008 R2 desteğini genişletme
+# <a name="extend-support-for-sql-server-2008-and-sql-server-2008-r2-with-azure"></a>Azure ile SQL Server 2008 ve SQL Server 2008 R2 için destek genişletme
 
-SQL Server 2008 ve SQL Server 2008 R2, [Destek (EOS) yaşam döngüsünün sonuna](https://www.microsoft.com/sql-server/sql-server-2008)ulaşmıştır. Birçok müşteri hala her iki sürümü de kullandığından, destek almaya devam etmek için çeşitli seçenekler sunuyoruz. Şirket içi SQL Server örneklerinizi Azure sanal makinelerine (VM) geçirebilir, Azure SQL veritabanına geçirebilir veya şirket içinde kalabilir ve genişletilmiş güvenlik güncelleştirmeleri satın alabilirsiniz.
+SQL Server 2008 ve SQL Server 2008 R2 her ikisi de [destek (EOS) yaşam döngüsünün sonuna](https://www.microsoft.com/sql-server/sql-server-2008)ulaşmıştır. Birçok müşteri hala her iki sürümü de kullandığından, destek almaya devam etmek için çeşitli seçenekler salıyoruz. Şirket içi SQL Server örneklerinizi Azure sanal makinelerine (VM) geçirebilir, Azure SQL Veritabanı'na geçiş yapabilir veya şirket içinde kalıp genişletilmiş güvenlik güncelleştirmeleri satın alabilirsiniz.
 
-Yönetilen bir örnekten farklı olarak, bir Azure VM 'ye geçiş yapmak, uygulamalarınızı yeniden ayarlamayı gerektirmez. Şirket içinde kalmaktan farklı olarak, bir Azure VM 'ye geçiş yaparak ücretsiz genişletilmiş güvenlik düzeltme ekleri alacaksınız.
+Yönetilen bir örneğin aksine, bir Azure VM'ye geçiş yapmak, uygulamalarınızı yeniden onaylamayı gerektirmez. Şirket içinde kalmanın aksine, bir Azure VM'ye geçiş yaparak ücretsiz genişletilmiş güvenlik yamaları alırsınız.
 
-Bu makalenin geri kalanında SQL Server örneğinizi bir Azure VM 'sine geçirmeye yönelik konular sunulmaktadır.
+Bu makalenin geri kalanı, SQL Server örneğini Azure VM'ye geçirmek için göz önünde bulundurulması gereken hususları sağlar.
 
-Destek seçenekleri sonu hakkında daha fazla bilgi için bkz. [destek sonu](/sql/sql-server/end-of-support/sql-server-end-of-life-overview).
+Destek sonu seçenekleri hakkında daha fazla bilgi için [bkz.](/sql/sql-server/end-of-support/sql-server-end-of-life-overview)
 
 ## <a name="provisioning"></a>Sağlama
 
-Azure Marketi 'nde bulunan **Windows Server 2008 R2** görüntüsünde bir kullandıkça öde SQL Server 2008 R2 vardır.
+Azure Marketplace'te Windows Server **2008 R2** görüntüde olabildiğince çok öde SQL Server 2008 R2 vardır.
 
-SQL Server 2008 ' de olan müşterilerin, SQL Server 2008 R2 'ye kendi kendine yüklemesi veya yükseltmesi gerekir. Benzer şekilde, Windows Server 2008 müşterilerinin sanal makinesini özel bir VHD 'den dağıtmaları veya Windows Server 2008 R2 sürümüne yükseltmesi gerekir.
+SQL Server 2008'de olan müşterilerin sql server 2008 R2'ye kendi kendine yüklemeleri veya yükseltmeleri gerekir. Aynı şekilde, Windows Server 2008'deki müşterilerin vm'lerini özel bir VHD'den dağıtmaları veya Windows Server 2008 R2'ye yükseltmeleri gerekir.
 
-Azure Marketi aracılığıyla dağıtılan görüntüler SQL IaaS uzantısı önceden yüklenmiş olarak gelir. SQL IaaS uzantısı, esnek lisanslama ve otomatik düzeltme eki uygulama gereksinimidir. Otomatik olarak yüklenen VM 'Leri dağıtan müşterilerin SQL IaaS uzantısını el ile yüklemesi gerekir. SQL IaaS uzantısı Windows Server 2008 ' de desteklenmez.
+Azure Marketi üzerinden dağıtılan görüntüler, önceden yüklenmiş SQL IaaS uzantısı ile birlikte gelir. SQL IaaS uzantısı esnek lisanslama ve otomatik düzeltme için bir gerekliliktir. Kendi kendine yüklenen VM'leri dağıtan müşterilerin SQL IaaS uzantısını el ile yüklemeleri gerekir. SQL IaaS uzantısı Windows Server 2008'de desteklenmez.
 
 > [!NOTE]
-> Dikey pencere **oluşturma** ve **yönetme** SQL Server, Azure Portal SQL Server 2008 R2 görüntüsüyle çalışacak olsa da, aşağıdaki özellikler _desteklenmez_: otomatik yedeklemeler, Azure Key Vault tümleştirme, R Hizmetleri ve depolama yapılandırması.
+> SQL Server **Create** and **Manage** bıçakları Azure portalındaki SQL Server 2008 R2 görüntüsüyle birlikte çalışsa da, aşağıdaki özellikler _desteklenmez:_ Otomatik yedeklemeler, Azure Key Vault tümleştirmesi, R Hizmetleri ve depolama yapılandırması.
 
 ## <a name="licensing"></a>Lisanslama
-Kullandıkça Öde SQL Server 2008 R2 dağıtımları [Azure hibrit avantajı](https://azure.microsoft.com/pricing/hybrid-benefit/)'e dönüştürülebilir.
+Gittiğiniz kadar öde SQL Server 2008 R2 dağıtımları [Azure Karma Avantajı'na](https://azure.microsoft.com/pricing/hybrid-benefit/)dönüştürülebilir.
 
-Yazılım Güvencesi (SA) tabanlı bir lisansı Kullandıkça Öde 'ye dönüştürmek için, müşterilerin SQL VM [kaynak sağlayıcısına](virtual-machines-windows-sql-register-with-resource-provider.md)kaydolması gerekir. Bu kayıt sonrasında, SQL lisans türü Azure Hibrit Avantajı ve kullandıkça öde arasında çapraz bir şekilde yapılır.
+Yazılım Güvencesi (SA) tabanlı bir lisansı istediğiniz kadar ödeye dönüştürmek için müşterilerin SQL VM [kaynak sağlayıcısına](virtual-machines-windows-sql-register-with-resource-provider.md)kaydolması gerekir. Bu kayıttan sonra, SQL lisans türü Azure Karma Avantajı ile istediğiniz kadar öde arasında değiştirilebilir.
 
-Bir Azure VM 'de kendi kendine yüklenmiş SQL Server 2008 veya SQL Server 2008 R2 örnekleri, SQL VM kaynak sağlayıcısına kaydolabilir ve lisans türlerini Kullandıkça Öde olarak dönüştürebilir.
+Azure VM'de kendi kendine yüklenen SQL Server 2008 veya SQL Server 2008 R2 örnekleri, SQL VM kaynak sağlayıcısına kaydolabilir ve lisans tiplerini istediğiniz kadar öde'ye dönüştürebilir.
 
 ## <a name="migration"></a>Geçiş
-El ile yedekleme/geri yükleme yöntemleriyle EOS SQL Server örneklerini bir Azure VM 'ye geçirebilirsiniz. Bu, Şirket içinden bir Azure VM 'ye en sık kullanılan geçiş yöntemidir.
+EOS SQL Server örneklerini el ile yedekleme/geri yükleme yöntemleriyle Azure VM'ye geçirebilirsiniz. Bu, şirket içi ve Azure VM'ye en yaygın geçiş yöntemidir.
 
 ### <a name="azure-site-recovery"></a>Azure Site Recovery
 
-Toplu geçişler için [Azure Site Recovery](/azure/site-recovery/site-recovery-overview) hizmetini öneririz. Azure Site Recovery, müşteriler şirket içinden Azure VM 'ye SQL Server dahil olmak üzere tüm VM 'leri çoğaltabilirler.
+Toplu geçişler için [Azure Site Kurtarma](/azure/site-recovery/site-recovery-overview) hizmetini öneririz. Azure Site Kurtarma ile müşteriler, SQL Server dahil olmak üzere tüm VM'yi şirket içi nden Azure VM'ye çoğaltabilir.
 
-SQL Server, kurtarmayı güvence altına almak için uygulamayla tutarlı Azure Site Recovery anlık görüntüler gerektirir. Azure Site Recovery, en az 1 saatlik aralığa sahip uygulamayla tutarlı anlık görüntüleri destekler. Azure Site Recovery geçişleri olan SQL Server için mümkün olan en düşük kurtarma noktası hedefi (RPO) 1 saattir. Kurtarma süresi hedefi (RTO) 2 saat ve kurtarma zamanı SQL Server.
+SQL Server, kurtarmayı garanti etmek için uygulama tutarlı Azure Site Kurtarma anlık görüntüleri gerektirir. Azure Site Kurtarma, en az 1 saatlik aralıklarla uygulama tutarlı anlık görüntüleri destekler. Azure Site Kurtarma geçişleri ile SQL Server için mümkün olan minimum kurtarma noktası hedefi (RPO) 1 saattir. Kurtarma süresi hedefi (RTO) 2 saat artı SQL Server kurtarma süresidir.
 
 ### <a name="database-migration-service"></a>Veritabanı Geçiş Hizmeti
 
-[Veritabanı geçiş hizmeti](/azure/dms/dms-overview) , SQL Server 2012 sürümüne veya sonrasına yükselterek şirket Içinden BIR Azure VM 'ye geçiş yapıyorsanız müşteriler için bir seçenektir.
+[Veritabanı Geçiş Hizmeti,](/azure/dms/dms-overview) SQL Server'ı 2012 sürümüne veya daha sonrasına yükselterek şirket içi olarak Azure VM'ye geçiş yapıyorlarsa müşteriler için bir seçenektir.
 
 ## <a name="disaster-recovery"></a>Olağanüstü durum kurtarma
 
-Azure VM 'de EOS SQL Server için olağanüstü durum kurtarma çözümleri şunlardır:
+Azure VM'deki EOS SQL Server için olağanüstü durum kurtarma çözümleri aşağıdaki gibidir:
 
-- **Yedeklemeleri SQL Server**: Azure Backup kullanarak eos SQL Server fidye, yanlışlıkla silme ve bozulmalara karşı korumanıza yardımcı olur. Çözüm şu anda EOS SQL Server için önizlemededir ve Windows 2008 R2 SP1 üzerinde çalışan SQL Server 2008 ve 2008 R2 'yi destekler. Daha ayrıntılı bilgi için [Bu makaleye](https://docs.microsoft.com/azure/backup/backup-azure-sql-database#scenario-support)bakın.
-- **Günlük aktarma**: RTO 'ı azaltmak için sürekli geri yüklemeler içeren başka bir bölgede veya Azure bölgesinde bir günlük aktarma çoğaltması oluşturabilirsiniz. Günlük dağıtımını el ile yapılandırmanız gerekir.
-- **Azure Site Recovery**: sanal makinenizin Azure Site Recovery çoğaltma aracılığıyla bölgeler ve bölgeler arasında çoğaltılmasını sağlayabilirsiniz. SQL Server, olağanüstü bir durum oluşması durumunda kurtarma sağlamak için uygulamayla tutarlı anlık görüntüler gerektirir. Azure Site Recovery, EOS SQL Server olağanüstü durum kurtarma için en az 1 saatlik RPO ve 2 saat (artı SQL Server kurtarma süresi) sağlar.
+- **SQL Server yedeklemeleri**: EOS SQL Server 2008 ve 2008 R2'nizi fidye yazılımlarına, kazara silmeişlemine ve 15 dakika rpo ve zaman içinde kurtarma yla bozulmaya karşı korumaya yardımcı olmak için Azure Yedekleme'yi kullanın. Daha fazla bilgi için [bu makaleye](https://docs.microsoft.com/azure/backup/backup-azure-sql-database#scenario-support)bakın.
+- **Günlük gönderim**: RTO'yu azaltmak için sürekli geri yüklemelerle başka bir bölgede veya Azure bölgesinde günlük gönderi çoğaltma oluşturabilirsiniz. Günlük gönderisini el ile yapılandırmanız gerekir.
+- **Azure Site Kurtarma**: Azure Site Kurtarma çoğaltma yoluyla VM'nizi bölgeler ve bölgeler arasında çoğaltabilirsiniz. SQL Server, bir felaket durumunda kurtarmayı garanti etmek için uygulama tutarlı anlık görüntüler gerektirir. Azure Site Kurtarma, EOS SQL Server olağanüstü kurtarma kurtarma için en az 1 saatlik RPO ve 2 saatlik (artı SQL Server kurtarma süresi) RTO sunar.
 
-## <a name="security-patching"></a>Güvenlik Düzeltme eki uygulama
-SQL Server VM 'Ler için genişletilmiş güvenlik güncelleştirmeleri, SQL Server VM SQL VM [kaynak sağlayıcısına](virtual-machines-windows-sql-register-with-resource-provider.md)kaydedildikten sonra Microsoft Update kanalları aracılığıyla dağıtılır. Düzeltme ekleri el ile veya otomatik olarak indirilebilir.
+## <a name="security-patching"></a>Güvenlik düzeltme eki
+SQL Server VM'ler için genişletilmiş güvenlik güncelleştirmeleri, SQL Server VM'nin SQL VM [kaynak sağlayıcısına](virtual-machines-windows-sql-register-with-resource-provider.md)kaydedilmesinden sonra Microsoft Update kanalları aracılığıyla teslim edilir. Yamalar el ile veya otomatik olarak indirilebilir.
 
-*Otomatik düzeltme eki uygulama* varsayılan olarak etkindir. Otomatik düzeltme eki uygulama Azure’un SQL Server’a ve işletim sistemine otomatik olarak düzeltme eki uygulamasını sağlar. SQL Server IaaS uzantısı yüklüyse, bakım penceresi için haftanın gününü, saatini ve süreyi belirtebilirsiniz. Azure düzeltme eki uygulamayı bu bakım penceresinde gerçekleştirir. Bakım penceresi zamanlaması saat için VM yerel saatini kullanır.  Daha fazla bilgi için bkz. [Azure sanal makinelerinde SQL Server Için otomatik düzeltme eki uygulama](virtual-machines-windows-sql-automated-patching.md).
+*Otomatik düzeltme eki uygulama* varsayılan olarak etkindir. Otomatik düzeltme eki uygulama Azure’un SQL Server’a ve işletim sistemine otomatik olarak düzeltme eki uygulamasını sağlar. SQL Server IaaS uzantısı yüklüyse, bakım penceresi için haftanın gününü, süresini ve süresini belirtebilirsiniz. Azure düzeltme eki uygulamayı bu bakım penceresinde gerçekleştirir. Bakım penceresi zamanlaması saat için VM yerel saatini kullanır.  Daha fazla bilgi [için Azure Sanal Makinelerde SQL Server için Otomatik düzeltme ekine](virtual-machines-windows-sql-automated-patching.md)bakın.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-SQL Server VM Azure 'a geçirin:
+SQL Server VM'nizi Azure'a geçirin:
 
 * [Bir SQL Server veritabanını Azure VM’deki SQL Server’a geçirme](virtual-machines-windows-migrate-sql.md)
 
-Azure sanal makineler 'de SQL Server kullanmaya başlayın:
+Azure Sanal Makinelerde SQL Server ile başlayın:
 
 * [Azure portalında SQL Server VM’i oluşturma](quickstart-sql-vm-create-portal.md)
 
-SQL Server VM 'Ler hakkında sık sorulan soruların yanıtlarını alın:
+SQL Server VM'ler hakkında sık sorulan soruların yanıtlarını alın:
 
-* [Azure sanal makinelerinde SQL Server hakkında SSS](virtual-machines-windows-sql-server-iaas-faq.md)
+* [Azure Sanal Makinelerde SQL Server için SSS](virtual-machines-windows-sql-server-iaas-faq.md)
 
-Destek seçenekleri sonu ve genişletilmiş güvenlik güncelleştirmeleri hakkında daha fazla bilgi edinin:
+Destek sonu seçenekleri ve genişletilmiş güvenlik güncelleştirmeleri hakkında daha fazla bilgi edinin:
 
-* [Genişletilmiş güvenlik güncelleştirmeleri](/sql/sql-server/end-of-support/sql-server-extended-security-updates) & [destek sonu](/sql/sql-server/end-of-support/sql-server-end-of-life-overview)
+* [Desteğin Sonu](/sql/sql-server/end-of-support/sql-server-end-of-life-overview) & [Genişletilmiş Güvenlik Güncelleştirmeleri](/sql/sql-server/end-of-support/sql-server-extended-security-updates)

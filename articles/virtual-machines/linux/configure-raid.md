@@ -1,6 +1,6 @@
 ---
-title: Linux VM 'de yazılım RAID yapılandırma
-description: Azure 'da Linux üzerinde RAID yapılandırmak için mdaddm 'yi nasıl kullanacağınızı öğrenin.
+title: Linux VM'de yazılım RAID'i yapılandırma
+description: AZURE'da RAID'i Linux'ta yapılandırmak için mdadm'ı nasıl kullanacağınızı öğrenin.
 author: rickstercdn
 ms.service: virtual-machines-linux
 ms.topic: article
@@ -8,29 +8,29 @@ ms.date: 02/02/2017
 ms.author: rclaus
 ms.subservice: disks
 ms.openlocfilehash: 122abda51b907491b322908c3c2c689bc1723e87
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79250263"
 ---
-# <a name="configure-software-raid-on-linux"></a>Linux 'ta yazılım RAID yapılandırma
-Azure 'daki Linux sanal makinelerinde yazılım RAID 'i kullanarak birden çok bağlı veri diskini tek bir RAID cihazı olarak sunmak için yaygın bir senaryodur. Genellikle bu, performansı artırmak ve yalnızca tek bir disk kullanılmasına kıyasla İyileştirilmiş işleme sağlamak için kullanılabilir.
+# <a name="configure-software-raid-on-linux"></a>Linux'ta Yazılım RAID'i yapılandırın
+Birden çok bağlı veri diskini tek bir RAID aygıtı olarak sunmak için Azure'daki Linux sanal makinelerinde RAID yazılımlarını kullanmak yaygın bir senaryo. Genellikle bu, performansı artırmak ve yalnızca tek bir disk kullanarak karşılaştırıldığında gelişmiş iş elde edilmesine olanak sağlamak için kullanılabilir.
 
-## <a name="attaching-data-disks"></a>Veri diskleri iliştirme
-RAID cihazını yapılandırmak için iki veya daha fazla boş veri diski gereklidir.  RAID cihazı oluşturmanın birincil nedeni, disk GÇ 'nizin performansını artırmaktır.  G/ç gereksinimlerinize göre disk başına en fazla 500 GÇ/PS veya disk başına en fazla 5000 GÇ/PS olan Premium depolama alanı ile standart depomızda depolanan diskleri eklemeyi tercih edebilirsiniz. Bu makale, bir Linux sanal makinesine veri diskleri sağlama ve iliştirme hakkında ayrıntılı bilgi vermez.  Azure 'da bir Linux sanal makinesine boş veri diski iliştirme hakkında ayrıntılı yönergeler için Microsoft Azure makalesine [disk iliştirme](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) bölümüne bakın.
+## <a name="attaching-data-disks"></a>Veri diskleri ekleme
+RAID aygıtını yapılandırmak için iki veya daha fazla boş veri diski gerekir.  RAID aygıtı oluşturmanın birincil nedeni diskInizin IO performansını artırmaktır.  IO ihtiyaçlarınıza bağlı olarak, Standart Depolama alanımızda depolanan diskleri disk başına 500'e kadar IO/ps veya disk başına 5000 IO/ps'ye kadar Premium depolama alanımızla eklemeyi seçebilirsiniz. Bu makalede, bir Linux sanal makineye veri disklerinin nasıl sağlanıp eklendirilen hakkında ayrıntılı bilgi verilmeyecektir.  Azure'daki bir Linux sanal makinesine boş bir veri diskinin nasıl eklenecek lerine ilişkin ayrıntılı talimatlar [için](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Microsoft Azure makalesine bakın.
 
 > [!IMPORTANT]
->Farklı boyutlardaki diskleri karışmayın, bunu yapmak, kıdset performansının en yavaş diskle sınırlı olmasını sağlar. 
+>Farklı boyutlardaki diskleri karıştırmayın, bunu yapmak raidset performansının en yavaş diskinperformansıyla sınırlı olmasını sağlar. 
 
-## <a name="install-the-mdadm-utility"></a>Mdaddm yardımcı programını yükler
+## <a name="install-the-mdadm-utility"></a>mdadm yardımcı programını yükleyin
 * **Ubuntu**
   ```bash
   sudo apt-get update
   sudo apt-get install mdadm
   ```
 
-* **CentOS & Oracle Linux**
+* **Oracle Linux& CentOS**
   ```bash
   sudo yum install mdadm
   ```
@@ -40,10 +40,10 @@ RAID cihazını yapılandırmak için iki veya daha fazla boş veri diski gerekl
   zypper install mdadm
   ```
 
-## <a name="create-the-disk-partitions"></a>Disk bölümleri oluşturma
-Bu örnekte,/dev/sdc'de tek bir disk bölümü oluşturacağız. Yeni disk bölümü/dev/sdc1olarak adlandırılacaktır.
+## <a name="create-the-disk-partitions"></a>Disk bölümlerini oluşturma
+Bu örnekte, /dev/sdc üzerinde tek bir disk bölümü oluştururuz. Yeni disk bölümü /dev/sdc1 olarak adlandırılır.
 
-1. Bölüm oluşturmaya başlamak için `fdisk` başlatın
+1. Bölüm `fdisk` oluşturmaya başlamaya başla
 
     ```bash
     sudo fdisk /dev/sdc
@@ -57,13 +57,13 @@ Bu örnekte,/dev/sdc'de tek bir disk bölümü oluşturacağız. Yeni disk böl�
                     sectors (command 'u').
     ```
 
-1. **Hayır**bölümü oluşturmak için istemde ' n ' tuşuna basın:
+1. **N**ew bölümü oluşturmak için komut isteminde 'n' tuşuna basın:
 
     ```bash
     Command (m for help): n
     ```
 
-1. Ardından, bir **p**rimary bölümü oluşturmak için ' p ' tuşuna basın:
+1. Ardından, **p**rimary bölümü oluşturmak için 'p' tuşuna basın:
 
     ```bash 
     Command action
@@ -71,27 +71,27 @@ Bu örnekte,/dev/sdc'de tek bir disk bölümü oluşturacağız. Yeni disk böl�
             p   primary partition (1-4)
     ```
 
-1. Bölüm numarası 1 ' i seçmek için ' 1 ' tuşuna basın:
+1. Bölüm numarası 1'i seçmek için '1' tuşuna basın:
 
     ```bash
     Partition number (1-4): 1
     ```
 
-1. Yeni bölümün başlangıç noktasını seçin veya bölümü sürücüdeki boş alanın başına yerleştirmek için varsayılanı kabul etmek üzere `<enter>` ' a basın:
+1. Yeni bölümün başlangıç noktasını seçin veya `<enter>` bölümü sürücüdeki boş alanın başına yerleştirmek için varsayılanı kabul etmek için basın:
 
     ```bash   
     First cylinder (1-1305, default 1):
     Using default value 1
     ```
 
-1. Bölüm boyutunu seçin, örneğin 10 gigabayt bölüm oluşturmak için ' + 10G ' yazın. Ya da tüm sürücüyü kapsayan tek bir bölüm oluşturmak `<enter>` ' a basın:
+1. 10 gigabaytlık bir bölüm oluşturmak için bölüm boyutunu seçin, örneğin '+10G' yazın. Veya, `<enter>` tüm sürücüyü kapsayan tek bir bölüm oluşturun' tuşuna basın:
 
     ```bash   
     Last cylinder, +cylinders or +size{K,M,G} (1-1305, default 1305): 
     Using default value 1305
     ```
 
-1. Ardından, varsayılan ' 83 ' (Linux) KIMLIĞI ' FD ' kimliğiyle bölümün ID ve **t**türünü değiştirin (Linux RAID Auto):
+1. Ardından, varsayılan kimlik '83' (Linux) 'fd' (Linux raid auto) için bölümün kimliğini ve **t**ype'ini değiştirin:
 
     ```bash  
     Command (m for help): t
@@ -99,22 +99,22 @@ Bu örnekte,/dev/sdc'de tek bir disk bölümü oluşturacağız. Yeni disk böl�
     Hex code (type L to list codes): fd
     ```
 
-1. Son olarak, bölüm tablosunu sürücüye yazın ve Fdisk programından çıkın:
+1. Son olarak, sürücüve çıkış fdisk için bölüm tablosu yazın:
 
     ```bash   
     Command (m for help): w
     The partition table has been altered!
     ```
 
-## <a name="create-the-raid-array"></a>RAID dizisi oluşturma
-1. Aşağıdaki örnek, üç ayrı veri diskinde bulunan (sdc1, sdd1, sde1) üç bölümden oluşan "Stripe" (RAID düzey 0).  Bu komutu çalıştırdıktan sonra **/dev/MD127** adlı yenı bir RAID cihazı oluşturulur. Ayrıca, bu veri diskleri daha önce başka bir geçersiz RAID dizisinin parçasıysa, `mdadm` komutuna `--force` parametresi eklemek için gerekli olabileceğini unutmayın:
+## <a name="create-the-raid-array"></a>RAID dizisini oluşturma
+1. Aşağıdaki örnekte üç ayrı veri diskinde (sdc1, sdd1, sde1) bulunan üç bölüm "şerit" (RAID düzeyi 0) olacaktır.  Bu komutu çalıştırdıktan sonra **/dev/md127** adında yeni bir RAID aygıtı oluşturulur. Ayrıca, bu veri diskleri daha önce başka bir geçersiz RAID dizisinin parçası `--force` olsaydı, `mdadm` komuta parametre eklemek gerekebilir unutmayın:
 
     ```bash  
     sudo mdadm --create /dev/md127 --level 0 --raid-devices 3 \
         /dev/sdc1 /dev/sdd1 /dev/sde1
     ```
 
-1. Yeni RAID cihazında dosya sistemini oluşturma
+1. Yeni RAID aygıtında dosya sistemini oluşturma
    
     **CentOS, Oracle Linux, SLES 12, openSUSE ve Ubuntu**
 
@@ -128,7 +128,7 @@ Bu örnekte,/dev/sdc'de tek bir disk bölümü oluşturacağız. Yeni disk böl�
     sudo mkfs -t ext3 /dev/md127
     ```
    
-    **SLES 11** -Boot.MD etkinleştirin ve mdaddm. conf dosyasını oluşturun
+    **SLES 11** - boot.md etkinleştirin ve mdadm.conf oluşturmak
 
     ```bash
     sudo -i chkconfig --add boot.md
@@ -136,20 +136,20 @@ Bu örnekte,/dev/sdc'de tek bir disk bölümü oluşturacağız. Yeni disk böl�
     ```
    
    > [!NOTE]
-   > SUSE sistemlerinde bu değişiklikler yapıldıktan sonra yeniden başlatma gerekebilir. Bu adım SLES 12 ' de gerekli *değildir* .
+   > SUSE sistemlerinde bu değişiklikleri yaptıktan sonra yeniden başlatma gerekebilir. Bu adım SLES 12 için gerekli *değildir.*
    > 
    
 
-## <a name="add-the-new-file-system-to-etcfstab"></a>Yeni dosya sistemini/etc/fstab 'e ekleme
+## <a name="add-the-new-file-system-to-etcfstab"></a>Yeni dosya sistemini /etc/fstab'a ekleme
 > [!IMPORTANT]
-> /Etc/fstab dosyasının yanlış düzenlenmesiyle, önyüklenemeyen bir sistemle sonuçlanabilir. Emin değilseniz, bu dosyayı doğru şekilde düzenleme hakkında bilgi edinmek için dağıtımın belgelerine bakın. Ayrıca,/etc/fstab dosyasının bir yedeğinin düzenlenmeden önce oluşturulması önerilir.
+> /etc/fstab dosyasının yanlış düzenlenmesi başlatılamaz bir sisteme neden olabilir. Emin değilseniz, bu dosyayı doğru düzenleme hakkındaki bilgiler için dağıtımın belgelerine bakın. Düzenlemeden önce /etc/fstab dosyasının bir yedeklemesinin oluşturulması da önerilir.
 
-1. Yeni dosya sisteminiz için istenen bağlama noktasını oluşturun, örneğin:
+1. Örneğin, yeni dosya sisteminiz için istediğiniz montaj noktasını oluşturun:
 
     ```bash
     sudo mkdir /data
     ```
-1. /Etc/fstab düzenlenirken, **UUID** 'nin cihaz adı yerine dosya sistemine başvurması için kullanılması gerekir.  Yeni dosya sisteminin UUID 'sini öğrenmek için `blkid` yardımcı programını kullanın:
+1. /etc/fstab düzenlerken, **UUID** aygıt adı yerine dosya sistemine başvurmak için kullanılmalıdır.  Yeni `blkid` dosya sistemi için UUID'yi belirlemek için yardımcı programı kullanın:
 
     ```bash   
     sudo /sbin/blkid
@@ -157,29 +157,29 @@ Bu örnekte,/dev/sdc'de tek bir disk bölümü oluşturacağız. Yeni disk böl�
     /dev/md127: UUID="aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee" TYPE="ext4"
     ```
 
-1. /Etc/fstab 'i bir metin düzenleyicisinde açın ve yeni dosya sistemi için bir giriş ekleyin, örneğin:
+1. Bir metin düzenleyicisinde /etc/fstab'ı açın ve örneğin yeni dosya sistemi için bir giriş ekleyin:
 
     ```bash   
     UUID=aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee  /data  ext4  defaults  0  2
     ```
    
-    **SLES 11**' de:
+    Veya **SLES 11'de**:
 
     ```bash
     /dev/disk/by-uuid/aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee  /data  ext3  defaults  0  2
     ```
    
-    Ardından,/etc/fstaba kaydedin ve kapatın.
+    Sonra, kaydedin ve kapatın /etc/fstab.
 
-1. /Etc/fstab girişinin doğru olduğunu test edin:
+1. /etc/fstab girişinin doğru olduğunu test edin:
 
     ```bash  
     sudo mount -a
     ```
 
-    Bu komut bir hata iletisiyle sonuçlanırsa, lütfen/etc/fstab dosyasındaki söz dizimini kontrol edin.
+    Bu komut bir hata iletisi ile sonuçlanırsa, lütfen /etc/fstab dosyasındaki sözdizimini kontrol edin.
    
-    Sonra, dosya sisteminin bağlı olduğundan emin olmak için `mount` komutunu çalıştırın:
+    Dosya sisteminin `mount` monte edilmesini sağlamak için komutu sonraki çalıştırın:
 
     ```bash   
     mount
@@ -187,11 +187,11 @@ Bu örnekte,/dev/sdc'de tek bir disk bölümü oluşturacağız. Yeni disk böl�
     /dev/md127 on /data type ext4 (rw)
     ```
 
-1. Seçim Failsafe önyükleme parametreleri
+1. (İsteğe bağlı) Failsafe Önyükleme Parametreleri
    
-    **fstab yapılandırması**
+    **fstab yapılandırma**
    
-    Birçok dağıtım,/etc/fstab dosyasına eklenebilen `nobootwait` veya `nofail` bağlama parametrelerini içerir. Bu parametreler, belirli bir dosya sistemini bağladığınızda ve Linux sisteminin, RAID dosya sistemini düzgün bir şekilde bağlamasa bile önyüklemeye devam etmesine izin veren hatalara izin verir. Bu parametrelerle ilgili daha fazla bilgi için, dağıtım belgelerine bakın.
+    Birçok dağıtım , `nobootwait` /etc/fstab dosyasına eklenebilecek veya `nofail` monte parametrelerini içerir. Bu parametreler, belirli bir dosya sistemi monte ederken hatalara izin verir ve RAID dosya sistemini düzgün bir şekilde monte edemese bile Linux sisteminin önyüklemeye devam etmesine olanak sağlar. Bu parametreler hakkında daha fazla bilgi için dağıtımınızın belgelerine bakın.
    
     Örnek (Ubuntu):
 
@@ -201,26 +201,26 @@ Bu örnekte,/dev/sdc'de tek bir disk bölümü oluşturacağız. Yeni disk böl�
 
     **Linux önyükleme parametreleri**
    
-    Yukarıdaki parametrelere ek olarak, "`bootdegraded=true`" çekirdek parametresi, RAID 'in hasarlı veya düzeyi düşürülmüş olarak algılansa bile sistemin önyüklemesine izin verebilir, örneğin, bir veri sürücüsü yanlışlıkla sanal makineden kaldırılırsa. Bu, varsayılan olarak önyüklenebilir olmayan bir sisteme neden olabilir.
+    Yukarıdaki parametrelere ek olarak, ""`bootdegraded=true`çekirdek parametresi, RAID hasarlı veya bozulmuş olarak algılasa bile( örneğin bir veri sürücüsü yanlışlıkla sanal makineden kaldırılırsa) sistemin önyüklemesine izin verebilir. Varsayılan olarak bu da önyükleme olmayan bir sistem neden olabilir.
    
-    Çekirdek parametrelerini düzgün bir şekilde düzenlemek için lütfen dağıtım belgelerine bakın. Örneğin, çoğu dağıtımda (CentOS, Oracle Linux, SLES 11), bu parametreler "`/boot/grub/menu.lst`" dosyasına elle eklenebilir.  Ubuntu 'da, bu parametre "/etc/default/grub" üzerindeki `GRUB_CMDLINE_LINUX_DEFAULT` değişkenine eklenebilir.
+    Çekirdek parametrelerinin düzgün bir şekilde nasıl dinlenir? Örneğin, birçok dağıtımda (CentOS, Oracle Linux, SLES 11) bu parametreler`/boot/grub/menu.lst`" " dosyasına el ile eklenebilir.  Ubuntu'da bu parametre "/etc/default/grub" değişkenine `GRUB_CMDLINE_LINUX_DEFAULT` eklenebilir.
 
 
-## <a name="trimunmap-support"></a>KESME/eşlemeyi kaldır desteği
-Bazı Linux çekirdekler, diskteki kullanılmayan blokları atmak için kesme/eşlemeyi Kaldır işlemlerini destekler. Bu işlemler, Azure 'un silinen sayfaların artık geçerli olmadığını ve yoksayılabilir olduğunu bildirmek için öncelikle standart depolamada yararlı olur. Sayfaların atılması, büyük dosyalar oluşturup bunları silerseniz maliyeti kaydedebilir.
+## <a name="trimunmap-support"></a>TRIM/UNMAP desteği
+Bazı Linux çekirdekleri, diskteki kullanılmayan blokları atmak için TRIM/UNMAP işlemlerini destekler. Bu işlemler, azure'a silinen sayfaların artık geçerli olmadığını ve atılabilir olduğunu bildirmek için öncelikle standart depolama alanında yararlıdır. Sayfaları atmak, büyük dosyalar oluşturup silerseniz maliyet tasarrufu sağlayabilir.
 
 > [!NOTE]
-> Dizi için öbek boyutu varsayılandan daha az (512KB) ayarlandıysa, RAID, atma komutları yayınlamayabilir. Bunun nedeni, konaktaki ayrıntı düzeyi, ana bilgisayar üzerindeki eşlemeyi de 512 KB 'dir. Dizinin öbek boyutunu mdaddm 'nin `--chunk=` parametresi aracılığıyla değiştirdiyseniz, kesme/eşlemesini Kaldır istekleri çekirdek tarafından yoksayılabilir.
+> Dizinin öbek boyutu varsayılandan (512KB) daha az ayarlanmışsa RAID, komutları atamayabilir. Bunun nedeni, Ana Bilgisayar'daki harita olmayan parçalılığın da 512KB olmasıdır. Dizinin yığın boyutunu mdadm'ın `--chunk=` parametresi ile değiştirdiyseniz, TRIM/unmap istekleri çekirdek tarafından yoksayılabilir.
 
-Linux sanal makinenizde KıRPMA desteğini etkinleştirmenin iki yolu vardır. Her zamanki gibi, önerilen yaklaşım için dağıtıma başvurun:
+Linux VM'nizde TRIM desteğini etkinleştirmenin iki yolu vardır. Her zamanki gibi, önerilen yaklaşım için dağıtımınıza danışın:
 
-- `/etc/fstab``discard` bağlama seçeneğini kullanın, örneğin:
+- `discard` Montaj seçeneğini `/etc/fstab`kullanın, örneğin:
 
     ```bash
     UUID=aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee  /data  ext4  defaults,discard  0  2
     ```
 
-- Bazı durumlarda `discard` seçeneğinde performans etkileri olabilir. Alternatif olarak, komut satırından `fstrim` komutunu el ile çalıştırabilir veya bunları düzenli olarak çalıştırmak için crontab 'ize ekleyebilirsiniz:
+- Bazı durumlarda `discard` bu seçeneğin performans etkileri olabilir. Alternatif olarak, komutu `fstrim` komut satırından el ile çalıştırabilir veya düzenli olarak çalıştırmak için crontab'ınıza ekleyebilirsiniz:
 
     **Ubuntu**
 

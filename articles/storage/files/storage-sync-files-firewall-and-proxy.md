@@ -1,26 +1,26 @@
 ---
-title: Şirket içi güvenlik duvarı ve proxy ayarlarını Azure Dosya Eşitleme | Microsoft Docs
-description: Şirket içi ağ yapılandırması Azure Dosya Eşitleme
+title: Azure Dosya Eşitleme şirket içi güvenlik duvarı ve proxy ayarları | Microsoft Dokümanlar
+description: Azure Dosya Eşitleme şirket içi ağ yapılandırması
 author: roygara
 ms.service: storage
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 93681813c12f0df99909c849e57153e7a64c78fb
-ms.sourcegitcommit: c29b7870f1d478cec6ada67afa0233d483db1181
+ms.openlocfilehash: 7f398012edc25ba6a04e230fa8049e7264f857bd
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79299320"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80294517"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Azure Dosya Eşitleme proxy’si ve güvenli duvarı ayarları
-Azure Dosya Eşitleme, şirket içi sunucularınızı Azure dosyalarına bağlayarak çok siteli eşitlemeyi ve bulut katmanlama özelliklerini etkinleştirir. Bu nedenle, bir şirket içi sunucu internet 'e bağlı olmalıdır. BT yöneticisinin, sunucunun Azure Cloud Services 'e ulaşması için en iyi yolu karar vermesini gerektirir.
+Azure Dosya Eşitlemesi, şirket içi sunucularınızı Azure Dosyaları'na bağlayarak çok siteli eşitleme ve bulut katmanlama özellikleri sağlar. Bu nedenle, şirket içi sunucu internete bağlı olmalıdır. Bir BT yöneticisinin, sunucunun Azure bulut hizmetlerine ulaşması için en iyi yolu belirlemesi gerekir.
 
-Bu makale, başarıyla sunulan belirli gereksinimlere ve seçeneklere ilişkin öngörüler sağlar ve sunucunuzu Azure Dosya Eşitleme için güvenli bir şekilde bağlayın.
+Bu makale, sunucunuzu Azure Dosya Eşitlemasına başarılı ve güvenli bir şekilde bağlamak için kullanılabilen belirli gereksinimler ve seçenekler hakkında bilgi sağlar.
 
 ## <a name="overview"></a>Genel Bakış
-Azure Dosya Eşitleme, Windows sunucunuz, Azure dosya paylaşımınız ve diğer birçok Azure hizmeti arasında, eşitleme grubunuzda açıklandığı gibi verileri eşitlemek için bir Orchestration hizmeti görevi görür. Azure Dosya Eşitleme düzgün şekilde çalışması için sunucularınızı aşağıdaki Azure hizmetleriyle iletişim kuracak şekilde yapılandırmanız gerekecektir:
+Azure Dosya Eşitlemesi, eşitleme grubunuzda açıklandığı gibi verileri eşitlemek için Windows Server'ınız, Azure dosya paylaşımınız ve diğer bazı Azure hizmetleri arasında bir düzenleme hizmeti görevi görür. Azure Dosya Eşitlemi'nin doğru çalışması için sunucularınızı aşağıdaki Azure hizmetleriyle iletişim kuracak şekilde yapılandırmanız gerekir:
 
 - Azure Storage
 - Azure Dosya Eşitleme
@@ -28,38 +28,38 @@ Azure Dosya Eşitleme, Windows sunucunuz, Azure dosya paylaşımınız ve diğer
 - Kimlik doğrulama hizmetleri
 
 > [!Note]  
-> Windows Server 'daki Azure Dosya Eşitleme Aracısı, bulut hizmetlerine yönelik tüm istekleri başlatır ve yalnızca bir güvenlik duvarı perspektifinden giden trafiği göz önünde bulundurmasına neden olur. <br /> Azure hizmeti Azure Dosya Eşitleme aracısıyla bir bağlantı başlatır.
+> Windows Server'daki Azure Dosya Eşitleme aracısı, bulut hizmetlerine yönelik tüm istekleri başlatır ve bu da yalnızca giden trafiği güvenlik duvarı açısından dikkate almak zorunda kalmayla sonuçlanır. <br /> Hiçbir Azure hizmeti Azure Dosya Eşitleme aracısına bağlantı başlatmaz.
 
 ## <a name="ports"></a>Bağlantı Noktaları
-Azure Dosya Eşitleme dosya verilerini ve meta verileri HTTPS üzerinden özel olarak taşımalıdır ve 443 numaralı bağlantı noktasını açık giden şekilde gerektirir.
+Azure Dosya Eşitlemi dosya verilerini ve meta verileri yalnızca HTTPS üzerinden taşır ve bağlantı noktası 443'ün giden açık olmasını gerektirir.
 Sonuç olarak tüm trafik şifrelenir.
 
-## <a name="networks-and-special-connections-to-azure"></a>Azure ile ağlar ve özel bağlantılar
-Azure Dosya Eşitleme aracısının [ExpressRoute](../../expressroute/expressroute-introduction.md)vb. gibi özel kanallarla ilgili hiçbir gereksinimi yoktur.
+## <a name="networks-and-special-connections-to-azure"></a>Azure'a ağlar ve özel bağlantılar
+Azure Dosya Eşitleme aracısının Azure'a [ExpressRoute](../../expressroute/expressroute-introduction.md), vb. gibi özel kanallarla ilgili gereksinimleri yoktur.
 
-Azure Dosya Eşitleme, Azure 'a erişime izin veren ve bant genişliği, gecikme süresi gibi çeşitli ağ özelliklerine otomatik olarak uyum sağlayan ve ince ayar için yönetici denetimi sunan tüm yollarla çalışacaktır. Şu anda tüm özellikler kullanılamaz. Belirli davranışı yapılandırmak isterseniz, [Azure dosyaları UserVoice](https://feedback.azure.com/forums/217298-storage?category_id=180670)aracılığıyla bize bilgi verin.
+Azure Dosya Eşitlemi, Azure'a erişime izin veren, bant genişliği, gecikme sonu gibi çeşitli ağ özelliklerine otomatik olarak uyum sağlayarak ve ince ayar için yönetici denetimi sunan tüm yollarla çalışır. Şu anda tüm özellikler kullanılamıyor. Belirli bir davranışı yapılandırmak istiyorsanız, Azure [Files UserVoice](https://feedback.azure.com/forums/217298-storage?category_id=180670)aracılığıyla bize bildirin.
 
 ## <a name="proxy"></a>Ara sunucu
-Azure Dosya Eşitleme, uygulamaya özgü ve makine genelindeki proxy ayarlarını destekler.
+Azure Dosya Eşitlemi, uygulamaya özgü ve makine genelinde proxy ayarlarını destekler.
 
-**Uygulamaya özgü ara sunucu ayarları** , bir proxy 'nin özel olarak Azure dosya eşitleme trafiği yapılandırmasına izin verir. Uygulamaya özgü ara sunucu ayarları, aracı sürümü 4.0.1.0 veya daha yeni bir sürümde desteklenir ve aracı yüklemesi sırasında veya set-StorageSyncProxyConfiguration PowerShell cmdlet 'i kullanılarak yapılandırılabilir.
+**Uygulamaya özel proxy ayarları,** Azure Dosya Eşitleme trafiği için özel olarak bir proxy yapılandırması sağlar. Uygulamaya özel proxy ayarları aracı sürüm 4.0.1.0 veya daha yeni olarak desteklenir ve aracı yüklemesi sırasında veya Set-StorageSyncProxyConfiguration PowerShell cmdlet kullanılarak yapılandırılabilir.
 
-Uygulamaya özgü ara sunucu ayarlarını yapılandırmak için PowerShell komutları:
+PowerShell, uygulamaya özgü proxy ayarlarını yapılandırmakomutları:
 ```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
 Set-StorageSyncProxyConfiguration -Address <url> -Port <port number> -ProxyCredential <credentials>
 ```
-Sunucunun tüm trafiği proxy üzerinden yönlendirilirken, **makine genelindeki proxy ayarları** Azure dosya eşitleme aracısına saydamdır.
+Sunucunun tüm trafiği proxy üzerinden yönlendirilir gibi **makine genelinde proxy ayarları** Azure Dosya Eşitleme aracısı için saydamdır.
 
-Makine genelindeki proxy ayarlarını yapılandırmak için aşağıdaki adımları izleyin: 
+Makine genelinde proxy ayarlarını yapılandırmak için aşağıdaki adımları izleyin: 
 
 1. .NET uygulamaları için proxy ayarlarını yapılandırma 
 
-   - Şu iki dosyayı düzenleyin:  
+   - Bu iki dosyayı edin:  
      C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config  
      C:\Windows\Microsoft.NET\Framework\v4.0.30319\Config\machine.config
 
-   - Machine. config dosyalarına < System. net > bölümünü ekleyin (< System. serviceModel > bölümünün altında).  127.0.01:8888 öğesini, proxy sunucu için IP adresine ve bağlantı noktasına değiştirin. 
+   - machine.config dosyalarındaki <system.net> bölümünü ekleyin (<system.serviceModel> bölümünün altında).  Proxy sunucusunun IP adresi ve bağlantı noktası olarak 127.0.01:8888'i değiştirin. 
      ```
       <system.net>
         <defaultProxy enabled="true" useDefaultCredentials="true">
@@ -68,44 +68,44 @@ Makine genelindeki proxy ayarlarını yapılandırmak için aşağıdaki adımla
       </system.net>
      ```
 
-2. WinHTTP proxy ayarlarını ayarla 
+2. WinHTTP proxy ayarlarını ayarlama 
 
-   - Mevcut proxy ayarını görmek için, yükseltilmiş bir komut isteminden veya PowerShell 'den aşağıdaki komutu çalıştırın:   
+   - Varolan proxy ayarını görmek için yükseltilmiş bir komut isteminden veya PowerShell'den aşağıdaki komutu çalıştırın:   
 
-     Netsh WinHTTP proxy göster
+     netsh winhttp göster proxy
 
-   - Proxy ayarını ayarlamak için yükseltilmiş bir komut isteminden veya PowerShell 'den aşağıdaki komutu çalıştırın (127.0.01:8888 öğesini ara sunucu için IP adresini ve bağlantı noktasını değiştirin):  
+   - Proxy ayarını ayarlamak için yükseltilmiş bir komut istemiveya PowerShell'den aşağıdaki komutu çalıştırın (proxy sunucusunun IP adresi ve bağlantı noktasına 127.0.01:8888'i değiştirin):  
 
-     Netsh WinHTTP set proxy 127.0.0.1:8888
+     netsh winhttp set proxy 127.0.0.1:8888
 
-3. Yükseltilmiş bir komut isteminden veya PowerShell 'ten aşağıdaki komutu çalıştırarak depolama eşitleme Aracısı hizmetini yeniden başlatın: 
+3. Aşağıdaki komutu yükseltilmiş bir komut isteminden veya PowerShell'den çalıştırarak Depolama Eşitleme Aracısı hizmetini yeniden başlatın: 
 
       net stop filesyncsvc
 
-      Note: depolama eşitleme Aracısı (filesyncsvc) hizmeti durdurulduktan sonra otomatik olarak başlayacak.
+      Not: Depolama Eşitleme Aracısı (filesyncsvc) hizmeti durdurulduktan sonra otomatik olarak başlatılacaktır.
 
 ## <a name="firewall"></a>Güvenlik duvarı
-Önceki bölümde belirtildiği gibi, 443 numaralı bağlantı noktasının giden trafik açık olması gerekir. Veri merkezinizdeki, dalınızdaki veya bölgenizdeki ilkelere bağlı olarak, bu bağlantı noktası üzerinden trafiği belirli etki alanlarına kısıtlamak istenebilir veya gerekli olabilir.
+Bir önceki bölümde belirtildiği gibi, bağlantı noktası 443 giden açık olması gerekir. Veri merkezinizdeki, şubenizdeki veya bölgenizdeki ilkelere bağlı olarak, bu bağlantı noktası üzerindeki trafiği belirli etki alanlarıyla daha da kısıtlamak istenebilir veya gerekli olabilir.
 
 Aşağıdaki tabloda iletişim için gerekli etki alanları açıklanmaktadır:
 
-| Hizmet | Genel bulut uç noktası | Azure Kamu uç noktası | Kullanım |
+| Hizmet | Genel bulut bitiş noktası | Azure Kamu bitiş noktası | Kullanım |
 |---------|----------------|---------------|------------------------------|
-| **Azure Resource Manager** | https://management.azure.com | https://management.usgovcloudapi.net | Herhangi bir kullanıcı çağrısı (PowerShell gibi), ilk sunucu kayıt çağrısı da dahil olmak üzere bu URL 'ye gider. |
-| **Azure Active Directory** | https://login.windows.net<br>https://login.microsoftonline.com | https://login.microsoftonline.us | Azure Resource Manager çağrılarının kimliği doğrulanmış bir kullanıcı tarafından yapılması gerekir. Başarılı olmak için, bu URL kullanıcı kimlik doğrulaması için kullanılır. |
-| **Azure Active Directory** | https://graph.windows.net/ | https://graph.windows.net/ | Azure Dosya Eşitleme dağıtmanın bir parçası olarak, aboneliğin Azure Active Directory bir hizmet sorumlusu oluşturulur. Bu URL bunun için kullanılır. Bu asıl, Azure Dosya Eşitleme hizmetine en düşük düzeyde haklar vermek için kullanılır. Azure Dosya Eşitleme ilk kurulumunu gerçekleştiren kullanıcı, abonelik sahibi ayrıcalıklarına sahip kimliği doğrulanmış bir kullanıcı olmalıdır. |
-| **Azure Depolama** | &ast;. core.windows.net | &ast;. core.usgovcloudapi.net | Sunucu bir dosyayı indirdiğinde, sunucu bu veri hareketini depolama hesabındaki Azure dosya paylaşımından doğrudan görüşüp daha verimli bir şekilde gerçekleştirir. Sunucuda yalnızca hedeflenen dosya paylaşımında erişime izin veren bir SAS anahtarı vardır. |
-| **Azure Dosya Eşitleme** | &ast;. one.microsoft.com<br>&ast;. afs.azure.net | &ast;. afs.azure.us | İlk sunucu kaydından sonra, sunucu, bu bölgedeki Azure Dosya Eşitleme hizmet örneği için bölgesel bir URL alır. Sunucu, eşitlemesini işleme örneği ile doğrudan ve verimli bir şekilde iletişim kurmak için URL 'YI kullanabilir. |
-| **Microsoft PKI** | https://www.microsoft.com/pki/mscorp/cps<br><http://ocsp.msocsp.com> | https://www.microsoft.com/pki/mscorp/cps<br><http://ocsp.msocsp.com> | Azure Dosya Eşitleme aracısı yüklendikten sonra, Azure Dosya Eşitleme hizmeti ve Azure dosya paylaşımıyla iletişim kurmak için gereken ara sertifikaları indirmek için PKI URL 'SI kullanılır. Bir sertifikanın durumunu denetlemek için OCSP URL 'SI kullanılır. |
+| **Azure Resource Manager** | `https://management.azure.com` | https://management.usgovcloudapi.net | Herhangi bir kullanıcı çağrısı (PowerShell gibi) ilk sunucu kayıt çağrısı da dahil olmak üzere bu URL'ye gider/aracılığıyla. |
+| **Azure Active Directory** | https://login.windows.net<br>`https://login.microsoftonline.com` | https://login.microsoftonline.us | Azure Kaynak Yöneticisi aramaları kimlik doğrulaması yapılmış bir kullanıcı tarafından yapılmalıdır. Başarılı olmak için bu URL kullanıcı kimlik doğrulaması için kullanılır. |
+| **Azure Active Directory** | https://graph.microsoft.com/ | https://graph.microsoft.com/ | Azure Dosya Eşitle'sini dağıtmanın bir parçası olarak, aboneliğin Azure Etkin Dizini'nde bir hizmet yöneticisi oluşturulur. Bu URL bunun için kullanılır. Bu anabilim, en az hak kümesini Azure Dosya Eşitleme hizmetine vermek için kullanılır. Azure Dosya Eşitlemesi'nin ilk kurulumlarını gerçekleştiren kullanıcı, abonelik sahibi ayrıcalıklarına sahip kimlik doğrulaması yapılan bir kullanıcı olmalıdır. |
+| **Azure Depolama** | &ast;.core.windows.net | &ast;.core.usgovcloudapi.net | Sunucu bir dosya indirdiğinde, sunucu depolama hesabındaki Azure dosya paylaşımıyla doğrudan konuşurken bu veri hareketini daha verimli bir şekilde gerçekleştirir. Sunucu, yalnızca hedeflenen dosya paylaşımı erişimine izin veren bir SAS anahtarına sahiptir. |
+| **Azure Dosya Eşitleme** | &ast;.one.microsoft.com<br>&ast;.afs.azure.net | &ast;.afs.azure.us | İlk sunucu kaydından sonra sunucu, o bölgedeki Azure Dosya Eşitleme hizmeti örneği için bölgesel bir URL alır. Sunucu, eşitleme işlemlerini işleyen örnekle doğrudan ve verimli bir şekilde iletişim kurmak için URL'yi kullanabilir. |
+| **Microsoft PKI** | https://www.microsoft.com/pki/mscorp/cps<br><http://ocsp.msocsp.com> | https://www.microsoft.com/pki/mscorp/cps<br><http://ocsp.msocsp.com> | Azure Dosya Eşitleme aracısı yüklendikten sonra, Azure Dosya Eşitleme hizmeti ve Azure dosya paylaşımıyla iletişim kurmak için gereken ara sertifikaları indirmek için PKI URL'si kullanılır. OCSP URL, sertifikanın durumunu denetlemek için kullanılır. |
 
 > [!Important]
-> Trafiğe izin verirken, sunucudan yalnızca eşitleme hizmetinden daha fazlasına trafik &ast;. Alt etki alanları altında çok daha fazla Microsoft hizmeti mevcuttur.
+> Trafiğin .one.microsoft.com'a &ast;izin verirken, sunucudan eşitleme hizmetinden daha fazlasına trafik vermek mümkündür. Alt etki alanları altında çok daha fazla Microsoft hizmeti mevcuttur.
 
-&ast;. one.microsoft.com çok geniş ise, Azure dosya eşitleme hizmeti 'nin yalnızca açık bölgesel örneklerine iletişime izin vererek sunucunun iletişimini sınırlayabilirsiniz. Hangi örnek seçme, dağıttığınız ve sunucusuna kaydettiğiniz depolama eşitleme hizmeti bölgesine bağlıdır. Bu bölgeye aşağıdaki tabloda "birincil uç nokta URL 'SI" adı verilir.
+&ast;.one.microsoft.com çok genişse, iletişimin Yalnızca Azure Dosyaları Eşitleme hizmetinin açık bölgesel örnekleriyle sınırlandırılmasına izin vererek sunucunun iletişimini sınırlandırabilirsiniz. Hangi örneği seçeceğiniz, sunucuyu dağıttığınız ve kaydettiğiniz depolama eşitleme hizmetinin bölgesine bağlıdır. Bu bölge aşağıdaki tabloda "Birincil uç nokta URL" olarak adlandırılır.
 
-İş sürekliliği ve olağanüstü durum kurtarma (BCDR) nedenleriyle Azure dosya paylaşımlarınızı küresel olarak yedekli (GRS) depolama hesabında belirtmiş olabilirsiniz. Böyle bir durum söz konusu ise, Azure dosya paylaşımlarınız, coğrafi bölge kesintisi durumunda eşleştirilmiş bölgeye yük devreder. Azure Dosya Eşitleme depolama ile aynı bölgesel eşleştirmeleri kullanır. Bu nedenle, GRS depolama hesapları kullanıyorsanız, sunucunuzun Azure Dosya Eşitleme eşleştirilmiş bölge ile iletişim kurmasına izin vermek için ek URL 'Ler etkinleştirmeniz gerekir. Aşağıdaki tablo bu "eşleştirilmiş bölgeyi" çağırır. Ayrıca, aynı zamanda etkinleştirilmesi gereken bir Traffic Manager profil URL 'SI vardır. Bu, ağ trafiğinin yük devretme olayında eşleştirilmiş bölgeye sorunsuz bir şekilde yeniden yönlendirilmesini ve aşağıdaki tabloda "keşif URL 'SI" olarak adlandırılmasına olanak sağlar.
+İş sürekliliği ve olağanüstü durum kurtarma (BCDR) nedenleriyle Azure dosya paylaşımlarınızı genel olarak gereksiz (GRS) bir depolama hesabında belirtmiş olabilirsiniz. Bu durumda, kalıcı bir bölgesel kesinti durumunda Azure dosya paylaşımlarınız eşleştirilmiş bölgeye geçmezse. Azure Dosya Eşitlemi depolama yla aynı bölgesel eşleştirmeleri kullanır. Bu nedenle, GRS depolama hesapları kullanıyorsanız, sunucunuzun Azure Dosya Eşitlemi için eşleştirilmiş bölgeyle konuşmasına izin vermek için ek URL'leri etkinleştirmeniz gerekir. Aşağıdaki tabloda buna "Eşleştirilmiş bölge" denir. Ayrıca, etkinleştirilmesi gereken bir trafik yöneticisi profil URL'si de vardır. Bu, ağ trafiğinin, bir arıza olması durumunda eşleştirilmiş bölgeye sorunsuz bir şekilde yeniden yönlendirilmesini sağlar ve aşağıdaki tabloda "Bulma URL'si" olarak adlandırılır.
 
-| Bulut  | Bölge | Birincil uç nokta URL 'SI | Eşleştirilmiş bölge | Bulma URL 'SI |
+| Bulut  | Bölge | Birincil bitiş noktası URL'si | Eşleştirilmiş bölge | Bulma URL'si |
 |--------|--------|----------------------|---------------|---------------|
 | Genel |Doğu Avustralya | https:\//kailani-aue.one.microsoft.com | Güneydoğu Avustralya | https:\//tm-kailani-aue.one.microsoft.com |
 | Genel |Güneydoğu Avustralya | https:\//kailani-aus.one.microsoft.com | Doğu Avustralya | https:\//tm-kailani-aus.one.microsoft.com |
@@ -135,78 +135,145 @@ Aşağıdaki tabloda iletişim için gerekli etki alanları açıklanmaktadır:
 | Devlet | US Gov Arizona | https:\//usgovarizona01.afs.azure.us | US Gov Texas | https:\//tm-usgovarizona01.afs.azure.us |
 | Devlet | US Gov Texas | https:\//usgovtexas01.afs.azure.us | US Gov Arizona | https:\//tm-usgovtexas01.afs.azure.us |
 
-- Yerel olarak yedekli (LRS) veya bölge yedekli (ZRS) depolama hesapları kullanıyorsanız, yalnızca "birincil uç nokta URL 'SI" altında listelenen URL 'YI etkinleştirmeniz gerekir.
+- Yerel olarak yedekli (LRS) veya bölge gereksiz (ZRS) depolama hesapları kullanıyorsanız, yalnızca "Birincil uç nokta URL" altında listelenen URL'yi etkinleştirmeniz gerekir.
 
-- Küresel olarak yedekli (GRS) depolama hesapları kullanıyorsanız, üç URL 'yi etkinleştirin.
+- Genel olarak gereksiz (GRS) depolama hesapları kullanıyorsanız, üç URL etkinleştirin.
 
-**Örnek:** `"West US"` ' de bir depolama eşitleme hizmeti dağıtır ve sunucunuzu bu sunucuya kaydedersiniz. Sunucunun bu durum için iletişim kurmasına izin veren URL 'Ler şunlardır:
+**Örnek:** Bir depolama eşitleme `"West US"` hizmeti dağıtarak sunucunuzu bu hizmetle kaydedebilirsiniz. Sunucunun bu durum için iletişim kurmasına izin veren URL'ler şunlardır:
 
-> - https:\//kailani.one.microsoft.com (birincil uç nokta: Batı ABD)
+> - https:\//kailani.one.microsoft.com (birincil bitiş noktası: Batı ABD)
 > - https:\//kailani1.one.microsoft.com (eşleştirilmiş başarısız bölge: Doğu ABD)
-> - https:\//tm-kailani.one.microsoft.com (birincil bölgenin bulma URL 'SI)
+> - https:\//tm-kailani.one.microsoft.com (birincil bölgenin bulma URL'si)
 
-### <a name="allow-list-for-azure-file-sync-ip-addresses"></a>Azure Dosya Eşitleme IP adresleri listesine izin ver
-Şirket içi güvenlik duvarınız Azure Dosya Eşitleme bağlanmak için bir izin verilenler listesine belirli IP adresleri eklenmesini gerektiriyorsa, bağlandığınız bölgelere göre aşağıdaki IP adresi aralıklarını ekleyebilirsiniz.
+### <a name="allow-list-for-azure-file-sync-ip-addresses"></a>Azure Dosya Eşitleme IP adresleri için listeye izin ver
+Azure Dosya Eşitlemi, belirli bir Azure hizmeti için bir grup IP adresi önekisini temsil eden [hizmet etiketlerinin](../../virtual-network/service-tags-overview.md)kullanımını destekler. Azure Dosya Eşitleme hizmetiyle iletişimi sağlayan güvenlik duvarı kuralları oluşturmak için hizmet etiketlerini kullanabilirsiniz. Azure Dosya Eşitlemi `StorageSyncService`için hizmet etiketi.
 
-| Bölge | IP adresi aralıkları |
-|--------|-------------------|
-| Orta ABD | 52.176.149.179/32, 20.37.157.80/29 |
-| Doğu ABD 2 | 40.123.47.110/32, 20.41.5.144/29 |
-| Doğu ABD | 104.41.148.238/32, 20.42.4.248/29 |
-| Orta Kuzey ABD | 65.52.62.167/32, 40.80.188.24/29 |
-| Orta Güney ABD | 104.210.219.252/32, 13.73.248.112/29 |
-| Batı ABD 2 | 52.183.27.204/32, 20.42.131.224/29 |
-| Orta Batı ABD | 52.161.25.233/32, 52.150.139.104/29 |
-| Batı ABD | 40.112.150.67/32, 40.82.253.192/29 |
-| Orta Kanada | 52.228.42.41/32, 52.228.81.248/29 |
-| Doğu Kanada | 52.235.36.119/32, 40.89.17.232/29 |
-| Güney Brezilya | 191.237.253.115/32, 191.235.225.216/29 |
-| Kuzey Avrupa | 40.113.94.67/32, 20.38.85.152/29 |
-| Batı Avrupa | 104.40.191.8/32, 20.50.1.0/29 |
-| Orta Fransa | 52.143.166.54/32, 20.43.42.8/29 |
-| Güney Fransa | 52.136.131.99/32, 51.105.88.248/29 |
-| Güney Birleşik Krallık | 51.140.67.72/32, 51.104.25.224/29 |
-| Batı Birleşik Krallık | 51.140.202.34/32, 51.137.161.240/29 |
-| İsviçre Kuzey | 51.107.48.224/29 |
-| İsviçre Batı | 51.107.144.216/29 |
-| Norveç Batı | 51.120.224.216/29 |
-| Norveç Doğu | 51.120.40.224/29 |
-| Doğu Asya | 23.102.225.54/32, 20.189.108.56/29 |
-| Güneydoğu Asya | 13.76.81.46/32, 20.43.131.40/29 |
-| Orta Avustralya | 20.37.224.216/29 |
-| Orta Avustralya 2 | 20.36.120.216/29 |
-| Doğu Avustralya | 13.75.153.240/32, 20.37.195.96/29 |
-| Güneydoğu Avustralya | 13.70.176.196/32, 20.42.227.128/29 |
-| Güney Hindistan | 104.211.231.18/32, 20.41.193.160/29 |
-| Batı Hindistan | 52.136.48.216/29 |
-| Doğu Japonya | 104.41.161.113/32, 20.43.66.0/29 |
-| Batı Japonya | 23.100.106.151/32, 40.80.57.192/29 |
-| Güney Kore - Orta | 52.231.67.75/32, 20.41.65.184/29 |
-| Güney Kore - Güney | 52.231.159.38/32, 40.80.169.176/29 |
-| Doğu US DoD | 20.140.72.152/29 |
-| US Gov Arizona | 20.140.64.152/29 |
-| US Gov Arizona | 52.244.75.224/32, 52.244.79.140/32 |
-| US Gov Iowa | 52.244.79.140/32, 52.244.75.224/32 |
-| US Gov Texas | 52.238.166.107/32, 52.238.79.29/32 |
-| US Gov Virginia | 13.72.17.152/32, 52.227.153.92/32 |
-| Güney Afrika Kuzey | 102.133.175.72/32 |
-| Güney Afrika Batı | 102.133.75.173/32, 102.133.56.128/29, 20.140.48.216/29 |
-| BAE Orta | 20.45.71.151/32, 20.37.64.216/29, 20.140.48.216/29 |
-| BAE Kuzey | 40.123.216.130/32, 20.38.136.224/29, 20.140.56.136/29 |
+Azure içinde Azure Dosya Eşitlemini kullanıyorsanız, trafiğe izin vermek için doğrudan ağ güvenlik grubunuzda hizmet etiketinin adını kullanabilirsiniz. Bunu nasıl yapacağınız hakkında daha fazla bilgi edinmek için [Ağ güvenlik gruplarına](../../virtual-network/security-overview.md)bakın.
 
-## <a name="test-network-connectivity-to-service-endpoints"></a>Hizmet uç noktalarına ağ bağlantısını test etme
-Bir sunucu Azure Dosya Eşitleme hizmetine kaydedildikten sonra, bu sunucuya özgü tüm uç noktalar (URL) ile iletişimleri test etmek için test-StorageSyncNetworkConnectivity cmdlet 'i ve ServerRegistration. exe kullanılabilir. Bu cmdlet, tamamlanmamış iletişim, sunucunun Azure Dosya Eşitleme ile tamamen çalışmasını engellediğinde ve proxy ve güvenlik duvarı yapılandırmalarının ince ayar yapmak için kullanılabilir olduğunda sorun gidermeye yardımcı olabilir.
+Azure Dosya Eşitlemeyi'ni şirket içinde kullanıyorsanız, güvenlik duvarınızın izin veren listesi için belirli IP adresi aralıkları almak için hizmet etiketi API'yi kullanabilirsiniz. Bu bilgileri almak için iki yöntem vardır:
 
-Ağ bağlantısı testini çalıştırmak için, Azure Dosya Eşitleme Aracısı sürüm 9,1 veya üstünü yükledikten sonra aşağıdaki PowerShell komutlarını çalıştırın:
+- Hizmet etiketlerini destekleyen tüm Azure hizmetleri için geçerli IP adresi aralıkları listesi, Microsoft Download Center'da haftalık olarak JSON belgesi şeklinde yayınlanır. Her Azure bulutunun, bu bulutla ilgili IP adres aralıklarına sahip kendi JSON belgesi vardır:
+    - [Azure Genel](https://www.microsoft.com/download/details.aspx?id=56519)
+    - [Azure US Government](https://www.microsoft.com/download/details.aspx?id=57063)
+    - [Azure Çin](https://www.microsoft.com/download/details.aspx?id=57062)
+    - [Azure Almanya](https://www.microsoft.com/download/details.aspx?id=57064)
+- Hizmet etiketi bulma API (önizleme) hizmet etiketleri geçerli listesini programlı alma sağlar. Önizlemede, hizmet etiketi bulma API'si, Microsoft İndirme Merkezi'nde yayınlanan JSON belgelerinden döndürülen bilgilerden daha az güncel bilgileri döndürebilir. OTOMASYON tercihinize göre API yüzeyini kullanabilirsiniz:
+    - [REST API](https://docs.microsoft.com/rest/api/virtualnetwork/servicetags/list)
+    - [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.network/Get-AzNetworkServiceTag)
+    - [Azure CLI](https://docs.microsoft.com/cli/azure/network#az-network-list-service-tags)
+
+Hizmet etiketi bulma API'si Microsoft İndirme Merkezi'nde yayınlanan JSON belgeleri kadar sık güncelleştirilmedığından, şirket içi güvenlik duvarınızın izin veren listesini güncelleştirmek için JSON belgesini kullanmanızı öneririz. Bu aşağıdaki gibi yapılabilir:
+
+```PowerShell
+# The specific region to get the IP address ranges for. Replace westus2 with the desired region code 
+# from Get-AzLocation.
+$region = "westus2"
+
+# The service tag for Azure File Sync. Do not change unless you're adapting this
+# script for another service.
+$serviceTag = "StorageSyncService"
+
+# Download date is the string matching the JSON document on the Download Center. 
+$possibleDownloadDates = 0..7 | `
+    ForEach-Object { [System.DateTime]::Now.AddDays($_ * -1).ToString("yyyyMMdd") }
+
+# Verify the provided region
+$validRegions = Get-AzLocation | `
+    Where-Object { $_.Providers -contains "Microsoft.StorageSync" } | `
+    Select-Object -ExpandProperty Location
+
+if ($validRegions -notcontains $region) {
+    Write-Error `
+            -Message "The specified region $region is not available. Either Azure File Sync is not deployed there or the region does not exist." `
+            -ErrorAction Stop
+}
+
+# Get the Azure cloud. This should automatically based on the context of 
+# your Az PowerShell login, however if you manually need to populate, you can find
+# the correct values using Get-AzEnvironment.
+$azureCloud = Get-AzContext | `
+    Select-Object -ExpandProperty Environment | `
+    Select-Object -ExpandProperty Name
+
+# Build the download URI
+$downloadUris = @()
+switch($azureCloud) {
+    "AzureCloud" { 
+        $downloadUris = $possibleDownloadDates | ForEach-Object {  
+            "https://download.microsoft.com/download/7/1/D/71D86715-5596-4529-9B13-DA13A5DE5B63/ServiceTags_Public_$_.json"
+        }
+    }
+
+    "AzureUSGovernment" {
+        $downloadUris = $possibleDownloadDates | ForEach-Object { 
+            "https://download.microsoft.com/download/6/4/D/64DB03BF-895B-4173-A8B1-BA4AD5D4DF22/ServiceTags_AzureGovernment_$_.json"
+        }
+    }
+
+    "AzureChinaCloud" {
+        $downloadUris = $possibleDownloadDates | ForEach-Object { 
+            "https://download.microsoft.com/download/9/D/0/9D03B7E2-4B80-4BF3-9B91-DA8C7D3EE9F9/ServiceTags_China_$_.json"
+        }
+    }
+
+    "AzureGermanCloud" {
+        $downloadUris = $possibleDownloadDates | ForEach-Object { 
+            "https://download.microsoft.com/download/0/7/6/076274AB-4B0B-4246-A422-4BAF1E03F974/ServiceTags_AzureGermany_$_.json"
+        }
+    }
+
+    default {
+        Write-Error -Message "Unrecognized Azure Cloud: $_" -ErrorAction Stop
+    }
+}
+
+# Find most recent file
+$found = $false 
+foreach($downloadUri in $downloadUris) {
+    try { $response = Invoke-WebRequest -Uri $downloadUri -UseBasicParsing } catch { }
+    if ($response.StatusCode -eq 200) {
+        $found = $true
+        break
+    }
+}
+
+if ($found) {
+    # Get the raw JSON 
+    $content = [System.Text.Encoding]::UTF8.GetString($response.Content)
+
+    # Parse the JSON
+    $serviceTags = ConvertFrom-Json -InputObject $content -Depth 100
+
+    # Get the specific $ipAddressRanges
+    $ipAddressRanges = $serviceTags | `
+        Select-Object -ExpandProperty values | `
+        Where-Object { $_.id -eq "$serviceTag.$region" } | `
+        Select-Object -ExpandProperty properties | `
+        Select-Object -ExpandProperty addressPrefixes
+} else {
+    # If the file cannot be found, that means there hasn't been an update in
+    # more than a week. Please verify the download URIs are still accurate
+    # by checking https://docs.microsoft.com/azure/virtual-network/service-tags-overview
+    Write-Verbose -Message "JSON service tag file not found."
+    return
+}
+```
+
+Ardından, güvenlik duvarınızı `$ipAddressRanges` güncelleştirmek için IP adresi aralıklarını kullanabilirsiniz. Güvenlik duvarınızı nasıl güncelleştirebildiğini öğrenmek için güvenlik duvarınızı/ağ cihazınızın web sitesini kontrol edin.
+
+## <a name="test-network-connectivity-to-service-endpoints"></a>Hizmet bitiş noktalarına ağ bağlantısını test etme
+Bir sunucu Azure Dosya Eşitleme hizmetine kaydolduktan sonra, Test-StorageSyncNetworkConnectivity cmdlet ve ServerRegistration.exe, bu sunucuya özgü tüm uç noktaları (URL'ler) ile iletişimi test etmek için kullanılabilir. Bu cmdlet, eksik iletişim sunucunun Azure Dosya Eşitlemesi ile tam olarak çalışmasını engellediğinde sorun gidermeye yardımcı olabilir ve proxy ve güvenlik duvarı yapılandırmalarında ince ayar yapmak için kullanılabilir.
+
+Ağ bağlantısı testini çalıştırmak için Azure Dosya Eşitleme aracısı sürümü 9.1 veya sonraki sürümlerini yükleyin ve aşağıdaki PowerShell komutlarını çalıştırın:
 ```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
 Test-StorageSyncNetworkConnectivity
 ```
 
 ## <a name="summary-and-risk-limitation"></a>Özet ve risk sınırlaması
-Bu belgede daha önce bulunan listeler, şu anda iletişim kuran Azure Dosya Eşitleme URL 'Leri içerir. Güvenlik duvarlarının bu etki alanlarına giden trafiğe izin alabilmesi gerekir. Microsoft bu listeyi güncel tutmaya devam eden bir çaba harcar.
+Bu belgenin önceki listeleri, şu anda iletişim halinde olan URL'leri Azure Dosya Eşitlemesini içerir. Güvenlik duvarları, bu etki adlarına giden trafiğe izin verebilmelidir. Microsoft bu listeyi güncel tutmaya çalışır.
 
-Etki alanı sınırlandırma güvenlik duvarı kurallarını ayarlamak, güvenliği artırmak için bir ölçü olabilir. Bu güvenlik duvarı yapılandırmalarının kullanılması durumunda, URL 'Lerin ekleneceğini ve zaman içinde değişebileceğini göz önünde bulundurmanız gerekir. Bu makaleye düzenli olarak bakın.
+Güvenlik duvarı kurallarını kısıtlayan etki alanının ayarlanması, güvenliği artırmak için bir önlem olabilir. Bu güvenlik duvarı yapılandırmaları kullanılırsa, URL'lerin ekolacağını ve hatta zaman içinde değişebileceğini unutmamak gerekir. Bu makaleyi düzenli olarak denetleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 - [Azure Dosya Eşitleme dağıtımı planlama](storage-sync-files-planning.md)

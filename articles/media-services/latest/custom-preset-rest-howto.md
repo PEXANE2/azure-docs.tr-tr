@@ -1,6 +1,6 @@
 ---
-title: Media Services v3 REST - Azure'ı kullanarak özel dönüştürme kodlama | Microsoft Docs
-description: Bu konuda, Azure Media Services v3 REST kullanarak özel bir dönüştürme kodlamak için nasıl kullanılacağı gösterilmektedir.
+title: Media Services v3 REST - Azure | Microsoft Dokümanlar
+description: Bu konu, REST kullanarak özel bir dönüşümü kodlamak için Azure Media Services v3'ün nasıl kullanılacağını gösterir.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,33 +13,33 @@ ms.custom: ''
 ms.date: 05/14/2019
 ms.author: juliako
 ms.openlocfilehash: 30e22cb786e5dc2a667fe41ca8edf398cf0b7613
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "65761804"
 ---
-# <a name="how-to-encode-with-a-custom-transform---rest"></a>-REST gibi özel bir dönüşüm ile kodlama
+# <a name="how-to-encode-with-a-custom-transform---rest"></a>Özel bir dönüşümle kodlama nasıl kodlanır - REST
 
-Azure Media Services ile kodlarken hızla biri olan sektördeki en iyi yöntemler üzerinde gösterildiği şekilde göre önerilen yerleşik hazır oluşturabileceğinize dair [akış dosyalarını](stream-files-tutorial-with-rest.md#create-a-transform) öğretici. Ayrıca, özel bir senaryonuz ya da cihaz belirli gereksinimlerinizi hedeflemek için önceden de oluşturabilirsiniz.
+Azure Medya Hizmetleri ile kodlama yaparken, [Akış dosyaları](stream-files-tutorial-with-rest.md#create-a-transform) öğreticisinde gösterildiği gibi, endüstrinin en iyi uygulamalarını temel alan önerilen yerleşik hazır ayarlardan biriyle hızlı bir şekilde işe bilirsiniz. Ayrıca, belirli senaryo veya aygıt gereksinimlerinizi hedeflemek için özel bir ön ayar oluşturabilirsiniz.
 
 ## <a name="considerations"></a>Dikkat edilmesi gerekenler
 
-Özel önayarların kullanılmasına oluştururken, aşağıdaki maddeler geçerlidir:
+Özel ön ayarlar oluşturulurken aşağıdaki hususlar geçerlidir:
 
-* Yükseklik ve genişlik AVC içeriğin tüm değerleri 4'ün katı olmalıdır.
-* Azure Media Services v3 sürümünde, tüm kodlama bit hızlarına dönüştürme bit / saniye cinsindendir. Bu Önayarı kilobit/saniye birimi olarak kullanılan v2 Apı'lerimiz ile farklıdır. V2'de hızı (kilobit/saniye) 128 belirtilmemişse, örneğin, v3 sürümünde, 128000 için (bit/saniye) ayarlanır.
+* AVC içeriğindeki yükseklik ve genişlik için tüm değerler 4'ün katı olmalıdır.
+* Azure Media Services v3'te, tüm kodlama bit hızları saniyede bit şeklindedir. Bu birim olarak kilobit /saniye kullanılan bizim v2 API'lar ile ön ayarlar farklıdır. Örneğin, v2'deki bit hızı 128 (kilobit/saniye) olarak belirtilmişse, v3'te 128000 (bit/saniye) olarak ayarlanır.
 
-## <a name="prerequisites"></a>Önkoşullar 
+## <a name="prerequisites"></a>Ön koşullar 
 
-- [Bir Media Services hesabı oluşturma](create-account-cli-how-to.md). <br/>Kaynak grubu adı ve Media Services hesap adını hatırlamak emin olun. 
-- [Azure Media Services REST API çağrıları için Postman yapılandırma](media-rest-apis-with-postman.md).<br/>Konunun son adımı takip edin [Azure AD belirteci Al](media-rest-apis-with-postman.md#get-azure-ad-token). 
+- [Bir Medya Hizmetleri hesabı oluşturun.](create-account-cli-how-to.md) <br/>Kaynak grup adını ve Medya Hizmetleri hesap adını hatırladığından emin olun. 
+- [Azure Medya Hizmetleri REST API çağrıları için Postacı yapılandırın.](media-rest-apis-with-postman.md)<br/>[Azure AD Belirteci'ni alın'](media-rest-apis-with-postman.md#get-azure-ad-token)ın son adımını takip edin. 
 
-## <a name="define-a-custom-preset"></a>Özel Önayar tanımlayın
+## <a name="define-a-custom-preset"></a>Özel bir ön ayar tanımlama
 
-Aşağıdaki örnek yeni bir dönüştürme istek gövdesi tanımlar. Bu dönüşüm kullanıldığında oluşturulan istiyoruz çıkışları birtakım tanımlarız. 
+Aşağıdaki örnek, yeni bir Dönüşümün istek gövdesini tanımlar. Bu Dönüşüm kullanıldığında oluşturulmasını istediğimiz bir çıktı kümesi tanımlıyoruz. 
 
-Bu örnekte biz ilk ses kodlama için bir AacAudio katmanı ve video kodlama için iki H264Video katmanları ekleyin. Böylece çıkış dosya adlarında kullanılabilir video katmanlar, biz etiketleri atayın. Ardından, küçük resimler de içerecek şekilde çıkış istiyoruz. Aşağıdaki örnekte biz görüntüleri giriş videosunun çözünürlüğünün % 50 ve üç zaman damgalarının - {% 25, % 50, 75} giriş videosunun uzunluğunu oluşturulan PNG biçiminde belirtin. Son olarak, biz çıkış dosyaları - bir video ve ses biçimi belirtin ve başka küçük resimleri için. Birden çok H264Layers sahibiz olduğundan, katman başına benzersiz adlar oluşturmak makroları gerekir. Biz kullanabilir bir `{Label}` veya `{Bitrate}` makrosu, bu örnek önceki gösterir.
+Bu örnekte, önce ses kodlaması için bir AacAudio katmanı ve video kodlaması için iki H264Video katmanı ekliyoruz. Video katmanlarında, çıktı dosyası adlarında kullanılabilen etiketler atıyoruz. Ardından, çıktının küçük resimler de içermesini istiyoruz. Aşağıdaki örnekte, giriş videosunun çözünürlüğünün %50'si oranında ve üç zaman damgasında - giriş videosunun uzunluğunun {%25, %50, 75} olarak oluşturulan PNG formatında görüntüleri belirtiriz. Son olarak, çıktı dosyalarının biçimini belirtiriz - biri video + ses için, diğeri de küçük resimler için. Birden fazla H264Layer'a sahip olduğumuzdan, katman başına benzersiz adlar üreten makrolar kullanmalıyız. Biz ya bir `{Label}` `{Bitrate}` veya makro kullanabilirsiniz, örnek eski gösterir.
 
 ```json
 {
@@ -131,24 +131,24 @@ Bu örnekte biz ilk ses kodlama için bir AacAudio katmanı ve video kodlama iç
 
 ```
 
-## <a name="create-a-new-transform"></a>Yeni dönüştürme oluşturma  
+## <a name="create-a-new-transform"></a>Yeni bir dönüşüm oluşturun  
 
-Bu örnekte, oluşturduğumuz bir **dönüştürme** daha önce tanımladığımız özel önayarın üzerinde temel alır. Dönüşüm oluştururken ilk kullanmalısınız [alma](https://docs.microsoft.com/rest/api/media/transforms/get) biri zaten mevcut olup olmadığını denetlemek için. Dönüştürme varsa, yeniden kullanın. 
+Bu örnekte, daha önce tanımladığımız özel ön aseti temel alan bir **Dönüşüm** oluştururuz. Dönüşüm oluştururken, önce [Get'in](https://docs.microsoft.com/rest/api/media/transforms/get) zaten var olup olmadığını kontrol etmek için al'ı kullanmalısınız. Dönüşüm varsa, yeniden kullanın. 
 
-İndirdiğiniz Postman'ın koleksiyonda seçin **dönüşümler ve işler**->**oluşturma veya güncelleştirme dönüştürme**.
+İndirdiğiniz Postacı koleksiyonunda **Dönüşümler ve İşler**->**Dönüşüm Oluştur veya Güncelleştir'i**seçin.
 
-**PUT** HTTP istek yöntemine benzerdir:
+**PUT** HTTP istek yöntemi aşağıdakilere benzer:
 
 ```
 PUT https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/transforms/:transformName?api-version={{api-version}}
 ```
 
-Seçin **gövdesi** sekmesi ve Değiştir gövdesi json kodunu [daha önce tanımlanan](#define-a-custom-preset). Media Services'ın belirtilen video veya ses dönüştürme uygulamak bir iş dönüşüm altında göndermeniz gerekir.
+**Gövde** sekmesini seçin ve gövdeyi daha [önce tanımladığınız](#define-a-custom-preset)json koduyla değiştirin. Medya Hizmetleri'nin Transform'u belirtilen video veya sese uygulayabilmek için bu Dönüşüm'ün altında bir İş göndermeniz gerekir.
 
 **Gönder**’i seçin. 
 
-Media Services'ın belirtilen video veya ses dönüştürme uygulamak bir iş dönüşüm altında göndermeniz gerekir. Dönüşüm altında bir iş göndermek nasıl oluşturulduğunu gösteren tam bir örnek için bkz. [Öğreticisi: Video dosyaları - REST Stream](stream-files-tutorial-with-rest.md).
+Medya Hizmetleri'nin Transform'u belirtilen video veya sese uygulayabilmek için bu Dönüşüm'ün altında bir İş göndermeniz gerekir. Dönüşüm altında bir işin nasıl gönderilebildiğini gösteren tam bir örnek için [Bkz. Öğretici: Video dosyalarını akış - REST](stream-files-tutorial-with-rest.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bkz: [diğer REST işlemlerini](https://docs.microsoft.com/rest/api/media/)
+[Diğer REST işlemlerine](https://docs.microsoft.com/rest/api/media/) bakın

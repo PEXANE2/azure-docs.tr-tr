@@ -1,43 +1,43 @@
 ---
 title: Kaynak ekleme
-description: Learn about performing resource onboarding by using Azure Custom Providers to apply management or configuration to other Azure resource types.
+description: Diğer Azure kaynak türlerine yönetim veya yapılandırma uygulamak için Azure Özel Sağlayıcıları'nı kullanarak kaynak onboarding gerçekleştirme hakkında bilgi edinin.
 author: jjbfour
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: jobreen
 ms.openlocfilehash: 1846b036f12fe7e691021ec0248782cad946d9b7
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75650415"
 ---
-# <a name="azure-custom-providers-resource-onboarding-overview"></a>Azure Custom Providers resource onboarding overview
+# <a name="azure-custom-providers-resource-onboarding-overview"></a>Azure Özel Sağlayıcılar kaynağı onboarding genel bakış
 
-Azure Custom Providers resource onboarding is an extensibility model for Azure resource types. It allows you to apply operations or management across existing Azure resources at scale. For more information, see [How Azure Custom Providers can extend Azure](overview.md). Bu makalede açıklanır:
+Azure Özel Sağlayıcıları kaynak onboarding, Azure kaynak türleri için genişletilebilirlik modelidir. Mevcut Azure kaynaklarında işlemleri veya yönetimi ölçekte uygulamanızı sağlar. Daha fazla bilgi için Azure [Özel Sağlayıcılarının Azure'u nasıl genişletebileceğini](overview.md)öğrenin. Bu makalede açıklanır:
 
-- What resource onboarding can do.
-- Resource onboarding basics and how to use it.
-- Where to find guides and code samples to get started.
+- Onboarding'in kaynağı neler yapabilir?
+- Kaynak onboarding temelleri ve nasıl kullanılacağı.
+- Başlamak için kılavuzları ve kod örnekleri bulmak için nerede.
 
 > [!IMPORTANT]
-> Custom Providers is currently in public preview.
-> This preview version is provided without a service-level agreement, and we don't recommend it for production workloads. Certain features might be unsupported or might have constrained capabilities.
-> Daha fazla bilgi için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Özel Sağlayıcılar şu anda genel önizlemededir.
+> Bu önizleme sürümü hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yükleri için önermiyoruz. Bazı özellikler desteklenmeyen veya kısıtlı özelliklere sahip olabilir.
+> Daha fazla bilgi için Microsoft [Azure Önizlemeleri için Ek Kullanım Koşulları'na](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)bakın.
 
-## <a name="what-can-resource-onboarding-do"></a>What can resource onboarding do?
+## <a name="what-can-resource-onboarding-do"></a>Kaynak onboarding ne yapabilirim?
 
-Similar to [Azure Custom Providers custom resources](./custom-providers-resources-endpoint-how-to.md), resource onboarding defines a contract that will proxy "onboarding" requests to an endpoint. Unlike custom resources, resource onboarding doesn't create a new resource type. Instead, it allows the extension of existing resource types. And resource onboarding works with Azure Policy, so management and configuration of resources can be done at scale. Some examples of resource onboarding workflows:
+Azure [Özel Sağlayıcıları özel kaynaklarına](./custom-providers-resources-endpoint-how-to.md)benzer şekilde, kaynak onboarding,"onboarding" isteklerini bitiş noktasına taşıyacak bir sözleşme tanımlar. Özel kaynakların aksine, kaynak onboarding yeni bir kaynak türü oluşturmaz. Bunun yerine, varolan kaynak türlerinin uzantısısağlar. Ayrıca kaynak onboarding, Azure İlkesi ile çalışır, böylece kaynakların yönetimi ve yapılandırması ölçekte yapılabilir. Kaynak onboarding iş akışları bazı örnekler:
 
-- Install and manage onto virtual machine extensions.
-- Upload and configure defaults on Azure storage accounts.
-- Enable baseline diagnostic settings at scale.
+- Sanal makine uzantılarını yükleyin ve yönetin.
+- Azure depolama hesaplarında varsayılanları yükleyin ve yapılandırır.
+- Ölçekte temel tanılama ayarlarını etkinleştirin.
 
-## <a name="resource-onboarding-basics"></a>Resource onboarding basics
+## <a name="resource-onboarding-basics"></a>Kaynak onboarding temelleri
 
-You configure resource onboarding through Azure Custom Providers by using Microsoft.CustomProviders/resourceProviders and Microsoft.CustomProviders/associations resource types. To enable resource onboarding for a custom provider, during the configuration process, create a **resourceType** called "associations" with a **routingType** that includes "Extension". The Microsoft.CustomProviders/associations and Microsoft.CustomProviders/resourceProviders don't need to belong to the same resource group.
+Microsoft.CustomProviders/resourceProviders ve Microsoft.CustomProviders/associations kaynak türlerini kullanarak, kaynağı Azure Özel Sağlayıcıları aracılığıyla yapılandırabilirsiniz. Özel bir sağlayıcı için kaynak onboarding etkinleştirmek için, yapılandırma işlemi sırasında, "Uzantı" içeren bir **yönlendirme Türü** ile "ilişkilendirmeler" adlı bir kaynak **Türü** oluşturun. Microsoft.CustomProviders/associations ve Microsoft.CustomProviders/resourceProviders'ların aynı kaynak grubuna ait olması gerekmez.
 
-Here's a sample Azure custom provider:
+Aşağıda örnek bir Azure özel sağlayıcısı verem:
 
 ```JSON
 {
@@ -56,16 +56,16 @@ Here's a sample Azure custom provider:
 
 Özellik | Gerekli mi? | Açıklama
 ---|---|---
-ad | Evet | The name of the endpoint definition. For resource onboarding, the name must be "associations".
-routingType | Evet | Determines the type of contract with the endpoint. For resource onboarding, the valid **routingTypes** are "Proxy,Cache,Extension" and "Webhook,Cache,Extension".
-endpoint | Evet | The endpoint to route the requests to. This will handle the response and any side effects of the request.
+ad | Evet | Bitiş noktası tanımının adı. Kaynak onboarding için, adı "dernekler" olmalıdır.
+yönlendirmeTürü | Evet | Bitiş noktası yla sözleşme türünü belirler. Kaynak onboarding için geçerli **yönlendirme Türleri** "Proxy, Önbellek,Uzantı" ve "Webhook, Önbellek, Uzantı" dır.
+endpoint | Evet | İstekleri yönlendirmek için bitiş noktası. Bu yanıt ve isteğin herhangi bir yan etkileri ele alınacaktır.
 
-After you create the custom provider with the associations resource type, you can target using Microsoft.CustomProviders/associations. Microsoft.CustomProviders/associations is an extension resource that can extend any other Azure resource. When an instance of Microsoft.CustomProviders/associations is created, it will take a property **targetResourceId**, which should be a valid Microsoft.CustomProviders/resourceProviders or Microsoft.Solutions/applications resource ID. In these cases, the request will be forwarded to the associations resource type on the Microsoft.CustomProviders/resourceProviders instance you created.
+Dernekler kaynak türüne sahip özel sağlayıcı oluşturduktan sonra, Microsoft.CustomProviders/associations kullanarak hedefleyebilirsiniz. Microsoft.CustomProviders/associations, diğer Azure kaynağını genişletebilen bir uzantı kaynağıdır. Microsoft.CustomProviders/associations bir örnek oluşturulduğunda, geçerli bir Microsoft.CustomProviders/resourceProviders veya Microsoft.Solutions/applications kaynak kimliği olmalıdır bir özellik **hedefResourceId**alır. Bu gibi durumlarda, istek oluşturduğunuz Microsoft.CustomProviders/resourceProviders örneğindeki ilişkilendirmekaynak türüne iletilir.
 
 > [!NOTE]
-> If a Microsoft.Solutions/applications resource ID is provided as the **targetResourceId**, there must be a Microsoft.CustomProviders/resourceProviders deployed in the managed resource group with the name "public".
+> Bir Microsoft.Solutions/applications kaynak kimliği **targetResourceId**olarak sağlanıyorsa, yönetilen kaynak grubunda "ortak" adı olan bir Microsoft.CustomProviders/resourceProviders dağıtılmış olmalıdır.
 
-Sample Azure Custom Providers association:
+Örnek Azure Özel Sağlayıcıları derneği:
 
 ```JSON
 {
@@ -78,15 +78,15 @@ Sample Azure Custom Providers association:
 
 Özellik | Gerekli mi? | Açıklama
 ---|---|---
-targetResourceId | Evet | Microsoft. CustomProviders/resourceProviders veya Microsoft. Solutions/Applications kaynak KIMLIĞI.
+targetResourceId | Evet | Microsoft.CustomProviders/resourceProviders veya Microsoft.Solutions/applications kaynak kimliği.
 
-## <a name="how-to-use-resource-onboarding"></a>Kaynak ekleme 'yi kullanma
+## <a name="how-to-use-resource-onboarding"></a>Kaynak onboarding nasıl kullanılır?
 
-Kaynak ekleme, Microsoft. CustomProviders/Association uzantı kaynağıyla diğer kaynakları genişleterek işe yarar. Aşağıdaki örnekte, istek bir sanal makine için yapılır, ancak herhangi bir kaynak genişletilebilir.
+Kaynak onboarding Microsoft.CustomProviders/associations uzantısı kaynağı ile diğer kaynakları genişleterek çalışır. Aşağıdaki örnekte, sanal bir makine için istek yapılır, ancak herhangi bir kaynak genişletilebilir.
 
-İlk olarak, bir ilişki kaynak türü ile özel bir sağlayıcı kaynağı oluşturmanız gerekir. Bu işlem, özel sağlayıcıyı hedefleyen karşılık gelen bir Microsoft. CustomProviders/Association kaynağı oluşturulduğunda kullanılacak geri çağırma URL 'sini bildirir.
+İlk olarak, ilişkilendirme kaynak türüne sahip özel bir sağlayıcı kaynağı oluşturmanız gerekir. Bu, özel sağlayıcıyı hedefleyen ilgili Microsoft.CustomProviders/associations kaynağı oluşturulduğunda kullanılacak geri arama URL'sini bildirir.
 
-Örnek Microsoft. CustomProviders/resourceProviders oluşturma isteği:
+Örnek Microsoft.CustomProviders/resourceProviders istek oluşturmak:
 
 ``` HTTP
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}?api-version=2018-09-01-preview
@@ -107,9 +107,9 @@ Content-Type: application/json
 }
 ```
 
-Özel sağlayıcıyı oluşturduktan sonra, diğer kaynakları hedefleyebilir ve özel sağlayıcının yan etkilerini bunlara uygulayabilirsiniz.
+Özel sağlayıcı oluşturduktan sonra, diğer kaynakları hedefleyebilir ve özel sağlayıcının yan etkilerini onlara uygulayabilirsiniz.
 
-Örnek Microsoft. CustomProviders/Association oluşturma isteği:
+Örnek Microsoft.CustomProviders/dernekler istek oluşturmak:
 
 ``` HTTP
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{virtualMachineName}/providers/Microsoft.CustomProviders/associations/{associationName}?api-version=2018-09-01-preview
@@ -127,7 +127,7 @@ Content-Type: application/json
 }
 ```
 
-Daha sonra bu istek, bu formda **Targetresourceıd** tarafından başvurulan, oluşturduğunuz özel sağlayıcıda belirtilen uç noktaya iletilir:
+Bu istek daha sonra oluşturduğunuz özel sağlayıcıda belirtilen ve **targetResourceId** tarafından bu formda başvurulan bitiş noktasına iletilir:
 
 ``` HTTP
 PUT https://{endpointURL}/?api-version=2018-09-01-preview
@@ -146,18 +146,18 @@ X-MS-CustomProviders-ExtendedResource: /subscriptions/{subscriptionId}/resourceG
 }
 ```
 
-Uç noktanın bir uygulama/JSON `Content-Type` ve geçerli bir JSON yanıt gövdesi ile yanıt vermesi gerekir. JSON 'ın **Özellikler** nesnesi altında döndürülen alanlar ilişkilendirme dönüş yanıtına eklenecektir.
+Bitiş noktası bir uygulama/json `Content-Type` ve geçerli bir JSON yanıt gövdesi ile yanıt vermelidir. JSON **özellikleri** nesnesi altında döndürülen alanlar ilişkilendirme iade yanıtına eklenir.
 
 ## <a name="getting-help"></a>Yardım alma
 
-Azure özel kaynak sağlayıcıları geliştirme hakkında sorularınız varsa [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-custom-providers)üzerinde soru sormayı deneyin. Benzer bir soru zaten yanıtlanmış olabilir, bu nedenle göndermeden önce kontrol edin. Hızlı bir yanıt almak için etiketi ```azure-custom-providers``` ekleyin!
+Azure Özel Kaynak Sağlayıcıları geliştirmesi hakkında sorularınız varsa, [bunları Yığın Taşma'da](https://stackoverflow.com/questions/tagged/azure-custom-providers)sormayı deneyin. Benzer bir soru zaten yanıtlanmış olabilir, bu nedenle göndermeden önce önce kontrol edin. Hızlı yanıt ```azure-custom-providers``` almak için etiketi ekleyin!
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, özel sağlayıcılar hakkında bilgi edindiniz. Daha fazla bilgi için şu makalelere göz atın:
+Bu makalede, özel sağlayıcılar hakkında öğrendim. Daha fazla bilgi edinmek için bu makalelere bakın:
 
-- [Öğretici: özel sağlayıcılarla kaynak ekleme](./tutorial-resource-onboarding.md)
-- [Öğretici: Azure 'da özel eylemler ve kaynaklar oluşturma](./tutorial-get-started-with-custom-providers.md)
-- [Hızlı başlangıç: özel kaynak sağlayıcısı oluşturma ve özel kaynaklar dağıtma](./create-custom-provider.md)
-- [Nasıl yapılır: Azure REST API özel eylemler ekleme](./custom-providers-action-endpoint-how-to.md)
-- [Nasıl yapılır: Azure REST API özel kaynak ekleme](./custom-providers-resources-endpoint-how-to.md)
+- [Öğretici: Özel sağlayıcılarla onboarding kaynak](./tutorial-resource-onboarding.md)
+- [Öğretici: Azure'da özel eylemler ve kaynaklar oluşturun](./tutorial-get-started-with-custom-providers.md)
+- [Hızlı başlatma: Özel bir kaynak sağlayıcısı oluşturun ve özel kaynakları dağıtın](./create-custom-provider.md)
+- [Nasıl yapilir: Azure REST API'sine özel eylemler ekleme](./custom-providers-action-endpoint-how-to.md)
+- [Nasıl yapilir: Azure REST API'sine özel kaynak ekleme](./custom-providers-resources-endpoint-how-to.md)

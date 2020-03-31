@@ -1,6 +1,6 @@
 ---
-title: U-SQL kullanarak Azure Data Lake - Team Data Science Process analytics
-description: U-SQL kullanarak Azure Data Lake üzerinde Tahmine dayalı analiz gerçekleştirmede size yol gösteren örnekler.
+title: Azure Veri Gölü'nde U-SQL kullanan analitik - Takım Veri Bilimi Süreci
+description: Tahmine dayalı analitik yapmak için Azure Veri Gölü'nde U-SQL kullanımı üzerinden yürüyen örnekler.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -12,26 +12,26 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 2e5eb0acd2a94f7726fbacefbe6e1022c8cebae2
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/10/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75864188"
 ---
-# <a name="azure-data-lake-data-science-walkthroughs-using-u-sql"></a>Azure Data Lake U-SQL'yi kullanarak veri bilimi kılavuzları
+# <a name="azure-data-lake-data-science-walkthroughs-using-u-sql"></a>U-SQL kullanarak Azure Veri Gölü veri bilimi gözden geçirme
 
-Bu izlenecek yollar, Tahmine dayalı analiz yapmak için Azure Data Lake ile U-SQL kullanın. Bunlar, Team Data Science Process içinde verilen adımları izleyin. Team Data Science Process genel bakış için bkz: [Data Science Process](overview.md). Azure Data Lake, giriş için bkz. [genel bakış, Azure Data Lake Store](../../data-lake-store/data-lake-store-overview.md).
+Bu gözden geçirme ler, tahmine dayalı analizler yapmak için Azure Data Lake ile U-SQL'i kullanır. Ekip Veri Bilimi Sürecinde belirtilen adımları izlerler. Ekip Veri Bilimi Sürecine genel bir bakış için [bkz.](overview.md) Azure Veri Gölü'ne giriş için Bkz. [Azure Veri Gölü Deposu'na Genel Bakış.](../../data-lake-store/data-lake-store-overview.md)
 
-Team Data Science Process yürütme ek veri bilimi kılavuzları tarafından gruplanır **platform** kullandıkları. Bkz: [Team Data Science Process yürütme izlenecek yollar](walkthroughs.md) Bu örneklerde bir döküm için.
+Ekip Veri Bilimi İşlemi'ni yürüten ek veri bilimi gözden geçirmeleri, kullandıkları **platforma** göre gruplandırılır. Bu örneklerin bir öğeleştirme için [Takım Veri Bilimi İşlemi'ni yürüten Walkthroughs'a](walkthroughs.md) bakın.
 
 
-## <a name="predict-taxi-tips-using-u-sql-with-azure-data-lake"></a>Azure Data Lake ile U-SQL'yi kullanarak taksi bahşişlerini tahmin etme
+## <a name="predict-taxi-tips-using-u-sql-with-azure-data-lake"></a>Azure Veri Gölü ile U-SQL kullanarak taksi ipuçlarını tahmin etme
 
-[Veri bilimi için Azure Data Lake kullanım](data-lake-walkthrough.md) Kılavuzu, veri keşif ve ikili sınıflandırma görevlerini yapmak için Azure Data Lake nasıl kullanacağınızı gösterir.  Veriler, NYC TAXI veri kümesinin bir örneğidir.  Görev, bir ipucunun müşteri tarafından ödenip ödenmediğini tahmin etmez. 
+Veri bilimi için [Azure Veri Gölü'nü kullanın,](data-lake-walkthrough.md) veri arama ve ikili sınıflandırma görevleri yapmak için Azure Veri Gölü'nün nasıl kullanılacağını gösterir.  Veriler NYC taksi veri kümesinin bir örneğidir.  Görev, bir ipucunun müşteri tarafından ödenip ödenmediğini tahmin etmektir. 
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Ekip veri bilimi Işlemine genel bakış için bkz. [Team Data Science işlemine genel bakış](overview.md).
+Ekip Veri Bilimi Sürecine genel bakış [için, Takım Veri Bilimi Sürecine genel bakış](overview.md)bölümüne bakın.
 
-Team Data Science Işlem yaşam döngüsü hakkında bir tartışma için bkz. [Team Data Science işlem yaşam döngüsü](lifecycle.md). Bu yaşam döngüsü, projelerin genellikle yürütüldüğü sırada izlediği adımları özetler. 
+Ekip Veri Bilimi Süreci yaşam döngüsünü tartışmak [için, Bkz. Takım Veri Bilimi Süreci yaşam döngüsü.](lifecycle.md) Bu yaşam döngüsü, projelerin genellikle yürütüldüğünde izlediği adımları özetler. 

@@ -1,49 +1,49 @@
 ---
-title: Key Vault başvurularını kullan
-description: Azure App Service ve Azure Işlevlerini Azure Key Vault başvurularını kullanacak şekilde ayarlamayı öğrenin. Key Vault gizli dizileri uygulama kodunuz için kullanılabilir hale getirin.
+title: Anahtar Kasası referanslarını kullanma
+description: Azure Anahtar Kasası başvurularını kullanmak için Azure Uygulama Hizmeti ve Azure Işlevlerini nasıl ayarlayabilirsiniz öğrenin. Anahtar Kasa sısırlar uygulama kodunuz için kullanılabilir olun.
 author: mattchenderson
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: mahender
 ms.custom: seodec18
 ms.openlocfilehash: 7fdb7c980a278e2dcd4b64a4b70de50721d0b72a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79280345"
 ---
-# <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>App Service ve Azure Işlevleri için Key Vault başvurularını kullanma
+# <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>Uygulama Hizmeti ve Azure İşlevleri için Anahtar Kasa başvurularını kullanma
 
-Bu konu başlığı altında, herhangi bir kod değişikliğine gerek kalmadan App Service veya Azure Işlevleri uygulamanızda Azure Key Vault gizliliklerle nasıl çalışılacağı gösterilmektedir. [Azure Key Vault](../key-vault/key-vault-overview.md) , erişim ilkeleri ve denetim geçmişi üzerinde tam denetim ile merkezi gizli dizi yönetimi sağlayan bir hizmettir.
+Bu konu, herhangi bir kod değişikliği gerektirmeden Uygulama Hizmetinizdeki veya Azure İşlevler uygulamanızdaki Azure Key Vault'un sırlarıyla nasıl çalışacağınızı gösterir. [Azure Key Vault,](../key-vault/key-vault-overview.md) erişim ilkeleri ve denetim geçmişi üzerinde tam denetime sahip merkezi sırlar yönetimi sağlayan bir hizmettir.
 
-## <a name="granting-your-app-access-to-key-vault"></a>Uygulamanıza Key Vault erişim verme
+## <a name="granting-your-app-access-to-key-vault"></a>Uygulamanızın Key Vault'a erişimini verme
 
-Key Vault parolaları okumak için bir kasasının oluşturulmuş olması ve uygulamanıza erişim izni vermeniz gerekir.
+Key Vault'un sırlarını okumak için bir kasa oluşturmanız ve uygulamanıza erişim izni vermeniz gerekir.
 
-1. [Key Vault hızlı](../key-vault/quick-create-cli.md)başlangıcı ' nı izleyerek bir Anahtar Kasası oluşturun.
+1. [Key Vault hızlı başlat'ı](../key-vault/quick-create-cli.md)izleyerek bir anahtar kasa oluşturun.
 
-1. Uygulamanız için [sistem tarafından atanan bir yönetilen kimlik](overview-managed-identity.md) oluşturun.
+1. Uygulamanız için [sistem tarafından atanmış yönetilen](overview-managed-identity.md) bir kimlik oluşturun.
 
    > [!NOTE] 
-   > Key Vault başvurular Şu anda yalnızca sistem tarafından atanan yönetilen kimlikleri destekler. Kullanıcı tarafından atanan kimlikler kullanılamaz.
+   > Anahtar Vault başvuruları şu anda yalnızca sistem tarafından atanan yönetilen kimlikleri destekler. Kullanıcı tarafından atanan kimlikler kullanılamaz.
 
-1. Daha önce oluşturduğunuz uygulama kimliği için [Key Vault bir erişim ilkesi](../key-vault/key-vault-secure-your-key-vault.md#key-vault-access-policies) oluşturun. Bu ilkede "Get" gizli anahtarını etkinleştirin. "Yetkilendirilmiş uygulama" veya `applicationId` ayarlarını, yönetilen bir kimlikle uyumlu olmadığından yapılandırmayın.
+1. Daha önce oluşturduğunuz uygulama kimliği için [Key Vault'ta](../key-vault/key-vault-secure-your-key-vault.md#key-vault-access-policies) bir erişim ilkesi oluşturun. Bu ilkede "Get" gizli iznini etkinleştirin. Yönetilen bir kimlikle uyumlu olmadığı `applicationId` için "yetkili uygulama" veya ayarları yapılandırmayın.
 
     > [!NOTE]
-    > Key Vault başvurular Şu anda [ağ kısıtlamalarına](../key-vault/key-vault-overview-vnet-service-endpoints.md)sahip bir anahtar kasasında depolanan gizli dizileri çözemeyebilir.
+    > Anahtar Vault başvuruları şu anda [ağ kısıtlamaları](../key-vault/key-vault-overview-vnet-service-endpoints.md)olan anahtar kasasında depolanan sırları çözemez.
 
-## <a name="reference-syntax"></a>Başvuru sözdizimi
+## <a name="reference-syntax"></a>Referans sözdizimi
 
-Key Vault bir başvuru, `{referenceString}` aşağıdaki seçeneklerden biriyle değiştirildiği `@Microsoft.KeyVault({referenceString})`formundadır:
+Anahtar Kasa başvurusu, `@Microsoft.KeyVault({referenceString})` `{referenceString}` aşağıdaki seçeneklerden biriyle değiştirilen formdan dır:
 
 > [!div class="mx-tdBreakAll"]
 > | Başvuru dizesi                                                            | Açıklama                                                                                                                                                                                 |
 > |-----------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-> | SecretUri =_Secreturi_                                                       | **Secreturi** , bir sürüm gibi Key Vault bir parolanın tam veri düzlemi URI 'si olmalıdır, örneğin, https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931  |
-> | VaultName =_vaultname_; SecretName =_secretname_; SecretVersion =_Secretversion_ | **Vaultname** Key Vault kaynağınızın adı olmalıdır. **Secretname** , hedef parolanın adı olmalıdır. **Secretversion** , kullanılacak gizli dizinin sürümü olmalıdır. |
+> | SecretUri=_secretUri_                                                       | **SecretUri** Key Vault bir sır tam veri düzlemi URI olmalıdır, bir sürümü de dahil olmak üzere, örneğin,https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931  |
+> | VaultName=_vaultName_; SecretName=_secretName_; SecretVersion=_secretVersion_ | **VaultName,** Key Vault kaynağınızın adı olmalıdır. **SecretName** hedef sırrın adı olmalıdır. **SecretVersion** kullanmak için gizli sürümü olmalıdır. |
 
-Örneğin, sürüme sahip bir tüm başvuru aşağıdaki gibi görünür:
+Örneğin, Sürüm ile tam bir başvuru aşağıdaki gibi görünür:
 
 ```
 @Microsoft.KeyVault(SecretUri=https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931)
@@ -55,20 +55,20 @@ Alternatif olarak:
 ```
 
 
-## <a name="source-application-settings-from-key-vault"></a>Key Vault kaynak uygulama ayarları
+## <a name="source-application-settings-from-key-vault"></a>Key Vault'tan Kaynak Uygulama Ayarları
 
-Key Vault başvuruları, [uygulama ayarları](configure-common.md#configure-app-settings)için değer olarak kullanılabilir, böylece gizli dizileri site yapılandırması yerine Key Vault tutabilirsiniz. Uygulama ayarları, bekleyen olarak güvenli bir şekilde şifrelenir, ancak gizli yönetim özelliklerine ihtiyacınız varsa, Key Vault gitmeleri gerekir.
+Anahtar Vault referansları Uygulama [Ayarları](configure-common.md#configure-app-settings)için değer olarak kullanılabilir, site config yerine Key Vault sırlarını tutmak için izin. Uygulama Ayarları istirahatte güvenli bir şekilde şifrelenir, ancak gizli yönetim yeteneklerine ihtiyacınız varsa, Anahtar Kasa'ya gitmelidir.
 
-Bir uygulama ayarı için Key Vault başvurusu kullanmak için, başvuruyu ayarın değeri olarak ayarlayın. Uygulamanız gizli dizi anahtarı aracılığıyla gizli dizi başvurusu yapabilir. Kod değişikliği gerekli değildir.
+Bir uygulama ayarı için Key Vault başvurusunu kullanmak için, başvuruyu ayarın değeri olarak ayarlayın. Uygulamanız sırrı anahtarı yla normal olarak referans verebilir. Kod değişikliği gerekmez.
 
 > [!TIP]
-> Key Vault başvurularını kullanan uygulama ayarlarının çoğu, her ortam için ayrı kasaların olması gerektiği için yuva ayarları olarak işaretlenmelidir.
+> Key Vault başvurularını kullanan çoğu uygulama ayarı, her ortam için ayrı kasalara sahip olması gerektiğinden, yuva ayarları olarak işaretlenmelidir.
 
 ### <a name="azure-resource-manager-deployment"></a>Azure Resource Manager dağıtımı
 
-Kaynak dağıtımlarını Azure Resource Manager şablonları aracılığıyla otomatikleştirmede, bu özelliğin çalışmasını sağlamak için bağımlılıklarınızı belirli bir sırada sıraya almanız gerekebilir. Bu durumda, site tanımında `siteConfig` özelliği kullanmak yerine uygulama ayarlarınızı kendi kaynakları olarak tanımlamanız gerekir. Bunun nedeni, sitenin, sistem tarafından atanan kimliğin birlikte oluşturulması ve erişim ilkesinde kullanılabilmesi için önce tanımlanması gerekir.
+Azure Kaynak Yöneticisi şablonları aracılığıyla kaynak dağıtımlarını otomatikleştirirken, bu özelliğin çalışması için bağımlılıklarınızı belirli bir sırada sıralamanız gerekebilir. Ayrıca, site tanımında bir `siteConfig` özellik kullanmak yerine uygulama ayarlarınızı kendi kaynakları olarak tanımlamanız gerekir. Bunun nedeni, sistem tarafından atanan kimliğin onunla oluşturulabilmesi ve erişim ilkesinde kullanılabilmesi için önce sitenin tanımlanması gerekir.
 
-Bir işlev uygulaması için örnek bir psuedo şablonu, aşağıdaki gibi görünebilir:
+Bir işlev uygulaması için örnek bir psuedo şablonu aşağıdaki gibi görünebilir:
 
 ```json
 {
@@ -172,30 +172,30 @@ Bir işlev uygulaması için örnek bir psuedo şablonu, aşağıdaki gibi gör�
 ```
 
 > [!NOTE] 
-> Bu örnekte, kaynak denetimi dağıtımı uygulama ayarlarına bağlıdır. Uygulama ayarı güncelleştirmesi zaman uyumsuz olarak davrandığı için bu durum normalde güvenli olmayan bir davranıştır. Ancak `WEBSITE_ENABLE_SYNC_UPDATE_SITE` uygulama ayarını eklediğimiz için güncelleştirme zaman uyumludur. Bu, kaynak denetimi dağıtımının yalnızca uygulama ayarları tamamen güncelleştirildikten sonra başlayacağı anlamına gelir.
+> Bu örnekte, kaynak denetimi dağıtımı uygulama ayarlarına bağlıdır. Uygulama ayarı güncelleştirmesi eşsenkronize olarak davranınca, bu normalde güvenli olmayan bir davranıştır. Ancak, uygulama ayarını `WEBSITE_ENABLE_SYNC_UPDATE_SITE` dahil ettiğimizden, güncelleştirme eşzamanlıdır. Bu, kaynak denetimi dağıtımının yalnızca uygulama ayarları tam olarak güncelleştirildikten sonra başlayacağı anlamına gelir.
 
-## <a name="troubleshooting-key-vault-references"></a>Key Vault başvuruları sorunlarını giderme
+## <a name="troubleshooting-key-vault-references"></a>Sorun Giderme Anahtar KasaSı Referansları
 
-Bir başvuru düzgün çözümlenmezse, bunun yerine başvuru değeri kullanılacaktır. Bu, uygulama ayarları için, değeri `@Microsoft.KeyVault(...)` sözdizimine sahip olan bir ortam değişkeni oluşturulacak anlamına gelir. Bu, belirli bir yapının gizli dizisi beklediği için uygulamanın hata oluşturmasına neden olabilir.
+Bir başvuru düzgün çözülmezse, başvuru değeri bunun yerine kullanılır. Bu, uygulama ayarları için değeri sözdizimi olan `@Microsoft.KeyVault(...)` bir ortam değişkeni oluşturulacağı anlamına gelir. Bu, belirli bir yapının sırrını beklediği için uygulamanın hata lar atmasına neden olabilir.
 
-En yaygın olarak, bunun nedeni [Key Vault erişim ilkesinin](#granting-your-app-access-to-key-vault)yanlış yapılandırılmasından kaynaklanır. Bununla birlikte, aynı zamanda bir gizli dizi yok veya başvurunun kendisi bir sözdizimi hatası olabilir.
+En yaygın olarak, bu [Key Vault erişim ilkesinin](#granting-your-app-access-to-key-vault)bir yanlış yapılandırma kaynaklanmaktadır. Ancak, artık var olmayan bir gizli veya başvurunun kendisinde bir sözdizimi hatası ndan da kaynaklanıyor olabilir.
 
-Sözdizimi doğruysa, portaldaki geçerli çözüm durumunu denetleyerek hata nedenlerini görüntüleyebilirsiniz. Uygulama ayarları ' na gidin ve söz konusu başvuru için "Düzenle" seçeneğini belirleyin. Ayar yapılandırmasının altında hatalar da dahil olmak üzere durum bilgilerini görmeniz gerekir. Bunun yokluğu, başvuru sözdiziminin geçersiz olduğunu gösterir.
+Sözdizimi doğruysa, portaldaki geçerli çözüm durumunu denetleyerek diğer hata nedenlerini görüntüleyebilirsiniz. Uygulama Ayarları'na gidin ve söz konusu başvuru için "Edit" seçeneğini belirleyin. Ayar yapılandırmasının altında, hatalar da dahil olmak üzere durum bilgilerini görmeniz gerekir. Bunların yokluğu, başvuru sözdiziminin geçersiz olduğu anlamına gelir.
 
-Ek bilgi edinmek için yerleşik algılayıcıları da kullanabilirsiniz.
+Ek bilgi almak için dahili dedektörlerden birini de kullanabilirsiniz.
 
-### <a name="using-the-detector-for-app-service"></a>App Service için algılayıcısının kullanımı
+### <a name="using-the-detector-for-app-service"></a>Uygulama Hizmeti için dedektörü kullanma
 
-1. Portalda uygulamanıza gidin.
-2. **Tanıla ve sorunları çöz '** ü seçin.
-3. **Kullanılabilirlik ve performans** ' ı seçin ve **Web uygulaması** ' nı seçin.
-4. **Uygulama ayarları tanılamayı Key Vault** bulun ve **daha fazla bilgi**'ye tıklayın.
+1. Portalda, uygulamanıza gidin.
+2. **Sorunları tanılama ve çözme** seçeneğini belirleyin.
+3. **Kullanılabilirlik ve Performans'ı** seçin ve **Web uygulamasını aşağı seçin.**
+4. **Anahtar Vault Uygulama Ayarları Tanıbulun** ve daha fazla **bilgi**tıklayın.
 
 
-### <a name="using-the-detector-for-azure-functions"></a>Azure Işlevleri için algılayıcısının kullanımı
+### <a name="using-the-detector-for-azure-functions"></a>Azure Fonksiyonları için dedektörü kullanma
 
-1. Portalda uygulamanıza gidin.
-2. **Platform özellikleri** ' ne gidin.
-3. **Tanıla ve sorunları çöz '** ü seçin.
-4. **Kullanılabilirlik ve performans** ' ı seçin ve **işlev uygulaması çalışmıyor veya raporlama hataları** ' nı seçin.
-5. **Uygulama ayarları tanılamayı Key Vault** ' ye tıklayın.
+1. Portalda, uygulamanıza gidin.
+2. Platform **özelliklerine gidin.**
+3. **Sorunları tanılama ve çözme** seçeneğini belirleyin.
+4. **Kullanılabilirlik ve Performans'ı** seçin ve **Fonksiyon uygulamasını aşağı veya raporlama hatalarını seçin.**
+5. Key **Vault Uygulama Ayarları Tanılama'ya tıklayın.**

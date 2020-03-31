@@ -1,70 +1,68 @@
 ---
-title: Test sürücüsüne Azure Resource Manager | Azure Marketi
-description: Azure Resource Manager kullanarak Market test sürücüsü oluşturma
-services: Azure, Marketplace, Cloud Partner Portal,
-author: pbutlerm
-manager: Patrick .Butler
+title: Azure Kaynak Yöneticisi Test Sürüşü | Azure Marketi
+description: Azure Kaynak Yöneticisi'ni kullanarak Bir Pazar Test Sürücüsü Oluşturma
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: 8b2a24b6f2d7df92f1c8ea1b22432471aa432011
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.author: dsindona
+ms.openlocfilehash: 6125aa010d8676518b84f866343b01f95246160f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644911"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80275943"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager Test Sürüşü
 
-Bu makalede, Azure Market veya Appsource'ta kim teklifini sahip olan ancak kendi Test Sürüşü yalnızca Azure kaynakları ile oluşturmak istediğiniz yayımcılar içindir.
+Bu makale, Azure Marketi'nde teklifi olan veya AppSource'ta bulunan ancak Test Sürüşlerini yalnızca Azure kaynaklarıyla oluşturmak isteyen Yayıncılar içindir.
 
-Azure Resource Manager (Kaynak Yöneticisi) şablonu, çözümünüzü en iyi şekilde temsil edecek şekilde tasarlamanızı sağlayan, Azure kaynakları 'nın kodlanmış bir kapsayıcısıdır. Kaynak Yöneticisi şablonun ne olduğunu bilmiyorsanız, kendi şablonlarınızı nasıl derleyip test etmek için [Kaynak Yöneticisi şablonları](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) ve [yazma Kaynak Yöneticisi şablonları](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates) hakkında bilgi edinin.
+Azure Kaynak Yöneticisi (Kaynak Yöneticisi) şablonu, çözümünüzü en iyi şekilde temsil edecek şekilde tasarladığınız kodlanmış azure kaynakları kapsayıcısır. Kaynak Yöneticisi şablonunu bilmiyorsanız, kendi şablonlarınızı nasıl oluşturup test edeceğinden emin olmak için [Kaynak Yöneticisi şablonlarını anlama](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) ve Kaynak Yöneticisi [şablonları yazma](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates) hakkında bilgi edinin.
 
-Test Sürüşü yapar, sağlanan Resource Manager şablonu alır ve bir kaynak grubunda bu Resource Manager şablonundan gerekli tüm kaynakların dağıtımını yapar olduğu.
+Test Çalışması'nın yaptığı, sağlanan Kaynak Yöneticisi şablonuna alınması ve bu Kaynak Yöneticisi şablonundan gerekli tüm kaynakların bir kaynak grubuna dağıtılmasıdır.
 
-Bir Azure Resource Manager Test Sürüşü oluşturmak isterseniz, sizin için gereksinimler şunlardır:
+Bir Azure Kaynak Yöneticisi Test Sürüşü oluşturmayı seçerseniz, aşağıdakileri yapmanızı n için gerekli olan gereksinimler şunlardır:
 
-- Derleme, test edin ve ardından Test sürücü Resource Manager şablonunuzu karşıya yükleyin.
-- Tüm gerekli meta veriler ve Test Sürüşünüz etkinleştirmek için ayarları yapılandırın.
-- Teklifinizi Test Sürüşü etkin yeniden yayımlayın.
+- Test Sürüşü Kaynak Yöneticisi şablonunuzu oluşturun, test edin ve yükleyin.
+- Test Sürüşünüzü etkinleştirmek için gerekli tüm meta verileri ve ayarları yapılandırın.
+- Test Sürüşü etkinken teklifinizi yeniden yayınlayın.
 
-## <a name="how-to-build-an-azure-resource-manager-test-drive"></a>Bir Azure Resource Manager Test Sürüşü oluşturma
+## <a name="how-to-build-an-azure-resource-manager-test-drive"></a>Azure Kaynak Yöneticisi Test Sürüşü nasıl oluşturur?
 
-Azure Resource Manager test sürücüsü oluşturma işlemi aşağıda verilmiştir:
+Azure Kaynak Yöneticisi Test Sürüşü oluşturma işlemi aşağıda veda edinilir:
 
-1. Müşterilerinizin akış diyagramında ne olmasını istediğinizi tasarlayın.
+1. Müşterilerinizin akış diyagramında ne yapmasını istediğinizi tasarla.
 1. Müşterilerinizin hangi deneyimleri oluşturmasını istediğinizi tanımlayın.
-1. Yukarıdaki tanımları temel alarak, müşteriler için bu tür deneyimleri yerine getirmek için hangi parçaların ve kaynakların gerekli olduğuna karar verin: Örneğin, D365 örneği veya veritabanı içeren bir Web sitesi.
-1. Tasarımı yerel olarak derleyin ve deneyimi test edin.
-1. Deneyimi bir ARM şablon dağıtımında ve buradan paketleyin:
+1. Yukarıdaki tanımlara dayanarak, müşterilerin bu tür bir deneyimi gerçekleştirmesi için hangi parçalara ve kaynaklara ihtiyaç duyulduğuna karar verin: örneğin, D365 örneği veya veritabanı olan bir web sitesi.
+1. Tasarımı yerel olarak oluşturun ve deneyimi test edin.
+1. Deneyimi ARM şablon dağıtımında ve oradan paketleyin:
     1. Kaynakların hangi bölümlerinin giriş parametreleri olduğunu tanımlayın;
-    1. Hangi değişkenler vardır?
+    1. Değişkenler nelerdir;
     1. Müşteri deneyimine hangi çıktılar verilir.
-1. Yayımlayın, test edin ve canlı olun.
+1. Yayınlayın, test edin ve yayınlayın.
 
-Bir Azure Resource Manager Test Sürüşü oluşturma konusunda en önemli kısmı, müşterilerinizin deneyimini istediğiniz hangi senaryoları tanımlamaktır. Bir güvenlik duvarı ürünü ve tanıtım ne kadar iyi, betik ekleme saldırılarını işlemek istiyorsanız misiniz? Depolama ürün ve ne kadar hızlı ve kolay bir şekilde çözümünüzü tanıtım istiyorsanız dosyaları sıkıştırır misiniz?
+Azure Kaynak Yöneticisi Test Sürüşü oluşturmanın en önemli kısmı, müşterilerinizin hangi senaryoyu yaşamasını istediğinizi tanımlamaktır. Bir güvenlik duvarı ürünü ve ne kadar iyi komut dosyası enjeksiyon saldırıları ele demo istiyorum? Bir depolama ürünü müyseniz ve çözümünüzün dosyaları ne kadar hızlı ve kolay sıkıştırdığını nida etmek ister misiniz?
 
-Ürününüzü görüntülemenin en iyi yollarını değerlendirmek için yeterli miktarda süre harcadığınızdan emin olun. Özellikle ihtiyaç duyduğunuz tüm gerekli kaynakları, Kaynak Yöneticisi şablonu paketlemeyi yeterince daha kolay hale getirir.
+Ürününüzü göstermenin en iyi yollarını değerlendirerek yeterli miktarda zaman harcadığınızdan emin olun. Kaynak Yöneticisi şablonunun yeterince kolay paketlenmesi nden, özellikle ihtiyacınız olan tüm kaynakların etrafında.
 
-Güvenlik Duvarı Örneğimizdeki ile devam etmek için mimarisi, güvenlik duvarınızı koruyan bir Web sitesi için hizmetinizin genel bir IP URL'sini ve başka bir genel IP URL gerekiyor olabilir. Her IP bir sanal makinede dağıtılan ve bağlı bir ağ güvenlik grubu + ağ arabirimi ile birlikte.
+Güvenlik duvarı örneğimize devam etmek için mimari, hizmetiniz için genel bir IP URL'ye ve güvenlik duvarınızın koruduğu web sitesi için başka bir genel IP URL'sine ihtiyacınız olabilir. Her IP sanal makinede dağıtılır ve bir ağ güvenlik grubu + ağ arabirimi ile birlikte bağlanır.
 
-İstenen kaynak paketini tasarladıktan sonra, şimdi test sürücüsü Kaynak Yöneticisi şablonu yazma ve oluşturma.
+İstenilen kaynak paketini tasarladıktan sonra, test sürüşü kaynak yöneticisi şablonunun yazımı ve oluşturulması gelir.
 
-## <a name="writing-test-drive-resource-manager-templates"></a>Test sürücü Resource Manager şablonları yazma
+## <a name="writing-test-drive-resource-manager-templates"></a>Test Sürücüsü Kaynak Yöneticisi şablonları yazma
 
-Test Sürüşü tam otomatik bir modda ve bu nedenle dağıtımları çalışan, Test Sürüşü şablonları aşağıda açıklanan bazı kısıtlamalar vardır.
+Test Sürüşü dağıtımları tam otomatik modda çalıştırır ve bu nedenle Test Drive şablonlarının aşağıda açıklanan bazı kısıtlamaları vardır.
 
 ### <a name="parameters"></a>Parametreler
 
-Çoğu şablon parametre kümesine sahiptir. Parametreleri ve benzeri kaynak adları, kaynakları boyutları (örneğin, depolama hesaplarını veya sanal makine boyutları türleri), kullanıcı adları ve parolalar, DNS adlarını tanımlar. Azure portalını kullanarak çözümleri dağıttığınızda, el ile bu tüm parametreleri doldurun, kullanılabilen DNS adları veya depolama hesabı adları seçin ve benzeri.
+Çoğu şablonun bir dizi parametresi vardır. Parametreler kaynak adlarını, kaynak boyutlarını (örneğin, depolama hesabı türleri veya sanal makine boyutları), kullanıcı adları ve parolalar, DNS adları vb. tanımlar. Azure portalLarını kullanarak çözümleri dağıttığınızda, tüm bu parametreleri el ile doldurabilir, kullanılabilir DNS adlarını veya depolama hesabı adlarını seçebilir ve benzeri şeyler yapabilirsiniz.
 
-![Bir Azure Kaynak Yöneticisi'nde parametrelerinin listesi](./media/azure-resource-manager-test-drive/param1.png)
+![Azure Kaynak Yöneticisi'ndeki parametrelerin listesi](./media/azure-resource-manager-test-drive/param1.png)
 
-Ancak, yalnızca sınırlı sayıda parametre kategorileri destekler, böylece Test Sürüşü insan etkileşimi olmadan tamamen otomatik bir modda çalışır. Test sürücü Resource Manager şablonunda bir parametre desteklenen kategorilerden birine denk olmayan gerekir **Bu parametre bir değişken veya sabit değer ile değiştirin.**
+Ancak, Test Sürüşü insan etkileşimi olmadan tam otomatik modda çalışır, bu nedenle yalnızca sınırlı bir parametre kategorisini destekler. Test Sürücüsü Kaynak Yöneticisi şablonundaki bir parametre desteklenen kategorilerden birine düşmüyorsa, **bu parametreyi değişken veya sabit değerle değiştirmeniz gerekir.**
 
-Parametrelerinizi için geçerli bir ad kullanabilir, meta veri türü değeri kullanarak Test Sürüşü parametre kategorisi tanır. **Meta veri türü, her bir şablon parametresi için belirtmelisiniz**, aksi takdirde, şablonunuzu doğrulama geçmez:
+Parametreleriniz için herhangi bir geçerli ad kullanabilirsiniz, Test Drive meta veri türü değeri kullanarak parametre kategorisini tanır. **Her şablon parametresi için meta veri türü belirtmeniz gerekir,** aksi takdirde şablonunuz doğrulamayı geçemez:
 
 ```json
 "parameters": {
@@ -79,20 +77,20 @@ Parametrelerinizi için geçerli bir ad kullanabilir, meta veri türü değeri k
 }
 ```
 
-Dikkat etmeniz önemlidir **tüm parametreler isteğe bağlıdır**, bu nedenle görmüyorsanız\'kullanmak istiyorsanız, istemiyorsunuz\'t zorunda.
+**Ayrıca tüm parametrelerin isteğe bağlı olduğunu**unutmayın,\'bu nedenle herhangi bir\'kullanmak istemiyorsanız, bunu yapmak zorunda değilsiniz.
 
-### <a name="accepted-parameter-metadata-types"></a>Kabul edilen parametresi meta veri türleri
+### <a name="accepted-parameter-metadata-types"></a>Kabul Edilen Parametre Meta veri türleri
 
-| Meta veri türü   | Parametre türü  | Açıklama     | Örnek değer    |
+| Meta veri türü   | Parametre Türü  | Açıklama     | Örnek Değer    |
 |---|---|---|---|
-| **BaseUri**     | string          | Taban URI, dağıtım paketi| https:\//\<\..\>. blob.core.windows.net/\<\..\> |
-| **Kullanıcı adı**    | string          | Yeni rastgele kullanıcı adı.| admin68876      |
-| **Parola**    | güvenli dize    | Yeni rastgele bir parola | LP! ACS\^2kh     |
-| **Oturum kimliği**   | string          | Benzersiz Test Sürüşü oturum Kimliğini (GUID)    | b8c8693e-5673-449c-badd-257a405a6dee |
+| **Baseuri**     | string          | Dağıtım paketinizin Temel URI'si| \//\<https:\.. \>.blob.core.windows.net/\<\..\> |
+| **Username**    | string          | Yeni rasgele kullanıcı adı.| admin68876      |
+| **parola**    | güvenli dize    | Yeni rasgele parola | Lp!ACS\^2kh     |
+| **oturum kimliği**   | string          | Benzersiz Test Sürüşü oturum kimliği (GUID)    | b8c8693e-5673-449c-badd-257a405a6dee |
 
-#### <a name="username"></a>kullanıcı adı
+#### <a name="baseuri"></a>Baseuri
 
-Test Sürüşü başlatır, bu parametre ile bir **Base URI** paketinize dahil herhangi bir dosya URI'si oluşturmak için bu parametreyi kullanabilmeniz için dağıtım paketi.
+Test Sürüşü bu parametreyi dağıtım paketinizin **Base Uri'si** ile açar, böylece paketinizde yer alan herhangi bir dosyanın Uri'sini oluşturmak için bu parametreyi kullanabilirsiniz.
 
 ```json
 "parameters": {
@@ -108,7 +106,7 @@ Test Sürüşü başlatır, bu parametre ile bir **Base URI** paketinize dahil h
 }
 ```
 
-Şablon içinde bu parametre, Test Sürüşü dağıtım paketinden herhangi bir dosyanın bir URI oluşturmak için kullanabilirsiniz. Aşağıdaki örnekte, bağlı şablonun bir URI oluşturmak gösterilmektedir:
+Şablonunuzun içinde, Test Sürüşü dağıtım paketinizden herhangi bir dosyanın Uri'sini oluşturmak için bu parametreyi kullanabilirsiniz. Aşağıdaki örnek, bağlantılı şablonun Uri'sinin nasıl inşa edilebildiğini gösterir:
 
 ```json
 "templateLink": {
@@ -119,7 +117,7 @@ Test Sürüşü başlatır, bu parametre ile bir **Base URI** paketinize dahil h
 
 #### <a name="username"></a>kullanıcı adı
 
-Bu parametre yeni bir rastgele kullanıcı adı ile test Sürüşü başlatır:
+Test Sürücüsü bu parametreyi yeni bir rasgele kullanıcı adı ile başharfe sunar:
 
 ```json
 "parameters": {
@@ -139,11 +137,11 @@ Bu parametre yeni bir rastgele kullanıcı adı ile test Sürüşü başlatır:
 
     admin68876
 
-Çözümünüz için rastgele veya sabit kullanıcı adlarını kullanabilirsiniz.
+Çözümünüz için rasgele veya sabit kullanıcı adlarını kullanabilirsiniz.
 
-#### <a name="password"></a>parola
+#### <a name="password"></a>password
 
-Bu parametre yeni, rastgele bir parola ile test Sürüşü başlatır:
+Test Sürücüsü bu parametreyi yeni bir rasgele parolayla başharfe ait hale leştirir:
 
 ```json
 "parameters": {
@@ -163,11 +161,11 @@ Bu parametre yeni, rastgele bir parola ile test Sürüşü başlatır:
 
     Lp!ACS^2kh
 
-Çözümünüz için rastgele veya sabit parolaları kullanabilirsiniz.
+Çözümünüz için rasgele veya sabit parolalar kullanabilirsiniz.
 
-#### <a name="session-id"></a>Oturum kimliği
+#### <a name="session-id"></a>oturum kimliği
 
-Test Sürüşü Test Sürüşü oturum kimliği temsil eden benzersiz bir GUID ile bu parametreyi başlatın:
+Test Sürüşü, test sürüşü oturum kimliğini temsil eden benzersiz bir GUID ile bu parametreyi başlatmayı
 
 ```json
 "parameters": {
@@ -187,13 +185,13 @@ Test Sürüşü Test Sürüşü oturum kimliği temsil eden benzersiz bir GUID i
 
     b8c8693e-5673-449c-badd-257a405a6dee
 
-Gerekirse Test Sürüşü oturumu benzersiz olarak tanımlanabilmesi için bu parametreyi kullanın.
+Gerekirse Test Sürüşü oturumunu benzersiz olarak tanımlamak için bu parametreyi kullanabilirsiniz.
 
-### <a name="unique-names"></a>Benzersiz adlar
+### <a name="unique-names"></a>Benzersiz İsimler
 
-Depolama hesapları veya DNS adları gibi bazı Azure kaynaklarını, genel olarak benzersiz bir ad gerektirir.
+Depolama hesapları veya DNS adları gibi bazı Azure kaynakları, genel olarak benzersiz adlar gerektirir.
 
-Resource Manager şablonu Test Sürüşü dağıtır her zaman oluşturur, yani bir **benzersiz bir ada sahip yeni bir kaynak grubu** tüm kendi\' kaynakları. Bu nedenle kullanmak için gereklidir [uniquestring](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-functions#uniquestring) kaynak grubu kimlikleri benzersiz rastgele değerler oluşturmak için değişken adları ile birleştirilmiş işlevi:
+Bu, Test Drive Kaynak Yöneticisi şablonunu her dağıtınca, tüm\' kaynakları için benzersiz bir **ada sahip yeni bir kaynak grubu** oluşturduğu anlamına gelir. Bu nedenle rasgele benzersiz değerler oluşturmak için kaynak grubu dislerinde değişken adlarınız ile birlikte [benzersiz dize](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-functions#uniquestring) işlevini kullanmak gerekir:
 
 ```json
 "variables": {
@@ -204,17 +202,17 @@ Resource Manager şablonu Test Sürüşü dağıtır her zaman oluşturur, yani 
 }
 ```
 
-Parametre/değişkeni dizelerinizi birleştirme emin olun (\'contosovm\') benzersiz bir dize çıktısı ile (\'resourceGroup () .id\'), bu her bir değişken güvenilirliğini ve benzersizliği garanti eder.
+Parametre/değişken\'dizelerinizi (contosovm)\'benzersiz bir dize çıkışıyla\'(resourceGroup().id)\'birleştirirsiniz, çünkü bu her değişkenin benzersizliğini ve güvenilirliğini garanti eder.
 
-Örneğin, çoğu kaynak adları bir rakamla başlayamaz, ancak bir rakam ile başlayan bir dize benzersiz bir dize işlevi döndürebilir. Bu nedenle, benzersiz bir ham dize çıkış kullanırsanız, dağıtımlar başarısız olur. 
+Örneğin, çoğu kaynak adı bir basamakla başlayamaz, ancak benzersiz dize işlevi bir basamakla başlayan bir dize döndürebilir. Bu nedenle, ham benzersiz dize çıktısı kullanırsanız, dağıtımlarınız başarısız olur. 
 
-Kaynak adlandırma kuralları ve kısıtlamaları hakkında daha fazla bilgi bulabilirsiniz [bu makalede](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging).
+Kaynak adlandırma kuralları ve kısıtlamaları hakkında ek bilgileri [bu makalede](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)bulabilirsiniz.
 
-### <a name="deployment-location"></a>Dağıtım konumu
+### <a name="deployment-location"></a>Dağıtım Konumu
 
-Size, Test Sürüşü kullanılabilir farklı Azure bölgelerinde yapabilirsiniz. Beast kullanıcı deneyimi sunmak için en yakın bölgeyi seçin açmasına izin vermek için olur.
+Test Sürüşü'ni farklı Azure bölgelerinde kullanılabilir hale getirebilirsiniz. Fikir, bir kullanıcının en yakın bölgeyi seçmesine izin vermek, canavar kullanıcı deneyimini sağlamaktır.
 
-Test Sürüşü Laboratuvar örneğini oluşturduğunda, bölge seçtiğiniz bir kullanıcı tarafından her zaman bir kaynak grubu oluşturur ve ardından bu grubu bağlamında, dağıtım şablonu yürütür. Bu nedenle, şablonunuzu kaynak grubundan dağıtım konumu seçmeniz gerekir:
+Test Çalışması Laboratuvar'ın bir örneğini oluşturduğunda, her zaman bir kullanıcı tarafından seçtiği bölgede bir kaynak grubu oluşturur ve dağıtım şablonunuzu bu grup bağlamında yürütür. Bu nedenle, şablonunuz kaynak grubundan dağıtım konumunu seçmelidir:
 
 ```json
 "variables": {
@@ -224,7 +222,7 @@ Test Sürüşü Laboratuvar örneğini oluşturduğunda, bölge seçtiğiniz bir
 }
 ```
 
-' İ tıklatın ve ardından belirli bir laboratuvar örneği için her kaynak için bu konumu kullanır:
+Ve sonra belirli bir Laboratuvar örneği için her kaynak için bu konumu kullanın:
 
 ```json
 "resources": [
@@ -256,15 +254,15 @@ Test Sürüşü Laboratuvar örneğini oluşturduğunda, bölge seçtiğiniz bir
 ]
 ```
 
-Aboneliğiniz her seçmiş olursunuz bölgelerin dağıtmak istediğiniz tüm kaynakları dağıtma izni olduğunu emin olmanız gerekir. Sanal makine görüntülerinizi etkinleştirmek için seçeceğiz tüm bölgelerde kullanılabilir olduğundan emin olmanız gerekir de, aksi takdirde, dağıtım şablonu için bazı bölgelerde çalışmaz.
+Aboneliğinizin, dağıtmak istediğiniz tüm kaynakları seçtiğiniz bölgelerin her birinde dağıtmasına izin verdiğinden emin olmanız gerekir. Ayrıca, sanal makine görsellerinizin etkinleştireceğiniz tüm bölgelerde kullanılabilir olduğundan emin olmanız gerekir, aksi takdirde dağıtım şablonunuz bazı bölgelerde çalışmaz.
 
 ### <a name="outputs"></a>Çıkışlar
 
-Normalde Resource Manager şablonları ile herhangi bir çıktı üretmeden dağıtabilirsiniz. Şablon parametreleri doldurmak için kullandığınız tüm değerleri biliyor olmasıdır ve her zaman el ile herhangi bir kaynağın özelliklerini inceleyebilirsiniz.
+Normalde Kaynak Yöneticisi şablonları ile, herhangi bir çıktı üretmeden dağıtabilirsiniz. Bunun nedeni, şablon parametrelerini doldurmak için kullandığınız tüm değerleri bilmeniz ve herhangi bir kaynağın özelliklerini her zaman el ile inceleyebilmenizdir.
 
-Test sürücü Resource Manager şablonları için ancak bunu\'Test Sürüşü için bir laboratuvar (Web sitesi bir URI'leri, sanal makine ana bilgisayar adları, kullanıcı adları ve parolalar) erişmek için gerekli tüm bilgileri döndürmek önemlidir. Bu değişkenler müşteriye sunulduğundan, tüm çıkış adları okunabilir olduğundan emin olun.
+Ancak Test Drive Kaynak Yöneticisi\'şablonları için, laboratuvara erişim sağlamak için gereken tüm bilgileri Test Drive'a (Web Sitesi URL'leri, Sanal Makine ana bilgisayar adları, kullanıcı adları ve parolalar) döndürmek önemlidir. Bu değişkenler müşteriye sunulduğundan, tüm çıktı adlarınızın okunabilir olduğundan emin olun.
 
-Şablon çıktıları ilgili bir kısıtlama yoktur. Yalnızca unutmayın, tüm çıktı değerlerini Test Sürüşü dönüştürür **dizeleri**, çıktıyı bir nesne gönderirseniz, kullanıcı JSON görürsünüz dize.
+Şablon çıktıları ile ilgili herhangi bir kısıtlama yoktur. Unutmayın, Test Sürüşü tüm çıktı değerlerini **dizeleri**dönüştürür, bu nedenle çıktıya bir nesne gönderirseniz, kullanıcı JSON dizesini görür.
 
 Örnek:
 
@@ -285,145 +283,145 @@ Test sürücü Resource Manager şablonları için ancak bunu\'Test Sürüşü i
 }
 ```
 
-### <a name="subscription-limits"></a>Abonelik limitleri
+### <a name="subscription-limits"></a>Abonelik Limitleri
 
-Daha fazla şeyi dikkate atmanız aboneliktir ve hizmet sınırları. Örneğin, en fazla on 4 çekirdekli sanal makineler dağıtmak istiyorsanız, Laboratuvarınız için kullandığınız abonelik 40 çekirdek kullanmanıza izin verdiğinden emin olmak gerekir.
+Dikkate almalısınız bir şey daha abonelik ve hizmet sınırlarıdır. Örneğin, en fazla on adet 4 çekirdekli sanal makine dağıtmak istiyorsanız, Laboratuvarınız için kullandığınız aboneliğin 40 çekirdek kullanmanıza izin verdiğinden emin olmanız gerekir.
 
-Azure aboneliği ve hizmet sınırları hakkında daha fazla bilgi bulabilirsiniz [bu makalede](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits). Aynı anda birden çok Test Sürüşleri alınabilir gibi aboneliğinizin işleyebileceğini doğrulayın \# eş zamanlı Test gerçekleştirilebilecek sürücüleri, toplam sayı ile çarpılan çekirdek.
+Azure aboneliği ve hizmet sınırları hakkında daha fazla bilgiyi [bu makalede](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)bulabilirsiniz. Aynı anda birden çok Test Sürücüsü alınabildiği için, \# aboneliğinizin alınabilecek toplam eşzamanlı Test Sürücüsü sayısıyla çarpılarak çekirdeklerin sayısını işleyebilir.
 
 ### <a name="what-to-upload"></a>Ne yüklemek için
 
-Adlı bir dosya çeşitli dağıtım yapıları içeren bir zip dosyası, ancak gerektiğinde test sürücü Resource Manager şablonu karşıya **ana template.json**. Azure Resource Manager dağıtım şablonu bu dosyasıdır ve Test Sürüşü bir laboratuvar oluşturmak için kullanır.
+Test Drive Kaynak Yöneticisi şablonu, çeşitli dağıtım yapıları içerebilir bir zip dosyası olarak yüklenir, ancak **main-template.json**adlı bir dosya olması gerekir. Bu dosya Azure Kaynak Yöneticisi dağıtım şablonudur ve Test Drive bu dosyayı bir Laboratuarı anında oluşturmak için kullanır.
 
-Bu dosya ek kaynaklar varsa, şablonu içinde dış bir kaynak olarak başvuru veya zip dosyasında kaynak içerebilir.
+Bu dosyanın ötesinde ek kaynaklarınız varsa, şablonun içinde dış kaynak olarak başvuruda bulunabilir veya kaynağı zip dosyasına ekleyebilirsiniz.
 
-Yayımlama sertifika sırasında Test Sürüşü dağıtım paketinizi unzips ve içeriğini bir iç Test Sürüşü blob kapsayıcısına yerleştirir. Bir kapsayıcı yapısı, dağıtım paketi yapısını gösterir:
+Yayımlama sertifikası sırasında Test Sürüşü dağıtım paketinizin zip'ini çıkarır ve içeriğini dahili bir Test Drive blob kapsayıcısına koyar. Kapsayıcı yapısı dağıtım paketinizin yapısını yansıtır:
 
-| Package.zip                       | Test sürücü blob kapsayıcısı         |
+| paket.zip                       | Test Drive blob konteyner         |
 |---|---|
-| Ana template.json                | https:\//\<\..\>. blob.core.windows.net/\<\..\>/Main-Template.exe  |
-| Templates/Solution.JSON           | https:\//\<\..\>. blob.core.windows.net/\<\..\>/Templates/Solution.exe |
-| scripts/warmup.ps1                | https:\//\<\..\>. blob.core.windows.net/\<\..\>/Scripts/Warmup.exe  |
+| ana-template.json                | \//\<https:\... \>.blob.core.windows.net/\<\... \>/main-template.json  |
+| şablonlar/solution.json           | \//\<https:\... \>.blob.core.windows.net/\<\... \>/templates/solution.json |
+| komut dosyaları/ısınma.ps1                | \//\<https:\... \>.blob.core.windows.net/\<\... \>/komut dosyaları/ısınma.ps1  |
 
 
-Bu blob kapsayıcısında URI temel URI'sini diyoruz. Blob kapsayıcısı laboratuvarınızın her değişiklik vardır ve bu nedenle, her değişiklik laboratuvarınızın kendi taban URI'sine sahip. Test Sürüşü sıkıştırması dağıtım paketinizi temel URI'sini şablonunuzu şablon parametreleri aracılığıyla içine geçirebilirsiniz.
+Bu blob konteynerinuri'si olan Bir Uri'ye Base Uri diyoruz. Laboratuarınızın her revizyonunun kendi blob kabı vardır ve bu nedenle, Laboratuarınızın her revizyonunun kendi Base Uri'si vardır. Test Sürüşü, şablon parametreleri aracılığıyla şablonunuza sıkıştırılmamış dağıtım paketinizin Base Uri'sini geçirebilir.
 
-## <a name="transforming-template-examples-for-test-drive"></a>Test Sürüşü için dönüştürme şablon örnekleri
+## <a name="transforming-template-examples-for-test-drive"></a>Test Sürüşü için Şablon Örneklerini Dönüştürme
 
-Bir Test sürücü Resource Manager şablonuna bir mimari kaynakların kapatma işlemin göz korkutucu olabilir. Bu işlem kolaylaştırılmasına yardımcı olmak için biz\'en iyi nasıl yaptıysanız örnekler [burada geçerli dağıtım şablonlarını Dönüştür](./transforming-examples-for-test-drive.md).
+Kaynakların mimarisini Test Drive Kaynak Yöneticisi şablonuna dönüştürme işlemi göz korkutucu olabilir. Bu işlemin kolaylaşmasına yardımcı\'olmak için, mevcut [dağıtım şablonlarını](./transforming-examples-for-test-drive.md)en iyi şekilde nasıl dönüştürebileceğimize ilişkin örnekler verdik.
 
-## <a name="how-to-publish-a-test-drive"></a>Bir Test sürüşüne yayımlama
+## <a name="how-to-publish-a-test-drive"></a>Test Sürüşü nasıl yayımlanır?
 
-Oluşturulan Test Sürüşünüz olduğuna göre bu bölümde, başarılı bir şekilde Test Sürüşünüz yayımlamak gerekli alanların her biri açıklanmaktadır.
+Artık Test Sürüşünüzü oluşturduğuna göre, bu bölüm Test Sürüşünüzü başarıyla yayımlamanız için gereken alanların her birinde gezinir.
 
-![Test Sürüşü kullanıcı arabiriminde etkinleştirme](./media/azure-resource-manager-test-drive/howtopub1.png)
+![Kullanıcı arabiriminde Test Sürücüsü'nün etkinleştirilmesi](./media/azure-resource-manager-test-drive/howtopub1.png)
 
-İlk ve en önemli alan teklifiniz için Etkin Test Sürüşü isteyip istemediğinizi geçiş yapmak için kullanılır. **Evet ' i seçtiğinizde,** tüm gerekli alanları içeren formun geri kalanı, doldurmanız için sunulur. **Hayır ' ı seçtiğinizde,** form devre dışı bırakılır ve test sürücüsü devre dışı olarak yeniden yayımlarsanız, test sürücünüz üretimden kaldırılır.
+İlk ve en önemli alan, teklifiniz için Test Sürüşü'nün etkin olmasını isteyip istemediğiniz konusunda geçiş yapmaktır. **Evet'i seçtiğinizde,** formun geri kalanı gerekli alanların doldurulması için sunulur. **Hayır'ı seçtiğinizde,** form devre dışı bırakılır ve Test Sürüşü devre dışı bırakılmışsa, Test Sürücünüz üretimden kaldırılır.
 
-Not: etkin bir şekilde kullanıcı tarafından kullanılan sürücüleri tüm testleri vardır, bu Test Sürüşleri oturumun süresi dolana kadar çalışmaya devam eder.
+Not: Kullanıcılar tarafından etkin olarak kullanılan herhangi bir Test Sürücüleri varsa, bu Test Sürücüleri oturumları sona erene kadar çalışmaya devam eder.
 
 ### <a name="details"></a>Ayrıntılar
 
-Doldurmak için sonraki bölüme, Teklif Ayrıntıları, Test Sürüşü hakkında ' dir.
+Doldurulması gereken bir sonraki bölüm, Test Sürüşü teklifiniz hakkındaki ayrıntılardır.
 
-![Test Sürüşü ayrıntılı bilgi](./media/azure-resource-manager-test-drive/howtopub2.png)
+![Test Sürüşü detaylı bilgi](./media/azure-resource-manager-test-drive/howtopub2.png)
 
-**Açıklama -** *gerekli* budur burada Test Sürüşünüz nedir hakkında temel bir açıklama yazın. Müşteri, hangi senaryolarını Test Sürüşünüz ürününüzü hakkında kapsayan okumak için buraya gelir. 
+**Açıklama -** *Gerekli* Bu test sürücünüzde ne olduğu hakkında ana açıklama yazmak yerdir. Müşteri, Test Sürüşünüzün ürününizle ilgili hangi senaryoları ele alacağınızı okumak için buraya gelecektir. 
 
-**Kullanıcı el ile -** *gerekli* Test Sürüşü deneyiminizin ayrıntılı izlenecek yolu budur. Müşteri, bu açılır ve tam olarak kendi Test Sürüşü yapmasını istediğiniz aracılığıyla size yol. Bu içeriği kolayca izleyin ve anlamak önemlidir! (.Pdf dosyası olması gerekir)
+**Kullanım Kılavuzu -** *Gerekli* Bu, Test Sürüşü deneyiminizin derinlemesine gözden geçirimidir. Müşteri bunu açar ve Test Sürüşü boyunca tam olarak ne yapmalarını istediğinizi gözden geçirebilirsiniz. Bu içeriğin anlaşılması ve takip edilebilen kolay olması önemlidir! (Bir .pdf dosyası olmalıdır)
 
-**Test sürücü tanıtım videosu -** *önerilen* benzer kullanıcı el ile Test Sürüşü deneyiminizin videosu dahil en iyisidir. Müşteri, bu önceki ya da kendi Test Sürüşü sırasında izleyecek ve tam olarak kendi Test Sürüşü yapmasını istediğiniz aracılığıyla size yol. Bu içeriği kolayca izleyin ve anlamak önemlidir!
+**Test Sürüşü Demo Videosu -** *Önerilen* Kullanım Kılavuzu'na benzer şekilde, Test Sürüşü deneyiminizi içeren bir video eğitimi eklemek en iyisidir. Müşteri bunu test sürüşünden önce veya sırasında izleyecek ve Test Sürüşü boyunca tam olarak ne yapmalarını istediğinizi gözden geçirebilecektir. Bu içeriğin anlaşılması ve takip edilebilen kolay olması önemlidir!
 
-- **Ad** -videonuzu başlığı
-- **Bağlantı** -boru veya video katıştırılmış bir URL olmalıdır. Katıştırılmış URL'sini alma hakkında bir örnek aşağıda verilmiştir:
-- **Küçük resim** -yüksek kaliteli görüntü (533 x 324) piksel olmalıdır. Test Sürüşü deneyiminizi kısmı görüntüsü burada olması önerilir.
+- **Adı** - Videonuzun Adı
+- **Bağlantı** - Tüpünüzden veya videonuzdan gömülü bir URL olmalıdır. Gömülü url'nin nasıl alınabildiğini anlatan örnek aşağıdadır:
+- **Küçük resim** - Yüksek kaliteli görüntü (533x324) piksel olmalıdır. Test Sürüşü deneyiminizin bir bölümünün ekran görüntüsünü burada almanız önerilir.
 
-Nasıl bu alanlar, müşteri için Test Sürüşü deneyimlerini sırasında görünmesini aşağıdadır.
+Aşağıda, bu alanların Test Sürüşü deneyimi sırasında müşteriniz için nasıl gösteriş yaptığı aşağıda verilmiştir.
 
-![Test Sürüşü alanların Market teklifi konumu](./media/azure-resource-manager-test-drive/howtopub4.png)
+![Test Sürüşü alanlarının Pazar Daki Konumu teklifi](./media/azure-resource-manager-test-drive/howtopub4.png)
 
-### <a name="technical-configuration"></a>Teknik yapılandırma
+### <a name="technical-configuration"></a>Teknik Yapılandırma
 
-Burada Test sürücü Resource Manager şablonunuzu karşıya yükleyin ve nasıl özellikle tanımlamak doldurmak için sonraki bölüme olan Test Sürüşünüz iş örnekler.
+Doldurulması gereken bir sonraki bölüm, Test Sürücüsü Kaynak Yöneticisi şablonunuzu yüklediğiniz ve Test Sürüşü örneklerinizin özel olarak nasıl çalıştığını tanımladığınız bölümdür.
 
 ![](./media/azure-resource-manager-test-drive/howtopub5.png)
 
-**Örnekleri -** *gerekli* kaç örnekler yapılandıracağınız budur istiyorsanız, hangi bölgeler içinde ve müşterilerin Test Sürüşü ne kadar hızlı alabilirsiniz.
+**Örnekler -** *Gerekli* Bu, istediğiniz kaç örnek, hangi bölgede (ler) ve müşterilerinizin Test Drive'ı ne kadar hızlı alabileceğinizi yapılandırdığınız yerdir.
 
-- **Örnekleri** -bölgeleri seçin olduğu yeri de Test sürücü Resource Manager şablonunuzu dağıtıldığı seçin. Yalnızca tek bir bölge müşterilerinizin adresindedir olması en burada beklediğiniz seçmek için önerilir.
-- **Sık erişimli** -dağıtılan ve bekleniyor zaten olan sayı, Test Sürüşü yapmasını örneklere erişmek seçili bölge başına. Müşteriler, bir dağıtım için beklemek zorunda yerine bu Test Sürüşleri anında erişebilirsiniz. Artırabilen maliyeti daha büyük bir çalışma süresi tabi şekilde, bu örneklerin her zaman Azure aboneliğinize göre çalıştığını ' dir. Olması önemle tavsiye edilir **en az bir etkin örnek**, müşterilerin çoğu tam dağıtımları için beklemek istemiyorsanız gibi ve müşteri kullanımı bir bırakma için.
-- **Orta Gecikmeli** - örnekler dağıtılan bölge başına sayı, Test Sürüşü yapmasını ve ardından VM olduğundan durduruldu ve Azure Depolama'da depolanan. Orta Gecikmeli örnekleri için bekleme süresi sık erişimli örnekleri yavaştır, ancak çalışma süresi depolama maliyetini de daha ucuz.
-- **Soğuk** -büyük olasılıkla dağıtılabilir bölge başına sayı, Test Sürüşü yapmasını örnekleri. Soğuk örnekleri zaman Test Sürüşü sık erişimli veya sıcak örnekleri yavaştır isteyen bir müşteri dağıtımı aracılığıyla gitmek için tüm Test sürücü Resource Manager şablonu gerektirir. Ancak, karşılıklı avantaj ve dezavantajlarını, yalnızca Test Sürüşü süresi için ödeme yapmayı olmasıdır.
+- **Örnekler** - Seç bölgeleri, Test Sürücüsü Kaynak Yöneticisi şablonunuzun dağıtıldığı yeri seçtiğiniz yerdir. Müşterilerinizin en çok bulunduğu bölgeyi seçmeniz önerilir.
+- **Sıcak** - Zaten dağıtılan ve seçili bölge başına erişim bekleyen Test Sürüşü örneklerinin sayısı. Müşteriler dağıtım beklemek yerine bu Test Sürücülerine anında erişebilir. Bunun amacı, bu örneklerin Azure aboneliğinizde her zaman çalışıyor olmasıdır, bu nedenle daha büyük bir çalışma süresi maliyetine neden olurlar. Müşterilerinizin çoğu tam dağıtımların tamamlanmasını beklemek istemediğinden ve böylece müşteri kullanımında bir düşüş olduğundan, en az bir **Sıcak örneğinin**olması önerilir.
+- **Sıcak** - Dağıtılan ve ardından VM durdurulan ve Azure depolama alanında depolanan bölge başına Test Sürüşü örneklerinin sayısı. Sıcak örnekleri için bekleme süresi Sıcak örneklerden daha yavaştır, ancak depolamanın çalışma süresi maliyeti de daha düşüktür.
+- **Soğuk** - Dağıtılabilir bölge başına Test Sürüşü örneklerinin sayısı. Soğuk örnekler, bir müşterinin Test Sürücüsü'nü istediği sırada tüm Test Sürücüsü Kaynak Yöneticisi şablonunun dağıtımdan geçmesini gerektirir, bu nedenle Sıcak veya Sıcak örneklerden daha yavaştır. Ancak, denge, yalnızca Test Sürüşü süresi için ödeme yapmak zorunda olmasıdır.
 
-Şu anda olası eş zamanlı Test seçeceğiz sürücüleri toplam sayısını hesaplar kullanılabilir hale getirmek ve bu eşzamanlı tutar, aboneliğinize ilişkin kota sınırınıza işleyebileceğini doğrulayın:
+Şu anda, kullanıma sunacağınız potansiyel eşzamanlı Test Sürücülerinin toplam sayısını hesaplar ve aboneliğiniz için kota limitinizin bu eşzamanlı tutarı işleyeceğini doğrular:
 
-**(Süre seçili bölgeleri sık erişimli örnekleri x) + (sayı, seçili bölgeleri sıcak örnekleri x) + (sayı, seçili bölgeleri soğuk örnekleri x)**
+**(Seçilen Bölge Sayısı x Sıcak örnekler) + (Seçilen Bölge Sayısı x Sıcak örnekler) + (Seçilen Bölge Sayısı x Soğuk örnekler)**
 
-**Test sürücü süresi (saat) -** *gerekli* ne kadar Test Sürüşü içinde etkin kalacak süre \# saat. Bu süre sona erdikten sonra Test Sürüşü otomatik olarak sona erer.
+**Test Sürüşsüresi (saat) -** *Required* Test Sürüşünün saat içinde \# etkin kalacağı süre için Gerekli Süre. Bu süre sona erdikten sonra Test Sürüşü otomatik olarak sona erer.
 
-**Test sürücü Resource Manager şablonu -** *gerekli* , Resource Manager şablonunuzu karşıya yükleyin. Bu, yukarıdaki önceki bölümde oluşturulan dosyasıdır. Ana şablon dosyası adı: "ana template.json" ve Resource Manager şablonunuzu çıkış parametreleri için gerekli olan anahtar değişkenleri içerdiğinden emin olun. (Bir .zip dosyası olması gerekir)
+**Test Drive Kaynak Yöneticisi şablonu -** Gerekli Kaynak Yöneticisi şablonunuzu buraya yüklemeniz *gerekir.* Bu, yukarıdaki önceki bölümde oluşturabileceğiniz dosyadır. Ana şablon dosyasını adlandırın: "main-template.json" ve Kaynak Yöneticisi şablonunuzun gerekli olan anahtar değişkenler için çıkış parametreleri içerdiğinden emin olun. (Bir .zip dosyası olmalıdır)
 
-**Erişim bilgileri -** *gerekli* bir müşteri, Test Sürüşü aldıktan sonra erişim bilgileri kullanıcılara sunulur. Bu yönergeler, Test sürücü Resource Manager şablonunuzu yararlı çıkış parametrelerini paylaşmak için yöneliktir. Çıktı parametreleri eklemek için çift kaşlı ayraçlar kullanın (örneğin, **{{outputname}}** ), ve konumda doğru eklenir. (HTML biçimlendirme dizesi burada ön uç işleme için önerilir).
+**Erişim Bilgileri -** *Bir* müşteri Test Sürüşü aldıktan sonra erişim bilgileri onlara sunulur. Bu yönergeler, Test Sürücüsü Kaynak Yöneticisi şablonunuzdaki yararlı çıktı parametrelerini paylaşmak içindir. Çıktı parametrelerini eklemek için çift kıvırcık köşeli ayraç (örneğin, **{{outputname}}** kullanın ve bunlar konuma doğru şekilde eklenir. (HTML dize biçimlendirme ön ucunda işlemek için burada önerilir).
 
-### <a name="test-drive-deployment-subscription-details"></a>Test Sürüşü dağıtım Abonelik Ayrıntıları
+### <a name="test-drive-deployment-subscription-details"></a>Test Sürüşü Dağıtım Abonelik Ayrıntıları
 
-Doldurmak için son bölümü, Test sürücüleri otomatik olarak Azure aboneliğinizi ve Azure Active Directory (AD) bağlanarak dağıtabilmesini sağlamaktır.
+Doldurulması gereken son bölüm, Azure Aboneliğinizi ve Azure Etkin Dizininizi (AD) bağlayarak Test Sürücülerini otomatik olarak dağıtabilmektir.
 
-![Test Sürüşü dağıtım Abonelik Ayrıntıları](./media/azure-resource-manager-test-drive/subdetails1.png)
+![Test Drive dağıtım abonelik ayrıntıları](./media/azure-resource-manager-test-drive/subdetails1.png)
 
-**Azure abonelik kimliği -** *gerekli* bu Azure hizmetlerini ve Azure portalına erişim verir. Burada kullanım raporlama ve Hizmetleri faturalandırılır aboneliktir. Zaten yoksa bir **ayrı** Azure aboneliği için Test Sürüşleri yalnızca bir tane biri olun. Azure abonelik kimlikleri, Azure portalında oturum açıyorsanız ve sol taraftaki menüyü Aboneliklerde giderek bulabilirsiniz. (Örnek: "a83645ac-1234-5ab6-6789-1h234g764ghty")
+**Azure Abonelik Kimliği -** *Gerekli* Bu, Azure hizmetlerine ve Azure portalına erişim izni verir. Abonelik, kaynak kullanımının raporlandığı ve hizmetlerin faturalandırıldığı yerdir. Yalnızca Test Sürücüleri için **ayrı** bir Azure Aboneliğiniz yoksa, devam edin ve bir tane yapın. Azure portalına giriş yaparak ve sol taraftaki menüde Aboneliklere gezinerek Azure Abonelik Kimlikleri'ni bulabilirsiniz. (Örnek: "a83645ac-1234-5ab6-6789-1h234g764ghty")
 
 ![Azure Abonelikleri](./media/azure-resource-manager-test-drive/subdetails2.png)
 
-**Azure AD Kiracı kimliği -** *gerekli* bir kiracı bulabilirsiniz altındaki özellikler - kimliği zaten mevcut varsa\> dizin kimliği
+**Azure AD Kiracı Kimliği -** *Gerekli* Kiracı Kimliğiniz zaten mevcutsa,\> aşağıda Özellikler - Dizin Kimliği'nde bulabilirsiniz.
 
-![Azure Active Directory özellikleri](./media/azure-resource-manager-test-drive/subdetails3.png)
+![Azure Etkin Dizin özellikleri](./media/azure-resource-manager-test-drive/subdetails3.png)
 
-Aksi takdirde, Azure Active Directory'de yeni bir kiracı oluşturun.
+Aksi takdirde, Azure Etkin Dizini'nde yeni bir Kiracı oluşturun.
 
-![Azure Active Directory listesi Kiracı](./media/azure-resource-manager-test-drive/subdetails4.png)
+![Azure Etkin Dizin kiracıları listesi](./media/azure-resource-manager-test-drive/subdetails4.png)
 
-![Azure AD kiracısı için kuruluş, etki alanı ve ülke/bölge tanımlama](./media/azure-resource-manager-test-drive/subdetails5.png)
+![Azure AD kiracısı için kuruluş, etki alanı ve ülke/bölge tanımlayın](./media/azure-resource-manager-test-drive/subdetails5.png)
 
-![Seçimi onaylayın](./media/azure-resource-manager-test-drive/subdetails6.png)
+![Seçimi onaylama](./media/azure-resource-manager-test-drive/subdetails6.png)
 
-**Azure AD uygulama kimliği -** *gerekli* oluşturmak ve yeni bir uygulamayı kaydetmek için bir sonraki adım olacaktır. Test Sürüşü örneğinizin işlemleri gerçekleştirmek için bu uygulamayı kullanacağız.
+**Azure AD Uygulama Kimliği -** *Gerekli* Sonraki adım yeni bir uygulama oluşturmak ve kaydetmektir. Bu uygulamayı Test Sürüşü örneğinde işlemleri gerçekleştirmek için kullanacağız.
 
-1. Yeni oluşturduğunuz dizine gidin veya dizin zaten var ve Azure Active directory içinde Filtre bölmesini seçin.
-2. "Uygulama kayıtları" ve "Ekle" ye tıklayın.
+1. Yeni oluşturulan dizine veya zaten varolan dizine gidin ve filtre bölmesinde Azure Etkin dizinini seçin.
+2. "Uygulama kayıtları"nda arama yapın ve "Ekle"ye tıklayın
 3. Bir uygulama adı sağlayın.
-4. Türü olarak seçin "Web uygulaması / API'si"
-5. Oturum açma URL'si herhangi bir değer girin, biz de kazandık\'t bu alanı kullanıyor.
-6. Oluştur'a tıklayın.
-7. Uygulama oluşturulduktan sonra - özelliklerine gidin\> çok kiracılı uygulama ayarlayın ve Kaydet'e basın.
+4. "Web uygulaması / API" olarak Türünü seçin
+5. Oturum Aç URL'sinde herhangi bir\'değer sağlayın, bu alanı kullanmayacağız.
+6. Oluştur'u tıklatın.
+7. Uygulama oluşturulduktan sonra Özellikler' e\> gidin - Uygulamayı çok kiracı olarak ayarlayın ve Kaydet'e çarptı.
 
-Kaydet’e tıklayın. Son adım, bu kayıtlı uygulama için uygulama Kimliğini alın ve burada Test Sürüşü alana yapıştırın sağlamaktır.
+Kaydet’e tıklayın. Son adım, bu kayıtlı uygulamanın Uygulama Kimliğini kapmak ve test sürüşü alanına yapıştırmaktır.
 
-![Azure AD kimliği ayrıntısı](./media/azure-resource-manager-test-drive/subdetails7.png)
+![Azure AD uygulama kimliği detayı](./media/azure-resource-manager-test-drive/subdetails7.png)
 
-Verilen kullanıyoruz uygulamayı aboneliğinize dağıtmak için biz uygulamanın abonelik üzerinde katkıda bulunan olarak eklemeniz gerekir. Bu yönergeleri olarak olan aşağıda:
+Uygulamayı aboneliğe dağıtmak için kullandığımızı göz önüne alırsak, uygulamayı aboneliğe katkıda bulunan olarak eklememiz gerekir. Bunlar için talimatlar aşağıdaki gibidir:
 
-1. Abonelikler dikey penceresine gidin ve yalnızca Test Sürüşü için kullanmakta olduğunuz uygun aboneliği seçin.
+1. Abonelikler bıçağına gidin ve yalnızca Test Sürüşü için kullandığınız uygun aboneliği seçin.
 1. **Erişim denetimi (IAM)** öğesine tıklayın.
-1. **Rol atamaları** sekmesine tıklayın.  Yeni bir Access Control sorumlusu eklemek ![](./media/azure-resource-manager-test-drive/SetupSub7_1.jpg)
-1. Tıklayın **rol ataması Ekle**.
-1. Rol olarak ayarla **katkıda bulunan**.
-1. Azure AD uygulama adını yazın ve rol atamak için uygulamayı seçin.
-    ![İzin Ekle](./media/azure-resource-manager-test-drive/SetupSub7_2.jpg)
-1. **Save (Kaydet)** düğmesine tıklayın.
+1. Rol **atamaları** sekmesini tıklatın.  ![Yeni bir Erişim Denetimi ilkesi ekleme](./media/azure-resource-manager-test-drive/SetupSub7_1.jpg)
+1. **Rol Atama ekle'yi**tıklatın.
+1. **Katılımcı**olarak rolü ayarlayın.
+1. Azure AD uygulamasının adını yazın ve rolü atamak için uygulamayı seçin.
+    ![İzinleri ekleme](./media/azure-resource-manager-test-drive/SetupSub7_2.jpg)
+1. **Kaydet**'e tıklayın.
 
-**Azure AD uygulama anahtarı -** *gerekli* bir kimlik doğrulama anahtarını oluşturmak için son alandır. Anahtarı altında anahtarı bir açıklama ekleyin, ardından süresiz olarak süresini Kaydet'i belirleyin. Bu **önemli** süresi dolmuş zorunda kalmamak için anahtar, hangi test sürüşünüz üretimde çalışmamasına neden olur. Bu değeri kopyalayın ve gerekli Test Sürüşü alanına yapıştırın.
+**Azure AD Uygulama Anahtarı -** *Gerekli* Son alan bir kimlik doğrulama anahtarı oluşturmaktır. Tuşların altında, Bir Anahtar Açıklaması ekleyin, süresi asla sona ermeyecek şekilde ayarlayın ve sonra kaydet'i seçin. Üretimde test sürüşünüzü kıracak, süresi dolmuş bir anahtara sahip olmaktan kaçınmak **önemlidir.** Bu değeri kopyalayın ve gerekli Test Sürüşü alanına yapıştırın.
 
-![Azure AD uygulaması için anahtarlar gösterir](./media/azure-resource-manager-test-drive/subdetails8.png)
+![Azure AD uygulamasıiçin Anahtarları gösterir](./media/azure-resource-manager-test-drive/subdetails8.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Test Sürüşü alanlarınızı doldurulan sahip olduğunuza göre üzerinden geçmek ve **yeniden yayımlamanız** teklifinizi. Test Sürüşünüz sertifika geçtikten sonra gitmesi gereken bir müşteri deneyimini Java'da test **Önizleme** teklifinizin. Test Sürüşü kullanıcı Arabiriminde başlatın ve ardından Azure aboneliğinizi Azure portalın içinde açın ve Test Sürüşleri tam olarak doğru şekilde dağıtıldığını doğrulayın.
+Artık tüm Test Sürüşü alanlarınızın doldurulduğuna göre, teklifinizi gözden geçirin ve **yeniden yayınlayın.** Test Sürüşünuz sertifikayı geçtikten sonra, teklifinizin **önizlemesinde** müşteri deneyimini kapsamlı bir şekilde test etmelisiniz. UI'de bir Test Sürüşü başlatın ve Azure portalında Azure Aboneliğinizi açın ve Test Sürücülerinizin tam olarak dağıtıldığını doğrulayın.
 
-![Azure Portal](./media/azure-resource-manager-test-drive/subdetails9.png)
+![Azure portalında](./media/azure-resource-manager-test-drive/subdetails9.png)
 
-Bir müşteri ile tamamlandıktan sonra Test Sürüşü hizmeti otomatik olarak bu kaynak gruplarını temizler, böylece müşterileriniz için hazırlanan gibi herhangi bir Test Sürüşü örneği silmeyin dikkat edin önemlidir.
+Müşterileriniz için sağlanmış olan test sürüşü örneklerini silmediğinizi unutmayın, bu nedenle Test Drive hizmeti bu Kaynak Gruplarını müşteriyle birlikte bitirdikten sonra otomatik olarak temizler.
 
-Şimdi Önizleme teklifinizle birlikte hissedene sonra durumuna gelir **yayınlayın**! Teklif çift yayımlanan onay uçtan uca deneyiminin tamamı silindikten sonra Microsoft son gözden geçirme işleminden yoktur. Herhangi bir nedenden dolayı teklifini reddetti, teklifinizi ne düzeltilecek gerekenleri mühendislik birimi ilgili kişisi için size bildirim göndereceğiz.
+Bir kez Önizleme sunan rahat hissediyorum, şimdi **canlı gitmek**zamanı! Teklif yayımlandıktan sonra Microsoft'tan son bir gözden geçirme işlemi vardır. Teklif inreddedilirse, teklifiniz için mühendislik ilgiliye nelerin düzeltilmesi gerektiğini açıklayan bir bildirim göndeririz.
 
-Lütfen Git başka sorularım varsa, sorun giderme önerilerine aradığınız veya Test Sürüşünüz daha da başarılı hale getirmek istediğiniz [SSS, sorun giderme ve en iyi](./marketing-and-best-practices.md).
+Daha fazla sorunuz varsa, sorun giderme önerileri arıyorsanız veya Test Sürüşünüzü daha başarılı hale getirmek istiyorsanız, lütfen [SSS, Sorun Giderme ve En İyi Uygulamalar &](./marketing-and-best-practices.md)gidin.

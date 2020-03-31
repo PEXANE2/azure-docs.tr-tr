@@ -1,6 +1,6 @@
 ---
-title: Azure Data Factory 'de desteklenen dosya biçimleri (eski)
-description: Bu konuda dosya biçimlerini ve dosya tabanlı bağlayıcı Azure Data Factory tarafından desteklenen bir sıkıştırma kodları açıklanmaktadır.
+title: Azure Veri Fabrikası'nda desteklenen dosya biçimleri (eski)
+description: Bu konu, Azure Veri Fabrikası'ndaki dosya tabanlı bağlayıcılar tarafından desteklenen dosya biçimlerini ve sıkıştırma kodlarını açıklar.
 author: linda33wj
 manager: shwang
 ms.reviewer: craigg
@@ -10,41 +10,41 @@ ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: jingwang
 ms.openlocfilehash: 423706c391e8d8c2c609798d9f50e5a22f5c39bb
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79260689"
 ---
-# <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory-legacy"></a>Azure Data Factory 'de desteklenen dosya biçimleri ve sıkıştırma codec bileşenleri (eski)
+# <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory-legacy"></a>Azure Veri Fabrikası'nda desteklenen dosya biçimleri ve sıkıştırma kodlayıcıları (eski)
 
-*Bu makale aşağıdaki bağlayıcılar için geçerlidir: [Amazon S3](connector-amazon-simple-storage-service.md), [Azure Blob](connector-azure-blob-storage.md), [Azure Data Lake Storage 1.](connector-azure-data-lake-store.md), [Azure Data Lake Storage 2.](connector-azure-data-lake-storage.md), [Azure dosya depolama](connector-azure-file-storage.md), [dosya sistemi](connector-file-system.md), [FTP](connector-ftp.md), [Google Cloud Storage](connector-google-cloud-storage.md),, [](connector-hdfs.md), [http](connector-http.md)ve [SFTP](connector-sftp.md).*
+*Bu makale aşağıdaki bağlayıcılar için geçerlidir: [Amazon S3](connector-amazon-simple-storage-service.md), [Azure Blob](connector-azure-blob-storage.md), [Azure Veri Gölü Depolama Gen1](connector-azure-data-lake-store.md), [Azure Veri Gölü Depolama Gen2](connector-azure-data-lake-storage.md), [Azure Dosya Depolama](connector-azure-file-storage.md), Dosya [Sistemi](connector-file-system.md), [FTP](connector-ftp.md), [Google Bulut Depolama](connector-google-cloud-storage.md), [HDFS](connector-hdfs.md), [HTTP](connector-http.md), ve [SFTP](connector-sftp.md).*
 
 >[!IMPORTANT]
->Data Factory yeni biçim tabanlı veri kümesi modeli sunuldu, Ayrıntılar için ilgili biçim makalesine bakın: <br>- [avro biçimi](format-avro.md)<br>- [ikili biçimi](format-binary.md)<br>- [sınırlandırılmış metin biçimi](format-delimited-text.md)<br>[JSON biçimini](format-json.md) - <br>- [orc biçimi](format-orc.md)<br>- [Parquet biçimi](format-parquet.md)<br>Bu makalede bahsedilen Rest konfigürasyonları, geriye doğru uyumluluk için olduğu gibi hala desteklenmektedir. İleri doğru olan yeni modeli kullanmanız önerilir. 
+>Veri Fabrikası yeni biçim tabanlı veri seti modeli tanıttı, ayrıntıları ile ilgili biçim makalebakın: <br>- [Avro formatı](format-avro.md)<br>- [İkili biçim](format-binary.md)<br>- [Sınırlı metin biçimi](format-delimited-text.md)<br>- [JSON biçimi](format-json.md)<br>- [ORC biçimi](format-orc.md)<br>- [Parke formatı](format-parquet.md)<br>Bu makalede belirtilen geri kalan yapılandırmalar hala geriye dönük compabitility için olduğu gibi desteklenir. İleriye dönük yeni modeli kullanmanız önerilir. 
 
-## <a name="text-format"></a>Metin biçimi (eski)
+## <a name="text-format-legacy"></a><a name="text-format"></a>Metin biçimi (eski)
 
 >[!NOTE]
->[Sınırlandırılmış metin biçimi](format-delimited-text.md) makalesindeki yeni modeli öğrenin. Dosya tabanlı veri deposu veri kümesi için aşağıdaki yapılandırma, geriye doğru uyumluluk için olduğu gibi hala desteklenmektedir. İleri doğru olan yeni modeli kullanmanız önerilir.
+>[Delimited metin biçimi](format-delimited-text.md) makalesinden yeni modeli öğrenin. Dosya tabanlı veri deposu veri kümesindeki aşağıdaki yapılandırmalar, geriye dönük uyumluluk için olduğu gibi desteklenmeye devam eder. İleriye dönük yeni modeli kullanmanız önerilir.
 
-Bir metin dosyasından okumak veya bir metin dosyasına yazmak isterseniz, veri kümesinin `format` bölümündeki `type` özelliğini **TextFormat**olarak ayarlayın. İsterseniz **bölümünde aşağıdaki**isteğe bağlı`format` özellikleri de belirtebilirsiniz. Yapılandırma adımları için [TextFormat örneği](#textformat-example) bölümünü inceleyin.
+Bir metin dosyasından okumak veya bir metin dosyasına `type` yazmak istiyorsanız, veri kümesinin bölümündeki `format` özelliği **TextFormat**olarak ayarlayın. İsterseniz `format` bölümünde aşağıdaki **isteğe bağlı** özellikleri de belirtebilirsiniz. Yapılandırma adımları için [TextFormat örneği](#textformat-example) bölümünü inceleyin.
 
 | Özellik | Açıklama | İzin verilen değerler | Gerekli |
 | --- | --- | --- | --- |
-| columnDelimiter |Bir dosyadaki sütunları ayırmak için kullanılan karakterdir. Verilerinizi olmayabilir nadir, yazdırılamaz bir karakter kullanmayı düşünebilirsiniz. Örneğin, başlangıç başlık başlangıcını (SOH) temsil eden "\u0001" belirtin. |Yalnızca bir karaktere izin verilir. **Varsayılan** değer **virgül (",")** olarak belirlenmiştir. <br/><br/>Unicode karakter kullanmak için karşılık gelen kodu almak üzere [Unicode karakterlerine](https://en.wikipedia.org/wiki/List_of_Unicode_characters) bakın. |Hayır |
+| columnDelimiter |Bir dosyadaki sütunları ayırmak için kullanılan karakterdir. Verilerinizde bulunmayan nadir bir yazdırılamayan karakter kullanmayı düşünebilirsiniz. Örneğin, Başlığın Başlangıcı 'nı (SOH) temsil eden "\u0001" belirtin. |Yalnızca bir karaktere izin verilir. **Varsayılan** değer **virgül (",")** olarak belirlenmiştir. <br/><br/>Unicode karakterini kullanmak için, karşılık gelen kodu almak için [Unicode Karakterleri'ne](https://en.wikipedia.org/wiki/List_of_Unicode_characters) başvurun. |Hayır |
 | rowDelimiter |Bir dosyadaki satırları ayırmak için kullanılan karakterdir. |Yalnızca bir karaktere izin verilir. **Varsayılan** değer, okuma sırasında **["\r\n", "\r", "\n"]** değerlerinden biri, yazma sırasında ise **"\r\n"** olarak belirlenmiştir. |Hayır |
 | escapeChar |Giriş dosyasının içeriğindeki bir sütun ayırıcısına kaçış karakteri eklemek için kullanılan özel karakterdir. <br/><br/>Bir tablo için hem escapeChar hem de quoteChar parametrelerini aynı anda belirtemezsiniz. |Yalnızca bir karaktere izin verilir. Varsayılan değer yoktur. <br/><br/>Örnek: Sütun sınırlayıcınız virgül (",") karakteriyse ancak metin içinde virgül karakteri kullanılıyorsa (örneğin: "Merhaba, dünya"), "$" karakterini kaçış karakteri olarak tanımlayabilir ve kaynakta "Merhaba$, dünya" dizesini kullanabilirsiniz. |Hayır |
 | quoteChar |Bir dize değerini tırnak içine almak için kullanılan karakterdir. Tırnak işareti içindeki sütun ve satır sınırlayıcıları, dize değerinin bir parçası olarak kabul edilir. Bu özellik hem giriş hem de çıkış veri kümelerine uygulanabilir.<br/><br/>Bir tablo için hem escapeChar hem de quoteChar parametrelerini aynı anda belirtemezsiniz. |Yalnızca bir karaktere izin verilir. Varsayılan değer yoktur. <br/><br/>Örneğin, sütun sınırlayıcınız virgül (",") karakteriyse ancak metin içinde virgül karakteri kullanılıyorsa (örneğin: <Merhaba, dünya>), " (çift tırnak) karakterini tırnak karakteri olarak tanımlayabilir ve kaynakta "Merhaba, dünya" dizesini kullanabilirsiniz. |Hayır |
-| nullValue |Bir null değeri temsil etmek için kullanılan bir veya daha fazla karakterdir. |Bir veya daha fazla karakter olabilir. **Varsayılan** değerler okuma sırasında **"\N" ve "NULL"** , yazma sırasında ise **"\N"** olarak belirlenmiştir. |Hayır |
+| nullValue |Bir null değeri temsil etmek için kullanılan bir veya daha fazla karakterdir. |Bir veya daha fazla karakter olabilir. **Varsayılan** değerler okuma sırasında **"\N" ve "NULL"**, yazma sırasında ise **"\N"** olarak belirlenmiştir. |Hayır |
 | encodingName |Kodlama adını belirtir. |Geçerli bir kodlama adı. Bkz. [Encoding.EncodingName Özelliği](https://msdn.microsoft.com/library/system.text.encoding.aspx). Örnek: windows-1250 veya shift_jis. **Varsayılan** değer **UTF-8** olarak belirlenmiştir. |Hayır |
 | firstRowAsHeader |İlk satırın üst bilgi olarak kabul edilip edilmeyeceğini belirtir. Giriş veri kümesinde Data Factory ilk satırı üst bilgi olarak okur. Çıkış veri kümesinde Data Factory ilk satırı üst bilgi olarak yazar. <br/><br/>Örnek senaryolar için bkz. [`firstRowAsHeader` ve `skipLineCount` kullanım senaryoları](#scenarios-for-using-firstrowasheader-and-skiplinecount). |True<br/><b>False (varsayılan)</b> |Hayır |
-| skipLineCount |Giriş dosyalarından veri okurken atlanacak **boş olmayan** satır sayısını belirtir. Hem skipLineCount hem de firstRowAsHeader parametresi belirtilirse önce satırlar atlanır, ardından giriş dosyasındaki üst bilgi bilgileri okunur. <br/><br/>Örnek senaryolar için bkz. [`firstRowAsHeader` ve `skipLineCount` kullanım senaryoları](#scenarios-for-using-firstrowasheader-and-skiplinecount). |Tamsayı |Hayır |
+| skipLineCount |Giriş dosyalarından verileri okurken atlayacak **boş olmayan** satır sayısını gösterir. Hem skipLineCount hem de firstRowAsHeader parametresi belirtilirse önce satırlar atlanır, ardından giriş dosyasındaki üst bilgi bilgileri okunur. <br/><br/>Örnek senaryolar için bkz. [`firstRowAsHeader` ve `skipLineCount` kullanım senaryoları](#scenarios-for-using-firstrowasheader-and-skiplinecount). |Tamsayı |Hayır |
 | treatEmptyAsNull |Bir giriş dosyasından veri okuma sırasında null veya boş dizenin null değer olarak kabul edilip edilmeyeceğini belirtir. |**True (varsayılan)**<br/>False |Hayır |
 
 ### <a name="textformat-example"></a>TextFormat örneği
 
-Bir veri kümesi için aşağıdaki JSON tanımında isteğe bağlı özelliklerin bazılarını belirtilir.
+Bir veri kümesi için aşağıdaki JSON tanımında, bazı isteğe bağlı özellikler belirtilir.
 
 ```json
 "typeProperties":
@@ -65,7 +65,7 @@ Bir veri kümesi için aşağıdaki JSON tanımında isteğe bağlı özellikler
 },
 ```
 
-`escapeChar` yerine `quoteChar` kullanmak için `quoteChar` yazan satırı şu escapeChar ile değiştirin:
+`quoteChar` yerine `escapeChar` kullanmak için `quoteChar` yazan satırı şu escapeChar ile değiştirin:
 
 ```json
 "escapeChar": "$",
@@ -77,29 +77,29 @@ Bir veri kümesi için aşağıdaki JSON tanımında isteğe bağlı özellikler
 * Üst bilgi satırı içeren bir metin dosyasından dosya olmayan bir havuza kopyalama yapıyorsunuz ve üst bilgi satırını almak istemiyorsunuz. Giriş veri kümesinde `firstRowAsHeader` parametresini true olarak belirleyin.
 * Bir metin dosyasından kopyalama yapıyorsunuz ve dosyanın başındaki veri içermeyen veya üst bilgi bilgilerini içeren birkaç satırı atlamak istiyorsunuz. Atlanacak satır sayısını belirtmek için `skipLineCount` değerini belirtin. Dosyanın geri kalan kısmında üst bilgi satırı varsa `firstRowAsHeader` değerini de belirtebilirsiniz. Hem `skipLineCount` hem de `firstRowAsHeader` parametresi belirtilirse önce satırlar atlanır, ardından giriş dosyasındaki üst bilgi bilgileri okunur.
 
-## <a name="json-format"></a>JSON biçimi (eski)
+## <a name="json-format-legacy"></a><a name="json-format"></a>JSON biçimi (eski)
 
 >[!NOTE]
->[JSON biçimi](format-json.md) makalesindeki yeni modeli öğrenin. Dosya tabanlı veri deposu veri kümesi için aşağıdaki yapılandırma, geriye doğru uyumluluk için olduğu gibi hala desteklenmektedir. İleri doğru olan yeni modeli kullanmanız önerilir.
+>[JSON formatındaki](format-json.md) makaleden yeni modeli öğrenin. Dosya tabanlı veri deposu veri kümesindeki aşağıdaki yapılandırmalar, geriye dönük uyumluluk için olduğu gibi desteklenmeye devam eder. İleriye dönük yeni modeli kullanmanız önerilir.
 
-**Json dosyasını Azure Cosmos DB olarak içeri/** dışarı aktarmak için bkz. [Azure Cosmos DB verileri](connector-azure-cosmos-db.md) içeri/dışarı aktarma makalesindeki JSON belgelerini içeri/dışarı aktarma bölümünde.
+**Azure Cosmos DB'den olduğu gibi bir JSON dosyasını içe/dışa aktarmak** [için, Verileri Azure Cosmos DB makalesine/aktarmaya taşı'ndaki](connector-azure-cosmos-db.md) JSON belgelerini içe aktarma/dışa aktarma bölümüne bakın.
 
-JSON dosyalarını ayrıştırmak veya verileri JSON biçiminde yazmak isterseniz, `format` bölümündeki `type` özelliğini **Jsonformat**olarak ayarlayın. İsterseniz **bölümünde aşağıdaki**isteğe bağlı`format` özellikleri de belirtebilirsiniz. Yapılandırma adımları için [JsonFormat örneği](#jsonformat-example) bölümünü inceleyin.
+JSON dosyalarını ayrışdırmak veya verileri JSON biçiminde yazmak `type` istiyorsanız, `format` bölümdeki özelliği **JsonFormat**olarak ayarlayın. İsterseniz `format` bölümünde aşağıdaki **isteğe bağlı** özellikleri de belirtebilirsiniz. Yapılandırma adımları için [JsonFormat örneği](#jsonformat-example) bölümünü inceleyin.
 
 | Özellik | Açıklama | Gerekli |
 | --- | --- | --- |
 | filePattern |Her bir JSON dosyasında depolanan verilerin desenini belirtir. İzin verilen değerler: **setOfObjects** ve **arrayOfObjects**. **Varsayılan** değer **setOfObjects** olarak belirlenmiştir. Bu desenler hakkında ayrıntılı bilgi için bkz. [JSON dosyası desenleri](#json-file-patterns). |Hayır |
-| jsonNodeReference | Bir dizi alanındaki aynı desene sahip verileri yinelemek ve ayıklamak istiyorsanız o dizinin JSON yolunu belirtin. Bu özellik **yalnızca JSON dosyalarından** veri kopyalanırken desteklenir. | Hayır |
-| jsonPathDefinition | Her sütun için JSON yolu ifadesini belirtin ve özel bir sütun adıyla eşleyin (küçük harfle başlatın). Bu özellik yalnızca JSON dosyalarından veri kopyalarken desteklenir ve nesne veya **diziden veri ayıklayabilirsiniz** . <br/><br/> Kök nesne altındaki alanlar için root $ ile, `jsonNodeReference` özelliği tarafından seçilen dizinin içindeki alanlar için ise dizi öğesiyle başlayın. Yapılandırma adımları için [JsonFormat örneği](#jsonformat-example) bölümünü inceleyin. | Hayır |
-| encodingName |Kodlama adını belirtir. Geçerli kodlama adlarının listesi için bkz. [Encoding.EncodingName](https://msdn.microsoft.com/library/system.text.encoding.aspx) Özelliği. Örneğin: windows-1250 veya shift_jis. **Varsayılan** değer **UTF-8** olarak belirlenmiştir. |Hayır |
+| jsonNodeReference | Bir dizi alanındaki aynı desene sahip verileri yinelemek ve ayıklamak istiyorsanız o dizinin JSON yolunu belirtin. Bu özellik yalnızca JSON **dosyalarından** veri kopyalanırken desteklenir. | Hayır |
+| jsonPathDefinition | Her sütun için JSON yolu ifadesini belirtin ve özel bir sütun adıyla eşleyin (küçük harfle başlatın). Bu özellik yalnızca JSON **dosyalarından** veri kopyalanırken desteklenir ve nesne veya diziden veri ayıklayabilirsiniz. <br/><br/> Kök nesne altındaki alanlar için root $ ile, `jsonNodeReference` özelliği tarafından seçilen dizinin içindeki alanlar için ise dizi öğesiyle başlayın. Yapılandırma adımları için [JsonFormat örneği](#jsonformat-example) bölümünü inceleyin. | Hayır |
+| encodingName |Kodlama adını belirtir. Geçerli kodlama adlarının listesi için bkz. [Encoding.EncodingName](https://msdn.microsoft.com/library/system.text.encoding.aspx) Özelliği. Örneğin: windows-1250 veya shift_jis. **Varsayılan** değer: **UTF-8**. |Hayır |
 | nestingSeparator |İç içe geçme düzeylerini ayırmak için kullanılan karakterdir. Varsayılan değer "." (nokta) olarak belirlenmiştir. |Hayır |
 
 >[!NOTE]
->Dizideki verileri birden çok satıra çapraz uygulama (büyük/küçük harf 1), [Jsonformat örneklerinde](#jsonformat-example)> örnek 2) için, yalnızca özellik `jsonNodeReference`kullanarak tek bir diziyi genişletmeyi seçebilirsiniz.
+>Dizi halinde çapraz uygulama verilerinin birden çok satıra uygulanması durumunda [(jsonFormat örneklerinde](#jsonformat-example)örnek 1 ->), `jsonNodeReference`yalnızca özelliği kullanarak tek bir diziyi genişletmeyi seçebilirsiniz.
 
 ### <a name="json-file-patterns"></a>JSON dosyası desenleri
 
-Kopyalama etkinliği, JSON dosyalarının şu desenlerini ayrıştırabilir:
+Kopyalama etkinliği JSON dosyalarının aşağıdaki desenlerini ayrıştırabilir:
 
 - **1. Tür: setOfObjects**
 
@@ -222,14 +222,14 @@ Bu örnekte, bir kök JSON nesnesinin tablosal sonuçtaki tek bir kayıtla eşle
 
 ve hem nesne hem de diziden veri ayıklayarak bir Azure SQL tablosuna aşağıdaki biçimde kopyalamak istersiniz:
 
-| Kimlik | deviceType | targetResourceType | resourceManagementProcessRunId | occurrenceTime |
+| Kimlik | deviceType | targetResourceType | kaynakManagementProcessRunId | occurrenceTime |
 | --- | --- | --- | --- | --- |
 | ed0e4960-d9c5-11e6-85dc-d7996816aad3 | PC | Microsoft.Compute/virtualMachines | 827f8aaa-ab72-437c-ba48-d8917a7336a3 | 1/13/2017 11:24:37 AM |
 
 **JsonFormat** türüne sahip giriş veri kümesi şu şekilde tanımlanır: (yalnızca ilgili bölümlerin gösterildiği kısmi tanım). Daha ayrıntılı belirtmek gerekirse:
 
-- `structure` bölümü, tablo verilerine dönüştürme sırasında kullanılan özelleştirilmiş sütun adlarını ve karşılık gelen veri türünü tanımlar. Bu bölüm **isteğe bağlıdır** ve yalnızca sütun eşleme için kullanmanız gerekir. Daha fazla bilgi için bkz. [kaynak veri kümesi sütunlarını hedef veri kümesi sütunlarına eşleme](copy-activity-schema-and-type-mapping.md).
-- `jsonPathDefinition`, her sütun için verilerin ayıklanacağı JSON yolunu belirtir. Diziden veri kopyalamak için, `xth` nesnesinden verilen özelliğin değerini ayıklamak üzere `array[x].property` kullanabilir veya bu özelliği içeren herhangi bir nesneden değeri bulmak için `array[*].property` kullanabilirsiniz.
+- `structure` bölümü, tablo verilerine dönüştürme sırasında kullanılan özelleştirilmiş sütun adlarını ve karşılık gelen veri türünü tanımlar. Bu bölüm **isteğe bağlıdır** ve yalnızca sütun eşleme için kullanmanız gerekir. Daha fazla bilgi için, [hedef veri kümesi sütunlarına harita kaynağı veri kümesi sütunlarına](copy-activity-schema-and-type-mapping.md)bakın.
+- `jsonPathDefinition`, her sütun için verilerin ayıklanacağı JSON yolunu belirtir. Dizideki verileri kopyalamak için, verilen `array[x].property` `xth` özelliğin değerini nesneden ayıklamak `array[*].property` için veya bu özelliği içeren herhangi bir nesneden değeri bulmak için kullanabilirsiniz.
 
 ```json
 "properties": {
@@ -303,9 +303,9 @@ ve bunu bir Azure SQL tablosuna aşağıdaki biçimde, dizi içindeki verileri d
 
 **JsonFormat** türüne sahip giriş veri kümesi şu şekilde tanımlanır: (yalnızca ilgili bölümlerin gösterildiği kısmi tanım). Daha ayrıntılı belirtmek gerekirse:
 
-- `structure` bölümü, tablo verilerine dönüştürme sırasında kullanılan özelleştirilmiş sütun adlarını ve karşılık gelen veri türünü tanımlar. Bu bölüm **isteğe bağlıdır** ve yalnızca sütun eşleme için kullanmanız gerekir. Daha fazla bilgi için bkz. [kaynak veri kümesi sütunlarını hedef veri kümesi sütunlarına eşleme](copy-activity-schema-and-type-mapping.md).
-- `jsonNodeReference`, **dizi** `orderlines`altında aynı düzene sahip nesnelerden verileri yinelemek ve ayıklamak anlamına gelir.
-- `jsonPathDefinition`, her sütun için verilerin ayıklanacağı JSON yolunu belirtir. Bu örnekte, `ordernumber`, `orderdate`ve `city` `$.`ile başlayan JSON yoluyla kök nesne altındadır, `order_pd` ve `order_price` `$.`olmadan dizi öğesinden türetilen yol ile tanımlanır.
+- `structure` bölümü, tablo verilerine dönüştürme sırasında kullanılan özelleştirilmiş sütun adlarını ve karşılık gelen veri türünü tanımlar. Bu bölüm **isteğe bağlıdır** ve yalnızca sütun eşleme için kullanmanız gerekir. Daha fazla bilgi için, [hedef veri kümesi sütunlarına harita kaynağı veri kümesi sütunlarına](copy-activity-schema-and-type-mapping.md)bakın.
+- `jsonNodeReference`**dizi** `orderlines`altında aynı desene sahip nesnelerden veri ayıklamak ve ayıklamak için gösterir.
+- `jsonPathDefinition`, her sütun için verilerin ayıklanacağı JSON yolunu belirtir. `ordernumber`Bu örnekte, `orderdate`, `city` , ve JSON yolu `$.`ile `order_pd` başlayan `order_price` kök nesnesi altında iken `$.`, ve olmadan dizi öğesinden türetilen yol ile tanımlanır .
 
 ```json
 "properties": {
@@ -352,7 +352,7 @@ ve bunu bir Azure SQL tablosuna aşağıdaki biçimde, dizi içindeki verileri d
 
 **Durum 2: JSON dosyasına veri yazma**
 
-Aşağıdaki tabloda, SQL veritabanı'nda varsa:
+SQL Veritabanı'nda aşağıdaki tablo varsa:
 
 | Kimlik | order_date | order_price | order_by |
 | --- | --- | --- | --- |
@@ -360,7 +360,7 @@ Aşağıdaki tabloda, SQL veritabanı'nda varsa:
 | 2 | 20170120 | 3500 | Patrick |
 | 3 | 20170121 | 4000 | Jason |
 
-ve aşağıdaki biçimde bir JSON nesnesi yazmak amacıyla beklediğiniz her kayıt için:
+ve her kayıt için, aşağıdaki biçimde bir JSON nesnesine yazmayı bekliyorsunuz:
 
 ```json
 {
@@ -373,7 +373,7 @@ ve aşağıdaki biçimde bir JSON nesnesi yazmak amacıyla beklediğiniz her kay
 }
 ```
 
-**JsonFormat** türüne sahip çıkış veri kümesi şu şekilde tanımlanır: (yalnızca ilgili bölümlerin gösterildiği kısmi tanım). Daha belirgin bir şekilde, `structure` bölüm, hedef dosyadaki özelleştirilmiş özellik adlarını tanımlar, `nestingSeparator` (varsayılan "."), iç içe geçme katmanını adından belirlemek için kullanılır. Bu bölüm **isteğe bağlıdır** ve kaynak sütunu adıyla karşılaştırarak özellik adını değiştirmek veya özelliklerin bazılarını iç içe yerleştirmek için kullanmanız gerekir.
+**JsonFormat** türüne sahip çıkış veri kümesi şu şekilde tanımlanır: (yalnızca ilgili bölümlerin gösterildiği kısmi tanım). Daha ayrıntılı `structure` olarak, bölüm hedef dosyadaki özelleştirilmiş özellik adlarını tanımlar, `nestingSeparator` (varsayılan ".") adından yuva katmanıtanımlamak için kullanılır. Bu bölüm **isteğe bağlıdır** ve kaynak sütunu adıyla karşılaştırarak özellik adını değiştirmek veya özelliklerin bazılarını iç içe yerleştirmek için kullanmanız gerekir.
 
 ```json
 "properties": {
@@ -404,12 +404,12 @@ ve aşağıdaki biçimde bir JSON nesnesi yazmak amacıyla beklediğiniz her kay
 }
 ```
 
-## <a name="parquet-format"></a>Parquet biçimi (eski)
+## <a name="parquet-format-legacy"></a><a name="parquet-format"></a>Parke formatı (eski)
 
 >[!NOTE]
->Yeni modeli [Parquet biçimi](format-parquet.md) makalesinden öğrenin. Dosya tabanlı veri deposu veri kümesi için aşağıdaki yapılandırma, geriye doğru uyumluluk için olduğu gibi hala desteklenmektedir. İleri doğru olan yeni modeli kullanmanız önerilir.
+>[Parke formatında](format-parquet.md) makaleden yeni modeli öğrenin. Dosya tabanlı veri deposu veri kümesindeki aşağıdaki yapılandırmalar, geriye dönük uyumluluk için olduğu gibi desteklenmeye devam eder. İleriye dönük yeni modeli kullanmanız önerilir.
 
-Parquet dosyalarını ayrıştırmak veya verileri Parquet biçiminde yazmak isterseniz, `format` `type` özelliğini **Parquetformat**olarak ayarlayın. typeProperties bölümünün içindeki Format bölümünde herhangi bir özellik belirtmenize gerek yoktur. Örnek:
+Parquet dosyalarını ayrıştırmak veya verileri Parquet biçiminde yazmak istiyorsanız `format` `type` özelliğini **ParquetFormat** olarak ayarlayın. typeProperties bölümünün içindeki Format bölümünde herhangi bir özellik belirtmenize gerek yoktur. Örnek:
 
 ```json
 "format":
@@ -420,28 +420,28 @@ Parquet dosyalarını ayrıştırmak veya verileri Parquet biçiminde yazmak ist
 
 Aşağıdaki noktalara dikkat edin:
 
-* Karmaşık veri türleri desteklenmez (eşleme, LISTE).
-* Sütun adında boşluk desteklenmiyor.
-* Parquet dosyası sıkıştırmayla ilgili şu seçeneklere sahiptir: NONE, SNAPPY, GZIP ve LZO. Data Factory, LZO dışında bu sıkıştırılmış biçimlerin hiçbirinde Parquet dosyasından veri okumayı destekler-verileri okumak için Meta verilerdeki sıkıştırma codec 'ini kullanır. Ancak Data Factory bir Parquet dosyasına yazarken varsayılan Parquet biçimi SNAPPY seçeneğini kullanır. Şu anda bu davranışı geçersiz kılma seçeneği yoktur.
+* Karmaşık veri türleri desteklenmez (MAP, LIST).
+* Sütun adındaki beyaz alan desteklenmez.
+* Parquet dosyası sıkıştırmayla ilgili şu seçeneklere sahiptir: NONE, SNAPPY, GZIP ve LZO. Veri Fabrikası, LZO dışındaki bu sıkıştırılmış biçimlerin herhangi birinde Parke dosyasından gelen verileri okumayı destekler - verileri okumak için meta verilerdeki sıkıştırma kodc'sini kullanır. Ancak Data Factory bir Parquet dosyasına yazarken varsayılan Parquet biçimi SNAPPY seçeneğini kullanır. Şu anda bu davranışı geçersiz kılma seçeneği yoktur.
 
 > [!IMPORTANT]
-> Şirket içinde barındırılan Integration Runtime, örneğin şirket içi ve bulut veri depoları arasında eşit olarak kopyalanmıyorsa, Parquet dosyalarını **olduğu gibi**KOPYALAMADıYSANıZ, ır makinenize **64 bit JRE 8 (Java Runtime Environment) veya OpenJDK** yüklemeniz gerekir. Daha ayrıntılı bilgi için aşağıdaki paragrafa bakın.
+> Kendi kendine barındırılan Tümleştirme Runtime tarafından yetkilendirilmiş kopya için, örneğin şirket içi ve bulut veri depoları arasında, Parke dosyalarını **olduğu gibi**kopyalamazsanız, IR makinenize **64 bit JRE 8 (Java Runtime Ortamı) veya OpenJDK** yüklemeniz gerekir. Daha fazla ayrıntı içeren aşağıdaki paragrafa bakın.
 
-Iquet dosya serileştirme/seri hale getirme ile şirket içinde barındırılan IR üzerinde çalışan kopyalama için, ADF, bir JRE için kayıt defteri *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* denetleyerek, OpenJDK için sistem değişkeni *`JAVA_HOME`* kontrol ederek Java çalışma zamanını bulur.
+Parke dosyası serileştirme/deserialization ile Self barındırılan IR üzerinde çalışan kopya için, ADF *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* ilk olarak JRE için kayıt defterikontrol *`JAVA_HOME`* ederek Java çalışma süresini bulur, eğer bulunmazsa, ikinci olarak OpenJDK için sistem değişkenini denetler.
 
-- **JRE 'yi kullanmak için**: 64 bit ır, 64 BIT JRE gerektirir. [Buradan](https://go.microsoft.com/fwlink/?LinkId=808605)bulabilirsiniz.
-- **OpenJDK 'yi kullanmak için**: ır sürüm 3,13 ' den itibaren desteklenmektedir. JVM. dll dosyasını, OpenJDK 'nin diğer tüm gerekli Derlemeleriyle şirket içinde barındırılan IR makinesine paketleyin ve sistem ortam değişkeni JAVA_HOME uygun şekilde ayarlayın.
+- **JRE kullanmak için**: 64-bit IR 64-bit JRE gerektirir. [Buradan](https://go.microsoft.com/fwlink/?LinkId=808605)bulabilirsin.
+- **OpenJDK kullanmak için**: IR sürüm 3.13'ten beri desteklenir. OpenJDK'nın diğer tüm gerekli montajlarını kendi kendine barındırılan IR makinesine paketleyip, sistem ortamını buna göre JAVA_HOME ayarlayın.
 
 >[!TIP]
->Şirket içinde barındırılan Integration Runtime kullanarak Parquet biçimine/kaynağından veri kopyalarsanız ve "Java çağrılırken bir hata oluştu" hatası ile karşılaşırsanız, ileti: **Java. lang. OutOfMemoryError: Java yığın alanı**", bu kopyayı GÜÇLENDIREN JVM için Min/Max yığın boyutunu ayarlamak üzere Şirket IÇINDE barındırılan IR 'yi barındıran makineye `_JAVA_OPTIONS` bir ortam değişkeni ekleyebilirsiniz, sonra işlem hattını yeniden çalıştırın.
+>Kendi kendine barındırılan Tümleştirme Runtime kullanarak Parke formatına/parke formatından verileri kopyalarsanız ve "Java, mesaj: **java.lang.OutOfMemoryError:Java yığın alanı"** çağırıldığında bir hata oluştu" diyerek hatayı vurursanız, JVM'nin bu tür kopyalamayı güçlendirmek için min/max heap boyutunu ayarlamak için kendi kendine barındırılan IR'yi barındıran makineye bir ortam değişkeni `_JAVA_OPTIONS` ekleyebilirsiniz ve ardından ardışık ardışık hattı yeniden çalıştırabilirsiniz.
 
-![Şirket içinde barındırılan IR 'de JVM yığın boyutunu ayarlama](./media/supported-file-formats-and-compression-codecs/set-jvm-heap-size-on-selfhosted-ir.png)
+![Kendi kendine barındırılan IR'de JVM yığın boyutunu ayarlama](./media/supported-file-formats-and-compression-codecs/set-jvm-heap-size-on-selfhosted-ir.png)
 
-Örnek: değişken `_JAVA_OPTIONS` `-Xms256m -Xmx16g`değer olarak ayarlayın. Bayrak `Xms`, bir Java Sanal Makinesi (JVM) için ilk bellek ayırma havuzunu belirtir, ancak `Xmx` en yüksek bellek ayırma havuzunu belirtir. Bu, JVM 'nin `Xms` bellek miktarıyla başlatıldığı ve en fazla `Xmx` bellek miktarını kullanabileceği anlamına gelir. ADF, varsayılan olarak en az 64MB ve en fazla 1G kullanır.
+Örnek: değer `_JAVA_OPTIONS` `-Xms256m -Xmx16g`ile değişken ayarlayın. Bayrak, `Xms` java sanal makinesi (JVM) için ilk bellek `Xmx` ayırma havuzunu belirtirken, en yüksek bellek ayırma havuzunu belirtir. Bu, JVM'nin bellek `Xms` miktarıyla başlatılacağı ve maksimum `Xmx` bellek miktarı kullanabileceği anlamına gelir. Varsayılan olarak, ADF min 64MB ve max 1G kullanır.
 
-### <a name="data-type-mapping-for-parquet-files"></a>Eşleme Parquet dosyalarını için veri türü
+### <a name="data-type-mapping-for-parquet-files"></a>Parke dosyaları için veri türü eşleme
 
-| Veri Fabrikası geçici veri türü | Parquet ilkel türü | Parquet özgün türü (seri durumdan) | Parquet özgün türü (seri hale getirmek) |
+| Veri fabrikası geçici veri türü | Parke İlkel Tip | Parke Orijinal Tip (Deserialize) | Parke Orijinal Tip (Serialize) |
 |:--- |:--- |:--- |:--- |
 | Boole | Boole | Yok | Yok |
 | SByte | Int32 | Int8 | Int8 |
@@ -451,25 +451,25 @@ Iquet dosya serileştirme/seri hale getirme ile şirket içinde barındırılan 
 | Int32 | Int32 | Int32 | Int32 |
 | UInt32 | Int64 | UInt32 | Int64 |
 | Int64 | Int64 | Int64 | Int64 |
-| UInt64 | Int64/ikili | UInt64 | Ondalık |
-| Tek | Float | Yok | Yok |
-| çift | çift | Yok | Yok |
+| UInt64 | Int64/İkili | UInt64 | Ondalık |
+| Tek | Kayan | Yok | Yok |
+| Çift | Çift | Yok | Yok |
 | Ondalık | İkili | Ondalık | Ondalık |
 | Dize | İkili | Utf8 | Utf8 |
 | DateTime | Int96 | Yok | Yok |
 | TimeSpan | Int96 | Yok | Yok |
 | DateTimeOffset | Int96 | Yok | Yok |
-| ByteArray | İkili | Yok | Yok |
+| Bytearray | İkili | Yok | Yok |
 | Guid | İkili | Utf8 | Utf8 |
 | Char | İkili | Utf8 | Utf8 |
 | CharArray | Desteklenmiyor | Yok | Yok |
 
-## <a name="orc-format"></a>ORC biçimi (eski)
+## <a name="orc-format-legacy"></a><a name="orc-format"></a>ORC biçimi (eski)
 
 >[!NOTE]
->[Orc biçimindeki](format-orc.md) yeni modeli öğrenin. Dosya tabanlı veri deposu veri kümesi için aşağıdaki yapılandırma, geriye doğru uyumluluk için olduğu gibi hala desteklenmektedir. İleri doğru olan yeni modeli kullanmanız önerilir.
+>[ORC formatındaki](format-orc.md) makaleden yeni modeli öğrenin. Dosya tabanlı veri deposu veri kümesindeki aşağıdaki yapılandırmalar, geriye dönük uyumluluk için olduğu gibi desteklenmeye devam eder. İleriye dönük yeni modeli kullanmanız önerilir.
 
-ORC dosyalarını ayrıştırmak veya verileri ORC biçiminde yazmak isterseniz, `format` `type` özelliğini **Orcformat**olarak ayarlayın. typeProperties bölümünün içindeki Format bölümünde herhangi bir özellik belirtmenize gerek yoktur. Örnek:
+ORC dosyalarını ayrıştırmak veya verileri ORC biçiminde yazmak istiyorsanız `format` `type` özelliğini **OrcFormat** olarak ayarlayın. typeProperties bölümünün içindeki Format bölümünde herhangi bir özellik belirtmenize gerek yoktur. Örnek:
 
 ```json
 "format":
@@ -481,47 +481,47 @@ ORC dosyalarını ayrıştırmak veya verileri ORC biçiminde yazmak isterseniz,
 Aşağıdaki noktalara dikkat edin:
 
 * Karmaşık veri türleri desteklenmez (STRUCT, MAP, LIST, UNION).
-* Sütun adında boşluk desteklenmiyor.
+* Sütun adındaki beyaz alan desteklenmez.
 * ORC dosyası [sıkıştırmayla ilgili üç seçeneğe sahiptir](https://hortonworks.com/blog/orcfile-in-hdp-2-better-compression-better-performance/): NONE, ZLIB, SNAPPY. Data Factory, bu sıkıştırma biçimlerinin herhangi birine sahip ORC dosyalarını okuyabilir. Verileri okumak için meta verilerdeki sıkıştırma kodlayıcısı/kod çözücüsünü kullanır. Ancak Data Factory bir ORC dosyasına yazarken varsayılan ORC değeri olan ZLIB seçeneğini kullanır. Şu anda bu davranışı geçersiz kılma seçeneği yoktur.
 
 > [!IMPORTANT]
-> Şirket içinde barındırılan Integration Runtime, örneğin şirket içi ve bulut veri depoları arasında geçiş için, ORC dosyalarını **olduğu gibi**KOPYALAMADıYSANıZ, ır makinenize **64 bit JRE 8 (Java Runtime Environment) veya OpenJDK** yüklemeniz gerekir. Daha ayrıntılı bilgi için aşağıdaki paragrafa bakın.
+> Kendi kendine barındırılan Tümleştirme Runtime tarafından yetkilendirilmiş kopya için, örneğin şirket içi ve bulut veri depoları arasında, ORC dosyalarını **olduğu gibi**kopyalamazsanız, IR makinenize **64 bit JRE 8 (Java Runtime Ortamı) veya OpenJDK** yüklemeniz gerekir. Daha fazla ayrıntı içeren aşağıdaki paragrafa bakın.
 
-ORC dosya serileştirme/seri hale getirme ile şirket içinde barındırılan IR üzerinde çalışan kopyalama için, ADF, bir JRE için kayıt defteri *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* denetleyerek, OpenJDK için sistem değişkeni *`JAVA_HOME`* kontrol ederek Java çalışma zamanını bulur.
+ORC dosya serileştirme/deserialization ile Self barındırılan IR üzerinde çalışan kopya için, ADF *`(SOFTWARE\JavaSoft\Java Runtime Environment\{Current Version}\JavaHome)`* ilk olarak JRE için kayıt defterini *`JAVA_HOME`* kontrol ederek Java çalışma süresini bulur, eğer bulunmazsa, ikinci olarak OpenJDK için sistem değişkenini denetler.
 
-- **JRE 'yi kullanmak için**: 64 bit ır, 64 BIT JRE gerektirir. [Buradan](https://go.microsoft.com/fwlink/?LinkId=808605)bulabilirsiniz.
-- **OpenJDK 'yi kullanmak için**: ır sürüm 3,13 ' den itibaren desteklenmektedir. JVM. dll dosyasını, OpenJDK 'nin diğer tüm gerekli Derlemeleriyle şirket içinde barındırılan IR makinesine paketleyin ve sistem ortam değişkeni JAVA_HOME uygun şekilde ayarlayın.
+- **JRE kullanmak için**: 64-bit IR 64-bit JRE gerektirir. [Buradan](https://go.microsoft.com/fwlink/?LinkId=808605)bulabilirsin.
+- **OpenJDK kullanmak için**: IR sürüm 3.13'ten beri desteklenir. OpenJDK'nın diğer tüm gerekli montajlarını kendi kendine barındırılan IR makinesine paketleyip, sistem ortamını buna göre JAVA_HOME ayarlayın.
 
-### <a name="data-type-mapping-for-orc-files"></a>Eşleme ORC dosyaları için veri türü
+### <a name="data-type-mapping-for-orc-files"></a>ORC dosyaları için veri türü eşleme
 
-| Veri Fabrikası geçici veri türü | ORC türleri |
+| Veri fabrikası geçici veri türü | ORC türleri |
 |:--- |:--- |
 | Boole | Boole |
 | SByte | Bayt |
 | Bayt | Kısa |
 | Int16 | Kısa |
-| UInt16 | Int |
-| Int32 | Int |
+| UInt16 | int |
+| Int32 | int |
 | UInt32 | Uzun |
 | Int64 | Uzun |
 | UInt64 | Dize |
-| Tek | Float |
-| çift | çift |
+| Tek | Kayan |
+| Çift | Çift |
 | Ondalık | Ondalık |
 | Dize | Dize |
 | DateTime | Zaman damgası |
 | DateTimeOffset | Zaman damgası |
 | TimeSpan | Zaman damgası |
-| ByteArray | İkili |
+| Bytearray | İkili |
 | Guid | Dize |
-| Char | CHAR(1) |
+| Char | Char(1) |
 
-## <a name="avro-format"></a>AVRO biçimi (eski)
+## <a name="avro-format-legacy"></a><a name="avro-format"></a>AVRO formatı (eski)
 
 >[!NOTE]
->Yeni modeli [avro Format](format-avro.md) makalesinden öğrenin. Dosya tabanlı veri deposu veri kümesi için aşağıdaki yapılandırma, geriye doğru uyumluluk için olduğu gibi hala desteklenmektedir. İleri doğru olan yeni modeli kullanmanız önerilir.
+>Yeni modeli [Avro formatındaki](format-avro.md) makaleden öğrenin. Dosya tabanlı veri deposu veri kümesindeki aşağıdaki yapılandırmalar, geriye dönük uyumluluk için olduğu gibi desteklenmeye devam eder. İleriye dönük yeni modeli kullanmanız önerilir.
 
-Avro dosyalarını ayrıştırmak veya verileri avro biçiminde yazmak isterseniz, `format` `type` özelliğini **Avroformat**olarak ayarlayın. typeProperties bölümünün içindeki Format bölümünde herhangi bir özellik belirtmenize gerek yoktur. Örnek:
+Avro dosyalarını ayrıştırmak veya verileri Avro biçiminde yazmak istiyorsanız `format` `type` özelliğini **AvroFormat** olarak ayarlayın. typeProperties bölümünün içindeki Format bölümünde herhangi bir özellik belirtmenize gerek yoktur. Örnek:
 
 ```json
 "format":
@@ -534,18 +534,18 @@ Avro biçimini bir Hive tablosunda kullanmak için [Apache Hive öğreticisini](
 
 Aşağıdaki noktalara dikkat edin:
 
-* [Karmaşık veri türleri](https://avro.apache.org/docs/current/spec.html#schema_complex) desteklenmez (kayıtlar, numaralandırmalar, diziler, Haritalar, birleşimler ve sabit).
+* [Karmaşık veri türleri](https://avro.apache.org/docs/current/spec.html#schema_complex) desteklenmez (kayıtlar, enumlar, diziler, haritalar, birlikler ve sabit).
 
-## <a name="compression-support"></a>Sıkıştırma desteği (eski)
+## <a name="compression-support-legacy"></a><a name="compression-support"></a>Sıkıştırma desteği (eski)
 
-Azure Data Factory kopyalama sırasında veri sıkıştırma ve sıkıştırmasını destekler. Giriş veri kümesinde `compression` özelliği belirttiğinizde kopyalama etkinliği kaynaktaki sıkıştırılmış verileri okur ve sıkıştırmasını açın; bir çıkış veri kümesinde özelliği belirttiğinizde kopyalama etkinliği, verileri havuza yazar ve ardından verileri havuza yazar. Bazı örnek senaryoları şunlardır:
+Azure Veri Fabrikası kopya sırasında verileri sıkıştırma/dekomprese destekler. Bir giriş `compression` veri kümesinde özellik belirttiğiniz zaman, kopyalama etkinliği kaynaktan sıkıştırılmış verileri okur ve sıkıştırmayı dekomprese olur; ve bir çıktı veri kümesinde özelliği belirttiğiniz zaman, kopyalama etkinliği sıkıştırma sonra lavaboya veri yazın. Aşağıda birkaç örnek senaryo verilmiştir:
 
-* Okuma GZIP sıkıştırılmış verileri Azure blobundan iptal ve sonuç verilerini Azure SQL veritabanına yazma. Giriş Azure blob veri kümesini, `compression` `type` özelliği ile GZIP olarak tanımlarsınız.
-* Verileri şirket içi dosya sistemi düz metin dosyasından okuma, GZip biçimi kullanarak sıkıştırma ve sıkıştırılmış verileri bir Azure blobuna yazmak. `compression` `type` özelliği olan bir çıktı Azure blob veri kümesini GZip olarak tanımlarsınız.
-* FTP sunucusundan okuma .zip dosyasını içindeki dosyaları almak ve bu dosyaları Azure Data Lake Store içinde kavuşmak için açın. `compression` `type` özelliğini Zipsöndür olarak içeren bir giriş FTP veri kümesi tanımlarsınız.
-* Azure blobundan GZIP sıkıştırılmış veri okuma, iptal, bzıp2 kullanarak sıkıştırma ve sonuç verilerini Azure blobuna yazma. Giriş Azure blob veri kümesini, `compression` `type` GZIP ve çıktı veri kümesi ile `compression` `type` olarak ayarlanan şekilde tanımlarsınız.
+* GZIP sıkıştırılmış verileri bir Azure blob'undan okuyun, sıkıştırın ve sonuç verilerini bir Azure SQL veritabanına yazın. Özellik ile giriş Azure Blob veri `compression` `type` kümesini GZIP olarak tanımlarsınız.
+* Şirket içi Dosya Sistemi'ndeki düz metin dosyasındaki verileri okuyun, GZip biçimini kullanarak sıkıştırın ve sıkıştırılmış verileri Azure blob'una yazın. Özellik GZip olarak bir `compression` çıktı Azure Blob veri kümesi tanımlarsınız. `type`
+* FTP sunucusundan .zip dosyasını okuyun, dosyaları içeri almak için sıkıştırın ve bu dosyaları Azure Data Lake Store'a indirin. ZipDeflate olarak `compression` `type` özelliği ile bir giriş FTP veri kümesi tanımlarsınız.
+* Bir Azure blob'undan GZIP sıkıştırılmış verileri okuyun, sıkıştırın, BZIP2 kullanarak sıkıştırın ve sonuç verilerini Azure blob'una yazın. GZIP'e ayarlı `compression` `type` Azure Blob veri kümesini ve BZIP2 `compression` `type` olarak ayarlanmış çıktı veri kümesini tanımlarsınız.
 
-Bir veri kümesinin sıkıştırmasını belirtmek için, aşağıdaki örnekte gösterildiği gibi JSON veri kümesi içindeki **Compression** özelliğini kullanın:
+Bir veri kümesi için sıkıştırma belirtmek için, aşağıdaki örnekte olduğu gibi json veri kümesinde **sıkıştırma** özelliğini kullanın:
 
 ```json
 {
@@ -573,26 +573,26 @@ Bir veri kümesinin sıkıştırmasını belirtmek için, aşağıdaki örnekte 
 
 **Sıkıştırma** bölümünün iki özelliği vardır:
 
-* **Tür:** **GZIP**, **söndür**, **BZIP2**veya **zipsöndür**olabilen sıkıştırma codec bileşeni. Bu dosyaları açmak ve dosya tabanlı havuz veri deposuna yazmak için kopyalama etkinliğini kullanırken dosyalar şu klasöre ayıklanacaktır: `<path specified in dataset>/<folder named as source zip file>/`.
-* **Düzey:** **En Iyi** veya **en hızlı**olabilen sıkıştırma oranı.
+* **Türü:** sıkıştırma codec, **GZIP**olabilir , **Deflate**, **BZIP2**, veya **ZipDeflate**. ZipDeflate dosya(lar) decompress ve dosya tabanlı lavabo veri deposuna yazmak için kopyalama etkinliği kullanırken not, dosyalar klasöre ayıklanır: `<path specified in dataset>/<folder named as source zip file>/`.
+* **Seviye:** **Optimal** veya **En Hızlı**olabilir sıkıştırma oranı.
 
-  * **En hızlı:** Elde edilen dosya en iyi şekilde sıkıştırılmasa bile, sıkıştırma işleminin mümkün olduğunca hızlı bir şekilde tamamlanmalıdır.
-  * **En iyi**: işlemin tamamlanmasını daha uzun sürse bile sıkıştırma işlemi en iyi şekilde sıkıştırılmalıdır.
+  * **En hızlı:** Elde edilen dosya en iyi şekilde sıkıştırılmamış olsa bile sıkıştırma işlemi mümkün olan en kısa sürede tamamlanmalıdır.
+  * **Optimal**: Sıkıştırma işlemi, operasyonun tamamlanması daha uzun sürse bile en iyi şekilde sıkıştırılmalıdır.
 
-    Daha fazla bilgi için bkz. [sıkıştırma düzeyi](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) konusu.
+    Daha fazla bilgi için [Sıkıştırma Düzeyi](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) konusuna bakın.
 
 > [!NOTE]
-> Sıkıştırma ayarları, **Avroformat**, **orcformat**veya **parquetformat**içindeki veriler için desteklenmez. Bu biçimler dosyalarında okurken, Data Factory algılar ve sıkıştırma codec meta verilerde kullanır. Bu biçimler dosyalarında yazarken, Data Factory bu biçimi için varsayılan sıkıştırma codec seçer. Örneğin, ZLIB OrcFormat ve ParquetFormat için SNAPPY.
+> Sıkıştırma ayarları **AvroFormat,** **OrcFormat**veya **Parke Format'taki**veriler için desteklenmez. Bu biçimlerde dosyaları okurken, Veri Fabrikası meta verilerdeki sıkıştırma kodc'sini algılar ve kullanır. Bu biçimlerde dosyalara yazarken, Veri Fabrikası bu biçim için varsayılan sıkıştırma kodc'sini seçer. Örneğin, OrcFormat için ZLIB ve ParkquetFormat için SNAPPY.
 
 ## <a name="unsupported-file-types-and-compression-formats"></a>Desteklenmeyen dosya türleri ve sıkıştırma biçimleri
 
-Desteklenmeyen dosyaları dönüştürmek için Azure Data Factory genişletilebilirlik özelliklerini kullanabilirsiniz.
-İki seçenek Azure Batch kullanarak Azure Işlevlerini ve özel görevleri içerir.
+Desteklenmeyen dosyaları dönüştürmek için Azure Veri Fabrikası'nın genişletilebilirlik özelliklerini kullanabilirsiniz.
+İki seçenek, Azure Toplu İşi'ni kullanarak Azure İşlevleri ve özel görevleri içerir.
 
-Bir [tar dosyasının içeriğini ayıklamak](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV2/UntarAzureFilesWithAzureFunction)Için bir Azure işlevi kullanan bir örnek görebilirsiniz. Daha fazla bilgi için bkz. [Azure işlevleri etkinliği](https://docs.microsoft.com/azure/data-factory/control-flow-azure-function-activity).
+[Katran dosyasının içeriğini ayıklamak](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV2/UntarAzureFilesWithAzureFunction)için Azure işlevini kullanan bir örnek görebilirsiniz. Daha fazla bilgi için [Azure İşlevler etkinliğine](https://docs.microsoft.com/azure/data-factory/control-flow-azure-function-activity)bakın.
 
-Özel bir DotNet etkinliği kullanarak bu işlevi de oluşturabilirsiniz. [Burada](https://docs.microsoft.com/azure/data-factory/transform-data-using-dotnet-custom-activity) daha fazla bilgi bulabilirsiniz
+Bu işlevselliği özel bir dotnet etkinliğini kullanarak da oluşturabilirsiniz. Daha fazla bilgiyi [burada](https://docs.microsoft.com/azure/data-factory/transform-data-using-dotnet-custom-activity) bulabilirsiniz
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Desteklenen [dosya biçimlerinden ve sıkıştırmaları](supported-file-formats-and-compression-codecs.md)tarafından desteklenen en son dosya biçimlerini ve sıkıştırmaları öğrenin.
+Desteklenen dosya biçimlerinden ve sıkıştırmalardan desteklenen en son [dosya biçimlerini ve sıkıştırmaları](supported-file-formats-and-compression-codecs.md)öğrenin.

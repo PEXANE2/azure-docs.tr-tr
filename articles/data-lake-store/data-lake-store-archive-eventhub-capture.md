@@ -1,6 +1,6 @@
 ---
-title: Event Hubs verileri Azure Data Lake Storage 1. 'a yakala | Microsoft Docs
-description: Event Hubs verileri yakalamak için Azure Data Lake Storage 1. kullanma
+title: Etkinlik Hub'larından Azure Veri Gölü Depolama Gen1'e veri yakalama | Microsoft Dokümanlar
+description: Olay Hub'larından veri yakalamak için Azure Veri Gölü Depolama Gen1'i kullanın
 services: data-lake-store
 documentationcenter: ''
 author: twooley
@@ -12,116 +12,116 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: bb67c1769510710b368bef4dc0b501f939b3427e
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79265668"
 ---
-# <a name="use-azure-data-lake-storage-gen1-to-capture-data-from-event-hubs"></a>Event Hubs verileri yakalamak için Azure Data Lake Storage 1. kullanma
+# <a name="use-azure-data-lake-storage-gen1-to-capture-data-from-event-hubs"></a>Olay Hub'larından veri yakalamak için Azure Veri Gölü Depolama Gen1'i kullanın
 
-Azure Event Hubs tarafından alınan verileri yakalamak için Azure Data Lake Storage 1. nasıl kullanacağınızı öğrenin.
+Azure Etkinlik Hub'ları tarafından alınan verileri yakalamak için Azure Veri Gölü Depolama Gen1'i nasıl kullanacağınızı öğrenin.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* **Bir Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
+* **Azure aboneliği**. Bkz. [Azure ücretsiz deneme sürümü edinme](https://azure.microsoft.com/pricing/free-trial/).
 
-* **Azure Data Lake Storage 1. hesabı**. Bir oluşturma hakkında yönergeler için bkz. Azure Data Lake Storage 1. kullanmaya [başlama](data-lake-store-get-started-portal.md).
+* **Bir Azure Veri Gölü Depolama Gen1 hesabı.** Nasıl oluşturulacağına ilişkin talimatlar için [bkz.](data-lake-store-get-started-portal.md)
 
-*  **Bir Event Hubs ad alanı**. Yönergeler için bkz. [Event Hubs ad alanı oluşturma](../event-hubs/event-hubs-create.md#create-an-event-hubs-namespace). Data Lake Storage 1. hesabının ve Event Hubs ad alanının aynı Azure aboneliğinde bulunduğundan emin olun.
+*  **Olay Hub'ları ad alanı.** Yönergeler için [bkz.](../event-hubs/event-hubs-create.md#create-an-event-hubs-namespace) Veri Gölü Depolama Gen1 hesabı nın ve Olay Hub'larının ad alanının aynı Azure aboneliğinde olduğundan emin olun.
 
 
-## <a name="assign-permissions-to-event-hubs"></a>Event Hubs izinleri atama
+## <a name="assign-permissions-to-event-hubs"></a>Etkinlik Hub'larına izin atama
 
-Bu bölümde, Event Hubs verileri yakalamak istediğiniz hesapta bir klasör oluşturacaksınız. Ayrıca, bir Data Lake Storage 1. hesabına veri yazabilmesi için Event Hubs izinler atarsınız. 
+Bu bölümde, hesap içinde Olay Hub'larından verileri yakalamak istediğiniz bir klasör oluşturursunuz. Ayrıca, veri veri sini bir Veri Gölü Depolama Gen1 hesabına yazabilmesi için Etkinlik Hub'larına izinler atarsınız. 
 
-1. Event Hubs verileri yakalamak istediğiniz Data Lake Storage 1. hesabını açın ve **Veri Gezgini**' ye tıklayın.
+1. Olay Hub'larından veri yakalamak istediğiniz Veri Gölü Depolama Gen1 hesabını açın ve ardından **Data Explorer'ı**tıklatın.
 
-    ![Data Lake Storage 1. Veri Gezgini](./media/data-lake-store-archive-eventhub-capture/data-lake-store-open-data-explorer.png "Data Lake Storage 1. Veri Gezgini")
+    ![Veri Gölü Depolama Gen1 veri gezgini](./media/data-lake-store-archive-eventhub-capture/data-lake-store-open-data-explorer.png "Veri Gölü Depolama Gen1 veri gezgini")
 
-1.  **Yeni klasör** ' e tıklayın ve ardından verileri yakalamak istediğiniz klasör için bir ad girin.
+1.  **Yeni Klasör'ü** tıklatın ve ardından verileri yakalamak istediğiniz klasör için bir ad girin.
 
-    ![Data Lake Storage 1. yeni bir klasör oluşturun](./media/data-lake-store-archive-eventhub-capture/data-lake-store-create-new-folder.png "Data Lake Storage 1. yeni bir klasör oluşturun")
+    ![Veri Gölü Depolama Gen1'de yeni bir klasör oluşturma](./media/data-lake-store-archive-eventhub-capture/data-lake-store-create-new-folder.png "Veri Gölü Depolama Gen1'de yeni bir klasör oluşturma")
 
-1. Data Lake Storage 1. kökünde izin atayın. 
+1. Data Lake Storage Gen1'in köküne izin atayın. 
 
-    a. **Veri Gezgini**' ye tıklayın, Data Lake Storage 1. hesabının kökünü seçin ve ardından **erişim**' e tıklayın.
+    a. **Veri Gezgini'ni**tıklatın, Veri Gölü Depolama Gen1 hesabının kökünü seçin ve ardından **Access'i**tıklatın.
 
-    ![Data Lake Storage 1. kök için izin atama](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-permissions-to-root.png "Data Lake Storage 1. kök için izin atama")
+    ![Veri Gölü Depolama Gen1 kökü için izin atama](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-permissions-to-root.png "Veri Gölü Depolama Gen1 kökü için izin atama")
 
-    b. **Erişim**altında, **Ekle**' ye tıklayın, **Kullanıcı veya grup seç**' e tıklayın ve `Microsoft.EventHubs`için arama yapın. 
+    b. **Access'in**altında **Ekle'yi**tıklatın, Kullanıcı veya `Microsoft.EventHubs` **Grubu Seç'i**tıklatın ve ardından arayın. 
 
-    ![Data Lake Storage 1. kök için izin atama](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp.png "Data Lake Storage 1. kök için izin atama")
+    ![Veri Gölü Depolama Gen1 kökü için izin atama](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp.png "Veri Gölü Depolama Gen1 kökü için izin atama")
     
-    **Seç**'e tıklayın.
+    **Seç'i**tıklatın.
 
-    c. **Izinleri ata**altında, **izinleri seç**' e tıklayın. Yürütülecek **izinleri** ayarlayın. **Bu klasöre ve tüm alt öğelere** **Ekle** ' ye ayarlayın. **Bir erişim izni girişi ve varsayılan izin girdisi** **olarak ekle** ' ye ayarlayın.
+    c. **İzinatama**altında, **İzinleri Seçin'i**tıklatın. **Yürütme** **İzinleri** Ayarlama. **Bu klasöre ve tüm çocuklara** **Ekle'yi** ayarlayın. Erişim izni **girişine ve varsayılan izin girişine** **Ekle'yi** ayarlayın.
 
     > [!IMPORTANT]
-    > Azure Event Hubs tarafından alınan verileri yakalamaya yönelik yeni bir klasör hiyerarşisi oluştururken, bu hedef klasöre erişim sağlamanın kolay bir yoludur.  Ancak, üst düzey bir klasörün tüm alt öğelerine çok sayıda alt dosya ve klasör içeren izinler eklemek uzun sürebilir.  Kök klasörünüz çok sayıda dosya ve klasör içeriyorsa, son hedef klasörünüzün yolundaki her bir klasöre tek tek `Microsoft.EventHubs` için **yürütme** izinleri eklemek daha hızlı olabilir. 
+    > Azure Etkinlik Hub'ları tarafından alınan verileri yakalamak için yeni bir klasör hiyerarşisi oluştururken, hedef klasöre erişimi sağlamanın kolay bir yoludur.  Ancak, birçok alt dosya ve klasörü içeren bir üst düzey klasörün tüm çocuklarına izin eklemek uzun sürebilir.  Kök klasörünüz çok sayıda dosya ve klasör içeriyorsa, **Execute** son hedef `Microsoft.EventHubs` klasörünüzdeki yolda her klasöre ayrı ayrı Yürüt İzinleri eklemek daha hızlı olabilir. 
 
-    ![Data Lake Storage 1. kök için izin atama](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp1.png "Data Lake Storage 1. kök için izin atama")
+    ![Veri Gölü Depolama Gen1 kökü için izin atama](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp1.png "Veri Gölü Depolama Gen1 kökü için izin atama")
 
-    **Tamam** düğmesine tıklayın.
+    **Tamam**'a tıklayın.
 
-1. Verileri yakalamak istediğiniz Data Lake Storage 1. hesabının altındaki klasör için izinler atayın.
+1. Veri yakalamak istediğiniz Veri Gölü Depolama Gen1 hesabının altındaki klasör için izinler atayın.
 
-    a. **Veri Gezgini**' ye tıklayın, Data Lake Storage 1. hesabındaki klasörü seçin ve ardından **erişim**' e tıklayın.
+    a. **Veri Gezgini'ni**tıklatın, Veri Gölü Depolama Gen1 hesabındaki klasörü seçin ve ardından **Access'i**tıklatın.
 
-    ![Data Lake Storage 1. klasörü için izin atama](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-permissions-to-folder.png "Data Lake Storage 1. klasörü için izin atama")
+    ![Veri Gölü Depolama Gen1 klasörü için izin atama](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-permissions-to-folder.png "Veri Gölü Depolama Gen1 klasörü için izin atama")
 
-    b. **Erişim**altında, **Ekle**' ye tıklayın, **Kullanıcı veya grup seç**' e tıklayın ve `Microsoft.EventHubs`için arama yapın. 
+    b. **Access'in**altında **Ekle'yi**tıklatın, Kullanıcı veya `Microsoft.EventHubs` **Grubu Seç'i**tıklatın ve ardından arayın. 
 
-    ![Data Lake Storage 1. klasörü için izin atama](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp.png "Data Lake Storage 1. klasörü için izin atama")
+    ![Veri Gölü Depolama Gen1 klasörü için izin atama](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp.png "Veri Gölü Depolama Gen1 klasörü için izin atama")
     
-    **Seç**'e tıklayın.
+    **Seç'i**tıklatın.
 
-    c. **Izinleri ata**altında, **izinleri seç**' e tıklayın. **Okuma, yazma** ve **yürütme** **izinlerini** ayarlayın. **Bu klasöre ve tüm alt öğelere** **Ekle** ' ye ayarlayın. Son olarak, **bir erişim izni girişi ve varsayılan izin girişi** **olarak ekle** seçeneğini belirleyin.
+    c. **İzinatama**altında, **İzinleri Seçin'i**tıklatın. **İzinleri** **Okuma, Yazma** ve **Yürütme**ayarlama. **Bu klasöre ve tüm çocuklara** **Ekle'yi** ayarlayın. Son olarak, **erişim izni girişi ve varsayılan izin girişi**ne kadar **ekle'yi** ayarlayın.
 
-    ![Data Lake Storage 1. klasörü için izin atama](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp-folder.png "Data Lake Storage 1. klasörü için izin atama")
+    ![Veri Gölü Depolama Gen1 klasörü için izin atama](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp-folder.png "Veri Gölü Depolama Gen1 klasörü için izin atama")
     
-    **Tamam** düğmesine tıklayın. 
+    **Tamam**'a tıklayın. 
 
-## <a name="configure-event-hubs-to-capture-data-to-data-lake-storage-gen1"></a>Data Lake Storage 1. verileri yakalamak için Event Hubs yapılandırma
+## <a name="configure-event-hubs-to-capture-data-to-data-lake-storage-gen1"></a>Veri Gölü Depolama Gen1'e veri yakalamak için Olay Hub'larını yapılandırın
 
-Bu bölümde, bir Event Hubs ad alanı içinde bir olay hub 'ı oluşturacaksınız. Ayrıca, bir Azure Data Lake Storage 1. hesabına veri yakalamak için Olay Hub 'ını yapılandırırsınız. Bu bölümde, zaten bir Event Hubs ad alanı oluşturmuş olduğunuz varsayılmaktadır.
+Bu bölümde, bir Olay Hub'ları ad alanı içinde bir Olay Hub'ı oluşturursunuz. Ayrıca, Etkinlik Hub'ını bir Azure Veri Gölü Depolama Gen1 hesabına veri yakalamak için yapılandırırsınız. Bu bölüm, bir Olay Hub'ları ad alanı zaten oluşturduğunuzu varsayar.
 
-1. Event Hubs ad alanının **genel bakış** bölmesinden **+ Event hub**' a tıklayın.
+1. Olay Hub'larının ad alanının **Genel Bakış** bölmesinden + **Olay Hub'ını**tıklatın.
 
-    ![Olay Hub 'ı oluştur](./media/data-lake-store-archive-eventhub-capture/data-lake-store-create-event-hub.png "Olay Hub'ı Oluşturma")
+    ![Olay Hub'ı Oluşturma](./media/data-lake-store-archive-eventhub-capture/data-lake-store-create-event-hub.png "Olay Hub'ı Oluşturma")
 
-1. Data Lake Storage 1. verileri yakalamaya Event Hubs yapılandırmak için aşağıdaki değerleri sağlayın.
+1. Veri Gölü Depolama Gen1'e veri yakalamak için Olay Hub'larını yapılandırmak için aşağıdaki değerleri sağlayın.
 
-    ![Olay Hub 'ı oluştur](./media/data-lake-store-archive-eventhub-capture/data-lake-store-configure-eventhub.png "Olay Hub'ı Oluşturma")
+    ![Olay Hub'ı Oluşturma](./media/data-lake-store-archive-eventhub-capture/data-lake-store-configure-eventhub.png "Olay Hub'ı Oluşturma")
 
-    a. Olay Hub 'ı için bir ad sağlayın.
+    a. Olay Hub'ı için bir ad sağlayın.
     
-    b. Bu öğreticide, **bölüm sayısı** ve **ileti bekletme** değerlerini varsayılan değerlere ayarlayın.
+    b. Bu öğretici **için, Bölüm Sayısı** ve **İleti Bekletme'yi** varsayılan değerlere ayarlayın.
     
-    c. **Yakalamayı** **Açık**olarak ayarlayın. **Zaman penceresini** (yakalama sıklığı) ve **Boyut penceresini** (yakalanacak veri boyutu) ayarlayın. 
+    c. **Capture'i** **A'ya**ayarlayın. Zaman **Penceresini** (ne sıklıkta yakalayacak) ve **Boyut Penceresini** (yakalamak için veri boyutu) ayarlayın. 
     
-    d. **Yakalama sağlayıcısı**için **Azure Data Lake Store** ' yi seçin ve ardından daha önce oluşturduğunuz Data Lake Storage 1. hesabı seçin. **Data Lake yolu**için Data Lake Storage 1. hesapta oluşturduğunuz klasörün adını girin. Yalnızca klasöre göreli yolu sağlamanız gerekir.
+    d. **Yakalama Sağlayıcısı**için Azure Veri **Gölü Deposu'nu** seçin ve ardından daha önce oluşturduğunuz Veri Gölü Depolama Gen1 hesabını seçin. **Veri Gölü Yolu**için, Veri Gölü Depolama Gen1 hesabında oluşturduğunuz klasörün adını girin. Yalnızca klasöre göreli yolu sağlamanız gerekir.
 
-    e. **Örnek yakalama dosya adı biçimlerini** varsayılan değere bırakın. Bu seçenek, yakalama klasörü altında oluşturulan klasör yapısını yönetir.
+    e. Örnek **yakalama dosya adı biçimlerini** varsayılan değere bırakın. Bu seçenek, yakalama klasörü altında oluşturulan klasör yapısını yönetir.
 
-    f. **Oluştur**'a tıklayın.
+    f. **Oluştur'u**tıklatın.
 
-## <a name="test-the-setup"></a>Kurulumu test etme
+## <a name="test-the-setup"></a>Kurulumu test edin
 
-Artık Azure Olay Hub 'ına veri göndererek çözümü test edebilirsiniz. [Olayları Azure 'A gönderme Event Hubs](../event-hubs/event-hubs-dotnet-framework-getstarted-send.md)yönergeleri izleyin. Verileri göndermeye başladıktan sonra, belirttiğiniz klasör yapısını kullanarak Data Lake Storage 1. yansıtılan verileri görürsünüz. Örneğin, Data Lake Storage 1. hesabınızda aşağıdaki ekran görüntüsünde gösterildiği gibi bir klasör yapısı görürsünüz.
+Artık Azure Etkinlik Hub'ına veri göndererek çözümü test edebilirsiniz. Etkinlikleri Azure [Etkinlik Hub'larına Gönder'deki](../event-hubs/event-hubs-dotnet-framework-getstarted-send.md)yönergeleri izleyin. Verileri göndermeye başladığınızda, belirttiğiniz klasör yapısını kullanarak Verilerin Veri Gölü Depolama Gen1'ine yansıtTığını görürsünüz. Örneğin, Aşağıdaki ekran görüntüsünde gösterildiği gibi, Veri Gölü Depolama Gen1 hesabınızda bir klasör yapısı görürsünüz.
 
-![Data Lake Storage 1. 'de örnek EventHub verileri](./media/data-lake-store-archive-eventhub-capture/data-lake-store-eventhub-data-sample.png "Data Lake Storage 1. 'de örnek EventHub verileri")
+![Veri Gölü Depolama Gen1 örnek EventHub verileri](./media/data-lake-store-archive-eventhub-capture/data-lake-store-eventhub-data-sample.png "Veri Gölü Depolama Gen1 örnek EventHub verileri")
 
 > [!NOTE]
-> Event Hubs geldiği iletiler olmasa bile, Event Hubs boş dosyaları Data Lake Storage 1. hesabına yalnızca üst bilgilerle yazar. Dosyalar, Event Hubs oluştururken belirttiğiniz zaman aralığında yazılır.
+> Olay Hub'larına gelen iletiler olmasa bile, Olay Hub'ları veri gölü depolama gen1 hesabına yalnızca başlıklarla boş dosyalar yazar. Dosyalar, Olay Hub'larını oluştururken sağladığınız aynı zaman aralığında yazılır.
 > 
 >
 
-## <a name="analyze-data-in-data-lake-storage-gen1"></a>Data Lake Storage 1. verileri analiz etme
+## <a name="analyze-data-in-data-lake-storage-gen1"></a>Veri Gölü Depolama Gen1'deki verileri analiz edin
 
-Veriler Data Lake Storage 1. olduktan sonra verileri işlemek ve cçalıştırmak için analitik işleri çalıştırabilirsiniz. Azure Data Lake Analytics kullanarak bunun nasıl yapılacağını öğrenmek için bkz. [Usql avro örneği](https://github.com/Azure/usql/tree/master/Examples/AvroExamples) .
+Veriler Veri Gölü Depolama Gen1'e ulaştıktan sonra, verileri işlemek ve daraltmak için analitik işler çalıştırabilirsiniz. Azure Veri Gölü Analizi'ni kullanarak bunu nasıl yapacağınız hakkında [USQL Avro Örneği'ne](https://github.com/Azure/usql/tree/master/Examples/AvroExamples) bakın.
   
 
 ## <a name="see-also"></a>Ayrıca bkz.
 * [Data Lake Storage Gen1'de verilerin güvenliğini sağlama](data-lake-store-secure-data.md)
-* [Azure depolama Bloblarından veri kopyalama Data Lake Storage 1.](data-lake-store-copy-data-azure-storage-blob.md)
+* [Verileri Azure Depolama Blobs'undan Veri Gölü Depolama Gen1'e kopyalama](data-lake-store-copy-data-azure-storage-blob.md)

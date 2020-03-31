@@ -1,46 +1,46 @@
 ---
-title: Azure Container Registry kapsayıcı görüntüsünü dağıtma
-description: Azure Container Registry 'den kapsayıcı görüntülerini çekerek Azure Container Instances kapsayıcıları dağıtmayı öğrenin.
+title: Azure Kapsayıcı Kayıt Defteri'nden kapsayıcı görüntüsünü dağıtma
+description: Bir Azure kapsayıcı kayıt defterinden kapsayıcı görüntüleri çekerek kapsayıcıları Azure Kapsayıcı Örnekleri'nde nasıl dağıtılayın öğrenin.
 services: container-instances
 ms.topic: article
 ms.date: 02/18/2020
 ms.author: danlep
 ms.custom: mvc
 ms.openlocfilehash: 50c209483a12adc3545b63fb66685e386d9ad10a
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78252134"
 ---
-# <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>Azure Container Registry Azure Container Instances dağıtım
+# <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>Azure Kapsayıcı Kayıt Defteri'nden Azure Kapsayıcı Örneklerine Dağıtma
 
-[Azure Container Registry](../container-registry/container-registry-intro.md) , özel Docker kapsayıcı görüntülerini depolamak Için kullanılan Azure tabanlı, yönetilen bir kapsayıcı kayıt defteri hizmetidir. Bu makalede, Azure Container Instances dağıtım sırasında Azure Container Registry 'de depolanan kapsayıcı görüntülerinin nasıl çekeceğini açıklanmaktadır. Kayıt defteri erişimini yapılandırmak için önerilen bir yol, bir Azure Active Directory hizmet sorumlusu ve parolası oluşturmak ve oturum açma kimlik bilgilerini bir Azure anahtar kasasında depomaktır.
+[Azure Kapsayıcı Kayıt Defteri,](../container-registry/container-registry-intro.md) özel Docker kapsayıcı görüntülerini depolamak için kullanılan Azure tabanlı, yönetilen bir kapsayıcı kayıt defteri hizmetidir. Bu makalede, Azure Kapsayıcı Örnekleri'ne dağıtılırken Azure kapsayıcı kayıt defterinde depolanan kapsayıcı görüntülerinin nasıl çekileceği açıklanmaktadır. Kayıt defteri erişimini yapılandırmanın önerilen yolu, bir Azure Active Directory hizmet müdürü ve parola oluşturmak ve oturum açma kimlik bilgilerini bir Azure anahtar kasasında depolamaktır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-**Azure Container Registry**: Bu makaledeki adımları tamamlayabilmeniz Için bir Azure Container Registry 'ye ve kayıt defterinde en az bir kapsayıcı görüntüsüne ihtiyacınız vardır. Bir kayıt defterine ihtiyacınız varsa bkz. [Azure CLI kullanarak kapsayıcı kayıt defteri oluşturma](../container-registry/container-registry-get-started-azure-cli.md).
+**Azure kapsayıcı kayıt defteri**: Bu makaledeki adımları tamamlamak için bir Azure kapsayıcı kayıt defterine ve kayıt defterinde en az bir kapsayıcı resmine ihtiyacınız var. Bir kayıt defterine ihtiyacınız varsa, [bkz.](../container-registry/container-registry-get-started-azure-cli.md)
 
-**Azure CLI**: Bu makaledeki komut satırı ÖRNEKLERI [Azure CLI](/cli/azure/) 'Yi kullanır ve bash kabuğu için biçimlendirilir. [Azure CLI](/cli/azure/install-azure-cli) 'yı yerel olarak yükleyebilir veya [Azure Cloud Shell][cloud-shell-bash]kullanabilirsiniz.
+**Azure CLI**: Bu makaledeki komut satırı örnekleri [Azure CLI'yi](/cli/azure/) kullanır ve Bash kabuğu için biçimlendirilir. Azure [CLI'yi](/cli/azure/install-azure-cli) yerel olarak yükleyebilir veya [Azure Bulut Kabuğu'nu][cloud-shell-bash]kullanabilirsiniz.
 
 ## <a name="configure-registry-authentication"></a>Kayıt defteri kimlik doğrulamasını yapılandırma
 
-"Gözetimsiz" hizmetlere ve uygulamalarına erişim sağlayan bir üretim senaryosunda, bir [hizmet sorumlusu](../container-registry/container-registry-auth-service-principal.md)kullanarak kayıt defteri erişiminin yapılandırılması önerilir. Hizmet sorumlusu kapsayıcı görüntülerinize [rol tabanlı erişim denetimi](../container-registry/container-registry-roles.md) sağlamanıza olanak tanır. Örneğin, bir hizmet sorumlusunu bir kayıt defterine yalnızca çekme erişimiyle yapılandırabilirsiniz.
+"Başsız" hizmetlere ve uygulamalara erişim sağladığınız bir üretim senaryosunda, bir [hizmet ilkesi](../container-registry/container-registry-auth-service-principal.md)kullanarak kayıt defteri erişimini yapılandırmanız önerilir. Servis ilkesi, kapsayıcı resimlerinize [rol tabanlı erişim denetimi](../container-registry/container-registry-roles.md) sağlamanıza olanak tanır. Örneğin, bir hizmet sorumlusunu bir kayıt defterine yalnızca çekme erişimiyle yapılandırabilirsiniz.
 
-Azure Container Registry ek [kimlik doğrulama seçenekleri](../container-registry/container-registry-authentication.md)sağlar.
+Azure Kapsayıcı Kayıt Defteri ek [kimlik doğrulama seçenekleri](../container-registry/container-registry-authentication.md)sağlar.
 
 > [!NOTE]
-> Aynı kapsayıcı grubunda yapılandırılmış bir [yönetilen kimlik](container-instances-managed-identity.md) kullanarak, kapsayıcı grubu dağıtımı sırasında görüntü çekmek için Azure Container Registry kimlik doğrulaması yapamazsınız.
+> Aynı kapsayıcı grubunda yapılandırılan yönetilen bir [kimlik](container-instances-managed-identity.md) kullanarak kapsayıcı grubu dağıtımı sırasında görüntüleri çekmek için Azure Kapsayıcı Kayıt Defteri'ne kimlik doğrulaması yapamazsınız.
 
-Aşağıdaki bölümde, bir Azure Anahtar Kasası ve hizmet sorumlusu oluşturursunuz ve hizmet sorumlusunun kimlik bilgilerini kasada depoladığınızda. 
+Aşağıdaki bölümde, bir Azure anahtar kasası ve bir hizmet sorumlusu oluşturur sunuz ve servis sorumlusunun kimlik bilgilerini kasada saklarsınız. 
 
 ### <a name="create-key-vault"></a>Anahtar kasası oluşturma
 
 [Azure Key Vault](../key-vault/key-vault-overview.md) içinde henüz bir kasanız yoksa, aşağıdaki komutları kullanarak Azure CLI ile bir kasa oluşturun.
 
-`RES_GROUP` değişkenini, anahtar kasasının oluşturulacağı mevcut bir kaynak grubunun adıyla güncelleştirin ve kapsayıcı kayıt defterinizin adıyla `ACR_NAME`. Kısaltma için, bu makaledeki komutlar kayıt defterinizin, anahtar kasasının ve kapsayıcı örneklerinin tümünün aynı kaynak grubunda oluşturulduğunu varsayar.
+Değişkeni, `RES_GROUP` anahtar kasasını oluşturmak için varolan bir kaynak `ACR_NAME` grubunun adı ve kapsayıcı kayıt defterinizin adı ile güncelleştirin. Kısaltma için, bu makaledeki komutlar kayıt defterinizin, anahtar kasanızın ve kapsayıcı örneklerinin hepsinin aynı kaynak grubunda oluşturulduğunu varsayar.
 
- `AKV_NAME`yeni anahtar kasanızın adını belirtin. Kasa adı Azure içinde benzersiz olmalıdır ve 3-24 alfasayısal karakter uzunluğunda olmalı, bir harfle başlamalı, harf veya rakamla bitmelidir ve ardışık kısa çizgi içeremez.
+ Yeni anahtar kasanızın adını `AKV_NAME`belirtin. Kasa adı Azure içinde benzersiz olmalıdır ve uzunluğu 3-24 alfanümerik karakter olmalıdır, bir harfle başlamalı, harf veya rakamla bitmelidir ve ardışık tireler içeremez.
 
 ```azurecli
 RES_GROUP=myresourcegroup # Resource Group name
@@ -52,9 +52,9 @@ az keyvault create -g $RES_GROUP -n $AKV_NAME
 
 ### <a name="create-service-principal-and-store-credentials"></a>Hizmet sorumlusu oluşturma ve kimlik bilgilerini depolama
 
-Şimdi bir hizmet sorumlusu oluşturun ve kimlik bilgilerini Anahtar Kasanızda depolayın.
+Şimdi bir hizmet müdürü oluşturun ve kimlik bilgilerini anahtar kasanızda saklayın.
 
-Aşağıdaki komut hizmet sorumlusu oluşturmak için [az ad SP Create-for-RBAC][az-ad-sp-create-for-rbac] kullanır ve hizmet sorumlusu **parolasını** kasada depolamak için [az keykasa gizli dizisi][az-keyvault-secret-set] .
+Aşağıdaki komut, hizmet ilkesini oluşturmak [için az reklam sp create-for-rbac'ı][az-ad-sp-create-for-rbac] ve servis sorumlusunun **parolasını** kasada depolamak için [az keyvault gizli kümesini][az-keyvault-secret-set] kullanır.
 
 ```azurecli
 # Create service principal, store its password in vault (the registry *password*)
@@ -69,9 +69,9 @@ az keyvault secret set \
                 --output tsv)
 ```
 
-Yukarıdaki komutta `--role` bağımsız değişkeni, hizmet sorumlusunu, BT 'nin kayıt defterine yalnızca çekme erişimi veren *acrpull* rolüyle yapılandırır. Hem itme hem de çekme erişimi sağlamak için `--role` bağımsız değişkenini *acrpush*olarak değiştirin.
+Önceki `--role` komuttaki bağımsız değişken, hizmet ilkesini *acrpull* rolüyle yapılandırır ve bu da kayıt defterine yalnızca çekme erişimi verir. Hem itme hem de çekme `--role` erişimi sağlamak için, bağımsız değişkeni kısaltma olarak *değiştirin.*
 
-Ardından, hizmet sorumlusunun *AppID* 'sini kasada depolayın, bu kullanıcı kimlik doğrulaması için Azure Container Registry geçirdiğiniz **Kullanıcı** adıdır.
+Ardından, hizmet sorumlusunun *appId'ini,* kimlik doğrulaması için Azure Konteyner Kayıt Defteri'ne geçtiğiniz **kullanıcı adı** olan kasada saklayın.
 
 ```azurecli
 # Store service principal ID in vault (the registry *username*)
@@ -81,7 +81,7 @@ az keyvault secret set \
     --value $(az ad sp show --id http://$ACR_NAME-pull --query appId --output tsv)
 ```
 
-Bir Azure Anahtar Kasası oluşturdunuz ve içinde iki gizli dizi depolandı:
+Bir Azure anahtar kasası oluşturdunuz ve içinde iki gizli dizi depoladınız:
 
 * `$ACR_NAME-pull-usr`: Kapsayıcı kayıt defterinin **kullanıcı adı** olarak kullanılacak hizmet sorumlusu kimliği.
 * `$ACR_NAME-pull-pwd`: Kapsayıcı kayıt defterinin **parolası** olarak kullanılacak hizmet sorumlusu parolası.
@@ -90,15 +90,15 @@ Artık siz veya uygulamalarınız ve hizmetleriniz kayıt defterinden görüntü
 
 ## <a name="deploy-container-with-azure-cli"></a>Azure CLI ile kapsayıcı dağıtma
 
-Hizmet sorumlusu kimlik bilgileri Azure Key Vault gizli dizilerle depolandığına göre, uygulamalarınız ve hizmetleriniz bunları özel kayıt defterinize erişmek için kullanabilir.
+Artık hizmet temel kimlik bilgileri Azure Key Vault sırlarında depolandıklarından, uygulamalarınız ve hizmetleriniz bunları özel kayıt defterinize erişmek için kullanabilir.
 
-Önce [az ACR Show][az-acr-show] komutunu kullanarak kayıt defterinin oturum açma sunucusu adını alın. Oturum açma sunucusu adı tamamen küçük ve `myregistry.azurecr.io`benzerdir.
+Önce [az acr show][az-acr-show] komutunu kullanarak kayıt defterinin giriş sunucusu adını alın. Giriş sunucusu adı tüm küçük ve `myregistry.azurecr.io`benzer .
 
 ```azurecli
 ACR_LOGIN_SERVER=$(az acr show --name $ACR_NAME --resource-group $RES_GROUP --query "loginServer" --output tsv)
 ```
 
-Bir kapsayıcı örneği dağıtmak için aşağıdaki [az Container Create][az-container-create] komutunu yürütün. Komut, kapsayıcı kayıt defterinizde kimlik doğrulamak için Azure Key Vault depolanan hizmet sorumlusu kimlik bilgilerini kullanır ve daha önce [aci-HelloWorld](container-instances-quickstart.md) görüntüsünü Kayıt defterinize göndermiş olduğunuzu varsayar. Kayıt defterinizden farklı bir görüntü kullanmak istiyorsanız `--image` değerini güncelleştirin.
+Bir kapsayıcı örneği dağıtmak için aşağıdaki [az container create][az-container-create] komutunu yürütün. Komut, konteyner kayıt defterinizde kimlik doğrulaması yapmak için Hizmet sorumlusunun Azure Anahtar Kasası'nda depolanan kimlik bilgilerini kullanır ve [aci-helloworld](container-instances-quickstart.md) görüntüsünü daha önce kayıt defterinize ittiğinizi varsayar. Kayıt `--image` defterinizden farklı bir resim kullanmak istiyorsanız değeri güncelleştirin.
 
 ```azurecli
 az container create \
@@ -112,17 +112,17 @@ az container create \
     --query ipAddress.fqdn
 ```
 
-`--dns-name-label` değeri Azure içinde benzersiz olmalıdır, bu nedenle önceki komut kapsayıcının DNS adı etiketine rastgele bir sayı ekler. Komutun çıktısı, kapsayıcının tam etki alanı adını (FQDN) gösterir, örneğin:
+Değer `--dns-name-label` Azure içinde benzersiz olmalıdır, bu nedenle önceki komut kapsayıcının DNS ad etiketine rasgele bir sayı ekler. Komutun çıktısı, kapsayıcının tam etki alanı adını (FQDN) gösterir, örneğin:
 
 ```output
 "aci-demo-25007.eastus.azurecontainer.io"
 ```
 
-Kapsayıcı başarıyla başlatıldıktan sonra, uygulamanın başarıyla çalıştığını doğrulamak için tarayıcınızda FQDN 'sine gidebilirsiniz.
+Kapsayıcı başarıyla başladıktan sonra, uygulamanın başarılı bir şekilde çalıştığını doğrulamak için tarayıcınızdaki FQDN'sine gidebilirsiniz.
 
-## <a name="deploy-with-azure-resource-manager-template"></a>Azure Resource Manager şablonuyla dağıtma
+## <a name="deploy-with-azure-resource-manager-template"></a>Azure Kaynak Yöneticisi şablonuyla dağıtma
 
-Kapsayıcı grubu tanımına `imageRegistryCredentials` özelliğini ekleyerek, Azure Container kayıt defterinizin özelliklerini bir Azure Resource Manager şablonunda belirtebilirsiniz. Örneğin, kayıt defteri kimlik bilgilerini doğrudan belirtebilirsiniz:
+Azure kapsayıcı kayıt defterinizin özelliklerini, kapsayıcı grubu tanımına `imageRegistryCredentials` özelliği ekleyerek Azure Kaynak Yöneticisi şablonunda belirtebilirsiniz. Örneğin, kayıt defteri kimlik bilgilerini doğrudan belirtebilirsiniz:
 
 ```JSON
 [...]
@@ -136,33 +136,33 @@ Kapsayıcı grubu tanımına `imageRegistryCredentials` özelliğini ekleyerek, 
 [...]
 ```
 
-Tüm kapsayıcı grubu ayarları için [Kaynak Yöneticisi şablonu başvurusuna](/azure/templates/Microsoft.ContainerInstance/2018-10-01/containerGroups)bakın.    
+Tam kapsayıcı grubu ayarları için [Kaynak Yöneticisi şablon başvurusuna](/azure/templates/Microsoft.ContainerInstance/2018-10-01/containerGroups)bakın.    
 
-Bir Kaynak Yöneticisi şablonundaki gizli dizileri Azure Key Vault başvurma hakkında daha fazla bilgi için bkz. [dağıtım sırasında güvenli parametre değeri geçirmek için Azure Key Vault kullanma](../azure-resource-manager/templates/key-vault-parameter.md).
+Kaynak Yöneticisi şablonundaki Azure Anahtar Kasası sırlarına başvurma yla ilgili ayrıntılar için dağıtım [sırasında güvenli parametre değerini geçmek için Azure Anahtar Kasası'nı kullanın'a](../azure-resource-manager/templates/key-vault-parameter.md)bakın.
 
-## <a name="deploy-with-azure-portal"></a>Azure portal ile dağıtma
+## <a name="deploy-with-azure-portal"></a>Azure portalı ile dağıtma
 
-Azure Container Registry 'de kapsayıcı görüntülerini korudıysanız, Azure portal kullanarak Azure Container Instances bir kapsayıcıyı kolayca oluşturabilirsiniz. Bir kapsayıcı kayıt defterinden kapsayıcı örneği dağıtmak için portalını kullanırken, kayıt defterinin [yönetici hesabını](../container-registry/container-registry-authentication.md#admin-account)etkinleştirmeniz gerekir. Yönetici hesabı, genellikle test amacıyla tek bir kullanıcının kayıt defterine erişmesi için tasarlanmıştır. 
+Bir Azure kapsayıcı kayıt defterinde kapsayıcı resimleri tutarsanız, Azure portalını kullanarak Azure Kapsayıcı Örnekleri'nde kolayca bir kapsayıcı oluşturabilirsiniz. Bir kapsayıcı kayıt defterinden bir kapsayıcı örneğini dağıtmak için portalı kullanırken, kayıt defterinin [yönetici hesabını](../container-registry/container-registry-authentication.md#admin-account)etkinleştirmeniz gerekir. Yönetici hesabı, tek bir kullanıcının kayıt defterine erişebilmek için tasarlanmıştır, özellikle sınama amacıyla. 
 
-1. Azure portal, kapsayıcı Kayıt defterinize gidin.
+1. Azure portalında konteyner kayıt defterinize gidin.
 
-1. Yönetici hesabının etkinleştirildiğini doğrulamak için **erişim anahtarları**' nı seçin ve **Yönetici Kullanıcı** altında **Etkinleştir**' i seçin.
+1. Yönetici hesabının etkin olduğunu doğrulamak için **Access tuşlarını**seçin ve **Admin kullanıcı** altında **Etkinleştir'i**seçin.
 
-1. **Depolar**' ı seçin, sonra dağıtmak istediğiniz depoyu seçin, dağıtmak istediğiniz kapsayıcı görüntüsünün etiketine sağ tıklayın ve **örneği Çalıştır**' ı seçin.
+1. **Depoları**seçin, ardından dağıtmak istediğiniz depoyu seçin, dağıtmak istediğiniz kapsayıcı resmi için etiketi sağ tıklatın ve **Örneği Çalıştır'ı**seçin.
 
-    ![Azure portal Azure Container Registry içindeki "örneği Çalıştır"][acr-runinstance-contextmenu]
+    ![Azure portalında Azure Kapsayıcı Kayıt Defteri'nde "Çalıştırma örneği"][acr-runinstance-contextmenu]
 
 1. Kapsayıcı için bir ad ve kaynak grubu için bir ad girin. İsterseniz varsayılan değerleri de değiştirebilirsiniz.
 
-    ![Azure Container Instances için menü oluştur][acr-create-deeplink]
+    ![Azure Kapsayıcı Örnekleri için menü oluşturma][acr-create-deeplink]
 
 1. Dağıtım tamamlandıktan sonra, IP adresini ve diğer özelliklerini bulmak için bildirimler bölmesinden kapsayıcı grubuna gidebilirsiniz.
 
-    ![Azure Container Instances kapsayıcı grubu için Ayrıntılar görünümü][aci-detailsview]
+    ![Azure Kapsayıcı Örnekleri kapsayıcı grubu için ayrıntılar görünümü][aci-detailsview]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Container Registry kimlik doğrulaması hakkında daha fazla bilgi için bkz. [Azure Container Registry Ile kimlik](../container-registry/container-registry-authentication.md)doğrulama.
+Azure Kapsayıcı Kayıt Defteri kimlik doğrulaması hakkında daha fazla bilgi için, [Azure kapsayıcı kayıt defteriyle Kimlik Doğrulaması'ya](../container-registry/container-registry-authentication.md)bakın.
 
 <!-- IMAGES -->
 [acr-create-deeplink]: ./media/container-instances-using-azure-container-registry/acr-create-deeplink.png

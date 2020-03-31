@@ -19,8 +19,6 @@
           href: connect-metamask.md
         - name: Geth kullanma
           href: connect-geth.md
-        - name: Truffle kullanma
-          href: connect-truffle.md
 - name: Öğreticiler
   items:
     - name: Akıllı anlaşmalar oluşturma

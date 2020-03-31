@@ -1,130 +1,130 @@
 ---
 title: Azure Advisor’ı kullanmaya başlama
-description: Azure Advisor 'ı kullanmaya başlayın.
+description: Azure Advisor ile başlayın.
 ms.topic: article
 ms.date: 02/01/2019
 ms.openlocfilehash: 8c2699030b1a6d428ddc2a4db40a66003824cf10
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79259636"
 ---
 # <a name="get-started-with-azure-advisor"></a>Azure Advisor’ı kullanmaya başlama
 
-Azure portal aracılığıyla Advisor 'a erişmeyi öğrenin, öneriler alın ve öneriler uygulayın.
+Azure portalı aracılığıyla Danışman'a nasıl erişacağınızı, öneriler almayı ve önerileri nasıl uygulayacağınızı öğrenin.
 
 > [!NOTE]
-> Yeni oluşturulan kaynakları bulmak için Azure Advisor arka planda otomatik olarak çalışır. Bu kaynaklarla ilgili öneriler sağlamak 24 saate kadar sürebilir.
+> Azure Danışmanı, yeni oluşturulan kaynakları bulmak için arka planda otomatik olarak çalışır. Bu kaynaklar hakkında öneriler de sağlamak 24 saat kadar sürebilir.
 
-## <a name="get-recommendations"></a>Önerileri al
+## <a name="get-recommendations"></a>Öneriler alın
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com)oturum açın.
 
-1. Sol bölmede **danışman**' ye tıklayın.  Sol bölmede Advisor ' ı görmüyorsanız, **tüm hizmetler**' e tıklayın.  Hizmet menü bölmesinde, **izleme ve yönetim**altında **danışman**' ye tıklayın. Danışman panosu görüntülenir.
+1. Sol **bölmede, Danışman'ı**tıklatın.  Sol bölmede Danışman'ı görmüyorsanız, **Tüm hizmetler'i**tıklatın.  Hizmet menüsü bölmesinde, **İzleme ve Yönetim** **altında, Danışman'ı**tıklatın. Danışman panosu görüntülenir.
 
-   ![Azure portal kullanarak Azure Advisor 'a erişme](./media/advisor-get-started/advisor-portal-menu.png) 
+   ![Azure portalını kullanarak Azure Danışmanı'na erişin](./media/advisor-get-started/advisor-portal-menu.png) 
 
 1. Danışman panosu, seçilen tüm abonelikler için önerilerinizin özetini görüntüler.  Abonelik filtresi açılan listesini kullanarak önerilerin görüntülenmesini istediğiniz abonelikleri seçebilirsiniz.
 
-1. Belirli bir kategoriye ilişkin öneriler almak için sekmelerden birine tıklayın: **yüksek kullanılabilirlik**, **güvenlik**, **performans**veya **Maliyet**. 
+1. Belirli bir kategori için öneriler almak için sekmelerden birini tıklatın: **Yüksek Kullanılabilirlik,** **Güvenlik,** **Performans**veya **Maliyet**. 
 
-   ![Azure Advisor panosu](./media/advisor-overview/advisor-dashboard.png)
+   ![Azure Danışmanı panosu](./media/advisor-overview/advisor-dashboard.png)
 
-## <a name="get-recommendation-details-and-implement-a-solution"></a>Öneri ayrıntılarını alın ve bir çözüm uygulayın
+## <a name="get-recommendation-details-and-implement-a-solution"></a>Öneri ayrıntıları alın ve bir çözüm uygulayın
 
-Danışman 'de öneri eylemleri ve etkilenen kaynaklar gibi ek ayrıntıları görüntülemek ve çözümü önerisine uygulamak için bir öneri seçebilirsiniz.  
+Tavsiye eylemleri ve etkilenen kaynaklar gibi ek ayrıntıları görüntülemek ve önerinin çözümünü uygulamak için Danışman'da bir öneri seçebilirsiniz.  
 
-1. [Azure Portal](https://portal.azure.com)oturum açın ve [danışman](https://aka.ms/azureadvisordashboard)' yi açın.
+1. [Azure portalında](https://portal.azure.com)oturum açın ve [ardından Danışman'ı](https://aka.ms/azureadvisordashboard)açın.
 
-1. Bu kategori içindeki önerilerin listesini görüntülemek için bir öneri kategorisi seçin veya tüm önerilerinizi görüntülemek için **Tümü** sekmesini seçin.
+1. Bu kategorideki öneriler listesini görüntülemek için bir öneri kategorisi seçin veya tüm önerilerinizi görüntülemek için **Tümü** sekmesini seçin.
 
-1. Ayrıntılı olarak gözden geçirmek istediğiniz öneriye tıklayın.
+1. Ayrıntılı olarak gözden geçirmek istediğiniz bir öneriyi tıklatın.
 
-1. Öneri ve önerinin uygulandığı kaynaklar hakkındaki bilgileri gözden geçirin.
+1. Öneri hakkındaki bilgileri ve önerinin geçerli olduğu kaynakları gözden geçirin.
 
-1. Öneriyi uygulamak için **Önerilen eyleme** tıklayın.
+1. Öneriyi uygulamak için **Önerilen Eylem'i** tıklatın.
 
 ## <a name="filter-recommendations"></a>Filtre önerileri
 
-Sizin için en önemli olan ayrıntıya gitmek üzere önerilere filtre uygulayabilirsiniz.  Abonelik, kaynak türü veya öneri durumuna göre filtreleyebilirsiniz.  
+Sizin için en önemli olan şeyi detaylandırmak için önerilere filtre uygulayabilirsiniz.  Abonelik, kaynak türü veya öneri durumuna göre filtreuygulayabilirsiniz.  
 
-1. [Azure Portal](https://portal.azure.com)oturum açın ve [danışman](https://aka.ms/azureadvisordashboard)' yi açın.
+1. [Azure portalında](https://portal.azure.com)oturum açın ve [ardından Danışman'ı](https://aka.ms/azureadvisordashboard)açın.
 
-1. Danışman panosundaki açılan listeleri aboneliğe, kaynak türüne veya öneri durumuna göre filtrelemek için kullanın.
+1. Abonelik, kaynak türü veya öneri durumuna göre filtrelemek için Danışman panosundaki açılır bilgileri kullanın.
 
-    ![Danışman arama-filtre ölçütü](./media/advisor-get-started/advisor-filters.png)
+    ![Danışman arama filtresi ölçütleri](./media/advisor-get-started/advisor-filters.png)
 
-## <a name="postpone-or-dismiss-recommendations"></a>Önerileri erteleyin veya kapatın
+## <a name="postpone-or-dismiss-recommendations"></a>Önerileri erteleme veya reddetme
 
-1. [Azure Portal](https://portal.azure.com)oturum açın ve [danışman](https://aka.ms/azureadvisordashboard)' yi açın.
+1. [Azure portalında](https://portal.azure.com)oturum açın ve [ardından Danışman'ı](https://aka.ms/azureadvisordashboard)açın.
 
-1. Ertelemek veya kapatmak istediğiniz öneriye gidin.
+1. Ertelemek veya reddetmek istediğiniz öneriye gidin.
 
-1. Öneriye tıklayın.
+1. Öneriyi tıklatın.
 
-1. **Ertele**' ye tıklayın. 
+1. **Erteley'i**tıklatın. 
 
-1. Bir erteleme dönemi belirtin veya öneriyi yok **saymayacak** şekilde seçin.
+1. Erteleme süresi belirtin veya öneriyi asla **reddetmeyi** seçin.
 
-## <a name="exclude-subscriptions-or-resource-groups"></a>Abonelikleri veya kaynak gruplarını hariç tut
+## <a name="exclude-subscriptions-or-resource-groups"></a>Abonelikleri veya kaynak gruplarını hariç tutma
 
-' Test ' kaynakları gibi danışman önerilerini almak istemediğiniz kaynak gruplarınız veya abonelikleriniz olabilir.  Advisor 'ı yalnızca belirli abonelikler ve kaynak grupları için öneriler oluşturacak şekilde yapılandırabilirsiniz.
-
-> [!NOTE]
-> Danışman 'den bir abonelik veya kaynak grubu dahil etmek veya dışlamak için bir abonelik sahibi olmanız gerekir.  Bir abonelik veya kaynak grubu için gerekli izinlere sahip değilseniz, Kullanıcı arabiriminde dahil etme veya dışlama seçeneği devre dışı bırakılır.
-
-1. [Azure Portal](https://portal.azure.com)oturum açın ve [danışman](https://aka.ms/azureadvisordashboard)' yi açın.
-
-1. Eylem çubuğunda **Yapılandır** ' a tıklayın.
-
-1. Danışman önerilerini almak istemediğiniz aboneliklerin veya kaynak gruplarının işaretini kaldırın.
-
-    ![Advisor kaynakları yapılandırma örneği](./media/advisor-get-started/advisor-configure-resources.png)
-
-1. **Uygula** düğmesine tıklayın.
-
-## <a name="configure-low-usage-vm-recommendation"></a>Düşük kullanım VM önerisi yapılandırma
-
-Bu yordam, düşük kullanım sanal makinesi önerisi için Ortalama CPU kullanım kuralını yapılandırır.
-
-Danışman, sanal makine kullanımınızı 7 gün boyunca izler ve düşük kullanım sanal makinelerini belirler. CPU kullanımı %5 veya daha az olursa ve ağ kullanımı %2 ' den küçük veya geçerli iş yükünün daha küçük bir sanal makine boyutuyla ele alınabiliyorsa, sanal makineler düşük kullanım olarak değerlendirilir.
-
-Düşük kullanım sanal makinelerini tanımlamaya daha Agresif olmak istiyorsanız, ortalama CPU kullanımı kuralını abonelik başına temelinde ayarlayabilirsiniz.  CPU kullanım kuralı %5, %10, %15 veya %20 olarak ayarlanabilir.
+'Test' kaynakları gibi Danışman önerileri almak istemediğiniz kaynak gruplarınız veya abonelikleriniz olabilir.  Danışman'ı yalnızca belirli abonelikler ve kaynak grupları için öneriler oluşturacak şekilde yapılandırabilirsiniz.
 
 > [!NOTE]
-> Düşük kullanım sanal makinelerini tanımlamaya yönelik ortalama CPU kullanım kuralını ayarlamak için bir abonelik *sahibi*olmanız gerekir.  Bir abonelik veya kaynak grubu için gerekli izinlere sahip değilseniz, Kullanıcı arabiriminde dahil etme veya dışlama seçeneği devre dışı bırakılır. 
+> Danışman'dan bir abonelik veya kaynak grubu eklemek veya hariç tutmak için bir abonelik Sahibi olmalısınız.  Bir abonelik veya kaynak grubu için gerekli izinlere sahip değilseniz, kullanıcı arabiriminde ekleme veya hariç tutma seçeneği devre dışı bırakılır.
 
-1. [Azure Portal](https://portal.azure.com)oturum açın ve [danışman](https://aka.ms/azureadvisordashboard)' yi açın.
+1. [Azure portalında](https://portal.azure.com)oturum açın ve [ardından Danışman'ı](https://aka.ms/azureadvisordashboard)açın.
 
-1. Eylem çubuğunda **Yapılandır** ' a tıklayın.
+1. Eylem çubuğunda **Yapıla'yı** tıklatın.
 
-1. **Kurallar** sekmesine tıklayın.
+1. Danışman önerileri almak istemediğiniz aboneliklerin veya kaynak gruplarının denetimini kaldırın.
 
-1. Ortalama CPU kullanım kuralını ayarlamak istediğiniz abonelikleri seçin ve ardından **Düzenle**' ye tıklayın.
+    ![Danışman kaynakları yapılandırma örneği](./media/advisor-get-started/advisor-configure-resources.png)
 
-1. İstenen ortalama CPU kullanımı değerini seçin ve **Uygula**' ya tıklayın.
+1. **Uygula** düğmesini tıklatın.
 
-1. Mevcut önerilerinizi yeni ortalama CPU kullanımı kuralını kullanacak şekilde güncelleştirmek için **öneriyi Yenile** ' ye tıklayın. 
+## <a name="configure-low-usage-vm-recommendation"></a>Düşük kullanımlı VM önerisini yapılandırma
 
-   ![Advisor öneri kurallarını yapılandırma örneği](./media/advisor-get-started/advisor-configure-rules.png)
+Bu yordam, düşük kullanımlı sanal makine önerisi için ortalama CPU kullanım kuralını yapılandırır.
 
-## <a name="download-recommendations"></a>Yükleme önerileri
+Danışman, sanal makine kullanımınızı 7 gün boyunca izler ve düşük kullanımlı sanal makineleri tanımlar. CPU kullanımları %5 veya daha az sayılsa ve ağ kullanımları %2'den azsa veya geçerli iş yükü daha küçük bir sanal makine boyutuyla karşılanabiliyorsa, sanal makineler düşük kullanım olarak kabul edilir.
 
-Danışman, önerilerinizi bir Özet indirmenizi sağlar.  Önerilerinizi bir PDF dosyası veya CSV dosyası olarak indirebilirsiniz.  Önerilerinizi indirmek, iş arkadaşlarınızla kolayca paylaşmanıza veya öneri verilerinin üzerine kendi analizinizi gerçekleştirmenize olanak sağlar.
+Düşük kullanımlı sanal makineleri tanımlamada daha agresif olmak istiyorsanız, ortalama CPU kullanım kuralını abonelik başına ayarlayabilirsiniz.  CPU kullanım kuralı %5, %10, %15 veya %20 olarak ayarlanabilir.
 
-1. [Azure Portal](https://portal.azure.com)oturum açın ve [danışman](https://aka.ms/azureadvisordashboard)' yi açın.
+> [!NOTE]
+> Düşük kullanımlı sanal makineleri tanımlamak için ortalama CPU kullanım kuralını ayarlamak için bir abonelik *Sahibi*olmalısınız.  Bir abonelik veya kaynak grubu için gerekli izinlere sahip değilseniz, bu izni ekleme veya hariç tutma seçeneği kullanıcı arabiriminde devre dışı bırakılır. 
 
-1. Eylem çubuğunda **CSV olarak indir** veya **PDF olarak indir** ' e tıklayın.
+1. [Azure portalında](https://portal.azure.com)oturum açın ve [ardından Danışman'ı](https://aka.ms/azureadvisordashboard)açın.
 
-İndir seçeneği, danışman panosuna uyguladığınız tüm filtreleri uyar.  Belirli bir öneri kategorisi veya önerisi görüntülenirken indir seçeneğini belirlerseniz, indirilen Özet yalnızca ilgili kategori veya öneriyle ilgili bilgileri içerir. 
+1. Eylem çubuğunda **Yapıla'yı** tıklatın.
+
+1. **Kurallar** sekmesini tıklatın.
+
+1. Ortalama CPU kullanım kuralını ayarlamak istediğiniz abonelikleri seçin ve ardından **Edit'i**tıklatın.
+
+1. İstenilen ortalama CPU kullanım değerini seçin ve **Uygula'yı**tıklatın.
+
+1. Yeni ortalama CPU kullanım kuralını kullanmak için varolan önerilerinizi güncelleştirmek için **önerilerinizi** yenile'yi tıklatın. 
+
+   ![Danışman yapılandırma öneri kuralları örneği](./media/advisor-get-started/advisor-configure-rules.png)
+
+## <a name="download-recommendations"></a>Önerileri indirin
+
+Danışman, önerilerinizin bir özetini indirmenizi sağlar.  Önerilerinizi PDF dosyası veya CSV dosyası olarak indirebilirsiniz.  Önerilerinizi indirmek, öneri verilerinizin üzerine iş arkadaşlarınızla kolayca paylaşımda bulunmanızı veya kendi çözümlemenizi yapmanızı sağlar.
+
+1. [Azure portalında](https://portal.azure.com)oturum açın ve [ardından Danışman'ı](https://aka.ms/azureadvisordashboard)açın.
+
+1. **CSV olarak indir'i** veya eylem çubuğuna **PDF olarak indir'i** tıklatın.
+
+İndirme seçeneği, Danışman panosuna uyguladığınız filtrelere saygı duyar.  Belirli bir öneri kategorisi veya önerisi görüntülerken indirme seçeneğini seçerseniz, indirilen özet yalnızca söz konusu kategori veya öneriye ait bilgileri içerir. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Advisor hakkında daha fazla bilgi edinmek için bkz.:
+Danışman hakkında daha fazla bilgi edinmek için bkz:
 
-- [Azure Advisor 'a giriş](advisor-overview.md)
-- [Danışman yüksek kullanılabilirlik önerileri](advisor-high-availability-recommendations.md)
-- [Danışman güvenlik önerileri](advisor-security-recommendations.md)
-- [Advisor performans önerileri](advisor-performance-recommendations.md)
-- [Danışman maliyet önerileri](advisor-performance-recommendations.md)
+- [Azure Danışmanına Giriş](advisor-overview.md)
+- [Danışman Yüksek Kullanılabilirlik önerileri](advisor-high-availability-recommendations.md)
+- [Danışman Güvenlik önerileri](advisor-security-recommendations.md)
+- [Danışman Performans önerileri](advisor-performance-recommendations.md)
+- [Danışman Maliyet önerileri](advisor-performance-recommendations.md)

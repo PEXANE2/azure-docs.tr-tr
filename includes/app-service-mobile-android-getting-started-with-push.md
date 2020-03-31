@@ -5,13 +5,13 @@ ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
 ms.openlocfilehash: e66e7d4646b650d2d811d3807db04605dfddeded
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67188885"
 ---
-1. İçinde **uygulama** dosyasını açın, proje `AndroidManifest.xml`. Sonra aşağıdaki kodu ekleyin `application` etiketiyle:
+1. **Uygulama** projenizde dosyayı `AndroidManifest.xml`açın. Açılış etiketinden `application` sonra aşağıdaki kodu ekleyin:
 
     ```xml
     <service android:name=".ToDoMessagingService">
@@ -26,21 +26,21 @@ ms.locfileid: "67188885"
     </service>
     ```
 
-2. Dosyayı açmak `ToDoActivity.java`, aşağıdaki değişiklikleri yapın:
+2. Dosyayı `ToDoActivity.java`açın ve aşağıdaki değişiklikleri yapın:
 
-    - İçeri aktarma deyimini ekleyin:
+    - Alma deyimini ekleyin:
 
         ```java
         import com.google.firebase.iid.FirebaseInstanceId;
         ```
 
-    - Tanımını değiştirme `MobileServiceClient` gelen **özel** için **özel statik**, artık şu şekilde görünür:
+    - `MobileServiceClient` **Özel** statik ten özel **tanımını**değiştirin, böylece şimdi şuna benzer:
 
         ```java
         private static MobileServiceClient mClient;
         ```
 
-    - Ekleme `registerPush` yöntemi:
+    - Yöntem `registerPush` ekle:
 
         ```java
         public static void registerPush() {
@@ -56,13 +56,13 @@ ms.locfileid: "67188885"
         }
         ```
 
-    - Güncelleştirme **onCreate** yöntemi `ToDoActivity` sınıfı. Sonra bu kodu eklediğinizden emin olun `MobileServiceClient` oluşturulur.
+    - Sınıfın **onCreate** yöntemini `ToDoActivity` güncelleştirin. Anlık hale alındıktan sonra `MobileServiceClient` bu kodu eklediğinizden emin olun.
 
         ```java
         registerPush();
         ```
 
-3. Bildirimleri işlemek için yeni bir sınıf ekleyin. Proje Gezgini'nde açın **uygulama** > **java** > **your-proje-namespace** düğümleri ve paket adı düğümünü sağ tıklatın. Tıklayın **yeni**ve ardından **Java sınıfı**. Ad alanına yazın `ToDoMessagingService`ve ardından Tamam'a tıklayın. Ardından, sınıf bildirimi ile değiştirin:
+3. Bildirimleri işlemek için yeni bir sınıf ekleyin. Project Explorer'da, **uygulama** > **java** > **your-project-namespace** düğümlerini açın ve paket adı düğümlerini sağ tıklatın. **Yeni'yi**tıklatın ve ardından **Java Sınıfı'nı**tıklatın. Ad'da, `ToDoMessagingService`'yazın ve sonra Tamam'ı tıklatın. Ardından, sınıf bildirimini aşağıdakilerle değiştirin:
 
     ```java
     import android.app.Notification;
@@ -101,7 +101,7 @@ ms.locfileid: "67188885"
     }
     ```
 
-4. Belirteç güncelleştirmeleri işlemek için başka bir sınıf ekleyin. Oluşturma `ToDoInstanceIdService` java sınıfı ve sınıf bildirimiyle değiştirin:
+4. Belirteç güncelleştirmelerini işlemek için başka bir sınıf ekleyin. Java `ToDoInstanceIdService` sınıfı oluşturun ve sınıf bildirimini aşağıdakilerle değiştirin:
 
     ```java
     import com.google.firebase.iid.FirebaseInstanceIdService;
@@ -115,4 +115,4 @@ ms.locfileid: "67188885"
     }
     ```
 
-Uygulamanızı anında iletme bildirimlerini desteklemek için güncelleştirilmiştir.
+Uygulamanız artık anında iletme bildirimlerini destekleyecek şekilde güncelleştirildi.

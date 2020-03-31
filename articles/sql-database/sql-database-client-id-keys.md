@@ -1,6 +1,6 @@
 ---
-title: Uygulama kimlik doğrulaması için değerleri Al
-description: Koddan SQL veritabanına erişmek için bir hizmet sorumlusu oluşturun.
+title: Uygulama kimlik doğrulaması için değerler alın
+description: KODDAN SQL Veritabanı'na erişmek için bir hizmet ilkesi oluşturun.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -11,25 +11,25 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: d357740d340b248859d6dfadf73f83b6e6bb8014
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 5b2c64660f37745f5b13d53559037e84ca20c47b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74421315"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79476975"
 ---
-# <a name="get-the-required-values-for-authenticating-an-application-to-access-sql-database-from-code"></a>Koddan SQL veritabanına erişmek için bir uygulamanın kimlik doğrulaması için gerekli değerleri alın
+# <a name="get-the-required-values-for-authenticating-an-application-to-access-sql-database-from-code"></a>Koddan SQL Veritabanına erişmek için bir uygulamanın kimlik doğrulamasını yapmak için gerekli değerleri edinin
 
-Koddan SQL veritabanı oluşturup yönetmek için uygulamanızı Azure kaynaklarınızın oluşturulduğu abonelikte Azure Active Directory (AAD) etki alanına kaydetmeniz gerekir.
+Koddan SQL Veritabanı oluşturmak ve yönetmek için uygulamanızı Azure kaynaklarınızın oluşturulduğu abonelikteki Azure Etkin Dizin (AAD) etki alanına kaydettirmeniz gerekir.
 
-## <a name="create-a-service-principal-to-access-resources-from-an-application"></a>Uygulamadan kaynaklara erişmek için hizmet sorumlusu oluşturma
+## <a name="create-a-service-principal-to-access-resources-from-an-application"></a>Bir uygulamadan kaynaklara erişmek için bir hizmet ilkesi oluşturma
 
-Aşağıdaki örneklerde, uygulamamız C# kimlik doğrulaması için gereken ACTIVE DIRECTORY (ad) uygulaması ve hizmet sorumlusu oluşturulur. Betik önceki C# örneği için gereken değerleri çıkarır. Ayrıntılı bilgi için bkz. [Kaynaklara erişmek üzere hizmet sorumlusu oluşturmak için Azure PowerShell kullanma](../active-directory/develop/howto-authenticate-service-principal-powershell.md).
+Aşağıdaki örnekler, C# uygulamamızın kimliğini doğrulamak için Gereken Active Directory (AD) uygulamasını ve hizmet ilkesini oluşturur. Betik önceki C# örneği için gereken değerleri çıkarır. Ayrıntılı bilgi için bkz. [Kaynaklara erişmek üzere hizmet sorumlusu oluşturmak için Azure PowerShell kullanma](../active-directory/develop/howto-authenticate-service-principal-powershell.md).
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
 > [!IMPORTANT]
-> PowerShell Azure Resource Manager (RM) modülü Azure SQL veritabanı tarafından hala desteklenmektedir, ancak gelecekteki tüm geliştirmeler az. SQL modülüne yöneliktir. AzureRM modülü, en az Aralık 2020 ' e kadar hata düzeltmeleri almaya devam edecektir.  Az Module ve Azurerd modüllerinde komutların bağımsız değişkenleri önemli ölçüde aynıdır. Uyumluluklarını hakkında daha fazla bilgi için bkz. [new Azure PowerShell konusuna giriş az Module](/powershell/azure/new-azureps-module-az).
+> PowerShell Azure Kaynak Yöneticisi (RM) modülü hala Azure SQL Veritabanı tarafından desteklenir, ancak gelecekteki tüm geliştirmeler Az.Sql modülü içindir. AzureRM modülü en az Aralık 2020'ye kadar hata düzeltmeleri almaya devam edecektir.  Az modülündeki ve AzureRm modüllerinde bulunan komutların bağımsız değişkenleri önemli ölçüde aynıdır. Uyumlulukları hakkında daha fazla bilgi için [yeni Azure PowerShell Az modüllerini tanıtın.](/powershell/azure/new-azureps-module-az)
 
 ```powershell
 # sign in to Azure
@@ -63,9 +63,9 @@ Write-Output "_applicationId:" $azureAdApplication.ApplicationId.Guid
 Write-Output "_applicationSecret:" $secret
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-```azure-cli
+```azurecli
 # sign in to Azure
 az login
 
@@ -101,5 +101,5 @@ Write-Output "_applicationSecret:" $secret
 
 ## <a name="see-also"></a>Ayrıca bkz.
 
-[İle SQL veritabanı oluşturmaC#](sql-database-get-started-csharp.md)  
-[Azure Active Directory kimlik doğrulaması kullanarak SQL veritabanı 'na bağlanma](sql-database-aad-authentication.md)
+[C ile SQL veritabanı oluşturma #](sql-database-get-started-csharp.md)  
+[Azure Active Directory Authentication kullanarak SQL Veritabanına Bağlanma](sql-database-aad-authentication.md)

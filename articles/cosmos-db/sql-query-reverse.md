@@ -1,6 +1,6 @@
 ---
-title: Azure Cosmos DB sorgu dilinde ters ÇEVIR
-description: Azure Cosmos DB ters SQL sistem işlevi hakkında bilgi edinin.
+title: Azure Cosmos DB sorgu dilinde TERS
+description: Azure Cosmos DB'de SQL sistem fonksiyonu TERS hakkında bilgi edinin.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
@@ -8,14 +8,14 @@ ms.date: 03/03/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: a22e1c8a5f4350bd2f966ee48f96368c648a4a1e
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78302177"
 ---
 # <a name="reverse-azure-cosmos-db"></a>TERS (Azure Cosmos DB)
- Bir dize değerinin ters sırada döndürür.  
+ Dize değerinin ters sırasını verir.  
   
 ## <a name="syntax"></a>Sözdizimi
   
@@ -28,13 +28,13 @@ REVERSE(<str_expr>)
 *str_expr*  
    Bir dize ifadesidir.  
   
-## <a name="return-types"></a>Dönüş türleri
+## <a name="return-types"></a>İade türleri
   
-  Bir dize ifadesi döndürür.  
+  Dize ifadesini döndürür.  
   
 ## <a name="examples"></a>Örnekler
   
-  Aşağıdaki örnek, `REVERSE` bir sorguda nasıl kullanılacağını gösterir.  
+  Aşağıdaki örnekte, sorguda nasıl kullanılacağı `REVERSE` gösterilmektedir.  
   
 ```sql
 SELECT REVERSE("Abc") AS reverse  
@@ -48,10 +48,10 @@ SELECT REVERSE("Abc") AS reverse
 
 ## <a name="remarks"></a>Açıklamalar
 
-Bu sistem işlevi dizinden yararlanmayacak.
+Bu sistem işlevi dizini kullanmaz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Dize işlevleri Azure Cosmos DB](sql-query-string-functions.md)
-- [Sistem işlevleri Azure Cosmos DB](sql-query-system-functions.md)
-- [Azure Cosmos DB giriş](introduction.md)
+- [String fonksiyonları Azure Cosmos DB](sql-query-string-functions.md)
+- [Sistem fonksiyonları Azure Cosmos DB](sql-query-system-functions.md)
+- [Azure Cosmos DB'ye Giriş](introduction.md)

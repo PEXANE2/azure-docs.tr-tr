@@ -1,5 +1,5 @@
 ---
-title: Azure Veri Bilimi Sanal Makinesi nedir?
+title: Azure Veri Bilimi Sanal Makine Nedir
 titleSuffix: Azure Data Science Virtual Machine
 description: Windows ve Linux Veri Bilimi Sanal Makineleri için önemli analiz senaryoları ve bileşenler.
 keywords: veri bilimi araçları, veri bilimi sanal makinesi, veri bilimi için araçlar, linux veri bilimi
@@ -10,70 +10,70 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: overview
 ms.date: 12/31/2019
-ms.openlocfilehash: ea53ee3f3c1d39652982b6343b1e634dac1fbc75
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: a5fbcc1eef8717fdb1aa7f914c3e0ba6594fc27a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79241629"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80281808"
 ---
 # <a name="what-is-the-azure-data-science-virtual-machine-for-linux-and-windows"></a>Linux ve Windows için Azure Veri Bilimi Sanal Makinesi nedir?
 
-Veri Bilimi Sanal Makinesi (DSVM), veri bilimi yapmak için özel olarak oluşturulan Azure bulut platformunda özelleştirilmiş bir VM görüntüsüdür. Önceden yüklenmiş ve gelişmiş analiz için akıllı uygulamalar oluşturmaya başlamak üzere önceden yapılandırılmış birçok popüler veri bilimi aracı vardır. 
+Data Science Virtual Machine (DSVM), Azure bulut platformunda veri bilimi yapmak için özel olarak oluşturulmuş özelleştirilmiş bir VM görüntüsüdür. Gelişmiş analitik için akıllı uygulamalar oluşturmak için önceden yüklenmiş ve önceden yapılandırılmış birçok popüler veri bilimi aracı vardır. 
 
-DSVM şu şirket üzerinde kullanılabilir:
-+ **Windows Server 2019 (Önizleme)**
-+ **Ubuntu 18,04 LTS (Önizleme)**
+DSVM şu konularda kullanılabilir:
++ **Windows Server 2019**
++ **Ubuntu 18.04 LTS**
 + Windows Server 2016
-+ Ubuntu 16,04 LTS ve CentOS 7,4
++ Ubuntu 16.04 LTS ve CentOS 7.4
 
 
 > [!NOTE]
-> Derin öğrenme için tüm VM araçları Veri Bilimi Sanal Makinesi katlanmıştır. 
+> Derin öğrenme için tüm VM araçları Veri Bilimi Sanal Makine içine katlanmış. 
 
 
-## <a name="why-choose-the-dsvm"></a>DSVM neden seçmelisiniz?
-Veri Bilimi Sanal Makinesi amacı, tüm beceri seviyeleri ve sektör genelinde, önceden yapılandırılmış bir veri bilimi ortamı sayesinde veri uzmanları sağlamaktır. Kendi kendinize benzer bir çalışma alanı kullanmak yerine, bir DSVM sağlayabilirsiniz. Bu seçenek, yükleme, yapılandırma ve paket yönetim işlemlerinde günlerinizi veya hatta _haftaları_ tasarruf edebilir. DSVM ayrıldıktan sonra veri bilimi projenizin üzerinde çalışmaya hemen başlayabilirsiniz.
+## <a name="why-choose-the-dsvm"></a>Neden DSVM'yi seçmelisiniz?
+Veri Bilimi Sanal Makine'nin amacı, tüm beceri düzeylerinde ve endüstriler arasında sürtünmesiz, önceden yapılandırılmış veri bilimi ortamı yla veri profesyonellerine sunmaktır. Kendi karşılaştırılabilir bir çalışma alanı kullanıma çıkarmak yerine, bir DSVM sağlayabilirsiniz. Bu seçim, yükleme, yapılandırma ve paket yönetimi süreçlerinde günler, hatta _haftalar_ calısabilir. DSVM ayrıldıktan sonra veri bilimi projenizin üzerinde çalışmaya hemen başlayabilirsiniz.
 
-## <a name="sample-use-cases"></a>Örnek kullanım örnekleri
+## <a name="sample-use-cases"></a>Örnek Kullanım Örnekleri
 
-Aşağıda, DSVM müşterileri için bazı yaygın kullanım durumları gösterilmektedir.
+Aşağıda, DSVM müşterileri için bazı yaygın kullanım örneklerini göstereceğiz.
 
 ### <a name="moving-data-science-workloads-to-the-cloud"></a>Veri bilimi iş yüklerini buluta taşıma
 
-DSVM, bir ekipte bulunan tüm veri bilimlerinin denemeleri doğrulamak ve işbirliğini yükseltmek için tutarlı bir kuruluma sahip olmasını sağlamak üzere yerel masaüstlerini yönetilen bir bulut Desktop ile değiştirmek isteyen veri bilimi ekipleri için bir temel yapılandırma sağlar. Ayrıca, sysadmin yükünü azaltarak maliyetleri düşürür. Bu yük azaltma, gelişmiş analizler için yazılım paketlerini değerlendirmek, yüklemek ve sürdürmek için gereken zamana kaydedilir.
+DSVM, yerel masaüstü bilgisayarlarını yönetilen bir bulut masaüstüyle değiştirmek isteyen veri bilimi ekipleri için temel bir yapılandırma sağlayarak, ekipteki tüm veri bilimcilerin denemeleri doğrulamak ve işbirliğini teşvik etmek için tutarlı bir kuruluma sahip olmasını sağlar. Ayrıca sysadmin yükünü azaltarak maliyetleri düşürür. Bu yük azaltma, gelişmiş analitik için yazılım paketlerini değerlendirmek, yüklemek ve korumak için gereken zamandan tasarruf sağlar.
 
 ### <a name="data-science-training-and-education"></a>Veri bilimi eğitimi
-Veri bilimi sınıflarını öğreten kurumsal traers ve eğitimciler, genellikle bir sanal makine görüntüsü sağlar. Görüntü, öğrencilerin tutarlı bir kuruluma sahip olmasını ve örneklerin öngörülebilir bir şekilde çalışmasını sağlar. 
+Veri bilimi dersleri veren kurumsal eğitmenler ve eğitimciler genellikle sanal bir makine görüntüsü sağlar. Görüntü, öğrencilerin tutarlı bir kuruluma sahip olmasını ve örneklerin tahmin edilebilir şekilde çalışmasını sağlar. 
 
-DSVM, destek ve uyumsuzluk sorunlarını ele alan tutarlı bir kurulum ile isteğe bağlı bir ortam oluşturur. Başta daha kısa eğitim sınıfları olmak üzere bu ortamların sıklıkla oluşturulması gereken durumlar önemli ölçüde avantajlıdır.
+DSVM, destek ve uyumsuzluk zorluklarını hafifleten tutarlı bir kurulumla isteğe bağlı bir ortam oluşturur. Başta daha kısa eğitim sınıfları olmak üzere bu ortamların sıklıkla oluşturulması gereken durumlar önemli ölçüde avantajlıdır.
 
 ### <a name="on-demand-elastic-capacity-for-large-scale-projects"></a>Büyük ölçekli projeler için isteğe bağlı esnek kapasite
-Veri bilimi hack maratonları/yarışmaları veya büyük ölçekli veri modelleme ve araştırma, genellikle kısa süre için ölçekli donanım kapasitesi gerektirir. DSVM, yüksek performanslı bilgi işlem kaynaklarının çalışmasına izin veren ölçeği genişletilmiş sunucularda veri bilimi ortamını hızla çoğaltmaya yardımcı olabilir.
+Veri bilimi hackathons / yarışmalar veya büyük ölçekli veri modelleme ve keşif genellikle kısa bir süre için, ölçekli-out donanım kapasitesi gerektirir. DSVM, yüksek güçlü bilgi işlem kaynaklarının çalıştırabileceği denemelere izin veren ölçeklenmiş sunucularda, veri bilimi ortamının isteğe bağlı olarak hızlı bir şekilde çoğaltılmasında yardımcı olabilir.
 
-### <a name="custom-compute-power-for-azure-notebooks"></a>Azure Notebooks için özel işlem gücü
-[Azure Notebooks](../../notebooks/azure-notebooks-overview.md) , bulutta JUPITER not defterlerini geliştirmek, çalıştırmak ve paylaşmak için ücretsiz bir barındırılan hizmettir. Ücretsiz hizmet katmanı, 4 GB bellek ve 1 GB veri ile sınırlıdır. 
+### <a name="custom-compute-power-for-azure-notebooks"></a>Azure Dizüstü Bilgisayarlar için özel işlem gücü
+[Azure Dizüstü Bilgisayarlar,](../../notebooks/azure-notebooks-overview.md) Jupyter dizüstü bilgisayarlarını yükleme olmadan bulutta geliştirmek, çalıştırmak ve paylaşmak için ücretsiz barındırılan bir hizmettir. Ücretsiz hizmet katmanı 4 GB bellek ve 1 GB veri ile sınırlıdır. 
 
-Tüm limitleri serbest bırakmak için bir DSVM 'ye veya jupi sunucusu üzerinde çalışan başka bir VM 'ye bir not defteri projesi ekleyebilirsiniz. Azure Active Directory (örneğin, bir kurumsal hesap) kullanarak bir hesapla Azure Notebooks oturum açarsanız, Not defterleri bu hesapla ilişkili tüm aboneliklerde otomatik olarak DSVMs 'yi gösterir. Kullanılabilir işlem gücünü genişletmek için [Azure Notebooks BIR DSVM](../../notebooks/configure-manage-azure-notebooks-projects.md#compute-tier) ekleyebilirsiniz.
+Tüm sınırları serbest bırakmak için, Bir DSVM'ye veya Jupyter sunucusunda çalışan başka bir VM'ye Dizüstü Bilgisayar projesi ekleyebilirsiniz. Azure Active Directory (şirket hesabı gibi) kullanarak bir hesapla Azure Not Defterleri'nde oturum açtığınızda, Not Defterleri bu hesapla ilişkili aboneliklerde DSVM'leri otomatik olarak gösterir. Kullanılabilir işlem gücünü genişletmek [için Azure Not Defterlerine Bir DSVM ekleyebilirsiniz.](../../notebooks/configure-manage-azure-notebooks-projects.md#compute-tier)
 
 ### <a name="short-term-experimentation-and-evaluation"></a>Kısa süreli deneme ve değerlendirme
-Yeni veri bilimi [araçlarını](./tools-included.md), özellikle de yayınlanmış [örneklerimizden ve yönergelerden](./dsvm-samples-and-walkthroughs.md)bazılarını izleyerek değerlendirmek ya da öğrenmek için dsvm 'yi kullanabilirsiniz.
+DSVM'yi, özellikle yayınlanmış [örneklerimizden ve gözden geçirmelerimizden](./dsvm-samples-and-walkthroughs.md)bazılarını inceleyerek, yeni veri bilimi [araçlarını](./tools-included.md)değerlendirmek veya öğrenmek için kullanabilirsiniz.
 
 
-### <a name="deep-learning-with-gpus"></a>GPU 'Lar ile derin öğrenme
-DSVM 'de, eğitim modelleriniz grafik işleme birimlerine (GPU 'Lar) dayalı donanımlar üzerinde derin öğrenme algoritmaları kullanabilir. DSVM, Azure platformunun VM ölçeklendirme özelliğinden yararlanarak, gereksinimlerinize göre bulutta GPU tabanlı donanımlar kullanmanıza yardımcı olur. Büyük modellere eğitim yaparken veya aynı işletim sistemi diskini korurken yüksek hızda hesaplamalar yapmanız gerektiğinde GPU tabanlı bir VM 'ye geçiş yapabilirsiniz. DSVM ile N serisi GPU etkin sanal makine SKU 'Larını seçebilirsiniz. Lütfen Azure Ücretsiz hesapları GPU etkin sanal makine SKU 'Larını desteklemez.
+### <a name="deep-learning-with-gpus"></a>GPU'larla derin öğrenme
+DSVM'de, eğitim modelleriniz grafik işleme birimlerine (GPU) dayalı donanımlarda derin öğrenme algoritmaları kullanabilir. DSVM, Azure platformunun VM ölçekleme özelliklerinden yararlanarak, bulutta GPU tabanlı donanımı ihtiyaçlarınıza göre kullanmanıza yardımcı olur. Büyük modelleri eğitirken veya aynı işletim sistemi diskini tutarken yüksek hızlı hesaplamalara ihtiyaç duyduğunuzda GPU tabanlı bir VM'ye geçebilirsiniz. DSVM özellikli N serisi GPU özellikli sanal makine SKU'lardan herhangi birini seçebilirsiniz. Azure ücretsiz hesaplarının GPU özellikli sanal makine SKU'larını desteklemediğini lütfen unutmayın.
 
-DSVM 'nin Windows Server 2016 sürümü, derin öğrenme çerçevelerinin GPU sürücüleri, çerçeveleri ve GPU sürümleriyle önceden yüklenmiş olarak gelir. Linux sürümünde, GPU 'Larda derin öğrenme hem CentOS hem de Ubuntu DSVMs üzerinde etkinleştirilmiştir. 
+DSVM'nin Windows Server 2016 sürümü, derin öğrenme çerçevelerinin GPU sürücüleri, çerçeveleri ve GPU sürümleriyle önceden yüklenmiş olarak gelir. Linux sürümünde, Hem CentOS hem de Ubuntu DSVM'lerde GPU'larda derin öğrenme etkindir. 
 
-Ayrıca, DSVM 'nin Ubuntu, CentOS veya Windows 2016 sürümünü GPU 'lara dayalı olmayan bir Azure sanal makinesine dağıtabilirsiniz. Bu durumda, tüm derin öğrenme çerçeveleri CPU moduna geri dönecektir.
+DSVM'nin Ubuntu, CentOS veya Windows 2016 sürümünü GPU'lara dayanmayan bir Azure sanal makinesine de dağıtabilirsiniz. Bu durumda, tüm derin öğrenme çerçeveleri CPU moduna geri düşecek.
  
-[Kullanılabilir derin öğrenme ve AI çerçeveleri hakkında daha fazla bilgi edinin](dsvm-tools-deep-learning-frameworks.md).
+[Mevcut derin öğrenme ve AI çerçeveleri hakkında daha fazla bilgi edinin.](dsvm-tools-deep-learning-frameworks.md)
 
 <a name="included"></a>
 
-## <a name="whats-included-on-the-dsvm"></a>DSVM 'ye neler dahildir?
+## <a name="whats-included-on-the-dsvm"></a>DSVM'de neler var?
 
-[Burada](tools-included.md)hem Windows hem de LINUX dsvm 'deki araçların tam listesini görebilirsiniz.
+Windows ve Linux DSVM's hem araçların tam [listesine bakın burada](tools-included.md).
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -81,9 +81,9 @@ Bu makalelerle daha fazla bilgi edinin:
 
 + Windows:
   + [Windows DSVM’si ayarlama](provision-vm.md)
-  + [Windows DSVM üzerinde yapabileceğiniz on şey](vm-do-ten-things.md)
+  + [Windows DSVM'de yapabileceğiniz on şey](vm-do-ten-things.md)
 
 + Linux:
-  + [Linux DSVM 'YI ayarlama (Ubuntu)](dsvm-ubuntu-intro.md)
-  + [Linux DSVM ayarlama (CentOS)](linux-dsvm-intro.md)
-  + [Linux DSVM üzerinde veri bilimi](linux-dsvm-walkthrough.md)
+  + [Linux DSVM (Ubuntu) ayarlama](dsvm-ubuntu-intro.md)
+  + [Linux DSVM (CentOS) ayarlama](linux-dsvm-intro.md)
+  + [Linux DSVM'de veri bilimi](linux-dsvm-walkthrough.md)

@@ -1,53 +1,53 @@
 ---
 title: TLS karşılıklı kimlik doğrulamayı yapılandırma
-description: TLS üzerinde istemci sertifikalarının nasıl doğrulandığını öğrenin. Azure App Service, istemci sertifikasını doğrulama için uygulama kodu için kullanılabilir hale getirir.
+description: TLS'de istemci sertifikalarının nasıl doğrulanmış olduğunu öğrenin. Azure Uygulama Hizmeti, istemci sertifikasını doğrulama için uygulama kodunda kullanılabilir hale getirebilir.
 ms.assetid: cd1d15d3-2d9e-4502-9f11-a306dac4453a
 ms.topic: article
 ms.date: 10/01/2019
 ms.custom: seodec18
 ms.openlocfilehash: 357ea2cc598bca3e008a74f021895e1e45a3874f
-ms.sourcegitcommit: f915d8b43a3cefe532062ca7d7dbbf569d2583d8
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/05/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78301021"
 ---
-# <a name="configure-tls-mutual-authentication-for-azure-app-service"></a>Azure App Service için TLS karşılıklı kimlik doğrulamasını yapılandırma
+# <a name="configure-tls-mutual-authentication-for-azure-app-service"></a>Azure Uygulama Hizmeti için TLS karşılıklı kimlik doğrulamasını yapılandırma
 
-Azure App Service uygulamanıza erişimi, farklı kimlik doğrulama türlerini etkinleştirerek kısıtlayabilirsiniz. Bunu yapmanın bir yolu, istemci isteği TLS/SSL üzerinden olduğunda ve sertifikayı doğrulayacağından istemci sertifikası isteğidir. Bu mekanizmaya TLS karşılıklı kimlik doğrulaması veya istemci sertifikası kimlik doğrulaması adı verilir. Bu makalede, uygulamanızın istemci sertifikası kimlik doğrulamasını kullanmak üzere nasıl ayarlanacağı gösterilmektedir.
+Azure Uygulama Hizmeti uygulamanıza erişimi, farklı türde kimlik doğrulamalarını etkinleştirerek kısıtlayabilirsiniz. Bunu yapmanın bir yolu, istemci isteği TLS/SSL'nin üzerinde yken istemci sertifikası istemek ve sertifikayı doğrulamaktır. Bu mekanizmaya TLS karşılıklı kimlik doğrulama veya istemci sertifikası kimlik doğrulaması denir. Bu makalede, istemci sertifikası kimlik doğrulamasını kullanmak üzere uygulamanızın nasıl ayarlır?
 
 > [!NOTE]
-> Sitenize HTTPS değil, HTTP üzerinden eriştiğinizde hiçbir istemci sertifikası almazsınız. Bu nedenle, uygulamanız için istemci sertifikaları gerekiyorsa, HTTP üzerinden uygulamanıza yönelik isteklere izin vermeniz gerekir.
+> Sitenize HTTPS üzerinden değil DE HTTP üzerinden erişirseniz, herhangi bir istemci sertifikası almazsınız. Bu nedenle, başvurunuz istemci sertifikaları gerektiriyorsa, http üzerinden başvurunuziçin isteklere izin vermemelisiniz.
 >
 
 [!INCLUDE [Prepare your web app](../../includes/app-service-ssl-prepare-app.md)]
 
-## <a name="enable-client-certificates"></a>İstemci sertifikalarını etkinleştir
+## <a name="enable-client-certificates"></a>İstemci sertifikalarını etkinleştirme
 
-Uygulamanızı istemci sertifikaları gerektirecek şekilde ayarlamak için uygulamanızın `clientCertEnabled` ayarını `true`olarak ayarlamanız gerekir. Ayarı ayarlamak için [Cloud Shell](https://shell.azure.com)aşağıdaki komutu çalıştırın.
+Uygulamanızı istemci sertifikaları gerektirecek şekilde ayarlamak için uygulamanızın ayarını `clientCertEnabled` `true`' da ayarlamanız gerekir. Ayarı ayarlamak için [Bulut Kabuğu'nda](https://shell.azure.com)aşağıdaki komutu çalıştırın.
 
 ```azurecli-interactive
 az webapp update --set clientCertEnabled=true --name <app_name> --resource-group <group_name>
 ```
 
-## <a name="exclude-paths-from-requiring-authentication"></a>Kimlik doğrulama gerektirmesinden dışlanan yollar
+## <a name="exclude-paths-from-requiring-authentication"></a>Kimlik doğrulama gerektiren yolları hariç tutma
 
-Uygulamanız için karşılıklı kimlik doğrulamasını etkinleştirdiğinizde, uygulamanızın kökündeki tüm yollar erişim için bir istemci sertifikası gerektirir. Bazı yolların anonim erişim için açık kalmasını sağlamak için, uygulama yapılandırmanızın bir parçası olarak dışlama yolları tanımlayabilirsiniz.
+Uygulamanız için karşılıklı auth etkinleştirdiğinizde, uygulamanızın kökü altında tüm yollar erişim için bir istemci sertifikası gerektirir. Belirli yolların anonim erişim için açık kalmasına izin vermek için, dışlama yollarını uygulama yapılandırmanızın bir parçası olarak tanımlayabilirsiniz.
 
-Dışlama yolları **yapılandırma** > **Genel ayarlar** seçilerek ve bir dışlama yolu tanımlayarak yapılandırılabilir. Bu örnekte, uygulamanız için `/public` yolu altındaki her şey bir istemci sertifikası istemeyebilir.
+Dışlama yolları **Yapılandırma** > **Genel Ayarları** seçilerek ve bir dışlama yolu tanımlayarak yapılandırılabilir. Bu örnekte, `/public` uygulamanız için yol altındaki herhangi bir şey istemci sertifikası istenmez.
 
-![Sertifika dışlama yolları][exclusion-paths]
+![Sertifika Dışlama Yolları][exclusion-paths]
 
 
-## <a name="access-client-certificate"></a>İstemci sertifikasına erişin
+## <a name="access-client-certificate"></a>Müşteri sertifikasına erişin
 
-App Service, isteğin SSL sonlandırması ön uç yük dengeleyicisinde gerçekleşir. [İstemci sertifikaları etkinken](#enable-client-certificates)isteği uygulama kodunuza iletirken, istemci sertifikasıyla bir `X-ARR-ClientCert` isteği üst bilgisini App Service çıkartır. App Service, bu istemci sertifikası ile uygulamanıza iletilmesinin dışında hiçbir şey yapmaz. Uygulama kodunuz, istemci sertifikasını doğrulamaktan sorumludur.
+App Service'de, isteğin SSL sonlandırılması ön uç yük dengeleyicisinde gerçekleşir. [İstemci sertifikaları etkinken](#enable-client-certificates)isteği uygulama kodunuza iletilirken, Uygulama Hizmeti istemci sertifikasıile birlikte bir `X-ARR-ClientCert` istek üstbilgisini ekler. Uygulama Hizmeti, bu istemci sertifikasıyla uygulamanıza iletmekten başka bir şey yapmaz. Uygulama kodunuz istemci sertifikasını doğrulamadan sorumludur.
 
-ASP.NET için, istemci sertifikasına **HttpRequest. ClientCertificate** özelliği aracılığıyla erişilebilir.
+ASP.NET için istemci sertifikası **httprequest.clientcertificate** özelliği aracılığıyla kullanılabilir.
 
-Diğer uygulama yığınları (node. js, PHP, vb.) için, istemci sertifikası `X-ARR-ClientCert` istek üst bilgisinde Base64 kodlamalı bir değer aracılığıyla uygulamanızda kullanılabilir.
+Diğer uygulama yığınları (Node.js, PHP, vb.) için istemci sertifikası, `X-ARR-ClientCert` uygulamanızda istek üstbilgisinde base64 kodlanmış bir değer aracılığıyla kullanılabilir.
 
-## <a name="aspnet-sample"></a>ASP.NET örneği
+## <a name="aspnet-sample"></a>ASP.NET örnek
 
 ```csharp
     using System;
@@ -171,9 +171,9 @@ Diğer uygulama yığınları (node. js, PHP, vb.) için, istemci sertifikası `
     }
 ```
 
-## <a name="nodejs-sample"></a>Node. js örneği
+## <a name="nodejs-sample"></a>Düğüm.js örneği
 
-Aşağıdaki Node. js örnek kodu `X-ARR-ClientCert` üstbilgisini alır ve Base64 kodlamalı PEM dizesini bir sertifika nesnesine dönüştürmek ve doğrulamak için [node-Forge](https://github.com/digitalbazaar/forge) kullanır:
+Aşağıdaki Node.js örnek kodu `X-ARR-ClientCert` üstbilgi alır ve base64 kodlanmış PEM dizesini bir sertifika nesnesine dönüştürmek ve doğrulamak için [düğüm-forge](https://github.com/digitalbazaar/forge) kullanır:
 
 ```javascript
 import { NextFunction, Request, Response } from 'express';
@@ -218,7 +218,7 @@ export class AuthorizationHandler {
 
 ## <a name="java-sample"></a>Java örneği
 
-Aşağıdaki Java sınıfı `X-ARR-ClientCert` sertifikayı bir `X509Certificate` örneğine kodluyor. `certificateIsValid()`, sertifikanın parmak izinin oluşturucuda verilen ile eşleştiğini ve sertifikanın süresi dolmadığından emin olarak doğrular.
+Aşağıdaki Java sınıfı sertifikayı `X-ARR-ClientCert` bir `X509Certificate` örnekten kodlar. `certificateIsValid()`sertifikanın parmak izinin oluşturucuda verilenle eşleştiğini ve sertifikanın süresinin dolmadığını doğrular.
 
 
 ```java

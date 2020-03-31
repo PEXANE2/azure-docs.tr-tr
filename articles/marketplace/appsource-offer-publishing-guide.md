@@ -1,58 +1,58 @@
 ---
-title: AppsSource storefront için AppSource teklif yayımlama Kılavuzu | Azure Marketi
-description: Office 365, Dynamics 365, Power BI ve Power Apps için AppSource storefront 'a uygulama yayımlamaya yönelik adım adım kılavuz ve yayımlama denetim listeleri
+title: AppsSource mağaza için AppSource teklif yayın kılavuzu | Azure Marketi
+description: Office 365, Dynamics 365, Power BI ve Power Apps için AppSource mağazasına uygulama yayınlamak için adım adım kılavuz ve uygulama denetim listeleri yayımlama
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security, SaaS
-author: ellacroi
+author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/09/2018
-ms.author: ellacroi
-ms.openlocfilehash: 831da237c06657981e402fc1f8fd09ccd67f85fb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.author: dsindona
+ms.openlocfilehash: 82b1d096b1641915fc2dc58e000c40c18731c28c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427207"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80286651"
 ---
-# <a name="office-365-dynamics-365-power-apps-and-power-bi-offer-publishing-guide"></a>Office 365, Dynamics 365, Power Apps ve Power BI teklif yayımlama Kılavuzu
+# <a name="office-365-dynamics-365-power-apps-and-power-bi-offer-publishing-guide"></a>Office 365, Dynamics 365, Güç Uygulamaları ve Power BI Teklif Yayın Kılavuzu
 
-AppSource storefront, Dynamics 365, Office 365, Power BI ve Power Apps üzerinde derleme veya genişletme tekliflerini içerir. Bu ürünlerin her birinde yayımlama sürecinde size kılavuzluk eden belirli belgeler vardır. Her teklif türü için daha fazla ayrıntı için aşağıya bakın. 
+AppSource mağazası, Dynamics 365, Office 365, Power BI ve Power Apps'ı geliştiren veya genişleten teklifler içerir. Bu ürünlerin her biri, yayımlama sürecinde size rehberlik edecek özel belgelere sahiptir. Her teklif türü için daha ayrıntılı bağlantılar için aşağıya bakın. 
 
-AppSource, "Şimdi al", "bana başvur" ve "Şimdi deneyin" eylemine çağrı ile ücretli, liste ve deneme teklifleri sunmaktadır. 
+AppSource, "Şimdi Al", "Bana Ulaşın" ve "Hemen Deneyin" eylem çağrısıyla ödeme yaptı, listelendi ve deneme teklifleri sundu. 
 
-## <a name="product-specific-guides"></a>Ürüne özgü kılavuzlar
+## <a name="product-specific-guides"></a>Ürüne Özel Kılavuzlar
 
 ### <a name="office-365"></a>Office 365
 
-[Yayımlama işlemini ve yönergeleri](https://docs.microsoft.com/office/dev/store/submit-to-the-office-store) gözden geçirin
+[Yayımlama sürecini ve yönergeleri](https://docs.microsoft.com/office/dev/store/submit-to-the-office-store) gözden geçirme
 
 ### <a name="power-apps"></a>Power Apps
 
-Müşterilerin [uygulamanızı AppSource 'ta nasıl test](https://powerapps.microsoft.com/blog/appsource-test-drive/) edebilir hakkında bilgi edinin.
+Müşterilerin [appsource'da uygulamanızı](https://powerapps.microsoft.com/blog/appsource-test-drive/) nasıl test edebileceği hakkında bilgi edinin.
 
 ### <a name="power-bi"></a>Power BI
 
-[Yayımlama işlemini ve yönergeleri](https://docs.microsoft.com/power-bi/developer/office-store) gözden geçirin.
+[Yayımlama işlemini ve yönergeleri gözden geçirin.](https://docs.microsoft.com/power-bi/developer/office-store)
 
 ### <a name="dynamics-365"></a>Dynamics 365
 
 #### <a name="dynamics-365-for-finance-and-operations"></a>Finans ve Operasyon için Dynamics 365
-Enterprise Edition için oluştururken [yayımlama işlemini ve yönergeleri](https://docs.microsoft.com/dynamics365/unified-operations/dev-itpro/lcs-solutions/lcs-solutions-app-source) gözden geçirin
+Enterprise Edition için bina yaparken, [yayımlama sürecini ve yönergeleri](https://docs.microsoft.com/dynamics365/unified-operations/dev-itpro/lcs-solutions/lcs-solutions-app-source) gözden geçirin
 
-Bulut İş Ortağı Portalı ' de teklifin nasıl [yayımlanabileceği hakkında finans ve işlemler Için Dynamics 365 '](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cpp-dynamics-365-operations-offer) a bakın.
+Teklifin Bulut İş Ortağı Portalı'nda nasıl yayınlayacağına yönelik [Finans ve Operasyonlar için Dynamics 365'e](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cpp-dynamics-365-operations-offer) bakın.
 
 ### <a name="dynamics-365-for-customer-engagement"></a>Müşteri Etkileşimi için Dynamics 365
-[Yayımlama işlemini ve yönergeleri](https://docs.microsoft.com/dynamics365/customer-engagement/developer/publish-app-appsource)gözden geçirin.
+[Yayımlama işlemini ve yönergeleri gözden geçirin.](https://docs.microsoft.com/dynamics365/customer-engagement/developer/publish-app-appsource)
 
-Teklifin Bulut İş Ortağı Portalı nasıl yayımlanacağı hakkında bilgi için [Dynamics 365 for Customer Engagement teklifini](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cpp-customer-engagement-offer) inceleyin.
+Teklifin Bulut İş Ortağı Portalı'nda nasıl yayınlayacağına yönelik [Müşteri Katılımı teklifi için Dynamics 365'e](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cpp-customer-engagement-offer) bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha önce yapmadıysanız, 
+Eğer bunu yapmadıysanız, 
 
-- Market 'e [kaydolun](https://azuremarketplace.microsoft.com/sell) .
+- Pazara [kaydolun.](https://azuremarketplace.microsoft.com/sell)
 
-Bulut İş Ortağı Portalı ' de kaydolduysanız ve çalışıyorsanız, 
+Cloud Partner Portal'a kaydolduysanız ve çalışıyorsanız, 
 
-- Teklifinizin oluşturulması veya tamamlanabilmesi için [bulut iş ortağı portalı oturum açın](https://cloudpartner.azure.com) .
+- Teklifinizi oluşturmak veya tamamlamak için [Cloud İş Ortağı Portalı'nda oturum](https://cloudpartner.azure.com) açın.

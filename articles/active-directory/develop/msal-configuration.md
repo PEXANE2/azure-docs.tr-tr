@@ -1,7 +1,7 @@
 ---
-title: Android MSAL yapılandırma dosyası | Mavisi
+title: Android MSAL yapılandırma dosyası | Azure
 titleSuffix: Microsoft identity platform
-description: Azure Active Directory bir uygulamanın yapılandırmasını temsil eden Android Microsoft kimlik doğrulama kitaplığı (MSAL) yapılandırma dosyasına genel bakış.
+description: Bir uygulamanın Azure Active Directory'deki yapılandırmasını temsil eden Android Microsoft Kimlik Doğrulama Kitaplığı (MSAL) yapılandırma dosyasına genel bakış.
 services: active-directory
 author: shoatman
 manager: CelesteDG
@@ -13,43 +13,43 @@ ms.date: 09/12/2019
 ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
-ms.openlocfilehash: bb44e078a3958a788d23356c970b62fd97cbf420
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 9e35ba5a3f3705a52e80262da9bbfbfda489bf83
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76696325"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80050372"
 ---
-# <a name="android-microsoft-authentication-library-configuration-file"></a>Android Microsoft kimlik doğrulama Kitaplığı yapılandırma dosyası
+# <a name="android-microsoft-authentication-library-configuration-file"></a>Android Microsoft Kimlik Doğrulama Kitaplığı yapılandırma dosyası
 
-Android Microsoft kimlik doğrulama kitaplığı (MSAL), varsayılan yetkili, hangi yetkililerin kullanılacağı gibi şeyler için genel istemci uygulamanızın davranışını tanımlamak üzere özelleştirdiğiniz [varsayılan bir CONFIGURATION JSON dosyası](https://github.com/AzureAD/microsoft-authentication-library-for-android/blob/dev/msal/src/main/res/raw/msal_default_config.json) ile birlikte gelir.
+Android Microsoft Kimlik Doğrulama Kitaplığı (MSAL), kamu istemcisi uygulamanızın davranışını tanımlamak için özelleştirdiğiniz [varsayılan yapılandırma JSON dosyasıyla](https://github.com/AzureAD/microsoft-authentication-library-for-android/blob/dev/msal/src/main/res/raw/msal_default_config.json) birlikte, hangi yetkilileri kullanacağınız gibi şeyler için kullanılır.
 
-Bu makale yapılandırma dosyasında çeşitli ayarları anlamanıza ve MSAL tabanlı uygulamanızda kullanılacak yapılandırma dosyasını nasıl belirtdiğinize yardımcı olur.
+Bu makale, yapılandırma dosyasındaki çeşitli ayarları ve MSAL tabanlı uygulamanızda kullanılacak yapılandırma dosyasını nasıl belirteceğinizkonusunda anlamanıza yardımcı olur.
 
 ## <a name="configuration-settings"></a>Yapılandırma ayarları
 
 ### <a name="general-settings"></a>Genel ayarlar
 
-| Özellik | Veri Türü | Gereklidir | Notlar |
+| Özellik | Veri Türü | Gerekli | Notlar |
 |-----------|------------|-------------|-------|
-| `client_id` | Dize | Evet | [Uygulama kayıt sayfasından](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) UYGULAMANıZıN istemci kimliği |
-| `redirect_uri`   | Dize | Evet | [Uygulama kayıt sayfasından](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) uygulamanızın yeniden yönlendirme URI 'si |
-| `authorities` | \<yetkilisi > listeleyin | Hayır | Uygulamanızın ihtiyaç duyacağı yetkililer listesi |
-| `authorization_user_agent` | AuthorizationAgent (enum) | Hayır | Olası değerler: `DEFAULT`, `BROWSER`, `WEBVIEW` |
-| `http` | HttpConfiguration | Hayır | `HttpUrlConnection` `connect_timeout` ve `read_timeout` yapılandırın |
-| `logging` | LoggingConfiguration | Hayır | Günlüğe kaydetme ayrıntı düzeyini belirtir. İsteğe bağlı yapılandırmalara şunlar dahildir: bir Boole değeri alan `pii_enabled`ve `ERROR`, `WARNING`, `INFO`veya `VERBOSE`alan `log_level`. |
+| `client_id` | Dize | Evet | [Uygulama kayıt sayfasından](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) uygulamanızın Müşteri Kimliği |
+| `redirect_uri`   | Dize | Evet | Uygulamanızın [Uygulama kayıt sayfasından](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) URI'yi Yönlendirmesi |
+| `authorities` | Liste\<Yetkilisi> | Hayır | Uygulamanızın ihtiyaç duyduğu yetkililerin listesi |
+| `authorization_user_agent` | AuthorizationAgent (enum) | Hayır | Olası `DEFAULT`değerler: `BROWSER`, ,`WEBVIEW` |
+| `http` | HttpConfiguration | Hayır | `HttpUrlConnection` `connect_timeout` Yapılandırma ve`read_timeout` |
+| `logging` | Günlük Yapılandırması | Hayır | Günlüğe kaydetme ayrıntısı düzeyini belirtir. İsteğe bağlı `pii_enabled`yapılandırmaları şunlardır: , `log_level`bir boolean değeri alır, ve , `ERROR`hangi alır , `WARNING`, `INFO`, veya `VERBOSE`. |
 
 ### <a name="client_id"></a>client_id
 
-Uygulamanızı kaydettirdiğiniz sırada oluşturulan istemci KIMLIĞI veya uygulama KIMLIĞI.
+Başvurunuzu kaydettirdiğinizde oluşturulan istemci kimliği veya uygulama kimliği.
 
 ### <a name="redirect_uri"></a>redirect_uri
 
-Uygulamanızı kaydettirdiğiniz sırada kaydettiğiniz yeniden yönlendirme URI 'SI. Yeniden yönlendirme URI 'SI bir aracı uygulamasına ise, aracı uygulamanız için doğru yeniden yönlendirme URI 'SI biçimini kullandığınızdan emin olmak için [ortak istemci uygulamaları Için yeniden YÖNLENDIRME URI](msal-client-application-configuration.md#redirect-uri-for-public-client-apps) 'sine bakın.
+Başvurunuzu kaydettiğinizde kaydettiğiniz yeniden yönlendirme URI. Yeniden yönlendirme URI bir broker uygulamasıysa, broker uygulamanız için doğru yönlendirme URI biçimini kullandığınızdan emin olmak [için kamu istemcisi uygulamaları için URI'yi yeniden](msal-client-application-configuration.md#redirect-uri-for-public-client-apps) yönlendirme'ye bakın.
 
-### <a name="authorities"></a>Kaynakça
+### <a name="authorities"></a>Yetkili
 
-Sizin tarafınızdan bilinen ve güvenilir olan yetkililer listesi. Burada listelenen yetkililere ek olarak, MSAL Microsoft 'un bilinen bulutların ve yetkililerinin bir listesini almak için Microsoft 'u da sorgular. Bu Kaynakça listesinde, yetkilinin türünü ve `"audience"`gibi ek isteğe bağlı parametreleri belirtin ve uygulamanızın kayıt defteri temelinde uygulamanızın hedef kitlesi ile hizalanması gerekir. Aşağıda, kaynakçanın örnek bir listesi verilmiştir:
+Sizin tanıdığınız ve güvendiğiniz yetkililerin listesi. Burada listelenen yetkililere ek olarak, MSAL ayrıca Microsoft'un microsoft tarafından bilinen bulutların ve yetkililerin bir listesini almak için microsoft'u sorgular. Bu yetkili listenizde, uygulamanızın kaydına bağlı olarak uygulamanızın hedef kitlesiyle uyumlu olması gereken yetki nin türünü ve ek isteğe bağlı parametreleri `"audience"`belirtin. Aşağıda, yetkililerin örnek bir listesi verilmiştir:
 
 ```javascript
 // Example AzureAD and Personal Microsoft Account
@@ -84,95 +84,95 @@ Sizin tarafınızdan bilinen ve güvenilir olan yetkililer listesi. Burada liste
 }
 ```
 
-#### <a name="map-aad-authority--audience-to-microsoft-identity-platform-endpoints"></a>AAD yetkilisi & kitlesini Microsoft Identity platform uç noktalarına eşleyin
+#### <a name="map-aad-authority--audience-to-microsoft-identity-platform-endpoints"></a>Harita AAD yetki microsoft kimlik platformu uç noktaları na hedef kitle &
 
-| Tür | Hedef Kitle | Kiracı Kimliği | Authority_Url | Sonuç uç noktası | Notlar |
+| Tür | Hedef kitle | Kiracı Kimliği | Authority_Url | Elde eden Bitiş Noktası | Notlar |
 |------|------------|------------|----------------|----------------------|---------|
-| AAD | Azureadandpersonmicrosoftaccount | | | https://login.microsoftonline.com/common | `common`, hesabın nerede olduğu, kiracı diğer adıdır. Örneğin, belirli bir Azure Active Directory kiracı veya Microsoft hesabı sistemi. |
-| AAD | AzureADMyOrg | contoso.com | | https://login.microsoftonline.com/contoso.com | Yalnızca contoso.com içinde bulunan hesaplar bir belirteç alabilir. Doğrulanmış etki alanı veya kiracı GUID 'SI, kiracı KIMLIĞI olarak kullanılabilir. |
-| AAD | AzureADMultipleOrgs | | | https://login.microsoftonline.com/organizations | Bu uç noktayla yalnızca Azure Active Directory hesapları kullanılabilir. Microsoft hesapları, kuruluşların üyesi olabilir. Bir kuruluştaki kaynak için Microsoft hesabı kullanarak bir belirteç almak için, belirteci istediğiniz kuruluş kiracısını belirtin. |
-| AAD | Personmicrosoftaccount | | | https://login.microsoftonline.com/consumers | Bu uç noktayı yalnızca Microsoft hesapları kullanabilir. |
-| B2C | | | Elde edilen uç noktaya bakın | https://login.microsoftonline.com/tfp/contoso.onmicrosoft.com/B2C_1_SISOPolicy/ | Yalnızca contoso.onmicrosoft.com kiracısında bulunan hesaplar bir belirteç alabilir. Bu örnekte B2C ilkesi, yetkili URL yolunun bir parçasıdır. |
+| AAD | AzureADandPersonalMicrosoftAccount | | | `https://login.microsoftonline.com/common` | `common`hesabın bulunduğu yer için kiracı takma adıdır. Belirli bir Azure Etkin Dizin kiracısı veya Microsoft hesap sistemi gibi. |
+| AAD | AzureADMyOrg | contoso.com | | `https://login.microsoftonline.com/contoso.com` | Yalnızca contoso.com'da bulunan hesaplar bir belirteç edinebilir. Doğrulanmış herhangi bir etki alanı veya kiracı GUID, kiracı kimliği olarak kullanılabilir. |
+| AAD | AzureADMultipleOrgs | | | `https://login.microsoftonline.com/organizations` | Bu bitiş noktasıyla yalnızca Azure Etkin Dizin hesapları kullanılabilir. Microsoft hesapları kuruluşların üyesi olabilir. Bir kuruluştaki bir kaynak için Microsoft hesabını kullanarak bir belirteç edinmek için, belirteci istediğiniz kuruluş kiracısını belirtin. |
+| AAD | PersonalMicrosoftAccount | | | `https://login.microsoftonline.com/consumers` | Bu bitiş noktasını yalnızca Microsoft hesapları kullanabilir. |
+| B2C | | | Bkz. Elde Eden Bitiş Noktası | `https://login.microsoftonline.com/tfp/contoso.onmicrosoft.com/B2C_1_SISOPolicy/` | Yalnızca contoso.onmicrosoft.com kiracısında bulunan hesaplar bir belirteç edinebilir. Bu örnekte, B2C ilkesi Yetkili URL yolunun bir parçasıdır. |
 
 > [!NOTE]
-> MSAL içinde yetkili doğrulaması etkinleştirilemiyor ve devre dışı bırakılamaz.
-> Yetkililer, yapılandırma yoluyla belirtilen veya Microsoft tarafından meta veriler aracılığıyla bilinen geliştiriciler olarak sizin için bilinmektedir.
-> MSAL, bilinmeyen bir yetkiliye belirteç isteği alırsa, `MsalClientException` `UnknownAuthority` sonuçları yazın.
+> MSAL'da yetki doğrulaması etkinleştirilemez ve devre dışı bırakılır.
+> Yetkililer, yapılandırma yoluyla belirtildiği gibi geliştirici olarak veya meta veriler aracılığıyla Microsoft tarafından bilinir.
+> MSAL bilinmeyen bir yetkiliye belirteç için `MsalClientException` bir `UnknownAuthority` istek alırsa, bir tür sonuç verir.
 
-#### <a name="authority-properties"></a>Yetkili özellikleri
+#### <a name="authority-properties"></a>Yetki özellikleri
 
-| Özellik | Veri türü  | Gereklidir | Notlar |
+| Özellik | Veri türü  | Gerekli | Notlar |
 |-----------|-------------|-----------|--------|
-| `type` | Dize | Evet | Uygulama hedeflerinizin kitlesini veya hesap türünü yansıtır. Olası değerler: `AAD`, `B2C` |
-| `audience` | Nesne | Hayır | Yalnızca Type =`AAD`olduğunda geçerlidir. Uygulamanızın hedeflediği kimliği belirtir. Uygulama kaydınızdan değeri kullanın |
-| `authority_url` | Dize | Evet | Yalnızca Type =`B2C`olduğunda gereklidir. Uygulamanızın kullanması gereken yetkili URL 'sini veya ilkeyi belirtir  |
-| `default` | boole | Evet | Bir veya daha fazla sertifika belirtildiğinde tek bir `"default":true` gereklidir. |
+| `type` | Dize | Evet | Hedef kitleyi veya hesap türünü yansıtarak uygulama hedeflerinizi yazın. Olası değerler: `AAD`,`B2C` |
+| `audience` | Nesne | Hayır | Yalnızca type= .`AAD` Uygulamanızın hedeflediğiniz kimliği belirtir. Uygulama kaydınızdaki değeri kullanma |
+| `authority_url` | Dize | Evet | Yalnızca type=`B2C`. Uygulamanızın kullanması gereken yetkili URL veya politikayı belirtir  |
+| `default` | boole | Evet | Bir `"default":true` veya daha fazla yetkili belirtildiğinde tek bir tane gereklidir. |
 
-#### <a name="audience-properties"></a>Hedef kitle özellikleri
+#### <a name="audience-properties"></a>Hedef Kitle Özellikleri
 
-| Özellik | Veri Türü  | Gereklidir | Notlar |
+| Özellik | Veri Türü  | Gerekli | Notlar |
 |-----------|-------------|------------|-------|
-| `type` | Dize | Evet | Uygulamanızın hedeflemek istediği izleyiciyi belirtir. Olası değerler: `AzureADandPersonalMicrosoftAccount`, `PersonalMicrosoftAccount`, `AzureADMultipleOrgs`, `AzureADMyOrg` |
-| `tenant_id` | Dize | Evet | Yalnızca `"type":"AzureADMyOrg"`olduğunda gereklidir. Diğer `type` değerleri için isteğe bağlıdır. Bu, `contoso.com`gibi bir kiracı etki alanı ya da `72f988bf-86f1-41af-91ab-2d7cd011db46`gibi bir kiracı KIMLIĞI olabilir |
+| `type` | Dize | Evet | Uygulamanızın hedeflemek istediği hedef kitleyi belirtir. Olası `AzureADandPersonalMicrosoftAccount`değerler: `PersonalMicrosoftAccount` `AzureADMultipleOrgs`, , ,`AzureADMyOrg` |
+| `tenant_id` | Dize | Evet | Yalnızca gerekli `"type":"AzureADMyOrg"`olduğunda . Diğer `type` değerler için isteğe bağlıdır. Bu, kiracı etki alanı `contoso.com`veya kiracı kimliği `72f988bf-86f1-41af-91ab-2d7cd011db46`gibi olabilir) |
 
 ### <a name="authorization_user_agent"></a>authorization_user_agent
 
-Bir hesapta oturum açarken veya bir kaynağa erişimi yetkilendirirken, ekli bir Web görünümü veya cihazda varsayılan tarayıcı kullanılıp kullanılmayacağını belirtir.
+Bir hesapta oturum açtığınızda veya bir kaynağa erişim eve izin verirken gömülü bir web görünümü mü yoksa aygıttaki varsayılan tarayıcıyı mı kullanacağımı gösterir.
 
 Olası değerler:
-- `DEFAULT`: sistem tarayıcısını tercih eder. Cihazda bir tarayıcı yoksa, katıştırılmış Web görünümünü kullanır.
-- `WEBVIEW`: Katıştırılmış Web görünümünü kullanın.
-- `BROWSER`: cihazdaki varsayılan tarayıcıyı kullanır.
+- `DEFAULT`: Sistem tarayıcısını tercih eder. Aygıtta tarayıcı yoksa katıştırılmış web görünümünü kullanır.
+- `WEBVIEW`: Gömülü web görünümünü kullanın.
+- `BROWSER`: Aygıttaki varsayılan tarayıcıyı kullanır.
 
 ### <a name="multiple_clouds_supported"></a>multiple_clouds_supported
 
-Birden çok ulusal bulutu destekleyen istemciler için `true`belirtin. Daha sonra Microsoft Identity platformu yetkilendirme ve belirteç kullanım sırasında doğru Ulusal buluta otomatik olarak yönlendirilir. `AuthenticationResult`ilişkili yetkiyi inceleyerek, oturum açmış olan hesabın Ulusal bulutunu belirleyebilirsiniz. `AuthenticationResult`, belirteç istediğiniz kaynağın buluta özgü Ulusal uç nokta adresini sağlamayacağını unutmayın.
+Birden çok ulusal bulutu `true`destekleyen istemciler için. Microsoft kimlik platformu daha sonra yetkilendirme ve belirteç kullanımı sırasında otomatik olarak doğru ulusal buluta yönlendirilir. İmzalanan hesabın ulusal bulutu ile ilişkili yetkiyi inceleyerek `AuthenticationResult`belirleyebilirsiniz. Belirteç `AuthenticationResult` istediğiniz kaynağın ulusal buluta özgü bitiş noktası adresini sağlamadığını unutmayın.
 
 ### <a name="broker_redirect_uri_registered"></a>broker_redirect_uri_registered
 
-Microsoft Identity broker ile uyumlu bir aracı yeniden yönlendirme URI 'SI kullanıp kullanmayacağınızı belirten bir Boole değeri. Aracı uygulamanızda kullanmak istemiyorsanız `false` olarak ayarlayın.
+Uri'yi yeniden yönlendiren broker uyumlu bir Microsoft Identity aracısı kullanıp kullanmadığınızı gösteren bir boolean. Uygulamanızdaki `false` aracıyı kullanmak istemiyorsanız ayarlayın.
 
-Hedef kitle `"MicrosoftPersonalAccount"`olarak ayarlanmış AAD yetkilisini kullanıyorsanız, aracı kullanılmaz.
+Hedef Kitle ayarlanmış AAD Yetkilisi'ni `"MicrosoftPersonalAccount"`kullanıyorsanız, broker kullanılmaz.
 
 ### <a name="http"></a>http
 
-HTTP zaman aşımları için genel ayarları yapılandırın, örneğin:
+Şu gibi HTTP zaman aşımları için genel ayarları yapılandırın:
 
-| Özellik | Veri türü | Gereklidir | Notlar |
+| Özellik | Veri türü | Gerekli | Notlar |
 | ---------|-----------|------------|--------|
-| `connect_timeout` | int | Hayır | Milisaniye cinsinden süre |
-| `read_timeout` | int | Hayır | Milisaniye cinsinden süre |
+| `connect_timeout` | int | Hayır | Milisaniye cinsinden zaman |
+| `read_timeout` | int | Hayır | Milisaniye cinsinden zaman |
 
-### <a name="logging"></a>günlük kaydı
+### <a name="logging"></a>günlüğe kaydetme
 
-Günlüğe kaydetme için aşağıdaki genel ayarlar verilmiştir:
+Aşağıdaki genel ayarlar günlüğe kaydetme içindir:
 
-| Özellik | Veri Türü  | Gereklidir | Notlar |
+| Özellik | Veri Türü  | Gerekli | Notlar |
 | ----------|-------------|-----------|---------|
-| `pii_enabled`  | boole | Hayır | Kişisel verilerin yayanıp bildirilmeyeceğini belirtir |
-| `log_level`   | boole | Hayır | Çıktının kaydedileceği günlük iletileri |
-| `logcat_enabled` | boole | Hayır | Günlüğe kaydetme arabirimine ek olarak günlük Cat 'e çıkış yapılıp yapılmayacağını belirtir |
+| `pii_enabled`  | boole | Hayır | Kişisel verileri yayıp yayılmayacağı |
+| `log_level`   | boole | Hayır | Çıktıya hangi günlük iletileri |
+| `logcat_enabled` | boole | Hayır | Günlük arabirimine ek olarak giriş kedisi çıkışı olup olmadığı |
 
 ### <a name="account_mode"></a>account_mode
 
-Uygulamanızda aynı anda kaç tane hesap kullanılabileceğini belirtir. Olası değerler şunlardır:
+Uygulamanızda aynı anda kaç hesabın kullanılabileceğini belirtir. Olası değerler şunlardır:
 
-- `MULTIPLE` (varsayılan)
+- `MULTIPLE`(Varsayılan)
 - `SINGLE`
 
-Bu ayar ile eşleşmeyen bir hesap modunu kullanarak bir `PublicClientApplication` oluşturmak özel durum oluşmasına neden olur.
+Bu ayarla eşleşmeyen bir `PublicClientApplication` hesap modu kullanarak oluşturmak bir özel durumla sonuçlanır.
 
-Tek ve birden çok hesap arasındaki farklar hakkında daha fazla bilgi için bkz. [tek ve birden çok hesap uygulamaları](single-multi-account.md).
+Tek ve birden çok hesap arasındaki farklar hakkında daha fazla bilgi [için](single-multi-account.md)bkz.
 
 ### <a name="browser_safelist"></a>browser_safelist
 
-MSAL ile uyumlu tarayıcıların izin verilenler listesi. Bu tarayıcılar, yeniden yönlendirmeleri özel amaçlar halinde doğru şekilde işler. Bu listeye ekleyebilirsiniz. Varsayılan yapılandırma aşağıda gösterilen varsayılan yapılandırmada verilmiştir.
+MSAL ile uyumlu tarayıcıların izin listesi. Bu tarayıcılar, özel hedeflere yönlendirmeleri doğru bir şekilde işler. Bu listeye ekleyebilirsiniz. Varsayılan değer, aşağıda gösterilen varsayılan yapılandırmada sağlanır.
 ``
 ## <a name="the-default-msal-configuration-file"></a>Varsayılan MSAL yapılandırma dosyası
 
-MSAL ile birlikte gelen varsayılan MSAL yapılandırması aşağıda gösterilmiştir. [GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-android/blob/dev/msal/src/main/res/raw/msal_default_config.json)'da en son sürümü görebilirsiniz.
+MSAL ile yapılan varsayılan MSAL yapılandırması aşağıda gösterilmiştir. [GitHub'da](https://github.com/AzureAD/microsoft-authentication-library-for-android/blob/dev/msal/src/main/res/raw/msal_default_config.json)en son sürümü görebilirsiniz.
 
-Bu yapılandırma, sağladığınız değerlere göre takıma alınmıştır. Sağladığınız değerler varsayılan değerleri geçersiz kılar.
+Bu yapılandırma, sağladığınız değerlerle tamamlanır. Sağladığınız değerler varsayılanları geçersiz kılar.
 
 ```javascript
 {
@@ -319,7 +319,7 @@ Bu yapılandırma, sağladığınız değerlere göre takıma alınmıştır. Sa
 ```
 ## <a name="example-basic-configuration"></a>Örnek temel yapılandırma
 
-Aşağıdaki örnek, istemci KIMLIĞINI, yeniden yönlendirme URI 'sini, bir aracı yeniden yönlendirmenin kaydedilip kaydedilmediğini ve bir yetkililer listesini belirten temel bir yapılandırmayı gösterir.
+Aşağıdaki örnek, istemci kimliğini belirten temel bir yapılandırmayı, URI'yi yeniden yönlendiren, aracının yeniden yönlendirilip kaydedilmediğive yetkililerin listesini göstermektedir.
 
 ```javascript
 {
@@ -338,10 +338,10 @@ Aşağıdaki örnek, istemci KIMLIĞINI, yeniden yönlendirme URI 'sini, bir ara
 }
 ```
 
-## <a name="how-to-use-a-configuration-file"></a>Yapılandırma dosyası kullanma
+## <a name="how-to-use-a-configuration-file"></a>Yapılandırma dosyası nasıl kullanılır?
 
-1. Bir yapılandırma dosyası oluşturun. Özel yapılandırma dosyanızı `res/raw/auth_config.json`oluşturmanız önerilir. Ancak istediğiniz yere koyabilirsiniz.
-2. `PublicClientApplication`oluştururken MSAL yapılandırmanıza nereden bakacağınızı söyleyin. Örneğin:
+1. Yapılandırma dosyası oluşturun. Özel yapılandırma dosyanızı 'da `res/raw/auth_config.json`oluşturmanızı öneririz. Ama istediğin yere koyabilirsin.
+2. MSAL'a yapılandırmanızı yaparken nerede arayacağınızı söyleyin. `PublicClientApplication` Örnek:
 
    ```java
    //On Worker Thread

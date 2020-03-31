@@ -1,6 +1,6 @@
 ---
-title: Azure spot VM 'Leri kullanma (Önizleme)
-description: Azure spot VM 'Leri kullanarak maliyetlerde tasarruf etme hakkında bilgi edinin
+title: Azure Spot VM'leri kullanma (Önizleme)
+description: Maliyetlerden tasarruf etmek için Azure Spot VM'leri nasıl kullanacağınızı öğrenin
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -15,13 +15,13 @@ ms.topic: article
 ms.date: 10/14/2019
 ms.author: cynthn
 ms.openlocfilehash: 9a9989f7b8e75be09a72d76f84d664504b3af474
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74790147"
 ---
-# <a name="preview-use-spot-vms-in-azure"></a>Önizleme: Azure 'da spot VM 'Leri kullanma
+# <a name="preview-use-spot-vms-in-azure"></a>Önizleme: Azure'da Spot VM'leri kullanma
 
 
 [!INCLUDE [common-spot-vms](../../../includes/virtual-machines-common-spot-vms.md)]  
@@ -29,6 +29,6 @@ ms.locfileid: "74790147"
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Spot VM 'Leri dağıtmak için [CLI](spot-cli.md), [Portal](../windows/spot-portal.md) veya [PowerShell](../windows/spot-powershell.md) kullanın.
+Spot VM'leri dağıtmak için [CLI,](spot-cli.md) [portal](../windows/spot-portal.md) veya [PowerShell'i](../windows/spot-powershell.md) kullanın.
 
-Ayrıca, [spot VM örnekleriyle bir ölçek kümesi](../../virtual-machine-scale-sets/use-spot.md)dağıtabilirsiniz.
+[Ayrıca Spot VM örnekleri ile](../../virtual-machine-scale-sets/use-spot.md)bir ölçek kümesi dağıtabilirsiniz.

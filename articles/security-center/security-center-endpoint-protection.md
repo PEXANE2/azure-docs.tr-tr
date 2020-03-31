@@ -1,6 +1,6 @@
 ---
-title: Azure Güvenlik merkezlerindeki Endpoint Protection önerileri
-description: Endpoint Protection çözümlerinin nasıl keşfedildiği ve sağlıklı olduğu nasıl tanımlandığı.
+title: Azure Güvenlik Merkezlerinde uç nokta koruma önerileri
+description: Uç nokta koruma çözümlerinin nasıl keşfedildiği ve sağlıklı olarak nasıl tanımlanabildiğini.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,52 +14,52 @@ ms.workload: na
 ms.date: 12/29/2019
 ms.author: memildin
 ms.openlocfilehash: dcf7df501665ea3885d00b9f7668a95cbbf02428
-ms.sourcegitcommit: 5192c04feaa3d1bd564efe957f200b7b1a93a381
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/02/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78208551"
 ---
-# <a name="endpoint-protection-assessment-and-recommendations-in-azure-security-center"></a>Azure Güvenlik Merkezi 'nde Endpoint Protection değerlendirmesi ve önerileri
+# <a name="endpoint-protection-assessment-and-recommendations-in-azure-security-center"></a>Azure Güvenlik Merkezi'nde uç nokta koruma değerlendirmesi ve önerileri
 
-Azure Güvenlik Merkezi, Endpoint Protection çözümlerinin [desteklenen](security-center-services.md#endpoint-supported) sürümlerinin sistem durumu değerlendirmeleri sağlar. Bu makalede, güvenlik merkezi 'nin aşağıdaki iki öneriyi üretmesine neden olan senaryolar açıklanmaktadır:
+Azure Güvenlik Merkezi, Endpoint koruma çözümlerinin [desteklenen](security-center-services.md#endpoint-supported) sürümlerinin sistem durumu değerlendirmelerini sağlar. Bu makalede, Güvenlik Merkezi'nin aşağıdaki iki öneriyi oluşturmasına neden olan senaryolar açıklanmaktadır:
 
-* **Uç nokta koruma çözümlerini sanal makinenize yükler**
-* **Makinelerinizdeki Endpoint Protection sistem durumu sorunlarını çözün**
+* **Sanal makinenize uç nokta koruma çözümleri yükleyin**
+* **Makinelerinizdeki uç nokta koruması sağlık sorunlarını çözme**
 
 ## <a name="windows-defender"></a>Windows Defender
 
-* Güvenlik Merkezi, [Get-MpComputerStatus](https://docs.microsoft.com/powershell/module/defender/get-mpcomputerstatus?view=win10-ps) çalıştırıldığında ve Result **amserviceenabled** olduğunda **"Endpoint Protection çözümlerini sanal makineye yüklemenizi"** önerir.
+* Güvenlik Merkezi, [Get-MpComputerStatus](https://docs.microsoft.com/powershell/module/defender/get-mpcomputerstatus?view=win10-ps) çalıştığında ve sonuç **AMServiceEnabled** olduğunda **"Sanal makineye uç nokta koruma çözümleri yükleyin"** önerir: False
 
-* Güvenlik Merkezi, [Get-MpComputerStatus](https://docs.microsoft.com/powershell/module/defender/get-mpcomputerstatus?view=win10-ps) çalıştırıldığında ve aşağıdakilerden biri gerçekleştiğinde **"makinelerinizdeki Endpoint Protection sistem durumu sorunlarını çözme"** işlemi yapmanızı önerir:
+* Güvenlik Merkezi, [Get-MpComputerStatus](https://docs.microsoft.com/powershell/module/defender/get-mpcomputerstatus?view=win10-ps) çalıştığında ve aşağıdakilerden herhangi biri oluştuğunda **"Makinelerinizdeki uç nokta koruma sorunlarının giderilmesi"** önerir:
 
-  * Aşağıdaki özelliklerden herhangi biri false şeklindedir:
+  * Aşağıdaki özelliklerden herhangi biri yanlış:
 
     **AMServiceEnabled**
 
-    **AntispywareEnabled**
+    **Casus YazılımönlemeEtkin**
 
     **RealTimeProtectionEnabled**
 
-    **BehaviorMonitorEnabled**
+    **Davranışİzleme Etkin**
 
-    **Ioavprotectionenabled**
+    **IoavProtectionEtkin**
 
     **OnAccessProtectionEnabled**
 
-  * Aşağıdaki özelliklerden biri veya her ikisi 7 veya daha fazla.
+  * Aşağıdaki özelliklerden biri veya her ikisi 7 veya daha fazla ise.
 
-    **AntispywareSignatureAge**
+    **Casus yazılımlar önlemeSignatureAge**
 
     **AntivirusSignatureAge**
 
-## <a name="microsoft-system-center-endpoint-protection"></a>Microsoft System Center Endpoint Protection
+## <a name="microsoft-system-center-endpoint-protection"></a>Microsoft System Center uç nokta koruması
 
-* Güvenlik Merkezi, **Scepmpmodule ("$env:P rogramFiles\Microsoft Security Client\mpprovider\mpprovider.exe")** içeri aktarırken ve **amserviceenabled = false** Ile **Get-mprotcomputerstatus** sonuçları çalıştıran **"sanal makineye Endpoint Protection çözümlerini yükle** " önerilir
+* Güvenlik Merkezi, **SCEPMpModule 'yi ("$env:ProgramFiles\Microsoft Security Client\MpProvider\MpProvider.psd1")** ve **AMServiceEnabled = ile** **Get-MProtComputerStatus** sonuçlarını çalıştırırken **"Sanal makineye uç nokta koruma çözümleri yüklemenizi"** önerir
 
-* Güvenlik Merkezi, **Get-MprotComputerStatus** çalıştırıldığında ve aşağıdakilerden biri gerçekleştiğinde **"makinelerinizdeki Endpoint Protection sistem durumu sorunlarını çözme"** işlemi yapmanızı önerir:
+* Güvenlik Merkezi, **Get-MprotComputerStatus** çalıştığında ve aşağıdakilerden herhangi biri oluştuğunda **"Makinelerinizdeki uç nokta koruma sorunlarının giderilmesi"** önerir:
 
-    * Aşağıdaki özelliklerden en az biri false şeklindedir:
+    * Aşağıdaki özelliklerden en az biri yanlıştır:
 
             **AMServiceEnabled**
 
@@ -73,112 +73,112 @@ Azure Güvenlik Merkezi, Endpoint Protection çözümlerinin [desteklenen](secur
     
             **OnAccessProtectionEnabled**
           
-    * Aşağıdaki Imza güncelleştirmelerinden biri veya her ikisi 7 ' ye eşit veya daha büyükse. 
+    * Aşağıdaki İmza Güncelleştirmelerinden biri veya her ikisi daha büyük veya 7'ye eşitse. 
 
             **AntispywareSignatureAge**
     
             **AntivirusSignatureAge**
 
-## <a name="trend-micro"></a>Eğilim mikro
+## <a name="trend-micro"></a>Trend Mikro
 
-* Güvenlik Merkezi, aşağıdaki denetimlerden herhangi biri karşılanmazsa **"Endpoint Protection çözümlerini sanal makineye yüklemenizi"** önerir:
-    * **HKLM: \ Software\trendmikro \ derin güvenlik Aracısı** var
-    * **HKLM: \ Software\trendmikro \ derin güvenlik alanı \ ınstalyüklemeklasörü** var
-    * **Dsa_query. cmd** dosyası yükleme klasöründe bulunur
-    * **Dsa_query. cmd** Ile sonuçları **bileşen. mod. Mode: eğilim üzerine mikro derin güvenlik Aracısı algılandı**
+* Güvenlik Merkezi, aşağıdaki denetimlerden herhangi biri karşılanmadığında **"Sanal makineye uç nokta koruma çözümleri yüklemenizi"** önerir:
+    * **HKLM:\SOFTWARE\TrendMicro\Derin Güvenlik Aracısı** var
+    * **HKLM:\SOFTWARE\TrendMicro\Derin Güvenlik Aracısı\InstallationFolder** var
+    * **dsa_query.cmd** dosyası Yükleme Klasöründe bulunur
+    * **Component.AM.mode** ile **dsa_query.cmd** sonuçları nın çalıştırılışı: açık - Trend Micro Deep Security Agent algılandı
 
 ## <a name="symantec-endpoint-protection"></a>Symantec uç nokta koruması
-Güvenlik Merkezi, aşağıdaki denetimlerden herhangi biri karşılanmazsa **"Endpoint Protection çözümlerini sanal makineye yüklemenizi"** önerir:
+Güvenlik Merkezi, aşağıdaki denetimlerden herhangi biri karşılanmadığında **"Sanal makineye uç nokta koruma çözümleri yüklemenizi"** önerir:
 
-* **HKLM: \ Software\Symantec\Symantec Endpoint Protection\CurrentVersion\PRODUCTNAME = "Symantec Endpoint Protection"**
+* **HKLM:\Software\Symantec\Symantec Endpoint Protection\CurrentVersion\PRODUCTNAME = "Symantec Endpoint Protection"**
 
-* **HKLM: \ Software\Symantec\Symantec Endpoint Protection\CurrentVersion\public-opstate\ASRunningStatus = 1**
+* **HKLM:\Software\Symantec\Symantec Endpoint Protection\CurrentVersion\public-opstate\ASRunningStatus = 1**
 
 Veya
 
-* **HKLM: \ Software\Wow6432Node\Symantec\Symantec Endpoint Protection\CurrentVersion\PRODUCTNAME = "Symantec Endpoint Protection"**
+* **HKLM:\Yazılım\Wow6432Düğüm\Symantec\Symantec Uç Nokta Koruması\CurrentVersion\PRODUCTNAME = "Symantec Endpoint Protection"**
 
-* **HKLM: \ Software\Wow6432Node\Symantec\Symantec Endpoint Protection\CurrentVersion\public-opstate\ASRunningStatus = 1**
+* **HKLM:\Yazılım\Wow6432Düğüm\Symantec\Symantec Uç Nokta Koruması\CurrentVersion\public-opstate\ASRunningStatus = 1**
 
-Güvenlik Merkezi, aşağıdaki denetimlerden herhangi biri karşılanmazsa **"makinelerinizdeki Endpoint Protection sistem durumu sorunlarını çözme"** yapmanızı önerir:
+Güvenlik Merkezi, aşağıdaki denetimlerden herhangi biri karşılanmadığında **"Makinelerinizdeki uç nokta koruma sorunlarının giderilmesi"** önerir:
 
-* Symantec sürümünü denetleyin > = 12: kayıt defteri konumu: **HKLM: \ Software\Symantec\Symantec Endpoint Protection\CurrentVersion "-değer" PRODUCTVERSION "**
+* Kontrol Symantec Sürüm >= 12: Kayıt defteri konumu: **HKLM:\Software\Symantec\Symantec Endpoint Protection\CurrentVersion" -Değer "PRODUCTVERSION"**
 
-* Gerçek zamanlı koruma durumunu denetle: **HKLM: \ Software\Wow6432Node\Symantec\Symantec Endpoint Protection\AV\Storages\Filesystem\RealTimeScan\OnOff = = 1**
+* Gerçek Zamanlı Koruma durumunu kontrol edin: **HKLM:\Software\Wow6432Node\Symantec\Symantec Endpoint Protection\AV\Storages\Filesystem\RealTimeScan\OnOff == 1**
 
-* Imza güncelleştirme durumunu denetle: **HKLM\Software\Symantec\Symantec Endpoint Protection\CurrentVersion\public-opstate\LatestVirusDefsDate < = 7 gün**
+* İmza Güncelleme durumunu denetleyin: **HKLM\Software\Symantec\Symantec Endpoint Protection\CurrentVersion\public-opstate\LatestVirusDefsDate <= 7 gün**
 
-* Tam tarama durumunu denetle: **HKLM: \ Software\Symantec\Symantec Endpoint Protection\currentversion\public-opstate\lastbaşarılı fulscandatetime < = 7 gün**
+* Tam Tcan durumunu kontrol edin: **HKLM:\Software\Symantec\Symantec Endpoint Protection\CurrentVersion\public-opstate\LastSuccessfulScanDateTimeTime <= 7 gün**
 
-* Symantec 12 için imza sürümüne ait imza sürüm numarası yolunu bul: **kayıt defteri yolları + "CurrentVersion\SharedDefs"-değer "SRTSP"** 
+* Symantec 12 için imza sürümüne giden imza sürüm numarasını bulma: **Kayıt Yolları+ "CurrentVersion\SharedDefs" -Value "SRTSP"** 
 
-* Symantec 14 için imza sürümü yolu: **kayıt defteri yolları + "CurrentVersion\SharedDefs\SDSDefs"-Value "SRTSP"**
+* Symantec 14 için imza sürümüne giden yol: **Kayıt Yolları+ "CurrentVersion\SharedDefs\SDSDefs" -Değer "SRTSP"**
 
-Kayıt defteri yolları:
+Kayıt Yolları:
 
-* **"HKLM: \ Software\Symantec\Symantec Endpoint Protection" + $Path;**
-* **"HKLM: \ Software\Wow6432Node\Symantec\Symantec Endpoint Protection" + $Path**
+* **"HKLM:\Software\Symantec\Symantec Endpoint Protection" + $Path;**
+* **"HKLM:\Software\Wow6432Node\Symantec\Symantec Uç Nokta Koruması" + $Path**
 
-## <a name="mcafee-endpoint-protection-for-windows"></a>Windows için McAfee Endpoint Protection
+## <a name="mcafee-endpoint-protection-for-windows"></a>Windows için McAfee uç noktası koruması
 
-Güvenlik Merkezi, aşağıdaki denetimlerden herhangi biri karşılanmazsa **"Endpoint Protection çözümlerini sanal makineye yüklemenizi"** önerir:
+Güvenlik Merkezi, aşağıdaki denetimlerden herhangi biri karşılanmadığında **"Sanal makineye uç nokta koruma çözümleri yüklemenizi"** önerir:
 
-* **HKLM: \ SOFTWARE\McAfee\Endpoint\AV\ProductVersion** var
+* **HKLM:\SOFTWARE\McAfee\Endpoint\AV\ProductVersion** var
 
-* **HKLM: \ SOFTWARE\McAfee\AVSolution\MCSHIELDGLOBAL\GLOBAL\enableoas = 1**
+* **HKLM:\SOFTWARE\McAfee\AVSolution\MCSHIELDGLOBAL\GLOBAL\enableoas = 1**
 
-Güvenlik Merkezi, aşağıdaki denetimlerden herhangi biri karşılanmazsa **"makinelerinizdeki Endpoint Protection sistem durumu sorunlarını çözme"** yapmanızı önerir:
+Güvenlik Merkezi, aşağıdaki denetimlerden herhangi biri karşılanmadığında **"Makinelerinizdeki uç nokta koruma sorunlarının giderilmesi"** önerir:
 
-* McAfee sürümü: **HKLM: \ SOFTWARE\McAfee\Endpoint\AV\ProductVersion > = 10**
+* McAfee Sürüm: **HKLM:\SOFTWARE\McAfee\Endpoint\AV\ProductVersion >= 10**
 
-* Imza bulma sürümü: **HKLM: \ Software\McAfee\AVSolution\DS\DS-value "dwContentMajorVersion"**
+* İmza Sürümünü Bul: **HKLM:\Software\McAfee\AVSolution\DS\DS\DS -Değer "dwContentMajorVersion"**
 
-* Imza bulma tarihi: **HKLM: \ Software\McAfee\AVSolution\DS\DS-value "szContentCreationDate" > = 7 gün**
+* İmza tarihi bul: **HKLM:\Software\McAfee\AVSolution\DS\DS\DS\DS -Değer "szContentCreationDate" >= 7 gün**
 
-* Tarama tarihini bul: **HKLM: \ Software\McAfee\Endpoint\AV\ODS-value "LastFullScanOdsRunTime" > = 7 gün**
+* Tkayı bul tarih: **HKLM:\Software\McAfee\Endpoint\AV\ODS -Değer "LastFullScanOdsRunTime" >= 7 gün**
 
-## <a name="mcafee-endpoint-security-for-linux-threat-prevention"></a>Linux tehdit önleme için McAfee Endpoint Security 
+## <a name="mcafee-endpoint-security-for-linux-threat-prevention"></a>Linux Tehdit Önleme için McAfee Endpoint Güvenlik 
 
-Güvenlik Merkezi, aşağıdaki denetimlerden herhangi biri karşılanmazsa **"Endpoint Protection çözümlerini sanal makineye yüklemenizi"** önerir:
+Güvenlik Merkezi, aşağıdaki denetimlerden herhangi biri karşılanmadığında **"Sanal makineye uç nokta koruma çözümleri yüklemenizi"** önerir:
 
-- **/Opt/iSEC/ens/threatprevention/bin/isecav** dosyası çıkıyor 
+- Dosya **/opt/isec/ens/threatprevention/bin/isecav** çıkışları 
 
-- **"/opt/iSEC/ens/threatprevention/bin/isecav--Version"** çıkışı: **McAfee Name = Linux tehdit önleme ve McAfee sürümü Için mcafee Endpoint Security > = 10**
+- **"/opt/isec/ens/threatprevention/bin/isecav --version"** çıktısı: **McAfee adı = McAfee Endpoint Security for Linux Threat Prevention ve McAfee version >= 10**
 
-Güvenlik Merkezi, aşağıdaki denetimlerden herhangi biri karşılanmazsa **"makinelerinizdeki Endpoint Protection sistem durumu sorunlarını çözme"** yapmanızı önerir:
+Güvenlik Merkezi, aşağıdaki denetimlerden herhangi biri karşılanmadığında **"Makinelerinizdeki uç nokta koruma sorunlarının giderilmesi"** önerir:
 
-- **"/opt/iSEC/ens/threatprevention/bin/isecav--listtask"** , taramanın her Ikisini de **hızlı tarama, tam tarama** ve her ikisi de döndürür < = 7 gün
+- **"/opt/isec/ens/threatprevention/bin/isecav --listtask"** **hızlı tarama, Tam tarama** ve her iki tarama <= 7 gün döndürür
 
-- **"/opt/iSEC/ens/threatprevention/bin/isecav--listtask"** , **dat ve Engine güncelleştirme zamanını** ve her ikisini de döndürür < = 7 gün
+- **"/opt/isec/ens/threatprevention/bin/isecav --listtask"** **DAT ve motor Güncelleme süresini** döndürür ve her ikisi de <= 7 gün
 
-- **"/opt/iSEC/ens/threatprevention/bin/isecav--getoasconfig--Summary"** , **erişim taraması** durumunda döndürür
+- **"/opt/isec/ens/threatprevention/bin/isecav --getoasconfig --summary"** **Access Scan** durumu hakkında döndürür
 
 ## <a name="sophos-antivirus-for-linux"></a>Linux için Sophos Antivirus 
 
-Güvenlik Merkezi, aşağıdaki denetimlerden herhangi biri karşılanmazsa **"Endpoint Protection çözümlerini sanal makineye yüklemenizi"** önerir:
+Güvenlik Merkezi, aşağıdaki denetimlerden herhangi biri karşılanmadığında **"Sanal makineye uç nokta koruma çözümleri yüklemenizi"** önerir:
 
-- **/Opt/Sophos-av/bin/savdstatus** dosyası çıkıyor veya özelleştirilmiş **"readlink $ (savscan)"** konumunu arar "
+- Dosya **/opt/sophos-av/bin/savdstatus** çıkar veya özelleştirilmiş konum için arama **"readlink $(hangi savscan)"**
 
-- **"/opt/Sophos-av/bin/savdstatus--Version"** , Sophos Name = **Sophos Anti-Virus ve Sophos Version > = 9** döndürür
+- **"/opt/sophos-av/bin/savdstatus --version"** Sophos adını döndürür = **Sophos Anti-Virüs ve Sophos sürüm >= 9**
 
-Güvenlik Merkezi, aşağıdaki denetimlerden herhangi biri karşılanmazsa **"makinelerinizdeki Endpoint Protection sistem durumu sorunlarını çözme"** yapmanızı önerir:
+Güvenlik Merkezi, aşağıdaki denetimlerden herhangi biri karşılanmadığında **"Makinelerinizdeki uç nokta koruma sorunlarının giderilmesi"** önerir:
 
-- **"/opt/Sophos-av/bin/savlog--maxAge = 7 | GREP-i "zamanlanmış tarama.\* tamamlandı "| Tail-1 "** , bir değer döndürür
+- **"/opt/sophos-av/bin/savlog --maxage=7 | grep -i "Planlanmış tcan . \* tamamlandı" | kuyruk -1"**, bir değer döndürür
 
-- **"/opt/Sophos-av/bin/savlog--maxAge = 7 | grep "tarama tamamlandı"** | Tail-1 ", bir değer döndürür
+- **"/opt/sophos-av/bin/savlog --maxage=7 | grep "scan bitmiş"** | kuyruk -1", bir değer döndürür
 
-- **"/opt/Sophos-av/bin/savdstatus--LastUpdate"** , < = 7 gün olması gereken LastUpdate döndürür 
+- **"/opt/sophos-av/bin/savdstatus --lastupdate"** lastUpdate'i döndürür, bu da <= 7 gün olmalıdır 
 
-- " **/opt/Sophos-av/bin/savdstatus-v"** , **"erişim taraması çalışıyor"** olarak eşit 
+- **"/opt/sophos-av/bin/savdstatus -v"** **eşittir "Erişimde tarama çalışıyor"** 
 
-- **"/opt/Sophos-av/bin/savconfig LiveProtection al"** işlevi etkin
+- **"/opt/sophos-av/bin/savconfig liveprotection olsun"** returns etkin
 
-## <a name="troubleshoot-and-support"></a>Sorun giderme ve Destek
+## <a name="troubleshoot-and-support"></a>Sorun giderme ve destek
 
-### <a name="troubleshoot"></a>Sorunları Gider
+### <a name="troubleshoot"></a>Sorun giderme
 
-Microsoft kötü amaçlı yazılımdan koruma uzantısı günlükleri şurada bulunabilir: **%systemdrive%\WindowsAzure\Logs\Plugins\Microsoft.Azure.Security.IaaSAntimalware (veya PaaSAntimalware) \1.5.5.x (sürüm #) \CommandExecution.log**
+Microsoft Malware uzantılı günlükleri şu adresten edinilebilir: **%Systemdrive%\WindowsAzure\Logs\Plugins\Microsoft.Azure.Security.IaaSAntimalware(Veya PaaSAntimalware)\1.5.5.x(sürüm#)\CommandExecution.log**
 
 ### <a name="support"></a>Destek
 
-Daha fazla yardım için [MSDN Azure ve Stack Overflow forumlarında](https://azure.microsoft.com/support/forums/)Azure uzmanlarıyla iletişim kurun. Ya da bir Azure destek olayı dosyası. [Azure destek sitesine](https://azure.microsoft.com/support/options/) gidin ve Destek Al ' ı seçin. Azure desteğini kullanma hakkında daha fazla bilgi için, [Microsoft Azure support SSS](https://azure.microsoft.com/support/faq/)makalesini okuyun.
+Daha fazla yardım için [MSDN Azure ve Yığın Taşma forumlarında](https://azure.microsoft.com/support/forums/)Azure uzmanlarına başvurun. Veya bir Azure destek olayı dosyala. [Azure destek sitesine](https://azure.microsoft.com/support/options/) gidin ve destek al'ı seçin. Azure Desteği'ni kullanma hakkında daha fazla bilgi için [Microsoft Azure destek SSS'sini](https://azure.microsoft.com/support/faq/)okuyun.

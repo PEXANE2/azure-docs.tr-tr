@@ -1,6 +1,6 @@
 ---
-title: Azure NetApp dosyaları performans değerlendirmeleri | Microsoft Docs
-description: Azure NetApp dosyaları için performans konuları açıklanmaktadır.
+title: Azure NetApp Dosyaları için performans hususları | Microsoft Dokümanlar
+description: Azure NetApp Dosyaları için performans hususlarını açıklar.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -15,53 +15,53 @@ ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: b-juche
 ms.openlocfilehash: 97e3c6212edd2ade4eabb96db3543e9b3b68e2ae
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/28/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "67454145"
 ---
 # <a name="performance-considerations-for-azure-netapp-files"></a>Azure NetApp Files için performansla ilgili önemli noktalar
 
-[Aktarım hızı sınırı](azure-netapp-files-service-levels.md) birim birime atanan kota ve hizmet düzeyi seçili bir birleşimi tarafından belirlenir. Azure NetApp dosyalarla ilgili performans planları yaptığınızda, bazı önemli noktalar anlamanız gerekir. 
+Bir birim için [iş hacmi sınırı,](azure-netapp-files-service-levels.md) birim ve seçilen hizmet düzeyine atanan kotanın bir birleşimi ile belirlenir. Azure NetApp Dosyaları hakkında performans planları yaptığınızda, çeşitli hususları anlamanız gerekir. 
 
-## <a name="quota-and-throughput"></a>Kota ve aktarım hızı  
+## <a name="quota-and-throughput"></a>Kota ve iş artışı  
 
-Aktarım hızı, yalnızca bir etken gerçekleşmiş gerçek performans sınırdır.  
+İş sonu sınırı, gerçek performansın yalnızca bir belirleyicisidir.  
 
-Tipik depolama performansla ilgili önemli noktalar dahil olmak üzere okuyup karışımı, teslim eksiksiz bir performans, Aktarım boyutu, rastgele veya sıralı desenleri ve diğer birçok faktörü katkıda bulunur.  
+Okuma ve yazma karışımı, aktarım boyutu, rasgele veya sıralı desenler ve diğer birçok etken dahil olmak üzere tipik depolama performansı konuları, teslim edilen toplam performansa katkıda bulunacaktır.  
 
-Test gözlemlenen en yüksek görgül aktarım 4,500 MiB/sn ' dir.  Premium depolama katmanında 70.31 TiB birimi kotası, bu performans düzeyine ulaşmak için yüksek bir aktarım hızı sınırı sağlanır.  
+Testte gözlenen maksimum ampirik verim 4.500 MiB/s'dir.  Premium depolama katmanında, 70,31 TiB'lik bir hacim kotası, bu performans düzeyine ulaşmak için yeterince yüksek bir iş hacmi sınırı sağlayacaktır.  
 
-Kota miktarları 70.31 TiB aştığında birim atama düşünüyorsanız, ek verileri depolamak için bir birime ek kota atanabilir. Ancak, ek kota gerçek aktarım hızı başka bir artış açmayacaktır.  
+70.31 TiB'nin ötesinde birim kota tutarları atamayı düşünüyorsanız, ek veri depolamak için bir topluma ek kota atanabilir. Ancak, eklenen kota gerçek üretim daha fazla artışa neden olmaz.  
 
-Bkz: [Azure NetApp dosyaları için performans kıyaslamalarını](azure-netapp-files-performance-benchmarks.md) ek bilgi için.
+Ek bilgi [için Azure NetApp Dosyaları için Performans ölçütlerine](azure-netapp-files-performance-benchmarks.md) bakın.
 
-## <a name="overprovisioning-the-volume-quota"></a>Açıdan hacmi kotası aşıldı
+## <a name="overprovisioning-the-volume-quota"></a>Birim kotasının fazla verilmesi
 
-Bir iş yükünün performansı, aktarım hızı sınırı bağlı ise, yüksek aktarım hızı ve daha iyi performans elde hacmi kotası fazladan mümkündür.  
+Bir iş yükünün performansı iş hacmi sınırı yla sınırlanırsa, daha yüksek bir iş hacmi düzeyi ayarlamak ve daha yüksek performans elde etmek için birim kotasını aşırı sağlamak mümkündür.  
 
-Premium depolama katmanı bir birimde verilerin yalnızca 500 GiB ancak 128 MiB/sn aktarım hızı gerektiren yoksa üretilen iş düzeyi buna uygun olarak ayarlanır, böylece Örneğin, kota 2 TiB olarak ayarlayabilirsiniz (TB başına 64 MiB/sn * 2 TiB = 128 MiB/sn).  
+Örneğin, Premium depolama katmanındaki bir birimde yalnızca 500 GiB veri varsa ancak 128 MiB/s'lik bir veri gerekiyorsa, kotayı 2 TiB olarak ayarlayabilirsiniz, böylece iş hacmi düzeyi buna göre ayarlanır (TB başına 64 MiB/s / 2 TiB = 128 MiB/s).  
 
-Tutarlı bir şekilde daha yüksek bir performans elde etmek için bir birim fazladan, daha yüksek bir hizmet düzeyi kullanmayı düşünün.  Yukarıdaki örnekte, Ultra yüksek depolama katmanını kullanarak aynı yarı hacmi kotası aktarım hızı sınırına ulaşabilir (TiB başına 128 MiB/sn * 1 TiB = 128 MiB/sn).
+Daha yüksek bir iş hacmi elde etmek için sürekli olarak fazla bir birim veriyorsanız, bunun yerine daha yüksek bir hizmet düzeyi kullanmayı düşünün.  Yukarıdaki örnekte, bunun yerine Ultra depolama katmanını kullanarak hacim kotasının yarısıyla aynı iş hacmi sınırını elde edebilirsiniz (TiB başına 128 MiB/s başına * 1 TiB = 128 MiB/s).
 
-## <a name="dynamically-increasing-or-decreasing-volume-quota"></a>Dinamik olarak artan veya azalan hacmi kotası aşıldı
+## <a name="dynamically-increasing-or-decreasing-volume-quota"></a>Birim kotası dinamik olarak artırılıyor veya azalıyor
 
-Performans gereksinimlerinizi doğası gereği geçici veya bir sabit bir süre boyunca performans gereksinimlerine artırmıştır, dinamik olarak artırır veya azaltırsanız aktarım hızı sınırına eşzamanlı olarak ayarlamak için hacmi kotası aşıldı.  Aşağıdaki konuları göz önünde bulundurun: 
+Performans gereksinimleriniz doğada geçiciyse veya belirli bir süre için performans gereksinimlerini artırdıysanız, üretim sınırını anında ayarlamak için birim kotasını dinamik olarak artırabilir veya azaltabilirsiniz.  Aşağıdaki hususlara dikkat edin: 
 
-* Birim kota artırabilir veya azaltılabilir GÇ duraklatmak için gerek ve birime erişimi kesildi veya etkilenen değil.  
+* Birim kotası, IO'yu duraklatmaya gerek kalmadan artırılabilir veya azaltılabilir ve toplua erişim kesintiye uğramaz veya etkilenmez.  
 
-    Bir birim karşı etkin bir g/ç işlem sırasında bir kota ayarlayabilirsiniz.  Bu birimi kotası hiçbir zaman birimi içinde depolanan mantıksal veri miktarı aşağıdaki azaltılabilir unutmayın.
+    Etkin bir G/Ç işlemi sırasında kotayı bir birim olarak ayarlayabilirsiniz.  Birim kotasının, birimde depolanan mantıksal veri miktarının altına düşürülmeyeceğini unutmayın.
 
-* Kota toplu değiştirildiğinde, aktarım hızı sınırı karşılık gelen değişiklik neredeyse anında. 
+* Birim kotası değiştirildiğinde, ilgili iş hacmi limitindeki değişiklik neredeyse anında gerçekleşir. 
 
-    Değişikliği kesme veya birim erişimi veya g/ç desteklemez.  
+    Değişiklik, birim erişimini veya G/Ç'yi kesintiye uğratmaz veya etkilemez.  
 
-* Ayarlama birim kota kapasitesi havuzu boyutundaki bir değişikliği gerektirir.  
+* Birim kotası ayarlama kapasite havuzu boyutunda bir değişiklik gerektirir.  
 
-    Dinamik olarak ve birim kullanılabilirliğine veya g/ç etkilemeden kapasitesi havuzu boyutu ayarlanabilir.
+    Kapasite havuzu boyutu dinamik olarak ayarlanabilir ve birim kullanılabilirliğini veya G/Ç'yi etkilemeden.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Azure NetApp dosyaları için hizmet düzeyleri](azure-netapp-files-service-levels.md)
-- [Azure NetApp dosyaları için performans kıyaslamalarını](azure-netapp-files-performance-benchmarks.md)
+- [Azure NetApp Files için hizmet düzeyleri](azure-netapp-files-service-levels.md)
+- [Azure NetApp Files için performans kıyaslamaları](azure-netapp-files-performance-benchmarks.md)

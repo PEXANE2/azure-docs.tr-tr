@@ -1,6 +1,6 @@
 ---
-title: Azure kısıtlanmış vCPU boyutları-Windows
-description: Kısıtlanmış vCPU sayısına sahip olmayan VM boyutlarını listeler.
+title: Azure kısıtlı vCPU boyutları - Windows
+description: Kısıtlı vCPU sayısına sahip olabilecek Vm boyutlarını listeler.
 services: virtual-machines-windows
 documentationcenter: ''
 author: joelpelley
@@ -14,13 +14,13 @@ ms.workload: infrastructure-services
 ms.date: 03/09/2018
 ms.author: jonbeck
 ms.openlocfilehash: 4121da405c2700e09bf22d1e7b42fbdc5cdc35a7
-ms.sourcegitcommit: 3c925b84b5144f3be0a9cd3256d0886df9fa9dc0
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/28/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77912843"
 ---
-# <a name="constrained-vcpu-capable-vm-sizes"></a>Kısıtlanmış vCPU özellikli VM boyutları
+# <a name="constrained-vcpu-capable-vm-sizes"></a>Kısıtlı vCPU özellikli VM boyutları
 
 
 [!INCLUDE [virtual-machines-common-sizes-general](../../../includes/virtual-machines-common-constrained-vcpu.md)]
@@ -34,5 +34,5 @@ ms.locfileid: "77912843"
 - [Yüksek performanslı işlem](sizes-hpc.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Azure [işlem birimlerinin (ACU)](acu.md) Azure SKU 'ları genelinde işlem performansını karşılaştırmanıza nasıl yardımcı olabileceğini öğrenin.
+Azure bilgi [işlem birimlerinin (ACU)](acu.md) Azure SK'leri genelinde bilgi işlem performansını karşılaştırmanıza nasıl yardımcı olabileceği hakkında daha fazla bilgi edinin.
 
