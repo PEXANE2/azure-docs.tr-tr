@@ -1,6 +1,6 @@
 ---
-title: HDInsight 'ta Hadoop Hizmetleri tarafından kullanılan bağlantı noktaları-Azure
-description: Bu makale, Azure HDInsight 'ta çalışan Apache Hadoop Hizmetleri tarafından kullanılan bağlantı noktalarının bir listesini sağlar
+title: HDInsight'ta Hadoop hizmetleri tarafından kullanılan bağlantı noktaları - Azure
+description: Bu makale, Azure HDInsight'ta çalışan Apache Hadoop hizmetleri tarafından kullanılan bağlantı noktalarının bir listesini sağlar
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,60 +9,60 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.openlocfilehash: 67cafbb7934381cd4c2936d6e6dfe7fb19d70735
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76314700"
 ---
-# <a name="ports-used-by-apache-hadoop-services-on-hdinsight"></a>HDInsight üzerinde Apache Hadoop Hizmetleri tarafından kullanılan bağlantı noktaları
+# <a name="ports-used-by-apache-hadoop-services-on-hdinsight"></a>HDInsight'ta Apache Hadoop hizmetleri tarafından kullanılan bağlantı noktaları
 
-Bu belge, HDInsight kümelerinde çalışan Apache Hadoop Hizmetleri tarafından kullanılan bağlantı noktalarının bir listesini sağlar. Ayrıca, SSH kullanarak kümeye bağlanmak için kullanılan bağlantı noktaları hakkında bilgi sağlar.
+Bu belge, HDInsight kümelerinde çalışan Apache Hadoop hizmetleri tarafından kullanılan bağlantı noktalarının bir listesini sağlar. Ayrıca SSH kullanarak kümeye bağlanmak için kullanılan bağlantı noktaları hakkında bilgi sağlar.
 
-## <a name="public-ports-vs-non-public-ports"></a>Genel bağlantı noktaları ile genel olmayan bağlantı noktaları
+## <a name="public-ports-vs-non-public-ports"></a>Ortak bağlantı noktaları ve halka açık olmayan bağlantı noktaları
 
-Linux tabanlı HDInsight kümeleri yalnızca, internet üzerinde yalnızca üç bağlantı noktasını genel kullanıma sunar; 22, 23 ve 443. Bu bağlantı noktaları, güvenli HTTPS protokolü üzerinden kullanıma sunulan SSH ve hizmetler kullanılarak kümeye güvenli bir şekilde erişmek için kullanılır.
+Linux tabanlı HDInsight kümeleri yalnızca internet üzerinde üç bağlantı noktasını herkese açık olarak ortaya çıkarır; 22, 23 ve 443. Bu bağlantı noktaları, SSH ve güvenli HTTPS protokolü üzerinde açığa çıkan hizmetleri kullanarak kümeye güvenli bir şekilde erişmek için kullanılır.
 
-HDInsight, Azure sanal ağı üzerinde çalışan çeşitli Azure sanal makineleri (küme içindeki düğümler) tarafından uygulanır. Sanal ağ içinden Internet üzerinden gösterilmeyen bağlantı noktalarına erişebilirsiniz. Örneğin, SSH kullanarak baş düğümlerden birine bağlanıyorsanız, baş düğümden, küme düğümlerinde çalışan hizmetlere doğrudan erişebilirsiniz.
+Dahili olarak, HDInsight, bir Azure Sanal Ağı'nda çalışan birkaç Azure Sanal Makinesi (küme içindeki düğümler) tarafından uygulanır. Sanal ağ içinden, internet üzerinden maruz olmayan bağlantı noktalarına erişebilirsiniz. Örneğin, SSH kullanarak kafa düğümlerinden birine bağlanırsanız, kafa düğümünden küme düğümleri üzerinde çalışan hizmetlere doğrudan erişebilirsiniz.
 
 > [!IMPORTANT]  
-> HDInsight için bir Azure sanal ağı yapılandırma seçeneği olarak belirtmezseniz, biri otomatik olarak oluşturulur. Ancak, diğer makinelere (diğer Azure sanal makineleri veya istemci geliştirme makineniz gibi) bu sanal ağa katılamaz.
+> HDInsight için yapılandırma seçeneği olarak bir Azure Sanal Ağı belirtmezseniz, otomatik olarak oluşturulur. Ancak, diğer makinelere (diğer Azure Sanal Makineleri veya istemci geliştirme makineniz gibi) bu sanal ağa katılamazsınız.
 
-Sanal ağa ek makineler katmak için önce sanal ağı oluşturmanız ve ardından HDInsight kümenizi oluştururken belirtmeniz gerekir. Daha fazla bilgi için bkz. [HDInsight için bir sanal ağ planlayın](hdinsight-plan-virtual-network-deployment.md).
+Sanal ağa ek makinelere katılmak için önce sanal ağı oluşturmanız ve ardından HDInsight kümenizi oluştururken belirtmeniz gerekir. Daha fazla bilgi için [HDInsight için sanal ağ planı'na](hdinsight-plan-virtual-network-deployment.md)bakın.
 
 ## <a name="public-ports"></a>Ortak bağlantı noktaları
 
-HDInsight kümesindeki tüm düğümler bir Azure sanal ağında bulunur ve doğrudan internet 'ten erişilemez. Ortak ağ geçidi, tüm HDInsight küme türlerinde ortak olan aşağıdaki bağlantı noktalarına internet erişimi sağlar.
+HDInsight kümesindeki tüm düğümler bir Azure Sanal Ağı'nda bulunur ve internetten doğrudan erişilemez. Ortak ağ geçidi, tüm HDInsight küme türlerinde yaygın olan aşağıdaki bağlantı noktalarına internet erişimi sağlar.
 
 | Hizmet | Bağlantı noktası | Protokol | Açıklama |
 | --- | --- | --- | --- |
-| SSHD |22 |SSH |İstemcileri birincil headnode üzerinde SSHD 'ye bağlar. Daha fazla bilgi için bkz. [HDInsight ile SSH kullanma](hdinsight-hadoop-linux-use-ssh-unix.md). |
-| SSHD |22 |SSH |İstemcileri kenar düğümündeki SSHD 'ye bağlar. Daha fazla bilgi için bkz. [HDInsight ile SSH kullanma](hdinsight-hadoop-linux-use-ssh-unix.md). |
-| SSHD |23 |SSH |İstemcileri ikincil headnode üzerinde SSHD 'ye bağlar. Daha fazla bilgi için bkz. [HDInsight ile SSH kullanma](hdinsight-hadoop-linux-use-ssh-unix.md). |
-| Ambari |443 |HTTPS |Ambarı Web Kullanıcı arabirimi. Bkz [. Apache ambarı Web Kullanıcı arabirimini kullanarak HDInsight 'ı yönetme](hdinsight-hadoop-manage-ambari.md) |
-| Ambari |443 |HTTPS |Ambarı REST API. Bkz [. Apache ambarı 'nı kullanarak HDInsight 'ı yönetme REST API](hdinsight-hadoop-manage-ambari-rest-api.md) |
-| WebHCat |443 |HTTPS |HCatalog REST API. Bkz. [kıvrımlı Ile MapReduce kullanma](hadoop/apache-hadoop-use-mapreduce-curl.md) |
-| HiveServer2 |443 |ODBC |ODBC kullanarak Hive 'e bağlanır. Bkz. [MICROSOFT ODBC sürücüsü Ile HDInsight 'A Excel 'ı bağlama](hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md). |
-| HiveServer2 |443 |JDBC |JDBC kullanarak ApacheHive 'e bağlanır. Bkz [. HIVE JDBC sürücüsünü kullanarak HDInsight 'ta Apache Hive bağlama](hadoop/apache-hadoop-connect-hive-jdbc-driver.md) |
+| Sshd |22 |SSH |Müşterileri birincil başlıktaki sshd'ye bağlar. Daha fazla bilgi için bkz. [HDInsight ile SSH kullanma](hdinsight-hadoop-linux-use-ssh-unix.md). |
+| Sshd |22 |SSH |İstemcileri kenar düğümündeki sshd'ye bağlar. Daha fazla bilgi için bkz. [HDInsight ile SSH kullanma](hdinsight-hadoop-linux-use-ssh-unix.md). |
+| Sshd |23 |SSH |İstemcileri ikincil başlıktaki sshd'ye bağlar. Daha fazla bilgi için bkz. [HDInsight ile SSH kullanma](hdinsight-hadoop-linux-use-ssh-unix.md). |
+| Ambari |443 |HTTPS |Ambari web UI. [Apache Ambari Web UI'yi kullanarak HDInsight'ı yönetin](hdinsight-hadoop-manage-ambari.md) |
+| Ambari |443 |HTTPS |Ambari REST API. [Apache Ambari REST API'yi kullanarak HDInsight'ı yönetin](hdinsight-hadoop-manage-ambari-rest-api.md) |
+| WebHCat |443 |HTTPS |HCatalog REST API. Bkz. [Curl ile MapReduce kullanın](hadoop/apache-hadoop-use-mapreduce-curl.md) |
+| HiveServer2 |443 |ODBC |ODBC kullanarak Hive'a bağlanır. [Bkz. Microsoft ODBC sürücüsü ile Excel'i HDInsight'a bağlayın.](hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md) |
+| HiveServer2 |443 |JDBC |JDBC kullanarak ApacheHive bağlanır. [Hive JDBC sürücüsünü kullanarak HDInsight'ta Apache Hive'a Bağlan'a](hadoop/apache-hadoop-connect-hive-jdbc-driver.md) bakın |
 
-Aşağıdakiler, belirli küme türleri için kullanılabilir:
+Belirli küme türleri için aşağıdakiler kullanılabilir:
 
 | Hizmet | Bağlantı noktası | Protokol | Küme türü | Açıklama |
 | --- | --- | --- | --- | --- |
-| Stargate |443 |HTTPS |HBase |HBase REST API. Bkz. [Apache HBase kullanmaya başlama](hbase/apache-hbase-tutorial-get-started-linux.md) |
-| Livy |443 |HTTPS |Spark |Spark REST API. Bkz. [Apache Spark Işlerini Apache Livy kullanarak uzaktan gönderme](spark/apache-spark-livy-rest-interface.md) |
-| Spark Thrift sunucusu |443 |HTTPS |Spark |Hive sorguları göndermek için kullanılan Spark Thrift sunucusu. Bkz. [HDInsight üzerinde Apache Hive Beeline kullanma](hadoop/apache-hadoop-use-hive-beeline.md) |
-| Storm |443 |HTTPS |Storm |Fırtınası Web Kullanıcı arabirimi. Bkz. [HDInsight 'ta Apache Storm topolojilerini dağıtma ve yönetme](storm/apache-storm-deploy-monitor-topology-linux.md) |
-| Kafka Rest proxy |443 |HTTPS |Kafka |Kafka REST API. Bkz. [rest proxy kullanarak Azure HDInsight 'ta Apache Kafka kümeleriyle etkileşim kurma](kafka/rest-proxy.md) |
+| Yıldız geçidi |443 |HTTPS |HBase |HBase REST API. Bkz. [Apache HBase'i kullanmaya başlayın](hbase/apache-hbase-tutorial-get-started-linux.md) |
+| Livy |443 |HTTPS |Spark |Kıvılcım REST API. Bkz. [Apache Livy'yi kullanarak Apache Spark işlerini uzaktan gönder](spark/apache-spark-livy-rest-interface.md) |
+| Kıvılcım Tutumlu sunucu |443 |HTTPS |Spark |Spark Thrift sunucusu Hive sorguları göndermek için kullanılır. [HDInsight'ta Apache Hive ile Beeline Kullanın](hadoop/apache-hadoop-use-hive-beeline.md) |
+| Storm |443 |HTTPS |Storm |Fırtına web ui. [HDInsight'ta Apache Storm topolojilerini dağıtın ve yönetin](storm/apache-storm-deploy-monitor-topology-linux.md) |
+| Kafka Rest vekil |443 |HTTPS |Kafka |Kafka REST API. [REST proxy kullanarak Azure HDInsight'taki Apache Kafka kümeleriyle etkileşime](kafka/rest-proxy.md) bakın |
 
-### <a name="authentication"></a>Kimlik Doğrulaması
+### <a name="authentication"></a>Kimlik doğrulaması
 
-İnternet 'te genel olarak kullanıma sunulan tüm hizmetlerin kimliği doğrulanmalıdır:
+Internet'te herkese açık tüm hizmetlerin kimlik doğrulaması yapılmalıdır:
 
-| Bağlantı noktası | Kimlik bilgileri |
+| Bağlantı noktası | Kimlik Bilgileri |
 | --- | --- |
 | 22 veya 23 |Küme oluşturma sırasında belirtilen SSH kullanıcı kimlik bilgileri |
-| 443 |Küme oluşturma sırasında ayarlanan oturum açma adı (varsayılan: yönetici) ve parola |
+| 443 |Küme oluşturma sırasında ayarlanan giriş adı (varsayılan: yönetici) ve parola |
 
 ## <a name="non-public-ports"></a>Genel olmayan bağlantı noktaları
 
@@ -70,104 +70,104 @@ Aşağıdakiler, belirli küme türleri için kullanılabilir:
 > Bazı hizmetler yalnızca belirli küme türlerinde kullanılabilir. Örneğin, HBase yalnızca HBase küme türlerinde kullanılabilir.
 
 > [!IMPORTANT]  
-> Bazı hizmetler tek seferde yalnızca bir baş düğümüne üzerinde çalışır. Birincil baş düğümüne üzerinde hizmete bağlanmaya ve bir hata almaya çalışırsanız, ikincil yayın düğümünü kullanmayı deneyin.
+> Bazı hizmetler aynı anda yalnızca bir headnode çalışır. Birincil başlıktaki servise bağlanmaya çalışır ve bir hata alırsanız, ikincil başlığı kullanmayı yeniden deneyin.
 
 ### <a name="ambari"></a>Ambari
 
 | Hizmet | Düğümler | Bağlantı noktası | URL yolu | Protokol |
 | --- | --- | --- | --- | --- |
-| Ambarı Web Kullanıcı arabirimi | Baş düğümler | 8080 | / | HTTP |
-| Ambarı REST API | Baş düğümler | 8080 | /api/v1 | HTTP |
+| Ambari web UI | Kafa düğümleri | 8080 | / | HTTP |
+| Ambari REST API | Kafa düğümleri | 8080 | /api/v1 | HTTP |
 
 Örnekler:
 
-* Ambarı REST API: `curl -u admin "http://10.0.0.11:8080/api/v1/clusters"`
+* Ambari REST API:`curl -u admin "http://10.0.0.11:8080/api/v1/clusters"`
 
-### <a name="hdfs-ports"></a>Bağlantı noktaları
-
-| Hizmet | Düğümler | Bağlantı noktası | Protokol | Açıklama |
-| --- | --- | --- | --- | --- |
-| Süs Code Web Kullanıcı arabirimi |Baş düğümler |30070 |HTTPS |Durumu görüntülemek için Web Kullanıcı arabirimi |
-| Süs Code meta veri hizmeti |baş düğümler |8020 |'YI |Dosya sistemi meta verileri |
-| Batanode |Tüm çalışan düğümleri |30075 |HTTPS |Durumu, günlükleri vb. görüntülemek için Web Kullanıcı arabirimi |
-| Batanode |Tüm çalışan düğümleri |30010 |&nbsp; |Veri aktarımı |
-| Batanode |Tüm çalışan düğümleri |30020 |'YI |Meta veri işlemleri |
-| İkincil süs Yot |Baş düğümler |50090 |HTTP |Süs Code meta verileri için kontrol noktası |
-
-### <a name="yarn-ports"></a>YARN bağlantı noktaları
+### <a name="hdfs-ports"></a>HDFS bağlantı noktaları
 
 | Hizmet | Düğümler | Bağlantı noktası | Protokol | Açıklama |
 | --- | --- | --- | --- | --- |
-| Kaynak Yöneticisi Web Kullanıcı arabirimi |Baş düğümler |8088 |HTTP |Kaynak Yöneticisi için Web Kullanıcı arabirimi |
-| Kaynak Yöneticisi Web Kullanıcı arabirimi |Baş düğümler |8090 |HTTPS |Kaynak Yöneticisi için Web Kullanıcı arabirimi |
-| Yönetici arabirimi Kaynak Yöneticisi |baş düğümler |8141 |'YI |Uygulama gönderimleri için (Hive, Hive Server, Pig, vb.) |
-| Kaynak Yöneticisi Zamanlayıcı |baş düğümler |8030 |HTTP |Yönetim arabirimi |
-| Kaynak Yöneticisi uygulama arabirimi |baş düğümler |8050 |HTTP |Uygulama Yöneticisi arabiriminin adresi |
-| NodeManager |Tüm çalışan düğümleri |30050 |&nbsp; |Kapsayıcı yöneticisinin adresi |
-| NodeManager Web Kullanıcı arabirimi |Tüm çalışan düğümleri |30060 |HTTP |Kaynak Yöneticisi arabirimi |
-| Zaman çizelgesi adresi |Baş düğümler |10200 |RPC |Zaman çizelgesi hizmeti RPC hizmeti. |
-| Zaman çizelgesi Web Kullanıcı arabirimi |Baş düğümler |8188 |HTTP |Zaman çizelgesi hizmeti Web Kullanıcı arabirimi |
+| NameNode web Kullanıcı Arabirimi |Kafa düğümleri |30070 |HTTPS |Durumu görüntülemek için Web UI |
+| NameNode meta veri hizmeti |baş düğümleri |8020 |ıpc |Dosya sistemi meta verileri |
+| DataNode |Tüm işçi düğümleri |30075 |HTTPS |Web UI durumu, günlükleri, vb görüntülemek için |
+| DataNode |Tüm işçi düğümleri |30010 |&nbsp; |Veri aktarımı |
+| DataNode |Tüm işçi düğümleri |30020 |ıpc |Meta veri işlemleri |
+| İkincil NameNode |Kafa düğümleri |50090 |HTTP |NameNode meta verileri için denetim noktası |
 
-### <a name="hive-ports"></a>Hive bağlantı noktaları
+### <a name="yarn-ports"></a>İplik bağlantı noktaları
 
 | Hizmet | Düğümler | Bağlantı noktası | Protokol | Açıklama |
 | --- | --- | --- | --- | --- |
-| HiveServer2 |Baş düğümler |10001 |Thrift |Hive 'e bağlanma hizmeti (Thrift/JDBC) |
-| Hive Meta Veri Deposu |Baş düğümler |9083 |Thrift |Hive meta verilerine bağlanma hizmeti (Thrift/JDBC) |
+| Kaynak Yöneticisi web UI |Kafa düğümleri |8088 |HTTP |Kaynak Yöneticisi için Web Arabirimi |
+| Kaynak Yöneticisi web UI |Kafa düğümleri |8090 |HTTPS |Kaynak Yöneticisi için Web Arabirimi |
+| Kaynak Yöneticisi yönetici arabirimi |baş düğümleri |8141 |ıpc |Başvuru gönderimleri için (Kovan, Kovan sunucusu, Domuz, vb.) |
+| Kaynak Yöneticisi zamanlayıcısı |baş düğümleri |8030 |HTTP |Yönetim arabirimi |
+| Kaynak Yöneticisi uygulama arabirimi |baş düğümleri |8050 |HTTP |Applications manager arabiriminin adresi |
+| DüğümYöneticisi |Tüm işçi düğümleri |30050 |&nbsp; |Konteyner yöneticisinin adresi |
+| NodeManager web UI |Tüm işçi düğümleri |30060 |HTTP |Kaynak Yöneticisi arabirimi |
+| Zaman çizelgesi adresi |Kafa düğümleri |10200 |RPC |Zaman çizelgesi hizmeti RPC hizmeti. |
+| Zaman çizelgesi web UI |Kafa düğümleri |8188 |HTTP |Zaman çizelgesi hizmeti web UI |
+
+### <a name="hive-ports"></a>Kovan bağlantı noktaları
+
+| Hizmet | Düğümler | Bağlantı noktası | Protokol | Açıklama |
+| --- | --- | --- | --- | --- |
+| HiveServer2 |Kafa düğümleri |10001 |Tasarruf |Hive'a bağlanma hizmeti (Thrift/JDBC) |
+| Hive Meta Veri Deposu |Kafa düğümleri |9083 |Tasarruf |Hive meta verilerine bağlanma hizmeti (Thrift/JDBC) |
 
 ### <a name="webhcat-ports"></a>WebHCat bağlantı noktaları
 
 | Hizmet | Düğümler | Bağlantı noktası | Protokol | Açıklama |
 | --- | --- | --- | --- | --- |
-| WebHCat sunucusu |Baş düğümler |30111 |HTTP |HCatalog ve diğer Hadoop hizmetlerinin üstünde Web API 'SI |
+| WebHCat sunucusu |Kafa düğümleri |30111 |HTTP |HCatalog ve diğer Hadoop hizmetlerinin üstündeki Web API'si |
 
-### <a name="mapreduce-ports"></a>MapReduce bağlantı noktaları
+### <a name="mapreduce-ports"></a>MapKüçült bağlantı noktaları
 
 | Hizmet | Düğümler | Bağlantı noktası | Protokol | Açıklama |
 | --- | --- | --- | --- | --- |
-| JobHistory |Baş düğümler |19888 |HTTP |MapReduce JobHistory Web Kullanıcı arabirimi |
-| JobHistory |Baş düğümler |10020 |&nbsp; |MapReduce JobHistory sunucusu |
-| Karıştırılmış Lehandler |&nbsp; |13562 |&nbsp; |Ara eşleme çıkışlarını istek azaltıcının 'e aktarır |
+| İş Geçmişi |Kafa düğümleri |19888 |HTTP |MapReduce JobHistory web UI |
+| İş Geçmişi |Kafa düğümleri |10020 |&nbsp; |MapReduce JobHistory sunucusu |
+| ShuffleHandler |&nbsp; |13562 |&nbsp; |Ara Harita çıktılarını isteyen Azaltıcılara aktarın |
 
 ### <a name="oozie"></a>Oozie
 
 | Hizmet | Düğümler | Bağlantı noktası | Protokol | Açıklama |
 | --- | --- | --- | --- | --- |
-| Oozie sunucusu |Baş düğümler |11000 |HTTP |Oozie hizmeti URL 'SI |
-| Oozie sunucusu |Baş düğümler |11001 |HTTP |Oozie Yöneticisi için bağlantı noktası |
+| Oozie sunucusu |Kafa düğümleri |11000 |HTTP |Oozie hizmeti için URL |
+| Oozie sunucusu |Kafa düğümleri |11001 |HTTP |Oozie admin için Bağlantı Noktası |
 
 ### <a name="ambari-metrics"></a>Ambari Ölçümleri
 
 | Hizmet | Düğümler | Bağlantı noktası | Protokol | Açıklama |
 | --- | --- | --- | --- | --- |
-| Zaman çizelgesi (uygulama geçmişi) |Baş düğümler |6188 |HTTP |Zaman çizelgesi hizmeti Web Kullanıcı arabirimi |
-| Zaman çizelgesi (uygulama geçmişi) |Baş düğümler |30200 |RPC |Zaman çizelgesi hizmeti Web Kullanıcı arabirimi |
+| TimeLine (Uygulama geçmişi) |Kafa düğümleri |6188 |HTTP |TimeLine hizmet web UI |
+| TimeLine (Uygulama geçmişi) |Kafa düğümleri |30200 |RPC |TimeLine hizmet web UI |
 
 ### <a name="hbase-ports"></a>HBase bağlantı noktaları
 
 | Hizmet | Düğümler | Bağlantı noktası | Protokol | Açıklama |
 | --- | --- | --- | --- | --- |
-| HMaster |Baş düğümler |16000 |&nbsp; |&nbsp; |
-| HMaster Info Web Kullanıcı arabirimi |Baş düğümler |16010 |HTTP |HBase Master Web Kullanıcı arabirimi için bağlantı noktası |
-| Bölge sunucusu |Tüm çalışan düğümleri |16020 |&nbsp; |&nbsp; |
-| &nbsp; |&nbsp; |2181 |&nbsp; |İstemcilerin ZooKeeper 'e bağlanmak için kullandığı bağlantı noktası |
+| HMaster |Kafa düğümleri |16000 |&nbsp; |&nbsp; |
+| HMaster bilgi Web Web UI |Kafa düğümleri |16010 |HTTP |HBase Master web UI için bağlantı noktası |
+| Bölge sunucusu |Tüm işçi düğümleri |16020 |&nbsp; |&nbsp; |
+| &nbsp; |&nbsp; |2181 |&nbsp; |Müşterilerin ZooKeeper'a bağlanmak için kullandıkları bağlantı noktası |
 
-### <a name="kafka-ports"></a>Kafka bağlantı noktaları
+### <a name="kafka-ports"></a>Kafka limanları
 
 | Hizmet | Düğümler | Bağlantı noktası | Protokol | Açıklama |
 | --- | --- | --- | --- | --- |
-| 'Ndan |Çalışan düğümleri |9092 |[Kafka tel Protokolü](https://kafka.apache.org/protocol.html) |İstemci iletişimi için kullanılır |
-| &nbsp; |Zookeeper düğümleri |2181 |&nbsp; |İstemcilerin Zookeeper 'e bağlanmak için kullandığı bağlantı noktası |
-| REST proxy | Kafka yönetim düğümleri |9400 |HTTPS |[Kafka REST belirtimi](https://docs.microsoft.com/rest/api/hdinsight-kafka-rest-proxy/) |
+| Broker |İşçi düğümleri |9092 |[Kafka Tel Protokolü](https://kafka.apache.org/protocol.html) |İstemci iletişimi için kullanılır |
+| &nbsp; |Zookeeper düğümleri |2181 |&nbsp; |Müşterilerin Zookeeper'a bağlanmak için kullandıkları bağlantı noktası |
+| REST proxy | Kafka yönetim düğümleri |9400 |HTTPS |[Kafka REST şartnamesi](https://docs.microsoft.com/rest/api/hdinsight-kafka-rest-proxy/) |
 
-### <a name="spark-ports"></a>Spark bağlantı noktaları
+### <a name="spark-ports"></a>Kıvılcım bağlantı noktaları
 
 | Hizmet | Düğümler | Bağlantı noktası | Protokol | URL yolu | Açıklama |
 | --- | --- | --- | --- | --- | --- |
-| Spark Thrift sunucuları |Baş düğümler |10002 |Thrift | &nbsp; | Spark SQL 'e bağlanma hizmeti (Thrift/JDBC) |
-| Livy sunucusu | Baş düğümler | 8998 | HTTP | &nbsp; | Deyimleri, işleri ve uygulamaları çalıştırmak için hizmet |
-| Jupyter notebook | Baş düğümler | 8001 | HTTP | &nbsp; | Jupyter Not defteri Web sitesi |
+| Kıvılcım Thrift sunucuları |Kafa düğümleri |10002 |Tasarruf | &nbsp; | Spark SQL'e bağlanma hizmeti (Thrift/JDBC) |
+| Livy sunucu | Kafa düğümleri | 8998 | HTTP | &nbsp; | Ekstreleri, işleri ve uygulamaları çalıştırmak için hizmet |
+| Jupyter dizüstü bilgisayar | Kafa düğümleri | 8001 | HTTP | &nbsp; | Jupyter dizüstü bilgisayar sitesi |
 
 Örnekler:
 
-* Livy: `curl -u admin -G "http://10.0.0.11:8998/"`. Bu örnekte `10.0.0.11`, Livy hizmetini barındıran baş düğümüne 'un IP adresidir.
+* Livy: `curl -u admin -G "http://10.0.0.11:8998/"`. Bu örnekte, `10.0.0.11` Livy hizmetini barındıran başlık IP adresidir.

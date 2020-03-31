@@ -1,6 +1,6 @@
 ---
-title: Eşleme veri akışı sıralama dönüşümü
-description: Azure Data Factory eşleme veri sıralama dönüşümü
+title: Veri akışını Sıralama Dönüştürmeyi Eşleme
+description: Azure Veri Fabrikası Haritalama Veri Sıralama Dönüşümü
 author: kromerm
 ms.author: makromer
 ms.reviewer: douglasl
@@ -9,31 +9,31 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/08/2018
 ms.openlocfilehash: c09439c5f54ae4b0884e9e25ae9a5a488f935bac
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74930217"
 ---
-# <a name="azure-data-factory-data-flow-sort-transformations"></a>Azure Data Factory veri akışı sıralama dönüşümleri
+# <a name="azure-data-factory-data-flow-sort-transformations"></a>Azure Veri Fabrikası Veri Akışı Sıralama Dönüşümleri
 
 
 
-![Sıralama ayarları](media/data-flow/sort.png "Sırala")
+![Ayarları sıralama](media/data-flow/sort.png "Sırala")
 
-Sıralama dönüştürmesi, geçerli veri akışındaki gelen satırları sıralamanıza olanak tanır. Sıralama dönüştürmesinin giden satırları daha sonra, ayarladığınız sıralama kurallarını izler. Her bir alanın yanındaki ok göstergesini kullanarak sütunları tek tek seçebilir ve ASC veya DEC olarak sıralayabilirsiniz. Sıralamayı uygulamadan önce sütunu değiştirmeniz gerekiyorsa, ifade düzenleyicisini başlatmak için "hesaplanan sütunlar" a tıklayın. Bu, sıralama için bir sütun uygulamak yerine sıralama işlemi için bir ifade oluşturmak üzere bir fırsat sağlar.
+Sıralama dönüşümü, geçerli veri akışında gelen satırları sıralamanızı sağlar. Sıralama Dönüşümü'nden giden satırlar daha sonra ayarladığınız sıralama kurallarını izler. Her alanın yanındaki ok göstergesini kullanarak tek tek sütunları seçebilir ve bunları ASC veya DEC olarak sıralayabilirsiniz. Sıralamayı uygulamadan önce sütunu değiştirmeniz gerekiyorsa, ifade düzenleyicisini başlatmak için "Hesaplanmış Sütunlar"ı tıklatın. Bu, yalnızca sıralama için bir sütun uygulamak yerine sıralama işlemi için bir ifade oluşturmak için bir fırsat sağlayacaktır.
 
 ## <a name="case-insensitive"></a>Büyük/Küçük harfe duyarsız
-Dize veya metin alanlarını sıralarken büyük/küçük harfi yoksaymak istiyorsanız "büyük/küçük harf duyarsız" seçeneğini etkinleştirebilirsiniz.
+You can turn on "Case insensitive" if you wish to ignore case when sorting string or text fields.
 
-"Yalnızca bölümlerin Içinde sıralama" Spark veri bölümlemesini kullanır. Gelen verileri yalnızca her bölüm içinde sıralayarak, veri akışları veri akışının tamamını sıralamak yerine bölümlenmiş verileri sıralayabilir.
+"Yalnızca Bölümler İçinde Sırala" Spark veri bölümlemeden yararlanır. Gelen verileri yalnızca her bölüm içinde sıralayarak, Veri Akışları tüm veri akışını sıralamak yerine bölümlenmiş verileri sıralayabilir.
 
-Sıralama dönüştürmesinin her bir sıralama koşulu yeniden düzenlenebilir. Bu nedenle, bir sütunu sıralama önceliğinde daha yukarıya taşımanız gerekiyorsa, bu satırı farenize koyun ve sıralama listesinde daha yüksek veya daha aşağı taşıyın.
+Sıralama Dönüşümü'ndeki sıralama koşullarının her biri yeniden düzenlenebilir. Bu nedenle, bir sütunu sıralama önceliğinde daha yükseğe taşımanız gerekiyorsa, o satırı farenizle yakalayın ve sıralama listesinde daha yüksek veya daha düşük taşıyın.
 
-Sıralamaya göre bölümleme etkileri
+Sıralama üzerindeki bölümleme efektleri
 
-ADF veri akışı, birden fazla düğüm ve bölüm arasında dağıtılan verilerle büyük veri Spark kümelerinde yürütülür. Verileri aynı sırada tutmak için sıralama dönüşümüyle karşılaşırsanız, veri akışınızı mimara göre tasarlarken bunu göz önünde bulundurmanız önemlidir. Verilerinizi sonraki bir dönüşümde yeniden bölümlendirmayı seçerseniz, bu veri reshuffling nedeniyle sıralıyorsanız kaybedebilirsiniz.
+ADF Veri Akışı, birden çok düğüm ve bölüm arasında dağıtılan verilerle büyük veri Spark kümeleri üzerinde yürütülür. Verileri aynı sırada tutmak için Sıralama dönüşümüne bağlıysanız, veri akışınızı tasarlarken bunu göz önünde bulundurmanız önemlidir. Sonraki bir dönüşümde verilerinizi yeniden bölmeyi seçerseniz, verilerin bu şekilde değiştirilmesi nedeniyle sıralamanızı kaybedebilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Sıralama sonrasında, [Toplam dönüştürmeyi](data-flow-aggregate.md) kullanmak isteyebilirsiniz
+Sıralamadan [sonra, Toplu Dönüştürme'yi](data-flow-aggregate.md) kullanmak isteyebilirsiniz

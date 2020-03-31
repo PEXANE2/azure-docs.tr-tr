@@ -1,179 +1,179 @@
 ---
-title: Azure Güncelleştirme Yönetimi günlüklerini sorgulama
-description: Bu makalede, Log Analytics çalışma alanınızdaki Güncelleştirme Yönetimi günlüklerinin nasıl sorgulanacağını açıklar.
+title: Azure Güncelleştirme Yönetimi günlüklerini sorgula
+description: Bu makalede, Log Analytics çalışma alanınızda Güncelleştirme Yönetimi günlüklerinin nasıl sorgulanır.
 services: automation
 ms.subservice: update-management
 ms.date: 03/11/2020
 ms.topic: conceptual
 ms.openlocfilehash: f31168d47f31d8e740c95cb3d9e449f473cc78dc
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79216838"
 ---
-# <a name="query-update-records-for-update-management-in-azure-monitor-logs"></a>Azure Izleyici günlüklerinde Güncelleştirme Yönetimi için sorgu güncelleştirme kayıtları
+# <a name="query-update-records-for-update-management-in-azure-monitor-logs"></a>Azure Monitör Günlüklerinde Güncelleştirme Yönetimi kayıtlarını sorgula
 
-Güncelleştirme Yönetimi çözümünde sunulan ayrıntılara ek olarak, Log Analytics çalışma alanınızda depolanan günlüklere göre arama yapabilirsiniz. Çözüm sayfasında, sol taraftaki bölmede **Günlükler**' i seçin. **Günlük araması** sayfası açılır.
+Güncelleme Yönetimi çözümünde sağlanan ayrıntılara ek olarak, Log Analytics çalışma alanınızda depolanan günlüklere karşı arama yapabilirsiniz. Çözüm sayfasından, sol bölmede **Günlükleri**seçin. **Günlük Arama** sayfası açılır.
 
-Ayrıca, bkz: [Log Analytics arama API 'si belgeleri](https://dev.loganalytics.io/)' ni ziyaret ederek sorguları özelleştirmeyi veya farklı istemcilerden daha fazlasını kullanmayı da öğrenebilirsiniz.
+Ayrıca sorguları nasıl özelleştirebileceğinizi veya farklı istemcilerden nasıl kullanacağınızı ve daha fazlasını ziyaret ederek öğrenebilirsiniz: [Log Analytics arama API belgeleri.](https://dev.loganalytics.io/)
 
 ## <a name="update-records"></a>Güncelleştirme kayıtları
 
-Windows ve Linux VM 'Ler için Güncelleştirme Yönetimi tarafından toplanan kayıtlar ve günlük araması sonuçlarında görünen veri türleri. Aşağıdaki bölümlerde bu kayıtlar açıklanır.
+Windows ve Linux VM'leri için Güncelleştirme Yönetimi tarafından toplanan kayıtlar ve günlük arama sonuçlarında görünen veri türleri. Aşağıdaki bölümlerde bu kayıtlar açıklayınız.
 
-### <a name="required-updates"></a>Gerekli güncelleştirmeler
+### <a name="required-updates"></a>Zorunlu güncelleştirmeler
 
-Bir makine için gereken güncelleştirmeleri temsil eden `RequiredUpdate` türünde bir kayıt oluşturulur. Bu kayıtlar aşağıdaki tabloda özelliklere sahiptir:
+Bir makine tarafından `RequiredUpdate` gerekli güncelleştirmeleri temsil eden bir türe sahip bir kayıt oluşturulur. Bu kayıtların özellikleri aşağıdaki tabloda dır:
 
 | Özellik | Açıklama | 
 |----------|-------------|
-| Bilgisayar | Raporlama makinesinin tam etki alanı adı. |
-| KBID | Windows Update Bilgi Bankası makalesi KIMLIĞI. |
-| ManagementGroupName | Operations Manager yönetim grubunun veya Log Analytics çalışma alanının adı. | 
+| Bilgisayar | Raporlama makinesinin tam nitelikli alan adı. |
+| KBID | Windows güncelleştirmesi için bilgi temel makale kimliği. |
+| ManagementGroupName | Operasyon Yöneticisi yönetim grubunun veya Log Analytics çalışma alanının adı. | 
 | Ürün | Güncelleştirmenin geçerli olduğu ürünler. | 
-| PublishDate | Güncelleştirmenin Windows Update indirilmeye ve yüklenmeye hazırlanma tarihi. |
+| PublishDate | Güncelleştirmenin Windows Update'ten indirilip yüklenmeye hazır olduğu tarih. |
 | Sunucu | | 
-| Sourcehealthserviceıd | Log Analytics Windows Agent KIMLIĞINI temsil eden benzersiz tanımlayıcı. |
+| KaynakHealthServiceId | Log Analytics Windows aracı kimliği'ni temsil eden benzersiz tanımlayıcı. |
 | SourceSystem | *OperationsManager* | 
-| TenantId | Azure Active Directory kurumları örneğinizi temsil eden benzersiz tanımlayıcı. | 
+| TenantId | Kuruluşlarınizin Azure Etkin Dizini örneğini temsil eden benzersiz tanımlayıcı. | 
 | TimeGenerated | Kaydın oluşturulduğu tarih ve saat. | 
 | Tür | *Güncelleştirme* | 
-| UpdateClassification | Uygulanabilecek güncelleştirmelerin türünü gösterir. Windows için:<br> *Kritik güncelleştirmeler*<br> *Güvenlik güncelleştirmeleri*<br> *Güncelleştirme paketleri*<br> *Özellik paketleri*<br> *Hizmet paketleri*<br> *Tanım güncelleştirmeleri*<br> *Araçlar*<br> *Güncelleştirmeler*. Linux için:<br> *Kritik güncelleştirmeler ve güvenlik güncelleştirmeleri*<br> *Diğer* |
-| Updateönem derecesi | Güvenlik Açığı için önem derecesi. Değerler şunlardır:<br> *Başlatma*<br> *Önemli*<br> *Düzey*<br> *Zayıf* |
-| UpdateTitle | Güncelleştirme başlığı.|
+| Güncelleme Sınıflandırması | Uygulanabilecek güncelleştirmelerin türünü gösterir. Windows için:<br> *Kritik güncellemeler*<br> *Güvenlik güncelleştirmeleri*<br> *Güncelleştirme paketleri*<br> *Özellik paketleri*<br> *Hizmet paketleri*<br> *Tanım güncelleştirmeleri*<br> *Araçlar*<br> *Güncelleştirmeler*. Linux için:<br> *Kritik güncelleştirmeler ve güvenlik güncelleştirmeleri*<br> *Diğer* |
+| UpdateSeverity | Güvenlik açığı için önem derecesi. Değerler şunlardır:<br> *Kritik*<br> *Önemli*<br> *Orta*<br> *Düşük* |
+| Güncelleme Başlığı | Güncelleştirmenin başlığı.|
 
-### <a name="update"></a>Güncelleştir
+### <a name="update"></a>Güncelleştirme
 
-Bir makine için kullanılabilir güncelleştirmeleri ve bunların yükleme durumlarını temsil eden `Update` türünde bir kayıt oluşturulur. Bu kayıtlar aşağıdaki tabloda özelliklere sahiptir:
+Kullanılabilir güncelleştirmeleri ve `Update` bir makine için kurulum durumlarını temsil eden bir türe sahip bir kayıt oluşturulur. Bu kayıtların özellikleri aşağıdaki tabloda dır:
 
 | Özellik | Açıklama | 
 |----------|-------------|
-| ApprovalSource | Yalnızca Windows işletim sistemi için geçerlidir. Değer *Microsoft Update*. |
-| Onaylandı | *True* veya *false* |
+| OnayKaynak | Yalnızca Windows işletim sistemi için geçerlidir. Değer *Microsoft*Update'tir. |
+| Onaylandı | *Doğru* veya *Yanlış* |
 | Sınıflandırma | *Güncelleştirmeler* |
-| Bilgisayar | Raporlama makinesinin tam etki alanı adı. |
-| Bilgisayar ortamı | *Azure* veya *Azure dışı*. |
-| MSRCBulletinID | Güvenlik Bülteni KIMLIK numarası | 
-| MSRCSeverity | Güvenlik Açığı için önem derecesi. Değerler şunlardır:<br> *Başlatma*<br> *Önemli*<br> *Düzey*<br> *Zayıf* |  
-| KBID | Windows Update Bilgi Bankası makalesi KIMLIĞI. |
-| ManagementGroupName | Operations Manager yönetim grubunun veya Log Analytics çalışma alanının adı. |
-| UpdateID | Yazılım güncelleştirmesinin benzersiz tanıtıcısı. |
-| RevisionNumber | Bir güncelleştirmenin belirli bir düzeltmesine ait düzeltme numarası. |
-| İsteğe bağlı | *True* veya *false* | 
-| RebootBehavior | Bir güncelleştirmeyi yükledikten/kaldırdıktan sonra yeniden başlatma davranışı. |
-| _ResourceId | Kaydın ilişkilendirildiği kaynak için benzersiz tanımlayıcı. |
+| Bilgisayar | Raporlama makinesinin tam nitelikli alan adı. |
+| BilgisayarOrtamı | *Azure* veya *Azure'suz.* |
+| MSRCBulletinID | Güvenlik bülteni kimlik numarası | 
+| MSRCSeverity | Güvenlik açığı için önem derecesi. Değerler şunlardır:<br> *Kritik*<br> *Önemli*<br> *Orta*<br> *Düşük* |  
+| KBID | Windows güncelleştirmesi için bilgi temel makale kimliği. |
+| ManagementGroupName | Operasyon Yöneticisi yönetim grubunun veya Log Analytics çalışma alanının adı. |
+| UpdateID | Yazılım güncelleştirmesinin benzersiz tanımlayıcısı. |
+| RevisionNumber | Bir güncelleştirmenin belirli bir revizyonunun düzeltme numarası. |
+| İsteğe bağlı | *Doğru* veya *Yanlış* | 
+| RebootBehavior | Güncelleştirmeyi yükledikten/kaldırmadan sonra yeniden başlatma davranışı. |
+| _ResourceId | Kaydın ilişkili olduğu kaynak için benzersiz tanımlayıcı. |
 | Tür | *Güncelleştirme* |
 | VMUUID | Sanal makine için benzersiz tanımlayıcı. |
 | MG | Yönetim grubu veya Log Analytics çalışma alanı için benzersiz tanımlayıcı. | 
-| TenantId | Azure Active Directory kurumları örneğinizi temsil eden benzersiz tanımlayıcı. | 
+| TenantId | Kuruluşlarınizin Azure Etkin Dizini örneğini temsil eden benzersiz tanımlayıcı. | 
 | SourceSystem | *OperationsManager* | 
 | TimeGenerated | Kaydın oluşturulduğu tarih ve saat. | 
 | SourceComputerId | Kaynak bilgisayarı temsil eden benzersiz tanımlayıcı. | 
-| Başlık | Güncelleştirme başlığı. |
-| PublishedDate (UTC) | Güncelleştirmenin Windows Update indirilmeye ve yüklenmeye hazırlanma tarihi.  |
+| Başlık | Güncelleştirmenin başlığı. |
+| Yayın Tarihi (UTC) | Güncelleştirmenin Windows Update'ten indirilip yüklenmeye hazır olduğu tarih.  |
 | UpdateState | Güncelleştirmenin geçerli durumu. | 
 | Ürün | Güncelleştirmenin geçerli olduğu ürünler. |
-| kaynak grubundaki | Azure aboneliğinin benzersiz tanımlayıcısı. | 
-| adlı yönetilen örnek, | Kaynağın üyesi olduğu kaynak grubunun adı. | 
+| SubscriptionId | Azure aboneliğinin benzersiz tanımlayıcısı. | 
+| ResourceGroup | Kaynağın üyesi olduğu kaynak grubunun adı. | 
 | ResourceProvider | Kaynak sağlayıcısını belirtir. | 
 | Kaynak | Kaynağın adı. | 
 | ResourceType | Kaynak türünün adı. | 
 
-### <a name="update-agent"></a>Aracıyı Güncelleştir
+### <a name="update-agent"></a>Temsilciyi Güncelle
 
-Makinedeki güncelleştirme aracısının ayrıntılarını sağlayan `UpdateAgent` türünde bir kayıt oluşturulur. Bu kayıtlar aşağıdaki tabloda özelliklere sahiptir:
+Makinedeki güncelleştirme aracısının ayrıntılarını sağlayan bir türe `UpdateAgent` sahip bir kayıt oluşturulur. Bu kayıtların özellikleri aşağıdaki tabloda dır:
 
 | Özellik | Açıklama | 
 |----------|-------------|
-| AgeofOldestMissingRequiredUpdate | | 
-| AutomaticUpdateEnabled | | 
-| Bilgisayar | Raporlama makinesinin tam etki alanı adı. |
-| Daysıncelastupdatebucket | | 
-| ManagementGroupName | Operations Manager yönetim grubunun veya Log Analytics çalışma alanının adı. |
-| İşletim sistemi sürümü | İşletim sisteminin sürümü. |
+| AgeofOldestMissingGerekliUpdate | | 
+| Otomatik Güncelleştirme Etkin | | 
+| Bilgisayar | Raporlama makinesinin tam nitelikli alan adı. |
+| DaySinceLastUpdateBucket | | 
+| ManagementGroupName | Operasyon Yöneticisi yönetim grubunun veya Log Analytics çalışma alanının adı. |
+| OSVersion | İşletim sisteminin sürümü. |
 | Sunucu | |
-| Sourcehealthserviceıd | Log Analytics Windows Agent KIMLIĞINI temsil eden benzersiz tanımlayıcı. |
+| KaynakHealthServiceId | Log Analytics Windows aracı kimliği'ni temsil eden benzersiz tanımlayıcı. |
 | SourceSystem | *OperationsManager* | 
-| TenantId | Azure Active Directory kurumları örneğinizi temsil eden benzersiz tanımlayıcı. |
+| TenantId | Kuruluşlarınizin Azure Etkin Dizini örneğini temsil eden benzersiz tanımlayıcı. |
 | TimeGenerated | Kaydın oluşturulduğu tarih ve saat. |
 | Tür | *Güncelleştirme* | 
 | WindowsUpdateAgentVersion | Windows Update aracısının sürümü. |
-| WSUSServer | Windows Update aracısında sorun gidermeye yardımcı olmak için bir sorun varsa hataları gösterir. |
+| WSUSServer | Windows Update aracısının sorun giderme de yardımcı olmak için bir sorun varsa hataları gösterir. |
 
-### <a name="update-deployment-status"></a>Güncelleştirme dağıtım durumu 
+### <a name="update-deployment-status"></a>Dağıtım Durumunu Güncelleştir 
 
-Makine tarafından zamanlanmış bir dağıtımın güncelleştirme dağıtım durumunu sağlayan `UpdateRunProgress` türünde bir kayıt oluşturulur. Bu kayıtlar aşağıdaki tabloda özelliklere sahiptir:
+Makine tarafından zamanlanan `UpdateRunProgress` bir dağıtımın güncelleştirme dağıtım durumunu sağlayan bir türe sahip bir kayıt oluşturulur. Bu kayıtların özellikleri aşağıdaki tabloda dır:
 
 | Özellik | Açıklama | 
 |----------|-------------|
-| Bilgisayar | Raporlama makinesinin tam etki alanı adı. |
-| Bilgisayar ortamı | *Azure* veya *Azure dışı*. | 
-| CorrelationId | Güncelleştirme için çalışan runbook işinin benzersiz tanıtıcısı. |
-| EndTime | Eşitleme işleminin sona erdiği zaman. | 
-| ErrorResult | Bir güncelleştirme yüklenemediğinde Windows Update hata kodu oluşturulur. | 
-| Yüklemedurumu | İstemci bilgisayarda bir güncelleştirmenin olası yükleme durumları, *devam ediyor*, *kısmen başarısız oldu*. *Succeeded* |
-| KBID | Windows Update Bilgi Bankası makalesi KIMLIĞI. | 
-| ManagementGroupName | Operations Manager yönetim grubunun veya Log Analytics çalışma alanının adı. |
-| OSType | İşletim sisteminin, *Windows* veya *Linux*'un türünü belirtir. | 
+| Bilgisayar | Raporlama makinesinin tam nitelikli alan adı. |
+| BilgisayarOrtamı | *Azure* veya *Azure'suz.* | 
+| CorrelationId | Güncelleştirme için runbook iş çalıştırın benzersiz tanımlayıcısı. |
+| EndTime | Eşitleme işleminin sona erdirilmesi zamanı. | 
+| Hata Sonucu | Güncelleştirme yüklenmezse oluşturulan Windows Update hata kodu. | 
+| Kurulum Durumu | İstemci bilgisayarda bir güncelleştirmenin olası yükleme durumları, *Devam eden*, *Başarılı*, Kısmen *başarısız oldu.* |
+| KBID | Windows güncelleştirmesi için bilgi temel makale kimliği. | 
+| ManagementGroupName | Operasyon Yöneticisi yönetim grubunun veya Log Analytics çalışma alanının adı. |
+| OSType | İşletim sisteminin, *Windows'un* veya *Linux'un*türünü belirtir. | 
 | Ürün | Güncelleştirmenin geçerli olduğu ürünler. |
 | Kaynak | Kaynağın adı. | 
-| ResourceId | Kaydın ilişkilendirildiği kaynak için benzersiz tanımlayıcı. |
+| ResourceId | Kaydın ilişkili olduğu kaynak için benzersiz tanımlayıcı. |
 | ResourceProvider | Kaynak sağlayıcısını belirtir. | 
 | ResourceType | Kaynak türünün adı. | 
 | SourceComputerId | Kaynak bilgisayarı temsil eden benzersiz tanımlayıcı. | 
 | SourceSystem | *OperationsManager* |
-| StartTime | Güncelleştirme yüklenmek üzere zamanlandığında geçen zaman. |
-| kaynak grubundaki | Azure aboneliğinin benzersiz tanımlayıcısı. | 
-| SucceededOnRetry | İlk denemede güncelleştirme yürütmesinin başarısız olduğunu ve geçerli işlemin yeniden deneme girişimi olduğunu gösterir. |
+| StartTime | Güncelleştirmenin yüklenmesi zamanlandığında ki zaman. |
+| SubscriptionId | Azure aboneliğinin benzersiz tanımlayıcısı. | 
+| BaşarılıOnRetry | Güncelleştirme yürütmesinin ilk denemede başarısız olduğunu ve geçerli işlemin yeniden deneme girişimi olduğunu gösterir. |
 | TimeGenerated | Kaydın oluşturulduğu tarih ve saat. |
-| Başlık | Güncelleştirme başlığı. |
+| Başlık | Güncelleştirmenin başlığı. |
 | Tür | *UpdateRunProgress* |
-| UpdateID | Yazılım güncelleştirmesinin benzersiz tanıtıcısı. |
+| UpdateId | Yazılım güncelleştirmesinin benzersiz tanımlayıcısı. |
 | VMUUID | Sanal makine için benzersiz tanımlayıcı. |
-| _ResourceId | Kaydın ilişkilendirildiği kaynak için benzersiz tanımlayıcı. |
+| _ResourceId | Kaydın ilişkili olduğu kaynak için benzersiz tanımlayıcı. |
 
-### <a name="update-summary"></a>Güncelleştirme Özeti 
+### <a name="update-summary"></a>Özeti Güncelle 
 
-Makineye göre güncelleştirme Özeti sağlayan `UpdateSummary` türünde bir kayıt oluşturulur. Bu kayıtlar aşağıdaki tabloda özelliklere sahiptir:
+Makine tarafından güncelleştirme `UpdateSummary` özeti sağlayan bir türe sahip bir kayıt oluşturulur. Bu kayıtların özellikleri aşağıdaki tabloda dır:
 
 | Özellik | Açıklama | 
 |----------|-------------|
-| Bilgisayar | Raporlama makinesinin tam etki alanı adı. |
-| Bilgisayar ortamı | *Azure* veya *Azure dışı*. | 
-| CriticalUpdatesMissing | Geçerli olan eksik kritik güncelleştirme sayısı. | 
-| ManagementGroupName | Operations Manager yönetim grubunun veya Log Analytics çalışma alanının adı. |
-| NETRuntimeVersion | Windows bilgisayarda yüklü .NET Framework sürümü. |
-| OldestMissingSecurityUpdateBucket | Değerler şunlardır:<br> *Son*<br> *30 gün önce*<br> *60 gün önce*<br> *Yaş* | 
-| OldestMissingSecurityUpdateInDays | En eski güncelleştirme yüklü olmayan şekilde algılanan toplam gün sayısı. |
+| Bilgisayar | Raporlama makinesinin tam nitelikli alan adı. |
+| BilgisayarOrtamı | *Azure* veya *Azure'suz.* | 
+| CriticalUpdatesMissing | Geçerli olan kritik güncelleştirmelerin sayısı eksiktir. | 
+| ManagementGroupName | Operasyon Yöneticisi yönetim grubunun veya Log Analytics çalışma alanının adı. |
+| NETRuntimeVersion | Windows bilgisayarında yüklü .NET Framework sürümü. |
+| OldestMissingSecurityUpdateBucket | Değerler şunlardır:<br> *Son*<br> *30 gün önce*<br> *60 gün önce*<br> *Daha eski* | 
+| OldestMissingSecurityUpdateInDays | Yüklenmemiş olarak algılanan en eski güncelleştirme için toplam gün sayısı. |
 | OsVersion | İşletim sisteminin sürümü. |
 | OtherUpdatesMissing | Algılanan güncelleştirme sayısı eksik. |
 | Kaynak |  Kaynağın adı. | 
-| adlı yönetilen örnek, | Kaynağın üyesi olduğu kaynak grubunun adı. |
-| ResourceId | Kaydın ilişkilendirildiği kaynak için benzersiz tanımlayıcı. |
+| ResourceGroup | Kaynağın üyesi olduğu kaynak grubunun adı. |
+| ResourceId | Kaydın ilişkili olduğu kaynak için benzersiz tanımlayıcı. |
 | ResourceProvider | Kaynak sağlayıcısını belirtir. |
 | ResourceType | Kaynak türünün adı. |
-| RestartPending | *True* veya *false*. |
-| SecurityUpdatesMissing | Geçerli olan eksik güvenlik güncelleştirmelerinin sayısı.| 
+| Yeniden Başlatma | *Doğru* veya *Yanlış*. |
+| SecurityUpdatesMissing | Eksik güvenlik güncelleştirmeleri sayısı uygulanabilir.| 
 | SourceComputerId | Sanal makine için benzersiz tanımlayıcı. |
 | SourceSystem | *OpsManager* | 
-| kaynak grubundaki | Azure aboneliğinin benzersiz tanımlayıcısı. |
+| SubscriptionId | Azure aboneliğinin benzersiz tanımlayıcısı. |
 | TimeGenerated | Kaydın oluşturulduğu tarih ve saat. |
-| TotalUpdatesMissing | Geçerli olan eksik güncelleştirmelerin toplam sayısı. | 
+| TotalUpdatesMissing | Geçerli olan toplam eksik güncelleştirme sayısı. | 
 | Tür | *UpdateSummary* |
 | VMUUID | Sanal makine için benzersiz tanımlayıcı. |
 | WindowsUpdateAgentVersion | Windows Update aracısının sürümü. |
-| WindowsUpdateSetting | Windows Update aracısının durumunu gösterir. Olası değerler şunlardır:<br> *Zamanlanan yükleme*<br> *Yüklemeden önce bildir*<br> Sağlıksız WUA aracısından hata döndürüldü. | 
-| WSUSServer | Windows Update aracısında sorun gidermeye yardımcı olmak için bir sorun varsa hataları gösterir. |
-| _ResourceId | Kaydın ilişkilendirildiği kaynak için benzersiz tanımlayıcı. |
+| WindowsUpdateSetting | Windows Update aracısının durumunu gösterir. Olası değerler şunlardır:<br> *Zamanlanmış yükleme*<br> *Kurulumdan önce bildirin*<br> Hata sağlıksız WUA aracısından döndü. | 
+| WSUSServer | Windows Update aracısının sorun giderme de yardımcı olmak için bir sorun varsa hataları gösterir. |
+| _ResourceId | Kaydın ilişkili olduğu kaynak için benzersiz tanımlayıcı. |
 
 ## <a name="sample-queries"></a>Örnek sorgular
 
-Aşağıdaki bölümlerde, Güncelleştirme Yönetimi için toplanan güncelleştirme kayıtlarına yönelik örnek günlük sorguları sağlanmaktadır.
+Aşağıdaki bölümler, Güncelleştirme Yönetimi için toplanan güncelleştirme kayıtları için örnek günlük sorguları sağlar.
 
-### <a name="confirm-that-non-azure-machines-are-onboarded"></a>Azure olmayan makinelerin eklendi olduğunu onaylayın
+### <a name="confirm-that-non-azure-machines-are-onboarded"></a>Azure olmayan makinelerin yerleşik olduğunu doğrulayın
 
-Doğrudan bağlı makinelerin Azure Izleyici günlükleriyle iletişim kurduğunu onaylamak için aşağıdaki günlük aramalarıyla birini çalıştırın.
+Doğrudan bağlı makinelerin Azure Monitor günlükleriyle iletişim kurduğunu doğrulamak için aşağıdaki günlük aramalarından birini çalıştırın.
 
 #### <a name="linux"></a>Linux
 
@@ -189,28 +189,28 @@ Heartbeat
 | where OSType == "Windows" | summarize arg_max(TimeGenerated, *) by SourceComputerId | top 500000 by Computer asc | render table
 ```
 
-Bir Windows bilgisayarında, Azure Izleyici günlükleriyle aracı bağlantısını doğrulamak için aşağıdaki bilgileri gözden geçirebilirsiniz:
+Windows bilgisayarında, Azure Monitor günlükleriyle aracı bağlantısını doğrulamak için aşağıdaki bilgileri gözden geçirebilirsiniz:
 
-1. Denetim Masası 'nda **Microsoft Monitoring Agent**açın. **Azure Log Analytics** sekmesinde, aracı şu iletiyi görüntüler: **Microsoft Monitoring Agent Log Analytics başarıyla bağlandı**.
-2. Windows olay günlüğü 'Nü açın. **Uygulama ve hizmetler Logs\Operations Manager** ' a gidin ve kaynak **hizmeti bağlayıcısından**olay KIMLIĞI 3000 ve olay kimliği 5002 ' ni arayın. Bu olaylar, bilgisayarın Log Analytics çalışma alanına kaydoldığını ve yapılandırma aldığını gösterir.
+1. Denetim Masası'nda **Microsoft Monitoring Agent'ı**açın. Azure **Günlük Analizi** sekmesinde, aracı aşağıdaki iletiyi görüntüler: **Microsoft İzleme Aracısı Log Analytics'e başarıyla bağlanmıştır.**
+2. Windows Olay Günlüğü'nün açılışını yapın. Uygulama **ve Hizmet Günlükleri\Operasyon Yöneticisi'ne** gidin ve kaynak **Servis Bağlayıcısından**Olay Kimliği 3000 ve Olay Kimliği 5002'yi arayın. Bu olaylar, bilgisayarın Log Analytics çalışma alanına kaydolduğunu ve yapılandırmayı aldığını gösterir.
 
-Aracı Azure Izleyici günlükleriyle iletişim kuramıyorsa ve aracı bir güvenlik duvarı veya ara sunucu üzerinden internet ile iletişim kurmak üzere yapılandırılmışsa, güvenlik duvarının veya ara sunucunun düzgün yapılandırıldığını onaylayın. Güvenlik duvarının veya proxy sunucusunun düzgün bir şekilde yapılandırıldığını nasıl doğrulayacağınızı öğrenmek için bkz. [Windows Aracısı Için ağ yapılandırması](../azure-monitor/platform/agent-windows.md) veya [Linux Aracısı için ağ yapılandırması](../log-analytics/log-analytics-agent-linux.md).
+Aracı Azure Monitor günlükleriyle iletişim kuramıyorsa ve aracı bir güvenlik duvarı veya proxy sunucusu aracılığıyla Internet ile iletişim kurmak üzere yapılandırılırsa, güvenlik duvarının veya proxy sunucusunun düzgün şekilde yapılandırıldığına onaylayın. Güvenlik duvarının veya proxy sunucusunun doğru şekilde nasıl yapılandırıldığı hakkında bilgi edinmek [için, Windows aracısı için Ağ yapılandırmasına](../azure-monitor/platform/agent-windows.md) veya [Linux aracısı için Ağ yapılandırmasına](../log-analytics/log-analytics-agent-linux.md)bakın.
 
 > [!NOTE]
-> Linux sistemleriniz bir ara sunucu veya Log Analytics ağ geçidiyle iletişim kuracak şekilde yapılandırıldıysa ve bu çözümü eklediğinizde, aşağıdaki komutları kullanarak dosya üzerinde omıuser grubuna Okuma izni vermek için *proxy. conf* izinlerini güncelleştirin:
+> Linux sistemleriniz bir proxy veya Log Analytics Ağ Geçidi ile iletişim kurmak üzere yapılandırıldıysa ve bu çözüme biniyorsanız, aşağıdaki komutları kullanarak dosyadaki okuma iznini omiuser grubuna vermek için *proxy.conf* izinlerini güncelleyin:
 >
 > `sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/proxy.conf`
 > `sudo chmod 644 /etc/opt/microsoft/omsagent/proxy.conf`
 
-Yeni eklenen Linux aracıları, bir değerlendirme gerçekleştirildikten sonra **güncelleştirilmiş** durumunu gösterir. Bu işlem 6 saat kadar sürebilir.
+Yeni eklenen Linux aracıları, bir değerlendirme yapıldıktan sonra **Güncelleştirilmiş** bir durum gösterir. Bu işlem 6 saat kadar sürebilir.
 
-Operations Manager yönetim grubunun Azure Izleyici günlükleriyle iletişim kurduğunu onaylamak için bkz. [Azure izleyici günlükleriyle Operations Manager tümleştirmeyi doğrulama](../azure-monitor/platform/om-agents.md#validate-operations-manager-integration-with-azure-monitor).
+Bir Operasyon Yöneticisi yönetim grubunun Azure Monitor günlükleriyle iletişim kurduğunu doğrulamak için [Bkz.](../azure-monitor/platform/om-agents.md#validate-operations-manager-integration-with-azure-monitor)
 
-### <a name="single-azure-vm-assessment-queries-windows"></a>Tek Azure VM değerlendirme sorguları (Windows)
+### <a name="single-azure-vm-assessment-queries-windows"></a>Tek Azure VM Değerlendirme sorguları (Windows)
 
-VMUUID değerini, sorguladığınız sanal makinenin VM GUID 'SI ile değiştirin. Azure Izleyici günlüklerinde aşağıdaki sorguyu çalıştırarak kullanılması gereken VMUUID 'yi bulabilirsiniz: `Update | where Computer == "<machine name>" | summarize by Computer, VMUUID`
+VMUUID değerini, sorguladığınız sanal makinenin VM GUID değeriyle değiştirin. Azure Monitor günlüklerinde aşağıdaki sorguyu çalıştırarak kullanılması gereken VMUUID'yi bulabilirsiniz:`Update | where Computer == "<machine name>" | summarize by Computer, VMUUID`
 
-#### <a name="missing-updates-summary"></a>Eksik güncelleştirmeler Özeti
+#### <a name="missing-updates-summary"></a>Eksik güncelleştirmeler özeti
 
 ```loganalytics
 Update
@@ -235,12 +235,12 @@ Update
 | project-away ClassificationWeight, InformationId, InformationUrl
 ```
 
-### <a name="single-azure-vm-assessment-queries-linux"></a>Tek Azure VM değerlendirmesi sorguları (Linux)
+### <a name="single-azure-vm-assessment-queries-linux"></a>Tek Azure VM değerlendirme sorguları (Linux)
 
-Bazı Linux 'lar için, Azure Resource Manager ve Azure Izleyici günlüklerinde depolanan VMUUID değeri ile bir [bitiçlik](https://en.wikipedia.org/wiki/Endianness) uyumsuzluğu vardır. Aşağıdaki sorgu, her iki durumda da bir eşleşme olup olmadığını denetler. Sonuçları doğru bir şekilde döndürmek için VMUUID değerlerini, GUID 'nin büyük endian ve little-endian biçimiyle değiştirin. Azure Izleyici günlüklerinde aşağıdaki sorguyu çalıştırarak kullanılması gereken VMUUID 'yi bulabilirsiniz: `Update | where Computer == "<machine name>"
+Bazı Linux dağıtımları için, Azure Kaynak Yöneticisi'nden gelen VMUUID değeri yle ve Azure Monitor günlüklerinde depolananlarla bir [son durum uyuşmazlığı](https://en.wikipedia.org/wiki/Endianness) vardır. Aşağıdaki sorgu, her iki uçta da bir eşleşmeyi denetler. Sonuçları düzgün bir şekilde döndürmek için VMUUID değerlerini GUID'in büyük enson ve az enson formatıyla değiştirin. Azure Monitor günlüklerinde aşağıdaki sorguyu çalıştırarak kullanılması gereken VMUUID'yi bulabilirsiniz:`Update | where Computer == "<machine name>"
 | summarize by Computer, VMUUID`
 
-#### <a name="missing-updates-summary"></a>Eksik güncelleştirmeler Özeti
+#### <a name="missing-updates-summary"></a>Eksik güncelleştirmeler özeti
 
 ```loganalytics
 Update
@@ -266,9 +266,9 @@ Update
 
 ```
 
-### <a name="multi-vm-assessment-queries"></a>Çoklu VM değerlendirmesi sorguları
+### <a name="multi-vm-assessment-queries"></a>Çoklu VM değerlendirme sorguları
 
-#### <a name="computers-summary"></a>Bilgisayar Özeti
+#### <a name="computers-summary"></a>Bilgisayar özeti
 
 ```loganalytics
 Heartbeat
@@ -310,7 +310,7 @@ on SourceComputerId
 
 ```
 
-#### <a name="missing-updates-summary"></a>Eksik güncelleştirmeler Özeti
+#### <a name="missing-updates-summary"></a>Eksik güncelleştirmeler özeti
 
 ```loganalytics
 Update
@@ -411,5 +411,5 @@ Update
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Ayrıntılı güncelleştirme verilerini görüntülemek için [Azure izleyici günlüklerinde](../log-analytics/log-analytics-log-searches.md) günlük aramalarını kullanın.
-* Güncelleştirme dağıtım durumu için [uyarı oluştur](automation-tutorial-update-management.md#configure-alerts) .
+* Ayrıntılı güncelleştirme verilerini görüntülemek için [Azure Monitor günlüklerinde](../log-analytics/log-analytics-log-searches.md) günlük aramalarını kullanın.
+* Güncelleştirme dağıtım durumu için [uyarılar oluşturun.](automation-tutorial-update-management.md#configure-alerts)

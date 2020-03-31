@@ -1,6 +1,6 @@
 ---
-title: Cihaz bağlantısı olaylarını sıralama fr Azure IoT Hub w/Azure Cosmos DB
-description: Bu makalede, en son bağlantı durumunu korumak için Azure Cosmos DB kullanılarak cihaz bağlantı olaylarının Azure IoT Hub nasıl sipariş edileceğini ve kaydedilecek açıklanmaktadır
+title: Sipariş cihaz bağlantı olayları fr Azure IoT Hub w/Azure Cosmos DB
+description: Bu makalede, en son bağlantı durumunu korumak için Azure Cosmos DB kullanarak Azure IoT Hub'dan aygıt bağlantı olaylarının nasıl sıralanıp kaydedilen
 services: iot-hub
 ms.service: iot-hub
 author: ash2017
@@ -8,37 +8,37 @@ ms.topic: conceptual
 ms.date: 04/11/2019
 ms.author: asrastog
 ms.openlocfilehash: 210c2e74305ba99b4ac3a12625d0b7f5fc47ba43
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/12/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73954262"
 ---
-# <a name="order-device-connection-events-from-azure-iot-hub-using-azure-cosmos-db"></a>Azure IoT Hub cihaz bağlantısı olaylarını Azure Cosmos DB kullanarak sıralama
+# <a name="order-device-connection-events-from-azure-iot-hub-using-azure-cosmos-db"></a>Azure Cosmos DB'yi kullanarak Azure IoT Hub cihaz bağlantısı olaylarını sıralama
 
-Azure Event Grid, etkinlik tabanlı uygulamalar oluşturmanıza ve iş çözümlerinizde IoT olaylarını kolayca tümleştirmenize yardımcı olur. Bu makalede, Cosmos DB ' de en son cihaz bağlantısı durumunu izlemek ve depolamak için kullanılabilen bir kurulum adım adım açıklanmaktadır. Cihaz bağlantısı kesik ve cihaz bağlantısı kesilen olaylarda bulunan sıra numarasını kullanacağız ve en son durumu Cosmos DB olarak depolar. Cosmos DB bir koleksiyona karşı yürütülen bir uygulama mantığı olan saklı bir yordam kullanacağız.
+Azure Olay Ağıl, etkinlik tabanlı uygulamalar oluşturmanıza ve IoT olaylarını iş çözümlerinize kolayca entegre etmenize yardımcı olur. Bu makale, Cosmos DB'deki en son aygıt bağlantı durumunu izlemek ve depolamak için kullanılabilecek bir kurulumda size yol açabilirsiniz. Aygıt Bağlantısı ve Aygıt Bağlantısı Kesilen olaylarda bulunan sıra numarasını kullanacağız ve en son durumu Cosmos DB'de depolarız. Cosmos DB'deki bir koleksiyona karşı uygulanan bir uygulama mantığı olan depolanmış bir yordam kullanacağız.
 
-Sıra numarası, onaltılık bir sayının dize gösterimidir. Daha büyük sayıyı belirlemek için dize karşılaştırma kullanabilirsiniz. Dizeyi onaltılı olarak dönüştürüyorsanız sayı 256 bitlik bir sayı olacaktır. Sıra numarası kesinlikle artıyor ve en son olay diğer olaylardan daha yüksek bir sayıya sahip olacaktır. Bu, sık kullanılan cihaz bağlantısı ve bağlantınız varsa ve Azure Event Grid etkinlik sıralamasını desteklemediğinden bir aşağı akış eylemini tetiklemek için yalnızca en son olayın kullanılmasını sağlamak istiyorsanız kullanışlıdır.
+Sıra numarası, hexadecimal bir sayının dize gösterimidir. Daha büyük sayıyı tanımlamak için dize karşılaştırması kullanabilirsiniz. Dizeyi hex'e dönüştürüyorsanız, sayı 256 bitlik olacaktır. Sıra numarası kesinlikle artıyor ve en son olay diğer olaylardan daha yüksek bir sayıya sahip olacak. Bu, sık sık aygıt bağlantılarını ve bağlantı larını salar ve Azure Olay Düzeni olayların sırasını desteklemediği için yalnızca en son olayın bir akış aşağı eylemini tetiklemek için kullanıldığından emin olmak istiyorsanız yararlıdır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* Etkin bir Azure hesabı. Hesabınız yoksa [ücretsiz bir hesap oluşturabilirsiniz](https://azure.microsoft.com/pricing/free-trial/).
+* Etkin bir Azure hesabı. Hesabınız yoksa, [ücretsiz bir hesap oluşturabilirsiniz.](https://azure.microsoft.com/pricing/free-trial/)
 
-* Etkin bir Azure Cosmos DB SQL API hesabı. Henüz bir tane oluşturmadıysanız, bkz. bir anlatım için [veritabanı hesabı oluşturma](../cosmos-db/create-sql-api-java.md#create-a-database-account) .
+* Etkin bir Azure Cosmos DB SQL API hesabı. Henüz bir tane oluşturmadıysanız, [bkz.](../cosmos-db/create-sql-api-java.md#create-a-database-account)
 
-* Veritabanınızdaki bir koleksiyon. İzlenecek yol için [koleksiyon ekleme](../cosmos-db/create-sql-api-java.md#add-a-container) bölümüne bakın. Koleksiyonunuzu oluştururken bölüm anahtarı için `/id` kullanın.
+* Veritabanınızda bir koleksiyon. Bkz. Bir gözden geçirme için [koleksiyon ekle.](../cosmos-db/create-sql-api-java.md#add-a-container) Koleksiyonunuzu oluştururken, `/id` bölüm anahtarını kullanın.
 
 * Azure'da bir IoT Hub'ı. Henüz oluşturmadıysanız, yönergeler için bkz. [IoT Hub'ı kullanmaya başlama](iot-hub-csharp-csharp-getstarted.md).
 
 ## <a name="create-a-stored-procedure"></a>Saklı yordam oluşturma
 
-İlk olarak, bir saklı yordam oluşturun ve bunu, gelen olayların sıra numaralarını karşılaştıran ve veritabanındaki cihaz başına en son olayı kaydeden bir mantığı çalıştıracak şekilde ayarlayın.
+İlk olarak, depolanmış bir yordam oluşturun ve gelen olayların sıra numaralarını karşılaştıran ve veritabanında aygıt başına en son olayı kaydeden bir mantık çalıştırmak için ayarlayın.
 
-1. Cosmos DB SQL API 'niz ' nde, **Yeni saklı yordam** > **Veri Gezgini** > **öğeleri** ' ni seçin.
+1. Cosmos DB SQL API'nizde **Veri Gezgini** > **Öğeleri** > **Yeni Depolanan Yordam'ı**seçin.
 
-   ![Saklı yordam oluştur](./media/iot-hub-how-to-order-connection-state-events/create-stored-procedure.png)
+   ![Depolanmış yordam oluşturma](./media/iot-hub-how-to-order-connection-state-events/create-stored-procedure.png)
 
-2. Saklı yordam KIMLIĞI için **Latestdeviceconnectionstate** girin ve **saklı yordam gövdesinde**aşağıdakileri yapıştırın. Bu kodun, saklı yordam gövdesinde var olan herhangi bir kodu değiştirmesini unutmayın. Bu kod, cihaz KIMLIĞI başına bir satır tutar ve en yüksek sıra numarasını tanımlayarak bu cihaz KIMLIĞININ en son bağlantı durumunu kaydeder.
+2. Saklanan yordam kimliği için **En SonDeviceConnectionState'i** girin ve **Saklı Yordam gövdesine**aşağıdakileri yapıştırın. Bu kodun depolanan yordam gövdesindeki varolan kodun yerini alması gerektiğini unutmayın. Bu kod, aygıt kimliği başına bir satır tutar ve en yüksek sıra numarasını tanımlayarak bu aygıt kimliğinin en son bağlantı durumunu kaydeder.
 
     ```javascript
     // SAMPLE STORED PROCEDURE
@@ -127,38 +127,38 @@ Sıra numarası, onaltılık bir sayının dize gösterimidir. Daha büyük say�
     }
     ```
 
-3. Saklı yordamı Kaydet:
+3. Saklanan yordamı kaydedin:
 
-    ![saklı yordamı Kaydet](./media/iot-hub-how-to-order-connection-state-events/save-stored-procedure.png)
+    ![saklanan yordamı kaydetme](./media/iot-hub-how-to-order-connection-state-events/save-stored-procedure.png)
 
 ## <a name="create-a-logic-app"></a>Mantıksal uygulama oluşturma
 
-İlk olarak, bir mantıksal uygulama oluşturun ve sanal makineniz için kaynak grubunu izleyen bir Olay kılavuzu tetikleyicisi ekleyin.
+İlk olarak, bir mantıksal uygulama oluşturun ve sanal makineniz için kaynak grubunu izleyen bir Event Grid tetikleyicisi ekleyin.
 
 ### <a name="create-a-logic-app-resource"></a>Mantıksal uygulama kaynağı oluşturma
 
-1. [Azure Portal](https://portal.azure.com) **+ kaynak oluştur**' u seçin, **tümleştirme** ' i ve ardından **mantıksal uygulama**' yı seçin.
+1. Azure [portalında](https://portal.azure.com) **+Kaynak Oluştur'** seçeneğini belirleyin, **Tümleştirme'yi** seçin ve ardından **Mantık Uygulaması'nı**seçin.
 
    ![Mantıksal uygulama oluşturma](./media/iot-hub-how-to-order-connection-state-events/select-logic-app.png)
 
 2. Mantıksal uygulamanıza aboneliğiniz içinde benzersiz olan bir ad verin, ardından IoT Hub'ınızla aynı aboneliği, kaynak grubunu ve konumu seçin.
 
-   ![Yeni mantıksal uygulama](./media/iot-hub-how-to-order-connection-state-events/new-logic-app.png)
+   ![Yeni mantık uygulaması](./media/iot-hub-how-to-order-connection-state-events/new-logic-app.png)
 
-3. Mantıksal uygulamayı oluşturmak için **Oluştur** ' u seçin.
+3. Mantık uygulamasını oluşturmak için **Oluştur'u** seçin.
 
    Mantıksal uygulamanız için bir Azure kaynağı oluşturdunuz. Azure mantıksal uygulamanızı dağıttıktan sonra Logic Apps Tasarımcısı'nda hızlı bir başlangıç yapmanıza yardımcı olacak ortak desen şablonları gösterilir.
 
    > [!NOTE]
-   > Mantıksal uygulamanızı bulup açmak için **kaynak grupları** ' nı seçin ve bu nasıl yapılır için kullandığınız kaynak grubunu seçin. Ardından yeni mantıksal uygulamanızı seçin. Bu, mantıksal uygulama Tasarımcısı ' nı açar.
+   > Mantık uygulamanızı yeniden bulmak ve açmak için **Kaynak gruplarını** seçin ve bu nasıl yapılır için kullandığınız kaynak grubunu seçin. Ardından yeni mantık uygulamanızı seçin. Bu Mantık App Designer açılır.
 
-4. Mantıksal uygulama Tasarımcısı ' nda, sık kullanılan Tetikleyicileri görene kadar sağa kaydırın. Mantıksal uygulamanızı sıfırdan oluşturabilmeniz için **Şablonlar**' ın altında **boş mantıksal uygulama** ' yı seçin.
+4. Mantık Uygulama Tasarımcısı'nda, ortak tetikleyicileri görene kadar sağa kaydırın. **Şablonlar**altında, mantık uygulamanızı sıfırdan oluşturabilmeniz için **Boş Mantık Uygulaması'nı** seçin.
 
 ### <a name="select-a-trigger"></a>Tetikleyici seçme
 
 Tetikleyici, mantıksal uygulamanızı başlatan belirli bir olaydır. Bu öğreticide, iş akışını başlatan tetikleyici HTTP üzerinden bir istek alır.
 
-1. Bağlayıcılar ve Tetikleyiciler arama çubuğunda **http** yazın ve ENTER tuşuna basın.
+1. Bağlayıcılar ve tetikleyiciler arama çubuğunda **HTTP** yazın ve Enter tuşuna basın.
 
 2. Tetikleyici olarak **İstek - Bir HTTP isteği alındığında**'yı seçin.
 
@@ -166,7 +166,7 @@ Tetikleyici, mantıksal uygulamanızı başlatan belirli bir olaydır. Bu öğre
 
 3. **Şema oluşturmak için örnek yük kullanma** öğesini seçin.
 
-   ![Şema oluşturmak için örnek yük kullanma](./media/iot-hub-how-to-order-connection-state-events/sample-payload.png)
+   ![Şema oluşturmak için örnek yükü kullanma](./media/iot-hub-how-to-order-connection-state-events/sample-payload.png)
 
 4. Aşağıdaki örnek JSON kodunu metin kutusuna yapıştırın ve **Bitti**'yi seçin:
 
@@ -192,55 +192,55 @@ Tetikleyici, mantıksal uygulamanızı başlatan belirli bir olaydır. Bu öğre
    }]
    ```
 
-   ![Örnek JSON yükünü Yapıştır](./media/iot-hub-how-to-order-connection-state-events/paste-sample-payload.png)
+   ![Örnek JSON yükünü yapıştır](./media/iot-hub-how-to-order-connection-state-events/paste-sample-payload.png)
 
 5. **İsteğinize Uygulama/JSON olarak ayarlanmış bir Content-Type üst bilgisi eklemeyi unutmayın** önerisinin bulunduğu bir açılan bildirim alabilirsiniz. Bu öneriyi güvenle yoksayabilir ve sonraki bölüme geçebilirsiniz.
 
 ### <a name="create-a-condition"></a>Koşul oluşturma
 
-Mantıksal uygulama iş akışınızda, koşullar belirli bir koşulu geçirdikten sonra belirli eylemleri çalıştırmaya yardımcı olur. Koşul karşılandığında, istenen bir eylem tanımlanabilir. Bu öğretici için koşul, eventType tarafından cihazın bağlı veya cihazın bağlantısının kesilmediğini denetledir. Bu eylem, saklı yordamı veritabanınızda yürütmek olacaktır.
+Mantık uygulaması iş akışınızda, koşullar belirli bir koşulu geçtikten sonra belirli eylemlerin çalıştırılmasına yardımcı olur. Koşul karşılandıktan sonra, istenen bir eylem tanımlanabilir. Bu öğretici için koşul, eventType aygıta bağlı veya aygıt bağlantısı nın bağlı olup olmadığını denetlemektir. Eylem veritabanınızda depolanan yordamı yürütmek olacaktır.
 
-1. **+ Yeni adım** **' ı seçin ve ardından** **koşulu**bulun ve seçin. **Bir değer Seç** ' e tıklayın ve dinamik içerik ' i gösteren bir kutu açılır ve seçilebilir alanlar görüntülenir. Yalnızca cihaza bağlı ve cihaz bağlantısı kesik olayları için bunu yürütmek üzere alanları aşağıda gösterildiği gibi girin:
+1. Seçin **+ Yeni adım** sonra **Dahili**, sonra bul ve **Durum**seçin . Bir **değer seç'i** tıklatın ve dinamik içeriği gösteren bir kutu açılır -- seçilebilen alanlar. Yalnızca Aygıta Bağlı ve Aygıt Bağlantısı Kesilen olaylar için bunu yürütmek için aşağıda gösterildiği alanları doldurun:
 
-   * Değer seçin: **EventType** --bu alana tıkladığınızda görüntülenen dinamik içerikte bulunan alanlardan bunu seçin.
-   * **İle biten**"eşittir" olarak değiştirin.
-   * Bir değer seçin: **nesiyonu**.
+   * Bir değer seçin: **eventType** -- bu alana tıkladığınızda görünen dinamik içerikteki alanlardan bunu seçin.
+   * "eşittir" **ile biter.**
+   * Bir değer seçin: **nected**.
 
-     ![Fill koşulu](./media/iot-hub-how-to-order-connection-state-events/condition-detail.png)
+     ![Dolgu Durumu](./media/iot-hub-how-to-order-connection-state-events/condition-detail.png)
 
-2. **True ise** iletişim kutusunda **Eylem Ekle**' ye tıklayın.
+2. If **true** iletişim kutusunda, **eylem ekle'yi**tıklatın.
   
-   ![True ise Eylem Ekle](./media/iot-hub-how-to-order-connection-state-events/action-if-true.png)
+   ![Doğruysa eylem ekleme](./media/iot-hub-how-to-order-connection-state-events/action-if-true.png)
 
-3. Cosmos DB arayın ve **Azure Cosmos DB Çalıştır saklı yordamını** seçin
+3. Cosmos DB'yi arayın ve **Azure Cosmos DB'yi seçin - Depolanan yordamı çalıştırın**
 
-   ![CosmosDB araması](./media/iot-hub-how-to-order-connection-state-events/cosmosDB-search.png)
+   ![CosmosDB ara](./media/iot-hub-how-to-order-connection-state-events/cosmosDB-search.png)
 
-4. **Bağlantı adı** için **cosmosdb-Connection** ' ı girin ve tablodaki girişi seçin ve ardından **Oluştur**' u seçin. **Saklı yordam Yürüt** panelini görürsünüz. Alanlar için değerleri girin:
+4. **Bağlantı Adı** için **cosmosdb bağlantısını** doldurun ve tablodaki girişi seçin, ardından **Oluştur'u**seçin. **Yürüt** yordamı panelini görürsünüz. Alanların değerlerini girin:
 
-   **VERITABANı kimliği**: ToDoList
+   **Veritabanı Kimliği**: Todolist
 
-   **Koleksıyon kimliği**: öğeler
+   **Tahsilat Kimliği**: Öğeler
 
-   **Sproc kimliği**: latestdeviceconnectionstate
+   **Sproc ID**: LatestDeviceConnectionState
 
-5. **Yeni parametre Ekle**' yi seçin. Görüntülenen açılan menüde, **saklı yordamın** **bölüm anahtarı** ve parametreleri ' nin yanındaki kutuları işaretleyin ve ardından ekranda başka herhangi bir yere tıklayın. bölüm anahtarı değeri için bir alan ve saklı yordamın parametreleri için bir alan ekler.
+5. **Yeni parametre ekle'yi**seçin. Görünen açılır durumda, **depolanan yordam için**Bölüm **tuşu** ve Parametreler'in yanındaki kutuları işaretleyin, ardından ekranda başka bir yere tıklayın; bölüm anahtar değeri için bir alan ve depolanan yordam için parametreler için bir alan ekler.
 
-   ![mantıksal uygulama eylemini doldur](./media/iot-hub-how-to-order-connection-state-events/logicapp-stored-procedure.png)
+   ![mantık uygulaması eylem doldurmak](./media/iot-hub-how-to-order-connection-state-events/logicapp-stored-procedure.png)
 
-6. Şimdi aşağıda gösterildiği gibi bölüm anahtarı değerini ve parametrelerini girin. Köşeli ayraçları ve çift tırnak işaretlerini gösterildiği gibi yazdığınızdan emin olun. Burada kullanabileceğiniz geçerli değerleri almak için **dinamik Içerik Ekle** ' ye tıklamanız gerekebilir.
+6. Şimdi aşağıda gösterildiği gibi bölüm anahtar değeri ve parametreleri girin. Parantez ve çift tırnak gösterildiği gibi koymak emin olun. Burada kullanabileceğiniz geçerli değerleri almak için **dinamik içerik ekle'yi** tıklatmanız gerekebilir.
 
-   ![mantıksal uygulama eylemini doldur](./media/iot-hub-how-to-order-connection-state-events/logicapp-stored-procedure-2.png)
+   ![mantık uygulaması eylem doldurmak](./media/iot-hub-how-to-order-connection-state-events/logicapp-stored-procedure-2.png)
 
-7. Bölmenin **her biri için**bulduğu en üst kısmında, **önceki adımlardan bir çıkış seçin**altında BT **gövdesinin** seçili olduğundan emin olun.
+7. **Her biri için**yazdığı bölmenin üst kısmında, önceki adımlardan bir çıktı seçin altında, **Gövde'nin** **seçildiğinden**emin olun.
 
-   ![mantıksal uygulamayı her biri için doldur](./media/iot-hub-how-to-order-connection-state-events/logicapp-foreach-body.png)
+   ![her biri için mantık uygulamasını doldurmak](./media/iot-hub-how-to-order-connection-state-events/logicapp-foreach-body.png)
 
 8. Mantıksal uygulamanızı kaydedin.
 
 ### <a name="copy-the-http-url"></a>HTTP URL'sini kopyalama
 
-Logic Apps tasarımcısından çıkmadan önce, mantıksal uygulamanızın dinlediği URL 'YI bir tetikleyici için kopyalayın. Bu URL'yi, Event Grid'i yapılandırmak için kullanırsınız.
+Logic Apps Designer'dan ayrılmadan önce, mantık uygulamanızın tetikleyici olarak dinlediği URL'yi kopyalayın. Bu URL'yi, Event Grid'i yapılandırmak için kullanırsınız.
 
 1. **Bir HTTP isteği alındığında** tetikleyici yapılandırma kutusunu tıklayarak genişletin.
 
@@ -260,97 +260,97 @@ Bu bölümde, IoT Hub'ınızı gerçekleşen olayları yayımlamak için yapıla
 
    ![Event Grid ayrıntılarını açma](./media/iot-hub-how-to-order-connection-state-events/event-grid.png)
 
-3. **+ Olay aboneliği**' ni seçin.
+3. + **Etkinlik aboneliğini**seçin.
 
    ![Yeni olay aboneliği oluşturma](./media/iot-hub-how-to-order-connection-state-events/event-subscription.png)
 
-4. **Olay aboneliği ayrıntılarını**doldur: açıklayıcı bir ad belirtin ve **Event Grid şeması**' nı seçin.
+4. Olay **Abonelik Ayrıntılarını**Doldurun : Açıklayıcı bir ad sağlayın ve **Olay Izgara Şeması'nı**seçin.
 
-5. **Olay türleri** alanlarını girin. Açılan listede, yalnızca **cihaz** bağlantısı ' nı seçin ve menüden **cihaz bağlantısı kesildi** ' ı seçin. Ekranda başka bir yere tıklayarak listeyi kapatın ve seçimlerinizi kaydedin.
+5. **Olay Türleri** alanlarını doldurun. Açılan listede, yalnızca Yalnızca **Bağlı Aygıt** ve Aygıt **Bağlantısının Kesildiğini** seçin. Listeyi kapatmak ve seçimlerinizi kaydetmek için ekrandaki herhangi bir yere tıklayın.
 
-   ![Aranacak olay türlerini ayarla](./media/iot-hub-how-to-order-connection-state-events/set-event-types.png)
+   ![Etkinlik türlerini arayacak şekilde ayarlama](./media/iot-hub-how-to-order-connection-state-events/set-event-types.png)
 
-6. **Uç nokta ayrıntıları**Için uç nokta türünü **Web kancası** olarak seçin ve uç nokta seç ' e tıklayın ve mantıksal uygulamanızdan kopyaladığınız URL 'yi yapıştırın ve seçimi onaylayın.
+6. **Bitiş Noktası Ayrıntıları**için, Web **Kancası** olarak Bitiş Noktası Türü'nü seçin ve bitiş noktasını seçin ve mantık uygulamanızdan kopyaladığınız URL'yi yapıştırın ve seçimi onaylayın.
 
-   ![Uç nokta URL 'si seçin](./media/iot-hub-how-to-order-connection-state-events/endpoint-select.png)
+   ![Bitiş noktası url'si seçin](./media/iot-hub-how-to-order-connection-state-events/endpoint-select.png)
 
-7. Form artık aşağıdaki örneğe benzer şekilde görünmelidir:
+7. Form şimdi aşağıdaki örneğe benzer olmalıdır:
 
    ![Örnek olay aboneliği formu](./media/iot-hub-how-to-order-connection-state-events/subscription-form.png)
 
    Olay aboneliğini kaydetmek için **Oluştur**'u seçin.
 
-## <a name="observe-events"></a>Olayları gözlemleyin
+## <a name="observe-events"></a>Olayları gözlemle
 
-Artık olay aboneliğiniz ayarlanmış olduğuna göre bir cihaz bağlayarak test edelim.
+Artık etkinlik aboneliğiniz ayarlandığına göre, bir aygıtı bağlayarak test edelim.
 
-### <a name="register-a-device-in-iot-hub"></a>IoT Hub bir cihazı kaydetme
+### <a name="register-a-device-in-iot-hub"></a>Aygıtı IoT Hub'ına kaydetme
 
 1. IoT Hub'ınızda **IoT Cihazları**'nı seçin.
 
-2. Bölmenin en üstünde **+ Ekle** ' yi seçin.
+2. Bölmenin üst kısmında **+Ekle'yi** seçin.
 
 3. **Cihaz Kimliği** için `Demo-Device-1` girin.
 
-4. **Kaydet**’i seçin.
+4. **Kaydet'i**seçin.
 
-5. Farklı cihaz kimliklerine sahip birden çok cihaz ekleyebilirsiniz.
+5. Farklı aygıt tbm'leri ile birden çok aygıt ekleyebilirsiniz.
 
-   ![Hub 'a eklenen cihazlar](./media/iot-hub-how-to-order-connection-state-events/AddIoTDevice.png)
+   ![Hub'a eklenen aygıtlar](./media/iot-hub-how-to-order-connection-state-events/AddIoTDevice.png)
 
-6. Cihaza yeniden tıklayın; Artık bağlantı dizeleri ve anahtarlar doldurulacak. Bağlantı dizesini (daha sonra kullanılmak üzere **birincil anahtar** ) kopyalayın.
+6. Cihaza tekrar tıklayın; şimdi bağlantı dizeleri ve anahtarları doldurulacaktır. Bağlantı **dizesini kopyalayın --** daha sonra kullanmak için birincil anahtar.
 
-   ![Cihaz için ConnectionString](./media/iot-hub-how-to-order-connection-state-events/DeviceConnString.png)
+   ![Aygıt için ConnectionString](./media/iot-hub-how-to-order-connection-state-events/DeviceConnString.png)
 
-### <a name="start-raspberry-pi-simulator"></a>Start Raspberry PI simülatör
+### <a name="start-raspberry-pi-simulator"></a>Raspberry Pi simülatörü başlatın
 
-Cihaz bağlantısının benzetimini yapmak için Raspberry PI Web simülatörünü kullanalım.
+Cihaz bağlantısını simüle etmek için Raspberry Pi web simülatörünü kullanalım.
 
-[Start Raspberry PI simülatör](https://azure-samples.github.io/raspberry-pi-web-simulator/#Getstarted)
+[Raspberry Pi simülatörü başlatın](https://azure-samples.github.io/raspberry-pi-web-simulator/#Getstarted)
 
-### <a name="run-a-sample-application-on-the-raspberry-pi-web-simulator"></a>Raspberry PI Web simülatörü üzerinde örnek bir uygulama çalıştırma
+### <a name="run-a-sample-application-on-the-raspberry-pi-web-simulator"></a>Raspberry Pi web simülatöründe örnek bir uygulama çalıştırın
 
-Bu, cihaza bağlı bir olayı tetikler.
+Bu, aygıta bağlı bir olayı tetikler.
 
-1. Kodlama alanında, 15. satırdaki yer tutucusunu, önceki bölümün sonunda kaydettiğiniz Azure IoT Hub cihaz bağlantı dizeniz ile değiştirin.
+1. Kodlama alanında, Satır 15'teki yer tutucuyu önceki bölümün sonunda kaydettiğiniz Azure IoT Hub aygıt bağlantı dizenizile değiştirin.
 
-   ![Cihaz bağlantı dizesinde Yapıştır](./media/iot-hub-how-to-order-connection-state-events/raspconnstring.png)
+   ![Aygıt bağlantı dizesinde yapıştır](./media/iot-hub-how-to-order-connection-state-events/raspconnstring.png)
 
-2. **Çalıştır**'ı seçerek uygulamayı çalıştırın.
+2. Çalıştır'ı seçerek uygulamayı **çalıştırın.**
 
-Algılayıcı verilerini ve IoT Hub 'ınıza gönderilen iletileri gösteren aşağıdaki çıktıya benzer bir şey görürsünüz.
+Sensör verilerini ve IoT hub'ınıza gönderilen iletileri gösteren aşağıdaki çıktıya benzer bir şey görürsünüz.
 
    ![Uygulamayı çalıştırma](./media/iot-hub-how-to-order-connection-state-events/raspmsg.png)
 
-   Simülatörü durdurmak ve **cihaz bağlantısı kesilen** bir olayı tetiklemek için **Durdur** ' a tıklayın.
+   Simülatörü durdurmak ve **Aygıt Bağlantısı Kesilen** olayı tetiklemek için **Durdur'u** tıklatın.
 
-Artık algılayıcı verilerini toplamak ve IoT Hub 'ınıza göndermek için örnek bir uygulama çalıştırmıştır.
+Şimdi sensör verileri toplamak ve IoT hub'ınıza göndermek için bir örnek uygulama çalıştırın.
 
-### <a name="observe-events-in-cosmos-db"></a>Cosmos DB olayları gözlemleyin
+### <a name="observe-events-in-cosmos-db"></a>Cosmos DB'deki olayları gözlemleyin
 
-Yürütülen saklı yordamın sonuçlarını Cosmos DB belgenizde görebilirsiniz. İşte bu şekilde görünür. Her satır, cihaz başına en son cihaz bağlantı durumunu içerir.
+Cosmos DB belgenizde çalıştırılan saklı yordamın sonuçlarını görebilirsiniz. Aşağıdaki görüntüde olduğu gibi görünmelidir. Her satır, aygıt başına en son aygıt bağlantı durumunu içerir.
 
-   ![Outcome](./media/iot-hub-how-to-order-connection-state-events/cosmosDB-outcome.png)
+   ![Nasıl sonuç](./media/iot-hub-how-to-order-connection-state-events/cosmosDB-outcome.png)
 
 ## <a name="use-the-azure-cli"></a>Azure CLI kullanma
 
-[Azure Portal](https://portal.azure.com)kullanmak yerine, IoT Hub ADıMLARı Azure CLI kullanarak gerçekleştirebilirsiniz. Ayrıntılar için, [olay aboneliği oluşturmak](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription) ve [IoT cihazı oluşturmak](/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity#ext-azure-cli-iot-ext-az-iot-hub-device-identity-create)için Azure CLI sayfalarına bakın.
+[Azure portalını](https://portal.azure.com)kullanmak yerine, Azure CLI'yi kullanarak IoT Hub adımlarını gerçekleştirebilirsiniz. Ayrıntılar için, etkinlik aboneliği ve [bir IoT aygıtı](/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity#ext-azure-cli-iot-ext-az-iot-hub-device-identity-create) [oluşturmak](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription) için Azure CLI sayfalarına bakın.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bu öğreticide Azure aboneliğinize ücret uygulanmasına neden olan kaynaklar kullanılmıştır. Öğreticiyi denemeyi ve sonuçlarınızı test etmeyi tamamladığınızda, saklamak istemediğiniz kaynakları devre dışı bırakın veya silin.
+Bu öğreticide Azure aboneliğinize ücret uygulanmasına neden olan kaynaklar kullanılmıştır. Öğreticiyi denemeyi ve sonuçlarınızı test etmeyi bitirdiğinizde, tutmak istemediğiniz kaynakları devre dışı bırakıp silin.
 
 Mantıksal uygulamanızda yapılan çalışmayı kaybetmek istemiyorsanız, bunu silmek yerine devre dışı bırakın.
 
 1. Mantıksal uygulamanıza gidin.
 
-2. **Genel bakış** dikey penceresinde **Sil** veya **devre dışı bırak**' ı seçin.
+2. Genel **Bakış** bıçağında **Sil** veya **Devre Dışı'** yı seçin.
 
     Her aboneliğin tek bir ücretsiz IoT Hub'ı olabilir. Bu öğretici için ücretsiz bir hub oluşturduysanız, ücretleri önlemek için bunu silmeniz gerekmez.
 
 3. IoT Hub'ınıza gidin.
 
-4. **Genel bakış** dikey penceresinde **Sil**' i seçin.
+4. Genel **Bakış** bıçağında **Sil'i**seçin.
 
     IoT Hub'ınızı korusanız bile, oluşturduğunuz olay aboneliğini silmek isteyebilirsiniz.
 
@@ -360,12 +360,12 @@ Mantıksal uygulamanızda yapılan çalışmayı kaybetmek istemiyorsanız, bunu
 
 7. **Sil**’i seçin.
 
-Azure portal bir Azure Cosmos DB hesabını kaldırmak için hesap adına sağ tıklayın ve **Hesabı Sil**' e tıklayın. [Azure Cosmos DB hesabı silme](https://docs.microsoft.com/azure/cosmos-db/manage-account)hakkında ayrıntılı yönergeler için bkz.
+Azure portalından bir Azure Cosmos DB hesabını kaldırmak için hesap adını sağ tıklatın ve **Hesabı Sil'i**tıklatın. [Azure Cosmos DB hesabını silme](https://docs.microsoft.com/azure/cosmos-db/manage-account)yle ilgili ayrıntılı yönergelere bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Eylemleri tetiklemek için Event Grid kullanarak IoT Hub olaylarına yeniden davranıma](../iot-hub/iot-hub-event-grid.md) hakkında daha fazla bilgi edinin
+* [Eylemleri tetiklemek için Olay Grid'i kullanarak IoT Hub olaylarına tepki](../iot-hub/iot-hub-event-grid.md) verme hakkında daha fazla bilgi edinin
 
-* [IoT Hub olaylar öğreticisini deneyin](../event-grid/publish-iot-hub-events-to-logic-apps.md)
+* [IoT Hub etkinlikleri öğreticisini deneyin](../event-grid/publish-iot-hub-events-to-logic-apps.md)
 
-* [Event Grid](../event-grid/overview.md) ile yapabileceğiniz diğer şeyler hakkında bilgi edinin
+* [Olay Izgara'da](../event-grid/overview.md) başka neler yapabileceğiniz hakkında bilgi edinin

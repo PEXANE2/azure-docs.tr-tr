@@ -1,27 +1,27 @@
 ---
 title: Dağıtım geçmişi
-description: Portal, PowerShell, Azure CLı ve REST API Azure Resource Manager dağıtım işlemlerinin nasıl görüntüleneceğini açıklar.
+description: Portal, PowerShell, Azure CLI ve REST API ile Azure Kaynak Yöneticisi dağıtım işlemlerinin nasıl görüntüleneceğimiz açıklanır.
 tags: top-support-issue
 ms.topic: conceptual
 ms.date: 11/26/2019
-ms.openlocfilehash: 753071a3edca62690b772f7b8d34fec43641466f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b0f196f86bed05094b04bfc20c7cef2248a91c65
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75477869"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79460305"
 ---
-# <a name="view-deployment-history-with-azure-resource-manager"></a>Azure Resource Manager ile dağıtım geçmişini görüntüle
+# <a name="view-deployment-history-with-azure-resource-manager"></a>Azure Kaynak Yöneticisi ile dağıtım geçmişini görüntüleme
 
-Azure Resource Manager, dağıtım geçmişinizi görüntülemenize ve geçmiş dağıtımlarda belirli işlemleri incelemenize olanak sağlar. Dağıtılan kaynakları görebilir ve hatalar hakkında bilgi alabilirsiniz.
+Azure Kaynak Yöneticisi, dağıtım geçmişinizi görüntülemenize ve geçmiş dağıtımlarda belirli işlemleri incelemenize olanak tanır. Dağıtılan kaynakları görebilir ve hatalar hakkında bilgi alabilirsiniz.
 
-Belirli dağıtım hatalarını çözümlemede yardım için bkz. [Azure 'a kaynak dağıtılırken sık karşılaşılan hataları çözümleme Azure Resource Manager](common-deployment-errors.md).
+Belirli dağıtım hatalarını çözme konusunda yardım için, [Azure Kaynak Yöneticisi ile kaynakları Azure'a dağıtırken sık karşılaşılan hataları giderme](common-deployment-errors.md)bölümüne bakın.
 
-## <a name="get-deployments-and-correlation-id"></a>Dağıtımları ve bağıntı KIMLIĞINI al
+## <a name="get-deployments-and-correlation-id"></a>Dağıtımlar ve korelasyon kimliği alın
 
-Azure portal, PowerShell, Azure CLı veya REST API bir dağıtım hakkındaki ayrıntıları görüntüleyebilirsiniz. Her dağıtımda ilgili olayları izlemek için kullanılan bir bağıntı KIMLIĞI vardır. Bir dağıtımda sorun gidermeye yönelik teknik destekle çalışırken yararlı olabilir.
+Azure portalı, PowerShell, Azure CLI veya REST API'den dağıtımla ilgili ayrıntıları görüntüleyebilirsiniz. Her dağıtım, ilgili olayları izlemek için kullanılan bir korelasyon kimliğine sahiptir. Bir dağıtımı gidermek için teknik destekle çalışırken yararlı olabilir.
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. İncelemek istediğiniz kaynak grubunu seçin.
 
@@ -31,67 +31,67 @@ Azure portal, PowerShell, Azure CLı veya REST API bir dağıtım hakkındaki ay
 
 1. Dağıtım geçmişinden dağıtımlardan birini seçin.
 
-   ![Dağıtım seçin](./media/deployment-history/select-details.png)
+   ![Dağıtımı seçin](./media/deployment-history/select-details.png)
 
-1. Bağıntı KIMLIĞI de dahil olmak üzere dağıtımın bir özeti görüntülenir. 
+1. Dağıtımın bir özeti, korelasyon kimliği de dahil olmak üzere görüntülenir.
 
     ![Dağıtım özeti](./media/deployment-history/show-correlation-id.png)
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
-Bir kaynak grubunun tüm dağıtımlarını listelemek için [Get-AzResourceGroupDeployment](/powershell/module/az.resources/Get-AzResourceGroupDeployment) komutunu kullanın.
+Bir kaynak grubu için tüm dağıtımları listelemek için [Get-AzResourceGroupDeployment](/powershell/module/az.resources/Get-AzResourceGroupDeployment) komutunu kullanın.
 
 ```azurepowershell-interactive
 Get-AzResourceGroupDeployment -ResourceGroupName ExampleGroup
 ```
 
-Bir kaynak grubundan belirli bir dağıtım almak için **DeploymentName** parametresini ekleyin.
+Kaynak grubundan belirli bir dağıtım almak için **DeploymentName** parametresini ekleyin.
 
 ```azurepowershell-interactive
 Get-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -DeploymentName ExampleDeployment
 ```
 
-Bağıntı KIMLIĞINI almak için şunu kullanın:
+Korelasyon kimliğini almak için şunları kullanın:
 
 ```azurepowershell-interactive
 (Get-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -DeploymentName ExampleDeployment).CorrelationId
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Bir kaynak grubunun dağıtımını listelemek için [az Group Deployment List](/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-list)kullanın.
-
-```azurecli-interactive
-az group deployment list --resource-group ExampleGroup
-```
-
-Belirli bir dağıtımı almak için [az Group Deployment Show](/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-show)' ı kullanın.
+Kaynak grubu için dağıtımı listelemek için [az dağıtım grup listesini](/cli/azure/group/deployment?view=azure-cli-latest#az-deployment-group-list)kullanın.
 
 ```azurecli-interactive
-az group deployment show --resource-group ExampleGroup --name ExampleDeployment
+az deployment group list --resource-group ExampleGroup
 ```
-  
-Bağıntı KIMLIĞINI almak için şunu kullanın:
+
+Belirli bir dağıtım almak için [az dağıtım grubu gösterisini](/cli/azure/group/deployment?view=azure-cli-latest#az-deployment-group-show)kullanın.
 
 ```azurecli-interactive
-az group deployment show --resource-group ExampleGroup --name ExampleDeployment --query properties.correlationId
+az deployment group show --resource-group ExampleGroup --name ExampleDeployment
 ```
 
-# <a name="httptabhttp"></a>[HTTP](#tab/http)
+Korelasyon kimliğini almak için şunları kullanın:
 
-Bir kaynak grubunun dağıtımlarını listelemek için aşağıdaki işlemi kullanın. İstekte kullanılacak en son API sürüm numarası için bkz. [kaynak grubuna göre dağıtımlar-Listele](/rest/api/resources/deployments/listbyresourcegroup). 
+```azurecli-interactive
+az deployment group show --resource-group ExampleGroup --name ExampleDeployment --query properties.correlationId
+```
+
+# <a name="http"></a>[HTTP Kı.,](#tab/http)
+
+Bir kaynak grubunun dağıtımlarını listelemek için aşağıdaki işlemi kullanın. İstekte kullanılacak en son API sürüm numarası için [Dağıtımlar - Kaynak Grubuna Göre Liste](/rest/api/resources/deployments/listbyresourcegroup)'ye bakın.
 
 ```
 GET https://management.azure.com/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Resources/deployments/?api-version={api-version}
 ```
 
-Belirli bir dağıtımı almak için. aşağıdaki işlemi kullanın. İstekte kullanılacak en son API sürüm numarası için bkz. [dağıtımlar-al](/rest/api/resources/deployments/get).
+Belirli bir dağıtım almak için. aşağıdaki işlemi kullanın. İstekte kullanılacak en son API sürüm numarası için [Dağıtımlar - Get](/rest/api/resources/deployments/get)' e bakın.
 
 ```
 GET https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group-name}/providers/microsoft.resources/deployments/{deployment-name}?api-version={api-version}
 ```
 
-Yanıt bağıntı KIMLIĞINI içerir.
+Yanıt, korelasyon kimliğini içerir.
 
 ```json
 {
@@ -109,29 +109,29 @@ Yanıt bağıntı KIMLIĞINI içerir.
 
 ---
 
-## <a name="get-deployment-operations-and-error-message"></a>Dağıtım işlemlerini ve hata iletisini Al
+## <a name="get-deployment-operations-and-error-message"></a>Dağıtım işlemleri ve hata iletisi alın
 
-Her dağıtım birden çok işlem içerebilir. Bir dağıtım hakkında daha fazla ayrıntı görmek için dağıtım işlemlerini görüntüleyin. Dağıtım başarısız olduğunda, dağıtım işlemleri bir hata iletisi içerir.
+Her dağıtım birden çok işlem içerebilir. Dağıtım hakkında daha fazla ayrıntı görmek için dağıtım işlemlerini görüntüleyin. Bir dağıtım başarısız olduğunda, dağıtım işlemleri bir hata iletisi içerir.
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. Bir dağıtımın özetinde **işlem ayrıntıları**' nı seçin.
+1. Dağıtım özetinde, İşlem **ayrıntılarını**seçin.
 
     ![Dağıtım işlemlerini seçin](./media/deployment-history/get-operation-details.png)
 
-1. Dağıtım adımının ayrıntılarını görürsünüz. Bir hata oluştuğunda, Ayrıntılar hata mesajını içerir.
+1. Dağıtımın o adımının ayrıntılarını görüyorsunuz. Bir hata oluştuğunda, ayrıntılar hata iletisini içerir.
 
     ![İşlem ayrıntılarını göster](./media/deployment-history/see-operation-details.png)
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
-Bir kaynak grubuna dağıtıma yönelik dağıtım işlemlerini görüntülemek için [Get-AzResourceGroupDeploymentOperation](/powershell/module/az.resources/get-azdeploymentoperation) komutunu kullanın.
+Bir kaynak grubuna dağıtım için dağıtım işlemlerini görüntülemek için [Get-AzResourceGroupDeploymentOperation](/powershell/module/az.resources/get-azdeploymentoperation) komutunu kullanın.
 
 ```azurepowershell-interactive
 Get-AzResourceGroupDeploymentOperation -ResourceGroupName ExampleGroup -DeploymentName ExampleDeploy
 ```
 
-Başarısız işlemleri görüntülemek için, **başarısız** durumundaki işlemleri filtreleyin.
+Başarısız işlemleri görüntülemek için, **Başarısız** durumla işlemleri filtreleyin.
 
 ```azurepowershell-interactive
 (Get-AzResourceGroupDeploymentOperation -ResourceGroupName ExampleGroup -DeploymentName ExampleDeploy).Properties | Where-Object ProvisioningState -eq Failed
@@ -143,29 +143,29 @@ Başarısız işlemlerin durum iletisini almak için aşağıdaki komutu kullan�
 ((Get-AzResourceGroupDeploymentOperation -ResourceGroupName ExampleGroup -DeploymentName ExampleDeploy ).Properties | Where-Object ProvisioningState -eq Failed).StatusMessage.error
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Bir kaynak grubuna dağıtıma yönelik dağıtım işlemlerini görüntülemek için [az Group Deployment Operation List](/cli/azure/group/deployment/operation?view=azure-cli-latest#az-group-deployment-operation-list) komutunu kullanın.
+Kaynak grubuna dağıtım için dağıtım işlemlerini görüntülemek için [az dağıtım grubu işlem listesi](/cli/azure/group/deployment/operation?view=azure-cli-latest#az-deployment-group-operation-list) komutunu kullanın.
 
 ```azurecli-interactive
-az group deployment operation list --resource-group ExampleGroup --name ExampleDeployment
+az deployment group operation list --resource-group ExampleGroup --name ExampleDeployment
 ```
 
-Başarısız işlemleri görüntülemek için, **başarısız** durumundaki işlemleri filtreleyin.
+Başarısız işlemleri görüntülemek için, **Başarısız** durumla işlemleri filtreleyin.
 
 ```azurecli-interactive
-az group deployment operation list --resource-group ExampleGroup --name ExampleDeploy --query "[?properties.provisioningState=='Failed']"
+az deployment group operation list --resource-group ExampleGroup --name ExampleDeploy --query "[?properties.provisioningState=='Failed']"
 ```
 
 Başarısız işlemlerin durum iletisini almak için aşağıdaki komutu kullanın:
 
 ```azurecli-interactive
-az group deployment operation list --resource-group ExampleGroup --name ExampleDeploy --query "[?properties.provisioningState=='Failed'].properties.statusMessage.error"
+az deployment group operation list --resource-group ExampleGroup --name ExampleDeploy --query "[?properties.provisioningState=='Failed'].properties.statusMessage.error"
 ```
 
-# <a name="httptabhttp"></a>[HTTP](#tab/http)
+# <a name="http"></a>[HTTP Kı.,](#tab/http)
 
-Dağıtım işlemlerini almak için aşağıdaki işlemi kullanın. İstekte kullanılacak en son API sürüm numarası için bkz. [dağıtım işlemleri-listesi](/rest/api/resources/deploymentoperations/list).
+Dağıtım işlemlerini almak için aşağıdaki işlemi kullanın. İstekte kullanılacak en son API sürüm numarası için [Dağıtım İşlemleri - Liste'ye](/rest/api/resources/deploymentoperations/list)bakın.
 
 ```
 GET https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group-name}/providers/microsoft.resources/deployments/{deployment-name}/operations?$skiptoken={skiptoken}&api-version={api-version}
@@ -209,7 +209,7 @@ Yanıt bir hata iletisi içerir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Belirli dağıtım hatalarını çözümlemede yardım için bkz. [Azure 'a kaynak dağıtılırken sık karşılaşılan hataları çözümleme Azure Resource Manager](common-deployment-errors.md).
-* Diğer eylem türlerini izlemek için etkinlik günlüklerini kullanma hakkında bilgi edinmek için bkz. [Azure kaynaklarını yönetmek için etkinlik günlüklerini görüntüleme](../management/view-activity-logs.md).
-* Yürütmeden önce dağıtımınızı doğrulamak için, bkz. [Azure Resource Manager şablonuyla kaynak grubu dağıtma](deploy-powershell.md).
+* Belirli dağıtım hatalarını çözme konusunda yardım için, [Azure Kaynak Yöneticisi ile kaynakları Azure'a dağıtırken sık karşılaşılan hataları giderme](common-deployment-errors.md)bölümüne bakın.
+* Diğer eylem türlerini izlemek için etkinlik günlüklerini kullanma hakkında bilgi edinmek [için Azure kaynaklarını yönetmek için etkinlik günlüklerini görüntüle'ye](../management/view-activity-logs.md)bakın.
+* Dağıtımınızı yürütmeden önce doğrulamak için Azure [Kaynak Yöneticisi şablonuna sahip bir kaynak grubu dağıt'a](deploy-powershell.md)bakın.
 

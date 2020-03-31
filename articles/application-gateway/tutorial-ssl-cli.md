@@ -1,5 +1,5 @@
 ---
-title: CLı kullanarak SSL sonlandırması-Azure Application Gateway
+title: CLI kullanarak SSL sonlandırma - Azure Uygulama Ağ Geçidi
 description: Azure CLI kullanarak uygulama ağ geçidi oluşturma ve SSL sonlandırma sertifikası eklemeyi öğrenin.
 services: application-gateway
 author: vhorne
@@ -9,15 +9,15 @@ ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc
 ms.openlocfilehash: c297a7d34e8b85420329abaca0e15029ce207861
-ms.sourcegitcommit: e4c33439642cf05682af7f28db1dbdb5cf273cc6
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/03/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "78246606"
 ---
-# <a name="create-an-application-gateway-with-ssl-termination-using-the-azure-cli"></a>Azure CLı kullanarak SSL sonlandırmasına sahip bir uygulama ağ geçidi oluşturma
+# <a name="create-an-application-gateway-with-ssl-termination-using-the-azure-cli"></a>Azure CLI'yi kullanarak SSL sonlandırma ile bir uygulama ağ geçidi oluşturma
 
-[SSL sonlandırma](ssl-overview.md)sertifikası ile bir [uygulama ağ geçidi](overview.md) oluşturmak için Azure CLI ' yı kullanabilirsiniz. Arka uç sunucuları için bir [sanal makine ölçek kümesi](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) kullanabilirsiniz. Bu örnekte örnek kümesi, uygulama ağ geçidinin varsayılan arka uç havuzuna eklenen iki sanal makine örneğini içerir.
+Azure CLI'yi, [SSL sonlandırma](ssl-overview.md)sertifikası içeren bir [uygulama ağ geçidi](overview.md) oluşturmak için kullanabilirsiniz. Arka uç sunucuları için [sanal makine ölçeği kümesini](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) kullanabilirsiniz. Bu örnekte örnek kümesi, uygulama ağ geçidinin varsayılan arka uç havuzuna eklenen iki sanal makine örneğini içerir.
 
 Bu makalede şunları öğreneceksiniz:
 
@@ -29,15 +29,15 @@ Bu makalede şunları öğreneceksiniz:
 
 İsterseniz, [Azure PowerShell](tutorial-ssl-powershell.md)kullanarak bu yordamı tamamlayabilirsiniz.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu makale, Azure CLı sürüm 2.0.4 veya üstünü çalıştırmanızı gerektirir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme](/cli/azure/install-azure-cli).
+CLI'yi yerel olarak yüklemeyi ve kullanmayı seçerseniz, bu makalede Azure CLI sürümü 2.0.4 veya sonraki sürümlerini çalıştırmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](/cli/azure/install-azure-cli).
 
 ## <a name="create-a-self-signed-certificate"></a>Otomatik olarak imzalanan sertifika oluşturma
 
-Üretim sırasında kullanım için, güvenilen bir sağlayıcı tarafından imzalanan geçerli bir sertifikayı içeri aktarmalısınız. Bu makalede, OpenSSL komutunu kullanarak kendinden imzalı bir sertifika ve pfx dosyası oluşturacaksınız.
+Üretim sırasında kullanım için, güvenilen bir sağlayıcı tarafından imzalanan geçerli bir sertifikayı içeri aktarmalısınız. Bu makale için openssl komutunu kullanarak kendi imzalı bir sertifika ve pfx dosyası oluşturursunuz.
 
 ```console
 openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout privateKey.key -out appgwcert.crt
@@ -63,7 +63,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>Ağ kaynakları oluşturma
 
-*az network vnet create* komutunu kullanarak *myVNet* adlı sanal ağı ve [myAGSubnet](/cli/azure/network/vnet) adlı alt ağı oluşturun. Daha sonra *az network vnet subnet create* kullanan arka uç sunucularının gerek duyduğu [myBackendSubnet](/cli/azure/network/vnet/subnet) adlı alt ağı ekleyebilirsiniz. *az network public-ip create* komutunu kullanarak [myAGPublicIPAddress](/cli/azure/network/public-ip) adlı genel IP adresini oluşturun.
+[az network vnet create](/cli/azure/network/vnet) komutunu kullanarak *myVNet* adlı sanal ağı ve *myAGSubnet* adlı alt ağı oluşturun. Daha sonra [az network vnet subnet create](/cli/azure/network/vnet/subnet) kullanan arka uç sunucularının gerek duyduğu *myBackendSubnet* adlı alt ağı ekleyebilirsiniz. [az network public-ip create](/cli/azure/network/public-ip) komutunu kullanarak *myAGPublicIPAddress* adlı genel IP adresini oluşturun.
 
 ```azurecli-interactive
 az network vnet create \
@@ -114,7 +114,7 @@ az network application-gateway create \
 
  Uygulama ağ geçidinin oluşturulması birkaç dakika sürebilir. Uygulama ağ geçidi oluşturulduktan sonra şu yeni özellikleri görürsünüz:
 
-- *appGatewayBackendPool* -bir uygulama ağ geçidi en az bir arka uç adres havuzuna sahip olmalıdır.
+- *appGatewayBackendPool*: Bir uygulama ağ geçidi en az bir arka uç adres havuzuna sahip olmalıdır.
 - *appGatewayBackendHttpSettings*: İletişim için 80 numaralı bağlantı noktasının ve HTTP protokolünün kullanıldığını belirtir.
 - *appGatewayHttpListener*: *appGatewayBackendPool* ile ilişkili varsayılan dinleyicidir.
 - *appGatewayFrontendIP*: *appGatewayHttpListener*’a *myAGPublicIPAddress*’i atar.
@@ -165,11 +165,11 @@ az network public-ip show \
   --output tsv
 ```
 
-Genel IP adresini kopyalayıp tarayıcınızın adres çubuğuna yapıştırın. Bu örnekte URL: **https://52.170.203.149** .
+Genel IP adresini kopyalayıp tarayıcınızın adres çubuğuna yapıştırın. Bu örnekiçin, URL: **https://52.170.203.149**.
 
 ![Güvenli uyarı](./media/tutorial-ssl-cli/application-gateway-secure.png)
 
-Otomatik olarak imzalanan sertifika kullandıysanız güvenlik uyarısını kabul etmek için, **Ayrıntılar**’ı seçin ve sonra **Web sayfasına gidin**: Güvenli NGINX siteniz, sonra aşağıdaki örnekte olduğu gibi görüntülenir:
+Kendi imzalı bir sertifika kullandıysanız güvenlik uyarısını kabul etmek için **Ayrıntılar'ı** seçin ve **ardından web sayfasına gidin.** Güvenli NGINX siteniz, sonra aşağıdaki örnekte olduğu gibi görüntülenir:
 
 ![Temel URL’yi uygulama ağ geçidinde test etme](./media/tutorial-ssl-cli/application-gateway-nginx.png)
 

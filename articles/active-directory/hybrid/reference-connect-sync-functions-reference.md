@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect eşitleme: İşlevler başvurusu | Microsoft Docs'
-description: Azure AD Connect eşitlemede bildirime dayalı sağlama ifadelerinin başvurusu.
+title: 'Azure AD Connect eşitleme: İşlevler Başvuru | Microsoft Dokümanlar'
+description: Azure AD Connect eşitlemesinde bildirimsel sağlama ifadelerinin başvurusu.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -17,445 +17,445 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5c3102480e316c634930c356ae02f769767b7d08
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/22/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "69900039"
 ---
-# <a name="azure-ad-connect-sync-functions-reference"></a>Azure AD Connect eşitleme: İşlevler Başvurusu
-Azure AD Connect, işlevler eşitleme sırasında bir öznitelik değerini işlemek için kullanılır.  
-İşlevlerinin sözdizimi aşağıdaki biçim kullanılarak ifade edilir:  
+# <a name="azure-ad-connect-sync-functions-reference"></a>Azure AD Connect eşitlemi: İşlevler Başvurusu
+Azure AD Connect'te işlevler eşitleme sırasında bir öznitelik değerini işlemek için kullanılır.  
+Fonksiyonların Sözdizimi aşağıdaki biçim kullanılarak ifade edilir:  
 `<output type> FunctionName(<input type> <position name>, ..)`
 
-Bir işlev aşırı yüklenmişse ve birden çok sözdizimleri kabul ediyorsa, tüm geçerli sözdizimler listelenir.  
-İşlevler kesin bir şekilde türdedir ve geçirilen türün belgelenen tür ile eşleştiğini doğrular.  
-Tür eşleşmezse bir hata atılır.
+Bir işlev aşırı yüklenir sa ve birden çok sözdizimi kabul ederse, geçerli tüm sözdizimiler listelenir.  
+İşlevler güçlü bir şekilde dizilir ve geçirilen türün belgelenen türle eşleştiğini doğrular.  
+Tür eşleşmiyorsa, bir hata atılır.
 
-Türler aşağıdaki sözdizimiyle ifade edilir:
+Türleri aşağıdaki sözdizimi ile ifade edilir:
 
-* **bin** – ikili
+* **bin** – İkili
 * **bool** – Boolean
-* **dt** : UTC Tarih/saat
-* **enum** – bilinen sabitlerin numaralandırması
-* **Exp** – Boolean olarak değerlendirilmesi beklenen ifadesi
-* **mvbin** – çok değerli ikili
-* **mvstr** – çok değerli dize
-* **mvref** – birden çok değerli başvuru
-* **num** – sayısal
-* **ref** – başvuru
-* **Str** – dize
-* **var** : (neredeyse) diğer tür bir değişken
-* **void** – değer döndürmez
+* **dt** – UTC Tarih/Saat
+* **enum** – Bilinen sabitlerin numaralandırması
+* **exp** – İfade, bir Boolean değerlendirmek için bekleniyor
+* **mvbin** – Çok Değerli İkili
+* **mvstr** – Çok Değerli Dize
+* **mvref** – Çok Değerli Referans
+* **num** – Sayısal
+* **ref** – Referans
+* **str** – Dize
+* **var** – (neredeyse) başka bir tür bir varyantı
+* **void** – bir değer döndürmez
 
-**Mvbin**, **mvstr**ve **mvref** türlerine sahip işlevler yalnızca çok değerli özniteliklerde çalışabilir. **Bin**, **Str**ve **ref** içeren işlevler hem tek değerli hem de birden çok değerli özniteliklerde çalışır.
+**Mvbin,** **mvstr**ve **mvref** tipleri ile fonksiyonlar sadece çok değerli öznitelikleri üzerinde çalışabilir. Hem tek değerli hem de çok değerli özniteliklerüzerinde **bin**, **str**ve **ref** çalışması olan işlevler.
 
 ## <a name="functions-reference"></a>İşlevler Başvurusu
 
-| İşlevlerin listesi |  |  |  |  |
+| Fonksiyonlar listesi |  |  |  |  |
 | --- | --- | --- | --- | --- |
 | **Sertifika** | | | | |
-| [Certbu Sionıds](#certextensionoids) |[CertFormat](#certformat) |[CertFriendlyName](#certfriendlyname) |[CertHashString](#certhashstring) | |
-| [Certısuer](#certissuer) |[Certısuerdn](#certissuerdn) |[Certısueroıd](#certissueroid) |[Certkeyalgorithd](#certkeyalgorithm) | |
-| [CertKeyAlgorithmParams](#certkeyalgorithmparams) |[Certnameınfo](#certnameinfo) |[CertNotAfter](#certnotafter) |[CertNotBefore](#certnotbefore) | |
-| [Certpublickeyoıd](#certpublickeyoid) |[CertPublicKeyParametersOid](#certpublickeyparametersoid) |[CertSerialNumber](#certserialnumber) |[CertSignatureAlgorithmOid](#certsignaturealgorithmoid) | |
-| [CertSubject](#certsubject) |[CertSubjectNameDN](#certsubjectnamedn) |[Certsubjectnameoıd](#certsubjectnameoid) |[Certparmak Izi](#certthumbprint) | |
+| [CertExtensionOids](#certextensionoids) |[CertFormat](#certformat) |[CertFriendlyName](#certfriendlyname) |[CertHashString](#certhashstring) | |
+| [CertIssuer](#certissuer) |[CertIssuerDN](#certissuerdn) |[CertIssuerOid](#certissueroid) |[CertKeyAlgorithm](#certkeyalgorithm) | |
+| [CertKeyAlgorithmParams](#certkeyalgorithmparams) |[CertNameInfo](#certnameinfo) |[CertNotAfter](#certnotafter) |[CertNotBefore](#certnotbefore) | |
+| [CertPublicKeyOid](#certpublickeyoid) |[CertPublicKeyParametersOid](#certpublickeyparametersoid) |[CertSerialNumber](#certserialnumber) |[CertSignatureAlgorithmOid](#certsignaturealgorithmoid) | |
+| [CertSubject](#certsubject) |[CertSubjectNameDN](#certsubjectnamedn) |[CertSubjectNameOid](#certsubjectnameoid) |[CertThumbprint](#certthumbprint) | |
 [CertVersion](#certversion) |[IsCert](#iscert) | | | |
-| **Dönüştürü** | | | | |
-| [CBool](#cbool) |[CDate](#cdate) |[CGuid](#cguid) |[ConvertFromBase64](#convertfrombase64) | |
-| [ConvertToBase64](#converttobase64) |[ConvertFromUTF8Hex](#convertfromutf8hex) |[ConvertToUTF8Hex](#converttoutf8hex) |[CNum](#cnum) | |
-| [CRef](#cref) |[CStr](#cstr) |[StringFromGuid](#stringfromguid) |[StringFromSid](#stringfromsid) | |
-| **Tarih/saat** | | | | |
-| [DateAdd](#dateadd) |[Tarih Fromnum](#datefromnum) |[FormatDateTime](#formatdatetime) |[Sunuldu](#now) | |
+| **Dönüştürme** | | | | |
+| [Cbool](#cbool) |[Cdate](#cdate) |[CGuid](#cguid) |[ConvertFromBase64](#convertfrombase64) | |
+| [ConverttoBase64](#converttobase64) |[ConvertFromUTF8Hex](#convertfromutf8hex) |[ConvertToUTF8Hex](#converttoutf8hex) |[CNum](#cnum) | |
+| [Cref](#cref) |[Cstr](#cstr) |[StringFromGuid](#stringfromguid) |[StringFromSid](#stringfromsid) | |
+| **Tarih / Saat** | | | | |
+| [Dateadd](#dateadd) |[TarihFromNum](#datefromnum) |[BiçimDateTime](#formatdatetime) |[Nwo](#now) | |
 | [NumFromDate](#numfromdate) | | | | |
-| **Dizinden** | | | | |
-| [DNComponent](#dncomponent) |[DNComponentRev](#dncomponentrev) |[Çıkar Edncomponent](#escapedncomponent) | | |
-| **Değerlendirmesinin** | | | | |
-| [IsBitSet](#isbitset) |[IsDate](#isdate) |[IsEmpty](#isempty) |[IsGuid](#isguid) | |
-| [IsNull](#isnull) |[IsNullOrEmpty](#isnullorempty) |[IsNumeric](#isnumeric) |[Olmasına](#ispresent) | |
-| [Isstrıng](#isstring) | | | | |
-| **Tiğin** | | | | |
-| [BitAnd](#bitand) |[BitOr](#bitor) |[Rasgelenum](#randomnum) | | |
-| **Çoklu değerli** | | | | |
-| [Vardır](#contains) |[Biriktirme](#count) |[Öğesi](#item) |[Imornull](#itemornull) | |
-| [Birleştir](#join) |[RemoveDuplicates](#removeduplicates) |[Ayırmayı](#split) | | |
-| **Program akışı** | | | | |
-| [Hata:](#error) |[MAYAN](#iif) |[Seç](#select) |[Değiştirebilirsiniz](#switch) | |
-| [Olmadığı](#where) |[Kullanılarak](#with) | | | |
-| **Text** | | | | |
-| [GUID](#guid) |[InStr](#instr) |[InStrRev](#instrrev) |[LCase](#lcase) | |
-| [Sol](#left) |[Tepe](#len) |[LTrim](#ltrim) |[Orta](#mid) | |
-| [Asma sol](#padleft) |[Asma sağ](#padright) |[PCase](#pcase) |[Değiştir](#replace) | |
-| [ReplaceChars](#replacechars) |[Right](#right) |[RTrim](#rtrim) |[Kırpma](#trim) | |
-| [UCase](#ucase) |[Word](#word) | | | |
+| **Dizin** | | | | |
+| [DNComponent](#dncomponent) |[DNComponentRev](#dncomponentrev) |[EscapeDNComponent](#escapedncomponent) | | |
+| **Değerlendirme** | | | | |
+| [IsBitSet](#isbitset) |[ısdate](#isdate) |[ısempty](#isempty) |[IsGuid](#isguid) | |
+| [ısnull](#isnull) |[ısnullorempty](#isnullorempty) |[IsNumeric](#isnumeric) |[ıspresent](#ispresent) | |
+| [IsString](#isstring) | | | | |
+| **Matematik** | | | | |
+| [BitAnd](#bitand) |[BitOr](#bitor) |[RandomNum](#randomnum) | | |
+| **Değerli** | | | | |
+| [Contains](#contains) |[Sayısı](#count) |[Öğe](#item) |[ItemOrnull](#itemornull) | |
+| [Katıl](#join) |[Removeduplicates](#removeduplicates) |[Bölme](#split) | | |
+| **Program Akışı** | | | | |
+| [Hata](#error) |[ııf](#iif) |[Seç](#select) |[Anahtarı](#switch) | |
+| [Nerede](#where) |[Ile](#with) | | | |
+| **Metin** | | | | |
+| [Guıd](#guid) |[ınstr](#instr) |[Instrrev](#instrrev) |[Lcase](#lcase) | |
+| [Sol](#left) |[Len](#len) |[Ltrim](#ltrim) |[Orta](#mid) | |
+| [Padleft](#padleft) |[Padright](#padright) |[PCase](#pcase) |[Değiştirmek](#replace) | |
+| [Yerine Chars](#replacechars) |[Doğru](#right) |[Rtrım](#rtrim) |[Döşeme](#trim) | |
+| [Ucase](#ucase) |[Word](#word) | | | |
 
 ---
 ### <a name="bitand"></a>BitAnd
 **Açıklama:**  
-BitAnd işlevi, belirtilen bitleri bir değer üzerinde ayarlar.
+BitAnd işlevi bir değer üzerinde belirtilen bitleri ayarlar.
 
-**Sözdizimi**  
+**Sözdizimi:**  
 `num BitAnd(num value1, num value2)`
 
-* Değer1, değer2: bir arada olması gereken sayısal değerler
+* value1, value2: birlikte ve'ed olmalıdır sayısal değerler
 
-**Açıklamalarının**  
-Bu işlev, her iki parametreyi de ikili gösterimine dönüştürür ve bir bit şu şekilde ayarlar:
+**Açıklamalar:**  
+Bu işlev her iki parametreyi de ikili gösterime dönüştürür ve aşağıdakilere göre biraz ayarlar:
 
-* 0- *değer1* ve *değer2* içindeki karşılık gelen bitlerin biri veya her ikisi 0 ise
-* 1-karşılık gelen bitlerin her ikisi de 1 ' dir.
+* 0 - *değer1* ve *value2'deki* karşılık gelen bitlerden biri veya her ikisi 0 ise
+* 1 - karşılık gelen bitlerin her ikisi de 1 ise.
 
-Diğer bir deyişle, her iki parametrenin de karşılık gelen bitlerinin 1 olduğu durumlar dışında her durumda 0 döndürür.
+Başka bir deyişle, her iki parametrenin karşılık gelen bitleri 1 dışında tüm durumlarda 0 döndürür.
 
 **Örnek:**  
 `BitAnd(&HF, &HF7)`  
-Onaltılık "F" ve "F7" değerinin bu değeri değerlendirmesi nedeniyle 7 döndürür.
+Hexadecimal "F" VE "F7" bu değere değer biçilebildiği için 7 döndürür.
 
 ---
 ### <a name="bitor"></a>BitOr
 **Açıklama:**  
-BitOr işlevi, belirtilen bitleri bir değer üzerinde ayarlar.
+BitOr işlevi bir değer üzerinde belirtilen bitleri ayarlar.
 
-**Sözdizimi**  
+**Sözdizimi:**  
 `num BitOr(num value1, num value2)`
 
-* Değer1, değer2: bir arada olması gereken sayısal değerler
+* value1, value2: birlikte veya'ed olması gereken sayısal değerler
 
-**Açıklamalarının**  
-Bu işlev, her iki parametreyi de ikili gösterimine dönüştürür ve maskede ve bayrakta karşılık gelen bitlerin biri veya her ikisi 1 ise ve her ikisi de 0 ise 0 olarak ayarlanır. Diğer bir deyişle, her iki parametrenin de karşılık gelen bitlerinin 0 olduğu durumlar dışında her durumda 1 döndürür.
+**Açıklamalar:**  
+Bu işlev, her iki parametreyi de ikili gösterime dönüştürür ve maske ve bayraktaki karşılık gelen bitlerden biri veya her ikisi 1 ise biraz 1 ve karşılık gelen bitlerin her ikisi de 0 ise 0'a ayarlar. Başka bir deyişle, her iki parametrenin karşılık gelen bitlerinin 0 olduğu durumlar dışında her durumda 1 döndürür.
 
 ---
-### <a name="cbool"></a>CBool
+### <a name="cbool"></a>Cbool
 **Açıklama:**  
-CBool işlevi, değerlendirilen ifadeye bağlı olarak bir Boole değeri döndürür
+CBool fonksiyonu değerlendirilen ifadeye dayalı bir Boolean döndürür
 
-**Sözdizimi**  
+**Sözdizimi:**  
 `bool CBool(exp Expression)`
 
-**Açıklamalarının**  
-İfade sıfır olmayan bir değer olarak değerlendirilirse, CBool true değerini döndürür, aksi takdirde false döndürür.
+**Açıklamalar:**  
+İfade sıfır olmayan bir değere göre değerlendirirse, CBool True döndürür, aksi takdirde False döndürür.
 
 **Örnek:**  
 `CBool([attrib1] = [attrib2])`  
 
-Her iki öznitelik de aynı değere sahip olduğunda true döndürür.
+Her iki öznitelik de aynı değere sahipse True döndürür.
 
 ---
-### <a name="cdate"></a>CDate
+### <a name="cdate"></a>Cdate
 **Açıklama:**  
-CDate işlevi bir dizeden UTC tarih saati döndürür. DateTime, Sync içinde yerel bir öznitelik türü değildir ancak bazı işlevler tarafından kullanılır.
+CDate işlevi bir dizeden bir UTC DateTime döndürür. DateTime Eşitleme'de yerel bir öznitelik türü değildir, ancak bazı işlevler tarafından kullanılır.
 
-**Sözdizimi**  
+**Sözdizimi:**  
 `dt CDate(str value)`
 
-* Deeri Tarih, saat ve isteğe bağlı saat dilimine sahip bir dize
+* Değer: Tarih, saat ve isteğe bağlı saat dilimi içeren bir dize
 
-**Açıklamalarının**  
-Döndürülen dize her zaman UTC olarak olur.
+**Açıklamalar:**  
+Döndürülen dize her zaman UTC'dedir.
 
 **Örnek:**  
 `CDate([employeeStartTime])`  
-Çalışanın başlangıç zamanına bağlı olarak bir tarih saat döndürür
+Çalışanın başlangıç saatini temel alan bir DateTime döndürür
 
 `CDate("2013-01-10 4:00 PM -8")`  
-"2013-01-11 12:00" temsil eden bir tarih saat döndürür
+2013-01-11 12:00 temsil eden bir DateTime döndürür
 
 
 ---
-### <a name="certextensionoids"></a>Certbu Sionıds
+### <a name="certextensionoids"></a>CertExtensionOids
 **Açıklama:**  
-Bir sertifika nesnesinin tüm kritik uzantılarının OID değerlerini döndürür.
+Sertifika nesnesinin tüm kritik uzantılarının Oid değerlerini döndürür.
 
-**Sözdizimi**  
+**Sözdizimi:**  
 `mvstr CertExtensionOids(binary certificateRawData)`  
-*   certificateRawData: X. 509.440 sertifikasının bayt dizisi temsili. Byte dizisi ikili (DER) kodlanmış veya Base64 ile kodlanmış X. 509.952 verileri olabilir.
+*   sertifikaRawData: X.509 sertifikasının bayt dizi gösterimi. Bayt dizisi ikili (DER) kodlanmış veya Base64 kodlanmış X.509 verisi olabilir.
 
 ---
 ### <a name="certformat"></a>CertFormat
 **Açıklama:**  
-Bu X. 509v3 sertifikası biçiminin adını döndürür.
+Bu X.509v3 sertifikasının biçimini verir.
 
-**Sözdizimi**  
+**Sözdizimi:**  
 `str CertFormat(binary certificateRawData)`  
-*   certificateRawData: X. 509.440 sertifikasının bayt dizisi temsili. Byte dizisi ikili (DER) kodlanmış veya Base64 ile kodlanmış X. 509.952 verileri olabilir.
+*   sertifikaRawData: X.509 sertifikasının bayt dizi gösterimi. Bayt dizisi ikili (DER) kodlanmış veya Base64 kodlanmış X.509 verisi olabilir.
 
 ---
 ### <a name="certfriendlyname"></a>CertFriendlyName
 **Açıklama:**  
-Bir sertifika için ilişkili diğer adı döndürür.
+Sertifika için ilişkili diğer adı döndürür.
 
-**Sözdizimi**  
+**Sözdizimi:**  
 `str CertFriendlyName(binary certificateRawData)`  
-*   certificateRawData: X. 509.440 sertifikasının bayt dizisi temsili. Byte dizisi ikili (DER) kodlanmış veya Base64 ile kodlanmış X. 509.952 verileri olabilir.
+*   sertifikaRawData: X.509 sertifikasının bayt dizi gösterimi. Bayt dizisi ikili (DER) kodlanmış veya Base64 kodlanmış X.509 verisi olabilir.
 
 ---
 ### <a name="certhashstring"></a>CertHashString
 **Açıklama:**  
-X. 509v3 sertifikası için bir onaltılı dize olarak SHA1 karma değerini döndürür.
+X.509v3 sertifikası için SHA1 karma değerini hexadecimal dize olarak döndürür.
 
-**Sözdizimi**  
+**Sözdizimi:**  
 `str CertHashString(binary certificateRawData)`  
-*   certificateRawData: X. 509.440 sertifikasının bayt dizisi temsili. Byte dizisi ikili (DER) kodlanmış veya Base64 ile kodlanmış X. 509.952 verileri olabilir.
+*   sertifikaRawData: X.509 sertifikasının bayt dizi gösterimi. Bayt dizisi ikili (DER) kodlanmış veya Base64 kodlanmış X.509 verisi olabilir.
 
 ---
-### <a name="certissuer"></a>Certısuer
+### <a name="certissuer"></a>CertIssuer
 **Açıklama:**  
-X. 509v3 sertifikasını veren sertifika yetkilisinin adını döndürür.
+X.509v3 sertifikasını veren sertifika yetkilisinin adını verir.
 
-**Sözdizimi**  
+**Sözdizimi:**  
 `str CertIssuer(binary certificateRawData)`  
-*   certificateRawData: X. 509.440 sertifikasının bayt dizisi temsili. Byte dizisi ikili (DER) kodlanmış veya Base64 ile kodlanmış X. 509.952 verileri olabilir.
+*   sertifikaRawData: X.509 sertifikasının bayt dizi gösterimi. Bayt dizisi ikili (DER) kodlanmış veya Base64 kodlanmış X.509 verisi olabilir.
 
 ---
-### <a name="certissuerdn"></a>Certısuerdn
+### <a name="certissuerdn"></a>CertIssuerDN
 **Açıklama:**  
-Sertifika verenin ayırt edici adını döndürür.
+Sertifikayı verenin ayırt edici adını verir.
 
-**Sözdizimi**  
+**Sözdizimi:**  
 `str CertIssuerDN(binary certificateRawData)`  
-*   certificateRawData: X. 509.440 sertifikasının bayt dizisi temsili. Byte dizisi ikili (DER) kodlanmış veya Base64 ile kodlanmış X. 509.952 verileri olabilir.
+*   sertifikaRawData: X.509 sertifikasının bayt dizi gösterimi. Bayt dizisi ikili (DER) kodlanmış veya Base64 kodlanmış X.509 verisi olabilir.
 
 ---
-### <a name="certissueroid"></a>Certısueroıd
+### <a name="certissueroid"></a>CertIssuerOid
 **Açıklama:**  
-Sertifika verenin OID 'sini döndürür.
+Sertifikayı verenin Oid'ini verir.
 
-**Sözdizimi**  
+**Sözdizimi:**  
 `str CertIssuerOid(binary certificateRawData)`  
-*   certificateRawData: X. 509.440 sertifikasının bayt dizisi temsili. Byte dizisi ikili (DER) kodlanmış veya Base64 ile kodlanmış X. 509.952 verileri olabilir.
+*   sertifikaRawData: X.509 sertifikasının bayt dizi gösterimi. Bayt dizisi ikili (DER) kodlanmış veya Base64 kodlanmış X.509 verisi olabilir.
 
 ---
-### <a name="certkeyalgorithm"></a>Certkeyalgorithd
+### <a name="certkeyalgorithm"></a>CertKeyAlgorithm
 **Açıklama:**  
-Bu X. 509v3 sertifikası için anahtar algoritması bilgilerini bir dize olarak döndürür.
+Bu X.509v3 sertifikasının anahtar algoritma bilgilerini dize olarak verir.
 
-**Sözdizimi**  
+**Sözdizimi:**  
 `str CertKeyAlgorithm(binary certificateRawData)`  
-*   certificateRawData: X. 509.440 sertifikasının bayt dizisi temsili. Byte dizisi ikili (DER) kodlanmış veya Base64 ile kodlanmış X. 509.952 verileri olabilir.
+*   sertifikaRawData: X.509 sertifikasının bayt dizi gösterimi. Bayt dizisi ikili (DER) kodlanmış veya Base64 kodlanmış X.509 verisi olabilir.
 
 ---
 ### <a name="certkeyalgorithmparams"></a>CertKeyAlgorithmParams
 **Açıklama:**  
-X. 509v3 sertifikası için anahtar algoritması parametrelerini onaltılık bir dize olarak döndürür.
+X.509v3 sertifikası nın anahtar algoritma parametrelerini hexadecimal dize olarak döndürür.
 
-**Sözdizimi**  
+**Sözdizimi:**  
 `str CertKeyAlgorithm(binary certificateRawData)`  
-*   certificateRawData: X. 509.440 sertifikasının bayt dizisi temsili. Byte dizisi ikili (DER) kodlanmış veya Base64 ile kodlanmış X. 509.952 verileri olabilir.
+*   sertifikaRawData: X.509 sertifikasının bayt dizi gösterimi. Bayt dizisi ikili (DER) kodlanmış veya Base64 kodlanmış X.509 verisi olabilir.
 
 ---
-### <a name="certnameinfo"></a>Certnameınfo
+### <a name="certnameinfo"></a>CertNameInfo
 **Açıklama:**  
-Bir sertifikadan konu ve veren adlarını döndürür.
+Sertifikadan özne ve veren adlarını verir.
 
-**Sözdizimi**  
+**Sözdizimi:**  
 `str CertNameInfo(binary certificateRawData, str x509NameType, bool includesIssuerName)`  
-*   certificateRawData: X. 509.440 sertifikasının bayt dizisi temsili. Byte dizisi ikili (DER) kodlanmış veya Base64 ile kodlanmış X. 509.952 verileri olabilir.
-*   X509NameType: Konunun X509NameType değeri.
-*   ıncludesıssuername: veren adını içerecek şekilde doğru; Aksi takdirde, false.
+*   sertifikaRawData: X.509 sertifikasının bayt dizi gösterimi. Bayt dizisi ikili (DER) kodlanmış veya Base64 kodlanmış X.509 verisi olabilir.
+*   X509NameType: Konu için X509NameType değeri.
+*   includeIssuerName: veren in adını eklemek için doğru; aksi takdirde, yanlış.
 
 ---
 ### <a name="certnotafter"></a>CertNotAfter
 **Açıklama:**  
-Bir sertifikanın artık geçerli olmadığı yerel saat içindeki tarihi döndürür.
+Sertifikanın artık geçerli olmadığı yerel saatteki tarihi döndürür.
 
-**Sözdizimi**  
+**Sözdizimi:**  
 `dt CertNotAfter(binary certificateRawData)`  
-*   certificateRawData: X. 509.440 sertifikasının bayt dizisi temsili. Byte dizisi ikili (DER) kodlanmış veya Base64 ile kodlanmış X. 509.952 verileri olabilir.
+*   sertifikaRawData: X.509 sertifikasının bayt dizi gösterimi. Bayt dizisi ikili (DER) kodlanmış veya Base64 kodlanmış X.509 verisi olabilir.
 
 ---
 ### <a name="certnotbefore"></a>CertNotBefore
 **Açıklama:**  
-Yerel saat içinde bir sertifikanın geçerli hale geldiği tarihi döndürür.
+Sertifikanın geçerli olduğu yerel saatteki tarihi döndürür.
 
-**Sözdizimi**  
+**Sözdizimi:**  
 `dt CertNotBefore(binary certificateRawData)`  
-*   certificateRawData: X. 509.440 sertifikasının bayt dizisi temsili. Byte dizisi ikili (DER) kodlanmış veya Base64 ile kodlanmış X. 509.952 verileri olabilir.
+*   sertifikaRawData: X.509 sertifikasının bayt dizi gösterimi. Bayt dizisi ikili (DER) kodlanmış veya Base64 kodlanmış X.509 verisi olabilir.
 
 ---
 ### <a name="certpublickeyoid"></a>CertPublicKeyOid
 **Açıklama:**  
-X. 509v3 sertifikası için ortak anahtarın OID 'sini döndürür.
+X.509v3 sertifikası için ortak anahtarın Oid'ini verir.
 
-**Sözdizimi**  
+**Sözdizimi:**  
 `str CertKeyAlgorithm(binary certificateRawData)`  
-*   certificateRawData: X. 509.440 sertifikasının bayt dizisi temsili. Byte dizisi ikili (DER) kodlanmış veya Base64 ile kodlanmış X. 509.952 verileri olabilir.
+*   sertifikaRawData: X.509 sertifikasının bayt dizi gösterimi. Bayt dizisi ikili (DER) kodlanmış veya Base64 kodlanmış X.509 verisi olabilir.
 
 ---
 ### <a name="certpublickeyparametersoid"></a>CertPublicKeyParametersOid
 **Açıklama:**  
-X. 509v3 sertifikası için ortak anahtar parametrelerinin OID 'sini döndürür.
+X.509v3 sertifikası için ortak anahtar parametrelerinin Oid'ini verir.
 
-**Sözdizimi**  
+**Sözdizimi:**  
 `str CertPublicKeyParametersOid(binary certificateRawData)`  
-*   certificateRawData: X. 509.440 sertifikasının bayt dizisi temsili. Byte dizisi ikili (DER) kodlanmış veya Base64 ile kodlanmış X. 509.952 verileri olabilir.
+*   sertifikaRawData: X.509 sertifikasının bayt dizi gösterimi. Bayt dizisi ikili (DER) kodlanmış veya Base64 kodlanmış X.509 verisi olabilir.
 
 ---
 ### <a name="certserialnumber"></a>CertSerialNumber
 **Açıklama:**  
-X. 509v3 sertifikasının seri numarasını döndürür.
+X.509v3 sertifikasının seri numarasını verir.
 
-**Sözdizimi**  
+**Sözdizimi:**  
 `str CertSerialNumber(binary certificateRawData)`  
-*   certificateRawData: X. 509.440 sertifikasının bayt dizisi temsili. Byte dizisi ikili (DER) kodlanmış veya Base64 ile kodlanmış X. 509.952 verileri olabilir.
+*   sertifikaRawData: X.509 sertifikasının bayt dizi gösterimi. Bayt dizisi ikili (DER) kodlanmış veya Base64 kodlanmış X.509 verisi olabilir.
 
 ---
 ### <a name="certsignaturealgorithmoid"></a>CertSignatureAlgorithmOid
 **Açıklama:**  
-Bir sertifikanın imzasını oluşturmak için kullanılan algoritmanın OID 'sini döndürür.
+Sertifika nın imzasını oluşturmak için kullanılan algoritmanın Oid'ini döndürür.
 
-**Sözdizimi**  
+**Sözdizimi:**  
 `str CertSignatureAlgorithmOid(binary certificateRawData)`  
-*   certificateRawData: X. 509.440 sertifikasının bayt dizisi temsili. Byte dizisi ikili (DER) kodlanmış veya Base64 ile kodlanmış X. 509.952 verileri olabilir.
+*   sertifikaRawData: X.509 sertifikasının bayt dizi gösterimi. Bayt dizisi ikili (DER) kodlanmış veya Base64 kodlanmış X.509 verisi olabilir.
 
 ---
 ### <a name="certsubject"></a>CertSubject
 **Açıklama:**  
-Bir sertifikadan konu ayırt edici adını alır.
+Özne ayırt edilen adı sertifikadan alır.
 
-**Sözdizimi**  
+**Sözdizimi:**  
 `str CertSubject(binary certificateRawData)`  
-*   certificateRawData: X. 509.440 sertifikasının bayt dizisi temsili. Byte dizisi ikili (DER) kodlanmış veya Base64 ile kodlanmış X. 509.952 verileri olabilir.
+*   sertifikaRawData: X.509 sertifikasının bayt dizi gösterimi. Bayt dizisi ikili (DER) kodlanmış veya Base64 kodlanmış X.509 verisi olabilir.
 
 ---
 ### <a name="certsubjectnamedn"></a>CertSubjectNameDN
 **Açıklama:**  
-Bir sertifikadan konu ayırt edici adını döndürür.
+Bir sertifikadan özne ayırt edici adı döndürür.
 
-**Sözdizimi**  
+**Sözdizimi:**  
 `str CertSubjectNameDN(binary certificateRawData)`  
-*   certificateRawData: X. 509.440 sertifikasının bayt dizisi temsili. Byte dizisi ikili (DER) kodlanmış veya Base64 ile kodlanmış X. 509.952 verileri olabilir.
+*   sertifikaRawData: X.509 sertifikasının bayt dizi gösterimi. Bayt dizisi ikili (DER) kodlanmış veya Base64 kodlanmış X.509 verisi olabilir.
 
 ---
-### <a name="certsubjectnameoid"></a>Certsubjectnameoıd
+### <a name="certsubjectnameoid"></a>CertSubjectNameOid
 **Açıklama:**  
-Bir sertifikadan konu adının OID 'sini döndürür.
+Bir sertifikadan özne adının Oid'ini verir.
 
-**Sözdizimi**  
+**Sözdizimi:**  
 `str CertSubjectNameOid(binary certificateRawData)`  
-*   certificateRawData: X. 509.440 sertifikasının bayt dizisi temsili. Byte dizisi ikili (DER) kodlanmış veya Base64 ile kodlanmış X. 509.952 verileri olabilir.
+*   sertifikaRawData: X.509 sertifikasının bayt dizi gösterimi. Bayt dizisi ikili (DER) kodlanmış veya Base64 kodlanmış X.509 verisi olabilir.
 
 ---
-### <a name="certthumbprint"></a>Certparmak Izi
+### <a name="certthumbprint"></a>CertThumbprint
 **Açıklama:**  
-Bir sertifikanın parmak izini döndürür.
+Sertifikanın parmak izini verir.
 
-**Sözdizimi**  
+**Sözdizimi:**  
 `str CertThumbprint(binary certificateRawData)`  
-*   certificateRawData: X. 509.440 sertifikasının bayt dizisi temsili. Byte dizisi ikili (DER) kodlanmış veya Base64 ile kodlanmış X. 509.952 verileri olabilir.
+*   sertifikaRawData: X.509 sertifikasının bayt dizi gösterimi. Bayt dizisi ikili (DER) kodlanmış veya Base64 kodlanmış X.509 verisi olabilir.
 
 ---
 ### <a name="certversion"></a>CertVersion
 **Açıklama:**  
-Sertifikanın X. 509.952 biçim sürümünü döndürür.
+Sertifikanın X.509 biçimli sürümünü döndürür.
 
-**Sözdizimi**  
+**Sözdizimi:**  
 `str CertThumbprint(binary certificateRawData)`  
-*   certificateRawData: X. 509.440 sertifikasının bayt dizisi temsili. Byte dizisi ikili (DER) kodlanmış veya Base64 ile kodlanmış X. 509.952 verileri olabilir.
+*   sertifikaRawData: X.509 sertifikasının bayt dizi gösterimi. Bayt dizisi ikili (DER) kodlanmış veya Base64 kodlanmış X.509 verisi olabilir.
 
 ---
 ### <a name="cguid"></a>CGuid
 **Açıklama:**  
-CGuid işlevi bir GUID 'nin dize gösterimini ikili gösterimine dönüştürür.
+CGuid işlevi, GUID'in dize temsilini ikili gösterimine dönüştürür.
 
-**Sözdizimi**  
+**Sözdizimi:**  
 `bin CGuid(str GUID)`
 
-* Bu düzende biçimlendirilen bir dize: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx veya {xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}
+* Bu desende biçimlendirilmiş bir String: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx veya {xxxxxxxx-xxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}
 
 ---
-### <a name="contains"></a>İçerir
+### <a name="contains"></a>Contains
 **Açıklama:**  
-Contains işlevi, bir dizeyi çok değerli bir özniteliğin içinde bulur
+İçerme işlevi çok değerli bir öznitelik içinde bir dize bulur
 
-**Sözdizimi**  
-`num Contains (mvstring attribute, str search)`-büyük-küçük harfe duyarlı  
+**Sözdizimi:**  
+`num Contains (mvstring attribute, str search)`- Büyük/küçük harf duyarlı  
 `num Contains (mvstring attribute, str search, enum Casetype)`  
-`num Contains (mvref attribute, str search)`-büyük-küçük harfe duyarlı
+`num Contains (mvref attribute, str search)`- Büyük/küçük harf duyarlı
 
-* öznitelik: aranacak çok değerli öznitelik.
-* Search: özniteliğinde bulunacak dize.
-* Casetype: Caseduyarsız veya CaseSensitive.
+* öznitelik: aramak için çok değerli öznitelik.
+* arama: öznitelik bulmak için dize.
+* Casetype: CaseInsensitive veya CaseSensitive.
 
-Dizenin bulunduğu çok değerli öznitelikteki dizini döndürür. dize bulunamazsa 0 döndürülür.
+Dize nin bulunduğu çok değerli öznitelikteki dizini döndürür. Dize bulunmazsa 0 döndürülür.
 
-**Açıklamalarının**  
-Birden çok değerli dize öznitelikleri için arama, değerlerde alt dizeleri bulur.  
-Başvuru öznitelikleri için, aranan dizenin eşleşme olarak kabul edileceği değerle tam olarak eşleşmesi gerekir.
+**Açıklamalar:**  
+Çok değerli dize öznitelikleri için, arama değerleri alt dizeleri bulur.  
+Başvuru öznitelikleri için, aranan dize tam olarak bir eşleşme olarak kabul edilecek değeri eşleşmesi gerekir.
 
 **Örnek:**  
 `IIF(Contains([proxyAddresses],"SMTP:")>0,[proxyAddresses],Error("No primary SMTP address found."))`  
-ProxyAddresses özniteliğinin bir birincil e-posta adresi varsa (büyük harfli "SMTP:"), ardından proxyAddress özniteliğini döndürün, aksi takdirde bir hata döndürün.
+ProxyAddresss özniteliği birincil e-posta adresine sahipse (büyük harf "SMTP:" ile gösterilir), sonra proxyAddress özniteliğini döndürün, aksi takdirde bir hata döndürün.
 
 ---
 ### <a name="convertfrombase64"></a>ConvertFromBase64
 **Açıklama:**  
-ConvertFromBase64 işlevi, belirtilen Base64 kodlamalı değeri normal bir dizeye dönüştürür.
+ConvertFromBase64 işlevi belirtilen base64 kodlanmış değeri normal bir dize dönüştürür.
 
-**Sözdizimi**  
-`str ConvertFromBase64(str source)`-kodlama için Unicode varsayılır  
+**Sözdizimi:**  
+`str ConvertFromBase64(str source)`- kodlama için Unicode varsayar  
 `str ConvertFromBase64(str source, enum Encoding)`
 
-* kaynaktaki Base64 kodlamalı dize  
-* Şifreleme Unicode, ASCII, UTF8
+* kaynak: Base64 kodlanmış dize  
+* Kodlama: Unicode, ASCII, UTF8
 
 **Örnek**  
 `ConvertFromBase64("SABlAGwAbABvACAAdwBvAHIAbABkACEA")`  
 `ConvertFromBase64("SGVsbG8gd29ybGQh", UTF8)`
 
-Her iki örnek de "*Hello World!* " döndürür
+Her iki örnek de "*Merhaba dünya!*"
 
 ---
 ### <a name="convertfromutf8hex"></a>ConvertFromUTF8Hex
 **Açıklama:**  
-ConvertFromUTF8Hex işlevi, belirtilen UTF8 onaltılı kodlamalı değeri bir dizeye dönüştürür.
+ConvertFromUTF8Hex işlevi belirtilen UTF8 Hex kodlanmış değeri bir dize dönüştürür.
 
-**Sözdizimi**  
+**Sözdizimi:**  
 `str ConvertFromUTF8Hex(str source)`
 
-* kaynaktaki UTF8 2 baytlık kodlanmış
+* kaynak: UTF8 2 bayt kodlanmış sokma
 
-**Açıklamalarının**  
-Bu işlev ve ConvertFromBase64 ([], UTF8) arasındaki fark, sonucun DN özniteliği için kullanımı kolay.  
-Bu biçim, Azure Active Directory tarafından DN olarak kullanılır.
+**Açıklamalar:**  
+Bu işlev ve ConvertFromBase64([],UTF8) arasındaki fark, sonuç DN özniteliği için dostudur.  
+Bu biçim Azure Active Directory tarafından DN olarak kullanılır.
 
 **Örnek:**  
 `ConvertFromUTF8Hex("48656C6C6F20776F726C6421")`  
-"*Hello World!* " döndürür
+İade "*Merhaba dünya!*"
 
 ---
-### <a name="converttobase64"></a>ConvertToBase64
+### <a name="converttobase64"></a>ConverttoBase64
 **Açıklama:**  
-ConvertToBase64 işlevi bir dizeyi Unicode Base64 dizesine dönüştürür.  
-Bir tamsayılar dizisinin değerini, Base-64 basamakları ile kodlanmış eşdeğer dize gösterimine dönüştürür.
+ConvertToBase64 işlevi bir dizeyi Unicode base64 dizesine dönüştürür.  
+Bir dizi tümsayenin değerini, taban-64 basamaklarla kodlanmış eşdeğer dize gösterimine dönüştürür.
 
-**Sözdizimi**  
+**Sözdizimi:**  
 `str ConvertToBase64(str source)`
 
 **Örnek:**  
 `ConvertToBase64("Hello world!")`  
-"Sablagwabebek Vacaadilevahiababkacea" döndürür
+"SABlAGwAbABvACAAdwBvAHIAbABkACEA"
 
 ---
 ### <a name="converttoutf8hex"></a>ConvertToUTF8Hex
 **Açıklama:**  
-ConvertToUTF8Hex işlevi bir dizeyi UTF8 onaltılık kodlanmış bir değere dönüştürür.
+ConvertToUTF8Hex işlevi bir dizeyi UTF8 Hex kodlanmış değere dönüştürür.
 
-**Sözdizimi**  
+**Sözdizimi:**  
 `str ConvertToUTF8Hex(str source)`
 
-**Açıklamalarının**  
-Bu işlevin çıkış biçimi Azure Active Directory tarafından, DN öznitelik biçimi olarak kullanılır.
+**Açıklamalar:**  
+Bu işlevin çıktı biçimi, Azure Active Directory tarafından DN öznitelik biçimi olarak kullanılır.
 
 **Örnek:**  
 `ConvertToUTF8Hex("Hello world!")`  
-48656C6C6F20776F726C6421 döndürür
+İade 48656C6C6F20776F726C6421
 
 ---
-### <a name="count"></a>Count
+### <a name="count"></a>Sayı
 **Açıklama:**  
-Count işlevi, birden çok değerli bir öznitelikteki öğelerin sayısını döndürür
+Count işlevi çok değerli bir öznitelikteki eleman sayısını döndürür
 
-**Sözdizimi**  
+**Sözdizimi:**  
 `num Count(mvstr attribute)`
 
 ---
@@ -463,348 +463,348 @@ Count işlevi, birden çok değerli bir öznitelikteki öğelerin sayısını d�
 **Açıklama:**  
 CNum işlevi bir dize alır ve sayısal bir veri türü döndürür.
 
-**Sözdizimi**  
+**Sözdizimi:**  
 `num CNum(str value)`
 
 ---
-### <a name="cref"></a>CRef
+### <a name="cref"></a>Cref
 **Açıklama:**  
-Bir dizeyi başvuru özniteliğine dönüştürür
+Dizeyi bir başvuru özniteliğine dönüştürür
 
-**Sözdizimi**  
+**Sözdizimi:**  
 `ref CRef(str value)`
 
 **Örnek:**  
 `CRef("CN=LC Services,CN=Microsoft,CN=lcspool01,CN=Pools,CN=RTC Service," & %Forest.LDAP%)`
 
 ---
-### <a name="cstr"></a>CStr
+### <a name="cstr"></a>Cstr
 **Açıklama:**  
-CStr işlevi bir dize veri türüne dönüştürür.
+CStr işlevi dize veri türüne dönüşür.
 
-**Sözdizimi**  
+**Sözdizimi:**  
 `str CStr(num value)`  
 `str CStr(ref value)`  
 `str CStr(bool value)`  
 
-* deeri Sayısal bir değer, başvuru özniteliği veya Boole olabilir.
+* değer: Sayısal bir değer, referans özniteliği veya Boolean olabilir.
 
 **Örnek:**  
 `CStr([dn])`  
-"CN = ali, DC = contoso, DC = com" döndürebilir
+"cn=Joe,dc=contoso,dc=com" dönebilir
 
 ---
 ### <a name="dateadd"></a>DateAdd
 **Açıklama:**  
-Belirtilen zaman aralığının eklendiği tarihi içeren bir tarih döndürür.
+Belirli bir zaman aralığının eklendiği tarihi içeren bir Tarih döndürür.
 
-**Sözdizimi**  
+**Sözdizimi:**  
 `dt DateAdd(str interval, num value, dt date)`
 
-* aralığında Eklemek istediğiniz zaman aralığı olan dize ifadesi. Dize aşağıdaki değerlerden birine sahip olmalıdır:
-  * yyyy yıl
-  * s çeyreği
-  * a ayı
-  * Yılın y günü
-  * d günü
-  * b hafta Içi
-  * WW haftası
-  * h saati
-  * n dakika
-  * s saniye
-* deeri Eklemek istediğiniz birim sayısı. Pozitif olabilir (gelecekte tarihleri almak için) veya negatif (geçmişte tarihleri almak için).
-* güncel Aralığın eklendiği tarihi temsil eden tarih saat.
+* aralık: Eklemek istediğiniz zaman aralığı olan string ifadesidir. Dize aşağıdaki değerlerden birine sahip olmalıdır:
+  * yyyy Yıl
+  * q Üç Aylık
+  * m Ay
+  * y Yılın Günü
+  * d Gün
+  * w Hafta içi
+  * ww Hafta
+  * h Saat
+  * n Dakika
+  * s İkinci
+* değer: Eklemek istediğiniz birim sayısı. Bu olumlu (gelecekte tarih almak için) veya negatif (geçmişte tarih almak için) olabilir.
+* tarih: Aralığın eklendiği tarihi temsil eden DateTime.
 
 **Örnek:**  
 `DateAdd("m", 3, CDate("2001-01-01"))`  
-3 ay ekler ve "2001-04-01" temsil eden bir tarih saat döndürür.
+3 ay ekler ve "2001-04-01"i temsil eden bir DateTime döndürür.
 
 ---
-### <a name="datefromnum"></a>Tarih Fromnum
+### <a name="datefromnum"></a>TarihFromNum
 **Açıklama:**  
-DateFromNum işlevi, AD 'nin tarih biçimindeki bir değeri bir tarih saat türüne dönüştürür.
+DateFromNum işlevi, AD'nin tarih biçimindeki bir değeri DateTime türüne dönüştürür.
 
-**Sözdizimi**  
+**Sözdizimi:**  
 `dt DateFromNum(num value)`
 
 **Örnek:**  
 `DateFromNum([lastLogonTimestamp])`  
 `DateFromNum(129699324000000000)`  
-2012-01-01 23:00:00 temsil eden bir tarih saat döndürür
+2012-01-01 23:00:00'ı temsil eden bir DateTime döndürür
 
 ---
 ### <a name="dncomponent"></a>DNComponent
 **Açıklama:**  
-DNComponent işlevi, soldan bir belirtilen DN bileşeninin değerini döndürür.
+DNComponent işlevi soldan giden belirli bir DN bileşeninin değerini döndürür.
 
-**Sözdizimi**  
+**Sözdizimi:**  
 `str DNComponent(ref dn, num ComponentNumber)`
 
-* DN: yorumlamaya yönelik başvuru özniteliği
-* ComponentNumber: Verilecek DN 'deki bileşen
+* dn: yorumlamak için referans özniteliği
+* ComponentNumber: DN'deki bileşenin döndürülecek
 
 **Örnek:**  
 `DNComponent(CRef([dn]),1)`  
-DN "CN = ali, OU =..." ise, "ali döndürür
+Eğer dn "cn=Joe,ou=...," joe döndürür
 
 ---
 ### <a name="dncomponentrev"></a>DNComponentRev
 **Açıklama:**  
-DNComponentRev işlevi, sağdan (bitiş) belirtilen bir DN bileşeni değerini döndürür.
+DNComponentRev işlevi sağa (uçtan) giden belirli bir DN bileşeninin değerini döndürür.
 
-**Sözdizimi**  
+**Sözdizimi:**  
 `str DNComponentRev(ref dn, num ComponentNumber)`  
 `str DNComponentRev(ref dn, num ComponentNumber, enum Options)`
 
-* DN: yorumlamaya yönelik başvuru özniteliği
-* ComponentNumber-döndürülecek DN 'deki bileşen
-* Seçenekler: DC – "DC =" ile tüm bileşenleri yoksay
+* dn: yorumlamak için referans özniteliği
+* ComponentNumber - DN'deki bileşenin döndürülecek
+* Seçenekler: DC – "dc=" ile tüm bileşenleri yoksay
 
 **Örnek:**  
-DN "CN = ali, OU = Atlanta, OU = GA, OU = US, DC = contoso, DC = com" ise  
+Eğer dn "cn=Joe,ou=Atlanta,ou=GA,ou=US, dc=contoso,dc=com" ise,  
 `DNComponentRev(CRef([dn]),3)`  
 `DNComponentRev(CRef([dn]),1,"DC")`  
-Her ikisi de bıze döndürün.
+Her ikisi de ABD dönmek.
 
 ---
 ### <a name="error"></a>Hata
 **Açıklama:**  
 Hata işlevi özel bir hata döndürmek için kullanılır.
 
-**Sözdizimi**  
+**Sözdizimi:**  
 `void Error(str ErrorMessage)`
 
 **Örnek:**  
 `IIF(IsPresent([accountName]),[accountName],Error("AccountName is required"))`  
-AccountName özniteliği yoksa, nesne üzerinde bir hata oluşturur.
+Öznitelik hesabı Adı yoksa, nesneye bir hata atın.
 
 ---
-### <a name="escapedncomponent"></a>Çıkar Edncomponent
+### <a name="escapedncomponent"></a>EscapeDNComponent
 **Açıklama:**  
-Kaçış Edncomponent işlevi bir DN 'nin bir bileşenini alır ve LDAP 'de temsil edilebilmesi için onu çıkar.
+EscapeDNComponent işlevi bir DN'nin bir bileşenini alır ve LDAP'de temsil edilebilsin diye ondan kaçar.
 
-**Sözdizimi**  
+**Sözdizimi:**  
 `str EscapeDNComponent(str value)`
 
 **Örnek:**  
 `EscapeDNComponent("cn=" & [displayName]) & "," & %ForestLDAP%)`  
-DisplayName özniteliğinde, LDAP 'de kaçışması gereken karakterler olsa bile, nesnenin bir LDAP dizininde oluşturulabilse emin olur.
+DisplayName özniteliği LDAP'de kaçması gereken karakterlere sahip olsa bile nesnenin ldap dizininde oluşturulabilmesini sağlar.
 
 ---
-### <a name="formatdatetime"></a>formatDateTime
+### <a name="formatdatetime"></a>BiçimDateTime
 **Açıklama:**  
-FormatDateTime işlevi, bir tarih/saati belirtilen biçime sahip bir dizeye biçimlendirmek için kullanılır
+FormatDateTime işlevi, DateTime'ı belirli bir biçime sahip bir dize biçimlendirmek için kullanılır
 
-**Sözdizimi**  
+**Sözdizimi:**  
 `str FormatDateTime(dt value, str format)`
 
-* değer: Tarih saat biçiminde bir değer
-* Biçim: dönüştürülecek biçimi temsil eden bir dize.
+* değer: DateTime biçiminde bir değer
+* biçim: dönüştürülecek biçimi temsil eden bir dize.
 
-**Açıklamalarının**  
-Biçim için olası değerler burada bulunabilir: [Biçim işlevi Için özel tarih ve saat biçimleri](https://docs.microsoft.com/dax/custom-date-and-time-formats-for-the-format-function).
+**Açıklamalar:**  
+Biçim için olası değerleri burada bulabilirsiniz: [FORMAT işlevi için özel tarih ve saat biçimleri.](https://docs.microsoft.com/dax/custom-date-and-time-formats-for-the-format-function)
 
 **Örnek:**  
 
 `FormatDateTime(CDate("12/25/2007"),"yyyy-mm-dd")`  
-"2007-12-25" ile sonuçlanır.
+Sonuçlar "2007-12-25".
 
 `FormatDateTime(DateFromNum([pwdLastSet]),"yyyyMMddHHmmss.0Z")`  
-"20140905081453.0 Z" ile sonuçlanabilir
+"20140905081453.0Z" ile sonuçlanabilir
 
 ---
 ### <a name="guid"></a>Guid
 **Açıklama:**  
-İşlev GUID 'Si yeni bir rastgele GUID oluşturur
+Guid işlevi yeni bir rasgele GUID oluşturur
 
-**Sözdizimi**  
+**Sözdizimi:**  
 `str Guid()`
 
 ---
-### <a name="iif"></a>MAYAN
+### <a name="iif"></a>ııf
 **Açıklama:**  
-IıF işlevi, belirli bir koşula göre olası bir değer kümesinden birini döndürür.
+IIF işlevi, belirtilen durumu temel alan olası değerler kümesinden birini döndürür.
 
-**Sözdizimi**  
+**Sözdizimi:**  
 `var IIF(exp condition, var valueIfTrue, var valueIfFalse)`
 
-* koşul: doğru veya yanlış olarak değerlendirilebilen herhangi bir değer veya ifade.
-* valueIfTrue: Koşul true olarak değerlendirilirse döndürülen değer.
+* durum: doğru veya yanlış olarak değerlendirilebilecek herhangi bir değer veya ifade.
+* valueIfTrue: Koşul doğru değerlendirirse, döndürülen değer.
 * valueIfFalse: Koşul false olarak değerlendirilirse, döndürülen değer.
 
 **Örnek:**  
 `IIF([employeeType]="Intern","t-" & [alias],[alias])`  
- Kullanıcı bir ınters ise, "t-" bir kullanıcının diğer adını döndürür. Bu, başka bir kullanıcının diğer adını olduğu gibi döndürür.
+ Kullanıcı bir stajyerse, bir kullanıcının takma adını başına "t-" eklenmiştir, aksi takdirde kullanıcının diğer adını olduğu gibi döndürür.
 
 ---
-### <a name="instr"></a>InStr
+### <a name="instr"></a>ınstr
 **Açıklama:**  
-InStr işlevi bir dizedeki alt dizenin ilk oluşumunu bulur
+InStr işlevi bir dize bir alt dize ilk oluşumunu bulur
 
-**Sözdizimi**  
+**Sözdizimi:**  
 
 `num InStr(str stringcheck, str stringmatch)`  
 `num InStr(str stringcheck, str stringmatch, num start)`  
 `num InStr(str stringcheck, str stringmatch, num start , enum compare)`
 
-* stringcheck: Aranacak dize
-* stringmatch: bulunan dize
-* Başlat: alt dizeyi bulmak için başlangıç konumu
-* Compare: vbTextCompare veya vbBinaryCompare
+* stringcheck: aranacak dize
+* stringmatch: string bulunacak
+* start: substring bulmak için başlangıç pozisyonu
+* karşılaştırın: vbTextCompare veya vbBinaryKarşılaştır
 
-**Açıklamalarının**  
-Alt dizenin bulunduğu konumu veya bulunmazsa 0 değerini döndürür.
+**Açıklamalar:**  
+Substring'in bulunduğu konumu veya yoksa 0'ı döndürür.
 
 **Örnek:**  
 `InStr("The quick brown fox","quick")`  
-Evalues 'a 5
+Evalues için 5
 
 `InStr("repEated","e",3,vbBinaryCompare)`  
-7 olarak değerlendirilir
+7'ye göre değerlendirir
 
 ---
-### <a name="instrrev"></a>InStrRev
+### <a name="instrrev"></a>Instrrev
 **Açıklama:**  
-InStrRev işlevi bir dizedeki alt dizenin son oluşumunu bulur
+InStrRev işlevi bir dize bir substring son oluşumunu bulur
 
-**Sözdizimi**  
+**Sözdizimi:**  
 `num InstrRev(str stringcheck, str stringmatch)`  
 `num InstrRev(str stringcheck, str stringmatch, num start)`  
 `num InstrRev(str stringcheck, str stringmatch, num start, enum compare)`
 
-* stringcheck: Aranacak dize
-* stringmatch: bulunan dize
-* Başlat: alt dizeyi bulmak için başlangıç konumu
-* Compare: vbTextCompare veya vbBinaryCompare
+* stringcheck: aranacak dize
+* stringmatch: string bulunacak
+* start: substring bulmak için başlangıç pozisyonu
+* karşılaştırın: vbTextCompare veya vbBinaryKarşılaştır
 
-**Açıklamalarının**  
-Alt dizenin bulunduğu konumu veya bulunmazsa 0 değerini döndürür.
+**Açıklamalar:**  
+Substring'in bulunduğu konumu veya yoksa 0'ı döndürür.
 
 **Örnek:**  
 `InStrRev("abbcdbbbef","bb")`  
-7 döndürür
+İade 7
 
 ---
 ### <a name="isbitset"></a>IsBitSet
 **Açıklama:**  
-Bir bit ayarlandıysa veya belirtilmemişse işlev, test olarak ayarlandı
+Bir bit ayarlanmış saveya değil mi, IsBitSet işlevi Testleri
 
-**Sözdizimi**  
+**Sözdizimi:**  
 `bool IsBitSet(num value, num flag)`
 
-* değer: değerlendirilen sayısal bir değer. bayrak: değerlendirilecek biti olan sayısal bir değer
+* değer: değerlendirilen sayısal bir değer.flag: değerlendirilmesi gereken bit olan sayısal değer
 
 **Örnek:**  
 `IsBitSet(&HF,4)`  
-"F" onaltılık değerinde bit "4" ayarlandığı için true değerini döndürür
+Bit "4" hexadecimal değer "F" olarak ayarlandığı için True döndürür
 
 ---
-### <a name="isdate"></a>IsDate
+### <a name="isdate"></a>ısdate
 **Açıklama:**  
-İfade bir DateTime türü olarak değerlendirilüyorsa, IsDate işlevi true olarak değerlendirilir.
+İfade DateTime türü olarak değerlendirilebilirse, IsDate işlevi True olarak değerlendirilir.
 
-**Sözdizimi**  
+**Sözdizimi:**  
 `bool IsDate(var Expression)`
 
-**Açıklamalarının**  
-CDate () işleminin başarılı olup olmadığını anlamak için kullanılır.
+**Açıklamalar:**  
+CDate() başarılı olup olmadığını belirlemek için kullanılır.
 
 ---
 ### <a name="iscert"></a>IsCert
 **Açıklama:**  
-Ham veriler .NET X509Certificate2 Certificate nesnesine seri hale getirilebiliyorsa, true döndürür.
+Ham veriler .NET X509Certificate2 sertifika nesnesine serihale edilebiliyorsa doğru döndürür.
 
-**Sözdizimi**  
+**Sözdizimi:**  
 `bool CertThumbprint(binary certificateRawData)`  
-*   certificateRawData: X. 509.440 sertifikasının bayt dizisi temsili. Byte dizisi ikili (DER) kodlanmış veya Base64 ile kodlanmış X. 509.952 verileri olabilir.
+*   sertifikaRawData: X.509 sertifikasının bayt dizi gösterimi. Bayt dizisi ikili (DER) kodlanmış veya Base64 kodlanmış X.509 verisi olabilir.
 ---
 ### <a name="isempty"></a>IsEmpty
 **Açıklama:**  
-Özniteliği CS veya MV içinde varsa ancak boş bir dize olarak değerlendirilirse, IsEmpty işlevi true olarak değerlendirilir.
+Öznitelik CS veya MV'de bulunursa ancak boş bir dize değerlendirirse, Boş boş işlevi True'yu değerlendirir.
 
-**Sözdizimi**  
+**Sözdizimi:**  
 `bool IsEmpty(var Expression)`
 
 ---
 ### <a name="isguid"></a>IsGuid
 **Açıklama:**  
-Dize bir GUID 'ye dönüştürülebiliyorsa, IsGuid işlevi true olarak değerlendirilir.
+Dize bir GUID dönüştürülebilirse, O zaman IsGuid işlevi doğru olarak değerlendirilir.
 
-**Sözdizimi**  
+**Sözdizimi:**  
 `bool IsGuid(str GUID)`
 
-**Açıklamalarının**  
-GUID şu desenlerden birini izleyen bir dize olarak tanımlanır: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx veya {xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx}
+**Açıklamalar:**  
+Bu desenlerden birini izleyen bir kılavuz dize olarak tanımlanır: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx veya {xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx}
 
-CGuid () işleminin başarılı olup olmadığını anlamak için kullanılır.
+CGuid() başarılı olabilir belirlemek için kullanılır.
 
 **Örnek:**  
 `IIF(IsGuid([strAttribute]),CGuid([strAttribute]),NULL)`  
-StrAttribute bir GUID biçimine sahipse, ikili bir temsili döndürün, aksi takdirde null döndürün.
+StrAttribute bir GUID biçimi varsa, ikili gösterim döndürün, aksi takdirde bir Null döndürün.
 
 ---
-### <a name="isnull"></a>IsNull
+### <a name="isnull"></a>ısnull
 **Açıklama:**  
-İfade null olarak değerlendirilirse, IsNull işlevi true döndürür.
+İfade Null'a göre değerlendirilirse, IsNull işlevi doğru döndürür.
 
-**Sözdizimi**  
+**Sözdizimi:**  
 `bool IsNull(var Expression)`
 
-**Açıklamalarının**  
-Bir öznitelik için, bir null özniteliğin yokluğuna göre ifade edilir.
+**Açıklamalar:**  
+Bir öznitelik için, bir Null öznitelik yokluğu ile ifade edilir.
 
 **Örnek:**  
 `IsNull([displayName])`  
-Öznitelik CS veya MV içinde yoksa, true döndürür.
+Özellik CS veya MV'de yoksa True döndürür.
 
 ---
-### <a name="isnullorempty"></a>IsNullOrEmpty
+### <a name="isnullorempty"></a>ısnullorempty
 **Açıklama:**  
-İfade null veya boş bir dize ise, IsNullOrEmpty işlevi true değerini döndürür.
+İfade null veya boş bir dize ise, O zaman IsNullOrEmpty işlevi doğru döndürür.
 
-**Sözdizimi**  
+**Sözdizimi:**  
 `bool IsNullOrEmpty(var Expression)`
 
-**Açıklamalarının**  
-Özniteliği için, öznitelik yoksa veya varsa ancak boş bir dize ise, bu true olarak değerlendirilir.  
-Bu işlevin tersi ısun olarak adlandırılmıştır.
+**Açıklamalar:**  
+Bir öznitelik için, öznitelik yoksa veya yoksa ancak boş bir dize yse, bu True'ya değerlenir.  
+Bu işlevin tersi IsPresent olarak adlandırılır.
 
 **Örnek:**  
 `IsNullOrEmpty([displayName])`  
-Öznitelik yoksa veya CS ya da MV içindeki boş bir dize ise true döndürür.
+Öznitelik yoksa veya CS veya MV'de boş bir dizeyse True döndürür.
 
 ---
 ### <a name="isnumeric"></a>IsNumeric
 **Açıklama:**  
-IsNumeric işlevi, bir ifadenin sayı türü olarak değerlendirilemeyeceğini belirten bir Boole değeri döndürür.
+Umumeric işlevi, bir ifadenin bir sayı türü olarak değerlendirilip değerlendirilemeyeceğini belirten bir Boolean değeri döndürür.
 
-**Sözdizimi**  
+**Sözdizimi:**  
 `bool IsNumeric(var Expression)`
 
-**Açıklamalarının**  
-CNum () ifadesinin ayrıştırılmasında başarılı olup olmadığını anlamak için kullanılır.
+**Açıklamalar:**  
+CNum() ifadesini ayrıştırmak için başarılı olup olmadığını belirlemek için kullanılır.
 
 ---
-### <a name="isstring"></a>Isstrıng
+### <a name="isstring"></a>IsString
 **Açıklama:**  
-İfade bir dize türü olarak değerlendirilebiliyorsa, IsString işlevi true olarak değerlendirilir.
+İfade bir dize türüne değerlendirilebilirse, IsString işlevi True olarak değerlendirilir.
 
-**Sözdizimi**  
+**Sözdizimi:**  
 `bool IsString(var expression)`
 
-**Açıklamalarının**  
-CStr () ifadesinin ayrıştırmak için başarılı olup olmadığını belirlemekte kullanılır.
+**Açıklamalar:**  
+CStr() ifadesini ayrıştırmak için başarılı olup olmadığını belirlemek için kullanılır.
 
 ---
-### <a name="ispresent"></a>Olmasına
+### <a name="ispresent"></a>ıspresent
 **Açıklama:**  
-İfade null olmayan ve boş olmayan bir dize olarak değerlendirilirse, ıssun işlevi true değerini döndürür.
+İfade Null olmayan ve boş olmayan bir dize değerlendirirse, IsPresent işlevi doğru döndürür.
 
-**Sözdizimi**  
+**Sözdizimi:**  
 `bool IsPresent(var expression)`
 
-**Açıklamalarının**  
-Bu işlevin tersi IsNullOrEmpty olarak adlandırılmıştır.
+**Açıklamalar:**  
+Bu işlevin tersi IsNullOrEmpty olarak adlandırılır.
 
 **Örnek:**  
 `Switch(IsPresent([directManager]),[directManager], IsPresent([skiplevelManager]),[skiplevelManager], IsPresent([director]),[director])`
@@ -812,112 +812,112 @@ Bu işlevin tersi IsNullOrEmpty olarak adlandırılmıştır.
 ---
 ### <a name="item"></a>Öğe
 **Açıklama:**  
-Item işlevi, birden çok değerli dize/öznitelikten bir öğe döndürür.
+Öğe işlevi, çok değerli bir dize/öznitelikten bir öğeyi döndürür.
 
-**Sözdizimi**  
+**Sözdizimi:**  
 `var Item(mvstr attribute, num index)`
 
 * öznitelik: çok değerli öznitelik
-* Dizin: Çoklu değerli dizedeki bir öğenin dizini.
+* dizin: çok değerli dize bir öğeye dizin.
 
-**Açıklamalarının**  
-İkinci işlev, dizini çok değerli öznitelikteki bir öğeye döndürdüğünden, öğe işlevi Contains işleviyle birlikte kullanışlıdır.
+**Açıklamalar:**  
+İkinci işlev dizini çok değerli öznitelikteki bir öğeye döndürdüğünden, Öğe işlevi İçer işleviile birlikte kullanışlıdır.
 
-Dizin sınırların dışında olduğunda bir hata oluşturur.
+Dizin sınırların dışındaysa hata atar.
 
 **Örnek:**  
 `Mid(Item([proxyAddresses],Contains([proxyAddresses], "SMTP:")),6)`  
 Birincil e-posta adresini döndürür.
 
 ---
-### <a name="itemornull"></a>Imornull
+### <a name="itemornull"></a>ItemOrnull
 **Açıklama:**  
-ItemOrNull işlevi, birden çok değerli dize/öznitelikten bir öğe döndürür.
+ItemOrNull işlevi, çok değerli bir dize/öznitelikten bir öğeyi döndürür.
 
-**Sözdizimi**  
+**Sözdizimi:**  
 `var ItemOrNull(mvstr attribute, num index)`
 
 * öznitelik: çok değerli öznitelik
-* Dizin: Çoklu değerli dizedeki bir öğenin dizini.
+* dizin: çok değerli dize bir öğeye dizin.
 
-**Açıklamalarının**  
-İkinci işlev, dizini çok değerli öznitelikteki bir öğeye döndürdüğünden, ItemOrNull işlevi Contains işleviyle birlikte kullanışlıdır.
+**Açıklamalar:**  
+İkinci işlev dizini çok değerli öznitelikteki bir öğeye döndürdüğünden ItemOrNull işlevi İçer işleviile birlikte kullanışlıdır.
 
-Dizin sınırların dışında ise null değeri döndürür.
+Dizin sınırların dışındaysa, null değeri döndürür.
 
 ---
 ### <a name="join"></a>Birleştir
 **Açıklama:**  
-JOIN işlevi, birden çok değerli bir dize alır ve her öğe arasında belirtilen ayırıcı ile tek değerli bir dize döndürür.
+Birleştirme işlevi çok değerli bir dize alır ve her öğe arasına belirtilen ayırıcı eklenmiş tek değerli bir dize döndürür.
 
-**Sözdizimi**  
+**Sözdizimi:**  
 `str Join(mvstr attribute)`  
 `str Join(mvstr attribute, str Delimiter)`
 
-* özniteliğe Birleştirilecek dizeleri içeren çok değerli öznitelik.
-* ayırıcı Döndürülen dizedeki alt dizeleri ayırmak için kullanılan herhangi bir dize. Atlanırsa, boşluk karakteri ("") kullanılır. Sınırlayıcı sıfır uzunluklu bir dize ("") veya Nothing ise, listedeki tüm öğeler sınırlayıcı olmadan birleştirilir.
+* öznitelik: Birlilecek dizeleri içeren çok değerli öznitelik.
+* delimiter: Döndürülen dizedeki alt dizeleri ayırmak için kullanılan herhangi bir dize. Atlanırsa, boşluk karakteri (" ") kullanılır. Delimiter sıfır uzunlukta bir dize ("") veya Hiçbir şey ise, listedeki tüm öğeler sınır dışı layıcılar ile birleştirilmiştir.
 
 **Açıklamalar**  
-JOIN ve Split işlevleri arasında eşlik vardır. JOIN işlevi, tek bir dize döndürmek için bir dizi dizeyi alır ve bunları bir sınırlayıcı dize kullanarak birleştirir. Split işlevi bir dize alır ve bir dize dizisi döndürecek şekilde sınırlayıcıda ayırır. Bununla birlikte, bir temel fark, birleştirmenin herhangi bir sınırlayıcı dizeyle dizeleri birleştireceği ve yalnızca tek bir karakter sınırlayıcısı kullanarak dizeleri ayırabilirler.
+Birleştirme ve Bölme işlevleri arasında eşitlik vardır. Birleştirme işlevi bir dizi dize alır ve tek bir dize döndürmek için bir sınırlayıcı dize kullanarak bunları birleştirir. Bölme işlevi bir dize alır ve bir dizi dize döndürmek için sınırlayıcıda ayırır. Ancak, önemli bir fark, Join herhangi bir sınırlayıcı dize ile dizeleri birleştirebilirsiniz, Split yalnızca tek bir karakter delimiter kullanarak dizeleri ayırabilirsiniz.
 
 **Örnek:**  
 `Join([proxyAddresses],",")`  
-Şunu döndürebilir: "SMTP:john.doe@contoso.com,smtp:jd@contoso.com"
+Geri dönebilir:SMTP:john.doe@contoso.comsmtp:jd@contoso.com" , "
 
 ---
-### <a name="lcase"></a>LCase
+### <a name="lcase"></a>Lcase
 **Açıklama:**  
-LCase işlevi bir dizedeki tüm karakterleri küçük harfe dönüştürür.
+LCase işlevi, dizedeki tüm karakterleri küçük harfe dönüştürür.
 
-**Sözdizimi**  
+**Sözdizimi:**  
 `str LCase(str value)`
 
 **Örnek:**  
 `LCase("TeSt")`  
-"Test" döndürür.
+"Test"i döndürür.
 
 ---
 ### <a name="left"></a>Sol
 **Açıklama:**  
-Left işlevi bir dizenin sol tarafında belirtilen sayıda karakteri döndürür.
+Sol işlev, dizesin solundan belirli sayıda karakter döndürür.
 
-**Sözdizimi**  
+**Sözdizimi:**  
 `str Left(str string, num NumChars)`
 
-* dize: karakterlerin döndürdüğü dize
-* NumChars: dizenin başından (solda) döndürülecek karakter sayısını tanımlayan sayı
+* string: karakterleri döndürmek için dize
+* NumChars: dize başından (sol) dönmek için karakter sayısını tanımlayan bir sayı
 
-**Açıklamalarının**  
-Dizedeki ilk Numchar karakterlerini içeren bir dize:
+**Açıklamalar:**  
+Dizedeki ilk numChars karakterlerini içeren bir dize:
 
-* NumChars = 0 ise boş bir dize döndürür.
-* NumChars 0 <, giriş dizesi döndürür.
-* Dize null ise boş dize döndürün.
+* numChars = 0 ise, boş dize döndürün.
+* numChars 0'ı <, giriş dizelerini döndürün.
+* Dize null ise, boş dize döndürün.
 
-Dize Numchar 'lar içinde belirtilen sayıdan daha az karakter içeriyorsa, dize ile özdeş bir dize (yani, 1 parametresindeki tüm karakterleri içeren) döndürülür.
+Dize numChars belirtilen sayıdan daha az karakter içeriyorsa, dize ile aynı bir dize (yani parametre 1'deki tüm karakterleri içeren) döndürülür.
 
 **Örnek:**  
 `Left("John Doe", 3)`  
-"Joh" döndürür.
+"Joh"u döndürür.
 
 ---
-### <a name="len"></a>Tepe
+### <a name="len"></a>Len
 **Açıklama:**  
 Len işlevi bir dizedeki karakter sayısını döndürür.
 
-**Sözdizimi**  
+**Sözdizimi:**  
 `num Len(str value)`
 
 **Örnek:**  
 `Len("John Doe")`  
-8 döndürür
+İade 8
 
 ---
-### <a name="ltrim"></a>LTrim
+### <a name="ltrim"></a>Ltrim
 **Açıklama:**  
-LTrim işlevi bir dizeden öndeki boşlukları kaldırır.
+LTrim işlevi, önde gelen beyaz boşlukları bir dizeden kaldırır.
 
-**Sözdizimi**  
+**Sözdizimi:**  
 `str LTrim(str value)`
 
 **Örnek:**  
@@ -927,73 +927,73 @@ LTrim işlevi bir dizeden öndeki boşlukları kaldırır.
 ---
 ### <a name="mid"></a>Orta
 **Açıklama:**  
-Mid işlevi, bir dizedeki belirli bir konumdan belirtilen sayıda karakteri döndürür.
+Orta işlev, dizedeki belirli bir konumdan belirli sayıda karakter döndürür.
 
-**Sözdizimi**  
+**Sözdizimi:**  
 `str Mid(str string, num start, num NumChars)`
 
-* dize: karakterlerin döndürdüğü dize
-* başlangıç: dizeden karakter döndürecek başlangıç konumunu tanımlayan sayı
-* NumChars: dizedeki konumdan döndürülecek karakter sayısını tanımlayan sayı
+* string: karakterleri döndürmek için dize
+* başlangıç: karakterleri döndürmek için dizedeki başlangıç konumunu tanımlayan bir sayı
+* NumChars: dizedeki konumdan dönecek karakter sayısını tanımlayan bir sayı
 
-**Açıklamalarının**  
-Dizeden başlangıç konumundan başlayarak numChars karakterlerini döndürün.  
-Konumdan başlangıç dizesinde numChars karakter içeren bir dize:
+**Açıklamalar:**  
+NumChars karakterlerini dizedeki pozisyondan başlayarak döndürün.  
+NumChars karakterlerini içeren bir dize dizedeki konum başlangıcından başlar:
 
-* NumChars = 0 ise boş bir dize döndürür.
-* NumChars 0 <, giriş dizesi döndürür.
-* Başlangıç > dize uzunluğunu, dönüş giriş dizesi.
-* Başlangıç < = 0 ise, giriş dizesi döndürür.
-* Dize null ise boş dize döndürün.
+* numChars = 0 ise, boş dize döndürün.
+* numChars 0'ı <, giriş dizelerini döndürün.
+* Dize uzunluğu > başlarsa, giriş dizesini döndürün.
+* =0 <başlarsa, giriş dizelerini döndürün.
+* Dize null ise, boş dize döndürün.
 
-Konumda, mümkün olan çok sayıda karakter döndürüldüğü için konumdan başlangıç dizesinde kalan numChar karakteri yoksa.
+Pozisyon başlangıcından itibaren dizede kalan numChar karakterleri yoksa, mümkün olduğunca çok karakter döndürülür.
 
 **Örnek:**  
 `Mid("John Doe", 3, 5)`  
-"Hn do" döndürür.
+"hn Do"u döndürür.
 
 `Mid("John Doe", 6, 999)`  
-"Tikan" döndürür
+"Doe" döndürür
 
 ---
-### <a name="now"></a>Şimdi
+### <a name="now"></a>Now
 **Açıklama:**  
-Now işlevi, bilgisayarınızın sistem tarih ve saatine göre geçerli tarih ve saati belirten bir tarih saat döndürür.
+Şimdi işlevi, bilgisayarınızın sistem tarihi ne de saatine göre geçerli tarih ve saati belirten bir DateTime döndürür.
 
-**Sözdizimi**  
+**Sözdizimi:**  
 `dt Now()`
 
 ---
 ### <a name="numfromdate"></a>NumFromDate
 **Açıklama:**  
-NumFromDate işlevi, AD 'nin tarih biçiminde bir tarih döndürür.
+NumFromDate işlevi AD'nin tarih biçiminde bir tarih döndürür.
 
-**Sözdizimi**  
+**Sözdizimi:**  
 `num NumFromDate(dt value)`
 
 **Örnek:**  
 `NumFromDate(CDate("2012-01-01 23:00:00"))`  
-129699324000000000 döndürür
+İade 12969932400000000
 
 ---
-### <a name="padleft"></a>Asma sol
+### <a name="padleft"></a>Padleft
 **Açıklama:**  
-Asma sol işlevi, bir dizeyi belirtilen bir doldurma karakteri kullanarak belirli bir uzunluğa bıraktı.
+PadLeft işlevi, sağlanan dolgu karakterini kullanarak bir dizeyi belirli bir uzunluğa kadar sol ayarı salar.
 
-**Sözdizimi**  
+**Sözdizimi:**  
 `str PadLeft(str string, num length, str padCharacter)`
 
-* dize: pad olarak kullanılacak dize.
-* uzunluklu İstenen dize uzunluğunu temsil eden bir tamsayı.
-* Asma karakteri: Doldurma karakteri olarak kullanılacak tek bir karakterden oluşan bir dize
+* string: pad dize.
+* uzunluk: İstenilen dize uzunluğunu temsil eden bir toplam.
+* padKarakter: Pad karakteri olarak kullanılacak tek bir karakterden oluşan dize
 
-**Açıklamalarının**
+**Açıklamalar:**
 
-* Dize uzunluğu uzunluğundan küçükse, bir uzunluk uzunluğuna eşit olana kadar, asma karakteri tekrar tekrar dizenin başlangıcına (sola) eklenir.
-* Asma karakteri bir boşluk karakteri olabilir, ancak null bir değer olamaz.
-* Dize uzunluğu uzunluğuna eşit veya daha büyük ise, dize değiştirilmeden döndürülür.
-* Dize uzunluğuna eşit veya daha büyük bir uzunluğa sahipse dize ile özdeş bir dize döndürülür.
-* Dize uzunluğu uzunluğundan küçükse, istenen uzunlukta yeni bir dize, bir asma karakteriyle doldurulmuş dize içeren döndürülür.
+* Dize uzunluğu uzunluktan küçükse, padCharacter uzunluğa eşit bir uzunluğa sahip olana kadar dize başına (solda) tekrar tekrar eklenir.
+* PadCharacter bir boşluk karakteri olabilir, ancak null bir değer olamaz.
+* Dize uzunluğu uzunluğa eşit veya daha büyükse, dize değişmeden döndürülür.
+* Dize uzunlamı uzunlamasına veya uzunluğa eşit olması durumunda, dizeyle aynı bir dize döndürülür.
+* Dize uzunluğu uzunluktan daha azsa, istenen uzunlukta yeni bir dize padCharacter ile yastıklı dize içeren döndürülür.
 * Dize null ise, işlev boş bir dize döndürür.
 
 **Örnek:**  
@@ -1001,219 +1001,219 @@ Asma sol işlevi, bir dizeyi belirtilen bir doldurma karakteri kullanarak belirl
 "000000User" döndürür.
 
 ---
-### <a name="padright"></a>PadRight
+### <a name="padright"></a>Padright
 **Açıklama:**  
-Asma sağ işlevi, bir dizeyi belirtilen bir doldurma karakteri kullanarak belirtilen uzunluğa sağ tablası.
+PadRight işlevi, sağlanan dolgu karakterini kullanarak bir dizeyi belirli bir uzunluğa kadar doğru dizeler.
 
-**Sözdizimi**  
+**Sözdizimi:**  
 `str PadRight(str string, num length, str padCharacter)`
 
-* dize: pad olarak kullanılacak dize.
-* uzunluklu İstenen dize uzunluğunu temsil eden bir tamsayı.
-* Asma karakteri: Doldurma karakteri olarak kullanılacak tek bir karakterden oluşan bir dize
+* string: pad dize.
+* uzunluk: İstenilen dize uzunluğunu temsil eden bir toplam.
+* padKarakter: Pad karakteri olarak kullanılacak tek bir karakterden oluşan dize
 
-**Açıklamalarının**
+**Açıklamalar:**
 
-* Dize uzunluğu uzunluğundan küçükse, bir uzunluk uzunluğuna eşit olana kadar, asma karakteri tekrar dizenin sonuna (sağına) eklenir.
-* Asma karakteri bir boşluk karakteri olabilir, ancak null bir değer olamaz.
-* Dize uzunluğu uzunluğuna eşit veya daha büyük ise, dize değiştirilmeden döndürülür.
-* Dize uzunluğuna eşit veya daha büyük bir uzunluğa sahipse dize ile özdeş bir dize döndürülür.
-* Dize uzunluğu uzunluğundan küçükse, istenen uzunlukta yeni bir dize, bir asma karakteriyle doldurulmuş dize içeren döndürülür.
+* Dize uzunluğu uzunluktan küçükse, padCharacter uzunluğa eşit bir uzunluğa sahip olana kadar dizesonuna (sağa) tekrar tekrar eklenir.
+* padCharacter bir boşluk karakteri olabilir, ancak null bir değer olamaz.
+* Dize uzunluğu uzunluğa eşit veya daha büyükse, dize değişmeden döndürülür.
+* Dize uzunlamı uzunlamasına veya uzunluğa eşit olması durumunda, dizeyle aynı bir dize döndürülür.
+* Dize uzunluğu uzunluktan daha azsa, istenen uzunlukta yeni bir dize padCharacter ile yastıklı dize içeren döndürülür.
 * Dize null ise, işlev boş bir dize döndürür.
 
 **Örnek:**  
 `PadRight("User", 10, "0")`  
-"User000000" döndürür.
+"User000000" yazar.
 
 ---
 ### <a name="pcase"></a>PCase
 **Açıklama:**  
-PCase işlevi bir dizedeki her bir boşlukla ayrılmış sözcüğün ilk karakterini büyük harflere dönüştürür ve diğer tüm karakterler küçük harfe dönüştürülür.
+PCase işlevi, bir dizedeki her alanın ilk karakterini büyük harfe dönüştürür ve diğer tüm karakterler küçük harfe dönüştürülür.
 
-**Sözdizimi**  
+**Sözdizimi:**  
 `String PCase(string)`
 
-**Açıklamalarının**
+**Açıklamalar:**
 
-* Bu işlev, bir kısaltma gibi tamamen büyük harfli bir kelimeyi dönüştürmek için şu anda uygun bir büyük harf sağlamıyor.
+* Bu işlev şu anda kısaltma gibi tamamen büyük bir sözcüğü dönüştürmek için uygun kasa sağlamaz.
 
 **Örnek:**  
 `PCase("TEsT")`  
-"Test" döndürür.
+"Test"i döndürür.
 
 `PCase(LCase("TEST"))`  
-"Test" döndürür
+"Test"i döndürür
 
 ---
-### <a name="randomnum"></a>Rasgelenum
+### <a name="randomnum"></a>RandomNum
 **Açıklama:**  
-Rasgelenum işlevi, belirtilen Aralık arasında rastgele bir sayı döndürür.
+RandomNum işlevi, belirli bir aralık arasında rasgele bir sayı döndürür.
 
-**Sözdizimi**  
+**Sözdizimi:**  
 `num RandomNum(num start, num end)`
 
-* başlangıç: oluşturulacak rastgele değerin alt sınırını tanımlayan bir sayı
-* End: oluşturulacak rastgele değerin üst sınırını tanımlayan sayı
+* başlangıç: oluşturmak için rasgele değerin alt sınırını tanımlayan bir sayı
+* sonu: oluşturmak için rasgele değerin üst sınırını tanımlayan bir sayı
 
 **Örnek:**  
 `Random(100,999)`  
-734 döndürebilir.
+734'e dönebilir.
 
 ---
-### <a name="removeduplicates"></a>RemoveDuplicates
+### <a name="removeduplicates"></a>Removeduplicates
 **Açıklama:**  
-Removeyinelemelerini işlevi, birden çok değerli dizeyi alır ve her değerin benzersiz olduğundan emin olur.
+RemoveDuplicates işlevi çok değerli bir dize alır ve her değerin benzersiz olduğundan emin olun.
 
-**Sözdizimi**  
+**Sözdizimi:**  
 `mvstr RemoveDuplicates(mvstr attribute)`
 
 **Örnek:**  
 `RemoveDuplicates([proxyAddresses])`  
-Tüm yinelenen değerlerin kaldırıldığı bir ayıklanmış proxyAddress özniteliği döndürür.
+Tüm yinelenen değerlerin kaldırıldığı bir dezenfekte proxyAddress özniteliği döndürür.
 
 ---
 ### <a name="replace"></a>Değiştir
 **Açıklama:**  
-Replace işlevi bir dizenin tüm oluşumlarını başka bir dizeye koyar.
+Değiştir işlevi, bir dizedeki tüm oluşumları başka bir dizeyle değiştirir.
 
-**Sözdizimi**  
+**Sözdizimi:**  
 `str Replace(str string, str OldValue, str NewValue)`
 
-* dizisinde İçindeki değerleri değiştirmek için bir dize.
-* OldValue Aranacak ve değiştirilecek dize.
-* Değer Değiştirilecek dize.
+* string: Değerlerin yerine geçecek dize.
+* OldValue: Aranacak ve değiştirilecek dize.
+* NewValue: Değiştirilecek dize.
 
-**Açıklamalarının**  
-İşlevi aşağıdaki özel adları tanır:
+**Açıklamalar:**  
+Fonksiyon aşağıdaki özel monikers tanır:
 
-* \n – yeni satır
-* \r – satır başı
-* \t – sekme
+* \n – Yeni Hat
+* \r – Taşıma İadesi
+* \t – Sekme
 
 **Örnek:**  
 `Replace([address],"\r\n",", ")`  
-CRLF 'yi bir virgül ve boşluk ile değiştirir ve "One Microsoft Way, Redmond, WA, ABD" ile sonuçlanabiliyor
+CRLF'nin yerine virgül ve boşluk yer alır ve "One Microsoft Way, Redmond, WA, USA"
 
 ---
-### <a name="replacechars"></a>ReplaceChars
+### <a name="replacechars"></a>Yerine Chars
 **Açıklama:**  
-ReplaceChars işlevi, Replacemodel dizesinde bulunan tüm karakter tekrarlamalarını değiştirir.
+ReplaceChars işlevi, ReplacePattern dizesinde bulunan karakterlerin tüm oluşumlarının yerini alır.
 
-**Sözdizimi**  
+**Sözdizimi:**  
 `str ReplaceChars(str string, str ReplacePattern)`
 
-* dizisinde İçindeki karakterlerin yerini alacak bir dize.
-* Replacemodel: değiştirilecek karakterlerle bir sözlük içeren bir dize.
+* string: Karakterlerin yerine geçecek dize.
+* ReplacePattern: değiştirilecek karakterleriçeren bir sözlük içeren dize.
 
-Biçim {source1}: {Target1}, {SOURCE2}: {Target2}, {Sourgothic}, {targetN}; burada kaynak, ile değiştirilecek dizeyi bulmak ve hedeflemek için gereken karakterdir.
+Biçim {source1},{target1},{source2}:{target2},{sourceN},{targetN}, kaynak karakter bulmak ve değiştirmek için dize hedef.
 
-**Açıklamalarının**
+**Açıklamalar:**
 
-* İşlevi, tanımlanan kaynakların her oluşumunu alır ve bunları hedeflerle değiştirir.
-* Kaynak tam olarak bir (Unicode) karakter olmalıdır.
-* Kaynak boş veya bir karakterden uzun olamaz (ayrıştırma hatası).
-* Hedefte birden çok karakter olabilir, örneğin ö: OE, β: ss.
+* İşlev, tanımlanan kaynakların her oluşumunu alır ve bunları hedeflerle değiştirir.
+* Kaynak tam olarak bir (unicode) karakter olmalıdır.
+* Kaynak boş veya bir karakterden uzun olamaz (ayrışma hatası).
+* Hedef, örneğin ö:oe, β:ss gibi birden çok karaktere sahip olabilir.
 * Hedef, karakterin kaldırılması gerektiğini belirten boş olabilir.
-* Kaynak, büyük/küçük harfe duyarlıdır ve tam eşleşme olmalıdır.
-* , (Virgül) ve: (iki nokta üst üste) ayrılmış karakterlerdir ve bu işlev kullanılarak değiştirilemez.
-* Replacemodel dizesindeki boşluklar ve diğer beyaz karakterler yok sayılır.
+* Kaynak büyük/küçük harf duyarlıdır ve tam bir eşleşme olmalıdır.
+* , (virgül) ve : (kolon) ayrılmış karakterlerdir ve bu işlev kullanılarak değiştirilemez.
+* ReplacePattern dizesindeki boşluklar ve diğer beyaz karakterler yoksayılır.
 
 **Örnek:**  
 `%ReplaceString% = ’:,Å:A,Ä:A,Ö:O,å:a,ä:a,ö,o`
 
 `ReplaceChars("Räksmörgås",%ReplaceString%)`  
-Raksmorgas döndürür
+Raksmorgas'ı döndürür
 
 `ReplaceChars("O’Neil",%ReplaceString%)`  
-"Oneıl" döndürür, tek çentik kaldırılacak şekilde tanımlanır.
+"ONeil"i döndürür, tek kene kaldırılacak şekilde tanımlanır.
 
 ---
 ### <a name="right"></a>Sağ
 **Açıklama:**  
-Sağ işlev, bir dizenin sağından (bitiş) belirtilen sayıda karakteri döndürür.
+Sağ işlevi, bir dizesağ (sonu) karakter belirli bir sayı döndürür.
 
-**Sözdizimi**  
+**Sözdizimi:**  
 `str Right(str string, num NumChars)`
 
-* dize: karakterlerin döndürdüğü dize
-* NumChars: dizenin sonundan (sağda) döndürülecek karakter sayısını tanımlayan sayı
+* string: karakterleri döndürmek için dize
+* NumChars: dize sonundan (sağ) dönmek için karakter sayısını tanımlayan bir sayı
 
-**Açıklamalarının**  
-NumChars karakterleri dizenin son konumundan döndürülür.
+**Açıklamalar:**  
+NumChars karakterleri dize son konumundan döndürülür.
 
 Dizedeki son numChars karakterlerini içeren bir dize:
 
-* NumChars = 0 ise boş bir dize döndürür.
-* NumChars 0 <, giriş dizesi döndürür.
-* Dize null ise boş dize döndürün.
+* numChars = 0 ise, boş dize döndürün.
+* numChars 0'ı <, giriş dizelerini döndürün.
+* Dize null ise, boş dize döndürün.
 
-Dize Numchar 'lar içinde belirtilen sayıdan daha az karakter içeriyorsa, String ile özdeş bir dize döndürülür.
+Dize NumChars belirtilen sayıdan daha az karakter içeriyorsa, dize ile aynı bir dize döndürülür.
 
 **Örnek:**  
 `Right("John Doe", 3)`  
-"Tikan" döndürür.
+"Doe"u döndürür.
 
 ---
-### <a name="rtrim"></a>RTrim
+### <a name="rtrim"></a>Rtrım
 **Açıklama:**  
-RTrim işlevi bir dizeden sondaki boşlukları kaldırır.
+RTrim işlevi, bir dizeden sondaki beyaz boşlukları kaldırır.
 
-**Sözdizimi**  
+**Sözdizimi:**  
 `str RTrim(str value)`
 
 **Örnek:**  
 `RTrim(" Test ")`  
-"Test" döndürür.
+"Test"i döndürür.
 
 ---
-### <a name="select"></a>Seçim
+### <a name="select"></a>Şunu seçin:
 **Açıklama:**  
-Belirtilen işleve bağlı olarak, birden çok değerli bir öznitelik (veya bir ifadenin çıktısı) içindeki tüm değerleri işleyin.
+Belirtilen işlevi temel alan çok değerli bir öznitelik (veya bir ifade çıktısı) tüm değerleri işleme.
 
-**Sözdizimi**  
+**Sözdizimi:**  
 `mvattr Select(variable item, mvattr attribute, func function)`  
 `mvattr Select(variable item, exp expression, func function)`
 
-* maddesinin Çoklu değerli öznitelikteki bir öğeyi temsil eder
+* öğe: Çok değerli öznitelikteki bir öğeyi temsil eder
 * öznitelik: çok değerli öznitelik
-* ifade: bir değer koleksiyonu döndüren bir ifade
-* koşul: öznitelikte bir öğeyi işleyebilirler herhangi bir işlev
+* ifade: değerler koleksiyonunu döndüren bir ifade
+* koşul: öznitelikbir öğeyi işleyebilir herhangi bir işlev
 
 **Örnekler:**  
 `Select($item,[otherPhone],Replace($item,"-",""))`  
-Kısa çizgiler (-) kaldırıldıktan sonra, çok değerli öznitelikteki tüm değerleri, diğer telefondaki bir değere döndürün.
+Tireler kaldırıldıktan sonra otherPhone'daki çok değerli öznitelikteki tüm değerleri döndürün.
 
 ---
-### <a name="split"></a>Böl
+### <a name="split"></a>Bölme
 **Açıklama:**  
-Split işlevi, sınırlayıcıyla ayrılmış bir dize alır ve bunu çok değerli bir dize yapar.
+Bölme işlevi bir sınır dışı ile ayrılmış bir dize alır ve çok değerli bir dize yapar.
 
-**Sözdizimi**  
+**Sözdizimi:**  
 `mvstr Split(str value, str delimiter)`  
 `mvstr Split(str value, str delimiter, num limit)`
 
-* değer: ayırıcı karakter ayırmak için bir dize.
-* sınırlayıcı: sınırlayıcı olarak kullanılacak tek karakter.
-* limit: döndürebilirler maksimum değer sayısı.
+* değeri: ayırmak için bir delimiter karakteri ile dize.
+* delimiter: delimiter olarak kullanılacak tek karakter.
+* limit: dönebilecek maksimum değer sayısı.
 
 **Örnek:**  
 `Split("SMTP:john.doe@contoso.com,smtp:jd@contoso.com",",")`  
-ProxyAddress özniteliği için yararlı 2 öğesi olan çok değerli bir dize döndürür.
+ProxyAddress özniteliği için yararlı 2 öğeiçeren çok değerli bir dize döndürür.
 
 ---
 ### <a name="stringfromguid"></a>StringFromGuid
 **Açıklama:**  
-StringFromGuid işlevi bir ikili GUID alır ve bir dizeye dönüştürür
+StringFromGuid işlevi ikili bir GUID alır ve bir dize dönüştürür
 
-**Sözdizimi**  
+**Sözdizimi:**  
 `str StringFromGuid(bin GUID)`
 
 ---
 ### <a name="stringfromsid"></a>StringFromSid
 **Açıklama:**  
-StringFromSid işlevi, bir güvenlik tanımlayıcısı içeren bir bayt dizisini dizeye dönüştürür.
+StringFromSid işlevi, güvenlik tanımlayıcısı içeren bir bayt dizisini bir dize dönüştürür.
 
-**Sözdizimi**  
+**Sözdizimi:**  
 `str StringFromSid(bin ObjectSID)`  
 
 ---
@@ -1221,121 +1221,121 @@ StringFromSid işlevi, bir güvenlik tanımlayıcısı içeren bir bayt dizisini
 **Açıklama:**  
 Switch işlevi, değerlendirilen koşullara göre tek bir değer döndürmek için kullanılır.
 
-**Sözdizimi**  
+**Sözdizimi:**  
 `var Switch(exp expr1, var value1[, exp expr2, var value … [, exp expr, var valueN]])`
 
-* ifadeyi Değerlendirmek istediğiniz varyant ifadesi.
-* deeri Karşılık gelen ifade doğru ise döndürülecek değer.
+* expr: Değerlendirmek istediğiniz varyant ifade.
+* değer: Karşılık gelen ifade Doğruysa döndürülecek değer.
 
-**Açıklamalarının**  
-Switch işlevi bağımsız değişken listesi, ifade ve değer çiftlerinden oluşur. İfadeler soldan sağa değerlendirilir ve true olarak değerlendirilecek ilk ifadeyle ilişkili değer döndürülür. Parçalar düzgün şekilde eşleştirilmemişse, bir çalışma zamanı hatası oluşur.
+**Açıklamalar:**  
+Switch işlevi bağımsız değişken listesi ifade ve değer çiftlerinden oluşur. İfadeler soldan sağa değerlendirilir ve True'ya değerlendirilecek ilk ifadeyle ilişkili değer döndürülür. Parçalar düzgün bir şekilde eşleştirilemezse, çalışma zamanı hatası oluşur.
 
-Örneğin, expr1 true ise, anahtar değer1 döndürür. Expr-1 false ise, ancak Expr-2 true ise, Switch değeri-2 değerini döndürür ve bu şekilde devam eder.
+Örneğin, expr1 True ise, Anahtar değeri döndürür1. Expr-1 Yanlış ise, ancak expr-2 True ise, Anahtar değeri-2 ve benzeri döndürür.
 
-Anahtar şu durumlarda bir şey döndürmez:
+Anahtar, şu şekilde olursa bir Hiçbir Şey döndürür:
 
-* Deyimlerden hiçbiri doğru değil.
-* İlk true ifadesinde karşılık gelen bir değer null.
+* İfadelerin hiçbiri Doğru değil.
+* İlk True ifadesi nin Karşılık gelen bir değeri Null'dur.
 
-Yalnızca birini döndürse de, anahtar tüm ifadeleri değerlendirir. Bu nedenle, istenmeyen yan etkileri için izlemeniz gerekir. Örneğin, herhangi bir ifadenin değerlendirmesi sıfıra bölme hatasıyla sonuçlanırsa bir hata oluşur.
+Switch, yalnızca bir ifadesini döndürse bile tüm ifadeleri değerlendirir. Bu nedenle, istenmeyen yan etkileri için izlemelisiniz. Örneğin, herhangi bir ifadenin değerlendirilmesi bir bölmeyle sıfır hatayla sonuçlanırsa, bir hata oluşur.
 
-Değer aynı zamanda bir özel dize döndüren Error işlevi olabilir.
+Değer, özel bir dize döndürecek hata işlevi de olabilir.
 
 **Örnek:**  
 `Switch([city] = "London", "English", [city] = "Rome", "Italian", [city] = "Paris", "French", True, Error("Unknown city"))`  
-Bazı önemli şehirlerde konuşulan dili döndürür, aksi takdirde bir hata döndürür.
+Bazı büyük şehirlerde konuşulan dili döndürür, aksi takdirde bir Hata döndürür.
 
 ---
-### <a name="trim"></a>Kırp
+### <a name="trim"></a>Trim
 **Açıklama:**  
-Trim işlevi bir dizeden baştaki ve sondaki boşlukları kaldırır.
+Kırpma işlevi, bir dizeden önde gelen ve sondaki beyaz boşlukları kaldırır.
 
-**Sözdizimi**  
+**Sözdizimi:**  
 `str Trim(str value)`  
 
 **Örnek:**  
 `Trim(" Test ")`  
-"Test" döndürür.
+"Test"i döndürür.
 
 `Trim([proxyAddresses])`  
-ProxyAddress özniteliğinde her bir değer için öndeki ve sondaki boşlukları kaldırır.
+ProxyAddress özniteliğindeki her değer için satır aralığı ve sondaki boşlukları kaldırır.
 
 ---
-### <a name="ucase"></a>UCase
+### <a name="ucase"></a>Ucase
 **Açıklama:**  
 UCase işlevi bir dizedeki tüm karakterleri büyük harfe dönüştürür.
 
-**Sözdizimi**  
+**Sözdizimi:**  
 `str UCase(str string)`
 
 **Örnek:**  
 `UCase("TeSt")`  
-"TEST" döndürür.
+"TEST"i döndürür.
 
 ---
 ### <a name="where"></a>Konum
 
 **Açıklama:**  
-Belirli bir koşula bağlı olarak, birden çok değerli bir öznitelikten (veya bir ifadenin çıktısından) değerlerin bir alt kümesini döndürür.
+Belirli bir koşula bağlı olarak çok değerli bir öznitelikten (veya ifade çıktısından) bir değer alt kümesini döndürür.
 
-**Sözdizimi**  
+**Sözdizimi:**  
 `mvattr Where(variable item, mvattr attribute, exp condition)`  
 `mvattr Where(variable item, exp expression, exp condition)`  
-* maddesinin Çoklu değerli öznitelikteki bir öğeyi temsil eder
+* öğe: Çok değerli öznitelikteki bir öğeyi temsil eder
 * öznitelik: çok değerli öznitelik
-* koşul: doğru veya yanlış olarak değerlendirilebilen herhangi bir ifade
-* ifade: bir değer koleksiyonu döndüren bir ifade
+* durum: doğru veya yanlış değerlendirilebilir herhangi bir ifade
+* ifade: değerler koleksiyonunu döndüren bir ifade
 
 **Örnek:**  
 `Where($item,[userCertificate],CertNotAfter($item)>Now())`  
-Sertifika değerlerini, zaman aşımına ermeyen çok değerli öznitelik userCertificate değerine döndürün.
+Süresi dolmamış çok değerli öznitelik kullanıcı Sertifikası'ndaki sertifika değerlerini döndürün.
 
 ---
-### <a name="with"></a>Şununla birlikte:
+### <a name="with"></a>With
 **Açıklama:**  
-WITH işlevi, karmaşık ifadede bir veya daha fazla kez görüntülenen alt ifadeyi temsil eden bir değişkeni kullanarak karmaşık bir ifadeyi basitleştirmek için bir yol sağlar.
+With işlevi, karmaşık ifadede bir veya daha fazla kez görünen bir alt ifadeyi temsil etmek için bir değişken kullanarak karmaşık bir ifadeyi basitleştirmenin bir yolunu sağlar.
 
-**Sözdizimi**
+**Sözdizimi:**
 `With(var variable, exp subExpression, exp complexExpression)`  
-* değişken Alt ifadeyi temsil eder.
-* alt Ifade: değişkene göre temsil edilen alt ifade.
+* değişken: Alt ifadeyi temsil eder.
+* subExpression: değişken tarafından temsil edilen alt ifade.
 * complexExpression: Karmaşık bir ifade.
 
 **Örnek:**  
 `With($unExpiredCerts,Where($item,[userCertificate],CertNotAfter($item)>Now()),IIF(Count($unExpiredCerts)>0,$unExpiredCerts,NULL))`  
 İşlevsel olarak eşdeğerdir:  
 `IIF (Count(Where($item,[userCertificate],CertNotAfter($item)>Now()))>0, Where($item,[userCertificate],CertNotAfter($item)>Now()),NULL)`  
-Bu, userCertificate özniteliğinde yalnızca geçerliliği olmayan sertifika değerlerini döndürür.
+KullanıcıSertifikası özyündeki yalnızca süresi dolmamış sertifika değerlerini döndürür.
 
 
 ---
 ### <a name="word"></a>Word
 **Açıklama:**  
-Word işlevi, kullanılacak sınırlayıcıları ve döndürülecek sözcük numarasını açıklayan parametrelere göre dize içinde içerilen bir sözcük döndürür.
+Word işlevi, kullanılacak sınırlayıcıları ve döndürülecek sözcük sayısını açıklayan parametrelere dayalı olarak dize içinde bulunan bir sözcüğü döndürür.
 
-**Sözdizimi**  
+**Sözdizimi:**  
 `str Word(str string, num WordNumber, str delimiters)`
 
-* String: bir sözcüğün döndürdüğü dize.
-* WordNumber: hangi sözcük sayısının dönmesi gerektiğini belirleyen bir sayı.
-* Sınırlayıcılar: sözcükleri tanımlamak için kullanılması gereken sınırlayıcıları temsil eden bir dize
+* string: bir kelime dönmek için dize.
+* WordNumber: hangi sözcük numarasının döndürülmesi gerektiğini tanımlayan bir sayı.
+* delimiters: kelimeleri tanımlamak için kullanılması gereken delimiter(ler) temsil eden bir dize
 
-**Açıklamalarının**  
-Sınırlayıcıdaki karakterlerden biri tarafından ayrılan dizedeki her karakter dizesi, sözcük olarak tanımlanır:
+**Açıklamalar:**  
+Delimiters karakterlerden biri tarafından ayrılmış dize karakter her dize sözcükler olarak tanımlanır:
 
-* Sayı < 1 ise boş bir dize döndürür.
-* Dize null ise, boş bir dize döndürür.
+* 1 < sayısı varsa, boş dize döndürür.
+* Dize null ise, boş dize döndürür.
 
-Dize sayı olan sözcüklerden daha az sözcük içeriyorsa veya dize sınırlayıcılar tarafından tanımlanan herhangi bir sözcük içermiyorsa, boş bir dize döndürülür.
+Dize sayı sözcükten daha az sözcük içeriyorsa veya dize sınırlayıcılar tarafından tanımlanan sözcükleri içermiyorsa, boş bir dize döndürülür.
 
 **Örnek:**  
 `Word("The quick brown fox",3," ")`  
 "Kahverengi" döndürür
 
 `Word("This,string!has&many separators",3,",!&#")`  
-"Sahip" döndürmelidir
+"has" dönecek
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
-* [Bildirim temelli sağlama Ifadelerini anlama](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md)
-* [Azure AD Connect eşitleme: Eşitleme seçeneklerini özelleştirme](how-to-connect-sync-whatis.md)
+* [Beyan Edici İfadeleri Anlama](concept-azure-ad-connect-sync-declarative-provisioning-expressions.md)
+* [Azure AD Connect Eşitleme: Senkronizasyon seçeneklerini özelleştirme](how-to-connect-sync-whatis.md)
 * [Şirket içi kimliklerinizi Azure Active Directory ile tümleştirme](whatis-hybrid-identity.md)

@@ -1,7 +1,7 @@
 ---
-title: Web API 'Lerini çağıran bir Web API 'SI yapılandırma | Mavisi
+title: Web API'lerini çağıran bir web API'si yapılandırın | Azure
 titleSuffix: Microsoft identity platform
-description: Web API 'Lerini (uygulamanın kod yapılandırması) çağıran bir Web API 'SI oluşturmayı öğrenin
+description: Web API'lerini (uygulamanın kod yapılandırması) çağıran bir web API'sini nasıl oluşturacağa öğrenin
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -16,23 +16,23 @@ ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 82b5e1d9753fbb65fd81f24b06016d302457144e
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76834102"
 ---
-# <a name="a-web-api-that-calls-web-apis-code-configuration"></a>Web API 'Leri çağıran bir Web API 'SI: kod yapılandırması
+# <a name="a-web-api-that-calls-web-apis-code-configuration"></a>Web API'lerini çağıran bir web API'sı: Kod yapılandırması
 
-Web API 'nizi kaydettikten sonra, uygulamanın kodunu yapılandırabilirsiniz.
+Web API'nizi kaydettikten sonra, uygulamanın kodunu yapılandırabilirsiniz.
 
-Web API 'nizi, bir Web API 'sini korumak için kullanılan kodun üstüne, akış Web API 'Lerini çağıran şekilde yapılandırmak için kullandığınız kod. Daha fazla bilgi için bkz. [korumalı Web API 'si: uygulama yapılandırması](scenario-protected-web-api-app-configuration.md).
+Web API'nizi alt akış web API'lerini çağıracak şekilde yapılandırmak için kullandığınız kod, web API'sini korumak için kullanılan kodun üzerine oluşturur. Daha fazla bilgi için [Bkz. Korumalı web API: Uygulama yapılandırması.](scenario-protected-web-api-app-configuration.md)
 
-# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+# <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
-## <a name="code-subscribed-to-ontokenvalidated"></a>Ontokendoğrulamalı 'e abone olunan kod
+## <a name="code-subscribed-to-ontokenvalidated"></a>OnTokenValidated'a abone olan kod
 
-Korunan Web API 'Leri için kod yapılandırmasının üstünde, API 'niz çağrıldığında aldığınız taşıyıcı belirtecinin doğrulanmasına abone olmanız gerekir:
+Korumalı web API'leri için kod yapılandırmasının üstüne, API'niz çağrıldığında aldığınız taşıyıcı belirteci doğrulamasına abone olmanız gerekir:
 
 ```csharp
 /// <summary>
@@ -67,18 +67,18 @@ public static IServiceCollection AddProtectedApiCallsWebApis(this IServiceCollec
 }
 ```
 
-## <a name="on-behalf-of-flow"></a>Adına akış
+## <a name="on-behalf-of-flow"></a>On-Behalf-Akış
 
-AddAccountToCacheFromJwt () yöntemi şunları gerektirir:
+AddAccountToCacheFromJwt() yöntemi nin şunları yapması gerekir:
 
-- Bir Microsoft kimlik doğrulama kitaplığı (MSAL) gizli istemci uygulaması örneğini oluşturun.
-- Çağrı `AcquireTokenOnBehalf` yöntemi. Bu çağrı, istemci tarafından, Web API 'si için aynı kullanıcı için bir taşıyıcı belirtece karşı alınan taşıyıcı belirtecini, ancak API 'nin bir aşağı akış API 'sini çağırmasını içerir.
+- Microsoft Kimlik Doğrulama Kitaplığı (MSAL) gizli istemci uygulamasını anında aygıttır.
+- `AcquireTokenOnBehalf` Yöntemi ara. Bu çağrı, aynı kullanıcı için bir taşıyıcı belirteci karşı web API için istemci tarafından satın alınan taşıyıcı belirteci değiştirir, ancak API bir downstream API çağrı vardır.
 
-### <a name="instantiate-a-confidential-client-application"></a>Gizli bir istemci uygulaması örneği oluşturma
+### <a name="instantiate-a-confidential-client-application"></a>Gizli bir istemci uygulamasını anında
 
-Bu akış yalnızca gizli istemci akışında kullanılabilir, böylece korumalı Web API 'SI, `WithClientSecret` veya `WithCertificate` yöntemi aracılığıyla [ConfidentialClientApplicationBuilder sınıfına](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplicationbuilder) istemci kimlik bilgileri (istemci parolası veya sertifika) sağlar.
+Bu akış yalnızca gizli istemci akışında kullanılabilir, böylece korunan web API'sı gizli müşteri kimlik bilgilerini (istemci `WithClientSecret` `WithCertificate` sırrı veya sertifika) [ConfidentialClientApplicationBuilder sınıfına](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.confidentialclientapplicationbuilder) ya da yöntemle sağlar.
 
-![IConfidentialClientApplication yöntemlerinin listesi](https://user-images.githubusercontent.com/13203188/55967244-3d8e1d00-5c7a-11e9-8285-a54b05597ec9.png)
+![IConfidentialClientApplication yöntemleri listesi](https://user-images.githubusercontent.com/13203188/55967244-3d8e1d00-5c7a-11e9-8285-a54b05597ec9.png)
 
 ```csharp
 IConfidentialClientApplication app;
@@ -96,20 +96,20 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 #endif
 ```
 
-Son olarak, bir istemci gizli dizisi veya bir sertifika aracılığıyla kimliklerini sağlamak yerine, gizli istemci uygulamaları, istemci onaylamalarını kullanarak kimliklerini kanıtlayabilirler.
-Bu gelişmiş senaryo hakkında daha fazla bilgi için bkz. [Gizli istemci onayları](msal-net-client-assertions.md).
+Son olarak, gizli istemci uygulamaları, bir istemci sırrı veya sertifika yoluyla kimliklerini kanıtlamak yerine, istemci iddialarını kullanarak kimliklerini kanıtlayabilir.
+Bu gelişmiş senaryo hakkında daha fazla bilgi için [Bkz. Gizli istemci iddiaları.](msal-net-client-assertions.md)
 
-### <a name="how-to-call-on-behalf-of"></a>-Adına çağırma
+### <a name="how-to-call-on-behalf-of"></a>On-Behalf-Of nasıl çağrılır
 
-`IConfidentialClientApplication` arabiriminde [Acquiretokenonby metodunu](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.acquiretokenonbehalfofparameterbuilder) çağırarak, ADıNA (OBO) çağrısını yaparsınız.
+On-Behalf-Of (OBO) aramasını, `IConfidentialClientApplication` arayüz deki [AcquireTokenOnBehalf yöntemini](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.acquiretokenonbehalfofparameterbuilder) arayarak yaparsınız.
 
-`UserAssertion` sınıfı, kendi istemcilerinden Web API 'SI tarafından alınan taşıyıcı belirtecinden oluşturulur. [İki Oluşturucu](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.clientcredential.-ctor?view=azure-dotnet)vardır:
-* Bir JSON Web Token (JWT) taşıyıcı belirteci alan bir
-* Her türlü Kullanıcı onayını alan bir tür güvenlik belirteci, daha sonra türü adlı ek bir parametrede belirtilen başka bir tür güvenlik belirteci alır `assertionType`
+Sınıf, `UserAssertion` web API'si tarafından kendi istemcilerinden alınan taşıyıcı belirtecinden oluşturulur. İki [yapıcı](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.clientcredential.-ctor?view=azure-dotnet)vardır:
+* Bir JSON Web Belirteci (JWT) taşıyıcı belirteci alır
+* Her türlü kullanıcı iddiasını alan, türü daha sonra adı verilen ek bir parametrede belirtilen başka bir tür güvenlik belirteci`assertionType`
 
-![Kullanıcı onaylama özellikleri ve yöntemleri](https://user-images.githubusercontent.com/13203188/37082180-afc4b708-21e3-11e8-8af8-a6dcbd2dfba8.png)
+![UserAssertion özellikleri ve yöntemleri](https://user-images.githubusercontent.com/13203188/37082180-afc4b708-21e3-11e8-8af8-a6dcbd2dfba8.png)
 
-Pratikte OBO akışı, genellikle bir aşağı akış API 'SI için belirteç almak ve MSAL.NET Kullanıcı belirteci önbelleğinde depolamak için kullanılır. Bunu, Web API 'sinin diğer bölümlerinin daha sonra aşağı akış API 'Lerini çağırmak için ``AcquireTokenOnSilent`` [Geçersiz Kılmalara](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.clientapplicationbase.acquiretokensilent?view=azure-dotnet) çağırabilmesi için yapabilirsiniz. Bu çağrının, gerekirse belirteçleri yenileme etkisi vardır.
+Uygulamada, OBO akışı genellikle bir akış aşağı API için bir belirteç elde etmek ve kullanıcı belirteç önbelleğinde MSAL.NET depolamak için kullanılır. Bunu, web API'sinin diğer bölümlerinin daha sonra akış ``AcquireTokenOnSilent`` aşağı API'leri aramayı geçersiz [kılanları](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.clientapplicationbase.acquiretokensilent?view=azure-dotnet) çağırabilmesi için yaparsınız. Bu çağrı, gerekirse belirteçleri yenileme etkisi vardır.
 
 ```csharp
 private void AddAccountToCacheFromJwt(IEnumerable<string> scopes, JwtSecurityToken jwtToken, ClaimsPrincipal principal, HttpContext httpContext)
@@ -144,11 +144,11 @@ private void AddAccountToCacheFromJwt(IEnumerable<string> scopes, JwtSecurityTok
      }
 }
 ```
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
-Şirket adına (OBO) akışı, aşağı akış Web API 'sini çağırmak için bir belirteç almak üzere kullanılır. Bu akışta, Web API 'niz, istemci uygulamasından Kullanıcı temsilcisi izinleri olan bir taşıyıcı belirteç alır ve ardından bu belirteci başka bir erişim belirteci için aşağı akış Web API 'sini çağırmak üzere değiş tokuş eder.
+On-adına (OBO) akışı downstream web API aramak için bir belirteç elde etmek için kullanılır. Bu akışta, web API'niz istemci uygulamasından kullanıcı tarafından yetkialan izinleri içeren bir taşıyıcı belirteci alır ve ardından bu belirteci downstream web API'yi aramak için başka bir erişim belirteciyle değiştirir.
 
-Aşağıdaki kod, doğrulanan taşıyıcı belirtecini almak için Web API 'sindeki Spring Security Framework `SecurityContextHolder` kullanır. Daha sonra, `OnBehalfOfParameters``acquireToken` çağrısını kullanarak aşağı akış API 'SI için bir belirteç almak üzere MSAL Java kitaplığını kullanır. MSAL, API 'ye yapılan sonraki çağrıların önbelleğe alınmış belirteci almak için `acquireTokenSilently` kullanabilmesi için belirteci önbelleğe alır.
+Aşağıdaki kod, doğrulanmış taşıyıcı `SecurityContextHolder` belirteci almak için web API'sında Bahar Güvenlik çerçevesini kullanır. Daha sonra ile `acquireToken` arama kullanarak downstream API için bir belirteç elde etmek için MSAL Java kitaplığı `OnBehalfOfParameters`kullanır. MSAL belirteci önbelleğe alır, böylece API sonraki aramalar önbelleğe alınmış belirteci almak için kullanabilirsiniz. `acquireTokenSilently`
 
 ```Java
 @Component
@@ -213,21 +213,21 @@ class MsalAuthHelper {
 }
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
-Şirket adına (OBO) akışı, aşağı akış Web API 'sini çağırmak için bir belirteç almak üzere kullanılır. Bu akışta, Web API 'niz, istemci uygulamasından Kullanıcı temsilcisi izinleri olan bir taşıyıcı belirteç alır ve ardından bu belirteci başka bir erişim belirteci için aşağı akış Web API 'sini çağırmak üzere değiş tokuş eder.
+On-adına (OBO) akışı downstream web API aramak için bir belirteç elde etmek için kullanılır. Bu akışta, web API'niz istemci uygulamasından kullanıcı tarafından yetkialan izinleri içeren bir taşıyıcı belirteci alır ve ardından bu belirteci downstream web API'yi aramak için başka bir erişim belirteciyle değiştirir.
 
-Bir Python Web API 'sinin istemciden alınan taşıyıcı belirtecini doğrulamak için bazı ara yazılım kullanması gerekir. Web API 'si daha sonra [`acquire_token_on_behalf_of`](https://msal-python.readthedocs.io/en/latest/?badge=latest#msal.ConfidentialClientApplication.acquire_token_on_behalf_of) YÖNTEMINI çağırarak msal Python kitaplığı kullanarak aşağı akış API 'sine yönelik erişim belirtecini alabilir. Bu akışı MSAL Python ile gösteren bir örnek henüz kullanılamamaktadır.
+Python web API'sinin istemciden alınan taşıyıcı belirteci doğrulamak için bazı ara yazılımlar kullanması gerekir. Web API'si daha sonra yöntemi arayarak MSAL Python kitaplığını [`acquire_token_on_behalf_of`](https://msal-python.readthedocs.io/en/latest/?badge=latest#msal.ConfidentialClientApplication.acquire_token_on_behalf_of) kullanarak akış aşağı API'ye erişim belirteci elde edebilir. MSAL Python ile bu akışı gösteren bir örnek henüz mevcut değildir.
 
 ---
 
-Ayrıca, [Node. js ve Azure işlevlerinde](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-onbehalfof-azurefunctions/blob/master/MiddleTierAPI/MyHttpTrigger/index.js#L61)OBO akış uygulamasının bir örneğini görebilirsiniz.
+[Ayrıca Düğüm.js ve Azure İşlevleri'nde](https://github.com/Azure-Samples/ms-identity-nodejs-webapi-onbehalfof-azurefunctions/blob/master/MiddleTierAPI/MyHttpTrigger/index.js#L61)OBO akış uygulamasının bir örneğini de görebilirsiniz.
 
 ## <a name="protocol"></a>Protokol
 
-OBO protokolü hakkında daha fazla bilgi için bkz. [Microsoft Identity platform ve OAuth 2,0-adına akışı](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow).
+OBO protokolü hakkında daha fazla bilgi için [Microsoft kimlik platformu ve OAuth 2.0 On-Behalf-Of akışına](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow)bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Web API 'Lerini çağıran bir Web API 'SI: uygulama için belirteç alma](scenario-web-api-call-api-acquire-token.md)
+> [Web API'lerini çağıran bir web API'sı: Uygulama için bir belirteç edinme](scenario-web-api-call-api-acquire-token.md)

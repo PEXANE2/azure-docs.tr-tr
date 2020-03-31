@@ -1,6 +1,6 @@
 ---
-title: 'Hızlı başlangıç: Azure NetApp Files ve NFS birimi ayarlama'
-description: Hızlı başlangıç-Azure NetApp Files hızlı bir şekilde ayarlama ve birim oluşturma işlemlerinin nasıl yapılacağını açıklar.
+title: 'Hızlı başlatma: Azure NetApp Dosyalarını ve NFS hacmini ayarlama'
+description: Quickstart - Azure NetApp Dosyalarını nasıl hızlı bir şekilde ayarlayıp bir birim oluşturup oluşturup oluşturup oluşturup oluşturup oluşturabilirsiniz.
 author: b-juche
 ms.author: b-juche
 ms.service: azure-netapp-files
@@ -8,61 +8,61 @@ ms.workload: storage
 ms.topic: quickstart
 ms.date: 12/01/2019
 ms.openlocfilehash: fc7f13fb7ffe1667aaeaa4a3cc1916c6049a98c1
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/31/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75551667"
 ---
-# <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>Hızlı başlangıç: Azure NetApp Files ayarlama ve NFS birimi oluşturma 
+# <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>Hızlı başlangıç: Azure NetApp Dosyalarını ayarlama ve Bir NFS hacmi oluşturma 
 
-Bu makalede, Azure NetApp Files hızlı bir şekilde ayarlama ve birim oluşturma işlemlerinin nasıl yapılacağı gösterilir. 
+Bu makalede, Azure NetApp Dosyalarını nasıl hızlı bir şekilde ayarlayıp bir birim oluşturabileceğiniz gösterilmektedir. 
 
-Bu hızlı başlangıçta, aşağıdaki öğeleri ayarlayacaksınız:
+Bu hızlı başlangıçta, aşağıdaki öğeleri ayarlarsınız:
 
-- Azure NetApp Files ve NetApp kaynak sağlayıcısı için kayıt
-- NetApp hesabı
+- Azure NetApp Dosyaları ve NetApp Kaynak Sağlayıcısı için kayıt
+- Bir NetApp hesabı
 - Kapasite havuzu
-- Azure NetApp Files için NFS birimi
+- Azure NetApp Dosyaları için Bir NFS hacmi
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
 
 ## <a name="before-you-begin"></a>Başlamadan önce 
 
 > [!IMPORTANT] 
-> Azure NetApp Files hizmetine erişim verilmesi gerekir.  Hizmete erişim istemek için, [Azure NetApp Files eklenebileceğinizi gönderim sayfasına](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR8cq17Xv9yVBtRCSlcD_gdVUNUpUWEpLNERIM1NOVzA5MzczQ0dQR1ZTSS4u)bakın.  Devam etmeden önce Azure NetApp Files ekipten bir resmi onay e-postası beklemeniz gerekir. 
+> Azure NetApp Files hizmetine erişim izni niz olması gerekir.  Hizmete erişim isteğinde bulunmak için [Azure NetApp Dosyaları bekleme listesi gönderme sayfasına](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR8cq17Xv9yVBtRCSlcD_gdVUNUpUWEpLNERIM1NOVzA5MzczQ0dQR1ZTSS4u)bakın.  Devam etmeden önce Azure NetApp Files ekibinden resmi bir onay e-postası beklemeniz gerekir. 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ---
 
-## <a name="register-for-azure-netapp-files-and-netapp-resource-provider"></a>Azure NetApp Files ve NetApp kaynak sağlayıcısına kaydolun
+## <a name="register-for-azure-netapp-files-and-netapp-resource-provider"></a>Azure NetApp Dosyaları ve NetApp Kaynak Sağlayıcısı'na Kaydolun
 
 > [!NOTE]
 > Kayıt işleminin tamamlanması biraz zaman alabilir.
 >
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Portal 'ı kullanarak kayıt adımları için yukarıda belirtilen şekilde bir Cloud Shell oturumu açın ve şu Azure CLı adımlarını izleyin:
+Portal'ı kullanarak kayıt adımları için, yukarıda belirtildiği gibi bir Bulut Kabuğu oturumu açın ve aşağıdaki Azure CLI adımlarını izleyin:
 
 [!INCLUDE [azure-netapp-files-cloudshell-include](../../includes/azure-netapp-files-azure-cloud-shell-window.md)]
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
-Bu nasıl yapılır makalesi Azure PowerShell modülünü az Version 2.6.0 veya üstünü gerektirir. Geçerli sürümünüzü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure PowerShell Modülü yükleme](/powershell/azure/install-Az-ps). Tercih ederseniz, bunun yerine bir PowerShell oturumunda Cloud Shell konsolunu kullanabilirsiniz.
+Bu nasıl yapılsa makale, Azure PowerShell modülü Az sürüm 2.6.0 veya sonrası gerektirir. Geçerli sürümünüzü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure PowerShell Modülü yükleme](/powershell/azure/install-Az-ps). İsterseniz, Bunun yerine PowerShell oturumunda Cloud Shell konsolunu kullanabilirsiniz.
 
-1. PowerShell komut isteminde (veya PowerShell Cloud Shell oturumunda), Azure NetApp Files için beyaz listeye alınmış aboneliği belirtin:
+1. PowerShell komut isteminde (veya PowerShell Cloud Shell oturumunda), Azure NetApp Dosyaları için beyaz listeye alınmış aboneliği belirtin:
     ```powershell-interactive
     Select-AzSubscription -Subscription <subscriptionId>
     ```
 
-2. Azure Kaynak sağlayıcısını kaydedin:
+2. Azure Kaynak Sağlayıcısı'nı kaydedin:
     ```powershell-interactive
     Register-AzResourceProvider -ProviderNamespace Microsoft.NetApp
     ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 [!INCLUDE [azure-netapp-files-cloudshell-include](../../includes/azure-netapp-files-azure-cloud-shell-window.md)]
 
@@ -70,31 +70,31 @@ Bu nasıl yapılır makalesi Azure PowerShell modülünü az Version 2.6.0 veya 
 
 ## <a name="create-a-netapp-account"></a>NetApp hesabı oluşturma
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. Azure portal arama kutusuna **Azure NetApp Files** girin ve görüntülenen listeden **Azure NetApp Files** ' yı seçin.
+1. Azure portalının arama kutusuna **Azure NetApp Dosyalarını** girin ve ardından görünen listeden **Azure NetApp Dosyalarını** seçin.
 
-      ![Azure NetApp Files seçin](../media/azure-netapp-files/azure-netapp-files-select-azure-netapp-files.png)
+      ![Azure NetApp Dosyalarını Seçin](../media/azure-netapp-files/azure-netapp-files-select-azure-netapp-files.png)
 
 2. Yeni bir NetApp hesabı oluşturmak için **+ Ekle**'ye tıklayın.
 
-     ![Yeni NetApp hesabı oluştur](../media/azure-netapp-files/azure-netapp-files-create-new-netapp-account.png)
+     ![Yeni NetApp hesabı oluşturma](../media/azure-netapp-files/azure-netapp-files-create-new-netapp-account.png)
 
-3. Yeni NetApp hesabı penceresinde, aşağıdaki bilgileri sağlayın: 
+3. Yeni NetApp Hesabı penceresinde aşağıdaki bilgileri sağlayın: 
    1. Hesap adı için **myaccount1** girin. 
    2. Aboneliğinizi seçin.
-   3. Yeni kaynak grubu oluşturmak için **Yeni oluştur** ' u seçin. Kaynak grubu adı için **myRG1** girin. **Tamam**’a tıklayın. 
+   3. Yeni kaynak grubu oluşturmak için **yeni oluştur'u** seçin. Kaynak grubu adı için **myRG1'i** girin. **Tamam**'a tıklayın. 
    4. Hesap konumunuzu seçin.  
 
-      ![Yeni NetApp hesabı penceresi](../media/azure-netapp-files/azure-netapp-files-new-account-window.png)  
+      ![Yeni NetApp Hesap penceresi](../media/azure-netapp-files/azure-netapp-files-new-account-window.png)  
 
       ![Kaynak grubu penceresi](../media/azure-netapp-files/azure-netapp-files-resource-group-window.png)
 
-4. Yeni NetApp hesabınızı oluşturmak için **Oluştur** ' a tıklayın.
+4. Yeni NetApp hesabınızı oluşturmak için **Oluştur'u** tıklatın.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
-1. Örneklerin geri kalanı boyunca onlara başvurabilmeniz için bazı değişkenler tanımlayın:
+1. Örneklerin geri kalanında bunlara başvurabilmemiz için bazı değişkenleri tanımlayın:
 
     ```powershell-interactive
     $resourceGroup = "myRG1"
@@ -103,25 +103,25 @@ Bu nasıl yapılır makalesi Azure PowerShell modülünü az Version 2.6.0 veya 
     ``` 
 
     > [!NOTE]
-    > Desteklenen bölgelerin listesi için lütfen [bölgeye göre kullanılabilen ürünlere](https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all) bakın.
-    > Komut satırı araçlarımız tarafından desteklenen bölge adını almak için lütfen `Get-AzLocation | select Location` kullanın
+    > Desteklenen bölgelerin listesi için lütfen [bölgeye göre kullanılabilen Ürünlerbölümüne](https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all) bakın.
+    > Komut satırı araçlarımız tarafından desteklenen bölge adını elde etmek için lütfen`Get-AzLocation | select Location`
     >
 
-1. [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) komutunu kullanarak yeni bir kaynak grubu oluşturun:
+1. [Yeni Kaynak Grubu](/powershell/module/az.resources/new-azresourcegroup) komutunu kullanarak yeni bir kaynak grubu oluşturun:
 
     ```powershell-interactive
     New-AzResourceGroup -Name $resourceGroup -Location $location
     ```
 
-2. [New-AzNetAppFilesAccount](/powershell/module/az.netappfiles/New-AzNetAppFilesAccount) komutuyla Azure NetApp Files hesabı oluşturun:
+2. [New-AzNetAppFilesAccount](/powershell/module/az.netappfiles/New-AzNetAppFilesAccount) komutu yla Azure NetApp Dosyaları hesabı oluşturun:
    
     ```powershell-interactive
     New-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $location -Name $anfAccountName
     ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-1. Örneklerin geri kalanı boyunca onlara başvurabilmeniz için bazı değişkenler tanımlayın:
+1. Örneklerin geri kalanında bunlara başvurabilmemiz için bazı değişkenleri tanımlayın:
 
     ```azurecli-interactive
     RESOURCE_GROUP="myRG1"
@@ -130,11 +130,11 @@ Bu nasıl yapılır makalesi Azure PowerShell modülünü az Version 2.6.0 veya 
     ``` 
 
     > [!NOTE]
-    > Desteklenen bölgelerin listesi için lütfen [bölgeye göre kullanılabilen ürünlere](https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all) bakın.
-    > Komut satırı araçlarımız tarafından desteklenen bölge adını almak için lütfen `az account list-locations -query "[].{Region:name}" --out table` kullanın
+    > Desteklenen bölgelerin listesi için lütfen [bölgeye göre kullanılabilen Ürünlerbölümüne](https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all) bakın.
+    > Komut satırı araçlarımız tarafından desteklenen bölge adını elde etmek için lütfen`az account list-locations -query "[].{Region:name}" --out table`
     >
 
-2. [Az Group Create](/cli/azure/group#az-group-create) komutunu kullanarak yeni bir kaynak grubu oluşturun:
+2. az grubu oluşturma komutunu kullanarak yeni bir kaynak grubu [oluşturun:](/cli/azure/group#az-group-create)
 
     ```azurecli-interactive
     az group create \
@@ -142,7 +142,7 @@ Bu nasıl yapılır makalesi Azure PowerShell modülünü az Version 2.6.0 veya 
         --location $LOCATION
     ```
 
-3. [Az netappfiles hesabı Create](/cli/azure/netappfiles/account#az-netappfiles-account-create) komutuyla Azure NetApp Files hesabı oluşturun:
+3. [Az netappfiles hesabı ile](/cli/azure/netappfiles/account#az-netappfiles-account-create) Azure NetApp Dosyaları hesabı oluşturma komutu oluşturun:
    
     ```azurecli-interactive
     az netappfiles account create \
@@ -154,30 +154,30 @@ Bu nasıl yapılır makalesi Azure PowerShell modülünü az Version 2.6.0 veya 
 
 ## <a name="set-up-a-capacity-pool"></a>Kapasite havuzunu ayarlama
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. Azure NetApp Files yönetimi dikey penceresinde NetApp hesabınızı (**myaccount1**) seçin.
+1. Azure NetApp Files yönetim bıçağından NetApp hesabınızı **(myaccount1)** seçin.
 
-    ![NetApp hesabı seçin](../media/azure-netapp-files/azure-netapp-files-select-netapp-account.png)  
+    ![NetApp hesabını seçin](../media/azure-netapp-files/azure-netapp-files-select-netapp-account.png)  
 
-2. NetApp hesabınızın Azure NetApp Files yönetim dikey penceresinde **Kapasite havuzları**' na tıklayın.
+2. NetApp hesabınızın Azure NetApp Dosyaları yönetim çubuğundan **Kapasite havuzlarına**tıklayın.
 
-    ![Kapasite havuzları ' na tıklayın](../media/azure-netapp-files/azure-netapp-files-click-capacity-pools.png)  
+    ![Kapasite havuzlarını tıklatın](../media/azure-netapp-files/azure-netapp-files-click-capacity-pools.png)  
 
-3. **+ Havuz Ekle**' ye tıklayın. 
+3. + **Havuz ekle'yi**tıklatın. 
 
-    ![Havuz Ekle 'ye tıklayın](../media/azure-netapp-files/azure-netapp-files-click-add-pools.png)  
+    ![Havuz Ekle'yi tıklatın](../media/azure-netapp-files/azure-netapp-files-click-add-pools.png)  
 
 4. Kapasite havuzu için bilgi sağlayın: 
     1. Havuz adı olarak **mypool1** girin.
-    2. Hizmet düzeyi için **Premium** ' u seçin. 
+    2. Hizmet düzeyi için **Premium'u** seçin. 
     3. Havuz boyutu olarak **4 (TiB)** belirtin. 
 
-5. **Tamam**’a tıklayın.
+5. **Tamam**'a tıklayın.
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
-1. Daha sonra başvurmak üzere bazı yeni değişkenler tanımlama
+1. Gelecekteki başvuru için bazı yeni değişkenlerin tanımlanması
 
     ```powershell-interactive
     $poolName = "mypool1"
@@ -185,15 +185,15 @@ Bu nasıl yapılır makalesi Azure PowerShell modülünü az Version 2.6.0 veya 
     $serviceLevel = "Premium" # Valid values are Standard, Premium and Ultra
     ```
 
-1. [New-AzNetAppFilesPool](/powershell/module/az.netappfiles/new-aznetappfilespool) kullanarak yeni bir kapasite havuzu oluşturma
+1. [New-AzNetAppFilesPool'u](/powershell/module/az.netappfiles/new-aznetappfilespool) kullanarak yeni bir kapasite havuzu oluşturun
 
     ```powershell-interactive
     New-AzNetAppFilesPool -ResourceGroupName $resourceGroup -Location $location -AccountName $anfAccountName -Name $poolName -PoolSize $poolSizeBytes -ServiceLevel $serviceLevel
     ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-1. Daha sonra başvurmak üzere bazı yeni değişkenler tanımlama
+1. Gelecekteki başvuru için bazı yeni değişkenlerin tanımlanması
 
     ```azurecli-interactive
     POOL_NAME="mypool1"
@@ -201,7 +201,7 @@ Bu nasıl yapılır makalesi Azure PowerShell modülünü az Version 2.6.0 veya 
     SERVICE_LEVEL="Premium" # Valid values are Standard, Premium and Ultra
     ```
 
-2. [Az netappfiles Havuz oluştur](/cli/azure/netappfiles/pool#az-netappfiles-pool-create) kullanarak yeni bir kapasite havuzu oluşturun 
+2. [Oluşturmak az netappfiles havuzu](/cli/azure/netappfiles/pool#az-netappfiles-pool-create) nu kullanarak yeni bir kapasite havuzu oluşturma 
 
     ```azurecli-interactive
     az netappfiles pool create \
@@ -215,55 +215,55 @@ Bu nasıl yapılır makalesi Azure PowerShell modülünü az Version 2.6.0 veya 
 
 ---
 
-## <a name="create-nfs-volume-for-azure-netapp-files"></a>Azure NetApp Files için NFS birimi oluşturma
+## <a name="create-nfs-volume-for-azure-netapp-files"></a>Azure NetApp Dosyaları için NFS hacmi oluşturma
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. NetApp hesabınızın Azure NetApp Files yönetim dikey penceresinde **birimler**' e tıklayın.
+1. NetApp hesabınızın Azure NetApp Dosyaları yönetim çubuğundan **Birimler'i**tıklatın.
 
     ![Birimler'e tıklayın](../media/azure-netapp-files/azure-netapp-files-click-volumes.png)  
 
 2. **+ Birim ekle**’ye tıklayın.
 
-    ![Birim Ekle 'ye tıklayın](../media/azure-netapp-files/azure-netapp-files-click-add-volumes.png)  
+    ![Birim Ekle'yi tıklatın](../media/azure-netapp-files/azure-netapp-files-click-add-volumes.png)  
 
 3. Birim Oluştur penceresinde, birim için bilgi sağlayın: 
    1. Birim adı olarak **myvol1** girin. 
-   2. Kapasite havuzunuzu (**mypool1**) seçin.
+   2. Kapasite havuzunuzu seçin **(mypool1).**
    3. Kota için varsayılan değeri kullanın. 
-   4. Yeni bir Azure sanal ağı (VNet) oluşturmak için sanal ağ altında **Yeni oluştur** ' a tıklayın.  Ardından aşağıdaki bilgileri girin:
-       * VNET adı olarak **myvnet1** girin.
+   4. Sanal ağ altında, yeni bir Azure sanal ağı (Vnet) oluşturmak için **yeni oluştur'u** tıklatın.  Ardından aşağıdaki bilgileri doldurun:
+       * Vnet adı olarak **myvnet1** girin.
        * Ayarınız için bir adres alanı belirtin, örneğin, 10.7.0.0/16
-       * Alt ağ adı olarak **Myanfsubnet** girin.
-       * Alt ağ adres aralığını belirtin, örneğin, 10.7.0.0/24. Ayrılmış alt ağı diğer kaynaklarla paylaşamazsınız.
-       * Alt ağ temsili için **Microsoft. NetApp/birimler** ' i seçin.
-       * VNET oluşturmak için **Tamam** ' ı tıklatın.
-   5. Alt ağ ' da, temsilci alt ağı olarak yeni oluşturulan VNET 'i (**myvnet1**) seçin.
+       * Alt ağ adı olarak **myANFsubnet** girin.
+       * Örneğin, 10.7.0.0/24 alt net adres aralığını belirtin. Özel alt ağı diğer kaynaklarla paylaşamazsınız.
+       * Alt ağ delegasyonu için **Microsoft.NetApp/volumes'u** seçin.
+       * Vnet'i oluşturmak için **Tamam'ı** tıklatın.
+   5. Alt ağda, temsilci alt ağı olarak yeni oluşturulan Vnet 'i **(myvnet1)** seçin.
 
       ![Birim penceresi oluşturma](../media/azure-netapp-files/azure-netapp-files-create-volume-window.png)  
 
-      ![Sanal Ağ penceresi oluştur](../media/azure-netapp-files/azure-netapp-files-create-virtual-network-window.png)  
+      ![Sanal ağ penceresi oluşturma](../media/azure-netapp-files/azure-netapp-files-create-virtual-network-window.png)  
 
-4. **Protokol**' e tıklayın ve ardından aşağıdaki eylemleri tamamlamayı seçin: 
-    * Birimin protokol türü olarak **NFS** ' yi seçin.  
-    * Birimin dışa aktarma yolunu oluşturmak için kullanılacak dosya yolu olarak **myfilepath1** girin.  
-    * Birim için NFS sürümünü (**NFSv3** veya **nfsv 4.1**) seçin.  
-      Bkz. NFS sürümleri hakkında [konular](azure-netapp-files-create-volumes.md#considerations) ve [en iyi uygulamalar](azure-netapp-files-create-volumes.md#best-practice) . 
+4. **Protokol'e**tıklayın ve ardından aşağıdaki eylemleri tamamlayın: 
+    * Birim için protokol türü olarak **NFS'yi** seçin.  
+    * Birimin dışa aktarım yolunu oluşturmak için kullanılacak dosya yolu olarak **myfilepath1'i** girin.  
+    * Ses düzeyi için NFSv3 veya **NFSv4.1**sürümünü seçin.**NFSv3**  
+      NFS sürümleri yle ilgili [dikkat edilmesi gereken hususlara](azure-netapp-files-create-volumes.md#considerations) ve [en iyi uygulamaya](azure-netapp-files-create-volumes.md#best-practice) bakın. 
       
-  ![Hızlı başlangıç için NFS protokolünü belirtin](../media/azure-netapp-files/azure-netapp-files-quickstart-protocol-nfs.png)
+  ![Hızlı başlatma için NFS protokolünü belirtin](../media/azure-netapp-files/azure-netapp-files-quickstart-protocol-nfs.png)
 
 5. **Gözden geçir ve oluştur**’a tıklayın.
 
-    ![İnceleme ve pencere oluşturma](../media/azure-netapp-files/azure-netapp-files-review-and-create-window.png)  
+    ![Gözden geçirme ve pencere oluşturma](../media/azure-netapp-files/azure-netapp-files-review-and-create-window.png)  
 
-6. Birimle ilgili bilgileri gözden geçirin ve ardından **Oluştur**' a tıklayın.  
-    Oluşturulan birim birimler dikey penceresinde görünür.
+6. Birim için bilgileri gözden geçirin, ardından **Oluştur'u**tıklatın.  
+    Oluşturulan birim, Volumes blade'de görünür.
 
-    ![Birim oluşturuldu](../media/azure-netapp-files/azure-netapp-files-create-volume-created.png)  
+    ![Oluşturulan birim](../media/azure-netapp-files/azure-netapp-files-create-volume-created.png)  
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
-1. [New-Aztemsilciyi](/powershell/module/az.network/new-azdelegation) komutuyla "Microsoft. NetApp/Volumes" için bir alt ağ temsili oluşturun.
+1. [New-AzDelegation](/powershell/module/az.network/new-azdelegation) komutuyla "Microsoft.NetApp/volumes" için bir alt ağ delegasyonu oluşturun.
 
     ```powershell-interactive
     $anfDelegation = New-AzDelegation -Name ([guid]::NewGuid().Guid) -ServiceName "Microsoft.NetApp/volumes"
@@ -299,16 +299,16 @@ Bu nasıl yapılır makalesi Azure PowerShell modülünü az Version 2.6.0 veya 
         -ProtocolType NFSv3
     ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-1. Daha sonraki kullanımlar için bazı değişkenler tanımlama.
+1. Daha sonraki kullanım için bazı değişkenleri tanımlama.
     
     ```azurecli-interactive
     VNET_NAME="myvnet1"
     SUBNET_NAME="myANFSubnet"
     ```
 
-1. [Az Network VNET Create](/cli/azure/network/vnet#az-network-vnet-create) komutunu kullanarak alt ağ olmadan sanal ağ oluşturun.
+1. [Az ağ vnet oluşturma](/cli/azure/network/vnet#az-network-vnet-create) komutunu kullanarak subnet olmadan sanal ağ oluşturun.
     
     ```azurecli-interactive
     az network vnet create \
@@ -319,7 +319,7 @@ Bu nasıl yapılır makalesi Azure PowerShell modülünü az Version 2.6.0 veya 
 
     ```
 
-2. [Az Network VNET subnet Create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create) komutunu kullanarak Temsilcili bir alt ağ oluşturun.
+2. [Az network vnet subnet create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create) komutunu kullanarak bir temsilci alt net oluşturun.
 
     ```azurecli-interactive
     az network vnet subnet create \
@@ -330,7 +330,7 @@ Bu nasıl yapılır makalesi Azure PowerShell modülünü az Version 2.6.0 veya 
         --delegations "Microsoft.NetApp/volumes"
     ```
 
-3. [Az netappfiles Volume Create](/cli/azure/netappfiles/volume#az-netappfiles-volume-create) komutunu kullanarak birimi oluşturun.
+3. [Az netappfiles birim oluşturma](/cli/azure/netappfiles/volume#az-netappfiles-volume-create) komutunu kullanarak birim oluşturun.
    
     ```azurecli-interactive
     VNET_ID=$(az network vnet show --resource-group $RESOURCE_GROUP --name $VNET_NAME --query "id" -o tsv)
@@ -356,51 +356,51 @@ Bu nasıl yapılır makalesi Azure PowerShell modülünü az Version 2.6.0 veya 
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[Portal](#tab/azure-portal)
 
-İşiniz bittiğinde ve isterseniz, kaynak grubunu silebilirsiniz. Kaynak grubunu silme eylemi geri alınamaz.  
+İşi bittiğinde ve isterseniz kaynak grubunu silebilirsiniz. Bir kaynak grubunu silme eylemi geri alınamaz.  
 
 > [!IMPORTANT]
-> Kaynak grupları içindeki tüm kaynaklar kalıcı olarak silinecek ve geri alınamaz. 
+> Kaynak grupları içindeki tüm kaynaklar kalıcı olarak silinir ve geri alınamaz. 
 
-1. Azure portal arama kutusuna **Azure NetApp Files** girin ve görüntülenen listeden **Azure NetApp Files** ' yı seçin.
+1. Azure portalının arama kutusuna **Azure NetApp Dosyalarını** girin ve ardından görünen listeden **Azure NetApp Dosyalarını** seçin.
 
-2. Abonelikler listesinde, silmek istediğiniz kaynak grubuna (myRG1) tıklayın. 
+2. Abonelikler listesinde, silmek istediğiniz kaynak grubunu (myRG1) tıklatın. 
 
     ![Kaynak gruplarına gidin](../media/azure-netapp-files/azure-netapp-files-azure-navigate-to-resource-groups.png)
 
 
-3. Kaynak grubu sayfasında, **kaynak grubunu sil**' e tıklayın.
+3. Kaynak grubu sayfasında kaynak **grubunu sil'i**tıklatın.
 
     ![Kaynak grubunu silme](../media/azure-netapp-files/azure-netapp-files-azure-delete-resource-group.png) 
 
     Bir pencere açılır ve kaynak grubuyla birlikte silinecek kaynaklar hakkında bir uyarı görüntüler.
 
-4. Kaynak grubunu ve içindeki tüm kaynakları kalıcı olarak silmek istediğinizi onaylamak için kaynak grubunun adını (myRG1) girin ve ardından **Sil**' e tıklayın.
+4. Kaynak grubunu ve tüm kaynakları kalıcı olarak silmek istediğinizi doğrulamak için kaynak grubunun (myRG1) adını girin ve sonra **Sil'i**tıklatın.
 
     ![Kaynak grubunu silme](../media/azure-netapp-files/azure-netapp-files-azure-confirm-resource-group-deletion.png ) 
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
-İşiniz bittiğinde ve isterseniz, kaynak grubunu silebilirsiniz. Kaynak grubunu silme eylemi geri alınamaz.  
+İşi bittiğinde ve isterseniz kaynak grubunu silebilirsiniz. Bir kaynak grubunu silme eylemi geri alınamaz.  
 
 > [!IMPORTANT]
-> Kaynak grupları içindeki tüm kaynaklar kalıcı olarak silinecek ve geri alınamaz.
+> Kaynak grupları içindeki tüm kaynaklar kalıcı olarak silinir ve geri alınamaz.
 
-1. [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) komutunu kullanarak kaynak grubunu silin.
+1. [Kaldır-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) komutunu kullanarak kaynak grubunu silin.
    
     ```powershell-interactive
     Remove-AzResourceGroup -Name $resourceGroup
     ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-İşiniz bittiğinde ve isterseniz, kaynak grubunu silebilirsiniz. Kaynak grubunu silme eylemi geri alınamaz.  
+İşi bittiğinde ve isterseniz kaynak grubunu silebilirsiniz. Bir kaynak grubunu silme eylemi geri alınamaz.  
 
 > [!IMPORTANT]
-> Kaynak grupları içindeki tüm kaynaklar kalıcı olarak silinecek ve geri alınamaz.
+> Kaynak grupları içindeki tüm kaynaklar kalıcı olarak silinir ve geri alınamaz.
 
-1. [Az Group Delete](/cli/azure/group#az-group-delete) komutunu kullanarak kaynak grubunu silin.
+1. Az grubu silme komutunu kullanarak kaynak grubunu [silin.](/cli/azure/group#az-group-delete)
    
     ```azurecli-interactive
     az group delete \
@@ -411,4 +411,4 @@ Bu nasıl yapılır makalesi Azure PowerShell modülünü az Version 2.6.0 veya 
 ## <a name="next-steps"></a>Sonraki adımlar  
 
 > [!div class="nextstepaction"]
-> [Azure NetApp Files kullanarak birimleri yönetme](azure-netapp-files-manage-volumes.md)  
+> [Azure NetApp Dosyalarını kullanarak birimleri yönetme](azure-netapp-files-manage-volumes.md)  

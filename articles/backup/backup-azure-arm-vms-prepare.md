@@ -1,201 +1,201 @@
 ---
-title: Azure VM 'lerini bir kurtarma hizmetleri kasasında yedekleme
-description: Azure VM 'Leri bir kurtarma hizmetleri kasasında Azure Backup kullanarak nasıl yedekleyeceğiniz açıklanmaktadır.
+title: Kurtarma Hizmetleri kasasında Azure VM'leri yedekleme
+description: Azure Yedekleme'yi kullanarak Kurtarma Hizmetleri kasasında Azure VM'leri nasıl yedeklenenizi açıklar
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.openlocfilehash: aeadd7bc798f690c67eef38c6dc645204ff39115
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79273520"
 ---
-# <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Azure VM 'lerini bir kurtarma hizmetleri kasasında yedekleme
+# <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Kurtarma Hizmetleri kasasında Azure VM'leri yedekleme
 
-Bu makalede, Azure VM 'lerinin [Azure Backup](backup-overview.md) hizmeti kullanılarak bir kurtarma hizmetleri kasasında nasıl yedekleneceği açıklanır.
+Bu makalede, [Azure Yedekleme](backup-overview.md) hizmetini kullanarak Bir Kurtarma Hizmetleri kasasında Azure VM'leri nasıl yedeklenenize açıklanmaktadır.
 
 Bu makalede şunları öğreneceksiniz:
 
 > [!div class="checklist"]
 >
-> * Azure VM 'lerini hazırlayın.
-> * Kasa oluşturun.
-> * VM 'Leri bulun ve bir yedekleme ilkesi yapılandırın.
-> * Azure VM 'Leri için yedeklemeyi etkinleştirin.
+> * Azure VM'leri hazırlayın.
+> * Bir kasa oluşturun.
+> * VM'leri keşfedin ve bir yedekleme ilkesi yapılandırın.
+> * Azure VM'leri için yedeklemeyi etkinleştirin.
 > * İlk yedeklemeyi çalıştırın.
 
 > [!NOTE]
-> Bu makalede, bir kasasının nasıl ayarlanacağı ve yedeklenecek VM 'Lerin nasıl ayarlanacağı açıklanır. Birden çok VM 'yi yedeklemek istiyorsanız bu yararlı olur. Alternatif olarak, [tek bir Azure VM](backup-azure-vms-first-look-arm.md) 'YI doğrudan VM ayarlarından yedekleyebilirsiniz.
+> Bu makalede, bir kasa nın nasıl ayarlanır ve yedeklene bilmek için VM'leri seçilir. Birden çok VM yedeklemek istiyorsanız yararlıdır. Alternatif olarak, [tek bir Azure VM'yi](backup-azure-vms-first-look-arm.md) doğrudan VM ayarlarından yedekleyebilirsiniz.
 
 ## <a name="before-you-start"></a>Başlamadan önce
 
-* Azure VM yedekleme mimarisini [gözden geçirin](backup-architecture.md#architecture-built-in-azure-vm-backup) .
-* [Hakkında bilgi edinin](backup-azure-vms-introduction.md) Azure VM yedeklemesi ve yedekleme uzantısı.
-* Yedeklemeyi yapılandırmadan önce [destek matrisini gözden geçirin](backup-support-matrix-iaas.md) .
+* Azure VM yedekleme mimarisini [gözden geçirin.](backup-architecture.md#architecture-built-in-azure-vm-backup)
+* [Hakkında bilgi edinin](backup-azure-vms-introduction.md) Azure VM yedekleme ve yedekleme uzantısı.
+* Yedeklemeyi yapılandırmadan önce [destek matrisini gözden geçirin.](backup-support-matrix-iaas.md)
 
-Ayrıca, bazı durumlarda yapmanız gerekebilecek birkaç şey vardır:
+Buna ek olarak, bazı durumlarda yapmanız gereken birkaç şey vardır:
 
-* VM **ARACıSıNı VM 'ye yükleme**: Azure Backup makinede çalışan Azure VM aracısına bir uzantı yükleyerek Azure VM 'lerini yedekler. VM 'niz bir Azure Marketi görüntüsünden oluşturulduysa, aracı yüklenir ve çalışır. Özel bir VM oluşturursanız veya şirket içi bir makineyi geçirirseniz, [aracıyı el ile yüklemeniz](#install-the-vm-agent)gerekebilir.
+* **VM'deki VM aracısını yükleyin**: Azure Yedekleme, makinede çalışan Azure VM aracısına bir uzantı yükleyerek Azure VM'leri yedekler. VM'niz Bir Azure pazar yeri görüntüsünden oluşturulduysa, aracı yüklenir ve çalışır. Özel bir VM oluşturursanız veya şirket içi bir makineyi geçiştiriyorsanız, [aracıyı el ile yüklemeniz](#install-the-vm-agent)gerekebilir.
 
 ## <a name="create-a-vault"></a>Kasa oluşturma
 
  Kasa, zaman içinde oluşturulan yedeklemeleri ve kurtarma noktalarını depolar ve yedeklenen makinelerle ilişkili yedekleme ilkelerini depolar. Aşağıdaki gibi bir kasa oluşturun:
 
-1. [Azure Portal](https://portal.azure.com/) oturum açın.
-2. Arama bölümünde, **Kurtarma Hizmetleri**yazın. **Hizmetler**' in altında, **Kurtarma Hizmetleri kasaları**' na tıklayın.
+1. [Azure portalında](https://portal.azure.com/)oturum açın.
+2. Aramada, **Kurtarma Hizmetleri**yazın. **Hizmetler**altında, **Kurtarma Hizmetleri kasalarını**tıklatın.
 
      ![Kurtarma Hizmetleri kasalarını ara](./media/backup-azure-arm-vms-prepare/browse-to-rs-vaults-updated.png)
 
-3. **Kurtarma Hizmetleri kasaları** menüsünde **+ Ekle**' ye tıklayın.
+3. **Kurtarma Hizmetleri kasaları** menüsünde **+Ekle'yi**tıklatın.
 
      ![Kurtarma Hizmetleri Kasası oluşturma 2. adım](./media/backup-azure-arm-vms-prepare/rs-vault-menu.png)
 
-4. **Kurtarma Hizmetleri kasasında**kasayı tanımlamak için bir kolay ad yazın.
+4. **Kurtarma Hizmetleri kasasında,** tonozu tanımlamak için dostça bir ad yazın.
     * Adın Azure aboneliği için benzersiz olması gerekir.
-    * Bu, 2 ile 50 karakter içerebilir.
-    * Bir harfle başlamalı ve yalnızca harf, rakam ve kısa çizgi içerebilir.
+    * 2 ila 50 karakter içerebilir.
+    * Bir harfle başlamalı ve yalnızca harfler, sayılar ve tireler içerebilir.
 5. Kasanın oluşturulması gereken Azure aboneliğini, kaynak grubunu ve coğrafi bölgeyi seçin. Sonra **Oluştur**’a tıklayın.
     * Kasanın oluşturulması biraz zaman alabilir.
-    * Portalın sağ üst bölümündeki durum bildirimlerini izleyin.
+    * Portalın sağ üst alanında durum bildirimlerini izleyin.
 
-Kasa oluşturulduktan sonra kurtarma hizmetleri kasaları listesinde görünür. Kasanızı görmüyorsanız **Yenile**' yi seçin.
+Kasa oluşturulduktan sonra, Kurtarma Hizmetleri kasaları listesinde görünür. Kasanızı **görmüyorsanız, Yenile'yi**seçin.
 
 ![Yedekleme kasalarının listesi](./media/backup-azure-arm-vms-prepare/rs-list-of-vaults.png)
 
 >[!NOTE]
-> Azure Backup artık Azure Backup hizmeti tarafından oluşturulan kaynak grubu adının özelleştirilmesine izin veriyor. Daha fazla bilgi için bkz. [sanal makineler için Azure Backup kaynak grubu](backup-during-vm-creation.md#azure-backup-resource-group-for-virtual-machines).
+> Azure Yedekleme artık Azure Yedekleme hizmeti tarafından oluşturulan kaynak grup adının özelleştirilmesine olanak tanır. Daha fazla bilgi için [Sanal Makineler için Azure Yedekleme kaynak grubuna](backup-during-vm-creation.md#azure-backup-resource-group-for-virtual-machines)bakın.
 
-### <a name="modify-storage-replication"></a>Depolama çoğaltmasını değiştirme
+### <a name="modify-storage-replication"></a>Depolama çoğaltma değiştirme
 
-Varsayılan olarak, [kasalar coğrafi olarak yedekli depolama (GRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs)kullanır.
+Varsayılan olarak, kasalar [coğrafi yedekli depolama (GRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs)kullanır.
 
-* Kasa birincil yedekleme mekanizmanız ise GRS kullanmanızı öneririz.
-* Bir ucuz seçeneği için [yerel olarak yedekli depolama (LRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) kullanabilirsiniz.
+* Kasa birincil yedekleme mekanizmanızsa, GRS kullanmanızı öneririz.
+* Daha ucuz bir seçenek için [yerel olarak yedekli depolama (LRS)](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) kullanabilirsiniz.
 
 Depolama çoğaltma türünü aşağıdaki gibi değiştirin:
 
-1. Yeni kasada, **Ayarlar** bölümünde **Özellikler** ' e tıklayın.
-2. **Özellikler**' de, **yedekleme yapılandırması**altında **Güncelleştir**' e tıklayın.
-3. Depolama çoğaltma türünü seçin ve **Kaydet**' e tıklayın.
+1. Yeni kasada **Ayarlar** **bölümündeki Özellikler'i** tıklatın.
+2. **Özellikler'de**, **Yedekleme Yapılandırması**altında, **Güncelleştir'i**tıklatın.
+3. Depolama çoğaltma türünü seçin ve **Kaydet'i**tıklatın.
 
       ![Yeni kasa için depolama yapılandırması ayarlama](./media/backup-try-azure-backup-in-10-mins/full-blade.png)
 
 > [!NOTE]
-   > Kasa ayarlandıktan ve yedekleme öğeleri içerdiğinde depolama çoğaltma türünü değiştiremezsiniz. Bunu yapmak istiyorsanız kasayı yeniden oluşturmanız gerekir.
+   > Kasa ayarlandıktan ve yedek öğeler içeren depolama çoğaltma türünü değiştiremezsiniz. Bunu yapmak istiyorsan kasayı yeniden oluşturman gerekiyor.
 
 ## <a name="apply-a-backup-policy"></a>Yedekleme ilkesi uygulama
 
-Kasa için bir yedekleme ilkesi yapılandırın.
+Kasa için bir yedekleme ilkesi ni yapılandırın.
 
-1. Kasada **genel bakış** bölümünde **+ Yedekle** ' ye tıklayın.
+1. Kasada, **Genel Bakış** bölümünde **+Yedekleme'yi** tıklatın.
 
    ![Yedekleme düğmesi](./media/backup-azure-arm-vms-prepare/backup-button.png)
 
-2. **Yedekleme hedefi** 'nde > **Iş yükünüz nerede çalışıyor?** **Azure**' u seçin. **Neleri yedeklemek istiyorsunuz?** **sanal makine** >  **Tamam ' ı**seçin. Bu, VM uzantısını kasaya kaydeder.
+2. **Yedekleme Hedefi'nde** > **iş yükünüz nerede çalışıyor?** **Azure** **Virtual machine** >  **OK** **Ne yedeklemek istiyorsunuz?** Bu kasadaki VM uzantısını kaydeder.
 
-   ![Yedekleme ve yedekleme hedef bölmeleri](./media/backup-azure-arm-vms-prepare/select-backup-goal-1.png)
+   ![Yedekleme ve Yedekleme Hedefi bölmeleri](./media/backup-azure-arm-vms-prepare/select-backup-goal-1.png)
 
-3. **Yedekleme ilkesinde**, kasa ile ilişkilendirmek istediğiniz ilkeyi seçin.
-    * Varsayılan ilke, VM 'yi günde bir kez yedekler. Günlük yedeklemeler 30 gün boyunca tutulur. Anlık kurtarma anlık görüntüleri iki gün boyunca tutulur.
-    * Varsayılan ilkeyi kullanmak istemiyorsanız, **Yeni oluştur**' u seçin ve sonraki yordamda açıklandığı gibi özel bir ilke oluşturun.
+3. **Yedekleme ilkesinde,** kasayla ilişkilendirmek istediğiniz ilkeyi seçin.
+    * Varsayılan ilke, VM'yi günde bir kez yedekler. Günlük yedeklemeler 30 gün boyunca saklanır. Anlık kurtarma anlık görüntüleri iki gün boyunca saklanır.
+    * Varsayılan ilkeyi kullanmak istemiyorsanız, **Yeni Oluştur'u**seçin ve bir sonraki yordamda açıklandığı gibi özel bir ilke oluşturun.
 
       ![Varsayılan yedekleme ilkesi](./media/backup-azure-arm-vms-prepare/default-policy.png)
 
-4. **Sanal makineler Seç**bölümünde, ilkeyi kullanarak yedeklemek Istediğiniz VM 'leri seçin. Daha sonra, **Tamam**'a tıklayın.
+4. **Sanal makineleri seç'te,** ilkeyi kullanarak yedeklemek istediğiniz Sanal Makineler'i seçin. Ardından **Tamam**'a tıklayın.
 
-   * Seçilen VM 'Ler doğrulanacak.
-   * Yalnızca kasala aynı bölgedeki VM 'Leri seçebilirsiniz.
-   * VM 'Ler yalnızca tek bir kasada yedeklenebilir.
+   * Seçili VM'ler doğrulanır.
+   * VM'leri yalnızca kasayla aynı bölgede seçebilirsiniz.
+   * VM'ler yalnızca tek bir kasada yedeklenebilir.
 
-     !["Sanal makine seçin" bölmesi](./media/backup-azure-arm-vms-prepare/select-vms-to-backup.png)
+     !["Sanal makineleri seçin" bölmesi](./media/backup-azure-arm-vms-prepare/select-vms-to-backup.png)
 
-5. **Yedekleme**'de **yedeklemeyi etkinleştir**' e tıklayın. Bu, ilkeyi kasaya ve VM 'lere dağıtır ve yedekleme uzantısını Azure VM 'de çalışan VM aracısına kurar.
+5. **Yedekleme'de**, **Yedeklemeyi Etkinleştir'i**tıklatın. Bu işlem, ilkeyi kasaya ve VM'lere dağır ve Yedekleme uzantısını Azure VM üzerinde çalışan VM aracısına yükler.
 
      !["Yedeklemeyi etkinleştir" düğmesi](./media/backup-azure-arm-vms-prepare/vm-validated-click-enable.png)
 
 Yedeklemeyi etkinleştirdikten sonra:
 
-* Yedekleme hizmeti, sanal makinenin çalışıp çalışmadığını, yedekleme uzantısını da yüklüyor.
-* İlk yedekleme, yedekleme zamanlamanıza uygun olarak çalışacaktır.
-* Yedeklemeler çalıştırıldığında şunları unutmayın:
-  * Çalıştıran bir VM, uygulamayla tutarlı bir kurtarma noktası yakalamak için en büyük şansınız vardır.
-  * Ancak, VM kapatılmış olsa bile. Bu tür bir VM, çevrimdışı bir VM olarak bilinir. Bu durumda, kurtarma noktası kilitlenmeyle tutarlı olacaktır.
-* Azure VM 'lerinin yedeklenmesini sağlamak için açık giden bağlantı gerekli değildir.
+* Yedekleme hizmeti, VM çalışıyor olsun veya olmasın yedekleme uzantısını yükler.
+* İlk yedekleme, yedekleme zamanlamanıza uygun olarak çalışır.
+* Yedeklemeler çalışırken şunları unutmayın:
+  * Çalışan bir VM, uygulama tutarlı bir kurtarma noktasını yakalamak için en yüksek şansa sahiptir.
+  * Ancak, VM kapalı olsa bile yedeklenir. Böyle bir VM çevrimdışı VM olarak bilinir. Bu durumda, kurtarma noktası kilitlenme tutarlı olacaktır.
+* Azure VM'lerinin yedekalınmasına izin vermek için açık giden bağlantı gerekmez.
 
 ### <a name="create-a-custom-policy"></a>Özel ilke oluşturma
 
-Yeni bir yedekleme ilkesi oluşturmayı seçtiyseniz, ilke ayarlarını girin.
+Yeni bir yedekleme ilkesi oluşturmayı seçtiyseniz, ilke ayarlarını doldurun.
 
-1. **İlke adı**' nda anlamlı bir ad belirtin.
-2. **Yedekleme zamanlaması**' nda, yedeklemelerin ne zaman alınacağını belirtin. Azure VM 'Leri için günlük veya haftalık yedeklemeler gerçekleştirebilirsiniz.
-3. **Anlık geri yükleme**' de anlık geri yükleme için anlık görüntüleri yerel olarak ne kadar süreyle bekletmek istediğinizi belirtin.
-    * ' Yi geri yüklerken, yedeklenen VM diskleri depolama alanından, ağ üzerinden kurtarma depolama konumuna kopyalanır. Anlık geri yükleme sayesinde, yedekleme verilerinin kasaya aktarılmasını beklemeden, bir yedekleme işi sırasında alınan yerel olarak depolanmış anlık görüntülerden yararlanabilirsiniz.
-    * Anlık geri yüklemenin anlık görüntülerini bir ila beş gün arasında tutabilirsiniz. Varsayılan ayar iki gün olur.
-4. **Bekletme aralığı**' nda, günlük veya haftalık yedekleme noktalarınızı ne kadar süreyle saklamak istediğinizi belirtin.
-5. **Aylık yedekleme noktasını bekletmek**için günlük veya haftalık yedeklemelerinizin aylık bir yedeklemesini korumak isteyip istemediğinizi belirtin.
-6. İlkeyi kaydetmek için **Tamam** ' ı tıklatın.
+1. **İlke adına**anlamlı bir ad belirtin.
+2. **Yedekleme zamanlamasında,** yedeklemelerin ne zaman alınması gerektiğini belirtin. Azure VM'ler için günlük veya haftalık yedeklemeler alabilirsiniz.
+3. **Anında Geri Yükleme'de**anlık görüntüleri anında geri yükleme için yerel olarak ne kadar süreyle saklamak istediğinizi belirtin.
+    * Geri yüklediğinizde, yedeklenen VM diskleri depolamadan ağ üzerinden kurtarma depolama konumuna kopyalanır. Anında geri yükleme ile, yedekleme işi sırasında alınan yerel olarak depolanan anlık görüntülerden, yedekleme verilerinin kasaya aktarılmasını beklemeden yararlanabilirsiniz.
+    * Anlık görüntüleri bir ila beş gün arasında anında geri yükleme için saklayabilirsiniz. İki gün varsayılan ayardır.
+4. **Bekletme aralığında,** günlük veya haftalık yedekleme noktalarınızı ne kadar süreyle tutmak istediğinizi belirtin.
+5. **Aylık yedekleme noktasının bekletinmesinde,** günlük veya haftalık yedeklemelerinizin aylık yedeklemesini tutmak isteyip istemediğinizbelirtilir.
+6. İlkeyi kaydetmek için **Tamam'ı** tıklatın.
 
     ![Yeni yedekleme ilkesi](./media/backup-azure-arm-vms-prepare/new-policy.png)
 
 > [!NOTE]
-   > Azure Backup, Azure VM yedeklemeleri için günışığından yararlanma değişiklikleri için otomatik saat ayarlamasını desteklemez. Zaman değişikliği gerçekleştiğinde, yedekleme ilkelerini gerektiği şekilde el ile değiştirin.
+   > Azure Yedekleme, Azure VM yedeklemeleri için gün ışığından tasarruf sağlayan değişiklikler için otomatik saat ayarlamayı desteklemez. Saat değişiklikleri gerçekleştiğinde, yedekleme ilkelerini gerektiği gibi el ile değiştirin.
 
-## <a name="trigger-the-initial-backup"></a>İlk yedeklemeyi tetikleme
+## <a name="trigger-the-initial-backup"></a>İlk yedeklemeyi tetikle
 
-İlk yedekleme zamanlamaya uygun olarak çalışır, ancak bunu hemen aşağıdaki gibi çalıştırabilirsiniz:
+İlk yedekleme zamanlamaya uygun olarak çalışır, ancak hemen aşağıdaki gibi çalıştırabilirsiniz:
 
-1. Kasa menüsünde, **yedekleme öğeleri**' ne tıklayın.
-2. **Yedekleme öğeleri**' nde **Azure sanal makine**' ye tıklayın.
-3. **Yedekleme öğeleri** listesinde üç noktaya (...) tıklayın.
-4. **Şimdi Yedekle**'ye tıklayın.
-5. **Şimdi Yedekle**' de, kurtarma noktasının tutulacağı son günü seçmek için Takvim denetimini kullanın. Daha sonra, **Tamam**'a tıklayın.
-6. Portal bildirimlerini izleyin. İş ilerlemesini kasa panosunda izleyebilirsiniz > **yedekleme işleri** > **devam**ediyor. VM’nizin boyutuna bağlı olarak, ilk yedeklemenin oluşturulması biraz zaman alabilir.
+1. Kasa menüsünde Yedek **öğeleri**tıklatın.
+2. **Yedekleme Öğeleri'nde**Azure **Sanal Makine'yi**tıklatın.
+3. Yedek **Öğeler** listesinde elipsleri (...) tıklatın.
+4. **Şimdi Yedek'i**tıklatın.
+5. **Yedekleme Şimdi,** kurtarma noktası nın korunması gereken son günü seçmek için takvim denetimini kullanın. Ardından **Tamam**'a tıklayın.
+6. Portal bildirimlerini izleyin. Devam**Eden** **Yedekleme İşleri** > > kasa panosundaki iş ilerlemesini izleyebilirsiniz. VM’nizin boyutuna bağlı olarak, ilk yedeklemenin oluşturulması biraz zaman alabilir.
 
-## <a name="verify-backup-job-status"></a>Yedekleme işinin durumunu doğrulama
+## <a name="verify-backup-job-status"></a>Yedekleme iş durumunu doğrula
 
-Her VM yedeklemesinin yedekleme işi ayrıntıları iki aşamadan oluşur, **anlık görüntü** aşaması ve ardından **verileri kasaya aktar** aşamasına gelir.<br/>
-Anlık görüntü aşaması, **anlık geri yüklemeler** için disklerle birlikte depolanan bir kurtarma noktasının kullanılabilirliğini garanti eder ve Kullanıcı tarafından yapılandırılan anlık görüntü bekletmesine bağlı olarak en fazla beş gün boyunca kullanılabilir. Verileri kasaya aktarma, uzun süreli saklama için kasada bir kurtarma noktası oluşturur. Verileri kasaya aktarma işlemi yalnızca anlık görüntü aşaması tamamlandıktan sonra başlar.
+Her VM yedeklemesi için Yedekleme iş ayrıntıları iki aşamadan oluşur, **Anlık Görüntü** aşaması ve ardından **veri tonoz aşamasına aktar.**<br/>
+Anlık görüntü aşaması, **Anında Geri Yüklemeler** için disklerle birlikte depolanan bir kurtarma noktasının kullanılabilirliğini garanti eder ve kullanıcı tarafından yapılandırılan anlık görüntü tutma durumuna bağlı olarak en fazla beş gün kullanılabilir. Verileri kasaya aktarmak, uzun süreli saklama için kasada bir kurtarma noktası oluşturur. Verileri kasaya aktarma yalnızca anlık görüntü aşaması tamamlandıktan sonra başlar.
 
-  ![Yedekleme Işi durumu](./media/backup-azure-arm-vms-prepare/backup-job-status.png)
+  ![Yedekleme İş Durumu](./media/backup-azure-arm-vms-prepare/backup-job-status.png)
 
-Arka uçta çalışan, **yedekleme işi** ayrıntıları dikey penceresinden aşağıda verilen şekilde denetlenen bir ön uç yedekleme işi olan Iki **alt görev** vardır:
+Arka uçta çalışan iki **Alt Görev** vardır, biri aşağıda verilen **Yedekleme İş** ayrıntıları bıçaktan denetlenebilir ön uç yedekleme işi için:
 
-  ![Yedekleme Işi durumu](./media/backup-azure-arm-vms-prepare/backup-job-phase.png)
+  ![Yedekleme İş Durumu](./media/backup-azure-arm-vms-prepare/backup-job-phase.png)
 
-**Verileri kasaya aktar** aşamasına kadar, disklerin boyutuna, disk başına dalgalanma ve diğer birçok etkene göre tamamlanması çok gün sürebilir.
+**Tonoz aşamasına veri aktarımı,** disklerin boyutuna, disk başına karmaşaya ve diğer çeşitli etkenlere bağlı olarak tamamlanması birkaç gün sürebilir.
 
-İş durumu, aşağıdaki senaryolara bağlı olarak değişebilir:
+İş durumu aşağıdaki senaryolara bağlı olarak değişebilir:
 
-**Görüntüye** | **Verileri kasaya aktar** | **İş durumu**
+**Anlık Görüntü** | **Verileri kasaya aktarma** | **İş Durumu**
 --- | --- | ---
 Tamamlandı | Devam ediyor | Devam ediyor
 Tamamlandı | Atlandı | Tamamlandı
 Tamamlandı | Tamamlandı | Tamamlandı
-Tamamlandı | Başarısız | Uyarıyla tamamlandı
+Tamamlandı | Başarısız | Uyarı ile tamamlandı
 Başarısız | Başarısız | Başarısız
 
-Artık bu özellik ile aynı VM için iki yedek paralel çalışabilir, ancak her iki aşamada (anlık görüntü, verileri kasaya aktar) yalnızca bir alt görev çalışıyor olabilir. Bu nedenle, senaryolarda devam eden bir yedekleme işi olduğundan, bu ayırma işleviyle birlikte yedeklemenin başarısız olmasına neden olur. Sonraki günün yedeklemeleri, daha önceki bir günün yedekleme işi devam ediyorsa, **kasaya veri aktarımı** atlanırken anlık görüntü tamamlanabilir.
-Kasada oluşturulan artımlı kurtarma noktası, kasada oluşturulan son kurtarma noktasındaki tüm karmaşıklığı yakalar. Kullanıcı üzerinde bir ücret etkisi yoktur.
+Şimdi bu yeteneği ile, aynı VM için, iki yedek paralel olarak çalıştırabilirsiniz, ancak her iki aşamada (anlık görüntü, tonoz veri aktarımı) sadece bir alt görev çalışıyor olabilir. Yani senaryolarda devam eden bir yedekleme işi bu ayrıştırma işlevi ile önlenecektir başarısız ertesi gün yedekleme sonuçlandı. Önceki günün yedekleme durumu devam ediyorsa, **verileri kasaya aktarırken** sonraki günün yedekleri anlık görüntü tamamlanmış olabilir.
+Kasada oluşturulan artımlı kurtarma noktası, kasada oluşturulan son kurtarma noktasından tüm karmaşayı yakalar. Kullanıcı üzerinde herhangi bir maliyet etkisi yoktur.
 
 ## <a name="optional-steps"></a>İsteğe bağlı adımlar
 
-### <a name="install-the-vm-agent"></a>VM aracısını yükler
+### <a name="install-the-vm-agent"></a>VM aracısını yükleme
 
-Azure Backup, makinede çalışan Azure VM aracısına bir uzantı yükleyerek Azure VM 'lerini yedekler. VM 'niz bir Azure Marketi görüntüsünden oluşturulduysa, aracı yüklenir ve çalışır. Özel bir sanal makine oluşturursanız veya şirket içi bir makineyi geçirirseniz, aracıyı tabloda özetlenen şekilde el ile yüklemeniz gerekebilir.
+Azure Yedekleme, makinede çalışan Azure VM aracısına bir uzantı yükleyerek Azure VM'leri yedekler. VM'niz bir Azure Marketi görüntüsünden oluşturulduysa, aracı yüklenir ve çalışır. Özel bir VM oluşturursanız veya şirket içi bir makineyi geçiş tirseniz, tabloda özetlendiği gibi aracıyı el ile yüklemeniz gerekebilir.
 
-**'Nın** | **Ayrıntılar**
+**Vm** | **Şey**
 --- | ---
-**Windows** | 1. aracı MSI dosyasını [indirip yükleyin](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) .<br/><br/> 2. makinede yönetici izinleriyle Install.<br/><br/> 3. yüklemeyi doğrulayın. VM 'deki *C:\windowsazure\packages* ' de, **Waappagent. exe** > **Özellikler**' e sağ tıklayın. **Ayrıntılar** sekmesinde **ürün sürümü** 2.6.1198.718 veya üzeri olmalıdır.<br/><br/> Aracıyı güncelleştiriyorsanız, hiçbir yedekleme işlemi olmadığından emin olun ve [aracıyı yeniden yükleyin](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409).
-**Linux** | Dağıtım paketi deposundan bir RPM veya bir DEB paketini kullanarak uygulamasını yükler. Bu, Azure Linux aracısını yüklemek ve yükseltmek için tercih edilen yöntemdir. Tüm [onaylı dağıtım sağlayıcıları](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) , Azure Linux Aracısı paketini görüntülerle ve depolarında tümleştirin. Aracı [GitHub](https://github.com/Azure/WALinuxAgent)'da kullanılabilir ancak buradan yüklemeyi önermiyoruz.<br/><br/> Aracıyı güncelleştiriyorsanız, yedekleme işlemlerinin çalışmakta olmadığından emin olun ve ikili dosyaları güncelleştirin.
+**Windows** | 1. Aracı MSI dosyasını [indirin ve kurun.](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)<br/><br/> 2. Makineye yönetici izinleri ile yükleyin.<br/><br/> 3. Yüklemeyi doğrulayın. VM'deki *C:\WindowsAzure\Paketleri'nde* **WaAppAgent.exe** > **Properties'e**sağ tıklayın. **Ayrıntılar** **sekmesinde, Ürün Sürümü** 2.6.1198.718 veya daha yüksek olmalıdır.<br/><br/> Aracıyı güncelliyorsanız, yedekleme işlemlerinin çalışmadığından emin olun ve [aracıyı yeniden yükleyin.](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)
+**Linux** | Dağıtımınızın paket deposundan bir RPM veya DEB paketi kullanarak yükleyin. Azure Linux aracısını yüklemek ve yükseltmek için tercih edilen yöntem budur. Onaylanan tüm [dağıtım sağlayıcıları,](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) Azure Linux aracı paketini görüntülerine ve depolarına entegre ederler. Aracı [GitHub'da](https://github.com/Azure/WALinuxAgent)kullanılabilir, ancak buradan yüklemenizi önermiyoruz.<br/><br/> Aracıyı güncelliyorsanız, yedekleme işlemlerinin çalışmadığından emin olun ve ikili leri güncelleştirin.
 
 >[!NOTE]
-> **Azure Backup artık, Azure sanal makine yedekleme çözümünü kullanarak Seçmeli disk yedeklemesini ve geri yüklemeyi desteklemektedir.**
+> **Azure Yedekleme artık seçici disk yedeklemesini destekler ve Azure Sanal Makine yedekleme çözümlerini kullanarak geri yüklemeyi destekler.**
 >
->Günümüzde, sanal makine yedekleme çözümünü kullanarak bir VM 'deki tüm disklerin (Işletim sistemi ve veri) yedeklenmesini destekler Azure Backup. Disk dışlama işlevselliğiyle, bir VM 'deki birçok veri diskinden bir veya birkaçını yedekleme seçeneği alırsınız. Bu, yedekleme ve geri yükleme gereksinimleriniz için verimli ve ekonomik bir çözüm sunar. Her kurtarma noktası, yedekleme işlemine dahil edilen disklerin verilerini içerir. Bu, geri yükleme işlemi sırasında verilen kurtarma noktasından geri yüklenen disklerin bir alt kümesine sahip etmenize olanak tanır. Bu, hem anlık görüntüden hem de kasadan geri yükleme için geçerlidir.
+>Bugün Azure Yedekleme, Sanal Makine yedekleme çözümlerini kullanarak VM'deki tüm diskleri (İşletim Sistemi ve verileri) birlikte yedeklemeyi destekler. Diski dışlama işleviyle, VM'deki birçok veri diskinden bir veya birkaçını yedekleme seçeneğine sahip olursunuz. Bu, yedekleme ve geri yükleme gereksinimleriniz için verimli ve uygun maliyetli bir çözüm sağlar. Her kurtarma noktası yedekleme işlemine dahil edilen disklerin verilerini içerir ve bu da geri yükleme işlemi sırasında verilen kurtarma noktasından geri yüklenen disklerin bir alt kümesini geri yüklemenize olanak tanır. Bu, hem anlık görüntüden hem de kasadan geri yüklemek için geçerlidir.
 >
->**Önizlemeye kaydolmak için AskAzureBackupTeam@microsoft.com adresinden bize yazın**
+>**Önizleme için kaydolmak için, bize yazınAskAzureBackupTeam@microsoft.com**
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure VM aracılarıyla](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md) veya [Azure VM yedeklemeyle](backup-azure-vms-troubleshoot.md)ilgili sorunları giderin.
-* [Geri yükle](backup-azure-arm-restore-vms.md) Azure VM 'Leri.
+* [Azure VM aracıları](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md) veya [Azure VM yedeklemesi](backup-azure-vms-troubleshoot.md)ile ilgili sorunları giderin.
+* [Geri Yükleme](backup-azure-arm-restore-vms.md) Azure VM'ler.

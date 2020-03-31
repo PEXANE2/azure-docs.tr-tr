@@ -1,38 +1,38 @@
 ---
-title: Azure Kubernetes hizmeti (AKS) ile Apache Spark işi çalıştırma
-description: Apache Spark işini çalıştırmak için Azure Kubernetes hizmeti 'ni (AKS) kullanma
+title: Azure Kubernetes Hizmeti (AKS) ile Bir Apache Spark işi çalıştırın
+description: Apache Spark işini çalıştırmak için Azure Kubernetes Hizmetini (AKS) kullanın
 author: lenadroid
 ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: alehall
 ms.custom: mvc
-ms.openlocfilehash: 7465f8eb4357fcb6faa1d0fee0173837b6cb019b
-ms.sourcegitcommit: 99ac4a0150898ce9d3c6905cbd8b3a5537dd097e
+ms.openlocfilehash: 4b3248cb9ab61a158f70b5a2d6ae9dd846501816
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/25/2020
-ms.locfileid: "77593658"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79473634"
 ---
-# <a name="running-apache-spark-jobs-on-aks"></a>AKS üzerinde Apache Spark işleri çalıştırma
+# <a name="running-apache-spark-jobs-on-aks"></a>AKS'de Apache Spark işleri çalıştırmak
 
-[Apache Spark][apache-spark] , büyük ölçekli veri işleme için hızlı bir altyapıdır. [Spark 2.3.0 sürümünden][spark-latest-release]itibaren Apache Spark, Kubernetes kümeleriyle yerel tümleştirmeyi destekler. Azure Kubernetes hizmeti (AKS), Azure 'da çalışan yönetilen bir Kubernetes ortamıdır. Bu belge, Azure Kubernetes Service (AKS) kümesinde Apache Spark işleri hazırlamaya ve çalıştırmaya ilişkin ayrıntıları sağlar.
+[Apache Spark,][apache-spark] büyük ölçekli veri işleme için hızlı bir motordur. [Spark 2.3.0 sürümü][spark-latest-release]itibariyle, Apache Spark Kubernetes kümeleri ile yerel entegrasyonu destekler. Azure Kubernetes Service (AKS), Azure'da çalışan yönetilen bir Kubernetes ortamıdır. Bu belge, Bir Azure Kubernetes Hizmeti (AKS) kümesinde Apache Spark işlerinin hazırlanması nı ve çalıştırılınır.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Bu makaledeki adımları tamamlayabilmeniz için aşağıdakiler gerekir.
+Bu makaledeki adımları tamamlamak için aşağıdakileri yapmanız gerekir.
 
-* Kubernetes ve [Apache Spark][spark-quickstart]temel olarak anlaşılmaktadır.
-* [Docker Hub][docker-hub] hesabı veya bir [Azure Container Registry][acr-create].
-* Azure CLı, geliştirme sisteminize [yüklendi][azure-cli] .
-* Sisteminizde yüklü [JDK 8][java-install] .
-* Sisteminizde yüklü SBT ([Scala derleme aracı][sbt-install]).
-* Sisteminizde yüklü olan git komut satırı araçları.
+* Kubernetes ve [Apache Spark][spark-quickstart]temel anlayış .
+* [Docker Hub][docker-hub] hesabı veya Azure [Kapsayıcı Kayıt Defteri.][acr-create]
+* Azure CLI geliştirme sisteminize [yüklendi.][azure-cli]
+* [JDK 8][java-install] sisteminizde yüklü.
+* Sisteminizde SBT ([Scala Build Tool][sbt-install]) yüklendi.
+* Sisteminizde yüklü komut satırı araçları git.
 
 ## <a name="create-an-aks-cluster"></a>AKS kümesi oluşturma
 
-Spark, büyük ölçekli veri işleme için kullanılır ve Kubernetes düğümlerinin Spark kaynak gereksinimlerini karşılayacak şekilde boyutlandırılması gerekir. Azure Kubernetes Service (AKS) düğümleriniz için en az bir `Standard_D3_v2` önerilir.
+Kıvılcım büyük ölçekli veri işleme için kullanılır ve Kubernetes düğümlerinin Spark kaynakları gereksinimlerini karşılamak için boyutlandırılmasını gerektirir. Azure Kubernetes `Standard_D3_v2` Hizmetiniz (AKS) düğümleriniz için minimum boyut öneririz.
 
-Bu en düşük öneriyi karşılayan bir AKS kümesine ihtiyacınız varsa aşağıdaki komutları çalıştırın.
+Bu minimum öneriyi karşılayan bir AKS kümesine ihtiyacınız varsa, aşağıdaki komutları çalıştırın.
 
 Küme için bir kaynak grubu oluşturun.
 
@@ -40,13 +40,13 @@ Küme için bir kaynak grubu oluşturun.
 az group create --name mySparkCluster --location eastus
 ```
 
-Küme için bir hizmet sorumlusu oluşturun. Oluşturulduktan sonra, sonraki komut için hizmet sorumlusu uygulama kimliği ve parolası gerekir.
+Küme için bir Hizmet Sorumlusu oluşturun. Oluşturulduktan sonra, bir sonraki komut için Servis Sorumlusu appId ve parolagerekir.
 
 ```azurecli
 az ad sp create-for-rbac --name SparkSP
 ```
 
-`Standard_D3_v2`boyuttaki düğümlerle AKS kümesini ve hizmet sorumlusu ve istemci gizli parametreleri olarak geçirilen AppID ve parola değerlerini oluşturun.
+Hizmet-asıl ve istemci-gizli parametreler olarak `Standard_D3_v2`geçirilen appId ve parola değerleri ve boyutu ve değerleri ile AKS kümesi oluşturun.
 
 ```azurecli
 az aks create --resource-group mySparkCluster --name mySparkCluster --node-vm-size Standard_D3_v2 --generate-ssh-keys --service-principal <APPID> --client-secret <PASSWORD>
@@ -58,11 +58,11 @@ AKS kümesine bağlanın.
 az aks get-credentials --resource-group mySparkCluster --name mySparkCluster
 ```
 
-Kapsayıcı görüntülerini depolamak için Azure Container Registry (ACR) kullanıyorsanız, AKS ve ACR arasında kimlik doğrulamasını yapılandırın. Bu adımlar için [ACR kimlik doğrulama belgelerine][acr-aks] bakın.
+Kapsayıcı görüntülerini depolamak için Azure Kapsayıcı Kayıt Defteri'ni (ACR) kullanıyorsanız, AKS ve ACR arasında kimlik doğrulamasını yapılandırın. Bu adımlar için [ACR kimlik doğrulama belgelerine][acr-aks] bakın.
 
-## <a name="build-the-spark-source"></a>Spark kaynağını oluşturma
+## <a name="build-the-spark-source"></a>Kıvılcım kaynağını oluşturun
 
-Spark işlerini bir AKS kümesinde çalıştırmadan önce Spark kaynak kodunu oluşturmanız ve bir kapsayıcı görüntüsüne paketetmeniz gerekir. Spark kaynağı, bu işlemi gerçekleştirmek için kullanılabilecek betikleri içerir.
+Bir AKS kümesinde Kıvılcım işleri çalıştırmadan önce, Spark kaynak kodunu oluşturmanız ve bir kapsayıcı görüntüsüne paketlemeniz gerekir. Kıvılcım kaynağı, bu işlemi tamamlamak için kullanılabilecek komut dosyaları içerir.
 
 Spark proje deposunu geliştirme sisteminize kopyalayın.
 
@@ -70,26 +70,26 @@ Spark proje deposunu geliştirme sisteminize kopyalayın.
 git clone -b branch-2.4 https://github.com/apache/spark
 ```
 
-Kopyalanmış deponun dizinine geçin ve Spark kaynağının yolunu bir değişkene kaydedin.
+Klonlanan deponun dizinine değiştirin ve Spark kaynağının yolunu bir değişkene kaydedin.
 
 ```bash
 cd spark
 sparkdir=$(pwd)
 ```
 
-Birden çok JDK sürümü yüklüyse, `JAVA_HOME` geçerli oturum için sürüm 8 ' i kullanacak şekilde ayarlayın.
+Birden çok JDK sürümünüz yüklüyse, geçerli oturum için sürüm 8'i kullanacak şekilde ayarlayın. `JAVA_HOME`
 
 ```bash
 export JAVA_HOME=`/usr/libexec/java_home -d 64 -v "1.8*"`
 ```
 
-Kubernetes desteğiyle Spark kaynak kodunu derlemek için aşağıdaki komutu çalıştırın.
+Kubernetes desteğiyle Spark kaynak kodunu oluşturmak için aşağıdaki komutu çalıştırın.
 
 ```bash
 ./build/mvn -Pkubernetes -DskipTests clean package
 ```
 
-Aşağıdaki komutlar Spark kapsayıcı görüntüsünü oluşturur ve bir kapsayıcı görüntüsü kayıt defterine gönderir. `registry.example.com`, kapsayıcı kayıt defterinizin adıyla değiştirin ve kullanmayı tercih ettiğiniz etiketle `v1`. Docker Hub kullanıyorsanız, bu değer kayıt defteri adıdır. Azure Container Registry (ACR) kullanıyorsanız, bu değer ACR oturum açma sunucusu adıdır.
+Aşağıdaki komutlar Spark kapsayıcı görüntüsünü oluşturur ve bir kapsayıcı görüntü kayıt defterine iter. Konteyner `registry.example.com` kayıt defterinizin adı `v1` ve kullanmayı tercih ettiğiniz etiketle değiştirin. Docker Hub kullanıyorsanız, bu değer kayıt defteri adıdır. Azure Kapsayıcı Kayıt Defteri (ACR) kullanıyorsanız, bu değer ACR giriş sunucusu adıdır.
 
 ```bash
 REGISTRY_NAME=registry.example.com
@@ -100,30 +100,30 @@ REGISTRY_TAG=v1
 ./bin/docker-image-tool.sh -r $REGISTRY_NAME -t $REGISTRY_TAG build
 ```
 
-Kapsayıcı görüntüsünü kapsayıcı görüntü kayıt defterinize gönderin.
+Kapsayıcı görüntüsünü kapsayıcı görüntü kayıt defterinize itin.
 
 ```bash
 ./bin/docker-image-tool.sh -r $REGISTRY_NAME -t $REGISTRY_TAG push
 ```
 
-## <a name="prepare-a-spark-job"></a>Spark işi hazırlama
+## <a name="prepare-a-spark-job"></a>Bir Kıvılcım işi hazırlayın
 
-Sonra, bir Spark işi hazırlayın. Bir jar dosyası Spark işini tutmak için kullanılır ve `spark-submit` komutu çalıştırılırken gereklidir. Jar, ortak bir URL aracılığıyla veya bir kapsayıcı görüntüsü içinde önceden paketlenmiş olarak erişilebilir hale getirilebilir. Bu örnekte, Pi değerini hesaplamak için bir örnek jar oluşturulur. Bu jar daha sonra Azure depolama 'ya yüklenir. Mevcut bir kavanaya sahipseniz, bunu değiştirme
+Sonra, bir Kıvılcım iş hazırlayın. Bir kavanoz dosyası Spark iş tutmak için kullanılır `spark-submit` ve komutu çalıştırırken gereklidir. Kavanoz, genel bir URL üzerinden erişilebilir hale getirilebilir veya bir konteyner görüntüsü içinde önceden paketlenmiş olabilir. Bu örnekte, Pi değerini hesaplamak için bir örnek kavanoz oluşturulur. Bu kavanoz daha sonra Azure depolama alanına yüklenir. Mevcut bir kavanozunuzun varsa,
 
-Spark işi için projeyi oluşturmak istediğiniz bir dizin oluşturun.
+Bir Kıvılcım işi için proje oluşturmak istediğiniz bir dizin oluşturun.
 
 ```bash
 mkdir myprojects
 cd myprojects
 ```
 
-Bir şablondan yeni bir Scala projesi oluşturun.
+Şablondan yeni bir Scala projesi oluşturun.
 
 ```bash
 sbt new sbt/scala-seed.g8
 ```
 
-İstendiğinde, proje adı için `SparkPi` girin.
+İstendiğinde, `SparkPi` proje adı için girin.
 
 ```bash
 name [Scala Seed Project]: SparkPi
@@ -135,14 +135,14 @@ Yeni oluşturulan proje dizinine gidin.
 cd sparkpi
 ```
 
-Projeyi jar dosyası olarak paketlemeye izin veren bir SBT eklentisi eklemek için aşağıdaki komutları çalıştırın.
+Projeyi kavanoz dosyası olarak paketlemeye olanak tanıyan bir SBT eklentisi eklemek için aşağıdaki komutları çalıştırın.
 
 ```bash
 touch project/assembly.sbt
 echo 'addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "0.14.10")' >> project/assembly.sbt
 ```
 
-Örnek kodu yeni oluşturulan projeye kopyalamak ve tüm gerekli bağımlılıkları eklemek için bu komutları çalıştırın.
+Örnek kodu yeni oluşturulan projeye kopyalamak ve gerekli tüm bağımlılıkları eklemek için bu komutları çalıştırın.
 
 ```bash
 EXAMPLESDIR="src/main/scala/org/apache/spark/examples"
@@ -158,13 +158,13 @@ sed -ie 's/scalaVersion.*/scalaVersion := "2.11.11"/' build.sbt
 sed -ie 's/name.*/name := "SparkPi",/' build.sbt
 ```
 
-Projeyi bir jar içine paketlemek için aşağıdaki komutu çalıştırın.
+Projeyi bir kavanoza paketlemek için aşağıdaki komutu çalıştırın.
 
 ```bash
 sbt assembly
 ```
 
-Başarılı paketleme sonrasında aşağıdakine benzer bir çıktı görmeniz gerekir.
+Başarılı bir şekilde paketledikten sonra, aşağıdakilere benzer çıktı görmeniz gerekir.
 
 ```bash
 [info] Packaging /Users/me/myprojects/sparkpi/target/scala-2.11/SparkPi-assembly-0.1.0-SNAPSHOT.jar ...
@@ -172,9 +172,9 @@ Başarılı paketleme sonrasında aşağıdakine benzer bir çıktı görmeniz g
 [success] Total time: 10 s, completed Mar 6, 2018 11:07:54 AM
 ```
 
-## <a name="copy-job-to-storage"></a>İşi depolamaya Kopyala
+## <a name="copy-job-to-storage"></a>İşi depolamaya kopyalama
 
-Jar dosyasını tutmak için bir Azure depolama hesabı ve kapsayıcısı oluşturun.
+Kavanoz dosyasını tutmak için bir Azure depolama hesabı ve kapsayıcı oluşturun.
 
 ```azurecli
 RESOURCE_GROUP=sparkdemo
@@ -184,9 +184,9 @@ az storage account create --resource-group $RESOURCE_GROUP --name $STORAGE_ACCT 
 export AZURE_STORAGE_CONNECTION_STRING=`az storage account show-connection-string --resource-group $RESOURCE_GROUP --name $STORAGE_ACCT -o tsv`
 ```
 
-Aşağıdaki komutlarla jar dosyasını Azure Storage hesabına yükleyin.
+Aşağıdaki komutlarla kavanoz dosyasını Azure depolama hesabına yükleyin.
 
-```bash
+```azurecli
 CONTAINER_NAME=jars
 BLOB_NAME=SparkPi-assembly-0.1.0-SNAPSHOT.jar
 FILE_TO_UPLOAD=target/scala-2.11/SparkPi-assembly-0.1.0-SNAPSHOT.jar
@@ -201,11 +201,11 @@ az storage blob upload --container-name $CONTAINER_NAME --file $FILE_TO_UPLOAD -
 jarUrl=$(az storage blob url --container-name $CONTAINER_NAME --name $BLOB_NAME | tr -d '"')
 ```
 
-Değişken `jarUrl`, şimdi jar dosyasının genel olarak erişilebilir yolunu içerir.
+Değişken `jarUrl` şimdi kavanoz dosyasına genel olarak erişilebilir yolu içerir.
 
-## <a name="submit-a-spark-job"></a>Spark işi gönderme
+## <a name="submit-a-spark-job"></a>Bir Kıvılcım işi gönderme
 
-Kuin-proxy ' y i aşağıdaki kodla ayrı bir komut satırında başlatın.
+Kube-proxy'yi aşağıdaki kodla ayrı bir komut satırında başlatın.
 
 ```bash
 kubectl proxy
@@ -224,7 +224,7 @@ kubectl create serviceaccount spark
 kubectl create clusterrolebinding spark-role --clusterrole=edit --serviceaccount=default:spark --namespace=default
 ```
 
-`spark-submit`kullanarak işi gönderme.
+İşi kullanarak `spark-submit`gönder.
 
 ```bash
 ./bin/spark-submit \
@@ -238,11 +238,13 @@ kubectl create clusterrolebinding spark-role --clusterrole=edit --serviceaccount
   $jarUrl
 ```
 
-Bu işlem, iş durumunu kabuk oturumunuza akıp Spark işini başlatır. İş çalışırken, kubectl Get Pod komutunu kullanarak Spark sürücüsü Pod ve yürütücü Pod 'yi görebilirsiniz. Bu komutları çalıştırmak için ikinci bir terminal oturumu açın.
+Bu işlem, kabuk oturumunuza iş durumunu aktaran Spark işini başlatır. İş çalışırken, kubectl get pods komutunu kullanarak Spark sürücü bölmesini ve yürütme bölmelerini görebilirsiniz. Bu komutları çalıştırmak için ikinci bir terminal oturumu açın.
 
 ```console
-$ kubectl get pods
+kubectl get pods
+```
 
+```output
 NAME                                               READY     STATUS     RESTARTS   AGE
 spark-pi-2232778d0f663768ab27edc35cb73040-driver   1/1       Running    0          16s
 spark-pi-2232778d0f663768ab27edc35cb73040-exec-1   0/1       Init:0/1   0          4s
@@ -250,19 +252,19 @@ spark-pi-2232778d0f663768ab27edc35cb73040-exec-2   0/1       Init:0/1   0       
 spark-pi-2232778d0f663768ab27edc35cb73040-exec-3   0/1       Init:0/1   0          4s
 ```
 
-İş çalışırken Spark Kullanıcı arabirimine de erişebilirsiniz. İkinci Terminal oturumunda, Spark Kullanıcı arabirimine erişim sağlamak `kubectl port-forward` komutunu kullanın.
+İş çalışırken, Spark UI'ye de erişebilirsiniz. İkinci terminal oturumunda, Spark UI'ye erişim sağlayan komutu `kubectl port-forward` kullanın.
 
 ```bash
 kubectl port-forward spark-pi-2232778d0f663768ab27edc35cb73040-driver 4040:4040
 ```
 
-Spark Kullanıcı arabirimine erişmek için adres `127.0.0.1:4040` bir tarayıcıda açın.
+Spark UI'ye erişmek `127.0.0.1:4040` için adresi bir tarayıcıda açın.
 
-![Spark Kullanıcı arabirimi](media/aks-spark-job/spark-ui.png)
+![Kıvılcım UI](media/aks-spark-job/spark-ui.png)
 
-## <a name="get-job-results-and-logs"></a>İş sonuçlarını ve günlükleri al
+## <a name="get-job-results-and-logs"></a>İş sonuçları ve günlükleri alın
 
-İş bittikten sonra, Pod sürücüsü "tamamlandı" durumunda olur. Aşağıdaki komutla Pod 'un adını alın.
+İş bittikten sonra, sürücü bölmesi "Tamamlanmış" durumda olacaktır. Aşağıdaki komutla bölmenin adını alın.
 
 ```bash
 kubectl get pods --show-all
@@ -270,30 +272,30 @@ kubectl get pods --show-all
 
 Çıktı:
 
-```bash
+```output
 NAME                                               READY     STATUS      RESTARTS   AGE
 spark-pi-2232778d0f663768ab27edc35cb73040-driver   0/1       Completed   0          1m
 ```
 
-Spark sürücüsü Pod 'dan günlükleri almak için `kubectl logs` komutunu kullanın. Pod adını sürücü Pod adının adıyla değiştirin.
+Kıvılcım `kubectl logs` sürücü bölmesinden günlükleri almak için komutu kullanın. Pod adını sürücü bölmenizin adıyla değiştirin.
 
 ```bash
 kubectl logs spark-pi-2232778d0f663768ab27edc35cb73040-driver
 ```
 
-Bu günlüklerde, PI 'nin değeri olan Spark işinin sonucunu görebilirsiniz.
+Bu günlükler içinde, Pi değeri olan Kıvılcım işinin sonucunu görebilirsiniz.
 
-```bash
+```output
 Pi is roughly 3.152155760778804
 ```
 
-## <a name="package-jar-with-container-image"></a>Kapsayıcı görüntüsü ile paket jar 'i
+## <a name="package-jar-with-container-image"></a>Konteyner görüntüsü ile paket kavanoz
 
-Yukarıdaki örnekte Spark jar dosyası Azure depolama 'ya yüklendi. Diğer bir seçenek de jar dosyasını özel olarak oluşturulmuş Docker görüntülerine paketlemenize olanak sağlar.
+Yukarıdaki örnekte, Spark kavanoz dosyası Azure depolamasına yüklendi. Başka bir seçenek özel olarak üretilmiştir Docker görüntüleri içine kavanoz dosyası paketi için.
 
-Bunu yapmak için `$sparkdir/resource-managers/kubernetes/docker/src/main/dockerfiles/spark/` dizininde bulunan Spark görüntüsünün `dockerfile` bulun. Spark işi için, `WORKDIR` ve `ENTRYPOINT` bildirimleri arasında bir yerde `jar` ÖÖ `ADD` bildirimi ekleyin.
+Bunu yapmak için, `dockerfile` `$sparkdir/resource-managers/kubernetes/docker/src/main/dockerfiles/spark/` dizinde bulunan Spark görüntüsünü bulun. Spark `ADD` işi `jar` için deyimini `ENTRYPOINT` ve beyanlar arasında bir `WORKDIR` yer ekleyin.
 
-Jar yolunu, geliştirme sisteminizdeki `SparkPi-assembly-0.1.0-SNAPSHOT.jar` dosyanın konumuyla güncelleştirin. Kendi özel jar dosyanızı da kullanabilirsiniz.
+Jar yolunu geliştirme sisteminizdeki `SparkPi-assembly-0.1.0-SNAPSHOT.jar` dosyanın konumuna güncelleştirin. Ayrıca kendi özel kavanoz dosyanızı kullanabilirsiniz.
 
 ```bash
 WORKDIR /opt/spark/work-dir
@@ -303,14 +305,14 @@ ADD /path/to/SparkPi-assembly-0.1.0-SNAPSHOT.jar SparkPi-assembly-0.1.0-SNAPSHOT
 ENTRYPOINT [ "/opt/entrypoint.sh" ]
 ```
 
-Dahil edilen Spark betiklerine sahip görüntüyü derleyin ve gönderin.
+Görüntüyü, birlikte verilen Spark komut dosyalarıyla oluşturun ve itin.
 
 ```bash
 ./bin/docker-image-tool.sh -r <your container repository name> -t <tag> build
 ./bin/docker-image-tool.sh -r <your container repository name> -t <tag> push
 ```
 
-İşi çalıştırırken, uzak bir jar URL 'SI yerine `local://` şeması, Docker görüntüsündeki jar dosyasının yoluyla kullanılabilir.
+İşi çalıştırırken, uzak bir kavanoz URL'si belirtmek yerine, `local://` şema Docker görüntüsündeki kavanoz dosyasına giden yol ile kullanılabilir.
 
 ```bash
 ./bin/spark-submit \
@@ -325,14 +327,14 @@ Dahil edilen Spark betiklerine sahip görüntüyü derleyin ve gönderin.
 ```
 
 > [!WARNING]
-> Spark [belgelerinden][spark-docs]: "Kubernetes Zamanlayıcısı Şu anda deneysel. Gelecekteki sürümlerde yapılandırma, kapsayıcı görüntüleri ve entryPoints gibi davranış değişiklikleri olabilir.
+> Spark [belgelerinden][spark-docs]: "Kubernetes zamanlayıcısı şu anda deneysel. Gelecek sürümlerde yapılandırma, kapsayıcı görüntüleri ve giriş noktaları etrafında davranış değişiklikleri olabilir".
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Daha fazla bilgi için Spark belgelerine göz atın.
+Daha fazla ayrıntı için Spark belgelerine göz atın.
 
 > [!div class="nextstepaction"]
-> [Spark belgeleri][spark-docs]
+> [Belgeleri kıvılcımla][spark-docs]
 
 <!-- LINKS - external -->
 [apache-spark]: https://spark.apache.org/

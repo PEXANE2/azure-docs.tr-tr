@@ -1,6 +1,6 @@
 ---
-title: "Öğretici: Azure Active Directory ile otomatik Kullanıcı sağlaması için Airstack 'i yapılandırma | Microsoft Docs"
-description: Kullanıcı hesaplarını Airstack 'e otomatik olarak sağlamak ve devre dışı bırakmak için Azure Active Directory yapılandırmayı öğrenin.
+title: "Öğretici: Azure Active Directory ile otomatik kullanıcı sağlama için Airstack'i yapılandırın | Microsoft Dokümanlar"
+description: Azure Active Directory'yi, kullanıcı hesaplarını Airstack'e otomatik olarak sağlamak ve sağlamadan çıkarmak için nasıl yapılandırılamayı öğrenin.
 services: active-directory
 documentationcenter: ''
 author: zchia
@@ -16,92 +16,92 @@ ms.topic: article
 ms.date: 09/18/2019
 ms.author: Zhchia
 ms.openlocfilehash: 17736f5215c4ed80a2140cfc664ef76b1a055f79
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/07/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77060419"
 ---
-# <a name="tutorial-configure-airstack-for-automatic-user-provisioning"></a>Öğretici: otomatik Kullanıcı sağlaması için Airstack 'i yapılandırma
+# <a name="tutorial-configure-airstack-for-automatic-user-provisioning"></a>Öğretici: Otomatik kullanıcı sağlama için Airstack'i yapılandır
 
-Bu öğreticinin amacı, Azure AD 'yi kullanıcıları ve/veya grupları Airstack 'e otomatik olarak sağlamak ve devre dışı bırakmak üzere yapılandırmak için Airstack ve Azure Active Directory (Azure AD) içinde gerçekleştirilecek adımları göstermektir.
+Bu öğreticinin amacı, Azure AD'yi kullanıcıları ve/veya grupları Airstack'e otomatik olarak sağlamak ve sağlamadan çıkarmak üzere yapılandırmak için Airstack ve Azure Active Directory 'de (Azure AD) gerçekleştirilecek adımları göstermektir.
 
 > [!NOTE]
-> Bu öğreticide, Azure AD Kullanıcı sağlama hizmeti ' nin üzerine oluşturulmuş bir bağlayıcı açıklanmaktadır. Bu hizmetin ne yaptığını, nasıl çalıştığını ve sık sorulan soruları hakkında önemli ayrıntılar için bkz. [Azure Active Directory Ile SaaS uygulamalarına Kullanıcı sağlamayı ve sağlamayı kaldırmayı otomatikleştirme](../app-provisioning/user-provisioning.md).
+> Bu öğretici, Azure AD Kullanıcı Sağlama Hizmeti'nin üzerine inşa edilmiş bir bağlayıcıyı açıklar. Bu hizmetin ne yaptığı, nasıl çalıştığı ve sık sorulan sorular hakkında önemli ayrıntılar [için](../app-provisioning/user-provisioning.md)bkz.
 >
-> Bu bağlayıcı Şu anda genel önizleme aşamasındadır. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için bkz. [Microsoft Azure önizlemeleri Için ek kullanım koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Bu bağlayıcı şu anda Genel Önizleme'de. Önizleme özellikleri için genel Microsoft Azure kullanım koşulları hakkında daha fazla bilgi için, [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları'na](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)bakın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğreticide özetlenen senaryo, aşağıdaki önkoşulların zaten olduğunu varsayar:
+Bu öğreticide özetlenen senaryo, aşağıdaki ön koşullara sahip olduğunuzu varsayar:
 
-* Bir Azure AD kiracısı
-* [Airstack kiracısı](https://airstack.com/pricing/)
-* Airstack 'te yönetici izinleriyle bir kullanıcı hesabı.
+* Azure AD kiracı
+* [Bir Airstack kiracı](https://airstack.com/pricing/)
+* Yönetici izinleri olan Airstack'teki bir kullanıcı hesabı.
 
-## <a name="assigning-users-to-airstack"></a>Airstack 'e Kullanıcı atama
+## <a name="assigning-users-to-airstack"></a>Kullanıcıları Airstack'e atama
 
-Azure Active Directory seçili uygulamalara hangi kullanıcıların erişimi alacağını belirleyen *atama* adı verilen bir kavram kullanır. Otomatik Kullanıcı sağlama bağlamında, yalnızca Azure AD 'de bir uygulamaya atanmış olan kullanıcılar ve/veya gruplar eşitlenir.
+Azure Active Directory, hangi kullanıcıların seçili uygulamalara erişmesi gerektiğini belirlemek için *atamalar* adlı bir kavram kullanır. Otomatik kullanıcı sağlama bağlamında, yalnızca Azure AD'deki bir uygulamaya atanan kullanıcılar ve/veya gruplar eşitlenir.
 
-Otomatik Kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, Azure AD 'deki hangi kullanıcıların ve/veya grupların Airstack 'e erişmesi gerektiğine karar vermeniz gerekir. Karar verdikten sonra buradaki yönergeleri izleyerek bu kullanıcıları ve/veya grupları Airstack 'e atayabilirsiniz:
-* [Kurumsal uygulamaya Kullanıcı veya Grup atama](../manage-apps/assign-user-or-group-access-portal.md)
+Otomatik kullanıcı sağlamayı yapılandırmadan ve etkinleştirmeden önce, Azure AD'deki hangi kullanıcıların ve/veya grupların Airstack'e erişmesi gerektiğine karar vermelisiniz. Karar verildikten sonra, bu kullanıcıları ve/veya grupları buradaki talimatları izleyerek Airstack'e atayabilirsiniz:
+* [Bir kurumsal uygulamaya kullanıcı veya grup atama](../manage-apps/assign-user-or-group-access-portal.md)
 
-## <a name="important-tips-for-assigning-users-to-airstack"></a>Airstack 'e Kullanıcı atamaya yönelik önemli ipuçları
+## <a name="important-tips-for-assigning-users-to-airstack"></a>Kullanıcıları Airstack'e atamak için önemli ipuçları
 
-* Otomatik Kullanıcı sağlama yapılandırmasını test etmek için Airstack 'e tek bir Azure AD kullanıcısının atanması önerilir. Ek kullanıcılar ve/veya grupları daha sonra atanabilir.
+* Otomatik kullanıcı sağlama yapılandırmasını sınamak için Airstack'e tek bir Azure AD kullanıcısı atanması önerilir. Ek kullanıcılar ve/veya gruplar daha sonra atanabilir.
 
-* Bir kullanıcıyı Airstack 'e atarken, atama iletişim kutusunda uygulamaya özgü geçerli herhangi bir rolü (varsa) seçmeniz gerekir. **Varsayılan erişim** rolüne sahip kullanıcılar, sağlanmasından çıkarılır.
+* Airstack'e bir kullanıcı atarken, atama iletişim kutusunda uygulamaya özgü geçerli bir rolü (varsa) seçmeniz gerekir. **Varsayılan Erişim** rolüne sahip kullanıcılar sağlama nın dışında tutulur.
 
-## <a name="setup-airstack-for-provisioning"></a>Sağlama için Airstack kurulumu
+## <a name="setup-airstack-for-provisioning"></a>Sağlama için Kurulum Airstack
 
-1. [Airstack Yönetici konsolunuza](https://airstack-qa.lenovosoftware.com/)oturum açın. **Ayarlar**' a gidin.
+1. [Airstack Yönetici Konsolunuzda](https://airstack-qa.lenovosoftware.com/)oturum açın. **Ayarlar'a**gidin.
 
     ![Airstack Yönetici Konsolu](media/airstack-provisioning-tutorial/airstackadminmenu.png)
 
-2.  Ekranın sol tarafında bulunan menüdeki **Azure yapılandırması** ' na gidin.
+2.  Ekranın sol tarafında bulunan menüde **Azure Config'e** gidin.
 
-    ![Airstack SCıM Ekle](media/airstack-provisioning-tutorial/azureconfig.png)
+    ![Airstack SCIM ekle](media/airstack-provisioning-tutorial/azureconfig.png)
 
-3.  **Oluştur** düğmesine tıklayın. **Azure Için gizli dizi belirtecini**kopyalayın. Bu değer, Azure portal Airstack uygulamanızın sağlama sekmesindeki gizli belirteç alanına girilir.
+3.  **Oluştur** düğmesine tıklayın. Azure **için Gizli Belirteci'ni**kopyalayın. Bu değer, Azure portalındaki Airstack uygulamanızın Sağlama sekmesindeki Gizli Belirteç alanına girilir.
 
-    ![Airstack oluşturma belirteci](media/airstack-provisioning-tutorial/generatetoken.png)
+    ![Airstack Oluştur Jetonu](media/airstack-provisioning-tutorial/generatetoken.png)
 
-## <a name="add-airstack-from-the-gallery"></a>Galeriden Airstack ekleme
+## <a name="add-airstack-from-the-gallery"></a>Galeriden Airstack ekle
 
-Azure AD ile otomatik Kullanıcı sağlama için Airstack 'i yapılandırmadan önce Azure AD uygulama galerisindeki Airstack 'i yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
+Azure AD ile otomatik kullanıcı sağlama için Airstack'i yapılandırmadan önce, Azure AD uygulama galerisinden yönetilen SaaS uygulamaları listenize Airstack eklemeniz gerekir.
 
-**Azure AD Uygulama Galerisi 'nden Airstack eklemek için aşağıdaki adımları uygulayın:**
+**Azure AD uygulama galerisinden Airstack eklemek için aşağıdaki adımları gerçekleştirin:**
 
-1. **[Azure Portal](https://portal.azure.com)** sol gezinti panelinde **Azure Active Directory**' i seçin.
+1. Azure **[portalında,](https://portal.azure.com)** soldaki gezinti panelinde **Azure Etkin Dizin'i**seçin.
 
-    ![Azure Active Directory düğmesi](common/select-azuread.png)
+    ![Azure Etkin Dizin düğmesi](common/select-azuread.png)
 
-2. **Kurumsal uygulamalar**' a gidin ve **tüm uygulamalar**' ı seçin.
+2. Kurumsal **uygulamalara**gidin ve ardından **Tüm uygulamaları**seçin.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+    ![Enterprise uygulamaları bıçak](common/enterprise-applications.png)
 
 3. Yeni bir uygulama eklemek için bölmenin üst kısmındaki **Yeni uygulama** düğmesini seçin.
 
-    ![Yeni Uygulama düğmesi](common/add-new-app.png)
+    ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **airstack**girin, sonuçlar panelinde **airstack** ' i seçin ve sonra uygulamayı eklemek için **Ekle** düğmesine tıklayın.
+4. Arama kutusuna, **Airstack'e**girin, sonuç panelinde **Airstack'i** seçin ve ardından uygulamayı eklemek için **Ekle** düğmesini tıklatın.
 
-    ![Sonuçlar listesinde airstack](common/search-new-app.png)
+    ![Sonuçlar listesindeki airstack](common/search-new-app.png)
 
-## <a name="configuring-automatic-user-provisioning-to-airstack"></a>Airstack 'e otomatik Kullanıcı sağlamayı yapılandırma 
+## <a name="configuring-automatic-user-provisioning-to-airstack"></a>Otomatik kullanıcı sağlamayı Airstack'e yapılandırma 
 
-Bu bölümde Azure AD sağlama hizmetini kullanarak Airstack 'te kullanıcıları ve/veya grupları oluşturmak, güncelleştirmek ve devre dışı bırakmak için Azure AD 'de Kullanıcı ve/veya grup atamalarını temel alan ve/veya gruplarını yapılandırma adımları adım adım kılavuzluk eder.
+Bu bölüm, Azure AD'deki kullanıcı ve/veya grup atamalarına dayalı olarak Airstack'teki kullanıcıları ve/veya grupları oluşturmak, güncellemek ve devre dışı etmek için Azure AD sağlama hizmetini yapılandırma adımları boyunca size yol göstermektedir.
 
 > [!TIP]
-> Airstack [Çoklu oturum açma öğreticisinde](https://docs.microsoft.com/azure/active-directory/saas-apps/airstack-tutorial)sunulan yönergeleri Izleyerek uçak YıĞıNı için SAML tabanlı çoklu oturum açmayı etkinleştirmeyi de tercih edebilirsiniz. Çoklu oturum açma otomatik Kullanıcı sağlamasından bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini karmaşıdirebilse de
+> Ayrıca [Airstack tek oturum](https://docs.microsoft.com/azure/active-directory/saas-apps/airstack-tutorial)açma öğreticisinde verilen talimatları izleyerek Airstack için SAML tabanlı tek oturum açmayı etkinleştirmeyi de seçebilirsiniz. Tek oturum açma, otomatik kullanıcı sağlamadan bağımsız olarak yapılandırılabilir, ancak bu iki özellik birbirini birbiriyle dışa
 
-### <a name="to-configure-automatic-user-provisioning-for-airstack-in-azure-ad"></a>Azure AD 'de Airstack için otomatik Kullanıcı sağlamayı yapılandırmak için:
+### <a name="to-configure-automatic-user-provisioning-for-airstack-in-azure-ad"></a>Azure AD'de Airstack için otomatik kullanıcı sağlama yapılandırmak için:
 
-1. [Azure Portal](https://portal.azure.com) oturum açın. **Kuruluş uygulamaları**' nı seçin ve ardından **tüm uygulamalar**' ı seçin.
+1. [Azure portalında](https://portal.azure.com)oturum açın. **Kurumsal Uygulamaları**seçin, ardından **Tüm uygulamaları**seçin.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar bıçak](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **Airstack**' i seçin.
+2. Uygulamalar listesinde **Airstack'i**seçin.
 
     ![Uygulamalar listesindeki Airstack bağlantısı](common/all-applications.png)
 
@@ -109,52 +109,52 @@ Bu bölümde Azure AD sağlama hizmetini kullanarak Airstack 'te kullanıcılar�
 
     ![Sağlama sekmesi](common/provisioning.png)
 
-4. **Sağlama modunu** **Otomatik**olarak ayarlayın.
+4. Sağlama **Modunu** **Otomatik**olarak ayarlayın.
 
     ![Sağlama sekmesi](common/provisioning-automatic.png)
 
-5. **Yönetici kimlik bilgileri** bölümünün altında, **kiracı URL 'sindeki**`https://api-as.lenovosoftware.com/0/as/common/scim` girin. **Gizli belirteçte**daha önce alınan **SCIM kimlik doğrulama belirteci** değerini girin. Azure AD 'nin Airstack 'e bağlanabildiğinden emin olmak için **Bağlantıyı Sına** ' ya tıklayın. Bağlantı başarısız olursa, Airstack hesabınızın yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
+5. Yönetici **Kimlik Bilgileri** bölümü `https://api-as.lenovosoftware.com/0/as/common/scim` altında, **Kiracı URL'ye**giriş . **Gizli Belirteç'te**daha önce alınan **SCIM Kimlik Doğrulama Belirteci** değerini girdi. Azure AD'nin Airstack'e bağlanabilmesini sağlamak için **Test Bağlantısı'nı** tıklatın. Bağlantı başarısız olursa, Airstack hesabınızın Yönetici izinlerine sahip olduğundan emin olun ve yeniden deneyin.
 
-    ![Kiracı URL 'SI + belirteç](common/provisioning-testconnection-tenanturltoken.png)
+    ![Kiracı URL + Belirteç](common/provisioning-testconnection-tenanturltoken.png)
 
-6. **Bildirim e-postası** alanına, sağlama hatası bildirimlerini alması gereken bir kişinin veya grubun e-posta adresini girin ve hata oluştuğunda onay kutusu- **e-posta bildirimi gönder**' i işaretleyin.
+6. Bildirim **E-postası** alanında, sağlama hatası bildirimleri alması gereken bir kişinin veya grubun e-posta adresini girin ve onay kutusunu işaretleyin - **Bir hata oluştuğunda e-posta bildirimi gönderin.**
 
-    ![Bildirim e-postası](common/provisioning-notification-email.png)
+    ![Bildirim E-postası](common/provisioning-notification-email.png)
 
-7. **Kaydet** düğmesine tıklayın.
+7. **Kaydet**'e tıklayın.
 
-8. **Eşlemeler** bölümünde **Azure Active Directory Kullanıcıları Airstack ile eşitler**' ı seçin.
+8. **Eşlemeler** bölümünde, **Azure Etkin Dizin Kullanıcılarını Airstack'e Senkronize Et'i**seçin.
 
-    ![Airstack Kullanıcı eşlemeleri](media/airstack-provisioning-tutorial/mappings.png)
+    ![Airstack Kullanıcı Eşlemeleri](media/airstack-provisioning-tutorial/mappings.png)
 
-9. **Öznitelik eşleme** bölümünde Azure AD 'Den airstack 'e eşitlenen Kullanıcı özniteliklerini gözden geçirin. **Eşleşen** özellikler olarak seçilen öznitelikler, güncelleştirme Işlemleri Için airstack içindeki kullanıcı hesaplarıyla eşleştirmek için kullanılır. Değişiklikleri uygulamak için **Kaydet** düğmesini seçin.
+9. Azure AD'den Airstack'e eşitlenen kullanıcı özniteliklerini **Öznitelik Eşleme** bölümünde gözden geçirin. **Eşleştirme** özellikleri olarak seçilen öznitelikler, güncelleştirme işlemleri için Airstack'teki kullanıcı hesaplarıyla eşleştirilmesi için kullanılır. Herhangi bir değişiklik yapmak için **Kaydet** düğmesini seçin.
 
-    ![Airstack Kullanıcı öznitelikleri](media/airstack-provisioning-tutorial/attributes.png)
+    ![Airstack Kullanıcı Özellikleri](media/airstack-provisioning-tutorial/attributes.png)
 
-10. Kapsam filtrelerini yapılandırmak için, [kapsam filtresi öğreticisinde](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)sunulan aşağıdaki yönergelere bakın.
+10. Kapsam filtrelerini yapılandırmak [için, Kapsam](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md)filtresi öğreticisinde sağlanan aşağıdaki yönergelere bakın.
 
-11. Airstack için Azure AD sağlama hizmetini etkinleştirmek üzere **Ayarlar** bölümünde **sağlama durumunu** **Açık** olarak değiştirin.
+11. Airstack için Azure AD sağlama hizmetini etkinleştirmek **için, Ayarlar** bölümünde **KiSama Durumunu** **Ayarı** olarak değiştirin.
 
-    ![Sağlama durumu değiştirildi](common/provisioning-toggle-on.png)
+    ![Geçiş Yapılan Sağlama Durumu](common/provisioning-toggle-on.png)
 
-12. **Ayarlar** bölümünde **kapsam** Içindeki Istenen değerleri seçerek airstack 'e sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
+12. **Ayarlar** bölümünde **Kapsam'ta** istenen değerleri seçerek Airstack'e sağlamak istediğiniz kullanıcıları ve/veya grupları tanımlayın.
 
-    ![Sağlama kapsamı](common/provisioning-scope.png)
+    ![Sağlama Kapsamı](common/provisioning-scope.png)
 
-13. Sağlamaya hazırsanız **Kaydet**' e tıklayın.
+13. Hükmetmeye hazır olduğunuzda **Kaydet'i**tıklatın.
 
-    ![Sağlama yapılandırması kaydediliyor](common/provisioning-configuration-save.png)
+    ![Tasarruf Sağlama Yapılandırması](common/provisioning-configuration-save.png)
 
-Bu işlem, **Ayarlar** bölümünde **kapsam** içinde tanımlanan tüm kullanıcılar ve/veya grupların ilk eşitlemesini başlatır. İlk eşitlemenin daha sonra, Azure AD sağlama hizmeti çalıştığı sürece yaklaşık 40 dakikada bir oluşan sonraki eşitlemeler yerine gerçekleştirilmesi daha uzun sürer. İlerlemeyi izlemek için **eşitleme ayrıntıları** bölümünü kullanabilir ve airstack ÜZERINDE Azure AD sağlama hizmeti tarafından gerçekleştirilen tüm eylemleri açıklayan, sağlama etkinliği raporuna ilişkin bağlantıları izleyebilirsiniz.
+Bu işlem, **Ayarlar** bölümünde **Kapsam'ta** tanımlanan tüm kullanıcıların ve/veya grupların ilk eşitlemisini başlatır. Azure AD sağlama hizmeti nin çalıştırıldığı sürece yaklaşık her 40 dakikada bir gerçekleşen sonraki eşitlemelerden daha uzun süren ilk eşitlemenin gerçeklemi daha uzun sürer. İlerlemeyi izlemek ve Azure AD sağlama hizmeti tarafından Airstack'te gerçekleştirilen tüm eylemleri açıklayan sağlama faaliyet raporuna bağlı bağlantıları izlemek için **Eşitleme Ayrıntıları** bölümünü kullanabilirsiniz.
 
-Azure AD sağlama günlüklerinin nasıl okunduğu hakkında daha fazla bilgi için bkz. [Otomatik Kullanıcı hesabı sağlamayı raporlama](../app-provisioning/check-status-user-account-provisioning.md).
+Azure AD sağlama günlüklerini nasıl okuyabilirsiniz hakkında daha fazla bilgi için [bkz.](../app-provisioning/check-status-user-account-provisioning.md)
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-* [Kurumsal uygulamalar için Kullanıcı hesabı sağlamayı yönetme](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Kurumsal Uygulamalar için kullanıcı hesabı sağlamanın yönetimi](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Günlükleri İnceleme ve sağlama etkinliğinde rapor alma hakkında bilgi edinin](../app-provisioning/check-status-user-account-provisioning.md)
+* [Günlükleri nasıl inceleyip sağlama etkinliği yle ilgili raporları nasıl alacağınızı öğrenin](../app-provisioning/check-status-user-account-provisioning.md)
 

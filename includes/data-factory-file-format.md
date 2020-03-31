@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
 ms.openlocfilehash: 29be95a53004070753ca742cd8d76ca9d8384ea0
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/29/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70166796"
 ---
 ## <a name="specifying-formats"></a>Biçim belirtme
@@ -18,7 +18,7 @@ Azure Data Factory şu biçim türlerini destekler:
 * [JSON Biçimi](#specifying-jsonformat)
 * [Avro Biçimi](#specifying-avroformat)
 * [ORC Biçimi](#specifying-orcformat)
-* [Parquet Biçimi](#specifying-parquetformat)
+* [Parke Formatı](#specifying-parquetformat)
 
 ### <a name="specifying-textformat"></a>TextFormat belirtme
 Metin dosyalarını ayrıştırmak veya verileri metin biçiminde yazmak istiyorsanız `format` `type` özelliğini **TextFormat** olarak ayarlayın. İsterseniz `format` bölümünde aşağıdaki **isteğe bağlı** özellikleri de belirtebilirsiniz. Yapılandırma adımları için [TextFormat örneği](#textformat-example) bölümünü inceleyin.
@@ -27,9 +27,9 @@ Metin dosyalarını ayrıştırmak veya verileri metin biçiminde yazmak istiyor
 | --- | --- | --- | --- |
 | columnDelimiter |Bir dosyadaki sütunları ayırmak için kullanılan karakterdir. Başlık Başlangıcını (SOH) temsil eden "\u0001" karakteri gibi verilerinizde olma olasılığı bulunmayan, nadir ve yazdırılamaz bir karakter kullanabilirsiniz. |Yalnızca bir karaktere izin verilir. **Varsayılan** değer **virgül (",")** olarak belirlenmiştir. <br/><br/>Unicode karakteri kullanmak için [Unicode Karakterleri](https://en.wikipedia.org/wiki/List_of_Unicode_characters) bölümünden karakterin kodunu bulun. |Hayır |
 | rowDelimiter |Bir dosyadaki satırları ayırmak için kullanılan karakterdir. |Yalnızca bir karaktere izin verilir. **Varsayılan** değer, okuma sırasında **["\r\n", "\r", "\n"]** değerlerinden biri, yazma sırasında ise **"\r\n"** olarak belirlenmiştir. |Hayır |
-| escapeChar |Giriş dosyasının içeriğindeki bir sütun ayırıcısına kaçış karakteri eklemek için kullanılan özel karakterdir. <br/><br/>Bir tablo için hem escapeChar hem de quoteChar parametrelerini aynı anda belirtemezsiniz. |Yalnızca bir karaktere izin verilir. Varsayılan değer yoktur. <br/><br/>Örnek: sütun sınırlayıcısı olarak virgül (', ') varsa ancak metinde virgül karakterine sahip olmak istiyorsanız (örnek: "Merhaba, Dünya"), kaçış karakteri olarak ' $ ' tanımlayabilir ve kaynakta "Hello $, World" dizesini kullanabilirsiniz. |Hayır |
+| escapeChar |Giriş dosyasının içeriğindeki bir sütun ayırıcısına kaçış karakteri eklemek için kullanılan özel karakterdir. <br/><br/>Bir tablo için hem escapeChar hem de quoteChar parametrelerini aynı anda belirtemezsiniz. |Yalnızca bir karaktere izin verilir. Varsayılan değer yoktur. <br/><br/>Örnek: Sütun sınırlayıcınız virgül (",") karakteriyse ancak metin içinde virgül karakteri kullanılıyorsa (örneğin: "Merhaba, dünya"), "$" karakterini kaçış karakteri olarak tanımlayabilir ve kaynakta "Merhaba$, dünya" dizesini kullanabilirsiniz. |Hayır |
 | quoteChar |Bir dize değerini tırnak içine almak için kullanılan karakterdir. Tırnak işareti içindeki sütun ve satır sınırlayıcıları, dize değerinin bir parçası olarak kabul edilir. Bu özellik hem giriş hem de çıkış veri kümelerine uygulanabilir.<br/><br/>Bir tablo için hem escapeChar hem de quoteChar parametrelerini aynı anda belirtemezsiniz. |Yalnızca bir karaktere izin verilir. Varsayılan değer yoktur. <br/><br/>Örneğin, sütun sınırlayıcınız virgül (",") karakteriyse ancak metin içinde virgül karakteri kullanılıyorsa (örneğin: <Merhaba, dünya>), " (çift tırnak) karakterini tırnak karakteri olarak tanımlayabilir ve kaynakta "Merhaba, dünya" dizesini kullanabilirsiniz. |Hayır |
-| nullValue |Bir null değeri temsil etmek için kullanılan bir veya daha fazla karakterdir. |Bir veya daha fazla karakter olabilir. **Varsayılan** değerler okuma sırasında **"\N" ve "NULL"** , yazma sırasında ise **"\N"** olarak belirlenmiştir. |Hayır |
+| nullValue |Bir null değeri temsil etmek için kullanılan bir veya daha fazla karakterdir. |Bir veya daha fazla karakter olabilir. **Varsayılan** değerler okuma sırasında **"\N" ve "NULL"**, yazma sırasında ise **"\N"** olarak belirlenmiştir. |Hayır |
 | encodingName |Kodlama adını belirtir. |Geçerli bir kodlama adı. Bkz. [Encoding.EncodingName Özelliği](/dotnet/api/system.text.encoding). Örnek: windows-1250 veya shift_jis. **Varsayılan** değer **UTF-8** olarak belirlenmiştir. |Hayır |
 | firstRowAsHeader |İlk satırın üst bilgi olarak kabul edilip edilmeyeceğini belirtir. Giriş veri kümesinde Data Factory ilk satırı üst bilgi olarak okur. Çıkış veri kümesinde Data Factory ilk satırı üst bilgi olarak yazar. <br/><br/>Örnek senaryolar için bkz. [`firstRowAsHeader` ve `skipLineCount` kullanım senaryoları](#scenarios-for-using-firstrowasheader-and-skiplinecount). |True<br/>**False (varsayılan)** |Hayır |
 | skipLineCount |Giriş dosyalarından okuma sırasında atlanacak satır sayısını belirtir. Hem skipLineCount hem de firstRowAsHeader parametresi belirtilirse önce satırlar atlanır, ardından giriş dosyasındaki üst bilgi bilgileri okunur. <br/><br/>Örnek senaryolar için bkz. [`firstRowAsHeader` ve `skipLineCount` kullanım senaryoları](#scenarios-for-using-firstrowasheader-and-skiplinecount). |Tamsayı |Hayır |
@@ -64,12 +64,12 @@ Aşağıdaki örnekte TextFormat için bazı biçim özellikleri gösterilmişti
 ```
 
 #### <a name="scenarios-for-using-firstrowasheader-and-skiplinecount"></a>firstRowAsHeader ve skipLineCount kullanım senaryoları
-* Dosya olmayan bir kaynaktan bir metin dosyasına kopyalıyorsunuz ve şema meta verilerini içeren bir üst bilgi satırı eklemek istiyorsunuz (örneğin: SQL şeması). Bu senaryo için çıkış veri kümesinde `firstRowAsHeader` parametresini true olarak belirleyin.
+* Dosya olmayan bir kaynaktan bir metin dosyasına kopyalama yapıyorsunuz ve şema meta verilerini (örneğin, SQL şeması) içeren bir üst bilgi satırı eklemek istiyorsunuz. Bu senaryo için çıkış veri kümesinde `firstRowAsHeader` parametresini true olarak belirleyin.
 * Üst bilgi satırı içeren bir metin dosyasından dosya olmayan bir havuza kopyalama yapıyorsunuz ve üst bilgi satırını almak istemiyorsunuz. Giriş veri kümesinde `firstRowAsHeader` parametresini true olarak belirleyin.
 * Bir metin dosyasından kopyalama yapıyorsunuz ve dosyanın başındaki veri içermeyen veya üst bilgi bilgilerini içeren birkaç satırı atlamak istiyorsunuz. Atlanacak satır sayısını belirtmek için `skipLineCount` değerini belirtin. Dosyanın geri kalan kısmında üst bilgi satırı varsa `firstRowAsHeader` değerini de belirtebilirsiniz. Hem `skipLineCount` hem de `firstRowAsHeader` parametresi belirtilirse önce satırlar atlanır, ardından giriş dosyasındaki üst bilgi bilgileri okunur.
 
 ### <a name="specifying-jsonformat"></a>JsonFormat belirtme
-**JSON dosyalarını, Azure Cosmos DB olduğu gibi içeri/dışarı**aktarmak için, Azure Cosmos DB BAĞLAYıCıSı 'ndaki [JSON belgelerini içeri/dışarı](../articles/data-factory/v1/data-factory-azure-documentdb-connector.md#importexport-json-documents) aktarma bölümüne bakın.
+**Azure Cosmos DB'den JSON dosyalarını olduğu gibi alma/dışa aktarma**için Azure Cosmos DB bağlayıcısındaki [JSON belgelerini içe aktarma/dışa aktarma](../articles/data-factory/v1/data-factory-azure-documentdb-connector.md#importexport-json-documents) bölümüne bakın.
 
 JSON dosyalarını ayrıştırmak veya verileri JSON biçiminde yazmak istiyorsanız `format` `type` özelliğini **JsonFormat** olarak ayarlayın. İsterseniz `format` bölümünde aşağıdaki **isteğe bağlı** özellikleri de belirtebilirsiniz. Yapılandırma adımları için [JsonFormat örneği](#jsonformat-example) bölümünü inceleyin.
 
@@ -78,7 +78,7 @@ JSON dosyalarını ayrıştırmak veya verileri JSON biçiminde yazmak istiyorsa
 | filePattern |Her bir JSON dosyasında depolanan verilerin desenini belirtir. İzin verilen değerler: **setOfObjects** ve **arrayOfObjects**. **Varsayılan** değer **setOfObjects** olarak belirlenmiştir. Bu desenler hakkında ayrıntılı bilgi için bkz. [JSON dosyası desenleri](#json-file-patterns). |Hayır |
 | jsonNodeReference | Bir dizi alanındaki aynı desene sahip verileri yinelemek ve ayıklamak istiyorsanız o dizinin JSON yolunu belirtin. Bu özellik yalnızca JSON dosyalarından veri kopyalarken desteklenir. | Hayır |
 | jsonPathDefinition | Her sütun için JSON yolu ifadesini belirtin ve özel bir sütun adıyla eşleyin (küçük harfle başlatın). Bu özellik yalnızca JSON dosyalarından veri kopyalarken desteklenir. Verileri nesne veya diziden ayıklayabilirsiniz. <br/><br/> Kök nesne altındaki alanlar için root $ ile, `jsonNodeReference` özelliği tarafından seçilen dizinin içindeki alanlar için ise dizi öğesiyle başlayın. Yapılandırma adımları için [JsonFormat örneği](#jsonformat-example) bölümünü inceleyin. | Hayır |
-| encodingName |Kodlama adını belirtir. Geçerli kodlama adlarının listesi için bkz.: [Encoding. EncodingName](/dotnet/api/system.text.encoding) özelliği. Örneğin: windows-1250 veya shift_jis. **Varsayılan** değer: **UTF-8**. |Hayır |
+| encodingName |Kodlama adını belirtir. Geçerli kodlama adlarının listesi için bkz. [Encoding.EncodingName](/dotnet/api/system.text.encoding) Özelliği. Örneğin: windows-1250 veya shift_jis. **Varsayılan** değer: **UTF-8**. |Hayır |
 | nestingSeparator |İç içe geçme düzeylerini ayırmak için kullanılan karakterdir. Varsayılan değer "." (nokta) olarak belirlenmiştir. |Hayır |
 
 #### <a name="json-file-patterns"></a>JSON dosyası desenleri
@@ -174,7 +174,7 @@ Kopyalama etkinliği, JSON dosyalarının şu desenlerini ayrıştırabilir:
 
 #### <a name="jsonformat-example"></a>JsonFormat örneği
 
-**Durum 1: JSON dosyalarından veri kopyalama**
+**Örnek Durum 1: JSON dosyalarından veri kopyalama**
 
 JSON dosyalarından veri kopyalarken karşılaşılan iki tür örnek ve dikkat edilecek genel noktalar için aşağıya bakın:
 
@@ -207,14 +207,14 @@ Bu örnekte, bir kök JSON nesnesinin tablosal sonuçtaki tek bir kayıtla eşle
 ```
 ve hem nesne hem de diziden veri ayıklayarak bir Azure SQL tablosuna aşağıdaki biçimde kopyalamak istersiniz:
 
-| id | deviceType | targetResourceType | resourceManagementProcessRunId | occurrenceTime |
+| id | deviceType | targetResourceType | kaynakManagementProcessRunId | occurrenceTime |
 | --- | --- | --- | --- | --- |
 | ed0e4960-d9c5-11e6-85dc-d7996816aad3 | PC | Microsoft.Compute/virtualMachines | 827f8aaa-ab72-437c-ba48-d8917a7336a3 | 1/13/2017 11:24:37 AM |
 
 **JsonFormat** türüne sahip giriş veri kümesi şu şekilde tanımlanır: (yalnızca ilgili bölümlerin gösterildiği kısmi tanım). Daha ayrıntılı belirtmek gerekirse:
 
-- `structure` bölümü, tablo verilerine dönüştürme sırasında kullanılan özelleştirilmiş sütun adlarını ve karşılık gelen veri türünü tanımlar. Bu bölüm **isteğe bağlıdır** ve yalnızca sütun eşleme için kullanmanız gerekir. Daha fazla ayrıntı için bkz. dikdörtgen veri kümeleri için yapı tanımı belirtme bölümü.
-- `jsonPathDefinition`, her sütun için verilerin ayıklanacağı JSON yolunu belirtir. Diziden veri kopyalamak için **Array [x]. Property** ' yi kullanarak verilen özelliğin değerini XTH nesnesinden çıkarabilir veya bu tür özelliği içeren herhangi bir nesneden değeri bulmak için **Array [*]. Property** ' yi kullanabilirsiniz.
+- `structure` bölümü, tablo verilerine dönüştürme sırasında kullanılan özelleştirilmiş sütun adlarını ve karşılık gelen veri türünü tanımlar. Bu bölüm **isteğe bağlıdır** ve yalnızca sütun eşleme için kullanmanız gerekir. Ayrıntılı bilgi için bkz. Dikdörtgen veri kümeleri için yapı tanımını belirtme.
+- `jsonPathDefinition`, her sütun için verilerin ayıklanacağı JSON yolunu belirtir. Diziden veri kopyalamak için, verilen özelliği xth nesnesinden ayıklamak için **array[x].property'i** kullanabilir veya bu özelliği içeren herhangi bir nesnenin değerini bulmak için **array[*].property'i** kullanabilirsiniz.
 
 ```json
 "properties": {
@@ -286,7 +286,7 @@ ve bunu bir Azure SQL tablosuna aşağıdaki biçimde, dizi içindeki verileri d
 
 **JsonFormat** türüne sahip giriş veri kümesi şu şekilde tanımlanır: (yalnızca ilgili bölümlerin gösterildiği kısmi tanım). Daha ayrıntılı belirtmek gerekirse:
 
-- `structure` bölümü, tablo verilerine dönüştürme sırasında kullanılan özelleştirilmiş sütun adlarını ve karşılık gelen veri türünü tanımlar. Bu bölüm **isteğe bağlıdır** ve yalnızca sütun eşleme için kullanmanız gerekir. Daha fazla ayrıntı için bkz. dikdörtgen veri kümeleri için yapı tanımı belirtme bölümü.
+- `structure` bölümü, tablo verilerine dönüştürme sırasında kullanılan özelleştirilmiş sütun adlarını ve karşılık gelen veri türünü tanımlar. Bu bölüm **isteğe bağlıdır** ve yalnızca sütun eşleme için kullanmanız gerekir. Ayrıntılı bilgi için bkz. Dikdörtgen veri kümeleri için yapı tanımını belirtme.
 - `jsonNodeReference`, **dizi** sipariş satırlarının altında aynı desene sahip nesnelerdeki verilerin yineleneceğini ve ayıklanacağını belirtir.
 - `jsonPathDefinition`, her sütun için verilerin ayıklanacağı JSON yolunu belirtir. Bu örnekte "ordernumber", "orderdate" ve "city", kök nesnenin altında ve "$." ile başlayan JSON yolundayken, "order_pd" ve "order_price", "$." olmadan dizi öğesinden türetilen yol kullanılarak tanımlanmıştır.
 
@@ -420,7 +420,7 @@ ORC dosyalarını ayrıştırmak veya verileri ORC biçiminde yazmak istiyorsan�
 Aşağıdaki noktalara dikkat edin:
 
 * Karmaşık veri türleri desteklenmez (STRUCT, MAP, LIST, UNION)
-* ORC dosyasında [sıkıştırma ile ilgili üç seçenek](https://hortonworks.com/blog/orcfile-in-hdp-2-better-compression-better-performance/)vardır: NONE, ZLIB, SNAPPY. Data Factory, bu sıkıştırma biçimlerinin herhangi birine sahip ORC dosyalarını okuyabilir. Verileri okumak için meta verilerdeki sıkıştırma kodlayıcısı/kod çözücüsünü kullanır. Ancak Data Factory bir ORC dosyasına yazarken varsayılan ORC değeri olan ZLIB seçeneğini kullanır. Şu anda bu davranışı geçersiz kılma seçeneği yoktur.
+* ORC dosyası [sıkıştırmayla ilgili üç seçeneğe sahiptir](https://hortonworks.com/blog/orcfile-in-hdp-2-better-compression-better-performance/): NONE, ZLIB, SNAPPY. Data Factory, bu sıkıştırma biçimlerinin herhangi birine sahip ORC dosyalarını okuyabilir. Verileri okumak için meta verilerdeki sıkıştırma kodlayıcısı/kod çözücüsünü kullanır. Ancak Data Factory bir ORC dosyasına yazarken varsayılan ORC değeri olan ZLIB seçeneğini kullanır. Şu anda bu davranışı geçersiz kılma seçeneği yoktur.
 
 ### <a name="specifying-parquetformat"></a>ParquetFormat belirtme
 Parquet dosyalarını ayrıştırmak veya verileri Parquet biçiminde yazmak istiyorsanız `format` `type` özelliğini **ParquetFormat** olarak ayarlayın. typeProperties bölümünün içindeki Format bölümünde herhangi bir özellik belirtmenize gerek yoktur. Örnek:
@@ -439,4 +439,4 @@ Parquet dosyalarını ayrıştırmak veya verileri Parquet biçiminde yazmak ist
 Aşağıdaki noktalara dikkat edin:
 
 * Karmaşık veri türleri desteklenmez (MAP, LIST)
-* Parquet dosyası, sıkıştırma ile ilgili aşağıdaki seçeneklere sahiptir: NONE, SNAPPY, GZIP ve LZO. Data Factory, bu sıkıştırma biçimlerinin herhangi birine sahip ORC dosyalarını okuyabilir. Verileri okumak için meta verilerdeki sıkıştırma kodlayıcısı/kod çözücüsünü kullanır. Ancak Data Factory bir Parquet dosyasına yazarken varsayılan Parquet biçimi SNAPPY seçeneğini kullanır. Şu anda bu davranışı geçersiz kılma seçeneği yoktur.
+* Parquet dosyası sıkıştırmayla ilgili şu seçeneklere sahiptir: NONE, SNAPPY, GZIP ve LZO. Data Factory, bu sıkıştırma biçimlerinin herhangi birine sahip ORC dosyalarını okuyabilir. Verileri okumak için meta verilerdeki sıkıştırma kodlayıcısı/kod çözücüsünü kullanır. Ancak Data Factory bir Parquet dosyasına yazarken varsayılan Parquet biçimi SNAPPY seçeneğini kullanır. Şu anda bu davranışı geçersiz kılma seçeneği yoktur.

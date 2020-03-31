@@ -1,6 +1,6 @@
 ---
-title: Arşiv katmanından blob verilerini yeniden doldurma
-description: Verilere erişebilmek için bloblarınızı arşiv depolamadan yeniden doldurma.
+title: Arşiv katmanından rehydrate blob verileri
+description: Verilere erişebilmeniz için lekelerinizi arşiv depolamasından yeniden sulendirin.
 services: storage
 author: mhopkins-msft
 ms.author: mhopkins
@@ -10,68 +10,68 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: hux
 ms.openlocfilehash: 0a7012d9daa808933a51ac05862a8a9aa4cfcf77
-ms.sourcegitcommit: f15f548aaead27b76f64d73224e8f6a1a0fc2262
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/26/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77614792"
 ---
-# <a name="rehydrate-blob-data-from-the-archive-tier"></a>Arşiv katmanından blob verilerini yeniden doldurma
+# <a name="rehydrate-blob-data-from-the-archive-tier"></a>Arşiv katmanından rehydrate blob verileri
 
-Blob, arşiv erişim katmanında olduğunda çevrimdışı olarak kabul edilir ve okunamaz veya değiştirilemez. Blob meta verileri çevrimiçi ve kullanılabilir durumda kalır ve bu da blobu ve özelliklerini listelemenize olanak sağlar. Blob verilerini okuma ve değiştirme yalnızca sık erişimli veya seyrek erişimli gibi çevrimiçi katmanlarla kullanılabilir. Arşiv erişim katmanında depolanan verileri almak ve erişmek için iki seçenek vardır.
+Bir blob arşiv erişim katmanında yken çevrimdışı olarak kabul edilir ve okunamıyor veya değiştirilemez. Blob meta verileri çevrimiçi ve kullanılabilir durumda kalır ve bu da blob'u ve özelliklerini listelemenize olanak sağlar. Blob verilerini okumak ve değiştirmek yalnızca sıcak veya havalı gibi çevrimiçi katmanlarla kullanılabilir. Arşiv erişim katmanında depolanan verileri almak ve bunlara erişmek için iki seçenek vardır.
 
-1. [Arşivlenmiş bir blob 'u çevrimiçi katmana yeniden](#rehydrate-an-archived-blob-to-an-online-tier) doldurma- [BLOB katmanını ayarla](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) işlemini kullanarak katmanını değiştirerek sık veya seyrek erişimli bir arşiv blobu.
-2. [Arşivlenmiş bir blobu çevrimiçi katmana kopyalama](#copy-an-archived-blob-to-an-online-tier) - [BLOB kopyalama](https://docs.microsoft.com/rest/api/storageservices/copy-blob) işlemini kullanarak arşiv blobunun yeni bir kopyasını oluşturun. Farklı bir blob adı ve sık erişimli veya seyrek erişimli hedef katmanı belirtin.
+1. [Arşivlenmiş bir lekeyi çevrimiçi bir katmana rehydrate](#rehydrate-an-archived-blob-to-an-online-tier) - [Set Blob Tier](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) işlemini kullanarak katmanını değiştirerek arşiv lekesini sıcak veya soğumaya rehydrate.
+2. [Arşivlenmiş bir lekeyi çevrimiçi katmana kopyalayın](#copy-an-archived-blob-to-an-online-tier) - [Kopya Blob](https://docs.microsoft.com/rest/api/storageservices/copy-blob) işlemini kullanarak arşiv lekesinin yeni bir kopyasını oluşturun. Farklı bir blob adı ve sıcak veya serin bir hedef katmanı belirtin.
 
- Katmanlar hakkında daha fazla bilgi için bkz. [Azure Blob depolama: sık erişimli, seyrek erişimli ve arşiv erişim katmanları](storage-blob-storage-tiers.md).
+ Katmanlar hakkında daha fazla bilgi için [Azure Blob depolama alanına bakın: sıcak, serin ve arşiv erişim katmanları.](storage-blob-storage-tiers.md)
 
-## <a name="rehydrate-an-archived-blob-to-an-online-tier"></a>Arşivlenmiş bir Blobun çevrimiçi bir katmana yeniden doldurma
+## <a name="rehydrate-an-archived-blob-to-an-online-tier"></a>Arşivlenmiş bir lekeyi çevrimiçi katmana rehydrate
 
 [!INCLUDE [storage-blob-rehydration](../../../includes/storage-blob-rehydrate-include.md)]
 
-## <a name="copy-an-archived-blob-to-an-online-tier"></a>Arşivlenmiş bir blobu çevrimiçi katmana kopyalama
+## <a name="copy-an-archived-blob-to-an-online-tier"></a>Arşivlenmiş blobu çevrimiçi katmana kopyalama
 
-Arşiv blobundan yeniden doldurma yapmak istemiyorsanız, bir [blobu kopyalama](https://docs.microsoft.com/rest/api/storageservices/copy-blob) işlemi yapabilirsiniz. İş üzerinde çalışmanız için çevrimiçi sık erişimli veya seyrek erişimli katmanda yeni bir blob oluşturulduğunda, özgün Blobun arşiv 'de değiştirilmemiş olarak kalır. Blobu kopyalama işleminde, blob kopyanızın oluşturulmasını istediğiniz önceliği belirtmek için isteğe bağlı *x-MS-rehibulunan öncelik* özelliğini standart veya yüksek (Önizleme) olarak da ayarlayabilirsiniz.
+Arşiv lekenizi yeniden sulamak istemiyorsanız, [Bir Kopya Blob](https://docs.microsoft.com/rest/api/storageservices/copy-blob) işlemi yapmayı seçebilirsiniz. Üzerinde çalışabileceğiniz çevrimiçi sıcak veya serin katmanda yeni bir leke oluşturulurken orijinal lekeniz arşivde değiştirilmemiş olarak kalır. Copy Blob işleminde, blob kopyanızın oluşturulmasını istediğiniz önceliği belirtmek için isteğe bağlı *x-ms-rehydrate öncelikli* özelliğistandart veya Yüksek (önizleme) olarak da ayarlayabilirsiniz.
 
-Arşiv blob 'ları yalnızca aynı depolama hesabı içindeki çevrimiçi hedef katmanlara kopyalanabilir. Bir arşiv blobunun başka bir arşiv blobuna kopyalanması desteklenmez.
+Arşiv lekeleri yalnızca aynı depolama hesabı içindeki çevrimiçi hedef katmanlara kopyalanabilir. Bir arşiv blob'unu başka bir arşiv blob'una kopyalamak desteklenmez.
 
-Bir Blobun arşivden kopyalanması, seçili olan yeniden doldurma önceliğine bağlı olarak tamamlanması saatler sürebilir. Arka planda **kopyalama blobu** işlemi, seçili hedef katmanda yeni bir çevrimiçi blob oluşturmak için Arşiv kaynak blobunu okur. Blob 'ları listelediğinizde yeni blob görünebilir, ancak kaynak arşiv blobundan okuma tamamlanana ve veriler yeni çevrimiçi hedef bloba yazıldıktan sonra veriler kullanılamaz. Yeni blob bağımsız bir kopya olarak ve üzerinde yapılan herhangi bir değişiklik veya silme, kaynak Arşivi blob 'unu etkilemez.
+Arşivden bir leke kopyalama seçilen rehydrate önceliğine bağlı olarak tamamlanması saatler sürebilir. Arka planda, **Copy Blob** işlemi, seçili hedef katmanda yeni bir çevrimiçi blob oluşturmak için arşiv kaynağı nızı okur. Yeni blob, lekeleri listelediğinizde görünür olabilir, ancak kaynak arşiv blob'dan okunan ve veriler yeni çevrimiçi hedef blob'a yazılana kadar veriler kullanılamaz. Yeni blob bağımsız bir kopya olarak ve herhangi bir değişiklik veya silme kaynak arşiv blob etkilemez.
 
 ## <a name="pricing-and-billing"></a>Fiyatlandırma ve Faturalama
 
-Blob 'ların arşiv dışına, sık veya seyrek erişimli katmanlara yeniden doldurma işlemi, okuma işlemleri ve veri alımı olarak ücretlendirilir. Yüksek öncelikli (Önizleme) kullanımı, standart önceliğe kıyasla daha yüksek işlem ve veri alımı maliyetlerine sahiptir. Yüksek öncelikli yeniden doldurma işlemi faturanızda ayrı bir satır öğesi olarak gösterilir. Birkaç gigabaytlık bir arşiv blobu döndürmek için yüksek öncelikli bir istek 5 saatten fazla sürerse, yüksek öncelikli alma ücreti üzerinden ücretlendirilmezsiniz. Ancak, yeniden doldurma diğer isteklere göre önceliklendirildiğinden standart alma ücretleri yine de geçerlidir.
+Arşivdeki lekeleri sıcak veya serin katmanlara rehydrating okuma işlemleri ve veri alma olarak ücretlendirilir. Yüksek öncelikli (önizleme) kullanmak, standart önceliğe kıyasla daha yüksek işlem ve veri alma maliyetlerine sahiptir. Yüksek öncelikli rehidrasyon faturanızda ayrı bir satır öğesi olarak ortaya çıkar. Birkaç gigabaytlık arşiv blob'u iade etmek için yüksek öncelikli bir istek 5 saatten fazla sürerse, yüksek öncelikli alma oranı ücretlendirilmez. Ancak, rehidrasyon diğer isteklere göre öncelik olarak standart alma oranları hala geçerlidir.
 
-Blobların arşivden sık veya seyrek erişimli katmanlara kopyalanması, okuma işlemleri ve veri alımı olarak ücretlendirilir. Yeni blob kopyasının oluşturulması için bir yazma işlemi ücretlendirilir. Kaynak blobu arşiv katmanında değiştirilmemiş olarak kaldığı için, erken silme ücretleri bir çevrimiçi bloba kopyalanırken uygulanmaz. Seçilirse, yüksek öncelikli alma ücretleri uygulanır.
+Arşivdeki lekelerin arşivden sıcak veya serin katmanlara kopyalanması okuma işlemleri ve veri alma olarak ücretlendirilir. Yeni blob kopyasının oluşturulması için bir yazma işlemi ücretlendirilir. Kaynak blob arşiv katmanında değiştirilmemiş kalır, çünkü bir çevrimiçi blob kopyaladığınızda erken silme ücretleri geçerli değildir. Seçilirse yüksek öncelikli alma ücretleri uygulanır.
 
-Arşiv katmanındaki Bloblar en az 180 gün önce depolanmalıdır. Arşivlenmiş blob 'ları 180 günden önce silmek veya yeniden doldurma işlemi erken silme ücretleri oluşturacak.
+Arşiv katmanındaki lekeler en az 180 gün saklanmalıdır. Arşivlenmiş lekelerin 180 günden önce silinmesi veya yeniden sulanması erken silme ücretlerine neden olur.
 
 > [!NOTE]
-> Blok Blobları ve veri yeniden doldurma fiyatlandırması hakkında daha fazla bilgi için bkz. [Azure Storage fiyatlandırması](https://azure.microsoft.com/pricing/details/storage/blobs/). Giden veri aktarımı ücretleri hakkında daha fazla bilgi için bkz. [veri aktarımları fiyatlandırma ayrıntıları](https://azure.microsoft.com/pricing/details/data-transfers/).
+> Blok blob'ları ve veri yeniden hidrasyonu için fiyatlandırma hakkında daha fazla bilgi için Azure [Depolama Fiyatlandırması'na](https://azure.microsoft.com/pricing/details/storage/blobs/)bakın. Giden veri aktarım ücretleri hakkında daha fazla bilgi için veri [aktarımları Fiyatlandırma Ayrıntıları'na](https://azure.microsoft.com/pricing/details/data-transfers/)bakın.
 
 ## <a name="quickstart-scenarios"></a>Hızlı Başlangıç senaryoları
 
-### <a name="rehydrate-an-archive-blob-to-an-online-tier"></a>Bir arşiv blobunu çevrimiçi katmana yeniden doldurma
+### <a name="rehydrate-an-archive-blob-to-an-online-tier"></a>Bir arşiv lekesini çevrimiçi katmana rehydrate
 # <a name="portal"></a>[Portal](#tab/azure-portal)
-1. [Azure Portal](https://portal.azure.com) oturum açın.
+1. [Azure portalında](https://portal.azure.com)oturum açın.
 
-1. Azure portal, **tüm kaynakları**arayıp seçin.
+1. Azure portalında **Tüm Kaynakları**arayın ve seçin.
 
 1. Depolama hesabınızı seçin.
 
-1. Kapsayıcınızı seçin ve ardından blobu seçin.
+1. Kabınızı seçin ve sonra blob seçin.
 
-1. **BLOB özellikleri**' nde **Katmanı Değiştir**' i seçin.
+1. **Blob özelliklerinde,** **katmanı değiştir'i**seçin.
 
-1. **Sık** veya **seyrek erişimli erişim** katmanını seçin. 
+1. **Sıcak** veya **Cool** erişim katmanını seçin. 
 
-1. **Standart** veya **yüksek**bir yeniden doldurma önceliği seçin.
+1. **Standart** veya **Yüksek**Bir Rehydrate Önceliği seçin.
 
-1. Alt kısımdaki **Kaydet** ' i seçin.
+1. Alttaki **Kaydet'i** seçin.
 
 ![Depolama hesabı katmanını değiştirme](media/storage-tiers/blob-access-tier.png)
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-Bir arşiv Blobun blob katmanını değiştirmek için aşağıdaki PowerShell betiği kullanılabilir. `$rgName` değişkeni, kaynak grubu adınızla başlatılmalıdır. `$accountName` değişkeni, depolama hesabı adınızla başlatılmalıdır. `$containerName` değişkeni, kapsayıcı adınızla başlatılmalıdır. `$blobName` değişkeni, blob adınızla başlatılmalıdır. 
+Aşağıdaki PowerShell komut dosyası, bir arşiv blob'unun blob katmanını değiştirmek için kullanılabilir. Değişken, `$rgName` kaynak grup adınız ile başharfe alınmalıdır. Değişken, `$accountName` depolama hesabı adınız ile başharfe bürünmelidir. Değişken, `$containerName` kapsayıcı adınız ile başharfe alınmalıdır. Değişken, `$blobName` blob adınız ile başharfe alınmalıdır. 
 ```powershell
 #Initialize the following with your resource group, storage account, container, and blob names
 $rgName = ""
@@ -91,8 +91,8 @@ $blob.ICloudBlob.SetStandardBlobTier("Hot", “Standard”)
 ```
 ---
 
-### <a name="copy-an-archive-blob-to-a-new-blob-with-an-online-tier"></a>Bir arşiv blobunu çevrimiçi bir katman ile yeni bir bloba kopyalama
-Aşağıdaki PowerShell betiği, aynı depolama hesabı içindeki yeni bir bloba arşiv blobu kopyalamak için kullanılabilir. `$rgName` değişkeni, kaynak grubu adınızla başlatılmalıdır. `$accountName` değişkeni, depolama hesabı adınızla başlatılmalıdır. `$srcContainerName` ve `$destContainerName` değişkenleri kapsayıcı adlarınızla başlatılmalıdır. `$srcBlobName` ve `$destBlobName` değişkenleri blob adlarınızla başlatılmalıdır. 
+### <a name="copy-an-archive-blob-to-a-new-blob-with-an-online-tier"></a>Çevrimiçi katmanla yeni bir blob'a arşiv blob'u kopyalama
+Aşağıdaki PowerShell komut dosyası, aynı depolama hesabı içindeki yeni bir blob'a arşiv blob'u kopyalamak için kullanılabilir. Değişken, `$rgName` kaynak grup adınız ile başharfe alınmalıdır. Değişken, `$accountName` depolama hesabı adınız ile başharfe bürünmelidir. Ve `$srcContainerName` `$destContainerName` değişkenler kapsayıcı adlarınızla başharfe bilmelidir. Ve `$srcBlobName` `$destBlobName` değişkenler blob adlarınızla başharfe alınmalıdır. 
 ```powershell
 #Initialize the following with your resource group, storage account, container, and blob names
 $rgName = ""
@@ -112,7 +112,7 @@ Start-AzStorageBlobCopy -SrcContainer $srcContainerName -SrcBlob $srcBlobName -D
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 
-* [BLOB depolama katmanları hakkında bilgi edinin](storage-blob-storage-tiers.md)
+* [Blob Depolama Katmanları hakkında bilgi edinin](storage-blob-storage-tiers.md)
 * [Blob depolama ve GPv2 hesaplarında bölgeye göre sık erişimli, seyrek erişimli ve arşiv fiyatlarını denetleme](https://azure.microsoft.com/pricing/details/storage/)
 * [Azure Blob depolama yaşam döngüsünü yönetme](storage-lifecycle-management-concepts.md)
 * [Veri aktarımı fiyatlandırmasını denetleme](https://azure.microsoft.com/pricing/details/data-transfers/)

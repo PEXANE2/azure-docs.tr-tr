@@ -1,6 +1,6 @@
 ---
-title: Azure Izleyici çalışma kitabı açılan parametreleri
-description: Açılan parametreleri içeren önceden oluşturulmuş ve özel parametreli çalışma kitapları ile karmaşık raporlamayı kolaylaştırın
+title: Azure Monitor Çalışma Kitabı açılır parametreleri
+description: Açılır parametreiçeren önceden oluşturulmuş ve özel parametreli çalışma kitaplarıyla karmaşık raporlamayı basitleştirin
 services: azure-monitor
 author: mrbullwinkle
 manager: carmonm
@@ -10,30 +10,30 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
 ms.openlocfilehash: f3220a363025d80fd7636dbfc3af3d2d9d7bc040
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77658294"
 ---
-# <a name="workbook-drop-down-parameters"></a>Çalışma kitabı açılan parametreleri
+# <a name="workbook-drop-down-parameters"></a>Çalışma kitabı açılır parametreleri
 
-Bırakma listeleri, kullanıcının bilinen kümeden bir veya daha fazla giriş değeri toplamasına izin verir (örneğin, uygulamanızın isteklerinden birini seçin). Bırakma listeleri, kullanıcılardan rastgele girişler toplamanın kolay bir yolunu sağlar. Açılan liste, özellikle etkileşimli raporlarınızda filtrelemeyi etkinleştirmek için yararlıdır. 
+Açılan düşüşler, kullanıcının bilinen bir kümeden bir veya daha fazla giriş değeri toplamasına olanak sağlar (örneğin, uygulamanızın isteklerinden birini seçin). Açılan çıkışlar, kullanıcılardan rasgele girdiler toplamak için kullanıcı dostu bir yol sağlar. Açılan düşüşler, özellikle etkileşimli raporlarınızda filtreleme yi etkinleştirmede yararlıdır. 
 
-Açılan bir liste belirtmek için en kolay yol, parametre ayarında bir statik liste sağlamaktır. Daha ilgi çekici bir yol, listeyi bir KQL sorgusu aracılığıyla dinamik olarak kullanmaktır. Parametre ayarları aynı zamanda tek veya çoklu seçim olduğunu belirtmenize olanak tanır ve çoklu seçim ise, sonuç kümesinin nasıl biçimlendirilmesi gerektiğini (sınırlayıcı, teklif, vb.) belirtebilirsiniz.
+Açılır bırakma yı belirtmenin en kolay yolu, parametre ayarında statik bir liste sağlamaktır. Daha ilginç bir yolu bir KQL sorgusu ile dinamik olarak liste almaktır. Parametre ayarları, tek veya çok seçimli olup olmadığını ve çok seçmeli olup olmadığını, sonuç kümesinin nasıl biçimlendirilmesi gerektiğini (delimiter, tırnak, vb.) belirtmenize de olanak tanır.
 
-## <a name="creating-a-static-drop-down-parameter"></a>Statik açılan parametre oluşturma
+## <a name="creating-a-static-drop-down-parameter"></a>Statik açılır parametre oluşturma
 
-1. Düzenleme modunda boş bir çalışma kitabıyla başlayın.
-2. Çalışma kitabı içindeki bağlantılardan _parametre Ekle_ ' yi seçin.
-3. Mavi _parametre Ekle_ düğmesine tıklayın.
-4. Açılır yeni parametre bölmesinde şunu girin:
-    1. Parametre adı: `Environment`
-    2. Parametre türü: `Drop down`
-    3. Gerekli: `checked`
-    4. `multiple selection`izin ver: `unchecked`
-    5. Veri al: `JSON`
-5. JSON giriş metin bloğunda şu JSON kod parçacığını ekleyin:
+1. Edit modunda boş bir çalışma kitabıyla başlayın.
+2. Çalışma kitabındaki bağlantılardan _parametre ekle'yi_ seçin.
+3. Mavi _Parametre Ekle_ düğmesine tıklayın.
+4. Açılan yeni parametre bölmesine girin:
+    1. Parametre adı:`Environment`
+    2. Parametre türü:`Drop down`
+    3. Gerekli:`checked`
+    4. İzin `multiple selection`ver:`unchecked`
+    5. Veri alın:`JSON`
+5. JSON Giriş metin bloğuna bu json parçacığını ekleyin:
     ```json
     [
         { "value":"dev", "label":"Development" },
@@ -41,14 +41,14 @@ Açılan bir liste belirtmek için en kolay yol, parametre ayarında bir statik 
         { "value":"prod", "label":"Production", "selected":true }
     ]
     ```
-6. Mavi `Update` düğmesine basın.
-7. Parametresini oluşturmak için araç çubuğundan ' Kaydet ' seçeneğini belirleyin.
-8. Ortam parametresi, üç değere sahip bir açılan liste olacaktır.
+6. Mavi `Update` düğmeye bas.
+7. Parametreyi oluşturmak için araç çubuğundan 'Kaydet'i seçin.
+8. Çevre parametresi üç değerle açılır bir parametre olacaktır.
 
-    ![Statik bir Drown oluşturmayı gösteren resim](./media/workbook-dropdowns/dropdown-create.png)
+    ![Statik boğulmanın yaratılışını gösteren görüntü](./media/workbook-dropdowns/dropdown-create.png)
 
-## <a name="creating-a-static-dropdown-with-groups-of-items"></a>Öğe gruplarıyla statik bir açılan menü oluşturma
-Sorgu sonucu/JSON 'niz bir "Grup" alanı içeriyorsa, açılan menüde değer grupları görüntülenir. Yukarıdaki örneği izleyin, ancak bunun yerine aşağıdaki JSON kullanın:
+## <a name="creating-a-static-dropdown-with-groups-of-items"></a>Öğe gruplarıyla statik açılır bırakma oluşturma
+Sorgu sonucunuz/json'unuzun bir "grup" alanı varsa, açılır açılır değerler grupları görüntülenir. Yukarıdaki örneği izleyin, ancak bunun yerine aşağıdaki json kullanın:
 ```json
 [
     { "value":"dev", "label":"Development", "group":"Development" },
@@ -62,33 +62,33 @@ Sorgu sonucu/JSON 'niz bir "Grup" alanı içeriyorsa, açılan menüde değer gr
     ![Image showing an example of a grouped dropdown](./media/workbook-dropdowns/grouped-dropDown.png)
 
 
-## <a name="creating-a-dynamic-drop-down-parameter"></a>Dinamik açılan parametre oluşturma
-1. Düzenleme modunda boş bir çalışma kitabıyla başlayın.
-2. Çalışma kitabı içindeki bağlantılardan _parametre Ekle_ ' yi seçin.
-3. Mavi _parametre Ekle_ düğmesine tıklayın.
-4. Açılır yeni parametre bölmesinde şunu girin:
-    1. Parametre adı: `RequestName`
-    2. Parametre türü: `Drop down`
-    3. Gerekli: `checked`
-    4. `multiple selection`izin ver: `unchecked`
-    5. Veri al: `Query`
-5. JSON giriş metin bloğunda şu JSON kod parçacığını ekleyin:
+## <a name="creating-a-dynamic-drop-down-parameter"></a>Dinamik bir açılır parametre oluşturma
+1. Edit modunda boş bir çalışma kitabıyla başlayın.
+2. Çalışma kitabındaki bağlantılardan _parametre ekle'yi_ seçin.
+3. Mavi _Parametre Ekle_ düğmesine tıklayın.
+4. Açılan yeni parametre bölmesine girin:
+    1. Parametre adı:`RequestName`
+    2. Parametre türü:`Drop down`
+    3. Gerekli:`checked`
+    4. İzin `multiple selection`ver:`unchecked`
+    5. Veri alın:`Query`
+5. JSON Giriş metin bloğuna bu json parçacığını ekleyin:
 
     ```kusto
         requests
         | summarize by name
         | order by name asc
     ```
-1. Mavi `Run Query` düğmesine basın.
-2. Parametresini oluşturmak için araç çubuğundan ' Kaydet ' seçeneğini belirleyin.
-3. RequestName parametresi, uygulamadaki tüm isteklerin adlarını açılan bir liste olacaktır.
+1. Mavi `Run Query` düğmeye bas.
+2. Parametreyi oluşturmak için araç çubuğundan 'Kaydet'i seçin.
+3. RequestName parametresi, uygulamadaki tüm isteklerin adlarını açılır olacaktır.
 
-    ![Dinamik açılan bir liste oluşturmayı gösteren resim](./media/workbook-dropdowns/dropdown-dynamic.png)
+    ![Dinamik bir açılır bırakma oluşturmayı gösteren görüntü](./media/workbook-dropdowns/dropdown-dynamic.png)
 
-## <a name="referencing-drop-down-parameter"></a>Açılan parametreye başvuruluyor
-### <a name="in-kql"></a>KQL 'de
-1. Çalışma kitabına bir sorgu denetimi ekleyin ve bir Application Insights kaynağı seçin.
-2. KQL düzenleyicisinde, bu kod parçacığını girin
+## <a name="referencing-drop-down-parameter"></a>Açılan parametreye başvurma
+### <a name="in-kql"></a>KQL içinde
+1. Çalışma kitabına bir sorgu denetimi ekleyin ve bir Uygulama Öngörüleri kaynağını seçin.
+2. KQL düzenleyicisinde, bu snippet girin
 
     ```kusto
         requests
@@ -96,7 +96,7 @@ Sorgu sonucu/JSON 'niz bir "Grup" alanı içeriyorsa, açılan menüde değer gr
         | summarize Requests = count() by bin(timestamp, 1h)
 
     ```
-3. Bu, sorgu değerlendirmesi süresini şu şekilde genişletir:
+3. Bu, sorgu değerlendirme süresini şu şekilde genişletir:
 
     ```kusto
         requests
@@ -104,15 +104,15 @@ Sorgu sonucu/JSON 'niz bir "Grup" alanı içeriyorsa, açılan menüde değer gr
         | summarize Requests = count() by bin(timestamp, 1h)
     ```
 
-4. Sonuçları görmek için sorguyu çalıştırın. İsteğe bağlı olarak, bunu bir grafik olarak işleyebilirsiniz.
+4. Sonuçları görmek için sorguyu çalıştırın. İsteğe bağlı olarak, bir grafik olarak işledin.
 
-    ![KQL 'de Başvurulmuş bir açılan liste gösteren resim](./media/workbook-dropdowns/dropdown-reference.png)
+    ![KQL'de başvurulan bir açılır düşüşü gösteren resim](./media/workbook-dropdowns/dropdown-reference.png)
 
 
-## <a name="parameter-value-label-selection-and-group"></a>Parametre değeri, etiket, seçim ve Grup
-Yukarıdaki dinamik açılan parametresinde kullanılan sorgu yalnızca açılan listede faithtam işlenen değerlerin bir listesini döndürür. Ancak farklı bir görünen ad isterseniz veya bunlardan biri seçilmelidir. Açılan parametreler, değer, etiket, seçim ve grup sütunları aracılığıyla buna izin verir.
+## <a name="parameter-value-label-selection-and-group"></a>Parametre değeri, etiket, seçim ve grup
+Yukarıdaki dinamik açılır parametrede kullanılan sorgu, açılan yolda sadakatle işlenen değerlerin listesini döndürür. Ama ya farklı bir görüntü adı veya bunlardan birinin seçilmesini istiyorsanız? Düşürme parametreleri değer, etiket, seçim ve grup sütunları aracılığıyla buna izin verir.
 
-Aşağıdaki örnek, görünen adları emoji ile stillendirilmiş, seçili olan ve işlem adlarına göre gruplandırılan Application Insights bağımlılıkların bir listesinin nasıl alınacağını gösterir.
+Aşağıdaki örnekte, ekran adları bir emoji ile stile sahip, ilki seçilen ve işlem adlarına göre gruplanmış olan Uygulama Öngörüleri bağımlılıklarının bir listesini nasıl elde edilir gösterilmektedir.
 
 ```kusto
 dependencies
@@ -125,19 +125,19 @@ dependencies
     ![Image showing a drop-down parameter using value, label, selection and group options](./media/workbook-dropdowns/dropdown-more-options.png)
 
 
-## <a name="drop-down-parameter-options"></a>Açılan parametre seçenekleri
+## <a name="drop-down-parameter-options"></a>Parametre seçeneklerini aşağı bırakma
 | Parametre | Açıklama | Örnek |
 | ------------- |:-------------|:-------------|
-| `{DependencyName}` | Seçili değer | Fabrikamaccount al |
-| `{DependencyName:label}` | Seçili etiket | fabrikamaccount al 🌐 |
-| `{DependencyName:value}` | Seçili değer | Fabrikamaccount al |
+| `{DependencyName}` | Seçili değer | Fabrikamaccount AL |
+| `{DependencyName:label}` | Seçili etiket | 🌐 GET fabrikamaccount |
+| `{DependencyName:value}` | Seçili değer | Fabrikamaccount AL |
 
 ## <a name="multiple-selection"></a>Çoklu seçim
-Örnek olarak, bir parametreyi doğrudan açılan kutuda yalnızca bir değer seçmek üzere ayarlamaya yönelik örnekler. Açılan parametreler de `multiple selection` destekler; bu, `Allow multiple selection` seçeneğini denetlemek kadar basittir. 
+Şimdiye kadarki örnekler, parametreyi açılır yolda yalnızca bir değer seçecek şekilde açıkça ayarlar. Parametreleri de `multiple selection` destek açılır - bu `Allow multiple selection` seçeneği kontrol etmek kadar basittir etkinleştirme. 
 
-Kullanıcı ayrıca `delimiter` ve `quote with` ayarları aracılığıyla sonuç kümesinin biçimini belirtme seçeneğine sahiptir. Varsayılan değer Şu biçimdeki değerleri bir koleksiyon olarak döndürür: ' a ', ' b ', ' c '. Ayrıca, seçimlerin sayısını sınırlama seçeneği de vardır.
+Kullanıcı ayrıca, ve `delimiter` `quote with` ayarlar üzerinden belirlenen sonucun biçimini belirtme seçeneğine de sahiptir. Varsayılan değer, bu formdaki bir koleksiyon olarak değerleri döndürür: 'a', 'b', 'c'. Ayrıca seçim sayısını sınırlama seçeneğine de sahiptir.
 
-Parametreye başvuran KQL 'in, sonucun biçimiyle çalışacak şekilde değiştirilmesi gerekir. Etkinleştirmenin en yaygın yolu `in` işleçtir.
+Parametreye başvuran KQL'nin sonucun biçimiyle çalışmak için değişmesi gerekir. Bunu etkinleştirmek için en yaygın `in` yolu operatör aracılığıyla.
 
 ```kusto
 dependencies
@@ -145,11 +145,11 @@ dependencies
 | summarize Requests = count() by bin(timestamp, 1h), name
 ```
 
-İşte, çalışma sırasında çoklu seçim açılan bir örnek aşağıda verilmiştir:
+İşte iş yerinde çok seçimli açılır bırakma için bir örnek:
 
-![Çoklu seçim açılan bir parametre gösteren resim](./media/workbook-dropdowns/dropdown-multiselect.png)
+![Çok seçimli açılır parametreyi gösteren resim](./media/workbook-dropdowns/dropdown-multiselect.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Çok sayıda zengin görselleştirmeler seçeneği hakkında daha fazla [bilgi edinmeye başlayın](workbooks-visualizations.md) .
-* Çalışma kitabı kaynaklarınıza erişimi [denetleme](workbooks-access-control.md) ve paylaşma.
+* Çalışma kitapları hakkında daha fazla bilgi [edinmeye başlayın](workbooks-visualizations.md) birçok zengin görselleştirme seçeneği.
+* Çalışma kitabı kaynaklarınıza erişimi [kontrol](workbooks-access-control.md) edin ve paylaşın.

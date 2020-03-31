@@ -63,6 +63,8 @@
           href: concepts-data-access-security-private-link.md
         - name: Gelişmiş Tehdit Koruması
           href: concepts-data-access-and-security-threat-protection.md
+        - name: Güvenlik temeli
+          href: security-baseline.md
     - name: İş sürekliliği
       items:
         - name: İş sürekliliğine giriş
@@ -138,6 +140,10 @@
           href: howto-auto-grow-storage-portal.md
         - name: Azure CLI
           href: howto-auto-grow-storage-cli.md
+    - name: Genel Ağ Erişimini engelleme
+      items:
+        - name: Azure portal
+          href: howto-deny-public-network-access.md
     - name: Sunucu günlüklerine erişme
       items:
         - name: Yavaş sorgu günlükleri

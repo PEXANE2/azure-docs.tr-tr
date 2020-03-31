@@ -1,106 +1,106 @@
 ---
-title: Azure Site Recovery ile diskleri çoğaltmadan dışlama
-description: Azure Site Recovery ile Azure 'a diskleri çoğaltmanın dışında tutma.
+title: Azure Site Kurtarma ile diskleri çoğaltmadan çıkarma
+description: Azure Site Kurtarma ile diskleri çoğaltmadan Azure'a dışlama.
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.openlocfilehash: 57bf06f0fde85714530c06cbd008db08de7460d2
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79281853"
 ---
-# <a name="exclude-disks-from-disaster-recovery"></a>Diskleri olağanüstü durumdan kurtarma dışında tut
+# <a name="exclude-disks-from-disaster-recovery"></a>Diskleri olağanüstü durum kurtarma dan hariç tutma
 
-Bu makalede, şirket içinde [Azure Site Recovery](site-recovery-overview.md)ile Azure arasında olağanüstü durum kurtarma sırasında disklerin nasıl dışlanacağını açıklar. Birçok nedenden dolayı diskleri çoğaltmadan dışlayabilirsiniz:
+Bu makalede, olağanüstü durum kurtarma sırasında disklerin şirket içi azure [site kurtarma](site-recovery-overview.md)ile Azure'a nasıl dışlanabildiğini açıklamaktadır. Diskleri birkaç nedenden dolayı çoğaltmadan çıkarabilirsiniz:
 
-- Bu nedenle, hariç tutulan disk üzerinde önemli verilerin kaldırılması çoğaltılmaz.
-- Tüketilen çoğaltma bant genişliğini veya hedef tarafı kaynakları iyileştirmek için.
-- İhtiyaç duymamakta olduğunuz verileri çoğaltmayana depolama ve ağ kaynaklarını kaydetmek için.
-- Azure VM 'Leri çoğaltma sınırlarına Site Recovery ulaştı.
+- Böylece dışlanan diskte çalkalanan önemsiz veriler çoğaltılmaz.
+- Tüketilen çoğaltma bant genişliğini veya hedef tarafındaki kaynakları en iyi duruma getirmek için.
+- İhtiyacınız olmayan verileri çoğaltmayarak depolama ve ağ kaynaklarını kaydetmek için.
+- Azure VM'ler Site Kurtarma çoğaltma sınırlarına ulaştı.
 
 
 ## <a name="supported-scenarios"></a>Desteklenen senaryolar
 
-Diskleri, tabloda özetlenen şekilde çoğaltmanın dışında bırakabilirsiniz.
+Diskleri tabloda özetlendiği gibi çoğaltmadan çıkarabilirsiniz.
 
-**Azure'dan Azure'a** | **Vmware’den Azure’a** | **Hyper-V'den Azure'a** 
+**Azure-Azure arası** | **Vmware’den Azure’a** | **Hyper-V'den Azure'a** 
 --- | --- | ---
-Evet (PowerShell kullanarak) | Yes | Yes 
+Evet (PowerShell kullanarak) | Evet | Evet 
 
-## <a name="exclude-limitations"></a>Dışlama sınırlamaları
+## <a name="exclude-limitations"></a>Sınırlamaları hariç tutma
 
-**Sınırlama** | **Azure VM 'Leri** | **VMware VM 'Leri** | **Hyper-V VM’leri**
+**Sınırlama** | **Azure VM'ler** | **VMware Sanal Makineleri** | **Hyper-V Sanal Makineleri**
 --- | --- | ---
-**Disk türleri** | Temel diskleri çoğaltmanın dışında bırakabilirsiniz.<br/><br/> İşletim sistemi disklerini veya dinamik diskleri dışlayamazsınız. Geçici diskler varsayılan olarak dışlanır. | Temel diskleri çoğaltmanın dışında bırakabilirsiniz.<br/><br/> İşletim sistemi disklerini veya dinamik diskleri dışlayamazsınız. | Temel diskleri çoğaltmanın dışında bırakabilirsiniz.<br/><br/> İşletim sistemi diskleri dışarıda tutulamaz. Dinamik diskleri dışarıda tutmamanızı öneririz. Site Recovery, Konuk VM 'de hangi VHS 'ın temel veya dinamik olduğunu tanımlayamıyor. Bağımlı dinamik birim disklerinin tümü dışlanmazsa, korumalı dinamik disk yük devretme VM 'sinde başarısız olan bir disk haline gelir ve diskteki verilere erişilemez.
-**Disk çoğaltılıyor** | Çoğaltılan bir diski dışlayamazsınız.<br/><br/> VM için çoğaltmayı devre dışı bırakıp yeniden etkinleştirin. |  Çoğaltılan bir diski dışlayamazsınız. |  Çoğaltılan bir diski dışlayamazsınız.
-**Mobility hizmeti (VMware)** | İlgili değil | Diskleri yalnızca Mobility hizmetinin yüklü olduğu VM 'lerde hariç bırakabilirsiniz.<br/><br/> Bu, Mobility hizmetini diskleri dışlamak istediğiniz VM 'Lere el ile yüklemek zorunda olduğunuz anlamına gelir. İtme yükleme mekanizmasını, yalnızca çoğaltma etkinleştirildikten sonra Mobility hizmetini yüklediği için kullanamazsınız. | İlgili değil.
-**Ekle/Kaldır** | Yönetilen diskler ile Azure VM 'lerinde disk ekleyebilir ve kaldırabilirsiniz. | Çoğaltma etkinleştirildikten sonra disk ekleyemez veya kaldıramazsınız. Diski eklemek için çoğaltmayı devre dışı bırakıp yeniden etkinleştirin. | Çoğaltma etkinleştirildikten sonra disk ekleyemez veya kaldıramazsınız. Çoğaltmayı devre dışı bırakıp yeniden etkinleştirin.
-**Yük devretme** | Uygulamanın dışlandığı bir diske ihtiyacı varsa, yük devretmeden sonra, çoğaltılan uygulamanın çalışabilmesi için diski el ile oluşturmanız gerekir.<br/><br/> Alternatif olarak, Azure Otomasyonu 'nu bir kurtarma planına tümleştirerek VM yük devretmesi sırasında diski oluşturabilirsiniz. | Bir uygulamanın ihtiyacı olan bir diski hariç tutdıysanız, yük devretmeden sonra Azure 'da el ile oluşturun. | Bir uygulamanın ihtiyacı olan bir diski hariç tutdıysanız, yük devretmeden sonra Azure 'da el ile oluşturun.
-**Şirket içi yeniden çalışma-el ile oluşturulan diskler** | İlgili değil | **Windows VM 'leri**: Azure 'da el ile oluşturulan diskler yeniden başarısız oldu. Örneğin, üç disk üzerinde yük devretmek ve doğrudan bir Azure VM üzerinde iki disk oluşturursanız, yalnızca yük devredilen üç disk yeniden başarısız olur.<br/><br/> **Linux VM 'leri**: Azure 'da el ile oluşturulan diskler yeniden başarısız oldu. Örneğin, üç disk üzerinde yük devretmek ve bir Azure VM 'de iki disk oluşturursanız, tüm beş yeniden başarısız olur. El ile oluşturulmuş diskleri, yeniden çalışmanın dışında tutamazsınız. | Azure 'da el ile oluşturulan diskler yeniden başarısız oldu. Örneğin, üç disk üzerinde yük devretmek ve doğrudan bir Azure VM üzerinde iki disk oluşturursanız, yük devredilen yalnızca üç disk yeniden başarısız olur.
-**Şirket içi yeniden çalışma-dışlanan diskler** | İlgili değil | Özgün makineye geri döndüğünüzde, yeniden çalışma VM disk yapılandırması dışlanan diskleri içermez. VMware 'den Azure 'a çoğaltmaya dışlanan diskler yeniden çalışma VM 'sinde kullanılamaz. | Yeniden çalışma özgün Hyper-V konumuna olduğunda, yeniden çalışma VM disk yapılandırması orijinal kaynak VM diskiyle aynı kalır. Hyper-V sitesinden Azure 'a çoğaltmaya dışlanan diskler yeniden çalışma VM 'sinde bulunabilir.
+**Disk türleri** | Temel diskleri çoğaltmadan hariç tutabilirsiniz.<br/><br/> İşletim sistemi disklerini veya dinamik diskleri hariç tutamazsınız. Geçici diskler varsayılan olarak dışlanır. | Temel diskleri çoğaltmadan hariç tutabilirsiniz.<br/><br/> İşletim sistemi disklerini veya dinamik diskleri hariç tutamazsınız. | Temel diskleri çoğaltmadan hariç tutabilirsiniz.<br/><br/> İşletim sistemi diskleri dışarıda tutulamaz. Dinamik diskleri dışarıda tutmamanızı öneririz. Site Kurtarma, konuk VM'de hangi VHS'nin temel veya dinamik olduğunu belirleyemez. Tüm bağımlı dinamik birim diskler dışlanmazsa, korumalı dinamik disk başarısız bir VM üzerinde başarısız bir disk olur ve bu diskteki verilere erişilemez.
+**Diski çoğaltma** | Çoğalan bir diski dışlayamazsınız.<br/><br/> VM için devre dışı ve yeniden etkinleştirilebilir çoğaltma. |  Çoğalan bir diski dışlayamazsınız. |  Çoğalan bir diski dışlayamazsınız.
+**Mobilite hizmeti (VMware)** | İlgili değil | Diskleri yalnızca Mobilite hizmeti yüklü olan VM'lerde hariç tutabilirsiniz.<br/><br/> Bu, diskleri hariç tutmak istediğiniz VM'lere Mobilite hizmetini el ile yüklemeniz gerektiği anlamına gelir. Mobilite hizmetini yalnızca çoğaltma etkinleştirildikten sonra yüklediği için itme yükleme mekanizmasını kullanamazsınız. | Konuyla ilgisi yok.
+**Ekle/Kaldır** | Yönetilen disklerle Azure VM'lerine disk ekleyebilir ve kaldırabilirsiniz. | Çoğaltma etkinleştirildikten sonra disk ekleyip kaldıramam. Devre dışı ve sonra bir disk eklemek için çoğaltma yeniden etkinleştirin. | Çoğaltma etkinleştirildikten sonra disk ekleyip kaldıramam. Devre dışı ve sonra çoğaltma yı etkinleştirin.
+**Başarısızlık** | Bir uygulamanın dışladığınız bir diske ihtiyacı varsa, başarısız olduktan sonra, çoğaltılan uygulamanın çalıştırabilmesi için diski el ile oluşturmanız gerekir.<br/><br/> Alternatif olarak, Azure otomasyonu bir kurtarma planına entegre ederek VM başarısız olduğu sırada diski oluşturabilirsiniz. | Bir uygulamanın ihtiyaç duyduğu bir diski dışlarsanız, başarısız olduktan sonra diski Azure'da el ile oluşturun. | Bir uygulamanın ihtiyaç duyduğu bir diski dışlarsanız, başarısız olduktan sonra diski Azure'da el ile oluşturun.
+**El ile oluşturulan şirket içi geri dönüş diskleri** | İlgili değil | **Windows VM'ler**: Azure'da el ile oluşturulan diskler geri başarısız olmaz. Örneğin, üç disk üzerinde başarısız olur ve doğrudan bir Azure VM üzerinde iki disk oluşturursanız, yalnızca üzerinde başarısız olan üç disk geri başarısız olur.<br/><br/> **Linux VM'leri**: Azure'da el ile oluşturulan diskler geri başarısız oldu. Örneğin, üç disküzerinde başarısız olur ve bir Azure VM'de iki disk oluşturursanız, beşi de başarısız olur. El ile oluşturulmuş diskleri, yeniden çalışmanın dışında tutamazsınız. | Azure'da el ile oluşturulan diskler geri başarısız olmaz. Örneğin, üç disk üzerinde başarısız olur ve doğrudan bir Azure VM üzerinde iki disk oluşturursanız, yalnızca üzerinde başarısız olan üç disk geri başarısız olur.
+**Şirket içi failback-Dışlanmış diskler** | İlgili değil | Orijinal makineye geri dönmezseniz, başarısız VM disk yapılandırması dışlanan diskleri içermez. VMware'den Azure çoğaltmasına hariç tutulmuş diskler, geri dönüşlü VM'de kullanılamaz. | Failback orijinal Hyper-V konumuna geldiğinde, failback VM disk yapılandırması orijinal kaynak VM diskile aynı kalır. Hyper-V sitesinden Azure çoğaltmasına kadar dışlanan diskler geri dönüş VM'de kullanılabilir.
 
 
 
 ## <a name="typical-scenarios"></a>Tipik senaryolar
 
-Dışlama için harika aday olan veri değişim örnekleri, bir sayfalama dosyasına (pagefile. sys) yazma ve Microsoft SQL Server tempdb dosyasına yazma işlemleri içerir. İş yüküne ve depolama alt sistemine bağlı olarak, disk belleği ve tempdb dosyaları önemli miktarda dalgalanma kaydedebilir. Bu tür verilerin Azure 'a çoğaltılması Kaynak yoğunluklu bir işlemdir.
+Dışlama için harika adaylar olan veri karmaşasına örnek olarak bir sayfalama dosyasına (pagefile.sys) yazar ve Microsoft SQL Server'ın tempdb dosyasına yazar. İş yüküne ve depolama alt sistemine bağlı olarak, sayfalama ve tempdb dosyaları önemli miktarda karmaşa kaydedebilir. Bu tür verileri Azure'a çoğaltmak kaynak yoğundur.
 
-- Hem işletim sistemini hem de disk belleği dosyasını içeren tek bir sanal diskle bir VM için çoğaltmayı iyileştirmek üzere şunları yapabilirsiniz:
+- Hem işletim sistemini hem de sayfalama dosyasını içeren tek bir sanal diske sahip bir VM için çoğaltmayı en iyi duruma getirmek için şunları
     1. Tek sanal diski iki sanal diske bölün. Bir sanal diskte işletim sistemi ve diğerinde disk belleği dosyası vardır.
     2. Disk belleği dosyasını çoğaltmanın dışında tutun.
 
-- Microsoft SQL Server tempdb dosyasını ve sistem veritabanı dosyasını içeren bir disk için çoğaltmayı iyileştirmek üzere şunları yapabilirsiniz:
+- Hem Microsoft SQL Server tempdb dosyasını hem de sistem veritabanı dosyasını içeren bir disk için çoğaltmayı en iyi duruma getirmek için şunları
     1. Sistem veritabanını ve tempdb dosyasını iki farklı diskte tutabilirsiniz.
     2. Tempdb diskini çoğaltmanın dışında tutabilirsiniz.
 
 ## <a name="example-1-exclude-the-sql-server-tempdb-disk"></a>Örnek 1: SQL Server tempdb diskini dışlama
 
-Tempdb 'yi dışlamak istediğimiz bir kaynak SQL Server Windows VM-* * SalesDB * * * için disk dışlama, yük devretme ve yük devretmeyi nasıl işleyeceğinizi inceleyelim. 
+Tempdb'yi hariç tutmak istediğimiz bir kaynak SQL Server Windows VM - **SalesDB***, disk dışlama, başarısızlık ve başarısızlığı nasıl ele alabileceğimize bakalım. 
 
 ### <a name="exclude-disks-from-replication"></a>Diskleri çoğaltmanın dışında tutma
 
-Bu disklere, kaynak Windows VM SalesDB 'de ihtiyacımız var.
+Biz kaynak Windows VM SalesDB bu diskler var.
 
-**Disk adı** | **Konuk işletim sistemi diski** | **Sürücü harfi** | **Disk veri türü**
+**Disk adı** | **Konuk Işletim Sistemi diski** | **Sürücü harfi** | **Disk veri türü**
 --- | --- | --- | ---
 DB-Disk0-OS | Disk0 | C:\ | İşletim sistemi diski.
 DB-Disk1| Disk1 | D:\ | SQL sistem veritabanı ve Kullanıcı Veritabanı1.
 DB-Disk2 (Disk, korumanın dışında tutuldu) | Disk2 | E:\ | Geçici dosyalar.
-DB-Disk3 (Disk, korumanın dışında tutuldu) | Disk3 | F:\ | SQL tempdb veritabanı.<br/><br/> Klasör yolu-F:\MSSQL\Data\. Yük devretmeden önce klasör yolunu bir yere göz önüne alın.
+DB-Disk3 (Disk, korumanın dışında tutuldu) | Disk3 | F:\ | SQL tempdb veritabanı.<br/><br/> Klasör yolu - F:\MSSQL\Data\. Başarısız olmadan önce klasör yolunu not edin.
 DB-Disk4 | Disk4 |G:\ | Kullanıcı Veritabanı2
 
-1. SalesDB VM için çoğaltmayı etkinleştirdik.
-2. Bu disklerdeki veri dalgalanması geçici olduğundan, disk2 ve disk3 çoğaltma işleminden hariç tutuyoruz. 
+1. SalesDB VM için çoğaltmayı etkinleştiriyoruz.
+2. Bu disklerde veri karmaşası geçici olduğundan Disk2 ve Disk3'ün çoğaltmadan hariç tutmaz. 
 
 
-### <a name="handle-disks-during-failover"></a>Yük devretme sırasında diskleri işleme
+### <a name="handle-disks-during-failover"></a>Arıza sırasında diskleri işleme
 
-Diskler çoğaltılmadığından Azure 'a yük devretmek için bu diskler, yük devretmeden sonra oluşturulan Azure VM 'de mevcut değildir. Azure VM 'nin bu tabloda özetlenen diskleri vardır.
+Diskler çoğaltılmdığından, Azure'da başarısız olduğunuzda bu diskler, başarısız olduktan sonra oluşturulan Azure VM'de bulunmaz. Azure VM bu tabloda özetlenmiş disklere sahiptir.
 
-**Konuk işletim sistemi diski** | **Sürücü harfi** | **Disk veri türü**
+**Konuk Işletim Sistemi diski** | **Sürücü harfi** | **Disk veri türü**
 --- | --- | ---
 Disk0 | C:\ | İşletim sistemi diski.
-Disk1 | E:\ | Geçici depolama<br/><br/>Azure bu diski ekler. Disk2 ve disk3, çoğaltmadan dışlandığından, E: kullanılabilir listedeki ilk sürücü harftir. Azure, geçici depolama birimine E: harfini atar. Çoğaltılan disklerin diğer sürücü harfleri aynı kalır.
+Disk1 | E:\ | Geçici depolama<br/><br/>Azure bu diski ekler. Disk2 ve Disk3 çoğaltma dışında bırakıldı, E: kullanılabilir listeden ilk sürücü harfidir. Azure, geçici depolama birimine E: harfini atar. Çoğaltılan diskler için diğer sürücü harfleri aynı kalır.
 Disk2 | D:\ | SQL sistem veritabanı ve Kullanıcı Veritabanı1
 Disk3 | G:\ | Kullanıcı Veritabanı2
 
-Bizim örneğimizde, SQL tempdb diski disk3 'dan dışlanmıştır ve Azure VM 'de mevcut olmadığından, SQL hizmeti durdurulmuş durumda ve F:\MSSQL\Data yoluna ihtiyaç duyuyor. Bu yolu birkaç yolla oluşturabilirsiniz: 
+Örneğimizde, SQL tempdb diski Disk3 çoğaltma dışında bırakıldı ve Azure VM'de kullanılamadığıiçin, SQL hizmeti durmuş durumda ve F:\MSSQL\Data yoluna ihtiyaç duyuyor. Bu yolu birkaç şekilde oluşturabilirsiniz: 
 
-- Yük devretmeden sonra yeni bir disk ekleyin ve tempdb klasör yolunu atayın.
+- Başarısız olduktan sonra yeni bir disk ekleyin ve tempdb klasör yolunu atayın.
 - tempdb klasör yolu için var olan geçici bir depolama diski kullanın.
 
-#### <a name="add-a-new-disk-after-failover"></a>Yük devretmeden sonra yeni bir disk Ekle
+#### <a name="add-a-new-disk-after-failover"></a>Başarısız olduktan sonra yeni bir disk ekleme
 
 1. Yük devretme öncesinde SQL tempdb.mdf ve tempdb.ldf yollarını yazın.
-2. Azure portal, yük devretme Azure VM 'sine yeni bir disk ekleyin. Disk, kaynak SQL tempdb diskiyle (disk3) aynı boyutta (veya daha büyük) olmalıdır.
-3. Azure VM 'de oturum açın.
+2. Azure portalından, azure vm üzerinde başarısız yeni bir disk ekleyin. Disk, kaynak SQL tempdb disk (Disk3) ile aynı boyutta (veya daha büyük) olmalıdır.
+3. Azure VM'de oturum açın.
 4. Disk yönetimi (diskmgmt.msc) konsolundan yeni eklenen diski başlatıp biçimlendirin.
-5. SQL tempdb diski tarafından kullanılan aynı sürücü harfini ata (F:)
+5. SQL tempdb disk (F:) tarafından kullanılan aynı sürücü harfiatama
 6. F: biriminde bir tempdb klasörü (F:\MSSQL\Data) oluşturun.
 7. Hizmet konsolundan SQL hizmetini başlatın.
 
-#### <a name="use-an-existing-temporary-storage-disk"></a>Var olan geçici depolama diskini kullan 
+#### <a name="use-an-existing-temporary-storage-disk"></a>Varolan geçici depolama diskini kullanma 
 
 1. Bir komut istemi açın.
 2. Komut isteminden kurtarma modunda SQL Server çalıştırın.
@@ -129,50 +129,50 @@ Bizim örneğimizde, SQL tempdb diski disk3 'dan dışlanmıştır ve Azure VM '
 
 
 
-### <a name="vmware-vms-disks-during-failback-to-original-location"></a>VMware VM 'Leri: özgün konuma yeniden çalışma sırasında diskler
+### <a name="vmware-vms-disks-during-failback-to-original-location"></a>VMware VM'ler: Orijinal konuma geri dönüş sırasında diskler
 
-Şimdi, özgün şirket içi konumunuza geri döndüğünüzde VMware VM 'lerinde disklerin nasıl işleneceğini görelim.
+Şimdi, orijinal şirket içi konumunuza geri döndüğünüzde VMware VM'lerde disklerin nasıl işleyeceğinize bakalım.
 
-- **Azure 'da oluşturulan diskler**: örneğimiz bir Windows sanal makinesi kullandığından, Azure 'da el ile oluşturduğunuz diskler, yeniden bağlanma veya bir VM 'yi yeniden koruma işlemleri yaptığınızda sitenize geri çoğaltılmaz.
-- **Azure 'Da geçici depolama diski**: geçici depolama diski, şirket içi konaklara geri çoğaltılmaz.
-- **Çıkarılan diskler**: VMware 'den Azure 'a çoğaltma dışında bırakılan diskler, yeniden çalışma sonrasında ŞIRKET içi VM 'de kullanılamaz.
+- **Azure'da oluşturulan diskler**: Örneğimizde Windows VM kullandığından, Azure'da el ile oluşturduğunuz diskler, geri döndüğünüzde veya bir VM'yi yeniden korusanız sitenize çoğaltılmaz.
+- **Azure'daki geçici depolama diski**: Geçici depolama diski şirket içi ana bilgisayarlara çoğaltılamaz.
+- **Dışlanan diskler**: VMware'den Azure çoğaltmasına hariç tutulmuş diskler, başarısız olduktan sonra şirket içi VM'de kullanılamaz.
 
-VMware VM 'lerini özgün konuma geri yüklemeden önce, Azure VM disk ayarları aşağıdaki gibidir.
+VMware VM'leri orijinal konuma geri getiremeden önce Azure VM disk ayarları aşağıdaki gibidir.
 
-**Konuk işletim sistemi diski** | **Sürücü harfi** | **Disk veri türü**
+**Konuk Işletim Sistemi diski** | **Sürücü harfi** | **Disk veri türü**
 --- | --- | ---
 Disk0 | C:\ | İşletim sistemi diski.
 Disk1 | E:\ | Geçici depolama.
 Disk2 | D:\ | SQL sistem veritabanı ve Kullanıcı Veritabanı1.
 Disk3 | G:\ | Kullanıcı Veritabanı2.
 
-Yeniden çalışma sonrasında, özgün konumdaki VMware VM 'si tabloda özetlenen diskler içerir.
+Başarısız olduktan sonra, orijinal konumdaki VMware VM'de tabloda özetlenen diskler bulunur.
 
-**Konuk işletim sistemi diski** | **Sürücü harfi** | **Disk veri türü**
+**Konuk Işletim Sistemi diski** | **Sürücü harfi** | **Disk veri türü**
 --- | --- | ---
 Disk0 | C:\ | İşletim sistemi diski.
 Disk1 | D:\ | SQL sistem veritabanı ve Kullanıcı Veritabanı1.
 Disk2 | G:\ | Kullanıcı Veritabanı2.
 
 
-### <a name="hyper-v-vms-disks-during-failback-to-original-location"></a>Hyper-V VM 'Leri: özgün konuma yeniden çalışma sırasında diskler
+### <a name="hyper-v-vms-disks-during-failback-to-original-location"></a>Hyper-V VM'ler: Orijinal konuma geri dönüş sırasında diskler
 
-Şimdi, orijinal şirket içi konumunuza geri döndüğünüzde Hyper-V VM 'lerinde disklerin nasıl işleneceğini görelim.
+Şimdi, orijinal şirket içi konumunuza geri döndüğünüzde Hyper-V VM'lerde disklerin nasıl işleyeceğinizüzerinde görelim.
 
-- **Azure 'da oluşturulan diskler**: Azure 'da el ile oluşturduğunuz diskler, BIR sanal makineyi yeniden uyguladığınızda veya yeniden koruduğunuzda sitenize geri çoğaltılmaz.
-- **Azure 'Da geçici depolama diski**: geçici depolama diski, şirket içi konaklara geri çoğaltılmaz.
-- **Çıkarılan diskler**: yeniden çalışma sonrasında VM disk yapılandırması, özgün VM disk yapılandırmasıyla aynıdır. Hyper-V ' d e çoğaltmadan Azure 'a çoğaltmanın dışında tutulan diskler yeniden çalışma VM 'sinde bulunabilir.
+- **Azure'da oluşturulan diskler**: Azure'da el ile oluşturduğunuz diskler, geri döndüğünüzde veya bir VM'yi yeniden korusanız sitenize çoğaltılmaz.
+- **Azure'daki geçici depolama diski**: Geçici depolama diski şirket içi ana bilgisayarlara çoğaltılamaz.
+- **Dışlanan diskler**: Başarısız olduktan sonra VM disk yapılandırması orijinal VM disk yapılandırması ile aynıdır. Hyper-V'den Azure'a çoğaltma dışında tutulmuş diskler geri dönüş VM'de kullanılabilir.
 
-Hyper-V VM 'lerini özgün konuma geri yüklemeden önce, Azure VM disk ayarları aşağıdaki gibidir.
+Hyper-V VM'leri orijinal konuma geri getiremeden önce Azure VM disk ayarları aşağıdaki gibidir.
 
-**Konuk işletim sistemi diski** | **Sürücü harfi** | **Disk veri türü**
+**Konuk Işletim Sistemi diski** | **Sürücü harfi** | **Disk veri türü**
 --- | --- | ---
 Disk0 | C:\ | İşletim sistemi diski.
 Disk1 | E:\ | Geçici depolama.
 Disk2 | D:\ | SQL sistem veritabanı ve Kullanıcı Veritabanı1.
 Disk3 | G:\ | Kullanıcı Veritabanı2.
 
-Azure 'dan şirket içi Hyper-V ' d e planlı yük devretme (yeniden çalışma) sonrasında, özgün konumdaki Hyper-V VM 'si tabloda özetlenen diskler içerir.
+Azure'dan şirket içi Hyper-V'ye planlanan başarısız (failback) sonrasında, orijinal konumdaki Hyper-V VM'de tabloda özetlenen diskler bulunur.
 
 **Disk Adı** | **Konuk işletim sistemi disk#** | **Sürücü harfi** | **Disk veri türü**
  --- | --- | --- | ---
@@ -183,76 +183,76 @@ DB-Disk3 (Dışlanan disk) | Disk3 | F:\ | SQL tempdb veritabanı<br/><br/> Klas
 DB-Disk4 | Disk4 | G:\ | Kullanıcı Veritabanı2
 
 
-## <a name="example-2-exclude-the-paging-file-disk"></a>Örnek 2: disk belleği dosyası diskini hariç tutma
+## <a name="example-2-exclude-the-paging-file-disk"></a>Örnek 2: Sayfalama dosyası diskini dışla
 
-Kaynak Windows sanal makinesi için disk dışlama, yük devretme ve yük devretme işlemlerinin nasıl yapılacağını, her iki sürücüde de pagefile. sys dosya diskini dışlamak istiyoruz ve alternatif bir sürücü sağlar.
+Hem D sürücüsünde hem de alternatif bir sürücüde pagefile.sys dosya diskini hariç tutmak istediğimiz bir kaynak Windows VM için disk dışlama, başarısızlık ve başarısızlık nasıl işleyeceğinize bakalım.
 
 
-### <a name="paging-file-on-the-d-drive"></a>D sürücüsündeki disk belleği dosyası
+### <a name="paging-file-on-the-d-drive"></a>D sürücüsünde sayfalama dosyası
 
-Kaynak VM 'de bu disklere ihtiyacımız var.
+Kaynak VM'de bu diskler var.
 
-**Disk adı** | **Konuk işletim sistemi diski** | **Sürücü harfi** | **Disk veri türü**
+**Disk adı** | **Konuk Işletim Sistemi diski** | **Sürücü harfi** | **Disk veri türü**
 --- | --- | --- | ---
 DB-Disk0-OS | Disk0 | C:\ | İşletim sistemi diski
-DB-Disk1 (çoğaltmadan hariç tut) | Disk1 | D:\ | pagefile.sys
+DB-Disk1 (Çoğaltma hariç) | Disk1 | D:\ | pagefile.sys
 DB-Disk2 | Disk2 | E:\ | Kullanıcı verileri 1
 DB-Disk3 | Disk3 | F:\ | Kullanıcı verileri 2
 
-Kaynak VM 'deki disk belleği dosyası ayarları şu şekildedir:
+Kaynak VM'deki sayfalama dosya ayarlarımız aşağıdaki gibidir:
 
 ![Kaynak sanal makinedeki disk belleği dosyası ayarları](./media/exclude-disks-replication/pagefile-d-drive-source-vm.png)
 
-1. VM için çoğaltmayı etkinleştirdik.
-2. DB-Disk1 ' i çoğaltmadan hariç tutuyoruz.
+1. VM için çoğaltmayı etkinleştiriyoruz.
+2. DB-Disk1'i çoğaltmadan hariç tutmalıyız.
 
-#### <a name="disks-after-failover"></a>Yük devretmeden sonra diskler
+#### <a name="disks-after-failover"></a>Başarısız olduktan sonra diskler
 
-Yük devretmeden sonra Azure VM, tabloda özetlenen diskler içerir.
+Azure VM'de başarısız olduktan sonra diskler tabloda özetlenmiştir.
 
 **Disk adı** | **Konuk işletim sistemi disk no.** | **Sürücü harfi** | **Diskteki veri türü**
 --- | --- | --- | ---
 DB-Disk0-OS | Disk0 | C:\ | İşletim sistemi diski
-DB-Disk1 | Disk1 | D:\ | Geçici depolama/pagefile. sys <br/><br/> Çünkü DB-Disk1 (D:) çıkarıldı, D: kullanılabilir listedeki ilk sürücü harftir.<br/><br/> Azure, geçici depolama birimine D: harfini atar.<br/><br/> D: kullanılabilir olduğundan, VM disk belleği dosyası ayarı aynı kalır.
+DB-Disk1 | Disk1 | D:\ | Geçici depolama/pagefile.sys <br/><br/> Çünkü DB-Disk1 (D:) hariç tutuldu, D: kullanılabilir listeden ilk sürücü harfidir.<br/><br/> Azure, geçici depolama birimine D: harfini atar.<br/><br/> D: kullanılabilir olduğundan, VM sayfalama dosya ayarı aynı kalır).
 DB-Disk2 | Disk2 | E:\ | Kullanıcı verileri 1
 DB-Disk3 | Disk3 | F:\ | Kullanıcı verileri 2
 
-Azure VM 'deki disk belleği dosyası ayarları şu şekildedir:
+Azure VM'deki sayfalama dosya ayarlarımız aşağıdaki gibidir:
 
 ![Azure sanal makinesindeki disk belleği dosyası ayarları](./media/exclude-disks-replication/pagefile-azure-vm-after-failover.png)
 
-### <a name="paging-file-on-another-drive-not-d"></a>Başka bir sürücüdeki disk belleği dosyası (D:)
+### <a name="paging-file-on-another-drive-not-d"></a>Başka bir sürücüde sayfalama dosyası (D değil:)
 
-Disk belleği dosyasının D sürücüsünde olmadığı örneğe bakalım.  
+Sayfalama dosyasının D sürücüsünde olmadığı örneğe bakalım.  
 
-Kaynak VM 'de bu disklere ihtiyacımız var.
+Kaynak VM'de bu diskler var.
 
-**Disk adı** | **Konuk işletim sistemi diski** | **Sürücü harfi** | **Disk veri türü**
+**Disk adı** | **Konuk Işletim Sistemi diski** | **Sürücü harfi** | **Disk veri türü**
 --- | --- | --- | ---
 DB-Disk0-OS | Disk0 | C:\ | İşletim sistemi diski
-DB-Disk1 (çoğaltmadan hariç tut) | Disk1 | G:\ | pagefile.sys
+DB-Disk1 (Çoğaltma hariç) | Disk1 | G:\ | pagefile.sys
 DB-Disk2 | Disk2 | E:\ | Kullanıcı verileri 1
 DB-Disk3 | Disk3 | F:\ | Kullanıcı verileri 2
 
-Şirket içi VM 'deki disk belleği dosyası ayarları şu şekildedir:
+Şirket içi VM'deki sayfalama dosya ayarlarımız aşağıdaki gibidir:
 
 ![Şirket içi sanal makinedeki disk belleği dosyası ayarları](./media/exclude-disks-replication/pagefile-g-drive-source-vm.png)
 
-1. VM için çoğaltmayı etkinleştirdik.
-2. DB-Disk1 ' i çoğaltmadan hariç tutuyoruz.
+1. VM için çoğaltmayı etkinleştiriyoruz.
+2. DB-Disk1'i çoğaltmadan hariç tutmalıyız.
 
-#### <a name="disks-after-failover"></a>Yük devretmeden sonra diskler
+#### <a name="disks-after-failover"></a>Başarısız olduktan sonra diskler
 
-Yük devretmeden sonra Azure VM, tabloda özetlenen diskler içerir.
+Azure VM'de başarısız olduktan sonra diskler tabloda özetlenmiştir.
 
 **Disk adı** | **Konuk işletim sistemi disk#** | **Sürücü harfi** | **Disk veri türü**
 --- | --- | --- | ---
 DB-Disk0-OS | Disk0  |C:\ | İşletim sistemi diski
-DB-Disk1 | Disk1 | D:\ | Geçici depolama<br/><br/> D: kullanılabilir sürücü harfleri listesindeki ilk harf olduğundan, Azure geçici depolama birimine D: harfini atar.<br/><br/> Tüm çoğaltılan diskler için, sürücü harfi aynı kalır.<br/><br/> G: diski kullanılamadığından, sistem disk belleği dosyası için C: sürücüsünü kullanır.
+DB-Disk1 | Disk1 | D:\ | Geçici depolama<br/><br/> D: kullanılabilir sürücü harfleri listesindeki ilk harf olduğundan, Azure geçici depolama birimine D: harfini atar.<br/><br/> Tüm çoğaltılan diskler için, sürücü harfi aynı kalır.<br/><br/> G: disk kullanılamadığından, sistem C: sürücü çağrı dosyası için kullanır.
 DB-Disk2 | Disk2 | E:\ | Kullanıcı verileri 1
 DB-Disk3 | Disk3 | F:\ | Kullanıcı verileri 2
 
-Azure VM 'deki disk belleği dosyası ayarları şu şekildedir:
+Azure VM'deki sayfalama dosya ayarlarımız aşağıdaki gibidir:
 
 ![Azure sanal makinesindeki disk belleği dosyası ayarları](./media/exclude-disks-replication/pagefile-azure-vm-after-failover-2.png)
 
@@ -260,7 +260,7 @@ Azure VM 'deki disk belleği dosyası ayarları şu şekildedir:
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Geçici depolama diski için yönergeler hakkında daha fazla bilgi edinin:
-    - SQL Server TempDB ve arabellek havuzu uzantıları depolamak için Azure VM 'lerinde SSDs kullanma [hakkında bilgi edinin](https://blogs.technet.microsoft.com/dataplatforminsider/2014/09/25/using-ssds-in-azure-vms-to-store-sql-server-tempdb-and-buffer-pool-extensions/)
-    - Azure VM 'lerinde SQL Server yönelik performans en iyi yöntemlerini [gözden geçirin](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-performance) .
+    - SQL Server TempDB ve Arabellek Havuzu Uzantılarını depolamak için Azure VM'lerinde SSD kullanma [hakkında bilgi edinin](https://blogs.technet.microsoft.com/dataplatforminsider/2014/09/25/using-ssds-in-azure-vms-to-store-sql-server-tempdb-and-buffer-pool-extensions/)
+    - Azure VM'lerde SQL Server için performans en iyi uygulamaları [gözden geçirin.](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-performance)
 - Dağıtımınız ayarlandıktan ve çalışmaya başladıktan sonra farklı türdeki yük devretmeler hakkında [daha fazla bilgi edinebilirsiniz](failover-failback-overview.md).
 

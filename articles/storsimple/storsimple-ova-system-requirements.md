@@ -1,18 +1,18 @@
 ---
-title: Microsoft Azure StorSimple Sanal dizi sistem gereksinimleri
-description: StorSimple Sanal diziniz için yazılım ve ağ gereksinimleri hakkında bilgi edinin
+title: Microsoft Azure StorBasit Sanal Dizi sistem gereksinimleri
+description: StorSimple Virtual Array'iniz için yazılım ve ağ gereksinimleri hakkında bilgi edinin
 author: alkohli
 ms.assetid: ea1d3bca-e71b-453d-aa82-440d2638f5e3
 ms.service: storsimple
 ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 38f9c432191ac613c1c0f8c02458e8bc4bf8232a
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 020208a8b67d248c02fc659d4dc48fa22d333839
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79267553"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80298817"
 ---
 # <a name="storsimple-virtual-array-system-requirements"></a>StorSimple Sanal Dizini sistem gereksinimleri
 
@@ -20,42 +20,42 @@ ms.locfileid: "79267553"
 
 ## <a name="overview"></a>Genel Bakış
 
-Bu makalede, Microsoft Azure StorSimple Sanal diziniz ve diziye erişen depolama istemcileri için önemli sistem gereksinimleri açıklanmaktadır. StorSimple sisteminizi dağıtmadan önce bilgileri dikkatlice incelemenizi ve ardından dağıtım ve sonraki işlemler sırasında gerektiği şekilde geri başvurmalarını öneririz.
+Bu makalede, Microsoft Azure StorBasit Sanal Diziniz ve diziye erişen depolama istemcileri için önemli sistem gereksinimleri açıklanmaktadır. StorSimple sisteminizi dağıtmadan önce bilgileri dikkatle gözden geçirmenizi ve dağıtım ve sonraki işlem sırasında gerekli olduğu şekilde geri başvurmanızı öneririz.
 
-Sistem gereksinimleri şunları içerir:
+Sistem gereksinimleri şunlardır:
 
-* **Depolama istemcileri Için yazılım gereksinimleri** -desteklenen sanallaştırma platformları, Web tarayıcıları, iSCSI BAŞLATıCıLARı, SMB istemcileri, minimum sanal cihaz gereksinimleri ve bu işletim sistemleri için ek gereksinimler açıklanmaktadır.
-* **StorSimple cihazı Için ağ gereksinimleri** -iSCSI, bulut veya Yönetim trafiğine izin vermek için güvenlik duvarınızdaki açık olması gereken bağlantı noktaları hakkında bilgi sağlar.
+* **Depolama istemcileri için yazılım gereksinimleri** - desteklenen sanallaştırma platformlarını, web tarayıcılarını, iSCSI başlatıcılarını, Kobİ istemcilerini, minimum sanal cihaz gereksinimlerini ve bu işletim sistemleri için ek gereksinimleri açıklar.
+* **StorSimple aygıtıiçin ağ gereksinimleri** - iSCSI, bulut veya yönetim trafiğine izin vermek için güvenlik duvarınızda açık olması gereken bağlantı noktaları hakkında bilgi sağlar.
 
-Bu makalede yayımlanan StorSimple sistem gereksinimleri bilgileri yalnızca StorSimple Sanal dizileri için geçerlidir.
+Bu makalede yayınlanan StorSimple sistem gereksinimleri bilgileri yalnızca StorSimple Virtual Arrays için geçerlidir.
 
-* 8000 serisi cihazlarda, [StorSimple 8000 serisi cihazınız Için sistem gereksinimleri](storsimple-system-requirements.md)' ne gidin.
-* 7000 serisi cihazlarda, [StorSimple 5000-7000 Serisi cihazınız Için sistem gereksinimleri](http://onlinehelp.storsimple.com/1_StorSimple_System_Requirements)' ne gidin.
+* 8000 serisi cihazlar [için StorSimple 8000 serisi cihazınız için Sistem gereksinimlerine](storsimple-system-requirements.md)gidin.
+* 7000 serisi cihazlar [için StorSimple 5000-7000 serisi cihazınız için Sistem gereksinimlerine](http://onlinehelp.storsimple.com/1_StorSimple_System_Requirements)gidin.
 
 ## <a name="software-requirements"></a>Yazılım gereksinimleri
-Yazılım gereksinimleri, desteklenen Web tarayıcıları, SMB sürümleri, sanallaştırma platformları ve en düşük sanal cihaz gereksinimleriyle ilgili bilgileri içerir.
+Yazılım gereksinimleri desteklenen web tarayıcıları, Kobİ sürümleri, sanallaştırma platformları ve minimum sanal cihaz gereksinimleri hakkında bilgi içerir.
 
 ### <a name="supported-virtualization-platforms"></a>Desteklenen sanallaştırma platformları
-| **Yöneticiye** | **Sürüm** |
+| **Hiper Yönetici** | **Sürüm** |
 | --- | --- |
-| Hyper-V |Windows Server 2008 R2 SP1 ve üzeri |
-| VMware ESXi |5,0, 5,5, 6,0 ve 6,5. |
+| Hyper-V |Windows Server 2008 R2 SP1 ve sonrası |
+| VMware ESXi |5.0, 5.5, 6.0 ve 6.5. |
 
 > [!IMPORTANT]
-> StorSimple Sanal diziniz üzerine VMware araçları yüklemeyin; Bu, desteklenmeyen bir yapılandırmaya neden olur.
+> StorSimple Virtual Array'inize VMware araçları yüklemeyin; bu, desteklenmeyen bir yapılandırmaya neden olur.
 
 ### <a name="virtual-device-requirements"></a>Sanal cihaz gereksinimleri
 | **Bileşen** | **Gereksinim** |
 | --- | --- |
-| En az sanal işlemci sayısı (çekirdek) |4 |
-| Minimum bellek (RAM) |8 GB <br> Bir dosya sunucusu için 2.000.000 ' den az dosya için 8 GB ve 2-4 milyon dosya için 16 GB|
-| Disk alanı<sup>1</sup> |İşletim sistemi diski-80 GB <br></br>Veri diski-500 GB-8 TB |
-| En az ağ arabirimi sayısı |1 |
-| Internet bant genişliği<sup>2</sup> |Minimum bant genişliği gereklidir: 5 Mbps <br> Önerilen bant genişliği: 100 Mbps <br> Veri aktarımının hızı Internet bant genişliğine göre ölçeklendirilir. Örneğin, günlük yedeklemeler gün içinde tamamlanamadığından, 100 GB veri, 5 Mbps hızında aktarım yapmak için 2 gün sürer. 100 Mbps 'lik bir bant genişliği ile 100 GB veri, 2,5 saat içinde aktarılabilir.   |
+| Minimum sanal işlemci sayısı (çekirdek) |4 |
+| Minimum bellek (RAM) |8 GB <br> Bir dosya sunucusu için, 2 milyondan az dosya için 8 GB ve 2 - 4 milyon dosya için 16 GB|
+| Disk alanı<sup>1</sup> |İşletim sistemi diski - 80 GB <br></br>Veri diski - 500 GB - 8 TB |
+| Minimum ağ arabirimi(ler) sayısı |1 |
+| İnternet bant genişliği<sup>2</sup> |Minimum bant genişliği gereklidir: 5 Mbps <br> Önerilen bant genişliği: 100 Mbps <br> Veri aktarım hızı Internet bant genişliği ile ölçekler. Örneğin, günlük yedeklemeler bir günde tamamlanmadığından, 100 GB verinin 5 Mbps hızında aktarılması 2 gün sürer ve bu da yedekleme hatalarına yol açabilir. 100 Mbps bant genişliği ile 100 GB veri 2,5 saat içinde aktarılabilir.   |
 
-<sup>1</sup> -ölçülü kaynak sağlandı
+<sup>1</sup> - İnce temin
 
-<sup>2</sup> -ağ gereksinimleri günlük veri değişim hızına bağlı olarak değişebilir. Örneğin, bir cihazın gün içinde 10 GB veya daha fazla değişikliği yedeklemesi gerekiyorsa, 5 MB/sn 'Lik bir bağlantı üzerinden günlük yedekleme 4,25 saate kadar sürebilir (veriler sıkıştırııya da çoğaltılmamışsa).
+<sup>2</sup> - Ağ gereksinimleri günlük veri değişim hızına bağlı olarak değişebilir. Örneğin, bir aygıtın bir gün içinde 10 GB veya daha fazla değişikliği yedeklemesi gerekiyorsa, 5 Mbps bağlantı üzerindeki günlük yedekleme 4,25 saate kadar sürebilir (veriler sıkıştırılamadıysa veya çoğaltılamadıysa).
 
 ### <a name="supported-web-browsers"></a>Desteklenen web tarayıcıları
 | **Bileşen** | **Sürüm** | **Ek gereksinimler/notlar** |
@@ -65,69 +65,69 @@ Yazılım gereksinimleri, desteklenen Web tarayıcıları, SMB sürümleri, sana
 | Google Chrome |En son sürüm |Chrome 46 ile test edilmiştir |
 
 ### <a name="supported-storage-clients"></a>Desteklenen depolama istemcileri
-Aşağıdaki yazılım gereksinimleri, StorSimple Sanal dizinizi (Iscsı sunucusu olarak yapılandırılmış) erişen Iscsı başlatıcılarına yöneliktir.
+Aşağıdaki yazılım gereksinimleri, StorSimple Virtual Array'inize (iSCSI sunucusu olarak yapılandırılan) erişen iSCSI başlatıcıları içindir.
 
 | **Desteklenen işletim sistemleri** | **Sürüm gerekli** | **Ek gereksinimler/notlar** |
 | --- | --- | --- |
-| Windows Server |2008R2 SP1, 2012, 2012R2 |StorSimple, ölçülü kaynak sağlanmış ve tam olarak sağlanan birimler oluşturabilir. Kısmen sağlanan birimler oluşturamaz. StorSimple Iscsı birimleri yalnızca için desteklenir: <ul><li>Windows temel disklerinde Basit birimler.</li><li>Bir birimi biçimlendirmek için Windows NTFS.</li> |
+| Windows Server |2008R2 SP1, 2012, 2012R2 |StorSimple ince ve tam olarak sağlanan hacimler oluşturabilirsiniz. Kısmen sağlanan hacimler oluşturamaz. StorSimple iSCSI birimleri yalnızca: <ul><li>Windows temel disklerde basit birimler.</li><li>Bir birimi biçimlendirmek için Windows NTFS.</li> |
 
-Aşağıdaki yazılım gereksinimleri, StorSimple Sanal dizinizi (bir dosya sunucusu olarak yapılandırılmış) erişen SMB istemcilerine yöneliktir.
+Aşağıdaki yazılım gereksinimleri, StorSimple Virtual Array'inize (dosya sunucusu olarak yapılandırılan) erişen Kobİ istemcileri içindir.
 
-| **SMB sürümü** |
+| **SMB Sürümü** |
 | --- |
-| SMB 2. x |
+| Kobİ 2.x |
 | SMB 3.0 |
-| SMB 3,02 |
+| Kobİ 3.02 |
 
 > [!IMPORTANT]
-> Windows şifreleme dosya sistemi (EFS) tarafından korunan dosyaları StorSimple Sanal dizisi dosya sunucusuna kopyalamayın veya depolamamayın; Bu, desteklenmeyen bir yapılandırmaya neden olur.
+> Windows Şifreleme Dosya Sistemi (EFS) tarafından korunan dosyaları StorSimple Virtual Array dosya sunucusuna kopyalamayın veya saklamayın; bu, desteklenmeyen bir yapılandırmaya neden olur.
 
 
 ### <a name="supported-storage-format"></a>Desteklenen depolama biçimi
-Yalnızca Azure Blok Blobu depolama desteklenir. Sayfa Blobları desteklenmez. [Blok Blobları ve sayfa Blobları hakkında](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)daha fazla bilgi.
+Yalnızca Azure bloğu blob depolama sı desteklenir. Sayfa lekeleri desteklenmez. Blok [lekeleri ve sayfa lekeleri hakkında](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)daha fazla bilgi .
 
 ## <a name="networking-requirements"></a>Ağ gereksinimleri
-Aşağıdaki tabloda Iscsı, SMB, bulut veya Yönetim trafiğine izin vermek için güvenlik duvarınızda açılması gereken bağlantı noktaları listelenmektedir. Bu tabloda, veya *gelen* *, gelen istemci* tarafından cihazınıza erişim isteğinin yönünü ifade eder. *Çıkış* veya *Çıkış* , StorSimple cihazınızın verileri dışarıdan, dağıtımın ötesinde (örneğin, Internet 'e giden) gönderdiği yönü ifade eder.
+Aşağıdaki tabloda, iSCSI, SMB, bulut veya yönetim trafiğine izin vermek için güvenlik duvarınızda açılması gereken bağlantı noktaları listelenildi. Bu tabloda, *gelen* *istemci* isteklerinin cihazınıza eriştikleri yönü ifade eder. *Giden* veya *giden,* StorSimple cihazınızın verileri dağıtımın ötesinde harici olarak gönderdiği yönü ifade eder: örneğin, Internet'e giden.
 
-| **Bağlantı noktası No.<sup>1</sup>** | **Dışarı veya dışarı** | **Bağlantı noktası kapsamı** | **Gerekli** | **Notlar** |
+| **Bağlantı Noktası No:<sup>1</sup>** | **Veya dışarıda** | **Bağlantı noktası kapsamı** | **Gerekli** | **Notlar** |
 | --- | --- | --- | --- | --- |
-| TCP 80 (HTTP) |Dışı |SW |Hayır |Giden bağlantı noktası, güncelleştirmeleri almak için Internet erişimi için kullanılır. <br></br>Giden Web proxy 'si Kullanıcı tarafından yapılandırılabilir. |
-| TCP 443 (HTTPS) |Dışı |SW |Yes |Giden bağlantı noktası, buluttaki verilere erişmek için kullanılır. <br></br>Giden Web proxy 'si Kullanıcı tarafından yapılandırılabilir. |
-| UDP 53 (DNS) |Dışı |SW |Bazı durumlarda; notlara bakın. |Bu bağlantı noktası yalnızca Internet tabanlı bir DNS sunucusu kullanıyorsanız gereklidir. <br></br> Bir dosya sunucusu dağıtıyorsanız, yerel DNS sunucusu kullanmanızı öneririz. |
-| UDP 123 (NTP) |Dışı |SW |Bazı durumlarda; notlara bakın. |Bu bağlantı noktası yalnızca Internet tabanlı bir NTP sunucusu kullanıyorsanız gereklidir.<br></br> Bir dosya sunucusu dağıtıyorsanız, Active Directory etki alanı denetleyicileriniz ile zaman eşitlemesini öneririz. |
-| TCP 80 (HTTP) |İçinde |LAN |Yes |Bu, yerel yönetim için StorSimple cihazında yerel kullanıcı arabirimine yönelik gelen bağlantı noktasıdır. <br></br> HTTP üzerinden yerel kullanıcı arabirimine erişmenin otomatik olarak HTTPS 'ye yönlendirilmesini unutmayın. |
-| TCP 443 (HTTPS) |İçinde |LAN |Yes |Bu, yerel yönetim için StorSimple cihazında yerel kullanıcı arabirimine yönelik gelen bağlantı noktasıdır. |
-| TCP 3260 (Iscsı) |İçinde |LAN |Hayır |Bu bağlantı noktası, Iscsı üzerinden verilere erişmek için kullanılır. |
+| TCP 80 (HTTP) |Out |WAN |Hayır |Giden bağlantı noktası güncelleştirmeleri almak için Internet erişimi için kullanılır. <br></br>Giden web proxy kullanıcı yapılandırılabilir. |
+| TCP 443 (HTTPS) |Out |WAN |Evet |Giden bağlantı noktası buluttaki verilere erişmek için kullanılır. <br></br>Giden web proxy kullanıcı yapılandırılabilir. |
+| UDP 53 (DNS) |Out |WAN |Bazı durumlarda; notlara bakın. |Bu bağlantı noktası yalnızca Internet tabanlı bir DNS sunucusu kullanıyorsanız gereklidir. <br></br> Bir dosya sunucusu dağıtıyorsanız, yerel DNS sunucusu kullanmanızı öneririz. |
+| UDP 123 (NTP) |Out |WAN |Bazı durumlarda; notlara bakın. |Bu bağlantı noktası yalnızca Internet tabanlı bir NTP sunucusu kullanıyorsanız gereklidir.<br></br> Bir dosya sunucusu dağıtıyorsanız, Active Directory etki alanı denetleyicilerinizle zaman eşitlemenizi öneririz. |
+| TCP 80 (HTTP) |İçindeki |LAN |Evet |Bu, yerel yönetim için StorSimple aygıtında yerel Kullanıcı Arabirimi için gelen bağlantı noktasıdır. <br></br> YEREL UI'ye HTTP üzerinden erişmenin otomatik olarak HTTPS'ye yönlendireceğini unutmayın. |
+| TCP 443 (HTTPS) |İçindeki |LAN |Evet |Bu, yerel yönetim için StorSimple aygıtında yerel Kullanıcı Arabirimi için gelen bağlantı noktasıdır. |
+| TCP 3260 (iSCSI) |İçindeki |LAN |Hayır |Bu bağlantı noktası iSCSI üzerinden verilere erişmek için kullanılır. |
 
-<sup>1</sup> genel Internet üzerinde hiçbir gelen bağlantı noktasının açık olması gerekmez.
+<sup>1</sup> Gelen bağlantı noktalarının genel Internet'te açılması gerekmez.
 
 > [!IMPORTANT]
-> Güvenlik duvarının StorSimple cihazı ve Azure arasındaki SSL trafiğini değiştirmediğinden veya şifresini çözmediğinden emin olun.
+> Güvenlik duvarının StorSimple aygıtı ile Azure arasındaki TLS trafiğini değiştirmediğinden veya şifresini çözmediğinden emin olun.
 > 
 > 
 
 ### <a name="url-patterns-for-firewall-rules"></a>Güvenlik duvarı kuralları için URL desenleri
-Ağ yöneticileri, genellikle gelen ve giden trafiği filtrelemek için URL desenlerine göre gelişmiş güvenlik duvarı kuralları yapılandırabilir. Sanal diziniz ve StorSimple Aygıt Yöneticisi hizmeti, Azure Service Bus, Azure Active Directory Access Control, depolama hesapları ve Microsoft Update sunucuları gibi diğer Microsoft uygulamalarına bağımlıdır. Bu uygulamalarla ilişkili URL desenleri güvenlik duvarı kurallarını yapılandırmak için kullanılabilir. Bu uygulamalarla ilişkili URL desenlerinin değiştirebileceğini anlamak önemlidir. Bu işlem, ağ yöneticisinin StorSimple için güvenlik duvarı kurallarını ve gerektiğinde izlemesini ve güncelleştirmesini gerektirir. 
+Ağ yöneticileri genellikle gelen ve giden trafiği filtrelemek için URL desenlerini temel alan gelişmiş güvenlik duvarı kurallarını yapılandırabilir. Sanal diziniz ve StorSimple Aygıt Yöneticisi hizmetiniz Azure Hizmet Veri Yolundaki Diğer Microsoft uygulamalarına, Azure Active Directory Access Control,depolama hesapları ve Microsoft Update sunucularına bağlıdır. Bu uygulamalarla ilişkili URL desenleri güvenlik duvarı kurallarını yapılandırmak için kullanılabilir. Bu uygulamalarla ilişkili URL desenlerinin değişebileceğini anlamak önemlidir. Bu da ağ yöneticisinin StorSimple'ınız için güvenlik duvarı kurallarını gerektiği gibi ve gerektiğinde izlemesi ve güncelleştirmesini gerektirir. 
 
-Çoğu durumda, StorSimple sabit IP adreslerine bağlı olarak, giden trafik için güvenlik duvarı kurallarınızı ayarlamanızı öneririz. Bununla birlikte, güvenli ortamlar oluşturmak için gerekli olan gelişmiş güvenlik duvarı kurallarını ayarlamak için aşağıdaki bilgileri kullanabilirsiniz.
+Çoğu durumda, StorSimple sabit IP adreslerine göre, giden trafik için güvenlik duvarı kurallarınızı belirlemenizi öneririz. Ancak, güvenli ortamlar oluşturmak için gereken gelişmiş güvenlik duvarı kuralları ayarlamak için aşağıdaki bilgileri kullanabilirsiniz.
 
 > [!NOTE]
 > 
-> * Cihaz (kaynak) IP 'Leri her zaman bulut özellikli tüm ağ arabirimlerine ayarlanmalıdır. 
-> * Hedef IP 'Ler, [Azure veri MERKEZI IP aralıkları](https://www.microsoft.com/download/confirmation.aspx?id=41653)olarak ayarlanmalıdır.
+> * Aygıt (kaynak) IP'leri her zaman bulut özellikli tüm ağ arabirimlerine ayarlanmalıdır. 
+> * Hedef IP'ler Azure [veri merkezi IP aralıklarına](https://www.microsoft.com/download/confirmation.aspx?id=41653)ayarlanmalıdır.
 > 
 > 
 
-| URL kalıbı | Bileşen/Işlevsellik |
+| URL deseni | Bileşen/İşlevsellik |
 | --- | --- |
-| `https://*.storsimple.windowsazure.com/*`<br>`https://*.accesscontrol.windows.net/*`<br>`https://*.servicebus.windows.net/*` <br>`https://login.windows.net`|StorSimple Device Manager hizmeti<br>Access Control Service<br>Azure Service Bus<br>Kimlik doğrulama hizmeti|
+| `https://*.storsimple.windowsazure.com/*`<br>`https://*.accesscontrol.windows.net/*`<br>`https://*.servicebus.windows.net/*` <br>`https://login.windows.net`|StorSimple Device Manager hizmeti<br>Access Control Service<br>Azure Service Bus<br>Kimlik Doğrulama Hizmeti|
 | `http://*.backup.windowsazure.com` |Cihaz kaydı |
 | `https://crl.microsoft.com/pki/*`<br>`https://www.microsoft.com/pki/*` |Sertifika iptali |
 | `https://*.core.windows.net/*`<br>`https://*.data.microsoft.com`<br>`http://*.msftncsi.com` |Azure depolama hesapları ve izleme |
 | `https://*.windowsupdate.microsoft.com`<br>`https://*.windowsupdate.microsoft.com`<br>`https://*.update.microsoft.com`<br> `https://*.update.microsoft.com`<br>`http://*.windowsupdate.com`<br>`https://download.microsoft.com`<br>`http://wustat.windows.com`<br>`https://ntservicepack.microsoft.com` |Microsoft Update sunucuları<br> |
 | `http://*.deploy.akamaitechnologies.com` |Akamai CDN |
 | `https://*.partners.extranet.microsoft.com/*` |Destek paketi |
-| `https://*.data.microsoft.com` |Telemetri hizmeti Windows 'da, bkz. [müşteri deneyimi ve tanılama telemetri güncelleştirmesi](https://support.microsoft.com/en-us/kb/3068708) |
+| `https://*.data.microsoft.com` |Windows'da Telemetri hizmeti, [müşteri deneyimi ve tanıt telemetri sunuyoruz](https://support.microsoft.com/en-us/kb/3068708) bakın |
 
 ## <a name="next-steps"></a>Sonraki adımlar
-* [StorSimple Sanal dizinizi dağıtmak için portalı hazırlayın](storsimple-virtual-array-deploy1-portal-prep.md)
+* [StorSimple Virtual Array'inizi dağıtmak için portalı hazırlayın](storsimple-virtual-array-deploy1-portal-prep.md)

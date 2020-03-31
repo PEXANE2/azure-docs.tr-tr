@@ -5,20 +5,20 @@ ms.service: app-service-mobile
 ms.topic: include
 ms.date: 08/23/2018
 ms.openlocfilehash: 69dc0e1c14bc88cdbf0aa48700f95058ba759cc0
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67188877"
 ---
-1. Çözüm görünümünde (veya **Çözüm Gezgini** Visual Studio'da), sağ tıklayın **bileşenleri** klasörünü tıklatın **daha alma bileşenleri...** , arama **Google Cloud Messaging istemcisi** bileşen ve projeye ekleyin.
-2. ToDoActivity.cs proje dosyasını açın ve aşağıdaki using deyimini sınıfa:
+1. Çözüm görünümünde (veya Visual Studio'daki **Solution Explorer),** **Bileşenler** klasörüne sağ tıklayın, Daha Fazla **Bileşen Al...,** **Google Bulut İleti Istemcisi** bileşenini arayın ve projeye ekleyin.
+2. ToDoActivity.cs proje dosyasını açın ve sınıfa aşağıdaki ifadesini ekleyin:
 
     ```csharp
     using Gcm.Client;
     ```
 
-3. İçinde **ToDoActivity** sınıfında, aşağıdaki yeni kodu ekleyin: 
+3. **ToDoActivity** sınıfına aşağıdaki yeni kodu ekleyin: 
 
     ```csharp
     // Create a new instance field for this activity.
@@ -42,8 +42,8 @@ ms.locfileid: "67188877"
     }
     ```
 
-    Bu, mobil istemci örneği anında iletme işleyicisi hizmeti işleminin erişmenize olanak sağlar.
-4. Aşağıdaki kodu ekleyin **OnCreate** yöntemi, sonra **MobileServiceClient** oluşturulur:
+    Bu, anında işleyici hizmet sürecinden mobil istemci örneğine erişmenizi sağlar.
+4. **MobileServiceClient** oluşturulduktan sonra **OnCreate** yöntemine aşağıdaki kodu ekleyin:
 
     ```csharp
     // Set the current instance of TodoActivity.
@@ -57,4 +57,4 @@ ms.locfileid: "67188877"
     GcmClient.Register(this, ToDoBroadcastReceiver.senderIDs);
     ```
 
-**ToDoActivity** artık anında iletme bildirimleri ekleme için hazır.
+**ToDoActivity'unuz** artık anında iletme bildirimleri eklemek için hazırlanmıştır.

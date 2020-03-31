@@ -8,20 +8,11 @@ ms.topic: include
 ms.date: 03/13/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 3f7e49c7209f82fbde00f5f1523eea3507b4569e
-ms.sourcegitcommit: 512d4d56660f37d5d4c896b2e9666ddcdbaf0c35
+ms.openlocfilehash: 238b36715dc7112cf9f9a1515c55475635bcedbf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/14/2020
-ms.locfileid: "79369703"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80272685"
 ---
-Şu anda yalnızca aşağıdaki bölgeler, artımlı anlık görüntüleri bir GA teklifi olarak desteklemektedir:
-
-- Orta Batı ABD
-- Orta ABD
-- Doğu ABD
-- Doğu ABD 2
-- Doğu Kanada
-- Orta Kanada
-- Kuzey Avrupa
-- Güneydoğu Asya
+Artımlı anlık görüntüler artık GA'daki tüm ortak bölgelerde kullanılabilir.

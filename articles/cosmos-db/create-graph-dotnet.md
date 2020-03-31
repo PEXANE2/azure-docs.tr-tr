@@ -1,5 +1,5 @@
 ---
-title: Gremlin API kullanarak çekirdek uygulama Azure Cosmos DB .NET Framework oluşturma
+title: Gremlin API'sini kullanarak Azure Cosmos DB .NET Framework, Core uygulaması oluşturun
 description: Azure Cosmos DB’ye bağlanmak ve veritabanını sorgulamak için kullanabileceğiniz bir .NET Framework/Core kod örneği sunar
 author: luisbosquez
 ms.service: cosmos-db
@@ -9,13 +9,13 @@ ms.topic: quickstart
 ms.date: 02/21/2020
 ms.author: lbosq
 ms.openlocfilehash: f700b06e6ade0d72178777b67cb734f3120b36dc
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "79240194"
 ---
-# <a name="quickstart-build-a-net-framework-or-core-application-using-the-azure-cosmos-db-gremlin-api-account"></a>Hızlı başlangıç: Azure Cosmos DB Gremlin API hesabını kullanarak .NET Framework veya çekirdek uygulama oluşturma
+# <a name="quickstart-build-a-net-framework-or-core-application-using-the-azure-cosmos-db-gremlin-api-account"></a>Hızlı başlatma: Azure Cosmos DB Gremlin API hesabını kullanarak bir .NET Framework veya Core uygulaması oluşturun
 
 > [!div class="op_single_selector"]
 > * [Gremlin konsolu](create-graph-gremlin-console.md)
@@ -28,11 +28,11 @@ ms.locfileid: "79240194"
 
 Azure Cosmos DB, Microsoft'un genel olarak dağıtılmış çok modelli veritabanı hizmetidir. Bu hizmetle belge, anahtar/değer ve grafik veritabanlarını kolayca oluşturup sorgulayabilir ve tüm bunları yaparken Azure Cosmos DB'nin genel dağıtım ve yatay ölçeklendirme özelliklerinden faydalanabilirsiniz. 
 
-Bu hızlı başlangıçta Azure portal kullanılarak Azure Cosmos DB [Gremlin API](graph-introduction.md) hesabı, veritabanı ve Graf (kapsayıcı) oluşturma gösterilmektedir. Daha sonra açık kaynaklı [Gremlin.Net](https://tinkerpop.apache.org/docs/3.2.7/reference/#gremlin-DotNet) sürücüsünü kullanarak bir konsol uygulaması oluşturabilir ve çalıştırabilirsiniz.  
+Bu hızlı başlangıç, Azure portalını kullanarak bir Azure Cosmos DB [Gremlin API](graph-introduction.md) hesabı, veritabanı ve grafik (kapsayıcı) nasıl oluşturulacak larını gösterir. Daha sonra açık kaynaklı [Gremlin.Net](https://tinkerpop.apache.org/docs/3.2.7/reference/#gremlin-DotNet) sürücüsünü kullanarak bir konsol uygulaması oluşturabilir ve çalıştırabilirsiniz.  
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Zaten Visual Studio 2019 yüklü değilse, **ücretsiz** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/)' ı indirip kullanabilirsiniz. Visual Studio kurulumu sırasında **Azure dağıtımını** etkinleştirdiğinizden emin olun.
+Visual Studio 2019 yüklü değilseniz, **ücretsiz** [Visual Studio 2019 Community Edition'ı](https://www.visualstudio.com/downloads/)indirebilir ve kullanabilirsiniz. Visual Studio kurulumu sırasında **Azure dağıtımını** etkinleştirdiğinizden emin olun.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -79,7 +79,7 @@ Zaten Visual Studio 2019 yüklü değilse, **ücretsiz** [Visual Studio 2019 Com
 
 ## <a name="review-the-code"></a>Kodu gözden geçirin
 
-Bu adım isteğe bağlıdır. Veritabanı kaynaklarının kodda nasıl oluşturulduğunu öğrenmekle ilgileniyorsanız, aşağıdaki kod parçacıklarını gözden geçirebilirsiniz. Aksi takdirde, [Bağlantı dizenizi güncelleştirme](#update-your-connection-string) bölümüne atlayabilirsiniz. 
+Bu adım isteğe bağlıdır. Veritabanı kaynaklarının kodda nasıl oluşturulduğunu öğrenmekle ilgileniyorsanız, aşağıdaki kod parçacıklarını gözden geçirebilirsiniz. Aksi durumda, [Bağlantı dizenizi güncelleştirme](#update-your-connection-string) bölümüne atlayabilirsiniz. 
 
 Aşağıdaki kod parçacıklarının tamamı, Program.cs dosyasından alınır.
 
@@ -87,15 +87,15 @@ Aşağıdaki kod parçacıklarının tamamı, Program.cs dosyasından alınır.
 
    :::code language="csharp" source="~/azure-cosmosdb-graph-dotnet/GremlinNetSample/Program.cs" id="configureConnectivity":::
 
-* Yürütülecek Gremlin komutları bir sözlükte listelenmiştir:
+* Yürütülecek Gremlin komutları sözlükte listelenir:
 
    :::code language="csharp" source="~/azure-cosmosdb-graph-dotnet/GremlinNetSample/Program.cs" id="defineQueries":::
 
-* Yukarıda belirtilen parametreleri kullanarak yeni bir `GremlinServer` ve `GremlinClient` bağlantı nesneleri oluşturun:
+* Yukarıda sağlanan `GremlinServer` `GremlinClient` parametreleri kullanarak yeni ve bağlantı nesneleri oluşturun:
 
    :::code language="csharp" source="~/azure-cosmosdb-graph-dotnet/GremlinNetSample/Program.cs" id="defineClientandServerObjects":::
 
-* Zaman uyumsuz bir görevle `GremlinClient` nesnesini kullanarak her Gremlin sorgusunu yürütün. Önceki adımda tanımlanan sözlükten Gremlin sorgularını okuyabilir ve bunları yürütebilirsiniz. Daha sonra, Newtonsoft. JSON paketinden `JsonSerializer` sınıfını kullanarak sonucu elde edin ve sözlük olarak biçimlendirilen değerleri okuyun:
+* Async görevi ile `GremlinClient` nesnekullanarak her Gremlin sorgu yürütmek. Gremlin sorgularını önceki adımda tanımlanan sözlükten okuyabilir ve çalıştırabilirsiniz. Daha sonra sonucu almak ve Newtonsoft.Json paketinden `JsonSerializer` sınıf kullanarak, bir sözlük olarak biçimlendirilmiş değerleri okuyun:
 
    :::code language="csharp" source="~/azure-cosmosdb-graph-dotnet/GremlinNetSample/Program.cs" id="executeQueries":::
 
@@ -105,24 +105,24 @@ Bu adımda Azure portalına dönerek bağlantı dizesi bilgilerinizi kopyalayıp
 
 1. [Azure portalda](https://portal.azure.com/) graf veritabanı hesabınıza gidin. **Genel Bakış** sekmesinde iki uç nokta görebilirsiniz: 
  
-   **.NET SDK URI** -bu değer, Graph hesabına Microsoft. Azure. Graf kitaplığı kullanarak bağlandığınızda kullanılır. 
+   **.NET SDK URI** - Bu değer, Microsoft.Azure.Graphs kitaplığını kullanarak grafik hesabına bağlandığınızda kullanılır. 
 
    **Gremlin Uç Noktası** - Bu değer, Gremlin.Net kitaplığını kullanarak graf hesabına bağlandığınızda kullanılır.
 
     ![Uç noktayı kopyalama](./media/create-graph-dotnet/endpoint.png)
 
-   Bu örneği çalıştırmak için, **Gremlin uç noktası** değerini kopyalayın, sonundaki bağlantı noktası numarasını silin, bu da URI `https://<your cosmos db account name>.gremlin.cosmosdb.azure.com`olur. Uç nokta değeri şöyle görünmelidir `testgraphacct.gremlin.cosmosdb.azure.com`
+   Bu örneği çalıştırmak için **Gremlin Endpoint** değerini kopyalayın, sonundaki bağlantı noktası `https://<your cosmos db account name>.gremlin.cosmosdb.azure.com`numarasını silin, yani URI olur. Uç nokta değeri aşağıdaki gibi görünmelidir`testgraphacct.gremlin.cosmosdb.azure.com`
 
-1. Sonra, **anahtarlar** sekmesine gidin ve Azure Portal **birincil anahtar** değerini kopyalayın. 
+1. Ardından, **Keys** sekmesine gidin ve Azure portalından **PRIMARY KEY** değerini kopyalayın. 
 
-1. Hesabınızın URI 'sini ve BIRINCIL anahtarını kopyaladıktan sonra, uygulamayı çalıştıran yerel makinede yeni bir ortam değişkenine kaydedin. Ortam değişkenini ayarlamak için bir komut istemi penceresi açın ve aşağıdaki komutu çalıştırın. < Your_Azure_Cosmos_account_URI > ve < Your_Azure_Cosmos_account_PRIMARY_KEY > değerlerini değiştirdiğinizden emin olun.
+1. Hesabınızın URI ve BIRINCIL ANAHTARINI kopyaladıktan sonra, bunları uygulamayı çalıştıran yerel makinede yeni bir ortam değişkenine kaydedin. Ortam değişkenini ayarlamak için bir komut istemi penceresi açın ve aşağıdaki komutu çalıştırın. > Your_Azure_Cosmos_account_URI <ve> değerleri Your_Azure_Cosmos_account_PRIMARY_KEY <emin olun.
 
    ```console
    setx EndpointUrl "https://<your cosmos db account name>.gremlin.cosmosdb.azure.com"
    setx PrimaryKey "<Your_Azure_Cosmos_account_PRIMARY_KEY>"
    ```
 
-1. *Program.cs* dosyasını açın ve yukarıda oluşturulan "veritabanı ve" kapsayıcı "değişkenlerini veritabanı ve kapsayıcı (aynı zamanda grafik adı) ile güncelleştirin.
+1. *Program.cs* dosyasını açın ve yukarıda oluşturulan veritabanı ve kapsayıcı (grafik adı da) adlarıyla "veritabanı ve "kapsayıcı" değişkenlerini güncelleştirin.
 
     `private static string database = "your-database-name";` `private static string container = "your-container-or-graph-name";`
 
@@ -158,7 +158,7 @@ Uygulamayı çalıştırmak için CTRL+F5 tuşlarına basın. Uygulama hem Greml
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta Azure Cosmos DB hesabı oluşturmayı, Veri Gezgini'ni kullanarak grafik oluşturmayı ve bir uygulamayı çalıştırmayı öğrendiniz. Artık daha karmaşık sorgular oluşturabilir ve Gremlin kullanarak güçlü grafik geçişi mantığını kullanabilirsiniz. 
+Bu hızlı başlangıçta Azure Cosmos DB hesabı oluşturmayı, Veri Gezgini'ni kullanarak grafik oluşturmayı ve bir uygulamayı çalıştırmayı öğrendiniz. Artık daha karmaşık sorgular derleyebilir ve Gremlin kullanarak güçlü grafik geçişi mantığını kullanabilirsiniz. 
 
 > [!div class="nextstepaction"]
 > [Gremlin kullanarak sorgulama](tutorial-query-graph.md)

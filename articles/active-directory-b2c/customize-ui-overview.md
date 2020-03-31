@@ -1,102 +1,103 @@
 ---
 title: Kullanıcı arabirimini özelleştirme
 titleSuffix: Azure AD B2C
-description: Azure Active Directory B2C kullanan uygulamalarınız için Kullanıcı arabirimini özelleştirmeyi öğrenin.
+description: Azure Active Directory B2C kullanan uygulamalarınız için kullanıcı arabirimini nasıl özelleştireceklerinizi öğrenin.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/30/2020
+ms.date: 03/19/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: dad4c156b088c28ccf199cb155278ac9a189e4be
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.openlocfilehash: 839e13dffc7d15b8cd258dd4b7dda6776223d052
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/29/2020
-ms.locfileid: "78189064"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80051731"
 ---
-# <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>Azure Active Directory B2C Kullanıcı arabirimini özelleştirme
+# <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>Azure Active Directory B2C'deki kullanıcı arabirimini özelleştirme
 
-Azure Active Directory B2C (Azure AD B2C) müşterileriniz tarafından görüntülenen kullanıcı arabirimini markalamayı ve özelleştirmeyi, uygulamanızda sorunsuz bir kullanıcı deneyimi sağlamaya yardımcı olur. Bu deneyimlere kaydolma, oturum açma, profil düzenlemesi ve parola sıfırlama dahildir. Bu makalede hem Kullanıcı akışları hem de özel ilkeler için Kullanıcı arabirimi (UI) özelleştirmesi yöntemleri tanıtılmaktadır.
+Azure Active Directory B2C'nin (Azure AD B2C) müşterilerinize görüntülemesi olan kullanıcı arabirimini markalamak ve özelleştirmek, uygulamanızda sorunsuz bir kullanıcı deneyimi sağlamaya yardımcı olur. Bu deneyimler arasında kaydolma, oturum açma, profil düzenleme ve parola sıfırlama yer almaktadır. Bu makalede, hem kullanıcı akışları hem de özel ilkeler için kullanıcı arabirimi (UI) özelleştirme yöntemleri tanıtılmaktadır.
 
-## <a name="ui-customization-in-different-scenarios"></a>Farklı senaryolarda UI özelleştirmesi
+## <a name="ui-customization-in-different-scenarios"></a>Farklı senaryolarda kullanıcı arabirimi özelleştirme
 
-Uygulamanın kullanıcı ARABIRIMINI özelleştirmek için kullanabileceğiniz çeşitli yollar vardır. her biri farklı senaryolar için uygundur.
+Kullanıcı nın kullanıcı deneyimlerinin kullanıcı deneyimlerinin kullanıcı arasını özelleştirmenin her biri farklı senaryolar için uygun olan çeşitli yolları vardır.
 
 ### <a name="user-flows"></a>Kullanıcı akışları
 
-[Kullanıcı akışları](user-flow-overview.md)kullanıyorsanız, yerleşik *sayfa düzeni şablonlarını*kullanarak veya kendi HTML ve CSS 'nizi kullanarak Kullanıcı akış sayfalarınızın görünümünü değiştirebilirsiniz. Her iki yöntem de bu makalenin ilerleyen kısımlarında ele alınmıştır.
+[Kullanıcı akışlarını](user-flow-overview.md)kullanıyorsanız, yerleşik *sayfa düzeni şablonlarını*kullanarak veya kendi HTML ve CSS'nizi kullanarak kullanıcı akış sayfalarınızın görünümünü değiştirebilirsiniz. Her iki yöntem de bu makalede daha sonra ele alınmıştır.
 
-Kullanıcı akışları için UI özelleştirmesini yapılandırmak üzere [Azure Portal](tutorial-customize-ui.md) kullanırsınız.
+Kullanıcı akışları için Kullanıcı Arabirimi özelleştirmesini yapılandırmak için [Azure portalını](tutorial-customize-ui.md) kullanırsınız.
 
 > [!TIP]
-> Kullanıcı akış sayfalarınızın yalnızca başlık logosunu, arka plan resmini ve arka plan rengini değiştirmek istiyorsanız, bu makalenin ilerleyen kısımlarında açıklanan [Şirket markası (Önizleme)](#company-branding-preview) özelliğini deneyebilirsiniz.
+> Yalnızca kullanıcı akış sayfalarınızın afiş logosunu, arka plan görüntüsünü ve arka plan rengini değiştirmek istiyorsanız, bu makalede daha sonra açıklanan [Şirket markalama (önizleme)](#company-branding-preview) özelliğini deneyebilirsiniz.
 
 ### <a name="custom-policies"></a>Özel ilkeler
 
-Uygulamanızda kaydolma veya oturum açma, parola sıfırlama veya profil düzenlemesi sağlamak için [özel ilkeler](custom-policy-overview.md) kullanıyorsanız, [Kullanıcı arabirimini özelleştirmek için ilke dosyalarını](custom-policy-ui-customization.md)kullanın.
+Uygulamanızda kaydolma veya oturum açma, parola sıfırlama veya profil düzenleme sağlamak için [özel ilkeler](custom-policy-overview.md) kullanıyorsanız, [Kullanıcı Arabirimi'ni özelleştirmek için ilke dosyalarını](custom-policy-ui-customization.md)kullanın.
 
-Bir müşterinin kararına göre dinamik içerik sağlamanız gerekiyorsa, bir sorgu dizesinde gönderilen parametreye bağlı olarak [sayfa içeriğini dinamik olarak değiştirecek](custom-policy-ui-customization.md#configure-dynamic-custom-page-content-uri) özel ilkeler kullanın. Örneğin, Azure AD B2C kaydolma veya oturum açma sayfasındaki arka plan görüntüsünü, Web veya mobil uygulamanızdan geçirdiğiniz bir parametreye göre değiştirebilirsiniz.
+Müşterinin kararına dayalı dinamik içerik sağlamanız gerekiyorsa, sorgu dizesinde gönderilen bir parametreye bağlı olarak [sayfa içeriğini dinamik olarak değiştirebilen](custom-policy-ui-customization.md#configure-dynamic-custom-page-content-uri) özel ilkeler kullanın. Örneğin, web veya mobil uygulamanızdan geçtiğiniz bir parametreye göre Azure AD B2C kaydolma veya oturum açma sayfasındaki arka plan görüntüsünü değiştirebilirsiniz.
 
 ### <a name="javascript"></a>JavaScript
 
-İstemci tarafı JavaScript kodunu, hem [Kullanıcı akışlarında](user-flow-javascript-overview.md) hem de [özel ilkelerde](page-layout.md)etkinleştirebilirsiniz.
+Hem [kullanıcı akışlarında](user-flow-javascript-overview.md) hem de [özel ilkelerde](page-layout.md)istemci tarafındaki JavaScript kodunu etkinleştirebilirsiniz.
 
-### <a name="sign-in-only-ui-customization"></a>Yalnızca oturum açma kullanıcı arabirimi özelleştirmesi
+### <a name="sign-in-only-ui-customization"></a>Yalnızca kullanıcı tarafından oturum açma Kullanıcı Birası özelleştirmesi
 
-Kendisine yönelik parola sıfırlama sayfası ve doğrulama e-postalarıyla birlikte yalnızca oturum açma sağlıyorsanız, bir [Azure AD oturum açma sayfasında](../active-directory/fundamentals/customize-branding.md)kullanılan özelleştirme adımlarını kullanın.
+Yalnızca oturum açma sağlıyorsanız, beraberindeki parola sıfırlama sayfası ve doğrulama e-postalarıyla birlikte, Azure AD [oturum açma sayfası](../active-directory/fundamentals/customize-branding.md)için kullanılan aynı özelleştirme adımlarını kullanın.
 
-Müşteriler, oturum açmadan önce profilini düzenlemeye çalışırlarsa, Azure AD oturum açma sayfasını özelleştirmek için kullanılan adımların aynısını kullanarak özelleştirdiğiniz bir sayfaya yönlendirilir.
+Müşteriler oturum açmadan önce profillerini düzenlemeye çalışırsa, Azure AD oturum açma sayfasını özelleştirmek için kullanılan aynı adımları kullanarak özelleştirdiğiniz bir sayfaya yönlendirilirler.
 
 ## <a name="page-layout-templates"></a>Sayfa düzeni şablonları
 
-Kullanıcı akışları, Kullanıcı deneyimi sayfalarınıza profesyonel bir görünüm kazandırmak için içinden seçebileceğiniz çeşitli yerleşik şablonlar sağlar. Bu düzen şablonları Ayrıca kendi özelleştirmesi için başlangıç noktası olarak da kullanılabilir.
+Kullanıcı akışları, kullanıcı deneyimi sayfalarınıza profesyonel bir görünüm kazandırmak için seçebileceğiniz birkaç yerleşik şablon sağlar. Bu düzen şablonları da olabilir ve kendi özelleştirme için başlangıç noktası olarak hizmet vermektedir.
 
-Sol menüdeki **Özelleştir** altında **sayfa düzenleri** ' ni seçin ve ardından **şablon**' u seçin.
+Sol menüde **Özelleştir'in** altında **Sayfa düzenlerini** seçin ve ardından **Şablon'u**seçin.
 
-![Azure portal Kullanıcı akışı sayfasında şablon seçme açılan listesi](media/customize-ui-overview/template-selection.png)
+![Azure portalının kullanıcı akış sayfasında şablon seçimi açılır](media/customize-ui-overview/template-selection.png)
 
-Sonra, listeden bir şablon seçin. Her şablon için oturum açma sayfalarının örnekleri aşağıda verilmiştir:
+Ardından, listeden bir şablon seçin. Aşağıda her şablon için oturum açma sayfalarından örnekler verilmiştir:
 
-| Okyanus Mavisi | Kurşun Grisi | Klasik |
+| Okyanus Mavisi | Kayrak Gri | Klasik |
 |:-:|:-:|:-:|
-|![Kaydolma oturum açma sayfasında işlenen okyanus mavi şablonu örneği](media/customize-ui-overview/template-ocean-blue.png)|![Kaydolma oturum açma sayfasında oluşturulan Kurşun Grisi şablonu örneği](media/customize-ui-overview/template-slate-gray.png)|![Kaydolma oturum açma sayfasında işlenen klasik şablon örneği](media/customize-ui-overview/template-classic.png)|
+|![Kaydol sayfasında işlenen Ocean Blue şablonu örneği](media/customize-ui-overview/template-ocean-blue.png)|![Kaydol sayfasında oturum açmada işlenen Kayrak Grisi şablonu örneği](media/customize-ui-overview/template-slate-gray.png)|![Kaydol sayfasında işlenen Klasik şablon örneği](media/customize-ui-overview/template-classic.png)|
 
-Bir şablon seçtiğinizde, seçilen düzen Kullanıcı akışındaki tüm sayfalara uygulanır ve her sayfanın URI 'SI **özel sayfa URI 'si** alanında görünür.
+Bir şablon seçtiğinizde, seçili düzen kullanıcı akışınızdaki tüm sayfalara uygulanır ve her sayfanın URI'si **Özel sayfa URI** alanında görünür.
 
 ## <a name="custom-html-and-css"></a>Özel HTML ve CSS
 
-Özelleştirilmiş HTML ve CSS 'niz ile kendi ilke düzeninizi tasarlamak isterseniz, ilkenizde bulunan her Düzen adı için "özel sayfa içeriğini kullan" seçeneğini değiştirerek bunu yapabilirsiniz. Lütfen özel düzen yapılandırmalarına ilişkin aşağıdaki yönergeleri izleyin:
+Özelleştirilmiş HTML ve CSS'nizle kendi ilke düzeninizi tasarlamak istiyorsanız, bunu ilkenizde bulunan Düzen adlarının her biri için "Özel sayfa içeriğini kullan" geçişini değiştirerek yapabilirsiniz. Özel düzen yapılandırmaları ile ilgili aşağıdaki yönergeleri izleyin:
 
-Azure AD B2C, [çıkış noktaları arası kaynak paylaşımı (CORS)](https://www.w3.org/TR/cors/)adlı bir yaklaşım kullanarak müşterinizin tarayıcısında kodu çalıştırır.
+Azure AD B2C, [Çapraz Kaynak Paylaşımı (CORS)](https://www.w3.org/TR/cors/)adlı bir yaklaşım kullanarak müşterinizin tarayıcısında kod çalıştırır.
 
-Çalışma zamanında, içerik, Kullanıcı akışınız veya özel ilkenizde belirttiğiniz bir URL 'den yüklenir. Kullanıcı deneyimindeki her sayfa, içeriğini o sayfa için belirttiğiniz URL 'den yükler. URL 'nizden içerik yüklendikten sonra, Azure AD B2C tarafından yerleştirilen bir HTML parçası ile birleştirilir ve sayfa müşterinize görüntülenir.
+Çalışma zamanında, içerik kullanıcı akışınızda veya özel politikanızda belirttiğiniz bir URL'den yüklenir. Kullanıcı deneyimindeki her sayfa, içeriğini o sayfa için belirttiğiniz URL'den yükler. Url'nizden içerik yüklendikten sonra, Azure AD B2C tarafından eklenen bir HTML parçasıyla birleştirilir ve sayfa müşterinize gösterilir.
 
-Kullanıcı arabirimini özelleştirmek için kendi HTML ve CSS dosyalarınızı kullanmadan önce aşağıdaki kılavuzu gözden geçirin:
+UI'yi özelleştirmek için kendi HTML ve CSS dosyalarınızı kullanmadan önce aşağıdaki kılavuzu gözden geçirin:
 
-- Azure AD B2C HTML içeriğini sayfalarınıza **birleştirir** . Azure AD B2C sağladığı varsayılan içeriği kopyalamayın ve değiştirmeyi denemeyin. HTML içeriğinizi sıfırdan oluşturmak ve varsayılan içeriği başvuru olarak kullanmak en iyisidir.
-- **JavaScript** , hem [Kullanıcı akışları](user-flow-javascript-overview.md) hem de [özel ilkeler](javascript-samples.md)için özel içeriğinize eklenebilir.
+- Azure AD B2C, HTML içeriğini sayfalarınızda **birleştirir.** Azure AD B2C'nin sağladığı varsayılan içeriği kopyalamayın ve değiştirmeyi deneyin. HTML içeriğinizi sıfırdan oluşturmak ve varsayılan içeriği referans olarak kullanmak en iyisidir.
+- **JavaScript,** hem [kullanıcı akışları](user-flow-javascript-overview.md) hem de [özel ilkeler](javascript-samples.md)için özel içeriğinize eklenebilir.
 - Desteklenen **tarayıcı sürümleri** şunlardır:
   - Internet Explorer 11, 10 ve Microsoft Edge
   - Internet Explorer 9 ve 8 için sınırlı destek
-  - Google Chrome 42,0 ve üzeri
-  - Mozilla Firefox 38,0 ve üzeri
-- HTML 'nize **form etiketleri** eklemeyin. Form etiketleri, Azure AD B2C tarafından eklenen HTML tarafından oluşturulan POST işlemlerini kesintiye uğrayor.
+  - Google Chrome 42.0 ve üzeri
+  - Mozilla Firefox 38.0 ve üzeri
+  - iOS ve macOS için Safari, sürüm 12 ve üzeri
+- HTML'nize **form etiketleri** eklemeyin. Form etiketleri, Azure AD B2C tarafından enjekte edilen HTML tarafından oluşturulan POST işlemlerini etkiler.
 
-### <a name="where-do-i-store-ui-content"></a>UI içeriğini nerede depolayabilirim?
+### <a name="where-do-i-store-ui-content"></a>Kullanıcı bira sıyrık içeriğini nerede saklarım?
 
-Kullanıcı arabirimini özelleştirmek için kendi HTML ve CSS dosyalarınızı kullanırken, Kullanıcı arabirimi içeriğinizi CORS 'yi destekleyen genel kullanıma açık bir HTTPS uç noktası üzerinden barındırabilirsiniz. Örneğin, [Azure Blob depolama](../storage/blobs/storage-blobs-introduction.md), Web sunucuları, CDNS, AWS S3 veya dosya paylaşım sistemleri.
+Kullanıcı Arabirimi'ni özelleştirmek için kendi HTML ve CSS dosyalarınızı kullanırken, Kullanıcı Arabirimi içeriğinizi CORS'leri destekleyen herkese açık herhangi bir HTTPS bitiş noktasında barındırabilirsiniz. Örneğin, [Azure Blob depolama,](../storage/blobs/storage-blobs-introduction.md)web sunucuları, CDN'ler, AWS S3 veya dosya paylaşım sistemleri.
 
-Önemli nokta, içeriği CORS 'yi etkin olan genel kullanıma açık bir HTTPS uç noktası üzerinde barındırmanıza bağlıdır. İçeriğinizi belirttiğinizde, mutlak bir URL kullanmanız gerekir.
+Önemli olan nokta, içeriği, CORS etkinleştirilmiş, herkese açık bir HTTPS bitiş noktasında barındırmanızdır. İçeriğinizde belirttiğinizde mutlak bir URL kullanmanız gerekir.
 
-## <a name="get-started-with-custom-html-and-css"></a>Özel HTML ve CSS ile çalışmaya başlama
+## <a name="get-started-with-custom-html-and-css"></a>Özel HTML ve CSS ile başlayın
 
-Bu yönergeleri izleyerek, Kullanıcı deneyimi sayfalarınızda kendi HTML ve CSS 'nizi kullanmaya başlayın.
+Bu yönergeleri izleyerek kullanıcı deneyimi sayfalarınızda kendi HTML ve CSS'nizi kullanmaya başlayın.
 
-- `<body>`bir yerde bulunan boş bir `<div id="api"></div>` öğesiyle düzgün biçimlendirilmiş HTML içeriği oluşturun. Bu öğe Azure AD B2C içeriğin nereye ekleneceğini işaretler. Aşağıdaki örnek, en az bir sayfa göstermektedir:
+- Bir yerde bulunan boş `<div id="api"></div>` bir öğe ile iyi `<body>`biçimlendirilmiş HTML içeriği oluşturun. Bu öğe, Azure AD B2C içeriğinin eklendiği yeri işaretler. Aşağıdaki örnekte en az sayfa gösterilmektedir:
 
     ```html
     <!DOCTYPE html>
@@ -112,7 +113,7 @@ Bu yönergeleri izleyerek, Kullanıcı deneyimi sayfalarınızda kendi HTML ve C
     </html>
     ```
 
-- Azure AD B2C, sayfanıza eklediği Kullanıcı Arabirimi öğelerine stil eklemek için CSS kullanın. Aşağıdaki örnek, kayıt eklenmiş HTML öğelerinin ayarlarını da içeren basit bir CSS dosyasını göstermektedir:
+- Azure AD B2C'nin sayfanıza ekleyen UI öğelerini stilize etmek için CSS'yi kullanın. Aşağıdaki örnekte, kaydolma enjekte edilen HTML öğelerinin ayarlarını da içeren basit bir CSS dosyası gösterilmektedir:
 
     ```css
     h1 {
@@ -137,89 +138,89 @@ Bu yönergeleri izleyerek, Kullanıcı deneyimi sayfalarınızda kendi HTML ve C
     }
     ```
 
-- İçeriğinizi bir HTTPS uç noktasında (CORS ile izin verilir) barındırın. CORS yapılandırılırken hem GET hem de OPTIONS istek yöntemlerinin etkinleştirilmesi gerekir.
-- Oluşturduğunuz içeriği kullanmak için bir Kullanıcı akışı veya özel ilke oluşturun veya düzenleyin.
+- İçeriğinizi HTTPS bitiş noktasında barındırın (CORS'e izin verilir). CORS'i yapılandırırken hem GET hem de OPTIONS istek yöntemleri etkinleştirilmelidir.
+- Oluşturduğunuz içeriği kullanmak için bir kullanıcı akışı veya özel ilke oluşturun veya bunları düzenlendi.
 
-### <a name="html-fragments-from-azure-ad-b2c"></a>Azure AD B2C HTML parçaları
+### <a name="html-fragments-from-azure-ad-b2c"></a>Azure AD B2C'den HTML parçaları
 
-Aşağıdaki tabloda, Azure AD B2C içeriklerde bulunan `<div id="api"></div>` öğesi içine birleştiren HTML parçaları listelenmektedir.
+Aşağıdaki tabloda, Azure AD B2C'nin içeriğinizde `<div id="api"></div>` bulunan öğeyle birleştirdiği HTML parçaları listelenebilmiştir.
 
-| Sayfa ekleniyor | HTML açıklaması |
+| Eklenen sayfa | HTML açıklaması |
 | ------------- | ------------------- |
-| Kimlik sağlayıcı seçimi | Müşterinin kaydolma veya oturum açma sırasında aralarından seçim yapabileceğiniz kimlik sağlayıcılarının düğmelerinin bir listesini içerir. Bu düğmeler Facebook, Google veya yerel hesaplar gibi sosyal kimlik sağlayıcılarını (e-posta adresine veya Kullanıcı adına göre) içerir. |
-| Yerel hesap kaydı | Bir e-posta adresine veya Kullanıcı adına göre yerel hesap kaydolma için bir form içerir. Form, metin girişi kutusu, parola giriş kutusu, radyo düğmesi, tek seçim açılan kutuları ve çoklu seçim onay kutuları gibi farklı giriş denetimleri içerebilir. |
-| Sosyal hesap kaydolma | Facebook veya Google gibi bir sosyal kimlik sağlayıcısından mevcut bir hesap kullanılarak kaydolurken görünebilir. Bir kaydolma formu kullanılarak müşteriden ek bilgiler toplandığında kullanılır. |
-| Birleşik kaydolma veya oturum açma | Facebook, Google veya yerel hesaplar gibi sosyal kimlik sağlayıcılarını kullanabilecek müşterilerin hem kaydolma hem de oturum açma sürümlerini işler. |
-| Multi-factor authentication | Müşteriler, kaydolma veya oturum açma sırasında telefon numaralarını (metin veya ses kullanarak) doğrulayabilirler. |
-| Hata | Müşteriye hata bilgilerini sağlar. |
+| Kimlik sağlayıcı seçimi | Kimlik sağlayıcıları için müşterinin kaydolma veya oturum açma sırasında seçebileceği düğmelerin listesini içerir. Bu düğmeler, Facebook, Google veya yerel hesaplar gibi sosyal kimlik sağlayıcılarını (e-posta adresine veya kullanıcı adına göre) içerir. |
+| Yerel hesap kaydolma | E-posta adresine veya kullanıcı adına dayalı yerel hesap kaydolma için bir form içerir. Form, metin giriş kutusu, parola giriş kutusu, radyo düğmesi, tek seçimli açılır kutular ve çok seçimli onay kutuları gibi farklı giriş denetimleri içerebilir. |
+| Sosyal hesap kayıt | Facebook veya Google gibi bir sosyal kimlik sağlayıcısından mevcut bir hesabı kullanarak kaydolurken görünebilir. Bir kayıt formu kullanarak müşteriden ek bilgi toplanması gerektiğinde kullanılır. |
+| Birleştirilmiş kaydolma veya oturum açma | Facebook, Google veya yerel hesaplar gibi sosyal kimlik sağlayıcılarını kullanabilen müşterilerin hem kaydolma hem de kaydolma işlemlerini işler. |
+| Multi-factor authentication | Müşteriler kaydolma veya oturum açma sırasında telefon numaralarını (metin veya ses kullanarak) doğrulayabilirler. |
+| Hata | Müşteriye hata bilgileri sağlar. |
 
-## <a name="company-branding-preview"></a>Şirket markası (Önizleme)
+## <a name="company-branding-preview"></a>Şirket markalama (önizleme)
 
-Kullanıcı akış sayfalarınızı, Azure Active Directory [Şirket markalaması](../active-directory/fundamentals/customize-branding.md)kullanarak bir başlık logosu, arka plan resmi ve arka plan rengi ile özelleştirebilirsiniz.
+Azure Active Directory [Company markasını](../active-directory/fundamentals/customize-branding.md)kullanarak kullanıcı akış sayfalarınızı bir başlık logosu, arka plan resmi ve arka plan rengi yle özelleştirebilirsiniz.
 
-Kullanıcı akış sayfalarınızı özelleştirmek için önce Azure Active Directory ' de şirket markasını yapılandırıp, ardından Kullanıcı akışlarınızın sayfa düzenleri Azure AD B2C ' nde etkinleştirin.
+Kullanıcı akış sayfalarınızı özelleştirmek için, önce Azure Active Directory'de şirket markasını yapılandırır, ardından Azure AD B2C'deki kullanıcı akışlarınızın sayfa düzenlerinde etkinleştirin.
 
 [!INCLUDE [preview note](../../includes/active-directory-b2c-public-preview.md)]
 
 ### <a name="configure-company-branding"></a>Şirket markası yapılandırma
 
-**Şirket markalaması**içinde başlık logosunu, arka plan görüntüsünü ve arka plan rengini ayarlayarak başlayın.
+**Şirket markası**içinde banner logosunu, arka plan görüntüsünü ve arka plan rengini ayarlayarak başlayın.
 
-1. [Azure Portal](https://portal.azure.com) oturum açın.
-1. Üst menüden **Dizin + abonelik** filtresi ' ni seçin ve ardından Azure AD B2C kiracınızı içeren dizini seçin.
-1. Azure portal, araması yapın ve **Azure AD B2C**seçin.
-1. **Yönet**altında **Şirket markalaması**' nı seçin.
-1. [Kuruluşunuzun Azure Active Directory oturum açma sayfasına marka ekleme](../active-directory/fundamentals/customize-branding.md)bölümündeki adımları izleyin.
+1. [Azure portalında](https://portal.azure.com)oturum açın.
+1. Üst menüdeki **Dizin + abonelik** filtresini seçin ve ardından Azure AD B2C kiracınızı içeren dizin'i seçin.
+1. Azure **portalında, Azure AD B2C'yi**arayın ve seçin.
+1. **Yönet**altında, **Şirket markasını**seçin.
+1. [Kuruluşunuzun Azure Active Directory oturum açma sayfasına marka ekle](../active-directory/fundamentals/customize-branding.md)adımlarını izleyin.
 
-Şirket markasını Azure AD B2C ' de yapılandırırken şunları göz önünde bulundurun:
+Azure AD B2C'de şirket markasını yapılandırırken bunları aklınızda bulundurun:
 
-* Azure AD B2C Şirket markası şu anda **arka plan resmi**, **Başlık logosu**ve **arka plan rengi** özelleştirmesi ile sınırlıdır. Şirket markası bölmesindeki diğer özellikler, örneğin **Gelişmiş ayarlarda** *desteklenmez*.
-* Kullanıcı akış sayfalarınızda arka plan rengi, arka plan görüntüsü yüklenmeden önce gösterilir. Daha yumuşak bir yükleme deneyimi için arka plan görüntinizdeki renklerle yakından eşleşen bir arka plan rengi seçmenizi öneririz.
-* Ana Başlık logosu, bir kaydolma Kullanıcı akışı başlattıklarında kullanıcılarınıza gönderilen doğrulama e-postalarında görüntülenir.
+* Azure AD B2C'deki şirket markası şu anda **arka plan resmi,** **banner logosu**ve arka **plan rengi** özelleştirmesi ile sınırlıdır. Şirket marka bölmesindeki diğer özellikler, örneğin **Gelişmiş ayarlardakiler** *desteklenmez.*
+* Kullanıcı akış sayfalarınızda, arka plan görüntüsü yüklenmeden önce arka plan rengi gösterilir. Daha sorunsuz bir yükleme deneyimi için arka plan resminizdeki renklerle yakından eşleşen bir arka plan rengi seçmenizi tavsiye ettik.
+* Banner logosu, kullanıcılarınızın kaydolma kullanıcı akışını başlattıklarında gönderdiğiniz doğrulama e-postalarında görünür.
 
-### <a name="enable-branding-in-user-flow-pages"></a>Kullanıcı akış sayfalarında markalamayı etkinleştir
+### <a name="enable-branding-in-user-flow-pages"></a>Kullanıcı akış sayfalarında markalamayı etkinleştirme
 
-Şirket markasını yapılandırdıktan sonra, Kullanıcı akışlarınızda etkinleştirin.
+Şirket markasını yapılandırdıktan sonra, kullanıcı akışlarınızda etkinleştirin.
 
-1. Azure portal sol menüsünde **Azure AD B2C**' i seçin.
-1. **İlkeler**altında **Kullanıcı akışları ' nı (ilkeler)** seçin.
-1. Şirket markasını etkinleştirmek istediğiniz kullanıcı akışını seçin. Şirket markası, *oturum açma v1* ve *profil düzenlemesi v1* Kullanıcı akış türleri için **desteklenmez** .
-1. **Özelleştir**altında **sayfa düzenleri**' ni seçin ve ardından marka yapmak istediğiniz düzeni seçin. Örneğin **Birleşik kaydolma veya oturum açma sayfası**' nı seçin.
-1. **Sayfa düzeni sürümü (Önizleme)** için sürüm **1.2.0** veya üzerini seçin.
-1. **Kaydet**’i seçin.
+1. Azure portalının sol menüsünde **Azure AD B2C'yi**seçin.
+1. **İlkeler** **altında, Kullanıcı akışlarını (ilkeler)** seçin.
+1. Şirket markasını etkinleştirmek istediğiniz kullanıcı akışını seçin. *V1'de Oturum Açma* ve *V1* kullanıcı akış türleri için şirket markası **desteklenmez.**
+1. **Özelleştir'in** **altında, Sayfa düzenlerini**seçin ve ardından markalamak istediğiniz düzeni seçin. Örneğin, **Birleşik Kaydol'u seçin veya sayfada oturum açın.**
+1. Sayfa **Düzeni Sürümü (Önizleme)** için **sürüm 1.2.0** veya üzeri sürümü seçin.
+1. **Kaydet'i**seçin.
 
-Kullanıcı akışındaki tüm sayfaları markalaştırmak isterseniz, Kullanıcı akışındaki her sayfa düzeni için sayfa düzeni sürümünü ayarlayın.
+Kullanıcı akışındaki tüm sayfaları damgalamak istiyorsanız, kullanıcı akışındaki her sayfa düzeni için sayfa düzeni sürümünü ayarlayın.
 
-![Azure portal Azure AD B2C sayfa düzeni seçimi](media/customize-ui-overview/portal-02-page-layout-select.png)
+![Azure portalında Azure AD B2C'de sayfa düzeni seçimi](media/customize-ui-overview/portal-02-page-layout-select.png)
 
-Bu açıklamalı örnek, okyanus şablonu kullanan bir *kaydolma ve oturum açma* Kullanıcı akışı sayfasında özel bir başlık logosu ve arka plan görüntüsü gösterir:
+Bu açıklamalı örnek, Kaydol ve Ocean Blue şablonu kullanan kullanıcı akış sayfasında oturum aç'ta özel bir banner *logosunu ve* arka plan resmini gösterir:
 
-![Azure AD B2C tarafından sunulan markalı kaydolma/oturum açma sayfası](media/customize-ui-overview/template-ocean-blue-branded.png)
+![Azure AD B2C tarafından sunulan markalı kaydolma/kaydolma sayfası](media/customize-ui-overview/template-ocean-blue-branded.png)
 
-### <a name="use-company-branding-assets-in-custom-html"></a>Özel HTML 'de Şirket marka varlıklarını kullanma
+### <a name="use-company-branding-assets-in-custom-html"></a>Şirket marka varlıklarını özel HTML'de kullanma
 
-Şirket marka varlıklarınızı özel HTML 'de kullanmak için, `<div id="api">` etiketinin dışına aşağıdaki etiketleri ekleyin:
+Şirket marka varlıklarınızı özel HTML'de kullanmak için `<div id="api">` etiketin dışına aşağıdaki etiketleri ekleyin:
 
 ```HTML
 <img data-tenant-branding-background="true" />
 <img data-tenant-branding-logo="true" alt="Company Logo" />
 ```
 
-Görüntü kaynağı arka plan resminin ve başlık logosunun yerine konur. [Özel HTML ve CSS ile çalışmaya başlama](#get-started-with-custom-html-and-css) bölümünde açıklandığı gıbı, CSS sınıflarını stil için kullanarak ve varlıkları sayfada konumlandırın.
+Görüntü kaynağı arka plan görüntüsü ve afiş logosu ile değiştirilir. Özel HTML [ve CSS bölümüyle başlayın,](#get-started-with-custom-html-and-css) sayfadaki varlıkları stilve konumlandırmak için CSS sınıflarını kullanın.
 
 ## <a name="localize-content"></a>İçeriği yerelleştirin
 
-Azure AD B2C kiracınızda [dil özelleştirmesini](user-flow-language-customization.md) etkinleştirerek HTML içeriğinizi yerelleştirebilirsiniz. Bu özelliği etkinleştirmek Azure AD B2C OpenID Connect parametre `ui-locales` uç noktanıza iletmesini sağlar. İçerik sunucunuz, dile özgü HTML sayfaları sağlamak için bu parametreyi kullanabilir.
+Azure AD B2C kiracınızda [dil özelleştirmesini](user-flow-language-customization.md) etkinleştirerek HTML içeriğinizi yerelleştirirsiniz. Bu özelliği etkinleştirmek, Azure AD B2C'nin `ui-locales` OpenID Connect parametresini bitiş noktanıza iletmesine olanak tanır. İçerik sunucunuz bu parametreyi dile özgü HTML sayfaları sağlamak için kullanabilir.
 
-İçerik, kullanılan yerel ayara bağlı olarak farklı yerlerden çekeklenebilir. CORS etkin uç noktanıza, belirli diller için içerik barındırmak üzere bir klasör yapısı ayarlarsınız. `{Culture:RFC5646}`joker karakter değerini kullanırsanız, doğru olanı çağıracaksınız.
+İçerik, kullanılan yerel ekibe göre farklı yerlerden çekilebilir. CORS özellikli bitiş noktanızda, belirli diller için içeriği barındıracak bir klasör yapısı ayarlarsınız. Joker karakter değerini `{Culture:RFC5646}`kullanırsanız doğru olanı ararsınız.
 
-Örneğin, özel sayfa URI 'niz şöyle görünebilir:
+Örneğin, özel sayfanız URI şu şekilde görünebilir:
 
 ```HTTP
 https://contoso.blob.core.windows.net/{Culture:RFC5646}/myHTML/unified.html
 ```
 
-Buradan içerik çekerek sayfayı Fransızca olarak yükleyebilirsiniz:
+Aşağıdaki lerden içerik çekerek sayfayı Fransızca yükleyebilirsiniz:
 
 ```HTTP
 https://contoso.blob.core.windows.net/fr/myHTML/unified.html
@@ -227,15 +228,15 @@ https://contoso.blob.core.windows.net/fr/myHTML/unified.html
 
 ## <a name="examples"></a>Örnekler
 
-GitHub 'da [B2C-AzureBlobStorage-Client](https://github.com/azureadquickstarts/b2c-azureblobstorage-client) deposunda birkaç örnek şablon dosyası bulabilirsiniz.
+GitHub'daki [B2C-AzureBlobStorage-Client](https://github.com/azureadquickstarts/b2c-azureblobstorage-client) deposunda birkaç örnek şablon dosyası bulabilirsiniz.
 
 Şablonlarda örnek HTML ve CSS dosyaları [/sample_templates](https://github.com/AzureADQuickStarts/B2C-AzureBlobStorage-Client/tree/master/sample_templates) dizininde bulunur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- **Kullanıcı akışları**kullanıyorsanız, Kullanıcı arabiriminizi öğreticiyle özelleştirmeye başlayabilirsiniz:
+- **Kullanıcı akışlarını**kullanıyorsanız, kullanıcı arama nızı öğreticiyle özelleştirmeye başlayabilirsiniz:
 
-    [Azure Active Directory B2C ' de uygulamalarınızın Kullanıcı arabirimini özelleştirin](tutorial-customize-ui.md).
-- **Özel ilkeler**kullanıyorsanız, şu makaleyle Kullanıcı arabirimini özelleştirmeye başlayabilirsiniz:
+    [Azure Active Directory B2C'de uygulamalarınızın kullanıcı arabirimini özelleştirin.](tutorial-customize-ui.md)
+- **Özel ilkeler**kullanıyorsanız, kullanıcı arasını makaleyle özelleştirmeye başlayabilirsiniz:
 
-    [Azure Active Directory B2C özel bir ilke kullanarak uygulamanızın kullanıcı arabirimini özelleştirin](custom-policy-ui-customization.md).
+    [Azure Active Directory B2C'de özel bir ilke kullanarak uygulamanızın kullanıcı arabirimini özelleştirin.](custom-policy-ui-customization.md)

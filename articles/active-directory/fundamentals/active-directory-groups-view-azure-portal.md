@@ -1,6 +1,6 @@
 ---
-title: Hızlı Başlangıç-grupları & üyelerini görüntüleme-Azure AD
-description: Arama ve kuruluşunuzun gruplar ve atanan üyelerini görüntüleme hakkında yönergeler.
+title: Quickstart - Grupları & üyeleri görüntüleme - Azure AD
+description: Kuruluşunuzun gruplarını ve atanan üyelerini nasıl arayacağınız ve görüntüleyenlerle ilgili talimatlar.
 services: active-directory
 author: msaburnley
 manager: daveba
@@ -14,10 +14,10 @@ ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d52c90db5414c39c4e916bbab19c43739d9ea904
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "75423008"
 ---
 <!--As a brand-new Azure AD administrator, I need to view my organization’s groups along with the assigned members, so I can manage permissions to apps and services for people in my organization-->
@@ -27,7 +27,7 @@ Azure portalı kullanarak kuruluşunuzun mevcut gruplarını ve grup üyelerini 
 
 Bu hızlı başlangıçta, kuruluşunuzun tüm mevcut gruplarını ve atanmış üyelerini görüntüleyeceksiniz.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun. 
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun. 
 
 ## <a name="prerequisites"></a>Ön koşullar
 Başlamadan önce şunları gerçekleştirmeniz gerekir:
@@ -44,31 +44,31 @@ _MDM ilkesi - Batı_ adlı yeni bir grup oluşturun. Grup oluşturma hakkında d
 
 2. **Grup** sayfasını tamamlayın:
     
-    - **Grup türü:** **Güvenlik** öğesini seçin
+    - **Grup türü:****Güvenlik** öğesini seçin
     
-    - **Grup adı:** _MDM ilkesi - Batı_ yazın
+    - **Grup adı:**_MDM ilkesi - Batı_ yazın
     
-    - **Üyelik türü:** **Atanan** seçeneğini belirleyin.
+    - **Üyelik türü:****Atanan** seçeneğini belirleyin.
 
-3. **Oluştur**’u seçin.
+3. **Oluştur'u**seçin.
 
 ## <a name="create-a-new-user"></a>Yeni kullanıcı oluşturma
-_Alain Charon_ adı yeni bir kullanıcı oluşturun. Bir kullanıcı grup üyesi olarak eklenmeden önce mevcut olmalıdır. Kullanıcıların oluşturulacağı doğrulanmış etki alanı adını almak için önce "özel etki alanı adları" sekmesini kontrol edin. Kullanıcı oluşturma hakkında daha fazla bilgi için, bkz. [Kullanıcı ekleme veya silme](add-users-azure-active-directory.md).
+_Alain Charon_ adı yeni bir kullanıcı oluşturun. Bir kullanıcı grup üyesi olarak eklenmeden önce mevcut olmalıdır. Kullanıcı oluşturmak için doğrulanmış alan adını almak için önce "Özel alan adları" sekmesini işaretleyin. Kullanıcı oluşturma hakkında daha fazla bilgi için, bkz. [Kullanıcı ekleme veya silme](add-users-azure-active-directory.md).
 
 1. **Azure Active Directory**’yi, **Kullanıcılar**’ı ve ardından **Yeni kullanıcı**’yı seçin.
 
 2. **Kullanıcı** sayfasını tamamlayın:
 
-    - **Ad:** _Alain Charon_ yazın.
+    - **Ad:**_Alain Charon_ yazın.
 
-    - **Kullanıcı adı:** *\@contoso.com*yazın.
+    - **Kullanıcı adı:** *Alain\@contoso.com*yazın.
 
 3. **Parola** kutusunda sağlanan otomatik olarak oluşturulmuş parolayı kopyalayın ve ardından **Oluştur** seçeneğini belirleyin.
 
 ## <a name="add-a-group-member"></a>Grup üyesi ekleme
 Şimdi bir grubunuz ve kullanıcınız olduğuna göre, _Alain Charon_’u _MDM ilkesi - Batı_ grubuna üye olarak ekleyebilirsiniz. Grup üyelerini ekleme hakkında daha fazla bilgi için, bkz. [Grup üyelerini ekleme veya kaldırma](active-directory-groups-members-azure-portal.md).
 
-1. **Azure Active Directory** > **Gruplar**'ı seçin.
+1. **Azure Etkin Dizin** > **Grupları'nı**seçin.
 
 2. **Gruplar - Tüm gruplar** sayfasından, **MDM ilkesi - Batı** grubunu arayın ve seçin.
 
@@ -81,7 +81,7 @@ _Alain Charon_ adı yeni bir kullanıcı oluşturun. Bir kullanıcı grup üyesi
 ## <a name="view-all-groups"></a>Tüm grupları görüntüleme
 Kuruluşunuz için tüm grupları Azure portalın **Gruplar - Tüm gruplar** sayfasında görebilirsiniz.
 
-- Azure **Active Directory** > **Gruplar**’ı seçin.
+- Azure **Etkin Dizin** > **Grupları'nı**seçin.
 
     **Gruplar - Tüm gruplar** sayfası görüntülenir ve tüm etkin gruplarınız gösterilir.
 

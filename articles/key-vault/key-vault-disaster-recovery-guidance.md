@@ -1,6 +1,6 @@
 ---
-title: Azure Key Vault Azure Key Vault etkileyen bir Azure hizmet kesintisi durumunda yapılacaklar | Microsoft Docs
-description: Azure Key Vault etkileyen bir Azure hizmet kesintisi durumunda yapılacaklar hakkında bilgi edinin.
+title: Azure Key Vault - Azure Key Vault | Microsoft Dokümanlar
+description: Azure Anahtar Kasası'nı etkileyen bir Azure hizmetikesintisi durumunda ne yapmanız gerektiğini öğrenin.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,40 +10,40 @@ ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 530ae2b795b4d94802e9f0d3420f7b3af86936ad
-ms.sourcegitcommit: 225a0b8a186687154c238305607192b75f1a8163
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/29/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "78184647"
 ---
-# <a name="azure-key-vault-availability-and-redundancy"></a>Kullanılabilirlik ve yedeklilik Azure Key Vault
+# <a name="azure-key-vault-availability-and-redundancy"></a>Azure Anahtar Kasası kullanılabilirliği ve artıklığı
 
-, Tek tek hizmet bileşenleri başarısız olsa bile, anahtarlarınızın ve sırlarınızın uygulamanız için kullanılabilir kalmasını sağlamak için birden çok artıklık katmanı Azure Key Vault.
+Azure Key Vault, hizmetin tek tek bileşenleri başarısız olsa bile anahtarlarınızın ve sırlarınızın uygulamanızda kullanılabilir kalmasını sağlamak için birden çok yedek katmana sahiptir.
 
-Anahtar kasanızın içeriği bölge içinde ve bir ikincil bölgeye en az 150 mil uzakta, ancak aynı coğrafya dahilinde çoğaltılır. Bu, anahtarlarınızın ve sırlarınızın yüksek dayanıklılığına sahip olmasını sağlar. Belirli bölge çiftleri hakkındaki ayrıntılar için bkz. [Azure eşleştirilmiş bölgeler](../best-practices-availability-paired-regions.md) belgesi.
+Anahtar kasanızın içeriği bölge içinde ve en az 150 mil uzaktaki ikincil bir bölgeye ama aynı coğrafyada çoğaltılır. Bu anahtarlar ve sırları yüksek dayanıklılık korur. Belirli [bölge](../best-practices-availability-paired-regions.md) çiftleri hakkındaki ayrıntılar için Azure eşleştirilmiş bölgeler belgesine bakın.
 
-Anahtar Kasası hizmetindeki tek tek bileşenler başarısız olursa, işlevselliğe bir azalma olmadığından emin olmak için, içindeki bölge adımındaki alternatif bileşenler. Bunu tetiklemek için herhangi bir işlem gerçekleştirmeniz gerekmez. Otomatik olarak gerçekleşir ve sizin için saydam hale gelir.
+Anahtar kasa hizmetiiçindeki tek tek bileşenler başarısız olursa, işlevsellikte herhangi bir bozulma olmadığından emin olmak için isteğinizi sunmak için bölge içindeki alternatif bileşenler devreye giriyor. Bunu tetiklemek için herhangi bir işlem yapmanız gerekmez. Bu otomatik olarak olur ve size şeffaf olacaktır.
 
-Tüm Azure bölgesinin kullanılamadığı nadir bir olayda, bu bölgedeki Azure Key Vault yaptığınız istekler otomatik olarak ikincil bir bölgeye yönlendirilir (*Yük devredildi*). Birincil bölge yeniden kullanılabilir olduğunda, istekler birincil bölgeye geri yönlendirilir (*başarısız*olur). Yine de, bu otomatik olarak gerçekleştiğinden herhangi bir işlem yapmanız gerekmez.
+Tüm Azure bölgesinin kullanılamaması durumunda, o bölgedeki Azure Anahtar Kasası'ndan yaptığınız istekler otomatik olarak ikincil bir bölgeye yönlendirilir *(başarısız olun)* olur. Birincil bölge yeniden kullanılabilir olduğunda, istekler birincil bölgeye geri yönlendirilir *(başarısız oldu).* Yine, bu otomatik olarak gerçekleşir, çünkü herhangi bir eylem de gerekmez.
 
-Bu yüksek kullanılabilirlik tasarımı aracılığıyla Azure Key Vault bakım etkinlikleri için kapalı kalma süresi gerektirmez.
+Azure Key Vault, bu yüksek kullanılabilirlik tasarımı sayesinde bakım faaliyetleri için kapalı kalma süresi gerektirmez.
 
-Bilmeniz için bazı uyarılar vardır:
+Dikkat edilmesi gereken birkaç uyarı vardır:
 
-* Bölge yük devretmesi durumunda, hizmetin yük devretmesinin tamamlanması birkaç dakika sürebilir. Bu süre boyunca yapılan istekler yük devretme tamamlanana kadar başarısız olabilir.
-* Yük devretme tamamlandıktan sonra, anahtar kasanızın salt okuma modunda olması gerekir. Bu modda desteklenen istekler şunlardır:
-  * Anahtar kasalarını Listele
-  * Anahtar kasalarının özelliklerini al
-  * Gizli dizileri Listele
-  * Gizli dizileri al
-  * Anahtarları Listele
-  * Get (özellikleri) anahtarları
+* Bir bölgenin başarısız olması durumunda, hizmetin başarısız olması birkaç dakika sürebilir. Bu süre içinde yapılan istekler, başarısız olana kadar başarısız olabilir.
+* Bir failover tamamlandıktan sonra, anahtar kasası salt okunur modundadır. Bu modda desteklenen istekler şunlardır:
+  * Anahtar kasalarını listele
+  * Anahtar kasalarının özelliklerini alın
+  * Sırları listele
+  * Sırları alın
+  * Liste tuşları
+  * Anahtarları al (özellikleri)
   * Şifreleme
   * Şifre Çözme
-  * Ilacağını
+  * Sarma
   * Unwrap
   * Doğrulama
-  * İmzalayabilirsiniz
+  * İşaret
   * Backup
-* Yük devretme işlemi geri alındıktan sonra, tüm istek türleri (okuma *ve* yazma istekleri dahil) kullanılabilir.
+* Bir başarısız geri başarısız olduktan sonra, tüm istek türleri (okuma *ve* yazma istekleri dahil) kullanılabilir.
 

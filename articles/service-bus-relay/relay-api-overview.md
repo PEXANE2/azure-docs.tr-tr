@@ -1,6 +1,6 @@
 ---
-title: Azure Relay API 'ye Genel Bakış | Microsoft Docs
-description: Bu makalede, kullanılabilir Azure Relay API 'Lerine (.NET Standard, .NET Framework, Node. js vb.) ilişkin bir genel bakış sunulmaktadır.
+title: Azure Röle API'si genel bakış | Microsoft Dokümanlar
+description: Bu makale, kullanılabilir Azure Röle API'lerine (.NET Standardı, .NET Framework, Node.js, vb.) genel bir bakış sağlar
 services: event-hubs
 documentationcenter: na
 author: spelluru
@@ -15,48 +15,48 @@ ms.workload: na
 ms.date: 01/21/2020
 ms.author: spelluru
 ms.openlocfilehash: 41d9e2026c19c959dc6fe2546b0ef699571ec7cd
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "76513975"
 ---
-# <a name="available-relay-apis"></a>Kullanılabilir geçiş API 'Leri
+# <a name="available-relay-apis"></a>Kullanılabilir Röle API'leri
 
-## <a name="runtime-apis"></a>Çalışma zamanı API 'Leri
+## <a name="runtime-apis"></a>Çalışma Zamanı API'leri
 
-Aşağıdaki tabloda, şu anda kullanılabilir olan tüm geçiş çalışma zamanı istemcileri listelenmiştir.
+Aşağıdaki tabloda, şu anda kullanılabilir olan tüm Röle çalışma zamanı istemcileri listelenmektedir.
 
-[Ek bilgi](#additional-information) bölümü, her çalışma zamanı kitaplığının durumu hakkında daha fazla bilgi içerir.
+[Ek bilgi](#additional-information) bölümü, her çalışma zamanı kitaplığın durumu hakkında daha fazla bilgi içerir.
 
-| Dil/platform | Kullanılabilir özellik | İstemci paketi | Havuz |
+| Dil / Platform | Kullanılabilir özellik | İstemci paketi | Depo |
 | --- | --- | --- | --- |
 | .NET Standard | Karma Bağlantılar | [Microsoft.Azure.Relay](https://www.nuget.org/packages/Microsoft.Azure.Relay/) | [GitHub](https://github.com/azure/azure-relay-dotnet) |
 | .NET Framework | WCF Geçişi | [WindowsAzure.ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) | Yok |
-| Düğüm | Karma Bağlantılar | [WebSockets: `hyco-ws`](https://www.npmjs.com/package/hyco-ws)<br/>[WebSockets: `hyco-websocket`](https://www.npmjs.com/package/hyco-websocket)<br/>[HTTP Istekleri: `hyco-https`](https://www.npmjs.com/package/hyco-https) | [GitHub](https://github.com/Azure/azure-relay-node) |
+| Node | Karma Bağlantılar | [Websockets:`hyco-ws`](https://www.npmjs.com/package/hyco-ws)<br/>[Websockets:`hyco-websocket`](https://www.npmjs.com/package/hyco-websocket)<br/>[HTTP İstekleri:`hyco-https`](https://www.npmjs.com/package/hyco-https) | [GitHub](https://github.com/Azure/azure-relay-node) |
 
-### <a name="additional-information"></a>Ek Bilgi
+### <a name="additional-information"></a>Ek bilgiler
 
 #### <a name="net"></a>.NET
 
-.NET ekosisteminde birden fazla çalışma zamanı var, bu nedenle geçiş için birden çok .NET kitaplığı var. .NET Standard kitaplığı, .NET Core veya .NET Framework kullanılarak çalıştırılabilir, ancak .NET Framework kitaplığı yalnızca bir .NET Framework ortamında çalıştırılabilir. .NET çerçeveleri hakkında daha fazla bilgi için bkz. [Framework sürümleri](/dotnet/articles/standard/frameworks).
+.NET ekosisteminin birden çok çalışma süresi vardır, bu nedenle Röle için birden çok .NET kitaplık vardır. .NET Standart kitaplığı .NET Core veya .NET Framework kullanılarak çalıştırılabilirken, .NET Framework kitaplığı yalnızca .NET Framework ortamında çalıştırılabilir. .NET Frameworks hakkında daha fazla bilgi için [çerçeve sürümlerine](/dotnet/articles/standard/frameworks)bakın.
 
-.NET Framework kitaplığı yalnızca WCF programlama modelini destekler ve WCF `net.tcp` taşımasını temel alan özel bir ikili protokolü kullanır. Bu protokol ve kitaplık, mevcut uygulamalarla geriye dönük uyumluluk için korunur.
+.NET Framework kitaplığı yalnızca WCF programlama modelini destekler ve WCF `net.tcp` taşımasını temel alan özel bir ikili protokole dayanır. Bu protokol ve kitaplık, varolan uygulamalarla geriye dönük uyumluluk için korunur.
 
-.NET Standard kitaplığı, HTTP ve WebSockets üzerinde derlemelerin Karma Bağlantılar geçişinin açık protokol tanımına dayalıdır. Kitaplık, HTTP isteklerini yanıtlamak için WebSockets üzerinde bir akış soyutlama ve basit bir istek-yanıt API hareketi destekler. [Web API](https://github.com/Azure/azure-relay-dotnet) örneği, karma bağlantılar Web hizmetleri için ASP.NET Core nasıl tümleştirileceğini gösterir.
+.NET Standart kitaplığı, HTTP ve WebSockets'te bulunan Karma Bağlantılar Rölesi için açık protokol tanımına dayanır. Kitaplık, Websockets üzerinde bir akış soyutlama ve HTTP isteklerini yanıtlamak için basit bir istek yanıt API hareketi destekler. [Web API](https://github.com/Azure/azure-relay-dotnet) örneği, Karma Bağlantıların web hizmetleri için ASP.NET Core ile nasıl entegre edilebildiğini gösterir.
 
 #### <a name="nodejs"></a>Node.js
 
-Yukarıdaki tabloda listelenen Karma Bağlantılar modülleri, var olan Node. js modüllerini yerel ağ yığını yerine Azure Relay hizmetini dinleyen alternatif uygulamalarla değiştirir veya değiştirir.
+Yukarıdaki tabloda listelenen Karma Bağlantılar modülleri, yerel ağ yığını yerine Azure Röle hizmetini dinleyen alternatif uygulamalarla mevcut Düğüm.js modüllerini değiştirir veya değiştirir.
 
-`hyco-https` modülü, çekirdek Node. js modüllerini `http` ve `https`, var olan birçok Node. js modülleriyle ve bu temel modüllere dayalı uygulamalarla uyumlu bir HTTPS dinleyicisi uygulaması sağlayarak, kısmen geçersiz kılar.
+Modül, `hyco-https` çekirdek Düğüm.js modüllerini `http` değiştirir ve kısmen `https`geçersiz kılar ve bu çekirdek modüllere dayanan birçok mevcut Node.js modülü ve uygulamasıyla uyumlu bir HTTPS dinleyici uygulaması sağlar.
 
-`hyco-ws` ve `hyco-websocket` modülleri Node. js için popüler `ws` ve `websocket` modüllerini düzeltmiştir, bu iki modüle da bağlı olan modül ve uygulamaların Karma Bağlantılar geçişinin arkasında çalışmasına olanak tanıyan alternatif dinleyici uygulamaları sağlar.
+`hyco-ws` Ve `hyco-websocket` modüller, Node.js için popüler `ws` ve `websocket` modülleri değiştirerek, modüllerin ve uygulamaların her iki modüle de bağlı olarak Hibrit Bağlantı Rölesi'nin arkasında çalışmasını sağlayan alternatif dinleyici uygulamaları sağlar.
 
-Bu modüllerle ilgili ayrıntılar [Azure-Relay-node](https://github.com/Azure/azure-relay-node) GitHub deposunda bulunabilir.
+Bu modüllerle ilgili ayrıntılar [azure-röle düğümü](https://github.com/Azure/azure-relay-node) GitHub deposunda bulunabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Relay hakkında daha fazla bilgi edinmek için şu bağlantıları ziyaret edin:
+Azure Röle hakkında daha fazla bilgi edinmek için aşağıdaki bağlantıları ziyaret edin:
 * [Azure Geçiş nedir?](relay-what-is-it.md)
 * [Geçiş hakkında SSS](relay-faq.md)

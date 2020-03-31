@@ -1,62 +1,62 @@
 ---
-title: Azure bilişsel hizmetler ile iş sorunlarını gidermek için yapay zeka kullanma
-description: Yapay zeka tarafından desteklenen akıllı mobil uygulamalar oluşturmak için hizmet hakkında bilgi edinin.
-author: elamalani
+title: Azure Bilişsel Hizmetler ile iş sorunlarını çözmek için yapay zekayı kullanın
+description: Yapay zeka ile çalışan akıllı mobil uygulamalar oluşturma hizmeti hakkında bilgi edinin.
+author: codemillmatt
 ms.assetid: 34a8a070-0123-4faf-8588-ccff02097224
 ms.service: vs-appcenter
 ms.topic: article
-ms.date: 10/22/2019
-ms.author: emalani
-ms.openlocfilehash: ad4babc68f39851beeb3a5c46d295a3342c63026
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 03/24/2020
+ms.author: masoucou
+ms.openlocfilehash: a3955379248c284066ec57d67e61654ac664bfa5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453198"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80240936"
 ---
-# <a name="cognitive-services-helps-to-solve-business-problems-by-using-ai"></a>Bilişsel hizmetler, AI kullanarak iş sorunlarını çözmeye yardımcı olur
-[Azure](https://azure.microsoft.com/services/cognitive-services/) bilişsel hizmetler, verilerinizi yapay zeka (AI) ile dönüştürmek üzere kullanıcılarınızın ihtiyaçlarını görmek, dinlemek, konuşmak, anlamak ve yorumlamak için akıllı algoritmalarla birlikte kullanmak üzere güçlü hizmetler sunar. Mobil uygulamalarınızı kullanıcılarınız için akıllı, ilgi çekici ve bağlamsal olarak uygun hale getirebilirsiniz. Geliştiriciler, kendi tekliflerine AI eklemek ve doğrudan AI veya veri bilimi becerileri olmadan akıllı uygulamalar oluşturmaya yardımcı olmak için API 'Leri, SDK 'Ları ve hizmetleri kullanabilir.
+# <a name="cognitive-services-helps-to-solve-business-problems-by-using-ai"></a>Bilişsel Hizmetler AI kullanarak iş sorunları çözmek için yardımcı olur
+[Azure Bilişsel Hizmetler,](https://azure.microsoft.com/services/cognitive-services/) kullanıcınızın işinizi yapay zeka (AI) ile dönüştürmek için gereksinimlerinizi görmek, duymak, konuşmak, anlamak ve yorumlamak için uygulamalarınızı akıllı algoritmalarla aşılamak için güçlü hizmetler sunar. Mobil uygulamalarınızı kullanıcılarınız için akıllı, ilgi çekici ve bağlamsal olarak alakalı hale getirebilirsiniz. Geliştiriciler API'leri, SDK'ları ve hizmetleri, tekliflerine AI eklemek ve doğrudan AI veya veri bilimi becerilerine sahip olmadan akıllı uygulamalar oluşturmaya yardımcı olmak için kullanabilir.
 
-## <a name="cognitive-services-capabilities"></a>Bilişsel hizmetler özellikleri
-- **Vision**
+## <a name="cognitive-services-capabilities"></a>Bilişsel Hizmetler yetenekleri
+- **Görsel**
     - Resim etiketleme, küçük resimler
     - OCR (el yazısı tanıma)
     - Yüz algılama
     - Duygu algılama
-    - Video öngörüleri
-    - Görüntü ve video denetleme
+    - Video istatistikleri
+    - Görüntü ve video moderasyonu
     - Özelleştirilmiş görüntü tanıma
 
-- **Konuşmayı**
-    - Konuşmayı metne dönüştürme (konuşma dökümü)
-    - Özelleştirilmiş konuşma dökümü (karmaşık sözcükler, gürültülü ortam)
+- **Konuşma**
+    - Metne konuşma (konuşma transkripsiyonu)
+    - Özelleştirilmiş konuşma transkripsiyonu (karmaşık kelimeler, gürültülü ortam)
     - Metin okuma
-    - Konuşmacı KIMLIĞI ve kimlik doğrulaması
+    - Hoparlör kimliği ve kimlik doğrulama
     - Gerçek zamanlı konuşma çevirisi
 
 - **Dil**
-    - Bağlamsal dil anlama, özelleştirilmiş amaç analizi
-    - Yaklaşım analizi, anahtar tümceciği algılama
-    - 60 dile kadar olan metin çevirisi
+    - Bağlamsal dil anlayışı, özelleştirilmiş niyet analizi
+    - Duygu analizi, anahtar ifade algılama
+    - 60 dile kadar metin çevirisi
     - Metin denetimi
     - Yazım denetimi
 
-- **Seçim** 
-    - İçerik Yöneticisi
-    - Kişiselleştirilmiş içerik teslimi
-    - Anomali algılayıcısı
+- **Karar** 
+    - İçerik moderatör
+    - Kişiselleştirilmiş içerik dağıtımı
+    - Anomali dedektörü
 
-- **Search**
+- **Arama**
     - Otomatik arama önerileri 
-    - Varlık bilgileri genişletmesi
-    - Kapsamlı Haberler, görüntü, video, Web ve yerel iş tüzel kişiliği arama
-    - Uyarlanmış ve özelleştirilmiş arama deneyimleri
+    - Varlık bilgi büyütme
+    - Kapsamlı haber, görüntü, video, web ve yerel işletme varlığı arama
+    - Özelleştirilmiş ve özelleştirilmiş arama deneyimleri
 
-- Bilişsel hizmetler için kapsayıcılar desteği
+- Bilişsel Hizmetler için konteyner desteği
 
  ## <a name="references"></a>Başvurular
-   - [Azure Portal](https://portal.azure.com) 
-   - [Bilişsel Hizmetler Belgeleri](/azure/cognitive-services/welcome)
+   - [Azure portalında](https://portal.azure.com) 
+   - [Bilişsel Hizmetler belgeleri](/azure/cognitive-services/welcome)
    - [Hızlı başlangıçlar](/azure/cognitive-services/cognitive-services-apis-create-account)
    - [Kapsayıcı desteği](/azure/cognitive-services/cognitive-services-container-support)
    - [Hızlı başlangıçlar](/azure/cognitive-services/cognitive-services-apis-create-account?tabs=multiservice%2Cwindows)

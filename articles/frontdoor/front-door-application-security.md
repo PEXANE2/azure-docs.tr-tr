@@ -1,6 +1,6 @@
 ---
-title: Azure ön kapısı hizmeti - uygulama katman güvenlik | Microsoft Docs
-description: Bu makale, nasıl Azure ön kapısı Service, uygulama arka uçları korunmasına olanak anlamanıza yardımcı olur.
+title: Azure Ön Kapı - Uygulama katmanı güvenliği | Microsoft Dokümanlar
+description: Bu makale, Azure Ön Kapı'nın uygulama arka uçlarınızı nasıl koruduğuve güvenli hale getirebildiğini anlamanıza yardımcı olur
 services: frontdoor
 documentationcenter: ''
 author: sharad4u
@@ -11,42 +11,42 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: c7b99548e2fe1ad0c1cab39953e28a97e7ebff4b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e458926930c1b95d48886559551878fc6c9d0673
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60193926"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79471804"
 ---
-# <a name="application-layer-security-with-front-door"></a>Uygulama Katmanı Güvenliği ile ön kapısı
-Azure ön kapısı hizmeti, ağ saldırılarına ve SQL ekleme veya çoklu Site komut dizisi (XSS) gibi yaygın web güvenlik açıklarına web uygulamalarınızı korumak için web uygulaması koruma özelliği sağlar. Http (s) için ön uç etkin, ön kapısı'nın uygulama katman güvenlik dünya çapında dağıtılır ve her zaman açık, Azure'nın Network durdurma kötü amaçlı saldırıları, uzakta uçlarınıza kenar. Ekstra güvenlik ve performans iyileştirme sayesinde ön kapısı hızlı sunar ve son kullanıcılarınızın güvenli web deneyimleri.
+# <a name="application-layer-security-with-front-door"></a>Ön Kapılı uygulama katmanı güvenliği
+Azure Ön Kapı, web uygulamalarınızı ağ saldırılarına ve SQL Injection veya Cross Site Scripting (XSS) gibi yaygın web güvenlik açıklarından korumak için web uygulama koruma özelliği sağlar. Ön uçlar için etkinleştirilen Front Door'un uygulama katmanı güvenliği, azure'un ağ kenarında, arka uçlarınızdan uzakta, kötü amaçlı saldırıları durdurarak genel olarak dağıtılır ve her zaman açıktır. Daha fazla güvenlik ve performans optimizasyonu ile Ön Kapı, son kullanıcılarınıza hızlı ve güvenli web deneyimleri sunar.
 
 ## <a name="application-protection"></a>Uygulama koruması
-Ön kapısı'nın uygulama koruması uygulamaları ayarlarına uygun olarak dünyanın her edge ortamında yapılandırılmış ve otomatik olarak olmayan engeller-http (s) trafiğinin ulaşmasını web uygulamalarınızı. Çok kiracılı dağıtılmış mimarimiz performanstan ödün vermeden uygun ölçekte genel koruma sağlar. Http (s) iş yükleri için ön kapı'nın web uygulaması koruma hizmeti için özel kurallar, önceden yapılandırılmış bir kural kümesi genel saldırılara karşı bir zengin kurallar altyapısı sağlar ve tüm istekler için günlük ayrıntılı bir kural eşleşen. Esnek Eylemler dahil olmak üzere izin verme, engelleme veya günlük yalnızca desteklenir.
+Front Door'un uygulama koruması, dünyanın her bir kenar ortamında, uygulamalara uygun olarak yapılandırılır ve otomatik olarak web uygulamalarınıza ulaşmasını engelleyen http(ler) olmayan trafiği engeller. Çok kiracılı dağıtılmış mimarimiz, performanstan ödün vermeden ölçekte küresel koruma sağlar. Http(ler) iş yükleri için, Front Door'un web uygulama koruma hizmeti özel kurallar için zengin bir kural altyapısı, yaygın saldırılara karşı önceden yapılandırılmış kural kümesi ve bir kuralla eşleşen tüm istekler için ayrıntılı günlük sağlar. Yalnızca izin verme, engelleme veya günlük gibi esnek eylemler desteklenir.
 
-## <a name="custom-access-control-rules"></a>Özel erişim denetimi kuralları
-- **IP listesi ve Engellenenler listesine izin ver:** Web uygulamalarınızı istemci IP adreslerinin listesine göre erişimi denetlemek için özel kurallar yapılandırabilirsiniz. IP v4 hem de IP v6 desteklenir
-- **Coğrafi tabanlı erişim denetimi:** Web uygulamalarınızı istemci IP'si dandır ülke kodu göre erişimi denetlemek için özel kurallar yapılandırabilirsiniz.
-- **HTTP parametreleri: filtreleme** Üst bilgiler, URL ve sorgu dizeleri dahil olmak üzere http (s) istek parametrelerini eşleşmesi temeline göre özel erişim kuralları yapılandırabilirsiniz.
+## <a name="custom-access-control-rules"></a>Özel erişim denetim kuralları
+- **IP izin listesi ve blok listesi:** İstemci IP adresleri listesine göre web uygulamalarınıza erişimi denetlemek için özel kurallar yapılandırabilirsiniz. Hem IP v4 hem de IP v6 desteklenir
+- **Coğrafi tabanlı erişim kontrolü:** Web uygulamalarınız için erişimi bir istemci IP'nin geldiği ülke koduna göre denetlemek için özel kurallar yapılandırabilirsiniz
+- **HTTP parametreleri filtreleme:** Üstbilgi, URL ve sorgu dizeleri de dahil olmak üzere http(ler) istek parametrelerini eşleştirerek özel erişim kurallarını yapılandırabilirsiniz
 
-## <a name="azure-managed-rules"></a>Azure tarafından yönetilen kuralları
-- Önceden yapılandırılmış üst OWASP yaygın güvenlik açıklarına karşı kurallar kümesi varsayılan olarak etkindir. Önizleme'de sqli ve xss istekleri denetleme kuralları kümesi içerir. Ek kuralları eklenir. Önceden yapılandırılmış bir kural iş uygulamalarınız için beklendiği gibi doğrulamak için yalnızca eylem günlüğü başlayacağınızı seçebilirsiniz 
+## <a name="azure-managed-rules"></a>Azure tarafından yönetilen kurallar
+- Genel olarak üst Düzey OWASP güvenlik açıklarına karşı önceden yapılandırılmış bir kural kümesi varsayılan olarak etkinleştirilir. Önizlemede, kurallar kümesi sqli ve xss isteklerini denetlemeyi içerir. Ek kurallar eklenecektir. Önceden yapılandırılmış kuralların uygulamalarınız için beklendiği gibi çalıştığını doğrulamak için yalnızca günlük eylemiyle başlamayı seçebilirsiniz 
 
-## <a name="rate-limiting"></a>Oran sınırlandırma
-- Oranı denetimi kuralı, tüm istemci IP olağandışı yüksek trafik çalıştırmanız gerekir.  İstemci IP tarafından bir dakikalık süre izin verilen web isteklerinin sayısı bir eşiği ayarlayabilir.
+## <a name="rate-limiting"></a>Hız sınırlaması
+- Bir oran denetimi kuralı herhangi bir istemci IP anormal yüksek trafik sınırlamaktır.  Bir dakikalık süre boyunca istemci IP tarafından izin verilen web istekleri sayısına bir eşik belirleyebilirsiniz.
 
-## <a name="centralized-protection-policy"></a>Merkezi koruma İlkesi
-- Birden çok koruma kuralları tanımlayın ve bunları öncelik sırasına göre bir ilke eklemeniz. Özel kurallar, özel durumlara izin vermek için yönetilen ruleset daha yüksek önceliğe sahiptir. Web uygulamanız için tek bir ilke ilişkilidir.  Aynı web uygulama koruma İlkesi, tüm konumlardaki tüm uç sunucularına çoğaltılır, tutarlı bir güvenlik ilkesi tüm bölgelerde emin olun
+## <a name="centralized-protection-policy"></a>Merkezi koruma politikası
+- Birkaç koruma kuralı tanımlayabilir ve bunları öncelik sırasına göre bir İlke'ye ekleyebilirsiniz. Özel kurallar, özel durumlara izin vermek için yönetilen kural kümesinden daha yüksek önceliğe sahiptir. Tek bir ilke web uygulamanızla ilişkilidir.  Aynı web uygulaması koruma ilkesi tüm konumlardaki tüm kenar sunucularına çoğaltılır, tüm bölgelerde tutarlı güvenlik ilkesi sağlar
 
 ## <a name="configuration"></a>Yapılandırma
-- Önizleme süresince, ön kapısı'nın uygulama koruma kuralları ve ilkeleri oluşturmak ve dağıtmak için REST API'ler, PowerShell veya CLI kullanabilir. Hizmet genel olarak kullanılabilir hale gelmeden önce portala erişim desteklenmez. 
+- Önizleme sırasında, Front Door'un uygulama koruma kurallarını ve ilkelerini oluşturmak ve dağıtmak için REST API'lerini, PowerShell'i veya CLI'yi kullanabilirsiniz. Hizmet genel olarak kullanılabilir olmadan önce portal erişimi desteklenir. 
 
 
 ## <a name="monitoring"></a>İzleme
-Ön kapısı uyarıları izleyin ve eğilimleri daha kolay izlemek için Azure İzleyici ile tümleşik olan gerçek zamanlı ölçümler kullanarak saldırılarına karşı web uygulamalarını izleme olanağı sağlar.
+Front Door, uyarıları izlemek ve eğilimleri kolayca izlemek için Azure Monitor ile entegre edilmiş gerçek zamanlı ölçümler kullanarak saldırılara karşı web uygulamalarını izleme olanağı sağlar.
 
 ## <a name="pricing"></a>Fiyatlandırma
-Ön kapısı'nın uygulama katmanı güvenliği, Önizleme süresince ücretsizdir.
+Ön Kapı'nın uygulama katmanı güvenliği önizleme sırasında ücretsizdir.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

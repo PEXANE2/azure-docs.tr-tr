@@ -1,6 +1,6 @@
 ---
-title: Görevleri Visual Studio Code otomatikleştirin
-description: Visual Studio Code kullanarak mantıksal uygulama temel alınan JSON tanımlarını oluşturma veya düzenleme (VS Code)
+title: Visual Studio Code ile görevleri otomatikleştirin
+description: Visual Studio Code (VS Code) kullanarak JSON tanımlarının altında yatan mantık uygulaması oluşturma veya düzenleme
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, deli, logicappspm
@@ -8,129 +8,129 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/25/2019
 ms.openlocfilehash: 819a60887743f39d3c2ffab3c955b2980cee2725
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/03/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "74784842"
 ---
-# <a name="quickstart-create-and-manage-logic-app-workflow-definitions-by-using-visual-studio-code"></a>Hızlı başlangıç: Visual Studio Code kullanarak mantıksal uygulama iş akışı tanımlarını oluşturma ve yönetme
+# <a name="quickstart-create-and-manage-logic-app-workflow-definitions-by-using-visual-studio-code"></a>Quickstart: Visual Studio Code kullanarak mantık uygulaması iş akışı tanımlarını oluşturma ve yönetme
 
-[Azure Logic Apps](../logic-apps/logic-apps-overview.md) ve Visual Studio Code sayesinde, kuruluşlar ve kuruluşlar genelinde uygulamaları, verileri, sistemleri ve Hizmetleri tümleştirmek için görevleri, iş akışlarını ve işlemleri otomatikleştirmenize yardımcı olan Logic Apps oluşturabilir ve yönetebilirsiniz. Bu hızlı başlangıçta, kod tabanlı bir deneyim aracılığıyla Logic Apps için JavaScript Nesne Gösterimi (JSON) kullanan temel alınan iş akışı tanımlarını nasıl oluşturabileceğiniz ve düzenleyebileceği gösterilmektedir. Ayrıca, Azure 'a zaten dağıtılan mevcut Logic Apps üzerinde de çalışabilirsiniz.
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md) ve Visual Studio Code ile, uygulamaları, verileri, sistemleri ve hizmetleri kuruluşlar ve kuruluşlar arasında tümleştirmek için görevleri, iş akışlarını ve süreçleri otomatikleştirmenize yardımcı olan mantıksal uygulamalar oluşturabilir ve yönetebilirsiniz. Bu hızlı başlangıç, kod tabanlı bir deneyim aracılığıyla mantık uygulamaları için JavaScript Object Notation (JSON) kullanan temel iş akışı tanımlarını nasıl oluşturabileceğinizi ve bunları nasıl edebileceğinizi gösterir. Azure'a zaten dağıtılmış olan varolan mantık uygulamaları üzerinde de çalışabilirsiniz.
 
-Aynı görevleri [Azure Portal](https://portal.azure.com) ve Visual Studio 'da gerçekleştirebilmenize karşın, Logic App tanımlarını zaten öğreniyor ve doğrudan kodda çalışmak istediğinizde Visual Studio Code daha hızlı bir şekilde çalışmaya başlayın. Örneğin, önceden oluşturulmuş mantıksal uygulamaları devre dışı bırakabilir, etkinleştirebilir, silebilir ve yenileyebilirsiniz. Ayrıca, Linux, Windows ve Mac gibi Visual Studio Code çalıştığı tüm geliştirme platformlarından Logic Apps ve tümleştirme hesapları üzerinde çalışabilirsiniz.
+Aynı görevleri [Azure portalında](https://portal.azure.com) ve Visual Studio'da gerçekleştirebiliyor olsanız da, mantıksal uygulama tanımlarını zaten bildiğiniz ve doğrudan kod la çalışmak istediğinizde Visual Studio Code'a daha hızlı başlayabilirsiniz. Örneğin, zaten oluşturulmuş mantık uygulamalarını devre dışı kılabilir, etkinleştirebilir, silebilir ve yenileyebilirsiniz. Ayrıca, Visual Studio Code'un çalıştığı Linux, Windows ve Mac gibi herhangi bir geliştirme platformundan mantık uygulamaları ve tümleştirme hesapları üzerinde çalışabilirsiniz.
 
-Bu makalede, temel kavramlara daha fazla odaklanan olan bu [hızlı](../logic-apps/quickstart-create-first-logic-app-workflow.md)başlangıçta aynı mantıksal uygulamayı oluşturabilirsiniz. Visual Studio Code, mantıksal uygulama şu örneğe benzer şekilde görünür:
+Bu makale için, temel kavramlara daha fazla odaklanan bu [quickstart'tan](../logic-apps/quickstart-create-first-logic-app-workflow.md)aynı mantık uygulamasını oluşturabilirsiniz. Visual Studio Code'da mantık uygulaması aşağıdaki örnekgibi görünür:
 
-![Örnek mantıksal uygulama iş akışı tanımı](./media/quickstart-create-logic-apps-visual-studio-code/visual-studio-code-overview.png)
+![Örnek mantık uygulaması iş akışı tanımı](./media/quickstart-create-logic-apps-visual-studio-code/visual-studio-code-overview.png)
 
 Başlamadan önce şunlara sahip olduğunuzdan emin olun:
 
-* Azure hesabınız ve aboneliğiniz yoksa [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
+* Azure hesabınız ve aboneliğiniz yoksa, [ücretsiz bir Azure hesabı için kaydolun.](https://azure.microsoft.com/free/)
 
-* [Mantıksal uygulama iş akışı tanımları](../logic-apps/logic-apps-workflow-definition-language.md) ve JSON ile açıklandığı şekilde yapısı hakkında temel bilgi
+* JSON ile açıklandığı gibi [mantık uygulaması iş akışı tanımları](../logic-apps/logic-apps-workflow-definition-language.md) ve yapıları hakkında temel bilgi
 
-  Logic Apps yeni başladıysanız, Azure portal ilk mantıksal uygulamalarınızı oluşturan ve temel kavramlara odaklanmakta olan bu [hızlı](../logic-apps/quickstart-create-first-logic-app-workflow.md)başlangıcı deneyin.
+  Logic Apps'ta yeniyseniz, Azure portalında ilk mantık uygulamalarınızı oluşturan ve temel kavramlara daha fazla odaklanan bu [hızlı başlangıcı](../logic-apps/quickstart-create-first-logic-app-workflow.md)deneyin.
 
-* Azure 'da ve Azure aboneliğinizde oturum açmak için Web 'e erişin
+* Azure'da oturum açmak için web'e ve Azure aboneliğinize erişim
 
 * Henüz yoksa şu araçları indirip yükleyin:
 
-  * [Visual Studio Code sürüm 1.25.1 veya üzeri](https://code.visualstudio.com/), ücretsiz
+  * [Visual Studio Code sürüm 1.25.1 veya daha sonra](https://code.visualstudio.com/), hangi ücretsizdir
 
-  * Azure Logic Apps için Visual Studio Code uzantısı
+  * Azure Mantık Uygulamaları için Visual Studio Code uzantısı
 
-    Bu uzantıyı [Visual Studio Market](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-logicapps) indirebilir ve doğrudan Visual Studio Code içinden yükleyebilirsiniz. Yükledikten sonra Visual Studio Code yeniden yüklediğinizden emin olun.
+    Bu uzantıyı [Visual Studio Marketplace'ten](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-logicapps) veya doğrudan Visual Studio Code'un içinden indirip yükleyebilirsiniz. Yükledikten sonra Visual Studio Code'u yeniden yüklediğinizden emin olun.
 
-    !["Azure Logic Apps için Visual Studio Code uzantısını bul"](./media/quickstart-create-logic-apps-visual-studio-code/find-install-logic-apps-extension.png)
+    !["Azure Mantık Uygulamaları için Visual Studio Code uzantısını" bulun](./media/quickstart-create-logic-apps-visual-studio-code/find-install-logic-apps-extension.png)
 
-    Uzantının doğru şekilde yüklenip yüklenmediğini denetlemek için Visual Studio Code araç çubuğinizdeki görünen Azure simgesini seçin.
+    Uzantınızın doğru yüklenmesini denetlemek için Visual Studio Code araç çubuğunuzda görünen Azure simgesini seçin.
 
-    ![Uzantının doğru yüklendiğini onaylayın](./media/quickstart-create-logic-apps-visual-studio-code/confirm-installed-visual-studio-code-extension.png)
+    ![Uzantındoğru yüklenmiş onaylayın](./media/quickstart-create-logic-apps-visual-studio-code/confirm-installed-visual-studio-code-extension.png)
 
-    Daha fazla bilgi için bkz. [uzantı marketi](https://code.visualstudio.com/docs/editor/extension-gallery). Bu uzantının açık kaynaklı sürümüne katkıda bulunmak için [GitHub 'daki Visual Studio Code Azure Logic Apps uzantısını](https://github.com/Microsoft/vscode-azurelogicapps)ziyaret edin.
+    Daha fazla bilgi için [Uzantı Marketi'ne](https://code.visualstudio.com/docs/editor/extension-gallery)bakın. Bu uzantın açık kaynak sürümüne katkıda bulunmak [için GitHub'daki Visual Studio Code için Azure Logic Apps uzantısını](https://github.com/Microsoft/vscode-azurelogicapps)ziyaret edin.
 
 <a name="sign-in-azure"></a>
 
-## <a name="sign-in-to-azure"></a>Azure'da oturum açın
+## <a name="sign-in-to-azure"></a>Azure'da oturum açma
 
 1. Visual Studio Code'u açın. Visual Studio Code araç çubuğunda Azure simgesini seçin.
 
    ![Visual Studio Code araç çubuğunda Azure simgesini seçin](./media/quickstart-create-logic-apps-visual-studio-code/open-extensions-visual-studio-code.png)
 
-1. Azure penceresinde, **Logic Apps**altında **Azure 'da oturum aç**' ı seçin. Microsoft oturum açma sayfası sizi isterse, Azure hesabınızla oturum açın.
+1. Azure penceresinde, **Logic Apps**altında, **Azure'da Oturum Aç'ı**seçin. Microsoft oturum açma sayfası sizden istendiğinde, Azure hesabınızla oturum açın.
 
-   !["Azure 'da oturum aç" ı seçin](./media/quickstart-create-logic-apps-visual-studio-code/sign-in-azure-visual-studio-code.png)
+   !["Azure'da Oturum Aç" seçeneğini belirleyin](./media/quickstart-create-logic-apps-visual-studio-code/sign-in-azure-visual-studio-code.png)
 
-   1. Oturum açma normalden uzun sürerse Visual Studio Code, size bir cihaz kodu sağlayarak bir Microsoft kimlik doğrulama Web sitesinde oturum açmanızı ister. Bunun yerine kodla oturum açmak için **Cihaz kodunu kullan**' ı seçin.
+   1. Oturum açma normalden uzun sürüyorsa, Visual Studio Code size bir aygıt kodu sunarak microsoft kimlik doğrulama web sitesinde oturum açmanızı ister. Bunun yerine kodla oturum açabilmek için **Aygıt Kodunu Kullan'ı**seçin.
 
-      ![Bunun yerine cihaz koduyla devam et](./media/quickstart-create-logic-apps-visual-studio-code/use-device-code-prompt.png)
+      ![Bunun yerine aygıt koduyla devam edin](./media/quickstart-create-logic-apps-visual-studio-code/use-device-code-prompt.png)
 
-   1. Kodu kopyalamak için **kopyala & aç**' ı seçin.
+   1. Kodu kopyalamak **için, Aç&** kopyala'yı seçin.
 
-      ![Azure oturum açma için kodu kopyalayın](./media/quickstart-create-logic-apps-visual-studio-code/sign-in-prompt-authentication.png)
+      ![Azure oturum açma için kod kopyalama](./media/quickstart-create-logic-apps-visual-studio-code/sign-in-prompt-authentication.png)
 
-   1. Yeni bir tarayıcı penceresi açmak ve kimlik doğrulama Web sitesine devam etmek için **bağlantıyı aç**' ı seçin.
+   1. Yeni bir tarayıcı penceresi açmak ve kimlik doğrulama web sitesine devam etmek için **Bağlantıyı Aç'ı**seçin.
 
-      ![Bir tarayıcı açmayı ve kimlik doğrulama Web sitesine giderek onaylayın](./media/quickstart-create-logic-apps-visual-studio-code/confirm-open-link.png)
+      ![Tarayıcı açma ve kimlik doğrulama web sitesine gitme onaylama](./media/quickstart-create-logic-apps-visual-studio-code/confirm-open-link.png)
 
-   1. **Hesabınızda oturum açın** sayfasında, kimlik doğrulama kodunuzu girin ve **İleri**' yi seçin.
+   1. Hesap **sayfanızda Oturum Aç'ta** kimlik doğrulama kodunuzu girin ve **İleri'yi**seçin.
 
       ![Azure oturum açma için kimlik doğrulama kodunu girin](./media/quickstart-create-logic-apps-visual-studio-code/authentication-code-azure-sign-in.png)
 
-1. Azure hesabınızı seçin. Oturum açtıktan sonra tarayıcınızı kapatabilir ve Visual Studio Code geri dönebilirsiniz.
+1. Azure hesabınızı seçin. Oturum açmadan sonra tarayıcınızı kapatıp Visual Studio Code'a dönebilirsiniz.
 
-   Azure bölmesinde **Logic Apps** ve **tümleştirme hesapları** bölümleri artık hesabınızla ilişkili Azure aboneliklerini gösterir. Ancak, istediğiniz abonelikleri görmüyorsanız veya bölümler çok fazla abonelik gösterdiğinde, şu adımları izleyin:
+   Azure bölmesinde, **Mantıksal Uygulamalar** ve **Tümleştirme Hesapları** bölümleri artık hesabınızla ilişkili Azure aboneliklerini gösterir. Ancak, beklediğiniz abonelikleri görmüyorsanız veya bölümlerde çok fazla abonelik varsa aşağıdaki adımları izleyin:
 
-   1. İşaretçinizi **Logic Apps** etiketinin üzerine taşıyın. Araç çubuğu göründüğünde, **abonelikleri Seç** (filtre simgesi) öğesini seçin.
+   1. İşaretçinizi **Logic Apps** etiketinin üzerine taşıyın. Araç çubuğu göründüğünde, **Abonelikleri Seç** 'i (filtre simgesi) seçin.
 
-      ![Azure abonelikleri bulma veya filtreleme](./media/quickstart-create-logic-apps-visual-studio-code/find-or-filter-subscriptions.png)
+      ![Azure aboneliklerini bulma veya filtreleme](./media/quickstart-create-logic-apps-visual-studio-code/find-or-filter-subscriptions.png)
 
-   1. Görüntülenen listeden, görünmesini istediğiniz abonelikleri seçin.
+   1. Görünen listeden, görünmesini istediğiniz abonelikleri seçin.
 
-1. **Logic Apps**altında istediğiniz aboneliği seçin. Abonelik düğümü genişletilir ve bu abonelikte bulunan tüm mantıksal uygulamaları gösterir.
+1. **Logic Apps**altında, istediğiniz aboneliği seçin. Abonelik düğümü genişler ve bu abonelikte bulunan tüm mantık uygulamalarını gösterir.
 
    ![Azure aboneliğinizi seçin](./media/quickstart-create-logic-apps-visual-studio-code/select-azure-subscription.png)
 
    > [!TIP]
-   > **Tümleştirme hesapları**altında, aboneliğinizi seçtiğinizde söz konusu abonelikte bulunan tümleştirme hesapları gösterilir.
+   > **Tümleştirme Hesapları**altında, aboneliğinizi seçmek, bu abonelikte bulunan tümleştirme hesaplarını gösterir.
 
 <a name="create-logic-app"></a>
 
-## <a name="create-new-logic-app"></a>Yeni mantıksal uygulama oluştur
+## <a name="create-new-logic-app"></a>Yeni mantık uygulaması oluşturma
 
-1. Azure hesabınızda ve aboneliğinizden Visual Studio Code içinden henüz oturum açmadıysanız, [önceki adımları izleyerek hemen oturum açın](#sign-in-azure).
+1. Azure hesabınızda henüz oturum açmadıysanız ve Visual Studio Code'un içinden abonelik aldıysanız, [şimdi oturum açmak için önceki adımları](#sign-in-azure)izleyin.
 
-1. Visual Studio Code ' un altında, **Logic Apps**altında, aboneliğinizin kısayol menüsünü açın ve **mantıksal uygulama oluştur**' u seçin.
+1. Visual Studio kodunda, **Logic Apps**altında, aboneliğinizin kısayol menüsünü açın ve **Mantık Uygulaması Oluştur'u**seçin.
 
-   ![Abonelik menüsünden "mantıksal uygulama oluştur" u seçin](./media/quickstart-create-logic-apps-visual-studio-code/create-logic-app-visual-studio-code.png)
+   ![Abonelik menüsünden "Mantık Uygulaması Oluştur" seçeneğini belirleyin](./media/quickstart-create-logic-apps-visual-studio-code/create-logic-app-visual-studio-code.png)
 
    Bir liste görünür ve aboneliğinizdeki tüm Azure kaynak gruplarını gösterir.
 
-1. Kaynak grubu listesinden, **Yeni bir kaynak grubu** veya var olan bir kaynak grubu oluştur ' u seçin. Bu örnek için yeni bir kaynak grubu oluşturun.
+1. Kaynak grubu listesinden, yeni bir kaynak grubu veya varolan **bir kaynak grubu oluştur'u** seçin. Bu örnekte, yeni bir kaynak grubu oluşturun.
 
    ![Yeni bir Azure kaynak grubu oluşturma](./media/quickstart-create-logic-apps-visual-studio-code/select-or-create-azure-resource-group.png)
 
-1. Azure Kaynak grubunuz için bir ad girin ve ENTER tuşuna basın.
+1. Azure kaynak grubunuz için bir ad sağlayın ve ENTER tuşuna basın.
 
-   ![Azure Kaynak grubunuz için ad belirtin](./media/quickstart-create-logic-apps-visual-studio-code/enter-name-resource-group.png)
+   ![Azure kaynak grubunuz için ad sağlama](./media/quickstart-create-logic-apps-visual-studio-code/enter-name-resource-group.png)
 
-1. Mantıksal uygulamanızın meta verilerini kaydetmek istediğiniz Azure bölgesini seçin.
+1. Mantık uygulamanızın meta verilerini kaydetmek istediğiniz Azure bölgesini seçin.
 
-   ![Mantıksal uygulama meta verilerini kaydetmek için Azure konumunu seçin](./media/quickstart-create-logic-apps-visual-studio-code/select-azure-location-new-resources.png)
+   ![Mantık uygulaması meta verilerini kaydetmek için Azure konumunu seçin](./media/quickstart-create-logic-apps-visual-studio-code/select-azure-location-new-resources.png)
 
-1. Mantıksal uygulamanız için bir ad girin ve ENTER tuşuna basın.
+1. Mantık uygulamanız için bir ad girin ve Enter tuşuna basın.
 
-   ![Mantıksal uygulamanız için ad belirtin](./media/quickstart-create-logic-apps-visual-studio-code/enter-name-logic-app.png)
+   ![Mantık uygulamanız için ad sağlayın](./media/quickstart-create-logic-apps-visual-studio-code/enter-name-logic-app.png)
 
-   Azure penceresinde, Azure aboneliğiniz altında yeni ve boş mantıksal uygulamanız görüntülenir. Visual Studio Code ayrıca mantıksal uygulamanız için bir iskelet iş akışı tanımı içeren bir JSON (. logicapp. JSON) dosyası açar. Artık mantıksal uygulamanızın iş akışı tanımını bu JSON dosyasında el ile yazmaya başlayabilirsiniz. Bir iş akışı tanımının yapısı ve sözdizimi hakkında teknik başvuru için, [Azure Logic Apps Için Iş akışı Tanım Dili şemasına](../logic-apps/logic-apps-workflow-definition-language.md)bakın.
+   Azure penceresinde, Azure aboneliğiniz altında yeni ve boş mantık uygulamanız görüntülenir. Visual Studio Code ayrıca mantık uygulamanız için bir iskelet iş akışı tanımı içeren bir JSON (.logicapp.json) dosyaaçar. Artık bu JSON dosyasında mantık uygulamanızın iş akışı tanımını el ile yazmaya başlayabilirsiniz. İş akışı tanımının yapısı ve sözdizimi hakkında teknik başvuru için [Azure Mantık Uygulamaları için İş Akışı Tanımı Dili şemasına](../logic-apps/logic-apps-workflow-definition-language.md)bakın.
 
-   ![Boş mantıksal uygulama iş akışı tanımı JSON dosyası](./media/quickstart-create-logic-apps-visual-studio-code/empty-logic-app-workflow-definition.png)
+   ![Boş mantık uygulaması iş akışı tanımı JSON dosyası](./media/quickstart-create-logic-apps-visual-studio-code/empty-logic-app-workflow-definition.png)
 
-   Örneğin, bir RSS tetikleyicisi ve Office 365 Outlook eylemiyle başlayan örnek bir mantıksal uygulama iş akışı tanımı aşağıda verilmiştir. Genellikle, JSON öğeleri her bölümde alfabetik olarak görünür. Ancak bu örnek, bu öğeleri kabaca, mantıksal uygulamanın adımlarının tasarımcıda göründüğü sırayla gösterir.
+   Örneğin, burada bir RSS tetikleyici ve Bir Office 365 Outlook eylem ile başlayan bir örnek mantık uygulaması iş akışı tanımı vardır. Genellikle, JSON öğeleri her bölümde alfabetik olarak görünür. Ancak, bu örnek, mantık uygulamasının adımları tasarımcıgörünür sırayla kabaca bu öğeleri gösterir.
 
    > [!IMPORTANT]
-   > Bu örnek mantıksal uygulama tanımını yeniden kullanmak istiyorsanız, bir Office 365 Kurumsal hesabına ihtiyacınız vardır, örneğin @fabrikam.com. Kurgusal e-posta adresini kendi e-posta adresiniz ile değiştirdiğinizden emin olun. Outlook.com veya Gmail gibi farklı bir e-posta Bağlayıcısı kullanmak için `Send_an_email_action` eylemini [Azure Logic Apps tarafından desteklenen bir e-posta bağlayıcısından](../connectors/apis-list.md)erişilebilen benzer bir eylemle değiştirin.
+   > Bu örnek mantık uygulaması tanımını yeniden kullanmak istiyorsanız, örneğin bir Office 365 kuruluş hesabına ihtiyacınız @fabrikam.comvar. Hayali e-posta adresini kendi e-posta adresinizle değiştirdiğinizden emin olun. Outlook.com veya Gmail gibi farklı bir e-posta `Send_an_email_action` bağlayıcısı kullanmak için, eylemi Azure Logic Apps tarafından desteklenen bir [e-posta bağlayıcısından](../connectors/apis-list.md)elde edilen benzer bir eylemle değiştirin.
 
    ```json
    {
@@ -188,119 +188,119 @@ Başlamadan önce şunlara sahip olduğunuzdan emin olun:
    }
    ```
 
-1. İşiniz bittiğinde, mantıksal uygulamanızın iş akışı tanımını kaydedin. (Dosya menüsü > Kaydet veya CTRL + S tuşlarına basın)
+1. İşiniz bittiğinde, mantık uygulamanızın iş akışı tanımını kaydedin. (Dosya menüsü > Kaydet veya Ctrl+S tuşuna basın)
 
-1. Mantıksal uygulamanızı Azure aboneliğinize yüklemeniz istendiğinde **karşıya yükle**' yi seçin.
+1. Mantık uygulamanızı Azure aboneliğinize yüklemeniz istendiğinde **Yükle'yi**seçin.
 
-   Bu adım, mantıksal uygulamanızı [Azure Portal](https://portal.azure.com)yayımlar, bu, mantığınızı Azure 'da canlı ve çalışır hale getirir.
+   Bu adım, mantık uygulamanızı [Azure portalına](https://portal.azure.com)yayınlar ve mantığınızı Azure'da canlı ve çalışır durumda kılar.
 
-   ![Yeni mantıksal uygulamayı Azure aboneliğinize yükleme](./media/quickstart-create-logic-apps-visual-studio-code/upload-new-logic-app.png)
+   ![Azure aboneliğinize yeni mantık uygulaması yükleyin](./media/quickstart-create-logic-apps-visual-studio-code/upload-new-logic-app.png)
 
-## <a name="view-logic-app-in-designer"></a>Tasarımcıda mantıksal uygulamayı görüntüleme
+## <a name="view-logic-app-in-designer"></a>Tasarımcıda mantık uygulamasını görüntüleyin
 
-Visual Studio Code, mantıksal uygulamanızı salt okuma Tasarım görünümünde açabilirsiniz. Mantıksal uygulamanızı tasarımcıda düzenleyemeseniz de, tasarımcı görünümünü kullanarak mantıksal uygulamanızın iş akışını görsel olarak kontrol edebilirsiniz.
+Visual Studio Code'da mantık uygulamanızı salt okunur tasarım görünümünde açabilirsiniz. Tasarımcıda mantık uygulamanızı düzenlemenize rağmen, tasarımcı görünümünü kullanarak mantık uygulamanızın iş akışını görsel olarak kontrol edebilirsiniz.
 
-Azure penceresinde, **Logic Apps**altında, mantıksal uygulamanızın kısayol menüsünü açın ve **tasarımcıda aç**' ı seçin.
+Azure penceresinde, **Logic Apps**altında, mantık uygulamanızın kısayol menüsünü açın ve **Tasarımcı'da Aç'ı**seçin.
 
-Salt okuma Tasarımcısı ayrı bir pencerede açılır ve mantıksal uygulamanızın iş akışını gösterir, örneğin:
+Salt okunur tasarımcı ayrı bir pencerede açılır ve mantık uygulamanızın iş akışını gösterir, örneğin:
 
-![Salt okuma tasarımcısında mantıksal uygulamayı görüntüleme](./media/quickstart-create-logic-apps-visual-studio-code/logic-app-designer-view.png)
+![Salt okunur tasarımcıda mantık uygulamasını görüntüleme](./media/quickstart-create-logic-apps-visual-studio-code/logic-app-designer-view.png)
 
-## <a name="view-in-azure-portal"></a>Azure portal içinde görüntüle
+## <a name="view-in-azure-portal"></a>Azure portalında görünüm
 
-Azure portal ' de mantıksal uygulamanızı gözden geçirmek için şu adımları izleyin:
+Azure portalında mantık uygulamanızı incelemek için aşağıdaki adımları izleyin:
 
-1. Mantıksal uygulamanızla ilişkili aynı Azure hesabı ve aboneliği kullanarak [Azure Portal](https://portal.azure.com) oturum açın.
+1. Mantık uygulamanızla ilişkili aynı Azure hesabını ve aboneliğini kullanarak [Azure portalında](https://portal.azure.com) oturum açın.
 
-1. Azure portal arama kutusuna mantıksal uygulamalarınızın adını girin. Sonuçlar listesinden mantıksal uygulamanızı seçin.
+1. Azure portalının arama kutusuna mantık uygulamalarınızın adını girin. Sonuç listesinden mantık uygulamanızı seçin.
 
-   ![Yeni mantıksal uygulamanız Azure portal](./media/quickstart-create-logic-apps-visual-studio-code/published-logic-app-in-azure.png)
+   ![Azure portalındaki yeni mantık uygulamanız](./media/quickstart-create-logic-apps-visual-studio-code/published-logic-app-in-azure.png)
 
 <a name="disable-enable-logic-app"></a>
 
 ## <a name="disable-or-enable-logic-app"></a>Mantıksal uygulamayı devre dışı bırakma veya etkinleştirme
 
-Visual Studio Code, yayımlanmış bir mantıksal uygulamayı düzenlerseniz ve değişikliklerinizi kaydederseniz, önceden dağıtılmış uygulamanızın *üzerine yazarsınız* . Mantıksal uygulamanızı üretimde bozmamak ve kesintiyi en aza indirmek için öncelikle mantıksal uygulamanızı devre dışı bırakın. Mantıksal uygulamanızı hala işe yarar doğruladıktan sonra mantıksal uygulamanızı yeniden etkinleştirebilirsiniz.
+Visual Studio Code'da, yayınlanan bir mantık uygulamasını ve değişikliklerinizi kaydederseniz, zaten dağıtılan uygulamanızın *üzerine yazarsınız.* Üretimde mantık uygulamanızı kırmamak ve kesintiyi en aza indirmek için önce mantık uygulamanızı devre dışı bırakın. Daha sonra mantık uygulamanızın hala çalıştığını doğruladıktan sonra mantık uygulamanızı reaktif edebilirsiniz.
 
-1. Azure hesabınızda ve aboneliğinizden Visual Studio Code içinden henüz oturum açmadıysanız, [önceki adımları izleyerek hemen oturum açın](#sign-in-azure).
+1. Azure hesabınızda henüz oturum açmadıysanız ve Visual Studio Code'un içinden abonelik aldıysanız, [şimdi oturum açmak için önceki adımları](#sign-in-azure)izleyin.
 
-1. Azure penceresinde, **Logic Apps**altında, Bu abonelikteki tüm mantıksal uygulamaları görüntüleyebilmeniz için Azure aboneliğinizi genişletin.
+1. Azure penceresinde, **Logic Apps**altında, azure aboneliğinizi genişleterek söz sahibi abonelikteki tüm mantık uygulamalarını görüntüleyebilirsiniz.
 
-   1. İstediğiniz mantıksal uygulamayı devre dışı bırakmak için mantıksal uygulamanın menüsünü açın ve **devre dışı bırak**' ı seçin.
+   1. İstediğiniz mantık uygulamasını devre dışı bırakıp, mantık uygulamasının menüsünü açın ve **Devre Dışı'yı**seçin.
 
-      ![Mantıksal uygulamanızı devre dışı bırakma](./media/quickstart-create-logic-apps-visual-studio-code/disable-published-logic-app.png)
+      ![Mantık uygulamanızı devre dışı](./media/quickstart-create-logic-apps-visual-studio-code/disable-published-logic-app.png)
 
-   1. Mantıksal uygulamanızı yeniden etkinleştirmeye hazırsanız, mantıksal uygulamanın menüsünü açın ve **Etkinleştir**' i seçin.
+   1. Mantık uygulamanızı yeniden etkinleştirmeye hazır olduğunuzda, mantık uygulamasının menüsünü açın ve **Etkinleştir'i**seçin.
 
-      ![Mantıksal uygulamanızı etkinleştirme](./media/quickstart-create-logic-apps-visual-studio-code/enable-published-logic-app.png)
+      ![Mantık uygulamanızı etkinleştirin](./media/quickstart-create-logic-apps-visual-studio-code/enable-published-logic-app.png)
 
 <a name="edit-logic-app"></a>
 
-## <a name="edit-deployed-logic-app"></a>Dağıtılan mantıksal uygulamayı Düzenle
+## <a name="edit-deployed-logic-app"></a>Dağıtılan mantık uygulamasını edin
 
-Visual Studio Code, Azure 'da zaten dağıtılmış bir mantıksal uygulama için iş akışı tanımını açabilir ve düzenleyebilirsiniz.
-
-> [!IMPORTANT] 
-> Üretim ortamında etkin bir şekilde çalışan bir mantıksal uygulamayı düzenlemeden önce, mantıksal uygulamayı bozma ve [öncelikle mantıksal uygulamanızı devre dışı bırakarak](#disable-enable-logic-app)kesintiyi en aza indirme riskinden kaçının.
-
-1. Azure hesabınızda ve aboneliğinizden Visual Studio Code içinden henüz oturum açmadıysanız, [önceki adımları izleyerek hemen oturum açın](#sign-in-azure).
-
-1. Azure penceresinde, **Logic Apps**altında Azure aboneliğinizi genişletin ve istediğiniz mantıksal uygulamayı seçin.
-
-1. Mantıksal uygulamanızın menüsünü açın ve **düzenleyicide aç**' ı seçin. Ya da mantıksal uygulamanızın adının yanında Düzenle simgesini seçin.
-
-   ![Mevcut mantıksal uygulama için düzenleyiciyi aç](./media/quickstart-create-logic-apps-visual-studio-code/open-editor-existing-logic-app.png)
-
-   Visual Studio Code mantıksal uygulamanızın iş akışı tanımını görüntüleyebilmeniz için yerel geçici klasörünüzde. logicapp. json dosyasını açar.
-
-   ![Yayımlanan mantıksal uygulama için iş akışı tanımını görüntüle](./media/quickstart-create-logic-apps-visual-studio-code/edit-published-logic-app-workflow-definition.png)
-
-1. Mantıksal uygulamanın iş akışı tanımında yaptığınız değişiklikleri yapın.
-
-1. İşiniz bittiğinde yaptığınız değişiklikleri kaydedin. (Dosya menüsü > Kaydet veya CTRL + S tuşlarına basın)
-
-1. Değişikliklerinizi karşıya yüklemeniz ve Azure portal mevcut mantıksal uygulamanızın *üzerine yazmak* isteyip Istemediğiniz sorulduğunda **karşıya yükle**' yi seçin.
-
-   Bu adım, güncelleştirmelerinizi [Azure Portal](https://portal.azure.com)mantıksal uygulamanıza yayımlar.
-
-   ![Azure 'da Logic App tanımına yapılan düzenlemeleri karşıya yükleme](./media/quickstart-create-logic-apps-visual-studio-code/upload-logic-app-changes.png)
-
-## <a name="view-or-promote-other-versions"></a>Diğer sürümleri görüntüleyin veya yükseltin
-
-Visual Studio Code, mantıksal uygulamanız için önceki sürümleri açabilir ve gözden geçirebilirsiniz. Ayrıca, önceki bir sürümü güncel sürüme de yükseltebilirsiniz.
+Visual Studio Code'da, Azure'da zaten dağıtılmış bir mantık uygulaması için iş akışı tanımını açabilir ve edinebilirsiniz.
 
 > [!IMPORTANT] 
-> Üretim ortamında etkin bir şekilde çalışan bir mantıksal uygulamayı değiştirmeden önce, mantıksal uygulamayı bozma ve [öncelikle mantıksal uygulamanızı devre dışı bırakarak](#disable-enable-logic-app)kesintiyi en aza indirme riskinden kaçının.
+> Üretimde aktif olarak çalışan bir mantık uygulamasını düzenlemeden önce, bu mantık uygulamasını kırma riskini önlün ve [öncelikle mantık uygulamanızı devre dışı bırakarak](#disable-enable-logic-app)kesintiyi en aza indirin.
 
-1. Azure penceresinde, **Logic Apps**altında, Bu abonelikteki tüm mantıksal uygulamaları görüntüleyebilmeniz için Azure aboneliğinizi genişletin.
+1. Azure hesabınızda henüz oturum açmadıysanız ve Visual Studio Code'un içinden abonelik aldıysanız, [şimdi oturum açmak için önceki adımları](#sign-in-azure)izleyin.
 
-1. Aboneliğiniz altında mantıksal uygulamanızı genişletin ve **sürümler**' i genişletin.
+1. Azure penceresinde, **Logic Apps**altında Azure aboneliğinizi genişletin ve istediğiniz mantık uygulamasını seçin.
 
-   **Sürümler** listesi, varsa mantıksal uygulamanızın önceki sürümlerini gösterir.
+1. Mantık uygulamanızın menüsünü açın ve **Editor'da Aç'ı**seçin. Veya mantık uygulamanızın adının yanında, edit simgesini seçin.
 
-   ![Mantıksal uygulamanızın önceki sürümleri](./media/quickstart-create-logic-apps-visual-studio-code/view-previous-versions.png)
+   ![Mevcut mantık uygulaması için açık düzenleyici](./media/quickstart-create-logic-apps-visual-studio-code/open-editor-existing-logic-app.png)
 
-1. Önceki bir sürümü görüntülemek için, iki adımdan birini seçin:
+   Visual Studio Code, mantık uygulamanızın iş akışı tanımını görüntüleyebilmeniz için yerel geçici klasörünüzde .logicapp.json dosyasını açar.
 
-   * JSON tanımını görüntülemek için, **sürümler**altında, bu tanım için sürüm numarasını seçin. Ya da, söz konusu sürümün kısayol menüsünü açın ve **düzenleyicide aç**' ı seçin.
+   ![Yayınlanan mantık uygulaması için iş akışı tanımını görüntüleme](./media/quickstart-create-logic-apps-visual-studio-code/edit-published-logic-app-workflow-definition.png)
+
+1. Mantık uygulamasının iş akışı tanımındaki değişikliklerinizi yapın.
+
+1. İşiniz bittiğinde yaptığınız değişiklikleri kaydedin. (Dosya menüsü > Kaydet veya Ctrl+S tuşuna basın)
+
+1. Değişikliklerinizi yüklemeniz ve Azure portalında mevcut mantık uygulamanızın *üzerine yazmanız* istendiğinde **Yükle'yi**seçin.
+
+   Bu adım, Azure [portalında](https://portal.azure.com)mantık uygulamanıza yapılan güncelleştirmelerinizi yayımlar.
+
+   ![Azure'da mantık uygulaması tanımına yükleme](./media/quickstart-create-logic-apps-visual-studio-code/upload-logic-app-changes.png)
+
+## <a name="view-or-promote-other-versions"></a>Diğer sürümleri görüntüleme veya tanıtma
+
+Visual Studio Code'da mantık uygulamanızın önceki sürümlerini açabilir ve inceleyebilirsiniz. Daha önceki bir sürümü geçerli sürüme de tanıtabilirsiniz.
+
+> [!IMPORTANT] 
+> Üretimde aktif olarak çalışan bir mantık uygulamasını değiştirmeden önce, bu mantık uygulamasını kırma riskini önlün ve [önce mantık uygulamanızı devre dışı bırakarak](#disable-enable-logic-app)kesintiyi en aza indirin.
+
+1. Azure penceresinde, **Logic Apps**altında, azure aboneliğinizi genişleterek söz sahibi abonelikteki tüm mantık uygulamalarını görüntüleyebilirsiniz.
+
+1. Aboneliğiniz altında, mantık uygulamanızı genişletin ve **Sürümleri**genişletin.
+
+   **Sürümler** listesi, varsa mantık uygulamanızın önceki sürümlerini gösterir.
+
+   ![Mantık uygulamanızın önceki sürümleri](./media/quickstart-create-logic-apps-visual-studio-code/view-previous-versions.png)
+
+1. Önceki bir sürümü görüntülemek için aşağıdakileri seçin:
+
+   * JSON tanımını görüntülemek için, **Sürümler**altında, bu tanım için sürüm numarasını seçin. Veya, bu sürümün kısayol menüsünü açın ve **Düzenleyici'de Aç'ı**seçin.
 
      Yerel bilgisayarınızda yeni bir dosya açılır ve bu sürümün JSON tanımını gösterir.
 
-   * Sürümü salt okuma tasarımcı görünümünde görüntülemek için, bu sürümün kısayol menüsünü açın ve **tasarımcıda aç**' ı seçin.
+   * Yalnızca okunan tasarımcı görünümünde sürümü görüntülemek için, bu sürümün kısayol menüsünü açın ve **Designer'da Aç'ı**seçin.
 
-1. Önceki bir sürümü güncel sürüme yükseltmek için aşağıdaki adımları izleyin:
+1. Önceki bir sürümü geçerli sürüme tanıtmak için aşağıdaki adımları izleyin:
 
-   1. **Sürümler**altında, önceki sürümün kısayol menüsünü açın ve **Yükselt**' i seçin.
+   1. **Sürümler**altında, önceki sürümün kısayol menüsünü açın ve **Tanıt'ı**seçin.
 
-      ![Önceki sürümü yükselt](./media/quickstart-create-logic-apps-visual-studio-code/promote-earlier-version.png)
+      ![Önceki sürümü tanıtma](./media/quickstart-create-logic-apps-visual-studio-code/promote-earlier-version.png)
 
-   1. Visual Studio Code onay istemini tamamladıktan sonra devam etmek için **Evet**' i seçin.
+   1. Visual Studio Code onay için sizden istendikten sonra devam etmek için **Evet'i**seçin.
 
-      ![Önceki sürümü yükseltme Onayla](./media/quickstart-create-logic-apps-visual-studio-code/confirm-promote-version.png)
+      ![Önceki sürümün tanıtımını onaylama](./media/quickstart-create-logic-apps-visual-studio-code/confirm-promote-version.png)
 
-      Visual Studio Code seçili sürümü geçerli sürüme yükseltir ve yükseltilen sürüme yeni bir sayı atar. Daha önce geçerli sürüm, yükseltilen sürüm altında görüntülenir.
+      Visual Studio Code, seçili sürümü geçerli sürüme tanıtıyor ve tanıtılan sürüme yeni bir numara atar. Daha önce geçerli olan sürüm artık tanıtılan sürümün altında görünür.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Visual Studio ile mantıksal uygulamalar oluşturma](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)
+> [Visual Studio ile mantık uygulamaları oluşturun](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)

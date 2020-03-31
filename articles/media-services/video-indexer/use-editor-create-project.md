@@ -1,7 +1,7 @@
 ---
-title: Video Indexer düzenleyicisini kullanarak projeler oluşturma
+title: Projeler oluşturmak için Video Indexer düzenleyicisini kullanma
 titleSuffix: Azure Media Services
-description: Bu konu başlığı altında, projeleri oluşturmak için Video Indexer Düzenleyicisi 'nin nasıl kullanılacağı gösterilmektedir.
+description: Bu konu, proje oluşturmak için Video Indexer düzenleyicisinin nasıl kullanılacağını gösterir.
 services: media-services
 author: Juliako
 manager: femila
@@ -11,124 +11,124 @@ ms.topic: article
 ms.date: 04/02/2019
 ms.author: juliako
 ms.openlocfilehash: 9f16ab34dc9b37806f9c58b22a3f02afe839632e
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/08/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "73839158"
 ---
-# <a name="use-the-video-indexer-editor-to-create-projects"></a>Video Indexer düzenleyicisini kullanarak projeler oluşturma
+# <a name="use-the-video-indexer-editor-to-create-projects"></a>Projeler oluşturmak için Video Indexer düzenleyicisini kullanma
 
-Video Indexer Web sitesi, videolarınızın derin içgörülerini kullanarak, doğru medya içeriğini bulmanıza, ilgilendiğiniz bölümleri bulmanıza ve sonuçları kullanarak tamamen yeni bir proje oluşturmanıza olanak sağlar. Oluşturulduktan sonra proje, Video Indexer oluşturulabilir ve indirilebilir ve kendi Düzenle uygulamalarınızda veya aşağı akış akışlarınızda kullanılabilir.
+Video Indexer web sitesi, videolarınızın derin görüşlerini şunları anlamanızı sağlar: doğru medya içeriğini bulmak, ilgilendiğiniz bölümleri bulmak ve sonuçları tamamen yeni bir proje oluşturmak için kullanmak. Oluşturulduktan sonra, proje video dizinleyiciden oluşturulabilir ve indirilebilir ve kendi düzenleme uygulamalarınızda veya akış aşağı iş akışlarınızda kullanılabilir.
 
 Bu özelliği yararlı bulabileceğiniz bazı senaryolar şunlardır: 
 
-* Tanıtım için film vurguları oluşturma.
-* Haber yayınlarına daha eski video klipleri kullanma.
+* Fragmanlar için film olayları oluşturma.
+* Haber yayınlarında eski video kliplerini kullanma.
 * Sosyal medya için daha kısa içerik oluşturma.
 
-Bu makalede, sıfırdan bir proje oluşturma ve hesabınızdaki bir videodan bir proje oluşturma işlemlerinin nasıl yapılacağı gösterilir.
+Bu makalede, sıfırdan bir proje oluşturmak ve aynı zamanda hesabınızdaki bir videodan bir proje oluşturmak için nasıl gösterir.
 
-## <a name="create-new-project-and-manage-videos"></a>Yeni proje oluşturma ve videoları yönetme
+## <a name="create-new-project-and-manage-videos"></a>Yeni proje oluşturun ve videoları yönetin
 
 1. [Video Indexer](https://www.videoindexer.ai/) web sitesine gidip oturum açın.
-1. **Projeler** sekmesini seçin. Daha önce projeler oluşturduysanız, burada diğer projelerinizi görürsünüz.
-1. **Yeni proje oluştur**' a tıklayın.  
+1. **Projeler** sekmesini seçin. Daha önce projeler oluşturduysanız, diğer tüm projelerinizi burada görürsünüz.
+1. **Yeni proje oluştur'u**tıklatın.  
 
     ![Yeni proje](./media/video-indexer-view-edit/new-project.png)
-1. Kalem simgesine tıklayarak projenize bir ad verin. "Başlıksız proje" yazan metni proje adınızla değiştirin ve onay düğmesine tıklayın.
+1. Kalem simgesine tıklayarak projenize bir ad verin. "İsimsiz proje" yazan metni proje adınız ile değiştirin ve denetime tıklayın.
 
     ![Yeni proje](./media/video-indexer-view-edit/new-project3.png)
     
-### <a name="add-videos-to-the-project"></a>Projeye video ekleyin
+### <a name="add-videos-to-the-project"></a>Projeye video ekleme
 
 > [!NOTE]
-> Şu anda projeler yalnızca aynı dilde dizinli videolar içerebilir. Bir dilde video seçtikten sonra, farklı bir dildeki hesabınızdaki videoları ekleyemezsiniz.
+> Şu anda projeler yalnızca aynı dilde dizine eklenmiş videolar içerebilir. Bir dili tek bir dilde seçtikten sonra, hesabınıza farklı bir dilde olan videoları ekleyemezsiniz.
 
-1. **Video ekle**seçeneğini belirleyerek bu projede birlikte çalışmak istediğiniz videoları ekleyin.
+1. Bu projede çalışmak istediğiniz videoları video ekle'yi seçerek **video ekleyin.**
 
-    Hesabınızdaki tüm videoları ve "metin, anahtar sözcükleri veya görsel içerik arama" yazılı bir arama kutusunu görürsünüz. Belirli bir kişiye, etikete, markaya, anahtar sözcüğe veya betiğe ve OCR 'ye bir örneğe sahip videoları aramak için.
+    Hesabınızdaki tüm videoları ve üzerinde "Metin, anahtar kelime veya görsel içerik ara" yazan bir arama kutusu görürsünüz. Transkriptte ve OCR'de belirli bir kişi, etiket, marka, anahtar kelime veya oluşum içeren videoları aramak için.
     
-    Örneğin, aşağıdaki görüntüde "GitHub" ile ilgili videoları arıyoruz.
+    Örneğin, aşağıdaki resimde, "GitHub" söz videoları arıyoruz.
     
     ![GitHub](./media/video-indexer-view-edit/github.png)
 
-    Sonuçları **Filtrele ' i**seçerek sonuçlarınızı daha fazla filtreleyebilirsiniz. Belirli bir kişiye sahip olan videoları göstermek veya yalnızca belirli bir dilde olan veya belirli bir sahibe sahip olan video sonuçlarını görmek istediğinizi belirtmek için filtre uygulayabilirsiniz. <br/> Sorgunuzun kapsamını da belirtebilirsiniz. Örneğin, OCR 'de "GitHub" öğesini aramak istiyorsanız **görsel metin**' i seçin.
+    Filtre sonuçlarını seçerek sonuçlarınızı daha fazla **filtreleyebilirsiniz.** Belirli bir kişinin içinde olduğu videoları göstermek veya yalnızca belirli bir dilde bulunan veya belirli bir sahibi olan video sonuçlarını görmek istediğinizi belirtmek için filtre uygulayabilirsiniz. <br/> Sorgunuzun kapsamını da belirtebilirsiniz. Örneğin, OCR'de "GitHub"da arama yapmak istiyorsanız **Görsel Metin'i**seçin.
 
     ![Filtre](./media/video-indexer-view-edit/visual-text.png)
 
-    Sorgunuza birden çok filtre uygulayabilirsiniz. Filtreleri eklemek/kaldırmak için **+** / **-** düğmelerini kullanın. Tüm filtreleri kaldırmak için **clear filtrelerini** kullanın.
-1. Video eklemek için, bunları seçin ve ardından **Ekle**' yi seçin.
-1. Şimdi, seçtiğiniz tüm videoları görürsünüz. Bunlar, projeniz için klip seçeceğim olan videolardır.
+    Sorgunuza birden çok filtre katmanı yapabilirsiniz. Filtre eklemek/kaldırmak için **-** düğmeleri kullanın. **+** / Tüm filtreleri kaldırmak için **Temizle filtrelerini** kullanın.
+1. Video eklemek için onları seçin ve sonra **Ekle'yi**seçin.
+1. Şimdi, seçtiğiniz tüm videoları göreceksiniz. Bunlar, projeniz için klip seçeceğiniz videolardır.
 
-    Video sırasını sürükleyip bırakarak veya liste menü düğmesini seçip **aşağı taşı** veya **Yukarı taşı**' yı seçerek yeniden düzenleyebilirsiniz. Liste menüsünde, bu projeden videoyu da kaldırabileceksiniz. 
+    Sürüp bırakarak veya liste menüsü düğmesini seçerek ve **Aşağı Taşı** veya Yukarı **Taşı'yı**seçerek videoların sırasını yeniden düzenleyebilirsiniz. Liste menüsünden, videoyu bu projeden de kaldırabilirsiniz. 
 
-    ![Düzenlemenize](./media/video-indexer-view-edit/rearrange.png)
+    ![Yeni -den düzenlemek](./media/video-indexer-view-edit/rearrange.png)
     
-    Bu projeye **video ekle**seçeneğini belirleyerek istediğiniz zaman daha fazla video ekleyebilirsiniz. Ayrıca, projenize aynı videonun birden fazla örneğini de ekleyebilirsiniz. Bir videodan klip ve sonra başka bir klibin bir kırpından sonra ilk videodan başka bir klip göstermek istiyorsanız bunu yapmak isteyebilirsiniz. 
+    **Video**Ekle'yi seçerek istediğiniz zaman bu projeye daha fazla video ekleme seçeneğiniz vardır. Ayrıca, projenize aynı videonun birden çok oluşumunu ekleyebilirsiniz. Bir videodan bir klibi, ardından başka bir videodan ve ardından ilk videodan başka bir klibi göstermek istiyorsanız bunu yapmak isteyebilirsiniz. 
 
 ### <a name="select-clips-to-use-in-your-project"></a>Projenizde kullanılacak klipleri seçin
 
-Her videonun sağ tarafındaki aşağı oka tıklarsanız, videoda zaman damgalarına göre (videonun klipleri) öngörüleri açarsınız. 
+Her videonun sağ tarafındaki aşağı doğru oku tıklattığınızda, zaman damgalarına (video klipleri) göre videodaki bilgileri açarsınız. 
 
-1. Hangi öngörülerin görmek istediğinizi ve görmek istediğinizi özelleştirmek için **öngörüleri görüntüle** ' yi seçin. 
+1. Hangi görüşleri görmek istediğinizi ve hangilerini görmek istemediğinizözelleştirmek için **Görünüm ler'i** seçin. 
 
     ![Öngörüleri görüntüle](./media/video-indexer-view-edit/insights.png)
-1. Belirli klipler için sorgular oluşturmak üzere "yazılı betik, görsel metin, kişiler ve etiketlerde arama" ifadesini içeren arama kutusunu kullanın.
-1. **Filtre seçeneklerini**belirleyerek Aradığınız sahnelerin ayrıntılarını daha fazla belirtmek için filtre ekleyin.
+1. Belirli klipler için sorgu oluşturmak için "Transkript, görsel metin, kişiler ve etiketlerde arama" yazan arama kutusunu kullanın.
+1. **Filtre seçeneklerini**seçerek aradığınız sahnelerle ilgili ayrıntıları daha fazla belirtmek için filtreler ekleyin.
 
     ![Filtre seçenekleri](./media/video-indexer-view-edit/filter-options.png)
 
-    Örneğin, Donovan kahverengi ekranda olduğu sürece GitHub 'ın belirtildiği klipleri görmek isteyebilirsiniz. Bunun için, öngörü türü olarak "kişiler" içeren bir "içerme" filtresi eklemeniz gerekir. Ardından, filtrenin arama kutusuna "Donovan kahverengi" yazmanız gerekir.
+    Örneğin, Donovan Brown ekrandayken GitHub'ın geçtiği klipleri görmek isteyebilirsiniz. Bunun için, içgörü türü olarak "Kişiler" olan bir "ekle" filtresi eklemeniz gerekir. Daha sonra filtre için arama kutusuna "Donovan Brown" yazmanız gerekir.
     
-    ![içeriyor](./media/video-indexer-view-edit/include.png)
+    ![Şunları Dahil Et:](./media/video-indexer-view-edit/include.png)
     
-    Donovan kahverengi, ekranda _olmadığı_ sürece GitHub 'ın belirtildiği küçük resimleri istiyorsanız, açılan menüyü kullanarak "içerme" filtresini bir "hariç tut" filtresine değiştirmelisiniz. 
+    Donovan Brown ekranda _değilken_ GitHub bahsedilen klipler istiyorsanız, sadece açılır kullanarak bir "dışlamak" filtresi içine "dahil" filtresi değiştirmek istiyorsunuz. 
 
-1. Eklemek istediğiniz segmenti seçerek projenize bir klip ekleyin. Segmente yeniden tıklayarak bu klibin seçimini kaldırabilirsiniz.
+1. Eklemek istediğiniz kesimi seçerek projenize bir klip ekleyin. Segmente tekrar tıklayarak bu klibi n içinden seçebilirsiniz.
     
-    Videonun yanındaki liste menüsü seçeneğine tıklayıp **tüm segmentleri Seç**' i seçerek videonun tüm parçalarını ekleyin. 
+    Videonun yanındaki liste menüsü ne seçeneğini tıklayarak ve **tüm segmentleri seç**seçeneğini seçerek videonun tüm bölümlerini ekleyin. 
 
-    ![Tümünü Ekle](./media/video-indexer-view-edit/add-all.png)
+    ![Tümlerini ekle](./media/video-indexer-view-edit/add-all.png)
 
-    Seçimi Temizle ' i seçerek tüm seçiminizi temizleyebilirsiniz.
+    Seçimi Temizle'yi seçerek tüm seçiminizi temizleyebilirsiniz.
 
 > [!TIP]
-> Kliplerinizi seçip sıralamayı yaparken, sayfanın sağ tarafındaki Player 'da videoyu önizleyebilirsiniz. 
+> Kliplerinizi seçerken ve sipariş ederken, sayfanın sağ tarafındaki oynatıcıdaki videoyu önizleyebilirsiniz. 
 
 ![Önizleme](./media/video-indexer-view-edit/preview.png)
 
-**Projeyi kaydet**' i seçerek projenizi kaydetmeyi unutmayın. 
+**Projeyi Kaydet'i**seçerek değişiklik yaptığınızda projenizi kaydetmeyi unutmayın. 
 
-### <a name="render-and-download-the-project"></a>Projeyi işle ve indir
+### <a name="render-and-download-the-project"></a>Projeyi oluşturma ve indirme
 
 > [!NOTE]
-> Video Indexer ücretli hesaplar için, projenizin işlenmesi kodlama maliyetlerine sahiptir. Video Indexer deneme hesapları, 5 saatlik işleme sınırlıdır.
+> Video Indexer ücretli hesaplar için, projenizi oluşturmanın kodlama maliyetleri vardır. Video Indexer deneme hesapları 5 saatlik görüntüleme ile sınırlıdır.
 
-1. İşiniz bittiğinde projenizin kaydedildiğinden emin olun. Artık bu projeyi işleyebilirsiniz. **İşle ve İndir '** i seçin. 
+1. İşinizi bitirdikten sonra, projenizin kaydedildiğinden emin olun. Artık bu projeyi işleyebilirsiniz. **Render ve İndir'i**seçin. 
 
     ![Kaydet](./media/video-indexer-view-edit/save.png)
 
-    Video dizin oluşturucunun bir dosyayı işlemesini ve ardından indirme bağlantısının e-postanıza gönderileceğini söyleyen bir açılan pencere görüntülenir. Devam ' ı seçin. 
+    Video dizinleyicinin bir dosya yı işleyip indirme linkinin e-postanıza göndereceğini söyleyen bir açılır pencere olacaktır. Devam et'i seçin. 
     
-    Ayrıca, projenin sayfanın üstünde oluşturulmakta olduğunu belirten bir bildirim görürsünüz. İşlem tamamlandıktan sonra, projenin başarıyla işlenmiş olduğunu belirten yeni bir bildirim görürsünüz. Projeyi indirmek için bildirime tıklayın. Projeyi MP4 biçiminde indirir.
+    Ayrıca, projenin sayfanın üst kısmında işlendiğine dair bir bildirim de görürsünüz. İşlem yapıldıktan sonra, projenin başarıyla işlendiğine dair yeni bir bildirim görürsünüz. Projeyi indirmek için bildirimi tıklatın. Projeyi mp4 formatında indirecektir.
 
-    ![İşleme bitti](./media/video-indexer-view-edit/rendering-done.png)
+    ![İşleme yapıldı](./media/video-indexer-view-edit/rendering-done.png)
 
-1. Kaydedilmiş projelere **Projeler** sekmesinden erişebilirsiniz. 
+1. Kaydedilen projelere **Projeler** sekmesinden erişebilirsiniz. 
 
-    Bu projeyi seçerseniz, bu projenin tüm öngörülerini ve zaman çizelgesini görürsünüz. **Video Düzenleyicisi**' ni seçerseniz bu projede düzenleme yapmaya devam edebilirsiniz. Düzenlemeler arasında video ve klip ekleme veya kaldırma ya da projeyi yeniden adlandırma dahildir.
+    Bu projeyi seçerseniz, bu projenin tüm öngörülerini ve zaman çizelgesini görürsünüz. **Video düzenleyicisini**seçerseniz, bu projede editöryapmaya devam edebilirsiniz. Yapılan türler, video ve klip eklemeyi veya kaldırımı veya projeyi yeniden adlendirmeyi içerir.
 
-    ![Video Düzenleyicisi](./media/video-indexer-view-edit/video-editor.png)
+    ![Video editörü](./media/video-indexer-view-edit/video-editor.png)
      
-## <a name="create-a-project-from-your-video"></a>Videoınızdan bir proje oluşturun
+## <a name="create-a-project-from-your-video"></a>Videonuzdan proje oluşturma
 
-Hesabınızdaki bir videodan doğrudan yeni bir proje oluşturabilirsiniz. 
+Doğrudan hesabınızdaki bir videodan yeni bir proje oluşturabilirsiniz. 
 
-1. Video Indexer Web sitesinin **kitaplık** sekmesine gidin.
-1. Projenizi oluşturmak için kullanmak istediğiniz videoyu açın. Öngörüler ve zaman çizelgesi sayfasında, **video Düzenleyicisi** düğmesini seçin.
+1. Video Indexer web sitesinin **Kitaplık** sekmesine gidin.
+1. Projenizi oluşturmak için kullanmak istediğiniz videoyu açın. Öngörüler ve zaman çizelgesi sayfasında **Video düzenleyici** düğmesini seçin.
 
-    Bu, sizi yeni bir proje oluşturmak için kullandığınız sayfaya götürür. Yeni projeden farklı olarak, daha önce düzenlenmeye başladıysanız videonun zaman damgalandırılmış Öngörüler segmentlerini görürsünüz.
+    Bu, sizi yeni bir proje oluşturmak için kullandığınız sayfaya götürür. Yeni projenin aksine, daha önce düzenlemeye başladığınız videonun zaman damgalı öngörübölümlerini görürsünüz.
 
 ## <a name="see-also"></a>Ayrıca bkz.
 

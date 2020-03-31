@@ -1,5 +1,5 @@
 ---
-title: Yakalama etkinken bir olay hub 'ı oluşturma-Azure Event Hubs | Microsoft Docs
+title: Yakalama etkinken bir etkinlik merkezi oluşturma - Azure Etkinlik Hub'ları | Microsoft Dokümanlar
 description: Bir olay hub'ı ile bir Azure Event Hubs ad alanı oluşturma ve Azure Resource Manager şablonu kullanarak Yakalamayı etkinleştirme
 services: event-hubs
 documentationcenter: .net
@@ -14,30 +14,30 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 02/12/2020
 ms.author: shvija
-ms.openlocfilehash: 51b69e8b7f6c980fd851cdf3e60ecfe0ade29e71
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.openlocfilehash: 0b20c73ed0590f3afc19db43b4b55dd3ff6bde8e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
-ms.locfileid: "77187339"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79453879"
 ---
 # <a name="create-a-namespace-with-event-hub-and-enable-capture-using-a-template"></a>Olay hub’ı ile bir ad alanı oluşturma ve şablon kullanarak Yakalamayı etkinleştirm
 
-Bu makalede, bir olay hub’ı örneği ile [Event Hubs](event-hubs-what-is-event-hubs.md) ad alanı oluşturan ve olay hub’ında [Yakalama özelliğini](event-hubs-capture-overview.md) etkinleştiren Azure Resource Manager şablonunun nasıl kullanılacağı gösterilmektedir. Makalede, hangi kaynakların dağıtıldığının ve dağıtım yürütülürken belirtilen parametrelerin nasıl tanımlanacağı açıklanmaktadır. Bu şablonu kendi dağıtımlarınız için kullanabilir veya kendi gereksinimlerinize göre özelleştirebilirsiniz.
+Bu makalede, bir olay hub örneğiyle [olay hub'ları](event-hubs-what-is-event-hubs.md) ad alanı oluşturan bir Azure Kaynak Yöneticisi şablonu nasıl kullanılacağını ve ayrıca olay göbeğinde [Yakalama özelliğini](event-hubs-capture-overview.md) de etkinleştirilir. Makalede, hangi kaynakların dağıtıldığının ve dağıtım yürütülürken belirtilen parametrelerin nasıl tanımlanacağı açıklanmaktadır. Bu şablonu kendi dağıtımlarınız için kullanabilir veya kendi gereksinimlerinize göre özelleştirebilirsiniz.
 
 Bu makalede ayrıca seçtiğiniz hedefe göre olayları Azure Storage Bloblarında veya bir Azure Data Lake Store’da yakalamayı belirteceğiniz gösterilmektedir.
 
-Şablon oluşturma hakkında daha fazla bilgi için bkz. [Azure Resource Manager şablonları yazma][Authoring Azure Resource Manager templates]. Bir şablonda kullanılacak JSON sözdizimi ve özellikler için bkz. [Microsoft. EventHub kaynak türleri](/azure/templates/microsoft.eventhub/allversions).
+Şablon oluşturma hakkında daha fazla bilgi için bkz. [Azure Resource Manager şablonları yazma][Authoring Azure Resource Manager templates]. Şablonda kullanılacak JSON sözdizimi ve özellikleri için [Microsoft.EventHub kaynak türlerine](/azure/templates/microsoft.eventhub/allversions)bakın.
 
-Azure kaynakları adlandırma kurallarına ilişkin desenler ve uygulamalar hakkında daha fazla bilgi için bkz. [Azure kaynakları adlandırma kuralları][Azure Resources naming conventions].
+Azure Kaynakları adlandırma kurallarına ilişkin uygulama ve yapılar için bkz. [Azure Kaynakları Adlandırma Kuralları][Azure Resources naming conventions].
 
 Tam şablonlar için aşağıdaki GitHub bağlantılarına tıklayın:
 
-- [Olay Hub 'ı ve depolama şablonu yakalamayı etkinleştir][Event Hub and enable Capture to Storage template] 
-- [Olay Hub 'ı ve Azure Data Lake Store şablona yakalamayı etkinleştir][Event Hub and enable Capture to Azure Data Lake Store template]
+- [Olay hub'ı ve Depolama alanına Yakalamayı etkinleştirme şablonu][Event Hub and enable Capture to Storage template] 
+- [Olay hub'ı ve Azure Data Lake Store’a Yakalamayı etkinleştirme şablonu][Event Hub and enable Capture to Azure Data Lake Store template]
 
 > [!NOTE]
-> En son şablonları denetlemek için [Azure hızlı başlangıç şablonları][Azure Quickstart Templates] Galerisi ' ni ziyaret edin ve Event Hubs arayın.
+> En yeni şablonları denetlemek için [Azure Hızlı Başlangıç Şablonları][Azure Quickstart Templates] galerisini ziyaret edin ve Event Hubs araması yapın.
 > 
 > 
 
@@ -45,11 +45,11 @@ Tam şablonlar için aşağıdaki GitHub bağlantılarına tıklayın:
 
 Bu şablonu kullanarak bir olay hub’ı ile Event Hubs ad alanı dağıtır ve aynı zamanda [Event Hubs Yakalama](event-hubs-capture-overview.md) özelliğini etkinleştirirsiniz. Event Hubs Yakalama özelliği, tercih ettiğiniz bir süre veya boyut aralığı içinde Event Hubs’dan Azure Blob depolama alanına veya Azure Data Lake Store’a akış verilerini otomatik olarak iletmenizi sağlar. Event Hubs Yakalama özelliğini Azure Depolamada etkinleştirmek için aşağıdaki düğmeye tıklayın:
 
-[![Azure’a dağıtma](./media/event-hubs-resource-manager-namespace-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-eventhubs-create-namespace-and-enable-capture%2Fazuredeploy.json)
+[![Azure'a Dağıt](./media/event-hubs-resource-manager-namespace-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-eventhubs-create-namespace-and-enable-capture%2Fazuredeploy.json)
 
 Event Hubs Yakalama özelliğini Azure Data Lake Store’da etkinleştirmek için aşağıdaki düğmeye tıklayın:
 
-[![Azure’a dağıtma](./media/event-hubs-resource-manager-namespace-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-eventhubs-create-namespace-and-enable-capture-for-adls%2Fazuredeploy.json)
+[![Azure'a Dağıt](./media/event-hubs-resource-manager-namespace-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-eventhubs-create-namespace-and-enable-capture-for-adls%2Fazuredeploy.json)
 
 ## <a name="parameters"></a>Parametreler
 
@@ -235,7 +235,7 @@ Olay verilerinin yakalanacağı blob kapsayıcısı.
 }
 ```
 
-Hedef olarak Azure Data Lake Store Gen 1 ' i seçerseniz aşağıdaki parametreleri kullanın. Olayı yakalamak istediğiniz Data Lake Store yolunuzda izinleri ayarlamanız gerekir. İzinleri ayarlamak için bkz. [Gen 1 Azure Data Lake Storage verileri yakalama](event-hubs-capture-enable-through-portal.md#capture-data-to-azure-data-lake-storage-gen-1).
+Hedef olarak Azure Veri Gölü Deposu Gen 1'i seçerseniz aşağıdaki parametreleri kullanın. Olayı yakalamak istediğiniz Data Lake Store yolunuzda izinleri ayarlamanız gerekir. İzinleri ayarlamak için bkz. [Verileri Azure Veri Gölü Depolama Gen 1'e taşıyın.](event-hubs-capture-enable-through-portal.md#capture-data-to-azure-data-lake-storage-gen-1)
 
 ### <a name="subscriptionid"></a>subscriptionId
 
@@ -387,7 +387,7 @@ Bir olay hub’ı ile **EventHub** türünde bir ad alanı oluşturur ve aynı z
 ```
 
 > [!NOTE]
-> **Skipemptyarchives** özelliğini kullanarak yakalama penceresinde hiçbir olay gerçekleşirken boş dosyaları yaymayı etkinleştirebilir veya devre dışı bırakabilirsiniz. 
+> **SkipEmptyArchives** özelliğini kullanarak Yakalama penceresi sırasında hiçbir olay oluşmadığında boş dosyaları yaymayı etkinleştirebilir veya devre dışı kullanabilirsiniz. 
 
 ## <a name="commands-to-run-deployment"></a>Dağıtımı çalıştırma komutları
 
@@ -414,17 +414,13 @@ New-AzResourceGroupDeployment -ResourceGroupName \<resource-group-name\> -Templa
 Hedef olarak Azure Blob Depolama:
 
 ```azurecli
-azure config mode arm
-
-azure group deployment create \<my-resource-group\> \<my-deployment-name\> --template-uri [https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-eventhubs-create-namespace-and-enable-capture/azuredeploy.json][]
+az group deployment create \<my-resource-group\> \<my-deployment-name\> --template-uri [https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-eventhubs-create-namespace-and-enable-capture/azuredeploy.json][]
 ```
 
 Hedef olarak Azure Data Lake Store:
 
 ```azurecli
-azure config mode arm
-
-azure group deployment create \<my-resource-group\> \<my-deployment-name\> --template-uri [https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-eventhubs-create-namespace-and-enable-capture-for-adls/azuredeploy.json][]
+az group deployment create \<my-resource-group\> \<my-deployment-name\> --template-uri [https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-eventhubs-create-namespace-and-enable-capture-for-adls/azuredeploy.json][]
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
@@ -433,8 +429,8 @@ Event Hubs Yakalama özelliğini [Azure portalı](https://portal.azure.com) üze
 
 Aşağıdaki bağlantıları inceleyerek Event Hubs hakkında daha fazla bilgi edinebilirsiniz:
 
-* [Event Hubs’a genel bakış](event-hubs-what-is-event-hubs.md)
-* [Olay Hub’ı oluşturma](event-hubs-create.md)
+* [Olay Hub'larına genel bakış](event-hubs-what-is-event-hubs.md)
+* [Etkinlik merkezi oluşturma](event-hubs-create.md)
 * [Event Hubs ile ilgili SSS](event-hubs-faq.md)
 
 [Authoring Azure Resource Manager templates]: ../azure-resource-manager/templates/template-syntax.md

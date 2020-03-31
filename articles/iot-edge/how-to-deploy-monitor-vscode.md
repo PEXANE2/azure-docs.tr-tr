@@ -1,6 +1,6 @@
 ---
-title: Visual Studio Code Azure IoT Edge kullanarak modülleri ölçekli olarak dağıtma
-description: IoT Edge cihaz grupları için otomatik dağıtımlar oluşturmak üzere Visual Studio Code için IoT uzantısını kullanın.
+title: Visual Studio Code - Azure IoT Edge kullanarak modülleri ölçekte dağıtın
+description: IoT Edge aygıtgrupları için otomatik dağıtımlar oluşturmak için Visual Studio Code için IoT uzantısını kullanın.
 keywords: ''
 author: kgremban
 manager: philmea
@@ -10,52 +10,52 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 08299a589dc6e8f768cba7ef976e109ef1fb69d7
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/09/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75774139"
 ---
-# <a name="deploy-iot-edge-modules-at-scale-using-visual-studio-code"></a>Visual Studio Code kullanarak ölçekli IoT Edge modülleri dağıtma
+# <a name="deploy-iot-edge-modules-at-scale-using-visual-studio-code"></a>Visual Studio Code kullanarak IoT Edge modüllerini ölçekte dağıtın
 
-Aynı anda birçok cihaza yönelik devam eden dağıtımları yönetmek için Visual Studio Code kullanarak **IoT Edge otomatik dağıtım** oluşturabilirsiniz. IoT Edge için otomatik dağıtımlar IoT Hub [otomatik cihaz yönetimi](/azure/iot-hub/iot-hub-automatic-device-management) özelliğinin bir parçasıdır. Dağıtımlar birden çok modülü birden çok cihaza dağıtmanızı sağlayan dinamik işlemlerdir. Ayrıca, modüllerin durumunu ve sistem durumunu izleyebilir ve gerektiğinde değişiklik yapabilirsiniz.
+Aynı anda birçok cihaz için devam eden dağıtımları yönetmek için Visual Studio Code'u kullanarak **bir IoT Edge otomatik dağıtım** oluşturabilirsiniz. IoT Edge için otomatik dağıtımlar, IoT Hub'ın [otomatik aygıt yönetimi](/azure/iot-hub/iot-hub-automatic-device-management) özelliğinin bir parçasıdır. Dağıtımlar, birden çok modüle birden fazla modül dağıtmanızı sağlayan dinamik işlemlerdir. Ayrıca modüllerin durumunu ve sistem durumunu izleyebilir ve gerektiğinde değişiklik yapabilirsiniz.
 
-Daha fazla bilgi için bkz. [tek cihazlarda veya ölçekte IoT Edge otomatik dağıtımları anlama](module-deployment-monitoring.md).
+Daha fazla bilgi için bkz: [Tek aygıtlar için veya ölçekte IoT Edge otomatik dağıtımları anlayın.](module-deployment-monitoring.md)
 
-Bu makalede Visual Studio Code ve IoT uzantısını ayarlarsınız. Daha sonra, IoT Edge bir cihaz kümesine modül dağıtmayı öğreneceksiniz.
+Bu makalede, Visual Studio Code ve IoT uzantısını ayarlarsınız. Daha sonra modülleri bir dizi IoT Edge aygıtına nasıl dağıtabileceğinizi öğrenirsiniz.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* Bir [IOT hub'ı](../iot-hub/iot-hub-create-through-portal.md) Azure aboneliğinizdeki.
-* Bir [IOT Edge cihazı](how-to-register-device.md#register-with-visual-studio-code) yüklü olan bir IOT Edge çalışma zamanı ile.
-* [Visual Studio Code](https://code.visualstudio.com/).
-* Visual Studio Code için [Azure IoT araçları](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools#overview) .
+* Azure aboneliğinizde bir [IoT hub'ı.](../iot-hub/iot-hub-create-through-portal.md)
+* IoT Edge çalışma zamanı yüklü bir [IoT Edge aygıtı.](how-to-register-device.md#register-with-visual-studio-code)
+* [Görsel Stüdyo Kodu](https://code.visualstudio.com/).
+* Visual Studio Code için [Azure IoT Araçları.](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools#overview)
 
-## <a name="sign-in-to-access-your-iot-hub"></a>IOT hub'ınıza erişmek için oturum açın
+## <a name="sign-in-to-access-your-iot-hub"></a>IoT hub'ınıza erişmek için oturum açın
 
-Hub 'ınız ile işlemler yapmak için Visual Studio Code için Azure IoT uzantıları 'nı kullanabilirsiniz. Bu işlemlerin çalışması için, Azure hesabınızda oturum açmanız ve üzerinde çalıştığınız IoT Hub 'ını seçmeniz gerekir.
+Hub'ınızla işlem yapmak için Visual Studio Code için Azure IoT uzantılarını kullanabilirsiniz. Bu işlemlerin işe yaraması için Azure hesabınızda oturum açmanız ve üzerinde çalıştığınız IoT merkezini seçmeniz gerekir.
 
-1. Visual Studio Code'da açmak **Gezgini** görünümü.
+1. Visual Studio Code'da **Explorer** görünümünü açın.
 
-1. Gezgin 'in alt kısmındaki **Azure IoT Hub** bölümünü genişletin.
+1. Explorer'ın alt kısmında **Azure IoT Hub** bölümünü genişletin.
 
-1. **Azure IoT Hub** bölüm üstbilgisindeki **..** . öğesine tıklayın. Üç nokta simgesini görmüyorsanız, üst bilgisinin üzerinde gezdirin.
+1. **Azure IoT Hub** **bölümündeki ...** bölümünü tıklatın. Elipsleri görmüyorsanız, başlığın üzerine gidin.
 
-1. Seçin **IOT hub'ını seçin**.
+1. **IoT Hub'ı seçin.**
 
 1. Azure hesabınızda oturum açmadıysanız, bunu yapmak için istemleri izleyin.
 
 1. Azure aboneliğinizi seçin.
 
-1. IOT hub'ınızı seçin.
+1. IoT hub'ınızı seçin.
 
-## <a name="configure-a-deployment-manifest"></a>Bir dağıtım bildirimi yapılandırma
+## <a name="configure-a-deployment-manifest"></a>Dağıtım bildirimini yapılandırma
 
-Dağıtım bildirimi, hangi modüllerin dağıtılacağını açıklayan bir JSON belgesidir. Ayrıca, modüller arasında verilerin nasıl akacağını ve modül TWINS 'in istenen özelliklerini açıklar. Daha fazla bilgi için bkz. [IoT Edge modül dağıtmayı ve yollar oluşturmayı öğrenin](module-composition.md).
+Dağıtım bildirimi, hangi modüllerin dağıtılanmasını açıklayan bir JSON belgesidir. Ayrıca, modüller arasında veri akışını ve modülün istenilen özelliklerini de açıklar. Daha fazla bilgi için [bkz.](module-composition.md)
 
-Visual Studio Code kullanarak modüllerini dağıtmak için dağıtım bildirimi olarak yerel olarak kaydedin. bir. JSON dosyası. Yapılandırmayı cihazınıza uygulamak için komutunu çalıştırdığınızda konumunu belirtmeniz gerekecektir.
+Visual Studio Code kullanarak modülleri dağıtmak için, dağıtım bildirimini yerel olarak kaydedin. JSON dosyası. Yapılandırmayı cihazınıza uygulamak için komutu çalıştırdığınızda konumunu sağlamanız gerekir.
 
-Örnek olarak bir modülü ile temel bir dağıtım bildirimi şöyledir:
+Aşağıda, örnek olarak bir modüle sahip temel bir dağıtım bildirimi verilmiştir:
 
 ```json
 {
@@ -126,13 +126,13 @@ Visual Studio Code kullanarak modüllerini dağıtmak için dağıtım bildirimi
 }
 ```
 
-Şu anda yapılandırabileceğiniz IoT Edge cihazları belirlemeniz gerekiyorsa **IoT Edge: cihaz bilgilerini al** komutunu çalıştırın.
+Şu anda yapılandırabileceğiniz Hangi IoT Edge aygıtlarını belirlemeniz gerekiyorsa, **IoT Edge: Get Device Info** komutunu çalıştırın.
 
-## <a name="identify-devices-with-target-conditions"></a>Hedef koşullara sahip cihazları tanımla
+## <a name="identify-devices-with-target-conditions"></a>Hedef koşullara sahip cihazları tanımlama
 
-Dağıtımı alacak IoT Edge cihazları tanımlamak için bir hedef koşul belirtmeniz gerekir. Belirtilen ölçüt bir DeviceID, etiket değeri veya bildirilen bir özellik değeri ile eşleştiğinde bir hedef koşul karşılanır.
+Dağıtımı alacak Olan IoT Edge aygıtlarını tanımlamak için bir hedef koşulu belirtmeniz gerekir. Belirtilen ölçütler deviceId, etiket değeri veya bildirilen özellik değeriyle eşleştiğinde hedef koşul karşılanır.
 
-Etiketleri cihaz ikizi yapılandırırsınız. Etiketlere sahip bir cihaz ikizi örneği aşağıda verilmiştir:
+Aygıt ikizindeki etiketleri yapılandırırsınız. Etiketleri olan bir aygıt ikizi örneği aşağıda verilmiştir:
 
 ```json
 "tags":{
@@ -145,26 +145,26 @@ Etiketleri cihaz ikizi yapılandırırsınız. Etiketlere sahip bir cihaz ikizi 
 }
 ```
 
-Bu cihaz, dağıtımın hedef koşulu, etiket değerlerinden biriyle eşleşen bir ifade içeriyorsa (`tag.location.building = '20'`gibi) bir dağıtım alacaktır.
+Dağıtım için hedef koşul etiketin değerlerinden biriyle eşleşen bir ifade içeriyorsa, bu `tag.location.building = '20'`aygıt bir dağıtım alır.
 
-Belirli bir cihazı etiketlerinden veya diğer değerlerinden bağımsız olarak hedeflemek istiyorsanız, hedef koşulun `deviceId` belirtmeniz yeterlidir.
+Belirli bir aygıtı, etiketleri veya diğer değerlerinden bağımsız olarak `deviceId` hedeflemek istiyorsanız, hedef koşulu belirtmeniz gerekir.
 
-Aşağıda bazı örnekler verilmiştir:
+Aşağıda daha fazla örnek verilmiştir:
 
-* DeviceID = 'linuxprod1'
-* DeviceID = ' linuxprod1 ' veya DeviceID = ' linuxprod2 ' veya DeviceID = ' linuxprod3 '
-* Tags.Environment = 'prod'
-* Tags. Environment = ' prod ' ve Tags. Location = ' westus2 '
-* Tags. Environment = ' prod ' veya Tags. Location = ' westus2 '
-* Tags. operator = ' John ' ve Tags. Environment = ' prod ' ve NOT DeviceID = ' linuxprod1 '
+* deviceId ='linuxprod1'
+* deviceId = 'linuxprod1' OR deviceId = 'linuxprod2' OR deviceId = 'linuxprod3'
+* tags.environment ='prod'
+* tags.environment = 'prod' VE tags.location = 'westus2'
+* tags.environment = 'prod' OR tags.location = 'westus2'
+* tags.operator = 'John' VE tags.environment = 'prod' VE NOT deviceId = 'linuxprod1'
 
-Ayrıntılar için bkz. [hedef koşulu](module-deployment-monitoring.md#target-condition) . Cihaz ikizleri ve etiketleri hakkında daha fazla bilgi için bkz: [IOT hub'daki cihaz ikizlerini kavrama ve kullanma](../iot-hub/iot-hub-devguide-device-twins.md).
+Ayrıntılar için [hedef koşula](module-deployment-monitoring.md#target-condition) bakın. Aygıt ikizleri ve etiketleri hakkında daha fazla bilgi [için, IoT Hub'da aygıt ikizlerini anlayın ve kullanın.](../iot-hub/iot-hub-devguide-device-twins.md)
 
-### <a name="edit-the-device-twin"></a>Cihaz ikizi düzenleme
+### <a name="edit-the-device-twin"></a>Aygıtı ikizi olarak edin
 
-Etiketleri yapılandırmak için Visual Studio Code cihaz ikizi düzenleyebilirsiniz. **Görünüm** menüsünde, **komut paleti** ' ni seçin ve **IoT Edge: cihazı Düzenle ikizi** komutunu çalıştırın. IoT Edge cihazınızı seçin ve cihaz ikizi görüntülenir.
+Etiketleri yapılandırmak için aygıt ikizini Visual Studio Code'da ayarlayabilirsiniz. **Görünüm** menüsünden **Komut Paleti'ni** seçin ve **IoT Edge: Aygıt İkiz** komutunu edin. IoT Edge cihazınızı seçin ve aygıt ikizi görünür.
 
-Bu örnekte, hiçbir etiket tanımlanmadı. Geçerli boş bölüm `"tags": {}` kendi etiket tanımınızla değiştirin.
+Bu örnekte, hiçbir etiket tanımlanmamıştır. Geçerli boş bölümü `"tags": {}` kendi etiket tanımınızla değiştirin.
 
 ```json
 {
@@ -204,29 +204,29 @@ Bu örnekte, hiçbir etiket tanımlanmadı. Geçerli boş bölüm `"tags": {}` k
 }
 ```
 
-Yerel dosyayı kaydettikten sonra **IoT Edge: Update Device ikizi** komutunu çalıştırın.
+Yerel dosyayı kurtardıktan sonra **IoT Edge: Update Device Twin** komutunu çalıştırın.
 
-## <a name="create-deployment-at-scale"></a>Ölçekli dağıtım oluşturma
+## <a name="create-deployment-at-scale"></a>Ölçekte dağıtım oluşturma
 
-Dağıtım bildirimini yapılandırdıktan ve cihaz ikizi içinde Etiketler yapılandırdıktan sonra, dağıtmaya hazırsınız demektir.
+Dağıtım bildirimini ve aygıt ikizindeki etiketleri yapılandırdıktan sonra dağıtmaya hazırsınız.
 
-1. **Görünüm** menüsünden **komut paleti** ' ni seçin ve **Azure IoT Edge: ölçek üzerinde dağıtım oluştur** komutunu seçin.
+1. **Görünüm** menüsünden **Komut Paleti'ni** seçin ve **Azure IoT Edge: Ölçek komutunda Dağıtım Oluştur'u** seçin.
 
-1. Kullanmak istediğiniz dağıtım bildirim JSON dosyasına gidin ve tıklayın **Edge dağıtım bildirimi seçin**.
+1. Kullanmak istediğiniz dağıtım bildirimi JSON dosyasına gidin ve **Kenar Dağıtım Bildirimi'ni seçin'i**tıklatın.
 
-1. **Dağıtım kimliğiyle**başlayarak, istenen değerleri girin.
+1. **Dağıtım kimliğinden**başlayarak, istendiği gibi değerler sağlayın.
 
    ![Dağıtım kimliği belirtin](./media/how-to-deploy-monitor-vscode/create-deployment-at-scale.png)
 
-   Bu parametrelerin değerlerini belirtin:
+   Bu parametreler için değerleri belirtin:
 
   | Parametre | Açıklama |
   | --- | --- |
-  | Dağıtım kimliği | IoT Hub 'ında oluşturulacak dağıtımın adı. Dağıtımınızı en çok 128 küçük harf olan benzersiz bir ad verin. Boşluk ve şu geçersiz karakterlerden kaçının: `& ^ [ ] { } \ | " < > /`. |
-  | Hedef koşul | Bu dağıtıma hangi cihazların hedeflenceğini belirleyen bir hedef koşul girin. Bu koşul, Device ikizi etiketlerine veya Device ikizi bildirilen özelliklerine dayalıdır ve ifade biçimiyle eşleşmelidir. Örneğin, `tags.environment='test' and properties.reported.devicemodel='4000x'`. |
-  | Öncelik |  Pozitif bir tamsayı. Aynı cihaza iki veya daha fazla dağıtım hedeflenirse, öncelik için en yüksek sayısal değere sahip dağıtım uygulanır. |
+  | Dağıtım kimliği | IoT hub'ında oluşturulacak dağıtımın adı. Dağıtımınıza en fazla 128 küçük harf içeren benzersiz bir ad verin. Boşluklardan ve aşağıdaki geçersiz karakterlerden kaçının: `& ^ [ ] { } \ | " < > /`. |
+  | Hedef koşul | Bu dağıtımda hangi aygıtların hedefleneceğini belirlemek için bir hedef koşulu girin.Koşul, aygıt ikiz etiketlerine veya aygıt ikizi bildirilen özelliklere dayanır ve ifade biçimiyle eşleşmelidir.Örneğin, `tags.environment='test' and properties.reported.devicemodel='4000x'`. |
+  | Öncelik |  Pozitif bir tamsayı. İki veya daha fazla dağıtım aynı aygıtta hedeflenirse, Öncelik için en yüksek sayısal değere sahip dağıtım uygulanır. |
 
-  Önceliği belirttikten sonra, Terminal aşağıdaki gösterimi benzer bir çıktı görüntülemelidir:
+  Önceliği belirttikten sonra, terminal aşağıdaki tasvire benzer çıktı göstermelidir:
 
    ```cmd
    [Edge] Start deployment with deployment id [{specified-value}] and target condition [{specified-value}]
@@ -235,8 +235,8 @@ Dağıtım bildirimini yapılandırdıktan ve cihaz ikizi içinde Etiketler yap�
 
 ## <a name="monitoring-and-modifying-deployments"></a>Dağıtımları izleme ve değiştirme
 
-Dağıtımları izlemek, değiştirmek ve silmek için [Azure CLI](how-to-deploy-monitor-cli.md#monitor-a-deployment) veya [Azure Portal](how-to-deploy-monitor.md#monitor-a-deployment) kullanın. Her ikisi de dağıtımlarınızla ilgili ölçümleri sağlar.
+Dağıtımları izlemek, değiştirmek ve silmek için [Azure CLI'yi](how-to-deploy-monitor-cli.md#monitor-a-deployment) veya [Azure portalını](how-to-deploy-monitor.md#monitor-a-deployment) kullanın. Her ikisi de dağıtımlarınızda ölçümler sağlar.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[IoT Edge cihazlara modül dağıtma](module-deployment-monitoring.md)hakkında daha fazla bilgi edinin.
+[Modülleri IoT Edge aygıtlarına dağıtma](module-deployment-monitoring.md)hakkında daha fazla bilgi edinin.

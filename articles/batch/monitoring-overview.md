@@ -1,6 +1,6 @@
 ---
-title: İzleyici Azure Batch | Microsoft Docs
-description: Azure Batch için Azure izleme Hizmetleri, ölçümler, tanılama günlükleri ve diğer izleme özellikleri hakkında bilgi edinin.
+title: Azure Toplu İşi İzle | Microsoft Dokümanlar
+description: Azure Toplu İş için Azure izleme hizmetleri, ölçümler, tanılama günlükleri ve diğer izleme özellikleri hakkında bilgi edinin.
 services: batch
 author: LauraBrenner
 manager: evansma
@@ -11,61 +11,61 @@ ms.workload: na
 ms.date: 04/05/2018
 ms.author: labrenne
 ms.openlocfilehash: d251229c522bd4d6daca894513eaae14d244d8a1
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77025869"
 ---
 # <a name="monitor-batch-solutions"></a>Batch çözümlerini izleme
 
-Azure ve Batch hizmeti, Batch çözümlerinizi izlemek için bir dizi hizmet, araç ve API sağlar. Bu genel bakış makalesi, gereksinimlerinize uyan bir izleme yaklaşımını seçmenize yardımcı olur.
+Azure ve Toplu İşlem hizmeti, Toplu İşlem çözümlerinizi izlemek için çeşitli hizmetler, araçlar ve API'ler sağlar. Bu genel bakış makalesi, gereksinimlerinize uygun bir izleme yaklaşımı seçmenize yardımcı olur.
 
-Azure kaynaklarını izlemeye yönelik Azure bileşenlerine ve hizmetlerine genel bir bakış için bkz. [Azure uygulamalarını ve kaynaklarını izleme](../monitoring-and-diagnostics/monitoring-overview.md).
+Azure kaynaklarını izlemek için kullanılabilen Azure bileşenlerine [ve](../monitoring-and-diagnostics/monitoring-overview.md)hizmetlerine genel bakış için bkz.
 
 ## <a name="subscription-level-monitoring"></a>Abonelik düzeyinde izleme
 
-Batch hesaplarını içeren abonelik düzeyinde, [Azure etkinlik günlüğü](../azure-monitor/platform/platform-logs-overview.md) işlemsel olay verilerini [çeşitli kategorilerde](../azure-monitor/platform/activity-log-view.md#categories-in-the-activity-log)toplar.
+Toplu Iş hesaplarını içeren abonelik düzeyinde, [Azure etkinlik günlüğü](../azure-monitor/platform/platform-logs-overview.md) çeşitli [kategorilerde](../azure-monitor/platform/activity-log-view.md#categories-in-the-activity-log)operasyonel olay verileri toplar.
 
-Özel olarak Batch hesapları için, etkinlik günlüğü hesap oluşturma ve silme ve anahtar yönetimiyle ilgili olayları toplar.
+Özellikle Toplu İşlem hesapları için, etkinlik günlüğü hesap oluşturma, silme ve anahtar yönetimiyle ilgili olayları toplar.
 
-Etkinlik günlüğliğinizden olayları almanın bir yolu Azure portal kullanmaktır. **Tüm hizmetler** > **etkinlik günlüğü**' ne tıklayın. Veya Azure CLı, PowerShell cmdlet 'leri ya da Azure Izleyici REST API kullanarak olayları sorgulayın. Etkinlik günlüğünü de dışarı aktarabilir ya da [etkinlik günlüğü uyarılarını](../monitoring-and-diagnostics/monitoring-activity-log-alerts-new-experience.md)yapılandırabilirsiniz.
+Etkinlik günlüğünüzden olayları almanın bir yolu Azure portalını kullanmaktır. **Tüm hizmetler** > **Etkinlik Günlüğü'ne**tıklayın. Veya Azure CLI, PowerShell cmdlets veya Azure Monitor REST API'sini kullanarak olayları sorgula. Ayrıca etkinlik günlüğünü dışa aktarabilir veya [etkinlik günlüğü uyarılarını](../monitoring-and-diagnostics/monitoring-activity-log-alerts-new-experience.md)yapılandırabilirsiniz.
 
-## <a name="batch-account-level-monitoring"></a>Batch hesabı düzeyinde izleme
+## <a name="batch-account-level-monitoring"></a>Toplu hesap düzeyi izleme
 
-[Azure izleyici](../azure-monitor/overview.md)özelliklerini kullanarak her Batch hesabını izleyin. Azure Izleyici, havuzlar, işler ve görevler gibi Batch hesabı düzeyinde kapsamlı kaynaklar için [ölçümleri](../azure-monitor/platform/data-platform-metrics.md) ve isteğe bağlı [tanılama günlüklerini](../azure-monitor/platform/platform-logs-overview.md) toplar. Batch hesabınızdaki etkinlikleri izlemek ve sorunları tanılamak için bu verileri el ile veya program aracılığıyla toplayıp kullanın. Ayrıntılar için bkz. [Tanılama değerlendirmesi ve izleme Için Batch ölçümleri, uyarılar ve Günlükler](batch-diagnostics.md).
+[Azure Monitor](../azure-monitor/overview.md)özelliklerini kullanarak her Toplu İş hesabını izleyin. Azure Monitor, [havuzlar,](../azure-monitor/platform/data-platform-metrics.md) işler ve görevler gibi Toplu Iş hesabı düzeyinde kapsama giren kaynaklar için ölçümler ve isteğe bağlı [tanılama günlükleri](../azure-monitor/platform/platform-logs-overview.md) toplar. Toplu Iş hesabınızdaki etkinlikleri izlemek ve sorunları tanılamak için bu verileri el ile veya programlı olarak toplayın ve tüketin. Ayrıntılar için, [tanılama değerlendirme ve izleme için Toplu iş ölçümleri, uyarılar ve günlüklere](batch-diagnostics.md)bakın.
  
 > [!NOTE]
-> Ölçümler, ek yapılandırma olmadan Batch hesabınızda varsayılan olarak kullanılabilir ve 30 günlük bir geçmiş geçmişi vardır. Bir Batch hesabı için tanılama günlüğünü etkinleştirmeniz gerekir ve tanılama günlüğü verilerini depolamak veya işlemek için ek ücret ödemeniz gerekebilir. 
+> Ölçümler, ek yapılandırma olmadan Toplu İşlem hesabınızda varsayılan olarak kullanılabilir ve 30 günlük işlem geçmişi vardır. Toplu Iş hesabı için tanısal günlüğe kaydetmeyi etkinleştirmeniz gerekir ve tanılama günlüğü verilerini depolamak veya işlemek için ek maliyetlere maruz kalabilirsiniz. 
 
-## <a name="batch-resource-monitoring"></a>Batch kaynak izleme
+## <a name="batch-resource-monitoring"></a>Toplu kaynak izleme
 
-Batch uygulamalarınızda işler, görevler, düğümler ve havuzlar dahil olmak üzere kaynaklarınızın durumunu izlemek veya sorgulamak için Batch API 'Lerini kullanın. Örneğin:
+Toplu İşlem uygulamalarınızda, işler, görevler, düğümler ve havuzlar da dahil olmak üzere kaynaklarınızın durumunu izlemek veya sorgulamak için Toplu İş API'lerini kullanın. Örnek:
 
-* [Görevleri ve işlem düğümlerini duruma göre say](batch-get-resource-counts.md)
-* [Toplu Işlem kaynaklarını etkili bir şekilde listelemek için sorgular oluşturma](batch-efficient-list-queries.md)
-* [Görev bağımlılıkları oluştur](batch-task-dependencies.md)
-* Bir [İş Yöneticisi görevi](/rest/api/batchservice/job/add#jobmanagertask) kullanma
-* [Görev durumunu](/rest/api/batchservice/task/list#taskstate) izleme
-* [Düğüm durumunu](/rest/api/batchservice/computenode/list#computenodestate) izleme
-* [Havuz durumunu](/rest/api/batchservice/pool/get#poolstate) izleme
-* [Hesapta havuz kullanımını](/rest/api/batchservice/pool/listusagemetrics) izleme
+* [Görevleri sayve düğümleri duruma göre hesaplama](batch-get-resource-counts.md)
+* [Toplu iş kaynaklarını verimli bir şekilde listelemek için sorgular oluşturma](batch-efficient-list-queries.md)
+* [Görev bağımlılıkları oluşturma](batch-task-dependencies.md)
+* İş [yöneticisi görevini](/rest/api/batchservice/job/add#jobmanagertask) kullanma
+* Görev [durumunu](/rest/api/batchservice/task/list#taskstate) izleme
+* Düğüm [durumunu](/rest/api/batchservice/computenode/list#computenodestate) izleme
+* Havuz [durumunu](/rest/api/batchservice/pool/get#poolstate) izleme
+* [Hesaptaki havuz kullanımını](/rest/api/batchservice/pool/listusagemetrics) izleme
 * [Havuz düğümlerini duruma göre say](/rest/api/batchservice/account/listpoolnodecounts)
 
 ## <a name="vm-performance-counters-and-application-monitoring"></a>VM performans sayaçları ve uygulama izleme
 
-* [Application Insights](../azure-monitor/app/app-insights-overview.md) , Batch işlerinizin ve görevlerinizin kullanılabilirliğini, performansını ve kullanımını programlı bir şekilde izlemek için kullanabileceğiniz bir Azure hizmetidir. İşlem düğümlerinden (VM) ve VM 'lerin görevleri için özel bilgilerden performans sayaçlarını kolayca alın. 
+* [Application Insights,](../azure-monitor/app/app-insights-overview.md) Toplu Iş ve görevlerinizin kullanılabilirliğini, performansını ve kullanımını programlı bir şekilde izlemek için kullanabileceğiniz bir Azure hizmetidir. İşlem düğümlerinden (VM'lerden) performans sayaçlarını ve VM'lerden görevler için özel bilgileri kolayca alın. 
 
-  Bir örnek için bkz. Application Insights ve birlikte bulunan [kod](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/ApplicationInsights) [örneğiyle Batch .NET uygulamasını izleme ve hata ayıklama](monitor-application-insights.md) .
+  Örneğin, [Bkz. Uygulama Öngörüleri ve](monitor-application-insights.md) beraberindeki kod [örneği](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/ApplicationInsights)ile bir Toplu İşlem .NET uygulamasını izleyin ve hata ayıklayın.
 
   > [!NOTE]
-  > Application Insights kullanmak için ek ücret ödemeniz gerekebilir. [Fiyatlandırma seçeneklerine](https://azure.microsoft.com/pricing/details/application-insights/)bakın. 
+  > Application Insights'ı kullanmak için ek ücrete tabi olabilirsiniz. Fiyatlandırma [seçeneklerine](https://azure.microsoft.com/pricing/details/application-insights/)bakın. 
   >
 
-* [Batch Explorer](https://github.com/Azure/BatchExplorer) , Azure Batch uygulamaları oluşturmaya, hata ayıklamanıza ve izlemenize yardımcı olan ücretsiz, zengin özellikli, tek başına bir istemci aracıdır. Mac, Linux veya Windows için [yükleme paketi](https://azure.github.io/BatchExplorer/) indirebilirsiniz. İsteğe bağlı olarak, Batch çözümünüzü Batch Explorer VM performans sayaçları gibi [Application Insights verileri görüntüleyecek](https://github.com/Azure/batch-insights) şekilde yapılandırın.
+* [Toplu İşlem Gezgini,](https://github.com/Azure/BatchExplorer) Azure Toplu İş uygulamaları nın oluşturulmasına, hata ayıklanmasına ve izlenmesine yardımcı olan ücretsiz, zengin özellikli, bağımsız bir istemci aracıdır. Mac, Linux veya Windows için [yükleme paketi](https://azure.github.io/BatchExplorer/) indirebilirsiniz. Toplu İşlem çözümünüzü, Toplu İş Explorer'da VM performans sayaçları gibi [Application Insights verilerini görüntülemek](https://github.com/Azure/batch-insights) için yapılandırın.
 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Batch çözümleri oluşturmak için kullanılabilen [Batch API’leri ve araçları](batch-apis-tools.md) hakkında bilgi alın.
-* Batch ile [tanılama günlüğü](batch-diagnostics.md) hakkında daha fazla bilgi edinin.
+* Toplu İşlem ile [tanısal günlüğe kaydetme](batch-diagnostics.md) hakkında daha fazla bilgi edinin.

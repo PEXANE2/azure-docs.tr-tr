@@ -1,76 +1,76 @@
 ---
-title: Yakınlaştırma düzeyleri ve kutucuk Kılavuzu | Microsoft Azure haritaları
-description: Bu makalede, Microsoft Azure haritalardaki yakınlaştırma düzeyleri ve kutucuk Kılavuzu hakkında bilgi edineceksiniz.
-author: jingjing-z
+title: Yakınlaştırma düzeyleri ve döşeme ızgarası | Microsoft Azure Haritaları
+description: Bu makalede, Microsoft Azure Haritalar'da yakınlaştırma düzeyleri ve döşeme ızgarası hakkında bilgi edineceksiniz.
+author: jinzh-azureiot
 ms.author: jinzh
 ms.date: 01/22/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 6ee697ac9b7849a0231d9916c6fa8bc73ef7f9b7
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: d58c9f6940dceefdc25211f4540b34522aec935d
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76765851"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79530300"
 ---
 # <a name="zoom-levels-and-tile-grid"></a>Yakınlaştırma düzeyleri ve kutucuk kılavuzu
 
-Azure haritalar Küresel Mercator projeksiyon koordinat sistemi (EPSG: 3857) kullanır. Projeksiyon, küresel dünyayı düz bir haritaya dönüştürmek için kullanılan matematik modelidir. Küresel Mercator projeksiyonu, bir kare eşleme oluşturmak için, bir noktada Haritayı uzatır. Bu projeksiyon, eşlemenin ölçeğini ve alanını önemli ölçüde bozar, ancak bu deformasyonu izleyen iki önemli özelliğe sahiptir:
+Azure Haritalar Küresel Mercator projeksiyon koordinat sistemini kullanır (EPSG: 3857). Projeksiyon, küresel küreyi düz bir haritaya dönüştürmek için kullanılan matematiksel modeldir. Küresel Mercator projeksiyonbir kare harita oluşturmak için kutuplarda harita uzanır. Bu projeksiyon haritanın ölçeğini ve alanını önemli ölçüde bozar, ancak bu bozulmadan daha ağır basan iki önemli özelliktedir:
 
-- Bu, görece küçük nesnelerin şeklini koruyan anlamına gelen bir konresmi projeksiyonu. Küçük nesnelerin şeklini korumak, havadan imay görüntüleme sırasında özellikle önemlidir. Örneğin, binalar şeklinin deforme etmemek istiyoruz. Kare binaları dikdörtgen değil kare görünmelidir.
-- Bu, silindir bir projeksiydir. Kuzey ve Güney her zaman yukarı ve aşağı ve Batı ve Doğu her zaman sol ve sağ. 
+- Bu, göreceli olarak küçük nesnelerin şeklini koruduğu anlamına gelen, resmi bir projeksiyon. Küçük nesnelerin şeklini korumak özellikle havadan görüntüler gösterirken önemlidir. Örneğin, binaların şeklini bozmaktan kaçınmak istiyoruz. Kare binalar dikdörtgen değil, kare görünmelidir.
+- Silindirik bir projeksiyon. Kuzey ve güney her zaman yukarı ve aşağı, batı ve doğu her zaman sol ve sağ. 
 
-Harita alımı ve görüntüleme performansını iyileştirmek için harita kare kutucuklarına bölünür. Azure Haritalar SDK 'sının, yol haritaları için 512 x 512 piksel boyutunda ve uydu Imagery için daha küçük 256 x 256 pikselleriyle kullanım kutucukları. Azure haritalar, 23 yakınlaştırma düzeyleri için 0 ile 22 arasında görüntü ve vektör kutucukları sağlar. Yakınlaştırma düzeyinde 0, dünyanın tamamı tek bir kutucuğa sığar:
-
-<center>
-
-![World harita kutucuğu](./media/zoom-levels-and-tile-grid/world0.png)</center>
-
-Yakınlaştırma düzeyi 1, dünyayı işlemek için dört kutucuk kullanır: 2 x 2 kare
+Harita alma ve görüntüleme performansını optimize etmek için, harita kare karolar ayrılır. Azure Haritalar SDK'nın yol haritaları için 512 x 512 piksel boyutunda ve uydu görüntüleri için daha küçük 256 x 256 piksel boyutlarındaki kullanım kutucukları. Azure Haritalar, 0 ile 22 arasında numaralanmış 23 yakınlaştırma düzeyi için raster ve vektör karoları sağlar. Zum seviyesi 0'da, tüm dünya tek bir döşemeye uyar:
 
 <center>
 
-![2x2 harita kutucuk düzeni](media/zoom-levels-and-tile-grid/map-2x2-tile-layout.png)</center>
+![Dünya haritası kiremit](./media/zoom-levels-and-tile-grid/world0.png)</center>
 
-Her ek yakınlaştırma düzeyi, bir önceki birinin kutucuklarını dörtlü böler ve 2<sup>Yakınlaştırma</sup> x 2<sup>yakınlaştırmasına</sup>ilişkin bir kılavuz oluşturur. Yakınlaştırma düzeyi 22, kılavuz 2<sup>22</sup> x 2<sup>22</sup>veya 4.194.304 x 4.194.304 kutucukları (toplamda 17.592.186.044.416).
+Zoom düzeyi 1 dünyayı işlemek için dört fayans kullanır: 2 x 2 kare
 
-Azure, Web ve Android için etkileşimli harita denetimlerini, 0 ile 24 arasında numaralandırılmış 25 yakınlaştırma düzeyi destekler. Yol verileri yalnızca kutucuklar kullanılabilir olduğunda yakınlaştırma düzeylerinde kullanılabilir olacaktır.
+<center>
 
-Aşağıdaki tabloda, kutucuk boyutunun 512 piksel kare olduğu yakınlaştırma düzeyleri için değerlerin tam listesi verilmiştir:
+![2x2 harita döşeme düzeni](media/zoom-levels-and-tile-grid/map-2x2-tile-layout.png)</center>
 
-|Yakınlaştırma düzeyi|Ölçü/piksel|Ölçümler/döşeme tarafı|
+Her ek yakınlaştırma düzeyi, 2<sup>zoom</sup> x 2<sup>zoom</sup>ızgaraoluşturarak, bir öncekinin karolarını dört eb'lik olarak böler. Zoom düzeyi 22<sup>x</sup> <sup>22,</sup>veya 4,194,304 x 4,194,304 fayans (toplam 17.592.186.044.416 fayans) bir ızgara dır.
+
+Web ve Android için Azure Haritalar etkileşimli harita denetimleri 0 ile 24 arasında numaralanmış 25 yakınlaştırma seviyesini destekler. Yol verileri yalnızca kutucuklar kullanılabilir olduğunda yakınlaştırma düzeylerinde kullanılabilir olsa da.
+
+Aşağıdaki tablo, döşeme boyutunun 512 piksel kare olduğu yakınlaştırma düzeyleri için değerlerin tam listesini sağlar:
+
+|Yakınlaştırma düzeyi|Metre/piksel|Metre/kiremit tarafı|
 |--- |--- |--- |
 |0|156543|40075008|
-|1|78271,5|20037504|
-|2|39135,8|10018764,8|
-|3|19567,9|5009382,4|
-|4|9783,9|2504678,4|
+|1|78271.5|20037504|
+|2|39135.8|10018764.8|
+|3|19567.9|5009382.4|
+|4|9783.9|2504678.4|
 |5|4892|1252352|
 |6|2446|626176|
 |7|1223|313088|
-|8|611,5|156544|
-|9|305,7|78259,2|
-|10|152,9|39142,4|
-|11|76,4|19558,4|
-|12|38,2|9779,2|
-|13|19,1|4889,6|
-|14|9.6|2457,6|
-|15|4.8|1228,8|
-|16|2.4|614,4|
-|17|1.2|307,2|
-|18|0,6|152,8|
-|19|0,3|76,4|
-|20|0,15|38,2|
-|21|0,075|19,1|
-|22|0,0375|9,55|
-|23|0,01875|4,775|
-|24|0,009375|2,3875|
+|8|611.5|156544|
+|9|305.7|78259.2|
+|10|152.9|39142.4|
+|11|76.4|19558.4|
+|12|38.2|9779.2|
+|13|19.1|4889.6|
+|14|9.6|2457.6|
+|15|4.8|1228.8|
+|16|2.4|614.4|
+|17|1.2|307.2|
+|18|0.6|152.8|
+|19|0.3|76.4|
+|20|0,15|38.2|
+|21|0.075|19.1|
+|22|0.0375|9.55|
+|23|0.01875|4.775|
+|24|0.009375|2.3875|
 
 ## <a name="pixel-coordinates"></a>Piksel koordinatları
 
-Her yakınlaştırma düzeyinde kullanılacak projeksiyonu ve ölçeği seçtiğimiz coğrafi koordinatları piksel koordinatlarına dönüştürebiliriz. Belirli bir yakınlaştırma düzeyi için dünyanın bir harita görüntüsünün tam piksel genişliği ve yüksekliği şu şekilde hesaplanır:
+Her zum düzeyinde kullanılacak projeksiyon ve ölçeği seçtikten sonra, coğrafi koordinatları piksel koordinatlarına dönüştürebiliriz. Belirli bir yakınlaştırma düzeyi için dünyanın harita görüntüsünün tam piksel genişliği ve yüksekliği aşağıdaki şekilde hesaplanır:
 
 ```javascript
 var mapWidth = tileSize * Math.pow(2, zoom);
@@ -78,15 +78,15 @@ var mapWidth = tileSize * Math.pow(2, zoom);
 var mapHeight = mapWidth;
 ```
 
-Harita genişliği ve yüksekliği her yakınlaştırma düzeyinde farklı olduğundan, piksel koordinatları vardır. Haritanın sol üst köşesindeki pikselin her zaman piksel koordinatları vardır (0, 0). Haritanın sağ alt köşesindeki piksel, piksel koordinatları *(Width-1, Height-1)* veya önceki bölümdeki denklemlere başvuruyor *(TileSize \* 2<sup>zoom</sup>– 1, TileSize \* 2<sup>zoom</sup>– 1)* . Örneğin, düzey 2 ' de 512 kare döşeme kullanırken piksel koordinatları (0, 0) ile (2047, 2047) arasındadır:
+Harita genişliği ve yüksekliği her zum düzeyinde farklı olduğundan, piksel koordinatları da farklıdır. Haritanın sol üst köşesindeki piksel her zaman piksel koordinatları (0, 0) vardır. Haritanın sağ alt köşesindeki pikselpiksel koordinatlarına *(genişlik-1, yükseklik-1)* veya önceki bölümdeki denklemlere atıfta *bulunur, \* (fayans Boyut 2<sup>yakınlaştırma</sup>–1, fayans Boyutu \* 2<sup>yakınlaştırma</sup>–1)*. Örneğin, düzey 2'de 512 kare döşeme kullanırken, piksel koordinatları (0, 0) ile (2047, 2047) arasında değişir:
 
 <center>
 
-![Harita piksel boyutlarını gösteriyor](media/zoom-levels-and-tile-grid/map-width-height.png)
+![Piksel boyutlarını gösteren harita](media/zoom-levels-and-tile-grid/map-width-height.png)
 
 </center>
 
-Derece cinsinden Enlem ve boylam ve ayrıntı düzeyi olarak XY koordinatları aşağıdaki şekilde hesaplanır:
+Derece cinsinden enlem ve boylam ve ayrıntı düzeyi göz önüne alındığında, piksel XY koordinatları aşağıdaki gibi hesaplanır:
 
 ```javascript
 var sinLatitude = Math.sin(latitude * Math.PI/180);
@@ -96,11 +96,11 @@ var pixelX = ((longitude + 180) / 360) * tileSize * Math.pow(2, zoom);
 var pixelY = (0.5 – Math.log((1 + sinLatitude) / (1 – sinLatitude)) / (4 * Math.PI)) * tileSize * Math.pow(2, zoom);
 ```
 
-Enlem ve boylam değerlerinin WGS 84 veri üzerinde olduğu varsayılır. Azure haritalar Küresel projeksiyon kullansa da, tüm coğrafi koordinatları ortak bir veri olarak dönüştürmek önemlidir. WGS 84, seçilen veri. Boylam değerinin-180 derece + 180 derece aralığında olduğu varsayılır ve enlem değeri-85,05112878-85,05112878 aralığında olacak şekilde kırpılmalıdır. Bu değerlere bağlı olmak, kökdeki bir singuların ve tasarlanan haritanın kare şeklinde bir şekil olmasını sağlar.
+Enlem ve boylam değerlerinin WGS 84 datum'da olduğu varsayılır. Azure Haritalar küresel bir projeksiyon kullansa da, tüm coğrafi koordinatları ortak bir datum'a dönüştürmek önemlidir. WGS 84 seçilen datumdur. Boylam değeri -180 derece ile +180 derece arasında dır ve enlem değeri -85.05112878 ile 85.0512878 arasında olmalıdır. Bu değerlere bağlı kalmak kutuplarda bir tekillik önler ve yansıtılan haritanın kare şeklinde olmasını sağlar.
 
 ## <a name="tile-coordinates"></a>Döşeme koordinatları
 
-Harita alımı ve görüntüleme performansını iyileştirmek için, işlenen harita kutucuklara kesilir. Piksel sayısı ve kutucuk sayısı her yakınlaştırma düzeyinde farklılık gösterir:
+Harita alma ve görüntüleme performansını optimize etmek için, işlenen harita karolar halinde kesilir. Piksel sayısı ve döşeme sayısı her yakınlaştırma düzeyinde farklılık gösterir:
 
 ```javascript
 var numberOfTilesWide = Math.pow(2, zoom);
@@ -108,13 +108,13 @@ var numberOfTilesWide = Math.pow(2, zoom);
 var numberOfTilesHigh = numberOfTilesWide;
 ```
 
-Her kutucuğa, sol üst köşedeki (0, 0), sağ alt köşedeki ( *2<sup>zoom</sup>– 1, 2<sup>zoom</sup>– 1)* arasında olan XY koordinatları verilir. Örneğin, yakınlaştırma düzeyi 2 ' de, kutucuk koordinatları (0, 0) ile (7, 7) arasında şu şekilde değişir:
+Her döşemeye sol üstteki (0, 0) ile sağ alt kısımda *(2<sup>yakınlaştırma</sup>-1, 2<sup>yakınlaştırma</sup>–1)* arasında değişen XY koordinatları verilir. Örneğin, zum düzeyi 2'de, döşeme koordinatları (0, 0) ile (7, 7) arasında değişir:
 
 <center>
 
-döşeme koordinatlarının haritasını ![](media/zoom-levels-and-tile-grid/map-tiles-x-y-coordinates-7x7.png)</center>
+![Döşeme koordinatları haritası](media/zoom-levels-and-tile-grid/map-tiles-x-y-coordinates-7x7.png)</center>
 
-Piksel XY koordinatları çifti verildiğinde, bu pikselin bulunduğu kutucuğun XY koordinatlarını kolayca belirleyebilirsiniz:
+Bir çift piksel XY koordinatı göz önüne alındığında, bu pikseli içeren döşemenin döşeme XY koordinatlarını kolayca belirleyebilirsiniz:
 
 ```javascript
 var tileX = Math.floor(pixelX / tileSize);
@@ -122,30 +122,30 @@ var tileX = Math.floor(pixelX / tileSize);
 var tileY = Math.floor(pixelY / tileSize);
 ```
 
-Kutucuklar yakınlaştırma düzeyiyle çağrılır. X ve y koordinatları, bu yakınlaştırma düzeyinin kılavuzundaki konumunu döşemeye karşılık gelir.
+Döşemeler yakınlaştırma düzeyine göre çağrılır. X ve y koordinatları, o yakınlaştırma düzeyi için ızgaradaki döşemenin konumuna karşılık gelir.
 
-Hangi yakınlaştırma düzeyinin kullanılacağını belirlerken, her konumun kutucuğunda sabit bir konumda olduğunu unutmayın. Sonuç olarak, belirli bir expanl bölgesini göstermek için gereken kutucuk sayısı, World eşlemesindeki yakınlaştırma kılavuzunun belirli bir yerleşimine bağımlıdır. Örneğin, 900 ölçüm olarak iki işaret varsa, bu, yalnızca üç *kutucuk alabilir ve* bunlar arasında bir yol görüntüleyebilirsiniz. Ancak, Batı noktası kutucuğunun sağ tarafında ve kutucuğunun sol tarafında yer alıyorsa, bu dört kutucuğa sahip olabilir:
-
-<center>
-
-![yakınlaştırma tanıtım ölçeği](media/zoom-levels-and-tile-grid/zoomdemo_scaled.png)</center>
-
-Yakınlaştırma düzeyi belirlendikten sonra x ve y değerleri hesaplanabilir. Her yakınlaştırma kılavuzundaki sol üst kutucuk x = 0, y = 0; sağ alt kutucuk x = 2<sup>zoom-1</sup>, y = 2<sup>zoom-1</sup>' dir.
-
-Yakınlaştırma düzeyi 1 ' in yakınlaştırma Kılavuzu aşağıda verilmiştir:
+Hangi yakınlaştırma düzeyinin kullanılacağını belirlerken, her konumun döşemesinde sabit bir konumda olduğunu unutmayın. Sonuç olarak, belirli bir bölge genişliğini görüntülemek için gereken döşeme sayısı, dünya haritasında zum ızgarasının belirli yerleşimine bağlıdır. Örneğin, 900 metre arayla iki nokta varsa, aralarındaki bir rotayı 17 yakınlaştırma düzeyinde görüntülemek için *yalnızca* üç kutucuk gerekebilir. Ancak, batı noktası çini sinin sağında ve kiremitinin solundaki doğu noktası ise, dört fayans alabilir:
 
 <center>
 
-yakınlaştırma düzeyi 1 için yakınlaştırma kılavuzunu ![](media/zoom-levels-and-tile-grid/api_x_y.png)</center>
+![Demo ölçeğini yakınlaştırma](media/zoom-levels-and-tile-grid/zoomdemo_scaled.png)</center>
 
-## <a name="quadkey-indices"></a>Çeyrek anahtar dizinleri
+Zum düzeyi belirlendikten sonra x ve y değerleri hesaplanabilir. Her zum ızgarasındaki sol üst döşeme x=0, y=0; sağ alt döşeme x=2<sup>zoom-1</sup>, y=2<sup>zoom-1'dedir.</sup>
 
-Bazı eşleme platformları `quadkey` bir dizin oluşturma adlandırma kuralı kullanır ve bu kutucuk, `quadtree` anahtarları veya `quadkeys` kısa olarak adlandırılan tek boyutlu bir dize olarak birleştirir. Her `quadkey`, tek bir kutucuğu belirli bir ayrıntı düzeyinde benzersiz şekilde tanımlar ve ortak veritabanı B-ağaç dizinlerinde anahtar olarak kullanılabilir. Azure Haritalar SDK 'Ları, [kutucuk katmanı Ekle](map-add-tile-layer.md) belgesinde belgelendiği gibi, diğer adlandırma kurallarına ek olarak `quadkey` adlandırma kuralı kullanan döşeme katmanlarının fazla düzenini destekler.
+Burada zoom düzeyi 1 için zoom ızgara:
+
+<center>
+
+![Yakınlaştırma düzeyi 1 için yakınlaştırma ızgarası](media/zoom-levels-and-tile-grid/api_x_y.png)</center>
+
+## <a name="quadkey-indices"></a>Dört tuş endeksleri
+
+Bazı eşleme `quadkey` platformları, döşeme ZY koordinatlarını anahtar lar veya `quadkeys` kısaca adlandırılan `quadtree` tek boyutlu bir dize yle birleştiren bir dizin oluşturma adlandırma kuralı kullanır. Her `quadkey` benzersiz ayrıntı belirli bir düzeyde tek bir döşeme tanımlar ve ortak veritabanı B-ağacı dizinleri bir anahtar olarak kullanılabilir. Azure Haritalar SDK'ları, [döşeme katmanı ekle](map-add-tile-layer.md) belgesinde belgelenen diğer adlandırma kurallarına ek olarak adlandırma kuralı nı kullanan `quadkey` döşeme katmanlarının çakışmasını destekler.
 
 > [!NOTE]
-> `quadkeys` adlandırma kuralı yalnızca bir veya daha fazla yakınlaştırma düzeyi için geçerlidir. Azure Haritalar SDK 'Sı, tüm dünyadaki tek bir harita kutucuğu olan 0 yakınlaştırma düzeyini destekler. 
+> `quadkeys` Adlandırma kuralı yalnızca bir veya daha büyük yakınlaştırma düzeyleri için çalışır. Azure Haritalar SDK'nın tüm dünya için tek bir harita döşemesi olan zoom düzeyi 0'ı destekler. 
 
-Döşeme koordinatlarını bir `quadkey`dönüştürmek için Y ve X koordinatlarının bitleri araya eklemeli ve sonuç bir Base-4 numarası olarak yorumlanır (önde sıfır korunur) ve bir dizeye dönüştürülür. Örneğin, XY koordinatlarının (3, 5) düzey 3 ' te gösterildiği gibi, `quadkey` aşağıdaki gibi belirlenir:
+Döşeme koordinatlarını bir `quadkey`,Y ve X koordinatlarının bitlerine dönüştürmek için bir taban-4 sayısı (önde gelen sıfırlar korunur) olarak yorumlanır ve bir dize dönüştürülür. Örneğin, seviye 3'teki `quadkey` (3, 5) kiremit XY koordinatları verilmiştir:
 
 ```
 tileX = 3 = 011 (base 2)
@@ -155,19 +155,19 @@ tileY = 5 = 1012 (base 2)
 quadkey = 100111 (base 2) = 213 (base 4) = "213"
 ```
 
-`Qquadkeys` ilginç birçok özelliğe sahiptir. İlk olarak, bir `quadkey` uzunluğu (basamak sayısı) karşılık gelen kutucuğun yakınlaştırma düzeyine eşittir. İkincisi, herhangi bir kutucuğun `quadkey`, üst kutucuğunun `quadkey` (önceki düzeyde kapsayan kutucuk) ile başlar. Aşağıdaki örnekte gösterildiği gibi, 2. kutucuk, 20 ile 23 arasındaki kutucukların üst öğesidir:
+`Qquadkeys`birkaç ilginç özelliklere sahiptir. İlk olarak, bir `quadkey` (basamak sayısı) uzunluğu ilgili döşemenin yakınlaştırma düzeyine eşittir. İkinci olarak, herhangi bir `quadkey` döşemenin ana `quadkey` döşemesi (önceki düzeydeki döşemeyi içeren) ile başlar. Aşağıdaki örnekte gösterildiği gibi, kiremit 2 20 ile 23 arasında kiremit üst:
 
 <center>
 
-![Quadkey kutucuğu piramit](media/zoom-levels-and-tile-grid/quadkey-tile-pyramid.png)</center>
+![Dört tuşla çini piramidi](media/zoom-levels-and-tile-grid/quadkey-tile-pyramid.png)</center>
 
-Son olarak, `quadkeys` genellikle XY alanındaki kutucukların yakınlığını koruyan tek boyutlu bir dizin anahtarı sağlar. Diğer bir deyişle, yakın XY koordinatlarından oluşan iki kutucuğa genellikle görece birlikte yakın `quadkeys` sahip olur. Bu, veritabanı performansını iyileştirmek için önemlidir, çünkü komşu kutucuklar genellikle gruplar halinde istenir ve disk okuma sayısını en aza indirmek için bu kutucukları aynı disk blokları üzerinde tutmanız istenebilir.
+Son `quadkeys` olarak, genellikle XY alanında fayans yakınlığını koruyan tek boyutlu bir dizin anahtarı sağlayın. Başka bir deyişle, yakındaki XY koordinatları olan `quadkeys` iki döşeme genellikle birbirine nispeten yakın dır. Komşu döşemeler genellikle gruplar halinde istendiğinden ve disk okuma sayısını en aza indirmek için bu kutucukları aynı disk bloklarında tutmak istendiğinden, veritabanı performansını en iyi duruma getirmek için önemlidir.
 
-## <a name="tile-math-source-code"></a>Kutucuk matematik kaynak kodu
+## <a name="tile-math-source-code"></a>Döşeme matematik kaynak kodu
 
-Aşağıdaki örnek kod, bu belgede açıklanan işlevlerin nasıl uygulanacağını gösterir. Bu işlevler, gerektiğinde diğer programlama dillerine kolayca çevrilebilir.
+Aşağıdaki örnek kod, bu belgede açıklanan işlevlerin nasıl uygulanacağını göstermektedir. Bu işlevler gerektiğinde diğer programlama dillerine kolayca çevrilebilir.
 
-#### <a name="ctabcsharp"></a>[C#](#tab/csharp)
+#### <a name="c"></a>[C #](#tab/csharp)
 
 ```csharp
 using System;
@@ -566,7 +566,7 @@ namespace AzureMaps
 }
 ```
 
-#### <a name="typescripttabtypescript"></a>[TypeScript](#tab/typescript)
+#### <a name="typescript"></a>[TypeScript](#tab/typescript)
 
 ```typescript
 module AzureMaps {
@@ -948,23 +948,23 @@ module AzureMaps {
 * * *
 
 > [!NOTE]
-> Azure Haritalar SDK 'sında etkileşimli harita denetimleri, Jeo-uzamsal konumlar ve Görünüm penceresi pikselleri arasında dönüştürme için yardımcı işlevlere sahiptir. 
-> - [Web SDK: harita piksel ve konum hesaplamaları](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map#pixelstopositions-pixel---)
+> Azure Haritalar SDK'sındaki etkileşimli harita denetimleri, coğrafi konumlar ve görüntüleme noktası pikselleri arasında dönüştürme için yardımcı işlevlere sahiptir. 
+> - [Web SDK: Harita pikseli ve konum hesaplamaları](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map#pixelstopositions-pixel---)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure haritalar REST hizmetlerinden harita kutucuklarına doğrudan erişin:
+Azure Haritalar REST hizmetlerinden doğrudan harita kutucuklara erişin:
 
 > [!div class="nextstepaction"]
-> [Harita kutucukları al](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
+> [Harita kutucuklarını alın](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
 
 > [!div class="nextstepaction"]
-> [Trafik akışı kutucukları al](https://docs.microsoft.com/rest/api/maps/traffic/gettrafficflowtile)
+> [Trafik akış kutucuklarını alın](https://docs.microsoft.com/rest/api/maps/traffic/gettrafficflowtile)
 
 > [!div class="nextstepaction"]
-> [Trafik olayı kutucukları al](https://docs.microsoft.com/rest/api/maps/traffic/gettrafficincidenttile)
+> [Trafik olayı kutucuklarını alın](https://docs.microsoft.com/rest/api/maps/traffic/gettrafficincidenttile)
 
-Jeo-uzamsal kavramlar hakkında daha fazla bilgi edinin:
+Jeouzamsal kavramlar hakkında daha fazla bilgi edinin:
 
 > [!div class="nextstepaction"]
-> [Azure haritalar sözlüğü](glossary.md)
+> [Azure Haritalar sözlüğü](glossary.md)

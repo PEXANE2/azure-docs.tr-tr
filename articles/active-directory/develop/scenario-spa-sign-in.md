@@ -1,6 +1,6 @@
 ---
-title: Tek sayfalı uygulama oturum açma & oturum açma-Microsoft kimlik platformu | Mavisi
-description: Tek sayfalı bir uygulama (oturum açma) oluşturmayı öğrenin
+title: Oturum açma & tek sayfalık uygulama oturum açma - Microsoft kimlik platformu | Azure
+description: Tek sayfalı bir uygulama oluşturmayı öğrenin (oturum açma)
 services: active-directory
 documentationcenter: dev-center-name
 author: navyasric
@@ -17,37 +17,37 @@ ms.date: 02/11/2020
 ms.author: nacanuma
 ms.custom: aaddev
 ms.openlocfilehash: eb75aa53051e7e3c424ffe131cda61324fe86b1a
-ms.sourcegitcommit: 76bc196464334a99510e33d836669d95d7f57643
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77159973"
 ---
-# <a name="single-page-application-sign-in-and-sign-out"></a>Tek sayfalı uygulama: oturum açma ve oturum kapatma
+# <a name="single-page-application-sign-in-and-sign-out"></a>Tek sayfauygulaması: Oturum açma ve Oturum Açma
 
-Tek sayfalı uygulamanız için koda oturum açma eklemeyi öğrenin.
+Tek sayfalı uygulamanızın koduna nasıl oturum açma ekleyeceğinizi öğrenin.
 
-Uygulamanızdaki API 'Lere erişim belirteçleri alabilmeniz için önce kimliği doğrulanmış bir Kullanıcı bağlamına ihtiyacınız vardır. MSAL. js ' de uygulamanızdaki kullanıcılara iki şekilde oturum açabilirsiniz:
+Uygulamanızdaki API'lere erişmek için belirteçleri alabilmeniz için kimlik doğrulaması yapılan bir kullanıcı bağlamına ihtiyacınız vardır. Kullanıcıları uygulamanızda MSAL.js'de iki şekilde oturum açabilirsiniz:
 
-* `loginPopup` yöntemi kullanılarak [açılır pencere](#sign-in-with-a-pop-up-window)
-* `loginRedirect` yöntemini kullanarak [yeniden yönlendirin](#sign-in-with-redirect)
+* [Açılan pencere](#sign-in-with-a-pop-up-window), `loginPopup` yöntemi kullanarak
+* [Yönlendirme](#sign-in-with-redirect), `loginRedirect` yöntemi kullanarak
 
-İsteğe bağlı olarak, kullanıcının oturum açma sırasında izin vermesini gerektiren API 'lerin kapsamlarını da geçirebilirsiniz.
+Ayrıca isteğe bağlı olarak, oturum açma sırasında kullanıcının rızasını alması gereken API'lerin kapsamlarını geçirebilirsiniz.
 
 > [!NOTE]
-> Uygulamanızın kimliği doğrulanmış bir Kullanıcı bağlamına veya KIMLIK belirtecine zaten erişimi varsa, oturum açma adımını atlayabilir ve belirteçleri doğrudan elde edebilirsiniz. Ayrıntılar için bkz. [msal. js oturum açma olmadan SSO](msal-js-sso.md#sso-without-msaljs-login).
+> Uygulamanız zaten kimlik doğrulaması kullanıcı bağlamına veya kimlik belirtecine erişebiliyorsa, oturum açma adımını atlayabilir ve doğrudan belirteçler edinebilirsiniz. Ayrıntılar için, [MSAL.js giriş olmadan SSO](msal-js-sso.md#sso-without-msaljs-login)bakın.
 
-## <a name="choosing-between-a-pop-up-or-redirect-experience"></a>Bir açılır pencere veya yeniden yönlendirme deneyimi arasında seçim yapma
+## <a name="choosing-between-a-pop-up-or-redirect-experience"></a>Açılır pencere veya yeniden yönlendirme deneyimi arasında seçim yapmak
 
-Uygulamanızda hem açılır hem de yeniden yönlendirme yöntemlerini kullanamazsınız. Açılır veya yeniden yönlendirme deneyimi arasındaki seçim, uygulama akışınıza bağlıdır:
+Uygulamanızda hem açılır pencere hem de yeniden yönlendirme yöntemlerini kullanamazsınız. Açılır pencere veya yeniden yönlendirme deneyimi arasındaki seçim, uygulama akışınıza bağlıdır:
 
-* Kimlik doğrulama sırasında kullanıcıların ana uygulama sayfasından uzakta geçiş yapmak istemiyorsanız, açılır yöntemi öneririz. Kimlik doğrulama yeniden yönlendirmesi bir açılır pencerede olduğundan, ana uygulamanın durumu korunur.
+* Kimlik doğrulama sırasında kullanıcıların ana uygulama sayfanızdan uzaklaşmasını istemiyorsanız, açılır pencere yöntemini öneririz. Kimlik doğrulama yönlendirmesi açılır pencerede gerçekleştiğinden, ana uygulamanın durumu korunur.
 
-* Kullanıcıların, açılır pencerelerin devre dışı bırakıldığı tarayıcı kısıtlamaları veya ilkeleri varsa, yeniden yönlendirme yöntemini kullanabilirsiniz. [Internet Explorer 'da açılır pencereler ile ilgili bilinen sorunlar](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser)olduğundan, Internet Explorer tarayıcısı ile yeniden yönlendirme yöntemini kullanın.
+* Kullanıcıların açılır pencerelerin devre dışı bırakıldığı tarayıcı kısıtlamaları veya ilkeleri varsa, yeniden yönlendirme yöntemini kullanabilirsiniz. Internet Explorer'da [açılır pencerelerle ilgili bilinen sorunlar](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser)olduğundan, Internet Explorer tarayıcısıyla yönlendirme yöntemini kullanın.
 
-## <a name="sign-in-with-a-pop-up-window"></a>Açılır pencere ile oturum açma
+## <a name="sign-in-with-a-pop-up-window"></a>Açılır pencereyle oturum açma
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 ```javascript
 const loginRequest = {
@@ -63,9 +63,9 @@ userAgentApplication.loginPopup(loginRequest).then(function (loginResponse) {
 });
 ```
 
-# <a name="angulartabangular"></a>[Angular](#tab/angular)
+# <a name="angular"></a>[Angular](#tab/angular)
 
-MSAL angular sarmalayıcısı, yol tanımına `MsalGuard` ekleyerek uygulamanızdaki belirli yolları güvenli hale getirmeye olanak tanır. Bu koruma, bu rotaya erişildiğinde oturum açma yöntemini çağırır.
+MSAL Açısal sarıcı, rota tanımına ekleyerek `MsalGuard` uygulamanızda belirli yolları güvence altına almanızı sağlar. Bu koruma, bu rotaya erişildiğinde oturum açma yöntemini çağırır.
 
 ```javascript
 // In app.routes.ts
@@ -77,7 +77,7 @@ MSAL angular sarmalayıcısı, yol tanımına `MsalGuard` ekleyerek uygulamanız
   { path: 'myProfile' ,component: MsGraphComponent, canActivate : [MsalGuard] },
 ```
 
-Açılır pencere deneyimi için `popUp` yapılandırma seçeneğini etkinleştirin. Ayrıca, onay gerektiren kapsamları aşağıdaki gibi geçirebilirsiniz:
+Açılır pencere deneyimi için yapılandırma `popUp` seçeneğini etkinleştirin. Ayrıca, onay gerektiren kapsamları aşağıdaki gibi geçirebilirsiniz:
 
 ```javascript
 //In app.module.ts
@@ -93,9 +93,9 @@ Açılır pencere deneyimi için `popUp` yapılandırma seçeneğini etkinleşti
 
 ## <a name="sign-in-with-redirect"></a>Yeniden yönlendirme ile oturum açma
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
-Yeniden yönlendirme yöntemleri, ana uygulamadan uzağa geçiş nedeniyle Promise döndürmez. Döndürülen belirteçleri işlemek ve erişmek için, yeniden yönlendirme yöntemlerini çağırmadan önce başarı ve hata geri çağırmaları kaydetmeniz gerekir.
+Yönlendirme yöntemleri, ana uygulamadan uzaklaşmanedeniyle bir sözü döndürmez. İade edilen belirteçleri işlemek ve erişmek için, yönlendirme yöntemlerini aramadan önce başarı ve hata geri aramalarını kaydetmeniz gerekir.
 
 ```javascript
 function authCallback(error, response) {
@@ -111,22 +111,22 @@ const loginRequest = {
 userAgentApplication.loginRedirect(loginRequest);
 ```
 
-# <a name="angulartabangular"></a>[Angular](#tab/angular)
+# <a name="angular"></a>[Angular](#tab/angular)
 
-Buradaki kod, açılır pencere ile oturum açma hakkında bölümünde daha önce açıklananla aynıdır. Varsayılan akış yeniden yönlendirme 'dir.
+Buradaki kod, açılır pencereyle oturum açma ile ilgili bölümde daha önce açıklananla aynıdır. Varsayılan akış yeniden yönlendirilir.
 
 > [!NOTE]
-> KIMLIK belirteci, onaylı kapsamları içermez ve yalnızca kimliği doğrulanmış kullanıcıyı temsil eder. Verilen kapsamlar, bir sonraki adımda elde ettiğiniz erişim belirtecinde döndürülür.
+> Kimlik belirteci, onay verilen kapsamları içermez ve yalnızca kimlik doğrulaması yapılan kullanıcıyı temsil eder. İzin verilen kapsamlar, bir sonraki adımda elde acağınız erişim belirtecinde döndürülür.
 
 ---
 
 ## <a name="sign-out"></a>Oturumu kapatma
 
-MSAL kitaplığı, tarayıcı depolamada önbelleği temizleyen ve Azure Active Directory (Azure AD) için bir oturum kapatma isteği gönderen bir `logout` yöntemi sağlar. Kaydolduktan sonra, kitaplık varsayılan olarak uygulama başlatma sayfasına yeniden yönlendirilir.
+MSAL kitaplığı, `logout` tarayıcı depolamasındaki önbelleği temizleyen ve Azure Etkin Dizini'ne (Azure AD) oturum açma isteği gönderen bir yöntem sağlar. Oturum sonla'dan sonra kitaplık varsayılan olarak uygulama başlangıç sayfasına geri yönlendirir.
 
-`postLogoutRedirectUri`ayarlayarak, oturum kapatıldıktan sonra yeniden yönlendirileceği URI 'yi yapılandırabilirsiniz. Bu URI Ayrıca uygulama kaydlarınızın oturum kapatma URI 'SI olarak kaydedilmelidir.
+Uri'yi, oturum dışı böldükten sonra yeniden yönlendirmesi gereken URI'yi ayarlayarak `postLogoutRedirectUri`yapılandırabilirsiniz. Bu URI ayrıca başvuru kaydınızda giriş URI olarak da kaydedilmelidir.
 
-# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+# <a name="javascript"></a>[Javascript](#tab/javascript)
 
 ```javascript
 const config = {
@@ -143,7 +143,7 @@ userAgentApplication.logout();
 
 ```
 
-# <a name="angulartabangular"></a>[Angular](#tab/angular)
+# <a name="angular"></a>[Angular](#tab/angular)
 
 ```javascript
 //In app.module.ts
@@ -163,4 +163,4 @@ this.authService.logout();
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Uygulama için bir belirteç alınıyor](scenario-spa-acquire-token.md)
+> [Uygulama için belirteç alma](scenario-spa-acquire-token.md)

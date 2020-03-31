@@ -8,23 +8,23 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.openlocfilehash: 0453d7465479fb1410d1436cc3fa53914633ece5
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/01/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "68726385"
 ---
 #  <a name="transfer-objects-tofrom-azure-blob-storage-using-php"></a>PHP kullanarak nesneleri Azure Blob depolama içine/dışına aktarma
 Bu hızlı başlangıçta, Azure Blob depolamadaki bir kapsayıcıda blok bloblarını karşıya yüklemek, indirmek ve listelemek için PHP'yi nasıl kullanabileceğinizi öğreneceksiniz. 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
-Aşağıdaki ek önkoşulların yüklü olduğundan emin olun:
+Aşağıdaki ek ön koşulların yüklü olduğundan emin olun:
 
 * [PHP](https://php.net/downloads.php)
-* [PHP için Azure depolama SDK 'Sı](https://github.com/Azure/azure-storage-php)
+* [PHP için Azure Depolama SDK](https://github.com/Azure/azure-storage-php)
 
 ## <a name="download-the-sample-application"></a>Örnek uygulamayı indirin:
 Bu hızlı başlangıçta kullanılan [örnek uygulama](https://github.com/Azure-Samples/storage-blobs-php-quickstart.git), temel bir PHP uygulamasıdır.  
@@ -42,14 +42,14 @@ Bu komut, depoyu yerel Git klasörünüze kopyalar. Örnek PHP uygulamasını in
 ## <a name="configure-your-storage-connection-string"></a>Depolama bağlantı dizelerinizi yapılandırma
 Uygulamada, uygulamanız için **BlobRestProxy** örneği oluşturmak amacıyla depolama hesabı adınızı ve hesap anahtarınızı sağlamanız gerekir. Bu tanımlayıcıları uygulamayı çalıştıran yerel makine üzerindeki bir ortam değişkeninde depolamanız önerilir. Ortam değişkenini oluşturmak için İşletim Sisteminize bağlı olarak aşağıdaki örneklerden birini kullanın. **youraccountname** ve **accountkey** değerlerini, hesap adınız ve anahtarınızla değiştirin.
 
-# <a name="linuxtablinux"></a>[Linux](#tab/linux)
+# <a name="linux"></a>[Linux](#tab/linux)
 
 ```bash
 export ACCOUNT_NAME=<youraccountname>
 export ACCOUNT_KEY=<youraccountkey>
 ```
 
-# <a name="windowstabwindows"></a>[Windows](#tab/windows)
+# <a name="windows"></a>[Windows](#tab/windows)
 
 ```cmd
 setx ACCOUNT_NAME=<youraccountname>
@@ -93,7 +93,7 @@ Sonraki aşamada, nasıl çalıştığını anlayabilmeniz için örnek kodu inc
 > [!IMPORTANT]
 > Kapsayıcı adlarının küçük harfle yazılması gerekir. Kapsayıcılar ve blob adları hakkında daha fazla bilgi için bkz. [Kapsayıcıları, Blobları ve Meta Verileri Adlandırma ve Bunlara Başvurma](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
 
-Bu bölümde Azure depolama istemcisi örneği kurdunuz, blob hizmeti nesnesini oluşturdunuz, yeni bir kapsayıcı oluşturdunuz ve kapsayıcıdaki izinleri bloblar herkese açık olacak şekilde ayarladınız. Bu kapsayıcının adı **quickstartblobs**'dur. 
+Bu bölümde Azure depolama istemcisi örneği kurdunuz, blob hizmeti nesnesini oluşturdunuz, yeni bir kapsayıcı oluşturdunuz ve kapsayıcıdaki izinleri bloblar herkese açık olacak şekilde ayarladınız. Bu kapsayıcının adı **quickstartblobs**’dur. 
 
 ```PHP
     # Setup a specific instance of an Azure::Storage::Client
@@ -141,7 +141,7 @@ Bir dosyayı bloba yüklemek için, yerel diskinizdeki dizin adıyla dosya adın
     $blobClient->createBlockBlob($containerName, $fileToUpload, $content);
 ```
 
-Bir blok blobunun içeriğini kısmen güncelleştirmek için **createblocklist()** yöntemini kullanın. Blok bloblarının boyutu 4,7 TB'yi bulabilir ve bu bloblar Excel elektronik tablolarından büyük video dosyalarına kadar birçok türde olabilir. Sayfa blobları öncelikli olarak IaaS VM'leri desteklemek için kullanılan VHD dosyalarında kullanılır. Ekleme blobları, bir dosyaya yazıp daha sonradan daha fazla bilgi eklemek istediğiniz durumlarda günlüğe kaydetme için kullanılır. Ekleme blobu tek bir yazar modelinde kullanılabilir. Blob depolamada depolanan nesnelerin çoğu blok blobudur.
+Bir blok blobunun içeriğini kısmen güncelleştirmek için **createblocklist()** yöntemini kullanın. Blok bloblarının boyutu 4,7 TB’yi bulabilir ve bu bloblar Excel elektronik tablolarından büyük video dosyalarına kadar birçok türde olabilir. Sayfa blobları öncelikli olarak IaaS VM'leri desteklemek için kullanılan VHD dosyalarında kullanılır. Ekleme blobları, bir dosyaya yazıp daha sonradan daha fazla bilgi eklemek istediğiniz durumlarda günlüğe kaydetme için kullanılır. Ekleme blobu tek bir yazar modelinde kullanılabilir. Blob depolamada depolanan nesnelerin çoğu blok blobudur.
 
 ### <a name="list-the-blobs-in-a-container"></a>Blob’ları bir kapsayıcıda listeleme
 
@@ -174,7 +174,7 @@ Bir blok blobunun içeriğini kısmen güncelleştirmek için **createblocklist(
 ```
 
 ### <a name="clean-up-resources"></a>Kaynakları temizleme
-Bu hızlı başlangıçta karşıya yüklenen bloblara artık ihtiyacınız kalmadığında, **deleteContainer()** yöntemini kullanarak kapsayıcının tamamını silebilirsiniz. Oluşturulan dosyalara artık ihtiyaç duymuyorsanız dosyaları silmek için **deleteBlob()** yöntemini kullanırsınız.
+Bu hızlı başlangıçta karşıya yüklenen bloblara artık ihtiyacınız kalmadığında, **deleteContainer()** yöntemini kullanarak kapsayıcının tamamını silebilirsiniz. Oluşturulan dosyalara artık gerek yoksa, dosyaları silmek için **deleteBlob()** yöntemini kullanırsınız.
 
 ```PHP
     // Delete blob.

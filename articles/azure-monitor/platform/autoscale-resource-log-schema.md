@@ -1,26 +1,26 @@
 ---
-title: Azure otomatik ölçeklendirme günlüğü olayları şeması
-description: Otomatik ölçeklendirme eylemlerini izlemek ve sorunlarını gidermek için günlüklerin biçimi
+title: Azure otomatik ölçeklendirme günlük olayları şeması
+description: Otomatik ölçeklendirme eylemlerini izlemek ve sorun giderme için günlüklerin biçimi
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.subservice: autoscale
 ms.openlocfilehash: 3c32f15208a8e692054ee6c1f7effc6b7c89de3d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "75395941"
 ---
-# <a name="azure-monitor-autoscale-actions-resource-log-schema"></a>Azure Izleyici otomatik ölçeklendirme eylemleri kaynak günlüğü şeması
+# <a name="azure-monitor-autoscale-actions-resource-log-schema"></a>Azure Monitörü otomatik ölçeklendirme eylemleri kaynak günlüğü şeması
 
-Aşağıda örnek verilerle birlikte otomatik ölçeklendirme kaynak günlüklerinin genel biçimleri verilmiştir. Aşağıdaki örneklerin hepsi, belirli bir alan için geçerli olabilecek birden çok değer içerebildiğinden JSON doğru şekilde biçimlendirilmemiş. 
+Aşağıda örnek veriler içeren otomatik ölçeklendirme kaynak günlükleri için genel biçimler verilmiştir. Aşağıdaki örneklerin tümü json düzgün biçimlendirilmiş değildir, çünkü belirli bir alan için geçerli olabilecek birden çok değer içerebilirler. 
 
-Otomatik ölçeklendirme ile ilgili sorunları gidermek için bu türden olayları kullanın. Daha fazla bilgi için bkz. [Otomatik ölçeklendirme sorunlarını giderme](autoscale-troubleshoot.md).
+Otomatik ölçekle ilgili sorunlarla ilgili sorunları gidermek için bu tür olayları kullanın. Daha fazla bilgi için sorun [giderme otomatik ölçeklendirme sorunlarına](autoscale-troubleshoot.md)bakın.
 
 
 ## <a name="profile-evaluation"></a>Profil değerlendirmesi
 
-Otomatik ölçeklendirme bir otomatik ölçeklendirme profiline göründüğünde kaydedilir
+Otomatik ölçek profiline ilk baktığında kaydedilen
 
 ```json
 {
@@ -37,9 +37,9 @@ Otomatik ölçeklendirme bir otomatik ölçeklendirme profiline göründüğünd
 }
 ```
 
-## <a name="profile-cooldown-evaluation"></a>Profil coolazaltma değerlendirmesi
+## <a name="profile-cooldown-evaluation"></a>Profil dolum değerlendirmesi
 
-Otomatik ölçeklendirme, soğuk bir süre nedeniyle ölçek yapamadığı takdirde kaydedilir. 
+Otomatik ölçek, soğuma süresi nedeniyle bir ölçek yapılıp yapılmaması gerektiğini değerlendirdiğinde kaydedilir. 
 
 ```json
 {
@@ -62,7 +62,7 @@ Otomatik ölçeklendirme, soğuk bir süre nedeniyle ölçek yapamadığı takdi
 
 ## <a name="rule-evaluation"></a>Kural değerlendirmesi
 
-Otomatik ölçeklendirme ilk kez belirli bir ölçek kuralını değerlendirmeye başladığında kaydedilir. 
+Otomatik ölçek ilk belirli bir ölçek kuralını değerlendirmeye başladığında kaydedilir. 
 
 ```json
 {
@@ -87,9 +87,9 @@ Otomatik ölçeklendirme ilk kez belirli bir ölçek kuralını değerlendirmeye
 }
 ```
 
-## <a name="metric-evaluation"></a>Ölçüm değerlendirmesi
+## <a name="metric-evaluation"></a>Metrik değerlendirme
 
-Otomatik ölçeklendirme, bir ölçek eylemini tetiklemek için kullanılan ölçümü değerlendiriyorsa kaydedilir. 
+Otomatik ölçek, bir ölçek eylemini tetiklemek için kullanılan ölçümü değerlendirirken kaydedilir. 
 
 ```json
 {
@@ -111,9 +111,9 @@ Otomatik ölçeklendirme, bir ölçek eylemini tetiklemek için kullanılan öl�
 }
 ```
 
-## <a name="instance-count-evaluation"></a>Örnek sayısı değerlendirmesi
+## <a name="instance-count-evaluation"></a>Örnek sayı değerlendirmesi
 
-Otomatik ölçeklendirme, daha fazla başlaması gerekip gerekmediğini belirleme hazırlığı için zaten çalışan örneklerin sayısını değerlendirirken, bazı durumlarda veya hiçbir şey yapmazsa kaydedilir. 
+Otomatik ölçek, daha fazla başlatılacak, bazılarını kapatmaveya hiçbir şey yapmamaya karar vermek için hazırlanmak ta olan örneklerin sayısını değerlendirirken kaydedilir. 
 
 ```json
 {
@@ -132,9 +132,9 @@ Otomatik ölçeklendirme, daha fazla başlaması gerekip gerekmediğini belirlem
 }
 ```
 
-## <a name="scale-action-evaluation"></a>Ölçek eylemi değerlendirmesi
+## <a name="scale-action-evaluation"></a>Ölçek eylem değerlendirmesi
 
-Bir ölçeklendirme eylemi gerçekleştiyse otomatik ölçeklendirme değerlendirmeye başladığında kaydedilir. 
+Bir ölçek eylemi gerçekleşirse otomatik ölçek değerlendirmeye başladığında kaydedilir. 
 
 ```json
 {
@@ -154,7 +154,7 @@ Bir ölçeklendirme eylemi gerçekleştiyse otomatik ölçeklendirme değerlendi
 
 ## <a name="instance-update-evaluation"></a>Örnek güncelleştirme değerlendirmesi
 
-Otomatik ölçeklendirme, çalışan işlem örneklerinin sayısını yukarı veya aşağı doğru olarak güncelleştirdiğinde kaydedilir.
+Otomatik ölçeklendirme, yukarı veya aşağı çalışan işlem örneklerinin sayısını güncelleştirdiğinde kaydedilir.
 
 ```json
 {
@@ -173,9 +173,9 @@ Otomatik ölçeklendirme, çalışan işlem örneklerinin sayısını yukarı ve
 }
 ```
 
-## <a name="scale-action"></a>Ölçeklendirme eylemi
+## <a name="scale-action"></a>Ölçek lendirme eylemi
 
-Otomatik ölçeklendirme, yukarı veya aşağı ölçekleme eylemi başlattığında kaydedilir. 
+Otomatik ölçek yukarı veya aşağı bir ölçek eylemi başlattığında kaydedilir. 
 ```json
 {
   "time": "2018-09-10 18:12:00.6132593",
@@ -196,9 +196,9 @@ Otomatik ölçeklendirme, yukarı veya aşağı ölçekleme eylemi başlattığ�
 }
 ```
 
-## <a name="scale-action-tracking"></a>Ölçek eylemi izleme
+## <a name="scale-action-tracking"></a>Eylem izlemeyi ölçeklendirin
 
-Örnek ölçekleme eyleminin farklı aralıklarına kaydedilir.
+Örnek ölçek eyleminin farklı aralıklarında kaydedilir.
 
 ```json
 {
@@ -217,4 +217,4 @@ Otomatik ölçeklendirme, yukarı veya aşağı ölçekleme eylemi başlattığ�
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
-[Otomatik ölçeklendirme](autoscale-overview.md) hakkında bilgi edinin
+Otomatik [ölçeklendirme](autoscale-overview.md) hakkında bilgi edinin

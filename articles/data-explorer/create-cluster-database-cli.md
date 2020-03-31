@@ -1,6 +1,6 @@
 ---
-title: Azure CLı ile Azure Veri Gezgini kümesi & DB oluşturma
-description: Azure CLı kullanarak Azure Veri Gezgini kümesi ve veritabanı oluşturmayı öğrenin
+title: Azure CLI ile DB & bir Azure Veri Gezgini kümesi oluşturma
+description: Azure CLI'yi kullanarak Azure Veri Gezgini kümesini ve veritabanını nasıl oluşturabilirsiniz öğrenin
 author: radennis
 ms.author: radennis
 ms.reviewer: orspodek
@@ -8,35 +8,35 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.openlocfilehash: 6b8c2924e50da095c3bc5c7db2d2bf48ef5a27c2
-ms.sourcegitcommit: dd3db8d8d31d0ebd3e34c34b4636af2e7540bd20
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/22/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77561961"
 ---
-# <a name="create-an-azure-data-explorer-cluster-and-database-by-using-azure-cli"></a>Azure CLı kullanarak Azure Veri Gezgini kümesi ve veritabanı oluşturma
+# <a name="create-an-azure-data-explorer-cluster-and-database-by-using-azure-cli"></a>Azure CLI'yi kullanarak bir Azure Veri Gezgini kümesi ve veritabanı oluşturun
 
 > [!div class="op_single_selector"]
 > * [Portal](create-cluster-database-portal.md)
 > * [CLI](create-cluster-database-cli.md)
-> * [PowerShell](create-cluster-database-powershell.md)
-> * [C#](create-cluster-database-csharp.md)
+> * [Powershell](create-cluster-database-powershell.md)
+> * [C #](create-cluster-database-csharp.md)
 > * [Python](create-cluster-database-python.md)
 > * [ARM şablonu](create-cluster-database-resource-manager.md)
 
-Azure Veri Gezgini uygulamalar, web siteleri, IoT cihazları ve daha fazlasından akışı yapılan büyük miktarda veri üzerinde gerçek zamanlı analiz yapmaya yönelik hızlı ve tam olarak yönetilen bir veri analizi hizmetidir. Azure Veri Gezgini kullanmak için, önce bir küme oluşturun ve bu kümede bir veya daha fazla veritabanı oluşturursunuz. Daha sonra sorguları bu verilere karşı çalıştırmak için bir veritabanına (yükleme) sahip olursunuz. Bu makalede, Azure CLı kullanarak bir küme ve veritabanı oluşturursunuz.
+Azure Veri Gezgini uygulamalar, web siteleri, IoT cihazları ve daha fazlasından akışı yapılan büyük miktarda veri üzerinde gerçek zamanlı analiz yapmaya yönelik hızlı ve tam olarak yönetilen bir veri analizi hizmetidir. Azure Veri Gezgini'ni kullanmak için öncelikle bir küme ve bu kümenin içinde bir veya daha fazla veritabanı oluşturmanız gerekir. Ardından veritabanına veri alarak (yükleyerek) sorgu çalıştırabilirsiniz. Bu makalede, Azure CLI kullanarak bir küme ve veritabanı oluşturursunuz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Bu makaleyi tamamlayabilmeniz için bir Azure aboneliğine ihtiyacınız vardır. Aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
+Bu makaleyi tamamlamak için bir Azure aboneliğine ihtiyacınız var. Hesabınız yoksa, başlamadan önce [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/)
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Azure CLı 'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu makale, Azure CLı sürüm 2.0.4 veya üstünü gerektirir. Sürümünüzü kontrol etmek için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli?view=azure-cli-latest).
+Azure CLI'yi yerel olarak yüklemeyi ve kullanmayı seçerseniz, bu makalede Azure CLI sürümü 2.0.4 veya sonrası gerekir. Sürümünüzü kontrol etmek için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekirse bkz. [Azure CLI’yı yükleme](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-## <a name="configure-the-cli-parameters"></a>CLı parametrelerini yapılandırma
+## <a name="configure-the-cli-parameters"></a>CLI parametrelerini yapılandırma
 
-Azure Cloud Shell içinde komut çalıştırıyorsanız aşağıdaki adımlar gerekli değildir. CLı 'yi yerel olarak çalıştırıyorsanız, Azure 'da oturum açmak ve geçerli aboneliğinizi ayarlamak için şu adımları izleyin:
+Azure Bulut BulutU'nda komutlar çalıştırıyorsanız aşağıdaki adımlar gerekmez. CLI'yi yerel olarak çalıştırıyorsanız, Azure'da oturum açmak ve geçerli aboneliğinizi ayarlamak için aşağıdaki adımları izleyin:
 
 1. Azure'da oturum açmak için aşağıdaki komutu çalıştırın:
 
@@ -44,15 +44,15 @@ Azure Cloud Shell içinde komut çalıştırıyorsanız aşağıdaki adımlar ge
     az login
     ```
 
-1. Kümenizin oluşturulmasını istediğiniz aboneliği ayarlayın. `MyAzureSub`, kullanmak istediğiniz Azure aboneliğinin adıyla değiştirin:
+1. Aboneliği kümenizin oluşturulmasını istediğiniz yere ayarlayın. Kullanmak `MyAzureSub` istediğiniz Azure aboneliğinin adıyla değiştirin:
 
     ```azurecli-interactive
     az account set --subscription MyAzureSub
     ```
 
-## <a name="create-the-azure-data-explorer-cluster"></a>Azure Veri Gezgini kümesi oluşturma
+## <a name="create-the-azure-data-explorer-cluster"></a>Azure Veri Gezgini kümesini oluşturma
 
-1. Aşağıdaki komutu kullanarak kümenizi oluşturun:
+1. Aşağıdaki komutu kullanarak kümeoluşturun:
 
     ```azurecli-interactive
     az kusto cluster create --name azureclitest --sku D11_v2 --resource-group testrg
@@ -60,21 +60,21 @@ Azure Cloud Shell içinde komut çalıştırıyorsanız aşağıdaki adımlar ge
 
    |**Ayar** | **Önerilen değer** | **Alan açıklaması**|
    |---|---|---|
-   | ad | *azureclitest* | Kümenizin istenen adı.|
-   | sku | *D13_v2* | Kümeniz için kullanılacak SKU. |
+   | ad | *azureclitest* | Kümenizin istenilen adı.|
+   | Sku | *D13_v2* | Kümeniz için kullanılacak SKU. |
    | resource-group | *testrg* | Kümenin oluşturulacağı kaynak grubu adı. |
 
-    Küme kapasitesi gibi kullanabileceğiniz ek isteğe bağlı parametreler vardır.
+    Kümenin kapasitesi gibi kullanabileceğiniz ek isteğe bağlı parametreler vardır.
 
-1. Kümenizin başarıyla oluşturulup oluşturulmayacağını denetlemek için şu komutu çalıştırın:
+1. Kümenizin başarıyla oluşturulup oluşturulmadığını kontrol etmek için aşağıdaki komutu çalıştırın:
 
     ```azurecli-interactive
     az kusto cluster show --name azureclitest --resource-group testrg
     ```
 
-Sonuç `Succeeded` değerine sahip `provisioningState` içeriyorsa, küme başarıyla oluşturuldu.
+Sonuç değeri `provisioningState` içeriyorsa, `Succeeded` küme başarıyla oluşturuldu.
 
-## <a name="create-the-database-in-the-azure-data-explorer-cluster"></a>Azure Veri Gezgini kümesinde veritabanı oluşturma
+## <a name="create-the-database-in-the-azure-data-explorer-cluster"></a>Azure Veri Gezgini kümesinde veritabanıoluşturma
 
 1. Aşağıdaki komutu kullanarak veritabanınızı oluşturun:
 
@@ -84,11 +84,11 @@ Sonuç `Succeeded` değerine sahip `provisioningState` içeriyorsa, küme başar
 
    |**Ayar** | **Önerilen değer** | **Alan açıklaması**|
    |---|---|---|
-   | küme adı | *azureclitest* | Veritabanının oluşturulacağı Kümenizin adı.|
-   | ad | *cliendatabase* | Veritabanınızın adı.|
+   | küme adı | *azureclitest* | Veritabanının oluşturulacağı kümenizin adı.|
+   | ad | *clidatabase* | Veritabanınızın adı.|
    | resource-group | *testrg* | Kümenin oluşturulacağı kaynak grubu adı. |
-   | geçici silme dönemi | *P365D* | Verilerin sorgu için kullanılabilir kalacağı süreyi belirtir. Daha fazla bilgi için bkz. [bekletme ilkesi](/azure/kusto/concepts/retentionpolicy) . |
-   | sık erişimli önbellek dönemi | *P31D* | Verilerin önbellekte tutulacağı süreyi belirtir. Daha fazla bilgi için [önbellek ilkesi](/azure/kusto/concepts/cachepolicy) 'ne bakın. |
+   | yumuşak silme dönemi | *P365D* | Verilerin sorgu için kullanılabilir olarak tutulacağı süreyi belirtir. Daha fazla bilgi için [bekletme ilkesine](/azure/kusto/concepts/retentionpolicy) bakın. |
+   | sıcak önbellek dönemi | *P31D* | Verilerin önbellekte tutulacağı süreyi belirtir. Daha fazla bilgi için [önbellek ilkesine](/azure/kusto/concepts/cachepolicy) bakın. |
 
 1. Oluşturduğunuz veritabanını görmek için aşağıdaki komutu çalıştırın:
 
@@ -100,8 +100,8 @@ Artık bir kümeniz ve veritabanınız var.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-* Diğer makalelerimizi izlemeyi planlıyorsanız oluşturduğunuz kaynakları saklayın.
-* Kaynakları temizlemek için kümeyi silin. Bir kümeyi sildiğinizde, içindeki tüm veritabanlarını da siler. Kümenizi silmek için aşağıdaki komutu kullanın:
+* Diğer makalelerimizi izlemeyi planlıyorsanız, oluşturduğunuz kaynakları koruyun.
+* Kaynakları temizlemek için kümeyi silin. Bir kümeyi sildiğinizde, aynı zamanda tüm veritabanlarını da siler. Kümenizi silmek için aşağıdaki komutu kullanın:
 
     ```azurecli-interactive
     az kusto cluster delete --name azureclitest --resource-group testrg
@@ -109,4 +109,4 @@ Artık bir kümeniz ve veritabanınız var.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Veri Gezgini Python kitaplığını kullanarak verileri alma](python-ingest-data.md)
+* [Azure Veri Gezgini Python kitaplığını kullanarak veri alma](python-ingest-data.md)

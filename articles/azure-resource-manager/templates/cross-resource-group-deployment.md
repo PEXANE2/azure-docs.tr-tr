@@ -1,29 +1,29 @@
 ---
-title: Kaynakları dağıtım & çapraz abonelik kaynak grubu
-description: Dağıtım sırasında birden fazla Azure aboneliğini ve kaynak grubunu nasıl hedefleyecek olduğunu gösterir.
+title: Kaynakları dağıtma, kaynak grubu & abonelik leri çapraz olarak dağıtma
+description: Dağıtım sırasında birden fazla Azure aboneliği ve kaynak grubunu nasıl hedefleyeceklerini gösterir.
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: 3cc31e64e9595c637a23fc54d9d02274ded40dda
-ms.sourcegitcommit: 8f4d54218f9b3dccc2a701ffcacf608bbcd393a6
+ms.openlocfilehash: 70868f5a3598c26ffff81f0ad3536a6c5c0a7e53
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/09/2020
-ms.locfileid: "78944026"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "79460356"
 ---
-# <a name="deploy-azure-resources-to-more-than-one-subscription-or-resource-group"></a>Azure kaynaklarını birden fazla aboneliğe veya kaynak grubuna dağıtın
+# <a name="deploy-azure-resources-to-more-than-one-subscription-or-resource-group"></a>Azure kaynaklarını birden fazla abonelik veya kaynak grubuna dağıtma
 
-Genellikle, şablonunuzda bulunan tüm kaynakları tek bir [kaynak grubuna](../management/overview.md)dağıtırsınız. Ancak, bir kaynak kümesini birlikte dağıtmak ve bunları farklı kaynak gruplarına veya aboneliklerine yerleştirmek istediğiniz senaryolar vardır. Örneğin, Azure Site Recovery için yedekleme sanal makinesini ayrı bir kaynak grubuna ve konuma dağıtmak isteyebilirsiniz. Kaynak Yöneticisi, birden fazla aboneliği ve kaynak grubunu hedeflemek için iç içe geçmiş şablonlar kullanmanıza olanak sağlar.
+Genellikle, şablonunuzdaki tüm kaynakları tek bir [kaynak grubuna](../management/overview.md)dağıtırsınız. Ancak, bir dizi kaynağı birlikte dağıtmak ancak bunları farklı kaynak gruplarına veya aboneliklere yerleştirmek istediğiniz senaryolar vardır. Örneğin, Azure Site Kurtarma yedekleme sanal makinesini ayrı bir kaynak grubuna ve konuma dağıtmak isteyebilirsiniz. Kaynak Yöneticisi, birden fazla abonelik ve kaynak grubunu hedeflemek için iç içe doğru şablonlar kullanmanıza olanak tanır.
 
 > [!NOTE]
-> Tek bir dağıtımda yalnızca beş kaynak grubuna dağıtım yapabilirsiniz. Genellikle, bu sınırlama, ana şablon için belirtilen bir kaynak grubuna ve iç içe veya bağlı dağıtımlardaki en fazla dört kaynak grubuna dağıtabileceğiniz anlamına gelir. Ancak, ana şablonunuz yalnızca iç içe veya bağlı şablonlar içeriyorsa ve herhangi bir kaynak dağıtmadığından, iç içe veya bağlı dağıtımlara en fazla beş kaynak grubu ekleyebilirsiniz.
+> Tek bir dağıtımda yalnızca beş kaynak grubuna dağıtabilirsiniz. Genellikle, bu sınırlama, üst şablon için belirtilen bir kaynak grubuna ve iç içe veya bağlantılı dağıtımlarda en fazla dört kaynak grubuna dağıtabileceğiniz anlamına gelir. Ancak, üst şablonunuz yalnızca iç içe veya bağlantılı şablonlar içeriyorsa ve kendisi herhangi bir kaynak dağıtmıyorsa, iç içe veya bağlantılı dağıtımlara en fazla beş kaynak grubu ekleyebilirsiniz.
 
-## <a name="specify-subscription-and-resource-group"></a>Abonelik ve kaynak grubu belirtin
+## <a name="specify-subscription-and-resource-group"></a>Abonelik ve kaynak grubunu belirtin
 
-Farklı bir kaynak grubu veya aboneliği hedeflemek için, [iç içe veya bağlı bir şablon](linked-templates.md)kullanın. `Microsoft.Resources/deployments` kaynak türü, iç içe dağıtım için aboneliği ve kaynak grubunu belirtmenizi sağlayan `subscriptionId` ve `resourceGroup`için parametreler sağlar. Abonelik KIMLIĞINI veya kaynak grubunu belirtmezseniz, üst şablondaki abonelik ve kaynak grubu kullanılır. Dağıtımı çalıştırmadan önce tüm kaynak gruplarının mevcut olması gerekir.
+Farklı bir kaynak grubunu veya aboneliği hedeflemek için [iç içe veya bağlantılı](linked-templates.md)bir şablon kullanın. Kaynak `Microsoft.Resources/deployments` türü, `subscriptionId` iç `resourceGroup`içe geçme için abonelik ve kaynak grubunu belirtmenizi sağlayan parametreler sağlar. Abonelik kimliği veya kaynak grubunu belirtmezseniz, üst şablondaki abonelik ve kaynak grubu kullanılır. Dağıtımı çalıştırmadan önce tüm kaynak gruplarının bulunması gerekir.
 
-Şablonu dağıtmak için kullandığınız hesabın, belirtilen abonelik KIMLIĞINE dağıtım izinleri olmalıdır. Belirtilen abonelik farklı bir Azure Active Directory kiracısında varsa, [başka bir dizinden Konuk kullanıcılar eklemeniz](../../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md)gerekir.
+Şablonu dağıtmak için kullandığınız hesabın belirtilen abonelik kimliğine dağıtmak için izinleri olmalıdır. Belirtilen abonelik farklı bir Azure Etkin Dizin kiracısında varsa, [başka bir dizinden konuk kullanıcılar eklemeniz](../../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md)gerekir.
 
-Farklı bir kaynak grubu ve abonelik belirtmek için şunu kullanın:
+Farklı bir kaynak grubu ve abonelik belirtmek için şunları kullanın:
 
 ```json
 "resources": [
@@ -38,9 +38,9 @@ Farklı bir kaynak grubu ve abonelik belirtmek için şunu kullanın:
 ]
 ```
 
-Kaynak gruplarınız aynı abonelikte yer alıyorsa, **SubscriptionID** değerini kaldırabilirsiniz.
+Kaynak gruplarınız aynı abonelikteyse, **subscriptionId** değerini kaldırabilirsiniz.
 
-Aşağıdaki örnek iki depolama hesabı dağıtır. İlk depolama hesabı, dağıtım sırasında belirtilen kaynak grubuna dağıtılır. İkinci depolama hesabı, `secondResourceGroup` ve `secondSubscriptionID` parametrelerinde belirtilen kaynak grubuna dağıtılır:
+Aşağıdaki örnekte iki depolama hesabı dağıtılır. İlk depolama hesabı dağıtım sırasında belirtilen kaynak grubuna dağıtılır. İkinci depolama `secondResourceGroup` hesabı, `secondSubscriptionID` parametrelerde belirtilen kaynak grubuna dağıtılır:
 
 ```json
 {
@@ -115,13 +115,13 @@ Aşağıdaki örnek iki depolama hesabı dağıtır. İlk depolama hesabı, dağ
 }
 ```
 
-`resourceGroup`, mevcut olmayan bir kaynak grubunun adına ayarlarsanız, dağıtım başarısız olur.
+Var olmayan `resourceGroup` bir kaynak grubunun adını ayarlarsanız, dağıtım başarısız olur.
 
-Önceki şablonu test etmek ve sonuçları görmek için PowerShell veya Azure CLı kullanın.
+Önceki şablonu sınamak ve sonuçları görmek için PowerShell veya Azure CLI'yi kullanın.
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
-İki depolama hesabını **aynı abonelikte**iki kaynak grubuna dağıtmak için şunu kullanın:
+**Aynı abonelikteki**iki kaynak grubuna iki depolama hesabı dağıtmak için şunları kullanın:
 
 ```azurepowershell-interactive
 $firstRG = "primarygroup"
@@ -138,7 +138,7 @@ New-AzResourceGroupDeployment `
   -secondStorageLocation eastus
 ```
 
-İki **aboneliğe**iki depolama hesabı dağıtmak için şunu kullanın:
+**İki aboneye**iki depolama hesabı dağıtmak için şunları kullanın:
 
 ```azurepowershell-interactive
 $firstRG = "primarygroup"
@@ -164,7 +164,7 @@ New-AzResourceGroupDeployment `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-İki depolama hesabını **aynı abonelikte**iki kaynak grubuna dağıtmak için şunu kullanın:
+**Aynı abonelikteki**iki kaynak grubuna iki depolama hesabı dağıtmak için şunları kullanın:
 
 ```azurecli-interactive
 firstRG="primarygroup"
@@ -172,14 +172,14 @@ secondRG="secondarygroup"
 
 az group create --name $firstRG --location southcentralus
 az group create --name $secondRG --location eastus
-az group deployment create \
+az deployment group create \
   --name ExampleDeployment \
   --resource-group $firstRG \
   --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/crosssubscription.json \
   --parameters storagePrefix=tfstorage secondResourceGroup=$secondRG secondStorageLocation=eastus
 ```
 
-İki **aboneliğe**iki depolama hesabı dağıtmak için şunu kullanın:
+**İki aboneye**iki depolama hesabı dağıtmak için şunları kullanın:
 
 ```azurecli-interactive
 firstRG="primarygroup"
@@ -194,7 +194,7 @@ az group create --name $secondRG --location eastus
 az account set --subscription $firstSub
 az group create --name $firstRG --location southcentralus
 
-az group deployment create \
+az deployment group create \
   --name ExampleDeployment \
   --resource-group $firstRG \
   --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/crosssubscription.json \
@@ -205,20 +205,20 @@ az group deployment create \
 
 ## <a name="use-functions"></a>İşlev kullanma
 
-[ResourceGroup ()](template-functions-resource.md#resourcegroup) ve [Subscription ()](template-functions-resource.md#subscription) işlevleri, şablonu nasıl belirtkullanılacağına göre farklı şekilde çözümlenir. Bir dış şablona bağlandığınızda işlevler her zaman ilgili şablonun kapsamına çözümlenir. Bir şablonu bir üst şablon içine yuvalandığınızda, işlevlerin ana şablon veya iç içe şablon için kaynak grubuna ve aboneliğe çözümlenip çözümlenmediğini belirtmek için `expressionEvaluationOptions` özelliğini kullanın. İç içe şablon için kapsama çözülecek özelliği `inner` olarak ayarlayın. Üst şablonun kapsamına çözülecek özelliği `outer` olarak ayarlayın.
+[Kaynak Grubu()](template-functions-resource.md#resourcegroup) ve [abonelik()](template-functions-resource.md#subscription) işlevleri şablonu nasıl belirttiğinize bağlı olarak farklı şekilde çözülür. Harici bir şablona bağlantı ettiğinizde, işlevler her zaman bu şablonun kapsamına gider. Bir şablonu bir üst şablona `expressionEvaluationOptions` yuvaya yuvayaptığınızda, işlevlerin kaynak grubuna ve ana şablona veya iç içe yönelik şablona göre çalışıp çalışmadığını belirtmek için özelliği kullanın. İç içe `inner` geçen şablonun kapsamına çözümünü ayarlamak için özelliği ayarlayın. Üst şablonun `outer` kapsamına çözümünü sağlamak için özelliği ayarlayın.
 
-Aşağıdaki tabloda, işlevlerin üst veya katıştırılmış kaynak grubuna ve aboneliğe çözümlenip çözümlenmediğini gösterir.
+Aşağıdaki tablo, işlevlerin üst veya katıştırılmış kaynak grubu ve abonelik için çözülüp çözülmediğini gösterir.
 
 | Şablon türü | Kapsam | Çözüm |
 | ------------- | ----- | ---------- |
-| iç içe geçmiş        | dış (varsayılan) | Üst kaynak grubu |
-| iç içe geçmiş        | iç | Alt kaynak grubu |
-| bağlandı        | Yok   | Alt kaynak grubu |
+| Iç içe        | dış (varsayılan) | Üst kaynak grubu |
+| Iç içe        | Iç | Alt kaynak grubu |
+| Bağlantılı        | Yok   | Alt kaynak grubu |
 
-Aşağıdaki [örnek şablonda](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/crossresourcegroupproperties.json) şunları gösterir:
+Aşağıdaki [örnek şablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/crossresourcegroupproperties.json) gösterir:
 
-* Varsayılan (dış) kapsamlı iç içe şablon
-* iç kapsama sahip iç içe şablon
+* varsayılan (dış) kapsamı olan iç içe şablon
+* iç kapsamı ile iç içe şablon
 * bağlantılı şablon
 
 ```json
@@ -315,9 +315,9 @@ Aşağıdaki [örnek şablonda](https://github.com/Azure/azure-docs-json-samples
 }
 ```
 
-Önceki şablonu test etmek ve sonuçları görmek için PowerShell veya Azure CLı kullanın.
+Önceki şablonu sınamak ve sonuçları görmek için PowerShell veya Azure CLI'yi kullanın.
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name parentGroup -Location southcentralus
@@ -329,7 +329,7 @@ New-AzResourceGroupDeployment `
   -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/crossresourcegroupproperties.json
 ```
 
-Yukarıdaki örnekteki çıktı:
+Önceki örnekten çıktı:
 
 ```output
  Name             Type                       Value
@@ -347,13 +347,13 @@ az group create --name parentGroup --location southcentralus
 az group create --name inlineGroup --location southcentralus
 az group create --name linkedGroup --location southcentralus
 
-az group deployment create \
+az deployment group create \
   --name ExampleDeployment \
   --resource-group parentGroup \
   --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/crossresourcegroupproperties.json
 ```
 
-Yukarıdaki örnekteki çıktı:
+Önceki örnekten çıktı:
 
 ```output
 "outputs": {
@@ -380,6 +380,6 @@ Yukarıdaki örnekteki çıktı:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Şablonunuzda parametrelerin nasıl tanımlanacağını anlamak için bkz. [Azure Resource Manager şablonlarının yapısını ve sözdizimini anlayın](template-syntax.md).
-* Yaygın dağıtım hatalarını çözümlemeye yönelik ipuçları için bkz. [Azure Resource Manager ile yaygın Azure dağıtım hatalarını giderme](common-deployment-errors.md).
-* SAS belirteci gerektiren bir şablonu dağıtma hakkında daha fazla bilgi için bkz. [özel şablonu SAS belirteci Ile dağıtma](secure-template-with-sas-token.md).
+* Şablonunuzdaparametrelerin nasıl tanımlandığını anlamak için [bkz.](template-syntax.md)
+* Sık kullanılan dağıtım hatalarını çözme yle ilgili ipuçları için, [Azure Kaynak Yöneticisi ile sık karşılaşılan Azure dağıtım hatalarını giderme](common-deployment-errors.md)sorununa bakın.
+* SAS belirteci gerektiren bir şablonu dağıtma hakkında bilgi [için](secure-template-with-sas-token.md)bkz.

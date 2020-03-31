@@ -1,51 +1,51 @@
 ---
-title: Azure Işlevleri Premium planı
-description: Azure Işlevleri Premium planı için Ayrıntılar ve yapılandırma seçenekleri (VNet, soğuk başlatma yok, sınırsız yürütme süresi).
+title: Azure İşlevler Premium planı
+description: Azure İşlevler Premium planı için ayrıntılar ve yapılandırma seçenekleri (VNet, soğuk başlangıç yok, sınırsız yürütme süresi).
 author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: jehollan
 ms.openlocfilehash: dd7f6d0760f2b848435e7c77657e261517d29dd8
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79276913"
 ---
-# <a name="azure-functions-premium-plan"></a>Azure Işlevleri Premium planı
+# <a name="azure-functions-premium-plan"></a>Azure İşlevler Premium planı
 
-Azure Işlevleri Premium planı (bazen elastik Premium plan olarak adlandırılır), işlev uygulamaları için bir barındırma seçeneğidir. Premium planı, VNet bağlantısı, soğuk başlatma ve Premium donanım gibi özellikler sağlar.  Birden çok işlev uygulaması aynı Premium plana dağıtılabilir ve plan, işlem örneği boyutunu, temel plan boyutunu ve maksimum plan boyutunu yapılandırmanıza olanak tanır.  Premium planı ve diğer plan ve barındırma türlerinin karşılaştırması için bkz. [işlev ölçekleme ve barındırma seçenekleri](functions-scale.md).
+Azure İşlevler Premium planı (bazen Elastik Premium plan olarak da adlandırılır) işlev uygulamaları için bir barındırma seçeneğidir. Premium plan, VNet bağlantısı, soğuk başlangıç ve premium donanım gibi özellikler sağlar.  Aynı Premium plana birden çok işlevli uygulama dağıtılabilir ve plan, işlem örneği boyutunu, temel plan boyutunu ve maksimum plan boyutunu yapılandırmanıza olanak tanır.  Premium plan ve diğer plan ve barındırma türlerinin karşılaştırılması için [işlev ölçeği ve barındırma seçeneklerine](functions-scale.md)bakın.
 
-## <a name="create-a-premium-plan"></a>Premium planı oluşturma
+## <a name="create-a-premium-plan"></a>Premium plan oluşturma
 
 [!INCLUDE [functions-premium-create](../../includes/functions-premium-create.md)]
 
-Azure CLı 'de [az functionapp plan Create](/cli/azure/functionapp/plan#az-functionapp-plan-create) ' i kullanarak da Premium bir plan oluşturabilirsiniz. Aşağıdaki örnek, esnek bir _Premium 1_ katman planı oluşturur:
+Azure CLI'de [az functionapp planını kullanarak](/cli/azure/functionapp/plan#az-functionapp-plan-create) bir Premium planı da oluşturabilirsiniz. Aşağıdaki örnek, _Elastik Premium 1_ katman planı oluşturur:
 
 ```azurecli-interactive
 az functionapp plan create --resource-group <RESOURCE_GROUP> --name <PLAN_NAME> \
 --location <REGION> --sku EP1
 ```
 
-Bu örnekte, `<RESOURCE_GROUP>` kaynak grubu ile `<PLAN_NAME>` ve plan için kaynak grubunda benzersiz olan bir adla değiştirin. Desteklenen bir [`<REGION>`](https://azure.microsoft.com/global-infrastructure/services/?products=functions)belirtin. Linux destekleyen bir Premium plan oluşturmak için `--is-linux` seçeneğini ekleyin.
+Bu örnekte, `<RESOURCE_GROUP>` kaynak grubunuzla ve `<PLAN_NAME>` planınızın kaynak grubunda benzersiz bir adla değiştirin. [Desteklenen `<REGION>` ](https://azure.microsoft.com/global-infrastructure/services/?products=functions)bir belirtin. Linux'u destekleyen bir Premium planı `--is-linux` oluşturmak için seçeneği ekleyin.
 
-Oluşturma planı ile, işlev uygulamanızı oluşturmak için [az functionapp Create](/cli/azure/functionapp#az-functionapp-create) kullanabilirsiniz. Portalda hem plan hem de uygulama aynı anda oluşturulur. Azure CLı komut dosyasının tamamı hakkında bir örnek için bkz. [Premium planda işlev uygulaması oluşturma](scripts/functions-cli-create-premium-plan.md).
+Oluşturulan plan ile, işlev uygulamanızı oluşturmak için [az functionapp create'ı](/cli/azure/functionapp#az-functionapp-create) kullanabilirsiniz. Portalda, hem plan hem de uygulama aynı anda oluşturulur. Tam bir Azure CLI komut dosyası örneği için [bkz.](scripts/functions-cli-create-premium-plan.md)
 
 ## <a name="features"></a>Özellikler
 
-Aşağıdaki özellikler bir Premium planına dağıtılan işlev uygulamaları için kullanılabilir.
+Aşağıdaki özellikler, Premium plana dağıtılan işlevleri işlevleri için kullanılabilir.
 
-### <a name="pre-warmed-instances"></a>Önceden çarpımış örnekler
+### <a name="pre-warmed-instances"></a>Önceden ısıtılmış örnekler
 
-Tüketim planında bugün hiçbir olay ve yürütme gerçekleşmiyor ise, uygulamanız sıfır örneğine göre ölçeklendirebilir. Yeni olaylar geldiğinde, üzerinde çalışan uygulamanız için yeni bir örnek kullanılması gerekir.  Yeni örneklerin özelleştirilmesi uygulamaya bağlı olarak biraz zaman alabilir.  İlk çağrıda bu ek gecikme süresi genellikle uygulama soğuk başlatması olarak adlandırılır.
+Bugün Tüketim planında hiçbir olay ve yürütme meydana gelmezse, uygulamanız sıfır alakadar ölçeklenebilir. Yeni etkinlikler geldiğinde, uygulamanızın üzerinde çalışırken yeni bir örneğin özelleştirilmiş olması gerekir.  Yeni örnekleri uzmanlaşmak uygulamaya bağlı olarak biraz zaman alabilir.  İlk aramadaki bu ek gecikme ye genellikle uygulama soğuk başlangıç denir.
 
-Premium planda, uygulamanızın en düşük plan boyutuna kadar belirtilen sayıda örnek üzerinde önceden çarpmış olmasını sağlayabilirsiniz.  Önceden çarpımış örnekler, yüksek yük öncesi bir uygulamayı önceden ölçeklendirmenize de olanak tanır. Uygulama ölçeklendirilirken, önce önceden çarpımış örneklere ölçeklendirir. Ek örnekler, sonraki ölçek işlemine hazırlık sırasında arabelleğe alma ve sıcak olmaya devam eder. Önceden çarpımış örneklerin arabelleğine sahip olarak, soğuk başlangıç gecikmelerinin etkin bir şekilde kaçınabilirsiniz.  Önceden çarpımış örnekler Premium planın bir özelliğidir ve planın etkin olduğu her zaman en az bir örneği çalışır durumda tutmanız gerekir.
+Premium planda, uygulamanızın minimum plan boyutunuza kadar belirli sayıda örnekte önceden ısıtTırMasını sağlayabilirsiniz.  Önceden ısıtılmış örnekler, yüksek yüklemeden önce bir uygulamayı önceden ölçeklendirmenize de izin sağlar. Uygulama ölçeklendikçe, önce önceden ısıtılmış örneklere ölçeklenir. Ek örnekler arabelleğe almaya ve bir sonraki ölçek işlemine hazırlık olarak hemen ısınmaya devam eder. Önceden ısıtılmış örneklerin bir arabelleği olan, etkili soğuk başlangıç gecikmeleri önleyebilirsiniz.  Önceden ısıtılmış örnekler Premium planın bir özelliğidir ve en az bir örneğini çalışır durumda tutmanız ve planın etkin olduğu her zaman kullanılabilir durumda olmanız gerekir.
 
-**İşlev uygulaması**seçtiğiniz, **platform özellikleri** sekmesine giderek ve **Ölçek Genişletme** seçeneklerini belirleyerek Azure Portal önceden çarpımış örneklerin sayısını yapılandırabilirsiniz. İşlev uygulaması düzenleme penceresinde, önceden çarpımış örnekler bu uygulamaya özeldir, ancak en küçük ve en büyük örnekler tüm planınız için geçerlidir.
+**İşlev Uygulamanızı**seçerek **, Platform Özellikleri** sekmesine giderek ve Dışarı **Ölçekleme** seçeneklerini seçerek Azure portalındaki önceden ısıtılmış örneklerin sayısını yapılandırabilirsiniz. İşlev uygulaması edit penceresinde, önceden ısıtılmış örnekler bu uygulamaya özgüdür, ancak en küçük ve en büyük örnekler tüm planınız için geçerlidir.
 
-![Elastik ölçek ayarları](./media/functions-premium-plan/scale-out.png)
+![Elastik Ölçek Ayarları](./media/functions-premium-plan/scale-out.png)
 
-Azure CLı ile bir uygulama için önceden çarpımış örnekler de yapılandırabilirsiniz.
+Azure CLI ile bir uygulama için önceden ısıtılmış örnekleri de yapılandırabilirsiniz.
 
 ```azurecli-interactive
 az resource update -g <resource_group> -n <function_app_name>/config/web --set properties.preWarmedInstanceCount=<desired_prewarmed_count> --resource-type Microsoft.Web/sites
@@ -53,62 +53,62 @@ az resource update -g <resource_group> -n <function_app_name>/config/web --set p
 
 ### <a name="private-network-connectivity"></a>Özel ağ bağlantısı
 
-Premium plana dağıtılan Azure Işlevleri, [Web Apps için yeni VNET tümleştirmesinden](../app-service/web-sites-integrate-with-vnet.md)yararlanır.  Yapılandırıldığında, uygulamanız VNet 'iniz içindeki kaynaklarla iletişim kurabilir veya hizmet uç noktaları aracılığıyla güvenli hale getirilir.  Ayrıca, gelen trafiği kısıtlamak için uygulamada IP kısıtlamaları da mevcuttur.
+Premium plana dağıtılan Azure [Fonksiyonları, web uygulamaları için yeni VNet tümleştirmesi](../app-service/web-sites-integrate-with-vnet.md)avantajlarından yararlanır.  Yapılandırıldığınızda, uygulamanız VNet'iniz içindeki kaynaklarla iletişim kurabilir veya hizmet bitiş noktaları aracılığıyla güvenli hale getirebilir.  Gelen trafiği kısıtlamak için uygulamada IP kısıtlamaları da mevcuttur.
 
-Bir Premium planında işlev uygulamanıza bir alt ağ atarken, her potansiyel örnek için yeterli IP adresi olan bir alt ağa ihtiyacınız vardır. Kullanılabilir en az 100 adresi olan bir IP bloğuna ihtiyacımız var.
+Premium planda işlev uygulamanıza bir alt ağ atarken, her olası örnek için yeterli IP adresine sahip bir alt ağa ihtiyacınız vardır. En az 100 kullanılabilir adrese sahip bir IP bloğu na ihtiyacımız var.
 
-Daha fazla bilgi için bkz. [işlev uygulamanızı VNET ile tümleştirme](functions-create-vnet.md).
+Daha fazla bilgi için [işlev uygulamanızı bir VNet ile tümleştirin.](functions-create-vnet.md)
 
 ### <a name="rapid-elastic-scale"></a>Hızlı elastik ölçek
 
-Tüketim planıyla aynı hızlı ölçeklendirme mantığı kullanılarak uygulamanız için ek işlem örnekleri otomatik olarak eklenir.  Ölçeklendirmenin nasıl çalıştığı hakkında daha fazla bilgi edinmek için bkz. [işlev ölçeği ve barındırma](./functions-scale.md#how-the-consumption-and-premium-plans-work).
+Tüketim planıyla aynı hızlı ölçekleme mantığını kullanarak uygulamanız için ek bilgi işlem örnekleri otomatik olarak eklenir.  Ölçeklendirmenin nasıl çalıştığı hakkında daha fazla bilgi edinmek için [İşlev ölçeği ve barındırma](./functions-scale.md#how-the-consumption-and-premium-plans-work)işlevine bakın.
 
-### <a name="longer-run-duration"></a>Uzun çalışma süresi
+### <a name="longer-run-duration"></a>Daha uzun çalışma süresi
 
-Bir tüketim planındaki Azure Işlevleri tek bir yürütme için 10 dakikaya sınırlandırılmıştır.  Premium planda, yürütme süresi, ard ların önlenmesi için en az 30 dakika olur. Ancak, bunu Premium plan uygulamaları için sınırlandırılmamış hale getirmek üzere [Host. JSON yapılandırmasını değiştirebilirsiniz](./functions-host-json.md#functiontimeout) (garantili 60 dakika).
+Tüketim planındaki Azure İşlevler, tek bir yürütme için 10 dakikaile sınırlıdır.  Premium planda, kaçak yürütmeleri önlemek için çalışma süresi varsayılan olarak 30 dakikaya kadar dır. Ancak, [host.json yapılandırmasını,](./functions-host-json.md#functiontimeout) Premium plan uygulamaları için sınırsız hale getirmek için değiştirebilirsiniz (garantili 60 dakika).
 
 ## <a name="plan-and-sku-settings"></a>Plan ve SKU ayarları
 
-Planı oluştururken iki ayarı yapılandırırsınız: minimum örnek sayısı (veya plan boyutu) ve en fazla patlama sınırı.  Minimum örnekler ayrılmıştır ve her zaman çalışır.
+Planı oluşturduğunuzda, iki ayar yapılandırırsınız: en az örnek sayısı (veya plan boyutu) ve maksimum patlama sınırı.  Minimum örnekler ayrılmıştır ve her zaman çalışır.
 
 > [!IMPORTANT]
-> İşlevlerin yürütülmesi veya olmaması durumunda ne olursa olsun, minimum örnek sayısı için ayrılan her bir örnek için ücretlendirilirsiniz.
+> İşlevler yürütülüp yürütülmese de minimum örnek sayısına ayrılan her örnek için ücretlendirilirsiniz.
 
-Uygulamanız plan boyutlarınızın ötesinde örnekler gerektiriyorsa, örnek sayısı maksimum patlama sınırına aşana kadar ölçeği ölçeklendirmeye devam edebilir.  Plan boyutlarınızın ötesinde örnekler için faturalandırılırsınız ve siz de çalışır.  Uygulamanızı tanımlanan maksimum sınıra ölçeklendirirken en iyi çabayı yapacağız, ancak uygulamanız için en düşük plan örnekleri garanti edilir.
+Uygulamanız plan boyutunuzun ötesinde örnekler gerektiriyorsa, örnek sayısı maksimum patlama sınırına gelene kadar ölçeklendirmeye devam edebilir.  Yalnızca çalışırken ve size kiralanırken plan boyutunun ötesindeki durumlar için faturalandırılırsınız.  Uygulamanızı tanımlanan maksimum limite kadar ölçekleme için en iyi çabayı gösterirken, minimum plan örnekleri uygulamanız için garanti edilir.
 
-Plan veya bu plana dağıtılan bir işlev uygulamasındaki **Ölçek Genişletme** seçeneklerini ( **platform özellikleri**altında) seçerek Azure Portal plan boyutunu ve en yüksek özellikleri yapılandırabilirsiniz.
+Plandaki **Çıkış Ölçeği** seçeneklerini veya bu plana dağıtılan bir işlev uygulamasını **(Platform Özellikleri**altında) seçerek plan boyutunu ve maksimumları Azure portalında yapılandırabilirsiniz.
 
-Azure CLı 'den en fazla patlama sınırını de artırabilirsiniz:
+Azure CLI'den maksimum patlama sınırını da artırabilirsiniz:
 
 ```azurecli-interactive
 az resource update -g <resource_group> -n <premium_plan_name> --set properties.maximumElasticWorkerCount=<desired_max_burst> --resource-type Microsoft.Web/serverfarms 
 ```
 
-### <a name="available-instance-skus"></a>Kullanılabilir örnek SKU 'Ları
+### <a name="available-instance-skus"></a>Kullanılabilir örnek SUS'lar
 
-Planınızı oluştururken veya ölçeklendirirken üç örnek boyutu arasından seçim yapabilirsiniz.  Saniye başına tüketilen toplam çekirdek sayısı ve bellek miktarı üzerinden faturalandırılırsınız.  Uygulamanız gerektiğinde birden çok örneğe otomatik olarak ölçeklenebilirler.  
+Planınızı oluştururken veya ölçeklerken, üç örnek boyutu arasında seçim yapabilirsiniz.  Saniyede tüketilen toplam çekirdek ve bellek sayısı için faturalandırılırsınız.  Uygulamanız gerektiğinde otomatik olarak birden fazla örneğe ölçeklenebilir.  
 
 |SKU|Çekirdekler|Bellek|Depolama|
 |--|--|--|--|
-|EP1|1|3,5 GB|GB|
-|EP2|2|7 GB|GB|
-|EP3|4|14 GB|GB|
+|EP1|1|3.5 GB|250 GB|
+|EP2|2|7 GB|250 GB|
+|EP3|4|14 GB|250 GB|
 
-### <a name="memory-utilization-considerations"></a>Bellek kullanımı konuları
-Daha fazla belleğe sahip bir makinede çalıştırmak, işlev uygulamanızın kullanılabilir tüm belleği kullanacağı her zaman anlamına gelmez.
+### <a name="memory-utilization-considerations"></a>Bellek kullanımı hususları
+Daha fazla belleğe sahip bir makinede çalıştırmak, işlev uygulamanızın kullanılabilir tüm belleği kullanacağı anlamına gelmez.
 
-Örneğin, bir JavaScript işlev uygulaması Node. js ' de varsayılan bellek sınırı ile kısıtlanır. Bu sabit bellek sınırını artırmak için, `--max-old-space-size=<max memory in MB>`bir değer `languageWorkers:node:arguments` uygulama ayarını ekleyin.
+Örneğin, bir JavaScript işlev uygulaması, Düğüm.js'deki varsayılan bellek sınırıyla sınırlandırılmıştır. Bu sabit bellek sınırını artırmak için `languageWorkers:node:arguments` uygulama ayarını '' değeri yle `--max-old-space-size=<max memory in MB>`ekleyin.
 
-## <a name="region-max-scale-out"></a>Bölge maksimum ölçeği genişletme
+## <a name="region-max-scale-out"></a>Bölge Max Ölçeği
 
-Aşağıda, her bir bölgedeki ve işletim sistemi yapılandırmasındaki tek bir plan için desteklenen en büyük ölçek genişletme değerleri verilmiştir. Bir artış istemek için lütfen bir destek bileti açın.
+Aşağıda, her bölge ve işletim sistemi yapılandırmasında tek bir plan için şu anda desteklenen maksimum ölçeklendirme değerleri verilmiştir. Artış talep etmek için lütfen bir destek bileti açın.
 
-Işlevlerin tüm bölgesel kullanılabilirliğine buradan bakın: [Azure.com](https://azure.microsoft.com/global-infrastructure/services/?products=functions)
+Fonksiyonların tam bölgesel kullanılabilirliğine buradan bakın: [Azure.com](https://azure.microsoft.com/global-infrastructure/services/?products=functions)
 
 |Bölge| Windows | Linux |
 |--| -- | -- |
-|Orta Avustralya| 20 | Kullanılamıyor |
-|Orta Avustralya 2| 20 | Kullanılamıyor |
+|Orta Avustralya| 20 | Kullanılamaz |
+|Orta Avustralya 2| 20 | Kullanılamaz |
 |Doğu Avustralya| 100 | 20 |
 |Güneydoğu Avustralya | 100 | 20 |
 |Güney Brezilya| 60 | 20 |
@@ -118,7 +118,7 @@ Işlevlerin tüm bölgesel kullanılabilirliğine buradan bakın: [Azure.com](ht
 |Doğu ABD | 100 | 20 |
 |Doğu ABD 2| 100 | 20 |
 |Orta Fransa| 100 | 20 |
-|Almanya Orta Batı| 100 | Kullanılamıyor |
+|Almanya Batı Orta| 100 | Kullanılamaz |
 |Doğu Japonya| 100 | 20 |
 |Batı Japonya| 100 | 20 |
 |Güney Kore - Orta| 100 | 20 |
@@ -126,7 +126,7 @@ Işlevlerin tüm bölgesel kullanılabilirliğine buradan bakın: [Azure.com](ht
 |Kuzey Avrupa| 100 | 20 |
 |Norveç Doğu| 20 | 20 |
 |Orta Güney ABD| 100 | 20 |
-|Güney Hindistan | 100 | Kullanılamıyor |
+|Güney Hindistan | 100 | Kullanılamaz |
 |Güneydoğu Asya| 100 | 20 |
 |Güney Birleşik Krallık| 100 | 20 |
 |Batı Birleşik Krallık| 100 | 20 |
@@ -139,4 +139,4 @@ Işlevlerin tüm bölgesel kullanılabilirliğine buradan bakın: [Azure.com](ht
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Azure Işlevleri ölçeklendirme ve barındırma seçeneklerini anlama](functions-scale.md)
+> [Azure İşlevlerini ve barındırma seçeneklerini anlama](functions-scale.md)

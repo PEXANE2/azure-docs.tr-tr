@@ -1,34 +1,34 @@
 ---
 title: ContentDefinitions
 titleSuffix: Azure AD B2C
-description: Azure Active Directory B2C bir özel ilkenin ContentDefinitions öğesini belirtin.
+description: Azure Active Directory B2C'de özel bir ilkenin ContentDefinitions öğesini belirtin.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/17/2020
+ms.date: 02/20/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b55199ec2684ab7b95ce4e4988b19814c27b2cc3
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.openlocfilehash: 074a0a39090e22a29f778fc1c99060848c6bfd99
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
-ms.locfileid: "79246064"
+ms.lasthandoff: 03/28/2020
+ms.locfileid: "80051502"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-[Kendi kendini onaylanan teknik profillerinin](self-asserted-technical-profile.md)görünümünü özelleştirebilirsiniz. Azure Active Directory B2C (Azure AD B2C), kodu müşterinizin tarayıcısında çalıştırır ve çıkış noktaları arası kaynak paylaşımı (CORS) adlı modern bir yaklaşım kullanır.
+Herhangi bir kendini ileri teknik [profil](self-asserted-technical-profile.md)görünümünü ve hissediyorum özelleştirebilirsiniz. Azure Active Directory B2C (Azure AD B2C), müşterinizin tarayıcısında kod çalıştırır ve Çapraz Kaynak Paylaşımı (CORS) adı verilen modern bir yaklaşım kullanır.
 
-Kullanıcı arabirimini özelleştirmek için, özelleştirilmiş HTML içeriğiyle **ContentDefinition** ÖĞESINDE bir URL belirtirsiniz. Kendi kendine onaylanan teknik profilde veya **Orchestrationstep**bu içerik tanımı tanımlayıcısını işaret edersiniz. İçerik tanımı, yüklenecek yerelleştirilmiş kaynakların listesini belirten bir **Localizedresourcesreferences** öğesi içerebilir. Azure AD B2C, Kullanıcı arabirimi öğelerini URL 'nizden yüklenen HTML içeriğiyle birleştirir ve ardından sayfayı kullanıcıya görüntüler.
+Kullanıcı arabirimini özelleştirmek için **ContentDefinition** öğesinde özelleştirilmiş HTML içeriğine sahip bir URL belirtirsiniz. Kendi kendine öne çıkan teknik profil veya **OrchestrationStep'te,** bu içerik tanımı tanımlayıcısını işaret edersiniz. İçerik tanımı, yüklenmesi gereken yerelleştirilmiş kaynakların listesini belirten bir **Yerelleştirilmiş Kaynaklar Başvuruları** öğesi içerebilir. Azure AD B2C, kullanıcı arabirimi öğelerini URL'nizden yüklenen HTML içeriğiyle birleştirir ve sayfayı kullanıcıya görüntüler.
 
-**ContentDefinitions** öğesi, Kullanıcı yolculuğunda kullanılabilen HTML5 şablonlarının URL 'lerini içerir. HTML5 sayfa URI 'SI, belirtilen kullanıcı arabirimi adımı için kullanılır. Örneğin, oturum açma veya kaydolma, parola sıfırlama veya hata sayfaları. HTML5 dosyası için LoadUri 'yi geçersiz kılarak görünümü değiştirebilirsiniz. Gereksinimlerinize göre yeni içerik tanımları oluşturabilirsiniz. Bu öğe, [Yerelleştirme](localization.md) öğesinde belirtilen yerelleştirme tanımlayıcısına bir yerelleştirilmiş kaynaklar başvurusu içerebilir.
+**ContentDefinitions** öğesi, kullanıcı yolculuğunda kullanılabilecek HTML5 şablonlarına URL'ler içerir. HTML5 sayfası URI, belirtilen bir kullanıcı arabirimi adımı için kullanılır. Örneğin, oturum açma veya kaydolma, parola sıfırlama veya hata sayfaları. HTML5 dosyası için LoadUri'yi geçersiz kılarak görünüm ve his değiştirebilirsiniz. İhtiyaçlarınıza göre yeni içerik tanımları oluşturabilirsiniz. Bu öğe, [Yerelleştirme](localization.md) öğesinde belirtilen yerelleştirme tanımlayıcısına yerelleştirilmiş kaynaklar başvurusu içerebilir.
 
-Aşağıdaki örnekte, yerelleştirilmiş kaynakların içerik tanımı tanımlayıcısı ve tanımı gösterilmektedir:
+Aşağıdaki örnekte içerik tanım tanımlayıcısı ve yerelleştirilmiş kaynakların tanımı gösterilmektedir:
 
 ```XML
 <ContentDefinition Id="api.localaccountsignup">
@@ -44,7 +44,7 @@ Aşağıdaki örnekte, yerelleştirilmiş kaynakların içerik tanımı tanımla
     ...
 ```
 
-**Localaccountsignupwithlogonemail** kendi kendini onaylanan teknik profilinin meta verileri, `api.localaccountsignup` olarak ayarlanan içerik tanımı tanımlayıcı **Contentdefinitionreferenceıd** değerini içerir
+**LocalAccountSignWithLogonEmail** kendi kendine ileri teknik profil meta verileri içerik tanımı tanımlayıcı **İçerikDefinitionReferenceId** için ayarlanmış içerir`api.localaccountsignup`
 
 ```XML
 <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
@@ -57,46 +57,46 @@ Aşağıdaki örnekte, yerelleştirilmiş kaynakların içerik tanımı tanımla
   ...
 ```
 
-## <a name="contentdefinition"></a>ContentDefinition
+## <a name="contentdefinition"></a>Contentdefinition
 
 **ContentDefinition** öğesi aşağıdaki özniteliği içerir:
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Kimlik | Yes | Bir içerik tanımı için tanımlayıcı. Değer, bu sayfanın ilerleyen kısımlarında bulunan **İçerik tanımı kimlikleri** bölümünde belirtilmiştir. |
+| Kimlik | Evet | İçerik tanımı için tanımlayıcı. Değer, daha sonra bu sayfada **İçerik tanımı disleri** bölümünde belirtilen bir değerdir. |
 
 **ContentDefinition** öğesi aşağıdaki öğeleri içerir:
 
-| Öğe | Öğeleri | Açıklama |
+| Öğe | Oluşum | Açıklama |
 | ------- | ----------- | ----------- |
-| LoadUri | 1:1 | İçerik tanımının HTML5 sayfasının URL 'sini içeren bir dize. |
-| RecoveryUri | 1:1 | İçerik tanımıyla ilgili bir hata görüntülemek için HTML sayfasının URL 'sini içeren bir dize. |
-| DataUri | 1:1 | Adım için çağrılacak Kullanıcı deneyimini sağlayan bir HTML dosyasının göreli URL 'sini içeren bir dize. |
-| Meta Veriler | 0:1 | İçerik tanımı tarafından kullanılan meta verileri içeren bir anahtar/değer çiftleri koleksiyonu. |
-| LocalizedResourcesReferences | 0:1 | Yerelleştirilmiş kaynaklar koleksiyonu başvuruları. Bir kullanıcı arabirimi ve talepler özniteliği yerelleştirmesini özelleştirmek için bu öğeyi kullanın. |
+| Loaduri | 1:1 | İçerik tanımı için HTML5 sayfasının URL'sini içeren dize. |
+| Kurtarma Uri | 1:1 | İçerik tanımıyla ilgili bir hata görüntülemek için HTML sayfasının URL'sini içeren dize. Şu anda kullanılmaz, `~/common/default_page_error.html`değeri olmalıdır. |
+| Datauri | 1:1 | Kullanıcı deneyiminin adım için çağrıda bulunmasını sağlayan bir HTML dosyasının göreli URL'sini içeren dize. |
+| Meta Veriler | 0:1 | İçerik tanımıtarafından kullanılan meta verileri içeren anahtar/değer çiftleri topluluğu. |
+| Yerelleştirilmiş KaynaklarReferanslar | 0:1 | Yerelleştirilmiş kaynak başvuruları koleksiyonu. Kullanıcı arabiriminin ve talep özniteliğinin yerelleştirilmesini özelleştirmek için bu öğeyi kullanın. |
 
-### <a name="datauri"></a>DataUri
+### <a name="datauri"></a>Datauri
 
-**Datauri** öğesi, sayfa tanımlayıcısını belirtmek için kullanılır. Azure AD B2C, Kullanıcı arabirimi öğelerini ve istemci tarafı JavaScript 'i yüklemek ve başlatmak için sayfa tanımlayıcısını kullanır. Değerin biçimi `urn:com:microsoft:aad:b2c:elements:page-name:version`. Aşağıdaki tabloda kullanabileceğiniz sayfa tanımlayıcıları listelenmektedir.
+**DataUri** öğesi sayfa tanımlayıcısını belirtmek için kullanılır. Azure AD B2C, Web-üfe öğelerini ve istemci tarafı JavaScript'i yüklemek ve başlatmak için sayfa tanımlayıcısını kullanır. Değerin biçimi `urn:com:microsoft:aad:b2c:elements:page-name:version`. Aşağıdaki tabloda kullanabileceğiniz sayfa tanımlayıcıları listelenizdir.
 
 | Sayfa tanımlayıcısı | Açıklama |
 | ----- | ----------- |
-| `globalexception` | Bir özel durum veya hata ile karşılaşıldığında bir hata sayfası görüntüler. |
-| `providerselection`, `idpselection` | Kullanıcıların oturum açma sırasında aralarından seçim yapabileceğiniz kimlik sağlayıcılarını listeler.  |
-| `unifiedssp` | Bir e-posta adresini veya Kullanıcı adını temel alan bir yerel hesapla oturum açmak için bir form görüntüler. Bu değer ayrıca "Oturumumu Açık bırak" ve "parolanızı unuttum mı" değerlerini de sağlar. bağlantı. |
-| `unifiedssd` | Bir e-posta adresini veya Kullanıcı adını temel alan bir yerel hesapla oturum açmak için bir form görüntüler. |
+| `globalexception` | Bir özel durum veya bir hatayla karşılaşıldığında bir hata sayfası görüntüler. |
+| `providerselection`, `idpselection` | Oturum açma sırasında kullanıcıların aralarından seçim yapabilecekleri kimlik sağlayıcılarını listeler.  |
+| `unifiedssp` | E-posta adresini veya kullanıcı adını temel alan yerel bir hesapla oturum açma formu görüntüler. Bu değer aynı zamanda "oturum açmamı sağla" ve "Parolanızı unuttunuz mu?" Bağlantı. |
+| `unifiedssd` | E-posta adresini veya kullanıcı adını temel alan yerel bir hesapla oturum açma formu görüntüler. |
 | `multifactor` | Kaydolma veya oturum açma sırasında metin veya ses kullanarak telefon numaralarını doğrular. |
-| `selfasserted` | Kullanıcıdan veri toplamak için bir form görüntüler. Örneğin, kullanıcıların profillerini oluşturmalarına veya güncelleştirmesine olanak sağlar. |
+| `selfasserted` | Kullanıcıdan veri toplamak için bir form görüntüler. Örneğin, kullanıcıların profillerini oluşturmalarına veya güncelleştirmelerine olanak tanır. |
 
-### <a name="select-a-page-layout"></a>Sayfa düzeni seçin
+### <a name="select-a-page-layout"></a>Sayfa düzeni seçme
 
-`elements` ve sayfa türü arasında `contract` ekleyerek [JavaScript istemci tarafı kodunu](javascript-samples.md) etkinleştirebilirsiniz. Örneğin, `urn:com:microsoft:aad:b2c:elements:contract:page-name:version`.
+[JavaScript istemci tarafı kodunu,](javascript-samples.md) sayfa türü `contract` `elements` yle arasına ekleyerek etkinleştirebilirsiniz. Örneğin, `urn:com:microsoft:aad:b2c:elements:contract:page-name:version`.
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-`DataUri` [Sürüm](page-layout.md) bölümü, ilkenizde Kullanıcı arabirimi ÖĞELERI için HTML, CSS ve JavaScript içeren içerik paketini belirtir. JavaScript istemci tarafı kodunu etkinleştirmek istiyorsanız, JavaScript 'i temel alan öğelerin sabit olması gerekir. Sabit olmadıkları takdirde, herhangi bir değişiklik Kullanıcı sayfalarınızda beklenmeyen davranışlara neden olabilir. Bu sorunları engellemek için, bir sayfa düzeni kullanımını zorunlu tutun ve bir sayfa düzeni sürümü belirtin. Bunun yapılması, JavaScript 'i temel alan tüm içerik tanımlarının sabit olmasını sağlar. JavaScript 'i etkinleştirmeyi amaçlamadığınız halde, sayfalarınız için sayfa düzeni sürümünü de belirtmeniz gerekir.
+Sürüm [version](page-layout.md) bölümü, `DataUri` ilkenizdeki kullanıcı arabirimi öğeleri için HTML, CSS ve JavaScript içeren içerik paketini belirtir. JavaScript istemci tarafı kodunu etkinleştirmek istiyorsanız, JavaScript'inizi temel aldığınız öğeler değişmez olmalıdır. Değişmez değillerse, herhangi bir değişiklik kullanıcı sayfalarınızda beklenmeyen davranışlara neden olabilir. Bu sorunları önlemek için, bir sayfa düzeni kullanımını zorleyin ve bir sayfa düzeni sürümü belirtin. Bunu yapmak, JavaScript'inizi temel aldığınız tüm içerik tanımlarının değişmez olmasını sağlar. JavaScript'i etkinleştirmek istemeseniz bile, sayfalarınızın sayfa düzeni sürümünü belirtmeniz gerekir.
 
-Aşağıdaki örnek, `selfasserted` sürümünün `1.2.0`**veri URI** 'sini gösterir:
+Aşağıdaki örnek, sürümün `1.2.0` `selfasserted` **DataUri'sini** gösterir:
 
 ```xml
 <ContentDefinition Id="api.localaccountpasswordreset">
@@ -109,11 +109,11 @@ Aşağıdaki örnek, `selfasserted` sürümünün `1.2.0`**veri URI** 'sini gös
 </ContentDefinition>
 ```
 
-#### <a name="migrating-to-page-layout"></a>Sayfa düzenine geçiriliyor
+#### <a name="migrating-to-page-layout"></a>Sayfa düzenine geçiş
 
-Değerin biçimi `contract`: _urn: com: Microsoft: AAD: B2C: Elements:**Contract**:p Age-Name: Version_sözcüğünü içermelidir. Özel ilkeleriniz içinde eski bir **veri URI** değeri kullanan bir sayfa düzeni belirtmek için, yeni biçime geçiş yapmak üzere aşağıdaki tabloyu kullanın.
+Değerin biçimi : `contract` _urn:com:microsoft:aad:b2c:elements:**sözleşme**:page-name:version_. Eski bir **DataUri** değeri kullanan özel ilkelerinizde bir sayfa düzeni belirtmek için, yeni biçime geçiş yapmak için aşağıdaki tabloyu kullanın.
 
-| Eski DataUri değer | Yeni DataUri değeri |
+| Eski DataUri değeri | Yeni DataUri değeri |
 | ----------------- | ----------------- |
 | `urn:com:microsoft:aad:b2c:elements:globalexception:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:globalexception:1.2.0` |
 | `urn:com:microsoft:aad:b2c:elements:globalexception:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:globalexception:1.2.0` |
@@ -131,15 +131,15 @@ Değerin biçimi `contract`: _urn: com: Microsoft: AAD: B2C: Elements:**Contract
 
 **Meta veri** öğesi aşağıdaki öğeleri içerir:
 
-| Öğe | Öğeleri | Açıklama |
+| Öğe | Oluşum | Açıklama |
 | ------- | ----------- | ----------- |
-| Öğe | 0: n | İçerik tanımıyla ilgili meta veriler. |
+| Öğe | 0:n | İçerik tanımıyla ilgili meta veriler. |
 
-**Meta veri** öğesinin **Item** öğesi aşağıdaki öznitelikleri içerir:
+**Meta veri** öğesinin **Öğe** öğesi aşağıdaki öznitelikleri içerir:
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Anahtar | Yes | Meta veri anahtarı.  |
+| Anahtar | Evet | Meta veri anahtarı.  |
 
 #### <a name="metadata-keys"></a>Meta veri anahtarları
 
@@ -149,22 +149,22 @@ Değerin biçimi `contract`: _urn: com: Microsoft: AAD: B2C: Elements:**Contract
 | --------- | -------- | ----------- |
 | DisplayName | Hayır | İçerik tanımının adını içeren bir dize. |
 
-### <a name="localizedresourcesreferences"></a>LocalizedResourcesReferences
+### <a name="localizedresourcesreferences"></a>Yerelleştirilmiş KaynaklarReferanslar
 
-**Localizedresourcesreferences** öğesi aşağıdaki öğeleri içerir:
+**LocalizedResourcesReferences** öğesi aşağıdaki öğeleri içerir:
 
-| Öğe | Öğeleri | Açıklama |
+| Öğe | Oluşum | Açıklama |
 | ------- | ----------- | ----------- |
-| LocalizedResourcesReference | 1: n | İçerik tanımı için yerelleştirilmiş kaynak başvurularının listesi. |
+| Yerelleştirilmiş KaynaklarReferans | 1:n | İçerik tanımı için yerelleştirilmiş kaynak başvurularının listesi. |
 
-**Localizedresourcesreference** öğesi aşağıdaki öznitelikleri içerir:
+**LocalizedResourcesReference** öğesi aşağıdaki öznitelikleri içerir:
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Dil | Yes | Dilleri tanımlamak için RFC 5646-etiketleri başına ilke için desteklenen bir dil içeren bir dize. |
-| Localizedresourcesreferenceıd | Yes | **Localizedresources** öğesinin tanımlayıcısı. |
+| Dil | Evet | RFC 5646 başına ilke için desteklenen bir dil içeren bir dize - Dilleri Tanımlamak için etiketler. |
+| YerelleştirilmişKaynaklarReferenceId | Evet | **Yerelleştirilmiş Kaynaklar** öğesinin tanımlayıcısı. |
 
-Aşağıdaki örnekte, Ingilizce, Fransızca ve Ispanyolca için yerelleştirmeye yönelik bir başvuruya sahip kaydolma veya oturum açma içerik tanımı gösterilmektedir:
+Aşağıdaki örnekte, İngilizce, Fransızca ve İspanyolca için yerelleştirme ye atıfta bulunan bir kaydolma veya oturum açma içerik tanımı gösterilmektedir:
 
 ```XML
 <ContentDefinition Id="api.signuporsignin">
@@ -182,27 +182,27 @@ Aşağıdaki örnekte, Ingilizce, Fransızca ve Ispanyolca için yerelleştirmey
 </ContentDefinition>
 ```
 
-İçerik tanımlarınıza yerelleştirme desteğinin nasıl ekleneceğini öğrenmek için bkz. [Yerelleştirme](localization.md).
+İçerik tanımlarınıza yerelleştirme desteği eklemeyi öğrenmek için [bkz.](localization.md)
 
-## <a name="content-definition-ids"></a>İçerik tanımı kimlikleri
+## <a name="content-definition-ids"></a>İçerik tanımı tünaları
 
-**ContentDefinition** öğesinin ID özniteliği, içerik tanımıyla ilgili sayfa türünü belirtir. Öğesi, özel bir HTML5/CSS şablonunun uygulanacağı bağlamı tanımlar. Aşağıdaki tabloda, kimlik deneyimi çerçevesi tarafından tanınan içerik tanımı kimlikleri ve bunlarla ilgili sayfa türleri açıklanmaktadır. Rastgele bir KIMLIK ile kendi içerik tanımlarınızı oluşturabilirsiniz.
+**ContentDefinition** öğesinin kimlik özniteliği, içerik tanımıyla ilgili sayfa türünü belirtir. Öğe, özel bir HTML5/CSS şablonunun uygulayacağı bağlamı tanımlar. Aşağıdaki tabloda, Kimlik Deneyimi Çerçevesi tarafından tanınan içerik tanımı kimlikleri kümesi ve bunlarla ilgili sayfa türleri açıklanmaktadır. Rasgele bir kimlikle kendi içerik tanımlarınızı oluşturabilirsiniz.
 
 | Kimlik | Varsayılan şablon | Açıklama |
 | -- | ---------------- | ----------- |
-| **api. Error** | [Exception. cshtml](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **Hata sayfası** -bir özel durum veya hata ile karşılaşıldığında hata sayfası görüntüler. |
-| **api. ıdpseçimlerin** | [ıdpselector. cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **Kimlik sağlayıcısı seçim sayfası** -kullanıcıların oturum açma sırasında seçebileceği kimlik sağlayıcılarını listeler. Seçenekler genellikle kurumsal kimlik sağlayıcılardır, Facebook ve Google + gibi sosyal kimlik sağlayıcılarıdır veya yerel hesaplardır. |
-| **api. ıdpseçimlerin. Signup** | [ıdpselector. cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **Kaydolma Için kimlik sağlayıcısı seçimi** -kullanıcıların kaydolma sırasında aralarından seçim yapabileceğiniz kimlik sağlayıcılarını listeler. Seçenekler genellikle kurumsal kimlik sağlayıcılardır, Facebook ve Google + gibi sosyal kimlik sağlayıcılarıdır veya yerel hesaplardır. |
-| **api. localaccountpasswordreset** | [selfassırted. cshtml](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **Parola unuttum sayfası** -parola sıfırlama işlemini başlatmak için kullanıcıların tamamlaması gereken bir form görüntüler. |
-| **api. localaccountsignın** | [selfassırted. cshtml](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **Yerel hesap oturum açma sayfası** -e-posta adresini veya Kullanıcı adını temel alan bir yerel hesapla oturum açmak için bir form görüntüler. Form bir metin girişi kutusu ve parola giriş kutusu içerebilir. |
-| **api. localaccountsignup** | [selfassırted. cshtml](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **Yerel hesap kaydolma sayfası** -e-posta adresini veya Kullanıcı adını temel alan bir yerel hesaba kaydolmak için bir form görüntüler. Form, metin girişi kutusu, parola girişi kutusu, radyo düğmesi, tek seçim açılan kutuları ve çoklu seçim onay kutuları gibi çeşitli giriş denetimleri içerebilir. |
-| **api. phonefactor** | [çok faktörlü-1.0.0. cshtml](https://login.microsoftonline.com/static/tenant/default/multifactor-1.0.0.cshtml) | **Multi-Factor Authentication sayfası** -kaydolma veya oturum açma sırasında telefon numaralarını metin veya ses kullanarak doğrular. |
-| **api. selfasted** | [selfassırted. cshtml](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **Sosyal hesap kaydolma sayfası** -kullanıcıların, sosyal kimlik sağlayıcısından mevcut bir hesabı kullanarak kaydolduklarında tamamlaması gereken bir form görüntüler. Bu sayfa, parola girişi alanları hariç, önceki sosyal hesap kaydolma sayfasına benzer. |
-| **api. selfasserted. profileUpdate** | [updateprofile. cshtml](https://login.microsoftonline.com/static/tenant/default/updateProfile.cshtml) | **Profil güncelleştirme sayfası** -kullanıcıların, profillerini güncelleştirmek için erişebileceği bir form görüntüler. Bu sayfa, parola girişi alanları hariç sosyal hesap kaydolma sayfasına benzerdir. |
-| **api. signuporsignın** | [Birleşik. cshtml](https://login.microsoftonline.com/static/tenant/default/unified.cshtml) | **Birleşik kaydolma veya oturum açma sayfası** -Kullanıcı kayıt ve oturum açma sürecini işler. Kullanıcılar, kurumsal kimlik sağlayıcılarını, Facebook veya Google + gibi sosyal kimlik sağlayıcılarını veya yerel hesapları kullanabilir. |
+| **api.error** | [özel durum.cshtml](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **Hata sayfası** - Bir özel durum veya bir hatayla karşılaşıldığında bir hata sayfası görüntüler. |
+| **api.idpselections** | [idpSelector.cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **Kimlik sağlayıcı seçim sayfası** - Oturum açma sırasında kullanıcıların aralarından seçim yapabilecekleri kimlik sağlayıcılarını listeler. Seçenekler genellikle kurumsal kimlik sağlayıcıları, Facebook ve Google+ gibi sosyal kimlik sağlayıcıları veya yerel hesaplardır. |
+| **api.idpselections.signup** | [idpSelector.cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **Kaydolmak için kimlik sağlayıcı seçimi** - Kullanıcıların kayıt sırasında aralarından seçim yapabilecekleri kimlik sağlayıcılarını listeler. Seçenekler genellikle kurumsal kimlik sağlayıcıları, Facebook ve Google+ gibi sosyal kimlik sağlayıcıları veya yerel hesaplardır. |
+| **api.localaccountpasswordreset** | [selfasserted.cshtml](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **Parola sayfasını unuttum** - Parola sıfırlama işlemini başlatmak için kullanıcıların tamamlaması gereken bir form görüntüler. |
+| **api.localaccountsignin** | [selfasserted.cshtml](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **Yerel hesap oturum açma sayfası** - E-posta adresini veya kullanıcı adını temel alan yerel bir hesapla oturum açma formu görüntüler. Form, metin giriş kutusu ve parola giriş kutusu içerebilir. |
+| **api.localaccountsignup** | [selfasserted.cshtml](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **Yerel hesap kayıt sayfası** - E-posta adresini veya kullanıcı adını temel alan yerel bir hesaba kaydolmak için bir form görüntüler. Form, metin giriş kutusu, parola giriş kutusu, radyo düğmesi, tek seçimli açılır bırakma kutuları ve çok seçimli onay kutuları gibi çeşitli giriş denetimleri içerebilir. |
+| **api.phonefactor** | [çok faktörlü-1.0.0.cshtml](https://login.microsoftonline.com/static/tenant/default/multifactor-1.0.0.cshtml) | **Çok faktörlü kimlik doğrulama sayfası** - Kaydolma veya kaydolma sırasında metin veya ses kullanarak telefon numaralarını doğrular. |
+| **api.selfasserted** | [selfasserted.cshtml](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **Sosyal hesap kayıt sayfası** - Sosyal kimlik sağlayıcısından gelen mevcut bir hesabı kullanarak kullanıcıların kaydolurken tamamlamaları gereken bir form görüntüler. Bu sayfa, parola giriş alanları dışında, önceki sosyal hesap kayıt sayfasına benzer. |
+| **api.selfasserted.profileupdate** | [updateprofile.cshtml](https://login.microsoftonline.com/static/tenant/default/updateProfile.cshtml) | **Profil güncelleme sayfası** - Kullanıcıların profillerini güncellemek için erişebileceği bir form görüntüler. Bu sayfa, parola giriş alanları dışında sosyal hesap kayıt sayfasına benzer. |
+| **api.signuporsignin** | [unified.cshtml](https://login.microsoftonline.com/static/tenant/default/unified.cshtml) | **Birleşik kayıt veya oturum açma sayfası** - Kullanıcı kayıt ve oturum açma işlemini işler. Kullanıcılar kurumsal kimlik sağlayıcılarını, Facebook veya Google+ gibi sosyal kimlik sağlayıcılarını veya yerel hesapları kullanabilir. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-İçerik tanımlarını kullanarak Kullanıcı arabirimini özelleştirmenin bir örneği için bkz.:
+İçerik tanımlarını kullanarak kullanıcı arabirimini özelleştirme örneği için bkz:
 
-[Özel bir ilke kullanarak uygulamanızın kullanıcı arabirimini özelleştirme](custom-policy-ui-customization.md)
+[Özel bir ilke kullanarak uygulamanızın kullanıcı arabirimini özelleştirin](custom-policy-ui-customization.md)

@@ -1,6 +1,6 @@
 ---
-title: Azure HDInsight 'ta Apache ambarı eski uyarıları
-description: HDInsight 'ta Apache ambarı eski uyarıları için olası nedenleri ve çözümleri tartışma ve çözümleme.
+title: Azure HDInsight'ta Apache Ambari bayat uyarıları
+description: HDInsight'ta Apache Ambari bayat uyarılarıiçin olası nedenlerin ve çözümlerin tartışılması ve analizi.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,82 +8,82 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/22/2020
 ms.openlocfilehash: f9dfcb930e3fe4f862f9f51ff00270d0eb0c66ca
-ms.sourcegitcommit: 163be411e7cd9c79da3a3b38ac3e0af48d551182
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77539119"
 ---
-# <a name="scenario-apache-ambari-stale-alerts-in-azure-hdinsight"></a>Senaryo: Azure HDInsight 'ta Apache ambarı eski uyarıları
+# <a name="scenario-apache-ambari-stale-alerts-in-azure-hdinsight"></a>Senaryo: Azure HDInsight'ta Apache Ambari bayat uyarıları
 
-Bu makalede, Azure HDInsight kümeleriyle etkileşim kurarken sorun giderme adımları ve olası çözümleri açıklanmaktadır.
+Bu makalede, Azure HDInsight kümeleriyle etkileşimde olurken sorun giderme adımları ve sorunlarla ilgili olası çözümler açıklanmaktadır.
 
 ## <a name="issue"></a>Sorun
 
-Apache ambarı Kullanıcı arabiriminde şöyle bir uyarı görebilirsiniz:
+Apache Ambari UI'de aşağıdaki gibi bir uyarı görebilirsiniz:
 
-![Apache ambarı eski uyarı örneği](./media/apache-ambari-troubleshoot-stale-alerts/ambari-stale-alerts-example.png)
+![Apache Ambari bayat uyarı örneği](./media/apache-ambari-troubleshoot-stale-alerts/ambari-stale-alerts-example.png)
 
 ## <a name="cause"></a>Nedeni
 
-Ambarı aracıları birçok kaynağın durumunu sürekli olarak izler. *Uyarılar* , belirli küme özelliklerinin önceden belirlenmiş eşiklerin içinde olup olmadığını size bildirecek şekilde yapılandırılabilir. Her kaynak denetimi çalıştıktan sonra, uyarı koşulu karşılanıyorsa, ambarı aracıları durumu Ambarı sunucusuna geri bildirir ve bir uyarı tetikler. Bir uyarı, uyarı profilindeki aralığa göre denetlenmemişse, sunucu bir *ambarı sunucusu eski uyarılar* uyarısını tetikler.
+Ambari ajanları sürekli olarak birçok kaynağın sağlığını izlerler. *Uyarılar,* belirli küme özelliklerinin önceden belirlenmiş eşikler içinde olup olmadığını bildirmek üzere yapılandırılabilir. Her kaynak denetimi çalıştırdıktan sonra, uyarı koşulu karşılanırsa, Ambari aracıları durumu Ambari sunucusuna bildirir ve bir uyarı tetikler. Uyarı Profilindeki arayla göre bir uyarı işaretlenmezse, sunucu *ambari Server Bayat Uyarıları* uyarısını tetikler.
 
-Bir sistem durumu denetiminin tanımlı aralıkta çalıştırılmamasının çeşitli nedenleri vardır:
+Sistem durumu denetiminin tanımlanan aralıkta çalışmaması için çeşitli nedenler vardır:
 
-* Konaklar yoğun kullanım aşamasındadır (yüksek CPU kullanımı), böylece, ambarı aracısının uyarıları zamanında çalıştırmak için yeterli sistem kaynağı alamaz.
+* Ambari aracısının uyarıları zamanında çalıştırmak için yeterli sistem kaynaklarını alayaması için ana bilgisayarlar yoğun kullanım altındadır (yüksek CPU kullanımı).
 
-* Küme, bir ağır yük sürecinde çok sayıda işi veya hizmeti yürütmekle meşgul.
+* Küme, ağır yük süresi boyunca birçok iş veya hizmeti yürütmekle meşgul.
 
-* Kümedeki az sayıda konak birçok bileşeni barındırır ve bu nedenle birçok uyarıyı çalıştırmak için gereklidir. Bileşen sayısı büyükse, uyarı işleri zamanlanan aralıklarını kaçırmayabilir.
+* Kümedeki az sayıda ana bilgisayar birçok bileşeni barındırıyor ve bu nedenle birçok uyarıyı çalıştırmak için gereklidir. Bileşen sayısı büyükse, uyarı işleri zamanlanan aralıklarını kaçırabilir.
 
 ## <a name="resolution"></a>Çözüm
 
-Ambarı eski uyarılarla ilgili sorunları çözmek için aşağıdaki yöntemleri deneyin.
+Ambari bayat uyarıları ile sorunları çözmek için aşağıdaki yöntemleri deneyin.
 
-### <a name="increase-the-alert-interval-time"></a>Uyarı aralığı süresini artır
+### <a name="increase-the-alert-interval-time"></a>Uyarı aralığı süresini artırma
 
-Kümenizin yanıt süresi ve yüküne göre ayrı bir uyarı aralığının değerini artırabilirsiniz:
+Kümenizin yanıt süresine ve yüküne bağlı olarak tek bir uyarı aralığının değerini artırabilirsiniz:
 
-1. Apache ambarı Kullanıcı arabiriminde, **Uyarılar** sekmesini seçin.
-1. İstediğiniz uyarı tanımı adını seçin.
-1. Tanımdan **Düzenle**' yi seçin.
-1. **Denetim aralığı** değerini artırıp **Kaydet**' i seçin.
+1. Apache Ambari UI'de **Uyarılar** sekmesini seçin.
+1. İstediğiniz uyarı tanım adını seçin.
+1. Tanımdan, **Edit'i**seçin.
+1. Denetim **Aralığı** değerini artırın ve sonra **Kaydet'i**seçin.
 
-### <a name="increase-the-alert-interval-time-for-ambari-server-alerts"></a>Ambarı sunucusu uyarıları için uyarı aralığı süresini artırın
+### <a name="increase-the-alert-interval-time-for-ambari-server-alerts"></a>Ambari Sunucu Uyarıları için uyarı aralığı süresini artırın
 
-1. Apache ambarı Kullanıcı arabiriminde, **Uyarılar** sekmesini seçin.
-1. **Gruplar** açılan listesinden, **ambarı varsayılanı**' nı seçin.
-1. **Ambarı sunucusu uyarıları** uyarısını seçin.
-1. Tanımdan **Düzenle**' yi seçin.
-1. **Denetim aralığı** değerini artırın.
-1. **Aralık çarpanı** değerini artırıp **Kaydet**' i seçin.
+1. Apache Ambari UI'de **Uyarılar** sekmesini seçin.
+1. **Gruplar** açılır listesinden **AMBARI Varsayılan'ı**seçin.
+1. **Ambari Server Uyarıları** uyarısını seçin.
+1. Tanımdan, **Edit'i**seçin.
+1. Denetim **Aralığı** değerini artırın.
+1. Aralık **Çarpanı** değerini artırın ve sonra **Kaydet'i**seçin.
 
-### <a name="disable-and-reenable-the-alert"></a>Uyarıyı devre dışı bırakma ve yeniden etkinleştirme
+### <a name="disable-and-reenable-the-alert"></a>Uyarıyı devre dışı bırakıp yeniden etkinleştirin
 
 Eski bir uyarıyı atmak için devre dışı bırakıp yeniden etkinleştirin:
 
-1. Apache ambarı Kullanıcı arabiriminde, **Uyarılar** sekmesini seçin.
-1. İstediğiniz uyarı tanımı adını seçin.
-1. Tanımdan, Kullanıcı arabiriminin en sağ bölümünde **etkin** ' i seçin.
-1. **Onay** açılır penceresinde **devre dışı bırak**' ı seçin.
+1. Apache Ambari UI'de **Uyarılar** sekmesini seçin.
+1. İstediğiniz uyarı tanım adını seçin.
+1. Tanımdan, UI'nin en sağ tarafında **Etkin'i** seçin.
+1. **Onay** açılır penceresinde, Devre **Dışı Nı**Onayla'yı seçin.
 1. Sayfada gösterilen tüm uyarı "örneklerinin" temizlenmesi için birkaç saniye bekleyin.
-1. Tanımdan, Kullanıcı arabiriminin en sağ bölümünde **devre dışı** seçeneğini belirleyin.
-1. **Onay** açılır penceresinde **Etkinleştir**' i seçin.
+1. Tanımdan, UI'nin en sağ tarafında **Devre Dışı'yı** seçin.
+1. **Onay** açılır penceresinde, **Etkinleştir'i onayla'yı**seçin.
 
-### <a name="increase-the-alert-grace-period"></a>Uyarı yetkisiz kullanım süresini artırın
+### <a name="increase-the-alert-grace-period"></a>Uyarı yetkisiz kullanım süresini artırma
 
-Bir ambarı Aracısı, yapılandırılmış bir uyarının zamanlamasını kaçırdığını rapor etmeden önce bir yetkisiz kullanım süresi vardır. Uyarı zamanlanan süresini kaçırırsa ancak yetkisiz kullanım süresi içinde çalıştırıldıysa, eski uyarı oluşturulmaz.
+Ambari ajanı, yapılandırılmış bir uyarının programını kaçırdığını bildirmeden önce bir yetkisiz kullanım süresi vardır. Uyarı zamanlanan saatini kaçırdıysa ancak yetkisiz kullanım süresi içinde çalıştırılırsa, eski uyarı oluşturulmaz.
 
-Varsayılan `alert_grace_period` değeri 5 saniyedir. Bu ayarı,/etc/Ambari-Agent/conf/Ambari-Agent.ini. içinde yapılandırabilirsiniz Eski uyarıların düzenli aralıklarla oluştuğu konaklar için değeri 10 ' a artırmayı deneyin. Ardından, ambarı Aracısı 'nı yeniden başlatın.
+Varsayılan `alert_grace_period` değer 5 saniyedir. Bu ayarı /etc/ambari-agent/conf/ambari-agent.ini'de yapılandırabilirsiniz. Eski uyarıların düzenli aralıklarla gerçekleştiği ana bilgisayarlar için değeri 10'a artırmayı deneyin. O zaman Ambari ajanını yeniden başlat.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Sorununuz burada bahsedilmiyorsa veya çözemezseniz, daha fazla destek için aşağıdaki kanallardan birini ziyaret edin:
+Sorununuz burada belirtilmediyse veya çözemiyorsanız, daha fazla destek için aşağıdaki kanallardan birini ziyaret edin:
 
-* Azure [Community desteği](https://azure.microsoft.com/support/community/)' nden Azure uzmanlarından yanıt alın.
+* [Azure Topluluk Desteği'ndeki](https://azure.microsoft.com/support/community/)Azure uzmanlarından yanıtlar alın.
 
-* Twitter 'da [@AzureSupport](https://twitter.com/azuresupport) bağlayın. Bu, müşteri deneyimini iyileştirmeye yönelik resmi Microsoft Azure hesabıdır. Azure Community 'yi doğru kaynaklara bağlar: yanıtlar, destek ve uzmanlar.
+* Twitter'da bağlantı [@AzureSupport](https://twitter.com/azuresupport) kurun. Bu, müşteri deneyimini geliştirmek için resmi Microsoft Azure hesabıdır. Azure topluluğunu doğru kaynaklara bağlar: yanıtlar, destek ve uzmanlar.
 
-* Daha fazla yardıma ihtiyacınız varsa [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderebilirsiniz. Buradan yararlanmak için Portal menüsünden Yardım ( **?** ) seçeneğini belirleyin veya **Yardım + Destek** bölmesini açın. Daha fazla bilgi için bkz. [Azure destek isteği oluşturma](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). 
+* Daha fazla yardıma ihtiyacınız varsa, [Azure portalından](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/)bir destek isteği gönderin. Oraya ulaşmak için portal menüsünden Yardım (**?**) seçeneğini belirleyin veya **Yardım + destek** bölmesini açın. Daha fazla bilgi için azure [destek isteği oluşturma](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)bilgisini öğrenin. 
 
-  Abonelik yönetimi ve faturalandırma desteği Microsoft Azure aboneliğinize dahildir. Teknik destek, [Azure destek planları](https://azure.microsoft.com/support/plans/)aracılığıyla sağlanır.
+  Abonelik yönetimi ve faturalandırma desteği, Microsoft Azure aboneliğinize dahildir. [Azure Destek Planları](https://azure.microsoft.com/support/plans/)aracılığıyla teknik destek kullanılabilir.

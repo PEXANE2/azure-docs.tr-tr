@@ -1,6 +1,6 @@
 ---
-title: Spark 'tan Azure Cosmos DB Cassandra API çalışma
-description: Bu makale, Spark Cassandra API Tümleştirmesi Cosmos DB ana sayfasıdır.
+title: Azure Cosmos DB Cassandra API ile Spark'tan çalışma
+description: Bu makale, Spark Cosmos DB Cassandra API entegrasyonu için ana sayfadır.
 author: kanshiG
 ms.author: govindk
 ms.reviewer: sngun
@@ -9,55 +9,55 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 09/01/2019
 ms.openlocfilehash: cb34ea44c069f067d13a6480531a94a1a515f380
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/04/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "70241236"
 ---
-# <a name="connect-to-azure-cosmos-db-cassandra-api-from-spark"></a>Spark 'dan Azure Cosmos DB Cassandra API bağlanma
+# <a name="connect-to-azure-cosmos-db-cassandra-api-from-spark"></a>Spark'tan Azure Cosmos DB Cassandra API’sine bağlama
 
-Bu makale, Spark 'tan Azure Cosmos DB Cassandra API tümleştirmede bir dizi makale arasından biridir. Makalelerdeki bağlantı, veri tanımlama dili (DDL) işlemleri, temel veri Işleme dili (DML) işlemleri ve gelişmiş Azure Cosmos DB Cassandra API Spark 'dan tümleştirme ele alınmaktadır. 
+Bu makale, Spark'ın Azure Cosmos DB Cassandra API tümleştirmesi ile ilgili bir dizi makaleden biridir. Makaleler bağlantı, Veri Tanımı Dili(DDL) işlemleri, temel Veri Düzenleme Dili(DML) işlemleri ve Spark'tan gelişmiş Azure Cosmos DB Cassandra API tümleştirmesini kapsamaktadır. 
 
-## <a name="prerequisites"></a>Önkoşullar
-* [Azure Cosmos DB bir Cassandra API hesabı sağlayın.](create-cassandra-dotnet.md#create-a-database-account)
+## <a name="prerequisites"></a>Ön koşullar
+* [Azure Cosmos DB Cassandra API hesabı sağlama.](create-cassandra-dotnet.md#create-a-database-account)
 
-* Spark ortamınızı sağlama [[Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal) | [Azure HDInsight-Spark](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-jupyter-spark-sql) | Diğerleri].
+* Spark ortamı seçiminizi sağlama [[Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal) | [Azure HDInsight-Spark](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-jupyter-spark-sql) | Diğerleri].
 
-## <a name="dependencies-for-connectivity"></a>Bağlantı bağımlılıkları
-* **Cassandra için Spark Bağlayıcısı:** Spark Connector, Azure Cosmos DB Cassandra API bağlanmak için kullanılır.  Spark ortamınızın Spark ve Scala sürümleriyle uyumlu olan [Maven Central]( https://mvnrepository.com/artifact/com.datastax.spark/spark-cassandra-connector) 'da bulunan bağlayıcının sürümünü belirleyip kullanın.
+## <a name="dependencies-for-connectivity"></a>Bağlantı için bağımlılıklar
+* **Cassandra için kıvılcım konektörü:** Kıvılcım konektörü Azure Cosmos DB Cassandra API'ye bağlanmak için kullanılır.  [Maven merkezinde]( https://mvnrepository.com/artifact/com.datastax.spark/spark-cassandra-connector) bulunan ve Kıvılcım ortamınızın Kıvılcım ve Scala sürümleriyle uyumlu olan konektörün sürümünü tanımlayın ve kullanın.
 
-* **Cassandra API için Azure Cosmos DB Yardımcısı kitaplığı:** Spark bağlayıcısının yanı sıra, Azure Cosmos DB [Azure-Cosmos-Cassandra-Spark-Helper]( https://search.maven.org/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper/1.0.0/jar) adlı başka bir kitaplığa ihtiyacınız vardır. Bu kitaplık özel bağlantı fabrikası ve yeniden deneme ilkesi sınıflarını içerir.
+* **Cassandra API için Azure Cosmos DB yardımcı kitaplığı:** Kıvılcım konektörüne ek olarak, Azure Cosmos DB'den [azure-cosmos-cassandra-spark-helper]( https://search.maven.org/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper/1.0.0/jar) adlı başka bir kitaplığa ihtiyacınız vardır. Bu kitaplık özel bağlantı fabrikası ve yeniden deneme ilkesi sınıfları içerir.
 
-  Azure Cosmos DB 'de yeniden deneme ilkesi, HTTP durum kodu 429 ("Istek hızı büyük") özel durumlarını işleyecek şekilde yapılandırılmıştır. Azure Cosmos DB Cassandra API, bu özel durumları Cassandra Native protokolünde aşırı yüklenmiş hatalara dönüştürür ve geri dönme ile yeniden deneyebilirsiniz. Azure Cosmos DB sağlanan üretilen iş modelini kullandığından, giriş/çıkış oranları artdığında istek hızı sınırlandırma özel durumları oluşur. Yeniden deneme ilkesi, Spark işlerinizi, Kapsayıcınız için ayrılan üretilen işi büyük bir şekilde aşan veri artışlarına karşı korur.
+  Azure Cosmos DB'deki yeniden deneme ilkesi, HTTP durum kodu 429("İstek Oranı Büyük") özel durumlarını işleyeceğiniz şekilde yapılandırılır. Azure Cosmos DB Cassandra API, bu özel durumları Cassandra yerel protokolündeki aşırı yüklü hatalara çevirir ve geri dönüşlerle yeniden deneyebilirsiniz. Azure Cosmos DB sağlanan iş ortası modelini kullandığından, giriş/çıkış oranları arttığında istek oranı sınırlaması durumları oluşur. Yeniden deneme ilkesi, kıvılcım işlerinizi, kabınız için ayrılan iş artışını bir an için aşan veri artışlarına karşı korur.
 
   > [!NOTE] 
-  > Yeniden deneme ilkesi, Spark işlerinizin yalnızca kopan ani artışlarla korunmasını sağlayabilir. İş yükünüzü çalıştırmak için yeterli RUs yapılandırmadıysanız, yeniden deneme ilkesi geçerli değildir ve yeniden deneme ilkesi sınıfı özel durumu yeniden oluşturur.
+  > Yeniden deneme politikası kıvılcım işlerinizi yalnızca anlık ani artışlara karşı koruyabilir. İş yükünüzü çalıştırmak için gereken yeterli RUs yapılandırılmadıysanız, yeniden deneme ilkesi geçerli değildir ve yeniden deneme ilkesi sınıfı özel durumu yeniden atar.
 
-* **Azure Cosmos DB hesabı bağlantı ayrıntıları:** Azure Cassandra API hesabınızın adı, hesap uç noktası ve anahtarınız.
+* **Azure Cosmos DB hesap bağlantı ayrıntıları:** Azure Cassandra API hesap adınız, hesap bitiş noktanız ve anahtarınız.
     
-## <a name="spark-connector-throughput-configuration-parameters"></a>Spark Bağlayıcısı verimlilik yapılandırma parametreleri
+## <a name="spark-connector-throughput-configuration-parameters"></a>Kıvılcım konektörü iş birliş yapılandırma parametreleri
 
-Aşağıdaki tabloda bağlayıcı tarafından sunulan Cassandra API özgü işleme yapılandırma parametreleri listelenmektedir Azure Cosmos DB. Tüm yapılandırma parametrelerinin ayrıntılı bir listesi için bkz. Spark Cassandra Connector GitHub deposunun [yapılandırma başvurusu](https://github.com/datastax/spark-cassandra-connector/blob/master/doc/reference.md) sayfası.
+Aşağıdaki tabloda, bağlayıcı tarafından sağlanan Azure Cosmos DB Cassandra API'ye özgü iş ortası yapılandırma parametreleri listelanmaktadır. Tüm yapılandırma parametrelerinin ayrıntılı bir listesi için, Spark Cassandra Connector GitHub deposunun [yapılandırma başvuru](https://github.com/datastax/spark-cassandra-connector/blob/master/doc/reference.md) sayfasına bakın.
 
-| **Özellik adı** | **Varsayılan değer** | **Açıklama** |
+| **Özellik Adı** | **Varsayılan değer** | **Açıklama** |
 |---------|---------|---------|
-| spark. Cassandra. Output. Batch. size. Rows |  1\. |Tek toplu iş başına satır sayısı. Bu parametreyi 1 olarak ayarlayın. Bu parametre ağır iş yükleri için daha yüksek performans elde etmek için kullanılır. |
-| spark. Cassandra. Connection. connections_per_executor_max  | Yok. | Yürütücü başına düğüm başına en fazla bağlantı sayısı. 10 * n, n düğümlü Cassandra kümesinde düğüm başına 10 bağlantıyla eşdeğerdir. Bu nedenle, 5 düğümlü Cassandra kümesi için her düğüm için düğüm başına 5 bağlantı gerekiyorsa, bu yapılandırmayı 25 olarak ayarlamanız gerekir. Bu değeri, paralellik derecesini veya Spark işlerinizin yapılandırıldığı yürütme sayısını temel alarak değiştirin.   |
-| spark. Cassandra. Output. eşzamanlı. yazmaları  |  100 | Yürütücü başına gerçekleşebileceğini paralel yazma sayısını tanımlar. "Batch. size. Rows" değerini 1 olarak ayarladığınızdan, bu değeri uygun şekilde ölçeklendirdiğinizden emin olun. Bu değeri, paralellik derecesini veya iş yükünüz için elde etmek istediğiniz aktarım hızını temel alarak değiştirin. |
-| spark. Cassandra. eşzamanlı. okumalar |  512 | Yürütücü başına gerçekleşebileceğini paralel okumaların sayısını tanımlar. Bu değeri, paralellik derecesini veya iş yükünüz için elde etmek istediğiniz aktarım hızını temel alarak değiştirin  |
-| spark.cassandra.output.throughput_mb_per_sec  | Yok. | Yürütücü başına toplam yazma aktarım hızını tanımlar. Bu parametre, Spark iş aktarım hızı için üst sınır olarak kullanılabilir ve Cosmos kapsayıcılarınızın sağlanan iş hızına dayandırın.   |
-| spark. Cassandra. Input. reads_per_sec| Yok.   | Yürütücü başına toplam okuma aktarım hızını tanımlar. Bu parametre, Spark iş aktarım hızı için üst sınır olarak kullanılabilir ve Cosmos kapsayıcılarınızın sağlanan iş hızına dayandırın.  |
-| spark. Cassandra. Output. Batch. Grouping. buffer. size |  1000  | Cassandra API gönderilmeden önce bellekte depolanabilecek tek Spark görevi başına toplu iş sayısını tanımlar |
-| spark. Cassandra. Connection. keep_alive_ms | 60000 | Kullanılmayan bağlantıların kullanılabilir olduğu süreyi tanımlar. | 
+| spark.cassandra.output.batch.size.rows |  1 |Tek bir toplu iş başına satır sayısı. Bu parametreyi 1 olarak ayarlayın. Bu parametre, ağır iş yükleri için daha yüksek iş elde etmek için kullanılır. |
+| spark.cassandra.connection.connections_per_executor_max  | None | Yürütme başına düğüm başına maksimum bağlantı sayısı. 10*n, bir n-düğüm Cassandra kümesinde düğüm başına 10 bağlantıya eşdeğerdir. Bu nedenle, 5 düğüm Cassandra kümesi için her düğüm başına 5 bağlantı gerekiyorsa, bu yapılandırmayı 25 olarak ayarlamanız gerekir. Bu değeri, paralellik derecesine veya kıvılcım işlerinizin yapılandırıldırıldığı yürütücü sayısına göre değiştirin.   |
+| spark.cassandra.output.concurrent.writes  |  100 | Yürütücü başına oluşabilecek paralel yazma sayısını tanımlar. "batch.size.rows"u 1 olarak ayarladığınızdan, bu değeri buna göre ölçeklediğinden emin olun. Bu değeri, paralellik derecesine veya iş yükünüz için elde etmek istediğiniz iş başına göre değiştirin. |
+| spark.cassandra.concurrent.reads |  512 | Yürütücü başına oluşabilecek paralel okuma sayısını tanımlar. Bu değeri, iş yükünüz için elde etmek istediğiniz paralellik derecesine veya iş yükünüze göre değiştirin  |
+| spark.cassandra.output.throughput_mb_per_sec  | None | Uygulayıcı başına toplam yazma iş başına yazmayı tanımlar. Bu parametre, kıvılcım iş çıktınız için bir üst sınır olarak kullanılabilir ve cosmos kapsayıcınızın sağlanan iş bişine dayandırılabilir.   |
+| spark.cassandra.input.reads_per_sec| None   | Uygulayıcı başına toplam okuma iş bilgisini tanımlar. Bu parametre, kıvılcım iş çıktınız için bir üst sınır olarak kullanılabilir ve cosmos kapsayıcınızın sağlanan iş bişine dayandırılabilir.  |
+| spark.cassandra.output.batch.grouping.buffer.size |  1000  | Cassandra API'ye göndermeden önce bellekte depolanabilen tek bir kıvılcım görevi başına toplu iş sayısını tanımlar |
+| spark.cassandra.connection.keep_alive_ms | 60000 | Kullanılmayan bağlantıların kullanılabilir olduğu süreyi tanımlar. | 
 
-Spark işleriniz için bekleyen iş yüküne ve Cosmos DB hesabınız için sağladığınız aktarım hızını temel alarak bu parametrelerin paralelliğini ve derecesini ayarlayın.
+Kıvılcım işleriniz için beklediğiniz iş yüküne ve Cosmos DB hesabınız için sağladığınız iş başına göre bu parametrelerin iş kısmını ve paralellik derecesini ayarlayın.
 
-## <a name="connecting-to-azure-cosmos-db-cassandra-api-from-spark"></a>Spark 'dan Azure Cosmos DB Cassandra API bağlanılıyor
+## <a name="connecting-to-azure-cosmos-db-cassandra-api-from-spark"></a>Azure Cosmos DB Cassandra API'ye Kıvılcım'dan bağlanma
 
-### <a name="cqlsh"></a>csqlsh
-Aşağıdaki komutlar, csqlsh 'ten Azure CosmosDB Cassandra API bağlanmayı ayrıntılandırır.  Spark içindeki örnekleri kullanarak çalıştırırken doğrulama için faydalıdır.<br>
-**Linux/Unix/Mac 'ten:**
+### <a name="cqlsh"></a>cqlsh
+Aşağıdaki komutlar, cqlsh'ten Azure CosmosDB Cassandra API'ye nasıl bağlanılabildiğini ayrıntılı olarak açıklatır.  Bu, Spark'taki örnekleri çalıştırırken doğrulama için yararlıdır.<br>
+**Linux/Unix/Mac'ten:**
 
 ```bash
 export SSL_VERSION=TLSv1_2
@@ -65,23 +65,23 @@ export SSL_VALIDATE=false
 cqlsh.py YOUR-COSMOSDB-ACCOUNT-NAME.cassandra.cosmosdb.azure.com 10350 -u YOUR-COSMOSDB-ACCOUNT-NAME -p YOUR-COSMOSDB-ACCOUNT-KEY --ssl
 ```
 
-### <a name="1--azure-databricks"></a>1.  Azure Databricks
-Aşağıdaki makalede Azure Databricks küme sağlama, Azure Cosmos DB Cassandra API bağlantı için küme yapılandırma ve DDL işlemlerini, DML işlemlerini ve daha fazlasını kapsayan birkaç örnek Not defteri ele alınmaktadır.<BR>
-[Azure databricks Azure Cosmos DB Cassandra API ile çalışma](cassandra-spark-databricks.md)<BR>
+### <a name="1--azure-databricks"></a>1. Azure Veri Tuğlaları
+Aşağıdaki makale, Azure Veri Tuğlaları küme sağlama, Azure Cosmos DB Cassandra API'ye bağlanmak için küme yapılandırması ve DDL işlemlerini, DML işlemlerini ve daha fazlasını kapsayan birkaç örnek not defterini kapsamaktadır.<BR>
+[Azure veri tuğlalarından Azure Cosmos DB Cassandra API ile çalışın](cassandra-spark-databricks.md)<BR>
   
-### <a name="2--azure-hdinsight-spark"></a>2.  Azure HDInsight-Spark
-Aşağıdaki makale, HDInsight-Spark hizmeti, sağlama, Azure Cosmos DB Cassandra API bağlanmaya yönelik küme yapılandırması ve DDL işlemlerini, DML işlemlerini ve daha fazlasını kapsayan birkaç örnek Not defterini kapsar.<BR>
-[Azure HDInsight 'tan Azure Cosmos DB Cassandra API çalışma-Spark](cassandra-spark-hdinsight.md)
+### <a name="2--azure-hdinsight-spark"></a>2. Azure HDInsight-Kıvılcım
+Aşağıdaki makale, HDinsight-Spark hizmeti, sağlama, Azure Cosmos DB Cassandra API'ye bağlanmak için küme yapılandırması ve DDL işlemlerini, DML işlemlerini ve daha fazlasını kapsayan birkaç örnek not defterini kapsamaktadır.<BR>
+[Azure HDInsight-Spark'tan Azure Cosmos DB Cassandra API ile çalışın](cassandra-spark-hdinsight.md)
  
-### <a name="3--spark-environment-in-general"></a>3.  Spark ortamı genel
-Yukarıdaki bölümler Azure Spark tabanlı PaaS hizmetlerine özgü olduğundan, bu bölümde tüm genel Spark ortamları ele alınmaktadır.  Bağlayıcı bağımlılıkları, içeri aktarmalar ve Spark oturum yapılandırması aşağıda ayrıntılı olarak verilmiştir. "Sonraki adımlar" bölümü, DDL işlemlerine yönelik kod örneklerini, DML işlemlerini ve daha fazlasını içerir.  
+### <a name="3--spark-environment-in-general"></a>3. Genel olarak kıvılcım ortamı
+Yukarıdaki bölümler Azure Spark tabanlı PaaS hizmetlerine özgü olsa da, bu bölüm herhangi bir genel Kıvılcım ortamını kapsar.  Bağlayıcı bağımlılıkları, içeri aktarma ve Kıvılcım oturumu yapılandırması aşağıda ayrıntılı olarak açıklanmıştır. "Sonraki adımlar" bölümü DDL işlemleri, DML işlemleri ve daha fazlası için kod örneklerini kapsar.  
 
 #### <a name="connector-dependencies"></a>Bağlayıcı bağımlılıkları:
 
-1. [Spark Için Cassandra bağlayıcısını](cassandra-spark-generic.md#dependencies-for-connectivity) almak üzere Maven koordinatlarını ekleyin
-2. Cassandra API için [Azure Cosmos DB Yardımcısı kitaplığı](cassandra-spark-generic.md#dependencies-for-connectivity) için Maven koordinatlarını ekleyin
+1. [Kıvılcım için Cassandra konektörü](cassandra-spark-generic.md#dependencies-for-connectivity) almak için maven koordinatları ekleyin
+2. Cassandra API için [Azure Cosmos DB yardımcı kitaplığı](cassandra-spark-generic.md#dependencies-for-connectivity) için maven koordinatlarını ekleyin
 
-#### <a name="imports"></a>İşlemlerinin
+#### <a name="imports"></a>Ithalat:
 
 ```scala
 import org.apache.spark.sql.cassandra._
@@ -93,7 +93,7 @@ import com.datastax.spark.connector.cql.CassandraConnector
 import com.microsoft.azure.cosmosdb.cassandra
 ```
 
-#### <a name="spark-session-configuration"></a>Spark oturum yapılandırması:
+#### <a name="spark-session-configuration"></a>Spark oturumu yapılandırması:
 
 ```scala
 //Connection-related
@@ -115,12 +115,12 @@ spark.conf.set("spark.cassandra.connection.keep_alive_ms", "600000000")
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Aşağıdaki makalelerde Azure Cosmos DB Cassandra API Spark tümleştirmesi gösterilmektedir. 
+Aşağıdaki makaleler, Azure Cosmos DB Cassandra API ile Kıvılcım tümleştirmesini göstermektedir. 
  
 * [DDL işlemleri](cassandra-spark-ddl-ops.md)
 * [Oluşturma/ekleme işlemleri](cassandra-spark-create-ops.md)
-* [Okuma işlemleri](cassandra-spark-read-ops.md)
-* [Upsert işlem](cassandra-spark-upsert-ops.md)
-* [Silme işlemleri](cassandra-spark-delete-ops.md)
+* [İşlemleri okuma](cassandra-spark-read-ops.md)
+* [İşlemleri yukarı yaslar](cassandra-spark-upsert-ops.md)
+* [İşlemleri silme](cassandra-spark-delete-ops.md)
 * [Toplama işlemleri](cassandra-spark-aggregation-ops.md)
 * [Tablo kopyalama işlemleri](cassandra-spark-table-copy-ops.md)

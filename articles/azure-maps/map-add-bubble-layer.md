@@ -1,6 +1,6 @@
 ---
-title: Haritaya kabarcık katmanı ekleme | Microsoft Azure haritaları
-description: Bu makalede, Microsoft Azure haritaları Web SDK 'sını kullanarak bir haritaya kabarcık katmanı ekleme hakkında bilgi edineceksiniz.
+title: Haritaya Kabarcık katmanı ekleme | Microsoft Azure Haritaları
+description: Bu makalede, Microsoft Azure Haritalar Web SDK'sını kullanarak haritaya Kabarcık katmanı ekleme hakkında bilgi edineceksiniz.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -10,22 +10,22 @@ services: azure-maps
 manager: ''
 ms.custom: codepen
 ms.openlocfilehash: 7ae11734eb804715f3eb1b5edcb02fc328dafec8
-ms.sourcegitcommit: 2823677304c10763c21bcb047df90f86339e476a
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/14/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77208565"
 ---
 # <a name="add-a-bubble-layer-to-a-map"></a>Haritaya kabarcık katmanı ekleme
 
-Bu makalede, bir veri kaynağındaki nokta verilerinin haritada kabarcık katmanı olarak nasıl oluşturulduğu gösterilir. Kabarcık katmanları, bir sabit piksel yarıçapı ile haritada daire olarak işleme noktaları. 
+Bu makalede, bir veri kaynağından gelen nokta verilerini haritaüzerinde kabarcık katmanı olarak nasıl işlendirilebildiğiniz gösterilmektedir. Kabarcık katmanları, sabit bir piksel yarıçapı olan haritaüzerinde noktaları daireler halinde işler. 
 
 > [!TIP]
-> Kabarcık katmanları varsayılan olarak bir veri kaynağındaki tüm geometrilerin koordinatlarını işler. Katmanı yalnızca nokta geometrisi özelliklerinin oluşturduğu şekilde sınırlamak için katmanın `filter` özelliğini `['==', ['geometry-type'], 'Point']` veya `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]` de MultiPoint özellikleri eklemek istiyorsanız ayarlayın.
+> Kabarcık katmanları varsayılan olarak bir veri kaynağındaki tüm geometrilerin koordinatlarını işler. Yalnızca nokta geometrisi özelliklerini işleyen katmanı sınırlamak `filter` için, katmanın `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]` özelliğini ayarlamak veya `['==', ['geometry-type'], 'Point']` MultiPoint özelliklerini de eklemek istiyorsanız.
 
 ## <a name="add-a-bubble-layer"></a>Baloncuk katmanı ekleme
 
-Aşağıdaki kod, bir dizi noktayı bir veri kaynağına yükler. Ardından, veri noktalarını bir [kabarcık katmanına](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest)bağlar. Kabarcık katmanı, her kabarcığun yarıçapını beş piksel ve bir de beyaz dolgulu bir renk oluşturur. Ve, mavi renkli bir kontur rengi ve altı piksellik bir kontur kalınlığı. 
+Aşağıdaki kod bir veri kaynağına bir dizi nokta yükler. Daha sonra, veri noktaları bir [kabarcık katmanı](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest)na bağlanır. Kabarcık katmanı beş piksel ve beyaz bir dolgu rengi ile her kabarcık yarıçapı işler. Ve, mavi bir kontur rengi ve altı piksel bir kontur genişliği. 
 
 ```javascript
 //Add point locations.
@@ -53,29 +53,29 @@ map.layers.add(new atlas.layer.BubbleLayer(dataSource, null, {
 }));
 ```
 
-Aşağıda, yukarıdaki işlevselliğin tamamen çalışan kod örneği verilmiştir.
+Aşağıda yukarıdaki işlevselliğin tam çalışan kod örneği verilmiştir.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='BubbleLayer veri kaynağı' src='//codepen.io/azuremaps/embed/mzqaKB/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>Codepen</a>üzerinde Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) Ile kalem <a href='https://codepen.io/azuremaps/pen/mzqaKB/'>BubbleLayer veri kaynağına</a> bakın.
+<iframe height='500' scrolling='no' title='BubbleLayer DataSource' src='//codepen.io/azuremaps/embed/mzqaKB/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>CodePen'deki Azure Haritalar 'a<a href='https://codepen.io/azuremaps'>@azuremaps</a>göre Kalem <a href='https://codepen.io/azuremaps/pen/mzqaKB/'>BubbleLayer DataSource</a> <a href='https://codepen.io'>'a</a>bakın .
 </iframe>
 
-## <a name="show-labels-with-a-bubble-layer"></a>Kabarcık katmanı içeren etiketleri göster
+## <a name="show-labels-with-a-bubble-layer"></a>Etiketleri kabarcık katmanıyla gösterme
 
-Bu kod, haritada bir noktayı işlemek için balon katmanını nasıl kullanacağınızı gösterir. Ve bir etiketi işlemek için bir sembol katmanını kullanma. Sembol katmanının simgesini gizlemek için, simge seçeneklerinin `image` özelliğini `'none'`olarak ayarlayın.
+Bu kod, haritada bir noktayı işlemek için kabarcık katmanını nasıl kullanacağınızı gösterir. Ve, bir etiket işlemek için bir sembol katmanı nasıl kullanılır. Sembol katmanısimgesini gizlemek için `image` `'none'`simge seçeneklerinin özelliğini .
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Çoklu katman veri kaynağı' src='//codepen.io/azuremaps/embed/rqbQXy/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>Codepen</a>'Da Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) tarafından bulunan kalem <a href='https://codepen.io/azuremaps/pen/rqbQXy/'>Multilayer veri kaynağına</a> bakın.
+<iframe height='500' scrolling='no' title='Çok Katmanlı Veri Kaynağı' src='//codepen.io/azuremaps/embed/rqbQXy/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>CodePen'deki Azure Haritalar 'a<a href='https://codepen.io/azuremaps'>@azuremaps</a>göre Kalem <a href='https://codepen.io/azuremaps/pen/rqbQXy/'>MultiLayer DataSource</a> <a href='https://codepen.io'>'a</a>bakın .
 </iframe>
 
-## <a name="customize-a-bubble-layer"></a>Balon katmanını özelleştirme
+## <a name="customize-a-bubble-layer"></a>Kabarcık katmanını özelleştirme
 
-Kabarcık katmanının yalnızca birkaç stil seçeneği vardır. İşte deneyebileceğiniz bir araç.
+Kabarcık katmanı yalnızca birkaç stil seçeneğine sahiptir. Burada bunları denemek için bir araçtır.
 
 <br/>
 
-<iframe height='700' scrolling='no' title='Kabarcık katmanı seçenekleri' src='//codepen.io/azuremaps/embed/eQxbGm/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>Codepen</a>'Da Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) tarafından bulunan kalem <a href='https://codepen.io/azuremaps/pen/eQxbGm/'>kabarcık katmanı seçeneklerine</a> bakın.
+<iframe height='700' scrolling='no' title='Kabarcık Katman Seçenekleri' src='//codepen.io/azuremaps/embed/eQxbGm/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>CodePen'de Azure Haritalar'a<a href='https://codepen.io/azuremaps'>@azuremaps</a>göre Kalem <a href='https://codepen.io/azuremaps/pen/eQxbGm/'>Kabarcığı Katmanı Seçenekleri</a> <a href='https://codepen.io'>'ne</a>bakın .
 </iframe>
 
 ## <a name="next-steps"></a>Sonraki adımlar
@@ -86,7 +86,7 @@ Bu makalede kullanılan sınıflar ve yöntemler hakkında daha fazla bilgi edin
 > [BubbleLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.bubblelayer?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"]
-> [BubbleLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.bubblelayeroptions?view=azure-iot-typescript-latest)
+> [BubbleLayerSeçenekleri](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.bubblelayeroptions?view=azure-iot-typescript-latest)
 
 Haritalarınıza eklemek için daha fazla kod örneği için aşağıdaki makalelere bakın:
 
@@ -97,7 +97,7 @@ Haritalarınıza eklemek için daha fazla kod örneği için aşağıdaki makale
 > [Sembol katmanı ekleme](map-add-pin.md)
 
 > [!div class="nextstepaction"]
-> [Veri tabanlı stil ifadeleri kullanın](data-driven-style-expressions-web-sdk.md)
+> [Veri temelli stil ifadeleri kullanma](data-driven-style-expressions-web-sdk.md)
 
 > [!div class="nextstepaction"]
 > [Kod örnekleri](https://docs.microsoft.com/samples/browse/?products=azure-maps)

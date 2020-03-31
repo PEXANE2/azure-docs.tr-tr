@@ -1,26 +1,26 @@
 ---
-title: OpenCensus Python ile Azure Application Insights bağımlılık Izleme | Microsoft Docs
-description: OpenCensus Python aracılığıyla Python uygulamalarınızın bağımlılık çağrılarını izleyin.
+title: OpenCensus Python ile Azure Uygulama Öngörülerinde Bağımlılık İzleme | Microsoft Dokümanlar
+description: OpenCensus Python aracılığıyla Python uygulamalarınız için bağımlılık çağrılarını izleyin.
 ms.topic: conceptual
 author: lzchen
 ms.author: lechen
 ms.date: 10/15/2019
 ms.openlocfilehash: e400669fd96518adead74a81fc332767c5f9b23b
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77669939"
 ---
 # <a name="track-dependencies-with-opencensus-python"></a>OpenCensus Python ile bağımlılıkları izleme
 
-Bağımlılık, uygulamanız tarafından çağrılan bir dış bileşendir. Bağımlılık verileri, OpenCensus Python ve çeşitli tümleştirmeler kullanılarak toplanır. Veriler daha sonra Azure Izleyici altında `dependencies` telemetri olarak Application Insights gönderilir.
+Bağımlılık, uygulamanız tarafından çağrılan harici bir bileşendir. Bağımlılık verileri OpenCensus Python ve çeşitli tümleştirmeleri kullanılarak toplanır. Veriler daha sonra Azure Monitor altında uygulama `dependencies` öngörüleri için telemetri olarak gönderilir.
 
-İlk olarak, Python uygulamanızı en son [Opencensus Python SDK 'sı](../../azure-monitor/app/opencensus-python.md)ile işaretleyin.
+İlk olarak, en son [OpenCensus Python SDK](../../azure-monitor/app/opencensus-python.md)ile Python uygulamanızı enstrüman.
 
-## <a name="in-process-dependencies"></a>İşlem içi bağımlılıklar
+## <a name="in-process-dependencies"></a>Süreç içi bağımlılıklar
 
-Azure Izleyici için OpenCensus Python SDK 'Sı, "işlem içi" bağımlılık telemetrisi (uygulamanızda gerçekleşen bilgi ve mantık) göndermenizi sağlar. İşlem içi bağımlılıklarda `type` alanı Analize `INPROC` olacak.
+Azure Monitor için OpenCensus Python SDK,"süreç içi" bağımlılık telemetrisi (uygulamanızda oluşan bilgi ve mantık) göndermenize olanak tanır. Süreç içi bağımlılıklar, `type` analitikte `INPROC` olduğu gibi alana sahip olacaktır.
 
 ```python
 from opencensus.ext.azure.trace_exporter import AzureExporter
@@ -33,11 +33,11 @@ with tracer.span(name='foo'): # <-- A dependency telemetry item will be sent for
     print('Hello, World!')
 ```
 
-## <a name="dependencies-with-requests-integration"></a>"İstekler" tümleştirmesi olan bağımlılıklar
+## <a name="dependencies-with-requests-integration"></a>"İstek" tümleştirmesi ile bağımlılıklar
 
-OpenCensus `requests` tümleştirmesiyle giden isteklerinizi izleyin.
+OpenCensus `requests` tümleştirmesi ile giden isteklerinizi izleyin.
 
-[Pypı](https://pypi.org/project/opencensus-ext-requests/) 'den `opencensus-ext-requests` indirip yükleyin ve izleme tümleştirmelerine ekleyin. Python [istekleri](https://pypi.org/project/requests/) kitaplığı kullanılarak gönderilen istekler izlenir.
+`opencensus-ext-requests` [PyPI'den](https://pypi.org/project/opencensus-ext-requests/) indirin ve yükleyin ve izleme tümleştirmelerine ekleyin. Python istekleri kitaplığı kullanılarak gönderilen [istekler](https://pypi.org/project/requests/) izlenir.
 
 ```python
 import requests
@@ -54,11 +54,11 @@ with tracer.span(name='parent'):
     response = requests.get(url='https://www.wikipedia.org/wiki/Rabbit') # <-- this request will be tracked
 ```
 
-## <a name="dependencies-with-httplib-integration"></a>"Httplib" tümleştirmesi ile bağımlılıklar
+## <a name="dependencies-with-httplib-integration"></a>"httplib" tümleştirmesi ile bağımlılıklar
 
-OpenCensus `httplib` tümleştirmesiyle giden isteklerinizi izleyin.
+OpenCensus `httplib` tümleştirmesi ile giden isteklerinizi izleyin.
 
-[Pypı](https://pypi.org/project/opencensus-ext-httplib/) 'den `opencensus-ext-httplib` indirip yükleyin ve izleme tümleştirmelerine ekleyin. Http kullanılarak gönderilen istekler, Python3 için [istemci](https://docs.python.org/3.7/library/http.client.html) veya Python2 için [httplib](https://docs.python.org/2/library/httplib.html) izlenir.
+`opencensus-ext-httplib` [PyPI'den](https://pypi.org/project/opencensus-ext-httplib/) indirin ve yükleyin ve izleme tümleştirmelerine ekleyin. Python3 için [http.client](https://docs.python.org/3.7/library/http.client.html) veya Python2 için [http.client](https://docs.python.org/2/library/httplib.html) kullanılarak gönderilen istekler izlenir.
 
 ```python
 import http.client as httplib
@@ -80,11 +80,11 @@ response = conn.getresponse()
 conn.close()
 ```
 
-## <a name="dependencies-with-django-integration"></a>"Docgo" tümleştirmesi ile bağımlılıklar
+## <a name="dependencies-with-django-integration"></a>"django" entegrasyonu ile bağımlılıklar
 
-OpenCensus `django` tümleştirmesiyle giden Docgo isteklerinizi izleyin.
+OpenCensus `django` entegrasyonu ile giden Django isteklerinizi izleyin.
 
-[Pypı](https://pypi.org/project/opencensus-ext-django/) 'den `opencensus-ext-django` indirip yükleyin ve Docgo `settings.py` dosyasının `MIDDLEWARE` bölümüne aşağıdaki satırı ekleyin.
+[PyPI'den](https://pypi.org/project/opencensus-ext-django/) indirin ve yükleyin `MIDDLEWARE` `settings.py` `opencensus-ext-django` ve Django dosyasındaki bölüme aşağıdaki satırı ekleyin.
 
 ```python
 MIDDLEWARE = [
@@ -93,7 +93,7 @@ MIDDLEWARE = [
 ]
 ```
 
-Ek yapılandırma sağlandıysa, tüm başvuru için [Özelleştirmeleri](https://github.com/census-instrumentation/opencensus-python#customization) okuyun.
+Ek yapılandırma sağlanabilir, tam bir başvuru için [özelleştirmeleri](https://github.com/census-instrumentation/opencensus-python#customization) okuyun.
 
 ```python
 OPENCENSUS = {
@@ -106,11 +106,11 @@ OPENCENSUS = {
 }
 ```
 
-## <a name="dependencies-with-mysql-integration"></a>"MySQL" tümleştirmesiyle bağımlılıklar
+## <a name="dependencies-with-mysql-integration"></a>"mysql" tümleştirmesi ile bağımlılıklar
 
-OpenCensus `mysql` tümleştirmesiyle MYSQL bağımlılıklarınızı izleyin. Bu tümleştirme [MySQL-Connector](https://pypi.org/project/mysql-connector-python/) kitaplığını destekler.
+OpenCensus `mysql` tümleştirmesi ile MYSQL bağımlılıklarınızı izleyin. Bu tümleştirme [mysql-bağlayıcı](https://pypi.org/project/mysql-connector-python/) kitaplığını destekler.
 
-[Pypı](https://pypi.org/project/opencensus-ext-mysql/) 'den `opencensus-ext-mysql` indirip yükleyin ve kodunuza aşağıdaki satırları ekleyin.
+`opencensus-ext-mysql` [PyPI'den](https://pypi.org/project/opencensus-ext-mysql/) indirin ve yükleyin ve kodunuza aşağıdaki satırları ekleyin.
 
 ```python
 from opencensus.trace import config_integration
@@ -118,11 +118,11 @@ from opencensus.trace import config_integration
 config_integration.trace_integrations(['mysql'])
 ```
 
-## <a name="dependencies-with-pymysql-integration"></a>"Pymysql" tümleştirmesi içeren Bağımlılıklar
+## <a name="dependencies-with-pymysql-integration"></a>"Pymysql" tümleştirmesi ile bağımlılıklar
 
-OpenCensus `pymysql` tümleştirmesiyle PyMySQL bağımlılıklarınızı izleyin.
+OpenCensus `pymysql` tümleştirmesi ile PyMySQL bağımlılıklarınızı izleyin.
 
-[Pypı](https://pypi.org/project/opencensus-ext-pymysql/) 'den `opencensus-ext-pymysql` indirip yükleyin ve kodunuza aşağıdaki satırları ekleyin.
+`opencensus-ext-pymysql` [PyPI'den](https://pypi.org/project/opencensus-ext-pymysql/) indirin ve yükleyin ve kodunuza aşağıdaki satırları ekleyin.
 
 ```python
 from opencensus.trace import config_integration
@@ -130,11 +130,11 @@ from opencensus.trace import config_integration
 config_integration.trace_integrations(['pymysql'])
 ```
 
-## <a name="dependencies-with-postgresql-integration"></a>"PostgreSQL" tümleştirmesi ile bağımlılıklar
+## <a name="dependencies-with-postgresql-integration"></a>"postgresql" tümleştirmesi ile bağımlılıklar
 
-OpenCensus `postgresql` tümleştirmesiyle PostgreSQL bağımlılıklarınızı izleyin. Bu tümleştirme [psycopg2](https://pypi.org/project/psycopg2/) kitaplığını destekler.
+OpenCensus `postgresql` tümleştirmesi ile PostgreSQL bağımlılıklarınızı izleyin. Bu tümleştirme [psycopg2](https://pypi.org/project/psycopg2/) kitaplığını destekler.
 
-[Pypı](https://pypi.org/project/opencensus-ext-postgresql/) 'den `opencensus-ext-postgresql` indirip yükleyin ve kodunuza aşağıdaki satırları ekleyin.
+`opencensus-ext-postgresql` [PyPI'den](https://pypi.org/project/opencensus-ext-postgresql/) indirin ve yükleyin ve kodunuza aşağıdaki satırları ekleyin.
 
 ```python
 from opencensus.trace import config_integration
@@ -142,11 +142,11 @@ from opencensus.trace import config_integration
 config_integration.trace_integrations(['postgresql'])
 ```
 
-## <a name="dependencies-with-pymongo-integration"></a>"Pymongo" tümleştirmesi ile bağımlılıklar
+## <a name="dependencies-with-pymongo-integration"></a>"Pymongo" entegrasyonu ile bağımlılıklar
 
-OpenCensus `pymongo` tümleştirmesiyle MongoDB bağımlılıklarınızı izleyin. Bu tümleştirme, [pymongo](https://pypi.org/project/pymongo/) kitaplığını destekler.
+OpenCensus `pymongo` tümleştirmesi ile MongoDB bağımlılıklarınızı izleyin. Bu tümleştirme [pymongo](https://pypi.org/project/pymongo/) kitaplığını destekler.
 
-[Pypı](https://pypi.org/project/opencensus-ext-pymongo/) 'den `opencensus-ext-pymongo` indirip yükleyin ve kodunuza aşağıdaki satırları ekleyin.
+`opencensus-ext-pymongo` [PyPI'den](https://pypi.org/project/opencensus-ext-pymongo/) indirin ve yükleyin ve kodunuza aşağıdaki satırları ekleyin.
 
 ```python
 from opencensus.trace import config_integration
@@ -154,9 +154,9 @@ from opencensus.trace import config_integration
 config_integration.trace_integrations(['pymongo'])
 ```
 
-### <a name="dependencies-with-sqlalchemy-integration"></a>"Sqlalchemy" tümleştirmesiyle bağımlılıklar
+### <a name="dependencies-with-sqlalchemy-integration"></a>"sqlalchemy" tümleştirmesi ile bağımlılıklar
 
-OpenCensus `sqlalchemy` tümleştirmesini kullanarak SQLAlchemy kullanarak bağımlılıklarınızı izleyin. Bu tümleştirme, temel alınan veritabanından bağımsız olarak [sqlalchemy](https://pypi.org/project/SQLAlchemy/) paketinin kullanımını izler.
+OpenCensus `sqlalchemy` tümleştirmesini kullanarak SQLAlchemy'yi kullanarak bağımlılıklarınızı izleyin. Bu tümleştirme, temel veritabanından bağımsız olarak [sqlalchemy](https://pypi.org/project/SQLAlchemy/) paketinin kullanımını izler.
 
 ```python
 from opencensus.trace import config_integration
@@ -167,7 +167,7 @@ config_integration.trace_integrations(['sqlalchemy'])
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Uygulama Eşlemesi](../../azure-monitor/app/app-map.md)
-* [Kullanılabilirlik](../../azure-monitor/app/monitor-web-app-availability.md)
-* [Search](../../azure-monitor/app/diagnostic-search.md)
-* [Log (Analytics) sorgusu](../../azure-monitor/log-query/log-query-overview.md)
+* [Kullanılabilir -lik](../../azure-monitor/app/monitor-web-app-availability.md)
+* [Arama](../../azure-monitor/app/diagnostic-search.md)
+* [Günlük (Analytics) sorgusu](../../azure-monitor/log-query/log-query-overview.md)
 * [İşlem tanılama](../../azure-monitor/app/transaction-diagnostics.md)

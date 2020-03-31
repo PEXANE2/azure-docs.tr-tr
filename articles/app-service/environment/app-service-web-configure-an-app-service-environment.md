@@ -1,6 +1,6 @@
 ---
-title: ALV1 'yi yapılandırma
-description: App Service Ortamı v1 yapılandırma, yönetim ve izleme. Bu belge yalnızca eski v1 Ao kullanan müşteriler için sağlanır.
+title: ASE v1'i yapılandır
+description: App Service Environment v1'in yapılandırması, yönetimi ve izlenmesi. Bu doküman yalnızca eski v1 ASE'yi kullanan müşteriler için sağlanır.
 author: ccompy
 ms.assetid: b5a1da49-4cab-460d-b5d2-edd086ec32f4
 ms.topic: article
@@ -8,184 +8,184 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: b37708e27887b20604a1fe921f14e51387793737
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 12/02/2019
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "74687252"
 ---
-# <a name="configuring-an-app-service-environment-v1"></a>App Service Ortamı v1 yapılandırma
+# <a name="configuring-an-app-service-environment-v1"></a>Uygulama Hizmet Ortamını Yapılandırma v1
 
 > [!NOTE]
-> Bu makale App Service Ortamı v1 ile ilgilidir.  Daha güçlü altyapıda daha kolay ve çalışır App Service Ortamı daha yeni bir sürümü vardır. Yeni sürüm hakkında daha fazla bilgi edinmek için [App Service ortamı giriş](intro.md)ile başlayın.
+> Bu makale, App Service Environment v1 hakkındadır.  Uygulama Hizmet Ortamı'nın kullanımı daha kolay olan ve daha güçlü altyapıda çalışan daha yeni bir sürümü vardır. Yeni sürüm hakkında daha fazla bilgi edinmek [için Uygulama Hizmet Ortamına Giriş](intro.md)ile başlayın.
 > 
 
 ## <a name="overview"></a>Genel Bakış
-Yüksek düzeyde, Azure App Service Ortamı birçok ana bileşenden oluşur:
+Yüksek düzeyde, Azure Uygulama Hizmet Ortamı birkaç ana bileşenden oluşur:
 
-* App Service Ortamı barındırılan hizmette çalışan işlem kaynakları
+* Barındırılan Hizmet, Uygulama Hizmet Ortamında çalışan kaynakları hesaplama
 * Depolama
 * Bir veritabanı
-* Klasik (v1) veya Kaynak Yöneticisi (v2) Azure sanal ağı (VNet) 
-* Üzerinde çalışan App Service Ortamı barındırılan hizmeti olan bir alt ağ
+* Klasik(V1) veya Kaynak Yöneticisi(V2) Azure Sanal Ağı (VNet) 
+* Uygulama Hizmet Ortamı'na sahip bir alt ağ, içinde çalışan hizmet barındırılan
 
-### <a name="compute-resources"></a>İşlem kaynakları
-Dört kaynak havuzunuz için işlem kaynaklarını kullanırsınız.  Her App Service Ortamı (Ao), bir dizi ön ucu ve üç olası çalışan havuzu içerir. Üç çalışan havuzunun hepsini kullanmanız gerekmez. isterseniz, yalnızca bir veya iki kullanabilirsiniz.
+### <a name="compute-resources"></a>Kaynak hesaplama
+Dört kaynak havuzunuz için bilgi işlem kaynaklarını kullanırsınız.  Her Uygulama Hizmet Ortamı (ASE) ön uçları ve üç olası işçi havuzları kümesi vardır. Üç alt havuzuda da kullanmanız gerekmez- isterseniz, sadece bir veya iki tane kullanabilirsiniz.
 
-Kaynak havuzlarındaki (ön uçlar ve çalışanlar) konaklar, kiracıların doğrudan erişimine açık değildir. Uzak Masaüstü Protokolü (RDP) kullanarak bunlara bağlanabilir, sağlamayı değiştirebilir veya üzerinde yönetici olarak davranabilir.
+Kaynak havuzlarında (ön uçlar ve çalışanlar) ana bilgisayarlara doğrudan kiracı erişilemez. Uzaktan Masaüstü Protokolü'nü (RDP) bunlara bağlanmak, sağlamalarını değiştirmek veya bunlar adak için yönetici lik yapmak için kullanamazsınız.
 
-Kaynak havuzu miktarını ve boyutunu ayarlayabilirsiniz. Ao 'da, P4 ile P1 etiketli dört boyutlu seçenekleriniz vardır. Bu boyutlar ve fiyatlandırmasıyla ilgili ayrıntılar için bkz. [App Service fiyatlandırması](https://azure.microsoft.com/pricing/details/app-service/).
-Miktar veya boyutun değiştirilmesi, ölçek işlemi olarak adlandırılır.  Tek seferde yalnızca bir ölçeklendirme işlemi devam edebilir.
+Kaynak havuzu miktarını ve boyutunu ayarlayabilirsiniz. BIR ASE'de, P1'den P4'e etiketlenmiş dört boyut seçeneğiniz vardır. Bu boyutlar ve fiyatlandırmaları hakkında ayrıntılı bilgi [için, Uygulama Hizmeti fiyatlandırması](https://azure.microsoft.com/pricing/details/app-service/)için bkz.
+Miktarı veya boyutu değiştirme ölçek işlemi olarak adlandırılır.  Aynı anda yalnızca bir ölçek işlemi gerçeklebiliyor.
 
-**Ön uçlar**: ön uçlar, ASE 'niz içinde tutulan uygulamalarınızın http/https uç noktalardır. Ön uçlarında iş yüklerini çalıştırmazsınız.
+**Ön uçlar**: Ön uçlar, ASE'nizde bulunan uygulamalarınız için HTTP/HTTPS uç noktalarıdır. İş yüklerini ön uçlarda çalıştıramazsın.
 
-* ATıCı, geliştirme/test iş yükleri ve düşük düzeyli üretim iş yükleri için yeterli olan iki P2s ile başlar. Orta ila ağır üretim iş yükleri için P3S önemle önerilir.
-* Orta ila ağır üretim iş yükleri için, zamanlanmış bakım gerçekleştiğinde çalışan yeterli ön uç olduğundan emin olmak için en az dört P3S olmasını öneririz. Zamanlanan bakım etkinlikleri, bir anda bir ön uç getirecek. Bu, bakım etkinlikleri sırasında genel kullanıma açık ön uç kapasitesini azaltır.
-* Ön uçların sağlanması bir saate kadar sürebilir. 
-* Daha fazla ölçek ince ayarlama için, ön uç havuzu için CPU yüzdesini, bellek yüzdesini ve etkin Istek ölçümlerini izlemeniz gerekir. P3S çalıştırılırken CPU veya bellek yüzdeleri yüzde 70 ' luk üstündeyse, daha fazla ön uç ekleyin. Etkin Istekler değeri ön uç başına 15.000 ile 20.000 arasında bir değere ortaalıyorsa, daha ön uçlar da eklemeniz gerekir. Genel amaç, CPU ve bellek yüzdelerini %70 ' ın altında tutmaktır ve etkin Istekler, P3S çalıştırırken ön uç başına 15.000 istekten daha düşük bir değer sağlar.  
+* ASE, dev/test iş yükleri ve düşük düzeyli üretim iş yükleri için yeterli olan iki P2 ile başlar. Orta ve ağır üretim iş yükleri için P3'leri şiddetle tavsiye ediyoruz.
+* Orta ve ağır üretim iş yükleri için, zamanlanmış bakım gerçekleştiğinde yeterli ön uçların çalışmadığından emin olmak için en az dört P3'e sahip olduğunuzu öneririz. Planlanmış bakım faaliyetleri bir seferde bir ön uç aşağı getirecektir. Bu, bakım faaliyetleri sırasında genel kullanılabilir ön uç kapasitesini azaltır.
+* Ön uçların sağlanması bir saat kadar sürebilir. 
+* Daha fazla ölçek ince ayar için, ön uç havuzu için CPU yüzdesi, Bellek yüzdesi ve Etkin İstekler ölçümlerini izlemeniz gerekir. Cpu veya Bellek yüzdeleri P3'leri çalıştırırken yüzde 70'in üzerindeyse, daha fazla ön uç ekleyin. Etkin İstekler değeri ön uç başına ortalama 15.000 ile 20.000 istek arasında ysa, daha fazla ön uç eklemeniz gerekir. Genel hedef, CPU ve Bellek yüzdelerini %70'in altında tutmak ve P3'leri çalıştırırken etkin istekler ön uç başına ortalama 15.000 istek tesbit etmektir.  
 
-**Çalışanlar**: uygulamalarınızın gerçekten çalıştırıldığı çalışanlar. App Service planlarınızı ölçeklendirirseniz, bu, ilişkili çalışan havuzundaki çalışanları kullanır.
+**İşçiler**: Çalışanlar, uygulamalarınızın gerçekte çalıştığı yerdir. Uygulama Hizmeti planlarınızı ölçeklendirdiğinizde, ilişkili işçi havuzundaki çalışanları kullanır.
 
-* Çalışanları anında ekleyemezsiniz. Sağlanması bir saate kadar zaman alabilir.
-* Herhangi bir havuz için bir işlem kaynağının boyutunun ölçeklendirilmesi, güncelleştirme etki alanı başına < 1 saat sürer. Ao 'da 20 güncelleştirme etki alanı vardır. Bir çalışan havuzunun işlem boyutunu 10 örnek ile ölçeklendirdiyseniz tamamlanması en fazla 10 saat sürebilir.
-* Bir çalışan havuzunda kullanılan işlem kaynaklarının boyutunu değiştirirseniz, o çalışan havuzunda çalışan uygulamaların soğuk başlamasına neden olursunuz.
+* Hemen işçi ekleyemezsiniz. Sağlanması bir saat kadar sürebilir.
+* Herhangi bir havuz için bir bilgi işlem kaynağının boyutunu ölçekleme güncelleştirme etki alanı başına < 1 saat sürer. Bir ASE'de 20 güncelleştirme alanı vardır. Bir işçi havuzunun işlem boyutunu 10 örnekle ölçeklendirseniz, tamamlanması 10 saat kadar sürebilir.
+* Bir alt havuzda kullanılan işlem kaynaklarının boyutunu değiştirirseniz, bu alt havuzda çalışan uygulamaların soğuk başlamasına neden olursunuz.
 
-Herhangi bir uygulamayı çalıştırmayan bir çalışan havuzunun işlem kaynağı boyutunu değiştirmek için en hızlı yol şunlardır:
+Herhangi bir uygulama çalıştırmayan bir çalışan havuzunun bilgi işlem kaynak boyutunu değiştirmenin en hızlı yolu:
 
-* Çalışan miktarını 2 ' ye kadar ölçeklendirin.  Portalda en küçük ölçek azaltma boyutu 2 ' dir. Örneklerinizin serbest olması birkaç dakika sürer. 
-* Yeni işlem boyutunu ve örnek sayısını seçin. Buradan, tamamlanması 2 saate kadar sürer.
+* İşçi miktarını 2'ye küçültün.  Portaldaki minimum küçülme boyutu 2'dir. Örneklerinizi ele almak birkaç dakika nızı alacaktır. 
+* Yeni işlem boyutunu ve örnek sayısını seçin. Buradan tamamlanması 2 saat kadar sürer.
 
-Uygulamalarınız daha büyük bir işlem kaynağı boyutu gerektiriyorsa, önceki kılavuzdan faydalanabilirsiniz. Bu uygulamaları barındıran çalışan havuzunun boyutunu değiştirmek yerine, başka bir çalışan havuzunu istenen boyutun çalışanları ile doldurabilir ve uygulamalarınızı bu havuza taşıyabilirsiniz.
+Uygulamalarınız daha büyük bir bilgi işlem kaynağı boyutu gerektiriyorsa, önceki kılavuzdan yararlanamazsınız. Bu uygulamaları barındıran çalışan havuzunun boyutunu değiştirmek yerine, başka bir işçi havuzunu istenilen boyuttaki çalışanlarla doldurabilir ve uygulamalarınızı bu havuza taşıyabilirsiniz.
 
-* Gerekli işlem boyutunun ek örneklerini başka bir çalışan havuzunda oluşturun. Bu işlem tamamlanması bir saate kadar sürer.
-* Yeni yapılandırılan çalışan havuzuna daha büyük bir boyut gerektiren uygulamaları barındıran App Service planlarınızı yeniden atayın. Bu işlemin tamamlanması bir dakikadan kısa sürer.  
-* Kullanılmayan örneklere artık ihtiyacınız yoksa ilk çalışan havuzunu ölçeklendirin. Bu işlemin tamamlanabilmesi birkaç dakika sürer.
+* Başka bir alt havuzda gerekli bilgi işlem boyutu ek örnekleri oluşturun. Bu sürenin tamamlanması bir saat kadar sürer.
+* Yeni yapılandırılan alt havuza daha büyük boyut gerektiren uygulamaları barındıran Uygulama Hizmeti planlarınızı yeniden atayın. Bu, tamamlanması bir dakikadan az sürer hızlı bir işlemdir.  
+* Artık kullanılmayan örneklere ihtiyacınız yoksa ilk çalışan havuzunu küçültün. Bu işlemin tamamlanması birkaç dakika sürer.
 
-**Otomatik ölçeklendirme**: işlem kaynağı tüketiminizi yönetmenize yardımcı olabilecek araçlardan biri otomatik ölçeklendiriliyor. Ön uç veya çalışan havuzları için otomatik ölçeklendirmeyi kullanabilirsiniz. Sabah herhangi bir havuz türünün örneklerinizi artırma ve akşam de azaltma gibi işlemleri yapabilirsiniz. Ya da bir çalışan havuzunda kullanılabilir çalışan sayısı belirli bir eşiğin altına düştüğünde örnek ekleyebilirsiniz.
+**Otomatik ölçekleme**: Bilgi işlem kaynak tüketiminizi yönetmenize yardımcı olabilecek araçlardan biri otomatik ölçeklemedir. Ön uç veya çalışan havuzları için otomatik ölçekleme kullanabilirsiniz. Sabahherhangi bir havuz türüörnekleri artırmak ve akşam azaltmak gibi şeyler yapabilirsiniz. Veya belki de bir işçi havuzunda bulunan işçi sayısı belirli bir eşiğin altına düştüğünde örnekler ekleyebilirsiniz.
 
-İşlem kaynak havuzu ölçümlerinin etrafında otomatik ölçeklendirme kuralları ayarlamak istiyorsanız, sağlama zamanının gerektirdiği süreyi aklınızda bulundurun. App Service ortamları otomatik ölçeklendirme hakkında daha fazla ayrıntı için bkz. [App Service ortamı otomatik ölçeklendirmeyi yapılandırma][ASEAutoscale].
+Bilgi işlem kaynak havuzu ölçümleri etrafında otomatik ölçeklendirme kuralları ayarlamak istiyorsanız, sağlamanın gerektirdiği zamanı aklınızda bulundurun. Uygulama Hizmet Ortamlarını otomatik ölçeklendirme hakkında daha fazla bilgi için, [Bir Uygulama Hizmet Ortamında otomatik ölçeklendirmeyi nasıl yapılandırılatır'][ASEAutoscale]a bakın.
 
 ### <a name="storage"></a>Depolama
-Her Ao, 500 GB depolama ile yapılandırılır. Bu alan, Ao 'daki tüm uygulamalarda kullanılır. Bu depolama alanı ATıCı 'in bir parçasıdır ve şu anda depolama alanınızı kullanmak için geçiş yapılamıyor. Sanal ağ yönlendirmesinde veya güvenlik ayarları yapıyorsanız, yine de Azure Storage 'a erişime izin vermeniz gerekir; Aksi takdirde ATıCı çalışamaz.
+Her ASE 500 GB depolama alanı ile yapılandırılmıştır. Bu alan ASE'deki tüm uygulamalarda kullanılır. Bu depolama alanı ASE'nin bir parçasıdır ve şu anda depolama alanınızı kullanmak üzere değiştirilemez. Sanal ağ yönlendirmeveya güvenliğinizde ayarlamalar yapıyorsanız, Azure Depolama'ya erişime izin vermeniz gerekir veya ASE çalışamaz.
 
 ### <a name="database"></a>Database
-Veritabanı, ortamı tanımlayan bilgileri ve içinde çalışan uygulamalar hakkındaki ayrıntıları içerir. Bu, Azure 'da tutulan aboneliğin bir parçasıdır. Doğrudan işleyebilme özelliği olan bir şey değildir. Sanal ağ yönlendirmesinde veya güvenlik ayarları yapıyorsanız, SQL Azure erişime hala izin vermeniz gerekir veya ATıCı çalışamaz.
+Veritabanı, ortamı tanımlayan bilgilerin yanı sıra içinde çalışan uygulamalarla ilgili ayrıntıları da tutar. Bu da Azure tarafından tutulan aboneliğin bir parçasıdır. Bu doğrudan manipüle etme yeteneğine sahip olduğun bir şey değil. Sanal ağ yönlendirmeveya güvenliğinizde ayarlamalar yapıyorsanız, SQL Azure'a erişime izin vermeniz gerekir veya ASE çalışamaz.
 
 ### <a name="network"></a>Ağ
-ASE 'niz ile kullanılan VNet, ASE 'yi oluştururken veya bir süre önce yaptığınız sırada yaptığınız bir tane olabilir. AIN oluşturma sırasında alt ağ oluşturduğunuzda, Ao 'nun sanal ağla aynı kaynak grubunda olmasını zorlar. ASE 'niz tarafından VNet 'iniz tarafından farklı olmak üzere kullanılan kaynak grubuna ihtiyacınız varsa, bir Resource Manager şablonu kullanarak ASE 'nizi oluşturmanız gerekir.
+ASE'nizle birlikte kullanılan VNet, ASE'yi oluşturduğunuzda veya önceden yaptığınız bir tane yken yaptığınız bir tane olabilir. ASE oluşturma sırasında alt ağı oluşturduğunuzda, ASE'yi sanal ağla aynı kaynak grubunda olmaya zorlar. ASE'niz tarafından kullanılan kaynak grubunun VNet'inizinkinden farklı olması gerekiyorsa, bir kaynak yöneticisi şablonu kullanarak ASE'nizi oluşturmanız gerekir.
 
-Sanal ağ üzerinde as için kullanılan bazı kısıtlamalar vardır:
+AsE için kullanılan sanal ağ üzerinde bazı kısıtlamalar vardır:
 
-* Sanal ağ, bölgesel bir sanal ağ olmalıdır.
-* Ao 'un dağıtıldığı 8 veya daha fazla adresi olan bir alt ağ olması gerekir.
-* Bir AI barındırmak için bir alt ağ kullanıldıktan sonra, alt ağın adres aralığı değiştirilemez. Bu nedenle, alt ağın gelecekteki ATıCı büyümeye uyum sağlaması için en az 64 adres içermesi önerilir.
-* Alt ağda başka hiçbir şey olmayabilir, ancak Ao.
+* Sanal ağ bölgesel bir sanal ağ olmalıdır.
+* ASE'nin dağıtıldığı 8 veya daha fazla adrese sahip bir alt ağ olması gerekir.
+* Bir ASE barındırmak için bir alt ağ kullanıldıktan sonra, alt ağın adres aralığı değiştirilemez. Bu nedenle, alt ağ gelecekteki ASE büyümesini karşılamak için en az 64 adres içerir öneririz.
+* Alt ağda ASE'den başka bir şey olamaz.
 
-ASA 'yı içeren barındırılan hizmetin aksine, [sanal ağ][virtualnetwork] ve alt ağ kullanıcı denetimi altındadır.  Sanal ağınızı sanal ağ kullanıcı arabirimi veya PowerShell üzerinden yönetebilirsiniz.  Bir ASE, klasik veya Kaynak Yöneticisi VNet 'e dağıtılabilir.  Portal ve API deneyimleri, klasik ve Kaynak Yöneticisi VNET 'ler arasında biraz farklıdır ancak Ao deneyimi aynıdır.
+ASE içeren barındırılan hizmetin aksine, [sanal ağ][virtualnetwork] ve alt ağ kullanıcı denetimi altındadır.  Sanal ağınızı Sanal Ağ UI veya PowerShell üzerinden yönetebilirsiniz.  Bir ASE, Klasik veya Kaynak Yöneticisi VNet'te dağıtılabilir.  Portal ve API deneyimleri Klasik ve Kaynak Yöneticisi VNets arasında biraz farklıdır, ancak ASE deneyimi aynıdır.
 
-Bir ASE 'yi barındırmak için kullanılan VNet, özel RFC1918 IP adreslerini kullanabilir veya genel IP adreslerini kullanabilir.  RFC1918 (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) kapsamında olmayan bir IP aralığı kullanmak istiyorsanız, ASE oluşturma işlemi öncesinde ASE 'nin kullanacağı VNet ve alt ağınızı oluşturmanız gerekir.
+BIR ASE barındırmak için kullanılan VNet, özel RFC1918 IP adreslerini kullanabilir veya ortak IP adreslerini kullanabilir.  RFC1918 (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) kapsamında olmayan bir IP aralığı kullanmak istiyorsanız, ASE oluşturma öncesinde ASE tarafından kullanılmak üzere VNet ve alt ağınızı oluşturmanız gerekir.
 
-Bu özellik Azure App Service sanal ağınıza yerleştirdiğinden, asa 'da barındırılan uygulamalarınızın artık doğrudan ExpressRoute veya siteden siteye sanal özel ağlar (VPN) üzerinden kullanılabilir hale getirilen kaynaklara erişebilmesini sağlar. App Service Ortamı içindeki uygulamalar, App Service Ortamı barındıran sanal ağın kullanabileceği kaynaklara erişmek için ek ağ özellikleri gerektirmez. Bu, içindeki veya sanal ağınıza bağlı kaynaklara ulaşmak için Sanal Ağ Tümleştirmesi ya da Karma Bağlantılar kullanmanız gerekmediği anlamına gelir. Sanal ağınıza bağlı olmayan ağlardaki kaynaklara erişmek için bu özelliklerden her ikisini de kullanabilirsiniz.
+Bu özellik Azure Uygulama Hizmetini sanal ağınıza yerleştirdiği için, ASE'nizde barındırılan uygulamalarınızın artık ExpressRoute veya siteden siteye sanal özel ağlar (VPN'ler) aracılığıyla kullanılabilen kaynaklara erişebileceği anlamına gelir. Uygulama Hizmet Ortamınızda bulunan uygulamalar, Uygulama Hizmeti Ortamınızı barındıran sanal ağdaki kaynaklara erişmek için ek ağ özellikleri gerektirmez. Bu, sanal ağınızdaki kaynaklara ulaşmak veya sanal ağınıza bağlanmak için VNET Tümleştirmesini veya Hibrit Bağlantıları kullanmanız gerekolmadığı anlamına gelir. Sanal ağınıza bağlı olmayan ağlardaki kaynaklara erişmek için bu özelliklerin her ikisini de kullanmaya devam edebilirsiniz.
 
-Örneğin, aboneliğinizdeki bir sanal ağla tümleştirilecek ancak ATıCı 'nizin bulunduğu sanal ağa bağlı olmayan Sanal Ağ Tümleştirmesi kullanabilirsiniz. Ayrıca, tıpkı normalde olduğu gibi diğer ağlardaki kaynaklara erişmek için Karma Bağlantılar de kullanabilirsiniz.  
+Örneğin, VNET Tümleştirme'yi aboneliğinizde bulunan ancak ASE'nizin içinde olduğu sanal ağa bağlı olmayan bir sanal ağla tümleştirmek için kullanabilirsiniz. Yine de, normalde kullanabileceğiniz gibi diğer ağlardaki kaynaklara erişmek için Karma Bağlantıları da kullanabilirsiniz.  
 
-Sanal ağınızın bir ExpressRoute VPN ile yapılandırılmış olması durumunda, bir ATıCı 'nin sahip olduğu bazı yönlendirme ihtiyaçlarını bilmelisiniz. ASA ile uyumlu olmayan bazı Kullanıcı tanımlı yol (UDR) yapılandırması vardır. ExpressRoute ile bir sanal ağda ATıCı çalıştırma hakkında daha fazla bilgi için bkz. [ExpressRoute ile sanal bir ağda App Service ortamı çalıştırma][ExpressRoute].
+Sanal ağınızı ExpressRoute VPN ile yapılandırMışsanız, bir ASE'nin bazı yönlendirme gereksinimlerinin farkında olmalısınız. Ase ile uyumsuz bazı kullanıcı tanımlı rota (UDR) yapılandırmaları vardır. ExpressRoute ile sanal ağda ASE çalıştırma hakkında daha fazla bilgi için [ExpressRoute ile sanal ağda Uygulama Hizmeti Ortamı Çalıştırma'ya][ExpressRoute]bakın.
 
-#### <a name="securing-inbound-traffic"></a>Gelen trafiğin güvenliğini sağlama
-Ao size gelen trafiği denetlemek için iki birincil yöntem vardır.  Ağ güvenlik grupları 'nı (NSG 'ler) kullanarak, [bir App Service ortamı gelen trafiği denetleme hakkında](app-service-app-service-environment-control-inbound-traffic.md) burada açıklandığı gibi, Ao 'NIZE hangi IP adreslerinin erişebileceğini denetleyebilir ve atıcı 'Nizi bir iç Load Balancer (ILB) ile de yapılandırabilirsiniz.  Bu özellikler, NSG 'leri kullanarak erişimi ıLB Ace 'nize kısıtlamak istiyorsanız da birlikte kullanılabilir.
+#### <a name="securing-inbound-traffic"></a>Gelen trafiği güvence altına alma
+ASE'nize gelen trafiği denetlemek için iki ana yöntem vardır.  Bir [Uygulama Hizmet Ortamında gelen trafiği nasıl kontrol edebilirsiniz](app-service-app-service-environment-control-inbound-traffic.md) ve ayrıca bir İç Yük Dengeleyicisi (ILB) ile ASE'nizi yapılandırmak için, burada açıklandığı gibi HANGI IP adreslerinin ASE'nize erişebileceğini denetlemek için Ağ Güvenlik Grupları'nı (NSGs) kullanabilirsiniz.  NSG'leri kullanarak ILB ASE'nize erişimi kısıtlamak istiyorsanız, bu özellikler birlikte de kullanılabilir.
 
-Bir ASE oluşturduğunuzda, VNet 'iniz içinde bir VIP oluşturur.  Harici ve dahili olmak üzere iki VIP türü vardır.  Bir dış VIP ile Ao oluşturduğunuzda, Ao 'daki uygulamalarınız internet yönlendirilebilir IP adresi aracılığıyla erişilebilir olacaktır. Dahili ' ı seçtiğinizde, Ao 'niz bir ıLB ile yapılandırılır ve doğrudan internet 'e erişilemeyecektir.  ILB Ao, hala bir dış VIP gerektirir, ancak yalnızca Azure yönetim ve bakım erişimi için kullanılır.  
+Bir ASE oluşturduğunuzda, VNet'inizde bir VIP oluşturur.  İki VIP türü vardır, dış ve iç.  Harici bir VIP ile bir ASE oluşturduğunuzda, ASE'nizdeki uygulamalara internet üzerinden bir IP adresi üzerinden erişebilirsiniz. Dahili'yi seçtiğinizde ASE'niz bir ILB ile yapılandırılacaktır ve doğrudan interneterişimine sahip olmayacaktır.  ILB ASE hala harici bir VIP gerektirir, ancak yalnızca Azure yönetimi ve bakım erişimi için kullanılır.  
 
-ILB AI oluşturma sırasında ıLB Ao tarafından kullanılan alt etki alanını sağlarsınız ve belirttiğiniz alt etki alanı için kendi DNS 'nizi yönetmeniz gerekecektir.  Alt etki alanı adını ayarladığınız için, HTTPS erişimi için kullanılan sertifikayı da yönetmeniz gerekir.  AS oluşturulduktan sonra sertifikayı sağlamanız istenir.  Bir [App Service ortamı Ile iç Load Balancer kullanarak][ILBASE]bir ıLB atıcı oluşturma ve kullanma hakkında daha fazla bilgi edinmek için. 
+ILB ASE oluşturma sırasında ILB ASE tarafından kullanılan alt etki alanını sağlarsınız ve belirttiğiniz alt etki alanı için kendi DNS'nizi yönetmek zorunda kalırsınız.  Alt alan adını ayarladığınızdan, HTTPS erişimi için kullanılan sertifikayı yönetmeniz gerekir.  ASE oluşturulduktan sonra sertifikayı sağlamanız istenir.  ILB ASE oluşturma ve kullanma hakkında daha fazla bilgi edinmek için [Uygulama Hizmet Ortamına sahip Dahili Yük Dengeleyicisi'ni][ILBASE]kullanma'yı okuyun. 
 
 ## <a name="portal"></a>Portal
-Azure portal Kullanıcı arabirimini kullanarak App Service Ortamı yönetebilir ve izleyebilirsiniz. Ao 'niz varsa, büyük olasılıkla Kenar çubuğunuzu App Service sembolünü görürsünüz. Bu simge, Azure portal App Service ortamlarını temsil etmek için kullanılır:
+Azure portalındaki Kullanıcı Arabirimi'ni kullanarak Uygulama Hizmeti Ortamınızı yönetebilir ve izleyebilirsiniz. BIR ASE'niz varsa, kenar çubuğunuzda Uygulama Hizmeti simgesini görme olasılığınız yüksektir. Bu sembol, Azure portalındaki Uygulama Hizmeti Ortamlarını temsil etmek için kullanılır:
 
-![App Service Ortamı simgesi][1]
+![Uygulama Hizmet Ortamı simgesi][1]
 
-App Service ortamlarınızın tümünü listeleyen Kullanıcı arabirimini açmak için simgeyi kullanabilir veya App Service ortamları seçmek için kenar çubuğunun altındaki köşeli çift ayracı (">" simgesini) seçebilirsiniz. Listelenen Aprlerden birini seçerek, izlemek ve yönetmek için kullanılan Kullanıcı arabirimini açarsınız.
+Tüm Uygulama Hizmet Ortamlarınızı listeleyen UI'yi açmak için simgeyi kullanabilir veya Uygulama Hizmet Ortamlarını seçmek için kenar çubuğunun altındaki köşeli (>" simgesini) seçebilirsiniz. Listelenen AsEs birini seçerek, izlemek ve yönetmek için kullanılan Kullanıcı Aracı'nı açarsınız.
 
-![App Service Ortamı izlemek ve yönetmek için Kullanıcı arabirimi][2]
+![Uygulama Hizmet Ortamınızı izlemek ve yönetmek için kullanıcı arabirimi][2]
 
-Bu ilk dikey pencere, kaynak havuzu başına bir ölçüm grafiği ile birlikte Ao 'nizin bazı özelliklerini gösterir. **Essentials** bloğunda gösterilen özelliklerden bazıları Ayrıca onunla ilişkili dikey pencerenin açılacağı köprülerdir. Örneğin, ATıCı 'nizin üzerinde çalıştığı sanal ağla ilişkili kullanıcı arabirimini açmak için **sanal ağ** adını seçebilirsiniz. **Planlar** ve **uygulamalar** App Service, Ao 'da bulunan bu öğeleri listelemek için her bir açılır dikey pencere.  
+Bu ilk bıçak, kaynak havuzu başına bir metrik grafikle birlikte ASE'nizin bazı özelliklerini gösterir. **Essentials** bloğunda gösterilen özelliklerden bazıları, bıçağın ilişkili olduğu şekilde açılacak köprülerdir. Örneğin, ASE'nizin içinde çalıştığınız sanal ağla ilişkili Kullanıcı Arabirimi'ni açmak için **Sanal Ağ** adını seçebilirsiniz. **Uygulama Hizmeti planları** ve **Uygulamalarıher** ase içinde bu öğeleri listeleyen bıçakları açılır.  
 
 ### <a name="monitoring"></a>İzleme
-Grafikler, her kaynak havuzunda çeşitli performans ölçümlerini görmenizi sağlar. Ön uç havuzu için Ortalama CPU ve belleği izleyebilirsiniz. Çalışan havuzlarında, kullanılan miktarı ve kullanılabilir miktarı izleyebilirsiniz.
+Grafikler, her kaynak havuzunda çeşitli performans ölçümleri görmenizi sağlar. Ön uç havuzu için ortalama CPU ve belleği izleyebilirsiniz. Alt havuzlar için, kullanılan miktarı ve kullanılabilir miktarı izleyebilirsiniz.
 
-Birden çok App Service planı, çalışan havuzundaki çalışanları kullanabilir. İş yükü, ön uç sunucularıyla aynı şekilde dağıtılmaz, bu nedenle CPU ve bellek kullanımı yararlı bilgiler açısından pek çok sağlamaz. Ne kadar çalışan ve bu sistemi başkalarının kullanması için yönetiyorsanız, kaç çalışanın kullanıldığını ve kullanılabildiğini izlemek daha önemlidir.  
+Birden çok Uygulama Hizmeti planı, çalışanların bir işçi havuzunda kullanılmasını sağlayabilir. İş yükü ön uç sunucularla aynı şekilde dağıtılmaz, bu nedenle CPU ve bellek kullanımı yararlı bilgiler konusunda çok fazla bilgi sağlamaz. Özellikle bu sistemi başkalarının kullanması için yönetiyorsanız, kaç işçi kullandığınızı ve kullanılabilir olduğunuzu izlemek daha önemlidir.  
 
-Uyarıları ayarlamak için grafiklerde izlenebilecek tüm ölçümleri de kullanabilirsiniz. Uyarıları ayarlama, App Service ile aynı şekilde çalışır. **Uyarılar** kullanıcı arabiriminden bir uyarı ayarlayabilir veya herhangi bir ölçüm Kullanıcı arabirimine detaya giderek **Uyarı Ekle**' ye seçim yapabilirsiniz.
+Uyarıları ayarlamak için grafiklerde izlenebilen tüm ölçümleri de kullanabilirsiniz. Burada uyarı lar ayarlamak, App Service'in diğer yerlerinde olduğu gibi çalışır. **Uyarılar** UI bölümünden veya herhangi bir ölçüm ui'sini delmekten ve **Uyarı Ekle'yi**seçerek bir uyarı ayarlayabilirsiniz.
 
-![Ölçümler Kullanıcı arabirimi][3]
+![Ölçümler UI][3]
 
-Yeni tartışılan ölçümler App Service Ortamı ölçümleridir. App Service plan düzeyinde kullanılabilen ölçümler de vardır. Bu, CPU ve bellek izlemenin çok daha anlamlı olmasını sağlar.
+Az önce tartışılan ölçümler, Uygulama Hizmeti Ortamı ölçümleridir. Uygulama Hizmeti planı düzeyinde kullanılabilen ölçümler de vardır. Cpu ve bellek izleme çok mantıklı olduğu yerdir.
 
-Bir Ao 'da, tüm App Service planları adanmış App Service planlardır. Diğer bir deyişle, bu App Service planına ayrılan konaklarda çalışan uygulamalar bu App Service planındaki uygulamalardır. App Service planınızdaki ayrıntıları görmek için, Ao Kullanıcı arabirimindeki listelerden veya **göz at App Service planlarındaki** listelerden herhangi birinden App Service planınızı alın (bunların tümünü listeler).   
+Bir ASE'de, tüm Uygulama Hizmeti planları özel App Service planlarıdır. Bu, bu Uygulama Hizmeti planına tahsis edilen ana bilgisayarlarda çalışan tek uygulamanın, bu Uygulama Hizmeti planındaki uygulamalar olduğu anlamına gelir. Uygulama Hizmeti planınızdaki ayrıntıları görmek için, ASE UI'deki listelerden veya **Uygulama Hizmetine Gözat planlarından** (hepsini listeleyen) Uygulama Hizmeti planınızı getirin.   
 
 ### <a name="settings"></a>Ayarlar
-ATıCı dikey penceresinde, birkaç önemli özelliği içeren bir **Ayarlar** bölümü vardır:
+ASE bıçağının içinde, birkaç önemli özellik içeren bir **Ayarlar** bölümü vardır:
 
-**Ayarlar** > **Özellikler**: Ao dikey penceresini getirdiğinizde **Ayarlar** dikey penceresi otomatik olarak açılır. Üst kısımdaki **Özellikler**. Burada, **temel**Özellikler 'de gördüklerinizle yedekli olan, ancak **sanal IP adresinin**yanı sıra **giden IP adreslerinden**çok yararlı olan birçok öğe vardır.
+**Ayarlar** > **Özellikleri**: ASE bıçağınızı açtığınızda **Ayarlar** bıçağı otomatik olarak açılır. Üstte **Properties**olduğunu. **Burada Essentials**ne gördüğünüze gereksiz öğeleri bir dizi vardır, ama ne çok yararlı **Sanal IP Adresi**, hem de Giden IP **Adresleri**.
 
-![Ayarlar dikey penceresi ve özellikleri][4]
+![Ayarlar blade ve Özellikleri][4]
 
-**Ayarlar** > **IP adresleri**: ao uygulamanızda BIR IP Güvenli Yuva Katmanı (SSL) uygulaması oluşturduğunuzda, bir IP SSL adresine ihtiyacınız vardır. Bir tane elde etmek için, Ao 'un ayrılabileceği, sahip olduğu adreslere IP SSL gerekir. Bir Ao oluşturulduğunda, bu amaç için bir IP SSL adresi vardır, ancak daha fazla bilgi ekleyebilirsiniz. [App Service fiyatlandırması][AppServicePricing] (SSL bağlantıları üzerindeki bölümde) gösterildiği gibi ek IP SSL adresler için ücretlendirilir. Ek fiyat IP SSL fiyatıdır.
+**Ayarlar** > **IP Adresleri**: ASE'nizde bir IP Secure Sockets Layer (SSL) uygulaması oluşturduğunuzda bir IP SSL adresine ihtiyacınız vardır. Bir tane elde etmek için, ASE'nizin sahip olduğu ve tahsis edilebilen IP SSL adreslerine ihtiyacı vardır. Bir ASE oluşturulduğunda, bu amaç için bir IP SSL adresi vardır, ancak daha fazlasını ekleyebilirsiniz. [App Service fiyatlandırmasında][AppServicePricing] (SSL bağlantıları bölümünde) gösterildiği gibi ek IP SSL adresleri için bir ücret alınr. Ek fiyat IP SSL fiyatıdır.
 
-**Ayarlar** > **ön uç havuzu** / **çalışan havuzları**: Bu kaynak havuzu dikey pencerelerinin her biri, kaynak havuzunu tamamen ölçeklendirmeye yönelik denetimler sağlamaya ek olarak, yalnızca o kaynak havuzundaki bilgileri görmenizi sağlar.  
+**Ayarlar** > **Ön Uç Havuz** / **Çalışma Havuzları**: Bu kaynak havuzu bıçaklarının her biri, bu kaynak havuzunu tam olarak ölçeklendirmek için denetim sağlamanın yanı sıra yalnızca bu kaynak havuzundaki bilgileri görme olanağı sunar.  
 
-Her kaynak havuzu için temel dikey pencere, bu kaynak havuzu için ölçümleri olan bir grafik sağlar. Ao dikey penceresindeki grafiklerle tıpkı olduğu gibi, grafiğe gidebilir ve uyarıları istediğiniz gibi ayarlayabilirsiniz. Belirli bir kaynak havuzu için AKEN dikey penceresinden bir uyarı ayarlanması, kaynak havuzundan yaptığı gibi aynı şeyi yapar. Çalışan havuzu **ayarları** dikey penceresinde bu çalışan havuzunda çalışan tüm uygulamalara veya App Service planlara erişebilirsiniz.
+Her kaynak havuzu için temel bıçak, bu kaynak havuzu için ölçümleriçeren bir grafik sağlar. Ase bıçağındaki grafiklerde olduğu gibi, grafiğe girip istediğiniz uyarıları ayarlayabilirsiniz. Belirli bir kaynak havuzu için ASE bıçağından bir uyarı ayarlamak, kaynak havuzundan yapmakla aynı şeyi yapar. İşçi havuzu **Ayarları** bıçağından, bu alt havuzda çalışan tüm Uygulamalar veya Uygulama Hizmeti planlarına erişebilirsiniz.
 
-![Çalışan havuzu ayarları kullanıcı arabirimi][5]
+![İşçi havuzu ayarları UI][5]
 
-### <a name="portal-scale-capabilities"></a>Portal ölçek özellikleri
-Üç ölçeklendirme işlemi vardır:
+### <a name="portal-scale-capabilities"></a>Portal ölçeği özellikleri
+Üç ölçekli işlem vardır:
 
-* Ao 'da IP SSL kullanımı için kullanılabilen IP adreslerinin sayısını değiştirme.
-* Kaynak havuzunda kullanılan işlem kaynağının boyutunu değiştirme.
-* Kaynak havuzunda kullanılan işlem kaynaklarının sayısını el ile veya otomatik ölçeklendirmeyle değiştirme.
+* ASE'de IP SSL kullanımı için kullanılabilen IP adreslerinin sayısını değiştirme.
+* Kaynak havuzunda kullanılan bilgi işlem kaynağının boyutunu değiştirme.
+* Kaynak havuzunda el ile veya otomatik olarak kullanılan bilgi işlem kaynaklarının sayısını değiştirme.
 
-Portalda, kaynak Havuzlarınızda kaç tane sunucu olduğunu denetlemek için üç yol vardır:
+Portalda, kaynak havuzlarınızda kaç sunucu olduğunu denetlemenin üç yolu vardır:
 
-* Üstteki ana Ao dikey penceresinden bir ölçeklendirme işlemi. Ön uç ve çalışan havuzlarında birden çok ölçek yapılandırma değişikliği yapabilirsiniz. Hepsi tek bir işlem olarak uygulanır.
-* **Ayarlar**altında olan ayrı kaynak havuzu **Ölçek** dikey penceresinden el ile ölçeklendirme işlemi.
-* Ayrı kaynak havuzu **Ölçek** dikey penceresinden ayarladığınız otomatik ölçeklendirme.
+* Üstteki ana ASE bıçağından bir ölçek işlemi. Ön uç ve alt havuzlarıiçin birden çok ölçek yapılandırma değişiklikleri yapabilirsiniz. Hepsi tek bir işlem olarak uygulanır.
+* **Ayarlar**altında olan tek tek kaynak havuzu **Ölçek** lendirme bıçağından el ile ölçeklendirme işlemi.
+* Tek tek kaynak havuzu **Ölçek** bıçaktan ayarladığınız otomatik ölçeklendirme.
 
-AI dikey penceresinde ölçek işlemini kullanmak için kaydırıcıyı istediğiniz miktara sürükleyin ve kaydedin. Bu Kullanıcı arabirimi, boyutun değiştirilmesini de destekler.  
+ASE bıçağındaki ölçek işlemini kullanmak için kaydırıcıyı istediğiniz miktara sürükleyin ve kaydedin. Bu UI, boyutu değiştirmeyi de destekler.  
 
-![Ölçek Kullanıcı arabirimi][6]
+![Ölçek UI][6]
 
-Belirli bir kaynak havuzundaki el ile veya otomatik ölçeklendirme yeteneklerini kullanmak için, **ayarlar** > **ön uç havuzu** / **çalışan havuzlarıyla** uygun şekilde gidin. Sonra değiştirmek istediğiniz havuzu açın. **Ölçek büyütme veya** **Ayarlar** > **ölçeği yukarı** ** > ayarlar '** a gidin. **Ölçek Genişletme** dikey penceresi, örnek miktarını denetlemenize olanak sağlar. **Ölçeği artırma** , kaynak boyutunu denetlemenizi sağlar.  
+Belirli bir kaynak havuzunda el kitabı veya otomatik ölçeklendirme özelliklerini kullanmak için, uygun şekilde **Ayarlar** > **Ön Uç Havuzu** / **Alt Havuzları'na** gidin. Sonra değiştirmek istediğiniz havuzu açın. **Ayarlar** > **Ölçeğine** gidin veya **Ayarlar** > **Ölçeklendirin.** **Scale Out** blade, örnek miktarını kontrol etmenizi sağlar. **Ölçeklendirme,** kaynak boyutunu denetlemenize olanak tanır.  
 
-![Ölçek ayarları kullanıcı arabirimi][7]
+![Ölçek ayarları UI][7]
 
-## <a name="fault-tolerance-considerations"></a>Hataya dayanıklılık konuları
-Bir App Service Ortamı toplam 55 işlem kaynağını kullanacak şekilde yapılandırabilirsiniz. Bu 55 işlem kaynaklarından, iş yüklerini barındırmak için yalnızca 50 kullanılabilir. Bunun nedeni, Twofold 'dir. En az 2 ön uç işlem kaynağı vardır.  Bu, çalışan havuzu ayırmayı desteklemek için 53 'e kadar kalır. Hata toleransı sağlamak için, aşağıdaki kurallara göre ayrılan ek bir işlem kaynağınız olması gerekir:
+## <a name="fault-tolerance-considerations"></a>Hata toleransı hususları
+Bir Uygulama Hizmet Ortamını en fazla 55 toplam bilgi işlem kaynağı kullanacak şekilde yapılandırabilirsiniz. Bu 55 işlem kaynağından yalnızca 50'si iş yüklerini barındırmak için kullanılabilir. Bunun nedeni iki yönlüdür. En az 2 ön uç işlem kaynağı vardır.  Bu da işçi havuzu tahsisini desteklemek için 53'e kadar kalıyor. Hata toleransı sağlamak için, aşağıdaki kurallara göre ayrılmış ek bir bilgi işlem kaynağına sahip olmanız gerekir:
 
-* Her çalışan havuzunun, bir iş yüküne atanmak için kullanılamayan en az 1 ek işlem kaynağı olması gerekir.
-* Bir çalışan havuzundaki işlem kaynakları miktarı belirli bir değere geçtiğinde, hata toleransı için başka bir hesaplama kaynağı gerekir. Bu, ön uç havuzundaki durum değildir.
+* Her alt havuz, iş yükü atanmak için kullanılamayan en az 1 ek bilgi işlem kaynağına ihtiyaç duyar.
+* Bir alt havuzdaki bilgi işlem kaynaklarının miktarı belirli bir değerin üzerine çıktığında, hata toleransı için başka bir işlem kaynağı gerekir. Ön uç havuzunda durum böyle değil.
 
-Tek bir çalışan havuzunda, hata toleransı gereksinimleri, bir çalışan havuzuna atanan belirli bir X kaynakları değeri için kullanılır:
+Herhangi bir tek işçi havuzunda, hata toleransı gereksinimleri, bir işçi havuzuna atanan X kaynaklarının belirli bir değeri için şunlardır:
 
-* X 2 ila 20 arasındaysa, iş yükleri için kullanabileceğiniz kullanılabilir işlem kaynakları miktarı X-1 ' dir.
-* X 21 ile 40 arasındaysa, iş yükleri için kullanabileceğiniz kullanılabilir işlem kaynakları miktarı X-2 ' dir.
-* X 41 ve 53 arasındaysa, iş yükleri için kullanabileceğiniz kullanılabilir işlem kaynakları miktarı X-3 ' dir.
+* X 2 ile 20 arasındaysa, iş yükleri için kullanabileceğiniz kullanılabilir hesaplama kaynaklarının miktarı X-1'dir.
+* X 21 ile 40 arasındaysa, iş yükleri için kullanabileceğiniz kullanılabilir işlem kaynaklarının miktarı X-2'dir.
+* X 41 ile 53 arasındaysa, iş yükleri için kullanabileceğiniz kullanılabilir işlem kaynaklarının miktarı X-3'tür.
 
-En küçük parmak izi 2 ön uç sunucu ve 2 çalışan içerir.  Yukarıdaki deyimleri daha sonra açıklığa kavuşturacak birkaç örnek aşağıda verilmiştir:  
+Minimum ayak izi 2 ön uç sunucuve 2 işçi vardır.  Yukarıdaki ifadeler ile daha sonra, burada açıklığa kavuşturmak için birkaç örnek vardır:  
 
-* Tek bir havuzda 30 çalışanunuz varsa, iş yüklerini barındırmak için 28 ' i kullanabilirsiniz.
-* Tek bir havuzda 2 çalışanunuz varsa, iş yüklerini barındırmak için 1 kullanılabilir.
-* Tek bir havuzda 20 çalışan varsa, iş yüklerini barındırmak için 19 kullanılabilir.  
-* Tek bir havuzda 21 çalışanunuz varsa, iş yüklerini barındırmak için yine de yalnızca 19 kullanılabilir.  
+* Tek bir havuzda 30 çalışanVarsa, bunların 28'i iş yüklerini barındırmak için kullanılabilir.
+* Tek bir havuzda 2 çalışanVarsa, iş yüklerini barındırmak için 1 kullanılabilir.
+* Tek bir havuzda 20 çalışanVarsa, iş yüklerini barındırmak için 19 çalışan kullanılabilir.  
+* Tek bir havuzda 21 çalışanVarsa, iş yüklerini barındırmak için yalnızca 19 kişi kullanılabilir.  
 
-Hataya dayanıklı en önemli değer önemlidir, ancak belirli eşiklerin üzerinde ölçeklendirerek bunu göz önünde bulundurmanız gerekir. 20 örneklerden daha fazla kapasite eklemek istiyorsanız 22 veya daha yüksek bir değere giderek 21 daha fazla kapasite eklemez. Aynı değer, kapasiteyi ekleyen bir sonraki sayının 42 ' den sonra da 40 geçerlidir.  
+Hata toleransı yönü önemlidir, ancak belirli eşiklerin üzerinde ölçeklendirilirken bunu aklınızda tutmanız gerekir. 20 örnekten daha fazla kapasite eklemek istiyorsanız, 21 daha fazla kapasite eklemediği için 22 veya daha yüksek bir kapasiteye gidin. Aynı şey 40'ın üzerine çıkarsa, kapasite katan bir sonraki sayı 42'dir.  
 
-## <a name="deleting-an-app-service-environment"></a>App Service Ortamı silme
-Bir App Service Ortamı silmek istiyorsanız, App Service Ortamı dikey pencerenin en üstündeki **silme** eylemini kullanmanız yeterlidir. Bunu yaptığınızda, gerçekten bunu yapmak istediğinizi onaylamak için App Service Ortamı adını girmeniz istenir. Bir App Service Ortamı sildiğinizde, içindeki içeriğin tümünü de sildiğini unutmayın.  
+## <a name="deleting-an-app-service-environment"></a>Uygulama Hizmet Ortamını Silme
+Bir Uygulama Hizmet Ortamını silmek istiyorsanız, App Service Environment bıyıcunun üst kısmındaki **Silme** eylemini kullanmanız yeterlidir. Bunu yaptığınızda, bunu gerçekten yapmak istediğinizi doğrulamak için Uygulama Hizmet Ortamınızın adını girmeniz istenir. Bir Uygulama Hizmet Ortamını sildiğinizde, içindeki tüm içeriği de sildiğinizi unutmayın.  
 
-![App Service Ortamı Kullanıcı arabirimini silme][9]  
+![Uygulama Hizmeti Ortamı Kullanıcı Yı Silme][9]  
 
-## <a name="getting-started"></a>Başlangıç
-App Service ortamları ile çalışmaya başlamak için bkz. [nasıl App Service ortamı oluşturma](app-service-web-how-to-create-an-app-service-environment.md).
+## <a name="getting-started"></a>Başlarken
+Uygulama Hizmet Ortamlarına başlamak için [Uygulama Hizmeti Ortamı'nı nasıl oluşturabilirsiniz'a](app-service-web-how-to-create-an-app-service-environment.md)bakın.
 
 [!INCLUDE [app-service-web-try-app-service](../../../includes/app-service-web-try-app-service.md)]
 

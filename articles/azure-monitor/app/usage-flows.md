@@ -1,95 +1,95 @@
 ---
-title: Azure Application Insights 'de Kullanıcı Akışları Kullanıcı gezinti desenlerini analiz edin | Microsoft docs
-description: Kullanıcıların Web uygulamanızın sayfaları ve özellikleri arasında nasıl gezinmesini analiz edin.
+title: Azure Uygulama Öngörüleri'nde Kullanıcı Akışları ile kullanıcı gezinti modellerini analiz edin | Microsoft dokümanlar
+description: Kullanıcıların web uygulamanızın sayfaları ve özellikleri arasında nasıl gezinip gezinebildiğini analiz edin.
 ms.topic: conceptual
 author: NumberByColors
 ms.author: daviste
 ms.date: 01/24/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: a4a81a3e4c5759e444836162319abb97d83a4c74
-ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/27/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "77671078"
 ---
-# <a name="analyze-user-navigation-patterns-with-user-flows-in-application-insights"></a>Application Insights Kullanıcı Akışları Kullanıcı gezinti desenlerini analiz etme
+# <a name="analyze-user-navigation-patterns-with-user-flows-in-application-insights"></a>Uygulama Öngörülerinde Kullanıcı Akışları ile kullanıcı gezinti modellerini analiz edin
 
-![Application Insights Kullanıcı Akışları aracı](./media/usage-flows/00001-flows.png)
+![Uygulama Öngörüleri Kullanıcı Akışları aracı](./media/usage-flows/00001-flows.png)
 
-Kullanıcı Akışları Araç, kullanıcıların sitenizin sayfaları ve özellikleri arasında nasıl gezineceğini görselleştirir. Şunun gibi sorulara yanıt vermek harika olur:
+Kullanıcı Akışları aracı, kullanıcıların sitenizin sayfaları ve özellikleri arasında nasıl gezinenleri görselleştirir. Bu gibi sorulara cevap için harika:
 
-* Kullanıcılar sitenizdeki bir sayfadan uzaklaşmak ister misiniz?
-* Kullanıcılar sitenizdeki bir sayfaya ne tıklasın?
-* Kullanıcıların sitenizdeki en iyi şekilde dalgalanma yerleri nerede?
-* Kullanıcıların aynı eylemi ve üzerinde yineleneceği konumlar var mı?
+* Kullanıcılar sitenizdeki bir sayfadan nasıl uzaklaşıyor?
+* Kullanıcılar sitenizdeki bir sayfaya ne tıklar?
+* Kullanıcıların sitenizden en çok çalkaladığı yerler nerede?
+* Kullanıcıların aynı eylemi tekrar tekrar tekrarladığı yerler var mı?
 
-Kullanıcı Akışları Aracı, belirttiğiniz ilk sayfa görünümü, özel olay veya özel durumdan başlar. Bu ilk olay verildiğinde, Kullanıcı Akışları Kullanıcı oturumları sırasında ve daha sonra gerçekleşen olayları gösterir. Değişen kalınlıkta çizgiler, her bir yolun Kullanıcı tarafından kaç kez izlendiði gösterilmektedir. Özel **oturum başlatma** düğümleri sonraki düğümlerin bir oturumu başladığını gösterir. **Oturum sona ermiş** düğümler, önceki düğümden sonra kullanıcıların büyük olasılıkla sitenizi nerede kapatmış olduğunu vurgulamada kaç kullanıcının sayfa görünümü veya özel olay gönderdiğini gösterir.
+Kullanıcı Akışları aracı, belirttiğiniz ilk sayfa görünümünden, özel olaydan veya özel durumla başlar. Bu ilk olay göz önüne alındığında, Kullanıcı Akışları kullanıcı oturumları sırasında önce ve sonra meydana gelen olayları gösterir. Değişen kalınlıkta çizgiler, her yolun kullanıcılar tarafından kaç kez izlandığını gösterir. Özel **Oturum Başlangıç** düğümleri sonraki düğümlerin oturumun başladığı yeri gösterir. **Oturum Sonu** düğümleri, bir önceki düğümden sonra kaç kullanıcının sayfa görüntülemesi veya özel olaylar göndermedığını göstererek, kullanıcıların sitenizi büyük olasılıkla nerede bıraktığını vurgular.
 
 > [!NOTE]
-> Application Insights kaynağınız Kullanıcı Akışları aracını kullanmak için sayfa görünümleri veya özel olaylar içermelidir. [Uygulamanızı, Application Insights JavaScript SDK 'sı ile otomatik olarak sayfa görünümlerini toplamak üzere ayarlamayı öğrenin](../../azure-monitor/app/javascript.md).
+> Uygulama Öngörüleri kaynağınız, Kullanıcı Akışları aracını kullanmak için sayfa görünümleri veya özel olaylar içermelidir. [Application Insights JavaScript SDK ile sayfa görünümlerini otomatik olarak toplamak için uygulamanızı nasıl ayarlayabilirsiniz](../../azure-monitor/app/javascript.md)öğrenin.
 >
 >
 
-## <a name="start-by-choosing-an-initial-event"></a>İlk olay seçerek başlayın
+## <a name="start-by-choosing-an-initial-event"></a>İlk etkinlik seçerek başlayın
 
 ![Kullanıcı Akışları için bir başlangıç olayı seçin](./media/usage-flows/00002-flows-initial-event.png)
 
-Kullanıcı Akışları aracı ile soruları cevaplamak için, görselleştirme için başlangıç noktası olarak kullanılacak bir başlangıç sayfası görünümü, özel olay veya özel durum seçin:
+Kullanıcı Akışları aracıyla soruları yanıtlamaya başlamak için, görselleştirmenin başlangıç noktası olarak hizmet vermek için bir başlangıç sayfası görünümü, özel olay veya özel durum seçin:
 
-1. **Kullanıcıların yaptığı şeyler...?** başlığı altında bulunan bağlantıya tıklayın veya **Düzenle** düğmesine tıklayın.
-2. **İlk olay** açılan listesinden bir sayfa görünümü, özel olay veya özel durum seçin.
-3. **Grafik oluştur**' a tıklayın.
+1. **Kullanıcılar sonra ne yapar bağlantıtıklayın...?** başlığı, ya da **Edit** düğmesini tıklatın.
+2. **İlk olay** açılır sayfasından bir sayfa görünümü, özel olay veya özel durum seçin.
+3. **Grafik Oluştur'u**tıklatın.
 
-Görselleştirmenin "Adım 1" sütunu, kullanıcıların ilk olaydan en çok ne kadar sıklıkla olduğunu, en çok en az sıklıkta sıralı olduğunu gösterir. "2. adım" ve sonraki sütunlarda kullanıcıların, sitenizde gezindiği tüm yollarla bir resim oluşturulması, bundan sonra ne olduğunu gösterir.
+Görselleştirmenin "Adım 1" sütunu, kullanıcıların ilk olaydan hemen sonra en sık ne yaptığını gösterir ve en sık en sık en sık yukarıdan aşağıya doğru sıralanır. "Adım 2" ve sonraki sütunlar, kullanıcıların sitenizde gezinmelerinin tüm yollarının resmini oluşturarak, kullanıcıların bundan sonra ne yaptığını gösterir.
 
-Varsayılan olarak Kullanıcı Akışları Aracı, sitenizdeki sayfa görünümlerinin ve özel olayların yalnızca son 24 saatini rastgele olarak örnekler. Düzenleme menüsünde rastgele örnekleme için zaman aralığını artırabilir ve performans ve doğruluk dengelemesini değiştirebilirsiniz.
+Varsayılan olarak, Kullanıcı Akışları aracı sitenizden yalnızca son 24 saatlik sayfa görüntülemeve özel olayı rasgele örnekler. Zaman aralığını artırabilir ve Edit menüsünde rasgele örnekleme için performans ve doğruluk dengesini değiştirebilirsiniz.
 
-Sayfa görünümlerinden bazıları, özel olaylar ve özel durumlar sizin için uygun değilse, gizlemek istediğiniz düğümlerdeki **X** öğesine tıklayın. Gizlemek istediğiniz düğümleri seçtikten sonra görselleştirmenin altındaki **grafik oluştur** düğmesine tıklayın. Gizlediğiniz tüm düğümleri görmek için **Düzenle** düğmesine tıklayın ve **Dışlanan olaylar** bölümüne bakın.
+Bazı sayfa görünümleri, özel olaylar ve özel durumlar sizinle alakalı değilse, gizlemek istediğiniz düğümlerde **X'i** tıklatın. Gizlemek istediğiniz düğümleri seçtikten sonra, visualization'ın altındaki **Grafik Oluştur** düğmesini tıklatın. Gizlediğiniz düğümlerin tümünün görülmesi **için, Edit** düğmesini tıklatın ve ardından **Dışlanan olaylar** bölümüne bakın.
 
-Görselleştirme üzerinde görmeyi beklediğinizi sayfa görünümleri veya özel olaylar eksikse:
+Görselleştirmede görmeyi beklediğiniz sayfa görünümleri veya özel olaylar eksikse:
 
-* **Düzenleme** menüsündeki **Dışlanan olaylar** bölümünü denetleyin.
-* Görselleştirmelere daha az sık olaylar eklemek için **diğer** düğümlerdeki artı düğmelerini kullanın.
-* Beklenen sayfa görünümü veya özel olay, kullanıcılar tarafından nadiren gönderiliyorsa, **düzenleme** menüsünde görselleştirmenin zaman aralığını artırmayı deneyin.
-* İstediğiniz sayfa görünümü, özel olay veya özel durumun, sitenizin kaynak kodunda Application Insights SDK tarafından toplanmaya ayarlandığından emin olun. [Özel olayları toplama hakkında daha fazla bilgi edinin.](../../azure-monitor/app/api-custom-events-metrics.md)
+* Edit menüsündeki **Dışlanan olaylar** bölümünü kontrol **edin.**
+* Görselleştirmeye daha az sıklıkta olaylar eklemek için **Diğerleri** düğümlerinde artı düğmelerini kullanın.
+* Beklediğiniz sayfa görünümü veya özel etkinlik kullanıcılar tarafından seyrek olarak gönderiliyorsa, **Düzenleme** menüsündeki görselleştirmenin zaman aralığını artırmayı deneyin.
+* Beklediğiniz sayfa görünümü, özel olay veya özel durum sitenizin kaynak kodunda Application Insights SDK tarafından toplanacak şekilde ayarlandığınızdan emin olun. [Özel etkinlikleri toplama hakkında daha fazla bilgi edinin.](../../azure-monitor/app/api-custom-events-metrics.md)
 
-Görselleştirmede daha fazla adım görmek isterseniz, **önceki adımları** ve görselleştirmenin üstündeki **sonraki adımlar açılan adımlarını** kullanın.
+Görselleştirmede daha fazla adım görmek istiyorsanız, önceki adımları ve **sonraki** **adımları** visualization yukarıda açılır kullanın.
 
-## <a name="after-visiting-a-page-or-feature-where-do-users-go-and-what-do-they-click"></a>Bir sayfa veya özelliği ziyaret ettikten sonra kullanıcılar nerede gider ve neleri tıklasın?
+## <a name="after-visiting-a-page-or-feature-where-do-users-go-and-what-do-they-click"></a>Bir sayfayı veya özelliği ziyaret ettikten sonra, kullanıcılar nereye gider ve neleri tıklatabilirler?
 
-![Kullanıcıların nerede tıkladığınızı anlamak için Kullanıcı Akışları kullanın](./media/usage-flows/00003-flows-one-step.png)
+![Kullanıcıların nereye tıkladıklarını anlamak için Kullanıcı Akışlarını kullanma](./media/usage-flows/00003-flows-one-step.png)
 
-İlk olaylarınız bir sayfa görünümsüzsa, görselleştirmenin ilk sütunu ("Adım 1"), kullanıcıların sayfayı ziyaret ettikten hemen sonra ne olduğunu anlamak için hızlı bir yoldur. Sitenizi Kullanıcı Akışları görselleştirmenin yanındaki bir pencerede açmayı deneyin. Kullanıcıların sayfayla nasıl etkileşime gireceğini, "Adım 1" sütunundaki olay listesine göre karşılaştırın. Genellikle, sayfada ekibiniz için önemli olan bir kullanıcı arabirimi öğesi, sayfada en çok kullanılan öğe arasında olabilir. Sitenize yönelik tasarım geliştirmeleri için harika bir başlangıç noktası olabilir.
+İlk etkinliğiniz bir sayfa görünümüyse, görselleştirmenin ilk sütunu ("Adım 1"), kullanıcıların sayfayı ziyaret ettikten hemen sonra ne yaptığını anlamanın hızlı bir yoludur. Sitenizi Kullanıcı Akışları görselleştirmesinin yanındaki pencerede açmayı deneyin. Kullanıcıların sayfayla nasıl etkileşimde bulunduklarına ilişkin beklentilerinizi "Adım 1" sütunundaki olaylar listesiyle karşılaştırın. Genellikle, sayfadaki takımınız için önemsiz görünen bir UI öğesi, sayfada en çok kullanılanlar arasında olabilir. Sitenizde tasarım iyileştirmeleri için harika bir başlangıç noktası olabilir.
 
-İlk olaylarınız özel bir olaydır, ilk sütunda bu eylemi gerçekleştirdikten sonra kullanıcıların ne olduğu gösterilir. Sayfa görünümlerinde olduğu gibi, kullanıcılarınızın gözlemlenen davranışının takımınızın hedefleri ve beklentileri ile eşleşip eşleşmediğini göz önünde bulundurun. Seçtiğiniz ilk olayınızın "alışveriş sepetine öğe eklediniz" olması halinde, örneğin "kullanıma alma" ve "tamamlanmış satın alma" bölümünde, kısa bir süre sonra görselleştirmede görünüp görünmeyeceğini göz atın. Kullanıcı davranışı beklentilerinizi farklılarken, kullanıcıların sitenizin geçerli tasarımı tarafından nasıl "yakalanacağını" öğrenmesini sağlamak için görselleştirmeyi kullanın.
+İlk etkinliğiniz özel bir olaysa, ilk sütun kullanıcıların bu eylemi gerçekleştirmeden hemen sonra ne yaptığını gösterir. Sayfa görüntülemelerde olduğu gibi, kullanıcılarınızın gözlenen davranışlarının takımınızın hedef ve beklentilerine uygun olup olmadığını göz önünde bulundurun. Seçtiğiniz ilk etkinlik "Alışveriş Sepetine Öğe Eklendi" ise, örneğin, kısa bir süre sonra görselleştirmede "Kullanıma Git" ve "Tamamlanmış Satın Alma" görünüp görünmeyince görün. Kullanıcı davranışı beklentilerinizinizden farklıysa, kullanıcıların sitenizin geçerli tasarımı tarafından nasıl "kapana kısTırıldığını" anlamak için görselleştirmeyi kullanın.
 
-## <a name="where-are-the-places-that-users-churn-most-from-your-site"></a>Kullanıcıların sitenizdeki en iyi şekilde dalgalanma yerleri nerede?
+## <a name="where-are-the-places-that-users-churn-most-from-your-site"></a>Kullanıcıların sitenizden en çok çalkaladığı yerler nerede?
 
-Özellikle bir akışta erken olarak, görselleştirmedeki bir sütunda yüksek olarak görünen **oturum sona ermiş** düğümleri izleyin. Bu, büyük olasılıkla, sayfaların önceki yolu ve Kullanıcı arabirimi etkileşimleri uygulandıktan sonra sitenizdeki çok sayıda kullanıcı tarafından ortaya bir şekilde yapılır. Bazen bir DUYM sitesinde satın alma işlemi tamamlandıktan sonra karmaşıklık beklenir. Örneğin, genellikle karmaşıklık, Tasarım sorunları, kötü performans veya sitenizdeki diğer sorunlar için iyileştirilen bir oturum açma işlemi olur.
+Oturum **Sona Erdi** düğümleri için izleyin, özellikle bir akış erken, görselleştirme bir sütunda yüksek-up görünür. Bu, birçok kullanıcının önceki sayfaları ve Kullanıcı Aracı etkileşimlerini takip ettikten sonra sitenizden çalkalanmış olabilir. Bazen çalkal bekleniyor - örneğin, bir e-ticaret sitesinde bir satın alma tamamladıktan sonra - ama genellikle churn tasarım sorunları, kötü performans veya geliştirilebilir sitenizle ilgili diğer sorunların bir işaretidir.
 
-**Oturum sona ermiş** düğümlerin yalnızca bu Application Insights kaynağı tarafından toplanan telemetri temelinde olduğunu aklınızda bulundurun. Application Insights, bazı kullanıcı etkileşimleri için telemetri almazsa, Kullanıcı Akışları aracı oturum sona erdikten sonra bu yollarla, kullanıcılar yine de siteyle etkileşim kazanabilir.
+**Oturum Sona Eren** düğümlerin yalnızca bu Application Insights kaynağı tarafından toplanan telemetriye dayandığını unutmayın. Uygulama Öngörüleri belirli kullanıcı etkileşimleri için telemetri almazsa, Kullanıcı Akışları aracı oturumun sona erdiğini söyledikten sonra kullanıcılar sitenizle bu şekilde etkileşimde olabilir.
 
-## <a name="are-there-places-where-users-repeat-the-same-action-over-and-over"></a>Kullanıcıların aynı eylemi ve üzerinde yineleneceği konumlar var mı?
+## <a name="are-there-places-where-users-repeat-the-same-action-over-and-over"></a>Kullanıcıların aynı eylemi tekrar tekrar tekrarladığı yerler var mı?
 
-Görselleştirmedeki sonraki adımlarda birçok kullanıcı tarafından yinelenen bir sayfa görünümü veya özel olay bulun. Bu, genellikle kullanıcıların sitenizde yinelenen eylemler gerçekleştirme anlamına gelir. Tekrarlamayı bulursanız sitenizin tasarımını değiştirme veya yinelemeyi azaltmak için yeni işlevsellik ekleme hakkında düşünün. Örneğin, bir tablo öğesinin her satırında yinelenen eylemler gerçekleştiren kullanıcılar bulursanız toplu düzenleme işlevselliği ekleme.
+Görselleştirmede sonraki adımlarda birçok kullanıcı tarafından yinelenen bir sayfa görünümü veya özel olay arayın. Bu genellikle kullanıcıların sitenizde yinelenen eylemler gerçekleştirdiği anlamına gelir. Yineleme bulursanız, sitenizin tasarımını değiştirmeyi veya yinelemeyi azaltmak için yeni işlevler eklemeyi düşünün. Örneğin, bir tablo öğesinin her satırında yinelenen eylemler gerçekleştiren kullanıcılar bulursanız toplu edit işlevselliği ekleme.
 
 ## <a name="common-questions"></a>Sık sorulan sorular
 
-### <a name="does-the-initial-event-represent-the-first-time-the-event-appears-in-a-session-or-any-time-it-appears-in-a-session"></a>İlk olay, olay bir oturumda veya bir oturumda göründüğü zaman ilk kez temsil ediyor mu?
+### <a name="does-the-initial-event-represent-the-first-time-the-event-appears-in-a-session-or-any-time-it-appears-in-a-session"></a>İlk olay, olayın bir oturumda ilk kez veya bir oturumda göründüğü zamanı mı temsil ediyor?
 
-Görselleştirmedeki ilk olay, bir Kullanıcı bir oturum sırasında Bu sayfa görünümü veya özel olay ilk kez gönderildiğinde temsil eder. Kullanıcılar ilk olayı bir oturumunda birden çok kez gönderebiliyorsanız, "1. adım" sütununda yalnızca kullanıcıların ilk olayın *ilk* örneğinden sonra nasıl davrandığını gösterir, tüm örnekler değildir.
+Görselleştirmedeki ilk olay, yalnızca bir kullanıcının oturum sırasında bu sayfa görünümünü veya özel olayı ilk kez gönderdiği zamanı temsil eder. Kullanıcılar ilk olayı bir oturumda birden çok kez gönderebiliyorsa, "Adım 1" sütunu yalnızca kullanıcıların tüm örneklerden değil, ilk olayın *ilk* örneğinden sonra nasıl tepki gösterdiğini gösterir.
 
-### <a name="some-of-the-nodes-in-my-visualization-are-too-high-level-for-example-a-node-that-just-says-button-clicked-how-can-i-break-it-down-into-more-detailed-nodes"></a>Görselleştirmedeki bazı düğümler çok yüksek düzeydir. Örneğin, yalnızca "düğme tıkladığını" belirten bir düğüm. Daha ayrıntılı düğümlere nasıl bölünabilirim?
+### <a name="some-of-the-nodes-in-my-visualization-are-too-high-level-for-example-a-node-that-just-says-button-clicked-how-can-i-break-it-down-into-more-detailed-nodes"></a>Görselleştirmemdeki düğümlerin bazıları çok üst düzey. Örneğin, sadece "Düğme Tıklandı" yazan bir düğüm. Nasıl daha ayrıntılı düğümler halinde kırabilirim?
 
-**Düzenleme** menüsündeki **bölünmüş** seçenekleri kullanın:
+**Düzenleme** menüsünde seçeneklere **göre Bölme'yi** kullanın:
 
-1. **Olay** menüsünde bölmek istediğiniz olayı seçin.
-2. **Boyut** menüsünde bir boyut seçin. Örneğin, "düğme tıklandı" adlı bir olaytınız varsa, "düğme adı" adlı özel bir özellik deneyin.
+1. **Etkinlik** menüsünde yıkmak istediğiniz olayı seçin.
+2. **Dimension** menüsünde bir boyut seçin. Örneğin, "Düğme Tıklatıldı" adlı bir etkinliğiniz varsa, "Düğme Adı" adlı özel bir özellik deneyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Kullanıma genel bakış](usage-overview.md)
 * [Kullanıcılar, Oturumlar ve Etkinlikler](usage-segmentation.md)
 * [Bekletme](usage-retention.md)
-* [Uygulamanıza özel olaylar ekleme](../../azure-monitor/app/api-custom-events-metrics.md)
+* [Uygulamanıza özel etkinlikler ekleme](../../azure-monitor/app/api-custom-events-metrics.md)

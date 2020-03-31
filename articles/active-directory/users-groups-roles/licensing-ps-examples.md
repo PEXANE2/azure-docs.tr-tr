@@ -1,6 +1,6 @@
 ---
-title: Grup lisanslama için PowerShell ve Graph örnekleri-Azure AD | Microsoft Docs
-description: Azure Active Directory grup tabanlı lisanslama için PowerShell + Graph örnekleri ve senaryoları
+title: Grup lisanslama için PowerShell ve Grafik örnekleri - Azure AD | Microsoft Dokümanlar
+description: Azure Active Directory grup tabanlı lisanslama için PowerShell + Grafik örnekleri ve senaryoları
 services: active-directory
 keywords: Azure AD lisanslama
 documentationcenter: ''
@@ -15,25 +15,25 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5387daffcd3dd231aef5eade1c896db50947b386
-ms.sourcegitcommit: 98a5a6765da081e7f294d3cb19c1357d10ca333f
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/20/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77484868"
 ---
-# <a name="powershell-and-graph-examples-for-group-based-licensing-in-azure-ad"></a>Azure AD 'de grup tabanlı lisanslama için PowerShell ve Graph örnekleri
+# <a name="powershell-and-graph-examples-for-group-based-licensing-in-azure-ad"></a>Azure AD'de grup tabanlı lisanslama için PowerShell ve Grafik örnekleri
 
-Grup tabanlı lisanslama için tam işlevsellik [Azure Portal](https://portal.azure.com)aracılığıyla kullanılabilir ve şu anda PowerShell ve Microsoft Graph desteği salt okuma işlemleriyle sınırlıdır. Ancak, mevcut [MSOnline PowerShell cmdlet 'leri](https://docs.microsoft.com/powershell/msonline/v1/azureactivedirectory) ve Microsoft Graph kullanılarak gerçekleştirilebilecek bazı yararlı görevler vardır. Bu belge, mümkün olan örneklere örnek sağlar.
+Grup tabanlı lisanslama için tam işlevsellik [Azure portalı](https://portal.azure.com)üzerinden kullanılabilir ve şu anda PowerShell ve Microsoft Graph desteği salt okunur işlemleriyle sınırlıdır. Ancak, varolan [MSOnline PowerShell cmdlets](https://docs.microsoft.com/powershell/msonline/v1/azureactivedirectory) ve Microsoft Graph kullanılarak gerçekleştirilebilecek bazı yararlı görevler vardır. Bu belge, nelerin mümkün olduğuna örnekler sağlar.
 
 > [!NOTE]
-> Cmdlet 'leri çalıştırmaya başlamadan önce, `Connect-MsolService` cmdlet 'ini çalıştırarak öncelikle kuruluşunuza bağlandığınızdan emin olun.
+> Cmdlet çalıştırmaya başlamadan önce, `Connect-MsolService`  cmdlet çalıştırarak, ilk kuruluşunuza bağlanmak emin olun.
 
 > [!WARNING]
-> Bu kod, tanıtım amacıyla bir örnek olarak sağlanır. Bunu ortamınızda kullanmak istiyorsanız, önce küçük ölçekte veya ayrı bir test kiracısında test etmeyi düşünün. Ortamınızın belirli ihtiyaçlarını karşılamak için kodu ayarlamanız gerekebilir.
+> Bu kod, gösteri amaçları için bir örnek olarak sağlanır. Ortamınızda kullanmayı düşünüyorsanız, önce küçük bir ölçekte veya ayrı bir test kiracısında sınamayı düşünün. Ortamınızın özel gereksinimlerini karşılamak için kodu ayarlamanız gerekebilir.
 
-## <a name="view-product-licenses-assigned-to-a-group"></a>Bir gruba atanan Ürün lisanslarını görüntüleme
+## <a name="view-product-licenses-assigned-to-a-group"></a>Bir gruba atanan ürün lisanslarını görüntüleme
 
-[Get-MsolGroup](/powershell/module/msonline/get-msolgroup?view=azureadps-1.0) cmdlet 'i Grup nesnesini almak ve *lisanslar* özelliğini denetlemek için kullanılabilir: o anda gruba atanmış olan tüm Ürün lisanslarını listeler.
+[Get-MsolGroup](/powershell/module/msonline/get-msolgroup?view=azureadps-1.0) cmdlet grup nesnesini almak ve *Lisanslar* özelliğini denetlemek için kullanılabilir: şu anda gruba atanan tüm ürün lisanslarını listeler.
 
 ```powershell
 (Get-MsolGroup -ObjectId 99c4216a-56de-42c4-a4ac-e411cd8c7c41).Licenses
@@ -48,9 +48,9 @@ EMSPREMIUM
 ```
 
 > [!NOTE]
-> Veriler ürün (SKU) bilgileriyle sınırlandırılmıştır. Lisansta devre dışı bırakılan hizmet planlarını listelemek mümkün değildir.
+> Veriler ürün (SKU) bilgileriyle sınırlıdır. Lisansta devre dışı bırakılan hizmet planlarını listelemek mümkün değildir.
 
-Microsoft Graph aynı verileri almak için aşağıdaki örneği kullanın.
+Microsoft Graph'tan aynı verileri almak için aşağıdaki örneği kullanın.
 
 ```
 GET https://graph.microsoft.com/v1.0/groups/99c4216a-56de-42c4-a4ac-e411cd8c7c41?$select=assignedLicenses
@@ -78,13 +78,13 @@ HTTP/1.1 200 OK
 }
 ```
 
-## <a name="get-all-groups-with-licenses"></a>Lisansları olan tüm grupları Al
+## <a name="get-all-groups-with-licenses"></a>Lisanslı tüm grupları alın
 
-Aşağıdaki komutu çalıştırarak, herhangi bir lisansın atandığı tüm grupları bulabilirsiniz:
+Aşağıdaki komutu çalıştırarak atanan herhangi bir lisansa sahip tüm grupları bulabilirsiniz:
 ```powershell
 Get-MsolGroup -All | Where {$_.Licenses}
 ```
-Hangi ürünlerin atanabileceği hakkında daha fazla ayrıntı gösterilebilir:
+Hangi ürünlerin atandığı hakkında daha fazla ayrıntı görüntülenebilir:
 ```powershell
 Get-MsolGroup -All | Where {$_.Licenses} | Select `
     ObjectId, `
@@ -102,8 +102,8 @@ cf41f428-3b45-490b-b69f-a349c8a4c38e PowerBi - Licensed users POWER\_BI\_STANDAR
 c2652d63-9161-439b-b74e-fcd8228a7074 EMSandOffice             {ENTERPRISEPREMIUM,EMSPREMIUM}
 ```
 
-## <a name="get-statistics-for-groups-with-licenses"></a>Lisanslanan gruplar için istatistikleri al
-Lisanslar içeren gruplar için temel istatistikleri rapor edebilirsiniz. Aşağıdaki örnekte, komut dosyası Toplam Kullanıcı sayısını, grup tarafından zaten lisans atanmış olan kullanıcı sayısını ve lisansları grup tarafından atanmayan Kullanıcı sayısını listeler.
+## <a name="get-statistics-for-groups-with-licenses"></a>Lisanslı gruplar için istatistik alma
+Lisanslı grupların temel istatistiklerini bildirebilirsiniz. Aşağıdaki örnekte, komut dosyasında toplam kullanıcı sayısı, grup tarafından zaten atanmış lisansları olan kullanıcı sayısı ve grup tarafından lisansların atanamayan kullanıcı sayısı listelenmiştir.
 
 ```powershell
 #get all groups with licenses
@@ -160,8 +160,8 @@ O365 E5 - EXO     102fb8f4-bbe7-462b-83ff-2145e7cdd6ed ENTERPRISEPREMIUM        
 Access to Offi... 11151866-5419-4d93-9141-0603bbf78b42 STANDARDPACK                     4                 3                 1
 ```
 
-## <a name="get-all-groups-with-license-errors"></a>Lisans hataları olan tüm grupları Al
-Lisansları atanmayan bazı kullanıcıları içeren grupları bulmak için:
+## <a name="get-all-groups-with-license-errors"></a>Lisans hataları olan tüm grupları alın
+Lisansların atanamayan bazı kullanıcıları içeren grupları bulmak için:
 ```powershell
 Get-MsolGroup -All -HasLicenseErrorsOnly $true
 ```
@@ -171,7 +171,7 @@ ObjectId                             DisplayName             GroupType Descripti
 --------                             -----------             --------- -----------
 11151866-5419-4d93-9141-0603bbf78b42 Access to Office 365 E1 Security  Users who should have E1 licenses
 ```
-Microsoft Graph aynı verileri almak için aşağıdakileri kullanın
+Microsoft Graph'tan aynı verileri almak için aşağıdakileri kullanın
 ```
 GET https://graph.microsoft.com/v1.0/groups?$filter=hasMembersWithLicenseErrors+eq+true
 ```
@@ -199,9 +199,9 @@ HTTP/1.1 200 OK
 ```
 
 
-## <a name="get-all-users-with-license-errors-in-a-group"></a>Bir grupta lisans hataları olan tüm kullanıcıları al
+## <a name="get-all-users-with-license-errors-in-a-group"></a>Bir gruptaki lisans hataları olan tüm kullanıcıları alma
 
-Lisansla ilgili bazı hatalar içeren bir grup verildiğinde, artık bu hatalardan etkilenen tüm kullanıcıları listeleyebilirsiniz. Bir kullanıcı da diğer gruplardan hata verebilir. Ancak, bu örnekte, Kullanıcı üzerindeki her bir **ındirectlicenseerror** girişinin **Referencedobjectıd** özelliğini denetleyerek, sonuçları yalnızca söz konusu grupla ilgili hatalarla sınırlandırdık.
+Lisansla ilgili bazı hatalar içeren bir grup göz önüne alındığında, artık bu hatalardan etkilenen tüm kullanıcıları listeleyebilirsiniz. Bir kullanıcının diğer gruplardan da hataları olabilir. Ancak, bu örnekte, sonuçları yalnızca kullanıcıdaki her **Dolaylı Lisans Hatası** girişinin **ReferencedObjectId** özelliğini kontrol ederek söz konusu grupla ilgili hatalarla sınırlandırıyoruz.
 
 ```powershell
 #a sample group with errors
@@ -227,7 +227,7 @@ ObjectId                             DisplayName      License Error
 6d325baf-22b7-46fa-a2fc-a2500613ca15 Catherine Gibson MutuallyExclusiveViolation
 ```
 
-Microsoft Graph aynı verileri almak için aşağıdakileri kullanın:
+Microsoft Graph'tan aynı verileri almak için aşağıdakileri kullanın:
 
 ```powershell
 GET https://graph.microsoft.com/v1.0/groups/11151866-5419-4d93-9141-0603bbf78b42/membersWithLicenseErrors
@@ -251,12 +251,12 @@ HTTP/1.1 200 OK
 
 ```
 
-## <a name="get-all-users-with-license-errors-in-the-entire-tenant"></a>Tüm Kiracıdaki lisans hataları olan tüm kullanıcıları al
+## <a name="get-all-users-with-license-errors-in-the-entire-tenant"></a>Tüm kiracıda lisans hataları olan tüm kullanıcıları elde etme
 
-Aşağıdaki betik, bir veya daha fazla gruptan lisans hataları olan tüm kullanıcıları almak için kullanılabilir. Komut dosyası her bir hata kaynağını açıkça tanımlamanızı sağlayan her bir lisans hatası için Kullanıcı başına bir satır yazdırır.
+Aşağıdaki komut dosyası, bir veya daha fazla gruptan lisans hataları olan tüm kullanıcıları almak için kullanılabilir. Komut dosyası, her hatanın kaynağını net bir şekilde belirlemenize olanak tanıyan lisans hatası başına kullanıcı başına bir satır yazdırır.
 
 > [!NOTE]
-> Bu betik, Kiracıdaki tüm kullanıcıları numaralandırır ve bu, büyük kiracılar için ideal olmayabilir.
+> Bu komut dosyası, büyük kiracılar için en uygun olmayabilir kiracı, tüm kullanıcıları sayısallandırır.
 
 ```powershell
 Get-MsolUser -All | Where {$_.IndirectLicenseErrors } | % {   
@@ -282,7 +282,7 @@ Catherine Gibson 6d325baf-22b7-46fa-a2fc-a2500613ca15 11151866-5419-4d93-9141-06
 Drew Fogarty     f2af28fc-db0b-4909-873d-ddd2ab1fd58c 1ebd5028-6092-41d0-9668-129a3c471332 MutuallyExclusiveViolation
 ```
 
-Aşağıda yalnızca lisans hatalarını içeren gruplar üzerinde arama yapan başka bir betik sürümü verilmiştir. Sorun olan birkaç gruba sahip olmak istediğiniz senaryolar için daha iyileştirilmiş olabilir.
+Burada, komut dosyasının yalnızca lisans hataları içeren gruplar aracılığıyla arama yapan başka bir sürümü verilmiştir. Sorunları olan birkaç grubun olmasını beklediğiniz senaryolar için daha iyi duruma getirilmiş olabilir.
 
 ```powershell
 $groupIds = Get-MsolGroup -All -HasLicenseErrorsOnly $true
@@ -297,11 +297,11 @@ $groupIds = Get-MsolGroup -All -HasLicenseErrorsOnly $true
     } 
 ``` 
 
-## <a name="check-if-user-license-is-assigned-directly-or-inherited-from-a-group"></a>Kullanıcı lisansının doğrudan atanıp atanamayacağını veya bir gruptan devralındığını denetle
+## <a name="check-if-user-license-is-assigned-directly-or-inherited-from-a-group"></a>Kullanıcı lisansının doğrudan atanıp atanmamalarını veya bir gruptan devredilip devrlenmeyini denetleme
 
-Bir kullanıcı nesnesi için, belirli bir ürün lisansının bir gruptan mi atandığını yoksa doğrudan mi atandığını denetlemek mümkündür.
+Bir kullanıcı nesnesi için, belirli bir ürün lisansının bir gruptan mı yoksa doğrudan mı atandığını denetlemek mümkündür.
 
-Aşağıdaki iki örnek işlev, tek bir kullanıcının atama türünü çözümlemek için kullanılabilir:
+Aşağıdaki iki örnek işlev, tek bir kullanıcıdaki atama türünü çözümlemek için kullanılabilir:
 
 ```powershell
 #Returns TRUE if the user has the license assigned directly
@@ -364,7 +364,7 @@ function UserHasLicenseAssignedFromGroup
 }
 ```
 
-Bu komut dosyası, kiracı 'daki her bir kullanıcı için bu işlevleri, bu örnekte, kiracımızda *contoso: EMS*kimliğiyle temsil edilen *Enterprise Mobility + Security*lisansıyla ilgilentireceğiz.
+Bu komut dosyası, kiracı her kullanıcı üzerinde bu işlevleri yürütür, giriş olarak SKU ID kullanarak - Bu örnekte biz *Kurumsal Mobilite için*lisans ilgileniyoruz + Güvenlik , bizim kiracı kimlik contoso ile temsil *edilir:EMS:*
 
 ```powershell
 #the license SKU we are interested in. use Get-MsolAccountSku to see a list of all identifiers in your tenant
@@ -388,7 +388,7 @@ ObjectId                             SkuId       AssignedDirectly AssignedFromGr
 240622ac-b9b8-4d50-94e2-dad19a3bf4b5 contoso:EMS             True              True
 ```
 
-Grafik, sonucu göstermek için basit bir yönteme sahip değil, ancak bu API 'den görünebilirler:
+Grafik sonucu göstermek için basit bir yolu yoktur, ancak bu API görülebilir:
 
 ```powershell
 GET https://graph.microsoft.com/v1.0/users/e61ff361-5baf-41f0-b2fd-380a6a5e406a?$select=licenseAssignmentStates
@@ -443,11 +443,11 @@ HTTP/1.1 200 OK
 
 ```
 
-## <a name="remove-direct-licenses-for-users-with-group-licenses"></a>Grup lisanslarına sahip kullanıcılar için doğrudan lisansları kaldırma
+## <a name="remove-direct-licenses-for-users-with-group-licenses"></a>Grup lisansına sahip kullanıcılar için doğrudan lisansları kaldırma
 
-Bu betiğin amacı, bir gruptan zaten aynı lisansı paylaşan kullanıcılardan gereksiz doğrudan lisansları kaldıralmaktır; Örneğin, [grup tabanlı lisanslamanın](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-group-migration-azure-portal)bir parçası olarak.
+Bu komut dosyasının amacı, aynı lisansı zaten bir gruptan devralan kullanıcılardan gereksiz doğrudan lisansları kaldırmaktır; örneğin, grup tabanlı [lisanslama](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-group-migration-azure-portal)geçişin bir parçası olarak.
 > [!NOTE]
-> İlk olarak, kaldırılacak olan doğrudan lisansların, devralınan lisanslardan daha fazla hizmet işlevselliği etkinleştirmediğinden emin olmak önemlidir. Aksi takdirde, doğrudan lisansın kaldırılması, kullanıcılara yönelik hizmetlere ve verilere erişimi devre dışı bırakabilir. Şu anda, devralınan lisanslar vs Direct aracılığıyla hangi hizmetlerin etkinleştirildiği PowerShell aracılığıyla denetlenmesi mümkün değildir. Betikte, bilinen en düşük hizmet düzeyini, gruplardan devralındığını ve kullanıcıların, hizmetlere erişimi beklenmedik bir şekilde kaybetmediğinden emin olmak için bu hizmetleri belirttik.
+> Öncelikle kaldırılacak doğrudan lisansların devralınan lisanslardan daha fazla hizmet işlevi ne kadar etkinleştirmediğini doğrulamak önemlidir. Aksi takdirde, doğrudan lisansı kaldırmak kullanıcılar için hizmetlere ve verilere erişimi devre dışı kılabilir. Şu anda PowerShell üzerinden hangi hizmetlerin devralınan lisanslar vs doğrudan aracılığıyla etkinleştirildiğinden kontrol etmek mümkün değildir. Komut dosyasında, gruplardan devralındığını bildiğimiz minimum hizmet düzeyini belirtiriz ve kullanıcıların hizmetlere erişimi beklenmedik bir şekilde kaybetmediğinden emin olmak için bu hizmete karşı kontrol de bulunuz.
 
 ```powershell
 #BEGIN: Helper functions used by the script
@@ -617,16 +617,16 @@ UserId                               OperationResult
 aadbe4da-c4b5-4d84-800a-9400f31d7371 User has no direct license to remove. Skipping.
 ```
 > [!NOTE]
-> Yukarıdaki betiği çalıştırmadan önce, test ortamınız uyarınca doğrudan lisansların kaldırılması hedeflenmekte olan `$skuId` değişkenleri için değerleri güncelleştirin ve `$groupId` . 
+> Yukarıdaki komut dosyasını çalıştırmadan `$groupId`  önce lütfen test ortamınıza göre Doğrudan Lisansların kaldırılması hedeflenen değişkenlerin `$skuId` değerlerini güncelleyin. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Gruplar aracılığıyla lisans yönetimi için özellik kümesi hakkında daha fazla bilgi edinmek için aşağıdaki makalelere bakın:
 
-* [Azure Active Directory 'de grup tabanlı lisanslama nedir?](../fundamentals/active-directory-licensing-whatis-azure-portal.md)
+* [Azure Active Directory'de grup tabanlı lisanslama nedir?](../fundamentals/active-directory-licensing-whatis-azure-portal.md)
 * [Azure Active Directory'de gruba lisans atama](licensing-groups-assign.md)
 * [Azure Active Directory'de grubun lisans sorunlarını tanımlama ve çözme](licensing-groups-resolve-problems.md)
 * [Azure Active Directory'de tek tek lisanslı kullanıcıları grup tabanlı lisanslamaya geçirme](licensing-groups-migrate-users.md)
-* [Azure Active Directory 'de grup tabanlı lisanslama kullanarak kullanıcıları ürün lisansları arasında geçirme](../users-groups-roles/licensing-groups-change-licenses.md)
+* [Azure Active Directory'de grup tabanlı lisanslama yı kullanarak kullanıcıların ürün lisansları arasında geçiş ilertirme](../users-groups-roles/licensing-groups-change-licenses.md)
 * [Azure Active Directory grup tabanlı lisanslamayla ilgili ek senaryolar](licensing-group-advanced.md)
-* [Azure Active Directory 'de grup tabanlı lisanslama için PowerShell örnekleri](../users-groups-roles/licensing-ps-examples.md)
+* [Azure Active Directory'de grup tabanlı lisanslama için PowerShell örnekleri](../users-groups-roles/licensing-ps-examples.md)

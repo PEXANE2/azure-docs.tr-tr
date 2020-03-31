@@ -1,38 +1,38 @@
 ---
-title: Azure Service Fabric kafes uygulamalarının ölçeklenebilirliği
-description: Uygulamaları Service Fabric kafese dağıtmanın avantajlarından biri, el ile veya otomatik ölçeklendirme ilkeleriyle hizmetlerinizi kolayca ölçeklendirebilme olanağıdır.
+title: Azure Hizmet Kumaş Kafesi uygulamalarının ölçeklenebilirliği
+description: Uygulamaları Service Fabric Mesh'e dağıtmanın avantajlarından biri, hizmetlerinizi el ile veya otomatik ölçeklendirme ilkeleriyle kolayca ölçeklendirebilmektir.
 author: dkkapur
 ms.author: dekapur
 ms.date: 10/26/2018
 ms.topic: conceptual
 ms.openlocfilehash: 474eda904df653d514fd2ee59fa046f1f87a66aa
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "79259181"
 ---
-# <a name="scaling-service-fabric-mesh-applications"></a>Service Fabric kafes uygulamalarını ölçeklendirme
+# <a name="scaling-service-fabric-mesh-applications"></a>Ölçekleme Servisi Kumaş Örgü uygulamaları
 
-Service Fabric kafese uygulama dağıtmanın başlıca avantajlarından biri, hizmetlerinizi kolayca ölçeklendirebilme olanağı sağlar. Bu, hizmetinizdeki farklı yük miktarını işlemek veya kullanılabilirliği iyileştirmek için kullanılmalıdır. Hizmetlerinizi el ile ölçeklendirebilir veya otomatik ölçeklendirme ilkeleri ayarlayabilirsiniz.
+Uygulamaları Service Fabric Mesh'e dağıtmanın en önemli avantajlarından biri, hizmetlerinizi kolayca ölçeklendirebilme veya dışarı edebilme yeteneğidir. Bu, hizmetlerinizdeki çeşitli miktarda yükü işlemek veya kullanılabilirliği artırmak için kullanılmalıdır. Hizmetlerinizi el ile ölçeklendirebilir veya dışarıda ölçeklendirebilir veya otomatik ölçeklendirme ilkelerini kurabilirsiniz.
 
-## <a name="manual-scaling-instances"></a>El ile ölçeklendirme örnekleri
+## <a name="manual-scaling-instances"></a>El ile ölçekleme örnekleri
 
 Uygulama kaynağı için dağıtım şablonunda her hizmet, hizmetin dağıtılmasını istediğiniz sayıyı ayarlamak için kullanılabilen bir *replicaCount* özelliğine sahiptir. Bir uygulama, birden çok hizmetten oluşabilir; her hizmet, birlikte dağıtılan ve yönetilen benzersiz bir *replicaCount* sayısına sahiptir. Hizmet çoğaltmaları sayısını ölçeklendirmek için, dağıtım şablonunda ölçeklendirmek istediğiniz her bir hizmet için *replicaCount* değerini veya parametreler dosyasını değiştirin. Ardından uygulamayı yükseltin.
 
-Hizmet örneklerinin el ile ölçeklendirilmesi örnekleri için bkz. [hizmetlerinizi el ile ölçeklendirin veya out](service-fabric-mesh-tutorial-template-scale-services.md).
+El ile ölçeklendirme hizmetleri örnekleri için [bkz.](service-fabric-mesh-tutorial-template-scale-services.md)
 
-## <a name="autoscaling-service-instances"></a>Otomatik Ölçeklendirme hizmeti örnekleri
-Otomatik ölçeklendirme, hizmet örneklerinizin sayısını (yatay ölçeklendirme) dinamik olarak ölçeklendirmek için Service Fabric ek bir yetenektir. Otomatik ölçeklendirme, büyük esneklik sağlar ve sağlama veya CPU veya bellek kullanım oranlarına dayalı hizmet örnekleri kaldırılmasını sağlar.  Otomatik ölçeklendirme, iş yükünüz için doğru hizmet örneği sayısını çalıştırmanıza ve maliyeti iyileştirmek için optimize etmenize olanak sağlar.
+## <a name="autoscaling-service-instances"></a>Hizmet örneklerini otomatik ölçekleme
+Otomatik ölçeklendirme, hizmet örneğinizin (yatay ölçeklendirme) sayısını dinamik olarak ölçeklendirmek için Hizmet Dokusu'nun ek bir özelliğidir. Otomatik ölçekleme büyük esneklik sağlar ve CPU veya bellek kullanımına dayalı servis örneklerinin sağlanmasını veya kaldırılmasını sağlar.  Otomatik ölçekleme, iş yükünüz için doğru sayıda servis örneğini çalıştırmanızı ve maliyet için optimize etmenizi sağlar.
 
-Hizmet kaynak dosyasında hizmet başına otomatik ölçeklendirme ilkesi tanımlandı. Her ölçeklendirme ilkesi iki bölümden oluşur:
+Hizmet kaynak dosyasındaki hizmet başına otomatik ölçekleme ilkesi tanımlanır. Her ölçekleme ilkesi iki bölümden oluşur:
 
-- Hizmet ölçeklendirmesinin ne zaman yapılacağını açıklayan bir ölçeklendirme tetikleyicisi. Hizmetin ne zaman ölçekleneceğini tespit eden üç etken vardır. *Alt yük eşiği* , hizmetin ne zaman ölçeklendirileceğini belirleyen bir değerdir. Bölümlerin tüm örneklerinin ortalama yükü bu değerden düşükse, hizmet içinde ölçeklendirilecektir. *Büyük yük eşiği* , hizmetin ne zaman gösterileceğini belirleyen bir değerdir. Bölümün tüm örneklerinin ortalama yükü bu değerden yüksekse, hizmet dışa ayarlanır. *Ölçeklendirme aralığı* , tetikleyicinin ne sıklıkta denetleneceğini (saniye cinsinden) belirler. Tetikleyici denetlendikten sonra, ölçeklendirilmesi gerekiyorsa mekanizmanın uygulanması gerekir. Ölçeklendirme gerekmiyorsa, hiçbir eylem yapılmaz. Her iki durumda da, ölçekleme aralığı sona ermeden önce tetikleyici yeniden denetlenmez.
+- Hizmetin ölçekleme ne zaman gerçekleştirileceğini açıklayan bir ölçekleme tetikleyicisi. Hizmetin ne zaman ölçeklendireceğini belirleyen üç etken vardır. *Daha düşük yük eşiği,* hizmetin ne zaman ölçeklendirileceğini belirleyen bir değerdir. Bölümlerin tüm örneklerinin ortalama yükü bu değerden daha düşükse, hizmet ölçeklendirilir. *Üst yük eşiği,* hizmetin ne zaman ölçeklendirileceğini belirleyen bir değerdir. Bölümün tüm örneklerinin ortalama yükü bu değerden daha yüksekse, hizmet ölçeklendirilir. *Ölçekleme aralığı,* tetikleyicinin ne sıklıkta (saniye cinsinden) denetleneceğini belirler. Tetikleyici kontrol edildikten sonra, ölçekleme gerekiyorsa mekanizma uygulanır. Ölçekleme gerekli değilse, hiçbir işlem yapılmaz. Her iki durumda da, ölçekleme aralığı sona ermeden önce tetikleyici yeniden denetlenmez.
 
-- Bir ölçeklendirme mekanizması, tetiklendikten sonra ölçeklendirmeyi nasıl gerçekleştirileceğini açıklar. *Ölçek artışı* , mekanizma tetiklendiğinde kaç örnek ekleneceğini veya kaldırılacağını belirler. *En fazla örnek sayısı* ölçekleme için üst sınırı tanımlar. Örnek sayısı bu sınıra ulaşırsa, yük ne olursa olsun hizmet tarafından ölçeklenmez. *Minimum örnek sayısı* ölçekleme için alt sınırı tanımlar. Bölüm örneklerinin sayısı bu sınıra ulaşırsa, yük ne olursa olsun hizmet bu sınıra göre ölçeklenmez.
+- Tetiklendiğinde ölçeklemenin nasıl gerçekleştirileceğini açıklayan ölçekleme mekanizması. *Ölçek artış,* mekanizma tetiklendiğinde kaç örnek ekleneceğini veya kaldırılacağını belirler. *Maksimum örnek sayısı* ölçekleme için üst sınırı tanımlar. Örnek sayısı bu sınıra ulaşırsa, hizmet yükten bağımsız olarak ölçeklendirilmeyecektir. *Minimum örnek sayısı* ölçekleme için alt sınırı tanımlar. Bölümün örnek sayısı bu sınıra ulaşırsa, hizmet yükten bağımsız olarak ölçeklendirilmeyecektir.
 
-Hizmetiniz için bir otomatik ölçeklendirme ilkesi ayarlamayı öğrenmek için [Otomatik ölçeklendirme hizmetlerini](service-fabric-mesh-howto-auto-scale-services.md)okuyun.
+Hizmetiniz için otomatik ölçeklendirme ilkesini nasıl ayarlayabileceğinizi öğrenmek için [otomatik ölçeklendirme hizmetlerini](service-fabric-mesh-howto-auto-scale-services.md)okuyun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Uygulama modeli hakkında daha fazla bilgi için bkz. [Service Fabric Resources](service-fabric-mesh-service-fabric-resources.md)
+Uygulama modeli hakkında bilgi için [Service Fabric kaynaklarına](service-fabric-mesh-service-fabric-resources.md) bakın

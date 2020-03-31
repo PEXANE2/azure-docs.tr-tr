@@ -1,7 +1,7 @@
 ---
-title: 'Başvuru: CentOS Veri Bilimi Sanal Makinesi'
+title: 'Referans: CentOS Veri Bilimi Sanal Makine'
 titleSuffix: Azure Data Science Virtual Machine
-description: CentOS Veri Bilimi Sanal Makinesi bulunan araçlarla ilgili ayrıntılar
+description: CentOS Data Science Virtual Machine'de yer alan araçlarla ilgili ayrıntılar
 author: gvashishtha
 ms.service: machine-learning
 ms.subservice: data-science-vm
@@ -9,64 +9,64 @@ ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
 ms.openlocfilehash: db49a9f5e0e6675d93cb58d6af9c92fac21e8b74
-ms.sourcegitcommit: 3c8fbce6989174b6c3cdbb6fea38974b46197ebe
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/21/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77525847"
 ---
-# <a name="reference-centos-linux-data-science-virtual-machine"></a>Başvuru: CentOS (Linux) Veri Bilimi Sanal Makinesi
+# <a name="reference-centos-linux-data-science-virtual-machine"></a>Referans: CentOS (Linux) Veri Bilimi Sanal Makine
 
-Linux Veri Bilimi Sanal Makinesi (DSVM), bir CentOS tabanlı Azure sanal makinedir. Linux DSVM, veri analizi ve makine öğrenimi için kullanabileceğiniz bir önceden yüklenmiş araçlar koleksiyonuyla birlikte gelir. 
+Linux Data Science Virtual Machine (DSVM), CentOS tabanlı bir Azure sanal makinesidir. Linux DSVM, veri analitiği ve makine öğrenimi için kullanabileceğiniz önceden yüklenmiş araçlar koleksiyonuyla birlikte gelir. 
 
-Bir Linux DSVM 'ye dahil edilen anahtar yazılım bileşenleri şunlardır:
+Linux DSVM'de yer alan temel yazılım bileşenleri şunlardır:
 
 * Linux CentOS dağıtım işletim sistemi.
 * Microsoft Machine Learning Server.
-* Popüler veri analizi kitaplıkları da dahil olmak üzere Anaconda Python dağıtımı (sürüm 3,5 ve 2,7).
-* JuliaPro, Julia dilinin ve popüler bilimsel ve veri analizi kitaplıklarının seçkin bir dağılımı.
-* Spark tek başına örneği ve tek düğümlü Hadoop (, YARN).
-* JupyterHub, R, Python, PySpark ve Julia kernels 'yi destekleyen çok kullanıcılı bir Jupyter Not defteri sunucusudur.
+* Anaconda Python dağıtımı (sürüm 3.5 ve 2.7), popüler veri analizi kitaplıkları da dahil olmak üzere.
+* JuliaPro, Julia dili ve popüler bilimsel ve veri analitiği kütüphanelerinin küratörlüğünde bir dağıtım.
+* Kıvılcım Bağımsız örnek ve tek düğüm Hadoop (HDFS, YARN).
+* JupyterHub, R, Python, PySpark ve Julia çekirdeklerini destekleyen çok kullanıcılı bir Jupyter dizüstü bilgisayar sunucusu.
 * Azure Depolama Gezgini.
-* Azure CLı, Azure kaynaklarını yönetmeye yönelik Azure komut satırı arabirimi.
+* Azure CLI, Azure kaynaklarını yönetmek için Azure komut satırı arabirimi.
 * PostgresSQL veritabanı.
-* Machine Learning araçları:
-  * Microsoft Research 'tan derin bir öğrenme yazılım araç seti olan [Microsoft Cognitive Toolkit](https://github.com/Microsoft/CNTK) (cntk).
-  * Çevrimiçi, karma, allazaltma, indirimleri, learning2search, etkin ve etkileşimli öğrenme gibi teknikleri destekleyen hızlı bir makine öğrenimi sistemi olan [Vowpal Wabbit](https://github.com/JohnLangford/vowpal_wabbit).
-  * [Xgboost](https://xgboost.readthedocs.org/en/latest/), hızlı ve doğru şekilde artırılmış ağaç uygulamasını sağlayan bir araçtır.
-  * [Rattle](https://togaware.com/rattle/), veri analizi ve makine öğrenimi ile R 'yi kolay bir şekilde kullanmaya başlamanıza olanak tanıyan bir araçtır. Rattle, otomatik R kod üretimi kullanarak hem GUI tabanlı veri araştırması hem de modelleme sağlar.
-* Java, Python, Node. js, Ruby ve PHP 'de Azure SDK.
-* Azure Machine Learning ve diğer Azure hizmetlerinde kullanılacak olan R ve Python kitaplıkları.
-* Geliştirme araçları ve düzenleyiciler (RStudio, Pylt, IntelliJ, Emacs, gedit, vi).
+* Makine öğrenimi araçları:
+  * [Microsoft Cognitive Toolkit](https://github.com/Microsoft/CNTK) (CNTK), Microsoft Research'ün derin öğrenme yazılım araç seti.
+  * [Vowpal Wabbit](https://github.com/JohnLangford/vowpal_wabbit), online gibi teknikleri destekleyen hızlı bir makine öğrenme sistemi, karma, allreduce, azaltma, learning2search, aktif, ve interaktif öğrenme.
+  * [XGBoost](https://xgboost.readthedocs.org/en/latest/), hızlı ve doğru artırılmış ağaç uygulaması sağlayan bir araç.
+  * R'de veri analitiği ve makine öğrenimine başlamayı kolaylaştıran bir araç olan [Rattle.](https://togaware.com/rattle/) Rattle, otomatik R kodu oluşturma yı kullanarak hem GUI tabanlı veri arama ve modelleme sunar.
+* Java, Python, Node.js, Ruby ve PHP'de Azure SDK.
+* Azure Machine Learning ve diğer Azure hizmetlerinde kullanılacak R ve Python kitaplıkları.
+* Geliştirme araçları ve editörler (RStudio, PyCharm, IntelliJ, Emacs, gedit, vi).
 
-Veri bilimi görevleri bir dizi üzerinde yineleme içerir:
+Veri bilimi, bir dizi görevi yineler:
 
-1. Verileri bulun, yükleyin ve ön işleme yapın.
-1. Yapı ve model test edin.
-1. Akıllı uygulamalarda kullanılmak modelleri dağıtın.
+1. Verileri bulun, yükleyin ve işlem öncesi verin.
+1. Modeller oluşturun ve test edin.
+1. Akıllı uygulamalarda tüketim için modelleri dağıtın.
 
-Veri bilimcileri, bu görevleri tamamlamak için çeşitli araçlar kullanın. Yazılımın doğru sürümlerini bulmak ve ardından yazılımı indirmek, derlemek ve yüklemek zaman alabilir.
+Veri bilim adamları bu görevleri tamamlamak için çeşitli araçlar kullanın. Yazılımın doğru sürümlerini bulmak ve yazılımı indirmek, derlemek ve yüklemek zaman alabilir.
 
-Linux DSVM bu yükü önemli ölçüde kolaylaştırabilir. Analiz projenize gitmek için Linux DSVM 'yi kullanın. Linux DSVM, R, Python, SQL, Java ve C++gibi çeşitli dillerdeki görevler üzerinde çalışmanıza yardımcı olur. Çakışan Küreler, kodunuzun geliştirilmesi ve test edilmesi için kullanımı kolay bir IDE sağlar. DSVM 'ye dahil edilen Azure SDK, Microsoft bulut platformu için Linux üzerinde çeşitli hizmetler kullanarak uygulamalarınızı oluşturmanıza yardımcı olur. Ruby, Perl, PHP ve Node. js dahil diğer diller önceden yüklenir.
+Linux DSVM bu yükü önemli ölçüde hafifletebilir. Analitik projenizi başlatmak için Linux DSVM'yi kullanın. Linux DSVM, R, Python, SQL, Java ve C++ gibi çeşitli dillerdeki görevler üzerinde çalışmanıza yardımcı olur. Eclipse, kodunuzu geliştirmek ve test etmek için kullanımı kolay bir IDE sağlar. DSVM'ye dahil olan Azure SDK, Microsoft bulut platformu için Linux'ta çeşitli hizmetler kullanarak uygulamalarınızı oluşturmanıza yardımcı olur. Ruby, Perl, PHP ve Node.js gibi diğer diller önceden yüklenmiştir.
 
-DSVM görüntüsü için yazılım ücreti yok. Yalnızca DSVM görüntüsüyle sağladığınız sanal makinenin boyutuna bağlı olarak değerlendirilen Azure donanım kullanım ücretleri ödersiniz. İşlem ücretleri hakkında daha fazla bilgi için bkz. Azure Marketi 'nde [Linux için veri bilimi sanal makinesi (CentOS) listesi](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm/) .
+DSVM görüntüsü için yazılım ücreti alınmaz. Yalnızca DSVM görüntüsüyle birlikte sağladığınız sanal makinenin boyutuna göre değerlendirilen Azure donanım kullanım ücretlerini ödlersiniz. Bilgi işlem ücretleri hakkında daha fazla bilgi için Azure Marketi'ndeki [Linux için Veri Bilimi Sanal Makine (CentOS) listesine](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm/) bakın.
 
 
-## <a name="machine-learning-server"></a>Machine Learning Server
+## <a name="machine-learning-server"></a>Makine Öğrenme Sunucusu
 
-R veri analizi ve makine öğrenimi için en popüler diller biridir. Analiz etmeniz için R 'yi kullanmak istiyorsanız, DSVM 'nin Microsoft R Open ve Math Kernel kitaplığı ile Machine Learning Server vardır. Matematik Çekirdek Kitaplığı, analitik algoritmalarda ortak matematik işlemlerini iyileştirir. R Open, CRAN R ile tamamen uyumludur. CRAN içinde Yayınlanan R kitaplıklarının herhangi biri R Open 'a yüklenebilir. 
+R, veri analizi ve makine öğrenimi için en popüler dillerden biridir. Analitiğiniz için R'yi kullanmak istiyorsanız, DSVM'de Microsoft R Open ve Math Kernel Library'ye sahip Machine Learning Server bulunur. Math Kernel Library analitik algoritmalarda yaygın matematik işlemlerini optimize eder. R Open, CRAN R ile tamamen uyumludur. CRAN'da yayınlanan R kütüphanelerinden herhangi biri R Open'a yüklenebilir. 
 
-R modellerini Web Hizmetleri 'nde ölçeklendirmek ve kullanıma almak için Machine Learning Server kullanabilirsiniz. RStudio, olduğu gibi vi veya Emacs gibi varsayılan düzenleyicilerden biriyle R programlarınızın düzenleyebilirsiniz. Emacs Düzenleyicisi DSVM 'ye önceden yüklenir. Emacs ESS (Emacs Hoparlörks Istatistikleri) paketi Emacs düzenleyicisinde R dosyalarıyla çalışmayı basitleştirir.
+R modellerini web hizmetlerine ölçeklendirmek ve işlevsel hale getirmek için Machine Learning Server'ı kullanabilirsiniz. R programlarınızı RStudio, vi veya Emacs gibi varsayılan düzenleyicilerden birinde edinebilirsiniz. Emacs düzenleyicisi DSVM'ye önceden yüklenmiş. Emacs ESS (Emacs Speaks Statistics) paketi, Emacs düzenleyicisindeki R dosyalarıyla çalışmayı kolaylaştırır.
 
-R konsolunu açmak için, kabukta **r**yazın. Bu komut sizi etkileşimli bir ortama götürür. R programınızı geliştirmek için, genellikle Emacs veya VI gibi bir düzenleyici kullanır ve ardından komut dosyalarını R. RStudio 'da çalıştırmak, R programınızı geliştirmek için tam bir grafik IDE sunar.
+R konsolu açmak için, kabuk içinde, **R**girin . Bu komut sizi etkileşimli bir ortama götürür. R programınızı geliştirmek için genellikle Emacs veya vi gibi bir düzenleyici kullanırsınız ve r. RStudio'daki komut dosyalarını çalıştırırsınız ve R programınızı geliştirmek için tam bir grafik IDE sunar.
 
-[İlk 20 R paketini](https://www.kdnuggets.com/2015/06/top-20-r-packages.html) yüklemek için kullanabileceğiniz bir R BETIĞI dsvm 'ye dahildir. R etkileşimli arabiriminizdeki bu betiği çalıştırabilirsiniz. Daha önce belirtildiği gibi, bu arabirimi açmak için kabukta **R**yazın.  
+[En iyi 20 R paketlerini](https://www.kdnuggets.com/2015/06/top-20-r-packages.html) yüklemek için kullanabileceğiniz bir R komut dosyası DSVM'ye dahildir. R etkileşimli arabirimindeyken bu komut dosyasını çalıştırabilirsiniz. Daha önce de belirtildiği gibi, bu arayüzü açmak için, kabuk, **R**girin .  
 
 ## <a name="python"></a>Python
 
-Anaconda Python, Python 3,5 ve 2,7 ortamları ile birlikte yüklenir. 2,7 ortamına _kök_ adı verilir ve 3,5 ortamı _py35_olarak adlandırılır. Bu dağıtım, temel bir Python yaklaşık 300 en popüler matematik, mühendislik ve veri analizi paketlerinin yanı sıra içerir.
+Anaconda Python Python 3.5 ve 2.7 ortamları ile yüklenir. 2.7 _ortama kök,_ 3.5 ortamına _py35_denir. Bu dağılım, en popüler matematik, mühendislik ve veri analizi paketlerinden yaklaşık 300'ünün yanı sıra temel Python'u da içerir.
 
-Varsayılan py35 ortamıdır. Kök (2,7) ortamını etkinleştirmek için şu komutu kullanın:
+Py35 ortamı varsayılandır. Kök (2.7) ortamını etkinleştirmek için şu komutu kullanın:
 
 ```bash
 source activate root
@@ -78,58 +78,58 @@ Py35 ortamını yeniden etkinleştirmek için şu komutu kullanın:
 source activate py35
 ```
 
-Python etkileşimli oturumunu çağırmak için, kabukta **Python**girin. 
+Python etkileşimli oturumçağırmak için, kabuk içinde, **python**girin. 
 
-Conda veya PIP kullanarak ek Python kitaplıkları kurun. PIP için, varsayılan değer istemiyorsanız, önce doğru ortamı etkinleştirin:
+Conda veya pip kullanarak ek Python kitaplıkları yükleyin. Pip için, varsayılanı istemiyorsanız önce doğru ortamı etkinleştirin:
 
 ```bash
 source activate root
 pip install <package>
 ```
 
-Veya pip için tam yolu belirtin:
+Veya pip için tam yol belirtin:
 
 ```bash
 /anaconda/bin/pip install <package>
 ```
 
-Conda 'nın her zaman ortam adını (py35 veya root) belirtmeniz gerekir:
+Conda için her zaman çevre adını (py35 veya root) belirtmelisiniz:
 
 ```bash
 conda install <package> -n py35
 ```
 
-Grafik arabiriminiz varsa veya X11 iletmeyi ayarladıysanız, Pydüğme Python IDE 'yi açmak için **pydüğme** girebilirsiniz. Varsayılan metin düzenleyicisi kullanabilirsiniz. Ayrıca, Anaconda Python dağıtımları ile paketlenmiş bir Python IDE olan Spyder kullanabilirsiniz. Grafik bir masaüstü veya X11 Spyder gereken iletme. Grafik masaüstünde Spyder kısayolu bulunur.
+Grafik bir arabirimdeyseniz veya X11 yönlendirmeniz ayarlanmışsa, PyCharm Python IDE'yi açmak için **pycharm'a** girebilirsiniz. Varsayılan metin düzenleyicilerini kullanabilirsiniz. Buna ek olarak, Anaconda Python dağıtımları ile birlikte bir Python IDE Spyder kullanabilirsiniz. Spyder bir grafik masaüstü veya X11 yönlendirme gerekir. Grafik masaüstü Spyder için bir kısayol vardır.
 
 ## <a name="jupyter-notebook"></a>Jupyter Notebook
 
-Anaconda dağıtımı, kod ve analiz paylaşmak için bir ortam Jupyter Notebook de birlikte gelir. Jupyıterhub üzerinden Jupyter Notebook erişin. Yerel Linux Kullanıcı adınızı ve parolanızı kullanarak oturum açın.
+Anaconda dağıtım da jupyter Notebook, kod ve analiz paylaşmak için bir ortam ile birlikte gelir. Jupyter Notebook'a JupyterHub üzerinden erişin. Yerel Linux kullanıcı adınızı ve şifrenizi kullanarak oturum açın.
 
-Jupyter Notebook sunucusu Python 2, Python 3 ve R kernels ile önceden yapılandırılmıştır. Tarayıcıyı açmak ve Jupyter Notebook sunucusuna erişmek için **Jupyter Notebook** masaüstü simgesini kullanın. DSVM 'ye SSH veya X2Go istemcisi aracılığıyla eriştiğinizde, https:\//localhost: 8000/konumundaki Jupyter Notebook sunucusuna da erişebilirsiniz.
-
-> [!NOTE]
-> Hiçbir sertifika uyarısı alırsanız devam edin.
-
-Jupyter notebook sunucusu herhangi bir ana bilgisayardan erişebilirsiniz. **Https:\//\<DSVM DNS adını veya IP adresini girin\>: 8000/** .
+Jupyter Notebook sunucusu Python 2, Python 3 ve R çekirdekleri ile önceden yapılandırılmıştır. Tarayıcıyı açmak ve Jupyter Notebook sunucusuna erişmek için **Jupyter Notebook** masaüstü simgesini kullanın. DSVM'ye SSH veya X2Go istemcisi üzerinden erişirseniz, https:\//localhost:8000/ adresindeki Jupyter Notebook sunucusuna da erişebilirsiniz.
 
 > [!NOTE]
-> DSVM sağlandığında, bağlantı noktası 8000 güvenlik duvarında varsayılan olarak açılır. 
+> Sertifika uyarıları alırsanız devam edin.
 
-Microsoft, bir tane Python ve diğeri R 'de örnek Not defterleri paketlenir. Yerel Linux Kullanıcı adınızı ve parolanızı kullanarak Jupyter Notebook kimlik doğrulamasından geçtikten sonra Jupyter Notebook giriş sayfasındaki örneklerin bağlantısını görebilirsiniz. Yeni bir not defteri oluşturmak için **Yeni**' yi seçin ve ardından kullanmak istediğiniz dil çekirdeğini seçin. **Yeni** düğmesini görmüyorsanız, sol üstteki **Jupyter** simgesini seçerek not defteri sunucusunun ana sayfasına gidin.
+Jupyter dizüstü bilgisayar sunucusuna herhangi bir ana bilgisayardan erişebilirsiniz. **https\//\<girin: DSVM DNS\>adı veya IP adresi :8000/**.
 
-## <a name="spark-standalone"></a>Spark tek başına 
+> [!NOTE]
+> DSVM sağlandığında bağlantı noktası 8000 varsayılan olarak güvenlik duvarında açılır. 
 
-Spark bağımsız modunun bir örneği, bunları test etmeden ve bunları büyük kümelerle dağıtmadan önce yerel olarak Spark uygulamaları geliştirmenize yardımcı olmak için Linux DSVM 'ye önceden yüklenir. 
+Microsoft, biri Python'da, diğeri R'de olmak üzere örnek not defterlerini paketlemiştir. Yerel Linux kullanıcı adınızı ve şifrenizi kullanarak Jupyter Notebook'a kimlik doğrulaması yaptıktan sonra Jupyter Notebook ana sayfasındaörneklerin bağlantısını görebilirsiniz. Yeni bir not defteri oluşturmak için **Yeni'yi**seçin ve ardından kullanmak istediğiniz dil çekirdeğini seçin. **Yeni** düğmesini görmüyorsanız, not defteri sunucusunun ana sayfasına gitmek için sol üstteki **Jupyter** simgesini seçin.
 
-PySpark programlar Jupyter çekirdek çalıştırabilirsiniz. Jupyter açtığınızda, **Yeni** düğmesini seçin ve kullanılabilir çekirdekler listesini görmeniz gerekir. **Spark-Python** , Python dilini kullanarak Spark uygulamaları oluşturmanıza olanak sağlayan pyspark çekirdeğidir. Spark programınızı oluşturmak için Pydüğme veya Spyder gibi bir Python IDE de kullanabilirsiniz. 
+## <a name="spark-standalone"></a>Kıvılcım Tek Başına 
 
-Bu tek başına örneğinde, Spark Stack çağıran istemci programında çalışır. Bu özellik, Spark kümesinde geliştirme ile karşılaştırıldığında sorun gidermeyi daha hızlı ve kolay hale getirir.
+Spark Bağımsız modunun bir örneği, spark uygulamalarını büyük kümeler üzerinde test etmeden ve dağıtmadan önce yerel olarak geliştirmenize yardımcı olmak için Linux DSVM'de önceden yüklenir. 
 
-Jupyter bir örnek PySpark Not defteri sağlar. Bu dosyayı jupi 'nın giriş dizini ($HOME/Notebooks/mini can ml/pyspark) altında can ml dizininde bulabilirsiniz. 
+PySpark programlarını Jupyter çekirdeğinden çalıştırabilirsiniz. Jupyter'ı açtığınızda, **Yeni** düğmesini seçin ve kullanılabilir çekirdeklerin listesini görmeniz gerekir. **Spark - Python,** Python dilini kullanarak Spark uygulamalarını oluşturmanıza olanak tanıyan PySpark çekirdeğidir. Ayrıca Spark programı oluşturmak için PyCharm veya Spyder gibi bir Python IDE kullanabilirsiniz. 
 
-Spark için R 'de Programlama yapıyorsanız Machine Learning Server, parlak r veya parlak LYR ' yi kullanabilirsiniz. 
+Bu bağımsız durumda, Spark yığını çağıran istemci programında çalışır. Bu özellik, bir Kıvılcım kümesinde geliştirmeye kıyasla sorunları daha hızlı ve daha kolay gidermeyi sağlar.
 
-Machine Learning Server bir Spark bağlamında çalıştırmadan önce, yerel bir tek düğümlü Hadoop ve YARN örneğini etkinleştirmek için bir kerelik Kurulum adımı yapmanız gerekir. Varsayılan olarak, Hadoop Hizmetleri yüklendi ancak DSVM'nin devre dışı. Hadoop hizmetlerini etkinleştirmek için, ilk kez kök olarak aşağıdaki komutları çalıştırın:
+Jupyter örnek bir PySpark dizüstü bilgisayar sağlar. Jupyter ev dizini altında SparkML dizini bulabilirsiniz ($HOME / dizüstü / SparkML / pySpark). 
+
+R for Spark'ta programlıyorsanız, Machine Learning Server, SparkR veya Sparklyr'ı kullanabilirsiniz. 
+
+Machine Learning Server'da Bir Kıvılcım bağlamında çalıştırmadan önce, yerel tek düğümlü Hadoop HDFS ve İPN örneğini etkinleştirmek için tek seferlik bir kurulum adımı yapmanız gerekir. Varsayılan olarak, Hadoop hizmetleri yüklenir, ancak DSVM'de devre dışı bırakılır. Hadoop hizmetlerini etkinleştirmek için, aşağıdaki komutları ilk kez kök olarak çalıştırın:
 
 ```bash
 echo -e 'y\n' | ssh-keygen -t rsa -P '' -f ~hadoop/.ssh/id_rsa
@@ -141,127 +141,127 @@ chown hadoop:hadoop ~hadoop/.ssh/authorized_keys
 systemctl start hadoop-namenode hadoop-datanode hadoop-yarn
 ```
 
-`systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn`çalıştırarak Hadoop ile ilgili hizmetleri durdurmanız gerekmez.
+Hadoop ile ilgili hizmetleri çalıştırarak `systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn`bunlara ihtiyacınız olmadığında durdurabilirsiniz.
 
-/Dsvm/samples/MRS dizini, uzak Spark bağlamında Machine Learning Server geliştirme ve test etme (DSVM 'deki tek başına Spark örneği) hakkında bir örnek sağlar.
+/dsvm/samples/MRS dizini, Machine Learning Server'ın uzak bir Kıvılcım bağlamında nasıl geliştirileceği ve test edilebildiğini gösteren bir örnek sağlar (DSVM'deki bağımsız Kıvılcım örneği).
 
-## <a name="ides-and-editors"></a>IDE'ler ve düzenleyicilerden
+## <a name="ides-and-editors"></a>IID'ler ve editörler
 
-VI/VıM, Emacs, gedit, Pylt, RStudio, tutulma, LaTeX ve IntelliJ gibi çeşitli kod düzenleyicilerinden seçim yapabilirsiniz. 
+Vi/VIM, Emacs, gedit, PyCharm, RStudio, Eclipse, LaTeX ve IntelliJ gibi çeşitli kod editörleri arasından seçim yapabilirsiniz. 
 
-* gedit, tutulma, IntelliJ, R Studio ve Pyı düğmesi grafik düzenleyicilerdir. Bunları kullanmak için bir grafik masaüstünde oturum açmış olmanız gerekir. Bunları masaüstü ve uygulama menüsü kısayollarını kullanarak açarsınız.
+* gedit, Eclipse, IntelliJ, R Studio ve PyCharm grafik editörleridir. Bunları kullanmak için grafik bir masaüstünde oturum açmış olmalısınız. Masaüstü ve uygulama menüsü kısayollarını kullanarak açarsınız.
 
-* VIM ve Emacs metin tabanlı düzenleyicilerlerdir. Emacs 'de, ESS eklentisi paketi Emacs düzenleyicisinde R ile çalışmayı kolaylaştırır. [ESS Web sitesi](https://ess.r-project.org/)hakkında daha fazla bilgi edinebilirsiniz.
+* Vim ve Emacs metin tabanlı editörlerdir. Emacs'ta ESS eklenti paketi, Emacs düzenleyicisinde R ile çalışmayı kolaylaştırır. Ess [web sitesinde](https://ess.r-project.org/)daha fazla bilgi bulabilirsiniz.
 
-* Çakışan Küreler, birden çok dili destekleyen açık kaynaklı, genişletilebilir bir IDE 'dir. Java geliştiricileri için tutulma IDE, DSVM 'de yüklü olan sürümdür. Ortamı genişletmek için çeşitli popüler diller için eklentiler yükleyebilirsiniz. 
+* Eclipse, birden çok dili destekleyen açık kaynak kodlu, genişletilebilir bir IDE'dir. Java Geliştiriciler için Eclipse IDE sürümü DSVM yüklü. Ortamı genişletmek için birkaç popüler dil için eklentiler yükleyebilirsiniz. 
 
-  Azure Toolkit for Eclipse eklentisi DSVM 'de tutulma ile birlikte yüklenir. Java gibi dilleri destekleyen tutulma geliştirme ortamını kullanarak Azure uygulamalarını oluşturmak, geliştirmek, test etmek ve dağıtmak için Azure Toolkit for Eclipse kullanabilirsiniz.
+  Eclipse eklentisi için Azure Araç Seti, Eclipse ile DSVM'de yüklüdür. Azure Araç Kiti'ni, Java gibi dilleri destekleyen Eclipse geliştirme ortamını kullanarak Azure uygulamaları oluşturmak, geliştirmek, sınamak ve dağıtmak için Eclipse için Azure Araç Kiti'ni kullanabilirsiniz.
 
-  Java için Azure SDK, DSVM 'deki Azure Toolkit for Eclipse de yüklenir. Java için Azure SDK, Java ortamının içinden farklı Azure hizmetlerine erişmenizi sağlar. 
+  Java için Azure SDK, DSVM'deki Eclipse için Azure Araç Seti ile de yüklenir. Java için Azure SDK, Java ortamından farklı Azure hizmetlerine erişmenizi sağlar. 
   
   Daha fazla bilgi için bkz. [Azure Toolkit for Eclipse](/java/azure/eclipse/azure-toolkit-for-eclipse).
 
-* LaTeX, TeXLive paketiyle birlikte [Auctex](https://www.gnu.org/software/auctex/manual/auctex/auctex.html)adlı bir Emacs eklenti paketi ile yüklenir. Bu paket, Emacs 'de LaTeX belgelerinizi yazmayı basitleştirir. 
+* LaTeX texlive paketi üzerinden, [auctex](https://www.gnu.org/software/auctex/manual/auctex/auctex.html)denilen bir Emacs eklenti paketi ile birlikte yüklenir. Bu paket, LaTeX belgelerinizi Emacs'ta yazmanızı kolaylaştırır. 
 
 ## <a name="databases"></a>Veritabanları
 
-Linux DSVM, çeşitli veritabanı ve komut satırı araçlarına erişmenizi sağlar.
+Linux DSVM çeşitli veritabanı ve komut satırı araçlarına erişim sağlar.
 
 ### <a name="postgressql"></a>PostgresSQL
 
-Açık kaynaklı veritabanı PostgresSQL, çalıştıran hizmetler ve ınitdb tamamlandığında DSVM 'de kullanılabilir. Veritabanları ve kullanıcılar oluşturmanız gerekir. Daha fazla bilgi için bkz. [Postgressql belgeleri](https://www.postgresql.org/docs/).  
+Açık kaynak veritabanı PostgresSQL, DSVM'de kullanılabilir ve hizmetler çalışır ve initdb tamamlanır. Veritabanları ve kullanıcılar oluşturmanız gerekir. Daha fazla bilgi için [PostgresSQL belgelerine](https://www.postgresql.org/docs/)bakın.  
 
-### <a name="squirrel-sql"></a>SQUIRREL SQL
+### <a name="squirrel-sql"></a>SQuirreL SQL
 
-SQUIRREL SQL, çeşitli veritabanlarına (SQL Server, PostgresSQL ve MySQL dahil) bağlanabilecek ve SQL sorguları çalıştırabilecek bir grafik SQL istemcidir. Bir masaüstü simgesi kullanarak, bir grafik Masaüstü oturumundan (örneğin, X2Go istemcisi aracılığıyla) SQUIRREL SQL 'i çalıştırabilirsiniz. Ya da kabuğu içinde aşağıdaki komutu kullanarak istemcisini çalıştırabilirsiniz:
+SQuirreL SQL, çeşitli veritabanlarına (SQL Server, PostgresSQL ve MySQL dahil) bağlanabilen ve SQL sorgularını çalıştırabilen grafiksel bir SQL istemcisidir. Bir masaüstü simgesi kullanarak squirreL SQL'i grafik sel masaüstü oturumundan (örneğin X2Go istemcisi aracılığıyla) çalıştırabilirsiniz. Veya kabuktaki aşağıdaki komutu kullanarak istemciyi çalıştırabilirsiniz:
 
 ```bash
 /usr/local/squirrel-sql-3.7/squirrel-sql.sh /usr/local/squirrel-sql-3.7/squirrel-sql.sh
 ```
 
-İlk kullanılmadan önce sürücüleri ve veritabanı diğer adlar ayarlayın. JDBC sürücüleri/usr/share/Java/jdbcdrivers. adresinde bulunur
+İlk kullanımdan önce, sürücülerinizi ve veritabanı takma adlarınızı ayarlayın. JDBC sürücüleri /usr/share/java/jdbcdrivers adresinde bulunmaktadır.
 
-Daha fazla bilgi için bkz. [SQUIRREL SQL](http://squirrel-sql.sourceforge.net/index.php?page=screenshots).
+Daha fazla bilgi için [Bkz. SQuirreL SQL.](http://squirrel-sql.sourceforge.net/index.php?page=screenshots)
 
-### <a name="command-line-tools-for-accessing-sql-server"></a>SQL Server erişmek için komut satırı araçları
+### <a name="command-line-tools-for-accessing-sql-server"></a>SQL Server'a erişmek için komut satırı araçları
 
-SQL Server için ODBC sürücü paketi ayrıca iki komut satırı araçları ile birlikte gelir:
+SQL Server için ODBC sürücü paketi de iki komut satırı araçları ile birlikte gelir:
 
-* **bcp**: bcp Aracı, bir SQL Server örneği ve Kullanıcı tarafından belirtilen biçimdeki bir veri dosyası arasında verileri toplu olarak kopyalar. BCP aracını kullanarak çok sayıda yeni satırı SQL Server tablolarına aktarabilir veya tablolardaki verileri veri dosyalarına aktarabilirsiniz. Verileri bir tabloya aktarmak için, bu tablo için oluşturulmuş bir biçim dosyası kullanmanız gerekir. Ya da tablonun yapısını ve sütunlarının geçerli olan veri türlerini anlamanız gerekir.
+* **bcp**: BCP aracı, SQL Server örneği ile kullanıcı tarafından belirtilen biçimde bir veri dosyası arasındaki verileri toplu kopyalar. BCP aracını, çok sayıda yeni satırı SQL Server tablolarına aktarmak veya tablolardaki verileri veri dosyalarına aktarmak için kullanabilirsiniz. Verileri tabloya almak için, bu tablo için oluşturulan biçim dosyası kullanmanız gerekir. Veya, tablonun yapısını ve sütunları için geçerli olan veri türlerini anlamanız gerekir.
 
-  Daha fazla bilgi için bkz. [bcp Ile bağlanma](https://msdn.microsoft.com/library/hh568446.aspx).
+  Daha fazla bilgi için [bcp ile bağlan'a](https://msdn.microsoft.com/library/hh568446.aspx)bakın.
 
-* **sqlcmd**: sqlcmd yardımcı programını kullanarak Transact-SQL deyimlerini, sistem yordamlarını ve komut dosyası dosyalarını komut istemine girebilirsiniz. Sqlcmd yardımcı programı Transact-SQL toplu işlerini yürütmek için ODBC kullanır.
+* **sqlcmd**: Transact-SQL deyimlerini, sistem yordamlarını ve komut dosyalarını komut istemine girmek için sqlcmd yardımcı programını kullanabilirsiniz. Sqlcmd yardımcı programı, Transact-SQL toplu işlerini yürütmek için ODBC kullanır.
 
-  Daha fazla bilgi için bkz. [sqlcmd Ile bağlanma](https://msdn.microsoft.com/library/hh568447.aspx).
+  Daha fazla bilgi için [sqlcmd ile Bağlan'a](https://msdn.microsoft.com/library/hh568447.aspx)bakın.
 
   > [!NOTE]
-  > Bu araçta Linux ve Windows platformları arasında bazı farklılıklar vardır. Ayrıntılar için belgelere bakın.
+  > Linux ve Windows platformları arasında bu araçta bazı farklılıklar vardır. Ayrıntılar için belgelere bakın.
 
-### <a name="database-access-libraries"></a>Veritabanı erişimi kitaplıkları
+### <a name="database-access-libraries"></a>Veritabanı erişim kitaplıkları
 
-Veritabanı erişimi kitaplıkları R ve Python 'da kullanılabilir:
+Veritabanı erişimi için kitaplıklar R ve Python'da kullanılabilir:
 
-* R 'de, RODBC paketini veya dplyr paketini kullanarak veritabanı sunucusundaki SQL deyimlerini sorgulayabilir veya çalıştırabilirsiniz.
-* Python 'da pyodbc kitaplığı, temel alınan katman olarak ODBC ile veritabanı erişimi sağlar.
+* R'de, veritabanı sunucusunda SQL deyimlerini sorgulamak veya çalıştırmak için RODBC paketini veya dplyr paketini kullanabilirsiniz.
+* Python'da pyodbc kitaplığı, altta yatan katman olarak ODBC ile veritabanı erişimi sağlar.
 
-## <a name="azure-tools"></a>Azure Araçları
+## <a name="azure-tools"></a>Azure araçları
 
-Aşağıdaki Azure Araçları DSVM 'ye yüklenir:
+Aşağıdaki Azure araçları DSVM'ye yüklenir:
 
-* **Azure CLI**: Azure 'da kabuk komutları aracılığıyla Azure kaynakları oluşturmak ve yönetmek için komut satırı arabirimini kullanabilirsiniz. Azure araçlarını açmak için **Azure yardımı**'nı girin. Daha fazla bilgi için bkz. [Azure CLI belgeleri sayfası](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2).
-* **Azure Depolama Gezgini**: Azure Depolama Gezgini, Azure depolama hesabınızda depoladığınız nesneler üzerinde gezinmek ve Azure bloblarına ve veri yüklemek için kullanabileceğiniz bir grafik aracıdır. Depolama Gezgini masaüstü kısayolu simgesinden erişebilirsiniz. Ayrıca, bunu bir kabuk isteminden **Storageexplorer**girerek açabilirsiniz. Bir X2Go istemcisinden oturum açmanız veya X11 iletme ayarlamış olmanız gerekir.
-* **Azure kitaplıkları**: aşağıdaki kitaplıklar dsvm 'ye önceden yüklenir:
+* **Azure CLI**: Azure'daki komut satırı arabirimini kullanarak Azure kaynaklarını kabuk komutları aracılığıyla oluşturabilir ve yönetebilirsiniz. Azure araçlarını açmak için **azure yardımı**girin. Daha fazla bilgi için [Azure CLI dokümantasyon sayfasına](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)bakın.
+* **Azure Depolama Gezgini**: Azure Depolama Gezgini, Azure depolama hesabınızda depoladığınız nesnelere göz atmak ve Azure blob'larına veri yüklemek ve indirmek için kullanabileceğiniz bir grafik aracıdır. Depolama Gezgini'ne masaüstü kısayol simgesinden erişebilirsiniz. Ayrıca **StorageExplorer**girerek bir kabuk istemi açabilirsiniz. Bir X2Go istemcisinden oturum açmış olmalısınız veya X11 iletme kurulumu nuz gerekir.
+* **Azure kitaplıkları**: Aşağıdaki kitaplıklar DSVM'ye önceden yüklenir:
   
-  * **Python**: Python 'daki Azure ile ilgili kitaplıklar *Azure*, *azureml*, *pydocumentdb*ve *pyodbc*. İlk üç kitaplıkları ile Azure depolama hizmetleri, Azure Machine Learning ve Azure Cosmos DB (Azure üzerinde bir NoSQL veritabanı) erişebilir. Dördüncü kitaplığı pyodbc (yanı sıra Microsoft ODBC sürücüsü için SQL Server) erişimi etkinleştirir SQL Server, Azure SQL veritabanı ve Azure SQL veri ambarı python'dan ODBC arabirimini kullanarak. Listelenen tüm kitaplıkları görmek için **PIP listesini** girin. Hem Python 2.7 hem de 3,5 ortamlarında bu komutu çalıştırmak emin olun.
-  * **R**: r 'deki Azure ile Ilgili kitaplıklar AZUREML ve rodbc.
-  * **Java**: dsvm 'de/dsvm/sdk/AzureSDKJava dizininde Azure Java kitaplıklarının listesi bulunabilir. Anahtar kitaplıkları, SQL Server için Azure depolama ve Yönetimi API'leri, Azure Cosmos DB ve JDBC sürücüleri vardır.  
+  * **Python**: Python'daki Azure ile ilgili kitaplıklar *azure*, *azureml*, *pydocumentdb*ve *pyodbc'dir.* İlk üç kitaplıkla Azure depolama hizmetlerine, Azure Machine Learning'e ve Azure Cosmos DB'ye (Azure'da NoSQL veritabanı) erişebilirsiniz. Dördüncü kitaplık pyodbc (SQL Server için Microsoft ODBC sürücüsü ile birlikte), ODBC arabirimi kullanarak Python'dan SQL Server, Azure SQL Veritabanı ve Azure SQL Veri Ambarı'na erişim sağlar. Listelenen tüm kitaplıkları görmek için **pip listesini** girin. Bu komutu hem Python 2.7 hem de 3.5 ortamlarında çalıştırdığından emin olun.
+  * **R**: R'deki Azure ile ilgili kitaplıklar AzureML ve RODBC'dir.
+  * **Java**: Azure Java kitaplıklarının listesi DSVM'deki /dsvm/sdk/AzureSDKJava dizininde bulunabilir. Önemli kitaplıklar, SQL Server için Azure depolama ve yönetim API'leri, Azure Cosmos DB ve JDBC sürücüleridir.  
 
-[Azure Portal](https://portal.azure.com) önceden yüklenmiş Firefox tarayıcısından erişebilirsiniz. Azure portal Azure kaynaklarını oluşturabilir, yönetebilir ve izleyebilirsiniz.
+[Azure portalına](https://portal.azure.com) önceden yüklenmiş Firefox tarayıcısından erişebilirsiniz. Azure portalında Azure kaynaklarını oluşturabilir, yönetebilir ve izleyebilirsiniz.
 
 ## <a name="azure-machine-learning"></a>Azure Machine Learning
 
-Azure Machine Learning, tahmine dayalı analiz çözümleri oluşturmak, dağıtmak ve paylaşmak için kullanabileceğiniz tam olarak yönetilen bir bulut hizmetidir. Azure Machine Learning Studio (klasik), denemeleri ve modellerinizi oluşturursunuz. DSVM 'deki bir Web tarayıcısından Azure Machine Learning erişmek için [Microsoft Azure Machine Learning](https://studio.azureml.net)gidin.
+Azure Machine Learning, tahmine dayalı analitik çözümleri oluşturmak, dağıtmak ve paylaşmak için kullanabileceğiniz tam olarak yönetilen bir bulut hizmetidir. Denemelerinizi ve modellerinizi Azure Machine Learning Studio'dan (klasik) oluşturursunuz. Azure Machine Learning'e DSVM'deki bir web tarayıcısından erişmek için [Microsoft Azure Machine Learning'e](https://studio.azureml.net)gidin.
 
-Azure Machine Learning Studio (klasik) ' da oturum açtıktan sonra, makine öğrenimi algoritmaları için bir mantıksal akış oluşturmak üzere deneme tuvalinden yararlanabilirsiniz. Ayrıca, Azure Machine Learning barındırılan bir Jupyter Notebook erişiminiz vardır. Not defteri, Azure Machine Learning Studio (klasik) içinde denemeleri ile sorunsuz bir şekilde çalışabilir. 
+Azure Machine Learning Studio'da (klasik) oturum imzaladıktan sonra, makine öğrenimi algoritmaları için mantıksal bir akış oluşturmak için bir deneme tuvali kullanabilirsiniz. Azure Machine Learning'de barındırılan bir Jupyter Notebook'a da erişebilirsiniz. Not defteri, Azure Machine Learning Studio'daki (klasik) denemelerle sorunsuz bir şekilde çalışabilir. 
 
-Oluşturduğunuz makine öğrenimi modellerini bir Web hizmeti arabirimine sarmalayarak oluşturun. Makine öğrenimi modelleri, herhangi bir dilde yazılmış istemcilerin bu modellerdeki tahminleri çağırmasına olanak sağlar. Daha fazla bilgi için [Machine Learning belgelerine](https://azure.microsoft.com/documentation/services/machine-learning/)bakın.
+Oluşturduğunuz makine öğrenimi modellerini bir web hizmeti arabirimine sararak operasyonel hale getirin. Makine öğrenimi modellerinin operasyonelleştirilmesi, herhangi bir dilde yazılmış istemcilerin bu modellerden öngörüler çağırmasına olanak tanır. Daha fazla bilgi için [Machine Learning belgelerine](https://azure.microsoft.com/documentation/services/machine-learning/)bakın.
 
-Ayrıca, modellerinizi DSVM 'de R veya Python 'da oluşturabilir ve ardından bunları Azure Machine Learning üretime dağıtabilirsiniz. Microsoft, bu işlevselliği desteklemek için R (**azureml**) ve Python (**azureml**) kitaplıklarını yükledi.
+Ayrıca modellerinizi DSVM'de R veya Python'da oluşturabilir ve bunları Azure Machine Learning'de üretime dağıtabilirsiniz. Microsoft, bu işlevselliği desteklemek için R (**AzureML**) ve Python **(azureml)** kitaplıklarını yüklemiştir.
 
-Azure Machine Learning için R ve Python modelleri dağıtma hakkında daha fazla bilgi için, bkz. [veri bilimi sanal makinesi üzerinde yapabileceğiniz on şey](vm-do-ten-things.md).
+R ve Python'daki modelleri Azure Machine Learning'e nasıl dağıtabileceğiniz hakkında bilgi için [Data Science Virtual Machine'de yapabileceğiniz on şeye](vm-do-ten-things.md)bakın.
 
 > [!NOTE]
-> [Veri bilimi sanal makinesi üzerinde yapabileceğiniz on şey](vm-do-ten-things.md) , Dsvm 'nin Windows sürümü için yazılmıştır. Ancak Azure Machine Learning modelleri dağıtma hakkında bilgiler Linux DSVM için de geçerlidir.
+> [Veri Bilimi Sanal Makine](vm-do-ten-things.md) yapabileceğiniz On şey talimatları DSVM Windows sürümü için yazılmıştır. Ancak, modelleri Azure Machine Learning'e dağıtma hakkındaki bilgiler Linux DSVM için de geçerlidir.
 
-## <a name="machine-learning-tools"></a>Machine learning araçları
+## <a name="machine-learning-tools"></a>Makine öğrenimi araçları
 
-DSVM, önceden derlenmiş ve yerel olarak önceden yüklenmiş birkaç makine öğrenimi aracı ve algoritmalarıyla birlikte gelir. Bunlar:
+DSVM, önceden derlenmiş ve yerel olarak önceden yüklenmiş birkaç makine öğrenimi aracı ve algoritması ile birlikte gelir. Bunlar:
 
-* **Microsoft Cognitive Toolkit**: derin bir öğrenme araç seti.
-* **Vowpal Wabbit**: hızlı bir çevrimiçi öğrenme algoritması.
-* **Xgboost**: iyileştirilmiş, artırılmış ağaç algoritmaları sağlayan bir araç.
-* **Python**: Anaconda Python, Scikit-öğren gibi kitaplıklar ile makine öğrenimi algoritmalarıyla birlikte sunulur. `pip install` komutunu kullanarak diğer kitaplıkları yükleyebilirsiniz.
-* **R**: r için bir makine öğrenimi işlevleri zengin kitaplığı mevcuttur. önceden yüklenmiş kitaplıklar lm, GLM, rasgeleforest ve rpart ' ı içerir. `install.packages(<lib name>)`çalıştırarak diğer kitaplıkları yükleyebilirsiniz.
+* **Microsoft Cognitive Toolkit**: Derin öğrenme araç seti.
+* **Vowpal Wabbit**: Hızlı bir online öğrenme algoritması.
+* **XGBoost**: Optimize edilmiş, artırılmış ağaç algoritmaları sağlayan bir araçtır.
+* **Python**: Anaconda Python, Scikit-learn gibi kütüphanelerle birlikte makine öğrenimi algoritmalarıyla birlikte gelir. Komutu kullanarak diğer kitaplıkları `pip install` yükleyebilirsiniz.
+* **R**: R. Önceden yüklenmiş kütüphaneler için zengin bir makine öğrenimi işlevleri kütüphanesi mevcuttur lm, glm, randomForest ve rpart. Çalıştırarak diğer kitaplıkları `install.packages(<lib name>)`yükleyebilirsiniz.
 
-Microsoft Cognitive Toolkit, Vowpal Wabbit ve XGBoost, sonraki bölümlerde daha ayrıntılı bir şekilde ele alınmıştır.
+Microsoft Bilişsel Araç Seti, Vowpal Wabbit ve XGBoost sonraki bölümlerde daha ayrıntılı olarak ele alınmıştır.
 
 ### <a name="microsoft-cognitive-toolkit"></a>Microsoft Bilişsel Araç Seti
 
-Microsoft Cognitive Toolkit, açık kaynaklı bir ayrıntılı öğrenme araç seti. Bu bir komut satırı aracıdır (CNTK) ve zaten yolda.
+Microsoft Cognitive Toolkit açık kaynak kodlu bir derin öğrenme araç setidir. Bu bir komut satırı aracı (CNTK) ve zaten PATH'de.
 
-Temel bir örnek çalıştırmak için, kabukta aşağıdaki komutları çalıştırın:
+Temel bir örneği çalıştırmak için kabuktaki aşağıdaki komutları çalıştırın:
 
 ```bash
 cd /home/[USERNAME]/notebooks/CNTK/HelloWorld-LogisticRegression
 cntk configFile=lr_bs.cntk makeMode=false command=Train
 ```
 
-Daha fazla bilgi için bkz. [GITHUB cntk deposu](https://github.com/Microsoft/CNTK) ve [cntk wiki](https://github.com/Microsoft/CNTK/wiki).
+Daha fazla bilgi için [GitHub CNTK deposuna](https://github.com/Microsoft/CNTK) ve [CNTK wiki'ye](https://github.com/Microsoft/CNTK/wiki)bakın.
 
 ### <a name="vowpal-wabbit"></a>Vowpal Wabbit
 
-Vowpal Wabbit, çevrimiçi, karma, allazaltma, indirimleri, learning2search, etkin ve etkileşimli öğrenimi gibi teknikler kullanan bir makine öğrenimi sistemidir.
+Vowpal Wabbit online, karma, allreduce, azaltma, learning2search, aktif ve interaktif öğrenme gibi teknikleri kullanan bir makine öğrenme sistemidir.
 
 Aracı temel bir örnekte çalıştırmak için aşağıdaki komutları çalıştırın:
 
@@ -271,17 +271,17 @@ cd vwdemo
 vw house_dataset
 ```
 
-Vowpal Wabbit tanıtım dizini diğer, daha büyük gösterileri içerir. Vowpal Wabbit hakkında daha fazla bilgi için [GitHub Vowpal Wabbit deposuna](https://github.com/JohnLangford/vowpal_wabbit) ve [Vowpal Wabbit wiki](https://github.com/JohnLangford/vowpal_wabbit/wiki)bölümüne bakın.
+Vowpal Wabbit demo dizini diğer, daha büyük demolar içerir. Vowpal Wabbit hakkında daha fazla bilgi için [GitHub Vowpal Wabbit deposu](https://github.com/JohnLangford/vowpal_wabbit) ve [Vowpal Wabbit wiki sayfasına](https://github.com/JohnLangford/vowpal_wabbit/wiki)bakın.
 
 ### <a name="xgboost"></a>XGBoost
 
-XGBoost kitaplığı, artırılmış (ağaç) algoritmaları için tasarlanmış ve iyileştirilmiştir. XGBoost kitaplığı amacı, ölçeklenebilir, taşınabilir ve doğru olan büyük ölçekli ağaç arttırma sağlamak için makinelerin hesaplama sınırlarını gereken aşırı uç 'e göndermektir.
+XGBoost kitaplığı artırılmış (ağaç) algoritmaları için tasarlanmış ve optimize edilmiştir. XGBoost kütüphanenin amacı ölçeklenebilir, taşınabilir ve doğru büyük ölçekli ağaç artırma sağlamak için gerekli aşırı makinelerin hesaplama sınırlarını itmektir.
 
-XGBoost, bir komut satırı ve R kitaplığı olarak sağlanır.
+XGBoost bir komut satırı ve R kitaplığı olarak sağlanır.
 
-R 'de XGBoost kitaplığını kullanmak için, etkileşimli bir R oturumu başlatın (kabukta **r**yazın) ve ardından kitaplığı yükleyin.
+R'deki XGBoost kitaplığını kullanmak için etkileşimli bir R oturumu başlatın (kabukta, **R**girin) ve ardından kitaplığı yükleyin.
 
-İşte, R isteminde çalıştırabileceğiniz basit bir örnek:
+Aşağıda, R komut isteminde çalıştırabileceğiniz basit bir örnek verilmiştir:
 
 ```R
 library(xgboost)
@@ -303,46 +303,46 @@ cd xgboostdemo
 xgboost mushroom.conf
 ```
 
-Bir. model dosyası belirtilen dizine yazılır. GitHub 'da bu tanıtım örneği hakkında daha fazla bilgi için bkz. [Ikili sınıflandırma](https://github.com/dmlc/xgboost/tree/master/demo/binary_classification).
+Bir .model dosyası belirtilen dizine yazılır. GitHub'daki bu demo örneği hakkında bilgi için [Ikili Sınıflandırma'ya](https://github.com/dmlc/xgboost/tree/master/demo/binary_classification)bakın.
 
-XGBoost hakkında daha fazla bilgi için, bkz. [xgboost belgeleri](https://xgboost.readthedocs.org/en/latest/) ve [Xgboost GitHub deposu](https://github.com/dmlc/xgboost).
+XGBoost hakkında daha fazla bilgi için, [XGBoost belgeleri](https://xgboost.readthedocs.org/en/latest/) ve [XGBoost GitHub deposuna](https://github.com/dmlc/xgboost)bakın.
 
-### <a name="rattle"></a>Çıngırağı
+### <a name="rattle"></a>Rattle
 
-Rattle (*R* *A*Nalitik *T*OOL *T*o *L*kazanın) GUI tabanlı veri araştırması ve modelleme kullanır. Rattle:
+Çıngırak *(R* *A*nalytical *T*ool *T*o *L*asily *E*kazanmak) GUI tabanlı veri arama ve modelleme kullanır. Çıngırak:
 - Verilerin istatistiksel ve görsel özetlerini sunar.
-- Kolay modellenebilir verileri dönüştürür.
-- Verilerden hem denetimli hem de denetimli modeller oluşturur.
-- Modellerin performansını grafik olarak gösterir.
-- Yeni veri kümelerine puan koyar.
+- Kolayca modellenebilen verileri dönüştürür.
+- Verilerden hem denetimsiz hem de denetlenen modeller oluşturur.
+- Modellerin performansını grafiksel olarak sunar.
+- Yeni veri kümeleri puanlar.
 - R kodu oluşturur.
-- Kullanıcı arabirimindeki, doğrudan R 'de çalıştırılabilen veya daha fazla analiz için bir başlangıç noktası olarak kullanılan işlemleri çoğaltır.
+- UI'de doğrudan R'de çalıştırılabilen veya daha fazla çözümleme için başlangıç noktası olarak kullanılabilen işlemleri çoğaltıyor.
 
-Rattle çalıştırmak için bir grafik Masaüstü oturumunda oturum açmış olmanız gerekir. Bir terminalde **r ortamını açmak için r** yazın. R isteminde aşağıdaki komutları girin:
+Rattle'ı çalıştırmak için grafiksel bir masaüstü oturumunda oturum açmış olmalısınız. Bir terminalde, R ortamını açmak için **R** girin. R isteminde aşağıdaki komutları girin:
 
 ```R
 library(rattle)
 rattle()
 ```
 
-Bir sekme kümesi açılan grafik arabirimi açılır. Örnek bir hava durumu verisi kümesi kullanmak ve bir model oluşturmak için Rattle içindeki aşağıdaki hızlı başlangıç adımlarını kullanın. Bazı adımlarda, zaten sistemde olmayan bazı gerekli R paketlerini otomatik olarak yükleyip yüklemeniz istenir.
+Bir sekme kümesi olan grafik arabirimi açılır. Örnek bir hava durumu veri kümesini kullanmak ve bir model oluşturmak için Rattle'da aşağıdaki hızlı başlatma adımlarını kullanın. Bazı adımlarda, sistemde zaten olmayan bazı gerekli R paketlerini otomatik olarak yüklemeniz ve yüklemeniz istenir.
 
 > [!NOTE]
-> Paketi sistem dizinine (varsayılan) yüklemeye yönelik izinleriniz yoksa, kişisel kitaplığınıza paket yüklemek için R konsol pencerenizde bir istem görebilirsiniz. Bu istemler görürseniz **y**girin.
+> Paketi sistem dizinine (varsayılan) yükleme izniniz yoksa, r konsol pencerenizde paketleri kişisel kitaplığınıza yüklemek için bir istem görebilirsiniz. Bu istemleri görürseniz, **y**.
 
 1. **Yürüt**’ü seçin.
-1. Bir iletişim kutusu, örnek Hava durumu veri kümesini yüklemeniz için istemde bulunur. Örneği yüklemek için **Evet** ' i seçin.
+1. Bir iletişim kutusu örnek hava durumu veri kümesini yüklemenizi ister. Örneği yüklemek için **Evet'i** seçin.
 1. **Model** sekmesini seçin.
-1. Bir karar ağacı oluşturmak için **Yürüt** ' ü seçin.
-1. Karar ağacını göstermek için **Çiz** ' i seçin.
-1. **Orman** seçeneğini belirleyin ve sonra rastgele bir orman oluşturmak için **Yürüt** ' ü seçin.
+1. Karar **Execute** ağacı oluşturmak için Yürüt'''ün'u seçin.
+1. Karar ağacını görüntülemek için **Beraberlik'i** seçin.
+1. **Orman** seçeneğini seçin ve ardından rasgele bir orman oluşturmak için Yürüt'''ün'u seçin. **Execute**
 1. **Değerlendir** sekmesini seçin.
-1. **Risk** seçeneğini belirleyin ve ardından iki **risk (birikmeli)** performans grafiğini göstermek için **Yürüt** ' ü seçin.
-1. Önceki işlemler için oluşturulan R kodunu göstermek üzere **günlük** sekmesini seçin. (Rattle 'in geçerli sürümündeki bir hata nedeniyle bu günlüğü, günlük metninde **dışarı aktar** önüne **#** bir karakter eklemeniz gerekir.)
-1. Weather_script adlı R betiği dosyasını kaydetmek için **dışarı aktar** düğmesini seçin *.* Ana klasöre R.
+1. **Risk** seçeneğini seçin ve ardından iki **Risk (Kümülatif)** performans çizimi görüntülemek için **Yürüt'ü** seçin.
+1. Önceki işlemler için oluşturulan R kodunu göstermek için **Günlük** sekmesini seçin. (Rattle'ın geçerli sürümündeki bir hata nedeniyle, **#** bu günlüğü günlüğün metnine **dışa** aktar'ın önüne bir karakter eklemeniz gerekir.)
+1. weather_script adlı R komut dosyası dosyasını kaydetmek için **Dışa** Aktarma düğmesini *seçin. R* ev klasörüne.
 
-Rattle ve R 'den çıkabilirsiniz. Artık oluşturulan R betiğini değiştirebilirsiniz. Ya da, komut dosyasını olduğu gibi kullanın ve Rattle Kullanıcı arabiriminde yapılan her şeyi yinelemek için dilediğiniz zaman çalıştırın. Özellikle R 'deki yeni başlayanlar için bu, basit bir grafik arabiriminde analiz ve makine öğrenimini hızlı bir şekilde yapmanın bir yoludur. bu sayede, R 'de değişiklik yapmak veya öğrenmede kod otomatik olarak oluşturulur.
+Rattle ve R'den çıkabilirsin. Artık oluşturulan R komut dosyasını değiştirebilirsiniz. Veya, komut dosyasını olduğu gibi kullanın ve Rattle UI'de yapılan her şeyi tekrarlamak için her zaman çalıştırın. Özellikle R yeni başlayanlar için, bu hızlı bir şekilde basit bir grafik arayüzü nde analiz ve makine öğrenme yapmak için bir yoldur, otomatik olarak r kod oluştururken değiştirmek veya öğrenmek için.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Başka sorularınız mı var? Bir [destek bileti](https://azure.microsoft.com/support/create-ticket/)oluşturmayı düşünün.
+Başka sorularınız mı var? Destek [bileti](https://azure.microsoft.com/support/create-ticket/)oluşturmayı düşünün.
