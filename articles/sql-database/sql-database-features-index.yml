@@ -1,0 +1,49 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Özellikler
+metadata:
+  title: Azure SQL Veritabanı - Özellikler
+  description: Daha güçlü işlemler yapmanıza ve gelişmiş senaryoları uygulamanıza olanak tanıyan Azure SQL Veritabanı’ndaki veritabanı özelliklerini keşfedin.
+  services: sql-database
+  author: jovanpop-msft
+  manager: craigg
+  ms.service: sql-database
+  ms.tgt_pltfrm: na
+  ms.devlang: null
+  ms.topic: overview
+  ms.date: 02/06/2019
+  ms.author: jovanpop
+sections:
+  - items:
+      - type: paragraph
+        text: 'Azure SQL veritabanı, SQL dilini kullanarak veri sorgulamanıza olanak tanıyan klasik bir ilişkisel veritabanından daha fazlasıdır. Azure SQL Veritabanı’ndaki veritabanı özellikleri, daha güçlü işlemler yapmanıza ve gelişmiş senaryoları uygulamanıza olanak tanır.'
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 3
+        items:
+          - title: Bellek içi teknolojiler
+            href: /azure/sql-database/sql-database-in-memory
+            html: <p>Bellek içi teknolojileri kullanarak yüksek performanslı uygulamalar oluşturun.</p>
+          - title: Çok modelli özellikler
+            href: /azure/sql-database/sql-database-multi-model-features
+            html: '<p>Azure SQL Veritabanı’ndaki Graph, JSON, XML ve Uzamsal özellikler hakkında bilgi edinin.</p>'
+          - title: İşlem çoğaltması
+            href: /azure/sql-database/sql-database-managed-instance-transactional-replication
+            html: <p>Verilerinizi Azure SQL Veritabanı ve SQL Server tablolarında çoğaltın.</p>
+          - title: Data Sync
+            href: /azure/sql-database/sql-database-sync-data
+            html: <p>Birden fazla SQL veritabanı ve SQL Server örneğindeki verileri eşitleyin.</p>
+          - title: İş otomasyonu
+            href: /azure/sql-database/sql-database-job-automation-overview
+            html: <p>SQL Aracısı ve Elastik işleri kullanarak yinelenen görevler zamanlayın.</p>
+          - title: Zamana bağlı tablolar
+            href: /azure/sql-database/sql-database-temporal-tables
+            html: <p>Verilerinizdeki değişikliklerinin tüm geçmişini izleyip analiz edin.</p>
+  - title: Diğer kaynaklar
+    items:
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/sql-database/sql-database-features">SQL Server ve Azure SQL veritabanı özellikleri arasındaki farklar</a> hakkında bilgi edinin.
+          - html: <a href="/azure/sql-database/sql-database-howto">Nasıl yapılır kılavuzlarında</a> bu özellikleri kullanmayı öğrenin.
