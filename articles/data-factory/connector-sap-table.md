@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/02/2019
-ms.openlocfilehash: e98ff7fd914bb86cae256bb1bf6c19086758d463
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 65e51258b3a24b14b5171968645e88420e92dd5a
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80371554"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421067"
 ---
 # <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>Azure Veri Fabrikası'nı kullanarak SAP tablosundan veri kopyalama
 
@@ -62,7 +62,7 @@ Bu SAP tablo konektörünü kullanmak için şunları yapmanız gerekir:
   - Uzaktan İşlev Arama (RFC) hedeflerini kullanma yetkisi.
   - S_SDSAUTH yetkilendirme nesnesinin Yürütme etkinliği için izinler.
 
-## <a name="get-started"></a>Kullanmaya başlayın
+## <a name="get-started"></a>başlarken
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -230,7 +230,7 @@ SAP tablosundaki verileri kopyalamak için aşağıdaki özellikler desteklenir:
 <br/>
 >Örnek `partitionOption` `partitionOnInt` olarak ele alınan, her bölümdeki satır sayısı şu formülle hesaplanır: `partitionUpperBound` (toplam`maxPartitionsNumber`satırlar arasında düşen ve)/. `partitionLowerBound`<br/>
 <br/>
->Kopyayı hızlandırmak için veri bölümlerini paralel olarak yüklemek için, paralel derece kopyalama etkinliği ndeki [`parallelCopies`](copy-activity-performance.md#parallel-copy) ayar tarafından denetlenir. Örneğin, dörde `parallelCopies` ayarlarsanız, Veri Fabrikası aynı anda belirtilen bölüm seçeneğiniz ve ayarlarınızı temel alan dört sorgu oluşturur ve çalıştırZ ve her sorgu SAP tablonuzdan verilerin bir kısmını alır. Mülkün değerinin bir `maxPartitionsNumber` katını oluşturmanızı `parallelCopies` şiddetle öneririz. Verileri dosya tabanlı veri deposuna kopyalarken, bir klasöre birden çok dosya olarak yazmak (yalnızca klasör adını belirtin) komutu da verilir, bu durumda performans tek bir dosyaya yazmaktan daha iyidir.
+>Kopyayı hızlandırmak için veri bölümlerini paralel olarak yüklemek için, paralel derece kopyalama etkinliği ndeki [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) ayar tarafından denetlenir. Örneğin, dörde `parallelCopies` ayarlarsanız, Veri Fabrikası aynı anda belirtilen bölüm seçeneğiniz ve ayarlarınızı temel alan dört sorgu oluşturur ve çalıştırZ ve her sorgu SAP tablonuzdan verilerin bir kısmını alır. Mülkün değerinin bir `maxPartitionsNumber` katını oluşturmanızı `parallelCopies` şiddetle öneririz. Verileri dosya tabanlı veri deposuna kopyalarken, bir klasöre birden çok dosya olarak yazmak (yalnızca klasör adını belirtin) komutu da verilir, bu durumda performans tek bir dosyaya yazmaktan daha iyidir.
 
 Satırlara `rfcTableOptions`filtre uygulama için aşağıdaki ortak SAP sorgu işleçlerini kullanabilirsiniz:
 

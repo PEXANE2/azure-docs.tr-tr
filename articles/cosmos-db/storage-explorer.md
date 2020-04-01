@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: dech
 ms.custom: seodec18
-ms.openlocfilehash: fd044d4f32aefc00e1b04f7060e0fc0dc74fd6c7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 914551bab47ad9db4e0bca4d53226fbae74b92f3
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72882360"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411664"
 ---
 # <a name="work-with-data-using-azure-storage-explorer"></a>Azure Depolama Gezgini'ni kullanarak verilerle çalışma
 
@@ -215,14 +215,14 @@ Bu hatayı görmenizin birkaç nedeni vardır. En yaygın iki neden şudur:
 
 + Saydam bir *proxy'nin*arkasındasınız, bu da birinin (BT departmanınız gibi) HTTPS trafiğini ele geçirdiği, şifresini çözmesi ve ardından kendi imzalı bir sertifika kullanarak şifrelediği anlamına gelir.
 
-+ Aldığınız HTTPS iletilerine otomatik olarak imzalanan SSL sertifikaları ekleyen antivirüs yazılımı gibi bir yazılım çalıştırıyorsunuzdur.
++ Aldığınız HTTPS iletilerine kendi imzalı TLS/SSL sertifikaları enjekte eden virüsten koruma yazılımı gibi yazılımları çalıştırıyorsunuz.
 
 Depolama Gezgini bu "otomatik olarak imzalanan sertifikalardan" biriyle karşılaştığında artık aldığı HTTPS iletisinin kurcalanıp kurcalanmadığını bilemez. Otomatik olarak imzalanan sertifikanın bir kopyası varsa, Depolama Gezgini’ne buna güvenmesi gerektiğini bildirebilirsiniz. Sertifikayı kimin eklediğinden emin değilseniz, aşağıdaki adımları uygulayarak kendiniz bulmaya çalışabilirsiniz:
 
-1. Açık SSL yükleme
+1. OpenSSL'yi yükleyin
      - [Windows](https://slproweb.com/products/Win32OpenSSL.html) (basit sürümlerden herhangi biri olabilir)
      - Mac ve Linux: İşletim sisteminize eklenmelidir
-2. Açık SSL çalıştırma
+2. OpenSSL çalıştır
     - Windows: Yükleme dizinine gidin, ardından **/bin/** konumuna gidip **openssl.exe** dosyasına çift tıklayın.
     - Mac ve Linux: Bir terminalden **openssl** komutunu yürütün
 3. `s_client -showcerts -connect microsoft.com:443` yürütme

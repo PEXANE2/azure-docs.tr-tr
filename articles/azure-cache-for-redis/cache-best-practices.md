@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: joncole
-ms.openlocfilehash: 71056fd04069b861b37a595b1a4f2a8bba4a01ef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 105a3996753a1d1c2d71846cc8bad574e4498acf
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75689968"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478616"
 ---
 # <a name="best-practices-for-azure-cache-for-redis"></a>Redis için Azure Cache'in en iyi yöntemleri 
 Bu en iyi uygulamaları izleyerek, Redis örneğinde Azure Önbelleğinizin performansını ve uygun maliyetli kullanımını en üst düzeye çıkarmaya yardımcı olabilirsiniz.
@@ -67,7 +67,7 @@ Ne yazık ki, kolay bir cevap yok.  Her uygulamanın hangi işlemlerin yeniden d
 Kodunuzu hata koşullarında nasıl çalıştığını test etmek istiyorsanız, [Yeniden Başlat özelliğini](cache-administration.md#reboot)kullanmayı düşünün. Yeniden başlatma, bağlantı blips'inin uygulamanızı nasıl etkilediğini görmenizi sağlar.
 
 ## <a name="performance-testing"></a>Performansı test etme
- * Kendi perf testlerinizi yazmadan önce olası bir iş sonu/gecikme sebebleri için bir his almak için ** `redis-benchmark.exe` kullanmaya başlayın.**  Redis-benchmark belgeleri [burada bulabilirsiniz.](https://redis.io/topics/benchmarks)  Redis-benchmark'ın SSL'yi desteklemediğini, bu nedenle testi çalıştırmadan önce [Portal üzerinden SSL olmayan bağlantı noktasını etkinleştirmeniz](cache-configure.md#access-ports) gerektiğini unutmayın.  [redis-benchmark.exe bir windows uyumlu sürümü burada bulabilirsiniz](https://github.com/MSOpenTech/redis/releases)
+ * Kendi perf testlerinizi yazmadan önce olası bir iş sonu/gecikme sebebleri için bir his almak için ** `redis-benchmark.exe` kullanmaya başlayın.**  Redis-benchmark belgeleri [burada bulabilirsiniz.](https://redis.io/topics/benchmarks)  Redis-benchmark'ın TLS'yi desteklemediğini unutmayın, bu nedenle testi çalıştırmadan önce [Portal üzerinden TLS olmayan bağlantı noktasını etkinleştirmeniz](cache-configure.md#access-ports) gerekir.  [redis-benchmark.exe bir windows uyumlu sürümü burada bulabilirsiniz](https://github.com/MSOpenTech/redis/releases)
  * Sınama için kullanılan VM istemcisi Redis önbellek örneğinizle **aynı bölgede** olmalıdır.
  * Onlar daha iyi donanım alabildikleri ve en iyi sonuçları verecektir gibi biz müşteri için **Dv2 VM Serisi kullanmanızı öneririz.**
  * Kullandığınız istemci VM *en*az* önbellek test edilen kadar işlem ve bant genişliği ne kadar olduğundan emin olun. 

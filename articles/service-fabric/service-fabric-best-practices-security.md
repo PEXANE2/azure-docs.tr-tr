@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: dcdc338bdcdb2c04f6b8894ccb358bc773b95c07
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fa8bb41684271c7d4ebe90e31ce8019994fc1f41
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79258934"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478747"
 ---
 # <a name="azure-service-fabric-security"></a>Azure Service Fabric güvenliği 
 
@@ -208,7 +208,7 @@ cosmos_db_password=$(curl 'https://management.azure.com/subscriptions/<YOUR SUBS
 Bir [taban çizgisi oluşturmanın aksine, Microsoft güvenlik taban çizgileri gibi genel olarak bilinen ve iyi sınanan endüstri standardı bir yapılandırma uygulamanızı öneririz;](https://docs.microsoft.com/windows/security/threat-protection/windows-security-baselines) Bunları Sanal Makine Ölçeği Kümelerinizde sağlama seçeneği, Azure İstenilen Durum Yapılandırması (DSC) uzantısını kullanarak, VM'leri çevrimiçi olarak yapılandırarak üretim yazılımını çalıştırıyorlar.
 
 ## <a name="azure-firewall"></a>Azure Güvenlik Duvarı
-[Azure Güvenlik Duvarı, Azure Sanal Ağ kaynaklarınızı koruyan yönetilen, bulut tabanlı bir ağ güvenlik hizmetidir. Yerleşik yüksek kullanılabilirliğe ve sınırsız bulut ölçeklenebilirliğine sahip bir hizmet olarak tamamen görkemli bir güvenlik duvarıdır.](https://docs.microsoft.com/azure/firewall/overview) bu, giden HTTP/S trafiğini joker kartlar da dahil olmak üzere tam nitelikli alan adlarının (FQDN) belirli bir listesiyle sınırlandırma olanağı sağlar. Bu özelliğe SSL sonlandırması gerekmez. Windows Güncelleştirmeleri için [Azure Güvenlik Duvarı FQDN etiketlerinden](https://docs.microsoft.com/azure/firewall/fqdn-tags) yararlanmanızı ve Microsoft Windows Update uç noktalarına ağ trafiğini etkinleştirmenizi önerilir. [Şablon kullanarak Azure Güvenlik Duvarı'nı dağıtma](https://docs.microsoft.com/azure/firewall/deploy-template) Microsoft.Network/azureFirewalls kaynak şablonu tanımı için bir örnek sağlar. Service Fabric Applications için ortak olan güvenlik duvarı kuralları, kümelerinizin sanal ağı için aşağıdakilere izin vermektir:
+[Azure Güvenlik Duvarı, Azure Sanal Ağ kaynaklarınızı koruyan yönetilen, bulut tabanlı bir ağ güvenlik hizmetidir. Yerleşik yüksek kullanılabilirliğe ve sınırsız bulut ölçeklenebilirliğine sahip bir hizmet olarak tamamen görkemli bir güvenlik duvarıdır.](https://docs.microsoft.com/azure/firewall/overview) bu, giden HTTP/S trafiğini joker kartlar da dahil olmak üzere tam nitelikli alan adlarının (FQDN) belirli bir listesiyle sınırlandırma olanağı sağlar. Bu özellik TLS/SSL sonlandırma gerektirmez. Windows Güncelleştirmeleri için [Azure Güvenlik Duvarı FQDN etiketlerinden](https://docs.microsoft.com/azure/firewall/fqdn-tags) yararlanmanızı ve Microsoft Windows Update uç noktalarına ağ trafiğini etkinleştirmenizi önerilir. [Şablon kullanarak Azure Güvenlik Duvarı'nı dağıtma](https://docs.microsoft.com/azure/firewall/deploy-template) Microsoft.Network/azureFirewalls kaynak şablonu tanımı için bir örnek sağlar. Service Fabric Applications için ortak olan güvenlik duvarı kuralları, kümelerinizin sanal ağı için aşağıdakilere izin vermektir:
 
 - *download.microsoft.com
 - *servicefabric.azure.com
@@ -221,7 +221,7 @@ Bu güvenlik duvarı kuralları, sanal ağınızdan izin verilen hedefler olarak
 
 ## <a name="windows-defender"></a>Windows Defender 
 
-Varsayılan olarak, Windows Defender virüsten koruma yazılımı Windows Server 2016'da yüklenir. Ayrıntılar için [Windows Server 2016'da Windows Defender Antivirus'e](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016)bakın. Kullanıcı arabirimi varsayılan olarak bazı SNU'larda yüklenir, ancak gerekli değildir. Windows Defender tarafından ortaya çıkan performans etkisini ve kaynak tüketimini azaltmak için ve güvenlik ilkeleriniz açık kaynak yazılım için işlemleri ve yolları hariç tutmanıza izin verdiyse, aşağıdaki Sanal Makine Ölçeği Kümesi Uzatma Kaynağını bildirin Hizmet Kumaşı kümenizi taramalardan hariç tutmak için yönetici şablonu özellikleri:
+Varsayılan olarak, Windows Defender virüsten koruma yazılımı Windows Server 2016'da yüklenir. Ayrıntılar için [Windows Server 2016'da Windows Defender Antivirus'e](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-on-windows-server-2016)bakın. Kullanıcı arabirimi varsayılan olarak bazı SNU'larda yüklenir, ancak gerekli değildir. Windows Defender tarafından ortaya çıkan performans etkisini ve kaynak tüketimini azaltmak ve güvenlik ilkeleriniz açık kaynak yazılım için işlemleri ve yolları hariç tutmanıza izin veriyorsa, Hizmet Kumaşı kümenizi taramalardan hariç tutmak için aşağıdaki Sanal Makine Ölçeği Kümesi Uzantı Lı Kaynak Yöneticisi şablon özelliklerini bildirin:
 
 
 ```json

@@ -2,42 +2,41 @@
 title: AKS sanal makine ana bilgisayarlarında güvenlik sertleştirmesi
 description: AKS VM host OS'de güvenlik sertliği hakkında bilgi edinin
 services: container-service
-author: saudas
+author: mlearned
 ms.topic: article
 ms.date: 09/11/2019
-ms.author: saudas
+ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: d4105a9fba3c40c563198040afb811625727ead0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b7552fc083c5ed340dc54c2a31160b0c8b4bd076
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77594389"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80420893"
 ---
-# <a name="security-hardening-in-aks-virtual-machine-hosts"></a>AKS sanal makine ana bilgisayarlarında güvenlik sertleştirmesi 
+# <a name="security-hardening-for-aks-agent-node-host-os"></a>AKS aracı düğümü ana bilgisayarı için güvenlik sertleştirmesi
 
 Azure Kubernetes Service (AKS), SOC, ISO, PCI DSS ve HIPAA standartlarına uygun güvenli bir hizmettir. Bu makale, AKS sanal makine ana bilgisayarlarına uygulanan güvenlik sertleştirmesini kapsar. AKS güvenliği hakkında daha fazla bilgi için [Azure Kubernetes Hizmeti'ndeki (AKS) uygulamalar ve kümeler için Güvenlik kavramlarına](https://docs.microsoft.com/azure/aks/concepts-security)bakın.
 
-AKS kümeleri, güvenlik için optimize edilmiş işletim sistemi çalıştıran ana bilgisayar sanal makinelerinde dağıtılır. Bu ana bilgisayar işletim sistemi şu anda bir ubuntu 16.04.LTS görüntüsünü ve bir dizi ek güvenlik sertleştirme adımını uygulamalıdır (bkz.   
+> [!Note]
+> Bu belge yalnızca AKS'deki Linux ajanlarına aittir.
 
-Güvenlik sertleştirilmiş ana bilgisayar işletim sistemi amacı saldırı yüzey alanını azaltmak ve güvenli bir şekilde konteyner dağıtım ını sağlamaktır. 
+AKS kümeleri, AKS üzerinde çalışan kapsayıcılar için kullanılan güvenlik en iyi korunmuş işletim sistemi çalıştıran ana bilgisayar sanal makinelerinde dağıtılır. Bu ana bilgisayar işletim sistemi, ek güvenlik sertleştirme ve optimizasyonuygulanan **bir Ubuntu 16.04.LTS** görüntüsünü temel alır (bkz.
+
+Güvenlik sertleştirilmiş ana bilgisayar işletim sistemi'nin amacı saldırının yüzey alanını azaltmak ve kapsayıcıların güvenli bir şekilde dağıtılması için optimize etmektir.
 
 > [!Important]
-> Güvenlik sertleştirilmiş işletim sistemi BDT kıyaslanmış DeğİlDIR. BDT kriterleri ile çakışmalar olsa da, amaç BDT uyumlu olmak değildir. Ana bilgisayar işletim sistemi sertleştirmesinin amacı, Microsoft'un kendi iç ana bilgisayar güvenlik standartlarıyla tutarlı bir güvenlik düzeyinde yakınsamayapmaktır. 
+> Güvenlik sertleştirilmiş işletim sistemi BDT kıyaslanmış DeğİlDIR. BDT kriterleri ile çakışmalar olsa da, amaç BDT uyumlu olmak değildir. Ana bilgisayar işletim sistemi sertleştirmesinin amacı, Microsoft'un kendi iç ana bilgisayar güvenlik standartlarıyla tutarlı bir güvenlik düzeyinde yakınsamayapmaktır.
 
-## <a name="security-hardening-features"></a>Güvenlik sertleştirme özellikleri 
+## <a name="security-hardening-features"></a>Güvenlik sertleştirme özellikleri
 
-* AKS varsayılan olarak bir güvenlik optimize ana bilgisayar işletim sistemi sağlar. Alternatif bir işletim sistemi seçmek için geçerli bir seçenek yoktur. 
+* AKS varsayılan olarak bir güvenlik optimize ana bilgisayar işletim sistemi sağlar. Alternatif bir işletim sistemi seçmek için bir seçenek yoktur.
 
 * Azure, AKS sanal makine ana bilgisayarlarına günlük düzeltme emaları (güvenlik düzeltme emültleri dahil) uygular. Bu düzeltme eteklerinden bazıları yeniden başlatmayı gerektirirken, diğerleri bunu gerektirmez. Aks VM ana bilgisayar yeniden başlatmalarını gerektiği gibi planlamaktan siz sorumlusunuz. AKS yama otomatikleştirmek için nasıl rehberlik için [aks düğümleri yama](https://docs.microsoft.com/azure/aks/node-updates-kured)bakın.
 
-Aşağıda güvenlik optimize ana işletim sistemi üretmek için AKS-Engine uygulanan görüntü sertleştirme çalışmalarının bir özetidir. Çalışma [bu GitHub projesinde](https://github.com/Azure/aks-engine/projects/7)uygulanmıştır.  
+## <a name="what-is-configured"></a>Yapılandırılanlar
 
-AKS-Engine şu anda herhangi bir özel güvenlik standardına destek vermez veya bunlara uymaz, ancak BD (Internet Security Merkezi) denetim idiler, uygun olduğu durumlarda kolaylık sağlamak için sağlanır. 
-
-## <a name="whats-configured"></a>Ne yapılandırıldı?
-
-| Bdt  | Denetim açıklaması| 
+| Bdt  | Denetim açıklaması|
 |---|---|
 | 1.1.1.1 |Cramfs filesystems montaj devre dışı olduğundan emin olun|
 | 1.1.1.2 |Freevxfs filesistemlerinin montajının devre dışı bırakıldığından emin olun|
@@ -78,9 +77,9 @@ AKS-Engine şu anda herhangi bir özel güvenlik standardına destek vermez veya
 
 ## <a name="additional-notes"></a>Ek notlar
  
-* Saldırı yüzey alanını daha da azaltmak için, işletim sistemi bazı gereksiz çekirdek modülü sürücüleri devre dışı bırakıldı. 
+* Saldırı yüzey alanını daha da azaltmak için, işletim sistemi bazı gereksiz çekirdek modülü sürücüleri devre dışı bırakıldı.
 
-* Güvenlik sertleştirilmiş işletim sistemi AKS platformu dışında desteklenmez. 
+* Güvenlik sertleştirilmiş işletim sistemi inşa edilmiş ve AKS için özel olarak muhafaza edilir ve AKS platformu dışında desteklenmez.
 
 ## <a name="next-steps"></a>Sonraki adımlar  
 

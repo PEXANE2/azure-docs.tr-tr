@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 03/22/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 2fce8a7a6f6d345b83c639bd69ecd70271621e9b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b344886e89a10a027cba169e92056a6dda443d8d
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80283166"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421938"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Azure Kaynak Yöneticisi kaynak sağlayıcısı işlemleri
 
@@ -1776,7 +1776,7 @@ Azure hizmeti: [Bilişsel Hizmetler](../cognitive-services/index.yml)
 > | Eylem | Microsoft.CognitiveServices/register/action | Bilişsel Hizmetler için Kayıt Aboneliği |
 > | Eylem | Microsoft.CognitiveServices/checkDomainAvailability/action | Abonelik için kullanılabilir SNI'leri okur. |
 > | Eylem | Microsoft.CognitiveServices/register/action | Bilişsel Hizmetler için Kayıt Aboneliği |
-> |  | **accounts** |  |
+> |  | **Hesap** |  |
 > | Eylem | Microsoft.CognitiveServices/accounts/read | API hesaplarını okur. |
 > | Eylem | Microsoft.CognitiveServices/accounts/write | API Hesapları yazar. |
 > | Eylem | Microsoft.CognitiveServices/accounts/delete | API hesaplarını siler |
@@ -3060,7 +3060,7 @@ Azure hizmeti: [Veri Gölü Analizi](../data-lake-analytics/index.yml)
 > | Eylem Türü | İşlem | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft.DataLakeAnalytics/register/action | DataLakeAnalytics aboneliğini kaydedin. |
-> |  | **accounts** |  |
+> |  | **Hesap** |  |
 > | Eylem | Microsoft.DataLakeAnalytics/accounts/read | Varolan bir DataLakeAnalytics hesabı hakkında bilgi alın. |
 > | Eylem | Microsoft.DataLakeAnalytics/accounts/write | DataLakeAnalytics hesabı oluşturun veya güncelleyin. |
 > | Eylem | Microsoft.DataLakeAnalytics/accounts/delete | DataLakeAnalytics hesabını silin. |
@@ -3110,7 +3110,7 @@ Azure hizmeti: [Azure Veri Gölü Deposu](../storage/blobs/data-lake-storage-int
 > | Eylem Türü | İşlem | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft.DataLakeStore/kayıt/eylem | DataLakeStore aboneliğini kaydedin. |
-> |  | **accounts** |  |
+> |  | **Hesap** |  |
 > | Eylem | Microsoft.DataLakeStore/hesapları/oku | Varolan bir DataLakeStore hesabı hakkında bilgi alın. |
 > | Eylem | Microsoft.DataLakeStore/accounts/write | DataLakeStore hesabı oluşturun veya güncelleyin. |
 > | Eylem | Microsoft.DataLakeStore/hesapları/silme | Bir DataLakeStore hesabını silin. |
@@ -5309,7 +5309,7 @@ Azure hizmeti: [Azure Lab Hizmetleri](../lab-services/index.yml)
 > | Eylem | Microsoft.LabServices/labAccounts/sharedImages/write | Paylaşılan görüntüleri ekleme veya değiştirme. |
 > |  | **konumlar/işlemler** |  |
 > | Eylem | Microsoft.LabServices/locations/operations/read | İşlemleri okuyun. |
-> |  | **kullanıcılar** |  |
+> |  | **Kullanıcı** |  |
 > | Eylem | Microsoft.LabServices/users/Register/action | Bir kullanıcıyı yönetilen bir laboratuvara kaydetme |
 > | Eylem | Microsoft.LabServices/users/ListAllEnvironments/action | Kullanıcı için tüm Ortamları listele |
 > | Eylem | Microsoft.LabServices/users/StartEnvironment/action | Ortam içindeki tüm kaynakları başlatarak ortam başlatır. |
@@ -5730,7 +5730,7 @@ Azure hizmeti: [Azure Haritalar](../azure-maps/index.yml)
 > | Eylem Türü | İşlem | Açıklama |
 > | --- | --- | --- |
 > | Eylem | Microsoft.Haritalar/kayıt/eylem | Sağlayıcıyı kaydedin |
-> |  | **accounts** |  |
+> |  | **Hesap** |  |
 > | Eylem | Microsoft.Maps/accounts/write | Haritalar Hesabı oluşturun veya güncelleyin. |
 > | Eylem | Microsoft.Maps/accounts/read | Haritalar Hesabı alın. |
 > | Eylem | Microsoft.Maps/accounts/delete | Haritalar Hesabını silin. |
@@ -8333,7 +8333,7 @@ Azure hizmeti: [Azure Kaynak Yöneticisi](../azure-resource-manager/index.yml)
 
 ## <a name="microsoftscheduler"></a>Microsoft.Scheduler
 
-Azure hizmeti: [Zamanlayıcı](../scheduler/index.md)
+Azure hizmeti: [Zamanlayıcı](../scheduler/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
 > | Eylem Türü | İşlem | Açıklama |
@@ -10044,7 +10044,7 @@ Azure hizmeti: [Azure DevOps](https://docs.microsoft.com/azure/devops/)
 > | Eylem | Microsoft.VisualStudio/Uzantı/Yazma | Uzantıyı Ayarla |
 > | Eylem | Microsoft.VisualStudio/Uzantı/Silme | Uzantıyı Sil |
 > | Eylem | Microsoft.VisualStudio/Uzantı/Oku | Oku Uzantısı |
-> |  | **Proje** |  |
+> |  | **Project** |  |
 > | Eylem | Microsoft.VisualStudio/Proje/Yazma | Set Projesi |
 > | Eylem | Microsoft.VisualStudio/Project/Delete | Projeyi Sil |
 > | Eylem | Microsoft.VisualStudio/Project/Oku | Projeyi Oku |

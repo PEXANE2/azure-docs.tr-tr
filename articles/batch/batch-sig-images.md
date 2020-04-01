@@ -8,12 +8,12 @@ ms.service: batch
 ms.topic: article
 ms.date: 08/28/2019
 ms.author: labrenne
-ms.openlocfilehash: 2cff6a0e48fc7bf58a642f509fcda6b114e002ef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 95f27d913cd288c186bae1a6375212b072f50bb4
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77022945"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422427"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-pool"></a>Özel bir havuz oluşturmak için Paylaşılan Resim Galerisi'ni kullanma
 
@@ -38,6 +38,9 @@ Senaryonuz için yapılandırılan Paylaşılan Görüntü'nün kullanılması �
 * **Daha kolay yönetim için görüntü sürümü ve gruplandırma.** Görüntü gruplandırma tanımı, görüntünün neden oluşturulduğu, işletim sistemi nin ne için olduğu ve görüntünün kullanımı hakkında bilgiler içerir. Görüntüleri gruplandırmak daha kolay görüntü yönetimi sağlar. Daha fazla bilgi için [Resim tanımlarına](../virtual-machines/windows/shared-image-galleries.md#image-definitions)bakın.
 
 ## <a name="prerequisites"></a>Ön koşullar
+
+> [!NOTE]
+> Azure AD'yi kullanarak kimlik doğrulamanız gerekir. Paylaşılan anahtar-auth kullanırsanız, bir kimlik doğrulama hatası alırsınız.  
 
 * **Bir Azure Batch hesabı.** Toplu Iş hesabı oluşturmak için Azure [portalını](quick-create-portal.md) veya [Azure CLI'yi](quick-create-cli.md)kullanarak Toplu İşlem'e hızlı başlayanlar'a bakın.
 
@@ -86,6 +89,9 @@ Yönetilen resminizi başarıyla oluşturduktan sonra, özel resminizi kullanıl
 ## <a name="create-a-pool-from-a-shared-image-using-the-azure-cli"></a>Azure CLI'yi kullanarak Paylaşılan Görüntü'den havuz oluşturma
 
 Azure CLI'yi kullanarak Paylaşılan Görüntünüzden bir `az batch pool create` havuz oluşturmak için komutu kullanın. Alandaki Paylaşılan Görüntü `--image` Kimliğini belirtin. Os türü ve SKU tarafından belirtilen sürümleri eşleşen emin olun`--node-agent-sku-id`
+
+> [!NOTE]
+> Azure AD'yi kullanarak kimlik doğrulamanız gerekir. Paylaşılan anahtar-auth kullanırsanız, bir kimlik doğrulama hatası alırsınız.  
 
 ```azurecli
 az batch pool create \

@@ -9,12 +9,12 @@ ms.subservice: heavy
 ms.topic: overview
 ms.date: 08/28/2019
 ms.author: alkohli
-ms.openlocfilehash: 362b7457538a16d389c3cc40fc44da19b073c0b0
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 2f1f01a8cfa25c222848e7cc5c86dc3532eba348
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "70142909"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437771"
 ---
 # <a name="what-is-azure-data-box-heavy"></a>Azure Data Box Heavy nedir?
 
@@ -116,7 +116,7 @@ Data Box Heavy için bölge kullanılabilirliği yle ilgili en güncel bilgiler 
 
 Data Box Heavy'ye kaydolmak için aşağıdaki adımları izleyin:
 
-1. Azure portalında oturum açın: https://portal.azure.com.
+1. [Azure portalında oturum açın.](https://portal.azure.com)
 2. Yeni bir kaynak oluşturmak için **+ kaynak** oluşturun' seçeneğini tıklatın. **Azure Data Box** için arama yapın. **Azure Data Box** hizmetini seçin.
 3. **Oluştur'u**tıklatın.
 4. Data Box Heavy için kullanmak istediğiniz aboneliği seçin. Data Box Heavy kaynağını dağıtmak istediğiniz bölgeyi seçin. **Data Box Heavy** seçeneğinde **Kaydol**'a tıklayın.

@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/24/2020
-ms.openlocfilehash: ad7d171cb115729e174090c1c80915abbde5999f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b905c75e920577e46017caeb456f8237421086b2
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80238739"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421202"
 ---
 # <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>Azure Veri Fabrikası'nı kullanarak Open Hub üzerinden SAP İş Ambarı'ndan veri kopyalama
 
@@ -187,9 +187,9 @@ SAP BW Open Hub'daki verileri kopyalamak için, kopyalama etkinliği **kaynak** 
 | baseRequestId | Delta yükleme isteğinin kimliği. Ayarlandıktan sonra, yalnızca requestId ile bu özelliğin değerinden **daha büyük** olan veriler alınır.  | Hayır |
 
 >[!TIP]
->Açık Hub tablonuz yalnızca tek istek kimliği yle oluşturulan verileri içeriyorsa, örneğin, tablodaki varolan verileri her zaman tam olarak yükleyip üzerine yazarsınız veya DTP'yi yalnızca bir kez test için çalıştırın, kopyalamak için "dışlamaSonİstek" seçeneğinin işaretlerini geri yüklemeyi unutmayın veri dışarı.
+>Açık Hub tablonuz yalnızca tek istek kimliği yle oluşturulan verileri içeriyorsa, örneğin, her zaman tablodaki varolan verileri tam olarak yükleyip üzerine yazarsınız veya DTP'yi yalnızca bir kez test için çalıştırın, verileri kopyalamak için "DışlamaSonİstek" seçeneğinin işaretlerini geri yüklemeyi unutmayın.
 
-Veri yüklemesini hızlandırmak için, [`parallelCopies`](copy-activity-performance.md#parallel-copy) SAP BW Open Hub'dan verileri paralel olarak yüklemek için kopyalama etkinliğini ayarlayabilirsiniz. Örneğin, dörde `parallelCopies` ayarlarsanız, Veri Fabrikası aynı anda dört RFC çağrısı yürütür ve her RFC çağrısı, DTP istek kimliği ve paket kimliği yle bölümlenen SAP BW Açık Hub tablonuzdan verilerin bir kısmını alır. Bu, benzersiz DTP istek kimliği + paket kimliği nin değerinden büyük olduğunda `parallelCopies`geçerlidir. Verileri dosya tabanlı veri deposuna kopyalarken, bir klasöre birden çok dosya olarak yazmak (yalnızca klasör adını belirtin) komutu da verilir, bu durumda performans tek bir dosyaya yazmaktan daha iyidir.
+Veri yüklemesini hızlandırmak için, [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) SAP BW Open Hub'dan verileri paralel olarak yüklemek için kopyalama etkinliğini ayarlayabilirsiniz. Örneğin, dörde `parallelCopies` ayarlarsanız, Veri Fabrikası aynı anda dört RFC çağrısı yürütür ve her RFC çağrısı, DTP istek kimliği ve paket kimliği yle bölümlenen SAP BW Açık Hub tablonuzdan verilerin bir kısmını alır. Bu, benzersiz DTP istek kimliği + paket kimliği nin değerinden büyük olduğunda `parallelCopies`geçerlidir. Verileri dosya tabanlı veri deposuna kopyalarken, bir klasöre birden çok dosya olarak yazmak (yalnızca klasör adını belirtin) komutu da verilir, bu durumda performans tek bir dosyaya yazmaktan daha iyidir.
 
 **Örnek:**
 

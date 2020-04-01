@@ -16,13 +16,13 @@ ms.date: 05/14/2018
 ms.author: magattus
 ms.custom: mvc
 ms.openlocfilehash: 1b67522834497a264d95fc9b80246b16841d6026
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/05/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67594220"
 ---
-# <a name="tutorial-add-azure-cdn-to-an-azure-app-service-web-app"></a>Öğretici: Azure CDN, bir Azure App Service web uygulamasına ekleme
+# <a name="tutorial-add-azure-cdn-to-an-azure-app-service-web-app"></a>Öğretici: Azure App Service web uygulamasına Azure CDN ekleme
 
 Bu öğretici, [Azure Content Delivery (CDN)](cdn-overview.md) hizmetinin [Azure App Service’teki bir web uygulamasına](../app-service/overview.md) nasıl ekleneceğini gösterir. Web apps; web uygulamaları, REST API'leri ve mobil arka uçlar barındırmaya yönelik bir hizmettir. 
 
@@ -38,7 +38,7 @@ Kullanacağınız örnek statik HTML sitesinin ana sayfası:
 > * Önbelleğe alınan sürümleri denetlemek için sorgu dizeleri kullanma.
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için:
 
@@ -76,7 +76,7 @@ Sol gezinti bölmesinde **Uygulama Hizmetleri**’ni ve sonra [statik HTML hızl
 | ------- | --------------- | ----------- |
 | **CDN profili** | myCDNProfile | CDN profili, aynı fiyatlandırma katmanına sahip bir CDN uç noktaları koleksiyonudur. |
 | **Fiyatlandırma katmanı** | Standart Akamai | [Fiyatlandırma katmanı](cdn-features.md), sağlayıcıyı ve kullanılabilir özellikleri belirtir. Bu öğreticide *Standard Akamai* kullanılır. |
-| **CDN uç noktası adı** | azureedge.net etki alanında benzersiz olan tüm adlar | Önbelleğe alınmış kaynaklarınıza *&lt;uçnoktaadı&gt;* .azureedge.net etki alanından erişebilirsiniz.
+| **CDN uç noktası adı** | azureedge.net etki alanında benzersiz olan tüm adlar | Önbelleğe alınmış kaynaklarınıza etki alanı * &lt;&gt;bitiş noktası adı*.azureedge.net adresinden erişebilirsiniz.
 
 CDN profili oluşturmak için **Oluştur**’u seçin.
 
@@ -210,7 +210,7 @@ Azure portalında bulunan **CDN Uç Noktası** sayfasında **Önbellek**’i se�
 
 **Sorgu dizesi önbellek davranışı** açılan listesinden, **Her benzersiz URL’yi önbelleğe al**’ı seçin.
 
-**Kaydet**’i seçin.
+**Kaydet'i**seçin.
 
 ![Sorgu dizesini önbelleğe alma davranışı seçin](media/cdn-add-to-web-app/portal-select-caching-behavior.png)
 

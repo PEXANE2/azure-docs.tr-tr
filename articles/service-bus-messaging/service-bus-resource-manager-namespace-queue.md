@@ -13,14 +13,14 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 12/20/2019
+ms.date: 03/30/2020
 ms.author: spelluru
-ms.openlocfilehash: 8605dae05b7f5270513b645367248090006c04a8
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: b08253104eeb61f6bb09fde507473d235a996494
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80384917"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422653"
 ---
 # <a name="quickstart-create-a-service-bus-namespace-and-a-queue-using-an-azure-resource-manager-template"></a>Hızlı başlangıç: Azure Kaynak Yöneticisi şablonu kullanarak Hizmet Veri Servisi ad alanı ve kuyruk oluşturma
 
@@ -63,9 +63,27 @@ Bu şablonla, sıralı bir Hizmet Veri Günü ad alanı dağıtırsınız.
 
 [Servis Veri Hizmetleri kuyrukları,](service-bus-queues-topics-subscriptions.md#queues) bir veya daha fazla rakip tüketiciye First In, First Out (FIFO) ileti teslimi sunar.
 
-Dağıtımı otomatik olarak çalıştırmak için aşağıdaki düğmeye tıklayın:
+Dağıtımı otomatik olarak çalıştırmak için aşağıdaki düğmeyi tıklatın: Dağıtım için yeni bir kaynak grubu oluşturun, böylece daha sonra kolayca temizleyebilirsiniz.
 
-[![Azure'a Dağıt](./media/service-bus-resource-manager-namespace-queue/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-servicebus-create-queue%2Fazuredeploy.json)
+[![Azure’a dağıtma](./media/service-bus-resource-manager-namespace-queue/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-servicebus-create-queue%2Fazuredeploy.json)
+
+## <a name="verify-the-deployment"></a>Dağıtımı doğrulama
+
+1. Dağıtım durumunu görmek için en üstteki **Bildirimler'i** seçin. Dağıtım başarılı olana kadar bekleyin. Ardından, Hizmet Veri Gönderi ad alanını içeren kaynak grubunun sayfasına gitmek için bildirim iletisindeki **kaynak grubuna git'i** seçin. 
+
+    ![Dağıtımdan gelen bildirim](./media/service-bus-resource-manager-namespace-queue/notification.png)
+2. Hizmet Veri Günü ad alanınızı kaynaklar listesinde gördüğünüzü doğrulayın. 
+
+    ![Kaynak grubu - ad alanı](./media/service-bus-resource-manager-namespace-queue/resource-group-namespace.png)
+3. **Hizmet Veri Aracı Ad Alanı** sayfasını görmek için listeden ad alanını seçin. 
+
+## <a name="cleanup-resources"></a>Kaynakları temizleme
+
+1. Azure portalında, kaynak grubunuz için **Kaynak grubu** sayfasına gidin.
+2. Araç çubuğundan **Kaynak grubunu sil**’i seçin. 
+3. Kaynak grubunun adını yazın ve **Sil'i**seçin. 
+
+    ![Kaynak grubu - silme](./media/service-bus-resource-manager-namespace-queue/resource-group-delete.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

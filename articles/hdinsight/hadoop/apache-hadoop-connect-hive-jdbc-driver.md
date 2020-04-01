@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: 7d1a77800093ae01bc4eb1e1269d1e9a60f9ce26
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8129239f152f6b359b930e56466052da12ef4d42
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77616669"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437023"
 ---
 # <a name="query-apache-hive-through-the-jdbc-driver-in-hdinsight"></a>HDInsight’ta JDBC sürücüsü üzerinden Apache Hive’ı sorgulama
 
@@ -31,7 +31,7 @@ Hive JDBC Arabirimi hakkında daha fazla bilgi için [HiveJDBCInterface'e](https
 
 ## <a name="jdbc-connection-string"></a>JDBC bağlantı dizesi
 
-Azure'daki bir HDInsight kümesine jdbc bağlantıları 443 bağlantı noktası üzerinden yapılır ve trafik SSL kullanılarak güvenli hale getirilir. Kümelerin arkasında yer alan ortak ağ geçidi, trafiği HiveServer2'nin gerçekten dinlediği bağlantı noktasına yönlendirir. Aşağıdaki bağlantı dizesi HDInsight için kullanılacak biçimi gösterir:
+Azure'daki bir HDInsight kümesine jdbc bağlantıları 443 portu üzerinden yapılır ve trafik TLS/SSL kullanılarak güvenli hale getirilir. Kümelerin arkasında yer alan ortak ağ geçidi, trafiği HiveServer2'nin gerçekten dinlediği bağlantı noktasına yönlendirir. Aşağıdaki bağlantı dizesi HDInsight için kullanılacak biçimi gösterir:
 
     jdbc:hive2://CLUSTERNAME.azurehdinsight.net:443/default;transportMode=http;ssl=true;httpPath=/hive2
 
@@ -49,7 +49,7 @@ Bağlantı dizesinde 'CLUSTERNAME.azurehdinsight.net' ana bilgisayar adı küme 
 
 Kümeye yalnızca Azure sanal ağının dışındaki bazı yerlerden bağlanmak için **port 443'ü** kullanabilirsiniz. HDInsight yönetilen bir hizmettir, bu da kümeye giden tüm bağlantıların güvenli bir ağ geçidi aracılığıyla yönetildiği anlamına gelir. HiveServer 2'ye doğrudan 10001 veya 10000 bağlantı noktalarında bağlayamazsınız, çünkü bu bağlantı noktaları dışarıya açık değildir. 
 
-## <a name="authentication"></a>Kimlik doğrulaması
+## <a name="authentication"></a>Kimlik Doğrulaması
 
 Bağlantıyı kurarken, küme ağ geçidine kimlik doğrulamak için HDInsight küme yöneticisi adını ve parolasını kullanmanız gerekir. SQuirreL SQL gibi JDBC istemcilerinden bağlanırken, istemci ayarlarına yönetici adını ve parolasını girmeniz gerekir.
 

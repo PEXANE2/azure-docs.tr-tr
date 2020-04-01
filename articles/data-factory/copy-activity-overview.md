@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: jingwang
-ms.openlocfilehash: 39885782b55dca9c73f10990269d912f9b5727fb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: edb80c604951a140d21e3775eec3f1dc6d55af73
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80257980"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421406"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Azure Veri Fabrikası'nda kopyalama etkinliği
 
@@ -134,10 +134,10 @@ Bir Kopya etkinliği aşağıdaki şablondesteklenen özelliklerin tam listesini
 | source | Veri almak için kopya kaynağı türünü ve ilgili özellikleri belirtin.<br/>Daha fazla bilgi için, [Desteklenen veri depolarında ve biçimlerinde](#supported-data-stores-and-formats)listelenen bağlayıcı makalesindeki "Etkinlik özelliklerini kopyalama" bölümüne bakın. | Evet |
 | Lavabo | Kopya lavabo türünü ve veri yazmak için ilgili özellikleri belirtin.<br/>Daha fazla bilgi için, [Desteklenen veri depolarında ve biçimlerinde](#supported-data-stores-and-formats)listelenen bağlayıcı makalesindeki "Etkinlik özelliklerini kopyalama" bölümüne bakın. | Evet |
 | çevirmen | Kaynaktan batmaya açık sütun eşlemelerini belirtin. Bu özellik, varsayılan kopyalama davranışı gereksinimlerinizi karşılamadığında geçerlidir.<br/>Daha fazla bilgi [için, kopya etkinliğinde Şema eşleme](copy-activity-schema-and-type-mapping.md)bakın. | Hayır |
-| dataIntegrationUnits | [Azure tümleştirme çalışma zamanının](concepts-integration-runtime.md) veri kopyalama için kullandığı güç miktarını temsil eden bir ölçü belirtin. Bu birimler eskiden bulut Veri Hareketi Birimleri (DMU) olarak biliniyordu. <br/>Daha fazla bilgi için [Bkz. Veri Tümleştirme Birimleri.](copy-activity-performance.md#data-integration-units) | Hayır |
-| parallelKopya | Kaynaktan gelen verileri okurken ve verileri lavaboya yazarken Kopyalama etkinliğinin kullanmasını istediğiniz paralelliği belirtin.<br/>Daha fazla bilgi için [Paralel kopyaya](copy-activity-performance.md#parallel-copy)bakın. | Hayır |
+| dataIntegrationUnits | [Azure tümleştirme çalışma zamanının](concepts-integration-runtime.md) veri kopyalama için kullandığı güç miktarını temsil eden bir ölçü belirtin. Bu birimler eskiden bulut Veri Hareketi Birimleri (DMU) olarak biliniyordu. <br/>Daha fazla bilgi için [Bkz. Veri Tümleştirme Birimleri.](copy-activity-performance-features.md#data-integration-units) | Hayır |
+| parallelKopya | Kaynaktan gelen verileri okurken ve verileri lavaboya yazarken Kopyalama etkinliğinin kullanmasını istediğiniz paralelliği belirtin.<br/>Daha fazla bilgi için [Paralel kopyaya](copy-activity-performance-features.md#parallel-copy)bakın. | Hayır |
 | Korumak | Veri kopyalama sırasında meta verilerin/ALA'ların korunup korunmayacağını belirtin. <br/>Daha fazla bilgi için [bkz.](copy-activity-preserve-metadata.md) |Hayır |
-| enableStaging<br/>evrelemeAyarlar | Verileri kaynaktan lavaboya doğrudan kopyalamak yerine geçici verileri Blob depolama alanında sahneleyip sahnelemeyeceğiniz belirtin.<br/>Yararlı senaryolar ve yapılandırma ayrıntıları hakkında daha fazla bilgi için [Aşamalı kopyaya](copy-activity-performance.md#staged-copy)bakın. | Hayır |
+| enableStaging<br/>evrelemeAyarlar | Verileri kaynaktan lavaboya doğrudan kopyalamak yerine geçici verileri Blob depolama alanında sahneleyip sahnelemeyeceğiniz belirtin.<br/>Yararlı senaryolar ve yapılandırma ayrıntıları hakkında daha fazla bilgi için [Aşamalı kopyaya](copy-activity-performance-features.md#staged-copy)bakın. | Hayır |
 | etkinleştirinSkipIncompatibleRow<br/>yeniden YönlendirmeUyumsuzSatır Ayarları| Verileri kaynaktan batmaya kopyalarken uyumsuz satırları nasıl işleyeceğinizi seçin.<br/>Daha fazla bilgi için [bkz.](copy-activity-fault-tolerance.md) | Hayır |
 
 ## <a name="monitoring"></a>İzleme

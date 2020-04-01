@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
-ms.date: 11/04/2019
-ms.openlocfilehash: ec2d9152bf8d3d7c60f00e902f155212ee1b81cc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/30/2020
+ms.openlocfilehash: f9ca75943eaec2ae018b54145d872fc09294035e
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79270426"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398173"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Azure Machine Learning'de bilgi işlem hedefleri nelerdir? 
 
@@ -48,12 +48,14 @@ Aşağıdaki işlem kaynakları, model dağıtımınızı barındırmak için ku
 
 Yönetilen bir bilgi işlem kaynağı Oluşturulur ve Azure Machine Learning tarafından yönetilir. Bu bilgi işlem, makine öğrenimi iş yükleri için optimize edilebistir. Azure Machine Learning bilgi işlem kümeleri ve [bilgi işlem örnekleri](concept-compute-instance.md) yalnızca yönetilen hesaplamalardır. Gelecekte ek yönetilen bilgi işlem kaynakları eklenebilir.
 
-Azure Machine Learning bilgi işlem örnekleri (önizleme) veya bilgi işlem kümeleri şu şekilde oluşturabilirsiniz:
+Azure Machine Learning bilgi işlem örnekleri (önizleme) veya bilgi işlem kümeleri oluşturabilirsiniz:
+* Azure Machine Learning Studio
+* Azure portal
+* Python SDK [ComputeInstance](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.computeinstance(class)?view=azure-ml-py) ve [AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute(class)?view=azure-ml-py) sınıfları
+* [R SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-compute-targets)
+* Resource Manager şablonu
 
-| | Azure Machine Learning Studio | Azure portalında | SDK | Resource Manager şablonu | CLI |
-|---| ----- | ----- | ----- | ----- | ----- |
-| İşlem örneği | evet | evet | evet | evet |  |
-| İşlem kümesi | evet | evet | evet | evet | evet |
+[Azure CLI için makine öğrenimi uzantısını](tutorial-train-deploy-model-cli.md#create-the-compute-target-for-training)kullanarak bilgi işlem kümeleri de oluşturabilirsiniz.
 
 Bu hesaplama kaynakları oluşturulduğunda, diğer tür hesaplama hedeflerinin aksine otomatik olarak çalışma alanınızın bir parçasıdır.
 

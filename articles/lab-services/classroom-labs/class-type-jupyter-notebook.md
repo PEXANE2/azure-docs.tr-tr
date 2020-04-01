@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: enewman
-ms.openlocfilehash: dfb133f9aa3dd9b76f8b4ea4c6188cfaf9a67b75
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 371c2186d44469a22b138255fb513761a9be4437
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77444120"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478225"
 ---
 # <a name="set-up-a-lab-to-teach-data-science-with-python-and-jupyter-notebooks"></a>Python ve Jupyter Notebook'larla veri bilimi öğretmek için bir laboratuvar ayarlayın
 
@@ -34,10 +34,10 @@ Laboratuvar hesabı için aşağıdaki tabloda açıklanan ayarları etkinleşti
 
 | Laboratuvar hesap ayarı | Yönergeler |
 | ------------------- | ------------ |
-| Pazar yeri görüntüsü | Laboratuvar hesabınızda kullanmak üzere [Veri Bilimi Sanal Makine - Windows 2016](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-windows) görüntüsünü etkinleştirin. |
+| Pazar yeri görüntüsü | Laboratuvar hesabınızda kullanmak üzere [Veri Bilimi Sanal Makine - Windows 2019](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-win-2019) görüntüsünü etkinleştirin. |
 
 >[!TIP]
->Bu makalede, Windows Server işletim sistemini kullanan bir şablon makinesi yapılandırma üzerinde durulacak.  Linux [için Veri Bilimi Sanal Makine (CentOS)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.linux-data-science-vm) veya Azure Marketi'nden Linux için Veri [Bilimi Sanal Makine (Ubuntu)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.linux-data-science-vm-ubuntu) görüntülerini kullanarak Python ve Jupyter Notebook'larla veri bilimi sınıfı da oluşturmak mümkündür.
+>Bu makalede, Windows Server işletim sistemini kullanan bir şablon makinesi yapılandırma üzerinde durulacak.  Azure Marketi'nden [Linux için Veri Bilimi Sanal Makine (Ubuntu)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.linux-data-science-vm-ubuntu) görüntülerini kullanarak Python ve Jupyter Notebook'larla veri bilimi sınıfı da oluşturmak mümkündür.
 
 ### <a name="lab-settings"></a>Laboratuvar ayarları
 
@@ -50,7 +50,7 @@ Sınıf laboratuarı kurarken aşağıdaki tablodaki ayarları kullanın.  Sın�
 
 ## <a name="template-machine"></a>Şablon makinesi
 
-[Veri Bilimi Sanal Makine - Windows 2016](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-windows) görüntü sınıf bu tür için gerekli derin öğrenme çerçeveleri ve araçları sağlar.  Görüntü Jupyter Notebooks ve Visual Studio Code içerir.  [Jupyter Notebooks,](http://jupyter-notebook.readthedocs.io) veri bilimcilerin ham veri almalarına, hesaplamaları yürütmelerine ve sonuçları aynı ortamda görmelerine olanak tanıyan bir web uygulamasıdır.  Şablon makinemiz için web uygulaması yerel olarak çalışacaktır.  [Visual Studio Code,](https://code.visualstudio.com/) bir dizüstü bilgisayar yazarken ve test ederken zengin bir etkileşimli deneyim sağlayan bir IDE'dir.  Daha fazla bilgi için Visual [Studio Code'da Jupyter Notebook'larla çalışma](https://code.visualstudio.com/docs/python/jupyter-support)bilgisine bakın.
+[Veri Bilimi Sanal Makine - Windows 2019](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-win-2019) görüntü sınıf bu tür için gerekli derin öğrenme çerçeveleri ve araçları sağlar.  Görüntü Jupyter Notebooks ve Visual Studio Code içerir.  [Jupyter Notebooks,](http://jupyter-notebook.readthedocs.io) veri bilimcilerin ham veri almalarına, hesaplamaları yürütmelerine ve sonuçları aynı ortamda görmelerine olanak tanıyan bir web uygulamasıdır.  Şablon makinemiz için web uygulaması yerel olarak çalışacaktır.  [Visual Studio Code,](https://code.visualstudio.com/) bir dizüstü bilgisayar yazarken ve test ederken zengin bir etkileşimli deneyim sağlayan bir IDE'dir.  Daha fazla bilgi için Visual [Studio Code'da Jupyter Notebook'larla çalışma](https://code.visualstudio.com/docs/python/jupyter-support)bilgisine bakın.
 
 Sınıfı ayarlamak için kalan görev yerel not defterleri sağlamaktır.  Azure Machine Learning örneklerini nasıl kullanacağınız için, [Jupyter Notebook'larla ortamı nasıl yapılandıracağınıza](../../machine-learning/how-to-configure-environment.md#jupyter)bakın.  Ayrıca şablon makinesinde kendi not defterlerinizi de sağlayabilirsiniz.  Şablon yayımlandığında defterler tüm öğrenci makinelerine kopyalanır.
 

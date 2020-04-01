@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 10/17/2019
 ms.author: juliako
-ms.openlocfilehash: 5a4f7e31cb17f47e8796ab99c1f8a089339903df
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 514c1466bc1a686adfc3e07e1f19bd566e979dc1
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74888436"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80420884"
 ---
 # <a name="quotas-and-limitations-in-azure-media-services-v3"></a>Azure Medya Hizmetleri v3'teki kotalar ve sınırlamalar
 
@@ -26,10 +26,10 @@ Bu makalede, Azure Medya Hizmetleri v3'teki kotalar ve sınırlamalar açıklanm
 | --- | --- | 
 | Azure Media Services hesabı başına Varlık sayısı | 1.000.000|
 | Dinamik Bildirim Filtreleri|100|
-| İş Başına İş Girdileri | 50 (sabit)|
-| İş Başına İş Çıktıları | 20 (sabit) |
-| Transformatyon'da Çıkışları Dönüştürme | 20 (sabit) |
-| JobInput başına dosyalar|10 (sabit)|
+| İş Başına İş Girişleri | 50 (sabit)|
+| İş Başına İş çıktıları | 20 (sabit) |
+| Dönüşüm'de çıktıları dönüştürün | 20 (sabit) |
+| İş girişi başına dosyalar|10 (sabit)|
 | Dosya boyutu| Bazı senaryolarda, Medya Hizmetleri'nde işlenmek üzere desteklenen en büyük dosya boyutunda bir sınır vardır. <sup>(1)</sup> |
 | Medya Hizmetleri hesabı başına işler | 500.000 <sup>(2)</sup> (sabit)|
 | Media Services hesabı başına Canlı Etkinlik sayısı |5|

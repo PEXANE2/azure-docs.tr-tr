@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: fb931c309b5f85902d8abc9cc6da45576bff4041
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4aec7fa78292f224952dd2ae929d2b8bfd97ab9b
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79259831"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477677"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>App Service Ortamında ağ konusunda dikkat edilmesi gerekenler #
 
@@ -112,7 +112,7 @@ ASE fonksiyonel bağımlılıklarına ek olarak, portal deneyimiyle ilgili birka
 -   İşlevler
 -   Günlük akışı
 -   Kudu
--   Uzantılar
+-   Uzantıları
 -   İşlem Gezgini
 -   Konsol
 
@@ -138,7 +138,7 @@ Tüm bu IP adresleri ASE UI'den Azure portalında görülebilir. ILB ASE'niz var
 
 ### <a name="app-assigned-ip-addresses"></a>Uygulamaya atanan IP adresleri ###
 
-Harici ASE ile tek tek uygulamalara IP adresleri atayabilirsiniz. Bunu Bir ILB ASE ile yapamazsınız. Uygulamanızın kendi IP adresine sahip olacak şekilde nasıl yapılandırılabildiğiniz hakkında daha fazla bilgi için Azure [Uygulama Hizmeti'nde SSL bağlayıcısı olan özel bir DNS adını Güvenli'ye](../configure-ssl-bindings.md)bakın.
+Harici ASE ile tek tek uygulamalara IP adresleri atayabilirsiniz. Bunu Bir ILB ASE ile yapamazsınız. Uygulamanızın kendi IP adresine sahip olacak şekilde nasıl yapılandırılabildiğiniz hakkında daha fazla bilgi için Azure [Uygulama Hizmeti'nde TLS/SSL bağlayıcısı olan özel bir DNS adını Güvenli'ye](../configure-ssl-bindings.md)bakın.
 
 Bir uygulamanın kendi IP tabanlı SSL adresi olduğunda, ASE bu IP adresine eşlenmek için iki bağlantı noktası ayırır. Bir bağlantı noktası HTTP trafiği için, diğer bağlantı noktası ise HTTPS içindir. Bu bağlantı noktaları IP adresleri bölümünde ASE UI'de listelenir. Trafik, VIP'den bu bağlantı noktalarına ulaşabilmeli veya uygulamalara erişilememelidir. Bu gereksinim, Ağ Güvenlik Grupları (NSGs) yapılandırDığınızda hatırlamak önemlidir.
 

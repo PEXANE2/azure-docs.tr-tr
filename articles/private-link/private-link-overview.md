@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 02/27/2020
 ms.author: allensu
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 3218a2de890124915d62afa86fd5f3dca1e72b2e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: f75f8392b01e69760171c13c0e6d3b2e22b20dea
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80063092"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421182"
 ---
 # <a name="what-is-azure-private-link"></a>Azure Özel Bağlantı nedir? 
 Azure Özel Bağlantı, Azure PaaS Hizmetlerine (örneğin, Azure Depolama ve SQL Veritabanı) erişmenizi ve Azure'un sanal [ağınızdaki özel](private-endpoint-overview.md) bir bitiş noktası üzerinden müşteriye ait/iş ortağı hizmetlerine erişmenizi sağlar.
@@ -47,7 +47,7 @@ Azure Private Link aşağıdaki avantajları sağlar:
 |  | Azure Data Lake Storage Gen2        |  Tüm genel bölgeler      | GA <br/> [Daha fazlasını öğrenin](/azure/storage/common/storage-private-endpoints)  |
 |  |  Azure SQL Veritabanı         | Tüm genel bölgeler      |   GA <br/> [Daha fazlasını öğrenin](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)      |
 |  |Azure Synapse Analytics (SQL Veri Ambarı)| Tüm genel bölgeler |GA <br/> [Daha fazlasını öğrenin](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)|
-|  |Azure Cosmos DB|  DOĞU ABD, DOĞU ABD2, BATı ABD, BATı US2, ORTA ABD, GÜNEY ORTA ABD, BATı ORTA ABD, KUZEY ORTA ABD, KUZEY ORTA ABD, KUZEY AVRUPA, BATı AVRUPA  |GA <br/> [Daha fazlasını öğrenin](https://docs.microsoft.com/azure/cosmos-db/how-to-configure-private-endpoints)|
+|  |Azure Cosmos DB|  Tüm genel bölgeler |GA <br/> [Daha fazlasını öğrenin](https://docs.microsoft.com/azure/cosmos-db/how-to-configure-private-endpoints)|
 |  |  PostgreSQL için Azure Veritabanı - Tek sunucu         | Tüm genel bölgeler      |   GA <br/> [Daha fazlasını öğrenin](https://docs.microsoft.com/azure/postgresql/concepts-data-access-and-security-private-link)      |
 |  |  MySQL için Azure Veritabanı         | Tüm genel bölgeler      |   GA <br/> [Daha fazlasını öğrenin](https://docs.microsoft.com/azure/mysql/concepts-data-access-security-private-link)     |
 |  |  MariaDB için Azure Veritabanı         | Tüm genel bölgeler      |   GA <br/> [Daha fazlasını öğrenin](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-private-link)      |

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/02/2018
 ms.author: memildin
-ms.openlocfilehash: 5aaaf539c07a7ba2c2463d5bfd1f452853f52379
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b471fbb62862cd48ebbb239d65b563aa109ef629
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77603682"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435489"
 ---
 # <a name="automate-onboarding-of-azure-security-center-using-powershell"></a>PowerShell'i kullanarak Azure Güvenlik Merkezi'ne binme otomatikleştirin
 
@@ -29,13 +29,13 @@ PowerShell'i kullanarak Azure Güvenlik Merkezi'ne binme, Azure kaynaklarınız�
 
 Bu makalede, güvenlik merkezini aboneliklerinizarasında kullanıma açmak için değiştirilebilen ve ortamınızda kullanılabilecek örnek bir PowerShell komut dosyası sağlar. 
 
-Bu örnekte, Güvenlik Merkezi'ni kimliği olan bir abonelik teetkinleştireceğiz: d07c0080-170c-4c24-861d-9c817742786c ve yüksek düzeyde koruma sağlayan önerilen ayarları uygulayarak, Güvenlik Merkezi'nin Standart katmanını uygulayarak gelişmiş tehdit koruma ve algılama yetenekleri:
+Bu örnekte, Güvenlik Merkezi'ni ID'li bir abonelik tesviye edeceğiz: d07c0080-170c-4c24-861d-9c817742786c ve gelişmiş tehdit koruma ve algılama özellikleri sağlayan Standart Güvenlik Merkezi katmanını uygulayarak yüksek düzeyde koruma sağlayan önerilen ayarları uygulayacağız:
 
 1. Güvenlik [Merkezi standart koruma düzeyini](https://azure.microsoft.com/pricing/details/security-center/)ayarlayın. 
  
-2. Microsoft İzleme Aracısı'nın abonelikle ilişkili VM'lerde topladığı verileri göndereceği Log Analytics çalışma alanını ayarlayın – bu örnekte, mevcut bir kullanıcı tanımlı çalışma alanı (myWorkspace).
+2. Log Analytics aracısının abonelikle ilişkili VM'lerde topladığı verileri göndereceği Log Analytics çalışma alanını ayarlayın – bu örnekte, mevcut bir kullanıcı tanımlı çalışma alanı (myWorkspace).
 
-3. Güvenlik Merkezi'nin Microsoft İzleme [Aracısını dağıtan](security-center-enable-data-collection.md#auto-provision-mma)otomatik aracı sağlamasını etkinleştirin.
+3. [Log Analytics aracısını dağıtan](security-center-enable-data-collection.md#auto-provision-mma)Güvenlik Merkezi'nin otomatik aracı sağlamasını etkinleştirin.
 
 5. [Güvenlik Merkezi uyarıları ve önemli olaylar için güvenlik iletişim itibat olarak](security-center-provide-security-contact-details.md)kuruluşun CISO ayarlayın.
 
@@ -68,7 +68,7 @@ Güvenlik Merkezi cmdlets çalıştırmadan önce bu adımlar yapılmalıdır:
         Set-AzSecurityWorkspaceSetting -Name "default" -Scope
         "/subscriptions/d07c0080-170c-4c24-861d-9c817742786c" -WorkspaceId"/subscriptions/d07c0080-170c-4c24-861d-9c817742786c/resourceGroups/myRg/providers/Microsoft.OperationalInsights/workspaces/myWorkspace"
 
-4.  Azure VM'lerinizde Microsoft İzleme Aracısı'nın otomatik sağlama yüklemesi:
+4.  Azure VM'lerinizde Log Analytics aracısının otomatik sağlama yüklemesi:
     
         Set-AzContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"
     

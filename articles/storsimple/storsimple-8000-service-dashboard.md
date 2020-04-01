@@ -1,5 +1,5 @@
 ---
-title: StorSimple 8000 serisi cihaz özetini kullanın | Microsoft Dokümanlar
+title: StorSimple 8000 serisi cihaz için servis özet bıçağını kullanma
 description: StorSimple hizmet özet bıçağını açıklar ve StorSimple çözümünüzün durumunu izlemek için nasıl kullanılacağını açıklar.
 services: storsimple
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2017
 ms.author: alkohli
-ms.openlocfilehash: c174f6ce0fb3d40af953be205a7bfcca60fbfeec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 14c37227a7e8598ee6f8f3adc62acd69dd274475
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79267657"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396503"
 ---
 # <a name="use-the-service-summary-blade-for-storsimple-8000-series-device"></a>StorSimple 8000 serisi cihaz için servis özet bıçağını kullanın
 

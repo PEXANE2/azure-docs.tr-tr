@@ -3,16 +3,16 @@ title: Quickstart - .NET için Azure Key Vault istemci kitaplığı (v4)
 description: .NET istemci kitaplığını (v4) kullanarak Azure anahtar kasasından nasıl sır oluşturup, alınve silmeyi öğrenin
 author: msmbaldwin
 ms.author: mbaldwin
-ms.date: 05/20/2019
+ms.date: 03/12/2020
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.openlocfilehash: 584fe94a54facf1489382a6052bbff6b44649358
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
-ms.translationtype: HT
+ms.openlocfilehash: a94717c7bed3ba25a4682896053672fe100dc43a
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79457245"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398391"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-net-sdk-v4"></a>Hızlı başlangıç: .NET için Azure Key Vault istemci kitaplığı (SDK v4)
 
@@ -40,7 +40,7 @@ Bu hızlı başlatma, Bir `dotnet`Windows terminalinde [(PowerShell Core](/power
 
 ### <a name="create-new-net-console-app"></a>Yeni .NET konsol uygulaması oluşturun
 
-Konsol penceresinde, adı `dotnet new` `akv-dotnet`olan yeni bir .NET konsol uygulaması oluşturmak için komutu kullanın.
+Konsol penceresinde, adı `dotnet new` `key-vault-console-app`olan yeni bir .NET konsol uygulaması oluşturmak için komutu kullanın.
 
 ```console
 dotnet new console -n key-vault-console-app
@@ -65,13 +65,13 @@ Build succeeded.
 Konsol penceresinden .NET için Azure Key Vault istemci kitaplığını yükleyin:
 
 ```console
-dotnet add package Azure.Security.KeyVault.Secrets --version 4.0.0
+dotnet add package Azure.Security.KeyVault.Secrets
 ```
 
 Bu hızlı başlangıç için aşağıdaki paketleri de yüklemeniz gerekir:
 
 ```console
-dotnet add package Azure.Identity --version 1.0.0
+dotnet add package Azure.Identity
 ```
 
 ### <a name="create-a-resource-group-and-key-vault"></a>Kaynak grubu ve anahtar kasası oluşturma
@@ -85,6 +85,12 @@ Bu hızlı başlatma, önceden oluşturulmuş bir Azure anahtar kasası kullanı
 az group create --name "myResourceGroup" -l "EastUS"
 
 az keyvault create --name <your-unique-keyvault-name> -g "myResourceGroup"
+```
+
+```azurepowershell
+New-AzResourceGroup -Name myResourceGroup -Location EastUS
+
+New-AzKeyVault -Name <your-unique-keyvault-name> -ResourceGroupName myResourceGroup -Location EastUS
 ```
 
 ### <a name="create-a-service-principal"></a>Hizmet sorumlusu oluşturma
@@ -113,14 +119,39 @@ Bu işlem bir dizi anahtar / değer çifti döndürecektir.
 }
 ```
 
+Azure PowerShell [New-AzADServicePrincipal](/powershell/module/az.resources/new-azadserviceprincipal) komutunu kullanarak bir hizmet sorumlusu oluşturun:
+
+```azurepowershell
+# Create a new service principal
+$spn = New-AzADServicePrincipal -DisplayName "http://mySP"
+
+# Get the tenant ID and subscription ID of the service principal
+$tenantId = (Get-AzContext).Tenant.Id
+$subscriptionId = (Get-AzContext).Subscription.Id
+
+# Get the client ID
+$clientId = $spn.ApplicationId
+
+# Get the client Secret
+$bstr = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($spn.Secret)
+$clientSecret = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto($bstr)
+```
+
+Azure PowerShell ile hizmet sorumlusu hakkında daha fazla bilgi için Azure PowerShell ile [bir Azure hizmet sorumlusu oluştur'a](/powershell/azure/create-azure-service-principal-azureps)bakın.
+
 Aşağıdaki adımlarda kullanacağımız için clientId, clientSecret ve tenantId'e dikkat edin.
+
 
 #### <a name="give-the-service-principal-access-to-your-key-vault"></a>Servis müdürüne anahtar kasanıza erişim hakkı verin
 
 MüşteriYi [az keyvault set-ilke](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) komutuna geçirerek servis müdürünüze izin veren anahtar kasanız için bir erişim ilkesi oluşturun. Servis sorumlusuna hem anahtarlar hem de sırlar için izinleri al, listele ve ayarla.
 
 ```azurecli
-az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-service-principal> --secret-permissions delete get list set --key-permissions create decrypt delete encrypt get list unwrapKey wrapKey
+az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-service-principal> --secret-permissions list get set delete purge
+```
+
+```azurepowershell
+Set-AzKeyVaultAccessPolicy -VaultName <your-unique-keyvault-name> -ServicePrincipalName <clientId-of-your-service-principal> -PermissionsToSecrets list,get,set,delete,purge
 ```
 
 #### <a name="set-environmental-variables"></a>Çevresel değişkenleri ayarlama
@@ -140,6 +171,16 @@ setx KEY_VAULT_NAME <your-key-vault-name>
 ````
 
 Her aradığınızda `setx`"SUCCESS: Belirtilen değer kaydedildi" yanıtını almalısınız.
+
+```shell
+AZURE_CLIENT_ID=<your-clientID>
+
+AZURE_CLIENT_SECRET=<your-clientSecret>
+
+AZURE_TENANT_ID=<your-tenantId>
+
+KEY_VAULT_NAME=<your-key-vault-name>
+```
 
 ## <a name="object-model"></a>Nesne modeli
 
@@ -173,6 +214,10 @@ Gizlinin [az keyvault gizli gösteri](/cli/azure/keyvault/secret?view=azure-cli-
 az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
 ```
 
+```azurepowershell
+(Get-AzKeyVaultSecret -VaultName <your-unique-keyvault-name> -Name mySecret).SecretValueText
+```
+
 ### <a name="retrieve-a-secret"></a>Bir sır alma
 
 Şimdi istemci ile daha önce ayarlanmış değeri [alabilirsiniz. GetSecret yöntemi](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.getsecretasync).
@@ -191,6 +236,10 @@ Gizli [az keyvault gizli gösteri](/cli/azure/keyvault/secret?view=azure-cli-lat
 
 ```azurecli
 az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
+```
+
+```azurepowershell
+(Get-AzKeyVaultSecret -VaultName <your-unique-keyvault-name> -Name mySecret).SecretValueText
 ```
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme

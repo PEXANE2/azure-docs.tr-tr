@@ -1,6 +1,6 @@
 ---
 title: Windows bilgisayarları Azure Güvenlik Merkezi’ne ekleme
-description: Bu hızlı başlangıçta Microsoft Monitoring Agent’ı bir Windows bilgisayarda nasıl sağlayacağınız gösterilmektedir.
+description: Bu hızlı başlangıç, Log Analytics aracısını Windows bilgisayarında nasıl sağlayabileceğinizi gösterir.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/3/2018
 ms.author: memildin
-ms.openlocfilehash: 417d8379d019a9ef0da41638cba4a1f9cb7b8bc2
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 2840b6636c2b511ab57a8bae8adf411f4d8a27d2
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "73686510"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435920"
 ---
 # <a name="quickstart-onboard-windows-computers-to-azure-security-center"></a>Hızlı Başlangıç: Windows bilgisayarları Azure Güvenlik Merkezi’ne ekleme
-Azure aboneliklerinizi ekledikten sonra Microsoft Monitoring Agent’ı sağlayarak Azure’ın dışında (örneğin, şirket içi ortamda veya diğer bulutlarda) çalışan kaynaklar için Güvenlik Merkezi’ni etkinleştirebilirsiniz.
+Azure aboneliklerinize bindikten sonra, Log Analytics aracısını sağlayarak Azure dışında (örneğin şirket içinde veya diğer bulutlarda) çalışan kaynaklar için Güvenlik Merkezi'ni etkinleştirebilirsiniz.
 
-Bu hızlı başlangıçta Microsoft Monitoring Agent’ın bir Windows bilgisayara nasıl yükleneceği gösterilmektedir.
+Bu hızlı başlangıç, Log Analytics aracısını Windows bilgisayarına nasıl yükleyersiniz gösterir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 Güvenlik Merkezi ile çalışmaya başlamak için Microsoft Azure aboneliğinizin olması gerekir. Bir aboneliğiniz yoksa [ücretsiz hesap](https://azure.microsoft.com/pricing/free-trial/) için kaydolabilirsiniz.
@@ -41,7 +41,7 @@ Bu hızlı başlangıçtaki adımlara geçmeden önce Güvenlik Merkezi’nin St
 3. Güvenlik Merkezi ana menüsü altında, **Başlarken**’i seçin.
 4. **Başlangıç** sekmesini seçin.
 
-   ![Kullanmaya başlayın][3]
+   ![başlarken][3]
 
 5. **Yeni Azure dışı bilgisayarlar ekle** altında, **Yapılandır**’a tıklayın. Log Analytics çalışma alanlarınızın bir listesi gösterilir. Listede, varsa, otomatik sağlama etkinleştirildiğinde Güvenlik Merkezi tarafından sizin için oluşturulan varsayılan çalışma alanı bulunur. Bu çalışma alanını veya kullanmak istediğiniz başka bir çalışma alanını seçin.
 
@@ -72,7 +72,7 @@ Bu hızlı başlangıçtaki adımlara geçmeden önce Güvenlik Merkezi’nin St
 9. **Yüklemeye Hazır** sayfasında, tercihlerinizi gözden geçirip **Yükle**’yi seçin.
 10. **Yapılandırma başarıyla tamamlandı** sayfasında, **Son**’u seçin
 
-Tamamlandığında, **Denetim Masası**'nda **Microsoft Monitoring Agent** gösterilir. Burada yapılandırmanızı gözden geçirebilir ve aracının bağlı olup olmadığını doğrulayabilirsiniz.
+Tamamlandığında, **Log Analytics aracısı** **Denetim Masası'nda**görünür. Burada yapılandırmanızı gözden geçirebilir ve aracının bağlı olup olmadığını doğrulayabilirsiniz.
 
 Aracının yüklenmesi ve yapılandırılması hakkında daha fazla bilgi için bkz. [Windows bilgisayarları bağlama](../azure-monitor/platform/agent-windows.md#install-the-agent-using-setup-wizard).
 
@@ -93,10 +93,10 @@ Aracıyı kaldırmak için:
 
 1. Açık **Kontrol Paneli**.
 2. **Programlar ve Özellikler**'i açın.
-3. **Programlar ve Özellikler**'de **Microsoft Monitoring Agent**'ı seçin ve **Kaldır**'a tıklayın.
+3. **Programlar ve Özellikler'de,** Günlük **Analitiği aracıyı** seçin ve **Kaldır'ı**tıklatın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Bu hızlı başlangıçta, Microsoft Monitoring Agent’ı bir Windows bilgisayarda sağladınız. Güvenlik Merkezi'ni kullanma hakkında daha fazla bilgi için bir güvenlik ilkesi yapılandırma ve kaynaklarınızın güvenliğini değerlendirme ile ilgili öğreticiye geçin.
+Bu hızlı başlangıçta, Log Analytics aracısını bir Windows bilgisayarında siz buldunuz. Güvenlik Merkezi'ni kullanma hakkında daha fazla bilgi için bir güvenlik ilkesi yapılandırma ve kaynaklarınızın güvenliğini değerlendirme ile ilgili öğreticiye geçin.
 
 > [!div class="nextstepaction"]
 > [Öğretici: Güvenlik ilkelerini tanımlama ve değerlendirme](tutorial-security-policy.md)

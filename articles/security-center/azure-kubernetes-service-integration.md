@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: d1cd4691586b27282d221a19c5fb7a1af034ed6e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d5c74ac760b5746d37468d692c2a46d5aedbee72
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80125153"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80436171"
 ---
 # <a name="azure-kubernetes-services-integration-with-security-center"></a>Azure Kubernetes Hizmetleri güvenlik merkezi ile tümleştirme
 
@@ -35,7 +35,7 @@ Bu iki araç birlikte en iyi bulut yerlisi Kubernetes güvenlik teklifini oluşt
 
 İki hizmeti birlikte kullanmak şunları sağlar:
 
-* **Güvenlik önerileri** - Güvenlik Merkezi AKS kaynaklarınızı tanımlar ve kategorilere ayırAr: kümelerden tek tek sanal makinelere kadar. Daha sonra kaynak başına güvenlik önerilerini görüntüleyebilirsiniz. Daha fazla bilgi için, [önerilerin başvuru listesinde](recommendations-reference.md#recs-computeapp)kapsayıcı önerilerine bakın. 
+* **Güvenlik önerileri** - Güvenlik Merkezi AKS kaynaklarınızı tanımlar ve kategorilere ayırAr: kümelerden tek tek sanal makinelere kadar. Daha sonra kaynak başına güvenlik önerilerini görüntüleyebilirsiniz. Daha fazla bilgi için, [önerilerin başvuru listesinde](recommendations-reference.md#recs-containers)kapsayıcı önerilerine bakın. 
 
 * **Çevre sertleştirme** - Güvenlik Merkezi, Kubernetes kümelerinizin ve Docker yapılandırmalarınızın yapılandırmasını sürekli olarak izler. Daha sonra endüstri standartlarını yansıtan güvenlik önerileri oluşturur.
 

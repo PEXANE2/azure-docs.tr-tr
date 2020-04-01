@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: aec8048c7ef2eb0d944cdd2a863e23578f4f87e5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: db36033ea524603416f16db27f40d5eefb8bf613
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77561689"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437113"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Depolama Gezgini sorun giderme kılavuzu
 
@@ -76,7 +76,7 @@ Depolama Gezgini'ni kullanmak için gereken izinleri sağlayabilecek birkaç yer
 Sertifika hataları genellikle aşağıdaki durumlardan birinde oluşur:
 
 - Uygulama, bir sunucunun (şirket sunucunuz gibi) HTTPS trafiğini engellediği, şifresini çözmesi ve ardından kendi imzaladığı bir sertifika kullanarak şifrelediği anlamına gelen saydam bir _proxy_aracılığıyla bağlanır.
-- Aldığınız HTTPS iletilerine kendi imzalı bir SSL sertifikası enjekte eden bir uygulama çalıştırıyorsunuz. Sertifika enjekte eden uygulamalara örnek olarak virüsten koruma ve ağ trafiği denetleme yazılımı verilebilir.
+- Aldığınız HTTPS iletilerine kendi imzalı TLS/SSL sertifikası enjekte eden bir uygulama çalıştırıyorsunuz. Sertifika enjekte eden uygulamalara örnek olarak virüsten koruma ve ağ trafiği denetleme yazılımı verilebilir.
 
 Depolama Gezgini kendi imzalı veya güvenilmeyen bir sertifika gördüğünde, alınan HTTPS iletisinin değiştirilip değiştirilmediğini artık bilmez. Kendi imzalı sertifikanın bir kopyasına sahipseniz, aşağıdaki adımları izleyerek Depolama Gezgini'ne güvenebileceği konusunda talimat verebilirsiniz:
 

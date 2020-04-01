@@ -1,22 +1,22 @@
 ---
 title: Google kimlik doğrulamasını yapılandırma
-description: Uygulama Hizmeti uygulamanız için bir kimlik sağlayıcısı olarak Google kimlik doğrulamasını nasıl yapılandıracaksınız öğrenin.
+description: Uygulama Hizmeti veya Azure İşlevleri uygulamanız için google kimlik doğrulamasını kimlik sağlayıcısı olarak nasıl yapılandıracaksınız öğrenin.
 ms.assetid: 2b2f9abf-9120-4aac-ac5b-4a268d9b6e2b
 ms.topic: article
 ms.date: 09/02/2019
-ms.custom: seodec18
-ms.openlocfilehash: 81ce3e393d308323c8d5a3d688c16c9b45e7be9d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: fasttrack-edit
+ms.openlocfilehash: bb6b8eebef3247cf2c39ed4b111296e1e0521a74
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74670820"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437987"
 ---
-# <a name="configure-your-app-service-app-to-use-google-login"></a>Google oturum açma işlemlerini kullanacak şekilde Uygulama Hizmeti uygulamanızı yapılandırın
+# <a name="configure-your-app-service-or-azure-functions-app-to-use-google-login"></a>Google oturum açmak için Uygulama Hizmetinizi veya Azure İşlevleri uygulamanızı yapılandırın
 
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
-Bu konu, Azure Uygulama Hizmeti'ni Google'ı kimlik doğrulama sağlayıcısı olarak kullanacak şekilde nasıl yapılandırdığınızı gösterir.
+Bu konu, Azure Uygulama Hizmeti'ni veya Azure Işlevlerini Google'ı kimlik doğrulama sağlayıcısı olarak kullanmak üzere nasıl yapılandırabileceğinizi gösterir.
 
 Bu konudaki yordamı tamamlamak için, doğrulanmış bir e-posta adresine sahip bir Google hesabınız olması gerekir. Yeni bir Google hesabı oluşturmak için [accounts.google.com](https://go.microsoft.com/fwlink/p/?LinkId=268302) adresine gidin.
 
@@ -63,5 +63,5 @@ Artık uygulamanızda kimlik doğrulama için Google'ı kullanmaya hazırsınız
 
 [Google apis]: https://go.microsoft.com/fwlink/p/?LinkId=268303
 
-[Azure portalında]: https://portal.azure.com/
+[Azure portal]: https://portal.azure.com/
 

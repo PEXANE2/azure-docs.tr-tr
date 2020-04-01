@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/26/2020
+ms.date: 03/31/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3a0511a19477f3d76baf9c453316c5348cc31397
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e2b30e8f6bcbe7c0e739455f4942712f68ff8404
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80332666"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437461"
 ---
 # <a name="define-a-phone-factor-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C özel ilkesinde telefon faktörü teknik profilini belirleme
 
@@ -24,12 +24,11 @@ ms.locfileid: "80332666"
 
 Azure Active Directory B2C (Azure AD B2C), telefon numaralarını kaydetme ve doğrulama desteği sağlar. Bu teknik profil:
 
-- Kullanıcı ile etkileşim kurmak için bir kullanıcı arabirimi sağlar.
-- Görünümü ve hissini kontrol etmek için içerik tanımını kullanır.
-- Telefon numarasını doğrulamak için hem telefon görüşmelerini hem de kısa mesajları destekler.
+- Bir telefon numarasını doğrulamak veya kaydetmek için kullanıcıyla etkileşimde bulunur.
+- Telefon numarasını doğrulamak için telefon görüşmelerini ve kısa mesajları destekler.
 - Birden çok telefon numarası destekler. Kullanıcı doğrulamak için telefon numaralarından birini seçebilir.  
-- Bir telefon numarası sağlanırsa, telefon faktörü kullanıcı arabirimi kullanıcıdan telefon numarasını doğrulamasını ister. Sağlanmazsa, kullanıcıdan yeni bir telefon numarası kaydetmesini ister.
-- Kullanıcının yeni bir telefon numarası sağlayıp sağlamadığını belirten bir talep verir. Bu talebi, telefon numarasının Azure AD kullanıcı profilinde kalıcı olup olmadığına karar vermek için kullanabilirsiniz.  
+- Kullanıcının yeni bir telefon numarası sağlayıp sağlamadığını belirten bir talep verir. Bu talebi, telefon numarasının Azure AD B2C kullanıcı profilinde kalıcı olup olmadığına karar vermek için kullanabilirsiniz.  
+- Görünümü ve hissi kontrol etmek için bir [içerik tanımı](contentdefinitions.md) kullanır.
 
 ## <a name="protocol"></a>Protokol
 
@@ -44,18 +43,24 @@ Aşağıdaki örnekte, kayıt ve doğrulama için bir telefon faktörü teknik p
 </TechnicalProfile>
 ```
 
+## <a name="input-claims-transformations"></a>Giriş talepleri dönüşümleri
+
+InputClaimsTransformations öğesi, giriş taleplerini değiştirmek veya yenilerini oluşturmak için kullanılan giriş talepleri dönüşümleri koleksiyonu içerebilir. Aşağıdaki girdi talepleri dönüştürme, `UserId` giriş talepleri koleksiyonunda daha sonra kullanılan bir talep oluşturur.
+
+```xml
+<InputClaimsTransformations>
+  <InputClaimsTransformation ReferenceId="CreateUserIdForMFA" />
+</InputClaimsTransformations>
+```
+
 ## <a name="input-claims"></a>Giriş talepleri
 
 InputClaims öğesi aşağıdaki iddiaları içermelidir. Ayrıca, talep ettiğiniz adı telefon faktörü teknik profilinde tanımlanan ada eşleyebilirsiniz. 
 
-```XML
-<InputClaims>
-  <!--A unique identifier of the user. The partner claim type must be set to `UserId`. -->
-  <InputClaim ClaimTypeReferenceId="userIdForMFA" PartnerClaimType="UserId" />
-  <!--A claim that contains the phone number. If the claim is empty, Azure AD B2C asks the user to enroll a new phone number. Otherwise, it asks the user to verify the phone number. -->
-  <InputClaim ClaimTypeReferenceId="strongAuthenticationPhoneNumber" />
-</InputClaims>
-```
+|  Veri türü| Gerekli | Açıklama |
+| --------- | -------- | ----------- | 
+| string| Evet | Kullanıcı için benzersiz bir tanımlayıcı. Talep adı veya PartnerClaimType `UserId`olarak ayarlanmalıdır. Bu talep kişisel tanımlayıcı bilgiler içermemelidir.|
+| string| Evet | Talep türlerinin listesi. Her talep bir telefon numarası içerir. Giriş taleplerinden herhangi biri bir telefon numarası içermiyorsa, kullanıcıdan yeni bir telefon numarası kaydolması ve doğrulaması istenir. Doğrulanmış telefon numarası çıktı talebi olarak döndürülür. Giriş taleplerinden biri bir telefon numarası içeriyorsa, kullanıcıdan bunu doğrulaması istenir. Birden çok giriş talebi bir telefon numarası içeriyorsa, kullanıcıdan telefon numaralarından birini seçmesi ve doğrulaması istenir. |
 
 Aşağıdaki örnek, birden çok telefon numarası nın kullanılmasını gösterir. Daha fazla bilgi için [örnek ilke](https://github.com/azure-ad-b2c/samples/tree/master/policies/mfa-add-secondarymfa)ye bakın.
 
@@ -67,20 +72,14 @@ Aşağıdaki örnek, birden çok telefon numarası nın kullanılmasını göste
 </InputClaims>
 ```
 
-InputClaimsTransformations öğesi, giriş taleplerini değiştirmek veya telefon faktörü sayfasına sunmadan önce yenilerini oluşturmak için kullanılan InputClaimsTransformation öğelerikoleksiyonunu içerebilir.
-
 ## <a name="output-claims"></a>Çıktı talepleri
 
 OutputClaims öğesi, telefon faktörü teknik profili tarafından döndürülen taleplerin listesini içerir.
 
-```xml
-<OutputClaims>
-  <!-- The verified phone number. The partner claim type must be set to `Verified.OfficePhone`. -->
-  <OutputClaim ClaimTypeReferenceId="Verified.strongAuthenticationPhoneNumber" PartnerClaimType="Verified.OfficePhone" />
-  <!-- Indicates whether the new phone number has been entered by the user. The partner claim type must be set to `newPhoneNumberEntered`. -->
-  <OutputClaim ClaimTypeReferenceId="newPhoneNumberEntered" PartnerClaimType="newPhoneNumberEntered" />
-</OutputClaims>
-```
+|  Veri türü| Gerekli | Açıklama |
+|  -------- | ----------- |----------- |
+| boole | Evet | Yeni telefon numarasının kullanıcı tarafından girilip girmediğini gösterir. Talep adı veya PartnerClaimType,`newPhoneNumberEntered`|
+| string| Evet | Doğrulanmış telefon numarası. Talep adı veya PartnerClaimType `Verified.OfficePhone`olarak ayarlanmalıdır.|
 
 OutputClaimsTransformations öğesi, çıktı taleplerini değiştirmek veya yenilerini oluşturmak için kullanılan OutputClaimsTransformation öğelerikoleksiyonunu içerebilir.
 
@@ -94,7 +93,9 @@ OutputClaimsTransformations öğesi, çıktı taleplerini değiştirmek veya yen
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
 | İçerikDefinitionReferenceId | Evet | Bu teknik profille ilişkili [içerik tanımının](contentdefinitions.md) tanımlayıcısı. |
-| ManualPhoneNumberEntryAllowed| Hayır | Bir kullanıcının bir telefon numarasını el ile girmesine izin verilip verilmediğini belirtin. Olası `true` değerler: `false` veya (varsayılan).|
+| ManualPhoneNumberEntryAllowed| Hayır | Bir kullanıcının bir telefon numarasını el ile girmesine izin verilip verilmediğini belirtin. Olası değerler: `true` `false` , veya (varsayılan).|
+| setting.authenticationMode | Hayır | Telefon numarasını doğrulama yöntemi. Olası `sms`değerler: `phone`, `mixed` , veya (varsayılan).|
+| ayarı.otomatik arama| Hayır| Teknik profilin otomatik arama mı yoksa otomatik sms gönderip göndermemesi gerektiğini belirtin. Olası değerler: `true` `false` , veya (varsayılan). Otomatik `setting.authenticationMode` arama, meta verilerin `sms`ayarını `phone`veya . Giriş talepleri toplamanın tek bir telefon numarası olmalıdır. |
 
 ### <a name="ui-elements"></a>Kullanıcı arabirimi öğeleri
 
@@ -103,4 +104,3 @@ Telefon faktörü kimlik doğrulama sayfası kullanıcı arabirimi öğeleri [ye
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - [MFA](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/SocialAndLocalAccountsWithMfa) başlangıç paketi ile sosyal ve yerel hesapları kontrol edin.
-

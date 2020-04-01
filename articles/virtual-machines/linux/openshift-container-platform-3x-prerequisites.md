@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/23/2019
 ms.author: haroldw
-ms.openlocfilehash: b2b34a6fdf96613c5bc372e585598fabbe43d53d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8767a6ee6218223280ea6219e22540c53d1e89be
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80066617"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80409112"
 ---
 # <a name="common-prerequisites-for-deploying-openshift-container-platform-311-in-azure"></a>OpenShift Kapsayıcı Platformu 3.11'i Azure'da dağıtmak için ortak ön koşullar
 
@@ -143,15 +143,15 @@ Hizmet ilkeleri hakkında daha fazla bilgi için [bkz.](https://docs.microsoft.c
 
 ## <a name="prerequisites-applicable-only-to-resource-manager-template"></a>Yalnızca Kaynak Yöneticisi şablonu için geçerli olan önkoşullar
 
-SSH özel anahtarı **(sshPrivateKey),** Azure AD istemcisi gizli (**aadClientSecret),** OpenShift yönetici şifresi (**openshiftPassword**) ve Red Hat Subscription Manager şifresi veya etkinleştirme anahtarı **(rhsmPasswordOrActivationKey)** için sırlar oluşturulmalıdır.  Ayrıca, özel SSL sertifikaları kullanılırsa, o zaman altı ek sırlar oluşturulması gerekir - **routingcafile**, **routingcertfile**, **routingkeyfile**, **mastercafile**, **mastercertfile**, ve **masterkeyfile**.  Bu parametreler daha ayrıntılı olarak açıklanacaktır.
+SSH özel anahtarı **(sshPrivateKey),** Azure AD istemcisi gizli (**aadClientSecret),** OpenShift yönetici şifresi (**openshiftPassword**) ve Red Hat Subscription Manager şifresi veya etkinleştirme anahtarı **(rhsmPasswordOrActivationKey)** için sırlar oluşturulmalıdır.  Ayrıca, özel TLS / SSL sertifikaları kullanılırsa, o zaman altı ek sırlar oluşturulması gerekir - **routingcafile**, **routingcertfile**, **routingkeyfile**, **mastercafile**, **mastercertfile**, ve **masterkeyfile**.  Bu parametreler daha ayrıntılı olarak açıklanacaktır.
 
 Şablon belirli gizli adlar başvurur, bu nedenle yukarıda listelenen kalın lı adları kullanmanız **gerekir** (büyük/küçük harf duyarlı).
 
 ### <a name="custom-certificates"></a>Özel Sertifikalar
 
-Varsayılan olarak, şablon OpenShift web konsolu ve yönlendirme etki alanı için kendi imzalı sertifikaları kullanarak bir OpenShift kümesi dağıtır. Özel SSL sertifikaları kullanmak istiyorsanız, 'routingCertType'ı 'özel' ve 'masterCertType'ı 'özel' olarak ayarlayın.  Sertifikalar için CA, Cert ve Key dosyalarına .pem biçiminde ihtiyacınız vardır.  Biri için özel sertifikalar kullanmak mümkündür, ancak diğeri için değil.
+Varsayılan olarak, şablon OpenShift web konsolu ve yönlendirme etki alanı için kendi imzalı sertifikaları kullanarak bir OpenShift kümesi dağıtır. Özel TLS/SSL sertifikaları kullanmak istiyorsanız, 'routingCertType'ı 'özel' ve 'masterCertType'ı 'özel' olarak ayarlayın.  Sertifikalar için CA, Cert ve Key dosyalarına .pem biçiminde ihtiyacınız vardır.  Biri için özel sertifikalar kullanmak mümkündür, ancak diğeri için değil.
 
-Bu dosyaları Key Vault sırlarında saklamanız gerekir.  Özel anahtar için kullanılanla aynı Anahtar Kasası'nı kullanın.  Gizli adlar için 6 ek giriş gerektirmek yerine, şablon SSL sertifika dosyalarının her biri için belirli gizli adlar kullanmak için sabit kodlanır.  Aşağıdaki tablodaki bilgileri kullanarak sertifika verilerini depolayın.
+Bu dosyaları Key Vault sırlarında saklamanız gerekir.  Özel anahtar için kullanılanla aynı Anahtar Kasası'nı kullanın.  Şablon, gizli adlar için 6 ek giriş gerektirmek yerine, TLS/SSL sertifika dosyalarının her biri için belirli gizli adlar kullanmak için sabit kodlanır.  Aşağıdaki tablodaki bilgileri kullanarak sertifika verilerini depolayın.
 
 | Gizli Ad      | Sertifika dosyası   |
 |------------------|--------------------|

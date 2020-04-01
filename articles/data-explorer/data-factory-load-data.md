@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: 860b1a579d9c8cee6c6e80ae4c4e7fdd7949d5c7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8e17a004ff866f3915000fb72b6770757062cf83
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71300596"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422907"
 ---
 # <a name="copy-data-to-azure-data-explorer-by-using-azure-data-factory"></a>Azure Veri Fabrikası'nı kullanarak verileri Azure Veri Gezgini'ne kopyalama 
 
@@ -59,7 +59,7 @@ Bu makalede, Amazon Basit Depolama Hizmeti'nden (S3) verileri Azure Veri Gezgini
    | **Adı** | Kutuya, veri fabrikanız için genel olarak benzersiz bir ad girin. Bir hata alırsanız, *Veri \"fabrikası adı\" LoadADXDemo kullanılamıyor,* veri fabrikası için farklı bir ad girin. Veri Fabrikası yapılarını adlandırma kuralları [için](/azure/data-factory/naming-rules)bkz.|
    | **Abonelik** | Açılan listede, veri fabrikasını oluşturmak için Azure aboneliğini seçin. |
    | **Kaynak Grubu** | **Yeni Oluştur'u**seçin ve ardından yeni bir kaynak grubunun adını girin. Zaten bir kaynak grubunuz varsa, **varolan kullan'ı**seçin. |
-   | **Sürüm** | Açılan listede **V2'yi**seçin. |  
+   | **Sürüm** | Açılan listede **V2'yi**seçin. |    
    | **Konum** | Açılan listede, veri fabrikasının konumunu seçin. Listede yalnızca desteklenen konumlar görüntülenir. Veri fabrikası tarafından kullanılan veri depoları başka konumlarda veya bölgelerde bulunabilir. |
 
 1. **Oluştur'u**seçin.
@@ -78,7 +78,7 @@ Azure Veri Gezgini'ne birçok [türde veri](/azure/data-factory/copy-activity-ov
 
 Verilerinizi aşağıdaki yollardan herhangi birinde yükleyebilirsiniz:
 
-* Azure Veri Fabrikası kullanıcı arabiriminde, sol bölmede, Azure Veri Fabrikası Kullanıcı Arabirimi'ni kullanarak veri fabrikası oluştur'un "Veri fabrikası oluşturma" bölümünde gösterildiği gibi **Yazar** [simgesini](/azure/data-factory/quickstart-create-data-factory-portal#create-a-data-factory)seçin.
+* Azure Veri Fabrikası kullanıcı arabiriminde, sol bölmede **Yazar** simgesini seçin. Bu, [Azure Veri Fabrikası UI'sini kullanarak veri fabrikası oluşturma bölümünün](/azure/data-factory/quickstart-create-data-factory-portal#create-a-data-factory)"Veri fabrikası oluşturma" bölümünde gösterilir.
 * Azure Veri Fabrikası Kopyalama Verileri aracında, [verileri kopyalamak için Verileri Kopyala aracını kullanın'](/azure/data-factory/quickstart-create-data-factory-copy-data-tool)da gösterildiği gibi.
 
 ### <a name="copy-data-from-amazon-s3-source"></a>Amazon S3'ten veri kopyalama (kaynak)
@@ -124,7 +124,7 @@ Verilerinizi aşağıdaki yollardan herhangi birinde yükleyebilirsiniz:
 
    ![Kaynak veri deposu oluşturulan bağlantı](media/data-factory-load-data/source-data-store-created-connection.png)
 
-1. Giriş **dosyasını veya klasör bölmesini seç'te** aşağıdakileri yapın:
+1. Giriş **dosyasını veya klasör bölmesini seç'te** aşağıdaki adımları yapın:
 
     a. Kopyalamak istediğiniz dosyaya veya klasöre göz atın ve ardından seçin.
 
@@ -142,9 +142,12 @@ Verilerinizi aşağıdaki yollardan herhangi birinde yükleyebilirsiniz:
 
 Verileri bu bölümde belirtilen Azure Veri Gezgini hedef tablosuna (lavabo) kopyalamak için yeni Azure Veri Gezgini bağlantılı hizmet oluşturulur.
 
+> [!NOTE]
+> Azure [Veri Gezgini denetim komutlarını çalıştırmak](data-factory-command-activity.md) ve [sorgu komutlarından](/azure/kusto/management/data-ingestion/ingest-from-query)herhangi birini kullanmak için `.set-or-replace`Azure Veri Fabrikası komut etkinliğini kullanın.
+
 #### <a name="create-the-azure-data-explorer-linked-service"></a>Azure Veri Gezgini bağlantılı hizmeti oluşturun
 
-Azure Veri Gezgini bağlantılı hizmeti oluşturmak için aşağıdakileri yapın;
+Azure Veri Gezgini bağlantılı hizmeti oluşturmak için aşağıdaki adımları yapın:
 
 1. Varolan bir veri deposu bağlantısını kullanmak veya **Hedef veri deposu** bölmesinde yeni bir veri deposu belirtmek için yeni bağlantı **oluştur'u**seçin.
 
@@ -154,13 +157,13 @@ Azure Veri Gezgini bağlantılı hizmeti oluşturmak için aşağıdakileri yap�
 
     ![Yeni bağlantılı hizmet bölmesi](media/data-factory-load-data/adx-select-new-linked-service.png)
 
-1. Yeni **Bağlantılı Hizmet (Azure Veri Gezgini)** bölmesinde aşağıdakileri yapın:
+1. Yeni **Bağlantılı Hizmet (Azure Veri Gezgini)** bölmesinde aşağıdaki adımları yapın:
 
     ![Azure Veri Gezgini Yeni Bağlantılı Hizmet bölmesi](media/data-factory-load-data/adx-new-linked-service.png)
 
    a. **Ad** kutusuna Azure Veri Gezgini bağlantılı hizmetiçin bir ad girin.
 
-   b. **Hesap seçimi yöntemi**altında, aşağıdakilerden birini yapın: 
+   b. **Hesap seçimi yöntemi**altında, aşağıdaki seçeneklerden birini seçin: 
 
     * **Azure aboneliğinden** seçin ve ardından açılan listelerde **Azure aboneliğinizi** ve **Cluster'ınızı**seçin. 
 
@@ -186,7 +189,7 @@ Azure Veri Gezgini bağlantılı hizmeti oluşturmak için aşağıdakileri yap�
 
 #### <a name="configure-the-azure-data-explorer-data-connection"></a>Azure Veri Gezgini veri bağlantısını yapılandırma
 
-Bağlantılı hizmet bağlantısını oluşturduktan sonra **Hedef veri deposu** bölmesi açılır ve oluşturduğunuz bağlantı kullanılabilir. Bağlantıyı yapılandırmak için aşağıdakileri yapın;
+Bağlantılı hizmet bağlantısını oluşturduktan sonra **Hedef veri deposu** bölmesi açılır ve oluşturduğunuz bağlantı kullanılabilir. Bağlantıyı yapılandırmak için aşağıdaki adımları yapın:
 
 1. **Sonraki'ni**seçin.
 
@@ -214,7 +217,7 @@ Bağlantılı hizmet bağlantısını oluşturduktan sonra **Hedef veri deposu**
 
     ![Hedef veri kümesi "Sütun eşleme" bölmesi](media/data-factory-load-data/destination-dataset-column-mapping.png)
 
-1. **Ayarlar** bölmesinde aşağıdakileri yapın:
+1. **Ayarlar** bölmesinde aşağıdaki adımları yapın:
 
     a. **Hata toleransı ayarları**altında, ilgili ayarları girin.
 

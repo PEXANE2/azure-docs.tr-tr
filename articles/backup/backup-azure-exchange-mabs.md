@@ -4,12 +4,12 @@ description: Azure Yedekleme Sunucusu'ni kullanarak Exchange sunucusunun Azure Y
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 03/24/2017
-ms.openlocfilehash: 9e623b1bdce93c340ccd0e61f9f5145e7154beff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1d7d28d813df82a5e1ea0fe424bba2ef5a9a2684
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78295853"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421345"
 ---
 # <a name="back-up-an-exchange-server-to-azure-with-azure-backup-server"></a>Azure Yedekleme Sunucusu ile Exchange sunucusunun Azure'a yedeklemi
 
@@ -34,7 +34,7 @@ Exchange sunucusuna MABS koruma aracısını yüklemek için aşağıdaki adıml
 4. Korumak istediğiniz Exchange sunucusu veritabanını seçin ve **İleri'yi**tıklatın.
 
    > [!NOTE]
-   > Exchange 2013'ü koruyorsanız, [Exchange 2013 ön koşulları'nı](https://docs.microsoft.com/previous-versions/system-center/system-center-2012-R2/dn751029(v=sc.12))kontrol edin.
+   > Exchange 2013'ü koruyorsanız, [Exchange 2013 ön koşulları'nı](https://docs.microsoft.com/system-center/dpm/back-up-exchange?view=sc-dpm-2016)kontrol edin.
    >
    >
 
@@ -53,7 +53,7 @@ Exchange sunucusuna MABS koruma aracısını yüklemek için aşağıdaki adıml
     Bu seçeneği seçtikten sonra, Exchange sunucusunda **eseutil** komutunu çalıştırarak oluşturulan G/Ç trafiğini önlemek için MABS'de yedek tutarlılık denetimi çalıştırılacaktır.
 
    > [!NOTE]
-   > Bu seçeneği kullanmak için, Ese.dll ve Eseutil.exe dosyalarını MAB sunucusundaki C:\Program Files\Microsoft Azure Backup\DPM\DPM\bin dizinine kopyalamanız gerekir. Aksi takdirde, aşağıdaki hata tetiklenir:  
+   > Bu seçeneği kullanmak için, Ese.dll ve Eseutil.exe dosyalarını MABS sunucusundaki C:\Program Files\Microsoft Azure Backup\DPM\DPM\bin dizinine kopyalamanız gerekir. Aksi takdirde, aşağıdaki hata tetiklenir:  
    > ![eseutil hatası](./media/backup-azure-backup-exchange-server/eseutil-error.png)
    >
    >
@@ -66,7 +66,7 @@ Exchange sunucusuna MABS koruma aracısını yüklemek için aşağıdaki adıml
    >
 10. **Kısa Vadeli yedekleme**için hedefleri yapılandırın ve sonra **İleri'yi**tıklatın.
 11. Kullanılabilir disk alanını gözden geçirin ve sonra **İleri'yi**tıklatın.
-12. MAB Sunucusu'nun ilk çoğaltmayı oluşturacağı zamanı seçin ve sonra **İleri'yi**tıklatın.
+12. MABS Sunucusu'nun ilk çoğaltmayı oluşturacağı zamanı seçin ve sonra **İleri'yi**tıklatın.
 13. Tutarlılık denetimi seçeneklerini seçin ve sonra **İleri'yi**tıklatın.
 14. Azure'a yedeklemek istediğiniz veritabanını seçin ve sonra **İleri'yi**tıklatın. Örnek:
 

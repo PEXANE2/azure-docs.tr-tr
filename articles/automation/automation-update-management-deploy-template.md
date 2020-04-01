@@ -6,13 +6,13 @@ ms.subservice: update-management
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 02/27/2020
-ms.openlocfilehash: a8b382663b56d7481da876979e33194fb0ac533d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/30/2020
+ms.openlocfilehash: e69f3d7350d0da9f364983eae0935532b576bd76
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77925806"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411468"
 ---
 # <a name="onboard-update-management-solution-using-azure-resource-manager-template"></a>Azure Kaynak Yöneticisi şablonu kullanarak Yerleşik Güncelleştirme Yönetimi çözümü
 
@@ -25,7 +25,7 @@ Kaynak grubunuzdaki Azure Otomasyon Güncelleştirme Yönetimi çözümünüzü 
 
 Şablon, bir veya daha fazla Azure veya Azure olmayan VM'lerin biniş kısmını otomatikleştirmez.
 
-Aboneliğinizde desteklenen bir bölgede zaten bir Log Analytics çalışma alanı ve Otomasyon hesabınız varsa, bunlar bağlı değildir ve çalışma alanı güncelleştirme yönetimi çözümünüzü zaten dağıtmamışsa, bu şablonu kullanarak başarılı bir şekilde oluşturulur bağlantı ve Güncelleştirme Yönetimi çözümdağıdağı. 
+Aboneliğinizde desteklenen bir bölgede zaten bir Log Analytics çalışma alanı ve Otomasyon hesabınız varsa, bunlar bağlı değildir ve çalışma alanı zaten Güncelleştirme Yönetimi çözümünüzü dağıtmaz, bu şablonu kullanarak bağlantıyı başarıyla oluşturur ve Güncelleştirme Yönetimi çözümünüzü dağıtır. 
 
 ## <a name="api-versions"></a>API sürümleri
 
@@ -56,6 +56,7 @@ JSON şablonu, ortamınızda standart yapılandırma olarak kullanılabilecek di
 
 * sku - Nisan 2018 fiyatlandırma modelinde yayımlanan yeni GB Başına fiyatlandırma katmanı için varsayılan
 * veri saklama - varsayılan otuz gün
+* kapasite rezervasyonu - varsayılan olarak 100 GB
 
 >[!WARNING]
 >Yeni Nisan 2018 fiyatlandırma modeline dahil olan bir abonelikte Log Analytics çalışma alanı oluşturmak veya yapılandırmak ise, tek geçerli Log Analytics fiyatlandırma katmanı **PerGB2018'dir.**
@@ -79,7 +80,7 @@ JSON şablonu, ortamınızda standart yapılandırma olarak kullanılabilecek di
                 "description": "Workspace name"
             }
         },
-        "pricingTier": {
+        "sku": {
             "type": "string",
             "allowedValues": [
                 "pergb2018",
@@ -168,7 +169,8 @@ JSON şablonu, ortamınızda standart yapılandırma olarak kullanılabilecek di
             "apiVersion": "2017-03-15-preview",
             "location": "[parameters('location')]",
             "properties": {
-                "sku": { 
+                "sku": {
+                    "Name": "[parameters('sku')]",
                     "name": "CapacityReservation",
                     "capacityReservationLevel": 100
                 },
@@ -231,13 +233,13 @@ JSON şablonu, ortamınızda standart yapılandırma olarak kullanılabilecek di
     }
     ```
 
-2. Gereksinimlerinizi karşılamak için şablonu edin.
+2. Gereksinimlerinizi karşılamak için şablonu edin. Parametreleri satır değerleri olarak geçirmek yerine Kaynak [Yöneticisi parametreleri dosyası](../azure-resource-manager/templates/parameter-files.md) oluşturmayı düşünün.
 
 3. Bu dosyayı deployUMSolutiontemplate.json olarak yerel bir klasöre kaydedin.
 
 4. Bu şablonu dağıtmaya hazırsınız. PowerShell veya Azure CLI'yi kullanabilirsiniz. Bir çalışma alanı ve Otomasyon hesap adı istendiğinde, tüm Azure aboneliklerinde genel olarak benzersiz bir ad sağlayın.
 
-    **Powershell**
+    **PowerShell**
 
     ```powershell
     New-AzResourceGroupDeployment -Name <deployment-name> -ResourceGroupName <resource-group-name> -TemplateFile deployUMSolutiontemplate.json

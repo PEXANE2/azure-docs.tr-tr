@@ -1,22 +1,26 @@
 ---
 title: Azure AD kimlik doğrulamasını yapılandırma
-description: Uygulama Hizmeti uygulamanız için bir kimlik sağlayıcısı olarak Azure Active Directory kimlik doğrulamasını nasıl yapılandırabilirsiniz öğrenin.
+description: Uygulama Hizmetiniz veya Azure İşlevler uygulamanız için kimlik sağlayıcısı olarak Azure Active Directory kimlik doğrulamasını nasıl yapılandırabilirsiniz öğrenin.
 ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 ms.date: 09/03/2019
 ms.custom: seodec18, fasttrack-edit
-ms.openlocfilehash: fdad1f820d006c39fa135a29a5ec7377c47591f4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4b42f0966288e4ee72b689ddce6313a41e91f13e
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80046456"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80438027"
 ---
-# <a name="configure-your-app-service-app-to-use-azure-ad-login"></a>Azure AD oturumunu kullanacak şekilde Uygulama Hizmeti uygulamanızı yapılandırın
+# <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>Azure AD oturum unu kullanmak için Uygulama Hizmetinizi veya Azure İşlevleri uygulamanızı yapılandırın
 
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
-Bu makalede, Azure Uygulama Hizmeti'ni azure etkin dizinini (Azure AD) kimlik doğrulama sağlayıcısı olarak kullanacak şekilde nasıl yapılandırabileceğinizgösterilmektedir.
+Bu makalede, Azure Uygulama Hizmeti veya Azure İşlevlerini, kimlik doğrulama sağlayıcısı olarak Azure Etkin Dizini (Azure AD) kullanacak şekilde nasıl yapılandırabileceğiniz gösterilmektedir.
+
+> [!NOTE]
+> Şu anda Azure [Active Directory v2.0](../active-directory/develop/v2-overview.md) [(MSAL](../active-directory/develop/msal-overview.md)dahil) Azure Uygulama Hizmeti ve Azure İşlevleri için desteklenmez. Güncellemeler için lütfen tekrar kontrol edin.
+>
 
 Uygulamanızı ve kimlik doğrulamanızı ayarlarken aşağıdaki en iyi uygulamaları izleyin:
 
@@ -72,7 +76,8 @@ Aşağıdaki adımları uygulayın:
 1. **URI'yi Yeniden**Yönlendirme'de `<app-url>/.auth/login/aad/callback` **Web'i** seçin ve yazın. Örneğin, `https://contoso.azurewebsites.net/.auth/login/aad/callback`. 
 1. **Oluştur'u**seçin.
 1. Uygulama kaydı oluşturulduktan **sonra, Uygulama (istemci) kimliğini** ve **Dizin (kiracı) kimliğini** daha sonra kopyalayın.
-1. **Markaseçin.** **Giriş sayfası URL'sinde,** Uygulama Hizmeti uygulamanızın URL'sini girin ve **Kaydet'i**seçin.
+1. **Kimlik Doğrulaması**'nı seçin. **Örtülü hibe**kapsamında, Uygulama Hizmeti'nden OpenID Connect kullanıcı oturum açmalarına izin vermek için **kimlik belirteçlerini** etkinleştirin.
+1. (İsteğe bağlı) **Markaseçin.** **Giriş sayfası URL'sinde,** Uygulama Hizmeti uygulamanızın URL'sini girin ve **Kaydet'i**seçin.
 1.  >  **API Kümesini Ortaya Çıkar'ı**seçin.**Set** Uygulama Hizmeti uygulamanızın URL'sini yapıştırın ve **Kaydet'i**seçin.
 
    > [!NOTE]
@@ -96,7 +101,7 @@ Aşağıdaki adımları uygulayın:
     |Alan|Açıklama|
     |-|-|
     |İstemci Kimliği| Uygulama kaydının **Uygulama (istemci) kimliğini** kullanın. |
-    |İhraççı Kimliği| Kiracı `https://login.microsoftonline.com/<tenant-id>`kimliği * \<>* uygulama kaydının **Dizin (kiracı) kimliğiyle** kullanın ve değiştirin. |
+    |İhraççı Url| Kiracı `https://login.microsoftonline.com/<tenant-id>`kimliği * \<>* uygulama kaydının **Dizin (kiracı) kimliğiyle** kullanın ve değiştirin. Bu değer, kullanıcıları doğru Azure AD kiracısına yönlendirmek ve örneğin uygun belirteç imzalama anahtarlarını ve belirteç veren talep değerini belirlemek için uygun meta verileri indirmek için kullanılır. |
     |İstemci Sırrı (İsteğe Bağlı)| Uygulama kaydında oluşturduğunuz istemci sırrını kullanın.|
     |İzin Verilen Belirteç Kitleleri| Bu bir bulut veya sunucu uygulamasıysa ve bir web uygulamasından kimlik doğrulama belirteçlerine izin vermek istiyorsanız, web uygulamasının **Uygulama Kimliği URI'sini** buraya ekleyin. Yapılandırılan **İstemci Kimliği** *her zaman* dolaylı olarak izin verilen bir hedef kitle olarak kabul edilir. |
 
@@ -106,21 +111,21 @@ Artık Uygulama Hizmeti uygulamanızda kimlik doğrulama için Azure Active Dire
 
 ## <a name="configure-a-native-client-application"></a>Yerel istemci uygulamasını yapılandırma
 
-**Active Directory Authentication Library**gibi bir istemci kitaplığı kullanarak kimlik doğrulamasına izin vermek için yerel istemcileri kaydedebilirsiniz.
+**Active Directory Authentication Library**gibi bir istemci kitaplığını kullanarak uygulamanızda barındırılan Web API'sına kimlik doğrulamasına izin vermek için yerel istemcileri kaydedebilirsiniz.
 
 1. Azure [portalında] **Active Directory** > **App kayıtlarını** > seçin**Yeni kayıt**.
 1. Bir uygulama sayfası **kaydol,** uygulama kaydı için bir **Ad** girin.
 1. **URI'yi Yeniden**Yönlendirme'de, **Ortak istemciyi (mobil & masaüstü)** seçin ve URL'yi `<app-url>/.auth/login/aad/callback`yazın. Örneğin, `https://contoso.azurewebsites.net/.auth/login/aad/callback`.
 
     > [!NOTE]
-    > Bir Windows uygulaması için, bunun yerine URI olarak [PAKET SID](../app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library.md#package-sid) kullanın.
+    > Bir Microsoft Mağazası uygulaması için, bunun yerine URI olarak [SID paketini](../app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library.md#package-sid) kullanın.
 1. **Oluştur'u**seçin.
 1. Uygulama kaydı oluşturulduktan **sonra, Uygulama (istemci) kimliğinin**değerini kopyalayın.
 1. API **izinlerini** > seçin**İzin** > **apilerim**ekleyin.
 1. Uygulama Hizmeti uygulamanız için daha önce oluşturduğunuz uygulama kaydını seçin. Uygulama kaydını görmüyorsanız, [Uygulama Hizmeti uygulamanız için Azure AD'da uygulama kaydı oluştur'da](#register) **user_impersonation** kapsamını eklediğinizden emin olun.
 1. **user_impersonation'yi**seçin ve ardından **İzin Ekle'yi**seçin.
 
-Artık Uygulama Hizmeti uygulamanıza erişebilen yerel bir istemci uygulaması yapılandırıldınız.
+Artık bir kullanıcı adına Uygulama Hizmeti uygulamanıza erişebilecek yerel bir istemci uygulaması yapılandırıldınız.
 
 ## <a name="next-steps"></a><a name="related-content"> </a>Sonraki adımlar
 
@@ -128,4 +133,4 @@ Artık Uygulama Hizmeti uygulamanıza erişebilen yerel bir istemci uygulaması 
 
 <!-- URLs. -->
 
-[Azure portalında]: https://portal.azure.com/
+[Azure portal]: https://portal.azure.com/

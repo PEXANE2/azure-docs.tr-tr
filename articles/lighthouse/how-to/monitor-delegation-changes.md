@@ -1,14 +1,14 @@
 ---
 title: Yönetici kiracınızdaki temsilci değişikliklerini izleme
 description: Müşteri kiracılarından yönetici kiracınıza kadar temsilcilik etkinliğini nasıl izleyeceğinizi öğrenin.
-ms.date: 03/16/2020
+ms.date: 03/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 99aa05cb73326e441c0473855c27dc71212cf415
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 82c41c392210e088c85af510b9698e0140f660e5
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79478233"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421899"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>Yönetici kiracınızdaki temsilci değişikliklerini izleme
 
@@ -73,7 +73,7 @@ Hizmet ana hesabınızı oluşturduktan ve Izleme Okuyucurolünü kök kapsamda 
 
 Yönetici kiracınızın kök kapsamına İzleme Okuyucusu erişimi içeren yeni bir hizmet ana hesabı oluşturduktan sonra, bunu kiracınızdaki temsilcilik etkinliğini sorgulamak ve raporlamak için kullanabilirsiniz. 
 
-Aşağıdaki örnekte Azure PowerShell, son 1 günlük etkinlik ve eklenen veya kaldırılan delegasyonlar (veya başarısız olan denemeler) hakkındaki raporları sorgulamak için kullanır. Kiracı Etkinlik [Günlüğü](https://docs.microsoft.com/rest/api/monitor/TenantActivityLogs/List) verilerini sorgular, ardından eklenen veya kaldırılan delegasyonlar hakkında rapor vermek için aşağıdaki değerleri kurar:
+[Bu Azure PowerShell komut dosyası,](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/tools/monitor-delegation-changes) eklenen veya kaldırılan tümleçlerle (veya başarısız olan girişimler) son 1 günlük etkinlik ve raporları sorgulamak için kullanılabilir. Kiracı Etkinlik [Günlüğü](https://docs.microsoft.com/rest/api/monitor/TenantActivityLogs/List) verilerini sorgular, ardından eklenen veya kaldırılan delegasyonlar hakkında rapor vermek için aşağıdaki değerleri kurar:
 
 - **DelegatedResourceId**: Devredilen aboneliğin veya kaynak grubunun kimliği
 - **CustomerTenantId**: Müşteri kiracı kimliği

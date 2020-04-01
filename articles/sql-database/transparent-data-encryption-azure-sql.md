@@ -1,6 +1,6 @@
 ---
 title: Saydam veri şifrelemesi
-description: Azure Synapse'de SQL Veritabanı ve SQL Analytics için saydam veri şifrelemesine genel bakış. Belge, hizmet tarafından yönetilen saydam veri şifreleme ve Kendi Anahtarını Getir'i içeren yapılandırma seçeneklerini ve avantajlarını kapsar.
+description: Azure Synapse Analytics'te SQL Veritabanı ve Synapse SQL için saydam veri şifrelemesine genel bakış. Belge, hizmet tarafından yönetilen saydam veri şifreleme ve Kendi Anahtarını Getir'i içeren yapılandırma seçeneklerini ve avantajlarını kapsar.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -12,18 +12,18 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 02/06/2020
-ms.openlocfilehash: 5bbb537ef6545852423bf5315b7636671c598fdc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 982a59f1eb8717e2fe2d86728cdae731c919aaf0
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79255645"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80476956"
 ---
 # <a name="transparent-data-encryption-for-sql-database-and-azure-synapse"></a>SQL Veritabanı ve Azure Synapse için saydam veri şifreleme
 
-Saydam veri şifreleme (TDE), verileri istirahatte şifreleyerek Azure SQL Veritabanı, Azure SQL Yönetilen Örneği ve Azure Synapse'nin kötü amaçlı çevrimdışı etkinlik tehdidine karşı korunmasına yardımcı olur. Bu özellik bütün bir veritabanı, yedekleri ve işlem günlüğü dosyaları için gerçek zamanlı şifreleme ve şifre çözme işlemlerini gerçekleştirir ve uygulamada değişiklik yapmayı gerektirmez. TDE varsayılan olarak yeni dağıtılan tüm Azure SQL veritabanlarında etkindir. TDE, SQL Veritabanı'ndaki mantıksal **ana** veritabanını şifrelemek için kullanılamaz.  **Ana** veritabanı, kullanıcı veritabanlarında TDE işlemlerini gerçekleştirmek için gereken nesneleri içerir.
+Saydam veri şifreleme (TDE), Azure Synapse Analytics'teki Azure SQL Veritabanı, Azure SQL Yönetilen Örneği ve Synapse SQL'in, verileri istirahatte şifreleyerek kötü amaçlı çevrimdışı etkinlik tehdidine karşı korunmasına yardımcı olur. Bu özellik bütün bir veritabanı, yedekleri ve işlem günlüğü dosyaları için gerçek zamanlı şifreleme ve şifre çözme işlemlerini gerçekleştirir ve uygulamada değişiklik yapmayı gerektirmez. TDE varsayılan olarak yeni dağıtılan tüm Azure SQL veritabanlarında etkindir. TDE, SQL Veritabanı'ndaki mantıksal **ana** veritabanını şifrelemek için kullanılamaz.  **Ana** veritabanı, kullanıcı veritabanlarında TDE işlemlerini gerçekleştirmek için gereken nesneleri içerir.
 
-Azure SQL Veritabanı, Azure SQL Yönetilen Örneği veya Azure Azure Synapse'nin eski veritabanları için TDE'nin el ile etkinleştirilmesi gerekir.
+Azure SQL Veritabanı, Azure SQL Yönetilen Örneği veya Azure Synapse'nin eski veritabanları için TDE'nin el ile etkinleştirilmesi gerekir.
 Kaynak veritabanından devralma şifreleme durumunu geri yükleyerek oluşturulan Yönetilen Örnek veritabanları.
 
 Saydam veri şifreleme, veritabanı şifreleme anahtarı adı verilen simetrik bir anahtar kullanarak tüm veritabanının depolanmasını şifreler. Bu veritabanı şifreleme anahtarı saydam veri şifreleme koruyucusu tarafından korunmaktadır. Koruyucu, hizmet tarafından yönetilen bir sertifika (hizmet tarafından yönetilen saydam veri şifreleme) veya Azure Key Vault'ta (Kendi Anahtarınızı Getir) depolanan asimetrik bir anahtardır. Saydam veri şifreleme koruyucuyu Azure SQL Veritabanı ve Azure Synapse için sunucu düzeyinde ve Azure SQL Yönetilen Örneği için örnek düzeyinde ayarlarsınız. *Sunucu* terimi, farklı belirtilmediği sürece, bu belge boyunca hem sunucuhem de örnek anlamına gelir.
@@ -85,7 +85,7 @@ Saydam veri şifreleme ana anahtarını sunucu düzeyinde saydam veri şifreleme
 
 ![Bring Your Own Key desteği ile saydam veri şifreleme](./media/transparent-data-encryption-azure-sql/tde-byok-support.png)
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 PowerShell'i kullanarak saydam veri şifrelemeyi yönetin.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]

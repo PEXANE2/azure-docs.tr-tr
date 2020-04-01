@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Azure AD için BlueJeans ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory | Microsoft Docs'
-description: Azure AD için Azure Active Directory ve şema arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
+title: 'Öğretici: Azure AD için BlueJeans ile Azure Active Directory tek oturum açma (SSO) entegrasyonu | Microsoft Dokümanlar'
+description: Azure AD için Azure Active Directory ve BlueJeans arasında tek oturum açma yı nasıl yapılandırabilirsiniz öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,215 +17,215 @@ ms.date: 10/18/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: dfc38f63c5b6361122c236543320b91d22faa70a
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/18/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72595042"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-bluejeans-for-azure-ad"></a>Öğretici: Azure AD için BlueJeans ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-bluejeans-for-azure-ad"></a>Öğretici: Azure AD için BlueJeans ile Azure Active Directory tek oturum açma (SSO) entegrasyonu
 
-Bu öğreticide, Azure AD için şema Azure Active Directory (Azure AD) ile nasıl tümleştirileceğini öğreneceksiniz. Azure AD 'yi Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
+Bu eğitimde, Azure AD için BlueJeans'i Azure Etkin Dizini (Azure AD) ile nasıl entegre acağınızı öğreneceksiniz. Azure AD için BlueJeans'i Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
-* Azure AD 'de Azure AD 'ye erişimi olan denetim.
-* Kullanıcılarınızın Azure AD hesaplarıyla Azure AD için otomatik olarak oturum açmalarına olanak sağlayın.
-* Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
+* Azure AD için BlueJeans erişimi olan Azure AD'de denetim.
+* Kullanıcılarınızın Azure AD hesaplarıyla Azure AD için BlueJeans ile otomatik olarak oturum açmasını etkinleştirin.
+* Hesaplarınızı tek bir merkezi konumda yönetin - Azure portalı.
 
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için Azure [Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Başlamak için aşağıdaki öğeler gereklidir:
+Başlamak için aşağıdaki öğelere ihtiyacınız vardır:
 
-* Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
-* Azure AD çoklu oturum açma (SSO) özellikli abonelik için BlueJeans.
+* Azure AD aboneliği. Aboneliğiniz [yoksa, ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
+* Azure AD için BlueJeans tek oturum açma (SSO) aboneliği etkinleştirildi.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
+Bu eğitimde, Azure AD SSO'su bir test ortamında yapılandırın ve test esiniz.
 
-* Azure AD için BlueJeans, **SP** tarafından başlatılan SSO 'yu destekler
+* Azure AD için **BlueJeans, SP** tarafından başlatılan SSO'ya destek veriyor
 
-* Azure AD için BlueJeans [ **Otomatik** Kullanıcı sağlamayı destekler](bluejeans-provisioning-tutorial.md)
+* Azure AD için BlueJeans [ **Otomatik** kullanıcı sağlama yı destekler](bluejeans-provisioning-tutorial.md)
 
 > [!NOTE]
-> Bu uygulamanın tanımlayıcısı, tek bir kiracıda yalnızca bir örneğin yapılandırılabilmesini sağlamak için sabit bir dize değeridir.
+> Bu uygulamanın tanımlayıcısı sabit bir dize değeridir, bu nedenle yalnızca bir örnek bir kiracıda yapılandırılabilir.
 
-## <a name="adding-bluejeans-for-azure-ad-from-the-gallery"></a>Galeriden Azure AD için şema ekleme
+## <a name="adding-bluejeans-for-azure-ad-from-the-gallery"></a>Galeriden Azure AD için BlueJeans ekleme
 
-Azure AD 'de BlueJeans 'ın Azure AD 'ye tümleştirilmesini yapılandırmak için, Galeriden Azure AD için şema ' ı yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
+Azure AD için BlueJeans'in Azure AD'ye entegrasyonunu yapılandırmak için, galeriden Azure AD için BlueJeans'i yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-1. Bir iş veya okul hesabını ya da kişisel bir Microsoft hesabını kullanarak [Azure portalda](https://portal.azure.com) oturum açın.
-1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
-1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
-1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
-1. **Galeriden Ekle** bölümünde, arama kutusuna **Azure AD Için BlueJeans** yazın.
-1. Sonuçlar panelinden **Azure AD Için BlueJeans** ' ı seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
+1. Azure [portalında](https://portal.azure.com) bir iş veya okul hesabını veya kişisel bir Microsoft hesabını kullanarak oturum açın.
+1. Sol gezinti bölmesinde **Azure Etkin Dizin** hizmetini seçin.
+1. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamaları**seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama'yı**seçin.
+1. **Galeriden Ekle** bölümünde, arama kutusuna **Azure AD için BlueJeans** yazın.
+1. Sonuçlar panelinden **Azure AD için BlueJeans'i** seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-bluejeans-for-azure-ad"></a>Azure AD için şema için Azure AD çoklu oturum açmayı yapılandırma ve test etme
+## <a name="configure-and-test-azure-ad-single-sign-on-for-bluejeans-for-azure-ad"></a>Azure AD için BlueJeans için Azure AD oturum açma işlemlerini yapılandırma ve test edin
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu Azure AD için şema ile yapılandırın ve test edin. SSO 'nun çalışması için bir Azure AD kullanıcısı ile ilgili Kullanıcı arasında Azure AD 'de bir bağlantı ilişkisi oluşturmanız gerekir.
+Azure AD SSO'nu Azure AD için BlueJeans ile **B.Simon**adlı bir test kullanıcısı kullanarak yapılandırın ve test edin. SSO'nun çalışması için, Azure AD kullanıcısı ile Azure AD için BlueJeans'deki ilgili kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
 
-Azure AD SSO 'yu Azure AD için şema ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
+Azure AD SSO'yu Azure AD için BlueJeans ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlayın:
 
-1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
-    1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
-    1. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
-1. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[Azure AD SSO Için BlueJeans 'ı yapılandırın](#configure-bluejeans-for-azure-ad-sso)** .
-    1. Azure AD **[test kullanıcısı için şema oluşturma](#create-bluejeans-for-azure-ad-test-user)** -Kullanıcı Azure AD gösterimi ile bağlantılı olan Azure AD Için BlueJeans 'da B. Simon 'un bir karşılığı olacak.
-1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
+1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için **[Azure AD SSO'su yapılandırın.](#configure-azure-ad-sso)**
+    1. Azure AD'yi B.Simon ile tek oturum açma test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
+    1. B.Simon'ın Azure AD tek oturum açma kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
+1. **[Azure AD SSO için BlueJeans yapılandırın](#configure-bluejeans-for-azure-ad-sso)** - uygulama tarafında ki tek oturum açma ayarlarını yapılandırmak için.
+    1. **[Azure AD test kullanıcısı için BlueJeans oluşturun](#create-bluejeans-for-azure-ad-test-user)** - Kullanıcının Azure AD gösterimine bağlı Azure AD için BlueJeans'de B.Simon'ın bir örneğine sahip olmak için.
+1. **[SSO'yu test](#test-sso)** edin - yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
-## <a name="configure-azure-ad-sso"></a>Azure AD SSO 'yu yapılandırma
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
-Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
+Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com/), **Azure AD** uygulama tümleştirmesinin şeması sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
-1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
+1. Azure [portalında,](https://portal.azure.com/)Azure REKLAM uygulama tümleştirme **sayfasındaki BlueJeans,** **Yönet** bölümünü bulun ve **tek oturum açma'yı**seçin.
+1. Tek **bir oturum açma yöntemi** seç sayfasında **SAML'yi**seçin.
+1. **SAML sayfasıyla tek oturum** açma'da, ayarları ayarlamak için **Temel SAML Yapılandırması** için düzenleme/kalem simgesini tıklatın.
 
-   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
+   ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
 
-1. **Temel SAML yapılandırması** bölümünde, aşağıdaki alanlar için değerleri girin:
+1. Temel **SAML Yapılandırması** bölümünde, aşağıdaki alanların değerlerini girin:
 
-    **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın: `https://<companyname>.bluejeans.com`
+    Oturum **Açma URL** metin kutusuna aşağıdaki deseni kullanarak bir URL yazın:`https://<companyname>.bluejeans.com`
 
     > [!NOTE]
-    > Değer gerçek değil. Değeri, gerçek oturum açma URL 'SI ile güncelleştirin. Değeri almak için [Azure AD istemci desteği ekibine yönelik BlueJeans](https://support.bluejeans.com/contact) ile iletişim kurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Değer gerçek değil. Değeri gerçek Oturum Açma URL'si ile güncelleştirin. Değeri almak [için Azure AD İstemci destek ekibi için BlueJeans](https://support.bluejeans.com/contact) ile iletişime geçin. Azure portalındaki **Temel SAML Yapılandırması** bölümünde gösterilen desenlere de bakabilirsiniz.
 
-1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
+1. **SAML** Ile Tek Oturum Açma sayfasında, **SAML İmza Sertifikası** bölümünde **Sertifika 'yı (Base64)** bulun ve sertifikayı indirmek ve bilgisayarınıza kaydetmek için **İndir'i** seçin.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
-1. **Azure AD için şema ayarla** bölümünde, gereksiniminize göre uygun URL 'leri kopyalayın.
+1. Azure **AD için BlueJeans'i ayarla** bölümünde, gereksiniminize göre uygun URL'yi kopyalayın.
 
-    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
+    ![Yapılandırma URL'lerini kopyalama](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
+Bu bölümde, Azure portalında B.Simon adında bir test kullanıcısı oluşturursunuz.
 
-1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
-1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
-1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
+1. Azure portalındaki sol bölmeden **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
+1. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
+1. **Kullanıcı** özelliklerinde aşağıdaki adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına username@companydomain.extension girin. Örneğin, `B.Simon@contoso.com`.
-   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**’a tıklayın.
+   1. Kullanıcı **adı** alanına. username@companydomain.extension Örneğin, `B.Simon@contoso.com`.
+   1. **Parolayı Göster** onay kutusunu seçin ve ardından **Parola** kutusunda görüntülenen değeri yazın.
+   1. **Oluştur'u**tıklatın.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, Azure AD 'ye yönelik şema erişimi vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
+Bu bölümde, Azure AD için BlueJeans erişimi sağlayarak B.Simon'ın Azure tek oturum açma'yı kullanmasını sağlayacaksınız.
 
-1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
-1. Uygulamalar listesinde, **Azure AD Için BlueJeans**' ı seçin.
-1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
+1. Azure portalında **Kurumsal Uygulamalar'ı**seçin ve ardından **Tüm Uygulamaları**seçin.
+1. Uygulamalar listesinde Azure **AD için BlueJeans'i**seçin.
+1. Uygulamanın genel bakış sayfasında, **Yönet** bölümünü bulun ve **Kullanıcıları ve grupları**seçin.
 
    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
+1. **Kullanıcı Ekle'yi**seçin, ardından **Atama Ekle** iletişim kutusunda Kullanıcılar ve **gruplar** seçin.
 
     ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
-1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
+1. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinden **B.Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
+1. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda, listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
+1. Atama **Ekle** iletişim kutusunda, **Ata ekle** düğmesini tıklatın.
 
-## <a name="configure-bluejeans-for-azure-ad-sso"></a>Azure AD SSO için şema yapılandırma
+## <a name="configure-bluejeans-for-azure-ad-sso"></a>Azure AD SSO için BlueJeans'i yapılandırın
 
-1. Farklı bir Web tarayıcısı penceresinde, yönetici olarak **Azure AD** Şirket sitesi için şema yöneticinize oturum açın.
+1. Farklı bir web tarayıcısı penceresinde, Azure AD şirket sitenizde yönetici olarak **BlueJeans for BlueJeans'de** oturum açın.
 
-2. **Yönetim \> grup ayarları \> güvenlik**' e gidin.
+2. **ADMIN \> GROUP AYARLARI \> GÜVENLİğİ'ne**gidin.
 
-    ![Yöneticileri](./media/bluejeans-tutorial/ic785868.png "Yöneticileri")
+    ![Yönetici](./media/bluejeans-tutorial/ic785868.png "Yönetici")
 
-3. **Güvenlik** bölümünde aşağıdaki adımları uygulayın:
+3. **GÜVENLİk** bölümünde aşağıdaki adımları gerçekleştirin:
 
-    ![SAML çoklu oturum açma](./media/bluejeans-tutorial/ic785869.png "SAML çoklu oturum açma")
+    ![SAML Tek Tabela](./media/bluejeans-tutorial/ic785869.png "SAML Tek Tabela")
 
-    a. **SAML çoklu oturum açma**seçeneğini belirleyin.
+    a. **SAML Tek İşareti'ni**seçin.
 
-    b. **Otomatik sağlamayı etkinleştir**' i seçin.
+    b. **Otomatik sağlamayı etkinleştir'i**seçin.
 
-4. Aşağıdaki adımlarla ilerleyin:
+4. Aşağıdaki adımları ile hareket edin:
 
-    ![Sertifika yolu](./media/bluejeans-tutorial/ic785870.png "Sertifika yolu")
+    ![Sertifika Yolu](./media/bluejeans-tutorial/ic785870.png "Sertifika Yolu")
 
-    a. Azure portal indirdiğiniz Base-64 kodlu sertifikayı karşıya yüklemek için **Dosya Seç**' e tıklayın.
+    a. Azure portalından indirdiğiniz base-64 kodlu sertifikayı yüklemek için **Dosyayı Seç'i**tıklatın.
 
-    b. **Oturum açma URL 'si** metin kutusunda, Azure Portal kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
+    b. Giriş **URL** metin kutusuna, Azure portalından kopyalamış olduğunuz **Giriş URL'sinin** değerini yapıştırın.
 
-    c. **Parola DEĞIŞTIRME URL** metin kutusuna, Azure Portal kopyaladığınız **parola URL 'sini Değiştir** değerini yapıştırın.
+    c. Parola **Değiştir URL** metin kutusuna, Azure portalından kopyalamış olduğunuz **Parola URL'sini Değiştir** değerini yapıştırın.
 
-    d. **Logout URL** metin kutusuna, Azure Portal kopyaladığınız **Logout URL 'si** değerini yapıştırın.
+    d. Oturum **Açma URL** metin kutusuna, Azure portalından kopyalamış olduğunuz **Logout URL** değerini yapıştırın.
 
-5. Aşağıdaki adımlarla ilerleyin:
+5. Aşağıdaki adımları ile hareket edin:
 
     ![Değişiklikleri Kaydet](./media/bluejeans-tutorial/ic785874.png "Değişiklikleri Kaydet")
 
-    a. **Kullanıcı kimliği** metin kutusuna `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name` yazın.
+    a. Kullanıcı **Kimliği** metin kutusuna `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
 
-    b. **E-posta** metin kutusuna `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name` yazın.
+    b. **E-posta** metin kutusuna, yazın. `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`
 
-    c. **Değişiklikleri Kaydet**' e tıklayın.
+    c. **DEĞIŞIKLIKLERI KAYDET'i**tıklatın.
 
-### <a name="create-bluejeans-for-azure-ad-test-user"></a>Azure AD test kullanıcısı için şema oluşturma
+### <a name="create-bluejeans-for-azure-ad-test-user"></a>Azure AD test kullanıcısı için BlueJeans oluşturma
 
-Bu bölümün amacı, Azure AD için şema olarak B. Simon adlı bir Kullanıcı oluşturmaktır. Azure AD şeması, varsayılan olarak etkinleştirilen Otomatik Kullanıcı sağlamayı destekler. Otomatik Kullanıcı sağlamayı yapılandırma hakkında daha [fazla ayrıntı bulabilirsiniz](bluejeans-provisioning-tutorial.md) .
+Bu bölümün amacı, Azure AD için BlueJeans'de B.Simon adında bir kullanıcı oluşturmaktır. Azure AD için BlueJeans, varsayılan olarak etkinleştirilen otomatik kullanıcı sağlamayı destekler. Burada otomatik kullanıcı sağlama yapılandırmak için nasıl [daha](bluejeans-provisioning-tutorial.md) fazla bilgi bulabilirsiniz.
 
-**Kullanıcı el ile oluşturmanız gerekiyorsa aşağıdaki adımları gerçekleştirin:**
+**Kullanım kılavuzunu el ile oluşturmanız gerekiyorsa, aşağıdaki adımları gerçekleştirin:**
 
-1. **Azure AD** şirket sitenizde yönetici olarak şema olarak oturum açın.
+1. Azure AD şirket siteniz **için BlueJeans'de** yönetici olarak oturum açın.
 
-2. **Yönetici \> KULLANıCıLARı yönet \> Kullanıcı Ekle**' ye gidin.
+2. ADMIN **MANAGE \> KULLANICILARI \> EKLE KULLANICI**'ya gidin.
 
-    ![Yöneticileri](./media/bluejeans-tutorial/ic785877.png "Yöneticileri")
+    ![Yönetici](./media/bluejeans-tutorial/ic785877.png "Yönetici")
 
     > [!IMPORTANT]
-    > **Kullanıcı Ekle** sekmesi yalnızca, **güvenlikte sekmesinde** **otomatik sağlamayı etkinleştir** seçeneği işaretli değilse kullanılabilir.
+    > **ADD USER** sekmesi yalnızca **SECUTIRY sekmesinde**otomatik **sağlamayı etkinleştirin** işaretli değilse kullanılabilir.
 
-3. **Kullanıcı Ekle** bölümünde aşağıdaki adımları uygulayın:
+3. ADD **USER** bölümünde aşağıdaki adımları gerçekleştirin:
 
     ![Kullanıcı Ekle](./media/bluejeans-tutorial/ic785886.png "Kullanıcı Ekleme")
 
-    a. **Ad** metin kutusuna **B**gibi kullanıcının adını girin.
+    a. **Ad metin** kutusuna, **B**gibi kullanıcının ilk adını girin.
 
-    b. **Soyadı** metin kutusuna, **Simon**gibi kullanıcı adının soyadını girin.
+    b. **Soyadı** metin kutusuna, **Simon**gibi kullanıcının soyadını girin.
 
-    c. **Azure AD Kullanıcı adı için bir şema seçin** metin kutusuna, **Brittasıon** gibi kullanıcının Kullanıcı adını girin
+    c. Azure AD Kullanıcı Adı metin kutusu **için BlueJeans seçin'de** **Brittasimon** gibi kullanıcı adını girin
 
-    d. **Parola oluştur** metin kutusuna parolanızı girin.
+    d. Parola metin kutusu **oluştur'da** parolanızı girin.
 
-    e. **Şirket** metin kutusuna şirketinizi girin.
+    e. **Şirket** metin kutusuna, Şirketiniz'e girin.
 
-    f. **E-posta adresi** metin kutusuna, `b.simon\@contoso.com` gibi kullanıcının e-postasını girin.
+    f. **E-posta Adresi** metin kutusuna, `b.simon\@contoso.com`kullanıcının e-posta adresini girin.
 
-    g. **Azure AD toplantısı için şema oluşturma ı. D** metin kutusuna toplantı kimliğinizi girin.
+    g. **Azure REKLAM Toplantısı Kimlik Kutusu için BlueJeans Oluştur'da** toplantı kimliğinizi girin.
 
-    h. **Bir moderatör geçiş kodu seçin** metin kutusuna geçiş kodunuzu girin.
+    h. **Moderatör Parolası** metin kutusunu seçin'de parolanızı girin.
 
-    i. **Devam**' a tıklayın.
+    i. **DEVAM'ı**tıklatın.
 
     ![Kullanıcı Ekle](./media/bluejeans-tutorial/ic785887.png "Kullanıcı Ekleme")
 
-    J. **Kullanıcı Ekle**' ye tıklayın.
+    J. **KULLANICI EKLE'yi**tıklatın.
 
 > [!NOTE]
-> Azure AD Kullanıcı hesabı oluşturma araçları veya Azure AD Kullanıcı hesapları sağlamak için şema tarafından sunulan API 'Ler tarafından sunulan API 'Ler için başka bir şema kullanabilirsiniz.
+> Azure AD kullanıcı hesaplarını sağlamak için Azure AD kullanıcı hesabı oluşturma araçları veya Azure AD için BlueJeans tarafından sağlanan API'ler için diğer BlueJeans'leri kullanabilirsiniz.
 
-## <a name="test-sso"></a>Test SSO 'SU 
+## <a name="test-sso"></a>Test SSO 
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
+Bu bölümde, Access Panelini kullanarak Azure AD tek oturum açma yapılandırmanızı sınarsınız.
 
-Erişim panelinde Azure AD kutucuğunun şeması ' nı tıklattığınızda, SSO 'yu ayarladığınız Azure AD için şema için otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Access Paneli'ndeki Azure REKLAM döşemesi için BlueJeans'i tıklattığınızda, SSO'yu ayarladığınız Azure AD için BlueJeans'te otomatik olarak oturum açmış olmalısınız. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Azure AD ile Azure AD için BlueJeans 'ı deneyin](https://aad.portal.azure.com/)
+- [Azure AD ile Azure AD için BlueJeans'i deneyin](https://aad.portal.azure.com/)
 

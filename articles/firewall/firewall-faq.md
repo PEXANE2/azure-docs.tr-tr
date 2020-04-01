@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 03/25/2020
+ms.date: 03/31/2020
 ms.author: victorh
-ms.openlocfilehash: 60beccc2f2679a18903b74b84f48afebfb3b69da
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 45276884d59ac8d1d876e2225ac02bb51c3f74fc
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80257760"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437722"
 ---
 # <a name="azure-firewall-faq"></a>Azure Güvenlik Duvarı SSS
 
@@ -133,7 +133,7 @@ Zorunlu tünelleme desteklenir. Daha fazla bilgi için Azure [Güvenlik Duvarı 
 
 Azure Güvenlik Duvarı'nın doğrudan Internet bağlantısı olması gerekir. AzureFirewallSubnet'iniz BGP üzerinden şirket içi ağınıza varsayılan bir rota öğrenirse, doğrudan Internet bağlantısını korumak için **Internet** olarak ayarlanmış **NextHopType** değeriyle 0.0.0.0/0 UDR ile bunu geçersiz kılmanız gerekir.
 
-Yapılandırmanız şirket içi bir ağa zorunlu tünel kazma gerektiriyorsa ve Internet hedefleriniz için hedef IP önekleri belirleyebiliyorsanız, bu aralıkları kullanıcı tanımlı bir rota üzerinden bir sonraki atlama olarak şirket içi ağla yapılandırabilirsiniz. AzureFirewallSubnet. Veya, bu yolları tanımlamak için BGP kullanabilirsiniz.
+Yapılandırmanız şirket içi bir ağa zorunlu tünel kazma gerektiriyorsa ve Internet hedefleriniz için hedef IP önekleri belirleyebiliyorsanız, bu aralıkları AzureFirewallSubnet'te kullanıcı tanımlı bir rota üzerinden bir sonraki atlama olarak şirket içi ağla yapılandırabilirsiniz. Veya, bu yolları tanımlamak için BGP kullanabilirsiniz.
 
 ## <a name="are-there-any-firewall-resource-group-restrictions"></a>Güvenlik duvarı kaynak grubu kısıtlamaları var mı?
 
@@ -209,3 +209,7 @@ $fw.ThreatIntelWhitelist.IpAddress = @("ip1", "ip2", …)
 
 Set-AzFirewall -AzureFirewall $fw
 ```
+
+## <a name="why-can-a-tcp-ping-and-similar-tools-successfully-connect-to-a-target-fqdn-even-when-no-rule-on-azure-firewall-allows-that-traffic"></a>Azure Güvenlik Duvarı'ndaki kural bu trafiğe izin vermese bile, TCP ping ve benzeri araçlar neden hedef FQDN'ye başarılı bir şekilde bağlanabilir?
+
+Bir TCP ping aslında hedef FQDN bağlanmıyor. Bunun nedeni, Azure Güvenlik Duvarı'nın saydam proxy'si giden trafik için 80/443 bağlantı noktasında niçin dinler. TCP ping, güvenlik duvarıyla bağlantı kurar ve bu da paketi düşürür ve bağlantıyı kaydeder. Bu davranışın herhangi bir güvenlik etkisi yoktur. Ancak, karışıklığı önlemek için bu davranışta olası değişiklikleri araştırıyoruz. 

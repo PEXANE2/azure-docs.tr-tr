@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/24/2020
+ms.date: 03/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cc61ef5980a8019514f05c1db47f2300fff3603b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: HT
+ms.openlocfilehash: 887c9432f04cce775e045bb6da83f0af4a4a4bce
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78187245"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396881"
 ---
 # <a name="predicates-and-predicatevalidations"></a>Yüklemler ve Yüklemler
 
@@ -45,7 +45,7 @@ Aşağıdaki diyagram, öğeler arasındaki ilişkiyi gösterir:
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
 | Kimlik | Evet | Yüklem için kullanılan bir tanımlayıcı. Diğer öğeler bu tanımlayıcıyı ilkede kullanabilir. |
-| Yöntem | Evet | Doğrulama için kullanılacak yöntem türü. Olası değerler: **IsLengthRange**, **MatchesRegex**, **IçerirKarakterler**, veya **IsDateRange**. **IsLengthRange** değeri, bir dize talep değerinin uzunluğunun belirtilen minimum ve maksimum parametreler aralığında olup olmadığını denetler. **MatchesRegex** değeri, dize talep değerinin normal bir ifadeyle eşleşip eşleşmediğini denetler. **İçErdeki Ler** değeri, bir dize talep değerinin bir karakter kümesi ni içerip içermediğini denetler. **IsDateRange** değeri, tarih talep değerinin belirtilen minimum ve en büyük parametreler aralığı arasında olup olmadığını denetler. |
+| Yöntem | Evet | Doğrulama için kullanılacak yöntem türü. Olası değerler: [IsLengthRange](#islengthrange), [MatchesRegex](#matchesregex), [IçerirKarakterler](#includescharacters), veya [IsDateRange](#isdaterange).  |
 | Helptext | Hayır | Denetim başarısız olursa kullanıcılar için bir hata iletisi. Bu dize [dil özelleştirme](localization.md) kullanılarak yerelleştirilebilir |
 
 **Yüklem** öğesi aşağıdaki öğeleri içerir:
@@ -67,7 +67,19 @@ Aşağıdaki diyagram, öğeler arasındaki ilişkiyi gösterir:
 | ------- | ----------- | ----------- |
 | Kimlik | 1:1 | Parametrenin tanımlayıcısı. |
 
-Aşağıdaki örnekte `IsLengthRange` parametreleri `Minimum` içeren `Maximum` ve dize uzunluk aralığını belirten bir yöntem gösterilmektedir:
+### <a name="predicate-methods"></a>Yüklem yöntemleri
+
+#### <a name="islengthrange"></a>IslengthRange Aralığı
+
+IsLengthRange yöntemi, bir dize talep değerinin uzunluğunun belirtilen minimum ve maksimum parametreler aralığında olup olmadığını denetler. Yüklem öğesi aşağıdaki parametreleri destekler:
+
+| Parametre | Gerekli | Açıklama |
+| ------- | ----------- | ----------- |
+| Maksimum | Evet | Girilebilen maksimum karakter sayısı. |
+| Minimum | Evet | Girilmesi gereken en az karakter sayısı. |
+
+
+Aşağıdaki örnekte parametreleri `Minimum` içeren ve `Maximum` dize uzunluk aralığını belirten bir IsLengthRange yöntemi gösterilmektedir:
 
 ```XML
 <Predicate Id="IsLengthBetween8And64" Method="IsLengthRange" HelpText="The password must be between 8 and 64 characters.">
@@ -77,6 +89,14 @@ Aşağıdaki örnekte `IsLengthRange` parametreleri `Minimum` içeren `Maximum` 
   </Parameters>
 </Predicate>
 ```
+
+#### <a name="matchesregex"></a>KibritlerRegex
+
+MatchesRegex yöntemi, bir dize talep değerinin normal bir ifadeyle eşleşip eşleşmediğini denetler. Yüklem öğesi aşağıdaki parametreleri destekler:
+
+| Parametre | Gerekli | Açıklama |
+| ------- | ----------- | ----------- |
+| Düzenli İfade | Evet | Eşleşecek normal ifade deseni. |
 
 Aşağıdaki örnekte, `MatchesRegex` parametreye `RegularExpression` sahip bir yöntem normal bir ifade gösterir:
 
@@ -88,6 +108,14 @@ Aşağıdaki örnekte, `MatchesRegex` parametreye `RegularExpression` sahip bir 
 </Predicate>
 ```
 
+#### <a name="includescharacters"></a>Karakterleri Içerir
+
+IncludesCharacters yöntemi, bir dize talep değerinin bir karakter kümesi ni içerip içermediğini denetler. Yüklem öğesi aşağıdaki parametreleri destekler:
+
+| Parametre | Gerekli | Açıklama |
+| ------- | ----------- | ----------- |
+| Characterset | Evet | Girilebilen karakter kümesi. Örneğin, küçük karakterler, `a-z`büyük harfler `A-Z`karakterler, `0-9`basamaklar veya `@#$%^&amp;*\-_+=[]{}|\\:',?/~"();!`. |
+
 Aşağıdaki örnek, `IncludesCharacters` karakter kümesini `CharacterSet` belirten parametreye sahip bir yöntem gösterir:
 
 ```XML
@@ -98,7 +126,16 @@ Aşağıdaki örnek, `IncludesCharacters` karakter kümesini `CharacterSet` beli
 </Predicate>
 ```
 
-Aşağıdaki örnekte `IsDateRange` parametreleri `Minimum` olan `Maximum` bir yöntem gösterilmektedir ve `yyyy-MM-dd` tarih `Today`aralığını bir biçimve .
+#### <a name="isdaterange"></a>IsDateRange
+
+IsDateRange yöntemi, tarih talep değerinin belirtilen minimum ve en büyük parametreler aralığı arasında olup olmadığını denetler. Yüklem öğesi aşağıdaki parametreleri destekler:
+
+| Parametre | Gerekli | Açıklama |
+| ------- | ----------- | ----------- |
+| Maksimum | Evet | Girilebilen mümkün olan en büyük tarih. Tarihin biçimi, sözleşmeyi `yyyy-mm-dd` veya `Today`. |
+| Minimum | Evet | Girilebilen mümkün olan en küçük tarih. Tarihin biçimi, sözleşmeyi `yyyy-mm-dd` veya `Today`.|
+
+Aşağıdaki örnekte `IsDateRange` parametreleri `Minimum` olan `Maximum` bir yöntem gösterilmektedir ve `yyyy-mm-dd` tarih `Today`aralığını bir biçimve .
 
 ```XML
 <Predicate Id="DateRange" Method="IsDateRange" HelpText="The date must be between 1970-01-01 and today.">
@@ -388,3 +425,7 @@ Talep türünüzde, **PredicateValidationReference** öğesini ekleyin ve tanım
   <PredicateValidationReference Id="CustomDateRange" />
 </ClaimType>
  ```
+
+## <a name="next-steps"></a>Sonraki adımlar
+
+- Yüklem [doğrulamalarını kullanarak Azure Active Directory B2C'deki özel ilkeleri kullanarak parola karmaşıklığını](custom-policy-password-complexity.md) nasıl yapılandırıştırmayı öğrenin.

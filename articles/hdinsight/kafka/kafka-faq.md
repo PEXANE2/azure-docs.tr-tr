@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: ff4079263fd7afb02e132a798997687fad7e9961
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d27c648980338b3a9e12bd618eb4620fe9988fd7
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78206988"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80436901"
 ---
 # <a name="frequently-asked-questions-about-apache-kafka-in-azure-hdinsight"></a>Azure HDInsight'ta Apache Kafka hakkında sık sorulan sorular
 
@@ -50,7 +50,7 @@ Evet, Ambari portalından. Portaldaki her bileşen, bileşen yapılandırmaları
 
 ## <a name="is-my-data-encrypted-can-i-use-my-own-keys"></a>Verilerim şifrelendi mi? Kendi anahtarlarımı kullanabilir miyim?
 
-Yönetilen disklerde ki tüm Kafka iletileri [Azure Depolama Hizmeti Şifrelemesi (SSE)](../../storage/common/storage-service-encryption.md)ile şifrelenir. Veri-in-aktarım (örneğin, veri istemcilerden aracılara aktarılan ve diğer yolu) varsayılan olarak şifrelenmez. SSL'yi kendi başına kurarak bu tür trafiği [şifrelemek mümkündür.](./apache-kafka-ssl-encryption-authentication.md) Ayrıca, HDInsight istirahat verileri şifrelemek için kendi anahtarlarını yönetmenize olanak sağlar. Daha fazla bilgi için [Müşteri tarafından yönetilen anahtar disk şifrelemeye](../disk-encryption.md)bakın.
+Yönetilen disklerde ki tüm Kafka iletileri [Azure Depolama Hizmeti Şifrelemesi (SSE)](../../storage/common/storage-service-encryption.md)ile şifrelenir. Veri-in-aktarım (örneğin, veri istemcilerden aracılara aktarılan ve diğer yolu) varsayılan olarak şifrelenmez. TlS'yi kendi başına kurarak bu tür trafiği [şifrelemek mümkündür.](./apache-kafka-ssl-encryption-authentication.md) Ayrıca, HDInsight istirahat verileri şifrelemek için kendi anahtarlarını yönetmenize olanak sağlar. Daha fazla bilgi için [Müşteri tarafından yönetilen anahtar disk şifrelemeye](../disk-encryption.md)bakın.
 
 ## <a name="how-do-i-connect-clients-to-my-cluster"></a>İstemcileri kümeme nasıl bağlarım?
 
@@ -96,5 +96,5 @@ Evet, kafka MirrorMaker kullanılarak veriler birden çok kümeye çoğaltılabi
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure HDInsight'ta Apache Kafka için Güvenli Soket katmanı (SSL) şifreleme ve kimlik doğrulaması ayarlama](./apache-kafka-ssl-encryption-authentication.md)
+* [Azure HDInsight'ta Apache Kafka için TLS şifreleme ve kimlik doğrulaması ayarlama](./apache-kafka-ssl-encryption-authentication.md)
 * [MirrorMaker kullanarak Apache Kafka konularını HDInsight üzerinde Kafka ile çoğaltma](./apache-kafka-mirroring.md)

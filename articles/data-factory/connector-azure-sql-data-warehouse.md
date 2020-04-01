@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/25/2020
-ms.openlocfilehash: 950bbc17af920f104f31af4d324f5546ff29217e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 822a981b84919670aa476567625cdf914206eaa8
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80257963"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422176"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-formerly-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Azure Veri Fabrikası'nı kullanarak Azure Synapse Analytics'teki (eski adıyla Azure SQL Veri Ambarı) verileri kopyalama ve dönüştürme 
 
@@ -45,7 +45,7 @@ Kopyalama etkinliği için bu Azure Synapse Analytics bağlayıcısı aşağıda
 > Azure Veri Fabrikası Tümleştirme Runtime'ı kullanarak verileri kopyalarsanız, Azure hizmetlerinin sunucuya erişebilmeleri için bir [Azure SQL sunucu güvenlik duvarı](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure) yapılandırın.
 > Kendi kendine barındırılan bir tümleştirme çalışma zamanı kullanarak verileri kopyalarsanız, Azure SQL sunucu güvenlik duvarını uygun IP aralığına izin verecek şekilde yapılandırın. Bu aralık, makinenin Azure Synapse Analytics'e bağlanmak için kullanılan IP'sini içerir.
 
-## <a name="get-started"></a>Kullanmaya başlayın
+## <a name="get-started"></a>başlarken
 
 > [!TIP]
 > En iyi performansı elde etmek için Azure Synapse Analytics'e veri yüklemek için PolyBase'i kullanın. [Verileri Azure Synapse Analytics bölümüne yüklemek için PolyBase'i kullanın,](#use-polybase-to-load-data-into-azure-sql-data-warehouse) ayrıntılar alabilirsiniz. Kullanım örneğine sahip bir yol için Azure [Veri Fabrikası ile 15 dakikanın altında Azure Synapse Analytics'e 1 TB Yükle'ye](load-azure-sql-data-warehouse.md)bakın.
@@ -427,7 +427,7 @@ Gereksinimler karşılanmazsa, Azure Veri Fabrikası ayarları denetler ve veri 
     | :----------------------------------------------------------- | :---------------------------------------------------------- |
     | [Azure Blob](connector-azure-blob-storage.md)                | Hesap anahtarı kimlik doğrulaması, yönetilen kimlik kimlik doğrulaması |
     | [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md) | Hizmet sorumlusu kimlik doğrulaması                            |
-    | [Azure Data Lake Storage 2. Nesil](connector-azure-data-lake-storage.md) | Hesap anahtarı kimlik doğrulaması, yönetilen kimlik kimlik doğrulaması |
+    | [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | Hesap anahtarı kimlik doğrulaması, yönetilen kimlik kimlik doğrulaması |
 
     >[!IMPORTANT]
     >Azure Depolama alanınız VNet hizmet bitiş noktasıyla yapılandırıldıysa, yönetilen kimlik doğrulamasını kullanmanız gerekir - [Azure depolama alanıyla VNet Hizmet Bitiş Noktalarını kullanmanın etkisine](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)bakın. Veri Fabrikası'nda gerekli yapılandırmaları [Azure Blob'dan (yönetilen kimlik kimlik doğrulaması](connector-azure-blob-storage.md#managed-identity) ve [Azure Veri Gölü Depolama Gen2)](connector-azure-data-lake-storage.md#managed-identity) sırasıyla yönetilen kimlik kimlik doğrulama bölümünden öğrenin.
@@ -485,7 +485,7 @@ Gereksinimler karşılanmazsa, Azure Veri Fabrikası ayarları denetler ve veri 
 
 ### <a name="staged-copy-by-using-polybase"></a>PolyBase kullanarak aşamalı kopya
 
-Kaynak verileriniz PolyBase ile yerel olarak uyumlu değilse, geçici bir evreleme Azure Blob depolama örneği aracılığıyla veri kopyalamayı etkinleştirin (Azure Premium Depolama olamaz). Bu durumda, Azure Veri Fabrikası verileri PolyBase'in veri biçimi gereksinimlerini karşılamak üzere otomatik olarak dönüştürür. Daha sonra, verileri SQL Veri Ambarı'na yüklemek için PolyBase'i çağırır. Son olarak, blob depolama dan geçici verileri temizler. Bir evreleme Azure Blob depolama örneği aracılığıyla verileri kopyalama yla ilgili ayrıntılar için [Aşamalı kopyaya](copy-activity-performance.md#staged-copy) bakın.
+Kaynak verileriniz PolyBase ile yerel olarak uyumlu değilse, geçici bir evreleme Azure Blob depolama örneği aracılığıyla veri kopyalamayı etkinleştirin (Azure Premium Depolama olamaz). Bu durumda, Azure Veri Fabrikası verileri PolyBase'in veri biçimi gereksinimlerini karşılamak üzere otomatik olarak dönüştürür. Daha sonra, verileri SQL Veri Ambarı'na yüklemek için PolyBase'i çağırır. Son olarak, blob depolama dan geçici verileri temizler. Bir evreleme Azure Blob depolama örneği aracılığıyla verileri kopyalama yla ilgili ayrıntılar için [Aşamalı kopyaya](copy-activity-performance-features.md#staged-copy) bakın.
 
 Bu özelliği kullanmak için, geçici blob depolama alanıyla Birlikte Azure depolama hesabına atıfta bulunan bir [Azure Blob Depolama bağlantısı](connector-azure-blob-storage.md#linked-service-properties) na sahip bir hizmet oluşturun. Ardından, `enableStaging` Aşağıdaki `stagingSettings` kodda gösterildiği gibi Kopyalama Etkinliği'nin özelliklerini ve özelliklerini belirtin.
 
@@ -605,7 +605,7 @@ COPY deyimini kullanmak aşağıdaki yapılandırmayı destekler:
     | [Azure Blob](connector-azure-blob-storage.md)                | [Sınırlı metin](format-delimited-text.md)             | Hesap anahtarı kimlik doğrulaması, paylaşılan erişim imzası kimlik doğrulaması, hizmet asıllığı, yönetilen kimlik kimlik doğrulaması |
     | &nbsp;                                                       | [Parke](format-parquet.md)                    | Hesap anahtarı kimlik doğrulaması, paylaşılan erişim imzası kimlik doğrulaması |
     | &nbsp;                                                       | [Orc](format-orc.md)                        | Hesap anahtarı kimlik doğrulaması, paylaşılan erişim imzası kimlik doğrulaması |
-    | [Azure Data Lake Storage 2. Nesil](connector-azure-data-lake-storage.md) | [Sınırlı metin](format-delimited-text.md)<br/>[Parke](format-parquet.md)<br/>[Orc](format-orc.md) | Hesap anahtarı kimlik doğrulaması, hizmet asıl kimlik doğrulaması, yönetilen kimlik kimlik doğrulaması |
+    | [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | [Sınırlı metin](format-delimited-text.md)<br/>[Parke](format-parquet.md)<br/>[Orc](format-orc.md) | Hesap anahtarı kimlik doğrulaması, hizmet asıl kimlik doğrulaması, yönetilen kimlik kimlik doğrulaması |
 
     >[!IMPORTANT]
     >Azure Depolama alanınız VNet hizmet bitiş noktasıyla yapılandırıldıysa, yönetilen kimlik doğrulamasını kullanmanız gerekir - [Azure depolama alanıyla VNet Hizmet Bitiş Noktalarını kullanmanın etkisine](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage)bakın. Veri Fabrikası'nda gerekli yapılandırmaları [Azure Blob'dan (yönetilen kimlik kimlik doğrulaması](connector-azure-blob-storage.md#managed-identity) ve [Azure Veri Gölü Depolama Gen2)](connector-azure-data-lake-storage.md#managed-identity) sırasıyla yönetilen kimlik kimlik doğrulama bölümünden öğrenin.
@@ -613,7 +613,7 @@ COPY deyimini kullanmak aşağıdaki yapılandırmayı destekler:
 2. Biçim ayarları aşağıdaki gibidir:
 
    1. **Parke**için `compression` : **hiçbir sıkıştırma**olabilir , **Snappy**, veya **GZip**.
-   2. **ORC**için `compression` : **hiçbir sıkıştırma**olabilir , **zlib**, veya **Snappy**.
+   2. **ORC**için `compression` : **hiçbir** **```zlib```** sıkıştırma olabilir , veya **Snappy**.
    3. **Sınırlı metin**için:
       1. `rowDelimiter`**açıkça tek karakter** olarak ayarlanır veya "**\r\n**", varsayılan değer desteklenmez.
       2. `nullValue`varsayılan olarak bırakılır veya **boş dize** ("") olarak ayarlanır.
@@ -705,7 +705,7 @@ Azure Synapse Analytics'e özgü ayarlar kaynak dönüşümün **Kaynak Seçenek
 
 * SQL Örneği:```Select * from MyTable where customerId > 1000 and customerId < 2000```
 
-**Toplu iş boyutu**: Büyük verileri okumalara parçalamak için bir toplu iş boyutu girin.
+**Toplu iş boyutu**: Büyük verileri okumalara parçalamak için bir toplu iş boyutu girin. Veri akışlarında, ADF bu ayarı Spark sütun kapacını ayarlamak için kullanır. Bu, boş bırakılırsa Spark varsayılanlarını kullanacak bir seçenek alanıdır.
 
 **İzolasyon Düzeyi**: Veri akışını eşlemedeki SQL kaynakları için varsayılan değer taahhütsüz olarak okunur. Buradaki yalıtım düzeyini aşağıdaki değerlerden biriyle değiştirebilirsiniz:
 * Taahhüt'i Okuyun

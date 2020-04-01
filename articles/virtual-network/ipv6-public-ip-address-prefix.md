@@ -10,16 +10,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/15/2019
+ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 8254a7d86d5cadc2ddc03940f4ab2d08de74bd86
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 096dbcb6b6a732bd21622658f6f30c5158a821c5
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72965166"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80420534"
 ---
-# <a name="reserved-public-ipv6-address-prefix-preview"></a>Ayrılmış genel IPv6 adresi öneki (Önizleme)
+# <a name="reserved-public-ipv6-address-prefix"></a>Ayrılmış genel IPv6 adresi öneki
 
 Azure'da, çift yığın (IPv4+IPv6) sanal ağlar (VNet) ve sanal makineler (VM' ler) Internet bağlantılarına sahip olmadıkları ndan varsayılan olarak güvenlidir. Azure'dan elde ettiğiniz genel IPv6 adresleriyle Azure Yük Bakiyeleri ve VM'lerinize kolayca IPv6 Internet bağlantısı ekleyebilirsiniz.
 
@@ -30,8 +30,7 @@ Rezerve ettiğiniz tüm genel IP'ler, seçtiğiniz bir Azure bölgesi yle ve Azu
 
 Tek tek IPv6 adreslerini ayırmanın yanı sıra, kullanımınız için bitişik Azure IPv6 adresleri (IP öneki olarak bilinir) aralıklarını ayırabilirsiniz.  Tek tek IP adreslerine benzer şekilde, ayrılmış önekler seçtiğiniz bir Azure bölgesiyle ve Azure aboneliğinizle ilişkilendirilir. Öngörülebilir, bitişik bir adres aralığının rezerve edileb'sinin birçok kullanımı vardır. Örneğin, statik IP aralıklarınız şirket içi güvenlik duvarlarına kolayca programlanabildiği için, Azure tarafından barındırılan uygulamalarınızın şirketiniz ve müşterileriniz tarafından IP *beyaz listesini* büyük ölçüde basitleştirebilirsiniz.  Gerektiğinde IP önekinizden tek tek genel IP'ler oluşturabilirsiniz ve bu *returned* bireysel Genel IP'leri sildiğinizde, bunları daha sonra yeniden kullanabilmeniz için ayrılmış aralığınıza döndürülürler. IP Önek'inizdeki tüm IP adresleri, önekinizi silene kadar özel kullanımınız için ayrılmıştır.
 
-> [!Important]
-> Azure Sanal Ağı için IPv6 şu anda genel önizlemededir. Bu önizleme bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Ayrıntılar için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 
 ## <a name="ipv6-prefix-sizes"></a>IPv6 önek boyutları
 Aşağıdaki genel IP öneki boyutları kullanılabilir:

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 752334e3d594b1f95786aecaca134b74c4e264d5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 89dc96370f65ff20d7f8be38ff78d6c1664305d3
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74688686"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477802"
 ---
 # <a name="how-to-create-an-app-service-environment-v1"></a>Nasıl Bir App Servis Ortamı v1 oluşturma 
 
@@ -45,7 +45,7 @@ Bir Uygulama Hizmet Ortamı v1 oluşturmak için, ***Uygulama Hizmet Ortamı v1*
 3. Yeni bir kaynak grubu seçin veya belirtin. ASE'niz için kullanılan kaynak grubu, VNet'iniz için kullanılanla aynı olmalıdır. Önceden varolan bir VNet seçerseniz, ASE'nizin kaynak grubu seçimi VNet'inizin seçimini yansıtacak şekilde güncelleştirilir.
    
     ![][2]
-4. Sanal Ağ ve Konum seçimlerinizi yapın. Yeni bir VNet oluşturmayı veya önceden varolan bir VNet seçebilirsiniz. Yeni bir VNet seçerseniz, bir ad ve konum belirtebilirsiniz. Yeni VNet adres aralığı 192.168.250.0/23 ve 192.168.250.0/24 olarak tanımlanan **varsayılan** adlı bir alt net olacaktır. Ayrıca, önceden varolan bir Klasik veya Kaynak Yöneticisi VNet'i de seçebilirsiniz. VIP Türü seçimi, ASE'nize internetten (Harici) doğrudan erişilip erişilemeyebileceğini veya Dahili Yük Dengeleyicisi (ILB) kullanıp kullanmayabileceğini belirler. Onlar hakkında daha fazla bilgi edinmek için [Bir Uygulama Hizmet Ortamı ile Bir İç Yük Dengeleyici kullanma][ILBASE]okuyun. VIP harici türünü seçerseniz, ipssl amacıyla sistemin kaç harici IP adresi yle oluşturulduğunu seçebilirsiniz. Dahili'yi seçerseniz, ASE'nizin kullanacağı alt etki alanını belirtmeniz gerekir. GENEL ADRES Aralıkları *veya* RFC1918 adres alanları (örn. özel adresler) *kullanan* sanal ağlara dağıtılabilir. Genel adres aralığına sahip bir sanal ağ kullanmak için VNet'i önceden oluşturmanız gerekir. Önceden varolan bir VNet seçtiğinizde, ASE oluşturma sırasında yeni bir alt ağ oluşturmanız gerekir. **Portalda önceden oluşturulmuş bir alt ağ kullanamazsınız. Kaynak yöneticisi şablonu kullanarak ASE'nizi oluşturursanız, önceden varolan bir alt ağiçeren bir ASE oluşturabilirsiniz.** Şablondan bir ASE oluşturmak için buradaki bilgileri kullanın, [şablondan bir Uygulama Hizmet Ortamı oluşturma][ILBAseTemplate] ve burada [şablondan bir ILB Uygulama Hizmet Ortamı oluşturma.][ASEfromTemplate]
+4. Sanal Ağ ve Konum seçimlerinizi yapın. Yeni bir VNet oluşturmayı veya önceden varolan bir VNet seçebilirsiniz. Yeni bir VNet seçerseniz, bir ad ve konum belirtebilirsiniz. Yeni VNet adres aralığı 192.168.250.0/23 ve 192.168.250.0/24 olarak tanımlanan **varsayılan** adlı bir alt net olacaktır. Ayrıca, önceden varolan bir Klasik veya Kaynak Yöneticisi VNet'i de seçebilirsiniz. VIP Türü seçimi, ASE'nize internetten (Harici) doğrudan erişilip erişilemeyebileceğini veya Dahili Yük Dengeleyicisi (ILB) kullanıp kullanmayabileceğini belirler. Onlar hakkında daha fazla bilgi edinmek için [Bir Uygulama Hizmet Ortamı ile Bir İç Yük Dengeleyici kullanma][ILBASE]okuyun. Vip harici türünü seçerseniz, sistemin IP SSL amaçları doğrultusunda kaç harici IP adresiyle oluşturulduğunu seçebilirsiniz. Dahili'yi seçerseniz, ASE'nizin kullanacağı alt etki alanını belirtmeniz gerekir. GENEL ADRES Aralıkları *veya* RFC1918 adres alanları (örn. özel adresler) *kullanan* sanal ağlara dağıtılabilir. Genel adres aralığına sahip bir sanal ağ kullanmak için VNet'i önceden oluşturmanız gerekir. Önceden varolan bir VNet seçtiğinizde, ASE oluşturma sırasında yeni bir alt ağ oluşturmanız gerekir. **Portalda önceden oluşturulmuş bir alt ağ kullanamazsınız. Kaynak yöneticisi şablonu kullanarak ASE'nizi oluşturursanız, önceden varolan bir alt ağiçeren bir ASE oluşturabilirsiniz.** Şablondan bir ASE oluşturmak için buradaki bilgileri kullanın, [şablondan bir Uygulama Hizmet Ortamı oluşturma][ILBAseTemplate] ve burada [şablondan bir ILB Uygulama Hizmet Ortamı oluşturma.][ASEfromTemplate]
 
 ### <a name="details"></a>Ayrıntılar
 2 Ön Uç ve 2 İşçi ile bir ASE oluşturulur. Ön Uçlar, HTTP/HTTPS bitiş noktaları gibi davranır ve uygulamalarınızı barındıran roller olan Çalışanlara trafik gönderir. ASE oluşturulduktan sonra miktarı ayarlayabilir ve hatta bu kaynak havuzlarında otomatik ölçeklendirme kuralları ayarlayabilirsiniz. Bir Uygulama Hizmet Ortamının manuel ölçekleme, yönetimi ve izlenmesi hakkında daha fazla bilgi için buraya gidin: [Uygulama Hizmet Ortamı nasıl yapılandırılabilen][ASEConfig] 

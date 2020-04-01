@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 02/27/2020
 ms.custom: seoapril2019
-ms.openlocfilehash: 96d9a0722ae04dc150b639dced34fa290da93630
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0deace98c5be0b2ce2f29abce4c8a804145afdb1
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80159430"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475614"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Azure Machine Learning ile modelleri dağıtma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -537,9 +537,9 @@ Yerel, Azure Kapsayıcı Örnekleri ve AKS web hizmetleri için `azureml.core.we
 from azureml.core.webservice import AciWebservice, AksWebservice, LocalWebservice
 ```
 
-### <a name="securing-deployments-with-ssl"></a>SSL ile dağıtımların güvenliğini sağlama
+### <a name="securing-deployments-with-tls"></a>TLS ile dağıtımların güvenliğini sağlama
 
-Bir web hizmeti dağıtımının nasıl güvenli hale kullanılacağı hakkında daha fazla bilgi için, [bir web hizmetini güvence altına almak için SSL'yi kullanın'a](how-to-secure-web-service.md#enable)bakın.
+Bir web hizmeti dağıtımının nasıl güvenli hale sağlanabildiğini öğrenmek için [TLS'yi etkinleştir mecnuna bakın ve dağıtın.](how-to-secure-web-service.md#enable)
 
 ### <a name="local-deployment"></a><a id="local"></a>Yerel dağıtım
 
@@ -907,6 +907,24 @@ service_name = 'my-sklearn-service'
 service = Model.deploy(ws, service_name, [model])
 ```
 
+NOT: predict_proba destekleyen modeller varsayılan olarak bu yöntemi kullanır. Tahmin kullanmak için bunu geçersiz kılmak için POST gövdesini aşağıdaki gibi değiştirebilirsiniz:
+```python
+import json
+
+
+input_payload = json.dumps({
+    'data': [
+        [ 0.03807591,  0.05068012,  0.06169621, 0.02187235, -0.0442235,
+         -0.03482076, -0.04340085, -0.00259226, 0.01990842, -0.01764613]
+    ],
+    'method': 'predict'  # If you have a classification model, the default behavior is to run 'predict_proba'.
+})
+
+output = service.run(input_payload)
+
+print(output)
+```
+
 NOT: Bu bağımlılıklar önceden oluşturulmuş sklearn çıkarım kabına dahildir:
 
 ```yaml
@@ -1154,7 +1172,7 @@ def run(request):
 
 * [Özel Docker görüntüsünü kullanarak bir model dağıtma](how-to-deploy-custom-docker-image.md)
 * [Dağıtım sorun giderme](how-to-troubleshoot-deployment.md)
-* [SSL ile Güvenli Azure Machine Learning web hizmetleri](how-to-secure-web-service.md)
+* [Azure Machine Learning aracılığıyla bir web hizmetini güvence altına almak için TLS'yi kullanın](how-to-secure-web-service.md)
 * [Web hizmeti olarak dağıtılan bir Azure Machine Learning modelini kullanma](how-to-consume-web-service.md)
 * [Azure Machine Learning modellerinizi Uygulama Öngörüleri ile izleyin](how-to-enable-app-insights.md)
 * [Üretimdeki modeller için veri toplama](how-to-enable-data-collection.md)

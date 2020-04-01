@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: gerçek zamanlı Pano-hiper ölçek tasarlama (Citus)-PostgreSQL için Azure veritabanı'
-description: Bu öğreticide, PostgreSQL için Azure veritabanı hiper ölçek (Citus) üzerinde dağıtılmış tabloları oluşturma, doldurma ve sorgulama işlemlerinin nasıl yapılacağı gösterilmektedir.
+title: 'Öğretici: PostgreSQL için gerçek zamanlı bir pano tasarla - Hyperscale (Citus) - Azure Veritabanı'
+description: Bu öğretici, PostgreSQL Hyperscale (Citus) için Azure Veritabanı'nda dağıtılmış tabloların nasıl oluşturulup doldurulur ve sorgulanır.
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
@@ -9,34 +9,34 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 05/14/2019
 ms.openlocfilehash: f4eeb646de8b68c2c8d30586d0c75cece5317e40
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76716321"
 ---
-# <a name="tutorial-design-a-real-time-analytics-dashboard-by-using-azure-database-for-postgresql--hyperscale-citus"></a>Öğretici: PostgreSQL için Azure veritabanı – hiper ölçek (Citus) kullanarak gerçek zamanlı analiz panosu tasarlama
+# <a name="tutorial-design-a-real-time-analytics-dashboard-by-using-azure-database-for-postgresql--hyperscale-citus"></a>Öğretici: PostgreSQL için Azure Veritabanını kullanarak gerçek zamanlı analiz panosu tasarlayın – Hyperscale (Citus)
 
-Bu öğreticide, şu şekilde nasıl yapılacağını öğrenmek için PostgreSQL için Azure veritabanı-hiper ölçek (Citus) kullanacaksınız:
+Bu öğreticide, postgreSQL için Azure Veritabanını kullanın - Hyperscale (Citus) nasıl yapılacağını öğrenmek için:
 
 > [!div class="checklist"]
 > * Hiper Ölçek (Citus) (Citus) sunucu grubu oluşturma
 > * Şema oluşturmak için psql yardımcı programını kullanma
-> * Düğümler arasında parça tabloları
+> * Düğümler arasında shard tablolar
 > * Örnek veri oluşturma
-> * Toplamaları gerçekleştir
-> * Ham ve toplanmış verileri sorgulama
-> * Süre sonu verisi
+> * Toplama işlemleri gerçekleştirin
+> * Ham ve toplu verileri sorgula
+> * Verilerin süresi nin dolması
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [azure-postgresql-hyperscale-create-db](../../includes/azure-postgresql-hyperscale-create-db.md)]
 
 ## <a name="use-psql-utility-to-create-a-schema"></a>Şema oluşturmak için psql yardımcı programını kullanma
 
-Psql kullanarak PostgreSQL için Azure veritabanı-hiper ölçek (Citus) bağlantısı kurulduktan sonra bazı temel görevleri tamamlayabilirsiniz. Bu öğretici, Web analizinden trafik verilerini geri alma ve bu verileri temel alan gerçek zamanlı panolar sağlamak üzere verileri toplama konusunda size kılavuzluk eder.
+Psql kullanarak PostgreSQL - Hyperscale (Citus) için Azure Veritabanına bağlandıktan sonra bazı temel görevleri tamamlayabilirsiniz. Bu öğretici, web analitiğinden trafik verilerini sindirerek, ardından bu verilere dayalı gerçek zamanlı panolar sağlamak için verileri yuvarlamanıza yol açtır.
 
-Ham web trafiği verilerimizi kullanacak bir tablo oluşturalım. Psql terminalinde aşağıdaki komutları çalıştırın:
+Tüm ham web trafiği verilerimizi tüketecek bir tablo oluşturalım. Psql terminalinde aşağıdaki komutları çalıştırın:
 
 ```sql
 CREATE TABLE http_request (
@@ -52,7 +52,7 @@ CREATE TABLE http_request (
 );
 ```
 
-Ayrıca, dakika başına toplaımuzu ve son toplaımızın konumunu tutan bir tabloyu barındıracak bir tablo oluşturacağız. Psql 'de aşağıdaki komutları da çalıştırın:
+Ayrıca dakika başına toplamlarımızı tutacak bir masa ve son topladığımız ın konumunu koruyan bir tablo yaratacağız. Psql'de aşağıdaki komutları da çalıştırın:
 
 ```sql
 CREATE TABLE http_request_1min (
@@ -76,17 +76,17 @@ CREATE TABLE latest_rollup (
 );
 ```
 
-Yeni oluşturulan tabloları şu psql komutuyla birlikte Tablo listesinde görebilirsiniz:
+Bu psql komutu ile şimdi tablolar listesinde yeni oluşturulan tabloları görebilirsiniz:
 
 ```postgres
 \dt
 ```
 
-## <a name="shard-tables-across-nodes"></a>Düğümler arasında parça tabloları
+## <a name="shard-tables-across-nodes"></a>Düğümler arasında shard tablolar
 
-Bir hiper ölçek dağıtımı, tablo satırlarını Kullanıcı tarafından belirlenen bir sütunun değerine göre farklı düğümlere depolar. Bu "dağıtım sütunu", verilerin düğümler arasında nasıl parçalanmış olduğunu işaretler.
+Hiper ölçekli dağıtım, kullanıcı tarafından atanan sütunun değerini temel alan tablo satırlarını farklı düğümlerde depolar. Bu "dağıtım sütunu", verilerin düğümler arasında nasıl parçalandığını işaretler.
 
-Dağıtım sütununu site\_kimliği, parça anahtarı olacak şekilde ayarlayalim. Psql 'de şu işlevleri çalıştırın:
+Dağıtım sütununa site\_kimliği, parça anahtarı olarak ayarlayalım. psql'de şu işlevleri çalıştırın:
 
   ```sql
 SELECT create_distributed_table('http_request',      'site_id');
@@ -95,7 +95,7 @@ SELECT create_distributed_table('http_request_1min', 'site_id');
 
 ## <a name="generate-sample-data"></a>Örnek veri oluşturma
 
-Artık sunucu grubumuz bazı verileri almaya hazır olmalıdır. Verileri sürekli olarak eklemek için `psql` bağlantımızda şunları yerel olarak çalıştırabiliriz.
+Şimdi sunucu grubumuz bazı verileri yutmaya hazır olmalıdır. Sürekli veri eklemek için bağlantımızdan `psql` aşağıdakileri yerel olarak çalıştırabiliriz.
 
 ```sql
 DO $$
@@ -122,18 +122,18 @@ DO $$
 END $$;
 ```
 
-Sorgu her saniye yaklaşık sekiz satır ekler. Satırlar, `site_id`dağıtım sütunuyla yönlendirilen farklı çalışan düğümlerinde depolanır.
+Sorgu her saniye yaklaşık sekiz satır ekler. Satırlar, dağıtım sütunu tarafından yönlendirilen farklı alt düğümlerde depolanır. `site_id`
 
    > [!NOTE]
-   > Veri oluşturma sorgusunu çalışır durumda bırakın ve bu öğreticideki geri kalan komutlar için ikinci bir psql bağlantısı açın.
+   > Veri oluşturma sorgusunu çalışır durumda bırakın ve bu öğreticide kalan komutlar için ikinci bir psql bağlantısı açın.
    >
 
 ## <a name="query"></a>Sorgu
 
-Hiper ölçek barındırma seçeneği, birden çok düğümün hız için paralel olarak sorguları işlemesini sağlar. Örneğin, veritabanı, çalışan düğümlerinde SUM ve say gibi toplamları hesaplar ve sonuçları nihai bir yanıt olarak birleştirir.
+Hiper ölçekli barındırma seçeneği, birden çok düğümün sorguları hız için paralel olarak işlemesine olanak tanır. Örneğin, veritabanı toplamları işçi düğümlerinde TOPLAM ve COUNT gibi hesaplar ve sonuçları son yanıtta birleştirir.
 
-İşte birkaç istatistikle birlikte, dakikada Web isteklerini saymak için bir sorgu.
-Psql 'de çalıştırmayı deneyin ve sonuçları gözlemleyin.
+Web isteklerini birkaç istatistikle birlikte dakika başına saymak için bir sorgu aşağıda veda edebilirsiniz.
+Psql'de çalıştırmayı deneyin ve sonuçları gözlemleyin.
 
 ```sql
 SELECT
@@ -149,13 +149,13 @@ GROUP BY site_id, minute
 ORDER BY minute ASC;
 ```
 
-## <a name="rolling-up-data"></a>Verileri toplama
+## <a name="rolling-up-data"></a>Verileri yuvarlama
 
-Önceki sorgu erken aşamalarda ince çalışıyor, ancak verileriniz ölçeklenmesi halinde performansı düşürür. Dağıtılmış işleme dahil olmak üzere, verilerin tekrar tekrar hesaplanmasını yerine önceden hesaplamanız daha hızlıdır.
+Önceki sorgu erken aşamalarında iyi çalışır, ancak verileriniz ölçeklendikçe performansı düşer. Dağıtılmış işleme bile, verileri tekrar tekrar hesaplamak için önceden hesaplamak için daha hızlıdır.
 
-Ham verileri düzenli olarak toplam bir tabloya aktararak panonuzun hızlı bir şekilde devam etmemesini sağlayabilirsiniz. Toplama süresi ile denemeler yapabilirsiniz. Dakika başına toplama tablosu kullandık, ancak bunun yerine verileri 5, 15 veya 60 dakikaya kesebilirsiniz.
+Ham verileri düzenli olarak bir toplu tabloya yuvarlayarak gösterge panelimizin hızlı kalmasını sağlayabiliriz. Toplama süresini deneyebilirsiniz. Dakikada toplama tablosu kullandık, ancak verileri 5, 15 veya 60 dakikaya ayırabilirsiniz.
 
-Bu toplaması daha kolay bir şekilde çalıştırmak için bunu bir plpgsql işlevine koyacağız. `rollup_http_request` işlevini oluşturmak için bu komutları psql 'de çalıştırın.
+Bu roll-up'ı daha kolay çalıştırmak için plpgsql fonksiyonuna koyacağız. İşlev oluşturmak için bu komutları psql'de çalıştırın. `rollup_http_request`
 
 ```sql
 -- initialize to a time long ago
@@ -190,13 +190,13 @@ END;
 $$ LANGUAGE plpgsql;
 ```
 
-İşlevimizde, verileri toplamak için yürütün:
+İşlevimiz yerinde olduğundan, verileri yuvarlamak için çalıştırın:
 
 ```sql
 SELECT rollup_http_request();
 ```
 
-Önceden toplanmış bir formdaki verilerimizde, daha önce de aynı raporu almak için toplama tablosunu sorgulayabiliriz. Şu sorguyu çalıştırın:
+Ve verilerimiz önceden toplu bir biçimde olduğu için, daha önce olduğu gibi aynı raporu almak için toplama tablosunu sorgulayabiliriz. Aşağıdaki sorguyu çalıştırın:
 
 ```sql
 SELECT site_id, ingest_time as minute, request_count,
@@ -205,25 +205,25 @@ SELECT site_id, ingest_time as minute, request_count,
  WHERE ingest_time > date_trunc('minute', now()) - '5 minutes'::interval;
  ```
 
-## <a name="expiring-old-data"></a>Süresi dolan eski veriler
+## <a name="expiring-old-data"></a>Eski verilerin süresi doluyor
 
-Toplamalar sorguları daha hızlı hale getirir, ancak sınırsız depolama maliyetlerinden kaçınmak için eski verilerin süresini de sona ermemiz gerekir. Her ayrıntı düzeyi için verileri ne kadar süreyle saklamak istediğinize karar verin ve zaman aşımına uğramış verileri silmek için standart sorguları kullanın. Aşağıdaki örnekte, ham verileri bir gün ve dakika başına toplamalar için bir ay tutmaya karar verdik:
+Toplamalar sorguları daha hızlı yapar, ancak sınırsız depolama maliyetlerini önlemek için yine de eski verilerin süresinin dolması gerekir. Her bir parçalı veri birimi için verileri ne kadar süreyle tutmak istediğinize karar verin ve süresi dolmuş verileri silmek için standart sorguları kullanın. Aşağıdaki örnekte, ham verileri bir gün, dakika başına toplamaları bir ay boyunca saklamaya karar verdik:
 
 ```sql
 DELETE FROM http_request WHERE ingest_time < now() - interval '1 day';
 DELETE FROM http_request_1min WHERE ingest_time < now() - interval '1 month';
 ```
 
-Üretimde, bu sorguları bir işleve kaydırabilirsiniz ve bir cron işinde her dakika çağırabilirsiniz.
+Üretimde, bu sorguları bir işlevde sarın ve her dakika bir cron işinde çağırabilirsiniz.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Yukarıdaki adımlarda, bir sunucu grubunda Azure kaynakları oluşturdunuz. Gelecekte bu kaynaklara ihtiyaç duymazsanız, sunucu grubunu silin. Sunucu grubunuzun *genel bakış* sayfasında *Sil* düğmesine basın. Bir açılır sayfada istendiğinde, sunucu grubunun adını onaylayın ve son *Sil* düğmesine tıklayın.
+Önceki adımlarda, bir sunucu grubunda Azure kaynakları oluşturdunuz. Gelecekte bu kaynaklara ihtiyaç duymayı beklemiyorsanız, sunucu grubunu silin. Sunucu grubunuzun *Genel Bakış* *sayfasındasil* düğmesine basın. Açılır pencerede istendiğinde, sunucu grubunun adını onaylayın ve son *Sil* düğmesini tıklatın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, bir hiper ölçek (Citus) sunucu grubu sağlamayı öğrendiniz. Bu ağa psql ile bağlanırsınız, bir şema oluşturdunuz ve dağıtılmış veriler. Ham formdaki verileri sorgulamayı, verileri düzenli olarak toplamasını, toplanmış tabloları sorgulamayı ve eski verilerin zaman dolmasını öğrendiniz.
+Bu eğitimde, bir Hyperscale (Citus) sunucu grubunu nasıl sağlarsınız. Ona psql ile bağlandınız, bir şema oluşturdunuz ve veri dağıttınız. Ham formda verileri sorgulamayı, bu verileri düzenli olarak toplamayı, toplanan tabloları sorgulamayı ve eski verilerin süresinin dolmasını öğrendiniz.
 
-Ardından, hyperscale kavramlarını öğrenin.
+Ardından, hiperölçek kavramları hakkında bilgi edinin.
 > [!div class="nextstepaction"]
-> [Hiper ölçek düğüm türleri](https://aka.ms/hyperscale-concepts)
+> [Hiper ölçekli düğüm türleri](https://aka.ms/hyperscale-concepts)

@@ -7,16 +7,16 @@ ms.service: bastion
 ms.topic: overview
 ms.date: 01/31/2020
 ms.author: cherylmc
-ms.openlocfilehash: e995cba1c2ba06333d7bee507182693002cf4bbf
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 299a69675eed1ba958c6d13cf447407450df2abb
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76989509"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411116"
 ---
 # <a name="what-is-azure-bastion"></a>Azure Bastion nedir?
 
-Azure Bastion hizmeti, sanal ağınızda sağladığınız tam platform tarafından yönetilen yeni bir PaaS hizmetidir. Sanal makinelerinize doğrudan SSL üzerinden Azure portalında güvenli ve sorunsuz RDP/SSH bağlantısı sağlar. Azure Bastion aracılığıyla bağlandığınızda, sanal makinelerinizin bir genel IP adresi olması gerekmez.
+Azure Bastion hizmeti, sanal ağınızda sağladığınız tam platform tarafından yönetilen yeni bir PaaS hizmetidir. TLS üzerinden doğrudan Azure portalında sanal makinelerinize güvenli ve sorunsuz RDP/SSH bağlantısı sağlar. Azure Bastion aracılığıyla bağlandığınızda, sanal makinelerinizin bir genel IP adresi olması gerekmez.
 
 Bastion, sağlandığı sanal ağdaki tüm VM'lere güvenli RDP ve SSH bağlantısı sağlar. Azure Bastion'u kullanmak, sanal makinelerinizi RDP/SSH bağlantı noktalarını dış dünyaya maruz bırakmaktan korurken, RDP/SSH kullanarak güvenli erişim sağlar. Azure Bastion ile sanal makineye doğrudan Azure portalından bağlanırsınız. Ek bir istemciye, aracıya veya yazılım parçasına ihtiyacınız yoktur.
 
@@ -41,7 +41,7 @@ Bu şekil, Bir Azure Bastion dağıtımının mimarisini gösterir. Bu diyagramd
 Aşağıdaki özellikler mevcuttur:
 
 * **RDP ve SSH doğrudan Azure portalında:** Tek bir tıklama sorunsuz deneyimi kullanarak doğrudan AZURE portalında RDP ve SSH oturumuna ulaşabilirsiniz.
-* **RDP/SSH için SSL ve güvenlik duvarı geçişi üzerinden Uzak Oturum:** Azure Bastion, yerel cihazınıza otomatik olarak aktarılan HTML5 tabanlı bir web istemcisi kullanır, böylece rdp/SSH oturumunuzu 443 bağlantı noktasındaki SSL üzerinden alır ve kurumsal güvenlik duvarlarını güvenli bir şekilde geçiş yapmanızı sağlar.
+* **RDP/SSH için TLS ve güvenlik duvarı geçişi üzerinden Uzak Oturum:** Azure Bastion, yerel cihazınıza otomatik olarak aktarılan HTML5 tabanlı bir web istemcisi kullanır, böylece rdp/SSH oturumunuzu 443 bağlantı noktasında TLS üzerinden alır ve kurumsal güvenlik duvarlarını güvenli bir şekilde geçiş yapmanızı sağlar.
 * **Azure VM'de Ortak IP gerekmez:** Azure Bastion, VM'nizde özel IP kullanarak Azure sanal makinenize RDP/SSH bağlantısını açar. Sanal makinenizde halka açık bir IP'ye ihtiyacınız yoktur.
 * **NSG'leri yönetme nin güçlük dolmaması:** Azure Bastion, azure'un güvenli RDP/SSH bağlantısı sağlamak için dahili olarak sertleştirilmiş tam olarak yönetilen bir platform PaaS hizmetidir. Azure Bastion alt ağına nsg uygulamanız gerekmez. Azure Kalesi özel IP üzerinden sanal makinelerinize bağlandığından, NSG'lerinizi yalnızca Azure Kalesi'nden RDP/SSH'ye izin verecek şekilde yapılandırabilirsiniz. Bu, sanal makinelerinize güvenli bir şekilde bağlanmanız gerektiğinde NSG'leri yönetme zorunu ortadan kaldırır.
 * **Bağlantı noktası taramasına karşı koruma:** Sanal makinelerinizi herkese açık Internet'e maruz bırakmanız gerekmedığından, SANAL M'leriniz sanal ağınızın dışında bulunan sahte kardes ve kötü niyetli kullanıcılar tarafından bağlantı noktası taramasına karşı korunur.

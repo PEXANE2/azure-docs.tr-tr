@@ -1,6 +1,6 @@
 ---
 title: Olay Kimliğine göre Azure VM RDP bağlantı sorunlarını giderme | Microsoft Dokümanlar
-description: ''
+description: Uzak Masaüstü protokolü (RDP) bağlantısının Azure Sanal Makinesi'ne (VM) bağlanmasını engelleyen çeşitli sorunları gidermek için olay iI'lerini kullanın.
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
-ms.openlocfilehash: 166648402eec7f8033c090a3f7862a902bae4be6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2073d5f91b26cd2ae53e3291a6d1dad4d711b66d
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71154200"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437058"
 ---
 # <a name="troubleshoot-azure-vm-rdp-connection-issues-by-event-id"></a>Azure VM RDP bağlantı sorunlarını olay kimliğine göre giderme 
 
@@ -63,7 +63,7 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Microsoft-Windo
 **Anahtar Kelimeler:**      Klasik <br />
 **Kullanıcı:**          Yok <br />
 **Bilgisayar:**      *bilgisayar* <br />
-**Açıklama:** RD Session Host Server, SSL bağlantılarında RD Session Host Server kimlik doğrulaması için kullanılan süresi dolmuş kendi imzalı sertifikasını değiştirmeyi başaramadı. İlgili durum kodu Access reddedildi.
+**Açıklama:** RD Session Host Server, TLS bağlantılarında RD Session Host Server kimlik doğrulaması için kullanılan süresi dolmuş kendi imzalı sertifikasını değiştirmeyi başaramadı. İlgili durum kodu Access reddedildi.
 
 **Günlük Adı:**      Sistem <br />
 **Kaynak:**        Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
@@ -74,7 +74,7 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Microsoft-Windo
 **Anahtar Kelimeler:**      Klasik <br />
 **Kullanıcı:**          Yok <br />
 **Bilgisayar:**      *bilgisayar* <br />
-**Açıklama:** RD Session ana bilgisayar sunucusu, SSL bağlantılarında RD Session ana bilgisayar sunucusu kimlik doğrulaması için kullanılmak üzere kendi imzalı yeni bir sertifika oluşturmak için başarısız oldu, ilgili durum kodu nesne szaten var oldu.
+**Açıklama:** RD Session host sunucusu TLS bağlantılarında RD Session ana bilgisayar sunucu kimlik doğrulaması için kullanılmak üzere yeni bir kendi imzalı sertifika oluşturmak için başarısız oldu, ilgili durum kodu nesne zaten var oldu.
 
 **Günlük Adı:**      Sistem <br />
 **Kaynak:**        Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
@@ -85,7 +85,7 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Microsoft-Windo
 **Anahtar Kelimeler:**      Klasik <br />
 **Kullanıcı:**          Yok <br />
 **Bilgisayar:**      *bilgisayar* <br />
-**Açıklama:** RD Session Host Server, SSL bağlantılarında RD Session Host Server kimlik doğrulaması için kullanılmak üzere kendi imzalı yeni bir sertifika oluşturamadı. İlgili durum kodu Keyset yok oldu
+**Açıklama:** RD Session Host Server, TLS bağlantılarında RD Session Host Server kimlik doğrulaması için kullanılmak üzere kendi imzalı yeni bir sertifika oluşturamadı. İlgili durum kodu Keyset yok oldu
 
 Ayrıca aşağıdaki komutları çalıştırarak SCHANNEL hata olayları 36872 ve 36870 için kontrol edebilirsiniz:
 
@@ -103,7 +103,7 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Schannel'] and 
 **Anahtar kelime -ler:**       <br />
 **Kullanıcı:**          Sistem <br />
 **Bilgisayar:**      *bilgisayar* <br />
-**Açıklama:** SSL sunucu kimlik bilgisi özel anahtarına erişmeye çalışırken önemli bir hata oluştu. Şifreleme modülünden döndürülen hata kodu 0x8009030D'dir.  <br />
+**Açıklama:** TLS sunucu kimlik bilgisi özel anahtarına erişmeye çalışırken önemli bir hata oluştu. Şifreleme modülünden döndürülen hata kodu 0x8009030D'dir.  <br />
 İç hata durumu 10001'dir.
 
 ### <a name="cause"></a>Nedeni
@@ -186,9 +186,9 @@ Sertifikayı yenileyemiyorsanız, sertifikayı silmeyi denemek için aşağıdak
 
 RDP'yi tekrar kullanarak VM'ye erişmeye çalışın.
 
-#### <a name="update-secure-sockets-layer-ssl-certificate"></a>Güvenli Soket katmanı (SSL) sertifikasını güncelleştir
+#### <a name="update-tlsssl-certificate"></a>TLS/SSL sertifikasını güncelleştir
 
-VM'yi Bir SSL sertifikası kullanacak şekilde ayarlarsanız, parmak izini almak için aşağıdaki komutu çalıştırın. Ardından sertifikanın parmak izi ile aynı olup olmadığını kontrol edin:
+VM'yi TLS/SSL sertifikası kullanacak şekilde ayarlarsanız, parmak izini almak için aşağıdaki komutu çalıştırın. Ardından sertifikanın parmak izi ile aynı olup olmadığını kontrol edin:
 
 ```cmd
 reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v SSLCertificateSHA1Hash

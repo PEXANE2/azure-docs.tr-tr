@@ -7,12 +7,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
 ms.date: 03/11/2020
-ms.openlocfilehash: 95a60abef283984d66736358d2d02048f08d700d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4baf7974bdb0a5efe4cb556e820e9d13aeac5d8a
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80247002"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80409853"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Veri akışlarını eşleme performansı ve atoklama kılavuzu
 
@@ -69,7 +69,7 @@ Varsayılan olarak, hata ayıklama yı açmak, her veri fabrikası için otomati
 
 Kaynak dönüşümünde **Kaynak Seçenekleri** altında, aşağıdaki ayarlar performansı etkileyebilir:
 
-* Toplu iş boyutu, ADF'ye verileri satır satır yerine bellekte depolamasını bildirir. Toplu iş boyutu isteğe bağlı bir ayardır ve düzgün boyutlandırılamıyorlarsa, işlem düğümlerinde kaynaklar tükenebilir.
+* Toplu iş boyutu, ADF'ye verileri satır satır yerine Spark belleğinde kümelerde depolamasını bildirir. Toplu iş boyutu isteğe bağlı bir ayardır ve düzgün boyutlandırılamıyorlarsa, işlem düğümlerinde kaynaklar tükenebilir. Bu özelliği ayarlamamak, Spark önbelleğe alma toplu varsayılankullanır.
 * Sorgu ayarlama, işlem için Veri Akışı'na gelmeden önce satırlarını kaynaktaki filtrelere filtrelemenize olanak sağlar. Bu, ilk veri toplamayı hızlandırabilir. Bir sorgu kullanıyorsanız, Azure SQL DB'niz için READ UNCOMMITTED gibi isteğe bağlı sorgu ipuçları ekleyebilirsiniz.
 * İşlenmemiş okuma, Kaynak dönüşümünde daha hızlı sorgu sonuçları sağlar
 
@@ -77,7 +77,7 @@ Kaynak dönüşümünde **Kaynak Seçenekleri** altında, aşağıdaki ayarlar p
 
 ### <a name="sink-batch-size"></a>Lavabo toplu boyutu
 
-Veri akışlarınızın satır satır işlenmesini önlemek için, Azure SQL DB ve Azure SQL DW lavabolarının Ayarlar sekmesinde **Toplu Iş boyutu** ayarlayın. Toplu iş boyutu ayarlanırsa, ADF veritabanı sağlanan boyuta bağlı olarak toplu olarak yazar.
+Veri akışlarınızın satır satır işlenmesini önlemek için, Azure SQL DB ve Azure SQL DW lavabolarının Ayarlar sekmesinde **Toplu Iş boyutu** ayarlayın. Toplu iş boyutu ayarlanırsa, ADF veritabanı sağlanan boyuta bağlı olarak toplu olarak yazar. Bu özelliği ayarlamamak, Spark önbelleğe alma toplu varsayılankullanır.
 
 ![Havuz](media/data-flow/sink4.png "Havuz")
 

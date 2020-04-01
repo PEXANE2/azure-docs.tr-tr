@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 11/14/2019
+ms.date: 03/31/2020
 ms.author: victorh
-ms.openlocfilehash: 9909c46015fffb3bea3eef094599312e28b935c5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 96f3825288846e86771ef3907eb4da4e58630df3
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77046189"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475183"
 ---
 # <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>Azure Uygulama Ağ Geçidi'ni ve Web Uygulaması Güvenlik Duvar'ı v1'den v2'ye geçirin
 
@@ -40,6 +40,7 @@ Aşağıdakileri yapan bir Azure PowerShell komut dosyası kullanılabilir:
 * V1 ağ geçidiniz için FIPS modu etkinleştirilmişse, yeni v2 ağ geçidinize geçirilmez. FIPS modu v2'de desteklenmez.
 * v2 IPv6'yı desteklemez, bu nedenle IPv6 etkin v1 ağ geçitleri geçirilemiyor. Komut dosyasını çalıştırın, tamamlanmamış olabilir.
 * v1 ağ geçidinde yalnızca özel bir IP adresi varsa, komut dosyası yeni v2 ağ geçidi için ortak bir IP adresi ve özel bir IP adresi oluşturur. v2 ağ geçitleri şu anda yalnızca özel IP adreslerini desteklemiyor.
+* Harfler, basamaklar, tireler ve alt çizilmeler dışında herhangi bir ad içeren üstbilgi uygulamanıza geçirilmez. Bu yalnızca üstbilgi adları için geçerlidir, üstbilgi değerleri için değil. Bu v1 bir kırılma değişikliğidir.
 
 ## <a name="download-the-script"></a>Komut dosyasını indirin
 

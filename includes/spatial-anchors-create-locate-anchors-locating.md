@@ -1,18 +1,18 @@
 ---
 ms.openlocfilehash: b5fec8bbc0db78454b080a411702014bd96f7db9
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/29/2020
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "76887770"
 ---
-## <a name="locate-a-cloud-spatial-anchor"></a>Bulut uzamsal bağlayıcısını bulma
+## <a name="locate-a-cloud-spatial-anchor"></a>Bulut uzamsal çapası bulma
 
-Daha önce kaydedilen bir bulut uzamsal çıpası, Azure uzamsal Tutturucuların kullanılmasına yönelik başlıca nedenlerden biridir. Bulut uzamsal bağlayıcısını bulmanın birkaç farklı yolu vardır. Her seferinde bir izleyici üzerinde bir strateji kullanabilirsiniz.
-- Tutturucuların tanımlayıcısını bulun.
-- Daha önce bulunan bir tutturucuya bağlı olan bağlantıları bulun. [Buradan](/azure/spatial-anchors/concepts/anchor-relationships-way-finding/)bağlayıcı ilişkileri hakkında bilgi edinebilirsiniz.
-- [Kaba reyerelleştirme](/azure/spatial-anchors/concepts/coarse-reloc/)kullanarak bağlayıcıyı bulun.
+Azure Uzamsal Çapaları kullanmanın başlıca nedenlerinden biri, önceden kaydedilmiş bir bulut uzamsal çapasını bulabilmektir. Bir bulut uzamsal çapa sıyrık bulmak için birkaç farklı yolu vardır. Bir anda bir gözcü üzerinde bir strateji kullanabilirsiniz.
+- Bağlantı larını tanımlayıcıya göre bulun.
+- Daha önce bulunan bir çapaya bağlı çapaları bulun. [Burada](/azure/spatial-anchors/concepts/anchor-relationships-way-finding/)çapa ilişkileri hakkında bilgi edinebilirsiniz.
+- [Kaba yeniden yerelleştirme](/azure/spatial-anchors/concepts/coarse-reloc/)kullanarak çapa bulun.
 
-Bulut uzamsal bağlayıcılarını tanımlayıcıya göre konumlandırdıysanız, bulut uzamsal bağlantı tanımlayıcısını uygulamanızın arka uç hizmetinde depolamak ve bunu düzgün şekilde doğrulayabilecek tüm cihazların erişimine açık hale getirmek isteyeceksiniz. Buna bir örnek için bkz. [öğretici: cihaz genelinde uzamsal bağlayıcıları paylaşma](/azure/spatial-anchors/tutorials/tutorial-share-anchors-across-devices/).
+Bulut uzamsal bağlantı larını tanımlayıcıya göre konumlandırıyorsanız, bulut uzamsal bağlantı tanımlayıcısını uygulamanızın arka uç hizmetinde depolamak ve doğru doğrudoğrula doğrulayabilen tüm aygıtlar için erişilebilir hale getirmek isteyebilirsiniz. Bunun bir örneği için, [bkz.](/azure/spatial-anchors/tutorials/tutorial-share-anchors-across-devices/)
 
-`AnchorLocateCriteria` bir nesne örneği oluşturun, aradığınız tanımlayıcıları ayarlayın ve `AnchorLocateCriteria`sağlayarak oturumdaki `CreateWatcher` yöntemini çağırın.
+Bir `AnchorLocateCriteria` nesneyi anında ayarlayın, aradığınız tanımlayıcıları ayarlayın ve oturumdaki `CreateWatcher` yöntemi' nizi `AnchorLocateCriteria`sağlayarak.

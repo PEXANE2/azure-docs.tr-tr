@@ -8,22 +8,25 @@ ms.author: edprice
 manager: edprice
 editor: edprice
 ms.topic: conceptual
-ms.date: 05/29/2019
+ms.date: 03/30/2020
 tags: ''
 keywords: ''
 ms.service: multiple
-ms.openlocfilehash: a5426c3cd7552b24739f9a20e01d5a4b42bd383c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5b3fa5faccf17df17bc4f7cc2d8b023b868fdbe1
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68834564"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411190"
 ---
 # <a name="install-micro-focus-enterprise-server-40-and-enterprise-developer-40-on-azure"></a>Azure'da Micro Focus Enterprise Server 4.0 ve Enterprise Developer 4.0'ı yükleyin
 
 Bu makalede, [Azure'da Micro Focus Enterprise Server 4.0](https://www.microfocus.com/documentation/enterprise-developer/es30/) ve Micro Focus Enterprise Developer [4.0'ın](https://www.microfocus.com/documentation/enterprise-developer/ed_30/) nasıl kurulabildiğini gösterilmektedir.
 
 Azure'da yaygın bir iş yükü geliştirme ve test ortamıdır. Bu senaryo yaygındır, çünkü çok uygun maliyetlidir ve dağıtılması ve yıkılması kolaydır. Micro Focus, Enterprise Server ile mevcut en büyük ana bilgisayar barındırma platformlarından birini oluşturdu. Windows veya Linux sanal makineleri (VM) kullanarak Azure'da daha ucuz bir x86 platformunda z/OS iş yüklerini çalıştırabilirsiniz.
+
+> [!NOTE]
+> Yakında: Azure VM'lerde [Micro Focus Enterprise Server 5.0'ı](https://techcommunity.microsoft.com/t5/azurecat/micro-focus-enterprise-server-5-0-quick-start-template-on-azure/ba-p/1160110) kurma talimatları.
 
 Bu kurulum, Microsoft SQL Server 2017 yüklü olan Azure Marketi'nden Windows Server 2016 görüntüsünü çalıştıran Azure VM'leri kullanır. Bu kurulum Azure Yığını için de geçerlidir.
 

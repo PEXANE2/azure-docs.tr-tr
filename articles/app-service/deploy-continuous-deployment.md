@@ -3,15 +3,15 @@ title: Sürekli dağıtımı yapılandırma
 description: GitHub, BitBucket, Azure Repos veya diğer depolardan CI/CD'yi Azure Uygulama Hizmeti'ne nasıl etkinleştirin öğrenin. İhtiyaçlarınıza uygun yapı ardışık hattını seçin.
 ms.assetid: 6adb5c84-6cf3-424e-a336-c554f23b4000
 ms.topic: article
-ms.date: 08/23/2019
+ms.date: 03/20/2020
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: d58eb333c930d2ffac4eb57340ea776338325181
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 847de2c2c8916558d542473d9b7c80fd5552dbf7
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79266045"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437202"
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>Azure Uygulama Hizmetine sürekli dağıtım
 
@@ -27,11 +27,11 @@ Azure Repos'unu kullanmak için Azure DevOps kuruluşunuzun Azure aboneliğinize
 
 Bitbucket veya GitHub için, deponuza bağlanmak için Azure Uygulama Hizmeti'ne yetki verin. Yalnızca bir kez kaynak kontrol hizmeti ile yetkilendirmeniz gerekir. 
 
-1. Azure [portalında,](https://portal.azure.com) **Uygulama Hizmetlerini**arayın ve seçin. 
+1. Azure [portalında,](https://portal.azure.com) **Uygulama Hizmetlerini** arayın ve seçin.
 
    ![Uygulama hizmetlerini arayın.](media/app-service-continuous-deployment/search-for-app-services.png)
 
-1. Dağıtmak istediğiniz web uygulamasını seçin.
+1. Dağıtmak istediğiniz Uygulama Hizmetini seçin.
 
    ![Uygulamanızı seçin.](media/app-service-continuous-deployment/select-your-app.png)
    
@@ -45,13 +45,13 @@ Bitbucket veya GitHub için, deponuza bağlanmak için Azure Uygulama Hizmeti'ne
 
 ## <a name="enable-continuous-deployment"></a>Sürekli dağıtımı etkinleştirme 
 
-Bir kaynak kontrol hizmetine yetki verdikten sonra, uygulamanızı yerleşik [Kudu App Service build sunucusu](#option-1-use-the-app-service-build-service)veya Azure [Ardışık Hatları](#option-2-use-azure-pipelines)aracılığıyla sürekli dağıtım için yapılandırın. 
+Bir kaynak denetim hizmetine yetki verdikten sonra, yerleşik [Kudu App Service](#option-1-kudu-app-service) build sunucusu veya [Azure Ardışık Hatları](#option-2-azure-pipelines)aracılığıyla uygulamanızı sürekli dağıtım için yapılandırın. 
 
-### <a name="option-1-use-the-app-service-build-service"></a>Seçenek 1: Uygulama Hizmeti oluşturma hizmetini kullanın
+### <a name="option-1-kudu-app-service"></a>Seçenek 1: Kudu Uygulama Servisi
 
 Yerleşik Kudu App Service yapı sunucusunu sürekli olarak GitHub, Bitbucket veya Azure Deposu'ndan dağıtmak için kullanabilirsiniz. 
 
-1. Azure [portalında,](https://portal.azure.com) **Uygulama Hizmetlerini**arayın ve seçin ve ardından dağıtmak istediğiniz web uygulamasını seçin. 
+1. Azure [portalında,](https://portal.azure.com) **Uygulama Hizmetlerini**arayın ve ardından dağıtmak istediğiniz Uygulama Hizmetini seçin. 
    
 1. Uygulama sayfasında, sol menüde **Dağıtım Merkezi'ni** seçin.
    
@@ -84,15 +84,17 @@ Yerleşik Kudu App Service yapı sunucusunu sürekli olarak GitHub, Bitbucket ve
    
 1. Yapı sağlayıcısını yapılandırdıktan sonra **Özet** sayfasındaki ayarları gözden geçirin ve **ardından Bitir'i**seçin.
    
-   Seçili depo ve şubedeki yeni taahhütler artık Uygulama Hizmeti uygulamanıza sürekli olarak dağıtılır. **Dağıtım Merkezi** sayfasında taahhütleri ve dağıtımları izleyebilirsiniz.
+1. Seçili depo ve şubedeki yeni taahhütler artık Uygulama Hizmeti uygulamanıza sürekli olarak dağıtılır. **Dağıtım Merkezi** sayfasında taahhütleri ve dağıtımları izleyebilirsiniz.
    
    ![Dağıtım Merkezi'ndeki taahhütleri ve dağıtımları izleme](media/app-service-continuous-deployment/github-finished.png)
 
-### <a name="option-2-use-azure-pipelines"></a>Seçenek 2: Azure Ardışık Hatlar'ı kullanma 
+### <a name="option-2-azure-pipelines"></a>Seçenek 2: Azure Boru Hatları 
 
-Hesabınızda gerekli izinler varsa, Azure Ardışık Hatlar'ı Sürekli Olarak GitHub veya Azure Depo depolarından dağıtacak şekilde ayarlayabilirsiniz. Azure Ardışık Hatları üzerinden dağıtım hakkında daha fazla bilgi için [bkz.](/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps)
+Hesabınızda gerekli izinler varsa, Azure Ardışık Hatlar'ı Sürekli Olarak GitHub veya Azure Deposu'ndan dağıtacak şekilde ayarlayabilirsiniz. Azure Ardışık Hatları üzerinden dağıtım hakkında daha fazla bilgi için [bkz.](/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps)
 
-Azure Uygulama Hizmeti'nin Azure DevOps kuruluşunuzda sürekli teslimat Azure Boru Hatları oluşturması için: 
+#### <a name="prerequisites"></a>Ön koşullar
+
+Azure Uygulama Hizmeti'nin Azure Altyapı Hatlar'ı kullanarak sürekli teslim oluşturması için Azure DevOps kuruluşunuz aşağıdaki izinlere sahip olmalıdır: 
 
 - Azure hesabınız, Azure Etkin Dizin'e yazma ve hizmet oluşturma izinlerine sahip olmalıdır. 
   
@@ -100,42 +102,65 @@ Azure Uygulama Hizmeti'nin Azure DevOps kuruluşunuzda sürekli teslimat Azure B
 
 - Kullanmak istediğiniz Azure DevOps projesinde yönetici olmalısınız.
 
-Azure Ardışık Hatlar 'ı yapılandırmak için (Önizleme):
+#### <a name="github--azure-pipelines"></a>GitHub + Azure Boru Hatları
 
-1. Azure [portalında,](https://portal.azure.com) **Uygulama Hizmetlerini**arayın ve seçin ve ardından dağıtmak istediğiniz web uygulamasını seçin. 
+1. Azure [portalında,](https://portal.azure.com) **Uygulama Hizmetlerini**arayın ve ardından dağıtmak istediğiniz Uygulama Hizmetini seçin. 
    
 1. Uygulama sayfasında, sol menüde **Dağıtım Merkezi'ni** seçin.
+
+1. **Dağıtım Merkezi** sayfasında kaynak denetim sağlayıcısı olarak **GitHub'ı** seçin ve **Devam et'i**seçin. **GitHub**için, yetkili hesabı değiştirmek için **Hesabı Değiştir'i** seçebilirsiniz.
+
+    ![kaynak kontrolü](media/app-service-continuous-deployment/deployment-center-src-control.png)
    
-1. Sağlayıcı **Oluştur** sayfasında **Azure Ardışık Hatları (Önizleme) seçeneğini**belirleyin ve ardından Devam **et'i**seçin. 
+1. Sağlayıcı **Oluştur** sayfasında **Azure Ardışık Hatları (Önizleme) seçeneğini**belirleyin ve ardından Devam **et'i**seçin.
+
+    ![sağlayıcı oluşturmak](media/app-service-continuous-deployment/select-build-provider.png)
    
-1. **Yapılandırma** sayfasında, **Kod** bölümünde:
-   
-   - GitHub için, aşağı inin ve sürekli olarak dağıtmak istediğiniz **Kuruluş,** **Depo**ve **Şubeyi** seçin.
+1. **Yapılandırma** sayfasında, **Kod** bölümünde, sürekli dağıtmak istediğiniz **Kuruluş,** **Depo**ve **Şube'yi** seçin ve **Devam'ı**seçin.
      
      > [!NOTE]
      > Herhangi bir depo görmüyorsanız, Azure Uygulama Hizmetini GitHub'da yetkilendirmeniz gerekebilir. GitHub deponuza göz atın ve **Ayarlar** > **Uygulamaları** > **Yetkili OAuth Apps**gidin. **Azure Uygulama Hizmeti'ni**seçin ve ardından **Hibe'yi**seçin. Kuruluş depoları için izinleri vermek için kuruluşun sahibi olmalısınız.
-     
-   - Azure Depoları için, sürekli olarak dağıtmak istediğiniz **Azure DevOps Organizasyonu**, **Proje**, **Depo**ve **Şube'yi** seçin veya yeni bir Azure DevOps kuruluşunu yapılandırın.
-     
-     > [!NOTE]
-     > Mevcut Azure DevOps kuruluşunuz listede yoksa, azure aboneliğinize bağlamanız gerekebilir. Daha fazla bilgi için cd [sürüm ardışık alanınızı tanımlayın'](/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps#cd)a bakın.
-     
-1. **Devam**'ı seçin.
-   
-1. Azure Deposu için **Yapı** bölümünde, Azure Ardışık Hatlarının yapı görevlerini çalıştırmak için kullanması gereken dil çerçevesini belirtin ve ardından **Devam et'i**seçin.
-   
-1. **Test** sayfasında, yük testlerini etkinleştirip etkinleştirmeyeceğinizi seçin ve ardından **Devam et'i**seçin.
-   
-1. Uygulama Hizmeti planı [fiyatlandırma katmanınıza](https://azure.microsoft.com/pricing/details/app-service/plans/)bağlı olarak, **bir Hazırlama sayfasına Dağıt'ı** görebilirsiniz. [Dağıtım yuvalarını etkinleştirip etkinleştirmeyeceğini](deploy-staging-slots.md)seçin ve sonra **Devam et'i**seçin.
-   
-   > [!NOTE]
-   > Azure Pipelines, üretim yuvasına sürekli olarak teslim edilebilmesine izin vermez. Bu kısıtlama, üretime yanlışlıkla dağıtımları önler. Bir evreleme yuvasına sürekli teslimat ayarlayın, değişiklikleri orada doğrulayın ve hazır olduğunuzda yuvaları değiştirin.
-   
+       
+    **Yapı** bölümünde, Azure Ardışık Hatlarının yapı görevlerini çalıştırmak için kullanması gereken Azure DevOps Organizasyonu, Project, dil çerçevesini belirtin ve ardından **Devam et'i**seçin.
+
+   ![sağlayıcı oluşturmak](media/app-service-continuous-deployment/build-configure.png)
+
 1. Yapı sağlayıcısını yapılandırdıktan sonra **Özet** sayfasındaki ayarları gözden geçirin ve **ardından Bitir'i**seçin.
+
+   ![sağlayıcı oluşturmak](media/app-service-continuous-deployment/summary.png)
    
-   Seçili depo ve şubedeki yeni taahhütler artık Uygulama Hizmeti uygulamanıza sürekli olarak dağıtılır. **Dağıtım Merkezi** sayfasında taahhütleri ve dağıtımları izleyebilirsiniz.
+1. Seçili depo ve şubedeki yeni taahhütler artık Uygulama Hizmetinize sürekli olarak dağıtılır. **Dağıtım Merkezi** sayfasında taahhütleri ve dağıtımları izleyebilirsiniz.
    
    ![Dağıtım Merkezi'ndeki taahhütleri ve dağıtımları izleme](media/app-service-continuous-deployment/github-finished.png)
+
+#### <a name="azure-repos--azure-pipelines"></a>Azure Repos + Azure Ardışık Hatları
+
+1. Azure [portalında,](https://portal.azure.com) **Uygulama Hizmetlerini**arayın ve ardından dağıtmak istediğiniz Uygulama Hizmetini seçin. 
+   
+1. Uygulama sayfasında, sol menüde **Dağıtım Merkezi'ni** seçin.
+
+1. **Dağıtım Merkezi** sayfasında kaynak denetim sağlayıcısı olarak **Azure Repos'u** seçin ve **Devam et'i**seçin.
+
+    ![kaynak kontrolü](media/app-service-continuous-deployment/deployment-center-src-control.png)
+
+1. Sağlayıcı **Oluştur** sayfasında **Azure Ardışık Hatları (Önizleme) seçeneğini**belirleyin ve ardından Devam **et'i**seçin.
+
+    ![kaynak kontrolü](media/app-service-continuous-deployment/azure-pipelines.png)
+
+1. **Yapılandırma** sayfasında, **Kod** bölümünde, sürekli dağıtmak istediğiniz **Kuruluş,** **Depo**ve **Şube'yi** seçin ve **Devam'ı**seçin.
+
+   > [!NOTE]
+   > Mevcut Azure DevOps kuruluşunuz listede yoksa, azure aboneliğinize bağlamanız gerekebilir. Daha fazla bilgi için cd [sürüm ardışık alanınızı tanımlayın'](/azure/devops/pipelines/apps/cd/deploy-webdeploy-webapps#cd)a bakın.
+
+   **Yapı** bölümünde, Azure Ardışık Hatlarının yapı görevlerini çalıştırmak için kullanması gereken Azure DevOps Organizasyonu, Project, dil çerçevesini belirtin ve ardından **Devam et'i**seçin.
+
+   ![sağlayıcı oluşturmak](media/app-service-continuous-deployment/build-configure.png)
+
+1. Yapı sağlayıcısını yapılandırdıktan sonra **Özet** sayfasındaki ayarları gözden geçirin ve **ardından Bitir'i**seçin.  
+     
+   ![sağlayıcı oluşturmak](media/app-service-continuous-deployment/summary-azure-pipelines.png)
+
+1. Seçili depo ve şubedeki yeni taahhütler artık Uygulama Hizmetinize sürekli olarak dağıtılır. **Dağıtım Merkezi** sayfasında taahhütleri ve dağıtımları izleyebilirsiniz.
 
 ## <a name="disable-continuous-deployment"></a>Sürekli dağıtımı devre dışı bırakma
 

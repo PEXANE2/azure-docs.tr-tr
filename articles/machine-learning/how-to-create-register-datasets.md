@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 02/10/2020
-ms.openlocfilehash: c78c1d3ce6dae874ace2abfa8b2bbec6d489538a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4025c620aea49dfb26ab203630c121d29d88d9d7
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79536488"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474540"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Azure Machine Learning veri kümeleri oluşturma
 
@@ -52,7 +52,7 @@ Ana faktör, veri kümesinin bellekte ne kadar büyük olduğudur, yani bir veri
  
 Pandalar kullanıyorsanız, tüm kullanacağı bu yana 1 vCPU'dan fazla olması için bir neden yoktur. Modin ve Dask/Ray üzerinden tek bir Azure Machine Learning bilgi işlem örneğinde/düğümde birçok vCPUs'a `import pandas as pd` `import modin.pandas as pd`kolayca paralelleyebilir ve gerekirse büyük bir kümeye ölçeklendirebilirsiniz. 
  
-Veriler için yeterince büyük bir sanal alamıyorsanız, iki seçeneğiniz vardır: 'bellek dışında' veri işleme gerçekleştirmek için Kıvılcım veya Dask gibi bir çerçeve kullanın, yani veri çerçevesi bölümleme tarafından RAM bölümüne yüklenir ve işlenir, nihai sonuç olmak sonunda toplandı. Bu çok yavaşsa, Spark veya Dask hala etkileşimli olarak kullanılabilen bir kümeye ölçeklendirmenize olanak sağlar. 
+Veriler için yeterince büyük bir sanal alamıyorsanız, iki seçeneğiniz vardır: 'bellek dışında' veri işleme gerçekleştirmek için Kıvılcım veya Dask gibi bir çerçeve kullanın, yani veri çerçevesi bölümleme tarafından RAM bölümüne yüklenir ve işlenir, nihai sonuç sonunda toplanır. Bu çok yavaşsa, Spark veya Dask hala etkileşimli olarak kullanılabilen bir kümeye ölçeklendirmenize olanak sağlar. 
 
 ## <a name="dataset-types"></a>Veri kümesi türleri
 
@@ -108,6 +108,7 @@ Varsayılan olarak, bir TabularDataset oluşturduğunuzda, sütun veri türleri 
 > Depolama alanınız sanal bir ağın veya güvenlik duvarının arkasındaysa, yalnızca SDK aracılığıyla bir veri kümesi oluşturulması desteklenir. Veri kümenizi oluşturmak için parametreleri `validate=False` ve `infer_column_types=False` yönteminize `from_delimited_files()` eklediğinden emin olun. Bu, ilk doğrulama denetimini atlar ve bu güvenli dosyalardan veri kümenizi oluşturabilmesini sağlar. 
 
 ```Python
+from azureml.core import Dataset
 from azureml.data.dataset_factory import DataType
 
 # create a TabularDataset from a delimited file behind a public web url and convert column "Survived" to boolean

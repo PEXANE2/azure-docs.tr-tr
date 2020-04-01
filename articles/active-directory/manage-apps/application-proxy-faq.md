@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/03/2019
 ms.author: mimart
 ms.reviewer: japere
-ms.openlocfilehash: 8bb77a217546f1abe2c28925e32464b8d61702b2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: HT
+ms.openlocfilehash: 31587777ba22dd8b4cebf81f0ff98979bb30fade
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79481288"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80410712"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Active Directory (Azure AD) Application Proxy sık sorulan sorular
 
@@ -113,7 +113,7 @@ Hayır, Uygulama Proxy TLS trafiğini sonlandıracak çünkü bu senaryo destekl
 
 Azure [AD Uygulama Proxy'si ile Uzak MasaüstüYayımla'ya](application-proxy-integrate-with-remote-desktop-services.md)bakın.
 
-### <a name="can-i-use-kerberos-constrained-delegation-in-the-remote-desktop-gateway-publishing-scenario"></a>Uzak Masaüstü Ağ Geçidi yayımlama senaryosunda Kerberos Kısıtlı Temsilciliği'ni kullanabilir miyim?
+### <a name="can-i-use-kerberos-constrained-delegation-single-sign-on---windows-integrated-authentication-in-the-remote-desktop-gateway-publishing-scenario"></a>Uzak Masaüstü Ağ Geçidi yayımlama senaryosunda Kerberos Kısıtlı Temsilciliği 'ni (Tek Oturum Açma - Windows Tümleşik Kimlik Doğrulama) kullanabilir miyim?
 
 Hayır, bu senaryo desteklenmiyor.  
 
@@ -121,7 +121,7 @@ Hayır, bu senaryo desteklenmiyor.
 
 Evet, bekleniyor. Ön kimlik doğrulama senaryosu, üçüncü taraf tarayıcılarda desteklenmeyen bir ActiveX denetimi gerektirir.
 
-### <a name="is-the-remote-desktop-web-client-supported"></a>Uzak Masaüstü Web İstemci desteklendi mi?
+### <a name="is-the-remote-desktop-web-client-html5-supported"></a>Uzak Masaüstü Web İstemci (HTML5) desteklendi mi?
 
 Hayır, bu senaryo şu anda desteklenmiyor. Bu özellik teki güncellemeler için [UserVoice](https://aka.ms/aadapuservoice) geri bildirim forumumuzu takip edin.
 
@@ -135,6 +135,10 @@ Evet, bekleniyor. Kullanıcının bilgisayarı Azure AD'ye katıldıysa, kullan�
 
 Azure [AD Application Proxy ile SharePoint'e uzaktan erişimi etkinleştirme konusuna](application-proxy-integrate-with-sharepoint-server.md)bakın.
 
+### <a name="can-i-use-the-sharepoint-mobile-app-ios-android-to-access-a-published-sharepoint-server"></a>Yayınlanan bir SharePoint sunucusuna erişmek için SharePoint mobil uygulamasını (iOS/ Android) kullanabilir miyim?
+
+[SharePoint mobil uygulaması](https://docs.microsoft.com/sharepoint/administration/supporting-the-sharepoint-mobile-apps-online-and-on-premises) şu anda Azure Active Directory ön kimlik doğrulamasını desteklememektedir.
+
 ## <a name="active-directory-federation-services-ad-fs-publishing"></a>Aktif Dizin Federasyon Hizmetleri (AD FS) yayıncılık 
 
 ### <a name="can-i-use-azure-ad-application-proxy-as-ad-fs-proxy-like-web-application-proxy"></a>Azure AD Application Proxy'yi AD FS proxy olarak (Web Application Proxy gibi) kullanabilir miyim?
@@ -147,7 +151,7 @@ Hayır. Azure AD Application Proxy, Azure AD ile çalışmak üzere tasarlanmı�
 
 Şu anda, WebSocket iletişim kuralı desteği hala genel önizlemede dir ve diğer uygulamalar için çalışmayabilir. Bazı müşteriler, Diğer uygulamalarla WebSocket protokolünü kullanarak karışık başarı elde etmiştir. Bu tür senaryoları test ederseniz, sonuçlarınızı duymak isteriz. Lütfen geri bildiriminizi aadapfeedback@microsoft.combize gönderin.
 
-Windows Yönetici Merkezi (WAC) veya Uzak Masaüstü Web İstemci'deki özellikler (Eventlogs, PowerShell ve Uzak Masaüstü Hizmetleri) şu anda Azure AD Application Proxy ile çalışmıyor.
+Windows Yönetici Merkezi (WAC) veya Uzak Masaüstü Web İstemcisi'ndeki (HTML5) özellikler (Eventlogs, PowerShell ve Uzak Masaüstü Hizmetleri) şu anda Azure AD Application Proxy ile çalışmıyor.
 
 ## <a name="link-translation"></a>Bağlantı çevirisi
 

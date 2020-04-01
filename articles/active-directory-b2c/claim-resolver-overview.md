@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/20/2020
+ms.date: 03/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cba97b84f77bd4e2d4cfd97601fa4f8637105eb4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1c4bbd98682d964cfdf72031c7d6cb77cf42a809
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80051419"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396077"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Azure Active Directory B2C özel ilkelerindeki talep çözümleyicileri hakkında
 
@@ -76,7 +76,7 @@ Aşağıdaki bölümlerde kullanılabilir talep çözümleyicileri listelenmekte
 | {OIDC:İstem} | Sorgu `prompt` dize parametresi. | oturum aç |
 | {OIDC:RedirectUri} |Sorgu `redirect_uri` dize parametresi. | https://jwt.ms |
 | {OIDC:Kaynak} |Sorgu `resource` dize parametresi. | Yok |
-| {OIDC:kapsam} |Sorgu `scope` dize parametresi. | Openıd |
+| {OIDC:Kapsam} |Sorgu `scope` dize parametresi. | Openıd |
 | {OIDC:Kullanıcı adı}| Kaynak sahibi nin parola kimlik bilgileri kullanıcının kullanıcı adı [akışı.](ropc-custom.md)| emily@contoso.com| 
 
 ### <a name="context"></a>Bağlam
@@ -162,7 +162,7 @@ Aşağıdaki örnekte, bu senaryoya sahip yeni bir teknik profil gösterilmekted
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="userLanguage" DefaultValue="{Culture:LCID}" AlwaysUseDefaultValue="true" />
     <InputClaim ClaimTypeReferenceId="policyName" DefaultValue="{Policy:PolicyId}" AlwaysUseDefaultValue="true" />
-    <InputClaim ClaimTypeReferenceId="scope" DefaultValue="{OIDC:scope}" AlwaysUseDefaultValue="true" />
+    <InputClaim ClaimTypeReferenceId="scope" DefaultValue="{OIDC:Scope}" AlwaysUseDefaultValue="true" />
     <InputClaim ClaimTypeReferenceId="clientId" DefaultValue="{OIDC:ClientId}" AlwaysUseDefaultValue="true" />
   </InputClaims>
   <UseTechnicalProfileForSessionManagement ReferenceId="SM-Noop" />
@@ -175,7 +175,7 @@ Talep çözümleyicilerini kullanarak, oturum açma adını veya doğrudan oturu
 
 ### <a name="dynamic-ui-customization"></a>Dinamik Kullanıcı Bira Özelleştirme
 
-Azure AD B2C, sayfa içeriğini dinamik olarak işlemek için sorgu dize parametrelerini HTML içerik tanımı uç noktalarınıza geçirmenizi sağlar. Örneğin, bu, web veya mobil uygulamanızdan geçtiğiniz özel bir parametreye göre Azure AD B2C kaydolma veya oturum açma sayfasındaki arka plan görüntüsünü değiştirme olanağı sağlar. Daha fazla bilgi için bkz: [Azure Etkin Dizin I2C'de özel ilkeler kullanarak Kullanıcı Arabirimi'ni dinamik olarak yapılandırın.](custom-policy-ui-customization.md) Ayrıca HTML sayfanızı bir dil parametresini temel alınca yerelleştirebilir veya istemci kimliğine göre içeriği değiştirebilirsiniz.
+Azure AD B2C, sayfa içeriğini dinamik olarak işlemek için sorgu dize parametrelerini HTML içerik tanımı uç noktalarınıza geçirmenizi sağlar. Örneğin, bu özellik, web veya mobil uygulamanızdan geçtiğiniz özel bir parametreye göre Azure AD B2C kaydolma veya kaydolma sayfasındaki arka plan görüntüsünü değiştirme olanağı sağlar. Daha fazla bilgi için bkz: [Azure Etkin Dizin I2C'de özel ilkeler kullanarak Kullanıcı Arabirimi'ni dinamik olarak yapılandırın.](custom-policy-ui-customization.md#configure-dynamic-custom-page-content-uri) Ayrıca HTML sayfanızı bir dil parametresini temel alınca yerelleştirebilir veya istemci kimliğine göre içeriği değiştirebilirsiniz.
 
 Aşağıdaki örnek, **campaignId** adlı sorgu dize parametresinde `Hawaii`, `en-US`bir **dil** kodu ve istemci kimliğini temsil eden **uygulama** değeriyle geçer:
 

@@ -3,12 +3,12 @@ title: Dosya ve klasörleri yedekleme - sık sorulan sorular
 description: Azure Yedekleme ile dosya ve klasörleri yedekleme yle ilgili sık sorulan soruları giderer.
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: adcbf5c3b404de46634423f8f59c4798d44bebe0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 55819ce7ec5196812d935a21c096c132144d78af
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79273429"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421317"
 ---
 # <a name="common-questions-about-backing-up-files-and-folders"></a>Dosya ve klasörleri yedekleme hakkında sık sorulan sorular
 
@@ -57,6 +57,10 @@ Yedekleme verileri, sunucunun kayıtlı olduğu kasanın veri merkezine gönderi
 ### <a name="does-the-mars-agent-support-windows-server-2012-deduplication"></a>MARS aracısı Windows Server 2012 çoğaltmayı destekliyor mu?
 
 Evet. MARS aracısı, yinelenen verileri yedekleme işlemini hazırlarken normal verilere dönüştürür. Daha sonra yedekleme için verileri optimize eder, verileri şifreler ve şifrelenmiş verileri kasaya gönderir.
+
+### <a name="do-i-need-administrator-permissions-to-install-and-configure-the-mars-agent"></a>MARS aracısını yüklemek ve yapılandırmak için yönetici izinlerine ihtiyacım var mı?
+
+Evet, MARS Aracısı'nın yüklenmesi ve MARS konsolunu kullanan yedeklemelerin yapılandırması, kullanıcının korumalı sunucuda yerel bir yönetici olması gerekir.
 
 ## <a name="manage-backups"></a>Yedekleri yönetme
 

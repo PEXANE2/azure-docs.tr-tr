@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: af1032de9aabac45ad7a86cfe1f36ed2c04c0f71
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c1c5bdd1d210a1933699cad52dbf123b50048e01
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75444615"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421327"
 ---
 # <a name="access-azure-cosmos-db-from-virtual-networks-vnet"></a>Sanal ağlardan (VNet) Azure Cosmos DB'ye erişme
 
@@ -50,7 +50,7 @@ Yetkilendirme, kullanıcı Azure CLI kullanarak VNET ALA'larını belirtmese bil
 Yalnızca sanal ağ ve Azure Cosmos hesabına eklenen alt ağları erişebilir. Eşlenen sanal ağlardaki alt ağlar hesaba eklenene kadar, eşlenen VNet'leri hesaba erişemez.
 
 ### <a name="what-is-the-maximum-number-of-subnets-allowed-to-access-a-single-cosmos-account"></a>Tek bir Cosmos hesabına erişmesine izin verilen maksimum alt ağ sayısı nedir? 
-Şu anda, bir Azure Cosmos hesabı için en fazla 64 alt ağ izni niz olabilir.
+Şu anda, bir Azure Cosmos hesabı için en fazla 256 alt ağ izni niz olabilir.
 
 ### <a name="can-i-enable-access-from-vpn-and-express-route"></a>VPN ve Express Route'dan erişimi etkinleştirebilir miyim? 
 Azure Cosmos hesabına şirket içi Express rotası üzerinden erişmek için Microsoft'un karşıdan erişimini etkinleştirmeniz gerekir. IP güvenlik duvarı veya sanal ağ erişim kurallarını koyduktan sonra, şirket içi hizmetlerin Azure Cosmos hesabına erişmesine izin vermek için Azure Cosmos hesabıip güvenlik duvarınızda Microsoft'a bakan Microsoft için kullanılan genel IP adreslerini ekleyebilirsiniz. 

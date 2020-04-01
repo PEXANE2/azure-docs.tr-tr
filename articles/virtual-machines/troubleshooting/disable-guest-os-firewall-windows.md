@@ -1,6 +1,6 @@
 ---
 title: Azure VM'de konuk Işletim Sistemi Güvenlik Duvarını devre dışı söyler | Microsoft Dokümanlar
-description: ''
+description: Konuk işletim sistemi güvenlik duvarının vm'ye kısmi veya tam trafiği filtrelediği durumlarda sorun giderme için bir geçici çözüm yöntemi öğrenin.
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: dbb9b0f865c7ec5d9d29e2310ae41abbec287bd6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e4cd1595d963330bd5decb366310bf5e97f59bc8
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79464971"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422375"
 ---
 # <a name="disable-the-guest-os-firewall-in-azure-vm"></a>Azure VM'de konuk işletim sistemi Güvenlik Duvarını devre dışı bırakma
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 87c3a3a904705b9fcb702c4745c4c80a4b447e69
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e50d6d0623e87dfa68a7cc9744c3f595ff0179c6
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79476731"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396374"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Azure Active Directory B2C'de özel bir ilke kullanarak uygulamanızın kullanıcı arabirimini özelleştirin
 
@@ -30,7 +30,7 @@ Bu makaledeki adımları tamamlayarak, markanız ve görünümünüz ile bir kay
 
 [!INCLUDE [active-directory-b2c-html-how-to](../../includes/active-directory-b2c-html-how-to.md)]
 
-## <a name="4-modify-the-extensions-file"></a>4. Uzantılar dosyasını değiştirin
+### <a name="4-modify-the-extensions-file"></a>4. Uzantılar dosyasını değiştirin
 
 Kullanıcı Bilgisi özelleştirmesini yapılandırmak için **ContentDefinition** ve alt öğelerini temel dosyadan uzantılar dosyasına kopyalayın.
 
@@ -60,9 +60,9 @@ Kullanıcı Bilgisi özelleştirmesini yapılandırmak için **ContentDefinition
 
 1. Uzantılar dosyasını kaydedin.
 
-## <a name="5-upload-and-test-your-updated-custom-policy"></a>5. Güncellenmiş özel politikanızı yükleyin ve test edin
+### <a name="5-upload-and-test-your-updated-custom-policy"></a>5. Güncellenmiş özel politikanızı yükleyin ve test edin
 
-### <a name="51-upload-the-custom-policy"></a>5.1 Özel politikayı yükleme
+#### <a name="51-upload-the-custom-policy"></a>5.1 Özel politikayı yükleme
 
 1. Üst menüdeki **Dizin + abonelik** filtresini seçerek ve kiracınızı içeren dizin seçerek Azure AD B2C kiracınızı içeren dizini kullandığınızdan emin olun.
 1. Azure AD **B2C'yi**arayın ve seçin.
@@ -70,7 +70,7 @@ Kullanıcı Bilgisi özelleştirmesini yapılandırmak için **ContentDefinition
 1. **Özel politika yükle'yi**seçin.
 1. Daha önce değiştirdiğiniz uzantılar dosyasını yükleyin.
 
-### <a name="52-test-the-custom-policy-by-using-run-now"></a>5.2 Şimdi Çalıştır'ı kullanarak özel ilkeyi test **edin**
+#### <a name="52-test-the-custom-policy-by-using-run-now"></a>5.2 Şimdi Çalıştır'ı kullanarak özel ilkeyi test **edin**
 
 1. Yüklediğiniz ilkeyi seçin ve ardından **Şimdi Çalıştır'ı**seçin.
 1. Bir e-posta adresi kullanarak kaydolmalısınız.

@@ -1,23 +1,18 @@
 ---
 title: Azure Site Kurtarma 'yı kullanarak Azure Yığını VM'lerini Azure'a çoğaltma | Microsoft Dokümanlar
 description: Azure Site Kurtarma hizmetiyle Azure Yığın VM'leri için Azure'da olağanüstü durum kurtarma yı nasıl ayarlayamanızı öğrenin.
-services: site-recovery
-author: rayne-wiselman
-manager: carmonm
 ms.topic: conceptual
-ms.service: site-recovery
 ms.date: 08/05/2019
-ms.author: raynew
-ms.openlocfilehash: 15cd729063545914f791de39a075af9084f72bef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ab35463ca8c3b29e6b4ae8abc781a7081091b214
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75426561"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478503"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>Azure Stack VM'lerini Azure'a çoğaltma
 
-Bu makalede, [Azure Site Kurtarma hizmetini](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview)kullanarak olağanüstü durum kurtarma Azure Yığın VM'lerini Azure'a nasıl ayarlayabileceğinizi gösterilmektedir.
+Bu makalede, [Azure Site Kurtarma hizmetini](site-recovery-overview.md)kullanarak olağanüstü durum kurtarma Azure Yığın VM'lerini Azure'a nasıl ayarlayabileceğinizi gösterilmektedir.
 
 Site Kurtarma, iş sürekliliği nize ve olağanüstü durum kurtarma (BCDR) stratejinize katkıda bulunur. Hizmet, beklenen ve beklenmeyen kesintiler oluştuğunda VM iş yüklerinizin kullanılabilir kalmasını sağlar.
 
@@ -45,9 +40,9 @@ Bu adımlar tamamlandığında, azure'a tam bir başarısızlık sağlayabilirsi
 
 **Konum** | **Bileşen** |**Şey**
 --- | --- | ---
-**Yapılandırma Sunucusu** | Tek bir Azure Stack VM'de çalışır. | Her abonelikte bir yapılandırma sunucusu VM ayarlayın. Bu VM aşağıdaki Site Kurtarma bileşenlerini çalıştırMaktadır:<br/><br/> - Yapılandırma sunucusu: Şirket içi ve Azure arasındaki iletişimi koordine eder ve veri çoğaltmayı yönetir. - İşlem sunucusu: Çoğaltma ağ geçidi görevi görür. Çoğaltma verilerini alır, önbelleğe alma, sıkıştırma ve şifreleme ile en iyi duruma getirir; ve Azure depolama alanına gönderir.<br/><br/> Çoğaltmak istediğiniz VM'ler aşağıda belirtilen sınırları aşıyorsa, ayrı bir bağımsız işlem sunucusu ayarlayabilirsiniz. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/site-recovery/vmware-azure-set-up-process-server-scale).
-**Mobilite hizmeti** | Çoğaltmak istediğiniz her VM'ye yüklenir. | Bu makaledeki adımlarda, çoğaltma etkinleştirildiğinde Mobilite hizmetinin otomatik olarak VM'ye yüklenmesi için bir hesap hazırlıyoruz. Hizmeti otomatik olarak yüklemek istemiyorsanız, kullanabileceğiniz başka yöntemler de vardır. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/site-recovery/vmware-azure-install-mobility-service).
-**Azure** | Azure'da Kurtarma Hizmetleri kasası, depolama hesabı ve sanal ağa ihtiyacınız vardır. |  Çoğaltılan veriler depolama hesabında depolanır. Azure VM'leri, başarısız olduğunda Azure ağına eklenir. 
+**Yapılandırma Sunucusu** | Tek bir Azure Stack VM'de çalışır. | Her abonelikte bir yapılandırma sunucusu VM ayarlayın. Bu VM aşağıdaki Site Kurtarma bileşenlerini çalıştırMaktadır:<br/><br/> - Yapılandırma sunucusu: Şirket içi ve Azure arasındaki iletişimi koordine eder ve veri çoğaltmayı yönetir. - İşlem sunucusu: Çoğaltma ağ geçidi görevi görür. Çoğaltma verilerini alır, önbelleğe alma, sıkıştırma ve şifreleme ile en iyi duruma getirir; ve Azure depolama alanına gönderir.<br/><br/> Çoğaltmak istediğiniz VM'ler aşağıda belirtilen sınırları aşıyorsa, ayrı bir bağımsız işlem sunucusu ayarlayabilirsiniz. [Daha fazla bilgi edinin](vmware-azure-set-up-process-server-scale.md).
+**Mobilite hizmeti** | Çoğaltmak istediğiniz her VM'ye yüklenir. | Bu makaledeki adımlarda, çoğaltma etkinleştirildiğinde Mobilite hizmetinin otomatik olarak VM'ye yüklenmesi için bir hesap hazırlıyoruz. Hizmeti otomatik olarak yüklemek istemiyorsanız, kullanabileceğiniz başka yöntemler de vardır. [Daha fazla bilgi edinin](vmware-azure-install-mobility-service.md).
+**Azure** | Azure'da Kurtarma Hizmetleri kasası, depolama hesabı ve sanal ağa ihtiyacınız vardır. |  Çoğaltılan veriler depolama hesabında depolanır. Azure VM'leri, başarısız olduğunda Azure ağına eklenir.
 
 
 Çoğaltma aşağıdaki gibi çalışır:
@@ -68,8 +63,8 @@ Bu senaryoyu ayarlamak için gerekenler şunlardır.
 **Gereksinim** | **Şey**
 --- | ---
 **Azure abonelik hesabı** | Azure aboneliğiniz yoksa, ücretsiz bir [hesap](https://azure.microsoft.com/pricing/free-trial/)oluşturun.
-**Azure hesap izinleri** | Kullandığınız Azure hesabının aşağıdakilere izin alması gerekir:<br/><br/> - Kurtarma Hizmeti kasası oluşturun<br/><br/> - Senaryo için kullandığınız kaynak grubunda ve sanal ağda sanal bir makine oluşturun<br/><br/> - Belirttiğiniz depolama hesabına yazın<br/><br/> Şunlara dikkat edin:<br/><br/> -Bir hesap oluşturursanız, aboneliğinizin yöneticisisiniz ve tüm eylemleri gerçekleştirebilirsiniz.<br/><br/> - Varolan bir aboneliği kullanıyorsanız ve yönetici değilseniz, size Sahip veya Katılımcı izinleri atamak için yöneticiyle birlikte çalışmanız gerekir.<br/><br/> - Daha ayrıntılı izinlere ihtiyacınız varsa, [bu makaleyi](https://docs.microsoft.com/azure/site-recovery/site-recovery-role-based-linked-access-control)inceleyin. 
-**Azure Yığını VM** | Kiracı aboneliğinde, Site Kurtarma yapılandırma sunucusu olarak dağıtılacak bir Azure Stack VM'ye ihtiyacınız var. 
+**Azure hesap izinleri** | Kullandığınız Azure hesabının aşağıdakilere izin alması gerekir:<br/><br/> - Kurtarma Hizmeti kasası oluşturun<br/><br/> - Senaryo için kullandığınız kaynak grubunda ve sanal ağda sanal bir makine oluşturun<br/><br/> - Belirttiğiniz depolama hesabına yazın<br/><br/> Şunlara dikkat edin:<br/><br/> -Bir hesap oluşturursanız, aboneliğinizin yöneticisisiniz ve tüm eylemleri gerçekleştirebilirsiniz.<br/><br/> - Varolan bir aboneliği kullanıyorsanız ve yönetici değilseniz, size Sahip veya Katılımcı izinleri atamak için yöneticiyle birlikte çalışmanız gerekir.<br/><br/> - Daha ayrıntılı izinlere ihtiyacınız varsa, [bu makaleyi](site-recovery-role-based-linked-access-control.md)inceleyin.
+**Azure Yığını VM** | Kiracı aboneliğinde, Site Kurtarma yapılandırma sunucusu olarak dağıtılacak bir Azure Stack VM'ye ihtiyacınız var.
 
 
 ### <a name="prerequisites-for-the-configuration-server"></a>Yapılandırma sunucusu için ön koşullar
@@ -77,7 +72,7 @@ Bu senaryoyu ayarlamak için gerekenler şunlardır.
 [!INCLUDE [site-recovery-config-server-reqs-physical](../../includes/site-recovery-config-server-reqs-physical.md)]
 
 
- 
+
 ## <a name="step-1-prepare-azure-stack-vms"></a>Adım 1: Azure Yığını VM'lerini Hazırlama
 
 ### <a name="verify-the-operating-system"></a>İşletim sistemini doğrulama
@@ -89,7 +84,7 @@ VM'lerin tabloda özetlenen işletim sistemlerinden birini çalıştırdığınd
 --- | ---
 **64 bit Windows** | Windows Server 2016, Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 (SP1'den)
 **CentOS** | 5.2 ila 5.11, 6.1 ila 6.9, 7.0 - 7.3
-**Ubuntu** | 14.04 LTS sunucusu, 16.04 LTS sunucusu. [Desteklenen çekirdekleri](https://docs.microsoft.com/azure/site-recovery/vmware-physical-azure-support-matrix#ubuntu-kernel-versions) gözden geçirin
+**Ubuntu** | 14.04 LTS sunucusu, 16.04 LTS sunucusu. [Desteklenen çekirdekleri](vmware-physical-azure-support-matrix.md#ubuntu-kernel-versions) gözden geçirin
 
 ### <a name="prepare-for-mobility-service-installation"></a>Mobilite servis kurulumu için hazırlanın
 
@@ -109,10 +104,10 @@ VM'lerin tabloda özetlenen işletim sistemlerinden birini çalıştırdığınd
     - Bunu yapmak için Windows Güvenlik Duvarı konsolu açmak için **wf.msc** çalıştırın. Sağ tıklayın **Gelen Kurallar** > **Yeni Kural**. **Önceden Tanımlanmış'ı**seçin ve listeden Dosya ve **Yazıcı paylaşımını** seçin. Sihirbazı tamamlayın, **bitiş**> bağlantıya izin vermeyi seçin.
     - Etki alanı bilgisayarları için bunu yapmak için bir GPO kullanabilirsiniz.
 
-    
+
 #### <a name="linux-machines"></a>Linux makineleri
 
-- Linux bilgisayar ile işlem sunucusu arasında ağ bağlantısı bulunduğundan emin olun.
+- Linux bilgisayarı ile işlem sunucusu arasında ağ bağlantısı olduğundan emin olun.
 - Çoğaltmayı etkinleştirdiğiniz makinede, kaynak Linux sunucusunda kök kullanıcı olan bir hesaba ihtiyacınız vardır:
     - Site Kurtarma'yı ayarlarken bu hesabı belirtirsiniz. Daha sonra işlem sunucusu çoğaltma etkinleştirildiğinde Mobilite hizmetini yüklemek için bu hesabı kullanır.
     - Bu hesap yalnızca itme yüklemesi ve Mobilite hizmetini güncelleştirmek için Site Kurtarma tarafından kullanılacaktır.
@@ -143,7 +138,7 @@ VM'lerin tabloda özetlenen işletim sistemlerinden birini çalıştırdığınd
 ## <a name="step-2-create-a-vault-and-select-a-replication-goal"></a>Adım 2: Bir tonoz oluşturun ve bir çoğaltma hedefi seçin
 
 1. Azure portalında, **kaynak** > **Yönetim Araçları** > **Yedekleme ve Site Kurtarma**oluştur'u seçin.
-2. **Ad** alanına kasayı tanımlamak için kolay bir ad girin. 
+2. **Ad** alanına kasayı tanımlamak için kolay bir ad girin.
 3. **Kaynak grubunda**bir kaynak grubu oluşturun veya seçin. **ContosoRG**kullanıyoruz.
 4. **Konum'da,** Azure bölgesini girin. **Batı Avrupa** kullanacağız.
 5. Panodan kasaya hızlı bir şekilde erişmek **için, Oluştur'a Pin'i** > **Create**seçin.
@@ -182,7 +177,7 @@ Yapılandırma sunucusu makinesini ayarlayın, kasaya kaydedin ve çoğaltmak is
 
 Yapılandırma sunucusunu yüklemek ve kaydetmek için yapılandırma sunucusu için kullanmak istediğiniz VM'ye bir RDP bağlantısı yapın ve Birleşik Kurulum'u çalıştırın.
 
-Başlamadan önce saatin VM'deki [bir zaman sunucusuyla eşitlendirildiä](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/get-started/windows-time-service/windows-time-service) inden emin olun. Zaman yerel saate beş dakikadan fazla kapalıysa yükleme başarısız olur.
+Başlamadan önce saatin VM'deki [bir zaman sunucusuyla eşitlendirildiä](/windows-server/networking/windows-time-service/windows-time-service-top) inden emin olun. Zaman yerel saate beş dakikadan fazla kapalıysa yükleme başarısız olur.
 
 Şimdi yapılandırma sunucusu yükleyin:
 
@@ -190,7 +185,7 @@ Başlamadan önce saatin VM'deki [bir zaman sunucusuyla eşitlendirildiä](https
 
 > [!NOTE]
 > Yapılandırma sunucusu komut satırından da yüklenebilir. [Daha fazla bilgi edinin](physical-manage-configuration-server.md#install-from-the-command-line).
-> 
+>
 > Hesap adının portalda görünmesi 15 dakika veya daha fazla sürebilir. Hemen güncelleştirmek için **Configuration Servers** > ***sunucu adını*** > **yenile Server'ı**seçin.
 
 ## <a name="step-4-set-up-the-target-environment"></a>Adım 4: Hedef ortamı ayarlama
@@ -249,9 +244,9 @@ Bu adımı hemen atlayabilirsin. **Dağıtım Planlama** açılır listesinde, E
 
 > [!NOTE]
 > Bir VM için çoğaltma etkinleştirildiğinde Site Recovery, Mobility Hizmeti’ni yükler.
-> 
+>
 > Değişikliklerin geçerli olması ve portalda görüntülenmesi 15 dakika veya daha uzun sürebilir.
-> 
+>
 > Eklediğiniz VM'leri izlemek için, Configuration Servers > Son Kişi**adresindeki**VM'ler için keşfedilen son zamanı kontrol **edin.** Zamanlanan bulma işlemini beklemeden VM’leri eklemek için yapılandırma sunucusunu vurgulayın (seçmeyin) ve **Yenile**’yi seçin.
 
 
@@ -261,16 +256,16 @@ Her şeyin beklendiği gibi çalıştığından emin olmak için Azure'da bir te
 
 ### <a name="verify-machine-properties"></a>Makine özelliklerini doğrulama
 
-Bir test başarısızlığını çalıştırmadan önce, makine özelliklerini doğrulayın ve [Azure gereksinimlerine](https://docs.microsoft.com/azure/site-recovery/vmware-physical-azure-support-matrix#azure-vm-requirements)uyduklarına emin olun. Özellikleri aşağıdaki gibi görüntüleyebilir ve değiştirebilirsiniz:
+Bir test başarısızlığını çalıştırmadan önce, makine özelliklerini doğrulayın ve [Azure gereksinimlerine](vmware-physical-azure-support-matrix.md#azure-vm-requirements)uyduklarına emin olun. Özellikleri aşağıdaki gibi görüntüleyebilir ve değiştirebilirsiniz:
 
 1. **Korunan Öğeler**’de **Çoğaltılan Öğeler** > VM seçeneğine tıklayın.
 2. **Çoğaltılan öğe** bölmesinde VM bilgileri ile sistem durumunun bir özeti ve kullanılabilen son kurtarma noktaları yer alır. Daha fazla ayrıntı görüntülemek için **Özellikler**’e tıklayın.
 3. **Bilgi İşlem ve Ağ'da,** ayarları gerektiği gibi değiştirin.
 
-    - Azure VM adını, kaynak grubunu, hedef boyutunu, [kullanılabilirlik kümesini](../virtual-machines/windows/tutorial-availability-sets.md)ve yönetilen disk ayarlarını değiştirebilirsiniz.
+    - Azure VM adını, kaynak grubunu, hedef boyutunu, [kullanılabilirlik kümesini](/azure/virtual-machines/windows/tutorial-availability-sets)ve yönetilen disk ayarlarını değiştirebilirsiniz.
     - Ağ ayarlarını görüntüleyebilir ve değiştirebilirsiniz. Bunlar arasında Azure VM'nin başarısız olduktan sonra birleştiği ağ/alt ağ ve VM'ye atanacak IP adresi yer alıyor.
 1. **Disklerde,** VM'deki işletim sistemi ve veri diskleri hakkındaki bilgileri görüntüleyin.
-   
+
 
 ### <a name="run-a-test-failover"></a>Yük devretme testi çalıştırma
 
@@ -288,19 +283,19 @@ Yük devretme testi çalıştırdığınızda şunlar olur:
 VM için aşağıdaki gibi bir test başarısızlığını çalıştırın:
 
 1. **Yinelenen Ayarlar'da** > **Replicated Items**VM > **+Test Failover'ı**tıklatın.
-2. Bu izlenme için, en son **işlenmiş** kurtarma noktasını kullanmayı seçeriz. 
+2. Bu izlenme için, en son **işlenmiş** kurtarma noktasını kullanmayı seçeriz.
 3. **Test Failover'da**hedef Azure ağını seçin.
 4. Yük devretmeyi başlatmak için **Tamam**'a tıklayın.
 5. Özelliklerini açmak için VM'ye tıklayarak ilerlemeyi izleyin. Veya, *vault adı* > **Ayarlar** > **İşler** >**Sitesi Kurtarma işlerinde**Test **Failover** iş tıklatın.
 6. Yük devretme bittikten sonra, çoğaltma Azure VM, Azure portalı > **Sanal Makineler** bölümünde görünür. VM'nin uygun boyutta olup olmadığını, doğru ağa bağlı olup olmadığını ve çalıştığını denetleyin.
-7. Şimdi Azure’da çoğaltılan sanal makineye bağlanabiliyor olmanız gerekir. [Daha fazla bilgi edinin](https://docs.microsoft.com/azure/site-recovery/site-recovery-test-failover-to-azure#prepare-to-connect-to-azure-vms-after-failover).
+7. Şimdi Azure’da çoğaltılan sanal makineye bağlanabiliyor olmanız gerekir. [Daha fazla bilgi edinin](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover).
 8. Yük devretme testi sırasında oluşturulan Azure sanal makinelerini silmek için, VM’de **Yük devretme testini temizle**’ye tıklayın. **Notlar,test**başarısızlıkla ilişkili tüm gözlemleri kaydedin.
 
 ## <a name="fail-over-and-fail-back"></a>Yük devretme ve ilk duruma döndürme
 
 Çoğaltmayı ayarladıktan ve her şeyin çalıştığından emin olmak için bir matkap çalıştırdıktan sonra, gerektiğinde Makinelerazure'da başarısız olabilirsiniz.
 
-Bir başarısızlık çalıştırmadan önce, başarısız olduktan sonra Azure'daki makineye bağlanmak istiyorsanız, başlamadan önce [bağlanmaya hazırolun.](https://docs.microsoft.com/azure/site-recovery/site-recovery-test-failover-to-azure#prepare-to-connect-to-azure-vms-after-failover)
+Bir başarısızlık çalıştırmadan önce, başarısız olduktan sonra Azure'daki makineye bağlanmak istiyorsanız, başlamadan önce [bağlanmaya hazırolun.](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover)
 
 Sonra aşağıdaki gibi bir failover çalıştırın:
 
@@ -308,7 +303,7 @@ Sonra aşağıdaki gibi bir failover çalıştırın:
 1. **Ayarlar** > **Çoğaltılan Öğeler,** **Failover**> makineyi tıklatın.
 2. Kullanmak istediğiniz kurtarma noktasını seçin.
 3. **Test Failover'da**hedef Azure ağını seçin.
-4. **Yük devretmeyi başlatmadan önce makineyi kapatın** seçeneğini belirleyin. Bu ayar ile, Site Kurtarma failover başlamadan önce kaynak makine kapatmaya çalışır. Ancak kapatma başarısız olsa bile hata devam eder. 
+4. **Yük devretmeyi başlatmadan önce makineyi kapatın** seçeneğini belirleyin. Bu ayar ile, Site Kurtarma failover başlamadan önce kaynak makine kapatmaya çalışır. Ancak kapatma başarısız olsa bile hata devam eder.
 5. Yük devretmeyi başlatmak için **Tamam**'a tıklayın. Yük devretme işleminin ilerleme durumunu **İşler** sayfasında takip edebilirsiniz.
 6. Yük devretme bittikten sonra, çoğaltma Azure VM, Azure portalı > **Sanal Makineler** bölümünde görünür. Başarısız olduktan sonra bağlanmaya hazırlandıysanız, VM'nin uygun boyutta, doğru ağa bağlı ve çalışan olduğundan kontrol edin.
 7. VM'yi doğruladıktan sonra, başarısızı tamamlamak için **Commit'i** tıklatın. Bu, kullanılabilir tüm kurtarma noktalarını siler.
@@ -321,18 +316,18 @@ Sonra aşağıdaki gibi bir failover çalıştırın:
 
 Birincil siteniz yeniden çalışmaya başladığında, Azure'dan Azure Yığını'na geri dönebilirsiniz. Bunu yapmak için Azure VM VHD'yi indirmeniz ve Azure Yığını'na yüklemeniz gerekir.
 
-1. VHD'nin indirilebilmeleri için Azure VM'yi kapatın. 
+1. VHD'nin indirilebilmeleri için Azure VM'yi kapatın.
 2. VHD'yi indirmeye başlamak için [Azure Depolama Gezgini'ni](https://azure.microsoft.com/features/storage-explorer/)yükleyin.
 3. Azure Portalı'ndaki VM'ye gidin (VM adını kullanarak).
 4. **Disklerde,** disk adını tıklatın ve ayarları toplamak.
 
-    - Örnek olarak, testimizde kullanılan VHD https://502055westcentralus.blob.core.windows.net/wahv9b8d2ceb284fb59287/copied-3676553984.vhd URI: VHD'yi indirmek için kullanılan aşağıdaki giriş parametrelerini elde etmek için bölünebilir.
+    - Örnek olarak, testimizde kullanılan VHD `https://502055westcentralus.blob.core.windows.net/wahv9b8d2ceb284fb59287/copied-3676553984.vhd` URI: VHD'yi indirmek için kullanılan aşağıdaki giriş parametrelerini elde etmek için bölünebilir.
         - Depolama Hesabı: 502055westcentralus
         - Konteyner: wahv9b8d2ceb284fb59287
         - VHD Adı: kopyalanmış-3676553984.vhd
 
 5. Şimdi, VHD'yi indirmek için Azure Depolama Gezgini'ni kullanın.
-6. Bu adımlarla VHD'yi Azure [Yığını'na](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-manage-vm-disks#use-powershell-to-add-multiple-disks-to-a-vm)yükleyin.
+6. Bu adımlarla VHD'yi Azure [Yığını'na](/azure-stack/user/azure-stack-manage-vm-disks#use-powershell-to-add-multiple-disks-to-a-vm)yükleyin.
 7. Varolan VM veya yeni VM'de yüklenen VHD'leri takın.
 8. Os Diskinin doğru olup olmadığını kontrol edin ve VM'yi başlatın.
 

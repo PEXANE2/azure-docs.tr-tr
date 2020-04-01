@@ -2,15 +2,15 @@
 title: Öğretici - şablona parametre ekleme
 description: Yeniden kullanılabilir hale getirmek için Azure Kaynak Yöneticisi şablonunuza parametreler ekleyin.
 author: mumian
-ms.date: 03/27/2020
+ms.date: 03/31/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: b4f8d5098fc9cf2f91139979cae430594edac5af
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: de7ec961672db2f3120e00f1a42b33f71e7ab092
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80369863"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437825"
 ---
 # <a name="tutorial-add-parameters-to-your-arm-template"></a>Öğretici: ARM şablonunuza parametreler ekleme
 
@@ -44,7 +44,7 @@ Dosyanın tamamını kopyalayın ve şablonunuzu içeriğiyle değiştirin.
 
 Kaynak grubunu oluşturmadıysanız, [bkz.](template-tutorial-create-first-template.md#create-resource-group) Örnek, [ilk öğreticide](template-tutorial-create-first-template.md#deploy-template)gösterildiği gibi **şablonDosya** değişkenini şablon dosyasına giden yola ayarladığınız varsayar.
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -90,7 +90,7 @@ Parametreler, belirli bir ortam için tasarlanmış değerler kullanarak dağıt
 
 Tekrar göreve hazırsın. Varsayılan SKU **Standard_LRS**olarak ayarlandığı için, bu parametre için bir değer sağlamanız gerekmez.
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -112,13 +112,16 @@ az deployment group create \
 
 ---
 
+> [!NOTE]
+> Dağıtım başarısız olduysa, hata ayıklama günlüklerini göstermek için dağıtım komutuyla **hata ayıklama** anahtarını kullanın.  Tam hata ayıklama günlüklerini göstermek için **ayrıntılı** anahtar da kullanabilirsiniz.
+
 Şablonunuzun esnekliğini görmek için yeniden dağıtalım. Bu kez SKU parametresini **Standard_GRS**ayarlayın. Farklı bir depolama hesabı oluşturmak için yeni bir ad geçebilir veya varolan depolama hesabınızı güncelleştirmek için aynı adı kullanabilirsiniz. Her iki seçenek de çalışır.
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
-  -Name usedefaultsku `
+  -Name usenondefaultsku `
   -ResourceGroupName myResourceGroup `
   -TemplateFile $templateFile `
   -storageName "{your-unique-name}" `
@@ -129,7 +132,7 @@ New-AzResourceGroupDeployment `
 
 ```azurecli
 az deployment group create \
-  --name usedefaultsku \
+  --name usenondefaultsku \
   --resource-group myResourceGroup \
   --template-file $templateFile \
   --parameters storageSKU=Standard_GRS storageName={your-unique-name}
@@ -139,7 +142,7 @@ az deployment group create \
 
 Son olarak, bir test daha çalıştıralım ve izin verilen değerlerden biri olmayan bir SKU'yu geçtiğinde ne olacağını görelim. Bu durumda, şablonunuzun bir kullanıcısının **temel** SNU'lardan biri olduğunu düşündüğü senaryoyu test ediyoruz.
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `

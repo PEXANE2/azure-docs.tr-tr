@@ -3,21 +3,24 @@ title: Azure Sanal Makinelerde Micro Focus Enterprise Developer 4.0 için Micro 
 description: Micro Focus Enterprise Server ve Enterprise Developer'ı kullanmayı öğrenmek için Azure Sanal Makineler'de (VM) Micro Focus BankDemo uygulamasını çalıştırın.
 author: sread
 ms.author: sread
-ms.date: 04/02/2019
+ms.date: 03/30/2020
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: 4491fc137c2c85e2be605f5e58fde6fd422efbbe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: db9d6bab2f383102434512aa63d7566cff1f579b
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67621328"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411067"
 ---
 # <a name="set-up-micro-focus-cics-bankdemo-for-micro-focus-enterprise-developer-40-on-azure"></a>Azure'da Micro Focus Enterprise Developer 4.0 için Micro Focus CICS BankDemo'u ayarlama
 
 Azure'da Micro Focus Enterprise Server 4.0 ve Enterprise Developer 4.0'ı ayarladığınızda, IBM z/OS iş yüklerinin dağıtımlarını test edebilirsiniz. Bu makalede, Kurumsal Geliştirici ile birlikte gelen örnek bir uygulama olan CICS BankDemo nasıl kurulaca›r› gösterilmektedir.
 
 CCs Müşteri Bilgi Kontrol Sistemi, online ana bilgisayar uygulamalarının çoğu tarafından kullanılan işlem platformu anlamına gelir. BankDemo uygulaması, Enterprise Server ve Enterprise Developer'ın nasıl çalıştığını ve yeşil ekran terminalleriyle birlikte gerçek bir uygulamayı nasıl yönetip dağıtılacak yapılacağını öğrenmek için idealdir.
+
+> [!NOTE]
+> Yakında: Azure VM'lerde [Micro Focus Enterprise Server 5.0'ı](https://techcommunity.microsoft.com/t5/azurecat/micro-focus-enterprise-server-5-0-quick-start-template-on-azure/ba-p/1160110) kurma talimatları.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -271,6 +274,6 @@ Tebrikler! Şimdi Micro Focus Enterprise Server kullanarak Azure'da bir CICS uyg
 
 - [Azure'da Docker kapsayıcılarında Enterprise Server'ı çalıştırın](run-enterprise-server-container.md)
 - [Ana Bilgisayar Geçişi - Portal](https://blogs.msdn.microsoft.com/azurecat/2018/11/16/mainframe-migration-to-azure-portal/)
-- [Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/linux/overview)
+- [Sanal Makineler](https://docs.microsoft.com/azure/virtual-machines/linux/overview)
 - [Sorun giderme](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/)
 - [Azure geçişiiçin ana bilgisayarın mymystifying](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/en-us/)

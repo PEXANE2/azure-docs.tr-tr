@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: jingwang
-ms.openlocfilehash: 874c685491774e2a318ae0a8b7394945a51b2f7f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 68e234b9db269c30dc9f24106ae1942c01304da7
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79244517"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422496"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>Azure Veri Fabrikası'nı kullanarak verileri Oracle'dan kopyalayın
 > [!div class="op_single_selector" title1="Kullandığınız Veri Fabrikası hizmetisürümünü seçin:"]
@@ -55,7 +55,7 @@ Oracle veritabanından desteklenen herhangi bir lavabo veri deposuna verileri ko
 
 Tümleştirme çalışma süresi yerleşik bir Oracle sürücüsü sağlar. Bu nedenle, Oracle'dan ve Oracle'dan veri kopyalarken bir sürücüyü el ile yüklemeniz gerekmez.
 
-## <a name="get-started"></a>Kullanmaya başlayın
+## <a name="get-started"></a>başlarken
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -213,7 +213,7 @@ Oracle'dan gelen verileri kopyalamak için, kopyalama `OracleSource`etkinliğind
 |:--- |:--- |:--- |
 | type | Kopyalama etkinlik kaynağının türü özelliği ' `OracleSource`ne ayarlanmalıdır. | Evet |
 | oracleReaderQuery | Verileri okumak için özel SQL sorgusunu kullanın. `"SELECT * FROM MyTable"` bunun bir örneğidir.<br>Bölümlenmiş yükü etkinleştirdiğinizde, sorgunuzda karşılık gelen yerleşik bölüm parametrelerini bağlamanız gerekir. Örneğin, Oracle [bölümünden Paralel kopyaya](#parallel-copy-from-oracle) bakın. | Hayır |
-| partitionOptions | Oracle'dan veri yüklemek için kullanılan veri bölümleme seçeneklerini belirtir. <br>İzin verilen değerler şunlardır: **Yok** (varsayılan), **PhysicalPartitionsOfTable** ve **DynamicRange**.<br>Bir bölüm seçeneği etkinleştirildiğinde (yani `None`değil), oracle veritabanından verileri aynı anda yüklemek için [`parallelCopies`](copy-activity-performance.md#parallel-copy) paralellik derecesi kopyalama etkinliği ayarı tarafından denetlenir. | Hayır |
+| partitionOptions | Oracle'dan veri yüklemek için kullanılan veri bölümleme seçeneklerini belirtir. <br>İzin verilen değerler şunlardır: **Yok** (varsayılan), **PhysicalPartitionsOfTable** ve **DynamicRange**.<br>Bir bölüm seçeneği etkinleştirildiğinde (yani `None`değil), oracle veritabanından verileri aynı anda yüklemek için [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) paralellik derecesi kopyalama etkinliği ayarı tarafından denetlenir. | Hayır |
 | partitionAyarlar | Veri bölümleme için ayarlar grubunu belirtin. <br>Bölüm seçeneği olmadığında `None`uygulayın. | Hayır |
 | partitionNames | Kopyalanması gereken fiziksel bölümlerin listesi. <br>Bölüm seçeneği . `PhysicalPartitionsOfTable` Kaynak verileri almak için bir sorgu `?AdfTabularPartitionName` kullanıyorsanız, WHERE yan tümcesini bağla. Örneğin, [Oracle bölümünden Paralel kopyaya](#parallel-copy-from-oracle) bakın. | Hayır |
 | partitionColumnName | Paralel kopya için aralık bölümleme tarafından kullanılacak **tamsayı türünde** kaynak sütunun adını belirtin. Belirtilmemişse, tablonun birincil anahtarı otomatik olarak algılanır ve bölüm sütunu olarak kullanılır. <br>Bölüm seçeneği . `DynamicRange` Kaynak verileri almak için bir sorgu `?AdfRangePartitionColumnName` kullanıyorsanız, WHERE yan tümcesini bağla. Örneğin, [Oracle bölümünden Paralel kopyaya](#parallel-copy-from-oracle) bakın. | Hayır |
@@ -300,7 +300,7 @@ Veri Fabrikası Oracle bağlayıcısı, Oracle'dan gelen verileri paralel olarak
 
 ![Bölüm seçeneklerinin ekran görüntüsü](./media/connector-oracle/connector-oracle-partition-options.png)
 
-Bölümlenmiş kopyalamayı etkinleştirdiğinizde, Veri Fabrikası verileri bölümlere göre yüklemek için Oracle kaynağınıza paralel sorgular çalıştırAr. Paralel derece, kopyalama [`parallelCopies`](copy-activity-performance.md#parallel-copy) etkinliği üzerindeki ayar tarafından denetlenir. Örneğin, dörde `parallelCopies` ayarlarsanız, Veri Fabrikası aynı anda belirttiğiniz bölüm seçeneğiniz ve ayarlarınızı temel alarak dört sorgu oluşturur ve çalıştırZ ve her sorgu Oracle veritabanınızdan verilerin bir kısmını alır.
+Bölümlenmiş kopyalamayı etkinleştirdiğinizde, Veri Fabrikası verileri bölümlere göre yüklemek için Oracle kaynağınıza paralel sorgular çalıştırAr. Paralel derece, kopyalama [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) etkinliği üzerindeki ayar tarafından denetlenir. Örneğin, dörde `parallelCopies` ayarlarsanız, Veri Fabrikası aynı anda belirttiğiniz bölüm seçeneğiniz ve ayarlarınızı temel alarak dört sorgu oluşturur ve çalıştırZ ve her sorgu Oracle veritabanınızdan verilerin bir kısmını alır.
 
 Özellikle Oracle veritabanınızdan büyük miktarda veri yüklediğinizde, veri bölümleme ile paralel kopyalamayı etkinleştirmeniz önerilir. Aşağıda farklı senaryolar için önerilen yapılandırmalar vardır. Verileri dosya tabanlı veri deposuna kopyalarken, bir klasöre birden çok dosya olarak yazmak (yalnızca klasör adını belirtin) yeniden komut verilir ve bu durumda performans tek bir dosyaya yazmaktan daha iyidir.
 

@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/21/2019
+ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: d08ce1c382d173ac98a0e61e6117ed50b958ba44
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c733538a4e730a95008a8ec1e4d50c20d6ce24ec
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76119848"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80420771"
 ---
-# <a name="upgrade-an-ipv4-application-to-ipv6-in-azure-virtual-network---powershell-preview"></a>Azure sanal ağında IPv6'ya bir IPv4 uygulamasını yükseltme - PowerShell (Önizleme)
+# <a name="upgrade-an-ipv4-application-to-ipv6-in-azure-virtual-network---powershell"></a>Azure sanal ağında IPv6'ya bir IPv4 uygulamasını yükseltme - PowerShell
 
 Bu makalede, Standart Yük Dengeleyicisi ve Genel IP'si olan bir Azure sanal ağındaki mevcut bir IPv4 uygulamasına IPv6 bağlantısının nasıl eklendirilebildiğini gösterilmektedir. Yerinde yükseltme şunları içerir:
 - Sanal ağ ve alt ağ için IPv6 adres alanı
@@ -28,8 +28,7 @@ Bu makalede, Standart Yük Dengeleyicisi ve Genel IP'si olan bir Azure sanal ağ
 - Hem IPv4 + IPv6 yapılandırması olan NIC'li VM'ler
 - IPv6 Genel IP böylece yük dengeleyici Internet'e bakan IPv6 bağlantısı vardır
 
-> [!Important]
-> Azure Sanal Ağı için IPv6 desteği şu anda genel önizlemededir. Bu önizleme bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Ayrıntılar için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -37,27 +36,6 @@ PowerShell'i yerel olarak yüklemeyi ve kullanmayı seçerseniz, bu makalede Azu
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-### <a name="register-the-service"></a>Hizmeti kaydedin
-
-Azure'da bir çift yığın uygulaması dağıtmadan önce, aboneliğinizi bu önizleme özelliği için aşağıdaki Azure PowerShell'i kullanarak yapılandırmanız gerekir:
-
-Aşağıdaki gibi kaydolun:
-```azurepowershell
-Register-AzProviderFeature -FeatureName AllowIPv6VirtualNetwork -ProviderNamespace Microsoft.Network
-Register-AzProviderFeature -FeatureName AllowIPv6CAOnStandardLB -ProviderNamespace Microsoft.Network
-```
-Özellik kaydının tamamlanması 30 dakika kadar sürer. Aşağıdaki Azure PowerShell komutunu çalıştırarak kayıt durumunuzu kontrol edebilirsiniz: Kaydı aşağıdaki gibi kontrol edin:
-```azurepowershell
-Get-AzProviderFeature -FeatureName AllowIPv6VirtualNetwork -ProviderNamespace Microsoft.Network
-Get-AzProviderFeature -FeatureName AllowIPv6CAOnStandardLB -ProviderNamespace Microsoft.Network
-```
-Kayıt tamamlandıktan sonra aşağıdaki komutu çalıştırın:
-
-```azurepowershell
-Register-AzResourceProvider -ProviderNamespace Microsoft.Network
-```
-
-### <a name="create-a-standard-load-balancer"></a>Standart Yük Dengeleyici oluşturma
 Bu makalede, [Quickstart: Create a Standard Load Balancer - Azure PowerShell'de](../load-balancer/quickstart-create-standard-load-balancer-powershell.md)açıklandığı gibi bir Standart Yük Dengeleyicisi dağıtıldığınızı varsayar.
 
 ## <a name="retrieve-the-resource-group"></a>Kaynak grubunu alma
@@ -176,8 +154,7 @@ Azure portalındaki IPv6 çift yığın sanal ağını aşağıdaki gibi görün
 
   ![Azure'da IPv6 çift yığın sanal ağ](./media/ipv6-add-to-existing-vnet-powershell/ipv6-dual-stack-vnet.png)
 
-> [!NOTE]
-> Azure için IPv6 sanal ağı, bu önizleme sürümü için salt okunur olarak Azure portalında kullanılabilir.
+
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

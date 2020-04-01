@@ -12,12 +12,12 @@ manager: shwang
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 11/20/2019
-ms.openlocfilehash: d065439839ba5db479305ae81c61892cb5cf5e70
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9bbd2e3376f1da3fdf5b10d654a331ce258be5cf
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74929464"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422096"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Azure Veri Fabrikası'nı kullanarak verileri Dynamics 365 (Ortak Veri Hizmeti) veya Dynamics CRM'den kopyalama
 
@@ -60,7 +60,7 @@ Bu Dynamics konektörü [Dynamics XRM takım lama](https://docs.microsoft.com/dy
 >[!TIP]
 >**Dynamics 365 Finans ve Operasyon**verilerini kopyalamak için Dynamics [AX konektörünü](connector-dynamics-ax.md)kullanabilirsiniz.
 
-## <a name="get-started"></a>Kullanmaya başlayın
+## <a name="get-started"></a>başlarken
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -324,7 +324,7 @@ Verileri Dynamics'e kopyalamak için, kopyalama etkinliği **lavabo** bölümün
 | yoksNullValues | Yazma işlemi sırasında giriş verilerinden (anahtar alanlar hariç) geçersiz değerleri yoksayıp yoksaymayacağını gösterir.<br/>İzin verilen değerler **doğru** ve **yanlıştır.**<br>- **True**: Bir yükseltme/güncelleştirme işlemi yaptığınızda hedef nesnedeki verileri değişmeden bırakın. Bir ekleme işlemi yaparken tanımlı bir varsayılan değer ekleyin.<br/>- **False**: Bir yükseltme/güncelleştirme işlemi yaptığınızda hedef nesnedeki verileri NULL olarak güncelleştirin. Bir ekleme işlemi yaparken NULL değeri ekleyin. | Hayır (varsayılan yanlıştır) |
 
 >[!NOTE]
->Dinamiği lavabosu için lavabonun varsayılan değeri "**writeBatchSize**" ve kopyalama etkinliği "**[parallelCopys](copy-activity-performance.md#parallel-copy)**" 10'dur. Bu nedenle, 100 kayıt aynı anda Dynamics'e gönderilir.
+>Dinamiği lavabosu için lavabonun varsayılan değeri "**writeBatchSize**" ve kopyalama etkinliği "**[parallelCopys](copy-activity-performance-features.md#parallel-copy)**" 10'dur. Bu nedenle, 100 kayıt aynı anda Dynamics'e gönderilir.
 
 Dynamics 365 çevrimiçi [için, kuruluş başına 2 eşzamanlı toplu arama](https://msdn.microsoft.com/library/jj863631.aspx#Run-time%20limitations)sınırı vardır. Bu sınır aşılırsa, ilk istek yürütülmeden önce bir "Sunucu Meşgul" hatası atılır. "writeBatchSize"yı daha az veya 10'a eşit tutmak, eşzamanlı çağrıların bu kadar daraltılmasından kaçınır.
 

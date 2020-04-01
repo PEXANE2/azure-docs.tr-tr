@@ -7,20 +7,20 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: bb9357ca4388bd1fb7ae3e3704cf4112d07c1105
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bce92eeed669628fa1b6318abd6b0c13f7e84848
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77188198"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411211"
 ---
 # <a name="ingest-data-from-event-hub-into-azure-data-explorer"></a>Olay Hub'ından Azure Veri Gezgini'ne veri alma
 
 > [!div class="op_single_selector"]
 > * [Portal](ingest-data-event-hub.md)
-> * [C #](data-connection-event-hub-csharp.md)
+> * [C#](data-connection-event-hub-csharp.md)
 > * [Python](data-connection-event-hub-python.md)
-> * [Azure Resource Manager şablonu](data-connection-event-hub-resource-manager.md)
+> * [Azure Kaynak Yöneticisi şablonu](data-connection-event-hub-resource-manager.md)
 
 Azure Veri Gezgini, günlük ve telemetri verileri için hızlı ve üst düzeyde ölçeklenebilir veri keşfetme hizmetidir. Azure Veri Gezgini, büyük veri akış platformu ve olay ekleme hizmeti olan Event Hubs'dan veri eklemeyi (veri yüklemeyi) destekler. [Olay Hub'ları](/azure/event-hubs/event-hubs-about) saniyede milyonlarca olayı neredeyse gerçek zamanlı olarak işleyebilir. Bu makalede, bir olay hub'ı oluşturur, Azure Veri Gezgini'nden ona bağlanır ve sistem üzerinden veri akışını görürsünüz.
 
@@ -41,11 +41,11 @@ Bu makalede, örnek veri oluşturmak ve bir olay hub'ına gönderin. İlk adım 
 
 1. Olay hub'ı oluşturmak için dağıtımı başlatmak için aşağıdaki düğmeyi kullanın. Bu makaledeki adımların geri kalanını takip etmek için **yeni pencerede Aç'ı**sağ tıklatın ve seçin.
 
-    [![Azure'a Dağıt](media/ingest-data-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-event-hubs-create-event-hub-and-consumer-group%2Fazuredeploy.json)
+    [![Azure’a dağıtma](media/ingest-data-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-event-hubs-create-event-hub-and-consumer-group%2Fazuredeploy.json)
 
     **Azure'a dağıtma** düğmesi Azure portalda doldurmanız gereken bir form sayfasını açar.
 
-    ![Azure’a Dağıt](media/ingest-data-event-hub/deploy-to-azure.png)
+    ![Azure’a dağıtma](media/ingest-data-event-hub/deploy-to-azure.png)
 
 1. Olay hub'ının oluşturulmasını istediğiniz aboneliği seçin ve *test-hub-rg* adlı bir kaynak grubu oluşturun.
 
@@ -92,7 +92,7 @@ Bu makalede, örnek veri oluşturmak ve bir olay hub'ına gönderin. İlk adım 
 1. Aşağıdaki komutu pencereye kopyalayın ve gelen JSON verilerini tablonun sütun adları ve veri türleri (TestTable) ile eşlemek için **Çalıştır'ı** seçin.
 
     ```Kusto
-    .create table TestTable ingestion json mapping 'TestMapping' '[{"column":"TimeStamp","path":"$.timeStamp","datatype":"datetime"},{"column":"Name","path":"$.name","datatype":"string"},{"column":"Metric","path":"$.metric","datatype":"int"},{"column":"Source","path":"$.source","datatype":"string"}]'
+    .create table TestTable ingestion json mapping 'TestMapping' '[{"column":"TimeStamp", "Properties": {"Path": "$.timeStamp"}},{"column":"Name", "Properties": {"Path":"$.name"}} ,{"column":"Metric", "Properties": {"Path":"$.metric"}}, {"column":"Source", "Properties": {"Path":"$.source"}}]'
     ```
 
 ## <a name="connect-to-the-event-hub"></a>Olay hub'ına bağlanma
@@ -129,7 +129,7 @@ Bu makalede, örnek veri oluşturmak ve bir olay hub'ına gönderin. İlk adım 
      **Ayar** | **Önerilen değer** | **Alan açıklaması**
     |---|---|---|
     | Tablo | *TestTable* | **TestDatabase** içinde oluşturduğunuz tablo. |
-    | Veri biçimi | *Json* | Desteklenen formatlar Avro, CSV, JSON, MULTILINE JSON, PSV, SOHSV, SCSV, TSV, TSVE, TXT, ORC ve PARKE'dir. |
+    | Veri biçimi | *JSON* | Desteklenen formatlar Avro, CSV, JSON, MULTILINE JSON, PSV, SOHSV, SCSV, TSV, TSVE, TXT, ORC ve PARKE'dir. |
     | Sütun eşleme | *TestMapping* | **TestDatabase'de**oluşturduğunuz ve gelen JSON verilerini **TestTable'ın**sütun adlarına ve veri türlerine eşleyen [eşleme.](/azure/kusto/management/mappings) JSON veya MULTILINE JSON için gereklidir ve diğer biçimler için isteğe bağlıdır.|
     | | |
 

@@ -2,14 +2,14 @@
 title: Azure Geçişi ile değerlendirme/geçiş için Hyper-V VM'leri hazırlama
 description: Azure Geçişi ile Hyper-V V VM'lerin değerlendirilmesi/geçişi için nasıl hazırlanacağınızı öğrenin.
 ms.topic: tutorial
-ms.date: 03/23/2020
+ms.date: 03/31/2020
 ms.custom: mvc
-ms.openlocfilehash: 5760cf667a02384b8f68cc85540264a1b5702747
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: d14ae4282afb610d025d08419a69c6d10c2f1d08
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80336701"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80436211"
 ---
 # <a name="prepare-for-assessment-and-migration-of-hyper-v-vms-to-azure"></a>Hyper-V V M'lerin azure'a değerlendirilmesi ve geçişi için hazırlanın
 
@@ -95,8 +95,9 @@ Hyper-V'yi VM değerlendirmesi için el ile veya yapılandırma komut dosyası k
 - Azure Geçiş cihazının bir WinRM bağlantısı üzerinden ana bilgisayarda PowerShell komutlarını çalıştırabilmesi için her ana bilgisayarda PowerShell remoting'i ayarlayın.
 - VM diskleri uzak Kobİ paylaşımlarında bulunuyorsa temsilci kimlik bilgileri.
 - Cihazın Hyper-V ana bilgisayarlarında VM'leri keşfetmek için kullanacağı bir hesap ayarlayın.
-- Keşfetmek ve değerlendirmek istediğiniz her VM'de Hyper-V Entegrasyon Hizmetleri'ni ayarlayın.
+- Keşfetmek ve değerlendirmek istediğiniz her VM'de Hyper-V Entegrasyon Hizmetleri'ni ayarlayın. Tümleştirme Hizmetlerini etkinleştirdiğinizde varsayılan ayarlar Azure Geçiş için yeterlidir.
 
+    ![Entegrasyon Hizmetlerini Etkinleştir](./media/tutorial-prepare-hyper-v/integrated-services.png)
 
 
 ## <a name="prepare-with-a-script"></a>Komut dosyasıyla hazırlama
@@ -112,7 +113,7 @@ Komut dosyası aşağıdakileri yapar:
 - Ana bilgisayar, Hyper-V'nin desteklenen bir sürümünü ve Hyper-V rolünü çalıştırıp çalıştırdığını denetler.
 - WinRM hizmetini etkinleştirir ve ana bilgisayarda (meta veri toplama için gerekli) 5985 (HTTP) ve 5986 (HTTPS) bağlantı noktalarını açar.
 - PowerShell'in ana bilgisayarda remoting ini sağlar.
-- Ana bilgisayar tarafından yönetilen tüm VM'lerde Hyper-V tümleştirme hizmetinin etkin olup olmadığını denetler.
+- Hyper-V Tümleştirme Hizmetlerinin ana bilgisayar tarafından yönetilen tüm VM'lerde etkin olup olmadığını denetler.
 - Gerekirse ana bilgisayarda CredSSP sağlar.
 
 Komut dosyasını aşağıdaki gibi çalıştırın:

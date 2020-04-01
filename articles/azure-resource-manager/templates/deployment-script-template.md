@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 03/23/2020
+ms.date: 03/30/2020
 ms.author: jgao
-ms.openlocfilehash: 7ff91545b1b7ab1920f437e0c3a5410270efaac5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3ef1c3d3fe0fd1ecad95e027b06ce14fd70d4d3f
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80153259"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437872"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Şablonlarda dağıtım komut dosyalarını kullanma (Önizleme)
 
@@ -42,7 +42,7 @@ Dağıtım komut dosyasının yararları:
 - **Katılımcının hedef kaynak grubuna rolünü içeren kullanıcı tarafından atanan yönetilen kimlik.** Bu kimlik, dağıtım komut dosyalarını yürütmek için kullanılır. Kaynak grubunun dışında işlem gerçekleştirmek için ek izinler vermeniz gerekir. Örneğin, yeni bir kaynak grubu oluşturmak istiyorsanız, kimliği abonelik düzeyine atayın.
 
   > [!NOTE]
-  > Dağıtım komut dosyası altyapısı, arka planda bir depolama hesabı ve kapsayıcı örneği oluşturur.  Abonelik Azure depolama hesabı (Microsoft.Storage) ve Azure kapsayıcı örneği (Microsoft.ContainerInstance) kaynağını kaydedilmemişse, kullanıcı tarafından atanan ve katılımcının abonelik düzeyindeki rolüne sahip yönetilen bir kimlik gereklidir Sağlayıcı.
+  > Dağıtım komut dosyası altyapısı, arka planda bir depolama hesabı ve kapsayıcı örneği oluşturur.  Abonelik Azure depolama hesabı (Microsoft.Storage) ve Azure kapsayıcı örneği (Microsoft.ContainerInstance) kaynak sağlayıcılarını kaydedilmemişse, kullanıcı tarafından atanan ve katılımcının abonelik düzeyindeki rolüne sahip yönetilen bir kimlik gereklidir.
 
   Kimlik oluşturmak için bkz. Azure portalını kullanarak veya Azure [CLI'yi kullanarak](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)veya [Azure PowerShell'i kullanarak](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)kullanıcı tarafından atanmış yönetilen bir kimlik [oluştur'](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)a bakın. Şablonu dağıtırken kimlik kimliğine ihtiyacınız var. Kimliğin biçimi:
 
@@ -62,7 +62,7 @@ Dağıtım komut dosyasının yararları:
   az identity show -g jgaoidentity1008rg -n jgaouami --query id
   ```
 
-  # <a name="powershell"></a>[Powershell](#tab/PowerShell)
+  # <a name="powershell"></a>[PowerShell](#tab/PowerShell)
 
   ```azurepowershell-interactive
   $idGroup = Read-Host -Prompt "Enter the resource group name for the managed identity"
@@ -101,6 +101,12 @@ Aşağıdaki json bir örnektir.  En son şablon şema [burada](/azure/templates
     "forceUpdateTag": 1,
     "azPowerShellVersion": "3.0",  // or "azCliVersion": "2.0.80"
     "arguments": "[concat('-name ', parameters('name'))]",
+    "environmentVariables": [
+      {
+        "name": "someSecret",
+        "secureValue": "if this is really a secret, don't put it here... in plain text..."
+      }
+    ],
     "scriptContent": "
       param([string] $name)
       $output = 'Hello {0}' -f $name
@@ -126,6 +132,7 @@ Aşağıdaki json bir örnektir.  En son şablon şema [burada](/azure/templates
 - **forceUpdateTag**: Şablon dağıtımları arasındaki bu değeri değiştirmek dağıtım komut dosyasını yeniden yürütmeye zorlar. Parametrenin varsayılan Değeri olarak ayarlanması gereken yeniGuid() veya utcNow() işlevini kullanın. Daha fazla bilgi edinmek için [komut dosyasını birden fazla kez çalıştır'a](#run-script-more-than-once)bakın.
 - **azPowerShellVersion**/**azCliVersion**: Kullanılacak modül sürümünü belirtin. Desteklenen PowerShell ve CLI sürümlerinin listesi için [Ön koşullara](#prerequisites)bakın.
 - **bağımsız değişkenler**: Parametre değerlerini belirtin. Değerler boşluklarla ayrılır.
+- **çevreDeğişkenler**: Komut dosyasına geçmek için ortam değişkenlerini belirtin. Daha fazla bilgi için [bkz.](#develop-deployment-scripts)
 - **scriptContent**: Komut dosyası içeriğini belirtin. Harici bir komut dosyasını çalıştırmak için bunun yerine kullanın. `primaryScriptUri` Örnekler için [bkz.](#use-inline-scripts) [Use external script](#use-external-scripts)
 - **primaryScriptUri**: Desteklenen dosya uzantılarıyla birincil dağıtım komut dosyasıiçin herkese açık bir Url belirtin.
 - **destekleyiciScriptUris**: Genel olarak erişilebilen url'ler dizisini, ya `ScriptContent` `PrimaryScriptUri`da ' olarak adlandırılan dosyaları desteklemek için belirtin.
@@ -234,7 +241,7 @@ PowerShell'in sonlandırıcı olmayan hatalara nasıl yanıt verebileceğini da�
 
 ### <a name="pass-secured-strings-to-deployment-script"></a>Güvenli dizeleri dağıtım komut dosyasına geçirin
 
-Kapsayıcı örneklerinizde ortam değişkenleri ayarlamanız, kapsayıcı tarafından çalıştırılan uygulamanın veya betiğin dinamik yapılandırmasını sağlamanıza imkan tanır. Dağıtım komut dosyası, güvenli olmayan ve güvenli ortam değişkenlerini Azure Kapsayıcı Örneği ile aynı şekilde işler. Daha fazla bilgi için [bkz.](../../container-instances/container-instances-environment-variables.md#secure-values)
+Kapsayıcı örneklerinizde ortam değişkenlerini (EnvironmentVariable) ayarlamak, kapsayıcı tarafından çalıştırıladığınız uygulamanın veya komut dosyasının dinamik yapılandırmasını sağlamanıza olanak tanır. Dağıtım komut dosyası, güvenli olmayan ve güvenli ortam değişkenlerini Azure Kapsayıcı Örneği ile aynı şekilde işler. Daha fazla bilgi için [bkz.](../../container-instances/container-instances-environment-variables.md#secure-values)
 
 ## <a name="debug-deployment-scripts"></a>Hata ayıklama dağıtım komut dosyaları
 

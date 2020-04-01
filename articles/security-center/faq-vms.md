@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: d84085115816a8fe1cba65e191ea391dd91a4aed
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0b7817539a26b7ebfa24efd086edf8b0ef82eae3
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77599372"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80436000"
 ---
 # <a name="faq---questions-about-virtual-machines"></a>SSS - Sanal makineler le ilgili sorular
 
@@ -51,7 +51,7 @@ Güvenlik Merkezi güvenlik açıklarını, güncelleştirmeleri ve sorunları t
 Güvenlik Merkezi genellikle her saat başı yeni verileri tarar ve önerileri buna göre yeniler. 
 
 > [!NOTE]
-> Güvenlik Merkezi, veri toplamak ve depolamak için Microsoft İzleme Aracısını kullanır. Daha fazla bilgi için Azure [Güvenlik Merkezi Platformu Geçişi'ne](security-center-platform-migration.md)bakın.
+> Güvenlik Merkezi, veri toplamak ve depolamak için Log Analytics aracısını kullanır. Daha fazla bilgi için Azure [Güvenlik Merkezi Platformu Geçişi'ne](security-center-platform-migration.md)bakın.
 
 
 ## <a name="why-do-i-get-the-message-vm-agent-is-missing"></a>Neden "VM Agent Eksik?" mesajını alıyorum?

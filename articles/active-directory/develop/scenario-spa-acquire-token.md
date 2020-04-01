@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 08/20/2019
 ms.author: negoe
 ms.custom: aaddev
-ms.openlocfilehash: d5d48a2fc7aca184cf8b6e7761584a8800ca5151
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 393c3a06a2366a7d6947faf8bbfe038d6c5982fc
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77160075"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80419656"
 ---
 # <a name="single-page-application-acquire-a-token-to-call-an-api"></a>Tek sayfalı uygulama: API çağırmak için bir belirteç edinin
 
@@ -42,7 +42,7 @@ Erişim belirteci isteğini yaparken dahil olmasını istediğiniz API kapsamlar
 
 ## <a name="acquire-a-token-with-a-pop-up-window"></a>Açılır pencereli bir belirteç edinme
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Aşağıdaki kod, daha önce açıklanan deseni açılır pencere yöntemleriyle birleştirir:
 
@@ -76,20 +76,40 @@ MSAL Açısal sarıcı, otomatik olarak erişim belirteçleri elde edecek ve API
 `protectedResourceMap` Yapılandırma seçeneğinde API'lerin kapsamlarını belirtebilirsiniz. `MsalInterceptor`jetonları otomatik olarak alırken bu kapsamları talep edecektir.
 
 ```javascript
-//In app.module.ts
+// app.module.ts
 @NgModule({
-  imports: [ MsalModule.forRoot({
-                clientID: 'your_app_id',
-                protectedResourceMap: {"https://graph.microsoft.com/v1.0/me", ["user.read", "mail.send"]}
-            })]
-         })
-
-providers: [ ProductService, {
-        provide: HTTP_INTERCEPTORS,
-        useClass: MsalInterceptor,
-        multi: true
+  declarations: [
+    // ...
+  ],
+  imports: [
+    // ...
+    MsalModule.forRoot({
+      auth: {
+        clientId: 'Enter_the_Application_Id_Here',
+      }
+    },
+    {
+      popUp: !isIE,
+      consentScopes: [
+        'user.read',
+        'openid',
+        'profile',
+      ],
+      protectedResourceMap: [
+        ['https://graph.microsoft.com/v1.0/me', ['user.read']]
+      ]
+    })
+  ],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: MsalInterceptor,
+      multi: true
     }
-   ],
+  ],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
 ```
 
 Sessiz belirteç ediniminin başarısı ve başarısızlığı için MSAL Açısal, abone olabileceğiniz geri aramalar sağlar. Aboneliği iptal etmeyi de unutmamak önemlidir.
@@ -103,7 +123,7 @@ Sessiz belirteç ediniminin başarısı ve başarısızlığı için MSAL Açıs
 
 ngOnDestroy() {
    this.broadcastService.getMSALSubject().next(1);
-   if(this.subscription) {
+   if (this.subscription) {
      this.subscription.unsubscribe();
    }
  }
@@ -115,7 +135,7 @@ Alternatif olarak, çekirdek MSAL.js kitaplığında açıklandığı gibi edinm
 
 ## <a name="acquire-a-token-with-a-redirect"></a>Yeniden yönlendirme ile belirteç edinme
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Aşağıdaki desen daha önce açıklandığı gibi, ancak etkileşimli belirteçleri elde etmek için bir yönlendirme yöntemi ile gösterilir. Daha önce belirtildiği gibi yeniden yönlendirme geri aramasını kaydetmeniz gerekir.
 
@@ -149,16 +169,16 @@ userAgentApplication.acquireTokenSilent(accessTokenRequest).then(function(access
 
 - Uygulamanız için belirteçlere ek talepler ekleyin.
 - Azure AD'nin belirteçlerle döndürdettiği bazı iddiaların davranışını değiştirin.
-- Uygulamanız için özel talepler ekleyin ve erişin. 
+- Uygulamanız için özel talepler ekleyin ve erişin.
 
 İsteğe bağlı `IdToken`talepler istemek için, `AuthenticationParameters.ts` sınıfın alanına `claimsRequest` dizilmiş bir talep nesnesi gönderebilirsiniz.
 
 ```javascript
-"optionalClaims":  
+"optionalClaims":
    {
       "idToken": [
             {
-                  "name": "auth_time", 
+                  "name": "auth_time",
                   "essential": true
              }
       ],

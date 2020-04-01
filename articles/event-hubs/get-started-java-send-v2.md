@@ -8,12 +8,12 @@ ms.workload: core
 ms.topic: quickstart
 ms.date: 02/11/2020
 ms.author: spelluru
-ms.openlocfilehash: 44f57f52be512924e228d6488a786d117c6444e7
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
-ms.translationtype: HT
+ms.openlocfilehash: 29101d0277ff0fb392917f722bcaec3b7e5983b5
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79370602"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478260"
 ---
 # <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs-azure-messaging-eventhubs"></a>Azure Etkinlik Hub'larına etkinlik göndermek veya bu etkinliklerden (azure-mesajlaşma-eventhub'lar) almak için Java'yı kullanın
 Bu hızlı başlangıç, **azure-messaging-eventhubs** Java paketini kullanarak bir etkinlik hub'ına olayları nasıl göndereceğinizi ve bir olay merkezinden nasıl alınarak alınabildiğini gösterir.
@@ -23,7 +23,7 @@ Bu hızlı başlangıç, **azure-messaging-eventhubs** Java paketini kullanarak 
 
 
 ## <a name="prerequisites"></a>Ön koşullar
-Azure Etkinlik Hub'larında yeniyseniz, bu hızlı başlangıcı yapmadan önce [Etkinlik Hub'larına genel bakış](event-hubs-about.md) bakın. 
+Azure Etkinlik Hub'larında yeniyseniz, bu hızlı başlangıcı yapmadan önce [Etkinlik Hub'larına genel bakış](event-hubs-about.md) konusubakın. 
 
 Bu hızlı başlangıcı tamamlamak için aşağıdaki ön koşullara ihtiyacınız vardır:
 
@@ -36,7 +36,7 @@ Bu bölümde, olaylara bir etkinlik hub'ı göndermek için java uygulamasının
 
 ### <a name="add-reference-to-azure-event-hubs-library"></a>Azure Etkinlik Hub'ları kitaplığına başvuru ekleme
 
-Etkinlik Hub'ları için Java istemci kitaplığı [Maven Merkez Deposu'ndan](https://search.maven.org/search?q=a:azure-messaging-eventhubs)Maven projelerinde kullanılabilir. Maven proje dosyanızda aşağıdaki bağımlılık bildirimini kullanarak bu kitaplık başvuru yapabilirsiniz:
+Etkinlik Hub'ları için Java istemci kitaplığı [Maven Merkezi Deposu'nda](https://search.maven.org/search?q=a:azure-messaging-eventhubs)kullanılabilir. Maven proje dosyanızda aşağıdaki bağımlılık bildirimini kullanarak bu kitaplık başvuru yapabilirsiniz:
 
 ```xml
 <dependency>
@@ -135,10 +135,13 @@ public class Sender {
 }
 ```
 
-Programı oluşturun ve hata olmadığından emin olun. Alıcı programını çalıştırdıktan sonra bu programı çalıştırın. 
+Programı oluşturun ve hata olmadığından emin olun. Alıcı programını çalıştırdıktan sonra bu programı çalıştıracaksınız. 
 
 ## <a name="receive-events"></a>Olayları alma
 Bu öğreticideki kod, tam çalışma uygulamasını görmek için incelediğiniz [GitHub'daki EventProcessorClient örneğine](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/src/samples/java/com/azure/messaging/eventhubs/EventProcessorClientSample.java)dayanır.
+
+> [!NOTE]
+> Azure Stack Hub'da çalışıyorsanız, bu platform Depolama Blob SDK'nın Azure'da bulunanlardan farklı bir sürümünü destekleyebilir. Örneğin, Azure Yığını [Hub sürümü 2002'de](https://docs.microsoft.com/azure-stack/user/event-hubs-overview)çalışıyorsanız, Depolama hizmeti için kullanılabilir en yüksek sürüm 2017-11-09 sürümüdür. Bu durumda, bu bölümdeki aşağıdaki adımların yanı sıra, Depolama hizmeti API sürümünü 2017-11-09'u hedeflemek için kod eklemeniz gerekir. Belirli bir Depolama API sürümünün nasıl hedeflenilene ilişkin bir örnek için, [bu örneğe GitHub'da](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/src/samples/java/com/azure/messaging/eventhubs/checkpointstore/blob/EventProcessorWithCustomStorageVersion.java)bakın. Azure Yığını Hub'ında desteklenen Azure Depolama hizmeti sürümleri hakkında daha fazla bilgi için lütfen [Azure Yığın Hub depolama alanına bakın: Farklılıklar ve dikkat edilmesi gerekenler.](https://docs.microsoft.com/azure-stack/user/azure-stack-acs-differences)
 
 ### <a name="create-a-java-project"></a>Java projesi oluşturma
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/17/2020
-ms.openlocfilehash: fa165c21622110bb18476efdebf3264a11e26ad7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e1a3ff32956e8a8530684ba7f300f06d0c032227
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79265889"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421125"
 ---
 # <a name="copy-data-from-sap-hana-using-azure-data-factory"></a>Azure Veri Fabrikası'nı kullanarak SAP HANA'daki verileri kopyalama
 > [!div class="op_single_selector" title1="Kullandığınız Veri Fabrikası hizmetisürümünü seçin:"]
@@ -188,7 +188,7 @@ SAP HANA'daki verileri kopyalamak için, kopyalama etkinliği **kaynak** bölüm
 |:--- |:--- |:--- |
 | type | Kopyalama etkinlik kaynağının türü özelliği ayarlanmalıdır: **SapHanaSource** | Evet |
 | sorgu | SAP HANA örneğindeki verileri okumak için SQL sorgusunu belirtir. | Evet |
-| partitionOptions | SAP HANA'dan veri almak için kullanılan veri bölümleme seçeneklerini belirtir. [SAP HANA bölümünden Paralel kopyadan](#parallel-copy-from-sap-hana) daha fazla bilgi edinin.<br>İzin değerleri şunlardır: **Yok** (varsayılan), **PhysicalPartitionsOfTable**, **SapHanaDynamicRange**. [SAP HANA bölümünden Paralel kopyadan](#parallel-copy-from-sap-hana) daha fazla bilgi edinin. `PhysicalPartitionsOfTable`yalnızca bir tablodan veri kopyalanırken kullanılabilir, ancak sorgulanmaz. <br>Bir bölüm seçeneği etkinleştirildiğinde (yani `None`değil), SAP HANA'dan aynı anda yüklenen verileri [`parallelCopies`](copy-activity-performance.md#parallel-copy) yüklemek için paralellik derecesi kopyalama etkinliği ayarı tarafından denetlenir. | False |
+| partitionOptions | SAP HANA'dan veri almak için kullanılan veri bölümleme seçeneklerini belirtir. [SAP HANA bölümünden Paralel kopyadan](#parallel-copy-from-sap-hana) daha fazla bilgi edinin.<br>İzin değerleri şunlardır: **Yok** (varsayılan), **PhysicalPartitionsOfTable**, **SapHanaDynamicRange**. [SAP HANA bölümünden Paralel kopyadan](#parallel-copy-from-sap-hana) daha fazla bilgi edinin. `PhysicalPartitionsOfTable`yalnızca bir tablodan veri kopyalanırken kullanılabilir, ancak sorgulanmaz. <br>Bir bölüm seçeneği etkinleştirildiğinde (yani `None`değil), SAP HANA'dan aynı anda yüklenen verileri [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) yüklemek için paralellik derecesi kopyalama etkinliği ayarı tarafından denetlenir. | False |
 | partitionAyarlar | Veri bölümleme için ayarlar grubunu belirtin.<br>Bölüm seçeneği . `SapHanaDynamicRange` | False |
 | partitionColumnName | Paralel kopya için bölüm tarafından kullanılacak kaynak sütunun adını belirtin. Belirtilmemişse, dizin veya tablonun birincil anahtarı otomatik olarak algılanır ve bölüm sütunu olarak kullanılır.<br>Bölüm seçeneği . `SapHanaDynamicRange` Kaynak verileri almak için bir sorgu `?AdfHanaDynamicRangePartitionCondition` kullanıyorsanız, WHERE yan tümcesini bağla. [SAP HANA bölümünden Paralel kopyadaki](#parallel-copy-from-sap-hana) örneğe bakın. | Evet bölüm `SapHanaDynamicRange` kullanırken. |
 | paketBoyut | Verileri birden çok bloka bölmek için ağ paket boyutunu (Kilobaytolarak) belirtir. Kopyalamanız gereken büyük miktarda veri varsa, paket boyutunu artırmak çoğu durumda SAP HANA'nın okuma hızını artırabilir. Paket boyutunu ayarlarken performans testi önerilir. | Hayır.<br>Varsayılan değer 2048 (2MB) olur. |
@@ -233,7 +233,7 @@ Veri Fabrikası SAP HANA bağlayıcısı, SAP HANA'daki verileri paralel olarak 
 
 ![Bölüm seçeneklerinin ekran görüntüsü](./media/connector-sap-hana/connector-sap-hana-partition-options.png)
 
-Bölümlenmiş kopyalamayı etkinleştirdiğinizde, Veri Fabrikası bölümlere göre veri almak için SAP HANA kaynağınıza paralel sorgular çalıştırAr. Paralel derece, kopyalama [`parallelCopies`](copy-activity-performance.md#parallel-copy) etkinliği üzerindeki ayar tarafından denetlenir. Örneğin, dörde `parallelCopies` ayarlarsanız, Veri Fabrikası aynı anda belirttiğiniz bölüm seçeneğiniz ve ayarlarınızı temel alarak dört sorgu oluşturur ve çalıştırAr ve her sorgu SAP HANA'nızdan verilerin bir kısmını alır.
+Bölümlenmiş kopyalamayı etkinleştirdiğinizde, Veri Fabrikası bölümlere göre veri almak için SAP HANA kaynağınıza paralel sorgular çalıştırAr. Paralel derece, kopyalama [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) etkinliği üzerindeki ayar tarafından denetlenir. Örneğin, dörde `parallelCopies` ayarlarsanız, Veri Fabrikası aynı anda belirttiğiniz bölüm seçeneğiniz ve ayarlarınızı temel alarak dört sorgu oluşturur ve çalıştırAr ve her sorgu SAP HANA'nızdan verilerin bir kısmını alır.
 
 Özellikle SAP HANA'nızdan büyük miktarda veri yuttuğunuzda veri bölümleme ile paralel kopyalamayı etkinleştirmeniz önerilir. Aşağıda farklı senaryolar için önerilen yapılandırmalar vardır. Verileri dosya tabanlı veri deposuna kopyalarken, bir klasöre birden çok dosya olarak yazman önerilir (yalnızca klasör adını belirtin), bu durumda performans tek bir dosyaya yazmaktan daha iyidir.
 

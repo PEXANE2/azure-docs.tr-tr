@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: 10e6ed556abe8f8c438e5436fbb93c1b70b85d2b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 579767a0d535605a2316c35bd413a75474b5a3de
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75445170"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80409998"
 ---
 # <a name="how-to-globally-distribute-reads-using-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB için Azure Cosmos DB'nin API'sini kullanarak okumaları genel olarak dağıtma
 
@@ -86,7 +86,7 @@ Bu okuma tercih içim modlarının her birinin davranışı hakkında ayrıntıl
 Sık karşılaşılan senaryolara dayanarak aşağıdaki ayarları kullanmanızı öneririz:
 
 1. **Düşük gecikme gecikmesi okuması** gerekiyorsa, **ENYakın** okuma tercih modunu kullanın. Bu ayar, okuma işlemlerini kullanılabilir en yakın bölgeye yönlendirir. En yakın bölge WRITE bölgesiyse, bu işlemlerin o bölgeye yönlendirilir.
-2. **Okumaların yüksek kullanılabilirliği ve coğrafi dağılımı** gerekiyorsa (gecikme bir kısıtlama değildir), sonra **IKINCIL TERCIHli** okuma tercihi modunu kullanın. Bu ayar, okuma işlemlerini kullanılabilir bir READ bölgesine yönlendirir. READ bölgesi yoksa, istekler WRITE bölgesine yönlendirilir.
+2. **Okumaların yüksek kullanılabilirliği ve coğrafi dağılımı** gerekiyorsa (gecikme bir kısıtlama değilse), **birincil tercih** veya **ikincil** tercih tercih modunu kullanın. Bu ayar, okuma işlemlerini sırasıyla kullanılabilir bir WRITE veya READ bölgesine yönlendirir. Bölge kullanılamıyorsa, istekler okuma tercihi davranışına göre bir sonraki kullanılabilir bölgeye yönlendirilir.
 
 Örnek uygulamadan aşağıdaki parçacık, NodeJS'te EN YAKıN Okuma Tercihinin nasıl yapılandırılabildiğini gösterir:
 

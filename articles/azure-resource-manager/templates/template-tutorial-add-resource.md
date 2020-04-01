@@ -5,12 +5,12 @@ author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 79e337b411f9d115d93050ebeee346a526913d39
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dcdbbb325e6589669abe6cf3d25ac5191e29118b
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80371727"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411744"
 ---
 # <a name="tutorial-add-a-resource-to-your-arm-template"></a>Öğretici: ARM şablonunuza kaynak ekleme
 
@@ -26,7 +26,7 @@ Kaynak Yöneticisi Araçları uzantısı ve Azure PowerShell veya Azure CLI ile 
 
 Varolan şablona bir depolama hesabı tanımı eklemek için aşağıdaki örnekte vurgulanan JSON'a bakın. Şablonun bölümlerini kopyalamaya çalışmak yerine, tüm dosyayı kopyalayın ve şablonunuzu içeriğiyle değiştirin.
 
-**{benzersiz ad}** yerine benzersiz bir depolama hesabı adı değiştirin.
+**{benzersiz ad}** (kıvırcık köşeli ayraçlar dahil) ve benzersiz bir depolama hesabı adı değiştirin.
 
 > [!IMPORTANT]
 > Depolama hesabı adının Azure’da benzersiz olması gerekir. Adın yalnızca küçük harfleri veya sayıları olmalıdır. En fazla 24 karakter olabilir. **Store1'i** önek olarak kullanarak baş harflerinizi ve bugünün tarihini ekleme gibi bir adlandırma deseni deneyebilirsiniz. Örneğin, kullandığınız ad **store1abc09092019**gibi görünebilir.
@@ -61,7 +61,7 @@ Depolama hesabı oluşturmak için şablonu dağıtabilirsiniz. Dağıtımınız
 
 Kaynak grubunu oluşturmadıysanız, [bkz.](template-tutorial-create-first-template.md#create-resource-group) Örnek, [ilk öğreticide](template-tutorial-create-first-template.md#deploy-template)gösterildiği gibi **şablonDosya** değişkenini şablon dosyasına giden yola ayarladığınız varsayar.
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -82,6 +82,9 @@ az deployment group create \
 ```
 
 ---
+
+> [!NOTE]
+> Dağıtım başarısız olduysa, hata ayıklama günlüklerini göstermek için dağıtım komutuyla **hata ayıklama** anahtarını kullanın.  Tam hata ayıklama günlüklerini göstermek için **ayrıntılı** anahtar da kullanabilirsiniz.
 
 Karşılaşabileceğiniz iki olası dağıtım hatası:
 

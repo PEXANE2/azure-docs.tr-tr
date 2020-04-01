@@ -7,16 +7,16 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.author: normesta
 ms.date: 01/22/2020
-ms.openlocfilehash: aaf61ccbb3577036c614aa6196d2af57124550fa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8eeff5187d27cb75b9e55eba8311dede8970bc4a
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76908559"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435227"
 ---
 # <a name="integrate-a-static-website-with-azure-cdn"></a>Statik bir web sitesini Azure CDN ile tümleştirme
 
-[Azure İçerik Teslim Ağı'nın (CDN)](../../cdn/cdn-overview.md) Azure depolama hesabında barındırılan statik bir web [sitesinden](storage-blob-static-website.md) içerik önbelleğe almalarını etkinleştirebilirsiniz. Azure CDN'yi statik web sitenizin özel etki alanı bitiş noktasını yapılandırmak, özel SSL sertifikaları sağlamak ve özel yeniden yazma kurallarını yapılandırmak için kullanabilirsiniz. Azure CDN'nin yapılandırılması ek ücretlerle sonuçlanır, ancak dünyanın her yerinden web sitenize tutarlı düşük gecikme süreleri sağlar. Azure CDN, kendi sertifikanızla Birlikte SSL şifrelemesi de sağlar. 
+[Azure İçerik Teslim Ağı'nın (CDN)](../../cdn/cdn-overview.md) Azure depolama hesabında barındırılan statik bir web [sitesinden](storage-blob-static-website.md) içerik önbelleğe almalarını etkinleştirebilirsiniz. Azure CDN'yi statik web sitenizin özel etki alanı bitiş noktasını yapılandırmak, özel TLS/SSL sertifikaları sağlamak ve özel yeniden yazma kurallarını yapılandırmak için kullanabilirsiniz. Azure CDN'nin yapılandırılması ek ücretlerle sonuçlanır, ancak dünyanın her yerinden web sitenize tutarlı düşük gecikme süreleri sağlar. Azure CDN, kendi sertifikanızla TLS şifrelemesi de sağlar. 
 
 Azure CDN fiyatlandırması hakkında bilgi için Azure [CDN fiyatlandırması'na](https://azure.microsoft.com/pricing/details/cdn/)bakın.
 

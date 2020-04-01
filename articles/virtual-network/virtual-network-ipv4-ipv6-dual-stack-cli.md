@@ -11,49 +11,27 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/17/2019
+ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: b9021784216f02fb117f6e63e150b37b07755912
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 396c37d4c8de6a890102e435c5ec6cc70b598638
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80239861"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421014"
 ---
-# <a name="deploy-an-ipv6-dual-stack-application-using-basic-load-balancer---cli-preview"></a>Temel Yük Dengeleyicisi kullanarak Bir IPv6 çift yığın uygulaması dağıtma - CLI (Önizleme)
+# <a name="deploy-an-ipv6-dual-stack-application-using-basic-load-balancer---cli"></a>Temel Yük Dengeleyicisi kullanarak Bir IPv6 çift yığın uygulaması dağıtma - CLI
 
-Bu makalede, çift yığın alt ağına sahip bir çift yığın sanal ağı, çift (IPv4 + IPv6) ön uç yapılandırmalı bir Temel Yük Dengeleyicisi, NIC'li VM'ler içeren Azure CLI kullanarak Temel Yük Dengeleyicisi ile bir çift yığın (IPv4 + IPv6) uygulamasını nasıl dağıtabileceğinizi gösterir çift IP yapılandırması, çift ağ güvenlik grubu kuralları ve çift genel IP'ler var.
+Bu makalede, çift yığın alt ağına sahip bir çift yığın sanal ağı, çift (IPv4 + IPv6) ön uç yapılandırmalarına sahip bir Temel Yük Dengeleyicisi, çift IP yapılandırmasına sahip NIC'lere sahip VM'ler, çift IP yapılandırması, çift ağ güvenlik grubu kuralları ve çift halka açık IP'ler içeren Azure CLI kullanarak Temel Yük Dengeleyicisi ile bir çift yığın (IPv4 + IPv6) uygulamasını nasıl dağıtabileceğiniz gösterilmektedir.
 
 Standart Yük Dengeleyicisini kullanarak çift yığın (IPV4 + IPv6) uygulaması dağıtmak için, [Azure CLI kullanarak Standart Yük Dengeleyicisi ile bir IPv6 çift yığın uygulaması dağıtma](virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli.md)konusuna bakın.
 
-> [!Important]
-> Azure Sanal Ağı için IPv6 çift yığını şu anda genel önizlemededir. Bu önizleme bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Ayrıntılar için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Azure aboneliğiniz yoksa şimdi [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 Bunun yerine Azure CLI'yi yerel olarak yüklemeye ve kullanmaya karar verirseniz, bu hızlı başlangıç Azure CLI sürüm 2.0.49 veya sonraki sürümlerini kullanmanızı gerektirir. Yüklü sürümünüzü bulmak için `az --version`çalıştırın. Bilgileri yüklemek veya yükseltmek için [Azure CLI'yi yükle'ye](/cli/azure/install-azure-cli) bakın.
-
-## <a name="prerequisites"></a>Ön koşullar
-Azure sanal ağ için IPv6 özelliğini kullanmak için, aboneliğinizi Azure CLI'yi kullanarak aşağıdaki gibi yapılandırmanız gerekir:
-
-```azurecli
-az feature register --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
-az feature register --name AllowIPv6CAOnStandardLB --namespace Microsoft.Network
-```
-Özellik kaydının tamamlanması 30 dakika kadar sürer. Aşağıdaki Azure CLI komutunu çalıştırarak kayıt durumunuzu kontrol edebilirsiniz:
-
-```azurecli
-az feature show --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
-az feature show --name AllowIPv6CAOnStandardLB --namespace Microsoft.Network
-```
-
-Kayıt tamamlandıktan sonra aşağıdaki komutu çalıştırın:
-
-```azurecli
-az provider register --namespace Microsoft.Network
-```
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
@@ -387,8 +365,6 @@ Azure portalındaki IPv6 çift yığın sanal ağını aşağıdaki gibi görün
 
   ![Azure'da IPv6 çift yığın sanal ağ](./media/virtual-network-ipv4-ipv6-dual-stack-powershell/dual-stack-vnet.png)
 
-> [!NOTE]
-> Azure için IPv6 sanal ağı, bu önizleme sürümü için salt okunur olarak Azure portalında kullanılabilir.
 
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme

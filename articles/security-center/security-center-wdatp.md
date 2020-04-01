@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2019
 ms.author: memildin
-ms.openlocfilehash: 13852acb39a420e2f0da84e18bef4df823c1fa78
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5136a00421aebaa72998b1dfcdf75feb935851c6
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78206274"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435451"
 ---
 # <a name="microsoft-defender-advanced-threat-protection-with-azure-security-center"></a>Azure Güvenlik Merkezi ile Microsoft Defender Gelişmiş Tehdit Koruması
 
@@ -62,7 +62,7 @@ Güvenlik Merkezi'ndeki sunucular için, Microsoft Defender ATP sunucusundaki ye
 1. **Onboarding** alanında, verileri depolamak için bir çalışma alanı seçin veya oluşturun. <br>
 2. Tüm çalışma alanlarınızı göremiyorsanız, bunun nedeni izin eksikliği olabilir, çalışma alanınızın Azure Güvenlik Standardı katmanıolarak ayarlandıklarından emin olun. Daha fazla bilgi için, [gelişmiş güvenlik için Güvenlik Merkezi'nin Standart katmanına Yükseltme](security-center-pricing.md)konusuna bakın.
     
-3. Microsoft İzleme Aracısı'nın nasıl yüklendiğine ilişkin yönergeleri görüntülemek için **sunucu ekle'yi** seçin. 
+3. Log Analytics aracısını nasıl yükleyin yönergeleri görüntülemek için **sunucu ekle'yi** seçin. 
 
 4. Onboarding sonra, **İşlem ve uygulamalar**altında makineleri izleyebilirsiniz.
 

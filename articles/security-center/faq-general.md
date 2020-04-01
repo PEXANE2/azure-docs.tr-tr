@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: f9043ae1414b63f25583d52100774f3e87754a74
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 54263a8be900ed381d8450b460e5cf9e6117ac54
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77661848"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80436128"
 ---
 # <a name="faq---general-questions-about-azure-security-center"></a>SSS - Azure Güvenlik Merkezi ile ilgili genel sorular
 
 ## <a name="what-is-azure-security-center"></a>Azure Güvenlik Merkezi nedir?
 Azure Güvenlik Merkezi, kaynaklarınızın güvenliği nde daha fazla görünürlük ve denetim le tehditleri önlemenize, algılamanıza ve yanıt vermeye yardımcı olur. Aboneliklerinizde tümleşik güvenlik izleme ve ilke yönetimi sağlar, normal koşullarda gözden kaçabilecek tehditleri algılamaya yardımcı olur ve güvenlik çözümlerinin geniş ekosistemiyle çalışır.
 
-Güvenlik Merkezi, veri toplamak ve depolamak için Microsoft İzleme Aracısını kullanır. Ayrıntılı bilgi için [Azure Güvenlik Merkezi'nde Veri koleksiyonuna](security-center-enable-data-collection.md)bakın.
+Güvenlik Merkezi, veri toplamak ve depolamak için Log Analytics aracısını kullanır. Ayrıntılı bilgi için [Azure Güvenlik Merkezi'nde Veri koleksiyonuna](security-center-enable-data-collection.md)bakın.
 
 
 ## <a name="how-do-i-get-azure-security-center"></a>Azure Güvenlik Merkezi'ni nasıl edinebilirim?

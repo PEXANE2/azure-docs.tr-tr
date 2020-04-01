@@ -7,20 +7,20 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: edaa585ffb3448a80b021aa924a9d654ac829931
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 12c750f96b8852cdd6a6039ebfa750c2ee792a6b
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79096293"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396712"
 ---
 # <a name="export-azure-activity-log-to-storage-or-azure-event-hubs"></a>Azure Etkinliği günlüğünü depolama veya Azure Etkinlik Hub'larına dışa aktarma
 
 > [!IMPORTANT]
-> Azure Etkinliği günlüğünü Azure Depolama ve Azure Etkinlik Hub'larına gönderme yöntemi [tanı ayarlarına](diagnostic-settings.md)dönüştürülmüştür. Bu makalede, amortismana alınma sürecinde olan eski yöntem açıklanmaktadır. Karşılaştırma için [Azure Etkinliği günlük koleksiyonuna ve dışa aktarın'a](diagnostic-settings-legacy.md) güncelleştirmeye bakın.
+> Azure Etkinliği günlüğünü Azure Depolama ve Azure Etkinlik Hub'larına gönderme yöntemi [tanı ayarlarına](diagnostic-settings.md)dönüştürülmüştür. Bu makalede, amortismana alınma sürecinde olan eski yöntem açıklanmaktadır. Karşılaştırma için Azure Etkinliği oturum açmak için [Güncelleştirme'ye](activity-log-collect.md) bakın.
 
 
-[Azure Etkinlik Günlüğü,](platform-logs-overview.md) Azure aboneliğinizde gerçekleşen abonelik düzeyindeki olaylara ilişkin öngörüler sağlar. Azure portalındaki Etkinlik günlüğünü görüntülemenin veya Azure Monitor tarafından toplanan diğer verilerle analiz edilebilen bir Log Analytics çalışma alanına kopyalamanın yanı sıra, Etkinlik günlüğünü bir Azure depolama hesabına arşivlemek veya bir Olay Merkezi.
+[Azure Etkinlik Günlüğü,](platform-logs-overview.md) Azure aboneliğinizde gerçekleşen abonelik düzeyindeki olaylara ilişkin öngörüler sağlar. Azure portalındaki Etkinlik günlüğünü görüntülemenin veya Azure Monitor tarafından toplanan diğer verilerle analiz edilebilen bir Log Analytics çalışma alanına kopyalamanın yanı sıra, Etkinlik günlüğünü bir Azure depolama hesabına arşivlemek veya Etkinlik Hub'ına aktarmak için bir günlük profili oluşturabilirsiniz.
 
 ## <a name="archive-activity-log"></a>Arşiv Faaliyet Günlüğü
 Denetim, statik çözümleme veya yedekleme için günlük verilerinizi 90 günden daha uzun süre (bekletme ilkesi üzerinde tam denetimle) tutmak istiyorsanız, Etkinlik Günlüğü'nün bir depolama hesabına arşivlemesi yararlıdır. Etkinlik Günlüğü etkinlikleri Azure platformunda 90 gün boyunca tutulduğundan, etkinliklerinizi yalnızca 90 gün veya daha kısa bir süre saklamanız gerekiyorsa, bir depolama hesabına arşiv ayarlamanız gerekmez.

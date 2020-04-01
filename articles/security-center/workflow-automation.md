@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 972b5415b85e82a5afdaf7d85d3a3bcb9e144d4d
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 5d947cf41e13abdea9a2fd29f8a740d0c101dc6f
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80384951"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397904"
 ---
 # <a name="workflow-automation"></a>İş akışı otomasyonu
 
@@ -96,10 +96,11 @@ Mantık Uygulaması örneğine aktarılan güvenlik uyarıları veya öneriler o
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu makalede, Logic Apps oluşturmayı, bunları Güvenlik Merkezi'nde el ile çalıştırmayı ve yürütmelerini otomatikleştirini öğrendiniz. 
+Bu makalede, Logic Apps oluşturmayı, Güvenlik Merkezi'nde yürütmelerini otomatikleştirin ve bunları el ile çalıştırmayı öğrendiniz. 
 
-Diğer ilgili materyaller için aşağıdaki makalelere bakın: 
+Diğer ilgili materyaller için bkz: 
 
+- [Bir güvenlik yanıtını otomatikleştirmek için iş akışı otomasyonunun nasıl kullanılacağına ilişkin Microsoft Learn modülü](https://docs.microsoft.com/learn/modules/resolve-threats-with-azure-security-center/)
 - [Azure Güvenlik Merkezi'nde güvenlik önerileri](security-center-recommendations.md)
 - [Azure Güvenlik Merkezi'nde güvenlik uyarıları](security-center-alerts-overview.md)
 - [Azure Logic Apps hakkında](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview)

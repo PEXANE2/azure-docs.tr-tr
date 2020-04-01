@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: mimckitt
-ms.openlocfilehash: b75b232c048a1ea49256b12ce1b65c4bd87a1cf0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 75970783a9408df0a8c128fb9540606e4e4a62f3
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79535451"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478164"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>Linux sanal makineleriyle Azure Özel Betik Uzantısı Sürüm 2’yi kullanma
 Özel Komut Dosyası Uzantısı Sürüm 2, Azure sanal makinelerinde komut dosyalarını indirir ve çalıştırZ. Bu uzantı, dağıtım sonrası yapılandırma, yazılım yüklemesi veya başka bir yapılandırma/yönetim görevi için yararlıdır. Komut dosyalarını Azure Depolama'dan veya erişilebilir başka bir Internet konumundan indirebilir veya bunları uzantı çalışma süresine sağlayabilirsiniz. 
@@ -209,6 +209,8 @@ CustomScript bir komut dosyası yürütmek için aşağıdaki algoritmayı kulla
  1. komut dosyasını _/bin/sh -c /var/lib/waagent/custom-script/#/script.sh kullanarak uygulayın.
 
 ####  <a name="property-managedidentity"></a>Özellik: yönetilenIdentity
+> [!NOTE]
+> Bu özellik yalnızca korumalı ayarlarda **belirtilmelidir.**
 
 CustomScript (sürüm 2.1'den itibaren), "fileUris" ayarında sağlanan URL'lerden dosya(lar) indirmek için [yönetilen kimliği](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) destekler. CustomScript'in, kullanıcı SAS belirteçleri veya depolama hesabı anahtarları gibi sırları aktarmak zorunda kalmadan Azure Depolama özel bloblarına veya kapsayıcılarına erişmesine olanak tanır.
 
@@ -466,4 +468,3 @@ info:    vm extension get command OK
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Kodu, güncel sorunları ve sürümleri görmek için [bkz.](https://github.com/Azure/custom-script-extension-linux)
-

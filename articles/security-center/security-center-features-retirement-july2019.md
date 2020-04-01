@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: article
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 456f379e2b3c2ff411b196d45aef4663fddb0fe6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fda49ae31d7598497a3128a846a3f4e12e84ffe1
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79245414"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435903"
 ---
 # <a name="retirement-of-security-center-features-july-2019"></a>Güvenlik Merkezi'nin emekliliği özellikleri (Temmuz 2019)
 
@@ -43,7 +43,7 @@ Bu makalede, her kullanımdan kaldırılan özellik ve değiştirme özellikleri
 
 ## <a name="events-dashboard"></a>Etkinlikler panosu<a name="menu_events"></a>
 
-Güvenlik Merkezi, makinelerinizden güvenlikle ilgili çeşitli yapılandırmaları ve olayları toplamak için Microsoft İzleme Aracısı'nı kullanır. Bu olayları çalışma alanlarınızda saklar. [Etkinlikler panosu](https://docs.microsoft.com/azure/security-center/security-center-events-dashboard) bu verileri görüntülemenizi sağlar ve Log Analytics'e bir giriş noktası sağlar.
+Security Center, makinelerinizden güvenlikle ilgili çeşitli yapılandırmaları ve olayları toplamak için Log Analytics aracısını kullanır. Bu olayları çalışma alanlarınızda saklar. [Etkinlikler panosu](https://docs.microsoft.com/azure/security-center/security-center-events-dashboard) bu verileri görüntülemenizi sağlar ve Log Analytics'e bir giriş noktası sağlar.
 
 Bir çalışma alanı seçtiğinizde ortaya çıkan olaylar panosunu kullanımdan aldık:
 

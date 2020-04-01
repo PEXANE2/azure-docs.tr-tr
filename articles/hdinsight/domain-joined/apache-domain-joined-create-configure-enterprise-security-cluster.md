@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 12/10/2019
-ms.openlocfilehash: 4edafc0c07e967acfabf7fdc5b58c481b2cfccc3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fb3484d013314897ea2e9157b642d8f2b85dcd60
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75436025"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437642"
 ---
 # <a name="create-and-configure-enterprise-security-package-clusters-in-azure-hdinsight"></a>Azure HDInsight'ta Kurumsal Güvenlik Paketi kümeleri oluşturma ve yapılandırma
 
@@ -316,7 +316,7 @@ New-SelfSignedCertificate -Subject hdifabrikam.com `
 ```
 
 > [!NOTE]  
-> Geçerli bir Ortak Anahtar Şifreleme Standartları (PKCS) \#10 isteği oluşturan herhangi bir yardımcı program veya uygulama, SSL sertifika isteğini oluşturmak için kullanılabilir.
+> TLS/SSL sertifika isteğini oluşturmak için geçerli bir Ortak \#Anahtar Şifreleme Standartları (PKCS) 10 isteği oluşturan herhangi bir yardımcı program veya uygulama kullanılabilir.
 
 Sertifikanın bilgisayarın **Kişisel** deposunda yüklü olduğunu doğrulayın:
 

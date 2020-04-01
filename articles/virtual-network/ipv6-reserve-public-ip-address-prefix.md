@@ -10,20 +10,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/15/2019
+ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 76d1ba2717ac3c8ac8e86687ef1754a8790f3e4d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9a0dd56842174d89688c862397c373326ef50d1f
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72595080"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80420538"
 ---
 # <a name="reserve-public-ipv6-address-prefix"></a>Rezerv genel IPv6 adresi öneki
 Azure Sanal Ağ için IPv6 (VNet), Hem sanal ağ içinde hem de Internet'ten IPv6 ve IPv4 bağlantısıyla Azure'daki uygulamaları barındırmanızı sağlar. Tek tek IPv6 adreslerini ayırmanın yanı sıra, kullanımınız için bitişik Azure IPv6 adresleri (IP Öneki olarak bilinir) aralıklarını ayırabilirsiniz. Bu makalede, Azure PowerShell ve CLI kullanarak IPv6 genel IP adresleri ve adres aralıkları nasıl oluşturulacak açıklanmaktadır.
 
-> [!Important]
-> Azure Sanal Ağı için IPv6 şu anda genel önizlemededir. Bu önizleme bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Ayrıntılar için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="create-a-single-reserved-ipv6-public-ip"></a>Tek bir ayrılmış IPv6 genel IP'si oluşturma
 

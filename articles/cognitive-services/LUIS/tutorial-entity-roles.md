@@ -1,26 +1,18 @@
 ---
 title: 'Öğretici: Roller ile bağlamsal veri - LUIS'
-titleSuffix: Azure Cognitive Services
 description: İlgili verileri içeriğe göre bulun. Örneğin, bir bina ya da ofisten başka bir bina ya da ofise fiziksel olarak taşınmada çıkış ve varış konumları.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/17/2019
-ms.author: diberry
-ms.openlocfilehash: cd646ef061a0be06a9b1a56b72a4f35d9796aa63
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 03/30/2020
+ms.openlocfilehash: fdb463896e531619ea7ebe7c384729763dc84138
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75447841"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475832"
 ---
 # <a name="tutorial-extract-contextually-related-data-from-an-utterance"></a>Öğretici: Bir söyleyişten bağlamsal olarak ilgili verileri ayıklama
 
-Bu öğreticide bağlama göre ilgili veri parçalarını bulacaksınız. Örneğin, bir şehirden diğerine aktarım için bir başlangıç ve hedef konumları. Her iki veri parçası gerekli olabilir ve birbirleriyle ilişkilidir.
+Bu öğreticide bağlama göre ilgili veri parçalarını bulacaksınız. Örneğin, bir şehirden diğerine aktarım için başlangıç ve hedef konumlar. Her iki veri parçası gerekli olabilir ve birbirleriyle ilişkilidir.
 
 Bir rol önceden oluşturulmuş veya özel varlık türüyle kullanılabilir ve hem örnek söz hem de desenlerde kullanılabilir.
 
@@ -49,24 +41,26 @@ Bir rol, varlık verilerini ayıklamak için kullanıldığında kullanılmalıd
 
 ## <a name="create-a-new-app"></a>Yeni bir uygulama oluşturma
 
-1. URL'si ile önizleme LUIS [https://preview.luis.ai](https://preview.luis.ai)portalında oturum açın.
+1. [LUIS **önizleme** portalında](https://preview.luis.ai)oturum açın.
 
-1. **Yeni uygulama oluştur'u** `HumanResources` seçin, adı girin ve varsayılan kültür, **İngilizce**tutun. Açıklamayı boş bırakın.
-
-1. **Done** (Bitti) öğesini seçin.
+1. **Konuşma için + Yeni uygulama** `HumanResources` seçin, adını girin ve varsayılan kültür, **İngilizce**tutmak . Açıklama ve tahmin kaynağını boş bırakın. **Done** (Bitti) öğesini seçin.
 
 ## <a name="create-an-intent-to-move-employees-between-cities"></a>Çalışanları şehirler arasında taşıma niyeti oluşturma
 
+Bir amaç, kullanıcının doğal dil metninden belirlenen niyetine göre kullanıcı nın söyleyişlerini sınıflandırmak için kullanılır.
+
+Bir söyleyiyi sınıflandırmak için, niyetin bu niyetle sınıflandırılması gereken kullanıcı söyleyiş örneklerine ihtiyacı vardır.
+
 1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
-1. **Create new intent** (Yeni amaç oluştur) öğesini seçin.
+1. Seçin **+ Oluştur**.
 
 1. Açılan iletişim kutusuna `MoveEmployeeToCity` girip **Done** (Bitti) öğesini seçin.
 
     > [!div class="mx-imgBorder"]
     > ![Create new intent (Yeni amaç oluştur) iletişim kutusunun ekran görüntüsü](./media/tutorial-entity-roles/create-new-intent-move-employee-to-city.png)
 
-1. Amaca örnek konuşmalar ekleyin.
+1. Bir kullanıcının sormasını beklediğiniz bu amacla birkaç örnek sözcük ekleyin.
 
     |Örnek konuşmalar|
     |--|
@@ -85,24 +79,29 @@ Bir rol, varlık verilerini ayıklamak için kullanıldığında kullanılmalıd
 
 ## <a name="add-prebuilt-entity-geographyv2"></a>Önceden oluşturulmuş varlık coğrafyası ekleV2
 
-Önceden oluşturulmuş varlık, geographyV2, şehir adları da dahil olmak üzere konum bilgilerini ayıklar. Bu bağlamda birbirleriyle ilgili iki şehir adı olduğundan, bu bağlamı ayıklamak için rolleri kullanın.
+Önceden oluşturulmuş varlık, **geographyV2,** şehir adları da dahil olmak üzere konum bilgilerini ayıklar. Bu bağlamda birbirleriyle ilgili iki şehir adı olduğundan, bu bağlamı ayıklamak için rolleri kullanın.
 
 1. Sol taraftaki gezintiden **Varlıklar'ı** seçin.
 
-1. **Önceden oluşturulmuş varlık ekle'yi**seçin ve ardından önceden oluşturulmuş varlıkları filtrelemek için arama çubuğunu seçin. `geo`
+1. Önceden **oluşturulmuş varlık ekle**seçeneğini `geo` seçin, ardından önceden oluşturulmuş varlıkları filtrelemek için arama çubuğuna girin.
 
     > [!div class="mx-imgBorder"]
     > ![Uygulamaya geographyV2 önceden oluşturulmuş varlık ekleme](media/tutorial-entity-roles/add-geographyV2-prebuilt-entity.png)
 
 1. Onay kutusunu seçin ve **Bitti'yi**seçin.
+
+## <a name="add-roles-to-prebuilt-entity"></a>Önceden oluşturulmuş varlığa rol ekleme
+
 1. **Varlıklar** listesinde, yeni varlığı açmak için **geographyV2'yi** seçin.
-1. İki rol `Origin`ekleyin `Destination`ve .
+1. Bir rol eklemek **+** için aşağıdaki iki rolü `Origin`seçin `Destination`ve ekleyin: ve .
 
     > [!div class="mx-imgBorder"]
     > ![Önceden oluşturulmuş varlığa rol ekleme](media/tutorial-entity-roles/add-roles-to-prebuilt-entity.png)
 
+## <a name="label-entity-roles-in-example-utterances"></a>Örnek sözlerle etiket varlık rolleri
+
 1. Sol taraftaki gezintiden **Niyetler'i** seçin ve ardından **MoveEmployeeToCity** amacını seçin. Dikkat edin şehir adları önceden oluşturulmuş varlık **coğrafyasıV2**ile etiketlenir.
-1. Bağlam araç çubuğunda **Varlık paletini**seçin.
+1. Bağlam araç çubuğunda, _kalem simgesiyle_ **Varlık paletini** seçin.
 
     > [!div class="mx-imgBorder"]
     > ![İçerik araç çubuğundan Entity Palette'yi seçin](media/tutorial-entity-roles/intent-detail-context-toolbar-select-entity-palette.png)
@@ -122,18 +121,21 @@ Bir rol, varlık verilerini ayıklamak için kullanıldığında kullanılmalıd
 
 ## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>Uygulamada yapılan değişikliklerin test edilebilmeleri için uygulamayı eğitin
 
-[!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
+Uygulamayı eğitmek için **Train'i**seçin. Eğitim, etkin modele yeni varlıklar ve etiketli sözcük ler gibi değişiklikleri uygular.
 
-## <a name="publish-the-app-so-the-trained-model-is-queryable-from-the-endpoint"></a>Eğitimli modelin bitiş noktasından sorgulanabilir olması için uygulamayı yayımlayın
+## <a name="publish-the-app-to-access-it-from-the-http-endpoint"></a>HTTP bitiş noktasından erişmek için uygulamayı yayımlayın
 
-[!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
+[!INCLUDE [LUIS How to Publish steps](includes/howto-publish.md)]
+
 
 ## <a name="get-intent-and-entity-prediction-from-endpoint"></a>Bitiş noktasından niyet ve varlık tahmini alın
 
-1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
+1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
 
 
-1. Adres çubuğundaki URL'nin sonuna gidip `Please move Carl Chamerlin from Tampa to Portland` yazın. Son sorgu dizesi parametresi ifade **s**orgusu olan `q` öğesidir. Bu söyleyiş, etiketli tüm söyleyişlerle aynı değildir, bu nedenle iyi bir `MoveEmployee` testtir ve çıkarılan varlıkla niyeti geri getirmelidir.
+1. Adres çubuğundaki URL'nin sonuna gidin ve `Please move Carl Chamerlin from Tampa to Portland` _YOUR_QUERY_HERE'yi_ değiştirin.
+
+Bu söyleyiş, etiketli tüm söyleyişlerle aynı değildir, bu nedenle iyi bir `MoveEmployee` testtir ve çıkarılan varlıkla niyeti geri getirmelidir.
 
     ```json
     {
@@ -171,11 +173,9 @@ Bir rol, varlık verilerini ayıklamak için kullanıldığında kullanılmalıd
     }
     ```
 
-    Doğru niyet tahmin edilir ve varlıklar dizisi, ilgili **varlıklar** özelliğindeki hem kaynak hem de hedef rollerine sahiptir.
+    The correct intent is predicted and the entities array has both the origin and destination roles in the corresponding **entities** property.
 
-## <a name="clean-up-resources"></a>Kaynakları temizleme
-
-[!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
+[!INCLUDE [LUIS How to clean up resources](includes/quickstart-tutorial-cleanup-resources.md)]
 
 ## <a name="related-information"></a>İlgili bilgiler
 

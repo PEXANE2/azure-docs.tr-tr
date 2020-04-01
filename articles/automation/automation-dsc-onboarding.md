@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.topic: conceptual
 ms.date: 12/10/2019
 manager: carmonm
-ms.openlocfilehash: 0bf70b73098427847c73b4dd962d56d44fe6ee2e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: HT
+ms.openlocfilehash: 554a4c64700bb189b4b9f085bd7c259312a36b4b
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80283217"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80410944"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>Azure Otomasyon Durumu Yapılandırması ile yönetim için onboarding makineleri
 
@@ -107,7 +107,7 @@ Diğer Azure aboneliklerinden VM'leri kaydetmenin en iyi yolu, DSC uzantısını
 
      `/opt/microsoft/dsc/Scripts/Register.py <Automation account registration key> <Automation account registration URL>`
 
-   - Otomasyon hesabınız için kayıt anahtarını ve kayıt URL'sini bulmak için, bu makalevarsa, Kayıt bölümünü [kullanarak Onboarding'e](#onboarding-securely-using-registration) bakın.
+   - Otomasyon hesabınız için kayıt anahtarını ve kayıt URL'sini bulmak için, bu makalenin kayıt bölümünü [kullanarak Onboarding'e](#onboarding-securely-using-registration) bakın.
 
 3. PowerShell DSC Yerel Yapılandırma Yöneticisi (LCM) varsayılanları kullanım durumunuzla eşleşmiyorsa veya yalnızca Azure Otomasyon Durumu Yapılandırması'na rapor veren yerleşik makinelere uymak istiyorsanız, 4-7 adımlarını izleyin. Aksi takdirde, doğrudan adım 7'ye geçin.
 

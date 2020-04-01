@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/20/2019
 ms.author: memildin
-ms.openlocfilehash: 23a00c766dbb38853c57c91e7f59ec364390c44b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f7a1eccd76313c5b3bc74a5b5ebdbcd202ca6841
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79245388"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435759"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Azure Güvenlik Merkezi'ndeki tümleşik güvenlik çözümleri
 Bu belge Azure Güvenlik Merkezi'ne bağlanmış olan güvenlik çözümlerini yönetmenize ve yenilerini eklemenize yardımcı olur.
@@ -36,7 +36,7 @@ Güvenlik Merkezi, Azure'daki tümleşik güvenlik çözümlerini etkinleştirme
 Şu anda, tümleşik güvenlik çözümleri [Qualys](https://www.qualys.com/public-cloud/#azure) ve [Rapid7](https://www.rapid7.com/products/insightvm/) ve Microsoft Application Gateway Web uygulama güvenlik duvarı tarafından güvenlik açığı değerlendirmesi içerir.
 
 > [!NOTE]
-> Güvenlik Merkezi, microsoft izleme aracısını iş ortağı sanal cihazlara yüklemez, çünkü çoğu güvenlik satıcısı harici aracıların cihazlarında çalışmasını yasaklar.
+> Güvenlik Merkezi, log analytics aracısını iş ortağı sanal cihazlara yüklemez, çünkü çoğu güvenlik satıcısı harici aracıların cihazlarında çalışmasını yasaklar.
 >
 >
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/09/2020
-ms.openlocfilehash: 357075caaf91769026deb839e038e5d42fb63a38
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 60f85a30815bc1bace409b50af6332bb6622d7ca
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80054678"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477988"
 ---
 # <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>Azure Kaynak Yöneticisi şablonlarını kullanarak Günlük Analizi çalışma alanını yönetme
 
@@ -40,13 +40,16 @@ Aşağıdaki tabloda, bu örnekte kullanılan kaynakların API sürümü listele
 | Kaynak | Kaynak türü | API sürümü |
 |:---|:---|:---|
 | Çalışma alanı   | çalışma alanı    | 2017-03-15-önizleme |
-| Search      | savedAramalar | 2015-03-20 |
+| Ara      | savedAramalar | 2015-03-20 |
 | Veri kaynağı | Datasources   | 2015-11-01-önizleme |
 | Çözüm    | çözümler     | 2015-11-01-önizleme |
 
 ## <a name="create-a-log-analytics-workspace"></a>Log Analytics çalışma alanı oluşturma
 
 Aşağıdaki örnek, yerel makinenizden gelen bir şablonu kullanarak bir çalışma alanı oluşturur. JSON şablonu yalnızca yeni çalışma alanının adını ve konumunu gerektirecek şekilde yapılandırılır. [Erişim denetim modu,](design-logs-deployment.md#access-control-mode)fiyatlandırma katmanı, bekletme ve kapasite rezervasyon düzeyi gibi diğer çalışma alanı parametreleri için belirtilen değerleri kullanır.
+
+> [!WARNING]
+> Aşağıdaki şablon bir Log Analytics çalışma alanı oluşturur ve veri toplamayı yapılandırır. Bu, fatura landırma ayarlarınızı değiştirebilir. Azure ortamınızda uygulamadan önce Bir Log Analytics çalışma alanında toplanan verilerin faturalandırmasını anlamak için [Azure Monitör Günlükleri ile kullanımı ve maliyetleri yönet'i](manage-cost-storage.md) gözden geçirin.
 
 Kapasite rezervasyonu için, SKU `CapacityReservation` ve özellik `capacityReservationLevel`için GB değeri belirterek veri sindirilmesi için seçili bir kapasite rezervasyonu tanımlarsınız. Aşağıdaki liste, yapılandırırken desteklenen değerleri ve davranışı ayrıntılarıyla anlatır.
 
@@ -75,7 +78,7 @@ Kapasite rezervasyonu için, SKU `CapacityReservation` ve özellik `capacityRese
               "description": "Specifies the name of the workspace."
             }
         },
-      "pricingTier": {
+      "sku": {
         "type": "string",
         "allowedValues": [
           "pergb2018",
@@ -131,7 +134,7 @@ Kapasite rezervasyonu için, SKU `CapacityReservation` ve özellik `capacityRese
             "location": "[parameters('location')]",
             "properties": {
                 "sku": {
-          "name": "[parameters('pricingTier')]"
+                    "name": "[parameters('sku')]"
                 },
                 "retentionInDays": 120,
                 "features": {
@@ -145,15 +148,15 @@ Kapasite rezervasyonu için, SKU `CapacityReservation` ve özellik `capacityRese
     }
     ```
 
-> Kapasite rezervasyon ayarları için [Bilgi] bu özellikleri "sku" altında kullanın:
+   >[!NOTE]
+   >Kapasite rezervasyon ayarları için bu özellikleri "sku" altında kullanın:
+   >* "isim": "CapacityReservation",
+   >* "capacityReservationLevel": 100
 
->   "isim": "CapacityReservation",
+2. Gereksinimlerinizi karşılamak için şablonu edin. Parametreleri satır değerleri olarak geçirmek yerine Kaynak [Yöneticisi parametreleri dosyası](../../azure-resource-manager/templates/parameter-files.md) oluşturmayı düşünün. Hangi özelliklerin ve değerlerin desteklenildiğini öğrenmek için [Microsoft.OperationalInsights/çalışma alanları şablonu](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces) başvurularını inceleyin. 
 
->   "capacityReservationLevel": 100
-
-
-2. Gereksinimlerinizi karşılamak için şablonu edin. Hangi özelliklerin ve değerlerin desteklenildiğini öğrenmek için [Microsoft.OperationalInsights/çalışma alanları şablonu](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces) başvurularını inceleyin. 
 3. Bu dosyayı yerel bir klasöre **deploylaworkspacetemplate.json** olarak kaydedin.
+
 4. Bu şablonu dağıtmaya hazırsınız. Çalışma alanını oluşturmak için PowerShell veya komut satırını kullanarak çalışma alanı adını ve konumunu komutun bir parçası olarak belirtirsiniz. Çalışma alanı adı, tüm Azure aboneliklerinde genel olarak benzersiz olmalıdır.
 
    * PowerShell için şablonu içeren klasörden aşağıdaki komutları kullanın:
@@ -197,7 +200,7 @@ Aşağıdaki şablon örneği nasıl gösterin:
         "description": "Workspace name"
       }
     },
-    "pricingTier": {
+    "sku": {
       "type": "string",
       "allowedValues": [
         "PerGB2018",
@@ -306,7 +309,7 @@ Aşağıdaki şablon örneği nasıl gösterin:
           "immediatePurgeDataOn30Days": "[parameters('immediatePurgeDataOn30Days')]"
         },
         "sku": {
-          "name": "[parameters('pricingTier')]"
+          "name": "[parameters('sku')]"
         }
       },
       "resources": [
@@ -605,7 +608,7 @@ Aşağıdaki şablon örneği nasıl gösterin:
       "type": "string",
       "value": "[reference(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName')), '2015-11-01-preview').customerId]"
     },
-    "pricingTier": {
+    "sku": {
       "type": "string",
       "value": "[reference(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName')), '2015-11-01-preview').sku.name]"
     },

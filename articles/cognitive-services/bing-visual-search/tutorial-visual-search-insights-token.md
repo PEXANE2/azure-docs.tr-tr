@@ -1,25 +1,25 @@
 ---
-title: ImageInsightsToken - Bing Visual Search'u kullanarak önceki aramalardan benzer görüntüleri bulun
+title: Görüntü öngörüleri belirteçlerini ve Bing Görsel Arama API'sini kullanarak önceki aramalardan benzer görüntüler bulma
 titleSuffix: Azure Cognitive Services
-description: ImageInsightsToken tarafından belirtilen görüntülerin URL'lerini almak için Bing Görsel Arama SDK'sını kullanın.
+description: Önceki aramalardan görüntülerin URL'lerini almak için Bing Görsel Arama istemcikitaplığını kullanın.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: tutorial
-ms.date: 03/27/2020
+ms.date: 03/31/2020
 ms.author: aahi
-ms.openlocfilehash: d005800ed317ff21389f18e4440858ea11042e53
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ad24a8a194a11c3fd5f7f77ea8c52197d5438edc
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80370089"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477913"
 ---
 # <a name="tutorial-find-similar-images-from-previous-searches-using-an-image-insights-token"></a>Öğretici: Görüntü öngörüleri belirteci kullanarak önceki aramalardan benzer görüntüleri bulma
 
-Görsel Arama SDK, önceki aramalardan çevrimiçi olarak bir `ImageInsightsToken`. Bu uygulama `ImageInsightsToken` bir alır ve sonraki bir aramada belirteci kullanır. Daha sonra `ImageInsightsToken` Bing'e gönderir ve çevrimiçi olarak bulunan benzer görüntülerin Bing Arama URL'leri ve URL'lerini içeren sonuçları döndürür.
+Görsel Arama istemci kitaplığı, önceki aramalardan çevrimiçi olarak `ImageInsightsToken`bir . Bu uygulama `ImageInsightsToken` bir alır ve sonraki bir aramada belirteci kullanır. Daha sonra `ImageInsightsToken` Bing'e gönderir ve çevrimiçi olarak bulunan benzer görüntülerin Bing Arama URL'leri ve URL'lerini içeren sonuçları döndürür.
 
 Bu öğretici için tam kaynak kodu [github](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/Bing-Visual-Search/BingVisualSearchInsightsTokens.cs)ek hata işleme ve ek açıklamalar ile bulunabilir.
 
@@ -36,9 +36,9 @@ Bu öğretici için tam kaynak kodu [github](https://github.com/Azure-Samples/co
 
 [!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 
-## <a name="get-the-imageinsightstoken-from-the-bing-image-search-sdk"></a>Bing Resim Arama SDK'dan ImageInsightsToken'ı edinin
+## <a name="get-the-imageinsightstoken-from-the-bing-image-search-client-library"></a>Bing Resim Arama istemci kitaplığından ImageInsightsToken'ı edinin
 
-Bu uygulama `ImageInsightsToken` [Bing Resim Arama SDK](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/image-search-sdk-quickstart)aracılığıyla elde edilen kullanır. Yeni bir C# konsol uygulamasında, API'yi `ImageSearchClient()`kullanmak için bir istemci oluşturun. Sonra `SearchAsync()` sorgu ile kullanın:
+Bu uygulama `ImageInsightsToken` [Bing Resim Arama istemci kitaplığı](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/image-search-sdk-quickstart)aracılığıyla elde edilen bir kullanır. Yeni bir C# konsol uygulamasında, API'yi `ImageSearchClient()`kullanmak için bir istemci oluşturun. Sonra `SearchAsync()` sorgu ile kullanın:
 
 ```csharp
 var client = new ImageSearchClient(new Microsoft.Azure.CognitiveServices.Search.ImageSearch.ApiKeyServiceClientCredentials(subKey));

@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: a429a1e454e73a1a9d544e308e5b2d60052d91a9
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 7a31eece6629558b14b614853addce59642e698b
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80349766"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422717"
 ---
 # <a name="troubleshoot"></a>Sorun giderme
 
@@ -38,7 +38,9 @@ Ek yardım için bize farmbeatssupport@microsoft.comulaşın. **Deployer.log** d
 **Düzeltici eylem**:
 
 1. FarmBeats Datahub kaynak grubunuza gidin.   
+
 2. Olay **Hub'ını** (DatafeedEventHubNamespace) seçin ve ardından gelen ileti sayısını denetleyin.
+
 3. Aşağıdakilerden birini yapın:   
    - *Gelen ileti yoksa,* aygıt ortağınızla iletişime geçin.  
    - *Gelen iletiler*varsa, iletişim farmbeatssupport@microsoft.com. Datahub ve Hızlandırıcı günlüklerinizi ve yakalanan telemetrinizi tekme.
@@ -52,6 +54,7 @@ Günlükleri nasıl indireceklerini anlamak için ["Günlükleri el ile topla"](
 **Düzeltici eylem**:
 
 1. İş ortağı kaydını doğru yaptığınızdan emin olun - datahub swagger'ınıza giderek bunu kontrol edebilir, /İş Ortağı API'sine gidin, Ortak kayıtlı olup olmadığını alın ve kontrol edin. Değilse, iş ortağı eklemek için [aşağıdaki adımları](get-sensor-data-from-sensor-partner.md#enable-device-integration-with-farmbeats) izleyin.
+
 2. Doğru Telemetri ileti biçimini kullandığınızdan emin olun:
 
 ```json
@@ -83,9 +86,12 @@ Günlükleri nasıl indireceklerini anlamak için ["Günlükleri el ile topla"](
 
 1. Datahub Swagger'da İş Ortağı API'sine gidin.
 2. **Çalıştır'ı** > **Deneyin'i** > **seçin.**
-3. İlgilendiğiniz sensör ortağının iş ortağının kimliğine dikkat edin.
-4. İş Ortağı API'sine geri dön ve **>Kimliği\<Al'ı **seçin.
-5. Adım 3'ten ortak kimliğini belirtin ve ardından **Yürüt'ün'u**seçin.
+
+> [!NOTE]
+> İlgilendiğiniz sensör ortağının ortak kimliği.
+
+3. İş Ortağı API'sine geri dön ve **>Kimliği\<Al'ı **seçin.
+4. Adım 3'ten ortak kimliğini belirtin ve ardından **Yürüt'ün'u**seçin.
 
    API yanıtı Olay Hub'ları bağlantı dizeolmalıdır.
 

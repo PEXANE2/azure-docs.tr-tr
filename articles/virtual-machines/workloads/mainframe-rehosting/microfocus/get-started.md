@@ -3,15 +3,15 @@ title: Azure'da Micro Focus geliştirme/test ortamları | Microsoft Dokümanlar
 description: Azure sanal makinelerinde (VM) Micro Focus çözümlerini kullanarak IBM z/OS ana bilgisayar iş yüklerinizi yeniden barındırın.
 author: njray
 ms.author: sread
-ms.date: 04/02/2019
+ms.date: 03/30/2020
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: d83b4c89d0f37e2217974d6d1ed32ac73d8fa4df
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 62d3f7cc75a887605cdd3c19ac2e45990e541d5e
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "60498908"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80410996"
 ---
 # <a name="micro-focus-devtest-environments-on-azure"></a>Azure'da Mikro Odak lama geliştirme/test ortamları
 
@@ -20,6 +20,9 @@ Azure'a bir geliştirme ve test ortamıyla başlamak, modernizasyon çabaların�
 Micro Focus, ilgi çekici ana bilgisayar geçişi ve yeniden barındırma araçları sunmak için Microsoft ile ortaklık yaptı. Azure ve Microsoft Windows platformunda geliştirme, sınama ve üretim senaryoları genelinde ana bilgisayar uygulamalarını çalıştırabilirsiniz.
 
 Micro Focus, mevcut COBOL ve PL/I iş uygulamalarını Azure'a genişleten geliştirme yeniden barındırma ve test yeniden barındırma çözümleri sunar.
+
+> [!NOTE]
+> Yakında: Azure VM'lerde [Micro Focus Enterprise Server 5.0'ı](https://techcommunity.microsoft.com/t5/azurecat/micro-focus-enterprise-server-5-0-quick-start-template-on-azure/ba-p/1160110) kurma talimatları.
 
 **Sonraki adımlar**
 

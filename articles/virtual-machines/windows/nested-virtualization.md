@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.service: virtual-machines-windows
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.openlocfilehash: 16f5bed5a2342bb1d120d0d3dc853e0bc44376dc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d127d3f9e66b7d2d40aa420e2116fee17d996514
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74033133"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437303"
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>Bir Azure VM'de iç içe sanallaştırmayı etkinleştirme
 
@@ -26,7 +26,7 @@ Bu makale, Azure VM'de Hyper-V'yi etkinleştirme ve bu konuk sanal makineye Inte
 
 ## <a name="create-a-nesting-capable-azure-vm"></a>İç içe geçme özelliğine sahip bir Azure VM oluşturma
 
-Yeni bir Windows Server 2016 Azure VM oluşturun.  Hızlı başvuru için, tüm v3 sanal makineler iç içe sanallaştırmayı destekler. İç içe geçmeyi destekleyen sanal makine boyutlarının tam listesi için [Azure İşlem Birimi makalesine](acu.md)göz atın.
+Yeni bir Windows Server 2016 Azure VM oluşturun. İç içe geçmeyi destekleyen sanal makine boyutlarının tam listesi için [Azure İşlem Birimi makalesine](acu.md)göz atın.
 
 Bir konuk sanal makinenin taleplerini destekleyecek kadar büyük bir VM boyutu seçmeyi unutmayın. Bu örnekte, D3_v3 boyutunda bir Azure VM kullanıyoruz. 
 

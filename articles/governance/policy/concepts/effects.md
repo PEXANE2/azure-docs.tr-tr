@@ -3,12 +3,12 @@ title: Efektlerin nasıl çalıştığını anlama
 description: Azure İlke tanımlarının, uyumluluğun nasıl yönetildiğini ve raporlanın nasıl belirlendiğini belirleyen çeşitli etkileri vardır.
 ms.date: 03/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 631c941173a500a4159a37c7c31107b9a6eab872
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0330cb5c732921efda3627dec92e486657097d82
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80239975"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422450"
 ---
 # <a name="understand-azure-policy-effects"></a>Azure İlkesi efektlerini anlama
 
@@ -19,7 +19,7 @@ Bu etkiler şu anda bir ilke tanımında desteklenir:
 - [Ekle](#append)
 - [Denetim](#audit)
 - [AuditifNotExists](#auditifnotexists)
-- [Inkar](#deny)
+- [Reddet](#deny)
 - [DeployIfNotExists](#deployifnotexists)
 - [Devre dışı](#disabled)
 - [EnforceOPAConstraint](#enforceopaconstraint) (önizleme)
@@ -432,15 +432,15 @@ DeployIfNotExists efektinin **ayrıntılar** özelliği, eşleşmek için ilgili
 
 ## <a name="enforceopaconstraint"></a>EnforceOPAConstraint
 
-Bu efekt, ilke *mode* tanımı `Microsoft.Kubernetes.Data`modu ile kullanılır. [Opa Constraint Framework](https://github.com/open-policy-agent/frameworks/tree/master/constraint#opa-constraint-framework) ile tanımlanan Gatekeeper v3 kabul kontrol kurallarını Azure'daki Kubernetes kümelerine [Açmak İlkes Ietkisini](https://www.openpolicyagent.org/) (OPA) geçirmek için kullanılır.
+Bu efekt, ilke *mode* tanımı `Microsoft.Kubernetes.Data`modu ile kullanılır. Gatekeeper v3 kabul kontrol [kurallarını, OPA Constraint Framework](https://github.com/open-policy-agent/frameworks/tree/master/constraint#opa-constraint-framework) to [Open Policy Agent](https://www.openpolicyagent.org/) (OPA) ile tanımlanan kuralı, Azure'da kendi kendini yöneten Kubernetes kümelerine geçirmek için kullanılır.
 
 > [!NOTE]
-> [Kubernetes için Azure İlkesi](aks-engine.md) Önizleme'dedir ve yalnızca yerleşik ilke tanımlarını destekler.
+> [AKS Engine için Azure İlkesi](aks-engine.md) Genel Önizleme'dedir ve yalnızca yerleşik ilke tanımlarını destekler.
 
 ### <a name="enforceopaconstraint-evaluation"></a>EnforceOPAConstraint değerlendirmesi
 
 Açık İlke Aracısı kabul denetleyicisi kümedeki yeni isteği gerçek zamanlı olarak değerlendirir.
-Her 15 dakikada bir kümenin tam taraması tamamlanır ve sonuçlar Azure Politikası'na bildirilir.
+Her 5 dakikada bir, kümenin tam taraması tamamlanır ve sonuçlar Azure İlkesi'ne bildirilir.
 
 ### <a name="enforceopaconstraint-properties"></a>EnforceOPAConstraint özellikleri
 
@@ -455,7 +455,7 @@ EnforceOPAConstraint etkisinin **ayrıntıları** özelliği Gatekeeper v3 kabul
 
 ### <a name="enforceopaconstraint-example"></a>EnforceOPAConstraint örneği
 
-Örnek: Gatekeeper v3 kabul kontrol kuralı Kubernetes konteyner CPU ve bellek kaynak sınırları ayarlamak için.
+Örnek: Aks Engine'de kapsayıcı CPU ve bellek kaynak sınırlarını ayarlamak için Gatekeeper v3 kabul kontrol kuralı.
 
 ```json
 "if": {
@@ -490,8 +490,8 @@ EnforceOPAConstraint etkisinin **ayrıntıları** özelliği Gatekeeper v3 kabul
 
 Bu efekt, ilke *mode* tanımı `Microsoft.ContainerService.Data`modu ile kullanılır. [Azure Kubernetes Hizmeti'nde](../../../aks/intro-kubernetes.md) [Rego](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego) ile tanımlanan Gatekeeper v2 kabul kontrol kurallarını [Açık İlke Aracısına](https://www.openpolicyagent.org/) (OPA) geçirmek için kullanılır.
 
-> [!IMPORTANT]
-> [Kubernetes için Azure İlkesi](rego-for-aks.md) Önizleme'dedir ve yalnızca yerleşik ilke tanımlarını destekler. Yerleşik ilkeler **Kubernetes** kategorisindedir. **EnforceRegoPolicy** etkisi ve ilgili **Kubernetes Hizmet** kategori ilkeleri _amortismana sunuluyor._ Bunun yerine, güncelleştirilmiş [EnforceOPAConstraint efektini](#enforceopaconstraint) kullanın.
+> [!NOTE]
+> [AKS için Azure İlkesi](rego-for-aks.md) Sınırlı Önizleme'de dir ve yalnızca yerleşik ilke tanımlarını destekler
 
 ### <a name="enforceregopolicy-evaluation"></a>EnforceRegoPolicy değerlendirmesi
 

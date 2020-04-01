@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: e4103f8360f6fa80470b0f8002a61f8ac903bd8b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b94725d4d3eb9fd6f13a39d00486b4ab085b9ef9
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79255437"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80473938"
 ---
 # <a name="performance-and-scalability-checklist-for-blob-storage"></a>Blob depolama için performans ve ölçeklenebilirlik kontrol listesi
 
@@ -32,9 +32,9 @@ Bu makalede, Blob depolama uygulamanızı geliştirirken izleyebileceğiniz bir 
 | &nbsp; |Ölçeklenebilirlik hedefleri |[Çok sayıda istemci aynı anda tek bir blob'a erişiyor mu?](#multiple-clients-accessing-a-single-blob-concurrently) |
 | &nbsp; |Ölçeklenebilirlik hedefleri |[Uygulamanız tek bir blob için ölçeklenebilirlik hedefleri içinde kalıyor mu?](#bandwidth-and-operations-per-blob) |
 | &nbsp; |Bölümleme |[Adlandırma kuralınız daha iyi yük dengelemesi sağlamak için tasarlandı mı?](#partitioning) |
-| &nbsp; |Ağ Oluşturma |[İstemci tarafındaki aygıtlar, gereken performansı elde etmek için yeterince yüksek bant genişliğine ve düşük gecikme adabına sahip mi?](#throughput) |
-| &nbsp; |Ağ Oluşturma |[İstemci tarafındaki aygıtların yüksek kaliteli bir ağ bağlantısı var mı?](#link-quality) |
-| &nbsp; |Ağ Oluşturma |[İstemci uygulaması depolama hesabıyla aynı bölgede mi?](#location) |
+| &nbsp; |Ağ |[İstemci tarafındaki aygıtlar, gereken performansı elde etmek için yeterince yüksek bant genişliğine ve düşük gecikme adabına sahip mi?](#throughput) |
+| &nbsp; |Ağ |[İstemci tarafındaki aygıtların yüksek kaliteli bir ağ bağlantısı var mı?](#link-quality) |
+| &nbsp; |Ağ |[İstemci uygulaması depolama hesabıyla aynı bölgede mi?](#location) |
 | &nbsp; |Doğrudan istemci erişimi |[Azure Depolama'ya doğrudan erişimi etkinleştirmek için paylaşılan erişim imzalarını (SAS) ve orijinler arası kaynak paylaşımını (CORS) mi kullanıyorsunuz?](#sas-and-cors) |
 | &nbsp; |Önbelleğe alma |[Uygulamanız sık erişilen ve nadiren değiştirilen verileri önbelleğe mi alıç?](#reading-data) |
 | &nbsp; |Önbelleğe alma |[Uygulamanız güncelleştirmeleri istemciye önbelleğe alıp daha büyük kümeler halinde yükleyerek toplu hale mi getiriyor?](#uploading-data-in-batches) |
@@ -115,7 +115,7 @@ Bu tür işlemlerin sıklığını azaltmak için bazı en iyi uygulamaları izl
   
 - Azure Depolama'da kullanılan bölümleme şeması hakkında daha fazla bilgi için Azure [Depolama: Güçlü Tutarlılığa Sahip Yüksek Kullanılabilirlik Li Bulut Depolama Hizmeti'ne](https://sigops.org/sosp/sosp11/current/2011-Cascais/printable/11-calder.pdf)bakın.
 
-## <a name="networking"></a>Ağ Oluşturma
+## <a name="networking"></a>Ağ
 
 Uygulamanın fiziksel ağ kısıtlamaları performans üzerinde önemli bir etkiye sahip olabilir. Aşağıdaki bölümlerde, kullanıcıların karşılaşabileceği bazı sınırlamalar açıklanabilir.  
 
@@ -125,7 +125,7 @@ Bant genişliği ve ağ bağlantısının kalitesi, aşağıdaki bölümlerde a�
 
 #### <a name="throughput"></a>Aktarım hızı
 
-Bant genişliği için sorun genellikle istemcinin yetenekleridir. Daha büyük Azure örneklerinin daha fazla kapasiteye sahip NIC'leri vardır, bu nedenle tek bir makineden daha yüksek ağ sınırlarına ihtiyacınız varsa daha büyük bir örnek veya daha fazla VM kullanmayı düşünmelisiniz. Azure Depolama'ya şirket içi bir uygulamadan erişiyorsanız, aynı kural geçerlidir: istemci aygıtının ağ özelliklerini ve Azure Depolama konumuna ağ bağlantısını anlamak ve gerektiğinde bunları geliştirmek veya tasarımı kendi yetenekleri dahilinde çalışmak için uygulama.
+Bant genişliği için sorun genellikle istemcinin yetenekleridir. Daha büyük Azure örneklerinin daha fazla kapasiteye sahip NIC'leri vardır, bu nedenle tek bir makineden daha yüksek ağ sınırlarına ihtiyacınız varsa daha büyük bir örnek veya daha fazla VM kullanmayı düşünmelisiniz. Azure Depolama'ya şirket içi bir uygulamadan erişiyorsanız, aynı kural geçerlidir: istemci aygıtının ağ özelliklerini ve Azure Depolama konumuna ağ bağlantısını anlamak ve gerektiğinde bunları geliştirin veya uygulamanızı kendi yetenekleri dahilinde çalışacak şekilde tasarlayın.
 
 #### <a name="link-quality"></a>Bağlantı kalitesi
 
@@ -267,7 +267,7 @@ Blobs'u hızlı bir şekilde yüklemek için, önce bir blob veya çok yükleyip
 Tek bir büyük blob'u hızlı bir şekilde yüklemek için, istemci uygulaması bloklarını veya sayfalarını paralel olarak yükleyebilir ve tek tek lekeler için ölçeklenebilirlik hedeflerine ve bir bütün olarak depolama hesabına dikkat edebilir. Azure Depolama istemci kitaplıkları paralel olarak yüklemeyi destekler. Örneğin, .NET veya Java'da izin verilen eşzamanlı istek sayısını belirtmek için aşağıdaki özellikleri kullanabilirsiniz. Desteklenen diğer diller için istemci kitaplıkları da benzer seçenekler sunar.
 
 - .NET için [BlobRequestOptions.ParallelOperationThreadCount](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions.paralleloperationthreadcount) özelliğini ayarlayın.
-- Java/Android için [BlobRequestOptions.setConcurrentRequestCount (son Integer eşzamanlıRequestCount)](/java/api/com.microsoft.azure.storage.blob._blob_request_options.setconcurrentrequestcount) yöntemini arayın.
+- Java/Android için [BlobRequestOptions.setConcurrentRequestCount (son Integer eşzamanlıRequestCount)](/java/api/com.microsoft.azure.storage.blob.blobrequestoptions.setconcurrentrequestcount) yöntemini arayın.
 
 ### <a name="upload-many-blobs-quickly"></a>Birçok blob'u hızlı bir şekilde yükleyin
 

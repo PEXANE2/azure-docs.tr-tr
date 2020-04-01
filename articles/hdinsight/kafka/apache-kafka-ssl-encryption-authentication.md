@@ -1,6 +1,6 @@
 ---
-title: Apache Kafka SSL şifreleme & kimlik doğrulama - Azure HDInsight
-description: Kafka müşterileri ile Kafka brokerları arasında ve Kafka brokerları arasında iletişim için SSL şifrelemesi ayarlayın. İstemcilerin SSL kimlik doğrulamasını ayarlayın.
+title: Apache Kafka TLS şifreleme & kimlik doğrulama - Azure HDInsight
+description: Kafka müşterileri ile Kafka brokerları arasında ve Kafka brokerları arasındaki iletişim için TLS şifrelemesi ayarlayın. İstemcilerin SSL kimlik doğrulamasını ayarlayın.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,25 +8,25 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2019
 ms.author: hrasheed
-ms.openlocfilehash: 4a363caf61046cf39c31ae2d5f35622b7b9109f4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 027a66f4b83225f3c776e1bff1d706f6f4dba976
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80129989"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80436988"
 ---
-# <a name="set-up-secure-sockets-layer-ssl-encryption-and-authentication-for-apache-kafka-in-azure-hdinsight"></a>Azure HDInsight'ta Apache Kafka için Güvenli Soket katmanı (SSL) şifreleme ve kimlik doğrulaması ayarlama
+# <a name="set-up-tls-encryption-and-authentication-for-apache-kafka-in-azure-hdinsight"></a>Azure HDInsight'ta Apache Kafka için TLS şifreleme ve kimlik doğrulaması ayarlama
 
-Bu makalede, Apache Kafka istemcileri ve Apache Kafka brokerları arasında SSL şifrelemesi nasıl ayarlayabileceğiniz gösterilmektedir. Ayrıca, istemcilerin kimlik doğrulamasını nasıl ayarlayabileceğinizi de gösterir (bazen iki yönlü SSL olarak da adlandırılır).
+Bu makalede, Apache Kafka istemcileri ve Apache Kafka brokerları arasında daha önce Güvenli Soketkatmanı (SSL) şifrelemesi olarak bilinen Aktarım Katmanı Güvenliği (TLS) şifrelemesi nasıl ayarlayabileceğinizgösterilmektedir. Ayrıca, istemcilerin kimlik doğrulamasını nasıl ayarlayabileceğinizi de gösterir (bazen iki yönlü TLS olarak da adlandırılır).
 
 > [!Important]
-> Kafka uygulamaları için kullanabileceğiniz iki istemci vardır: Bir Java istemcisi ve bir konsol istemcisi. SSL'yi hem üretmek hem de tüketmek için yalnızca Java istemcisi `ProducerConsumer.java` kullanabilir. Konsol üreticisi `console-producer.sh` istemci SSL ile çalışmıyor.
+> Kafka uygulamaları için kullanabileceğiniz iki istemci vardır: Bir Java istemcisi ve bir konsol istemcisi. TLS'yi `ProducerConsumer.java` hem üretmek hem de tüketmek için yalnızca Java istemcisi kullanabilir. Konsol üreticisi `console-producer.sh` istemci TLS ile çalışmıyor.
 
 > [!Note] 
 > SÜRÜM 1.1 ile HDInsight Kafka konsol üreticisi SSL desteklemiyor.
 ## <a name="apache-kafka-broker-setup"></a>Apache Kafka broker kurulumu
 
-Kafka SSL broker kurulumu dört HDInsight kümesi VM'yi aşağıdaki şekilde kullanır:
+Kafka TLS broker kurulumu dört HDInsight kümesi VM'yi aşağıdaki şekilde kullanır:
 
 * headnode 0 - Sertifika Yetkilisi (CA)
 * işçi düğümü 0, 1 ve 2 - broker
@@ -119,7 +119,7 @@ Broker kurulumuna son vermek için aşağıdaki ayrıntılı yönergeleri kullan
 
     ```
 
-## <a name="update-kafka-configuration-to-use-ssl-and-restart-brokers"></a>SSL'yi kullanmak ve brokerları yeniden başlatmak için Kafka yapılandırmasını güncelleştirin
+## <a name="update-kafka-configuration-to-use-tls-and-restart-brokers"></a>TLS'yi kullanmak ve brokerları yeniden başlatmak için Kafka yapılandırmasını güncelleştirin
 
 Şimdi bir keystore ve truststore ile her Kafka broker kurduk ve doğru sertifikaları ithal. Ardından, Ambari'yi kullanarak ilgili Kafka yapılandırma özelliklerini değiştirin ve Kafka brokerlarını yeniden başlatın.
 
@@ -166,7 +166,7 @@ Yapılandırma değişikliğini tamamlamak için aşağıdaki adımları yapın:
 
 ## <a name="client-setup-without-authentication"></a>İstemci kurulumu (kimlik doğrulaması olmadan)
 
-Kimlik doğrulamanız gerekmiyorsa, yalnızca SSL şifrelemesini ayarlama adımlarının özeti şunlardır:
+Kimlik doğrulamanız gerekmiyorsa, yalnızca TLS şifrelemesini ayarlama adımlarının özeti şunlardır:
 
 1. CA(etkin kafa düğümü) oturum açın.
 1. CA sertifikasını CA makinesinden istemci makinesine kopyalayın (wn0).
@@ -219,7 +219,7 @@ Bu adımlar aşağıdaki kod parçacıklarında ayrıntılı olarak açıklanmak
 ## <a name="client-setup-with-authentication"></a>İstemci kurulumu (kimlik doğrulama ile)
 
 > [!Note]
-> Aşağıdaki adımlar yalnızca hem SSL **şifrelemehem** de kimlik doğrulaması ayarlıyorsanız gereklidir. Yalnızca şifreleme ayarlıyorsanız, [kimlik doğrulaması olmadan Istemci kurulumuna](apache-kafka-ssl-encryption-authentication.md#client-setup-without-authentication)bakın.
+> Aşağıdaki adımlar yalnızca hem TLS **şifrelemehem** de kimlik doğrulaması ayarlıyorsanız gereklidir. Yalnızca şifreleme ayarlıyorsanız, [kimlik doğrulaması olmadan Istemci kurulumuna](apache-kafka-ssl-encryption-authentication.md#client-setup-without-authentication)bakın.
 
 Aşağıdaki dört adım, istemci kurulumünü tamamlamak için gereken görevleri özetler:
 
@@ -302,7 +302,7 @@ Her adımın ayrıntıları aşağıda verilmiştir.
 ## <a name="verification"></a>Doğrulama
 
 > [!Note]
-> HDInsight 4.0 ve Kafka 2.1 yüklüyse, kurulumunuzu doğrulamak için konsol üreticisini/tüketicilerini kullanabilirsiniz. Değilse, 9092 portundaki Kafka üreticisini çalıştırın ve konuya mesaj gönderin ve ardından SSL kullanan 9093 portundaki Kafka tüketicisini kullanın.
+> HDInsight 4.0 ve Kafka 2.1 yüklüyse, kurulumunuzu doğrulamak için konsol üreticisini/tüketicilerini kullanabilirsiniz. Değilse, 9092 portundaki Kafka üreticisini çalıştırın ve konuya mesaj gönderin ve TLS kullanan 9093 portundaki Kafka tüketicisini kullanın.
 
 ### <a name="kafka-21-or-above"></a>Kafka 2.1 ve üzeri
 

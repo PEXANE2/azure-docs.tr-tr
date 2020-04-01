@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: cherylmc
-ms.openlocfilehash: 25bc25d9ec12804cc20baa558dce67fb3f8269a1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cb9a02532c3651aca544ed946f40bdcff9e9be83
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77149225"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411767"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-radius-authentication-powershell"></a>RADIUS kimlik doğrulaması kullanarak Bir VNet'e Noktadan Siteye bağlantı yapılandırma: PowerShell
 
@@ -31,9 +31,9 @@ Bu makale, RADIUS sunucusu kullanarak kimlik doğrulaması ile bir P2S yapıland
 
 Noktadan Siteye bağlantılar için bir VPN cihazına veya genel kullanıma yönelik bir IP adresine gerek yoktur. P2S, SSTP (Secure Socket Tunneling Protocol), OpenVPN veya IKEv2 üzerinden VPN bağlantısı oluşturur.
 
-* SSTP yalnızca Windows istemci platformlarında desteklenen SSL tabanlı bir VPN tünelidir. Güvenlik duvarlarından geçebildiği için, herhangi bir yerden Azure’a bağlanmak için ideal bir seçenektir. Sunucu tarafında 1.0, 1.1 ve 1.2 SSTP sürümlerini destekliyoruz. Kullanılacak sürüm, istemci tarafından belirlenir. Windows 8.1 ve sonraki sürümlerinde, SSTP'de varsayılan olarak 1.2 kullanılır.
+* SSTP, yalnızca Windows istemci platformlarında desteklenen TLS tabanlı bir VPN tünelidir. Güvenlik duvarlarından geçebildiği için, herhangi bir yerden Azure’a bağlanmak için ideal bir seçenektir. Sunucu tarafında 1.0, 1.1 ve 1.2 SSTP sürümlerini destekliyoruz. Kullanılacak sürüm, istemci tarafından belirlenir. Windows 8.1 ve sonraki sürümlerinde, SSTP'de varsayılan olarak 1.2 kullanılır.
 
-* OpenVPN® Protokolü, SSL/TLS tabanlı VPN protokolü. Çoğu güvenlik duvarı TCP bağlantı noktası 443 giden açık olduğundan, Bir SSL VPN çözümü güvenlik duvarları nüfuz edebilir, Hangi SSL kullanır. OpenVPN, Android, iOS (11.0 ve üzeri sürümler), Windows, Linux ve Mac aygıtlarından (OSX sürümleri 10.13 ve üzeri) bağlanmak için kullanılabilir.
+* OpenVPN® Protokolü, SSL/TLS tabanlı VPN protokolü. Bir TLS VPN çözümü güvenlik duvarlarına nüfuz edebilir, çünkü çoğu güvenlik duvarı TCP bağlantı noktası 443 giden ilerlediği ve TLS'nin kullandığı açık olduğundan. OpenVPN, Android, iOS (11.0 ve üzeri sürümler), Windows, Linux ve Mac aygıtlarından (OSX sürümleri 10.13 ve üzeri) bağlanmak için kullanılabilir.
 
 * IKEv2 VPN, standart tabanlı bir IPsec VPN çözümüdür. IKEv2 VPN, Mac cihazlardan (OSX sürüm 10.11 ve üzeri) bağlantı kurmak için kullanılabilir.
 

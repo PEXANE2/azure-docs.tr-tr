@@ -6,46 +6,38 @@ ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 03/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: d40157523a074547885a14a3d92379f8e8b6f351
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 305632a0faa1eb7e217e86d36c5159e557df7aaf
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79254293"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80409263"
 ---
 # <a name="troubleshoot-azure-stream-analytics-outputs"></a>Azure Akış Analizi çıktılarını sorun giderme
 
-Bu sayfada çıktı bağlantılarıyla ilgili yaygın sorunlar ve bunları nasıl giderip ele alınıştırılabilmek açıklanmaktadır.
+Bu makalede, Azure Akış Analizi çıktı bağlantılarıyla ilgili sık karşılaşılan sorunlar, çıktı sorunlarının nasıl giderilen ve sorunların nasıl düzeltilene açıklanmaktadır. Birçok sorun giderme adımı, Akış Analizi işiniz için tanılama günlüklerinin etkinleştirilmesini gerektirir. Tanılama günlükleriniz etkinleştirildiyse, [tanılama günlüklerini kullanarak Azure Akış Analizi Sorun Giderme](stream-analytics-job-diagnostic-logs.md)bölümüne bakın.
 
 ## <a name="output-not-produced-by-job"></a>İş tarafından üretilmeyen çıktı
+
 1.  Her çıktı için **Test Bağlantısı** düğmesini kullanarak çıktılara bağlantıyı doğrulayın.
 
 2.  **Monitör** sekmesindeki [**İzleme Ölçümlerine**](stream-analytics-monitoring.md) bakın. Değerler toplandığı için, ölçümler birkaç dakika geciktirilir.
-    - Giriş Olayları 0'ı >, iş giriş verilerini okuyabilir. Giriş Olayları > 0 değilse, o zaman:
-      - Veri kaynağının geçerli veriye sahip olup olmadığını görmek için [Service Bus Explorer'ı](https://code.msdn.microsoft.com/windowsapps/Service-Bus-Explorer-f2abca5a)kullanarak bu verileri denetleyin. Bu denetim, iş Olay Hub'ını giriş olarak kullanıyorsa geçerlidir.
-      - Veri serileştirme biçiminin ve veri kodlamasının beklendiği gibi olup olmadığını denetleyin.
-      - İş bir Olay Hub'ı kullanıyorsa, iletinin gövdesinin *Null*olup olmadığını denetleyin.
+   * Giriş Olayları 0'dan büyükse, iş giriş verilerini okuyabilir. Giriş Olayları 0'dan büyük değilse, işin girişiyle ilgili bir sorun vardır. Giriş bağlantısı sorunlarını nasıl gidereceklerini öğrenmek için [sorun giderme giriş bağlantılarına](stream-analytics-troubleshoot-input.md) bakın.
+   * Veri Dönüştürme Hataları 0'dan büyükse ve yükseliyorsa, veri dönüştürme hataları hakkında ayrıntılı bilgi için [Azure Akışı Analizi veri hatalarına](data-errors.md) bakın.
+   * Runtime Hataları 0'dan büyükse, işiniz veri alabilir, ancak sorguyu işlerken hata lar oluşturur. Hataları bulmak için Denetim [Günlükleri'ne](../azure-resource-manager/management/view-activity-logs.md) gidin ve *Başarısız* durumuna filtre uygulayın.
+   * InputEvents 0'dan büyükse ve OutputEvents 0'a eşitse, aşağıdakilerden biri doğrudur:
+      * Sorgu işleme sıfır çıkış olayıyla sonuçlandı.
+      * Olaylar veya alanlar yanlış biçimlendirilmiş olabilir ve sorgu işleminden sonra sıfır çıktı elde edilebilir.
+      * İş, bağlantı veya kimlik doğrulama nedenleriyle verileri çıktı lavaboya itemedi.
 
-    - Veri Dönüştürme Hataları 0 > ve tırmanıyorsa, aşağıdakiler doğru olabilir:
-      - Çıkış olayı hedef lavabo şemasına uymaz.
-      - Olay şeması, sorgudaki olayların tanımlı veya beklenen şemasıyla eşleşmeyebilir.
-      - Olaydaki bazı alanların veri türleri beklentileri karşılamayabilir.
-
-    - Runtime Hataları 0 >, bu, işin verileri alabileceği, ancak sorguyu işlerken hata lar ürettiği anlamına gelir.
-      - Hataları bulmak için Denetim [Günlükleri'ne](../azure-resource-manager/management/view-activity-logs.md) gidin ve *Başarısız* durumuna filtre uygulayın.
-
-    - InputEvents > 0 ve OutputEvents = 0 ise, aşağıdakilerden birinin doğru olduğu anlamına gelir:
-      - Sorgu işleme sıfır çıkış olayıyla sonuçlandı.
-      - Olaylar veya alanları yanlış biçimlendirilmiş olabilir ve sorgu işleminden sonra sıfır çıktı elde edilebilir.
-      - İş, bağlantı veya kimlik doğrulama nedenleriyle verileri çıktı lavaboya itemedi.
-
-    - Daha önce bahsedilen tüm hata durumlarında, işlem günlüğü iletileri sorgu mantığının tüm olayları filtrelediği durumlar dışında ek ayrıntıları (neler olduğu dahil) açıklar. Birden çok olayın işlenmesi hata oluşturursa, Akış Analizi aynı türdeki ilk üç hata iletisini 10 dakika içinde İşlemgünlüklerine kaydeder. Daha sonra "Hatalar çok hızlı oluyor, bunlar bastırılıyor" iletisiyle ek özdeş hataları bastırır.
+   Daha önce bahsedilen tüm hata durumlarında, işlem günlüğü iletileri sorgu mantığının tüm olayları filtrelediği durumlar dışında ek ayrıntıları (neler olduğu dahil) açıklar. Birden çok olayın işlenmesi hata lar oluşturursa, hatalar her 10 dakikada bir toplanır.
 
 ## <a name="job-output-is-delayed"></a>İş çıkışı geciktirildi
 
 ### <a name="first-output-is-delayed"></a>İlk çıkış gecikti
+
 Stream Analytics işi başlatıldığında, giriş olayları okunur ama bazı durumlarda çıkışın oluşturulmasında bir gecikme olabilir.
 
 Zamansal sorgu öğelerindeki büyük zaman değerleri çıktı gecikmesine katkıda bulunabilir. Büyük zaman pencerelerinden doğru çıktı üretmek için, akış işi zaman penceresini doldurmak için mümkün olan en son zaman (en fazla yedi gün önce) verileri okuyarak başlar. Bu süre zarfında, bekleyen giriş olaylarının yetişme okuması tamamlanana kadar hiçbir çıktı üretilmez. Sistem akış işlerini yükselttiğinde bu sorun ortaya çıkabilir ve böylece işi yeniden başlatabilirsiniz. Bu tür yükseltmeler genellikle birkaç ayda bir gerçekleşir.
@@ -69,6 +61,7 @@ Bu etkenler, oluşturulan ilk çıktının güncelliklerini etkiler:
    - Analitik işlevler için, çıktı her olay için oluşturulur, gecikme yoktur.
 
 ### <a name="output-falls-behind"></a>Çıkış geride kalıyor
+
 İşin normal çalışması sırasında, işin çıktısının geri kaldığını görürseniz (daha uzun ve daha uzun gecikme süresi), aşağıdaki faktörleri inceleyerek temel nedenleri belirleyebilirsiniz:
 - Downstream lavabo nun daraltılmış olup olmadığı
 - Yukarı akış kaynağının daraltılmış olup olmadığı
@@ -88,11 +81,11 @@ Bu sorunu gidermek için, IGNORE_DUP_KEY seçeneğini etkinleştirerek anahtar i
 
 * IGNORE_DUP_KEY bir birincil anahtara veya ALTER INDEX kullanan benzersiz bir kısıtlamaya ayarlayamazsınız, dizini bırakmanız ve yeniden oluşturmanız gerekir.  
 * IGNORE_DUP_KEY seçeneğini, BIRINCIL ANAHTAR/BENZERSIZ kısıtlamasından farklı olan ve CREATE INDEX veya INDEX tanımı kullanılarak oluşturulan benzersiz bir dizin için ALTER INDEX'i kullanarak ayarlayabilirsiniz.  
+
 * IGNORE_DUP_KEY sütun deposu dizinleri için geçerli değildir, çünkü bu tür dizinlerde benzersizliği zorlayamadığınız için.  
 
 ## <a name="column-names-are-lower-cased-by-azure-stream-analytics"></a>Sütun adları Azure Akış Analizi tarafından küçük harfle belirlenir
 Azure Akış Analizi, özgün uyumluluk düzeyini (1.0) kullanırken sütun adlarını küçük harfle değiştirmek için kullanılır. Bu davranış daha sonraki uyumluluk düzeylerinde düzeltildi. Servis talebinin korunması için, müşterilere uyumluluk düzeyi 1.1 ve sonraki düzeye geçmelerini tavsiye ederiz. Azure Akış Analizi [işlerinin Uyumluluk düzeyi](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-compatibility-level)hakkında daha fazla bilgi bulabilirsiniz.
-
 
 ## <a name="get-help"></a>Yardım alın
 

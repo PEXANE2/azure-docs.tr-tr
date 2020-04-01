@@ -14,22 +14,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/02/2018
 ms.author: memildin
-ms.openlocfilehash: 9f49b858a23d0a1f58505d9f9971a31e8c9167e9
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 3b7181550fd76f158ec04e9779f4301bd74484e1
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "73664490"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435969"
 ---
 # <a name="quickstart-onboard-linux-computers-to-azure-security-center"></a>Hızlı başlangıç: Linux bilgisayarlarını Azure Güvenlik Merkezi’ne ekleme
-Azure aboneliklerinize bindikten sonra, bir Aracı sağlayarak Azure dışında (örneğin şirket içinde veya diğer bulutlarda) çalışan Linux kaynakları için Güvenlik Merkezi'ni etkinleştirebilirsiniz. Aracı, Microsoft İzleme Aracısı (MMA) olarak adlandırılır, ancak OMS aracısı olarak da bilinir.
+Azure aboneliklerinize bindikten sonra, bir Aracı sağlayarak Azure dışında (örneğin şirket içinde veya diğer bulutlarda) çalışan Linux kaynakları için Güvenlik Merkezi'ni etkinleştirebilirsiniz. Aracı, Log Analytics aracısı olarak adlandırılır, ancak OMS aracısı olarak da bilinir.
 
 Bu hızlı başlangıç, Aracıyı Linux bilgisayarına nasıl yükleyersiniz gösterir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 Güvenlik Merkezi ile çalışmaya başlamak için Microsoft Azure aboneliğinizin olması gerekir. Bir aboneliğiniz yoksa [ücretsiz hesap](https://azure.microsoft.com/pricing/free-trial/) için kaydolabilirsiniz.
 
-Bu hızlı başlangıçtaki adımlara geçmeden önce Güvenlik Merkezi’nin Standart fiyatlandırma katmanında olmanız gerekir. Yükseltme yönergeleri için bkz. [Azure aboneliğinizi Güvenlik Merkezi Standart katmanına ekleme](security-center-get-started.md). Güvenlik Merkezi'nin Standard'ına ücretsiz olarak bakabilirsiniz. Daha fazla bilgi için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/security-center/).
+Bu hızlı başlangıç yapmadan önce Güvenlik Merkezi'nin Standart fiyatlandırma katmanında olmalısınız. Yükseltme yönergeleri için bkz. [Azure aboneliğinizi Güvenlik Merkezi Standart katmanına ekleme](security-center-get-started.md). Güvenlik Merkezi'nin Standard'ına ücretsiz olarak bakabilirsiniz. Daha fazla bilgi için bkz. [fiyatlandırma sayfası](https://azure.microsoft.com/pricing/details/security-center/).
 
 ## <a name="add-new-linux-computer"></a>Yeni Linux bilgisayarı ekleme
 

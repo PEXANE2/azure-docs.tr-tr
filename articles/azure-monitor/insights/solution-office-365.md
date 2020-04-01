@@ -5,13 +5,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 01/08/2019
-ms.openlocfilehash: 0018ae55ab74e691577a34a397c15355587e0fac
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/30/2020
+ms.openlocfilehash: 5aa025fb366634e796abfb2eb9c0035d9b87dc3c
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77663275"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437041"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Azure'da Office 365 yönetim çözümü (Önizleme)
 
@@ -20,7 +20,7 @@ ms.locfileid: "77663275"
 
 > [!IMPORTANT]
 > ## <a name="solution-update"></a>Çözüm güncelleştirmesi
-> Bu çözüm, [Azure Sentinel'deki](../../sentinel/overview.md) [Office 365](../../sentinel/connect-office-365.md) Genel Kullanılabilirlik çözümü ve [Azure AD raporlama ve izleme çözümü yle](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md)değiştirilmiştir. Birlikte, gelişmiş bir yapılandırma deneyimiyle önceki Azure Monitor Office 365 çözümünün güncelleştirilmiş bir sürümünü sağlarlar. Mevcut çözümü 30 Nisan 2020 tarihine kadar kullanmaya devam edebilirsiniz.
+> Bu çözüm, [Azure Sentinel'deki](../../sentinel/overview.md) [Office 365](../../sentinel/connect-office-365.md) Genel Kullanılabilirlik çözümü ve [Azure AD raporlama ve izleme çözümü yle](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md)değiştirilmiştir. Birlikte, gelişmiş bir yapılandırma deneyimiyle önceki Azure Monitor Office 365 çözümünün güncelleştirilmiş bir sürümünü sağlarlar. Mevcut çözümü 30 Temmuz 2020'ye kadar kullanmaya devam edebilirsiniz.
 > 
 > Azure Sentinel, günlükleri alan ve algılamalar, araştırmalar, avcılık ve makine öğrenimi odaklı öngörüler dahil olmak üzere ek SIEM işlevselliği sağlayan bulut yerel güvenlik bilgileri ve Olay Yönetimi çözümüdür. Azure Sentinel'i kullanmak artık size Office 365 SharePoint etkinliğini ve Exchange yönetim günlüklerini almanızı sağlayacaktır.
 > 
@@ -53,7 +53,7 @@ ms.locfileid: "77663275"
 > | where TimeGenerated >= ago(1d) 
 > | where OfficeWorkload == "AzureActiveDirectory"                      
 > | where Operation == 'UserLoginFailed'
-> | summarize count() by UserId 
+> | summarize count() by UserId    
 > ```
 > 
 > ```Kusto
@@ -82,10 +82,10 @@ ms.locfileid: "77663275"
 > ### <a name="q-do-i-need-azure-sentinel-to-connect-the-azure-ad-logs"></a>S: Azure REKLAM günlüklerini bağlamak için Azure Sentinel'e ihtiyacım var mı?
 > Azure Sentinel çözümüyle ilgili olmayan [Azure AD günlükleri tümleştirmesini Azure Monitor ile](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)yapılandırabilirsiniz. Azure Sentinel, Azure REKLAM günlükleri için yerel bir bağlayıcı ve kutu dışı içerik sağlar. Daha fazla bilgi için, kutunun dışında güvenlik odaklı içerik le ilgili aşağıdaki soruya bakın.
 >
-> ###   <a name="q-what-are-the-differences-when-connecting-azure-ad-logs-from-azure-sentinel-and-azure-monitor"></a>S: Azure Sentinel ve Azure Monitor'dan Azure AD günlüklerini bağlarken ne gibi farklar nelerdir?
+> ###    <a name="q-what-are-the-differences-when-connecting-azure-ad-logs-from-azure-sentinel-and-azure-monitor"></a>S: Azure Sentinel ve Azure Monitor'dan Azure AD günlüklerini bağlarken ne gibi farklar nelerdir?
 > Azure Sentinel ve Azure Monitor, aynı Azure [REKLAM raporlama ve izleme çözümüne](../../active-directory/reports-monitoring/plan-monitoring-and-reporting.md)dayalı olarak Azure AD günlüklerine bağlanır. Azure Sentinel, aynı verileri bağlayan ve izleme bilgileri sağlayan tek tıklamayla yerel bir bağlayıcı sağlar.
 >
-> ###   <a name="q-what-do-i-need-to-change-when-moving-to-the-new-azure-ad-reporting-and-monitoring-tables"></a>S: Yeni Azure AD raporlama ve izleme tablolarına taşınırken neyi değiştirmem gerekir?
+> ###    <a name="q-what-do-i-need-to-change-when-moving-to-the-new-azure-ad-reporting-and-monitoring-tables"></a>S: Yeni Azure AD raporlama ve izleme tablolarına taşınırken neyi değiştirmem gerekir?
 > Uyarılardaki sorgular, panolar ve Office 365 Azure AD verilerini kullanarak oluşturduğunuz tüm içerikler de dahil olmak üzere Azure REKLAM verilerini kullanan tüm sorguların yeni tablolar kullanılarak yeniden oluşturulması gerekir.
 >
 > Azure Sentinel ve Azure AD, Azure AD raporlama ve izleme çözümüne taşınırken kullanabileceğiniz yerleşik içerik sağlar. Daha fazla bilgi için, kullanıma hazır güvenlik odaklı içerik ve [Azure Etkin Dizin raporları için Azure Monitor çalışma kitaplarını nasıl kullanacağıyla](../../active-directory/reports-monitoring/howto-use-azure-monitor-workbooks.md)ilgili bir sonraki soruya bakın. 
@@ -103,7 +103,7 @@ ms.locfileid: "77663275"
 > ### <a name="q-does-azure-sentinel-provide-additional-connectors-as-part-of-the-solution"></a>S: Azure Sentinel çözümün bir parçası olarak ek bağlayıcılar sağlıyor mu?
 > Evet, bkz. [Azure Sentinel veri kaynaklarını bağlayın.](../../sentinel/connect-data-sources.md)
 > 
-> ###   <a name="q-what-will-happen-on-april-30-do-i-need-to-offboard-beforehand"></a>S: 30 Nisan'da ne olacak? Önceden izinden ayrılmam gerekiyor mu?
+> ###    <a name="q-what-will-happen-on-april-30-do-i-need-to-offboard-beforehand"></a>S: 30 Nisan'da ne olacak? Önceden izinden ayrılmam gerekiyor mu?
 > 
 > - **Office365** çözümünden veri alamazsınız. Çözüm artık Market'te kullanılmayacak
 > - Azure Sentinel müşterileri için, Log Analytics çalışma alanı çözümü **Office365,** Azure Sentinel **SecurityInsights** çözümüne dahil edilecektir.
@@ -315,7 +315,7 @@ Bu kayıtlar, Azure Etkin Dizin nesnelerinde değişiklik veya eklemeyapıldığ
 | AktörContextId | Aktörün ait olduğu kuruluşun GUID'i. |
 | AktörIpAddress | Aktörün IPV4 veya IPV6 adres biçimindeki IP adresi. |
 | InterSystemsId | Office 365 hizmetindeki bileşenler arasındaki eylemleri izleyen GUID. |
-| IntraSystemid |   Eylemi izlemek için Azure Active Directory tarafından oluşturulan GUID. |
+| IntraSystemid |     Eylemi izlemek için Azure Active Directory tarafından oluşturulan GUID. |
 | SupportTicketId | "Adına hareket et" durumlarında eylem için müşteri destek bilet kimliği. |
 | HedefBağlamid | Hedeflenen kullanıcının ait olduğu kuruluşun GUID'i. |
 
@@ -330,7 +330,7 @@ Bu kayıtlar Veri Merkezi Güvenlik denetim verilerinden oluşturulur.
 | YükseklikOnay Süresi | Yükseklik onaylandığı zaman için zaman damgası. |
 | YükseklikOnaylayıcı | Bir Microsoft yöneticisinin adı. |
 | YükseklikSüresi | Yükselmenin etkin olduğu süre. |
-| YükseklikRequestId |  Yükseklik isteği için benzersiz bir tanımlayıcı. |
+| YükseklikRequestId |     Yükseklik isteği için benzersiz bir tanımlayıcı. |
 | YükseklikRolü | Yükseklik için istenen rol. |
 | Yükseklik Zamanı | Yükselmenin başlangıç saati. |
 | Start_time | Cmdlet yürütmenin başlangıç saati. |
@@ -344,8 +344,8 @@ Bu kayıtlar Exchange yapılandırmasına değişiklikler yapıldığında oluş
 |:--- |:--- |
 | Ofis İş Yükü | Exchange |
 | RecordType     | ExchangeAdmin |
-| Harici Erişim |  Cmdlet'in kuruluşunuzdaki bir kullanıcı, Microsoft veri merkezi personeli veya veri merkezi hizmet hesabı veya temsilci bir yönetici tarafından çalıştırılıp çalıştırılmayacağını belirtir. False değeri, cmdlet'in kuruluşunuzdaki biri tarafından çalıştırıldığını gösterir. True değeri, cmdlet'in veri merkezi personeli, veri merkezi hizmet hesabı veya temsilci yöneticisi tarafından çalıştırıldığını gösterir. |
-| ModifiyeObjectResolvedName |  Bu cmdlet tarafından değiştirilen nesnenin kullanıcı dostu adıdır. Bu yalnızca cmdlet nesneyi değiştirirse günlüğe kaydedilir. |
+| Harici Erişim |     Cmdlet'in kuruluşunuzdaki bir kullanıcı, Microsoft veri merkezi personeli veya veri merkezi hizmet hesabı veya temsilci bir yönetici tarafından çalıştırılıp çalıştırılmayacağını belirtir. False değeri, cmdlet'in kuruluşunuzdaki biri tarafından çalıştırıldığını gösterir. True değeri, cmdlet'in veri merkezi personeli, veri merkezi hizmet hesabı veya temsilci yöneticisi tarafından çalıştırıldığını gösterir. |
+| ModifiyeObjectResolvedName |     Bu cmdlet tarafından değiştirilen nesnenin kullanıcı dostu adıdır. Bu yalnızca cmdlet nesneyi değiştirirse günlüğe kaydedilir. |
 | OrganizationName | Kiracının adı. |
 | OriginatingServer | Cmdlet'in yürütüldürün sunucunun adı. |
 | Parametreler | İşlemler özelliğinde tanımlanan cmdlet ile kullanılan tüm parametrelerin adı ve değeri. |
@@ -366,7 +366,7 @@ Bu kayıtlar, Exchange posta kutularında değişiklikler veya eklemeler yapıld
 | Müşteri Sürümü | E-posta istemcisinin sürümü. |
 | InternalLogonType | Dahili kullanım için ayrılmıştır. |
 | Logon_Type | Posta kutusuna erişen ve günlüğe kaydedilen işlemi gerçekleştiren kullanıcı türünü gösterir. |
-| LogonUserDisplayName |    İşlemi gerçekleştiren kullanıcının kullanıcı dostu adı. |
+| LogonUserDisplayName |     İşlemi gerçekleştiren kullanıcının kullanıcı dostu adı. |
 | LogonUserSid | İşlemi gerçekleştiren kullanıcının SID'si. |
 | Posta KutusuGuid | Erişilen posta kutusunun Exchange GUID'i. |
 | MailboxOwnerMasterAccountSid | Posta kutusu sahibi hesabının ana hesabı SID. |
@@ -419,7 +419,7 @@ Bu özellikler tüm SharePoint kayıtları için ortaktadır.
 | EventSource | SharePoint'te bir olayın oluştuğunu tanımlar. Olası değerler SharePoint veya ObjectModel'dir. |
 | ItemType | Erişilen veya değiştirilen nesne türü. Nesne türleri hakkında ayrıntılar için ItemType tablosuna bakın. |
 | MakineDomainInfo | Aygıt eşitleme işlemleri hakkında bilgi. Bu bilgiler yalnızca istekte varsa bildirilir. |
-| MachineId |   Aygıt eşitleme işlemleri hakkında bilgi. Bu bilgiler yalnızca istekte varsa bildirilir. |
+| MachineId |     Aygıt eşitleme işlemleri hakkında bilgi. Bu bilgiler yalnızca istekte varsa bildirilir. |
 | Site_ | Kullanıcı tarafından erişilen dosya veya klasörün bulunduğu sitenin GUID'i. |
 | Source_name | Denetlenen işlemi tetikleyen varlık. Olası değerler SharePoint veya ObjectModel'dir. |
 | Useragent | Kullanıcının istemcisi veya tarayıcısı hakkında bilgi. Bu bilgiler istemci veya tarayıcı tarafından sağlanır. |
@@ -434,7 +434,7 @@ Bu kayıtlar, SharePoint'te yapılandırma değişiklikleri yapıldığında olu
 | Ofis İş Yükü | SharePoint |
 | Ofis İş Yükü | SharePoint |
 | Özel Etkinlik | Özel olaylar için isteğe bağlı dize. |
-| Event_Data |  Özel olaylar için isteğe bağlı yük. |
+| Event_Data |     Özel olaylar için isteğe bağlı yük. |
 | Modifiye Özellikler | Özellik, bir sitenin veya site koleksiyonu yönetici grubunun üyesi olarak kullanıcı eklemek gibi yönetici etkinlikleri için dahildir. Özellik, değiştirilen özelliğin adını (örneğin, Site Yöneticisi grubu), değiştirilen özelliğin yeni değerini (site yöneticisi olarak eklenen kullanıcı gibi) ve değiştirilen nesnenin önceki değerini içerir. |
 
 
@@ -452,9 +452,9 @@ Bu kayıtlar SharePoint'teki dosya işlemlerine yanıt olarak oluşturulur.
 | PaylaşımTürü | Kaynağın paylaşıldığı kullanıcıya atanan paylaşım izinlerinin türü. Bu kullanıcı UserSharedWith parametresi tarafından tanımlanır. |
 | Site_Url | Kullanıcı tarafından erişilen dosya veya klasörün bulunduğu sitenin URL'si. |
 | SourceFileExtension | Kullanıcı tarafından erişilen dosya uzantısı. Erişilen nesne bir klasörse, bu özellik boştur. |
-| Sourcefilename |  Kullanıcı tarafından erişilen dosya veya klasörün adı. |
+| Sourcefilename |     Kullanıcı tarafından erişilen dosya veya klasörün adı. |
 | KaynakRelativeUrl | Kullanıcı tarafından erişilen dosyayı içeren klasörün URL'si. SiteURL, SourceRelativeURL ve SourceFileName parametrelerinin değerlerinin birleşimi, kullanıcı tarafından erişilen dosyanın tam yol adı olan ObjectID özelliğinin değeriyle aynıdır. |
-| Kullanıcı Paylaşılan |  Kaynağın paylaşılabilen kullanıcı. |
+| Kullanıcı Paylaşılan |     Kaynağın paylaşılabilen kullanıcı. |
 
 
 

@@ -7,16 +7,16 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: fd5308574e84ab6d2e30b9352254683b2d1d6fdd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c0521f384a333c3054397fb0ec7c2ab907e54f67
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78403572"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411759"
 ---
 # <a name="customer-managed-key-disk-encryption"></a>Müşteri tarafından yönetilen anahtar disk şifrelemesi
 
-Azure HDInsight, HDInsight küme sanal makinelerine bağlı yönetilen diskler ve kaynak diskleri üzerindeki veriler için müşteri tarafından yönetilen anahtar şifrelemesini destekler. Bu özellik, HDInsight kümelerinizde veri güvenliğini sağlayan şifreleme anahtarlarını yönetmek için Azure Key Vault'u kullanmanıza olanak tanır. 
+Azure HDInsight, HDInsight küme sanal makinelerine bağlı yönetilen diskler ve kaynak diskleri üzerindeki veriler için müşteri tarafından yönetilen anahtar şifrelemesini destekler. Bu özellik, HDInsight kümelerinizde veri güvenliğini sağlayan şifreleme anahtarlarını yönetmek için Azure Key Vault'u kullanmanıza olanak tanır.
 
 HDInsight'taki tüm yönetilen diskler Azure Depolama Hizmeti Şifrelemesi (SSE) ile korunur. Varsayılan olarak, bu diskler üzerindeki veriler Microsoft tarafından yönetilen anahtarlar kullanılarak şifrelenir. HDInsight için müşteri tarafından yönetilen anahtarları etkinleştiriseniz, Azure Key Vault'u kullanarak HDInsight'ın bu anahtarları kullanması ve yönetmesi için şifreleme anahtarlarını sağlarsınız.
 
@@ -146,6 +146,42 @@ az hdinsight rotate-disk-encryption-key \
 --name MyCluster \
 --resource-group MyResourceGroup
 ```
+
+## <a name="azure-resource-manager-templates"></a>Azure Resource Manager şablonları
+
+Kaynak Yöneticisi şablonu kullanarak müşteri yönetim anahtarlarını kullanmak için şablonunuzu aşağıdaki değişikliklerle güncelleştirin:
+
+1. **azuredeploy.json** dosyasında, kaynaklar nesnesine aşağıdaki özelliği ekleyin:
+
+    ```json
+       "diskEncryptionProperties":
+         {
+                 "vaultUri": "[parameters('diskEncryptionVaultUri')]",
+                  "keyName": "[parameters('diskEncryptionKeyName')]",
+                  "keyVersion": "[parameters('diskEncryptionKeyVersion')]",
+                   "msiResourceId": "[parameters('diskEncryptionMsiResourceId')]"
+         }
+
+1. In the **azuredeploy.parameters.json** file, add the following parameters. You can get the values of these parameters from the Key Vault URI and the managed Identity. For example, if you have the following URI and identity values,
+    * Sample key vault URI: https://<KeyVault_Name>.vault.azure.net/keys/clusterkey/<Cluster_Key_Value>
+    * Sample user-assigned managed identity: "/subscriptions/<subscriptionID>/resourcegroups/<ResourceGroup_Name>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<MSI_Name>
+
+    The parameters in the **azuredeploy.parameters.json** file are:
+
+    ```json
+   "diskEncryptionVaultUri": {
+            "value": "https://<KeyVault_Name>.vault.azure.net"
+        },
+        "diskEncryptionKeyName": {
+            "value": "clusterkey"
+        },
+        "diskEncryptionKeyVersion": {
+            "value": "<Cluster_Key_Value>"
+        },
+        "diskEncryptionMsiResourceId": {
+            "value": "/subscriptions/<subscriptionID>/resourcegroups/<ResourceGroup_Name>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<MSI_Name>"
+        }
+    ```
 
 ## <a name="faq-for-customer-managed-key-encryption"></a>Müşteri tarafından yönetilen anahtar şifrelemesi için SSS
 

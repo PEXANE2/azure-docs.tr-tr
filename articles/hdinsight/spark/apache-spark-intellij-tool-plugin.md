@@ -1,23 +1,23 @@
 ---
-title: 'Öğretici - IntelliJ için Azure Araç Seti: Kıvılcım uygulaması - HDInsight'
-description: Öğretici - Scala'da yazılmış Spark uygulamalarını geliştirmek ve bunları bir HDInsight Spark kümesine göndermek için IntelliJ için Azure Araç Kiti'ni kullanın.
+title: 'IntelliJ için Azure Araç Seti: Kıvılcım uygulaması - HDInsight'
+description: Scala'da yazılmış Spark uygulamalarını geliştirmek ve bunları bir HDInsight Spark kümesine göndermek için IntelliJ için Azure Araç Kiti'ni kullanın.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.topic: tutorial
+ms.topic: conceptual
 ms.date: 09/04/2019
-ms.openlocfilehash: 2631a0906a0f0886bdc106f1afef99860a6fe00b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d80f4cb12c79519818f6eccb2bb565bac472b471
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79239535"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397688"
 ---
-# <a name="tutorial-use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-hdinsight-cluster"></a>Öğretici: HDInsight kümesi için Apache Spark uygulamaları oluşturmak için IntelliJ için Azure Araç Kiti'ni kullanın
+# <a name="use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-hdinsight-cluster"></a>HDInsight kümesi için Apache Spark uygulamaları oluşturmak için IntelliJ için Azure Araç Kiti'ni kullanın
 
-Bu öğretici, IntelliJ IDE için **Azure Araç Seti** eklentisini kullanarak Azure HDInsight'ta Apache Spark uygulamalarının nasıl geliştirileceğini göstermektedir. [Azure HDInsight,](../hdinsight-overview.md) Hadoop, Apache Spark, Apache Hive ve Apache Kafka gibi açık kaynaklı çerçeveleri kullanmanıza olanak tanıyan bulutta yönetilen, açık kaynaklı bir analiz hizmetidir.
+Bu makalede, IntelliJ IDE için **Azure Araç Seti** eklentisini kullanarak Azure HDInsight'ta Apache Spark uygulamalarının nasıl geliştirileceği gösterilmektedir. [Azure HDInsight,](../hdinsight-overview.md) Hadoop, Apache Spark, Apache Hive ve Apache Kafka gibi açık kaynaklı çerçeveleri kullanmanıza olanak tanıyan bulutta yönetilen, açık kaynaklı bir analiz hizmetidir.
 
 Azure Araç **Seti** eklentisini birkaç şekilde kullanabilirsiniz:
 
@@ -25,7 +25,7 @@ Azure Araç **Seti** eklentisini birkaç şekilde kullanabilirsiniz:
 * Azure HDInsight Spark küme kaynaklarına erişin.
 * Yerel olarak bir Scala Spark uygulaması geliştirin ve çalıştırın.
 
-Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
+Bu makalede şunları öğreneceksiniz:
 > [!div class="checklist"]
 > * IntelliJ eklentisi için Azure Araç Kiti'ni kullanma
 > * Apache Spark uygulamalarını geliştirin
@@ -35,7 +35,7 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 * HDInsight üzerinde bir Apache Spark kümesi. Yönergeler için bkz. [Azure HDInsight'ta Apache Spark kümeleri oluşturma](apache-spark-jupyter-spark-sql.md).
 
-* [Oracle Java Geliştirme kiti](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).  Bu öğretici, Java sürümü 8.0.202 kullanır.
+* [Oracle Java Geliştirme kiti](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).  Bu makalede Java sürümü 8.0.202 kullanır.
 
 * IntelliJ IDEA. Bu makalede [IntelliJ IDEA Topluluk ver kullanır.  2018.3.4](https://www.jetbrains.com/idea/download/).
 
@@ -77,7 +77,7 @@ Scala eklentisini yüklemek için aşağıdaki adımları gerçekleştirin:
 
     |  Özellik   | Açıklama   |  
     | ----- | ----- |  
-    |Proje adı| Bir ad girin.  Bu öğreticide `myApp` kullanılır.|  
+    |Proje adı| Bir ad girin.  Bu makalede `myApp`kullanır.|  
     |Proje&nbsp;konumu| Projenizi kaydetmek için istediğiniz konumu girin.|
     |Proje SDK| Bu, IDEA'yı ilk kullanımınızda boş olabilir.  **Yeni...'yi** seçin ve JDK'nıza gidin.|
     |Kıvılcım Sürümü|Oluşturma sihirbazı Spark SDK ve Scala SDK için uygun sürümü entegre eder. Spark kümesi sürümü 2.0’dan eskiyse **Spark 1.x** seçeneğini belirleyin. Aksi takdirde, **Spark2.x** seçeneğini belirleyin. Bu örnek, **Spark 2.3.0 (Scala 2.11.8)** kullanır.|
@@ -472,7 +472,7 @@ Bu uygulamayı kullanmaya devam etmeyecekseniz, oluşturduğunuz kümeyi aşağ�
 
 1. **Hizmetler**altında **HDInsight kümelerini** seçin.
 
-1. Görünen HDInsight kümeleri listesinde, bu öğretici için oluşturduğunuz kümenin yanındaki **...** kümesini seçin.
+1. Görünen HDInsight kümeleri listesinde, bu makale için oluşturduğunuz kümenin yanındaki **...** kümesini seçin.
 
 1. **Sil**’i seçin. **Evet'i**seçin.
 
@@ -480,7 +480,7 @@ Bu uygulamayı kullanmaya devam etmeyecekseniz, oluşturduğunuz kümeyi aşağ�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu eğitimde, [Scala'da](https://www.scala-lang.org/)yazılmış Apache Spark uygulamalarını geliştirmek için IntelliJ eklentisi için Azure Araç Kiti'ni nasıl kullanacağınızı öğrendiniz ve bunları doğrudan IntelliJ entegre geliştirme ortamından (IDE) bir HDInsight Spark kümesine gönderdiniz. Apache Spark'a kaydettiğiniz verilerin Power BI gibi bir BI analiz aracına nasıl çekilebildiğini görmek için bir sonraki makaleye ilerleyin.
+Bu makalede, [Scala'da](https://www.scala-lang.org/)yazılmış Apache Spark uygulamalarını geliştirmek için IntelliJ eklentisi için Azure Araç Kiti'ni nasıl kullanacağınızı öğrendiniz ve bunları doğrudan IntelliJ entegre geliştirme ortamından (IDE) bir HDInsight Spark kümesine gönderdiniz. Apache Spark'a kaydettiğiniz verilerin Power BI gibi bir BI analiz aracına nasıl çekilebildiğini görmek için bir sonraki makaleye ilerleyin.
 
 > [!div class="nextstepaction"]
 > [Power BI kullanarak Apache Spark verilerini analiz edin](apache-spark-use-bi-tools.md)

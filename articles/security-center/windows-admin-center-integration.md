@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 5467794bf246fab4ff7ded9c445dbeee0c4093b8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cbbdf724b9d7fe4948553e7526410b994f491b49
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79139632"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435254"
 ---
 # <a name="integrate-azure-security-center-with-windows-admin-center"></a>Azure Güvenlik Merkezi'ni Windows Yönetici Merkezi ile tümleştirin
 
@@ -48,7 +48,7 @@ Güvenlik Merkezi, bu iki aracı birleştirerek, kaynak ne olursa olsun tüm gü
     * Sunucunun rapor edilen bir çalışma alanı ve ilişkili bir abonelik vardır.
     * Security Center'ın standart katman Log Analytics çözümü çalışma alanında etkinleştirilir. Bu çözüm, bu çalışma alanına rapor veren *tüm* sunucular ve sanal makineler için Security Center'ın Standart katman özelliklerini sağlar.
     * Güvenlik Merkezi'nin Sanal Makine için standart katman fiyatlandırması abonelikte etkinleştirilir.
-    * Microsoft İzleme Aracısı (MMA) sunucuya yüklenir ve seçili çalışma alanına rapor vermek üzere yapılandırılır. Sunucu zaten başka bir çalışma alanına rapor veriyorsa, yeni seçilen çalışma alanına da rapor vermek üzere yapılandırılmıştır.
+    * Log Analytics aracısı sunucuya yüklenir ve seçili çalışma alanına rapor vermek üzere yapılandırılır. Sunucu zaten başka bir çalışma alanına rapor veriyorsa, yeni seçilen çalışma alanına da rapor vermek üzere yapılandırılmıştır.
 
     > [!NOTE]
     > Önerilerin görünmesi uçağa bindikten sonra biraz zaman alabilir. Aslında, sunucu etkinliğinize bağlı olarak herhangi *bir* uyarı alamayabilirsiniz. Uyarılarınızın doğru çalıştığını test etmek için test uyarıları oluşturmak için [uyarı doğrulama yordamındaki](security-center-alert-validation.md)yönergeleri izleyin.

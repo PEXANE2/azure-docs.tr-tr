@@ -8,12 +8,12 @@ ms.date: 12/06/2018
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: jamesbak
-ms.openlocfilehash: 04df30c2a97e865d23999df26768b38cb38be607
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fa0f67e0d72ee5710a42b6de744ddae98e20220a
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68855555"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437124"
 ---
 # <a name="use-the-azure-data-lake-storage-gen2-uri"></a>Azure Data Lake Storage 2. Nesil URI'sini kullanma
 
@@ -27,7 +27,7 @@ Adreslemek istediğiniz Veri Gölü Depolama Gen2 özellikli hesap hesap oluştu
 
 <pre>abfs[s]<sup>1</sup>://&lt;file_system&gt;<sup>2</sup>@&lt;account_name&gt;<sup>3</sup>.dfs.core.windows.net/&lt;path&gt;<sup>4</sup>/&lt;file_name&gt;<sup>5</sup></pre>
 
-1. **Şema tanımlayıcısı**: `abfs` Protokol, şema tanımlayıcısı olarak kullanılır. Güvenli bir soket katmanı (SSL) bağlantısı na bağlanma seçeneğiniz vardır. Güvenli `abfss` bir soket katmanı bağlantısıyla bağlantı kurmak için kullanın.
+1. **Şema tanımlayıcısı**: `abfs` Protokol, şema tanımlayıcısı olarak kullanılır. Daha önce Güvenli Soketkatmanı (SSL) olarak bilinen Bir Aktarım Katmanı Güvenliği (TLS) ile veya olmadan bağlanma seçeneğiniz vardır. TLS bağlantısıyla bağlanmak için kullanın. `abfss`
 
 2. **Dosya sistemi**: Dosya ve klasörleri tutan ana konum. Bu, Azure Depolama Blobs hizmetindeki Kapsayıcılarla aynıdır.
 

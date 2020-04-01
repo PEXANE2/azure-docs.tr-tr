@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/13/2019
 ms.author: memildin
-ms.openlocfilehash: 60a88e667918533f2c507846fa75b0e036ba5262
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fd84058c8421d144678c91fac3e5671511d0fd4a
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77921292"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435494"
 ---
 # <a name="upgrade-to-standard-tier-for-enhanced-security"></a>Gelişmiş güvenlik için Standart katmana yükseltme
 Azure Güvenlik Merkezi, Azure’da, şirket içinde ve diğer bulutlarda çalışan iş yükleri için birleşik güvenlik yönetimi ve gelişmiş tehdit koruması sağlar. Hibrit bulut iş yükleri üzerinde görünürlük ve kontrol sağlar, tehditlere maruz kalmanızı azaltan aktif savunma lar ve hızla gelişen siber saldırılara ayak uydurmanıza yardımcı olmak için akıllı algılama.
@@ -29,7 +29,7 @@ Güvenlik Merkezi iki katmanda sunulur:
 - Azure portalındaki Azure Güvenlik Merkezi panosunu ilk kez ziyaret ettiğinizde veya API aracılığıyla programlı olarak etkinleştirildikten sonra tüm Azure aboneliklerinizde **Ücretsiz** katman etkinleştirilir. Ücretsiz katman, Azure kaynaklarınızı korumanıza yardımcı olmak için güvenlik ilkesi, sürekli güvenlik değerlendirmesi ve işlem uygulanabilir güvenlik önerileri sağlar.
 - **Standart** katman, Ücretsiz katmanın yeteneklerini özel ve diğer genel bulutlarda çalışan iş yüklerine genişleterek karma bulut iş yüklerinizde birleşik güvenlik yönetimi ve tehdit koruması sağlar. Standart katman ayrıca, ağ saldırılarına ve kötü amaçlı yazılımlara ve daha fazlasına maruz kalmamayı azaltmak için saldırıları ve sıfır gün açıklarını, erişim ve uygulama denetimlerini tanımlamak için yerleşik davranış analizi ve makine öğrenimi kullanan tehdit koruması yetenekleri de ekler. Buna ek olarak, standart katman sanal makineleriniz için güvenlik açığı taraması ekler. Standart katmanı ücretsiz olarak deneyebilirsiniz. Güvenlik Merkezi standardı, Sanal Makineler, Sanal makine ölçek kümeleri, Uygulama Hizmeti, SQL sunucuları ve Depolama hesapları gibi Azure kaynaklarını destekler. Azure Güvenlik Merkezi standardınvarsa, kaynak türüne bağlı olarak desteği devre dışı kullanabilirsiniz. 
 
-VM'ler için ücretsiz katman güvenlik değerlendirmelerinin çoğu ve standart katman güvenlik uyarılarının çoğu, Microsoft İzleme Aracısı (MMA) özelliğinin yüklenmesini gerektirir. Azure VM'leriniz için aracıyı otomatik olarak dağıtmak için Güvenlik Merkezi'nde Otomatik Sağlama'yı etkinleştirebilirsiniz.
+VM'ler için ücretsiz katman güvenlik değerlendirmelerinin çoğu ve standart katman güvenlik uyarılarının çoğu, Log Analytics aracısı özelliğinin yüklenmesini gerektirir. Azure VM'leriniz için aracıyı otomatik olarak dağıtmak için Güvenlik Merkezi'nde Otomatik Sağlama'yı etkinleştirebilirsiniz.
 
 ## <a name="try-standard-tier-free-for-30-days"></a>Standart katmanı 30 gün boyunca ücretsiz deneyin
 Standart katman ilk 30 gün ücretsizdir. 30 günün sonunda, hizmeti kullanmaya devam etmeyi seçerseniz, otomatik olarak kullanım için şarj olmaya başlarız.

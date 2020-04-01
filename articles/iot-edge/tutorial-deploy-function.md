@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 1f4b3387375b52b28600590a099884277f3de63e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f909ca12ce080fc5d1241bcc649c041361e405a7
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78943025"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421173"
 ---
 # <a name="tutorial-deploy-azure-functions-as-iot-edge-modules"></a>Öğretici: Azure işlevlerini IoT Edge modülleri olarak dağıtma
 
@@ -31,9 +31,6 @@ ms.locfileid: "78943025"
 
 ![Diyagram - Öğretici mimari: sahne ve dağıtma işlevi modülü](./media/tutorial-deploy-function/functions-architecture.png)
 </center>
-
->[!NOTE]
->Azure IoT Edge'deki Azure İşlevi modülleri [genel önizlemededir.](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
 
 Bu öğreticide oluşturacağınız Azure işlevi, cihazınız tarafından oluşturulan sıcaklık verilerini filtreler. İşlev, yalnızca sıcaklık belirtilen bir eşiğin üzerindeyse yukarı yönde Azure IoT Hub'a iletileri gönderir.
 

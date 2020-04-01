@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: markjbrown
 ms.author: mjbrown
 ms.date: 01/31/2020
-ms.openlocfilehash: 287933de6403d680c5aa5b6c78df49abe5f2ac56
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0c10ec94f6c089b5e5466f5dce73d32d6ce917b3
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79238513"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422831"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Yerel geliştirme ve test için Azure Cosmos Emülatörü'ni kullanın
 
@@ -413,7 +413,7 @@ cd $env:LOCALAPPDATA\CosmosDBEmulator\bind-mount
 .\importcert.ps1
 ```
 
-Öykünücü başlatıldıktan sonra etkileşimli kabuğu kapatmak öykünücünün kapsayıcısını kapatır.
+Emülatör başlatıldıktan sonra etkileşimli kabuğu kapatmak emülatörün konteynerini kapatır.
 
 Veri Gezgini’ni açmak için tarayıcınızda aşağıdaki URL’ye gidin. Yukarıda gösterilen yanıt iletisinde öykünücü uç noktası sağlanır.
 
@@ -445,7 +445,7 @@ Son olarak, Emülatör CA sertifikasını Linux veya Mac ortamına aktarmamız g
 
 Linux üzerinde çalışıyorsanız, .NET doğrulamayı yapmak için OpenSSL'de geçer:
 
-1. [Sertifikayı PFX biçiminde dışa aktarın](./local-emulator-export-ssl-certificates.md#how-to-export-the-azure-cosmos-db-ssl-certificate) (özel anahtarı dışa aktarmayı seçerken PFX kullanılabilir). 
+1. [Sertifikayı PFX biçiminde dışa aktarın](./local-emulator-export-ssl-certificates.md#how-to-export-the-azure-cosmos-db-tlsssl-certificate) (özel anahtarı dışa aktarmayı seçerken PFX kullanılabilir). 
 
 1. PfX dosyasını Linux ortamınıza kopyalayın.
 
@@ -471,7 +471,7 @@ Linux üzerinde çalışıyorsanız, .NET doğrulamayı yapmak için OpenSSL'de 
 
 Mac üzerinde çalışıyorsanız aşağıdaki adımları kullanın:
 
-1. [Sertifikayı PFX biçiminde dışa aktarın](./local-emulator-export-ssl-certificates.md#how-to-export-the-azure-cosmos-db-ssl-certificate) (özel anahtarı dışa aktarmayı seçerken PFX kullanılabilir).
+1. [Sertifikayı PFX biçiminde dışa aktarın](./local-emulator-export-ssl-certificates.md#how-to-export-the-azure-cosmos-db-tlsssl-certificate) (özel anahtarı dışa aktarmayı seçerken PFX kullanılabilir).
 
 1. PfX dosyasını Mac ortamınıza kopyalayın.
 

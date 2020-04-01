@@ -3,12 +3,12 @@ title: Hyper-V sanal makinelerini MABS ile yedekleme
 description: Bu makalede, Microsoft Azure Yedekleme Sunucusu (MABS) kullanarak sanal makinelerin yedeklemesi ve kurtarılması için yordamlar yer almaktadır.
 ms.topic: conceptual
 ms.date: 07/18/2019
-ms.openlocfilehash: 00d1dd04522c51e4d68450a7b8f25d7159d63724
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 71cf446472ef0cf4f50bf64e47d359ea08ccc087
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78255057"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80420412"
 ---
 # <a name="back-up-hyper-v-virtual-machines-with-azure-backup-server"></a>Azure Yedekleme Sunucusu ile Hyper-V sanal makinelerini yedekleme
 
@@ -99,83 +99,6 @@ Hyper-V sanal makinelerini MABS ile yedeklemenin ön koşulları şunlardır:
 9. **Tutarlılık Denetimi Seçenekleri** sayfasında, tutarlılık denetimlerinin nasıl otomatikleştirilmesini istediğinizi seçin. Veri çoğaltma tutarsız hale geldiğinde veya bir zamanlamaya göre çalıştırmak için bir denetim etkinleştirebilirsiniz. Otomatik tutarlılık denetimini yapılandırmak istemiyorsanız, herhangi bir zamanda koruma grubuna sağ tıklayarak ve **Tutarlılık Denetimi Gerçekleştir**'i seçerek el ile denetim gerçekleştirebilirsiniz.
 
     Veri koruma grubu oluşturulduktan sonra ilk veri çoğaltma işlemi seçtiğiniz yönteme uygun olarak gerçekleşir. İlk çoğaltmadan sonra her yedekleme koruma grubu ayarlarına uygun olarak gerçekleşir. Yedeklenen verileri kurtarmanız gerekiyorsa, aşağıdakileri unutmayın:
-
-## <a name="back-up-virtual-machines-configured-for-live-migration"></a>Dinamik geçiş için yapılandırılmış sanal makineleri yedekleyin
-
-Sanal makineler canlı geçişe dahil olduğunda, MABS Hyper-V ana bilgisayara MABS koruma aracısı takıldığında sanal makineleri korumaya devam eder. MABS'nin sanal makineleri koruma şekli, ilgili canlı geçiş türüne bağlıdır.
-
-**Küme içinde canlı geçiş** - Sanal bir makine bir küme içinde geçirildiğinde MABS geçişi algılar ve kullanıcı müdahalesi için herhangi bir gerek kalmadan yeni küme düğümünden sanal makineyi yedekler. Depolama konumu değişmediğinden, MABS ekspres tam yedeklemelerle devam eder.
-
-**Küme dışında canlı geçiş** - Sanal bir makine tek başına sunucular, farklı kümeler veya tek başına bir sunucu ile küme arasında geçirildiğinde, MABS geçişi algılar ve kullanıcı müdahalesi olmadan sanal makineyi yedekleyebilir.
-
-### <a name="requirements-for-maintaining-protection"></a>Korumayı sürdürmek için gerekenler
-
-Aşağıda dinamik geçiş sırasında korumayı sürdürmek için gereksinimler verilmiştir:
-
-- Sanal makineler için Hyper-V ana bilgisayarları, En az SP1 ile çalışan bir VMM sunucusunda, Bir Sistem Merkezi VMM bulutu içinde bulunmalıdır.
-
-- MABS koruma aracısı tüm Hyper-V ana bilgisayarlarına takılmalıdır.
-
-- MABS sunucuları VMM sunucusuna bağlı olmalıdır. VMM bulutundaki tüm Hyper-V ana bilgisayar sunucuları da MABS sunucularına bağlanmalıdır. Bu, MABS'nin Sanal makinenin hangi Hyper-V ana sunucuda çalıştığını öğrenebilmeleri ve bu Hyper-V sunucusundan yeni bir yedekleme oluşturabilmesi için MABS'nin VMM sunucusuyla iletişim kurmasına olanak tanır. Hyper-V sunucusuna bir bağlantı kurulamazsa, yedekleme MABS koruma aracısına ulaşılamayacağı mesajını ile başarısız olur.
-
-- Tüm MABS sunucuları, VMM sunucuları ve Hyper-V ana bilgisayar sunucuları aynı etki alanında olmalıdır.
-
-### <a name="details-about-live-migration"></a>Dinamik geçiş hakkındaki ayrıntılar
-
-Dinamik geçiş sırasında yedekleme için aşağıdakilere dikkat edin:
-
-- Canlı geçiş depolama aktarırsa, MABS sanal makinenin tam tutarlılık denetimini gerçekleştirir ve ardından ekspres tam yedeklemelerle devam eder. Canlı depolama geçişi gerçekleştiğinde, Hyper-V sanal sabit diski (VHD) veya VHDX'i yeniden düzenler ve bu da MABS yedekleme verilerinin boyutunda bir kerelik artışa neden olur.
-
-- Sanal korumayı etkinleştirmek ve TCP Kanalı Boşaltma'yı devre dışı bırakmak için sanal makine konağında otomatik bağlamayı açın.
-
-- MABS, DPM-VMM Yardımcı Hizmeti'ni barındırmak için varsayılan bağlantı noktası olarak 6070 bağlantı noktasını kullanır. Kayıt defterini değiştirmek için:
-
-    1. **HKLM\Software\Microsoft\Microsoft Veri Koruma Yöneticisi\Yapılandırma'ya**gidin.
-    2. 32 bit bir DWORD değeri oluşturun: DpmVmmHelperServicePort ve güncellenmiş bağlantı noktası numarasını kayıt defterinin bir parçası olarak yazın.
-    3. ```<Install directory>\Azure Backup Server\DPM\DPM\VmmHelperService\VmmHelperServiceHost.exe.config``` girişini açın ve 6070 olan bağlantı noktası numarasını yeni bağlantı noktasıyla değiştirin. Örneğin, ```<add baseAddress="net.tcp://localhost:6080/VmmHelperService/" />```
-    4. DPM-VMM Yardımcı hizmetini ve DPM hizmetini yeniden başlatın.
-
-### <a name="set-up-protection-for-live-migration"></a>Dinamik geçiş için koruma ayarlama
-
-Dinamik geçişe koruma ayarlamak için:
-
-1. MABS sunucusunu ve depolama alanını kurun ve VMM bulutundaki her Hyper-V ana sunucu sunucusuna veya küme düğümüne MABS koruma aracısını yükleyin. Bir kümede SMB depolama alanı kullanıyorsanız, MABS koruma aracısını tüm küme düğümlerine yükleyin.
-
-2. MABS'nin VMM sunucusuyla iletişim kurabilmesi için VMM konsolu MABS sunucusuna istemci bileşeni olarak yükleyin. Konsol sürümünün VMM sunucusunda çalışanın sürümüyle aynı olması gerekir.
-
-3. MABSMachineName$ hesabını VMM yönetim sunucusunda salt okunur yönetici hesabı olarak atayın.
-
-4. `Set-DPMGlobalProperty` PowerShell cmdlet ile tüm Hyper-V ana sunucularını tüm MABS sunucularına bağlayın. Cmdlet birden çok MABS sunucu adını kabul eder. `Set-DPMGlobalProperty -dpmservername <MABSservername> -knownvmmservers <vmmservername>` biçimini kullanın. Daha fazla bilgi için [Set-DPMGlobalProperty'e](https://docs.microsoft.com/powershell/module/dataprotectionmanager/set-dpmglobalproperty?view=systemcenter-ps-2019)bakın.
-
-5. VMM bulutlarında Hyper-V konakları üzerinde çalışan tüm sanal makineler VMM'de bulunduktan sonra bir koruma grubu oluşturun ve korumak istediğiniz sanal makineleri ekleyin. Sanal makine mobilite senaryoları altında korunma grubu düzeyinde otomatik tutarlılık denetimleri etkinleştirilmelidir.
-
-6. Ayarlar yapılandırıldıktan sonra, sanal bir makine bir kümeden diğerine geçtiğinde tüm yedeklemeler beklendiği gibi devam eder. Dinamik geçişin beklenen şekilde etkinleştirildiğini aşağıdaki gibi doğrulayabilirsiniz:
-
-   1. DPM-VMM Yardımcı Hizmeti'nin çalıştığını denetleyin. Eğer değilse, başla.
-
-   2. Microsoft SQL Server Management Studio'yu açın ve MABS veritabanını (DPMDB) barındıran örneğe bağlanın. DPMDB'de şu sorguyu çalıştırın: `SELECT TOP 1000 [PropertyName] ,[PropertyValue] FROM[DPMDB].[dbo].[tbl_DLS_GlobalSetting]`.
-
-      Bu sorgu da `KnownVMMServer`adlı bir özellik içerir. Bu değer, `Set-DPMGlobalProperty` cmdlet'i ile sağlanan değer ile aynı olmalıdır.
-
-   3. Belirli bir sanal makine için `PhysicalPathXML` içindeki *VMMIdentifier* parametresini doğrulamak üzere aşağıdaki sorguyu çalıştırın. `VMName` yerine sanal makinenin adını koyun.
-
-      ```sql
-      select cast(PhysicalPath as XML) from tbl_IM_ProtectedObject where DataSourceId in (select datasourceid from tbl_IM_DataSource   where DataSourceName like '%<VMName>%')
-      ```
-
-   4. Bu sorgunun döndürdüğü .xml dosyasını açın ve *VMMIdentifier* alanının bir değeri olduğunu doğrulayın.
-
-### <a name="run-manual-migration"></a>El ile geçiş çalıştırma
-
-Önceki bölümlerdeki adımları tamamladıktan ve MABS Özet Yöneticisi işi tamamlandıktan sonra geçiş etkinleştirilir. Varsayılan seçenek olarak, bu iş gece yarısı başlar ve he sabah çalışır. Her şeyin beklendiği şekilde çalıştığından emin olmak için el ile geçiş çalıştırmak istiyorsanız, aşağıdakileri yapın:
-
-1. SQL Server Management Studio'yu açın ve MABS veritabanını barındıran örne bağlanın.
-
-2. Şu sorguyu çalıştırın: `SELECT SCH.ScheduleId FROM tbl_JM_JobDefinition JD JOIN tbl_SCH_ScheduleDefinition SCH ON JD.JobDefinitionId = SCH.JobDefinitionId WHERE JD.Type = '282faac6-e3cb-4015-8c6d-4276fcca11d4' AND JD.IsDeleted = 0 AND SCH.IsDeleted = 0`. Bu sorgu **ScheduleID** değerini döndürür. Sonraki adımda kullanılacağından, bu kimliği not edin.
-
-3. SQL Server Management Studio'da, **SQL Server Aracısı**'nı ve ardından **İşler**'i genişletin. Not ettiğiniz **ScheduleID**'ye sağ tıklayın ve **İşi Şu Adımda Başlat**'ı seçin.
-
-İş çalıştığında yedekleme performansı etkilenir. Dağıtımınızın boyutu ve ölçeği işin tamamlanma süresini belirler.
 
 ## <a name="back-up-replica-virtual-machines"></a>Çoğaltma sanal makineleri yedekleme
 

@@ -12,16 +12,18 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/08/2019
-ms.openlocfilehash: 209b4136678e6f04666b4a2b6180f4768bf6afc4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0d50ddbbeeaed48c14d07c42588efcbb20bb7d79
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79500819"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411166"
 ---
 # <a name="what-is-the-azure-sql-database-service"></a>Azure SQL Veritabanı hizmeti nedir?
 
-Azure SQL Veritabanı, yönetilen bir hizmet olarak sağlanan genel amaçlı ilişkisel bir veritabanıdır. Bununla, Azure'daki uygulamalar ve çözümler için yüksek oranda kullanılabilir ve yüksek performanslı bir veri depolama katmanı oluşturabilirsiniz. SQL Veritabanı, grafikler, JSON, uzamsal ve XML gibi hem ilişkisel verileri hem de [ilişkisel olmayan yapıları](sql-database-multi-model-features.md)işlemenizi sağladığından, çeşitli modern bulut uygulamaları için doğru seçim olabilir.
+Azure SQL Veritabanı, yükseltme, düzeltme eki uygulama, yedekleme ve izleme gibi çoğu veritabanı yönetimi işlevlerini kullanıcının müdahalesi gerekmeden yapan bir tam olarak yönetilen Hizmet olarak Platform (PaaS) Veritabanı Altyapısıdır. Azure SQL Veritabanı her zaman SQL Server Veritabanı Altyapısı’nın en son kararlı sürümünde çalışır ve %99,99 kullanılabilirlik ile düzeltme eki uygulanmış bir işletim sistemidir. Azure SQL veritabanında yerleşik olan PaaS yetenekleri, işletmeniz için kritik öneme sahip etki alanına özgü veritabanı yönetimi ve optimizasyon etkinliklerine odaklanmanızı sağlar.
+
+Azure SQL Veritabanı ile Azure'daki uygulamalar ve çözümler için yüksek kullanılabilir ve yüksek performanslı bir veri depolama katmanı oluşturabilirsiniz. SQL Veritabanı, grafikler, JSON, uzamsal ve XML gibi hem ilişkisel verileri hem de [ilişkisel olmayan yapıları](sql-database-multi-model-features.md)işlemenizi sağladığından, çeşitli modern bulut uygulamaları için doğru seçim olabilir.
 
 [Microsoft SQL Server veritabanı altyapısının](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation?toc=/azure/sql-database/toc.json)en son kararlı sürümüne dayanır. [Yüksek performanslı bellek içi teknolojiler](sql-database-in-memory.md) ve akıllı sorgu [işleme](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=/azure/sql-database/toc.json)gibi gelişmiş sorgu işleme özelliklerini kullanabilirsiniz. Aslında, SQL Server'ın en yeni yetenekleri önce SQL Database'e, sonra SQL Server'ın kendisine bırakılır. Milyonlarca veritabanında test edilmiş, yama veya yükseltme için ek yükü olmayan en yeni SQL Server özelliklerini elde edersiniz. 
 
@@ -68,7 +70,7 @@ SQL Veritabanı aşağıdaki satın alma modellerini sunar:
 Azure SQL Veritabanı, farklı uygulama türleri için tasarlanmış üç hizmet katmanı sunar:
 - [Genel Amaçlı/Standart](sql-database-service-tier-general-purpose.md) hizmet katmanı, ortak iş yükleri için tasarlanmıştır. Bütçe odaklı dengeli işlem ve depolama seçenekleri sunar.
 - Yüksek işlem hızı ve en düşük gecikmeli G/Ç ile OLTP uygulamaları için tasarlanan [Business Critical/Premium](sql-database-service-tier-business-critical.md) hizmet katmanı. Birkaç yalıtılmış çoğaltma kullanarak hatalara karşı en yüksek esnekliği sunar.
-- [Çok](sql-database-service-tier-hyperscale.md) büyük OLTP veritabanı ve otomatik ölçekdepolama ve akıcı hesaplama yeteneği için tasarlanmış hiper ölçekli hizmet katmanı.    
+- [Çok](sql-database-service-tier-hyperscale.md) büyük OLTP veritabanı ve depolamayı otomatik ölçeklendirme ve akıcı hesaplama yı ölçeklendirme yeteneği için tasarlanmış hiper ölçekli hizmet katmanı.    
 
 ### <a name="elastic-pools-to-maximize-resource-utilization"></a>Kaynak kullanımını en verimli hale getirmek için elastik havuzlar
 
@@ -107,11 +109,11 @@ Azure, binlerce veritabanının durumunu izlemenize olanak tanıyan performans d
 
 ## <a name="availability-capabilities"></a>Kullanılabilirlik özellikleri
 
-Geleneksel bir SQL Server ortamında, genellikle yerel olarak ayarlanmış en az iki makineniz vardır. Bu makineler, tek bir makine veya bileşenin arızalarına karşı korumak için verilerin tam, eşzamanlı olarak muhafaza edilmesine sahiptir. Bu ortam yüksek kullanılabilirlik sağlar, ancak veri merkezinizi yok olan doğal bir felakete karşı koruma sağlamaz.
+Azure SQL Veritabanı, işletmenizin kesintiler sırasında çalışmaya devam etmesini sağlar. Geleneksel bir SQL Server ortamında, genellikle yerel olarak ayarlanmış en az iki makineniz vardır. Bu makineler, tek bir makine veya bileşenin arızalarına karşı korumak için verilerin tam, eşzamanlı olarak muhafaza edilmesine sahiptir. Bu ortam yüksek kullanılabilirlik sağlar, ancak veri merkezinizi yok olan doğal bir felakete karşı koruma sağlamaz.
 
 Olağanüstü durum kurtarma, yıkıcı bir olayın coğrafi olarak başka bir makineye veya verilerinizin bir kopyasına sahip makinelere sahip olacak kadar yerelleştirilmeye sahip olduğunu varsayar. SQL Server'da, bu yeteneği elde etmek için her zaman kullanılabilirlik gruplarında async modunda çalışır durumdasınız. İnsanlar genellikle bir işlem gerçekleştirmeden önce çoğaltmanın bu kadar uzaklarda gerçekleşmesini beklemek istemezler, bu nedenle planlanmamış arızalar yaptığınızda veri kaybı potansiyeli vardır.
 
-Premium ve iş açısından kritik hizmet katmanlarındaki veritabanları zaten kullanılabilirlik grubunun eşitlenmesine [çok benzer bir şey yapar.](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability) Alt hizmet katmanlarındaki [veritabanları, farklı ama eşdeğer](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability)bir mekanizma kullanarak depolama yoluyla artıklık sağlar. Yerleşik mantık, tek bir makine arızasına karşı korumaya yardımcı olur. Etkin coğrafi çoğaltma özelliği, tüm bölgenin yok edildiği felaketlere karşı koruma olanağı sağlar.
+Premium ve iş açısından kritik hizmet katmanlarındaki veritabanları zaten kullanılabilirlik grubunun eşitlenmesine [benzer bir şey yapar.](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability) Alt hizmet katmanlarındaki [veritabanları, farklı ama eşdeğer](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability)bir mekanizma kullanarak depolama yoluyla artıklık sağlar. Yerleşik mantık, tek bir makine arızasına karşı korumaya yardımcı olur. Etkin coğrafi çoğaltma özelliği, tüm bölgenin yok edildiği felaketlere karşı koruma olanağı sağlar.
 
 Azure Kullanılabilirlik Bölgeleri, tek bir bölge içindeki tek bir veri merkezi binasının kesintisine karşı koruma sağlamaya çalışır. Bir binaya güç veya ağ kaybına karşı korumanıza yardımcı olur. SQL Veritabanı'nda, farklı yinelemeleri farklı kullanılabilirlik bölgelerine (farklı binalar, etkili bir şekilde) yerlikir.
 

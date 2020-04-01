@@ -3,12 +3,12 @@ title: Microsoft Azure Kurtarma Hizmetleri (MARS) aracısını yükleme
 description: Windows makinelerini yedeklemek için Microsoft Azure Kurtarma Hizmetleri (MARS) aracısını nasıl yükleyin öğrenin.
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: b9a6791709d5aff82d11bbf10e5f084fd8c1a000
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d3932b66dbc41ff2631e2cccbe716c0877a509d3
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79247767"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422929"
 ---
 # <a name="install-the-azure-backup-mars-agent"></a>Azure Yedekleme MARS aracısını yükleme
 
@@ -36,6 +36,7 @@ Yedekleme için kullanılabilen veriler aracının nerede yüklü olduğuna bağ
 * Mars ajanı tarafından [desteklenenleri ve destekleyebildiklerinizi](backup-support-matrix-mars-agent.md) gözden geçirin.
 * Bir sunucuveya istemciyi Azure'a yedeklemeniz gerekiyorsa bir Azure hesabınız olduğundan emin olun. Hesabınız yoksa, birkaç dakika içinde [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturabilirsiniz.
 * Yedeklemek istediğiniz makinelerdeki internet erişimini doğrulayın.
+* MARS aracısının yükleme ve yapılandırmasını gerçekleştiren kullanıcının sunucuda korunması gereken yerel yönetici ayrıcalıklarına sahip olduğundan emin olun.
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 

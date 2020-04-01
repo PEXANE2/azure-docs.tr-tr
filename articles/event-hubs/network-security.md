@@ -7,12 +7,12 @@ ms.service: event-hubs
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: spelluru
-ms.openlocfilehash: ab85cdb2854de5c147c68afd8e4fe5e17ac2899b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 46e6a9ecc2ed09aed1076f12c1f61a966485bdad
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79477947"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422777"
 ---
 # <a name="network-security-for-azure-event-hubs"></a>Azure Etkinlik Hub'ları için ağ güvenliği 
 Bu makalede, Azure Olay Hub'ları ile aşağıdaki güvenlik özelliklerinin nasıl kullanılacağı açıklanmaktadır: 
@@ -36,14 +36,14 @@ Hizmet etiketi, belirli bir Azure hizmetinin IP adresi önekleri grubunu temsil 
 ## <a name="ip-firewall"></a>IP güvenlik duvarı 
 Varsayılan olarak, İstek geçerli kimlik doğrulama ve yetkilendirmeyle birlikte geldiği sürece, Olay Hub'ları ad alanlarına internetten erişilebilir. IP güvenlik duvarı ile, [cidr (Classless Etki Alanı Yönlendirmesi)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) gösteriminde yalnızca bir iPv4 adresi kümesi veya IPv4 adres aralıklarıyla daha da kısıtlayabilirsiniz.
 
-Bu özellik, Azure Etkinlik Hub'larına yalnızca belirli tanınmış sitelerden erişilmesi gereken senaryolarda yararlıdır. Güvenlik duvarı kuralları, belirli IPv4 adreslerinden kaynaklanan trafiği kabul etmek için kuralları yapılandırmanızı sağlar. Örneğin, [Azure Express Route][express-route] ile Olay Hub'ları kullanıyorsanız, yalnızca şirket içi altyapı IP adreslerinizden gelen trafiğe izin vermek için bir **güvenlik duvarı kuralı** oluşturabilirsiniz. 
+Bu özellik, Azure Etkinlik Hub'larına yalnızca belirli tanınmış sitelerden erişilmesi gereken senaryolarda yararlıdır. Güvenlik duvarı kuralları, belirli IPv4 adreslerinden kaynaklanan trafiği kabul etmek için kuralları yapılandırmanızı sağlar. Örneğin, [Azure Ekspres Rotası](/azure/expressroute/expressroute-faqs#supported-services)ile Etkinlik Hub'ları kullanıyorsanız, yalnızca şirket içi altyapı IP adreslerinizden gelen trafiğe izin vermek için bir güvenlik duvarı **kuralı** oluşturabilirsiniz. 
 
 IP güvenlik duvarı kuralları Olay Hub'ları ad alanı düzeyinde uygulanır. Bu nedenle, kurallar desteklenen herhangi bir protokol kullanarak istemcilerden gelen tüm bağlantılar için geçerlidir. Olay Hub'ları ad alanında izin verilen bir IP kuralıyla eşleşmeyen bir IP adresinden gelen bağlantı girişimi yetkisiz olarak reddedilir. Yanıtta IP kuralından bahsedilmez. Sırayla IP filtresi kuralları uygulanır ve IP adresiyle eşleşen ilk kural kabul veya reddetme eylemini belirler.
 
 Daha fazla bilgi için, [bir olay hub'ı için IP güvenlik duvarını nasıl yapılandırabilirsiniz](event-hubs-ip-filtering.md)
 
 ## <a name="network-service-endpoints"></a>Ağ hizmeti uç noktaları
-Olay Hub'larının [Virtual Network (VNet) Service Endpoints][vnet-sep] ile entegrasyonu, sanal ağlara bağlı sanal makineler gibi iş yüklerinden mesajlaşma yeteneklerine güvenli erişim sağlar ve ağ trafiği yolu güvenli hale gelir her iki uçta da.
+Olay Hub'larının [Sanal Ağ (VNet) Hizmet Bitiş Noktaları](../virtual-network/virtual-network-service-endpoints-overview.md) ile tümleştirilmesi, sanal ağlara bağlı sanal makineler gibi iş yüklerinden mesajlaşma yeteneklerine güvenli erişim sağlar ve ağ trafik yolu her iki uçta da güvenli hale gelir.
 
 En az bir sanal ağ alt ağ hizmeti bitiş noktasına bağlı olarak yapılandırıldıktan sonra, ilgili Olay Hub'ları ad alanı artık sanal ağlarda her yerden gelen trafiği kabul etmez. Sanal ağ açısından bakıldığında, Olay Hub'larının ad alanını hizmet bitiş noktasına bağlama, sanal ağ alt ağından ileti hizmetine yalıtılmış bir ağ tünelini yapılandırır. 
 
@@ -58,13 +58,13 @@ Sıkı ve bölümlere ayrılmış güvenlik gerektiren ve sanal ağ alt ağları
 
 TCP/IP üzerinden HTTPS taşıyanlar da dahil olmak üzere bölmeler arasındaki herhangi bir anlık IP rotası, ağ katmanındaki güvenlik açıklarından yararlanma riski taşır. Mesajlaşma hizmetleri, iletilerin taraflar arasında geçiş sırasında diske bile yazıldığı yalıtımlı iletişim yolları sağlar. Her ikisi de aynı Olay Hub'ları örneğine bağlı olan iki farklı sanal ağdaki iş yükleri, iletiler aracılığıyla verimli ve güvenilir bir şekilde iletişim kurabilir ve ilgili ağ yalıtım sınır bütünlüğü korunur.
  
-Bu, güvenliğe duyarlı bulut çözümlerinizin yalnızca Azure endüstri lideri güvenilir ve ölçeklenebilir eşzamanlı mesajlaşma özelliklerine erişmedikleri, aynı zamanda artık mesajlaşmayı güvenli çözüm bölmeleri arasında iletişim yolları oluşturmak için kullanabileceği anlamına gelir. HTTPS ve diğer TLS güvenlikli soket protokolleri de dahil olmak üzere eşler arası iletişim moduyla ulaşılabileceklerden daha güvenlidir.
+Bu, güvenlik duyarlı bulut çözümlerinizin yalnızca Azure endüstri lideri güvenilir ve ölçeklenebilir eşzamanlı mesajlaşma özelliklerine erişmekle birlikte, artık https ve diğer TLS güvenlikli soket protokolleri de dahil olmak üzere eşler arası iletişim modlarında ulaşılabileceklerden daha güvenli güvenli çözüm bölmeleri arasında iletişim yolları oluşturmak için mesajlaşmayı kullanabileceği anlamına gelir.
 
 ### <a name="bind-event-hubs-to-virtual-networks"></a>Olay hub'larını sanal ağlara bağlama
 
 **Sanal ağ kuralları,** Azure Etkinlik Hub'larınızın belirli bir sanal ağ alt ağındaki bağlantıları kabul edip etmediğini kontrol eden güvenlik duvarı güvenlik özelliğidir.
 
-Olay Hub'larının ad alanını sanal ağa bağlamaiki adımlı bir işlemdir. Öncelikle bir sanal ağın alt ağında sanal bir **Ağ hizmeti bitiş noktası** oluşturmanız ve [hizmet bitiş noktası genel bakışı][vnet-sep] makalesinde açıklandığı gibi **Microsoft.EventHub** için etkinleştirmeniz gerekir. Hizmet bitiş noktasını ekledikten sonra, Olay Hub'ları ad alanını **sanal ağ kuralıyla**ona bağlarsınız.
+Olay Hub'larının ad alanını sanal ağa bağlamaiki adımlı bir işlemdir. Öncelikle bir sanal ağın alt ağında sanal bir **Ağ hizmeti bitiş noktası** oluşturmanız ve hizmet bitiş noktasına genel [bakış](../virtual-network/virtual-network-service-endpoints-overview.md) makalesinde açıklandığı gibi **Microsoft.EventHub** için etkinleştirmeniz gerekir. Hizmet bitiş noktasını ekledikten sonra, Olay Hub'ları ad alanını **sanal ağ kuralıyla**ona bağlarsınız.
 
 Sanal ağ kuralı, Olay Hub'larının ad alanının sanal ağ alt ağıyla ilişkisidir. Kural mevcut olsa da, alt ağa bağlı tüm iş yüklerine Olay Hub'ları ad alanına erişim hakkı verilir. Olay Hub'larının kendisi hiçbir zaman giden bağlantılar kurmaz, erişim sağlaması gerekmez ve bu nedenle bu kuralı etkinleştirerek alt ağınıza erişim izni verilmez.
 
