@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Azure Active Directory Tümleştirmesi ile Hype | Microsoft Docs'
-description: Azure Active Directory ve Hype arasında çoklu oturum açmayı yapılandırmayı öğrenin.
+title: 'Öğretici: Hype ile Azure Active Directory entegrasyonu | Microsoft Dokümanlar'
+description: Azure Etkin Dizin ve Hype arasında tek oturum açma yı nasıl yapılandırıştırmayı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,139 +17,139 @@ ms.date: 07/05/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 090e0a8488bb4f79de544774b08c847ea1524ad9
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 07/11/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67798604"
 ---
-# <a name="tutorial-integrate-hype-with-azure-active-directory"></a>Öğretici: Hype Azure Active Directory ile tümleştirme
+# <a name="tutorial-integrate-hype-with-azure-active-directory"></a>Öğretici: Azure Active Directory ile Hype entegre
 
-Bu öğreticide, Azure Active Directory'ye (Azure AD) Hype tümleştirmeyi öğreneceksiniz. Sizin Hype Azure AD ile tümleştirdiğinizde, şunları yapabilirsiniz:
+Bu eğitimde, Hype'ı Azure Active Directory (Azure AD) ile nasıl entegre acağınızı öğreneceksiniz. Hype'ı Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
-* Hype erişimi, Azure AD'de denetler.
-* Otomatik olarak Hype için kendi Azure AD hesapları ile oturum açmış olmasını sağlayın.
-* Bir merkezi konumda - Azure portalı hesaplarınızı yönetin.
+* Azure AD'de Hype'a erişimi olan denetimi.
+* Kullanıcılarınızın Azure REKLAM hesaplarıyla Hype'da otomatik olarak oturum açmasını etkinleştirin.
+* Hesaplarınızı tek bir merkezi konumda yönetin - Azure portalı.
 
-Azure AD SaaS uygulama tümleştirmesi hakkında daha fazla bilgi için bkz. [uygulama erişimi ve Azure Active Directory ile çoklu oturum açma nedir](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için Azure [Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Başlamak için aşağıdaki öğeler gerekir:
+Başlamak için aşağıdaki öğelere ihtiyacınız vardır:
 
-* Azure AD aboneliğiniz. Bir aboneliğiniz yoksa, bir aylık ücretsiz deneme alabilirsiniz [burada](https://azure.microsoft.com/pricing/free-trial/).
-* Hype çoklu oturum açma (SSO) abonelik etkin.
+* Azure AD aboneliği. Aboneliğiniz yoksa, [burada](https://azure.microsoft.com/pricing/free-trial/)bir aylık ücretsiz deneme sürümü alabilirsiniz.
+* Hype tek oturum açma (SSO) aboneliği ni etkinleştirildi.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, yapılandırma ve Azure AD SSO bir test ortamında test edin.
+Bu eğitimde, Azure AD SSO'su bir test ortamında yapılandırın ve test esiniz.
 
-* Hype destekler **SP** tarafından başlatılan
-* Hype destekler **zamanında** kullanıcı sağlama
+* Hype **SP** başlatılan SSO destekler
+* Hype **Just In Time** kullanıcı sağlama destekler
 
 ## <a name="adding-hype-from-the-gallery"></a>Galeriden Hype ekleme
 
-Azure AD'de Hype tümleştirmesini yapılandırmak için Hype Galeriden yönetilen SaaS uygulamaları listesine eklemeniz gerekir.
+Hype'nin Azure AD'ye entegrasyonunu yapılandırmak için, galeriden Hype'ı yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-1. Bir iş veya okul hesabını ya da kişisel bir Microsoft hesabını kullanarak [Azure portalda](https://portal.azure.com) oturum açın.
-1. Sol gezinti bölmesinde seçin **Azure Active Directory** hizmeti.
-1. Gidin **kurumsal uygulamalar** seçip **tüm uygulamaları**.
-1. Yeni bir uygulama eklemek için seçin **yeni uygulama**.
-1. İçinde **Galeriden Ekle** bölümüne şunu yazın **Hype** arama kutusuna.
-1. Seçin **Hype** gelen sonuçlar panelinde ve uygulama ekleyin. Uygulama, kiracınıza eklendiği sırada birkaç saniye bekleyin.
+1. Azure [portalında](https://portal.azure.com) bir iş veya okul hesabını veya kişisel bir Microsoft hesabını kullanarak oturum açın.
+1. Sol gezinti bölmesinde **Azure Etkin Dizin** hizmetini seçin.
+1. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamaları**seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama'yı**seçin.
+1. Galeri **bölümünden Ekle** bölümünde, arama kutusuna **Hype** yazın.
+1. Sonuç panelinden **Hype'ı** seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Yapılandırma ve Azure AD çoklu oturum açmayı test etme
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD tek oturum açma yapılandırma ve test
 
-Yapılandırma ve Azure AD SSO kullanarak adlı bir test kullanıcı Hype ile test etme **B.Simon**. Çalışmak SSO için Hype içinde bir Azure AD kullanıcısı ile ilgili kullanıcı arasında bir bağlantı ilişki oluşturmanız gerekir.
+Azure AD SSO'nu **B.Simon**adlı bir test kullanıcısı kullanarak Hype ile yapılandırın ve test edin. SSO'nun çalışması için, Bir Azure REKLAM kullanıcısı ile Hype'deki ilgili kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
 
-Yapılandırma ve Azure AD SSO ile Hype sınamak için aşağıdaki yapı taşlarını tamamlayın:
+Azure AD SSO'yu Hype ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlayın:
 
-1. **[Azure AD SSO'yu yapılandırma](#configure-azure-ad-sso)**  - bu özelliği kullanmak, kullanıcılarınızın etkinleştirmek için.
-2. **[Hype SSO'yu yapılandırarak](#configure-hype-sso)**  - uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
-3. **[Bir Azure AD test kullanıcısı oluşturma](#create-an-azure-ad-test-user)**  - Azure AD çoklu oturum açma Britta Simon ile test etmek için.
-4. **[Azure AD test kullanıcı atama](#assign-the-azure-ad-test-user)**  - Azure AD çoklu oturum açmayı kullanmak Britta Simon etkinleştirmek için.
-5. **[Hype test kullanıcısı oluşturma](#create-hype-test-user)**  - kullanıcı Azure AD gösterimini bağlı Hype Britta simon'un bir karşılığı vardır.
-6. **[Test SSO](#test-sso)**  - yapılandırma çalışıp çalışmadığını doğrulayın.
+1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için **[Azure AD SSO'su yapılandırın.](#configure-azure-ad-sso)**
+2. **[Hype SSO'yu yapılandırın](#configure-hype-sso)** - uygulama tarafındaki Tek Oturum Açma ayarlarını yapılandırmak için.
+3. Azure AD tek oturum açma işlemini Britta Simon ile test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
+4. Britta Simon'ın Azure AD tek oturum açma işlemini kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
+5. **[Hype test kullanıcı oluşturun](#create-hype-test-user)** - kullanıcının Azure AD gösterimi ile bağlantılı Hype Britta Simon bir meslektaşı olması.
+6. **[SSO'yu test](#test-sso)** edin - yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
-### <a name="configure-azure-ad-sso"></a>Azure AD SSO'yu yapılandırma
+### <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
-Azure portalında Azure AD SSO'yu etkinleştirmek üzere aşağıdaki adımları izleyin.
+Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları izleyin.
 
-1. İçinde [Azure portalında](https://portal.azure.com/), **Hype** uygulama tümleştirme sayfası, bulma **Yönet** bölümünde ve seçin **çoklu oturum açma**.
-1. Üzerinde **tek bir oturum açma yönteminizi seçmeniz** sayfasında **SAML**.
-1. Üzerinde **yukarı çoklu oturum açma SAML ile ayarlayın** sayfasında, düzenleme/kalem simgesine tıklayıp **temel SAML yapılandırma** ayarlarını düzenlemek için.
+1. Azure [portalında,](https://portal.azure.com/) **Hype** uygulama tümleştirme sayfasında, **Yönet** bölümünü bulun ve **Tek oturum açma'yı**seçin.
+1. Tek **oturum açma yöntemi** sayfasında **SAML'yi**seçin.
+1. **SAML** ile Tek Oturum Açma'da, ayarları düzenlemek için **Temel SAML Yapılandırması** için düzenleme/kalem simgesini tıklatın.
 
-   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
+   ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
 
-1. Üzerinde **temel SAML yapılandırma** bölümünde, aşağıdaki alanlar için değerleri girin:
+1. Temel **SAML Yapılandırması** bölümünde, aşağıdaki alanların değerlerini girin:
 
-    1. İçinde **oturum açma URL'si** metin kutusuna şu biçimi kullanarak bir URL yazın:
+    1. URL metin kutusunda **Oturum Aç** kutusuna, aşağıdaki deseni kullanarak bir URL yazın:
     
         `https://<SUBDOMAIN>.hypeinnovation.com/Shibboleth.sso/Login`
 
-    1. İçinde **tanımlayıcı (varlık kimliği)** metin kutusuna şu biçimi kullanarak bir URL yazın:
+    1. Tanımlayıcı **(Entity ID)** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:
     
         `https://<SUBDOMAIN>.hypeinnovation.com`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerler gerçek oturum açma URL ve tanımlayıcıdır ile güncelleştirin. İlgili kişi [Hype istemci Destek ekibine](mailto:itsupport@hype.de) bu değerleri almak için. Gösterilen desenleri de başvurabilirsiniz **temel SAML yapılandırma** bölümünde Azure portalında.
+    > Bu değerler gerçek değildir. Bu değerleri URL ve Tanımlayıcı'daki gerçek Oturum'la güncelleştirin. Bu değerleri almak için [Hype Client destek ekibine](mailto:itsupport@hype.de) başvurun. Azure portalındaki **Temel SAML Yapılandırması** bölümünde gösterilen desenlere de bakabilirsiniz.
 
-1. Üzerinde **yukarı çoklu oturum açma SAML ile ayarlayın** sayfasında **SAML imzalama sertifikası** bölümünde, bulma **meta veri XML** seçip **indirme** için sertifikayı indirin ve bilgisayarınıza kaydedin.
+1. **SAML Ile Tek Oturum Açma** sayfasında, **SAML İmza Sertifikası** bölümünde **Metadata XML'i** bulun ve sertifikayı indirmek ve bilgisayarınıza kaydetmek için **İndir'i** seçin.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
-1. Üzerinde **Hype kümesi** bölümünde, ihtiyacınıza göre uygun URL'lerini kopyalayın.
+1. **Hype'ı Ayarla** bölümünde, gereksiniminize göre uygun URL'yi kopyalayın.
 
-    ![Yapılandırma URL'leri kopyalayın](common/copy-configuration-urls.png)
+    ![Yapılandırma URL'lerini kopyalama](common/copy-configuration-urls.png)
 
-### <a name="configure-hype-sso"></a>Hype SSO yapılandırma
+### <a name="configure-hype-sso"></a>Hype SSO yapılandırın
 
-Çoklu oturum açmayı yapılandırma **Hype** tarafı, indirilen göndermek için ihtiyacınız **meta veri XML** ve uygun Azure portalına kopyalanan URL'lerden [Hype Destek ekibine](mailto:itsupport@hype.de). Bunlar, her iki kenarı da düzgün ayarlandığından SAML SSO bağlantı sağlamak için bu ayarı ayarlayın.
+**Hype** tarafında tek oturum açma yapılandırmak için, indirilen **Metadata XML'i** ve azure portalından uygun kopyalanmış URL'leri [Hype destek ekibine](mailto:itsupport@hype.de)göndermeniz gerekir. Bu ayarı, SAML SSO bağlantısının her iki tarafta da düzgün bir şekilde ayarlanması için ayarlarlar.
 
 
-### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
+### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-Bu bölümde, bir test kullanıcısı B.Simon adlı Azure portalında oluşturacaksınız.
+Bu bölümde, Azure portalında B.Simon adında bir test kullanıcısı oluşturursunuz.
 
-1. Azure Portalı'ndaki sol bölmeden seçin **Azure Active Directory**seçin **kullanıcılar**ve ardından **tüm kullanıcılar**.
-1. Seçin **yeni kullanıcı** ekranın üstünde.
-1. İçinde **kullanıcı** özellikleri, aşağıdaki adımları izleyin:
+1. Azure portalındaki sol bölmeden **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
+1. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
+1. **Kullanıcı** özelliklerinde aşağıdaki adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. İçinde **kullanıcı adı** alanına username@companydomain.extension. Örneğin: `B.Simon@contoso.com`.
-   1. Seçin **Show parola** onay kutusunu işaretleyin ve ardından görüntülenen değeri yazın **parola** kutusu.
-   1.           **Oluştur**'a tıklayın.
+   1. Kullanıcı **adı** alanına. username@companydomain.extension Örneğin, `B.Simon@contoso.com`.
+   1. **Parolayı Göster** onay kutusunu seçin ve ardından **Parola** kutusunda görüntülenen değeri yazın.
+   1. **Oluştur'u**tıklatın.
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, Azure çoklu oturum açma kullanmak için Hype erişim vererek B.Simon tıklatmalarını sağlarsınız.
+Bu bölümde, B.Simon'ın Hype'a erişim izni vererek Azure tek oturum açma'yı kullanmasını sağlayacaksınız.
 
-1. Azure portalında **kurumsal uygulamalar**ve ardından **tüm uygulamaları**.
-1. Uygulamalar listesinde **Hype**.
-1. Uygulamanın genel bakış sayfasında bulma **Yönet** seçin ve bölüm **kullanıcılar ve gruplar**.
+1. Azure portalında **Kurumsal Uygulamalar'ı**seçin ve ardından **Tüm Uygulamaları**seçin.
+1. Uygulamalar listesinde **Hype'ı**seçin.
+1. Uygulamanın genel bakış sayfasında, **Yönet** bölümünü bulun ve **Kullanıcıları ve grupları**seçin.
 
-   !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
+   !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-1. Seçin **Kullanıcı Ekle**, ardından **kullanıcılar ve gruplar** içinde **atama Ekle** iletişim.
+1. **Kullanıcı Ekle'yi**seçin, ardından **Atama Ekle** iletişim kutusunda Kullanıcılar ve **gruplar** seçin.
 
-   ![Kullanıcı ekleme bağlantısı](common/add-assign-user.png)
+   ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
-1. İçinde **kullanıcılar ve gruplar** iletişim kutusunda **B.Simon** kullanıcılar listesinden ardından **seçin** ekranın alt kısmındaki düğmesi.
-1. SAML onaylama işlemi herhangi bir rolü değer de beklediğiniz varsa **rolü Seç** iletişim kutusunda, listeden bir kullanıcı için uygun rolü seçin ve ardından **seçin** ekranın alt kısmındaki düğmesi.
-1. İçinde **atama Ekle** iletişim kutusunda, tıklayın **atama** düğmesi.
+1. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinden **B.Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
+1. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda, listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
+1. Atama **Ekle** iletişim kutusunda, **Ata ekle** düğmesini tıklatın.
 
-### <a name="create-hype-test-user"></a>Hype test kullanıcısı oluşturma
+### <a name="create-hype-test-user"></a>Hype test kullanıcıoluşturma
 
-Bu bölümde, Britta Simon adlı bir kullanıcı Hype oluşturulur. Hype just-ın-time kullanıcı hazırlama, varsayılan olarak etkin olduğu destekler. Bu bölümde, hiçbir eylem öğesini yoktur. Bir kullanıcı Hype içinde zaten mevcut değilse yeni bir kimlik doğrulamasından sonra oluşturulur.
+Bu bölümde, Britta Simon adlı bir kullanıcı Hype oluşturulur. Hype varsayılan olarak etkinleştirilen tam zamanında kullanıcı sağlama destekler. Bu bölümde sizin için bir eylem öğesi yoktur. Hype'da bir kullanıcı zaten yoksa, kimlik doğrulamadan sonra yeni bir kullanıcı oluşturulur.
 
 ### <a name="test-sso"></a>Test SSO
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
+Bu bölümde, Access Panelini kullanarak Azure AD tek oturum açma yapılandırmanızı sınarsınız.
 
-Erişim paneli Hype kutucuğa tıkladığınızda, size otomatik olarak SSO'yu ayarlama Hype için oturum açmanız. Erişim paneli hakkında daha fazla bilgi için bkz: [erişim Paneli'ne giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Access Paneli'ndeki Hype döşemesini tıklattığınızda, SSO'yu kurduğunuz Hype'da otomatik olarak oturum açmış olmalısınız. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS uygulamaları Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

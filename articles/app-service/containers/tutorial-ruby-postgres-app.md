@@ -275,7 +275,7 @@ git commit -m "database.yml updates"
 
 Uygulamanız dağıtılmaya hazırdır.
 
-## <a name="deploy-to-azure"></a>Azure’a Dağıt
+## <a name="deploy-to-azure"></a>Azure’a dağıtma
 
 Bu adımda, Postgres'e bağlı Rails uygulamasını Azure App Service'e dağıtırsınız.
 

@@ -9,35 +9,35 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 85992224edd10c0a0f233de9f6274cc77e109b22
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "60757795"
 ---
-# <a name="tutorial-provision-azure-data-box-gateway-in-vmware"></a>Öğretici: Vmware'de sağlama Azure veri kutusu ağ geçidi
+# <a name="tutorial-provision-azure-data-box-gateway-in-vmware"></a>Öğretici: VMware'de Azure Veri Kutusu Ağ Geçidi'ni Sağlama
 
 ## <a name="overview"></a>Genel Bakış
 
-Bu öğreticide, bir veri kutusu ağ geçidinde VMware ESXi 6.0 veya 6.5 6.7 çalıştıran bir konak sistemi sağlama işlemi açıklanır. 
+Bu öğretici, VMware ESXi 6.0, 6.5 veya 6.7 çalıştıran bir ana bilgisayar sisteminde bir Veri Kutusu Ağ Geçidi'nin nasıl sağlanır şekilde sağlanır. 
 
 Sanal cihaz sağlamak ve bağlantı kurmak için yönetici ayrıcalıklarına sahip olmanız gerekir. Sağlama ve ilk kurulum adımlarını tamamlamak yaklaşık 10 dakika sürecektir.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
 > * Ana bilgisayarın minimum cihaz gereksinimlerini karşıladığından emin olma
 > * VMware'de sanal cihaz sağlama
 > * Sanal cihazı başlatma ve IP adresini alma
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
 
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-VMware ESXi 6.7, 6.0 veya 6.5 çalıştıran bir konak sistemi üzerinde sanal cihaz sağlama için gereken önkoşullar aşağıdaki gibidir.
+VMware ESXi 6.0, 6.5 veya 6.7 çalıştıran bir ana bilgisayar sisteminde sanal bir cihaz sağlamanın ön koşulları aşağıdaki gibidir.
 
-### <a name="for-the-data-box-gateway-resource"></a>Data Box Gateway kaynağı için
+### <a name="for-the-data-box-gateway-resource"></a>Box Gateway kaynağı için
 
 Başlamadan önce aşağıdakilerden emin olun:
 
@@ -51,7 +51,7 @@ Başlamadan önce aşağıdakilerden emin olun:
 
 Sanal cihazı dağıtmadan önce şunlardan emin olun:
 
-* Erişiminiz olabilir (ESXi 6.0 veya 6.5 6.7) VMware çalıştıran bir konak sistemi için bir cihaz bir sağlamak için kullanılır.
+* VMware (ESXi 6.0, 6.5 veya 6.7) çalıştıran bir ana bilgisayar sistemine erişiminiz vardır.
 * Ana bilgisayar sistemi sanal cihazınızı sağlamak için aşağıdaki kaynakları ayırabiliyor:
 
   * En az 4 çekirdek.
@@ -71,7 +71,7 @@ Başlamadan önce:
 
 Sanal cihaz oluşturmak için şunlara ihtiyacınız vardır:
 
-* VMware ESXi Server 6.0 veya 6.5 6.7 çalıştıran bir konak sistemi erişim. Ana bilgisayar sistemi sanal cihazınız için aşağıdaki kaynakları ayırabiliyor:
+* VMware ESXi Server 6.0, 6.5 veya 6.7 çalıştıran bir ana bilgisayar sistemine erişim. Ana bilgisayar sistemi sanal cihazınız için aşağıdaki kaynakları ayırabiliyor:
  
   * En az 4 sanal işlemci.
   * En az 8 GB RAM. 
@@ -87,7 +87,7 @@ Hiper yöneticinizde sanal cihaz sağlamak için aşağıdaki adımları gerçek
 
 1. Sanal cihaz görüntüsünü sisteminize kopyalayın. Bu sanal görüntüyü (iki dosya) Azure portaldan indirmiştiniz. Bu görüntüyü yordamın ilerleyen bölümlerinde kullanacağınız için kopyaladığınız konumu not edin.
 
-2. Bu URL'de bir tarayıcı aracılığıyla ESXi sunucusuna oturum açın: `https://<IP address of the ESXi server>`. Sanal makine oluşturmak için yönetici ayrıcalıklarınızın olması gerekir.
+2. Bu URL'deki bir tarayıcı aracılığıyla ESXi `https://<IP address of the ESXi server>`sunucusunda oturum açın: . Sanal makine oluşturmak için yönetici ayrıcalıklarınızın olması gerekir.
 
    ![Oturum açma sayfası](./media/data-box-gateway-deploy-provision-vmware/image1.png)
   
@@ -102,11 +102,11 @@ Hiper yöneticinizde sanal cihaz sağlamak için aşağıdaki adımları gerçek
    
 5. Sağ tıklayıp **Browse Datastore** (Veri Deposuna Göz At) öğesini seçin.
 
-   ![Veri deposu Gözat](./media/data-box-gateway-deploy-provision-vmware/image3.png)
+   ![Datastore'a göz atın](./media/data-box-gateway-deploy-provision-vmware/image3.png)
 
 6. **Datastore Browser** (Veri Deposu Tarayıcısı) penceresi açılır.
 
-   ![Veri deposu tarayıcı](./media/data-box-gateway-deploy-provision-vmware/image4.png)
+   ![Datastore tarayıcısı](./media/data-box-gateway-deploy-provision-vmware/image4.png)
 
 7. Araç çubuğunda **Create directory** (Dizin oluştur) simgesine tıklayarak yeni bir klasör oluşturun. Klasör adını belirtin ve not edin. Sanal makine oluştururken bu klasör adını kullanacaksınız (önerilen yöntemdir). **Create directory** (Dizin oluştur) öğesine tıklayın.
 
@@ -118,53 +118,53 @@ Hiper yöneticinizde sanal cihaz sağlamak için aşağıdaki adımları gerçek
 
 9. İndirdiğiniz VMDK dosyalarını bulun. İki dosya vardır. Karşıya yüklemek için dosyalardan birini seçin.
 
-    ![Karşıya yüklenecek dosyayı seçin](./media/data-box-gateway-deploy-provision-vmware/image7.png)
+    ![Yüklenmesi için dosyayı seçin](./media/data-box-gateway-deploy-provision-vmware/image7.png)
 
 10. **Aç**'a tıklayın. VMDK dosyası belirtilen veri deposuna yüklenmeye başlar. Dosyanın karşıya yüklenmesi birkaç dakika sürebilir.
 11. Karşıya yükleme işlemi tamamlandıktan sonra dosyayı oluşturduğunuz veri deposunda görebilirsiniz. Şimdi ikinci VMDK dosyasını da aynı ver deposuna yükleyin. İki dosya da yüklendikten sonra tek bir dosya olacak şekilde birleştirilir. Bu işlemin ardından dizinde tek bir dosya görürsünüz.
 
-    ![İki VMDK dosyalarını tek bir dosya halinde birleştirilir.](./media/data-box-gateway-deploy-provision-vmware/image8.png)
+    ![İki VMDK dosyası tek bir dosyada birleştirilir](./media/data-box-gateway-deploy-provision-vmware/image8.png)
 
 12. vSphere istemcisi penceresine dönün. Gezinti bölmesinde **Virtual Machines** (Sanal Makineler) öğesini seçin. Sağ taraftaki bölmede **Create/Register VM** (VM Oluştur/Kaydet) öğesine tıklayın.
 
-    ![Oluştur veya VM kaydedilemiyor](./media/data-box-gateway-deploy-provision-vmware/image9.png)
+    ![VM oluşturma veya kaydetme](./media/data-box-gateway-deploy-provision-vmware/image9.png)
 
 13. **New Virtual Machine** (Yeni Sanal Makine) penceresi açılır. Select creation type (Oluşturma türü seçin) bölümünde **Create a new virtual machine** (Yeni sanal makine oluştur) öğesine ve ardından **Next** (İleri) öğesine tıklayın.
-    ![Oluşturma türü seçme sayfası](./media/data-box-gateway-deploy-provision-vmware/image10.png)
+    ![Oluşturma türü sayfasını seçin](./media/data-box-gateway-deploy-provision-vmware/image10.png)
 
-14. **Select a Name and OS Name and Location** (Ad, İşletim Sistemi Adı ve Konum Seçin) sayfasının **Name** (Ad) alanına sanal makineniz için bir ad girin. Bu adın 7. adımda oluşturduğunuz klasörün adıyla aynı olması gerekir (önerilen yöntemdir). **Guest OS family** (Konuk işletim sistemi ailesi) bölümünde Windows, **Guest OS version** (Konuk işletim sistemi sürümü) bölümünde ise Microsoft Windows Server 2016 (64-bit) seçimini yapın. **İleri**’ye tıklayın.
+14. **Select a Name and OS Name and Location** (Ad, İşletim Sistemi Adı ve Konum Seçin) sayfasının **Name** (Ad) alanına sanal makineniz için bir ad girin. Bu adın 7. adımda oluşturduğunuz klasörün adıyla aynı olması gerekir (önerilen yöntemdir). **Guest OS family** (Konuk işletim sistemi ailesi) bölümünde Windows, **Guest OS version** (Konuk işletim sistemi sürümü) bölümünde ise Microsoft Windows Server 2016 (64-bit) seçimini yapın. **İleri**'ye tıklayın.
 
-    ![Bir ad ve işletim sistemi adı ve konumu sayfa seçin](./media/data-box-gateway-deploy-provision-vmware/image11.png)
+    ![Ad ve İşletim Sistemi Adı ve Konum sayfası seçin](./media/data-box-gateway-deploy-provision-vmware/image11.png)
 
-15. **Select storage** (Depolama alanı seçin) sayfasında VM'nizi sağlamak için kullanmak istediğiniz veri deposunu seçin. **İleri**’ye tıklayın.
+15. **Select storage** (Depolama alanı seçin) sayfasında VM'nizi sağlamak için kullanmak istediğiniz veri deposunu seçin. **İleri**'ye tıklayın.
 
-    ![Depolama sayfası seçin](./media/data-box-gateway-deploy-provision-vmware/image12.png)
-16. **Customize settings** (Ayarları özelleştirin) sayfasında **CPU** ayarını 4, **Memory** (Bellek) ayarını 8192 MB (veya üzeri), **Hard disk 1** (Sabit disk 1) ayarını 2 TB (veya üzeri) olarak belirtin. Eklemek için **SCSI hard disk** (SCSI sabit disk) girişini seçin. Bu örnekte LSI Logic SAS seçilmiştir. **Statik IDE diskler desteklenmez.** **Hard disk 1** (Sabit disk 1), sanal veri diskidir. Sağlanan diskin boyutunu küçültemeyeceğinizi unutmayın. Cihazdaki tüm yerel verilerin kaybı disk sonuçları daraltmak çalışıyor. 
+    ![Depolama sayfasını seçin](./media/data-box-gateway-deploy-provision-vmware/image12.png)
+16. **Customize settings** (Ayarları özelleştirin) sayfasında **CPU** ayarını 4, **Memory** (Bellek) ayarını 8192 MB (veya üzeri), **Hard disk 1** (Sabit disk 1) ayarını 2 TB (veya üzeri) olarak belirtin. Eklemek için **SCSI hard disk** (SCSI sabit disk) girişini seçin. Bu örnekte LSI Logic SAS seçilmiştir. **Statik IDE diskler desteklenmez.** **Hard disk 1** (Sabit disk 1), sanal veri diskidir. Sağlanan diskin boyutunu küçültemeyeceğinizi unutmayın. Diski küçültmeye çalışmak, aygıttaki tüm yerel verilerin kaybolmasına neden olabilir. 
 
     ![Ayarlar sayfasını özelleştirme](./media/data-box-gateway-deploy-provision-vmware/image13.png)
 
     Aynı sayfada **Add hard disk** (Sabit disk ekle) öğesine tıklayıp **Existing hard disk** (Var olan sabit disk) seçeneğini belirtin. Veri deposundaki VMDK dosyasını seçin. Bunu yaptığınızda işletim sistemi diski eklenir. 
 
-     !Ayarlar sayfasını özelleştirme[](./media/data-box-gateway-deploy-provision-vmware/image14.png)
+     ! Ayarlar sayfasını özelleştirme[](./media/data-box-gateway-deploy-provision-vmware/image14.png)
 
     **New hard disk** (Yeni sabit disk) girişini görene kadar sayfayı kaydırın ve girişi genişleterek ayarları görüntüleyin. **Virtual Device Node** (Sanal Cihaz Düğümü) ayarını **IDE controller 0** (IDE denetleyicisi 0) olarak belirleyin.
 
      ![Ayarlar sayfasını özelleştirme](./media/data-box-gateway-deploy-provision-vmware/image15.png)
 
-17. (İsteğe bağlı) *Yalnızca VMware ESXi Server 6.7 çalıştırıyorsanız, bu adımı gerçekleştirmeniz*. Üzerinde **ayarlarını özelleştirme** sayfasında **VM seçeneklerini**. Git **Önyükleme Seçenekleri > bellenim** ve değiştirmek için **BIOS**. Varsayılan olarak, EFI için değer ayarlanır. **İleri**’ye tıklayın.
+17. (İsteğe bağlı) *Bu adımı yalnızca VMware ESXi Server 6.7 çalıştırıyorsanız gerçekleştirin.* Ayarları **Özelleştir** sayfasında **VM seçeneklerini**tıklatın. Boot **seçeneklerine > Firmware'e** gidin ve BIOS olarak **değiştirin.** Varsayılan olarak, değer EFI olarak ayarlanır. **İleri**'ye tıklayın.
 
-    ![VMware ESXi Server 6.7 çalıştırılıyorsa ayarları sayfasını özelleştirme](./media/data-box-gateway-deploy-provision-vmware/image15a.png)
+    ![VMware ESXi Server 6.7 çalıştırıyorsanız ayarlar sayfasını özelleştirin](./media/data-box-gateway-deploy-provision-vmware/image15a.png)
 
 18. **Ready to Complete** (Tamamlanmak İçin Hazır) sayfasında yeni sanal makineyle ilgili tüm ayarları gözden geçirin. CPU için 4, bellek için 8192 MB, ağ arabirimi için 1 ve Sabit disk 2 için IDE denetleyicisi 0 değerlerinin seçili olduğunu doğrulayın. **Son**'a tıklayın.
    
-    ![Tam sayfa hazır](./media/data-box-gateway-deploy-provision-vmware/image16.png)
-    ![tamamlandı sayfası için hazır](./media/data-box-gateway-deploy-provision-vmware/image17.png)
+    ![Hazır Sayfa](./media/data-box-gateway-deploy-provision-vmware/image16.png)
+    ![Tamamlanmak Için Hazır sayfa](./media/data-box-gateway-deploy-provision-vmware/image17.png)
 
 Sanal makineniz sağlanır. Durumu belirten bir ileti görüntülenir ve yeni sanal makine VM listesine eklenir.
 
-![VM'lerin listesine eklenen yeni bir sanal makine](./media/data-box-gateway-deploy-provision-vmware/image17.png)
+![VM listesine yeni sanal makine eklendi](./media/data-box-gateway-deploy-provision-vmware/image17.png)
 
-Sonraki adım, bu VM'yi açın ve IP adresini alma oluşturmaktır.
+Bir sonraki adım bu VM açmak ve IP adresini almaktır.
 
 > [!NOTE]
 > Sanal makinenize (yukarıda sağlanan) VMware araçlarını yüklememenizi öneririz. VMware araçlarının yüklenmesi desteklenmeyen bir yapılandırmaya neden olabilir.
@@ -176,25 +176,25 @@ Sanal cihazınızı başlatmak ve bağlantı kurmak için aşağıdaki adımlar�
 #### <a name="to-start-the-virtual-device"></a>Sanal cihazı başlatmak için
 1. Sanal cihazı başlatın. Sağ bölmedeki VM listeden cihazınızı seçin ve sağ tıklayarak bağlam menüsünü açın. **Power** (Güç) ve ardından **Power on** (Aç) seçimini yapın. Bu işlemin ardından makinenizin açılması gerekir. Durumu web istemcisinin en altındaki bölmede görebilirsiniz.
 
-    ![Sanal cihaz Aç](./media/data-box-gateway-deploy-provision-vmware/image19.png)
+    ![Sanal cihazda güç](./media/data-box-gateway-deploy-provision-vmware/image19.png)
 
 2. VM'nizi tekrar seçin. Sağ tıklayıp **Console** (Konsol) ve **Open in a new window** (Yeni pencerede aç) seçimlerini yapın.
 
-    ![Sanal cihaz konsolunu açın](./media/data-box-gateway-deploy-provision-vmware/image20.png)
+    ![Sanal aygıt konsolu açma](./media/data-box-gateway-deploy-provision-vmware/image20.png)
 
 3. Sanal makine konsolu yeni bir pencerede açılır. 
 
-    ![Sanal cihaz Konsolu](./media/data-box-gateway-deploy-provision-vmware/image21.png)
+    ![Sanal cihaz konsolu](./media/data-box-gateway-deploy-provision-vmware/image21.png)
 
 4. Cihaz çalışmaya başladıktan sonra imleci konsol penceresinin ortasının üst kısmındaki sekmeye götürün ve tıklayın. **Guest OS > Send keys > Ctrl+Alt+Delete** (Konuk işletim sistemi > Tuş gönder > Ctrl+Alt+Delete) girişini seçin. Bu işlem VM'nin kilidini açar.
 
-   ![Sanal cihazın kilidini açmak](./media/data-box-gateway-deploy-provision-vmware/image22.png)
+   ![Sanal aygıtın kilidini açın](./media/data-box-gateway-deploy-provision-vmware/image22.png)
 
-5. Makinede oturum açmak için parolayı girin. Varsayılan parola *Password1*.
+5. Makinede oturum açmak için parolayı girin. Varsayılan parola *Password1'dir.*
 
-   ![Sanal cihaz parolasını girin](./media/data-box-gateway-deploy-provision-vmware/image23.png)
+   ![Sanal aygıt parolası girin](./media/data-box-gateway-deploy-provision-vmware/image23.png)
 
-6. Adım 5-7 yalnızca DHCP bulunmayan bir ortamdaki önyükleme süreci için geçerlidir. DHCP ortamındaysanız bu adımları atlayıp 8. adımla devam edebilirsiniz. DHCP olmayan Ortam aygıtınızda'kurmak önyüklendiğinde, etkili olması için bir ileti görürsünüz: **Ağı yapılandırmak için Set-HcsIPAddress cmdlet'ini kullanın**. 
+6. Adım 5-7 yalnızca DHCP bulunmayan bir ortamdaki önyükleme süreci için geçerlidir. DHCP ortamındaysanız bu adımları atlayıp 8. adımla devam edebilirsiniz. Cihazınızı DHCP olmayan bir ortamda çalıştırdıysanız bunu belirten bir ileti açılacaktır: **Ağı yapılandırmak için Set-HcsIPAddress cmdlet'ini kullanın**. 
    
 7. Ağı yapılandırmak için komut isteminde `Get-HcsIpAddress` komutunu kullanarak sanal cihazınızda etkinleştirilmiş olan ağ arabirimlerini listeleyin. Cihazınızda tek bir ağ arabirimi varsa `Ethernet` varsayılan adı atanır.
 
@@ -204,14 +204,14 @@ Sanal cihazınızı başlatmak ve bağlantı kurmak için aşağıdaki adımlar�
 
 9. İlk kurulum işlemleri tamamlandıktan ve cihaz önyüklendikten sonra cihaz başlık metnini görürsünüz. Cihazı yönetmek için başlık metninde görüntülenen IP adresini ve URL'yi not edin. Bu IP adresini kullanarak sanal cihazınızın web arabirimine bağlanıp yerel kurulum ve etkinleştirme işlemlerini gerçekleştirebilirsiniz.
 
-   ![Sanal cihaz için başlık metni ve bağlantı URL'si](./media/data-box-gateway-deploy-provision-vmware/image24.png)
+   ![Sanal aygıt için banner metni ve bağlantı URL'si](./media/data-box-gateway-deploy-provision-vmware/image24.png)
 
-Cihazınız minimum yapılandırma gereksinimlerini karşılamıyorsa başlık metninde hata iletisi görüntülenir (aşağıda gösterilmiştir). Cihaz yapılandırmasını minimum gereksinimleri karşılayacak şekilde değiştirmeniz gerekir. Ardından cihazı yeniden başlatıp bağlantı kurabilirsiniz. En düşük yapılandırma gereksinimleri için bkz. [Konağın en düşük cihaz gereksinimlerini karşıladığından emin olma](#check-the-host-system).
+Cihazınız minimum yapılandırma gereksinimlerini karşılamıyorsa başlık metninde hata iletisi görüntülenir (aşağıda gösterilmiştir). Cihaz yapılandırmasını minimum gereksinimleri karşılayacak şekilde değiştirmeniz gerekir. Ardından cihazı yeniden başlatıp bağlantı kurabilirsiniz. [Ana bilgisayar sisteminin minimum sanal cihaz gereksinimlerini karşıladığını kontrol](#check-the-host-system)edin minimum yapılandırma gereksinimlerine bakın.
 
-Yerel web kullanıcı arabirimini kullanarak ilk yapılandırma sırasında herhangi bir hata yüz tanıma, aşağıdaki iş akışları için başvurun:
+Yerel web Web Web Web Web'i kullanarak ilk yapılandırma sırasında başka bir hatayla karşılaşıyorsanız, aşağıdaki iş akışlarına bakın:
 
-- [Web kullanıcı Arabirimi kurulum sorunlarını gidermek için tanılama testlerini](data-box-gateway-troubleshoot.md#run-diagnostics).
-- [Günlük paketini oluşturma ve günlük dosyalarını görüntülemek](data-box-gateway-troubleshoot.md#collect-support-package).
+- [Web UI kurulumunun giderilen sorun gidermek için tanılama testlerini çalıştırın.](data-box-gateway-troubleshoot.md#run-diagnostics)
+- [Günlük paketi oluşturun ve günlük dosyalarını görüntüleyin.](data-box-gateway-troubleshoot.md#collect-support-package)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

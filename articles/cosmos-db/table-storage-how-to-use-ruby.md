@@ -1,6 +1,6 @@
 ---
-title: Ruby ile Azure Cosmos DB Tablo API'si ve Azure Tablo depolama kullanma
-description: Azure Tablo depolama veya Azure Cosmos DB Tablo API’sini kullanarak bulutta yapılandırılmış verileri depolayın.
+title: Azure Cosmos DB Tablo API'yi ve Azure Tablo Depolama'yı Ruby ile kullanma
+description: Azure Tablo Depolama veya Azure Cosmos DB Tablo API’sini kullanarak yapılandırılmış verileri bulutta depolayın.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: ruby
@@ -10,10 +10,10 @@ author: sakash279
 ms.author: akshanka
 ms.reviewer: sngun
 ms.openlocfilehash: 7994b478321c925b3eab73291a109d50b9066fef
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76770869"
 ---
 # <a name="how-to-use-azure-table-storage-and-the-azure-cosmos-db-table-api-with-ruby"></a>Azure Tablo Depolama ve Azure Cosmos DB Tablo API’sini Ruby ile kullanma
@@ -56,7 +56,7 @@ Azure.config.storage_access_key = "<your Azure Storage access key>"
 
 Bu değerleri Azure portalında bir klasik veya Kaynak Yöneticisi depolama hesabından edinmek için:
 
-1. [Azure Portal](https://portal.azure.com)’da oturum açın.
+1. [Azure portalına](https://portal.azure.com)giriş yapın.
 2. Kullanmak istediğiniz depolama hesabına gidin.
 3. Sağdaki Ayarlar dikey penceresinde **Erişim Anahtarları**'na tıklayın.
 4. Açılan Erişim anahtarları dikey penceresinde, 1. ve 2. erişim anahtarını göreceksiniz. Bunlardan birini kullanabilirsiniz.
@@ -110,7 +110,7 @@ azure_table_service.update_entity("testtable", entity)
 **update_entity()** ve **merge_entity()** yöntemlerinde, güncelleştirmekte olduğunuz varlık yoksa, güncelleştirme işlemi başarısız olur. Bu nedenle bir varlığı daha önceden mevcut olup olmadığına bakmaksızın depolamak istiyorsanız, **insert_or_replace_entity()** veya **insert_or_merge_entity()** kullanmalısınız.
 
 ## <a name="work-with-groups-of-entities"></a>Varlık gruplarıyla çalışma
-Bazen, sunucu tarafından atomik olarak işlenmelerini sağlamak için birden fazla işlemin toplu bir işte bir arada gönderilmesi mantıklıdır. Bunun için önce bir **Batch** nesnesi oluşturmalı, sonra **TableService** üzerinde **execute_batch()** yöntemini kullanmalısınız. Aşağıdaki örnekte, iki varlığın RowKey 2 ve 3 ile toplu bir işte gönderilmesi gösterilmektedir. Bunun yalnızca aynı PartitionKey değerine sahip varlıklar için sonuç vereceğini unutmayın.
+Bazen sunucu tarafından atomik işleme sağlamak için bir toplu işte birden fazla işlemin bir arada gönderilmesi mantıklıdır. Bunun için önce bir **Batch** nesnesi oluşturmalı, sonra **TableService** üzerinde **execute_batch()** yöntemini kullanmalısınız. Aşağıdaki örnekte, iki varlığın RowKey 2 ve 3 ile toplu bir işte gönderilmesi gösterilmektedir. Bunun yalnızca aynı PartitionKey değerine sahip varlıklar için sonuç vereceğini unutmayın.
 
 ```ruby
 azure_table_service = Azure::TableService.new
@@ -130,7 +130,7 @@ result = azure_table_service.get_entity("testtable", "test-partition-key",
     "1")
 ```
 
-## <a name="query-a-set-of-entities"></a>Varlık kümesi sorgulama
+## <a name="query-a-set-of-entities"></a>Varlık kümesini sorgulama
 Bir tablodaki bir varlık kümesini sorgulamak için, bir sorgu karma değer nesnesi oluşturun ve **query_entities()** yöntemini kullanın. Aşağıdaki örnekte aynı **PartitionKey** değerine sahip tüm nesnelerin alınması gösterilmektedir:
 
 ```ruby

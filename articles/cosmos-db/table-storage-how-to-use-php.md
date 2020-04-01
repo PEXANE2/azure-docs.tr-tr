@@ -1,6 +1,6 @@
 ---
-title: PHP 'den Azure Storage tablo hizmeti veya Azure Cosmos DB Tablo API'si kullanma
-description: Azure Tablo depolama veya Azure Cosmos DB Tablo API’sini kullanarak bulutta yapılandırılmış verileri depolayın.
+title: PHP'den Azure Depolama Tablosu hizmetini veya Azure Cosmos DB Tablo API'yi kullanma
+description: Azure Tablo Depolama veya Azure Cosmos DB Tablo API’sini kullanarak yapılandırılmış verileri bulutta depolayın.
 author: sakash279
 ms.author: akshanka
 ms.service: cosmos-db
@@ -9,10 +9,10 @@ ms.devlang: php
 ms.topic: sample
 ms.date: 04/05/2018
 ms.openlocfilehash: a19928516685e7496dc3e892d2598b24b5abae19
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76771064"
 ---
 # <a name="how-to-use-azure-storage-table-service-or-the-azure-cosmos-db-table-api-from-php"></a>PHP’den Azure Depolama Tablo hizmeti veya Azure Cosmos DB Tablo API'sini kullanma
@@ -20,7 +20,7 @@ ms.locfileid: "76771064"
 [!INCLUDE [storage-table-applies-to-storagetable-and-cosmos](../../includes/storage-table-applies-to-storagetable-and-cosmos.md)]
 
 ## <a name="overview"></a>Genel Bakış
-Bu kılavuz Azure Depolama Tablo hizmeti ve Azure Cosmos DB Tablo API’sini kullanarak genel senaryoları nasıl gerçekleştireceğinizi gösterir. Örnekler PHP 'de yazılır ve [Azure Storage tablosu php Istemci kitaplığını][download]kullanır. Kapsamdaki senaryolara **tablo oluşturma ve silme**, **tablodaki varlıkları ekleme, silme ve sorgulama** dahildir. Azure Tablo hizmeti hakkında daha fazla bilgi için bkz: [Sonraki adımlar](#next-steps) bölümü.
+Bu kılavuz Azure Depolama Tablo hizmeti ve Azure Cosmos DB Tablo API’sini kullanarak genel senaryoları nasıl gerçekleştireceğinizi gösterir. örnekler PHP’de yazılmıştır ve [Azure Depolama Tablo PHP İstemci Kitaplığını][download] kullanır. Kapsamdaki senaryolara **tablo oluşturma ve silme**, **tablodaki varlıkları ekleme, silme ve sorgulama** dahildir. Azure Tablo hizmeti hakkında daha fazla bilgi için bkz: [Sonraki adımlar](#next-steps) bölümü.
 
 
 ## <a name="create-an-azure-service-account"></a>Azure hizmet hesabı oluşturma
@@ -62,7 +62,7 @@ Bu kılavuzda, PHP uygulamanızda yerel olarak veya bir Azure web rolü, çalı�
 ## <a name="add-required-references"></a>Gerekli referansları ekleme
 Depolama Tablo hizmetini ya da Azure Cosmos DB API'lerini kullanmak için:
 
-* [Require_once][require_once] ifadesini kullanarak otomatik yükleyici dosyasına başvurun ve
+* [require_once][require_once] bildirimini kullanarak otomatik yükleme dosyasına başvurun ve
 * Kullandığınız tüm sınıflara başvurun.
 
 Aşağıdaki örnekte otomatik yükleyici dosyasını nasıl dahil edeceğiniz **TableRestProxy** sınıfını nasıl dahil edeceğiniz gösterilmektedir.
@@ -95,7 +95,7 @@ $connectionString = "DefaultEndpointsProtocol=[https];AccountName=[myaccount];Ac
 UseDevelopmentStorage = true
 ```
 
-Bir Azure Tablo Depolama istemcisi veya Azure Cosmos DB istemcisi oluşturmak için **TableRestProxy** sınıfını kullanmanız gerekir. Yapabilecekleriniz:
+Bir Azure Tablo Depolama istemcisi veya Azure Cosmos DB istemcisi oluşturmak için **TableRestProxy** sınıfını kullanmanız gerekir. Şunları yapabilirsiniz:
 
 * Bağlantı dizesini doğrudan geçirebilirsiniz veya
 * Bağlantı dizesi için birden fazla harici kaynağı denetlemek için **CloudConfigurationManager (CCM)** kullanabilirsiniz:
@@ -113,7 +113,7 @@ $tableClient = TableRestProxy::createTableService($connectionString);
 ```
 
 ## <a name="create-a-table"></a>Bir tablo oluşturma
-**TableRestProxy** nesnesi, **createTable** yöntemini içeren bir tablo oluşturmanıza olanak tanır. Bir tablo oluştururken, Tablo hizmeti zaman aşımını ayarlayabilirsiniz. (Tablo hizmeti zaman aşımı hakkında daha fazla bilgi için bkz. [Tablo hizmeti işlemleri Için zaman aşımlarını ayarlama][table-service-timeouts].)
+**TableRestProxy** nesnesi, **createTable** yöntemini içeren bir tablo oluşturmanıza olanak tanır. Bir tablo oluştururken, Tablo hizmeti zaman aşımını ayarlayabilirsiniz. (Tablo hizmeti zaman aşımı hakkında daha fazla bilgi için bkz: [Tablo Hizmeti İşlemleri için Zaman Aşımlarını Ayarlama][table-service-timeouts].)
 
 ```php
 require_once 'vendor\autoload.php';
@@ -137,10 +137,10 @@ catch(ServiceException $e){
 }
 ```
 
-Tablo adlarındaki kısıtlamalar hakkında daha fazla bilgi için bkz. [Tablo hizmeti veri modelini anlama][table-data-model].
+Tablo adlarındaki kısıtlamalar hakkında daha fazla bilgi için bkz. [Tablo Hizmeti Veri Modelini anlama][table-data-model].
 
 ## <a name="add-an-entity-to-a-table"></a>Tabloya bir varlık ekleme
-Bir tabloya varlık eklemek için yeni bir **Varlık** nesnesi oluşturun ve bunu **TableRestProxy -> insertEntity**’ye geçirin. Bir varlık oluşturduğunuzda bir `PartitionKey` ve `RowKey` belirtmeniz gerektiğini unutmayın. Bunlar bir varlık için benzersiz tanımlayıcılardır ve diğer varlık özelliklerinden çok daha hızlı sorgulanabilir değerlerdir. Sistem tablonun varlıklarını birden çok depolama düğümlerine otomatik olarak dağıtmak için `PartitionKey` kullanır. Aynı `PartitionKey` değerine sahip varlıklar aynı düğümde depolanır. (Aynı düğümde depolanan birden çok varlık üzerindeki işlemler, farklı düğümlerde depolanan varlıklardan daha iyi gerçekleştirilir.) `RowKey`, bir bölüm içindeki bir varlığın benzersiz KIMLIĞIDIR.
+Bir tabloya varlık eklemek için yeni bir **Varlık** nesnesi oluşturun ve bunu **TableRestProxy -> insertEntity**’ye geçirin. Bir varlık oluşturduğunuzda bir `PartitionKey` ve `RowKey` belirtmeniz gerektiğini unutmayın. Bunlar bir varlık için benzersiz tanımlayıcılardır ve diğer varlık özelliklerinden çok daha hızlı sorgulanabilir değerlerdir. Sistem tablonun varlıklarını birden çok depolama düğümlerine otomatik olarak dağıtmak için `PartitionKey` kullanır. Aynı `PartitionKey` değerine sahip varlıklar aynı düğümde depolanır. (Aynı düğümde depolanan birden çok varlıktaki işlemler, farklı düğümlerde depolanan varlıklardan daha iyi performans gösterir.) Bölüm `RowKey` içindeki bir varlığın benzersiz kimliğidir.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -174,7 +174,7 @@ catch(ServiceException $e){
 }
 ```
 
-Tablo özellikleri ve türleri hakkında bilgi için bkz. [Tablo hizmeti veri modelini anlama][table-data-model].
+Tablo özellikleri ve türleri hakkında bilgi için bkz. [Tablo Hizmeti Veri Modelini anlama][table-data-model].
 
 **TableRestProxy** sınıfı, varlık eklemek için iki alternatif yöntem sunar: **insertOrMergeEntity** ve **insertOrReplaceEntity**. Bu yöntemleri kullanmak için yeni bir **varlık** oluşturun ve her iki yöntem için parametre olarak geçirin. Bu yöntemler, varlık yoksa varlığı ekler. Varlık zaten varsa **insertOrMergeEntity**, özellikler zaten varsa özellik değerlerini güncelleştirir ve yoksa yeni özellikleri ekler. **insertOrReplaceEntity** ise var olan bir varlığı tamamen değiştirir. Aşağıdaki örnekte **insertOrMergeEntity**’nin nasıl kullanılacağı gösterilmiştir. `PartitionKey` "tasksSeattle" ve `RowKey` "1" içeren varlık zaten yoksa eklenir. Ancak daha önce eklendiyse (yukarıdaki örnekte gösterildiği gibi), `DueDate` özelliği güncelleştirilir ve `Status` özelliği eklenir. `Description` ve `Location` özellikleri de güncelleştirilir, ancak yerlerine geçen değerler onları gerçek anlamda değiştirmez. Bu son iki özellik örnekte gösterildiği gibi eklenmediyse ancak hedef varlık üzerinde varsa mevcut değerleri değişmeden kalır.
 
@@ -248,7 +248,7 @@ echo $entity->getPartitionKey().":".$entity->getRowKey();
 ```
 
 ## <a name="retrieve-all-entities-in-a-partition"></a>Tüm varlıkları bir bölüme alma
-Varlık sorguları filtreler kullanılarak oluşturulur (daha fazla bilgi için bkz. [tabloları ve varlıkları sorgulama][filters]). Bölümdeki tüm varlıkları almak için "PartitionKey eq *bölüm_adı*" filtresini kullanın. Aşağıdaki örnekte, **queryEntities** yöntemine bir filtre geçirerek `tasksSeattle` bölümündeki tüm varlıkları alma işlemi gösterilmiştir.
+Varlık sorguları filtreler kullanılarak oluşturulur (daha fazla bilgi için bkz: [sorgulama tabloları ve varlıkları][filters]). Bölümdeki tüm varlıkları almak için "PartitionKey eq *bölüm_adı*" filtresini kullanın. Aşağıdaki örnekte, **queryEntities** yöntemine bir filtre geçirerek `tasksSeattle` bölümündeki tüm varlıkları alma işlemi gösterilmiştir.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -281,7 +281,7 @@ foreach($entities as $entity){
 ```
 
 ## <a name="retrieve-a-subset-of-entities-in-a-partition"></a>Bir bölümdeki varlıkların alt kümesini alma
-Önceki örnekte kullanılan aynı düzen, bir alt bölümdeki tüm varlıkların bir alt kümesini almak için kullanılabilir. Aldığınız varlıkların alt kümesi kullandığınız filtreye göre belirlenir (daha fazla bilgi için bkz. [tabloları ve varlıkları sorgulama][filters]). Aşağıdaki örnek, belirli bir `Location` ve `DueDate` belirtilen tarihten daha az olan tüm varlıkları almak için bir filtrenin nasıl kullanılacağını gösterir.
+Önceki örnekte kullanılan aynı düzen, bir alt bölümdeki tüm varlıkların bir alt kümesini almak için kullanılabilir. Aldığınız varlıkların alt kümesi, kullandığınız filtre tarafından belirlenir (daha fazla bilgi için bkz. [Sorgulama Tabloları ve Varlıklar][filters]). Aşağıdaki örnekte belirli bir `Location` ve belirtilen bir tarihten önceki `DueDate` içindeki tüm varlıkları almak için bir filtre kullanmayı gösterir.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -314,7 +314,7 @@ foreach($entities as $entity){
 ```
 
 ## <a name="retrieve-a-subset-of-entity-properties"></a>Varlık özellikleri alt kümesi alma
-Bir sorgu, varlık özelliklerinin bir alt kümesini alabilir. *Projeksiyon* olarak adlandırılan bu yöntem bant genişliğini azaltır ve özellikle büyük varlıklar için sorgu performansını iyileştirebilir. Alınacak bir özelliği belirtmek için özelliğin adını **Query > addSelectField** yöntemine geçirin. Daha fazla özellik eklemek için bu yöntemi birden çok kez çağırabilirsiniz. **TableRestProxy -> queryEntities**’i yürüttükten sonra, döndürülen varlıklar yalnızca seçilen özelliklere sahip olur. (Tablo varlıklarının bir alt kümesini döndürmek istiyorsanız yukarıda gösterildiği gibi bir filtre sorgusu kullanın.)
+Bir sorgu, varlık özelliklerinin bir alt kümesini alabilir. *Projeksiyon*adı verilen bu teknik, bant genişliğini azaltır ve özellikle büyük varlıklar için sorgu performansını artırabilir. Alınacak bir özelliği belirtmek için özelliğin adını **Query > addSelectField** yöntemine geçirin. Daha fazla özellik eklemek için bu yöntemi birden çok kez çağırabilirsiniz. **TableRestProxy -> queryEntities**’i yürüttükten sonra, döndürülen varlıklar yalnızca seçilen özelliklere sahip olur. (Tablo varlıklarının bir alt kümesini döndürmek istiyorsanız yukarıda gösterildiği gibi bir filtre sorgusu kullanın.)
 
 ```php
 require_once 'vendor/autoload.php';
@@ -412,7 +412,7 @@ catch(ServiceException $e){
 }
 ```
 
-Eşzamanlılık denetimleri için **DeleteEntityOptions -> setEtag** yöntemini kullanıp dördüncü bir parametre olarak **DeleteEntityOptions** nesnesini  **deleteEntity**’ye geçirerek varlığın Etag değerini silinmeye ayarlayabilirsiniz.
+Eşzamanlılık denetimleri için **DeleteEntityOptions -> setEtag** yöntemini kullanıp dördüncü bir parametre olarak **DeleteEntityOptions** nesnesini ** deleteEntity**’ye geçirerek varlığın Etag değerini silinmeye ayarlayabilirsiniz.
 
 ## <a name="batch-table-operations"></a>Toplu tablo işlemleri
 **TableRestProxy -> Toplu** yöntemi birden çok işlemin tek bir istekte yürütülmesine olanak tanır. Buradaki örnekte **BatchRequest** nesnesne işlemler eklenir ve ardından **BatchRequest** nesnesi **TableRestProxy -> Toplu** yöntemine geçirilir. Bir **BatchRequest** nesnesine işlem eklemek için aşağıdaki yöntemlerden herhangi birini birden çok kez çağırabilirsiniz:
@@ -472,7 +472,7 @@ catch(ServiceException $e){
 }
 ```
 
-Tablo işlemlerini toplu işleme hakkında daha fazla bilgi için bkz. [varlık grubu Işlemleri gerçekleştirme][entity-group-transactions].
+Toplu tablo işlemleri hakkında daha fazla bilgi için bkz. [Varlık Grup işlemleri gerçekleştirme][entity-group-transactions].
 
 ## <a name="delete-a-table"></a>Bir tablo silme
 Son olarak, bir tabloyu silmek için tablo adını **TableRestProxy -> deleteTable** yöntemine geçirin.

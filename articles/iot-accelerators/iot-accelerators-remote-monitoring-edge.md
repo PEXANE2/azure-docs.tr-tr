@@ -1,6 +1,6 @@
 ---
-title: Bir çözüm öğretici - Azure anormallikleri uçta | Microsoft Docs
-description: Bu öğreticide, Uzaktan izleme çözüm Hızlandırıcısını kullanarak IOT Edge cihazlarınıza izlemeyi öğrenin.
+title: Çözüm eğitiminde kenardaki anormallikleri algılama - Azure | Microsoft Dokümanlar
+description: Bu eğitimde Uzaktan İzleme çözüm hızlandırıcısını kullanarak IoT Edge cihazlarınızı nasıl izleyeceğinizi öğreneceksiniz.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
@@ -10,109 +10,109 @@ ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
 ms.openlocfilehash: a812155474b244682613b38b9b9379fa6cdcdcd8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "66117695"
 ---
-# <a name="tutorial-detect-anomalies-at-the-edge-with-the-remote-monitoring-solution-accelerator"></a>Öğretici: Uzaktan izleme çözüm hızlandırıcısının uçta anormallikleri
+# <a name="tutorial-detect-anomalies-at-the-edge-with-the-remote-monitoring-solution-accelerator"></a>Öğretici: Uzaktan İzleme çözüm hızlandırıcısı ile kenardaki anormallikleri tespit etme
 
-Bu öğreticide, bir IOT Edge cihazı tarafından algılanan anomalileri yanıt vermek için Uzaktan izleme çözümünüzü yapılandırın. IOT Edge cihazları izin işlem uçta çözüme gönderilen telemetri hacmini azaltmak ve cihazlarda olaylara daha hızlı yanıt'ı etkinleştirmek için telemetri. Uç işleme avantajları hakkında daha fazla bilgi için bkz: [Azure IOT Edge nedir](../iot-edge/about-iot-edge.md).
+Bu eğitimde, Uzaktan İzleme çözümünü bir IoT Edge aygıtı tarafından algılanan anormalliklere yanıt verecek şekilde yapılandırırsınız. IoT Edge aygıtları, çözüme gönderilen telemetri hacmini azaltmak ve aygıttaki olaylara daha hızlı yanıt vermek için telemetriyi kenarda işlemenize olanak tanır. Kenar işlemenin avantajları hakkında daha fazla bilgi edinmek için [Azure IoT Edge nedir'e](../iot-edge/about-iot-edge.md)bakın.
 
-Uzaktan izleme ile işleme edge tanıtmak için bir sanal Petrol pompa jack cihaz Bu öğreticide kullanılır. Bu Petrol pompa jack Contoso adlı bir kuruluş tarafından yönetilen ve Uzaktan izleme çözüm hızlandırıcısının bağlanır. Petrol pompa jack sensörlerini sıcaklığı ve Basıncı ölçün. Contoso'da işleçleri sıcaklık olağan dışı bir artış Petrol pompa jack yavaşlamasına neden olabileceğini bildirin. Contoso'da işleçleri, normal bir aralıkta olduğunda cihazın sıcaklık izleyin gerekmez.
+Uzaktan izleme ile kenar işleme tanıtmak için, bu öğretici bir simüle yağ pompası jakı cihazı kullanır. Bu yağ pompası jakı Contoso adlı bir kuruluş tarafından yönetilir ve Uzaktan İzleme çözüm hızlandırıcısına bağlıdır. Yağ pompası jakındaki sensörler sıcaklığı ve basıncı ölçer. Contoso'daki operatörler, sıcaklıktaki anormal artışın yağ pompası jakının yavaşlamasına neden olabileceğini bilirler. Contoso'daki operatörlerin cihazın normal menzili içindeyken sıcaklığını izlemesi gerekmez.
 
-Contoso Intelligent edge modülü sıcaklık anomalileri algılar Petrol pompa jack dağıtmak istiyor. Başka bir edge modülü, Uzaktan izleme çözümü uyarılar gönderir. Bir uyarı aldığınızda, Contoso işleci bir bakım teknisyen gönderebilecek. Contoso, çözüm bir uyarı aldığında çalıştırılacak bir e-posta gönderme gibi otomatik bir eylemi de yapılandırabilirsiniz.
+Contoso, sıcaklık anormalliklerini algılayan yağ pompası jakına akıllı bir kenar modülü yerleştirmek istiyor. Başka bir kenar modülü Uzaktan İzleme çözümüne uyarılar gönderir. Bir uyarı alındığı zaman, bir Contoso operatörü bir bakım teknisyeni gönderebilirsiniz. Contoso, çözüm bir uyarı aldığında çalışacak e-posta gönderme gibi otomatik bir eylemi de yapılandırabilir.
 
-Aşağıdaki diyagramda, öğretici senaryoda anahtar bileşenleri gösterilmektedir:
+Aşağıdaki diyagram, öğretici senaryodaki temel bileşenleri gösterir:
 
 ![Genel Bakış](media/iot-accelerators-remote-monitoring-edge/overview.png)
 
 Bu öğreticide şunları yaptınız:
 
 >[!div class="checklist"]
-> * Çözüme bir IOT Edge cihazı Ekle
-> * Bir Edge bildirimi oluşturma
-> * Modüller cihazda çalıştırılacak tanımlayan bir paket olarak bildirim alma
-> * Paketi, IOT Edge cihazınıza dağıtma
-> * Bir CİHAZDAN Uyarıları görüntüle
+> * Çözüme Bir IoT Edge cihazı ekleme
+> * Kenar bildirimi oluşturma
+> * Bildirimi aygıtta çalışacak modülleri tanımlayan bir paket olarak alma
+> * Paketi IoT Edge cihazınıza dağıtın
+> * Aygıttan gelen uyarıları görüntüleme
 
-IOT Edge cihazında:
+IoT Edge aygıtında:
 
-* Çalışma zamanı paketi alır ve modülleri yükler.
-* Stream analytics modülü, içinde pompa sıcaklık anomalileri algılar ve komutları sorunu gönderir.
-* Stream analytics modülü çözüm Hızlandırıcı için filtrelenmiş verileri iletir.
+* Çalışma süresi paketi alır ve modülleri yükler.
+* Akış analizi modülü pompadaki sıcaklık anormalliklerini algılar ve sorunu çözmek için komutlar gönderir.
+* Akış analizi modülü filtrelenmiş verileri çözüm hızlandırıcısına ileter.
 
-Bu öğreticide, Linux sanal makinesi bir IOT Edge cihazı kullanılır. Bir edge modülü Petrol pompa jack cihazının simülasyonunu de yükleyin.
+Bu öğretici, Bir IoT Edge aygıtı olarak bir Linux sanal makine kullanır. Ayrıca yağ pompası jakı cihazı simüle etmek için bir kenar modülü yükleyin.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
 
 [!INCLUDE [iot-accelerators-tutorial-prereqs](../../includes/iot-accelerators-tutorial-prereqs.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="add-an-iot-edge-device"></a>IoT Edge cihazı ekle
+## <a name="add-an-iot-edge-device"></a>IoT Edge cihazı ekleme
 
-IOT Edge cihazı, Uzaktan izleme çözüm Hızlandırıcısını eklemek için iki adımı vardır. Bu bölümde, nasıl kullanılacağını gösterir:
+Uzaktan İzleme çözüm hızlandırıcınıza bir IoT Edge aygıtı eklemek için iki adım vardır. Bu bölümde nasıl kullanılacağı gösterilmektedir:
 
-* IOT Edge cihazı eklemek **Device Explorer** UI Uzaktan izleme Web sayfası.
-* IOT Edge çalışma zamanı, bir Linux sanal makinesi (VM) yükleyin.
+* Uzaktan İzleme web Kullanıcı Aracı'ndaki **Aygıt Gezgini** sayfasına bir IoT Edge aygıtı ekleyin.
+* IoT Edge çalışma süresini bir Linux sanal makinesine (VM) yükleyin.
 
-### <a name="add-an-iot-edge-device-to-your-solution"></a>IOT Edge cihazı çözümünüze ekleyin.
+### <a name="add-an-iot-edge-device-to-your-solution"></a>Çözümünüze bir IoT Edge cihazı ekleme
 
-IOT Edge cihazı için Uzaktan izleme çözüm Hızlandırıcısını eklemek için gidin **Device Explorer** sayfasında web kullanıcı Arabiriminde ve tıklayın **+ yeni cihaz**.
+Uzaktan İzleme çözüm hızlandırıcısına bir IoT Edge aygıtı eklemek için web Kullanıcı Arabirimi'ndeki **Aygıt Gezgini** sayfasına gidin ve **+ Yeni aygıtı**tıklatın.
 
-İçinde **yeni cihaz** panelinde öğesini **IOT Edge cihazı** girin **Petrol pompa** olarak cihaz kimliği. Diğer ayarlar için varsayılan değerleri bırakabilirsiniz. Ardından **Apply** (Uygula) öğesine tıklayın:
+Yeni **cihaz** panelinde, **IoT Edge cihazını** seçin ve cihaz kimliği olarak **yağ pompası** girin. Varsayılan değerleri diğer ayarlar için bırakabilirsiniz. Ardından **Apply** (Uygula) öğesine tıklayın:
 
-[![IOT Edge cihazı Ekle](./media/iot-accelerators-remote-monitoring-edge/addedgedevice-inline.png)](./media/iot-accelerators-remote-monitoring-edge/addedgedevice-expanded.png#lightbox)
+[![IoT Edge cihazı ekle](./media/iot-accelerators-remote-monitoring-edge/addedgedevice-inline.png)](./media/iot-accelerators-remote-monitoring-edge/addedgedevice-expanded.png#lightbox)
 
-Cihaz bağlantı dizesini not edin, bu öğreticinin sonraki bölümünde gerekir.
+Aygıt bağlantı dizesini not alın, bu öğreticinin bir sonraki bölümünde bunu yapmanız gerekir.
 
-Uzaktan izleme çözüm Hızlandırıcısını IOT hub'ı ile bir cihaz kaydettiğinizde, listelenmiş olup **Device Explorer** sayfası Web kullanıcı Arabiriminde:
+Bir aygıtı Uzaktan İzleme çözüm hızlandırıcısında IoT hub'ına kaydettiğinizde, web Kullanıcı Arabirimi'ndeki **Aygıt Gezgini** sayfasında listelenir:
 
-[![Yeni IOT Edge cihazı](./media/iot-accelerators-remote-monitoring-edge/newedgedevice-inline.png)](./media/iot-accelerators-remote-monitoring-edge/newedgedevice-expanded.png#lightbox)
+[![Yeni IoT Edge cihazı](./media/iot-accelerators-remote-monitoring-edge/newedgedevice-inline.png)](./media/iot-accelerators-remote-monitoring-edge/newedgedevice-expanded.png#lightbox)
 
-Çözümde IOT Edge cihazları yönetmeyi kolaylaştırmak için bir cihaz grubu oluşturmak ve IOT Edge cihazı Ekle:
+Çözümdeki IoT Edge aygıtlarını yönetmeyi kolaylaştırmak için bir aygıt grubu oluşturun ve IoT Edge aygıtını ekleyin:
 
-1. Seçin **Petrol pompa** cihaz listesinde **Device Explorer** sayfasında ve ardından **işleri**.
+1. **Aygıt Gezgini** sayfasındaki listedeki **yağ pompası** aygıtını seçin ve ardından **İşler'i**tıklatın.
 
-1. Eklemek için bir iş oluşturma **IsEdge** aşağıdaki ayarları kullanarak cihaz etiketi:
+1. Aşağıdaki ayarları kullanarak aygıta **IsEdge** etiketini eklemek için bir iş oluşturun:
 
     | Ayar | Değer |
     | ------- | ----- |
-    | İş     | Tags  |
+    | İş     | Etiketler  |
     | İş Adı | AddEdgeTag |
     | Anahtar     | IsOilPump |
     | Değer   | E     |
-    | Tür    | Text  |
+    | Tür    | Metin  |
 
-    [![Etiket Ekle](./media/iot-accelerators-remote-monitoring-edge/addtag-inline.png)](./media/iot-accelerators-remote-monitoring-edge/addtag-expanded.png#lightbox)
+    [![Etiket ekle](./media/iot-accelerators-remote-monitoring-edge/addtag-inline.png)](./media/iot-accelerators-remote-monitoring-edge/addtag-expanded.png#lightbox)
 
-1. Tıklayın **uygulamak**, ardından **Kapat**.
+1. **Uygula'yı**tıklatın, ardından **Kapat.**
 
-1. Üzerinde **Device Explorer** sayfasında **cihaz gruplarını yönetme**.
+1. Aygıt **Gezgini** sayfasında, **aygıt gruplarını yönet'i**tıklatın.
 
-1. Tıklayın **yeni cihaz grubu oluşturma**. Aşağıdaki ayarlarla yeni bir cihaz grubu oluşturun:
+1. **Yeni aygıt grubu oluştur'u**tıklatın. Aşağıdaki ayarlarla yeni bir aygıt grubu oluşturun:
 
     | Ayar | Değer |
     | ------- | ----- |
-    | Ad    | OilPumps |
-    | Alan   | Tags.IsOilPump |
+    | Adı    | Yağ Pompaları |
+    | Alan   | Etiketler.IsOilPump |
     | İşleç | = Eşittir |
     | Değer    | E |
-    | Tür     | Text |
+    | Tür     | Metin |
 
-    [![Cihaz grubu oluşturma](./media/iot-accelerators-remote-monitoring-edge/createdevicegroup-inline.png)](./media/iot-accelerators-remote-monitoring-edge/createdevicegroup-expanded.png#lightbox)
+    [![Aygıt grubu oluşturma](./media/iot-accelerators-remote-monitoring-edge/createdevicegroup-inline.png)](./media/iot-accelerators-remote-monitoring-edge/createdevicegroup-expanded.png#lightbox)
 
-1. **Kaydet**’e tıklayın.
+1. **Kaydet**'e tıklayın.
 
-IOT Edge cihazı artık zamanı **OilPumps** grubu.
+You IoT Edge cihazı artık **OilPumps** grubunda.
 
-### <a name="install-the-edge-runtime"></a>Edge çalışma zamanını yükleme
+### <a name="install-the-edge-runtime"></a>Kenar çalışma süresini yükleme
 
-Bir Edge cihazının Edge çalışma zamanı yüklü olmasını gerektirir. Bu öğreticide, senaryoyu test etmek için bir Azure Linux VM'de Edge çalışma zamanını yükleyin. Aşağıdaki adımlar, yükleme, Azure cloud Shell'i kullanmak ve VM yapılandırma:
+Edge aygıtının yüklenmesi için Edge çalışma zamanı gerekir. Bu öğreticide, senaryoyu test etmek için Edge çalışma saatini bir Azure Linux VM'sine yüklersiniz. Aşağıdaki adımlar yüklemede Azure bulut kabuğunu kullanır ve VM'yi yapılandırın:
 
-1. Azure'da bir Linux VM oluşturmak için aşağıdaki komutları çalıştırın. Nerede yakın bir konum kullanabilirsiniz:
+1. Azure'da bir Linux VM oluşturmak için aşağıdaki komutları çalıştırın. Bulunduğunuz yere yakın bir konum kullanabilirsiniz:
 
     ```azurecli-interactive
     az group create \
@@ -127,7 +127,7 @@ Bir Edge cihazının Edge çalışma zamanı yüklü olmasını gerektirir. Bu �
       --size Standard_B1ms
     ```
 
-1. Edge çalışma zamanı ile cihaz bağlantı dizesini yapılandırmak için daha önce Not yapılan cihaz bağlantı dizesini kullanarak şu komutu çalıştırın:
+1. Edge çalışma süresini aygıt bağlantı dizesiyle yapılandırmak için, daha önce not aldığınız aygıt bağlantı dizesini kullanarak aşağıdaki komutu çalıştırın:
 
     ```azurecli-interactive
     az vm run-command invoke \
@@ -137,43 +137,43 @@ Bir Edge cihazının Edge çalışma zamanı yüklü olmasını gerektirir. Bu �
       --scripts 'sudo /etc/iotedge/configedge.sh "YOUR_DEVICE_CONNECTION_STRING"'
     ```
 
-    Çift tırnak işareti içinde bağlantı dizesini eklediğinizden emin olun.
+    Bağlantı dizenizi çift tırnak işaretlerine eklediğinden emin olun.
 
-Artık, yüklü ve IOT Edge çalışma zamanı bir Linux cihaz üzerinde yapılandırılan. Bu öğreticide daha sonra bu cihaza IOT Edge modüllerini dağıtmak için Uzaktan izleme çözümü kullanın.
+IoT Edge çalışma zamanını bir Linux aygıtına yüklediniz ve yapılandırıldınız. Bu eğitimin ilerleyen saatlerinde, IoT Edge modüllerini bu aygıta dağıtmak için Uzaktan İzleme çözümünü kullanırsınız.
 
-## <a name="create-an-edge-manifest"></a>Bir Edge bildirimi oluşturma
+## <a name="create-an-edge-manifest"></a>Kenar bildirimi oluşturma
 
-Petrol jack pompa cihaz benzetimini yapmak için Edge cihazınıza aşağıdaki modüller eklemeniz gerekir:
+Yağ jakı pompası cihazını simüle etmek için Edge cihazınıza aşağıdaki modülleri eklemeniz gerekir:
 
-* Benzetim modülü sıcaklık.
-* Azure Stream Analytics anomali algılama.
+* Sıcaklık simülasyon modülü.
+* Azure Akış Analizi anormallik algılama.
 
-Aşağıdaki adımlar bu modüller içeren bir kenar dağıtım bildirimi oluşturmak nasıl gösterir. Bu öğreticinin ilerleyen bölümlerinde bu bildirimi bir paketi Uzaktan izleme çözüm Hızlandırıcısını olarak alın.
+Aşağıdaki adımlar, bu modülleri içeren bir Kenar dağıtım bildiriminin nasıl oluşturulabileceğinizi gösterir. Daha sonra bu öğretici uzaktan izleme çözüm hızlandırıcı bir paket olarak bu bildirimi almak.
 
-### <a name="create-the-azure-stream-analytics-job"></a>Azure Stream Analytics işi oluşturma
+### <a name="create-the-azure-stream-analytics-job"></a>Azure Akış Analizi işini oluşturun
 
-Bir Edge modülü paketlemeden önce portalda Stream Analytics işi tanımlayın.
+Portaldaki Stream Analytics işini Edge modülü olarak paketlemeden önce tanımlarsınız.
 
-1. Azure portalında, varsayılan seçenekleri kullanarak bir Azure depolama hesabı oluşturma **IoTEdgeDevices** kaynak grubu. Seçtiğiniz adı not edin.
+1. Azure portalında, **IoTEdgeDevices** kaynak grubundaki varsayılan seçenekleri kullanarak bir Azure depolama hesabı oluşturun. Seçtiğiniz adı not edin.
 
-1. Azure portalında oluşturma bir **Stream Analytics işi** içinde **IoTEdgeDevices** kaynak grubu. Yapılandırma değerleri aşağıdaki kullanın:
+1. Azure portalında, **IoTEdgeDevices** kaynak grubunda bir **Akış Analizi İşi** oluşturun. Aşağıdaki yapılandırma değerlerini kullanın:
 
     | Seçenek | Değer |
     | ------ | ----- |
     | İş adı | EdgeDeviceJob |
     | Abonelik | Azure aboneliğiniz |
-    | Kaynak grubu | IoTEdgeDevices |
-    | Location | Doğu ABD |
-    | Barındırma ortamı | EDGE |
+    | Kaynak grubu | IoTEdgeCihazlar |
+    | Konum | Doğu ABD |
+    | Barındırma ortamı | Edge |
     | Akış birimleri | 1 |
 
-1. Açık **EdgeDeviceJob** Stream Analytics portalında işi, girişleri tıklayın ve Ekle bir **Edge hub'ı** adlı giriş akışı **telemetri**.
+1. Portalda **EdgeDeviceJob** Stream Analytics işini açın, Girişleri tıklatın ve **telemetri**adı verilen bir **Edge Hub** akışı girişi ekleyin.
 
-1. İçinde **EdgeDeviceJob** portalında Stream Analytics işi tıklayın **çıkışları** ve ekleme bir **Edge hub'ı** adlı çıktı **çıkış**.
+1. Portaldaki **EdgeDeviceJob** Stream Analytics işinde **Çıktılar'ı** tıklatın ve **çıktı**adı verilen bir **Edge Hub** çıktısı ekleyin.
 
-1. İçinde **EdgeDeviceJob** portalında Stream Analytics işi tıklayın **çıkışları** ve ikinci bir ekleme **Edge hub'ı** adlı çıktı **uyarı**.
+1. Portaldaki **EdgeDeviceJob** Stream Analytics **işinde, Çıktılar'ı** tıklatın ve **uyarı**adı verilen ikinci bir **Edge Hub** çıkışı ekleyin.
 
-1. İçinde **EdgeDeviceJob** portalında Stream Analytics işi tıklayın **sorgu** ve aşağıdakileri ekleyin **seçin** deyimi:
+1. Portaldaki **EdgeDeviceJob** Stream Analytics işinde **Sorgula'yı** tıklatın ve aşağıdaki **seçili** deyimi ekleyin:
 
     ```sql
     SELECT  
@@ -189,35 +189,35 @@ Bir Edge modülü paketlemeden önce portalda Stream Analytics işi tanımlayın
     HAVING avg(machine.temperature) > 400
     ```
 
-1. İçinde **EdgeDeviceJob** portalında Stream Analytics işi tıklayın **depolama hesabı ayarlarını**. Eklediğiniz depolama hesabı ekleme **IoTEdgeDevices** kaynak grubu, bu bölümün başlangıç olarak. Adlı yeni bir kapsayıcı oluşturmak **edgeconfig**.
+1. Portaldaki **EdgeDeviceJob** Stream Analytics işinde **Depolama hesabı ayarlarını**tıklatın. Bu bölümün başlangıcı olarak **IoTEdgeDevices** kaynak grubuna eklediğiniz depolama hesabını ekleyin. **Edgeconfig**adlı yeni bir kapsayıcı oluşturun.
 
-Aşağıdaki ekran görüntüsünde, kaydedilmiş Stream Analytics işi gösterir:
+Aşağıdaki ekran görüntüsü kaydedilen Akış Analizi işini gösterir:
 
 [![Stream Analytics işi](./media/iot-accelerators-remote-monitoring-edge/streamjob-inline.png)](./media/iot-accelerators-remote-monitoring-edge/streamjob-expanded.png#lightbox)
 
-Edge Cihazınızda çalıştırmak için bir Stream Analytics işi şimdi tanımladınız. İş 5 saniyelik pencere üzerinde ortalama sıcaklık hesaplar. 400 3 saniyelik bir pencerede ortalama sıcaklık aşması durumunda iş aynı zamanda bir uyarı gönderir.
+Artık kenar cihazınızda çalıştırmak için bir Akış Analizi işi tanımladınız. İş, 5 saniyelik bir pencerenin ortalama sıcaklığını hesaplar. 3 saniyelik bir penceredeki ortalama sıcaklık 400'ün üzerine çıkarsa, iş de bir uyarı gönderir.
 
-### <a name="create-the-iot-edge-deployment"></a>IOT Edge dağıtımı oluşturma
+### <a name="create-the-iot-edge-deployment"></a>IoT Edge dağıtımını oluşturma
 
-Ardından, Edge Cihazınızda çalıştırmak için modülleri tanımlayan bir IOT Edge dağıtımı bildirimi oluşturun. Sonraki bölümde, bir paketi Uzaktan izleme çözümü olarak bu bildirimi alın.
+Ardından, Edge aygıtınızda çalışacak modülleri tanımlayan bir IoT Edge dağıtım bildirimi oluşturursunuz. Sonraki bölümde, bu bildirimi Uzaktan İzleme çözümünde bir paket olarak içeri aktarAbilirsiniz.
 
-1. Azure portalında, Uzaktan izleme çözümünüzü IOT hub'ına gidin. IOT hub'ı Uzaktan izleme çözümünüzü aynı ada sahip kaynak grubunda bulabilirsiniz.
+1. Azure portalında, Uzaktan İzleme çözümünüzdeki IoT hub'ına gidin. Uzaktan İzleme çözümünüzle aynı ada sahip kaynak grubunda IoT hub'ını bulabilirsiniz.
 
-1. IOT hub'ında tıklayın **IOT Edge** içinde **otomatik cihaz Yönetimi** bölümü. Tıklayın **bir IOT Edge dağıtımı Ekle**.
+1. IoT hub'ında Otomatik **Aygıt Yönetimi** bölümünde **IoT Edge'i** tıklatın. **IoT Edge dağıtımı ekle'yi**tıklatın.
 
-1. Üzerinde **dağıtım oluşturma > ad ve etiket** sayfasında, bir ad girin **Petrol pompa cihaz**. **İleri**’ye tıklayın.
+1. Dağıtım **> Ad ve Etiket Oluştur** sayfasında yağ pompası **aygıtı**adını girin. **İleri**'ye tıklayın.
 
-1. Üzerinde **dağıtım oluşturma > Ekle modülleri** sayfasında **+ Ekle**. Seçin **IOT Edge Modülü**.
+1. **Modüller Ekle > Oluştur sayfasında** **+ Ekle'yi**tıklatın. **IoT Edge Modül'üni**seçin.
 
-1. İçinde **IOT Edge özel modüller** panelinde, girin **sıcaklık algılayıcısı** adı olarak ve **asaedgedockerhubtest/asa-edge-test-module:sensor-ad-linux-amd64** olarak Görüntü URI'si. **Kaydet**’e tıklayın.
+1. **IoT Edge Özel Modüller** panelinde, adı olarak **temperatureSensor** girin ve **asaedgedockerhubtest/asa-edge-test-module:sensor-ad-linux-amd64** görüntü URI olarak. **Kaydet**'e tıklayın.
 
-1. Üzerinde **dağıtım oluşturma > Ekle modülleri** sayfasında **+ Ekle** ikinci bir modül eklemek için. Seçin **Azure Stream Analytics Modülü**.
+1. **Modüller Ekle > Oluştur sayfasında,** ikinci bir modül eklemek için **+ Ekle'yi** tıklatın. **Azure Akış Analizi Modül'üni**seçin.
 
-1. İçinde **kenar dağıtım** panelinde, aboneliğinizi seçin ve **EdgeDeviceJob** önceki bölümde oluşturduğunuz. **Kaydet**’e tıklayın.
+1. Kenar **dağıtım** panelinde, aboneliğinizi ve önceki bölümde oluşturduğunuz **EdgeDeviceJob'ı** seçin. **Kaydet**'e tıklayın.
 
-1. Üzerinde **dağıtım oluşturma > Ekle modülleri** sayfasında **sonraki**.
+1. Dağıtım **oluştur > Modülekle** sayfasında **İleri'yi**tıklatın.
 
-1. Üzerinde **dağıtım oluşturma > Rota belirtme** sayfasında, aşağıdaki kodu ekleyin:
+1. Dağıtım **oluştur > Rotalar belirt** sayfasında aşağıdaki kodu ekleyin:
 
     ```sql
     {
@@ -229,113 +229,113 @@ Ardından, Edge Cihazınızda çalıştırmak için modülleri tanımlayan bir I
     }
     ```
 
-    Bu kod, Stream Analytics modülü çıkışı doğru konuma yönlendirir.
+    Bu kod, Akış Analizi modülünden çıktıyı doğru konumlara yönlendirir.
 
-    **İleri**’ye tıklayın.
+    **İleri**'ye tıklayın.
 
-1. Üzerinde **dağıtım oluşturma > belirtin ölçümleri** sayfasında **sonraki**.
+1. Dağıtım **Oluştur > Ölçümleri Belirt** sayfasında **İleri'yi**tıklatın.
 
-1. Üzerinde **dağıtım oluşturma > hedef cihazlar** sayfasında, öncelikli olarak 10 girin. **İleri**’ye tıklayın.
+1. Dağıtım **> Hedef Aygıtlar Oluştur** sayfasında öncelik olarak 10 girin. **İleri**'ye tıklayın.
 
-1. Üzerinde **dağıtım oluşturma > İnceleme dağıtım** sayfasında **Gönder**:
+1. Dağıtım **oluştur > Gözden Geçir dağıtım** sayfasında **Gönder'i**tıklatın:
 
-    [![Dağıtım gözden geçirin](./media/iot-accelerators-remote-monitoring-edge/reviewdeployment-inline.png)](./media/iot-accelerators-remote-monitoring-edge/reviewdeployment-expanded.png#lightbox)
+    [![Dağıtımı gözden geçirme](./media/iot-accelerators-remote-monitoring-edge/reviewdeployment-inline.png)](./media/iot-accelerators-remote-monitoring-edge/reviewdeployment-expanded.png#lightbox)
 
-1. Ana **IOT Edge** sayfasında **IOT Edge dağıtımları**. Gördüğünüz **Petrol pompa cihaz** dağıtımları listesinde.
+1. Ana **IoT Edge** **sayfasında, IoT Edge dağıtımlarını**tıklatın. Dağıtımlar listesinde **yağ pompası cihazını** görebilirsiniz.
 
-1. Tıklayın **Petrol pompa cihaz** dağıtım ve ardından **indirme IOT Edge bildirimi**. Dosyayı Farklı Kaydet **Petrol pompa device.json** için yerel makinenizde uygun bir konum. Bu öğreticinin sonraki bölümünde bu dosya gerekir.
+1. Yağ **pompası-cihaz** dağıtımını tıklatın ve ardından **IoT Edge bildirimini İndir'i**tıklatın. Dosyayı **yağ pompası-device.json** olarak yerel makinenizde uygun bir konuma kaydedin. Bu öğreticinin bir sonraki bölümünde bu dosyaya ihtiyacınız var.
 
-Uzaktan izleme çözümünün bir paket olarak almak için bir IOT Edge bildirimi oluşturdunuz. Genellikle, bir geliştirici IOT Edge modülleri ve bildirim dosyası oluşturur.
+Şimdi paket olarak Uzaktan İzleme çözümüne aktarmak için bir IoT Edge bildirimi oluşturdunuz. Genellikle, bir geliştirici IoT Edge modülleri ve bildirim dosyası oluşturur.
 
-## <a name="import-a-package"></a>Paketi içeri aktarma
+## <a name="import-a-package"></a>Paket alma
 
-Bu bölümde, bir paketi Uzaktan izleme çözümü olarak Edge bildirim alın.
+Bu bölümde, Uzaktan İzleme çözümünde Kenar bildirimini paket olarak içeri aktarAbilirsiniz.
 
-1. Uzaktan izleme web kullanıcı Arabiriminde, gitmek **paketleri** sayfasında ve tıklayın **+ yeni paketi**:
+1. Uzaktan İzleme web Kullanıcı Arama Sürümü'nde **Paketler** sayfasına gidin ve **+ Yeni Paket'e**tıklayın:
 
     [![Yeni paket](./media/iot-accelerators-remote-monitoring-edge/newpackage-inline.png)](./media/iot-accelerators-remote-monitoring-edge/newpackage-expanded.png#lightbox)
 
-1. Üzerinde **yeni paket** panelinde öğesini **Edge bildirim** paket türü ' ı tıklatın **Gözat** bulmak için **Petrol pompa device.json** dosya çubuğunda yerel makine ve tıklatın **karşıya**:
+1. Yeni **Paket** panelinde, paket türü olarak **Edge Manifest'i** seçin, yerel makinenizdeki **yağ pompası-device.json** dosyasını bulmak için **Gözat'ı** tıklatın ve **Yükle'yi**tıklatın:
 
-    [![Paket karşıya yükleme](./media/iot-accelerators-remote-monitoring-edge/uploadpackage-inline.png)](./media/iot-accelerators-remote-monitoring-edge/uploadpackage-expanded.png#lightbox)
+    [![Paketi yükleme](./media/iot-accelerators-remote-monitoring-edge/uploadpackage-inline.png)](./media/iot-accelerators-remote-monitoring-edge/uploadpackage-expanded.png#lightbox)
 
-    Artık paketler listesini içeren **Petrol pompa device.json** paket.
+    Paketlerin listesi şimdi **yağ pompası-device.json** paketi içerir.
 
-Sonraki bölümde, Edge cihazınıza paket geçerli bir dağıtım oluşturun.
+Sonraki bölümde, paketi Edge cihazınıza uygulayan bir dağıtım oluşturursunuz.
 
-## <a name="deploy-a-package"></a>Bir paketi dağıtmak
+## <a name="deploy-a-package"></a>Paket dağıtma
 
-Artık paket cihazınıza dağıtmaya hazırsınız.
+Artık paketi cihazınıza dağıtmaya hazırsınız.
 
-1. Uzaktan izleme web kullanıcı Arabiriminde, gitmek **dağıtımları** sayfasında ve tıklayın **+ yeni dağıtım**:
+1. Uzaktan İzleme web Kullanıcı Arama Sürümü'nde **Dağıtımlar** sayfasına gidin ve **+ Yeni dağıtım'ı**tıklatın:
 
     [![Yeni dağıtım](./media/iot-accelerators-remote-monitoring-edge/newdeployment-inline.png)](./media/iot-accelerators-remote-monitoring-edge/newdeployment-expanded.png#lightbox)
 
-1. İçinde **yeni dağıtım** panelinde, aşağıdaki ayarlara sahip bir dağıtım oluşturun:
+1. Yeni **dağıtım** panelinde, aşağıdaki ayarlara sahip bir dağıtım oluşturun:
 
     | Seçenek | Değer |
     | ------ | ----- |
-    | Ad   | OilPumpDevices |
-    | Paket türü | Edge bildirimi |
-    | Paket | Petrol pompa device.json |
-    | Cihaz grubu | OilPumps |
+    | Adı   | Yağ Pompası Cihazları |
+    | Paket türü | Kenar Manifestosu |
+    | Paket | yağ pompası-device.json |
+    | Cihaz Grubu | Yağ Pompaları |
     | Öncelik | 10 |
 
     [![Dağıtım oluşturma](./media/iot-accelerators-remote-monitoring-edge/createdeployment-inline.png)](./media/iot-accelerators-remote-monitoring-edge/createdeployment-expanded.png#lightbox)
 
-    **Uygula**'ya tıklayın.
+    **Uygula**’ya tıklayın.
 
-Pakette cihazınıza dağıtmaya ve telemetri CİHAZDAN akışa başlamak için birkaç dakika beklemeniz gerekir.
+Paketin cihazınıza dağıtılması ve telemetrinin cihazdan akmaya başlaması için birkaç dakika beklemeniz gerekir.
 
-[![Etkin dağıtım](./media/iot-accelerators-remote-monitoring-edge/deploymentactive-inline.png)](./media/iot-accelerators-remote-monitoring-edge/deploymentactive-expanded.png#lightbox)
+[![Dağıtım etkin](./media/iot-accelerators-remote-monitoring-edge/deploymentactive-inline.png)](./media/iot-accelerators-remote-monitoring-edge/deploymentactive-expanded.png#lightbox)
 
-**Dağıtımları** sayfası aşağıdaki ölçümleri gösterir:
+**Dağıtımlar** sayfası aşağıdaki ölçümleri gösterir:
 
-* **Hedeflenen** cihaz grubundaki cihazların sayısını gösterir.
-* **Uygulanan** uygulanan dağıtım içeriğine kalmışlardır cihazların sayısını gösterir.
-* **Başarılı** IOT Edge istemci çalışma zamanı başarı raporlama dağıtımdaki uç cihazlarına sayısını gösterir.
-* **Başarısız** IOT Edge istemci çalışma zamanı hatasından raporlama dağıtımdaki uç cihazlarına sayısını gösterir.
+* **Hedeflenen** aygıt grubundaki aygıt sayısını gösterir.
+* **Uygulanan** dağıtım içeriği uygulanan aygıtların sayısını gösterir.
+* **Başarılı,** Dağıtımdaki Edge aygıtlarının sayısını IoT Edge istemci çalışma saatinden başarı yı bildiren gösterir.
+* **Başarısız,** IoT Edge istemci çalışma zamanından dağıtım raporlama hatasıedge aygıtlarının sayısını gösterir.
 
-## <a name="monitor-the-device"></a>Cihaz izleme
+## <a name="monitor-the-device"></a>Cihazı izleme
 
-Uzaktan izleme Web kullanıcı Arabiriminde Petrol pompa cihazınızdan sıcaklık telemetri görüntüleyebilirsiniz:
+Uzaktan İzleme web Kullanıcı Aracı'nda yağ pompası cihazınızdan sıcaklık telemetrisini görüntüleyebilirsiniz:
 
-1. Gidin **Device Explorer** sayfasında ve Petrol pompa Cihazınızı seçin.
-1. İçinde **Telemetri** bölümünü **cihaz ayrıntıları** panelinde, tıklayın **sıcaklık**:
+1. **Aygıt Gezgini** sayfasına gidin ve yağ pompası cihazınızı seçin.
+1. **Cihaz ayrıntıları** panelinin **Telemetri** bölümünde **Sıcaklık'ı**tıklatın:
 
     [![Telemetri görüntüleme](./media/iot-accelerators-remote-monitoring-edge/viewtelemetry-inline.png)](./media/iot-accelerators-remote-monitoring-edge/viewtelemetry-expanded.png#lightbox)
 
-Bir eşiğe ulaşması kadar sıcaklık nasıl yükseldiğinde görebilirsiniz. Stream Analytics Edge modülü sıcaklık, bu eşiğe ulaşması ve sıcaklık hemen azaltmak için cihaza bir komut gönderir algılar. Tüm bu işlemleri gerçekleşir cihazda bulutla iletişim kurmadan.
+Bir eşiğe ulaşana kadar sıcaklığın nasıl yükseldiğini görebilirsiniz. Stream Analytics Edge modülü, sıcaklığın bu eşiğe ne zaman ulaştığını algılar ve sıcaklığı hemen azaltmak için cihaza bir komut gönderir. Tüm bu işlemler bulutla iletişim kurmadan aygıtta gerçekleşir.
 
-İşleçler Eşiğe ulaşıldığında bildirmek istiyorsanız, Uzaktan izleme web UI'da bir kural oluşturabilirsiniz:
+Eşiğe ulaşıldığında operatörleri bilgilendirmek istiyorsanız, Uzaktan İzleme web Kullanıcı Arama Hizmeti'nde bir kural oluşturabilirsiniz:
 
-1. Gidin **kuralları** sayfasında ve tıklayın **+ yeni kural**.
+1. **Kurallar** sayfasına gidin ve **+ Yeni kuralını**tıklatın.
 1. Aşağıdaki ayarlarla yeni bir kural oluşturun:
 
     | Seçenek | Değer |
     | ------ | ----- |
-    | Kural adı | Petrol pompa sıcaklık |
-    | Açıklama | Petrol pompa sıcaklık 300 aşıldı |
-    | Cihaz grubu | OilPumps |
+    | Kural adı | Yağ pompası sıcaklığı |
+    | Açıklama | Yağ pompası sıcaklığı 300'ü aştı |
+    | Cihaz grubu | Yağ Pompaları |
     | Hesaplama | Anında |
     | Alan | sıcaklık |
     | İşleç | > |
     | Değer | 300 |
-    | Önem düzeyi | Bilgi |
+    | Önem derecesi | Bilgi |
 
     [![Kural oluşturma](./media/iot-accelerators-remote-monitoring-edge/newrule-inline.png)](./media/iot-accelerators-remote-monitoring-edge/newrule-expanded.png#lightbox)
 
-    **Uygula**'ya tıklayın.
+    **Uygula**’ya tıklayın.
 
-1. Gidin **Pano** sayfası. Bir uyarı gösterir **uyarılar** ne zaman panelinde sıcaklık **Petrol pompa** cihaz 300'den geçer.
+1. **Pano** sayfasına gidin. **Yağ pompası** cihazındaki sıcaklık 300'ün üzerine çıktığında **Uyarılar** panelinde bir uyarı gösterir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide ekleme ve bir IOT Edge cihazı Uzaktan izleme çözüm hızlandırıcısının yapılandırma nasıl oluşturulacağını gösterir. Uzaktan izleme çözümünde IOT Edge paketleri ile çalışma hakkında daha fazla bilgi için aşağıdaki nasıl yapılır kılavuzuna bakın:
+Bu öğretici, Uzaktan İzleme çözüm hızlandırıcısında bir IoT Edge aygıtının nasıl eklendiğini ve yapılandırılabildiğini gösterdi. Uzaktan İzleme çözümünde IoT Edge paketleriyle çalışma hakkında daha fazla bilgi edinmek için aşağıdaki nasıl yapılacağını zedeleme kılavuzuna bakın:
 
 > [!div class="nextstepaction"]
-> [Bir IOT Edge paketi Uzaktan izleme çözüm Hızlandırıcısını alma](iot-accelerators-remote-monitoring-import-edge-package.md)
+> [Uzaktan İzleme çözüm hızlandırıcınıza bir IoT Edge paketi alma](iot-accelerators-remote-monitoring-import-edge-package.md)
 
-IOT Edge çalışma zamanı yükleme hakkında daha fazla bilgi edinmek için [(x64) Linux üzerinde Azure IOT Edge çalışma zamanı yükleme](../iot-edge/how-to-install-iot-edge-linux.md).
+IoT Edge çalışma süresini yükleme hakkında daha fazla bilgi edinmek için Azure [IoT Edge çalışma saatini Linux'ta (x64) yükleyin.](../iot-edge/how-to-install-iot-edge-linux.md)
 
-Uç cihazlarda Azure Stream Analytics hakkında daha fazla bilgi edinmek için bkz. [Azure Stream Analytics IOT Edge modülü olarak dağıtma](../iot-edge/tutorial-deploy-stream-analytics.md).
+Edge cihazlarda Azure Akış Analizi hakkında daha fazla bilgi edinmek için Azure [Akış Analizi'ni IoT Edge modülü olarak dağıt'a](../iot-edge/tutorial-deploy-stream-analytics.md)bakın.

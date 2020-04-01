@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Azure Active Directory Tümleştirmesi, kampüs sonsuz ile | Microsoft Docs'
-description: Azure Active Directory ve sonsuz kampüs arasında çoklu oturum açmayı yapılandırmayı öğrenin.
+title: 'Öğretici: Sonsuz Kampüs ile Azure Active Directory entegrasyonu | Microsoft Dokümanlar'
+description: Azure Etkin Dizin ve Sonsuz Kampüs arasında tek oturum açma yı nasıl yapılandırıştırmayı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,199 +16,199 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: d54769c1f3265e2cee619520044313fca46855a5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67100364"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-infinite-campus"></a>Öğretici: Sonsuz kampüs ile Azure Active Directory Tümleştirme
+# <a name="tutorial-azure-active-directory-integration-with-infinite-campus"></a>Öğretici: Sonsuz Kampüs ile Azure Active Directory entegrasyonu
 
-Bu öğreticide, Azure Active Directory (Azure AD) ile sonsuz kampüs tümleştirme konusunda bilgi edinin.
-Sonsuz kampüs Azure AD ile tümleştirme ile aşağıdaki avantajları sağlar:
+Bu eğitimde, Sonsuz Kampüs'ü Azure Etkin Dizini (Azure AD) ile nasıl entegre acağınızı öğreneceksiniz.
+Sonsuz Kampüs'e Azure AD ile entegre olmak size aşağıdaki avantajları sağlar:
 
-* Sonsuz kampüs erişimi, Azure AD'de kontrol edebilirsiniz.
-* Azure AD hesaplarına otomatik olarak (çoklu oturum açma) için sonsuz kampüs oturum açmış, kullanıcıların etkinleştirebilirsiniz.
-* Hesaplarınız bir merkezi konumda - Azure portalında yönetebilir.
+* Sonsuz Kampüs'e erişimi olan Azure AD'de kontrol edebilirsiniz.
+* Kullanıcılarınızın Azure AD hesaplarıyla Sonsuz Kampüs'te (Tek Oturum Açma) otomatik olarak oturum açmalarını sağlayabilirsiniz.
+* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz - Azure portalı.
 
-Azure AD SaaS uygulama tümleştirmesi hakkında daha fazla ayrıntı bilmek istiyorsanız, bkz. [uygulama erişimi ve Azure Active Directory ile çoklu oturum açma nedir](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi almak istiyorsanız, [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Azure AD Tümleştirmesi ile sonsuz kampüs yapılandırmak için aşağıdaki öğeler gerekir:
+Azure AD tümleştirmesini Sonsuz Kampüs ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
-* Azure AD aboneliğiniz. Bir Azure AD ortamını yoksa alabileceğiniz bir [ücretsiz hesap](https://azure.microsoft.com/free/)
-* Abonelik sonsuz kampüs çoklu oturum açma etkin
-* En azından, Azure Active Directory yönetici olmanız ve kampüs ürün güvenlik rolü, "Öğrenci bilgi sistemi (yapılandırmasını tamamlamak için SIS)" olması gerekir.
+* Azure AD aboneliği. Azure REKLAM ortamınız yoksa, ücretsiz bir [hesap](https://azure.microsoft.com/free/) alabilirsiniz
+* Sonsuz Kampüs tek oturum açma özellikli abonelik
+* En azından, yapılandırmayı tamamlamak için Azure Etkin Dizin yöneticisi olmanız ve "Öğrenci Bilgi Sistemi (SIS)" Kampüs Ürün Güvenliği Rolüne sahip olmanız gerekir.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, yapılandırma ve Azure AD çoklu oturum açma bir test ortamında test edin.
+Bu öğreticide, Azure AD tek oturum açma işlemlerini bir test ortamında yapılandırıp sınayabilirsiniz.
 
-* Sonsuz kampüs destekler **SP** tarafından başlatılan
+* Sonsuz Kampüs **SP** başlatılan SSO destekler
 
-## <a name="adding-infinite-campus-from-the-gallery"></a>Galeriden sonsuz kampüs ekleme
+## <a name="adding-infinite-campus-from-the-gallery"></a>Galeriden Sonsuz Kampüs Ekleme
 
-Azure AD'de sonsuz kampüs tümleştirmesini yapılandırmak için sonsuz kampüs Galeriden yönetilen SaaS uygulamaları listesine eklemeniz gerekir.
+Sonsuz Kampüs'ün Azure AD'ye entegrasyonunu yapılandırmak için, galeriden yönetilen SaaS uygulamaları listenize Sonsuz Kampüs eklemeniz gerekir.
 
-**Galeriden sonsuz kampüs eklemek için aşağıdaki adımları gerçekleştirin:**
+**Galeriden Sonsuz Kampüs eklemek için aşağıdaki adımları gerçekleştirin:**
 
-1. İçinde **[Azure portalında](https://portal.azure.com)** , sol gezinti panelinde tıklayın **Azure Active Directory** simgesi.
+1. Sol daki gezinti panelindeki **[Azure portalında](https://portal.azure.com)** **Azure Active Directory simgesini** tıklatın.
 
-    ![Azure Active Directory düğmesi](common/select-azuread.png)
+    ![Azure Etkin Dizin düğmesi](common/select-azuread.png)
 
-2. Gidin **kurumsal uygulamalar** seçip **tüm uygulamaları** seçeneği.
+2. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamalar** seçeneğini belirleyin.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+    ![Enterprise uygulamaları bıçak](common/enterprise-applications.png)
 
-3. Yeni bir uygulama eklemek için tıklatın **yeni uygulama** iletişim kutusunun üstündeki düğmesi.
+3. Yeni bir uygulama eklemek için iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesini tıklatın.
 
-    ![Yeni Uygulama düğmesi](common/add-new-app.png)
+    ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **sonsuz kampüs**seçin **sonsuz kampüs** sonucu panelinden ardından **Ekle** uygulama eklemek için Ekle düğmesine.
+4. Arama kutusunda, **Sonsuz Kampüs**yazın, sonuç panelinden **Sonsuz Kampüs'i** seçin ve ardından uygulamayı eklemek için **Ekle** düğmesini tıklatın.
 
-    ![Sonuç listesinde sonsuz kampüs](common/search-new-app.png)
+    ![Sonuç listesinde Sonsuz Kampüs](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Yapılandırma ve Azure AD çoklu oturum açmayı test etme
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD tek oturum açma yapılandırma ve test
 
-Bu bölümde, yapılandırma ve Azure AD çoklu oturum açma sonsuz adlı bir test kullanıcı tabanlı kampüs test **Britta Simon**.
-Tek iş için oturum açma için bir Azure AD kullanıcısı ve sonsuz kampüs ilgili kullanıcı arasında bir bağlantı ilişki kurulması gerekir.
+Bu bölümde, **Britta Simon**adlı bir test kullanıcısına göre Azure AD tek oturum açma işlemini Infinite Campus ile yapılandırıp test esiniz.
+Tek oturum açmanın işe yaraması için, Bir Azure AD kullanıcısı ile Sonsuz Kampüs'teki ilgili kullanıcı arasında bir bağlantı ilişkisinin kurulması gerekir.
 
-Yapılandırma ve Azure AD çoklu oturum açma sonsuz kampüs ile test etmek için aşağıdaki yapı taşlarını tamamlanması gerekir:
+Azure AD oturumlarını Infinite Campus ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlamanız gerekir:
 
-1. **[Azure AD çoklu oturum açmayı yapılandırmayı](#configure-azure-ad-single-sign-on)**  - bu özelliği kullanmak, kullanıcılarınızın etkinleştirmek için.
-2. **[Sonsuz kampüs çoklu oturum açmayı yapılandırma](#configure-infinite-campus-single-sign-on)**  - uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
-3. **[Bir Azure AD test kullanıcısı oluşturma](#create-an-azure-ad-test-user)**  - Azure AD çoklu oturum açma Britta Simon ile test etmek için.
-4. **[Azure AD test kullanıcı atama](#assign-the-azure-ad-test-user)**  - Azure AD çoklu oturum açmayı kullanmak Britta Simon etkinleştirmek için.
-5. **[Sonsuz kampüs test kullanıcısı oluşturma](#create-infinite-campus-test-user)**  - sonsuz kullanıcı Azure AD gösterimini bağlı olduğu kampüs Britta simon'un bir karşılığı vardır.
-6. **[Çoklu oturum açmayı test](#test-single-sign-on)**  - yapılandırma çalışıp çalışmadığını doğrulayın.
+1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için Azure AD Tek Oturum Açma'yı **[yapılandırın.](#configure-azure-ad-single-sign-on)**
+2. **[Sonsuz Kampüs Tek Oturum Açma](#configure-infinite-campus-single-sign-on)** 'yı yapılandırır - uygulama tarafındaki Tek Oturum Açma ayarlarını yapılandırmak için.
+3. Azure AD tek oturum açma işlemini Britta Simon ile test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
+4. Britta Simon'ın Azure AD tek oturum açma işlemini kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
+5. **[Sonsuz Kampüs test kullanıcıoluşturun](#create-infinite-campus-test-user)** - Kullanıcının Azure AD gösterimine bağlı Sonsuz Kampüs'te Britta Simon'ın bir örneğine sahip olmak için.
+6. **[Yapılandırmanın](#test-single-sign-on)** çalışıp çalışmadığını doğrulamak için tek oturum açma testi yapın.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırın
+### <a name="configure-azure-ad-single-sign-on"></a>Azure AD'yi tek oturum açma yapılandırma
 
-Bu bölümde, Azure AD çoklu oturum açma Azure portalında etkinleştirin.
+Bu bölümde, Azure portalında Azure AD oturum açma'yı etkinleştirin.
 
-Azure AD çoklu oturum açma ile sonsuz kampüs yapılandırmak için aşağıdaki adımları gerçekleştirin:
+Azure AD oturumaçmayı Sonsuz Kampüs ile yapılandırmak için aşağıdaki adımları gerçekleştirin:
 
-1. İçinde [Azure portalında](https://portal.azure.com/), **sonsuz kampüs** uygulama tümleştirme sayfasında **çoklu oturum açma**.
+1. **Sonsuz Kampüs** uygulama tümleştirme sayfasındaki [Azure portalında](https://portal.azure.com/) **Tek oturum açma'yı**seçin.
 
-    ![Çoklu oturum açma bağlantısı yapılandırma](common/select-sso.png)
+    ![Tek oturum açma bağlantısını yapılandırma](common/select-sso.png)
 
-2. Üzerinde **tek bir oturum açma yönteminizi seçmeniz** iletişim kutusunda, **SAML/WS-Federasyon** modu, çoklu oturum açmayı etkinleştirmek için.
+2. Tek **oturum açma yöntemi** iletişim kutusunda, tek oturum açmayı etkinleştirmek için **SAML/WS-Fed** modunu seçin.
 
-    ![Çoklu oturum açma seçim modu](common/select-saml-option.png)
+    ![Tek oturum açma seçme modu](common/select-saml-option.png)
 
-3. Üzerinde **yukarı çoklu oturum açma SAML ile ayarlanmış** sayfasında **Düzenle** açmak için simgeyi **temel SAML yapılandırma** iletişim.
+3. **SAML sayfasıyla Tek Oturum Açma'da** **Temel SAML Yapılandırma** iletişim kutusunu açmak için **Düzenleme** simgesini tıklatın.
 
-    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
+    ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
 
-4. Temel bir SAML yapılandırma bölümünde aşağıdaki adımları uygulayın (etki alanı barındırma modeli ile değişir unutmayın ancak **tamamen-tam etki alanı** değeri sonsuz kampüs yüklemenizi eşleşmesi gerekir):
+4. Temel SAML Yapılandırma sıbölümünde aşağıdaki adımları gerçekleştirin (etki alanının Barındırma Modeline göre değişeceğini unutmayın, ancak **TAM KALİTELİ-DOMAIN** değerinin Sonsuz Kampüs yüklemenize uyması gerekir):
 
-    a. İçinde **oturum açma URL'si** metin kutusuna bir URL şu biçimi kullanarak: `https://<DOMAIN>.infinitecampus.com/campus/SSO/<DISTRICTNAME>/SIS`
+    a. Oturum **Açma URL** metin kutusuna aşağıdaki deseni kullanarak bir URL yazın:`https://<DOMAIN>.infinitecampus.com/campus/SSO/<DISTRICTNAME>/SIS`
 
-    b. İçinde **tanımlayıcı** metin kutusuna bir URL şu biçimi kullanarak: `https://<DOMAIN>.infinitecampus.com/campus/<DISTRICTNAME>`
+    b. **Tanımlayıcı** metin kutusunda, aşağıdaki deseni kullanarak bir URL yazın:`https://<DOMAIN>.infinitecampus.com/campus/<DISTRICTNAME>`
 
-    c. İçinde **yanıt URL'si** metin kutusuna bir URL şu biçimi kullanarak: `https://<DOMAIN>.infinitecampus.com/campus/SSO/<DISTRICTNAME>`
+    c. **Yanıtla URL** metin kutusunda, aşağıdaki deseni kullanarak bir URL yazın:`https://<DOMAIN>.infinitecampus.com/campus/SSO/<DISTRICTNAME>`
 
-    ![Çoklu oturum açma bilgileri sonsuz kampüs etki alanı ve URL'ler](common/sp-identifier-reply.png)
+    ![Sonsuz Kampüs Etki Alanı ve URL'ler tek oturum açma bilgileri](common/sp-identifier-reply.png)
 
-5. Üzerinde **yukarı çoklu oturum açma SAML ile ayarlayın** sayfasında **SAML imzalama sertifikası** bölümünde, kopyalamak için Kopyala düğmesine **uygulama Federasyon meta verileri URL'sini** ve üzerinde kaydedin, bilgisayar.
+5. **SAML ile Tek Oturum Açma** sayfasında, **SAML İmza Sertifikası** bölümünde, App **Federation Metadata Url'sini** kopyalamak ve bilgisayarınıza kaydetmek için kopyala düğmesini tıklatın.
 
     ![Sertifika indirme bağlantısı](common/copy-metadataurl.png)
 
-### <a name="configure-infinite-campus-single-sign-on"></a>Sonsuz kampüs çoklu oturum açmayı yapılandırın
+### <a name="configure-infinite-campus-single-sign-on"></a>Yapılandırılan Sonsuz Kampüs Tek İşaret-On
 
-1. Farklı bir web tarayıcı penceresinde sonsuz kampüs için bir güvenlik yöneticisi olarak oturum açın.
+1. Farklı bir web tarayıcısı penceresinde, Güvenlik Yöneticisi olarak Sonsuz Kampüs'te oturum açın.
 
-2. Menü sol tarafında tıklayın **Sistem Yönetimi**.
+2. Menünün sol tarafında **Sistem Yönetimi'ni**tıklatın.
 
     ![Yönetici](./media/infinitecampus-tutorial/tutorial_infinitecampus_admin.png)
 
-3. Gidin **kullanıcı güvenlik** > **SAML Yönetim** > **SSO Servis Sağlayıcı Yapılandırması**.
+3. Kullanıcı **Güvenliği** > **SAML Yönetimi** > **SSO Servis Sağlayıcı Yapılandırmasına**gidin.
 
     ![Saml](./media/infinitecampus-tutorial/tutorial_infinitecampus_saml.png)
 
-4. Üzerinde **SSO Servis Sağlayıcı Yapılandırması** sayfasında, aşağıdaki adımları gerçekleştirin:
+4. **SSO Hizmet Sağlayıcı Yapılandırma** sayfasında aşağıdaki adımları gerçekleştirin:
 
     ![Sso](./media/infinitecampus-tutorial/tutorial_infinitecampus_sso.png)
 
-    a. Seçin **etkinleştir SAML çoklu oturum açma**.
+    a. **SAML Tek İşaretini Etkinleştir'i**seçin.
 
-    b. Düzen **isteğe bağlı öznitelik adı** içerecek şekilde **adı**
+    b. Adı içerecek **şekilde İsteğe Bağlı Öznitelik Adını** **edin**
 
-    c. Üzerinde **kimlik sağlayıcısı (IDP) sunucu verilerini almak için bir seçenek belirleyin** bölümünde, seçin **meta veri URL'si**, Yapıştır **uygulama Federasyon meta verileri URL'sini** sahip olduğunuz değeri Azure portalından kutusunda kopyalanır ve ardından **eşitleme**.
+    c. Kimlik Sağlayıcısı (IDP) sunucu veri seçimi **alma seçeneğini seçeneÄ** inde, **Metaveri URL'** sini seçin , kutudaki Azure portalından kopyaladığınız **App Federation Metadata Url** değini süründen sürerek **Senkronize**edin.
 
-    d. ' I tıklattıktan sonra **eşitleme** içinde otomatik olarak doldurulan değerleri almak **SSO Servis Sağlayıcı Yapılandırması** sayfası. Bu değerler, adım 4'te görüldüğü değerleriyle eşleşecek şekilde doğrulanabilir.
+    d. **Eşitle'yi** tıklattıktan sonra değerler **SSO Servis Sağlayıcı Yapılandırma** sı sayfasında otomatik olarak doldurulur. Bu değerler, yukarıda Adım 4'te görülen değerlerle eşleşecek şekilde doğrulanabilir.
 
-    e. **Kaydet**’e tıklayın.
+    e. **Kaydet**'e tıklayın.
 
-### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
+### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-Bu bölümün amacı, Britta Simon adlı Azure portalında bir test kullanıcısı oluşturmaktır.
+Bu bölümün amacı, Azure portalında Britta Simon adında bir test kullanıcısı oluşturmaktır.
 
-1. Azure portalında, sol bölmede seçin **Azure Active Directory**seçin **kullanıcılar**ve ardından **tüm kullanıcılar**.
+1. Azure portalında, sol bölmede **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
 
-    !["Kullanıcılar ve Gruplar" ve "Tüm kullanıcılar" bağlantıları](common/users.png)
+    !["Kullanıcılar ve gruplar" ve "Tüm kullanıcılar" bağlantıları](common/users.png)
 
-2. Seçin **yeni kullanıcı** ekranın üstünde.
+2. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
 
-    ![Yeni kullanıcı düğmesi](common/new-user.png)
+    ![Yeni kullanıcı Düğmesi](common/new-user.png)
 
-3. Kullanıcı özellikleri, aşağıdaki adımları gerçekleştirin.
+3. Kullanıcı özelliklerinde aşağıdaki adımları gerçekleştirin.
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. İçinde **adı** alana **BrittaSimon**.
+    a. **Ad** alanında **BrittaSimon**girin.
   
-    b. İçinde **kullanıcı adı** alan türü `brittasimon@yourcompanydomain.extension`. Örneğin, BrittaSimon@contoso.com.
+    b. Kullanıcı **adı** alanı `brittasimon@yourcompanydomain.extension`türünde. Örneğin, BrittaSimon@contoso.com.
 
-    c. Seçin **Show parola** onay kutusunu işaretleyin ve ardından parola kutusunda görüntülenen değeri yazın.
+    c. Parola onay kutusunu **göster'i** seçin ve ardından Parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**’a tıklayın.
+    d. **Oluştur'u**tıklatın.
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
 > [!NOTE]
-> Tüm istiyorsanız Azure kullanıcılarınız için çoklu oturum açma erişmek için sonsuz kampüs ve erişimi denetlemek için sonsuz kampüs iç izinleri sistemine, ayarlayabileceğiniz **kullanıcı ataması gerekli** Hayır uygulama özelliği ve aşağıdaki adımları atlayın.
+> Tüm Azure kullanıcılarınızın Sonsuz Kampüs'e tek oturum açma erişimiolmasını ve erişimi denetlemek için Sonsuz Kampüs dahili izin sistemine güvenerek olmasını istiyorsanız, uygulamanın **Kullanıcı Ataması Gerekli** özelliğini Hayır olarak ayarlayabilir ve aşağıdaki adımları atlayabilirsiniz.
 
-Bu bölümde, Azure çoklu oturum açma kullanmak için sonsuz kampüs erişim vererek Britta Simon etkinleştirin.
+Bu bölümde, Britta Simon'ın Sonsuz Kampüs'e erişim sağlayarak Azure tek oturum açma işlemini kullanmasını sağlarsınız.
 
-1. Azure portalında **kurumsal uygulamalar**seçin **tüm uygulamaları**, ardından **sonsuz kampüs**.
+1. Azure portalında **Kurumsal Uygulamalar'ı**seçin, **Tüm uygulamaları**seçin ve ardından **Sonsuz Kampüs'ü**seçin.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar bıçak](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **sonsuz kampüs**.
+2. Uygulamalar listesinde **Sonsuz Kampüs'ün**
 
-    ![Uygulamalar listesinde sonsuz kampüs bağlantı](common/all-applications.png)
+    ![Uygulamalar listesindeki Sonsuz Kampüs bağlantısı](common/all-applications.png)
 
-3. Soldaki menüde **kullanıcılar ve gruplar**.
+3. Soldaki **menüde, Kullanıcılar ve gruplar**seçin.
 
-    !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
+    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-4. Tıklayın **Kullanıcı Ekle** düğmesine ve ardından **kullanıcılar ve gruplar** içinde **atama Ekle** iletişim.
+4. Kullanıcı **Ekle** düğmesini tıklatın ve ardından **Atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar'ı** seçin.
 
     ![Atama Ekle bölmesi](common/add-assign-user.png)
 
-5. İçinde **kullanıcılar ve gruplar** iletişim kutusunda **Britta Simon** 'a tıklayın kullanıcı listesinde **seçin** ekranın alt kısmındaki düğmesi.
+5. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinde **Britta Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
 
-6. SAML onaylaması ardından içinde herhangi bir rolü değer bekleniyor durumunda **rolü Seç** 'a tıklayın listeden bir kullanıcı için uygun rolü Seç iletişim kutusu **seçin** ekranın alt kısmındaki düğmesi.
+6. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
 
-7. İçinde **atama Ekle** iletişim tıklatın **atama** düğmesi.
+7. Atama **Ekle** iletişim kutusunda **Atla** düğmesini tıklatın.
 
-### <a name="create-infinite-campus-test-user"></a>Sonsuz kampüs test kullanıcısı oluşturma
+### <a name="create-infinite-campus-test-user"></a>Sonsuz Kampüs test kullanıcısı oluşturma
 
-Sonsuz kampüs, demografik bilgileri ortalanmış bir mimariye sahiptir. Lütfen başvurun [sonsuz kampüs Destek ekibine](mailto:sales@infinitecampus.com) sonsuz kampüs platform kullanıcıları eklemek için.
+Infinite Campus demografik merkezli bir mimariye sahiptir. Kullanıcıları Sonsuz Kampüs platformuna eklemek için lütfen [Infinite Campus destek ekibiyle](mailto:sales@infinitecampus.com) iletişime geçin.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
+Bu bölümde, Access Panelini kullanarak Azure AD tek oturum açma yapılandırmanızı sınarsınız.
 
-Erişim paneli sonsuz kampüs kutucuğa tıkladığınızda, size otomatik olarak sonsuz SSO'yu ayarlama kampüs için oturum açmanız. Erişim paneli hakkında daha fazla bilgi için bkz: [erişim Paneli'ne giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim Paneli'ndeki Sonsuz Kampüs döşemesini tıklattığınızda, SSO'yu kurduğunuz Sonsuz Kampüs'te otomatik olarak oturum açmalısınız. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS uygulamaları Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Etkin Dizinde Koşullu Erişim Nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

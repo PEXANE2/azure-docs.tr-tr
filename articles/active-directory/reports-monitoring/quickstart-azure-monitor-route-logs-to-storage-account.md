@@ -1,6 +1,6 @@
 ---
-title: Öğretici-dizin günlüklerini bir depolama hesabına arşivleme | Microsoft Docs
-description: Azure Active Directory günlüklerini depolama hesabına göndermek için Azure Tanılama ayarlamayı öğrenin
+title: Öğretici - Arşiv dizini günlükleri bir depolama hesabına | Microsoft Dokümanlar
+description: Azure Etkin Dizin günlüklerini bir depolama hesabına itmek için Azure Tanılama'yı nasıl ayarlayabilirsiniz öğrenin
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -18,17 +18,17 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fa2cac7c89a2cb1bd99675727bcd51e82c4a18ef
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74007858"
 ---
-# <a name="tutorial-archive-azure-ad-logs-to-an-azure-storage-account"></a>Öğretici: Azure AD günlüklerini bir Azure depolama hesabında arşivleme
+# <a name="tutorial-archive-azure-ad-logs-to-an-azure-storage-account"></a>Öğretici: Azure REKLAM günlüğünü bir Azure depolama hesabına arşivleyin
 
 Bu öğreticide bir Azure depolama hesabına Azure Active Directory (Azure AD) günlüğü yönlendirme amacıyla Azure İzleyici tanılama ayarlarını yapmayı öğreneceksiniz.
 
-## <a name="prerequisites"></a>Önkoşullar 
+## <a name="prerequisites"></a>Ön koşullar 
 
 Bu özelliği kullanmak için şunlara ihtiyacınız vardır:
 
@@ -38,9 +38,9 @@ Bu özelliği kullanmak için şunlara ihtiyacınız vardır:
 
 ## <a name="archive-logs-to-an-azure-storage-account"></a>Günlükleri Azure depolama hesabında arşivleme
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. 
+1. [Azure portalında](https://portal.azure.com)oturum açın. 
 
-2. **Azure Active Directory** > **Etkinlik** > **Denetim günlükleri**'ni seçin. 
+2. **Azure Etkin Dizin** > **Etkinliği** > **Denetimi günlüklerini**seçin. 
 
 3. **Dışarı Aktarma Ayarları**'nı seçin. 
 
@@ -76,5 +76,5 @@ Bu özelliği kullanmak için şunlara ihtiyacınız vardır:
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Azure İzleyici denetim günlükleri şemasını yorumlama](reference-azure-monitor-audit-log-schema.md)
-* [Azure İzleyici oturum açma günlükleri şemasını yorumlama](reference-azure-monitor-sign-ins-log-schema.md)
+* [Azure Monitor'da oturum açma günlüklerini şema yorumlama](reference-azure-monitor-sign-ins-log-schema.md)
 * [Sık sorulan sorular ve bilinen sorunlar](concept-activity-logs-azure-monitor.md#frequently-asked-questions)

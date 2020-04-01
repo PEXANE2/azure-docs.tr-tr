@@ -1,6 +1,6 @@
 ---
-title: Apache HBase & Kurumsal Güvenlik Paketi-Azure HDInsight
-description: Öğretici-Kurumsal Güvenlik Paketi ile Azure HDInsight 'ta HBase için Apache Ranger ilkelerini yapılandırma hakkında bilgi edinin.
+title: Apache HBase & Kurumsal Güvenlik Paketi - Azure HDInsight
+description: Öğretici - Kurumsal Güvenlik Paketi ile Azure HDInsight'ta HBase için Apache Ranger politikalarını nasıl yapılandıracağınızı öğrenin.
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,17 +8,17 @@ ms.reviewer: jasonh
 ms.topic: tutorial
 ms.date: 09/04/2019
 ms.openlocfilehash: 89e9faeb3c67d0fd0c57adea3a3f69ec5438e3a0
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73044654"
 ---
-# <a name="tutorial-configure-apache-hbase-policies-in-hdinsight-with-enterprise-security-package"></a>Öğretici: HDInsight 'ta Kurumsal Güvenlik Paketi ile Apache HBase ilkelerini yapılandırma
+# <a name="tutorial-configure-apache-hbase-policies-in-hdinsight-with-enterprise-security-package"></a>Öğretici: Kurumsal Güvenlik Paketi ile HDInsight'ta Apache HBase politikalarını yapılandırın
 
-Kurumsal Güvenlik Paketi (ESP) Apache HBase kümeleri için Apache Ranger ilkelerini nasıl yapılandıracağınızı öğrenin. ESP kümeleri bir etki alanına bağlıdır ve kullanıcıların etki alanı kimlik bilgileriyle kimlik doğrulaması yapmasına olanak sağlar. Bu öğreticide, bir HBase tablosundaki farklı sütun ailelerine erişimi kısıtlamak için iki Ranger ilkesi oluşturacaksınız.
+Kurumsal Güvenlik Paketi (ESP) Apache HBase kümeleri için Apache Ranger ilkelerini nasıl yapılandıracağınızı öğrenin. ESP kümeleri bir etki alanına bağlıdır ve kullanıcıların etki alanı kimlik bilgileriyle kimlik doğrulaması yapmasına olanak sağlar. Bu öğreticide, HBase tablosunda farklı sütun ailelerine erişimi kısıtlamak için iki Ranger ilkeleri oluşturursunuz.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
 > * Etki alanı kullanıcılarını oluşturma
@@ -28,15 +28,15 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-* Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
+* Azure aboneliğiniz yoksa, ücretsiz bir [hesap](https://azure.microsoft.com/free/)oluşturun.
 
-* [Azure Portal](https://portal.azure.com/)’ında oturum açın.
+* [Azure portalında](https://portal.azure.com/)oturum açın.
 
-* Kurumsal Güvenlik Paketi bir [HDInsight HBase kümesi](apache-domain-joined-configure-using-azure-adds.md)oluşturun.
+* Kurumsal [Güvenlik Paketi ile hdinsight HBase kümesi](apache-domain-joined-configure-using-azure-adds.md)oluşturun.
 
 ## <a name="connect-to-apache-ranger-admin-ui"></a>Apache Ranger Yönetici Arabirimine bağlanma
 
-1. Bir tarayıcıdan, `https://<ClusterName>.azurehdinsight.net/Ranger/` URL’sini kullanarak Ranger Yönetici kullanıcı arabirimine bağlanın. `<ClusterName>` değerini HBase kümenizin adıyla değiştirmeyi unutmayın.
+1. Bir tarayıcıdan, `https://<ClusterName>.azurehdinsight.net/Ranger/` URL’sini kullanarak Ranger Yönetici kullanıcı arabirimine bağlanın. HBase `<ClusterName>` kümenizin adını değiştirmeyi unutmayın.
 
     > [!NOTE]  
     > Ranger kimlik bilgileri Hadoop kümesi kimlik bilgileriyle aynı değildir. Tarayıcıların ön belleğe alınmış Hadoop kimlik bilgilerini kullanmasını önlemek için Ranger Yönetici Arabirimine yeni bir InPrivate tarayıcı penceresinden bağlanın.
@@ -45,11 +45,11 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 ## <a name="create-domain-users"></a>Etki alanı kullanıcılarını oluşturma
 
-**Sales_user1** ve **marketing_user1** etki alanı kullanıcılarını oluşturmayı öğrenmek için [Kurumsal güvenlik paketi ile HDInsight kümesi oluşturma](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-configure-using-azure-adds)sayfasını ziyaret edin. Bir üretim senaryosunda, etki alanı kullanıcıları Active Directory kiracınızdan gelir.
+**sales_user1** ve **marketing_user1** etki alanı kullanıcılarını nasıl oluşturup marketing_user1 öğrenmek için Kurumsal Güvenlik Paketi [ile hdinsight kümesi oluşturma'yı](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-configure-using-azure-adds)ziyaret edin. Bir üretim senaryosunda, etki alanı kullanıcıları Active Directory kiracınızdan gelir.
 
-## <a name="create-hbase-tables-and-import-sample-data"></a>HBase tabloları oluşturma ve örnek verileri içeri aktarma
+## <a name="create-hbase-tables-and-import-sample-data"></a>HBase tabloları oluşturma ve örnek verileri alma
 
-SSH kullanarak HBase kümelerine bağlanabilir ve ardından, HBase tabloları oluşturmak, veri eklemek ve verileri sorgulamak için [Apache HBase kabuğu](https://hbase.apache.org/0.94/book/shell.html) 'nu kullanabilirsiniz. Daha fazla bilgi için bkz. [HDInsight ile SSH kullanma](../hdinsight-hadoop-linux-use-ssh-unix.md).
+HBase kümelerine bağlanmak için SSH'yi ve ardından HBase tabloları, veri eklemek ve sorgu verileri oluşturmak için [Apache HBase Shell'i](https://hbase.apache.org/0.94/book/shell.html) kullanabilirsiniz. Daha fazla bilgi için bkz. [HDInsight ile SSH kullanma](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ### <a name="to-use-the-hbase-shell"></a>HBase kabuğunu kullanmak için
 
@@ -59,7 +59,7 @@ SSH kullanarak HBase kümelerine bağlanabilir ve ardından, HBase tabloları ol
     hbase shell
     ```
 
-2. İki sütunlu ailelerle `Customers` bir HBase tablosu oluşturun: `Name` ve `Contact`.
+2. İki sütunlu `Customers` ailelerden bir HBase tablosu oluşturun: `Name` ve `Contact`.
 
     ```hbaseshell   
     create 'Customers', 'Name', 'Contact'
@@ -89,86 +89,86 @@ SSH kullanarak HBase kümelerine bağlanabilir ve ardından, HBase tabloları ol
     scan 'Customers'
     ```
 
-    ![HDInsight Hadoop HBase kabuğu çıkışı](./media/apache-domain-joined-run-hbase/hbase-shell-scan-table.png)
+    ![HDInsight Hadoop HBase kabuk çıkışı](./media/apache-domain-joined-run-hbase/hbase-shell-scan-table.png)
 
 ## <a name="create-ranger-policies"></a>Ranger ilkelerini oluşturma
 
-**Sales_user1** ve **Marketing_user1**için bir Ranger ilkesi oluşturun.
+**sales_user1** ve **marketing_user1**için bir Ranger politikası oluşturun.
 
-1. **Ranger Yönetici Arabirimini** açın. **HBase**altında **\<clustername > _hbase** öğesine tıklayın.
+1. **Ranger Yönetici Arabirimini** açın. **HBase**altında ** \<ClusterName>_hbase'ı** tıklatın.
 
-   ![HDInsight Apache Ranger yönetici kullanıcı arabirimi](./media/apache-domain-joined-run-hbase/apache-ranger-admin-login.png)
+   ![HDInsight Apache Ranger Yönetici UI](./media/apache-domain-joined-run-hbase/apache-ranger-admin-login.png)
 
-2. **Ilke listesi** ekranı, bu küme için oluşturulan tüm Ranger ilkelerini görüntüler. Bir önceden yapılandırılmış ilke listelenebilir. **Yeni Ilke Ekle**' ye tıklayın.
+2. **İlkeler Listesi** ekranı, bu küme için oluşturulan tüm Ranger ilkelerini görüntüler. Bir önceden yapılandırılmış ilke listelenebilir. **Yeni İlke Ekle'yi**tıklatın.
 
-    ![Apache Ranger HBase ilkeleri listesi](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policies-list.png)
+    ![Apache Ranger HBase politikaları listesi](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policies-list.png)
 
-3. **Ilke oluştur** ekranında, aşağıdaki değerleri girin:
+3. **İlke Oluştur** ekranında aşağıdaki değerleri girin:
 
    |**Ayar**  |**Önerilen değer**  |
    |---------|---------|
    |İlke Adı  |  sales_customers_name_contact   |
-   |HBase tablosu   |  Müşteriler |
-   |HBase sütunu-aile   |  Ad, Iletişim |
-   |HBase sütunu   |  * |
-   |Grup Seç  | |
+   |HBase Tablosu   |  Müşteriler |
+   |HBase Sütun-aile   |  İsim, İletişim |
+   |HBase Sütunu   |  * |
+   |Grup Seçiniz  | |
    |Kullanıcı Seçin  | sales_user1 |
    |İzinler  | Okuma |
 
    Konu adında şu joker karakterler bulunabilir:
 
-   * `*` karakterlerin sıfır veya daha fazla örneğini belirtir.
-   * `?` tek karakteri gösterir.
+   * `*`karakterlerin sıfır veya daha fazla oluşumlarını gösterir.
+   * `?`tek bir karakteri gösterir.
 
-   ![Apache Ranger ilkesi satışları oluşturma](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-sales.png)
+   ![Apache Ranger ilkesi satış oluşturmak](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-sales.png)
 
    >[!NOTE]
    >**Select User** için bir etki alanı kullanıcısı otomatik olarak doldurulmazsa, Ranger’ın Azure AD ile eşitlenmesi için birkaç dakika bekleyin.
 
 4. **Add**’e tıklayarak ilkeyi kaydedin.
 
-5. **Add New Policy**’ye tıklayıp aşağıdaki değerleri girin:
+5. **Yeni İlke Ekle'yi** tıklatın ve ardından aşağıdaki değerleri girin:
 
    |**Ayar**  |**Önerilen değer**  |
    |---------|---------|
    |İlke Adı  |  marketing_customers_contact   |
-   |HBase tablosu   |  Müşteriler |
-   |HBase sütunu-aile   |  İletişim |
-   |HBase sütunu   |  * |
-   |Grup Seç  | |
+   |HBase Tablosu   |  Müşteriler |
+   |HBase Sütun-aile   |  İletişim |
+   |HBase Sütunu   |  * |
+   |Grup Seçiniz  | |
    |Kullanıcı Seçin  | marketing_user1 |
    |İzinler  | Okuma |
 
-   ![Apache Ranger ilkesi pazarlama oluşturma](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-marketing.png)  
+   ![Apache Ranger politikası pazarlama oluşturmak](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-marketing.png)  
 
 6. **Add**’e tıklayarak ilkeyi kaydedin.
 
 ## <a name="test-the-ranger-policies"></a>Ranger ilkelerini test etme
 
-**Sales_user1** , yapılandırılan Ranger ilkelerine bağlı olarak, `Name` ve `Contact` sütun ailelerinde bulunan sütunlara ait tüm verileri görüntüleyebilir. **Marketing_user1** yalnızca `Contact` sütun ailesindeki verileri görüntüleyebilir.
+Yapılandırılmış Ranger ilkelerine bağlı olarak, **sales_user1** hem sütun `Name` `Contact` ailelerindeki sütunların tüm verilerini görüntüleyebilir. **marketing_user1** yalnızca sütun ailesindeki `Contact` verileri görüntüleyebilir.
 
 ### <a name="access-data-as-sales_user1"></a>Verilere sales_user1 olarak erişin
 
-1. Kümeye yeni bir SSH bağlantısı açın. Kümede oturum açmak için aşağıdaki komutu kullanın:
+1. Kümeye yeni bir SSH bağlantısı açın. Kümede oturum açabilmek için aşağıdaki komutu kullanın:
 
    ```bash
    ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
    ```
 
-1. İstenen kullanıcılarımızın bağlamına geçmek için kinit komutunu kullanın.
+1. İstenilen kullanıcının bağlamına değiştirmek için kinit komutunu kullanın.
 
    ```bash
    kinit sales_user1
    ```
 
-2. HBase kabuğunu açın ve tablo `Customers` tarayın.
+2. HBase kabuğunu açın ve `Customers`tabloyu tarayıp tarayıp tarayıp.
 
    ```hbaseshell
    hbase shell
    scan `Customers`
    ```
 
-3. Satış kullanıcısının `Customers` tablonun tüm sütunlarını `Name` sütun ailedeki iki sütun ve `Contact` sütun-aile ' de bulunan beş sütun dahil) görüntüleyebileceğini unutmayın.
+3. Satış kullanıcısının `Customers` `Name` sütun ailesindeki iki sütun ve `Contact` sütun ailesindeki beş sütun da dahil olmak üzere tablonun tüm sütunlarını görüntülenebildiğine dikkat edin.
 
     ```hbaseshell
     ROW                                COLUMN+CELL
@@ -191,26 +191,26 @@ SSH kullanarak HBase kümelerine bağlanabilir ve ardından, HBase tabloları ol
 
 ### <a name="access-data-as-marketing_user1"></a>Verilere marketing_user1 olarak erişin
 
-1. Kümeye yeni bir SSH bağlantısı açın. **Marketing_user1**olarak oturum açmak için aşağıdaki komutu kullanın:
+1. Kümeye yeni bir SSH bağlantısı açın. **Marketing_user1**olarak oturum vermek için aşağıdaki komutu kullanın:
 
    ```bash
    ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
    ```
 
-1. İstenen kullanıcılarımızın bağlamına geçmek için kinit komutunu kullanın
+1. İstenilen kullanıcının bağlamına değiştirmek için kinit komutunu kullanın
 
    ```bash
    kinit marketing_user1
    ```
 
-1. HBase kabuğunu açın ve tablo `Customers` tarayın:
+1. HBase kabuğunu açın ve `Customers`tabloyu tarayıp tarayıp:
 
     ```hbaseshell
     hbase shell
     scan `Customers`
     ```
 
-1. Pazarlama kullanıcısının `Contact` sütun ailesinin yalnızca beş sütununu görüntüleyebildiğine dikkat edin.
+1. Pazarlama kullanıcısının sütun ailesinin yalnızca beş `Contact` sütununu görüntülenebildiğine dikkat edin.
 
     ```hbaseshell
     ROW                                COLUMN+CELL
@@ -229,19 +229,19 @@ SSH kullanarak HBase kümelerine bağlanabilir ve ardından, HBase tabloları ol
 
 1. Ranger kullanıcı arabiriminden denetim erişimi olaylarını görüntüleyin.
 
-   ![HDInsight Ranger Kullanıcı arabirimi Ilke denetimi](./media/apache-domain-joined-run-hbase/apache-ranger-admin-audit.png)
+   ![HDInsight Ranger UI Politika Denetimi](./media/apache-domain-joined-run-hbase/apache-ranger-admin-audit.png)
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bu uygulamayı kullanmaya devam etmeyecekecekseniz, oluşturduğunuz HBase kümesini aşağıdaki adımlarla silin:
+Bu uygulamayı kullanmaya devam etmeyecekseniz, oluşturduğunuz HBase kümesini aşağıdaki adımlarla silin:
 
-1. [Azure Portal](https://portal.azure.com/)’ında oturum açın.
-2. Üstteki **arama** kutusuna **HDInsight**yazın. 
-1. **Hizmetler**altında **HDInsight kümeleri** ' ni seçin.
-1. Görüntülenen HDInsight kümeleri listesinde, bu öğretici için oluşturduğunuz kümenin yanındaki **...** öğesine tıklayın. 
-1. **Sil**'e tıklayın. **Evet**'e tıklayın.
+1. [Azure portalında](https://portal.azure.com/)oturum açın.
+2. Üstteki **Arama** kutusuna **HDInsight**yazın. 
+1. **Hizmetler**altında **HDInsight kümelerini** seçin.
+1. Görünen HDInsight kümeleri listesinde, bu öğretici için oluşturduğunuz kümenin yanındaki **...** 'yı tıklatın. 
+1. **Sil'i**tıklatın. **Evet'i**tıklatın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Apache HBase ile çalışmaya başlama](../hbase/apache-hbase-tutorial-get-started-linux.md)
+> [Bir Apache HBase ile başlayın](../hbase/apache-hbase-tutorial-get-started-linux.md)

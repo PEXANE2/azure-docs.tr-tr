@@ -1,6 +1,6 @@
 ---
 title: Azure CLI Betik Örneği - Batch’te Uygulama Ekleme
-description: Bu örnek betik, bir Azure Batch havuzuyla veya görevle kullanım için bir uygulamanın nasıl ekleneceğini gösterir.
+description: Bu örnek komut dosyası, Azure Toplu Toplu Birleştirme havuzu veya görevle kullanılmak üzere nasıl bir uygulama ekleyeceğinigösterir.
 services: batch
 documentationcenter: ''
 author: LauraBrenner
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/29/2018
 ms.author: labrenne
 ms.openlocfilehash: b19f5dbe27ba0ecabdca6557e4e8e1996fbef78a
-ms.sourcegitcommit: 21e33a0f3fda25c91e7670666c601ae3d422fb9c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/05/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77017131"
 ---
 # <a name="cli-example-add-an-application-to-an-azure-batch-account"></a>CLI örneği: Azure Batch hesabına uygulama ekleme
@@ -27,7 +27,7 @@ Bu betik, kullanmak üzere bir Azure Batch havuzu veya göreviyle uygulama eklem
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu makale için Azure CLI 2.0.20 veya sonraki bir sürümünü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yükleme veya yükseltme yapmanız gerekiyorsa bkz. [Azure CLI'yı yükleme](/cli/azure/install-azure-cli). 
+CLI'yi yerel olarak yükleyip kullanmayı tercih ederseniz bu makale için Azure CLI 2.0.20 veya sonraki bir sürümünü kullanmanız gerekir. Sürümü bulmak için `az --version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure CLI yükleme](/cli/azure/install-azure-cli). 
 
 ## <a name="example-script"></a>Örnek betik
 

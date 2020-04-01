@@ -1,6 +1,6 @@
 ---
-title: Öğretici-Azure Olay Hub 'ına Günlükler akışı | Microsoft Docs
-description: Azure Active Directory günlüklerini bir olay hub 'ına göndermek için Azure Tanılama ayarlamayı öğrenin
+title: Öğretici - Azure etkinlik hub'ına akış günlükleri | Microsoft Dokümanlar
+description: Azure Etkin Dizin günlüklerini bir etkinlik hub'ına itmek için Azure Tanılama'yı nasıl ayarlayabilirsiniz öğrenin
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -18,30 +18,30 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: eba44252672248b983d7f6e0c843f638e5f73447
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "74007648"
 ---
-# <a name="tutorial-stream-azure-active-directory-logs-to-an-azure-event-hub"></a>Öğretici: Azure Olay Hub 'ına akış Azure Active Directory günlükleri
+# <a name="tutorial-stream-azure-active-directory-logs-to-an-azure-event-hub"></a>Öğretici: Azure Etkin Dizin günlüğünü azure etkinlik merkezine aktarın
 
-Bu öğreticide, Azure Olay Hub 'ına Azure Active Directory (Azure AD) günlüklerini akışa almak için Azure Izleyici tanılama ayarlarını ayarlamayı öğreneceksiniz. Bu mekanizmayı kullanarak günlüklerinizi Splunk ve QRadar gibi üçüncü taraf Güvenlik Bilgileri ve Olay Yönetimi (SIEM) araçlarıyla tümleştirebilirsiniz.
+Bu eğitimde, Azure Etkin Dizin (Azure AD) günlüklerini bir Azure etkinlik hub'ında aktarmak için Azure Monitörü tanılama ayarlarını nasıl ayarlayabileceğinizi öğrenirsiniz. Bu mekanizmayı kullanarak günlüklerinizi Splunk ve QRadar gibi üçüncü taraf Güvenlik Bilgileri ve Olay Yönetimi (SIEM) araçlarıyla tümleştirebilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar 
+## <a name="prerequisites"></a>Ön koşullar 
 
 Bu özelliği kullanmak için şunlara ihtiyacınız vardır:
 
 * Azure aboneliği. Azure aboneliğiniz yoksa [ücretsiz denemeye kaydolabilirsiniz](https://azure.microsoft.com/free/).
 * Azure AD kiracısı.
 * Azure AD kiracısında *genel yönetici* veya *güvenlik yöneticisi* olan bir kullanıcı.
-* Azure aboneliğinizde bir Event Hubs ad alanı ve bir olay hub'ı. [Olay hub'ı oluşturma](https://docs.microsoft.com/azure/event-hubs/event-hubs-create) hakkında bilgi edinin.
+* Azure aboneliğinizde bir Event Hubs ad alanı ve bir olay hub'ı. [Bir olay hub'ı](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)oluşturmayı öğrenin.
 
-## <a name="stream-logs-to-an-event-hub"></a>Günlükleri bir olay hub 'ına akış
+## <a name="stream-logs-to-an-event-hub"></a>Akış günlükleri bir olay hub'ına
 
-1. [Azure portalında](https://portal.azure.com) oturum açın. 
+1. [Azure portalında](https://portal.azure.com)oturum açın. 
 
-2. **Denetim günlüklerini** > **Azure Active Directory** > **izleme** ' yi seçin. 
+2. **Azure Etkin Dizin** > **İzleme** > **Denetim günlüklerini**seçin. 
 
 3. **Dışarı Aktarma Ayarları**'nı seçin.  
     
@@ -77,7 +77,7 @@ Olay hub'ında görüntülenen verilere iki farklı şekilde erişebilir ve onla
 
 * **Desteklenen bir SIEM aracını yapılandırın**. Çoğu araç olay hub'ındaki verileri okumak için olay hub'ı bağlantı dizesine ve Azure aboneliğinizde belirli izinlere ihtiyaç duyar. Azure İzleyici tümleştirmesine sahip üçüncü taraf araçlarının bazıları şunlardır:
     
-    * **ARCTIS**: Azure AD günlüklerini splunk ile tümleştirme hakkında daha fazla bilgi için bkz. [Azure izleyici kullanarak arctımla Azure Active Directory günlüklerini tümleştirme](howto-integrate-activity-logs-with-arcsight.md).
+    * **ArcSight**: Azure AD günlüklerini Splunk ile tümleştirme hakkında daha fazla bilgi için Azure [Monitor'u kullanarak ArcSight ile Azure Active Directory günlüklerini tümleştir'e](howto-integrate-activity-logs-with-arcsight.md)bakın.
     
     * **Splunk**: Azure AD günlüklerini Splunk ile tümleştirme hakkında daha fazla bilgi için bkz. [Azure İzleyici'yi kullanarak Azure AD günlüklerini Splunk ile tümleştirme](tutorial-integrate-activity-logs-with-splunk.md).
     
@@ -90,8 +90,8 @@ Olay hub'ında görüntülenen verilere iki farklı şekilde erişebilir ve onla
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Izleyici kullanarak Azure Active Directory günlüklerini Arcizle tümleştirin](howto-integrate-activity-logs-with-arcsight.md)
+* [Azure Monitörünü kullanarak Azure Active Directory günlüklerini ArcSight ile tümleştirin](howto-integrate-activity-logs-with-arcsight.md)
 * [Azure İzleyici kullanarak Azure AD günlüklerini Splunk ile tümleştirme](tutorial-integrate-activity-logs-with-splunk.md)
 * [Azure İzleyici kullanarak Azure AD günlüklerini SumoLogic ile tümleştirme](howto-integrate-activity-logs-with-sumologic.md)
 * [Azure İzleyici denetim günlükleri şemasını yorumlama](reference-azure-monitor-audit-log-schema.md)
-* [Azure İzleyici oturum açma günlükleri şemasını yorumlama](reference-azure-monitor-sign-ins-log-schema.md)
+* [Azure Monitor'da oturum açma günlüklerini şema yorumlama](reference-azure-monitor-sign-ins-log-schema.md)

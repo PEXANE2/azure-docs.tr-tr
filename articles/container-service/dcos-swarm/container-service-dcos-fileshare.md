@@ -1,5 +1,5 @@
 ---
-title: (KULLANIM DIŞI) Dosya Paylaşımı için Azure DC/OS kümesi
+title: (AmortismanA Uğradı) Azure DC/OS kümesi için dosya paylaşımı
 description: Azure Container Service’te dosya oluşturma ve bu dosyayı DC/OS kümesine bağlama
 services: container-service
 author: julienstroheker
@@ -10,13 +10,13 @@ ms.date: 06/07/2017
 ms.author: juliens
 ms.custom: mvc
 ms.openlocfilehash: e6651fc5988a1e1830807219cda02ab057db9a4f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "60480393"
 ---
-# <a name="deprecated-create-and-mount-a-file-share-to-a-dcos-cluster"></a>(KULLANIM DIŞI) Oluşturma ve bir DC/OS kümesi için bir dosya paylaşımını bağlama
+# <a name="deprecated-create-and-mount-a-file-share-to-a-dcos-cluster"></a>(AmortismanA Uğradı) Bir DC/OS kümesine dosya paylaşımı oluşturma ve takma
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
@@ -35,7 +35,7 @@ Bu öğretici, Azure CLI 2.0.4 veya sonraki bir sürümü gerektirir. Sürümü 
 
 ## <a name="create-a-file-share-on-microsoft-azure"></a>Microsoft Azure'da dosya paylaşımı oluşturma
 
-Azure dosya paylaşımını ACS DC/OS kümesiyle kullamadan önce, depolama hesabı ve dosya paylaşımı oluşturulmalıdır. Depolamayı ve dosya paylaşımını oluşturmak için aşağıdaki betiği çalıştırın. Parametreleri ortamınızdaki değerlerle güncelleştirin.
+Azure dosya paylaşımını ACS DC/OS kümesiyle kullamadan önce, depolama hesabı ve dosya paylaşımı oluşturulmalıdır. Depolamayı ve dosya paylaşımını oluşturmak için aşağıdaki betiği çalıştırın. Parametreleri ortamınızdaki parametrelerle güncelleştirin.
 
 ```azurecli-interactive
 # Change these four parameters
@@ -154,4 +154,4 @@ Bu öğreticide, aşağıdaki adımlar kullanılarak bir DC/OS kümesine bir Azu
 Azure Container Registry’yi Azure'da DC/OS ile tümleştirmeyi öğrenmek için sonraki öğreticiye ilerleyin.  
 
 > [!div class="nextstepaction"]
-> [Uygulamalarda yük dengeleme gerçekleştirme](container-service-dcos-acr.md)
+> [Uygulamalarda yük dengeleme](container-service-dcos-acr.md)

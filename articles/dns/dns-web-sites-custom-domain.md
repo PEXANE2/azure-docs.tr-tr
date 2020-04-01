@@ -8,15 +8,15 @@ ms.topic: tutorial
 ms.date: 3/11/2019
 ms.author: rohink
 ms.openlocfilehash: 8722a52a097f7f830287d125a4e56e9bbcb9f932
-ms.sourcegitcommit: fa6fe765e08aa2e015f2f8dbc2445664d63cc591
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/01/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76939094"
 ---
 # <a name="tutorial-create-dns-records-in-a-custom-domain-for-a-web-app"></a>Öğretici: Bir web uygulaması için özel etki alanında DNS kaydı oluşturma 
 
-Azure DNS'yi web uygulamalarınız için özel etki alanı barındıracak şekilde yapılandırabilirsiniz. Örneğin, bir Azure Web uygulaması oluşturabilir ve kullanıcılarınızın bir tam etki alanı adı (FQDN) olarak www\.contoso.com veya contoso.com kullanarak erişmesini sağlayabilirsiniz.
+Azure DNS'yi web uygulamalarınız için özel etki alanı barındıracak şekilde yapılandırabilirsiniz. Örneğin, bir Azure web uygulaması oluşturabilir ve kullanıcılarınızın bu\.uygulamaiçin tam nitelikli bir etki alanı adı (FQDN) olarak www contoso.com veya contoso.com kullanarak erişmelerini sağlayabilirsiniz.
 
 > [!NOTE]
 > contoso.com bu öğreticide örnek etki alanı olarak kullanılmıştır. contoso.com yerine kendi etki alanı adınızı yazın.
@@ -29,7 +29,7 @@ Bunu yapmak için üç kayıt oluşturmanız gerekir:
 
 Azure'daki web uygulamanız için bir A kaydı oluşturduğunuzda web uygulamasının IP adresi her değiştiğinde bu A kaydının da değiştirilmesi gerektiğini unutmayın.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
 > * Özel etki alanınız için A ve TXT kaydı oluşturma
@@ -39,7 +39,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 > * Özel ana bilgisayar adlarını test etme
 
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -47,7 +47,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-* Azure DNS barındırabilmeniz için, test etmek için kullanılabilir bir etki alanı adına sahip olmanız gerekir. Bu etki alanı üzerinde tam denetime sahip olmanız gerekir. Tam denetim, etki alanı için ad sunucusu (NS) kayıtlarını ayarlama olanağını kapsar.
+* Azure DNS'de barındırabileceğiniz bir etki alanı adınız olmalıdır. Bu etki alanı üzerinde tam denetime sahip olmanız gerekir. Tam denetim, etki alanı için ad sunucusu (NS) kayıtlarını ayarlama olanağını kapsar.
 * [Bir App Service uygulaması oluşturun](../app-service/app-service-web-get-started-html.md) veya başka bir öğretici için oluşturduğunuz bir uygulamayı kullanın.
 
 * Azure DNS'de bir DNS bölgesi oluşturun ve bölgeyi kayıt kuruluşunuzda Azure DNS'ye devredin.
@@ -84,7 +84,7 @@ New-AzDnsRecordSet -Name "@" -RecordType "A" -ZoneName "contoso.com" `
 Uygulama Hizmetleri, bu kaydı yalnızca yapılandırma sırasında, özel etki alanının sahibi olduğunuzu doğrulamak için kullanır. Özel etki alanınız doğrulandıktan ve Uygulama Hizmetleri'nde yapılandırıldıktan sonra, bu TXT kaydını silebilirsiniz.
 
 > [!NOTE]
-> Üretim trafiğini Web uygulamasına yönlendirmenize rağmen etki alanı adını doğrulamak istiyorsanız, yalnızca doğrulama adımı için TXT kaydını belirtmeniz gerekir.  Doğrulama, TXT kaydına ek olarak bir veya CNAME kaydı gerektirmez.
+> Etki alanı adını doğrulamak, ancak üretim trafiğini web uygulamasına yönlendirmek istemiyorsanız, doğrulama adımı için TXT kaydını belirtmeniz gerekir.  Doğrulama, TXT kaydına ek olarak A veya CNAME kaydı gerektirmez.
 
 ```azurepowershell
 New-AzDnsRecordSet -ZoneName contoso.com -ResourceGroupName MyAzureResourceGroup `
@@ -173,9 +173,9 @@ set-AzWebApp `
 Bir tarayıcı açıp `http://www.<your domainname>` ve `http://<you domain name>` adreslerine gidin.
 
 > [!NOTE]
-> `http://` önekini eklediğinizden emin olun, aksi takdirde tarayıcınız sizin için bir URL 'YI tahmin etmeye çalışabilir!
+> Önek eklediğinizden `http://` emin olun, aksi takdirde tarayıcınız sizin için bir URL tahmin etmeye çalışabilir!
 
-İki URL'de de aynı sayfayı görmeniz gerekir. Örneğin:
+İki URL'de de aynı sayfayı görmeniz gerekir. Örnek:
 
 ![Contoso uygulama hizmeti](media/dns-web-sites-custom-domain/contoso-app-svc.png)
 

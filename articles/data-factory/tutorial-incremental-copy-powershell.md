@@ -1,5 +1,5 @@
 ---
-title: PowerShell kullanarak bir tabloyu artımlı olarak kopyalama
+title: PowerShell kullanarak tabloyu aşamalı olarak kopyalama
 description: Bu öğreticide, verileri Azure SQL veritabanından Azure Blob depolama alanına artımlı olarak kopyalayan bir Azure veri fabrikası işlem hattı oluşturacaksınız.
 services: data-factory
 author: dearandyxu
@@ -12,13 +12,13 @@ ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 01/22/2018
 ms.openlocfilehash: 1a3651f82d7818ad105c0a8a7b5fd9fcf073b4a1
-ms.sourcegitcommit: 7b25c9981b52c385af77feb022825c1be6ff55bf
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/13/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "79239815"
 ---
-# <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage-using-powershell"></a>PowerShell kullanarak bir Azure SQL veritabanından Azure Blob depolama alanına artımlı olarak veri yükleme
+# <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage-using-powershell"></a>PowerShell'i kullanarak Azure SQL veritabanından Azure Blob depolamasına verileri aşamalı olarak yükleyin
 
 Bu öğreticide, Azure SQL veritabanındaki bir tablodan Azure Blob depolama alanına delta veri yükleyen işlem hattına sahip bir Azure veri fabrikası oluşturacaksınız.
 
@@ -46,7 +46,7 @@ Bu çözümü oluşturmak için önemli adımlar şunlardır:
 2. **Eşik değerini depolamak için veri deposunu hazırlayın**.   
     Bu öğreticide, eşik değerini bir SQL veritabanında depolayacaksınız.
 
-3. **Aşağıdaki iş akışı ile bir işlem hattı oluşturun**:
+3. **Aşağıdaki iş akışıile bir ardışık kaynak oluşturma:**
 
     Bu çözümdeki işlem hattı aşağıdaki etkinlikleri içerir:
 
@@ -55,9 +55,9 @@ Bu çözümü oluşturmak için önemli adımlar şunlardır:
     * Sonraki seferde çalışan işlem hattı için eşik değerini güncelleştiren bir StoredProcedure etkinliği oluşturun.
 
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -66,7 +66,7 @@ Azure aboneliğiniz yoksa başlamadan önce [ücretsiz](https://azure.microsoft.
 * **Azure PowerShell**. [Azure PowerShell’i yükleme ve yapılandırma](/powershell/azure/install-Az-ps) bölümündeki yönergeleri izleyin.
 
 ### <a name="create-a-data-source-table-in-your-sql-database"></a>SQL veritabanınızda bir veri kaynağı tablosu oluşturma
-1. SQL Server Management Studio’yu açın. **Sunucu Gezgini**’nde veritabanına sağ tıklayın ve **Yeni Sorgu**’yu seçin.
+1. SQL Server Management Studio’yu açın. **Sunucu Gezgini'nde**veritabanına sağ tıklayın ve **Yeni Sorgu'yu**seçin.
 
 2. SQL veritabanınızda aşağıdaki SQL komutunu çalıştırarak veri kaynağı deponuz olarak `data_source_table` adlı bir tablo oluşturun:
 
@@ -175,7 +175,7 @@ END
     ```powershell
     $dataFactoryName = "ADFIncCopyTutorialFactory";
     ```
-5. Veri Fabrikası oluşturmak için aşağıdaki **set-AzDataFactoryV2** cmdlet 'ini çalıştırın:
+5. Veri fabrikasını oluşturmak için aşağıdaki **Set-AzDataFactoryV2** cmdlet'i çalıştırın:
 
     ```powershell       
     Set-AzDataFactoryV2 -ResourceGroupName $resourceGroupName -Location "East US" -Name $dataFactoryName
@@ -197,7 +197,7 @@ Aşağıdaki noktalara dikkat edin:
 Veri depolarınızı ve işlem hizmetlerinizi veri fabrikasına bağlamak için veri fabrikasında bağlı hizmetler oluşturursunuz. Bu bölümde, Depolama ve SQL veritabanı hesabınızla bağlı hizmetler oluşturacaksınız.
 
 ### <a name="create-a-storage-linked-service"></a>Depolama bağlı hizmeti oluşturma
-1. C:\ADF klasöründe aşağıdaki içerikle AzureStorageLinkedService.json adlı bir JSON dosyası oluşturun. (Henüz yoksa ADF klasörünü oluşturun.) Dosyayı kaydetmeden önce `<accountName>` ve `<accountKey>` değerini depolama hesabınızın adı ve anahtarıyla değiştirin.
+1. C:\ADF klasöründe aşağıdaki içerikle AzureStorageLinkedService.json adlı bir JSON dosyası oluşturun. (Zaten yoksa ADF klasörünü oluşturun.) Dosyayı `<accountKey>` kaydetmeden önce depolama hesabınızın adını ve anahtarını değiştirin. `<accountName>`
 
     ```json
     {
@@ -212,7 +212,7 @@ Veri depolarınızı ve işlem hizmetlerinizi veri fabrikasına bağlamak için 
     ```
 2. PowerShell’de ADF klasörüne geçin.
 
-3. AzureStorageLinkedService bağlı hizmetini oluşturmak için **set-AzDataFactoryV2LinkedService** cmdlet 'ini çalıştırın. Aşağıdaki örnekte, *ResourceGroupName* ve *DataFactoryName* parametrelerinin değerlerini geçirirsiniz:
+3. Bağlantılı hizmet AzureStorageLinkedService'i oluşturmak için **Set-AzDataFactoryV2LinkedService** cmdlet'i çalıştırın. Aşağıdaki örnekte, *ResourceGroupName* ve *DataFactoryName* parametrelerinin değerlerini geçirirsiniz:
 
     ```powershell
     Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureStorageLinkedService" -File ".\AzureStorageLinkedService.json"
@@ -228,7 +228,7 @@ Veri depolarınızı ve işlem hizmetlerinizi veri fabrikasına bağlamak için 
     ```
 
 ### <a name="create-a-sql-database-linked-service"></a>SQL Veritabanı bağlı hizmeti oluşturma
-1. C:\ADF klasöründe aşağıdaki içerikle AzureSQLDatabaseLinkedService.json adlı bir JSON dosyası oluşturun. (Henüz yoksa ADF klasörünü oluşturun.) Dosyayı kaydetmeden önce &lt;Server&gt;, &lt;veritabanı&gt;, &lt;Kullanıcı kimliği&gt;ve &lt;Password&gt; sunucunuzun adı, veritabanınız, Kullanıcı KIMLIĞI ve parola ile değiştirin.
+1. C:\ADF klasöründe aşağıdaki içerikle AzureSQLDatabaseLinkedService.json adlı bir JSON dosyası oluşturun. (Zaten yoksa ADF klasörünü oluşturun.) Dosyayı&gt; &lt;kaydetmeden önce sunucu,&gt;veritabanı, &lt;kullanıcı kimliği&gt;ve &lt;parolayı sunucunuzun, veritabanınızın, kullanıcı kimliğinizin ve parolanızın&gt; adı ile değiştirin. &lt;
 
     ```json
     {
@@ -243,7 +243,7 @@ Veri depolarınızı ve işlem hizmetlerinizi veri fabrikasına bağlamak için 
     ```
 2. PowerShell’de ADF klasörüne geçin.
 
-3. Azuressqldatabaselinkedservice bağlı hizmetini oluşturmak için **set-AzDataFactoryV2LinkedService** cmdlet 'ini çalıştırın.
+3. Bağlantılı hizmet AzureSQLDatabaseLinkedService oluşturmak için **Set-AzDataFactoryV2LinkedService** cmdlet çalıştırın.
 
     ```powershell
     Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSQLDatabaseLinkedService" -File ".\AzureSQLDatabaseLinkedService.json"
@@ -284,7 +284,7 @@ Bu adımda, kaynak ve havuz verilerini temsil eden veri kümeleri oluşturacaks�
     ```
     Bu öğreticide data_source_table tablo adını kullanırsınız. Farklı ada sahip bir tablo kullanıyorsanız değiştirin.
 
-2. Veri kümesi SourceDataset oluşturmak için **set-AzDataFactoryV2Dataset** cmdlet 'ini çalıştırın.
+2. SourceDataset dataset oluşturmak için **Set-AzDataFactoryV2Dataset** cmdlet çalıştırın.
 
     ```powershell
     Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SourceDataset" -File ".\SourceDataset.json"
@@ -327,7 +327,7 @@ Bu adımda, kaynak ve havuz verilerini temsil eden veri kümeleri oluşturacaks�
     > [!IMPORTANT]
     > Bu kod parçacığı blob depolama hesabınızda adftutorial adlı bir blob kapsayıcıya sahip olduğunuzu varsayar. Henüz yoksa kapsayıcıyı oluşturun veya var olan bir kapsayıcının adına ayarlayın. `incrementalcopy` çıktı klasörü kapsayıcıda mevcut değilse otomatik olarak oluşturulur. Bu öğreticide dosya adı `@CONCAT('Incremental-', pipeline().RunId, '.txt')` ifadesi kullanılarak dinamik olarak oluşturulur.
 
-2. , SinkDataset veri kümesini oluşturmak için **set-AzDataFactoryV2Dataset** cmdlet 'ini çalıştırın.
+2. SinkDataset veri kümesini oluşturmak için **Set-AzDataFactoryV2Dataset** cmdlet'i çalıştırın.
 
     ```powershell
     Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SinkDataset" -File ".\SinkDataset.json"
@@ -363,7 +363,7 @@ Bu adımda üst eşik değerini depolamak için bir veri kümesi oluşturacaksı
         }
     }    
     ```
-2.  DataSet sulu veri kümesini oluşturmak için **set-AzDataFactoryV2Dataset** cmdlet 'ini çalıştırın.
+2.  Dataset FiligranDataset oluşturmak için **Set-AzDataFactoryV2Dataset** cmdlet çalıştırın.
 
     ```powershell
     Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "WatermarkDataset" -File ".\WatermarkDataset.json"
@@ -495,7 +495,7 @@ Bu öğreticide tek işlem hattında zincirlenmiş iki Arama etkinliği, bir Kop
     ```
 
 
-2. Incrementalcopypipeline işlem hattını oluşturmak için **set-AzDataFactoryV2Pipeline** cmdlet 'ini çalıştırın.
+2. Boru hattı IncrementalCopyPipeline oluşturmak için **Set-AzDataFactoryV2Pipeline** cmdlet çalıştırın.
 
    ```powershell
    Set-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "IncrementalCopyPipeline" -File ".\IncrementalCopyPipeline.json"
@@ -513,12 +513,12 @@ Bu öğreticide tek işlem hattında zincirlenmiş iki Arama etkinliği, bir Kop
 
 ## <a name="run-the-pipeline"></a>İşlem hattını çalıştırma
 
-1. **Invoke-AzDataFactoryV2Pipeline** cmdlet 'ini kullanarak Işlem hattı ıncrementalcopypipeline çalıştırın. Yer tutucuları kendi kaynak grubu ve veri fabrikası adınızla değiştirin.
+1. **Invoke-AzDataFactoryV2Pipeline** cmdlet kullanarak boru hattı IncrementalCopyPipeline çalıştırın. Yer tutucuları kendi kaynak grubu ve veri fabrikası adınızla değiştirin.
 
     ```powershell
     $RunId = Invoke-AzDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -ResourceGroupName $resourceGroupName -dataFactoryName $dataFactoryName
     ```
-2. Tüm etkinliklerin başarıyla çalıştığını görene kadar **Get-AzDataFactoryV2ActivityRun** cmdlet 'ini çalıştırarak işlem hattının durumunu denetleyin. Yer tutucuları *RunStartedAfter* ve *RunStartedBefore* parametresi için uygun bulduğunuz süreyle değiştirin. Bu öğreticide *-RunStartedAfter "2017/09/14"* ve *-RunStartedBefore "2017/09/15"* kullanılır.
+2. Tüm etkinlikleri başarılı bir şekilde görene kadar **Get-AzDataFactoryV2ActivityRun** cmdlet'i çalıştırarak boru hattının durumunu kontrol edin. Yer tutucuları *RunStartedAfter* ve *RunStartedBefore* parametresi için uygun bulduğunuz süreyle değiştirin. Bu öğreticide *-RunStartedAfter "2017/09/14"* ve *-RunStartedBefore "2017/09/15"* kullanılır.
 
     ```powershell
     Get-AzDataFactoryV2ActivityRun -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineRunId $RunId -RunStartedAfter "<start time>" -RunStartedBefore "<end time>"
@@ -633,12 +633,12 @@ Bu öğreticide tek işlem hattında zincirlenmiş iki Arama etkinliği, bir Kop
     6 | newdata | 2017-09-06 02:23:00.000
     7 | newdata | 2017-09-07 09:01:00.000
     ```
-2. **Invoke-AzDataFactoryV2Pipeline** cmdlet 'Ini kullanarak ıncrementalcopypipeline işlem hattını yeniden çalıştırın. Yer tutucuları kendi kaynak grubu ve veri fabrikası adınızla değiştirin.
+2. **Invoke-AzDataFactoryV2Pipeline** cmdlet kullanarak boru hattı IncrementalCopyPipeline'ı yeniden çalıştırın. Yer tutucuları kendi kaynak grubu ve veri fabrikası adınızla değiştirin.
 
     ```powershell
     $RunId = Invoke-AzDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -ResourceGroupName $resourceGroupName -dataFactoryName $dataFactoryName
     ```
-3. Tüm etkinliklerin başarıyla çalıştığını görene kadar **Get-AzDataFactoryV2ActivityRun** cmdlet 'ini çalıştırarak işlem hattının durumunu denetleyin. Yer tutucuları *RunStartedAfter* ve *RunStartedBefore* parametresi için uygun bulduğunuz süreyle değiştirin. Bu öğreticide *-RunStartedAfter "2017/09/14"* ve *-RunStartedBefore "2017/09/15"* kullanılır.
+3. Tüm etkinlikleri başarılı bir şekilde görene kadar **Get-AzDataFactoryV2ActivityRun** cmdlet'i çalıştırarak boru hattının durumunu kontrol edin. Yer tutucuları *RunStartedAfter* ve *RunStartedBefore* parametresi için uygun bulduğunuz süreyle değiştirin. Bu öğreticide *-RunStartedAfter "2017/09/14"* ve *-RunStartedBefore "2017/09/15"* kullanılır.
 
     ```powershell
     Get-AzDataFactoryV2ActivityRun -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineRunId $RunId -RunStartedAfter "<start time>" -RunStartedBefore "<end time>"

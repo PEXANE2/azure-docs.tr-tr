@@ -1,6 +1,6 @@
 ---
-title: Azure PowerShell-Azure aboneliğine abone olma
-description: Bu makale, bir Azure aboneliği için Event Grid olaylarına nasıl abone olunacağını gösteren örnek bir Azure PowerShell betiği sağlar.
+title: Azure PowerShell - Azure aboneliğine abone olun
+description: Bu makalede, bir Azure aboneliği için Olay Ağı olaylarına nasıl abone olunur gösteriş yapan bir azure PowerShell komut dosyası görüntülenir.
 services: event-grid
 documentationcenter: na
 author: spelluru
@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 01/23/2020
 ms.author: spelluru
 ms.openlocfilehash: 4a6539966ff2e907c4f6f942dd0c238ee35b6836
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76721464"
 ---
 # <a name="subscribe-to-events-for-an-azure-subscription-with-powershell"></a>PowerShell ile Bir Azure aboneliği için olaylara abone olma
@@ -30,9 +30,9 @@ Bu betik, bir Azure aboneliği için olaylara bir Event Grid aboneliği oluştur
 
 [!code-powershell[main](../../../powershell_scripts/event-grid/subscribe-to-azure-subscription/subscribe-to-azure-subscription.ps1 "Subscribe to Azure subscription")]
 
-## <a name="sample-script---preview-module"></a>Örnek betik-önizleme modülü
+## <a name="sample-script---preview-module"></a>Örnek komut dosyası - önizleme modülü
 
-Bu önizleme örnek betiği Event Grid modülünü gerektirir. Yüklemek için `Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery` çalıştırın
+Bu önizleme örnek komut dosyası Olay Izgara modülü gerektirir. Yüklemek için, çalıştırmak`Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery`
 
 [!INCLUDE [requires-azurerm](../../../includes/requires-azurerm.md)]
 
@@ -44,7 +44,7 @@ Bu betik, olay aboneliğini oluşturmak için aşağıdaki komutu kullanır. Tab
 
 | Komut | Notlar |
 |---|---|
-| [New-AzEventGridSubscription](https://docs.microsoft.com/powershell/module/az.eventgrid/new-azeventgridsubscription) | Event Grid aboneliği oluşturun. |
+| [Yeni-AzEventGridSubscription](https://docs.microsoft.com/powershell/module/az.eventgrid/new-azeventgridsubscription) | Event Grid aboneliği oluşturun. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

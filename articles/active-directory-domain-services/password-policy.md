@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: article
-ms.date: 01/21/2020
+ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: c4402c1ce2f051c8d1911e7c0332d4cac787ce1d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cc1863ff4200ee4cca94f18e3adfffa7ea42db96
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77613202"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475999"
 ---
 # <a name="password-and-account-lockout-policies-on-managed-domains"></a>Yönetilen etki alanlarında parola ve hesap kilitleme ilkeleri
 
@@ -105,20 +105,20 @@ Azure AD DS yönetilen etki alanında gruplara özel parola ilkeleri uygulanır.
     * Parola karmaşıklığı, yaş veya son kullanma süresi gibi ayarlar yalnızca Azure AD DS yönetilen bir etki alanında el ile oluşturulan kullanıcılar için.
     * Hesap kilitleme ayarları tüm kullanıcılar için geçerlidir, ancak yalnızca yönetilen etki alanında etkili olur, Azure AD'nin kendisinde değil.
 
-    ![Özel bir ince taneli parola ilkesi oluşturma](./media/how-to/custom-fgpp.png)
+    ![Özel bir ince taneli parola ilkesi oluşturma](./media/password-policy/custom-fgpp.png)
 
 1. Uncheck **Yanlışlıkla silmeye karşı koruyun.** Bu seçenek seçilirse, FGPP kaydedemez.
 1. Doğrudan **Uygulan** bölümünde **Ekle** düğmesini seçin. Kullanıcıları **seç veya Gruplar** iletişim kutusunda **Konumlar** düğmesini seçin.
 
-    ![Parola ilkesini uygulamak için kullanıcıları ve grupları seçin](./media/how-to/fgpp-applies-to.png)
+    ![Parola ilkesini uygulamak için kullanıcıları ve grupları seçin](./media/password-policy/fgpp-applies-to.png)
 
 1. Parola ilkeleri yalnızca gruplara uygulanabilir. **Konumlar** iletişim kutusunda, *aaddscontoso.com*gibi etki alanı adını genişletin ve ardından **AADDC Kullanıcıları**gibi bir OU seçin. Uygulamak istediğiniz bir kullanıcı grubu içeren özel bir OU'nuz varsa, bu OU'yi seçin.
 
-    ![Grubun ait olduğu OU'yu seçin](./media/how-to/fgpp-container.png)
+    ![Grubun ait olduğu OU'yu seçin](./media/password-policy/fgpp-container.png)
 
 1. İlkeyi uygulamak istediğiniz grubun adını yazın ve grubun var olduğunu doğrulamak için **Adları Denetle'yi** seçin.
 
-    ![FGPP uygulamak için grubu arayın ve seçin](./media/how-to/fgpp-apply-group.png)
+    ![FGPP uygulamak için grubu arayın ve seçin](./media/password-policy/fgpp-apply-group.png)
 
 1. **Şimdi Doğrudan Aapply Bölümünde** görüntülenen seçtiğiniz grubun adı ile, özel parola ilkenizi kaydetmek için **Tamam'ı** seçin.
 

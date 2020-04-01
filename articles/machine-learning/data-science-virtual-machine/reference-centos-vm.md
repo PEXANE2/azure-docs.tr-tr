@@ -8,12 +8,12 @@ ms.subservice: data-science-vm
 ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
-ms.openlocfilehash: db49a9f5e0e6675d93cb58d6af9c92fac21e8b74
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 05da812023e7525b87a3d7ef1ce1940339f99791
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77525847"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475490"
 ---
 # <a name="reference-centos-linux-data-science-virtual-machine"></a>Referans: CentOS (Linux) Veri Bilimi Sanal Makine
 
@@ -49,7 +49,7 @@ Veri bilim adamları bu görevleri tamamlamak için çeşitli araçlar kullanın
 
 Linux DSVM bu yükü önemli ölçüde hafifletebilir. Analitik projenizi başlatmak için Linux DSVM'yi kullanın. Linux DSVM, R, Python, SQL, Java ve C++ gibi çeşitli dillerdeki görevler üzerinde çalışmanıza yardımcı olur. Eclipse, kodunuzu geliştirmek ve test etmek için kullanımı kolay bir IDE sağlar. DSVM'ye dahil olan Azure SDK, Microsoft bulut platformu için Linux'ta çeşitli hizmetler kullanarak uygulamalarınızı oluşturmanıza yardımcı olur. Ruby, Perl, PHP ve Node.js gibi diğer diller önceden yüklenmiştir.
 
-DSVM görüntüsü için yazılım ücreti alınmaz. Yalnızca DSVM görüntüsüyle birlikte sağladığınız sanal makinenin boyutuna göre değerlendirilen Azure donanım kullanım ücretlerini ödlersiniz. Bilgi işlem ücretleri hakkında daha fazla bilgi için Azure Marketi'ndeki [Linux için Veri Bilimi Sanal Makine (CentOS) listesine](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm/) bakın.
+DSVM görüntüsü için yazılım ücreti alınmaz. Yalnızca DSVM görüntüsüyle birlikte sağladığınız sanal makinenin boyutuna göre değerlendirilen Azure donanım kullanım ücretlerini ödlersiniz. Bilgi işlem ücretleri hakkında daha fazla bilgi için Azure Marketplace'teki [Linux için Veri Bilimi Sanal Makinesi listesine](https://azure.microsoft.com/marketplace/apps/microsoft-dsvm.linux-data-science-vm-ubuntu) bakın.
 
 
 ## <a name="machine-learning-server"></a>Makine Öğrenme Sunucusu
@@ -176,7 +176,7 @@ Açık kaynak veritabanı PostgresSQL, DSVM'de kullanılabilir ve hizmetler çal
 SQuirreL SQL, çeşitli veritabanlarına (SQL Server, PostgresSQL ve MySQL dahil) bağlanabilen ve SQL sorgularını çalıştırabilen grafiksel bir SQL istemcisidir. Bir masaüstü simgesi kullanarak squirreL SQL'i grafik sel masaüstü oturumundan (örneğin X2Go istemcisi aracılığıyla) çalıştırabilirsiniz. Veya kabuktaki aşağıdaki komutu kullanarak istemciyi çalıştırabilirsiniz:
 
 ```bash
-/usr/local/squirrel-sql-3.7/squirrel-sql.sh /usr/local/squirrel-sql-3.7/squirrel-sql.sh
+/usr/local/squirrel-sql-3.7/squirrel-sql.sh    /usr/local/squirrel-sql-3.7/squirrel-sql.sh
 ```
 
 İlk kullanımdan önce, sürücülerinizi ve veritabanı takma adlarınızı ayarlayın. JDBC sürücüleri /usr/share/java/jdbcdrivers adresinde bulunmaktadır.

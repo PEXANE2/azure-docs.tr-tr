@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Palo Alto ağları ile tümleştirme portalı ile Azure Active Directory tümleştirme | Microsoft Docs'
-description: Azure Active Directory ile Palo Alto ağları arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
+title: 'Öğretici: Palo Alto Networks Captive Portal ile Azure Active Directory entegrasyonu | Microsoft Dokümanlar'
+description: Azure Active Directory ve Palo Alto Networks Captive Portal arasında tek oturum açma işlemlerini nasıl yapılandırıştırabilirsiniz öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,196 +17,196 @@ ms.date: 12/25/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f926741bde3bdcc69cb4ea30f54daca79606047e
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73160171"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks-captive-portal"></a>Öğretici: Palo Alto Networks ile tümleştirme portalı Azure Active Directory tümleştirme
+# <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks-captive-portal"></a>Öğretici: Palo Alto Networks Captive Portal ile Azure Active Directory entegrasyonu
 
-Bu öğreticide, Palo Alto ağlarını Azure Active Directory (Azure AD) ile nasıl tümleştirileceğini öğreneceksiniz.
+Bu eğitimde, Palo Alto Networks Captive Portal'ı Azure Active Directory (Azure AD) ile nasıl entegre acağınızı öğreneceksiniz.
 
-Azure AD ile Palo Alto Networks barındırması portalını tümleştirdiğinizde aşağıdaki avantajları elde edersiniz:
+Palo Alto Networks Captive Portal'ı Azure AD ile entegre ettiğinizde aşağıdaki avantajlardan yararlanırsınız:
 
-* Azure AD 'de, Palo Alto Networks ile ilgilenen portala kimlerin erişebileceğini kontrol edebilirsiniz.
-* Kullanıcı Azure AD hesapları 'nı kullanarak Palo Alto ağlarındaki ağlarda (çoklu oturum açma) kullanıcıları otomatik olarak oturum açabilirsiniz.
-* Hesaplarınızı tek bir merkezi konumda (Azure portal) yönetebilirsiniz.
+* Azure AD'de, Palo Alto Networks Captive Portal'a kimlerin erişebileceğini kontrol edebilirsiniz.
+* Kullanıcı Azure REKLAM hesaplarını kullanarak Palo Alto Networks Captive Portal'daki (tek oturum açma) kullanıcıları otomatik olarak oturum açabilirsiniz.
+* Hesaplarınızı tek bir merkezi konumda, Azure portalında yönetebilirsiniz.
 
-Azure AD ile hizmet olarak yazılım (SaaS) uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory uygulamalarda çoklu oturum açma](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure AD ile hizmet olarak yazılım (SaaS) uygulama tümleştirmesi hakkında daha fazla bilgi edinmek [için Azure Active Directory'deki uygulamalarda tek oturum açma'ya](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
 
-Azure aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/) oluşturun.
+Azure aboneliğiniz yoksa, ücretsiz [bir hesap oluşturun.](https://azure.microsoft.com/free/)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Azure AD 'yi Palo Alto ağları açıklamalı portalı ile tümleştirmek için aşağıdaki öğeler gereklidir:
+Azure AD'yi Palo Alto Networks Captive Portal ile tümleştirmek için aşağıdaki öğelere ihtiyacınız vardır:
 
-* Azure Active Directory aboneliği. Azure AD yoksa, bir [aylık deneme sürümü](https://azure.microsoft.com/pricing/free-trial/)alabilirsiniz.
-* Bir Palo Alto Networks-yerleşik Portal çoklu oturum açma (SSO) özellikli abonelik.
+* Azure Active Directory aboneliği. Azure AD'niz yoksa, bir aylık [deneme](https://azure.microsoft.com/pricing/free-trial/)sürümü alabilirsiniz.
+* Palo Alto Networks Captive Portal tek oturum açma (SSO) özellikli abonelik.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, Azure AD çoklu oturum açmayı bir test ortamında yapılandırıp test edersiniz.
+Bu öğreticide, Azure AD tek oturum açma işlemlerini bir test ortamında yapılandırıp sınayabilirsiniz.
 
-Palo Alto ağları açıklamalı portalı şu senaryoları destekler:
+Palo Alto Networks Captive Portal şu senaryoları destekler:
 
-* **IDP-başlatılan çoklu oturum açma**
-* **Tam zamanında Kullanıcı hazırlama**
+* **IDP tarafından başlatılan tek oturum açma**
+* **Tam zamanında kullanıcı sağlama**
 
-## <a name="add-palo-alto-networks-captive-portal-from-the-gallery"></a>Galerideki Palo Alto ağları giriş portalı ekleme
+## <a name="add-palo-alto-networks-captive-portal-from-the-gallery"></a>Galeriden Palo Alto Networks Tutsak Portal ekle
 
-Başlamak için, galeride, yönetilen SaaS uygulamaları listenize Palo Alto ağları captive portalını ekleyin:
+Başlamak için galeride Palo Alto Networks Captive Portal'ı yönetilen SaaS uygulamaları listenize ekleyin:
 
-1. [Azure Portal](https://portal.azure.com)sol menüsünde **Azure Active Directory**' i seçin.
+1. Azure [portalında,](https://portal.azure.com)sol menüde **Azure Etkin Dizini'ni**seçin.
 
-    ![Azure Active Directory düğmesi](common/select-azuread.png)
+    ![Azure Etkin Dizin düğmesi](common/select-azuread.png)
 
-2. **Tüm uygulamalar** > **Kurumsal uygulamalar** ' ı seçin.
+2. **Kurumsal uygulamaları** > seçin**Tüm uygulamalar**.
 
-    ![Menüdeki kurumsal uygulamalar seçeneği](common/enterprise-applications.png)
+    ![Menüdeki Kurumsal uygulamalar seçeneği](common/enterprise-applications.png)
 
 3. **Yeni uygulama**’yı seçin.
 
     ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna, **Palo Alto ağları açıklamalı portalı**girin. Arama sonuçlarında, **Palo Alto Networks-Captive Portal**' ı seçin ve ardından **Ekle**' yi seçin.
+4. Arama kutusuna **Palo Alto Networks Captive Portal'ı**girin. Arama sonuçlarında **Palo Alto Networks - Captive Portal'ı**seçin ve ardından **Ekle'yi**seçin.
 
-     ![Sonuçlar listesinde Palo Alto Networks-captive portalı](common/search-new-app.png)
+     ![Palo Alto Networks - Tutsak Portal sonuç listesinde](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma ve test etme
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD tek oturum açma yapılandırma ve test
 
-*Britta Simon*adlı bir test kullanıcısına bağlı olarak, Palo Alto Networks Ile Azure AD çoklu oturum açma 'yı yapılandırıp test edersiniz. Çoklu oturum açma için, Palo Alto Networks Portal 'da bir Azure AD kullanıcısı ile aynı kullanıcı arasında bir ilişki kurmanız gerekir. 
+*Britta Simon*adlı bir test kullanıcısına göre Palo Alto Networks Captive Portal ile Azure AD tek oturum açma işlemini yapılandırın ve test ekarsınız. Tek oturum açmanın işe yaraması için, Palo Alto Networks Captive Portal'da bir Azure AD kullanıcısı ile aynı kullanıcı arasında bir ilişki kurmanız gerekir. 
 
-Azure AD çoklu oturum açmayı, Palo Alto Networks ile birlikte yapılandırmak ve test etmek için aşağıdaki görevleri doldurun:
+Palo Alto Networks Captive Portal ile Azure AD oturum açma işlemlerini yapılandırmak ve test etmek için aşağıdaki görevleri tamamlayın:
 
-1. **[Azure AD çoklu oturum açmayı yapılandırma](#configure-azure-ad-single-sign-on)** : kullanıcının bu özelliği kullanmasını etkinleştirin.
-2. **[Palo Alto ağlarını yapılandırma açıklamalı portalı çoklu oturum açma](#configure-palo-alto-networks-captive-portal-single-sign-on)** : uygulamadaki çoklu oturum açma ayarlarını yapılandırın.
-3. **[Azure AD test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** : Kullanıcı Ile Azure AD çoklu oturum açmayı, *Britta Simon*ile test edin.
-4. **[Azure AD test kullanıcısına atama](#assign-the-azure-ad-test-user)** : Azure AD çoklu oturum açma kullanmak Için Britta Simon 'u ayarlayın.
-5. **Bir Palo Alto ağı oluşturma giriş portalı test kullanıcısı**: Azure AD kullanıcısına bağlı olan, Palo Alto Networks *Şirket* portalı 'nda bir karşılık gelen kullanıcı oluşturur.
-6. **[Çoklu oturum açmayı sına](#test-single-sign-on)** : yapılandırmanın çalıştığını doğrulayın.
+1. **[Azure AD tek oturum](#configure-azure-ad-single-sign-on)** açma yapılandırma : Kullanıcının bu özelliği kullanmasını etkinleştirin.
+2. **[Palo Alto Networks Captive Portal tek oturum](#configure-palo-alto-networks-captive-portal-single-sign-on)** açma : Uygulamadaki tek oturum açma ayarlarını yapılandırın.
+3. **[Bir Azure AD test kullanıcısı oluşturun](#create-an-azure-ad-test-user)**: Azure AD tek oturum açma işlemini kullanıcı *Britta Simon*ile test edin.
+4. **[Azure AD test kullanıcısını atama](#assign-the-azure-ad-test-user)**: Britta Simon'ı Azure AD tek oturum açma işlemini kullanacak şekilde ayarlayın.
+5. **Bir Palo Alto Networks Captive Portal test kullanıcısı oluşturun**: Azure AD kullanıcısına bağlı Palo Alto Networks Captive Portal'da bir meslektaşı kullanıcı *Britta Simon* oluşturun.
+6. **[Test tek oturum açma](#test-single-sign-on)**: Yapılandırmanın çalıştığını doğrulayın.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırma
+### <a name="configure-azure-ad-single-sign-on"></a>Azure AD'yi tek oturum açma yapılandırma
 
-İlk olarak, Azure portal Azure AD çoklu oturum açmayı etkinleştirin:
+İlk olarak, Azure portalında Azure AD oturum açma'yı etkinleştirin:
 
-1. [Azure Portal](https://portal.azure.com/), **Palo Alto Networks-captive portalı** uygulama tümleştirmesi sayfasında, **Çoklu oturum açma**' yı seçin.
+1. Azure [portalında,](https://portal.azure.com/) **Palo Alto Networks - Captive Portal** uygulama tümleştirme sayfasında Tek oturum **açma'yı**seçin.
 
-    ![Çoklu oturum açma bağlantısını yapılandırma](common/select-sso.png)
+    ![Tek oturum açma bağlantısını yapılandırma](common/select-sso.png)
 
-2. **Çoklu oturum açma yöntemi seçin** bölmesinde **SAML**' yi seçin.
+2. Tek **oturum açma yöntemi** bölmesinde **SAML'yi**seçin.
 
-    ![Çoklu oturum açma seçme modu](common/select-saml-option.png)
+    ![Tek oturum açma seçme modu](common/select-saml-option.png)
 
-3. **SAML Ile çoklu oturum açmayı ayarla** bölmesinde kurşun kalem **düzenleme** simgesini seçin.
+3. **SAML bölmeli Tek Oturum Açma'da** **kalemi Edit** simgesini seçin.
 
-    ![Penciled düzenleme simgesi](common/edit-urls.png)
+    ![Kalemle Edit simgesi](common/edit-urls.png)
 
-4. **Temel SAML yapılandırması** bölmesinde, aşağıdaki adımları izleyin:
+4. Temel **SAML Yapılandırma** bölmesinde aşağıdaki adımları tamamlayın:
 
-    ![Palo Alto ağları captive portalı temel SAML yapılandırma bölmesi](common/idp-intiated.png)
+    ![Palo Alto Networks Tutsak Portal Temel SAML Yapılandırma bölmesi](common/idp-intiated.png)
 
-   1. **Tanımlayıcı**için, `https://<customer_firewall_host_name>/SAML20/SP`düzenine sahıp bir URL girin.
+   1. **Tanımlayıcı**için, desene `https://<customer_firewall_host_name>/SAML20/SP`sahip bir URL girin.
 
-   2. **Yanıt URL 'si**için, `https://<customer_firewall_host_name>/SAML20/SP/ACS`düzenine sahıp bir URL girin.
+   2. **YanıtURL'si için**desene `https://<customer_firewall_host_name>/SAML20/SP/ACS`sahip bir URL girin.
 
       > [!NOTE]
-      > Bu adımdaki yer tutucu değerlerini gerçek tanımlayıcı ve yanıt URL 'Leriyle güncelleştirin. Gerçek değerleri almak için, [Palo Alto ağları captive portalı istemci destek ekibine](https://support.paloaltonetworks.com/support)başvurun.
+      > Bu adımdaki yer tutucu değerlerini gerçek tanımlayıcı ve yanıt URL'leriyle güncelleştirin. Gerçek değerleri almak için [Palo Alto Networks Captive Portal Client destek ekibiyle](https://support.paloaltonetworks.com/support)iletişime geçin.
 
-5. **SAML Imzalama sertifikası** bölümünde, **Federasyon meta verileri XML**' nun yanındaki **İndir**' i seçin. İndirilen dosyayı bilgisayarınıza kaydedin.
+5. **SAML İmzaSertifikası** bölümünde, **Federasyon Metadata XML**yanında, **İndir'i**seçin. İndirilen dosyayı bilgisayarınıza kaydedin.
 
-    ![Federasyon meta verileri XML indirme bağlantısı](common/metadataxml.png)
+    ![Federasyon Metadata XML indirme linki](common/metadataxml.png)
 
-### <a name="configure-palo-alto-networks-captive-portal-single-sign-on"></a>Palo Alto ağlarını yapılandırma ana portalı çoklu oturum açma
+### <a name="configure-palo-alto-networks-captive-portal-single-sign-on"></a>Yapılandırılan Palo Alto Networks Captive Portal tek oturum açma
 
-Ardından, Palo Alto Networks Şirket portalı 'nda çoklu oturum açma ayarlayın:
+Ardından, Palo Alto Networks Captive Portal'da tek oturum açın:
 
-1. Farklı bir tarayıcı penceresinde, bir yönetici olarak Palo Alto Networks Web sitesinde oturum açın.
+1. Farklı bir tarayıcı penceresinde, palo Alto Networks web sitesinde yönetici olarak oturum açın.
 
-2. **Cihaz** sekmesini seçin.
+2. **Aygıt** sekmesini seçin.
 
-    ![Palo Alto Networks Web sitesi cihaz sekmesi](./media/paloaltonetworks-captiveportal-tutorial/tutorial_paloaltoadmin_admin1.png)
+    ![Palo Alto Networks web sitesi Cihaz sekmesi](./media/paloaltonetworks-captiveportal-tutorial/tutorial_paloaltoadmin_admin1.png)
 
-3. Menüsünde **SAML kimlik sağlayıcısı**' nı seçin ve ardından **içeri aktar**' ı seçin.
+3. Menüde **SAML Identity Provider'ı**seçin ve sonra **Içe Aktar'ı**seçin.
 
-    ![Içeri aktar düğmesi](./media/paloaltonetworks-captiveportal-tutorial/tutorial_paloaltoadmin_admin2.png)
+    ![İçe Aktarma düğmesi](./media/paloaltonetworks-captiveportal-tutorial/tutorial_paloaltoadmin_admin2.png)
 
-4. **SAML kimlik sağlayıcısı sunucu profili Içeri aktarma** iletişim kutusunda aşağıdaki adımları izleyin:
+4. **SAML Identity Provider Server Profile Alma** iletişim kutusunda aşağıdaki adımları tamamlayın:
 
-    ![Palo Alto ağlarını çoklu oturum açma yapılandırma](./media/paloaltonetworks-captiveportal-tutorial/tutorial_paloaltoadmin_admin3.png)
+    ![Palo Alto Networks'e tek oturum açma](./media/paloaltonetworks-captiveportal-tutorial/tutorial_paloaltoadmin_admin3.png)
 
-    1. **Profil adı**Için **Azuread-captiveportal**gibi bir ad girin.
+    1. **Profil Adı**için **AzureAD-CaptivePortal**gibi bir ad girin.
     
-    2. **Kimlik sağlayıcısı meta verileri**' nin yanında, **Araştır**' ı seçin. Azure portal indirdiğiniz Metadata. xml dosyasını seçin.
+    2. Kimlik **Sağlayıcı Meta verilerinin**yanında **Gözat'ı**seçin. Azure portalında indirdiğiniz metadata.xml dosyasını seçin.
     
-    3. **Tamam**’ı seçin.
+    3. **Tamam'ı**seçin.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
 
-Sonra, Azure portal *Britta Simon* adlı bir test kullanıcısı oluşturun:
+Ardından, Azure portalında *Britta Simon* adında bir test kullanıcısı oluşturun:
 
-1. Azure portal, **tüm kullanıcılar** > **Kullanıcılar** > **Azure Active Directory** ' i seçin.
+1. Azure portalında Azure **Etkin Dizin** > **Kullanıcıları** > Tüm**kullanıcıları**seçin.
 
-    !["Kullanıcılar ve gruplar" ve "tüm kullanıcılar" bağlantıları](common/users.png)
+    !["Kullanıcılar ve gruplar" ve "Tüm kullanıcılar" bağlantıları](common/users.png)
 
-2. **Yeni Kullanıcı**' yı seçin.
+2. **Yeni kullanıcıyı**seçin.
 
-    ![Yeni Kullanıcı düğmesi](common/new-user.png)
+    ![Yeni kullanıcı düğmesi](common/new-user.png)
 
-3. **Kullanıcı** bölmesinde, aşağıdaki adımları izleyin:
+3. **Kullanıcı** bölmesinde aşağıdaki adımları tamamlayın:
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    1. **Ad**Için **Brittasıon**girin.
+    1. **Adı**için, **BrittaSimon**girin.
   
-    2. **Kullanıcı adı**Için **Brittasıon\@\<your_company_domain\>** girin. Örneğin, **Brittasıon\@contoso.com**.
+    2. **Kullanıcı adı için** **BrittaSimon\>\@\<your_company_domain**girin. Örneğin, **BrittaSimon\@contoso.com.**
 
-    3. **Parola**için bir parola girin. Girdiğiniz parolanın bir kaydını tutmanız önerilir. Parolayı görüntülemek için **parolayı göster** onay kutusunu seçebilirsiniz.
+    3. **Parola**için bir parola girin. Girdiğiniz parolanın kaydını tutmanızı öneririz. Parolayı görüntülemek için **Parolayı Göster** onay kutusunu seçebilirsiniz.
 
-    4. **Oluştur**'u seçin.
+    4. **Oluştur'u**seçin.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Ardından, Palo Alto ağları açıklamalı portalı 'na erişim izni verin ve Britta Simon, Azure çoklu oturum açma 'yı kullanabilir.
+Ardından, Britta Simon'ın Azure tek oturum açma işlemini kullanabilmesi için Palo Alto Networks Captive Portal'a erişim izni ver:
 
-1. Azure portal, **tüm uygulamalar** > **Kurumsal uygulamalar** ' ı seçin.
+1. Azure portalında **Kurumsal uygulamaları** > tüm**uygulamaları**seçin.
 
     ![Kurumsal uygulamalar bölmesi](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde, **Palo Alto Networks-Captive Portal**' ı girip uygulamayı seçin.
+2. Uygulamalar listesinde **Palo Alto Networks - Captive Portal'ı**girin ve ardından uygulamayı seçin.
 
-    ![Uygulamalar listesinde Palo Alto Networks-Captive Portal bağlantısı](common/all-applications.png)
+    ![Palo Alto Networks - Uygulama listesinde Tutsak Portal bağlantısı](common/all-applications.png)
 
-3. Menüsünde **Kullanıcılar ve gruplar**' ı seçin.
+3. **Menüde, Kullanıcıları ve grupları**seçin.
 
     !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-4. **Kullanıcı Ekle**' yi seçin. Sonra **atama Ekle** bölmesinde **Kullanıcılar ve gruplar**' ı seçin.
+4. **Kullanıcı Ekle'yi**seçin. Ardından, **Atama Ekle** bölmesinde, Kullanıcılar **ve gruplar**seçin.
 
-    ![Atama Ekle bölmesi](common/add-assign-user.png)
+    ![Atama ekle bölmesi](common/add-assign-user.png)
 
-5. **Kullanıcılar ve gruplar** bölmesinde, **Kullanıcılar** listesinde **Britta Simon**' u seçin. **Seç**' i seçin.
+5. Kullanıcılar **ve gruplar** bölmesinde, **Kullanıcı** listesinde **Britta Simon'ı**seçin. **Seç**’i seçin.
 
-6. SAML onaylama 'ya bir rol değeri eklemek için, **Rol Seç** bölmesinde, Kullanıcı için ilgili rolü seçin. **Seç**' i seçin.
+6. SAML iddiasına rol değeri eklemek için, **Rol Bölmesini** Seç'te, kullanıcı için ilgili rolü seçin. **Seç**’i seçin.
 
-7. **Atama Ekle** bölmesinde **ata**' yı seçin.
+7. Atama **Ekle** bölmesinde **Atama'yı**seçin.
 
-### <a name="create-a-palo-alto-networks-captive-portal-test-user"></a>Bir Palo Alto ağı oluşturma yönetim portalı test kullanıcısı
+### <a name="create-a-palo-alto-networks-captive-portal-test-user"></a>Palo Alto Networks Captive Portal test kullanıcısı oluşturma
 
-Ardından, Palo Alto Networks Portal 'da *Britta Simon* adlı bir kullanıcı oluşturun. Palo Alto ağları captive portalı, varsayılan olarak etkinleştirilen tam zamanında Kullanıcı sağlamayı destekler. Bu bölümdeki herhangi bir görevi gerçekleştirmeniz gerekmez. Bir Kullanıcı Palo Alto ağları giriş portalı 'nda zaten mevcut değilse, kimlik doğrulamasından sonra yeni bir tane oluşturulur.
+Ardından, Palo Alto Networks Captive Portal'da *Britta Simon* adında bir kullanıcı oluşturun. Palo Alto Networks Captive Portal, varsayılan olarak etkinleştirilen tam zamanında kullanıcı sağlamayı destekler. Bu bölümdeki görevleri tamamlamanız gerekmez. Bir kullanıcı Palo Alto Networks Captive Portal'da zaten yoksa, kimlik doğrulamadan sonra yeni bir kullanıcı oluşturulur.
 
 > [!NOTE]
-> Bir kullanıcıyı el ile oluşturmak istiyorsanız, [Palo Alto Networks ana portalı istemci destek ekibine](https://support.paloaltonetworks.com/support)başvurun.
+> El ile bir kullanıcı oluşturmak istiyorsanız, [Palo Alto Networks Captive Portal Client destek ekibine](https://support.paloaltonetworks.com/support)başvurun.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
 
-Palo Alto ağları açıklamalı portalı, bir Windows sanal makinesinde güvenlik duvarının arkasına yüklenir. Palo Alto ağlarında çoklu oturum açmayı test etmek için, Uzak Masaüstü Protokolü (RDP) kullanarak Windows VM 'de oturum açın. RDP oturumunda bir tarayıcı açın ve herhangi bir Web sitesine gidin. SSO URL 'SI açılır ve sizden kimlik doğrulamanız istenir. Kimlik doğrulaması tamamlandığında Web sitelerine erişebilirsiniz.
+Palo Alto Networks Captive Portal, Windows VM'deki güvenlik duvarının arkasına yüklenir. Palo Alto Networks Captive Portal'da tek oturum açma yı test etmek için Uzak Masaüstü Protokolü (RDP) kullanarak Windows VM'de oturum açın. RDP oturumunda, bir tarayıcı açın ve herhangi bir web sitesine gidin. SSO URL'si açılır ve kimliğiniz ini sizden istenir. Kimlik doğrulaması tamamlandığında web sitelerine erişebilirsiniz.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-Daha fazla bilgi için şu makalelere bakın:
+Daha fazla bilgi edinmek için şu makalelere bakın:
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
-- [Azure Active Directory uygulamalarda çoklu oturum açma](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
-- [Azure Active Directory Koşullu erişim](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme yle ilgili eğitimler](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Azure Active Directory'deki uygulamalarda tek oturum açma](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Etkin Dizinde Koşullu Erişim](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -10,10 +10,10 @@ ms.custom: mvc
 ms.date: 10/25/2018
 ms.author: troyhop
 ms.openlocfilehash: 302b863e7ad7d6df286adf53342356f279ab92d2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/23/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "61450582"
 ---
 # <a name="tutorial-create-a-custom-simulated-device"></a>Öğretici: Özel simülasyon cihazı oluşturma
@@ -28,15 +28,15 @@ Bu öğreticide şunları yaptınız:
 > * Cihaz modelini kopyalama
 > * Cihaz modelini silme
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) oluşturun.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi izlemek için Azure aboneliğinizde Cihaz Simülasyonu'nun dağıtılmış örneğine sahip olmanız gerekir.
 
 Cihaz Simülasyonu'nu henüz dağıtmadıysanız, [Azure'da IoT cihaz simülasyonunu dağıtma ve çalıştırma](quickstart-device-simulation-deploy.md) hızlı başlangıç kılavuzunu tamamlamalısınız.
 
-## <a name="open-device-simulation"></a>Cihaz Simülasyonu'nu açma
+## <a name="open-device-simulation"></a>Cihaz Benzetimini açma
 
 Tarayıcınızda Cihaz Simülasyonu'nu çalıştırmak için, önce [Microsoft Azure IoT Çözüm Hızlandırıcıları](https://www.azureiotsolutions.com)'na gidin.
 
@@ -64,7 +64,7 @@ Formu aşağıdaki bilgilerle doldurun:
 | ------------------- | ---------------------------------------------------- |
 | Cihaz modeli adı   | Buzdolabı                                         |
 | Model açıklaması   | Sıcaklık ve nem algılayıcıları olan bir buzdolabı |
-| Version             | 1.0                                                  |
+| Sürüm             | 1.0                                                  |
 
 > [!NOTE]
 > Cihaz modeli adı benzersiz olmalıdır.

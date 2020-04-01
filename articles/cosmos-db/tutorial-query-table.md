@@ -1,6 +1,6 @@
 ---
 title: Azure Cosmos DB’de tablo verilerini sorgulama
-description: OData filtrelerini ve LINQ sorgularını kullanarak Azure Cosmos DB Tablo API'si hesabında depolanan verileri sorgulamayı öğrenin
+description: OData filtreleri ve LINQ sorgularını kullanarak Azure Cosmos DB Tablo API hesabında depolanan verileri nasıl sorgulayacağım
 author: sakash279
 ms.author: akshanka
 ms.service: cosmos-db
@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 05/21/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 8f31ace0045dad2f038a1eded52a41ffb1932f99
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/28/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76770476"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-table-api"></a>Öğretici: Tablo API’sini kullanarak Azure Cosmos DB’yi sorgulama
@@ -26,7 +26,7 @@ Bu makale aşağıdaki görevleri kapsar:
 
 Bu makaledeki sorgularda aşağıdaki `People` tablosu kullanılmaktadır:
 
-| PartitionKey | RowKey | E-posta | PhoneNumber |
+| PartitionKey | RowKey | Email | PhoneNumber |
 | --- | --- | --- | --- |
 | Harp | Walter | Walter@contoso.com| 425-555-0101 |
 | Smith | Ben | Ben@contoso.com| 425-555-0102 |
@@ -50,7 +50,7 @@ https://<mytableendpoint>/People(PartitionKey='Harp',RowKey='Walter')
 ```
 **Sonuçlar**
 
-| PartitionKey | RowKey | E-posta | PhoneNumber |
+| PartitionKey | RowKey | Email | PhoneNumber |
 | --- | --- | --- | --- |
 | Harp | Walter | Walter@contoso.com| 425-555-0104 |
 
@@ -76,7 +76,7 @@ https://<mytableapi-endpoint>/People()?$filter=PartitionKey%20eq%20'Smith'%20and
 
 **Sonuçlar**
 
-| PartitionKey | RowKey | E-posta | PhoneNumber |
+| PartitionKey | RowKey | Email | PhoneNumber |
 | --- | --- | --- | --- |
 | Smith |Ben | Ben@contoso.com| 425-555-0102 |
 

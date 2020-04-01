@@ -13,10 +13,10 @@ ms.topic: tutorial
 ms.date: 11/08/2017
 ms.author: apimpm
 ms.openlocfilehash: 6be36493fabce07838991c789e111e918a9a826d
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "70072165"
 ---
 # <a name="edit-an-api"></a>API’yi düzenleme
@@ -26,7 +26,7 @@ Bu öğreticideki adımlar, bir API’yi düzenlemek için API Management’ın 
 + Bu işlemi, APIM örneğindeki işlemleri ekleyerek, silerek ve yeniden adlandırarak yapabilirsiniz. 
 + API’nizin swagger’ını düzenleyebilirsiniz.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 + [Azure API Management örneği oluşturma](get-started-create-service-instance.md)
 + [İlk API’nizi içeri aktarma ve yayımlama](import-and-publish.md)
@@ -47,7 +47,7 @@ Bu öğreticideki adımlar, bir API’yi düzenlemek için API Management’ın 
 
 Aşağıdaki adımları izleyerek Azure portaldan arka uç API’nizi güncelleştirebilirsiniz:
 
-1. **Tüm işlemler**’i seçin
+1. **Tüm işlemleri** seçin
 2. **Ön uç** penceresinde kaleme tıklayın.
 
     ![API’yi düzenleme](./media/edit-api/edit-api002.png)
@@ -65,4 +65,4 @@ Aşağıdaki adımları izleyerek Azure portaldan arka uç API’nizi güncelle�
 
 > [!div class="nextstepaction"]
 > [APIM ilkesi örnekleri](policy-samples.md)
-> [Yayımlanan API’yi dönüştürme ve koruma](transform-api.md)
+> [Yayımlanmış bir API'yi dönüştürve korur](transform-api.md)

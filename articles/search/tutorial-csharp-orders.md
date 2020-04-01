@@ -1,7 +1,7 @@
 ---
-title: C#sonuçları sipariş etme öğreticisi
+title: Sonuçları sıralama konusunda C# eğitimi
 titleSuffix: Azure Cognitive Search
-description: Bu öğreticide, arama sonuçlarının nasıl sipariş yapılacağı gösterilmektedir. Önceki bir oteller projesinde, birincil özelliğe göre sıralama, ikincil özellik ve yükseltme ölçütü eklemek için bir Puanlama profili içerir.
+description: Bu öğretici, arama sonuçlarının nasıl sıralanın nasıl sıralanın gösterildiğini gösterir. Bir önceki otel projesi, birincil mülkiyet, ikincil mülkiyet tarafından sipariş ve artırma kriterleri eklemek için bir puanlama profili içerir inşa eder.
 manager: nitinme
 author: tchristiani
 ms.author: terrychr
@@ -9,53 +9,53 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 02/10/2020
 ms.openlocfilehash: 812085a5a4b3e8d1233f19c947d2fd5e433f6ab7
-ms.sourcegitcommit: 7c18afdaf67442eeb537ae3574670541e471463d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/11/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77121551"
 ---
-# <a name="c-tutorial-order-the-results---azure-cognitive-search"></a>C#Öğretici: sonuçları sıralama-Azure Bilişsel Arama
+# <a name="c-tutorial-order-the-results---azure-cognitive-search"></a>C# öğreticisi: Sonuçları sipariş edin - Azure Bilişsel Arama
 
-Bu noktaya kadar öğretici serimize kadar, sonuçlar döndürülür ve varsayılan sırada görüntülenir. Bu, verilerin bulunduğu sıra veya bir sıralama parametresi belirtilmediğinde kullanılacak olan bir varsayılan _Puanlama profili_ olabilir. Bu öğreticide, sonuçları birincil bir özelliğe göre sipariş etme ve ardından aynı birincil özelliği olan sonuçlar için, bu seçimi ikincil bir özellikte sıralama bölümüne gidecağız. Sayısal değerlere göre sıralamaya alternatif olarak, son örnek özel bir Puanlama profiline göre nasıl sıralanın gösterir. Ayrıca _karmaşık türlerin_görüntüsüne daha ayrıntılı bir şekilde gidecağız.
+Öğreticiler serimizde bu noktaya kadar, sonuçlar döndürülür ve varsayılan sırada görüntülenir. Bu, verilerin bulunduğu sıra olabilir veya sipariş parametreleri belirtilmediğinde kullanılacak varsayılan _puanlama profili_ tanımlanabilir. Bu öğreticide, birincil bir özelliğe dayalı sonuçları nasıl sıralayabildiğimize ve daha sonra aynı birincil özelliğe sahip sonuçlar alacaktır, ikincil bir özellik üzerinde bu seçimin nasıl sıralandığına. Sayısal değerlere dayalı sıralamaya alternatif olarak, son örnek, özel bir puanlama profiline dayalı siparişin nasıl yapılacağını gösterir. Biz de _karmaşık türlerin_ekran içine biraz daha derin gidecek.
 
-Döndürülen sonuçları kolayca karşılaştırmak için, bu proje [ C# öğreticide oluşturulan sonsuz kayan proje üzerinde oluşturur: arama sonuçları sayfalandırma-Azure bilişsel arama](tutorial-csharp-paging.md) öğreticisi.
+İade edilen sonuçları kolayca karşılaştırmak için, bu proje [C# Tutorial: Search sonuçları pagination - Azure Bilişsel Arama](tutorial-csharp-paging.md) öğretici oluşturulan sonsuz kaydırma projesi üzerine inşa edilmiştir.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 > [!div class="checklist"]
-> * Sonuçları bir özelliğe göre sıralama
-> * Birden çok özelliğe göre sıra sonuçları
-> * Sonuçları coğrafi noktadan bir uzaklığa göre filtrele
-> * Puanlama profili temelinde sonuçları sıralama
+> * Tek bir özelliğe dayalı sipariş sonuçları
+> * Birden çok özelliği temel alan sipariş sonuçları
+> * Sonuçları coğrafi bir noktadan uzaklık durumuna göre filtreleme
+> * Puanlama profiline dayalı sipariş sonuçları
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 Bu öğreticiyi tamamlamak için aşağıdakileri yapmanız gerekir:
 
-Öğreticinin sonsuz kayan sürümüne sahip olmak [: arama sonuçları sayfalandırma-Azure bilişsel arama Project çalışıyor ve çalışıyor. C# ](tutorial-csharp-paging.md) Bu proje kendi sürümünüz olabilir ya da GitHub: [ilk uygulama oluştur](https://github.com/Azure-Samples/azure-search-dotnet-samples)' dan yükleyebilirsiniz.
+[C# Tutorial: Search sonuçları nın](tutorial-csharp-paging.md) sonsuz kaydırma sürümüne sahip olun - Azure Bilişsel Arama projesi çalışır durumda. Bu proje ya kendi sürümünüz olabilir ya da GitHub'dan yükleyebilir: [İlk uygulamayı oluşturun.](https://github.com/Azure-Samples/azure-search-dotnet-samples)
 
-## <a name="order-results-based-on-one-property"></a>Sonuçları bir özelliğe göre sıralama
+## <a name="order-results-based-on-one-property"></a>Tek bir özelliğe dayalı sipariş sonuçları
 
-Sonuçları bir özelliğe göre sıralıyoruz, otel derecelendirmesine söyliyoruz, yalnızca sıralı sonuçları sağlamadığımızda, siparişin doğru olduğunu de onaylamanızı istiyoruz. Diğer bir deyişle, derecelendirmeye göre sıralıyoruz, derecelendirmeyi görünümde göstermemiz gerekir.
+Sonuçları tek bir mülke göre sipariş ettiğimizde, örneğin otel derecelendirmesi, sadece sipariş edilen sonuçları değil, aynı zamanda siparişin doğru olduğunun da teyidini isteriz. Başka bir deyişle, derecelendirme ye sıralanırsak, derecelendirmeyi görünümde görüntülememiz gerekir.
 
-Bu öğreticide, her otel için sonuçların, en ucuz oda oranının ve en pahalı oda oranının görüntülenmesini sağlayacak bir çok daha da ekleyeceğiz. Sıralamayı gözden vertiğimiz gibi, Ayrıca, sıramız için de bir görünüm de gösterildiği gibi değerleri de ekleyeceğiz.
+Bu eğitimde, biz de her otel için, sonuçların, en ucuz oda oranı ve en pahalı oda oranı ekranbiraz daha ekleyeceğiz. Sipariş vermeye daldığımızda, neyi sipariş ettiğimizden emin olmak için değerler de ekleyeceğiz.
 
-Sıralamayı etkinleştirmek için modellerden herhangi birini değiştirmenize gerek yoktur. Görünüm ve denetleyicinin güncellenmesi gerekiyor. Ana denetleyiciyi açarak başlayın.
+Sıralamayı etkinleştirmek için modellerin hiçbirini değiştirmeye gerek yoktur. Görünümün ve denetleyicinin güncellenmesi gerekir. Ev kumandasını açarak başlayın.
 
-### <a name="add-the-orderby-property-to-the-search-parameters"></a>OrderBy özelliğini Arama parametrelerine ekleyin
+### <a name="add-the-orderby-property-to-the-search-parameters"></a>OrderBy özelliğini arama parametrelerine ekleme
 
-1. Tek bir sayısal özelliğe göre sonuçları sıralamak için gereken tüm özellikler, **OrderBy** parametresini özelliğin adına ayarlamaya yönelik olur. **Dizin (SearchData model)** yönteminde, Arama parametrelerine aşağıdaki satırı ekleyin.
+1. Tek bir sayısal özelliği temel alarak sonuçları sıralamak için gereken tek şey, **OrderBy** parametresini özelliğin adına ayarlamaktır. **Index(SearchData modeli)** yönteminde, arama parametrelerine aşağıdaki satırı ekleyin.
 
     ```cs
         OrderBy = new[] { "Rating desc" },
     ```
 
     >[!Note]
-    > Varsayılan sıra artan, ancak bunu açık hale getirmek için özelliğine **ASC** ekleyebilirsiniz. Azalan sıra, **DESC**eklenerek belirtilir.
+    > Bunu net yapmak için özelliğe **asc** ekleyebilirsiniz rağmen varsayılan sipariş yükseliyor. Azalan sıra **desc**eklenerek belirtilir.
 
-2. Şimdi uygulamayı çalıştırın ve tüm ortak arama terimini girin. Sonuçlar doğru sırada olmayabilir veya olmayabilir, bu, kullanıcının değil geliştirici olarak, sonuçları doğrulayan kolay bir yolu vardır!
+2. Şimdi uygulamayı çalıştırın ve herhangi bir ortak arama terimi girin. Sonuçlar doğru sırada olabilir veya olmayabilir, geliştirici olarak ne de siz, kullanıcı, sonuçları doğrulamak için herhangi bir kolay yolu vardır!
 
-3. Sonuçların derecelendirmeye göre sıralandığından emin olalım. İlk olarak, oteller. CSS dosyasındaki **Box1** ve **box2** sınıflarını aşağıdaki sınıflarla değiştirin (Bu sınıflar, bu öğretici için ihtiyaç duyduğumuz tüm yeni olanlardır).
+3. Sonuçların reytinge göre sıralı olduğunu açıklığa kavuşturalım. İlk olarak, hotels.css dosyasındaki **box1** ve **box2** sınıflarını aşağıdaki sınıflarla değiştirin (bu sınıflar bu öğretici için ihtiyacımız olan yeni sınıflardır).
 
     ```html
     textarea.box1A {
@@ -114,21 +114,21 @@ Sıralamayı etkinleştirmek için modellerden herhangi birini değiştirmenize 
     ```
 
     >[!Tip]
-    >Tarayıcılar genellikle CSS dosyalarını önbelleğe alabilir ve bu, eski bir CSS dosyasının kullanılmasına yol açabilir ve düzenlemeleriniz yok sayılır. Bunun iyi bir yolu, bağlantıya sürüm parametresi olan bir sorgu dizesi eklemektir. Örneğin:
+    >Tarayıcılar genellikle css dosyalarını önbelleğe almakta ve bu durum eski bir css dosyasının kullanılmasına ve bunların göz ardı edilmesine neden olabilir. Bu iyi bir şekilde bu bağlantıya bir sürüm parametresi ile bir sorgu dizesi eklemektir. Örnek:
     >
     >```html
     >   <link rel="stylesheet" href="~/css/hotels.css?v1.1" />
     >```
     >
-    >Tarayıcınız tarafından eski bir CSS dosyası kullanıldığını düşünüyorsanız sürüm numarasını güncelleştirin.
+    >Tarayıcınız tarafından eski bir css dosyasının kullanıldığını düşünüyorsanız sürüm numarasını güncelleştirin.
 
-4. **Index (SearchData model)** yönteminde **Select** parametresine **Derecelendirme** özelliğini ekleyin.
+4. **Index(SearchData modeli)** yönteminde **Derecelendirme** özelliğini **Seç** parametresine ekleyin.
 
     ```cs
     Select = new[] { "HotelName", "Description", "Rating"},
     ```
 
-5. Görünümü (index. cshtml) açın ve oluşturma döngüsünü değiştirin ( **&lt;!--otel verilerini göster.--&gt;** ) aşağıdaki kodla.
+5. Görünümü açın (index.cshtml) ve işleme döngüsünün**&lt;(!-- Otel&gt;verilerini gösterin. --**) aşağıdaki kodla değiştirin.
 
     ```cs
                 <!-- Show the hotel data. -->
@@ -143,7 +143,7 @@ Sıralamayı etkinleştirmek için modellerden herhangi birini değiştirmenize 
                 }
     ```
 
-6. Derecelendirmenin hem ilk görüntülenen sayfada hem de sonsuz kaydırma yoluyla çağrılan sonraki sayfalarda kullanılabilir olması gerekir. Bu iki durum için, denetleyicideki bir **sonraki** eylemi ve görünümdeki **kaydırılan** işlevi güncelleştirmemiz gerekir. Denetleyiciden başlayarak **sonraki** yöntemi aşağıdaki kodla değiştirin. Bu kod, derecelendirme metnini oluşturur ve iletişim kurar.
+6. Derecelendirmenin hem ilk görüntülenen sayfada hem de sonsuz kaydırma yoluyla çağrılan sonraki sayfalarda kullanılabilir olması gerekir. Bu iki durumdan ikincisi için, hem denetleyicideki **Sonraki** eylemi hem de görünümdeki **kaydırılan** işlevi güncelleştirmemiz gerekir. Denetleyiciden başlayarak, **Sonraki** yöntemi aşağıdaki kodla değiştirin. Bu kod, derecelendirme metnini oluşturur ve iletır.
 
     ```cs
         public async Task<ActionResult> Next(SearchData model)
@@ -171,7 +171,7 @@ Sıralamayı etkinleştirmek için modellerden herhangi birini değiştirmenize 
         }
     ```
 
-7. Şimdi, görünümdeki **kaydırılan** işlevi, derecelendirme metnini görüntülemek için güncelleştirin.
+7. Şimdi, derecelendirme metnini görüntülemek için görünümde **kaydırılan** işlevi güncelleştirin.
 
     ```javascript
             <script>
@@ -193,17 +193,17 @@ Sıralamayı etkinleştirmek için modellerden herhangi birini değiştirmenize 
 
     ```
 
-8. Şimdi uygulamayı yeniden çalıştırın. "WiFi" gibi tüm ortak bir dönemde arama yapın ve sonuçların, otel derecelendirmesine göre azalan sıraya göre sıralanmıştır olduğunu doğrulayın.
+8. Şimdi uygulamayı yeniden çalıştırın. "Wifi" gibi herhangi bir yaygın terimi arayın ve sonuçların azalan otel derecelendirmesi sırasına göre sıralı olduğunu doğrulayın.
 
-    ![Derecelendirmeye dayalı sıralama](./media/tutorial-csharp-create-first-app/azure-search-orders-rating.png)
+    ![Derecelendirmeye göre sıralama](./media/tutorial-csharp-create-first-app/azure-search-orders-rating.png)
 
-    Birkaç otelde aynı dereceye sahip olduğunu fark edeceksiniz ve bu nedenle, ekranda görüntülenen görünüşünün verilerin bulunduğu sıra, rastgele olan bir sıra olduğunu fark edersiniz.
+    Birkaç otelin aynı derecelendirmeye sahip olduğunu fark edeceksiniz ve bu nedenle ekrandaki görünümleri yine verilerin bulunduğu sıradır ve bu rasgelebir durumdur.
 
-    İkinci bir sıralama düzeyi eklemeye bakmadan önce, Oda tarifelerinin aralığını görüntülemesi için bazı kodlar ekleyelim. Bu kodu hem _karmaşık bir türden_veri ayıklayarak hem de ayrıca, fiyata göre sıralama sonuçlarını (Belki de ilk olarak) temel alarak tartışacağız.
+    İkinci bir sipariş düzeyi eklemeyi başlamadan önce, oda fiyatları aralığını görüntülemek için biraz kod ekleyelim. Biz hem karmaşık bir _tür_veri ayıklama göstermek için bu kodu ekliyoruz, ve aynı zamanda biz fiyat (en ucuz ilk belki) dayalı sipariş sonuçları tartışabilirsiniz.
 
-### <a name="add-the-range-of-room-rates-to-the-view"></a>Görünüme Oda oranları aralığını ekleyin
+### <a name="add-the-range-of-room-rates-to-the-view"></a>Görünüme oda fiyatları aralığını ekleyin
 
-1. Hotel.cs modeline en ucuz ve en pahalı oda oranını içeren özellikleri ekleyin.
+1. Hotel.cs modeline en ucuz ve en pahalı oda fiyatı içeren özellikleri ekleyin.
 
     ```cs
         // Room rate range
@@ -211,7 +211,7 @@ Sıralamayı etkinleştirmek için modellerden herhangi birini değiştirmenize 
         public double expensive { get; set; }
     ```
 
-2. Giriş denetleyicisindeki **Dizin (SearchData model)** eyleminin sonundaki oda oranlarını hesaplayın. Geçici verilerin depolandıktan sonra hesaplamalar ekleyin.
+2. **Ev denetleyicisinde, Index(SearchData modeli)** eyleminin sonundaki oda oranlarını hesaplayın. Geçici verilerin depolanmasından sonra hesaplamaları ekleyin.
 
     ```cs
                 // Ensure TempData is stored for the next call.
@@ -242,13 +242,13 @@ Sıralamayı etkinleştirmek için modellerden herhangi birini değiştirmenize 
                 }
     ```
 
-3. **Oda** özelliğini denetleyicinin **Dizin (searchdata model)** eylem yönteminde **Select** parametresine ekleyin.
+3. **Denetleyicinin** **Dizin (SearchData modeli)** eylem yöntemindeki **Seç** parametresine Odalar özelliğini ekleyin.
 
     ```cs
      Select = new[] { "HotelName", "Description", "Rating", "Rooms" },
     ```
 
-4. Görünümdeki işleme döngüsünü değiştirerek sonuçların ilk sayfasının hız aralığını görüntüleyin.
+4. Sonuçların ilk sayfasının fiyat aralığını görüntülemek için görünümdeki işleme döngüünü değiştirin.
 
     ```cs
                 <!-- Show the hotel data. -->
@@ -265,7 +265,7 @@ Sıralamayı etkinleştirmek için modellerden herhangi birini değiştirmenize 
                 }
     ```
 
-5. Sonraki sonuç sayfaları için, giriş denetleyicisindeki **sonraki** yöntemi, hız aralığını iletmek üzere değiştirin.
+5. Sonraki sonuçlar sayfaları için fiyat aralığını iletmek için ev denetleyicisinde **Sonraki** yöntemi değiştirin.
 
     ```cs
         public async Task<ActionResult> Next(SearchData model)
@@ -295,7 +295,7 @@ Sıralamayı etkinleştirmek için modellerden herhangi birini değiştirmenize 
         }
     ```
 
-6. Görünümdeki **kaydırılan** işlevi, oda fiyatları metnini işleyecek şekilde güncelleştirin.
+6. Oda fiyatları metnini işlemek için görünümde **kaydırılan** işlevi güncelleştirin.
 
     ```javascript
             <script>
@@ -317,17 +317,17 @@ Sıralamayı etkinleştirmek için modellerden herhangi birini değiştirmenize 
             </script>
     ```
 
-7. Uygulamayı çalıştırın ve oda oranı aralıklarının görüntülendiğini doğrulayın.
+7. Uygulamayı çalıştırın ve oda fiyat aralıklarının görüntülendiğini doğrulayın.
 
-    ![Oda oranı aralıklarını görüntüleme](./media/tutorial-csharp-create-first-app/azure-search-orders-rooms.png)
+    ![Oda fiyat aralıklarının görüntülenmesi](./media/tutorial-csharp-create-first-app/azure-search-orders-rooms.png)
 
-Arama parametrelerinin **OrderBy** özelliği, odalar gibi bir girişi kabul etmez **.** bu, odalar zaten oranlara sıralanmış olsa bile, en fazla oda oranını sağlamak için kullanılır. Bu durumda, odalar ücret olarak sıralanmaz. Örnek veri kümesindeki oteller, Oda hızına göre sıralanmış olarak görüntülemek için, sonuçları ana denetleyicinizde sıralayıp bu sonuçları istenen sırada görünüme göndermeniz gerekir.
+Arama parametrelerinin **OrderBy** özelliği, odalar zaten fiyata göre sıralanmış olsa bile, en ucuz oda ücretini sağlamak için **Rooms.BaseRate** gibi bir girişi kabul etmez. Bu durumda, odalar oran sıralanmış değildir. Oda fiyatına göre sıralanan örnek veri setinde ki otelleri görüntülemek için, sonuçları ev denetleyicinizde sıralamanız ve bu sonuçları istediğiniz sırada görünüme göndermeniz gerekir.
 
-## <a name="order-results-based-on-multiple-values"></a>Birden çok değere göre sıra sonuçları
+## <a name="order-results-based-on-multiple-values"></a>Birden çok değere dayalı sipariş sonuçları
 
-Bu soru artık aynı derecelendirmeye sahip oteller arasında ayrım yapmak için kullanılır. Çok iyi bir yöntem, otelin en son ne zaman yeniden oluşturulduğu ile ilgili olarak sırada olacaktır. Diğer bir deyişle, otel ne kadar kısa bir süre sonra, Otelde daha fazla zaman alır.
+Şimdi soru, aynı derecelendirmeye sahip oteller arasında nasıl ayrım yapılacılığınız. Bir iyi yolu otel yenilenmiş son kez temelinde sipariş olacaktır. Başka bir deyişle, otel ne kadar yakın zamanda yenilenirse, sonuçlar da o kadar yüksek görünür.
 
-1. İkinci bir sıralama düzeyi eklemek için, **OrderBy** öğesini değiştirin ve **Lastrenovationdate** özelliğini dahil etmek Için **Dizin (searchdata model)** yönteminde özellikleri **seçin** .
+1. İkinci bir sıralama düzeyi eklemek için, **Index(SearchData modeli)** yöntemindeki **OrderBy** ve **Select** özelliklerini **LastRenovationDate** özelliğini içerecek şekilde değiştirin.
 
     ```cs
     OrderBy = new[] { "Rating desc", "LastRenovationDate desc" },
@@ -335,9 +335,9 @@ Bu soru artık aynı derecelendirmeye sahip oteller arasında ayrım yapmak içi
     ```
 
     >[!Tip]
-    >**OrderBy** listesinde herhangi bir sayıda özellik girilebilir. Oteller aynı derecelendirme ve buluşma tarihi içeriyorsa, aralarında ayrım yapmak için üçüncü bir özellik girilebilir.
+    >Herhangi bir sayıda özellik **SiparişBy** listesine girilebilir. Oteller aynı derecelendirme ve yenileme tarihine sahipse, aralarında ayrım yapmak için üçüncü bir tesise girilebilir.
 
-2. Yine de, sıralamanın doğru olduğundan emin olmak için görünümdeki yeniden düzenleme tarihini görmeniz gerekir. Bu tür bir şey gibi bir şey için, büyük olasılıkla yalnızca yıl gereklidir. Görünümdeki işleme döngüsünü aşağıdaki kodla değiştirin.
+2. Yine, sadece sipariş doğru olduğundan emin olmak için, görünümünde yenileme tarihini görmek gerekir. Bir yenileme gibi bir şey için, muhtemelen sadece yıl gereklidir. Görünümdeki işleme döngüünü aşağıdaki kodla değiştirin.
 
     ```cs
                 <!-- Show the hotel data. -->
@@ -356,7 +356,7 @@ Bu soru artık aynı derecelendirmeye sahip oteller arasında ayrım yapmak içi
                 }
     ```
 
-3. Son yeniden geçen tarihin yıl bileşenini iletmek için giriş denetleyicisindeki **sonraki** yöntemi değiştirin.
+3. Son yenileme tarihinin yıl bileşenini iletmek için ev denetleyicisinde **Sonraki** yöntemi değiştirin.
 
     ```cs
         public async Task<ActionResult> Next(SearchData model)
@@ -388,7 +388,7 @@ Bu soru artık aynı derecelendirmeye sahip oteller arasında ayrım yapmak içi
         }
     ```
 
-4. Görünüm içindeki **kaydırılan** işlevi değiştirerek, yeniden işle metni görüntüleyin.
+4. Yenileme metnini görüntülemek için görünümde **kaydırılan** işlevi değiştirin.
 
     ```javascript
             <script>
@@ -411,17 +411,17 @@ Bu soru artık aynı derecelendirmeye sahip oteller arasında ayrım yapmak içi
             </script>
     ```
 
-5. Uygulamayı çalıştırın. "Havuz" veya "Görünüm" gibi ortak bir dönemde arama yapın ve aynı derecelendirmeye sahip olan oteller artık daha fazla süre için azalan sırada görüntülendiğini doğrulayın.
+5. Uygulamayı çalıştırın. "Havuz" veya "görünüm" gibi ortak bir terimüzerinde arama yapın ve aynı derecelendirmeye sahip otellerin artık azalan yenileme tarihinde görüntülendiğini doğrulayın.
 
-    ![Yeniden sipariş tarihini sıralama](./media/tutorial-csharp-create-first-app/azure-search-orders-renovation.png)
+    ![Yenileme tarihinde sipariş](./media/tutorial-csharp-create-first-app/azure-search-orders-renovation.png)
 
-## <a name="filter-results-based-on-a-distance-from-a-geographical-point"></a>Sonuçları coğrafi noktadan bir uzaklığa göre filtrele
+## <a name="filter-results-based-on-a-distance-from-a-geographical-point"></a>Sonuçları coğrafi bir noktadan uzaklık durumuna göre filtreleme
 
-Derecelendirme ve buluşma tarihi, en iyi şekilde azalan düzende görüntülenen özelliklerin örnekleridir. Alfabetik bir liste, artan düzende iyi bir şekilde bir örnektir (örneğin, yalnızca bir **OrderBy** özelliği varsa ve **hotelname** olarak ayarlanmışsa alfabetik bir sıra görüntülenir). Ancak, örnek verilerimizde, coğrafi bir noktadan uzaklık daha uygun olacaktır.
+Derecelendirme ve yenileme tarihi, azalan sırada en iyi görüntülenen özelliklere örnektir. Alfabetik bir liste, artan sıranın iyi bir kullanımına bir örnek olacaktır (örneğin, sadece bir **OrderBy** özelliği varsa ve **HotelName** olarak ayarlanmışsa, alfabetik bir sıra görüntülenir). Ancak, örnek verilerimiz için, coğrafi bir noktadan uzaklık daha uygun olacaktır.
 
-Sonuçları coğrafi mesafeye göre göstermek için birkaç adım gereklidir.
+Sonuçları coğrafi uzaklık lara göre görüntülemek için birkaç adım gerekir.
 
-1. Boylam, enlem ve RADIUS parametrelerine sahip bir filtre girerek, belirtilen bir yarıçapın dışındaki tüm otelleri filtreleyin. Boylam önce POINT işlevine verilir. Yarıçap kilometrede.
+1. Boylam, enlem ve yarıçap parametrelerine sahip bir filtre girerek, belirli bir yarıçapın dışında olan tüm otelleri belirli bir noktadan filtreleyin. Boylam ilk OLARAK POINT fonksiyonuna verilir. Yarıçapı kilometrelerce uzakta.
 
     ```cs
         // "Location" must match the field name in the Hotel class.
@@ -430,15 +430,15 @@ Sonuçları coğrafi mesafeye göre göstermek için birkaç adım gereklidir.
         Filter = $"geo.distance(Location, geography'POINT({model.lon} {model.lat})') le {model.radius}",
     ```
 
-2. Yukarıdaki filtre sonuçları uzaklığa göre _sıralamaz_ ve yalnızca aykırı değerleri kaldırır. Sonuçları sıralamak için geoDistance yöntemini belirten bir **OrderBy** ayarı girin.
+2. Yukarıdaki filtre mesafeye göre sonuçları sipariş _etmez,_ sadece aykırı kaldırır. Sonuçları sıralamak için, geoDistance yöntemini belirten bir **OrderBy** ayarı girin.
 
     ```cs
     OrderBy = new[] { $"geo.distance(Location, geography'POINT({model.lon} {model.lat})') asc" },
     ```
 
-3. Sonuçlar, Azure Bilişsel Arama bir uzaklık filtresi kullanılarak döndürülübilse de, veriler ile belirtilen nokta arasındaki hesaplanan _uzaklık döndürülmez._ Bu değeri, sonuçlarda görüntülemek istiyorsanız Görünüm veya denetleyicide yeniden hesaplayın.
+3. Sonuçlar bir mesafe filtresi kullanılarak Azure Bilişsel Arama tarafından döndürülse de, verilerle belirtilen nokta arasındaki hesaplanan uzaklık _döndürülmez._ Sonuçlarda görüntülemek istiyorsanız, bu değeri görünümde veya denetleyicide yeniden hesaplayın.
 
-    Aşağıdaki kod, iki Enlem/Boylam noktası arasındaki mesafeyi hesaplar.
+    Aşağıdaki kod iki lat/lon noktası arasındaki mesafeyi hesaplar.
 
     ```cs
         const double EarthRadius = 6371;
@@ -459,22 +459,22 @@ Sonuçları coğrafi mesafeye göre göstermek için birkaç adım gereklidir.
         }
     ```
 
-4. Şimdi bu kavramları birbirine bağlamak gerekir. Bununla birlikte, bu kod parçacıkları öğreticimizin ulaştığı kadar çok olduğu için harita tabanlı bir uygulama oluşturmak okuyucu için bir alıştırma olarak kalır. Bu örneği daha fazla almak için yarıçap ile bir şehir adı girmeyi veya haritada bir nokta konumlandırmayı ve bir RADIUS seçmeyi düşünün. Bu seçenekleri daha fazla araştırmak için aşağıdaki kaynaklara bakın:
+4. Şimdi bu kavramları birbirine bağlamanız gerekiyor. Ancak, bu kod parçacıkları kadar bizim öğretici gider, bir harita tabanlı uygulama bina okuyucu için bir egzersiz olarak bırakılır. Bu örneği daha da ileri götürmek için, yarıçapı olan bir şehir adı girmeyi veya haritada bir noktayı bulmayı ve bir yarıçap seçmeyi düşünün. Bu seçenekleri daha fazla araştırmak için aşağıdaki kaynaklara bakın:
 
 * [Azure Haritalar Belgeleri](https://docs.microsoft.com/azure/azure-maps/)
-* [Azure haritalar arama hizmetini kullanarak bir adres bulma](https://docs.microsoft.com/azure/azure-maps/how-to-search-for-address)
+* [Azure Haritalar arama hizmetini kullanarak bir adres bulma](https://docs.microsoft.com/azure/azure-maps/how-to-search-for-address)
 
-## <a name="order-results-based-on-a-scoring-profile"></a>Puanlama profili temelinde sonuçları sıralama
+## <a name="order-results-based-on-a-scoring-profile"></a>Puanlama profiline dayalı sipariş sonuçları
 
-Öğreticide verilen örnekler, _tam_ olarak sıralı bir işlem sağlayan sayısal değerleri (derecelendirme, yeniden oluşturma tarihi, coğrafi uzaklık) nasıl sıralayarak göstermektedir. Ancak bazı aramalar ve bazı veriler, bu iki veri öğesi arasında kolay bir karşılaştırmaya kendisini hiçbir şekilde vermez. Azure Bilişsel Arama _Puanlama_kavramını içerir. _Puanlama profilleri_ , daha karmaşık ve nitel karşılaştırmaları sağlamak için kullanılabilen bir veri kümesi için belirtilebilir. Bu, ne zaman en değerli olması gerekir, örneğin, ilk olarak görüntülenmek üzere metin tabanlı verileri karşılaştırma.
+Öğreticide şimdiye kadar verilen örnekler, _kesin_ bir sipariş süreci sağlayarak sayısal değerler (derecelendirme, yenileme tarihi, coğrafi uzaklık) hakkında nasıl sırayapılacağını göstermektedir. Ancak, bazı aramalar ve bazı veriler iki veri öğesi arasında bu kadar kolay bir karşılaştırma ya da bu tür bir karşılaştırmaya kendilerini ödünç vermezler. Azure Bilişsel Arama _puanlama_kavramını içerir. _Puanlama profilleri,_ önce hangilerinin görüntüleneceğine karar vermek için metin tabanlı verileri karşılaştırırken en değerli olan, daha karmaşık ve nitel karşılaştırmalar sağlamak için kullanılabilecek bir veri kümesi için belirtilebilir.
 
-Puanlama profilleri kullanıcılar tarafından, genellikle bir veri kümesinin yöneticileri tarafından tanımlanmamıştır. Otel verilerinde çeşitli Puanlama profilleri ayarlanmış. Puanlama profilinin nasıl tanımlandığını inceleyelim, sonra da bunları aramak için kod yazmayı deneyin.
+Puanlama profilleri kullanıcılar tarafından değil, genellikle bir veri kümesinin yöneticileri tarafından tanımlanır. Otel verilerinde çeşitli puanlama profilleri hazırlanmıştır. Puanlama profilinin nasıl tanımlandığına bakalım, sonra bunları aramak için kod yazmayı deneyelim.
 
-### <a name="how-scoring-profiles-are-defined"></a>Puanlama profillerinin tanımlanması
+### <a name="how-scoring-profiles-are-defined"></a>Puanlama profilleri nasıl tanımlanır?
 
-Puanlama profillerinin üç örneğini inceleyelim ve bunların _her birinin sonuçlar_ sırasını nasıl etkileyeceğini düşünün. Uygulama geliştiricisi olarak, bu profilleri yazmayın, ancak veri Yöneticisi tarafından yazılır, ancak söz konusu söz dizimini göz atmak yararlıdır.
+Puanlama profillerinin üç örneğine bakalım ve her birinin sonuç sırasını nasıl _etkilemesi gerektiğini_ düşünelim. Bir uygulama geliştiricisi olarak, bu profilleri yazmayın, veri yöneticisi tarafından yazılır, ancak sözdizimine bakmak yararlıdır.
 
-1. Bu, bir **OrderBy** veya **ScoringProfile** parametresi belirtmediğinden kullanılan oteller veri kümesi için varsayılan Puanlama profilidir. Bu profil, otel adında, açıklamada veya etiket listesinde (değişiklik) arama metni varsa, bir otel için _puanı_ artırır. Puanlama ağırlıklarının belirli alanları nasıl tercih ettiğini unutmayın. Arama metni başka bir alanda görüntüleniyorsa, aşağıda listelenmediyse 1 ağırlığı olur. Puan arttıkça, daha önceki bir sonuç görünümde görüntülenir.
+1. Bu, herhangi bir **OrderBy** veya **ScoringProfile** parametresi belirtmediğinizde kullanılan oteller veri kümesi için varsayılan puanlama profilidir. Bu profil, arama metni otel adı, açıklama veya etiket listesinde (olanaklar) mevcutsa, bir otelin _puanını_ artırır. Puanlamanın ağırlıklarının belirli alanları nasıl desteklediğine dikkat edin. Arama metni aşağıda listelenmemiş başka bir alanda görünüyorsa, ağırlığı 1 olacaktır. Açıkçası, yüksek puan, erken bir sonuç görünümünde görünür.
 
      ```cs
     {
@@ -491,7 +491,7 @@ Puanlama profillerinin üç örneğini inceleyelim ve bunların _her birinin son
 
     ```
 
-2. Aşağıdaki Puanlama profili, sağlanan bir parametre bir veya daha fazla etiket listesi içeriyorsa ("değişiklik" yaptığımız) puanı önemli ölçüde artırır. Bu profilin anahtar noktası, metin içeren bir parametre sağlanması _gerekir_ . Parametre boşsa veya sağlanmazsa bir hata oluşur.
+2. Sağlanan bir parametre etiket listesinden birini veya birkaçını içeriyorsa (ki biz buna "olanaklar" diyoruz) aşağıdaki puanlama profili skoru önemli ölçüde artırır. Bu profilin temel noktası, metin içeren bir parametre nin sağlanması _gerektiğidir._ Parametre boşsa veya sağlanmazsa, bir hata atılır.
  
     ```cs
             {
@@ -509,7 +509,7 @@ Puanlama profillerinin üç örneğini inceleyelim ve bunların _her birinin son
         }
     ```
 
-3. Bu Üçüncü örnekte, derecelendirme puanı önemli ölçüde artırır. Son yeniden kullanım tarihi de puanı artırır, ancak bu veriler geçerli tarihin 730 gün (2 yıl) içinde yer alıyorsa puan de artırır.
+3. Bu üçüncü örnekte, derecelendirme skora önemli bir destek verir. Son yenilenen tarih de puanı artıracak, ancak bu veriler geçerli tarihten itibaren 730 gün (2 yıl) içinde kalırsa.
 
     ```cs
             {
@@ -540,11 +540,11 @@ Puanlama profillerinin üç örneğini inceleyelim ve bunların _her birinin son
 
     ```
 
-    Şimdi, bu profillerin çalıştığını düşündüğünüzden bize bakalım!
+    Şimdi, bu profiller düşündüğümüz gibi çalışıp çalışmadıklarını görelim!
 
-### <a name="add-code-to-the-view-to-compare-profiles"></a>Profilleri karşılaştırmak için görünüme kod ekleyin
+### <a name="add-code-to-the-view-to-compare-profiles"></a>Profilleri karşılaştırmak için görünüme kod ekleme
 
-1. İndex. cshtml dosyasını açın ve &lt;Body&gt; bölümünü aşağıdaki kodla değiştirin.
+1. index.cshtml dosyasını açın ve &lt;&gt; gövde bölümünü aşağıdaki kodla değiştirin.
 
     ```cs
     <body>
@@ -652,7 +652,7 @@ Puanlama profillerinin üç örneğini inceleyelim ve bunların _her birinin son
     </body>
     ```
 
-2. SearchData.cs dosyasını açın ve **Searchdata** sınıfını aşağıdaki kodla değiştirin.
+2. SearchData.cs dosyasını açın ve **SearchData** sınıfını aşağıdaki kodla değiştirin.
 
     ```cs
     public class SearchData
@@ -691,7 +691,7 @@ Puanlama profillerinin üç örneğini inceleyelim ve bunların _her birinin son
     }
     ```
 
-3. Oteller. css dosyasını açın ve aşağıdaki HTML sınıflarını ekleyin.
+3. hotels.css dosyasını açın ve aşağıdaki HTML sınıflarını ekleyin.
 
     ```html
     .facetlist {
@@ -715,13 +715,13 @@ Puanlama profillerinin üç örneğini inceleyelim ve bunların _her birinin son
 
 ### <a name="add-code-to-the-controller-to-specify-a-scoring-profile"></a>Puanlama profili belirtmek için denetleyiciye kod ekleme
 
-1. Giriş denetleyicisi dosyasını açın. Aşağıdaki **using** ifadesini ekleyin (liste oluşturmaya yardımcı olmak için).
+1. Ev denetleyicisi dosyasını açın. Aşağıdaki **leri kullanarak** deyimi ekleyin (liste oluşturmaya yardımcı olmak için).
 
     ```cs
     using System.Linq;
     ```
 
-2.  Bu örnekte, ilk görünümü döndürenden biraz daha fazlasını yapmak için **Dizin** için ilk çağrıya ihtiyacımız var. Yöntemi artık görünümde görüntülenecek en fazla 20 değişiklik arar.
+2.  Bu örnekiçin, ilk görünümü döndürmekten biraz daha fazlasını yapmak için **Index'e** ilk çağrıyı yapmamız gerekir. Yöntem şimdi görünümde görüntülenecek en fazla 20 olanak arıyor.
 
     ```cs
         public async Task<ActionResult> Index()
@@ -751,7 +751,7 @@ Puanlama profillerinin üç örneğini inceleyelim ve bunların _her birinin son
         }
     ```
 
-3. Modelleri geçici depolamaya kaydetmek ve geçici depolama alanından kurtarmak ve bir modeli doldurmak için iki özel yöntem gerekir.
+3. Yönleri geçici depolamaya kaydetmek ve bunları geçici depolamadan kurtarmak ve bir modeli doldurmak için iki özel yönteme ihtiyacımız var.
 
     ```cs
         // Save the facet text to temporary storage, optionally saving the state of the check boxes.
@@ -789,7 +789,7 @@ Puanlama profillerinin üç örneğini inceleyelim ve bunların _her birinin son
         }
     ```
 
-4. **OrderBy** ve **ScoringProfile** parametrelerini gereken şekilde ayarlamanız gerekir. Var olan **Dizin (SearchData model)** yöntemini aşağıdaki kodla değiştirin.
+4. **OrderBy** ve **ScoringProfile** parametrelerini gerektiği gibi ayarlamamız gerekir. Varolan **Index(SearchData modeli)** yöntemini aşağıdakilerle değiştirin.
 
     ```cs
         public async Task<ActionResult> Index(SearchData model)
@@ -938,40 +938,40 @@ Puanlama profillerinin üç örneğini inceleyelim ve bunların _her birinin son
         }
     ```
 
-    Her **anahtar** seçimi için açıklamaları okuyun.
+    **Geçiş** seçimlerinin her biri için yapılan açıklamaları okuyun.
 
-5. Önceki bölümde yer alan ve birden çok özelliği temel alan sıralama için ek kodu tamamladığınız takdirde, **sonraki** eylemde herhangi bir değişiklik yapmak zorunda değilsiniz.
+5. Birden çok özelliğe dayalı sıralama yla ilgili önceki bölümün ek kodunu tamamladıysanız, **Sonraki** eylemde herhangi bir değişiklik yapmamız gerekmez.
 
-### <a name="run-and-test-the-app"></a>Uygulamayı çalıştırma ve test etme
+### <a name="run-and-test-the-app"></a>Uygulamayı çalıştırın ve test edin
 
-1. Uygulamayı çalıştırın. Görünümde tam bir değişiklik kümesi görmeniz gerekir.
+1. Uygulamayı çalıştırın. Görünümde tam bir olanaklar kümesi görmelisiniz.
 
-2. Sıralama için, "sayısal derecelendirmeye göre" seçeneğinin belirlenmesi, bu öğreticide daha önce uygulamış olduğunuz sayısal sıralamayı, eşit derecelendirmenin otelleriyle ilgili bir tarih karar verecek şekilde verir.
+2. Sipariş için, "Sayısal Derecelendirmeye Göre" seçeneğini seçmek, bu eğitimde uyguladığınız sayısal sıralamayı verecektir ve yenileme tarihi eşit dereceli oteller arasında karar verir.
 
-![Derecelendirmeye göre "plaj" sıralaması](./media/tutorial-csharp-create-first-app/azure-search-orders-beach.png)
+![Derecelendirmeye göre "plaj" siparişi](./media/tutorial-csharp-create-first-app/azure-search-orders-beach.png)
 
-3. Şimdi "değişiklik ölçütü" profilini deneyin. Çeşitli değişiklik seçimlerini yapın ve bu değişikliklerle ilgili oteller, sonuçlar listesinin yükseltildiğini doğrulayın.
+3. Şimdi "Olanaklara göre" profilini deneyin. Çeşitli olanaklar için seçim yapın ve bu olanaklara sahip otellerin sonuç listesinin tanıtımını yaptığından emin olun.
 
-![Profile göre "plaj" sıralaması](./media/tutorial-csharp-create-first-app/azure-search-orders-beach-profile.png)
+![Profile göre "plaj" siparişi](./media/tutorial-csharp-create-first-app/azure-search-orders-beach-profile.png)
 
-4. Beklediğiniz şeyi öğrenmek için "yeniden düzenlenmiş Tarih/derecelendirme profili" ni deneyin. Yalnızca son yeniden düzenlenen oteller bir _yenilik_ artışı almalıdır.
+4. Beklediğiniz şeyi alıp almamanızı görmek için "By Renovated date/Rating profilini" deneyin. Sadece yakın zamanda yenilenen oteller _tazelik_ desteği almalıdır.
 
 ### <a name="resources"></a>Kaynaklar
 
-Daha fazla bilgi için bkz. [Azure bilişsel arama dizinine Puanlama profilleri ekleme](https://docs.microsoft.com/azure/search/index-add-scoring-profiles).
+Daha fazla bilgi için, bir Azure Bilişsel Arama dizinine aşağıdaki [puanlama profillerini ekleyin' e](https://docs.microsoft.com/azure/search/index-add-scoring-profiles)bakın.
 
 ## <a name="takeaways"></a>Paketler
 
-Bu projeden aşağıdaki bu devralmayı göz önünde bulundurun:
+Bu projeden aşağıdaki paketleri göz önünde bulundurun:
 
-* Kullanıcılar arama sonuçlarının en çok ilgisi olacak şekilde sıralanmasını bekler.
-* Verilerin, sıralamanın kolay olması için yapılandırılması gerekir. "Cheapest" üzerinde, verilerin ek kod olmadan yapılmasını sağlamak üzere yapılandırılmamış olması için önce kolayca sıralayamazsınız.
-* Daha yüksek bir sıralama düzeyinde aynı değere sahip olan sonuçlara ayırt etmek için sıralama için çok sayıda düzey olabilir.
-* Bazı sonuçların artan düzende (örneğin, bir noktadan uzağa) ve bazıları azalan sırada (örneğin, konuğun derecelendirmesi) sırada sıralanabilmesi doğal bir şekilde yapılır.
-* Bir veri kümesi için sayısal karşılaştırmalar yoksa veya yeterince akıllı olmadığında Puanlama profilleri tanımlanabilir. Puanlama her sonuç, sonuçların bir şekilde sipariş edilmesine ve görüntülenmesini sağlamaya yardımcı olur.
+* Kullanıcılar, ilk önce en alakalı arama sonuçlarının sırayla yapılmasını beklerler.
+* Veri, siparişin kolay olması için yapılandırılır. Veriler ek kod olmadan sipariş yapılmasını sağlayacak şekilde yapılandırılmadığımız için, ilk olarak "en ucuz" olarak kolayca sıralayabildik.
+* Daha yüksek bir sıralama düzeyinde aynı değere sahip sonuçlar arasında ayrım yapmak için, sıralamanın birçok düzeyi olabilir.
+* Bazı sonuçların artan sırada (örneğin, bir noktadan uzaklık) ve bazılarının azalan sırada (örneğin, misafirin reytingi) sıralanması doğaldır.
+* Bir veri kümesi için sayısal karşılaştırmalar kullanılamadığında veya yeterince akıllı olmadığında puanlama profilleri tanımlanabilir. Her sonucu puanlama akıllıca sipariş ve görüntülemeye yardımcı olacaktır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu C# öğretici serisini tamamladınız-Azure bilişsel arama API 'lerinde değerli bilgiye sahip olmanız gerekir.
+Bu C# öğretici serisini tamamladınız - Azure Bilişsel Arama API'leri hakkında değerli bilgiler edinmiş olmalısınız.
 
-Daha fazla başvuru ve öğretici için, [Azure bilişsel arama belgelerindeki](https://docs.microsoft.com/azure/search/) [Microsoft Learn](https://docs.microsoft.com/learn/browse/?products=azure)veya Diğer öğreticilere göz atmayı düşünün.
+Daha fazla başvuru ve öğretici için, [Microsoft Learn](https://docs.microsoft.com/learn/browse/?products=azure)veya Azure Bilişsel [Arama Dokümantasyon'daki](https://docs.microsoft.com/azure/search/)diğer öğreticilere göz atmayı düşünün.

@@ -1,6 +1,6 @@
 ---
-title: Azure Relay kullanarak istemciler için bir şirket içi WCF REST hizmetini kullanıma sunma
-description: Bu öğreticide, Azure WCF Geçişi kullanarak bir şirket içi WCF REST hizmetini bir dış istemciye nasıl kullanıma sunabileceğiniz açıklanmaktadır.
+title: Bir ön-prem WCF REST hizmetini Azure Röle'yi kullanan istemcilere açıkla
+description: Bu öğretici, Azure WCF Relay kullanarak şirket içi WCF REST hizmetini harici bir istemciye nasıl gösterinizin açıklanmaktadır.
 services: service-bus-relay
 documentationcenter: na
 author: spelluru
@@ -15,29 +15,29 @@ ms.workload: na
 ms.date: 01/21/2020
 ms.author: spelluru
 ms.openlocfilehash: 551c8e662669737d9d074a69cb03d6060ab87ad5
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/22/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76513091"
 ---
-# <a name="tutorial-expose-an-on-premises-wcf-rest-service-to-external-client-by-using-azure-wcf-relay"></a>Öğretici: Azure WCF Geçişi kullanarak şirket içi WCF REST hizmetini dış istemciye kullanıma sunma
+# <a name="tutorial-expose-an-on-premises-wcf-rest-service-to-external-client-by-using-azure-wcf-relay"></a>Öğretici: Azure WCF Rölesini kullanarak şirket içi WCF REST hizmetini harici istemciye açıkla
 
-Bu öğreticide, Azure Relay kullanarak WCF Geçişi istemci uygulaması ve hizmetinin nasıl oluşturulacağı açıklanmaktadır. [Service Bus mesajlaşma](../service-bus-messaging/service-bus-messaging-overview.md)kullanan benzer bir öğretici için bkz. [Service Bus kuyrukları kullanmaya başlama](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md).
+Bu öğretici, Azure Relay kullanarak wcf Relay istemci uygulaması ve hizmetinin nasıl oluşturulabildiğini açıklar. Servis Veri Servisi [mesajlaşması](../service-bus-messaging/service-bus-messaging-overview.md)kullanan benzer bir öğretici için [bkz.](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md)
 
-Bu öğreticide çalışmak, bir WCF Geçişi istemci ve hizmet uygulaması oluşturma adımlarını kavramak için size kılavuzluk sağlar. Özgün WCF karşılıklarına benzer şekilde, bir hizmet, bir veya daha fazla uç nokta sunan bir yapıdır. Her uç nokta bir veya daha fazla hizmet işlemini kullanıma sunar. Bir hizmetin uç noktası hizmetin bulunabileceği bir adres, istemcinin hizmetle iletişiminde paylaşması gereken bilgileri içeren bir bağlama ve hizmet tarafından istemcilerine sağlanan işlevselliği tanımlayan bir sözleşme belirtir. WCF ve WCF Geçişi arasındaki temel fark, uç noktanın bilgisayarınızda yerel olarak değil bulutta sunulmasıdır.
+Bu öğretici aracılığıyla çalışmak, bir WCF Relay istemcisi ve hizmet uygulaması oluşturma adımlarını anlamanızı sağlar. Orijinal WCF karşılıkları gibi, bir hizmet de bir veya daha fazla uç noktayı ortaya çıkaran bir yapıdır. Her bitiş noktası bir veya daha fazla hizmet işlemi ortaya çıkarır. Bir hizmetin uç noktası hizmetin bulunabileceği bir adres, istemcinin hizmetle iletişiminde paylaşması gereken bilgileri içeren bir bağlama ve hizmet tarafından istemcilerine sağlanan işlevselliği tanımlayan bir sözleşme belirtir. WCF ve WCF Relay arasındaki temel fark, bitiş noktasının bilgisayarınızda yerel olarak değil, bulutta açıkta kalmasıdır.
 
-Bu öğreticideki bölüm dizisinde çalıştıktan sonra çalışan bir hizmete sahip olacaksınız. Ayrıca hizmetin işlemlerini çağırabilen bir istemceceksiniz. 
+Bu öğreticideki bölümlerin dizisini inceledikten sonra, çalışan bir hizmetiniz olur. Ayrıca, hizmetin işlemlerini çağırabilecek bir istemciniz de olur. 
 
-Bu öğreticide aşağıdaki görevleri gerçekleştirebilirsiniz:
+Bu öğreticide aşağıdaki görevleri yaparsınız:
 
 > [!div class="checklist"]
 >
-> * Bu öğretici için önkoşulları yükler.
-> * Geçiş ad alanı oluşturun.
+> * Bu öğretici için ön koşulları yükleyin.
+> * Bir Röle ad alanı oluşturun.
 > * Bir WCF hizmet sözleşmesi oluşturun.
 > * WCF sözleşmesini uygulayın.
-> * Geçiş hizmetine kaydolmak için WCF hizmetini barındırın ve çalıştırın.
+> * Röle hizmetine kaydolmak için WCF hizmetini barındırın ve çalıştırın.
 > * Hizmet sözleşmesi için bir WCF istemcisi oluşturun.
 > * WCF istemcisini yapılandırın.
 > * WCF istemcisini uygulayın.
@@ -47,36 +47,36 @@ Bu öğreticide aşağıdaki görevleri gerçekleştirebilirsiniz:
 
 Bu öğreticiyi tamamlamak için aşağıdaki önkoşulları karşılamanız gerekir:
 
-* Azure aboneliği. Aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
-* [Visual Studio 2015 veya üzeri](https://www.visualstudio.com). Bu öğreticideki örneklerde Visual Studio 2019 kullanılır.
-* .NET için Azure SDK. [SDK İndirmeleri sayfasından](https://azure.microsoft.com/downloads/)bu uygulamayı yükler.
+* Azure aboneliği. Hesabınız yoksa, başlamadan önce [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/)
+* [Visual Studio 2015 veya üzeri](https://www.visualstudio.com). Bu eğitimdeki örnekler Visual Studio 2019'u kullansın.
+* .NET için Azure SDK. [SDK indirme sayfasından](https://azure.microsoft.com/downloads/)yükleyin.
 
-## <a name="create-a-relay-namespace"></a>Geçiş ad alanı oluşturma
+## <a name="create-a-relay-namespace"></a>Röle ad alanı oluşturma
 
-İlk adım, bir ad alanı oluşturmak ve [paylaşılan erişim imzası (SAS)](../service-bus-messaging/service-bus-sas.md) anahtarı elde etmek için kullanılır. Ad alanı, geçiş hizmeti aracılığıyla kullanıma sunulan her uygulama için bir uygulama sınırı sağlar. Bir hizmet ad alanı oluşturulduğunda sistem tarafından bir SAS anahtarı otomatik olarak oluşturulur. Hizmet ad alanı ve SAS anahtarı birleşimi, bir uygulamaya erişimin kimliğini doğrulamak için Azure kimlik bilgilerini sağlar.
+İlk adım, bir ad alanı oluşturmak ve [paylaşılan erişim imzası (SAS)](../service-bus-messaging/service-bus-sas.md) anahtarı nı elde etmektir. Ad alanı, röle hizmeti aracılığıyla açığa çıkan her uygulama için bir uygulama sınırı sağlar. Bir hizmet ad alanı oluşturulduğunda sistem tarafından otomatik olarak bir SAS anahtarı oluşturulur. Hizmet ad alanı ve SAS anahtarının birleşimi, bir uygulamaya erişimi doğrulamak için Azure'un kimlik bilgilerini sağlar.
 
 [!INCLUDE [relay-create-namespace-portal](../../includes/relay-create-namespace-portal.md)]
 
 ## <a name="define-a-wcf-service-contract"></a>WCF hizmet sözleşmesi tanımlama
 
-Hizmet sözleşmesi, hizmetin desteklediği işlemleri belirtir. İşlemler Web hizmeti yöntemleri veya işlevleridir. Sözleşmeler; C++, C# veya Visual Basic arabirimi tanımlamasıyla oluşturulur. Arabirimdeki her yöntem belirli bir hizmet işlemine karşılık gelir. Her arabirimde [ServiceContractAttribute](/dotnet/api/system.servicemodel.servicecontractattribute) özniteliğinin ve her işlemde de [OperationContractAttribute](/dotnet/api/system.servicemodel.operationcontractattribute) özniteliğinin uygulanmış olması gerekir. [ServiceContractAttribute](/dotnet/api/system.servicemodel.servicecontractattribute) özniteliğine sahip bir arabirimdeki bir yöntemde [OperationContractAttribute](/dotnet/api/system.servicemodel.operationcontractattribute) özniteliği yoksa, bu yöntem gösterilmez. Bu görevlere ilişkin kod, aşağıdaki yordamın altındaki örnekte sağlanır. Sözleşmelerin ve hizmetlerin daha büyük bir tartışması için bkz. [Hizmetleri tasarlama ve uygulama](/dotnet/framework/wcf/designing-and-implementing-services).
+Hizmet sözleşmesi, hizmetin hangi işlemleri desteklediğini belirtir. İşlemler web hizmeti yöntemleri veya işlevleridir. Sözleşmeler; C++, C# veya Visual Basic arabirimi tanımlamasıyla oluşturulur. Arabirimdeki her yöntem belirli bir hizmet işlemine karşılık gelir. Her arabirimde [ServiceContractAttribute](/dotnet/api/system.servicemodel.servicecontractattribute) özniteliğinin ve her işlemde de [OperationContractAttribute](/dotnet/api/system.servicemodel.operationcontractattribute) özniteliğinin uygulanmış olması gerekir. [ServiceContractAttribute](/dotnet/api/system.servicemodel.servicecontractattribute) özniteliği olan bir arabirimdeki bir [yöntem, OperationContractAttribute](/dotnet/api/system.servicemodel.operationcontractattribute) özniteliğine sahip değilse, bu yöntem açıkta değildir. Bu görevlere ilişkin kod, aşağıdaki yordamın altındaki örnekte sağlanır. Sözleşmeler ve hizmetler le ilgili daha geniş bir tartışma için [bkz.](/dotnet/framework/wcf/designing-and-implementing-services)
 
-### <a name="create-a-relay-contract-with-an-interface"></a>Arabirim ile geçiş sözleşmesi oluşturma
+### <a name="create-a-relay-contract-with-an-interface"></a>Arabirimli bir röle sözleşmesi oluşturma
 
-1. Microsoft Visual Studio yönetici olarak başlatın. Bunu yapmak için, Visual Studio program simgesine sağ tıklayın ve **yönetici olarak çalıştır**' ı seçin.
-1. Visual Studio 'da **Yeni proje oluştur**' u seçin.
-1. **Yeni proje oluştur**' da, Için C# konsol uygulaması (.NET Framework) öğesini seçin ve **İleri**' yi seçin.
-1. Projeyi *yankı hizmetini* adlandırın ve **Oluştur**' u seçin.
+1. Microsoft Visual Studio'u yönetici olarak başlatın. Bunu yapmak için Visual Studio program simgesine sağ tıklayın ve **yönetici olarak Çalıştır'ı**seçin.
+1. Visual Studio'da **yeni bir proje oluştur'u**seçin.
+1. **Yeni bir proje oluştur'da**C# için Konsol **Uygulaması'nı (.NET Framework)** seçin ve **İleri'yi**seçin.
+1. Projeye *EchoService* adını ve **Oluştur'u**seçin.
 
    ![Konsol uygulaması oluşturma][2]
 
-1. **Çözüm Gezgini**, projeye sağ tıklayın ve **NuGet Paketlerini Yönet**' i seçin. **NuGet Paket Yöneticisi**' nde, **Araştır**' ı seçin, ardından arama yapın ve **windowsazure. ServiceBus**öğesini seçin. **Yükler**' i seçin ve kullanım koşullarını kabul edin.
+1. **Çözüm Gezgini'nde**projeyi sağ tıklatın ve **NuGet Paketlerini Yönet'i**seçin. **NuGet Paket Yöneticisi'nde** **Gözat'ı**seçin, ardından **WindowsAzure.ServiceBus'u**arayın ve seçin. **Yükle'yi**seçin ve kullanım koşullarını kabul edin.
 
-    ![Service Bus paketi][3]
+    ![Servis Otobüs paketi][3]
 
-   Bu paket, Service Bus kitaplıklarına ve WCF `System.ServiceModel`başvuruları otomatik olarak ekler. [System.ServiceModel](/dotnet/api/system.servicemodel), WCF'nin temel özelliklerine programlamayla erişmenizi sağlayan ad alanıdır. Service Bus, hizmet sözleşmelerini tanımlamak için WCF'nin birçok nesnesini ve özniteliklerini kullanır.
+   Bu paket, Servis Veri Hizmeti kitaplıklarına ve `System.ServiceModel`WCF'ye otomatik olarak referanslar ekler. [System.ServiceModel](/dotnet/api/system.servicemodel), WCF'nin temel özelliklerine programlamayla erişmenizi sağlayan ad alanıdır. Service Bus, hizmet sözleşmelerini tanımlamak için WCF'nin birçok nesnesini ve özniteliklerini kullanır.
 
-1. Aşağıdaki `using` deyimlerini *program.cs*üst kısmına ekleyin:
+1. Program.cs üst `using` kısmında aşağıdaki *Program.cs*ifadeleri ekleyin:
 
     ```csharp
     using System.ServiceModel;
@@ -86,10 +86,10 @@ Hizmet sözleşmesi, hizmetin desteklediği işlemleri belirtir. İşlemler Web 
 1. `EchoService` olan varsayılan ad alanı adını `Microsoft.ServiceBus.Samples` olarak değiştirin.
 
    > [!IMPORTANT]
-   > Bu öğretici, C# [WCF istemcisini yapılandırma](#configure-the-wcf-client) bölümünde yapılandırma dosyasında kullanılan anlaşma tabanlı yönetilen türün ad alanı olan `Microsoft.ServiceBus.Samples` ad alanını kullanır. Bu örneği oluştururken istediğiniz ad alanını belirtebilirsiniz. Ancak, uygulama yapılandırma dosyasında sözleşmenin ve hizmetin ad alanlarını buna uygun olarak değiştirmediğiniz takdirde öğretici çalışmayacaktır. *App. config* dosyasında belirtilen ad alanı C# dosyalarınızda belirtilen ad alanıyla aynı olmalıdır.
+   > Bu öğretici, `Microsoft.ServiceBus.Samples` [WCF istemci sisini Yapılandırma](#configure-the-wcf-client) bölümünde yapılandırma dosyasında kullanılan sözleşme tabanlı yönetilen türün ad alanı olan C# ad alanını kullanır. Bu örneği oluştururken istediğiniz ad alanını belirtebilirsiniz. Ancak, uygulama yapılandırma dosyasında sözleşme ve hizmetin ad alanlarını buna göre değiştirmediğiniz sürece öğretici çalışmaz. *App.config* dosyasında belirtilen ad alanı, C# dosyalarınızda belirtilen ad alanıyla aynı olmalıdır.
    >
 
-1. `Microsoft.ServiceBus.Samples` ad alanı bildiriminden hemen sonra, ancak ad alanı içinde, `IEchoContract` adlı yeni bir arabirim tanımlayın ve `https://samples.microsoft.com/ServiceModel/Relay/`ad alanı değeri olan arabirime `ServiceContractAttribute` özniteliğini uygulayın. Ad alanı bildiriminden sonra aşağıdaki kodu yapıştırın:
+1. Ad alanı `Microsoft.ServiceBus.Samples` bildiriminden hemen sonra, ancak ad alanı `IEchoContract` içinde, `ServiceContractAttribute` adlandırılmış yeni bir arabirim tanımlayın ve öznitelik bir ad alanı değeri ile arabirime özniteliği uygulayın. `https://samples.microsoft.com/ServiceModel/Relay/` Ad alanı bildiriminden sonra aşağıdaki kodu yapıştırın:
 
     ```csharp
     [ServiceContract(Name = "IEchoContract", Namespace = "https://samples.microsoft.com/ServiceModel/Relay/")]
@@ -101,10 +101,10 @@ Hizmet sözleşmesi, hizmetin desteklediği işlemleri belirtir. İşlemler Web 
     Kodunuzun kapsamında kullandığınız ad alanı ile ad alanı değeri farklılık gösterir. Ad alanı değeri bu sözleşme için benzersiz bir tanımlayıcı olarak kullanılır. Ad alanını açıkça belirlemek, varsayılan ad alanı değerinin sözleşme adına eklenmesini engeller.
 
    > [!NOTE]
-   > Genellikle, hizmet sözleşmesi ad alanı sürüm bilgilerini barındıran bir adlandırma şeması içerir. Sürüm bilgilerini hizmet sözleşmesi ad alanına dahil etmek, hizmetlerin yeni bir ad alanı içeren yeni bir hizmet sözleşmesi tanımlayarak ve bu sözleşmeyi yeni bir uç noktada kullanıma sunarak büyük değişiklikleri yalıtmalarına olanak sağlar. Bu şekilde istemciler, eski hizmet sözleşmesini, güncelleştirilmeleri gerekmeden kullanmaya devam edebilir. Sürüm bilgileri, bir tarihten veya bir derleme numarasından oluşabilir. Daha fazla bilgi için bkz. [Hizmet Sürümü Oluşturma](/dotnet/framework/wcf/service-versioning). Bu öğretici için, hizmet sözleşmesi ad alanının adlandırma şeması sürüm bilgisi içermez.
+   > Genellikle, hizmet sözleşmesi ad alanı sürüm bilgilerini barındıran bir adlandırma şeması içerir. Sürüm bilgilerini hizmet sözleşmesi ad alanına dahil etmek, hizmetlerin yeni bir ad alanı içeren yeni bir hizmet sözleşmesi tanımlayarak ve bu sözleşmeyi yeni bir uç noktada kullanıma sunarak büyük değişiklikleri yalıtmalarına olanak sağlar. Bu şekilde, istemciler güncelleştirilmeye gerek kalmadan eski hizmet sözleşmesini kullanmaya devam edebilirler. Sürüm bilgileri, bir tarihten veya bir derleme numarasından oluşabilir. Daha fazla bilgi için bkz. [Hizmet Sürümü Oluşturma](/dotnet/framework/wcf/service-versioning). Bu öğretici için, hizmet sözleşmesi ad alanının adlandırma düzeni sürüm bilgilerini içermez.
    >
 
-1. `IEchoContract` arabirimi içinde, `IEchoContract` sözleşmesinin arabirimde sunduğu tek bir işlem için bir yöntem bildirin ve `OperationContractAttribute` özniteliğini ortak WCF Geçişi sözleşmesinin bir parçası olarak göstermek istediğiniz yönteme aşağıdaki gibi uygulayın:
+1. `IEchoContract` Arabirim içinde, sözleşmenin `IEchoContract` arabirimde ortaya çıkardığı tek bir işlem için bir yöntem bildirin ve özniteliği genel WCF Röle sözleşmesinin bir parçası olarak ortaya çıkarmak istediğiniz yönteme aşağıdaki gibi uygulayın: `OperationContractAttribute`
 
     ```csharp
     [OperationContract]
@@ -117,13 +117,13 @@ Hizmet sözleşmesi, hizmetin desteklediği işlemleri belirtir. İşlemler Web 
     public interface IEchoChannel : IEchoContract, IClientChannel { }
     ```
 
-    Kanal, ana bilgisayar ve istemcinin bilgileri birbirlerine göndermek için kullandıkları WCF nesnesidir. Daha sonra, iki uygulama arasındaki bilgileri yankılanması için kanala karşı kod yazacaksınız.
+    Kanal, ana bilgisayar ve istemcinin bilgileri birbirlerine göndermek için kullandıkları WCF nesnesidir. Daha sonra, iki uygulama arasındaki bilgileri yankılamak için kanala karşı kod yazarsınız.
 
-1. İş için **derleme** > **derleme çözümünü** seçin ya da CTRL + SHIFT + B ' yi seçerek çalışmanızın doğruluğunu onaylayın.
+1. **Yapı Çözümü'nü** > **Build Solution** seçin veya şimdiye kadar çalışmanızın doğruluğunu doğrulamak için Ctrl+Shift+B'yi seçin.
 
-### <a name="example-of-a-wcf-contract"></a>WCF sözleşmesinin örneği
+### <a name="example-of-a-wcf-contract"></a>WCF sözleşmesi örneği
 
-Aşağıdaki kod, WCF Geçişi bir sözleşmeyi tanımlayan temel bir arabirimi gösterir.
+Aşağıdaki kod, WCF Relay sözleşmesini tanımlayan temel bir arabirimi gösterir.
 
 ```csharp
 using System;
@@ -151,9 +151,9 @@ namespace Microsoft.ServiceBus.Samples
 
 Oluşturulması tamamlandığına göre arabirimi uygulayabilirsiniz.
 
-## <a name="implement-the-wcf-contract"></a>WCF sözleşmesini uygulama
+## <a name="implement-the-wcf-contract"></a>WCF sözleşmesini uygulayın
 
-Azure geçişi oluşturmak için öncelikle bir arabirim kullanarak sözleşmeyi oluşturmanız gerekir. Arabirimi oluşturma hakkında daha fazla bilgi için önceki bölüme bakın. Sonraki yordam, arabirimini uygular. Bu görev, Kullanıcı tanımlı `IEchoContract` arabirimini uygulayan `EchoService` adlı bir sınıf oluşturmayı içerir. Arabirimi uyguladıktan sonra, bir *app. config* yapılandırma dosyası kullanarak arabirimi yapılandırırsınız. Yapılandırma dosyası, uygulama için gereken bilgileri içerir. Bu bilgilere hizmetin adı, sözleşmenin adı ve geçiş hizmeti ile iletişim kurmak için kullanılan protokol türü dahildir. Bu görevler için kullanılan kod, yordamı izleyen örnekte verilmiştir. Hizmet sözleşmesinin nasıl uygulanacağı hakkında daha genel bir tartışma için bkz. [hizmet sözleşmelerini uygulama](/dotnet/framework/wcf/implementing-service-contracts).
+Azure rölesi oluşturmak, önce bir arabirim kullanarak sözleşmeyi oluşturmanızı gerektirir. Arabirimi oluşturma hakkında daha fazla bilgi için önceki bölüme bakın. Sonraki yordam arabirimi uygular. Bu görev, kullanıcı `EchoService` tanımlı `IEchoContract` arabirimi uygulayan adlandırılmış bir sınıf oluşturmayı içerir. Arabirimi uyguladıktan sonra, bir *App.config* yapılandırma dosyası kullanarak arabirimi yapılandırırsınız. Yapılandırma dosyası uygulama için gerekli bilgileri içerir. Bu bilgiler, hizmetin adını, sözleşmenin adını ve geçiş hizmetiyle iletişim kurmak için kullanılan iletişim kuralı türünü içerir. Bu görevler için kullanılan kod yordamı izleyen örnekte sağlanır. Hizmet sözleşmesinin nasıl uygulanacağı hakkında daha genel bir tartışma için [bkz.](/dotnet/framework/wcf/implementing-service-contracts)
 
 1. `IEchoContract` arabiriminin tanımından hemen sonra `EchoService` adlı yeni bir sınıf oluşturun. `EchoService` sınıfı, `IEchoContract` arabirimini uygular.
 
@@ -184,15 +184,15 @@ Azure geçişi oluşturmak için öncelikle bir arabirim kullanarak sözleşmeyi
     }
     ```
 
-1. **Yapı** > **derleme çözümünü** seçin ya da CTRL + SHIFT + B ' yi seçin.
+1. **Yapı** > **Çözümü'nü** seçin veya Ctrl+Shift+B'yi seçin.
 
-### <a name="define-the-configuration-for-the-service-host"></a>Hizmet ana bilgisayarı için yapılandırmayı tanımlayın
+### <a name="define-the-configuration-for-the-service-host"></a>Servis ana bilgisayarı için yapılandırmayı tanımlama
 
-Yapılandırma dosyası bir WCF yapılandırma dosyasına benzer. Hizmet adını, uç noktasını ve bağlamayı içerir. Uç nokta Azure Relay, istemcilerin ve ana bilgisayarların birbirleriyle iletişim kurması için kullanıma sunduğu konumdur. Bağlama, iletişim kurmak için kullanılan protokolün türüdür. Temel fark, bu yapılandırılmış hizmet uç noktasının, .NET Framework parçası olmayan bir [Nettcprelaybinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding) bağlamasına başvurduğu bir noktadır. [Nettcprelaybinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding) , hizmet tarafından tanımlanan bağlamalardan biridir.
+Yapılandırma dosyası WCF yapılandırma dosyasına benzer. Hizmet adını, bitiş noktasını ve bağlamayı içerir. Son nokta, Azure Röle'nin istemcilerin ve ana bilgisayarların birbirleriyle iletişim kurmaları için ortaya çıkardığı konumdur. Bağlama iletişim kurmak için kullanılan iletişim kuralı türüdür. Temel fark, bu yapılandırılmış hizmet bitiş noktasının .NET Framework'ün bir parçası olmayan [bir NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding) bağlamasına atıfta bulunulmasıdır. [NetTcpRelayBinding,](/dotnet/api/microsoft.servicebus.nettcprelaybinding) hizmet tarafından tanımlanan bağlamalardan biridir.
 
-1. **Çözüm Gezgini**' de, **app. config** dosyasına çift tıklayarak dosyayı Visual Studio düzenleyicisinde açın.
+1. **Solution**Explorer'da, Visual Studio düzenleyicisinde dosyayı açmak için **App.config'e** çift tıklayın.
 1. `<appSettings>` öğesinde, yer tutucuları hizmet ad alanınızdaki adla ve önceki adımların birinde kopyaladığınız SAS anahtarı ile değiştirin.
-1. `<system.serviceModel>` etiketleri içinde, bir `<services>` öğesi ekleyin. Tek bir yapılandırma dosyasında birden çok geçiş uygulaması tanımlayabilirsiniz. Ancak bu öğreticide yalnızca bir adet tanımlanır.
+1. `<system.serviceModel>` etiketleri içinde, bir `<services>` öğesi ekleyin. Tek bir yapılandırma dosyasında birden çok röle uygulaması tanımlayabilirsiniz. Ancak bu öğreticide yalnızca bir adet tanımlanır.
 
     ```xml
     <?xmlversion="1.0"encoding="utf-8"?>
@@ -218,11 +218,11 @@ Yapılandırma dosyası bir WCF yapılandırma dosyasına benzer. Hizmet adını
     <endpoint contract="Microsoft.ServiceBus.Samples.IEchoContract" binding="netTcpRelayBinding"/>
     ```
 
-    Uç nokta, istemcinin ana bilgisayar uygulamasını nerede arayacağını tanımlar. Bu öğretici daha sonra, Azure Relay aracılığıyla konağı tam olarak sunan bir URI oluşturmak için bu adımı kullanır. Bağlama, geçiş hizmeti ile iletişim kurmak için protokol olarak TCP kullandığımızda bildirir.
+    Uç nokta, istemcinin ana bilgisayar uygulamasını nerede arayacağını tanımlar. Daha sonra, öğretici, Azure Röle aracılığıyla ana bilgisayarı tam olarak ortaya çıkaran bir URI oluşturmak için bu adımı kullanır. Bağlama, röle hizmetiyle iletişim kurmak için protokol olarak TCP'yi kullandığımızı bildirir.
 
-1. İş için **derleme** > **derleme çözümünü** seçin ya da CTRL + SHIFT + B ' yi seçerek çalışmanızın doğruluğunu onaylayın.
+1. **Yapı Çözümü'nü** > **Build Solution** seçin veya şimdiye kadar çalışmanızın doğruluğunu doğrulamak için Ctrl+Shift+B'yi seçin.
 
-### <a name="example-of-implementation-of-a-service-contract"></a>Hizmet sözleşmesinin uygulanmasına örnek
+### <a name="example-of-implementation-of-a-service-contract"></a>Hizmet sözleşmesinin uygulanması örneği
 
 Aşağıdaki kod, hizmet sözleşmesinin uygulamasını gösterir.
 
@@ -239,7 +239,7 @@ Aşağıdaki kod, hizmet sözleşmesinin uygulamasını gösterir.
     }
 ```
 
-Aşağıdaki kod, hizmet ana bilgisayarıyla ilişkili *app. config* dosyasının temel biçimini gösterir.
+Aşağıdaki kod, hizmet ana bilgisayarıyla ilişkili *App.config* dosyasının temel biçimini gösterir.
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -260,11 +260,11 @@ Aşağıdaki kod, hizmet ana bilgisayarıyla ilişkili *app. config* dosyasını
 </configuration>
 ```
 
-## <a name="host-and-run-the-wcf-service-to-register-with-the-relay-service"></a>Geçiş hizmetine kaydolmak için WCF hizmetini barındırma ve çalıştırma
+## <a name="host-and-run-the-wcf-service-to-register-with-the-relay-service"></a>Röle hizmetine kaydolmak için WCF hizmetini barındırın ve çalıştırın
 
-Bu adım Azure Relay bir hizmetin nasıl çalıştırılacağını açıklar.
+Bu adım, bir Azure Röle hizmetinin nasıl çalıştırılabildiğini açıklar.
 
-### <a name="create-the-relay-credentials"></a>Geçiş kimlik bilgilerini oluşturma
+### <a name="create-the-relay-credentials"></a>Röle kimlik bilgilerini oluşturma
 
 1. `Main()` içinde, konsol penceresinden okunan ad alanını ve SAS anahtarını depolayabileceğiniz iki değişken oluşturun.
 
@@ -275,36 +275,36 @@ Bu adım Azure Relay bir hizmetin nasıl çalıştırılacağını açıklar.
     string sasKey = Console.ReadLine();
     ```
 
-    Daha sonra projenize erişmek için SAS anahtarı kullanılacaktır. Ad alanı, Hizmet URI'si oluşturmak için `CreateServiceUri` öğesine bir parametre olarak geçirilir.
+    SAS anahtarı daha sonra projenize erişmek için kullanılacaktır. Ad alanı, Hizmet URI'si oluşturmak için `CreateServiceUri` öğesine bir parametre olarak geçirilir.
 
-1. Bir [Transportclientendpointbehavior](/dotnet/api/microsoft.servicebus.transportclientendpointbehavior) nesnesi kullanarak, kimlik bilgisi türü olarak bir SAS anahtarı kullandığınızı bildirin. Aşağıdaki kodu son adımda eklenen koddan hemen sonra ekleyin.
+1. [TransportClientEndpointBehavior](/dotnet/api/microsoft.servicebus.transportclientendpointbehavior) nesnesini kullanarak, kimlik bilgisi türü olarak bir SAS anahtarı kullanacağınızı bildirin. Aşağıdaki kodu son adımda eklenen koddan hemen sonra ekleyin.
 
     ```csharp
     TransportClientEndpointBehavior sasCredential = new TransportClientEndpointBehavior();
     sasCredential.TokenProvider = TokenProvider.CreateSharedAccessSignatureTokenProvider("RootManageSharedAccessKey", sasKey);
     ```
 
-### <a name="create-a-base-address-for-the-service"></a>Hizmet için bir temel adres oluşturun
+### <a name="create-a-base-address-for-the-service"></a>Hizmet için temel adres oluşturma
 
-Önceki bölümde eklediğiniz koddan sonra, hizmetin temel adresi için bir `Uri` örneği oluşturun. Bu URI; Service Bus şemasını, ad alanını ve hizmet arabiriminin yolunu belirtir.
+Önceki bölüme eklediğiniz koddan sonra, hizmetin temel adresi için bir `Uri` örnek oluşturun. Bu URI; Service Bus şemasını, ad alanını ve hizmet arabiriminin yolunu belirtir.
 
 ```csharp
 Uri address = ServiceBusEnvironment.CreateServiceUri("sb", serviceNamespace, "EchoService");
 ```
 
-"SB" değeri Service Bus şeması için bir kısaltmadır. Protokol olarak TCP kullandığınızı gösterir. Bu düzen Ayrıca yapılandırma dosyasında, bağlama olarak [Nettcprelaybinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding) belirtildiğinde daha önce belirtilmiştir.
+"sb" değeri, Servis Veri Mes'ü şemasının kısaltmasıdır. Protokol olarak TCP'yi kullandığımızı gösterir. Bu şema, [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding) bağlama olarak belirtildiğinde yapılandırma dosyasında da daha önce belirtilmiştir.
 
 Bu öğretici için URI şudur: `sb://putServiceNamespaceHere.windows.net/EchoService`
 
-### <a name="create-and-configure-the-service-host"></a>Hizmet konağını oluşturma ve yapılandırma
+### <a name="create-and-configure-the-service-host"></a>Hizmet ana bilgisayarını oluşturma ve yapılandırma
 
-1. Hala `Main()`çalışıyor, bağlantı modunu `AutoDetect`olarak ayarlayın.
+1. Hala `Main()`çalışıyor, bağlantı modunu `AutoDetect`.
 
     ```csharp
     ServiceBusEnvironment.SystemConnectivity.Mode = ConnectivityMode.AutoDetect;
     ```
 
-    Bağlantı modu, hizmetin geçiş hizmeti ile iletişim kurmak için kullandığı protokolü açıklar; HTTP veya TCP. `AutoDetect`varsayılan ayarı kullanarak, hizmet varsa TCP üzerinden Azure Relay bağlanmaya çalışır ve TCP kullanılabilir değilse HTTP. Bu sonuç, hizmetin istemci iletişimi için belirttiği protokolden farklıdır. Bu protokol, kullanılan bağlamaya göre belirlenir. Örneğin, bir hizmet, uç noktasının HTTP üzerinden istemcilerle iletişim kuracağını belirten [Basichttprelaybinding](/dotnet/api/microsoft.servicebus.basichttprelaybinding) bağlamasını kullanabilir. Aynı hizmet, hizmetin TCP üzerinden Azure Relay iletişim kurduğu şekilde `ConnectivityMode.AutoDetect` belirtebilir.
+    Bağlantı modu, hizmetin röle hizmetiyle iletişim kurmak için kullandığı protokolü açıklar; http veya TCP. Varsayılan ayarı `AutoDetect`kullanarak, hizmet kullanılabilirse TCP üzerinden Azure Relay'e ve TCP kullanılamıyorsa HTTP'ye bağlanmaya çalışır. Bu sonuç, hizmetin istemci iletişimi için belirlediği protokolden farklıdır. Bu protokol, kullanılan bağlamaya göre belirlenir. Örneğin, bir hizmet, bitiş noktasının HTTP üzerinden istemcilerle iletişim kurduğunu belirten [Temel Eki Bağlama](/dotnet/api/microsoft.servicebus.basichttprelaybinding) bağlamayı kullanabilir. Aynı hizmet, `ConnectivityMode.AutoDetect` hizmetin TCP üzerinden Azure Relay ile iletişim kurabilmesi için belirtilebilir.
 
 1. Bu bölümün önceki kısımlarında oluşturduğunuz URI'yi kullanarak hizmet ana bilgisayarını oluşturun.
 
@@ -312,9 +312,9 @@ Bu öğretici için URI şudur: `sb://putServiceNamespaceHere.windows.net/EchoSe
     ServiceHost host = new ServiceHost(typeof(EchoService), address);
     ```
 
-    Hizmet ana bilgisayarı, hizmetin örneğini oluşturan WCF nesnesidir. Burada, oluşturmak istediğiniz hizmet türü, `EchoService` türü ve ayrıca hizmeti kullanıma sunmak istediğiniz adrese geçitirsiniz.
+    Hizmet ana bilgisayarı, hizmetin örneğini oluşturan WCF nesnesidir. Burada, oluşturmak istediğiniz hizmet türünü, bir `EchoService` türünü ve ayrıca hizmeti ortaya çıkarmak istediğiniz adrese geçirirsiniz.
 
-1. *Program.cs* dosyasının en üstünde, [System. ServiceModel. Description](/dotnet/api/system.servicemodel.description) ve [Microsoft. ServiceBus. Description](/dotnet/api/microsoft.servicebus.description)'a başvurular ekleyin.
+1. *Program.cs* dosyanın üst kısmında, [System.ServiceModel.Description](/dotnet/api/system.servicemodel.description) ve [Microsoft.ServiceBus.Description referansları](/dotnet/api/microsoft.servicebus.description)ekleyin.
 
     ```csharp
     using System.ServiceModel.Description;
@@ -327,9 +327,9 @@ Bu öğretici için URI şudur: `sb://putServiceNamespaceHere.windows.net/EchoSe
     IEndpointBehavior serviceRegistrySettings = new ServiceRegistrySettings(DiscoveryType.Public);
     ```
 
-    Bu adım geçiş hizmetine, projenizin atom akışını inceleyerek uygulamanızın herkese açık bir şekilde bulunamadığını bildirir. `DiscoveryType` `private`olarak ayarlarsanız, istemci hizmete erişmeye devam edebilir. Ancak, hizmet `Relay` ad alanını ararken görünmez. Bunun yerine, istemcinin uç nokta yolunu önceden bilmesi gerekir.
+    Bu adım, projeniziçin Atom beslemesini inceleyerek uygulamanızın herkese açık olarak bulunabileceğini röle hizmetine bildirir. `private`Ayarlarsanız, `DiscoveryType` bir istemci hizmete erişmeye devam edebilir. Ancak, `Relay` ad alanı arandığında hizmet görünmez. Bunun yerine, istemcinin uç nokta yolunu önceden bilmesi gerekir.
 
-1. Service kimlik bilgilerini *app. config* dosyasında tanımlanan hizmet uç noktalarına uygulayın:
+1. Hizmet kimlik bilgilerini *App.config* dosyasında tanımlanan hizmet bitiş noktalarına uygulayın:
 
     ```csharp
     foreach (ServiceEndpoint endpoint in host.Description.Endpoints)
@@ -339,11 +339,11 @@ Bu öğretici için URI şudur: `sb://putServiceNamespaceHere.windows.net/EchoSe
     }
     ```
 
-    Daha önce belirtildiği gibi, yapılandırma dosyasında birden çok hizmet ve uç nokta bildirdiniz. Birden çok hizmet ve uç nokta bildirirseniz bu kod yapılandırma dosyasına çapraz geçiş yapar ve kimlik bilgilerinin uygulanacağı tüm uç noktalara yönelik arama yapar. Bu öğretici için yapılandırma dosyasında yalnızca bir uç nokta bulunur.
+    Daha önce belirtildiği gibi, yapılandırma dosyasında birden çok hizmet ve uç nokta bildirmiş olabilirsiniz. Birden çok hizmet ve uç nokta bildirirseniz bu kod yapılandırma dosyasına çapraz geçiş yapar ve kimlik bilgilerinin uygulanacağı tüm uç noktalara yönelik arama yapar. Bu öğretici için yapılandırma dosyasının yalnızca bir bitiş noktası vardır.
 
-### <a name="open-the-service-host"></a>Hizmet konağını açın
+### <a name="open-the-service-host"></a>Servis ana bilgisayarını açma
 
-1. Hala `Main()`, hizmeti açmak için aşağıdaki satırı ekleyin.
+1. Hala, `Main()`hizmeti açmak için aşağıdaki satırı ekleyin.
 
     ```csharp
     host.Open();
@@ -363,11 +363,11 @@ Bu öğretici için URI şudur: `sb://putServiceNamespaceHere.windows.net/EchoSe
     host.Close();
     ```
 
-1. Projeyi derlemek için CTRL + SHIFT + B ' yi seçin.
+1. Projeyi oluşturmak için Ctrl+Shift+B'yi seçin.
 
 ### <a name="example-that-hosts-a-service-in-a-console-application"></a>Konsol uygulamasında bir hizmeti barındıran örnek
 
-Tamamlanmış hizmet kodunuz aşağıdaki gibi görünmelidir. Kod, öğreticideki önceki adımlardan hizmet sözleşmesini ve uygulamayı içerir ve hizmeti bir konsol uygulamasında barındırır.
+Tamamlanmış hizmet kodunuz aşağıdaki gibi görünmelidir. Kod, öğreticideki önceki adımlardaki hizmet sözleşmesini ve uygulamasını içerir ve hizmeti bir konsol uygulamasında barındırar.
 
 ```csharp
 using System;
@@ -445,30 +445,30 @@ namespace Microsoft.ServiceBus.Samples
 
 ## <a name="create-a-wcf-client-for-the-service-contract"></a>Hizmet sözleşmesi için bir WCF istemcisi oluşturma
 
-Sonraki görev, bir istemci uygulaması oluşturmak ve daha sonra uygulamanız gereken hizmet sözleşmesini tanımlamaktır. Bu adımlar, bir hizmet oluşturmak için kullanılan adımlara benzer: bir sözleşme tanımlama, bir *app. config* dosyasını düzenleme, geçiş hizmetine bağlanmak için kimlik bilgilerini kullanma ve bu şekilde devam eder. Bu görevler için kullanılan kod, aşağıdaki yordamın altındaki örnekte sağlanır.
+Bir sonraki görev, bir istemci uygulaması oluşturmak ve daha sonra uygulayacağınız hizmet sözleşmesini tanımlamaktır. Bu adımlar, bir hizmet oluşturmak için kullanılan adımlara benzer: bir sözleşme tanımlama, bir *App.config* dosyasını düzenleme, geçiş hizmetine bağlanmak için kimlik bilgilerini kullanma ve benzeri. Bu görevler için kullanılan kod, aşağıdaki yordamın altındaki örnekte sağlanır.
 
 1. İstemci için geçerli Visual Studio çözümünde yeni bir proje oluşturun:
 
-   1. **Çözüm Gezgini**, geçerli çözüme (proje değil) sağ tıklayın ve > **Yeni proje** **Ekle** ' yi seçin.
-   1. **Yeni Proje Ekle**' de, Için C#konsol uygulaması (.NET Framework) öğesini seçin ve **İleri**' yi seçin.
-   1. Projeyi *yankı istemcisini* adlandırın ve **Oluştur**' u seçin.
+   1. **Çözüm Gezgini'nde,** geçerli çözüme (proje değil) sağ tıklayın ve**Yeni Proje** **Ekle'yi** > seçin.
+   1. **Yeni bir proje ekle'de**C#için Konsol **Uygulaması'nı (.NET Framework)** seçin ve **İleri'yi**seçin.
+   1. Proje *EchoClient'ı* adlandırın ve **Oluştur'u**seçin.
 
-1. **Çözüm Gezgini**, **yankı istemci** projesinde, zaten açık değilse dosyayı düzenleyicide açmak için **program.cs** öğesine çift tıklayın.
+1. **Solution Explorer'da,** **EchoClient** projesinde, dosyayı zaten açık değilse, düzenleyicide açmak için **Program.cs** çift tıklatın.
 1. `EchoClient` olan varsayılan ad alanı adını `Microsoft.ServiceBus.Samples` olarak değiştirin.
-1. [Service Bus NuGet paketini](https://www.nuget.org/packages/WindowsAzure.ServiceBus)yükler:
+1. Servis [Veri Servisi NuGet paketini](https://www.nuget.org/packages/WindowsAzure.ServiceBus)yükleyin:
 
-   1. **Çözüm Gezgini**, **yankı istemcisi** ' ne sağ tıklayın ve ardından **NuGet Paketlerini Yönet**' i seçin.
-   1. **Araştır**' ı seçin, ardından **windowsazure. ServiceBus**öğesini arayıp seçin. **Yükler**' i seçin ve kullanım koşullarını kabul edin.
+   1. **Solution**Explorer'da, **EchoClient'a** sağ tıklayın ve ardından **NuGet Paketlerini Yönet'i**seçin.
+   1. **Browse'ı**seçin, ardından **WindowsAzure.ServiceBus'u**arayın ve seçin. **Yükle'yi**seçin ve kullanım koşullarını kabul edin.
 
-      ![Service Bus paketini yükler][4]
+      ![Servis veri servisi paketini yükleme][4]
 
-1. *Program.cs* dosyasına [System. ServiceModel](/dotnet/api/system.servicemodel) ad alanı için `using` bir ifade ekleyin.
+1. Program.cs `using` dosyasındaki [System.ServiceModel](/dotnet/api/system.servicemodel) ad alanı *Program.cs* için bir deyim ekleyin.
 
     ```csharp
     using System.ServiceModel;
     ```
 
-1. Hizmet sözleşmesi tanımını ad alanına aşağıdaki örnekte gösterilen şekilde ekleyin. Bu tanım, **hizmet** projesinde kullanılan tanımla aynıdır. Bu kodu `Microsoft.ServiceBus.Samples` ad alanının üst kısmına ekleyin.
+1. Hizmet sözleşmesi tanımını ad alanına aşağıdaki örnekte gösterilen şekilde ekleyin. Bu tanım, **Hizmet** projesinde kullanılan tanımla aynıdır. Bu kodu `Microsoft.ServiceBus.Samples` ad alanının en üstüne ekleyin.
 
     ```csharp
     [ServiceContract(Name = "IEchoContract", Namespace = "https://samples.microsoft.com/ServiceModel/Relay/")]
@@ -481,11 +481,11 @@ Sonraki görev, bir istemci uygulaması oluşturmak ve daha sonra uygulamanız g
     public interface IEchoChannel : IEchoContract, IClientChannel { }
     ```
 
-1. İstemcisini derlemek için CTRL + SHIFT + B ' yi seçin.
+1. İstemciyi oluşturmak için Ctrl+Shift+B'yi seçin.
 
-### <a name="example-of-the-echoclient-project"></a>Yankı Istemci projesi örneği
+### <a name="example-of-the-echoclient-project"></a>EchoClient projesi örneği
 
-Aşağıdaki kod, **yankı istemci** projesindeki *program.cs* dosyasının geçerli durumunu gösterir.
+Aşağıdaki kod, **EchoClient** projesindeki *Program.cs* dosyasının geçerli durumunu gösterir.
 
 ```csharp
 using System;
@@ -516,11 +516,11 @@ namespace Microsoft.ServiceBus.Samples
 
 ## <a name="configure-the-wcf-client"></a>WCF istemcisini yapılandırma
 
-Bu adımda, daha önce Bu öğreticide oluşturulan Hizmete erişen temel bir istemci uygulaması için bir *app. config* dosyası oluşturacaksınız. Bu *app. config* dosyası, bitiş noktasının sözleşmesini, bağlamasını ve adını tanımlar. Bu görevler için kullanılan kod, aşağıdaki yordamın altındaki örnekte sağlanır.
+Bu adımda, bu öğreticide daha önce oluşturulan hizmete erişen temel bir istemci uygulaması için bir *App.config* dosyası oluşturursunuz. Bu *App.config* dosyası sözleşmeyi, bağlamayı ve bitiş noktasının adını tanımlar. Bu görevler için kullanılan kod, aşağıdaki yordamın altındaki örnekte sağlanır.
 
-1. **Çözüm Gezgini**, **yankı istemci** projesinde **app. config** dosyasına çift tıklayarak dosyayı Visual Studio düzenleyicisinde açın.
+1. **Solution**Explorer'da, **EchoClient** projesinde, Visual Studio düzenleyicisinde dosyayı açmak için **App.config'e** çift tıklayın.
 1. `<appSettings>` öğesinde, yer tutucuları hizmet ad alanınızdaki adla ve önceki adımların birinde kopyaladığınız SAS anahtarı ile değiştirin.
-1. `system.serviceModel` öğesi içinde, bir `<client>` öğesi ekleyin.
+1. Öğe `system.serviceModel` içinde, bir `<client>` öğe ekleyin.
 
     ```xml
     <?xmlversion="1.0"encoding="utf-8"?>
@@ -532,7 +532,7 @@ Bu adımda, daha önce Bu öğreticide oluşturulan Hizmete erişen temel bir is
     </configuration>
     ```
 
-    Bu kod, bir WCF stili istemci uygulaması tanımlamanız gerektiğini bildirir.
+    Bu kod, WCF tarzı bir istemci uygulaması tanımladığınızı bildirir.
 
 1. `client` öğesi içinde adı, sözleşmeyi ve uç noktaya yönelik bağlama türünü tanımlayın.
 
@@ -542,13 +542,13 @@ Bu adımda, daha önce Bu öğreticide oluşturulan Hizmete erişen temel bir is
                     binding="netTcpRelayBinding"/>
     ```
 
-    Bu kod, uç noktanın adını tanımlar. Ayrıca, hizmette tanımlanan sözleşmeyi ve istemci uygulamanın Azure Relay ile iletişim kurmak için TCP kullanmasını da tanımlar. Uç nokta adı, bir sonraki adımda bu uç nokta yapılandırmasını hizmet URI'si ile bağlamak için kullanılır.
+    Bu kod bitiş noktasının adını tanımlar. Ayrıca, hizmette tanımlanan sözleşmeyi ve istemci uygulamasının Azure Relay ile iletişim kurmak için TCP'yi kullanması gerçeğini de tanımlar. Uç nokta adı, bir sonraki adımda bu uç nokta yapılandırmasını hizmet URI'si ile bağlamak için kullanılır.
 
-1. **Tümünü kaydet** > **Dosya** ' yı seçin.
+1. **Dosya** > **Yı Kaydet'i**seçin.
 
-### <a name="example-of-the-appconfig-file"></a>App. config dosyası örneği
+### <a name="example-of-the-appconfig-file"></a>App.config dosyası örneği
 
-Aşağıdaki kod, Echo istemcisi için *app. config* dosyasını gösterir.
+Aşağıdaki kod, Echo istemcisi için *App.config* dosyasını gösterir.
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -571,7 +571,7 @@ Aşağıdaki kod, Echo istemcisi için *app. config* dosyasını gösterir.
 
 ## <a name="implement-the-wcf-client"></a>WCF istemcisini uygulama
 
-Bu bölümde, daha önce Bu öğreticide oluşturduğunuz Hizmete erişen temel bir istemci uygulaması uygulayacağınızı unutmayın. Hizmetle benzer şekilde, istemci, Azure Relay erişmek için aynı işlemlerin çoğunu da yapar:
+Bu bölümde, bu öğreticide daha önce oluşturduğunuz hizmete erişen temel bir istemci uygulaması uygularsınız. Hizmete benzer şekilde, istemci azure relay'e erişmek için aynı işlemlerin çoğunu yapar:
 
 * Bağlantı modunu ayarlar.
 * Ana bilgisayar hizmetinin yer aldığı URI'yi oluşturur.
@@ -581,9 +581,9 @@ Bu bölümde, daha önce Bu öğreticide oluşturduğunuz Hizmete erişen temel 
 * Uygulamaya özgü görevleri gerçekleştirir.
 * Bağlantıyı kapatır.
 
-Ancak, temel farklardan biri, istemci uygulamanın geçiş hizmetine bağlanmak için bir kanal kullanmalarından biridir. Hizmet bir **ServiceHost**çağrısı kullanır. Bu görevler için kullanılan kod, aşağıdaki yordamın altındaki örnekte sağlanır.
+Ancak, temel farklardan biri istemci uygulaması geçiş hizmetine bağlanmak için bir kanal kullanıyor olmasıdır. Hizmet **ServiceHost**için bir çağrı kullanır. Bu görevler için kullanılan kod, aşağıdaki yordamın altındaki örnekte sağlanır.
 
-### <a name="implement-a-client-application"></a>Bir istemci uygulaması uygulama
+### <a name="implement-a-client-application"></a>İstemci uygulaması uygulama
 
 1. Bağlantı modunu `AutoDetect` olarak ayarlayın. Aşağıdaki kodu **EchoClient** uygulamasının `Main()` yöntemine ekleyin.
 
@@ -600,7 +600,7 @@ Ancak, temel farklardan biri, istemci uygulamanın geçiş hizmetine bağlanmak 
     string sasKey = Console.ReadLine();
     ```
 
-1. Geçiş projenizde konağın konumunu tanımlayan URI 'yi oluşturun.
+1. Röle projenizdeki ana bilgisayarın konumunu tanımlayan URI'yi oluşturun.
 
     ```csharp
     Uri serviceUri = ServiceBusEnvironment.CreateServiceUri("sb", serviceNamespace, "EchoService");
@@ -613,7 +613,7 @@ Ancak, temel farklardan biri, istemci uygulamanın geçiş hizmetine bağlanmak 
     sasCredential.TokenProvider = TokenProvider.CreateSharedAccessSignatureTokenProvider("RootManageSharedAccessKey", sasKey);
     ```
 
-1. *App. config* dosyasında açıklanan yapılandırmayı yükleyen kanal fabrikasını oluşturun.
+1. *App.config* dosyasında açıklanan yapılandırmayı yükleyen kanal fabrikasını oluşturun.
 
     ```csharp
     ChannelFactory<IEchoChannel> channelFactory = new ChannelFactory<IEchoChannel>("RelayEndpoint", new EndpointAddress(serviceUri));
@@ -653,7 +653,7 @@ Ancak, temel farklardan biri, istemci uygulamanın geçiş hizmetine bağlanmak 
     }
     ```
 
-    Kod, kanal nesnesinin örneğini hizmet için bir proxy olarak kullanır.
+    Kod, hizmet için proxy olarak kanal nesnesi örneğini kullanır.
 
 1. Kanalı ve fabrikayı kapatın.
 
@@ -664,7 +664,7 @@ Ancak, temel farklardan biri, istemci uygulamanın geçiş hizmetine bağlanmak 
 
 ### <a name="example-code-for-this-tutorial"></a>Bu öğretici için örnek kod
 
-Tamamlanan kodunuz aşağıdaki gibi görünmelidir. Bu kod, bir istemci uygulamasının nasıl oluşturulduğunu, hizmet işlemlerinin nasıl çağrılacağını ve işlem çağrısının tamamlanmasının ardından istemcinin nasıl kapatılmasını gösterir.
+Tamamlanmış kodunuz aşağıdaki gibi görünmelidir. Bu kod, istemci uygulamasının nasıl oluşturulacağını, hizmetin yönetmeliklerini nasıl arayacağını ve işaraması tamamlaştıktan sonra istemcinin nasıl kapatılacağını gözden görüşüyor.
 
 ```csharp
 using System;
@@ -733,23 +733,23 @@ namespace Microsoft.ServiceBus.Samples
 
 ## <a name="run-the-applications"></a>Uygulamaları çalıştırma
 
-1. Çözümü derlemek için CTRL + SHIFT + B ' yi seçin. Bu eylem, önceki adımlarda oluşturduğunuz istemci projesini ve hizmet projesini oluşturur.
-1. İstemci uygulamasını çalıştırmadan önce hizmet uygulamasının çalıştığından emin olmanız gerekir. **Çözüm Gezgini**, **yankı hizmeti** çözümüne sağ tıklayın ve ardından **Özellikler**' i seçin.
-1. **Özellik sayfaları**' nda **, ortak özellikler** > **Başlangıç projesi**' nde, sonra **birden çok başlangıç**projesi seçin. **EchoService** çözümünün liste başında olduğundan emin olun.
+1. Çözümü oluşturmak için Ctrl+Shift+B'yi seçin. Bu eylem, hem istemci projeyi hem de önceki adımlarda oluşturduğunuz hizmet projesini oluşturur.
+1. İstemci uygulamasını çalıştırmadan önce hizmet uygulamasının çalıştığından emin olmanız gerekir. **Solution**Explorer'da, **EchoService** çözümüne sağ tıklayın ve **ardından Özellikler'i**seçin.
+1. **Özellik Sayfalarında**, Ortak **Özellikler** > **Başlangıç Projesi'nde,** ardından Birden Çok başlangıç **projesi**seçin. **EchoService** çözümünün liste başında olduğundan emin olun.
 1. **EchoService** ve **EchoClient** projeleri için **Eylem** kutusunu **Başlat** olarak ayarlayın.
 
-    ![Proje özellik sayfaları][5]
+    ![Proje özelliği sayfaları][5]
 
-1. **Proje bağımlılıklarını**seçin. **Projeler**' de, **yankı istemcisi**' ni seçin. **Öğesine bağlı**olarak, **yankı hizmeti** 'nin seçili olduğundan emin olun.
+1. **Proje Bağımlılıkları'nı**seçin. **Projelerde,** **EchoClient'ı**seçin. **Depends için,** **EchoService'in** seçildiğinden emin olun.
 
     ![Proje bağımlılıkları][6]
 
-1. **Özellik sayfalarını**kapatmak için **Tamam ' ı** seçin.
-1. Her iki projeyi de çalıştırmak için F5 ' i seçin.
-1. Her iki konsol penceresi de açılır ve sizden ad alanı adı ister. Önce hizmetin çalışması gerekir, bu nedenle **yankı hizmeti** konsol penceresinde ad alanını girin ve ardından ENTER ' u seçin.
-1. Ardından, konsolu SAS anahtarınızı ister. SAS anahtarını girin ve ENTER ' u seçin.
+1. **Özellik Sayfalarını**kapatmak için **Tamam'ı** seçin.
+1. Her iki projeyi çalıştırmak için F5'i seçin.
+1. Her iki konsol penceresi de açılır ve sizden ad alanı adı ister. Hizmetin önce çalışması gerekir, bu nedenle **EchoService** konsol penceresinde ad alanını girin ve sonra Enter'u seçin.
+1. Ardından, konsol sas anahtarınızı ister. SAS tuşuna girin ve Enter'u seçin.
 
-    Konsol penceresinden örnek çıktı sunulur. Buradaki değerler yalnızca örnektir.
+    Konsol penceresinden örnek çıktı sunulur. Buradaki değerler sadece örneklerdir.
 
     `Your Service Namespace: myNamespace`
 
@@ -761,27 +761,27 @@ namespace Microsoft.ServiceBus.Samples
 
     `Press [Enter] to exit`
 
-1. **EchoClient** konsol penceresinde, az önce hizmet uygulaması için girdiğiniz bilgileri girin. İstemci uygulaması için aynı hizmet ad alanını ve SAS anahtarı değerlerini girin.
+1. **EchoClient** konsol penceresinde, az önce hizmet uygulaması için girdiğiniz bilgileri girin. İstemci uygulaması için aynı hizmet ad alanını ve SAS anahtar değerlerini girin.
 1. Bu değerleri girdikten sonra istemci hizmete yönelik bir kanal açar ve aşağıdaki konsol çıktısı örneğinde görüldüğü şekilde bazı metinler girmenizi ister.
 
     `Enter text to echo (or [Enter] to exit):`
 
-    Hizmet uygulamasına göndermek için bir metin girin ve ENTER ' u seçin. Bu metin, Echo hizmet işlemi aracılığıyla hizmete gönderilir ve aşağıdaki örnek çıktıda görüldüğü şekilde hizmet konsol penceresinde görünür.
+    Hizmet uygulamasına göndermek için bazı metin girin ve Enter'u seçin. Bu metin, Echo hizmet işlemi aracılığıyla hizmete gönderilir ve aşağıdaki örnek çıktıda görüldüğü şekilde hizmet konsol penceresinde görünür.
 
     `Echoing: My sample text`
 
-    İstemci uygulaması, `Echo` işleminin dönüş değerini, diğer bir deyişle orijinal metni alır ve konsol penceresine yazdırır. Aşağıdaki metin, istemci konsolu penceresinden alınan örnek çıktıdır.
+    İstemci uygulaması, `Echo` işleminin dönüş değerini, diğer bir deyişle orijinal metni alır ve konsol penceresine yazdırır. Aşağıdaki metin istemci konsol penceresinden örnek çıktıdır.
 
     `Server echoed: My sample text`
 
-1. Bu şekilde istemciden hizmete metin iletileri göndermeye devam edebilirsiniz. İşiniz bittiğinde, her iki uygulamayı da sonlandırmak için istemci ve hizmet konsolu penceresinde ENTER ' u seçin.
+1. Bu şekilde istemciden hizmete metin iletileri göndermeye devam edebilirsiniz. İşi bittiğinde, her iki uygulamayı da sona erdirmek için istemci ve servis konsolu pencerelerine girin'i seçin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Şu öğreticiye ilerleyin:
 
 > [!div class="nextstepaction"]
->[Şirket içi WCF REST hizmetini ağınızın dışındaki bir istemciye kullanıma sunma](service-bus-relay-rest-tutorial.md)
+>[Bir şirket içi WCF REST hizmetini ağınızın dışındaki bir istemcinin kullanımına sunma](service-bus-relay-rest-tutorial.md)
 
 [2]: ./media/service-bus-relay-tutorial/configure-echoservice-console-app.png
 [3]: ./media/service-bus-relay-tutorial/install-nuget-service-bus.png

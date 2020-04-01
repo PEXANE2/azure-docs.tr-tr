@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Evernote ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory | Microsoft Docs'
-description: Azure Active Directory ve Evernote arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
+title: 'Öğretici: Evernote ile Azure Active Directory tek oturum açma (SSO) entegrasyonu | Microsoft Dokümanlar'
+description: Azure Active Directory ve Evernote arasında tek oturum açma işlemlerini nasıl yapılandırabilirsiniz öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,196 +17,196 @@ ms.date: 09/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 55216e9eb4bd5cda2635564480751459f05e8309
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "71121635"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-evernote"></a>Öğretici: Evernote ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-evernote"></a>Öğretici: Evernote ile Azure Active Directory tek oturum açma (SSO) entegrasyonu
 
-Bu öğreticide, Evernote 'ı Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz. Evernote 'ı Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
+Bu eğitimde Evernote'u Azure Etkin Dizini (Azure AD) ile nasıl entegre acağınızı öğreneceksiniz. Evernote'u Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
-* Azure AD 'de, Evernote 'a erişimi olan denetim.
-* Kullanıcılarınızın Azure AD hesaplarıyla Evernote 'ta otomatik olarak oturum açmalarına olanak sağlayın.
-* Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
+* Azure AD'de Evernote'a erişimi olan denetim.
+* Kullanıcılarınızın Azure REKLAM hesaplarıyla Evernote'ta otomatik olarak oturum açmasını etkinleştirin.
+* Hesaplarınızı tek bir merkezi konumda yönetin - Azure portalı.
 
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için Azure [Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Başlamak için aşağıdaki öğeler gereklidir:
+Başlamak için aşağıdaki öğelere ihtiyacınız vardır:
 
-* Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
-* Evernote çoklu oturum açma (SSO) etkin abonelik.
+* Azure AD aboneliği. Aboneliğiniz [yoksa, ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
+* Evernote tek oturum açma (SSO) özellikli abonelik.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
+Bu eğitimde, Azure AD SSO'su bir test ortamında yapılandırın ve test esiniz.
 
-* Evernote **, SP ve ıDP** tarafından başlatılan SSO 'yu destekler
+* Evernote **SP ve IDP'nin** Başlattığı SSO'yı destekliyor
 
 > [!NOTE]
-> Bu uygulamanın tanımlayıcısı, tek bir kiracıda yalnızca bir örneğin yapılandırılabilmesini sağlamak için sabit bir dize değeridir.
+> Bu uygulamanın tanımlayıcısı sabit bir dize değeridir, bu nedenle yalnızca bir örnek bir kiracıda yapılandırılabilir.
 
 ## <a name="adding-evernote-from-the-gallery"></a>Galeriden Evernote ekleme
 
-Evernote 'ın Azure AD 'ye tümleştirilmesini yapılandırmak için, galerisindeki Evernote 'ı yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
+Evernote'un Azure AD'ye entegrasyonunu yapılandırmak için, galeriden Evernote'u yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-1. Bir iş veya okul hesabını ya da kişisel bir Microsoft hesabını kullanarak [Azure portalda](https://portal.azure.com) oturum açın.
-1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
-1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
-1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
-1. **Galeriden Ekle** bölümünde, arama kutusuna **Evernote** yazın.
-1. Sonuçlar panelinden **Evernote** ' i seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
+1. Azure [portalında](https://portal.azure.com) bir iş veya okul hesabını veya kişisel bir Microsoft hesabını kullanarak oturum açın.
+1. Sol gezinti bölmesinde **Azure Etkin Dizin** hizmetini seçin.
+1. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamaları**seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama'yı**seçin.
+1. **Galeribölümünden Ekle** bölümünde, arama kutusuna **Evernote** yazın.
+1. Sonuç panelinden **Evernote'u** seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-evernote"></a>Evernote için Azure AD çoklu oturum açmayı yapılandırma ve test etme
+## <a name="configure-and-test-azure-ad-single-sign-on-for-evernote"></a>Evernote için Azure AD oturum açma işlemlerini yapılandırma ve test edin
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu Evernote ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve Evernote içindeki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+Azure AD SSO'nu Evernote ile **B.Simon**adlı bir test kullanıcısı kullanarak yapılandırın ve test edin. SSO'nun çalışması için, Evernote'taki bir Azure AD kullanıcısı ile ilgili kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
 
-Azure AD SSO 'yu Evernote ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
+Azure AD SSO'yu Evernote ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlayın:
 
-1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
-    1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
-    1. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
-1. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[Evernote SSO 'Yu yapılandırın](#configure-evernote-sso)** .
-    1. Kullanıcının Azure AD gösterimine bağlı olan Evernote 'ta B. Simon 'a karşılık gelen bir, **[Evernote test kullanıcısı oluşturun](#create-evernote-test-user)** .
-1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
+1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için **[Azure AD SSO'su yapılandırın.](#configure-azure-ad-sso)**
+    1. Azure AD'yi B.Simon ile tek oturum açma test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
+    1. B.Simon'ın Azure AD tek oturum açma kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
+1. **[Evernote SSO'yu yapılandırın](#configure-evernote-sso)** - uygulama tarafındaki tek oturum açma ayarlarını yapılandırmak için.
+    1. **[Evernote test kullanıcısını oluşturun](#create-evernote-test-user)** - Evernote'ta kullanıcının Azure AD gösterimine bağlı bir benzerine sahip olmak için.
+1. **[SSO'yu test](#test-sso)** edin - yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
-## <a name="configure-azure-ad-sso"></a>Azure AD SSO 'yu yapılandırma
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
-Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
+Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com/), **Evernote** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
-1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
+1. Azure [portalında](https://portal.azure.com/), **Evernote** uygulama tümleştirme sayfasında, **Yönet** bölümünü bulun ve **tek oturum açma'yı**seçin.
+1. Tek **bir oturum açma yöntemi** seç sayfasında **SAML'yi**seçin.
+1. **SAML sayfasıyla tek oturum** açma'da, ayarları ayarlamak için **Temel SAML Yapılandırması** için düzenleme/kalem simgesini tıklatın.
 
-   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
+   ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
 
-1. **Temel SAML yapılandırması** bölümünde, **IDP** tarafından başlatılan modda uygulamayı yapılandırmak istiyorsanız aşağıdaki alanlar için değerleri girin:
+1. Temel **SAML Yapılandırma** sı bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız, aşağıdaki alanların değerlerini girin:
 
     **Tanımlayıcı** metin kutusuna bir URL yazın:`https://www.evernote.com/saml2`
 
-1. Uygulamayı **SP** tarafından başlatılan modda yapılandırmak Istiyorsanız **ek URL 'ler ayarla** ' ya tıklayın ve aşağıdaki adımı gerçekleştirin:
+1. Uygulamayı **SP** başlatılan modda yapılandırmak istiyorsanız **ek URL'ler ayarla'yı** tıklatın ve aşağıdaki adımı gerçekleştirin:
 
-    **Oturum açma URL 'si** metin kutusuna bir URL yazın:`https://www.evernote.com/Login.action`
+    Oturum **Açma URL** metin kutusuna bir URL yazın:`https://www.evernote.com/Login.action`
 
-1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
+1. **SAML** Ile Tek Oturum Açma sayfasında, **SAML İmza Sertifikası** bölümünde **Sertifika 'yı (Base64)** bulun ve sertifikayı indirmek ve bilgisayarınıza kaydetmek için **İndir'i** seçin.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
-7. **İmzalama** seçeneklerini değiştirmek Için, **Düzenle** düğmesine tıklayarak **SAML imzalama sertifikası** iletişim kutusunu açın.
+7. **İmzalama** seçeneklerini değiştirmek için **SAML İmzalama Sertifikası** iletişim kutusunu açmak için **Edit** düğmesini tıklatın.
 
     ![image](common/edit-certificate.png) 
 
     ![image](./media/evernote-tutorial/samlassertion.png)
 
-    a. **Imzalama seçeneği**için **SAML yanıtı ve onaylama seçeneğini imzala** seçeneğini belirleyin.
+    a. **İmzalama Seçeneği**için **SAML yanıtı ve sınayın seçeneğini işaretleyin.**
 
-    b. **Kaydet**'e tıklayın.
+    b. **Kaydet'i** tıklatın
 
-1. **Evernote ayarla** bölümünde, gereksiniminize göre uygun URL 'leri kopyalayın.
+1. **Evernote'u Ayarla** bölümünde, gereksiniminize göre uygun URL'yi kopyalayın.
 
-    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
+    ![Yapılandırma URL'lerini kopyalama](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
+### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
+Bu bölümde, Azure portalında B.Simon adında bir test kullanıcısı oluşturursunuz.
 
-1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
-1. Seçin **yeni kullanıcı** ekranın üstünde.
-1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
+1. Azure portalındaki sol bölmeden **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
+1. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
+1. **Kullanıcı** özelliklerinde aşağıdaki adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına, username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
-   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**’a tıklayın.
+   1. Kullanıcı **adı** alanına. username@companydomain.extension Örneğin, `B.Simon@contoso.com`.
+   1. **Parolayı Göster** onay kutusunu seçin ve ardından **Parola** kutusunda görüntülenen değeri yazın.
+   1. **Oluştur'u**tıklatın.
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, Evernote 'a erişim vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
+Bu bölümde, B.Simon'ın Evernote'a erişim izni vererek Azure oturumunu kullanmasını sağlayacaksınız.
 
-1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
-1. Uygulamalar listesinde, **Evernote**' ı seçin.
-1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
+1. Azure portalında **Kurumsal Uygulamalar'ı**seçin ve ardından **Tüm Uygulamaları**seçin.
+1. Uygulamalar listesinde **Evernote'u**seçin.
+1. Uygulamanın genel bakış sayfasında, **Yönet** bölümünü bulun ve **Kullanıcıları ve grupları**seçin.
 
-   !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
+   !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
+1. **Kullanıcı Ekle'yi**seçin, ardından **Atama Ekle** iletişim kutusunda Kullanıcılar ve **gruplar** seçin.
 
     ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
-1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
+1. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinden **B.Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
+1. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda, listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
+1. Atama **Ekle** iletişim kutusunda, **Ata ekle** düğmesini tıklatın.
 
-## <a name="configure-evernote-sso"></a>Evernote SSO 'yu yapılandırma
+## <a name="configure-evernote-sso"></a>Evernote SSO'ya yapılandır
 
-1. Evernote 'daki yapılandırmayı otomatikleştirmek için, **uzantıyı yüklemek**üzere **uygulamalarımı güvenli oturum açma tarayıcı uzantısı** ' nı yüklemeniz gerekir.
+1. Evernote içindeki yapılandırmayı otomatikleştirmek için, **uzantıyı yükle'yi**tıklatarak **Uygulamalarım Güvenli Oturum Açma tarayıcı uzantısını** yüklemeniz gerekir.
 
-    ![Uygulamalarım uzantısı](common/install-myappssecure-extension.png)
+    ![Uygulamalar uzantım](common/install-myappssecure-extension.png)
 
-2. Tarayıcıya Uzantı eklendikten sonra, **Kurulum Evernote** 'a tıklayın, sizi Evernote uygulamasına yönlendirir. Buradan, Evernote 'ta oturum açmak için yönetici kimlik bilgilerini sağlayın. Tarayıcı uzantısı, uygulamayı sizin için otomatik olarak yapılandırır ve 3-6 adımlarını otomatikleştirecektir.
+2. Tarayıcıya uzantı ekledikten sonra **Evernote'un** sizi Evernote uygulamasına yönlendireceği kuruluma tıklayın. Buradan Evernote'ta oturum açabilmek için yönetici kimlik bilgilerini sağlayın. Tarayıcı uzantısı uygulamayı sizin için otomatik olarak yapılandıracak ve 3-6 adımlarını otomatikleştirecektir.
 
     ![Kurulum yapılandırması](common/setup-sso.png)
 
-3. Evernote 'i el ile ayarlamak istiyorsanız yeni bir Web tarayıcı penceresi açın ve Evernote şirket sitenizde yönetici olarak oturum açın ve aşağıdaki adımları gerçekleştirin:
+3. Evernote'u el ile kurmak istiyorsanız, yeni bir web tarayıcısı penceresi açın ve Evernote şirket sitenizde yönetici olarak oturum açın ve aşağıdaki adımları gerçekleştirin:
 
-4. **' Yönetici Konsolu** 'na gidin
+4. **'Yönetici Konsolu'na** gidin
 
-    ![Yönetici-konsol](./media/evernote-tutorial/tutorial_evernote_adminconsole.png)
+    ![Yönetici Konsolu](./media/evernote-tutorial/tutorial_evernote_adminconsole.png)
 
-5. **' Yönetici Konsolu**'Ndan **' Güvenlik '** e gidin ve **' çoklu oturum açma** 'yı seçin
+5. **'Yönetici Konsolu'ndan** **'Güvenlik'** seçeneğine gidin ve **'Tek Oturum Açma'** seçeneğini belirleyin
 
-    ![SSO-ayar](./media/evernote-tutorial/tutorial_evernote_sso.png)
+    ![SSO Ayarı](./media/evernote-tutorial/tutorial_evernote_sso.png)
 
 6. Aşağıdaki değerleri yapılandırın:
 
-    ![Sertifika ayarı](./media/evernote-tutorial/tutorial_evernote_certx.png)
+    ![Sertifika Ayarı](./media/evernote-tutorial/tutorial_evernote_certx.png)
     
-    a.  **SSO 'yu etkinleştir:** SSO varsayılan olarak etkindir (SSO gereksinimini kaldırmak için **Çoklu oturum açmayı devre dışı bırak** ' a tıklayın)
+    a.  **SSO'ya etkinleştirin:** SSO varsayılan olarak etkinleştirilir (SSO gereksinimini kaldırmak için **Tek Oturum Açma'yı** devre dışı tıklatın)
 
-    b. Azure portal 'den **SAML http istek URL 'si** metin kutusuna kopyaladığınız **oturum açma URL 'si** değerini yapıştırın.
+    b. Azure portalından kopyaladığınız **Giriş URL** değerini **SAML HTTP İstek URL** textbox'ına yapıştırın.
 
-    c. İndirilen sertifikayı bir not defteri içinde Azure AD 'den açın ve içeriği "başlangıç SERTIFIKASı" ve "BITIŞ SERTIFIKASı" gibi kopyalayın ve **X. 509.440 sertifikası** metin kutusuna yapıştırın. 
+    c. Azure AD'den indirilen sertifikayı bir not defterinde açın ve "BEGIN CERTIFICATE" ve "END CERTIFICATE" gibi içeriği kopyalayın ve **X.509 Sertifikası** metin kutusuna yapıştırın. 
 
-    d. **Değişiklikleri Kaydet** 'e tıklayın
+    **d.Değişiklikleri Kaydet'i** tıklatın
 
-### <a name="create-evernote-test-user"></a>Evernote test kullanıcısı oluştur
+### <a name="create-evernote-test-user"></a>Evernote test kullanıcısı oluşturma
 
-Azure AD kullanıcılarının, Evernote 'ta oturum açmasını sağlamak için, bu kullanıcıların Evernote 'a sağlanması gerekir.  
-Evernote durumunda, sağlama işlemi el ile gerçekleştirilen bir görevdir.
+Azure AD kullanıcılarının Evernote'ta oturum açabilmeleri için Evernote'ta oturum açmaları gerekir.  
+Evernote durumunda, sağlama el ile bir görevdir.
 
 **Bir kullanıcı hesabı sağlamak için aşağıdaki adımları gerçekleştirin:**
 
 1. Evernote şirket sitenizde yönetici olarak oturum açın.
 
-2. **' Yönetici Konsolu '** na tıklayın.
+2. **'Yönetici Konsolu'nu**tıklatın.
 
-    ![Yönetici-konsol](./media/evernote-tutorial/tutorial_evernote_adminconsole.png)
+    ![Yönetici Konsolu](./media/evernote-tutorial/tutorial_evernote_adminconsole.png)
 
-3. **' Yönetici Konsolu '** ndan **' Kullanıcı Ekle '** bölümüne gidin.
+3. **'Yönetici Konsolu'ndan** **'Kullanıcı ekle'** gidin.
 
-    ![Add-testUser](./media/evernote-tutorial/create_aaduser_0001.png)
+    ![Ekle-testKullanıcı](./media/evernote-tutorial/create_aaduser_0001.png)
 
-4. **Takım üyelerini** **e-posta** metin kutusuna ekleyin, Kullanıcı hesabının e-posta adresini yazın ve **davet et** ' e tıklayın.
+4. **E-posta** metin kutusuna **ekip üyeleri ekleyin,** kullanıcı hesabının e-posta adresini yazın ve **Davet'i tıklatın.**
 
-    ![Add-testUser](./media/evernote-tutorial/create_aaduser_0002.png)
+    ![Ekle-testKullanıcı](./media/evernote-tutorial/create_aaduser_0002.png)
     
-5. Davet gönderildikten sonra, Azure Active Directory hesap sahibi daveti kabul etmek için bir e-posta alır.
+5. Davet gönderildikten sonra, Azure Etkin Dizin hesabı sahibine daveti kabul etmesi için bir e-posta gönderilir.
 
-## <a name="test-sso"></a>Test SSO 'SU 
+## <a name="test-sso"></a>Test SSO 
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
+Bu bölümde, Access Panelini kullanarak Azure AD tek oturum açma yapılandırmanızı sınarsınız.
 
-Erişim panelinde Evernote kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız Evernote 'ta otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Access Paneli'ndeki Evernote döşemesini tıklattığınızda, SSO'yu kurduğunuz Evernote'ta otomatik olarak oturum açmalısınız. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Evernote 'ı Azure AD ile deneyin](https://aad.portal.azure.com/)
+- [Azure AD ile Evernote'u deneyin](https://aad.portal.azure.com/)
 

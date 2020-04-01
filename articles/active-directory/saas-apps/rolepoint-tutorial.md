@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Azure Active Directory Tümleştirmesi ile RolePoint | Microsoft Docs'
-description: Bu öğreticide, Azure Active Directory ve RolePoint arasında çoklu oturum açmayı yapılandırma öğreneceksiniz.
+title: 'Öğretici: RolePoint ile Azure Active Directory entegrasyonu | Microsoft Dokümanlar'
+description: Bu eğitimde, Azure Active Directory ve RolePoint arasında tek oturum açma yapmayı öğreneceksiniz.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,188 +16,188 @@ ms.topic: tutorial
 ms.date: 03/15/2019
 ms.author: jeedes
 ms.openlocfilehash: 0b6fd17d2f8577532778733866260f43e9ac7685
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67092728"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-rolepoint"></a>Öğretici: RolePoint ile Azure Active Directory Tümleştirme
+# <a name="tutorial-azure-active-directory-integration-with-rolepoint"></a>Öğretici: RolePoint ile Azure Active Directory entegrasyonu
 
-Bu öğreticide, Azure Active Directory (Azure AD) ile RolePoint tümleştirme öğreneceksiniz.
-Bu tümleştirme aşağıdaki avantajları sağlar:
+Bu eğitimde, RolePoint'i Azure Etkin Dizini (Azure AD) ile nasıl entegre acağınızı öğreneceksiniz.
+Bu tümleştirme şu avantajları sağlar:
 
-* Azure AD RolePoint erişimi denetlemek için kullanabilirsiniz.
-* Kullanıcılarınız için RolePoint (çoklu oturum açma) ile Azure AD hesaplarına otomatik olarak oturum açmanız etkinleştirebilirsiniz.
-* Hesaplarınızı tek bir merkezi konumda yönetebilir: Azure portalı.
+* RolePoint'e kimlerin erişebileceğini denetlemek için Azure AD'yi kullanabilirsiniz.
+* Kullanıcılarınızın Azure AD hesaplarıyla RolePoint'te (tek oturum açma) otomatik olarak oturum açmalarını sağlayabilirsiniz.
+* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz: Azure portalı.
 
-Azure AD SaaS uygulama tümleştirmesi hakkında daha fazla bilgi için bkz. [Azure Active Directory'de uygulamalar için çoklu oturum açma](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek [için Azure Active Directory'deki uygulamalarda tek](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)oturum açma'ya bakın.
 
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Azure AD Tümleştirmesi ile RolePoint yapılandırmak için sahip olmanız gerekir:
+Azure AD tümleştirmesini RolePoint ile yapılandırmak için şunları yapmanız gerekir:
 
-* Azure AD aboneliğiniz. Bir Azure AD ortamını yoksa alabileceğiniz bir [ücretsiz bir hesap](https://azure.microsoft.com/free/).
-* Çoklu oturum etkin açma RolePoint abonelik.
+* Azure AD aboneliği. Azure REKLAM ortamınız [yoksa, ücretsiz](https://azure.microsoft.com/free/)bir hesap alabilirsiniz.
+* Tek oturum açma etkinleştirilmiş bir RolePoint aboneliği.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, yapılandırma ve Azure AD çoklu oturum açma bir test ortamında test edin.
+Bu öğreticide, Azure AD oturum açma işlemlerini bir test ortamında yapılandıracak ve sınayacaksınız.
 
-* RolePoint SP tarafından başlatılan SSO'yu destekler.
+* RolePoint, SP tarafından başlatılan SSO'yı destekler.
 
-## <a name="add-rolepoint-from-the-gallery"></a>Galeriden RolePoint Ekle
+## <a name="add-rolepoint-from-the-gallery"></a>Galeriden RolePoint ekleme
 
-Azure AD'de RolePoint tümleştirmesini ayarlamak için yönetilen SaaS uygulamaları listenize Galeriden RolePoint eklemeniz gerekir.
+RolePoint'in Azure AD'ye entegrasyonunu ayarlamak için, galeriden yönetilen SaaS uygulamaları listenize RolePoint eklemeniz gerekir.
 
-1. İçinde [Azure portalında](https://portal.azure.com), sol bölmede seçin **Azure Active Directory**:
+1. Azure [portalında](https://portal.azure.com), sol bölmede, **Azure Etkin Dizini'ni**seçin:
 
     ![Azure Active Directory'yi seçin](common/select-azuread.png)
 
-2. Git **kurumsal uygulamalar** > **tüm uygulamaları**:
+2. Kurumsal **uygulamalara** > git**Tüm uygulamalar:**
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar bıçak](common/enterprise-applications.png)
 
-3. Bir uygulama eklemek için seçin **yeni uygulama** pencerenin üst kısmındaki:
+3. Uygulama eklemek için pencerenin üst kısmında **Yeni uygulama'yı** seçin:
 
-    ![Yeni uygulama seçme](common/add-new-app.png)
+    ![Yeni uygulama seçin](common/add-new-app.png)
 
-4. Arama kutusuna **RolePoint**. Seçin **RolePoint** seçin ve arama sonuçlarını **Ekle**.
+4. Arama kutusuna **RolePoint**girin. Arama sonuçlarında **RolePoint'i** seçin ve ardından **Ekle'yi**seçin.
 
      ![Arama sonuçları](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Yapılandırma ve Azure AD çoklu oturum açmayı test etme
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD tek oturum açma yapılandırma ve test
 
-Bu bölümde, yapılandırın ve Azure AD çoklu oturum açma ile RolePoint Britta Simon adlı bir test kullanıcısı kullanarak test edin.
-Çoklu oturum açmayı etkinleştirmek için RolePoint içinde bir Azure AD kullanıcısı ile ilgili kullanıcı arasında bir ilişki yapmanız gerekir.
+Bu bölümde, Britta Simon adlı bir test kullanıcısı kullanarak RolePoint ile Azure AD oturum açma işlemini yapılandıracak ve sınayacaksınız.
+Tek oturum açmayı etkinleştirmek için, RolePoint'teki bir Azure REKLAM kullanıcısı ile ilgili kullanıcı arasında bir ilişki kurmanız gerekir.
 
-Yapılandırma ve Azure AD çoklu oturum açma RolePoint ile test etmek için bu adımları tamamlamak gerekir:
+Azure AD oturum açma işlemlerini RolePoint ile yapılandırmak ve test etmek için şu adımları tamamlamanız gerekir:
 
-1. **[Azure AD çoklu oturum açmayı yapılandırma](#configure-azure-ad-single-sign-on)**  kullanıcılarınız için özelliği etkinleştirmek için.
-2. **[RolePoint çoklu oturum açmayı yapılandırma](#configure-rolepoint-single-sign-on)**  uygulama tarafında.
-3. **[Bir Azure AD test kullanıcısı oluşturma](#create-an-azure-ad-test-user)**  Azure AD çoklu oturum açmayı test etmek için.
-4. **[Azure AD test kullanıcı atama](#assign-the-azure-ad-test-user)**  Azure AD çoklu oturum açma için kullanıcı etkinleştirmek için.
-5. **[RolePoint test kullanıcısı oluşturma](#create-a-rolepoint-test-user)**  kullanıcı Azure AD gösterimini bağlı.
-6. **[Çoklu oturum açmayı test](#test-single-sign-on)**  yapılandırma çalıştığını doğrulayın.
+1. Azure AD oturumunu, kullanıcılarınız için özelliği etkinleştirmek için **[yapılandırın.](#configure-azure-ad-single-sign-on)**
+2. Uygulama tarafında **[RolePoint tek oturum](#configure-rolepoint-single-sign-on)** açma yı yapılandırın.
+3. Azure AD tek oturum açma'yı test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
+4. Azure AD test kullanıcısını, kullanıcı için Azure AD oturum açmayı etkinleştirmek için **[atayın.](#assign-the-azure-ad-test-user)**
+5. Kullanıcının Azure AD gösterimine bağlı **[bir RolePoint test kullanıcısı oluşturun.](#create-a-rolepoint-test-user)**
+6. Yapılandırmanın çalıştığını doğrulamak için **[tek oturum](#test-single-sign-on)** açma yı test edin.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırın
+### <a name="configure-azure-ad-single-sign-on"></a>Azure AD'yi tek oturum açma yapılandırma
 
-Bu bölümde, Azure AD çoklu oturum açma Azure portalındaki etkinleştirmeniz.
+Bu bölümde, Azure portalında Azure AD oturum açma'yı etkinleştirin.
 
-Azure AD çoklu oturum açma ile RolePoint yapılandırmak için şu adımları uygulayın:
+Azure AD oturum açma işlemlerini RolePoint ile yapılandırmak için şu adımları izleyin:
 
-1. İçinde [Azure portalında](https://portal.azure.com/), RolePoint uygulama tümleştirme sayfasında **çoklu oturum açma**:
+1. Azure [portalında](https://portal.azure.com/)RolePoint uygulama tümleştirme sayfasında **Tek oturum açma**seçeneğini belirleyin:
 
-    ![Çoklu oturum açma seçin](common/select-sso.png)
+    ![Tek oturum açma'yı seçin](common/select-sso.png)
 
-2. İçinde **tek bir oturum açma yönteminizi seçmeniz** Seç iletişim kutusunda **SAML/WS-Federasyon** modu, çoklu oturum açmayı etkinleştirmek için:
+2. Tek **oturum** açma yöntemi iletişim kutusunu seç'te, tek oturum açmayı etkinleştirmek için **SAML/WS-Fed** modunu seçin:
 
     ![Tek bir oturum açma yöntemi seçin](common/select-saml-option.png)
 
-3. Üzerinde **yukarı çoklu oturum açma SAML ile ayarlayın** sayfasında **Düzenle** açmak için simgeyi **temel SAML yapılandırma** iletişim kutusunda:
+3. **SAML** ile Tek Oturum Açma'da, **Temel SAML Yapılandırma** iletişim kutusunu açmak için **Düzenleme** simgesini seçin:
 
     ![Düzenle simgesi](common/edit-urls.png)
 
-4. İçinde **temel SAML yapılandırma** iletişim kutusunda, aşağıdaki adımları uygulayın.
+4. Temel **SAML Yapılandırma** iletişim kutusunda aşağıdaki adımları izleyin.
 
-    ![Temel SAML yapılandırma iletişim kutusu](common/sp-identifier.png)
+    ![Temel SAML Yapılandırma iletişim kutusu](common/sp-identifier.png)
 
-    1. İçinde **oturum açma URL'si** kutusuna, bu düzende bir URL girin:
+    1. **URL'de Oturum Aç** kutusuna, bu desene bir URL girin:
 
        `https://<subdomain>.rolepoint.com/login`
 
-    1. İçinde **tanımlayıcı (varlık kimliği)** kutusuna, bu düzende bir URL girin:
+    1. Tanımlayıcı **(Entity ID)** kutusuna, bu desene bir URL girin:
 
        `https://app.rolepoint.com/<instancename>`
 
     > [!NOTE]
-    > Bu değerler yer tutuculardır. Gerçek oturum açma URL'si ve tanımlayıcı kullanmanız gerekir. Benzersiz bir dize değeri tanımlayıcıda kullanmanızı öneririz. İlgili kişi [RolePoint Destek ekibine](mailto:info@rolepoint.com) bu değerleri almak için. Gösterilen desenleri de başvurabilirsiniz **temel SAML yapılandırma** Azure portalında iletişim kutusu.
+    > Bu değerler yer tutuculardır. Gerçek oturum açma URL'sini ve tanımlayıcıyı kullanmanız gerekir. Tanımlayıcıda benzersiz bir dize değeri kullanmanızı öneririz. Bu değerleri almak için [RolePoint destek ekibine](mailto:info@rolepoint.com) başvurun. Azure portalındaki **Temel SAML Yapılandırma** iletişim kutusunda gösterilen desenlere de başvurabilirsiniz.
 
-5. Üzerinde **yukarı çoklu oturum açma SAML ile ayarlanmış** sayfasında **SAML imzalama sertifikası** bölümünden **indirme** yanındaki bağlantı **Federasyon meta veri XML** , gereksinimlerinize göre ve bilgisayarınızda dosyayı kaydedin.
+5. **SAML ile Tek Oturum Açma** sayfasında, **SAML İmza Sertifikası** bölümünde, gereksinimlerinize göre Federation **Metadata XML'nin**yanındaki **İndir** bağlantısını seçin ve dosyayı bilgisayarınıza kaydedin.
 
-    ![Sertifika indirme bağlantısı](common/metadataxml.png)
+    ![Sertifika indirme linki](common/metadataxml.png)
 
-6. İçinde **RolePoint kümesi** bölümünde, gereksinimlerinize göre uygun URL'ler kopyalayın:
+6. **RolePoint'i ayarla** bölümünde, gereksinimlerinize göre uygun URL'leri kopyalayın:
 
-    ![Yapılandırma URL'leri kopyalayın](common/copy-configuration-urls.png)
+    ![Yapılandırma URL'lerini kopyalama](common/copy-configuration-urls.png)
 
-    1. **Oturum açma URL'si**.
+    1. **Giriş URL'si**.
 
-    1. **Azure AD tanımlayıcısı**.
+    1. **Azure AD Tanımlayıcısı**.
 
-    1. **Oturum kapatma URL'si**.
+    1. **Çıkış URL'si**.
 
 
-### <a name="configure-rolepoint-single-sign-on"></a>RolePoint çoklu oturum açmayı yapılandırın
+### <a name="configure-rolepoint-single-sign-on"></a>RolePoint tek oturum açma yı yapılandırma
 
-Çalışmak istediğiniz RolePoint tarafında çoklu oturum açmayı ayarlamak için [RolePoint Destek ekibine](mailto:info@rolepoint.com). Bu ekip, Federasyon meta veri XML dosyasında ve Azure portalından aldığınız URL'leri gönderin. Bunlar, SAML SSO bağlantının her iki kenarı da düzgün ayarlandığından emin olmak için RolePoint yapılandıracaksınız.
+RolePoint tarafında tek oturum açma ayarlamak için [RolePoint destek ekibiyle](mailto:info@rolepoint.com)çalışmanız gerekir. Bu ekibe Federasyon Metadata XML dosyasını ve Azure portalından aldığınız URL'leri gönderin. Saml SSO bağlantısının her iki tarafta da düzgün şekilde ayarlandığından emin olmak için RolePoint'i yapılandıracaklar.
 
-### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
+### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-Bu bölümde, Azure portalında Britta Simon adlı bir test kullanıcısı oluşturacaksınız.
+Bu bölümde, Azure portalında Britta Simon adında bir test kullanıcısı oluşturursunuz.
 
-1. Azure portalında **Azure Active Directory** seçin sol bölmede **kullanıcılar**ve ardından **tüm kullanıcılar**:
+1. Azure portalında, sol bölmede **Azure Etkin Dizini'ni** seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin:
 
-    ![Tüm kullanıcıları seçin](common/users.png)
+    ![Tüm kullanıcılar'ı seçin](common/users.png)
 
-2. Seçin **yeni kullanıcı** pencerenin üst kısmındaki:
+2. Pencerenin üst kısmında **Yeni kullanıcı** seçin:
 
-    ![Yeni bir kullanıcı seçin](common/new-user.png)
+    ![Yeni kullanıcıyı seçin](common/new-user.png)
 
-3. İçinde **kullanıcı** iletişim kutusunda, aşağıdaki adımları uygulayın.
+3. **Kullanıcı** iletişim kutusunda aşağıdaki adımları izleyin.
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    1. İçinde **adı** kutusuna **BrittaSimon**.
+    1. **Ad** **kutusuna BrittaSimon**girin.
   
-    1. İçinde **kullanıcı adı** kutusuna **@ BrittaSimon\<yourcompanydomain >.\< Uzantı >** . (Örneğin, BrittaSimon@contoso.com.)
+    1. Kullanıcı **adı** kutusuna, **\<şirketinizin alan\< BrittaSimon@> girin. uzantısı>**. (Örneğin, BrittaSimon@contoso.com.)
 
-    1. Seçin **Göster parola**ve ardından içinde bir değer yazın **parola** kutusu.
+    1. **Parolayı Göster'i**seçin ve ardından **Parola** kutusundaki değeri yazın.
 
-    1. **Oluştur**’u seçin.
+    1. **Oluştur'u**seçin.
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, Azure çoklu oturum açma kullanmak için RolePoint erişim vererek Britta Simon tıklatmalarını sağlarsınız.
+Bu bölümde, Britta Simon'A RolePoint erişimi vererek Azure tek oturum açma olanağı nı kullanacaksınız.
 
-1. Azure portalında **kurumsal uygulamalar**seçin **tüm uygulamaları**ve ardından **RolePoint**.
+1. Azure portalında **Kurumsal uygulamaları**seçin, **Tüm uygulamaları**seçin ve ardından **RolePoint'i**seçin.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar bıçak](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde seçin **RolePoint**.
+2. Uygulamalar listesinde **RolePoint'i**seçin.
 
-    ![Uygulamaların listesi](common/all-applications.png)
+    ![Başvuru listesi](common/all-applications.png)
 
-3. Sol bölmede seçin **kullanıcılar ve gruplar**:
+3. Sol **bölmede, Kullanıcıları ve grupları**seçin:
 
-    ![Kullanıcıları ve grupları seçin](common/users-groups-blade.png)
+    ![Kullanıcı ve gruplar'ı seçin](common/users-groups-blade.png)
 
-4. Seçin **Kullanıcı Ekle**ve ardından **kullanıcılar ve gruplar** içinde **atama Ekle** iletişim kutusu.
+4. **Kullanıcı Ekle'yi**seçin ve ardından **Atama Ekle** iletişim kutusunda Kullanıcılar ve **gruplar** seçin.
 
-    ![Kullanıcı Ekle seçeneğini belirleme](common/add-assign-user.png)
+    ![Kullanıcı ekle seçeneğini belirleme](common/add-assign-user.png)
 
-5. İçinde **kullanıcılar ve gruplar** iletişim kutusunda **Britta Simon** kullanıcıların listesini ve ardından **seçin** pencerenin alt kısmındaki düğmesi.
+5. Kullanıcılar **ve gruplar** iletişim kutusunda, kullanıcı listesinde **Britta Simon'ı** seçin ve ardından pencerenin altındaki **Seç** düğmesini tıklatın.
 
-6. SAML onaylaması rol değeri de beklediğiniz **rolü Seç** iletişim kutusunda, listeden bir kullanıcı için uygun rolü seçin. Tıklayın **seçin** pencerenin alt kısmındaki düğmesi.
+6. SAML iddiasında, **Rolü Seç** iletişim kutusunda bir rol değeri bekliyorsanız, listeden kullanıcı için uygun rolü seçin. Pencerenin altındaki **Seç** düğmesini tıklatın.
 
-7. İçinde **atama Ekle** iletişim kutusunda **atama**.
+7. Atama **Ekle** iletişim kutusunda **Atama'yı**seçin.
 
 ### <a name="create-a-rolepoint-test-user"></a>RolePoint test kullanıcısı oluşturma
 
-Sonra Britta Simon RolePoint içinde adlı bir kullanıcı oluşturmanız gerekir. Çalışmak [RolePoint Destek ekibine](mailto:info@rolepoint.com) RolePoint için kullanıcıları eklemek için. Kullanıcıların oluşturulabilir ve çoklu oturum açma kullanabilmek için önce etkinleştirmeniz gerekir.
+Ardından, RolePoint'te Britta Simon adında bir kullanıcı oluşturmanız gerekir. Kullanıcıları RolePoint'e eklemek için [RolePoint destek ekibiyle](mailto:info@rolepoint.com) birlikte çalışın. Tek oturum açma dan önce kullanıcıların oluşturulması ve etkinleştirilmesi gerekir.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi
 
-Şimdi Azure AD çoklu oturum açma yapılandırmanızı erişim panelini kullanarak test gerekir.
+Artık Access Panelini kullanarak Azure AD tek oturum açma yapılandırmanızı test etmeniz gerekir.
 
-Erişim Paneli'nde RolePoint kutucuğu seçtiğinizde, otomatik olarak SSO'yu ayarlama RolePoint örneği için oturum açmanız. Erişim paneli hakkında daha fazla bilgi için bkz: [erişim ve kullanım uygulamaları uygulamalarım portalında](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Access Paneli'ndeki RolePoint döşemesini seçtiğinizde, SSO'yu kurduğunuz RolePoint örneğinde otomatik olarak oturum açmış olmanız gerekir. Access Paneli hakkında daha fazla bilgi için [Access'e bakın ve Uygulamalarım portalındaki uygulamaları kullanın.](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS uygulamaları Azure Active Directory ile tümleştirme hakkında öğreticiler](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS uygulamalarını Azure Active Directory ile tümleştirme öğreticileri](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Etkin Dizinde Koşullu Erişim Nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

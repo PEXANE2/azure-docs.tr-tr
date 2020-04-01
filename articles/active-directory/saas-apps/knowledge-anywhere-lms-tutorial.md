@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Azure Active Directory Tümleştirmesi ile her yerde bilgi LMS | Microsoft Docs'
-description: Azure Active Directory ve her yerde bilgi LMS arasında çoklu oturum açmayı yapılandırmayı öğrenin.
+title: 'Öğretici: Bilgi Anywhere LMS ile Azure Active Directory entegrasyonu | Microsoft Dokümanlar'
+description: Azure Etkin Dizin ve Bilgi Anywhere LMS arasında tek oturum açma yı nasıl yapılandırıştırmayı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,179 +17,179 @@ ms.date: 05/22/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f44324bbdd5af6675dfb4f5664cbbde2627edfec
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67098554"
 ---
-# <a name="tutorial-integrate-knowledge-anywhere-lms-with-azure-active-directory"></a>Öğretici: Bilgi Bankası, LMS herhangi bir Azure Active Directory ile tümleştirin.
+# <a name="tutorial-integrate-knowledge-anywhere-lms-with-azure-active-directory"></a>Öğretici: Bilgiyi Azure Active Directory ile Her Yerde LMS'yi Entegre Edin
 
-Bu öğreticide, Azure Active Directory (Azure AD) ile her yerde bilgi LMS tümleştirme öğreneceksiniz. Herhangi bir Bilgi Bankası LMS Azure AD ile tümleştirdiğinizde, şunları yapabilirsiniz:
+Bu eğitimde, Bilgi Her Yerde LMS'yi Azure Etkin Dizini (Azure AD) ile nasıl entegre acağınızı öğreneceksiniz. Bilgi Anywhere LMS'yi Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
-* Herhangi bir Bilgi Bankası LMS erişimi, Azure AD'de denetler.
-* Otomatik olarak herhangi bir Bilgi Bankası LMS kendi Azure AD hesapları ile oturum açmış olmasını sağlayın.
-* Bir merkezi konumda - Azure portalı hesaplarınızı yönetin.
+* LmS Bilgisi'ne erişimi olan Azure AD'de denetim.
+* Kullanıcılarınızın Azure AD hesaplarıyla Bilgi Alanı LMS'de otomatik olarak oturum açabilmelerini etkinleştirin.
+* Hesaplarınızı tek bir merkezi konumda yönetin - Azure portalı.
 
-Azure AD SaaS uygulama tümleştirmesi hakkında daha fazla bilgi için bkz. [uygulama erişimi ve Azure Active Directory ile çoklu oturum açma nedir](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için Azure [Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Başlamak için aşağıdaki öğeler gerekir:
+Başlamak için aşağıdaki öğelere ihtiyacınız vardır:
 
-* Azure AD aboneliğiniz. Bir aboneliğiniz yoksa, alabileceğiniz bir [ücretsiz bir hesap](https://azure.microsoft.com/free/).
-* Bilgi Bankası LMS her yerden çoklu oturum açma (SSO) abonelik etkin.
+* Azure AD aboneliği. Aboneliğiniz [yoksa, ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
+* Knowledge Anywhere LMS tek oturum açma (SSO) aboneliği ni sağladı.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, yapılandırma ve Azure AD SSO bir test ortamında test edin. Herhangi bir Bilgi Bankası LMS destekler **SP** SSO ve destekler başlatılan **zamanında** kullanıcı sağlama.
+Bu eğitimde, Azure AD SSO'su bir test ortamında yapılandırın ve test esiniz. Knowledge Anywhere **LMS, SP** tarafından başlatılan SSO'yı destekler ve **Just In Time** kullanıcı sağlamayı destekler.
 
-## <a name="adding-knowledge-anywhere-lms-from-the-gallery"></a>Galeriden herhangi bir Bilgi Bankası LMS ekleme
+## <a name="adding-knowledge-anywhere-lms-from-the-gallery"></a>Galeriden Bilgi Her Yerde LMS Ekleme
 
-Azure AD'de herhangi bir Bilgi Bankası LMS tümleştirmesini yapılandırmak için her yerde bilgi LMS Galeriden yönetilen SaaS uygulamaları listesine eklemeniz gerekir.
+Bilgi Anywhere LMS'nin Azure AD'ye entegrasyonunu yapılandırmak için, galerideki Bilgi Anywhere LMS'yi yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-1. Bir iş veya okul hesabını ya da kişisel bir Microsoft hesabını kullanarak [Azure portalda](https://portal.azure.com) oturum açın.
-1. Sol gezinti bölmesinde seçin **Azure Active Directory** hizmeti.
-1. Gidin **kurumsal uygulamalar** seçip **tüm uygulamaları**.
-1. Yeni bir uygulama eklemek için seçin **yeni uygulama**.
-1. İçinde **Galeriden Ekle** bölümüne şunu yazın **herhangi bir Bilgi Bankası LMS** arama kutusuna.
-1. Seçin **herhangi bir Bilgi Bankası LMS** gelen sonuçlar panelinde ve uygulama ekleyin. Uygulama, kiracınıza eklendiği sırada birkaç saniye bekleyin.
+1. Azure [portalında](https://portal.azure.com) bir iş veya okul hesabını veya kişisel bir Microsoft hesabını kullanarak oturum açın.
+1. Sol gezinti bölmesinde **Azure Etkin Dizin** hizmetini seçin.
+1. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamaları**seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama'yı**seçin.
+1. **Galeribölümünden Ekle** bölümünde, arama kutusuna **Bilgi Anywhere LMS** yazın.
+1. Sonuç panelinden **Bilgi Anywhere LMS'yi** seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Yapılandırma ve Azure AD çoklu oturum açmayı test etme
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD tek oturum açma yapılandırma ve test
 
-Yapılandırma ve Azure AD SSO ile bilgi her yerde adlı bir test kullanıcı kullanarak LMS test **b Simon**. Çalışmak SSO için Bilgi Bankası LMS içinde herhangi bir Azure AD kullanıcısı ile ilgili kullanıcı arasında bir bağlantı ilişki oluşturmanız gerekir.
+Azure AD SSO'nu **B. Simon**adlı bir test kullanıcısı kullanarak Bilgi Anywhere LMS ile yapılandırın ve test edin. SSO'nun çalışması için, Bir Azure REKLAM kullanıcısı ile Bilgi Anywhere LMS'deki ilgili kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
 
-Yapılandırma ve Azure AD SSO ile her yerde bilgi LMS sınamak için aşağıdaki yapı taşlarını tamamlayın:
+Azure AD SSO'yu Bilgi Anywhere LMS ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlayın:
 
-1. **[Azure AD SSO'yu yapılandırma](#configure-azure-ad-sso)**  kullanıcılarınız bu özelliği kullanmak etkinleştirmek için.
-2. **[Herhangi bir Bilgi Bankası LMS yapılandırma](#configure-knowledge-anywhere-lms)**  uygulama tarafında SSO ayarlarını yapılandırmak için.
-3. **[Bir Azure AD test kullanıcısı oluşturma](#create-an-azure-ad-test-user)**  Azure AD çoklu oturum açma b Simon ile test etmek için.
-4. **[Azure AD test kullanıcı atama](#assign-the-azure-ad-test-user)**  Azure AD çoklu oturum açmayı kullanmak b Simon etkinleştirmek için.
-5. **[Herhangi bir Bilgi Bankası LMS test kullanıcısı oluşturma](#create-knowledge-anywhere-lms-test-user)**  b Simon bir karşılığı bilgi herhangi bir kullanıcı Azure AD gösterimini bağlı LMS sağlamak için.
-6. **[Test SSO](#test-sso)**  yapılandırma çalışıp çalışmadığını doğrulayın.
+1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için **[Azure AD SSO'su yapılandırın.](#configure-azure-ad-sso)**
+2. Uygulama tarafındaki SSO ayarlarını yapılandırmak için Bilgi Nin **[Her Yerde LMS'yi yapılandırın.](#configure-knowledge-anywhere-lms)**
+3. Azure AD oturum açma'yı B. Simon ile test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
+4. B. Simon'ın Azure AD tek oturum açma kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
+5. Kullanıcının Azure AD gösterimine bağlı Bilgi Anywhere LMS'de B. Simon'ın bir örneğine sahip olmak için **[Bilgi Her Yerde LMS test kullanıcısı oluşturun.](#create-knowledge-anywhere-lms-test-user)**
+6. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[SSO'yu test](#test-sso)** edin.
 
-### <a name="configure-azure-ad-sso"></a>Azure AD SSO'yu yapılandırma
+### <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
-Azure portalında Azure AD SSO'yu etkinleştirmek üzere aşağıdaki adımları izleyin.
+Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları izleyin.
 
-1. İçinde [Azure portalında](https://portal.azure.com/), **herhangi bir Bilgi Bankası LMS** uygulama tümleştirme sayfası, bulma **Yönet** bölümünde ve seçin **çoklu oturum açma**.
-1. Üzerinde **tek bir oturum açma yönteminizi seçmeniz** sayfasında **SAML**.
-1. Üzerinde **yukarı çoklu oturum açma SAML ile ayarlayın** sayfasında, düzenleme/kalem simgesine tıklayıp **temel SAML yapılandırma** ayarlarını düzenlemek için.
+1. Azure [portalında,](https://portal.azure.com/) **Bilgi Anywhere LMS** uygulama tümleştirme sayfasında, **Yönet** bölümünü bulun ve Tek **oturum açma'yı**seçin.
+1. Tek **oturum açma yöntemi** sayfasında **SAML'yi**seçin.
+1. **SAML** ile Tek Oturum Açma'da, ayarları düzenlemek için **Temel SAML Yapılandırması** için düzenleme/kalem simgesini tıklatın.
 
-   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
+   ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
 
-1. Üzerinde **temel SAML yapılandırma** uygulamada yapılandırmak isterseniz, bölümü **IDP** başlatılan modu, aşağıdaki adımları gerçekleştirin:
+1. Temel **SAML Yapılandırma** sı bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız, aşağıdaki adımları gerçekleştirin:
 
-    1. İçinde **tanımlayıcı** metin kutusuna şu biçimi kullanarak bir URL yazın: `https://<CLIENTNAME>.knowledgeanywhere.com/`
+    1. **Tanımlayıcı** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://<CLIENTNAME>.knowledgeanywhere.com/`
 
-    1. İçinde **yanıt URL'si** metin kutusuna şu biçimi kullanarak bir URL yazın: `https://<CLIENTNAME>.knowledgeanywhere.com/SSO/SAML/Response.aspx?<IDPNAME>`
-
-    > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerler gerçek tanımlayıcısı ve öğreticinin sonraki bölümlerinde açıklanan yanıt URL'si ile güncelleştirin.
-
-1. Tıklayın **ek URL'lerini ayarlayın** ve uygulamada yapılandırmak istiyorsanız, aşağıdaki adımı uygulayın **SP** başlatılan modu:
-
-    İçinde **oturum açma URL'si** metin kutusuna şu biçimi kullanarak bir URL yazın:  `https://<CLIENTNAME>.knowledgeanywhere.com/`
+    1. **Yanıtla URL** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://<CLIENTNAME>.knowledgeanywhere.com/SSO/SAML/Response.aspx?<IDPNAME>`
 
     > [!NOTE]
-    > Oturum açma URL değeri, gerçek değil. Bu değer, gerçek oturum açma URL'si ile güncelleştirin. İlgili kişi [bilgi her yerde LMS istemci Destek ekibine](https://knowany.zendesk.com/hc/en-us/articles/360000469034-SAML-2-0-Single-Sign-On-SSO-Set-Up-Guide) bu değeri alınamıyor. Gösterilen desenleri de başvurabilirsiniz **temel SAML yapılandırma** bölümünde Azure portalında.
+    > Bu değerler gerçek değildir. Bu değerleri, öğreticide daha sonra açıklanan gerçek Tanımlayıcı ve Yanıt URL'si ile güncelleştirin.
 
-1. Üzerinde **yukarı çoklu oturum açma SAML ile ayarlanmış** sayfasında **SAML imzalama sertifikası** bölümünde, bulma **sertifika (Base64)** seçip **indirin** sertifikayı indirin ve bilgisayarınıza kaydedin.
+1. Uygulamayı **SP** başlatılan modda yapılandırmak istiyorsanız **ek URL'ler ayarla'yı** tıklatın ve aşağıdaki adımı gerçekleştirin:
+
+    Oturum **Açma URL** metin kutusuna aşağıdaki deseni kullanarak bir URL yazın:`https://<CLIENTNAME>.knowledgeanywhere.com/`
+
+    > [!NOTE]
+    > Oturum açma URL değeri gerçek değildir. Bu değeri gerçek Oturum Açma URL'si ile güncelleştirin. Bu değeri elde etmek için Bilgi [Her Yerde LMS İstemci destek ekibine](https://knowany.zendesk.com/hc/en-us/articles/360000469034-SAML-2-0-Single-Sign-On-SSO-Set-Up-Guide) başvurun. Azure portalındaki **Temel SAML Yapılandırması** bölümünde gösterilen desenlere de bakabilirsiniz.
+
+1. **SAML ile Tek Oturum Açma** sayfasında, **SAML İmza Sertifikası** bölümünde Sertifika **'yı (Base64)** bulun ve sertifikayı indirmek ve bilgisayarınıza kaydetmek için **İndir'i** seçin.
 
    ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
-1. Üzerinde **bilgi LMS herhangi bir yerde ayarlanmış** bölümünde, ihtiyacınıza göre uygun URL'lerini kopyalayın.
+1. Bilgi **Her Yerde LMS'yi Ayarla** bölümünde, gereksiniminize göre uygun URL'yi kopyalayın.
 
-   ![Yapılandırma URL'leri kopyalayın](common/copy-configuration-urls.png)
+   ![Yapılandırma URL'lerini kopyalama](common/copy-configuration-urls.png)
 
-### <a name="configure-knowledge-anywhere-lms"></a>Bilgi Bankası LMS herhangi bir yapılandırma
+### <a name="configure-knowledge-anywhere-lms"></a>Bilgiyi Her Yerde YapılandırLMS
 
-1. İçinde herhangi bir Bilgi Bankası LMS yapılandırmasını otomatik hale getirmenizi yüklemeniz gerekir **My Apps güvenli oturum açma tarayıcı uzantısı** tıklayarak **uzantıyı yükleme**.
+1. Bilgi Anywhere LMS içindeki yapılandırmayı otomatikleştirmek için, **uzantıyı**yükleyin'e tıklayarak **Uygulamalarım Güvenli Oturum Açma tarayıcı uzantısını** yüklemeniz gerekir.
 
-    ![Uygulamaları uzantım](common/install-myappssecure-extension.png)
+    ![Uygulamalar uzantım](common/install-myappssecure-extension.png)
 
-2. Uzantı tarayıcıya ekledikten sonra tıklayarak **herhangi bir kurulum bilgisi LMS** herhangi bir Bilgi Bankası LMS uygulamaya yönlendirir. Buradan bilgi LMS her yerde oturum açmak için yönetici kimlik bilgilerini sağlayın. Tarayıcı uzantısı otomatik olarak sizin için uygulamayı yapılandırma ve 3-7 arası adımlar otomatik hale getirin.
+2. Tarayıcıya uzantı ekledikten sonra, **LmS'nin Her Yerde Kurulum Bilgisi'ni** tıklattıktan sonra sizi Bilgi Anywhere LMS uygulamasına yönlendirecektir. Buradan, Bilgi Anywhere LMS oturum için yönetici kimlik bilgilerini sağlayın. Tarayıcı uzantısı uygulamayı sizin için otomatik olarak yapılandıracak ve 3-7 adımlarını otomatikleştirecektir.
 
     ![Kurulum yapılandırması](common/setup-sso.png)
 
-3. Herhangi bir Bilgi Bankası LMS el ile ayarlamak istiyorsanız, yeni bir web tarayıcı penceresi açın ve her yerde bilgi LMS şirketinizin sitesi yönetici olarak oturum açın ve aşağıdaki adımları gerçekleştirin:
+3. Bilgi Anywhere LMS'yi el ile kurmak istiyorsanız, yeni bir web tarayıcısı penceresi açın ve Yönetici olarak Bilgi Anywhere LMS şirket sitenizde oturum açın ve aşağıdaki adımları gerçekleştirin:
 
-4. SELECT deyiminde **Site** sekmesi.
+4. **Site** sekmesinde seçin.
 
-    ![Herhangi bir Bilgi Bankası LMS yapılandırma](./media/knowledge-anywhere-lms-tutorial/configure1.png)
+    ![Bilgi Anywhere LMS Yapılandırma](./media/knowledge-anywhere-lms-tutorial/configure1.png)
 
-5. SELECT deyiminde **SAML ayarlarını** sekmesi.
+5. **SAML Ayarları** sekmesinde seçin.
 
-    ![Herhangi bir Bilgi Bankası LMS yapılandırma](./media/knowledge-anywhere-lms-tutorial/configure2.png)
+    ![Bilgi Anywhere LMS Yapılandırma](./media/knowledge-anywhere-lms-tutorial/configure2.png)
 
-6. Tıklayarak **yeni Ekle**.
+6. **Yeni Ekle'ye**tıklayın.
 
-    ![Herhangi bir Bilgi Bankası LMS yapılandırma](./media/knowledge-anywhere-lms-tutorial/configure3.png)
+    ![Bilgi Anywhere LMS Yapılandırma](./media/knowledge-anywhere-lms-tutorial/configure3.png)
 
-7. Üzerinde **ekleme/güncelleştirme SAML ayarlarını** sayfasında, aşağıdaki adımları gerçekleştirin:
+7. **SAML Ayarları Ekle/Güncelle** sayfasında aşağıdaki adımları gerçekleştirin:
 
-    ![Herhangi bir Bilgi Bankası LMS yapılandırma](./media/knowledge-anywhere-lms-tutorial/configure4.png)
+    ![Bilgi Anywhere LMS Yapılandırma](./media/knowledge-anywhere-lms-tutorial/configure4.png)
 
-    a. Kuruluşunuz göre IDP adını girin. İçin örnek:- `Azure`.
+    a. Kuruluşunuza göre IDP Adını girin. Eski için:- `Azure`.
 
-    b. İçinde **IDP varlık kimliği** metin kutusu, yapıştırma **Azure AD tanımlayıcısı** Azure Portalı'ndan kopyaladığınız değeri.
+    b. **IDP Entity ID** textbox'ına Azure portalından kopyaladığınız **Azure AD Tanımlayıcı** değerini yapıştırın.
 
-    c. İçinde **IDP URL** metin kutusu, yapıştırma **oturum açma URL'si** Azure Portalı'ndan kopyaladığınız değeri.
+    c. **IDP URL** textbox'ına, Azure portalından kopyaladığınız **Giriş URL** değerini yapıştırın.
 
-    d. İndirilen sertifika dosyasını Not Defteri'ne Azure portalından açın, sertifika içeriğini kopyalayın ve yapıştırın **sertifika** metin.
+    d. İndirilen sertifika dosyasını Azure portalından not defterine açın, sertifikanın içeriğini kopyalayın ve **Sertifika** metin kutusuna yapıştırın.
 
-    e. İçinde **oturum kapatma URL'si** metin kutusu, yapıştırma **oturum kapatma URL'si** Azure Portalı'ndan kopyaladığınız değeri.
+    e. Oturum **Açma URL** metin kutusunda, Azure portalından kopyaladığınız **Logout URL** değerini yapıştırın.
 
-    f. Seçin **ana Site** için açılır menüden **etki alanı**.
+    f. **Alan Adı**için açılan sayfadan **Ana Site'yi** seçin.
 
-    g. Kopyalama **SP varlık kimliği** yapıştırın ve değer **tanımlayıcı** metin kutusu **temel SAML yapılandırma** bölümünde Azure portalında.
+    g. **SP Entity ID** değerini kopyalayın ve Azure portalındaki Temel **SAML Yapılandırması** bölümündeki **Tanımlayıcı** metin kutusuna yapıştırın.
 
-    h. Kopyalama **SP Response(ACS) URL** yapıştırın ve değer **yanıt URL'si** metin kutusu **temel SAML yapılandırma** bölümünde Azure portalında.
+    h. **SP Response(ACS) URL** değerini kopyalayın ve Azure portalındaki **Temel SAML Yapılandırması** bölümündeki **YanıtURL** metin kutusuna yapıştırın.
 
-    i. **Kaydet**’e tıklayın.
+    i. **Kaydet**'e tıklayın.
 
-### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
+### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-Bu bölümde, bir test kullanıcısı b Simon adlı Azure portalında oluşturacaksınız.
+Bu bölümde, Azure portalında B. Simon adında bir test kullanıcısı oluşturursunuz.
 
-1. Azure Portalı'ndaki sol bölmeden seçin **Azure Active Directory**seçin **kullanıcılar**ve ardından **tüm kullanıcılar**.
-1. Seçin **yeni kullanıcı** ekranın üstünde.
-1. İçinde **kullanıcı** özellikleri, aşağıdaki adımları izleyin:
+1. Azure portalındaki sol bölmeden **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
+1. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
+1. **Kullanıcı** özelliklerinde aşağıdaki adımları izleyin:
    1. **Ad** alanına `B. Simon` girin.  
-   1. İçinde **kullanıcı adı** alanına username@companydomain.extension. Örneğin, `BrittaSimon@contoso.com`.
-   1. Seçin **Show parola** onay kutusunu işaretleyin ve ardından görüntülenen değeri yazın **parola** kutusu.
-   1. **Oluştur**’a tıklayın.
+   1. Kullanıcı **adı** alanına. username@companydomain.extension Örneğin, `BrittaSimon@contoso.com`.
+   1. **Parolayı Göster** onay kutusunu seçin ve ardından **Parola** kutusunda görüntülenen değeri yazın.
+   1. **Oluştur'u**tıklatın.
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, her yerde bilgi LMS erişim vererek Azure çoklu oturum açmayı kullanmak b Simon tıklatmalarını sağlarsınız.
+Bu bölümde, B. Simon'ın Bilgi Anywhere LMS'ye erişim sağlayarak Azure tek oturum açma'yı kullanmasını sağlayacaksınız.
 
-1. Azure portalında **kurumsal uygulamalar**ve ardından **tüm uygulamaları**.
-1. Uygulamalar listesinde **herhangi bir Bilgi Bankası LMS**.
-1. Uygulamanın genel bakış sayfasında bulma **Yönet** seçin ve bölüm **kullanıcılar ve gruplar**.
+1. Azure portalında **Kurumsal Uygulamalar'ı**seçin ve ardından **Tüm Uygulamaları**seçin.
+1. Uygulamalar listesinde, Bilgi **Anywhere LMS'yi**seçin.
+1. Uygulamanın genel bakış sayfasında, **Yönet** bölümünü bulun ve **Kullanıcıları ve grupları**seçin.
 
-   !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
+   !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-1. Seçin **Kullanıcı Ekle**, ardından **kullanıcılar ve gruplar** içinde **atama Ekle** iletişim.
+1. **Kullanıcı Ekle'yi**seçin, ardından **Atama Ekle** iletişim kutusunda Kullanıcılar ve **gruplar** seçin.
 
-    ![Kullanıcı ekleme bağlantısı](common/add-assign-user.png)
+    ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
-1. İçinde **kullanıcılar ve gruplar** iletişim kutusunda **b Simon** kullanıcılar listesinden ardından **seçin** ekranın alt kısmındaki düğmesi.
-1. SAML onaylama işlemi herhangi bir rolü değer de beklediğiniz varsa **rolü Seç** iletişim kutusunda, listeden bir kullanıcı için uygun rolü seçin ve ardından **seçin** ekranın alt kısmındaki düğmesi.
-1. İçinde **atama Ekle** iletişim kutusunda, tıklayın **atama** düğmesi.
+1. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinden **B. Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
+1. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda, listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
+1. Atama **Ekle** iletişim kutusunda, **Ata ekle** düğmesini tıklatın.
 
-### <a name="create-knowledge-anywhere-lms-test-user"></a>Herhangi bir Bilgi Bankası LMS test kullanıcısı oluşturma
+### <a name="create-knowledge-anywhere-lms-test-user"></a>Bilgi Her Yerde LmS test kullanıcısı oluşturun
 
-Bu bölümde, Bilgi Bankası LMS içinde her yerden b Simon adlı bir kullanıcı oluşturuldu. Herhangi bir Bilgi Bankası LMS just-ın-time kullanıcı hazırlama, varsayılan olarak etkin olduğu destekler. Bu bölümde, hiçbir eylem öğesini yoktur. Bilgi Bankası LMS içinde her yerden bir kullanıcı zaten mevcut değilse yeni bir kimlik doğrulamasından sonra oluşturulur.
+Bu bölümde, B. Simon adlı bir kullanıcı Bilgi Anywhere LMS oluşturulur. Knowledge Anywhere LMS, varsayılan olarak etkinleştirilen tam zamanında kullanıcı sağlamayı destekler. Bu bölümde sizin için bir eylem öğesi yoktur. Bir kullanıcı Bilgi Anywhere LMS'de zaten yoksa, kimlik doğrulamadan sonra yeni bir kullanıcı oluşturulur.
 
 ### <a name="test-sso"></a>Test SSO
 
-Erişim Paneli'nde herhangi bir Bilgi Bankası LMS kutucuğu seçtiğinizde, otomatik olarak bilgi her yerde SSO'yu ayarlama LMS için oturum açmanız. Erişim paneli hakkında daha fazla bilgi için bkz: [erişim Paneli'ne giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Access Paneli'ndeki Bilgi Anywhere LMS döşemesini seçtiğinizde, SSO'yu kurduğunuz Bilgi Anywhere LMS'de otomatik olarak oturum açmalısınız. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS uygulamaları Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Etkin Dizinde Koşullu Erişim Nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

@@ -1,17 +1,17 @@
 ---
-title: Öğretici-Azure Service Bus kullanarak kuyrukları yapılandırma
-description: Azure Service Bus kuyruğu oluşturmak için nasıl kullanılacağını öğrenin
-keywords: anerişilebilir, Azure, DevOps, Bash, PlayBook, hizmet veri yolu, kuyruk
+title: Öğretici - Ansible kullanarak Azure Hizmet Veri Tos'undaki kuyrukları yapılandırma
+description: Azure Hizmet Veri Yolu kuyruğu oluşturmak için Ansible'ı nasıl kullanacağınızı öğrenin
+keywords: ansible, azure, devops, bash, oyun kitabı, servis otobüsü, kuyruk
 ms.topic: tutorial
 ms.date: 04/30/2019
 ms.openlocfilehash: 8ba4c2296d903c4f35aa36eb92dfbc3b56ec4b18
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/24/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "76713227"
 ---
-# <a name="tutorial-configure-queues-in-azure-service-bus-using-ansible"></a>Öğretici: Azure Service Bus kullanarak kuyrukları yapılandırma
+# <a name="tutorial-configure-queues-in-azure-service-bus-using-ansible"></a>Öğretici: Ansible kullanarak Azure Hizmet Veri Tos'undaki kuyrukları yapılandırma
 
 [!INCLUDE [ansible-28-note.md](../../includes/ansible-28-note.md)]
 
@@ -22,22 +22,22 @@ ms.locfileid: "76713227"
 > [!div class="checklist"]
 >
 > * Bir kuyruk oluşturma
-> * SAS plicy oluşturma
-> * Ad alanı bilgilerini al
-> * Kuyruk bilgilerini al
-> * Kuyruk SAS ilkesini iptal etme
+> * Bir SAS plicy oluşturma
+> * Ad alanı bilgilerini alma
+> * Sıra bilgilerini alma
+> * Sıra SAS ilkesini iptal et
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
 
-## <a name="create-the-service-bus-queue"></a>Service Bus kuyruğu oluşturma
+## <a name="create-the-service-bus-queue"></a>Servis Veri Servisi kuyruğunu oluşturma
 
-Örnek PlayBook kodu aşağıdaki kaynakları oluşturur:
+Örnek oyun kitabı kodu aşağıdaki kaynakları oluşturur:
 - Azure kaynak grubu
-- Kaynak grubu içinde Service Bus ad alanı
-- Ad alanı ile Service Bus kuyruğu
+- Kaynak grubu içindeki Servis Veri Servisi ad alanı
+- Ad alanı ile Servis Veri Servisi sırası
 
 Aşağıdaki playbook'u `servicebus_queue.yml` olarak kaydedin:
 
@@ -68,17 +68,17 @@ Aşağıdaki playbook'u `servicebus_queue.yml` olarak kaydedin:
           var: queue
 ```
 
-`ansible-playbook` komutunu kullanarak PlayBook 'u çalıştırın:
+Komutu kullanarak oyun `ansible-playbook` kitabını çalıştırın:
 
 ```bash
 ansible-playbook servicebus_queue.yml
 ```
 
-## <a name="create-the-sas-policy"></a>SAS ilkesi oluşturma
+## <a name="create-the-sas-policy"></a>SAS ilkesini oluşturma
 
-[Paylaşılan erişim imzası (SAS)](/azure/storage/common/storage-dotnet-shared-access-signature-part-1) , belirteçleri kullanan, talep tabanlı bir yetkilendirme mekanizmasıdır. 
+[Paylaşılan Erişim İmzası (SAS),](/azure/storage/common/storage-dotnet-shared-access-signature-part-1) belirteçleri kullanan taleplere dayalı bir yetkilendirme mekanizmasıdır. 
 
-Örnek PlayBook kodu, farklı ayrıcalıklara sahip bir Service Bus kuyruğu için iki SAS ilkesi oluşturur.
+Örnek oyun kitabı kodu, farklı ayrıcalıklara sahip bir Servis Veri Servisi veri günü kuyruğu için iki SAS ilkeleri oluşturur.
 
 Aşağıdaki playbook'u `servicebus_queue_policy.yml` olarak kaydedin:
 
@@ -102,18 +102,18 @@ Aşağıdaki playbook'u `servicebus_queue_policy.yml` olarak kaydedin:
           var: policy
 ```
 
-PlayBook 'u çalıştırmadan önce aşağıdaki notlara bakın:
-- `rights` değeri, bir kullanıcının kuyrukla olan ayrıcalığını temsil eder. Şu değerlerden birini belirtin: `manage`, `listen`, `send`veya `listen_send`.
+Oyun kitabını çalıştırmadan önce aşağıdaki notalara bakın:
+- Değer, `rights` kullanıcının kuyrukla olan ayrıcalığını temsil eder. Aşağıdaki değerlerden birini `manage`belirtin: , , `listen` `send`, veya `listen_send`.
 
-`ansible-playbook` komutunu kullanarak PlayBook 'u çalıştırın:
+Komutu kullanarak oyun `ansible-playbook` kitabını çalıştırın:
 
 ```bash
 ansible-playbook servicebus_queue_policy.yml
 ```
 
-## <a name="retrieve-namespace-information"></a>Ad alanı bilgilerini al
+## <a name="retrieve-namespace-information"></a>Ad alanı bilgilerini alma
 
-Örnek PlayBook kodu, ad alanı bilgilerini sorgular.
+Örnek oyun kitabı kodu ad alanı bilgilerini sorgular.
 
 Aşağıdaki playbook'u `servicebus_namespace_info.yml` olarak kaydedin:
 
@@ -135,18 +135,18 @@ Aşağıdaki playbook'u `servicebus_namespace_info.yml` olarak kaydedin:
           var: ns
 ```
 
-PlayBook 'u çalıştırmadan önce aşağıdaki notlara bakın:
-- `show_sas_policies` değeri, belirtilen ad alanı altında SAS ilkelerinin gösterilip gösterilmeyeceğini gösterir. Varsayılan olarak, ek ağ yükünün önüne geçmek için değeri `False`.
+Oyun kitabını çalıştırmadan önce aşağıdaki notalara bakın:
+- Değer, `show_sas_policies` SAS ilkelerinin belirtilen ad alanı altında gösterip göstermeyeceğini gösterir. Varsayılan olarak, değer `False` ek ağ ek yükü önlemek içindir.
 
-`ansible-playbook` komutunu kullanarak PlayBook 'u çalıştırın:
+Komutu kullanarak oyun `ansible-playbook` kitabını çalıştırın:
 
 ```bash
 ansible-playbook servicebus_namespace_info.yml
 ```
 
-## <a name="retrieve-queue-information"></a>Kuyruk bilgilerini al
+## <a name="retrieve-queue-information"></a>Sıra bilgilerini alma
 
-Örnek PlayBook kodu, kuyruk bilgilerini sorgular. 
+Örnek playbook kodu sıra bilgilerini sorgular. 
 
 Aşağıdaki playbook'u `servicebus_queue_info.yml` olarak kaydedin:
 
@@ -170,18 +170,18 @@ Aşağıdaki playbook'u `servicebus_queue_info.yml` olarak kaydedin:
           var: queue
 ```
 
-PlayBook 'u çalıştırmadan önce aşağıdaki notlara bakın:
-- `show_sas_policies` değeri, SAS ilkelerinin belirtilen sıra altında gösterilip gösterilmeyeceğini gösterir. Bu değer, varsayılan olarak, ek ağ yükünün önüne geçmek için `False` olarak ayarlanır.
+Oyun kitabını çalıştırmadan önce aşağıdaki notalara bakın:
+- Değer, `show_sas_policies` belirtilen sıranın altındaki SAS ilkelerinin gösterip gösterilmeyip gösterilemeyeceğini gösterir. Varsayılan olarak, bu değer `False` ek ağ ek yükü önlemek için ayarlanır.
 
-`ansible-playbook` komutunu kullanarak PlayBook 'u çalıştırın:
+Komutu kullanarak oyun `ansible-playbook` kitabını çalıştırın:
 
 ```bash
 ansible-playbook servicebus_queue_info.yml
 ```
 
-## <a name="revoke-the-queue-sas-policy"></a>Kuyruk SAS ilkesini iptal etme
+## <a name="revoke-the-queue-sas-policy"></a>Sıra SAS ilkesini iptal et
 
-Örnek PlayBook kodu bir sıra SAS ilkesini siler.
+Örnek playbook kodu bir sıra SAS ilkesini siler.
 
 Aşağıdaki playbook'u `servicebus_queue_policy_delete.yml` olarak kaydedin:
 
@@ -202,7 +202,7 @@ Aşağıdaki playbook'u `servicebus_queue_policy_delete.yml` olarak kaydedin:
           state: absent
 ```
 
-`ansible-playbook` komutunu kullanarak PlayBook 'u çalıştırın:
+Komutu kullanarak oyun `ansible-playbook` kitabını çalıştırın:
 
 ```bash
 ansible-playbook servicebus_queue_policy_delete.yml
@@ -210,9 +210,9 @@ ansible-playbook servicebus_queue_policy_delete.yml
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Artık gerekli değilse, bu makalede oluşturulan kaynakları silin. 
+Artık gerekmediğinde, bu makalede oluşturulan kaynakları silin. 
 
-Aşağıdaki kodu `cleanup.yml`olarak kaydedin:
+Aşağıdaki kodu aşağıdaki `cleanup.yml`gibi kaydedin:
 
 ```yml
 ---
@@ -240,7 +240,7 @@ Aşağıdaki kodu `cleanup.yml`olarak kaydedin:
           force_delete_nonempty: yes
 ```
 
-`ansible-playbook` komutunu kullanarak PlayBook 'u çalıştırın:
+Komutu kullanarak oyun `ansible-playbook` kitabını çalıştırın:
 
 ```bash
 ansible-playbook cleanup.yml
@@ -248,4 +248,4 @@ ansible-playbook cleanup.yml
 
 ## <a name="next-steps"></a>Sonraki adımlar
 > [!div class="nextstepaction"] 
-> [Öğretici: Azure Service Bus bir konuyu, anormal kullanarak yapılandırma](ansible-service-bus-topic-configure.md)
+> [Öğretici: Ansible kullanarak Azure Hizmet Veri Tos'undaki bir konuyu yapılandırma](ansible-service-bus-topic-configure.md)
