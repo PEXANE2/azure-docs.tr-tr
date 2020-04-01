@@ -8,23 +8,31 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 967fd1fa182b7c8e581fd74cc287c5a6ba0e4038
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8c5de43ed29856451ad67e02a426b07cc34a0d54
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79127832"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422425"
 ---
 # <a name="linux-support"></a>Linux desteği
 
-Bağımsız bir Windows Sanal Masaüstü istemcisi oluşturmak için Windows Sanal Masaüstü için Linux SDK'yı kullanabilirsiniz. İstemci uygulamanızda Windows Sanal Masaüstü desteğini etkinleştirmek için de kullanabilirsiniz. Bu hızlı kılavuz, Linux SDK'nın ne olduğunu ve nasıl kullanmaya başlayacağımı açıklayacaktır.
+İş ortakları, bağımsız bir Windows Sanal Masaüstü istemcisi oluşturmak için Windows Sanal Masaüstü için Linux SDK'yı kullanabilir. İstemci uygulamanızda Windows Sanal Masaüstü desteğini etkinleştirmek için de kullanabilirsiniz. Bu hızlı kılavuz, Linux SDK'nın ne olduğunu ve nasıl kullanmaya başlayacağımı açıklayacaktır.
+
+## <a name="connect-with-your-linux-device"></a>Linux cihazınızla bağlantı kurun
+
+Aşağıdaki iş ortakları Linux aygıtları için Windows Sanal Masaüstü istemcilerini onaylamiştir.
+
+|İş Ortağı|İş ortağı belgeleri|İş ortağı desteği|
+|:------|:--------------------|:--------------|
+|![IGEL logosu](./media/partners/igel.png)|[IGEL müşteri belgeleri](https://www.igel.com/igel-solution-family/windows-virtual-desktop/)|[IGEL desteği](https://www.igel.com/support/)|
 
 ## <a name="what-is-the-linux-sdk"></a>Linux SDK nedir?
 
 Kaynak akışlarını almak, masaüstü veya uzak uygulama oturumlarına bağlanmak ve birinci taraf istemcilerimizin desteklediği yönlendirmelerin çoğunu kullanmak için SDK API'lerini kullanabilirsiniz.
 
 > [!NOTE]
-> SDK şu anda geliştirilmekte. Bu belgeyi kullanılabilir olduğunda SDK'ya erişim yönergeleriyle güncelleştireceğiz.
+> SDK şu anda geliştirilmekte. Bu belgeyi, genel kullanıma sunulduğunda SDK'ya erişim yönergeleriyle güncelleştireceğiz.
 
 ### <a name="supported-linux-distributions"></a>Desteklenen Linux dağıtımları
 

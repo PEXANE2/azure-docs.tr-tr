@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/13/2019
 ms.author: ramamill
-ms.openlocfilehash: 25e2b488d3b6e7e5cabd1a71d1489efaf01231b3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0383a512dfb7c2bb1ae2422b9ade1e3c7387a70c
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73748543"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478314"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>Yapılandırma sunucusu sorunlarını giderme
 
@@ -42,7 +42,7 @@ Mobilite aracısını yüklediğinizde kaynak makine yapılandırma sunucusuna k
     3. Site Kurtarma klasöründe listelenen klasörlerin [virüsten koruma programlarından hariç](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program) tutulmasını sağlayın.
     4. Ağ sorunları çözüldüğünde, [kaynak makineyi yapılandırma sunucusuna kaydedin'deki](vmware-azure-troubleshoot-configuration-server.md#register-source-machine-with-configuration-server)yönergeleri izleyerek kaydı yeniden deneyin.
 
-6. Dize **sonrası isteği: (7) - Sunucuya bağlanamayan,** aynı günlük dosyasında, dize **isteğine bakın: (60) - Eş sertifikası verilen CA sertifikalarıyla doğrulanamaz.** Yapılandırma sunucusu sertifikasının süresi dolduğunda veya kaynak makine TLS 1.0 veya daha sonra SSL protokollerini desteklemediği için bu hata oluşabilir. Bir güvenlik duvarı kaynak makine ve yapılandırma sunucusu arasındaki SSL iletişimini engellerse de oluşabilir. Dize bulunursa: 
+6. Dize **sonrası isteği: (7) - Sunucuya bağlanamayan,** aynı günlük dosyasında, dize **isteğine bakın: (60) - Eş sertifikası verilen CA sertifikalarıyla doğrulanamaz.** Yapılandırma sunucusu sertifikasının süresi dolduğunda veya kaynak makine TLS 1.0 veya daha sonraki protokolleri desteklemediği için bu hata oluşabilir. Bir güvenlik duvarı kaynak makine ve yapılandırma sunucusu arasındaki TLS iletişimini engellerse de oluşabilir. Dize bulunursa: 
     1. Çözmek için, kaynak makinede bir web tarayıcısı kullanarak yapılandırma sunucusu IP adresine bağlanın. URI https:\/ \/<yapılandırma sunucusu\>IP adresini kullanın :443/. Kaynak makinenin 443 portu üzerinden yapılandırma sunucusuna erişebilmesini sağlayın.
     2. Kaynak makinenin yapılandırma sunucusuyla konuşması için kaynak makineye güvenlik duvarı kurallarının eklenmesi veya kaldırılması gerekip gerekmediğini denetleyin. Kullanımda olabilecek güvenlik duvarı yazılımı çeşitliliği nedeniyle, gerekli tüm güvenlik duvarı yapılandırmalarını listelayamayız. Bağlantı sorunlarını kaldırmak için ağ yöneticilerinizle birlikte çalışın.
     3. Site Kurtarma klasöründe listelenen klasörlerin [virüsten koruma programlarından hariç](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program) tutulmasını sağlayın.  

@@ -1,21 +1,21 @@
 ---
-title: 'Öğretici: Resmi karşıya yükleme - Bing Görsel Arama'
+title: "Öğretici: Bing Görsel Arama API'sını kullanarak görüntü yükleme"
 titleSuffix: Azure Cognitive Services
-description: Resim hakkında içgörüler almak için resmi Bing'e yükleme, sonra da yanıtı ayrıştırma ve görüntüleme işlemini bölümlerine ayırır.
+description: Bing'e nasıl resim yükleyip, bu resim hakkında bilgi edinmeyi, yanıtı görüntülemeyi öğrenin.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: tutorial
-ms.date: 11/29/2019
+ms.date: 03/31/2020
 ms.author: scottwhi
-ms.openlocfilehash: 84a8219221525400a9d3241c2f183d24344c2f6a
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: ecd1ab5e613bb326b65f6aa50f3f85172bc334ac
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74689173"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477926"
 ---
 # <a name="tutorial-upload-images-to-the-bing-visual-search-api"></a>Öğretici: Bing Görsel Arama API'sine resim yükleme
 

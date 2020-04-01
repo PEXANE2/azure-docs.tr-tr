@@ -328,7 +328,7 @@ IoT Hub'da aygıttan buluta (D2C) iletileri izlemek için [Azure IoT Araçların
 
 1. Azure [portalında](https://portal.azure.com/)oturum açın, oluşturduğunuz IoT Hub'ını bulun.
 
-    ![Azure portalında](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/azure-iot-hub-portal.png)
+    ![Azure portal](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/azure-iot-hub-portal.png)
 
 1. Paylaşılan **erişim ilkeleri** bölmesinde, **iothubowner ilkesini**tıklatın ve IoT hub'ınızın Bağlantı dizesini yazın.
 

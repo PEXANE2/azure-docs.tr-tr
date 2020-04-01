@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 02/28/2019
-ms.openlocfilehash: c32731ce2de2b0f886a1e21ee8ccad3996e395eb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/30/2019
+ms.openlocfilehash: 29d5213b8eecd94ed8c8ce565972c9f98872a362
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79480275"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411424"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>Azure Monitor'da günlük sorgularını optimize edin
 Azure Monitor Günlükleri, günlük verilerini depolamak ve bu verileri çözümlemek için sorguları çalıştırmak için [Azure Veri Gezgini 'ni (ADX)](/azure/data-explorer/) kullanır. ADX kümelerini sizin için oluşturur, yönetir ve korur ve bunları günlük çözümlemesi iş yükünüz için optimize eder. Bir sorgu çalıştırdığınızda, en iyi duruma getirilmiş ve çalışma alanı verilerini depolayan uygun ADX kümesine yönlendirilir. Hem Azure Monitor Günlükleri hem de Azure Veri Gezgini birçok otomatik sorgu optimizasyonu mekanizması kullanır. Otomatik optimizasyonlar önemli bir artış sağlarken, sorgu performansınızı önemli ölçüde artırabileceğiniz bazı durumlarda bunlardır. Bu makalede, performans konuları ve bunları düzeltmek için çeşitli teknikler açıklanmaktadır.
@@ -57,7 +57,7 @@ Sorgu işleme süresi harcanmış:
 - Veri alma - eski verilerin alınması, son verilerin alınmasından daha fazla zaman tüketir.
 - Veri işleme – verilerin mantığı ve değerlendirilmesi. 
 
-Sorgu işleme düğümlerinde harcanan zaman dışında, Azure Monitor Günlükleri tarafından harcanan ek süre vardır: kullanıcının kimliğini doğrulamak ve bu verilere erişmelerine izin verildiğinden doğrulama, veri deposunu bulma, sorguyu ayrıştırmak ve sorgu işlemini ayırmak Düğüm. Bu süre sorgu toplam CPU süresine dahil edilmez.
+Sorgu işleme düğümlerinde harcanan zaman dışında, Azure Monitor Günlükleri tarafından kullanıcının kimliğini doğrulamak ve bu verilere erişmelerine izin verildiğinden doğrulamak, veri deposunu bulmak, sorguyu ayrıştırmak ve sorgu işleme düğümlerini ayırmak için harcanan ek süre vardır. Bu süre sorgu toplam CPU süresine dahil edilmez.
 
 ### <a name="early-filtering-of-records-prior-of-using-high-cpu-functions"></a>Yüksek CPU işlevleri kullanmadan önce kayıtların erken filtrelemi
 
@@ -155,6 +155,21 @@ Heartbeat
 
 > [!NOTE]
 > Bu gösterge, hemen kümeden yalnızca CPU'yu sunar. Çok günlük sorgusunda, yalnızca bir bölgeyi temsil eder. Çok çalışma alanı sorgusunda, tüm çalışma alanlarını içermeyebilir.
+
+### <a name="avoid-full-xml-and-json-parsing-when-string-parsing-works"></a>Dize ayrıştma çalışırken tam XML ve JSON ayrıştma kaçının
+Bir XML veya JSON nesnesinin tam ayrıştırma yüksek CPU ve bellek kaynakları tüketebilir. Çoğu durumda, yalnızca bir veya iki parametre gerektiğinde ve XML veya JSON nesneleri basit olduğunda, [ayrıştırma işleci](/azure/kusto/query/parseoperator) veya diğer [metin ayrıştırma tekniklerini](/azure/azure-monitor/log-query/parse-text)kullanarak dizeleri olarak ayrıştırmak daha kolaydır. XML veya JSON nesnesindeki kayıt sayısı arttıkça performans artışı daha önemli olacaktır. Kayıt sayısı on milyonlara ulaştığında bu esastır.
+
+Örneğin, aşağıdaki sorgu tam XML ayrıştırma gerçekleştirmeden yukarıdaki sorgularla tam olarak aynı sonuçları döndürecektir. FilePath öğesi FileHash sonra gelir ve bunların hiçbiri öznitelikleri vardır gibi XML dosya yapısı üzerinde bazı varsayımlar yapar unutmayın. 
+
+```Kusto
+//even more efficient
+SecurityEvent
+| where EventID == 8002 //Only this event have FileHash
+| where EventData !has "%SYSTEM32" //Early removal of unwanted records
+| parse EventData with * "<FilePath>" FilePath "</FilePath>" * "<FileHash>" FileHash "</FileHash>" *
+| summarize count() by FileHash, FilePath
+| where FileHash != "" // No need to filter out %SYSTEM32 here as it was removed before
+```
 
 
 ## <a name="data-used-for-processed-query"></a>İşlenmiş sorgu için kullanılan veriler

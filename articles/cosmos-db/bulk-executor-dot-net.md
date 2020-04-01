@@ -6,17 +6,22 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 09/01/2019
+ms.date: 03/23/2020
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: d7600267dcd196a9a5c06c29774ea21d582cd7ce
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 40ef05107f20a3396f6710f894a2dbad2d7fa6c9
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79246883"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478853"
 ---
 # <a name="use-the-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>Azure Cosmos DB'de toplu işlemler gerçekleştirmek için toplu yürütme .NET kitaplığını kullanın
+
+> [!NOTE]
+> Bu makalede açıklanan bu toplu yürütme kitaplığı .NET SDK 2.x sürümü kullanılarak uygulamalar için korunur. Yeni uygulamalar [için,.NET SDK sürüm 3.x](tutorial-sql-api-dotnet-bulk-import.md) ile doğrudan kullanılabilen **toplu desteği** kullanabilirsiniz ve herhangi bir dış kitaplık gerektirmez. 
+
+> Şu anda toplu yürütücü kitaplığını kullanıyorsanız ve yeni SDK'da toplu desteğe geçiş yapmayı planlıyorsanız, uygulamanızı geçirmek için [Geçiş kılavuzundaki](how-to-migrate-from-bulk-executor-library.md) adımları kullanın.
 
 Bu öğretici, belgeleri bir Azure Cosmos kapsayıcısına almak ve güncelleştirmek için toplu yürütme .NET kitaplığını kullanma yla ilgili yönergeler sağlar. Toplu yürütme kitaplığı ve büyük iş artışı ve depolamadan yararlanmanıza nasıl yardımcı olduğu hakkında bilgi edinmek [için, toplu yürütme alanı genel bakış](bulk-executor-overview.md) makalesine bakın. Bu öğreticide, rasgele oluşturulan belgeleri bir Azure Cosmos kapsayıcısına toplu olarak içe aktarmayı sağlayan bir örnek .NET uygulaması görürsünüz. İçe aktarmadan sonra, belirli belge alanlarında gerçekleştirecek işlemler olarak yamaları belirterek içe aktarılan verileri nasıl toplu olarak güncelleştirebileceğinizi gösterir.
 

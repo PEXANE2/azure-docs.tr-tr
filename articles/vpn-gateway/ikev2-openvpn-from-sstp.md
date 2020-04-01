@@ -5,14 +5,14 @@ services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 03/22/2020
+ms.date: 03/30/2020
 ms.author: alzam
-ms.openlocfilehash: 60c3a7f4f12993f475b3d03fd0915971d7673a5c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5500d993a4bf3c664f14182d983f9abed8ebb08a
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80143111"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398374"
 ---
 # <a name="transition-to-openvpn-protocol-or-ikev2-from-sstp"></a>SSTP'den OpenVPN protokolüne veya IKEv2'ye geçiş
 
@@ -33,7 +33,7 @@ Noktadan siteye VPN aşağıdaki protokollerden birini kullanabilir:
 >IkEv2 ve P2S için OpenVPN yalnızca Kaynak Yöneticisi dağıtım modeli için kullanılabilir. Bunlar klasik dağıtım modeli için kullanılamaz. Temel ağ geçidi SKU IKEv2 veya OpenVPN protokollerini desteklemez. Temel SKU kullanıyorsanız, bir üretim SKU Sanal Ağ Ağ Ağ Geçidi'ni silmek ve yeniden oluşturmak zorunda kaldığınız zaman.
 >
 
-## <a name="migrating-from-sspt-to-ikev2-or-openvpn"></a>SSPT'den IKEv2 veya OpenVPN'e geçiş
+## <a name="migrating-from-sstp-to-ikev2-or-openvpn"></a>SSTP'den IKEv2 veya OpenVPN'e geçiş
 
 VPN ağ geçidine 128'den fazla eşzamanlı P2S bağlantısını desteklemek istediğiniz, ancak SSTP kullandığınız durumlar olabilir. Böyle bir durumda IKEv2 veya OpenVPN protokolüne geçmeniz gerekir.
 

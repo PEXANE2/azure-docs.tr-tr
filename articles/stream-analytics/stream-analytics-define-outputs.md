@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: e0b4bcac8494f136dde21b03422e12b72cecb8f3
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: 4517f85fae278bd8bc15a9586d9dc0202e7dfe56
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80366438"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475237"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Azure Akış Analitiği'nden çıktıları anlama
 
@@ -47,7 +47,7 @@ Aşağıdaki tabloda, Veri Gölü Depolama Gen 1 çıktınızı yapılandırmak 
 | Biçimlendir | Yalnızca JSON serileştirme için geçerlidir. **Satır ayrılmış** çıktısı her JSON nesnesi yeni bir satır ile ayrılmış alarak biçimlendirilir belirtir. **Satır ayrılmış**seçerseniz, JSON bir seferde bir nesne okunur. Tek başına tüm içerik geçerli bir JSON olmaz.  **Dizi,** çıktının json nesnesi dizisi olarak biçimlendirilmiş olduğunu belirtir. Bu dizi yalnızca iş durduğunda veya Akış Analizi bir sonraki zaman penceresine geçtiğinde kapatılır. Genel olarak, çıktı dosyası hala yazılmakta yken herhangi bir özel işleme gerektirmediği için satır ayrılmış JSON kullanmak tercih edilir.|
 | Kimlik doğrulaması modu | [Yönetilen Kimlik](stream-analytics-managed-identities-adls.md) veya Kullanıcı belirteci kullanarak Veri Gölü Depolama hesabınıza erişim yetkisi verebilirsiniz. Erişim izni verdikten sonra, kullanıcı hesabı parolasını değiştirerek, bu iş için Veri Gölü Depolama çıktısını silerek veya Stream Analytics işini silerek erişimi iptal edebilirsiniz. |
 
-## <a name="sql-database"></a>SQL Database
+## <a name="sql-database"></a>SQL Veritabanı
 
 [Azure SQL Veritabanı'nı,](https://azure.microsoft.com/services/sql-database/) doğası gereği ilişkisel veriler veya ilişkisel bir veritabanında barındırılan içeriğe bağlı uygulamalar için çıktı olarak kullanabilirsiniz. Akış Analizi işleri SQL Veritabanı'ndaki varolan bir tabloya yazar. Tablo şeması, işinizin çıktısındaki alanları ve bunların türlerini tam olarak eşleştirmelidir. Ayrıca, SQL Veritabanı çıktısı seçeneği aracılığıyla [Azure SQL Veri Ambarı'nı](https://azure.microsoft.com/documentation/services/sql-data-warehouse/) çıktı olarak da belirtebilirsiniz. Yazma verime sini geliştirmenin yolları hakkında bilgi edinmek için, Çıktı makalesi [olarak Azure SQL Veritabanı ile Akış Analizi'ni](stream-analytics-sql-output-perf.md) görün.
 
@@ -58,7 +58,7 @@ Aşağıdaki tabloda, SQL Veritabanı çıktısı oluşturmak için özellik adl
 | Özellik adı | Açıklama |
 | --- | --- |
 | Çıktı diğer adı |Sorgu çıktısını bu veritabanına yönlendirmek için sorgularda kullanılan kolay bir ad. |
-| Database | Çıktınızı gönderdiğiniz veritabanının adı. |
+| Veritabanı | Çıktınızı gönderdiğiniz veritabanının adı. |
 | Sunucu adı | SQL Veritabanı sunucu adı. Azure SQL Veritabanı Yönetilen Örnek için bağlantı noktası 3342'yi belirtmeniz gerekir. Örneğin, *sampleserver.public.database.windows.net,3342* |
 | Kullanıcı adı | Veritabanına yazma erişimi olan kullanıcı adı. Akış Analizi yalnızca SQL kimlik doğrulamasını destekler. |
 | Parola | Veritabanına bağlanmak için parola. |
@@ -188,7 +188,7 @@ Aşağıdaki tabloda, tablo çıktısı oluşturmak için özellik adları ve a�
 | Tablo adı |Masanın adı. Tablo yoksa oluşturulur. |
 | Bölüm anahtarı |Bölüm anahtarını içeren çıkış sütununun adı. Bölüm anahtarı, varlığın birincil anahtarının ilk bölümünü oluşturan bir tabloiçindeki bölüm için benzersiz bir tanımlayıcıdır. 1 KB boyutuna kadar olabilecek bir dize değeridir. |
 | Satır tuşu |Satır anahtarını içeren çıktı sütununun adı. Satır anahtarı, bölüm içindeki bir varlık için benzersiz bir tanımlayıcıdır. Bir varlığın birincil anahtarının ikinci bölümünü oluşturur. Satır tuşu, 1 KB boyutuna kadar olabilecek bir dize değeridir. |
-| Toplu iş boyutu |Toplu işleyiş için kayıt sayısı. Varsayılan (100) çoğu iş için yeterlidir. Bu ayarı değiştirme hakkında daha fazla bilgi için [Tablo Toplu İşlemi spec](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table._table_batch_operation) bakın. |
+| Toplu iş boyutu |Toplu işleyiş için kayıt sayısı. Varsayılan (100) çoğu iş için yeterlidir. Bu ayarı değiştirme hakkında daha fazla bilgi için [Tablo Toplu İşlemi spec](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table.tablebatchoperation) bakın. |
 
 ## <a name="service-bus-queues"></a>Service Bus kuyrukları
 
@@ -252,7 +252,7 @@ Aşağıdaki tabloda, Azure Cosmos DB çıktısı oluşturma özellikleri açık
 | İçeri aktarma seçeneği | **Aboneliğinizden Cosmos DB'yi seçin** veya **Cosmos DB ayarlarını el ile sağlayın.**
 | Hesap Kimliği | Azure Cosmos DB hesabının adı veya bitiş noktası URI. |
 | Hesap anahtarı | Azure Cosmos DB hesabının paylaşılan erişim anahtarı. |
-| Database | Azure Cosmos DB veritabanı adı. |
+| Veritabanı | Azure Cosmos DB veritabanı adı. |
 | Kapsayıcı adı | Kullanılacak konteyner adı, Cosmos DB'de bulunması gerekir. Örnek:  <br /><ul><li> _MyContainer_: "MyContainer" adlı bir kapsayıcı bulunmalıdır.</li>|
 | Belge Kimliği |İsteğe bağlı. Ekleme veya güncelleştirme işlemlerinin temel aldığı birincil anahtarı belirtmek için kullanılan çıktı olaylarında alanın adı.
 
@@ -342,18 +342,18 @@ Azure Akış Analizi, olayları işlemek ve çıktılara yazmak için değişken
 
 Aşağıdaki tabloda çıktı toplu işlemesi için dikkat edilmesi gereken noktalardan bazıları açıklanmaktadır:
 
-| Çıkış türü | Maksimum ileti boyutu | Toplu boyut optimizasyonu |
+| Çıkış türü |    Maksimum ileti boyutu | Toplu boyut optimizasyonu |
 | :--- | :--- | :--- |
 | Azure Data Lake Store | [Bkz. Veri Gölü Depolama sınırları.](../azure-resource-manager/management/azure-subscription-service-limits.md#data-lake-store-limits) | Yazma işlemi başına 4 MB'a kadar kullanın. |
 | Azure SQL Veritabanı | Max toplu iş sayısı kullanılarak yapılandırılabilir. Varsayılan olarak tek toplu uç başına 10.000 maksimum ve 100 minimum satır.<br />Bkz. [Azure SQL sınırları.](../sql-database/sql-database-resource-limits.md) |  Her toplu iş başlangıçta en fazla toplu madde sayısı ile eklenir. Toplu iş, SQL'den yeniden denilebilir hatalara göre ikiye bölünür (minimum toplu iş sayısına kadar). |
 | Azure Blob depolama | Bkz. [Azure Depolama sınırları.](../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits) | Maksimum blob blok boyutu 4 MB'dır.<br />Maksimum damla bock sayısı 50.000'dir. |
-| Azure Event Hubs  | İleti başına 256 KB veya 1 MB. <br />Bkz. [Olay Hub'ları sınırları.](../event-hubs/event-hubs-quotas.md) |  Giriş/çıktı bölümleme hizalı olmadığında, her olay ayrı ayrı `EventData` paketlenir ve maksimum ileti boyutuna kadar bir toplu iş halinde gönderilir. Özel meta [veri özellikleri](#custom-metadata-properties-for-output) kullanılırsa da bu olur. <br /><br />  Giriş/çıktı bölümleme hizalandığında, birden çok olay en `EventData` yüksek ileti boyutuna kadar tek bir örnek halinde paketlenir ve gönderilir. |
+| Azure Event Hubs    | İleti başına 256 KB veya 1 MB. <br />Bkz. [Olay Hub'ları sınırları.](../event-hubs/event-hubs-quotas.md) |    Giriş/çıktı bölümleme hizalı olmadığında, her olay ayrı ayrı `EventData` paketlenir ve maksimum ileti boyutuna kadar bir toplu iş halinde gönderilir. Özel meta [veri özellikleri](#custom-metadata-properties-for-output) kullanılırsa da bu olur. <br /><br />  Giriş/çıktı bölümleme hizalandığında, birden çok olay en `EventData` yüksek ileti boyutuna kadar tek bir örnek halinde paketlenir ve gönderilir.    |
 | Power BI | Bkz. [Güç BI Rest API sınırları.](https://msdn.microsoft.com/library/dn950053.aspx) |
 | Azure Tablo depolama | Bkz. [Azure Depolama sınırları.](../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits) | Varsayılan değer, tek bir hareket başına 100 varlıktır. Gerektiğinde daha küçük bir değere göre yapılandırabilirsiniz. |
-| Azure Service Bus kuyruğu   | Standart katman için mesaj başına 256 KB, Premium katman için 1MB.<br /> [Bkz. Servis Veri Günü sınırları.](../service-bus-messaging/service-bus-quotas.md) | İleti başına tek bir olay kullanın. |
+| Azure Service Bus kuyruğu    | Standart katman için mesaj başına 256 KB, Premium katman için 1MB.<br /> [Bkz. Servis Veri Günü sınırları.](../service-bus-messaging/service-bus-quotas.md) | İleti başına tek bir olay kullanın. |
 | Azure Service Bus konusu | Standart katman için mesaj başına 256 KB, Premium katman için 1MB.<br /> [Bkz. Servis Veri Günü sınırları.](../service-bus-messaging/service-bus-quotas.md) | İleti başına tek bir olay kullanın. |
-| Azure Cosmos DB   | [Azure Cosmos DB sınırlarını](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-cosmos-db-limits)görün. | Toplu iş boyutu ve yazma sıklığı, Azure Cosmos DB yanıtları temel alınca dinamik olarak ayarlanır. <br /> Stream Analytics'in önceden belirlenmiş sınırlamaları yoktur. |
-| Azure İşlevleri   | | Varsayılan toplu iş boyutu 262.144 bayt (256 KB) 'dir. <br /> Toplu iş başına varsayılan olay sayısı 100'dür. <br /> Toplu iş boyutu yapılandırılabilir ve Stream Analytics [çıkış seçeneklerinde](#azure-functions)artırılabilir veya azaltılabilir.
+| Azure Cosmos DB    | [Azure Cosmos DB sınırlarını](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-cosmos-db-limits)görün. | Toplu iş boyutu ve yazma sıklığı, Azure Cosmos DB yanıtları temel alınca dinamik olarak ayarlanır. <br /> Stream Analytics'in önceden belirlenmiş sınırlamaları yoktur. |
+| Azure İşlevleri    | | Varsayılan toplu iş boyutu 262.144 bayt (256 KB) 'dir. <br /> Toplu iş başına varsayılan olay sayısı 100'dür. <br /> Toplu iş boyutu yapılandırılabilir ve Stream Analytics [çıkış seçeneklerinde](#azure-functions)artırılabilir veya azaltılabilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 > [!div class="nextstepaction"]

@@ -4,16 +4,16 @@ description: Azure Analiz Hizmetleri sunucu yöneticisi rolüne nasıl bir otoma
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/29/2019
+ms.date: 03/30/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 1370f65405963ebf825e986e6801607a0d96156e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 925fbbb51ac240b96486a2c0aa09c850a8d164bc
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78298097"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80408639"
 ---
 # <a name="add-a-service-principal-to-the-server-administrator-role"></a>Sunucu yöneticisi rolüne bir hizmet ilkesi ekleme 
 
@@ -39,7 +39,7 @@ SQL Server Management Studio 'yı (SSMS) kullanarak sunucu yöneticilerini yapı
     
     ![Servis ana hesabı nı ara](./media/analysis-services-addservprinc-admins/aas-add-sp-ssms-add.png)
 
-## <a name="using-a-resource-manager-template"></a>Kaynak Yöneticisi şablonu kullanma
+## <a name="using-a-resource-manager-template"></a>Resource Manager şablonu kullanma
 
 Ayrıca, Çözümleme Hizmetleri sunucusunu Azure Kaynak Yöneticisi şablonu kullanarak dağıtarak sunucu yöneticilerini yapılandırabilirsiniz. Dağıtımı çalıştıran kimlik, [Azure Role Tabanlı Erişim Denetimi'ndeki (RBAC)](../role-based-access-control/overview.md)kaynak için **Katılımcı** rolüne ait olmalıdır.
 

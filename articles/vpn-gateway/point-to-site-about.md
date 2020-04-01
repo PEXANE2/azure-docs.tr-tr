@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: cherylmc
-ms.openlocfilehash: 78ed07560fdb15efb2de13c194549f5b433b775a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 381aad5d0a56362d9966ed54b931a8478f2f6bf2
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77500610"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80410496"
 ---
 # <a name="about-point-to-site-vpn"></a>Noktadan Siteye VPN Hakkında
 
@@ -22,9 +22,9 @@ Noktadan Siteye (P2S) VPN ağ geçidi bağlantısı, ayrı bir istemci bilgisaya
 
 Noktadan siteye VPN aşağıdaki protokollerden birini kullanabilir:
 
-* **OpenVPN® Protokolü**, SSL/TLS tabanlı VPN protokolü. Çoğu güvenlik duvarı TCP bağlantı noktası 443 giden açık olduğundan, Bir SSL VPN çözümü güvenlik duvarları nüfuz edebilir, Hangi SSL kullanır. OpenVPN, Android, iOS (11.0 ve üzeri sürümler), Windows, Linux ve Mac aygıtlarından (OSX sürümleri 10.13 ve üzeri) bağlanmak için kullanılabilir.
+* **OpenVPN® Protokolü**, SSL/TLS tabanlı VPN protokolü. Bir TLS VPN çözümü güvenlik duvarlarına nüfuz edebilir, çünkü çoğu güvenlik duvarı TCP bağlantı noktası 443 giden ilerlediği ve TLS'nin kullandığı açık olduğundan. OpenVPN, Android, iOS (11.0 ve üzeri sürümler), Windows, Linux ve Mac aygıtlarından (OSX sürümleri 10.13 ve üzeri) bağlanmak için kullanılabilir.
 
-* Güvenli Soket Tünel Protokolü (SSTP), özel bir SSL tabanlı VPN protokolü. Çoğu güvenlik duvarı TCP bağlantı noktası 443 giden açık olduğundan, Bir SSL VPN çözümü güvenlik duvarları nüfuz edebilir, Hangi SSL kullanır. SSTP yalnızca Windows aygıtlarında desteklenir. Azure, Windows'un SSTP (Windows 7 ve sonrası) tüm sürümlerini destekler.
+* Güvenli Soket Tünel Protokolü (SSTP), özel bir TLS tabanlı VPN protokolü. Bir TLS VPN çözümü güvenlik duvarlarına nüfuz edebilir, çünkü çoğu güvenlik duvarı TCP bağlantı noktası 443 giden ilerlediği ve TLS'nin kullandığı açık olduğundan. SSTP yalnızca Windows aygıtlarında desteklenir. Azure, Windows'un SSTP (Windows 7 ve sonrası) tüm sürümlerini destekler.
 
 * IKEv2 VPN, standart tabanlı bir IPsec VPN çözümüdür. IKEv2 VPN, Mac cihazlardan (OSX sürüm 10.11 ve üzeri) bağlantı kurmak için kullanılabilir.
 

@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/06/2020
 ms.author: dapine
-ms.openlocfilehash: 8392e03f272c6db2bb384c8031cb975bca53d530
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 0c0fa3e07e0cdae6ce28fcd1521b63cb2575767f
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "79372805"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80502335"
 ---
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -37,7 +37,7 @@ Bir baş harfe başlatmanın birkaç [`SpeechConfig`](https://docs.microsoft.com
 * Bir ana bilgisayar ile: bir ana bilgisayar adresi geçmek. Anahtar veya yetkilendirme belirteci isteğe bağlıdır.
 * Yetkilendirme belirteci yle: yetkilendirme jetonundan ve ilişkili bölgeye geçin.
 
-Bir anahtar ve bölge kullanılarak [`SpeechConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig) nasıl oluşturulduğuna bir göz atalım.
+Bir anahtar ve bölge kullanılarak [`SpeechConfig`](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig) nasıl oluşturulduğuna bir göz atalım. Bölge tanımlayıcınızı bulmak için [bölge destek](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk) sayfasına bakın.
 
 ```cpp
 auto config = SpeechConfig::FromSubscription("YourSubscriptionKey", "YourServiceRegion");

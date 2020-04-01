@@ -4,12 +4,12 @@ description: Sorun giderme yükleme, Azure Yedekleme Sunucusu kaydı ve uygulama
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: cc0cf7e91c1aacbc637d33ab1e5546cc54836b28
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: deff49a7d00a335c396a6fa36d3846ef353331c5
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78673124"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421288"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Azure Backup Sunucusu sorunlarını giderme
 
@@ -26,7 +26,7 @@ Microsoft Azure Yedekleme Sunucusu (MABS) sorun giderme başlatmaya başlamadan 
 - Kayıt başarısız oluyorsa, Azure Yedekleme Sunucusu'nu yüklemeye çalıştığınız sunucunun başka bir kasaya kayıtlı olmadığından emin olun
 - Göndermeli yükleme başarısız olursa DPM aracısının zaten mevcut olup olmadığını kontrol edin. Varsa aracıyı kaldırıp tekrar yüklemeyi deneyin
 - [Azure Backup ile çakışan başka bir işlem veya virüsten koruma yazılımı olmadığından emin olun](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-slow-backup-performance-issue#cause-another-process-or-antivirus-software-interfering-with-azure-backup)<br>
-- MAB sunucusunda SQL Aracısı hizmetinin çalıştığından ve otomatik olarak ayarlandığından emin olun<br>
+- SQL Agent hizmetinin çalıştığını ve MABS sunucusunda otomatik olarak ayarlandığından emin olun<br>
 
 ## <a name="invalid-vault-credentials-provided"></a>Sağlanan kasa kimlik bilgileri geçersiz
 

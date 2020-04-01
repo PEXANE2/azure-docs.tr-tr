@@ -4,12 +4,12 @@ description: Azure Monitor'da metrik uyarılarla neler yapabileceğinize ve bunl
 ms.date: 03/17/2020
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: b6d8bc69a407838025c5e78e0a1c773ab457c409
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a6860cad077b597df923274f8971f5652d4ba9e3
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79480241"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397983"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Azure İzleyici'de ölçüm uyarılarının nasıl çalıştığını anlama
 
@@ -51,7 +51,7 @@ Aşağıdaki gibi basit bir Dinamik Eşikler metrik uyarı kuralı oluşturduğu
 - Geriye Bak Periyotlar: 4
 - İhlal Sayısı: 4
 
-Uyarı kuralı oluşturulduktan sonra, Dinamik Eşikler makine öğrenimi algoritması kullanılabilir geçmiş verileri elde edecek, metrik seri davranış desenine en uygun eşiği hesaplar ve yeni verilere dayanarak sürekli olarak eşik daha doğru.
+Uyarı kuralı oluşturulduktan sonra, Dinamik Eşikler makine öğrenme algoritması kullanılabilir geçmiş verileri elde edecek, metrik seri davranış desenine en uygun eşiği hesaplar ve eşiği daha doğru hale getirmek için yeni verilere dayalı olarak sürekli olarak öğrenir.
 
 Uyarı kuralı oluşturulduğu andan itibaren, monitör her 1 dakika çalışır ve son 20 dakika içinde 5 dakikalık dönemler halinde gruplanan metrik değerlere bakar ve 4 dönemin her birinde dönem değerlerinin ortalamasının beklenen eşiği aşıp aşmadığı kontrol eder. Durum, yani durum karşılanırsa, son 20 dakika (dört 5 dakika periyot) ortalama Yüzde CPU beklenen davranış dört kez sapmış, uyarı kuralı etkin leştirilmiş bir bildirim yangınları. Uyarı kuralıyla ilişkili eylem grubunda bir e-posta veya web bağlantısı eylemi yapılandırmışsanız, her ikisinde de etkinleştirilmiş bir bildirim alırsınız.
 
@@ -140,6 +140,10 @@ Bu özellik şu anda aşağıdaki Azure bulutlarında aşağıdaki hizmetler iç
 - tek bir abonelikteki tüm sanal makineler (tek bir Azure bölgesinde)
 
 Birden çok kaynağı izleyen metrik uyarı kuralları oluşturmak, tek bir kaynağı izleyen başka bir [metrik uyarı oluşturmaya](alerts-metric.md) benzer. Tek fark, izlemek istediğiniz tüm kaynakları seçeceğinizdir. Bu kuralları [Azure Kaynak Yöneticisi şablonları](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-a-metric-alert-that-monitors-multiple-resources)aracılığıyla da oluşturabilirsiniz. İzlenen her kaynak için ayrı ayrı bildirimler alırsınız.
+
+> [!NOTE]
+>
+> Birden çok kaynağı izleyen bir metrik uyarı kuralında yalnızca bir koşula izin verilir.
 
 ## <a name="typical-latency"></a>Tipik gecikme
 

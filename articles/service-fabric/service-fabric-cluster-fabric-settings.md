@@ -3,12 +3,12 @@ title: Azure Hizmet Kumaş küme ayarlarını değiştirme
 description: Bu makalede, özelleştirebileceğiniz kumaş ayarları ve kumaş yükseltme ilkeleri açıklanmaktadır.
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: a4e64a4db70d419a3ef6441545d53abd298c85bb
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 8ca40791e625f1ea5904c4e2516e3f211ba551cf
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80346805"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477901"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric kümesi ayarlarını özelleştirme
 Bu makalede, Özelleştirebileceğiniz Hizmet Kumaşı kümenizin çeşitli kumaş ayarları açıklanmaktadır. Azure'da barındırılan kümeler için, ayarları [Azure portalı](https://portal.azure.com) üzerinden veya Azure Kaynak Yöneticisi şablonu kullanarak özelleştirebilirsiniz. Daha fazla bilgi için [bkz.](service-fabric-cluster-config-upgrade-azure.md) Bağımsız kümeler için *ClusterConfig.json* dosyasını güncelleştirerek ve kümenizde yapılandırma yükseltmesi gerçekleştirerek ayarları özelleştirebilirsiniz. Daha fazla bilgi için bkz: [Bağımsız bir kümenin yapılandırmasını yükseltin.](service-fabric-cluster-config-upgrade-windows-server.md)
@@ -29,7 +29,7 @@ Aşağıda, bölüme göre düzenlenmiş, özelleştirebileceğiniz Kumaş ayarl
 |BodyChunkSize |Uint, varsayılan 16384 |Dinamik| Vücudu okumak için kullanılan baytlar içinde yığın için boyutunu verir. |
 |CrlCheckingFlag|uint, varsayılan 0x4000000 |Dinamik| Uygulama/hizmet sertifikası zinciri doğrulaması için bayraklar; örneğin 0x10000000CERT_CHAIN_REVOCATION_CHECK_END_CERT 0x20000000 CERT_CHAIN_REVOCATION_CHECK_CHAIN 0x4000 CERT_CHAIN_REVOCATION_CHECK_CHAIN_EXCLUDE_ROOT000 0x40000000 CERT_CHAIN_REVOCATION_CHECK_CACHE_ONLY 0 devre dışı kalarak CRL denetimi desteklenen değerlerin tam listesini CertGetCertificateChain dwFlags tarafından belgelenir:https://msdn.microsoft.com/library/windows/desktop/aa376078(v=vs.85).aspx  |
 |VarsayılanHttpRequestTimeout |Saniyeler içinde zaman. varsayılan 120 |Dinamik|Zaman açıklığı saniye cinsinden belirtin.  Http uygulaması ağ geçidinde işlenen http istekleri için varsayılan istek zaman arasını verir. |
-|ForwardClientCertificate|bool, varsayılan FALSE olduğunu|Dinamik|Yanlış olarak ayarlandığında, ters proxy istemci sertifikası için istekte bulunmaz. Doğru ayarlandığında, ters proxy SSL el sıkışma sırasında istemci sertifikası için istek tevekkül eder ve base64 kodlanmış PEM biçimi dizesini X-Client-Certificate.The servis in adlandırılmış bir üstbilgide hizmete iletir. sertifika verilerini inceledikten sonra. Bu doğruysa ve istemci bir sertifika sunmuyorsa, ters proxy boş bir üstbilgi iletir ve servisin servisin servis ini işlemesine izin verir. Ters proxy saydam bir katman olarak hareket edecektir. Daha fazla bilgi için [bkz.](service-fabric-reverseproxy-configure-secure-communication.md#setting-up-client-certificate-authentication-through-the-reverse-proxy) |
+|ForwardClientCertificate|bool, varsayılan FALSE olduğunu|Dinamik|Yanlış olarak ayarlandığında, ters proxy istemci sertifikası için istekte bulunmaz. Doğru ayarlandığında, ters proxy SSL el sıkışma sıcağa göre istemci sertifikası için istekte bulunacak ve base64 kodlanmış PEM biçimi dizesini X-Client-Certificate.The servis, sertifika verilerini inceledikten sonra uygun durum koduyla isteği başarısız alacaktır. Bu doğruysa ve istemci bir sertifika sunmuyorsa, ters proxy boş bir üstbilgi iletir ve servisin servisin servis ini işlemesine izin verir. Ters proxy saydam bir katman olarak hareket edecektir. Daha fazla bilgi için [bkz.](service-fabric-reverseproxy-configure-secure-communication.md#setting-up-client-certificate-authentication-through-the-reverse-proxy) |
 |GatewayAuthCredentialType |dize, varsayılan "Yok" |Statik| http app ağ geçidi bitiş noktası Geçerli değerleri kullanmak için güvenlik kimlik bilgileri türünü gösterir None/X509 vardır. |
 |GatewayX509CertificateFindType |dize, varsayılan "FindByThumbprint" |Dinamik| GatewayX509CertificateStoreName Desteklenen değer tarafından belirtilen mağazada sertifika aramanasıl yapılacağını gösterir: FindByThumbprint; Findbysubjectname. |
 |GatewayX509CertificateFindValue | dize, varsayılan "" |Dinamik| Http uygulaması ağ geçidi sertifikasını bulmak için kullanılan arama filtresi değeri. Bu sertifika https bitiş noktasında yapılandırılır ve hizmetler tarafından gerekirse uygulamanın kimliğini doğrulamak için de kullanılabilir. FindValue ilk aranır; ve eğer bu yoksa; FindValueSecondary yukarı bakılır. |
@@ -55,9 +55,9 @@ Aşağıda, bölüme göre düzenlenmiş, özelleştirebileceğiniz Kumaş ayarl
 | **Parametre** | **İzin Verilen Değerler** | **Yükseltme İlkesi** | **Rehberlik veya Kısa Açıklama** |
 | --- | --- | --- | --- |
 |MinReplicaSetSize|int, varsayılan 0|Statik|BackupRestoreService için MinReplicaSetSize |
-|YerleşimKısıtlamalar|dize, varsayılan ""|Statik|  BackupGeri hizmeti için Yerleşim Kısıtlamaları |
+|YerleşimKısıtlamalar|dize, varsayılan ""|Statik|    BackupGeri hizmeti için Yerleşim Kısıtlamaları |
 |GizliŞifrelemeCertThumbprint|dize, varsayılan ""|Dinamik|Gizli şifreleme X509 sertifikasının parmak izi |
-|SecretEncryptionCertX509StoreName|dize, varsayılan "Benim"|   Dinamik|    Bu, Yedekleme Geri Yükleme hizmeti tarafından kullanılan şifre çözme deposu kimlik bilgilerini şifrelemek için kullanılan X.509 sertifika deposunun adı şifreleme ve şifre çözme için kullanılacak sertifikayı gösterir |
+|SecretEncryptionCertX509StoreName|dize, varsayılan "Benim"|    Dinamik|    Bu, Yedekleme Geri Yükleme hizmeti tarafından kullanılan şifre çözme deposu kimlik bilgilerini şifrelemek için kullanılan X.509 sertifika deposunun adı şifreleme ve şifre çözme için kullanılacak sertifikayı gösterir |
 |TargetReplicaSetSize|int, varsayılan 0|Statik| BackupRestoreService için TargetReplicaSetSize |
 
 ## <a name="clustermanager"></a>ClusterManager
@@ -147,7 +147,7 @@ Aşağıda, bölüme göre düzenlenmiş, özelleştirebileceğiniz Kumaş ayarl
 | **Parametre** | **İzin Verilen Değerler** | **Yükseltme İlkesi** | **Rehberlik veya Kısa Açıklama** |
 | --- | --- | --- | --- |
 |MinReplicaSetSize|int, varsayılan 0|Statik|EventStore hizmeti için MinReplicaSetSize |
-|YerleşimKısıtlamalar|dize, varsayılan ""|Statik|  EventStore hizmeti için Yerleşim Kısıtlamaları |
+|YerleşimKısıtlamalar|dize, varsayılan ""|Statik|    EventStore hizmeti için Yerleşim Kısıtlamaları |
 |TargetReplicaSetSize|int, varsayılan 0|Statik| EventStore hizmeti için TargetReplicaSetSize |
 
 ## <a name="fabricclient"></a>KumaşMüşteri
@@ -270,7 +270,7 @@ Aşağıda, bölüme göre düzenlenmiş, özelleştirebileceğiniz Kumaş ayarl
 |CommonNameNtlmPasswordSecret|SecureString, varsayılan ortak::SecureString("")| Statik|NTLM kimlik doğrulaması kullanırken aynı parolayı oluşturmada tohum olarak kullanılan parola sırrı |
 |DiskSpaceHealthReportingIntervalWhenClosetooutdiskSpace |TimeSpan, varsayılan yaygındır::TimeSpan::FromMinutes(5)|Dinamik|Zaman açıklığı saniye cinsinden belirtin. Disk uzaydışına yakın olduğunda sistem durumu olayını bildirmek için disk alanının denetlemi arasındaki zaman aralığı. |
 |DiskSpaceHealthReportingIntervalWhenEnoughDiskSpace |TimeSpan, varsayılan yaygındır::TimeSpan::FromMinutes(15)|Dinamik|Zaman açıklığı saniye cinsinden belirtin. Diskte yeterli alan olduğunda sistem durumu olayını bildirmek için disk alanının denetlemi arasındaki zaman aralığı. |
-|EnableImageStoreSağlıkRaporlama |bool, varsayılan DOĞRU |Statik|Dosya deposu hizmetinin sistem durumunu bildirmesi gerekip gerekmediğini belirlemek için config. |
+|EnableImageStoreSağlıkRaporlama |bool, varsayılan DOĞRU    |Statik|Dosya deposu hizmetinin sistem durumunu bildirmesi gerekip gerekmediğini belirlemek için config. |
 |ÜcretsizDiskSpaceNotificationSizeinkb|int64, varsayılan 25\*1024 |Dinamik|Aşağıda sistem durumu uyarısı nın gerçekleşebileceği boş disk alanının boyutu. Bu config ve FreeDiskSpaceNotificationThresholdeksi minimum değeri sağlık uyarısı gönderme belirlemek için kullanılır. |
 |FreeDiskSpaceBildirimThresholdPercentage|çift, varsayılan 0,02 |Dinamik|Sistem durumu uyarısının gerçekleşebileceği boş disk alanı yüzdesi. Bu config ve FreeDiskSpaceNotificationINMB config minimum değeri sağlık uyarısı gönderme belirlemek için kullanılır. |
 |OluşturmaV1CommonNameAccount| bool, varsayılan DOĞRU|Statik|Kullanıcı adı V1 oluşturma algoritmasına sahip bir hesap oluşturup oluşturmayacağını belirtir. Service Fabric sürüm 6.1 ile başlayarak; v2 nesilli bir hesap her zaman oluşturulur. V1 hesabı, V2 üretimini desteklemeyen sürümlerden /için yükseltmeler için gereklidir (6.1'den önce).|
@@ -547,7 +547,7 @@ Aşağıda, bölüme göre düzenlenmiş, özelleştirebileceğiniz Kumaş ayarl
 |MinPlacementInterval | Saniye cinsinden zaman, varsayılan değer 1 |Dinamik| Zaman açıklığı saniye cinsinden belirtin. Art arda iki yerleşim turundan önce geçmesi gereken minimum süreyi tanımlar. |
 |MoveExistingReplicaForplacement | Bool, varsayılan doğrudur |Dinamik|Yerleşim sırasında varolan yinelemenin hareket ettirilip taşınmayacağına karar veren ayar. |
 |HareketPerPartitionThrotleCountingInterval | Saniye cinsinden zaman, varsayılan 600 |Statik| Zaman açıklığı saniye cinsinden belirtin. Her bölüm için çoğaltma hareketlerini izlemek için geçmiş aralığın uzunluğunu belirtin (MovementPerPartitionThrottleThreshold ile birlikte kullanılır). |
-|HareketPerPartitionThrotleThreshold | Uint, varsayılan 50 |Dinamik| Bu bölümün kopyaları için dengeleme ile ilgili hareketlerin sayısı, geçen aralıkta MovementPerFailoverUnitThrottleThreshold'a ulaşmış veya aşmışsa, bir bölüm için dengeleme ile ilgili hareket oluşmaz. MovementPerPartitionThrotleCountingInterval. |
+|HareketPerPartitionThrotleThreshold | Uint, varsayılan 50 |Dinamik| Bu bölümün kopyaları için dengeleme ile ilgili hareketlerin sayısı MovementPerPartitionThrottleCountingInterval tarafından belirtilen geçmiş aralıkta MovementPerFailoverUnitThrottleThreshold'a ulaşmış veya aşmışsa, bir bölüm için dengeleme ile ilgili hareket oluşmaz. |
 |MoveParentToFixAffinityViolation | Bool, varsayılan yanlış |Dinamik| Üst yinelemelerin yakınlık kısıtlamalarını düzeltmek için taşınıp taşınamayacağına karar veren ayar.|
 |KısmenPlaceServices | Bool, varsayılan doğrudur |Dinamik| Kümedeki tüm hizmet yinelemelerinin kendileri için sınırlı uygun düğümler verildiğinde "tümü veya hiç" yerleştirilip yerleştirilmeyeceğini belirler.|
 |YerChildWithoutParent | Bool, varsayılan doğrudur | Dinamik|Üst yineleme yoksa alt hizmet yinelemesi yerleştirilip yerleştirilmeyeceğini belirleyen ayar. |
@@ -568,8 +568,8 @@ Aşağıda, bölüme göre düzenlenmiş, özelleştirebileceğiniz Kumaş ayarl
 |TraceCRMReasons |Bool, varsayılan doğrudur |Dinamik|CRM'nin operasyonel olaylar kanalına hareket verme nedenlerini izleyip izlememe yi belirtir. |
 |YükseltmeDomainConstraintPriority | Int, varsayılan 1| Dinamik|Yükseltme etki alanı kısıtlamasının önceliğini belirler: 0: Sert; 1: Yumuşak; negatif: Yoksay. |
 |MoveCostReports'u kullan | Bool, varsayılan yanlış | Dinamik|LB'ye puanlama işlevinin maliyet öğesini yoksaymasını bildirir; daha dengeli bir yerleşim için potansiyel olarak çok sayıda hamle elde edin. |
-|KullanımAyrıİkincil Yük | Bool, varsayılan doğrudur | Dinamik|Farklı ikincil yük kullanıp kullanılmayacağına karar veren ayar. |
-|KullanımAyrıİkincilTaşıma Maliyeti|Bool, varsayılan FALSE olduğunu | Dinamik|Kullanım AyırırİkincilMoveCost kapalı ise her düğüm de ikincil için farklı taşıma maliyeti kullanmanız gerektiğini PLB belirler Ayarı: - Bir düğüm üzerinde ikincil için bildirilen taşıma maliyeti her ikincil (diğer tüm düğümler üzerinde) için overwritting taşıma maliyeti neden olur UseSeparateSecondaryMoveCost açık: - Bir düğüm üzerinde ikincil için bildirilen taşıma maliyeti yalnızca ikincil (diğer düğümlerde ikincil etkisi olmaz) üzerinde etkili olacaktır - Çoğaltma kilitlenme gerçekleşirse - yeni yineleme hizmette belirtilen varsayılan taşıma maliyeti ile oluşturulur düzeyi - PLB varolan çoğaltma taşırsa - taşıma maliyeti ile gider |
+|KullanımAyrıİkincil Yük | Bool, varsayılan doğrudur | Dinamik|İkincil yinelemeler için ayrı yük kullanılıp kullanılmaması gerektiğini belirleyen ayar. |
+|KullanımAyrıİkincilTaşıma Maliyeti | Bool, varsayılan yanlış | Dinamik|İkincil yinelemeler için ayrı taşıma maliyetinin kullanIlip kullanılmayeceğini belirleyen ayar. |
 |DoğrulamaYerleşimKısıtlaması | Bool, varsayılan doğrudur |Dinamik| Bir hizmetin Hizmet Açıklaması güncelleştirildiğinde, bir hizmetiçin PlacementConstraint ifadesinin doğrulanıp doğrulanmayacağını belirtir. |
 |DoğrulamaBirincil Yerleştirme KısıtlamalarıPromote| Bool, varsayılan DOĞRU |Dinamik|Bir hizmet için PlacementConstraint ifadesinin başarısız olduğunda birincil tercih için değerlendirilip değerlendirilmeyeceğini belirtir. |
 |VerboseHealthReportLimit | Int, varsayılan 20 | Dinamik|Bir sistem durumu uyarısı bildirilmeden önce bir yinelemenin yersiz olarak kaç kez gitmesi gerektiğini tanımlar (ayrıntılı sistem durumu raporlaması etkinse). |
@@ -685,7 +685,7 @@ Aşağıda, bölüme göre düzenlenmiş, özelleştirebileceğiniz Kumaş ayarl
 |AyarlarX509StoreName| dize, varsayılan "MY"| Dinamik|Konfigürasyon koruması için kumaş tarafından kullanılan X509 sertifika deposu |
 |UseClusterCertForIpcServerTlsSecurity|bool, varsayılan FALSE olduğunu|Statik|IPC Server TLS taşıma birimini güvence altına almak için küme sertifikası kullanıp kullanmama |
 |X509Klasör|dize, varsayılan /var/lib/waagent|Statik|X509 sertifikalarının ve özel anahtarların bulunduğu klasör |
-|TLS1_2_CipherList| string| Statik|Boş olmayan bir dize olarak ayarlanırsa; TLS1.2 ve altında desteklenen şifreleme listesini geçersiz kılar. Desteklenen şifreleme listesini ve TLS1.2 için güçlü şifreleme listesi nin liste formatını almak için 'openssl-şifreler' belgelerine bakın: "ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-G8-G83: ECDHE-RSA-AES-128-GCM-SHA256:ECDHE-ECDSA-AES256-CBC-SHA384:ECDHE-ECDSA-AES128-CBC-SHA256:ECDHE-RSA-AES256-CBC-SHA384:ECDHE-RSA-AES128-CBC-SHA256" Yalnızca Linux için geçerlidir. |
+|TLS1_2_CipherList| string| Statik|Boş olmayan bir dize olarak ayarlanırsa; TLS1.2 ve altında desteklenen şifreleme listesini geçersiz kılar. Desteklenen şifre listesini almak için 'openssl-şifreler' belgelerine ve TLS1.2 için güçlü şifre listesi örneğine bakın: "ECDHE-ECDSA-AES256-G CM-SHA384:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-RS AES-128-GCM-SHA256:ECDHE-ECDSA-AES256-CBC-SHA384:ECDHE-ECDSA-AES128-C BC-SHA256:ECDHE-RSA-AES256-CBC-SHA384:ECDHE-RSA-AES128-CBC-SHA256" Yalnızca Linux için geçerlidir. |
 
 ## <a name="securityadminclientx509names"></a>Güvenlik/AdminClientX509İsimler
 

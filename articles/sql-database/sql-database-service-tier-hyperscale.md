@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/01/2019
-ms.openlocfilehash: efb6cd1a45ac14dcbd5b2b6d8e70f5ee096ddbd8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5a9917010b7301bf70c3bebf68c35d82f4839e0f
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79255840"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80409057"
 ---
 # <a name="hyperscale-service-tier"></a>Hiper ölçekli hizmet katmanı
 
@@ -25,7 +25,7 @@ Azure SQL Veritabanı, altyapı hataları durumunda bile %99,99 kullanılabilirl
 -  Hiper Ölçek
 -  İş Kritik / Premium
 
-Azure SQL Veritabanı'ndaki Hyperscale hizmet katmanı, vCore tabanlı satın alma modelindeki en yeni hizmet katmanıdır. Bu hizmet katmanı, Azure SQL Veritabanı'nın depolama ve işlem kaynaklarını Genel Amaç ve İşletme için mevcut sınırların önemli ölçüde üzerinde ölçeklendirmek için Azure mimarisinden yararlanan yüksek ölçeklenebilir bir depolama ve işlem performansı katmanıdır Kritik hizmet katmanları.
+Azure SQL Veritabanı'ndaki Hyperscale hizmet katmanı, vCore tabanlı satın alma modelindeki en yeni hizmet katmanıdır. Bu hizmet katmanı, Azure SQL Veritabanı'nın depolama ve işlem kaynaklarını Genel Amaç ve İş Açısından Kritik hizmet katmanları için mevcut sınırların önemli ölçüde üzerinde ölçeklendirmek için Azure mimarisinden yararlanan son derece ölçeklenebilir bir depolama ve işlem performansı katmanıdır.
 
 > 
 > [!NOTE]
@@ -96,7 +96,7 @@ Sayfa sunucuları, ölçeklenmiş depolama motorlarını temsil eden sistemlerdi
 
 ### <a name="log-service"></a>Günlük hizmeti
 
-Günlük hizmeti birincil bilgi işlem yinelemesinden günlük kayıtlarını kabul eder, bunları dayanıklı bir önbellekte tutar ve günlük kayıtlarını bilgi işlem yinelemelerinin geri kalanına (önbelleklerini güncelleştirebilmeleri için) ve ilgili sayfa sunucusuna(lar) iletir, böylece veriler güncellenebilir orada. Bu şekilde, birincil bilgi işlem yinelemesinden tüm veri değişiklikleri günlük hizmeti aracılığıyla tüm ikincil bilgi işlem yinelemelerine ve sayfa sunucularına yayılır. Son olarak, günlük kayıtları neredeyse sonsuz bir depolama deposu olan Azure Depolama'da uzun süreli depolamaya itilir. Bu mekanizma sık sık günlük kesilme gereksinimini kaldırır. Günlük hizmeti, günlük kayıtlarına erişimi hızlandırmak için yerel önbelleğe de sahiptir.
+Günlük hizmeti birincil bilgi işlem yinelemesinden günlük kayıtlarını kabul eder, bunları dayanıklı bir önbellekte tutar ve günlük kayıtlarını, verilerin orada güncelleştirilebilmeleri için, önbelleklerini (önbelleklerini güncelleştirebilmeleri için) diğer bilgi işlem yinelemelerine (önbelleklerini güncelleştirebilmeleri için) iletir. Bu şekilde, birincil bilgi işlem yinelemesinden tüm veri değişiklikleri günlük hizmeti aracılığıyla tüm ikincil bilgi işlem yinelemelerine ve sayfa sunucularına yayılır. Son olarak, günlük kayıtları neredeyse sonsuz bir depolama deposu olan Azure Depolama'da uzun süreli depolamaya itilir. Bu mekanizma sık sık günlük kesilme gereksinimini kaldırır. Günlük hizmeti, günlük kayıtlarına erişimi hızlandırmak için yerel önbelleğe de sahiptir.
 
 ### <a name="azure-storage"></a>Azure depolama alanı
 
@@ -205,8 +205,7 @@ Bunlar, GA itibariyle Hyperscale hizmet katmanına geçerli sınırlamalar getir
 | Sorun | Açıklama |
 | :---- | :--------- |
 | Mantıksal bir sunucu için Yedekleri Yönet bölmesi Hyperscale veritabanlarının SQL sunucusundan filtrelanacağını göstermez  | Hyperscale yedekleme leri yönetmek için ayrı bir yönteme sahiptir ve bu nedenle Uzun Süreli Bekletme ve Zaman Noktasında Nokta yedekleme bekletme ayarları geçerli değildir / geçersiz kılınmıştır. Buna göre, Hyperscale veritabanları Yedeklemeyi Yönet bölmesinde görünmez. |
-| Belirli bir noktaya geri yükleme | Bir veritabanı Hiper ölçek hizmet katmanına geçirildikten sonra, geçişten önce bir noktaya geri yükleme desteklenmez.|
-| Hiper ölçekli olmayan DB'nin Hyperscale'e geri yüklendiğini ve bunun tersi | Bir Hiperölçek veritabanını Hiperölçek olmayan bir veritabanına geri yükleyemezsiniz veya Hiperölçek olmayan bir veritabanını Hyperscale veritabanına geri yükleyemezsiniz.|
+| Belirli bir noktaya geri yükleme | Hiperölçekli olmayan veritabanı tutma süresi içinde, Hiperölçekli olmayan bir veritabanına Bir Hiperölçekli veritabanı geri yükleyebilirsiniz. Hiperölçek olmayan bir veritabanını Bir Hiper ölçek veritabanına geri yükleyemezsiniz.|
 | Bir veritabanında 1 TB'den büyük bir veya daha fazla veri dosyası varsa, geçiş başarısız olur | Bazı durumlarda, büyük dosyaları 1 TB'den az olacak şekilde küçülterek bu sorunu çözmek mümkün olabilir. Geçiş işlemi sırasında kullanılan bir veritabanını geçirtiyorsanız, hiçbir dosyanın 1 TB'dan büyük olmadığından emin olun. Veritabanı dosyalarının boyutunu belirlemek için aşağıdaki sorguyu kullanın. `SELECT *, name AS file_name, size * 8. / 1024 / 1024 AS file_size_GB FROM sys.database_files WHERE type_desc = 'ROWS'`;|
 | Yönetilen Örnek | Azure SQL Veritabanı Yönetilen Örnek şu anda Hyperscale veritabanları ile desteklenmez. |
 | Esnek Havuzlar |  Elastik Havuzlar şu anda SQL Veritabanı Hyperscale ile desteklenmez.|

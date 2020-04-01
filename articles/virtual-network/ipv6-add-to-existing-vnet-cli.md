@@ -11,21 +11,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/23/2019
+ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 5dc231febc2e9b605b9e7f603f5d036b8a2c62eb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f3f9b32ea55f0ceebf08b22ccc7e2ceec0b6227e
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80240751"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80420799"
 ---
-# <a name="add-ipv6-to-an-ipv4-application-in-azure-virtual-network---azure-cli-preview"></a>Azure sanal ağındaki bir IPv4 uygulamasına IPv6 ekleme - Azure CLI (Önizleme)
+# <a name="add-ipv6-to-an-ipv4-application-in-azure-virtual-network---azure-cli"></a>Azure sanal ağındaki bir IPv4 uygulamasına IPv6 ekleme - Azure CLI
 
 Bu makalede, Azure CLI kullanan bir Standart Yük Dengeleyicisi için Bir Azure sanal ağında IPv4 genel IP adresini kullanan bir uygulamaya IPv6 adresleri nasıl ekleyeceğiniz gösterilmektedir. Yerinde yükseltme sanal ağ ve alt ağ, IPv4 + IPV6 ön uç yapılandırmaları ile standart yük dengeleyici, IPv4 + IPv6 yapılandırmaları, ağ güvenlik grubu ve ortak IP'ler olan NIC'ler içerir.
 
-> [!Important]
-> Azure Sanal Ağı için IPv6 desteği şu anda genel önizlemededir. Bu önizleme bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Ayrıntılar için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -33,29 +31,6 @@ Bunun yerine Azure CLI'yi yerel olarak yüklemeye ve kullanmaya karar verirseniz
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-### <a name="register-the-service"></a>Hizmeti kaydedin
-
-Azure'da bir çift yığın uygulaması dağıtmadan önce, aboneliğinizi bu önizleme özelliği için aşağıdaki Azure CLI'yi kullanarak yapılandırmanız gerekir:
-
-```azurecli
-az feature register --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
-az feature register --name AllowIPv6CAOnStandardLB --namespace Microsoft.Network
-```
-
-Özellik kaydının tamamlanması 30 dakika kadar sürer. Aşağıdaki Azure CLI komutunu çalıştırarak kayıt durumunuzu kontrol edebilirsiniz:
-
-```azurecli
-az feature show --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
-az feature show --name AllowIPv6CAOnStandardLB --namespace Microsoft.Network
-```
-
-Kayıt tamamlandıktan sonra aşağıdaki komutu çalıştırın:
-
-```azurecli
-az provider register --namespace Microsoft.Network
-```
-
-### <a name="create-a-standard-load-balancer"></a>Standart Yük Dengeleyici oluşturma
 Bu makalede, [Quickstart: Create a Standard Load Balancer - Azure CLI'de](../load-balancer/quickstart-load-balancer-standard-public-cli.md)açıklandığı gibi bir Standart Yük Dengeleyicisi dağıtıldığınızı varsayar.
 
 ## <a name="create-ipv6-addresses"></a>IPv6 adresleri oluşturma
@@ -173,8 +148,6 @@ Azure portalındaki IPv6 çift yığın sanal ağını aşağıdaki gibi görün
 
   ![Azure'da IPv6 çift yığın sanal ağ](./media/ipv6-add-to-existing-vnet-powershell/ipv6-dual-stack-vnet.png)
 
-> [!NOTE]
-> Azure için IPv6 sanal ağı, bu önizleme sürümü için salt okunur olarak Azure portalında kullanılabilir.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

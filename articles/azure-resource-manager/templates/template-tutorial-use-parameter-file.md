@@ -5,12 +5,12 @@ author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 0f7b966d4241716d71779e966de5d408711e4543
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b91041b96a3819dbace3898d92226f0351f0f973
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80371787"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411516"
 ---
 # <a name="tutorial-use-parameter-files-to-deploy-your-arm-template"></a>Öğretici: ARM şablonunuzu dağıtmak için parametre dosyalarını kullanma
 
@@ -54,7 +54,7 @@ Bu dosya, üretim ortamı için parametre dosyanızdır. Depolama hesabı için 
 
 İlk olarak, dev ortamına konuşlandırılacağız.
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 $templateFile = "{path-to-the-template-file}"
@@ -90,7 +90,7 @@ az deployment group create \
 
 Şimdi, üretim ortamına konuşlandırılacağız.
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 $parameterFile="{path-to-azuredeploy.parameters.prod.json}"
@@ -119,6 +119,9 @@ az deployment group create \
 ```
 
 ---
+
+> [!NOTE]
+> Dağıtım başarısız olduysa, hata ayıklama günlüklerini göstermek için dağıtım komutuyla **hata ayıklama** anahtarını kullanın.  Tam hata ayıklama günlüklerini göstermek için **ayrıntılı** anahtar da kullanabilirsiniz.
 
 ## <a name="verify-deployment"></a>Dağıtımı doğrulama
 

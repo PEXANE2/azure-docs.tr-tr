@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: malop
 ms.reviewer: kumud
-ms.openlocfilehash: 8b95bb45436f45dc0e62fb12d6ab1b24c37372e1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d9ed11cd00909a104b5ea54463f8a98020837e10
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79280072"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477887"
 ---
 # <a name="virtual-network-traffic-routing"></a>Sanal ağ trafiğini yönlendirme
 
@@ -122,7 +122,7 @@ Sonraki atlama türleri için gösterilen ve başvurulan ad, Azure portalı ile 
 
 BGP kullanarak Azure ile yolları değiştirdiğinizde, tanıtılan her ön ek için bir sanal ağdaki tüm alt ağların yol tablosuna ayrı bir yol eklenir. Yol, kaynak ve sonraki atlama türü olarak *Sanal ağ geçidi* listelenerek eklenir. 
 
-ER ve VPN Ağ Geçidi rota yayılımı, bir alt ağüzerinde rota tablosundaki bir özellik kullanılarak devre dışı edilebilir. BGP kullanarak Azure ile rota alışverişinde bulunduğınızda, sanal ağ ağ geçidi rotası yayılma devre dışı bırakılmış tüm alt ağların rota tablosuna rotalar eklenmez. VPN bağlantıları, sonraki atlama türü *Sanal ağ geçidi* olan [özel yollar](#custom-routes) kullanılarak gerçekleştirilir. Ayrıntılar için Sanal [ağ ağ geçidi rotası yayılmasını nasıl devre dışı kılırılabilirsiniz.](manage-route-table.md#create-a-route-table)
+ER ve VPN Ağ Geçidi rota yayılımı, bir alt ağüzerinde rota tablosundaki bir özellik kullanılarak devre dışı edilebilir. BGP kullanarak Azure ile rota alışverişinde bulunduğınızda, sanal ağ ağ geçidi rotası yayılma devre dışı bırakılmış tüm alt ağların rota tablosuna rotalar eklenmez. VPN bağlantıları, sonraki atlama türü *Sanal ağ geçidi* olan [özel yollar](#custom-routes) kullanılarak gerçekleştirilir. **Route yayılımı GatewaySubnet'te devre dışı bırakılmamalıdır. Ağ geçidi bu ayarı devre dışı bırakılmış olarak çalışmaz.** Ayrıntılar için Sanal [ağ ağ geçidi rotası yayılmasını nasıl devre dışı kılırılabilirsiniz.](manage-route-table.md#create-a-route-table)
 
 ## <a name="how-azure-selects-a-route"></a>Azure yolu nasıl seçer?
 

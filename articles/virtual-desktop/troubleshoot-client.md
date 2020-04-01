@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 12/13/2019
+ms.date: 03/31/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e3a240901ffca2c126e2b61eaee0cf287cc31d6e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 595762e6e8f22dddff30f1cff8c4bb79e89624b1
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79127497"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80473859"
 ---
 # <a name="troubleshoot-the-remote-desktop-client"></a>Uzak Masaüstü istemcisini giderme
 
@@ -21,21 +21,15 @@ Bu makalede, Uzak Masaüstü istemcisi ile ortak sorunları ve bunları nasıl d
 
 ## <a name="remote-desktop-client-for-windows-7-or-windows-10-stops-responding-or-cannot-be-opened"></a>Windows 7 veya Windows 10 için Uzak Masaüstü istemcisi yanıt vermeyi durdurur veya açılamaz
 
-Bant dışı (OOB) istemci kayıt larını temizlemek için aşağıdaki PowerShell cmdlets'i kullanın.
+Sürüm 1.2.790'dan başlayarak, kullanıcı verilerini Hakkında sayfasından veya bir komut kullanarak sıfırlayabilirsiniz.
 
-```PowerShell
-Remove-ItemProperty 'HKCU:\Software\Microsoft\Terminal Server Client\Default' - Name FeedURLs
+Kullanıcı verilerinizi kaldırmak, varsayılan ayarları geri yüklemek ve tüm Çalışma Alanlarından aboneliğinizi kaldırmak için aşağıdaki komutu kullanın.
 
-#Remove RdClientRadc registry key
-Remove-Item 'HKCU:\Software\Microsoft\RdClientRadc' -Recurse
-
-#Remove all files under %appdata%\RdClientRadc
-Remove-Item C:\Users\pavithir\AppData\Roaming\RdClientRadc\* -Recurse
+```cmd
+msrdcw.exe /reset [/f]
 ```
 
-**%AppData%\RdClientRadc'a** gidin ve tüm içeriği silin.
-
-Windows 7 ve Windows 10 için Uzak Masaüstü istemcisi kaldırın ve yeniden yükleyin.
+Uzak Masaüstü istemcisinin önceki bir sürümünü kullanıyorsanız, istemciyi kaldırmanızı ve yeniden yüklemenizi öneririz.
 
 ## <a name="web-client-wont-open"></a>Web istemcisi açılmıyor
 

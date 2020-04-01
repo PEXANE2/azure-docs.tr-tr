@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 916c828365c8f9f50f408bd6c51182bb6e89605f
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 113ab07af8ada16c0779da510c5f5b1f1f5a290b
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80384203"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398228"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>Sensör ortaklarından sensör verileri alma
 
@@ -37,43 +37,44 @@ Sensör verilerinin akışını başlattıktan sonra, farmbeats sisteminize veri
  - Gizli anahtar
  - EventHub bağlantı dizesi
 
-Yukarıdaki bilgileri aşağıdaki adımları izleyerek oluşturabilirsiniz: (Lütfen bu adımların Azure'da yapılması gerektiğini, bu nedenle FarmBeats'in dağıtıldığı Azure aboneliğine erişmeniz gerekeceğini unutmayın)
+Yukarıdaki bilgileri oluşturmak için aşağıdaki adımları izleyin:
+
+> [!NOTE]
+> FarmBeats'in dağıtıldığı Azure aboneliğine erişmek için bu adımların Azure'da tamamlanması gerekir.
 
 1. https://portal.azure.com/ adresinde oturum açın.
 
-2. **FarmBeats sürüm 1.2.7 veya daha sonra iseniz, adım 2a, 2b ve 2c atlayın ve adım 3 gidin.**. FarmBeats UI'nin sağ üst tarafındaki Ayarlar simgesine tıklayarak FarmBeats sürümünü kontrol edebilirsiniz.
+2. **FarmBeats sürüm 1.2.7 veya sonraki sürümdeyseniz, a, b ve c adımlarını atlayın ve adım 3'e gidin.** FarmBeats UI'nin sağ üst köşesindeki **Ayarlar** simgesini seçerek FarmBeats sürümünü kontrol edebilirsiniz.
 
-2a. Azure Active Directory -> Uygulama Kayıtları'na gidin
+      a.  Azure **Active Directory** > **Uygulama Kayıtları'na** gidin
 
-2b. FarmBeats dağıtımınızın bir parçası olarak oluşturulan Uygulama Kaydı'nı tıklatın. FarmBeats veri hub'ınızla aynı ada sahip olacaktır.
+      b. FarmBeats dağıtımınızın bir parçası olarak oluşturulan **Uygulama Kaydı'nı** seçin. FarmBeats datahub'ınızla aynı ada sahip olacaktır.
 
-2c. "API'yi Ortaya Çıkar" -> "İstemci başvurusu ekle" seçeneğini tıklayın ve **04b07795-8ddb-461a-bbee-02f9e1bf7b46** seçeneğini tıklayın ve "Yetki Kapsamı"nı işaretleyin. Bu, aşağıdaki adımları gerçekleştirmek için Azure CLI'ye (Bulut Kabuğu) erişim sağlayacaktır.
+      c. **Bir API'yi ortaya >** seçin bir istemci uygulaması **ekleyin** ve **04b07795-8ddb-461a-bbee-02f9e1bf7b46** girin ve Yetki Kapsamı'nı kontrol **edin.** Bu, aşağıdaki adımları gerçekleştirmek için Azure CLI'ye (Bulut Kabuğu) erişim sağlayacaktır:
 
 3. Cloud Shell'i açın. Bu seçenek, Azure portalının sağ üst köşesindeki araç çubuğunda kullanılabilir.
 
     ![Azure portal araç çubuğu](./media/get-drone-imagery-from-drone-partner/navigation-bar-1.png)
 
-5. Ortamın **PowerShell**olarak ayarlandıklarına emin olun. Varsayılan olarak, Bash olarak ayarlanır.
+4. Ortamın **PowerShell**olarak ayarlandığından emin olun. Varsayılan olarak, Bash olarak ayarlanır.
 
     ![PowerShell araç çubuğu ayarı](./media/get-sensor-data-from-sensor-partner/power-shell-new-1.png)
 
-6. Ev dizine git.
+5. Ev dizine git.
 
-   ```azurepowershell-interactive 
-
+    ```azurepowershell-interactive 
     cd  
-
     ```
 
-7. Şu komutu çalıştırın. Bu, ev dizininize bir komut dosyası indirir.
+6. Şu komutu çalıştırın. Bu, ev dizininize bir komut dosyası indirir.
 
     ```azurepowershell-interactive 
 
-    wget –q https://aka.ms/farmbeatspartnerscriptv3 -O ./generatePartnerCredentials.ps1 
+    wget –q https://aka.ms/farmbeatspartnerscriptv3 -O ./generatePartnerCredentials.ps1
 
     ```
 
-8. Aşağıdaki komut dosyasını çalıştırın. Komut dosyası, Azure Active Directory -> Genel Bakış sayfasından elde edilebilen Kiracı Kimliğini ister.
+7. Aşağıdaki komut dosyasını çalıştırın. Komut dosyası, **Azure Etkin Dizin** > **Genel Bakış** sayfasından elde edilebilen Kiracı Kimliğini sorar.
 
     ```azurepowershell-interactive 
 
@@ -81,7 +82,7 @@ Yukarıdaki bilgileri aşağıdaki adımları izleyerek oluşturabilirsiniz: (L�
 
     ```
 
-9. **API Endpoint,** **Kiracı Kimliği,** **İstemci Kimliği, İstemci** **Gizli**ve **EventHub Bağlantı Dizesi**değerlerini yakalamak için ekrandaki yönergeleri izleyin.
+8. **API Endpoint,** **Kiracı Kimliği,** **İstemci Kimliği, İstemci** **Gizli**ve **EventHub Bağlantı Dizesi**değerlerini yakalamak için ekrandaki yönergeleri izleyin.
 
 ### <a name="integrate-device-data-by-using-the-generated-credentials"></a>Oluşturulan kimlik bilgilerini kullanarak aygıt verilerini tümleştirme
 
@@ -91,16 +92,16 @@ Yukarıdaki bilgileri aşağıdaki adımları izleyerek oluşturabilirsiniz: (L�
  - İstemci Kimliği
  - Gizli anahtar
  - Kiracı Kimliği
- 
-FarmBeats'i bağlamak için bunu cihaz ortağınıza sağlamanız gerekir. Aynı şeyi yapmak için aygıt ortağı portalına gidin. Örneğin, Davis Instruments, Teralytic veya Pessl Instruments (Metos.at) cihazları kullanıyorsanız lütfen aşağıda belirtilen ilgili sayfalara gidin:
 
-[Davis Enstrümanlar](https://weatherlink.github.io/azure-farmbeats/setup)
+FarmBeats'i bağlamak için bunu cihaz ortağınıza sağlamanız gerekir. Aynı şeyi yapmak için aygıt ortağı portalına gidin. Örneğin, Davis Instruments, Teralytic veya Pessl Instruments (Metos.at) cihazları kullanıyorsanız, aşağıda belirtildiği gibi ilgili sayfalara gidin:
 
-[Teralitik](https://app.teralytic.com/)
+1. [Davis Enstrümanlar](https://weatherlink.github.io/azure-farmbeats/setup)
 
-[Pessl Aletleri](https://ng.fieldclimate.com/user-api-services)
+2. [Teralitik](https://app.teralytic.com/)
 
- Aygıt sağlayıcısı başarılı bir tümleştirmeyi onaylar. Onay aldıktan sonra Azure FarmBeats'teki tüm aygıtları ve sensörleri görüntüleyebilirsiniz.
+3. [Pessl Aletleri](https://ng.fieldclimate.com/user-api-services)
+
+Aygıt sağlayıcısı başarılı bir tümleştirmeyi onaylar. Onay aldıktan sonra Azure FarmBeats'teki tüm aygıtları ve sensörleri görüntüleyebilirsiniz.
 
 ## <a name="view-devices-and-sensors"></a>Cihazları ve sensörleri görüntüleme
 
@@ -113,7 +114,7 @@ FarmBeats'i bağlamak için bunu cihaz ortağınıza sağlamanız gerekir. Aynı
 - **Düğüm**: Bir veya daha fazla sensörün bağlı olduğu cihaz.
 - **Ağ Geçidi**: Bir veya daha fazla düğümün bağlı olduğu aygıt.
 
-Şu adımları izleyin.
+Şu adımları uygulayın:
 
 1. Giriş sayfasında, menüden **Cihazlar'ı** seçin.
   **Aygıtlar** sayfası aygıt türünü, modelini, durumunu, yerleştirildiği çiftliği ve meta veriler için son güncelleştirilen tarihi görüntüler. Varsayılan olarak, çiftlik *sütunu NULL*olarak ayarlanır. Bir çiftliğe aygıt atamayı seçebilirsiniz. Daha fazla bilgi için [aygıtları atay'a](#assign-devices)bakın.
@@ -123,7 +124,7 @@ FarmBeats'i bağlamak için bunu cihaz ortağınıza sağlamanız gerekir. Aynı
 
 ### <a name="view-sensors"></a>Sensörleri görüntüleme
 
-Şu adımları izleyin.
+Şu adımları uygulayın:
 
 1. Ana sayfada menüden **Sensörler'i** seçin.
   **Sensörler** sayfası, sensörün türü, bağlı olduğu çiftlik, ana aygıt, bağlantı noktası adı, bağlantı noktası türü ve güncellenen son durum hakkında ayrıntıları görüntüler.
@@ -147,11 +148,12 @@ Sensör verileri aktıktan sonra, sensörleri dağıttığınız çiftliğe atay
     ![Ilişkilendirme Aygıtları penceresi](./media/get-sensor-data-from-sensor-partner/associate-devices-1.png)
 
 6. Her aygıtı farklı bir çiftliğe ilişkilendirmek **için, Farm** sütununa atay sütunundaki açılır ok'u seçin ve her aygıt satırı için bir çiftlik seçin.
+
 7. Aygıt atamasını tamamlamak için **Atla'yı** seçin.
 
 ### <a name="visualize-sensor-data"></a>Algılayıcı verilerini görselleştirme
 
-Şu adımları izleyin.
+Şu adımları uygulayın:
 
 1. Ana sayfada, **Çiftlikler** sayfasını görüntülemek için menüden **Çiftlikler'i** seçin.
 2. Sensör verilerini görmek istediğiniz **Çiftlik'i** seçin.
@@ -161,7 +163,7 @@ Sensör verileri aktıktan sonra, sensörleri dağıttığınız çiftliğe atay
 
 ## <a name="delete-a-sensor"></a>Sensörü silme
 
-Şu adımları izleyin.
+Şu adımları uygulayın:
 
 1. Ana sayfada, **Sensörler** sayfasını görüntülemek için menüden **Sensörler'i** seçin.
 2. Silmek istediğiniz aygıtı seçin ve onay penceresinde **Sil'i** seçin.
@@ -172,7 +174,7 @@ Onay iletisi sensörün başarıyla silindiğini gösterir.
 
 ## <a name="delete-devices"></a>Aygıtları silme
 
-Şu adımları izleyin.
+Şu adımları uygulayın:
 
 1. Ana sayfada, **Cihazlar** sayfasını görüntülemek için menüden **Cihazlar'ı** seçin.
 2. Silmek istediğiniz aygıtı seçin ve onay penceresinde **Sil'i** seçin.

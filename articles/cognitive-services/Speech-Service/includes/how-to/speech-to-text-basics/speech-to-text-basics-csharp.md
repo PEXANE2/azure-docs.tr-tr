@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/11/2020
 ms.author: dapine
-ms.openlocfilehash: c3c24a803a9fe2774f52cbb1e2cef04191d7995d
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 46ffe61028e40b17d31ceba34ee58b8f25c0c471
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "79372819"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80501970"
 ---
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -39,7 +39,7 @@ Bir baş harfe başlatmanın birkaç [`SpeechConfig`](https://docs.microsoft.com
 * Bir ana bilgisayar ile: bir ana bilgisayar adresi geçmek. Anahtar veya yetkilendirme belirteci isteğe bağlıdır.
 * Yetkilendirme belirteci yle: yetkilendirme jetonundan ve ilişkili bölgeye geçin.
 
-Bir anahtar ve bölge kullanılarak [`SpeechConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet) nasıl oluşturulduğuna bir göz atalım.
+Bir anahtar ve bölge kullanılarak [`SpeechConfig`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet) nasıl oluşturulduğuna bir göz atalım. Bölge tanımlayıcınızı bulmak için [bölge destek](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk) sayfasına bakın.
 
 ```csharp
 var speechConfig = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");

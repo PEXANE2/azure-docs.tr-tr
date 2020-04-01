@@ -8,12 +8,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 3/11/2020
 ms.custom: include file
-ms.openlocfilehash: 6ec72dfa227d62804e5cbafef0e2d1acf483e84b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cb36863f0072b031a8c40dd3dc8efcf26a29fb58
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79370398"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80408030"
 ---
 > [!NOTE]
-> Azure Digital Twins önizleme programı şu anda kapasitededir. Sonuç olarak, yeni müşteriler artık eklenmemektedir ve **şu anda ek Azure Digital Twins kaynakları oluşturulamaz.** Bir örnek bir yerde silinirse, kaynak oluşturma başarılı olabilir ve normal devam edebilirsiniz, ancak bu garanti edilmez. Lütfen bu durumla ilgili herhangi bir güncelleştirme için tekrar kontrol etmeye devam edin.
+> Azure Dijital İkizler önizleme programına olan ilginiz için teşekkür ederiz. Yoğun talep nedeniyle, yeni yeteneklerin yakında yayınlanmasına hazırlanırken önizleme programı geçici olarak kapatılır. Sonuç olarak, şu anda yeni Azure Digital Twins kaynakları oluşturamayabilirsiniz. Lütfen yeni bilgiler için tekrar kontrol etmeye devam edin.

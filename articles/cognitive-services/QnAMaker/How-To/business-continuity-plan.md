@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: diberry
-ms.openlocfilehash: f920a789f1ec631c5d70863b10d8364b3eb81b6c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2100426923418104c31933bf9d1406a6441d3841
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77650478"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80410921"
 ---
 # <a name="create-a-business-continuity-plan-for-your-qna-maker-service"></a>QnA Maker hizmetiniz için bir iş sürekliliği planı oluşturun
 
@@ -33,7 +33,7 @@ Yukarıda temsil edildiği gibi üst düzey fikir aşağıdaki gibidir:
 
 4. Birincil ve ikincil yığınlar ayarlandıktan sonra, iki uç noktayı yapılandırmak ve yönlendirme yöntemi ayarlamak için [trafik yöneticisini](https://docs.microsoft.com/azure/traffic-manager/) kullanın.
 
-5. Trafik yöneticisi bitiş noktanız için bir Güvenli Soket Katmanı (SSL) sertifikası oluşturmanız gerekir. [SSL sertifikasını](https://docs.microsoft.com/azure/app-service/configure-ssl-bindings) Uygulama hizmetlerinizde bağla.
+5. Trafik yöneticisi bitiş noktanız için daha önce Güvenli Soketkatmanı (SSL) olarak bilinen bir Aktarım Katmanı Güvenliği (TLS) oluşturmanız gerekir. [TLS/SSL sertifikasını](https://docs.microsoft.com/azure/app-service/configure-ssl-bindings) Uygulama hizmetlerinizde bağla.
 
 6. Son olarak, Bot veya Uygulamanızdaki trafik yöneticisi bitiş noktasını kullanın.
 

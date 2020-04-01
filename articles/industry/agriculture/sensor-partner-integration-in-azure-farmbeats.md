@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 48a2ed5e4774ac07b4b8fa72a5ee0be86811cfb2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3431576acbb01a0cc3a5f372460b28be05bf7ce7
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79298742"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437475"
 ---
 # <a name="sensor-partner-integration"></a>Algılayıcı iş ortağı tümleştirmesi
 
@@ -42,9 +42,9 @@ Telemetri verileri, işlenmek üzere Azure Etkinlik Hub'larında yayınlanan bir
 
 **API geliştirme**
 
-API'ler Swagger teknik dokümantasyon içerir. API'ler ve ilgili istekler veya yanıtları hakkında daha fazla bilgi [için](https://aka.ms/FarmBeatsDatahubSwagger)Bkz.
+API'ler Swagger teknik dokümantasyon içerir. API'ler ve ilgili istekler veya yanıtları hakkında daha fazla bilgi [için](https://aka.ms/FarmBeatsSwagger)Bkz.
 
-**Kimlik doğrulaması**
+**Kimlik Doğrulaması**
 
 FarmBeats, Microsoft Azure Active Directory kimlik doğrulamasını kullanır.Azure Uygulama Hizmeti yerleşik kimlik doğrulama ve yetkilendirme desteği sağlar.
 
@@ -150,8 +150,8 @@ FarmBeats Datahub, aygıt ortaklarının aygıt veya sensör meta verilerini olu
   Productcode  | Ürün kodu veya model adı veya numarası. Örneğin, RS-CO2-N01.  |
   SensorMeasures> Adı  | Sensör ölçüsünün adı. Yalnızca küçük harf desteklenir. Farklı derinliklerden ölçümler için derinliği belirtin. Örneğin, soil_moisture_15cm. Bu ad telemetri verileriyle tutarlı olmalıdır. |
   SensorMeasures > DataType  | Telemetri veri türü. Şu anda, çift desteklenir. |
-  SensorMeasures > Tipi  | Sensör telemetri verilerinin ölçüm türü. Sistem tanımlı türleri şunlardır: AmbientTemperature, CO2, Derinlik, ElektrikselIletkenlik, Yaprak Wetness, Uzunluk, LiquidLevel, Nitrat, O2, PH, Fosfat, PointInTime, Potasyum, Basınç, RainGauge, RelativeMoisturey, Tuzluluk, SoilMoisture, SoilTemperature, SolarRadiation, State, TimeDuration, UVRadiation, UVIndex, Volume, WindDirection, WindRun, WindSpeed, Evapotranspiration, PAR. Daha fazla eklemek için /ExtendedType API'sine bakın.
-  SensorMeasures > Ünitesi | Sensör telemetri veri birimi. Sistem tanımlı birimler şunlardır: NoUnit, Celsius, Fahrenheit, Kelvin, Rankine, Pascal, Mercury, PSI, Milimetre, Santimetre, Metre, İnç, Feet, Mile, KilometreMetre, MilesPerHour, MilesPerSecond, KMPerHour, KMPerSecond, MetersPerHour, MetersPerSecond, Derece, WattsPerSquareMeter, KiloWattsPerSquareMeter, MilliWattPerSquareCentiMeter, MilliJoulesPerSquareCentiMeter, VolumetrikWaterContent, Yüzde, PartsPerMillion, MicroMol, MicroMolesPerLitre, SiemensPerSquareMeterPerMole, MilliSiemensPerCentiMeter, Centibar, DeciSiemensPerMeter, KiloPascal, VolumetricIonContent, Litre, MiliLitre, Saniye, UnixTimestamp, MicroMolPerMeterSquaredPerSecond ve InchPerHour. Daha fazla eklemek için /ExtendedType API'sine bakın.
+  SensorMeasures > Tipi  | Sensör telemetri verilerinin ölçüm türü. Sistem tanımlı türleri şunlardır: AmbientTemperature, CO2, Depth, ElectricalConductivity, LeafWetness, Length, LiquidLevel, Nitrate, O2, PH, Fosfat, PointInTime, Potasyum, Basınç, RainGauge, RelativeMoisturey, Tuzluluk, SoilMoisture, SoilTemperature, SolarRadiation, State, TimeDuration, UVRadiation, UVIndex, Volume, WindDirection, WindRun WindSpeed, Evapotranspiration, PARPAR. Daha fazla eklemek için /ExtendedType API'sine bakın.
+  SensorMeasures > Ünitesi | Sensör telemetri veri birimi. Sistem tanımlı birimler şunlardır: NoUnit, Celsius, Fahrenheit, Kelvin, Rankine, Pascal, Mercury, PSI, Milimetre, Santimetre, Metre, Inç, Feet, Mile, KilometreMetre, MilesPerHour, MilesPerSecond, KMPerHour, KMPerSecond, MetersPerHour, MetersPerSecond, Derece, WattsPerSquareMeter, KiloWattsPerSquareMeter, MilliWattsPerSquareCentiMeter, MilliJoulesPerSquareCentiMeter, VolumetrikWaterContent, Yüzde, PartsPerMillion, MicroMol, MicroMolesPerLiter, SiemensPerSquareMetreMole, MilliSiemensPerCentiMeter, Centibar, DeciSiemensPerMeter, KiloPascal, VolumetricionContent, MiliLitre, Saniye, UnixTimestamp, MicroMolPerMeterSquareDPerSecond, ve InçPerHour. Daha fazla eklemek için /ExtendedType API'sine bakın.
   SensorMeasures> Agregasyon Tipi  | Ya yok, ortalama, maksimum, minimum veya StandardDeviation.
   SensorMeasures> Derinlik  | Sensörün derinliği santimetre. Örneğin, nem ölçümü 10 cm zemin altında.
   SensorMeasures > Açıklama  | Ölçümün anlamlı bir açıklamasını sağlayın.
@@ -188,7 +188,7 @@ FarmBeats Datahub, aygıt ortaklarının aygıt veya sensör meta verilerini olu
 
 ### <a name="add-new-types-and-units"></a>Yeni türler ve birimler ekleme
 
-FarmBeats yeni sensör ölçüm türleri ve birimleri eklemeyi destekler. /ExtendedType API hakkında daha fazla bilgi için [Bkz.](https://aka.ms/FarmBeatsDatahubSwagger)
+FarmBeats yeni sensör ölçüm türleri ve birimleri eklemeyi destekler. /ExtendedType API hakkında daha fazla bilgi için [Bkz.](https://aka.ms/FarmBeatsSwagger)
 
 ## <a name="telemetry-specifications"></a>Telemetri özellikleri
 
@@ -230,11 +230,11 @@ Kanonik ileti biçimi aşağıdaki gibidir:
       "sensordata": [
         {
           "timestamp": "< timestamp in ISO 8601 format >",
-          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
+          "<sensor measure name (as defined in the Sensor Model)>": <value>
         },
         {
           "timestamp": "<timestamp in ISO 8601 format>",
-          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
+          "<sensor measure name (as defined in the Sensor Model)>": <value>
         }
       ]
     }

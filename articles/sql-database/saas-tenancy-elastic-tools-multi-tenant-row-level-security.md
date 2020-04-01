@@ -11,12 +11,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: a5fe5d6d4076c5d82d33737d05bb95ede0a89c00
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4cf260620d4e907fdb9190a052155fa22f1c7985
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73822027"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398335"
 ---
 # <a name="multi-tenant-applications-with-elastic-database-tools-and-row-level-security"></a>Elastik veritabanı araçları ve satır düzeyinde güvenlik ile çok kiracı uygulamaları
 
@@ -253,7 +253,7 @@ GO
 ```
 
 > [!TIP]
-> Karmaşık bir projede, sıkıcı olabilecek yüzlerce tabloya yüklemi eklemeniz gerekebilir. Otomatik olarak bir güvenlik ilkesi oluşturan ve şemadaki tüm tablolara yüklem ekleyen bir yardımcı depolanmış yordam vardır. Daha fazla bilgi için, [tüm tablolara Satır Düzeyi Güvenlik Uygula'daki](https://blogs.msdn.com/b/sqlsecurity/archive/20../../apply-row-level-security-to-all-tables-helper-script)blog gönderisine bakın - yardımcı komut dosyası (blog) .
+> Karmaşık bir projede, sıkıcı olabilecek yüzlerce tabloya yüklemi eklemeniz gerekebilir. Otomatik olarak bir güvenlik ilkesi oluşturan ve şemadaki tüm tablolara yüklem ekleyen bir yardımcı depolanmış yordam vardır. Daha fazla bilgi için, [tüm tablolara Satır Düzeyi Güvenlik Uygula'daki](https://techcommunity.microsoft.com/t5/sql-server/apply-row-level-security-to-all-tables-helper-script/ba-p/384360)blog gönderisine bakın - yardımcı komut dosyası (blog) .
 
 Şimdi, örnek uygulamayı yeniden çalıştırarsanız, kiracılar yalnızca kendilerine ait satırları görür. Ayrıca, uygulama şu anda parça veritabanına bağlı olandan başka kiracıya ait satırlar ekleyemez. Ayrıca, uygulama tenantid'i görebileceği herhangi bir satırda güncelleyemez. Uygulama ikisini de yapmaya çalışırsa, bir DbUpdateException yükseltilir.
 

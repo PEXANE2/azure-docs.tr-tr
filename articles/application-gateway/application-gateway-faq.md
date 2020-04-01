@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/24/2020
 ms.author: victorh
-ms.openlocfilehash: 242fc115c5b2324c770de480fb19985e8b874893
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 290467d5d20a74f8b8b2c23f6da0dcadfd74cc56
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80371258"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411023"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Uygulama Ağ Geçidi hakkında sık sorulan sorular
 
@@ -353,11 +353,11 @@ Uygulama Ağ Geçidi Giriş Denetleyicisi, [Azure Uygulama Ağ Geçidi'nin](http
 
 Uygulama Ağ Geçidi üç günlük sağlar: 
 
-* **ApplicationGatewayAccessLog**: Erişim günlüğü, uygulama ağ geçidi ön ucuna gönderilen her isteği içerir. Veriler, arayanın IP'sini, istenen URL'sini, yanıt gecikmesini, iade kodunu ve baytlarını içerir. Erişim günlüğü her 300 saniyede bir toplanır. Uygulama ağ geçidi başına bir kayıt içerir.
+* **ApplicationGatewayAccessLog**: Erişim günlüğü, uygulama ağ geçidi ön ucuna gönderilen her isteği içerir. Veriler, arayanın IP'sini, istenen URL'sini, yanıt gecikmesini, iade kodunu ve baytlarını içerir. Uygulama ağ geçidi başına bir kayıt içerir.
 * **ApplicationGatewayPerformanceLog**: Performans günlüğü her uygulama ağ geçidi için performans bilgilerini yakalar. Bilgiler, baytlarda elde edilen iş bsayısını, sunulan toplam istekleri, başarısız istek sayısını ve sağlıklı ve sağlıksız arka uç örnek sayısını içerir.
 * **ApplicationGatewayFirewallLog**: WAF ile yapılandırdığınız uygulama ağ geçitleri için, güvenlik duvarı günlüğü algılama modu veya önleme modu üzerinden günlüğe kaydedilmiş istekleri içerir.
 
-Daha fazla bilgi için, [Bkz. Backend sağlık, tanılama günlükleri ve Uygulama Ağ Geçidi için ölçümler.](application-gateway-diagnostics.md)
+Tüm günlükler her 60 saniyede bir toplanır. Daha fazla bilgi için, [Bkz. Backend sağlık, tanılama günlükleri ve Uygulama Ağ Geçidi için ölçümler.](application-gateway-diagnostics.md)
 
 ### <a name="how-do-i-know-if-my-backend-pool-members-are-healthy"></a>Arka uç havuz üyelerimin sağlıklı olup olmadığını nasıl anlarım?
 

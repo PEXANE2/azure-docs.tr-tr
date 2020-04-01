@@ -4,16 +4,15 @@ description: Azure Site Recovery ile şirket içi sitelerinizde bulunan Hyper-V 
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: raynew
-ms.custom: MVC
-ms.openlocfilehash: 8d89c7eda845f0e5ed9bc8ccc7b6b3812ba275f9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f7de3c28463a86852cba03713ca4c500e7ca0339
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74132998"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437501"
 ---
 # <a name="set-up-disaster-recovery-for-hyper-v-vms-to-a-secondary-on-premises-site"></a>Hyper-V VM'leri için ikincil bir şirket içi siteye olağanüstü durum kurtarma ayarlama
 
@@ -45,7 +44,7 @@ Bu senaryoyu tamamlamak için:
 
 - VM'ler yük devretme sonrasında uygun hedef VM ağlara bağlanır. 
 - Çoğaltma VM'lerini en uygun şekilde hedef Hyper-V konağı sunucularına yerleştirir. 
-- Ağ eşlemesini yapılandırmazsanız, çoğaltma VM'leri yük devretme sonrasında herhangi bir VM’ye bağlanmaz.
+- Ağ eşlemesi yapılandırmazsanız, çoğaltma VM'leri başarısız olduktan sonra bir VM ağına bağlanmaz.
 
 VMM'yi şu şekilde hazırlayın:
 

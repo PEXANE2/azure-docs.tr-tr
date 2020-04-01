@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: f6366f162cb09898b694b14440718401c57c0adf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c0d19d68d016a47762fb5d2646ea6ccf74d3ef75
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79251043"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80476563"
 ---
 # <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders"></a>Şirket içi kodlayıcılardan çok bit hızında canlı akış alan Kanallarla çalışma
 
@@ -112,7 +112,7 @@ Kanal, canlı kodlayıcıda belirttiğiniz bir giriş bitiş noktası (URL yutma
 
 Kanalı oluştururken en yüksek URL'leri alabilirsiniz. Bu URL'leri alabilmek için kanalın **Çalışan** durumunda olması gerekmez. Verileri kanala itmeye başlamaya hazır olduğunuzda, kanalın **Çalışan** durumunda olması gerekir. Kanal veri sindirilmeye başladıktan sonra, akışınızı önizleme URL'si üzerinden önizleyebilirsiniz.
 
-Parçalanmış bir MP4 (Smooth Streaming) canlı akışını Bir SSL bağlantısı üzerinden sindirebilirsiniz. SSL üzerinden yutmak için, https için yutulan URL'yi güncelleştirdiğinden emin olun. Şu anda, SSL üzerinden RTMP yutamazsınız.
+Parçalanmış bir MP4 (Smooth Streaming) canlı akışını TLS bağlantısı üzerinden sindireseçeneğiniz vardır. TLS üzerinden yutmak için, https için yutulan URL'yi güncelleştirdiğinden emin olun. Şu anda TLS üzerinden RTMP yutamazsınız.
 
 #### <a name="keyframe-interval"></a><a id="keyframe_interval"></a>Anahtar kare aralığı
 Çok bit hızında akış oluşturmak için şirket içi canlı kodlayıcı kullandığınızda, anahtar kare aralığı bu harici kodlayıcı tarafından kullanılan resim grubunun (GOP) süresini belirtir. Kanal bu gelen akışı aldıktan sonra, canlı akışınızı aşağıdaki biçimlerden herhangi birinde istemci oynatma uygulamalarına sunabilirsiniz: Http üzerinden Düzgün Akış, Dinamik Uyarlanabilir Akış (DASH) ve HTTP Canlı Akış (HLS). Canlı akış yaparken HLS her zaman dinamik olarak paketlenir. Varsayılan olarak, Medya Hizmetleri canlı kodlayıcıdan alınan anahtar kare aralığını temel alarak HLS segment ambalaj oranını (segment başına parçalar) otomatik olarak hesaplar.

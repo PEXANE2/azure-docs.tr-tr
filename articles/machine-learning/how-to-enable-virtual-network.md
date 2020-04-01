@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 01/13/2020
-ms.openlocfilehash: c813e8a27a7f85eccff2c23d9ffdcfa4a1442f34
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/13/2020
+ms.openlocfilehash: 6e300bbec097201b33f0c576db91c2ca720fb921
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80282843"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437431"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Azure Sanal Ağı'nda Azure ML deneme ve çıkarım işlerini güvenli hale
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -63,7 +63,7 @@ Sanal ağdaki çalışma alanı için bir Azure depolama hesabı kullanmak için
     - __Sanal ağlar__ __altında, varolan sanal ağ__ ekle bağlantısını seçin. Bu eylem, bilgi işleminizin bulunduğu sanal ağı ekler (bkz. adım 1).
 
         > [!IMPORTANT]
-        > Depolama hesabı, eğitim veya çıkarım için kullanılan bilgi işlem örnekleri veya kümelerle aynı sanal ağda olmalıdır.
+        > Depolama hesabı, eğitim veya çıkarım için kullanılan bilgi işlem örnekleri veya kümelerle aynı sanal ağda ve alt ağda olmalıdır.
 
     - Bu depolama hesabı onay __kutusuna erişmek için güvenilen Microsoft hizmetlerine İzin Ver'i__ seçin.
 
@@ -180,8 +180,6 @@ Varsayılan giden kuralları kullanmak istemiyorsanız ve sanal ağınızın gid
    - Azure Depolama, Depolama Hizmet __Etiketini__ __kullanarak.RegionName__. Azure `{RegionName}` bölgesinin adı nerededir?
    - Azure Container Registry, __AzureContainerRegistry.RegionName__ __Hizmet Etiketini__ kullanarak. Azure `{RegionName}` bölgesinin adı nerededir?
    - Azure Machine Learning, __AzureMachineLearning__ __Hizmet Etiketini__ kullanarak
-   
-- Bir __işlem örneği__için, aşağıdaki öğeleri de ekleyin:
    - Azure Kaynak Yöneticisi, __AzureResourceManager__ __Hizmet Etiketini__ kullanarak
    - __Azure Active Directory__ Hizmet __Etiketini__ kullanarak Azure Active Directory
 
@@ -242,19 +240,19 @@ Daha fazla bilgi için [bkz.](../batch/batch-virtual-network.md#user-defined-rou
 
 Machine Learning Compute kümesi oluşturmak için aşağıdaki adımları kullanın:
 
-1. Azure [portalında](https://portal.azure.com)Azure Makine Öğrenimi çalışma alanınızı seçin.
+1. [Azure Machine Learning stüdyosunda](https://ml.azure.com/)oturum açın ve ardından aboneliğinizi ve çalışma alanınızı seçin.
 
-1. __Uygulama__ __bölümünde, Bilgi İşlem'i__seçin ve ardından __bilgi işlem ekle'yi__seçin.
+1. Soldaki __İşlem'i__ seçin.
 
-1. Sanal ağ kullanacak şekilde bu bilgi işlem kaynağını yapılandırmak için aşağıdaki işlemleri yapın:
+1. Merkezden __Eğitim kümelerini__ seçin ve __+__ sonra .
 
-    a. __Ağ yapılandırması__için __Gelişmiş'i__seçin.
+1. Yeni __Eğitim Kümesi__ iletişim kutusunda __Gelişmiş ayarlar__ bölümünü genişletin.
 
-    b. Kaynak __grubu__ açılır listesinde, sanal ağı içeren kaynak grubunu seçin.
+1. Bu bilgi işlem kaynağını sanal ağ kullanacak şekilde yapılandırmak için, sanal ağ yapılandırma bölümünde aşağıdaki eylemleri __gerçekleştirin:__
 
-    c. Sanal __ağ__ açılır listesinde, alt ağı içeren sanal ağı seçin.
-
-    d. Alt __ağ__ açılır listesinde kullanmak üzere alt ağı seçin.
+    1. Kaynak __grubu__ açılır listesinde, sanal ağı içeren kaynak grubunu seçin.
+    1. Sanal __ağ__ açılır listesinde, alt ağı içeren sanal ağı seçin.
+    1. Alt __ağ__ açılır listesinde kullanmak üzere alt ağı seçin.
 
    ![Machine Learning Compute için sanal ağ ayarları](./media/how-to-enable-virtual-network/amlcompute-virtual-network-screen.png)
 
@@ -356,29 +354,25 @@ Sanal ağdaki AKS'yi çalışma alanınıza eklemek için aşağıdaki adımlar�
 >
 > AKS örneği ve Azure sanal ağı aynı bölgede olmalıdır. Çalışma alanı tarafından sanal ağda kullanılan Azure Depolama Hesabı'nı(lar) güvenli hale ederseniz, bunların AKS örneğiyle aynı sanal ağda olması gerekir.
 
-1. Azure [portalında,](https://portal.azure.com)sanal ağı kontrol eden NSG'nin, __AzureMachineLearning'i__ **KAYNAK**olarak kullanarak Azure Machine Learning için etkinleştirilmiş bir gelen kuralı olduğundan emin olun.
+> [!WARNING]
+> Azure Machine Learning, özel bağlantı etkinleştirilmiş bir Azure Kubernetes Hizmeti kullanmayı desteklemez.
 
-    [![Azure Machine Learning Bilgi İşlem bölmesi ekle](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-aml.png)](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-aml.png#lightbox)
+1. [Azure Machine Learning stüdyosunda](https://ml.azure.com/)oturum açın ve ardından aboneliğinizi ve çalışma alanınızı seçin.
 
-1. Azure Makine Öğrenimi çalışma alanınızı seçin.
+1. Soldaki __İşlem'i__ seçin.
 
-1. __Uygulama__ __bölümünde, Bilgi İşlem'i__seçin ve ardından __bilgi işlem ekle'yi__seçin.
+1. Merkezden __Çıkarım kümelerini__ seçin ve __+__ sonra .
 
-1. Sanal ağ kullanacak şekilde bu bilgi işlem kaynağını yapılandırmak için aşağıdaki işlemleri yapın:
+1. Yeni __Çıkarım Kümesi__ iletişim kutusunda, __Ağ yapılandırması__altında __Gelişmiş'i__ seçin.
 
-    - __Ağ yapılandırması__için __Gelişmiş'i__seçin.
+1. Sanal ağ kullanacak şekilde bu bilgi işlem kaynağını yapılandırmak için aşağıdaki işlemleri gerçekleştirin:
 
-    - Kaynak __grubu__ açılır listesinde, sanal ağı içeren kaynak grubunu seçin.
-
-    - Sanal __ağ__ açılır listesinde, alt ağı içeren sanal ağı seçin.
-
-    - Alt __ağ__ açılır listesinde alt ağı seçin.
-
-    - __Kubernetes Servis adres aralığı__ kutusuna, Kubernetes servis adresi aralığını girin. Bu adres aralığı, küme için kullanılabilen IP adreslerini tanımlamak için Sınıfsız Etki Alanları Yönlendirme (CIDR) gösterimIP aralığı nı kullanır. Herhangi bir alt ağ IP aralıklarıyla örtüşmemelidir (örneğin, 10.0.0.0/16).
-
-    - __Kubernetes DNS hizmet IP adres__ kutusuna Kubernetes DNS hizmet IP adresini girin. Bu IP adresi Kubernetes DNS hizmetine atanır. Kubernetes servis adres aralığında olmalıdır (örneğin, 10.0.0.10).
-
-    - Docker __köprüsü adres__ kutusuna Docker köprüsü adresini girin. Bu IP adresi Docker Köprüsü'ne atanır. Herhangi bir alt ağ IP aralığında veya Kubernetes servis adresi aralığında olmamalıdır (örneğin, 172.17.0.1/16).
+    1. Kaynak __grubu__ açılır listesinde, sanal ağı içeren kaynak grubunu seçin.
+    1. Sanal __ağ__ açılır listesinde, alt ağı içeren sanal ağı seçin.
+    1. Alt __ağ__ açılır listesinde alt ağı seçin.
+    1. __Kubernetes Servis adres aralığı__ kutusuna, Kubernetes servis adresi aralığını girin. Bu adres aralığı, küme için kullanılabilen IP adreslerini tanımlamak için Sınıfsız Etki Alanları Yönlendirme (CIDR) gösterimIP aralığı nı kullanır. Herhangi bir alt ağ IP aralıklarıyla örtüşmemelidir (örneğin, 10.0.0.0/16).
+    1. __Kubernetes DNS hizmet IP adres__ kutusuna Kubernetes DNS hizmet IP adresini girin. Bu IP adresi Kubernetes DNS hizmetine atanır. Kubernetes servis adres aralığında olmalıdır (örneğin, 10.0.0.10).
+    1. Docker __köprüsü adres__ kutusuna Docker köprüsü adresini girin. Bu IP adresi Docker Köprüsü'ne atanır. Herhangi bir alt ağ IP aralığında veya Kubernetes servis adresi aralığında olmamalıdır (örneğin, 172.17.0.1/16).
 
    ![Azure Machine Learning: Machine Learning Sanal ağ ayarlarını hesaplama](./media/how-to-enable-virtual-network/aks-virtual-network-screen.png)
 
@@ -445,7 +439,7 @@ except:
     prov_config.docker_bridge_cidr = "172.17.0.1/16"
 
     # Create compute target
-    aks_target = ComputeTarget.create(workspace = ws, name = “myaks”, provisioning_configuration = prov_config)
+    aks_target = ComputeTarget.create(workspace = ws, name = "myaks", provisioning_configuration = prov_config)
     # Wait for the operation to complete
     aks_target.wait_for_completion(show_output = True)
     
@@ -466,7 +460,7 @@ Komut tarafından `body.json` başvurulan dosyanın içeriği aşağıdaki JSON 
 
 ```json
 { 
-    "location": “<region>”, 
+    "location": "<region>", 
     "properties": { 
         "resourceId": "/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.ContainerService/managedClusters/<aks-resource-id>", 
         "computeType": "AKS", 
@@ -504,7 +498,102 @@ Ağ kuralını yapılandırma hakkında daha fazla bilgi için Azure [Güvenlik 
 
 ## <a name="use-azure-container-registry"></a>Azure Container Registry’yi kullanma
 
-Azure Machine Learning ile sanal __do not__ ağ kullanırken, sanal ağa çalışma alanı için Azure Kapsayıcı Kayıt Defteri'ni koymayın. Bu yapılandırma desteklenmez.
+> [!IMPORTANT]
+> Azure Kapsayıcı Kayıt Defteri (ACR) sanal bir ağa konulabilir, ancak aşağıdaki ön koşulları karşılamanız gerekir:
+>
+> * Azure Machine Learning çalışma alanınız Enterprise sürümü olmalıdır. Yükseltme hakkında daha fazla bilgi için, [Bkz. Enterprise sürümüne Yükseltme.](how-to-manage-workspace.md#upgrade)
+> * Azure Konteyner Kayıt Defteriniz Premium sürüm olmalıdır. Yükseltme hakkında daha fazla bilgi için Bkz. [SK'leri Değiştirme.](/azure/container-registry/container-registry-skus#changing-skus)
+> * Azure Konteyner Kayıt Defteriniz, eğitim veya çıkarım için kullanılan depolama hesabı ve bilgi işlem hedefleri yle aynı sanal ağda ve alt ağda olmalıdır.
+> * Azure Machine Learning çalışma alanınız bir [Azure Machine Learning bilgi işlem kümesi](how-to-set-up-training-targets.md#amlcompute)içermelidir.
+>
+>     ACR sanal bir ağın arkasındaysa, Azure Machine Learning bu ağı doğrudan Docker görüntüleri oluşturmak için kullanamaz. Bunun yerine, görüntüleri oluşturmak için işlem kümesi kullanılır.
+
+1. Çalışma alanınız için Azure Kapsayıcı Kayıt Defteri'nin adını bulmak için aşağıdaki yöntemlerden birini kullanın:
+
+    __Azure portal__
+
+    Çalışma alanınızın genel bakış bölümünden, __Kayıt Defteri__ değeri Azure Kapsayıcı Kayıt Defteri'ne bağlantılar bağlar.
+
+    ![Çalışma alanı için Azure Kapsayıcı Kayıt Defteri](./media/how-to-enable-virtual-network/azure-machine-learning-container-registry.png)
+
+    __Azure CLI__
+
+    [Azure CLI için Machine Learning uzantısını](reference-azure-machine-learning-cli.md)yüklediyseniz, `az ml workspace show` çalışma alanı bilgilerini göstermek için komutu kullanabilirsiniz.
+
+    ```azurecli-interactive
+    az ml workspace show -w yourworkspacename -g resourcegroupname --query 'containerRegistry'
+    ```
+
+    Bu `"/subscriptions/{GUID}/resourceGroups/{resourcegroupname}/providers/Microsoft.ContainerRegistry/registries/{ACRname}"`komut, . Dize son bölümü çalışma alanı için Azure Kapsayıcı Kayıt Defteri adıdır.
+
+1. Sanal ağınıza erişimi sınırlamak [için, kayıt defteri için ağ erişimini yapılandır'daki](../container-registry/container-registry-vnet.md#configure-network-access-for-registry)adımları kullanın. Sanal ağı eklerken, Azure Machine Learning kaynaklarınız için sanal ağı ve alt ağı seçin.
+
+1. Docker görüntüleri oluşturmak için bir bilgi işlem kümesini yapılandırmak için Azure Machine Learning Python SDK'yı kullanın. Aşağıdaki kod parçacığı bunu nasıl yapacağız gösterir:
+
+    ```python
+    from azureml.core import Workspace
+    # Load workspace from an existing config file
+    ws = Workspace.from_config()
+    # Update the workspace to use an existing compute cluster
+    ws.update(image_build_compute = 'mycomputecluster')
+    ```
+
+    > [!IMPORTANT]
+    > Depolama hesabınız, bilgi işlem kümeniz ve Azure Kapsayıcı Kayıt Defteri'nin tümü sanal ağın aynı alt ağında olmalıdır.
+    
+    Daha fazla bilgi için [güncelleştirme()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#update-friendly-name-none--description-none--tags-none--image-build-compute-none-) yöntemi başvurusuna bakın.
+
+1. Azure Machine Learning çalışma alanınız için Özel Bağlantı kullanıyorsanız ve çalışma alanınız için Azure Kapsayıcı Kayıt Defteri'ni sanal bir ağa koyduysanız, aşağıdaki Azure Kaynak Yöneticisi şablonunu da uygulamanız gerekir. Bu şablon, çalışma alanınızın Özel Bağlantı üzerinden ACR ile iletişim kurmasını sağlar.
+
+    ```json
+    {
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "keyVaultArmId": {
+        "type": "string"
+        },
+        "workspaceName": {
+        "type": "string"
+        },
+        "containerRegistryArmId": {
+        "type": "string"
+        },
+        "applicationInsightsArmId": {
+        "type": "string"
+        },
+        "storageAccountArmId": {
+        "type": "string"
+        },
+        "location": {
+        "type": "string"
+        }
+    },
+    "resources": [
+        {
+        "type": "Microsoft.MachineLearningServices/workspaces",
+        "apiVersion": "2019-11-01",
+        "name": "[parameters('workspaceName')]",
+        "location": "[parameters('location')]",
+        "identity": {
+            "type": "SystemAssigned"
+        },
+        "sku": {
+            "tier": "enterprise",
+            "name": "enterprise"
+        },
+        "properties": {
+            "sharedPrivateLinkResources":
+    [{"Name":"Acr","Properties":{"PrivateLinkResourceId":"[concat(parameters('containerRegistryArmId'), '/privateLinkResources/registry')]","GroupId":"registry","RequestMessage":"Approve","Status":"Pending"}}],
+            "keyVault": "[parameters('keyVaultArmId')]",
+            "containerRegistry": "[parameters('containerRegistryArmId')]",
+            "applicationInsights": "[parameters('applicationInsightsArmId')]",
+            "storageAccount": "[parameters('storageAccountArmId')]"
+        }
+        }
+    ]
+    }
+    ```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

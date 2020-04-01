@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: aschhab
 ms.custom: seo-python-october2019
-ms.openlocfilehash: aa9ffc48d9b1374fa510f450bab2c66641421446
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: acb0b0e84804ecf6025e05590133dee9b0d54c48
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76773488"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478644"
 ---
 # <a name="quickstart-use-azure-service-bus-queues-with-python"></a>Hızlı başlangıç: Python ile Azure Servis Veri Servisi kuyruklarını kullanma
 
@@ -32,7 +32,7 @@ Python Azure Hizmet Veri Veri Günü kitaplıkları hakkında daha fazla bilgi i
 ## <a name="prerequisites"></a>Ön koşullar
 - Azure aboneliği. Visual Studio [veya MSDN abone avantajlarınızı](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) etkinleştirebilir veya ücretsiz bir [hesaba](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)kaydolabilirsiniz.
 - Quickstart'taki adımları izleyerek oluşturulan Hizmet Veri Kurumu ad [alanı: Hizmet Veri Servisi konusu ve abonelikleri oluşturmak için Azure portalını kullanın.](service-bus-quickstart-topics-subscriptions-portal.md) Bu makalenin ilerleyen saatlerinde kullanmak üzere **Paylaşılan erişim ilkeleri** ekranından birincil bağlantı dizesini kopyalayın. 
-- [Python Azure Servis Veri Servisi][Python Azure Service Bus package] paketi yüklü olan Python 3.4x veya üzeri. Daha fazla bilgi için [Python Yükleme Kılavuzu'na](/azure/python/python-sdk-azure-install)bakın. 
+- [Python Azure Servis Veri Servisi][Python Azure Service Bus package] paketi yüklü olan Python 3.4x veya üzeri. Daha fazla bilgi için [Python Yükleme Kılavuzu'na](/azure/developer/python/azure-sdk-install)bakın. 
 
 ## <a name="create-a-queue"></a>Bir kuyruk oluşturma
 

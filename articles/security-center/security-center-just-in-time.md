@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: 4b2b388fb736997010a6cbbdf93b23b77c7ef3a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 51985c5fa4b2296e43c0a062d0af84a1bb51e89c
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77603976"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397749"
 ---
 # <a name="secure-your-management-ports-with-just-in-time-access"></a>Tam zamanında erişimle yönetim bağlantı noktalarınızı güvenli hale
 
@@ -202,53 +202,37 @@ PowerShell üzerinden tam zamanında VM erişim çözümlerini kullanmak için, 
 
 Aşağıdaki örnek, belirli bir VM'de tam zamanında VM erişim ilkesini belirler ve aşağıdakileri ayarlar:
 
-1.  22 ve 3389 bağlantı noktalarını kapatın.
+1.    22 ve 3389 bağlantı noktalarını kapatın.
 
-2.  Onaylanan istek başına açIlebilmeleri için her biri için en fazla 3 saatlik bir zaman penceresi ayarlayın.
-3.  Kaynak IP adreslerini denetlemek için erişim isteyen kullanıcıya izin verir ve onaylanan tam zamanında erişim isteği üzerine kullanıcının başarılı bir oturum oluşturmasına olanak tanır.
+2.    Onaylanan istek başına açIlebilmeleri için her biri için en fazla 3 saatlik bir zaman penceresi ayarlayın.
+3.    Kaynak IP adreslerini denetlemek için erişim isteyen kullanıcıya izin verir ve onaylanan tam zamanında erişim isteği üzerine kullanıcının başarılı bir oturum oluşturmasına olanak tanır.
 
 Bunu başarmak için PowerShell'de aşağıdakileri çalıştırın:
 
-1.  Bir VM için tam zamanında VM erişim ilkesini tutan bir değişken atayın:
+1.    Bir VM için tam zamanında VM erişim ilkesini tutan bir değişken atayın:
 
-        $JitPolicy = (@{
-         id="/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Compute/virtualMachines/VMNAME"
-        ports=(@{
-             number=22;
-             protocol="*";
-             allowedSourceAddressPrefix=@("*");
-             maxRequestAccessDuration="PT3H"},
-             @{
-             number=3389;
-             protocol="*";
-             allowedSourceAddressPrefix=@("*");
-             maxRequestAccessDuration="PT3H"})})
+        $JitPolicy = (@{ id="/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Compute/virtualMachines/VMNAME" ports=(@{ number=22;        protokol="*";        izin KaynakAdresiPrefix=@("*");        maxRequestAccessDuration="PT3H"}, @{ sayı=3389;        protokol="*";        izin KaynakAdresiPrefix=@("*");        maxRequestAccessDuration="PT3H"})})
 
-2.  VM'yi tam zamanında VM erişim ilkesini bir diziye takın:
+2.    VM'yi tam zamanında VM erişim ilkesini bir diziye takın:
     
         $JitPolicyArr=@($JitPolicy)
 
-3.  Seçili VM'de tam zamanında VM erişim ilkesini yapılandırın:
+3.    Seçili VM'de tam zamanında VM erişim ilkesini yapılandırın:
     
-        Set-AzJitNetworkAccessPolicy -Kind "Basic" -Location "LOCATION" -Name "default" -ResourceGroupName "RESOURCEGROUP" -VirtualMachine $JitPolicyArr 
+        Set-AzJitNetworkAccessPolicy -Kind "Temel" -Konum "LOCATION" -Adı "varsayılan" -ResourceGroupName "RESOURCEGROUP" -VirtualMachine $JitPolicyArr 
 
 ### <a name="request-access-to-a-vm-via-powershell"></a>PowerShell üzerinden VM'ye erişim isteğinde bulunun
 
 Aşağıdaki örnekte, belirli bir VM bağlantı noktası 22'nin belirli bir IP adresi ve belirli bir süre için açılmasının istendiği belirli bir VM'ye tam zamanında VM erişim isteği görebilirsiniz:
 
 PowerShell'de aşağıdakileri çalıştırın:
-1.  VM istek erişim özelliklerini yapılandırma
+1.    VM istek erişim özelliklerini yapılandırma
 
-        $JitPolicyVm1 = (@{
-          id="/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Compute/virtualMachines/VMNAME"
-        ports=(@{
-           number=22;
-           endTimeUtc="2018-09-17T17:00:00.3658798Z";
-           allowedSourceAddressPrefix=@("IPV4ADDRESS")})})
-2.  VM erişim isteği parametrelerini bir diziye ekleyin:
+        $JitPolicyVm1 = (@{ id="/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Compute/virtualMachines/VMNAME" portları=(@{ number=22;      endTimeUtc="2018-09-17T17:00:00.3658798Z";      allowedSourceAddressPrefix=@("IPV4ADDRESS")})})
+2.    VM erişim isteği parametrelerini bir diziye ekleyin:
 
         $JitPolicyArr=@($JitPolicyVm1)
-3.  İstek erişimini gönderin (adım 1'de aldığınız kaynak kimliğini kullanın)
+3.    İstek erişimini gönderin (adım 1'de aldığınız kaynak kimliğini kullanın)
 
         Start-AzJitNetworkAccessPolicy -ResourceId "/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Security/locations/LOCATION/jitNetworkAccessPolicies/default" -VirtualMachine $JitPolicyArr
 
@@ -271,6 +255,7 @@ Bu makalede, Güvenlik Merkezi'ndeki tam zamanında VM erişiminin Azure sanal m
 
 Güvenlik Merkezi hakkında daha fazla bilgi edinmek için şunlara bakın:
 
+- Microsoft Learn modülü [Azure Güvenlik Merkezi ile sunucularınızı ve VM'lerinizi kaba kuvvet ve kötü amaçlı yazılım saldırılarına karşı koruyun](https://docs.microsoft.com/learn/modules/secure-vms-with-azure-security-center/)
 - [Güvenlik ilkeleri belirleme](tutorial-security-policy.md) — Azure abonelikleriniz ve kaynak gruplarınız için güvenlik ilkelerini nasıl yapılandırıştıracaklarını öğrenin.
 - [Güvenlik önerilerini yönetme](security-center-recommendations.md) — Önerilerin Azure kaynaklarınızı korumanıza nasıl yardımcı olduğunu öğrenin.
 - [Güvenlik durumu izleme](security-center-monitoring.md) — Azure kaynaklarınızın sistem durumunu nasıl izleyeceğinizi öğrenin.

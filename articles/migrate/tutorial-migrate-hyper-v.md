@@ -3,13 +3,15 @@ title: Azure Geçir Sunucu Geçişi ile Hyper-V VM'leri Azure'a geçirin
 description: Azure Geçiş Sunucusu Geçişi ile şirket içi Hyper-V V MM'leri Azure'a nasıl geçirebilirsiniz öğrenin
 ms.topic: tutorial
 ms.date: 11/18/2019
-ms.custom: fasttrack-edit
-ms.openlocfilehash: 2b9ed56186649b7644adbd1237ad74af50474cc5
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.custom:
+- MVC
+- fasttrack-edit
+ms.openlocfilehash: b5d37da7ea0c53a7e8cbb5b579d529dd4a799fed
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80279717"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422691"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>Hyper-V VM’lerini Azure’a geçirme 
 
@@ -62,7 +64,7 @@ Hyper-V VM'leri değerlendirmek için ikinci öğreticiyi izlemediyseniz, bir Az
 
 4. Araçlar listesinde Azure **Geçiş: Sunucu Geçişi** > **Ekle aracını** seçin
 
-    ![Sunucu Geçiş aracı](./media/tutorial-migrate-hyper-v/server-migration-tool.png)
+    ![Sunucu Geçişi aracı](./media/tutorial-migrate-hyper-v/server-migration-tool.png)
 
 
 ## <a name="set-up-the-azure-migrate-appliance"></a>Azure Geçiş cihazını ayarlama

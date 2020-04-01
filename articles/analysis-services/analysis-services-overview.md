@@ -4,21 +4,21 @@ description: Bulutta kurumsal dereceli veri modelleri sağlayan hizmet olarak ta
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 02/20/2020
+ms.date: 03/30/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 3a18218635b5fc576bd9255eb73c136756ac3caa
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 7eb46e0eda1cd702f26829fac49ffe0e7916626f
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79240607"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80410400"
 ---
 # <a name="what-is-azure-analysis-services"></a>Azure Analysis Services nedir?
 
 ![Azure Analysis Services](./media/analysis-services-overview/aas-overview-aas-icon.png)
 
-Azure Analysis Services, bulutta kurumsal düzeyde veri modelleri sağlayan, tam yönetilen bir hizmet olarak platformdur (PaaS). Birden fazla veri kaynağından verileri birleştirmek, ölçümleri tanımlamak ve tek, güvenilen bir tablo biçiminde anlam veri modelinde verilerinizin güvenliğini sağlamak için gelişmiş karma ve modelleme özelliklerini kullanın. Veri modeli, kullanıcıların geçici veri analizi için büyük miktarlarda veriye göz atmaları için daha kolay ve daha hızlı bir yol sağlar.
+Azure Analysis Services, bulutta kurumsal düzeyde veri modelleri sağlayan, tam yönetilen bir hizmet olarak platformdur (PaaS). Birden fazla veri kaynağından verileri birleştirmek, ölçümleri tanımlamak ve tek, güvenilen bir tablo biçiminde anlam veri modelinde verilerinizin güvenliğini sağlamak için gelişmiş karma ve modelleme özelliklerini kullanın. Veri modeli, kullanıcıların Power BI ve Excel gibi araçları kullanarak geçici veri analizi yapmaları için daha kolay ve daha hızlı bir yol sağlar.
 
 ![Veri kaynakları](./media/analysis-services-overview/aas-overview-overall.png)
 
@@ -38,7 +38,7 @@ Azure Çözümleme Hizmetleri **Geliştirici,** **Temel**ve **Standart** katmanl
 
 ### <a name="developer-tier"></a>Geliştirici katmanı
 
-Bu katman değerlendirme, geliştirme ve test senaryoları için önerilir. Tek bir plan, standart katman ile sunulan aynı işlevleri içerir ancak işlemci gücü, QPU ve bellek boyutu bakımından sınırlıdır. Bu katmanda sorgu çoğaltma ölçeği *artırılamaz*. Bu katman bir SLA sunmaz.
+Bu katman değerlendirme, geliştirme ve test senaryoları için önerilir. Tek bir plan, standart katman ile sunulan aynı işlevleri içerir ancak işlemci gücü, QPU ve bellek boyutu bakımından sınırlıdır. Sorgu çoğaltma ölçeklendirmesi bu katman için *kullanılamaz.* Bu katman bir SLA sunmaz.
 
 |Planlama  |QPU’lar  |Bellek (GB)  |
 |---------|---------|---------|
@@ -161,7 +161,7 @@ Sunucu düzeyinde, Çözümleme Hizmetleri güvenlik duvarı, Azure kimlik doğr
 
 Azure Analysis Services Güvenlik Duvarı, kurallarda belirtilen IP adresleri dışındaki tüm istemci bağlantılarını engeller. Varsayılan olarak, yeni sunucular için güvenlik duvarı koruması etkinleştirilir. Güvenlik duvarı korumasının etkin olması önerilir ve kurallar sunucu sağlama komut dosyasının bir parçası olarak veya sunucu oluşturulduktan hemen sonra portalda yapılandırılır. İstemci IP’lerine veya aralığa göre izin verilen IP adreslerini belirten kuralları yapılandırın. Power BI (hizmet) bağlantılarına da izin verilebilir veya bağlantılar engellenebilir. Güvenlik duvarı ve kuralları portaldan ya da PowerShell kullanarak yapılandırın. Daha fazla bilgi için bkz. [Sunucu güvenlik duvarı yapılandırma](analysis-services-qs-firewall.md).
 
-### <a name="authentication"></a>Kimlik doğrulaması
+### <a name="authentication"></a>Kimlik Doğrulaması
 
 Kullanıcı kimlik doğrulaması, [Azure Active Directory (AAD)](../active-directory/fundamentals/active-directory-whatis.md) tarafından işlenir. Kullanıcılar oturum açarken veritabanına rol tabanlı erişim ile bir kuruluş hesabı kimliği kullanır. Kullanıcı kimlikleri, sunucunun içinde bulunduğu abonelik için varsayılan Azure Active Directory’nin üyesi olmalıdır. Daha fazla bilgi edinmek için bkz. [Kimlik doğrulaması ve kullanıcı izinleri](analysis-services-manage-users.md).
 
@@ -208,6 +208,10 @@ Microsoft Analysis Services Projects ücretsiz yüklenebilir VSIX paketi olarak 
 
 [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)’yu (SSMS) kullanarak sunucularınızı ve model veritabanlarınızı yönetin. Sunucularınıza bulutta bağlayın. TMSL betiklerini, doğrudan XMLA sorgu penceresinden çalıştırın ve TMSL betikleri ve PowerShell kullanarak görevleri otomatik hale getirin. Yeni özellikler ve işlevler hızla kullanıma sunulur çünkü SSMS her ay güncelleştirilir.
 
+### <a name="open-source-tools"></a>Açık kaynak araçları
+
+Analiz Hizmetleri, araçlar oluşturan canlı bir geliştirici topluluğuna sahiptir. Sezgisel, hafif bir düzenleyici kullanarak tabular modelleri oluşturmak, korumak ve yönetmek için açık kaynak bir araç olan [Tabular Düzenleyici'ye](https://tabulareditor.github.io/)göz atmayı unutmayın. [DAX Studio](https://daxstudio.org/), DAX yazma, tanı, performans ayarı ve analiz için büyük bir açık kaynak aracıdır.
+
 ### <a name="powershell"></a>PowerShell
 
 Sunucu kaynakları oluşturma, sunucu işlemlerini askıya alma veya sürdürme veya hizmet düzeyini (katman) değiştirme gibi sunucu kaynak yönetimi görevleri Azure PowerShell cmdlets kullanır. Rol üyeleri ekleme, işleme veya TMSL betiklerini çalıştırma gibi veritabanlarını yönetmeye yönelik diğer görevlerde, SqlServer modülündeki cmdlet'ler kullanılır. Daha fazla bilgi almak için bkz. [Azure Analysis Services’i PowerShell ile yönetme](analysis-services-powershell.md).
@@ -232,19 +236,15 @@ Azure Analysis Services ayrıca [Dynamic Management Görünümleri (DMV)](https:
 
 Azure Analysis Services’e özgü belgeler buraya eklenir. Makaleleri bulmak için tarayıcı ekranınızın sol tarafındaki içindekiler bölümünü kullanın. 
 
-Azure Analiz Hizmetleri tabular modelleri SQL Server Analysis Services'daki tabular modeller ile aynı olduğundan, [SQL Server Analysis Services belgelerinde](https://docs.microsoft.com/analysis-services/analysis-services-overview)paylaşılan veri modelleme öğreticileri, kavramsal, yordam, geliştirici ve başvuru makalelerinden oluşan geniş bir kitaplık vardır. SQL Server Analysis Services belgelerindeki makaleler, bunların Azure Analysis Services için de geçerli olup olmadığını başlığın altındaki bir APPLIES TO başlığı ile gösterir.
+Azure Analiz Hizmetleri'ndeki tabular modeller SQL Server Analysis Services ve Power BI Premium veri kümelerinde tabular modeller ile aynı olduğundan, [Çözüm Hizmetleri belgelerinde](https://docs.microsoft.com/analysis-services/?view=azure-analysis-services-current)paylaşılan veri modelleme öğreticileri, kavramsal, yordam, geliştirici ve referans makalelerinden oluşan geniş bir kitaplık vardır. Paylaşılan Analiz Hizmetleri belgelerindeki makaleler, başlığın altındaki bir Başlık la Azure Analiz Hizmetleri'ne de uygulanıp uygulanmayacaklarını gösterir. İçerik tablosunun üstündeki Sürüm seçicisini yalnızca kullanmakta olduğunuz platforma uygulanan makaleleri görmek için de kullanabilirsiniz.
 
 ![Paylaşılan belgeler](./media/analysis-services-overview/aas-overview-applies-to.png)
 
 ### <a name="contribute"></a>Katkıda bulunun!
 
-Bu makale gibi Analysis Services belgeleri de açık kaynaktır. Bir GitHub hesabınız varsa, tarayıcınızın sağ üst köşesindeki Düzenle (kalem) simgesine tıklayarak bir makaleyi düzenleyebilirsiniz. Tarayıcı içi düzenleyiciyi kullanın ve sonra Dosya değişikliği öner’e tıklayın. 
+Bu makale gibi Analysis Services belgeleri de açık kaynaktır. Nasıl katkıda bulunabileceğiniz hakkında daha fazla bilgi edinmek için [Dokümanlar katılımcısı kılavuzuna](https://docs.microsoft.com/contribute/)bakın. 
 
-![Paylaşılan belgeler](./media/analysis-services-overview/aas-overview-edit.png)
-
-Katkınız belge ekibi tarafından gözden geçirilecek ve onaylanması durumunda GitHub hesap adınız katkıda bulunan olarak gösterilecektir. Daha fazla bilgi için bkz. [Belgelere katkıda bulunan kılavuzu](https://docs.microsoft.com/contribute/).
-
-Azure Analysis Services belgeleri ayrıca [GitHub Sorunları](https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs)’nı kullanır. Ürün veya belgeler hakkında geri bildirim sağlayabilirsiniz. Bir makalenin altındaki **Geri bildirim** seçeneğini kullanın. GitHub Sorunları SQL Server Analysis Services belgeleri için henüz etkin değildir. 
+Azure Analysis Services belgeleri ayrıca [GitHub Sorunları](https://docs.microsoft.com/teamblog/a-new-feedback-system-is-coming-to-docs)’nı kullanır. Ürün veya belgeler hakkında geri bildirim sağlayabilirsiniz. Bir makalenin altındaki **Geri bildirim** seçeneğini kullanın. Paylaşılan Çözümleme Hizmetleri belgeleri için GitHub Sorunları etkinleştirilemez. 
 
 ## <a name="blogs"></a>Bloglar
 

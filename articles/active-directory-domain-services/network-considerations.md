@@ -4,19 +4,18 @@ description: Azure Active Directory Domain Services'ı çalıştırDığınızda
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
-ms.assetid: 23a857a5-2720-400a-ab9b-1ba61e7b145a
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/21/2020
+ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: e00ec8448739ac30950877a2ae196aa78cde750c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 69f8cd0f78a45c6c5e53368edc5902c4b6695701
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79264199"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80408824"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-ad-domain-services"></a>Azure AD Etki Alanı Hizmetleri için sanal ağ tasarımı konuları ve yapılandırma seçenekleri
 
@@ -76,7 +75,7 @@ Sanal ağı başka bir sanal ağa (VNet-to-VNet), sanal ağı şirket içi bir k
 
 ![VPN Ağ Geçidi kullanarak sanal ağ bağlantısı](./media/active-directory-domain-services-design-guide/vnet-connection-vpn-gateway.jpg)
 
-Sanal özel ağ kullanma hakkında daha fazla bilgi için [Azure portalını kullanarak VNet'ten VNet'e VPN ağ geçidi bağlantısını yapılandır'ı](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal)okuyun.
+Sanal özel ağ kullanma hakkında daha fazla bilgi için [Azure portalını kullanarak VNet'ten VNet'e VPN ağ geçidi bağlantısını yapılandır'ı](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)okuyun.
 
 ## <a name="name-resolution-when-connecting-virtual-networks"></a>Sanal ağları bağlarken ad çözünürlüğü
 
@@ -97,11 +96,11 @@ Azure AD DS yönetilen etki alanı, dağıtım sırasında bazı ağ kaynakları
 | Yük dengeleyici kuralları                     | Azure AD DS yönetilen bir etki alanı TCP bağlantı noktası 636'da güvenli LDAP için yapılandırıldığında, trafiği dağıtmak için yük dengeleyicisi üzerinde üç kural oluşturulur ve kullanılır. |
 
 > [!WARNING]
-> Azure AD DS tarafından oluşturulan ağ kaynağının hiçbirini silmeyin. Ağ kaynaklarından herhangi birini silerseniz, bir Azure AD DS hizmet kesintisi oluşur.
+> Yük bakiyesini veya kuralları el ile yapılandırmak gibi Azure AD DS tarafından oluşturulan ağ kaynaklarından hiçbirini silmeyin veya değiştirmeyin. Ağ kaynaklarından herhangi birini siler veya değiştirirseniz, Bir Azure AD DS hizmet kesintisi oluşabilir.
 
 ## <a name="network-security-groups-and-required-ports"></a>Ağ güvenlik grupları ve gerekli bağlantı noktaları
 
-Ağ [güvenlik grubu (NSG),](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) bir Azure sanal ağında ağ trafiğinin trafiğe girmesine izin veren veya reddeden kuralların bir listesini içerir. Hizmetin kimlik doğrulama ve yönetim işlevleri sağlamasına izin veren bir dizi kural içeren Azure AD DS'yi dağıttığınızda bir ağ güvenlik grubu oluşturulur. Bu varsayılan ağ güvenlik grubu, Azure AD DS yönetilen etki alanınızın dağıtılan sanal ağ alt ağıyla ilişkilidir.
+Ağ [güvenlik grubu (NSG),](../virtual-network/virtual-networks-nsg.md) bir Azure sanal ağında ağ trafiğinin trafiğe girmesine izin veren veya reddeden kuralların bir listesini içerir. Hizmetin kimlik doğrulama ve yönetim işlevleri sağlamasına izin veren bir dizi kural içeren Azure AD DS'yi dağıttığınızda bir ağ güvenlik grubu oluşturulur. Bu varsayılan ağ güvenlik grubu, Azure AD DS yönetilen etki alanınızın dağıtılan sanal ağ alt ağıyla ilişkilidir.
 
 Azure AD DS'nin kimlik doğrulama ve yönetim hizmetleri sağlaması için aşağıdaki ağ güvenliği grubu kuralları gereklidir. Azure AD DS yönetilen etki alanınızın dağıtılan sanal ağ alt ağı için bu ağ güvenlik grubu kurallarını düzenlemeyin veya silmeyin.
 

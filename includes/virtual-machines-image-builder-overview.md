@@ -5,12 +5,12 @@ ms.date: 01/23/2020
 ms.topic: include
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 00fc3a01e6f42c2704af9dbc807dce193ff2971c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 658910dc4291375c7b2ab22e88c599b970b885af
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80117149"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80419216"
 ---
 Standartlaştırılmış sanal makine (VM) görüntüleri, kuruluşların buluta geçiş etmesine ve dağıtımlarda tutarlılık sağlamasına olanak sağlar. Görüntüler genellikle önceden tanımlanmış güvenlik ve yapılandırma ayarlarını ve gerekli yazılımları içerir. Kendi görüntüleme ardışık bilgisayarınızı ayarlamak zaman, altyapı ve kurulum gerektirir, ancak Azure VM Image Builder ile görüntünüzü açıklayan basit bir yapılandırma sağlayın, hizmete gönderin ve görüntü oluşturulur ve dağıtılır.
  
@@ -51,7 +51,7 @@ AIB, Azure Marketi taban işletim sistemi görüntülerini destekleyecektir:
 - CentOS 7.6, 7.7
 - SLES 12 SP4
 - SLES 15, SLES 15 SP1
-- Sanal Masaüstü için Windows 10 RS5 Kurumsal/Profesyonel/Kurumsal (EVD) 
+- Windows 10 RS5 Kurumsal/Kurumsal çok oturumlu/Profesyonel
 - Windows 2016
 - Windows 2019
 
@@ -78,7 +78,7 @@ Azure Image Builder, bir Azure kaynak sağlayıcısı tarafından erişilebilen 
 
 ## <a name="permissions"></a>İzinler
 
-Azure VM Image Builder'ın görüntüleri yönetilen resimlere veya Paylaşılan Resim Galerisi'ne dağıtmasına izin vermek için "Azure Sanal Makine Görüntü Oluşturucusu" (uygulama kimliği: cf32a0cc-373c-47c9-9156-0db11f6a6dfc) hizmeti için 'Katılımcı' izinleri sağlamanız gerekir ) kaynak gruplarında. 
+Azure VM Image Builder'ın görüntüleri yönetilen resimlere veya Paylaşılan Resim Galerisi'ne dağıtmasına izin vermek için kaynak gruplarında "Azure Sanal Makine Resim Oluşturucusu" (uygulama kimliği: cf32a0cc-373c-47c9-9156-0db11f6a6dfc) hizmeti için 'Katılımcı' izinleri sağlamanız gerekir. 
 
 Varolan özel yönetilen bir resim veya resim sürümünü kullanıyorsanız, Azure Resim Oluşturucusu'nun bu kaynak gruplarına en az 'Reader' erişimi gerekir.
 

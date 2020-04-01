@@ -3,12 +3,12 @@ title: Azure dosya paylaşımı yedeklemesi hakkında
 description: Kurtarma Hizmetleri kasasında Azure dosya paylaşımlarını nasıl yedekleyabileceğinizi öğrenin
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: 0e17b05a3febaa673fb29d45c2bcef25e2996df8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fd5bb51b2c7b5c09e9d859b69c3094eb50c205b5
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78386726"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396278"
 ---
 # <a name="about-azure-file-share-backup"></a>Azure dosya paylaşımı yedeklemesi hakkında
 
@@ -43,6 +43,15 @@ Azure dosya paylaşımı yedeklemesi, buluttaki verilerinizi koruyan ve şirket 
 6. Azure dosya paylaşımı içeriğini (tek tek dosyalar veya tam paylaşım) kaynak dosya paylaşımında bulunan anlık görüntülerden geri yükleyebilirsiniz. İşlem tetiklendikten sonra, anlık görüntü URL'si meta veri deposundan alınır ve veriler listelenir ve kaynak anlık görüntüden seçtiğiniz hedef dosya paylaşımına aktarılır.
 
 7. İş izleme verilerinin yedeklemesi ve geri yüklenmesi Azure Yedekleme İzleme hizmetine itilir. Bu, dosya paylaşımlarınızın bulut yedeklemelerini tek bir panoda izlemenize olanak tanır. Ayrıca, yedekleme durumu etkilendiğinde uyarıları veya e-posta bildirimlerini de yapılandırabilirsiniz. E-postalar Azure e-posta hizmeti aracılığıyla gönderilir.
+
+## <a name="backup-costs"></a>Yedekleme maliyetleri
+
+Azure Dosya paylaşım yedeklemesi anlık görüntü tabanlı bir çözümdür ve anlık görüntüler için tahakkuk eden depolama [ücretleri, burada](https://azure.microsoft.com/pricing/details/storage/files/)belirtilen fiyatlandırma ayrıntılarına göre Azure Dosyaları Kullanımı ile birlikte faturalandırılır.
+
+Ancak, yedekleme çözümden yararlanmak için korumalı örnek ücreti, Azure [Dosyaları Için Yedekleme](https://azure.microsoft.com/pricing/details/backup/) bölümünde açıklanan fiyatlandırma modeline göre yapılır. Şu anda, gerçek fiyat sadece Batı Orta ABD için güncellendi. Diğer bölgeler için, kesin fiyatlar yakında bazı bölgesel varyasyonlarla güncellenecektir, ancak aynı fiyatlandırma modeli kullanılarak.
+
+>[!NOTE]
+>Önizleme sırasında "Korunan Örnek ücreti" yoktur ve [burada](https://azure.microsoft.com/pricing/details/storage/files/)belirtilen fiyatlandırmaya göre yalnızca anlık görüntüler için ücretlendirilirsiniz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

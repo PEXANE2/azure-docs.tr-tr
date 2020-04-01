@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/11/2020
-ms.openlocfilehash: 963b86852a7df557ad7179e444e7c3a2692f57d9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a14f4d548053fb7aaf6f450176fdc49bc7b119bf
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79531461"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421031"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>Sorun giderme kopyalama etkinliği performansı
 
@@ -88,7 +88,7 @@ Kopyalama etkinliği performansı beklentinizi karşılamazsa, Azure Tümleştir
 
   - Kopya kaynağınızı ve lavabo deseninizi kontrol edin: 
 
-    - Kopyalama deseniniz 4 Veri Tümleştirme Birimi'nden (DIUS) daha büyük görünüyorsa - ayrıntılarla [ilgili bu bölüme](copy-activity-performance.md#data-integration-units) bakın, genellikle daha iyi performans elde etmek için DIUs'ları artırmayı deneyebilirsiniz. 
+    - Kopyalama deseniniz 4 Veri Tümleştirme Birimi'nden (DIUS) daha büyük görünüyorsa - ayrıntılarla [ilgili bu bölüme](copy-activity-performance-features.md#data-integration-units) bakın, genellikle daha iyi performans elde etmek için DIUs'ları artırmayı deneyebilirsiniz. 
 
     - Aksi takdirde, tek büyük veri kümesini birkaç küçük veri kümesine bölmeyi düşünün ve bu kopyalama işlerinin eş zamanlı olarak çalışmasına izin verin, her biri verilerin bir kısmını ele alır. Bunu Lookup/GetMetadata + ForEach + Copy ile yapabilirsiniz. Birden [çok kapsayıcıdan dosyaları kopyalamaya](solution-template-copy-files-multiple-containers.md)bakın, [verileri Amazon S3'ten ADLS Gen2'ye geçirin](solution-template-migration-s3-azure.md)veya genel örnek olarak bir denetim tablosu çözümü şablonları [içeren toplu kopya.](solution-template-bulk-copy-with-control-table.md)
 
@@ -102,7 +102,7 @@ Kopyalama etkinliği performansı beklentinizi karşılamazsa, Azure Tümleştir
 
   - Kopya kaynağınızı ve lavabo deseninizi kontrol edin: 
 
-    - Kopyalama deseniniz 4 Veri Tümleştirme Birimi'nden (DIUS) daha büyük görünüyorsa - ayrıntılarla [ilgili bu bölüme](copy-activity-performance.md#data-integration-units) bakın, genellikle daha iyi performans elde etmek için DIUs'ları artırmayı deneyebilirsiniz. 
+    - Kopyalama deseniniz 4 Veri Tümleştirme Birimi'nden (DIUS) daha büyük görünüyorsa - ayrıntılarla [ilgili bu bölüme](copy-activity-performance-features.md#data-integration-units) bakın, genellikle daha iyi performans elde etmek için DIUs'ları artırmayı deneyebilirsiniz. 
 
     - Aksi takdirde, yavaş yavaş [paralel kopyaları](copy-activity-performance-features.md)ayarlayın , çok fazla paralel kopyabile performans zarar verebilir unutmayın.
 

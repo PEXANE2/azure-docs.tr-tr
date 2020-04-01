@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/06/2020
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: dee7d778c4a1c1f37ddab7b9d072f83a22acbc60
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8a4fbb3803f2eed4f961792a29a6bf8a327ea208
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80056563"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80501922"
 ---
 1. **Çözüm Gezgini**'nde projeye sağ tıklayın ve **Yayımla**'yı seçin.
 
@@ -38,12 +38,12 @@ ms.locfileid: "80056563"
     | **Abonelik** | Aboneliğiniz | Kullanılacak Azure aboneliği. Bu aboneliği kabul edin veya açılan listeden yeni bir abonelik seçin. |
     | **[Kaynak Grubu](../articles/azure-resource-manager/management/overview.md)** | Kaynak grubunuzun adı |  İşlev uygulamanızı oluşturacak kaynak grubu. Açılan listeden varolan bir kaynak grubu seçin veya yeni bir kaynak grubu oluşturmak için **Yeni'yi** seçin.|
     | **[Hosting Planı](../articles/azure-functions/functions-scale.md)** | Barındırma planınızın adı | Sunucusuz bir planı yapılandırmak için **Yeni'yi** seçin. **Boyut**Altındaki **Tüketim'i** seçtiğinizden emin olun. Projenizi [Tüketim planında](../articles/azure-functions/functions-scale.md#consumption-plan)çalışan bir işlev uygulamasında yayımladığınızda, yalnızca işlevler uygulamanızın yürütülmesi için ödeme yaptığınızda ödeme görür. Diğer barındırma planları daha yüksek maliyetlere neden oluyor. **Tüketim**dışında bir planda çalışıyorsanız, [işlev uygulamanızın ölçeklemesi](../articles/azure-functions/functions-scale.md)yönetmelisiniz. Yakınınızdaki bir [bölgede](https://azure.microsoft.com/regions/) veya işlevlerinizin erişebileceği diğer hizmetlerde bir **Konum** seçin.  |
-    | **[Azure Depolama](../articles/storage/common/storage-account-create.md)** | Genel amaçlı depolama hesabı | İşlevler çalışma zamanı tarafından bir Azure Depolama hesabı gereklidir. Genel amaçlı bir depolama hesabını yapılandırmak için **Yeni'yi** seçin. Ayrıca, [depolama hesabı gereksinimlerini](../articles/azure-functions/functions-scale.md#storage-account-requirements)karşılayan varolan bir hesap da seçebilirsiniz.  |
+    | **[Azure Storage](../articles/storage/common/storage-account-create.md)** | Genel amaçlı depolama hesabı | İşlevler çalışma zamanı tarafından bir Azure Depolama hesabı gereklidir. Genel amaçlı bir depolama hesabını yapılandırmak için **Yeni'yi** seçin. Ayrıca, [depolama hesabı gereksinimlerini](../articles/azure-functions/functions-scale.md#storage-account-requirements)karşılayan varolan bir hesap da seçebilirsiniz.  |
 
     ![App Service Oluştur iletişim kutusu](./media/functions-vstools-publish/functions-visual-studio-publish.png)
 
 5. Bu ayarlarla Azure'da bir işlev uygulaması ve ilgili kaynakları oluşturmak ve işlev proje kodunuzu dağıtmak için **Oluştur'u** seçin. 
 
-6. Dağıtım tamamlandıktan sonra, Azure'daki işlev uygulamanızın adresi olan **Site URL** değerini not alın.
+6. Yayımla'yı seçin ve dağıtım tamamlandıktan sonra Azure'daki işlev uygulamanızın adresi olan **Site URL** değerine not alın.
 
     ![Başarı iletisi yayımlama](./media/functions-vstools-publish/functions-visual-studio-publish-complete.png)

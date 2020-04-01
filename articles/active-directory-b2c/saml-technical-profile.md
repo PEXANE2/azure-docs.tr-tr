@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/13/2020
+ms.date: 03/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8c81d2bc499c3d9cae262ef62be2dac2d7280be7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: HT
+ms.openlocfilehash: 83a13e0b1bb4d55b889d96e42c8f3f18ce0f2b73
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78183848"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80408934"
 ---
 # <a name="define-a-saml-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C özel ilkesinde SAML teknik profili tanımlama
 
@@ -90,11 +90,32 @@ Protokol öğesinin **Ad** özniteliğinin `SAML2`.
 
 **OutputClaims** öğesi, `AttributeStatement` saml kimlik sağlayıcısı tarafından bu bölüm altında döndürülen taleplerin listesini içerir. İlkenizde tanımlanan talep adını kimlik sağlayıcısında tanımlanan adla eşlemeniz gerekebilir. Özniteliği ayarladığınız `DefaultValue` sürece kimlik sağlayıcısı tarafından döndürülen talepleri de ekleyebilirsiniz.
 
-**Saml** iddiasını Normalleştirilmiş bir talep olarak Subject'deki **NamedId'i** `assertionSubjectName`okumak **için, partnerclaimType'ı** . **NameId'in** XML iddiasındaki ilk değer olduğundan emin olun. Birden fazla iddia tanımladığınızda, Azure AD B2C son iddiadan özne değerini seçer.
+### <a name="subject-name-output-claim"></a>Özne adı çıktısı talebi
 
-**OutputClaimsTransformations** öğesi, çıktı taleplerini değiştirmek veya yenilerini oluşturmak için kullanılan **OutputClaimsTransformation** öğelerikoleksiyonunu içerebilir.
+**Saml** iddiasını Konu'daki **NameId'i** normalleştirilmiş bir talep olarak okumak için, `SPNameQualifier` claim **PartnerClaimType'ı** özniteliğin değerine ayarlayın. `SPNameQualifier`Öznitelik sunulmazsa, claim **PartnerClaimType'ı** özniteliğin `NameQualifier` değerine ayarlayın. 
 
-Aşağıdaki örnek, Facebook kimlik sağlayıcısı tarafından iade edilen talepleri gösterir:
+
+SAML iddiası: 
+
+```XML
+<saml:Subject>
+  <saml:NameID SPNameQualifier="http://your-idp.com/unique-identifier" Format="urn:oasis:names:tc:SAML:2.0:nameid-format:transient">david@contoso.com</saml:NameID>
+    <SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer">
+      <SubjectConfirmationData InResponseTo="_cd37c3f2-6875-4308-a9db-ce2cf187f4d1" NotOnOrAfter="2020-02-15T16:23:23.137Z" Recipient="https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/B2C_1A_TrustFrameworkBase/samlp/sso/assertionconsumer" />
+    </SubjectConfirmation>
+  </saml:SubjectConfirmation>
+</saml:Subject>
+```
+
+Çıktı talebi:
+
+```XML
+<OutputClaim ClaimTypeReferenceId="issuerUserId" PartnerClaimType="http://your-idp.com/unique-identifier" />
+```
+
+Saml `SPNameQualifier` `NameQualifier` iddiasında her iki veya öznitelik de sunulmuyorsa, **PartnerClaimType** iddiasını `assertionSubjectName`. **NameId'in** XML iddiasındaki ilk değer olduğundan emin olun. Birden fazla iddia tanımladığınızda, Azure AD B2C son iddiadan özne değerini seçer.
+
+Aşağıdaki örnek, bir SAML kimlik sağlayıcısı tarafından döndürülen talepleri gösterir:
 
 - **İhraççıUserId** **iddiası, SubjectName iddiasıyla** eşlenir.
 - **first_name** iddiası **givenName** iddiasına eşlenir.
@@ -118,6 +139,8 @@ Teknik profil, kimlik sağlayıcısı tarafından döndürülen talepleri de dö
   <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="socialIdpAuthentication" />
 </OutputClaims>
 ```
+
+**OutputClaimsTransformations** öğesi, çıktı taleplerini değiştirmek veya yenilerini oluşturmak için kullanılan **OutputClaimsTransformation** öğelerikoleksiyonunu içerebilir.
 
 ## <a name="metadata"></a>Meta Veriler
 

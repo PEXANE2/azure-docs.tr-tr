@@ -249,4 +249,4 @@ Tebrikler, bu Kaynak Yöneticisi şablon dağıtım eğitimini tamamladınız. G
 Şablonlarla ilgili daha gelişmiş kavramlara atlamaya hazırsınız. Bir sonraki öğretici, dağıtılacak kaynakları tanımlamaya yardımcı olmak için şablon başvuru belgelerini kullanma hakkında daha fazla ayrıntıya gider.
 
 > [!div class="nextstepaction"]
-> [Şablon başvurusunda yararlanma](./template-tutorial-use-template-reference.md)
+> [Şablon başvurusunu kullanma](./template-tutorial-use-template-reference.md)

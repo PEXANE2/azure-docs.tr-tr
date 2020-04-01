@@ -7,14 +7,14 @@ manager: scotthit
 ms.assetid: fd6841ea-c1d5-4bb7-86bd-0c708d193b89
 ms.service: azure-supportability
 ms.topic: article
-ms.date: 01/23/2020
+ms.date: 03/31/2020
 ms.author: kfollis
-ms.openlocfilehash: 28a29bbb94f63657a69e873bb8f969e96ee92c76
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2b68b6ddf19d6b07475e7009b47e162bfb2d0d2f
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79248495"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478992"
 ---
 # <a name="how-to-create-an-azure-support-request"></a>Azure destek isteği oluşturma
 
@@ -43,7 +43,7 @@ Azure portalında **Yardım + desteğine** ulaşabilirsiniz. Azure portal menüs
 
 ### <a name="role-based-access-control"></a>Rol tabanlı erişim denetimi
 
-Bir destek isteği oluşturmak için bir yönetici veya abonelik düzeyinde [Destek İsteği Katılımcısıfatı](../../role-based-access-control/built-in-roles.md#support-request-contributor) rolüne atanmış olmalısınız.
+Bir destek isteği oluşturmak için, bir [Sahip](../../role-based-access-control/built-in-roles.md#owner), [Katılımcı](../../role-based-access-control/built-in-roles.md#contributor) veya abonelik düzeyinde [Destek İstek Katılımcısı](../../role-based-access-control/built-in-roles.md#support-request-contributor) rolüne atanmış olmalısınız. Abonelik olmadan bir destek isteği oluşturmak için (örneğin Azure Active Directory (AAD) senaryosu, [yönetici](../../active-directory/users-groups-roles/directory-assign-admin-roles.md)olmalısınız.
 
 ### <a name="go-to-help--support-from-the-global-header"></a>Global üstbilgiden Yardım + desteğine git
 

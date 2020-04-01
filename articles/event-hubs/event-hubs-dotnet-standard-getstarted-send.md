@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2020
 ms.author: spelluru
-ms.openlocfilehash: 1d399ffec2cd702dcfa39310803bc780b85bfde1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a8124e9860ba5703e96f96c90bc0cf37e42baf9c
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77187452"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398351"
 ---
 # <a name="send-events-to-or-receive-events-from-azure-event-hubs-using-net-core-microsoftazureeventhubs"></a>.NET Core (Microsoft.Azure.EventHubs) kullanarak Etkinlikleri Azure Etkinlik Hub'larına gönderme veya alma
 Bu hızlı başlangıç, **Microsoft.Azure.EventHubs** .NET Core kitaplığını kullanarak bir etkinlik hub'ına olayları nasıl göndereceğinizi ve bir olay merkezinden nasıl alınarak alınabildiğini gösterir.
 
 > [!WARNING]
-> Bu hızlı başlangıç, eski **Microsoft.Azure.EventHubs** paketini kullanır. En son **Azure.Messaging.EventHubs** kitaplığını kullanan hızlı bir başlangıç için [Azure.Messaging.EventHubs kitaplığını kullanarak etkinlik gönder ve al'a](get-started-dotnet-standard-send-v2.md)bakın. Uygulamanızı eski kitaplığı kullanmaktan yenisine taşımak [için Microsoft.Azure.EventHub'larından Azure.Messaging.EventHubs'a geçiş kılavuzuna](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/migration-guide-from-v4.md)bakın.
+> Bu hızlı başlangıç, eski **Microsoft.Azure.EventHubs** paketini kullanır. En son **Azure.Messaging.EventHubs** kitaplığını kullanan hızlı bir başlangıç için [Azure.Messaging.EventHubs kitaplığını kullanarak etkinlik gönder ve al'a](get-started-dotnet-standard-send-v2.md)bakın. Uygulamanızı eski kitaplığı kullanmaktan yenisine taşımak [için Microsoft.Azure.EventHub'larından Azure.Messaging.EventHubs'a geçiş kılavuzuna](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md)bakın.
 
 ## <a name="prerequisites"></a>Ön koşullar
 Azure Etkinlik Hub'larında yeniyseniz, bu hızlı başlangıcı yapmadan önce [Etkinlik Hub'larına genel bakış](event-hubs-about.md) bakın. 

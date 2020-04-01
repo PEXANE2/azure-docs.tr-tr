@@ -7,18 +7,18 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 513a0f28fc03cbf24e35112245c9756d5ce00783
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dfed398124ca20771e169f6f9e7d08d4d799ee1e
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73954662"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478297"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-iis-based-web-application"></a>Çok katmanlı IIS tabanlı bir web uygulaması için olağanüstü durum kurtarma yı ayarlama
 
 Uygulama yazılımı bir kuruluşta iş verimliliğinin lokomotifidir. Çeşitli web uygulamaları bir kuruluşta farklı amaçlara hizmet edebilir. Bordro işleme, finansal uygulamalar ve müşteriye yönelik web siteleri için kullanılan uygulamalar gibi bazı uygulamalar kuruluş için kritik olabilir. Verimlilik kaybını önlemek için, kuruluşun bu uygulamaları sürekli olarak çalışır hale getirmek önemlidir. Daha da önemlisi, bu uygulamaların tutarlı bir şekilde kullanılabilir olması, kuruluşun marka veya imajına zarar görmesini önlemeye yardımcı olabilir.
 
-Kritik web uygulamaları genellikle çok katmanlı uygulamalar olarak ayarlanır: web, veritabanı ve uygulama farklı katmanlarda dır. Uygulamalar, çeşitli katmanlara yayılmasının yanı sıra, trafiği dengelemek için her katmanda birden çok sunucu kullanabilir. Ayrıca, çeşitli katmanlar ve web sunucusu arasındaki eşlemeler statik IP adreslerine dayalı olabilir. Bu eşlemelerin bazılarının, özellikle web sunucusunda birden çok web sitesi yapılandırıldığında güncellenmesi gerekir. Web uygulamaları SSL kullanıyorsa, sertifika bağlamalarını güncelleştirmeniz gerekir.
+Kritik web uygulamaları genellikle çok katmanlı uygulamalar olarak ayarlanır: web, veritabanı ve uygulama farklı katmanlarda dır. Uygulamalar, çeşitli katmanlara yayılmasının yanı sıra, trafiği dengelemek için her katmanda birden çok sunucu kullanabilir. Ayrıca, çeşitli katmanlar ve web sunucusu arasındaki eşlemeler statik IP adreslerine dayalı olabilir. Bu eşlemelerin bazılarının, özellikle web sunucusunda birden çok web sitesi yapılandırıldığında güncellenmesi gerekir. Web uygulamaları TLS kullanıyorsa, sertifika bağlamalarını güncelleştirmeniz gerekir.
 
 Çoğaltmayı temel almama geleneksel kurtarma yöntemleri, çeşitli yapılandırma dosyalarını, kayıt defteri ayarlarını, ciltleri, özel bileşenleri (COM veya .NET), içeriği ve sertifikaları yedeklemeyi içerir. Dosyalar bir dizi el ile adımla kurtarılır. Dosyaları yedekleme ve el ile kurtarma nın geleneksel kurtarma yöntemleri hantal, hataya açık ve ölçeklenebilir değildir. Örneğin, sertifikaları yedeklemeyi kolayca unutabilirsiniz. Başarısız olduktan sonra, sunucu için yeni sertifikalar satın almaktan başka seçeneğiniz kalmaz.
 
@@ -118,22 +118,22 @@ Her site bağlayıcı bilgilerden oluşur. Bağlama bilgileri, bağlama türün�
 >
 > Siteyi **tüm atanmamışlara**bağlamayı ayarlarsanız, bu bağlama sonrası başarısızlığı güncelleştirmeniz gerekmez. Ayrıca, bir siteyle ilişkili IP adresi başarısız lık sonrası değiştirilmezse, site bağlamayı güncelleştirmeniz gerekmez. (IP adresinin tutulması, birincil ve kurtarma sitelerine atanan ağ mimarisine ve alt ağlara bağlıdır. Bunları güncelleştirmek kuruluşunuz için uygun olmayabilir.)
 
-![SSL bağlamayı ayarladığını gösteren ekran görüntüsü](./media/site-recovery-iis/sslbinding.png)
+![TLS/SSL bağlamayı gösteren ekran görüntüsü](./media/site-recovery-iis/sslbinding.png)
 
 IP adresini bir siteyle ilişkilendirdiyseniz, tüm site bağlamalarını yeni IP adresiyle güncelleştirin. Site bağlamalarını değiştirmek için, kurtarma planında Grup 3'ten sonra bir [IIS web katmanı güncelleştirme komut dosyası](https://aka.ms/asr-web-tier-update-runbook-classic) ekleyin.
 
 #### <a name="update-the-load-balancer-ip-address"></a>Yük bakiyesi IP adresini güncelleştirme
 IP adresini güncelleştirmek için bir ARR sanal makineniz varsa, Grup 4'ten sonra bir [IIS ARR failover komut dosyası](https://aka.ms/asr-iis-arrtier-failover-script-classic) ekleyin.
 
-#### <a name="ssl-certificate-binding-for-an-https-connection"></a>HTTPS bağlantısı için SSL sertifikası bağlama
-Bir web sitesinin, web sunucusu ve kullanıcının tarayıcısı arasında güvenli bir iletişim sağlamaya yardımcı olan ilişkili bir SSL sertifikası olabilir. Web sitesinin bir HTTPS bağlantısı varsa ve ayrıca SSL sertifikası bağlayıcısı olan IIS sunucusunun IP adresine bağlanan ilişkili bir HTTPS sitesi varsa, sertifika için IIS sanal makinenin ip adresine sahip yeni bir site eklemeniz gerekir.
+#### <a name="tlsssl-certificate-binding-for-an-https-connection"></a>HTTPS bağlantısı için TLS/SSL sertifikası bağlama
+Bir web sitesinin, web sunucusu ve kullanıcının tarayıcısı arasında güvenli bir iletişim sağlamaya yardımcı olan ilişkili bir TLS/SSL sertifikası olabilir. Web sitesinin bir HTTPS bağlantısı varsa ve ayrıca TLS/SSL sertifika bağlayıcısı olan IIS sunucusunun IP adresine bağlanan ilişkili bir HTTPS sitesi varsa, sertifika için IIS sanal makinenin ip adresine sahip yeni bir site eklemeniz gerekir.
 
-SSL sertifikası bu bileşenlere karşı verilebilir:
+TLS/SSL sertifikası bu bileşenlere karşı verilebilir:
 
 * Web sitesinin tam nitelikli etki alanı adı.
 * Sunucunun adı.
 * Etki alanı adı için joker karakter sertifikası.  
-* Bir IP adresi. SSL sertifikası IIS sunucusunun IP adresine karşı verilmişse, Azure sitesindeki IIS sunucusunun IP adresine karşı başka bir SSL sertifikası verilmesi gerekir. Bu sertifika için ek bir SSL bağlama oluşturulması gerekir. Bu nedenle, IP adresine karşı verilen bir SSL sertifikası kullanmamanızı öneririz. Bu seçenek daha az yaygın olarak kullanılır ve yakında yeni sertifika yetkilisi/tarayıcı forumu değişikliklerine uygun olarak amortismana alınır.
+* Bir IP adresi. TLS/SSL sertifikası IIS sunucusunun IP adresine karşı verilmişse, Azure sitesindeki IIS sunucusunun IP adresine karşı başka bir TLS/SSL sertifikası verilmesi gerekir. Bu sertifika için ek bir TLS bağlama oluşturulması gerekir. Bu nedenle, IP adresine karşı verilen TLS/SSL sertifikasını kullanmamanızı öneririz. Bu seçenek daha az yaygın olarak kullanılır ve yakında yeni sertifika yetkilisi/tarayıcı forumu değişikliklerine uygun olarak amortismana alınır.
 
 #### <a name="update-the-dependency-between-the-web-tier-and-the-application-tier"></a>Web katmanı ve uygulama katmanı arasındaki bağımlılığı güncelleştirme
 Sanal makinelerin IP adresini temel alan uygulamaya özgü bir bağımlılığınız varsa, bu bağımlılık sonrası başarısızlığı güncelleştirmeniz gerekir.

@@ -1,22 +1,22 @@
 ---
 title: Bing Web Arama API'si nedir?
 titleSuffix: Azure Cognitive Services
-description: Bing Web araması API'si, kullanıcı sorgularına anında yanıt sağlayan bir RESTful hizmetidir. Arama sonuçları; web sayfalarını, görüntüleri, videoları, haberleri, çevirileri ve daha fazlasını içerecek şekilde yapılandırılabilir. Sonuçlar, JSON biçiminde sunulur ve aramayla ilgi düzeyini ve Bing Web Araması aboneliklerinizi temel alır.
+description: Bing Web Arama API'si, web arama sorgularına anında yanıtlar sağlayan bir restful hizmetidir. Sonuçları web sayfalarını, görüntüleri, videoları, haberleri ve daha fazlasını içerecek şekilde yapılandırın. Sonuçlar, JSON biçiminde sunulur ve aramayla ilgi düzeyini ve Bing Web Araması aboneliklerinizi temel alır.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: overview
-ms.date: 12/05/2019
+ms.date: 03/31/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: a7b2627b5837a124ebbcd76783bb49679cbe6313
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 5ea98a4ef759937c5962dc86f0384051b8fa0bb3
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77650291"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477471"
 ---
 # <a name="what-is-the-bing-web-search-api"></a>Bing Web Arama API'si nedir?
 
@@ -49,6 +49,6 @@ Bing Web Araması API'si, HTTP isteklerinin yapılabildiği ve JSON yanıtların
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Bing Web Araması API'sine ilk çağrınızı yapmak için [Python hızlı başlangıç](./quickstarts/client-libraries.md?pivots=programming-language-python) makalemizden yararlanın.  
-* [Tek sayfalı bir web uygulaması oluşturun](tutorial-bing-web-search-single-page-app.md).
+* [Tek sayfalık bir web uygulaması oluşturun.](tutorial-bing-web-search-single-page-app.md)
 * [Web Araması API'si v7 başvurusu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference) belgelerini gözden geçirin.  
 * Bing Web Araması için [kullanım ve görüntüleme gereksinimleri](UseAndDisplayRequirements.md) hakkında daha fazla bilgi edinin.  

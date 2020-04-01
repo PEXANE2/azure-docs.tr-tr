@@ -2,13 +2,13 @@
 title: Azure VM'leri yeni abonelik veya kaynak grubuna taşıma
 description: Sanal makineleri yeni bir kaynak grubuna veya aboneye taşımak için Azure Kaynak Yöneticisi'ni kullanın.
 ms.topic: conceptual
-ms.date: 10/10/2019
-ms.openlocfilehash: 97c49f90dab2aafd89de322e57ad44ff1fc9d367
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/31/2020
+ms.openlocfilehash: df34268b7741f76621c290e9979cf24d828ddc09
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75479767"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478658"
 ---
 # <a name="move-guidance-for-virtual-machines"></a>Sanal makineler için kılavuzu taşıma
 
@@ -27,18 +27,40 @@ Aşağıdaki senaryolar henüz desteklenmez:
 
 ## <a name="virtual-machines-with-azure-backup"></a>Azure Yedekleme ile sanal makineler
 
-Azure Yedekleme ile yapılandırılan sanal makineleri taşımak için aşağıdaki geçici çözümden yararlanın:
+Azure Yedekleme ile yapılandırılan sanal makineleri taşımak için geri yükleme noktalarını kasadan silmeniz gerekir.
+
+Sanal makineniz için [yumuşak silme](../../../backup/backup-azure-security-feature-cloud.md) etkinleştirilirse, bu geri yükleme noktaları tutulurken sanal makineyi taşıyamazsınız. [Yumuşak silmeyi devre dışı bırakın](../../../backup/backup-azure-security-feature-cloud.md#disabling-soft-delete) veya geri yükleme noktalarını sildikten sonra 14 gün bekleyin.
+
+### <a name="portal"></a>Portal
+
+1. Yedekleme için yapılandırılan sanal makineyi seçin.
+
+1. Sol bölmede **Yedek'i**seçin.
+
+1. **Yedeklemeyi Durdur'u**seçin.
+
+1. **Verileri sil'i**seçin.
+
+1. Silme tamamlandıktan sonra kasa ve sanal makineyi hedef aboneye taşıyabilirsiniz. Taşımadan sonra yedeklemelere devam edebilirsiniz.
+
+### <a name="powershell"></a>PowerShell
 
 * Sanal Makinenizin konumunu bulun.
 * Aşağıdaki adlandırma deseni olan bir `AzureBackupRG_<location of your VM>_1` kaynak grubu bulun: örneğin, AzureBackupRG_westus2_1
-* Azure portalında ise ,"Gizli türleri göster" işaretleyin
 * PowerShell'de ise `Get-AzResource -ResourceGroupName AzureBackupRG_<location of your VM>_1` cmdlet'i kullanın
+* Adlandırma deseni `Microsoft.Compute/restorePointCollections` olan türü olan kaynağı bulma`AzureBackup_<name of your VM that you're trying to move>_###########`
+* Bu kaynağı silin. Bu işlem kasadaki yedeklenmiş verileri değil, yalnızca anlık kurtarma noktalarını siler.
+
+### <a name="azure-cli"></a>Azure CLI
+
+* Sanal Makinenizin konumunu bulun.
+* Aşağıdaki adlandırma deseni olan bir `AzureBackupRG_<location of your VM>_1` kaynak grubu bulun: örneğin, AzureBackupRG_westus2_1
 * CLI'de ise,`az resource list -g AzureBackupRG_<location of your VM>_1`
 * Adlandırma deseni `Microsoft.Compute/restorePointCollections` olan türü olan kaynağı bulma`AzureBackup_<name of your VM that you're trying to move>_###########`
 * Bu kaynağı silin. Bu işlem kasadaki yedeklenmiş verileri değil, yalnızca anlık kurtarma noktalarını siler.
-* Silme tamamlandıktan sonra kasa ve sanal makineyi hedef aboneye taşıyabilirsiniz. Taşımadan sonra, veri kaybı olmadan yedeklemelere devam edebilirsiniz.
-* Yedekleme için Kurtarma Hizmeti kasalarını taşıma hakkında bilgi için, [Kurtarma Hizmetleri sınırlamalarına](../../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json)bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Komutların kaynakları taşıması [için](../move-resource-group-and-subscription.md)bkz.
+* Komutların kaynakları taşıması [için](../move-resource-group-and-subscription.md)bkz.
+
+* Yedekleme için Kurtarma Hizmeti kasalarını taşıma hakkında bilgi için, [Kurtarma Hizmetleri sınırlamalarına](../../../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json)bakın.

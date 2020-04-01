@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: b0b9d62e8761cfb67d0642d8e5a97e7d1f05af12
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e0a5e89f256b562ce5f702e9ff1388cb4d021bf5
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80064446"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437685"
 ---
 # <a name="ingest-historical-telemetry-data"></a>Geçmiş telemetri verilerini alma
 
@@ -37,37 +37,48 @@ Azure FarmBeats örneğinize iş ortağı tümleştirmesini etkinleştirmeniz ge
 > [!NOTE]
 > Aşağıdaki adımları yapmak için bir yönetici olmalısınız.
 
-1. Zip [dosyasını](https://aka.ms/farmbeatspartnerscriptv2)indirin ve yerel sürücünüze ayıklayın. Zip dosyasının içinde bir dosya olacak.
+1. https://portal.azure.com/ adresinde oturum açın.
 
-2. Azure Active https://portal.azure.com/ **Directory** > **Uygulama Kayıtları'nda**oturum açın ve gidin.
+2. **FarmBeats sürüm 1.2.7 veya sonraki sürümdeyseniz, a, b ve c adımlarını atlayın ve adım 3'e gidin.** FarmBeats UI'nin sağ üst köşesindeki **Ayarlar** simgesini seçerek FarmBeats sürümünü kontrol edebilirsiniz.
 
-3. FarmBeats dağıtımınızın bir parçası olarak oluşturulan **Uygulama Kaydı'nı** seçin. FarmBeats Datahub'ınızla aynı ada sahip olacaktır.
+      a.  Azure **Active Directory** > **Uygulama Kayıtları'na** gidin
 
-4. **Bir API'yi ortaya >** seçin **İstemci uygulamasını seçin** ve **04b07795-8ddb-461a-bbee-02f9e1bf7b46'yı** girin ve Yetki Kapsamını kontrol **edin.** Bu, aşağıdaki adımları gerçekleştirmek için Azure CLI'ye (Bulut Kabuğu) erişim sağlayacaktır:
+      b. FarmBeats dağıtımınızın bir parçası olarak oluşturulan **Uygulama Kaydı'nı** seçin. FarmBeats datahub'ınızla aynı ada sahip olacaktır.
 
-5. Cloud Shell'i açın. Bu seçenek, Azure portalının sağ üst köşesindeki araç çubuğunda kullanılabilir.
+      c. **Bir API'yi ortaya >** seçin bir istemci uygulaması **ekleyin** ve **04b07795-8ddb-461a-bbee-02f9e1bf7b46** girin ve Yetki Kapsamı'nı kontrol **edin.** Bu, aşağıdaki adımları gerçekleştirmek için Azure CLI'ye (Bulut Kabuğu) erişim sağlayacaktır:
+
+3. Cloud Shell'i açın. Bu seçenek, Azure portalının sağ üst köşesindeki araç çubuğunda kullanılabilir.
 
     ![Azure portal araç çubuğu](./media/get-drone-imagery-from-drone-partner/navigation-bar-1.png)
 
-6. Ortamın **PowerShell**olarak ayarlandığından emin olun. Varsayılan olarak, Bash olarak ayarlanır.
+4. Ortamın **PowerShell**olarak ayarlandığından emin olun. Varsayılan olarak, Bash olarak ayarlanır.
 
     ![PowerShell araç çubuğu ayarı](./media/get-sensor-data-from-sensor-partner/power-shell-new-1.png)
 
-7. Dosyayı Bulut Kabuğu örneğiniz deki adım 1'den yükleyin.
+5. Ev dizine git.
 
-    ![Araç çubuğu yükle düğmesi](./media/get-sensor-data-from-sensor-partner/power-shell-two-1.png)
+    ```azurepowershell-interactive 
+    cd  
+    ```
 
-8. Dosyanın yüklendiği dizine gidin. Varsayılan olarak, dosyalar kullanıcı adı altında ev dizinine yüklenir.
+6. Şu komutu çalıştırın. Bu, ev dizininize bir komut dosyası indirir.
 
-9. Aşağıdaki komut dosyasını çalıştırın. Komut dosyası, **Azure Etkin Dizin** > **Genel Bakış sayfasından**elde edilebilen Kiracı Kimliğini ister.
+    ```azurepowershell-interactive 
 
-    ```azurepowershell-interactive
+    wget –q https://aka.ms/farmbeatspartnerscriptv3 -O ./generatePartnerCredentials.ps1
+
+    ```
+
+7. Aşağıdaki komut dosyasını çalıştırın. Komut dosyası, **Azure Etkin Dizin** > **Genel Bakış** sayfasından elde edilebilen Kiracı Kimliğini sorar.
+
+    ```azurepowershell-interactive 
 
     ./generatePartnerCredentials.ps1   
 
     ```
 
-10. **API Endpoint,** **Kiracı Kimliği,** **İstemci Kimliği, İstemci** **Gizli**ve **EventHub Bağlantı Dizesi**değerlerini yakalamak için ekrandaki yönergeleri izleyin.
+8. **API Endpoint,** **Kiracı Kimliği,** **İstemci Kimliği, İstemci** **Gizli**ve **EventHub Bağlantı Dizesi**değerlerini yakalamak için ekrandaki yönergeleri izleyin.
+
 
 ## <a name="create-device-or-sensor-metadata"></a>Aygıt veya sensör meta verileri oluşturma
 
@@ -108,8 +119,8 @@ Azure FarmBeats örneğinize iş ortağı tümleştirmesini etkinleştirmeniz ge
 |     Productcode| Ürün kodu veya model adı veya numarası. Örneğin, RS-CO2-N01. |
 |       SensorMeasures> Adı       | Sensör ölçüsünün adı. Yalnızca küçük harf desteklenir. Farklı derinliklerden ölçümler için derinliği belirtin. Örneğin, soil_moisture_15cm. Bu ad telemetri verileriyle tutarlı olmalıdır.  |
 |          SensorMeasures > DataType       |Telemetri veri türü. Şu anda, çift desteklenir.|
-|    SensorMeasures > Tipi    |Sensör telemetri verilerinin ölçüm türü. Sistem tanımlı tipleri AmbientTemperature, CO2, Derinlik, ElektrikselIletkenlik, Yaprak Yağışlılık, Uzunluk, LiquidLevel, Nitrat, O2, PH, Fosfat, PointInTime, Potasyum, Basınç, RainGauge, RelativeMoisturey, Tuzluluk, SoilMoisture, SoilTemperature, SolarRadiation, State, TimeDuration, UVRadiation, UVIndex, Volume, WindDirection, WindRun, WindSpeed, Evapotranspiration, PAR. Daha fazla eklemek için /ExtendedType API'sine bakın.|
-|        SensorMeasures > Ünitesi              | Sensör telemetri veri birimi. Sistem tanımlı birimler NoUnit, Celsius, Fahrenheit, Kelvin, Rankine, Pascal, Mercury, PSI, Milimetre, Santimetre, Santimetre, Inç, Feet, Mile, Kilometre, MilesPerHour, MilesPerSecond, KMPerHour, KMPerSecond, MetersPerHour, MetersPerSecond, Derece, WattsPerSquareMeter, KilometrePerKareMetre, MilliWattPerSquareCentiMeter, MilliJoulesPerSquareCentiMeter, MiliJoulesPerSquareCentiMeter, VolumetrikWaterContent, YüzdeMole, PartsPerMillion, MicroMol, MicroMoleSPerLitreLitre, Siemens, Siemens MilliSiemensPerCentiMeter, Centibar, DeciSiemensPerMeter, KiloPascal, VolumetricIonContent, Liter, MiliLitre, Saniye, UnixTimestamp, MicroMolPerMeterSquaredPerSecond, InchPerHour daha eklemek için, / ExtendedType API bakın.|
+|    SensorMeasures > Tipi    |Sensör telemetri verilerinin ölçüm türü. Sistem tanımlı tipler AmbientTemperature, CO2, Depth, ElectricalConductivity, LeafWetness, Length, LiquidLevel, Nitrate, O2, PH, Fosfat, PointInTime, Potasyum, Basınç, RainGauge, RelativeMoisturey, Tuzluluk, SoilMoisture, SoilMoisture, SoilTemperature, SolarRadiation, State, TimeDuration, UVRadiation, UVIndex, Volume, WindDirection, WindRun, WindSpeed, WindSpeed, WindSpeed, WindSpeed PARSIlasyon paritesidir. Daha fazla eklemek için /ExtendedType API'sine bakın.|
+|        SensorMeasures > Ünitesi              | Sensör telemetri veri birimi. Sistem tanımlı birimler NoUnit, Celsius, Fahrenheit, Kelvin, Rankine, Pascal, Mercury, PSI, Milimetre, Santimetre, Metre, Inç, Feet, Mile, Kilometre, MilesPerHour, MilesPerSecond, KMPerHour, KMPerSecond, MetersPerHour, MetersPerSecond, Derece, WattsPerSquareMeter, KiloWattsPerSquareMeter, MilliPerSquareCentiMeter, MilliJoulesPerSquareCentiMeter, VolumetrikWaterContent, Yüzde, PartsPerMillion, MicroMol, MicroMolesPerLiter, SiemensPerSquarePerMole, MilliSiemensPerCentiMeter, Centibar, DeciSiemensPerMeter, KiloPascal, VolumetricIonContent, Liter, MilliLiter, Saniye, UnixTimestamp, MicroMolPerMeterSquaredPerSecond, InchPerHour daha fazla eklemek için , / Genişletilmiş Type API bakın.|
 |    SensorMeasures> Agregasyon Tipi    |  Değerler hiçbir, ortalama, maksimum, minimum veya StandardDeviation olabilir.  |
 |          Adı            | Kaynağı tanımlamak için ad. Örneğin, model adı veya ürün adı.  |
 |    Açıklama        | Modelin anlamlı bir açıklamasını sağlayın.|
@@ -130,7 +141,7 @@ Nesneler hakkında daha fazla bilgi için Bkz. [Swagger.](https://aka.ms/FarmBea
 
 API isteğinde bulunmak için HTTP (POST) yöntemini, API hizmetinin URL'sini ve URI'yi sorgulanacak, veri göndermek, oluşturmak veya silmek için bir kaynağa birleştirirsiniz. Sonra bir veya daha fazla HTTP istek üstbilgiekleyin. API hizmetinin URL'si API bitiş noktasıdır, diğer bir\<şey de Datahub URL'sidir (https:// yourdatahub>.azurewebsites.net).  
 
-### <a name="authentication"></a>Kimlik doğrulaması
+### <a name="authentication"></a>Kimlik Doğrulaması
 
 FarmBeats Datahub, önceki bölümde oluşturulan aşağıdaki kimlik bilgilerini gerektiren taşıyıcı kimlik doğrulamasını kullanır:
 
@@ -351,11 +362,11 @@ Geçmiş sensör veri biçimini Azure FarmBeats'in anladığı bir kanonik biçi
       "sensordata": [
         {
           "timestamp": "< timestamp in ISO 8601 format >",
-          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
+          "<sensor measure name (as defined in the Sensor Model)>": <value>
         },
         {
           "timestamp": "<timestamp in ISO 8601 format>",
-          "<sensor measure name (as defined in the Sensor Model)>": "<values>"
+          "<sensor measure name (as defined in the Sensor Model)>": <value>
         }
       ]
     }
@@ -429,11 +440,11 @@ Bir telemetri iletisi örneği aşağıda verilmiştir:
       "sensordata": [
         {
           "timestamp": "< timestamp in ISO 8601 format >",
-          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
+          "<sensor measure name (as defined in the Sensor Model)>": <value>
         },
         {
           "timestamp": "<timestamp in ISO 8601 format>",
-          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
+          "<sensor measure name (as defined in the Sensor Model)>": <value>
         }
       ]
     }

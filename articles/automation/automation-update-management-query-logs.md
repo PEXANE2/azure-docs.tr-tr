@@ -3,14 +3,14 @@ title: Azure Güncelleştirme Yönetimi günlüklerini sorgula
 description: Bu makalede, Log Analytics çalışma alanınızda Güncelleştirme Yönetimi günlüklerinin nasıl sorgulanır.
 services: automation
 ms.subservice: update-management
-ms.date: 03/11/2020
+ms.date: 03/31/2020
 ms.topic: conceptual
-ms.openlocfilehash: f31168d47f31d8e740c95cb3d9e449f473cc78dc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 863016bbeda9b4aec3bf2b4e12830bd30098150f
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79216838"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437836"
 ---
 # <a name="query-update-records-for-update-management-in-azure-monitor-logs"></a>Azure Monitör Günlüklerinde Güncelleştirme Yönetimi kayıtlarını sorgula
 
@@ -144,7 +144,7 @@ Makine tarafından güncelleştirme `UpdateSummary` özeti sağlayan bir türe s
 | CriticalUpdatesMissing | Geçerli olan kritik güncelleştirmelerin sayısı eksiktir. | 
 | ManagementGroupName | Operasyon Yöneticisi yönetim grubunun veya Log Analytics çalışma alanının adı. |
 | NETRuntimeVersion | Windows bilgisayarında yüklü .NET Framework sürümü. |
-| OldestMissingSecurityUpdateBucket | Değerler şunlardır:<br> *Son*<br> *30 gün önce*<br> *60 gün önce*<br> *Daha eski* | 
+| OldestMissingSecurityUpdateBucket | Değerler şunlardır:<br> Değeri 30 günden azise *son*<br> *30 gün önce*<br> *60 gün önce*<br> *90 gün önce*<br> *120 gün önce*<br> *150 gün önce*<br> *180 gün önce*<br> Değer 180 günden büyük olduğunda *daha eski* | 
 | OldestMissingSecurityUpdateInDays | Yüklenmemiş olarak algılanan en eski güncelleştirme için toplam gün sayısı. |
 | OsVersion | İşletim sisteminin sürümü. |
 | OtherUpdatesMissing | Algılanan güncelleştirme sayısı eksik. |

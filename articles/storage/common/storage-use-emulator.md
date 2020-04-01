@@ -7,12 +7,12 @@ ms.date: 08/21/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.openlocfilehash: 1f13efeb5c2ebcb8b23dea6f9ae997039972f089
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: HT
+ms.openlocfilehash: 997aa9d96f2f52331865fd15d97443d74bb8bc1f
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72428307"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398007"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Geliştirme ve sınama için Azure depolama emülatörü'ni kullanma
 
@@ -325,6 +325,6 @@ Emülatörde Sıra depolamasına özgü bir fark yoktur.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* Çapraz platform, toplum tarafından korunan açık kaynak depolama emülatörü [Azurite'yi](https://github.com/arafato/azurite)değerlendirin. 
+* Çapraz platform, toplum tarafından korunan açık kaynak depolama emülatörü [Azurite'yi](https://github.com/azure/azurite)değerlendirin. 
 * [.NET'i kullanan Azure Depolama örnekleri,](../storage-samples-dotnet.md) uygulamanızı geliştirirken kullanabileceğiniz çeşitli kod örneklerine bağlantılar içerir.
 * Microsoft Azure [Depolama](https://storageexplorer.com) Gezgini'ni bulut Depolama hesabınızdaki ve depolama emülatöründeki kaynaklarla çalışmak için kullanabilirsiniz.

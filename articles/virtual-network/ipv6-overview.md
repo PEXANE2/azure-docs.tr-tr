@@ -1,5 +1,5 @@
 ---
-title: Azure Sanal Ağı için IPv6'ya Genel Bakış (Önizleme)
+title: Azure Sanal Ağı için IPv6'ya Genel Bakış
 titlesuffix: Azure Virtual Network
 description: Bir Azure sanal ağında iPv6 uç noktalarının ve veri yollarının IPv6 açıklaması.
 services: virtual-network
@@ -10,24 +10,22 @@ ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 12/19/2019
+ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 9214886f468a4a052328a99289845361a059b650
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 03b279ead6b1f5d26ae92b63a8780a61dfd711bb
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75780088"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80420564"
 ---
-# <a name="what-is-ipv6-for-azure-virtual-network-preview"></a>Azure Sanal Ağ için IPv6 nedir? (Önizleme)
+# <a name="what-is-ipv6-for-azure-virtual-network"></a>Azure Sanal Ağ için IPv6 nedir?
 
 Azure Sanal Ağ için IPv6 (VNet), Hem sanal ağ içinde hem de Internet'ten IPv6 ve IPv4 bağlantısıyla Azure'daki uygulamaları barındırmanızı sağlar. Genel IPv4 adreslerinin tükenmesi nedeniyle, mobilite ve Nesnelerin İnterneti (IoT) için yeni ağlar genellikle IPv6 üzerine kurulur. Hatta uzun köklü ISS ve mobil ağlar IPv6 dönüştürülmektedir. Yalnızca IPv4 hizmetleri, hem mevcut hem de gelişmekte olan pazarlarda kendilerini gerçek bir dezavantajda bulabilirler. Çift yığın IPv4/IPv6 bağlantısı, Azure barındırılan hizmetlerin hem mevcut IPv4 hem de bu yeni IPv6 aygıtları ve ağlarıyla kolayca bağlanabilen, küresel olarak kullanılabilen çift yığınlı hizmetlerle bu teknoloji boşluğundan geçiş inmesini sağlar.
 
 Azure'un orijinal IPv6 bağlantısı, Azure'da barındırılan uygulamalar için çift yığın (IPv4/IPv6) Internet bağlantısı sağlamayı kolaylaştırır. Hem gelen hem de giden başlatılan bağlantılar için yük dengeli IPv6 bağlantısına sahip VM'lerin basit bir şekilde dağıtılmasını sağlar. Bu özellik hala mevcuttur ve daha fazla bilgi [burada](../load-balancer/load-balancer-ipv6-overview.md)mevcuttur.
 Azure için IPv6 sanal ağı çok daha dolu özelliklidir ve tam IPv6 çözüm mimarilerinin Azure'da dağıtılmasını sağlar.
 
-> [!Important]
-> Azure Sanal Ağı için IPv6 şu anda genel önizlemededir. Bu önizleme bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Ayrıntılar için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Aşağıdaki diyagram, Azure'da basit bir çift yığın (IPv4/IPv6) dağıtımını görüntüler:
 
@@ -74,7 +72,7 @@ Azure VNET için IPv6, müşterilerin Azure'da çift yığın (IPv4+IPv6) uygula
 
 ## <a name="limitations"></a>Sınırlamalar
 Azure sanal ağ sürümü için geçerli IPv6 aşağıdaki sınırlamaları vardır:
-- Azure sanal ağı için IPv6 (Önizleme), tüm küresel Azure bölgelerinde kullanılabilir, ancak yalnızca Global Azure'da kullanılabilir- henüz devlet bulutlarında değil.
+- Azure sanal ağı için IPv6 tüm küresel Azure bölgelerinde kullanılabilir, ancak yalnızca Global Azure'da kullanılabilir- henüz devlet bulutlarında değil.
 - ExpressRoute ve VPN ağ geçitleri, Doğrudan veya "UseRemoteGateway" ile bakılmış, IPv6 etkin leştirilmiş bir VNET'te kullanılamaz. 
 - Azure platformu (AKS, vb.) Kapsayıcılar için IPv6 iletişimini desteklemez.  
 

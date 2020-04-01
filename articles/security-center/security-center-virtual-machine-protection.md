@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2020
 ms.author: memildin
-ms.openlocfilehash: bcf92838483fbb6b54802cc0d44cc44ea086d705
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 93dde2e873a00303dcb8563caed4d56dbf11cc12
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79282646"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435641"
 ---
 # <a name="protect-your-machines-and-applications"></a>Makinelerinizi ve uygulamalarınızı koruyun
 Azure Güvenlik Merkezi olası güvenlik açıklarını tanımladığında, kaynaklarınızı sertleştirmek ve korumak için gerekli denetimleri yapılandırma sürecinde size rehberlik eden öneriler oluşturur.
@@ -84,10 +84,10 @@ Burada VM veya bilgisayarın güvenlik ayrıntılarını görürsünüz. En altt
 
 
 
-### <a name="virtual-machine-scale-sets"></a><a name="vmscale-sets"></a>Sanal makine ölçek setleri
-Güvenlik Merkezi, ölçek kümeniz olup olmadığını otomatik olarak keşfeder ve microsoft izleme aracısını yüklemenizi önerir.
+### <a name="virtual-machine-scale-sets"></a><a name="vmscale-sets"></a>Sanal makine ölçek kümeleri
+Güvenlik Merkezi, ölçek kümeniz olup olmadığını otomatik olarak keşfeder ve log analytics aracısını yüklemenizi önerir.
 
-Microsoft İzleme Aracısını yüklemek için: 
+Log Analytics aracısını yüklemek için: 
 
 1. Öneriyi seçin **İzleme aracısını sanal makine ölçeği kümesine yükleyin.** İzlenmeyen ölçek kümelerinin bir listesini alırsınız.
 
@@ -95,7 +95,7 @@ Microsoft İzleme Aracısını yüklemek için:
 
    ![MMS'yi Yükleyin](./media/security-center-virtual-machine-recommendations/install-mms.png)
 
-Microsoft İzleme Aracısını otomatik olarak yüklemek için yeni ölçek kümeleri ayarlamak için:
+Log Analytics aracısını otomatik olarak yüklemek için yeni ölçek kümeleri ayarlamak için:
 1. Azure İlkesi'ne gidin ve **Tanımlar'ı**tıklatın.
 
 1. Windows sanal makine ölçek setleri için ilke **Dağıt Günlük Analizi aracısını** arayın ve üzerine tıklayın.
@@ -104,7 +104,7 @@ Microsoft İzleme Aracısını otomatik olarak yüklemek için yeni ölçek küm
 
 1. **Kapsam** ve **Günlük Analizi çalışma alanını** ayarlayın ve **Ata'yı**tıklatın.
 
-Microsoft İzleme Aracısı'nı Azure İlkesi'ne yüklenecek şekilde varolan tüm ölçek kümelerini ayarlamak istiyorsanız, **Düzeltme'ye** gidin ve varolan ilkeyi varolan ölçek kümelerine uygulayın.
+Azure İlkesi'nde Log Analytics aracısını yüklemek için varolan tüm ölçek kümelerini ayarlamak istiyorsanız, **Düzeltme'ye** gidin ve varolan ilkeyi varolan ölçek kümelerine uygulayın.
 
 
 
@@ -195,7 +195,7 @@ Docker çalıştıran VM'lerden birini tıklattığınızda, docker sürümü ve
 
 Güvenlik Merkezi, Docker yapılandırmalarınızı tarar ve değerlendirilen başarısız kuralların listesini sunarak hatalı yapılandırmalar konusunda görünürlük sağlar. Güvenlik Merkezi, bu sorunları hızlı bir şekilde çözmenize ve zamandan tasarruf etmenizi sağlamak için yönergeler sağlar. Güvenlik Merkezi, Docker yapılandırmalarını sürekli değerlendirir ve son durumlar hakkında bilgi verir.
 
-![konteyner sekmesi](./media/security-center-container-recommendations/container-cis-benchmark.png)
+![konteyner sekmesi](./media/security-center-virtual-machine-recommendations/container-cis-benchmark.png)
 
 
 ## <a name="next-steps"></a>Sonraki adımlar

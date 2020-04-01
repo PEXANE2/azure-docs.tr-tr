@@ -6,13 +6,13 @@ ms.author: orspodek
 ms.reviewer: dorcohen
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 03/15/2020
-ms.openlocfilehash: 7745888dcaa1324d4a9d956e93d0504c8da8c026
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/25/2020
+ms.openlocfilehash: 198b78d5bab15057fdb6c7f6d4e8fff9f77d496e
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79501772"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397133"
 ---
 # <a name="microsoft-flow-connector-preview"></a>Microsoft Flow bağlayıcısı (Önizleme)
 
@@ -37,7 +37,7 @@ Daha fazla bilgi için [Microsoft Flow bağlayıcısı kullanım örneklerine](f
 
 ![Oturum açma iletişim kutusu](./media/flow/flow-signin.png)
 
-## <a name="authentication"></a>Kimlik doğrulaması
+## <a name="authentication"></a>Kimlik Doğrulaması
 
 Kullanıcı kimlik bilgileri veya AAD uygulamasıyla kimlik doğrulaması yapabilirsiniz.
 
@@ -116,7 +116,7 @@ Denetim komutunu çalıştırmak için Çalıştır denetim [control command](ht
 ### <a name="run-query-and-list-results"></a>Sorgu ve liste sonuçlarını çalıştırma
 
 > [!Note]
-> Sorgunuz bir noktayla başlarsa (yani [bir denetim komutu),](https://docs.microsoft.com/azure/kusto/management/index)Çalıştır denetim komutunu kullanın [ve sonuçları görselleştirin](#run-control-command-and-visualize-results)
+> Sorgunuz bir noktayla başlarsa (yani [bir denetim komutu),](https://docs.microsoft.com/azure/kusto/management/index)Çalıştır denetim komutunu kullanın [ve sonuçları görselleştirin.](#run-control-command-and-visualize-results)
 
 Bu eylem, Kusto kümesine bir sorgu gönderir. Daha sonra eklenen eylemler, sorgu sonuçlarının her satırı üzerinde yinelenir.
 
@@ -130,7 +130,7 @@ Aşağıdaki örnek her dakika bir sorgutetikler ve sorgu sonuçlarına göre bi
 ### <a name="run-query-and-visualize-results"></a>Sorguçalıştırma ve sonuçları görselleştirme
         
 > [!Note]
-> Sorgunuz bir noktayla başlarsa (yani [bir denetim komutu),](https://docs.microsoft.com/azure/kusto/management/index)Çalıştır denetim komutunu kullanın [ve sonuçları görselleştirin](#run-control-command-and-visualize-results)
+> Sorgunuz bir noktayla başlarsa (yani [bir denetim komutu),](https://docs.microsoft.com/azure/kusto/management/index)Çalıştır denetim komutunu kullanın [ve sonuçları görselleştirin.](#run-control-command-and-visualize-results)
         
 Kusto sorgu sonucunu tablo veya grafik olarak görselleştirmek için Çalıştır sorgusunu kullanın ve sonuç eylemini görselleştirin. Örneğin, günlük ICM raporlarını e-posta ile almak için bu akışı kullanın. 
     
@@ -147,17 +147,21 @@ Herhangi bir e-posta adresine e-posta yoluyla rapor göndermek için herhangi bi
 
 1. Akışınıza yeni bir adım eklemek için **+ Yeni Adım'ı** seçin.
 1. Arama alanında Office 365'i girin ve **Office 365 Outlook'u**seçin.
-1. **E-posta gönder**'i seçin.
+1. **E-posta Gönder 'i (V2) seçin.**
 1. E-posta raporunun gönderilmesini istediğiniz yere e-posta adresini girin.
 1. E-postanın konusunu girin.
-1. *Gövde* alanında, Dinamik içerik alanından **Gövde'yi**seçin.
+1. **Kod görünümü'nü**seçin.
+1. İmlecinizi *Gövde* alanına yerleştirin ve **dinamik içerik ekle'yi**seçin.
+1. **BodyHtml'i**seçin.
+    ![E-posta gönder](./media/flow/flow-send-email.png)
 1. **Gelişmiş seçenekleri göster**’i seçin.
 1. Ekler *Adı -1* **alanında, Ek Adı'nı**seçin.
 1. Ekler *İçeriği* alanında, **Ek İçeriği'ni**seçin.
+1. Gerekirse, daha fazla ek ekleyin. 
 1. Gerekirse, önem düzeyini ayarlayın.
 1. **Kaydet'i**seçin.
 
-![E-posta gönderin](./media/flow/flow-sendemail.png)
+![E-posta gönderin](./media/flow/flow-add-attachments.png)
 
 ## <a name="check-if-your-flow-succeeded"></a>Akışınızın başarılı olup olmadığını kontrol edin
 

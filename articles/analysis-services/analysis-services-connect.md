@@ -4,19 +4,19 @@ description: Azure'daki bir Analiz Hizmetleri sunucusuna nasıl bağlanabileceğ
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/29/2019
+ms.date: 03/30/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 3231b46060cbb755ada000473c8fbe873cc51ef1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2875959a833134131fa6db6d51df0c2b47a39377
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73147304"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411306"
 ---
 # <a name="connecting-to-servers"></a>Sunuculara bağlanma
 
-Bu makalede, SQL Server Management Studio (SSMS) veya Visual Studio gibi veri modelleme ve yönetim uygulamalarını Analiz Hizmetleri projeleri ile kullanarak veya Microsoft Excel, Power BI gibi istemci raporlama uygulamaları yla bağlantı kurma Masaüstü veya özel uygulamalar. Azure Analiz Hizmetleri bağlantıları HTTPS'yi kullanır.
+Bu makalede, SQL Server Management Studio (SSMS) veya Visual Studio gibi veri modelleme ve yönetim uygulamalarını Çözümhizmetleri projeleri ile kullanarak veya Microsoft Excel, Power BI Desktop veya özel uygulamalar gibi istemci raporlama uygulamaları yla bağlantı kurmak açıklanmaktadır. Azure Analiz Hizmetleri bağlantıları HTTPS'yi kullanır.
 
 ## <a name="client-libraries"></a>İstemci kitaplıkları
 

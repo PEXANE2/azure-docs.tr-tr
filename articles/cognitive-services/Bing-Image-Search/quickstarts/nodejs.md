@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Görüntüleri ara REST API ve Node.js - Bing Resim Arama'
+title: 'Hızlı başlangıç: Bing Image Search REST API ve Node.js kullanarak görüntüleri arayın'
 titleSuffix: Azure Cognitive Services
-description: JavaScript kullanarak Bing Image Search REST API'ye görüntü arama istekleri göndermek ve JSON yanıtlarını almak için bu hızlı başlatmayı kullanın.
+description: JavaScript kullanarak Bing Image Search REST API'ye görüntü arama istekleri göndermek ve Bir JSON yanıtı almak için bu hızlı başlangıcı kullanın.
 services: cognitive-services
 documentationcenter: ''
 author: aahill
@@ -9,15 +9,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: quickstart
-ms.date: 12/06/2019
+ms.date: 03/31/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 2aaed57c7e1d817cd892f45c441ab59d4ffba3d3
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 15757d606a846a2951bc5c15d8d5ef0dbfd7a2a1
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74930773"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478601"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-nodejs"></a>Hızlı başlangıç: Bing Image Search REST API ve Node.js kullanarak görüntüleri arayın
 

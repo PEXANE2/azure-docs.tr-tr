@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
-ms.openlocfilehash: e7b8f8a33b741a8dcf2d1a68ae3cf86d6e3687eb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a2674ca0f4808cb6f01781565e57369ca5d3ac37
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79284609"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478778"
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>Cihazdan buluta iletilerini yerleşik uç noktadan okuma
 
@@ -24,7 +24,7 @@ Varsayılan olarak, iletiler [Olay Hub'larıyla](https://azure.microsoft.com/doc
 | **Bölüm sayısı** | Aygıttan buluta olay veya alma için [bölüm](../event-hubs/event-hubs-features.md#partitions) sayısını tanımlamak için bu özelliği oluşturma da ayarlayın. |
 | **Bekletme süresi**  | Bu özellik, iletilerin IoT Hub tarafından günler içinde ne kadar süreyle tutulduğunu belirtir. Varsayılan değer bir gündür, ancak yedi güne çıkarılabilir. |
 
-IoT Hub, yerleşik Olay Hub'larında en fazla 7 gün süreyle veri saklamaya izin verir. IoT Hub'ınızın oluşturulması sırasında bekletme süresini ayarlayabilirsiniz. IoT Hub'daki veri saklama süresi, IoT hub katmanınıza ve birim türünüze bağlıdır. Yerleşik Olay Hub'ları, boyut açısından en az 24 saate kadar en fazla ileti boyutundaki iletileri saklayabilir. Örneğin, 1 S1 birimi ioT Hub için her biri 4k boyutunda en az 400K iletileri tutmak için yeterli depolama alanı sağlar. Aygıtlarınız daha küçük iletiler gönderiyorsa, ne kadar depolama alanı tüketildiklerine bağlı olarak daha uzun süre (7 güne kadar) saklanabilir. Belirtilen bekletme süresi için verilerin minimum olarak saklanması garanti ediyoruz.
+IoT Hub, yerleşik Olay Hub'larında en fazla 7 gün süreyle veri saklamaya izin verir. IoT Hub'ınızın oluşturulması sırasında bekletme süresini ayarlayabilirsiniz. IoT Hub'daki veri saklama süresi, IoT hub katmanınıza ve birim türünüze bağlıdır. Yerleşik Olay Hub'ları, boyut açısından en az 24 saate kadar en fazla ileti boyutundaki iletileri saklayabilir. Örneğin, 1 S1 birimi ioT Hub için her biri 4k boyutunda en az 400K iletileri tutmak için yeterli depolama alanı sağlar. Aygıtlarınız daha küçük iletiler gönderiyorsa, ne kadar depolama alanı tüketildiklerine bağlı olarak daha uzun süre (7 güne kadar) saklanabilir. Belirtilen bekletme süresi için verilerin minimum olarak saklanması garanti ediyoruz. İletilerin süresi dolacak ve bekletme süresi geçtikten sonra erişilemez. 
 
 IoT Hub, yerleşik aygıt-bulut alma bitiş noktasında ki tüketici gruplarını yönetmenize de olanak tanır. Her IoT Hub'ı için en fazla 20 tüketici grubuna sahip olabilirsiniz.
 
@@ -62,9 +62,9 @@ IoT Hub'ın ortaya çıkardığı yerleşik Event Hub uyumlu uç noktasına bağ
 
 | Dil | SDK | Örnek | Notlar |
 | -------- | --- | ------ | ----- |
-| .NET | https://github.com/Azure/azure-event-hubs-dotnet | [Quickstart](quickstart-send-telemetry-dotnet.md) | Etkinlik Hub'ları uyumlu bilgileri kullanır |
- Java | https://github.com/Azure/azure-event-hubs-java | [Quickstart](quickstart-send-telemetry-java.md) | Etkinlik Hub'ları uyumlu bilgileri kullanır |
-| Node.js | https://github.com/Azure/azure-event-hubs-node | [Quickstart](quickstart-send-telemetry-node.md) | IoT Hub bağlantı dizelerini kullanır |
+| .NET | https://github.com/Azure/azure-event-hubs-dotnet | [Hızlı Başlangıç](quickstart-send-telemetry-dotnet.md) | Etkinlik Hub'ları uyumlu bilgileri kullanır |
+ Java | https://github.com/Azure/azure-event-hubs-java | [Hızlı Başlangıç](quickstart-send-telemetry-java.md) | Etkinlik Hub'ları uyumlu bilgileri kullanır |
+| Node.js | https://github.com/Azure/azure-event-hubs-node | [Hızlı Başlangıç](quickstart-send-telemetry-node.md) | IoT Hub bağlantı dizelerini kullanır |
 | Python | https://github.com/Azure/azure-event-hubs-python | https://github.com/Azure/azure-event-hubs-python/blob/master/examples/iothub_recv.py | IoT Hub bağlantı dizelerini kullanır |
 
 IoT Hub'ın ortaya çıkardığı yerleşik Event Hub uyumlu uç noktasıyla kullanabileceğiniz ürün entegrasyonları şunlardır:

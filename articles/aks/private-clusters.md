@@ -4,12 +4,12 @@ description: Özel bir Azure Kubernetes Hizmeti (AKS) kümesini nasıl oluştura
 services: container-service
 ms.topic: article
 ms.date: 2/21/2020
-ms.openlocfilehash: cdefcfe460a97f647afa05947e92fae0c4d07001
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 87f52c5a749b531e5b0656e0b30ff0fe9c1a57bf
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79499294"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398066"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>Özel bir Azure Kubernetes Hizmet kümesi oluşturma
 
@@ -80,6 +80,18 @@ Belirtildiği gibi, VNet eşleme özel kümenize erişmek için bir yoldur. VNet
 7. Sol **bölmede, Eşler'i**seçin.  
 8. **Ekle,** VM'nin sanal ağını ekleyin ve ardından eşlemi oluşturun'u seçin.  
 9. VM'nin bulunduğu sanal ağa gidin, **Peerings'i**seçin, AKS sanal ağını seçin ve ardından eşlemeoluşturun. Adres AKS sanal ağında ve VM'nin sanal ağ çakışmasında aralıkları varsa, bakan başarısız olur. Daha fazla bilgi için [Sanal ağ eşleme'ye][virtual-network-peering]bakın.
+
+## <a name="hub-and-spoke-with-custom-dns"></a>Hub ve özel DNS ile konuştu
+
+[Hub ve kollu mimariler](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) genellikle Azure'daki ağları dağıtmak için kullanılır. Bu dağıtımların çoğunda, konuşan VNet'teki DNS ayarları, şirket içi ve Azure tabanlı DNS çözünürlüğüne izin verecek şekilde merkezi bir DNS iletmesine başvurmak üzere yapılandırılmıştır. Böyle bir ağ ortamına bir AKS kümesi dağıtılırken, dikkate alınması gereken bazı özel hususlar vardır.
+
+![Özel küme hub'ı ve spoke](media/private-clusters/aks-private-hub-spoke.png)
+
+1. Varsayılan olarak, özel bir küme sağlandığında, küme yönetilen kaynak grubunda özel bir bitiş noktası (1) ve özel bir DNS bölgesi (2) oluşturulur. Küme, API sunucusuna iletişim için özel bitiş noktasının IP'sini çözmek için özel bölgede bir A kaydı kullanır.
+
+2. Özel DNS bölgesi yalnızca küme düğümlerinin bağlı olduğu VNet'e bağlıdır (3). Bu, özel bitiş noktasının yalnızca bağlı VNet'teki ana bilgisayarlar tarafından çözülebileceği anlamına gelir. VNet'te özel DNS'nin yapılandırılmadığını (varsayılan), bağlantı nedeniyle özel DNS bölgesindeki kayıtları çözebilen DNS için 168.63.129.16 numaralı ana bilgisayar noktası olarak sorunsuz çalışır.
+
+3. Kümenizi içeren VNet'in özel DNS ayarlarına (4) sahip olduğu senaryolarda, özel DNS bölgesi özel DNS çözümleyicilerini içeren VNet'e bağlı olmadığı sürece küme dağıtımı başarısız olur (5). Bu bağlantı, özel bölge küme sağlama sırasında oluşturulduktan sonra veya Azure İlkesi veya diğer olay tabanlı dağıtım mekanizmaları (örneğin, Azure Olay Ağıtve Azure İşlevleri) kullanılarak bölgenin oluşturulduğunun algılanması üzerine otomasyon yoluyla el ile oluşturulabilir.
 
 ## <a name="dependencies"></a>Bağımlılıklar  
 

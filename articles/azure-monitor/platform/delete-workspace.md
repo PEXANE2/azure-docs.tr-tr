@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/14/2020
-ms.openlocfilehash: ead0ac04fbd2244fce97dd043ebd44f24fb0f67f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1dceb3db4572ecdaf504745dba1099a5eccead43
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80054931"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80395780"
 ---
 # <a name="delete-and-recover-azure-log-analytics-workspace"></a>Azure Günlük Analizi çalışma alanını silme ve kurtarma
 
@@ -43,7 +43,7 @@ Yumuşak silme işlemi çalışma alanı kaynağını siler ve ilişkili kullan�
 
 [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/remove-azurermoperationalinsightsworkspace?view=azurermps-6.13.0), [REST API](https://docs.microsoft.com/rest/api/loganalytics/workspaces/delete)kullanarak veya [Azure portalında](https://portal.azure.com)bir çalışma alanını silebilirsiniz.
 
-### <a name="azure-portal"></a>Azure portalında
+### <a name="azure-portal"></a>Azure portal
 
 1. Oturum açabilmek için [Azure portalına](https://portal.azure.com)gidin. 
 2. Azure portalında **Tüm hizmetler'i**seçin. Kaynak listesinde **Log Analytics** yazın. Yazmaya başladığınızda liste, girişinize göre filtrelenir. **Günlük Analizi çalışma alanlarını**seçin.
@@ -56,6 +56,17 @@ Yumuşak silme işlemi çalışma alanı kaynağını siler ve ilişkili kullan�
 ```PowerShell
 PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-name" -Name "workspace-name"
 ```
+
+### <a name="troubleshooting"></a>Sorun giderme
+
+Log Analytics çalışma alanını silmek için 'Log Analytics Katılımcısı' izinlerine sahip olmalısınız.<br>
+Bir hata iletisi alırsanız '*Bu çalışma alanı adı zaten kullanılıyor*' bir çalışma alanı oluştururken, o zamandan beri olabilir:
+* Çalışma alanı adı kullanılamıyor ve kuruluşunuzdaki bir kişi veya başka bir müşteri tarafından kullanılıyor.
+* Çalışma alanı son 14 gün içinde silinmiş ve adı yumuşak silme dönemi için ayrılmış olarak tutulmuştur. Yumuşak silmeyi geçersiz kılmak ve çalışma alanınızı hemen silmek ve aynı ada sahip yeni bir çalışma alanı oluşturmak için, önce çalışma alanını kurtarmak ve kalıcı silme gerçekleştirmek için aşağıdaki adımları izleyin:<br>
+   1. Çalışma alanınızı [kurtarın.](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#recover-workspace)
+   2. Çalışma alanınızı [kalıcı olarak silin.](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#permanent-workspace-delete)
+   3. Aynı çalışma alanı adını kullanarak yeni bir çalışma alanı oluşturun.
+
 
 ## <a name="permanent-workspace-delete"></a>Kalıcı çalışma alanı silme
 Yumuşak silme yöntemi, aynı ayarlar ve çalışma alanı adı ile bir dağıtımı yinelemeniz gereken geliştirme ve sınama gibi bazı senaryolara sığmayabilir. Bu gibi durumlarda çalışma alanınızı kalıcı olarak silebilir ve yumuşak silme süresini "geçersiz kılabilirsiniz". Kalıcı çalışma alanı silme işlemi çalışma alanı adını serbest bırakır ve aynı adı kullanarak yeni bir çalışma alanı oluşturabilirsiniz.

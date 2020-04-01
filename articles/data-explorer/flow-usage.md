@@ -7,12 +7,12 @@ ms.reviewer: dorcohen
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 03/15/2020
-ms.openlocfilehash: 759ea9800a0ed051fed887adfb10b06f7a53b72f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 796b37f98fed7e389fa71a15b5e6697a14db1a16
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79529212"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397208"
 ---
 # <a name="microsoft-flow-connector-preview-usage-examples"></a>Microsoft Flow bağlayıcısı (Önizleme) kullanım örnekleri
 
@@ -119,7 +119,9 @@ Bu bilgileri pasta grafiği olarak görselleştirin ve ekibe e-posta yla gönder
     * *Gövde* alanına, sorgunun görselleştirilmiş sonucunun e-postanın gövdesine dahil olması için gerekli gövdeyi ekleyin.
     * E-postaya bir ek eklemek için Ek Adı ve Ek İçeriği ekleyin.
     
-    ![Birden çok eki e-postayla gönder](./media/flow-usage/flow-emailmultipleattachments.png)
+    ![Birden çok eki e-postayla gönder](./media/flow-usage/flow-email-multiple-attachments.png)
+
+    Bir e-posta eylemi oluşturma yla ilgili tam talimatlar için, [Kusto E-posta sorgu sonuçlarına](flow.md#email-kusto-query-results)bakın. 
 
 Sonuçlar:
 

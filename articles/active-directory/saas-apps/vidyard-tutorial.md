@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Azure Active Directory Tümleştirmesi ile Vidyard | Microsoft Docs'
-description: Azure Active Directory ve Vidyard arasında çoklu oturum açmayı yapılandırmayı öğrenin.
+title: 'Öğretici: Vidyard ile Azure Active Directory entegrasyonu | Microsoft Dokümanlar'
+description: Azure Active Directory ve Vidyard arasında tek oturum açma işlemlerini nasıl yapılandırıştırmayı öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,240 +16,240 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: a55ec7afc94440ea8b6a48ed1507476d362df6c0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "67087431"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-vidyard"></a>Öğretici: Vidyard ile Azure Active Directory Tümleştirme
+# <a name="tutorial-azure-active-directory-integration-with-vidyard"></a>Öğretici: Vidyard ile Azure Active Directory entegrasyonu
 
-Bu öğreticide, Azure Active Directory (Azure AD) ile Vidyard tümleştirme konusunda bilgi edinin.
-Azure AD ile Vidyard tümleştirme ile aşağıdaki avantajları sağlar:
+Bu eğitimde, Vidyard'ı Azure Active Directory (Azure AD) ile nasıl entegre acağınızı öğreneceksiniz.
+Vidyard'ı Azure AD ile tümleştirmek size aşağıdaki avantajları sağlar:
 
-* Vidyard erişimi, Azure AD'de kontrol edebilirsiniz.
-* Otomatik olarak (çoklu oturum açma) Vidyard için kendi Azure AD hesapları ile oturum açmış, kullanıcıların etkinleştirebilirsiniz.
-* Hesaplarınız bir merkezi konumda - Azure portalında yönetebilir.
+* Vidyard erişimi olan Azure AD'de kontrol edebilirsiniz.
+* Kullanıcılarınızın Azure REKLAM hesaplarıyla Vidyard'da (Tek Oturum Açma) otomatik olarak oturum açmalarını sağlayabilirsiniz.
+* Hesaplarınızı tek bir merkezi konumda yönetebilirsiniz - Azure portalı.
 
-Azure AD SaaS uygulama tümleştirmesi hakkında daha fazla ayrıntı bilmek istiyorsanız, bkz. [uygulama erişimi ve Azure Active Directory ile çoklu oturum açma nedir](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir hesap oluşturun](https://azure.microsoft.com/free/).
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi almak istiyorsanız, [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
+Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Azure AD Tümleştirmesi ile Vidyard yapılandırmak için aşağıdaki öğeler gerekir:
+Azure AD tümleştirmesini Vidyard ile yapılandırmak için aşağıdaki öğelere ihtiyacınız vardır:
 
-* Azure AD aboneliğiniz. Bir Azure AD ortamını yoksa alabileceğiniz bir [ücretsiz hesap](https://azure.microsoft.com/free/)
-* Abonelik Vidyard çoklu oturum açma etkin
+* Azure AD aboneliği. Azure REKLAM ortamınız yoksa, ücretsiz bir [hesap](https://azure.microsoft.com/free/) alabilirsiniz
+* Vidyard tek oturum açma özellikli abonelik
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, yapılandırma ve Azure AD çoklu oturum açma bir test ortamında test edin.
+Bu öğreticide, Azure AD tek oturum açma işlemlerini bir test ortamında yapılandırıp sınayabilirsiniz.
 
-* Vidyard destekler **SP** ve **IDP** tarafından başlatılan
+* Vidyard **SP** ve **IDP'nin** SSO'ya başlattığı destekler
 
-* Vidyard destekler **zamanında** kullanıcı sağlama
+* Vidyard **Just In Time** kullanıcı sağlama destekler
 
 ## <a name="adding-vidyard-from-the-gallery"></a>Galeriden Vidyard ekleme
 
-Azure AD'de Vidyard tümleştirmesini yapılandırmak için Vidyard Galeriden yönetilen SaaS uygulamaları listesine eklemeniz gerekir.
+Vidyard'ın Azure AD'ye entegrasyonunu yapılandırmak için, Vidyard'ı galeriden yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
 **Galeriden Vidyard eklemek için aşağıdaki adımları gerçekleştirin:**
 
-1. İçinde **[Azure portalında](https://portal.azure.com)** , sol gezinti panelinde tıklayın **Azure Active Directory** simgesi.
+1. Sol daki gezinti panelindeki **[Azure portalında](https://portal.azure.com)** **Azure Active Directory simgesini** tıklatın.
 
-    ![Azure Active Directory düğmesi](common/select-azuread.png)
+    ![Azure Etkin Dizin düğmesi](common/select-azuread.png)
 
-2. Gidin **kurumsal uygulamalar** seçip **tüm uygulamaları** seçeneği.
+2. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamalar** seçeneğini belirleyin.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+    ![Enterprise uygulamaları bıçak](common/enterprise-applications.png)
 
-3. Yeni uygulama eklemek için tıklatın **yeni uygulama** iletişim üst kısmındaki düğmesi.
+3. Yeni uygulama eklemek için iletişim kutusunun üst kısmındaki **Yeni uygulama** düğmesini tıklatın.
 
-    ![Yeni Uygulama düğmesi](common/add-new-app.png)
+    ![Yeni uygulama düğmesi](common/add-new-app.png)
 
-4. Arama kutusuna **Vidyard**seçin **Vidyard** sonucu panelinden ardından **Ekle** uygulama eklemek için Ekle düğmesine.
+4. Arama kutusunda **Vidyard**yazın, sonuç panelinden **Vidyard'ı** seçin ve uygulamayı eklemek için **Ekle** düğmesini tıklatın.
 
-     ![Sonuç listesinde Vidyard](common/search-new-app.png)
+     ![Vidyard sonuç listesinde](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Yapılandırma ve Azure AD çoklu oturum açmayı test etme
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD tek oturum açma yapılandırma ve test
 
-Bu bölümde, yapılandırma ve Azure AD çoklu oturum açma Vidyard adlı bir test kullanıcı tabanlı test **Britta Simon**.
-Tek iş için oturum açma için bir Azure AD kullanıcısının Vidyard ilgili kullanıcı arasında bir bağlantı ilişkisi kurulması gerekir.
+Bu bölümde, **Britta Simon**adlı bir test kullanıcısına göre Azure AD tek oturum açma işlemini Vidyard ile yapılandırıp test esinizsiniz.
+Tek oturum açmanın işe yaraması için, bir Azure AD kullanıcısı ile Vidyard'daki ilgili kullanıcı arasında bir bağlantı ilişkisinin kurulması gerekir.
 
-Yapılandırma ve Azure AD çoklu oturum açma Vidyard ile test etmek için aşağıdaki yapı taşlarını tamamlanması gerekir:
+Azure AD'yi Vidyard ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlamanız gerekir:
 
-1. **[Azure AD çoklu oturum açmayı yapılandırmayı](#configure-azure-ad-single-sign-on)**  - bu özelliği kullanmak, kullanıcılarınızın etkinleştirmek için.
-2. **[Vidyard çoklu oturum açmayı yapılandırma](#configure-vidyard-single-sign-on)**  - uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için.
-3. **[Bir Azure AD test kullanıcısı oluşturma](#create-an-azure-ad-test-user)**  - Azure AD çoklu oturum açma Britta Simon ile test etmek için.
-4. **[Azure AD test kullanıcı atama](#assign-the-azure-ad-test-user)**  - Azure AD çoklu oturum açmayı kullanmak Britta Simon etkinleştirmek için.
-5. **[Vidyard test kullanıcısı oluşturma](#create-vidyard-test-user)**  - kullanıcı Azure AD gösterimini bağlı Vidyard Britta simon'un bir karşılığı vardır.
-6. **[Çoklu oturum açmayı test](#test-single-sign-on)**  - yapılandırma çalışıp çalışmadığını doğrulayın.
+1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için Azure AD Tek Oturum Açma'yı **[yapılandırın.](#configure-azure-ad-single-sign-on)**
+2. Vidyard Tek Oturum Açma 'yı uygulama tarafındaki Tek Oturum Açma ayarlarını yapılandırmak için **[yapılandırın.](#configure-vidyard-single-sign-on)**
+3. Azure AD tek oturum açma işlemini Britta Simon ile test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
+4. Britta Simon'ın Azure AD tek oturum açma işlemini kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
+5. **[Vidyard test kullanıcısını oluşturun](#create-vidyard-test-user)** - Britta Simon'ın Vidyard'daki bir örneğine sahip olmak için kullanıcının Azure AD gösterimine bağlı.
+6. **[Yapılandırmanın](#test-single-sign-on)** çalışıp çalışmadığını doğrulamak için tek oturum açma testi yapın.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD çoklu oturum açmayı yapılandırın
+### <a name="configure-azure-ad-single-sign-on"></a>Azure AD'yi tek oturum açma yapılandırma
 
-Bu bölümde, Azure AD çoklu oturum açma Azure portalında etkinleştirin.
+Bu bölümde, Azure portalında Azure AD oturum açma'yı etkinleştirin.
 
-Azure AD çoklu oturum açma ile Vidyard yapılandırmak için aşağıdaki adımları gerçekleştirin:
+Azure AD oturumaçmayı Vidyard ile yapılandırmak için aşağıdaki adımları gerçekleştirin:
 
-1. İçinde [Azure portalında](https://portal.azure.com/), **Vidyard** uygulama tümleştirme sayfasında **çoklu oturum açma**.
+1. Azure [portalında,](https://portal.azure.com/) **Vidyard** uygulama tümleştirme sayfasında **Tek oturum açma'yı**seçin.
 
-    ![Çoklu oturum açma bağlantısı yapılandırma](common/select-sso.png)
+    ![Tek oturum açma bağlantısını yapılandırma](common/select-sso.png)
 
-2. Üzerinde **tek bir oturum açma yönteminizi seçmeniz** iletişim kutusunda, **SAML/WS-Federasyon** modu, çoklu oturum açmayı etkinleştirmek için.
+2. Tek **oturum açma yöntemi** iletişim kutusunda, tek oturum açmayı etkinleştirmek için **SAML/WS-Fed** modunu seçin.
 
-    ![Çoklu oturum açma seçim modu](common/select-saml-option.png)
+    ![Tek oturum açma seçme modu](common/select-saml-option.png)
 
-3. Üzerinde **yukarı çoklu oturum açma SAML ile ayarlanmış** sayfasında **Düzenle** açmak için simgeyi **temel SAML yapılandırma** iletişim.
+3. **SAML sayfasıyla Tek Oturum Açma'da** **Temel SAML Yapılandırma** iletişim kutusunu açmak için **Düzenleme** simgesini tıklatın.
 
-    ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
+    ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
 
-4. Üzerinde **temel SAML yapılandırma** uygulamada yapılandırmak isterseniz, bölümü **IDP** başlatılan modu, aşağıdaki adımları gerçekleştirin:
+4. Temel **SAML Yapılandırma** sı bölümünde, uygulamayı **IDP** tarafından başlatılan modda yapılandırmak istiyorsanız, aşağıdaki adımları gerçekleştirin:
 
-    ![Vidyard etki alanı ve URL'ler tek oturum açma bilgileri](common/idp-intiated.png)
+    ![Vidyard Domain ve URL'ler tek oturum açma bilgileri](common/idp-intiated.png)
 
-    a. İçinde **tanımlayıcı** metin kutusuna şu biçimi kullanarak bir URL yazın: `https://secure.vidyard.com/sso/saml/<unique id>/metadata`
+    a. **Tanımlayıcı** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://secure.vidyard.com/sso/saml/<unique id>/metadata`
 
-    b. İçinde **yanıt URL'si** metin kutusuna şu biçimi kullanarak bir URL yazın: `https://secure.vidyard.com/sso/saml/<unique id>/consume`
+    b. **Yanıtla URL** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://secure.vidyard.com/sso/saml/<unique id>/consume`
 
-5. Tıklayın **ek URL'lerini ayarlayın** ve uygulamada yapılandırmak istiyorsanız, aşağıdaki adımı uygulayın **SP** başlatılan modu:
+5. Uygulamayı **SP** başlatılan modda yapılandırmak istiyorsanız **ek URL'ler ayarla'yı** tıklatın ve aşağıdaki adımı gerçekleştirin:
 
-    ![Vidyard etki alanı ve URL'ler tek oturum açma bilgileri](common/metadata-upload-additional-signon.png)
+    ![Vidyard Domain ve URL'ler tek oturum açma bilgileri](common/metadata-upload-additional-signon.png)
 
-    İçinde **oturum açma URL'si** metin kutusuna şu biçimi kullanarak bir URL yazın:  `https://secure.vidyard.com/sso/saml/<unique id>/login`
+    Oturum **Açma URL** metin kutusuna aşağıdaki deseni kullanarak bir URL yazın:`https://secure.vidyard.com/sso/saml/<unique id>/login`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerler gerçek tanımlayıcısı, yanıt URL'si ve oturum açma, öğreticinin ilerleyen bölümlerinde açıklanan URL ile güncelleştirir. Gösterilen desenleri de başvurabilirsiniz **temel SAML yapılandırma** bölümünde Azure portalında.
+    > Bu değerler gerçek değildir. Bu değerleri, öğreticide daha sonra açıklanan gerçek Tanımlayıcı, Yanıt URL'si ve Oturum Açma URL'si ile güncelleştireceksiniz. Azure portalındaki **Temel SAML Yapılandırması** bölümünde gösterilen desenlere de bakabilirsiniz.
 
-6. Üzerinde **yukarı çoklu oturum açma SAML ile ayarlanmış** sayfasında **SAML imzalama sertifikası** bölümünde **indirme** indirmek için **sertifika (Base64)** bilgisayarınızdaki belirli seçenekler ihtiyacınıza göre ve kaydedin.
+6. **SAML ile Tek Oturum Açma** sayfasında, **SAML İmza Sertifikası** bölümünde, sertifikayı **(Base64)** gereksiniminize göre verilen seçeneklerden indirmek ve bilgisayarınıza kaydetmek için **İndir'i** tıklatın.
 
     ![Sertifika indirme bağlantısı](common/certificatebase64.png)
 
-7. Üzerinde **Vidyard kümesi** bölümünde, ihtiyacınıza göre uygun URL'lerini kopyalayın.
+7. **Vidyard'ı Ayarla** bölümünde, gereksiniminize göre uygun URL'yi kopyalayın.
 
-    ![Yapılandırma URL'leri kopyalayın](common/copy-configuration-urls.png)
+    ![Yapılandırma URL'lerini kopyalama](common/copy-configuration-urls.png)
 
-    a. Oturum Açma URL'si:
+    a. Oturum Açma URL’si
 
     b. Azure AD Tanımlayıcısı
 
-    c. Oturum Kapatma URL'si
+    c. Giriş URL'si
 
-### <a name="configure-vidyard-single-sign-on"></a>Vidyard tek oturum açmayı yapılandırın
+### <a name="configure-vidyard-single-sign-on"></a>Vidyard Tek İşaret-On yapıla
 
-1. Farklı bir web tarayıcı penceresinde Vidyard yazılım şirketinizin sitesi için bir yönetici olarak oturum açın.
+1. Farklı bir web tarayıcısı penceresinde, Vidyard Software şirket sitenizde yönetici olarak oturum açın.
 
-2. Vidyard Panoda **grubu** > **güvenlik**
+2. Vidyard panosundan **Grup** > **Güvenliği'ni** seçin
 
-    ![Vidyard yapılandırma](./media/vidyard-tutorial/configure1.png)
+    ![Vidyard Yapılandırma](./media/vidyard-tutorial/configure1.png)
 
-3. Tıklayın **yeni profili** sekmesi.
+3. **Yeni Profil** sekmesini tıklatın.
 
-    ![Vidyard yapılandırma](./media/vidyard-tutorial/configure2.png)
+    ![Vidyard Yapılandırma](./media/vidyard-tutorial/configure2.png)
 
-4. İçinde **SAML yapılandırma** bölümünde, aşağıdaki adımları gerçekleştirin:
+4. **SAML Yapılandırma** bölümünde aşağıdaki adımları gerçekleştirin:
 
-    ![Vidyard yapılandırma](./media/vidyard-tutorial/configure3.png)
+    ![Vidyard Yapılandırma](./media/vidyard-tutorial/configure3.png)
 
-    a. Lütfen genel profil adı girin **profil adı** metin.
+    a. Lütfen **Profil Adı** metin kutusuna genel profil adını girin.
 
-    b. Kopyalama **SSO kullanıcı oturum açma sayfasına** yapıştırın ve değer **oturum açma URL'si** metin kutusunda **temel SAML yapılandırma** bölümü Azure portalı.
+    b. **SSO Kullanıcı Girişi Sayfası** değerini kopyalayın ve Azure **portalındaki** **Temel SAML Yapılandırma** bölümünde URL textbox'a yapıştırın.
 
-    c. Kopyalama **ACS URL** yapıştırın ve değer **yanıt URL'si** metin kutusunda **temel SAML yapılandırma** bölümü Azure portalı.
+    c. **ACS URL** değerini kopyalayın ve Azure portalındaki **Temel SAML Yapılandırmabölümündeyanıt** **URL** textbox'ına yapıştırın.
 
-    d. Kopyalama **veren/meta veri URL'si** yapıştırın ve değer **tanımlayıcı** metin kutusunda **temel SAML yapılandırma** bölümü Azure portalı.
+    d. **Veren/Metadata URL** değerini kopyalayın ve Azure portalındaki Temel **SAML Yapılandırma** bölümündeki **Tanımlayıcı** textbox'a yapıştırın.
 
-    e. Not Defteri'nde Azure portalından indirilen sertifika dosyanızı açın ve ardından yapıştırın **X.509 sertifikası** metin.
+    e. İndirilen sertifika dosyanızı Notepad'deki Azure portalından açın ve **ardından X.509 Sertifikası** metin kutusuna yapıştırın.
 
-    f. İçinde **SAML uç nokta URL'si** metin değerini yapıştırın **oturum açma URL'si** Azure portaldan kopyaladığınız.
+    f. **SAML Endpoint URL** textbox'ına Azure portalından kopyalanan **Giriş URL'sinin** değerini yapıştırın.
 
     g. **Onayla**'ya tıklayın.
 
-5. Çoklu oturum açma sekmesinden seçin **atama** yanındaki mevcut bir profili
+5. Tek Oturum Açma sekmesinden, varolan bir profilin yanına **Atla'yı** seçin
 
-    ![Vidyard yapılandırma](./media/vidyard-tutorial/configure4.png)
-
-    > [!NOTE]
-    > SSO profili oluşturduktan sonra kullanıcılar Azure üzerinden erişim gerektiren herhangi bir gruplarına atayın. Kullanıcı Grup içinde atanmış olan mevcut değilse Vidyard otomatik olarak bir kullanıcı hesabı oluşturun ve gerçek zamanlı rollerine atayın.
-
-6. Görünür olan Kuruluş grubunuzu seçin **kullanılabilir gruplar atanacak**.
-
-    ![Vidyard yapılandırma](./media/vidyard-tutorial/configure5.png)
-
-7. Atanan gruplar altında gördüğünüz **şu an atanan grup**. Bir rol için grubu tıklatın ve kuruluş göre seçin **Onayla**.
-
-    ![Vidyard yapılandırma](./media/vidyard-tutorial/configure6.png)
+    ![Vidyard Yapılandırma](./media/vidyard-tutorial/configure4.png)
 
     > [!NOTE]
-    > Daha fazla bilgi için [bu belge](https://knowledge.vidyard.com/hc/articles/360009990033-SAML-based-Single-Sign-On-SSO-in-Vidyard).
+    > Bir SSO profili oluşturduktan sonra, bu profili kullanıcıların Azure üzerinden erişim emmesi gereken herhangi bir gruba atayın. Kullanıcı atandığı grup içinde yoksa, Vidyard otomatik olarak bir kullanıcı hesabı oluşturur ve rollerini gerçek zamanlı olarak atar.
 
-### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma 
+6. **Atamak için Kullanılabilir Gruplar'da**görünen organizasyon grubunuzu seçin.
 
-Bu bölümün amacı, Britta Simon adlı Azure portalında bir test kullanıcısı oluşturmaktır.
+    ![Vidyard Yapılandırma](./media/vidyard-tutorial/configure5.png)
 
-1. Azure portalında, sol bölmede seçin **Azure Active Directory**seçin **kullanıcılar**ve ardından **tüm kullanıcılar**.
+7. **Atanan Grupların**Altında Atanan Grupları Görebilirsiniz. Kuruluşunuza göre grup için bir rol seçin ve **Onayla'yı**tıklatın.
 
-    !["Kullanıcılar ve Gruplar" ve "Tüm kullanıcılar" bağlantıları](common/users.png)
+    ![Vidyard Yapılandırma](./media/vidyard-tutorial/configure6.png)
 
-2. Seçin **yeni kullanıcı** ekranın üstünde.
+    > [!NOTE]
+    > Daha fazla bilgi için [bu dokümana](https://knowledge.vidyard.com/hc/articles/360009990033-SAML-based-Single-Sign-On-SSO-in-Vidyard)bakın.
 
-    ![Yeni kullanıcı düğmesi](common/new-user.png)
+### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma 
 
-3. Kullanıcı özellikleri, aşağıdaki adımları gerçekleştirin.
+Bu bölümün amacı, Azure portalında Britta Simon adında bir test kullanıcısı oluşturmaktır.
+
+1. Azure portalında, sol bölmede **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
+
+    !["Kullanıcılar ve gruplar" ve "Tüm kullanıcılar" bağlantıları](common/users.png)
+
+2. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
+
+    ![Yeni kullanıcı Düğmesi](common/new-user.png)
+
+3. Kullanıcı özelliklerinde aşağıdaki adımları gerçekleştirin.
 
     ![Kullanıcı iletişim kutusu](common/user-properties.png)
 
-    a. İçinde **adı** alana **BrittaSimon**.
+    a. **Ad** alanında **BrittaSimon**girin.
   
-    b. İçinde **kullanıcı adı** alan türü brittasimon@yourcompanydomain.extension. Örneğin, BrittaSimon@contoso.com
+    b. Kullanıcı **adı** alanı brittasimon@yourcompanydomain.extensiontüründe. Örneğin, BrittaSimon@contoso.com
 
-    c. Seçin **Show parola** onay kutusunu işaretleyin ve ardından parola kutusunda görüntülenen değeri yazın.
+    c. Parola onay kutusunu **göster'i** seçin ve ardından Parola kutusunda görüntülenen değeri yazın.
 
-    d. **Oluştur**’a tıklayın.
+    d. **Oluştur'u**tıklatın.
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, Azure çoklu oturum açma kullanmak için Vidyard erişim vererek Britta Simon etkinleştirin.
+Bu bölümde, Britta Simon'ın Vidyard'a erişim izni vererek Azure tek oturum açma işlemini kullanmasını sağlarsınız.
 
-1. Azure portalında **kurumsal uygulamalar**seçin **tüm uygulamaları**, ardından **Vidyard**.
+1. Azure portalında **Kurumsal Uygulamalar'ı**seçin, **Tüm uygulamaları**seçin ve ardından **Vidyard'ı**seçin.
 
-    ![Kurumsal uygulamalar dikey penceresi](common/enterprise-applications.png)
+    ![Kurumsal uygulamalar bıçak](common/enterprise-applications.png)
 
-2. Uygulamalar listesinde **Vidyard**.
+2. Uygulama listesinde **Vidyard'ı**seçin.
 
-    ![Uygulamalar listesinde Vidyard bağlantı](common/all-applications.png)
+    ![Uygulamalar listesindeki Vidyard bağlantısı](common/all-applications.png)
 
-3. Soldaki menüde **kullanıcılar ve gruplar**.
+3. Soldaki **menüde, Kullanıcılar ve gruplar**seçin.
 
-    !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
+    !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-4. Tıklayın **Kullanıcı Ekle** düğmesine ve ardından **kullanıcılar ve gruplar** içinde **atama Ekle** iletişim.
+4. Kullanıcı **Ekle** düğmesini tıklatın ve ardından **Atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar'ı** seçin.
 
     ![Atama Ekle bölmesi](common/add-assign-user.png)
 
-5. İçinde **kullanıcılar ve gruplar** iletişim kutusunda **Britta Simon** 'a tıklayın kullanıcı listesinde **seçin** ekranın alt kısmındaki düğmesi.
+5. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinde **Britta Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
 
-6. SAML onaylaması ardından içinde herhangi bir rolü değer bekleniyor durumunda **rolü Seç** 'a tıklayın listeden bir kullanıcı için uygun rolü Seç iletişim kutusu **seçin** ekranın alt kısmındaki düğmesi.
+6. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
 
-7. İçinde **atama Ekle** iletişim tıklatın **atama** düğmesi.
+7. Atama **Ekle** iletişim kutusunda **Atla** düğmesini tıklatın.
 
 ### <a name="create-vidyard-test-user"></a>Vidyard test kullanıcısı oluşturma
 
-Bu bölümde, Britta Simon adlı bir kullanıcı Vidyard oluşturulur. Vidyard just-ın-time kullanıcı hazırlama, varsayılan olarak etkin olduğu destekler. Bu bölümde, hiçbir eylem öğesini yoktur. Bir kullanıcı Vidyard içinde zaten mevcut değilse yeni bir kimlik doğrulamasından sonra oluşturulur.
+Bu bölümde Vidyard'da Britta Simon adında bir kullanıcı oluşturulmuştur. Vidyard, varsayılan olarak etkinleştirilen tam zamanında kullanıcı sağlamayı destekler. Bu bölümde sizin için bir eylem öğesi yoktur. Vidyard'da bir kullanıcı zaten yoksa, kimlik doğrulamadan sonra yeni bir kullanıcı oluşturulur.
 
 >[!Note]
->Bir kullanıcı el ile oluşturmanız gerekiyorsa, kişi [Vidyard Destek ekibine](mailto:support@vidyard.com).
+>El ile bir kullanım oluşturmanız gerekiyorsa, [Vidyard destek ekibine](mailto:support@vidyard.com)başvurun.
 
 ### <a name="test-single-sign-on"></a>Çoklu oturum açma testi 
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
+Bu bölümde, Access Panelini kullanarak Azure AD tek oturum açma yapılandırmanızı sınarsınız.
 
-Erişim paneli Vidyard kutucuğa tıkladığınızda, size otomatik olarak SSO'yu ayarlama Vidyard için oturum açmanız. Erişim paneli hakkında daha fazla bilgi için bkz: [erişim Paneli'ne giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim Paneli'ndeki Vidyard karosuna tıkladığınızda, Otomatik olarak SSO'yu kurduğunuz Vidyard'da oturum açmalısınız. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
 
 ## <a name="additional-resources"></a>Ek Kaynaklar
 
-- [SaaS uygulamaları Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma özellikleri nelerdir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Etkin Dizinde Koşullu Erişim Nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 03/30/2020
 ms.author: juliako
-ms.openlocfilehash: eacbeca275192e1a68b6682c3036da2d5c09bd54
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dd41596b6631bb63e1625325f8bec065b43881cd
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77619888"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421393"
 ---
 # <a name="video-indexer-frequently-asked-questions"></a>Video Indexer sık sorulan sorular
 
@@ -175,6 +175,12 @@ Video Dizinleyici API'lerini güvenlik amacıyla kullanmak için erişim belirte
 ### <a name="how-often-do-i-need-to-get-a-new-access-token-when-do-access-tokens-expire"></a>Yeni bir erişim jetonu almam ne sıklıkta gerekir? Erişim belirteçlerinin süresi ne zaman doluyor?
 
 Erişim belirteçlerinin süresi her saat sona erer, bu nedenle her saat yeni bir erişim belirteci oluşturmanız gerekir. 
+
+### <a name="what-are-the-login-options-to-video-indexer-developer-portal"></a>Video Indexer Developer portalına giriş seçenekleri nelerdir?
+
+Azure AD, Microsoft hesabı, Google hesabı veya Facebook hesabını kullanarak giriş yapabilirsiniz. 
+
+Bir kimlik sağlayıcısı kullanarak e-posta hesabınızı kaydettikten sonra, bu e-posta hesabını başka bir kimlik sağlayıcısında kullanamazsınız.
 
 ## <a name="billing-questions"></a>Faturalama soruları
 

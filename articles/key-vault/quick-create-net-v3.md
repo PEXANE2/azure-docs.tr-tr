@@ -7,12 +7,12 @@ ms.date: 11/05/2019
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.openlocfilehash: 67dedfce4be81fdf686918a310b89cf463ed389a
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: dc9c55c7caf2f78d66d8873e2da8ed7efdbdcec9
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79457262"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411631"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-net-sdk-v3"></a>Hızlı başlangıç: .NET için Azure Key Vault istemci kitaplığı (SDK v3)
 
@@ -153,13 +153,26 @@ Bu .NET hızlı başlatma, koda konulmaması gereken kimlik bilgilerini depolama
 
 Uygulamanızı oluşturmadan ve çalıştırmadan `setx` önce, `akvClientId`yukarıda `akvClientSecret` `akvTenantId`belirttiğiniz `akvSubscriptionId` değerlere , , ve çevre değişkenlerini ayarlamak için komutu kullanın.
 
+**Windows**
+
 ```console
-setx akvClientId <your-clientID>
+setx akvClientId "<your-clientID>"
+setx akvClientSecret "<your-clientSecret>"
+```
 
-setx akvClientSecret <your-clientSecret>
-````
+**Linux**
 
-Her aradığınızda `setx`"SUCCESS: Belirtilen değer kaydedildi" yanıtını almalısınız.
+```bash
+export akvClientId = "<your-clientID>"
+export akvClientSecret = "<your-clientSecret>"
+```
+
+**Macos**
+
+```bash
+export akvClientId = "<your-clientID>"
+export akvClientSecret = "<your-clientSecret>"
+```
 
 Bu ortam değişkenlerini kodunuzdaki dizeleri atayın ve ardından [bunları KeyVaultClient sınıfına](/dotnet/api/microsoft.azure.keyvault.keyvaultclient)geçirerek uygulamanızın kimliğini doğrulayın:
 

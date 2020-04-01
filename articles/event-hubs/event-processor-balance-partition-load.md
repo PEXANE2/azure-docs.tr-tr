@@ -12,17 +12,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/16/2020
 ms.author: shvija
-ms.openlocfilehash: 1244fe64d0c23782fdae7a0f92415bada4bef55a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bf90120157bf64bd62a3b5ec9d8a6b2c6260e024
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76907662"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398307"
 ---
 # <a name="balance-partition-load-across-multiple-instances-of-your-application"></a>Uygulamanızın birden çok örneği arasında bakiye bölüm yükü
 Olay işleme uygulamanızı ölçeklendirmek için, uygulamanın birden çok örneğini çalıştırabilir ve yükü kendi aralarında dengelemesini sağlayabilirsiniz. Eski [sürümlerde, EventProcessorHost](event-hubs-event-processor-host.md) alırken programınızın birden çok örneği ile denetim noktası olayları arasındaki yükü dengelemenize olanak sağlar. Yeni sürümlerde (5.0 itibaren), **EventProcessorClient** (.NET ve Java) veya **EventHubConsumerClient** (Python ve JavaScript) aynı şeyi yapmanızı sağlar. Geliştirme modeli olaylar kullanılarak daha basit hale getirilir. Bir etkinlik işleyicisi kaydederek ilgilendiğiniz etkinliklere abone olursunuz.
 
-Bu makalede, olayları bir olay merkezinden okumak için birden çok örnek kullanmak için bir örnek senaryo açıklanır ve ardından olay işlemci istemcisinin özellikleri hakkında ayrıntılı bilgi verir, bu da aynı anda birden çok bölümden olayları almanızı ve diğer diğer leriyle bakiye yüklemenize olanak tanır aynı etkinlik merkezini ve tüketici grubunu kullanan tüketiciler.
+Bu makalede, olayları bir olay merkezinden okumak için birden çok örnek kullanmak için bir örnek senaryo açıklanır ve ardından olay işlemciistemcisinin özellikleri hakkında ayrıntılı bilgi verir, bu da aynı anda birden çok bölümden olayları almanızı ve aynı olay hub'ını ve tüketici grubunu kullanan diğer tüketicilerle bakiye yüklemenize olanak tanır.
 
 > [!NOTE]
 > Olay Hub'ları için ölçeklendirmenin anahtarı, bölümlenmiş tüketicilerin fikridir. [Rakip tüketici](https://msdn.microsoft.com/library/dn568101.aspx) deseninin aksine, bölümlenmiş tüketici deseni, çekişme darboğazını ortadan kaldırarak ve uçlardan uca paralelliği kolaylaştırarak yüksek ölçek sağlar.
@@ -83,6 +83,13 @@ Bir olay işlemcisi bir bölümden kesilirse, başka bir örnek, söz konusu bö
 
 Bir olayı işlenmiş olarak işaretlemek için denetim noktası yapıldığında, denetim noktası deposundaki bir giriş, olayın ofset ve sıra numarasıyla eklenir veya güncelleştirilir. Kullanıcılar denetim noktasını güncelleştirme sıklığına karar vermelidir. Başarıyla işlenen her olaydan sonra güncelleştirme, temel denetim noktası deposuna bir yazma işlemini tetikledikçe performans ve maliyet etkilerine sahip olabilir. Ayrıca, her bir olayı denetlemek, Hizmet Veri Servisi sırasının olay hub'ından daha iyi bir seçenek olabileceği sıralanmış bir ileti deseni göstergesidir. Olay Hub'larının arkasındaki fikir, büyük ölçekte "en az bir kez" teslimat elde etmektir. Downstream sistemlerinizi iktidarlı hale getirerek, aynı olayların birden çok kez alınmasıyla sonuçlanan hatalardan veya yeniden başlatmalardan kurtarmak kolaydır.
 
+> [!NOTE]
+> Azure Blob Depolama'yı, Depolama Blob SDK'nın azure'da bulunanlardan farklı bir sürümünü destekleyen bir ortamda denetim noktası deposu olarak kullanıyorsanız, Depolama hizmeti API sürümünü bu ortam tarafından desteklenen belirli bir sürümle değiştirmek için kodu kullanmanız gerekir. Örneğin, Bir Azure [Yığını Hub sürümü 2002'de Etkinlik Hub'ları](https://docs.microsoft.com/azure-stack/user/event-hubs-overview)çalıştırıyorsanız, Depolama hizmeti için kullanılabilir en yüksek sürüm 2017-11-09 sürümüdür. Bu durumda, Depolama hizmeti API sürümünü 2017-11-09'a hedeflemek için kod kullanmanız gerekir. Belirli bir Depolama API sürümünü niçin hedefleneceksiniz hakkında bir örnek için, GitHub'daki şu örneklere bakın: 
+> - [.NET .](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs) 
+> - [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/src/samples/java/com/azure/messaging/eventhubs/checkpointstore/blob/EventProcessorWithOlderStorageVersion.java)
+> - [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/receiveEventsWithDownleveledStorage.js) veya [TypeScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/receiveEventsWithDownleveledStorage.ts)
+> - [Python](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio/samples/event_processor_blob_storage_example_with_storage_api_version.py)
+
 ## <a name="thread-safety-and-processor-instances"></a>İş parçacığı güvenliği ve işlemci örnekleri
 
 Varsayılan olarak, olay işlemcisi veya tüketici iş parçacığı güvenlidir ve eşzamanlı bir şekilde çalışır. Olaylar bir bölüm için geldiğinde, olayları işleyen işlev çağrılır. İleti pompası diğer iş parçacıkları üzerinde arka planda çalışmaya devam ettikçe sonraki iletiler ve bu işlev için aramalar arka planda sıraya. Bu iş parçacığı güvenliği, iş parçacığı güvenli koleksiyonihtiyacını ortadan kaldırır ve performansı önemli ölçüde artırır.
@@ -93,4 +100,4 @@ Aşağıdaki hızlı başlangıçları görün:
 - [.NET Core](get-started-dotnet-standard-send-v2.md)
 - [Java](event-hubs-java-get-started-send.md)
 - [Python](get-started-python-send-v2.md)
-- [Javascript](get-started-node-send-v2.md)
+- [JavaScript](get-started-node-send-v2.md)

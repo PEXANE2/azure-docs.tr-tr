@@ -1,5 +1,5 @@
 ---
-title: Azure sanal ağında Temel Yük Dengeleyicisi ile bir IPv6 çift yığın uygulaması dağıtma - Kaynak Yöneticisi şablonu (önizleme)
+title: Azure sanal ağında Temel Yük Dengeleyicisi ile bir IPv6 çift yığın uygulaması dağıtma - Kaynak Yöneticisi şablonu
 titlesuffix: Azure Virtual Network
 description: Bu makalede, Azure Kaynak Yöneticisi VM şablonlarını kullanarak Azure sanal ağında bir IPv6 çift yığın uygulamasının nasıl dağıtılanılacağa gösterilmektedir.
 services: virtual-network
@@ -10,18 +10,18 @@ ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 06/26/2019
+ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: b397c874045a89f5992aeadacfbbd4434a486977
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7c2f66d92597801aa7c6b0b32f86f594d3effb05
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70012831"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80420592"
 ---
-# <a name="deploy-an-ipv6-dual-stack-application-with-basic-load-balancer-in-azure---template-preview"></a>Azure'da Temel Yük Dengeleyicisi ile Bir IPv6 çift yığın uygulaması dağıtma - Şablon (Önizleme)
+# <a name="deploy-an-ipv6-dual-stack-application-with-basic-load-balancer-in-azure---template"></a>Azure'da Temel Yük Dengeleyicisi ile Bir IPv6 çift yığın uygulaması dağıtma - Şablon
 
-Bu makalede, Azure Kaynak Yöneticisi VM şablonunun geçerli olan bölümüyle birlikte IPv6 yapılandırma görevlerinin bir listesi sağlanmaktadır. IPv4 ve IPv6 alt ağları, çift (IPv4 + IPv6) ön uç yapılandırmaları ile bir Temel Yük Dengeleyici, VM'ler ile bir çift yığın sanal ağ içeren Temel Yük Dengeleyici ile bir çift yığın (IPv4 + IPv6) uygulaması dağıtmak için bu makalede açıklanan şablonu kullanın Çift IP yapılandırması, ağ güvenlik grubu ve ortak IP'lere sahip NIC'ler.
+Bu makalede, Azure Kaynak Yöneticisi VM şablonunun geçerli olan bölümüyle birlikte IPv6 yapılandırma görevlerinin bir listesi sağlanmaktadır. IPv4 ve IPv6 alt ağları, çift (IPv4 + IPv6) ön uç yapılandırmaları ile bir Temel Yük Dengeleyici, çift IP yapılandırması, ağ güvenlik grubu ve ortak IP'lere sahip NIC'lere sahip Bir Temel Yük Dengeleyicisi içeren Temel Yük Dengeleyicisi ile bir çift yığın (IPv4 + IPv6) uygulamasını dağıtmak için bu makalede açıklanan şablonu kullanın.
 
 Standart Yük Dengeleyicisini kullanarak çift yığın (IPV4 + IPv6) uygulaması dağıtmak için [bkz.](ipv6-configure-standard-load-balancer-template-json.md)
 

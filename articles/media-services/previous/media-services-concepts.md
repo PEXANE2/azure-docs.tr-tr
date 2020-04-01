@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 69e2c053c9fb874889bc3d5b08be6e0c7ce875a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 260ddccc1a1b0bd4090284025b79e20ff5ce4fdc
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77162914"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475252"
 ---
 # <a name="azure-media-services-concepts"></a>Azure Medya Hizmetleri kavramları 
 
@@ -97,7 +97,7 @@ Azure Medya Hizmetleri, bulutta ortam kodlaması için birden çok seçenek suna
 Medya Hizmetleri ile başlarken, codec ve dosya biçimleri arasındaki farkı anlamak önemlidir.
 Codec'ler sıkıştırma/dekompresyon algoritmalarını uygulayan yazılımdır, oysa dosya biçimleri sıkıştırılmış videoyu tutan kapsayıcılardır.
 
-Medya Hizmetleri, uyarlanabilir bitrate MP4 veya Smooth Streaming kodlanmış içeriğinizi, ortam hizmetlerine yeniden paketlemek zorunda kalmadan Medya Hizmetleri (MPEG DASH, HLS, Smooth Streaming) tarafından desteklenen akış biçimlerinde sunmanızı sağlayan dinamik ambalajlar sağlar akış biçimleri.
+Medya Hizmetleri, uyarlanabilir bitrate MP4 veya Smooth Streaming kodlanmış içeriğinizi, bu akış biçimlerine yeniden paketlemek zorunda kalmadan Medya Hizmetleri (MPEG DASH, HLS, Smooth Streaming) tarafından desteklenen akış biçimlerinde sunmanızı sağlayan dinamik ambalaj sağlar.
 
 [Dinamik ambalajdan](media-services-dynamic-packaging-overview.md)yararlanmak için, asma (kaynak) dosyanızı uyarlanabilir bitrate MP4 dosyaları veya uyarlanabilir bitrate Smooth Streaming dosyaları kümesine kodlamanız ve başlangıç durumunda en az bir standart veya premium akış bitiş noktasına sahip olmanız gerekir.
 
@@ -166,7 +166,7 @@ Medya Hizmetleri ile çalışırken, asma dosyalarınızı uyarlanabilir bir bit
 ### <a name="streaming-endpoint"></a>Akış uç noktası
 StreamingEndpoint, içeriği doğrudan istemci oynatıcı uygulamasına veya daha fazla dağıtım için Bir İçerik Dağıtım Ağı'na (CDN) sunabilen bir akış hizmetini temsil eder (Azure Media Services artık Azure CDN tümleştirmesini sağlar.) Akış uç noktası hizmetinden giden akış, Medya Hizmetleri hesabınızda canlı akış veya isteğe bağlı bir Varlık olabilir. Media Services müşterileri ihtiyaçlarına göre **Standart** bir akış uç noktası veya bir veya daha fazla **Premium** akış uç noktası seçer. Standart akış uç noktası, çoğu akış iş yükü için uygundur. 
 
-Standart Akış Uç Noktası çoğu akış iş yükü için uygundur. Standart Akış Uç Noktaları, içeriğinizi HLS, MPEG-DASH ve Sorunsuz Akış'a dinamik paketleme yoluyla hemen hemen her cihaza sunma esnekliğinin yanı sıra Microsoft PlayReady, Google Widevine, Apple Fairplay ve AES128' de.  Ayrıca Azure CDN tümleştirmesi aracılığıyla binlerce eşzamanlı görüntüleyenle çok küçükten çok büyük kitlelere ölçeklenirler. Gelişmiş bir iş yükünüz varsa veya akış kapasitesi gereksinimleriniz standart akış uç noktası üretim hedeflerine uymuyorsa veya büyüyen bant genişliği gereksinimlerini karşılamak için StreamingEndpoint hizmetinin kapasitesini denetlemek istiyorsanız, ölçek birimleri (premium akış birimleri olarak da bilinir) tahsis edin.
+Standart Akış Uç Noktası çoğu akış iş yükü için uygundur. Standart Akış Uç Noktaları, IÇERIĞInizi HLS, MPEG-DASH ve Sorunsuz Akış'a dinamik paketleme yoluyla hemen hemen her cihaza sunma esnekliğinin yanı sıra Microsoft PlayReady, Google Widevine, Apple Fairplay ve AES128 için dinamik şifreleme sunar.  Ayrıca Azure CDN tümleştirmesi aracılığıyla binlerce eşzamanlı görüntüleyenle çok küçükten çok büyük kitlelere ölçeklenirler. Gelişmiş bir iş yükünüz varsa veya akış kapasitesi gereksinimleriniz standart akış uç noktası üretim hedeflerine uymuyorsa veya büyüyen bant genişliği gereksinimlerini karşılamak için StreamingEndpoint hizmetinin kapasitesini denetlemek istiyorsanız, ölçek birimleri (premium akış birimleri olarak da bilinir) ayırmanız önerilir.
 
 Dinamik ambalaj ve/veya dinamik şifreleme kullanılması önerilir.
 
@@ -180,7 +180,7 @@ Varsayılan olarak, Medya Hizmetleri hesabınızda en fazla 2 akış uç noktas�
 Yalnızca AkışSon Noktanız çalışırken faturalandırılırsınız.
 
 ### <a name="asset-delivery-policy"></a>Varlık teslim ilkesi
-Medya Hizmetleri içerik teslim iş akışındaki adımlardan biri, akıştan çıkarmak istediğiniz [varlıklar için teslim ilkelerini](https://docs.microsoft.com/rest/api/media/operations/assetdeliverypolicy)yapılandırmaktır. Varlık teslim ihdası ilkesi Medya Hizmetleri'ne varlığınızın nasıl teslim edilmesini istediğinizi bildirir: varlığınızın dinamik olarak paketlenmesi gereken akış protokolü (örneğin, MPEG DASH, HLS, Düzgün Akış veya tümü), dinamik olarak şifrelemek isteyip istemediğiniz varlık ve nasıl (zarf veya ortak şifreleme).
+Medya Hizmetleri içerik teslim iş akışındaki adımlardan biri, akıştan çıkarmak istediğiniz [varlıklar için teslim ilkelerini](https://docs.microsoft.com/rest/api/media/operations/assetdeliverypolicy)yapılandırmaktır. Varlık teslim ihdası, Medya Hizmetleri'ne varlığınızın nasıl teslim edilmesini istediğinizi söyler: varlığınızın dinamik olarak paketlenmesi gereken akış protokolü (örneğin, MPEG DASH, HLS, Düzgün Akış veya tümü), varlığınızı dinamik olarak şifrelemek isteyip istemediğiniz ve nasıl (zarf veya ortak şifreleme) istediğinizi.
 
 Depolama şifreli bir varlığınız varsa, kıymetiniz akışa geçmeden önce, akış sunucusu depolama şifrelemesini kaldırır ve belirtilen teslim ilkesini kullanarak içeriğinizi akışı sağlar. Örneğin, varlıkdurumunuzu Gelişmiş Şifreleme Standardı (AES) şifreleme anahtarıyla şifrelenmiş olarak teslim etmek için ilke türünü DynamicEnvelopeEncryption olarak ayarlayın. Depolama şifrelemesini kaldırmak ve varlığı açık olarak aktarmak için ilke türünü NoDinamik Şifreleme olarak ayarlayın.
 
@@ -197,10 +197,10 @@ http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba01
 ### <a name="streaming-urls"></a>Akış URL'leri
 İçeriğinizi istemcilere aktarın. Kullanıcılara akış URL'leri sağlamak için öncelikle bir OnDemandOrigin bulucu oluşturmanız gerekir. Bulucuoluşturma, akışı istediğiniz içeriği içeren varlığa temel Yol verir. Ancak, bu içeriği akışa göre aktarabilmek için bu yolu daha fazla değiştirmeniz gerekir. Akış bildirimi dosyasına tam bir URL oluşturmak için, bulucunun Yol değerini ve manifestoyu (filename.ism) dosya adını oluşturmanız gerekir. Ardından, (Bildirim) ve yer bulucu yoluna uygun bir biçim (gerekirse) ekle.
 
-Ayrıca içeriğinizi bir SSL bağlantısı üzerinden de aktarabilirsiniz. Bunu yapmak için, akış URL'lerinizin HTTPS ile başladığından emin olun. Şu anda, AMS özel etki alanları ile SSL desteklemiyor.  
+İçeriğinizi TLS bağlantısı üzerinden de aktarabilirsiniz. Bunu yapmak için, akış URL'lerinizin HTTPS ile başladığından emin olun. Şu anda, AMS özel etki alanları ile TLS desteklemiyor.  
 
 >[!NOTE]
->Yalnızca içeriğinizi teslim ettiğiniz akış bitiş noktası 10 Eylül 2014'ten sonra oluşturulduysa SSL üzerinden akış yapabilirsiniz. Akış URL'leriniz 10 Eylül'den sonra oluşturulan akış uç noktalarını temel alıyorsa, URL "streaming.mediaservices.windows.net" (yeni biçim) içerir. "origin.mediaservices.windows.net" (eski biçim) içeren akış URL'leri SSL'yi desteklemez. URL'niz eski biçimdeyse ve SSL üzerinden akış yapabilmek istiyorsanız, yeni bir akış bitiş noktası oluşturun. İçeriğinizi SSL üzerinden aktarmak için yeni akış bitiş noktasına dayalı olarak oluşturulan URL'leri kullanın.
+>TLS üzerinden yalnızca içeriğinizi teslim ettiğiniz akış bitiş noktası 10 Eylül 2014'ten sonra oluşturulduysa akış yapabilirsiniz. Akış URL'leriniz 10 Eylül'den sonra oluşturulan akış uç noktalarını temel alıyorsa, URL "streaming.mediaservices.windows.net" (yeni biçim) içerir. "origin.mediaservices.windows.net" (eski biçim) içeren akış URL'leri TLS'yi desteklemez. URL'niz eski biçimdeyse ve TLS üzerinden akış yapabilmek istiyorsanız, yeni bir akış bitiş noktası oluşturun. İçeriğinizi TLS üzerinden aktarmak için yeni akış bitiş noktasına dayalı olarak oluşturulan URL'leri kullanın.
 
 Aşağıdaki liste farklı akış biçimlerini açıklar ve örnekler verir:
 

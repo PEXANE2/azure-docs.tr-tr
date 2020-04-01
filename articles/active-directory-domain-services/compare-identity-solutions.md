@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: overview
-ms.date: 01/22/2020
+ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: d2495605cccf658b15e812fd85fd65671e84d15b
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 62826b209b37e5abe5d33455809ba1b894ddb85f
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76544285"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80476456"
 ---
 # <a name="compare-self-managed-active-directory-domain-services-azure-active-directory-and-managed-azure-active-directory-domain-services"></a>Kendi kendini yöneten Active Directory Etki Alanı Hizmetlerini, Azure Etkin Dizini ve yönetilen Azure Etkin Dizin Etki Alanı Hizmetlerini karşılaştırın
 
@@ -102,9 +102,9 @@ Azure AD DS'nin birleştirilmiş aygıtlarıyla, uygulamalar kimlik doğrulama i
 |:--------------------------------| --------------------------------------------------- | ------------------------------------------------------------------------- |
 | Cihaz tarafından kontrol            | Azure AD                                            | Azure AD DS yönetilen etki alanı                                                |
 | Dizinde temsil | Azure AD dizinindeki aygıt nesneleri            | Azure AD DS yönetilen etki alanındabilgisayar nesneleri                        |
-| Kimlik doğrulaması                  | OAuth / OpenID Connect tabanlı protokoller              | Kerberos ve NTLM protokolleri                                               |
+| Kimlik Doğrulaması                  | OAuth / OpenID Connect tabanlı protokoller              | Kerberos ve NTLM protokolleri                                               |
 | Yönetim                      | Intune gibi Mobil Cihaz Yönetimi (MDM) yazılımı | Grup İlkesi                                                              |
-| Ağ Oluşturma                      | Internet üzerinden çalışır                             | Yönetilen etki alanının dağıtıldığı sanal ağa bağlı veya bu ağa bakılmalıdır |
+| Ağ                      | Internet üzerinden çalışır                             | Yönetilen etki alanının dağıtıldığı sanal ağa bağlı veya bu ağa bakılmalıdır |
 | Büyük için ...                    | Son kullanıcı mobil veya masaüstü aygıtları                  | Sunucu VM'leri Azure'da dağıtıldı                                              |
 
 ## <a name="next-steps"></a>Sonraki adımlar

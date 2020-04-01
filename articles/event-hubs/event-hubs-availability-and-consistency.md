@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/29/2020
+ms.date: 03/27/2020
 ms.author: shvija
-ms.openlocfilehash: 808e813ad90626acec893a021634566f091c895f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: HT
+ms.openlocfilehash: 0546adb6131479a8f5d2e7e31819483200586839
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76904489"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397331"
 ---
 # <a name="availability-and-consistency-in-event-hubs"></a>Event Hubs’da kullanılabilirlik ve tutarlılık
 
@@ -36,12 +36,63 @@ Brewer teoremi tutarlılığı ve kullanılabilirliği aşağıdaki gibi tanıml
 Olay Hub'ları, bölümlenmiş bir veri modelinin üzerine inşa edilmiştir. Kurulum sırasında olay hub'ınızdaki bölüm sayısını yapılandırabilirsiniz, ancak bu değeri daha sonra değiştiremezsiniz. Olay Hub'ları ile bölümleri kullanmanız gerektiğinden, uygulamanızın kullanılabilirliği ve tutarlılığı hakkında bir karar vermeniz gerekir.
 
 ## <a name="availability"></a>Kullanılabilirlik
-Olay Hub'ları kullanmaya başlamanın en basit yolu varsayılan davranışı kullanmaktır. Yeni bir **[EventHubClient](/dotnet/api/microsoft.azure.eventhubs.eventhubclient)** nesnesi oluşturur ve **[Gönder](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync?view=azure-dotnet#Microsoft_Azure_EventHubs_EventHubClient_SendAsync_Microsoft_Azure_EventHubs_EventData_)** yöntemini kullanırsanız, olaylarınız olay hub'ınızdaki bölümler arasında otomatik olarak dağıtılır. Bu davranış, en fazla çalışma süresisağlar.
+Olay Hub'ları kullanmaya başlamanın en basit yolu varsayılan davranışı kullanmaktır. 
+
+#### <a name="azuremessagingeventhubs-500-or-later"></a>[Azure.Messaging.EventHubs (5.0.0 veya sonrası)](#tab/latest)
+Yeni bir **[EventHubProducerClient](/dotnet/api/azure.messaging.eventhubs.producer.eventhubproducerclient?view=azure-dotnet)** nesnesi oluşturur ve **[SendAsync](/dotnet/api/azure.messaging.eventhubs.producer.eventhubproducerclient.sendasync?view=azure-dotnet)** yöntemini kullanırsanız, olaylarınız olay merkezinizdeki bölümler arasında otomatik olarak dağıtılır. Bu davranış, en fazla çalışma süresisağlar.
+
+#### <a name="microsoftazureeventhubs-410-or-earlier"></a>[Microsoft.Azure.EventHubs (4.1.0 veya önceki)](#tab/old)
+Yeni bir **[EventHubClient](/dotnet/api/microsoft.azure.eventhubs.eventhubclient)** nesnesi oluşturur ve **[Gönder](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync?view=azure-dotnet#Microsoft_Azure_EventHubs_EventHubClient_SendAsync_Microsoft_Azure_EventHubs_EventData_)** yöntemini kullanırsanız, olaylarınız olay hub'ınızdaki bölümler arasında otomatik olarak dağıtılır. Bu davranış, en fazla çalışma süresisağlar.
+
+---
 
 Maksimum çalışma süresi gerektiren kullanım örnekleri için bu model tercih edilir.
 
 ## <a name="consistency"></a>Tutarlılık
-Bazı senaryolarda, olayların sıralanması önemli olabilir. Örneğin, arka uç sisteminizin bir silme komutundan önce bir güncelleştirme komutunu işlemesini isteyebilirsiniz. Bu durumda, bir olay üzerinde bölüm anahtarı ayarlayabilir `PartitionSender` veya yalnızca belirli bir bölüme olayları göndermek için bir nesne kullanabilirsiniz. Bunu yapmak, bu olaylar bölümden okunduğunda, sırayla okunmasını sağlar.
+Bazı senaryolarda, olayların sıralanması önemli olabilir. Örneğin, arka uç sisteminizin bir silme komutundan önce bir güncelleştirme komutunu işlemesini isteyebilirsiniz. Bu durumda, bir olay üzerinde bölüm anahtarını ayarlayabilir `PartitionSender` veya olayları yalnızca belirli bir bölüme göndermek için bir nesne (eski Microsoft.Azure.Messaging kitaplığını kullanıyorsanız) kullanabilirsiniz. Bunu yapmak, bu olaylar bölümden okunduğunda, sırayla okunmasını sağlar. **Azure.Messaging.EventHubs** kitaplığını kullanıyorsanız ve daha fazla bilgi [için, olayları bir bölüme yayımlamak için PartitionSender'dan EventHubProducerClient'a kodu geçirme bölümüne](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md#migrating-code-from-partitionsender-to-eventhubproducerclient-for-publishing-events-to-a-partition)bakın.
+
+#### <a name="azuremessagingeventhubs-500-or-later"></a>[Azure.Messaging.EventHubs (5.0.0 veya sonrası)](#tab/latest)
+
+```csharp
+var connectionString = "<< CONNECTION STRING FOR THE EVENT HUBS NAMESPACE >>";
+var eventHubName = "<< NAME OF THE EVENT HUB >>";
+
+await using (var producerClient = new EventHubProducerClient(connectionString, eventHubName))
+{
+    var batchOptions = new CreateBatchOptions() { PartitionId = "my-partition-id" };
+    using EventDataBatch eventBatch = await producerClient.CreateBatchAsync(batchOptions);
+    eventBatch.TryAdd(new EventData(Encoding.UTF8.GetBytes("First")));
+    eventBatch.TryAdd(new EventData(Encoding.UTF8.GetBytes("Second")));
+    
+    await producerClient.SendAsync(eventBatch);
+}
+```
+
+#### <a name="microsoftazureeventhubs-410-or-earlier"></a>[Microsoft.Azure.EventHubs (4.1.0 veya önceki)](#tab/old)
+
+```csharp
+var connectionString = "<< CONNECTION STRING FOR THE EVENT HUBS NAMESPACE >>";
+var eventHubName = "<< NAME OF THE EVENT HUB >>";
+
+var connectionStringBuilder = new EventHubsConnectionStringBuilder(connectionString){ EntityPath = eventHubName }; 
+var eventHubClient = EventHubClient.CreateFromConnectionString(connectionStringBuilder.ToString());
+PartitionSender partitionSender = eventHubClient.CreatePartitionSender("my-partition-id");
+try
+{
+    EventDataBatch eventBatch = partitionSender.CreateBatch();
+    eventBatch.TryAdd(new EventData(Encoding.UTF8.GetBytes("First")));
+    eventBatch.TryAdd(new EventData(Encoding.UTF8.GetBytes("Second")));
+
+    await partitionSender.SendAsync(eventBatch);
+}
+finally
+{
+    await partitionSender.CloseAsync();
+    await eventHubClient.CloseAsync();
+}
+```
+
+---
 
 Bu yapılandırmayla, gönderdiğiniz belirli bölüm kullanılamıyorsa bir hata yanıtı alacağınızı unutmayın. Karşılaştırma noktası olarak, tek bir bölüme yakınlığınız yoksa, Olay Hub'ları hizmeti etkinliğinizi kullanılabilir bir sonraki bölüme gönderir.
 
@@ -101,4 +152,4 @@ Bu örnek, olay merkezinizdeki kullanılabilir bölümlerden birine gönderir ve
 Aşağıdaki bağlantıları inceleyerek Event Hubs hakkında daha fazla bilgi edinebilirsiniz:
 
 * [Olay Hub'ları hizmetine genel bakış](event-hubs-what-is-event-hubs.md)
-* [Etkinlik merkezi oluşturma](event-hubs-create.md)
+* [Olay hub’ı oluşturma](event-hubs-create.md)

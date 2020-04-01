@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 03/26/2020
 ms.author: juliako
-ms.openlocfilehash: e475c1bc1878c6b5a0efbbe41f2a3a0fe86bcff2
-ms.sourcegitcommit: 0553a8b2f255184d544ab231b231f45caf7bbbb0
-ms.translationtype: HT
+ms.openlocfilehash: 6ed5c509cf310b743e4ef52f411dfa34e5db09c1
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80389384"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411619"
 ---
 # <a name="embed-video-indexer-widgets-in-your-apps"></a>Uygulamalarınıza Video Dizinleyici widget'ları gömme
 
@@ -66,16 +66,12 @@ Yeni projeler oluşturmak ve bir videonun istatistiklerini yönetmek için Düze
 
 1. [Video Indexer](https://www.videoindexer.ai/) web sitesinde oturum açın.
 2. Çalışmak istediğiniz videoyu seçin.
-3. Videonun altında görünen **Embed** düğmesini seçin.
-
-    ![Video Dizinleyici'ye gömme düğmesi](./media/video-indexer-embed-widgets/video-indexer-widget01.png)
+3. Videonun altında görünen**</>** gömme düğmesini ( ) seçin.
 
     **Embed** düğmesini seçtikten sonra, uygulamanıza katıştırmak istediğiniz widget'ı seçebilirsiniz.
 4. İstediğiniz widget türünü seçin **(Cognitive Insights**, **Player**, veya **Editör**).
- 
-5. Gömme kodunu kopyalayın ve ardından uygulamanıza ekleyin.
-
-    ![Uygulama için kod gömme-Video Dizinleyici](./media/video-indexer-embed-widgets/video-indexer-widget02.png)
+5. Gömme kodunu kopyalayın **(Katıştırılmış kodu** **Paylaş & Embed** iletişim kutusunda kopyala'da görünür).
+6. Kodu uygulamanıza ekleyin.
 
 > [!NOTE]
 > Video URL'lerinizi paylaşırken sorun varsa, `location` bağlantıya parametreyi ekleyin. Parametre, [Video Dizinleyici'nin bulunduğu Azure bölgelerine](regions.md)ayarlanmalıdır. Örneğin: `https://www.videoindexer.ai/accounts/00000000-0000-0000-0000-000000000000/videos/b2b2c74b8e/?location=trial`.
@@ -239,7 +235,7 @@ Video Dizinleyici öngörülerini kendi [Azure Media Player'ınızla](https://ak
 
 `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,keywords`
 
-iframe penceresinin başlığı da iframe URL'ye sağlanarak `&title=<YourTitle>` özelleştirilebilir. (HTML <title> değerini özelleştirer).
+iframe penceresinin başlığı da iframe URL'ye sağlanarak `&title=<YourTitle>` özelleştirilebilir. (HTML `<title>` değerini özelleştirer).
    
 Örneğin, iframe pencerenize "MyInsights" başlığını vermek istiyorsanız, URL aşağıdaki gibi görünür:
 
@@ -257,7 +253,7 @@ Video Indexer yürütücüsünü eklerseniz iframe boyutunu belirterek yürütü
 
 Varsayılan olarak, Video Indexer oynatıcı, videonun transkriptini temel alan kapalı altyazıları otomatik olarak oluşturmuştur. Transkript, video yüklendiğinde seçilen kaynak diliyle birlikte videodan çıkarılır.
 
-Farklı bir dille katıştırmak istiyorsanız, gömme oynatıcı URL'sine &altyazılar=< Dil Kodu > ekleyebilirsiniz. Altyazıların varsayılan olarak görüntülenmesini istiyorsanız, &showCaptions=true'yu geçebilirsiniz.
+Farklı bir dile gömmek istiyorsanız, katıştırma oynatıcı URL'sine ekleyebilirsiniz. `&captions=<Language Code>` Altyazıların varsayılan olarak görüntülenmesini istiyorsanız, &showCaptions=true'yu geçebilirsiniz.
 
 Gömme URL sonra şu gibi görünecektir:
 

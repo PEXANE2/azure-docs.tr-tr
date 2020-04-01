@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/14/2020
+ms.date: 03/30/2020
 ms.author: allensu
-ms.openlocfilehash: 4a273801290a0a5833ebd83983a8b6b0ad856b45
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: c012a8d83761b88cc59b62d11fd3d5542ca7f7a1
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79408493"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396082"
 ---
 # <a name="troubleshoot-azure-virtual-network-nat-connectivity"></a>Azure Sanal Ağ NAT bağlantısıyla sorun giderme
 
@@ -40,14 +40,15 @@ Bu sorunları gidermek için aşağıdaki bölümdeki adımları izleyin.
 
 Tek bir [NAT ağ geçidi kaynağı](nat-gateway-resource.md) 64.000'den 1 milyon eşzamanlı akışı destekler.  Her IP adresi, mevcut envantere 64.000 SNAT bağlantı noktası sağlar. NAT ağ geçidi kaynağı başına en fazla 16 IP adresi kullanabilirsiniz.  SNAT mekanizması [burada](nat-gateway-resource.md#source-network-address-translation) daha ayrıntılı olarak açıklanmıştır.
 
-Sık sık SNAT tükenmesinin temel nedeni, giden bağlantının nasıl kurulduğu ve yönetildiğine ilişkin bir anti-desendir.  Bu bölümü dikkatli bir şekilde inceleyin.
+Sık sık SNAT tükenmesinin temel nedeni, giden bağlantının varsayılan değerlerinden nasıl oluşturulduk, yönetildiği veya yapılandırılabilir zamanlayıcılar tarafından değiştirildiğine ilişkin bir anti-desendir.  Bu bölümü dikkatli bir şekilde inceleyin.
 
 #### <a name="steps"></a>Adımlar
 
-1. Uygulamanızın giden bağlantı yı nasıl oluşturduğunu (örneğin, kod incelemesi veya paket yakalama) araştırın. 
-2. Bu etkinliğin beklenen davranış olup olmadığını veya uygulamanın kötü davranış tanınıp davranmadığını belirleyin.  Bulgularınızı doğrulamak için Azure Monitor'daki [ölçümleri](nat-metrics.md) kullanın. SNAT Connections ölçümü için "Başarısız" kategorilerini kullanın.
-3. Uygun desenlerin izilip uyulmamasa değerlendirin.
-4. SNAT bağlantı noktası tükenmesi NAT ağ geçidi kaynağına atanan ek IP adresleri ile azaltılmalıdır değerlendirin.
+1. Varsayılan boşta zaman dilimini 4 dakikadan daha yüksek bir değerle değiştirip değiştirip değiştirmedin.
+2. Uygulamanızın giden bağlantı yı nasıl oluşturduğunu (örneğin, kod incelemesi veya paket yakalama) araştırın. 
+3. Bu etkinliğin beklenen davranış olup olmadığını veya uygulamanın kötü davranış tanınıp davranmadığını belirleyin.  Bulgularınızı doğrulamak için Azure Monitor'daki [ölçümleri](nat-metrics.md) kullanın. SNAT Connections ölçümü için "Başarısız" kategorilerini kullanın.
+4. Uygun desenlerin izilip uyulmamasa değerlendirin.
+5. SNAT bağlantı noktası tükenmesi NAT ağ geçidi kaynağına atanan ek IP adresleri ile azaltılmalıdır değerlendirin.
 
 #### <a name="design-patterns"></a>Tasarım desenleri
 
@@ -55,15 +56,17 @@ Her zaman mümkün olduğunca bağlantı yeniden kullanımı ve bağlantı havuz
 
 _**Çözüm:**_ Uygun desenleri ve en iyi uygulamaları kullanma
 
+- NAT ağ geçidi kaynaklarının varsayılan TCP boşta zaman dilimi 4 dakikadır.  Bu ayar daha yüksek bir değere değiştirilirse, NAT akışları daha uzun süre tutar ve [SNAT bağlantı noktası envanteri üzerinde gereksiz baskıya](nat-gateway-resource.md#timers)neden olabilir.
 - Atomik istekler (bağlantı başına bir istek) kötü bir tasarım seçimidir. Bu tür anti-desen ölçek sınırlar, performansı azaltır ve güvenilirliği azaltır. Bunun yerine, bağlantı ve ilişkili SNAT bağlantı noktalarının sayısını azaltmak için HTTP/S bağlantılarını yeniden kullanın. TLS kullanırken düşük el sıkışma, genel merkez ve kriptografik işlem maliyeti nedeniyle uygulama ölçeği artacak ve performans artacaktır.
 - DNS, istemci DNS çözümleyicileri sonucunu önbelleğe almadığında, birim olarak birçok ayrı akış sağlayabilir. Önbelleğe alma kullanın.
 - UDP akışları (örneğin DNS aramaları) SNAT bağlantı noktalarını boşta zaman aşımı süresince ayırır. Boşta zaman aşımı ne kadar uzun sayılsa, SNAT bağlantı noktaları üzerindeki basınç da o kadar yüksek olur. Kısa boşta zaman alakart kullanın (örneğin 4 dakika).
 - Bağlantı hacminizi şekillendirmek için bağlantı havuzlarını kullanın.
-- TCP akışını asla sessizce terk etmeyin ve akışı temizlemek için TCP zamanlayıcılarına güvenin. Bu, ara sistemlere ve uç noktalara ayrılan durumu bırakır ve bağlantı noktalarını diğer bağlantılar için kullanılamaz hale getirecektir. Bu uygulama hataları ve SNAT yorgunluğu tetikleyebilir. 
-- TCP yakın ilgili zamanlayıcı değerleri etki uzman bilgisi olmadan değiştirilmemelidir. TCP toparlanacak olsa da, bir bağlantının bitiş noktaları beklentileri uyuşmadığında uygulama performansınız olumsuz etkilenebilir. Zamanlayıcıları değiştirme isteği genellikle altta yatan bir tasarım sorununun işaretidir. Aşağıdaki önerileri gözden geçirin.
+- TCP akışını asla sessizce terk etmeyin ve akışı temizlemek için TCP zamanlayıcılarına güvenin. TCP'nin bağlantıyı açıkça kapatmasına izin vermezseniz, durum ara sistemlerde ve uç noktalarda ayrılmış kalır ve SNAT bağlantı noktalarını diğer bağlantılar için kullanılamaz hale getirir. Bu uygulama hataları ve SNAT yorgunluğu tetikleyebilir. 
+- Etki konusunda uzman bilgisi olmadan işletim sistemi düzeyindeKi TCP ilgili zamanlayıcı değerlerini kapatmayın. TCP yığını toparlanacak olsa da, bir bağlantının bitiş noktaları beklentileri uyuşmadığında uygulama performansınız olumsuz etkilenebilir. Zamanlayıcıları değiştirme isteği genellikle altta yatan bir tasarım sorununun işaretidir. Aşağıdaki önerileri gözden geçirin.
 
 Çoğu kez SNAT tükenmesi de altta yatan uygulamada diğer anti-desenler ile güçlendirilmiş olabilir. Hizmetinizin ölçeğini ve güvenilirliğini geliştirmek için bu ek desenleri ve en iyi uygulamaları gözden geçirin.
 
+- SNAT bağlantı noktası envanterini daha erken boşaltmak için varsayılan boşta kalma süresi 4 dakika da dahil olmak üzere değerleri düşürmek için [TCP boşta zaman amı](nat-gateway-resource.md#timers) azaltmanın etkisini keşfedin.
 - Diğer işlemler için bağlantı kaynaklarını serbest hale getirmek için uzun süren işlemler için [eşzamanlı yoklama desenleri](https://docs.microsoft.com/azure/architecture/patterns/async-request-reply) düşünün.
 - Uzun ömürlü akışlar (örneğin yeniden kullanılan TCP bağlantıları) ara sistemlerin zamanlamasını önlemek için TCP keepalives veya uygulama katmanı keepalives kullanmalıdır. Boşta kalma süresini artırmak son çaredir ve temel nedeni çözmeyebilir. Uzun bir zaman aşımı, zaman aşımı sona erdiğinde düşük oranlı hatalara neden olabilir ve gecikme ve gereksiz hatalara neden olabilir.
 - Geçici hata veya hata kurtarma sırasında agresif yeniden deneme/patlamaları önlemek için zarif [yeniden deneme desenleri](https://docs.microsoft.com/azure/architecture/patterns/retry) kullanılmalıdır.
@@ -175,7 +178,7 @@ _**Çözüm:**_ IPv6 öneki olmayan bir alt net üzerinde NAT ağ geçidi dağı
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * Sanal [Ağ NAT](nat-overview.md) hakkında bilgi edinin
-* [NAT ağ geçidi kaynağı](nat-gateway-resource.md) ab Fry öğrenin
+* [NAT ağ geçidi kaynağı](nat-gateway-resource.md) hakkında bilgi edinin
 * [NAT ağ geçidi kaynakları için ölçümler ve uyarılar](nat-metrics.md)hakkında bilgi edinin.
 * [UserVoice Sanal Ağ NAT için sonraki oluşturmak için ne söyle.](https://aka.ms/natuservoice)
 

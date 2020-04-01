@@ -13,12 +13,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: aschhab
-ms.openlocfilehash: 03e22c4c179850e5140015c0abc2d89f16d4b624
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 4745d675086f1b07bf7fccf17c14c76e4b18fba2
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76774554"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478061"
 ---
 # <a name="quickstart-use-service-bus-topics-and-subscriptions-with-python"></a>Quickstart: Python ile Servis Veri Servisi konularını ve aboneliklerini kullanma
 
@@ -35,7 +35,7 @@ Bu makalede, Python'un Azure Hizmet Veri Servisi konuları ve abonelikleriyle na
 ## <a name="prerequisites"></a>Ön koşullar
 - Azure aboneliği. Visual Studio [veya MSDN abone avantajlarınızı](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) etkinleştirebilir veya ücretsiz bir [hesaba](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)kaydolabilirsiniz.
 - Quickstart'taki adımları izleyerek oluşturulan Hizmet Veri Kurumu ad [alanı: Hizmet Veri Servisi konusu ve abonelikleri oluşturmak için Azure portalını kullanın.](service-bus-quickstart-topics-subscriptions-portal.md) Daha sonra bu hızlı başlatmada kullanmak üzere Paylaşılan **erişim ilkeleri** ekranından ad alanı adını, paylaşılan erişim anahtarı adını ve birincil anahtar değerini kopyalayın. 
-- Python 3.4x veya üzeri, [Azure Python SDK][Azure Python package] paketi yüklü. Daha fazla bilgi için [Python Yükleme Kılavuzu'na](/azure/python/python-sdk-azure-install)bakın.
+- Python 3.4x veya üzeri, [Azure Python SDK][Azure Python package] paketi yüklü. Daha fazla bilgi için [Python Yükleme Kılavuzu'na](/azure/developer/python/azure-sdk-install)bakın.
 
 ## <a name="create-a-servicebusservice-object"></a>ServiceBusService nesnesi oluşturma
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: jingwang
-ms.openlocfilehash: c7c6cebf0a5c6371893dff52b2e8d7c064a40084
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1e1d7cc4bb7762d3ebd29e349467f3e33c0887f9
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80257946"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421232"
 ---
 # <a name="copy-data-from-teradata-vantage-by-using-azure-data-factory"></a>Azure Veri Fabrikası'nı kullanarak Teradata Vantage'daki verileri kopyalama
 > [!div class="op_single_selector" title1="Kullandığınız Veri Fabrikası hizmetisürümünü seçin:"]
@@ -202,7 +202,7 @@ Teradata'daki verileri kopyalamak için, kopyalama etkinliği **kaynak** bölüm
 |:--- |:--- |:--- |
 | type | Kopyalama etkinlik kaynağının türü özelliği ' `TeradataSource`ne ayarlanmalıdır. | Evet |
 | sorgu | Verileri okumak için özel SQL sorgusunu kullanın. `"SELECT * FROM MyTable"` bunun bir örneğidir.<br>Bölümlenmiş yükü etkinleştirdiğinizde, sorgunuzda karşılık gelen yerleşik bölüm parametrelerini bağlamanız gerekir. Örneğin, [Teradata bölümünden Paralel kopyaya](#parallel-copy-from-teradata) bakın. | Hayır (veri kümesinde tablo belirtilirse) |
-| partitionOptions | Teradata'dan veri yüklemek için kullanılan veri bölümleme seçeneklerini belirtir. <br>İzin değerleri şunlardır: **Yok** (varsayılan), **Karma** ve **DynamicRange**.<br>Bir bölüm seçeneği etkinleştirildiğinde (yani `None`değil), Teradata'dan aynı anda veri yüklemek [`parallelCopies`](copy-activity-performance.md#parallel-copy) için paralellik derecesi kopyalama etkinliği ayarı tarafından denetlenir. | Hayır |
+| partitionOptions | Teradata'dan veri yüklemek için kullanılan veri bölümleme seçeneklerini belirtir. <br>İzin değerleri şunlardır: **Yok** (varsayılan), **Karma** ve **DynamicRange**.<br>Bir bölüm seçeneği etkinleştirildiğinde (yani `None`değil), Teradata'dan aynı anda veri yüklemek [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) için paralellik derecesi kopyalama etkinliği ayarı tarafından denetlenir. | Hayır |
 | partitionAyarlar | Veri bölümleme için ayarlar grubunu belirtin. <br>Bölüm seçeneği olmadığında `None`uygulayın. | Hayır |
 | partitionColumnName | Paralel kopya için aralık bölümü veya Karma bölüm tarafından kullanılacak kaynak sütunun adını belirtin. Belirtilmemişse, tablonun birincil dizini otomatik olarak algılanır ve bölüm sütunu olarak kullanılır. <br>Bölüm seçeneği veya `Hash` `DynamicRange`' olduğunda uygulayın Kaynak verileri almak için bir sorgu `?AdfHashPartitionCondition` kullanırsanız, kanca veya `?AdfRangePartitionColumnName` WHERE yan tümcesi. [Teradata bölümünden Paralel kopyadaki](#parallel-copy-from-teradata) örneğe bakın. | Hayır |
 | partitionUpperBound | Verileri kopyalamak için bölüm sütununun maksimum değeri. <br>Bölüm seçeneği . `DynamicRange` Kaynak verileri almak için sorgu `?AdfRangePartitionUpbound` kullanıyorsanız, WHERE yan tümcesini bağla. Örneğin, [Teradata bölümünden Paralel kopyaya](#parallel-copy-from-teradata) bakın. | Hayır |
@@ -250,7 +250,7 @@ Veri Fabrikası Teradata bağlayıcısı, Teradata'daki verileri paralel olarak 
 
 ![Bölüm seçeneklerinin ekran görüntüsü](./media/connector-teradata/connector-teradata-partition-options.png)
 
-Bölümlenmiş kopyalamayı etkinleştirdiğinizde, Veri Fabrikası verileri bölümlere göre yüklemek için Teradata kaynağınıza paralel sorgular çalıştırAr. Paralel derece, kopyalama [`parallelCopies`](copy-activity-performance.md#parallel-copy) etkinliği üzerindeki ayar tarafından denetlenir. Örneğin, dörde `parallelCopies` ayarlarsanız, Veri Fabrikası aynı anda belirttiğiniz bölüm seçeneğiniz ve ayarlarınızı temel alan dört sorgu oluşturur ve çalıştırZ ve her sorgu Teradata'nızdan verilerin bir kısmını alır.
+Bölümlenmiş kopyalamayı etkinleştirdiğinizde, Veri Fabrikası verileri bölümlere göre yüklemek için Teradata kaynağınıza paralel sorgular çalıştırAr. Paralel derece, kopyalama [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) etkinliği üzerindeki ayar tarafından denetlenir. Örneğin, dörde `parallelCopies` ayarlarsanız, Veri Fabrikası aynı anda belirttiğiniz bölüm seçeneğiniz ve ayarlarınızı temel alan dört sorgu oluşturur ve çalıştırZ ve her sorgu Teradata'nızdan verilerin bir kısmını alır.
 
 Özellikle Teradata'nızdan büyük miktarda veri yüklediğinizde, veri bölümleme ile paralel kopyalamayı etkinleştirmeniz önerilir. Aşağıda farklı senaryolar için önerilen yapılandırmalar vardır. Verileri dosya tabanlı veri deposuna kopyalarken, bir klasöre birden çok dosya olarak yazmak (yalnızca klasör adını belirtin) yeniden komut verilir ve bu durumda performans tek bir dosyaya yazmaktan daha iyidir.
 

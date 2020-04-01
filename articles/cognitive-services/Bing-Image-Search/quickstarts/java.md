@@ -1,5 +1,5 @@
 ---
-title: "Quickstart: Bing Image Search REST API'yi aramak için Java'yı kullanın"
+title: 'Quickstart: Bing Image Search REST API ve Java kullanarak görüntüleri arayın'
 titleSuffix: Azure Cognitive Services
 description: Java'yı kullanarak Bing Image Search REST API'sine görüntü arama istekleri göndermek ve JSON yanıtlarını almak için bu hızlı başlatmayı kullanın.
 services: cognitive-services
@@ -9,15 +9,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: quickstart
-ms.date: 12/06/2019
+ms.date: 03/31/2020
 ms.author: aahi
 ms.custom: seodec2018, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: c1e339643613db188819e7eb8853cad8a48ea47f
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 979bd034b2f4d3665de64fe8ffdb33efc7a370cb
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74928134"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478577"
 ---
 # <a name="quickstart-search-for-images-with-the-bing-image-search-api-an-azure-cognitive-service"></a>Hızlı başlangıç: Azure bilişsel hizmeti olan Bing Resim Arama API'si ile görüntüleri arayın 
 

@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: troubleshooting
-ms.date: 3/18/2020
-ms.openlocfilehash: a35a586a519ff78e8b32d986b92bd008b2c6b858
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: HT
+ms.date: 3/30/2020
+ms.openlocfilehash: 59b8753007c3b9130c397dda30c571580cbb5326
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80067874"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411086"
 ---
 # <a name="how-to-use-sys_schema-for-performance-tuning-and-database-maintenance-in-azure-database-for-mysql"></a>MySQL için Azure Veritabanı'nda performans alamı ve veritabanı bakımı için sys_schema nasıl kullanılır?
 
@@ -60,6 +60,9 @@ Bu örnekte MySQL için Azure Veritabanı, slog sorgu günlüğünü 44579 kez y
 ## <a name="database-maintenance"></a>Veritabanı bakımı
 
 ### <a name="sysinnodb_buffer_stats_by_table"></a>*sys.innodb_buffer_stats_by_table*
+
+[!IMPORTANT]
+> Bu görünümü sorgulamak performansı etkileyebilir. Bu sorun giderme işleminin yoğun olmayan iş saatlerinde gerçekleştirilen önerilir.
 
 InnoDB arabellek havuzu bellekte bulunur ve DBMS ve depolama arasındaki ana önbellek mekanizmasıdır. InnoDB arabellek havuzunun boyutu performans katmanına bağlıdır ve farklı bir ürün SKU seçilmedikçe değiştirilemez. İşletim sisteminizdeki bellekte olduğu gibi, eski sayfalar daha taze verilere yer açmak için değiştirilir. Hangi tabloların InnoDB arabellek havuzu belleği en tükettiğinizi bulmak *için, sys.innodb_buffer_stats_by_table* görünümünü sorgulayabilirsiniz.
 

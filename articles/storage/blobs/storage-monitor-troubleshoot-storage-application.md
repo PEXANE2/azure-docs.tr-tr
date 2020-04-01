@@ -9,10 +9,10 @@ ms.date: 07/20/2018
 ms.author: normesta
 ms.reviewer: fryu
 ms.openlocfilehash: 3a2381302a378e7b2635b84c32a87e844e4605a7
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/08/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "68844889"
 ---
 # <a name="monitor-and-troubleshoot-a-cloud-storage-application"></a>Bulut depolama uygulamasını izleme ve sorunlarını giderme
@@ -33,7 +33,7 @@ Depolama hesaplarından günlük kaydı ve ölçümler, Azure portalındaki **Ta
 
 ## <a name="log-in-to-the-azure-portal"></a>Azure portalında oturum açma
 
-[Azure portalı](https://portal.azure.com)’nda oturum açın
+[Azure portalında](https://portal.azure.com) oturum açın
 
 ## <a name="turn-on-logging-and-metrics"></a>Günlük kaydını ve ölçümleri açma
 
@@ -89,7 +89,7 @@ Bu senaryoda, Azure depolama hesabınızla etkileşim kurmak için [Microsoft Me
 
 [Microsoft Message Analyzer](https://www.microsoft.com/download/details.aspx?id=44226)’ı indirip uygulamayı yükleyin.
 
-Uygulamayı başlatın ve **Dosya** > **Aç** > **Diğer Dosya Kaynaklarından** seçeneklerini belirleyin.
+Uygulamayı başlatın ve**Diğer Dosya Kaynaklarından** **Dosya** > **Aç'ı** > seçin.
 
 **Dosya Seçici** iletişim kutusunda **+ Azure Bağlantısı Ekle**’yi seçin. **Depolama hesabı adı** ve **hesap anahtarı** bilgilerinizi girin ve **Tamam**’a tıklayın.
 

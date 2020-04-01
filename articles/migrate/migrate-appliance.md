@@ -3,12 +3,12 @@ title: Azure Geçişi gereci
 description: Sunucu değerlendirme ve geçişte kullanılan Azure Geçiş cihazına genel bir bakış sağlar.
 ms.topic: conceptual
 ms.date: 03/23/2020
-ms.openlocfilehash: 1bb3372467919f1471fa9577cd60e9cecaf1750d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bccf4738d46b65f2d149eafc8e69591141d7d073
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80336929"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437583"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Geçişi gereci
 
@@ -79,14 +79,14 @@ Aşağıdaki tablo, VMware için Azure Geçir cihaz gereksinimlerini özetler.
 Azure Geçir cihazının Internet bağlantısına ihtiyacı vardır.
 
 - Cihazı dağıttığınızda, Azure Geçir aşağıdaki tabloda özetlenen URL'lere bağlantı denetimi yapar.
-- Internet'e bağlanmak için URL tabanlı bir proxy kullanıyorsanız, proxy'nin URL'leri ararken alınan CNAME kayıtlarını çözdüğünden emin olmak için bu URL'lere erişin.
+- Internet'e bağlanmak için URL tabanlı bir proxy kullanıyorsanız, proxy'nin URL'lere bakarken alınan CNAME kayıtlarını çözdüğünden emin olmak için bu URL'lere erişime izin vermeniz gerekir.
 
 **URL** | **Şey**  
 --- | --- |
 *.portal.azure.com  | Azure portalına gidin.
 *.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *.live.com | Azure aboneliğinizde oturum açın.
-*.microsoftonline.com <br/> *.microsoftonline-p.com | Azure Geçiş ile iletişim kurmak için cihazın Etkin Dizin uygulamaları oluşturun.
-management.azure.com | Azure Geçiş hizmetiyle iletişim kurması için cihazın Etkin Dizin uygulamaları oluşturun.
+*.microsoftonline.com <br/> *.microsoftonline-p.com | Cihazın Azure Geçiş ile iletişim kurması için Azure Active Directory (AD) uygulamaları oluşturun.
+management.azure.com | Azure Geçiş hizmetiyle iletişim kurması için cihazın Azure AD uygulamaları oluşturun.
 dc.services.visualstudio.com | Dahili izleme için kullanılan uygulama günlüklerini yükleyin.
 *.vault.azure.net | Azure Anahtar Kasası'nda sırları yönetin.
 aka.ms/* | Aka bağlantılarına erişime izin verin. Azure Geçiş cihazı güncelleştirmeleri için kullanılır.

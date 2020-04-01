@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 09/26/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 7e1ea234bde96ce84259841bbc592bf6373bc639
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c01f5f41e61cd65855789bb753a7a297fe475885
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "71802803"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80396338"
 ---
 # <a name="use-bot-with-qna-maker-and-luis-to-distribute-your-knowledge-base"></a>Bilgi tabanınızı dağıtmak için QnA Maker ve LUIS ile bot kullanın
 QnA Maker bilgi tabanınız büyüdükçe, bunu tek bir yekpare küme olarak korumak zorlaşır ve bilgi tabanını daha küçük mantıksal parçalara bölmeye ihtiyaç vardır.
@@ -37,13 +37,13 @@ Yukarıdaki senaryoda, QnA Maker ilk bir LUIS modeli gelen soru niyetalır ve da
 1. [Bir uygulama oluşturun.](https://docs.microsoft.com/azure/cognitive-services/luis/create-new-app)
 1. Her QnA Maker bilgi tabanı için [bir niyet ekleyin.](https://docs.microsoft.com/azure/cognitive-services/luis/add-intents) Örnek söyleyinçler QnA Maker bilgi üslerindeki sorulara karşılık vermelidir.
 1. [LUIS uygulamasını eğitin](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-train) ve [LUIS Uygulamanızı yayınlayın.](https://docs.microsoft.com/azure/cognitive-services/luis/publishapp)
-1. **Yönet** bölümünde, LUIS uygulama kimliğinizi, LUIS uç noktası anahtarınızı ve [özel alan adınızı](../../cognitive-services-custom-subdomains.md)not edin. Bu değerlere daha sonra ihtiyacınız olacaktır. 
+1. **Yönet** bölümünde, LUIS uygulama kimliğinizi, LUIS uç noktası anahtarınızı ve [özel alan adınızı](../../cognitive-services-custom-subdomains.md)not edin. Bu değerlere daha sonra ihtiyacınız olacaktır.
 
 ## <a name="create-qna-maker-knowledge-bases"></a>QnA Maker bilgi tabanları oluşturun
 
 1. [QnA Maker'da](https://qnamaker.ai)oturum açın.
 1. LUIS uygulamasındaher amaç için bir bilgi tabanı [oluşturun.](https://www.qnamaker.ai/Create)
-1. Bilgi tabanlarını test edin ve yayınlayın. Her KB'yi yayımladığınızda, KB Kimliğini, kaynak adını _(azurewebsites.net/qnamaker_önce özel alt etki alanı) ve yetkilendirme bitiş noktası anahtarını not edin. Bu değerlere daha sonra ihtiyacınız olacaktır. 
+1. Bilgi tabanlarını test edin ve yayınlayın. Her KB'yi yayımladığınızda, KB Kimliğini, kaynak adını _(azurewebsites.net/qnamaker_önce özel alt etki alanı) ve yetkilendirme bitiş noktası anahtarını not edin. Bu değerlere daha sonra ihtiyacınız olacaktır.
 
     Bu makalede, KB'lerin tümü aynı Azure QnA Maker aboneliğinde oluşturulmuştur varsayar.
 
@@ -60,7 +60,7 @@ Yukarıdaki senaryoda, QnA Maker ilk bir LUIS modeli gelen soru niyetalır ve da
 
 ## <a name="change-code-in-basicluisdialogcs"></a>BasicLuisDialog.cs'da kodu değiştirme
 1. Azure portalında web uygulaması bot navigasyonbot Bot **Yönetimi** bölümünden, **Oluştur'u**seçin.
-2. **Çevrimiçi kod düzenleyicisini aç'ı**seçin. Çevrimiçi düzenleme ortamıyla yeni bir tarayıcı sekmesi açılır. 
+2. **Çevrimiçi kod düzenleyicisini aç'ı**seçin. Çevrimiçi düzenleme ortamıyla yeni bir tarayıcı sekmesi açılır.
 3. **WWWROOT** bölümünde, İletişim **dizini** seçin ve ardından **BasicLuisDialog.cs**açın.
 4. **BasicLuisDialog.cs** dosyasının üst bölümüne bağımlılıklar ekleyin:
 
@@ -155,7 +155,7 @@ Yukarıdaki senaryoda, QnA Maker ilk bir LUIS modeli gelen soru niyetalır ve da
     ```
 
 
-7. BasicLuisDialog sınıfını değiştirin. Her LUIS niyet **LuisIntent**ile dekore edilmiş bir yöntem olmalıdır. Dekorasyon için parametre gerçek LUIS niyet adıdır. Dekore edilmiş yöntem adı okunabilirlik ve bakım için LUIS niyet adı _olmalıdır,_ ancak tasarım veya çalışma zamanında aynı olması gerekmemektedir.  
+7. BasicLuisDialog sınıfını değiştirin. Her LUIS niyet **LuisIntent**ile dekore edilmiş bir yöntem olmalıdır. Dekorasyon için parametre gerçek LUIS niyet adıdır. Dekore edilmiş yöntem adı okunabilirlik ve bakım için LUIS niyet adı _olmalıdır,_ ancak tasarım veya çalışma zamanında aynı olması gerekmemektedir.
 
     ```csharp
     [Serializable]
@@ -170,7 +170,7 @@ Yukarıdaki senaryoda, QnA Maker ilk bir LUIS modeli gelen soru niyetalır ve da
         // assumes all KBs are created with same Azure service
         static string qnamaker_endpointKey = "<QnA Maker endpoint KEY>";
         static string qnamaker_resourceName = "my-qnamaker-s0-s";
-        
+
         // QnA Maker Human Resources Knowledge base
         static string HR_kbID = "<QnA Maker KNOWLEDGE BASE ID>";
 
@@ -240,4 +240,4 @@ Azure portalında, botu test etmek için **Web Sohbetinde Sınama'yı** seçin. 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 > [!div class="nextstepaction"]
-> [Soru-Cevap Oluşturma için iş sürekliliği oluşturma](../How-To/business-continuity-plan.md)
+> [Bilgi tabanınızı Power Virtual Agent ile tümleştirin](integrate-with-power-virtual-assistant-fallback-topic.md)

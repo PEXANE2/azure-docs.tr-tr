@@ -11,12 +11,12 @@ ms.workload: big-compute
 ms.date: 12/07/2018
 ms.author: labrenne
 ms.custom: seodec18
-ms.openlocfilehash: c7459c4dc700f034feafbf133b831a52b9233d11
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: df7db30e987c408ff158acfc468010948c821b8d
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77020174"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397527"
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer"></a>Azure Toplu CLI şablonlarını ve dosya aktarımlarını kullanma
 
@@ -28,7 +28,7 @@ Toplu iş havuzları, işler ve görevler oluşturmak için Azure CLI ile JSON �
 
 Azure CLI'nin bir uzantısı, Toplu İşlem'in geliştirici olmayan kullanıcılar tarafından uçlardan uca kullanılmasını sağlar. Yalnızca CLI komutlarıyla bir havuz oluşturabilir, giriş verilerini yükleyebilir, iş ve ilişkili görevler oluşturabilir ve elde edilen çıktı verilerini indirebilirsiniz. Ek kod gerekmez. CLI komutlarını doğrudan çalıştırın veya komut dosyalarına entegre edin.
 
-Toplu iş şablonları, havuzlar, işler, görevler ve diğer öğeler oluştururken özellik değerlerini belirtmek için JSON dosyaları için [Azure CLI'deki varolan Toplu Iş desteğine](batch-cli-get-started.md#json-files-for-resource-creation) dayanıyor. Toplu iş şablonları aşağıdaki özellikleri ekler:
+Toplu iş şablonları, havuzlar, işler, görevler ve diğer öğeler oluştururken özellik değerlerini belirtmek için JSON dosyaları için [Azure CLI'deki](batch-cli-get-started.md#json-files-for-resource-creation) varolan Toplu Iş desteğine dayanıyor. Toplu iş şablonları aşağıdaki özellikleri ekler:
 
 -   Parametreler tanımlanabilir. Şablon kullanıldığında, öğeyi oluşturmak için yalnızca parametre değerleri belirtilir ve şablon gövdesinde diğer öğe özelliği değerleri belirtilir. Toplu İşlem'i ve Toplu Iş tarafından çalıştırılacak uygulamaları anlayan bir kullanıcı, havuz, iş ve görev özelliği değerlerini belirterek şablonlar oluşturabilir. Toplu İşlem ve/veya uygulamalara daha az aşina olan bir kullanıcının yalnızca tanımlanan parametrelerin değerlerini belirtmesi gerekir.
 
@@ -68,7 +68,7 @@ Azure Toplu İş şablonları, işlevsellik ve sözdiziminde Azure Kaynak Yönet
 
 -   **Parametreler**
 
-    -   Şablon kullanıldığında yalnızca parametre değerlerinin sağlanması gereken bir gövde bölümünde özellik değerlerinin belirtilmesine izin verin. Örneğin, bir havuz için tam tanım gövdeye yerleştirilebilir ve havuz kimliği için tanımlanan yalnızca bir parametre; bu nedenle havuz oluşturmak için yalnızca bir havuz kimliği dizesi sağlanmalıdır.
+    -   Şablon kullanıldığında yalnızca parametre değerlerinin sağlanması gereken bir gövde bölümünde özellik değerlerinin belirtilmesine izin verin. Örneğin, bir havuz için tam tanım gövdeye yerleştirilebilir ve yalnızca `poolId`bir parametre için tanımlanır; bu nedenle havuz oluşturmak için yalnızca bir havuz kimliği dizesi sağlanmalıdır.
         
     -   Şablon gövdesi Toplu iş bilgisine ve Toplu Iş tarafından çalıştırılacak uygulamalara sahip biri tarafından yazılabilir; şablon kullanıldığında yalnızca yazar tarafından tanımlanan parametreleriçin değerler sağlanmalıdır. Bu nedenle, ayrıntılı Toplu İşlem ve/veya uygulama bilgisine olmayan bir kullanıcı şablonları kullanabilir.
 

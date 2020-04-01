@@ -11,23 +11,20 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/16/2020
+ms.date: 03/30/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 6911afa5dfcd14f9e5d1068acbcb2355200c5545
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5b532908df4b8dd58177b7e128f4e55aa96458e6
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79479816"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80409944"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Azure Monitör Günlükleri ile kullanımı ve maliyetleri yönetme
 
 > [!NOTE]
-> Bu makalede, Azure Monitör Günlükleri için maliyetlerinizi nasıl anlayacağınızı ve denetlayacağınızı açıklanmaktadır. İlgili bir makale, [Kullanımı ve tahmini maliyetleri izleme,](https://docs.microsoft.com/azure/azure-monitor/platform/usage-estimated-costs) farklı fiyatlandırma modelleri için birden çok Azure izleme özelliği nde kullanımı niçin görüntülenebildiğini ve tahmini maliyetleri açıklar.
-
-> [!NOTE]
-> Bu makalede gösterilen tüm fiyatlar ve maliyetler yalnızca örnek amaçlar içindir. 
+> Bu makalede, Azure Monitör Günlükleri için maliyetlerinizi nasıl anlayacağınızı ve denetlayacağınızı açıklanmaktadır. İlgili bir makale, [Kullanımı ve tahmini maliyetleri izleme,](https://docs.microsoft.com/azure/azure-monitor/platform/usage-estimated-costs) farklı fiyatlandırma modelleri için birden çok Azure izleme özelliği nde kullanımı niçin görüntülenebildiğini ve tahmini maliyetleri açıklar. Bu makalede gösterilen tüm fiyatlar ve maliyetler yalnızca örnek amaçlar içindir. 
 
 Azure Monitör Günlükleri, kuruluşunuzdaki veya Azure'da dağıtılan herhangi bir kaynaktan günde büyük miktarda veri toplamayı, dizine kaydetmeyi ve depolamayı ölçeklendirmek ve desteklemek üzere tasarlanmıştır.  Bu, kuruluşunuz için birincil bir sürücü olsa da, maliyet verimliliği sonuçta altta yatan sürücüdür. Bu amaçla, Log Analytics çalışma alanının maliyetinin yalnızca toplanan verilerin hacmine dayanmadığını, aynı zamanda seçilen plana ve bağlı kaynaklarınızdan oluşturulan verileri ne kadar süreyle depolamayı seçtiğinize bağlı olduğunu anlamak önemlidir.  
 
@@ -41,7 +38,7 @@ Log Analytics için varsayılan fiyatlandırma, satın alınan veri hacmine ve i
   - İzlenen VM sayısı
   - İzlenen her VM'den toplanan veri türü 
   
-In addition to the Pay-As-You-Go model, Log Analytics has **Capacity Reservation** tiers which enable you to save as much as 25% compared to the Pay-As-You-Go price. Kapasite rezervasyon fiyatlandırması, 100 GB/gün'den başlayan bir rezervasyon satın almanızı sağlar. Rezervasyon seviyesinin üzerindeki tüm kullanımlar, Ödeme Niz-Kullan fiyatından faturalandırılır. Kapasite Rezervasyon katmanları 31 günlük bir taahhüt süresine sahiptir. Taahhüt süresi boyunca, daha yüksek bir Kapasite Rezervasyon katmanına (31 günlük taahhüt süresini yeniden başlatacak) değiştirebilirsiniz, ancak taahhüt süresi bitene kadar Ödeme-As-You-Go'ya veya daha düşük bir Kapasite Rezervasyon katmanına geri dönemezsiniz Bit -miş. 
+In addition to the Pay-As-You-Go model, Log Analytics has **Capacity Reservation** tiers which enable you to save as much as 25% compared to the Pay-As-You-Go price. Kapasite rezervasyon fiyatlandırması, 100 GB/gün'den başlayan bir rezervasyon satın almanızı sağlar. Rezervasyon seviyesinin üzerindeki tüm kullanımlar, Ödeme Niz-Kullan fiyatından faturalandırılır. Kapasite Rezervasyon katmanları 31 günlük bir taahhüt süresine sahiptir. Taahhüt süresi boyunca, daha yüksek bir Kapasite Rezervasyon katmanına (31 günlük taahhüt süresini yeniden başlatacak) değiştirebilirsiniz, ancak taahhüt süresi bitene kadar Daha Düşük Ödemeli Veya Daha Düşük Kapasite Rezervasyon katmanına geri dönemezsiniz. 
 Log Analytics You-You-Go Ödemesi ve Kapasite Rezervasyonu fiyatlandırması hakkında [daha fazla bilgi edinin.](https://azure.microsoft.com/pricing/details/monitor/) 
 
 Tüm fiyatlandırma katmanlarında, veri hacmi depolanacak şekilde hazırlanırken verilerin dize gösteriminden hesaplanır. [Tüm veri türlerinde ortak](https://docs.microsoft.com/azure/azure-monitor/platform/log-standard-properties) olan çeşitli özellikler, `_ResourceId`olay boyutunun hesaplanmasına , , `_ItemId` `_IsBillable` ve `_BilledSize`.
@@ -70,7 +67,7 @@ Azure faturanıza Günlük Analizi ücretleri eklenir. Azure faturanızın ayrı
 
 Azure, [Azure Maliyet Yönetimi + Faturalandırma](https://docs.microsoft.com/azure/cost-management/quick-acm-cost-analysis?toc=/azure/billing/TOC.json) hub'ında çok sayıda kullanışlı işlevsellik sağlar. Örneğin, "Maliyet çözümlemesi" işlevi, Azure kaynakları için harcamalarınızı görüntülemenizi sağlar. Kaynak türüne göre bir filtre eklemek (Log Analytics için microsoft.operationalinsights/çalışma alanına) harcamalarınızı izlemenize olanak sağlar.
 
-[Kullanımınızı Azure portalından indirerek kullanımınızı](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-in-azure-portal)daha iyi anlayabiliriz. İndirilen elektronik tabloda, azure kaynağı başına günlük kullanımı (örn. Günlük Analitik çalışma alanı) görebilirsiniz. Bu Excel elektronik tablosunda, Log Analytics çalışma alanlarınızdan kullanım, önce "İstatistikler ve Analizler" (bazı eski fiyatlandırma katmanları tarafından kullanılır) ve "Log Analytics" göstermek için "Sayaç Kategorisi" sütununa filtre uygulayarak ve ardından "Örnek"e bir filtre ekleyerek bulunabilir. "Çalışma alanı içeren" kimlik" sütunu. Kullanım "Tüketilen Miktar" sütununda, her giriş için birim "Ölçü Birimi" sütununda gösterilir.  [Microsoft Azure faturanızı anlamanıza](https://docs.microsoft.com/azure/billing/billing-understand-your-bill)yardımcı olacak daha fazla ayrıntı mevcuttur. 
+[Kullanımınızı Azure portalından indirerek kullanımınızı](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-in-azure-portal)daha iyi anlayabiliriz. İndirilen elektronik tabloda, azure kaynağı başına günlük kullanımı (örn. Günlük Analitik çalışma alanı) görebilirsiniz. Bu Excel elektronik tablosunda, Log Analytics çalışma alanlarınızdan kullanım, önce "İstatistikler ve Analizler" (bazı eski fiyatlandırma katmanları tarafından kullanılan) ve "Log Analytics" göstermek için "Sayaç Kategorisi" sütununa filtre uygulayarak ve ardından "Örnek Id" sütununa "çalışma alanı içeren" bir filtre ekleyerek bulunabilir. Kullanım "Tüketilen Miktar" sütununda, her giriş için birim "Ölçü Birimi" sütununda gösterilir.  [Microsoft Azure faturanızı anlamanıza](https://docs.microsoft.com/azure/billing/billing-understand-your-bill)yardımcı olacak daha fazla ayrıntı mevcuttur. 
 
 ## <a name="changing-pricing-tier"></a>Fiyatlandırma katmanını değiştirme
 
@@ -88,7 +85,9 @@ Fiyatlandırma katmanını Azure Kaynak Yöneticisi aracılığıyla `sku` (Azur
 
 ## <a name="legacy-pricing-tiers"></a>Eski fiyatlandırma katmanları
 
-2 Nisan 2018 tarihinden önce log analytics çalışma alanı veya Uygulama Öngörüleri kaynağı olan veya 1 Şubat 2019'dan önce başlayan bir Kurumsal Sözleşme'ye bağlı olan abonelikler, eski fiyatlandırma katmanlarını kullanmaya erişmeye devam edecektir: **Ücretsiz**, **Bağımsız (GB Başına)** ve **Düğüm Başına (OMS)**.  Ücretsiz fiyatlandırma katmanındaki çalışma alanları günlük veri alımı 500 MB ile sınırlı olacaktır (Azure Güvenlik Merkezi tarafından toplanan güvenlik veri türleri hariç) ve veri saklama işlemi 7 günle sınırlıdır. Ücretsiz fiyatlandırma katmanı yalnızca değerlendirme amaçlıdır. Bağımsız veya Düğüm Başına fiyatlandırma katmanlarındaki çalışma alanları, 2 yıla kadar kullanıcı tarafından yapılandırılabilir saklamaya sahiptir. 
+2 Nisan 2018 tarihinden önce log analytics çalışma alanı veya Uygulama Öngörüleri kaynağı olan veya 1 Şubat 2019'dan önce başlayan bir Kurumsal Sözleşme'ye bağlı olan abonelikler, eski fiyatlandırma katmanlarını kullanmaya erişmeye devam edecektir: **Ücretsiz**, **Bağımsız (GB Başına)** ve **Düğüm Başına (OMS)**.  Ücretsiz fiyatlandırma katmanındaki çalışma alanları günlük veri alımı 500 MB ile sınırlı olacaktır (Azure Güvenlik Merkezi tarafından toplanan güvenlik veri türleri hariç) ve veri saklama işlemi 7 günle sınırlıdır. Ücretsiz fiyatlandırma katmanı yalnızca değerlendirme amaçlıdır. Bağımsız veya Düğüm Başına fiyatlandırma katmanlarındaki çalışma alanları, 30 günden 730 güne kadar kullanıcı tarafından yapılandırılabilir saklamaya sahiptir.
+
+Per Node fiyatlandırma katmanı, izlenen VM (düğüm) başına bir saatlik ayrıntılılıkta ücretlendirir. İzlenen her düğüm için çalışma alanı, faturalandırılmayan günde 500 MB veri ayrılır. Bu ayırma çalışma alanı düzeyinde toplanır. Toplam günlük veri ayırmanın üzerinde toplanan veriler, veri aktarıcısı olarak GB başına faturalandırılır. Faturanızda, çalışma alanı Per Node fiyatlandırma katmanındaysa, hizmetin Log Analytics kullanımı için **Insight ve Analytics** olacağını unutmayın. 
 
 Nisan 2016'dan önce oluşturulan çalışma alanları, sırasıyla 30 ve 365 günlük sabit veri saklamasına sahip orijinal **Standart** ve **Premium** fiyatlandırma katmanlarına da erişebilir. **Standart** veya **Premium** fiyatlandırma katmanlarında yeni çalışma alanları oluşturulamaz ve bir çalışma alanı bu katmanlardan taşınırsa, geri taşınamaz. 
 
@@ -99,7 +98,7 @@ Fiyatlandırma katmanı sınırlamaları hakkında daha fazla bilgi [için burad
 
 ## <a name="change-the-data-retention-period"></a>Veri saklama süresini değiştirme
 
-Aşağıdaki adımlar, günlük verilerinin çalışma alanınızda ne kadar süreyle tutulup tutulup tutulunu açıklanır.
+Aşağıdaki adımlar, günlük verilerinin çalışma alanınızda ne kadar süreyle tutulup tutulup tutulunu açıklanır. Veri saklama, eski Ücretsiz fiyatlandırma katmanını kullanmadıkları sürece tüm çalışma alanları için 30 ile 730 gün (2 yıl) arasında yapılandırılabilir. 
 
 ### <a name="default-retention"></a>Varsayılan bekletme
 
@@ -117,7 +116,7 @@ Bekletme, `retentionInDays` parametre kullanılarak Azure Kaynak Yöneticisi ara
 
 ### <a name="retention-by-data-type"></a>Veri türüne göre bekletme
 
-Tek tek veri türleri için farklı bekletme ayarları belirtmek de mümkündür. Her veri türü çalışma alanının bir alt kaynağıdır. Örneğin SecurityEvent tablosu Azure Kaynak [Yöneticisi'nde](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) şu şekilde ele alınabilir:
+30 ile 730 gün arasında tek tek veri türleri için farklı bekletme ayarları belirtmek de mümkündür (eski Ücretsiz fiyatlandırma katmanındaki çalışma alanları hariç). Her veri türü çalışma alanının bir alt kaynağıdır. Örneğin SecurityEvent tablosu Azure Kaynak [Yöneticisi'nde](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) şu şekilde ele alınabilir:
 
 ```
 /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/Microsoft.OperationalInsights/workspaces/MyWorkspaceName/Tables/SecurityEvent
@@ -147,6 +146,8 @@ Belirli bir veri türünün (bu örnekte SecurityEvent' de) saklanması için 73
     }
 ```
 
+Geçerli `retentionInDays` değerler 30 ile 730 arasındadır.
+
 `Usage` Ve `AzureActivity` veri türleri özel bekletme ile ayarlanamaz. Bunlar varsayılan çalışma alanı bekletme veya 90 gün maksimum alır. 
 
 Veri türüne göre saklama yı ayarlamak için doğrudan Azure Kaynak Yöneticisi'ne bağlanmak için harika bir araç OSS aracı [ARMclient'dır.](https://github.com/projectkudu/ARMClient)  [David Ebbo](http://blog.davidebbo.com/2015/01/azure-resource-manager-client.html) ve [Daniel Bowbyes'in](https://blog.bowbyes.co.nz/2016/11/02/using-armclient-to-directly-access-azure-arm-rest-apis-and-list-arm-policy-details/)makalelerinden ARMclient hakkında daha fazla bilgi edinin.  ArmClient kullanarak SecurityEvent verilerini 730 günlük bir saklama ya da 730 günlük saklama ya da ayarlama ya da bir örnek aşağıda verilmiştir:
@@ -155,20 +156,17 @@ Veri türüne göre saklama yı ayarlamak için doğrudan Azure Kaynak Yönetici
 armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/Microsoft.OperationalInsights/workspaces/MyWorkspaceName/Tables/SecurityEvent?api-version=2017-04-26-preview "{properties: {retentionInDays: 730}}"
 ```
 
-> [!NOTE]
+> [!TIP]
 > Tek tek veri türlerinde bekletme ayarlama, veri saklama maliyetlerinizi azaltmak için kullanılabilir.  Ekim 2019'dan itibaren toplanan veriler için (bu özellik yayımlandığında), bazı veri türleri için bekletme azaltılabilir, zaman içinde saklama maliyetinizi düşürebilir.  Daha önce toplanan veriler için, tek bir tür için daha düşük bir bekletme ayarlamak bekletme maliyetlerinizi etkilemez.  
 
 ## <a name="manage-your-maximum-daily-data-volume"></a>Maksimum günlük veri hacminizi yönetme
 
 Günlük bir kap yapılandırabilir ve çalışma alanınız için günlük alımını sınırlandırabilirsiniz, ancak amacınız günlük limite ulaşmak olmadığı için dikkati kullanın.  Aksi takdirde, günün geri kalanında veri kaybedersiniz ve bu da işlevselliği çalışma alanında mevcut olan güncel verilere bağlı olabilecek diğer Azure hizmetlerini ve çözümlerini etkileyebilir.  Sonuç olarak, BT hizmetlerini destekleyen kaynakların sağlık koşulları etkilendiğinde uyarıları gözlemleme ve alma yeteneğiniz.  Günlük kap, yönetilen kaynaklarınızdan veri hacmindeki beklenmeyen artışı yönetmek ve sınırınız dahilinde kalmak veya çalışma alanınız için planlanmamış ücretleri sınırlamak istediğinizde kullanılmak üzere tasarlanmıştır.  
 
-Günlük sınıra ulaşıldığında, faturalandırılabilir veri türlerinin toplanması günün geri kalanında durur. Seçili Log Analytics çalışma alanı için sayfanın üst kısmında bir uyarı başlığı görünür ve **LogManagement** kategorisi altında *İşlem* tablosuna bir işlem olayı gönderilir. Günlük limit altında tanımlanan sıfırlama süresi *'nde ayarlandıktan*sonra veri toplama devam eder. Günlük veri sınırına ulaşıldığında bildirmek üzere yapılandırılan bu işlem olayına dayalı bir uyarı kuralı tanımlamanızı öneririz. 
+Günlük sınıra ulaşıldıktan kısa bir süre sonra, faturalandırılabilir veri türlerinin toplanması günün geri kalanında durur. (Günlük kapağın uygulanmasında nanca, kapağın tam olarak belirtilen günlük kap düzeyi olarak uygulanmadığı anlamına gelebilir.) Seçili Log Analytics çalışma alanı için sayfanın üst kısmında bir uyarı başlığı görünür ve **LogManagement** kategorisi altında *İşlem* tablosuna bir işlem olayı gönderilir. Günlük limit altında tanımlanan sıfırlama süresi *'nde ayarlandıktan*sonra veri toplama devam eder. Günlük veri sınırına ulaşıldığında bildirmek üzere yapılandırılan bu işlem olayına dayalı bir uyarı kuralı tanımlamanızı öneririz. 
 
-> [!NOTE]
+> [!WARNING]
 > Günlük kap, Azure Güvenlik Merkezi'nin 19 Haziran 2017 tarihinden önce yüklendiği çalışma alanları dışında Azure Güvenlik Merkezi'nden veri toplanmasını durdurmaz. 
-
-> [!NOTE]
-> Günlük kapağın uygulanmasında nanca, kapağın tam olarak belirtilen günlük kap seviyesi olarak uygulanmadığı anlamına gelebilir. 
 
 ### <a name="identify-what-daily-data-limit-to-define"></a>Tanımlayacak günlük veri limitini belirleme
 
@@ -240,7 +238,7 @@ union withsource = tt *
 | summarize TotalVolumeBytes=sum(_BilledSize) by computerName
 ```
 
-> [!NOTE]
+> [!TIP]
 > Veri `union withsource = tt *` türleri arasında taramalar yürütmek için pahalı olduğundan bu sorguları tutumlu kullanın. Bu sorgu, bilgisayar başına eski bilgileri Kullanım veri türüyle sorgulama yolunun yerini alır.  
 
 ## <a name="understanding-ingested-data-volume"></a>Yutulan veri hacmini anlama
@@ -346,7 +344,7 @@ union withsource = tt *
 
 Değiştirerek, `subscriptionId` `resourceGroup` Azure kaynak grubuna göre faturalandırılabilir veri hacmini gösterir. 
 
-> [!NOTE]
+> [!WARNING]
 > Kullanım veri türünün bazı alanları, hala şemadayken, küçümsenmiş ve değerleri artık doldurulmayacak. Bu **Bilgisayar** yanı sıra yutma ile ilgili alanlar **(TotalBatches**, **BatchesWithinSla**, **BatchesOutsideSla**, **BatchesCapped** ve **AverageProcessingTimeMs**.
 
 ### <a name="querying-for-common-data-types"></a>Ortak veri türleri için sorgulama

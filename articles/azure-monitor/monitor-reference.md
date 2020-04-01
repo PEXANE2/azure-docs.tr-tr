@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/17/2020
-ms.openlocfilehash: 3cd330e9c4ceba2feeb7a74cafe9f094fd03d690
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0ef7e5d869ab2d7e085cbf861bfc32e57b1fad4b
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79249171"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80408482"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Azure Monitor tarafından neler izlenir?
 Bu makalede, Azure Monitor tarafından izlenen farklı uygulamalar ve hizmetler açıklanmaktadır. 
@@ -68,7 +68,7 @@ Aşağıdaki tabloda Azure hizmetleri ve topladıkları veriler Azure Monitor'da
 |AppConfig | Hayır | Hayır | Hayır |  |
 |Application Gateway | Evet | Evet | Hayır |  |
 |Attestation Servisi | Hayır | Hayır | Hayır |  |
-|Automation | Evet | Evet | Hayır |  |
+|Otomasyon | Evet | Evet | Hayır |  |
 |Azure Servis Yöneticisi (RDFE) | Hayır | Hayır | Hayır |  |
 |Backup | Hayır | Evet | Hayır |  |
 |Bastion | Hayır | Hayır | Hayır |  |
@@ -79,7 +79,7 @@ Aşağıdaki tabloda Azure hizmetleri ve topladıkları veriler Azure Monitor'da
 |Bot Hizmeti | Hayır | Hayır | Hayır |  |
 |Cloud Services | Evet | Evet | Hayır | Konuk işletim sistemini ve iş akışlarını izlemek için gereken aracı.  |
 |Cloud Shell | Hayır | Hayır | Hayır |  |
-|Bilişsel hizmetler | Evet | Evet | Hayır |  |
+|Bilişsel Hizmetler | Evet | Evet | Hayır |  |
 |Container Instances | Evet | Hayır | Hayır |  |
 |Container Kayıt Defteri | Evet | Evet | Hayır |  |
 |İçerik Dağıtım Ağı (CDN) | Hayır | Evet | Hayır |  |
@@ -143,14 +143,14 @@ Aşağıdaki tabloda Azure hizmetleri ve topladıkları veriler Azure Monitor'da
 |Kaynak Grafiği | Hayır | Hayır | Hayır |  |
 |Resource Manager | Hayır | Hayır | Hayır |  |
 |Perakende Arama - Bing tarafından | Hayır | Hayır | Hayır |  |
-|Search | Evet | Evet | Hayır |  |
+|Ara | Evet | Evet | Hayır |  |
 |Service Bus | Evet | Evet | Hayır |  |
 |Service Fabric | Hayır | Evet | Hayır | Konuk işletim sistemini ve iş akışlarını izlemek için gereken aracı.  |
 |Kayıt Portalı | Hayır | Hayır | Hayır |  |
 |Site Recovery | Hayır | Evet | Hayır |  |
 |Bahar Bulut Hizmeti | Hayır | Hayır | Hayır |  |
 |SQL Veri Ambarı | Evet | Evet | Hayır |  |
-|SQL Database | Evet | Evet | Hayır |  |
+|SQL Veritabanı | Evet | Evet | Hayır |  |
 |SQL Server Stretch Database | Evet | Evet | Hayır |  |
 |Yığın | Hayır | Hayır | Hayır |  |
 |Depolama | Evet | Hayır | [Evet](insights/storage-insights-overview.md) |  |
@@ -198,7 +198,7 @@ Farklı uygulama ve hizmetlerin izlenmesi için başka çözümler mevcuttur, an
 |:---|:---|
 | [Aktif Dizin sağlık kontrolü](insights/ad-assessment.md) | Aktif Dizin ortamlarınızın risk ve sağlığını değerlendirin. |
 | [Etkin Dizin çoğaltma durumu](insights/ad-replication-status.md) | Etkin Dizin ortamınızı çoğaltma hataları için düzenli olarak izler. |
-| [Etkinlik günlüğü analitiği](platform/activity-log-view.md#activity-logs-analytics-monitoring-solution) | Önceden tanımlanmış günlük sorgularını ve görünümlerini kullanarak Etkinlik günlüğü girişlerini analiz edin. |
+| [Etkinlik günlüğü analitiği](platform/activity-log-view.md#azure-portal) | Etkinlik Günlüğü girişlerini görüntüleyin. |
 | [DNS Analytics (önizleme)](insights/dns-analytics.md) | DNS sunucularınızdan Windows DNS analitik ve denetim günlüklerini ve diğer ilgili verileri toplar, analiz eder ve ilişkilendirir. |
 | [Cloud Foundry](../cloudfoundry/cloudfoundry-oms-nozzle.md) | Birden fazla dağıtımda Bulut Döküm sistemi sistem sistem sistem ve performans ölçümlerinizi toplayın, görüntüleyin ve analiz edin. |
 | [Kapsayıcılar](insights/containers.md) | Docker ve Windows kapsayıcı ana bilgisayarlarını görüntüleyin ve yönetin. |

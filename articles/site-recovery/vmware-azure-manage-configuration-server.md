@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/15/2019
 ms.author: ramamill
-ms.openlocfilehash: 93b10d56ae34ebdfe78dd20705634dea58721274
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 692834903899448707200b24a955301e29e14f90
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79257283"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478459"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vmphysical-server-disaster-recovery"></a>VMware VM/physical server olağanüstü durum kurtarma yapılandırma sunucusunu yönetme
 
@@ -270,9 +270,9 @@ PowerShell'i kullanarak yapılandırma sunucusunu isteğe bağlı olarak silebil
 3. Passphrase dosyasını oluşturmak için **genpassphrase.exe -v > MobSvc.passphrase'i**uygulayın.
 4. Parolanız **%ProgramData%\ASR\home\svsystems\bin\MobSvc.passphrase**adresinde bulunan dosyada depolanır.
 
-## <a name="renew-ssl-certificates"></a>SSL sertifikalarını yenileme
+## <a name="renew-tlsssl-certificates"></a>TLS/SSL sertifikalarını yenileme
 
-Yapılandırma sunucusu, Mobilite Hizmetinin etkinliklerini, işlem sunucularını ve ona bağlı ana hedef sunucuları düzenleyen dahili bir web sunucusuna sahiptir. Web sunucusu, istemcilerin kimliğini doğrulamak için bir SSL sertifikası kullanır. Sertifika üç yıl sonra sona erer ve herhangi bir zamanda yenilenebilir.
+Yapılandırma sunucusu, Mobilite Hizmetinin etkinliklerini, işlem sunucularını ve ona bağlı ana hedef sunucuları düzenleyen dahili bir web sunucusuna sahiptir. Web sunucusu, istemcilerin kimliğini doğrulamak için bir TLS/SSL sertifikası kullanır. Sertifika üç yıl sonra sona erer ve herhangi bir zamanda yenilenebilir.
 
 ### <a name="check-expiry"></a>Son kullanma tarihini kontrol edin
 

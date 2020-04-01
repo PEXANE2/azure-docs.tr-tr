@@ -15,29 +15,29 @@ ms.workload: na
 ms.date: 05/01/2019
 ms.author: juliako
 ms.openlocfilehash: 08caf4b78b1042d5753dba2bc73e93fa3a250a17
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 09/19/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "71122384"
 ---
-# <a name="cli-example-create-and-submit-a-job"></a>CLı örneği: İş oluşturma ve gönderme
+# <a name="cli-example-create-and-submit-a-job"></a>CLI örneği: İş oluşturma ve gönderme
 
-Media Services v3 sürümünde işlenecek İşleri videolarınıza gönderirken Media Services'a giriş videosunun yerini de bildirmeniz gerekir. Seçeneklerden biri, bir HTTPS URL 'sini iş girişi olarak belirtmektir (Bu makalede gösterildiği gibi). 
+Media Services v3 sürümünde işlenecek İşleri videolarınıza gönderirken Media Services'a giriş videosunun yerini de bildirmeniz gerekir. Seçeneklerden biri, bir HTTPS URL'sini iş girişi olarak belirtmektir (bu makalede gösterildiği gibi). 
 
-## <a name="prerequisites"></a>Önkoşullar 
+## <a name="prerequisites"></a>Ön koşullar 
 
-[Bir Media Services hesabı oluşturma](create-account-cli-how-to.md).
+[Bir Medya Hizmetleri hesabı oluşturun.](create-account-cli-how-to.md)
 
 [!INCLUDE [media-services-cli-instructions.md](../../../includes/media-services-cli-instructions.md)]
 
 ## <a name="example-script"></a>Örnek betik
 
-Çalıştırdığınızda `az ams job start`, iş çıktısında bir etiket ayarlayabilirsiniz. Etiket daha sonra bu çıktı varlığının ne için olduğunu belirlemek için kullanılabilir. 
+Çalıştırdığınızda, `az ams job start`işin çıktısı üzerinde bir etiket ayarlayabilirsiniz. Etiket daha sonra bu çıktı varlığının ne için olduğunu tanımlamak için kullanılabilir. 
 
-- Etikete bir değer atarsanız, '--output-varlıklarını ' ' assetname = Label ' olarak ayarlayın
-- Etikete bir değer atamadıysanız, '--output-varlıklarını ' ' assetname = "olarak ayarlayın.
-  ' A "=" `output-assets`eklemenize dikkat edin. 
+- Etikete bir değer atarsanız, "--çıktı-varlıklar"ı "assetname=label" olarak ayarlayın.
+- Etikete bir değer atadıysanız, '--çıktı-varlıklar'ı "assetname=" olarak ayarlayın.
+  'ye "=" eklediğinizde `output-assets`dikkat edin. 
 
 ```azurecli
 az ams job start \
@@ -50,7 +50,7 @@ az ams job start \
   -g amsResourceGroup 
 ```
 
-Aşağıdakine benzer bir yanıt alırsınız:
+Buna benzer bir yanıt alırsınız:
 
 ```
 {
@@ -87,4 +87,4 @@ Aşağıdakine benzer bir yanıt alırsınız:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[az AMS Job (CLı)](https://docs.microsoft.com/cli/azure/ams/job?view=azure-cli-latest)
+[az ams iş (CLI)](https://docs.microsoft.com/cli/azure/ams/job?view=azure-cli-latest)

@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/13/2019
-ms.openlocfilehash: ea0a9de5dde02b45ae34e3e98e24b31fd01fa713
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f782985d975dd137aa2da48d12757685b47e62b1
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80235817"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421257"
 ---
 # <a name="copy-data-from-azure-data-lake-storage-gen1-to-gen2-with-azure-data-factory"></a>Azure Veri Fabrikası ile Azure Veri Gölü Depolama Gen1'den Gen2'ye verileri kopyalama
 
@@ -146,7 +146,7 @@ Azure Veri Gölü Depolama Gen1'den Genel Olarak Azure Veri Gölü Depolama Gen2
 
 Uçtan uca çözümü doğrulamak ve ortamınızdaki kopya iş hacmini test etmek için bir kavram kanıtı kullanın. Kavram kanıtı adımları: 
 
-1. Veri Gölü Depolama Gen1'den Veri Gölü Depolama Gen2'ye kadar birkaç veri TB'sini kopyalamak ve bir kopya performans taban çizgisini elde etmek için tek bir kopyalama etkinliği yle tek bir Veri Fabrikası ardışık hattı oluşturun. Veri [tümleştirme birimleri (DIUs)](copy-activity-performance.md#data-integration-units) ile 128 olarak başlayın. 
+1. Veri Gölü Depolama Gen1'den Veri Gölü Depolama Gen2'ye kadar birkaç veri TB'sini kopyalamak ve bir kopya performans taban çizgisini elde etmek için tek bir kopyalama etkinliği yle tek bir Veri Fabrikası ardışık hattı oluşturun. Veri [tümleştirme birimleri (DIUs)](copy-activity-performance-features.md#data-integration-units) ile 128 olarak başlayın. 
 2. Adım 1'de aldığınız kopya iş başına bağlı olarak, tüm veri geçişi için gereken tahmini süreyi hesaplayın. 
 3. (İsteğe bağlı) Bir denetim tablosu oluşturun ve geçirilecek dosyaları bölmek için dosya filtresini tanımlayın. Dosyaları bölmenin yolu: 
 

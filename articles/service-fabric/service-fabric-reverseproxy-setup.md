@@ -4,12 +4,12 @@ description: Azure Service Fabric uygulaması için ters proxy hizmetini nasıl 
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: pepogors
-ms.openlocfilehash: 131440036896d323cbf821d7a220328456e1db36
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6e3edb0fe238dcaddb7d99cc68660591f081581c
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75645455"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80476679"
 ---
 # <a name="set-up-and-configure-reverse-proxy-in-azure-service-fabric"></a>Azure Hizmet Kumaşı'nda ters proxy ayarlama ve yapılandırma
 Ters proxy, Hizmet Kumaşı kümesinde çalışan mikro hizmetlerin http uç noktaları olan diğer hizmetleri keşfetmeye ve onlarla iletişim kurmasına yardımcı olan isteğe bağlı bir Azure Hizmet Kumaşhizmeti hizmetidir. Daha fazla bilgi için [Azure Hizmet Kumaşı'nda Ters proxy'ye](service-fabric-reverseproxy.md)bakın. Bu makalede, kümenizde ters proxy'yi nasıl ayarlayıp yapılandırabileceğiniz gösterilmektedir. 
@@ -23,7 +23,7 @@ Azure portalı, yeni bir Hizmet Kumaşı kümesi oluşturduğunuzda ters proxy'y
 1. **Adım 2: Küme Yapılandırması**, **Düğüm türü yapılandırma**altında , ters proxy **etkinleştir'i**seçin.
 
    ![Portalda ters proxy'yi etkinleştirme](./media/service-fabric-reverseproxy-setup/enable-rp-portal.png)
-2. (İsteğe bağlı) Güvenli ters proxy yapılandırmak için bir SSL sertifikası yapılandırmanız gerekir. **Adım 3: Güvenlik**, Yapılandırma **türü**altında küme **güvenlik ayarlarını yapılandırma,** **Özel**seçin . Ardından, **Ters Proxy SSL sertifikası**altında, **ters proxy için bir SSL sertifikası ekle'yi** seçin ve sertifika bilgilerinizi girin.
+2. (İsteğe bağlı) Güvenli ters proxy yapılandırmak için bir TLS/SSL sertifikası yapılandırmanız gerekir. **Adım 3: Güvenlik**, Yapılandırma **türü**altında küme **güvenlik ayarlarını yapılandırma,** **Özel**seçin . Ardından, **Ters Proxy SSL sertifikası**altında, **ters proxy için bir SSL sertifikası ekle'yi** seçin ve sertifika bilgilerinizi girin.
 
    ![Portalda güvenli ters proxy yapılandırma](./media/service-fabric-reverseproxy-setup/configure-rp-certificate-portal.png)
 
@@ -74,7 +74,7 @@ Kaynak Yöneticisi şablonunuz olduktan sonra, ters proxy'yi aşağıdaki adıml
         ...
     }
     ```
-3. Ters proxy için bağlantı noktasındaki SSL sertifikalarını yapılandırmak için, sertifikayı **Microsoft.ServiceFabric/clusters** [Kaynak türü bölümündeki](../resource-group-authoring-templates.md)ters ***ProxySertifikası*** özelliğine ekleyin.
+3. Ters proxy için bağlantı noktasındaTLS/SSL sertifikalarını yapılandırmak için, sertifikayı **Microsoft.ServiceFabric/clusters** [Kaynak türü bölümündeki](../resource-group-authoring-templates.md)ters ***ProxySertifikası*** özelliğine ekleyin.
 
     ```json
     {

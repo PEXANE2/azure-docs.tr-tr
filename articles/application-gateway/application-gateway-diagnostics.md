@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/22/2019
 ms.author: victorh
-ms.openlocfilehash: 1ddbc8e909c5ba0b720e893e87c0f495d256a886
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c7b38ad40977e1042032210d3a82a73ff6169adc
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79279162"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411051"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>Uygulama Ağ Geçidi için arka uç sağlık ve tanıgünlükleri
 
@@ -96,9 +96,9 @@ Aşağıdaki parçacık yanıtın bir örneğini gösterir:
 Uygulama ağ geçitlerini yönetmek ve sorun gidermek için Azure'da farklı türde günlükler kullanabilirsiniz. Bu günlüklerden bazılarına portaldan erişebilirsiniz. Tüm günlükler Azure Blob depolama alanından ayıklanabilir ve [Azure Monitor günlükleri,](../azure-monitor/insights/azure-networking-analytics.md)Excel ve Power BI gibi farklı araçlarda görüntülenebilir. Aşağıdaki listeden farklı günlük türleri hakkında daha fazla bilgi edinebilirsiniz:
 
 * **Etkinlik günlüğü**: Azure aboneliğinize gönderilen tüm işlemleri ve durumlarını görüntülemek için [Azure etkinlik günlüklerini](../monitoring-and-diagnostics/insights-debugging-with-events.md) (eski adıyla operasyonel günlükler ve denetim günlükleri olarak bilinir) kullanabilirsiniz. Etkinlik günlüğü girişleri varsayılan olarak toplanır ve bunları Azure portalda görüntüleyebilirsiniz.
-* **Erişim günlüğü**: Uygulama Ağ Geçidi erişim desenlerini görüntülemek ve önemli bilgileri analiz etmek için bu günlüğü kullanabilirsiniz. Bu, arayanın IP'sini, istenen URL'sini, yanıt gecikmesini, iade kodunu ve baytları girip çıkar. Her 300 saniyede bir erişim günlüğü toplanır. Bu günlük, Uygulama Ağ Geçidi örneği başına bir kayıt içerir. Uygulama Ağ Geçidi örneği instanceId özelliği tarafından tanımlanır.
+* **Erişim günlüğü**: Uygulama Ağ Geçidi erişim desenlerini görüntülemek ve önemli bilgileri analiz etmek için bu günlüğü kullanabilirsiniz. Bu, arayanın IP'sini, istenen URL'sini, yanıt gecikmesini, iade kodunu ve baytları girip çıkar. Her 60 saniyede bir erişim günlüğü toplanır. Bu günlük, Uygulama Ağ Geçidi örneği başına bir kayıt içerir. Uygulama Ağ Geçidi örneği instanceId özelliği tarafından tanımlanır.
 * **Performans günlüğü**: Bu günlüğü, Uygulama Ağ Geçidi örneklerinin nasıl performans gösterdiğini görüntülemek için kullanabilirsiniz. Bu günlük, sunulan toplam istekler, baytlar, sunulan toplam istekler, başarısız istek sayısı ve sağlıklı ve sağlıksız arka uç örnek sayısı dahil olmak üzere her örnek için performans bilgilerini yakalar. Performans günlüğü her 60 saniyede bir toplanır. Performans günlüğü yalnızca v1 SKU için kullanılabilir. v2 SKU için performans verileri için [Ölçümler'i](application-gateway-metrics.md) kullanın.
-* **Güvenlik Duvarı günlüğü**: Web uygulaması güvenlik duvarıyla yapılandırılan bir uygulama ağ geçidinin algılama veya önleme modu üzerinden günlüğe kaydedilen istekleri görüntülemek için bu günlüğü kullanabilirsiniz.
+* **Güvenlik Duvarı günlüğü**: Web uygulaması güvenlik duvarıyla yapılandırılan bir uygulama ağ geçidinin algılama veya önleme modu üzerinden günlüğe kaydedilen istekleri görüntülemek için bu günlüğü kullanabilirsiniz. Güvenlik duvarı günlükleri her 60 saniyede bir toplanır. 
 
 > [!NOTE]
 > Günlükler yalnızca Azure Kaynak Yöneticisi dağıtım modelinde dağıtılan kaynaklar için kullanılabilir. Klasik dağıtım modelinde kaynaklar için günlük kullanamazsınız. İki modelin daha iyi anlaşılması [için, Kaynak Yöneticisi'ni Anlama dağıtımı ve klasik dağıtım](../azure-resource-manager/management/deployment-models.md) makalesine bakın.

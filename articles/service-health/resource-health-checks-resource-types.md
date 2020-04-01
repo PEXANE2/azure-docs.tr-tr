@@ -3,12 +3,12 @@ title: Azure Kaynak Durumu ile Desteklenen Kaynak Türleri | Microsoft Dokümanl
 description: Azure Kaynak durumu yla Desteklenen Kaynak Türleri
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 3ba7b308c0c7671df8a652194830cb910cb89acc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5cc80147730fdc97b1181690f6e70fc538d4afcc
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79258310"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478894"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Azure kaynak sağlığında kaynak türleri ve sistem durumu denetimleri
 Aşağıda kaynak türlerine göre kaynak durumu aracılığıyla yürütülen tüm denetimlerin tam listesi verilmiştir.
@@ -47,6 +47,11 @@ Aşağıda kaynak türlerine göre kaynak durumu aracılığıyla yürütülen t
 |Yürütülen Denetimler|
 |---|
 |<ul><li>Hesap veri merkezi içinden ulaşılabilir mi?</li><li>Bilişsel Hizmetler Kaynak Sağlayıcı kullanılabilir mi?</li><li>Bilişsel Hizmet uygun bölgede kullanılabilir mi?</li><li>Okuma işlemleri kaynak meta verilerini tutan depolama hesabında gerçekleştirilebilir mi?</li><li>API arama kotası ulaştı mı?</li><li>API arama okuma sınırına ulaşıldı mı?</li></ul>|
+
+## <a name="microsoftcomputehostgroupshosts"></a>Microsoft.compute/hostgroups/hosts
+|Yürütülen Denetimler|
+|---|
+|<ul><li>Ana bilgisayar çalışır durumda mı</li><li>Ana bilgisayar donanımı bozuldu mu?</li><li>Ana bilgisayar ayrıldı mı?</li><li>Ana bilgisayar donanım hizmeti farklı donanımlara iyileşti mi?</li></ul>|
 
 ## <a name="microsoftcomputevirtualmachines"></a>Microsoft.compute/virtualmachines
 |Yürütülen Denetimler|
