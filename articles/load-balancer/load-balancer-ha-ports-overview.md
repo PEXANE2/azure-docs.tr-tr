@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2019
 ms.author: allensu
-ms.openlocfilehash: 5ada709350802344bfa65cce269735baa416edf6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d3bd1156de4aed7d1ea5c530605697f2dc80d63c
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80234440"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80476984"
 ---
 # <a name="high-availability-ports-overview"></a>Yüksek kullanılabilirlik bağlantı noktalarına genel bakış
 
@@ -95,7 +95,7 @@ Ha bağlantı noktalarına sahip tek bir dahili Standart Yük Dengeleyicisi ile 
 ## <a name="limitations"></a>Sınırlamalar
 
 - HA bağlantı noktaları yük dengeleme kuralları yalnızca dahili Standart Yük Dengeleyicisi için kullanılabilir.
-- HA bağlantı noktaları yük dengeleme kuralı ile HA dışı bağlantı noktaları yük dengeleme kuralının birleştirilmesi desteklenmez.
+- Aynı arka uç ipconfigurations işaret eden bir HA bağlantı noktaları yük dengeleme kuralı ve HA olmayan bağlantı noktaları yük dengeleme kuralı nın birleştirilmesi desteklenmez.
 - Varolan IP parçaları HA Ports yük dengeleme kuralları tarafından ilk paketle aynı hedefe iletilir.  BIR UDP veya TCP paketini parçalayan IP desteklenmez.
 - Akış simetrisi (öncelikle NVA senaryoları için) arka uç örneği ve tek bir NIC (ve tek IP yapılandırması) ile desteklenir, yalnızca yukarıdaki diyagramda gösterildiği gibi ve HA Bağlantı Noktaları yük dengeleme kuralları kullanıldığında. Başka bir senaryoda sağlanmaz. Bu, iki veya daha fazla Yük Dengeleyici kaynağının ve ilgili kurallarının bağımsız kararlar verdiği ve hiçbir zaman koordine olmadığı anlamına gelir. [Ağ sanal cihazları](#nva)için açıklama ve diyagrama bakın. Birden fazla NIC kullanıyorsanız veya NVA'yı genel ve dahili Yük Dengeleyicisi arasında sandviç yaparken, akış simetrisi kullanılamaz.  Bu konuda, yanıtların aynı NVA'ya ulaşmasına izin vermek için cihazın IP'sine giriş akışını kaynak olarak çözebilirsiniz.  Ancak, tek bir NIC kullanmanızı ve yukarıdaki diyagramda gösterilen referans mimarisini kullanmanızı şiddetle öneririz.
 

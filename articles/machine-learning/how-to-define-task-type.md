@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.date: 11/04/2019
-ms.openlocfilehash: a58959904559cd3b2cec27762f2df93cfea72abd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fef3f0347d963b8a7d5fe2f1ca771293e9c3d2a9
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75540535"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475507"
 ---
 # <a name="how-to-define-a-machine-learning-task"></a>Makine öğrenimi görevi nasıl tanımlanır? 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -76,6 +76,6 @@ Görevi Azure Machine Learning stüdyosunda otomatik ML deneme çalıştırma ol
 
 + Azure Machine Learning'de [otomatik ml](concept-automated-ml.md) hakkında daha fazla bilgi edinin.
 + Azure Machine Learning'de [bir zaman serisi tahmin modelini otomatik olarak eğitme](how-to-auto-train-forecast.md) hakkında daha fazla bilgi edinin
-+ Otomatik [Makine Öğrenimi Sınıflandırma](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/model-explanation) sıyrıkını deneyin.
-+ Otomatik [Makine Öğrenme Regresyon](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/model-explanation) örnek not defterini deneyin.
++ Otomatik [Makine Öğrenimi Sınıflandırma](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb) sıyrıkını deneyin.
++ Otomatik [Makine Öğrenme Regresyon](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/regression-hardware-performance-explanation-and-featurization/auto-ml-regression-hardware-performance-explanation-and-featurization.ipynb) örnek not defterini deneyin.
 

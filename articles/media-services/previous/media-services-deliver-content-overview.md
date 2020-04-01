@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 22d98656f42f52f2fba0845fac6f1d210d2cf0bd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c8d32a6434db0fad18b9fe7c2d6e2117795eb651
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76264687"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80476745"
 ---
 # <a name="deliver-content-to-customers"></a>Müşterilere içerik sunun
 Akış veya isteğe bağlı video içeriğinizi müşterilere sunarken, hedefiniz farklı ağ koşulları altında çeşitli cihazlara yüksek kaliteli video sunmaktır.
@@ -40,7 +40,7 @@ Bu makalede, önemli içerik teslim kavramları genel bir bakış sağlar.
 Bilinen sorunları denetlemek için bilinen [sorunlara](media-services-deliver-content-overview.md#known-issues)bakın.
 
 ## <a name="dynamic-packaging"></a>Dinamik paketleme
-Media Services'In sağladığı dinamik ambalajla, uyarlanabilir bitrate MP4 veya Smooth Streaming kodlanmış içeriğinizi, bu paketlere yeniden paketlemek zorunda kalmadan, Medya Hizmetleri (MPEG-DASH, HLS, Smooth Streaming) tarafından desteklenen akış biçimlerinde teslim edebilirsiniz. akış biçimleri. İçeriğinizi dinamik ambalajlarla sunmanızı öneririz.
+Media Services'In sağladığı dinamik ambalajla, uyarlanabilir bithızı MP4 veya Düzgün Akış kodlanmış içeriğinizi, bu akış biçimlerine yeniden paketlemek zorunda kalmadan Medya Hizmetleri (MPEG-DASH, HLS, Smooth Streaming)tarafından desteklenen akış biçimlerinde teslim edebilirsiniz. İçeriğinizi dinamik ambalajlarla sunmanızı öneririz.
 
 Dinamik ambalajdan yararlanmak için asma (kaynak) dosyanızı uyarlanabilir bit hızında MP4 dosyaları veya uyarlanabilir bithızı Düz Akış dosyaları kümesine kodlamanız gerekir.
 
@@ -82,10 +82,10 @@ Uyarlanabilir bitrate teknolojileri, video oynatıcı uygulamalarının ağ koş
 Kullanıcılara akış URL'leri sağlamak için öncelikle bir OnDemandOrigin bulucu oluşturmanız gerekir. Yer bulucuyu oluşturmak, akış yapmak istediğiniz içeriği içeren varlığa giden temel yolu sağlar. Ancak, bu içeriği akışa göre aktarabilmek için bu yolu daha fazla değiştirmeniz gerekir. Akış bildirimi dosyasına tam bir URL oluşturmak için, bulucunun yol değerini ve manifestoyu (filename.ism) dosya adını oluşturmanız gerekir. Ardından( **Bildirim) ve** yer bulucu yoluna uygun bir biçim (gerekirse) ekinde.
 
 > [!NOTE]
-> Ayrıca içeriğinizi bir SSL bağlantısı üzerinden de aktarabilirsiniz. Bunu yapmak için, akış URL'lerinizin HTTPS ile başladığından emin olun. Şu anda AMS'nin Özel etki alanlarıyla SSL'yi desteklemediğini unutmayın.  
+> İçeriğinizi TLS bağlantısı üzerinden de aktarabilirsiniz. Bunu yapmak için, akış URL'lerinizin HTTPS ile başladığından emin olun. Şu anda AMS'nin TLS'yi özel etki alanlarıyla desteklemediğini unutmayın.  
 > 
 
-Yalnızca içeriğinizi teslim ettiğiniz akış bitiş noktası 10 Eylül 2014'ten sonra oluşturulduysa SSL üzerinden akış yapabilirsiniz. Akış URL'leriniz 10 Eylül 2014'ten sonra oluşturulan akış uç noktalarını temel alıyorsa, URL "streaming.mediaservices.windows.net" içerir. "origin.mediaservices.windows.net" (eski biçim) içeren akış URL'leri SSL'yi desteklemez. URL'niz eski biçimdeyse ve SSL üzerinden akış yapabilmek istiyorsanız, yeni bir akış bitiş noktası oluşturun. İçeriğinizi SSL üzerinden aktarmak için yeni akış bitiş noktasına dayalı URL'ler kullanın.
+TLS üzerinden yalnızca içeriğinizi teslim ettiğiniz akış bitiş noktası 10 Eylül 2014'ten sonra oluşturulduysa akış yapabilirsiniz. Akış URL'leriniz 10 Eylül 2014'ten sonra oluşturulan akış uç noktalarını temel alıyorsa, URL "streaming.mediaservices.windows.net" içerir. "origin.mediaservices.windows.net" (eski biçim) içeren akış URL'leri TLS'yi desteklemez. URL'niz eski biçimdeyse ve TLS üzerinden akış yapabilmek istiyorsanız, yeni bir akış bitiş noktası oluşturun. İçeriğinizi TLS üzerinden aktarmak için yeni akış bitiş noktasına dayalı URL'ler kullanın.
 
 ## <a name="streaming-url-formats"></a><a id="URLs"/>Akış URL biçimleri
 
@@ -155,7 +155,7 @@ Akış bitiş noktası, içeriği doğrudan istemci oynatıcı uygulamasına vey
 
 ## <a name="known-issues"></a>Bilinen sorunlar
 ### <a name="changes-to-smooth-streaming-manifest-version"></a>Düzgün Akış bildirimi sürümünde yapılan değişiklikler
-Media Encoder Standard, Media Encoder Premium Workflow veya önceki Azure Media Encoder tarafından üretilen varlıklar dinamik paketleme kullanılarak akışlandığında, Temmuz 2016 hizmet sürümünden önce, döndürülen Sorunsuz Akış bildirimi sürüme uygun olacaktır 2.0. Sürüm 2.0'da, parça süreleri yinelenen ('r') etiketlerini kullanmaz. Örnek:
+Media Encoder Standard, Media Encoder Premium Workflow veya önceki Azure Media Encoder tarafından üretilen varlıklar dinamik paketleme kullanılarak akışlandığında, Temmuz 2016 hizmet sürümünden önce, döndürülen Sorunsuz Akış bildirimi sürüm 2.0'a uygun olacaktır. Sürüm 2.0'da, parça süreleri yinelenen ('r') etiketlerini kullanmaz. Örnek:
 
 
     <?xml version="1.0" encoding="UTF-8"?>

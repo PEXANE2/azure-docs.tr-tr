@@ -7,14 +7,14 @@ author: tamram
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.date: 02/26/2020
+ms.date: 03/31/2020
 ms.author: tamram
-ms.openlocfilehash: 479145f4d42c0708c109ab582e76e3691971c6ad
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 3b005bc359b3c1b0cafe663b7ce2b599b10973a1
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80061416"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474007"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-powershell"></a>Quickstart: PowerShell ile yükleme, indirme ve liste blobs
 
@@ -28,7 +28,7 @@ Azure Depolama'ya erişmek için bir Azure aboneliğine ihtiyacınız olacak. Za
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Bu hızlı başlatma, Azure PowerShell modülü Az sürüm 0.7 veya daha sonra gerektirir. Sürümü bulmak için `Get-InstalledModule -Name Az -AllVersions | select Name,Version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure PowerShell Modülü yükleme](/powershell/azure/install-Az-ps).
+Bu hızlı başlatma, Azure PowerShell modülü Az sürüm 0.7 veya daha sonra gerektirir. Sürümü bulmak için `Get-InstalledModule -Name Az -AllVersions | select Name,Version` komutunu çalıştırın. Yüklemeniz veya yükseltmeniz gerekirse, bkz. [Azure PowerShell Modülü yükleme](/powershell/azure/install-az-ps).
 
 [!INCLUDE [storage-quickstart-tutorial-intro-include-powershell](../../../includes/storage-quickstart-tutorial-intro-include-powershell.md)]
 
@@ -36,7 +36,7 @@ Bu hızlı başlatma, Azure PowerShell modülü Az sürüm 0.7 veya daha sonra g
 
 Bloblar her zaman bir kapsayıcıya yüklenir. Bu, blob gruplarını bilgisayarınızdaki dosyaları klasörler halinde düzenlediğiniz gibi düzenleyebilmenizi sağlar.
 
-Kapsayıcı adını ayarlayın, ardından [Yeni-AzStorageContainer](/powershell/module/az.storage/new-AzStoragecontainer)kullanarak kapsayıcı oluşturun. Dosyalara genel erişime izin vermek için izinleri `blob` olarak ayarlayın. Bu örnekteki kapsayıcı adı *quickstartblobs*’tur.
+Kapsayıcı adını ayarlayın, ardından [Yeni-AzStorageContainer](/powershell/module/az.storage/new-azstoragecontainer)kullanarak kapsayıcı oluşturun. Dosyalara genel erişime izin vermek için izinleri `blob` olarak ayarlayın. Bu örnekteki kapsayıcı adı *quickstartblobs*’tur.
 
 ```powershell
 $containerName = "quickstartblobs"
@@ -47,7 +47,7 @@ New-AzStorageContainer -Name $containerName -Context $ctx -Permission blob
 
 Blob depolama blok blobları, ekleme bloblarını ve sayfa bloblarını destekler. IaaS VM’lerini yedekleyen VHD dosyaları sayfa bloblarıdır. Ekleme bloblarını, bir dosyaya yazıp daha sonradan daha fazla bilgi eklemek istediğiniz durumlarda günlüğe kaydetmek için kullanın. Blob depolamada depolanan çoğu dosya blok blobudur. 
 
-Bir dosyayı bir blok blobuna yüklemek için, bir kapsayıcı başvurusu alın ve bu kapsayıcıdaki blok blobuna bir başvuru alın. Blob referansını aldıktan sonra [Set-AzStorageBlobContent'i](/powershell/module/az.storage/set-AzStorageblobcontent)kullanarak veri yükleyebilirsiniz. Bu işlemle, daha önce oluşturulmadıysa bir blob oluşturulur, blob varsa blobun üzerine yazılır.
+Bir dosyayı bir blok blobuna yüklemek için, bir kapsayıcı başvurusu alın ve bu kapsayıcıdaki blok blobuna bir başvuru alın. Blob referansını aldıktan sonra [Set-AzStorageBlobContent'i](/powershell/module/az.storage/set-azstorageblobcontent)kullanarak veri yükleyebilirsiniz. Bu işlemle, daha önce oluşturulmadıysa bir blob oluşturulur, blob varsa blobun üzerine yazılır.
 
 Aşağıdaki örneklerde yerel diskteki *D:\\_TestImages* klasöründen *Image001.jpg* ve *Image002.png* dosyaları az önce oluşturduğunuz kapsayıcıya yüklenmektedir.
 
@@ -69,7 +69,7 @@ Devam etmeden önce istediğiniz sayıda dosyayı karşıya yükleyin.
 
 ## <a name="list-the-blobs-in-a-container"></a>Blob’ları bir kapsayıcıda listeleme
 
-[Get-AzStorageBlob](/powershell/module/az.storage/get-AzStorageblob)kullanarak konteyner lekeleri bir listesini alın. Bu örnekte karşıya yüklenen blobların yalnızca adları gösterilmektedir.
+[Get-AzStorageBlob](/powershell/module/az.storage/get-azstorageblob)kullanarak konteyner lekeleri bir listesini alın. Bu örnekte karşıya yüklenen blobların yalnızca adları gösterilmektedir.
 
 ```powershell
 Get-AzStorageBlob -Container $ContainerName -Context $ctx | select Name
@@ -77,7 +77,7 @@ Get-AzStorageBlob -Container $ContainerName -Context $ctx | select Name
 
 ## <a name="download-blobs"></a>Blob’ları indirme
 
-Blobları yerel diskinize indirin. İndirmek istediğiniz her blob için, blob'u indirmek için adını ayarlayın ve [Get-AzStorageBlobContent'i](/powershell/module/az.storage/get-AzStorageblobcontent) arayın.
+Blobları yerel diskinize indirin. İndirmek istediğiniz her blob için, blob'u indirmek için adını ayarlayın ve [Get-AzStorageBlobContent'i](/powershell/module/az.storage/get-azstorageblobcontent) arayın.
 
 Bu örnekte, bloblar yerel diskteki *D:\\_TestImages\Downloads* klasörüne indirilir. 
 

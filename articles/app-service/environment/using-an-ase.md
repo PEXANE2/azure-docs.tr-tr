@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 01/01/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 7ca6882aea7225dcb97c9f913267b2543de07fef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8a73c1998203a8696b67a5e7eb3af23898239265
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80133134"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477627"
 ---
 # <a name="use-an-app-service-environment"></a>App Service Ortamını kullanma
 
@@ -88,7 +88,7 @@ Bir ASE'de, bir Uygulama Hizmeti planını 100 örneğe kadar ölçeklendirebili
 
 ## <a name="ip-addresses"></a>IP adresleri
 
-Uygulama Hizmeti bir uygulamaya özel bir IP adresi tahsis edebilir. Bu özellik, Bind'de açıklandığı gibi, [VAROLAN Özel SSL sertifikasını Azure Uygulama Hizmeti'ne][ConfigureSSL]göre IP tabanlı SSL yapılandırdıktan sonra kullanılabilir. ILB ASE'de, IP tabanlı SSL için kullanılacak daha fazla IP adresi ekemezsiniz.
+Uygulama Hizmeti bir uygulamaya özel bir IP adresi tahsis edebilir. Bu özellik, Bind'de açıklandığı gibi, IP tabanlı SSL'yi Azure [Uygulama Hizmeti'ne bind'de][ConfigureSSL]yapılandırdıktan sonra kullanılabilir. ILB ASE'de, IP tabanlı SSL için kullanılacak daha fazla IP adresi ekemezsiniz.
 
 Harici BIR ASE ile, uygulamanız için IP tabanlı SSL'yi çok kiracılı Uygulama Hizmeti'nde olduğu gibi yapılandırabilirsiniz. ASE'de her zaman bir yedek adres, en fazla 30 IP adresi vardır. Birini her kullandığınızda, bir adresin her zaman hazır olması için başka bir adres eklenir. Başka bir IP adresi ayırmak için bir zaman gecikmesi gerekir. Bu gecikme, IP adreslerinin hızlı bir şekilde art arda eklenmesini önler.
 

@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/19/2019
+ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: 8b79e0fb24c15d2e9f16640e90d62f7df5c21f32
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 903881a1d15c1f043e381f50e5b69d661cd08192
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74233707"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80476442"
 ---
 # <a name="how-trust-relationships-work-for-resource-forests-in-azure-active-directory-domain-services"></a>Azure Etkin Dizin Etki Alanı Hizmetleri'ndeki kaynak ormanları için güven ilişkileri nasıl çalışır?
 
@@ -110,11 +110,11 @@ Azure AD Etki Alanı Hizmetleri için giden orman güveni Azure portalında olu�
 
 Birçok etki alanı ve ormanlar arası işlemler, çeşitli görevleri tamamlamak için etki alanı veya orman güvenlerine bağlıdır. Bu bölümde, güvenler arasında kaynaklara erişilirken ve kimlik doğrulama başvuruları değerlendirilirken oluşan süreçler ve etkileşimler açıklanmaktadır.
 
-### <a name="overview-of-authentication-referral-processing"></a>Kimlik Doğrulama Sevk İşlemine Genel Bakış
+### <a name="overview-of-authentication-referral-processing"></a>Kimlik doğrulama sevk işleme genel bakış
 
 Kimlik doğrulama isteği bir etki alanına başlandığında, söz konusu etki alanında etki alanı denetleyicisinin isteğin geldiği etki alanıyla bir güven ilişkisi nin bulunup bulunmadığını belirlemesi gerekir. Güvenin yönü ve güvenin geçişli veya geçişsiz olup olmadığı da kullanıcının etki alanındakaynaklara erişmesi için kimlik doğrulamadan önce belirlenmelidir. Güvenilen etki alanları arasında oluşan kimlik doğrulama işlemi, kullanılan kimlik doğrulama protokolüne göre değişir. Kerberos V5 ve NTLM protokolleri, kimlik doğrulaması için başvuruları farklı bir etki alanına işleme
 
-### <a name="kerberos-v5-referral-processing"></a>Kerberos V5 Tavsiye İşlemi
+### <a name="kerberos-v5-referral-processing"></a>Kerberos V5 tavsiye işleme
 
 Kerberos V5 kimlik doğrulama protokolü, istemci kimlik doğrulaması ve yetkilendirme bilgileri için etki alanı denetleyicilerinde Net Logon hizmetine bağlıdır. Kerberos protokolü, oturum biletleri için çevrimiçi Anahtar Dağıtım Merkezi'ne (KDC) ve Active Directory hesap mağazasına bağlanır.
 
@@ -130,7 +130,7 @@ Kerberos protokolü ayrıca, adi bilet verme hizmetleri (TGS) ve güvenli bir ka
     * Evet se, istemciye güven yolundaki bir sonraki etki alanına bir havale gönderin.
     * Hayır ise, istemciye oturum açma reddedilen bir ileti gönderin.
 
-### <a name="ntlm-referral-processing"></a>NTLM Sevk İşleme
+### <a name="ntlm-referral-processing"></a>NTLM sevk işleme
 
 NTLM kimlik doğrulama protokolü, istemci kimlik doğrulaması ve yetkilendirme bilgileri için etki alanı denetleyicilerinde net oturum açma hizmetine bağlıdır. Bu protokol, Kerberos kimlik doğrulaması kullanmayan istemcilerin kimliğini doğrular. NTLM, etki alanları arasında kimlik doğrulama isteklerini geçirmek için güvenleri kullanır.
 
@@ -146,7 +146,7 @@ Hesap veritabanında yoksa, etki alanı denetleyicisi geçiş kimlik doğrulamas
     * Evet ise, kimlik doğrulama isteğini güven yolundaki bir sonraki etki alanına geçirin. Bu etki alanı denetleyicisi, kullanıcının kimlik bilgilerini kendi güvenlik hesapları veritabanıyla karşılaştırarak işlemi yineler.
     * Hayır ise, istemciye oturum açma reddedilen bir ileti gönderin.
 
-### <a name="kerberos-based-processing-of-authentication-requests-over-forest-trusts"></a>Orman Güvenleri Üzerinden Kimlik Doğrulama İsteklerinin Kerberos Tabanlı İşlenmesi
+### <a name="kerberos-based-processing-of-authentication-requests-over-forest-trusts"></a>Orman güvenleri üzerinden kimlik doğrulama isteklerinin Kerberos tabanlı işleme
 
 İki orman bir orman güveniyle bağlandığında, Kerberos V5 veya NTLM protokolleri kullanılarak yapılan kimlik doğrulama istekleri, her iki ormandaki kaynaklara erişim sağlamak için ormanlar arasında yönlendirilebilir.
 

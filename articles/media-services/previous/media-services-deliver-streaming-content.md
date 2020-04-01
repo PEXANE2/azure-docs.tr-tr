@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: b1d0c070a9196eaa9a2706a607baa9a2926e2db4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 615a6afb0f7a3e133603db10e7c79add3322070c
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67051753"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80476701"
 ---
 # <a name="publish-media-services-content-using-net"></a>.NET kullanarak Medya Hizmetleri içeriğini yayımla  
 > [!div class="op_single_selector"]
-> * [Geri kalanı](media-services-rest-deliver-streaming-content.md)
+> * [REST](media-services-rest-deliver-streaming-content.md)
 > * [.NET](media-services-deliver-streaming-content.md)
 > * [Portal](media-services-portal-publish.md)
 > 
@@ -108,7 +108,7 @@ Akış URL'leri Oluşturun
 
 
 > [!NOTE]
-> Ayrıca içeriğinizi bir SSL bağlantısı üzerinden de aktarabilirsiniz. Bu yaklaşımı yapmak için, akış URL'lerinizin HTTPS ile başladığından emin olun. Şu anda, AMS özel etki alanları ile SSL desteklemiyor.
+> İçeriğinizi TLS bağlantısı üzerinden de aktarabilirsiniz. Bu yaklaşımı yapmak için, akış URL'lerinizin HTTPS ile başladığından emin olun. Şu anda, AMS özel etki alanları ile TLS desteklemiyor.
 > 
 > 
 

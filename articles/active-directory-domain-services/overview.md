@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: overview
-ms.date: 01/22/2020
+ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: ea0fa0e9d4e475a8496d1ee52b4cdfea11a13d8d
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: cf961b00c4823d0c9efcf44b0db7bb75a80d3dfa
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76544130"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474325"
 ---
 # <a name="what-is-azure-active-directory-domain-services"></a>Azure Active Directory Etki Alanı Hizmetleri nedir?
 
@@ -51,7 +51,7 @@ Azure AD DS, şirket içi BIR AD DS ortamına VPN bağlantıları oluşturma vey
 
 ## <a name="azure-ad-ds-features-and-benefits"></a>Azure AD DS özellikleri ve avantajları
 
-Azure AD DS, buluttaki uygulamalara ve VM'lere kimlik hizmetleri sağlamak için etki alanına katılma, güvenli LDAP (LDAPS), Grup İlkesi ve DNS yönetimi ve LDAP bağlama ve okuma desteği gibi işlemler için geleneksel AD DS ortamıyla tamamen uyumludur. LDAP yazma desteği, Azure AD DS yönetilen etki alanında oluşturulan nesneler için kullanılabilir, ancak Azure AD'den senkronize edilen kaynaklar için kullanılamaz. Azure AD DS'nin aşağıdaki özellikleri dağıtım ve yönetim işlemlerini basitleştirir:
+Azure AD DS, buluttaki uygulamalara ve VM'lere kimlik hizmetleri sağlamak için etki alanına katılma, güvenli LDAP (LDAPS), Grup İlkesi, DNS yönetimi ve LDAP bağlama ve okuma desteği gibi işlemler için geleneksel AD DS ortamıyla tamamen uyumludur. LDAP yazma desteği, Azure AD DS yönetilen etki alanında oluşturulan nesneler için kullanılabilir, ancak Azure AD'den senkronize edilen kaynaklar için kullanılamaz. Azure AD DS'nin aşağıdaki özellikleri dağıtım ve yönetim işlemlerini basitleştirir:
 
 * **Basitleştirilmiş dağıtım deneyimi:** Azure REKLAM DS, Azure portalında tek bir sihirbaz kullanarak Azure AD kiracınız için etkinleştirilir.
 * **Azure AD ile entegre:** Kullanıcı hesapları, grup üyelikleri ve kimlik bilgileri Azure AD kiracınızdan otomatik olarak kullanılabilir. Azure AD kiracınızdan veya şirket içi AD DS ortamınızdan yeni kullanıcılar, gruplar veya özniteliklerdeki değişiklikler otomatik olarak Azure AD DS ile senkronize edilir.

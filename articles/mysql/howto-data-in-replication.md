@@ -6,18 +6,18 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/27/2020
-ms.openlocfilehash: 2148ce41267627d9d6e0437897a99a8dbdbe0746
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 18c1d8b42dc73951901ec4ae9b79715ddbd47617
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80382775"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474034"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>MySQL Data-in Replication için Azure Veritabanı nasıl yapılandırılır?
 
-Bu makalede, ana ve çoğaltma sunucularını yapılandırarak MySQL hizmeti için Azure Veritabanı'nda Veri Çoğaltma'yı nasıl ayarlayabileceğinizi öğreneceksiniz. Data-in Replication, diğer bulut sağlayıcıları tarafından barındırılan çevrimiçi makinelerde veya diğer bulut sağlayıcıları tarafından barındırılan veritabanı hizmetlerinde şirket içinde çalışan ana MySQL sunucusundan gelen verileri MySQL hizmeti için Azure Veritabanı'nda bir yinelemeyle eşitlemenize olanak tanır. 
+Bu makalede, ana ve çoğaltma sunucularını yapılandırarak MySQL için Azure Veritabanı'nda Veri Çoğaltma'nın nasıl ayarlanır. Bu makalede, MySQL sunucuları ve veritabanları ile bazı önceden deneyime sahip olduğunu varsayar.
 
-Bu makalede, MySQL sunucuları ve veritabanları ile en azından bazı önceki deneyime sahip olduğunu varsayar.
+MySQL hizmeti için Azure Veritabanı'nda bir yineleme oluşturmak için, Veri Çoğaltma, şirket içinde, sanal makinelerde (VM) veya bulut veritabanı hizmetlerinde ana MySQL sunucusundan gelen verileri eşitler.
 
 Bu makaledeki adımları gerçekleştirmeden önce Veri [çoğaltmasınırlamalarını ve gereksinimlerini](concepts-data-in-replication.md#limitations-and-considerations) gözden geçirin.
 
@@ -47,7 +47,7 @@ Aşağıdaki adımlar, çevrimiçi olarak barındırılan MySQL sunucusunu sanal
 
    Örneğin, ana sunucunun bağlantı noktası 3306'da hem gelen hem de giden trafiğe izin verdiğinden ve ana sunucunun **genel bir IP adresine**sahip olduğundan, DNS'nin herkese açık olduğundan veya tam nitelikli bir etki alanı adı (FQDN) olduğundan emin olun. 
    
-   Başka bir makinede barındırılan MySQL komut satırı gibi bir araçtan veya Azure portalında bulunan [Azure Bulut BulutU'ndan](https://docs.microsoft.com/azure/cloud-shell/overview) bağlanmaya çalışarak ana sunucuya bağlantıyı test edin 
+   Başka bir makinede barındırılan MySQL komut satırı gibi bir araçtan veya Azure portalında bulunan [Azure Bulut BulutU'ndan](https://docs.microsoft.com/azure/cloud-shell/overview) bağlanmaya çalışarak ana sunucuya bağlantıyı test edin.
 
 2. İkili günlüğe kaydetmeyi açma
 
@@ -71,7 +71,7 @@ Aşağıdaki adımlar, çevrimiçi olarak barındırılan MySQL sunucusunu sanal
 
 4. Yeni bir çoğaltma rolü oluşturma ve izin ayarlama
 
-   Çoğaltma ayrıcalıklarıyla yapılandırılan ana sunucuda bir kullanıcı hesabı oluşturun. Bu, SQL komutları veya MySQL Workbench gibi bir araç aracılığıyla yapılabilir. Kullanıcı yı oluştururken bunun belirtilmesi gerekeceği için SSL ile çoğaltmayı planlayıp planlamadığınızı düşünün. Ana sunucunuza nasıl kullanıcı [hesapları](https://dev.mysql.com/doc/refman/5.7/en/adding-users.html) ekleyeceğinizhakkında bilgi almak için MySQL belgelerine bakın. 
+   Çoğaltma ayrıcalıklarıyla yapılandırılan ana sunucuda bir kullanıcı hesabı oluşturun. Bu, SQL komutları veya MySQL Workbench gibi bir araç aracılığıyla yapılabilir. Kullanıcı yı oluştururken bunun belirtilmesi gerekeceği için SSL ile çoğaltmayı planlayıp planlamadığınızı düşünün. Ana sunucunuza nasıl kullanıcı [hesapları](https://dev.mysql.com/doc/refman/5.7/en/user-names.html) ekleyeceğinizhakkında bilgi almak için MySQL belgelerine bakın. 
 
    Aşağıdaki komutlarda, oluşturulan yeni çoğaltma rolü ana makineden erişebiliyor, sadece ana makineyi barındıran makineye değil. Bu, create user komutunda "syncuser@'"" belirtilerek yapılır. [Hesap adlarını belirtme](https://dev.mysql.com/doc/refman/5.7/en/account-names.html)hakkında daha fazla bilgi edinmek için MySQL belgelerine bakın.
 

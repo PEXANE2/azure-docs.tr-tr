@@ -9,12 +9,12 @@ ms.date: 04/12/2019
 ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 2b21061e8a939b91c637ef05bbe6375c0b3f82e8
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 2b09a7765cff20fb49ce6ab3d1e7bce2e15f0e9e
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80383982"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475217"
 ---
 # <a name="configure-a-windows-java-app-for-azure-app-service"></a>Azure Uygulama Hizmeti için bir Windows Java uygulamasını yapılandırma
 
@@ -74,7 +74,7 @@ Azure Uygulama Hizmeti, Azure portalı ve CLI aracılığıyla kutu atonlama ve 
 
 - [Uygulama ayarlarını yapılandırma](configure-common.md#configure-app-settings)
 - [Özel bir etki alanı ayarlama](app-service-web-tutorial-custom-domain.md)
-- [SSL bağlamalarını yapılandırma](configure-ssl-bindings.md)
+- [TLS bağlamalarını yapılandırma](configure-ssl-bindings.md)
 - [CDN ekle](../cdn/cdn-add-to-web-app.md)
 - [Kudu sitesini yapılandırın](https://github.com/projectkudu/kudu/wiki/Configurable-settings)
 
@@ -183,7 +183,7 @@ Bu özelliği devre dışı düşürmek için `WEBSITE_AUTH_SKIP_PRINCIPAL` , `1
 
 ### <a name="configure-tlsssl"></a>TLS/SSL yapılandırma
 
-Varolan bir SSL sertifikasını yüklemek ve uygulamanızın etki alanı adına bağlamak için [Azure Uygulama Hizmeti'nde SSL bağlayıcısı olan özel bir DNS adını Güvenli'deki](configure-ssl-bindings.md) yönergeleri izleyin. Varsayılan olarak uygulamanız, HTTP bağlantılarının SSL ve TLS'yi uygulamak için öğreticideki belirli adımları izlemesine izin vermeye devam edecektir.
+Varolan bir TLS/SSL sertifikasını yüklemek ve uygulamanızın etki alanı adına bağlamak için [Azure Uygulama Hizmeti'nde TLS bağlayıcısı olan özel bir DNS adını Güvenli'deki](configure-ssl-bindings.md) yönergeleri izleyin. Varsayılan olarak uygulamanız, HTTP bağlantılarının SSL ve TLS'yi uygulamak için öğreticideki belirli adımları izlemesine izin vermeye devam edecektir.
 
 ### <a name="use-keyvault-references"></a>KeyVault Referanslarını Kullanma
 
@@ -228,7 +228,7 @@ Bu bölümde, Linux'ta Azure Uygulama Hizmeti'nde dağıtılan Java uygulamalar�
 
 Bu yönergeler tüm veritabanı bağlantıları için geçerlidir. Yer tutucuları seçtiğiniz veritabanının sürücü sınıfı adı ve JAR dosyasıyla doldurmanız gerekir. Sağlanan sınıf adları ve ortak veritabanları için sürücü indirme içeren bir tablodur.
 
-| Database   | Sürücü Sınıf Adı                             | JDBC Sürücüsü                                                                      |
+| Veritabanı   | Sürücü Sınıf Adı                             | JDBC Sürücüsü                                                                      |
 |------------|-----------------------------------------------|------------------------------------------------------------------------------------------|
 | PostgreSQL | `org.postgresql.Driver`                        | [İndir](https://jdbc.postgresql.org/download.html)                                    |
 | MySQL      | `com.mysql.jdbc.Driver`                        | [İndir](https://dev.mysql.com/downloads/connector/j/) ("Platform Bağımsız"ı seçin) |

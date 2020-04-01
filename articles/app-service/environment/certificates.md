@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/29/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 65fc4ed25b0fd360de8e3b1439d1766485eb2e58
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ba1d06ce83d50b6f0db84d1e423e66eae98f665d
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74688638"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477505"
 ---
 # <a name="certificates-and-the-app-service-environment"></a>Sertifikalar ve Uygulama Hizmet Ortamı 
 
@@ -22,7 +22,7 @@ ASE tek bir kiracı sistemidir. Tek kiracı olduğundan, yalnızca çok kiracıl
 
 ## <a name="ilb-ase-certificates"></a>ILB ASE sertifikaları 
 
-Harici ASE kullanıyorsanız, uygulamalarınız [appname] adresinden ulaşılır. [asename].p.azurewebsites.net. Varsayılan olarak tüm ASE'ler, hatta ILB'ler bile bu biçimi izleyen sertifikalarla oluşturulur. Bir ILB ASE'niz olduğunda, uygulamalara ILB ASE oluştururken belirttiğiniz alan adı temel alınarak erişilir. Uygulamaların SSL'yi desteklemesi için sertifika yüklemeniz gerekir. Dahili sertifika yetkililerini kullanarak, harici bir verenden sertifika satın alarak veya kendi imzalanmış bir sertifika kullanarak geçerli bir SSL sertifikası edinin. 
+Harici ASE kullanıyorsanız, uygulamalarınız [appname] adresinden ulaşılır. [asename].p.azurewebsites.net. Varsayılan olarak tüm ASE'ler, hatta ILB'ler bile bu biçimi izleyen sertifikalarla oluşturulur. Bir ILB ASE'niz olduğunda, uygulamalara ILB ASE oluştururken belirttiğiniz alan adı temel alınarak erişilir. Uygulamaların TLS'yi desteklemesi için sertifika yüklemeniz gerekir. Dahili sertifika yetkililerini kullanarak, harici bir kuruluştan sertifika satın alarak veya kendi imzalanmış bir sertifika kullanarak geçerli bir TLS/SSL sertifikası edinin. 
 
 ILB ASE'niz ile sertifikaları yapılandırmak için iki seçenek vardır.  ILB ASE için joker karakter varsayılan sertifikası ayarlayabilir veya ASE'deki tek tek web uygulamalarında sertifika ayarlayabilirsiniz.  Yaptığınız seçimden bağımsız olarak, aşağıdaki sertifika öznitelikleri nin düzgün şekilde yapılandırılması gerekir:
 
@@ -58,7 +58,7 @@ BIR ASE'de barındırılan uygulamalar, çok kiracılı Uygulama Hizmeti'nde bul
 - IP tabanlı SSL, yalnızca harici bir ASE ile desteklenir.  ILB ASE, IP tabanlı SSL'yi desteklemez.
 - KeyVault sertifikaları barındırılan 
 
-Bu sertifikaları yükleme ve yönetme yönergeleri [Azure Uygulama Hizmeti'nde Bir SSL sertifikası ekle'de](../configure-ssl-certificate.md)kullanılabilir.  Sertifikaları yalnızca web uygulamanıza atadığınız özel bir alan adı yla eşleşecek şekilde yapılandırıyorsanız, bu talimatlar yeterli olacaktır. Varsayılan alan adı içeren bir ILB ASE web uygulamasının sertifikasını yüklüyorsanız, sertifikanın SAN'ındaki scm sitesini daha önce belirtildiği gibi belirtin. 
+Bu sertifikaları yükleme ve yönetme yönergeleri, [Azure Uygulama Hizmeti'nde TLS/SSL sertifikası ekle'de](../configure-ssl-certificate.md)kullanılabilir.  Sertifikaları yalnızca web uygulamanıza atadığınız özel bir alan adı yla eşleşecek şekilde yapılandırıyorsanız, bu talimatlar yeterli olacaktır. Varsayılan alan adı içeren bir ILB ASE web uygulamasının sertifikasını yüklüyorsanız, sertifikanın SAN'ındaki scm sitesini daha önce belirtildiği gibi belirtin. 
 
 ## <a name="tls-settings"></a>TLS ayarları 
 

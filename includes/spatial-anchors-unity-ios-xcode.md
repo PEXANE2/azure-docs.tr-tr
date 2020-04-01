@@ -5,51 +5,51 @@ ms.topic: include
 ms.date: 1/29/2019
 ms.author: rgarcia
 ms.openlocfilehash: b052772bbfe9d69e430d9f722d8db56b48db7610
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/25/2019
+ms.lasthandoff: 03/26/2020
 ms.locfileid: "72933496"
 ---
-**Oluştur**' u seçin. Açılan iletişim kutusunda, Xcode projesinin dışarı aktarılacağı klasörü seçin.
+**Yapı'yı**seçin. Açılan iletişim kutusunda, Xcode projesini dışa aktarmak için bir klasör seçin.
 
-Dışarı aktarma işlemi tamamlandığında dışarı aktarılmış Xcode projesini içeren bir klasör görüntülenir.
+Dışa aktarma tamamlandığında, dışa aktarılan Xcode projesini içeren bir klasör görüntülenir.
 
 > [!NOTE]
-> Değiştirmek veya eklemek isteyip istemediğinizi soran bir pencere görünürse, daha hızlı olduğundan **ekleme** ' yi seçmenizi öneririz. Yalnızca sahneinizdeki varlıkları değiştiriyorsanız **Değiştir** ' i seçmeniz gerekir. (Örneğin, üst/alt ilişkileri ekliyor, kaldırdıysanız veya değiştiriyorsanız ya da özellikleri ekliyorsanız, kaldırıyorsanız veya değiştiriyorsanız.) Yalnızca kaynak kodu değişikliği yapıyorsanız, **ekleme** yeterli olmalıdır.
+> Değiştirmeveya uygulama isteyip istemediğinisoran bir pencere görünürse, daha hızlı olduğu için **Append'i** seçmenizi öneririz. Yalnızca sahnenizdeki varlıkları değiştiriyorsanız **Değiştir'i** seçmeniz gerekir. (Örneğin, üst/alt ilişkileri ekliyor, kaldırıyor veya değiştiriyorsanız veya özellikler ekliyor, kaldırıyor veya değiştiriyorsanız.) Yalnızca kaynak kodu değişiklikleri yapıyorsanız, **Append** yeterli olmalıdır.
 
-### <a name="convert-the-xcode-project-to-xcworkspace-containing-azure-spatial-anchors-references"></a>Xcode projesini Azure uzamsal bağlayıcı başvurularını içeren xcworkspace 'e Dönüştür
+### <a name="convert-the-xcode-project-to-xcworkspace-containing-azure-spatial-anchors-references"></a>Xcode projesini Azure Uzamsal Bağlantı referansları içeren xcworkspace'e dönüştürün
 
-Proje için gerekli CocoaPods yüklemek üzere, dışarıya aktarılmış Xcode proje klasöründe bu komutu terminalde çalıştırın:
+Dışa aktarılan Xcode proje klasöründe, proje için gerekli CocoaPod'ları yüklemek için bu komutu Terminal'de çalıştırın:
 
 ```bash
 pod install --repo-update
 ```
 
-Artık projeyi Xcode 'da açmak için `Unity-iPhone.xcworkspace` açabilirsiniz:
+Artık projeyi `Unity-iPhone.xcworkspace` Xcode'da açmak için açabilirsiniz:
 
 ```bash
 open ./Unity-iPhone.xcworkspace
 ```
 
 > [!NOTE]
-> MacOS Catalina 'e yükselttikten sonra CocoaPod sorunları [yaşıyorsanız, sorun giderme adımlarına bakın](../articles/spatial-anchors/quickstarts/get-started-unity-ios.md#cocoapods-issues-on-macos-catalina-1015) (10,15).
+> MacOS Catalina'ya (10.15) yükselttikten sonra CocoaPod sorunları yaşıyorsanız sorun giderme adımlarını [buradan](../articles/spatial-anchors/quickstarts/get-started-unity-ios.md#cocoapods-issues-on-macos-catalina-1015) görebilirsiniz.
 
-Proje ayarlarını görüntülemek için kök **Unity-iPhone** düğümünü seçin ve ardından **genel** sekmesini seçin.
+Proje ayarlarını görüntülemek için kök **Unity-iPhone** düğümünü seçin ve ardından **Genel** sekmesini seçin.
 
-**İmza**' ın altında, **imzalamayı otomatik olarak Yönet** ' in etkinleştirildiğinden emin olun. Yoksa, etkinleştirin ve sonra yapı ayarlarını sıfırla açılan iletişim kutusunda **Otomatik Etkinleştir** ' i seçin.
+**İmzalama**altında, **otomatik olarak imzalamayı yönetmek** etkin olduğundan emin olun. Değilse, etkinleştirin ve ardından yapı ayarlarını sıfırlamak için görünen iletişim kutusunda **Otomatik'i etkinleştir'i** seçin.
 
-**Dağıtım bilgileri**altında **dağıtım hedefinin** `11.0`olarak ayarlandığından emin olun.
+**Dağıtım Bilgileri**altında, **Dağıtım Hedefi'nin** `11.0`' olarak ayarlandıkundan emin olun.
 
-### <a name="deploy-the-app-to-your-ios-device"></a>Uygulamayı iOS cihazınıza dağıtma
+### <a name="deploy-the-app-to-your-ios-device"></a>Uygulamayı iOS aygıtınıza dağıtma
 
-İOS cihazını Mac 'e bağlayın ve **etkin düzeni** iOS cihazınıza ayarlayın.
+iOS aygıtını Mac'e bağlayın ve **etkin düzeni** iOS aygıtınıza ayarlayın.
 
 ![Cihazı seçin](./media/spatial-anchors-unity/select-device.png)
 
-**Oluştur ' u seçin ve ardından geçerli düzeni çalıştırın**.
+Yapı'yı seçin **ve ardından geçerli düzeni çalıştırın.**
 
-![Dağıt ve Çalıştır](./media/spatial-anchors-unity/deploy-run.png)
+![Dağıt Ve çalıştır](./media/spatial-anchors-unity/deploy-run.png)
 
 > [!NOTE]
-> `library not found for -lPods-Unity-iPhone` bir hata görürseniz, büyük olasılıkla `.xcworkspace` dosyası yerine `.xcodeproj` dosyasını açtınız.
+> Bir `library not found for -lPods-Unity-iPhone` hata görürseniz, büyük `.xcodeproj` olasılıkla dosya `.xcworkspace` yerine dosyayı açmışsınızdır.

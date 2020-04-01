@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: c4d34a6db774712e13ea86d38ae48a543a07a8bc
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: e60d3f0221bce836f49e87a96c762e68cf8a60ad
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79529773"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80473676"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Hızlı başlangıç: ASP.NET Core web uygulamasına Microsoft ile oturum açma ekleme
 Bu hızlı başlangıçta, bir ASP.NET Core web uygulamasının herhangi bir Azure Etkin Dizin (Azure AD) örneğinden kişisel hesaplarda (hotmail.com, outlook.com, diğerleri) ve iş ve okul hesaplarında nasıl oturum açabileceğini öğrenmek için bir kod örneği kullanırsınız. (Bkz. örnek bir resim için [nasıl çalışır?)](#how-the-sample-works)
@@ -75,7 +75,7 @@ Bu hızlı başlangıçta, bir ASP.NET Core web uygulamasının herhangi bir Azu
 > Projenizi uygulamanızın özellikleriyle yapılandırdık ve çalışmaya hazır. 
 > [!div class="sxs-lookup" renderon="portal"]
 > > [!NOTE]
-> > Enter_the_Supported_Account_Info_Here
+> > `Enter_the_Supported_Account_Info_Here`
 > [!div renderon="docs"]
 > #### <a name="step-3-run-your-visual-studio-project"></a>Adım 3: Visual Studio projenizi çalıştırın
 > 1. Zip dosyasını kök klasörü içindeki yerel bir klasöre ayıklama - örneğin, **C:\Azure-Örnekler**
@@ -165,7 +165,7 @@ Yöntem, `AddAuthentication` hizmeti tarayıcı senaryolarında kullanılan çer
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Yepyeni bir ASP.NET Core Web uygulamasına kimlik doğrulamanın nasıl eklendirilebildiğini, Microsoft Graph'ı nasıl arayacağınızı ve diğer Microsoft API'lerini nasıl çağıracağınız, nasıl ekleyeceğiniz hakkında talimatlar da dahil olmak üzere daha fazla bilgi için bu ASP.NET Core öğreticisi için GitHub repo'ya göz atın yetkilendirme, ulusal bulutlarda veya sosyal kimliklerde ve daha fazlasında kullanıcılarda nasıl oturum açılır:
+Yepyeni bir ASP.NET Core Web uygulamasına kimlik doğrulamanın nasıl ekleyeceğiniz, Microsoft Graph'ı ve diğer Microsoft API'lerini nasıl arayacağınız, kendi API'lerinizi nasıl arayacağınız, yetkilendirme nasıl ekleyeceğiniz, ulusal bulutlardaki kullanıcılarda nasıl oturum açacağınız veya sosyal kimliklerle ve daha fazlası dahil olmak üzere daha fazla bilgi için bu ASP.NET Core öğreticisi için GitHub repo'ya göz atın :
 
 > [!div class="nextstepaction"]
 > [ASP.NET Core Web App öğretici](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: ec1507e09a183f8d466a456b70151861f5f0e82c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8e79f4c791d0252c719846da3aa8024b0e622dca
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80159447"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477012"
 ---
 # <a name="load-balancer-health-probes"></a>Load Balancer durum araştırmaları
 
@@ -66,7 +66,7 @@ Belirtilen zaman aralığı ve aralık değerleri, bir örneğin yukarı mı yok
 
 Davranışı bir örnekle daha da gösteredebiliriz. Sonda yanıtlarının sayısını 2'ye ve aralığı 5 saniyeye ayarladıysanız, bu 10 saniyelik bir aralık içinde 2 sonda zaman aralığı hatalarının gözlenmeleri gerektiği anlamına gelir.  Sondanın gönderildiği saat, uygulamanız durumu değiştirebildiği zaman eşitlenmedığından, algılama süresini iki senaryoya göre bağlayabiliriz:
 
-1. Uygulamanız ilk sonda gelmeden hemen önce bir zaman çıkış sondası yanıtı üretmeye başlarsa, bu olayların algılanması 10 saniye (2 x 5 saniye aralık) artı uygulamanın süresi nin ilk zaman aralığına sinyal vermeye başlaması sonda geldi.  Bu algılamanın 10 saniyeden biraz daha uzun süreceğini varsayabilirsiniz.
+1. Uygulamanız ilk sonda gelmeden hemen önce bir zaman çıkış sondası yanıtı üretmeye başlarsa, bu olayların algılanması 10 saniye (2 x 5 saniye aralık) artı uygulamanın ilk sonda geldiğinde bir zaman dışarı sinyali vermeye başlayan süresi sürer.  Bu algılamanın 10 saniyeden biraz daha uzun süreceğini varsayabilirsiniz.
 2. Uygulamanız ilk sonda geldikten hemen sonra bir zaman zaman sondası yanıtı üretmeye başlarsa, bu olayların algılanması bir sonraki sonda gelene (ve saatler çıkana kadar) artı başka bir 10 saniye (2 x 5 saniyelik aralıklar) gelene kadar başlamaz.  Bu algılamanın 15 saniyeden az süreceğini varsayabilirsiniz.
 
 Bu örnekte, algılama oluştuktan sonra, platformun bu değişikliğe tepki göstermesi çok az zaman alır.  Bu bir bağlı olarak anlamına gelir 
@@ -76,7 +76,10 @@ Bu örnekte, algılama oluştuktan sonra, platformun bu değişikliğe tepki gö
 3. algılama platformu üzerinden iletildiğinde 
 
 bir zaman-out sonda tepkisi ne kadar az 10 saniye ve biraz üzerinde biraz 15 saniye arasında uygulamadan sinyal bir değişiklik tepki alacağını varsayabiliriz.  Bu örnek, neler olduğunu göstermek için sağlanır, ancak, bu örnekte gösterilen yukarıdaki kaba kılavuz ötesinde tam bir süre tahmin etmek mümkün değildir.
- 
+
+>[!NOTE]
+>Sağlık sondası arka uç havuzunda çalışan tüm örnekleri araştıracak. Bir örnek durdurulursa, yeniden başlatılana kadar incelenmez.
+
 ## <a name="probe-types"></a><a name="types"></a>Sonda türleri
 
 Sistem durumu sondası tarafından kullanılan protokol aşağıdakilerden birine yapılandırılabilir:
@@ -232,7 +235,7 @@ UDP yük dengelemesi için, arka uç uç noktasından özel bir sistem durumu so
 
 [Standart Yük Dengeleyici](load-balancer-standard-overview.md)ile [HA Bağlantı Noktaları yük dengeleme kuralları](load-balancer-ha-ports-overview.md) kullanılırken, tüm bağlantı noktaları yük dengeli ve tek bir sistem sondası yanıtı tüm örneğin durumunu yansıtmalıdır.
 
-Bu yapılandırma senaryonuzda basamaklı hatalara yol açabileceğinden, vnet'inizdeki başka bir örneğe sistem durumu sondasını alan örnek üzerinden bir sistem durumu sondasını çevirmeyin veya proxy etmeyin.  Aşağıdaki senaryoyu göz önünde bulundurun: Bir Yük Dengeleyici kaynağının arka uç havuzunda, aygıtlar için ölçek ve artıklık sağlamak üzere bir üçüncü taraf cihaz kümesi dağıtılır ve sistem durumu sondası, üçüncü taraf cihaz eklerinin veya cihazın arkasındaki diğer sanal makinelere çevirir.  Cihazın arkasındaki diğer sanal makinelere istekler çevirmek veya proxy etmek için kullandığınız aynı bağlantı noktasını araştırrsanız, cihazın arkasındaki tek bir sanal makineden gelen herhangi bir sonda yanıtı cihazın kendisini ölü olarak işaretleyecektir. Bu yapılandırma, cihazın arkasındaki tek bir arka uç bitiş noktası sonucunda tüm uygulama senaryosunun basamaklı bir arızaya yol açabilir.  Tetikleyici, Yük Dengeleyicisinin orijinal hedefi (cihaz örneğini) işaretlemesine ve bunun karşılığında tüm uygulama senaryonuzu devre dışı düşürebilmesine neden olacak aralıklı bir sonda hatası olabilir. Bunun yerine cihazın kendi sağlığını araştırın. Sistem durumu sinyalini belirlemek için sonda seçimi, ağ sanal cihazları (NVA) senaryoları için önemli bir husustur ve bu tür senaryolar için uygun sistem durumu sinyalinin ne olduğu konusunda uygulama satıcınıza danışmalısınız.
+Bu yapılandırma senaryonuzda basamaklı hatalara yol açabileceğinden, vnet'inizdeki başka bir örneğe sistem durumu sondasını alan örnek üzerinden bir sistem durumu sondasını çevirmeyin veya proxy etmeyin.  Aşağıdaki senaryoyu göz önünde bulundurun: Bir Yük Dengeleyici kaynağının arka uç havuzunda, aygıtlar için ölçek ve artıklık sağlamak üzere bir dizi üçüncü taraf cihaz, üçüncü taraf cihaz proxies veya cihazın arkasındaki diğer sanal makinelere çevirir bir bağlantı noktası araştırmak için yapılandırılmıştır dağıtılır.  Cihazın arkasındaki diğer sanal makinelere istekler çevirmek veya proxy etmek için kullandığınız aynı bağlantı noktasını araştırrsanız, cihazın arkasındaki tek bir sanal makineden gelen herhangi bir sonda yanıtı cihazın kendisini ölü olarak işaretleyecektir. Bu yapılandırma, cihazın arkasındaki tek bir arka uç bitiş noktası sonucunda tüm uygulama senaryosunun basamaklı bir arızaya yol açabilir.  Tetikleyici, Yük Dengeleyicisinin orijinal hedefi (cihaz örneğini) işaretlemesine ve bunun karşılığında tüm uygulama senaryonuzu devre dışı düşürebilmesine neden olacak aralıklı bir sonda hatası olabilir. Bunun yerine cihazın kendi sağlığını araştırın. Sistem durumu sinyalini belirlemek için sonda seçimi, ağ sanal cihazları (NVA) senaryoları için önemli bir husustur ve bu tür senaryolar için uygun sistem durumu sinyalinin ne olduğu konusunda uygulama satıcınıza danışmalısınız.
 
 Güvenlik duvarı ilkelerinizde sondanın [kaynak IP'sine](#probesource) izin vermezseniz, örneğinize ulaşamadığı için sistem durumu sondası başarısız olur.  Buna karşılık, Yük Dengeleyici sağlık sondası arızası nedeniyle örneğinizi aşağı işaretleecektir.  Bu yanlış yapılandırma, yük dengeli uygulama senaryobaşarısız neden olabilir.
 

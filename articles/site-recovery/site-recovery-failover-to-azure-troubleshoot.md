@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 01/08/2020
 ms.author: mayg
-ms.openlocfilehash: 6de37daa0b9e0ebc711a5dacbdce352e3675a3db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 54e44a12f593d2074eefe5b2ff890863db3199f7
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79257751"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478946"
 ---
 # <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>VMware VM veya fiziksel makine üzerinden Azure'da başarısız olduğunda hata giderme
 
@@ -128,7 +128,7 @@ Bu normalde endişe için bir neden değildir ve genellikle planlanmamış failo
 
 Bu sorun, azure'daki veri mağazasını göremediğinizde, başarısız olan sanal makineyi yeniden korumaya çalışırken portalı göremediğinizde belirtilir. Bunun nedeni, Azure Site Kurtarma'ya eklenen vCenters altında Master hedefinin sanal bir makine olarak tanınmamasıdır.
 
-Bir titreşim makinesini yeniden koruma hakkında daha fazla bilgi için, Azure'a geçemeden yeniden koruma ve makineleri şirket içi bir siteye geri alma konusunda başarısız [olun.](vmware-azure-reprotect.md)
+Sanal makineyi yeniden koruma hakkında daha fazla bilgi için, [Azure'a geçtikten sonra yeniden koruma ve](vmware-azure-reprotect.md)geri makineleri şirket içi bir siteye geri alma bilgisini görün.
 
 Sorunu gidermek için:
 
@@ -138,7 +138,7 @@ Kaynak makinenizi yöneten vCenter'da Ana hedefi el ile oluşturun. Datastore so
 > 
 > Bulma ve yenileme kumaş işlemleri tamamlamak için 30 dakika kadar sürebilir. 
 
-## <a name="linux-master-target-registration-with-cs-fails-with-an-ssl-error-35"></a>CS ile Linux Master Target kaydı Bir SSL hatası 35 ile başarısız olur 
+## <a name="linux-master-target-registration-with-cs-fails-with-a-tls-error-35"></a>CS ile Linux Master Target kaydı TLS hatası 35 ile başarısız olur 
 
 Yapılandırma sunucusuyla azure site kurtarma yöneticisi hedef kaydı, Orijinalleştirilmiş Proxy'nin Ana Hedef'te etkinleştirilmesi nedeniyle başarısız olur. 
  

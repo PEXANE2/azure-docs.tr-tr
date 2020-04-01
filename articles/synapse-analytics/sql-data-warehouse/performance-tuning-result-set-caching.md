@@ -11,12 +11,12 @@ ms.date: 10/10/2019
 ms.author: xiaoyul
 ms.reviewer: nidejaco;
 ms.custom: azure-synapse
-ms.openlocfilehash: 0c2190c29054301a8e21a9a27eb078802fbc9612
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: da476dc14949ebab1a054a9624d91acb25b9f2b4
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350855"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474471"
 ---
 # <a name="performance-tuning-with-result-set-caching"></a>Sonuç kümesini önbelleğe ile performans ayarlama  
 Sonuç kümesi önbelleğe alma etkinleştirildiğinde, SQL Analytics yinelenen kullanım için sorgu sonuçlarını kullanıcı veritabanında otomatik olarak önbelleğe verir.  Bu, sonraki sorgu yürütmelerinin doğrudan kalıcı önbellekten sonuç almalarına olanak tanır, bu nedenle yeniden hesaplama gerekmez.   Sonuç kümesi önbelleğe alma sorgu performansını artırır ve bilgi işlem kaynağı kullanımını azaltır.  Ayrıca, önbelleğe alınan sonuçlar kümesini kullanan sorgular eşzamanlılık yuvaları kullanmaz ve bu nedenle varolan eşzamanlılık sınırlarına dahil edilmez. Güvenlik için, kullanıcılar önbelleğe alınan sonuçlara yalnızca önbelleğe alınan sonuçları oluşturan kullanıcılarla aynı veri erişim izinlerine sahiplerse erişebilirler.  
@@ -65,10 +65,10 @@ Burada, sonuç kümesi önbelleğe alma etkinken yürütülen bir sorgu için ö
 - Yeni sorgu ile sonuç kümesi önbelleğini oluşturan önceki sorgu arasında tam bir eşleşme vardır.
 - Önbelleğe alınan sonuç kümesinin oluşturulduğu tablolarda veri veya şema değişikliği yoktur.
 
-Bir sorgunun bir sonuç önbelleği isabetiyle mi yoksa kaçırArak mı yürütüldeceğini denetlemek için bu komutu çalıştırın. Bir önbellek isabet varsa, result_cache_hit 1 döndürecektir.
+Bir sorgunun bir sonuç önbelleği isabetiyle mi yoksa kaçırArak mı yürütüldeceğini denetlemek için bu komutu çalıştırın. result_set_cache sütunu önbellek isabeti için 1, önbellek kaçlaması için 0 ve sonuç kümesi önbelleğinin neden kullanılmadığı nedenlerden dolayı negatif değerler döndürür. Ayrıntılar için [sys.dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=aps-pdw-2016-au7) kontrol edin.
 
 ```sql
-SELECT request_id, command, result_cache_hit FROM sys.dm_pdw_exec_requests 
+SELECT request_id, command, result_set_cache FROM sys.dm_pdw_exec_requests
 WHERE request_id = <'Your_Query_Request_ID'>
 ```
 

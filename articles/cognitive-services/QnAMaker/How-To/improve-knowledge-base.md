@@ -2,13 +2,13 @@
 title: Bilgi tabanını geliştirin - QnA Maker
 description: Aktif öğrenme ile bilgi tabanınızın kalitesini artırın. Varolan soruları kaldırmadan veya değiştirmeden gözden geçirin, kabul edin veya reddedin.
 ms.topic: conceptual
-ms.date: 03/16/2020
-ms.openlocfilehash: 8b2176731ce456b70521cc9208435d0b19943ab8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/31/2020
+ms.openlocfilehash: 1eb0ed42f700c14350a5e4f1eff9b7592cbf8ef6
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80053077"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474892"
 ---
 # <a name="accept-active-learning-suggested-questions-in-the-knowledge-base"></a>Bilgi tabanında aktif öğrenme önerilen soruları kabul edin
 
@@ -203,7 +203,7 @@ Azure [Bot örneğinde,](https://aka.ms/activelearningsamplebot)bu etkinliklerin
 
 ### <a name="example-c-code-for-train-api-with-bot-framework-4x"></a>Bot Framework 4.x ile Tren API için Örnek C# kodu
 
-Aşağıdaki kod, Tren API'si ile QnA Maker'a nasıl bilgi gönderilebildiğini göstermektedir. Bu [tam kod örneği](https://github.com/microsoft/BotBuilder-Samples/tree/master/experimental/qnamaker-activelearning/csharp_dotnetcore) GitHub'da mevcuttur.
+Aşağıdaki kod, Tren API'si ile QnA Maker'a nasıl bilgi gönderilebildiğini göstermektedir.
 
 ```csharp
 public class FeedbackRecords
@@ -266,7 +266,7 @@ public async static void CallTrain(string endpoint, FeedbackRecords feedbackReco
 
 ### <a name="example-nodejs-code-for-train-api-with-bot-framework-4x"></a>Bot Framework 4.x ile Tren API için Örnek Düğüm.js kodu
 
-Aşağıdaki kod, Tren API'si ile QnA Maker'a nasıl bilgi gönderilebildiğini göstermektedir. Bu [tam kod örneği](https://github.com/microsoft/BotBuilder-Samples/blob/master/experimental/qnamaker-activelearning/javascript_nodejs) GitHub'da mevcuttur.
+Aşağıdaki kod, Tren API'si ile QnA Maker'a nasıl bilgi gönderilebildiğini göstermektedir.
 
 ```javascript
 async callTrain(stepContext){

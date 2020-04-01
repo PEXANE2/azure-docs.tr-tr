@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 02/19/2020
+ms.date: 03/31/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 89240102837b65ed2a09d9f4865ad47ee5d5afa2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 91d285e2a839a7d6266c5d58f52901a48a7a8c84
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80154568"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80473180"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD Kimlik Doğrulama ve yetkilendirme hata kodları
 
@@ -148,7 +148,7 @@ Döndürülen hata kodunun sayısal kısmında arama yapın.  Örneğin, "AADSTS
 | AADSTS54000 | MinorUserBlockedLegalAgeGroupRule |
 | AADSTS65001 | DelegationDoesNotExist - Kullanıcı veya yönetici kimliği X ile uygulamayı kullanmaya izin vermedi. |
 | AADSTS65004 | UserDeclinedConsent - Kullanıcı uygulamaya erişmeye izin vermeyi reddetti. Kullanıcıdan oturum açmayı yeniden denemesini ve uygulamaya izin vermesini isteyin|
-| AADSTS65005 | Yanlış Yapılandırılmış Uygulama - Kaynak erişim listesi gerekli kaynak tarafından keşfedilebilir uygulamalar içermez veya istemci uygulaması gerekli kaynak erişim listesinde belirtilmeyen kaynağa erişim istedi veya Grafik hizmeti kötü döndü istek veya kaynak bulunamadı. Uygulama SAML'yi destekliyorsa, uygulamayı yanlış Tanımlayıcı (Entity) ile yapılandırmış olabilirsiniz. Aşağıdaki bağlantıyı kullanarak SAML için listelenen çözünürlüğü deneyin:[https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#no-resource-in-requiredresourceaccess-list](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav) |
+| AADSTS65005 | Yanlış Yapılandırılmış Uygulama - Kaynak erişim listesi gerekli kaynak tarafından keşfedilebilir uygulamalar içermez veya istemci uygulaması gerekli kaynak erişim listesinde belirtilmeyen kaynağa erişim istedi veya Graph hizmeti kötü isteği iade etti veya kaynak bulunamadı. Uygulama SAML'yi destekliyorsa, uygulamayı yanlış Tanımlayıcı (Entity) ile yapılandırmış olabilirsiniz. Aşağıdaki bağlantıyı kullanarak SAML için listelenen çözünürlüğü deneyin:[https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#no-resource-in-requiredresourceaccess-list](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav) |
 | AADSTS67003 | AktörNotValidServiceIdentity |
 | AADSTS70000 | GeçersizHibe - Kimlik doğrulama başarısız oldu. Yenileme belirteci geçerli değildir. Hata aşağıdaki nedenlerden dolayı olabilir:<ul><li>Belirteç bağlama üstbilgiboş</li><li>Belirteç bağlama karma eşleşmiyor</li></ul> |
 | AADSTS70001 | Yetkisiz İstemci - Uygulama devre dışı bırakılır. |
@@ -271,6 +271,8 @@ Döndürülen hata kodunun sayısal kısmında arama yapın.  Örneğin, "AADSTS
 | AADSTS700020 | Etkileşim Gerekli - Erişim izni etkileşim gerektirir. |
 | AADSTS700022 | GeçersizMultipleResourcesScope - Giriş parametresi kapsamı için sağlanan değer, birden fazla kaynak içerdiğinden geçerli değildir. |
 | AADSTS700023 | GeçersizKaynakSızKapsam - Giriş parametresi kapsamı için sağlanan değer, erişim jetonu istediğinde geçerli değildir. |
+| AADSTS7000222| GeçersizClientSecretExpiredKeysProvided - Sağlanan istemci gizli anahtarları süresi doldu. Uygulamanız için yeni anahtarlar oluşturmak veya daha fazla güvenlik için sertifika kimlik bilgilerini kullanmayı düşünmek için Azure Portalı'nı ziyaret edin:https://aka.ms/certCreds |
+| AADSTS700005 | InvalidGrantRedeemAgainstWrongTenant - Sağlanan Yetki Kodu diğer kiracı karşı kullanmak için tasarlanmıştır, böylece reddedildi. OAuth2 Yetki Kodu, uygun olduğu şekilde (/ortak veya /{kiracı-ID} için satın alındığı aynı kiracıya karşı kullanılmalıdır. |
 | AADSTS1000000 | UserNotBoundError - Bind API, Azure AD kullanıcısının henüz gerçekleşmemiş harici bir IDP ile de kimlik doğrulamasını gerektirir. |
 | AADSTS1000002 | BindCompleteInterruptError - Bağlama başarıyla tamamlandı, ancak kullanıcı bilgilendirilmelidir. |
 | AADSTS7000112 | YetkisizClientApplicationDisabled - Uygulama devre dışı bırakılır. |

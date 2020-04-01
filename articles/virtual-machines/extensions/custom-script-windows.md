@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/02/2019
 ms.author: robreed
-ms.openlocfilehash: 698fab470cdc8b8d04fa4319fd71c31b58d1c5a3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2c7cad2dfdcd55073a1cf09d79e5223b666ced5f
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80066887"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478157"
 ---
 # <a name="custom-script-extension-for-windows"></a>Windows için Özel Betik Uzantısı
 
@@ -106,7 +106,7 @@ Bu öğeler hassas veri olarak ele alınmalıdır ve uzantılar korumalı ayar y
 > Aynı VM için aynı Kaynak Yöneticisi şablonunda iki kez özel komut dosyası belirterek, bir uzantının yalnızca bir sürümü bir VM'ye zamanında yüklenebilir.
 
 > [!NOTE]
-> Bu şemı VirtualMachine kaynağının içinde veya bağımsız bir kaynak olarak kullanabiliriz. Bu uzantı ARM şablonunda bağımsız bir kaynak olarak kullanılıyorsa, kaynağın adı bu biçimde "virtualMachineName/extensionName" olmalıdır. 
+> Bu şemı VirtualMachine kaynağının içinde veya bağımsız bir kaynak olarak kullanabiliriz. Bu uzantı ARM şablonunda bağımsız bir kaynak olarak kullanılıyorsa, kaynağın adı bu biçimde "virtualMachineName/extensionName" olmalıdır.
 
 ### <a name="property-values"></a>Özellik değerleri
 
@@ -146,6 +146,8 @@ Genel ayarları kullanarak hata ayıklama için yararlı olabilir, ancak korumal
 Genel ayarlar, komut dosyasının yürütüleceği VM'ye açık metin olarak gönderilir.  Korumalı ayarlar, yalnızca Azure ve VM tarafından bilinen bir anahtar kullanılarak şifrelenir. Ayarlar gönderildiklerinde VM'ye kaydedilir, yani ayarlar şifrelenmişse VM'de şifrelenir. Şifrelenmiş değerlerin şifresini çözmek için kullanılan sertifika VM'de depolanır ve çalışma zamanında ayarların şifresini çözmek için (gerekirse) kullanılır.
 
 ####  <a name="property-managedidentity"></a>Özellik: yönetilenIdentity
+> [!NOTE]
+> Bu özellik yalnızca korumalı ayarlarda **belirtilmelidir.**
 
 CustomScript (sürüm 1.10' dan itibaren), "fileUris" ayarında sağlanan URL'lerden dosya(lar) indirmek için [yönetilen kimliği](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) destekler. CustomScript'in, kullanıcı SAS belirteçleri veya depolama hesabı anahtarları gibi sırları aktarmak zorunda kalmadan Azure Depolama özel bloblarına veya kapsayıcılarına erişmesine olanak tanır.
 
@@ -278,7 +280,7 @@ The response content cannot be parsed because the Internet Explorer engine is no
 
 Klasik VM'lerde Özel Komut Dosyası Uzantısı'nı dağıtmak için Azure portalını veya Klasik Azure PowerShell cmdlets'ini kullanabilirsiniz.
 
-### <a name="azure-portal"></a>Azure portalında
+### <a name="azure-portal"></a>Azure portal
 
 Klasik VM kaynağınıza gidin. **Ayarlar**altında **Uzantıları** seçin.
 

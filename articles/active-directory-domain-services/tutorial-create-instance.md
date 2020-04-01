@@ -7,20 +7,20 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/15/2020
+ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: 14b3292a08e9bb0a60710053cd0b7ffc9d0db115
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 1bd5248e0a6a6c7c569c85e8c1af3e30f8b7f9e4
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79239178"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474200"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance"></a>Öğretici: Azure Etkin Dizin Etki Alanı Hizmetleri örneği oluşturma ve yapılandırma
 
 Azure Active Directory Etki Alanı Hizmetleri (Azure AD DS), Windows Server Active Directory ile tam uyumlu etki alanı birleştirme, grup ilkesi, LDAP, Kerberos/NTLM kimlik doğrulaması gibi yönetilen etki alanı hizmetleri sağlar. Etki alanı denetleyicilerini dağıtmadan, yönetmeden ve düzeltmeden bu etki alanı hizmetlerini tüketirsiniz. Azure AD DS, mevcut Azure AD kiracınızla tümleşir. Bu tümleştirme, kullanıcıların şirket kimlik bilgilerini kullanarak oturum açmalarına olanak tanır ve kaynaklara erişimi güvence altına almak için varolan grupları ve kullanıcı hesaplarını kullanabilirsiniz.
 
-Ağ ve eşitleme için varsayılan yapılandırma seçeneklerini kullanarak yönetilen bir etki alanı oluşturabilir veya [bu ayarları el ile tanımlayabilirsiniz.][tutorial-create-instance-advanced] Bu öğretici, Azure portalını kullanarak bir Azure AD DS örneği oluşturmak ve yapılandırmak için varsayılan seçenekleri nasıl kullanacağımı gösterir.
+Ağ ve eşitleme için varsayılan yapılandırma seçeneklerini kullanarak yönetilen bir etki alanı oluşturabilir veya [bu ayarları el ile tanımlayabilirsiniz.][tutorial-create-instance-advanced] Bu öğretici, Azure portalını kullanarak bir Azure AD DS örneği oluşturmak ve yapılandırmak için varsayılan seçenekleri nasıl kullanacağınızı gösterir.
 
 Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
@@ -89,7 +89,7 @@ Azure AD DS örneği oluşturmak için Azure portalının *Temeller* penceresind
 1. Önceki noktaları göz önünde bulundurarak yönetilen etki alanınız için bir **DNS etki alanı adı** girin.
 1. Yönetilen etki alanının oluşturulması gereken Azure **Konumu'nu** seçin. Kullanılabilirlik Bölgelerini destekleyen bir bölge seçerseniz, Azure AD DS kaynakları ek fazlalık için bölgeler e göre dağıtılır.
 
-    Kullanılabilirlik Alanları, Azure bölgesi içinde fiziksel olarak benzersiz konumlardır. Her alan bağımsız güç, soğutma ve ağ bağlantısı ile donatılmış bir veya daha fazla veri merkezinden oluşur. Esnekliği sağlamak için, tüm etkin bölgelerde en az üç ayrı bölge vardır.
+    Kullanılabilirlik Alanları, Azure bölgesi içinde fiziksel olarak benzersiz konumlardır. Her alan bağımsız güç, soğutma ve ağ bağlantısı ile donatılmış bir veya daha fazla veri merkezinden oluşur. Dayanıklılığı güvence altına almak için etkinleştirilmiş tüm bölgelerde en az üç ayrı alan vardır.
 
     Azure AD DS'nin bölgelere dağıtılması için yapılandırabileceğiniz hiçbir şey yoktur. Azure platformu, kaynakların bölge dağıtımını otomatik olarak işler. Daha fazla bilgi ve bölge kullanılabilirliğini görmek için [Azure'daki Kullanılabilirlik Bölgeleri nelerdir?][availability-zones]
 
@@ -104,8 +104,8 @@ Azure AD DS örneği oluşturmak için Azure portalının *Temeller* penceresind
 
 Azure AD DS yönetilen etki alanı hızla oluşturmak için, ek varsayılan yapılandırma seçeneklerini kabul etmek için **Gözden Geçir + oluştur'u** seçebilirsiniz. Bu oluşturma seçeneğini seçtiğinizde aşağıdaki varsayılanlar yapılandırılır:
 
-* *10.0.1.0/24*IP adresi aralığını kullanan *aadds-vnet* adlı sanal bir ağ oluşturur.
-* *10.0.1.0/24*IP adresi aralığını kullanarak *aadds-subnet* adlı bir alt ağ oluşturur.
+* *10.0.2.0/24*IP adresi aralığını kullanan *aadds-vnet* adlı sanal bir ağ oluşturur.
+* *10.0.2.0/24*IP adresi aralığını kullanarak *aadds-subnet* adlı bir alt ağ oluşturur.
 * Azure AD'deki *tüm* kullanıcıları Azure AD DS yönetilen etki alanına senkronize eder.
 
 Bu varsayılan yapılandırma seçeneklerini kabul etmek için **Gözden Geçir + oluştur'u** seçin.
@@ -136,7 +136,7 @@ Azure AD DS'nin başarıyla dağıtılmasıyla, artık sanal ağı diğer bağl�
 
 1. Yönetilen etki alanınız için **Genel Bakış** sekmesi bazı Gerekli **yapılandırma adımlarını**gösterir. İlk yapılandırma adımı, sanal ağınız için DNS sunucu ayarlarını güncelleştirmektir. DNS ayarları doğru şekilde yapılandırıldıktan sonra bu adım artık gösterilmez.
 
-    Listelenen adresler, sanal ağda kullanılmak üzere etki alanı denetleyicileridir. Bu örnekte, bu adresler *10.0.1.4* ve *10.0.1.5'tir.* Bu IP adreslerini daha sonra **Özellikler** sekmesinde bulabilirsiniz.
+    Listelenen adresler, sanal ağda kullanılmak üzere etki alanı denetleyicileridir. Bu örnekte, bu adresler *10.0.2.4* ve *10.0.2.5'tir.* Bu IP adreslerini daha sonra **Özellikler** sekmesinde bulabilirsiniz.
 
     ![Azure AD Etki Alanı Hizmetleri IP adresleriyle sanal ağınız için DNS ayarlarını yapılandırın](./media/tutorial-create-instance/configure-dns.png)
 

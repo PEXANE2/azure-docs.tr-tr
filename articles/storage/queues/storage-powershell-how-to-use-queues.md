@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: conceptual
 ms.reviewer: cbrooks
-ms.openlocfilehash: bd2f372bdcb949b64f748d186a9b060bb9cbec4a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 96828a854c340b89c26023ce60f9c85dd1bb4cdd
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77087060"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80473920"
 ---
 # <a name="perform-azure-queue-storage-operations-with-azure-powershell"></a>Azure PowerShell ile Azure Kuyruk depolama işlemleri gerçekleştirme
 
@@ -103,7 +103,7 @@ Get-AzStorageQueue -Context $ctx | Select-Object Name
 
 ## <a name="add-a-message-to-a-queue"></a>Kuyruğa ileti ekleme
 
-Kuyruktaki gerçek iletileri etkileyen işlemler PowerShell'de açıkta olduğu şekilde .NET depolama istemcikitaplığını kullanır. Kuyruğa ileti eklemek için, ileti nesnesinin [Microsoft.Azure.Storage.Queue.CloudQueueMessage](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.queue._cloud_queue_message) sınıfının yeni bir örneğini oluşturun. Ardından [AddMessage](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.queue._cloud_queue.addmessage) yöntemini çağırın. CloudQueueMessage bir dizeden (UTF-8 biçiminde) veya bir bayt dizisinden oluşturulabilir.
+Kuyruktaki gerçek iletileri etkileyen işlemler PowerShell'de açıkta olduğu şekilde .NET depolama istemcikitaplığını kullanır. Kuyruğa ileti eklemek için, ileti nesnesinin [Microsoft.Azure.Storage.Queue.CloudQueueMessage](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.queue.cloudqueuemessage) sınıfının yeni bir örneğini oluşturun. Ardından [AddMessage](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.queue.cloudqueue.addmessage) yöntemini çağırın. CloudQueueMessage bir dizeden (UTF-8 biçiminde) veya bir bayt dizisinden oluşturulabilir.
 
 Aşağıdaki örnek, sıranıza nasıl ileti ekleyeceğinizgösteriz.
 

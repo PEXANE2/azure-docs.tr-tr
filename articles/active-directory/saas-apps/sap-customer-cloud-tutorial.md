@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: müşteri için SAP bulutu ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory | Microsoft Docs'
-description: Müşteri için Azure Active Directory ve SAP bulutu arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
+title: 'Öğretici: Müşteri için SAP Cloud ile Azure Active Directory tek oturum açma (SSO) entegrasyonu | Microsoft Dokümanlar'
+description: Müşteri için Azure Active Directory ve SAP Cloud arasında tek oturum açma yı nasıl yapılandırabilirsiniz öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,194 +17,194 @@ ms.date: 09/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 837787d375a7570b7daf0a149960ca0020bcdced
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/11/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "72264028"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-cloud-for-customer"></a>Öğretici: müşteri için SAP bulutu ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-cloud-for-customer"></a>Öğretici: Müşteri için SAP Cloud ile Azure Active Directory tek oturum açma (SSO) entegrasyonu
 
-Bu öğreticide, Azure Active Directory (Azure AD) ile müşteri için SAP bulutunu tümleştirmeyi öğreneceksiniz. Müşteri için SAP Cloud 'ı Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
+Bu eğitimde, Müşteri için SAP Bulutu'nun Azure Etkin Dizini (Azure AD) ile nasıl entegre edileceksiniz. Müşteri için SAP Cloud'u Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
-* Azure AD 'de, müşteri için SAP bulutuna erişimi olan denetim.
-* Kullanıcılarınızın Azure AD hesapları ile müşteri için SAP bulutuna otomatik olarak oturum açmalarına olanak sağlayın.
-* Hesaplarınızı tek bir merkezi konumda yönetin-Azure portal.
+* Müşteri için SAP Bulutu'na erişimi olan Azure AD'de denetim.
+* Kullanıcılarınızın Azure AD hesaplarıyla Müşteri için SAP Cloud'da otomatik olarak oturum açmasını etkinleştirin.
+* Hesaplarınızı tek bir merkezi konumda yönetin - Azure portalı.
 
-Azure AD ile SaaS uygulaması tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure AD ile SaaS uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için Azure [Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Başlamak için aşağıdaki öğeler gereklidir:
+Başlamak için aşağıdaki öğelere ihtiyacınız vardır:
 
-* Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
-* Müşteri için SAP bulutu çoklu oturum açma (SSO) etkin abonelik.
+* Azure AD aboneliği. Aboneliğiniz [yoksa, ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
+* Müşteri için SAP Cloud tek oturum açma (SSO) özellikli abonelik.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz.
+Bu eğitimde, Azure AD SSO'su bir test ortamında yapılandırın ve test esiniz.
 
-* Müşteri için SAP bulutu, **SP** tarafından başlatılan SSO 'yu destekler
+* Müşteri için SAP **Cloud, SP** tarafından başlatılan SSO'ya destek
 
-## <a name="adding-sap-cloud-for-customer-from-the-gallery"></a>Galeriden müşteri için SAP bulutu ekleme
+## <a name="adding-sap-cloud-for-customer-from-the-gallery"></a>Galeriden Müşteriye SAP Bulutu Ekleme
 
-Müşteri için SAP Cloud 'ın Azure AD 'ye tümleştirilmesini yapılandırmak için, Galeri 'den yönetilen SaaS uygulamaları listenize müşteri için SAP bulutu eklemeniz gerekir.
+MÜŞTERI için SAP Bulutunun Azure AD'ye entegrasyonunu yapılandırmak için, galeriden Müşteri için SAP Bulutu'nu yönetilen SaaS uygulamaları listenize eklemeniz gerekir.
 
-1. Bir iş veya okul hesabını ya da kişisel bir Microsoft hesabını kullanarak [Azure portalda](https://portal.azure.com) oturum açın.
-1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
-1. **Kurumsal uygulamalar** ' a gidin ve **tüm uygulamalar**' ı seçin.
-1. Yeni uygulama eklemek için **Yeni uygulama**' yı seçin.
-1. **Galeriden Ekle** bölümünde, arama kutusuna **müşteri için SAP Cloud** yazın.
-1. Sonuçlar panelinden **Müşteri Için SAP bulutu** ' nı seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
+1. Azure [portalında](https://portal.azure.com) bir iş veya okul hesabını veya kişisel bir Microsoft hesabını kullanarak oturum açın.
+1. Sol gezinti bölmesinde **Azure Etkin Dizin** hizmetini seçin.
+1. Kurumsal **Uygulamalar'a** gidin ve ardından **Tüm Uygulamaları**seçin.
+1. Yeni uygulama eklemek için **Yeni uygulama'yı**seçin.
+1. **Galeriden Ekle** bölümünde, arama kutusuna **Müşteri için SAP Bulutu** yazın.
+1. Sonuç panelinden **Müşteri için SAP Bulut'u** seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-sap-cloud-for-customer"></a>Müşteri için SAP bulutu için Azure AD çoklu oturum açmayı yapılandırma ve test etme
+## <a name="configure-and-test-azure-ad-single-sign-on-for-sap-cloud-for-customer"></a>Müşteri için SAP Bulutu için Azure AD oturum açma işlemlerini yapılandırma ve test edin
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'yu MÜŞTERI Için SAP bulutu ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve müşteri için SAP bulutu 'ndaki ilgili Kullanıcı arasında bir bağlantı ilişkisi oluşturmanız gerekir.
+**B.Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO'nu Müşteri için SAP Bulutu ile yapılandırın ve test edin. SSO'nun çalışması için, bir Azure AD kullanıcısı ile Müşteri için SAP Bulutu'ndaki ilgili kullanıcı arasında bir bağlantı ilişkisi kurmanız gerekir.
 
-Azure AD SSO 'yu müşteri için SAP bulutu ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
+Azure AD SSO'yu Müşteri için SAP Cloud ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlayın:
 
-1. **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** -kullanıcılarınızın bu özelliği kullanmasını sağlamak için.
-    1. Azure AD **[test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** -B. Simon Ile Azure AD çoklu oturum açma sınamasını test edin.
-    1. Azure AD **[Test kullanıcısına atama](#assign-the-azure-ad-test-user)** -Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek için.
-1. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için, **[Müşteri SSO 'su IÇIN SAP bulutu 'Nı yapılandırın](#configure-sap-cloud-for-customer-sso)** .
-    1. Kullanıcının Azure AD gösterimine bağlı olan müşteriler için SAP bulutu 'nda B. Simon 'un bir karşılığı olacak şekilde, **[Müşteri IÇIN SAP bulutu oluşturun](#create-sap-cloud-for-customer-test-user)** .
-1. **[Test SSO](#test-sso)** -yapılandırmanın çalışıp çalışmadığını doğrulamak için.
+1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için **[Azure AD SSO'su yapılandırın.](#configure-azure-ad-sso)**
+    1. Azure AD'yi B.Simon ile tek oturum açma test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
+    1. B.Simon'ın Azure AD tek oturum açma kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
+1. **[Sap Cloud'u Müşteri SSO'su için yapılandırın](#configure-sap-cloud-for-customer-sso)** - uygulama tarafındaki tek oturum açma ayarlarını yapılandırmak için.
+    1. **[Müşteri test kullanıcısı için SAP Bulutu oluşturun](#create-sap-cloud-for-customer-test-user)** - kullanıcının Azure AD gösterimine bağlı müşteri için SAP Cloud'da B.Simon'ın bir örneğine sahip olmak için.
+1. **[SSO'yu test](#test-sso)** edin - yapılandırmanın çalışıp çalışmadığını doğrulamak için.
 
-## <a name="configure-azure-ad-sso"></a>Azure AD SSO 'yu yapılandırma
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
-Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
+Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com/), **müşteri için SAP bulutu** uygulama tümleştirmesi sayfasında, **Yönet** bölümünü bulun ve **Çoklu oturum açma**' yı seçin.
-1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** için Düzenle/kalem simgesine tıklayın.
+1. **Müşteri için SAP Bulutu** [portalında bulunan Azure portalında](https://portal.azure.com/) **Yönet** bölümünü bulun ve tek **oturum açma'yı**seçin.
+1. Tek **bir oturum açma yöntemi** seç sayfasında **SAML'yi**seçin.
+1. **SAML sayfasıyla tek oturum** açma'da, ayarları ayarlamak için **Temel SAML Yapılandırması** için düzenleme/kalem simgesini tıklatın.
 
-   ![Temel SAML yapılandırmasını düzenle](common/edit-urls.png)
+   ![Temel SAML Yapılandırması'nı düzenleme](common/edit-urls.png)
 
-1. **Temel SAML yapılandırması** bölümünde, aşağıdaki alanlar için değerleri girin:
+1. Temel **SAML Yapılandırması** bölümünde, aşağıdaki alanların değerlerini girin:
 
-    a. **Oturum açma URL 'si** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın: `https://<server name>.crm.ondemand.com`
+    a. URL metin kutusunda **Oturum Aç** kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://<server name>.crm.ondemand.com`
 
-    b. **Tanımlayıcı (VARLıK kimliği)** metin kutusunda, aşağıdaki kalıbı kullanarak bir URL yazın: `https://<server name>.crm.ondemand.com`
+    b. Tanımlayıcı **(Entity ID)** metin kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://<server name>.crm.ondemand.com`
 
     > [!NOTE]
-    > Bu değerler gerçek değildir. Bu değerleri, gerçek oturum açma URL 'SI ve tanımlayıcısı ile güncelleştirin. Bu değerleri almak için [Müşteri Için SAP bulutu istemci desteği ekibine](https://www.sap.com/about/agreements.sap-cloud-services-customers.html) başvurun. Ayrıca, Azure portal **temel SAML yapılandırması** bölümünde gösterilen desenlere de başvurabilirsiniz.
+    > Bu değerler gerçek değildir. Bu değerleri URL ve Tanımlayıcı'daki gerçek Oturum'la güncelleştirin. Bu değerleri almak [için Müşteri İstemci destek ekibi için SAP Bulut'a](https://www.sap.com/about/agreements.sap-cloud-services-customers.html) başvurun. Azure portalındaki **Temel SAML Yapılandırması** bölümünde gösterilen desenlere de bakabilirsiniz.
 
-1. Müşteri için SAP Cloud uygulaması, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekler. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir. Kullanıcı öznitelikleri iletişim kutusunu açmak için **Düzenle** simgesine tıklayın.
+1. Müşteri için SAP Bulutu uygulaması, SAML belirteç öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML iddiaları bekler. Aşağıdaki ekran görüntüsü varsayılan özniteliklerin listesini gösterir. Kullanıcı Öznitelikleri iletişim kutusunu açmak için **Edit** simgesini tıklatın.
 
     ![image](common/edit-attribute.png)
 
-1. **Kullanıcı öznitelikleri & talepler** Iletişim kutusundaki **Kullanıcı öznitelikleri** bölümünde aşağıdaki adımları uygulayın:
+1. **Kullanıcı Öznitelikleri & Talepler** iletişim kutusundaki Kullanıcı **Öznitelikleri** bölümünde aşağıdaki adımları gerçekleştirin:
 
-    a. **Kullanıcı taleplerini Yönet** iletişim kutusunu açmak için **Düzenle simgesine** tıklayın.
+    a. **Kullanıcı taleplerini yönet** iletişim kutusunu açmak için **Edit simgesini** tıklatın.
 
     ![image](./media/sap-customer-cloud-tutorial/tutorial_usermail.png)
 
     ![image](./media/sap-customer-cloud-tutorial/tutorial_usermailedit.png)
 
-    b. **Kaynak**olarak **dönüşüm** ' i seçin.
+    b. **Kaynak**olarak **Dönüşüm'u** seçin.
 
-    c. **Dönüştürme** listesinden **Extractmailprefix ()** öğesini seçin.
+    c. **Dönüşüm** listesinden **ExtractMailPrefix()** seçeneğini belirleyin.
 
     d. **Parametre 1** listesinden, uygulamanız için kullanmak istediğiniz kullanıcı özniteliğini seçin.
-    Örneğin, EmployeeID 'yi benzersiz kullanıcı tanımlayıcısı olarak kullanmak istiyorsanız ve öznitelik değerini ExtensionAttribute2 içinde depoladıysanız User. ExtensionAttribute2 ' yi seçin.
+    Örneğin, EmployeeID'yi benzersiz kullanıcı tanımlayıcısı olarak kullanmak istiyorsanız ve Öznitelik değerini ExtensionAttribute2'de depolamışsanız, user.extensionattribute2'yi seçin.
 
-    e. **Kaydet**’e tıklayın.
+    e. **Kaydet**'e tıklayın.
 
-1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML imzalama sertifikası** bölümünde, **Federasyon meta verileri XML** 'i bulun ve sertifikayı indirip bilgisayarınıza kaydetmek için **İndir** ' i seçin.
+1. **SAML İmza Sertifikası** bölümünde **SAML ile tek oturum açma'da** **Federation Metadata XML'i** bulun ve sertifikayı indirmek ve bilgisayarınıza kaydetmek için **İndir'i** seçin.
 
     ![Sertifika indirme bağlantısı](common/metadataxml.png)
 
-1. **Müşteri IÇIN SAP Cloud ayarla** bölümünde, gereksiniminize göre uygun URL 'leri kopyalayın.
+1. Müşteri **için SAP Bulutu Ayarla** bölümünde, gereksiniminize göre uygun URL'yi kopyalayın.
 
-    ![Yapılandırma URL 'Lerini Kopyala](common/copy-configuration-urls.png)
+    ![Yapılandırma URL'lerini kopyalama](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Bir Azure AD test kullanıcısı oluşturma
+### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
+Bu bölümde, Azure portalında B.Simon adında bir test kullanıcısı oluşturursunuz.
 
-1. Azure portal sol bölmeden **Azure Active Directory**' i seçin, **Kullanıcılar**' ı seçin ve ardından **tüm kullanıcılar**' ı seçin.
-1. Seçin **yeni kullanıcı** ekranın üstünde.
-1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
+1. Azure portalındaki sol bölmeden **Azure Etkin Dizini'ni**seçin, **Kullanıcılar'ı**seçin ve ardından **Tüm Kullanıcıları**seçin.
+1. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
+1. **Kullanıcı** özelliklerinde aşağıdaki adımları izleyin:
    1. **Ad** alanına `B.Simon` girin.  
-   1. **Kullanıcı adı** alanına username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
-   1. **Parolayı göster** onay kutusunu seçin ve ardından **parola** kutusunda görüntülenen değeri yazın.
-   1. **Oluştur**'a tıklayın.
+   1. Kullanıcı **adı** alanına. username@companydomain.extension Örneğin, `B.Simon@contoso.com`.
+   1. **Parolayı Göster** onay kutusunu seçin ve ardından **Parola** kutusunda görüntülenen değeri yazın.
+   1. **Oluştur'u**tıklatın.
 
-### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısı atayın
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, müşteri için SAP buluta erişim vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştireceksiniz.
+Bu bölümde, Müşteri için SAP Bulut'a erişim sağlayarak B.Simon'Un Azure tek oturum açma'yı kullanmasını sağlayacaksınız.
 
-1. Azure portal **Kurumsal uygulamalar**' ı seçin ve ardından **tüm uygulamalar**' ı seçin.
-1. Uygulamalar listesinde, **Müşteri Için SAP bulutu**' nı seçin.
-1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
+1. Azure portalında **Kurumsal Uygulamalar'ı**seçin ve ardından **Tüm Uygulamaları**seçin.
+1. Uygulamalar **listesinde, Müşteri için SAP Bulut'u**seçin.
+1. Uygulamanın genel bakış sayfasında, **Yönet** bölümünü bulun ve **Kullanıcıları ve grupları**seçin.
 
-   !["Kullanıcılar ve Gruplar" bağlantısı](common/users-groups-blade.png)
+   !["Kullanıcılar ve gruplar" bağlantısı](common/users-groups-blade.png)
 
-1. **Kullanıcı Ekle**' yi seçin, sonra **atama Ekle** iletişim kutusunda **Kullanıcılar ve gruplar** ' ı seçin.
+1. **Kullanıcı Ekle'yi**seçin, ardından **Atama Ekle** iletişim kutusunda Kullanıcılar ve **gruplar** seçin.
 
     ![Kullanıcı Ekle bağlantısı](common/add-assign-user.png)
 
-1. **Kullanıcılar ve gruplar** iletişim kutusunda, kullanıcılar listesinden **B. Simon** ' ı seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. SAML assertion 'da herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin ve ardından ekranın alt kısmındaki **Seç** düğmesine tıklayın.
-1. **Atama Ekle** Iletişim kutusunda **ata** düğmesine tıklayın.
+1. Kullanıcılar **ve gruplar** iletişim kutusunda, Kullanıcılar listesinden **B.Simon'ı** seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
+1. SAML iddiasında herhangi bir rol değeri bekliyorsanız, **Rolü Seç** iletişim kutusunda, listeden kullanıcı için uygun rolü seçin ve ardından ekranın altındaki **Seç** düğmesini tıklatın.
+1. Atama **Ekle** iletişim kutusunda, **Ata ekle** düğmesini tıklatın.
 
-## <a name="configure-sap-cloud-for-customer-sso"></a>Müşteri SSO 'SU için SAP bulutu yapılandırma
+## <a name="configure-sap-cloud-for-customer-sso"></a>Müşteri SSO için SAP Bulutu'nun yapılandırılması
 
-1. Yeni bir Web tarayıcı penceresi açın ve müşteri için SAP Cloud şirket sitenizde yönetici olarak oturum açın.
+1. Yeni bir web tarayıcısı penceresi açın ve müşteri şirket sitesi için SAP Cloud'da yönetici olarak oturum açın.
 
-2. Menünün sol tarafında, **kimlik sağlayıcıları** ' na tıklayın > **Şirket kimliği > sağlayıcıları** **Ekle** ' ye tıklayın ve açılır pencerede **Azure AD**gibi kimlik sağlayıcısı adını ekleyin, **Kaydet** ' e tıklayın ve ardından **SAML 2,0 yapılandırması**' na tıklayın.
+2. Menünün sol tarafından, **Kimlik Sağlayıcıları** > **Kurumsal Kimlik Sağlayıcıları** > **Ekle'ye** tıklayın ve açılan pencerede **Azure AD**gibi Kimlik sağlayıcı adını ekleyin , **Kaydet'i** tıklatın ve **ardından SAML 2.0 Yapılandırmasını**tıklatın.
 
     ![SAP yapılandırması](./media/sap-customer-cloud-tutorial/configure01.png)
 
-3. **SAML 2,0 yapılandırma** bölümünde aşağıdaki adımları uygulayın:
+3. **SAML 2.0 Yapılandırma** bölümünde aşağıdaki adımları gerçekleştirin:
 
     ![SAP yapılandırması](./media/sap-customer-cloud-tutorial/configure02.png)
 
-    a. Azure portal 'ten indirdiğiniz Federasyon meta veri XML dosyasını karşıya yüklemek için, **Araştır** ' a tıklayın.
+    a. Azure portalından indirdiğiniz Federasyon Metadata XML dosyasını yüklemek için **Gözat'ı** tıklatın.
 
-    b. XML dosyası başarıyla karşıya yüklendikten sonra, aşağıdaki değerler otomatik olarak doldurulur ve **Kaydet**' e tıklayın.
+    b. XML dosyası başarıyla yüklendikten sonra, aşağıdaki değerler otomatik olarak doldurulur ve **kaydet'i**tıklatın.
 
-### <a name="create-sap-cloud-for-customer-test-user"></a>Müşteri için SAP bulutu test kullanıcısı oluşturma
+### <a name="create-sap-cloud-for-customer-test-user"></a>Müşteri test kullanıcısı için SAP Bulutu oluşturma
 
-Azure AD kullanıcılarının müşteri için SAP bulutu 'nda oturum açmasını sağlamak için, müşteri için SAP Cloud 'a sağlanması gerekir. Müşteri için SAP bulutu 'nda sağlama işlemi el ile gerçekleştirilen bir görevdir.
+Azure AD kullanıcılarının Müşteri için SAP Cloud'da oturum açmalarını sağlamak için, müşteri için SAP Bulutu'nda oturum açmaları gerekir. Müşteri için SAP Bulut'ta, sağlama el ile bir görevdir.
 
 **Bir kullanıcı hesabı sağlamak için aşağıdaki adımları gerçekleştirin:**
 
-1. Bir güvenlik yöneticisi olarak müşteri için SAP bulutu 'nda oturum açın.
+1. Müşteri için Bir Güvenlik Yöneticisi olarak SAP Cloud'da oturum açın.
 
-2. Menünün sol tarafında **kullanıcılar & yetkilendirmeler** ' e tıklayın kullanıcı  **yönetimi** > **Kullanıcı Ekle**' >.
+2. Menünün sol **tarafından, Kullanıcı & Yetkileri** > **Kullanıcı Yönetimi** > **Kullanıcı Ekle Kullanıcı'ya**tıklayın.
 
     ![SAP yapılandırması](./media/sap-customer-cloud-tutorial/configure03.png)
 
-3. **Yeni Kullanıcı Ekle** bölümünde aşağıdaki adımları uygulayın:
+3. Yeni **Kullanıcı Ekle** bölümünde aşağıdaki adımları gerçekleştirin:
 
     ![SAP yapılandırması](./media/sap-customer-cloud-tutorial/configure04.png)
 
-    a. **Ad** metin kutusuna **B**gibi kullanıcının adını girin.
+    a. Ad **metin** kutusuna, **B**gibi kullanıcının adını girin.
 
-    b. **Soyadı** metin kutusuna **Simon**gibi kullanıcının adını girin.
+    b. **Soyadı** metin kutusuna, **Simon**gibi kullanıcının adını girin.
 
-    c. **E-posta** metin kutusuna `B.Simon@contoso.com`gibi kullanıcının e-postasını girin.
+    c. **E-Posta** metin kutusuna, kullanıcının `B.Simon@contoso.com`e-postasını girin.
 
-    d. **Oturum açma adı** metin kutusuna **B. Simon**gibi kullanıcının adını girin.
+    d. Giriş **Adı** metin kutusuna, **B.Simon**gibi kullanıcının adını girin.
 
-    e. Gereksiniminize göre **Kullanıcı türü** ' nü seçin.
+    e. Gereksiniminize göre **Kullanıcı Türü'nü** seçin.
 
-    f. Gereksiniminize göre **hesap etkinleştirme** seçeneğini belirleyin.
+    f. İhtiyaçlarınıza göre **Hesap Etkinleştirme** seçeneğini seçin.
 
-## <a name="test-sso"></a>Test SSO 'SU 
+## <a name="test-sso"></a>Test SSO 
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edin.
+Bu bölümde, Access Panelini kullanarak Azure AD tek oturum açma yapılandırmanızı sınarsınız.
 
-Erişim panelinde müşteri için SAP bulutu kutucuğuna tıkladığınızda, SSO 'yu ayarladığınız müşteri için SAP bulutu 'nda otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim Paneli'ndeki Müşteri için SAP Bulutu'nu tıklattığınızda, SSO'yu kurduğunuz Müşteri için SAP Bulutu'nda otomatik olarak oturum açmış olmalısınız. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS Uygulamalarının Azure Etkin Dizini ile Nasıl Entegre Edilen Öğreticiler Listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Azure AD ile müşteri için SAP bulutu 'nı deneyin](https://aad.portal.azure.com/)
+- [Azure AD ile Müşteri için SAP Bulutu'nun deneyin](https://aad.portal.azure.com/)
 

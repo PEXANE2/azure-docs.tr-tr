@@ -9,10 +9,10 @@ ms.date: 09/11/2019
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: 6911f769b95967aac933dd9762263e7506aef4b5
-ms.sourcegitcommit: b07964632879a077b10f988aa33fa3907cbaaf0e
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/13/2020
+ms.lasthandoff: 03/27/2020
 ms.locfileid: "77192542"
 ---
 ## <a name="create-the-webapi-project"></a>WebAPI projesi oluşturma
@@ -28,12 +28,12 @@ Aşağıdaki eylemleri yaparak yeni bir ASP.NET WebAPI arka ucu oluşturun:
 > [!IMPORTANT]
 > Visual Studio 2015 veya önceki bir sürümü kullanıyorsanız, bu öğreticiye başlamadan önce lütfen Visual Studio için NuGet Paket Yöneticisi’nin en son sürümünü yüklediğinizden emin olun.
 >
->Denetlemek için Visual Studio’yu başlatın. **Araçlar** menüsünde **Uzantılar ve Güncelleştirmeler**’i seçin. Visual Studio sürümünüz için **NuGet Paket Yöneticisi** araması yapın ve en son sürümü kullandığınızdan emin olun. Sürümünüz en son sürüm değilse, bunu kaldırın ve NuGet Paket Yöneticisi'ni yeniden yükleyin.
+>Denetlemek için Visual Studio’yu başlatın. **Araçlar** menüsünde **Uzantılar ve Güncelleştirmeler'i**seçin. Visual Studio sürümünüz için **NuGet Paket Yöneticisi** araması yapın ve en son sürümü kullandığınızdan emin olun. Sürümünüz en son sürüm değilse, bunu kaldırın ve NuGet Paket Yöneticisi'ni yeniden yükleyin.
 
 ![][B4]
 
 > [!NOTE]
-> Web sitesi dağıtımı için Visual Studio [Azure SDK](https://azure.microsoft.com/downloads/)’sını yüklediğinizden emin olun.
+> Web sitesi dağıtımı için Visual Studio [Azure SDK'yı](https://azure.microsoft.com/downloads/) yüklediğinizden emin olun.
 
 1. Visual Studio veya Visual Studio Express’i başlatın.
 
@@ -59,7 +59,7 @@ Aşağıdaki eylemleri yaparak yeni bir ASP.NET WebAPI arka ucu oluşturun:
 
     ![Microsoft Azure Web App’i Yapılandırma penceresi][B5]
 
-    App Service planını Yapılandır için bu sayfayı görmüyorsanız öğreticiye devam edin. Uygulamayı daha sonra yayımlarken yapılandırabilirsiniz. 
+    Uygulama hizmet planını yapılandırmak için bu sayfayı görmüyorsanız, öğreticiye devam edin. Uygulamayı daha sonra yayınlarken yapılandırabilirsiniz. 
 
 ## <a name="authenticate-clients-to-the-webapi-backend"></a>WebAPI arka ucunda istemcilerin kimliğini doğrulama
 
@@ -141,7 +141,7 @@ Bu bölümde, yeni arka uç için **AuthenticationTestHandler** adlı yeni bir i
 
     > [!NOTE]
     > Güvenlik notu: `AuthenticationTestHandler` sınıfı gerçek kimlik doğrulaması sağlamaz. Yalnızca temel kimlik doğrulamasını taklit etmek için kullanılır ve güvenli değildir. Üretim uygulamalarınızda ve hizmetlerinizde güvenli bir kimlik doğrulama mekanizması uygulamanız gerekir.
-5. İleti işleyicisini kaydetmek için `Register`App_Start/WebApiConfig.cs**sınıfındaki** yönteminin sonuna aşağıdaki kodu ekleyin:
+5. İleti işleyicisini kaydetmek için **App_Start/WebApiConfig.cs** sınıfındaki `Register` yönteminin sonuna aşağıdaki kodu ekleyin:
 
     ```csharp
     config.MessageHandlers.Add(new AuthenticationTestHandler());
@@ -186,7 +186,7 @@ Bu bölümde, bildirim hub’ları için istemci kitaplığını kullanarak WebA
     }
     ```
     > [!IMPORTANT]
-    > Devam etmeden önce hub 'ınızın **adını** ve **Defaultfullsharedaccesssignature** girin. 
+    > Daha fazla ilerlemeden önce hub'ınızın **adını** ve **DefaultFullSharedAccessSignature'ını** girin. 
     
 7. Ardından **RegisterController** adlı yeni bir denetleyici oluşturun. Çözüm Gezgini'nde **Denetleyiciler** klasörüne sağ tıklayın, **Ekle**'yi ve ardından **Denetleyici**'yi seçin.
 
@@ -390,9 +390,9 @@ Ardından bu uygulamayı tüm cihazlardan erişilebilir kılmak için bir Azure 
 
     ![Microsoft Azure App Service kutucuğu][B15]
 
-3. **App Service Oluştur** penceresinde Azure hesabınızı seçin. **Türü Değiştir** > **Web App**’i seçin. Varsayılan **Web App Adı**’nı değiştirmeyin ve **Abonelik**, **Kaynak Grubu** ve **App Service Planı**’nı seçin.
+3. **App Service Oluştur** penceresinde Azure hesabınızı seçin. **Türü** > Değiştir Web**Uygulamasını**Seçin. Varsayılan **Web App Adı**’nı değiştirmeyin ve **Abonelik**, **Kaynak Grubu** ve **App Service Planı**’nı seçin.
 
-4. **Oluştur**'u seçin.
+4. **Oluştur'u**seçin.
 
 5. **Özet** bölümündeki **Site URL** özelliğini not edin. Bu URL, daha sonra bu öğreticide *arka uca ait uç noktanız* olacaktır.
 

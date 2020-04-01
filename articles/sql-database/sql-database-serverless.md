@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 3/11/2020
-ms.openlocfilehash: 5c36dbfbe63314ef97edfa3dfbaae34667db002d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8a72d3dc7f7b3fddf66df8111b1e92116a62883a
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79268710"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474016"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL Veritabanı sunucusuz
 
@@ -151,7 +151,7 @@ Sunucusuz bir veritabanını otomatik olarak otomatik olarak devam ettirmek ve o
 
 ### <a name="customer-managed-transparent-data-encryption-byok"></a>Müşteri tarafından yönetilen şeffaf veri şifreleme (BYOK)
 
-Müşteri [tarafından yönetilen saydam veri şifreleme](transparent-data-encryption-byok-azure-sql.md) (BYOK) ve sunucusuz veritabanı anahtar silme veya iptal gerçekleştiğinde otomatik olarak duraklatılmışsa, veritabanı otomatik duraklatma durumunda kalır.  Bu durumda, devam etmek bir sonraki denendiğinde, veritabanı durumu yaklaşık 10 dakika veya daha kısa bir süre sonra erişilemeyene geçene kadar duraklatılmış olarak kalır.  Veritabanına erişilemiyor olduğunda, kurtarma işlemi, sağlanan işlem veritabanlarıyla aynıdır.  Anahtar silme veya iptal gerçekleştiğinde sunucusuz veritabanı çevrimiçiyse, veritabanına yaklaşık 10 dakika veya daha kısa bir süre sonra, sağlanan bilgi işlem veritabanlarında olduğu gibi erişilemez hale gelir.
+Müşteri [tarafından yönetilen saydam veri şifreleme](transparent-data-encryption-byok-azure-sql.md) (BYOK) ve sunucusuz veritabanı anahtar silme veya iptal gerçekleştiğinde otomatik olarak duraklatılmışsa, veritabanı otomatik duraklatma durumunda kalır.  Bu durumda, veritabanı bir sonraki başlatıldığında, durumu yaklaşık 10 dakika veya daha kısa bir süre sonra erişilemeyene geçene kadar veritabanı çevrimiçi kalır.  Veritabanına erişilemiyor olduğunda, kurtarma işlemi, sağlanan işlem veritabanlarıyla aynıdır.  Anahtar silme veya iptal gerçekleştiğinde sunucusuz veritabanı çevrimiçiyse, veritabanına yaklaşık 10 dakika veya daha kısa bir süre sonra, sağlanan bilgi işlem veritabanlarında olduğu gibi erişilemez hale gelir.
 
 ## <a name="onboarding-into-serverless-compute-tier"></a>Sunucusuz bilgi işlem katmanına binme
 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript
-ms.openlocfilehash: 2649d885d31bcd0fef403e7e4eddbc828fd17b93
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 526922d73f2176825b8bba8982316f3c9c129963
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80050252"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80473575"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>Quickstart: Kullanıcıları oturum açın ve JavaScript SPA'da bir erişim jetonu alın
 
@@ -105,7 +105,7 @@ Bu hızlı başlangıçta, bir JavaScript tek sayfalık uygulamanın (SPA) kişi
 
 > [!div renderon="portal"]
 > > [!NOTE]
-> > Enter_the_Supported_Account_Info_Here
+> > `Enter_the_Supported_Account_Info_Here`
 
 > [!div renderon="docs"]
 >

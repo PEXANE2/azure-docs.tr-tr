@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 01/16/2020
-ms.openlocfilehash: db2e80ebb6cbe5f31f2d99a1403a15daf38fd877
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 792964f28ddb3fcb10932b8de9499a9c7027960f
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76722416"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475387"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Hizmet kümesine model dağıtma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -131,7 +131,7 @@ Ayarlarsanız, `cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST`kümenin 12
 > [!WARNING]
 > Çalışma alanınızdan aynı AKS kümesine birden çok, eşzamanlı ek oluşturmayın. Örneğin, iki farklı ad kullanarak bir AKS kümesini çalışma alanına ekleme. Her yeni ek, önceki varolan eki(ler) kırar.
 >
-> Bir AKS kümesini yeniden takmak istiyorsanız, örneğin SSL veya diğer küme yapılandırma ayarını değiştirmek için, önce [AksCompute.detach()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#detach--)kullanarak varolan eki kaldırmanız gerekir.
+> Bir AKS kümesini yeniden takmak istiyorsanız, örneğin TLS veya diğer küme yapılandırma ayarını değiştirmek için, önce [AksCompute.detach()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py#detach--)kullanarak varolan eki kaldırmanız gerekir.
 
 Azure CLI veya portalını kullanarak AKS kümesi oluşturma hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
 
@@ -348,7 +348,7 @@ print(token)
 * [Sanal ağda güvenli deneme ve çıkarım](how-to-enable-virtual-network.md)
 * [Özel Docker görüntüsünü kullanarak bir model dağıtma](how-to-deploy-custom-docker-image.md)
 * [Dağıtım sorun giderme](how-to-troubleshoot-deployment.md)
-* [SSL ile Güvenli Azure Machine Learning web hizmetleri](how-to-secure-web-service.md)
+* [Azure Machine Learning aracılığıyla bir web hizmetini güvence altına almak için TLS'yi kullanın](how-to-secure-web-service.md)
 * [Web hizmeti olarak dağıtılan bir ML Modelini tüketin](how-to-consume-web-service.md)
 * [Azure Machine Learning modellerinizi Uygulama Öngörüleri ile izleyin](how-to-enable-app-insights.md)
 * [Üretimdeki modeller için veri toplama](how-to-enable-data-collection.md)

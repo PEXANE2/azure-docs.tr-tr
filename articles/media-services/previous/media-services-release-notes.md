@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: juliako
-ms.openlocfilehash: a55ef4f814c0d13a6efbeeb8cd9a5565d2869432
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a3893c8d19c89b639e0584f203cbcd1adf7e2dee
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78183304"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474835"
 ---
 # <a name="azure-media-services-release-notes"></a>Azure Medya Hizmetleri sürüm notları
 
@@ -344,9 +344,9 @@ Bu sürüm varsayılan Microsoft.WindowsAzure.MediaServices.Client.ContentKeyAut
 * PlayReady lisans şablonuna BeginDate ve ExpirationDate için göreli uzaklıklar eklendi.
 
 ## <a name="november-2014-release"></a><a id="november_changes_14"></a>Kasım 2014 sürümü
-* Artık Medya Hizmetlerini, Canlı Düzgün Akış (fMP4) içeriğini Bir SSL bağlantısı üzerinden yutmak için kullanabilirsiniz. SSL üzerinden yutmak için, https için yutulan URL'yi güncelleştirdiğinden emin olun. Şu anda, Medya Hizmetleri özel etki alanları ile SSL desteklemiyor. Canlı akış hakkında daha fazla bilgi için Azure [Medya Hizmetleri Yle Çalışma'ya](https://msdn.microsoft.com/library/azure/dn783466.aspx)bakın.
-* Şu anda, bir RTMP canlı akışı bir SSL bağlantısı üzerinden yutamaz.
-* Yalnızca içeriğinizi teslim ettiğiniz akış bitiş noktası 10 Eylül 2014'ten sonra oluşturulduysa SSL üzerinden akış yapabilirsiniz. Akış URL'leriniz 10 Eylül 2014'ten sonra oluşturulan akış uç noktalarını temel alıyorsa, URL "streaming.mediaservices.windows.net" (yeni biçim) içerir. "origin.mediaservices.windows.net" (eski biçim) içeren akış URL'leri SSL'yi desteklemez. URL'niz eski biçimdeyse ve SSL üzerinden akış yapmak istiyorsanız, [yeni bir akış bitiş noktası oluşturun.](media-services-portal-manage-streaming-endpoints.md) İçeriğinizi SSL üzerinden aktarmak için yeni akış bitiş noktasına dayalı URL'ler kullanın.
+* Artık TLS bağlantısı üzerinden canlı Sorunsuz Akış (fMP4) içeriği almak için Medya Hizmetlerini kullanabilirsiniz. TLS üzerinden yutmak için, https için yutulan URL'yi güncelleştirdiğinden emin olun. Şu anda, Medya Hizmetleri tls'yi özel etki alanlarıyla desteklemiyor. Canlı akış hakkında daha fazla bilgi için Azure [Medya Hizmetleri Yle Çalışma'ya](https://msdn.microsoft.com/library/azure/dn783466.aspx)bakın.
+* Şu anda, TLS bağlantısı üzerinden RTMP canlı akışı yutamazsınız.
+* TLS üzerinden yalnızca içeriğinizi teslim ettiğiniz akış bitiş noktası 10 Eylül 2014'ten sonra oluşturulduysa akış yapabilirsiniz. Akış URL'leriniz 10 Eylül 2014'ten sonra oluşturulan akış uç noktalarını temel alıyorsa, URL "streaming.mediaservices.windows.net" (yeni biçim) içerir. "origin.mediaservices.windows.net" (eski biçim) içeren akış URL'leri TLS'yi desteklemez. URL'niz eski biçimdeyse ve TLS üzerinden akış yapmak istiyorsanız, [yeni bir akış bitiş noktası oluşturun.](media-services-portal-manage-streaming-endpoints.md) İçeriğinizi TLS üzerinden aktarmak için, yeni akış bitiş noktasına göre URL'leri kullanın.
 
 ### <a name="media-services-net-sdk"></a><a id="oct_sdk"></a>Media Services .NET SDK
 .NET uzantıları için Medya Hizmetleri SDK şimdi sürüm 2.0.0.3.

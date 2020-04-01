@@ -10,12 +10,12 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/03/2017
-ms.openlocfilehash: cbe01ee9b8edeab349db484cea6c25dca32bf213
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7064101c21c11b48d8616dbeaa2fd9075660fd3b
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79218018"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80473460"
 ---
 # <a name="manage-azure-machine-learning-studio-classic-web-services-using-api-management"></a>API Yönetimi'ni kullanarak Azure Machine Learning Studio (klasik) web hizmetlerini yönetme
 
@@ -217,7 +217,7 @@ Denemeyi yayınlamak için **Evet'i** tıklatın.
 ![evet-to-yayın](./media/manage-web-service-endpoints-using-api-management/yes-to-publish.png)
 
 ### <a name="test-the-web-service"></a>Web hizmetini test etme
-AzureML web hizmeti RSS (istek/yanıt hizmeti) ve BES (toplu yürütme hizmeti) uç noktalarından oluşur. RSS senkron infaz içindir. BES, eşzamanlı iş yürütme içindir. Web hizmetinizi aşağıdaki örnek Python kaynağıyla test etmek için Python için Azure SDK'sını indirmeniz ve yüklemeniz gerekebilir (bkz. [Python nasıl yüklenir).](/azure/python/python-sdk-azure-install)
+AzureML web hizmeti RSS (istek/yanıt hizmeti) ve BES (toplu yürütme hizmeti) uç noktalarından oluşur. RSS senkron infaz içindir. BES, eşzamanlı iş yürütme içindir. Web hizmetinizi aşağıdaki örnek Python kaynağıyla test etmek için Python için Azure SDK'sını indirmeniz ve yüklemeniz gerekebilir (bkz. [Python nasıl yüklenir).](/azure/developer/python/azure-sdk-install)
 
 Ayrıca aşağıdaki örnek kaynak için denemeçalışma **alanı,** **hizmet**ve **api_key** gerekir. Web hizmeti panosundaki denemeniz için **İstek/Yanıt** veya **Toplu Yürütme'yi** tıklatarak çalışma alanını ve hizmeti bulabilirsiniz.
 

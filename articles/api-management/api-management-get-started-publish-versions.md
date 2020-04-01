@@ -14,17 +14,17 @@ ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: d0c837ac376f9d496baaf1ed67d0ec80c996804a
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/30/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73176824"
 ---
 # <a name="publish-multiple-versions-of-your-api"></a>API'nizin birden fazla sürümünü yayımlama 
 
 API’nizin tüm çağıranlarının tam olarak aynı sürümü kullanmasını sağlamak bazen kullanışlı olmayabilir. Çağıranlar sonraki bir sürüme yükseltmek istediğinde, bunu anlaşılması kolay bir yaklaşımı kullanarak yapabilmek ister. Bunu Azure API Management’taki **sürümleri** kullanarak gerçekleştirmek mümkündür. Daha fazla bilgi için bkz. [Sürümler ve düzeltmeler](https://blogs.msdn.microsoft.com/apimanagement/2017/09/14/versions-revisions/).
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
 > * Yeni bir sürümü mevcut bir API’ye ekleme
@@ -34,7 +34,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 ![Geliştirici portalında gösterilen sürüm](media/api-management-getstarted-publish-versions/azure_portal.PNG)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 + [Azure API Management terminolojisini](api-management-terminology.md) öğrenin.
 + Şu hızlı başlangıcı tamamlayın: [Azure API Management örneği oluşturma](get-started-create-service-instance.md).
@@ -45,7 +45,7 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 ![API Bağlam menüsü - sürüm ekleme](media/api-management-getstarted-publish-versions/AddVersionMenu.png)
 
 1. API listesinden **Tanıtım Konferans API’sini** seçin.
-2. Bunun yanındaki bağlam menüsünü ( **...** ) seçin.
+2. Bunun yanındaki bağlam menüsünü (**...**) seçin.
 3. **+ Sürüm Ekle** seçeneğini belirleyin.
 
 > [!TIP]
@@ -87,21 +87,21 @@ Azure API Management, çağıranlara istedikleri API sürümünü belirtme olana
 1. Klasik dağıtım modeli sayfasından **Ürünler** seçeneğini belirleyin.
 2. **Sınırsız**’ı seçin.
 3. **API’ler** seçeneğini belirleyin.
-4. **Add (Ekle)** seçeneğini belirleyin.
+4. **Ekle'yi**seçin.
 5. **Demo Konferans API’si, Sürüm v1** seçeneğini belirleyin.
-6. **Seç**'e tıklayın.
+6. **Seç'i**tıklatın.
 
 ## <a name="browse-the-developer-portal-to-see-the-version"></a>Sürümü görüntülemek için geliştirici portalına göz atma
 
 1. Üstteki menüden **Geliştirici Portalı**’nı seçin.
-2. **API 'leri** seçin ve **Tanıtım Konferansı API 'sine**tıklayın.
-3. API adının yanında birden fazla sürümü olan bir açılan menü görmeniz gerekir.
+2. **API'leri** seçin ve **Demo Konferansı API'sini**tıklatın.
+3. API adının yanında birden çok sürümü olan bir açılır bırakma görmeniz gerekir.
 4. **v1**’i seçin.
 5. Listedeki ilk işlemin **İstek URL'sine** dikkat edin. Bu, API URL’si yolunun **v1** içerdiğini gösterir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
 > * Yeni bir sürümü mevcut bir API’ye ekleme

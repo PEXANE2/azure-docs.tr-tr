@@ -4,12 +4,12 @@ description: QnA Maker hizmeti ile ilgili en sık sorulan soruların küratörl�
 ms.topic: troubleshooting
 ms.date: 03/25/2020
 ms.author: diberry
-ms.openlocfilehash: e002efe74bf7bcd3d944b01b0a25a731a2db3f66
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 310cfe0cc8c1f647c09b8e0efb435a1ab326ff62
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80284271"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474949"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>QnA Maker için sorun giderme
 
@@ -30,7 +30,7 @@ QnA Maker hizmeti ile ilgili en sık sorulan soruların küratörlüğünü, hiz
 <details>
 <summary><b>QnAMaker hizmet bitiş noktası nasıl elde e</b></summary>
 
-**Cevap**: QnAMaker hizmet bitiş noktası, QnAMaker Desteği veya UserVoice ile iletişim kurduğunuzda hata ayıklama amacıyla yararlıdır. Bitiş noktası bu biçimde bir https://your-resource-name.azurewebsites.netURL'dir: .
+**Cevap**: QnAMaker hizmet bitiş noktası, QnAMaker Desteği veya UserVoice ile iletişim kurduğunuzda hata ayıklama amacıyla yararlıdır. Bitiş noktası bu biçimde bir `https://your-resource-name.azurewebsites.net`URL'dir: .
 
 1. [Azure portalındaki](https://portal.azure.com) QnAMaker hizmetinize (kaynak grubu) gidin
 

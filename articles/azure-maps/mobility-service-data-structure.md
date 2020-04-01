@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 30696c5dcb3353ea468aa78dbc107dae4d292edb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4dfc6793bba473c4046863937baa292dde7bf421
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80334438"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478697"
 ---
 # <a name="data-structures-in-azure-maps-mobility-service"></a>Azure Haritalar Mobilite Hizmeti'ndeki veri yapıları
 
@@ -31,13 +31,13 @@ Metro `metroID` [Alanı Bilgi API alın](https://aka.ms/AzureMapsMobilityMetroAr
 
 ## <a name="stop-ids"></a>Durdur
 
-Geçiş durakları, genel [geçiş akışı belirtimi (GFTS)](https://gtfs.org/) kimliği ve Azure Haritaları durdurma kimliği olmak üzere iki tür kimlikle anılabilir. GFTS Kimliği stopKey olarak adlandırılır ve Azure Haritalar stop ID stopID olarak adlandırılır. Geçiş duraklarına sık sık atıfta bulunduğınızda, Azure Haritalar durdurma kimliğini kullanmanız için teşvik edilmektedir. stopID daha kararlıdır ve fiziksel duruş olduğu sürece aynı kalma olasılığı yüksektir. GTFS stop ID daha sık güncelleştirilir. Örneğin, GTFS stop ID, GTFS sağlayıcı isteğine göre veya yeni bir GTFS sürümü yayımlandığında güncellenebilir. Fiziksel duruşta değişiklik olmamasına rağmen, GTFS stop ID değişebilir.
+Geçiş durakları, genel [geçiş akışı belirtimi (GFTS)](http://gtfs.org/) kimliği ve Azure Haritaları durdurma kimliği olmak üzere iki tür kimlikle anılabilir. GFTS Kimliği stopKey olarak adlandırılır ve Azure Haritalar stop ID stopID olarak adlandırılır. Geçiş duraklarına sık sık atıfta bulunduğınızda, Azure Haritalar durdurma kimliğini kullanmanız için teşvik edilmektedir. stopID daha kararlıdır ve fiziksel duruş olduğu sürece aynı kalma olasılığı yüksektir. GTFS stop ID daha sık güncelleştirilir. Örneğin, GTFS stop ID, GTFS sağlayıcı isteğine göre veya yeni bir GTFS sürümü yayımlandığında güncellenebilir. Fiziksel duruşta değişiklik olmamasına rağmen, GTFS stop ID değişebilir.
 
 Başlamak için, [Yakındaki Transit API'sini Al'ı](https://aka.ms/AzureMapsMobilityNearbyTransit)kullanarak yakındaki transit durakları isteyebilirsiniz.
 
 ## <a name="line-groups-and-lines"></a>Çizgi Grupları ve Çizgiler
 
-Mobilite Hizmeti, Satırlar ve Satır Grupları için paralel bir veri modeli kullanır. Bu model, [GTFS](https://gtfs.org/) rotalarından ve geziler verilerinden devralınan değişikliklerle daha iyi başa çıkmak için kullanılır.
+Mobilite Hizmeti, Satırlar ve Satır Grupları için paralel bir veri modeli kullanır. Bu model, [GTFS](http://gtfs.org/) rotalarından ve geziler verilerinden devralınan değişikliklerle daha iyi başa çıkmak için kullanılır.
 
 
 ### <a name="line-groups"></a>Çizgi Grupları

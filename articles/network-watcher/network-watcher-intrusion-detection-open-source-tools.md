@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 781f3788c9001276315a2baed7060450fa00d77a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1bd823d94552d1e920b367b6576b0e3bb74aefb2
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76845032"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474917"
 ---
 # <a name="perform-network-intrusion-detection-with-network-watcher-and-open-source-tools"></a>Ağ İzleyicisi ve açık kaynak araçlarıyla ağ izinsiz giriş algılama gerçekleştirin
 
@@ -38,7 +38,7 @@ Her iki açık kaynak aracı da azure vm'de ayarlanabilir ve bu çözümlemesi k
 
 ### <a name="install-suricata"></a>Suricata'yı Yükleyin
 
-Diğer tüm kurulum yöntemleri için,https://suricata.readthedocs.io/en/latest/install.html
+Diğer tüm kurulum yöntemleri için,https://suricata.readthedocs.io/en/suricata-5.0.2/quickstart.html#installation
 
 1. VM'nizin komut satırı terminalinde aşağıdaki komutları çalıştırın:
 

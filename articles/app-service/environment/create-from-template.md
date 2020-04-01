@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 1212e77db5e0ec83f8dd966a14872a682b3e0202
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e06fcdbac097e85c039e34274c61cb51ee06bcd6
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80295545"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478329"
 ---
 # <a name="create-an-ase-by-using-an-azure-resource-manager-template"></a>Azure Kaynak Yöneticisi şablonu kullanarak ASE oluşturma
 
@@ -36,9 +36,9 @@ ASE oluşturmanızı otomatikleştirmek için:
 
 1. Bir şablondan ASE'yi oluşturun. Harici BIR ASE oluşturursanız, bu adımdan sonra bitirirsiniz. Bir ILB ASE oluşturursanız, yapmanız gereken birkaç şey daha vardır.
 
-2. ILB ASE'niz oluşturulduktan sonra, ILB ASE etki alanınızın eşleşen bir SSL sertifikası yüklenir.
+2. ILB ASE'niz oluşturulduktan sonra, ILB ASE etki alanınızın eşleşen bir TLS/SSL sertifikası yüklenir.
 
-3. Yüklenen SSL sertifikası, ILB ASE'ye "varsayılan" SSL sertifikası olarak atanır.  Bu sertifika, ASE'ye atanan ortak kök etki alanını (örneğin) `https://someapp.mycustomrootdomain.com`kullandıklarında ILB ASE'deki uygulamalara SSL trafiği için kullanılır.
+3. Yüklenen TLS/SSL sertifikası ILB ASE'ye "varsayılan" TLS/SSL sertifikası olarak atanır.  Bu sertifika, ASE'ye atanan ortak kök etki alanını (örneğin) `https://someapp.mycustomrootdomain.com`kullandıklarında ILB ASE'deki uygulamalara TLS/SSL trafiği için kullanılır.
 
 
 ## <a name="create-the-ase"></a>ASE'yi oluştur
@@ -61,17 +61,17 @@ New-AzResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-
 
 ASE'nin oluşturulması yaklaşık bir saat sürer. Ardından ASE, dağıtımı tetikleyen abonelik için ASE listesinde portalda belirir.
 
-## <a name="upload-and-configure-the-default-ssl-certificate"></a>"Varsayılan" SSL sertifikasını yükleme ve yapılandırma
-Bir SSL sertifikası, uygulamalara SSL bağlantıları kurmak için kullanılan "varsayılan" SSL sertifikası olarak ASE ile ilişkilendirilmelidir. ASE'nin varsayılan DNS soneki *internal-contoso.com*ise `https://some-random-app.internal-contoso.com` , bir bağlantı **.internal-contoso.com*için geçerli bir SSL sertifikası gerektirir. 
+## <a name="upload-and-configure-the-default-tlsssl-certificate"></a>"Varsayılan" TLS/SSL sertifikasını yükleme ve yapılandırma
+TLS/SSL sertifikası, uygulamalara TLS bağlantıları kurmak için kullanılan "varsayılan" TLS/SSL sertifikası olarak ASE ile ilişkilendirilmelidir. ASE'nin varsayılan DNS soneki *internal-contoso.com*ise `https://some-random-app.internal-contoso.com` , bağlantı **.internal-contoso.com*için geçerli bir TLS/SSL sertifikası gerektirir. 
 
-Dahili sertifika yetkililerini kullanarak, harici bir verenden sertifika satın alarak veya kendi imzalanmış bir sertifika kullanarak geçerli bir SSL sertifikası edinin. SSL sertifikasının kaynağıne bakılmaksızın, aşağıdaki sertifika özniteliklerinin düzgün şekilde yapılandırılması gerekir:
+Dahili sertifika yetkililerini kullanarak, harici bir kuruluştan sertifika satın alarak veya kendi imzalanmış bir sertifika kullanarak geçerli bir TLS/SSL sertifikası edinin. TLS/SSL sertifikasının kaynağıne bakılmaksızın, aşağıdaki sertifika özniteliklerinin doğru şekilde yapılandırılması gerekir:
 
 * **Konu**: Bu öznitelik **.your-root-domain-here.com*olarak ayarlanmalıdır.
-* **Konu Alternatif Adı**: Bu öznitelik hem **.your-root-domain-here.com* ve **.scm.your-root-domain-here.com*içermelidir. Her uygulama ile ilişkili SCM/Kudu sitesine SSL bağlantıları *your-app-name.scm.your-root-domain-here.com*formun adresini kullanır.
+* **Konu Alternatif Adı**: Bu öznitelik hem **.your-root-domain-here.com* ve **.scm.your-root-domain-here.com*içermelidir. Her uygulama ile ilişkili SCM/Kudu sitesine TLS bağlantıları *your-app-name.scm.your-root-domain-here.com*formun adresini kullanır.
 
-Elinizde geçerli bir SSL sertifikası ile iki ek hazırlık adımı gereklidir. SSL sertifikasını .pfx dosyası olarak dönüştürün/kaydedin. .pfx dosyasının tüm ara ve kök sertifikaları içermesi gerektiğini unutmayın. Bir parola ile güvenli hale getirin.
+Elinizde geçerli bir TLS/SSL sertifikası ile iki ek hazırlık adımı gereklidir. TLS/SSL sertifikasını .pfx dosyası olarak dönüştürün/kaydedin. .pfx dosyasının tüm ara ve kök sertifikaları içermesi gerektiğini unutmayın. Bir parola ile güvenli hale getirin.
 
-SSL sertifikası Kaynak Yöneticisi şablonu kullanılarak yüklendiğinden.pfx dosyasının base64 dizesine dönüştürülmesi gerekir. Kaynak Yöneticisi şablonları metin dosyaları olduğundan, .pfx dosyası base64 dizesine dönüştürülmelidir. Bu şekilde şablonun bir parametresi olarak eklenebilir.
+TLS/SSL sertifikası Kaynak Yöneticisi şablonu kullanılarak yüklendiğinden.pfx dosyasının base64 dizesine dönüştürülmesi gerekir. Kaynak Yöneticisi şablonları metin dosyaları olduğundan, .pfx dosyası base64 dizesine dönüştürülmelidir. Bu şekilde şablonun bir parametresi olarak eklenebilir.
 
 Aşağıdaki PowerShell kod parçacıklarını kullanarak:
 
@@ -96,7 +96,7 @@ $fileContentEncoded = [System.Convert]::ToBase64String($fileContentBytes)
 $fileContentEncoded | set-content ($fileName + ".b64")
 ```
 
-SSL sertifikası başarıyla oluşturulduktan ve base64 kodlanmış bir dize dönüştürüldükten sonra, verHub'daki [varsayılan SSL sertifikasını yapılandırın][quickstartconfiguressl] örnek Kaynak Yöneticisi şablonu kullanın. 
+TLS/SSL sertifikası başarıyla oluşturulduktan ve base64 kodlanmış bir dize dönüştürüldükten sonra, VerHub'daki [varsayılan SSL sertifikasını yapılandırma][quickstartconfiguressl] örneği Kaynak Yöneticisi şablonuna kullanın. 
 
 *azuredeploy.parameters.json* dosyasındaki parametreler burada listelenmiştir:
 
@@ -105,7 +105,7 @@ SSL sertifikası başarıyla oluşturulduktan ve base64 kodlanmış bir dize dö
 * *pfxBlobString*: .pfx dosyasının 64 kodlu dize gösterimi. Daha önce gösterilen kod parçacıklarını kullanın ve "exportedcert.pfx.b64" de bulunan dizekopyalayın. *PfxBlobString* özniteliğinin değeri olarak yapıştırın.
 * şifre : .pfx dosyasını güvenli hale getirmek için kullanılan *şifre.*
 * *sertifikaThumbprint*: Sertifikanın parmak izi. Bu değeri PowerShell'den alırsanız (örneğin, *$certificate. *Önceki kod parçacığından parmak izi), değeri olduğu gibi kullanabilirsiniz. Değeri Windows sertifikası iletişim kutusundan kopyalarsanız, gereksiz alanları söktüğünü unutmayın. *SertifikaThumbprint* AF3143EB61D43F6727842115BB7F17BBCECAEE gibi bir şey görünmelidir.
-* *certificateName*: Sertifikayı kimlik olarak kullanarak kendi seçtiğiniz dostane bir dize tanımlayıcısıdır. Ad, SSL sertifikasını temsil eden *Microsoft.Web/sertifikalar* tüzel kişiliğinin benzersiz Kaynak Yöneticisi tanımlayıcısının bir parçası olarak kullanılır. Ad aşağıdaki sonek ile *bitmelidir:* \_yourASENameHere_InternalLoadBalancingASE. Azure portalı bu sonek, sertifikanın ILB özellikli bir ASE'yi güvence altına almak için kullanıldığını gösteren bir gösterge olarak kullanır.
+* *certificateName*: Sertifikayı kimlik olarak kullanarak kendi seçtiğiniz dostane bir dize tanımlayıcısıdır. Ad, TLS/SSL sertifikasını temsil eden *Microsoft.Web/sertifikalar* tüzel kişiliğinin benzersiz Kaynak Yöneticisi tanımlayıcısının bir parçası olarak kullanılır. Ad aşağıdaki sonek ile *bitmelidir:* \_yourASENameHere_InternalLoadBalancingASE. Azure portalı bu sonek, sertifikanın ILB özellikli bir ASE'yi güvence altına almak için kullanıldığını gösteren bir gösterge olarak kullanır.
 
 *Azuredeploy.parameters.json'un* kısaltılmış bir örneği burada gösterilmiştir:
 
@@ -136,7 +136,7 @@ SSL sertifikası başarıyla oluşturulduktan ve base64 kodlanmış bir dize dö
 }
 ```
 
-*azuredeploy.parameters.json* dosyası doldurulduktan sonra, PowerShell kod snippet'ini kullanarak varsayılan SSL sertifikasını yapılandırın. Dosya yollarını, Kaynak Yöneticisi şablon dosyalarının makinenizde bulunduğu yerle eşleşecek şekilde değiştirin. Kaynak Yöneticisi dağıtım adı ve kaynak grubu adı için kendi değerlerinizi sağlamayı unutmayın:
+*azuredeploy.parameters.json* dosyası doldurulduktan sonra, PowerShell kodu snippet'ini kullanarak varsayılan TLS/SSL sertifikasını yapılandırın. Dosya yollarını, Kaynak Yöneticisi şablon dosyalarının makinenizde bulunduğu yerle eşleşecek şekilde değiştirin. Kaynak Yöneticisi dağıtım adı ve kaynak grubu adı için kendi değerlerinizi sağlamayı unutmayın:
 
 ```powershell
 $templatePath="PATH\azuredeploy.json"
@@ -147,9 +147,9 @@ New-AzResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-
 
 Bu değişikliği uygulamak için ASE ön uç başına yaklaşık 40 dakika sürer. Örneğin, iki ön uç kullanan varsayılan boyutlu bir ASE için şablonun tamamlanması yaklaşık bir saat 20 dakika sürer. Şablon çalışırken, ASE ölçeklendiremez.  
 
-Şablon bittikten sonra, ILB ASE'deki uygulamalara HTTPS üzerinden erişilebilir. Bağlantılar varsayılan SSL sertifikası kullanılarak güvence altına alınır. Varsayılan SSL sertifikası, ILB ASE'deki uygulamalar uygulama adı artı varsayılan ana bilgisayar adının birleşimi kullanılarak ele alınınca kullanılır. Örneğin, `https://mycustomapp.internal-contoso.com` **.internal-contoso.com*için varsayılan SSL sertifikasını kullanır.
+Şablon bittikten sonra, ILB ASE'deki uygulamalara HTTPS üzerinden erişilebilir. Bağlantılar varsayılan TLS/SSL sertifikası kullanılarak güvence altına alınır. Varsayılan TLS/SSL sertifikası, ILB ASE'deki uygulamalar uygulama adı artı varsayılan ana bilgisayar adının birleşimi kullanılarak ele alınınca kullanılır. Örneğin, `https://mycustomapp.internal-contoso.com` **.internal-contoso.com*için varsayılan TLS/SSL sertifikasını kullanır.
 
-Ancak, genel çok kiracılı hizmette çalışan uygulamalar gibi, geliştiriciler de tek tek uygulamalar için özel ana bilgisayar adlarını yapılandırabilir. Ayrıca, tek tek uygulamalar için benzersiz SNI SSL sertifika bağlamalarını da yapılandırabilirler.
+Ancak, genel çok kiracılı hizmette çalışan uygulamalar gibi, geliştiriciler de tek tek uygulamalar için özel ana bilgisayar adlarını yapılandırabilir. Ayrıca, tek tek uygulamalar için benzersiz SNI TLS/SSL sertifika bağlamalarını da yapılandırabilirler.
 
 ## <a name="app-service-environment-v1"></a>App Service Ortamı v1 ##
 App Service Ortamının iki sürümü vardır: ASEv1 ve ASEv2. Yukarıdaki bilgiler ASEv2’yi temel alır. Bu bölümde ASEv1 ile ASEv2 arasındaki farklar gösterilmektedir.

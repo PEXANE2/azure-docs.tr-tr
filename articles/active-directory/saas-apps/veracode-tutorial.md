@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: Veracode | ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory Microsoft Docs'
-description: Azure Active Directory ile Veracode arasında çoklu oturum açmayı nasıl yapılandıracağınızı öğrenin.
+title: 'Öğretici: Veracode ile Azure Active Directory tek oturum açma (SSO) entegrasyonu | Microsoft Dokümanlar'
+description: Azure Active Directory ve Veracode arasında tek oturum açma yı nasıl yapılandırabilirsiniz öğrenin.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,179 +17,179 @@ ms.date: 10/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bcec326ddab1e74f43e1bb7ef446998a40799fd0
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 10/29/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73043566"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-veracode"></a>Öğretici: Veracode ile çoklu oturum açma (SSO) Tümleştirmesi Azure Active Directory
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-veracode"></a>Öğretici: Veracode ile Azure Active Directory tek oturum açma (SSO) entegrasyonu
 
-Bu öğreticide, Veracode 'u Azure Active Directory (Azure AD) ile tümleştirmeyi öğreneceksiniz. Veracode 'u Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
+Bu eğitimde, Veracode'u Azure Etkin Dizini (Azure AD) ile nasıl entegre acağınızı öğreneceksiniz. Veracode'u Azure AD ile tümleştirdiğinizde şunları yapabilirsiniz:
 
-* Azure AD 'de Veracode erişimi olan denetim.
-* Kullanıcılarınızın Azure AD hesaplarıyla otomatik olarak oturum açmalarına olanak sağlar.
-* Hesaplarınızı tek bir merkezi konumda yönetin: Azure portal.
+* Veracode erişimi olan Azure AD'de denetim.
+* Kullanıcılarınızın Azure REKLAM hesaplarıyla Veracode'da otomatik olarak oturum açabilmelerini etkinleştirin.
+* Hesaplarınızı tek bir merkezi konumda yönetin: Azure portalı.
 
-Azure AD ile hizmet olarak yazılım (SaaS) uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için bkz. [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Azure AD ile hizmet olarak yazılım (SaaS) uygulama tümleştirmesi hakkında daha fazla bilgi edinmek için Azure [Active Directory ile uygulama erişimi ve tek oturum açma nedir'e](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)bakın.
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Başlamak için aşağıdaki öğeler gereklidir:
+Başlamak için aşağıdaki öğelere ihtiyacınız vardır:
 
-* Bir Azure AD aboneliği. Aboneliğiniz yoksa [ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
-* Bir Veracode çoklu oturum açma (SSO) özellikli abonelik.
+* Azure AD aboneliği. Aboneliğiniz [yoksa, ücretsiz bir hesap](https://azure.microsoft.com/free/)alabilirsiniz.
+* Veracode tek oturum açma (SSO) özellikli abonelik.
 
 ## <a name="scenario-description"></a>Senaryo açıklaması
 
-Bu öğreticide, Azure AD SSO 'yu bir test ortamında yapılandırıp test edersiniz. Veracode, kimlik sağlayıcısı tarafından başlatılan SSO ve Just-In-Time Kullanıcı sağlamasını destekler.
+Bu eğitimde, Azure AD SSO'su bir test ortamında yapılandırın ve test esiniz. Veracode, kimlik sağlayıcısının başlattığı SSO'yı ve tam zamanında kullanıcı sağlamayı destekler.
 
-## <a name="add-veracode-from-the-gallery"></a>Galeriden Veracode ekleyin
+## <a name="add-veracode-from-the-gallery"></a>Galeriden Veracode ekle
 
-Veracode 'un Azure AD ile tümleştirilmesini yapılandırmak için Galeriden yönetilen SaaS uygulamaları listenize Veracode ekleyin.
+Veracode'un Azure AD'ye entegrasyonunu yapılandırmak için galeriden yönetilen SaaS uygulamaları listenize Veracode ekleyin.
 
-1. Bir iş veya okul hesabı ya da kişisel Microsoft hesabı kullanarak [Azure Portal](https://portal.azure.com) oturum açın.
-1. Sol gezinti bölmesinde **Azure Active Directory** hizmeti ' ni seçin.
-1. **Kurumsal uygulamalar**' a gidin ve **tüm uygulamalar**' ı seçin.
-1. Yeni bir uygulama eklemek için **Yeni uygulama**' yı seçin.
+1. Bir iş veya okul hesabı veya kişisel bir Microsoft hesabı kullanarak [Azure portalında](https://portal.azure.com) oturum açın.
+1. Sol gezinti bölmesinde **Azure Etkin Dizin** hizmetini seçin.
+1. Kurumsal **Uygulamalar'a**gidin ve ardından **Tüm Uygulamaları**seçin.
+1. Yeni bir uygulama eklemek için **Yeni uygulama'yı**seçin.
 1. **Galeriden Ekle** bölümünde, arama kutusuna "Veracode" yazın.
-1. Sonuçlar panelinden **Veracode** ' u seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
+1. Sonuç panelinden **Veracode'u** seçin ve ardından uygulamayı ekleyin. Uygulama kiracınıza eklenirken birkaç saniye bekleyin.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-veracode"></a>Veracode için Azure AD çoklu oturum açmayı yapılandırma ve test etme
+## <a name="configure-and-test-azure-ad-single-sign-on-for-veracode"></a>Veracode için Azure AD oturum açma işlemlerini yapılandırma ve test edin
 
-**B. Simon**adlı bir test kullanıcısı kullanarak Azure AD SSO 'Yu Veracode ile yapılandırın ve test edin. SSO 'nun çalışması için, bir Azure AD kullanıcısı ve bu kullanıcı ile ilgili Kullanıcı arasında bir bağlantı kurmanız gerekir.
+Azure AD SSO'nu Veracode ile **B.Simon**adlı bir test kullanıcısı kullanarak yapılandırın ve test edin. SSO'nun çalışması için, Veracode'daki bir Azure AD kullanıcısı ile ilgili kullanıcı arasında bir bağlantı kurmanız gerekir.
 
-Azure AD SSO 'yu Veracode ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını doldurun:
+Azure AD SSO'yu Veracode ile yapılandırmak ve test etmek için aşağıdaki yapı taşlarını tamamlayın:
 
-1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için **[Azure AD SSO 'Yu yapılandırın](#configure-azure-ad-sso)** .
-    * B. Simon ile Azure AD çoklu oturum açma sınamasını test etmek için **[bir Azure AD test kullanıcısı oluşturun](#create-an-azure-ad-test-user)** .
-    * Azure AD çoklu oturum açma özelliğini kullanmak için B. Simon 'u etkinleştirmek üzere **[Azure AD test kullanıcısını atayın](#assign-the-azure-ad-test-user)** .
-1. Uygulama tarafında çoklu oturum açma ayarlarını yapılandırmak için **[Veracode SSO 'Yu yapılandırın](#configure-veracode-sso)** .
-    * Kullanıcının Azure AD gösterimine bağlı olan Veracode 'da B. Simon 'a karşılık gelen bir **[Veracode test kullanıcısı oluşturun](#create-veracode-test-user)** .
-1. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[test SSO 'su](#test-sso)** .
+1. Kullanıcılarınızın bu özelliği kullanmasını sağlamak için **[Azure AD SSO'su yapılandırın.](#configure-azure-ad-sso)**
+    * Azure AD oturum açma'yı B.Simon ile test etmek için **[bir Azure AD test kullanıcısı oluşturun.](#create-an-azure-ad-test-user)**
+    * B.Simon'ın Azure AD tek oturum açma kullanmasını sağlamak için **[Azure AD test kullanıcısını atayın.](#assign-the-azure-ad-test-user)**
+1. **[Veracode SSO'yu](#configure-veracode-sso)** uygulama tarafındaki tek oturum açma ayarlarını yapılandırmak için yapılandırın.
+    * Veracode'daki B.Simon'ın bir örneğine sahip olmak için **[bir Veracode test kullanıcısı oluşturun](#create-veracode-test-user)** ve kullanıcının Azure AD gösterimine bağlı olun.
+1. Yapılandırmanın çalışıp çalışmadığını doğrulamak için **[SSO'yu test](#test-sso)** edin.
 
-## <a name="configure-azure-ad-sso"></a>Azure AD SSO 'yu yapılandırma
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO’yu yapılandırma
 
-Azure portal Azure AD SSO 'yu etkinleştirmek için bu adımları izleyin.
+Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları izleyin.
 
-1. [Azure Portal](https://portal.azure.com/), **Veracode** uygulama tümleştirmesi sayfasında **Yönet** bölümünü bulun. **Çoklu oturum açma**seçeneğini belirleyin.
-1. **Çoklu oturum açma yöntemi seçin** sayfasında **SAML**' yi seçin.
-1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, ayarları düzenlemek IÇIN **temel SAML yapılandırması** kalem simgesini seçin.
+1. **Veracode** uygulama tümleştirme sayfasındaki [Azure portalında](https://portal.azure.com/) **Yönet** bölümünü bulun. **Tek oturum açma'yı**seçin.
+1. Tek **bir oturum açma yöntemi** seç sayfasında **SAML'yi**seçin.
+1. **SAML sayfasıyla tek oturum** açma'da, ayarları ayarlamak için **Temel SAML Yapılandırması** için kalem simgesini seçin.
 
-   ![Kalem simgesi vurgulanmış şekilde SAML ile çoklu oturum açmayı ayarlama ekran görüntüsü](common/edit-urls.png)
+   ![Saml ile Tek Oturum Açma'nın ekran görüntüsü, kalem simgesi vurgulanmış](common/edit-urls.png)
 
-1. **Temel SAML yapılandırması** bölümünde, uygulama önceden yapılandırılmıştır ve gerekli URL 'ler Azure ile önceden doldurulmuştur. **Kaydet**’i seçin.
+1. Temel **SAML Yapılandırması** bölümünde, uygulama önceden yapılandırılmıştır ve gerekli URL'ler Azure ile önceden doldurulmuştür. **Kaydet'i**seçin.
 
-1. **SAML ile çoklu oturum açmayı ayarlama** sayfasında, **SAML Imzalama sertifikası** bölümünde **sertifika bulun (base64)** . Sertifikayı indirmek ve bilgisayarınıza kaydetmek için **İndir** ' i seçin.
+1. **SAML sayfasıyla tek oturum** açma'da, **SAML İmza Sertifikası** bölümünde **Sertifikayı (Base64)** bulun. Sertifikayı indirmek ve bilgisayarınıza kaydetmek için **İndir'i** seçin.
 
-    ![Indirme bağlantısı vurgulanmış şekilde SAML Imzalama sertifikası bölümünün ekran görüntüsü](common/certificatebase64.png)
+    ![İndirme bağlantısı vurgulanmış SAML İmzalama Sertifikası bölümünün ekran görüntüsü](common/certificatebase64.png)
 
-1. Veracode, SAML belirteci öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML onayları bekliyor. Aşağıdaki ekran görüntüsünde varsayılan özniteliklerin listesi gösterilmektedir.
+1. Veracode, SAML belirteç öznitelikleri yapılandırmanıza özel öznitelik eşlemeleri eklemenizi gerektiren belirli bir biçimde SAML iddialarını bekler. Aşağıdaki ekran görüntüsü varsayılan özniteliklerin listesini gösterir.
 
-    ![Kullanıcı özniteliklerinin & talepler bölümünün ekran görüntüsü](common/default-attributes.png)
+    ![Kullanıcı Öznitelikleri & Talepler bölümünün ekran görüntüsü](common/default-attributes.png)
 
-1. Veracode, SAML yanıtına daha fazla özniteliğin geri geçirilmesini de bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre gözden geçirebilirsiniz.
+1. Veracode ayrıca SAML yanıtında birkaç özniteliğin daha geçirilmesini bekler. Bu öznitelikler de önceden doldurulur, ancak gereksinimlerinize göre bunları gözden geçirebilirsiniz.
 
     | Adı | Kaynak özniteliği|
     | ---------------| --------------- |
-    | FirstName |Kullanıcı. |
-    | Soyadı |User. soyadı |
-    | e-posta |Kullanıcı. Mail |
+    | Ad |Kullanıcı.givenname |
+    | Soyadı |Kullanıcı.soyadı |
+    | e-posta |Kullanıcı.posta |
 
-1. **Kurulum Veracode** bölümünde, gereksiniminize göre uygun URL 'leri kopyalayın.
+1. **Veracode'u Ayarla** bölümünde, gereksiniminize göre uygun URL'yi kopyalayın.
 
-    ![Yapılandırma URL 'Leri vurgulanmış şekilde ayarlama Veracode bölümünün ekran görüntüsü](common/copy-configuration-urls.png)
+    ![Yapılandırma URL'leri vurgulanmış Veracode bölümünü ayarlama ekran görüntüsü](common/copy-configuration-urls.png)
 
-## <a name="configure-veracode-sso"></a>Veracode SSO 'yu yapılandırma
+## <a name="configure-veracode-sso"></a>Veracode SSO'nun yapılandırılması
 
-1. Farklı bir Web tarayıcısı penceresinde, bir yönetici olarak Veracode şirket sitenizde oturum açın.
+1. Farklı bir web tarayıcısı penceresinde, Veracode şirket sitenizde yönetici olarak oturum açın.
 
-1. Üstteki menüden **ayarlar** > **yönetici**' yi seçin.
+1. Üstteki menüden **Ayarlar** > **Yöneticisi'ni**seçin.
    
-    ![Ayarlar simgesi ve yönetici vurgulanmış şekilde Veracode yönetiminin ekran görüntüsü](./media/veracode-tutorial/ic802911.png "Yönetim")
+    ![Ayarlar simgesi ve Admin vurgulanmış Veracode İdaresi ekran görüntüsü](./media/veracode-tutorial/ic802911.png "Yönetim")
 
 1. **SAML** sekmesini seçin.
 
-1. **Kuruluş SAML ayarları** bölümünde aşağıdaki adımları uygulayın:
+1. Organizasyon **SAML Ayarları** bölümünde aşağıdaki adımları gerçekleştirin:
 
-    ![Kuruluş SAML ayarları bölümünün ekran görüntüsü](./media/veracode-tutorial/ic802912.png "Yönetim")
+    ![Organizasyon SAML Ayarları bölümünün ekran görüntüsü](./media/veracode-tutorial/ic802912.png "Yönetim")
 
-    a.  **Veren**için, Azure Portal KOPYALADıĞıNıZ **Azure AD tanımlayıcısının** değerini yapıştırın.
+    a.  **Veren için,** Azure portalından kopyaladığınız **Azure AD Tanımlayıcısı'nın** değerini yapıştırın.
 
-    b. **Onaylama Imza sertifikası**için Azure Portal indirilen sertifikanızı karşıya yüklemek Için **Dosya Seç** ' i seçin.
+    b. **İddia İmzalama Sertifikası**için, İndirilen sertifikanızı Azure portalından yüklemek için Dosya'yı **seçin'i** seçin.
 
-    c. **Kendi kendine kayıt**Için, **kendinden kaydolmayı etkinleştir**' i seçin.
+    c. **Kendi Kendine Kayıt**için, Kendi Kendine Kaydı **Etkinleştir'i**seçin.
 
-1. **Kendi kendine kayıt ayarları** bölümünde aşağıdaki adımları gerçekleştirin ve ardından **Kaydet**' i seçin:
+1. Kendi **Kendine Kayıt Ayarları** bölümünde aşağıdaki adımları gerçekleştirin ve ardından **Kaydet'i**seçin:
 
-    ![Çeşitli seçenekler vurgulanmış şekilde kendi kendine kayıt ayarları bölümünün ekran görüntüsü](./media/veracode-tutorial/ic802913.png "Yönetim")
+    ![Çeşitli seçeneklervurgulanmış Self Registration Settings bölümünün ekran görüntüsü](./media/veracode-tutorial/ic802913.png "Yönetim")
 
-    a. **Yeni Kullanıcı etkinleştirmesi**Için **etkinleştirme gerekli değil**' i seçin.
+    a. **Yeni Kullanıcı Etkinleştirme**için, **Gerekli Etkinleştirme yok**seçin.
 
-    b. **Kullanıcı veri güncelleştirmeleri**Için **tercih Veracode Kullanıcı verileri**' ni seçin.
+    b. **Kullanıcı Veri Güncelleştirmeleri**için **Tercih Veracode Kullanıcı Verilerini**seçin.
 
-    c. **SAML öznitelik ayrıntıları**için aşağıdakileri seçin:
-      * **Kullanıcı rolleri**
+    c. **SAML Öznitelik Ayrıntıları**için aşağıdakileri seçin:
+      * **Kullanıcı Rolleri**
       * **İlke Yöneticisi**
-      * **Geçirenlerin**
-      * **Güvenlik lideri**
-      * **İdari**
-      * **Gönderenin**
+      * **Inceleme**
+      * **Güvenlik Müşteri Adayı**
+      * **Executive**
+      * **Submitter**
       * **Oluşturucu**
-      * **Tüm tarama türleri**
-      * **Takım üyelikleri**
-      * **Varsayılan takım**
+      * **Tüm Tscan Türleri**
+      * **Takım Üyelikleri**
+      * **Varsayılan Takım**
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD test kullanıcısı oluşturma
 
-Bu bölümde, B. Simon adlı Azure portal bir test kullanıcısı oluşturacaksınız.
+Bu bölümde, Azure portalında B.Simon adında bir test kullanıcısı oluşturursunuz.
 
-1. Azure portal sol bölmeden >**kullanıcılar** > **tüm kullanıcılar**' ı **Azure Active Directory** seçin.
-1. Ekranın üst kısmındaki **Yeni Kullanıcı** ' yı seçin.
-1. **Kullanıcı** özellikleri ' nde şu adımları izleyin:
+1. Azure portalındaki sol bölmeden **Azure Etkin Dizin** >**Kullanıcıları** > **Tüm kullanıcıları**seçin.
+1. Ekranın üst kısmında **Yeni kullanıcı** yı seçin.
+1. **Kullanıcı** özelliklerinde aşağıdaki adımları izleyin:
 
-   1. **Ad**için `B.Simon`girin.  
-   1. **Kullanıcı adı**için username@companydomain.extensiongirin. Örneğin, `B.Simon@contoso.com`.
-   1. **Parolayı göster**' i seçin ve ardından gösterilen değeri yazın.
-   1. **Oluştur**'u seçin.
+   1. **Ad**için `B.Simon`, girin .  
+   1. **Kullanıcı adı**için username@companydomain.extension, . Örneğin, `B.Simon@contoso.com`.
+   1. **Parolayı Göster'i**seçin ve ardından gösterilen değeri yazın.
+   1. **Oluştur'u**seçin.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD test kullanıcısını atama
 
-Bu bölümde, Veracode 'a erişim vererek Azure çoklu oturum açma özelliğini kullanmak için B. Simon ' u etkinleştirin.
+Bu bölümde, B.Simon'ın Veracode'a erişim izni vererek Azure tek oturum açma'yı kullanmasını etkinleştirin.
 
-1. Azure portal, **tüm uygulamalar** > **Kurumsal uygulamalar** ' ı seçin.
-1. Uygulamalar listesinde **Veracode**' u seçin.
-1. Uygulamanın genel bakış sayfasında **Yönet** bölümünü bulun ve **Kullanıcılar ve gruplar**' ı seçin.
+1. Azure portalında **Kurumsal Uygulamalar** > **Tüm uygulamaları**seçin.
+1. Uygulamalar listesinde **Veracode'u**seçin.
+1. Uygulamanın genel bakış sayfasında, **Yönet** bölümünü bulun ve **Kullanıcıları ve grupları**seçin.
 
-   ![Kullanıcılar ve gruplar vurgulanmış şekilde Yönet bölümünün ekran görüntüsü](common/users-groups-blade.png)
+   ![Kullanıcılar ve gruplar vurgulanırken Yönet bölümünün ekran görüntüsü](common/users-groups-blade.png)
 
-1. **Kullanıcı Ekle**' yi seçin. **Atama Ekle** Iletişim kutusunda **Kullanıcılar ve gruplar**' ı seçin.
+1. **Kullanıcı Ekle'yi**seçin. Atama **Ekle** iletişim **kutusunda, Kullanıcılar ve gruplar**seçin.
 
-    ![Kullanıcılar ve gruplar sayfasının ekran görüntüsü, Kullanıcı Ekle vurgulanmış olarak](common/add-assign-user.png)
+    ![Kullanıcı ekle ile Kullanıcılar ve gruplar sayfasının ekran görüntüsü](common/add-assign-user.png)
 
-1. Kullanıcılar **ve gruplar** iletişim kutusunda, **Kullanıcılar**' dan **B. Simon**' u seçin. Ardından ekranın alt kısmında **Seç** ' i seçin.
-1. SAML onaylama işlemi içinde herhangi bir rol değeri bekliyorsanız, **Rol Seç** iletişim kutusunda, Kullanıcı için listeden uygun rolü seçin. Ardından ekranın alt kısmında **Seç** ' i seçin.
-1. **Atama Ekle** Iletişim kutusunda **ata**' yı seçin.
+1. Kullanıcılar **ve gruplar** iletişim kutusunda, **Kullanıcılardan**, **B.Simon seçin.** Ardından ekranın alt kısmında **Seç'i** seçin.
+1. SAML iddiasında, **Rolü Seç** iletişim kutusunda herhangi bir rol değeri bekliyorsanız, listeden kullanıcı için uygun rolü seçin. Ardından ekranın alt kısmında **Seç'i** seçin.
+1. Atama **Ekle** iletişim kutusunda **Atama'yı**seçin.
 
 ### <a name="create-veracode-test-user"></a>Veracode test kullanıcısı oluşturma
 
-Veracode 'da oturum açmak için Azure AD kullanıcılarının Veracode 'da sağlanması gerekir. Bu görev otomatikleştirilmiştir ve el ile herhangi bir şey yapmanız gerekmez. İlk çoklu oturum açma denemesi sırasında gerekirse kullanıcılar otomatik olarak oluşturulur.
+Veracode'da oturum açabilmek için Azure AD kullanıcılarının Veracode'da sağlanması gerekir. Bu görev otomatiktir ve el ile bir şey yapmanız gerekmez. İlk tek oturum açma denemesi sırasında gerekirse kullanıcılar otomatik olarak oluşturulur.
 
 > [!NOTE]
-> Azure AD Kullanıcı hesapları sağlamak için Veracode tarafından sunulan diğer herhangi bir diğer Veracode Kullanıcı hesabı oluşturma aracını veya API 'Leri kullanabilirsiniz.
+> Azure AD kullanıcı hesaplarını sağlamak için Veracode tarafından sağlanan diğer Veracode kullanıcı hesabı oluşturma araçlarını veya API'lerini kullanabilirsiniz.
 
-## <a name="test-sso"></a>Test SSO 'SU
+## <a name="test-sso"></a>Test SSO
 
-Bu bölümde, erişim panelini kullanarak Azure AD çoklu oturum açma yapılandırmanızı test edersiniz.
+Bu bölümde, Access Panelini kullanarak Azure AD tek oturum açma yapılandırmanızı sınarsınız.
 
-Erişim panelinde **Veracode** ' u SEÇTIĞINIZDE, SSO 'Yu ayarladığınız Veracode 'da otomatik olarak oturum açmış olmanız gerekir. Erişim paneli hakkında daha fazla bilgi için bkz. [erişim paneline giriş](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Erişim Paneli'nde **Veracode'u** seçtiğinizde, SSO'yu kurduğunuz Veracode'da otomatik olarak oturum açmış olmalısınız. Erişim Paneli hakkında daha fazla bilgi için [Erişim Paneline Giriş'e](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)bakın.
 
 ## <a name="additional-resources"></a>Ek kaynaklar
 
-- [SaaS uygulamalarını Azure Active Directory ile tümleştirme hakkında öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS Uygulamalarının Azure Etkin Dizini ile nasıl entegre edilebildiğini anlatan öğreticiler listesi](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory ile uygulama erişimi ve çoklu oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory ile uygulama erişimi ve tek oturum açma nedir?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory Koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory'de koşullu erişim nedir?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Azure AD ile Veracode 'u deneyin](https://aad.portal.azure.com/)
+- [Azure AD ile Veracode'u deneyin](https://aad.portal.azure.com/)

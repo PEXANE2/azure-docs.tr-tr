@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 03/16/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: bc3d35830d833c0223a400140c53e583d2f6ed37
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 79f85261115dbddcb0b04cd2863a90912de2ab87
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79475434"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474914"
 ---
 # <a name="app-service-networking-features"></a>App Service ağ özellikleri
 
@@ -81,7 +81,7 @@ Atanmış bir adres kullandığınızda, trafiğiniz yine de App Service ölçe�
 * Uygulamanız için IP tabanlı SSL gereksinimlerini destekleyin
 * Uygulamanız için başka hiçbir şeyle paylaşılmayan özel bir adres ayarlama
 
-[IP tabanlı SSL Yapılandırma][appassignedaddress]öğretici ile uygulamanızda bir adres ayarlamayı öğrenebilirsiniz. 
+[Azure Uygulama Hizmeti'nde TLS/SSL sertifikası ekle'deki][appassignedaddress]öğretici yle uygulamanızda nasıl bir adres ayarlayabileceğinizi öğrenebilirsiniz. 
 
 ### <a name="access-restrictions"></a>Erişim Kısıtlamaları 
 

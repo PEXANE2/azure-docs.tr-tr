@@ -6,18 +6,18 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 03/11/2020
-ms.openlocfilehash: 2c6e35b1e7d160064998004f87c5b14d0eaeac5e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0670331d2338b4b6419ffbff1452b5fbac91029f
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79127667"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478841"
 ---
 # <a name="create-an-integration-service-environment-ise-by-using-the-logic-apps-rest-api"></a>Logic Apps REST API'yi kullanarak bir entegrasyon hizmet ortamı (Ise) oluşturun
 
 Bu makalede, mantık uygulamalarınızın ve tümleştirme hesaplarınızın bir [Azure sanal ağına](../virtual-network/virtual-networks-overview.md)erişmeye ihtiyaç duyduğu senaryolar için Logic Apps REST API aracılığıyla bir [ *tümleştirme hizmet ortamının* (İmKB)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) nasıl oluşturulacağı gösterilmektedir. Ise, "genel" çok kiracılı Logic Apps hizmetinden ayrı tutulan özel depolama ve diğer kaynakları kullanan yalıtılmış bir ortamdır. Bu ayrım, diğer Azure kiracılarının uygulamalarınızın performansı üzerindeki etkisini de azaltır. Bir ISE aynı zamanda kendi statik IP adreslerinizi de sağlar. Bu IP adresleri, genel, çok kiracılı hizmetteki mantık uygulamaları tarafından paylaşılan statik IP adreslerinden ayrıdır.
 
-Bunun yerine Azure portalını kullanarak bir İmKB oluşturmak için Azure [Mantık Uygulamalarından Azure sanal ağlarına bağlan'a](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)bakın.
+Ayrıca, örnek Azure Kaynak [Yöneticisi hızlı başlatma şablonunu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-integration-service-environment) kullanarak veya [Azure portalını](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)kullanarak bir İmKB oluşturabilirsiniz.
 
 > [!IMPORTANT]
 > Logic uygulamaları, yerleşik tetikleyiciler, yerleşik eylemler ve İmKB'nizde çalışan bağlayıcılar, tüketim tabanlı fiyatlandırma planından farklı bir fiyatlandırma planı kullanır. ISE'ler için fiyatlandırma ve faturalandırmanın nasıl çalıştığını öğrenmek için [Logic Apps fiyatlandırma modeline](../logic-apps/logic-apps-pricing.md#fixed-pricing)bakın. Fiyatlandırma oranları için [Logic Apps fiyatlandırması'na](../logic-apps/logic-apps-pricing.md)bakın.

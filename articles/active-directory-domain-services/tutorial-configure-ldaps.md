@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/30/2019
+ms.date: 03/31/2020
 ms.author: iainfou
-ms.openlocfilehash: 6db2c907abc495ca3c88e1e73e885043a8f19997
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 636f2e6139ad081d1e2fc67462a74cb7e18e3ff0
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79481543"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475907"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Öğretici: Azure Etkin Dizin Etki Alanı Hizmetleri yönetilen etki alanı için güvenli LDAP'yi yapılandırma
 
@@ -114,13 +114,13 @@ Bu iki anahtar, *özel* ve *ortak* anahtarlar, yalnızca uygun bilgisayarların 
 
 Azure AD DS yönetilen etki alanınızla önceki adımda oluşturulan dijital sertifikayı kullanmadan önce, sertifikayı bir *. *Özel anahtarı içeren PFX sertifika dosyası.
 
-1. *Çalıştır* iletişim kutusunu açmak için **Windows** ve **R** tuşlarını seçin.
+1. *Çalıştır* iletişim kutusunu açmak için **Windows** + **R** tuşlarını seçin.
 1. *Çalıştır* iletişim kutusuna **mmc** girerek Microsoft Yönetim Konsolu'nu (MMC) açın ve **ardından Tamam'ı**seçin.
-1. Kullanıcı **Hesabı Denetimi** isteminde, MMC'yi yönetici olarak başlatmak için **Evet'i** tıklatın.
-1. **Dosya** menüsünden **Ekle/Kaldır'ı tıklatın...**
+1. Kullanıcı **Hesabı Denetimi** isteminde, MMC'yi yönetici olarak başlatmak için **Evet'i** seçin.
+1. **Dosya** menüsünden **Ekle/Kaldır'ı seçin...**
 1. **Sertifikalar'a tutturma** sihirbazında **Bilgisayar hesabı'nı**seçin ve **ardından İleri'yi**seçin.
 1. Bilgisayarı **Seç** sayfasında **Yerel bilgisayarı seçin: (bu konsolun üzerinde çalışan bilgisayar)** ve **Ardından Bitir'i**seçin.
-1. Eklenti **veya Kaldır Girişler** iletişim kutusunda, sertifikaları MMC'ye eklemek için **Tamam'ı** tıklatın.
+1. Eklenti **veya Kaldır Girişler** iletişim kutusunda, sertifikaları MMC'ye eklemek için **Tamam'ı** seçin.
 1. MMC penceresinde Konsol **Kökünü**genişletin. **Sertifikalar 'ı (Yerel Bilgisayar)** seçin, ardından **Kişisel** düğümü genişletin ve ardından **Sertifika** düğümü.
 
     ![Microsoft Yönetim Konsolu'ndaki kişisel sertifika mağazasını açın](./media/tutorial-configure-ldaps/open-personal-store.png)
@@ -177,9 +177,6 @@ Azure AD DS yönetilen etki alanınızla önceki adımda oluşturulan dijital se
 Özel anahtarı içeren oluşturulan ve dışa aktarılan dijital sertifika ve bağlantıya güvenecek istemci bilgisayar kümesi yle, artık Azure AD DS yönetilen etki alanınızda güvenli LDAP'yi etkinleştirin. Azure AD DS yönetilen bir etki alanında güvenli LDAP'yi etkinleştirmek için aşağıdaki yapılandırma adımlarını gerçekleştirin:
 
 1. Azure [portalında,](https://portal.azure.com) **Arama kaynakları** kutusuna etki *alanı hizmetlerini* girin. Arama **sonucundan Azure AD Etki Alanı Hizmetlerini** seçin.
-
-    ![Azure portalında Azure AD DS yönetilen etki alanınızı arayın ve seçin](./media/tutorial-configure-ldaps/search-for-domain-services.png)
-
 1. yönetilen etki alanınızı seçin( *örneğin aaddscontoso.com.*
 1. Azure AD DS penceresinin sol **tarafında, Güvenli LDAP'yi**seçin.
 1. Varsayılan olarak, yönetilen etki alanınıza güvenli LDAP erişimi devre dışı bırakılır. **Etkinle'ye Güvenli LDAP'yi** Geçiş . **Enable**
@@ -235,10 +232,10 @@ Internet üzerinden etkinleştirilmiş güvenli LDAP erişimiyle, istemci bilgis
 
 Bu harici IP adresini çözmek için harici DNS sağlayıcınızı *ldaps*gibi bir ana bilgisayar kaydı oluşturacak şekilde yapılandırın. Önce makinenizde yerel olarak test etmek için, Windows ana bilgisayarları dosyasında bir giriş oluşturabilirsiniz. Ana bilgisayar dosyasını yerel makinenizde başarıyla düzenlemek için *Notepad'i* yönetici olarak açın ve *ardından C:\Windows\System32\drivers\etc* dosyasını açın
 
-Aşağıdaki örnek DNS girişi, harici DNS sağlayıcınızla veya yerel ana bilgisayarlar dosyasında, *40.121.19.239'un*harici IP adresine *ldaps.aaddscontoso.com* trafiğini çözer:
+Aşağıdaki örnek DNS girişi, harici DNS sağlayıcınızla veya yerel ana bilgisayarlar dosyasında, *168.62.205.103*harici IP adresine *ldaps.aaddscontoso.com* trafiğini çözer:
 
 ```
-40.121.19.239    ldaps.aaddscontoso.com
+168.62.205.103    ldaps.aaddscontoso.com
 ```
 
 ## <a name="test-queries-to-the-managed-domain"></a>Yönetilen etki alanına sorgu test
@@ -261,7 +258,7 @@ Azure AD DS yönetilen etki alanınızda depolanan nesneleri görmek için:
 1. **Görünüm** menüsü seçeneğini seçin ve ardından **Ağaç'ı**seçin.
 1. *BaseDN* alanını boş bırakın, ardından **Tamam'ı**seçin.
 1. *AADDC Kullanıcıları*gibi bir kapsayıcı seçin, ardından kapsayıcıyı sağ seçin ve **Ara'yı**seçin.
-1. Önceden doldurulmuş alanları kümesini bırakın, ardından **Çalıştır'ı**seçin. Sorgunun sonuçları sağ pencerede gösterilir.
+1. Önceden doldurulmuş alanları kümesini bırakın, ardından **Çalıştır'ı**seçin. Sorgunun sonuçları, aşağıdaki örnek çıktıda gösterildiği gibi sağ pencerede görüntülenir:
 
     ![LDP.exe'yi kullanarak Azure AD DS yönetilen etki alanınızdaki nesneleri arama](./media/tutorial-configure-ldaps/ldp-query.png)
 
@@ -273,7 +270,7 @@ Bu öğretici için bağlantıyı test etmek için bilgisayarınızın yerel ana
 
 1. Yerel makinenizde, *yönetici* olarak Not Defteri'ni açın
 1. *C:\Windows\System32\drivers\etc* dosyasına göz atın ve açın
-1. Eklediğiniz kaydın satırını silme, örneğin`40.121.19.239    ldaps.aaddscontoso.com`
+1. Eklediğiniz kaydın satırını silme, örneğin`168.62.205.103    ldaps.aaddscontoso.com`
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

@@ -8,12 +8,12 @@ ms.workload: core
 ms.topic: quickstart
 ms.date: 02/11/2020
 ms.author: spelluru
-ms.openlocfilehash: 7c971dcac702318d15a27736828092e987468ca3
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 352ff91bf26c7ff4f6945431fe6e1357f030e1db
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77162982"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80477522"
 ---
 # <a name="send-events-to-or-receive-events-from-event-hubs-by-using-python-azure-eventhub-version-5"></a>Python kullanarak olay merkezlerine olay hub'larına olay gönderme veya alma (azure-eventhub sürüm 5)
 Bu hızlı başlangıç, **azure-eventhub sürüm 5** Python paketini kullanarak bir olay hub'ına olayları nasıl göndereceğinizi ve bir olay merkezinden nasıl alınarak alınabildiğini gösterir.
@@ -22,7 +22,7 @@ Bu hızlı başlangıç, **azure-eventhub sürüm 5** Python paketini kullanarak
 > Bu quickstart en son azure-eventhub sürüm 5 paketini kullanır. Eski azure-eventhub sürüm 1 paketini kullanan hızlı bir başlangıç için, [azure-eventhub sürüm 1'i kullanarak olayları Gönder ve al'](event-hubs-python-get-started-send.md)a bakın. 
 
 ## <a name="prerequisites"></a>Ön koşullar
-Azure Etkinlik Hub'larında yeniyseniz, bu hızlı başlangıcı yapmadan önce [Etkinlik Hub'larına genel bakış](event-hubs-about.md) bakın. 
+Azure Etkinlik Hub'larında yeniyseniz, bu hızlı başlangıcı yapmadan önce [Etkinlik Hub'larına genel bakış](event-hubs-about.md) konusubakın. 
 
 Bu hızlı başlangıcı tamamlamak için aşağıdaki ön koşullara ihtiyacınız vardır:
 
@@ -79,9 +79,14 @@ Bu bölümde, olayları daha önce oluşturduğunuz olay merkezine göndermek i�
 
     > [!NOTE]
     > Bilgilendirme yorumları da dahil olmak üzere tam kaynak kodu için [GitHub send_async.py sayfasına](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/samples/async_samples/send_async.py)gidin.
+    
 
 ## <a name="receive-events"></a>Olayları alma
 Bu hızlı başlatma, Azure Blob depolama noktasını denetim noktası deposu olarak kullanır. Denetim noktası deposu denetim noktalarını (diğer bir şekilde son okuma konumlarını) sürdürmek için kullanılır.  
+
+> [!NOTE]
+> Azure Stack Hub'da çalışıyorsanız, bu platform Depolama Blob SDK'nın Azure'da bulunanlardan farklı bir sürümünü destekleyebilir. Örneğin, Azure Yığını [Hub sürümü 2002'de](https://docs.microsoft.com/azure-stack/user/event-hubs-overview)çalışıyorsanız, Depolama hizmeti için kullanılabilir en yüksek sürüm 2017-11-09 sürümüdür. Bu durumda, bu bölümdeki aşağıdaki adımların yanı sıra, Depolama hizmeti API sürümünü 2017-11-09'u hedeflemek için kod eklemeniz gerekir. Belirli bir Depolama API sürümünü niçin hedefleneceksiniz hakkında bir örnek için, GitHub'daki [senkron](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob/samples/receive_events_using_checkpoint_store_storage_api_version.py) ve eşzamanlı örneklere bakın. [asynchronous](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio/samples/receive_events_using_checkpoint_store_storage_api_version_async.py) Azure Yığını Hub'ında desteklenen Azure Depolama hizmeti sürümleri hakkında daha fazla bilgi için lütfen [Azure Yığın Hub depolama alanına bakın: Farklılıklar ve dikkat edilmesi gerekenler.](https://docs.microsoft.com/azure-stack/user/azure-stack-acs-differences)
+
 
 ### <a name="create-an-azure-storage-account-and-a-blob-container"></a>Azure depolama hesabı ve blob kapsayıcısı oluşturma
 Aşağıdaki adımları yaparak bir Azure depolama hesabı ve bir blob kapsayıcısı oluşturun:

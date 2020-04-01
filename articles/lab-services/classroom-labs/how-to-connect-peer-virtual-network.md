@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/14/2020
+ms.date: 03/31/2020
 ms.author: spelluru
-ms.openlocfilehash: d2115b1dc7e9f3150e44eb5ee9417e88ebeaa279
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 56c31e03eeec0c81207dc402e864eadec2d768bd
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80370842"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474065"
 ---
 # <a name="connect-your-labs-network-with-a-peer-virtual-network-in-azure-lab-services"></a>Azure Laboratuvar Hizmetleri'nde laboratuvar ağınızı bir eş sanal ağıyla bağlayın 
 Bu makalede, başka bir ağ ile laboratuvarağı izleme hakkında bilgi sağlar. 
@@ -38,6 +38,8 @@ Bazı şirket içi ağlar [ExpressRoute](../../expressroute/expressroute-introdu
 
 ## <a name="configure-at-the-time-of-lab-account-creation"></a>Laboratuvar hesabı oluşturma sırasında yapılandırma
 Yeni laboratuvar hesabı oluşturma sırasında, **Gelişmiş** sekmesinde Eş **sanal ağ** açılır listesinde gösteren varolan bir sanal ağ seçebilirsiniz. Seçili sanal ağ, laboratuvar hesabı altında oluşturulan laboratuvarlara bağlanır (eşli) olur. Bu değişikliği yaptıktan sonra oluşturulan laboratuarlarda oluşturulan tüm sanal makineler, bakan sanal ağdaki kaynaklara erişebilir. 
+
+Laboratuvarlar için sanal makinelerin **Adres aralığı** sağlamak için bir hüküm de vardır. Adres aralığı sağlanırsa, laboratuvar hesabının altındaki laboratuarlarda bulunan tüm sanal makineler bu adres aralığında oluşturulur. Adres aralığı CIDR gösteriminde olmalıdır (örn. 10.20.0.0/20) ve varolan adres aralıklarıyla örtüşmemelidir. Bir adres aralığı sağlarken, laboratuarlarda oluşturulacak sanal makinelerin sayısını düşünmek ve bunu karşılamak için bir adres aralığı sağlamak önemlidir. Belirli bir aralık için, barındırabileceği laboratuvar sayısı gösterilir.
 
 ![Eşler için VNet'i seçin](../media/how-to-connect-peer-virtual-network/select-vnet-to-peer.png)
 

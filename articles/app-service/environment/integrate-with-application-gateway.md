@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 03/03/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: dfb6d72b3f8f61e1350101173ecec6134a614edf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e4838597c50898748eb4b33e81ff22eaeea37b30
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74687146"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80476899"
 ---
 # <a name="integrate-your-ilb-app-service-environment-with-the-azure-application-gateway"></a>ILB App Service Ortamınızı Azure Application Gateway ile Tümleştirme #
 
@@ -20,7 +20,7 @@ ms.locfileid: "74687146"
 
 Web uygulaması güvenlik duvarları, SQL enjeksiyonlarını, Site arası Komut Dosyalarını, kötü amaçlı yazılım yüklemelerini ve uygulama DDoS'& diğer saldırıları engellemek için gelen web trafiğini inceleyerek web uygulamalarınızın güvenliğini sağlamaya yardımcı olur. Ayrıca, Veri Kaybı Önleme (DLP) için arka uç web sunucularından gelen yanıtları inceler. Azure pazar yerinden bir WAF aygıtı alabilirsiniz veya [Azure Uygulama Ağ Geçidi'ni][appgw]kullanabilirsiniz.
 
-Azure Uygulama Ağ Geçidi, katman 7 yük dengeleme, SSL boşaltma ve web uygulaması güvenlik duvarı (WAF) koruması sağlayan sanal bir cihazdır. Genel bir IP adresinde dinleyebilir ve trafiği uygulama bitiş noktanıza yönlendirebilir. Aşağıdaki bilgiler, WAF tarafından yapılandırılmış bir uygulama ağ geçidinin ILB App Service Environment'daki bir uygulamayla nasıl tümleştirilebildiğini açıklar.  
+Azure Uygulama Ağ Geçidi, katman 7 yük dengeleme, TLS/SSL boşaltma ve web uygulaması güvenlik duvarı (WAF) koruması sağlayan sanal bir cihazdır. Genel bir IP adresinde dinleyebilir ve trafiği uygulama bitiş noktanıza yönlendirebilir. Aşağıdaki bilgiler, WAF tarafından yapılandırılmış bir uygulama ağ geçidinin ILB App Service Environment'daki bir uygulamayla nasıl tümleştirilebildiğini açıklar.  
 
 Uygulama ağ geçidinin ILB App Service Environment ile entegrasyonu uygulama düzeyindedir. Uygulama ağ geçidini ILB App Service Environment'ınızla yapılandırdığınızda, bunu ILB App Service Environment'ınızdaki belirli uygulamalar için yaparsınız. Bu teknik, tek bir ILB App Service Environment'da güvenli çok kiracılı uygulamaların barındırılmasını sağlar.  
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/22/2020
 ms.author: kumud
-ms.openlocfilehash: a2a85d98bf29e78d58bf0c578ce79943bae21fc1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b5655a58c3538ac47e8649619b079dc46ee01242
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79244972"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80473224"
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>Azure ağ arabirimleri için IP adresi ekleme, değiştirme veya kaldırma
 
@@ -78,7 +78,7 @@ Bir IPv4 adresinin atama yöntemini değiştirmeniz, statik IPv4 adresini deği�
 6. **Kaydet'i**seçin.
 
 >[!NOTE]
->Birincil ağ arabiriminde birden çok IP yapılandırması varsa ve birincil IP yapılandırmasının özel IP adresini değiştirirseniz, birincil ve ikincil IP adreslerini Windows içindeki ağ arabirimine el ile yeniden atamanız gerekir (Linux için gerekli değildir) . Bir işletim sistemi içindeki bir ağ arabirimine IP adreslerini el ile atamak [için](virtual-network-multiple-ip-addresses-portal.md#os-config)bkz. Sanal makine işletim sistemine IP adreslerini el ile eklemeden önce özel hususlar için [özel](#private) IP adreslerine bakın. Sanal makine işletim sistemine ortak IP adresleri eklemeyin.
+>Birincil ağ arabiriminde birden çok IP yapılandırması varsa ve birincil IP yapılandırmasının özel IP adresini değiştirirseniz, birincil ve ikincil IP adreslerini Windows içindeki ağ arabirimine el ile yeniden atamanız gerekir (Linux için gerekli değildir). Bir işletim sistemi içindeki bir ağ arabirimine IP adreslerini el ile atamak [için](virtual-network-multiple-ip-addresses-portal.md#os-config)bkz. Sanal makine işletim sistemine IP adreslerini el ile eklemeden önce özel hususlar için [özel](#private) IP adreslerine bakın. Sanal makine işletim sistemine ortak IP adresleri eklemeyin.
 
 **Komutlar**
 
@@ -120,7 +120,7 @@ Birincil IP yapılandırmasına ek olarak, bir ağ arabiriminde sıfır veya dah
 
 - Özel bir IPv4 veya IPv6 adresi atanmış olmalıdır. Adres IPv6 ise, ağ arabiriminde yalnızca bir ikincil IP yapılandırması olabilir. Adres IPv4 ise, ağ arabiriminde birden çok ikincil IP yapılandırması atanmış olabilir. Bir ağ arabirimine kaç özel ve genel IPv4 adresi atanabileceği hakkında daha fazla bilgi edinmek için [Azure sınırları](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) makalesine bakın.
 - Ayrıca, genel bir IPv4 veya IPv6 adresi de atanmış olabilir. Bir ağ arabirimine birden çok IPv4 adresi atamak aşağıdaki gibi senaryolarda yararlıdır:
-  - Tek bir sunucuda farklı IP adreslerine ve SSL sertifikalarına sahip birden fazla web sitesi veya hizmetin barındırılması.
+  - Tek bir sunucuda farklı IP adreslerine ve TLS/SSL sertifikalarına sahip birden fazla web sitesi veya hizmet barındırma.
   - Güvenlik duvarı veya yük dengeleyicisi gibi ağ sanal cihazı olarak hizmet veren sanal bir makine.
   - Herhangi bir ağ arabirimi için özel IPv4 adreslerinden herhangi birini Azure Yük Dengeleyici arka uç havuzuna ekleme özelliği. Geçmişte, yalnızca birincil ağ arabirimi için birincil IPv4 adresi bir arka uç havuzuna eklenebilir. Birden çok IPv4 yapılandırmasını nasıl yükleyeceğimiz hakkında daha fazla bilgi edinmek [için, birden çok IP yapılandırmasını dengeleme](../load-balancer/load-balancer-multiple-ip.md?toc=%2fazure%2fvirtual-network%2ftoc.json) konusuna bakın. 
   - Bir ağ arabirimine atanan bir IPv6 adresini bakiyeyükleme yeteneği. Özel bir IPv6 adresine bakiye yükleme hakkında daha fazla bilgi edinmek için [Yük bakiyesi IPv6 adresleri](../load-balancer/load-balancer-ipv6-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) makalesine bakın.
@@ -136,7 +136,7 @@ Aşağıdaki IP adresleri türlerini bir IP [yapılandırmasına](#ip-configurat
 Varsayılan olarak, Azure DHCP sunucuları Azure ağ arabiriminin [birincil IP yapılandırması](#primary) için özel IPv4 adresini sanal makine işletim sistemi içindeki ağ arabirimine atar. Gerekli olmadıkça, sanal makinenin işletim sistemi içinde bir ağ arabiriminin IP adresini el ile ayarlamamalısınız.
 
 > [!WARNING]
-> Sanal makinenin işletim sistemindeki bir ağ arabiriminin birincil IP adresi olarak ayarlanan IPv4 adresi, sanal bir makineye bağlı birincil ağ arabiriminin birincil IP yapılandırmasına atanan özel IPv4 adresinden hiç farklıysa Azure'da sanal makineye bağlantınızı kaybedersiniz.
+> Sanal makinenin işletim sistemindeki bir ağ arabiriminin birincil IP adresi olarak ayarlanan IPv4 adresi, Azure'daki sanal bir makineye bağlı birincil ağ arabiriminin birincil IP yapılandırmasına atanan özel IPv4 adresinden farklıysa, sanal makineye bağlantınızı kaybedersiniz.
 
 Sanal makinenin işletim sisteminde bir ağ arabiriminin IP adresini el ile ayarlamanın gerekli olduğu senaryolar vardır. Örneğin, bir Azure sanal makinesine birden çok IP adresi eklerken bir Windows işletim sisteminin birincil ve ikincil IP adreslerini el ile ayarlamanız gerekir. Bir Linux sanal makinesi için yalnızca ikincil IP adreslerini el ile ayarlamanız gerekebilir. Ayrıntılar için [BIR VM işletim sistemine IP adresleri ekle'ye](virtual-network-multiple-ip-addresses-portal.md#os-config) bakın. IP yapılandırmasına atanan adresi değiştirmeniz gerekirse, aşağıdakileri yapmanız önerilir:
 

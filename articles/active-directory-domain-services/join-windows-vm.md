@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 02/19/2020
+ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: f853d6d59a4c23b7b52a2a0ba800ace58c997f6e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 1ac508fc9fee07482e475c46e1db262c8bfa1a12
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79481594"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80476213"
 ---
 # <a name="tutorial-join-a-windows-server-virtual-machine-to-a-managed-domain"></a>Öğretici: Yönetilen bir etki alanına Windows Server sanal makineye katılın
 
@@ -76,8 +76,6 @@ Zaten etki alanına katılmak istediğiniz bir VM'invarsa, VM'ye katılmak için
 
     RDP yalnızca gerektiğinde etkinleştirilmeli ve bir dizi yetkili IP aralığıyla sınırlandırılmalıdır. Bu yapılandırma VM'nin güvenliğini artırmaya yardımcı olur ve olası saldırı alanını azaltır. Veya yalnızca TLS üzerinden Azure portalı üzerinden erişime izin veren bir Azure Bastion ana bilgisayarı oluşturun ve kullanın. Bu öğreticinin bir sonraki adımında, VM'ye güvenli bir şekilde bağlanmak için bir Azure Bastion ana bilgisayarı kullanırsınız.
 
-    Şimdilik, VM'ye doğrudan RDP bağlantılarını devre dışı kındırın.
-
     **Genel gelen bağlantı noktaları**altında, *Yok'u*seçin.
 
 1. Bittiğinde, **Sonraki: Diskler'i**seçin.
@@ -96,22 +94,23 @@ Zaten etki alanına katılmak istediğiniz bir VM'invarsa, VM'ye katılmak için
 
     ![Azure portalında alt ağ yapılandırmasını yönetmeyi seçin](./media/join-windows-vm/manage-subnet.png)
 
-1. Sanal ağ penceresinin sol menüsünde **Adres alanı'nı**seçin. Sanal ağ, varsayılan alt ağ tarafından kullanılan *10.0.1.0/24*tek bir adres alanı yla oluşturulur.
+1. Sanal ağ penceresinin sol menüsünde **Adres alanı'nı**seçin. Sanal ağ, varsayılan alt ağ tarafından kullanılan *10.0.2.0/24*tek bir adres alanıyla oluşturulur. *İş yükleri* veya Azure Kalesi gibi diğer alt ağlar da zaten var olabilir.
 
     Sanal ağa ek bir IP adresi aralığı ekleyin. Bu adres aralığının boyutu ve kullanılacak gerçek IP adresi aralığı, zaten dağıtılan diğer ağ kaynaklarına bağlıdır. IP adres aralığı, Azure veya şirket içi ortamınızdaki varolan adres aralıklarıyla örtüşmemelidir. IP adresi aralığını alt ağa dağıtmayı beklediğiniz VM sayısına göre yeterince büyük boyutlandırdığınızdan emin olun.
 
-    Aşağıdaki örnekte, *10.0.2.0/24* ek bir IP adresi aralığı eklenir. Hazır olduğunda **Kaydet'i**seçin.
+    Aşağıdaki örnekte, *10.0.5.0/24* ek bir IP adresi aralığı eklenir. Hazır olduğunda **Kaydet'i**seçin.
 
-    ![Azure portalına ek bir sanal ağ IP adresi aralığı ekleme](./media/tutorial-configure-networking/add-vnet-address-range.png)
+    ![Azure portalına ek bir sanal ağ IP adresi aralığı ekleme](./media/join-windows-vm/add-vnet-address-range.png)
 
 1. Ardından, sanal ağ penceresinin sol menüsünde **Alt Ağlar'ı**seçin ve alt ağ eklemek için **+ Subnet'i** seçin.
 
-1. **+ Subnet'i**seçin, ardından *yönetim*gibi alt ağ için bir ad girin. *10.0.2.0/24*gibi bir **Adres aralığı (CIDR bloğu)** sağlayın. Bu IP adresi aralığının varolan diğer Azure veya şirket içi adres aralıklarıyla örtüşmediğinden emin olun. Diğer seçenekleri varsayılan değerleri olarak bırakın ve **ardından Tamam'ı**seçin.
+1. **+ Subnet'i**seçin, ardından *yönetim*gibi alt ağ için bir ad girin. *10.0.5.0/24*gibi bir **Adres aralığı (CIDR bloğu)** sağlayın. Bu IP adresi aralığının varolan diğer Azure veya şirket içi adres aralıklarıyla örtüşmediğinden emin olun. Diğer seçenekleri varsayılan değerleri olarak bırakın ve **ardından Tamam'ı**seçin.
 
     ![Azure portalında bir alt ağ yapılandırması oluşturma](./media/join-windows-vm/create-subnet.png)
 
 1. Alt ağı oluşturmak birkaç saniye sürer. Oluşturulduktan sonra, alt ağ penceresini kapatmak için *X'i* seçin.
 1. VM oluşturmak için **Ağ** bölmesinde, *yönetim*gibi açılır menüden oluşturduğunuz alt ağı seçin. Yine, doğru alt ağı seçtiğinizden ve VM'nizi Azure AD DS yönetilen etki alanınızın aynı alt ağına dağıtmadığınızdan emin olun.
+1. **Genel IP**için, yönetime bağlanmak için Azure Bastion'u kullandığınız ve atanmış ortak bir IP adresine gerek duymadığınız için açılır menüden *Yok'u* seçin.
 1. Diğer seçenekleri varsayılan değerleri olarak bırakın ve ardından **Yönetim'i**seçin.
 1. **Önyükleme tanılamalarını** *Kapalı*olarak ayarlayın. Diğer seçenekleri varsayılan değerleri olarak bırakın, ardından **Gözden Geçir + oluştur'u**seçin.
 1. VM ayarlarını gözden geçirin ve ardından **Oluştur'u**seçin.

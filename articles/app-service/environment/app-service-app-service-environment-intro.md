@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: f655b7793bfbb5bbeddfc2f1f8e7bc973dabeb4c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cd3881617227430488f8dd3f2f3d24072b24b8ce
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74687372"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478733"
 ---
 # <a name="introduction-to-app-service-environment-v1"></a>Uygulama Hizmet Ortamına Giriş v1
 
@@ -48,7 +48,7 @@ Bir Uygulama Hizmet Ortamındaki tüm bilgi işlem kaynakları yalnızca tek bir
 
 Uygulama Hizmet Ortamı, ön uç bilgi işlem kaynak havuzunun yanı sıra bir ila üç alt bilgi işlem kaynak havuzundan oluşur.
 
-Ön uç havuzu, SSL sonlandırmaişleminden sorumlu bilgi işlem kaynaklarının yanı sıra Uygulama Hizmet Ortamındaki uygulama isteklerinin otomatik yük dengelemesini içerir.
+Ön uç havuzu, TLS sonlandırmaişleminden sorumlu bilgi işlem kaynaklarının yanı sıra Uygulama Hizmet Ortamındaki uygulama isteklerinin otomatik yük dengelemesini içerir.
 
 Her çalışan havuzu, uygulama hizmet [planlarına][AppServicePlan]ayrılan ve bir veya daha fazla Azure Uygulama Hizmeti uygulaması içeren hesaplama kaynakları içerir.  Bir Uygulama Hizmet Ortamında en fazla üç farklı çalışan havuzu olabileceğinden, her çalışan havuzu için farklı işlem kaynakları seçme esnekliğine sahipsiniz.  
 

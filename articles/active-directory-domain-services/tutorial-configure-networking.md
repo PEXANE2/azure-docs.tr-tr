@@ -7,14 +7,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/30/2019
+ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: 26122278ad74fb1d383ca7a900810b6060ee78f5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: af284e4c10487123c8c2a2105a25a2285ae0aa99
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73172693"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80474375"
 ---
 # <a name="tutorial-configure-virtual-networking-for-an-azure-active-directory-domain-services-instance"></a>Öğretici: Azure Etkin Dizin Etki Alanı Hizmetleri örneği için sanal ağı yapılandırma
 
@@ -72,18 +72,18 @@ Varsayılan olarak, Azure AD DS yönetilen etki alanı yla oluşturulan Azure sa
 VM'ler ve uygulama iş yükleri için sanal ağ alt ağı oluşturmak için aşağıdaki adımları tamamlayın:
 
 1. Azure portalında, *myResourceGroup*gibi Azure AD DS yönetilen etki alanınızın kaynak grubunu seçin. Kaynaklar listesinden, *aadds-vnet*gibi varsayılan sanal ağı seçin.
-1. Sanal ağ penceresinin sol menüsünde **Adres alanı'nı**seçin. Sanal ağ, varsayılan alt ağ tarafından kullanılan *10.0.1.0/24*tek bir adres alanı yla oluşturulur.
+1. Sanal ağ penceresinin sol menüsünde **Adres alanı'nı**seçin. Sanal ağ, varsayılan alt ağ tarafından kullanılan *10.0.2.0/24*tek bir adres alanıyla oluşturulur.
 
     Sanal ağa ek bir IP adresi aralığı ekleyin. Bu adres aralığının boyutu ve kullanılacak gerçek IP adresi aralığı, zaten dağıtılan diğer ağ kaynaklarına bağlıdır. IP adres aralığı, Azure veya şirket içi ortamınızdaki varolan adres aralıklarıyla örtüşmemelidir. IP adresi aralığını alt ağa dağıtmayı beklediğiniz VM sayısına göre yeterince büyük boyutlandırdığınızdan emin olun.
 
-    Aşağıdaki örnekte, *10.0.2.0/24* ek bir IP adresi aralığı eklenir. Hazır olduğunda **Kaydet'i**seçin.
+    Aşağıdaki örnekte, *10.0.3.0/24* ek bir IP adresi aralığı eklenir. Hazır olduğunda **Kaydet'i**seçin.
 
     ![Azure portalına ek bir sanal ağ IP adresi aralığı ekleme](./media/tutorial-configure-networking/add-vnet-address-range.png)
 
 1. Ardından, sanal ağ penceresinin sol menüsünde **Alt Ağlar'ı**seçin ve alt ağ eklemek için **+ Subnet'i** seçin.
 1. Alt ağ için *iş yükleri*gibi bir ad girin. Gerekirse, önceki adımlarda sanal ağ için yapılandırılan IP adresi aralığının bir alt kümesini kullanmak istiyorsanız **Adres aralığını** güncelleştirin. Şimdilik, ağ güvenlik grubu, rota tablosu, hizmet bitiş noktaları gibi seçenekler için varsayılanları bırakın.
 
-    Aşağıdaki örnekte, *10.0.2.0/24* IP adresi aralığını kullanan *iş yükleri* adlı bir alt ağ oluşturulur:
+    Aşağıdaki örnekte, *10.0.3.0/24* IP adresi aralığını kullanan *iş yükleri* adlı bir alt ağ oluşturulur:
 
     ![Azure portalına ek bir sanal ağ alt ağı ekleme](./media/tutorial-configure-networking/add-vnet-subnet.png)
 
@@ -130,7 +130,7 @@ Bu öğreticide, tüm sorguları Azure AD DS etki alanı denetleyicilerine yönl
 
 1. Azure portalında, *myResourceGroup*gibi eşlenen sanal ağın kaynak grubunu seçin. Kaynaklar listesinden *myVnet*gibi eşlenmiş sanal ağı seçin.
 1. Sanal ağ penceresinin sol menüsünde **DNS sunucularını**seçin.
-1. Varsayılan olarak, sanal ağ yerleşik Azure tarafından sağlanan DNS sunucularını kullanır. **Özel** DNS sunucularını kullanmayı seçin. Genellikle *10.0.1.4* ve *10.0.1.5*olan Azure AD DS etki alanı denetleyicilerinin IP adreslerini girin. Bu IP adreslerini portaldaki Azure AD DS yönetilen etki alanınızın **Genel Bakış** penceresinde onaylayın.
+1. Varsayılan olarak, sanal ağ yerleşik Azure tarafından sağlanan DNS sunucularını kullanır. **Özel** DNS sunucularını kullanmayı seçin. Genellikle *10.0.2.4* ve *10.0.2.5*olan Azure AD DS etki alanı denetleyicilerinin IP adreslerini girin. Bu IP adreslerini portaldaki Azure AD DS yönetilen etki alanınızın **Genel Bakış** penceresinde onaylayın.
 
     ![Sanal ağ DNS sunucularını Azure AD DS etki alanı denetleyicilerini kullanacak şekilde yapılandırın](./media/tutorial-configure-networking/custom-dns.png)
 

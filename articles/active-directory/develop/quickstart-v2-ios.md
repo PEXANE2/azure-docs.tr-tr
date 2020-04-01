@@ -12,12 +12,12 @@ ms.date: 09/24/2019
 ms.author: marsma
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:iOS
-ms.openlocfilehash: 090f59c4074ca2613c3bd32030b0869a1cd4e9d8
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 3b0d8c8aa73903572a6a310e07aae57ec71f9cb7
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80129036"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80473655"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>Hızlı başlangıç: Kullanıcıları oturum açın ve bir iOS veya macOS uygulamasından Microsoft Graph API'yi arayın
 
@@ -117,7 +117,7 @@ Terminal penceresinde, indirilen kod örneğinin yer verdiği klasöre gidin ve 
 > 1. Uygulamayı çalıştırmak & oluşturun!
 > [!div class="sxs-lookup" renderon="portal"]
 > > [!NOTE]
-> > Enter_the_Supported_Account_Info_Here
+> > `Enter_the_Supported_Account_Info_Here`
 > [!div renderon="docs"]
 >
 > 1. Zip dosyasını ayıklayın ve projeyi XCode’da açın.

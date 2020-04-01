@@ -1,6 +1,6 @@
 ---
-title: 'Öğretici: etkileşimli sorgu ile ETL işlemleri-Azure HDInsight'
-description: Öğretici-ham CSV veri kümesinden verileri ayıklama, HDInsight 'ta etkileşimli sorgu kullanarak dönüştürme ve ardından dönüştürülen verileri Apache Sqoop kullanarak Azure SQL veritabanı 'na yükleme hakkında bilgi edinin.
+title: 'Öğretici: İnteraktif Sorgu ile ETL işlemleri - Azure HDInsight'
+description: Öğretici - Ham bir CSV veri setinden veri ayıklamayı, HDInsight'taki İnteraktif Sorgu'yu kullanarak nasıl dönüştüreceğinizi ve ardından Apache Sqoop'u kullanarak dönüştürülmüş verileri Azure SQL veritabanına nasıl yükleyeceğinizi öğrenin.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,44 +9,44 @@ ms.date: 07/02/2019
 ms.author: hrasheed
 ms.custom: hdinsightactive,mvc
 ms.openlocfilehash: d1136c153a529f58db1de277ec84ac332b9f78ae
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "73494154"
 ---
-# <a name="tutorial-extract-transform-and-load-data-using-interactive-query-in-azure-hdinsight"></a>Öğretici: Azure HDInsight 'ta etkileşimli sorgu kullanarak verileri ayıklama, dönüştürme ve yükleme
+# <a name="tutorial-extract-transform-and-load-data-using-interactive-query-in-azure-hdinsight"></a>Öğretici: Azure HDInsight'ta Etkileşimli Sorgu'u kullanarak verileri ayıklayın, dönüştürün ve yükleyin
 
-Bu öğreticide, genel kullanıma açık uçuş verilerinin ham CSV veri dosyasını alır, bunu HDInsight küme depolamasına içeri aktarabilir ve ardından Azure HDInsight 'ta etkileşimli sorgu kullanarak verileri dönüştürebilirsiniz. Veriler dönüştürüldükten sonra, bu verileri [Apache Sqoop](https://sqoop.apache.org/)kullanarak BIR Azure SQL veritabanına yüklersiniz.
+Bu eğitimde, herkese açık uçuş verilerinden oluşan ham bir CSV veri dosyasını alır, HDInsight küme depolamasına aktarır ve Azure HDInsight'ta Etkileşimli Sorgu'yu kullanarak verileri dönüştürür. Veriler dönüştürüldükten sonra, [Apache Sqoop'u](https://sqoop.apache.org/)kullanarak bu verileri Azure SQL veritabanına yüklersiniz.
 
 Bu öğretici aşağıdaki görevleri kapsar:
 
 > [!div class="checklist"]
 > * Örnek uçuş verilerini indirme
 > * Verileri bir HDInsight kümesine yükleme
-> * Etkileşimli sorgu kullanarak verileri dönüştürme
+> * Etkileşimli Sorgu'yu kullanarak verileri dönüştürme
 > * Azure SQL veritabanında tablo oluşturma
-> * Azure SQL veritabanına veri aktarmak için Sqoop kullanma
+> * Verileri Azure SQL veritabanına aktarmak için Sqoop'u kullanma
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-* HDInsight üzerinde etkileşimli bir sorgu kümesi. Bkz. [Azure Portal kullanarak Apache Hadoop kümeleri oluşturma](../hdinsight-hadoop-create-linux-clusters-portal.md) ve **küme türü**için **etkileşimli sorgu** seçme.
+* HDInsight'ta Etkileşimli Sorgu kümesi. Bkz. [Azure portalını kullanarak Apache Hadoop kümeleri oluşturun](../hdinsight-hadoop-create-linux-clusters-portal.md) ve Küme türü için **Etkileşimli Sorgu'yu** seçin. **Cluster type**
 
-* Bir Azure SQL veritabanı. Azure SQL veritabanını bir hedef veri deposu olarak kullanacaksınız. SQL veritabanınız yoksa bkz. [Azure portalında Azure SQL veritabanı oluşturma](/azure/sql-database/sql-database-single-database-get-started).
+* Azure SQL Veritabanı. Azure SQL veritabanını bir hedef veri deposu olarak kullanacaksınız. SQL veritabanınız yoksa bkz. [Azure portalında Azure SQL veritabanı oluşturma](/azure/sql-database/sql-database-single-database-get-started).
 
-* Bir SSH istemcisi. Daha fazla bilgi için bkz. [SSH kullanarak HDInsight 'A bağlanma (Apache Hadoop)](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* Bir SSH istemcisi. Daha fazla bilgi için [SSH kullanarak HDInsight'a (Apache Hadoop) bağlan'a](../hdinsight-hadoop-linux-use-ssh-unix.md)bakın.
 
 ## <a name="download-the-flight-data"></a>Uçuş verilerini indirme
 
-1. [Araştırma ve yenilikçi teknoloji yönetimi, nakliye Istatistikleri Bürosu ' nı](https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time)inceleyin.
+1. [Research and Innovative Technology Administration, Bureau of Transportation Statistics](https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time) (Araştırma ve Yenilikçi Teknolojiler İdaresi, Ulaşım İstatistikleri Bürosu) sayfasına göz atın.
 
-2. Sayfasında, tüm alanlar ' ı temizleyin ve ardından aşağıdaki değerleri seçin:
+2. Sayfada, tüm alanları temizleyin ve ardından aşağıdaki değerleri seçin:
 
-   | Ad | Değer |
+   | Adı | Değer |
    | --- | --- |
    | Yıl Filtresi |2019 |
    | Dönem Filtresi |Ocak |
-   | Alanlar |Year, FlightDate, Reporting_Airline, DOT_ID_Reporting_Airline, Flight_Number_Reporting_Airline, Originairportıd, Origin, OriginCityName, OriginState, Destairportıd, dest, DestCityName, DestState, DepDelayMinutes, ArrDelay, ArrDelayMinutes, CarrierDelay, dalgalı gecikme, NASDelay, SecurityDelay, Lateaırcraftdelay. |
+   | Alanlar |Yıl, FlightDate, Reporting_Airline, DOT_ID_Reporting_Airline, Flight_Number_Reporting_Airline, OriginAirportID, Origin, OriginCityName, OriginState, DestAirportID, Dest, DestCityName, DestState, DepDelayMinutes, ArrDelay, ArrDelayMinutes, CarrierDelay, WeatherDelay, NASDelay, SecurityDelay, LateAircraftDelay. |
 
 3. **Download** (İndir) seçeneğini belirleyin. Seçtiğiniz veri alanlarını içeren bir .zip dosyası alırsınız.
 
@@ -54,21 +54,21 @@ Bu öğretici aşağıdaki görevleri kapsar:
 
 Bir HDInsight kümesiyle ilişkili depolama birimine veri yüklemenin birçok yolu vardır. Bu bölümde, verileri karşıya yüklemek için `scp` kullanacaksınız. Verileri karşıya yüklemenin diğer yollarını öğrenmek için bkz. [Verileri HDInsight'a yükleme](../hdinsight-upload-data.md).
 
-1. . Zip dosyasını HDInsight kümesi baş düğümüne yükleyin. `FILENAME`. zip dosyasının adıyla ve HDInsight kümesinin adıyla `CLUSTERNAME` değiştirerek aşağıdaki komutu düzenleyin. Sonra bir komut istemi açın, çalışma dizininizi dosya konumu olarak ayarlayın ve ardından komutunu girin.
+1. .zip dosyasını HDInsight küme başlığı düğümüne yükleyin. .zip dosyasının adını `FILENAME` ve `CLUSTERNAME` HDInsight kümesinin adını değiştirerek aşağıdaki komutu düzenleme. Ardından bir komut istemi açın, çalışma dizininizi dosya konumuna ayarlayın ve ardından komutu girin.
 
     ```cmd
     scp FILENAME.zip sshuser@CLUSTERNAME-ssh.azurehdinsight.net:FILENAME.zip
     ```
 
-    Devam etmek için Evet veya Hayır girmeniz istenirse, komut istemine Evet yazın ve ENTER tuşuna basın. Metin yazarken pencerede görünmez.
+    Devam etmek için evet veya hayır girmeniz istenirse, komut istemine evet yazın ve enter tuşuna basın. Siz yazarken metin pencerede görünmez.
 
-2. Karşıya yükleme tamamlandıktan sonra SSH kullanarak kümeye bağlanın. `CLUSTERNAME` HDInsight kümesinin adıyla değiştirerek aşağıdaki komutu düzenleyin. Ardından aşağıdaki komutu girin:
+2. Karşıya yükleme tamamlandıktan sonra SSH kullanarak kümeye bağlanın. HDInsight kümesinin adını `CLUSTERNAME` değiştirerek aşağıdaki komutu düzenleme. Ardından aşağıdaki komutu girin:
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-3. Bir SSH bağlantısı kurulduktan sonra ortam değişkenini ayarlayın. `FILE_NAME`, `SQL_SERVERNAME`, `SQL_DATABASE`, `SQL_USER`ve `SQL_PASWORD` uygun değerlerle değiştirin. Sonra şu komutu girin:
+3. SSH bağlantısı kurulduktan sonra ortam değişkenini ayarlayın. Değiştir `FILE_NAME` `SQL_SERVERNAME`, `SQL_DATABASE` `SQL_USER`, `SQL_PASWORD` , , ve uygun değerlerle. Sonra komutu girin:
 
     ```bash
     export FILENAME=FILE_NAME
@@ -78,13 +78,13 @@ Bir HDInsight kümesiyle ilişkili depolama birimine veri yüklemenin birçok yo
     export SQLPASWORD='SQL_PASWORD'
     ```
 
-4. Aşağıdaki komutu girerek. zip dosyasını ayıklayın:
+4. Aşağıdaki komutu girerek .zip dosyasının zip'ini açın:
 
     ```bash
     unzip $FILENAME.zip
     ```
 
-5. HDInsight depolamada bir dizin oluşturun ve ardından aşağıdaki komutu girerek. csv dosyasını dizine kopyalayın:
+5. HDInsight depolama üzerinde bir dizin oluşturun ve aşağıdaki komutu girerek .csv dosyasını dizine kopyalayın:
 
     ```bash
     hdfs dfs -mkdir -p /tutorials/flightdelays/data
@@ -93,11 +93,11 @@ Bir HDInsight kümesiyle ilişkili depolama birimine veri yüklemenin birçok yo
 
 ## <a name="transform-data-using-a-hive-query"></a>Hive sorgusu kullanarak veri dönüştürme
 
-Bir HDInsight kümesi üzerinde Hive işi çalıştırmanın çok sayıda yolu vardır. Bu bölümde, bir Hive işini çalıştırmak için [Beeline](https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients#HiveServer2Clients-Beeline%E2%80%93CommandLineShell) kullanırsınız. Hive işi çalıştırmanın diğer yöntemleri hakkında daha fazla bilgi için bkz. [HDInsight üzerinde Apache Hive kullanma](../hadoop/hdinsight-use-hive.md).
+Bir HDInsight kümesi üzerinde Hive işi çalıştırmanın çok sayıda yolu vardır. Bu bölümde, bir Hive iş çalıştırmak için [Beeline](https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients#HiveServer2Clients-Beeline%E2%80%93CommandLineShell) kullanın. Hive işini çalıştırmanın diğer yöntemleri hakkında daha fazla bilgi için [HDInsight'ta Apache Hive'ı kullanın'](../hadoop/hdinsight-use-hive.md)a bakın.
 
 Hive işinin bir parçası olarak, verileri .csv dosyasından **Delays** adlı bir Hive tablosuna aktarın.
 
-1. HDInsight kümesi için zaten sahip olduğunuz SSH isteminden, **flightgecikmeleri. HQL**adlı yeni bir dosya oluşturmak ve düzenlemek için aşağıdaki komutu kullanın:
+1. HDInsight kümesi için zaten sahip olduğunuz SSH komutundan, **flightdelays.hql**adlı yeni bir dosya oluşturmak ve bunları yeniden oluşturmak için aşağıdaki komutu kullanın:
 
     ```bash
     nano flightdelays.hql
@@ -165,7 +165,7 @@ Hive işinin bir parçası olarak, verileri .csv dosyasından **Delays** adlı b
     FROM delays_raw;
     ```
 
-3. Dosyayı kaydetmek için **CTRL + X**, ardından **y**tuşlarına basın ve ardından girin.
+3. Dosyayı kaydetmek için **Ctrl + X**tuşuna basın, sonra **y**, sonra girin.
 
 4. Hive’ı başlatmak ve **flightdelays.hql** dosyasını çalıştırmak için aşağıdaki komutu kullanın:
 
@@ -199,7 +199,7 @@ Hive işinin bir parçası olarak, verileri .csv dosyasından **Delays** adlı b
 
 SQL Veritabanına bağlanıp tablo oluşturmanın çok sayıda yolu vardır. Aşağıdaki adımlarda HDInsight kümesinden [FreeTDS](http://www.freetds.org/) kullanılır.
 
-1. FreeTDS 'yi yüklemek için, kümeye açık SSH bağlantısından aşağıdaki komutu kullanın:
+1. FreeTDS'yi yüklemek için, kümeye açık SSH bağlantısından aşağıdaki komutu kullanın:
 
     ```bash
     sudo apt-get --assume-yes install freetds-dev freetds-bin
@@ -232,7 +232,7 @@ SQL Veritabanına bağlanıp tablo oluşturmanın çok sayıda yolu vardır. Aş
     GO
     ```
 
-    `GO` deyimi girildiğinde önceki deyimler değerlendirilir. Bu ifade, bir kümelenmiş dizine sahip **gecikmeler**adlı bir tablo oluşturur.
+    `GO` deyimi girildiğinde önceki deyimler değerlendirilir. Bu deyim, kümelenmiş dizin ile **gecikmeler**adlı bir tablo oluşturur.
 
     Tablonun oluşturulduğunu doğrulamak için aşağıdaki sorguyu kullanın:
 
@@ -248,29 +248,29 @@ SQL Veritabanına bağlanıp tablo oluşturmanın çok sayıda yolu vardır. Aş
     databaseName       dbo             delays        BASE TABLE
     ```
 
-4. Tsql yardımcı programından çıkış yapmak için `exit` istemine `1>` girin.
+4. Tsql yardımcı programından çıkış yapmak için `1>` istemine `exit` girin.
 
-## <a name="export-data-to-sql-database-using-apache-sqoop"></a>Apache Sqoop kullanarak verileri SQL veritabanı 'na aktarma
+## <a name="export-data-to-sql-database-using-apache-sqoop"></a>Apache Sqoop kullanarak verileri SQL veritabanına aktarma
 
 Önceki bölümlerde, `/tutorials/flightdelays/output` konumunda dönüştürülen verileri kopyaladınız. Bu bölümde, verileri `/tutorials/flightdelays/output` dizininden Azure SQL veritabanında oluşturduğunuz tabloya aktarmak için Sqoop kullanacaksınız.
 
-1. Sqoop 'nin SQL veritabanınızı aşağıdaki komutu girerek görebildiğini doğrulayın:
+1. Aşağıdaki komutu girerek Sqoop'un SQL veritabanınızı görebileceğini doğrulayın:
 
     ```bash
     sqoop list-databases --connect jdbc:sqlserver://$SQLSERVERNAME.database.windows.net:1433 --username $SQLUSER --password $SQLPASWORD
     ```
 
-    Bu komut, daha önce `delays` tablosunu oluşturduğunuz veritabanı da dahil olmak üzere veritabanlarının bir listesini döndürür.
+    Bu komut, tabloyu daha önce oluşturduğunuz veritabanı da `delays` dahil olmak üzere veritabanlarının listesini döndürür.
 
-2. Aşağıdaki komutu girerek `/tutorials/flightdelays/output` verileri `delays` tabloya aktarın:
+2. Aşağıdaki komutu girerek `/tutorials/flightdelays/output` tabloya `delays` veri dışa aktarma:
 
     ```bash
     sqoop export --connect "jdbc:sqlserver://$SQLSERVERNAME.database.windows.net:1433;database=$DATABASE" --username $SQLUSER --password $SQLPASWORD --table 'delays' --export-dir '/tutorials/flightdelays/output' --fields-terminated-by '\t' -m 1
     ```
 
-    Sqoop, `delays` tablosunu içeren veritabanına bağlanır ve verileri `/tutorials/flightdelays/output` dizininden `delays` tablosuna aktarır.
+    Sqoop `delays` tabloyu içeren veritabanına bağlanır ve `/tutorials/flightdelays/output` dizindeki verileri `delays` tabloya aktarın.
 
-3. Sqoop komutu bittikten sonra, aşağıdaki komutu girerek veritabanına bağlanmak için TSQL yardımcı programını kullanın:
+3. Sqoop komutu bittikten sonra aşağıdaki komutu girerek veritabanına bağlanmak için tsql yardımcı programını kullanın:
 
     ```bash
     TDSVER=8.0 tsql -H $SQLSERVERNAME.database.windows.net -U $SQLUSER -p 1433 -D $DATABASE -P $SQLPASWORD
@@ -291,11 +291,11 @@ SQL Veritabanına bağlanıp tablo oluşturmanın çok sayıda yolu vardır. Aş
 
 Öğreticiyi tamamladıktan sonra kümeyi silmek isteyebilirsiniz. HDInsight ile, verileriniz Azure Storage’da depolanır, böylece kullanılmadığında bir kümeyi güvenle silebilirsiniz. Ayrıca, kullanılmıyorken dahi HDInsight kümesi için sizden ücret kesilir. Küme ücretleri depolama ücretlerinin birkaç katı olduğundan, kullanılmadığında kümelerin silinmesi mantıklı olandır.
 
-Bir kümeyi silmek için bkz. [tarayıcınızı, PowerShell 'i veya Azure CLI 'yı kullanarak HDInsight kümesini silme](../hdinsight-delete-cluster.md).
+Bir kümeyi silmek için bkz: [Tarayıcınızı, PowerShell'i veya Azure CLI'yi kullanarak bir HDInsight kümesini sil.](../hdinsight-delete-cluster.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, ham bir CSV veri dosyası aldınız, bir HDInsight küme depolamasına içeri aktardınız ve sonra Azure HDInsight 'ta etkileşimli sorgu kullanarak verileri dönüştürürsünüz.  Apache Hive ambar Bağlayıcısı hakkında bilgi edinmek için sonraki öğreticiye ilerleyin.
+Bu eğitimde, ham bir CSV veri dosyasını aldınız, HDInsight küme depolamasına aktardın ve azure HDInsight'ta Etkileşimli Sorgu'yu kullanarak verileri dönüştürdün.  Apache Hive Warehouse Konektörü hakkında bilgi edinmek için bir sonraki öğreticiye ilerleyin.
 
 > [!div class="nextstepaction"]
->[Hive ambarı Bağlayıcısı ile Apache Spark ve Apache Hive tümleştirme](./apache-hive-warehouse-connector.md)
+>[Apache Spark ve Apache Hive'ı Hive Depo Konektörüyle bütünleştirin](./apache-hive-warehouse-connector.md)
