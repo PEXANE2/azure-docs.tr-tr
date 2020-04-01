@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 03/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ee3b5bd3278412949074b77f9d1c53d63a467280
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 403ca480bcf0743d81e375c122c888db96bbf543
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78189404"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80408709"
 ---
 # <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C'de özel ilkeler için geliştirici notları
 
@@ -59,68 +59,82 @@ El ile ilke yapılandırması, Azure AD B2C'nin temel platformuna daha düşük 
 
 Özel ilke/Kimlik Deneyimi Çerçevesi yetenekleri sürekli ve hızlı bir şekilde geliştirilmektedir. Aşağıdaki tablo özellikleri ve bileşen kullanılabilirliği bir dizinidir.
 
-### <a name="identity-providers-tokens-protocols"></a>Kimlik Sağlayıcılar, Jetonlar, Protokoller
+
+### <a name="protocols-and-authorization-flows"></a>Protokoller ve yetkilendirme akışları
 
 | Özellik | Geliştirme | Önizleme | GA | Notlar |
 |-------- | :-----------: | :-------: | :--: | ----- |
-| IDP-OpenIDConnect |  |  | X | Örneğin, Google+.  |
-| IDP-OAUTH2 |  |  | X | Örneğin, Facebook.  |
-| IDP-OAUTH1 (twitter) |  | X |  | Örneğin, Twitter. |
-| IDP-OAUTH1 (eski twitter) |  |  |  | Desteklenmiyor |
-| IDP-SAML |  |   | X | Örneğin, Salesforce, ADFS. |
-| IDP-WSFED | X |  |  |  |
-| Güvenen Parti OAUTH1 |  |  |  | Desteklenmiyor. |
-| Güvenen Parti OAUTH2 |  |  | X |  |
-| Güvenen Parti OIDC |  |  | X |  |
-| Güvenen Parti SAML |  |X  |  |  |
-| Güvenen Parti WSFED | X |  |  |  |
-| Temel ve sertifika auth ile REST API |  |  | X | Örneğin, Azure Mantık Uygulamaları. |
+| [OAuth2 yetki kodu](authorization-code-flow.md) |  |  | X |  |
+| PKCE ile OAuth2 yetki kodu |  |  | X | Yalnızca mobil uygulamalar  |
+| [OAuth2 örtük akış](implicit-flow-single-page-application.md) |  |  | X |  |
+| [OAuth2 kaynak sahibi şifre kimlik bilgileri](ropc-custom.md) |  | X |  |  |
+| [OIDC Bağlantı](openid-connect.md) |  |  | X |  |
+| [SAML2](connect-with-saml-service-providers.md)  |  |X  |  | POST ve Yönlendirme ciltleri. |
+| OAuth1 |  |  |  | Desteklenmiyor. |
+| WSFED | X |  |  |  |
 
-### <a name="component-support"></a>Bileşen Desteği
+### <a name="identify-providers-federation"></a>Sağlayıcılar federasyonuni belirleme 
+
+| Özellik | Geliştirme | Önizleme | GA | Notlar |
+|-------- | :-----------: | :-------: | :--: | ----- |
+| [OpenID Connect](openid-connect-technical-profile.md) |  |  | X | Örneğin, Google+.  |
+| [OAuth2](oauth2-technical-profile.md) |  |  | X | Örneğin, Facebook.  |
+| [OAuth1](oauth1-technical-profile.md) |  | X |  | Örneğin, Twitter. |
+| [SAML2](saml-technical-profile.md) |  |   | X | Örneğin, Salesforce, ADFS. |
+| WSFED| X |  |  |  |
+
+
+### <a name="rest-api-integration"></a>REST API entegrasyonu
+
+| Özellik | Geliştirme | Önizleme | GA | Notlar |
+|-------- | :-----------: | :-------: | :--: | ----- |
+| [Temel auth ile REST API](secure-rest-api.md#http-basic-authentication) |  |  | X |  |
+| [İstemci sertifikası auth ile REST API](secure-rest-api.md#https-client-certificate-authentication) |  |  | X |  |
+| [OAuth2 taşıyıcı auth ile REST API](secure-rest-api.md#oauth2-bearer-authentication) |  | X |  |  |
+
+### <a name="component-support"></a>Bileşen desteği
 
 | Özellik | Geliştirme | Önizleme | GA | Notlar |
 | ------- | :-----------: | :-------: | :--: | ----- |
-| Azure Çok Faktörlü Kimlik Doğrulama |  |  | X |  |
-| Yerel dizin olarak Azure Etkin Dizini |  |  | X |  |
-| E-posta doğrulaması için Azure E-posta alt sistemi |  |  | X |  |
-| Çoklu dil desteği|  |  | X |  |
-| Yüklem Doğrulamaları |  |  | X | Örneğin, parola karmaşıklığı. |
-| Üçüncü taraf e-posta hizmeti sağlayıcıları kullanma |  |X  |  |  |
+| [Telefon faktörü kimlik doğrulaması](phone-factor-technical-profile.md) |  |  | X |  |
+| [Azure MFA kimlik doğrulaması](multi-factor-auth-technical-profile.md) |  | X |  |  |
+| [Tek kullanımlık parola](one-time-password-technical-profile.md) |  | X |  |  |
+| Yerel dizin olarak [Azure Etkin Dizini](active-directory-technical-profile.md) |  |  | X |  |
+| E-posta doğrulaması için Azure e-posta alt sistemi |  |  | X |  |
+| [Üçüncü taraf e-posta hizmeti sağlayıcıları](custom-email.md) |  |X  |  |  |
+| [Çoklu dil desteği](localization.md)|  |  | X |  |
+| [Yüklem doğrulamaları](predicates.md) |  |  | X | Örneğin, parola karmaşıklığı. |
+| [Görüntü denetimleri](display-controls.md) |  |X  |  |  |
 
-### <a name="content-definition"></a>İçerik Tanımı
+
+### <a name="page-layout-versions"></a>Sayfa düzeni sürümleri
 
 | Özellik | Geliştirme | Önizleme | GA | Notlar |
 | ------- | :-----------: | :-------: | :--: | ----- |
-| Hata sayfası, api.error |  |  | X |  |
-| IDP seçim sayfası, api.idpselections |  |  | X |  |
-| Kayıt için IDP seçimi, api.idpselections.signup |  |  | X |  |
-| Şifreyi Unuttum, api.localaccountpasswordreset |  |  | X |  |
-| Yerel Hesap Oturum Açma, api.localaccountsignin |  |  | X |  |
-| Yerel Hesap Kayıt, api.localaccountsignup |  |  | X |  |
-| MFA sayfası, api.phonefactor |  |  | X |  |
-| Kendini ileri eden sosyal hesap kayıt, api.selfasserted |  |  | X |  |
-| Self-asserted profil güncellemesi, api.selfasserted.profileupdate |  |  | X |  |
-| Birleşik kayıt veya oturum açma sayfası, api.signuporsignin, parametresi ile "kayıt dışı" |  |  | X |  |
-| JavaScript / Sayfa düzeni |  | X |  |  |
+| [2.0.0](page-layout.md#200) |  | X |  |  |
+| [1.2.0](page-layout.md#120) |  | X |  |  |
+| [1.1.0](page-layout.md#110) |  |  | X |  |
+| [1.0.0](page-layout.md#100) |  |  | X |  |
+| [JavaScript desteği](javascript-samples.md) |  | X |  |  |
 
 ### <a name="app-ief-integration"></a>App-IEF entegrasyonu
 
 | Özellik | Geliştirme | Önizleme | GA | Notlar |
 | ------- | :-----------: | :-------: | :--: | ----- |
-| String parametre domain_hint sorgula |  |  | X | İddia olarak kullanılabilir, IDP'ye geçirilebilir. |
-| Sorgu dize parametresi login_hint |  |  | X | İddia olarak kullanılabilir, IDP'ye geçirilebilir. |
-| client_assertion yoluyla UserJourney'ye JSON'u takın | X |  |  | Küçümsülecek. |
-| JSON'u UserJourney'ye id_token_hint olarak takın |  | X |  | JSON'ı geçmek için ileri ye doğru bir yaklaşım. |
-| IDP TOKEN'ı uygulamaya geçirin |  | X |  | Örneğin, Facebook'tan uygulamaya. |
+| Sorgu dize parametresi`domain_hint` |  |  | X | İddia olarak kullanılabilir, IDP'ye geçirilebilir. |
+| Sorgu dize parametresi`login_hint` |  |  | X | İddia olarak kullanılabilir, IDP'ye geçirilebilir. |
+| JSON'u kullanıcı yolculuğuna`client_assertion` | X |  |  | Küçümsülecek. |
+| JSON'u kullanıcı yolculuğuna`id_token_hint` |  | X |  | JSON'ı geçmek için ileri ye doğru bir yaklaşım. |
+| [Kimlik sağlayıcının başvuruya belirteci aktarma](idp-pass-through-custom.md) |  | X |  | Örneğin, Facebook'tan uygulamaya. |
 
 ### <a name="session-management"></a>Oturum Yönetimi
 
 | Özellik | Geliştirme | Önizleme | GA | Notlar |
 | ------- | :-----------: | :-------: | :--: | ----- |
-| SSO Oturum Sağlayıcısı |  |  | X |  |
-| Harici Oturum Sağlayıcısı |  |  | X |  |
-| SAML SSO Oturum Sağlayıcısı |  |  | X |  |
-| Varsayılan SSO Oturum Sağlayıcısı |  |  | X |  |
+| [Varsayılan SSO oturum sağlayıcısı](custom-policy-reference-sso.md#defaultssosessionprovider) |  |  | X |  |
+| [Harici oturum sağlayıcısı](custom-policy-reference-sso.md#externalloginssosessionprovider) |  |  | X |  |
+| [SAML SSO oturum sağlayıcısı](custom-policy-reference-sso.md#samlssosessionprovider) |  |  | X |  |
+
 
 ### <a name="security"></a>Güvenlik
 
@@ -128,16 +142,19 @@ El ile ilke yapılandırması, Azure AD B2C'nin temel platformuna daha düşük 
 |-------- | :-----------: | :-------: | :--: | ----- |
 | İlke Tuşları- Oluşturma, El Kitabı, Yükleme |  |  | X |  |
 | Politika Anahtarları- RSA/Cert, Sırlar |  |  | X |  |
-| İlke yükleme |  |  | X |  |
+
 
 ### <a name="developer-interface"></a>Geliştirici arabirimi
 
 | Özellik | Geliştirme | Önizleme | GA | Notlar |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | Azure Portal-IEF UX |  |  | X |  |
-| Uygulama Öngörüleri UserJourney Günlükleri |  | X |  | Geliştirme sırasında sorun giderme için kullanılır.  |
-| Uygulama Öngörüleri Etkinlik Günlükleri (orkestrasyon adımlarından) |  | X |  | Üretimdeki kullanıcı akışlarını izlemek için kullanılır. |
+| İlke yükleme |  |  | X |  |
+| [Application Insights kullanıcı yolculuk günlükleri](troubleshoot-with-application-insights.md) |  | X |  | Geliştirme sırasında sorun giderme için kullanılır.  |
+| [Uygulama Öngörüleri etkinlik günlükleri](application-insights-technical-profile.md) |  | X |  | Üretimdeki kullanıcı akışlarını izlemek için kullanılır. |
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Özel ilkeler ve kullanıcı akışlarıile ilgili farklar](custom-policy-overview.md)hakkında daha fazla bilgi edinin.
+- Azure [AD B2C için kullanılabilen Microsoft Graph işlemlerini](microsoft-graph-operations.md) kontrol edin
+- [Özel ilkeler ve kullanıcı akışlarıile ilgili farklar](custom-policy-overview.md)hakkında daha fazla bilgi edinin.

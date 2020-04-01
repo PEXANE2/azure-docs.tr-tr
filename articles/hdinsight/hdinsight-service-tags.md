@@ -1,36 +1,36 @@
 ---
 title: Azure HDInsight için ağ güvenlik grubu (NSG) hizmet etiketleri
-description: Ağ güvenlik gruplarınıza açıkça IP adresleri eklemeden HDInsight sistem ve yönetim hizmetleri düğümlerinden kümenize gelen trafiğin izin vermek için HDInsight hizmet etiketlerini kullanın.
+description: NSG'lerinize IP adresleri eklemeden, sağlık ve yönetim hizmetleri düğümlerinden kümenize gelen trafiğin izin vermek için HDInsight hizmet etiketlerini kullanın.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 03/10/2020
-ms.openlocfilehash: a72753d5553e79a8ed28c3afcc7e54af6c2d230c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 34ec05a8362f5947cb61924b19c6b1a52e5d91a4
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79117244"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437668"
 ---
-# <a name="network-security-group-nsg-service-tags-for-azure-hdinsight"></a>Azure HDInsight için ağ güvenlik grubu (NSG) hizmet etiketleri
+# <a name="nsg-service-tags-for-azure-hdinsight"></a>Azure HDInsight için NSG hizmet etiketleri
 
-Ağ güvenliği grupları (NSG'ler) için HDInsight hizmet etiketleri, sağlık ve yönetim hizmetleri için IP adresleri gruplarıdır. Bu gruplar, güvenlik kuralı oluşturma karmaşıklığını en aza indirmeye yardımcı olur. [Hizmet etiketleri,](../virtual-network/security-overview.md#service-tags) ağ güvenlik gruplarınızdaki [yönetim IP adreslerinin](hdinsight-management-ip-addresses.md) her birini girmeden belirli IP adreslerinden gelen trafiğe izin vermek için alternatif bir yöntem sağlar.
+Ağ güvenliği grupları (NSG'ler) için Azure HDInsight hizmet etiketleri, sağlık ve yönetim hizmetleri için IP adresleri gruplarıdır. Bu gruplar, güvenlik kuralı oluşturma karmaşıklığını en aza indirmeye yardımcı olur. [Hizmet etiketleri,](../virtual-network/security-overview.md#service-tags) NSG'lerinizdeki [yönetim IP adreslerinin](hdinsight-management-ip-addresses.md) her birini girmeden belirli IP adreslerinden gelen trafiğe izin vermek için alternatif bir yöntem sağlar.
 
-Bu hizmet etiketleri HDInsight hizmeti tarafından oluşturulur ve yönetilir. Kendi hizmet etiketinizi oluşturamaz veya varolan bir etiketi değiştiremezsiniz. Microsoft, hizmet etiketiyle eşleşen adres öneklerini yönetir ve adresler değiştikçe servis etiketini otomatik olarak güncelleştirir.
+HDInsight hizmeti bu hizmet etiketlerini yönetir. Kendi hizmet etiketinizi oluşturamaz veya varolan bir etiketi değiştiremezsiniz. Microsoft, hizmet etiketiyle eşleşen adres öneklerini yönetir ve adresler değiştikçe servis etiketini otomatik olarak güncelleştirir.
 
-## <a name="getting-started-with-service-tags"></a>Hizmet etiketleri ile başlarken
+## <a name="get-started-with-service-tags"></a>Hizmet etiketleri ile başlayın
 
 Ağ güvenlik gruplarınızda hizmet etiketlerini kullanmak için iki seçeneğiniz vardır:
 
-1. Tek bir HDInsight hizmet etiketi kullanın - bu seçenek, sanal ağınızı HDInsight hizmetinin tüm bölgelerdeki kümeleri izlemek için kullandığı tüm IP Adreslerine açar. Bu seçenek en basit yöntemdir, ancak kısıtlayıcı güvenlik gereksinimleriniz varsa uygun olmayabilir.
+- **Tek bir global HDInsight hizmet etiketi kullanın**: Bu seçenek, sanal ağınızı HDInsight hizmetinin tüm bölgelerdeki kümeleri izlemek için kullandığı tüm IP adreslerine açar. Bu seçenek en basit yöntemdir, ancak kısıtlayıcı güvenlik gereksinimleriniz varsa uygun olmayabilir.
 
-1. Birden çok bölgesel hizmet etiketi kullanın - bu seçenek sanal ağınızı yalnızca HDInsight'ın söz konusu bölgede kullandığı IP Adreslerine açar. Ancak, birden çok bölge kullanıyorsanız, sanal ağınıza birden çok hizmet etiketi eklemeniz gerekir.
+- **Birden çok bölgesel hizmet etiketi kullanın**: Bu seçenek sanal ağınızı yalnızca HDInsight'ın söz konusu bölgede kullandığı IP adreslerine açar. Ancak, birden çok bölge kullanıyorsanız, sanal ağınıza birden çok hizmet etiketi eklemeniz gerekir.
 
 ## <a name="use-a-single-global-hdinsight-service-tag"></a>Tek bir global HDInsight hizmet etiketi kullanma
 
-HDInsight kümenizde hizmet etiketlerini kullanmaya başlamanın en kolay `HDInsight` yolu, genel etiketi ağ güvenliği grubu kuralına eklemektir.
+HDInsight kümenizde hizmet etiketlerini kullanmaya başlamanın en kolay `HDInsight` yolu, genel etiketi bir NSG kuralına eklemektir.
 
 1. Azure [portalından](https://portal.azure.com/)ağ güvenlik grubunuzu seçin.
 
@@ -40,19 +40,19 @@ HDInsight kümenizde hizmet etiketlerini kullanmaya başlamanın en kolay `HDIns
 
 1. Kaynak **hizmet etiketi** açılır listesinden **HDInsight'ı**seçin.
 
-    ![Azure portalı hizmet etiketi ekle](./media/hdinsight-service-tags/azure-portal-add-service-tag.png)
+    ![Azure portalından hizmet etiketi ekleme](./media/hdinsight-service-tags/azure-portal-add-service-tag.png)
 
-Bu etiket, HDInsight'ın mevcut olduğu tüm bölgelerin sağlık ve yönetim hizmetlerinin IP adreslerini içerir ve kümenizin nerede oluşturulurse oluşturulsun gerekli sağlık ve yönetim hizmetleriyle iletişim kurmasını sağlar.
+Bu etiket, HDInsight'ın kullanılabildiği tüm bölgeler için sağlık ve yönetim hizmetlerinin IP adreslerini içerir. Etiket, kümenizin nerede oluşturulursa oluşturulsun gerekli sağlık ve yönetim hizmetleriyle iletişim kurmasını sağlar.
 
 ## <a name="use-regional-hdinsight-service-tags"></a>Bölgesel HDInsight hizmet etiketlerini kullanma
 
-Daha kısıtlayıcı izinlere ihtiyacınız olduğu için birinci seçenek işe yaramazsa, yalnızca bölgeniz için geçerli olan hizmet etiketlerine izin verebilirsiniz. İlgili hizmet etiketleri, kümenizin oluşturulduğu bölgeye bağlı olarak bir, iki veya üç hizmet etiketi olabilir.
+Daha kısıtlayıcı izinlere ihtiyacınız olduğundan genel etiket seçeneği çalışmazsa, yalnızca bölgeniz için geçerli olan hizmet etiketlerine izin verebilirsiniz. Kümenizin oluşturulduğu bölgeye bağlı olarak bir, iki veya üç geçerli hizmet etiketi olabilir.
 
-Bölgeniz için hangi hizmet etiketlerini ekleyeceğinizi öğrenmek için belgenin aşağıdaki bölümlerini okuyun.
+Bölgeniz için hangi hizmet etiketlerini ekleyeceğinizi öğrenmek için makalenin aşağıdaki bölümlerini okuyun.
 
 ### <a name="use-a-single-regional-service-tag"></a>Tek bir bölgesel hizmet etiketi kullanma
 
-Hizmet etiketi seçeneği iki'yi tercih ederseniz ve kümeniz bu tabloda listelenen bölgelerden birinde bulunuyorsa, ağ güvenlik grubunuza yalnızca tek bir bölgesel hizmet etiketi eklemeniz gerekir.
+Bölgesel hizmet etiketleri kullanmayı tercih ediyorsanız ve kümeniz bu tabloda listelenen bölgelerden birinde bulunuyorsa, ağ güvenlik grubunuza yalnızca tek bir bölgesel hizmet etiketi eklemeniz gerekir.
 
 | Ülke | Bölge | Hizmet etiketi |
 | ---- | ---- | ---- |
@@ -73,20 +73,20 @@ Hizmet etiketi seçeneği iki'yi tercih ederseniz ve kümeniz bu tabloda listele
 | Japonya | Batı Japonya | HDInsight.JapanWest |
 | Fransa | Orta Fransa| HDInsight.FranceCentral |
 | Birleşik Krallık | Güney Birleşik Krallık | HDInsight.UKSouth |
-| Azure Kamu | USDoD Merkez   | HDInsight.USDoDCentral |
+| Azure Kamu | USDoD Merkez | HDInsight.USDoDCentral |
 | &nbsp; | USGov Texas | HDInsight.USGovTexas |
 | &nbsp; | Usdod Doğu | HDInsight.USDoDEast |
 | &nbsp; | USGov Arizona | HDInsight.USGovArizona |
 
 ### <a name="use-multiple-regional-service-tags"></a>Birden çok bölgesel hizmet etiketi kullanma
 
-Hizmet etiketi seçeneği iki'yi tercih ederseniz ve kümenizin oluşturulduğu bölge yukarıda listelenmediyse, birden çok bölgesel hizmet etiketine izin vermeniz gerekir. Birden fazla kullanma gereksinimi, çeşitli bölgeler için kaynak sağlayıcılarının düzenlenmesindeki farklılıklardan kaynaklanmaktadır.
+Bölgesel hizmet etiketleri kullanmayı tercih ediyorsanız, ancak kümenizin oluşturulduğu bölge önceki tabloda listelenmediyse, birden çok bölgesel hizmet etiketine izin vermeniz gerekir. Birden fazla kullanma gereksinimi, çeşitli bölgeler için kaynak sağlayıcılarının düzenlenmesindeki farklılıklardan kaynaklanmaktadır.
 
 Geri kalan bölgeler, kullandıkları bölgesel hizmet etiketlerine göre gruplara ayrılır.
 
 #### <a name="group-1"></a>Grup 1
 
-Kümeniz aşağıdaki tablodaki bölgelerden birinde oluşturulmuşsa, hizmet `HDInsight.WestUS` `HDInsight.EastUS` etiketlerine ve listelenen bölgesel hizmet etiketine ek olarak izin verin. Bu bölümdeki bölgeler üç hizmet etiketi gerektirir.
+Kümeniz aşağıdaki tablodaki bölgelerden birinde oluşturulduysa, hizmet `HDInsight.WestUS` etiketlerine ve `HDInsight.EastUS` listelenen bölgesel hizmet etiketine ek olarak izin verin. Bu bölümdeki bölgeler üç hizmet etiketi gerektirir.
 
 Örneğin, kümeniz `East US 2` bölgede oluşturulduysa, ağ güvenlik grubunuza aşağıdaki hizmet etiketlerini eklemeniz gerekir:
 
@@ -111,17 +111,17 @@ Kümeniz aşağıdaki tablodaki bölgelerden birinde oluşturulmuşsa, hizmet `H
 
 #### <a name="group-2"></a>Grup 2
 
-**Çin Kuzey** ve **Çin Doğu**bölgelerinde Kümeler, iki hizmet `HDInsight.ChinaNorth` `HDInsight.ChinaEast`etiketleri izin vermek gerekir: ve .
+*Çin Kuzey* ve *Çin Doğu* bölgelerinde kümeler iki hizmet `HDInsight.ChinaNorth` `HDInsight.ChinaEast`etiketleri izin vermek gerekir: ve .
 
 #### <a name="group-3"></a>Grup 3
 
-**ABD Gov Iowa** ve ABD **Gov Virginia**bölgelerinde Kümeler, iki `HDInsight.USGovIowa` `HDInsight.USGovVirginia`hizmet etiketleri izin vermek gerekir: ve .
+*ABD Gov Iowa* ve ABD *Gov Virginia* bölgelerinde kümeler iki `HDInsight.USGovIowa` `HDInsight.USGovVirginia`hizmet etiketleri izin vermek gerekir: ve .
 
 #### <a name="group-4"></a>Grup 4
 
-**Almanya Orta** ve **Almanya Kuzeydoğu**bölgelerinde kümeler, iki hizmet `HDInsight.GermanyCentral` `HDInsight.GermanyNorthEast`etiketleri izin vermek gerekir: ve .
+*Almanya Orta* ve *Almanya Kuzeydoğu* bölgelerinde kümeler iki hizmet `HDInsight.GermanyCentral` `HDInsight.GermanyNortheast`etiketleri izin vermek gerekir: ve .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- [Ağ güvenlik grupları - hizmet etiketleri](../virtual-network/security-overview.md#security-rules)
+- [Ağ güvenlik grupları: hizmet etiketleri](../virtual-network/security-overview.md#security-rules)
 - [Azure HDInsight kümeleri için sanal ağlar oluşturma](hdinsight-create-virtual-network.md)

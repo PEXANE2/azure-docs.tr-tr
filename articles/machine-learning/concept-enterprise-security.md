@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 01/09/2020
-ms.openlocfilehash: d945540a769f01c33ca3d3e467fe7c983fb5e286
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/13/2020
+ms.openlocfilehash: 359fd7fc787db5710deca75dd562215d25ed9148
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80287365"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437484"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Azure Machine Learning için kurumsal güvenlik
 
@@ -26,7 +26,7 @@ Bir bulut hizmeti kullandığınızda, en iyi yöntem erişimi yalnızca gereksi
 > [!NOTE]
 > Bu makaledeki bilgiler Azure Machine Learning Python SDK sürüm 1.0.83.1 veya üzeri sürümlerle çalışır.
 
-## <a name="authentication"></a>Kimlik doğrulaması
+## <a name="authentication"></a>Kimlik Doğrulaması
 
 Azure Etkin Dizin (Azure AD) kullanılacak şekilde yapılandırılırsa çok faktörlü kimlik doğrulama sı desteklenir. Kimlik doğrulama işlemi aşağıda veda edin:
 
@@ -107,6 +107,28 @@ Azure Machine Learning, bilgi işlem kaynakları için diğer Azure hizmetlerine
 
 Daha fazla bilgi için, [sanal ağda denemeleri ve çıkarımları nasıl çalıştırılabilirsiniz.](how-to-enable-virtual-network.md)
 
+Çalışma alanınız için Azure Özel Bağlantısını da etkinleştirebilirsiniz. Private Link, bir Azure Sanal Ağı'ndan iletişimi çalışma alanınızla sınırlamanızı sağlar. Daha fazla bilgi için [Özel Bağlantının nasıl yapılandırılabildiğini](how-to-configure-private-link.md)öğrenin.
+
+> [!TIP]
+> Çalışma alanınız ve diğer Azure kaynaklarınız arasındaki iletişimi korumak için sanal ağı ve Özel Bağlantıyı birleştirebilirsiniz. Ancak, bazı kombinasyonlar Bir Enterprise sürümü çalışma alanı gerektirir. Hangi senaryoların Enterprise sürümü gerektirdiğini anlamak için aşağıdaki tabloyu kullanın:
+>
+> | Senaryo | Enterprise</br>Edition | Temel</br>Edition |
+> | ----- |:-----:|:-----:| 
+> | Sanal ağ veya Özel Bağlantı yok | ✔ | ✔ |
+> | Private Link olmadan çalışma alanı. Sanal ağdaki diğer kaynaklar (Azure Kapsayıcı Kayıt Defteri hariç) | ✔ | ✔ |
+> | Private Link olmadan çalışma alanı. Private Link ile diğer kaynaklar | ✔ | |
+> | Private Link ile çalışma alanı. Sanal ağdaki diğer kaynaklar (Azure Kapsayıcı Kayıt Defteri hariç) | ✔ | ✔ |
+> | Çalışma alanı ve Private Link ile diğer kaynaklar | ✔ | |
+> | Private Link ile çalışma alanı. Private Link veya sanal ağ olmayan diğer kaynaklar | ✔ | ✔ |
+> | Sanal ağda Azure Kapsayıcı Kayıt Defteri | ✔ | |
+> | Çalışma alanı için Müşteri Yönetilen Anahtarlar | ✔ | |
+> 
+
+> [!WARNING]
+> Azure Machine Learning bilgi işlem örnekleri önizlemesi, Private Link'in etkin olduğu bir çalışma alanında desteklenmez.
+> 
+> Azure Machine Learning, özel bağlantı etkinleştirilmiş bir Azure Kubernetes Hizmeti kullanmayı desteklemez. Bunun yerine, Azure Kubernetes Hizmetini sanal ağda kullanabilirsiniz. Daha fazla bilgi için bkz: [Azure Sanal Ağı'ndaki Güvenli Azure ML deneme ve çıkarım işleri.](how-to-enable-virtual-network.md)
+
 ## <a name="data-encryption"></a>Veri şifrelemesi
 
 ### <a name="encryption-at-rest"></a>Bekleme sırasında şifreleme
@@ -123,6 +145,8 @@ Azure Machine Learning, Azure Machine Learning çalışma alanına ve aboneliği
 Azure Blob depolama alanında depolanan veriler için kendi anahtarlarınızı nasıl kullanacağınız hakkında bilgi için Azure [Anahtar Kasası'nda müşteri tarafından yönetilen anahtarlarla Azure Depolama şifrelemesine](../storage/common/storage-encryption-keys-portal.md)bakın.
 
 Eğitim verileri genellikle Azure Blob depolama alanında da depolanır, böylece bilgi işlem hedeflerini niçin erişilebilir hale getirir. Bu depolama, Azure Machine Learning tarafından yönetilmiyor, ancak uzak bir dosya sistemi olarak hedefleri hesaplamak için monte edilmiştir.
+
+Anahtarınızı __döndürmeniz veya iptal__ etmeniz gerekiyorsa, bunu istediğiniz zaman yapabilirsiniz. Bir anahtarı döndürürken, depolama hesabı verileri istirahatte şifrelemek için yeni anahtarı (en son sürüm) kullanmaya başlar. Bir anahtarı iptal ederken (devre dışı bırakırken), depolama hesabı başarısız istekleri halleder. Genellikle rotasyon veya iptal etkili olması için bir saat sürer.
 
 Erişim anahtarlarını yeniden oluşturma hakkında bilgi [için](how-to-change-storage-access-key.md)bkz.
 
@@ -157,6 +181,8 @@ Bu Cosmos DB örneği, aboneliğinizde Microsoft tarafından yönetilen bir kayn
 > * Bu Cosmos DB örneğini silmeniz gerekiyorsa, onu kullanan Azure Machine Learning çalışma alanını silmeniz gerekir. 
 > * Bu Cosmos DB hesabı için varsayılan [__İstek Birimleri__](../cosmos-db/request-units.md) __8000__olarak ayarlanır. Bu değeri değiştirmek desteklenmez. 
 
+Anahtarınızı __döndürmeniz veya iptal__ etmeniz gerekiyorsa, bunu istediğiniz zaman yapabilirsiniz. Bir anahtarı döndürürken, Cosmos DB verileri istirahatte şifrelemek için yeni anahtarı (en son sürüm) kullanmaya başlar. Bir anahtarı iptal ederken (devre dışı bırakırken), Cosmos DB başarısız istekleri halleder. Genellikle rotasyon veya iptal etkili olması için bir saat sürer.
+
 Cosmos DB ile müşteri tarafından yönetilen anahtarlar hakkında daha fazla bilgi için Azure [Cosmos DB hesabınız için müşteri tarafından yönetilen anahtarları yapılandır'a](../cosmos-db/how-to-setup-cmk.md)bakın.
 
 #### <a name="azure-container-registry"></a>Azure Container Kayıt Defteri
@@ -172,7 +198,21 @@ Varolan bir Azure Kapsayıcı Kayıt Defteri'ni kullanarak çalışma alanı olu
 
 #### <a name="azure-container-instance"></a>Azure Container Örneği
 
-Azure Kapsayıcı Örneği disk şifrelemeyi desteklemez. Disk şifrelemeye ihtiyacınız varsa, bunun yerine [bir Azure Kubernetes Hizmeti örneğine dağıtmanızı](how-to-deploy-azure-kubernetes-service.md) öneririz. Bu durumda, aboneliğinizde bir Azure Kapsayıcı Örneği'ne dağıtımları önlemek için Azure Machine Learning'in rol tabanlı erişim denetimleri desteğini de kullanmak isteyebilirsiniz.
+Dağıtılmış bir Azure Kapsayıcı Örneği (ACI) kaynağını müşteri tarafından yönetilen anahtarları kullanarak şifreleyebilirsiniz. ACI için kullanılan müşteri tarafından yönetilen anahtar, çalışma alanınız için Azure Anahtar Kasası'nda depolanabilir. Anahtar oluşturma hakkında bilgi için, [müşteri tarafından yönetilen bir anahtarla verileri şifrele'ye](../container-instances/container-instances-encrypt-data.md#generate-a-new-key)bakın.
+
+Bir modeli Azure Kapsayıcı Örneği'ne dağıtırken anahtarı kullanmak için, yeni bir dağıtım yapılandırması oluşturun. `AciWebservice.deploy_configuration()` Aşağıdaki parametreleri kullanarak anahtar bilgilerini sağlayın:
+
+* `cmk_vault_base_url`: Anahtarı içeren anahtar kasasının URL'si.
+* `cmk_key_name`: Anahtarın adı.
+* `cmk_key_version`: Anahtarın versiyonu.
+
+Dağıtım yapılandırması oluşturma ve kullanma hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
+
+* [AciWebservice.deploy_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none-) referans
+* [Dağıtım nereye ve nasıl yapılır?](how-to-deploy-and-where.md)
+* [Azure Kapsayıcı Örneklerine bir model dağıtma](how-to-deploy-azure-container-instance.md)
+
+ACI ile müşteri tarafından yönetilen bir anahtarı kullanma hakkında daha fazla bilgi için, [müşteri tarafından yönetilen bir anahtarla verileri şifrele'ye](../container-instances/container-instances-encrypt-data.md#encrypt-data-with-a-customer-managed-key)bakın.
 
 #### <a name="azure-kubernetes-service"></a>Azure Kubernetes Service
 

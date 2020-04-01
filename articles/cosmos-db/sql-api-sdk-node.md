@@ -8,12 +8,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 09/24/2018
 ms.author: dech
-ms.openlocfilehash: de1c1b93b813f71b321da0625bc60e0762a859c7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 181f43e060e3b4b41babeee375365a97e1d224aa
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70207965"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411278"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>SQL API için Azure Cosmos DB Düğümü.js SDK: Sürüm notları ve kaynakları
 > [!div class="op_single_selector"]
@@ -24,7 +24,7 @@ ms.locfileid: "70207965"
 > * [Async Java](sql-api-sdk-async-java.md)
 > * [Java](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
-> * [Geri kalanı](https://docs.microsoft.com/rest/api/cosmos-db/)
+> * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST Kaynak Sağlayıcısı](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
 > * [Toplu uygulayıcı - .NET](sql-api-sdk-bulk-executor-dot-net.md)
@@ -318,7 +318,7 @@ Her zaman en görünür değişiklikler değil, ama ekibimizin daha hızlı, dah
 ### <a name=""></a><a name="1.11.0"/>1.11.0</a>
 * Toplama sorguları (COUNT, MIN, MAX, SUM ve AVG) için destek eklendi.
 * Çapraz bölüm sorguları için paralellik derecesini denetleme seçeneği eklendi.
-* Azure Cosmos DB Emulator'a karşı çalışırken SSL doğrulamasını devre dışı bırakma seçeneği eklendi.
+* Azure Cosmos DB Emulator'a karşı çalışırken TLS doğrulamasını devre dışı bırakma seçeneği eklendi.
 * 10.100 RU/s'den 2500 RU/s'ye kadar bölümlenmiş koleksiyonlarda minimum iş belini düşürür.
 * Tek bölüm koleksiyonu için devam belirteç hatası düzeltildi. GitHub sorunu #107.
 * 0'ı tek param olarak işlemede executeStoredProcedure hatası düzeltildi. GitHub sorunu #155.
@@ -328,7 +328,7 @@ Her zaman en görünür değişiklikler değil, ama ekibimizin daha hızlı, dah
 * Küçük kod temizleme.
 
 ### <a name=""></a><a name="1.10.1"/>1.10.1</a>
-* Emülatör (hostname=localhost) hedeflemek için SDK kullanırken SSL doğrulamadevre dışı bırakılması.
+* Emülatör (hostname=localhost) hedeflemek için SDK kullanırken TLS doğrulamasını devre dışı bırakmak.
 * Depolanan yordam yürütme sırasında komut dosyası günlüğe kaydetmeyi etkinleştirmek için destek eklendi.
 
 ### <a name=""></a><a name="1.10.0"/>1.10.0</a>

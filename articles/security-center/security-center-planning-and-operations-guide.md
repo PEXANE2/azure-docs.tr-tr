@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 63b947a27c3aa24b42252bf33febd031f7caefbf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 46994413ba765e18a826eebfe85a38bb65efc749
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79282698"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435610"
 ---
 # <a name="azure-security-center-planning-and-operations-guide"></a>Azure Güvenlik Merkezi planlama ve işlemler kılavuzu
 Bu kılavuz, bilgi teknolojisi (BT) uzmanları, BT mimarları, bilgi güvenliği analistleri ve Azure Güvenlik Merkezi'ni kullanmayı planlayan bulut yöneticileri içindir.
@@ -131,15 +131,15 @@ Güvenlik Merkezi, Azure aboneliklerinizin her biri için otomatik olarak varsay
 Güvenlik ilkelerini yapılandırmadan önce her bir [güvenlik önerisini](https://docs.microsoft.com/azure/security-center/security-center-recommendations) gözden geçirip bu ilkelerin sahip olduğunuz çeşitli abonelikler ve kaynak grupları için uygun olup olmadığını belirleyin. Güvenlik Önerilerini ele almak için hangi eylemlerde bulunulacağını ve kuruluşunuzda yeni önerileri izlemekten ve gerekli adımların atılmasından kimin sorumlu olacağını anlamak da önemlidir.
 
 ## <a name="data-collection-and-storage"></a>Veri koleksiyonu ve depolama
-Azure Güvenlik Merkezi, sanal makinelerinizden güvenlik verileri toplamak için Azure Monitor hizmeti tarafından kullanılan aracının aynısı olan Microsoft İzleme Aracısını kullanır. Bu aracıdan [toplanan veriler](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection), Log Analytics çalışma alanlarınızda depolanır.
+Azure Güvenlik Merkezi, sanal makinelerinizden güvenlik verileri toplamak için Azure Monitor hizmeti tarafından kullanılan aracının aynısı olan Log Analytics aracısını kullanır. Bu aracıdan [toplanan veriler](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection), Log Analytics çalışma alanlarınızda depolanır.
 
 ### <a name="agent"></a>Aracı
 
-Güvenlik ilkesinde otomatik sağlama etkinleştirildikten sonra, desteklenen tüm Azure VM'lere ve oluşturulan tüm yeni VM'lere Microsoft Monitoring Agent ([Windows](https://docs.microsoft.com/azure/log-analytics/log-analytics-windows-agents) veya [Linux](https://docs.microsoft.com/azure/log-analytics/log-analytics-linux-agents) için) yüklenir. VM'de veya bilgisayarda zaten Microsoft Monitoring Agent yüklüyse, Azure Güvenlik Merkezi yüklü olan aracıyı kullanır. Aracının işlemi müdahaleci olmayacak şekilde tasarlanmıştır ve VM performansı üzerinde çok az etki yapar.
+Güvenlik ilkesinde otomatik sağlama etkinleştirildiğinde, Log Analytics aracısı [(Windows](https://docs.microsoft.com/azure/log-analytics/log-analytics-windows-agents) veya [Linux](https://docs.microsoft.com/azure/log-analytics/log-analytics-linux-agents)için) desteklenen tüm Azure VM'lerine ve oluşturulan yeni bilgisayarlara yüklenir. VM veya bilgisayarda Log Analytics aracısı zaten yüklüyse, Azure Güvenlik Merkezi geçerli yüklü aracıdan yararlanır. Aracının işlemi müdahaleci olmayacak şekilde tasarlanmıştır ve VM performansı üzerinde çok az etki yapar.
 
-Windows için Microsoft Monitoring Agent, TCP bağlantı noktası 443’ün kullanılmasını gerektirir. Daha fazla bilgi için [Sorun giderme makalesine](security-center-troubleshooting-guide.md) bakın.
+Windows için Log Analytics aracısı, TCP port 443'ün kullanılmasını gerektirir. Daha fazla bilgi için [Sorun giderme makalesine](security-center-troubleshooting-guide.md) bakın.
 
-Belirli bir noktada Veri Koleksiyonu'nu devre dışı bırakmak isterseniz koleksiyonu güvenlik ilkesinden kapatabilirsiniz. Ancak, Microsoft İzleme Aracısı diğer Azure yönetim ve izleme hizmetleri tarafından kullanılabildiği için, Güvenlik Merkezi'nde veri toplamayı kapattığınızda aracı otomatik olarak kaldırılmaz. Gerekirse aracıyı el ile kaldırabilirsiniz.
+Belirli bir noktada Veri Koleksiyonu'nu devre dışı bırakmak isterseniz koleksiyonu güvenlik ilkesinden kapatabilirsiniz. Ancak, Log Analytics aracısı diğer Azure yönetim ve izleme hizmetleri tarafından kullanılabildiği için, Güvenlik Merkezi'nde veri toplamayı kapattığınızda aracı otomatik olarak kaldırılmaz. Gerekirse aracıyı el ile kaldırabilirsiniz.
 
 > [!NOTE]
 > Desteklenen VM'lerin listesini bulmak için [Azure Güvenlik Merkezi'ni sık sorulan soruları (SSS)](faq-vms.md)okuyun.
@@ -148,7 +148,7 @@ Belirli bir noktada Veri Koleksiyonu'nu devre dışı bırakmak isterseniz kolek
 
 Çalışma alanı, veri kapsayıcısı olarak görev yapan bir Azure kaynağıdır. Siz veya kuruluşunuzun diğer üyeleri, IT altyapınızın tümünden veya bir bölümünden toplanan farklı veri kümelerini yönetmek için birden çok çalışma alanı kullanabilirsiniz.
 
-Microsoft Monitoring Agent’tan Azure Güvenlik Merkezi adına toplanan veriler, sanal makinenin Coğrafi konumu göz önünde bulundurularak Azure aboneliğinizle ilişkili Log Analytics çalışma alanlarında veya yeni çalışma alanlarında depolanır.
+Log Analytics temsilcisinden (Azure Güvenlik Merkezi adına) toplanan veriler, VM'nin Geo'su dikkate alınarak Azure aboneliğinizle ilişkili mevcut bir Log Analytics çalışma alanında veya yeni bir çalışma alanı(lar) içinde depolanır.
 
 Azure portalında, Azure Güvenlik Merkezi tarafından oluşturulanlar dahil olmak üzere Log Analytics çalışma alanlarınızın listesine göz atabilirsiniz. Yeni çalışma alanları için bir ilgili kaynak grubu oluşturulur. İkisi de şu adlandırma kuralını izler:
 

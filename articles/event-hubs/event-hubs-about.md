@@ -10,12 +10,12 @@ ms.topic: overview
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 9b3af6a6cee4375a110c894b6b72655605ad077d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
-ms.translationtype: HT
+ms.openlocfilehash: 45276ab59f1a3dabea42b904ff54bd37326fdeca
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80372253"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398118"
 ---
 # <a name="azure-event-hubs--a-big-data-streaming-platform-and-event-ingestion-service"></a>Azure Etkinlik Hub'ları — Büyük veri akış platformu ve olay alma hizmeti
 Azure Etkinlik Hub'ları büyük bir veri akışı platformu ve etkinlik hizmetidir. Saniyede milyonlarca olayı alabilir ve işleyebilir. Bir olay hub’ına gönderilen veriler, herhangi bir gerçek zamanlı analiz sağlayıcısı ve işlem grubu oluşturma/depolama bağdaştırıcıları kullanılarak dönüştürülüp depolanabilir.
@@ -61,7 +61,7 @@ Event Hubs ile megabayt boyutunda veri akışlarıyla başlayıp gigabayt veya t
 
 [Apache Kafka ekosistemleri için Etkinlik Hub'ları,](event-hubs-for-kafka-ecosystem-overview.md) [Apache Kafka (1.0 ve sonrası)](https://kafka.apache.org/) istemcilerinin ve uygulamalarının Event Hub'ları ile konuşmasını sağlar. Kendi Kafka kümelerinizi kurmanız, yapılandırmanız ve yönetmeniz gerekmez.
 
-Çeşitli [dillerde (.NET, Java, Python, Go, JavaScript)](https://github.com/Azure/azure-event-hubs)kullanılabilen geniş bir ekosistemle, akışlarınızı Olay Hub'larından kolayca işlemeye başlayabilirsiniz. Desteklenen tüm istemci dilleri, düşük düzeyde tümleştirme sağlar. Ekosistem ayrıca Azure Akış Analizi ve Azure Fonksiyonları gibi Azure hizmetleriyle sorunsuz entegrasyon sağlar ve böylece sunucusuz mimariler oluşturmanıza olanak tanır.
+Çeşitli dillerde mevcut olan geniş bir ekosistem [ile .NET](https://github.com/Azure/azure-sdk-for-net/), [Java](https://github.com/Azure/azure-sdk-for-java/), [Python](https://github.com/Azure/azure-sdk-for-python/), [JavaScript](https://github.com/Azure/azure-sdk-for-js/), Kolayca Olay Hub'larından akışları işleme başlayabilirsiniz. Desteklenen tüm istemci dilleri, düşük düzeyde tümleştirme sağlar. Ekosistem ayrıca Azure Akış Analizi ve Azure Fonksiyonları gibi Azure hizmetleriyle sorunsuz entegrasyon sağlar ve böylece sunucusuz mimariler oluşturmanıza olanak tanır.
 
 ## <a name="key-architecture-components"></a>Temel mimari bileşenler
 Event Hubs şu [temel bileşenleri](event-hubs-features.md) içerir:
@@ -76,6 +76,13 @@ Aşağıdaki şekilde Event Hubs akış işleme mimarisi gösterilmektedir:
 
 ![Event Hubs](./media/event-hubs-about/event_hubs_architecture.png)
 
+## <a name="event-hubs-on-azure-stack-hub"></a>Azure Yığını Hub'ındaki Etkinlik Hub'ları
+Azure Yığını Hub'ındaki Etkinlik Hub'ları karma bulut senaryolarını gerçekleştirmenize olanak tanır. Akış ve olay tabanlı çözümler, hem şirket içi hem de Azure bulut işleme için desteklenir. Senaryonuz karma (bağlı) veya bağlantısı kesilmiş olsun, çözümünüz olayların/akışların büyük ölçekte işlenmesini destekleyebilir. Senaryonuz yalnızca gereksinimlerinize göre sağlayabileceğiniz Olay Hub'ları küme boyutuna bağlıdır. 
+
+Etkinlik Hub'ları sürümleri (Azure Stack Hub'da ve Azure'da) yüksek derecede özellik paritesi sunar. Bu eşlik, SDK'lar, numuneler, PowerShell, CLI ve portalların birkaç farklılıkla benzer bir deneyim sunabileceği anlamına gelir. 
+
+Yığındaki Olay Hub'ları genel önizleme sırasında ücretsizdir. Daha fazla bilgi için [Azure Yığını Hub'ına genel bakışta Olay Hub'larına](https://docs.microsoft.com/azure-stack/user/event-hubs-overview)bakın.
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -84,7 +91,7 @@ Olay Hub'larını kullanmaya başlamak için Gönder ve etkinlik öğreticilerin
 - [.NET Core](get-started-dotnet-standard-send-v2.md)
 - [Java](get-started-java-send-v2.md)
 - [Python](get-started-python-send-v2.md)
-- [Javascript](get-started-node-send-v2.md)
+- [JavaScript](get-started-node-send-v2.md)
 - [Git](event-hubs-go-get-started-send.md)
 - [C (yalnızca gönderme)](event-hubs-c-getstarted-send.md)
 - [Apache Storm (yalnızca alma)](event-hubs-storm-getstarted-receive.md)

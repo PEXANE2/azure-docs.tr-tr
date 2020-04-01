@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 1/27/2020
 ms.author: raynew
-ms.openlocfilehash: d4409fe61bfe1f0a9fe74171f5b1ec471b9a6a26
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: fd10468e823201bfa67aaf7c570071bd075ec4ac
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79258063"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80420840"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Şirket içi Hyper-V V VM'lerin Azure'a olağanüstü durum kurtarması için destek matrisi
 
@@ -68,6 +68,7 @@ Konuk VM ağı: IPv6 | Hayır | Evet
 Konuk VM ağı: Statik IP (Windows) | Evet | Evet
 Konuk VM ağı: Statik IP (Linux) | Hayır | Hayır
 Konuk VM ağı: Multi-NIC | Evet | Evet
+Https Proxy | Hayır | Hayır
 
 
 

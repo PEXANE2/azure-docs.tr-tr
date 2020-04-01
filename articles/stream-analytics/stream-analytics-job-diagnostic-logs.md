@@ -6,13 +6,13 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/19/2019
-ms.openlocfilehash: f318b373f6a6f46ee3a85703c6099c76568580ba
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/27/2020
+ms.openlocfilehash: cdb6629441becd0a8356debe3360830ff11a7a9d
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75426119"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398414"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-diagnostics-logs"></a>Tanılama günlüklerini kullanarak Azure Akış Analizi'ni sorun giderme
 
@@ -117,7 +117,7 @@ Adı | Açıklama
 Kaynak | Hatanın oluştuğu iş girişinin veya çıktının adı.
 İleti | Hatayla ilişkili ileti.
 Tür | Hata türü. Örneğin, **DataConversionError**, **CsvParserError**veya **ServiceBusPropertyColumnMissingError**.
-Veri | Hatanın kaynağını doğru bulmak için yararlı olan verileri içerir. Boyutuna bağlı olarak kesilmeye tabidir.
+Veriler | Hatanın kaynağını doğru bulmak için yararlı olan verileri içerir. Boyutuna bağlı olarak kesilmeye tabidir.
 
 **IşlemAdı** değerine bağlı olarak, veri hataları aşağıdaki şema var:
 

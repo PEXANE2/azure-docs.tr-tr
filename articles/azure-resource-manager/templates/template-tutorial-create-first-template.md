@@ -5,12 +5,12 @@ author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: ace76b9a13f44c14e348a0338ca01dd6b3948ce3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8b05bccf10ef5f273a74ca49e02162fd0408230f
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80369934"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411715"
 ---
 # <a name="tutorial-create-and-deploy-your-first-arm-template"></a>Öğretici: İlk ARM şablonunuzu oluşturun ve dağıtın
 
@@ -79,7 +79,7 @@ Tebrikler, ilk şablonunuzu oluşturdunuz.
 
 Azure PowerShell/Azure CLI ile çalışmaya başlamak için Azure kimlik bilgilerinizle oturum açın.
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 Connect-AzAccount
@@ -96,7 +96,7 @@ az login
 
 Bir şablon dağıttığınızda, kaynakları içeren bir kaynak grubu belirtirsiniz. Dağıtım komutunu çalıştırmadan önce, Azure CLI veya Azure PowerShell ile kaynak grubu oluşturun. Azure PowerShell ve Azure CLI arasında seçim yapmak için aşağıdaki kod bölümündeki sekmeleri seçin. Bu makaledeki CLI örnekleri Bash kabuğu için yazılmıştır.
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 New-AzResourceGroup `
@@ -118,14 +118,14 @@ az group create \
 
 Şablonu dağıtmak için Azure CLI veya Azure PowerShell'i kullanın. Oluşturduğunuz kaynak grubunu kullanın. Dağıtım geçmişinde kolayca tanımlayabilmeniz için dağıtıma bir ad verin. Kolaylık sağlamak için, şablon dosyasına giden yolu depolayan bir değişken de oluşturun. Bu değişken, her dağıtyaptığınızda yolu yeniden yazmak zorunda kalmadığınız için dağıtım komutlarını çalıştırmanızı kolaylaştırır.
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 $templateFile = "{provide-the-path-to-the-template-file}"
 New-AzResourceGroupDeployment `
   -Name blanktemplate `
   -ResourceGroupName myResourceGroup `
-  -TemplateFile $templateFile
+  -TemplateFile $templateFile 
 ```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
@@ -144,7 +144,7 @@ az deployment group create \
 
 Dağıtım komutu sonuçları döndürür. Dağıtımın `ProvisioningState` başarılı olup olmadığını görmek için arayın.
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ![PowerShell dağıtım sağlama durumu](./media/template-tutorial-create-first-template/resource-manager-deployment-provisioningstate.png)
 
@@ -153,6 +153,9 @@ Dağıtım komutu sonuçları döndürür. Dağıtımın `ProvisioningState` ba�
 ![Azure CLI dağıtım sağlama durumu](./media/template-tutorial-create-first-template/azure-cli-provisioning-state.png)
 
 ---
+
+> [!NOTE]
+> Dağıtım başarısız olduysa, hata ayıklama günlüklerini göstermek için dağıtım komutuyla **hata ayıklama** anahtarını kullanın.  Tam hata ayıklama günlüklerini göstermek için **ayrıntılı** anahtar da kullanabilirsiniz.
 
 ## <a name="verify-deployment"></a>Dağıtımı doğrulama
 

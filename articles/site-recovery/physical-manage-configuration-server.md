@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/28/2019
 ms.author: mayg
-ms.openlocfilehash: 25be48e9caed446be3a86a11143ce3040808065a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: eb7e891c031be5ac01295905d5c3304dc6818737
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80294303"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478974"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>Fiziksel sunucu olağanüstü durum kurtarma için yapılandırma sunucusunu yönetme
 
@@ -290,8 +290,8 @@ Sunucuyu aşağıdaki gibi yükseltin:
 > [!NOTE]
 > Remove-AzSiteRecoveryFabric'deki **-Force** seçeneği, Yapılandırma sunucusunun kaldırılmasını/silinmesini zorlamak için kullanılabilir.
 
-## <a name="renew-ssl-certificates"></a>SSL sertifikalarını yenileme
-Yapılandırma sunucusu, Mobilite hizmetinin etkinliklerini, işlem sunucularını ve ona bağlı ana hedef sunucuları düzenleyen dahili bir web sunucusuna sahiptir. Web sunucusu, istemcilerin kimliğini doğrulamak için bir SSL sertifikası kullanır. Sertifika üç yıl sonra sona erer ve herhangi bir zamanda yenilenebilir.
+## <a name="renew-tlsssl-certificates"></a>TLS/SSL sertifikalarını yenileme
+Yapılandırma sunucusu, Mobilite hizmetinin etkinliklerini, işlem sunucularını ve ona bağlı ana hedef sunucuları düzenleyen dahili bir web sunucusuna sahiptir. Web sunucusu, istemcilerin kimliğini doğrulamak için bir TLS/SSL sertifikası kullanır. Sertifika üç yıl sonra sona erer ve herhangi bir zamanda yenilenebilir.
 
 ### <a name="check-expiry"></a>Son kullanma tarihini kontrol edin
 

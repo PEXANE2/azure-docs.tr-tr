@@ -3,12 +3,12 @@ title: Azure Hizmet Kumaşı küme dağıtımı planlama
 description: Azure'da bir üretim Hizmeti Kumaş küme dağıtımı planlama ve hazırlama hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.openlocfilehash: 1762a6975448301957579b3437a8af5c89b3accd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ad6a7a6ea9a90bea4a3b6bc553da67a46144dc03
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78193485"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422276"
 ---
 # <a name="plan-and-prepare-for-a-cluster-deployment"></a>Küme dağıtımı planlama ve hazırlama
 
@@ -86,6 +86,16 @@ Kısa ömürlü işletim sistemi diskleri belirli bir Hizmet Kumaşı özelliği
             }
         }
     ```
+
+> [!NOTE]
+> Os diski işletim sistemi yükseltmesi durumunda kaybolacağından, kullanıcı uygulamalarının işletim sistemi diskinde herhangi bir bağımlılık/dosya/yapı olmamalıdır.
+> Bu nedenle, geçici diskler ile [PatchOrchestrationApplication](https://github.com/microsoft/Service-Fabric-POA) kullanılması tavsiye edilmez.
+>
+
+> [!NOTE]
+> Varolan geçici olmayan VMSS, geçici diskleri kullanmak üzere yerinde yükseltilemez.
+> Geçiş yapmak için, kullanıcıların geçici disklere sahip yeni bir düğüm Type [eklemeleri,](./virtual-machine-scale-set-scale-node-type-scale-out.md) iş yüklerini yeni düğümTürüne taşımaları & varolan düğüm Türünü [kaldırmaları](./service-fabric-how-to-remove-node-type.md) gerekir.
+>
 
 Daha fazla bilgi ve daha fazla yapılandırma seçeneği için [Azure VM'leri için Geçici İşletim Sistemi diskleri'ne](../virtual-machines/windows/ephemeral-os-disks.md) bakın 
 

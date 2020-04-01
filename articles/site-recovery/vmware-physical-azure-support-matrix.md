@@ -1,16 +1,14 @@
 ---
 title: Azure Site Kurtarma'da VMware/fiziksel olağanüstü durum kurtarma için destek matrisi
 description: Azure Site Kurtarma'yı kullanarak VMware VM'lerinin ve fiziksel sunucunun Azure'a olağanüstü durum kurtarma desteğini özetler.
-ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 2/24/2020
-ms.author: raynew
-ms.openlocfilehash: 05e60c5b008746bbfd72dbe7a2e14b18aa563671
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b4cf19f4f74ba24951efb806a9f2e3d88fcad7bc
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79371401"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478418"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>VMware VM'lerinin ve fiziksel sunucuların Azure'a olağanüstü durum kurtarması için destek matrisi
 
@@ -50,10 +48,10 @@ Disk boş alanı | İşlem sunucusu önbelleği için 600 GB alan.
 Disk boş alanı | Bekletme sürücüsü için 600 GB alan.
 İşletim sistemi  | Masaüstü deneyimiyle Windows Server 2012 R2 veya Windows Server 2016 <br/><br> Bu cihazın dahili Master Target'ını geri tepme için kullanmayı planlıyorsanız, işletim sistemi sürümünün çoğaltılan öğelerle aynı veya daha yüksek olduğundan emin olun.|
 İşletim sistemi yerel ayarı | İngilizce (en-us)
-[PowerCLI](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) | Yapılandırma sunucusu sürümü [9.14](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery) veya sonrası için gerekli değildir. 
-Windows Server rolleri | Active Directory Domain Services'ı etkinleştirme; İnternet Bilgi Hizmetleri (IIS) veya Hyper-V. 
+[PowerCLI](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) | Yapılandırma sunucusu sürümü [9.14](https://support.microsoft.com/help/4091311/update-rollup-23-for-azure-site-recovery) veya sonrası için gerekli değildir.
+Windows Server rolleri | Active Directory Domain Services'ı etkinleştirme; İnternet Bilgi Hizmetleri (IIS) veya Hyper-V.
 Grup ilkeleri| - Komut istemine erişimi engelleyin. <br/> - Kayıt defteri düzenleme araçlarına erişimi engelleyin. <br/> - Dosya ekleri için güven mantığı. <br/> - Komut Dosyası Yürütme'yi açın. <br/> - [Daha fazla bilgi](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
-IIS | Şunları yaptığınızdan emin olun:<br/><br/> - Önceden var olan bir varsayılan web siteniz yok <br/> - [Anonim kimlik doğrulamayı etkinleştirme](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br/> - [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) ayarını etkinleştirin  <br/> - 443 sayılı bağlantı noktasında önceden web sitesi/uygulama dinleme yok<br/>
+IIS | Şunları yaptığınızdan emin olun:<br/><br/> - Önceden var olan bir varsayılan web siteniz yok <br/> - [Anonim kimlik doğrulamayı etkinleştirme](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731244(v=ws.10)) <br/> - [FastCGI](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc753077(v=ws.10)) ayarını etkinleştirin  <br/> - 443 sayılı bağlantı noktasında önceden web sitesi/uygulama dinleme yok<br/>
 NIC türü | VMXNET3 (VMware VM olarak dağıtıldığında)
 IP adresi türü | Statik
 Bağlantı Noktaları | Kontrol kanalı orkestrasyonu için kullanılan 443<br/>Veri taşıma için 9443
@@ -68,24 +66,24 @@ Site Kurtarma, desteklenen bir makinede çalışan tüm iş yükünün çoğalt�
 **Bileşen** | **Şey**
 --- | ---
 Makine ayarları | Azure'da çoğalan makineler [Azure gereksinimlerini](#azure-vm-requirements)karşılamalıdır.
-Makine iş yükü | Site Kurtarma, desteklenen bir makinede çalışan tüm iş yükünün çoğaltılması işlemini destekler. [Daha fazla bilgi edinin](https://aka.ms/asr_workload).
+Makine iş yükü | Site Kurtarma, desteklenen bir makinede çalışan tüm iş yükünün çoğaltılması işlemini destekler. [Daha fazla bilgi edinin](site-recovery-workload.md).
 Windows Server 2019 | [Update rollup 34](https://support.microsoft.com/help/4490016) 'den (Mobilite hizmetinin 9.22 sürümü) itibaren desteklenir.
 Windows Server 2016 64 bit | Server Core, Desktop Experience ile Server için desteklenir.
 Windows Server 2012 R2 / Windows Server 2012 | Destekleniyor.
 Windows Server 2008 R2 SP1 ile itibaren. | Destekleniyor.<br/><br/> Mobilite servis aracısının [9.30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) sürümünden, Windows 2008 R2 çalıştıran makinelerde SP1 veya daha yeni olan servis [yığını güncelleştirmesi (SSU)](https://support.microsoft.com/help/4490628) ve [SHA-2 güncelleştirmesinin](https://support.microsoft.com/help/4474419) yüklü olarak yüklenmesi gerekir. SHA-1 Eylül 2019'dan itibaren desteklenmez ve SHA-2 kod imzalama etkin değilse aracı uzantısı beklendiği gibi yüklenmez/yükseltmeyapmaz. [SHA-2 yükseltmesi ve gereksinimleri](https://aka.ms/SHA-2KB)hakkında daha fazla bilgi edinin.
-Windows Server 2008 SP2 veya daha sonra (64-bit/32-bit) ile |  Yalnızca geçiş için desteklenir. [Daha fazla bilgi edinin](migrate-tutorial-windows-server-2008.md).<br/><br/> Mobilite servis aracısının [9.30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) sürümünden, Windows 2008 SP2 makinelerinde hizmet [yığını güncelleştirmesi (SSU)](https://support.microsoft.com/help/4493730) ve [SHA-2 güncelleştirmesinin](hhttps://support.microsoft.com/help/4474419) yüklü olarak yüklenmesi gerekir. ISHA-1 Eylül 2019'dan itibaren desteklenmez ve SHA-2 kod imzalama etkin değilse aracı uzantısı beklendiği gibi yüklenmez/yükseltmez. [SHA-2 yükseltmesi ve gereksinimleri](https://aka.ms/SHA-2KB)hakkında daha fazla bilgi edinin.
+Windows Server 2008 SP2 veya daha sonra (64-bit/32-bit) ile |  Yalnızca geçiş için desteklenir. [Daha fazla bilgi edinin](migrate-tutorial-windows-server-2008.md).<br/><br/> Mobilite servis aracısının [9.30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) sürümünden, Windows 2008 SP2 makinelerinde hizmet [yığını güncelleştirmesi (SSU)](https://support.microsoft.com/help/4493730) ve [SHA-2 güncelleştirmesinin](https://support.microsoft.com/help/4474419) yüklü olarak yüklenmesi gerekir. ISHA-1 Eylül 2019'dan itibaren desteklenmez ve SHA-2 kod imzalama etkin değilse aracı uzantısı beklendiği gibi yüklenmez/yükseltmez. [SHA-2 yükseltmesi ve gereksinimleri](https://support.microsoft.com/en-us/help/4472027/2019-sha-2-code-signing-support-requirement-for-windows-and-wsus)hakkında daha fazla bilgi edinin.
 10, Windows 8.1, Windows 8 | Destekleniyor.
-Windows 7 SP1 64-bit ile | [Update rollup 36'dan](https://support.microsoft.com/help/4503156) (Mobilite hizmetinin 9.22 sürümü) itibaren desteklenir. </br></br> Mobility servis aracısının [9.30'undan](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) itibaren, Windows 7 SP1 makinelerinde hizmet [yığını güncelleştirmesi (SSU)](https://support.microsoft.com/help/4490628) ve [SHA-2 güncelleştirmesinin](https://support.microsoft.com/help/4474419) yüklü olarak yüklenmesi gerekir.  SHA-1 Eylül 2019'dan itibaren desteklenmez ve SHA-2 kod imzalama etkin değilse aracı uzantısı beklendiği gibi yüklenmez/yükseltmeyapmaz. [SHA-2 yükseltmesi ve gereksinimleri](https://aka.ms/SHA-2KB)hakkında daha fazla bilgi edinin.
+Windows 7 SP1 64-bit ile | [Update rollup 36'dan](https://support.microsoft.com/help/4503156) (Mobilite hizmetinin 9.22 sürümü) itibaren desteklenir. </br></br> Mobility servis aracısının [9.30'undan](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) itibaren, Windows 7 SP1 makinelerinde hizmet [yığını güncelleştirmesi (SSU)](https://support.microsoft.com/help/4490628) ve [SHA-2 güncelleştirmesinin](https://support.microsoft.com/help/4474419) yüklü olarak yüklenmesi gerekir.  SHA-1 Eylül 2019'dan itibaren desteklenmez ve SHA-2 kod imzalama etkin değilse aracı uzantısı beklendiği gibi yüklenmez/yükseltmeyapmaz. [SHA-2 yükseltmesi ve gereksinimleri](https://support.microsoft.com/en-us/help/4472027/2019-sha-2-code-signing-support-requirement-for-windows-and-wsus)hakkında daha fazla bilgi edinin.
 Linux | Yalnızca 64 bit sistem desteklenir. 32 bit sistem desteklenmiyor.<br/><br/>Her Linux sunucusunda [Linux Entegrasyon Hizmetleri (LIS) bileşenleri](https://www.microsoft.com/download/details.aspx?id=55106) yüklü olmalıdır. Test başarısız olduktan/başarısız olduktan sonra sunucuyu Azure'da önyükleme yapmak gerekir. LIS bileşenleri eksikse, makinelerin Azure'da önyükleme yapmasını etkinleştirmeden önce [bileşenleri](https://www.microsoft.com/download/details.aspx?id=55106) yüklediğinizden emin olun. <br/><br/> Site Kurtarma, Azure'da Linux sunucularını çalıştırmak için başarısız olur. Ancak Linux satıcıları desteği yalnızca yaşam sonuna ulaşmamış dağıtım sürümleriyle sınırlandırabilir.<br/><br/> Linux dağıtımlarında, yalnızca dağıtım küçük sürüm sürümü/güncelleştirmesinin bir parçası olan stok çekirdekleri desteklenir.<br/><br/> Korumalı makinelerin büyük Linux dağıtım sürümlerinde yükseltilmesi desteklenmez. Çoğaltmayı yükseltmek için çoğaltmayı devre dışı, işletim sistemini yükseltin ve ardından çoğaltmayı yeniden etkinleştirin.<br/><br/> Azure'da Linux ve açık kaynak teknolojisi desteği hakkında [daha fazla bilgi edinin.](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure)
 Linux Red Hat Enterprise | 5.2 ile 5.11 arasında</b><br/> 6.1 ile 6.10 arasında</b> </br> 7.0, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6, [7.7,](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery) [8.0](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery), 8.1 <br/> Red Hat Enterprise Linux 5.2-5.11 çalıştıran sunucular & 6.1-6.10 [Linux Entegrasyon Hizmetleri (LIS) bileşenleri](https://www.microsoft.com/download/details.aspx?id=55106) önceden yüklenmiş değil. Makinelerin Azure'da önyükleme yapmasını etkinleştirmeden önce [bileşenleri](https://www.microsoft.com/download/details.aspx?id=55106) yüklediğinizden emin olun.
 Linux: CentOS | 5.2 ile 5.11 arasında</b><br/> 6.1 ile 6.10 arasında</b><br/> 7.0 ile 7.6 arasında<br/> <br/> 8.0 ile 8.1 arasında<br/><br/> CentOS 5.2-5.11 & 6.1-6.10 çalıştıran sunucularda [Linux Tümleştirme Hizmetleri (LIS) bileşenleri](https://www.microsoft.com/download/details.aspx?id=55106) önceden yüklenmemiştir. Makinelerin Azure'da önyükleme yapmasını etkinleştirmeden önce [bileşenleri](https://www.microsoft.com/download/details.aspx?id=55106) yüklediğinizden emin olun.
 Ubuntu | Ubuntu 14.04 LTS sunucusu [(çekirdek sürümlerini gözden geçirin)](#ubuntu-kernel-versions)<br/><br/>Ubuntu 16.04 LTS sunucusu [(çekirdek sürümlerini gözden geçirin)](#ubuntu-kernel-versions) </br> Ubuntu 18.04 LTS sunucusu [(çekirdek sürümlerini gözden geçirin)](#ubuntu-kernel-versions)
 Debian | Debian 7/Debian 8 [(inceleme desteklenen çekirdek sürümleri)](#debian-kernel-versions)
 SUSE Linux | SUSE Linux Enterprise Server 12 SP1, SP2, SP3, SP4 [(çekirdek sürümlerini gözden geçirin)](#suse-linux-enterprise-server-12-supported-kernel-versions) <br/> SUSE Linux Enterprise Server 15, 15 SP1 [(çekirdek sürümlerini gözden geçirin)](#suse-linux-enterprise-server-15-supported-kernel-versions)<br/> SUSE Linux Enterprise Server 11 SP3, SUSE Linux Enterprise Server 11 SP4<br/> Çoğaltılan makinelerin SUSE Linux Enterprise Server 11 SP3'ten SP4'e yükseltilmesi desteklenmez. Yükseltmek için çoğaltmayı devre dışı bırakıp yükseltmeden sonra yeniden etkinleştirin.
-Oracle Linux | 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6, [7.7](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery)<br/><br/> Red Hat uyumlu çekirdek veya Kırılmaz Enterprise Çekirdek Yayın 3, 4 & 5 (UEK3, UEK4, UEK5) 
+Oracle Linux | 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6, [7.7](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery)<br/><br/> Red Hat uyumlu çekirdek veya Kırılmaz Enterprise Çekirdek Yayın 3, 4 & 5 (UEK3, UEK4, UEK5)
 
 > [!Note]
-> Azure Site Kurtarma, Windows sürümlerinin her biri için yalnızca [Uzun Vadeli Servis Kanalı (LTSC)](https://docs.microsoft.com/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc) yapılarını destekler.  [Altı Aylık Kanal](https://docs.microsoft.com/windows-server/get-started-19/servicing-channels-19#semi-annual-channel) sürümleri şu anda desteklenmiş.
+> Azure Site Kurtarma, Windows sürümlerinin her biri için yalnızca [Uzun Vadeli Servis Kanalı (LTSC)](/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc) yapılarını destekler.  [Altı Aylık Kanal](/windows-server/get-started-19/servicing-channels-19#semi-annual-channel) sürümleri şu anda desteklenmiş.
 
 ### <a name="ubuntu-kernel-versions"></a>Ubuntu çekirdek sürümleri
 
@@ -141,7 +139,7 @@ Paravirtualized depolama cihazları | Parasanallaştırılmış sürücüler tar
 Çok sıralı blok IO aygıtları | Desteklenmiyor.
 HP CCISS depolama denetleyicisi olan fiziksel sunucular | Desteklenmiyor.
 Aygıt/Montaj noktası adlandırma kuralı | Aygıt adı veya montaj noktası adı benzersiz olmalıdır.<br/> İki aygıtın/montaj noktasının büyük/küçük harf duyarlı adlar olmadığından emin olun. Örneğin, *aygıt1* ve *Device1* ile aynı VM aygıtlarını adlandırma desteklenmez.
-Dizinler | Mobilite hizmetinin bir sürümünü sürüm 9.20'den [(Güncelleştirme Rollup 31'de](https://support.microsoft.com/help/4478871/)yayımlandı) daha önce çalıştırıyorsanız, bu kısıtlamalar geçerlidir:<br/><br/> - Bu dizinler (ayrı bölümler/dosya sistemleri olarak ayarlanmışsa) kaynak sunucuda aynı işletim sistemi diskinde olmalıdır: /(root), /boot, /usr, /usr/local, /var, /etc.</br> - /boot dizini bir disk bölümü üzerinde olmalı ve bir LVM hacmi olmamalıdır.<br/><br/> Sürüm 9.20'den itibaren bu kısıtlamalar geçerli değildir. 
+Dizinler | Mobilite hizmetinin bir sürümünü sürüm 9.20'den [(Güncelleştirme Rollup 31'de](https://support.microsoft.com/help/4478871/)yayımlandı) daha önce çalıştırıyorsanız, bu kısıtlamalar geçerlidir:<br/><br/> - Bu dizinler (ayrı bölümler/dosya sistemleri olarak ayarlanmışsa) kaynak sunucuda aynı işletim sistemi diskinde olmalıdır: /(root), /boot, /usr, /usr/local, /var, /etc.</br> - /boot dizini bir disk bölümü üzerinde olmalı ve bir LVM hacmi olmamalıdır.<br/><br/> Sürüm 9.20'den itibaren bu kısıtlamalar geçerli değildir.
 Önyükleme dizini | - Önyükleme diskleri GPT bölüm biçiminde olmamalıdır. Bu bir Azure mimarisi sınırlamasıdır. GPT diskleri veri diski olarak desteklenir.<br/><br/> VM'deki birden çok önyükleme diski desteklenmiyor<br/><br/> - Birden fazla diskteki LVM biriminde /boot desteklenmez.<br/> - Önyükleme diski olmayan bir makine çoğaltılamaz.
 Boş alan gereksinimleri| /kök bölmede 2 GB <br/><br/> Yükleme klasöründe 250 MB
 XFSv5 | Meta data checksum gibi XFS dosya sistemlerindeki XFSv5 özellikleri desteklenir (Mobilite hizmeti sürümü 9.10'dan itibaren).<br/> Bölüm için XFS süper bloğunu denetlemek için xfs_info yardımcı programını kullanın. 1 `ftype` olarak ayarlanmışsa, XFSv5 özellikleri kullanılır.
@@ -212,7 +210,7 @@ Konuk/sunucu - disk hariç | Evet
 Konuk/sunucu çok (MPIO) | Hayır
 Konuk/sunucu GPT bölümleri | [Güncelleme Rollup 37'den](https://support.microsoft.com/help/4508614/) (Mobilite hizmetinin 9.25 sürümü) itibaren beş bölüm desteklenir. Daha önce dört desteklendi.
 ReFS | Esnek Dosya Sistemi Mobilite hizmet sürümü 9.23 veya daha yüksek ile desteklenir
-Konuk/sunucu EFI/UEFI önyükleme | - Windows Server 2012 veya sonrası için desteklenen, SLES 12 SP4 ve RHEL 8.0 mobilite aracısı sürümü 9.30'dan itibaren<br/> - Güvenli UEFI önyükleme türü desteklenmez. 
+Konuk/sunucu EFI/UEFI önyükleme | - Windows Server 2012 veya sonrası için desteklenen, SLES 12 SP4 ve RHEL 8.0 mobilite aracısı sürümü 9.30'dan itibaren<br/> - Güvenli UEFI önyükleme türü desteklenmez.
 
 ## <a name="replication-channels"></a>Çoğaltma kanalları
 
@@ -268,20 +266,20 @@ VM adı | 1 ile 63 arasında karakter.<br/><br/> Harfler, sayılar ve kısa çiz
 
 ## <a name="resource-group-limits"></a>Kaynak grubu sınırları
 
-Tek bir kaynak grubu altında korunabilen sanal makinelerin sayısını anlamak için [abonelik sınırları ve kotalarla](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#resource-group-limits) ilgili makaleye bakın
+Tek bir kaynak grubu altında korunabilen sanal makinelerin sayısını anlamak için [abonelik sınırları ve kotalarla](/azure/azure-resource-manager/management/azure-subscription-service-limits#resource-group-limits)ilgili makaleye bakın.
 
 ## <a name="churn-limits"></a>Çalkalama sınırları
 
-Aşağıdaki tablo, Azure Site Recovery sınırlarını sağlar. 
+Aşağıdaki tablo, Azure Site Recovery sınırlarını sağlar.
 - Bu sınırlar testlerimize dayanmaktadır, ancak olası tüm uygulama G/Ç kombinasyonlarını kapsamaz.
 - Gerçek sonuçlar, uygulamanızın G/Ç karışımına göre değişebilir.
 - En iyi sonuçlar için, [Dağıtım Planlayıcısı aracını](site-recovery-deployment-planner.md)çalıştırmanızı ve uygulamanız için gerçek performans resmini elde etmek için test hatalarını kullanarak kapsamlı uygulama testi yapmanızı şiddetle öneririz.
 
 **Çoğaltma hedefi** | **Ortalama kaynak disk G/Ç boyutu** |**Ortalama kaynak disk veri değişim sıklığı** | **Günde toplam kaynak disk veri karmaşası**
 ---|---|---|---
-Standart depolama | 8 KB | 2 MB/sn | Disk başına 168 GB
-Premium P10 veya P15 disk | 8 KB  | 2 MB/sn | Disk başına 168 GB
-Premium P10 veya P15 disk | 16 KB | 4 MB/sn |  Disk başına 336 GB
+Standart depolama | 8 KB    | 2 MB/sn | Disk başına 168 GB
+Premium P10 veya P15 disk | 8 KB    | 2 MB/sn | Disk başına 168 GB
+Premium P10 veya P15 disk | 16 KB | 4 MB/sn |    Disk başına 336 GB
 Premium P10 veya P15 disk | 32 KB veya daha büyük | 8 MB/sn | Disk başına 672 GB
 Premium P20 veya P30 veya P40 veya P50 disk | 8 KB    | 5 MB/sn | Disk başına 421 GB
 Premium P20 veya P30 veya P40 veya P50 disk | 16 KB veya daha büyük |20 MB/sN | Disk başına 1684 GB
@@ -310,9 +308,9 @@ Depolama, ağ, Azure VM'leri abonelikler içinde ve arasında taşıyın. | Hay�
 
 **Adı** | **Açıklama** | **Şey**
 --- | --- | ---
-Yapılandırma Sunucusu | Şirket içinde yüklenmiş.<br/> Şirket içi VMware sunucuları veya fiziksel makineler ile Azure arasındaki iletişimi koordine eder. | - Yapılandırma sunucusu [hakkında bilgi edinin.](vmware-physical-azure-config-process-server-overview.md)<br/> - En son sürüme yükseltme [hakkında bilgi edinin.](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)<br/> - Yapılandırma sunucusu ayarlama [hakkında bilgi edinin.](vmware-azure-deploy-configuration-server.md) 
+Yapılandırma Sunucusu | Şirket içinde yüklenmiş.<br/> Şirket içi VMware sunucuları veya fiziksel makineler ile Azure arasındaki iletişimi koordine eder. | - Yapılandırma sunucusu [hakkında bilgi edinin.](vmware-physical-azure-config-process-server-overview.md)<br/> - En son sürüme yükseltme [hakkında bilgi edinin.](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)<br/> - Yapılandırma sunucusu ayarlama [hakkında bilgi edinin.](vmware-azure-deploy-configuration-server.md)
 İşlem sunucusu | Varsayılan olarak yapılandırma sunucusuna yüklenir.<br/> Çoğaltma verilerini alır, önbelleğe alma, sıkıştırma ve şifreleme ile en iyi duruma getirin ve Azure'a gönderir.<br/> Dağıtımınız büyüdükçe, daha büyük birim çoğaltma trafiğini işlemek için ek işlem sunucuları ekleyebilirsiniz. | - İşlem sunucusu [hakkında bilgi edinin.](vmware-physical-azure-config-process-server-overview.md)<br/> - En son sürüme yükseltme [hakkında bilgi edinin.](vmware-azure-manage-process-server.md#upgrade-a-process-server)<br/> - Ölçeklendirme işlem sunucuları ayarlama [hakkında bilgi edinin.](vmware-physical-large-deployment.md#set-up-a-process-server)
-Ulaşım Hizmeti | Çoğaltmak istediğiniz VMware VM veya fiziksel sunucularda yüklenir.<br/> Şirket içi VMware sunucuları/fiziksel sunucular ve Azure arasındaki çoğaltmayı koordine eder.| - Mobilite hizmeti [hakkında bilgi edinin.](vmware-physical-mobility-service-overview.md)<br/> - En son sürüme yükseltme [hakkında bilgi edinin.](vmware-physical-manage-mobility-service.md#update-mobility-service-from-azure-portal)<br/> 
+Ulaşım Hizmeti | Çoğaltmak istediğiniz VMware VM veya fiziksel sunucularda yüklenir.<br/> Şirket içi VMware sunucuları/fiziksel sunucular ve Azure arasındaki çoğaltmayı koordine eder.| - Mobilite hizmeti [hakkında bilgi edinin.](vmware-physical-mobility-service-overview.md)<br/> - En son sürüme yükseltme [hakkında bilgi edinin.](vmware-physical-manage-mobility-service.md#update-mobility-service-from-azure-portal)<br/>
 
 
 

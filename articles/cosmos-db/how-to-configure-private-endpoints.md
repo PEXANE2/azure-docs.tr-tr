@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: thweiss
-ms.openlocfilehash: 944341b1ef88c7e3d64a74536720eb9fb1d17321
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9a6a1560e169c51256c198868dc7293a020189f4
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80152749"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80421432"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account"></a>Azure Cosmos hesabı için Azure Özel Bağlantısını Yapılandırma
 
@@ -24,7 +24,7 @@ Otomatik veya manuel onay yöntemini kullanarak Private Link ile yapılandırıl
 Bu makalede, özel bir bitiş noktası oluşturmak için adımları açıklanır. Otomatik onay yöntemini kullandığınızı varsayar.
 
 > [!NOTE]
-> Özel uç nokta desteği şu anda yalnızca ağ geçidi bağlantı modu için desteklenen bölgelerde genel olarak kullanılabilir. Doğrudan mod için önizleme özelliği olarak kullanılabilir.
+> Özel uç nokta desteği şu anda yalnızca ağ geçidi bağlantı modu için kullanılabilir. Doğrudan mod için önizleme özelliği olarak kullanılabilir.
 
 ## <a name="create-a-private-endpoint-by-using-the-azure-portal"></a>Azure portalını kullanarak özel bir bitiş noktası oluşturma
 
@@ -64,7 +64,7 @@ Azure portalını kullanarak varolan bir Azure Cosmos hesabı için özel bir bi
 
     | Ayar | Değer |
     | ------- | ----- |
-    |**Ağ Oluşturma**| |
+    |**Ağ**| |
     | Sanal ağ| Sanal ağınızı seçin. |
     | Alt ağ | Alt ağınızı seçin. |
     |**Özel DNS Entegrasyonu**||
@@ -639,14 +639,9 @@ Bir bölgeyi kaldırdığınızda aynı adımları kullanabilirsiniz. Bölgeyi k
 
 Azure Cosmos hesabında Özel Bağlantı kullanırken aşağıdaki sınırlamalar geçerlidir:
 
-* Azure Cosmos hesapları ve sanal ağlar için Özel Bağlantı desteği yalnızca belirli bölgelerde kullanılabilir. Desteklenen bölgelerin listesi için, Özel Bağlantı makalesinin [Kullanılabilir bölgeler](../private-link/private-link-overview.md#availability) bölümüne bakın. 
-
-  > [!NOTE]
-  > Özel bir bitiş noktası oluşturmak için hem sanal ağın hem de Azure Cosmos hesabının desteklenen bölgelerde olduğundan emin olun.
-
 * Doğrudan mod bağlantısı kullanarak Azure Cosmos hesabıyla Özel Bağlantı kullanıyorsanız, yalnızca TCP protokolünü kullanabilirsiniz. HTTP protokolü henüz desteklenmedi.
 
-* Özel uç nokta desteği şu anda yalnızca ağ geçidi bağlantı modu için desteklenen bölgelerde genel olarak kullanılabilir. Doğrudan mod için önizleme özelliği olarak kullanılabilir.
+* Özel uç nokta desteği şu anda yalnızca ağ geçidi bağlantı modu için kullanılabilir. Doğrudan mod için önizleme özelliği olarak kullanılabilir.
 
 * Azure Cosmos DB'nin MongoDB hesapları için API'sini kullanırken, yalnızca sunucu sürümü 3.6'daki hesaplar için özel bir bitiş `*.mongo.cosmos.azure.com`noktası desteklenir (diğer bir deyişle, biçimdeki bitiş noktasını kullanan hesaplar). Private Link, sunucu sürüm 3.2'deki hesaplar için desteklenmez (diğer `*.documents.azure.com`bir deyişle, biçimdeki bitiş noktasını kullanan hesaplar). Özel Bağlantı'yı kullanmak için eski hesapları yeni sürüme geçirmeniz gerekir.
 

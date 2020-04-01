@@ -3,14 +3,14 @@ title: Azure Monitor platform ölçümleri Tanılama Ayarları ile dışa aktar�
 description: Azure Monitor ile her kaynak türü için kullanılabilen ölçümlerin listesi.
 services: azure-monitor
 ms.topic: reference
-ms.date: 02/10/2020
+ms.date: 03/30/2020
 ms.subservice: metrics
-ms.openlocfilehash: 7a75655d1707dd2491065974ed8addc4c2da1a6a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6be8cb1b7e74301d16a1174f5ca2b774334dac3f
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77661371"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422119"
 ---
 # <a name="azure-monitor-platform-metrics-exportable-via-diagnostic-settings"></a>Azure Monitor platform ölçümleri Tanılama Ayarları ile dışa aktarılabilir
 
@@ -24,7 +24,9 @@ Azure Monitor arka ucundaki karışıklıklar nedeniyle, tüm ölçümler tanıl
 
 ## <a name="change-to-behavior-for-nulls-and-zero-values"></a>NULL'ler ve Sıfır değerleri için davranışdeğişikliği 
  
-Tanılama ayarları yla dışa aktarılabilen platform ölçümleri için, Azure Monitor'un '0'ları 'Nulls' olarak yorumladığı birkaç ölçüm vardır. Bu gerçek '0s' (kaynak tarafından yayılan) ve '0s' (Nulls) yorumlanan arasında bazı karışıklığa neden oldu. **1 Nisan 2020'den** itibaren tanılama ayarları yla dışa aktarılan platform ölçümleri, temel kaynak tarafından gerçekten yayılmadığı sürece artık '0'ları dışa aktarmaz. Lütfen unutmayın:
+Tanılama ayarları yla dışa aktarılabilen platform ölçümleri için, Azure Monitor'un '0'ları 'Nulls' olarak yorumladığı birkaç ölçüm vardır. Bu gerçek '0s' (kaynak tarafından yayılan) ve '0s' (Nulls) yorumlanan arasında bazı karışıklığa neden oldu. Yakında bir değişiklik meydana gelecek ve tanılama ayarları üzerinden dışa aktarılan platform ölçümleri, temel kaynak tarafından gerçekten yayıldığı sürece artık '0'ları dışa aktarmayacaktır. Değişiklik 1 Nisan 2020'de planlandı, ancak COVID-19 nedeniyle öncelik değişimleri nedeniyle ertelendi. 
+
+Lütfen unutmayın:
 
 1.  Bir kaynak grubunu veya belirli bir kaynağı silerseniz, etkilenen kaynaklardan gelen metrik veriler artık tanılama verme hedeflerine gönderilmez. Diğer bir deyişle, artık Olay Hub'larında, Depolama Hesaplarında ve Günlük Analizi Çalışma Alanlarında görünmez.
 2.  Bu gelişme tüm genel ve özel bulutlarda kullanılabilir olacaktır.
@@ -49,7 +51,7 @@ Tablo aşağıdaki sütunları içerir.
 > Aşağıdaki tablonun alt kısmında yatay bir kaydırma çubuğu olabilir. Bilgilerin eksik olduğunu düşünüyorsanız, kaydırma çubuğunun tamamen sola doğru olup olmadığını kontrol edin.  
 
 
-| Tanılama Ayarları ile Dışa Aktarılabilir mi?  | NULLs yayır |  ResourceType  |  Ölçüm  |  MetricDisplayName  |  Birim  |  Aggregationtype | 
+| Tanılama Ayarları ile Dışa Aktarılabilir mi?  | Zaten NULLs yontun |  ResourceType  |  Ölçüm  |  MetricDisplayName  |  Birim  |  Aggregationtype | 
 |---|---| ---- | ----- | ------ | ---- | ---- | 
 | Evet****  | Hayır |  Microsoft.AnalysisServices/sunucular  |  CleanerCurrentPrice  |  Bellek: Temiz Geçerli Fiyat  |  Sayı  |  Ortalama | 
 | Evet****  | Hayır |  Microsoft.AnalysisServices/sunucular  |  TemizleyiciMemoryShrinkable  |  Bellek: Temiz Bellek küçültilemez  |  Bayt  |  Ortalama | 

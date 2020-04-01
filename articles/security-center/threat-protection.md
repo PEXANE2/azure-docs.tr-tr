@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/15/2020
 ms.author: memildin
-ms.openlocfilehash: e348180eb94c1703ceecf2f2b00ab942ba5ff0ed
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 395f4b5481fcf2028d6bfe736e58c3174a0c80b2
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79536335"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435341"
 ---
 # <a name="threat-protection-in-azure-security-center"></a>Azure Güvenlik Merkezi'nde tehdit koruması
 
@@ -73,9 +73,9 @@ Azure Güvenlik Merkezi, Windows tabanlı makinelerinizi izlemek ve korumak içi
 
 Güvenlik Merkezi, en yaygın Linux denetim çerçevelerinden biri olan **denetlenmiş**bilgisayar kullanarak Linux makinelerinden denetim kayıtları toplar. ana hat çekirdeğinde denetlenmiş yaşamları. 
 
-* **Linux denetlenmiş uyarılar ve Microsoft Monitoring Agent (MMA) entegrasyonu** <a name="linux-auditd"></a> - Denetlenmiş sistem, sistem çağrılarının izlenmesinden sorumlu çekirdek düzeyinde bir alt sistemden oluşur. Bunları belirli bir kural kümesine göre filtreler ve iletileri bir sokete yazar. Güvenlik Merkezi, denetlenmiş paketteki işlevleri Microsoft İzleme Aracısı (MMA) içinde tümleştirir. Bu tümleştirme, desteklenen tüm Linux dağıtımlarında denetlenen olayların herhangi bir ön koşul olmaksızın toplanmasını sağlar.  
+* **Linux denetlenmiş uyarılar ve Log Analytics aracı entegrasyonu** <a name="linux-auditd"></a> - Denetlenmiş sistem, sistem çağrılarının izlenmesinden sorumlu çekirdek düzeyinde bir alt sistemden oluşur. Bunları belirli bir kural kümesine göre filtreler ve iletileri bir sokete yazar. Güvenlik Merkezi, denetlenmiş paketteki işlevleri Log Analytics aracısı içinde entegre eder. Bu tümleştirme, desteklenen tüm Linux dağıtımlarında denetlenen olayların herhangi bir ön koşul olmaksızın toplanmasını sağlar.
 
-    denetlenen kayıtlar Linux MMA aracısı kullanılarak toplanır, zenginlenir ve olaylara ayrılır. Security Center, bulut ve şirket içi Linux makinelerindeki kötü amaçlı davranışları algılamak için Linux sinyallerini kullanan yeni analizler sürekli olarak ekler. Windows özelliklerine benzer şekilde, bu analizler şüpheli işlemler, denemelerde şüpheli oturum açma, çekirdek modülü yüklemeve diğer etkinlikler arasında uzanır. Bu etkinlikler, bir makinenin saldırı altında olduğunu veya ihlal edildiğini gösterebilir.  
+    denetlenen kayıtlar Linux aracısı için Log Analytics aracısı kullanılarak toplanır, zenginlenir ve etkinliklere ayrılır. Security Center, bulut ve şirket içi Linux makinelerindeki kötü amaçlı davranışları algılamak için Linux sinyallerini kullanan yeni analizler sürekli olarak ekler. Windows özelliklerine benzer şekilde, bu analizler şüpheli işlemler, denemelerde şüpheli oturum açma, çekirdek modülü yüklemeve diğer etkinlikler arasında uzanır. Bu etkinlikler, bir makinenin saldırı altında olduğunu veya ihlal edildiğini gösterebilir.  
 
     Linux uyarılarının listesi [için, uyarıların Başvuru tablosuna](alerts-reference.md#alerts-linux)bakın.
 

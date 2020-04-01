@@ -3,12 +3,12 @@ title: Gelişmiş Uygulama Yükseltme Konuları
 description: Bu makalede, Bir Hizmet Kumaşı uygulamasını yükseltmeyle ilgili bazı gelişmiş konular ele al.)
 ms.topic: conceptual
 ms.date: 1/28/2020
-ms.openlocfilehash: 09f3fdf1f26a13c6722eb039e132256f33be38ff
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 182ab6dc1663e160561b8941ebf3a36b5af3d950
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76845434"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422804"
 ---
 # <a name="service-fabric-application-upgrade-advanced-topics"></a>Hizmet Kumaş uygulama yükseltme: Gelişmiş konular
 
@@ -20,9 +20,9 @@ Benzer şekilde, hizmet türleri yükseltmenin bir parçası olarak bir uygulama
 
 ## <a name="avoid-connection-drops-during-stateless-service-planned-downtime-preview"></a>Stateless hizmeti planlanan kapalı kalma süresi sırasında bağlantı düşmelerini önleyebilirsiniz (önizleme)
 
-Uygulama/küme yükseltmesi veya düğüm devre dışı bırakma gibi planlı durum dışı örnek düşüş süreleri için, açığa çıkan uç noktanın kapatıldıktan sonra kaldırılması nedeniyle bağlantılar bırakılabilir.
+Uygulama/küme yükseltmesi veya düğüm devre dışı bırakma gibi planlı durum dışı örnek düşüş süreleri için, açıkolan uç nokta nın, örnek kapatıldıktan sonra kaldırılması nedeniyle bağlantılar bırakılabilir ve bu da zorunlu bağlantı kapatmalarına neden olur.
 
-Bunu önlemek için, hizmet yapılandırmasına bir yineleme *örneği yakın gecikme süresi* ekleyerek *RequestDrain* (önizleme) özelliğini yapılandırın. Bu, örneği kapatmak için gecikme zamanlayıcısı başlamadan *önce,* durum dolmadan örnek tarafından reklamı yapılan bitiş noktasının kaldırılmasını sağlar. Bu gecikme, varolan isteklerin örnek gerçekten çökmeden önce incelikle tüketilmesini sağlar. İstemciler, bitiş noktası değişikliğini geri arama işleviyle bildirilir, böylece bitiş noktasını yeniden çözebilir ve aşağı inen örne yeni istekler göndermekten kaçınabilirler.
+Bunu önlemek için, kümedeki diğer hizmetlerden istekler alırken ve Ters Proxy kullanırken veya uç noktaları güncelleştirmek için bildirim modeliyle çözümleme modelini kullanarak, hizmet yapılandırmasına bir *örnek yakın gecikme süresi* ekleyerek *RequestDrain* (önizleme) özelliğini yapılandırın. Bu, örneği kapatmadan önce gecikme başlamadan *önce,* durum dolmadan örnek tarafından reklamı yapılan bitiş noktasının kaldırılmasını sağlar. Bu gecikme, varolan isteklerin örnek gerçekten çökmeden önce incelikle tüketilmesini sağlar. İstemciler, bitiş noktasını yeniden çözebilmeleri ve kapanan örne yeni istekler göndermekten kaçınabilmeleri için, gecikmeyi başlatma sırasında bir geri arama işlevi tarafından bitiş noktası değişikliği bildirilir.
 
 ### <a name="service-configuration"></a>Hizmet yapılandırması
 
@@ -50,24 +50,8 @@ Hizmet tarafında gecikme yapılandırmak için çeşitli yollar vardır.
 
 ### <a name="client-configuration"></a>İstemci yapılandırması
 
-Bir bitiş noktası değiştiğinde bildirim almak için, istemciler şu şekilde bir geri arama (`ServiceManager_ServiceNotificationFilterMatched`) kaydedebilir: 
-
-```csharp
-    var filterDescription = new ServiceNotificationFilterDescription
-    {
-        Name = new Uri(serviceName),
-        MatchNamePrefix = true
-    };
-    fbClient.ServiceManager.ServiceNotificationFilterMatched += ServiceManager_ServiceNotificationFilterMatched;
-    await fbClient.ServiceManager.RegisterServiceNotificationFilterAsync(filterDescription);
-
-private static void ServiceManager_ServiceNotificationFilterMatched(object sender, EventArgs e)
-{
-      // Resolve service to get a new endpoint list
-}
-```
-
-Değişiklik bildirimi, uç noktaların değiştiğini, istemcinin uç noktaları yeniden çözmesi ve yakında ineceği için artık reklamı olmayan uç noktaları kullanmaması gerektiğinin bir göstergesidir.
+Bir bitiş noktası değiştiğinde bildirim almak için, istemcilerin bir geri arama kaydettirmeleri gerekir: [ServiceNotificationFilterDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.servicenotificationfilterdescription).
+Değişiklik bildirimi, uç noktaların değiştiğini, istemcinin uç noktaları yeniden çözmesi ve yakında aşağı ineceği için artık reklamı olmayan uç noktaları kullanmaması gerektiğinin bir göstergesidir.
 
 ### <a name="optional-upgrade-overrides"></a>İsteğe bağlı yükseltme geçersiz kılar
 
@@ -80,6 +64,16 @@ Start-ServiceFabricClusterUpgrade [-CodePackageVersion] <String> [-ClusterManife
 ```
 
 Gecikme süresi yalnızca çağrılan yükseltme örneği için geçerlidir ve tek tek hizmet gecikme yapılandırmalarını değiştirmez. Örneğin, önceden yapılandırılmış yükseltme gecikmelerini `0` atlamak için gecikme belirtmek için bunu kullanabilirsiniz.
+
+> [!NOTE]
+> Azure Yük bakiyesi talebinden gelen istekler için istekleri boşaltma ayarı yerine getirilmiş değildir. Arama hizmeti şikayete dayalı çözüm kullanıyorsa ayar onurlandırılır.
+>
+>
+
+> [!NOTE]
+> Bu özellik, küme kodu sürümü 7.1.XXX veya üzerinde olduğunda, yukarıda belirtildiği gibi Update-ServiceFabricService cmdlet kullanılarak mevcut hizmetlerde yapılandırılabilir.
+>
+>
 
 ## <a name="manual-upgrade-mode"></a>Manuel yükseltme modu
 

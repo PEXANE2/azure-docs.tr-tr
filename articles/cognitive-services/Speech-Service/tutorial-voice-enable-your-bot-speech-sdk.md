@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: dapine
-ms.openlocfilehash: 96d2c2e5e3772575e681d2db079ab0122b7014e1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3c2d74eb7e46d9909d87a7ccadadd6129a3d48d8
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80348548"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80397891"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>Öğretici: Konuşma SDK kullanarak botunuzu sesli etkinleştirin
 
@@ -106,7 +106,7 @@ Bu noktada, kaynak grubunuzun **(SpeechEchoBotTutorial-ResourceGroup)** bir Konu
 
 | Adı | Tür  | Konum |
 |------|-------|----------|
-| SpeechEchoBotTutorial-Konuşma | Bilişsel hizmetler | Batı ABD |
+| SpeechEchoBotTutorial-Konuşma | Bilişsel Hizmetler | Batı ABD |
 
 ### <a name="create-an-azure-app-service-plan"></a>Azure App Service planı oluşturma
 
@@ -128,7 +128,7 @@ Bu noktada, kaynak grubunuzun **(SpeechEchoBotTutorial-ResourceGroup)** iki kayn
 | Adı | Tür  | Konum |
 |------|-------|----------|
 | SpeechEchoBotTutorial-AppServicePlan | App Service Planı | Batı ABD |
-| SpeechEchoBotTutorial-Konuşma | Bilişsel hizmetler | Batı ABD |
+| SpeechEchoBotTutorial-Konuşma | Bilişsel Hizmetler | Batı ABD |
 
 ## <a name="build-an-echo-bot"></a>Bir Echo Bot oluşturun
 
@@ -211,7 +211,7 @@ Bir sonraki adım, Echo Bot'u Azure'a dağıtmaktır. Bir bot dağıtmak için b
 |------|-------|----------|
 | EchoBot20190805125647 | App Service | Batı ABD |
 | SpeechEchoBotTutorial-AppServicePlan | App Service planı | Batı ABD |
-| SpeechEchoBotTutorial-Konuşma | Bilişsel hizmetler | Batı ABD |
+| SpeechEchoBotTutorial-Konuşma | Bilişsel Hizmetler | Batı ABD |
 
 ## <a name="enable-web-sockets"></a>Web soketlerini etkinleştirme
 
@@ -253,7 +253,7 @@ Bu noktada, Azure portalında Kaynak Grubu **SpeechEchoBotTutorial-ResourceGroup
 | EchoBot20190805125647 | App Service | Batı ABD |
 | SpeechEchoBotTutorial-AppServicePlan | App Service planı | Batı ABD |
 | SpeechEchoBotTutorial-BotRegistration | Bot Kanalları Kayıt | global |
-| SpeechEchoBotTutorial-Konuşma | Bilişsel hizmetler | Batı ABD |
+| SpeechEchoBotTutorial-Konuşma | Bilişsel Hizmetler | Batı ABD |
 
 > [!IMPORTANT]
 > Bot Kanalları Kayıt kaynağı, Batı ABD'yi seçmiş olsanız bile Küresel bölgeyi gösterir. Bu beklenen bir durumdur.
@@ -336,7 +336,7 @@ Her bot **Etkinlik** iletileri gönderir ve alır. Windows Voice Assistant Clien
     },
     "replyToId":"67c823b4-4c7a-4828-9d6e-0b84fd052869",
     "serviceUrl":"urn:botframework:websocket:directlinespeech",
-    "speak":"<speak version='1.0' xmlns='https://www.w3.org/2001/10/synthesis' xml:lang='en-US'><voice name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'>Echo: Hello and welcome.</voice></speak>",
+    "speak":"<speak version='1.0' xmlns='https://www.w3.org/2001/10/synthesis' xml:lang='en-US'><voice name='Microsoft Server Speech Text to Speech Voice (en-US, AriaRUS)'>Echo: Hello and welcome.</voice></speak>",
     "text":"Echo: Hello and welcome.",
     "timestamp":"2019-07-19T20:03:51.1939097Z",
     "type":"message"

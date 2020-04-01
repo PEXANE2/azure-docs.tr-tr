@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2020
 ms.author: spelluru
-ms.openlocfilehash: d7d697e3ea4b1b683275d53f6e407396f474b37b
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 7bb9d3ce4c80761362c1ea564f6a632bc7a7f68a
+ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77462029"
+ms.lasthandoff: 03/30/2020
+ms.locfileid: "80398279"
 ---
 # <a name="send-events-to-and-receive-events-from-azure-event-hubs---net-core-azuremessagingeventhubs"></a>Azure Etkinlik Hub'larından etkinlik gönderme ve alma - .NET Core (Azure.Messaging.EventHubs) 
 Bu hızlı başlangıç, **Azure.Messaging.EventHubs** .NET Core kitaplığını kullanarak bir etkinlik merkezine olayları nasıl göndereceğinizi ve bir olay merkezinden nasıl alınarak alınabildiğini gösterir. 
@@ -29,7 +29,7 @@ Bu hızlı başlangıç, **Azure.Messaging.EventHubs** .NET Core kitaplığını
 
 
 ## <a name="prerequisites"></a>Ön koşullar
-Azure Etkinlik Hub'larında yeniyseniz, bu hızlı başlangıcı yapmadan önce [Etkinlik Hub'larına genel bakış](event-hubs-about.md) bakın. 
+Azure Etkinlik Hub'larında yeniyseniz, bu hızlı başlangıcı yapmadan önce [Etkinlik Hub'larına genel bakış](event-hubs-about.md) konusubakın. 
 
 Bu hızlı başlangıcı tamamlamak için aşağıdaki ön koşullara ihtiyacınız vardır:
 
@@ -118,6 +118,9 @@ Bu bölümde, olayları bir olay merkezine göndermek için bir .NET Core konsol
 Bu bölümde, olay işlemcisi kullanarak bir olay merkezinden ileti alan bir .NET Core konsol uygulamasının nasıl yazılalış ları gösterilmektedir. Olay işlemcisi, kalıcı denetim noktalarını ve bu olay merkezlerinden paralel almaları yöneterek olay merkezlerinden olay hub'larından olay alma almayı kolaylaştırır. Olay işlemcisi, belirli bir olay Hub'ı ve tüketici grubuyla ilişkilidir. Olay merkezindeki birden çok bölümden olayları alır ve bunları sağladığınız kodu kullanarak işlemek üzere işleyici temsilcisine aktarıyor. 
 
 
+> [!NOTE]
+> Azure Stack Hub'da çalışıyorsanız, bu platform Depolama Blob SDK'nın Azure'da bulunanlardan farklı bir sürümünü destekleyebilir. Örneğin, Azure Yığını [Hub sürümü 2002'de](https://docs.microsoft.com/azure-stack/user/event-hubs-overview)çalışıyorsanız, Depolama hizmeti için kullanılabilir en yüksek sürüm 2017-11-09 sürümüdür. Bu durumda, bu bölümdeki aşağıdaki adımların yanı sıra, Depolama hizmeti API sürümünü 2017-11-09'u hedeflemek için kod eklemeniz gerekir. Belirli bir Depolama API sürümünün nasıl hedeflenilene ilişkin bir örnek için, [bu örneğe GitHub'da](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs)bakın. Azure Yığını Hub'ında desteklenen Azure Depolama hizmeti sürümleri hakkında daha fazla bilgi için lütfen [Azure Yığın Hub depolama alanına bakın: Farklılıklar ve dikkat edilmesi gerekenler.](https://docs.microsoft.com/azure-stack/user/azure-stack-acs-differences)
+
 ### <a name="create-an-azure-storage-and-a-blob-container"></a>Azure Depolama ve blob kapsayıcısı oluşturma
 Bu hızlı başlangıçta, denetim noktası deposu olarak Azure Depolama'yı kullanırsınız. Bir Azure Depolama hesabı oluşturmak için aşağıdaki adımları izleyin. 
 
@@ -125,7 +128,7 @@ Bu hızlı başlangıçta, denetim noktası deposu olarak Azure Depolama'yı kul
 2. [Blob kapsayıcısı oluşturma](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)
 3. [Bağlantı dizesini depolama hesabına alma](../storage/common/storage-configure-connection-string.md?#view-and-copy-a-connection-string)
 
-    Bağlantı dizesini ve kapsayıcı adını not edin. Bunları alma kodunda kullanacaksınız. 
+    Bağlantı dizesini ve kapsayıcı adını not edin. Bunları alma kodunda kullanırsınız. 
 
 
 ### <a name="create-a-project-for-the-receiver"></a>Alıcı için bir proje oluşturma

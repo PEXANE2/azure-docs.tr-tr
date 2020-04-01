@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/02/2019
 ms.author: jingwang
-ms.openlocfilehash: c51469997af23be7a5e1b88677ecadb37e10ac64
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c7e17f7c4493560bd6118b8d4837fd795a6ab0c8
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79244543"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422856"
 ---
 # <a name="copy-data-from-netezza-by-using-azure-data-factory"></a>Azure Veri Fabrikası'nı kullanarak Verileri Netezza'dan kopyalama
 
@@ -43,7 +43,7 @@ Azure Veri Fabrikası, bağlantıyı etkinleştirmek için yerleşik bir sürüc
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
 
-## <a name="get-started"></a>Kullanmaya başlayın
+## <a name="get-started"></a>başlarken
 
 .NET SDK, Python SDK, Azure PowerShell, REST API veya Azure Kaynak Yöneticisi şablonunu kullanarak kopyalama etkinliğini kullanan bir ardışık kaynak oluşturabilirsiniz. Kopyalama etkinliği olan bir ardışık yapının nasıl oluşturulacağına ilişkin adım adım yönergeler için [Kopyalama Etkinliği öğreticisine](quickstart-create-data-factory-dot-net.md) bakın.
 
@@ -158,7 +158,7 @@ Netezza'dan gelen verileri kopyalamak **için,** Kopyalama Etkinliği'ndeki kayn
 |:--- |:--- |:--- |
 | type | Kopyalama Etkinliği kaynağının **türü** özelliği **NetezzaSource**olarak ayarlanmalıdır. | Evet |
 | sorgu | Verileri okumak için özel SQL sorgusunu kullanın. Örnek: `"SELECT * FROM MyTable"` | Hayır (veri kümesinde "tablo Adı" belirtilirse) |
-| partitionOptions | Netezza'dan veri yüklemek için kullanılan veri bölümleme seçeneklerini belirtir. <br>İzin değerleri şunlardır: **Yok** (varsayılan), **DataSlice**ve **DynamicRange**.<br>Bir bölme seçeneği etkinleştirildiğinde (yani `None`değil), Netezza veritabanından aynı anda veri yüklemek [`parallelCopies`](copy-activity-performance.md#parallel-copy) için paralellik derecesi kopyalama etkinliği ayarlayarak denetlenir. | Hayır |
+| partitionOptions | Netezza'dan veri yüklemek için kullanılan veri bölümleme seçeneklerini belirtir. <br>İzin değerleri şunlardır: **Yok** (varsayılan), **DataSlice**ve **DynamicRange**.<br>Bir bölme seçeneği etkinleştirildiğinde (yani `None`değil), Netezza veritabanından aynı anda veri yüklemek [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) için paralellik derecesi kopyalama etkinliği ayarlayarak denetlenir. | Hayır |
 | partitionAyarlar | Veri bölümleme için ayarlar grubunu belirtin. <br>Bölüm seçeneği olmadığında `None`uygulayın. | Hayır |
 | partitionColumnName | Paralel kopya için aralık bölümleme tarafından kullanılacak **tamsayı türünde** kaynak sütunun adını belirtin. Belirtilmemişse, tablonun birincil anahtarı otomatik olarak algılanır ve bölüm sütunu olarak kullanılır. <br>Bölüm seçeneği . `DynamicRange` Kaynak verileri almak için bir sorgu `?AdfRangePartitionColumnName` kullanıyorsanız, WHERE yan tümcesini bağla. [Netezza bölümünden Paralel kopyaörneğine](#parallel-copy-from-netezza) bakın. | Hayır |
 | partitionUpperBound | Verileri kopyalamak için bölüm sütununun maksimum değeri. <br>Bölüm seçeneği . `DynamicRange` Kaynak verileri almak için sorgu `?AdfRangePartitionUpbound` kullanıyorsanız, WHERE yan tümcesini bağla. Örneğin, [Netezza bölümünden Paralel kopyaya](#parallel-copy-from-netezza) bakın. | Hayır |
@@ -202,7 +202,7 @@ Veri Fabrikası Netezza konektörü, Netezza'dan gelen verileri paralel olarak k
 
 ![Bölüm seçeneklerinin ekran görüntüsü](./media/connector-netezza/connector-netezza-partition-options.png)
 
-Bölümlenmiş kopyalamayı etkinleştirdiğinizde, Veri Fabrikası, verileri bölümlere yüklemek için Netezza kaynağınıza paralel sorgular çalıştırAr. Paralel derece, kopyalama [`parallelCopies`](copy-activity-performance.md#parallel-copy) etkinliği üzerindeki ayar tarafından denetlenir. Örneğin, dörde `parallelCopies` ayarlarsanız, Veri Fabrikası aynı anda belirttiğiniz bölüm seçeneğiniz ve ayarlarınızı temel alarak dört sorgu oluşturur ve çalıştırZ ve her sorgu Netezza veritabanınızdan verilerin bir kısmını alır.
+Bölümlenmiş kopyalamayı etkinleştirdiğinizde, Veri Fabrikası, verileri bölümlere yüklemek için Netezza kaynağınıza paralel sorgular çalıştırAr. Paralel derece, kopyalama [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) etkinliği üzerindeki ayar tarafından denetlenir. Örneğin, dörde `parallelCopies` ayarlarsanız, Veri Fabrikası aynı anda belirttiğiniz bölüm seçeneğiniz ve ayarlarınızı temel alarak dört sorgu oluşturur ve çalıştırZ ve her sorgu Netezza veritabanınızdan verilerin bir kısmını alır.
 
 Özellikle Netezza veritabanınızdan büyük miktarda veri yüklediğinizde, veri bölümleme ile paralel kopyalamayı etkinleştirmeniz önerilir. Aşağıda farklı senaryolar için önerilen yapılandırmalar vardır. Verileri dosya tabanlı veri deposuna kopyalarken, bir klasöre birden çok dosya olarak yazmak (yalnızca klasör adını belirtin) yeniden komut verilir ve bu durumda performans tek bir dosyaya yazmaktan daha iyidir.
 

@@ -3,12 +3,12 @@ title: Azure uygulama hizmetleri performansını izleyin | Microsoft Dokümanlar
 description: Azure uygulama hizmetleri için uygulama performansı izleme. Yükleme ve yanıt süresini, bağımlılık bilgilerini grafik ve performans uyarıları ayarlayın.
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 2ec503829d3e6edd7b2b6f6b36314db8a205a8cc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d2134e059a446c18108e8dd16bcc74504b42b15a
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80297616"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437177"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Azure App Service performansını izleme
 
@@ -28,7 +28,7 @@ Azure Uygulama Hizmetleri barındırılan uygulamalar için uygulama izlemeyi et
 
     * Bu yaklaşım çok daha özelleştirilebilir, ancak [Uygulama Öngörüleri SDK NuGet paketleri bir bağımlılık eklemeyi](https://docs.microsoft.com/azure/azure-monitor/app/asp-net)gerektirir. Bu yöntem, aynı zamanda paketlerin en son sürümüne güncellemeleri kendiniz yönetmek zorunda anlamına gelir.
 
-    * Aracı tabanlı izleme yle varsayılan olarak yakalanan olayları/bağımlılıkları izlemek için özel API çağrıları yapmanız gerekiyorsa, bu yöntemi kullanmanız gerekir. Daha fazla bilgi [edinmek için özel olaylar ve ölçümler makalesi için API'ye](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics) göz atın.
+    * Aracı tabanlı izleme yle varsayılan olarak yakalanan olayları/bağımlılıkları izlemek için özel API çağrıları yapmanız gerekiyorsa, bu yöntemi kullanmanız gerekir. Daha fazla bilgi [edinmek için özel olaylar ve ölçümler makalesi için API'ye](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics) göz atın. Bu da şu anda Linux tabanlı iş yükleri için desteklenen tek seçenektir.
 
 > [!NOTE]
 > Hem aracı tabanlı izleme hem de manuel SDK tabanlı enstrümantasyon algılanırsa, yalnızca manuel enstrümantasyon ayarlarına uyulacaktır. Bu, yinelenen verilerin gönderilmesini önlemek içindir. Bu konuda daha fazla bilgi edinmek için aşağıdaki [sorun giderme bölümüne](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#troubleshooting) göz atın.

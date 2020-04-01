@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 5236fd89ed99ca14bb7fc24e40ef79e12e5177d9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 61d0a57c541837ab3aebf65e47d757f7ecbe7e40
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79245505"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80435991"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Azure Güvenlik Merkezinde veri toplama
 Güvenlik Merkezi, güvenlik açıklarını ve tehditlerini izlemek için Azure sanal makinelerinizden (VM'ler), sanal makine ölçek kümeleri, IaaS kapsayıcıları ve Azure olmayan (şirket içi dahil) bilgisayarlardan veri toplar. Veriler, makineden çeşitli güvenlikle ilgili yapılandırmaları ve olay günlüklerini okuyan ve verileri analiz için çalışma alanınıza kopyalayan Log Analytics Agent kullanılarak toplanır. Bu verilere örnek olarak işletim sistemi türü ve sürümü, işletim sistemi günlükleri (Windows olay günlükleri), çalışan işlemler, makine adı, IP adresleri ve kullanıcı oturum açma. Log Analytics Aracısı ayrıca kilitlenme döküm dosyalarını çalışma alanınıza kopyalar.
@@ -306,7 +306,7 @@ Güvenlik Merkezi'nin SANAL'larınızdan güvenlik verileri toplayabilmesi ve ö
 
 - İzlenmeyen VM'leri ve bilgisayar sorunlarını tanımlamak için:
 
-    Makine Microsoft İzleme Aracısı uzantısını çalıştırmıyorsa, bir VM veya bilgisayar Güvenlik Merkezi tarafından izlenmez. Bir makine, OMS doğrudan aracısı veya Sistem Merkezi Operasyon Yöneticisi aracısı gibi yerel bir aracızaten yüklü olabilir. Bu aracılar Güvenlik Merkezi'nde tam olarak desteklenmedığından, bu aracılara sahip makineler izlenmeden tanımlanır. Güvenlik Merkezi’nin tüm özelliklerinden tam olarak faydalanmak için, Microsoft Monitoring Agent uzantısı gereklidir.
+    Makine Log Analytics aracıuzantısını çalıştırmıyorsa, bir VM veya bilgisayar Güvenlik Merkezi tarafından izlenmez. Bir makine, OMS doğrudan aracısı veya Sistem Merkezi Operasyon Yöneticisi aracısı gibi yerel bir aracızaten yüklü olabilir. Bu aracılar Güvenlik Merkezi'nde tam olarak desteklenmedığından, bu aracılara sahip makineler izlenmeden tanımlanır. Güvenlik Merkezi'nin tüm özelliklerinden tam olarak yararlanabilmek için Log Analytics aracısı uzantısı gereklidir.
 
     Güvenlik Merkezi'nin otomatik sağlama için başlatılması gereken VM'leri ve bilgisayarları başarıyla izleyememesinin nedenleri hakkında daha fazla bilgi [için](security-center-troubleshooting-guide.md#mon-agent)bkz.
 

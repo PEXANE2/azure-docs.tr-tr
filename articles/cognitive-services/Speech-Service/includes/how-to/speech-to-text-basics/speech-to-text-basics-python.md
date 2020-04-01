@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/11/2020
 ms.author: dapine
-ms.openlocfilehash: c8354a67d26210035355f4947cb5f17cee934508
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: a0746ec73b827756ff47c0dfc010b37ed2b79844
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "79372826"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80501674"
 ---
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -51,7 +51,7 @@ Bir baş harfe başlatmanın birkaç [`SpeechConfig`](https://docs.microsoft.com
 * Bir ana bilgisayar ile: bir ana bilgisayar adresi geçmek. Anahtar veya yetkilendirme belirteci isteğe bağlıdır.
 * Yetkilendirme belirteci yle: yetkilendirme jetonundan ve ilişkili bölgeye geçin.
 
-Bir anahtar ve bölge kullanılarak [`SpeechConfig`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python) nasıl oluşturulduğuna bir göz atalım.
+Bir anahtar ve bölge kullanılarak [`SpeechConfig`](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig?view=azure-python) nasıl oluşturulduğuna bir göz atalım. Bölge tanımlayıcınızı bulmak için [bölge destek](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk) sayfasına bakın.
 
 ```Python
 speech_key, service_region = "YourSubscriptionKey", "YourServiceRegion"

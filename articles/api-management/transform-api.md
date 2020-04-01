@@ -14,10 +14,10 @@ ms.topic: tutorial
 ms.date: 02/26/2019
 ms.author: apimpm
 ms.openlocfilehash: 5dec08bd4bc0a63a419d2bdc63383348a69b02db
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 08/28/2019
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "70067463"
 ---
 # <a name="transform-and-protect-your-api"></a>API’nizi dönüştürme ve koruma
@@ -26,7 +26,7 @@ ms.locfileid: "70067463"
 
 Bu öğreticide size Azure API Yönetimi ile hız sınırı yapılandırarak arka uç API’niz için koruma eklemenin ne kadar kolay olduğu gösterilmektedir. Örneğin, geliştiriciler tarafından aşırı kullanılmaması için API çağrısı sayısını sınırlamak isteyebilirsiniz. Daha fazla bilgi için bkz. [API Yönetimi ilkeleri](api-management-policies.md)
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
 >
@@ -37,12 +37,12 @@ Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
 
 ![İlkeler](./media/transform-api/api-management-management-console.png)
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
 -   [Azure API Management terminolojisini](api-management-terminology.md) öğrenin.
 -   [Azure API Management'ta ilke kavramını](api-management-howto-policies.md) anlayın.
--   Aşağıdaki hızlı başlangıcı doldurun: [Azure API Management örneği oluşturun](get-started-create-service-instance.md).
--   Ayrıca, aşağıdaki öğreticiyi de tamamlayabilirsiniz: [Ilk API 'Nizi Içeri aktarın ve yayımlayın](import-and-publish.md).
+-   Şu hızlı başlangıcı tamamlayın: [Azure API Management örneği oluşturma](get-started-create-service-instance.md).
+-   Ayrıca, şu öğreticiyi tamamlayın: [İlk API'nizi içeri aktarma ve yayımlama](import-and-publish.md).
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
@@ -75,12 +75,12 @@ Bu bölümde, kullanıcılarınıza göstermek istemediğiniz HTTP üst bilgiler
 2. Ekranın üst kısmında **Tasarım** sekmesini seçin.
 3. **Tüm işlemler**’i seçin.
 4. **Giden işleme** bölümünde **</>** simgesine tıklayın.
-5. İmleci **&lt;giden&gt;** öğesinin içine konumlandırın.
+5. İmleci ** &lt;giden&gt; ** öğenin içine yerleştirin.
 6. Sağ pencerede **Dönüştürme ilkeleri** bölümünde **+ HTTP üst bilgisini ayarla** seçeneğine iki defa tıklayın (iki ilke kod parçacığı eklemek için).
 
    ![İlkeler](./media/transform-api/transform-api.png)
 
-7. Giden > kodunuzu değiştirin, şöyle görünür:  **\<**
+7. Giden ** \<>** kodunuzu şu şekilde görünecek şekilde değiştirin:
 
        <set-header name="X-Powered-By" exists-action="delete" />
        <set-header name="X-AspNet-Version" exists-action="delete" />
@@ -112,15 +112,15 @@ Bu bölümde, API’lerin HTTP yanıt gövdesinde görüntülenen özgün URL’
 2.  **Tüm işlemler**’i seçin.
 3.  Ekranın üst kısmında **Tasarım** sekmesini seçin.
 4.  **Giden işleme** bölümünde **</>** simgesine tıklayın.
-5.  İmleci **&lt;giden&gt;** öğesinin içine konumlandırın.
+5.  İmleci ** &lt;giden&gt; ** öğenin içine yerleştirin.
 6.  Sağ pencerede **Dönüştürme ilkeleri** bölümünde **+ Gövdedeki dizeyi bul ve değiştir** seçeneğine tıklayın.
-7.  URL’yi APIM ağ geçidinizle eşleşecek şekilde değiştirmek için **find-and-replace** kodunuzu ( **\<giden\>** öğesinde) değiştirin. Örneğin:
+7.  URL’yi APIM ağ geçidinizle eşleşecek şekilde değiştirmek için **find-and-replace** kodunuzu (**\<giden\>** öğesinde) değiştirin. Örnek:
 
         <find-and-replace from="://conferenceapi.azurewebsites.net" to="://apiphany.azure-api.net/conference"/>
 
 ## <a name="protect-an-api-by-adding-rate-limit-policy-throttling"></a>Hız sınırı ilkesi ekleyerek (azaltma) bir API’yi koruma
 
-Bu bölümde, hız sınırları yapılandırılarak arka uç API’niz için nasıl koruma ekleneceği gösterilmektedir. Örneğin, geliştiriciler tarafından aşırı kullanılmaması için API çağrısı sayısını sınırlamak isteyebilirsiniz. Bu örnekte, her bir abonelik kimliği için sınır 15 saniyede 3 çağrıya ayarlanmıştır. 15 saniye sonra geliştirici, API’yi çağırmayı yeniden deneyebilir.
+Bu bölümde, hız sınırları yapılandırılarak arka uç API’niz için nasıl koruma ekleneceği gösterilmektedir. Örneğin, geliştiriciler tarafından aşırı kullanılmaması için API çağrısı sayısını sınırlamak isteyebilirsiniz. Bu örnekte, sınır her abonelik kimliği için 15 saniyede 3 çağrı olarak ayarlanır. 15 saniye sonra, bir geliştirici API'yi yeniden aramayı deneyebilir.
 
 ![Gelen ilkesi ayarlama](./media/transform-api/04-ProtectYourAPI-01-SetPolicy-Inbound.png)
 
@@ -128,9 +128,9 @@ Bu bölümde, hız sınırları yapılandırılarak arka uç API’niz için nas
 2.  **Tüm işlemler**’i seçin.
 3.  Ekranın üst kısmında **Tasarım** sekmesini seçin.
 4.  **Gelen işleme** bölümünde **</>** simgesine tıklayın.
-5.  İmleci **&lt;gelen&gt;** öğesinin içine konumlandırın.
+5.  İmleci ** &lt;gelen&gt; ** öğenin içine yerleştirin.
 6.  Sağ pencerede **Erişim kısıtlama ilkeleri** bölümünde **+ Anahtar başına çağrıyı sınırla** seçeneğine tıklayın.
-7.  **rate-limit-by-key** kodunuzu ( **\<gelen\>** öğesinde) aşağıdaki kodla değiştirin:
+7.  **rate-limit-by-key** kodunuzu (**\<gelen\>** öğesinde) aşağıdaki kodla değiştirin:
 
         <rate-limit-by-key calls="3" renewal-period="15" counter-key="@(context.Subscription.Id)" />
 

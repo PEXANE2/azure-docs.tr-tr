@@ -3,12 +3,12 @@ title: Azure Geçiş cihazı SSS
 description: Azure Geçiş cihazı yla ilgili sık sorulan soruların yanıtlarını alın.
 ms.topic: conceptual
 ms.date: 03/09/2020
-ms.openlocfilehash: 2ef7de3b31cb11a71ec9379232fc5ff1022cf666
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a08423637f255b973f52616f53172ef6e48d0804
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80336982"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437605"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure Geçiş cihazı: Sık sorulan sorular
 
@@ -94,6 +94,9 @@ Hayır. [Azure Geçir cihazı](migrate-appliance.md) ile vCenter Server arasınd
 
 ## <a name="can-an-azure-migrate-project-have-multiple-appliances"></a>Azure Geçiş projesinde birden çok cihaz olabilir mi?
 Bir projede birden çok cihaz eklenebilir. Ancak, bir cihaz yalnızca bir projeyle ilişkilendirilebilir. 
+
+## <a name="can-the-azure-migrate-appliancereplication-appliance-connect-to-the-same-vcenter"></a>Azure Geçiş cihazı/Çoğaltma cihazı aynı vCenter'a bağlanabilir mi?
+Evet. Hem Azure Geçiş cihazını (değerlendirme ve aracısız VMware geçişi için kullanılır) hem de çoğaltma cihazını (VMware VM'lerin aracı tabanlı geçişi için kullanılır) aynı vCenter sunucusuna ekleyebilirsiniz.
 
 
 ## <a name="how-many-vms-or-servers-can-i-discover-with-an-appliance"></a>Bir cihazla kaç VM veya sunucu keşfedebilirim?

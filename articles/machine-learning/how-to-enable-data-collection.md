@@ -11,12 +11,12 @@ ms.author: copeters
 author: lostmygithubaccount
 ms.date: 11/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3c481a2e12d83e865025cd90e59e0eba572ad9a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 44acc81df9eb6dc6a6af28b5b0f4730aa93adffc
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75771402"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80475436"
 ---
 # <a name="collect-data-for-models-in-production"></a>Üretimdeki modeller için veri toplama
 
@@ -129,11 +129,7 @@ Ortam dosyanızda ve puanlama dosyanızda yüklü bağımlılıklar içeren bir 
 
    ![Hizmeti edin](././media/how-to-enable-data-collection/EditService.PNG)
 
-1. **Gelişmiş**Ayarlar'da, Model **veri toplamayı etkinleştir'i**seçin.
-
-    [![Veri toplamayı seçin](./media/how-to-enable-data-collection/CheckDataCollection.png)](././media/how-to-enable-data-collection/CheckDataCollection.png#lightbox)
-
-   Ayrıca, hizmetinizin durumunu izlemek için **AppInsights tanılamalarını etkinleştir'i** de seçebilirsiniz.
+1. **Gelişmiş**Ayarlar'da, **Uygulama Öngörülerini Etkinleştir tanılama ve veri toplama'yı**seçin.
 
 1. Değişiklikleri uygulamak için **Güncelleştir'i** seçin.
 
@@ -151,9 +147,7 @@ Ortam dosyanızda ve puanlama dosyanızda yüklü bağımlılıklar içeren bir 
 
    [![Edit seçeneğini seçin](././media/how-to-enable-data-collection/EditService.PNG)](./././media/how-to-enable-data-collection/EditService.PNG#lightbox)
 
-1. **Gelişmiş**Ayarlar'da, Model **veri toplamayı etkinleştir'i**temizleyin.
-
-    [![Veri toplama onay kutusunu temizleme](./media/how-to-enable-data-collection/UncheckDataCollection.png)](././media/how-to-enable-data-collection/UncheckDataCollection.png#lightbox)
+1. **Gelişmiş**Ayarlar'da, **Uygulama Öngörülerini Etkinleştir tanılama ve veri toplamayı**netleyin.
 
 1. Değişikliği uygulamak için **Güncelleştir'i** seçin.
 

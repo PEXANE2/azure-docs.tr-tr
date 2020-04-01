@@ -17,12 +17,12 @@ ms.date: 11/19/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 6e3f021fd888bbb408fa66964c54d22f0d68e84e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 53d498f4aed8ec86cc57c35824a9fb8aa471dc1d
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80297688"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80419678"
 ---
 # <a name="microsoft-identity-platform-and-implicit-grant-flow"></a>Microsoft kimlik platformu ve Örtülü hibe akışı
 
@@ -32,7 +32,7 @@ Microsoft kimlik platformu bitiş noktası ile, kullanıcıları Microsoft'un ki
 * Birçok yetkilendirme sunucusu ve kimlik sağlayıcısı CORS isteklerini desteklemez.
 * Tam sayfa tarayıcı uygulamadan uzağa yönlendirir özellikle kullanıcı deneyimine invaziv hale gelir.
 
-Bu uygulamalar için (AngularJS, Ember.js, React.js, vb.), Microsoft kimlik platformu OAuth 2.0 Örtülü Hibe akışını destekler. Örtük akış [OAuth 2.0 Belirtiminde](https://tools.ietf.org/html/rfc6749#section-4.2)açıklanmıştır. Birincil yararı, uygulamanın arka uç sunucu kimlik bilgisi alışverişi yapmadan Microsoft kimlik platformundan belirteçler elde etmesine olanak sağlamasıdır. Bu, uygulamanın kullanıcıda oturum açmasına, oturumu sürdürmesine ve istemci JavaScript kodu içindeki diğer web AP'lerine belirteçler almalarına olanak tanır. Özellikle [istemci](https://tools.ietf.org/html/rfc6749#section-10.3) ve [kullanıcı kimliğine bürünme](https://tools.ietf.org/html/rfc6749#section-10.3)etrafında örtük akışı kullanırken dikkate alınması gereken birkaç önemli güvenlik hususları vardır.
+Bu uygulamalar için (Açısal, Ember.js, React.js, vb.), Microsoft kimlik platformu OAuth 2.0 Örtülü Hibe akışını destekler. Örtük akış [OAuth 2.0 Belirtiminde](https://tools.ietf.org/html/rfc6749#section-4.2)açıklanmıştır. Birincil yararı, uygulamanın arka uç sunucu kimlik bilgisi alışverişi yapmadan Microsoft kimlik platformundan belirteçler elde etmesine olanak sağlamasıdır. Bu, uygulamanın kullanıcıda oturum açmasına, oturumu sürdürmesine ve istemci JavaScript kodu içindeki diğer web AP'lerine belirteçler almalarına olanak tanır. Özellikle [istemci](https://tools.ietf.org/html/rfc6749#section-10.3) ve [kullanıcı kimliğine bürünme](https://tools.ietf.org/html/rfc6749#section-10.3)etrafında örtük akışı kullanırken dikkate alınması gereken birkaç önemli güvenlik hususları vardır.
 
 Bu makalede, uygulamanızdaki protokole karşı doğrudan programlama nın nasıl yapılacağını açıklanmaktadır.  Mümkün olduğunda, [belirteçleri elde etmek ve güvenli web API'lerini aramak](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)yerine desteklenen Microsoft Kimlik Doğrulama Kitaplıklarını (MSAL) kullanmanızı öneririz.  Ayrıca [MSAL kullanan örnek uygulamalara](sample-v2-code.md)da göz atın.
 
@@ -58,7 +58,7 @@ Yönlendirme tabanlı uygulamalar genellikle tanımlama bilgileri aracılığıy
 
 Örtük hibe akışı, çoğunlukla güvenlik nedenleriyle yenileme belirteçleri vermez. Bir yenileme belirteci erişim belirteçleri kadar dar kapsamlı değildir, dolayısıyla dışarı sızdırılmış durumda çok daha fazla hasar veren çok daha fazla güç veren. Örtük akışta, belirteçler URL'de teslim edilir, bu nedenle engelleme riski yetkilendirme kodu hibesinden daha yüksektir.
 
-Ancak, bir JavaScript uygulaması, kullanıcıdan sürekli olarak kimlik bilgilerini sormadan erişim belirteçlerini yenilemek için emrinde başka bir mekanizmaya sahiptir. Uygulama, Azure AD'nin yetkilendirme bitiş noktasına karşı yeni belirteç istekleri gerçekleştirmek için gizli bir iframe kullanabilir: tarayıcının Azure AD etki alanına karşı etkin bir oturumu (okuma: oturum çerezi vardır) olduğu sürece, kimlik doğrulama isteği kullanıcı etkileşimine gerek kalmadan başarılı bir şekilde gerçekleşir.
+Ancak, bir JavaScript uygulaması, kullanıcıdan sürekli olarak kimlik bilgilerini sormadan erişim belirteçlerini yenilemek için emrinde başka bir mekanizmaya sahiptir. Uygulama, Azure AD'nin yetkilendirme bitiş noktasına karşı yeni belirteç istekleri gerçekleştirmek için gizli bir iframe kullanabilir: tarayıcının Azure AD etki alanına karşı etkin bir oturumu (okuma: oturum çerezi vardır) olduğu sürece, kimlik doğrulama isteği kullanıcı etkileşimine gerek kalmadan başarıyla gerçekleşebilir.
 
 Bu model, JavaScript uygulamasına erişim belirteçlerini bağımsız olarak yenileme ve hatta yeni bir API için yeni lerini edinme olanağı verir (kullanıcının daha önce onlar için onay vermiş olması koşuluyla). Bu, yenileme belirteci gibi yüksek değerli bir yapıyı edinme, koruma ve koruma yükünü önler. Sessiz yenilemeyi mümkün kılan yapı, Azure AD oturumu çerezi, uygulama dışında yönetilir. Bu yaklaşımın bir diğer avantajı da, kullanıcının Azure AD'de oturum açtığı uygulamaları kullanarak azure AD'den oturum açabiliyor ve tarayıcı sekmelerinden herhangi birinde çalışıyor. Bu, Azure AD oturumu çerezinin silinmesine neden olur ve JavaScript uygulaması oturumu imzalayan kullanıcının belirteçlerini otomatik olarak yenileme yeteneğini kaybeder.
 
@@ -161,7 +161,7 @@ error=access_denied
 
 Kullanıcıyı tek sayfalı uygulamanızda imzaladığınızda, [Microsoft Graph](https://developer.microsoft.com/graph)gibi Microsoft kimlik platformu tarafından güvenli web API'lerini aramak için sessizce erişim belirteçleri alabilirsiniz. `token` response_type kullanarak zaten bir belirteç almış olsanız bile, kullanıcıyı yeniden oturum açmaya yönlendirmek zorunda kalmadan ek kaynaklara belirteçler elde etmek için bu yöntemi kullanabilirsiniz.
 
-Normal OpenID Connect/OAuth akışında, Microsoft kimlik platformu `/token` bitiş noktasına bir istekte bulunarak bunu yaparsınız. Ancak, Microsoft kimlik platformu bitiş noktası CORS isteklerini desteklemez, bu nedenle jetonları almak ve yenilemek için AJAX aramaları yapmak söz konusu değildir. Bunun yerine, diğer web API'leri için yeni belirteçler almak için gizli bir iframe örtük akışı kullanabilirsiniz: 
+Normal OpenID Connect/OAuth akışında, Microsoft kimlik platformu `/token` bitiş noktasına bir istekte bulunarak bunu yaparsınız. Ancak, Microsoft kimlik platformu bitiş noktası CORS isteklerini desteklemez, bu nedenle jetonları almak ve yenilemek için AJAX aramaları yapmak söz konusu değildir. Bunun yerine, diğer web API'leri için yeni belirteçler almak için gizli bir iframe örtük akışı kullanabilirsiniz:
 
 ```
 // Line breaks for legibility only
@@ -170,7 +170,7 @@ https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize?
 client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &response_type=token
 &redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
-&scope=https%3A%2F%2Fgraph.microsoft.com%2Fuser.read 
+&scope=https%3A%2F%2Fgraph.microsoft.com%2Fuser.read
 &response_mode=fragment
 &state=12345
 &nonce=678910

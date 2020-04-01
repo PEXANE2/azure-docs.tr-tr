@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/12/2020
-ms.openlocfilehash: 52928b9a4d77a99f3d8b160713c7b4a7cade2d4e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8f5065a0f4a2a96a747a45f64e00e86f7990bfb8
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80238763"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437789"
 ---
 # <a name="copy-and-transform-data-in-azure-sql-database-by-using-azure-data-factory"></a>Azure Veri Fabrikası'nı kullanarak Azure SQL Veritabanı'ndaki verileri kopyalama ve dönüştürme
 
@@ -48,7 +48,7 @@ Kopyalama etkinliği için bu Azure SQL Veritabanı bağlayıcısı şu işlevle
 > Azure Veri Fabrikası tümleştirme çalışma zamanını kullanarak verileri kopyalarsanız, Azure hizmetlerinin sunucuya erişebilmeleri için bir [Azure SQL Server güvenlik duvarı](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) yapılandırın.
 > Kendi kendine barındırılan bir tümleştirme çalışma zamanı kullanarak verileri kopyalarsanız, Azure SQL Server güvenlik duvarını uygun IP aralığına izin verecek şekilde yapılandırın. Bu aralık, makinenin Azure SQL Veritabanı'na bağlanmak için kullanılan IP'sini içerir.
 
-## <a name="get-started"></a>Kullanmaya başlayın
+## <a name="get-started"></a>başlarken
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -143,7 +143,7 @@ Hizmet temeli tabanlı Azure AD uygulama belirteç kimlik doğrulaması kullanma
 4. Normalde SQL kullanıcıları veya başkaları için yaptığınız gibi hizmet ilkesine gereken izinleri ver. Aşağıdaki kodu çalıştırın. Daha fazla seçenek için [bu belgeye](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-2017)bakın.
 
     ```sql
-    EXEC sp_addrolemember [role name], [your application name];
+    ALTER ROLE [role name] ADD MEMBER [your application name];
     ```
 
 5. Azure Veri Fabrikası'nda Azure SQL Veritabanı bağlantılı bir hizmeti yapılandırın.
@@ -190,7 +190,7 @@ Yönetilen kimlik doğrulamasını kullanmak için aşağıdaki adımları izley
 3. Veri Fabrikası yönetilen kimlik normalde SQL kullanıcıları ve diğerleri için yaptığınız gibi gerekli izinleri verin. Aşağıdaki kodu çalıştırın. Daha fazla seçenek için [bu belgeye](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-2017)bakın.
 
     ```sql
-    EXEC sp_addrolemember [role name], [your Data Factory name];
+    ALTER ROLE [role name] ADD MEMBER [your Data Factory name];
     ```
 
 4. Azure Veri Fabrikası'nda Azure SQL Veritabanı bağlantılı bir hizmeti yapılandırın.

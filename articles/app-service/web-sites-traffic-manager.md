@@ -5,12 +5,12 @@ ms.assetid: dabda633-e72f-4dd4-bf1c-6e945da456fd
 ms.topic: article
 ms.date: 02/25/2016
 ms.custom: seodec18
-ms.openlocfilehash: 200effab70b369d69b4e89b1901578ecfe1a1b87
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 040f84288c66f4506919e775b9ea41324b617cfa
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74684096"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80437892"
 ---
 # <a name="controlling-azure-app-service-traffic-with-azure-traffic-manager"></a>Azure Trafik Yöneticisi ile Azure Uygulama Hizmeti trafiğini denetleme
 > [!NOTE]
@@ -32,7 +32,7 @@ Azure Trafik Yöneticisi dört farklı yönlendirme yöntemi kullanır. Bu yönt
 Daha fazla bilgi için [Trafik Yöneticisi yönlendirme yöntemlerine](../traffic-manager/traffic-manager-routing-methods.md)bakın.
 
 ## <a name="app-service-and-traffic-manager-profiles"></a>Uygulama Servisi ve Trafik Yöneticisi Profilleri
-Uygulama Hizmeti uygulama trafiğinin denetimini yapılandırmak için, Azure Trafik Yöneticisi'nde daha önce açıklanan dört yük dengeleme yönteminden birini kullanan bir profil oluşturursunuz ve ardından trafiği denetlemek istediğiniz uç noktaları (bu durumda, Uygulama Hizmeti) Profil. Uygulama durumunuz (çalışan, durdurulan veya silinmiş) düzenli olarak profile iletilir, böylece Azure Trafik Yöneticisi trafiği buna göre yönlendirebilir.
+Uygulama Hizmeti uygulama trafiğinin denetimini yapılandırmak için, Azure Trafik Yöneticisi'nde daha önce açıklanan dört yük dengeleme yönteminden birini kullanan bir profil oluşturur ve ardından trafiği denetlemek istediğiniz uç noktaları (bu durumda, App Service) eklersiniz. Uygulama durumunuz (çalışan, durdurulan veya silinmiş) düzenli olarak profile iletilir, böylece Azure Trafik Yöneticisi trafiği buna göre yönlendirebilir.
 
 Azure ile Azure Trafik Yöneticisi'ni kullanırken aşağıdaki noktaları göz önünde bulundurun:
 
@@ -41,8 +41,9 @@ Azure ile Azure Trafik Yöneticisi'ni kullanırken aşağıdaki noktaları göz 
 * Bir profilde bölge başına yalnızca bir Uygulama Hizmeti bitiş noktası belirtebilirsiniz. Bir uygulamayı bir bölge için bitiş noktası olarak seçtiğinizde, o bölgedeki kalan uygulamalar bu profil için seçim için kullanılamaz hale gelir.
 * Azure Trafik Yöneticisi profilinde belirttiğiniz Uygulama Hizmeti bitiş noktaları, profildeki uygulamanın Yapılandırılan sayfasındaki **Alan Adları** bölümünün altında görünür, ancak burada yapılandırılamaz.
 * Bir profile bir uygulama ekledikten sonra, uygulamanın portal sayfasının Panosundaki Site URL'si, bir uygulama ayarladıysanız uygulamanın özel etki alanı URL'sini görüntüler. **Site URL** Aksi takdirde, Trafik Yöneticisi profil URL'sini görüntüler (örneğin,). `contoso.trafficmanager.net` Uygulamanın doğrudan etki alanı adı ve Trafik Yöneticisi URL'si, uygulamanın **Alan Adları** bölümü altındaki Yapılandırma sayfasında görünür.
-* Özel alan adlarınız beklendiği gibi çalışır, ancak bunları uygulamalarınız için eklemenin yanı sıra, DNS haritanızı Trafik Yöneticisi URL'sini işaret etmek üzere yapılandırmanız gerekir. Bir Uygulama Hizmeti uygulaması için özel bir etki alanı nın nasıl ayarlana kadar nasıl ayarlanabildiğini öğrenmek için, [varolan özel bir DNS adını Azure Uygulama Hizmeti'ne göre Eşle'ye](app-service-web-tutorial-custom-domain.md)bakın.
+* Özel alan adlarınız beklendiği gibi çalışır, ancak bunları uygulamalarınız için eklemenin yanı sıra, DNS haritanızı Trafik Yöneticisi URL'sini işaret etmek üzere yapılandırmanız gerekir. Bir Uygulama Hizmeti uygulaması için özel bir etki alanı ayarlama hakkında bilgi için, [Trafik Yöneticisi tümleştirmesiyle Azure Uygulama Hizmeti'nde özel bir etki alanı adı yapılandır'a](configure-domain-traffic-manager.md)bakın.
 * Azure Trafik Yöneticisi profiline yalnızca standart veya premium modda olan uygulamaları ekleyebilirsiniz.
+* Trafik Yöneticisi profiline uygulama eklemek, uygulamanın yeniden başlatılmasına neden olur.
 
 ## <a name="next-steps"></a>Sonraki Adımlar
 Azure Trafik Yöneticisi'ne kavramsal ve teknik bir genel bakış için Trafik [Yöneticisine Genel Bakış](../traffic-manager/traffic-manager-overview.md)bölümüne bakın.

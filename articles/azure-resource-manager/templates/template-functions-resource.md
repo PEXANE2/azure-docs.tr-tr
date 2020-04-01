@@ -2,13 +2,13 @@
 title: Şablon işlevleri - kaynaklar
 description: Kaynaklarla ilgili değerleri almak için Azure Kaynak Yöneticisi şablonunda kullanılacak işlevleri açıklar.
 ms.topic: conceptual
-ms.date: 02/10/2020
-ms.openlocfilehash: e9e1d700282652304f0bede5e697ba8625f5a5d6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/31/2020
+ms.openlocfilehash: 641602218aa19b790eb6e7feabdb7b46a520b590
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80156302"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478265"
 ---
 # <a name="resource-functions-for-arm-templates"></a>ARM şablonları için kaynak işlevleri
 
@@ -170,8 +170,8 @@ Listenin olası kullanımları* aşağıdaki tabloda gösterilmiştir.
 | Microsoft.DocumentDB/databaseHesapları | [listeTuşları](/rest/api/cosmos-db-resource-provider/databaseaccounts/listkeys) |
 | Microsoft.DomainRegistration | [listeDomainRecommendations](/rest/api/appservice/domains/listrecommendations) |
 | Microsoft.DomainRegistration/topLevelDomains | [listSözleşmeler](/rest/api/appservice/topleveldomains/listagreements) |
-| Microsoft.EventGrid/etki alanları | [listeTuşları](/rest/api/eventgrid/domains/listsharedaccesskeys) |
-| Microsoft.EventGrid/konular | [listeTuşları](/rest/api/eventgrid/topics/listsharedaccesskeys) |
+| Microsoft.EventGrid/etki alanları | [listeTuşları](/rest/api/eventgrid/version2019-06-01/domains/listsharedaccesskeys) |
+| Microsoft.EventGrid/konular | [listeTuşları](/rest/api/eventgrid/version2019-06-01/topics/listsharedaccesskeys) |
 | Microsoft.EventHub/namespaces/authorizationRules | [listkeys](/rest/api/eventhub/namespaces/listkeys) |
 | Microsoft.EventHub/namespaces/disasterRecoveryConfigs/authorizationRules | [listkeys](/rest/api/eventhub/disasterrecoveryconfigs/listkeys) |
 | Microsoft.EventHub/namespaces/eventhubs/authorizationRules | [listkeys](/rest/api/eventhub/eventhubs/listkeys) |

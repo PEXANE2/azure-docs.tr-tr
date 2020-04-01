@@ -4,19 +4,19 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 04/11/2019
 ms.author: cynthn
-ms.openlocfilehash: 9cbc48d8bca2f7491d0464be1c5bd64054927dc9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f2eb503b58f1679d138b6a1dd9304896be098ad6
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77608725"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80419080"
 ---
 Azure sanal makinelerini (VM' ler) tutarlı bir ölçekte oluşturmak ve yönetmek için genellikle bir tür otomasyon istenir. Azure altyapı dağıtımı ve yönetim yaşam döngüsünü otomatikleştirmenize olanak tanıyan birçok araç ve çözüm vardır. Bu makalede, Azure'da kullanabileceğiniz bazı altyapı otomasyon araçları tanıtışlanmaktadır. Bu araçlar genellikle aşağıdaki yaklaşımlardan birine uyar:
 
 - VM'lerin yapılandırmasını otomatikleştirme
-    - Araçlar [Ansible,](#ansible) [Şef](#chef)ve [Kukla](#puppet)içerir.
+    - Araçlar arasında [Ansible,](#ansible) [Chef,](#chef) [Puppet](#puppet)ve [Azure Kaynak Yöneticisi şablonu bulunmaktadır.](#azure-resource-manager-template)
     - VM özelleştirmesine özgü araçlar arasında Linux VM'leri için [bulut ekleme,](#cloud-init) [PowerShell İstenen Durum Yapılandırması (DSC)](#powershell-dsc)ve tüm Azure VM'leri için [Azure Özel Komut Dosyası Uzantısı](#azure-custom-script-extension) yer almaktadır.
- 
+
 - Altyapı yönetimini otomatikleştirin
     - Araçlar, özel VM görüntü yapılarını otomatikleştirmek için [Packer'ı](#packer) ve altyapı oluşturma işlemini otomatikleştirmek için [Terraform'u](#terraform) içerir.
     - [Azure Otomasyonu,](#azure-automation) Azure ve şirket içi altyapınızda eylemler gerçekleştirebilir.
@@ -56,7 +56,8 @@ Azure sanal makinelerini (VM' ler) tutarlı bir ölçekte oluşturmak ve yönetm
 
 Cloud-init, dağıtımlar arasında da çalışır. Örneğin, bir paket yüklemek için **apt-get install** veya **yum install** kullanmazsınız. Bunun yerine, yüklenecek paketlerin listesini tanımlayabilirsiniz. Cloud-init, seçtiğiniz dağıtım için yerel paket yönetim aracını otomatik olarak kullanır.
 
-Azure pazarda bulut ekleme özellikli görüntülerin kullanılabilmesi için onaylanan Linux dağıtım ortaklarımızla aktif olarak çalışıyoruz. Bu görüntüler, bulut init dağıtımlarınızın ve yapılandırmalarınızın VM'ler ve sanal makine ölçek kümeleriyle sorunsuz çalışmasını sağlar. Azure'da bulut-init hakkında daha fazla bilgi edinin:
+Azure pazarda bulut ekleme özellikli görüntülerin kullanılabilmesi için onaylanan Linux dağıtım ortaklarımızla aktif olarak çalışıyoruz. Bu görüntüler, bulut init dağıtımlarınızın ve yapılandırmalarınızın VM'ler ve sanal makine ölçek kümeleriyle sorunsuz çalışmasını sağlar.
+Azure'da bulut-init hakkında daha fazla bilgi edinin:
 
 - [Azure'da Linux sanal makineleri için bulut desteği](../articles/virtual-machines/linux/using-cloud-init.md)
 - [Bulut init kullanarak otomatik VM yapılandırması hakkında bir öğretici deneyin.](../articles/virtual-machines/linux/tutorial-automate-vm-deployment.md)
@@ -75,7 +76,7 @@ DSC yapılandırmaları, makineye ne yüklenir ve ana bilgisayar nasıl yapılan
 
 
 ## <a name="azure-custom-script-extension"></a>Azure Özel Betik Uzantısı
-[Linux](../articles/virtual-machines/linux/extensions-customscript.md) veya [Windows](../articles/virtual-machines/windows/extensions-customscript.md) için Azure Özel Komut Dosyası Uzantısı, Azure VM'lerinde komut dosyaları indirir ve yürütür. Uzantıyı, bir VM oluşturduğunuzda veya VM kullanımdan herhangi bir zamanda kullanabilirsiniz. 
+[Linux](../articles/virtual-machines/linux/extensions-customscript.md) veya [Windows](../articles/virtual-machines/windows/extensions-customscript.md) için Azure Özel Komut Dosyası Uzantısı, Azure VM'lerinde komut dosyaları indirir ve yürütür. Uzantıyı, bir VM oluşturduğunuzda veya VM kullanımdan herhangi bir zamanda kullanabilirsiniz.
 
 Komut dosyaları Azure depolama dan veya GitHub deposu gibi herkese açık herhangi bir konumdan indirilebilir. Özel Komut Dosyası Uzantısı ile, kaynak VM üzerinde çalışan herhangi bir dilde komut dosyası yazabilirsiniz. Bu komut dosyaları uygulamaları yüklemek veya VM'yi istediğiniz gibi yapılandırmak için kullanılabilir. Kimlik bilgilerini güvence altına almak için parolalar gibi hassas bilgiler korumalı bir yapılandırmada depolanabilir. Bu kimlik bilgileri yalnızca VM içinde deşifre edilir.
 
@@ -130,6 +131,17 @@ Aşağıdakiler hakkında daha fazla bilgi edinin:
 
 - [Jenkins, GitHub ve Docker ile Azure'da Bir Linux VM'de geliştirme altyapısı oluşturun.](../articles/jenkins/tutorial-jenkins-github-docker-cicd.md)
 
+
+## <a name="azure-resource-manager-template"></a>Azure Resource Manager şablonu
+[Azure Kaynak Yöneticisi,](../articles/azure-resource-manager/templates/overview.md) Azure'un dağıtım ve yönetim hizmetidir. Azure aboneliğinizde kaynak oluşturmanıza, güncelleştirmenize ve silmenize olanak tanıyan bir yönetim katmanı sağlar. Dağıtımdan sonra kaynaklarınızı güvenli hale getirmek ve düzenlemek için erişim denetimi, kilitler ve etiketler gibi yönetim özelliklerini kullanırsınız.
+
+Şunları nasıl yapacağınızı öğrenin:
+
+- [Kaynak Yöneticisi şablonu kullanarak Spot VM'leri dağıtın.](../articles/virtual-machines/linux/spot-template.md)
+- [C# ve Kaynak Yöneticisi şablonu kullanarak bir Azure Sanal Makinesi'ni dağıtın.](../articles/virtual-machines/windows/csharp-template.md)
+- [Kaynak Yöneticisi şablonundan Windows sanal makinesi oluşturun.](../articles/virtual-machines/windows/ps-template.md)
+- [VM şablonu indirin.](../articles/virtual-machines/windows/download-template.md)
+- [Azure Resim Oluşturucu şablonu oluşturun.](../articles/virtual-machines/linux/image-builder-json.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 Azure'da altyapı otomasyon araçlarını kullanmak için birçok farklı seçenek vardır. İhtiyaçlarınıza ve çevrenize en uygun çözümü kullanma özgürlüğüne sahipsiniz. Başlamak ve Azure'da yerleşik bazı araçları denemek için, [Bir Linux](../articles/virtual-machines/linux/tutorial-automate-vm-deployment.md) veya [Windows](../articles/virtual-machines/windows/tutorial-automate-vm-deployment.md) VM'nin özelleştirmesini nasıl otomatikleştirebilirsiniz' i görün.

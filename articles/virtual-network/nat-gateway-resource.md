@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/14/2020
+ms.date: 03/31/2020
 ms.author: allensu
-ms.openlocfilehash: 48fd4b0e6f0351cd46fc4063785d961867637e0c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 8234bb82ba1f4ff9bd7aea9887121d9c703ac4a3
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80060644"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80473299"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources"></a>NAT ağ geçidi kaynaklarıyla sanal ağlar tasarlama
 
@@ -39,7 +39,7 @@ NAT ağ geçidinin yapılandırılması ve kullanılması kasıtlı olarak basit
 NAT ağ geçidi kaynağı:
 - Bölgesel veya bölgeli (bölge yalıtılmış) NAT ağ geçidi kaynağı oluşturmak,
 - IP adresleri atamak,
-- TCP boşta zaman anına (isteğe bağlı) değiştirin.
+- Gerekirse, TCP boşta zaman azamanı (isteğe bağlı) değiştirin.  Varsayılanı değiştirmeden <ins>önce</ins> [zamanlayıcıları](#timers) gözden geçirin.
 
 Sanal ağ:
 - Sanal ağ alt netini NAT ağ geçidi kullanacak şekilde yapılandırın.
@@ -178,27 +178,50 @@ NAT ağ geçitleri, alt ağın giden senaryolarından önce gelir. Temel yük de
 
 ### <a name="availability-zones"></a>Kullanılabilirlik Alanları
 
-Kullanılabilirlik bölgeleri olmasa bile, NAT esnektir ve birden çok altyapı bileşeni hatasından kurtulabilir. Kullanılabilirlik bölgeleri senaryonuzun bir parçası olduğunda, NAT'yi belirli bir bölge için yapılandırmanız gerekir.  Kontrol düzlemi işlemleri ve veri düzlemi belirtilen bölgeye sınırlandırılmış. Senaryonuzun var olduğu bölge dışındaki bir bölgede hatanın NAT'ye etkisi nin bulunmaması beklenir. Aynı bölgedeki sanal makinelerden gelen giden trafik, bölge yalıtımı nedeniyle başarısız olur.
+#### <a name="zone-isolation-with-zonal-stacks"></a>Bölge yığınları ile bölge yalıtımı
 
 <p align="center">
-  <img src="media/nat-overview/az-directions.svg" width="425" title="Kullanılabilirlik bölgeleri ile Sanal Ağ NAT">
+  <img src="media/nat-overview/az-directions.svg" width="425" title="Bölge yalıtımlı Sanal Ağ NAT, birden çok "zonal stacks"">
 </p>
 
-*Şekil: Kullanılabilirlik bölgeleri ile Sanal Ağ NAT*
+*Şekil: Bölge yalıtımlı Sanal Ağ NAT, birden çok "bölge yığınları" oluşturarak*
 
-Bölge yalıtılmış NAT ağ geçidi, Ip adreslerinin NAT ağ geçidinin bölgesiyle eşleşmesini gerektirir. Farklı bir bölgeden veya bölge olmayan IP adreslerine sahip NAT ağ geçidi kaynakları desteklenmez.
+Kullanılabilirlik bölgeleri olmasa bile, NAT esnektir ve birden çok altyapı bileşeni hatasından kurtulabilir.  Kullanılabilirlik bölgeleri, NAT için bölge yalıtım senaryoları ile bu esneklik üzerine inşa edilir.
 
-Sanal ağlar ve alt ağlar bölgeseldir ve bölge hizalamaz. Bir VM, giden bağlantıların bölge vaadi için NAT ağ geçidiyle aynı bölgede olmalıdır. Bölge yalıtımı, kullanılabilirlik bölgesi başına bir zonal "yığın" oluşturarak oluşturulur. Zonal NAT ağ geçidinin bölgelerini geçerken veya bölge VM'leri olan bölgesel bir NAT ağ geçidi ni kullanırken bir zonal söz yoktur.
+Sanal ağlar ve alt ağları bölgesel yapılardır.  Alt ağlar sadece bir bölgeyle sınırlı değildir.
 
-NAT ile kullanmak üzere sanal makine ölçeği kümelerini dağıttığınızda, kendi alt ağına ayarlanmış bir bölge ölçeği dağıtmış ve eşleşen bölge NAT ağ geçidini bu alt ağa bağlarsınız. Bölge yayılan ölçek kümeleri (iki veya daha fazla bölgede ayarlanmış bir ölçek) kullanırsanız, NAT bir zonal söz sağlamaz.  NAT bölge artıklığını desteklemiyor.  Yalnızca bölgesel veya bölge yalıtımı desteklenir.
+NAT ağ geçidi kaynağı kullanan sanal bir makine örneği NAT ağ geçidi kaynağı ve ortak IP adresleriyle aynı bölgede olduğunda bölge yalıtımı için bir zonal söz vardır. Bölge yalıtımı için kullanmak istediğiniz desen, kullanılabilirlik bölgesi başına bir "bölge yığını" oluşturuyor.  Bu "bölge yığını" sanal makine örnekleri, NAT ağ geçidi kaynakları, genel IP adresi ve/veya yalnızca aynı bölgeye hizmet verdiği varsayılan bir alt ağüzerindeki önek kaynaklarından oluşur.   Kontrol düzlemi işlemleri ve veri düzlemi daha sonra hizalanır ve belirtilen bölgeye sınırlanır. 
+
+Senaryonuzun var olduğu bölge dışındaki bir bölgede hatanın NAT'ye etkisi nin bulunmaması beklenir. Aynı bölgedeki sanal makinelerden gelen giden trafik, bölge yalıtımı nedeniyle başarısız olur.  
+
+#### <a name="integrating-inbound-endpoints"></a>Gelen uç noktaları tümleştirme
+
+Senaryonuz gelen uç noktaları gerektiriyorsa, iki seçeneğiniz vardır:
+
+| Seçenek | Desen | Örnek | Pro | Con |
+|---|---|---|---|---|
+| (1) | Gelen uç noktaları, giden için oluşturduğunuz ilgili **zonal yığınlarla** **hizala.** | Zonal frontend ile standart bir yük dengeleyici oluşturun. | Gelen ve giden ler için aynı sistem durumu modeli ve hata modu. Çalışması daha kolay. | Bölge başına tek tek IP adreslerinin ortak bir DNS adı ile maskelenilmesi gerekebilir. |
+| (2) | Bölge yığınlarını **çapraz bölge** gelen bitiş noktasıyla yerle bir **edin.** | Bölge yedekli ön uçlu standart bir yük dengeleyicioluşturun. | Gelen uç nokta için tek IP adresi. | Gelen ve giden ler için değişen sistem durumu modeli ve hata modları.  Çalışması daha karmaşık. |
+
+>[!NOTE]
+> Bölge yalıtılmış NAT ağ geçidi, Ip adreslerinin NAT ağ geçidinin bölgesiyle eşleşmesini gerektirir. Farklı bir bölgeden veya bölge olmadan IP adreslerine sahip NAT ağ geçidi kaynaklarına izin verilmez.
+
+#### <a name="cross-zone-outbound-scenarios-not-supported"></a>Çapraz bölge giden senaryolar desteklenmiyor
 
 <p align="center">
-  <img src="media/nat-overview/az-directions2.svg" width="425" title="bölge yayılan Sanal Ağ NAT">
+  <img src="media/nat-overview/az-directions2.svg" width="425" title="Sanal Ağ NAT bölge yayılan alt ağ ile uyumlu değil">
 </p>
 
-*Şekil: Bölge yayılan Sanal Ağ NAT*
+*Şekil: Sanal Ağ NAT bölge yayılan alt ağ ile uyumlu değil*
 
-Bölgelerin özelliği değişmez değil.  NAT ağ geçidi kaynağını amaçlanan bölgesel veya bölge tercihiyle yeniden dağıtın.
+Sanal makine örnekleri aynı alt ağ içinde birden çok bölgede dağıtıldığında NAT ağ geçidi kaynaklarıyla zonal bir söz elde edemezsiniz.   Ve bir alt ağa bağlı birden çok zonal NAT ağ geçidi olsa bile, sanal makine örneği hangi NAT ağ geçidi kaynağını seçmeyeceğini bilemez.
+
+A) sanal makine örneğinin bölgesi ve zonal NAT ağ geçidi bölgeleri hizalanmadığında veya b) bölgesel bir NAT ağ geçidi kaynağı bölge sanal makine örnekleriyle kullanıldığında bir zonal söz yoktur.
+
+Senaryo işe yarıyor gibi görünse de, sistem durumu modeli ve hata modu kullanılabilirlik bölgesi açısından tanımsızdır. Bölge yığınları veya yerine tüm bölgesel ile gidiş düşünün.
+
+>[!NOTE]
+>NAT ağ geçidi kaynağının bölge özelliği değişmez değildir.  NAT ağ geçidi kaynağını amaçlanan bölgesel veya bölge tercihiyle yeniden dağıtın.
 
 >[!NOTE] 
 >Bölge belirtilmemişse, IP adresleri tek başlarına bölge gereksiz değildir.  Belirli bir bölgede bir IP adresi oluşturulmazsa, Standart Yük Dengeleyicisinin ön ucu [bölge yedeklidir.](../load-balancer/load-balancer-standard-availability-zones.md#frontend)  Bu NAT için geçerli değil.  Yalnızca bölgesel veya bölge yalıtımı desteklenir.
@@ -255,11 +278,9 @@ Bir SNAT bağlantı noktası serbest bıraktıktan sonra, NAT ile yapılandırı
 
 ### <a name="scaling"></a>Ölçeklendirme
 
-NAT tam giden senaryo için yeterli SNAT bağlantı noktası envanteri gerekir. Ölçekleme NAT öncelikle paylaşılan, kullanılabilir SNAT bağlantı noktası envanterini yönetme işlevidir. NAT ağ geçidi kaynağına bağlı tüm alt ağlar için en yüksek giden akışı gidermek için yeterli stok bulunması gerekir.
+Ölçekleme NAT öncelikle paylaşılan, kullanılabilir SNAT bağlantı noktası envanterini yönetme işlevidir. NAT, nat ağ geçidi kaynağına bağlı tüm alt ağlar için beklenen en yüksek giden akışlar için yeterli SNAT bağlantı noktası envanterine ihtiyaç duyar.  Ortak IP adresi kaynaklarını, genel IP öneki kaynaklarını veya her ikisini de SNAT bağlantı noktası envanteri oluşturmak için kullanabilirsiniz.
 
-SNAT, birden çok özel adresi tek bir ortak adresle eşler ve ölçeklendirmek için birden çok genel IP kullanır.
-
-Bir NAT ağ geçidi kaynağı, ortak bir IP adresinin 64.000 bağlantı noktası (SNAT bağlantı noktası) kullanır.  Bu SNAT bağlantı noktaları, özelden genel akış eşlemesine özel envanter haline gelir. Ve daha fazla genel IP adresi eklemek kullanılabilir stok SNAT bağlantı noktalarını artırır. NAT ağ geçidi kaynakları 16 IP adresine ve 1M SNAT bağlantı noktalarına kadar ölçeklenebilir.  TCP ve UDP ayrı SNAT bağlantı noktası stokları ve ilgisiz.
+SNAT, özel adresleri bir veya daha fazla genel IP adresiyle eşler, işlemlerdeki kaynak adresi ve kaynak bağlantı noktasını yeniden yazar. Bir NAT ağ geçidi kaynağı, bu çeviri için yapılandırılan genel IP adresi başına 64.000 bağlantı noktası (SNAT bağlantı noktası) kullanır. NAT ağ geçidi kaynakları 16 IP adresine ve 1M SNAT bağlantı noktalarına kadar ölçeklenebilir. Genel bir IP öneki kaynağı sağlanmışsa, önek içindeki her IP adresi SNAT bağlantı noktası envanteri sağlar. Ve daha fazla genel IP adresi eklemek kullanılabilir stok SNAT bağlantı noktalarını artırır. TCP ve UDP ayrı SNAT bağlantı noktası stokları ve ilgisiz.
 
 NAT ağ geçidi kaynakları fırsatçı bir şekilde kaynak bağlantı noktalarını yeniden kullanır. Ölçeklendirme amacıyla, her akışın yeni bir SNAT bağlantı noktası gerektirdiğini varsaymalı ve giden trafik için kullanılabilir IP adreslerinin toplam sayısını ölçeklendirmelisiniz.
 
@@ -268,6 +289,9 @@ NAT ağ geçidi kaynakları fırsatçı bir şekilde kaynak bağlantı noktalar�
 NAT ağ geçidi kaynakları, UDP ve TCP akışlarının IP ve IP aktarım başlıklarıyla etkileşime girilir ve uygulama katmanı yüklerine agnostiktir.  Diğer IP protokolleri desteklenmez.
 
 ### <a name="timers"></a>Zamanlayıcılar
+
+>[!IMPORTANT]
+>Uzun boşta zamanlayıcı gereksiz yere SNAT tükenmesi olasılığını artırabilir. Zamanlayıcının süresini uzatırsanız, NAT snat bağlantı noktalarını sonunda zaman aşımına kadar basılı tutar. Akışlarınız boşta kalıyorsa, yine de başarısız olurlar ve gereksiz yere SNAT bağlantı noktası envanterini tüketirler.  2 saat içinde başarısız olan akışlar varsayılan 4 dakikada da başarısız olur. Boşta zaman aşımını artırmak, dikkatli bir şekilde kullanılması gereken son çare seçeneğidir. Bir akış asla boşta gitmezse, boşta zamanlayıcı tarafından etkilenmez.
 
 TCP boşta zaman ayarı tüm akışlar için 4 dakikadan (varsayılan olarak) 120 dakikaya (2 saat) ayarlanabilir.  Ayrıca, akış üzerinde trafik ile boşta zamanlayıcı sıfırlayabilirsiniz.  Uzun boşta kalan bağlantıları ve bitiş noktası canlılık algılamayı yenilemek için önerilen desen TCP keepalives'dır.  TCP, son noktalara yinelenen AK'lar olarak görünür, düşük ek yükü vardır ve uygulama katmanına görünmezdir.
 
@@ -294,7 +318,7 @@ Bir SNAT bağlantı noktası, 5 saniye sonra aynı hedef IP adresine ve hedef ba
 
 ## <a name="feedback"></a>Geri Bildirim
 
-Hizmeti nasıl geliştirebileceğimizi bilmek istiyoruz. Önerin ve [NAT için UserVoice](https://aka.ms/natuservoice)sonraki inşa etmelidir ne oy.
+Hizmeti nasıl geliştirebileceğimizi bilmek istiyoruz. Bir yeteneği eksik mi? NAT için [UserVoice'ta](https://aka.ms/natuservoice)bir sonraki oluşturmamız gerekenler için durumunuzu hazır bulun.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
@@ -303,20 +327,20 @@ Hizmeti nasıl geliştirebileceğimizi bilmek istiyoruz. Önerin ve [NAT için U
 * [NAT ağ geçidi kaynaklarını sorun giderme](troubleshoot-nat.md)hakkında bilgi edinin.
 * NAT Ağ Geçidi'ni doğrulamak için öğretici
   - [Azure CLI](tutorial-create-validate-nat-gateway-cli.md)
-  - [Powershell](tutorial-create-validate-nat-gateway-cli.md)
+  - [PowerShell](tutorial-create-validate-nat-gateway-cli.md)
   - [Portal](tutorial-create-validate-nat-gateway-cli.md)
 * NAT ağ geçidi kaynağı dağıtmak için hızlı başlatma
   - [Azure CLI](./quickstart-create-nat-gateway-cli.md)
-  - [Powershell](./quickstart-create-nat-gateway-powershell.md)
+  - [PowerShell](./quickstart-create-nat-gateway-powershell.md)
   - [Portal](./quickstart-create-nat-gateway-portal.md)
   - [Şablon](./quickstart-create-nat-gateway-template.md)
 * NAT ağ geçidi kaynağı API'si hakkında bilgi edinin
   - [REST API](https://docs.microsoft.com/rest/api/virtualnetwork/natgateways)
   - [Azure CLI](https://docs.microsoft.com/cli/azure/network/nat/gateway?view=azure-cli-latest)
-  - [Powershell](https://docs.microsoft.com/powershell/module/az.network/new-aznatgateway)
-
+  - [PowerShell](https://docs.microsoft.com/powershell/module/az.network/new-aznatgateway)
 * [Kullanılabilirlik bölgeleri](../availability-zones/az-overview.md)hakkında bilgi edinin.
 * Standart [yük dengeleyicisi](../load-balancer/load-balancer-standard-overview.md)hakkında bilgi edinin.
 * [Kullanılabilirlik bölgeleri ve standart yük dengeleyicisi](../load-balancer/load-balancer-standard-availability-zones.md)hakkında bilgi edinin.
+* [UserVoice Sanal Ağ NAT için sonraki oluşturmak için ne söyle.](https://aka.ms/natuservoice)
 
 

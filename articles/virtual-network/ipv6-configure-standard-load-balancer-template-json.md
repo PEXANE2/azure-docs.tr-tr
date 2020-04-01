@@ -1,5 +1,5 @@
 ---
-title: Azure sanal ağında bir IPv6 çift yığın uygulaması dağıtma - Kaynak Yöneticisi şablonu (önizleme)
+title: Azure sanal ağında Bir IPv6 çift yığın uygulaması dağıtma - Kaynak Yöneticisi şablonu
 titlesuffix: Azure Virtual Network
 description: Bu makalede, Azure Kaynak Yöneticisi VM şablonlarını kullanarak Azure sanal ağında Standart Yük Dengeleyicisi ile bir IPv6 çift yığın uygulamasının nasıl dağıtılancaya kadar dağıtılanınca gösterilmektedir.
 services: virtual-network
@@ -10,18 +10,18 @@ ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 07/15/2019
+ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 8f2c6bc7fb7ab0939da20932fd531c158549ce7a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1f9531b5d1decfd462a82b9d389c5af519591c83
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70012844"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80420639"
 ---
-# <a name="deploy-an-ipv6-dual-stack-application-in-azure-virtual-network---template-preview"></a>Azure sanal ağında Bir IPv6 çift yığın uygulaması dağıtma - Şablon (Önizleme)
+# <a name="deploy-an-ipv6-dual-stack-application-in-azure-virtual-network---template"></a>Azure sanal ağında Bir IPv6 çift yığın uygulaması dağıtma - Şablon
 
-Bu makalede, Azure Kaynak Yöneticisi VM şablonunun geçerli olan bölümüyle birlikte IPv6 yapılandırma görevlerinin bir listesi sağlanmaktadır. Azure'da IPv4 ve IPv6 alt ağlarına sahip bir çift yığın sanal ağ, çift (IPv4 + IPv6) ön uçlu bir Standart Yük Dengeleyicisi içeren Standart Yük Dengeleyicisini kullanarak bir çift yığın (IPv4 + IPv6) uygulamasını dağıtmak için bu makalede açıklanan şablonu kullanın yapılandırmaları, çift IP yapılandırması olan NIC'li VM'ler, ağ güvenlik grubu ve ortak IP'ler. 
+Bu makalede, Azure Kaynak Yöneticisi VM şablonunun geçerli olan bölümüyle birlikte IPv6 yapılandırma görevlerinin bir listesi sağlanmaktadır. IPv4 ve IPv6 alt ağlarına sahip bir çift yığın sanal ağı, çift (IPv4 + IPv6) ön uç yapılandırmasına sahip bir Standart Yük Dengeleyicisi, çift IP yapılandırmasına sahip NIC'lere sahip Sanal Bilgisayar'ları, çift IP yapılandırmasına sahip VM'leri ve genel IP'leri içeren Azure'da Standart Yük Dengeleyicisini kullanarak bu makalede açıklanan şablonu kullanın. 
 
 ## <a name="required-configurations"></a>Gerekli yapılandırmalar
 

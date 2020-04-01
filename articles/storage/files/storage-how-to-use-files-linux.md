@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 2dc78c25c2cf63a510b9451c8d694795cd8a91eb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 72264755d5f0379f0ffb07852f48885126a36898
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80060955"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411601"
 ---
 # <a name="use-azure-files-with-linux"></a>Azure Dosyaları'nı Linux ile kullanma
 [Azure Dosyaları](storage-files-introduction.md), Windows'un kolay kullanılan bulut dosya sistemidir. Azure dosya paylaşımları, Kobİ çekirdek [istemcisi](https://wiki.samba.org/index.php/LinuxCIFS)kullanılarak Linux dağıtımlarına monte edilebilir. Bu makalede, bir Azure dosya paylaşımı takmak için `mount` iki yol gösterilmektedir: komutile isteğe bağlı ve önyüklemede `/etc/fstab`bir giriş oluşturarak.
@@ -194,10 +194,57 @@ Azure dosya paylaşımını kullanmayı bitirdiğinizde, `sudo umount $mntPath` 
     > [!Note]  
     > Yukarıdaki montaj komutu SMB 3.0 ile bağlanır. Linux dağıtımınız SMB 3.0'ı şifrelemeyle desteklemiyorsa veya yalnızca SMB 2.1'i destekliyorsa, yalnızca depolama hesabıyla aynı bölge içindeki bir Azure VM'den monte edebilirsiniz. Azure dosya paylaşımınızı SMB 3.0'ı şifrelemeyle desteklemeyen bir Linux dağıtımına monte etmek [için, depolama hesabı için aktarım da şifrelemeyi devre dışı](../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)balmanız gerekir.
 
+### <a name="using-autofs-to-automatically-mount-the-azure-file-shares"></a>Azure dosya paylaşımını otomatik olarak monte etmek için otomatik olarak kullanma
+
+1. **Autofs paketinin takılı olduğundan emin olun.**  
+
+    Autofs paketi seçtiğiniz Linux dağıtımında paket yöneticisi kullanılarak yüklenebilir. 
+
+    **Ubuntu** ve **Debian tabanlı** dağıtımlarda `apt` paket yöneticisini kullanın:
+    ```bash
+    sudo apt update
+    sudo apt install autofs
+    ```
+    **Fedora,** **Red Hat Enterprise Linux 8+** ve **CentOS 8 +** üzerinde paket yöneticisini `dnf` kullanın:
+    ```bash
+    sudo dnf install autofs
+    ```
+    Red Hat **Enterprise Linux** ve **CentOS'un**eski sürümlerinde paket yöneticisini `yum` kullanın:
+    ```bash
+    sudo yum install autofs 
+    ```
+    **openSUSE'da**paket `zypper` yöneticisini kullanın:
+    ```bash
+    sudo zypper install autofs
+    ```
+2. **Paylaşım(lar) için bir montaj noktası oluşturun:**
+   ```bash
+    sudo mkdir /fileshares
+    ```
+3. **Girit yeni bir özel autofs yapılandırma dosyası**
+    ```bash
+    sudo vi /etc/auto.fileshares
+    ```
+4. **/etc/auto.fileshares için aşağıdaki girişleri ekleyin**
+   ```bash
+   echo "$fileShareName -fstype=cifs,credentials=$smbCredentialFile :$smbPath"" > /etc/auto.fileshares
+   ```
+5. **/etc/auto.master için aşağıdaki girişi ekleyin**
+   ```bash
+   /fileshares /etc/auto.fileshares --timeout=60
+   ```
+6. **Autofs'u yeniden başlat**
+    ```bash
+    sudo systemctl restart autofs
+    ```
+7.  **Paylaşım için belirlenen klasöre erişin**
+    ```bash
+    cd /fileshares/$filesharename
+    ```
 ## <a name="securing-linux"></a>Linux'u Güvence Altına Alma
 Linux'a Azure dosya paylaşımı yapabilmek için port 445'e erişilebilir olması gerekir. Çoğu kuruluş SMB 1 kaynaklı güvenlik riskleri nedeniyle 445 numaralı bağlantı noktasını engeller. SMB 1, cifs (Ortak İnternet Dosya Sistemi) olarak da bilinir, birçok Linux dağıtımında yer alan eski bir dosya sistemi protokolüdür. SMB 1 eski, verimsiz ve hepsinden önemlisi güvenli olmayan bir protokoldür. İyi haber, Azure Files'ın Kobİ 1'i desteklememesi ve Linux çekirdek sürüm 4.18 ile başlayarak SMB 1'i devre dışı bilebilir hale getiriyor olması. Üretimde Kobİ dosya paylaşımlarını kullanmadan önce SMB 1'in Linux istemcilerinizde devre dışı bırakılmasını her zaman [şiddetle tavsiye ediyoruz.](https://aka.ms/stopusingsmb1)
 
-Linux çekirdeği 4.18 ile başlayarak, eski nedenlerle `cifs` çağrılan Kobİ çekirdeği modülü, yeni bir modül parametresini (genellikle çeşitli `disable_legacy_dialects`harici belgelertarafından *parm* olarak adlandırılır) ortaya çıkarır. Linux çekirdeği 4.18'de kullanılmaya başlanmış olsa da, bazı satıcılar bu değişikliği destekledikleri eski çekirdeklere geri döndürdüler. Kolaylık sağlamak için, aşağıdaki tabloda bu modül parametresinin ortak Linux dağıtımlarında kullanılabilirliği ayrıntılı olarak açıklanabilir.
+Linux çekirdeği 4.18 ile başlayarak, eski nedenlerle `cifs` çağrılan Kobİ çekirdeği modülü, yeni bir modül parametresi ortaya çıkarır (genellikle `disable_legacy_dialects`çeşitli dış belgeler tarafından *parm* olarak adlandırılır), denir. Linux çekirdeği 4.18'de kullanılmaya başlanmış olsa da, bazı satıcılar bu değişikliği destekledikleri eski çekirdeklere geri döndürdüler. Kolaylık sağlamak için, aşağıdaki tabloda bu modül parametresinin ortak Linux dağıtımlarında kullanılabilirliği ayrıntılı olarak açıklanabilir.
 
 | Dağıtım | SMB 1'i devre dışı kılabilir |
 |--------------|-------------------|

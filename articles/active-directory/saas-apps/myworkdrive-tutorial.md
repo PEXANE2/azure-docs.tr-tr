@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 06/27/2019
 ms.author: jeedes
-ms.openlocfilehash: c733873a5545bb01f03abd8178ed2f371e2dd3aa
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 60fdd9b0a8fb272da885df97e39804a98e48de67
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74074079"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80478873"
 ---
 # <a name="tutorial-integrate-myworkdrive-with-azure-active-directory"></a>Öğretici: MyWorkDrive'ı Azure Active Directory ile tümleştirin
 
@@ -92,7 +92,7 @@ Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları 
     > 
     > Oturum açma URL'si:`https://yourserver.yourdomain.com/Account/Login-saml`
     > 
-    > Bu değerler için kendi ana bilgisayar adınızı ve SSL sertifikanızı nasıl kurabileceğinizden emin değilseniz [MyWorkDrive destek ekibine](mailto:support@myworkdrive.com) başvurun.
+    > Kendi ana bilgisayar adınızı ve bu değerler için TLS/SSL sertifikanızı nasıl kurabileceğinizden emin değilseniz [MyWorkDrive destek ekibine](mailto:support@myworkdrive.com) başvurun.
 
 1. **SAML ile Tek Oturum Açma** sayfasında, **SAML İmza Sertifikası** bölümünde, App **Federation Metadata Url'sini** panonuza kopyalamak için kopyala düğmesini tıklatın.
 

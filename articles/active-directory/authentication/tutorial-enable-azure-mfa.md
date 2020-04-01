@@ -1,6 +1,6 @@
 ---
 title: Azure Multi-Factor Authentication’ı etkinleştirme
-description: Bu öğreticide, bir Kullanıcı grubu için Azure Multi-Factor Authentication etkinleştirmeyi ve oturum açma olayında ikincil faktör isteminin test yapmayı öğreneceksiniz.
+description: Bu eğitimde, bir grup kullanıcı için Azure Çok Faktörlü Kimlik Doğrulaması'nı nasıl etkinleştirdiğinizi ve oturum açma etkinliği sırasında ikincil faktör istemini nasıl test ettiğinizi öğrenirsiniz.
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,121 +11,121 @@ author: iainfoulds
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 253eb23be03c1cc0f2abf4ad1fed734426dc287d
-ms.sourcegitcommit: 812bc3c318f513cefc5b767de8754a6da888befc
+ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 02/12/2020
+ms.lasthandoff: 03/24/2020
 ms.locfileid: "77154826"
 ---
-# <a name="tutorial-secure-user-sign-in-events-with-azure-multi-factor-authentication"></a>Öğretici: Azure Multi-Factor Authentication ile Kullanıcı oturum açma olaylarını güvenli hale getirme
+# <a name="tutorial-secure-user-sign-in-events-with-azure-multi-factor-authentication"></a>Öğretici: Azure Çok Faktörlü Kimlik Doğrulama ile kullanıcı oturum açma etkinliklerini güvenli hale
 
-Multi-Factor Authentication (MFA), bir kullanıcının ek tanımlama biçimleri için oturum açma olayı sırasında istendiği bir işlemdir. Bu istem, cep telefonlarına bir kod girmek veya bir parmak izi taraması sağlamak olabilir. İkinci bir kimlik doğrulaması formu gerektirdiğinde, bu ek faktörün bir saldırganın alması veya yinelemesi kolay olmadığı için güvenlik artar.
+Çok faktörlü kimlik doğrulama (MFA), oturum açma olayı sırasında kullanıcıdan ek tanımlama formları istendiği bir işlemdir. Bu istek, cep telefonlarına bir kod girmek veya parmak izi tadına varmak olabilir. İkinci bir kimlik doğrulama biçimi ne zaman gerekiyorsa, bu ek faktör saldırganın elde etmesi veya çoğaltması kolay bir şey olmadığından güvenlik artırılır.
 
-Azure Multi-Factor Authentication ve koşullu erişim ilkeleri, belirli oturum açma olayları sırasında kullanıcılara MFA 'yı etkinleştirme esnekliği sunar.
+Azure Çok Faktörlü Kimlik Doğrulama ve Koşullu Erişim ilkeleri, belirli oturum açma etkinlikleri sırasında kullanıcılar için MFA'yı etkinleştirme esnekliği sağlar.
 
-Bu öğreticide şunların nasıl yapıldığını öğreneceksiniz:
+Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
-> * Bir Kullanıcı grubu için Azure Multi-Factor Authentication etkinleştirmek üzere koşullu erişim ilkesi oluşturma
-> * MFA için istemde bulunan ilke koşullarını yapılandırın
-> * MFA işlemini Kullanıcı olarak test etme
+> * Bir grup kullanıcı için Azure Çok Faktörlü Kimlik Doğrulaması'nı etkinleştirmek için Koşullu Erişim ilkesi oluşturma
+> * MFA için gereken ilke koşullarını yapılandırma
+> * MFA işlemini kullanıcı olarak test edin
 
-## <a name="prerequisites"></a>Önkoşullar
+## <a name="prerequisites"></a>Ön koşullar
 
-Bu öğreticiyi tamamlayabilmeniz için aşağıdaki kaynaklar ve ayrıcalıklar gereklidir:
+Bu öğreticiyi tamamlamak için aşağıdaki kaynaklara ve ayrıcalıklara ihtiyacınız vardır:
 
-* Azure AD Premium veya deneme lisansı etkin çalışan bir Azure AD kiracısı.
-    * Gerekirse, [ücretsiz olarak bir tane oluşturun](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Azure AD Premium veya deneme lisansı etkin olan çalışan bir Azure AD kiracısı.
+    * Gerekirse, [ücretsiz bir oluşturun.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 * *Genel yönetici* ayrıcalıklarına sahip bir hesap.
-* Yönetici olmayan ve Kullanıcı tarafından bildiğiniz, *testuser*gibi bir parola. Bu öğreticide bu hesabı kullanarak Son Kullanıcı Azure Multi-Factor Authentication deneyimini test edersiniz.
-    * Bir kullanıcı oluşturmanız gerekiyorsa bkz. [hızlı başlangıç: Azure Active Directory yeni kullanıcı ekleme](../add-users-azure-active-directory.md).
-* Yönetici olmayan kullanıcının, *MFA-test-Group*gibi üyesi olduğu bir grup. Bu öğreticide bu grup için Azure Multi-Factor Authentication 'yi etkinleştirirsiniz.
-    * Bir grup oluşturmanız gerekiyorsa bkz. [Grup oluşturma ve Azure Active Directory üye ekleme](../active-directory-groups-create-azure-portal.md).
+* *Testuser*gibi bildiğiniz bir parolaya sahip yönetici olmayan bir kullanıcı. Bu öğreticide bu hesabı kullanarak son kullanıcı Azure Çok Faktörlü Kimlik Doğrulama deneyimini sınarsınız.
+    * Bir kullanıcı oluşturmanız gerekiyorsa, [bkz.](../add-users-azure-active-directory.md)
+* Yönetici olmayan kullanıcının üyesi olduğu *MFA-Test Grubu*gibi bir grup. Bu eğitimde bu grup için Azure Çok Faktörlü Kimlik Doğrulaması'nı etkinleştirin.
+    * Bir grup oluşturmanız gerekiyorsa, [nasıl bir grup oluşturabileceğinize ve Azure Etkin Dizini'ne nasıl üye ekleyeceğinize](../active-directory-groups-create-azure-portal.md)bakın.
 
-## <a name="create-a-conditional-access-policy"></a>Koşullu erişim ilkesi oluşturma
+## <a name="create-a-conditional-access-policy"></a>Koşullu Erişim ilkesi oluşturma
 
-Azure Multi-Factor Authentication 'yi etkinleştirmek ve kullanmak için önerilen yol, koşullu erişim ilkeleriyle birlikte gerçekleştirilir. Koşullu erişim, bir kullanıcıya bir uygulama veya hizmete erişim verilmeden önce olaylara oturum açma ve ek eylemler isteme konusunda tepki veren ilkeler oluşturup tanımlamanızı sağlar.
+Azure Çok Faktörlü Kimlik Doğrulama'yı etkinleştirme ve kullanmanın önerilen yolu Koşullu Erişim ilkeleridir. Koşullu Erişim, oturum açma olaylarına tepki veren ilkeler oluşturmanıza ve tanımlamanıza ve kullanıcıya bir uygulamaya veya hizmete erişim izni verilmeden önce ek eylemler istemenize olanak tanır.
 
-![Koşullu erişimin, oturum açma işleminin güvenliğini sağlamak için nasıl çalıştığı hakkında genel bakış Diyagramı](media/tutorial-enable-azure-mfa/conditional-access-overview.png)
+![Oturum açma işlemini güvence altına almak için Koşullu Erişim'in nasıl çalıştığına genel bakış diyagramı](media/tutorial-enable-azure-mfa/conditional-access-overview.png)
 
-Koşullu erişim ilkeleri, kullanıcıların her yerde ve her yerde üretken olmalarını ve ayrıca kuruluşunuzu korumalarına olanak sağlamak amacıyla, parçalı ve belirli bir amaca sahip olabilir. Bu öğreticide, Kullanıcı Azure portal oturum açtığında MFA istemek için temel bir koşullu erişim ilkesi oluşturalım. Bu serinin sonraki bir öğreticide, Azure Multi-Factor Authentication, risk tabanlı bir koşullu erişim ilkesi kullanarak yapılandırırsınız.
+Koşullu Erişim ilkeleri, kullanıcıların her yerde ve her zaman üretken olmalarını sağlamak ve aynı zamanda kuruluşunuzu korumak amacıyla ayrıntılı ve özel olabilir. Bu öğreticide, bir kullanıcı Azure portalında giriş yaptığında MFA için istekte olacak temel bir Koşullu Erişim ilkesi oluşturalım. Bu serinin daha sonraki bir öğreticisinde, risk tabanlı Koşullu Erişim ilkesini kullanarak Azure Çok Faktörlü Kimlik Doğrulaması'nı yapılandırabilirsiniz.
 
-İlk olarak, bir koşullu erişim ilkesi oluşturun ve Kullanıcı grubunuzu aşağıdaki şekilde atayın:
+İlk olarak, bir Koşullu Erişim ilkesi oluşturun ve test kullanıcı grubunuzu aşağıdaki gibi atayın:
 
-1. *Genel yönetici* izinlerine sahip bir hesap kullanarak [Azure Portal](https://portal.azure.com) oturum açın.
-1. **Azure Active Directory**bulun ve seçin ve ardından sol taraftaki menüden **güvenlik** ' i seçin.
-1. **Koşullu erişim**' i seçin ve **+ Yeni ilke**' yi seçin.
-1. İlke için *MFA pilot*gibi bir ad girin.
-1. **Atamalar**' ın altında **Kullanıcılar ve gruplar**' ı seçin **ve ardından kullanıcıları ve grupları seçin** radyo düğmesini seçin.
-1. **Kullanıcılar ve gruplar**kutusunu işaretleyin, ardından mevcut Azure AD kullanıcılarına ve gruplarına göz atmayı **seçin** .
-1. *MFA-test-Group*gıbı Azure AD grubunuza gözatıp seçin ve ardından **Seç**' i seçin.
+1. *Genel yönetici* izinlerine sahip bir hesabı kullanarak [Azure portalında](https://portal.azure.com) oturum açın.
+1. Azure Active **Directory'yi**arayın ve seçin, ardından sol taraftaki menüden **Güvenlik'i** seçin.
+1. **Koşullu Erişim'i**seçin, ardından **+ Yeni ilkeyi**seçin.
+1. *MFA Pilot*gibi ilke için bir ad girin.
+1. **Atamalar**altında, **Kullanıcıları ve grupları**seçin, ardından kullanıcıları seçin ve radyo yu **seçin.**
+1. Kullanıcılar ve **gruplar**için kutuyu işaretleyin, ardından kullanılabilir Azure REKLAM kullanıcılarına ve gruplarına göz atmak için **seçin.**
+1. *MFA-Test Grubu*gibi Azure REKLAM grubuna göz atın ve seçin, ardından **Seç'i**seçin.
 
     [![](media/tutorial-enable-azure-mfa/select-group-for-conditional-access-cropped.png "Select your Azure AD group to use with the Conditional Access policy")](media/tutorial-enable-azure-mfa/select-group-for-conditional-access.png#lightbox)
 
-1. Gruba koşullu erişim ilkesini uygulamak için **bitti**' yi seçin.
+1. Grup için Koşullu Erişim ilkesini uygulamak için **Bitti'yi**seçin.
 
-## <a name="configure-the-conditions-for-multi-factor-authentication"></a>Multi-Factor Authentication için koşulları yapılandırma
+## <a name="configure-the-conditions-for-multi-factor-authentication"></a>Çok faktörlü kimlik doğrulama için koşulları yapılandırma
 
-Oluşturulan koşullu erişim ilkesi ve Kullanıcı grubu atanmış bir test grubu ile, artık ilkeyi tetikleyen bulut uygulamalarını veya eylemlerini tanımlayın. Bu bulut uygulamaları veya eylemleri, daha fazla işlem gerektirirken MFA için istemde bulunan senaryolardır. Örneğin, bir Finans uygulamasına erişim veya yönetim araçlarının kullanımı için ek bir doğrulama istemi olması gerektiğine karar verebilirsiniz.
+Oluşturulan Koşullu Erişim ilkesi ve atanan bir test kullanıcı grubu yla, artık ilkeyi tetikleyen bulut uygulamalarını veya eylemlerini tanımlayın. Bu bulut uygulamaları veya eylemleri, MFA için istem gibi ek işlem gerektirdiğine karar verdiğiniz senaryolardır. Örneğin, bir finansal uygulamaya erişimin veya yönetim araçlarının kullanımının ek doğrulama istemi olarak gerektirdiğine karar verebilirsiniz.
 
-Bu öğretici için, koşullu erişim ilkesini Kullanıcı Azure portal oturum açtığında MFA gerektirecek şekilde yapılandırın.
+Bu öğretici için, Koşullu Erişim ilkesini, bir kullanıcı Azure portalında kaydolduğunda MFA gerektirecek şekilde yapılandırın.
 
-1. **Bulut uygulamaları veya eylemler**' i seçin. Koşullu erişim ilkesini *tüm bulut uygulamalarına* uygulamayı seçebilir veya *uygulamaları seçebilirsiniz*. Esneklik sağlamak için, belirli uygulamaları ilkeden de dışlayabilirsiniz.
+1. **Bulut uygulamaları veya eylemleri**’ni seçin. Koşullu Erişim ilkesini *Tüm bulut uygulamalarına* veya Select *uygulamalarına*uygulamayı seçebilirsiniz. Esneklik sağlamak için, belirli uygulamaları ilkeden de hariç tutabilirsiniz.
 
-    Bu öğretici için, *dahil et* sayfasında, **uygulamaları seçin** radyo düğmesini seçin.
+    Bu öğretici için, *Ekle* **sayfasında, uygulamaları seç** radyo düğmesini seçin.
 
-1. **Seç**' i seçin, ardından kullanılabilecek kullanılabilir oturum açma olaylarının listesine gözatabilirler.
+1. **Seç'i**seçin, ardından kullanılabilir oturum açma olayları listesine göz atın.
 
-    Bu öğreticide, ilkenin Azure portal oturum açma olaylarına uygulanması için **Microsoft Azure Yönetim** ' i seçin.
+    Bu öğretici için, ilkenin Azure portalında oturum açma etkinlikleri için geçerli olması için **Microsoft Azure Yönetimi'ni** seçin.
 
-1. Uygulama Seç ' i uygulamak için **Seç**' i ve sonra **bitti**' yi seçin.
+1. Seçili uygulamaları uygulamak için **Seç**ve **Bitti'yi**seçin.
 
-    ![Koşullu erişim ilkesine dahil edilecek Microsoft Azure yönetim uygulamasını seçin](media/tutorial-enable-azure-mfa/select-azure-management-app.png)
+    ![Koşullu Erişim ilkesine eklemek için Microsoft Azure Yönetimi uygulamasını seçin](media/tutorial-enable-azure-mfa/select-azure-management-app.png)
 
-Erişim denetimleri, kullanıcının onaylanan bir istemci uygulamasına ihtiyacı olan veya karma Azure AD 'ye katılmış bir cihaz kullanan bir kullanıcıya erişim izni verilmesi için gerekli olan gereksinimleri tanımlamanızı sağlar. Bu öğreticide, Azure portal oturum açma olayı sırasında MFA gerektirecek şekilde erişim denetimlerini yapılandırın.
+Erişim denetimleri, onaylanmış bir istemci uygulamasına ihtiyaç duyma veya Karma Azure AD'si birleştirilmiş bir aygıtı kullanma gibi bir kullanıcıya erişim izni verilmesi için gereksinimleri tanımlamanıza izin verir. Bu öğreticide, azure portalında oturum açma etkinliği sırasında erişim denetimlerini MFA gerektirecek şekilde yapılandırın.
 
-1. *Erişim denetimleri*altında, **izin**ver ' i seçin ve ardından **erişim izni ver** düğmesinin seçili olduğundan emin olun.
-1. **Multi-Factor Authentication gerektir**kutusunu işaretleyin ve ardından **Seç**' i seçin.
+1. *Access denetimleri* **altında, Grant'i**seçin, ardından **Erişim Eki** Radyo düğmesinin seçildiğinden emin olun.
+1. **Çok faktörlü kimlik doğrulamayı gerektir**' i için kutuyu işaretleyin , ardından **Seç'i**seçin.
 
-Koşullu erişim ilkeleri *yalnızca raporun* kullanıcıları nasıl etkilediğini görmek istiyorsanız veya şu anda kullanım ilkesini kullanmak Istemiyorsanız *devre dışı* olarak ayarlanabilir. Bu öğretici için Kullanıcı bir test grubu hedeflediğinden, ilkeyi etkinleştirip Azure Multi-Factor Authentication test etmenizi sağlar.
+Koşullu Erişim ilkeleri, yapılandırmanın kullanıcıları nasıl etkileyeceğini görmek istiyorsanız *yalnızca Rapor* olarak ayarlanabilir veya şu anda ilkeyi kullanmak istemiyorsanız *Kapalı* dır. Bu öğretici için bir test kullanıcı grubu hedeflenmiş olarak, ilkeyi etkinleştirin ve ardından Azure Çok Faktörlü Kimlik Doğrulaması'nı sınayın.
 
-1. *Ilkeyi etkinleştir* **' i açık**yap olarak ayarlayın.
-1. Koşullu erişim ilkesini uygulamak için **Oluştur**' u seçin.
+1. Etkinleştir *ilkesini* **A'ya**ayarlama
+1. Koşullu Erişim ilkesini uygulamak için **Oluştur'u**seçin.
 
 ## <a name="test-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication'ı test etme
 
-Koşullu erişim ilkenizi ve Azure Multi-Factor Authentication işlemini görelim. İlk olarak, MFA gerektirmeyen bir kaynakta aşağıdaki gibi oturum açın:
+Koşullu Erişim ilkenizi ve Azure Çok Faktörlü Kimlik Doğrulama'yı iş başında görelim. İlk olarak, MFA gerektirmeyen bir kaynakta aşağıdaki gibi oturum açın:
 
-1. InPrivate veya ınbilito modunda yeni bir tarayıcı penceresi açın ve [https://account.activedirectory.windowsazure.com](https://account.activedirectory.windowsazure.com) gidin
-1. Yönetici olmayan test Kullanıcı ile, *testuser*gibi oturum açın. MFA 'yı tamamlamanızı isteyen bir istem yoktur.
+1. InPrivate veya gizli modda yeni bir tarayıcı penceresi açın ve[https://account.activedirectory.windowsazure.com](https://account.activedirectory.windowsazure.com)
+1. *Test kullanıcısı*gibi yönetici olmayan test kullanıcınızla oturum açın. MFA'yı tamamlamanız için bir istek yok.
 1. Tarayıcı penceresini kapatın.
 
-Şimdi Azure portal oturum açın. Azure portal, koşullu erişim ilkesinde ek doğrulama gerektirecek şekilde yapılandırıldığından, bir Azure Multi-Factor Authentication istemi alırsınız.
+Şimdi Azure portalında oturum açın. Azure portalı Koşullu Erişim ilkesinde ek doğrulama gerektirecek şekilde yapılandırıldıkça, bir Azure Çok Faktörlü Kimlik Doğrulama istemi alırsınız.
 
-1. InPrivate modunda veya gizli modda yeni bir tarayıcı penceresi açın ve [https://portal.azure.com](https://portal.azure.com) adresine gidin.
-1. Yönetici olmayan test Kullanıcı ile, *testuser*gibi oturum açın. Azure Multi-Factor Authentication için kaydolmanız ve kullanmanız gerekir. İşlemi tamamlayıp Azure portal başarıyla oturum açabildiğinizi doğrulamak için istemleri izleyin.
+1. InPrivate veya gizli modda yeni bir tarayıcı penceresi [https://portal.azure.com](https://portal.azure.com)açın ve göz atın.
+1. *Test kullanıcısı*gibi yönetici olmayan test kullanıcınızla oturum açın. Azure Çok Faktörlü Kimlik Doğrulaması için kaydolmanız ve bunları kullanmanız gerekir. İşlemi tamamlamak ve Azure portalında başarılı bir şekilde oturum açtığınızı doğrulamak için istemleri izleyin.
 
-    ![Oturum açmak için, tarayıcı istemlerini izleyin ve ardından kayıtlı Multi-Factor Authentication komut isteminde](media/tutorial-enable-azure-mfa/azure-multi-factor-authentication-browser-prompt.png)
+    ![Tarayıcı istemlerini izleyin ve ardından oturum açmanız için kayıtlı çok faktörlü kimlik doğrulama isteminizde](media/tutorial-enable-azure-mfa/azure-multi-factor-authentication-browser-prompt.png)
 
 1. Tarayıcı penceresini kapatın.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 
-Bu öğreticinin bir parçası olarak yapılandırılmış Azure Multi-Factor Authentication etkinleştirmek için artık koşullu erişim ilkesini kullanmak istemiyorsanız, aşağıdaki adımları kullanarak ilkeyi silin:
+Bu öğreticinin bir parçası olarak yapılandırılan Azure Çok Faktörlü Kimlik Doğrulaması'nı etkinleştirmek için Koşullu Erişim ilkesini artık kullanmak istemiyorsanız, aşağıdaki adımları kullanarak ilkeyi silin:
 
-1. [Azure Portal](https://portal.azure.com)’ında oturum açın.
-1. **Azure Active Directory**bulun ve seçin ve ardından sol taraftaki menüden **güvenlik** ' i seçin.
-1. **Koşullu erişim**' i seçin ve ardından, *MFA pilot* gibi oluşturduğunuz ilkeyi seçin
-1. **Sil**' i seçin ve ilkeyi silmek istediğinizi onaylayın.
+1. [Azure portalında](https://portal.azure.com)oturum açın.
+1. Azure Active **Directory'yi**arayın ve seçin, ardından sol taraftaki menüden **Güvenlik'i** seçin.
+1. **Koşullu erişimi**seçin, ardından *MFA Pilot* gibi oluşturduğunuz ilkeyi seçin
+1. **Sil'i**seçin, ardından ilkeyi silmek istediğinizi onaylayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide, seçili bir Kullanıcı grubu için koşullu erişim ilkelerini kullanarak Azure Multi-Factor Authentication 'yi etkinleştirdiniz. Şunları öğrendiniz:
+Bu eğitimde, seçili bir kullanıcı grubu için Koşullu Erişim ilkelerini kullanarak Azure Çok Faktörlü Kimlik Doğrulaması'nı etkinleştirdin. Şunları öğrendiniz:
 
 > [!div class="checklist"]
-> * Azure AD kullanıcıları grubu için Azure Multi-Factor Authentication etkinleştirmek üzere koşullu erişim ilkesi oluşturma
-> * MFA için istemde bulunan ilke koşullarını yapılandırın
-> * MFA işlemini Kullanıcı olarak test etme
+> * Bir grup Azure AD kullanıcısı için Azure Çok Faktörlü Kimlik Doğrulaması'nı etkinleştirmek için Koşullu Erişim ilkesi oluşturun
+> * MFA için gereken ilke koşullarını yapılandırma
+> * MFA işlemini kullanıcı olarak test edin
 
 > [!div class="nextstepaction"]
-> [Self servis parola sıfırlama için parola geri yazmayı etkinleştirme (SSPR)](tutorial-enable-writeback.md)
+> [Self servis parola sıfırlama (SSPR) için parola yazma yı etkinleştirme](tutorial-enable-writeback.md)

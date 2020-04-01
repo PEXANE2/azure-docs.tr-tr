@@ -13,17 +13,17 @@ ms.date: 08/28/2019
 ms.author: ryanwi
 ms.reviewer: sureshja
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 9fd5fa943468924c289587285fe7986a73c21dba
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 701aadcbfe03c82f6a4c341ef9698f8a1bf1a347
+ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77161350"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80476595"
 ---
 # <a name="how-to-use-the-azure-ad-graph-api"></a>Nasıl kullanılır: Azure AD Grafiği API'sini kullanın
 
 > [!IMPORTANT]
-> Azure Active Directory (Azure AD) kaynaklarına erişmek için Azure AD Graph API yerine [Microsoft Graph'ı](https://developer.microsoft.com/graph) kullanmanızı şiddetle öneririz. Geliştirme çalışmalarımız şu anda Microsoft Graph üzerine yoğunlaşmıştır ve Azure AD Graph API’si için başka bir geliştirme planlanmamaktadır. Azure AD Grafiği API'sinin hala uygun olabileceği çok sınırlı sayıda senaryo vardır; daha fazla bilgi için [Microsoft Graph veya Azure AD Graph](https://dev.office.com/blogs/microsoft-graph-or-azure-ad-graph) blog gönderisine bakın ve Azure AD Grafiği uygulamalarını Microsoft [Graph'a geçirin.](https://docs.microsoft.com/graph/migrate-azure-ad-graph-overview)
+> Azure Active Directory (Azure AD) kaynaklarına erişmek için Azure AD Graph API yerine [Microsoft Graph'ı](https://developer.microsoft.com/graph) kullanmanızı şiddetle öneririz. Geliştirme çalışmalarımız şu anda Microsoft Graph üzerine yoğunlaşmıştır ve Azure AD Graph API’si için başka bir geliştirme planlanmamaktadır. Azure AD Grafiği API'sinin hala uygun olabileceği çok sınırlı sayıda senaryo vardır; daha fazla bilgi için [Microsoft Graph veya Azure AD Graph](https://developer.microsoft.com/office/blogs/microsoft-graph-or-azure-ad-graph/) blog gönderisine bakın ve Azure AD Grafiği uygulamalarını Microsoft [Graph'a geçirin.](https://docs.microsoft.com/graph/migrate-azure-ad-graph-overview)
 
 Azure AD Grafiği API'si, OData REST API uç noktaları aracılığıyla Azure AD'ye programlı erişim sağlar. Uygulamalar, dizin verileri ve nesneler üzerinde oluşturma, okuma, güncelleştirme ve silme (CRUD) işlemlerini gerçekleştirmek için Azure AD Graph API'sını kullanabilir. Örneğin, yeni bir kullanıcı oluşturmak, kullanıcının özelliklerini görüntülemek veya güncellemek, kullanıcının parolasını değiştirmek, rol tabanlı erişim için grup üyeliğini denetlemek, kullanıcıyı devre dışı kalımveya silmek için Azure AD Graph API'yi kullanabilirsiniz. Azure AD Grafiği API özellikleri ve uygulama senaryoları hakkında daha fazla bilgi için [Azure AD Grafiği API'si](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog) ve [Azure AD Grafiği API ön koşulları'na](https://msdn.microsoft.com/library/hh974476.aspx)bakın. Azure AD Graph API yalnızca iş veya okul/kuruluş hesaplarıyla çalışır.
 

@@ -9,12 +9,12 @@ ms.author: magoedte
 keywords: azure otomasyonu, DSC, powershell, istenilen durum yapılandırması, güncelleme yönetimi, değişiklik izleme, envanter, runbooks, python, grafik, hibrid
 ms.date: 03/24/2020
 ms.topic: overview
-ms.openlocfilehash: 85a6f8dcb9f551d81a607adc9ae482f4025d804f
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: 5ffe845178fffc252e95794bfb58801c9bff16a7
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80366359"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411221"
 ---
 # <a name="what-is-azure-arc-for-servers-preview"></a>Sunucular için Azure Arc nedir (önizleme)
 
@@ -147,7 +147,7 @@ Windows ve Linux için Azure Bağlantılı Makine aracısı, gereksinimlerinize 
 
 ### <a name="agent-status"></a>Aracı durumu
 
-Bağlı Makine aracısı her 5 dakikada bir servise düzenli bir sinyal iletisi gönderir. Biri 15 dakika boyunca alınmazsa, makine çevrimdışı olarak kabul edilir ve durum otomatik olarak portalda **Bağlantı kesilir.** Bağlı Makine aracısından sonraki bir sinyal iletisi alındıktan sonra, durumu otomatik olarak **Bağlı**olarak değiştirilir.
+Bağlı Makine aracısı her 5 dakikada bir servise düzenli bir sinyal iletisi gönderir. Hizmet bir makineden bu sinyal iletilerini almayı durdurursa, bu makine çevrimdışı olarak kabul edilir ve durum otomatik olarak 15 ila 30 dakika içinde portalda **Bağlantı kesilir.** Bağlı Makine aracısından sonraki bir sinyal iletisi alındıktan sonra, durumu otomatik olarak **Bağlı**olarak değiştirilir.
 
 ## <a name="install-and-configure-agent"></a>Aracıyı yükleme ve yapılandırma
 

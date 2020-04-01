@@ -4,12 +4,12 @@ description: Azure Kubernetes Hizmeti'nde (AKS) bir küme için birden çok dü�
 services: container-service
 ms.topic: article
 ms.date: 03/10/2020
-ms.openlocfilehash: 2045cb9a175bead3abf5b53120b9fe381a17b04b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 607419787bc0bab243d6cc2b8cbaa0ec22921e87
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80047718"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80422322"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Hizmeti'nde (AKS) bir küme için birden çok düğüm havuzu oluşturma ve yönetme
 
@@ -33,8 +33,8 @@ Birden çok düğüm havuzunu destekleyen AKS kümeleri oluştururken ve yöneti
 * AKS kümesi birden fazla düğüm havuzları kullanmak için Standart SKU yük dengeleyici kullanmanız gerekir, özellik Temel SKU yük dengeleyicileri ile desteklenmez.
 * AKS kümesi düğümler için sanal makine ölçek kümeleri kullanmalıdır.
 * Düğüm havuzunun adı yalnızca küçük alfasayısal karakterler içerebilir ve küçük harfle başlamalıdır. Linux düğümü havuzları için uzunluk 1 ile 12 karakter arasında olmalıdır, Windows düğüm havuzları için uzunluk 1 ile 6 karakter arasında olmalıdır.
-* Tüm düğüm havuzları aynı sanal ağ ve alt ağda olmalıdır.
-* Küme oluşturma zamanında birden çok düğüm havuzu oluştururken, düğüm havuzları tarafından kullanılan tüm Kubernetes sürümleri kontrol düzlemi için ayarlanan sürüm le eşleşmelidir. Bu sürüm, küme her düğüm havuzu işlemleri kullanılarak sağlandıktan sonra güncelleştirilebilir.
+* Tüm düğüm havuzları aynı sanal ağda olmalıdır.
+* Küme oluşturma zamanında birden çok düğüm havuzu oluştururken, düğüm havuzları tarafından kullanılan tüm Kubernetes sürümleri kontrol düzlemi için ayarlanan sürüm le eşleşmelidir. Bu, küme her düğüm havuzu işlemleri kullanılarak sağlandıktan sonra güncelleştirilebilir.
 
 ## <a name="create-an-aks-cluster"></a>AKS kümesi oluşturma
 
@@ -120,6 +120,29 @@ Aşağıdaki örnek çıktı, düğüm havuzunda üç düğümle *minodehavuzunu
 
 > [!TIP]
 > Düğüm havuzu eklediğinizde *VmSize* belirtilmemişse, varsayılan boyut Windows düğüm havuzları için *Standard_DS2_v3* ve Linux düğüm havuzları için *Standard_DS2_v2.* *OrchestratorVersion* belirtilmemişse, varsayılan olarak denetim düzlemi ile aynı sürüme itilir.
+
+### <a name="add-a-node-pool-with-a-unique-subnet-preview"></a>Benzersiz bir alt netiçeren bir düğüm havuzu ekleme (önizleme)
+
+İş yükü, mantıksal yalıtım için kümedüğümlerinin ayrı havuzlara bölünmesini gerektirebilir. Bu yalıtım kümedeki her düğüm havuzuna adanmış ayrı alt ağlarla desteklenebilir. Bu, düğüm havuzları arasında bölünecek bitişik olmayan sanal ağ adresi alanına sahip olmak gibi gereksinimleri ele alabilir.
+
+#### <a name="limitations"></a>Sınırlamalar
+
+* Düğüm havuzlarına atanan tüm alt ağlar aynı sanal ağa ait olmalıdır.
+* CoreDNS üzerinden DNS çözümü gibi kritik işlevsellik sağlamak için sistem bölmelerinin kümedeki tüm düğümlere erişimi olmalıdır.
+* Önizleme sırasında düğüm havuzu başına benzersiz bir alt ağ ataması Azure CNI ile sınırlıdır.
+* Önizleme sırasında düğüm başına benzersiz bir alt ağ havuzuna sahip ağ ilkelerinin kullanılması desteklenmez.
+
+Özel bir alt netiçeren bir düğüm havuzu oluşturmak için, düğüm havuzu oluştururken alt kaynak kimliğini ek bir parametre olarak geçirin.
+
+```azurecli-interactive
+az aks nodepool add \
+    --resource-group myResourceGroup \
+    --cluster-name myAKSCluster \
+    --name mynodepool \
+    --node-count 3 \
+    --kubernetes-version 1.15.5
+    --vnet-subnet-id <YOUR_SUBNET_RESOURCE_ID>
+```
 
 ## <a name="upgrade-a-node-pool"></a>Düğüm havuzuyükseltme
 
@@ -695,18 +718,22 @@ az group deployment create \
 
 Kaynak Yöneticisi şablonunuzda tanımladığınız düğüm havuzu ayarlarına ve işlemlerine bağlı olarak AKS kümenizi güncelleştirmek birkaç dakika sürebilir.
 
-## <a name="assign-a-public-ip-per-node-in-a-node-pool"></a>Düğüm havuzunda düğüm başına ortak IP atama
+## <a name="assign-a-public-ip-per-node-for-a-node-pool-preview"></a>Düğüm havuzu için düğüm başına ortak BIR IP atama (önizleme)
 
 > [!WARNING]
 > Düğüm başına genel BIR IP atama önizlemesi sırasında, VM sağlama ile çelişen olası yük dengeleyici kuralları nedeniyle *AKS'deki Standart Yük Dengeleyici SKU* ile kullanılamaz. Bu sınırlamanın bir sonucu olarak, Windows aracı havuzları bu önizleme özelliğiyle desteklenmez. Önizleme sırasında, düğüm başına genel bir IP atamanız gerekiyorsa *Temel Yük Dengeleyici SKU'yu* kullanmanız gerekir.
 
-AKS düğümleri iletişim için kendi genel IP adreslerini gerektirmez. Ancak, bazı senaryolar, düğüm havuzundaki düğümlerin kendi genel IP adreslerine sahip olmasını gerektirebilir. Bir örnek, bir konsolun atlamaları en aza indirmek için bulut sanal makinesine doğrudan bağlantı yapması gereken oyundur. Bu senaryo ayrı bir önizleme özelliği, Düğüm Genel IP (önizleme) için kaydolmak elde edilebilir.
+AKS düğümleri iletişim için kendi genel IP adreslerini gerektirmez. Ancak, senaryolar kendi özel genel IP adreslerini almak için düğüm havuzunda düğümler gerektirebilir. Sık karşılaşılan bir senaryo, bir konsolun atlamaları en aza indirmek için bulut sanal makinesine doğrudan bağlantı kurması gereken oyun iş yükleri içindir. Bu senaryo, aks'te bir önizleme özelliği olan Node Public IP (önizleme) için kaydolarak elde edilebilir.
+
+Aşağıdaki Azure CLI komutunu vererek Düğüm Genel IP özelliğine kaydolun.
 
 ```azurecli-interactive
 az feature register --name NodePublicIPPreview --namespace Microsoft.ContainerService
 ```
 
-Başarılı bir kayıttan sonra, [yukarıdaki](#manage-node-pools-using-a-resource-manager-template) yle aynı yönergeleri izleyerek bir `enableNodePublicIP` Azure Kaynak Yöneticisi şablonu dağıtın ve boolean değer özelliğini agentPoolProfiles'a ekleyin. Değeri varsayılan `true` olarak ayarla, belirtilmemiş gibi `false` ayarlanır. Bu özellik, yalnızca oluşturma zamanı özelliğidir ve 2019-06-01'in en az API sürümünü gerektirir. Bu, hem Linux hem de Windows düğüm havuzlarına uygulanabilir.
+Başarılı bir kayıttan sonra, [yukarıdaki](#manage-node-pools-using-a-resource-manager-template) yle aynı yönergeleri izleyerek bir `enableNodePublicIP` Azure Kaynak Yöneticisi şablonu dağıtın ve boolean özelliğini agentPoolProfiles'a ekleyin. Değeri varsayılan `true` olarak ayarla, belirtilmemiş gibi `false` ayarlanır. 
+
+Bu özellik, yalnızca oluşturma zamanı özelliğidir ve 2019-06-01'in en az API sürümünü gerektirir. Bu, hem Linux hem de Windows düğüm havuzlarına uygulanabilir.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

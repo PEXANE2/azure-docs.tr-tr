@@ -11,44 +11,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/17/2019
+ms.date: 04/01/2020
 ms.author: kumud
-ms.openlocfilehash: 96ede56e7b21d2447d238306e00f2c4fbca56f04
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d6b61e27324220fc78ace3e964aed98f9ba114d3
+ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76122262"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80420942"
 ---
-# <a name="deploy-an-ipv6-dual-stack-application-in-azure---powershell-preview"></a>Azure'da Bir IPv6 çift yığın uygulaması dağıtma - PowerShell (Önizleme)
+# <a name="deploy-an-ipv6-dual-stack-application-in-azure---powershell"></a>Azure'da Bir IPv6 çift yığın uygulaması dağıtma - PowerShell
 
-Bu makalede, Azure'da çift yığınlı sanal ağ ve alt ağ, çift (IPv4 + IPv6) ön uç yapılandırmaları olan standart yük dengeleyicisi, NIC'lere sahip VM'ler içeren Standart Yük Dengeleyicisi kullanılarak bir çift yığın (IPv4 + IPv6) uygulamasının nasıl dağıtılanabileceğinizi gösterir. çift IP yapılandırması, ağ güvenlik grubu ve ortak IP'ler.
-
-> [!Important]
-> Azure Sanal Ağı için IPv6 desteği şu anda genel önizlemededir. Bu önizleme bir hizmet düzeyi sözleşmesi olmadan sağlanır ve üretim iş yüklerinde kullanılması önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Ayrıntılar için bkz. [Microsoft Azure Önizlemeleri için Ek Kullanım Koşulları](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+Bu makalede, Azure'da çift yığınlı sanal ağ ve alt ağ, çift (IPv4 + IPv6) ön uç yapılandırmalı standart yük dengeleyicisi, çift IP yapılandırmasına sahip NIC'lere sahip VM'ler, ağ güvenlik grubu ve genel IP'ler içeren Standart Yük Dengeleyicisi'ni kullanarak bir çift yığın (IPv4 + IPv6) uygulamasını nasıl dağıtabileceğiniz gösterilmektedir.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 PowerShell'i yerel olarak yüklemeyi ve kullanmayı seçerseniz, bu makalede Azure PowerShell modülü sürümü 6.9.0 veya sonrası gerekir. Yüklü sürümü bulmak için `Get-Module -ListAvailable Az` komutunu çalıştırın. Yükseltmeniz gerekirse, bkz. [Azure PowerShell modülünü yükleme](/powershell/azure/install-Az-ps). PowerShell'i yerel olarak çalıştırıyorsanız Azure bağlantısı oluşturmak için `Connect-AzAccount` komutunu da çalıştırmanız gerekir.
-
-## <a name="prerequisites"></a>Ön koşullar
-Azure'da bir çift yığın uygulaması dağıtmadan önce, aboneliğinizi bu önizleme özelliği için aşağıdaki Azure PowerShell'i kullanarak yapılandırmanız gerekir:
-
-Aşağıdaki gibi kaydolun:
-```azurepowershell
-Register-AzProviderFeature -FeatureName AllowIPv6VirtualNetwork -ProviderNamespace Microsoft.Network
-Register-AzProviderFeature -FeatureName AllowIPv6CAOnStandardLB -ProviderNamespace Microsoft.Network
-```
-Özellik kaydının tamamlanması 30 dakika kadar sürer. Aşağıdaki Azure PowerShell komutunu çalıştırarak kayıt durumunuzu kontrol edebilirsiniz: Kaydı aşağıdaki gibi kontrol edin:
-```azurepowershell
-Get-AzProviderFeature -FeatureName AllowIPv6VirtualNetwork -ProviderNamespace Microsoft.Network
-Get-AzProviderFeature -FeatureName AllowIPv6CAOnStandardLB -ProviderNamespace Microsoft.Network
-```
-Kayıt tamamlandıktan sonra aşağıdaki komutu çalıştırın:
-
-```azurepowershell
-Register-AzResourceProvider -ProviderNamespace Microsoft.Network
-```
 
 ## <a name="create-a-resource-group"></a>Kaynak grubu oluşturma
 
@@ -273,7 +251,7 @@ $vnet = New-AzVirtualNetwork `
     -PrivateIpAddressVersion IPv4 `
     -LoadBalancerBackendAddressPool $backendPoolv4 `
     -PublicIpAddress  $RdpPublicIP_1
-    
+      
   $Ip6Config=New-AzNetworkInterfaceIpConfig `
     -Name dsIp6Config `
     -Subnet $vnet.subnets[0] `
@@ -374,8 +352,6 @@ Azure portalındaki IPv6 çift yığın sanal ağını aşağıdaki gibi görün
 
   ![Azure'da IPv6 çift yığın sanal ağ](./media/virtual-network-ipv4-ipv6-dual-stack-powershell/dual-stack-vnet.png)
 
-> [!NOTE]
-> Azure için IPv6 sanal ağı, bu önizleme sürümü için salt okunur olarak Azure portalında kullanılabilir.
 
 ## <a name="clean-up-resources"></a>Kaynakları temizleme
 

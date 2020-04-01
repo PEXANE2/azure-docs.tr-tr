@@ -1,22 +1,22 @@
 ---
 title: Facebook kimlik doğrulamasını yapılandırma
-description: App Service uygulamanız için bir kimlik sağlayıcısı olarak Facebook kimlik doğrulamasını nasıl yapılandıracaksınız öğrenin.
+description: App Service veya Azure İşlevleri uygulamanız için kimlik sağlayıcısı olarak Facebook kimlik doğrulamasını nasıl yapılandıracaksınız öğrenin.
 ms.assetid: b6b4f062-fcb4-47b3-b75a-ec4cb51a62fd
 ms.topic: article
 ms.date: 06/06/2019
-ms.custom: seodec18
-ms.openlocfilehash: cd9c8a1bab3616b9b4eb1fe97ee3a9b2307ba77b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 9a2d390a5647ed90284730e9186e981b8e699d10
+ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74671949"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80438013"
 ---
-# <a name="configure-your-app-service-app-to-use-facebook-login"></a>Facebook oturumunu kullanacak Şekilde Uygulama Hizmeti uygulamanızı yapılandırın
+# <a name="configure-your-app-service-or-azure-functions-app-to-use-facebook-login"></a>Facebook oturumunu kullanmak için Uygulama Hizmetinizi veya Azure İşlevleri uygulamanızı yapılandırın
 
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
-Bu makalede, Azure Uygulama Hizmeti'nin Facebook'u kimlik doğrulama sağlayıcısı olarak kullanmak üzere nasıl yapılandırılabildiğiniz gösterilmektedir.
+Bu makalede, Facebook'u kimlik doğrulama sağlayıcısı olarak kullanmak üzere Azure Uygulama Hizmeti veya Azure İşlevleri nasıl yapılandırılabildiğiniz gösterilmektedir.
 
 Bu makaledeki yordamı tamamlamak için, doğrulanmış bir e-posta adresi ve cep telefonu numarası olan bir Facebook hesabınız gerekir. Yeni bir Facebook hesabı oluşturmak için [facebook.com]gidin.
 
@@ -78,4 +78,4 @@ Artık uygulamanızda kimlik doğrulama için Facebook'u kullanmaya hazırsını
 [Facebook Geliştiricileri]: https://go.microsoft.com/fwlink/p/?LinkId=268286
 [facebook.com]: https://go.microsoft.com/fwlink/p/?LinkId=268285
 [Get started with authentication]: /en-us/develop/mobile/tutorials/get-started-with-users-dotnet/
-[Azure portalında]: https://portal.azure.com/
+[Azure portal]: https://portal.azure.com/
