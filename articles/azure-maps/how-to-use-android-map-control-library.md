@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 55bfb5030d0a168e7556240212fcd5f3be30a289
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6e0f0f311b7ec8adae6ddb25e01046141adadfa4
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80335358"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548548"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>Azure Haritalar Android SDK ile başlarken
 
@@ -267,6 +267,29 @@ Burada , "fr-FR" olarak ayarlanmış dil ve "otomatik" olarak ayarlanmış bölg
 </center>
 
 Desteklenen dillerin ve bölgesel görünümlerin tam listesi [burada](supported-languages.md)belgelenmiştir.
+
+## <a name="navigating-the-map"></a>Haritada gezinme
+
+Haritanın yakınlaştırılabildiği, kaydırılabildiği, döndürülebileceği ve pitched edilebildiği birkaç farklı yol vardır. Aşağıdaki ayrıntıları harita gezinmek için tüm farklı yolları.
+
+**Haritayı yakınlaştır**
+
+- Haritaya iki parmağınızla dokunun ve yakınlaştırmak için parmaklarınızı uzaklaştırmak veya yaymak için birbirine sıkıştırın.
+- Bir seviyeyi yakınlaştırmak için haritaya çift dokunun.
+- Haritayı bir seviye yi uzaklaştırmak için iki parmağınızla çift dokunun.
+- İki kez dokunun; ikinci dokunuşta parmağınızı haritada tutun ve yakınlaştırmak için yukarı sürükleyin veya uzaklaştırmak için aşağı sürükleyin.
+
+**Haritayı kaydır**
+
+- Haritaya dokunun ve herhangi bir yöne sürükleyin.
+
+**Haritayı döndürme**
+
+- Haritaya iki parmağınızla dokunun ve döndürün.
+
+**Haritayı pitch**
+
+- Haritaya iki parmağınızla dokunun ve yukarı veya aşağı sürükleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

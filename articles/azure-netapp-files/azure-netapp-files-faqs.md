@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/25/2020
+ms.date: 04/01/2020
 ms.author: b-juche
-ms.openlocfilehash: 79c23c49cbf3c869b41e5a2dbfc6ec0aaa93e4ae
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 59453dbb9617f5a2ddbdca08709747b11a688560
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80258184"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80547095"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Azure NetApp Dosyaları Hakkında SSS
 
@@ -144,6 +144,11 @@ Azure NetApp Files, Active Directory Domain Services'ın Windows Server 2008r2SP
 ### <a name="why-does-the-available-space-on-my-smb-client-not-show-the-provisioned-size"></a>Kobİ istemcimdeki kullanılabilir alan neden verilen boyutu göstermiyor?
 
 Kobİ istemcisi tarafından bildirilen birim boyutu, Azure NetApp Dosyaları biriminin büyüyebileceği maksimum boyutdur. SMB istemcide gösterildiği gibi Azure NetApp Dosyaları biriminin boyutu, birimin kotasını veya boyutunu yansıtmaz. Azure NetApp Dosyaları ses boyutunu veya kotasını Azure portalı veya API üzerinden alabilirsiniz.
+
+### <a name="does-azure-netapp-files-support-kerberos-encryption"></a>Azure NetApp Dosyaları Kerberos şifrelemeyi destekliyor mu?
+
+Evet, varsayılan olarak Azure NetApp Files, hizmet ve hedeflenen Active Directory etki alanı denetleyicileri arasındaki trafik için hem AES-128 hem de AES-256 şifrelemesini destekler. Bkz. Gereksinimler [için Azure NetApp Dosyaları için bir Kobİ birimi oluştur.](azure-netapp-files-create-volumes-smb.md) 
+
 <!--
 ### Does Azure NetApp Files support LDAP signing? 
 

@@ -1,6 +1,6 @@
 ---
 title: Apache Kafka için Akka Akışlarını Kullanma - Azure Etkinlik Hub'ları| Microsoft Dokümanlar
-description: Bu makalede, Akka Akışları'nın Apache Kafka etkin leştirilmiş bir Azure etkinlik hub'ına nasıl bağlanılabildiği hakkında bilgi verilmektedir.
+description: Bu makalede, Akka Akışları'nın bir Azure etkinlik merkezine nasıl bağlanılacak larına ilişkin bilgiler verilmektedir.
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
@@ -13,12 +13,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 729e78959f93b1aa1563a049a64c553929c4f97e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c53fcc7b4b99e77237ba7ea9219aef4182f2af61
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80283642"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521833"
 ---
 # <a name="using-akka-streams-with-event-hubs-for-apache-kafka"></a>Apache Kafka için Event Hubs ile Akka Streams’i kullanma
 Bu öğretici, akka akışlarını protokol istemcilerinizi değiştirmeden veya kendi kümelerinizi çalıştırmadan bir etkinlik merkezine nasıl bağlayabileceğinizi gösterir. Kafka için Azure Etkinlik Hub'ları [Apache Kafka sürüm 1.0'ı destekler.](https://kafka.apache.org/10/documentation.html)
@@ -49,7 +49,7 @@ Bu öğreticiyi tamamlamak için aşağıdaki ön koşullara sahip olduğunuzdan
 
 ## <a name="create-an-event-hubs-namespace"></a>Event Hubs ad alanı oluşturma
 
-Herhangi bir Olay Hub'ı hizmetinden göndermek veya almak için olay hub'ları ad alanı gereklidir. Etkinlik Hub'ları Kafka bitiş noktası alma hakkında bilgi almak için [Kafka Etkin Etkinlik Hub'ları Oluştur'a](event-hubs-create.md) bakın. Daha sonra kullanmak üzere Olay Hub'ları bağlantı dizesini kopyaladığından emin olun.
+Herhangi bir Olay Hub'ı hizmetinden göndermek veya almak için olay hub'ları ad alanı gereklidir. Bkz. Ayrıntılı bilgi için [bir etkinlik merkezi oluşturun.](event-hubs-create.md) Daha sonra kullanmak üzere Olay Hub'ları bağlantı dizesini kopyaladığından emin olun.
 
 ## <a name="clone-the-example-project"></a>Örnek projeyi kopyalama
 

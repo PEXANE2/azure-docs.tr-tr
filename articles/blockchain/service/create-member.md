@@ -1,15 +1,15 @@
 ---
 title: Azure Blockchain Hizmeti üyesi oluşturma - Azure portalı
 description: Azure portalını kullanan blockchain konsorsiyumu için bir Azure Blockchain Hizmeti üyesi oluşturun.
-ms.date: 03/12/2020
+ms.date: 03/30/2020
 ms.topic: quickstart
 ms.reviewer: ravastra
-ms.openlocfilehash: 3c468633a193d78fb1c017a756ee372c6feefb12
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 4c3dabc6abdffd2fb08ece617545d8471955d130
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79203670"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529637"
 ---
 # <a name="quickstart-create-an-azure-blockchain-service-blockchain-member-using-the-azure-portal"></a>Hızlı başlatma: Azure portalını kullanarak bir Azure Blockchain Hizmeti blockchain üyesi oluşturun
 
@@ -36,7 +36,7 @@ Azure Blockchain Service üyesi, özel bir konsorsiyum blockchain ağında ki bl
     Konsorsiyum | Yeni bir konsorsiyum için benzersiz bir ad girin. Bir davet yoluyla bir konsorsiyuma katılıyorsanız, katıldığınız konsorsiyumu seçin. Konsorsiyumlar hakkında daha fazla bilgi için [Azure Blockchain Service konsorsiyumuna](consortium.md)bakın.
     Adı | Azure Blockchain Hizmeti üyesi için benzersiz bir ad seçin. Blockchain üye adı yalnızca küçük harfler ivedi lik ve sayılar içerebilir. İlk karakter bir harf olmalıdır. Değer 2 ile 20 karakter uzunluğunda olmalıdır.
     Üye hesabı şifresi | Üye hesabı parolası, üyeniz için oluşturulan Ethereum hesabının özel anahtarını şifrelemek için kullanılır. Konsorsiyum yönetimi için üye hesabı ve üye hesabı parolasını kullanırsınız.
-    Fiyatlandırma | Düğüm yapılandırması ve yeni hizmetinizin maliyeti. **Standart** ve **Temel** katmanlar arasında seçim yapmak için **Değiştir** bağlantısını seçin. *Temel* katmanı kullanmak, kavramların geliştirilmesi, test edilmesi ve kanıtedilmesi içindir. Üretim sınıfı dağıtımları için *Standart* katmanı kullanın.
+    Fiyatlandırma | Düğüm yapılandırması ve yeni hizmetinizin maliyeti. **Standart** ve **Temel** katmanlar arasında seçim yapmak için **Değiştir** bağlantısını seçin. *Temel* katmanı kullanmak, kavramların geliştirilmesi, test edilmesi ve kanıtedilmesi içindir. Üretim sınıfı dağıtımları için *Standart* katmanı kullanın. Blockchain Data Manager kullanıyorsanız veya yüksek hacimli özel işlemler *gönderiyorsanız, Standart* katmanı da kullanmalısınız. Üye oluşturulduktan sonra temel ve standart arasındaki fiyatlandırma katmanının değiştirilmesi desteklenmez.
     Düğüm parolası | Üyenin varsayılan hareket düğümünün parolası. Blockchain üyesinin varsayılan işlem düğümü ortak bitiş noktasına bağlanırken temel kimlik doğrulaması için parolayı kullanın.
 
 1. Ayarlarınızı doğrulamak için **Gözden Geçir + oluştur'u** seçin. Hizmeti sağlamak için **Oluştur'u** seçin. Sağlama yaklaşık 10 dakika sürer.

@@ -7,12 +7,12 @@ ms.reviewer: basaba
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 03/24/2020
-ms.openlocfilehash: 4dff471fa0f2194756409e01512ed223a1d46024
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 99c32122fc48aaea7428fa559d7289713849f34e
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80241445"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548894"
 ---
 # <a name="create-an-azure-data-explorer-cluster-in-your-virtual-network"></a>Sanal aağınızda Azure Veri Gezgini kümesi oluşturma
 
@@ -68,7 +68,7 @@ Ağ güvenlik grubunu oluşturmak için:
     | Adı | AzureDataExplorerManagement'a izin verme
     | | |
     
-1. [VNet dağıtımı](/azure/data-explorer/vnet-deloyment#dependencies-for-vnet-deployment)na yönelik bağımlılıklara göre tüm gelen ve giden bağımlılıklar için önceki iki adımı yineleyin. Alternatif olarak, giden kurallar, 443 ve 80 bağlantı noktaları için *Internet'e* izin vermek için tek bir kuralla değiştirilebilir.
+1. [VNet dağıtımı](/azure/data-explorer/vnet-deployment#dependencies-for-vnet-deployment)na yönelik bağımlılıklara göre tüm gelen ve giden bağımlılıklar için önceki iki adımı yineleyin. Alternatif olarak, giden kurallar, 443 ve 80 bağlantı noktaları için *Internet'e* izin vermek için tek bir kuralla değiştirilebilir.
     
     Gelen ve giden bağımlılıklar için NSG kuralları aşağıdaki gibi görünmelidir:
 
@@ -121,7 +121,7 @@ Sanal ağ ve alt ağ oluşturmak için:
     | | | |
 
     > [!NOTE]
-    > Üretim iş yükleri için, [VNet'inizdeki plan alt net boyutuna](/azure/data-explorer/vnet-deloyment#plan-subnet-size-in-your-vnet) göre alt net boyutunuzu planlayın
+    > Üretim iş yükleri için, [VNet'inizdeki plan alt net boyutuna](/azure/data-explorer/vnet-deployment#plan-subnet-size-in-your-vnet) göre alt net boyutunuzu planlayın
 
 1. Küme ayrıntılarınızı gözden geçirmek için **Gözden Geçir + oluştur'u** ve kümeyi sağlamak için **Oluştur'u** seçin.
 

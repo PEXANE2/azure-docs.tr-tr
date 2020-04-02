@@ -1,15 +1,15 @@
 ---
 title: Azure Blockchain Hizmetine genel bakış
 description: Azure Blockchain Hizmetine Genel Bakış
-ms.date: 03/12/2020
+ms.date: 03/30/2020
 ms.topic: overview
 ms.reviewer: ravastra
-ms.openlocfilehash: b9f5deb501fb93327fa5d5cfcfd5bb583ed6135e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 821bac0da13209e5126f5bab109aa0895ade840a
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79205078"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529151"
 ---
 # <a name="what-is-azure-blockchain-service"></a>Azure Blok Zinciri Hizmeti nedir?
 
@@ -19,7 +19,7 @@ Azure Blockchain Hizmeti, kullanıcıların Azure'da blockchain ağlarını öl�
 * Dahili konsorsiyum yönetimi
 * Tanıdık geliştirme araçlarıyla akıllı sözleşmeler geliştirin
 
-Azure Blockchain Hizmeti, birden çok genel muhasebe protokolünü desteklemek üzere tasarlanmıştır. Şu anda, [IBFT](https://github.com/jpmorganchase/quorum/wiki/Quorum-Consensus) konsensüs mekanizmasını kullanarak Ethereum [Quorum](https://www.goquorum.com/) defteriiçin destek sağlar.
+Azure Blockchain Hizmeti, birden çok genel muhasebe protokolünü desteklemek üzere tasarlanmıştır. Şu anda [İstanbul Bizans Fay Toleransı (IBFT)](https://github.com/jpmorganchase/quorum/wiki/Quorum-Consensus) konsensüs mekanizmasını kullanarak Ethereum [Quorum](https://www.goquorum.com/) defterine destek vermektedir.
 
 Bu özellikler neredeyse hiç yönetim gerektirmez ve tümüyle ek ücret ödemeden sağlanır. Sanal makineleri ve altyapıyı yönetmek için zaman ve kaynak ayırmak yerine uygulama geliştirme ve iş mantığına odaklanabilirsiniz. Buna ek olarak, yeni beceriler öğrenmek zorunda kalmadan çözümlerinizi sunmak için seçtiğiniz açık kaynak araçları ve platformu ile uygulamanızı geliştirmeye devam edebilirsiniz.
 
@@ -33,13 +33,13 @@ Azure Blockchain Hizmeti iki hizmet katmanı sunar: *Temel* ve *Standart.* Her k
 
 ![Fiyatlandırma katmanları](./media/overview/pricing-tiers.png)
 
-Standart *katman,* iki doğrulayıcı düğüm sunmanın yanı sıra, her işlem ve geçerlidüğüm için 2 *vCore* sağlarken, Temel katman 1 vCore yapılandırması sunar.  İşlem ve doğrulayıcı düğümler için 2 vCore sunarak, 1 vCore Quorum genel muhasebesine adanabilirken, kalan 1 vCore diğer altyapı ile ilgili hizmetler için kullanılabilir ve üretim blockchain iş yükleri için en iyi performansı sağlar. Fiyatlandırma ayrıntıları hakkında daha fazla bilgi için [Azure Blockchain Hizmeti fiyatlandırması](https://azure.microsoft.com/pricing/details/blockchain-service)için bkz.
+Standart *katman,* iki doğrulayıcı düğüm sunmanın yanı sıra, her işlem ve geçerlidüğüm için iki *vCore* *sağlarken, Temel* katman 1 vCore yapılandırması sunar.  İşlem ve doğrulayıcı düğümler için 2 vCore sunarak, 1 vCore Quorum genel muhasebesine adanabilirken, kalan 1 vCore diğer altyapı ile ilgili hizmetler için kullanılabilir ve üretim blockchain iş yükleri için en iyi performansı sağlar. Fiyatlandırma ayrıntıları hakkında daha fazla bilgi için [Azure Blockchain Hizmeti fiyatlandırması](https://azure.microsoft.com/pricing/details/blockchain-service)için bkz.
 
 ### <a name="security-and-maintenance"></a>Güvenlik ve bakım
 
 İlk blockchain üyenizi temin ettikten sonra, üyenize ek işlem düğümleri ekleme olanağınız vardır.  Varsayılan olarak, hareket düğümleri güvenlik duvarı kuralları yla güvenli hale alınır ve erişim için yapılandırma gerektirir.  Ayrıca, tüm işlem düğümleri TLS üzerinden hareket halindeki verileri şifreler.  Güvenlik duvarı kuralları, temel kimlik doğrulama, erişim anahtarları ve Azure Etkin Dizin tümleştirmesi gibi işlem düğümü erişimini güvence altına almak için birden çok seçenek vardır. Daha fazla bilgi için [işlem düğümlerini yapılandırma](configure-transaction-nodes.md) ve [Azure Etkin Dizin erişimini yapılandırma bölümüne](configure-aad.md)bakın.
 
-Yönetilen bir hizmet olarak Azure Blockchain Hizmeti, blockchain üyenizin düğümlerinin en son ana bilgisayar işletim sistemi ve genel muhasebe yazılım yığını güncelleştirmeleriyle birlikte yamalanmasını ve yüksek kullanılabilirlik için yapılandırılmasını sağlar (yalnızca Standart katman), DevOps'lerin çoğunu ortadan kaldırır geleneksel IaaS blockchain düğümleri için gereklidir.  Düzeltme ve güncellemeler hakkında daha fazla bilgi için [desteklenen Azure Blockchain Hizmeti genel muhasebe sürümlerine](ledger-versions.md)bakın.
+Yönetilen bir hizmet olarak Azure Blockchain Hizmeti, blockchain üyenizin düğümlerinin en son ana bilgisayar işletim sistemi ve genel muhasebe yazılım yığını güncelleştirmeleriyle yamalı olmasını, yüksek kullanılabilirlik için yapılandırılmasını sağlar (yalnızca standart katman), geleneksel IaaS blockchain düğümleri için gereken DevOps'lerin çoğunu ortadan kaldırır.  Düzeltme ve güncellemeler hakkında daha fazla bilgi için [desteklenen Azure Blockchain Hizmeti genel muhasebe sürümlerine](ledger-versions.md)bakın.
 
 ### <a name="monitoring-and-logging"></a>İzleme ve günlüğe kaydetme
 

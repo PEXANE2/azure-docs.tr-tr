@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/25/2020
-ms.openlocfilehash: 713a9762206b5083268fd48136cd8077c296c690
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6de6f23fe9564b28a5d436ac00999dbb3e9183e1
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80289303"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548972"
 ---
 # <a name="security-and-data-privacy-in-azure-cognitive-search"></a>Azure Bilişsel Arama'da güvenlik ve veri gizliliği
 
@@ -75,7 +75,7 @@ Her istek zorunlu anahtar, bir işlem ve bir nesneden oluştuğu her istek te ki
 
 ### <a name="restricted-access"></a>Kısıtlı erişim
 
-Bir kamu hizmetiniz varsa ve hizmetin kullanımını kısıtlamak istediğinizde, Management REST API sürümünde IP kısıtlama kuralını kullanabilirsiniz: 2020-03-13, [IpRule](https://docs.microsoft.com/rest/api/searchmanagement/2020-03-13/createorupdate-service#iprule-). IpRule, arama hizmetinize erişim izni vermek istediğiniz IP adreslerini tek tek veya bir aralıkta tanımlayarak hizmetinize erişimi kısıtlamanızı sağlar. 
+Bir kamu hizmetiniz varsa ve hizmetin kullanımını kısıtlamak istediğinizde, Management REST API sürümünde IP kısıtlama kuralını kullanabilirsiniz: 2020-03-13, [IpRule](https://docs.microsoft.com/rest/api/searchmanagement/2019-10-01-preview/createorupdate-service#IpRule). IpRule, arama hizmetinize erişim izni vermek istediğiniz IP adreslerini tek tek veya bir aralıkta tanımlayarak hizmetinize erişimi kısıtlamanızı sağlar. 
 
 ### <a name="private-access"></a>Özel erişim
 
@@ -93,7 +93,7 @@ Yönetici ve geliştiricinin dizinlere erişimi farklılaşmaz: hizmet tarafınd
 
 Dizin düzeyinde güvenlik sınırları gerektiren çoklu hizmet çözümleri için, bu tür çözümler genellikle müşterilerin dizin yalıtımını işlemek için kullandıkları bir orta katman içerir. Çok kiracılı kullanım örneği hakkında daha fazla bilgi için, [çok kiracılı SaaS uygulamaları ve Azure Bilişsel Arama için Tasarım desenleri](search-modeling-multitenant-saas-applications.md)bölümüne bakın.
 
-## <a name="authentication"></a>Kimlik doğrulaması
+## <a name="authentication"></a>Kimlik Doğrulaması
 
 ### <a name="admin-access"></a>Yönetici erişimi
 

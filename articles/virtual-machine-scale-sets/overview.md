@@ -8,12 +8,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 09/26/2019
 ms.author: manayar
-ms.openlocfilehash: e6201f9ac2e9b813de5a4622fc7996eb1202a164
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 1e0f7c65504637cd79a3183ce9785c73b55f6a51
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76273699"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548553"
 ---
 # <a name="what-are-virtual-machine-scale-sets"></a>Sanal makine ölçek kümeleri nedir?
 Azure sanal makine ölçek kümeleri sayesinde bir grup özdeş, yük dengeli sanal makineler oluşturup yönetebilirsiniz. Tanımlı bir zamanlamaya veya talebe yanıt olarak sanal makine örneği sayısı otomatik olarak artabilir ya da azalabilir. Ölçek kümeleri, uygulamalarınıza yönelik yüksek düzeyde kullanılabilirlik sağlar ve çok sayıda sanal makineyi merkezi olarak yönetmenize, yapılandırmanıza ve güncelleştirmenize imkan tanır. Sanal makine ölçek kümeleri ile, işlem, büyük veri ve kapsayıcı iş yükleri gibi alanlar için büyük ölçekli hizmetler derleyebilirsiniz.
@@ -27,7 +27,7 @@ Azure sanal makine ölçek kümeleri, birçok sanal makinede çalıştırılan u
 - **Birden çok sanal makine oluşturma ve yönetme kolaylığı**
     - Uygulamanızı çalıştıran birçok sanal makineniz olduğunda, ortamınızda tutarlı bir yapılandırmanın tutulması önemlidir. Uygulamanızın güvenilir performansı için, sanal makine boyutu, disk yapılandırması ve uygulama yüklemeleri, tüm sanal makineler arasında eşleşmelidir.
     - Ölçek kümeleri ile tüm sanal makine örnekleri, aynı temel işletim sistemi görüntüsü ve yapılandırmasından oluşturulur. Bu yaklaşım, ek yapılandırma görevi veya ağ yönetimi olmadan yüzlerce sanal makineyi kolayca yönetmenize olanak sağlar.
-    - Ölçek kümeleri, temel katman 4 trafik dağıtımı için [Azure yük dengeleyici](../load-balancer/load-balancer-overview.md) ve daha gelişmiş katman 7 trafik dağıtımı ve SSL sonlandırması için [Azure Application Gateway](../application-gateway/application-gateway-introduction.md) kullanımını destekler.
+    - Ölçek kümeleri, temel katman-4 trafik dağıtımı için [Azure yük dengeleyicisinin](../load-balancer/load-balancer-overview.md) kullanımını ve daha gelişmiş katman-7 trafik dağıtımı ve TLS sonlandırma için [Azure Uygulama Ağ Geçidi'ni](../application-gateway/application-gateway-introduction.md) destekler.
 
 - **Yüksek kullanılabilirlik ve uygulama dayanıklılığı sağlar**
     - Ölçek kümeleri, uygulamanızın birden çok örneğini çalıştırmak için kullanılır. Bu sanal makine örneklerinden birinde sorun varsa müşteriler minimum kesintiyle diğer sanal makine örneğinden biri üzerinden uygulamanıza erişmeye devam eder.

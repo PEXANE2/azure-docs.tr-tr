@@ -15,12 +15,12 @@ ms.date: 1/15/2020
 ms.author: hahamil
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: bf7e6bb22ce89d6be3f79efad1f1a3679e8780e7
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e74ff320f26a4b6fa7d1caf3d4effca5e10669f4
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77086066"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546225"
 ---
 # <a name="tutorial-use-shared-device-mode-in-your-android-application"></a>Öğretici: Android uygulamanızda paylaşılan cihaz modunu kullanma
 
@@ -96,9 +96,9 @@ MSAL `"account_mode":"SINGLE"` config dosyasında ayarlarsanız, döndürülen u
 ```java
 private ISingleAccountPublicClientApplication mSingleAccountApp;
 
-/*Configure your sample app and save state for this activity*/ 
+/*Configure your sample app and save state for this activity*/
 PublicClientApplication.create(this.getApplicationCOntext(),
-  R.raw.auth_config, 
+  R.raw.auth_config,
   new PublicClientApplication.ApplicationCreatedListener(){
   @Override
   public void onCreated(IPublicClientApplication application){
@@ -109,7 +109,7 @@ PublicClientApplication.create(this.getApplicationCOntext(),
   public void onError(MsalException exception{
   /*Fail to initialize PublicClientApplication */
   }
-});  
+});
 ```
 
 ### <a name="detect-single-vs-multiple-account-mode"></a>Tek ve çoklu hesap modunu algılama
@@ -134,7 +134,7 @@ private IPublicClientApplication mApplication;
 
 Yöntem, `loadAccount` oturum açmış kullanıcının hesabını alır. Yöntem, `onAccountChanged` oturum açmış kullanıcının değişip değişmediğini belirler ve eğer öyleyse, temizleyin:
 
-```java 
+```java
 private void loadAccount()
 {
   mSingleAccountApp.getCurrentAccountAsync(new ISingleAccountPublicClientApplication.CurrentAccountCallback()
@@ -157,12 +157,12 @@ private void loadAccount()
         updateSingedOutUI();
       }
     }
-    @Override 
-    public void onError(@NonNull Exception exception) 
+    @Override
+    public void onError(@NonNull Exception exception)
     {
     }
   }
-}  
+}
 ```
 
 ### <a name="globally-sign-in-a-user"></a>Genel olarak oturum aç
@@ -233,7 +233,7 @@ Kimlik Doğrulayıcı Uygulamasını başlatın ve ana hesap sayfasına gidin. *
 ![Kimlik doğrulayıcı hesap ekranı eklemek](media/tutorial-v2-shared-device-mode/authenticator-add-account.png)
 
  Sağ menü çubuğunu kullanarak **Ayarlar** bölmesine gidin. İş & **Okul hesapları**altında Cihaz **Kaydı'nı** seçin.
- 
+
  ![Kimlik doğrulayıcı hesap ekranı eklemek](media/tutorial-v2-shared-device-mode/authenticator-settings.png)
 
  Bu düğmeyi tıklattığınızda, aygıt kişilerine erişim yetkisi vermeniz istenir. Bunun nedeni Android'in cihazdaki hesap tümleştirmesidir. **İzin ver'i**seçin.
@@ -260,10 +260,10 @@ Bir aygıtı paylaşılan moda koyduktan sonra, aygıtınız tarafından bilinir
 
 ## <a name="running-the-sample-app"></a>Örnek uygulamayı çalıştırma
 
-Örnek Uygulama, kuruluşunuzun Grafik API'sini arayacak basit bir uygulamadır. n ilk çalıştırma, uygulama çalışan hesabınıza yeni olduğu için onay vermeniz istenir.
+Örnek Uygulama, kuruluşunuzun Grafik API'sini arayacak basit bir uygulamadır. Uygulama çalışan hesabınızda yeni olduğundan, ilk çalıştırmada onayınız istenir.
 
 ![App config bilgi ekranı](media/tutorial-v2-shared-device-mode/run-app-permissions-requested.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Android cihazlar için [Paylaşılan aygıt modunda](shared-device-mode.md) paylaşılan mod hakkında daha fazla bilgi edinin
+Android cihazlar için [Paylaşılan aygıt modunda](msal-android-shared-devices.md) paylaşılan mod hakkında daha fazla bilgi edinin

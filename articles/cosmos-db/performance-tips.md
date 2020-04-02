@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: sngun
-ms.openlocfilehash: 68a9a7d5f90831bb2e0c9284cb71ae4b92edffad
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ee2743af2f8499aec04d8b6b733e1ba4c2a82083
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80131413"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546071"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Azure Cosmos DB ve .NET için performans ipuçları
 
@@ -54,7 +54,7 @@ Yüksek iş düzeyi düzeylerinde (50.000'den fazla RU/s) test ediyorsanız, ist
 > [!NOTE] 
 > Yüksek CPU kullanımı gecikme süresinin artmasına ve zaman adabı isteğine neden olabilir.
 
-## <a name="networking"></a>Ağ Oluşturma
+## <a name="networking"></a>Ağ
 <a id="direct-connection"></a>
 
 **Bağlantı ilkesi: Doğrudan bağlantı modunu kullanma**
@@ -80,7 +80,7 @@ TCP'yi doğrudan modda kullandığınızda, ağ geçidi bağlantı noktalarına 
 |Ağ geçidi  |   HTTPS    |  Tüm SDK'lar    |   SQL (443), MongoDB (10250, 10255, 10256), Tablo (443), Cassandra (10350), Grafik (443)    |
 |Direct    |     TCP    |  .NET SDK    | 10000 ile 20000 aralığındaki bağlantı noktaları |
 
-Azure Cosmos DB, HTTPS üzerinden basit ve açık bir yeniden programlama modeli sunar. Ayrıca, iletişim modelinde de etkili bir TCP protokolü sunar ve .NET istemciSi SDK üzerinden kullanılabilir. TCP protokolü, ilk kimlik doğrulama ve trafiği şifrelemek için SSL kullanır. En iyi performans için mümkün olduğunda TCP protokolünü kullanın.
+Azure Cosmos DB, HTTPS üzerinden basit ve açık bir yeniden programlama modeli sunar. Ayrıca, iletişim modelinde de etkili bir TCP protokolü sunar ve .NET istemciSi SDK üzerinden kullanılabilir. TCP protokolü, ilk kimlik doğrulama ve trafiği şifrelemek için TLS kullanır. En iyi performans için mümkün olduğunda TCP protokolünü kullanın.
 
 SDK V3 için, `CosmosClient` 'deki `CosmosClientOptions`örneği oluştururken bağlantı modunu yapılandırırsınız. Doğrudan modun varsayılan olduğunu unutmayın.
 

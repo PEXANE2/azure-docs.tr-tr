@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: tutorial
 ms.date: 02/20/2020
 ms.custom: seodec18
-ms.openlocfilehash: af15a7366fd07cecb376ff76ad383f784202a887
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 856410f2166ae442e8beadf36eac312748407b13
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77526832"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529741"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-preview-environment"></a>Öğretici: Azure Zaman Serisi Öngörüleri Önizleme ortamını ayarlama
 
@@ -30,7 +30,6 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 > * Verileri Azure Zaman Serisi Öngörüleri Önizleme ortamına aktarmak için bir çözüm hızlandırıcı örneği çalıştırın.
 > * Veriler üzerinde temel analiz yapın.
 > * Zaman Serisi Model türünü ve hiyerarşisini tanımlayın ve örneklerinizle ilişkilendirin.
-> * Power BI konektörünü kullanın ve Power BI'deki verileri görselleştirin.
 
 >[!TIP]
 > [IoT çözüm hızlandırıcıları, özel IoT](https://www.azureiotsolutions.com/Accelerators) çözümlerinin geliştirilmesini hızlandırmak için kullanabileceğiniz kurumsal dereceli önceden yapılandırılmış çözümler sağlar.
@@ -359,3 +358,8 @@ Time Series Modelleri hakkında daha fazla bilgi edinin:
 
 > [!div class="nextstepaction"]
 > [Azure Time Series Öngörüleri Önizleme veri modellemesi](./time-series-insights-update-tsm.md)
+
+Çevrenizi Power BI'ye bağlayın hakkında daha fazla bilgi edinin
+
+> [!div class="nextstepaction"]
+> [Power BI'de Time Series Insights'tan verileri görselleştirin](./how-to-connect-power-bi.md)

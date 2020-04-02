@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: dobett
-ms.openlocfilehash: 33005bc286f7dc2c0ebed74bd9df0309e71346f5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f501eb55f72811063ddf1d8e02a0ce2137d598f3
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73824828"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546306"
 ---
 # <a name="remote-monitoring-solution-accelerator-overview"></a>Uzaktan İzleme çözümü hızlandırıcısına genel bakış
 
@@ -125,9 +125,6 @@ ASA işleri, telemetriyi bağlı cihazlardan depolama ve analiz için Time Serie
 ### <a name="azure-time-series-insights"></a>Azure Zaman Serisi Görüşleri
 
 [Azure Time Series Insights,](https://docs.microsoft.com/azure/time-series-insights/) çözüm hızlandırıcısına bağlı aygıtlardan telemetriyi saklar. Ayrıca, çözüm web UI'de aygıt telemetrisini görselleştirme ve sorgulama olanağı sağlar.
-
-> [!NOTE]
-> Zaman Serisi Öngörüleri şu anda Azure Çin bulutunda kullanılamıyor. Azure Çin bulutundaki yeni Uzaktan İzleme çözüm hızlandırıcı dağıtımları, tüm depolama için Cosmos DB'yi kullanır.
 
 ### <a name="configuration-microservice"></a>Yapılandırma mikrohizmeti
 

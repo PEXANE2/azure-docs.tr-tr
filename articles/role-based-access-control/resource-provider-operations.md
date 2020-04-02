@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 03/22/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: b344886e89a10a027cba169e92056a6dda443d8d
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: c56e6729307a1cad998a060202f51cb8f29bf94a
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80421938"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548314"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Azure Kaynak Yöneticisi kaynak sağlayıcısı işlemleri
 
@@ -332,7 +332,7 @@ Azure hizmeti: [API Yönetimi](../api-management/index.yml)
 > | Eylem | Microsoft.ApiManagement/service/read | API Yönetim Hizmeti örneği için meta verileri okuyun |
 > | Eylem | Microsoft.ApiManagement/service/delete | API Yönetim Hizmeti örneğini silme |
 > | Eylem | Microsoft.ApiManagement/service/updatehostname/action | API Yönetim Hizmeti için özel alan adları ayarlama, güncelleştirme veya kaldırma |
-> | Eylem | Microsoft.ApiManagement/service/updatecertificate/action | API Yönetim Hizmeti için SSL sertifikası yükleme |
+> | Eylem | Microsoft.ApiManagement/service/updatecertificate/action | API Yönetim Hizmeti için TLS/SSL sertifikası yükleme |
 > | Eylem | Microsoft.ApiManagement/service/backup/action | Kullanıcı tarafından sağlanan depolama hesabında belirtilen kapsayıcıya YEDEKLEME API Yönetim Hizmeti |
 > | Eylem | Microsoft.ApiManagement/service/restore/action | Kullanıcı tarafından sağlanan depolama hesabında belirtilen kapsayıcıdan API Yönetim Hizmeti geri yükleme |
 > | Eylem | Microsoft.ApiManagement/service/managedeployments/action | SKU/birimlerini değiştirin, API Yönetim Hizmetinin bölgesel dağıtımlarını ekleyin/kaldırın |

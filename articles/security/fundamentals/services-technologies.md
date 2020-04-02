@@ -3,7 +3,7 @@ title: Azure Güvenlik Hizmetleri ve Teknolojileri | Microsoft Dokümanlar
 description: Makale, Azure Güvenlik hizmetlerinin ve teknolojilerinin seçilmiş bir listesini sağlar.
 services: security
 documentationcenter: na
-author: barclayn
+author: terrylanfear
 manager: barbkess
 editor: TomSh
 ms.assetid: a5a7f60a-97e2-49b4-a8c5-7c010ff27ef8
@@ -14,13 +14,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/29/2019
-ms.author: barclayn
-ms.openlocfilehash: 741e6b9cad20645fdfc085623fd9492a12ac1dfc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: terrylan
+ms.openlocfilehash: 83548063a796401792bd19e7ec27be36a0efa4e4
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68726556"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549200"
 ---
 # <a name="security-services-and-technologies-available-on-azure"></a>Azure'da kullanılabilen güvenlik hizmetleri ve teknolojileri
 
@@ -35,7 +35,7 @@ Zaman içinde, bu liste de Azure gibi değişecek ve büyüyecektir. Güvenlikle
 |--------|--------|
 |[Azure&nbsp;&nbsp;Güvenlik Merkezi](/azure/security-center/security-center-intro)| Karma bulut iş yüklerinde güvenlik yönetimi ve gelişmiş tehdit koruması sağlayan bir bulut iş yükü koruma çözümü.|
 |[Azure Key Vault](/azure/key-vault/key-vault-overview)| Uygulamalarınızı çalışır hale getirmek için gereken parolalar, bağlantı dizeleri ve diğer bilgiler için güvenli bir sır deposu. |
-|[Azure Monitör günlükleri](/azure/log-analytics/log-analytics-overview)|Telemetri ve diğer verileri toplayan ve uygulamalarınız ve kaynaklarınız için operasyonel öngörüler sunmak için bir sorgu dili ve analiz motoru sağlayan bir izleme hizmeti. Tek başına veya Güvenlik Merkezi gibi diğer hizmetlerle kullanılabilir. |
+|[Azure İzleyici günlükleri](/azure/log-analytics/log-analytics-overview)|Telemetri ve diğer verileri toplayan ve uygulamalarınız ve kaynaklarınız için operasyonel öngörüler sunmak için bir sorgu dili ve analiz motoru sağlayan bir izleme hizmeti. Tek başına veya Güvenlik Merkezi gibi diğer hizmetlerle kullanılabilir. |
 |[Azure Geliştirme/Test Laboratuvarları](/azure/lab-services/devtest-lab-overview)|Geliştiricilerin ve sınayıcıların Azure'da hızlı bir şekilde ortam lar oluşturmasına yardımcı olurken, atıkları en aza indirir ve maliyeti kontrol eder.  |
 
 <!---|[Azure&nbsp;Disk&nbsp;Encryption](/azure/azure-security-disk-encryption-overview)| THIS WILL GO TO THE NEW OVERVIEW TOPIC MEGHAN STEWART IS WRITING|--->
@@ -79,7 +79,7 @@ Zaman içinde, bu liste de Azure gibi değişecek ve büyüyecektir. Güvenlikle
 | [Azure&nbsp;Yedekleme](/azure/backup/backup-introduction-to-azure-backup)| Azure bulutundaki verileri yedeklemek ve geri yüklemek için kullanılan Azure tabanlı bir hizmet. |
 | [Azure&nbsp;&nbsp;Site Kurtarma](/azure/site-recovery/site-recovery-overview)|Fiziksel ve sanal makinelerde (VM) çalışan iş yüklerini birincil siteden ikincil bir konuma kopyalayan çevrimiçi bir hizmet, bir hatadan sonra hizmetlerin kurtarılmasını etkinleştirir. |
 
-## <a name="networking"></a>Ağ Oluşturma
+## <a name="networking"></a>Ağ
 |Hizmet|Açıklama|
 |------|--------|
 | [Ağ&nbsp;&nbsp;Güvenlik Grupları](/azure/virtual-network/virtual-networks-nsg)| Kararverme veya reddetme için 5-tuple kullanan ağ tabanlı bir erişim denetimi özelliği.  |

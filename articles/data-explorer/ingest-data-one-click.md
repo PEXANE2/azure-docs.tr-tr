@@ -1,93 +1,75 @@
 ---
 title: Azure Veri Gezgini'ne veri almak için tek tıklamayla yararlanma kullanma
-description: Tek tıklamayla Azure Veri Gezgini'ne nasıl veri yükleyebilirsiniz (yüklenir) hakkında bilgi edinin.
+description: Tek tıklamayla Azure Veri Gezgini'ne veri alma (yükleme) genel bakışı.
 author: orspod
 ms.author: orspodek
 ms.reviewer: tzgitlin
 ms.service: data-explorer
-ms.topic: conceptual
-ms.date: 10/31/2019
-ms.openlocfilehash: 4a53f7e68501ce7f9b19dea0822d3896ec241fb8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.topic: overview
+ms.date: 03/29/2020
+ms.openlocfilehash: 5bde63427ce76f14832551864bbf2c3d8e015fd6
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75444546"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521571"
 ---
-# <a name="use-one-click-ingestion-to-ingest-data-into-azure-data-explorer"></a>Azure Veri Gezgini'ne veri almak için tek tıklamayla yararlanma kullanma
+# <a name="what-is-one-click-ingestion"></a>Tek tıklamayla yutma nedir? 
 
-Bu makalede, JSON veya CSV biçimlerinde yeni bir tablonun hızlı bir şekilde alınması için tek tıklamayla nasıl kullanılacağı gösterilmektedir. Veriler depolama dan veya yerel bir dosyadan varolan bir tabloya veya yeni bir tabloya yutulabilir. Sezgisel tek tıklama sihirbazını kullanın ve verileriniz birkaç dakika içinde yutunur. Ardından, Azure Veri Gezgini Web UI'sini kullanarak tabloyu ve sorguları çalıştırabilirsiniz.
+Tek tıklatma işlemi, Azure Veri Gezgini'ndeki bir veri kaynağına dayalı olarak verileri hızla yutmanızı ve otomatik olarak tablo ve eşleme yapıları önermenizi sağlar. 
+
+Azure Veri Gezgini Web UI'sini kullanarak, depolama (blob dosyası), yerel bir dosya veya bir kapsayıcıdan (en fazla 10.000 blob) veri yutabilirsiniz. Sürekli yutma için bir kapsayıcı üzerinde bir olay ızgarası da tanımlayabilirsiniz. Veriler JSON, CSV ve [diğer biçimlerde](#file-formats)varolan veya yeni bir tabloya yutulabilir. Tek bir tıklatma, veri kaynağına dayalı yeni bir tablo ve tablo eşlemesi için bir yapı önerebilir ve varolan tablo ve tablo eşlemesinin tablo yapısını ayarlamak için sezgisel bir platform sağlayabilir. Tek bir tıklama yla veriler yalnızca birkaç dakika içinde tabloya girer.
+
+Tek tıklatma, verileri ilk kez sindirirken veya verilerinizin şeması size yabancı olduğunda özellikle yararlıdır.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
 * Azure aboneliğiniz yoksa başlamadan önce [ücretsiz bir Azure hesabı](https://azure.microsoft.com/free/) oluşturun.
-* [Uygulamada](https://dataexplorer.azure.com/)oturum açın.
 * [Azure Veri Gezgini kümesi ve veritabanı](create-cluster-database-portal.md)oluşturun.
-* [Web UI'da](https://dataexplorer.azure.com/) oturum açın ve [kümenize bağlantı ekleyin.](/azure/data-explorer/web-query-data#add-clusters)
+* Azure Veri [Gezgini Web UI'de](https://dataexplorer.azure.com/) oturum açın ve [kümenize bağlantı ekleyin.](/azure/data-explorer/web-query-data#add-clusters)
 
-## <a name="ingest-new-data"></a>Yeni verileri yutma
+## <a name="file-formats"></a>Dosya biçimleri
 
-1. Web UI'nin sol menüsünde *veritabanına* veya *tablo* satırına sağ tıklayın ve **yeni verileri Edin 'i (Önizleme)** seçin.
+Tek tıklatma, kaynak verilerden aşağıdaki biçimlerden herhangi birinde yeni bir tablo nun sindirilmesine destek olur:
+* JSON
+* CSV
+* Tsv
+* SCSV
+* SOHSV
+* TSVE
+* Psv
+
+## <a name="one-click-ingestion-wizard"></a>Tek tıklamayla yutma sihirbazı
+
+Tek tıklatma sihirbazı, tek tıklatma işlemi boyunca size yol gösteriyor. 
+
+> [!Note]
+> Bu bölümde genel olarak sihirbaz açıklanır. Seçtiğiniz seçenekler, yeni veya varolan bir tabloyu sindirip yutmadığınıza bağlıdır. Daha fazla bilgi için bkz.
+    > * [Yeni bir tabloya](one-click-ingestion-new-table.md) girme
+    > * Varolan bir [tabloya](one-click-ingestion-existing-table.md) alma 
+    
+1. Sihirbaza erişmek için Azure Veri Gezgini web UI'nin sol menüsündeki *veritabanıveya* *tablo* satırına sağ tıklayın ve **yeni verileri (önizleme) yut'u**seçin.
 
     ![Web Web Web Arama Sürümü'nde tek tıklatma oluşturma yı seçme](media/ingest-data-one-click/one-click-ingestion-in-webui.png)   
- 
-1. Yeni **verileri Yut (Önizleme)** penceresinde **Kaynak** sekmesini seçin ve **Proje Ayrıntılarını**tamamlayın:
 
-    * **Tablo**için açılan menüden varolan bir tablo adı seçin veya yeni bir tablo oluşturmak için **yeni oluştur'u** seçin.
-    * **Yutma türü için,** depolama dan veya **dosyadan** seçin. **from file**
-      * **Depolama dan**seçtiyseniz, URL'yi eklemek için depolama **alanına Bağlantı'yı** seçin. Özel depolama hesapları için [Blob SAS URL'yi](/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container) kullanın. 
-      * **Dosyadan**seçtiyseniz, **Gözat'ı** seçin ve dosyayı kutuya sürükleyin.
-    * Tablo sütun yapılandırmanızı görüntülemek ve düzenlemek için **şemayı edin'i** seçin.
- 
-    ![Tek tıklamayla yutma kaynak ayrıntıları](media/ingest-data-one-click/one-click-ingestion-source.png) 
+1. Sihirbaz aşağıdaki seçenekler de size rehberlik eder:
+       * Varolan bir [tabloya](one-click-ingestion-existing-table.md) alma
+       * [Yeni bir tabloya](one-click-ingestion-new-table.md) girme
+       * Veri yutma: * Blob depolama * Yerel bir dosya * Bir kapsayıcı
+       * Örnek boyutunu 1 ile 10.000 satır arasında girin (yalnızca kapsayıcıdan)
+       
+1. Veri kaynağını başarıyla seçtiğinizde, verilerin önizlemesi görüntülenir. 
+    Bir kapsayıcıdan veri yutamıyorsanız, verileri yalnızca belirli öneeklere veya dosya uzantılarına sahip dosyaların yutulabilmesi için filtreleyebilirsiniz. Örneğin, yalnızca *Avrupa*sözcüğüyle başlayan dosya adlarına sahip dosyaları veya yalnızca uzantı .json olan dosyaları yutmak *isteyebilirsiniz.* 
 
-    > [!TIP]
-    > *Tablo* satırında **yeni verileri (Önizleme) yutacağını** seçerseniz, seçili tablo adı **Proje Ayrıntıları'nda**görünür.
+1. **Şema'yı Edit'e**tıklayın. Belirli bir tabloya veri sindiriyorsanız, kaynak sütunları hedef sütunlara eşleyebilir ve sütun adlarını dahil edip etmemeye karar verebilirsiniz.
 
-1. Varolan bir tablo seçtiyseniz, **Harita sütunları** penceresi, hedef tablo sütunlarına kaynak veri sütunlarını eşlemek için açılır. 
-    * Hedef sütunu tablodan kaldırmak için **Omit sütununa** kullanın.
-    * Tabloya yeni bir sütun eklemek için **Yeni sütunu** kullanın.
+1. Veri alma işlemini başlatın.
 
-    ![Harita sütunları penceresi](media/ingest-data-one-click/one-click-map-columns-window.png)
-
-1. **Şema** sekmesinde:
-
-    * Açılan menüden **Sıkıştırma türünü** seçin ve ardından **Sıkıştırılmamış** veya **GZip'i**seçin.
-    * Açılan menüden **Veri biçimini** seçin ve ardından **JSON,** **CSV,** **TSV,** **SCSV,** **SOHSV**, **TSVE**veya **PSV'yi**seçin. 
-        * **JSON** biçimini seçtiğinizde, 1 ile 10 arasında **JSON düzeylerini**de seçmeniz gerekir. Düzeyleri tablo sütun veri tasviri etkiler. 
-        * JSON dışında bir biçim seçerseniz, dosyanın başlık satırını yoksaymak için **sütun adlarını ekle** onay kutusunu seçmeniz gerekir.
-    * **Eşleme adı** otomatik olarak ayarlanır, ancak düzenlenebilir.
-    * Varolan bir tabloseçtiyseniz, **Harita sütunları** penceresini açmak için Harita **sütunlarını** seçebilirsiniz.
-
-    ![Tek tıklamayla yutma CSV format Şeması](media/ingest-data-one-click/one-click-csv-format.png)
-
-1. **Düzenleyici** bölmesinin üzerinde, düzenleyiciyi açmak için **v** düğmesini seçin. Düzenleyicide, girişlerinizden oluşturulan otomatik sorguları görüntüleyebilir ve kopyalayabilirsiniz. 
-
-1. Tabloda: 
-    * **Veri türünü değiştirmek**için yeni sütun üstbilgilerini sağ tıklatın , **sütunu yeniden adlandırın**, **Sütunu sil**, artan **sıralama,** veya **azalan sıralama**. Varolan sütunlarda yalnızca veri sıralama kullanılabilir. 
-    * Yeniden tıklamak için yeni sütun adını çift tıklatın.
-
-1. Tablo oluşturmak ve eşleme yapmak ve veri alımını başlatmak için **başlat'ı** seçin.
-
-    ![Tek tıklamayla yutma JSON formatında şema](media/ingest-data-one-click/one-click-json-format.png) 
- 
-## <a name="query-data"></a>Verileri sorgulama
-
-1. Veri **alım tamamlanan** penceresinde, veri alımı başarıyla biterse üç adım da yeşil onay işaretleriyle işaretlenir.
- 
-    ![Tek tıklamayla veri alımı tamamlandı](media/ingest-data-one-click/one-click-data-ingestion-complete.png)
-
-1. Sorguyu açmak için **v** düğmesini seçin. Sorguyu sağlamak için Web UI'ye kopyalayın.
-
-1. Sağdaki menüde **Hızlı sorgular** ve **Araçlar** seçenekleri bulunmaktadır. 
-
-    * **Hızlı sorgular,** örnek sorgularla Birlikte Web UI'ye bağlantılar içerir.
-    * **Araçlar,** ilgili `.drop` **komutları** çalıştırarak sorunları gidermenize olanak tanıyan Web UI'daki Drop komutlarına bağlantı içerir.
-
-    > [!TIP]
-    > Komutları kullandığınızda `.drop` veri kaybedebilirsiniz. Dikkatli kullan.
+> [!Note]
+> Veri kaynağınız bir kapsayıcıysa, Azure Veri Gezgini'nin veri toplama toplama (toplu oluşturma) ilkesinin yutma işlemini optimize etmek için tasarladığını unutmayın. Varsayılan olarak, ilke 5 dakika veya 500 MB veri olarak yapılandırılır, böylece gecikme karşılaşabilirsiniz. Toplama seçenekleri için [toplu laştırma ilkesine](/azure/kusto/concepts/batchingpolicy) bakın. Diğer kaynaklardan veri alırken, yutma hemen etkili olacaktır.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [Azure Veri Gezgini Web UI'deki verileri sorgula](web-query-data.md)
-* [Kusto Query Language'i kullanarak Azure Veri Gezgini için sorgu yazma](write-queries.md)
+* [Varolan bir tabloya](one-click-ingestion-existing-table.md) veya [yeni bir tabloya](one-click-ingestion-new-table.md) veri almak için tek tıklatma kullanıp kullanmamadığınıza karar verin
+* [Azure Veri Gezgini Web UI'deki verileri sorgula](/azure/data-explorer/web-query-data)
+* [Kusto Query Language'i kullanarak Azure Veri Gezgini için sorgu yazma](/azure/data-explorer/write-queries)

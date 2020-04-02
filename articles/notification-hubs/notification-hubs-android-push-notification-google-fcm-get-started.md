@@ -18,12 +18,12 @@ ms.date: 09/11/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 09/11/2019
-ms.openlocfilehash: e0682a33540cafd8ebab1bb248d462b30ee4dc2a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e6bc4ed94c8b8e62740f81497231a163283ebcb7
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80127532"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521564"
 ---
 # <a name="tutorial-send-push-notifications-to-android-devices-using-firebase"></a>Öğretici: Firebase kullanarak Android cihazlara anında iletme bildirimleri gönderme
 
@@ -31,7 +31,7 @@ ms.locfileid: "80127532"
 
 Bu öğretici, bir Android uygulamasına bildirim leri iletmek için Azure Bildirim Hub'larını ve Firebase Bulut Mesajlaşmasını (FCM) nasıl kullanacağınızı gösterir. Bu öğreticide Firebase Cloud Messaging (FCM) kullanarak anında iletme bildirimleri alan bir Android uygulaması oluşturacaksınız.
 
-Bu öğretici için tamamlanmış kod [GitHub](https://github.com/Azure/azure-notificationhubs-android/tree/master/samples/FCMTutorialApp)indirilebilir.
+Bu öğretici için tamamlanmış kod [GitHub](https://github.com/Azure/azure-notificationhubs-android/tree/master/FCMTutorialApp)indirilebilir.
 
 Bu öğreticide, aşağıdaki adımları gerçekleştireceksiniz:
 
@@ -573,4 +573,4 @@ Bu eğitimde, hizmete kayıtlı tüm Android cihazlara bildirim yayınlamak içi
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
 [Referencing a library project]: https://go.microsoft.com/fwlink/?LinkId=389800
 [Notification Hubs Guidance]: notification-hubs-push-notification-overview.md
-[Azure portal]: https://portal.azure.com
+[Azure portalı]: https://portal.azure.com

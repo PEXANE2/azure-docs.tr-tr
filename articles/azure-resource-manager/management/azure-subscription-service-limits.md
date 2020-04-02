@@ -3,12 +3,12 @@ title: Azure abonelik sınırları ve kotaları
 description: Ortak Azure abonelik ve hizmet sınırlarının, kotalarının ve kısıtlamalarının bir listesini sağlar. Bu makalede, maksimum değerlerle birlikte sınırların nasıl artırılacak larına ilişkin bilgiler yer almaktadır.
 ms.topic: conceptual
 ms.date: 03/26/2020
-ms.openlocfilehash: 325f7b3d03435945779c1f42e13681dcfd9604b6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 397d6a719f64a49208e651469fab9cf841ccd4ad
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80334875"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521347"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure aboneliği ve hizmet limitleri, kotalar ve kısıtlamalar
 
@@ -244,7 +244,11 @@ Aşağıdaki tabloda Temel, Standart ve Premium hizmet [katmanlarının](../../c
 
 ## <a name="media-services-limits"></a>Medya Hizmetleri sınırları
 
-[!INCLUDE [azure-mediaservices-limits](../../../includes/azure-mediaservices-limits.md)]
+[!INCLUDE [azure-mediaservices-limits](../../../includes/media-servieces-limits-quotas-constraints.md)]
+
+### <a name="media-services-v2-legacy"></a>Media Services v2 (eski)
+
+Media Services v2 v2'ye özgü sınırlar için [bkz.](https://docs.microsoft.com/azure/media-services/previous/media-services-quotas-and-limitations)
 
 ## <a name="mobile-services-limits"></a>Mobil Hizmetler sınırları
 

@@ -11,12 +11,12 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 03/10/2020
-ms.openlocfilehash: 9999d74bf6bef3e8351460add7efc8bdbfcd1045
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: aa85e80f1a90191a0a34a6962437c27a9d57ef65
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79270036"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80547546"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Azure Machine Learning ile otomatik makine öğrenimi modelleri oluşturun, gözden geçirin ve dağıtın
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -33,7 +33,7 @@ Python kod tabanlı bir deneyim için, Azure Machine Learning SDK ile [otomatik 
 
 * Bir tür **Enterprise sürümü**içeren bir Azure Machine Learning çalışma alanı. Bkz. [Azure Makine Öğrenimi çalışma alanı oluşturun.](how-to-manage-workspace.md)  Varolan bir çalışma alanını Enterprise sürümüne yükseltmek için [bkz.](how-to-manage-workspace.md#upgrade)
 
-## <a name="get-started"></a>Kullanmaya başlayın
+## <a name="get-started"></a>başlarken
 
 1. Azure Machine Learning'de https://ml.azure.comoturum açın. 
 
@@ -178,17 +178,27 @@ Otomatik makine öğrenimi, verilerinizle ilgili olası sorunları belirlemenize
 
 ### <a name="data-guardrails"></a>Veri korkulukları
 
-Veri korkulukları, verilerinizle ilgili olası sorunları (örn. eksik değerler, sınıf dengesizliği) belirlemenize ve geliştirilmiş sonuçlar için düzeltici eylemlerin gerçekleşmesine yardımcı olmak için otomatik olarak uygulanır. Mevcut ve güvenilir sonuçlar elde etmek için uygulanabilir birçok iyi uygulamalar vardır. 
-
-Aşağıdaki tabloda, şu anda desteklenen veri korkulukları ve kullanıcıların denemelerini gönderirken karşılaşabilecekleri ilişkili durumları açıklanmaktadır.
+Otomatik featurization etkinleştirildiğinde veya doğrulama otomatik olarak ayarlandığında veri korkulukları uygulanır. Veri korkulukları, verilerinizle ilgili olası sorunları (örn. eksik değerler, sınıf dengesizliği) belirlemenize ve geliştirilmiş sonuçlar için düzeltici eylemlerde yardımcı olur. Mevcut ve güvenilir sonuçlar elde etmek için uygulanabilir birçok iyi uygulamalar vardır. Kullanıcılar, Otomatik ML çalışmasının Veri **korkulukları** sekmesindeki stüdyodaki veri korkuluklarını ```show_output=True``` veya Python SDK'yı kullanarak deneme gönderirken ayarlayarak inceleyebilir. Aşağıdaki tabloda, şu anda desteklenen veri korkulukları ve kullanıcıların denemelerini gönderirken karşılaşabilecekleri ilişkili durumları açıklanmaktadır.
 
 Otokorkuluk|Durum|Tetikleme&nbsp;koşulu&nbsp;
 ---|---|---
-Eksik&nbsp;&nbsp;değerler imputation |**Geçirilen** <br> <br> **Sabit**|    Giriş&nbsp;sütunlarının hiçbirinde eksik değer yok <br> <br> Bazı sütunların eksik değerleri var
-Çapraz doğrulama|**Bitti**|Açık doğrulama kümesi sağlanmadıysa
-Yüksek&nbsp;&nbsp;ciddiyet&nbsp;özelliği algılama|    **Geçirilen** <br> <br>**Bitti**|    Yüksek kardinallik özelliği algılanmadı <br><br> Yüksek kardinallik giriş sütunları algılandı
-Sınıf dengesi algılama    |**Geçirilen** <br><br><br>**Uyarılır** |Sınıflar eğitim verilerinde dengelenir; Örneklerin sayısı ve oranıyla ölçülen, her sınıf veri kümesinde iyi bir gösterime sahipse, bir veri kümesi dengeli olarak kabul edilir <br> <br> Eğitim verilerindeki sınıflar dengesiz
-Zaman serisi veri tutarlılığı|**Geçirilen** <br><br><br><br> **Sabit** |<br> Seçili {horizon, lag, rolling window} değeri(ler) analiz edildi ve bellek dışı olası sorunlar algılanmadı. <br> <br>Seçili {horizon, lag, rolling window} değerleri analiz edildi ve denemenizin belleği bitme potansiyeline sahip olabilir. Gecikme veya yuvarlanma penceresi kapatıldı.
+Eksik özellik değerleri imputation |**Geçirilen** <br><br><br> **Bitti**| Eğitim verilerinizde eksik özellik değerleri algılanmadı. [Eksik değer imputation](https://docs.microsoft.com/azure/machine-learning/how-to-use-automated-ml-for-ml-models#advanced-featurization-options) hakkında daha fazla bilgi edinin. <br><br> Eğitim verilerinizde eksik özellik değerleri algılandı ve imputed.
+Yüksek kardinallik özelliği işleme |**Geçirilen** <br><br><br> **Bitti**| Girişleriniz analiz edildi ve yüksek kardinallik özelliği algılanmadı. [Yüksek kardinallik özelliği algılama](https://docs.microsoft.com/azure/machine-learning/how-to-use-automated-ml-for-ml-models#advanced-featurization-options) hakkında daha fazla bilgi edinin. <br><br> Girişlerinizde yüksek kardinallik özellikleri algılandı ve işlendi.
+Doğrulama bölünmüş işleme |**Bitti**| *Doğrulama yapılandırması 'otomatik' olarak ayarlandı ve eğitim verileri 20.000'den **az** satır içeriyordu.* <br> Eğitilen modelin her yinelemesi çapraz doğrulama yoluyla doğrulandı. Doğrulama verileri hakkında daha fazla bilgi [edinin.](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#train-and-validation-data) <br><br> *Doğrulama yapılandırması 'otomatik' olarak ayarlandı ve eğitim verileri 20.000'den **fazla** satır içeriyordu.* <br> Giriş verileri bir eğitim veri kümesine ve modelin doğrulanması için bir doğrulama veri kümesine ayrılmıştır.
+Sınıf dengeleme algılama |**Geçirilen** <br><br><br><br> **Uyarılır** | Girişleriniz analiz edildi ve tüm sınıflar eğitim verilerinizde dengelendi. Her sınıf, örneklerin sayısı ve oranıyla ölçüldüğünde, veri kümesinde iyi bir gösterime sahipse, veri kümesi dengeli olarak kabul edilir. <br><br><br> Girişlerinizde dengesiz sınıflar tespit edildi. Model önyargısını düzeltmek için dengeleme sorunu giderin. Dengesiz veriler hakkında daha fazla bilgi [edinin.](https://docs.microsoft.com/azure/machine-learning/concept-automated-ml#imbalance)
+Bellek sorunları algılama |**Geçirilen** <br><br><br><br> **Bitti** |<br> Seçili {horizon, lag, rolling window} değeri(ler) analiz edildi ve bellek dışı olası sorunlar algılanmadı. Zaman serisi tahmin [yapılandırmaları](https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-forecast#configure-and-run-experiment) hakkında daha fazla bilgi edinin. <br><br><br>Seçili {horizon, lag, rolling window} değerleri analiz edildi ve denemenizin belleği bitme potansiyeline sahip olabilir. Gecikme veya yuvarlanma penceresi yapılandırmaları kapatıldı.
+Frekans algılama |**Geçirilen** <br><br><br><br> **Bitti** |<br> Zaman serisi analiz edildi ve tüm veri noktaları algılanan frekansla hizalandı. <br> <br> Zaman serisi analiz edildi ve algılanan frekansla uyuşmayan veri noktaları algılandı. Bu veri noktaları veri kümesinden kaldırıldı. Zaman serisi tahminleri için veri hazırlama hakkında daha fazla bilgi [edinin.](https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-forecast#preparing-data)
+
+#### <a name="data-guardrail-states"></a>Veri Koruma Durumları
+Veri korkulukları üç eyaletten birini görüntüler: 'Geçti', 'Bitti veya 'Uyarılan'.
+
+Durum| Açıklama
+----|----
+Geçirilen| Veri sorunları algılanmadı ve kullanıcı eylemi gerekmez. 
+Bitti| Verilerinize değişiklikler uygulandı. Kullanıcıların, değişikliklerin beklenen sonuçlarla uyumlu olmasını sağlamak için Otomatik ML'nin gerçekleştirdiği düzeltici eylemleri gözden geçirmelerini öneririz. 
+Uyarılır| Giderilemeyen bir veri sorunu algılandı. Kullanıcıları sorunu düzeltmeye ve düzeltmeye teşvik ediyoruz. 
+
+Otomatik ML önceki sürümü dördüncü bir durum görüntülenir: 'Sabit'. Yeni denemeler bu durumu görüntülemez ve 'Sabit' durumunu görüntüleyen tüm korkuluklar artık 'Bitti' görüntülenir.   
 
 ## <a name="run-experiment-and-view-results"></a>Deneme çalıştırma ve sonuçları görüntüleme
 

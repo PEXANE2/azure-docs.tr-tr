@@ -1,15 +1,15 @@
 ---
 title: Azure Blockchain Hizmeti üyesi oluşturma - Azure CLI
 description: Azure CLI'yi kullanan blockchain konsorsiyumu için bir Azure Blockchain Hizmeti üyesi oluşturun.
-ms.date: 03/12/2020
+ms.date: 03/30/2020
 ms.topic: quickstart
 ms.reviewer: ravastra
-ms.openlocfilehash: 0a3cf3d7c7f3dc0b8ece6fd6a466e42ae970b61c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 322b1884726b6dfe322560032ed1b8a98c600154
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79214727"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529629"
 ---
 # <a name="quickstart-create-an-azure-blockchain-service-blockchain-member-using-azure-cli"></a>Hızlı başlatma: Azure CLI'yi kullanarak Bir Azure Blockchain Hizmeti blockchain üyesi oluşturun
 
@@ -58,7 +58,7 @@ az resource create \
 | **parola** | Üyenin varsayılan hareket düğümünün parolası. Blockchain üyesinin varsayılan işlem düğümü ortak bitiş noktasına bağlanırken temel kimlik doğrulaması için parolayı kullanın.
 | **Konsorsiyumu** | Katılmak veya oluşturmak için konsorsiyumun adı. Konsorsiyumlar hakkında daha fazla bilgi için [Azure Blockchain Service konsorsiyumuna](consortium.md)bakın.
 | **konsorsiyumAccountPassword** | Konsorsiyum hesap parolası üye hesabı parolası olarak da bilinir. Üye hesabı parolası, üyeniz için oluşturulan Ethereum hesabının özel anahtarını şifrelemek için kullanılır. Konsorsiyum yönetimi için üye hesabı ve üye hesabı parolasını kullanırsınız.
-| **skuName** | Katman türü. Temel için Standart ve B0 için S0 kullanın. Kavramların geliştirilmesi, test edilmesi ve kanıtedilmesi için *Temel* katmanı kullanın. Üretim sınıfı dağıtımları için *Standart* katmanı kullanın.
+| **skuName** | Katman türü. Temel için Standart ve B0 için S0 kullanın. Kavramların geliştirilmesi, test edilmesi ve kanıtedilmesi için *Temel* katmanı kullanın. Üretim sınıfı dağıtımları için *Standart* katmanı kullanın. Blockchain Data Manager kullanıyorsanız veya yüksek hacimli özel işlemler *gönderiyorsanız, Standart* katmanı da kullanmalısınız. Üye oluşturulduktan sonra temel ve standart arasındaki fiyatlandırma katmanının değiştirilmesi desteklenmez.
 
 Blockchain üyesi ve destekleyici kaynakları oluşturmak yaklaşık 10 dakika sürer.
 

@@ -1,22 +1,14 @@
 ---
 title: Kullanıcı söyleyinmelerini gözden geçirin - LUIS
-titleSuffix: Azure Cognitive Services
 description: Aktif öğrenme ile, doğru niyet ve varlık için gözden uç nokta söyleyiş. LUIS emin olduğu uç nokta söyleyişlerini seçer.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/23/2020
-ms.author: diberry
-ms.openlocfilehash: 375d4b4e7c3fcafbdfde1ff447bedc3e16aff2f2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.openlocfilehash: 8d267fc441dc2cbf7f8ae3746486d5e7be55f135
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79219945"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546862"
 ---
 # <a name="concepts-for-enabling-active-learning-by-reviewing-endpoint-utterances"></a>Uç nokta söyleyerek aktif öğrenmeyi etkinleştirme kavramları
 Aktif öğrenme, tahmin doğruluğunu ve uygulanması en kolay olanın geliştirilmesi için üç stratejiden biridir. Aktif öğrenme ile, doğru niyet ve varlık için gözden uç nokta söyleyiş. LUIS emin olduğu uç nokta söyleyişlerini seçer.
@@ -29,6 +21,8 @@ LUIS, en iyi atış niyeti düşük bir puana sahip olduğunda veya en iyi iki n
 
 ## <a name="single-pool-for-utterances-per-app"></a>Uygulama başına söyleyişler için tek havuz
 **Gözden Geçirme uç nokta seleçler** listesi sürüme göre değişmez. Etkin olarak hangi sürümün ifadesini düzenlediğinizden veya uç noktada uygulamanın hangi sürümünün yayımlandığından bağımsız olarak, gözden geçirilecek tek bir ifade havuzu vardır.
+
+REST [API'de](https://westus.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/58b6f32139e2bb139ce823c9)sürüm adı gereklidir ve uygulamada bulunması gerekir, ancak bu doğrulamanın ötesinde kullanılmaz. İnceleme sözcükleri tüm uygulama için geçerlidir. Bir _sürümden_gelen sözcükleri kaldırırsanız, tüm sürümler etkilenir.
 
 ## <a name="where-are-the-utterances-from"></a>Nereden gelen söz
 Endpoint söyleyişleri, uygulamanın HTTP bitiş noktasındaki son kullanıcı sorgularından alınır. Uygulamanız yayınlanmadıysa veya henüz isabet almadıysa, incelemeniz gereken herhangi bir söz yoktur. Belirli bir amaç veya varlık için bitiş noktası isabetleri alınmazsa, bunları içeren bunları gözden geçirmek için söyleyinin yoktur.

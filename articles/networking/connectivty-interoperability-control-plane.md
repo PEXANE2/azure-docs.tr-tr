@@ -1,5 +1,5 @@
 ---
-title: 'Azure arka uç bağlantı özelliklerinde birlikte çalışabilirlik: Düzlem çözümlemesi | Microsoft Dokümanlar'
+title: "Azure'da birlikte çalışabilirlik : Düzlem çözümlemesi denetimi"
 description: Bu makalede, siteden siteye VPN olan ExpressRoute ile Azure'da sanal ağ eşlemesi arasında birlikte çalışabilirliği analiz etmek için kullanabileceğiniz test kurulumunun denetim düzlemi çözümlemesi sağlanmaktadır.
 documentationcenter: na
 services: networking
@@ -10,14 +10,14 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
-ms.openlocfilehash: 4921e4c4fc0da95250a0171c66d6a69093b10687
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5e41bc86533815c394077bf5276d930fe958cd19
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74873854"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80518281"
 ---
-# <a name="interoperability-in-azure-back-end-connectivity-features-control-plane-analysis"></a>Azure arka uç bağlantı özelliklerinde birlikte çalışabilirlik: Düzlem çözümlemesi denetimi
+# <a name="interoperability-in-azure--control-plane-analysis"></a>Azure'da birlikte çalışabilirlik : Düzlem çözümlemesi denetimi
 
 Bu makalede, [test kurulumunun][Setup]denetim düzlemi çözümlemesi açıklanmaktadır. Ayrıca [test kurulumu yapılandırmasını][Configuration] ve test kurulumuveri [düzlemi çözümlemesi][Data-Analysis] gözden geçirebilirsiniz.
 

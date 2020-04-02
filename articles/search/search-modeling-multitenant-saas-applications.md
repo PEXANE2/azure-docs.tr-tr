@@ -8,12 +8,12 @@ ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: d37abd1b5d212c3d920cb68b6236029b2112ae24
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d8e453336005f3389f67e9571fac438bfc340c1b
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74113264"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549021"
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-cognitive-search"></a>Çok kiracılı SaaS uygulamaları ve Azure Bilişsel Arama için tasarım desenleri
 Çok kiracılı uygulama, başka bir kiracının verilerini göremeyen veya paylaşamayan kiracı sayısına aynı hizmetleri ve yetenekleri sağlayan uygulamadır. Bu belgede, Azure Bilişsel Arama ile oluşturulmuş çok kiracılı uygulamalar için kiracı yalıtım stratejileri anlatılmaktadır.
@@ -51,7 +51,7 @@ Azure Bilişsel Arama'nın S3 fiyatlandırma katmanında, çok kiracılı senary
 
 S3 HD, tek bir hizmette daha fazla dizin barındırma yeteneği için bölümleri kullanarak dizinleri ölçeklendirme yeteneği ticareti yaparak birçok küçük dizinlerin tek bir arama hizmetinin yönetimi altında paketlenmesini sağlar.
 
-Somut olarak, bir S3 hizmetinin birlikte 1,4 milyar belgeye ev sahipliği yapabilecek 1 ila 200 dizinleri olabilir. Öte yandan bir S3 HD, tek tek dizinlerin yalnızca 1 milyon belgeye kadar gitmesini sağlar, ancak bölüm başına 1000'e kadar dizin (hizmet başına 3000'e kadar) bölüm başına toplam belge sayısı 200 milyon (hizmet başına 600 milyona kadar) işleyebilir.
+Bir S3 hizmeti, sabit sayıda dizin (en fazla 200) barındıracak ve hizmete yeni bölümler eklendikçe her dizinin yatay olarak boyut olarak ölçeklendirmesine izin verecek şekilde tasarlanmıştır. S3 HD hizmetlerine bölüm eklemek, hizmetin barındırabileceği en fazla dizin sayısını artırır. Sistem tarafından dayatılan her indekste sabit boyut sınırı olmamasına rağmen, tek bir S3HD indeksi için ideal maksimum boyut 50 - 80 GB civarındadır.
 
 ## <a name="considerations-for-multitenant-applications"></a>Çok kiracılı uygulamalar için dikkat edilmesi gerekenler
 Çok kiracılı uygulamalar, çeşitli kiracılar arasında gizlilik düzeyi korurken, kaynakları kiracılar arasında etkin bir şekilde dağıtmalıdır. Böyle bir uygulama için mimari tasarlarken birkaç husus vardır:
@@ -78,7 +78,7 @@ Kiracı başına dizin modelinde, birden çok kiracı, her kiracının kendi diz
 
 Tüm arama istekleri ve belge işlemleri Azure Bilişsel Arama'da dizin düzeyinde yayımlandığından, kiracılar veri yalıtımı elde eder. Uygulama katmanında, çeşitli kiracıların trafiğini uygun dizinlere yönlendirirken, tüm kiracılar arasında hizmet düzeyindeki kaynakları yönetme ye ihtiyaç bilinci vardır.
 
-Kiracı başına dizin modelinin önemli bir özelliği, uygulama geliştiricisinin uygulamanın kiracıları arasında bir arama hizmetinin kapasitesini aşmasıdır. Kiracının iş yükünün düzensiz bir dağılımı varsa, kiracıların en uygun birleşimi, aynı anda daha az uzun bir kuyruk hizmet ederken, son derece etkin, kaynak yoğun kiracı bir dizi karşılamak için bir arama hizmetinin dizinleri arasında dağıtılabilir aktif kiracılar. Takas, modelin her kiracının aynı anda son derece etkin olduğu durumları ele alamamasıdır.
+Kiracı başına dizin modelinin önemli bir özelliği, uygulama geliştiricisinin uygulamanın kiracıları arasında bir arama hizmetinin kapasitesini aşmasıdır. Kiracıların iş yükünün düzensiz bir dağılımı varsa, kiracıların en uygun birleşimi, aynı anda daha az etkin kiracılardan oluşan uzun bir kuyruk hizmet ederken, son derece etkin ve kaynak yoğun bir dizi kiracıyı barındırmak için bir arama hizmetinin dizinlerine dağıtılabilir. Takas, modelin her kiracının aynı anda son derece etkin olduğu durumları ele alamamasıdır.
 
 Kiracı başına dizin modeli, tüm Azure Bilişsel Arama hizmetinin önceden satın alınıp daha sonra kiracılarla doldurulduğu değişken maliyet modelinin temelini oluşturur. Bu, kullanılmayan kapasitenin denemeler ve ücretsiz hesaplar için belirlenmesine olanak tanır.
 

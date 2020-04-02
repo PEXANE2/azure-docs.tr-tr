@@ -3,7 +3,7 @@ title: Azure Marketi Görselleri için Güvenlik Önerileri | Microsoft Doküman
 description: Bu makalede, pazar yerinde yer alan görüntüler için öneriler sağlar
 services: security
 documentationcenter: na
-author: barclayn
+author: terrylanfear
 manager: barbkess
 ms.assetid: ''
 ms.service: security
@@ -11,13 +11,13 @@ ms.subservice: security-fundamentals
 ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2019
-ms.author: barclayn
-ms.openlocfilehash: b82cf957f4bd74cb2c63bfd5a7fe73899b395df6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: terrylan
+ms.openlocfilehash: 3925e39824d1702ff43a6b981ac997ddab658b96
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73795821"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548666"
 ---
 # <a name="security-recommendations-for-azure-marketplace-images"></a>Azure Marketi Görselleri için Güvenlik Önerileri
 
@@ -40,8 +40,8 @@ Göndermeden önce her zaman resminizde bir güvenlik açığı algılaması ça
 | Güvenlik                                                     | LVM kullanmaktan kaçının.                                                                                                                                                                                                                                            |
 | Güvenlik                                                     | Gerekli kitaplıkların en son sürümlerini ekleyin: </br> - OpenSSL v1.0 veya üzeri </br> - Python 2.5 veya üzeri (Python 2.6+ şiddetle tavsiye edilir) </br> - Python pyasn1 paketi zaten yüklü değilse </br> - d.OpenSSL v 1.0 veya üzeri                                                                |
 | Güvenlik                                                     | Bash/Shell geçmiş girişlerini temizleyin.                                                                                                                                                                                                                                             |
-| Ağ Oluşturma                                                   | Varsayılan olarak SSH sunucusunu ekleyin. Aşağıdaki seçenek: ClientAliveInterval 180 ile sshd config için SSH canlı tutmak ayarlayın.                                                                                                                                                        |
-| Ağ Oluşturma                                                   | Görüntüden herhangi bir özel ağ yapılandırmasını kaldırın. resolv.conf silin: `rm /etc/resolv.conf`.                                                                                                                                                                                |
+| Ağ                                                   | Varsayılan olarak SSH sunucusunu ekleyin. Aşağıdaki seçenek: ClientAliveInterval 180 ile sshd config için SSH canlı tutmak ayarlayın.                                                                                                                                                        |
+| Ağ                                                   | Görüntüden herhangi bir özel ağ yapılandırmasını kaldırın. resolv.conf silin: `rm /etc/resolv.conf`.                                                                                                                                                                                |
 | Dağıtım                                                   | En son Azure Linux Aracısını yükleyin.</br> - RPM veya Deb paketini kullanarak yükleyin.  </br> - Manuel yükleme işlemini de kullanabilirsiniz, ancak yükleyici paketleri önerilir ve tercih edilir. </br> - Aracıyı GitHub deposundan el ile yüklüyorsanız, `waagent` önce `/usr/sbin` dosyayı kopyalayın ve çalıştırın (root olarak): </br>`# chmod 755 /usr/sbin/waagent` </br>`# /usr/sbin/waagent -install` </br>Aracı yapılandırma dosyası `/etc/waagent.conf`. |
 | Dağıtım                                                   | Azure Desteğinin iş ortaklarımıza gerektiğinde seri konsol çıktısı sağlayabilmesini ve bulut depolamadan işletim sistemi disk montajı için yeterli zaman dilimi sağlamasını sağlayın. Görüntü Çekirdek Önyükleme Hattı için aşağıdaki `console=ttyS0 earlyprintk=ttyS0 rootdelay=300`parametreleri ekleyin: . |
 | Dağıtım                                                   | Os diskinde takas bölümü yok. Takas Linux Agent tarafından yerel kaynak diskinde oluşturulması için istenebilir.         |

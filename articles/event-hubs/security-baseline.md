@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: f16f6ef38b221e525340858fc7ba131f8a1bdf5a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 10fc822f9f36512405dd4e3b5aba6270b53e163f
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80289582"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549041"
 ---
 # <a name="azure-security-baseline-for-event-hubs"></a>Etkinlik Hub'ları için Azure Güvenlik Taban Çizgisi
 
@@ -72,7 +72,7 @@ Azure Güvenlik Merkezi tarafından sağlanan Ağ Güvenliğini Anlama:https://d
 
 **Kılavuz :** Dağıtılmış hizmet reddi (DDoS) saldırılarına karşı korunmak için etkinlik hub'larınızla ilişkili sanal ağlarda DDoS Koruma Standardını etkinleştirin. Bilinen kötü amaçlı veya kullanılmayan Internet IP adresleriyle iletişimi reddetmek için Azure Güvenlik Merkezi Tümleşik Tehdit İstihbaratı'nı kullanın.
 
-DDoS koruması nasıl yapılandırılabilen:https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection
+DDoS koruması nasıl yapılandırılabilen:[https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection](/azure/virtual-network/manage-ddos-protection)
 
 Azure Güvenlik Merkezi Tümleşik Tehdit İstihbaratı hakkında daha fazla bilgi için:https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer
 
@@ -106,7 +106,7 @@ https://azuremarketplace.microsoft.com/marketplace/?term=Firewall
 
 Belirli bir IP adresi için Olay Hub'larına güvenlik duvarı kuralı ekleme:
 
- https://docs.microsoft.com/azure/event-hubs/event-hubs-tutorial-virtual-networks-firewalls#add-firewall-for-specified-ip
+ https://docs.microsoft.com/azure/event-hubs/event-hubs-ip-filtering
 
 **Azure Güvenlik Merkezi izleme**: Henüz kullanılamıyor
 
@@ -140,7 +140,7 @@ Etkinlik Hub'ları için Azure Yerleşik İlkesi ad alanı:https://docs.microsof
 
 
 
-Ağ oluşturmak için Azure İlkesi örnekleri:https://docs.microsoft.com/azure/governance/policy/samples/#network
+Ağ oluşturmak için Azure İlkesi örnekleri:https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#network
 
 
 
@@ -373,10 +373,7 @@ Azure'da MFA nasıl etkinleştirilir:https://docs.microsoft.com/azure/active-dir
 
 **Kılavuz :** Çevrede şüpheli veya güvensiz etkinlik oluştuğunda günlük ve uyarı oluşturma için Azure Active Directory (AD) Ayrıcalıklı Kimlik Yönetimi 'ni (PIM) kullanın. Riskli kullanıcı davranışıyla ilgili uyarıları ve raporları görüntülemek için Azure AD risk algılamalarını kullanın. Ek günlüğe kaydetme için Azure Güvenlik Merkezi risk algılama uyarılarını Azure Monitor'a gönderin ve eylem gruplarını kullanarak özel uyarı/bildirimleri yapılandırın.
 
-
-
 Ayrıcalıklı Kimlik Yönetimi (PIM) nasıl dağıtılır:https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan
-
 
 Azure AD risk algılamalarını anlayın:https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risk-events
 
@@ -780,7 +777,7 @@ Koşullu Erişim'i Azure Kaynak Yöneticisi'ne erişimi engellemek için yapıla
 
 - Olay Hub sanal ağ hizmeti bitiş noktası kullanmalıdır
 
-Etkinlik Hub'ları için Azure Yerleşik https://docs.microsoft.com/en-\ İlkesi ad alanı: abd/azure/yönetişim/ilke/örnekler/yerleşik ilkeler#olay-hub
+Etkinlik Hub'ları için Azure Yerleşik İlkesi ad alanı:https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#event-hub
 
 Kullanılabilir Azure İlkesi Diğer Adları nasıl görüntüleyebilirsiniz:https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
 
@@ -961,7 +958,7 @@ Microsoft kötü amaçlı yazılımdan koruma, Azure hizmetlerini destekleyen te
 
 **Yönerge**: Azure Olay Hub'ları için coğrafi durum kurtarmayı yapılandırın. Tüm Azure bölgeleri veya veri merkezleri (kullanılabilirlik bölgeleri kullanılıyorsa) kapalı kalma süresi yle karşılaştığında, veri işlemenin farklı bir bölgede veya veri merkezinde çalışmaya devam etmesi çok önemlidir. Bu nedenle, Jeo-felaket kurtarma ve Geo-çoğaltma herhangi bir kuruluş için önemli özelliklerdir. Azure Olay Hub'ları, ad alanı düzeyinde hem coğrafi felaket kurtarma yı hem de coğrafi çoğaltmayı destekler. 
 
-Azure Etkinlik Hub'ları için coğrafi durum kurtarmayı anlayın:https://docs.microsoft.com/azure/event-hubs/event-hubs-geo-dr#availability-zones-preview
+Azure Etkinlik Hub'ları için coğrafi durum kurtarmayı anlayın:https://docs.microsoft.com/azure/event-hubs/event-hubs-geo-dr#availability-zones
 
 **Azure Güvenlik Merkezi izleme**: Şu anda kullanılamıyor
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/14/2020
 ms.author: allensu
-ms.openlocfilehash: 4b34d4208d8686cdac3f8164d2cf7efb2d881346
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 50fc8b9cefe88a80f3f954ce363139b6a4a38589
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79409907"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548381"
 ---
 # <a name="what-is-virtual-network-nat"></a>Sanal Ağ NAT nedir?
 
@@ -40,11 +40,11 @@ Sanal Ağ NAT (ağ adresi çevirisi) sanal ağlar için giden yalnızca Internet
 
 ## <a name="static-ip-addresses-for-outbound-only"></a>Yalnızca giden ler için statik IP adresleri
 
-NAT'li her alt ağ için giden bağlantı tanımlanabilir.  Aynı sanal ağ daki birden çok alt ağ farklı N'lere sahip olabilir. Bir alt ağ, hangi [NAT ağ geçidi kaynağının](./nat-gateway-resource.md) kullanılacağı belirtilerek yapılandırılır. Herhangi bir sanal makine örneğinden tüm UDP ve TCP giden akışları NAT kullanır. 
+NAT'li her alt ağ için giden bağlantı tanımlanabilir.  Aynı sanal ağ daki birden çok alt ağ farklı N'lere sahip olabilir. Bir alt ağ, hangi NAT ağ geçidi kaynağının kullanılacağı belirtilerek yapılandırılır. Herhangi bir sanal makine örneğinden tüm UDP ve TCP giden akışları NAT kullanır. 
 
-NAT, standart SKU [genel IP adresi kaynakları](./virtual-network-ip-addresses-overview-arm.md#standard) veya genel IP [öneki kaynakları](./public-ip-address-prefix.md) veya her ikisinin bir kombinasyonu ile uyumludur.  Genel BIR IP önekini doğrudan kullanabilir veya önekin genel IP adreslerini birden çok NAT ağ geçidi kaynağına dağıtabilirsiniz. NAT, önekin IP adresleri aralığına kadar olan tüm trafiği tımar eder.  Dağıtımlarınızın ip beyaz listesi artık çok kolay.
+NAT, standart SKU genel IP adresi kaynakları veya genel IP öneki kaynakları veya her ikisinin bir kombinasyonu ile uyumludur.  Genel BIR IP önekini doğrudan kullanabilir veya önekin genel IP adreslerini birden çok NAT ağ geçidi kaynağına dağıtabilirsiniz. NAT, önekin IP adresleri aralığına kadar olan tüm trafiği tımar eder.  Dağıtımlarınızın ip beyaz listesi artık çok kolay.
 
-Alt ağ için tüm giden trafik nat tarafından herhangi bir müşteri yapılandırması olmadan otomatik olarak işlenir.  Kullanıcı tanımlı rotalar gerekli değildir. NAT, diğer [giden senaryolardan](../load-balancer/load-balancer-outbound-connections.md) önce gelir ve bir alt ağın varsayılan Internet hedefinin yerini alır.
+Alt ağ için tüm giden trafik nat tarafından herhangi bir müşteri yapılandırması olmadan otomatik olarak işlenir.  Kullanıcı tanımlı rotalar gerekli değildir. NAT, diğer giden senaryolardan önce gelir ve bir alt ağın varsayılan Internet hedefinin yerini alır.
 
 ## <a name="on-demand-snat-with-multiple-ip-addresses-for-scale"></a>Ölçek için birden fazla IP adresine sahip isteğe bağlı SNAT
 
@@ -60,9 +60,9 @@ Yük dengeleyici giden SNAT aksine, NAT bir sanal makine örneğinin özel IP gi
 
 NAT aşağıdaki standart SKU kaynakları ile uyumludur:
 
-- [Yük dengeleyici](../load-balancer/load-balancer-overview.md)
-- [Genel IP adresi](../virtual-network/virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)
-- [Genel IP ön eki](../virtual-network/public-ip-address-prefix.md)
+- Yük dengeleyici
+- Genel IP adresi
+- Genel IP ön eki
 
 NAT ile birlikte kullanıldığında, bu kaynaklar alt ağınıza gelen Internet bağlantısı sağlar. NAT, alt ağınızdan tüm giden Internet bağlantısını sağlar.
 

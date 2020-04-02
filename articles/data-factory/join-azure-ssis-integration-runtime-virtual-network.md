@@ -11,12 +11,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: 7e8a1793a329a863c9df97ae5ddcbee6cef10e8e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4819eaf2a65cf542029cf36f262d0cea5be75f2e
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76964370"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521956"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Azure-SSIS Integration Runtime'ı sanal ağa bağlama
 
@@ -129,7 +129,7 @@ Bir alt ağ seçtiğinizde:
 
 Azure-SSIS IR için sanal bir ağa katılırken kendi statik genel IP adreslerinizi getirmek istiyorsanız, aşağıdaki gereksinimleri karşıladıklarından emin olun:
 
-- Diğer Azure kaynaklarıyla zaten ilişkili olmayan tam olarak iki kullanılmamış kaynak sağlanmalıdır. Azure-SSIS IR'nizi düzenli olarak yükselttiğinde ekstra bir tane kullanılacaktır.
+- Diğer Azure kaynaklarıyla zaten ilişkili olmayan tam olarak iki kullanılmamış kaynak sağlanmalıdır. Azure-SSIS IR'nizi düzenli olarak yükselttiğinde ekstra bir tane kullanılacaktır. Etkin Azure-SSIS IRs'leriniz arasında herkese açık bir IP adresipaylaşılamayacağını unutmayın.
 
 - Her ikisi de standart tip statik olanlar olmalıdır. Daha fazla bilgi için [Genel IP Adresi SKS'lerine](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#sku) bakın.
 
@@ -191,10 +191,55 @@ Azure Toplu İşlem yönetimi hizmetleri ile Azure-SSIS IR arasındaki gelen tra
 > [!NOTE]
 > Bu yaklaşım ek bir bakım maliyetine neden olabilir. Azure-SSIS IR'yi kırmamak için IP aralığını düzenli olarak kontrol edin ve UDR'nize yeni IP aralıkları ekleyin. Yeni IP hizmet etiketinde göründüğünde IP'nin yürürlüğe girmesi bir ay daha süreceği için IP aralığını aylık olarak denetlemenizi öneririz. 
 
+UDR kurallarının kurulumunun kolaylaşmasını kolaylaştırmak için, Azure Toplu İş yönetimi hizmetleri için UDR kuralları eklemek için aşağıdaki Powershell komut dosyasını çalıştırabilirsiniz:
+```powershell
+$Location = "[location of your Azure-SSIS IR]"
+$RouteTableResourceGroupName = "[name of Azure resource group that contains your Route Table]"
+$RouteTableResourceName = "[resource name of your Azure Route Table ]"
+$RouteTable = Get-AzRouteTable -ResourceGroupName $RouteTableResourceGroupName -Name $RouteTableResourceName
+$ServiceTags = Get-AzNetworkServiceTag -Location $Location
+$BatchServiceTagName = "BatchNodeManagement." + $Location
+$UdrRulePrefixForBatch = $BatchServiceTagName
+if ($ServiceTags -ne $null)
+{
+    $BatchIPRanges = $ServiceTags.Values | Where-Object { $_.Name -ieq $BatchServiceTagName }
+    if ($BatchIPRanges -ne $null)
+    {
+        Write-Host "Start to add rule for your route table..."
+        for ($i = 0; $i -lt $BatchIPRanges.Properties.AddressPrefixes.Count; $i++)
+        {
+            $UdrRuleName = "$($UdrRulePrefixForBatch)_$($i)"
+            Add-AzRouteConfig -Name $UdrRuleName `
+                -AddressPrefix $BatchIPRanges.Properties.AddressPrefixes[$i] `
+                -NextHopType "Internet" `
+                -RouteTable $RouteTable `
+                | Out-Null
+            Write-Host "Add rule $UdrRuleName to your route table..."
+        }
+        Set-AzRouteTable -RouteTable $RouteTable
+    }
+}
+else
+{
+    Write-Host "Failed to fetch service tags, please confirm that your Location is valid."
+}
+```
+
 Güvenlik duvarı cihazının giden trafiğe izin verebilmesi için, giden bağlantı noktalarının NSG giden kurallarındaki gereksinimle aynı şekilde aşağıya inmesine izin vermeniz gerekir.
 -   Azure Bulut hizmetleri olarak hedefe sahip Port 443.
 
-    Azure Güvenlik Duvarı kullanıyorsanız, AzureCloud Hizmet Etiketi ile ağ kuralını belirtebilirsiniz, aksi takdirde hedefin tümü güvenlik duvarı cihazında olarak belirtebilirsiniz.
+    Azure Güvenlik Duvarı kullanıyorsanız, AzureCloud Hizmet Etiketi ile ağ kuralını belirtebilirsiniz. Diğer tür güvenlik duvarı için, yalnızca 443 nolu bağlantı noktası için hedef olarak izin verebilir veya Azure ortamınızın türüne bağlı olarak FQDN'lerin altında izin verebilirsiniz:
+    | Azure Ortamı | Uç Noktalar                                                                                                                                                                                                                                                                                                                                                              |
+    |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+    | Azure Genel      | <ul><li><b>Azure Veri Fabrikası (Yönetim)</b></li><li style="list-style-type:none"><ul><li>\*.frontend.clouddatahub.net</li></ul></li><li><b>Azure Depolama (Yönetim)</b></li><li style="list-style-type:none"><ul><li>\*.blob.core.windows.net</li><li>\*.table.core.windows.net</li></ul></li><li><b>Azure Kapsayıcı Kayıt Defteri (Özel Kurulum)</b></li><li style="list-style-type:none"><ul><li>\*.azurecr.io</li></ul></li><li><b>Olay Merkezi (Günlük)</b></li><li style="list-style-type:none"><ul><li>\*.servicebus.windows.net</li></ul></li><li><b>Microsoft Günlük hizmeti (Dahili Kullanım)</b></li><li style="list-style-type:none"><ul><li>gcs.prod.monitoring.core.windows.net</li><li>prod.warmpath.msftcloudes.com</li><li>azurewatsonanalysis-prod.core.windows.net</li></ul></li></ul> |
+    | Azure Kamu  | <ul><li><b>Azure Veri Fabrikası (Yönetim)</b></li><li style="list-style-type:none"><ul><li>\*.frontend.datamovement.azure.us</li></ul></li><li><b>Azure Depolama (Yönetim)</b></li><li style="list-style-type:none"><ul><li>\*.blob.core.usgovcloudapi.net</li><li>\*.table.core.usgovcloudapi.net</li></ul></li><li><b>Azure Kapsayıcı Kayıt Defteri (Özel Kurulum)</b></li><li style="list-style-type:none"><ul><li>\*.azurecr.us</li></ul></li><li><b>Olay Merkezi (Günlük)</b></li><li style="list-style-type:none"><ul><li>\*.servicebus.usgovcloudapi.net</li></ul></li><li><b>Microsoft Günlük hizmeti (Dahili Kullanım)</b></li><li style="list-style-type:none"><ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>azurewatsonanalysis.usgovcloudapp.net</li></ul></li></ul> |
+    | Azure Çin 21Vianet     | <ul><li><b>Azure Veri Fabrikası (Yönetim)</b></li><li style="list-style-type:none"><ul><li>\*.frontend.datamovement.azure.cn</li></ul></li><li><b>Azure Depolama (Yönetim)</b></li><li style="list-style-type:none"><ul><li>\*.blob.core.chinacloudapi.cn</li><li>\*.table.core.chinacloudapi.cn</li></ul></li><li><b>Azure Kapsayıcı Kayıt Defteri (Özel Kurulum)</b></li><li style="list-style-type:none"><ul><li>\*.azurecr.cn</li></ul></li><li><b>Olay Merkezi (Günlük)</b></li><li style="list-style-type:none"><ul><li>\*.servicebus.chinacloudapi.cn</li></ul></li><li><b>Microsoft Günlük hizmeti (Dahili Kullanım)</b></li><li style="list-style-type:none"><ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>azurewatsonanalysis.chinacloudapp.cn</li></ul></li></ul>
+
+    Azure Depolama, Azure Kapsayıcı Kayıt Defteri ve Etkinlik Hub'ının FQDN'lerine gelince, sanal ağınız için aşağıdaki hizmet bitiş noktalarını etkinleştirmeyi de seçebilirsiniz, böylece bu uç noktalara giden ağ trafiği güvenlik duvarı aygıtınıza yönlendirilmek yerine Azure omurga ağından geçer:
+    -  Microsoft.Storage
+    -  Microsoft.ContainerRegistry
+    -  Microsoft.EventHub
+
 
 -   CRL indirme siteleri olarak hedef ile Port 80.
 
@@ -219,7 +264,7 @@ Güvenlik duvarı cihazının giden trafiğe izin verebilmesi için, giden bağl
     Azure Güvenlik Duvarı kullanıyorsanız, Depolama Hizmeti Etiketi yle ağ kuralını belirtebilirsiniz, aksi takdirde güvenlik duvarı aygıtında hedefe belirli azure dosya depolama url'si olarak izin verebilirsiniz.
 
 > [!NOTE]
-> Azure SQL ve Depolama için, alt netinizde Sanal Ağ hizmet uç noktalarını yapılandırırsanız, aynı bölgedeki Azure-SSIS IR ve Azure SQL arasındaki trafik \ Aynı bölgedeki veya eşleştirilmiş bölgedeki Azure Depolama doğrudan Microsoft Azure omurga ağına yönlendirilir güvenlik duvarı cihazınız yerine.
+> Azure SQL ve Depolama için, alt netinizde Sanal Ağ hizmet uç noktalarını yapılandırırsanız, aynı bölgede azure-SSIS IR ve Azure SQL arasındaki trafik \ Aynı bölgedeki veya eşleştirilmiş bölgedeki Azure Depolama alanı arasındaki trafik, güvenlik duvarı aygıtınız yerine doğrudan Microsoft Azure omurga ağına yönlendirilir.
 
 Azure-SSIS IR'nin giden trafiğini denetleme yeteneğine ihtiyacınız yoksa, tüm trafiği bir sonraki hop türü **Internet'e**zorlamak için rota uygulayabilirsiniz:
 
@@ -241,7 +286,7 @@ Azure-SSIS IR'nin sanal ağla aynı kaynak grubu altında belirli ağ kaynaklar�
 > [!NOTE]
 > Artık Azure-SSIS IR için kendi statik genel IP adreslerinizi getirebilirsiniz. Bu senaryoda, sanal ağ yerine statik genel IP adreslerinizle aynı kaynak grubu altında yalnızca Azure yük bakiyesi ve ağ güvenlik grubu oluştururuz.
 
-Bu kaynaklar Azure-SSIS IR'niz başladığında oluşturulur. Azure-SSIS IR'niz durduğunda silinirler. Azure-SSIS IR için kendi statik genel IP adreslerinizi getirirseniz, Azure-SSIS IR'niz durduğunda silinmezler. Azure-SSIS IR'nizin durmasını engellemek için bu ağ kaynaklarını diğer kaynaklarınızda yeniden kullanmayın. 
+Bu kaynaklar Azure-SSIS IR'niz başladığında oluşturulur. Azure-SSIS IR'niz durduğunda silinirler. Azure-SSIS IR için kendi statik genel IP adreslerinizi getirirseniz, Azure-SSIS IR'niz durduğunda kendi statik genel IP adresleriniz silinmez. Azure-SSIS IR'nizin durmasını engellemek için bu ağ kaynaklarını diğer kaynaklarınızda yeniden kullanmayın.
 
 Sanal ağın/statik genel IP adreslerinin ait olduğu kaynak grubunda/aboneliğinde kaynak kilidi olmadığından emin olun. Salt okunur/sil kilidi yapılandırırsanız, Azure-SSIS IR'nizi başlatma ve durdurma başarısız olur veya yanıt vermeyi durdurur.
 
@@ -249,6 +294,8 @@ Sanal ağın/statik genel IP adreslerinin ait olduğu kaynak grubu/aboneliği al
 - Microsoft.Network/LoadBalancers 
 - Microsoft.Network/AğGüvenliği Grupları 
 - Microsoft.Network/PublicIPAdresleri 
+
+Aboneliğinizin kaynak kotasının yukarıdaki üç ağ kaynağı için yeterli olduğundan emin olun. Özellikle, sanal ağda oluşturulan her Azure-SSIS IR için, yukarıdaki üç ağ kaynağının her biri için iki boş kota ayırmanız gerekir. Azure-SSIS IR'nizi düzenli olarak yükselttiğinde fazladan bir kota kullanılacaktır.
 
 ### <a name="faq"></a><a name="faq"></a>SSS
 
@@ -262,7 +309,7 @@ Sanal ağın/statik genel IP adreslerinin ait olduğu kaynak grubu/aboneliği al
 
   Artık Azure-SSIS IR için kendi statik genel IP adreslerinizi getirebilirsiniz. Bu durumda, IP adreslerinizi veri kaynaklarınız için güvenlik duvarının izin listesine ekleyebilirsiniz. Senaryonuza bağlı olarak Azure-SSIS IR'nizden veri erişimi sağlamak için aşağıdaki diğer seçenekleri de göz önünde bulundurabilirsiniz:
 
-  - Veri kaynağınız şirket içindeyse, bir sanal ağı şirket içi ağınıza bağladıktan ve Azure-SSIS IR'nizi sanal ağ alt ağına katıldıktan sonra, bu alt netin özel IP adresi aralığını güvenlik duvarının veri kaynağınız için izin veren listesine ekleyebilirsiniz .
+  - Veri kaynağınız şirket içindeyse, bir sanal ağı şirket içi ağınıza bağladıktan ve Azure-SSIS IR'nizi sanal ağ alt ağına katıldıktan sonra, bu alt ağın özel IP adresi aralığını güvenlik duvarının veri kaynağınız için izin veren listesine ekleyebilirsiniz.
   - Veri kaynağınız sanal ağ hizmeti uç noktalarını destekleyen bir Azure hizmetiyse, sanal ağ alt netinizde bir sanal ağ hizmeti bitiş noktası yapılandırabilir ve Azure-SSIS IR'nize bu alt ağa katılabilirsiniz. Daha sonra, veri kaynağınız için güvenlik duvarına bu alt ağla birlikte bir sanal ağ kuralı ekleyebilirsiniz.
   - Veri kaynağınız Azure olmayan bir bulut hizmetiyse, giden trafiği Azure-SSIS IR'nizden statik bir genel IP adresi aracılığıyla NVA/Azure Güvenlik Duvarı'na yönlendirmek için udr kullanabilirsiniz. Ardından, NVA/Azure Güvenlik Duvarınızın statik genel IP adresini güvenlik duvarının veri kaynağınız için izin veren listesine ekleyebilirsiniz.
   - Yukarıdaki seçeneklerden hiçbiri gereksinimlerinizi karşılamazsa, [Azure-SSIS IR'niz için proxy olarak kendi kendine barındırılan bir IR yapılandırmayı](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis)düşünün. Daha sonra, kendi barındırdığı IR'nizi barındıran makinenin statik genel IP adresini güvenlik duvarının veri kaynağınız için izin veren listesine ekleyebilirsiniz.

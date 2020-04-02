@@ -8,12 +8,12 @@ ms.workload: core
 ms.topic: quickstart
 ms.date: 02/11/2020
 ms.author: spelluru
-ms.openlocfilehash: 2c9baa4c0e048419ece09b954cee1af21b1f0cc1
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 5a34ac2d1b7401d31ae518334aedc15c626b66a3
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "77158018"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529483"
 ---
 # <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs-azure-eventhubs"></a>Azure Etkinlik Hub'larına etkinlik göndermek veya etkinlikler almak için Java'yı kullanın (azure-eventhubs)
 
@@ -110,7 +110,7 @@ Bir dizeyi UTF-8 bayt kodlamasına dönüştürerek tekil bir olay oluşturun. A
         // handling different flavors of ingestion to Event Hubs here.
         final ScheduledExecutorService executorService = Executors.newScheduledThreadPool(4);
 
-        // Each EventHubClient instance spins up a new TCP/SSL connection, which is expensive.
+        // Each EventHubClient instance spins up a new TCP/TLS connection, which is expensive.
         // It is always a best practice to reuse these instances. The following sample shows this.
         final EventHubClient ehClient = EventHubClient.createSync(connStr.toString(), executorService);
 
@@ -144,7 +144,7 @@ Tebrikler! Bir olay hub'ına ileti gönderdiniz.
 
 ### <a name="appendix-how-messages-are-routed-to-eventhub-partitions"></a>Ek: İletiler EventHub bölümlerine nasıl yönlendirilir?
 
-İletiler tüketiciler tarafından alınmadan önce, öncelikle yayıncılar tarafından bölümlere yayımlanmalıdır. İletiler com.microsoft.azure.eventhubs.EventHubClient nesnesindeki sendSync() yöntemini kullanarak olay hub'ına eşzamanlı olarak yayımlandığında, ileti belirli bir bölüme gönderilebilir veya kullanılabilir tüm bölümlere round-robin bir şekilde dağıtılabilir bölüm anahtarının belirtilip belirtilmediğine bagIn.
+İletiler tüketiciler tarafından alınmadan önce, öncelikle yayıncılar tarafından bölümlere yayımlanmalıdır. İletiler com.microsoft.azure.eventhubs.EventHubClient nesnesinde sendSync() yöntemini kullanarak olay hub'ına eşzamanlı olarak yayımlandığında, ileti belirli bir bölüme gönderilebilir veya bölüm anahtarının belirtilip belirtilmediğine bağlı olarak kullanılabilir tüm bölümlere round-robin bir şekilde dağıtılabilir.
 
 Bölüm anahtarını temsil eden bir dize belirtildiğinde, olayı hangi bölüme göndereceğini belirlemek için anahtar işlenir.
 
@@ -384,7 +384,7 @@ Bu öğretici, EventProcessorHost’un tek bir örneğini kullanır. İş iması
 
 ### <a name="publishing-messages-to-eventhub"></a>İletileri EventHub'a Yayımlama
 
-İletiler tüketiciler tarafından alınmadan önce, öncelikle yayıncılar tarafından bölümlere yayımlanmalıdır. İletiler com.microsoft.azure.eventhubs.EventHubClient nesnesindeki sendSync() yöntemini kullanarak olay hub'ına eşzamanlı olarak yayımlandığında, iletinin belirli bir bölüme gönderilebildiğini veya kullanılabilir tüm bölümlere dağıtılabileceğini belirtmekte yarar vardır. bölüm anahtarının belirtilip belirtilmediğine bagısa bir yuvarlanmandı.
+İletiler tüketiciler tarafından alınmadan önce, öncelikle yayıncılar tarafından bölümlere yayımlanmalıdır. İletiler com.microsoft.azure.eventhubs.EventHubClient nesnesindeki sendSync() yöntemini kullanarak olay hub'ına eşzamanlı olarak yayımlandığında, iletinin belirli bir bölüme gönderilebilir veya bölüm anahtarının belirtilip belirtilmediğine bağlı olarak kullanılabilir tüm bölümlere round-robin bir şekilde dağın.
 
 Bölüm anahtarını temsil eden bir dize belirtildiğinde, olayı hangi bölüme göndereceğini belirlemek için anahtar haşlanır.
 

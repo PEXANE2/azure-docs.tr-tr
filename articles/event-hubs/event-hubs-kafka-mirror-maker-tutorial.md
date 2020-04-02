@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 6dc902b6a26c175713381b4fce88934dca3f409e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3e0339cf4431d3ed36f50b43134803079e30b101
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80283591"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521751"
 ---
 # <a name="use-kafka-mirrormaker-with-event-hubs-for-apache-kafka"></a>Apache Kafka için Etkinlik Hub'ları ile Kafka MirrorMaker kullanın
 
-Bu öğretici, Kafka MirrorMaker kullanarak Kafka etkin bir etkinlik hub'ında bir Kafka aracının nasıl yansıtılabildiğini gösterir.
+Bu öğretici nasıl Kafka MirrorMaker kullanarak bir olay hub bir Kafka komisyoncu ayna gösterir.
 
    ![Etkinlik Göbekli Kafka MirrorMaker](./media/event-hubs-kafka-mirror-maker-tutorial/evnent-hubs-mirror-maker1.png)
 
@@ -38,7 +38,7 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 ## <a name="introduction"></a>Giriş
 Modern bulut ölçekli uygulamalar için göz önünde bulundurulması gereken en önemli noktalardan biri, hizmeti kesintiye uğratmadan altyapıyı güncelleştirme, geliştirme ve değiştirme olanağıdır. Bu öğretici, bir etkinlik merkezinin ve Kafka MirrorMaker'ın, Etkinlik Hub'ları hizmetindeki Kafka giriş akışını "yansıtarak" mevcut kafka boru hattını Azure'a nasıl entegre edebileceğini gösterir. 
 
-Azure Etkinlik Hub'ları Kafka bitiş noktası, Kafka protokolünü (kafka istemcileri) kullanarak Azure Etkinlik Hub'larına bağlanmanızı sağlar. Kafka uygulamasında en az değişiklik yaparak Azure Etkinlik Hub'larına bağlanabilir ve Azure ekosisteminin avantajlarından yararlanabilirsiniz. Kafka etkin Event Hubs şu anda Kafka sürümleri 1.0 ve sonrası destekler.
+Azure Etkinlik Hub'ları Kafka bitiş noktası, Kafka protokolünü (kafka istemcileri) kullanarak Azure Etkinlik Hub'larına bağlanmanızı sağlar. Kafka uygulamasında en az değişiklik yaparak Azure Etkinlik Hub'larına bağlanabilir ve Azure ekosisteminin avantajlarından yararlanabilirsiniz. Etkinlik Hub'ları şu anda Kafka 1.0 ve sonraki sürümlerini destekler.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -56,11 +56,11 @@ Bu öğreticiyi tamamlamak için şunlar sahip olduğunuzdan emin olun:
 
 ## <a name="create-an-event-hubs-namespace"></a>Event Hubs ad alanı oluşturma
 
-Herhangi bir Event Hubs hizmetinden göndermek ve almak için Event Hubs ad alanı gereklidir. Event Hubs Kafka uç noktası alma yönergeleri için bkz. [Kafka özellikli Event Hubs oluşturma](event-hubs-create.md). Daha sonra kullanmak üzere Olay Hub'ları bağlantı dizesini kopyaladığından emin olun.
+Herhangi bir Event Hubs hizmetinden göndermek ve almak için Event Hubs ad alanı gereklidir. Bkz. Ad alanı ve olay hub'ı oluşturmak için yönergeler için bir [olay hub'ı oluşturma.](event-hubs-create.md) Daha sonra kullanmak üzere Olay Hub'ları bağlantı dizesini kopyaladığından emin olun.
 
 ## <a name="clone-the-example-project"></a>Örnek projeyi kopyalama
 
-Artık Kafka özellikli Olay Hub'ları bağlantı dizeniz olduğuna göre, Kafka deposu için Azure `mirror-maker` Etkinlik Hub'larını klonla ve alt klasöre gidin:
+Artık bir Olay Hub'ları bağlantı dizeniz olduğuna göre, Kafka deposu için Azure `mirror-maker` Etkinlik Hub'larını klonla ve alt klasöre gidin:
 
 ```shell
 git clone https://github.com/Azure/azure-event-hubs-for-kafka.git
@@ -118,7 +118,7 @@ bin/kafka-mirror-maker.sh --consumer.config source-kafka.config --num.streams 1 
 
 Olayların etkinlik merkezine ulaştığını doğrulamak için [Azure portalındaki](https://azure.microsoft.com/features/azure-portal/)giriş istatistiklerine bakın veya bir tüketiciyi etkinlik merkezine karşı çalıştırın.
 
-MirrorMaker'ın çalıştırılmasıyla, kaynak Kafka kümesine gönderilen tüm olaylar hem Kafka kümesi hem de aynalı Kafka etkin etkinlik merkezi hizmeti tarafından alınır. MirrorMaker ve Event Hubs Kafka bitiş noktasını kullanarak, varolan kafka ardışık hattını, varolan kümeyi değiştirmeden veya devam eden veri akışını kesintiye uğratmadan yönetilen Azure Etkinlik Hub'ları hizmetine geçirebilirsiniz.
+MirrorMaker'ın çalıştırılmasıyla, kaynak Kafka kümesine gönderilen tüm olaylar hem Kafka kümesi hem de aynalı olay merkezi tarafından alınır. MirrorMaker ve Event Hubs Kafka bitiş noktasını kullanarak, varolan kafka ardışık hattını, varolan kümeyi değiştirmeden veya devam eden veri akışını kesintiye uğratmadan yönetilen Azure Etkinlik Hub'ları hizmetine geçirebilirsiniz.
 
 ## <a name="samples"></a>Örnekler
 GitHub'da aşağıdaki örneklere bakın:

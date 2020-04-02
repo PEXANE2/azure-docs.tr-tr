@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 02/27/2020
 ms.author: allensu
 ms.custom: fasttrack-edit
-ms.openlocfilehash: f75f8392b01e69760171c13c0e6d3b2e22b20dea
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 5b4347cb5032b7f3651d0d3fcb20dc5d416f9bee
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80421182"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546564"
 ---
 # <a name="what-is-azure-private-link"></a>Azure Özel Bağlantı nedir? 
 Azure Özel Bağlantı, Azure PaaS Hizmetlerine (örneğin, Azure Depolama ve SQL Veritabanı) erişmenizi ve Azure'un sanal [ağınızdaki özel](private-endpoint-overview.md) bir bitiş noktası üzerinden müşteriye ait/iş ortağı hizmetlerine erişmenizi sağlar.
@@ -53,15 +53,15 @@ Azure Private Link aşağıdaki avantajları sağlar:
 |  |  MariaDB için Azure Veritabanı         | Tüm genel bölgeler      |   GA <br/> [Daha fazlasını öğrenin](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-private-link)      |
 |  |  Azure Key Vault         | Tüm genel bölgeler      |   GA   <br/> [Daha fazlasını öğrenin](https://docs.microsoft.com/azure/key-vault/private-link-service)   |
 |  |Azure Kubernetes Servisi - Kubernetes API | Tüm genel bölgeler      |   GA   <br/> [Daha fazlasını öğrenin](https://docs.microsoft.com/azure/aks/private-clusters)   |
-|  |Azure Search | DOĞU ABD, BATı US2, GÜNEY ORTA ABD |   Önizleme    |
+|  |Azure Search | DOĞU ABD, BATı ABD 2, GÜNEY ORTA ABD |   Önizleme    |
 |  |Azure Container Kayıt Defteri | Tüm genel bölgeler      |   Önizleme   |
 |  |Azure Uygulama Yapılandırması | Tüm genel bölgeler      |   Önizleme   |
-|  |Azure Backup | DOĞU ABD, BATı US2, GÜNEY ORTA ABD     |   Önizleme   |
+|  |Azure Backup | DOĞU ABD, BATı ABD 2, GÜNEY ORTA ABD     |   Önizleme   |
 |  |Azure Event Hub | Tüm genel bölgeler      |   Önizleme    |
 |  |Azure Service Bus | Tüm genel bölgeler      |   Önizleme   |
 |  |Azure Geçişi | Tüm genel bölgeler      |   Önizleme   |
-|  |Azure Event Grid| Tüm genel bölgeler      |   Önizleme   <br/> [Daha fazlasını öğrenin](https://docs.microsoft.com/azure/event-grid/network-security)   |
-|  |Azure Web Apps | DOĞU ABD, BATı US2, GÜNEY ORTA ABD      |   Önizleme   <br/> [Daha fazlasını öğrenin](https://docs.microsoft.com/azure/app-service/networking/private-endpoint)   |
+|  |Azure Event Grid| DOĞU ABD, BATı ABD 2, GÜNEY ORTA ABD      |   Önizleme   <br/> [Daha fazlasını öğrenin](https://docs.microsoft.com/azure/event-grid/network-security)   |
+|  |Azure Web Apps | DOĞU ABD, BATı ABD 2, GÜNEY ORTA ABD      |   Önizleme   <br/> [Daha fazlasını öğrenin](https://docs.microsoft.com/azure/app-service/networking/private-endpoint)   |
 
 En güncel bildirimler için [Azure Sanal Ağ güncelleştirmeleri sayfasını](https://azure.microsoft.com/updates/?product=virtual-network)kontrol edin.
 

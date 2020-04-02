@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/30/2020
-ms.openlocfilehash: 35dbd064a09a96dae58e1b15a6d8889bda45ee0d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/30/2020
+ms.openlocfilehash: f103db1d0de7a9d538f56b8ade331dc856b26bce
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76899835"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80547003"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Azure Bilişsel Arama için bir fiyatlandırma katmanı seçin
 
@@ -41,7 +41,9 @@ Katmanlar şu şekilde farklılaştırılır:
 
 Seçtiğiniz katman faturalandırılabilir oranı belirler. Azure portalından aşağıdaki ekran görüntüsü kullanılabilir katmanları, eksi fiyatlandırmayı (portalda ve [fiyatlandırma sayfasında](https://azure.microsoft.com/pricing/details/search/)bulabileceğiniz) gösterir. **Ücretsiz,** **Temel**ve **Standart** en yaygın katmanlardır.
 
-**Ücretsiz,** diğer abonelerle paylaşılan bir kümeüzerinde sınırlı bir arama hizmeti oluşturur. Hızlı başlatmalar ve öğreticiler de dahil olmak üzere küçük projeleri tamamlayabilirsiniz, ancak hizmeti ölçeklendiremez veya önemli iş yüklerini çalıştıramazsınız. **Temel** ve **Standart,** **varsayılan** standart olan en yaygın olarak kullanılan faturalandırılabilir katmanlardır.
+**Ücretsiz** quickstarts ve öğreticiler de dahil olmak üzere küçük projeler için sınırlı bir arama hizmeti oluşturur. Dahili olarak, çoğaltmalar ve bölümler birden çok abone arasında paylaşılır. Ücretsiz bir hizmeti ölçeklendiremezsiniz veya önemli iş yüklerini çalıştıramazsınız.
+
+**Temel** ve **Standart,** **varsayılan** standart olan en yaygın olarak kullanılan faturalandırılabilir katmanlardır. Özel kaynaklar denetiminizde, daha büyük projeler dağıtabilir, performansı optimize edebilir ve kapasiteyi ayarlayabilirsiniz.
 
 ![Azure Bilişsel Arama'nın fiyatlandırma katmanları](media/search-sku-tier/tiers.png "Azure Bilişsel Arama'nın fiyatlandırma katmanları")
 
@@ -55,10 +57,10 @@ Bazı katmanlar belirli çalışma türleri için optimize edilebiyi optimize ed
 
 Azure Bilişsel Arama'da oluşturulmuş bir çözüm aşağıdaki yollarla maliyete neden olabilir:
 
-+ Minimum yapılandırmada temel hizmet maliyeti (hizmet oluşturma)
++ En az yapılandırmada 24x7 çalıştıran hizmetin maliyeti sabittir (bir bölüm ve yineleme)
 + Ölçekleme yaparken artımlı maliyet (yineleme veya bölüm ekleme)
 + Bant genişliği ücretleri (giden veri aktarımı) 
-+ Bilişsel arama (AI zenginleştirme için Bilişsel Hizmetler eklemek, bilgi deposu için Azure depolama)
++ Bilişsel arama (AI zenginleştirme için Bilişsel Hizmetler ekleme veya bilgi deposu için Azure depolama kullanma)
 
 ### <a name="service-costs"></a>Servis maliyetleri
 
@@ -106,13 +108,13 @@ Faturalandırma oranı SU başına saatliktir. Her katman giderek daha yüksek b
 
 Aşağıdaki öneriler maliyetleri minimumda tutmanıza yardımcı olabilir:
 
-- Bant genişliği ücretlerini en aza indirmek veya ortadan kaldırmak için aynı bölgedeki veya mümkün olduğunca az bölgede tüm kaynakları oluşturun.
++ Bant genişliği ücretlerini en aza indirmek veya ortadan kaldırmak için aynı bölgedeki veya mümkün olduğunca az bölgede tüm kaynakları oluşturun.
 
-- Azure Bilişsel Arama, Bilişsel Hizmetler ve çözümünüzde kullanılan diğer Azure hizmetleri gibi tüm hizmetleri tek bir kaynak grubunda birleştirin. Azure portalında kaynak grubunu bulun ve gerçek ve öngörülen harcamaları anlamak için **Maliyet Yönetimi** komutlarını kullanın.
++ Azure Bilişsel Arama, Bilişsel Hizmetler ve çözümünüzde kullanılan diğer Azure hizmetleri gibi tüm hizmetleri tek bir kaynak grubunda birleştirin. Azure portalında kaynak grubunu bulun ve gerçek ve öngörülen harcamaları anlamak için **Maliyet Yönetimi** komutlarını kullanın.
 
-- İsteklerin ve yanıtların veri merkezi sınırı içinde kalması için ön uç uygulamanız için Azure Web Uygulamasını düşünün.
++ İsteklerin ve yanıtların veri merkezi sınırı içinde kalması için ön uç uygulamanız için Azure Web Uygulamasını düşünün.
 
-- Dizin oluşturma gibi kaynak yoğun işlemler için ölçeklendirin ve ardından normal sorgu iş yükleri için aşağı doğru yeniden yeniden ayarlayın. Azure Bilişsel Arama için minimum yapılandırmayla başlayın (bir SU bir bölüm ve bir yinelemeden oluşur) ve ardından daha fazla kapasite gereksinimini gösteren kullanım modellerini belirlemek için kullanıcı etkinliğini izleyin. Öngörülebilir bir desen varsa, ölçeği etkinlikle eşitleyebilir (bunu otomatikleştirmek için kod yazmanız gerekir).
++ Dizin oluşturma gibi kaynak yoğun işlemler için ölçeklendirin ve ardından normal sorgu iş yükleri için aşağı doğru yeniden yeniden ayarlayın. Azure Bilişsel Arama için minimum yapılandırmayla başlayın (bir SU bir bölüm ve bir yinelemeden oluşur) ve ardından daha fazla kapasite gereksinimini gösteren kullanım modellerini belirlemek için kullanıcı etkinliğini izleyin. Öngörülebilir bir desen varsa, ölçeği etkinlikle eşitleyebilir (bunu otomatikleştirmek için kod yazmanız gerekir).
 
 Ayrıca, harcamalarla ilgili yerleşik araçlar ve özellikler için [Faturalandırma ve maliyet yönetimini](https://docs.microsoft.com/azure/billing/billing-getting-started) ziyaret edin.
 
@@ -130,7 +132,6 @@ Azure Bilişsel Arama'da kapasite *çoğaltma* ve *bölüm*olarak yapılandırı
 
 > [!NOTE]
 > Tüm Standart ve Depolama Optimize edilmiş katmanlar, bakiyeyi değiştirerek [sisteminizi hız veya depolama için optimize](search-performance-optimization.md) edebilmeniz için esnek çoğaltma ve bölüm [kombinasyonlarını](search-capacity-planning.md#chart) destekler. Temel katman, yüksek kullanılabilirlik için en fazla üç yineleme sunar, ancak yalnızca bir bölümü vardır. Ücretsiz katmanlar özel kaynaklar sağlamaz: bilgi işlem kaynakları birden çok abone tarafından paylaşılır.
-
 
 ### <a name="evaluating-capacity"></a>Kapasitenin değerlendirilmesi
 
@@ -152,7 +153,7 @@ Kapasiteyi tahmin etmek için bir yaklaşım, Serbest katmanla başlamaktır. Ü
 
 + [Ücretsiz bir hizmet oluşturun.](search-create-service-portal.md)
 + Küçük, temsili bir veri kümesi hazırlayın.
-+ [Portalda bir başlangıç dizini oluşturun](search-create-index-portal.md) ve boyutunu not edin. Özellikler ve özniteliklerin depolama üzerinde etkisi vardır. Örneğin, öneriyi ler (typeahead) ekleme depolama gereksinimlerini artırır. Aynı veri kümesini kullanarak, depolama gereksinimlerinin nasıl değiştiğini görmek için her alanda farklı özniteliklere sahip bir dizinin birden çok sürümü oluşturmayı deneyebilirsiniz. Daha fazla bilgi için [temel dizin oluştur'daki "Depolama etkileri"](search-what-is-an-index.md#index-size)başlıklı ana bakın.
++ [Portalda bir başlangıç dizini oluşturun](search-create-index-portal.md) ve boyutunu not edin. Özellikler ve özniteliklerin depolama üzerinde etkisi vardır. Örneğin, önericilerin (sizin gibi ara sorguları) eklenmesi depolama gereksinimlerini artırır. Aynı veri kümesini kullanarak, depolama gereksinimlerinin nasıl değiştiğini görmek için her alanda farklı özniteliklere sahip bir dizinin birden çok sürümü oluşturmayı deneyebilirsiniz. Daha fazla bilgi için [temel dizin oluştur'daki "Depolama etkileri"](search-what-is-an-index.md#index-size)başlıklı ana bakın.
 
 Elinde kaba bir tahminle, bu tutarı iki dizin (geliştirme ve üretim) için bütçeye iki katına çıkarabilir ve katmanınızı buna göre seçebilirsiniz.
 
@@ -196,7 +197,7 @@ Depolama Optimize Edilen katmanlar, sorgu gecikmesi gereksinimlerinin daha az ö
 
 + Ölçümlerin sorgular etrafında oluşturmasına ve kullanım desenleri (iş saatlerinde sorgular, yoğun olmayan saatlerde dizini oluşturma) etrafında veri toplamasına izin verin. Hizmet sağlama kararlarını bildirmek için bu verileri kullanın. Saatlik veya günlük olarak pratik olmasa da, sorgu birimlerinde planlanan değişiklikleri karşılamak için bölümleri ve kaynakları dinamik olarak ayarlayabilirsiniz. Ayrıca, düzeyler eyleme geçmeyi gerektirecek kadar uzun tutarsa, planlanmamış ancak sürekli değişiklikleri de barındırabilirsiniz.
 
-+ Yetersiz sağlamanın tek dezavantajının, gerçek gereksinimler öngörülerinizden daha büyükse bir hizmeti yıkmak zorunda kalmak zorunda kalmak olması olduğunu unutmayın. Hizmet kesintisini önlemek için, daha yüksek bir katmanda yeni bir hizmet oluşturur ve tüm uygulamalar ve istekler yeni bitiş noktasını hedefleyene kadar yan yana çalıştırırsınız.
++ Sağlama nın tek dezavantajının, gerçek gereksinimler öngörülerinizden daha büyükse bir hizmeti yıkmak zorunda kalmak zorunda kalmak olması olduğunu unutmayın. Hizmet kesintisini önlemek için, daha yüksek bir katmanda yeni bir hizmet oluşturur ve tüm uygulamalar ve istekler yeni bitiş noktasını hedefleyene kadar yan yana çalıştırırsınız.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

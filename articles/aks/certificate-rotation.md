@@ -6,12 +6,12 @@ author: zr-msft
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: zarhoads
-ms.openlocfilehash: f299b13baf5811b92bdc2e40b027868617d7574c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 00dcef4ae0f04fc7f550859238ae8c7e1ad19384
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79368528"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549062"
 ---
 # <a name="rotate-certificates-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Hizmetinde (AKS) sertifikaları döndürme
 
@@ -32,7 +32,7 @@ AKS aşağıdaki sertifikaları, Sertifika Yetkililerini ve Hizmet Hesaplarını
 * Her kubelet ayrıca, kubelet'den API sunucusuna iletişim için Küme CA tarafından imzalanan bir Sertifika İmzalama İsteği (CSR) oluşturur.
 * Etcd anahtar değer deposu, PD'den API sunucusuna iletişim için Cluster CA tarafından imzalanmış bir sertifikaya sahiptir.
 * Etcd anahtar değer deposu, AKS kümesindeki etcd yinelemeleri arasında veri çoğaltmanın doğruluğunu doğrulamak ve yetkilendirmek için sertifikaları imzalayan bir CA oluşturur.
-* API toplayıcısı, Azure için Açık Servis Aracısı gibi diğer API'lerle iletişim için sertifika vermek için Cluster CA'yı kullanır. API toplayıcısı da bu sertifikaları vermek için kendi CA'sına sahip olabilir, ancak şu anda Küme CA'sını kullanır.
+* API toplayıcısı, diğer API'lerle iletişim için sertifika vermek için Küme CA'sını kullanır. API toplayıcısı da bu sertifikaları vermek için kendi CA'sına sahip olabilir, ancak şu anda Küme CA'sını kullanır.
 * Her düğüm, Küme CA tarafından imzalanmış bir Hizmet Hesabı (SA) belirteci kullanır.
 * İstemcinin `kubectl` AKS kümesiyle iletişim kurma sertifikası vardır.
 

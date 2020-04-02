@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 2970ebf42acb87e93f8b827b3687b219da5867c7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9225cfd9793a84f371387d6450a3dfa80ba74de3
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80244299"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80547533"
 ---
 # <a name="azure-security-baseline-for-azure-container-registry"></a>Azure Kapsayıcı Kayıt Defteri için Azure Güvenlik Taban Çizgisi
 
@@ -68,7 +68,6 @@ Ağ kaynaklarınızı koruyun:https://docs.microsoft.com/azure/security-center/s
 Son noktaların onaylanan IP adreslerine sınırlı bir süre için maruz kalmasını sınırlamak için NSG'leri yapılandırmak için Azure Güvenlik Merkezi Just In Time Network erişimini kullanabilirsiniz. Ayrıca, gerçek trafik ve tehdit istihbaratına dayalı Bağlantı Noktaları ve Kaynak IP'leri sınırlayan NSG yapılandırmalarını önermek için Azure Güvenlik Merkezi Uyarlamalı Ağ Sertleştirme'yi kullanın.
 
 DDoS koruması nasıl yapılandırılabilen:https://docs.microsoft.com/azure/virtual-network/manage-ddos-protection
-
 
 Azure Güvenlik Duvarı nasıl dağıtılır:https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal
 

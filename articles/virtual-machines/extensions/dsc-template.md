@@ -13,16 +13,16 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 10/05/2018
 ms.author: robreed
-ms.openlocfilehash: ef781653332984a7fb6d71ef91d53cbf77e6c91c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 89bae60c30cfe82d38c61f385dbaef574b4152d8
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72437943"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80547791"
 ---
 # <a name="desired-state-configuration-extension-with-azure-resource-manager-templates"></a>Azure Kaynak Yöneticisi şablonları ile İstenen Durum Yapılandırması uzantısı
 
-Bu makalede, [İstenilen Durum Yapılandırması (DSC) uzantıiş](dsc-overview.md)için Azure Kaynak Yöneticisi şablonu açıklanır. Örneklerin çoğu, Azure Otomasyonu ile yerleşik kullanıma **registrationurl** (String olarak sağlanan) ve **RegistrationKey'i** [(PSCredential](/dotnet/api/system.management.automation.pscredential)olarak sağlanmıştır) kullanır. Bu değerleri edinme hakkında ayrıntılı bilgi için Azure [Automation State Configuration - Güvenli kayıt tarafından yönetilen Onboarding makineleri](/azure/automation/automation-dsc-onboarding#secure-registration)ne bıyiklerine bakın.
+Bu makalede, [İstenilen Durum Yapılandırması (DSC) uzantıiş](dsc-overview.md)için Azure Kaynak Yöneticisi şablonu açıklanır. Örneklerin çoğu, Azure Otomasyonu ile yerleşik kullanıma **registrationurl** (String olarak sağlanan) ve **RegistrationKey'i** [(PSCredential](/dotnet/api/system.management.automation.pscredential)olarak sağlanmıştır) kullanır. Bu değerleri edinme hakkında ayrıntılı bilgi için Azure [Automation State Configuration - Güvenli kayıt tarafından yönetilen Onboarding makineleri](/azure/automation/automation-dsc-onboarding#onboarding-securely-using-registration)ne bıyiklerine bakın.
 
 > [!NOTE]
 > Biraz farklı şema örnekleri karşılaşabilirsiniz. Şemadaki değişiklik Ekim 2016 sürümünde meydana geldi. Ayrıntılar için önceki [biçimden Güncelleştirme'ye](#update-from-a-previous-format)bakın.

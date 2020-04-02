@@ -5,20 +5,20 @@ services: virtual-machines
 author: ayshakeen
 ms.service: virtual-machines
 ms.topic: article
-ms.date: 02/05/2019
-ms.author: lahugh
-ms.openlocfilehash: e8952218675493710cbdd1f92661e9a9c077f34c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/31/2020
+ms.author: jushiman
+ms.openlocfilehash: 3e0552570d5bdb7f812852cd058710b833b7fdd4
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78164058"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521337"
 ---
 # <a name="m-series"></a>M serisi
 
-M serisi yüksek vCPU sayısı (128 vCPUs'a kadar) ve büyük miktarda bellek (3,8 TiB'ye kadar) sunar. Ayrıca, yüksek vCPU sayılarından ve büyük miktarda bellekten yararlanan son derece büyük veritabanları veya diğer uygulamalar için de idealdir. M-serisi boyutları Intel® Xeon® CPU E7-8890 v3 @ 2.50GHz dayanmaktadır
+M serisi yüksek vCPU sayısı (128 vCPUs'a kadar) ve büyük miktarda bellek (3,8 TiB'ye kadar) sunar. Ayrıca, yüksek vCPU sayılarından ve büyük miktarda bellekten yararlanan son derece büyük veritabanları veya diğer uygulamalar için de idealdir. M&reg; serisi boyutları hem Intel Xeon&reg; Işlemci E7-8890 v3 @ 2.50GHz&reg; ve Intel&reg; Xeon Platinum 8280M 2.7GHz (Cascade Lake) üzerinde desteklenir.
 
-M-serisi VM özelliği Intel® Hiper-Threading Teknolojisi
+M-serisi VM özelliği&reg; Intel Hyper-Threading Teknolojisi.
 
 ACU: 160-180
 

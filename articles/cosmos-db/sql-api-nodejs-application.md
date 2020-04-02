@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: sngun
 Customer intent: As a developer, I want to build a Node.js web application to access and manage SQL API account resources in Azure Cosmos DB, so that customers can better use the service.
-ms.openlocfilehash: 7a01c436f31a8ce5b8071db3eda4cf5562c421c0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 3c50e82647b22a18edee92f47abc1d136670cacc
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75441273"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80519665"
 ---
 # <a name="tutorial-build-a-nodejs-web-app-using-the-javascript-sdk-to-manage-a-sql-api-account-in-azure-cosmos-db"></a>Öğretici: Azure Cosmos DB'deki bir SQL API hesabını yönetmek için JavaScript SDK'yı kullanarak bir Düğüm.js web uygulaması oluşturun 
 
@@ -83,7 +83,7 @@ Bu makaledeki yönergeleri izlemeden önce aşağıdaki kaynaklara sahip olduğu
    npm start
    ```
 
-1. Tarayıcınızda yön vererek yeni uygulamanızı [http://localhost:3000](http://localhost:3000)görüntüleyebilirsiniz.
+1. Tarayıcınızda `http://localhost:3000` adresine giderek yeni uygulamanızı görüntüleyebilirsiniz.
    
    ![Node.js öğrenin - Bir tarayıcı penceresinde Hello World uygulamasının ekran görüntüsü](./media/sql-api-nodejs-application/cosmos-db-node-js-express.png)
 
@@ -359,7 +359,7 @@ Bu makaledeki yönergeleri izlemeden önce aşağıdaki kaynaklara sahip olduğu
 
 ## <a name="build-a-user-interface"></a><a name="_Toc395783181"></a>Kullanıcı arabirimi oluşturma
 
-Şimdi kullanıcının uygulamayla etkileşim kurabilmesi için kullanıcı arabirimini oluşturalım. Önceki bölümlerde oluşturduğumuz Express uygulaması, görüntüleme altyapısı olarak **Jade**'i kullanır.
+Şimdi kullanıcı arabirimini oluşturalım, böylece bir kullanıcı uygulamayla etkileşimkurabilir. Önceki bölümlerde oluşturduğumuz Express uygulaması, görüntüleme altyapısı olarak **Jade**'i kullanır.
 
 1. **views** dizinindeki **layout.jade** dosyası diğer **.jade** dosyaları için genel bir şablon olarak kullanılır. Bu adımda, web sitesi tasarlamak için kullanılan bir araç seti olan Twitter Bootstrap'i kullanmak için bu dosyayı değiştireceksiniz.  
 

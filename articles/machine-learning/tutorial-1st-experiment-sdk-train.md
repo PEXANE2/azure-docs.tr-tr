@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 02/10/2020
-ms.openlocfilehash: aa90655ecb14abe38ec8fdfc6c18e7d292abbef3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: c8f259d2d4df46470a042c3f65ac1b8e1f66b1dd
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79238681"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546049"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>Öğretici: Tren ilk ML modeli
 
@@ -28,7 +28,7 @@ Bu öğreticide, aşağıdaki görevleri öğreneceksiniz:
 > [!div class="checklist"]
 > * Çalışma alanınızı bağlayın ve bir deneme oluşturun
 > * Veri yükleme ve tren scikit-öğren modelleri
-> * Seminer sonuçlarını portalda görüntüleme
+> * Eğitim sonuçlarını stüdyoda görüntüleme
 > * En iyi modeli alma
 
 ## <a name="prerequisites"></a>Ön koşullar
@@ -89,7 +89,7 @@ X_train, X_test, y_train, y_test = train_test_split(x_df, y_df, test_size=0.2, r
 
 ## <a name="train-a-model"></a>Modeli eğitme
 
-Basit bir scikit-learn modelini küçük ölçekli eğitim için yerel olarak kolayca eğitim yapılabilir, ancak düzinelerce farklı özellik permütasyonu ve hiperparametre ayarlarıyla birçok yineleme yitirdiğinizde, hangi modelleri eğittiğinizi ve nasıl eğittiğinizi kolayca gözden kaçırabilirsiniz. onları eğitti. Aşağıdaki tasarım deseni, buluttaki eğitiminizi kolayca izlemek için SDK'dan nasıl yararlanabileceğinizi gösterir.
+Basit bir scikit-learn modelini eğitmek küçük ölçekli eğitimler için yerel olarak kolayca yapılabilir, ancak düzinelerce farklı özellik permütasyonu ve hiperparametre ayarlarıyla birçok yinelemeyi eğitirken, hangi modelleri eğittiğinizi ve onları nasıl eğittiğinizi kolayca gözden kaçırabilirsiniz. Aşağıdaki tasarım deseni, buluttaki eğitiminizi kolayca izlemek için SDK'dan nasıl yararlanabileceğinizi gösterir.
 
 Sırt modellerini farklı hiperparametre alfa değerleri arasında bir döngü içinde eğiten bir komut dosyası oluşturun.
 
@@ -124,32 +124,33 @@ Yukarıdaki kod aşağıdakileri gerçekleştirir:
 
 1. Dizideki `alphas` her alfa hiperparametre değeri için deneme içinde yeni bir çalıştırma oluşturulur. Alfa değeri, her çalıştırma arasında ayrım yapmak için günlüğe kaydedilir.
 1. Her çalıştırmada, bir Ridge modeli anlık, eğitimli ve tahminleri çalıştırmak için kullanılır. Kök ortalaması-kareli hata, gerçek ve öngörülen değerler için hesaplanır ve sonra çalıştır'a kaydedilir. Bu noktada çalışma hem alfa değeri hem de rmse doğruluğu için bağlı meta veri vardır.
-1. Ardından, her çalıştırma için model seri hale getirilir ve çalıştırmaya yüklenir. Bu, portaldaki çalıştırmadan model dosyasını indirmenizi sağlar.
+1. Ardından, her çalıştırma için model seri hale getirilir ve çalıştırmaya yüklenir. Bu, model dosyasını stüdyodaki çalıştırmadan indirmenize olanak tanır.
 1. Her yinelemenin sonunda çalışma çağrılar `run.complete()`ekilerek tamamlanır.
 
-Eğitim tamamlandıktan sonra, `experiment` portaldaki denemeye bir bağlantı getirmek için değişkeni arayın.
+Eğitim tamamlandıktan sonra, `experiment` stüdyodaki denemeye bir bağlantı getirmek için değişkeni arayın.
 
 ```python
 experiment
 ```
 
-<table style="width:100%"><tr><th>Adı</th><th>Çalışma alanı</th><th>Rapor Sayfası</th><th>Dokümanlar Sayfası</th></tr><tr><td>diyabet deneyi</td><td>çalışma alanı-adı</td><td>Azure portalına bağlantı</td><td>Belgelere Bağlantı</td></tr></table>
+<table style="width:100%"><tr><th>Adı</th><th>Çalışma alanı</th><th>Rapor Sayfası</th><th>Dokümanlar Sayfası</th></tr><tr><td>diyabet deneyi</td><td>çalışma alanı-adı</td><td>Azure Machine Learning stüdyosuna bağlantı</td><td>Belgelere Bağlantı</td></tr></table>
 
-## <a name="view-training-results-in-portal"></a>Eğitim sonuçlarını portalda görüntüleyin
+## <a name="view-training-results-in-studio"></a>Eğitim sonuçlarını stüdyoda görüntüleyin
 
-Azure **bağlantısı portalı'nı** takip etmek sizi ana deneme sayfasına götürür. Burada deneydeki tüm bireysel koşuları görüyorsunuz. Özel günlüğe kaydedilmiş`alpha_value` değerler `rmse`(ve bu durumda) her çalıştırma için alan haline gelir ve deneme sayfasının üst kısmındaki grafikler ve kutucuklar için de kullanılabilir hale gelir. Bir grafiğe veya döşemeye günlüğe kaydedilmiş bir metrik eklemek için, grafiğin üzerine tıklayın, edit düğmesini tıklatın ve özel günlüğe kaydedilmiş metrikünüzü bulun.
+Azure **Machine Learning stüdyosuna Bağlantı'yı** takip etmek sizi ana deneme sayfasına götürür. Burada deneydeki tüm bireysel koşuları görüyorsunuz. Özel günlüğe kaydedilmiş`alpha_value` değerler `rmse`(ve bu durumda) her çalıştırma için alan haline gelir ve deneme sayfasının üst kısmındaki grafikler ve kutucuklar için de kullanılabilir hale gelir. Bir grafiğe veya döşemeye günlüğe kaydedilmiş bir metrik eklemek için, grafiğin üzerine tıklayın, edit düğmesini tıklatın ve özel günlüğe kaydedilmiş metrikünüzü bulun.
 
 Yüzlerce ve binlerce ayrı çalıştırmaüzerinde ölçekte eğitim modelleri incelendiğinde, bu sayfa, eğittiğiniz her modeli, özellikle nasıl eğitildiğini ve benzersiz ölçümlerinizin zaman içinde nasıl değiştiğini görmenizi kolaylaştırır.
 
-![Portal'da Ana Deney sayfası](./media/tutorial-1st-experiment-sdk-train/experiment-main.png)
+:::image type="content" source="./media/tutorial-1st-experiment-sdk-train/experiment-main.png" alt-text="Stüdyodaki Ana Deney sayfası.":::
 
-Sütundaki bir çalıştırma numarası `RUN NUMBER` bağlantısına tıkladığınızda, her bir çalışma için sayfaya gidin. Varsayılan sekme **Ayrıntılar,** her çalıştırmada daha ayrıntılı bilgiler gösterir. **Çıktılar** sekmesine gidin ve her `.pkl` eğitim yinelemesi sırasında çalıştırılan modelin dosyasını görürsünüz. Burada model dosyasını el ile yeniden eğitmek yerine indirebilirsiniz.
 
-![Portal'da ayrıntılar sayfasını çalıştır](./media/tutorial-1st-experiment-sdk-train/model-download.png)
+Tek bir çalıştırmanın `RUN NUMBER` sayfasını görmek için sütundaki çalıştır sayısı bağlantısını seçin. Varsayılan sekme **Ayrıntılar,** her çalıştırmada daha ayrıntılı bilgiler gösterir. **Çıktılar + günlükler** sekmesine gidin ve `.pkl` her eğitim yinelemesi sırasında çalıştırılan modelin dosyasını görürsünüz. Burada model dosyasını el ile yeniden eğitmek yerine indirebilirsiniz.
+
+:::image type="content" source="./media/tutorial-1st-experiment-sdk-train/model-download.png" alt-text="Stüdyoda ayrıntılar sayfasını çalıştırın.":::
 
 ## <a name="get-the-best-model"></a>En iyi modeli alın
 
-Portaldaki denemeden model dosyalarını indirebilmeek, bunları programlı olarak da indirebilirsiniz. Aşağıdaki kod, denemedeki her çalıştırmada yinelenir ve hem günlüğe kaydedilmiş çalıştırma ölçümlerine hem de çalıştırma ayrıntılarına (run_id içerir) erişir. Bu, en iyi çalıştırmayı izler, bu durumda en düşük kök ortalaması-kareli hata ile çalıştırın.
+Stüdyodaki denemeden model dosyalarını indirebilmeek, bunları programlı olarak da indirebilirsiniz. Aşağıdaki kod, denemedeki her çalıştırmada yinelenir ve hem günlüğe kaydedilmiş çalıştırma ölçümlerine hem de çalıştırma ayrıntılarına (run_id içerir) erişir. Bu, en iyi çalıştırmayı izler, bu durumda en düşük kök ortalaması-kareli hata ile çalıştırın.
 
 ```python
 minimum_rmse_runid = None
@@ -214,7 +215,7 @@ Bu öğreticide, aşağıdaki görevleri yaptınız:
 > [!div class="checklist"]
 > * Çalışma alanınızı bağladı ve bir deneme oluşturdu
 > * Yüklü veri ve eğitimli scikit-learn modelleri
-> * Portalda görüntülenen eğitim sonuçları ve alınan modeller
+> * Stüdyoda görüntülenen eğitim sonuçları ve alınan modeller
 
 Azure Machine Learning ile [modelinizi dağıtın.](tutorial-deploy-models-with-aml.md)
 Otomatik makine [öğrenimi](tutorial-auto-train-models.md) deneylerini nasıl geliştireceklerini öğrenin.

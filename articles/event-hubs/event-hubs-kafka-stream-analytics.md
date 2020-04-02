@@ -13,17 +13,17 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 02/20/2020
 ms.author: spelluru
-ms.openlocfilehash: 054b5c7d13df39de4fa57167e0363c0b4acf9b08
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 4cabd63dc39590a9bf728528f3e7b3aa5d3f6b04
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80280754"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521769"
 ---
 # <a name="tutorial-process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>Öğretici: Akış analizini kullanarak Etkinlik Hub'ları etkinlikleri için Apache Kafka'yı işleme 
 Bu makalede, veri lerin Olay Hub'larına nasıl aktarılacağa ve Azure Akış Analitiği ile nasıl işlenirken işlenmeyi gösterilmektedir. Size aşağıdaki adımları ilerehberlik edin: 
 
-1. Kafka etkin Olay Hub'ları ad alanı oluşturun.
+1. Bir Event Hubs ad alanı oluşturun.
 2. Olay merkezine ileti gönderen bir Kafka istemcisi oluşturun.
 3. Etkinlik merkezindeki verileri Azure blob depolama alanına kopyalayan bir Akış Analizi işi oluşturun. 
 
@@ -41,7 +41,7 @@ Bu hızlı başlangıcı tamamlamak için aşağıdaki önkoşulların karşıla
 * Bir **Azure Depolama hesabı**. Eğer yoksa, daha fazla devam etmeden önce [bir tane oluşturun.](../storage/common/storage-account-create.md) Bu gözden geçirmedeki Akış Analizi işi, çıktı verilerini bir Azure blob depolama alanında depolar. 
 
 
-## <a name="create-a-kafka-enabled-event-hubs-namespace"></a>Kafka etkin Event Hubs ad alanı oluşturma
+## <a name="create-an-event-hubs-namespace"></a>Event Hubs ad alanı oluşturma
 **Standart** bir katman Olay Hub'ları ad alanı oluşturduğunuzda, ad alanı için Kafka bitiş noktası otomatik olarak etkinleştirilir. Kafka protokolünü kullanan uygulamalarınızdan olayları standart katman Etkinlik Hub'larına aktarabilirsiniz. **Standart** bir katman Olay Hub'ları ad alanı oluşturmak için [Azure portalını kullanarak etkinlik hub'ı oluştur'da](event-hubs-create.md) adım adım yönergeleri izleyin. 
 
 > [!NOTE]
@@ -185,7 +185,7 @@ Bu makalede, protokol istemcilerinizi değiştirmeden veya kendi kümelerinizi �
 
 - [Event Hubs hakkında bilgi edinin](event-hubs-what-is-event-hubs.md)
 - [Apache Kafka için Event Hubs](event-hubs-for-kafka-ecosystem-overview.md)
-- [Kafka özellikli Event Hubs oluşturma](event-hubs-create.md)
+- [Olay hub’ı oluşturma](event-hubs-create.md)
 - [Kafka uygulamalarınızdan Event Hubs'a akış yapma](event-hubs-quickstart-kafka-enabled-event-hubs.md)
 - [Bir olay hub'ında Kafka aracısı yansıtma](event-hubs-kafka-mirror-maker-tutorial.md)
 - [Apache Spark'ı bir olay hub'ına bağlama](event-hubs-kafka-spark-tutorial.md)

@@ -3,12 +3,12 @@ title: VMware VM’lerini Azure'a geçiş için değerlendirme
 description: Azure Geçir Sunucu Değerlendirmesi'ni kullanarak şirket içi VMware VM'lerinin Azure'a geçiş için nasıl değerlendirildiğini açıklar.
 ms.topic: tutorial
 ms.date: 03/23/2019
-ms.openlocfilehash: f33e56f7e0af920363475edfa7e86977c2efd1d9
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 944b7c12a353a29a172576974261eece63ebf668
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80336738"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548737"
 ---
 # <a name="assess-vmware-vms-by-using-azure-migrate-server-assessment"></a>Azure Geçir Sunucu Değerlendirmesi'ni kullanarak VMware VM'leri değerlendirin
 
@@ -163,7 +163,7 @@ Cihazın VM'lerin yapılandırma ve performans verilerini keşfetmek için vCent
 1. **vCenter Server ayrıntılarını belirtin,** vCenter Server örneğinin adını (FQDN) veya IP adresini belirtin. Varsayılan bağlantı noktasını bırakabilir veya vCenter Server'ın dinlediği özel bir bağlantı noktası belirtebilirsiniz.
 2. **Kullanıcı adı** ve **Parola'da,** cihazın vCenter Server örneğinde VM'leri bulmak için kullanacağı vCenter Server hesap kimlik bilgilerini belirtin. 
 
-    - [Önceki öğreticide](/tutorial-prepare-vmware.md#set-up-an-account-for-assessment)gerekli izinleri içeren bir hesap ayarlamanız gerekirdi.
+    - [Önceki öğreticide](tutorial-prepare-vmware.md#set-up-an-account-for-assessment)gerekli izinleri içeren bir hesap ayarlamanız gerekirdi.
     - Belirli VMware nesnelerine (vCenter Server veri merkezleri, kümeler, kümeler klasörü, ana bilgisayarlar, ana bilgisayarlar klasörü veya tek tek VM'ler) bulma kapsamını genişletmek istiyorsanız, Azure Geçiş tarafından kullanılan hesabı kısıtlamak için [bu makaledeki](set-discovery-scope.md) yönergeleri gözden geçirin.
 
 3. Cihazın vCenter Server'a bağlanabilmesini sağlamak için **Bağlantıyı Doğrula'yı** seçin.

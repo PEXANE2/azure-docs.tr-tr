@@ -7,103 +7,100 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/24/2020
-ms.openlocfilehash: 124f1ce3d30ce87d5e9d8fa027e5a7d6c0b3cb17
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.openlocfilehash: 8543894f3f518df6b9b0054973ca1683b82e38f1
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79481611"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549002"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>Azure Bilişsel Arama'da arama sonuçlarıyla çalışma
-Bu makalede, toplam sayımlar, belge alma, sıralama siparişleri ve gezinme gibi bir arama sonuçları sayfasının standart öğelerinin nasıl uygulanacağı konusunda kılavuz lar verilmektedir. Arama sonuçlarınıza veri veya bilgi sağlayan sayfayla ilgili seçenekler, Azure Bilişsel Arama hizmetinize gönderilen [Arama Belgesi](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) istekleri aracılığıyla belirtilir. 
 
-REST API'sinde, istekler, hizmete neyin istendiğini ve yanıtı nasıl formüle edeceğimi bildiren bir GET komutu, yol ve sorgu parametrelerini içerir. .NET SDK'da, eşdeğer API [DocumentSearchResult](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.documentsearchresult-1)Class'tır.
+Bu makalede, eşleşen belgelerin toplam sayısı, paginated sonuçlar, sıralanmış sonuçlar ve isabet vurgulanan terimler ile geri gelen bir sorgu yanıtı almak için nasıl açıklanır.
 
-İstemciniz için hızlı bir arama sayfası oluşturmak için şu seçenekleri keşfedin:
+Yanıtın yapısı sorgudaki parametrelere göre belirlenir: REST API'deki [Arama Belgesi](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) veya .NET SDK'daki [DocumentSearchResult Class.](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.documentsearchresult-1)
 
-+ Bir arama çubuğu, yönlü navigasyon ve sonuç alanı içeren bir HTML sayfası oluşturmak için portaldaki [uygulama jeneratörünü](search-create-app-portal.md) kullanın.
-+ İşlevsel bir istemci oluşturmak için [C# öğreticisinde ilk uygulamanızı oluşturun'u](tutorial-csharp-create-first-app.md) izleyin.
+## <a name="result-composition"></a>Sonuç kompozisyonu
 
-Çeşitli kod örnekleri burada bulabilirsiniz bir web ön uç arayüzü, şunlardır: [New York City Jobs demo uygulaması](https://aka.ms/azjobsdemo), Canlı bir demo sitesi ile [JavaScript örnek kodu](https://github.com/liamca/azure-search-javascript-samples), ve [CognitiveSearchFrontEnd](https://github.com/LuisCabrer/CognitiveSearchFrontEnd).
+Bir arama belgesi çok sayıda alandan oluşsa da, sonuç kümesindeki her belgeyi temsil etmek için genellikle yalnızca birkaç tane gerekir. Sorgu isteğinde, yanıtta hangi alanların görünün ğünü belirtmek için ekin. `$select=<field list>` Bir alanın bir sonuca dahil edilebilmek için dizinde **Alınabilen** olarak atfedilmesi gerekir. 
 
-> [!NOTE]
-> Geçerli bir istek, hizmet URL'si ve yolu, HTTP `api-version`fiili ve benzeri öğeler içerir. Kısalık için, biz pagination ile ilgili sadece sözdizimi vurgulamak için örnekleri kesilmiş. İstek sözdizimi hakkında daha fazla bilgi için [Azure Bilişsel Arama REST API'leri'ne](https://docs.microsoft.com/rest/api/searchservice)bakın.
->
+En iyi çalışan alanlar arasında, kullanıcı adına bir tıklama yanıtı davet etmek için yeterli bilgi sağlayan, belgeler arasında kontrast ve farklılaşma bulunan alanlar yer almaktadır. Bir e-ticaret sitesinde, bir ürün adı, açıklama, marka, renk, boyut, fiyat ve derecelendirme olabilir. Otellerin örnek endeksi yerleşik örneği için aşağıdaki örnekteki alanlar olabilir:
 
-## <a name="total-hits-and-page-counts"></a>Toplam isabet sayısı ve Sayfa Sayısı
-
-Bir sorgudan döndürülen toplam sonuç sayısını göstermek ve bu sonuçları daha küçük parçalar halinde döndürmek, hemen hemen tüm arama sayfaları için çok önemlidir.
-
-![][1]
-
-Azure Bilişsel Arama'da, `$count` `$top`bu `$skip` değerleri döndürmek için , ve parametreleri kullanırsınız. Aşağıdaki örnek, "çevrimiçi katalog" adı verilen bir dizindeki toplam `@odata.count`isabetler için örnek bir istek gösterir ve şu şekilde döndürülür:
-
-    GET /indexes/online-catalog/docs?$count=true
-
-Belgeleri 15'erli gruplar halinde alın ve ilk sayfadan başlayarak toplam isabetleri de gösterin:
-
-    GET /indexes/online-catalog/docs?search=*&$top=15&$skip=0&$count=true
-
-Paginating sonuçları `$top` hem `$skip`gerektirir `$top` ve , bir toplu iş dönmek `$skip` için kaç öğe belirtir ve kaç öğe atlamak için belirtir. Aşağıdaki örnekte, her sayfa parametredeki artımlı atlayışlarla `$skip` gösterilen sonraki 15 öğeyi gösterir.
-
-    GET /indexes/online-catalog/docs?search=*&$top=15&$skip=0&$count=true
-
-    GET /indexes/online-catalog/docs?search=*&$top=15&$skip=15&$count=true
-
-    GET /indexes/online-catalog/docs?search=*&$top=15&$skip=30&$count=true
-
-## <a name="layout"></a>Düzen
-
-Arama sonuçları sayfasında, küçük resim görüntüsünü, alanların bir alt kümesini ve tam ürün sayfasına bağlantı göstermek isteyebilirsiniz.
-
- ![][2]
-
-Azure Bilişsel Arama'da, `$select` bu deneyimi uygulamak için bir [Arama API isteği](https://docs.microsoft.com/rest/api/searchservice/search-documents) kullanırsınız.
-
-Karo düzen için alanların bir alt kümesini döndürmek için:
-
-    GET /indexes/online-catalog/docs?search=*&$select=productName,imageFile,description,price,rating
-
-Görüntüler ve medya dosyaları doğrudan aranmaz ve maliyetleri azaltmak için Azure Blob depolama alanı gibi başka bir depolama platformunda depolanmalıdır. Dizin ve belgelerde, dış içeriğin URL adresini depolayan bir alan tanımlayın. Daha sonra alanı görüntü başvurusu olarak kullanabilirsiniz. Resmin URL'si belgede olmalıdır.
-
-**Bir onClick** olayı için ürün açıklaması sayfası almak için, almak için belgenin anahtarını geçirmek için [Arama Belgesi'ni](https://docs.microsoft.com/rest/api/searchservice/Lookup-Document) kullanın. Anahtarın veri türü `Edm.String`. Bu örnekte, *246810*olduğunu.
-
-    GET /indexes/online-catalog/docs/246810
-
-## <a name="sort-by-relevance-rating-or-price"></a>Alaka düzeyine, derecelendirmeye veya fiyata göre sıralama
-
-Siparişleri genellikle alaka düzeyine göre sıralayın, ancak müşterilerin varolan sonuçları hızla farklı bir sıralama siparişinde değiştirebilmesi için alternatif sıralama siparişlerini hazır hale getirmek yaygındır.
-
- ![][3]
-
-Azure Bilişsel Arama'da sıralama, `$orderby` `"Sortable": true.` `$orderby` yan tümce olarak dizine eklenmiş tüm alanlar için bir OData ifadesi olan ifadeyi temel alınr. Sözdizimi hakkında bilgi için, [filtreler ve sipariş eki yan tümceleri için OData ifade sözdizimine](query-odata-filter-orderby-syntax.md)bakın.
-
-Alaka düzeyi, puanlama profilleriyle güçlü bir şekilde ilişkilidir. Metin çözümlemesi ve istatistiklere dayanan varsayılan puanlamayı kullanarak tüm sonuçları sıralayabilir ve daha yüksek puanlar bir arama teriminde daha fazla veya daha güçlü eşleşmelere sahip belgelere giderek sıralanır.
-
-Alternatif sıralama siparişleri genellikle sıralama sırasını oluşturan bir yönteme geri çağrı yapan **onClick** olayları ile ilişkilidir. Örneğin, bu sayfa öğesi göz önüne alındığında:
-
- ![][4]
-
-Seçili sıralama seçeneğini giriş olarak kabul eden ve bu seçenekle ilişkili ölçütler için sıralı bir liste döndüren bir yöntem oluşturursunuz.
-
- ![][5]
+```http
+POST /indexes/hotels-sample-index/docs/search?api-version=2019-05-06 
+    {  
+      "search": "sandy beaches",
+      "select": "HotelId, HotelName, Description, Rating, Address/City"
+      "count": true
+    }
+```
 
 > [!NOTE]
-> Varsayılan puanlama birçok senaryo için yeterli olsa da, alaka düzeyini bunun yerine özel bir puanlama profiline dayandırmanızı öneririz. Özel puanlama profili, işletmeniz için daha yararlı olan öğeleri artırmanın bir yolunu sunar. Bkz. Daha fazla bilgi için [puanlama profilleri ekle.](index-add-scoring-profiles.md)
->
+> Resim dosyalarını ürün fotoğrafı veya logo gibi bir sonuca eklemek istiyorsanız, bunları Azure Bilişsel Arama'nın dışında saklayın, ancak arama belgesindeki resim URL'sine başvurmak için dizininize bir alan ekleyin. Sonuçlarda görüntüleri destekleyen örnek dizinler **emlak-örnek-us** demo, bu [quickstart](search-create-app-portal.md)özellikli ve [New York City Jobs demo uygulaması](https://aka.ms/azjobsdemo)içerir.
+
+## <a name="results-returned"></a>Döndürülen sonuçlar
+
+Varsayılan olarak, arama motoru, sorgu tam metin arama ysa veya tam eşleme sorguları için rasgele bir sırada arama puanına göre belirlendiği gibi ilk 50 eşleşmeye kadar geri döner.
+
+Farklı sayıda eşleşen belge döndürmek `$top` için, sorgu isteğine parametre ekleyin ve `$skip` parametreler ekleyin. Aşağıdaki liste mantığı açıklar.
+
++ Bir `$count=true` dizin içindeki eşleşen belgelerin toplam sayısının sayısını almak için ekleyin.
+
++ 15 eşleşen belgenin ilk kümesini ve toplam eşleşme sayısını döndürün:`GET /indexes/<INDEX-NAME>/docs?search=<QUERY STRING>&$top=15&$skip=0&$count=true`
+
++ Sonraki 15 almak için ilk 15 atlayarak, `$top=15&$skip=15`ikinci seti döndürün: . 15 üçüncü seti için aynı şeyi yapın:`$top=15&$skip=30`
+
+Altta yatan dizin değişiyorsa, paginated sorguların sonuçlarının kararlı olacağı garanti edilmez. Sayfalama her sayfanın `$skip` değerini değiştirir, ancak her sorgu bağımsızdır ve sorgu sırasında dizinde var olduğu için verilerin geçerli görünümünde çalışır (diğer bir deyişle, genel amaçlı bir veritabanında bulunanlar gibi sonuçların önbelleğe alma veya anlık görüntüsü yoktur).
+ 
+Aşağıda, yinelemeleri nasıl alabileceğinize bir örnek verilmiştir. Dört belgeiçeren bir dizin varsayalım:
+
+    { "id": "1", "rating": 5 }
+    { "id": "2", "rating": 3 }
+    { "id": "3", "rating": 2 }
+    { "id": "4", "rating": 1 }
+ 
+Şimdi, sonuçların derecelendirmeye göre sıralanmış olarak bir defada ikişer döndürülmesini istediğinizi varsayalım. Sonuçların ilk sayfasını almak için bu sorguyu yürütebilirsin: `$top=2&$skip=0&$orderby=rating desc`, aşağıdaki sonuçları üreterek:
+
+    { "id": "1", "rating": 5 }
+    { "id": "2", "rating": 3 }
+ 
+Hizmette, sorgu çağrıları arasında dizine beşinci bir belge `{ "id": "5", "rating": 4 }`nin eklenmiştir varsayalım: .  Kısa bir süre sonra, ikinci sayfayı almak `$top=2&$skip=2&$orderby=rating desc`için bir sorgu yürütmek: , ve aşağıdaki sonuçları almak:
+
+    { "id": "2", "rating": 3 }
+    { "id": "3", "rating": 2 }
+ 
+Belge 2'nin iki kez getirili olduğuna dikkat edin. Bunun nedeni, yeni belge 5'in derecelendirme için daha büyük bir değere sahip olmasıdır, bu nedenle belge 2'den önce sıralanır ve ilk sayfaya iner. Bu davranış beklenmeyen olsa da, arama motorunun nasıl davrandığının tipik bir sonucuvardır.
+
+## <a name="ordering-results"></a>Sonuçları sıralama
+
+Tam metin arama sorguları için sonuçlar, bir belgedeki terim sıklığı ve yakınlığına göre hesaplanan bir arama puanına göre otomatik olarak sıralanır ve daha yüksek puanlar bir arama teriminde daha fazla veya daha güçlü eşleşmelere sahip belgelere giderek sıralanır. Arama puanları, aynı sonuç kümesindeki diğer belgelere göre genel alaka düzeyi duygusunu taşır ve bir sorgudan diğerine tutarlı olması garanti edilmez.
+
+Sorgularla çalışırken, sıralı sonuçlarda küçük tutarsızlıklar fark edebilirsiniz. Bunun neden oluşabileceğinin çeşitli açıklamaları vardır.
+
+| Koşul | Açıklama |
+|-----------|-------------|
+| Veri volatilitesi | Belgeleri ekledikçe, değiştirdiğinizde veya sildiğinizde dizinin içeriği değişir. Dizin güncelleştirmeleri zaman içinde işlendikçe dönem frekansları değişir ve eşleşen belgelerin arama puanlarını etkiler. |
+| Yürütme konumunu sorgula | Birden çok yineleme kullanan hizmetler için sorgular her yinelemeye paralel olarak verilir. Arama puanını hesaplamak için kullanılan dizin istatistikleri, yineleme başına hesaplanır ve sonuçlar sorgu yanıtında birleştirilir ve sıralanır. Yinelemeler çoğunlukla birbirlerinin aynalarıdır, ancak durumdaki küçük farklılıklar nedeniyle istatistikler farklılık gösterir. Örneğin, bir yineleme, istatistiklerine katkıda bulunan ve diğer yinelemelerden birleştirilen belgeleri silmiş olabilir. Genellikle, çoğaltma başına istatistikteki farklılıklar daha küçük dizinlerde daha belirgindir. |
+| Aynı arama puanları arasında bir kravat kırma | Arama belgeleri aynı puanlara sahip olduğunda, sıralı sonuçlardaki tutarsızlıklar da oluşabilir. Bu durumda, aynı sorguyu yeniden çalıştırdığınızda, önce hangi belgenin görüneceğinin garantisi yoktur. |
+
+### <a name="consistent-ordering"></a>Tutarlı sıralama
+
+Arama puanlamasındaki esneklik göz önüne alındığında, sonuç emirlerinde tutarlılık bir uygulama gereksinimiyse diğer seçenekleri de keşfetmek isteyebilirsiniz. En kolay yaklaşım, derecelendirme veya tarih gibi bir alan değerine göre sıralamadır. Derecelendirme veya tarih gibi belirli bir alana göre sıralamak istediğiniz senaryolar için, Sıralanabilir olarak dizine eklenmiş herhangi bir alana uygulanabilecek bir [ `$orderby` ifadeyi](query-odata-filter-orderby-syntax.md)açıkça **tanımlayabilirsiniz.**
+
+Başka bir seçenek özel bir [puanlama profili](index-add-scoring-profiles.md)kullanıyor. Puanlama profilleri, belirli alanlarda bulunan eşleşmeleri artırma olanağıyla, arama sonuçlarındaki öğelerin sıralaması üzerinde daha fazla denetim sağlar. Ek puanlama mantığı, her belgenin arama puanları birbirinden daha uzak olduğundan, yinelemeler arasındaki küçük farklılıkları geçersiz kılmaya yardımcı olabilir. Bu yaklaşım için [sıralama algoritmasını](index-ranking-similarity.md) öneririz.
 
 ## <a name="hit-highlighting"></a>İsabet vurgulama
 
-Biçimlendirmeyi arama sonuçlarında eşleşen terimlere uygulayarak eşleşmeyi kolayca fark edebilirsiniz. Hit vurgulama yönergeleri sorgu [isteğinde](https://docs.microsoft.com/rest/api/searchservice/search-documents)sağlanır. 
+Hit vurgulama, sonuç olarak eşleşen terime uygulanan metin biçimlendirme (kalın veya sarı vurgular gibi) anlamına gelir ve bu da eşleşmeyi fark etmeyi kolaylaştırır. Hit vurgulama yönergeleri sorgu [isteğinde](https://docs.microsoft.com/rest/api/searchservice/search-documents)sağlanır. Arama motoru eşleşen terimi etiketlere dahil `highlightPreTag` `highlightPostTag`eder ve kodunuz yanıtı işler (örneğin, kalın bir yazı tipi uygular).
 
-Biçimlendirme tüm terim sorgularına uygulanır. Bulanık arama veya joker karakter araması gibi, motorda sorgu genişletmesi ile sonuçlanan kısmi terimlerdeki sorgular, isabet vurgulamayı kullanamaz.
+Biçimlendirme tüm terim sorgularına uygulanır. Aşağıdaki örnekte, Açıklama alanı içinde bulunan "kumlu", "kum", "plajlar", "plaj" terimleri vurgulamak için etiketlenir. Bulanık arama veya joker karakter araması gibi, motorda sorgu genişletmesi ile sonuçlanan kısmi terimlerdeki sorgular, isabet vurgulamayı kullanamaz.
 
 ```http
-POST /indexes/hotels/docs/search?api-version=2019-05-06 
+POST /indexes/hotels-sample-index/docs/search?api-version=2019-05-06 
     {  
-      "search": "something",  
-      "highlight": "Description"  
+      "search": "sandy beaches",  
+      "highlight": "Description"
     }
 ```
 
@@ -112,30 +109,11 @@ POST /indexes/hotels/docs/search?api-version=2019-05-06
 >
 > Isabet vurgulamayı uygulayan istemci kodu yazarken, bu değişikliğin farkında olun. Tamamen yeni bir arama hizmeti oluşturmadığınız sürece bunun sizi etkilemeyeceğini unutmayın.
 
-## <a name="faceted-navigation"></a>Çok yönlü gezinme
+## <a name="next-steps"></a>Sonraki adımlar
 
-Arama gezintisi, genellikle bir sayfanın yanında veya üstünde bulunan bir sonuç sayfasında yaygındır. Azure Bilişsel Arama'da, yönlü gezinme önceden tanımlanmış filtreleri temel alan kendi kendini yönlendirmiş arama sağlar. Ayrıntılar için [Azure Bilişsel Arama'da Faceted navigasyonuna](search-faceted-navigation.md) bakın.
+İstemciniz için hızlı bir arama sayfası oluşturmak için şu seçenekleri göz önünde bulundurun:
 
-## <a name="filters-at-the-page-level"></a>Sayfa düzeyindefiltreler
++ [Uygulama Jeneratör](search-create-app-portal.md), portalda, bir arama çubuğu, yönlü navigasyon ve görüntüleri içeren sonuç alanı ile bir HTML sayfası oluşturur.
++ [C# ilk uygulama oluşturun](tutorial-csharp-create-first-app.md) fonksiyonel bir istemci oluşturur bir öğretici. Örnek kod paginated sorguları, hit vurgulama ve sıralama gösterir.
 
-Çözüm tasarımınız belirli içerik türleri için özel arama sayfaları (örneğin, sayfanın üst kısmında bölümler listelenen bir çevrimiçi perakende uygulaması) yer alıyorsa, önceden filtrelenmiş bir durumda bir sayfa açmak için **bir onClick** etkinliğinin yanına bir [filtre ifadesi](search-filters.md) ekleyebilirsiniz.
-
-Arama ifadesi olan veya olmayan bir filtre gönderebilirsiniz. Örneğin, aşağıdaki istek yalnızca onunla eşleşen belgeleri döndürerek marka adına filtre uygulayacaktır.
-
-    GET /indexes/online-catalog/docs?$filter=brandname eq 'Microsoft' and category eq 'Games'
-
-İfadeler hakkında `$filter` daha fazla bilgi için [Arama Belgeleri 'ne (Azure Bilişsel Arama API' si)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) bakın.
-
-## <a name="see-also"></a>Ayrıca Bkz.
-
-- [Azure Bilişsel Arama REST API'si](https://docs.microsoft.com/rest/api/searchservice)
-- [Dizin İşlemleri](https://docs.microsoft.com/rest/api/searchservice/Index-operations)
-- [Belge İşlemleri](https://docs.microsoft.com/rest/api/searchservice/Document-operations)
-- [Azure Bilişsel Aramada Yönlü Gezinme](search-faceted-navigation.md)
-
-<!--Image references-->
-[1]: ./media/search-pagination-page-layout/Pages-1-Viewing1ofNResults.PNG
-[2]: ./media/search-pagination-page-layout/Pages-2-Tiled.PNG
-[3]: ./media/search-pagination-page-layout/Pages-3-SortBy.png
-[4]: ./media/search-pagination-page-layout/Pages-4-SortbyRelevance.png
-[5]: ./media/search-pagination-page-layout/Pages-5-BuildSort.png
+Çeşitli kod örnekleri burada bulabilirsiniz bir web ön uç arayüzü, şunlardır: [New York City Jobs demo uygulaması](https://aka.ms/azjobsdemo), Canlı bir demo sitesi ile [JavaScript örnek kodu](https://github.com/liamca/azure-search-javascript-samples), ve [CognitiveSearchFrontEnd](https://github.com/LuisCabrer/CognitiveSearchFrontEnd).

@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2019
 ms.author: takamath
-ms.openlocfilehash: 2ddc56c60c547bd4ce48d620a83fb79246762bfb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 86304fc7776f49c999924b8609f2d26120cee372
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69642493"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549093"
 ---
 # <a name="enable-browser-connection-on-lab-virtual-machines"></a>Laboratuvar sanal makinelerinde tarayıcı bağlantısını etkinleştirme 
 
 DevTest Labs, sanal makinelerinize bir tarayıcı üzerinden bağlanmanızı sağlayan [Azure Bastion](https://docs.microsoft.com/azure/bastion/)ile tümleşir. Öncelikle laboratuvar sanal makinelerde tarayıcı bağlantısını etkinleştirmeniz gerekir.
 
-Bir laboratuvarın sahibi olarak, tüm laboratuvar sanal makinelerine bir tarayıcı üzerinden erişmesini sağlayabilirsiniz. Ek bir istemciye, aracıya veya yazılım parçasına ihtiyacınız yoktur. Azure Bastion, sanal makinelerinize doğrudan SSL üzerinden Azure portalında güvenli ve sorunsuz RDP/SSH bağlantısı sağlar. Azure Bastion üzerinden bağlandığınızda, sanal makinelerinizin herkese açık bir IP adresine ihtiyacı yoktur. Daha fazla bilgi için azure [kalesi nedir?](../bastion/bastion-overview.md)
+Bir laboratuvarın sahibi olarak, tüm laboratuvar sanal makinelerine bir tarayıcı üzerinden erişmesini sağlayabilirsiniz. Ek bir istemciye, aracıya veya yazılım parçasına ihtiyacınız yoktur. Azure Bastion, TLS üzerinden sanal makinelerinize doğrudan Azure portalında güvenli ve sorunsuz RDP/SSH bağlantısı sağlar. Azure Bastion üzerinden bağlandığınızda, sanal makinelerinizin herkese açık bir IP adresine ihtiyacı yoktur. Daha fazla bilgi için azure [kalesi nedir?](../bastion/bastion-overview.md)
 
 > [!NOTE]
 > Laboratuvar sanal makinelerinde tarayıcı bağlantısını etkinleştirmek önizlemededir.

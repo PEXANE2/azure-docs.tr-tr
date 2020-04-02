@@ -7,12 +7,12 @@ ms.author: brysmith
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 03/13/2020
-ms.openlocfilehash: f40c2b5f7134458b3f8cb492652bebf14388634c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e3c9b16ae3d2b06ec19ecd29d15762a065c0c1ae
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79477145"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521433"
 ---
 # <a name="tutorial-convert-ml-experimental-code-to-production-code"></a>Öğretici: ML deneysel kodunu üretim koduna dönüştürün
 
@@ -21,7 +21,6 @@ Bir makine öğrenme projesi hipotezler gerçek veri kümeleri kullanarak Jupyte
 Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 
 > [!div class="checklist"]
->
 > * Gereksiz kodu temizleme
 > * Jupyter Notebook kodunu işlevlere dönüştür
 > * İlgili görevler için Python komut dosyaları oluşturma
@@ -30,7 +29,7 @@ Bu öğreticide şunların nasıl yapıldığını öğrenirsiniz:
 ## <a name="prerequisites"></a>Ön koşullar
 
 - [MLOpsPython şablonunu](https://github.com/microsoft/MLOpsPython/generate) oluşturun `experimentation/Diabetes Ridge Regression Training.ipynb` ve `experimentation/Diabetes Ridge Regression Scoring.ipynb` not defterlerini kullanın. Bu not defterleri denemeden üretime dönüştürmeye örnek olarak kullanılır. Bu defterleri [https://github.com/microsoft/MLOpsPython/tree/master/experimentation](https://github.com/microsoft/MLOpsPython/tree/master/experimentation).
-- nbconvert yükleyin. [Yükleme](https://nbconvert.readthedocs.io/en/latest/install.html) sayfasında __nbconvert yükleme__ bölümü altında sadece yükleme yönergeleri izleyin.
+- `nbconvert`yükleyin. [Yükleme](https://nbconvert.readthedocs.io/en/latest/install.html) sayfasında __nbconvert yükleme__ bölümü altında sadece yükleme yönergeleri izleyin.
 
 ## <a name="remove-all-nonessential-code"></a>Tüm gereksiz kodu kaldırma
 
@@ -42,21 +41,34 @@ from sklearn.linear_model import Ridge
 from sklearn.metrics import mean_squared_error
 from sklearn.model_selection import train_test_split
 import joblib
+import pandas as pd
 
-X, y = load_diabetes(return_X_y=True)
+sample_data = load_diabetes()
+
+df = pd.DataFrame(
+    data=sample_data.data,
+    columns=sample_data.feature_names)
+df['Y'] = sample_data.target
+
+X = df.drop('Y', axis=1).values
+y = df['Y'].values
 
 X_train, X_test, y_train, y_test = train_test_split(
-        X, y, test_size=0.2, random_state=0)
+    X, y, test_size=0.2, random_state=0)
 data = {"train": {"X": X_train, "y": y_train},
         "test": {"X": X_test, "y": y_test}}
 
-alpha = 0.5
+args = {
+    "alpha": 0.5
+}
 
-reg = Ridge(alpha=alpha)
+reg_model = Ridge(**args)
 reg.fit(data["train"]["X"], data["train"]["y"])
 
-preds = reg.predict(data["test"]["X"])
-print("mse", mean_squared_error(preds, data["test"]["y"]))
+preds = reg_model.predict(data["test"]["X"])
+mse = mean_squared_error(preds, y_test)
+metrics = {"mse": mse}
+print(metrics)
 
 model_name = "sklearn_regression_model.pkl"
 joblib.dump(value=reg, filename=model_name)
@@ -73,56 +85,105 @@ joblib.dump(value=reg, filename=model_name)
 
 In `experimentation/Diabetes Ridge Regression Training.ipynb`, aşağıdaki adımları tamamlayın:
 
-1. Parametreleri `train_model` `data` alan ve `alpha` bir modeli döndüren , adlı bir işlev oluşturun.
-1. Kodu "Eğitim Setinde Model On" ve "Doğrulama Kümesinde Modeli Doğrula" `train_model` başlıkları altında işlevi kopyalayın.
+1. Veri çerçevesini `split_data` test ve train verilerine bölmek için çağrılan bir işlev oluşturun. İşlev veri çerçevesini `df` parametre olarak almalı ve anahtarları `train` `test`içeren bir sözlük döndürmeli ve .
 
-İşlev `train_model` aşağıdaki kod gibi görünmelidir:
+    İşlev içine başlığı *Eğitim ve Doğrulama Kümeleri içine Bölünmüş Veri* altında kod taşıyın ve nesneyi döndürmek için değiştirin. `data` `split_data`
 
-```python
-def train_model(data, alpha):
-    reg = Ridge(alpha=alpha)
-    reg.fit(data["train"]["X"], data["train"]["y"])
-    preds = reg.predict(data["test"]["X"])
-    print("mse", mean_squared_error(
-        preds, data["test"]["y"]))
-    return reg
-```
+1. Parametreleri `train_model` `data` alan ve `args` eğitimli bir modeli döndüren , adlı bir işlev oluşturun.
 
-`train_model` İşlev oluşturulduktan sonra, kodu "Eğitim Setinde Model On" ve "Doğrulama Kümesinde Modeli Doğrula" başlıkları altında aşağıdaki ifadeyle değiştirin:
+    *Eğitim Kümesi'ndeki Eğitim Modeli* başlığı altındaki `train_model` kodu işleve taşıyın ve nesneyi döndürmek için değiştirin. `reg_model` `args` Sözlüğü kaldırın, değerler `args` parametreden gelecektir.
+
+1. Parametreleri `get_model_metrics` `reg_model` alan ve `data`modeli değerlendiren ve sonra eğitilen model için bir ölçüt sözlüğü döndüren , adlı bir işlev oluşturun.
+
+    Kodu *Doğrulama Kümesi'ndeki Modeli doğrulama* işlevine `get_model_metrics` taşıyın ve nesneyi döndürmek için değiştirin. `metrics`
+
+Üç işlev aşağıdaki gibi olmalıdır:
 
 ```python
-reg = train_model(data, alpha)
-```
-
-Önceki deyim, `train_model` geçen işlevi `data` `alpha` ve parametreleri çağırır ve modeli döndürür.
-
-In `experimentation/Diabetes Ridge Regression Training.ipynb`, aşağıdaki adımları tamamlayın:
-
-1. Hiçbir parametre `main`almaz ve hiçbir şey döndürür adlı yeni bir işlev oluşturun.
-1. Kodu "Veri Yükle", "Verileri Eğitim ve Doğrulama Kümelerine Bölme" ve "Modeli Kaydet" başlıkları altında işleve kopyalayın. `main`
-1. Yeni oluşturulan aramayı `train_model` işleve `main` kopyalayın.
-
-İşlev `main` aşağıdaki kod gibi görünmelidir:
-
-```python
-def main():
-
-    model_name = "sklearn_regression_model.pkl"
-    alpha = 0.5
-
-    X, y = load_diabetes(return_X_y=True)
+# Split the dataframe into test and train data
+def split_data(df):
+    X = df.drop('Y', axis=1).values
+    y = df['Y'].values
 
     X_train, X_test, y_train, y_test = train_test_split(
         X, y, test_size=0.2, random_state=0)
     data = {"train": {"X": X_train, "y": y_train},
             "test": {"X": X_test, "y": y_test}}
+    return data
 
-    reg = train_model(data, alpha)
+
+# Train the model, return the model
+def train_model(data, args):
+    reg_model = Ridge(**args)
+    reg_model.fit(data["train"]["X"], data["train"]["y"])
+    return reg_model
+
+
+# Evaluate the metrics for the model
+def get_model_metrics(reg_model, data):
+    preds = reg_model.predict(data["test"]["X"])
+    mse = mean_squared_error(preds, data["test"]["y"])
+    metrics = {"mse": mse}
+    return metrics
+```
+
+Hala, `experimentation/Diabetes Ridge Regression Training.ipynb`aşağıdaki adımları tamamlamak:
+
+1. Hiçbir parametre `main`almaz ve hiçbir şey döndürür adlı yeni bir işlev oluşturun.
+1. Kodu "Veri Yükle" başlığı altında `main` işleve taşıyın.
+1. `main` İşlev içine yeni yazılmış işlevler için çağrı ekleme:
+    ```python
+    # Split Data into Training and Validation Sets
+    data = split_data(df)
+    ```
+
+    ```python
+    # Train Model on Training Set
+    args = {
+        "alpha": 0.5
+    }
+    reg = train_model(data, args)
+    ```
+
+    ```python
+    # Validate Model on Validation Set
+    metrics = get_model_metrics(reg, data)
+    ```
+1. Kodu "Modeli Kaydet" başlığı altında `main` işleve taşıyın.
+
+İşlev `main` aşağıdaki kod gibi görünmelidir:
+
+```python
+def main():
+    # Load Data
+    sample_data = load_diabetes()
+
+    df = pd.DataFrame(
+        data=sample_data.data,
+        columns=sample_data.feature_names)
+    df['Y'] = sample_data.target
+
+    # Split Data into Training and Validation Sets
+    data = split_data(df)
+
+    # Train Model on Training Set
+    args = {
+        "alpha": 0.5
+    }
+    reg = train_model(data, args)
+
+    # Validate Model on Validation Set
+    metrics = get_model_metrics(reg, data)
+
+    # Save Model
+    model_name = "sklearn_regression_model.pkl"
 
     joblib.dump(value=reg, filename=model_name)
 ```
 
-`main` İşlev oluşturulduktan sonra, "Veri Yükle", "Verileri Eğitim ve Doğrulama Kümelerine Bölme" ve "Modeli Kaydet" başlıkları `train_model` altındaki tüm kodu aşağıdaki ifadeyle değiştirin:
+Bu aşamada, not defterinde ilk hücredeki alma deyimleri dışında bir işlevde olmayan kod kalmalıdır.
+
+`main` İşlev çağıran bir deyim ekleyin.
 
 ```python
 main()
@@ -135,30 +196,60 @@ from sklearn.datasets import load_diabetes
 from sklearn.linear_model import Ridge
 from sklearn.metrics import mean_squared_error
 from sklearn.model_selection import train_test_split
+import pandas as pd
 import joblib
 
 
-def train_model(data, alpha):
-    reg = Ridge(alpha=alpha)
-    reg.fit(data["train"]["X"], data["train"]["y"])
-    preds = reg.predict(data["test"]["X"])
-    print("mse", mean_squared_error(
-        preds, data["test"]["y"]))
-    return reg
-
-def main():
-
-    model_name = "sklearn_regression_model.pkl"
-    alpha = 0.5
-
-    X, y = load_diabetes(return_X_y=True)
+# Split the dataframe into test and train data
+def split_data(df):
+    X = df.drop('Y', axis=1).values
+    y = df['Y'].values
 
     X_train, X_test, y_train, y_test = train_test_split(
         X, y, test_size=0.2, random_state=0)
     data = {"train": {"X": X_train, "y": y_train},
             "test": {"X": X_test, "y": y_test}}
+    return data
 
-    reg = train_model(data, alpha)
+
+# Train the model, return the model
+def train_model(data, args):
+    reg_model = Ridge(**args)
+    reg_model.fit(data["train"]["X"], data["train"]["y"])
+    return reg_model
+
+
+# Evaluate the metrics for the model
+def get_model_metrics(reg_model, data):
+    preds = reg_model.predict(data["test"]["X"])
+    mse = mean_squared_error(preds, data["test"]["y"])
+    metrics = {"mse": mse}
+    return metrics
+
+
+def main():
+    # Load Data
+    sample_data = load_diabetes()
+
+    df = pd.DataFrame(
+        data=sample_data.data,
+        columns=sample_data.feature_names)
+    df['Y'] = sample_data.target
+
+    # Split Data into Training and Validation Sets
+    data = split_data(df)
+
+    # Train Model on Training Set
+    args = {
+        "alpha": 0.5
+    }
+    reg = train_model(data, args)
+
+    # Validate Model on Validation Set
+    metrics = get_model_metrics(reg, data)
+
+    # Save Model
+    model_name = "sklearn_regression_model.pkl"
 
     joblib.dump(value=reg, filename=model_name)
 
@@ -255,59 +346,101 @@ print("Test result: ", prediction)
 
 ### <a name="create-python-file-for-the-diabetes-ridge-regression-training-notebook"></a>Diabetes Ridge Regresyon Eğitimi dizüstü bilgisayarı için Python dosyası oluşturma
 
-Not defterinizi, nbconvert paketini ve aşağıdaki yolu kullanan bir komut isteminde aşağıdaki `experimentation/Diabetes Ridge Regression Training.ipynb`deyimi çalıştırarak çalıştırılabilir bir komut dosyasına dönüştürün:
+Aşağıdaki ifadeyi `nbconvert` bir komut isteminde çalıştırarak not defterinizi çalıştırılabilir bir komut `experimentation/Diabetes Ridge Regression Training.ipynb`dosyasına dönüştürün:
 
 ```
 jupyter nbconvert -- to script "Diabetes Ridge Regression Training.ipynb" –output train
 ```
 
-Not defteri dönüştürüldükten `train.py`sonra tüm yorumları kaldırın. Dosyanız `train.py` aşağıdaki kod gibi görünmelidir:
+Not defteri dönüştürüldükten `train.py`sonra, istenmeyen yorumları kaldırın. Aşağıdaki kod `main()` gibi koşullu bir çağırma ile dosyanın sonundaki çağrıyı değiştirin:
+
+```python
+if __name__ == '__main__':
+    main()
+```
+
+Dosyanız `train.py` aşağıdaki kod gibi görünmelidir:
 
 ```python
 from sklearn.datasets import load_diabetes
 from sklearn.linear_model import Ridge
 from sklearn.metrics import mean_squared_error
 from sklearn.model_selection import train_test_split
+import pandas as pd
 import joblib
 
 
-def train_model(data, alpha):
-    reg = Ridge(alpha=alpha)
-    reg.fit(data["train"]["X"], data["train"]["y"])
-    preds = reg.predict(data["test"]["X"])
-    print("mse", mean_squared_error(
-        preds, data["test"]["y"]))
-    return reg
-
-def main():
-    model_name = "sklearn_regression_model.pkl"
-    alpha = 0.5
-
-    X, y = load_diabetes(return_X_y=True)
+# Split the dataframe into test and train data
+def split_data(df):
+    X = df.drop('Y', axis=1).values
+    y = df['Y'].values
 
     X_train, X_test, y_train, y_test = train_test_split(
         X, y, test_size=0.2, random_state=0)
     data = {"train": {"X": X_train, "y": y_train},
             "test": {"X": X_test, "y": y_test}}
+    return data
 
-    reg = train_model(data, alpha)
+
+# Train the model, return the model
+def train_model(data, args):
+    reg_model = Ridge(**args)
+    reg_model.fit(data["train"]["X"], data["train"]["y"])
+    return reg_model
+
+
+# Evaluate the metrics for the model
+def get_model_metrics(reg_model, data):
+    preds = reg_model.predict(data["test"]["X"])
+    mse = mean_squared_error(preds, data["test"]["y"])
+    metrics = {"mse": mse}
+    return metrics
+
+
+def main():
+    # Load Data
+    sample_data = load_diabetes()
+
+    df = pd.DataFrame(
+        data=sample_data.data,
+        columns=sample_data.feature_names)
+    df['Y'] = sample_data.target
+
+    # Split Data into Training and Validation Sets
+    data = split_data(df)
+
+    # Train Model on Training Set
+    args = {
+        "alpha": 0.5
+    }
+    reg = train_model(data, args)
+
+    # Validate Model on Validation Set
+    metrics = get_model_metrics(reg, data)
+
+    # Save Model
+    model_name = "sklearn_regression_model.pkl"
 
     joblib.dump(value=reg, filename=model_name)
 
-main()
+if __name__ == '__main__':
+    main()
 ```
 
-`train.py` MLOpsPython deposunda `diabetes_regression/training` dizinde bulunan dosya komut satırı bağımsız değişkenlerini `build_id`destekler `model_name`(yani , , ve `alpha`). Komut satırı bağımsız değişkenleri için `train.py` destek dinamik model adlarını ve `alpha` değerlerini desteklemek için dosyanıza eklenebilir, ancak kodun başarılı bir şekilde yürütülmesi gerekmez.
+`train.py`artık çalıştırılarak `python train.py`bir terminalden çağrılabilir.
+İşlevler `train.py` diğer dosyalardan da çağrılabilir.
+
+MLOpsPython deposundaki `train_aml.py` `diabetes_regression/training` dizinde bulunan dosya, Azure Machine Learning `train.py` deneme çalışması bağlamında tanımlanan işlevleri çağırır. Fonksiyonlar, daha sonra bu kılavuzda ele alınan birim testlerinde de çağrılabilir.
 
 ### <a name="create-python-file-for-the-diabetes-ridge-regression-scoring-notebook"></a>Diabetes Ridge Regresyon Puanlama not defteri için Python dosyası oluşturma
 
-Not defterinizi, nbconvert paketini ve aşağıdaki yolu kullanan bir komut isteminde aşağıdaki `experimentation/Diabetes Ridge Regression Scoring.ipynb`deyimi çalıştırarak çalıştırılabilir bir komut dosyasına dahil edin:
+Aşağıdaki ifadeyi `nbconvert` paketi ve aşağıdaki yolu kullanan bir komut isteminde çalıştırarak not `experimentation/Diabetes Ridge Regression Scoring.ipynb`defterinizi çalıştırılabilir bir komut dosyasına dahil edin:
 
 ```
 jupyter nbconvert -- to script "Diabetes Ridge Regression Scoring.ipynb" –output score
 ```
 
-Not defteri dönüştürüldükten `score.py`sonra tüm yorumları kaldırın. Dosyanız `score.py` aşağıdaki kod gibi görünmelidir:
+Not defteri dönüştürüldükten `score.py`sonra, istenmeyen yorumları kaldırın. Dosyanız `score.py` aşağıdaki kod gibi görünmelidir:
 
 ```python
 import json
@@ -334,7 +467,7 @@ prediction = run(test_row, request_header)
 print("Test result: ", prediction)
 ```
 
-İşlev, `train_model` genel değişken bir modeli komut dosyası nda görünür hale getirmek için değiştirilmesi gerekir. İşlevin başında aşağıdaki ifadeyi `init` ekleyin:
+Değişkenin `model` genel olması gerekir, böylece komut dosyası boyunca görünür olur. İşlevin başında aşağıdaki ifadeyi `init` ekleyin:
 
 ```python
 global model
@@ -354,9 +487,9 @@ def init():
 
 ## <a name="create-unit-tests-for-each-python-file"></a>Her Python dosyası için birim testleri oluşturma
 
-Dördüncü olarak, her Python dosyası için birim testleri oluşturulması gerekir, bu da kodu daha sağlam ve bakımı daha kolay hale getirir. Bu bölümde, `train.py`'deki işlevlerden biri için bir birim testi oluşturacaksınız.
+Dördüncü olarak, Python işlevleriniz için birim testleri oluşturun. Birim testleri kodu işlevsel gerilemelere karşı korur ve bakımı kolaylaştırır. Bu bölümde, `train.py`'deki işlevler için birim testleri oluşturacaksınız.
 
-`train.py`iki işlev `train_model` içerir: ve `main`. Her işlevin bir birim testine ihtiyacı vardır, ancak `train_model` bu öğreticide Pytest çerçevesini kullanarak işlev için yalnızca tek bir birim testi oluşturacağız. Pytest sadece Python birim test çerçevesi değil, ama en yaygın olarak kullanılan biridir. Daha fazla bilgi için [Pytest](https://pytest.org)adresini ziyaret edin.
+`train.py`birden çok işlev içerir, ancak bu öğreticide `train_model` Pytest çerçevesini kullanarak işlev için yalnızca tek bir birim testi oluştururuz. Pytest sadece Python birim test çerçevesi değil, ama en yaygın olarak kullanılan biridir. Daha fazla bilgi için [Pytest](https://pytest.org)adresini ziyaret edin.
 
 Bir birim testi genellikle üç ana eylem içerir:
 
@@ -364,71 +497,31 @@ Bir birim testi genellikle üç ana eylem içerir:
 - Bir nesneye göre hareket edin
 - Bekleneni ortaya koy
 
-Bunun için `train_model` ortak `data` bir `alpha` koşul, bir değerin ne zaman geçirildiğidir. Beklenen sonuç, ve `Ridge.train` `Ridge.predict` işlevlerin çağrılması gerektiğidir. Makine öğrenimi eğitim yöntemleri genellikle hızlı çalışmadığından, çağrı alay `Ridge.train` edilecektir. İade değeri alay `Ridge.train` edilen bir nesne olduğu için, `Ridge.predict`biz de alay edeceğiz. Geçişini `train_model` test etmek `data` için `alpha` birim testi ve `Ridge.train` beklenen `Ridge.predict` sonucu ve işlevleri ile bir değer alay ve Pytest çerçevesi kullanılarak çağrılan aşağıdaki kod gibi görünmelidir:
+Birim testi bazı `train_model` sabit kodlanmış veriler ve bağımsız değişkenler ile çağırır ve bir tahmin yapmak için elde edilen eğitilen modeli kullanarak ve beklenen bir değer için bu tahmin karşılaştırarak beklendiği gibi `train_model` hareket doğrulayın.
 
 ```python
-import pytest
+import numpy as np
 from code.training.train import train_model
 
-class TestTrain:
 
-    @staticmethod
-    def test_train_model(mocker):
-        # Arrange
-        test_data = {"train": {"X": [[1, 2, 3]], "y": [0]},
-                     "test": {"X": [[4, 5, 6]], "y": [0]}}
-        test_alpha = 0.5
-        mock_ridge_fit = mocker.patch('Ridge.fit')
-        mock_ridge_predict = mocker.patch('Ridge.predict')
+def test_train_model():
+    # Arrange
+    X_train = np.array([1, 2, 3, 4, 5, 6]).reshape(-1, 1)
+    y_train = np.array([10, 9, 8, 8, 6, 5])
+    data = {"train": {"X": X_train, "y": y_train}}
 
-        # Act
-        train_model(test_data, test_alpha)
+    # Act
+    reg_model = train_model(data, {"alpha": 1.2})
 
-        # Assert
-        mock_ridge_fit.assert_called()
-        mock_ridge_predict.assert_called()
+    # Assert
+    preds = reg_model.predict([[1], [2]])
+    np.testing.assert_almost_equal(preds, [9.93939393939394, 9.03030303030303])
 ```
-
-## <a name="use-your-own-model-with-mlopspython-code-template"></a>MLOpsPython kod şablonu ile kendi modelinizi kullanın
-
-Bu kılavuzdaki adımları takip ediyorsanız, MLOpsPython deposunda bulunan tren/puan/test komut dosyalarıyla ilişkili bir dizi komut dosyanız vardır.  Yukarıda belirtilen yapıya göre, kendi makine öğrenimi projeniz için bu dosyaları kullanmak için gerekenleri aşağıdaki adımlar ile yürüyecektir:
-
-1. MLOpsPython [Başlarken](https://github.com/microsoft/MLOpsPython/blob/master/docs/getting_started.md) kılavuzunu izleyin
-2. Proje başlangıç noktanızı oluşturmak için MLOpsPython [bootstrap yönergeleri](https://github.com/microsoft/MLOpsPython/blob/master/bootstrap/README.md) izleyin
-3. Eğitim Kodunu Değiştir
-4. Puan Kodunu Değiştir
-5. Değerlendirme Kodunu Güncelleştir
-
-### <a name="follow-the-getting-started-guide"></a>Başlarken Kılavuzunu Takip Edin
-[Başlarken](https://github.com/microsoft/MLOpsPython/blob/master/docs/getting_started.md) kılavuzunu takip ederek MLOpsPython'u çalıştırmak için destekleyici altyapıya ve boru hatlarına sahip olmak gerekir.
-
-### <a name="follow-the-bootstrap-instructions"></a>Bootstrap Yönergeleri izleyin
-
-[MLOpsPython depo kılavuzundan Bootstrap](https://github.com/microsoft/MLOpsPython/blob/master/bootstrap/README.md) hızlı bir şekilde proje için depo hazırlamak için yardımcı olacaktır.
-
-**Not:** Bootstrap komut dosyası diabetes_regression klasörü seçtiğiniz proje adına yeniden adlandıracağı için, projenize yolların dahil olduğu zaman olarak `[project name]` atıfta bulunacağız.
-
-### <a name="replace-training-code"></a>Eğitim Kodunu Değiştir
-
-Modeli eğitmek için kullanılan kodun değiştirilmesi ve çözümün kendi kodunuzla çalışması için ilgili birim testlerini kaldırması veya değiştirmesi gerekir. Aşağıdaki adımları özellikle izleyin:
-
-1. Değiştir. `[project name]/training/train.py` Bu komut dosyası, modelinizi yerel olarak veya Azure ML bilgi işlem biriminde eğitir.
-1. Eğitim birimi testlerini kaldırma veya değiştirme`[project name]/training/test_train.py`
-
-### <a name="replace-score-code"></a>Puan Kodunu Değiştir
-
-Modelin gerçek zamanlı çıkarım özellikleri sağlaması için puan kodunun değiştirilmesi gerekir. MLOpsPython şablonu, ACI, AKS veya Web uygulamalarında gerçek zamanlı puanlama yapmak için modeli dağıtmak için puan kodunu kullanır. Puanlamaya devam etmek istiyorsanız, değiştirin. `[project name]/scoring/score.py`
-
-### <a name="update-evaluation-code"></a>Değerlendirme Kodunu Güncelleştir
-
-MLOpsPython şablonu, yeni eğitilen modelin performansını ve Ortalama Kareli Hata'yı temel alan geçerli üretim modelini karşılaştırmak için evaluate_model komut dosyasını kullanır. Yeni eğitilen modelin performansı geçerli üretim modelinden daha iyiyse, ardışık işlemler devam eder. Aksi takdirde, ardışık hatlar iptal edilir. Değerlendirmeyi tutmak için, tüm `mse` `[project name]/evaluate/evaluate_model.py` in örneklerini istediğiniz metrikle değiştirin.
-
-Değerlendirmeden kurtulmak `RUN_EVALUATION` `.pipelines/[project name]-variables-template.yml` için `false`DevOps ardışık hatlar değişkenini .
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Artık bir denemeden üretim koduna nasıl dönüştürüleceklerini anladığınızdan, web hizmetleri olarak dağıtılan deneme çalıştırmalarını ve modelleri izlemeyi öğrenmek için aşağıdaki bağlantıları kullanın:
+Artık bir denemeden üretim koduna nasıl dönüştürüldüğünü anladığınızdan, daha fazla bilgi ve sonraki adımlar için aşağıdaki bağlantılara bakın:
 
-> [!div class="nextstepaction"]
-> [Azure ML deneme çalıştırmalarını ve ölçümlerini](https://docs.microsoft.com/azure/machine-learning/how-to-track-experiments)
-> [izleyin ML web hizmeti uç noktalarından verileri izleyin ve toplayın](https://docs.microsoft.com/azure/machine-learning/how-to-enable-app-insights)
++ [MLOpsPython](https://github.com/microsoft/MLOpsPython/blob/master/docs/custom_model.md): Azure Boru Hatları ve Azure Machine Learning'i kullanarak kendi modelinizi eğitmek, değerlendirmek ve dağıtmak için bir CI/CD ardışık hattı oluşturun
++ [Azure ML deneme çalıştırmalarını ve ölçümlerini izleyin](https://docs.microsoft.com/azure/machine-learning/how-to-track-experiments)
++ [ML web hizmeti uç noktalarından veri izleme ve toplama](https://docs.microsoft.com/azure/machine-learning/how-to-enable-app-insights)

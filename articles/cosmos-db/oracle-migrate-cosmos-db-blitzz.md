@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/21/2019
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: fe132ee6ab90fdae99463f11ecf46f352690b810
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 43d15a7252819a3e4f7635e37458b75e9b7ecca7
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69984361"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546279"
 ---
 # <a name="migrate-data-from-oracle-to-azure-cosmos-db-cassandra-api-account-using-blitzz"></a>Blitzz'i kullanarak Oracle'dan Azure Cosmos DB Cassandra API hesabına veri aktarın
 
@@ -36,7 +36,7 @@ Blitzz'in göç çözümü, karmaşık operasyonel iş yüklerini geçirmek içi
 
 * Bu hataya dayanıklı dır ve sistemdeki bir donanım veya yazılım hatası sırasında bile verilerin tesliminde tam olarak bir kez garanti eder.
 
-* SSL, şifreleme gibi çeşitli güvenlik metodolojileri kullanarak aktarım sırasında verileri güvence altına alar.
+* TLS/SSL, şifreleme gibi çeşitli güvenlik metodolojileri kullanarak aktarım sırasında verileri güvence altına alar.
 
 * PL/SQL'de yazılı karmaşık iş mantığını Azure Cosmos DB'deki eşdeğer iş mantığına dönüştürmek için hizmetler sunar.
 
@@ -44,7 +44,7 @@ Blitzz'in göç çözümü, karmaşık operasyonel iş yüklerini geçirmek içi
 
 Bu bölümde, Blitzz'i kurmak için gereken adımlar açıklanır ve verileri Oracle veritabanından Azure Cosmos DB'ye aktarır.
 
-1. Blitzz çoğaltmasını yüklemeyi planladığınız bilgisayardan bir güvenlik sertifikası ekleyin. Bu sertifika, belirtilen Azure Cosmos DB hesabıyla bir SSL bağlantısı kurmak için Blitzz çoğaltması tarafından gereklidir. Sertifikayı aşağıdaki adımlarla ekleyebilirsiniz:
+1. Blitzz çoğaltmasını yüklemeyi planladığınız bilgisayardan bir güvenlik sertifikası ekleyin. Bu sertifika, belirtilen Azure Cosmos DB hesabıyla BIR TLS bağlantısı kurmak için Blitzz çoğaltması tarafından gereklidir. Sertifikayı aşağıdaki adımlarla ekleyebilirsiniz:
 
    ```bash
    wget https://cacert.omniroot.com/bc2025.crt

@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: 3d71301534d56ef8eca68951c8c9f9a1570b3a6d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7d3bcc32dc8f1412a5adbc175a5f8618628bce83
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80282265"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80547883"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>Sık sorulan sorular: Azure'dan Azure'a olağanüstü durum kurtarma
 
@@ -93,7 +93,7 @@ Site Kurtarma'yı kullanarak, aynı coğrafi küme içindeki herhangi iki bölge
 
 ### <a name="does-site-recovery-require-internet-connectivity"></a>Site Kurtarma internet bağlantısı gerektirir mi?
 
-Hayır, Site Kurtarma internet bağlantısı gerektirmez. Ancak [Azure VM olağanüstü durum kurtarma ağ](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-ip-address-ranges)belirtildiği gibi, Site Kurtarma URL'leri ve IP aralıkları erişim gerektirir.
+Hayır, Site Kurtarma internet bağlantısı gerektirmez. Ancak [Azure VM olağanüstü durum kurtarma ağ](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-urls)belirtildiği gibi, Site Kurtarma URL'leri ve IP aralıkları erişim gerektirir.
 
 ### <a name="can-i-replicate-an-application-that-has-a-separate-resource-group-for-separate-tiers"></a>Ayrı katmanlar için ayrı bir kaynak grubu olan bir uygulamayı çoğaltabilir miyim?
 

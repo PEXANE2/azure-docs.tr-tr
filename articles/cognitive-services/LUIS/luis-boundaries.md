@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 11/07/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: d584b00caef628eb9dfd085b1fdce2bb7b353988
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6c021e68f8b76d8b0d3e6e9ff21c242580f53313
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79220088"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520953"
 ---
 # <a name="boundaries-for-your-luis-model-and-keys"></a>LUIS modeliniz ve anahtarlarınız için sınırlar
 LUIS'in birkaç sınır alanı vardır. Bunlardan ilki, LUIS'teki niyetleri, varlıkları ve özellikleri kontrol eden [model sınırıdır.](#model-boundaries) İkinci alan, anahtar türüne göre [kota sınırlarıdır.](#key-limits) Sınırların üçüncü bir alanı LUIS web sitesini kontrol etmek için [klavye kombinasyonudur.](#keyboard-controls) Dördüncü bir alan luis yazma web sitesi ve LUIS [uç nokta](luis-glossary.md#endpoint) API'ler arasında dünya bölgesi [haritalama](luis-reference-regions.md) olduğunu.
@@ -40,7 +40,7 @@ Uygulamanız LUIS model sınırlarını ve sınırlarını aşarsa, bir [LUIS g�
 | [Önizleme - Dinamik liste varlıkları](https://aka.ms/luis-api-v3-doc#dynamic-lists-passed-in-at-prediction-time)|Sorgu başına ~1k tahmin bitiş noktası isteği 2 listeleri|
 | [Desenler](luis-concept-patterns.md)|Uygulama başına 500 desen.<br>Desen maksimum uzunluğu 400 karakterdir.<br>3 Desen.desen başına herhangi bir varlıklar<br>Desende en fazla 2 iç içe isteğe bağlı metin|
 | [Desen.herhangi bir](./luis-concept-entity-types.md)|Uygulama başına 100, desen başına 3 desen.desen başına herhangi bir varlık |
-| [Tümcecik listesi][phrase-list]|500 ifade listesi. Değiştirilemez ifade listesi en fazla 5.000 tümcecike sahiptir. Değiştirilebilir İfade Listesi'nde en fazla 50.000 ifade vardır. 500.000 tümcecikuygulama başına toplam tümceciklerin maksimum sayısı.|
+| [Tümcecik listesi][phrase-list]|500 ifade listesi. Özellik sınırı olarak model nedeniyle 10 genel ifade listesi. Değiştirilemez ifade listesi en fazla 5.000 tümcecike sahiptir. Değiştirilebilir İfade Listesi'nde en fazla 50.000 ifade vardır. 500.000 tümcecikuygulama başına toplam tümceciklerin maksimum sayısı.|
 | [Önceden oluşturulmuş varlıklar](./luis-prebuilt-entities.md) | limitsiz|
 | [Normal ifade varlıkları](./luis-concept-entity-types.md)|20 varlık<br>500 karakter max. normal ifade varlık deseni başına|
 | [Roller](luis-concept-roles.md)|Uygulama başına 300 rol. Varlık başına 10 rol|

@@ -7,12 +7,12 @@ ms.service: security
 ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: 458a1d474e9a722a98ca068e1827cf0e1abf4b47
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: befe8945468d220a04ec7f0b515f22159cb72b0f
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75548828"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549238"
 ---
 # <a name="azure-service-fabric-security-best-practices"></a>Azure Service Fabric güvenliği en iyi yöntemleri
 Bir uygulamayı Azure'da dağıtmak hızlı, kolay ve uygun maliyetlidir. Bulut uygulamanızı üretime dağıtmadan önce, uygulamanızda güvenli kümeler uygulamak için temel ve önerilen en iyi uygulamalar listemizi inceleyin.
@@ -32,7 +32,7 @@ Aşağıdaki Azure Hizmet Kumaşı güvenliği en iyi uygulamaları öneririz:
 -   X.509 sertifikalarını kullanın.
 -   Güvenlik ilkelerini yapılandırın.
 -   Güvenilir Aktörler güvenlik yapılandırmasını uygulayın.
--   Azure Hizmet Kumaşı için SSL'yi yapılandırın.
+-   Azure Hizmet Kumaşı için TLS yapılandırın.
 -   Azure Hizmet Kumaşı ile ağ yalıtımı ve güvenliği kullanın.
 -   Güvenlik için Azure Anahtar Kasası'nı yapılandırın.
 -   Kullanıcıları rollere atama.
@@ -118,13 +118,13 @@ Her aktör, .NET nesnesinin .NET türünün bir örneği olmasıyla aynı olan b
 [Çoğaltma güvenlik yapılandırmaları](../../service-fabric/service-fabric-reliable-actors-kvsactorstateprovider-configuration.md) çoğaltma sırasında kullanılan iletişim kanalını güvence altına almak için kullanılır. Bu yapılandırma, hizmetlerin birbirlerinin çoğaltma trafiğini görmesini engeller ve kullanılabilir yüksek veri güvenliğini sağlar. Varsayılan olarak, boş bir güvenlik yapılandırma bölümü çoğaltma güvenliğini engeller.
 Çoğalıcı yapılandırmaları, Aktör Durum Sağlayıcısı durumunu son derece güvenilir hale getirmekten sorumlu çoğaltıcıyı yapılandırır.
 
-## <a name="configure-ssl-for-azure-service-fabric"></a>Azure Hizmet Kumaşı için SSL'yi yapılandırma
-Sunucu kimlik doğrulama işlemi, küme yönetimi uç noktalarını bir yönetim istemcisine [doğrular.](../../service-fabric/service-fabric-cluster-creation-via-arm.md) Yönetim istemcisi daha sonra gerçek kümeyle konuştuğunu fark eder. Bu sertifika ayrıca HTTPS yönetim API'si ve HTTPS üzerinden Service Fabric Explorer için bir [SSL](../../service-fabric/service-fabric-cluster-creation-via-arm.md) sağlar.
+## <a name="configure-tls-for-azure-service-fabric"></a>Azure Hizmet Kumaşı için TLS yapılandır
+Sunucu kimlik doğrulama işlemi, küme yönetimi uç noktalarını bir yönetim istemcisine [doğrular.](../../service-fabric/service-fabric-cluster-creation-via-arm.md) Yönetim istemcisi daha sonra gerçek kümeyle konuştuğunu fark eder. Bu sertifika ayrıca HTTPS yönetim API'si ve HTTPS üzerinden Service Fabric Explorer için bir [TLS](../../service-fabric/service-fabric-cluster-creation-via-arm.md) sağlar.
 Kümeniz için özel bir etki alanı adı edinmeniz gerekir. Sertifika yetkilisinden sertifika istediğinizde, sertifikanın özne adı kümeniz için kullandığınız özel alan adıyla eşleşmelidir.
 
-Bir uygulama için SSL'yi yapılandırmak için öncelikle CA tarafından imzalanmış bir SSL sertifikası almanız gerekir. CA, SSL güvenlik amaçları için sertifika veren güvenilir bir üçüncü taraftır. Zaten bir SSL sertifikanız yoksa, SSL sertifikası satan bir şirketten sertifika almanız gerekir.
+Bir uygulama için TLS yapılandırmak için öncelikle CA tarafından imzalanmış bir SSL/TLS sertifikası almanız gerekir. CA, TLS güvenlik amacıyla sertifika veren güvenilir bir üçüncü taraftır. Zaten SSL/TLS sertifikanız yoksa, SSL/TLS sertifikası satan bir şirketten sertifika almanız gerekir.
 
-Sertifika, Azure'daki SSL sertifikaları için aşağıdaki gereksinimleri karşılamalıdır:
+Sertifika, Azure'daki SSL/TLS sertifikaları için aşağıdaki gereksinimleri karşılamalıdır:
 -   Sertifika özel bir anahtar içermelidir.
 
 -   Sertifika anahtar değişimi için oluşturulmalı ve kişisel bilgi alışverişi (.pfx) dosyasına ihraç edilebilir olmalıdır.
@@ -135,13 +135,13 @@ Sertifika, Azure'daki SSL sertifikaları için aşağıdaki gereksinimleri karş
     - Hizmetinizin özel alan adıyla eşleşen bir konu adı olan bir CA'dan sertifika isteyin. Örneğin, özel alan adınız __contoso__**.com**ise, CA'nızdaki sertifikanın konu adı **.contoso.com** veya __www__**.contoso.com**olmalıdır.
 
     >[!NOTE]
-    >__Cloudapp__**.net** etki alanı için bir CA'dan SSL sertifikası alamazsınız.
+    >__Cloudapp__**.net** etki alanı için CA'dan SSL/TLS sertifikası alamazsınız.
 
 -   Sertifika en az 2.048 bit şifreleme kullanmalıdır.
 
 HTTP protokolü güvenli değildir ve dinleme saldırılarına tabidir. HTTP üzerinden iletilen veriler, web tarayıcısından web sunucusuna veya diğer uç noktalar arasında düz metin olarak gönderilir. Saldırganlar, kredi kartı bilgileri ve hesap girişleri gibi HTTP aracılığıyla gönderilen hassas verileri ele geçirip görüntüleyebilir. Veriler HTTPS üzerinden bir tarayıcı üzerinden gönderildiğinde veya gönderildiğinde, SSL hassas bilgilerin şifrelenmelerini ve ele geçirildiğinden emin olmasını sağlar.
 
-SSL sertifikalarını kullanma hakkında daha fazla bilgi edinmek [için Azure uygulamaları için SSL'yi Yapılandır'a](../../cloud-services/cloud-services-configure-ssl-certificate-portal.md)bakın.
+SSL/TLS sertifikalarını kullanma hakkında daha fazla bilgi edinmek [için Azure'daki bir uygulama için TLS Yapılandırma'ya](../../cloud-services/cloud-services-configure-ssl-certificate-portal.md)bakın.
 
 ## <a name="use-network-isolation-and-security-with-azure-service-fabric"></a>Azure Hizmet Kumaşı ile ağ yalıtımı ve güvenliği kullanma
 [Azure Kaynak Yöneticisi şablonu](../../azure-resource-manager/templates/template-syntax.md) örnek olarak kullanarak 3 nodetype güvenli küme ayarlayın. Şablonu ve Ağ Güvenlik Gruplarını kullanarak gelen ve giden ağ trafiğini denetleyin.

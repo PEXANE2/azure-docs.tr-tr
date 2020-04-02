@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/14/2020
-ms.openlocfilehash: e2ba5301b81b1a6f5de696ab4587cd8ff43e3c68
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/30/2020
+ms.openlocfilehash: 270ff3c3e8e4cffbb1f4b1987ee497530d0c0982
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77462573"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546256"
 ---
 # <a name="adjust-capacity-in-azure-cognitive-search"></a>Azure Bilişsel Arama'da kapasite ayarlama
 
@@ -27,7 +27,7 @@ Yinelemelerin ve bölümlerin tahsisini değiştirirken Azure portalını kullan
 
 |||
 |-|-|
-|*Bölüm* | Okuma/yazma işlemleri için dizin depolama ve G sağlar (örneğin, bir dizini yeniden oluşturma veya yenileme). Her bölüm toplam dizin payına sahiptir. Üç bölüm ayırırsanız, dizininiz üçte bire bölünür. |
+|*Bölümler* | Okuma/yazma işlemleri için dizin depolama ve G sağlar (örneğin, bir dizini yeniden oluşturma veya yenileme). Her bölüm toplam dizin payına sahiptir. Üç bölüm ayırırsanız, dizininiz üçte bire bölünür. |
 |*Çoğaltmalar* | Öncelikle bakiye sorgusu işlemlerini yüklemek için kullanılan arama hizmeti örnekleri. Her yineleme bir dizin bir kopyasıdır. Üç yineleme ayırırsanız, sorgu isteklerine hizmet vermek için kullanılabilir bir dizinin üç kopyasına sahip olursunuz.|
 
 ## <a name="when-to-add-nodes"></a>Düğümler ne zaman eklenir?
@@ -38,7 +38,8 @@ Tek bir hizmetin tüm iş yüklerini (dizin oluşturma ve sorguları) işlemek i
 
 Genel bir kural olarak, arama uygulamaları, özellikle hizmet işlemleri sorgu iş yüklerine karşı önyargılı olduğunda, bölümlerden daha fazla yinelemeye ihtiyaç duyma eğilimindedir. [Yüksek kullanılabilirlik](#HA) bölümü nedenini açıklar.
 
-Daha fazla yineleme veya bölüm eklemek, hizmeti çalıştırma maliyetinizi artırır. Daha fazla düğüm eklemenin faturalandırma etkilerini anlamak için [fiyatlandırma hesaplayıcısını](https://azure.microsoft.com/pricing/calculator/) kontrol ettiğinizden emin olun. [Aşağıdaki grafik,](#chart) belirli bir yapılandırma için gereken arama birimi sayısını çapraz referans olarak göndermenize yardımcı olabilir.
+> [!NOTE]
+> Daha fazla yineleme veya bölüm eklemek, hizmeti çalıştırma maliyetini artırır ve sonuçların nasıl sıralandırılına benzer küçük farklılıklara neden olabilir. Daha fazla düğüm eklemenin faturalandırma etkilerini anlamak için [fiyatlandırma hesaplayıcısını](https://azure.microsoft.com/pricing/calculator/) kontrol ettiğinizden emin olun. [Aşağıdaki grafik,](#chart) belirli bir yapılandırma için gereken arama birimi sayısını çapraz referans olarak göndermenize yardımcı olabilir. Ek yinelemelerin sorgu işlemeyi nasıl etkilediği hakkında daha fazla bilgi için [bkz.](search-pagination-page-layout.md#ordering-results)
 
 ## <a name="how-to-allocate-replicas-and-partitions"></a>Yinelemeler ve bölümler nasıl tahsis edilir?
 

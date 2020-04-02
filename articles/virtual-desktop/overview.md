@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 03/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e62b3c551f41bca0055f35cf6bf62c59d921c73b
-ms.sourcegitcommit: fab450a18a600d72b583ecfbe6c5e53afd43408c
+ms.openlocfilehash: 01767e88714bfb4e134957298505edd218d462d3
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80294824"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546918"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Windows Sanal Masaüstü nedir? 
 
@@ -43,7 +43,7 @@ Windows Sanal Masaüstü ile ölçeklenebilir ve esnek bir ortam ayarlayabilirsi
 * Ek ağ geçidi sunucuları çalıştırmak zorunda kalmadan Azure aboneliğinizde tam bir masaüstü sanallaştırma ortamı oluşturun.
 * Çeşitli iş yüklerinizi karşılamak için istediğiniz kadar ana bilgisayar havuzu yayınlayın.
 * Azure Galerisi'nden üretim iş yükleri için kendi resminizi veya testinizi getirin.
-* Havuzlanmış, çok oturumlu kaynaklarla maliyetleri azaltın. Windows Server'daki Windows Sanal Masaüstü ve Uzak Masaüstü Oturum Ana Bilgisayar (RDSH) rolüne özel yeni Windows 10 Enterprise çoklu oturum özelliği yle, sanal makinelerin ve işletim sisteminin (OS) genel yükünün sayısını büyük ölçüde azaltabilirsiniz. kullanıcılarınıza aynı kaynakları sağlar.
+* Havuzlanmış, çok oturumlu kaynaklarla maliyetleri azaltın. Windows Server'daki Windows Sanal Masaüstü ve Uzak Masaüstü Oturum Ana Bilgisayar (RDSH) rolüne özel yeni Windows 10 Enterprise çok oturumlu özelliğiyle, kullanıcılarınıza aynı kaynakları sağlarken sanal makine ve işletim sistemi (OS) ek yükü sayısını büyük ölçüde azaltabilirsiniz.
 * Kişisel (kalıcı) masaüstü bilgisayarlar aracılığıyla bireysel sahiplik sağlayın.
 
 Sanal masaüstlerini dağıtabilir ve yönetebilirsiniz:
@@ -89,21 +89,38 @@ Windows Sanal Masaüstü için oluşturduğunuz Azure sanal makineleri:
 
 Windows Sanal Masaüstü için oluşturduğunuz Azure sanal makinelerinin aşağıdaki URL'lere erişimi olmalıdır:
 
-|Adres|Giden bağlantı noktası|Amaç|
-|---|---|---|
-|*.wvd.microsoft.com|TCP bağlantı noktası 443|Servis trafiği|
-|*.blob.core.windows.net|TCP bağlantı noktası 443|Aracı, SXS yığın güncellemeleri ve Aracı trafiği|
-|*.core.windows.net|TCP bağlantı noktası 443|Acente trafiği|
-|*.servicebus.windows.net|TCP bağlantı noktası 443|Acente trafiği|
-|prod.warmpath.msftcloudes.com|TCP bağlantı noktası 443|Acente trafiği|
-|catalogartifact.azureedge.net|TCP bağlantı noktası 443|Azure Market|
-|kms.core.windows.net|TCP bağlantı noktası 1688|Windows 10 etkinleştirme|
+|Adres|Giden TCP bağlantı noktası|Amaç|Servis Etiketi|
+|---|---|---|---|
+|*.wvd.microsoft.com|443|Servis trafiği|WindowsVirtualDesktop|
+|mrsglobalsteus2prod.blob.core.windows.net|443|Aracı ve SXS yığın güncellemeleri|AzureCloud|
+|*.core.windows.net|443|Acente trafiği|AzureCloud|
+|*.servicebus.windows.net|443|Acente trafiği|AzureCloud|
+|prod.warmpath.msftcloudes.com|443|Acente trafiği|AzureCloud|
+|catalogartifact.azureedge.net|443|Azure Market|AzureCloud|
+|kms.core.windows.net|1688|Windows etkinleştirme|Internet|
+
+
 
 >[!IMPORTANT]
 >Bu URL'lerin açılması, güvenilir bir Windows Sanal Masaüstü dağıtımı için çok önemlidir. Bu URL'lere erişimi engellemek desteklenmez ve hizmet işlevselliğini etkiler. Bu URL'ler yalnızca Windows Sanal Masaüstü sitelerine ve kaynaklarına karşılık gelir ve Azure Active Directory gibi diğer hizmetler için URL içermez.
 
+Aşağıdaki tabloda, Azure sanal makinelerinizin erişebileceği isteğe bağlı URL'ler listelenemeniz gerekir:
+
+|Adres|Giden TCP bağlantı noktası|Amaç|Servis Etiketi|
+|---|---|---|---|
+|*.microsoftonline.com|443|MS Online Hizmetlerine Kimlik Doğrulama|None|
+|*.events.data.microsoft.com|443|Telemetri Servisi|None|
+|www.msftconnecttest.com|443|İşletim sistemi internete bağlı olup olmadığını algılar|None|
+|*.prod.do.dsp.mp.microsoft.com|443|Windows Update|None|
+|login.windows.net|443|MS Online Hizmetlere Giriş, Office 365|None|
+|*.sfx.ms|443|OneDrive istemci yazılımı için güncelleştirmeler|None|
+|*.digicert.com|443|Sertifika iptal denetimi|None|
+
+
 >[!NOTE]
 >Windows Sanal Masaüstü'nde şu anda ağ trafiğine izin vermek için beyaz listeye alabileceğiniz IP adresi aralıklarının bir listesi yok. Şu anda yalnızca belirli URL'leri beyaz listeye alma yı destekliyoruz.
+>
+>Gerekli Azure Etkin Dizin le ilgili URL'ler de dahil olmak üzere Office ile ilgili [URL'lerin](/office365/enterprise/urls-and-ip-address-ranges)listesi için bkz.
 >
 >Servis trafiğini içeren URL'ler için joker karakter (*) kullanmanız gerekir. Aracıyla ilgili trafik için * kullanmamayı tercih ederseniz, joker karaktersiz URL'leri şu şekilde bulabilirsiniz:
 >
@@ -137,15 +154,15 @@ Aşağıdaki Uzak Masaüstü istemcileri Windows Sanal Masaüstü'nü destekler:
 
 Uzak Masaüstü istemcileri aşağıdaki URL'lere erişebilmeli:
 
-|Adres|Giden bağlantı noktası|Amaç|İstemci(ler)|
+|Adres|Giden TCP bağlantı noktası|Amaç|İstemci(ler)|
 |---|---|---|---|
-|*.wvd.microsoft.com|TCP bağlantı noktası 443|Servis trafiği|Tümü|
-|*.servicebus.windows.net|TCP bağlantı noktası 443|Veri sorun giderme|Tümü|
-|go.microsoft.com|TCP bağlantı noktası 443|Microsoft FWLinks|Tümü|
-|aka.ms|TCP bağlantı noktası 443|Microsoft URL kısaltıcı|Tümü|
-|docs.microsoft.com|TCP bağlantı noktası 443|Belgeler|Tümü|
-|privacy.microsoft.com|TCP bağlantı noktası 443|Gizlilik bildirimi|Tümü|
-|query.prod.cms.rt.microsoft.com|TCP bağlantı noktası 443|İstemci güncellemeleri|Windows Masaüstü|
+|*.wvd.microsoft.com|443|Servis trafiği|Tümü|
+|*.servicebus.windows.net|443|Veri sorun giderme|Tümü|
+|go.microsoft.com|443|Microsoft FWLinks|Tümü|
+|aka.ms|443|Microsoft URL kısaltıcı|Tümü|
+|docs.microsoft.com|443|Belgeler|Tümü|
+|privacy.microsoft.com|443|Gizlilik bildirimi|Tümü|
+|query.prod.cms.rt.microsoft.com|443|İstemci güncellemeleri|Windows Masaüstü|
 
 >[!IMPORTANT]
 >Bu URL'lerin açılması güvenilir bir istemci deneyimi için çok önemlidir. Bu URL'lere erişimi engellemek desteklenmez ve hizmet işlevselliğini etkiler. Bu URL'ler yalnızca istemci sitelerine ve kaynaklarına karşılık gelir ve Azure Etkin Dizini gibi diğer hizmetler için URL içermez.

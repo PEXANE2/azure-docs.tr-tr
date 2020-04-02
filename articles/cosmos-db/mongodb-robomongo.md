@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 author: timsander1
 ms.author: tisande
-ms.openlocfilehash: 120c8c45999e6d4071fc397d6e585d7d2f83aebc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 68b880957754439b3b88a0cccff2218a5942f967
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80131427"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548808"
 ---
 # <a name="use-robo-3t-with-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB için Azure Cosmos DB API'siyle Robo 3T kullanma
 
@@ -20,6 +20,9 @@ Robo 3T'yi kullanarak Cosmos hesabına bağlanmak için şunları yapmamalısın
 
 * [Robo 3T'yi](https://robomongo.org/) indirin ve kurun
 * Cosmos DB [bağlantı dize](connect-mongodb-account.md) bilgilerinize sahip
+
+> [!NOTE]
+> Şu anda, Robo 3T v1.2 ve alt sürümleri MongoDB için Cosmos DB's API ile desteklenir.
 
 ## <a name="connect-using-robo-3t"></a>Robo 3T kullanarak bağlanma
 

@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 08/10/2018
 ms.custom: mvc, devcenter, seo-java-july2019, seo-java-august2019, seo-java-september2019
 zone_pivot_groups: java-build-tools-set
-ms.openlocfilehash: ad3b38a12020c56c31e03879b3fbcb9a8dda25f1
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: d0f30272a4e605449c946ca402db4f3ba00735bc
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79136876"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520535"
 ---
 # <a name="quickstart-use-java-and-mavengradle-to-create-and-publish-a-function-to-azure"></a>Hızlı başlatma: Azure'da bir işlev oluşturmak ve yayımlamak için Java ve Maven/Gradle'yi kullanın
 
@@ -67,13 +67,10 @@ Maven, dağıtımı sırasında projeoluşturmayı bitirmek için gereken değer
 | **Artifactıd** | Bir sürüm numarası olmayan kavanozun adı olan bir değer. Bu quickstart kullanımıörnekleri `fabrikam-functions`. |
 | **Sürüm** | `1.0-SNAPSHOT`Varsayılan değerini seçin. |
 | **Paket** | Oluşturulan işlev kodu için Java paketi olan bir değer. Varsayılan değeri kullanın. Bu quickstart kullanımıörnekleri `com.fabrikam.functions`. |
-| **Uygadı** | Azure'daki yeni işlev uygulamanızı tanımlayan genel olarak benzersiz ad. Rasgele bir sayıyla eklenen _artifakı Olan varsayılanı_ kullanın. Bu değeri not edin, daha sonra ihtiyacınız olacak. |
-| **appRegion** | Kendinize veya işlevinizin erişeceği diğer hizmetlere yakın bir [bölge](https://azure.microsoft.com/regions/) seçin. Varsayılan değer: `westus`. Tüm bölgelerin listesini almak için bu [Azure CLI] komutunu çalıştırın:<br/>`az account list-locations --query '[].{Name:name}' -o tsv` |
-| **resourceGroup** | İşlev uygulamanızı oluşturmak için yeni [kaynak grubunun](../azure-resource-manager/management/overview.md) adı. Bu `myResourceGroup`hızlı başlatmadaki örneklertarafından kullanılan kullanın. Bir kaynak grubunun Azure aboneliğinize özgü olması gerekir.|
 
 Onaylamak `Y` için Enter yazın veya enter tuşuna basın.
 
-Maven, bu örnekte yer alan _artifactId_adında yeni bir klasörde proje dosyalarını `fabrikam-functions`oluşturur. Dizin oluşturulan proje klasörüne değiştirmek için aşağıdaki komutu çalıştırın.
+Maven, bu örnekte yer alan **artifactId**adında yeni bir klasörde proje dosyalarını `fabrikam-functions`oluşturur. Dizin oluşturulan proje klasörüne değiştirmek için aşağıdaki komutu çalıştırın.
 ```bash
 cd fabrikam-function
 ```
@@ -236,4 +233,4 @@ HTTP tetiklenen işlevi olan bir Java işlevleri projesi oluşturdunuz, yerel ma
 
 
 [Azure CLI]: /cli/azure
-[Azure portalında]: https://portal.azure.com
+[Azure portalı]: https://portal.azure.com

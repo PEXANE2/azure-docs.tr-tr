@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: bc4694928eceed57692a0d4b0469543c1a8f9678
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 4/1/2020
+ms.openlocfilehash: 6ca09ab0578fb88e443d6e9e1f920c22457eb042
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79532765"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548481"
 ---
 # <a name="limitations-in-azure-database-for-mysql"></a>MySQL için Azure Veritabanında Sınırlamalar
 Aşağıdaki bölümlerde veritabanı hizmetinde kapasite, depolama motoru desteği, ayrıcalık desteği, veri işleme bildirimi desteği ve işlevsel sınırlar açıklanmıştır. Ayrıca MySQL veritabanı altyapısı için geçerli [genel sınırlamalara](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html) bakın.
@@ -150,6 +150,10 @@ Bu parametre hakkında daha fazla bilgi edinmek için [MySQL belgelerini](https:
 |Bellek İçin İyileştirilmiş|8|16777216|1024|536870912|
 |Bellek İçin İyileştirilmiş|16|16777216|1024|1073741824|
 |Bellek İçin İyileştirilmiş|32|16777216|1024|1073741824|
+
+### <a name="time_zone"></a>time_zone
+
+Saat dilimi tabloları, `mysql.az_load_timezone` MySQL komut satırı veya MySQL Workbench gibi bir araçtan depolanan yordamı arayarak doldurulabilir. Depolanan [Azure portal](howto-server-parameters.md#working-with-the-time-zone-parameter) yordamı [Azure CLI](howto-configure-server-parameters-using-cli.md#working-with-the-time-zone-parameter) nasıl çağırıp genel veya oturum düzeyinde saat dilimlerini ayarlanın.
 
 ## <a name="storage-engine-support"></a>Depolama motoru desteği
 
