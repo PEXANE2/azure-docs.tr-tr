@@ -3,7 +3,7 @@ title: Azure kimliği & access security en iyi uygulamaları | Microsoft Doküma
 description: Bu makalede, Azure özelliklerinde yerleşik kullanarak kimlik yönetimi ve erişim denetimi için en iyi uygulamalar kümesi sağlanmaktadır.
 services: security
 documentationcenter: na
-author: barclayn
+author: terrylanfear
 manager: RKarlin
 editor: TomSh
 ms.assetid: 07d8e8a8-47e8-447c-9c06-3a88d2713bc1
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
-ms.author: barclayn
-ms.openlocfilehash: 52ef3a9b1df058d5d2e954b424094f9dbaeba15b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: terrylan
+ms.openlocfilehash: ffd9919092cdf2481767e58f10ba6525d56ca4a8
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73053350"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548450"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure Kimlik Yönetimi ve erişim denetimi güvenliği en iyi uygulamaları
 
@@ -269,7 +269,7 @@ Atanan veya genel yönetici rolü için uygun hesapları değerlendirin. `*.onmi
 **En iyi yöntem**: Tüm kritik yönetici hesaplarının parolasız (tercih edilen) olmasını veya Çok Faktörlü Kimlik Doğrulama'yı gerektirmesini gerektirir.
 **Ayrıntı**: Parola kullanmadan herhangi bir Azure REKLAM hesabında oturum açtırmak için [Microsoft Authenticator uygulamasını](/azure/active-directory/authentication/howto-authentication-phone-sign-in) kullanın. [Windows Hello for Business](/windows/security/identity-protection/hello-for-business/hello-identity-verification)gibi Microsoft Authenticator da, bir aygıta bağlı olan ve biyometrik kimlik doğrulaması veya PIN kullanan bir kullanıcı kimlik bilgisini etkinleştirmek için anahtar tabanlı kimlik doğrulaması kullanır.
 
-Azure AD yönetici rollerinden birine veya daha fazlasına kalıcı olarak atanan tüm bireysel kullanıcılar için oturum açma sırasında Azure Çok Faktörlü Kimlik Doğrulaması gerektirir: Küresel Yönetici, Ayrıcalıklı Rol Yöneticisi, Exchange Online Administrator ve SharePoint Online Yönetici. [Yönetici hesaplarınız için Çok Faktörlü Kimlik Doğrulaması'nı](/azure/active-directory/authentication/howto-mfa-userstates) etkinleştirin ve yönetici hesabı kullanıcılarının kaydolduğundan emin olun.
+Azure AD yönetici rollerinden birine veya daha fazlasına kalıcı olarak atanan tüm bireysel kullanıcılar için oturum açma sırasında Azure Çok Faktörlü Kimlik Doğrulaması'nı gerektirme: Küresel Yönetici, Ayrıcalıklı Rol Yöneticisi, Exchange Online Yöneticisi ve SharePoint Çevrimiçi Yöneticisi. [Yönetici hesaplarınız için Çok Faktörlü Kimlik Doğrulaması'nı](/azure/active-directory/authentication/howto-mfa-userstates) etkinleştirin ve yönetici hesabı kullanıcılarının kaydolduğundan emin olun.
 
 **En iyi uygulama**: Kritik yönetici hesapları için, üretim görevlerine izin verilmeyen bir yönetici iş istasyonuna (örneğin, tarama ve e-posta) sahip olun. Bu, yönetici hesaplarınızı tarama ve e-posta kullanan saldırı vektörlerinden koruyacak ve büyük bir olay riskini önemli ölçüde azaltır.
 **Ayrıntı**: Yönetici iş istasyonu kullanın. İş istasyonu güvenliği düzeyi seçin:

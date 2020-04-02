@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/21/2019
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 746232a85e326f08d44cf2dbe0a4ae718c7cc312
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b2e7f371e587c1c7f0debfa018ea8f25a30718a8
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69984374"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548103"
 ---
 # <a name="migrate-data-from-cassandra-to-azure-cosmos-db-cassandra-api-account-using-blitzz"></a>Blitzz kullanarak Verileri Cassandra'dan Azure Cosmos DB Cassandra API hesabına geçirin
 
@@ -36,13 +36,13 @@ Blitzz'in göç çözümü, karmaşık operasyonel iş yüklerini geçirmek içi
 
 * Bu hataya dayanıklı dır ve sistemdeki bir donanım veya yazılım hatası sırasında bile verilerin tesliminde tam olarak bir kez garanti eder.
 
-* SSL, şifreleme gibi çeşitli güvenlik metodolojileri kullanarak aktarım sırasında verileri güvence altına alar.
+* TLS, şifreleme gibi çeşitli güvenlik metodolojileri kullanarak aktarım sırasında verileri güvence altına alar.
 
 ## <a name="steps-to-migrate-data"></a>Verileri geçirme adımları
 
 Bu bölümde, Blitzz'i ayarlamak için gereken adımlar açıklanır ve verileri Apache Cassandra veritabanından Azure Cosmos DB'ye aktarır.
 
-1. Blitzz çoğaltmasını yüklemeyi planladığınız bilgisayardan bir güvenlik sertifikası ekleyin. Bu sertifika, belirtilen Azure Cosmos DB hesabıyla bir SSL bağlantısı kurmak için Blitzz çoğaltması tarafından gereklidir. Sertifikayı aşağıdaki adımlarla ekleyebilirsiniz:
+1. Blitzz çoğaltmasını yüklemeyi planladığınız bilgisayardan bir güvenlik sertifikası ekleyin. Bu sertifika, belirtilen Azure Cosmos DB hesabıyla BIR TLS bağlantısı kurmak için Blitzz çoğaltması tarafından gereklidir. Sertifikayı aşağıdaki adımlarla ekleyebilirsiniz:
 
    ```bash
    wget https://cacert.omniroot.com/bc2025.crt

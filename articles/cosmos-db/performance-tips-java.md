@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: sngun
-ms.openlocfilehash: 3b7d221c2afc952f40da035c6e2c282b3b932aa5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a20b7d91a927d48a14812110ca714491cd726071
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "69616755"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548774"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-java"></a>Azure Cosmos DB ve Java için performans ipuçları
 
@@ -26,7 +26,7 @@ Azure Cosmos DB, garantili gecikme sonu ve iş ortası ile sorunsuz ölçeklendi
 
 "Veritabanı performansımı nasıl artırabilirim?" diye soruyorsanız. aşağıdaki seçenekleri göz önünde bulundurun:
 
-## <a name="networking"></a>Ağ Oluşturma
+## <a name="networking"></a>Ağ
 <a id="direct-connection"></a>
 
 1. **Bağlantı modu: Direct'i kullanHttps**
@@ -38,7 +38,7 @@ Azure Cosmos DB, garantili gecikme sonu ve iş ortası ile sorunsuz ölçeklendi
 
       Ağ geçidi modu tüm SDK platformlarında desteklenir ve yapılandırılan varsayılandır.  Uygulamanız sıkı güvenlik duvarı kısıtlamaları olan bir şirket ağında çalışıyorsa, standart HTTPS bağlantı noktasını ve tek bir bitiş noktasını kullandığından Ağ Geçidi en iyi seçimdir. Ancak performans dengelemesi, Ağ Geçidi modunun azure Cosmos DB'ye her veri okunduveya yazıldığında ek bir ağ atlama içer. Bu nedenle DirectHttps modu, daha az ağ atlaması sayesinde daha iyi performans sunar. 
 
-      Java SDK, HTTPS'yi aktarım protokolü olarak kullanır. HTTPS, ilk kimlik doğrulama ve trafiği şifrelemek için SSL kullanır. Java SDK kullanırken, yalnızca HTTPS bağlantı noktası 443 açık olması gerekir. 
+      Java SDK, HTTPS'yi aktarım protokolü olarak kullanır. HTTPS, ilk kimlik doğrulama ve trafiği şifrelemek için TLS kullanır. Java SDK kullanırken, yalnızca HTTPS bağlantı noktası 443 açık olması gerekir. 
 
       ConnectionMode, ConnectionPolicy parametresi ile DocumentClient örneğinin yapımı sırasında yapılandırılır. 
 

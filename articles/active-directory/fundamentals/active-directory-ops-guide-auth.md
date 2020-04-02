@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: bc5824fcb62477d4e6dc6c2b7390b1bfa916094f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8b4ec003888d75a582d25feef8ed2ce010fa7996
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77368049"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546243"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Azure Active Directory Authentication management işlemleri başvuru kılavuzu
 
@@ -101,7 +101,7 @@ Azure AD Password Hash Sync (PHS) ve Azure MFA, basitliğin ve sızdırılan kim
 
 ![şifre karma eşitleme akışı](./media/active-directory-ops-guide/active-directory-ops-img5.png)
 
-Kimlik doğrulama seçeneklerinizi daha iyi anlamak [için](https://docs.microsoft.com/azure/security/azure-ad-choose-authn)bkz.
+Kimlik doğrulama seçeneklerinizi daha iyi anlamak [için](https://docs.microsoft.com/azure/active-directory/hybrid/choose-ad-authn)bkz.
 
 ### <a name="programmatic-usage-of-credentials"></a>Kimlik bilgilerinin programlı kullanımı
 
@@ -115,7 +115,7 @@ Microsoft ayrıca, parola kimlik bilgilerine sahip hizmet ilkeleri varsa kullan�
 
 ### <a name="on-premises-authentication"></a>Şirket içi kimlik doğrulama
 
-Entegre Windows Kimlik Doğrulama (IWA) veya Sorunsuz Tek Oturum Açma (SSO) ile yönetilen şifre karma eşitleme veya geçiş kimlik doğrulaması ile federe kimlik doğrulama, şirket ağında şirket içi etki alanı denetleyicilerine görüş hattı. Kimlik bilgisi istemi yorgunluğunu en aza indirir ve kullanıcıların kimlik avı saldırılarına kurban düşme riskini azaltır. Zaten PHS veya PTA ile bulut tarafından yönetilen kimlik doğrulaması kullanıyorsanız, ancak kullanıcıların şirket içinde kimlik doğrulaması yaparken parolalarını yazmaları gerekiyorsa, hemen [Kesintisiz SSO'yu dağıtmanız](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso)gerekir. Diğer taraftan, şu anda bulut tarafından yönetilen kimlik doğrulamasına geçiş planları yla doluysanız, geçiş projesinin bir parçası olarak Kesintisiz SSO uygulamanız gerekir.
+Tümleşik Windows Kimlik Doğrulama (IWA) veya Sorunsuz Tek Oturum Açma (SSO) ile yönetilen kimlik doğrulama, parola karma eşitleme veya geçiş kimlik doğrulaması ile yönetilen kimlik doğrulama, şirket ağında, şirket içi etki alanı denetleyicilerine görünürken en iyi kullanıcı deneyimidir. Kimlik bilgisi istemi yorgunluğunu en aza indirir ve kullanıcıların kimlik avı saldırılarına kurban düşme riskini azaltır. Zaten PHS veya PTA ile bulut tarafından yönetilen kimlik doğrulaması kullanıyorsanız, ancak kullanıcıların şirket içinde kimlik doğrulaması yaparken parolalarını yazmaları gerekiyorsa, hemen [Kesintisiz SSO'yu dağıtmanız](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso)gerekir. Diğer taraftan, şu anda bulut tarafından yönetilen kimlik doğrulamasına geçiş planları yla doluysanız, geçiş projesinin bir parçası olarak Kesintisiz SSO uygulamanız gerekir.
 
 ### <a name="device-trust-access-policies"></a>Aygıt güven erişim ilkeleri
 
@@ -230,11 +230,11 @@ Erişim ilkelerinde risk kullanmayı destekleyen Azure AD Premium P2 lisansları
 
 Microsoft Intune Application Management (MAM), Outlook Mobile gibi uyumlu istemci mobil uygulamalarına depolama şifrelemesi, PIN, uzaktan depolama temizleme vb. veri koruma denetimlerini itme olanağı sağlar. Ayrıca, onaylı veya uyumlu uygulamalardan Exchange Online gibi bulut hizmetlerine [erişimi kısıtlamak](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access) için koşullu erişim ilkeleri oluşturulabilir.
 
-Çalışanlarınız Exchange Online veya SharePoint Online gibi kurumsal kaynaklara erişmek için Office mobil uygulamaları gibi MAM özellikli uygulamalar yüklerse ve siz de BYOD'yi destekliyorsanız (kendi cihazınızı getirin), yönetmek için uygulama MAM ilkelerini dağıtmanızı öneririz MDM kaydı olmayan veya yalnızca MAM özellikli istemcilerden erişime izin vermek için koşullu erişim ilkelerinizi güncelleştirin ve kişisel olarak sahip olunan aygıtlarda uygulama yapılandırması.
+Çalışanlarınız Exchange Online veya SharePoint Online gibi kurumsal kaynaklara erişmek için Office mobil uygulamaları gibi MAM özellikli uygulamalar yüklerse ve byOD'yi de destekliyorsanız (kendi aygıtınızı getirin), UYGULAMA yapılandırmasını MDM kaydı olmayan kişisel cihazlarda yönetmek için uygulama MAM ilkelerini dağıtmanızı ve ardından yalnızca MAM özellikli istemcilerden erişime izin vermek için koşullu erişim ilkelerinizi güncelleştirmenizi öneririz.
 
 ![Koşullu Erişim Hibe kontrolü](./media/active-directory-ops-guide/active-directory-ops-img12.png)
 
-Çalışanların KURUMSAL kaynaklara karşı MAM özellikli uygulamalar yüklemesi ve Intune Yönetilen cihazlarda erişim kısıtlanırsa, kişisel aygıtlar için uygulama yapılandırmasını yönetmek için uygulama MAM ilkelerini dağıtmayı düşünmelisiniz ve Koşullu Erişim ilkelerini yalnızca MAM özellikli istemcilerden erişime izin vermek için güncelleştirin.
+Çalışanların KURUMSAL kaynaklara karşı MAM özellikli uygulamalar yüklemesi ve Intune Yönetilen cihazlarda erişim kısıtlanırsa, kişisel aygıtlar için uygulama yapılandırmasını yönetmek için uygulama MAM ilkelerini dağıtmayı ve Koşullu Erişim ilkelerini yalnızca MAM özellikli istemcilerden erişime izin verecek şekilde güncelleştirmeyi düşünmelisiniz.
 
 ### <a name="conditional-access-implementation"></a>Koşullu Erişim uygulaması
 
@@ -329,7 +329,7 @@ Aşağıda, açık bir iş gereksinimi yoksa kilitlenebilen kullanıcı ve grup 
 #### <a name="user-settings"></a>Kullanıcı ayarları
 
 - **Dış Kullanıcılar** - Ekipler, Power BI, Sharepoint Online ve Azure Bilgi Koruması gibi hizmetlerle kuruluşta organik olarak dış işbirliği gerçekleşebilir. Kullanıcı tarafından başlatılan dış işbirliğini denetlemek için açık kısıtlamalarınız varsa, Azure [REKLAM Yetkilendirme yönetimini](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-overview) veya yardım masanız aracılığıyla gibi kontrollü bir işlemi kullanarak harici kullanıcıları etkinleştirmeniz önerilir. Hizmetler için organik dış işbirliğine izin vermek istemiyorsanız, [üyelerin dış kullanıcıları tamamen davet etmesini engelleyebilirsiniz.](https://docs.microsoft.com/azure/active-directory/b2b/delegate-invitations) Alternatif olarak, dış kullanıcı davetlerinde belirli etki alanlarına da izin verebilir [veya engelleyebilirsiniz.](https://docs.microsoft.com/azure/active-directory/b2b/allow-deny-list)
-- **Uygulama Kayıtları** - Uygulama kayıtları etkinleştirildiğinde, son kullanıcılar uygulamalara kendileri dahil edebilir ve verilerine erişim izni verebilir. Uygulama kaydının tipik bir örneği, Outlook eklentilerinin veya Alexa ve Siri gibi sesli asistanların e-postalarını ve takvimlerini okumalarını veya onların adına e-posta göndermelerini sağlayan kullanıcılardır. Müşteri Uygulama kaydını kapatmaya karar verirse, InfoSec ve IAM ekipleri, uygulamaları bir yönetici hesabına kaydetmeleri gerektiğinden, istisnaların (iş gereksinimlerine göre gerekli olan uygulama kayıtları) yönetimine dahil olmalıdır, ve büyük olasılıkla süreci operasyonel leştirmek için bir süreç tasarlamak gerekir.
+- **Uygulama Kayıtları** - Uygulama kayıtları etkinleştirildiğinde, son kullanıcılar uygulamalara kendileri dahil edebilir ve verilerine erişim izni verebilir. Uygulama kaydının tipik bir örneği, Outlook eklentilerinin veya Alexa ve Siri gibi sesli asistanların e-postalarını ve takvimlerini okumalarını veya onların adına e-posta göndermelerini sağlayan kullanıcılardır. Müşteri Uygulama kaydını kapatmaya karar verirse, InfoSec ve IAM ekipleri, uygulamaları bir yönetici hesabına kaydetmeleri gerektiğinden ve büyük olasılıkla işlemi işlevsel hale getirmek için bir işlem tasarlamak zorunda kalacakları için özel durumların (iş gereksinimlerine göre gerekli olan uygulama kayıtları) yönetimine dahil olmalıdır.
 - **Yönetim Portalı** - kuruluşlar Azure portalındaki Azure AD bıçaklarını kilitleyebilir, böylece yönetici olmayanlar Azure portalında Azure REKLAM yönetimine erişemez ve kafaları karışabilir. Erişimi kısıtlamak için Azure AD yönetim portalındaki kullanıcı ayarlarına gidin:
 
 ![Yönetim portalı sınırlı erişim](./media/active-directory-ops-guide/active-directory-ops-img13.png)

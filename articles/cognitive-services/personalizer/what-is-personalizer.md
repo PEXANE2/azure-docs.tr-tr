@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 01/21/2020
 ms.author: diberry
-ms.openlocfilehash: 850ab0ee89ee167886d8747a0c721bb643529e14
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: ac6d72cbb69796851e58098138d51bb0988be4ec
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80052051"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520985"
 ---
 # <a name="what-is-personalizer"></a>Kişiselleştirme nedir?
 
@@ -59,7 +59,7 @@ Personalizer tek en iyi eylem seçmek için takviye öğrenme kullanılan, _öd�
 
 Personalizer's **Rank** [API](https://go.microsoft.com/fwlink/?linkid=2092082) gerçek zamanlı olarak, içerik sunmak _her zaman_ denir. Bu bir **olay**olarak bilinir, bir _olay kimliği_ile kaydetti.
 
-Personalizer'ın **Ödül** [API'si,](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward) altyapınıza daha iyi uyacak şekilde gerçek zamanlı olarak çağrılabilir veya geciktirilebilir. Ödül puanını iş gereksinimlerinize göre belirlersiniz. Bu, iyi için 1 ve kötü ler için 0 gibi tek bir değer veya iş hedefleriniz ve ölçümleriniz göz önünde bulundurularak oluşturduğunuz bir algoritma tarafından üretilen bir sayı olabilir.
+Personalizer'ın **Ödül** [API'si,](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward) altyapınıza daha iyi uyacak şekilde gerçek zamanlı olarak çağrılabilir veya geciktirilebilir. Ödül puanını iş gereksinimlerinize göre belirlersiniz. Ödül puanı 0 ile 1 arasındadır. Bu, iyi için 1 ve kötü ler için 0 gibi tek bir değer veya iş hedefleriniz ve ölçümleriniz göz önünde bulundurularak oluşturduğunuz bir algoritma tarafından üretilen bir sayı olabilir.
 
 ## <a name="personalizer-content-requirements"></a>Personalizer içerik gereksinimleri
 
@@ -101,6 +101,6 @@ Personalizer, tek en iyi içerik öğesini döndürmek için toplu bilgileri ner
 * [Pekiştirme Öğrenme Nedir?](concepts-reinforcement-learning.md)
 * [Rank isteğine ilişkin özellikler ve eylemler hakkında bilgi edinin](concepts-features.md)
 * [Ödül isteği için puanı belirleme hakkında bilgi edinin](concept-rewards.md)
-* [Hızlı başlangıçlar](sdk-learning-loop.md)
+* [Hızlı Başlangıçlar](sdk-learning-loop.md)
 * [Öğretici](tutorial-use-azure-notebook-generate-loop-data.md)
 * [Etkileşimli demoyu kullanma](https://personalizationdemo.azurewebsites.net/)

@@ -14,12 +14,12 @@ ms.date: 04/08/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 6c27fa8f80140e6db92ea0f998852507260cc278
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: faaff9e9ad5982efac6409f2284158a3d0711331
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80159549"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548401"
 ---
 # <a name="extend-support-for-sql-server-2008-and-sql-server-2008-r2-with-azure"></a>Azure ile SQL Server 2008 ve SQL Server 2008 R2 için destek genişletme
 
@@ -66,7 +66,7 @@ SQL Server, kurtarmayı garanti etmek için uygulama tutarlı Azure Site Kurtarm
 
 Azure VM'deki EOS SQL Server için olağanüstü durum kurtarma çözümleri aşağıdaki gibidir:
 
-- **SQL Server yedeklemeleri**: EOS SQL Server 2008 ve 2008 R2'nizi fidye yazılımlarına, kazara silmeişlemine ve 15 dakika rpo ve zaman içinde kurtarma yla bozulmaya karşı korumaya yardımcı olmak için Azure Yedekleme'yi kullanın. Daha fazla bilgi için [bu makaleye](https://docs.microsoft.com/azure/backup/backup-azure-sql-database#scenario-support)bakın.
+- **SQL Server yedeklemeleri**: EOS SQL Server 2008 ve 2008 R2'nizi fidye yazılımlarına, kazara silmeişlemine ve 15 dakika rpo ve zaman içinde kurtarma yla bozulmaya karşı korumaya yardımcı olmak için Azure Yedekleme'yi kullanın. Daha fazla bilgi için [bu makaleye](https://docs.microsoft.com/azure/backup/sql-support-matrix#scenario-support)bakın.
 - **Günlük gönderim**: RTO'yu azaltmak için sürekli geri yüklemelerle başka bir bölgede veya Azure bölgesinde günlük gönderi çoğaltma oluşturabilirsiniz. Günlük gönderisini el ile yapılandırmanız gerekir.
 - **Azure Site Kurtarma**: Azure Site Kurtarma çoğaltma yoluyla VM'nizi bölgeler ve bölgeler arasında çoğaltabilirsiniz. SQL Server, bir felaket durumunda kurtarmayı garanti etmek için uygulama tutarlı anlık görüntüler gerektirir. Azure Site Kurtarma, EOS SQL Server olağanüstü kurtarma kurtarma için en az 1 saatlik RPO ve 2 saatlik (artı SQL Server kurtarma süresi) RTO sunar.
 

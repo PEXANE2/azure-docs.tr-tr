@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: ff1b37c3053ffa91dcb432cd97a7dd6fd71dad1c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d058ff5f9863642f73725db3472c942161447f25
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79250432"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548445"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>Linux VM'leri için Azure Disk Şifrelemesi 
 
@@ -32,7 +32,7 @@ Linux için Azure Disk Şifrelemesinin [temellerini, Azure CLI quickstart'ı](di
 
 ## <a name="supported-vms-and-operating-systems"></a>Desteklenen VM'ler ve işletim sistemleri
 
-### <a name="supported-vm-sizes"></a>Desteklenen VM boyutları
+### <a name="supported-vms"></a>Desteklenen VM'ler
 
 Linux VM'ler [çeşitli boyutlarda](sizes.md)mevcuttur. Azure Disk Şifreleme, [Temel, A serisi SANAL Makinelerde](https://azure.microsoft.com/pricing/details/virtual-machines/series/)veya bu minimum bellek gereksinimlerini karşılamayan sanal makinelerde kullanılamaz:
 
@@ -44,7 +44,9 @@ Linux VM'ler [çeşitli boyutlarda](sizes.md)mevcuttur. Azure Disk Şifreleme, [
 
 Linux sanal makinelerde işletim sistemi disk şifreleme işlemi tamamlandıktan sonra, VM daha az bellekle çalışacak şekilde yapılandırılabilir. 
 
-Azure Disk Şifrelemesi, birinci sınıf depolama alanına sahip VM'ler için de kullanılabilir. 
+Azure Disk Şifrelemesi, birinci sınıf depolama alanına sahip VM'ler için de kullanılabilir.
+
+Azure Disk [Şifreleme, Nesil 2 VM'lerde](generation-2.md#generation-1-vs-generation-2-capabilities)ve [Lsv2 serisi VM'lerde](../lsv2-series.md)kullanılamaz). Daha fazla özel durum için [bkz: Azure Disk Şifrelemesi: Desteklenmeyen senaryolar.](disk-encryption-linux.md#unsupported-scenarios)
 
 ### <a name="supported-operating-systems"></a>Desteklenen işletim sistemleri
 

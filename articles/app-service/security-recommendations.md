@@ -1,18 +1,18 @@
 ---
 title: Güvenlik önerileri
 description: Paylaşılan sorumluluk modelimizde belirtildiği gibi güvenlik yükümlülüklerinizin yerine getirilmesine yardımcı olmak için güvenlik önerilerini uygulayın. Uygulamanızın güvenliğini artırın.
-author: barclayn
+author: msmbaldwin
 manager: barbkess
 ms.topic: conceptual
 ms.date: 06/17/2019
-ms.author: barclayn
+ms.author: mbaldwin
 ms.custom: security-recommendations
-ms.openlocfilehash: e3f901fd78436b42729607d38f0ddb533f31cd30
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 50e2666aa533a5111055a095c612b58bfe6f9db4
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74684122"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546694"
 ---
 # <a name="security-recommendations-for-app-service"></a>App Service için güvenlik önerileri
 
@@ -43,7 +43,7 @@ Bu makale, Azure Uygulama Hizmeti için güvenlik önerileri içerir. Bu öneril
 | FTPS'yi kullanma | Uygulama Hizmeti, dosyalarınızı dağıtmak için hem FTP'yi hem de FTPS'yi destekler. Mümkün olduğunda FTP yerine FTPS kullanın. Bu protokollerden biri veya her ikisi kullanılmadığında, [bunları devre dışı bırakmalısınız.](deploy-ftp.md#enforce-ftps) |
 | Uygulama verilerinin güvenliğini sağlama | Veritabanı kimlik bilgileri, API belirteçleri veya özel anahtarlar gibi uygulama sırlarını kod veya yapılandırma dosyalarınızda depolamayın. Yaygın olarak kabul edilen yaklaşım, seçtiğiniz dilde standart deseni kullanarak [ortam değişkenleri](https://wikipedia.org/wiki/Environment_variable) olarak bunlara erişmektir. Azure Uygulama Hizmeti'nde, [uygulama ayarları](web-sites-configure.md) ve [bağlantı dizeleri](web-sites-configure.md)aracılığıyla ortam değişkenlerini tanımlayabilirsiniz. Uygulama ayarları ve bağlantı dizeleri Azure'da şifrelenmiş olarak depolanır. Uygulama ayarları, uygulama başladığında uygulamanızın işlem bellene enjekte edilmeden önce yalnızca şifresi çözülür. Şifreleme anahtarları düzenli olarak döndürülür. Alternatif olarak, gelişmiş sırlar yönetimi için Azure Uygulama Hizmeti uygulamanızı [Azure Key Vault](/azure/key-vault/) ile tümleştirebilirsiniz. [Anahtar Kasası'na yönetilen bir kimlikle erişerek,](../key-vault/tutorial-web-application-keyvault.md)Uygulama Hizmeti uygulamanız ihtiyacınız olan sırlara güvenli bir şekilde erişebilir. |
 
-## <a name="networking"></a>Ağ Oluşturma
+## <a name="networking"></a>Ağ
 
 | Öneri | Yorumlar |
 |-|-|

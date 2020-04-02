@@ -16,12 +16,12 @@ ms.date: 03/22/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3deb87fec8241ad6126314f3f6ce5fb9600ad1fb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 477bb5430214b497f90e3cb6d5df69f9fcf4035f
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80128555"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546152"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Azure AD yetkilendirme yönetimi nedir?
 
@@ -101,7 +101,7 @@ Aşağıdaki diyagram, yetkilendirme yönetimindeki farklı öğelerin bir örne
 
 Erişim paketleri, erişim ataması için diğer mekanizmalarıdeğiştirmez.  Bunlar en uygun gibi durumlarda şunlardır:
 
-- Çalışanlar, belirli bir görev için zaman sınırlı erişime ihtiyaç duyar.  Örneğin, tüm çalışanların bir Exchange Online posta kutusuna sahip olmasını sağlamak için grup tabanlı lisanslama ve dinamik bir grup kullanabilir ve ardından çalışanların başka bir bölüm kaynaklarını okumak gibi ek erişime ihtiyaç duyduğu durumlar için erişim paketlerini kullanabilirsiniz Bölümü.
+- Çalışanlar, belirli bir görev için zaman sınırlı erişime ihtiyaç duyar.  Örneğin, tüm çalışanların bir Exchange Online posta kutusuna sahip olmasını sağlamak için grup tabanlı lisanslama ve dinamik bir grup kullanabilir ve ardından çalışanların başka bir departmandaki departman kaynaklarını okumak gibi ek erişime ihtiyaç duyduğu durumlar için erişim paketlerini kullanabilirsiniz.
 - Erişimin bir çalışanın yöneticisi veya diğer atanmış kişiler tarafından onaylanması gerekir.
 - Departmanlar, BT katılımı olmadan kaynakları için kendi erişim ilkelerini yönetmek isterler.  
 - Bir proje üzerinde işbirliği yapan iki veya daha fazla kuruluş, sonuç olarak, başka bir kuruluşun kaynaklarına erişmek için bir kuruluştan birden fazla kullanıcının Azure AD B2B aracılığıyla getirilmesi gerekir.
@@ -132,15 +132,16 @@ Yetkilendirme yönetimini ve belgelerini daha iyi anlamak için aşağıdaki ter
 
 [!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)]
 
-Azure Devlet, Azure Almanya ve Azure China 21Vianet gibi özel bulutlar şu anda kullanılamıyor.
+Azure Almanya ve Azure China 21Vianet gibi özel bulutlar şu anda kullanılamıyor.
 
 ### <a name="how-many-licenses-must-you-have"></a>Kaç lisansın olmalı?
 
-Dizininizin, aşağıdaki görevleri yerine getirecek çalışanlarınız kadar en az sayıda Azure AD Premium P2 lisansına sahip olduğundan emin olun:
+Dizininizin sahip olduğunuz en az olabildiğince fazla Azure AD Premium P2 lisansına sahip olduğundan emin olun:
 
 - Erişim paketi talep **edebilen** üye kullanıcılar.
 - Erişim paketi isteyen üye ve konuk kullanıcılar.
 - Erişim paketi isteklerini onaylayan üye ve konuk kullanıcılar.
+- Bir erişim paketine doğrudan atanan üye ve konuk kullanıcılar.
 
 Azure AD Premium P2 lisansları aşağıdaki görevler için gerekli **değildir:**
 

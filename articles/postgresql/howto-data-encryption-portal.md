@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: fe4c69787b606c601d2dc8b31cadc6dcf57458da
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 847e3c612a200743fa08cf939c9995ebb6f3dbfc
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79297076"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520341"
 ---
 # <a name="data-encryption-for-azure-database-for-postgresql-single-server-by-using-the-azure-portal"></a>Azure portalını kullanarak PostgreSQL Tek sunucu için Azure Veritabanı için veri şifreleme
 
@@ -65,7 +65,7 @@ PostgreSQL Tek sunucu için Azure Veritabanınız için veri şifrelemesini ayar
 
 4. Tüm dosyaların (geçici dosyalar dahil) tamamen şifrelenmiş olduğundan emin olmak için sunucuyu yeniden başlatın.
 
-## <a name="restore-or-create-a-replica-of-the-server"></a>Sunucunun bir kopyasını geri yükleme veya oluşturma
+## <a name="using-data-encryption-for-restore-or-replica-servers"></a>Geri yükleme veya çoğaltma sunucuları için Veri şifrelemesi kullanma
 
 PostgreSQL için Azure Veritabanı Tek sunucu, müşterinin yönetilen anahtarıyla Key Vault'ta depolandıktan sonra, sunucunun yeni oluşturulan herhangi bir kopyası da şifrelenir. Bu yeni kopyayı yerel veya coğrafi geri yükleme işlemi veya yineleme (yerel/çapraz bölge) işlemi aracılığıyla yapabilirsiniz. Yani, şifreli bir PostgreSQL sunucusu için, şifreli bir geri yüklenen sunucu oluşturmak için aşağıdaki adımları kullanabilirsiniz.
 
@@ -93,130 +93,6 @@ PostgreSQL için Azure Veritabanı Tek sunucu, müşterinin yönetilen anahtarı
 4. Hizmet ilkesini kaydettikten sonra anahtarı yeniden geçersiz kılın ve sunucu normal işlevini devam ettirin.
 
    ![PostgreSQL için Azure Veritabanı'nın ekran görüntüsü, geri yüklenen işlevselliği gösteriyor](media/concepts-data-access-and-security-data-encryption/restore-successful.png)
-
-## <a name="using-an-azure-resource-manager-template-to-enable-data-encryption"></a>Veri şifrelemesini etkinleştirmek için Azure Kaynak Yöneticisi şablonu kullanma
-
-Azure portalı dışında, yeni ve mevcut sunucu için Azure Kaynak Yöneticisi şablonlarını kullanarak PostgreSQL tek sunucu için Azure Veritabanınızda veri şifrelemesini de etkinleştirebilirsiniz.
-
-### <a name="for-a-new-server"></a>Yeni bir sunucu için
-
-Sunucuya veri şifreleme etkinliği sağlamak için önceden oluşturulmuş Azure Kaynak Yöneticisi şablonlarından birini kullanın: [Veri şifrelemesi ile örnek](https://github.com/Azure/azure-postgresql/tree/master/arm-templates/ExampleWithDataEncryption)
-
-Bu Azure Kaynak Yöneticisi şablonu, PostgreSQL Tek sunucu için bir Azure Veritabanı oluşturur ve sunucuda veri şifrelemesini etkinleştirmek için anahtar **atlama** ve **anahtar** parametreleri olarak geçirilir.
-
-### <a name="for-an-existing-server"></a>Varolan bir sunucu için
-Ayrıca, PostgreSQL Tek sunucuları için mevcut Azure Veritabanınızda veri şifrelemesini etkinleştirmek için Azure Kaynak Yöneticisi şablonlarını kullanabilirsiniz.
-
-* Özellikler nesnesindeki özelliğin altında daha önce `keyVaultKeyUri` kopyaladığınız Azure Anahtar Kasası anahtarının URI'sini geçirin.
-
-* API sürümü olarak *2020-01-01 önizleme* kullanın.
-
-```json
-{
-  "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "location": {
-      "type": "string"
-    },
-    "serverName": {
-      "type": "string"
-    },
-    "keyVaultName": {
-      "type": "string",
-      "metadata": {
-        "description": "Key vault name where the key to use is stored"
-      }
-    },
-    "keyVaultResourceGroupName": {
-      "type": "string",
-      "metadata": {
-        "description": "Key vault resource group name where it is stored"
-      }
-    },
-    "keyName": {
-      "type": "string",
-      "metadata": {
-        "description": "Key name in the key vault to use as encryption protector"
-      }
-    },
-    "keyVersion": {
-      "type": "string",
-      "metadata": {
-        "description": "Version of the key in the key vault to use as encryption protector"
-      }
-    }
-  },
-  "variables": {
-    "serverKeyName": "[concat(parameters('keyVaultName'), '_', parameters('keyName'), '_', parameters('keyVersion'))]"
-  },
-  "resources": [
-    {
-      "type": "Microsoft.DBforPostgreSQL/servers",
-      "apiVersion": "2017-12-01",
-      "kind": "",
-      "location": "[parameters('location')]",
-      "identity": {
-        "type": "SystemAssigned"
-      },
-      "name": "[parameters('serverName')]",
-      "properties": {
-      }
-    },
-    {
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2019-05-01",
-      "name": "addAccessPolicy",
-      "resourceGroup": "[parameters('keyVaultResourceGroupName')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.DBforPostgreSQL/servers', parameters('serverName'))]"
-      ],
-      "properties": {
-        "mode": "Incremental",
-        "template": {
-          "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-          "contentVersion": "1.0.0.0",
-          "resources": [
-            {
-              "type": "Microsoft.KeyVault/vaults/accessPolicies",
-              "name": "[concat(parameters('keyVaultName'), '/add')]",
-              "apiVersion": "2018-02-14-preview",
-              "properties": {
-                "accessPolicies": [
-                  {
-                    "tenantId": "[subscription().tenantId]",
-                    "objectId": "[reference(resourceId('Microsoft.DBforPostgreSQL/servers/', parameters('serverName')), '2017-12-01', 'Full').identity.principalId]",
-                    "permissions": {
-                      "keys": [
-                        "get",
-                        "wrapKey",
-                        "unwrapKey"
-                      ]
-                    }
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "[concat(parameters('serverName'), '/', variables('serverKeyName'))]",
-      "type": "Microsoft.DBforPostgreSQL/servers/keys",
-      "apiVersion": "2020-01-01-preview",
-      "dependsOn": [
-        "addAccessPolicy",
-        "[resourceId('Microsoft.DBforPostgreSQL/servers', parameters('serverName'))]"
-      ],
-      "properties": {
-        "serverKeyType": "AzureKeyVault",
-        "uri": "[concat(reference(resourceId(parameters('keyVaultResourceGroupName'), 'Microsoft.KeyVault/vaults/', parameters('keyVaultName')), '2018-02-14-preview', 'Full').properties.vaultUri, 'keys/', parameters('keyName'), '/', parameters('keyVersion'))]"
-      }
-    }
-  ]
-}
-```
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

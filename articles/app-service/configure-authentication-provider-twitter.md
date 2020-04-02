@@ -4,13 +4,15 @@ description: App Service veya Azure İşlevleri uygulamanız için bir kimlik sa
 ms.assetid: c6dc91d7-30f6-448c-9f2d-8e91104cde73
 ms.topic: article
 ms.date: 02/28/2020
-ms.custom: fasttrack-edit
-ms.openlocfilehash: 3f85f30e0a64b6e39b905fc05503a445aa5876ba
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.custom:
+- seodec18
+- fasttrack-edit
+ms.openlocfilehash: 11c913b12b4dcb7d2a5ffa532064b347b82904ef
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437992"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80519904"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-twitter-login"></a>Twitter oturumunu kullanmak için Uygulama Hizmetinizi veya Azure İşlevleri uygulamanızı yapılandırın
 
@@ -69,5 +71,5 @@ Artık uygulamanızda kimlik doğrulama için Twitter'ı kullanmaya hazırsını
 
 [Twitter Geliştiricileri]: https://go.microsoft.com/fwlink/p/?LinkId=268300
 [twitter.com]: https://go.microsoft.com/fwlink/p/?LinkID=268287
-[Azure portal]: https://portal.azure.com/
+[Azure portalı]: https://portal.azure.com/
 [xamarin]: ../app-services-mobile-app-xamarin-ios-get-started-users.md

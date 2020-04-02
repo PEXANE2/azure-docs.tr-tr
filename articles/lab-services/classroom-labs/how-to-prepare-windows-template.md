@@ -10,12 +10,12 @@ ms.service: lab-services
 ms.topic: article
 ms.date: 11/21/2019
 ms.author: enewman
-ms.openlocfilehash: c52a1212d160adce3a0a0638164833bc2907a856
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c1aaf588f61b329fa3b838b8a92f3e287897315b
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76515012"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521182"
 ---
 # <a name="guide-to-setting-up-a-windows-template-machine-in-azure-lab-services"></a>Azure Laboratuvar Hizmetleri'nde Windows şablon makinesi kurma kılavuzu
 
@@ -185,7 +185,7 @@ Tüm Microsoft Mağazası uygulamalarının en son sürümlerine güncellenmeniz
 3. Açılan menüden **İndir** ve güncelleştirmeleri seçin.
 4. **Güncelleştir düğmesini al** düğmesini tıklatın.
 
-Zaten yüklenmiş olan Microsoft Mağazası uygulamalarını güncelleştirmek için Powershell'i de kullanabilirsiniz.
+Zaten yüklenmiş olan Microsoft Mağazası uygulamalarını güncelleştirmek için PowerShell'i de kullanabilirsiniz.
 
 ```powershell
 (Get-WmiObject -Namespace "root\cimv2\mdm\dmmap" -Class "MDM_EnterpriseModernAppManagement_AppManagement01").UpdateScanMethod()
@@ -234,3 +234,6 @@ Windows Mağazası uygulaması üzerinden öğretim için yaygın olarak kullan�
 ## <a name="conclusion"></a>Sonuç
 
 Bu makalede, etkili bir sınıf için Windows şablonu VM hazırlamak için isteğe bağlı adımlar göstermiştir.  Adımlar arasında OneDrive'ı yükleme ve Office 365'i yükleme, Windows güncelleştirmelerini yükleme ve Microsoft Mağazası uygulamaları için güncelleştirmeleri yükleme yer alıyor.  Güncelleştirmeleri sınıfınız için en uygun zamanlamaya nasıl ayarlayabileceğimizi de tartıştık.  
+
+## <a name="next-steps"></a>Sonraki adımlar
+Maliyetleri yönetmeye yardımcı olmak için Windows kapatma davranışını nasıl denetleyeceklerine ilişkin makaleye bakın: [Windows kapatma davranışını denetleme kılavuzu](how-to-windows-shutdown.md)

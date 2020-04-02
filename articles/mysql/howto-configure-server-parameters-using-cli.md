@@ -6,13 +6,13 @@ ms.author: andrela
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 5f3027909d1c4684e2ef5d1b6e967cb11f570fd0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 4/1/2020
+ms.openlocfilehash: ca5f80e57f90e4dd26ac2e4a175998ff3de2c102
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80062422"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546432"
 ---
 # <a name="customize-server-parameters-by-using-azure-cli"></a>Azure CLI kullanarak sunucu parametrelerini özelleştirme
 Azure komut satırı yardımcı programı Azure CLI'yi kullanarak MySQL sunucusu için bir Azure Veritabanı için yapılandırma parametrelerini listeleyebilir, gösterebilir ve güncelleştirebilirsiniz. Motor yapılandırmalarının bir alt kümesi sunucu düzeyinde açığa çıkar ve değiştirilebilir. 
@@ -55,10 +55,10 @@ Bu **kod, yavaş\_\_sorgu günlüğü** yapılandırmasını varsayılan değer 
 
 ### <a name="populating-the-time-zone-tables"></a>Saat dilimi tablolarının doldurulma
 
-Sunucunuzdaki saat dilimi tabloları, `az_load_timezone` mysql komut satırı veya MySQL Workbench gibi bir araçtan depolanan yordamı arayarak doldurulabilir.
+Sunucunuzdaki saat dilimi tabloları, `mysql.az_load_timezone` mysql komut satırı veya MySQL Workbench gibi bir araçtan depolanan yordamı arayarak doldurulabilir.
 
 > [!NOTE]
-> MySQL Workbench `az_load_timezone` komutunu çalıştırıyorsanız, önce güvenli güncelleştirme modunu `SET SQL_SAFE_UPDATES=0;`kapatmanız gerekebilir.
+> MySQL Workbench `mysql.az_load_timezone` komutunu çalıştırıyorsanız, önce güvenli güncelleştirme modunu `SET SQL_SAFE_UPDATES=0;`kapatmanız gerekebilir.
 
 ```sql
 CALL mysql.az_load_timezone();

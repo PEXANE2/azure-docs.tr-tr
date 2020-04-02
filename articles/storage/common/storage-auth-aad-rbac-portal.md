@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/10/2020
+ms.date: 03/31/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: ec32990513d9199c4aaccf1bcfcbf76f348f877b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d224bd9e9e7b1f8fc9eb45d85e78811d8642fc78
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75867497"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80519555"
 ---
 # <a name="use-the-azure-portal-to-assign-an-rbac-role-for-access-to-blob-and-queue-data"></a>Blob ve sıra verilerine erişmek için bir RBAC rolü atamak için Azure portalını kullanın
 
@@ -23,13 +23,13 @@ Azure Etkin Dizin (Azure AD), rol tabanlı [erişim denetimi (RBAC)](../../role-
 
 Bir Azure REKLAM güvenlik ilkesine bir RBAC rolü atandığında, Azure bu güvenlik ilkesi için bu kaynaklara erişim sağlar. Erişim, abonelik düzeyine, kaynak grubuna, depolama hesabına veya tek bir kapsayıcı veya sıraya kadar kapsama edilebilir. Azure AD güvenlik ilkesi, [Azure kaynakları için](../../active-directory/managed-identities-azure-resources/overview.md)bir kullanıcı, bir grup, bir uygulama hizmeti ilkesi veya yönetilen bir kimlik olabilir.
 
-Bu makalede, RBAC rolleri atamak için Azure portalının nasıl kullanılacağı açıklanmaktadır. Azure portalı, RBAC rollerini atamak ve depolama kaynaklarınıza erişimi yönetmek için basit bir arayüz sağlar. Azure komut satırı araçlarını veya Azure Depolama yönetimi API'lerini kullanarak blob ve kuyruk kaynakları için RBAC rolleri de atayabilirsiniz. Depolama kaynakları için RBAC rolleri hakkında daha fazla bilgi için azure [etkin dizinini kullanarak Azure bloblarına ve kuyruklarına doğru doğrulama erişimi](storage-auth-aad.md)ne bakın. 
+Bu makalede, RBAC rolleri atamak için Azure portalının nasıl kullanılacağı açıklanmaktadır. Azure portalı, RBAC rollerini atamak ve depolama kaynaklarınıza erişimi yönetmek için basit bir arayüz sağlar. Azure komut satırı araçlarını veya Azure Depolama yönetimi API'lerini kullanarak blob ve kuyruk kaynakları için RBAC rolleri de atayabilirsiniz. Depolama kaynakları için RBAC rolleri hakkında daha fazla bilgi için azure [etkin dizinini kullanarak Azure bloblarına ve kuyruklarına doğru doğrulama erişimi](storage-auth-aad.md)ne bakın.
 
 ## <a name="rbac-roles-for-blobs-and-queues"></a>Lekeler ve kuyruklar için RBAC rolleri
 
 [!INCLUDE [storage-auth-rbac-roles-include](../../../includes/storage-auth-rbac-roles-include.md)]
 
-## <a name="determine-resource-scope"></a>Kaynak kapsamını belirleme 
+## <a name="determine-resource-scope"></a>Kaynak kapsamını belirleme
 
 [!INCLUDE [storage-auth-resource-scope-include](../../../includes/storage-auth-resource-scope-include.md)]
 
@@ -52,11 +52,11 @@ Aşağıdaki bölümlerde bu adımların her biri daha ayrıntılı olarak açı
 
 Bir güvenlik ilkesine bir rol atamadan önce, vermekte olduğunuz izinlerin kapsamını göz önünde bulundurun. Uygun [kapsama](#determine-resource-scope) karar vermek için kaynak kapsamını belirley ini gözden geçirin.
 
-Burada gösterilen yordam, kapsayıcıya kapsamlı bir rol atar, ancak bir sıraya kapsamlı bir rol atamak için aynı adımları izleyebilirsiniz: 
+Burada gösterilen yordam, kapsayıcıya kapsamlı bir rol atar, ancak bir sıraya kapsamlı bir rol atamak için aynı adımları izleyebilirsiniz:
 
 1. Azure [portalında,](https://portal.azure.com)depolama hesabınıza gidin ve hesap için **Genel Bakış'ı** görüntüleyin.
-1. Hizmetler altında **Blobs'ı**seçin. 
-1. Rol atamak istediğiniz kapsayıcıyı bulun ve kapsayıcının ayarlarını görüntüleyin. 
+1. Hizmetler altında **Blobs'ı**seçin.
+1. Rol atamak istediğiniz kapsayıcıyı bulun ve kapsayıcının ayarlarını görüntüleyin.
 1. Kapsayıcının erişim denetim ayarlarını görüntülemek için **Access denetimi (IAM)** seçeneğini belirleyin. Rol **atamaları** listesini görmek için Rol atamaları sekmesini seçin.
 
     ![Kapsayıcı erişim denetim ayarlarını gösteren ekran görüntüsü](media/storage-auth-aad-rbac-portal/portal-access-control-for-storage.png)

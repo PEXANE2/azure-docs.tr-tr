@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/17/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 11f9097fc4875f0a4300ac56dafe7af9a0b00c97
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e8a8502b40410df221886cde2fa5f3db15bf3eed
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79454627"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549171"
 ---
 # <a name="cloud-tiering-overview"></a>Bulut Katmanlama Genel Bakış
 Bulut katmanlama, sık erişilen dosyaların sunucuda yerel olarak önbelleğe alınıp diğer tüm dosyaların ilke ayarlarına göre Azure Dosyalarına katmanlandığı Azure Dosya Eşitlemi'nin isteğe bağlı bir özelliğidir. Bir dosya katmanlı olduğunda, Azure Dosya Eşitleme dosya sistemi filtresi (StorageSync.sys) dosyayı yerel olarak bir işaretçiyle veya telafi noktasıyla değiştirir. Reparse noktası, Azure Dosyaları'ndaki dosyanın URL'sini temsil eder. Katmanlı bir dosya, üçüncü taraf uygulamaların katmanlı dosyaları güvenli bir şekilde tanımlayabilmesi için NTFS'de ayarlanan hem "çevrimdışı" özniteliğine hem de FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS özniteliğine sahiptir.
@@ -51,7 +51,22 @@ Bir birimde birden fazla sunucu bitiş noktası olduğunda, etkin hacimli boş a
 
 <a id="date-tiering-policy"></a>
 ### <a name="how-does-the-date-tiering-policy-work-in-conjunction-with-the-volume-free-space-tiering-policy"></a>Tarih katmanlama ilkesi birim boş alanı katmanlama ilkesi ile birlikte nasıl çalışır? 
-Bir sunucu bitiş noktasında bulut katmanlamayı etkinleştirirken, bir birim boş alan ilkesi ayarlarsınız. Tarih ilkesi de dahil olmak üzere diğer ilkelerden her zaman önceliklidir. İsteğe bağlı olarak, bu birimdeki her sunucu bitiş noktası için bir tarih ilkesi etkinleştirebilirsiniz, yani yalnızca bu iipolitikasın açıkladığı gün aralığında erişilen (yani okunan veya yazılmış) dosyalar yerel tutulacak ve herhangi bir staler dosyaları katmanlı olarak tutulacaktır. Birim boş alan ilkesinin her zaman öncelikli olduğunu ve birimde tarih ilkesinde açıklandığı kadar çok gün dosya tutacak yeterli boş alan olmadığında, Azure Dosya Eşitlemesi'nin en soğuk dosyaları ses serbest alana kadar katmanlandırmaya devam edeceğini unutmayın alan yüzdesi karşılanır.
+Bir sunucu bitiş noktasında bulut katmanlamayı etkinleştirirken, bir birim boş alan ilkesi ayarlarsınız. Tarih ilkesi de dahil olmak üzere diğer ilkelerden her zaman önceliklidir. İsteğe bağlı olarak, o birimdeki her sunucu bitiş noktası için bir tarih ilkesi etkinleştirebilirsiniz. Bu ilke, yalnızca bu iipolitikasın açıkladığı gün aralığında erişilen (yani okunan veya yazılan) dosyaların yerel tutulacağını yönetir. Belirtilen gün sayısıyla erişilmeyen dosyalar katmanlanır. 
+
+Bulut Katmanlama, hangi dosyaların katmanlandırılmak gerektiğini belirlemek için son erişim süresini kullanır. Bulut katmanlama filtresi sürücüsü (storagesync.sys) son erişim süresini izler ve bilgileri bulut katmanlama ısı deposunda kaydeder. Yerel bir PowerShell cmdlet kullanarak ısı deposu görebilirsiniz.
+
+```powershell
+Import-Module '<SyncAgentInstallPath>\StorageSync.Management.ServerCmdlets.dll'
+Get-StorageSyncHeatStoreInformation '<LocalServerEndpointPath>'
+```
+
+> [!IMPORTANT]
+> Son erişilen zaman damgası NTFS tarafından izlenen bir özellik değildir ve bu nedenle Dosya Gezgini'nde varsayılan olarak görünmez. Tarih ilkesinin beklendiği gibi çalışıp çalışmadığını denetlemek için dosyadaki son değiştirilmiş zaman damgasını kullanmayın. Bu zaman damgası sadece izler yazıyor, okumaz. Bu değerlendirme için son erişilen zaman damgasını almak için gösterilen cmdlet'i kullanın.
+
+> [!WARNING]
+> Dosya ve klasörler için son erişilen zaman damgasını izlemenin NTFS özelliğini açmayın. Büyük bir performans etkisi olduğundan, bu özellik varsayılan olarak kapalıdır. Azure Dosya Eşitlemesi, son erişilen süreleri otomatik olarak ve çok verimli bir şekilde izler ve bu NTFS özelliğinden yararlanmaz.
+
+Birim boş alan ilkesinin her zaman öncelikli olduğunu ve birimde tarih ilkesinde açıklandığı kadar çok gün değerinde dosya tutacak yeterli boş alan olmadığında, Azure Dosya Eşitlemesi'nin en soğuk dosyaları, birim boş alan yüzdesi karşılanana kadar katmanlandırmaya devam edeceğini unutmayın.
 
 Örneğin, 60 günlük bir tarih tabanlı katmanlama politikanız ve %20'lik bir hacim boş alan politikanız olduğunu varsa. Tarih ilkesini uyguladıktan sonra, birimde boş alanın %20'sinden azı varsa, birim boş alan ilkesi devreye girecek ve tarih ilkesini geçersiz kılar. Bu, sunucuda tutulan veri miktarının 60 günden 45 güne düşürülebileceği gibi daha fazla dosyanın katmanlanmasına neden olur. Tam tersine, bu ilke, boş alan eşiğinize çarpmamış olsanız bile zaman aralığınızın dışına çıkan dosyaların katmanlamasını zorlar , böylece 61 günlük bir dosya, ses düzeyiniz boş olsa bile katmanlanır.
 

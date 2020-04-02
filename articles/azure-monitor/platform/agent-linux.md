@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 01/21/2020
-ms.openlocfilehash: 40c279a4beee9fbebe2de7f272fe51d9039f071c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: aa2356901403c7a63aa4aa96dcb38f9c0c971e58
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77668715"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80528343"
 ---
 # <a name="connect-linux-computers-to-azure-monitor"></a>Linux bilgisayarlarını Azure Monitörüne bağlayın
 
@@ -22,7 +22,7 @@ Linux için Log Analytics aracısı aşağıdaki yöntemlerden biri kullanılara
 * Aracıyı [el ile indirin ve kurun.](#install-the-agent-manually) Bu, Linux bilgisayarının Internet erişimi yoksa ve [Log Analytics ağ geçidi](gateway.md)aracılığıyla Azure Monitor veya Azure Otomasyonu ile iletişim kuracağı zaman gereklidir. 
 * GitHub'da barındırılan [bir sarmalayıcı komut dosyası kullanarak Linux aracısını yükleyin.](#install-the-agent-using-wrapper-script) Bu, bilgisayar Internet ile doğrudan veya bir proxy sunucusu üzerinden bağlantı olduğunda aracıyı yüklemek ve yükseltmek için önerilen yöntemdir.
 
-Desteklenen yapılandırmayı anlamak için [desteklenen Linux işletim sistemlerini](log-analytics-agent.md#supported-linux-operating-systems) ve [ağ güvenlik duvarı yapılandırmasını](log-analytics-agent.md#network-firewall-requirements) inceleyin.
+Desteklenen yapılandırmayı anlamak için [desteklenen Linux işletim sistemlerini](log-analytics-agent.md#supported-linux-operating-systems) ve [ağ güvenlik duvarı yapılandırmasını](log-analytics-agent.md#firewall-requirements) inceleyin.
 
 >[!NOTE]
 >Linux için Log Analytics aracısı birden fazla Log Analytics çalışma alanına raporlamak için yapılandırılamaz. Yalnızca bir Sistem Merkezi Operasyon Yöneticisi yönetim grubuna ve Log Analytics çalışma alanına aynı anda veya tek tek rapor lanacak şekilde yapılandırılabilir.

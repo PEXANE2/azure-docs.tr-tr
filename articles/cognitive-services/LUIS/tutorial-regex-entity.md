@@ -1,22 +1,14 @@
 ---
 title: 'Öğretici: Normal ifade varlığı - LUIS'
-titleSuffix: Azure Cognitive Services
 description: Düzenli İfade varlığını kullanarak bir sözcükten sürekli biçimlendirilmiş verileri ayıklayın.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/17/2019
-ms.author: diberry
-ms.openlocfilehash: 0ca6f2a67e01e4c604c2dcc8f8eaa9ffe8bad045
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 04/01/2020
+ms.openlocfilehash: 5b585ee52880c474d3f2736b34a267012b390aad
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75381537"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80545828"
 ---
 # <a name="tutorial-get-well-formatted-data-from-the-utterance"></a>Öğretici: Söyleyişten iyi biçimlendirilmiş veriler alın
 Bu öğreticide, bir sözcükten sürekli biçimlendirilmiş verileri ayıklamak için düzenli bir ifade varlığı oluşturun.
@@ -100,11 +92,9 @@ Metin numarasıyla eşleşecek normal bir ifade varlığı oluşturun. Bu normal
 
 1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
 
-2. Adresteki URL'nin sonuna gidin ve aşağıdaki söyleyiyi girin:
+1. Adres çubuğundaki URL'nin sonuna gidin ve _YOUR_QUERY_HERE_ değiştirin:
 
     `Text my pizza delivery to x23456 x234567 x12345`
-
-    Son sorgu dizesi parametresi ifade **s**orgusu olan `query` öğesidir.
 
     ```json
     {

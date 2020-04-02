@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/22/2019
 ms.author: yelevin
-ms.openlocfilehash: 5c79642d287224cd15531701d7cc87ebfd72eb69
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: eec07a01edc6b126bb7cd3a814912ea5c5b14195
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77588051"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529089"
 ---
 # <a name="connect-data-from-threat-intelligence-providers"></a>Tehdit istihbarat sağlayıcılarından veri bağlama
 
@@ -42,6 +42,10 @@ Tehdit göstergelerini bir sonraki bölümde listelenen tümleşik tehdit istihb
 - [MISP Açık Kaynak Tehdit İstihbarat Platformu](https://www.misp-project.org/)
     
     MISS örnekleri olan istemcilerin tehdit göstergelerini Microsoft Graph Security API'sine geçirmelerini sağlayan örnek bir komut dosyası [için, MISS'yi Microsoft Graph Security Script'e](https://github.com/microsoftgraph/security-api-solutions/tree/master/Samples/MISP)bakın.
+
+- [Anomali ThreatStream](https://www.anomali.com/products/threatstream)
+
+    ThreatStream Entegratörü ve Uzantıları'nı ve ThreatStream istihbaratını Microsoft Graph Security API'sine bağlama yönergelerini indirmek için [ThreatStream indirme sayfasına](https://ui.threatstream.com/downloads) bakın.
 
 - [Palo Alto Ağları MineMeld](https://www.paloaltonetworks.com/products/secure-the-network/subscriptions/minemeld)
     

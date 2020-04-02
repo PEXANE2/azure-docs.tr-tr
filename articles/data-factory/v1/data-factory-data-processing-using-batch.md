@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: afc7a7406831568304c2ebd8d9a6c72b497e04e4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7a6540b5784a76acfc248fb15feb1aaf39420845
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75972875"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546940"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Veri Fabrikası ve Toplu İşi'ni kullanarak büyük ölçekli veri kümelerini işleme
 > [!NOTE]
@@ -430,7 +430,7 @@ Bu bölümde Yürüt metodundaki kod hakkında daha fazla ayrıntı verilmektedi
     } while (continuationToken != null);
 
     ```
-   Daha fazla bilgi için [ListBlobsSegmented](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_blob_container.listblobssegmented) yöntemiiçin belgelere bakın.
+   Daha fazla bilgi için [ListBlobsSegmented](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob.cloudblobcontainer.listblobssegmented) yöntemiiçin belgelere bakın.
 
 1. Blobs kümesi ile çalışma kodu mantıksal do-while döngü içinde gider. **Yürüt** metodunda, yap döngüsü bloblistesini **Hesapla**adlı bir yönteme geçirir. Yöntem, segmentteki tüm lekeler arasında yinelenebilen bir dize **değişkeni,** adı verilen bir çıktı döndürür.
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/11/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 3ba5d74aa245fbcd9d43f2b4398387d7f59e202c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6077db0a09b09f7e4bfb859902da53b173845e55
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79299540"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520752"
 ---
 ### <a name="portal"></a>Portal
 
@@ -42,7 +42,7 @@ Diskleriniz için müşteri tarafından yönetilen anahtarları ayarlamak, bunu 
 
     ![Key Vault kaynak ayarları bölmesinin ekran görüntüsü. Ayarlar içinde oluşturma/alma düğmesini gösterir.](media/virtual-machines-disk-encryption-portal/sse-key-vault-generate-settings.png)
 
-1. Hem **Anahtar Türü** kümesini **RSA'ya** hem de **RSA Anahtar Boyutu'na** **2080**olarak ayarlayın.
+1. Hem **Anahtar Türü** kümesini **RSA'ya** hem de **2048'e**ayarlanmış **RSA Anahtar Boyutu'na** bırakın.
 1. Kalan seçimleri istediğiniz gibi doldurun ve ardından **Oluştur'u**seçin.
 
     ![Oluşturma/alma düğmesi seçildikten sonra görünen bir anahtar bıçağı oluşturma ekran görüntüsü](media/virtual-machines-disk-encryption-portal/sse-create-a-key-generate.png)

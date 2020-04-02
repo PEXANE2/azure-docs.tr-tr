@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: 6ee339cb709a5d825b39b4accf294761c99ee41a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b54905e201ee7a6dbf4c6837960a6e0b63057ea9
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79282984"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549049"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Azure Bilişsel Arama'daki hizmet sınırları
 
@@ -30,7 +30,7 @@ Depolama, iş yükleri ve dizin lerin ve diğer nesnelerin miktarlarına ilişki
 > [!NOTE]
 > 1 Temmuz itibariyle, Depolama Optimize Edilen Katman da dahil olmak üzere tüm katmanlar genel olarak kullanılabilir. Tüm [fiyatlandırmaları Fiyatlandırma Ayrıntıları](https://azure.microsoft.com/pricing/details/search/) sayfasında bulabilirsiniz.
 
-  S3 Yüksek Yoğunluklu (S3 HD) belirli iş yükleri için tasarlanmıştır: [çoklu kira](search-modeling-multitenant-saas-applications.md) ve büyük miktarlarda küçük dizinler (dizin başına bir milyon belge, hizmet başına üç bin dizin). Bu katman [dizinleyici özelliğini](search-indexer-overview.md)sağlamaz. S3 HD'de, verileri kaynaktan dizine itmek için API çağrılarını kullanarak veri alım, itme yaklaşımından yararlanmalıdır. 
+  S3 Yüksek Yoğunluklu (S3 HD) belirli iş yükleri için tasarlanmıştır: [çoklu kira](search-modeling-multitenant-saas-applications.md) ve büyük miktarlarda küçük dizinler (hizmet başına üç bin indeks). Bu katman [dizinleyici özelliğini](search-indexer-overview.md)sağlamaz. S3 HD'de, verileri kaynaktan dizine itmek için API çağrılarını kullanarak veri alım, itme yaklaşımından yararlanmalıdır. 
 
 > [!NOTE]
 > Bir hizmet belirli bir katmanda verilir. Kapasite kazanmak için atlama katmanları yeni bir hizmet sağlamaiçerir (yerinde yükseltme yoktur). Daha fazla bilgi için [bkz.](search-sku-tier.md) Önceden vermiş olduğunuz bir hizmetin kapasitesini ayarlama hakkında daha fazla bilgi edinmek [için sorgu ve dizin oluşturma iş yükleri için Ölçek kaynak düzeylerine](search-capacity-planning.md)bakın.
@@ -61,38 +61,16 @@ Depolama, iş yükleri ve dizin lerin ve diğer nesnelerin miktarlarına ilişki
 
 <sup>2</sup> Belge başına karmaşık koleksiyonlarda çok sayıda eleman olması şu anda yüksek depolama kullanımına neden olur. Bu bilinen bir sorundur. Bu arada, 3000 sınırı tüm hizmet katmanları için güvenli bir üst sınırdır. Bu sınır yalnızca karmaşık tür alanlarını ()`2019-05-06`ileriye doğru destekleyen en erken genel kullanılabilir (GA) API sürümünü kullanan dizin oluşturma işlemleri için uygulanır. Önceki önizleme API sürümlerini (karmaşık tür alanlarını destekleyen) kullanan istemcileri kırmamak için, bu önizleme API sürümlerini kullanan dizin oluşturma işlemleri için bu sınırı uygulamayacağız. Önizleme API sürümlerinin üretim senaryoları için kullanılmadığını ve müşterilerin en son GA API sürümüne geçmelerini şiddetle tavsiye ettiğimizi unutmayın.
 
+> [!NOTE]
+> Tek bir dizin maksimum kapasitesi genellikle kullanılabilir depolama ile sınırlı olsa da, tek bir dizinde depolanabilir belgelerin toplam sayısında maksimum üst sınırları vardır. Bu sınır, Basic, S1, S2 ve S3 arama hizmetleri için dizin başına yaklaşık 24 milyar belge ve S3HD arama hizmetleri için dizin başına 2 milyar belgedir. Karmaşık koleksiyonların her öğesi, bu sınırların amaçları için ayrı belgeler olarak sayılır.
+
 <a name="document-limits"></a>
 
 ## <a name="document-limits"></a>Belge sınırları 
 
-Ekim 2018 itibariyle, herhangi bir bölgede faturalandırılabilir katmanda (Basic, S1, S2, S3, S3 HD) oluşturulan yeni hizmetler için artık belge sınırı bulunmamaktadır. Çoğu bölge Kasım/Aralık 2017'den bu yana sınırsız belge sayımı na sahip ken, bu tarihten sonra belge limitleri uygulamaya devam eden birkaç bölge vardı. Bir arama hizmetini ne zaman ve nerede oluşturduğunuza bağlı olarak, belge sınırlarına hala tabi olan bir hizmeti çalıştırıyor olabilirsiniz.
+Ekim 2018 itibariyle, herhangi bir bölgede faturalandırılabilir katmanda (Basic, S1, S2, S3, S3 HD) oluşturulan yeni hizmetler için artık belge sayım sınırı bulunmamaktadır. Ekim 2018'den önce oluşturulan eski hizmetler belge sayım sınırlarına tabi olabilir.
 
 Hizmetinizin belge sınırları olup olmadığını belirlemek için [GET Service Statistics REST API'yi](https://docs.microsoft.com/rest/api/searchservice/get-service-statistics)kullanın. Belge sınırları yanıta yansıtılır `null` ve herhangi bir sınır belirtinilir.
-
-> [!NOTE]
-> SKU'ya özgü belge sınırları olmasa da, her dizin hizmetin kararlılığını sağlamak için hala maksimum güvenli sınıra tabidir. Bu sınır Lucene'den geliyor. Her Azure Bilişsel Arama belgesi dahili olarak bir veya daha fazla Lucene belgesi olarak dizine eklenir. Arama belgesi başına Lucene belgelerinin sayısı, karmaşık toplama alanlarındaki toplam öğe sayısına bağlıdır. Her öğe ayrı bir Lucene belge olarak dizine. Örneğin, karmaşık bir toplama alanında 3 öğeiçeren bir belge, 4 Lucene belgesi olarak dizine alınacaktır - belgenin kendisi için 1 ve öğeler için 3. Lucene belgelerinin maksimum sayısı indeks başına kabaca 25 milyardır.
-
-### <a name="regions-previously-having-document-limits"></a>Daha önce belge sınırları olan bölgeler
-
-Portal bir belge sınırı gösteriyorsa, hizmetiniz 2017 sonundan önce oluşturuldu veya Azure Bilişsel Arama hizmetlerini barındırmak için daha düşük kapasiteli kümeler kullanılarak bir veri merkezinde oluşturuldu:
-
-+ Doğu Avustralya
-+ Doğu Asya
-+ Orta Hindistan
-+ Batı Japonya
-+ Orta Batı ABD
-
-Belge sınırlarına tabi hizmetler için aşağıdaki maksimum sınırlar geçerlidir:
-
-|  Ücretsiz | Temel | S1 | S2 | S3 | S3&nbsp;HD |
-|-------|-------|----|----|----|-------|
-|  10,000 |1&nbsp;milyon |Bölüm başına 15 milyon veya hizmet başına 180 milyon |Bölüm başına 60 milyon veya hizmet başına 720 milyon |Bölüm başına 120 milyon veya hizmet başına 1.4 milyar |Dizin başına 1 milyon veya bölüm başına 200 milyon |
-
-Hizmetinizin sizi engelleyen sınırları varsa, yeni bir hizmet oluşturun ve ardından bu hizmete ilişkin tüm içeriği yeniden yayımlayın. Hizmetinizi arka planda yeni donanımlara sorunsuz bir şekilde yeniden sağlama mekanizması yoktur.
-
-> [!Note] 
-> 2017'nin sonundan sonra oluşturulan S3 Yüksek Yoğunluklu hizmetler için, bölüm başına 200 milyon belge kaldırıldı, ancak dizin başına 1 milyon belge sınırı kaldı.
-
 
 ### <a name="document-size-limits-per-api-call"></a>API çağrısı başına belge boyutu sınırları
 

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/12/2018
-ms.openlocfilehash: fb6094ec418d2b212759bddd2c4d49c7e6193849
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ed8e5eaa0ff9b58f80473b052aacfb9f01d45055
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73690709"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529214"
 ---
 # <a name="connect-to-sql-database-using-c-and-c"></a>C ve C++ kullanarak SQL Veritabanına bağlanın
 
@@ -28,7 +28,7 @@ Aşağıdaki öğelere sahip olduğunuzdan emin olun:
 
 * Etkin bir Azure hesabı. Bir aboneliğiniz yoksa [Ücretsiz Azure Deneme Sürümü](https://azure.microsoft.com/pricing/free-trial/) için kaydolabilirsiniz.
 * [Görsel Stüdyo](https://www.visualstudio.com/downloads/). Bu örneği oluşturmak ve çalıştırmak için C++ dil bileşenlerini yüklemeniz gerekir.
-* [Visual Studio Linux Geliştirme](https://visualstudiogallery.msdn.microsoft.com/725025cf-7067-45c2-8d01-1e0fd359ae6e). Linux üzerinde geliştiriyorsanız, Visual Studio Linux uzantısını da yüklemeniz gerekir.
+* [Visual Studio Linux Geliştirme](https://docs.microsoft.com/cpp/linux/?view=vs-2019). Linux üzerinde geliştiriyorsanız, Visual Studio Linux uzantısını da yüklemeniz gerekir.
 
 ## <a name="azure-sql-database-and-sql-server-on-virtual-machines"></a><a id="AzureSQL"></a>Sanal makinelerde Azure SQL Veritabanı ve SQL Server
 Azure SQL, Microsoft SQL Server'da yerleşiktir ve yüksek kullanılabilirlik, performans ve ölçeklenebilir bir hizmet sağlamak üzere tasarlanmıştır. SQL Azure'u, şirket içinde çalışan özel veritabanınız üzerinden kullanmanın birçok avantajı vardır. SQL Azure ile veritabanınızı yüklemek, kurmak, bakımını yapmak veya yönetmek zorunda değilsiniz, yalnızca veritabanınızın içeriğini ve yapısını yüklemeniz gerekir. Hata toleransı ve artıklık gibi veritabanları ile ilgili endişe tipik şeyler tüm yerleşiktir.

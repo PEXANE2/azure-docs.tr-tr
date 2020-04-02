@@ -2,13 +2,13 @@
 title: 'Öğretici: makine öğrenilen varlık ile yapılandırılmış veri ayıklamak - LUIS'
 description: Makinede öğrenilen varlığı kullanarak bir söyleyişten yapılandırılmış veri ayıklayın. Çıkarma doğruluğunu artırmak için, tanımlayıcılar ve kısıtlamalar içeren alt bileşenler ekleyin.
 ms.topic: tutorial
-ms.date: 03/31/2020
-ms.openlocfilehash: f521e634c129aaf03ee341328721bd89723e8264
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.date: 04/01/2020
+ms.openlocfilehash: 52bf2fb0b9f37e0c731a46c0aaf8b6c5e7f0e911
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478332"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80545848"
 ---
 # <a name="tutorial-extract-structured-data-from-user-utterance-with-machine-learned-entities-in-language-understanding-luis"></a>Öğretici: Dil Anlama (LUIS) makine öğrenilen varlıklar ile kullanıcı söyleyerek yapılandırılmış veri ayıklayın
 
@@ -215,7 +215,7 @@ Bu noktada, sipariş ayıklanabilir bazı ayrıntıları (boyut, miktar ve topla
 
 1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
 
-1. Adresteki URL'nin sonuna gidin ve _etkileşimli_ test paneline girdiğiniz sorguyla YOUR_QUERY_HERE değiştirin.
+1. Adres çubuğundaki URL'nin sonuna gidin ve _YOUR_QUERY_HERE_ etkileşimli test paneline girdiğiniz sorguyla değiştirin.
 
     `deliver a medium veggie pizza`
 

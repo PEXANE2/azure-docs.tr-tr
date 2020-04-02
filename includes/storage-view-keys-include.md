@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/06/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 9333bb36971fc28a23a443e50d191abeef05b758
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 57368331e83111836e13b6c3796cacad9816e318
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78208173"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521278"
 ---
 Azure portalından depolama hesabı erişim anahtarlarınızı veya bağlantı dizenizi görüntülemek ve kopyalamak için:
 
@@ -26,3 +26,5 @@ Azure portalından depolama hesabı erişim anahtarlarınızı veya bağlantı d
     ![Azure portalında erişim anahtarlarını nasıl görüntüleyinen ekran görüntüsü](media/storage-view-keys-include/portal-connection-string.png)
 
 Azure Depolama'ya erişmek için her iki anahtarı da kullanabilirsiniz, ancak genel olarak ilk anahtarı kullanmak ve anahtarları döndürürken ikinci anahtarın kullanımını ayırmak iyi bir uygulamadır.
+
+Bir hesabın erişim anahtarlarını görüntülemek veya okumak için, kullanıcının hizmet yöneticisi olması veya **Microsoft.Storage/storageAccounts/listkeys/action**içeren bir RBAC rolü atanması gerekir. Bu eylemi içeren bazı yerleşik RBAC rolleri **Sahibi,** **Katılımcısı**ve **Depolama Hesabı Anahtar Operatörü Hizmeti Rolü** rolleridir. Hizmet Yöneticisi rolü hakkında daha fazla bilgi için [Bkz. Klasik abonelik yöneticisi rolleri, Azure RBAC rolleri ve Azure REKLAM rolleri.](../articles/role-based-access-control/rbac-and-directory-admin-roles.md) Azure Depolama için yerleşik roller hakkında ayrıntılı bilgi için Azure [RBAC için Azure yerleşik rollerdeki](../articles/role-based-access-control/built-in-roles.md#storage) **Depolama** bölümüne bakın.

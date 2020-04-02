@@ -5,12 +5,12 @@ ms.subservice: B2C
 ms.topic: include
 ms.date: 10/16/2019
 ms.author: mimart
-ms.openlocfilehash: 03329252c0ed4231585d1717d9361a2aef35b36f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: cea3245176e6c38137d68e3ad4b47477bedc78be
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78187023"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529178"
 ---
 Azure AD B2C kiracınızda bir uygulama kaydettirmek için geçerli **Uygulamalar** deneyimini veya yeni birleştirilmiş **Uygulama kayıtları (Önizleme)** deneyimimizi kullanabilirsiniz. [Yeni deneyim hakkında daha fazla bilgi edinin.](https://aka.ms/b2cappregintro)
 
@@ -37,4 +37,10 @@ Azure AD B2C kiracınızda bir uygulama kaydettirmek için geçerli **Uygulamala
 1. **Yönet**altında, **Kimlik Doğrulama'yı**seçin.
 1. **Yeni deneyimi deneyin (gösteriliyorsa)** seçin.
 1. **Varsayılan istemci türü**altında, uygulamayı ortak istemci olarak ele almak için **Evet'i** seçin. Bu ayar ROPC akışı için gereklidir.
+1. **Kaydet'i**seçin.
+1. Sol menüde, bildirim düzenleyicisini açmak için **Bildirim'i** seçin. 
+1. **Oauth2AllowImplicitFlow** özniteliğini *doğru*olarak ayarlayın:
+    ```json
+    "oauth2AllowImplicitFlow": true,
+    ```
 1. **Kaydet'i**seçin.

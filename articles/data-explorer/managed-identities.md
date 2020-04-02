@@ -7,25 +7,25 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: f9592f5d2666684e0cf5eef687b1e69cfb55066c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 900bf815917a4b7c9841860d663a2183b1ab71b3
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80065556"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529668"
 ---
 # <a name="configure-managed-identities-for-your-azure-data-explorer-cluster"></a>Azure Veri Gezgini kümeniz için yönetilen kimlikleri yapılandırma
 
 [Azure Active Directory'nin yönetilen kimliği,](/azure/active-directory/managed-identities-azure-resources/overview) kümenizin Azure Anahtar Kasası gibi AAD korumalı diğer kaynaklara kolayca erişmesine olanak tanır. Kimlik Azure platformu tarafından yönetilir ve herhangi bir sırrı sağlamanızı veya döndürmenizi gerektirmez. Bu makalede, Azure Veri Gezgini kümeleri için yönetilen bir kimlik nasıl oluşturulacaksınız gösterilmektedir. Yönetilen kimlik yapılandırması şu anda yalnızca [kümeniz için müşteri tarafından yönetilen anahtarları etkinleştirmek için](/azure/data-explorer/security#customer-managed-keys-with-azure-key-vault)desteklenir.
 
 > [!Note]
-> Uygulamanız abonelikler veya kiracılar arasında taşınırsa, Azure Veri Gezgini için yönetilen kimlikler beklendiği gibi çalışmaz. Uygulamanın, özelliği [devre dışı bırakarak](#remove-a-system-assigned-identity) ve yeniden etkinleştirerek yapılabilecek yeni bir kimlik [edinmesi](#add-a-system-assigned-identity) gerekir. Yeni kimliği kullanmak için alt akış kaynaklarının erişim ilkelerinin de güncelleştirilmesi gerekir.
+> Azure Veri Gezgini kümeniz abonelikler veya kiracılar arasında taşınırsa, Azure Veri Gezgini için yönetilen kimlikler beklendiği gibi çalışmaz. Uygulamanın, özelliği [devre dışı bırakarak](#disable-a-system-assigned-identity) ve yeniden etkinleştirerek yapılabilecek yeni bir kimlik [edinmesi](#add-a-system-assigned-identity) gerekir. Yeni kimliği kullanmak için alt akış kaynaklarının erişim ilkelerinin de güncelleştirilmesi gerekir.
 
 ## <a name="add-a-system-assigned-identity"></a>Sisteme atanmış kimlik ekleme
                                                                                                     
 Kümenize bağlı ve kümeniz silinirse silinen sistem tarafından atanmış bir kimlik atayın. Bir kümeyalnızca bir sistem atanmış kimliğe sahip olabilir. Sistem tarafından atanan bir kimliğe sahip bir küme oluşturmak, kümeüzerinde ayarlanacak ek bir özellik gerektirir. Sisteme atanan kimlik, aşağıda açıklandığı gibi C#, ARM şablonları veya Azure portalı kullanılarak eklenir.
 
-# <a name="azure-portal"></a>[Azure portalında](#tab/portal)
+# <a name="azure-portal"></a>[Azure portalı](#tab/portal)
 
 ### <a name="add-a-system-assigned-identity-using-the-azure-portal"></a>Azure portalını kullanarak sisteme atanmış bir kimlik ekleme
 
@@ -164,13 +164,13 @@ Küme oluşturulduğunda, aşağıdaki ek özelliklere sahiptir:
 
 ---
 
-## <a name="remove-a-system-assigned-identity"></a>Sistemle atanmış kimliği kaldırma
+## <a name="disable-a-system-assigned-identity"></a>Sistemtarafından atanan kimliği devre dışı
 
 Sistem tarafından atanan bir kimliğin kaldırılması da aad onu siler. Küme kaynağı silindiğinde, sisteme atanan kimlikler de Otomatik olarak AAD'den kaldırılır. Sistem tarafından atanan kimlik özelliği devre dışı bırakılarak kaldırılabilir.  Sisteme atanan kimlik, aşağıda açıklandığı gibi C#, ARM şablonları veya Azure portalı kullanılarak kaldırılır.
 
-# <a name="azure-portal"></a>[Azure portalında](#tab/portal)
+# <a name="azure-portal"></a>[Azure portalı](#tab/portal)
 
-### <a name="remove-a-system-assigned-identity-using-the-azure-portal"></a>Azure portalını kullanarak sisteme atanmış bir kimliği kaldırma
+### <a name="disable-a-system-assigned-identity-using-the-azure-portal"></a>Azure portalını kullanarak sisteme atanmış bir kimliği devre dışı
 
 1. [Azure portalında](https://portal.azure.com/)oturum açın.
 1. Portalın sol bölmesinde **Ayarlar** > **Kimliği'ni** seçin.

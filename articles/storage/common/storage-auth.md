@@ -10,12 +10,12 @@ ms.date: 02/24/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: b0f2ad7566d0204871a9c6441315d6201662d92b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 53eca8a0b9e7cc9abb8f89cd56fca5df28f2de0f
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77616297"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521936"
 ---
 # <a name="authorizing-access-to-data-in-azure-storage"></a>Azure Depolama'da verilere erişim yetkisi verme
 
@@ -33,7 +33,7 @@ Aşağıdaki tabloda, Azure Depolama'nın kaynaklara erişim yetkisi vermek içi
 
 Her yetkilendirme seçeneği aşağıda kısaca açıklanmıştır:
 
-- Blobs ve kuyruklar için **Azure Etkin Dizin (Azure AD) tümleştirmesi.** Azure AD, istemcinin depolama hesabındaki kaynaklara erişimi üzerinde ince parçalı denetim için rol tabanlı erişim denetimi (RBAC) sağlar. Blobs ve kuyruklar için Azure AD tümleştirmesi ile ilgili daha fazla bilgi için [bkz.](storage-auth-aad.md)
+- Blobs ve kuyruklar için **Azure Etkin Dizin (Azure AD) tümleştirmesi.** Azure AD, bir istemcinin depolama hesabındaki kaynaklara erişimini denetlemek için rol tabanlı erişim denetimi (RBAC) sağlar. Blobs ve kuyruklar için Azure AD tümleştirmesi ile ilgili daha fazla bilgi için [bkz.](storage-auth-aad.md)
 
 - Azure Dosyaları için **Azure Active Directory Etki Alanı Hizmetleri (Azure AD DS) kimlik doğrulaması.** Azure Dosyaları, Azure AD DS aracılığıyla Sunucu İleti Bloğu (SMB) üzerinden kimlik tabanlı yetkilendirmeyi destekler. RBAC'ı, bir istemcinin depolama hesabındaki Azure Dosyaları kaynaklarına erişimi üzerinde ince gelişmiş denetim için kullanabilirsiniz. Etki alanı hizmetlerini kullanarak Azure Dosyaları kimlik doğrulaması ile ilgili daha fazla bilgi için [genel bakışa](../files/storage-files-active-directory-overview.md)bakın.
 

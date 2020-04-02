@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.openlocfilehash: dbc17620cda836ec0ac5c4ebc5a709fb0605c958
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c1ad8390bc5db72636c637c2ffb817e34674d0fa
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80240034"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548842"
 ---
 # <a name="deploy-azure-data-explorer-cluster-into-your-virtual-network"></a>Azure Veri Gezgini kümesini Sanal Ağınıza dağıtma
 
@@ -75,7 +75,7 @@ Azure Veri Gezgini kümesini alt ağınıza dağıtmak, Azure Veri Gezgini alt a
 | **Kullanma**   | **Kimden**   | **Hedef**   | **Protokolü**   |
 | --- | --- | --- | --- |
 | Yönetim  |[ADX yönetim adresleri](#azure-data-explorer-management-ip-addresses)/AzureDataExplorerManagement(ServiceTag) | ADX alt ağ:443  | TCP  |
-| Sistem durumu izleme  | [ADX sistem durumu izleme adresleri](#health-monitoring-addresses)  | ADX alt ağ:443  | TCP  |
+| Sistem durumunu izleme  | [ADX sistem durumu izleme adresleri](#health-monitoring-addresses)  | ADX alt ağ:443  | TCP  |
 | ADX dahili iletişim  | ADX subnet: Tüm bağlantı noktaları  | ADX subnet:Tüm bağlantı noktaları  | Tümü  |
 | Azure yük bakiyesi gelene izin ver (sistem durumu sondası)  | AzureLoadBalancer  | ADX alt ağ:80.443  | TCP  |
 
@@ -171,7 +171,7 @@ Azure Veri Gezgini kümesini alt ağınıza dağıtmak, Azure Veri Gezgini alt a
 | Batı Avrupa | 23.97.212.5 |
 | Batı Hindistan | 23.99.5.162 |
 | Batı ABD | 23.99.5.162 |
-| Batı ABD 2 | 23.99.5.162 |    
+| Batı ABD 2 | 23.99.5.162, 104.210.32.14 |    
 
 #### <a name="azure-monitor-configuration-endpoint-addresses"></a>Azure Monitör yapılandırma bitiş noktası adresleri
 

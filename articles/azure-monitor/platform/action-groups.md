@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 2/18/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 6ba48f3c40e45afa02e03a7589e968cca723118e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9bc191bb27ebb0bac631ef5cfa8ddc34bbd8214e
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79249522"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520902"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Azure portalında eylem grupları oluşturma ve yönetme
 Eylem grubu, Azure aboneliğinin sahibi tarafından tanımlanan bildirim tercihleri topluluğudur. Azure Monitör üve Hizmet Durumu uyarıları, kullanıcılara bir uyarının tetiklendiğini bildirmek için eylem gruplarını kullanır. Çeşitli uyarılar, kullanıcının gereksinimlerine bağlı olarak aynı eylem grubunu veya farklı eylem gruplarını kullanabilir. Bir abonelikte en fazla 2.000 eylem grubu yapılandırabilirsiniz.
@@ -52,7 +52,7 @@ Eylem gruplarını yapılandırmak için Azure Kaynak Yöneticisi şablonların�
 
     1. **Adı**: Bu eylem için benzersiz bir tanımlayıcı girin.
 
-    1. **Eylem Türü**: E-posta/SMS/Push/Voice, Logic App, Webhook, ITSM veya Automation Runbook'u seçin.
+    1. **Eylem Türü**: Select Automation Runbook, Azure İşlevi, E-posta Azure Kaynak Yöneticisi Rolü, E-posta/SMS/Push/Voice, ITSM, Logic App, Secure Webhook, Webhook.
 
     1. **Ayrıntılar**: Eylem türüne bağlı olarak, bir telefon numarası, e-posta adresi, webhook URI, Azure uygulaması, ITSM bağlantısı veya Otomasyon runbook girin. ITSM Eylemi **için, ITSM** aracınızın gerektirdiği İş Öğesi ve diğer alanları ayrıca belirtin.
     

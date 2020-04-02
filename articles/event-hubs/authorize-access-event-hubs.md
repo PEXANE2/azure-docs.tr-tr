@@ -8,12 +8,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: spelluru
-ms.openlocfilehash: d4304abf0ca089fbbea86f12cd03dea836db612e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f44be4e1d3d1186f0122bd4669ae800ab42e31d6
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77368360"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521304"
 ---
 # <a name="authorize-access-to-azure-event-hubs"></a>Azure Event Hubs'a erişimi yetkilendirme
 Bir olay merkezinden olayları/verileri her yayımladığınızda veya tükettiğinizde, istemciniz Olay Hub'ları kaynaklarına erişmeye çalışır. Güvenli bir kaynağa yapılan her istek, hizmetin istemcinin verileri yayımlamak/tüketmek için gerekli izinlere sahip olmasını sağlayabilmesi için yetkilendirilmelidir. 
@@ -39,7 +39,7 @@ Olay Hub'ları kaynakları için paylaşılan erişim imzaları (SAS), Olay Hub'
 
 Azure AD tarafından döndürülen Bir OAuth 2.0 belirteci kullanarak kullanıcıları veya uygulamaları yetkilendirmek, paylaşılan erişim imzaları (SAS) üzerinden üstün güvenlik ve kullanım kolaylığı sağlar. Azure AD ile, erişim belirteçlerini kodunuzla depolamanıza ve olası güvenlik açıklarını riske atmaya gerek yoktur. Azure AD, Etkinlik Hub'ları kaynaklarına ayrıntılı erişim sağlamak için paylaşılan erişim imzalarını (SAS) kullanmaya devam edebilirken, SAS belirteçlerini yönetmeye veya gizliliği ihlal edilmiş bir SAS'ı iptal etme endişesi duymadan benzer özellikler sunar. 
 
-Varsayılan olarak, tüm Olay Hub'ları kaynakları güvenlidir ve yalnızca hesap sahibi tarafından kullanılabilir. İstemcilere Olay Hub kaynaklarına erişim izni vermek için yukarıda özetlenen yetkilendirme stratejilerinden herhangi birini kullanabilirsiniz. Yalnızca Azure Kaynak Yöneticisi dağıtım modeliyle oluşturulan Olay Hub'ları kaynakları Azure AD yetkilendirmeyi destekler. Microsoft, maksimum güvenlik ve kullanım kolaylığı için mümkün olduğunda Azure AD'yi kullanmanızı önerir.
+Varsayılan olarak, tüm Olay Hub'ları kaynakları güvenlidir ve yalnızca hesap sahibi tarafından kullanılabilir. İstemcilere Olay Hub kaynaklarına erişim izni vermek için yukarıda özetlenen yetkilendirme stratejilerinden herhangi birini kullanabilirsiniz. Microsoft, maksimum güvenlik ve kullanım kolaylığı için mümkün olduğunda Azure AD'yi kullanmanızı önerir.
 
 SAS kullanarak yetkilendirme hakkında daha fazla bilgi için, [Paylaşılan Erişim İmzalarını kullanarak Olay Hub'larına erişim yetkisi](authorize-access-shared-access-signature.md)konusuna bakın.
 

@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
-ms.openlocfilehash: edeafb5730f06dac22fd9919ca42ea388d5fd0f6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1aa3537679ee37cbc6085344d2f31ae4043d32bb
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79277186"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520668"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Azure İşlevler için Azure Tablo depolama bağlamaları
 
@@ -310,7 +310,7 @@ CloudTable'ın nasıl kullanılacağı hakkında daha fazla bilgi için Azure [T
 Bir hata iletisine `CloudTable` bağlanmaya ve bir hata iletisi almaya çalışırsanız, [doğru Depolama SDK sürümüne](#azure-storage-sdk-version-in-functions-1x)bir başvurunuz olduğundan emin olun.
 
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Aşağıdaki örnek, *bir function.json* dosyasında ve bağlamayı kullanan [JavaScript kodunda](functions-reference-node.md) bir tablo girişi bağlamayı gösterir. İşlev, tek bir tablo satırını okumak için bir sıra tetikleyicisi kullanır. 
 
@@ -536,7 +536,7 @@ Kullanılacak depolama hesabı aşağıdaki sırada belirlenir:
 
 Öznitelikler C# Script tarafından desteklenmez.
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Öznitelikler JavaScript tarafından desteklenmez.
 
@@ -564,7 +564,7 @@ Aşağıdaki *tabloda, function.json* dosyasında ayarladığınız bağlama `Ta
 |**rowKey** |**RowKey** | İsteğe bağlı. Okunacak tablo varlığının satır anahtarı. Bu özelliğin nasıl kullanılacağına ilişkin kılavuzlar için [kullanım](#input---usage) bölümüne bakın.| 
 |**almak** |**Take** | İsteğe bağlı. JavaScript'te okunacak maksimum varlık sayısı. Bu özelliğin nasıl kullanılacağına ilişkin kılavuzlar için [kullanım](#input---usage) bölümüne bakın.| 
 |**Filtre** |**Filtrele** | İsteğe bağlı. JavaScript'te tablo girişi için Bir OData filtre ifadesi. Bu özelliğin nasıl kullanılacağına ilişkin kılavuzlar için [kullanım](#input---usage) bölümüne bakın.| 
-|**bağlantı** |**Bağlantı** | Bu bağlama için kullanılacak Depolama bağlantı dizesini içeren bir uygulama ayarının adı. Uygulama ayarı adı "AzureWebJobs" ile başlıyorsa, burada yalnızca adın geri kalanını belirtebilirsiniz. Örneğin, "MyStorage" olarak ayarlarsanız, `connection` İşlevler çalışma zamanı "MyStorage" adlı bir uygulama ayarı arar. Boş bırakırsanız, `connection` İşlevler çalışma zamanı, uygulama ayarında adı `AzureWebJobsStorage`verilen varsayılan Depolama bağlantı dizesini kullanır.|
+|**bağlantı** |**Bağlantı** | Bu bağlama için kullanılacak Depolama bağlantı dizesini içeren bir uygulama ayarının adı. Ayar, "AzureWebJobs" önceden belirlenmiş bir uygulama ayarı veya bağlantı dize adı adı olabilir. Örneğin, ayar adınız "AzureWebJobsMyStorage" ise, burada "MyStorage" belirtebilirsiniz. İşlevler çalışma süresi otomatik olarak "AzureWebJobsMyStorage" adlı bir uygulama ayarı arar. Boş bırakırsanız, `connection` İşlevler çalışma zamanı, uygulama ayarında adı `AzureWebJobsStorage`verilen varsayılan Depolama bağlantı dizesini kullanır.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -596,7 +596,7 @@ Aşağıdaki *tabloda, function.json* dosyasında ayarladığınız bağlama `Ta
   > [!NOTE]
   > `IQueryable`[v2 çalışma zamanındaki işlevlerde](functions-versions.md)desteklenmez. Alternatif olarak, Azure Depolama SDK'sını kullanarak tabloyu okumak için [CloudTable paramName yöntemi parametresi kullanmak](https://stackoverflow.com/questions/48922485/binding-to-table-storage-in-v2-azure-functions-using-cloudtable) alternatiftir. Bir hata iletisine `CloudTable` bağlanmaya ve bir hata iletisi almaya çalışırsanız, [doğru Depolama SDK sürümüne](#azure-storage-sdk-version-in-functions-1x)bir başvurunuz olduğundan emin olun.
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 `filter` Ve `take` özelliklerini ayarlayın. Ayarlama `partitionKey` ya da. `rowKey` Giriş tablosu varlığına (veya varlıklara) kullanarak erişin. `context.bindings.<BINDING_NAME>` Deserialized nesneler ve `RowKey` `PartitionKey` özellikleri vardır.
 
@@ -696,7 +696,7 @@ public class Person
 
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Aşağıdaki örnek, *bir function.json* dosyasında bir tablo çıktısı bağlama ve bağlama yı kullanan bir [JavaScript işlevini](functions-reference-node.md) gösterir. İşlev birden çok tablo varlıkları yazar.
 
@@ -921,7 +921,7 @@ Sınıf, yöntem `StorageAccount` veya parametre düzeyinde depolama hesabını 
 
 Öznitelikler C# Script tarafından desteklenmez.
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Öznitelikler JavaScript tarafından desteklenmez.
 
@@ -967,7 +967,7 @@ Bir yöntem `ICollector<T> paramName` parametresi kullanarak veya `IAsyncCollect
 
 Alternatif olarak, Azure `CloudTable` Depolama SDK'sını kullanarak tabloya yazmak için bir yöntem parametresi kullanabilirsiniz. Bir hata iletisine `CloudTable` bağlanmaya ve bir hata iletisi almaya çalışırsanız, [doğru Depolama SDK sürümüne](#azure-storage-sdk-version-in-functions-1x)bir başvurunuz olduğundan emin olun.
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 *function.json* `name` özelliğinde `<name>` belirtilen değerin nerede olduğunu kullanarak `context.bindings.<name>` çıktı olayına erişin.
 

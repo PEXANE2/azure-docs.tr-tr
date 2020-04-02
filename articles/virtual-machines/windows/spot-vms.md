@@ -1,22 +1,20 @@
 ---
 title: Azure Spot VM'leri kullanma
 description: Maliyetlerden tasarruf etmek için Spot VM'leri nasıl kullanacağınızı öğrenin.
-services: virtual-machines-windows
 author: cynthn
-manager: gwallace
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: article
-ms.date: 11/20/2019
+ms.date: 03/25/2020
 ms.author: cynthn
-ms.openlocfilehash: 4acbab324c63cf0184f5384e6af5e9418ca06677
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dd59ccba74b2813b2d38073cac35ba80d97cf4d1
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74782105"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548140"
 ---
-# <a name="preview-use-spot-vms-in-azure"></a>Önizleme: Azure'da Spot VM'leri kullanma
+# <a name="use-spot-vms-in-azure"></a>Azure'da Spot VM'leri kullanma
 
 [!INCLUDE [common-spot-vms](../../../includes/virtual-machines-common-spot-vms.md)]  
 

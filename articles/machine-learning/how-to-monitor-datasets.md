@@ -10,12 +10,12 @@ ms.reviewer: nibaccam
 ms.author: copeters
 author: lostmygithubaccount
 ms.date: 11/04/2019
-ms.openlocfilehash: 401019c537cb0eb51fa6002637e170a79210f7d2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0a7a89b4ff1f6deb94c545e64b4584d7959d573a
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77617627"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546375"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>Veri kümelerinde veri sürüklenmesini (önizlemeyi) algılama
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -37,7 +37,7 @@ Azure Machine Learning veri seti monitörleri ile şunları yapabilirsiniz:
 ## <a name="prerequisites"></a>Ön koşullar
 
 Veri kümesi monitörleri oluşturmak ve onlarla çalışmak için şunları yapmanız gerekir:
-* Azure aboneliği. Azure aboneliğiniz yoksa, başlamadan önce ücretsiz bir hesap oluşturun. Azure [Machine Learning'in ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
+* Azure aboneliği. Azure aboneliğiniz yoksa başlamadan önce ücretsiz bir hesap oluşturun. Azure [Machine Learning'in ücretsiz veya ücretli sürümünü](https://aka.ms/AMLFree) bugün deneyin.
 * [Azure Makine Öğrenimi çalışma alanı.](how-to-manage-workspace.md)
 * Azureml-datasets paketini içeren [Python için Azure Machine Learning SDK yüklendi.](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)
 * Dosya yolunda, dosya adında veya verilerde sütunda belirtilen bir zaman damgası ile yapılandırılmış (tabular) veriler.
@@ -77,7 +77,7 @@ Hedef veri kümesinin, `timeseries` verideki bir sütundan veya dosyaların yol 
 
 #### <a name="python-sdk"></a>Python SDK'sı
 
-Sınıfın [`Dataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-fine-grain-timestamp--coarse-grain-timestamp-none--validate-false-) [`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-fine-grain-timestamp--coarse-grain-timestamp-none--validate-false-) yöntemi, veri kümesinin zaman damgası sütununa göre tanımlanır. 
+Sınıfın [`Dataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-) [`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-) yöntemi, veri kümesinin zaman damgası sütununa göre tanımlanır. 
 
 ```python 
 from azureml.core import Workspace, Dataset, Datastore
@@ -104,7 +104,7 @@ dset = dset.with_timestamp_columns('date')
 dset = dset.register(ws, 'target')
 ```
 
-Veri kümelerinin `timeseries` özelliğini kullanmanın tam bir örneği için örnek not [defterine](https://aka.ms/azureml-tsd-notebook) veya veri [kümeleri SDK belgelerine](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-fine-grain-timestamp--coarse-grain-timestamp-none--validate-false-)bakın.
+Veri kümelerinin `timeseries` özelliğini kullanmanın tam bir örneği için örnek not [defterine](https://aka.ms/azureml-tsd-notebook) veya veri [kümeleri SDK belgelerine](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-)bakın.
 
 #### <a name="azure-machine-learning-studio"></a>Azure Machine Learning Studio
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku-inline.md)]

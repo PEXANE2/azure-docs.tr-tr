@@ -1,30 +1,25 @@
 ---
-title: Azure Spot VM'leri (Önizleme) kullanan bir ölçek kümesi oluşturma
+title: Azure Spot VM'leri kullanan bir ölçek kümesi oluşturma
 description: Maliyetlerden tasarruf etmek için Spot VM'leri kullanan Azure sanal makine ölçeği kümelerini nasıl oluşturabilirsiniz öğrenin.
 author: cynthn
-tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
-ms.topic: conceptual
-ms.date: 02/11/2020
+ms.topic: article
+ms.date: 03/25/2020
 ms.author: cynthn
-ms.openlocfilehash: 37e914fe6bafe9587be525faf3e01c897cdd8230
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a7bd22032a554c83a2ea2323ffdb3ae52dfe4faf
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77162693"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80545931"
 ---
-# <a name="preview-azure-spot-vms-for-virtual-machine-scale-sets"></a>Önizleme: Sanal makine ölçek kümeleri için Azure Spot VM'ler 
+# <a name="azure-spot-vms-for-virtual-machine-scale-sets"></a>Sanal makine ölçek setleri için Azure Spot VM'ler 
 
 Azure Spot'u ölçek kümelerinde kullanmak, önemli bir maliyet tasarrufunda kullanılmayan kapasitemizden yararlanmanızı sağlar. Azure'un kapasiteye geri ihtiyacı olduğu herhangi bir zamanda, Azure altyapısı Spot örneklerini boşaltacaktır. Bu nedenle, Spot örnekleri toplu iş işleri, geliştirme/test ortamları, büyük bilgi işlem iş yükleri ve daha fazlası gibi kesintileri işleyebilir iş yükleri için harikadır.
 
 Kullanılabilir kapasite miktarı boyuta, bölgeye, günün saatine ve daha fazlana bağlı olarak değişebilir. Spot örneklerini ölçek kümelerine dağıtırken, Azure örneği yalnızca kapasite varsa ayırır, ancak bu durumlar için SLA yoktur. Spot ölçek kümesi tek bir hata etki alanında dağıtılır ve yüksek kullanılabilirlik garantisi sunmaz.
 
-> [!IMPORTANT]
-> Spot örnekleri şu anda genel önizlemede.
-> Bu önizleme sürümü üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için Microsoft [Azure Önizlemeleri için Ek Kullanım Koşulları'na](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)bakın.
->
 
 ## <a name="pricing"></a>Fiyatlandırma
 
@@ -47,10 +42,10 @@ Kullanıcılar [Azure Zamanlanmış Etkinlikler](../virtual-machines/linux/sched
 ## <a name="deploying-spot-vms-in-scale-sets"></a>Spot VM'leri ölçek kümelerinde dağıtma
 
 Spot VM'leri ölçek kümelerine dağıtmak için, yeni *Öncelik* bayrağını *Spot'a*ayarlayabilirsiniz. Ölçek setinizdeki tüm VM'ler Spot olarak ayarlanır. Spot VM'lerle bir ölçek kümesi oluşturmak için aşağıdaki yöntemlerden birini kullanın:
-- [Azure portalında](#portal)
+- [Azure portalı](#portal)
 - [Azure CLI](#azure-cli)
 - [Azure PowerShell](#powershell)
-- [Azure Kaynak Yöneticisi şablonları](#resource-manager-templates)
+- [Azure Resource Manager şablonları](#resource-manager-templates)
 
 ## <a name="portal"></a>Portal
 
@@ -172,6 +167,5 @@ Spot şablon dağıtımları`"apiVersion": "2019-03-01"` için kullanın veya da
 **A:** Sorunuzu Q&`azure-spot` [A'da](https://docs.microsoft.com/answers/topics/azure-spot.html)yayınlayabilir ve etiketleyebilirsiniz. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Artık Spot VM'ler ile bir ölçek kümesi oluşturduğunuza göre, [Otomatik ölçek şablonumuzu Spot'u kullanarak](https://github.com/Azure/vm-scale-sets/tree/master/preview/lowpri)dağıtmayı deneyin.
 
 Fiyatlandırma ayrıntıları için [sanal makine ölçeği ayar fiyatlandırma sayfasına](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/linux/) göz atın.

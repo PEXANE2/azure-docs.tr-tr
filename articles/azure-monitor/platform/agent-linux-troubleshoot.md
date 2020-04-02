@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: 24aa3462aef4f719e93d17389ff342084f6c7864
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2343de97d06abdefed2c2977a7341aa411429319
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77668766"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520735"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Linux için Log Analytics aracısıyla ilgili sorunları giderme 
 
@@ -76,7 +76,7 @@ Bu adımlardan hiçbiri sizin için çalışmıyorsa, aşağıdaki destek kanall
 | --- | --- |
 | 2 | Omsadmin komut dosyasına sağlanan geçersiz seçenek. Kullanım `sudo sh /opt/microsoft/omsagent/bin/omsadmin.sh -h` için çalıştırın. |
 | 3 | Omsadmin komut dosyasına sağlanan geçersiz yapılandırma. Kullanım `sudo sh /opt/microsoft/omsagent/bin/omsadmin.sh -h` için çalıştırın. |
-| 4 | Geçersiz proxy omsadmin komut dosyasına sağlanan. Proxy'yi doğrulayın ve [http proxy kullanmak için belgelerimize](log-analytics-agent.md#network-firewall-requirements)bakın. |
+| 4 | Geçersiz proxy omsadmin komut dosyasına sağlanan. Proxy'yi doğrulayın ve [http proxy kullanmak için belgelerimize](log-analytics-agent.md#firewall-requirements)bakın. |
 | 5 | Azure Monitor'dan alınan 403 HTTP hatası. Ayrıntılar için omsadmin komut dosyasının tam çıktısını görün. |
 | 6 | Azure Monitor'dan alınan 200'lü olmayan HTTP hatası. Ayrıntılar için omsadmin komut dosyasının tam çıktısını görün. |
 | 7 | Azure Monitör'e bağlanamıyor. Ayrıntılar için omsadmin komut dosyasının tam çıktısını görün. |
@@ -157,15 +157,8 @@ Log Analytics genel ajan yapılandırma `/etc/opt/microsoft/omsagent/<workspace 
 `/opt/microsoft/omsagent/bin/omsadmin.sh -w <Workspace ID> -s <Workspace Key> -p <Proxy Conf> -v`
 
 2. Aracıyı bir proxy sunucusu üzerinden iletişim kurmak için düzgün şekilde yapılandırdığınızı doğrulamak için bölümü [güncelleştir proxy ayarlarını](agent-manage.md#update-proxy-settings) gözden geçirin.    
-* Aşağıdaki Azure Monitor uç noktalarının beyaz listeye açık olduğundan çift kontrol edin:
 
-    |Aracı Kaynağı| Bağlantı Noktaları | Yön |
-    |------|---------|----------|  
-    |*.ods.opinsights.azure.com | Bağlantı Noktası 443| Gelen ve giden |  
-    |*.oms.opinsights.azure.com | Bağlantı Noktası 443| Gelen ve giden |  
-    |*.blob.core.windows.net | Bağlantı Noktası 443| Gelen ve giden |  
-
-    Ortamınızdaki runbook'ları veya yönetim çözümlerini kullanmak için Otomasyon hizmetine bağlanmak ve ona kaydolmak için Azure Otomasyon Karma Runbook Worker'ı kullanmayı planlıyorsanız, bu hizmet noktası numarasına ve [Karma Runbook Çalışanı için ağınızı Yapılandırma'da](../../automation/automation-hybrid-runbook-worker.md#network-planning)açıklanan URL'lere erişimi olmalıdır. 
+3. Azure Monitor [ağ güvenlik duvarı gereksinimleri](log-analytics-agent.md#firewall-requirements) listesinde özetlenen uç noktaların izin listesine doğru şekilde eklendiğini iki kez kontrol edin. Azure Otomasyonu kullanıyorsanız, gerekli ağ yapılandırma adımları da yukarıda bağlanır.
 
 ## <a name="issue-you-receive-a-403-error-when-trying-to-onboard"></a>Sorun: Gemiye çalışırken 403 hata alırsınız
 

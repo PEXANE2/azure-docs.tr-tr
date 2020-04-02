@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: 31f712f80ee2492e4bbaec99bd093d46f9d04e6d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3182daa4ebf3becc824b600d1e487e12b875b275
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73824005"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529665"
 ---
 # <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-sql-database"></a>SQL Veritabanı ile kiracı başına veritabanı deseni kullanan çok kiracılı bir SaaS uygulamasını dağıtın ve keşfedin
 
@@ -128,7 +128,7 @@ Wingtip uygulaması, gelen isteklerin dağıtımını denetlemek için [*Azure 
 
     | URL bölümü        | Açıklama       |
     | :-------------- | :---------------- |
-    | http://events.wingtip-dpt | Wingtip uygulamasının etkinlik bölümleri.<br /><br /> *-dpt,* Wingtip Biletlerinin *kiracı başına veritabanı* uygulamasını diğer uygulamalardan ayırır. Örnekler tek *single* app-per-kiracı (*-sa*) veya *çok kiracıveritabanı* (*-mt*) uygulamalarıdır. |
+    | olaylar.wingtip-dpt | Wingtip uygulamasının etkinlik bölümleri.<br /><br /> *-dpt,* Wingtip Biletlerinin *kiracı başına veritabanı* uygulamasını diğer uygulamalardan ayırır. Örnekler tek *single* app-per-kiracı (*-sa*) veya *çok kiracıveritabanı* (*-mt*) uygulamalarıdır. |
     | . * &lt;kullanıcı&gt;* | örnekte *af1.* |
     | .trafficmanager.net/ | Trafik Yöneticisi, temel URL. |
     | fabrikamjazzclub | Fabrikam Jazz Club adlı kiracıyı tanımlar. |

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/26/2020
-ms.openlocfilehash: 777e4e1f8fdd05345d949fe8c78b4a5b1953b8b7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 306d847c2bc5af72d37dbf8bf472a5bae63e9fd5
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80298256"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80528494"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitörü Sık Sorulan Sorular
 
@@ -177,7 +177,7 @@ Günlük uyarısı ölçütleri ile eşleştiğinde, 15 dakikadan uzun süredir 
 
 
 ### <a name="what-are-the-firewall-requirements-for-azure-monitor-agents"></a>Azure Monitor aracıları için güvenlik duvarı gereksinimleri nelerdir?
-Güvenlik duvarı gereksinimleriyle ilgili ayrıntılar için [Ağ güvenlik duvarı gereksinimlerine](platform/log-analytics-agent.md#network-firewall-requirements)bakın.
+Güvenlik duvarı gereksinimleriyle ilgili ayrıntılar için [Ağ güvenlik duvarı gereksinimlerine](platform/log-analytics-agent.md#firewall-requirements)bakın.
 
 
 ## <a name="visualizations"></a>Görsel öğeler
@@ -284,7 +284,7 @@ Diğer kaynaklardan, bunları yapılandırarak:
 
 * [Azure tanılama](platform/diagnostics-extension-to-application-insights.md)
 * [Analytics'e İthalat](platform/data-collector-api.md)
-* [Log Analytics](platform/data-collector-api.md)
+* [Günlük Analizi](platform/data-collector-api.md)
 * [Logstash](platform/data-collector-api.md)
 
 ### <a name="can-i-filter-out-or-modify-some-telemetry"></a>Bazı telemetrileri filtreleyebilir veya değiştirebilir miyim?
@@ -381,7 +381,7 @@ Aktarılan her öğe, öğenin kaç orijinal olayı temsil ettiğini gösteren b
 ```
 
 
-### <a name="automation"></a>Automation
+### <a name="automation"></a>Otomasyon
 
 #### <a name="configuring-application-insights"></a>Uygulama Öngörülerini Yapılandırma
 
@@ -682,7 +682,7 @@ VMs Haritası için Azure Monitörözelliği Hizmet Haritası'nı temel almışt
 * VMs Map özelliği için Azure Monitörü'nde yeni Hizmet Haritası makine grupları oluşturamazsınız.  
 
 ### <a name="why-do-my-performance-charts-show-dotted-lines"></a>Performans çizelgelerim neden noktalı çizgiler gösteriyor?
-Bu birkaç nedenden dolayı oluşabilir.  Veri toplamada bir boşluk olduğu durumlarda çizgileri noktalı olarak tasvir ediyoruz.  Etkinleştirilmiş performans sayaçları için veri örnekleme sıklığını değiştirdiyseniz (varsayılan ayar her 60 saniyede bir veri toplamaktır), grafik için dar bir zaman aralığı seçerseniz ve örnekleme sıklığınız grafikte kullanılan kova boyutu (örneğin, örnekleme sıklığı her 10 dakikada bir ve grafikteki her kova 5 dakikadır).  Görüntülemek için daha geniş bir zaman aralığı seçmek, grafik çizgilerinin bu durumda nokta yerine düz çizgiler olarak görünmesine neden olmalıdır.
+Bu birkaç nedenden dolayı oluşabilir.  Veri toplamada bir boşluk olduğu durumlarda çizgileri noktalı olarak tasvir ediyoruz.  Etkinleştirilmiş performans sayaçları için veri örnekleme sıklığını değiştirdiyseniz (varsayılan ayar her 60 saniyede bir veri toplamaktır), grafik için dar bir zaman aralığı seçerseniz ve örnekleme sıklığınız grafikte kullanılan kova boyutundan küçükse grafikte noktalı çizgiler imal eder (örneğin, örnekleme sıklığı her 10 dakikada bir ve grafikteki her kova 5 dakikadır).  Görüntülemek için daha geniş bir zaman aralığı seçmek, grafik çizgilerinin bu durumda nokta yerine düz çizgiler olarak görünmesine neden olmalıdır.
 
 ### <a name="are-groups-supported-with-azure-monitor-for-vms"></a>Gruplar VM'ler için Azure Monitor ile mi destekleniyor?
 Evet, Bağımlılık aracısını yükledikten sonra, abonelik, kaynak grubu, sanal makine ölçek kümeleri ve bulut hizmetlerine dayalı grupları görüntülemek için Sanal Kaynaklar'dan bilgi toplarız.  Hizmet Eşlemi'ni kullanıyorsanız ve makine grupları oluşturduysanız, bunlar da görüntülenir.  Görüntülediğiniz çalışma alanı için oluşturduysanız, bilgisayar grupları da gruplar filtresinde görünür. 
@@ -718,7 +718,7 @@ Bu koşulda, VM'yi açtığınızda ve VM'ye yüklendikten sonra bile sol bölme
 ## <a name="next-steps"></a>Sonraki adımlar
 Sorunuz burada yanıtlanmamışsa, aşağıdaki forumlara ek sorular ve yanıtlar için başvurabilirsiniz.
 
-- [Log Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights)
+- [Günlük Analizi](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights)
 - [Uygulama Bilgileri](https://social.msdn.microsoft.com/Forums/vstudio/home?forum=ApplicationInsights)
 
 Azure Monitor hakkında genel geri bildirim için lütfen [geri bildirim forumuna](https://feedback.azure.com/forums/34192--general-feedback)katılın.

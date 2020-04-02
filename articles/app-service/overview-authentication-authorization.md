@@ -5,18 +5,23 @@ ms.assetid: b7151b57-09e5-4c77-a10c-375a262f17e5
 ms.topic: article
 ms.date: 08/12/2019
 ms.reviewer: mahender
-ms.custom: fasttrack-edit
-ms.openlocfilehash: f16b10f13c945dd7f1ae4fdc3f4e02dcd7c5a018
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.custom:
+- seodec18
+- fasttrack-edit
+ms.openlocfilehash: 0fe436b1da551bbc8a0064cb3cfdff864d8f9eb8
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437953"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520690"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Azure Uygulama Hizmeti ve Azure İşlerinde kimlik doğrulama ve yetkilendirme
 
 > [!NOTE]
 > Şu anda Azure [Active Directory v2.0](../active-directory/develop/v2-overview.md) [(MSAL](../active-directory/develop/msal-overview.md)dahil) Azure Uygulama Hizmeti ve Azure İşlevleri için desteklenmez. Güncellemeler için lütfen tekrar kontrol edin.
+>
+> [!NOTE]
+> Şu anda, ASP.NET Core şu anda geçerli kullanıcıyı Kimlik Doğrulama/Yetkilendirme özelliğiyle doldurmayı desteklememektedir.
 >
 
 Azure Uygulama Hizmeti yerleşik kimlik doğrulama ve yetkilendirme desteği sağlar, böylece web uygulamanızda, RESTful API'nize ve mobil arka uça ve ayrıca [Azure İşlerinden](../azure-functions/functions-overview.md)en az kod yazarak kullanıcılarda oturum açabilir ve verilere erişebilirsiniz. Bu makalede, App Service'in uygulamanızın kimlik doğrulama ve yetkilendirmeyi basitleştirmeye nasıl yardımcı olduğu açıklanmaktadır.
@@ -132,11 +137,17 @@ Bu seçenekle, uygulamanıza herhangi bir kimlik doğrulama kodu yazmanız gerek
 > [!CAUTION]
 > Bu şekilde erişimi kısıtlamak, uygulamanıza yapılan tüm aramalar için geçerlidir ve bu da birçok tek sayfalı uygulamada olduğu gibi herkese açık bir ana sayfa isteyen uygulamalar için isden edilmeyebilir.
 
+> [!NOTE]
+> Kimlik doğrulama/yetkilendirme daha önce Easy Auth olarak biliniyordu.
+>
+
 ## <a name="more-resources"></a>Diğer kaynaklar
 
 [Öğretici: Azure Uygulama Hizmeti'nde (Windows) kullanıcıların sonuna kadar kimlik doğrulaması ve yetkilendirmesi](app-service-web-tutorial-auth-aad.md)  
 [Öğretici: Linux için Azure Uygulama Hizmeti'nde kullanıcıların sonuna kadar kimlik doğrulaması ve yetkilendirmesi](containers/tutorial-auth-aad.md)  
-[Uygulama Hizmetinde kimlik doğrulamayı ve yetkilendirmeyi özelleştirme](app-service-authentication-how-to.md)
+[Azure](app-service-authentication-how-to.md)
+[AppService EasyAuth'un (üçüncü taraf)](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth)
+Azure App Service kimlik[doğrulamasını .NET Core (üçüncü taraf) ile çalışırken almanın](https://github.com/kirkone/KK.AspNetCore.EasyAuthAuthentication) App Service .NET Core entegrasyonunda kimlik doğrulama ve yetkilendirmeyi özelleştirin
 
 Sağlayıcıya özgü nasıl yapılacağını kılavuzları:
 

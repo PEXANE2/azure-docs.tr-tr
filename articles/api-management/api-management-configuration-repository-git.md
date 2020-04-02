@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/12/2019
 ms.author: apimpm
-ms.openlocfilehash: 9bbd62bc05e03641c2abe9308d9238bef23877c2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b9184808b71cce03882022fd37967fe421e64062
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "71104977"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548978"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>API Management hizmeti yapılandırmanızı Git kullanarak kaydetme ve yapılandırma
 
@@ -223,7 +223,7 @@ Son ayar, `$ref-policy`hizmet örneği için genel ilke deyimleri dosyasına eş
 Klasör, `apis` hizmet örneğindeki her API için aşağıdaki öğeleri içeren bir klasör içerir.
 
 * `apis\<api name>\configuration.json`- Bu API için yapılandırma ve arka uç hizmet URL ve işlemler hakkında bilgi içerir. Bu, biçimde belirli bir API al'ı aramanız `export=true` durumunda `application/json` döndürülecek [bilgilerle](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/apis/get) aynıdır.
-* `apis\<api name>\api.description.html`- Bu API açıklamasıve `description` [API varlığın](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table._entity_property)özelliğine karşılık gelir.
+* `apis\<api name>\api.description.html`- Bu API açıklamasıve `description` [API varlığın](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table.entityproperty)özelliğine karşılık gelir.
 * `apis\<api name>\operations\`- Bu `<operation name>.description.html` klasör, API'deki işlemlerin eşlenediğini gösteren dosyalar içerir. Her dosya, REST API'deki işlem `description` [varlığının](https://docs.microsoft.com/rest/api/visualstudio/operations/list#operationproperties) özelliğiyle eşleyen API'deki tek bir işlemin açıklamasını içerir.
 
 ### <a name="groups-folder"></a>gruplar klasörü

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/18/2020
 ms.author: spelluru
-ms.openlocfilehash: d58e11551c2857c269e8985e81f84138f6d389ca
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b87107545761e10c6fb648e54064fbafbdbacd52
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80370819"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80545999"
 ---
 # <a name="classroom-lab-setup-guide"></a>Sınıf laboratuvar kurulum kılavuzu
 
@@ -79,7 +79,7 @@ Laboratuvar Hizmetleri, yalnızca bir laboratuvar VM'sinin çalıştırdığı s
 Öğrencilerin her biri, laboratuvarın ömrü boyunca kendilerine verilen kendi VM'lerine atanır.  Onlar seçebilirsiniz:
 
 - Doğrudan VM'ye kaydedin.
-- OneDrive, GitHub, vb. gibi harici bir depoya kaydedin.
+- OneDrive, GitHub gibi harici bir konuma kaydedin.
 
 OneDrive'ı kullanmak için, bunu öğrenciler için laboratuvar VM'lerinde otomatik olarak yapılandırmayı seçebilirsiniz.  Bu konuda ek bilgi aşağıda verilmiştir.
 
@@ -133,7 +133,7 @@ Sınıfınızın laboratuarı nın gereksinimlerini anladığınızda, bunu ayar
         > [!NOTE]
         > Yüklediğiniz işletim sistemi türüne bağlı olarak, bir VM'nin başlatılması birkaç dakika sürebilir.  Bir laboratuvar VM'inin zamanlanan saatlerinizde kullanıma hazır olduğundan emin olmak için, VM'lerin çalışmaya ve kullanıma hazır olduğundan emin olmak için VM'leri 30 dakika önceden başlatmanızı öneririz.
 
-   - [Kullanıcılar için kota lar ayarlayın](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-configure-student-usage#set-quotas-for-users) ve belirli bir kullanıcı için ek kota [ayarlayın](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-configure-student-usage#set-additional-quota-for-a-specific-user)
+   - [Kullanıcılar için kota lar ayarlayın](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-configure-student-usage#set-quotas-for-users) ve belirli bir kullanıcı için ek kota [ayarlayın](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-configure-student-usage#set-additional-quotas-for-specific-users)
   
    - [Bağlantı kesildiğinde otomatik kapatmayı etkinleştirme](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-enable-shutdown-disconnect)
 

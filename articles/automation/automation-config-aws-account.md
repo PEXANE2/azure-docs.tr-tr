@@ -6,12 +6,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/17/2018
 ms.topic: conceptual
-ms.openlocfilehash: 596dc334a412b3e0839d7661a23af771e5cd7394
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 891db5d17ddde681f75845fdca6c9252c5b32b86
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75366949"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520828"
 ---
 # <a name="authenticate-runbooks-with-amazon-web-services"></a>Amazon Web Hizmetleri ile Kimlik Doğrulaması Runbook'ları
 
@@ -26,7 +26,7 @@ AWS kullanarak kimlik doğrulamak için, Azure Automation’dan çalışan runbo
 
 Azure Otomasyonu için, AWS ile iletişim kurmak amacıyla önce AWS kimlik bilgilerinizi almanız ve bunları Azure Otomasyonu’nda varlıklar olarak depolamanız gerekir. Erişim Anahtarı oluşturmak için [AWS Hesabınız için Erişim Anahtarlarını Yönetme](https://docs.aws.amazon.com/general/latest/gr/managing-aws-access-keys.html) AWS belgesinde belgelenen aşağıdaki adımları uygulayın ve **Erişim Anahtarı Kimliği** ve **Gizli Erişim Anahtarı**’nı kopyalayın (isteğe bağlı olarak, anahtar dosyanızı güvenli bir yerde saklamak için indirin).
 
-AWS güvenlik anahtarlarınızı oluşturup kopyaladıktan sonra, bunları güvenli bir şekilde depolamak ve runbook’larınızla bunlara başvurmak için Azure Otomasyonu hesabıyla bir Kimlik Bilgisi hesabı oluşturmanız gerekir. Bölümdeki adımları izleyin: Azure Otomasyonu makalesinde [Kimlik Bilgileri varlıklarında](shared-resources/credentials.md#to-create-a-new-credential-asset-with-the-azure-portal) yeni bir kimlik bilgisi **oluşturmak** ve aşağıdaki bilgileri girmek için:
+AWS güvenlik anahtarlarınızı oluşturup kopyaladıktan sonra, bunları güvenli bir şekilde depolamak ve runbook’larınızla bunlara başvurmak için Azure Otomasyonu hesabıyla bir Kimlik Bilgisi hesabı oluşturmanız gerekir. Bölümdeki adımları izleyin: Azure Otomasyonu makalesinde [Kimlik Bilgileri varlıklarında](shared-resources/credentials.md#create-a-new-credential-asset-with-the-azure-portal) yeni bir kimlik bilgisi **oluşturmak** ve aşağıdaki bilgileri girmek için:
 
 1. **Ad** kutusuna **AWScred** veya adlandırma standartlarınıza uygun bir değer girin.
 2. **Kullanıcı adı** kutusuna kendinize ait **Erişim Kimliği**'ni yazın; **Gizli Erişim Anahtarı**'nı da **Parola** ve **Parolayı Onayla** kutusuna girin.

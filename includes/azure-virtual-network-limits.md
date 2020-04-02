@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/14/2020
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: 8752585e731f905636f57d31741e2be67f7140b3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 95cb29e871cce2ba600ab654d48c685b90ed027e
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80335033"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80573262"
 ---
 ### <a name="networking-limits---azure-resource-manager"></a><a name="azure-resource-manager-virtual-networking-limits"></a>Ağ sınırları - Azure Kaynak Yöneticisi
 Aşağıdaki sınırlar yalnızca abonelik başına bölge başına **Azure Kaynak Yöneticisi** aracılığıyla yönetilen ağ kaynakları için geçerlidir. [Geçerli kaynak kullanımınızı abonelik sınırlarınıza göre](../articles/networking/check-usage-against-limits.md)nasıl görüntüleyebilirsiniz öğrenin.
@@ -72,10 +72,12 @@ Aşağıdaki sınırlar yalnızca abonelik başına bölgeye göre Azure Resourc
 | NIC başına kurallar (NIC'deki tüm IP'ler arasında) | 300                           |
 | Frontend IP yapılandırmaları              | 600                           |
 | Arka uç havuz boyutu                       | 1.000 IP yapılandırması, tek sanal ağ |
+| Yük Dengeleyicisi <sup>1 başına arka uç kaynakları<sup> | 150                   |
 | Yüksek kullanılabilirlik bağlantı noktaları                 | Dahili ön uç başına 1       |
 | Yük Dengeleyicibaşına giden kurallar        | 20                            |
 | [TCP boşta zaman adabı](https://docs.microsoft.com/azure/load-balancer/load-balancer-tcp-idle-timeout#tcp-idle-timeout) | 4 dakika/30 dakika          |
 
+<sup>1.1.2</sup> Sınır, bağımsız sanal makine kaynakları, kullanılabilirlik kümesi kaynakları ve sanal makine ölçek ayarlı kaynakların herhangi bir kombinasyonunda 150'ye kadar kaynaktır.
 
 **Temel Yük Dengeleyici**
 

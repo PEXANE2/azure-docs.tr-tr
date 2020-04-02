@@ -2,13 +2,13 @@
 title: Mantıksal kuruluş için kaynakları, kaynak gruplarını ve abonelikleri etiketleme
 description: Faturalandırma ve yönetme için Azure kaynaklarını düzenlemek için etiketlerin nasıl uygulanacağı gösterin.
 ms.topic: conceptual
-ms.date: 03/20/2020
-ms.openlocfilehash: ffc97df0923e26c3abf0eed8e7810f3b1dc61ed2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.openlocfilehash: 76f9f61b3fe7002508bbd884f427efcfee698579
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80132137"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548489"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>Azure kaynaklarınızı ve yönetim hiyerarşinizi düzenlemek için etiketleri kullanın
 
@@ -20,7 +20,7 @@ Etiketleme stratejisinin nasıl uygulanacağı yla ilgili öneriler için [Kayna
 
 ## <a name="required-access"></a>Gerekli erişim
 
-Bir kaynağa etiket uygulamak için **Microsoft.Resources/tags** kaynak türüne yazma erişiminiz olması gerekir. **Tag Contributor** rolü, varlığın kendisine erişmeden etiketleri bir varlığa uygulamanızı sağlar.
+Bir kaynağa etiket uygulamak için **Microsoft.Resources/tags** kaynak türüne yazma erişiminiz olması gerekir. [Tag Contributor](../../role-based-access-control/built-in-roles.md#tag-contributor) rolü, varlığın kendisine erişmeden etiketleri bir varlığa uygulamanızı sağlar. Şu anda, etiket katılımcısı rolü portal aracılığıyla kaynaklara veya kaynak gruplarına etiketler uygulayamaz. Portal üzerinden aboneliklere etiketler uygulayabilir. PowerShell ve REST API aracılığıyla tüm etiket işlemlerini destekler.  
 
 [Katılımcı](../../role-based-access-control/built-in-roles.md#contributor) rolü ayrıca etiketleri herhangi bir varlığa uygulamak için gerekli erişimi de sağlar. Etiketleri yalnızca bir kaynak türüne uygulamak için, söz leilgili kaynak rolünü kullanın. Örneğin, sanal makinelere etiketler uygulamak için [Sanal Makine Katılımcısı'nı](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)kullanın.
 
@@ -28,7 +28,7 @@ Bir kaynağa etiket uygulamak için **Microsoft.Resources/tags** kaynak türüne
 
 ### <a name="apply-tags"></a>Etiketleri uygula
 
-Azure PowerShell, etiketleri uygulamak için iki komut sunar - [Yeni-AzTag](/powershell/module/az.resources/new-aztag) ve [Update-AzTag](/powershell/module/az.resources/update-aztag). Bu komutları kullanmak için Azure PowerShell 3.6.1 veya sonraki lere sahip olmalısınız.
+Azure PowerShell, etiketleri uygulamak için iki komut sunar - [Yeni-AzTag](/powershell/module/az.resources/new-aztag) ve [Update-AzTag](/powershell/module/az.resources/update-aztag). Az.Resources modülü 1.12.0 veya daha sonra olmalıdır. Sürümünüzü `Get-Module Az.Resources`. Bu modülü yükleyebilir veya [Azure PowerShell](/powershell/azure/install-az-ps) 3.6.1 veya sonrası yükleyebilirsiniz.
 
 **Yeni-AzTag** kaynak, kaynak grubu veya abonelikteki tüm etiketlerin yerini alır. Komutu ararken, etiketlemek istediğiniz varlığın kaynak kimliğini geçirin.
 

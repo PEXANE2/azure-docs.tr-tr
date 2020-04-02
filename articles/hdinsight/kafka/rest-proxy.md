@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 12/17/2019
-ms.openlocfilehash: d99a3b803b80dc41990a63e647d3ba928deb31af
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.openlocfilehash: 8997b385960c58b17747dfcfced74010af80550b
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77198914"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548189"
 ---
 # <a name="interact-with-apache-kafka-clusters-in-azure-hdinsight-using-a-rest-proxy"></a>REST proxy kullanarak Azure HDInsight'taki Apache Kafka kümeleriyle etkileşimkurun
 
@@ -20,7 +20,7 @@ Kafka REST Proxy, HTTP üzerinden bir REST API üzerinden Kafka kümenizle etkil
 
 ## <a name="rest-api-reference"></a>REST API başvurusu
 
-Kafka REST API tarafından desteklenen operasyonların tam özellikleri için, [HDInsight Kafka REST Proxy API Referans](https://docs.microsoft.com/rest/api/hdinsight-kafka-rest-proxy)bakın.
+Kafka REST API tarafından desteklenen operasyonların tam özellikleri için [HDInsight Kafka REST Proxy API Referans'a](https://docs.microsoft.com/rest/api/hdinsight-kafka-rest-proxy)bakın.
 
 ## <a name="background"></a>Arka plan
 
@@ -34,9 +34,9 @@ REST proxy ile HDInsight Kafka kümesi oluşturmak, Azure portalındaki HDInsigh
 
 ### <a name="security"></a>Güvenlik
 
-Kafka REST proxy'sine erişim Azure Active Directory güvenlik gruplarıyla yönetilir. REST proxy etkinken Kafka kümesini oluştururken, REST bitiş noktasına erişimi olması gereken Azure Active Directory güvenlik grubunu sağlarsınız. REST proxy'sine erişmesi gereken Kafka istemcileri (uygulamalar) grup sahibi tarafından bu gruba kaydedilmelidir. Grup sahibi portal veya Powershell üzerinden bunu yapabilirsiniz.
+Kafka REST proxy'sine erişim Azure Active Directory güvenlik gruplarıyla yönetilir. REST proxy etkinken Kafka kümesini oluştururken, REST bitiş noktasına erişimi olması gereken Azure Etkin Dizin güvenlik grubunu sağlarsınız. REST proxy'sine erişmesi gereken Kafka istemcileri (uygulamalar) grup sahibi tarafından bu gruba kaydedilmelidir. Grup sahibi bunu Portal veya PowerShell üzerinden yapabilir.
 
-REST proxy bitiş noktasına istekte bulunmadan önce, istemci uygulaması doğru güvenlik grubunun üyeliğini doğrulamak için bir OAuth belirteci almalıdır. OAuth jetonunun nasıl alınabildiğini gösteren bir [Müşteri başvuru örneğini](#client-application-sample) lütfen aşağıda bulun. İstemci uygulaması OAuth belirteci ne zaman, onlar REST proxy yapılan HTTP isteği bu belirteci geçmek gerekir.
+REST proxy bitiş noktasına istekte bulunmadan önce, istemci uygulaması doğru güvenlik grubunun üyeliğini doğrulamak için bir OAuth belirteci almalıdır. Aşağıda, OAuth jetonunun nasıl alındığını gösteren bir [İstemci uygulama örneği](#client-application-sample) bulun. İstemci uygulaması OAuth belirteci ne zaman, onlar REST proxy yapılan HTTP isteği bu belirteci geçmek gerekir.
 
 > [!NOTE]  
 > AAD güvenlik grupları hakkında daha fazla bilgi edinmek için [Azure Etkin Dizin gruplarını kullanarak uygulama ve kaynak erişimini yönet'e](../../active-directory/fundamentals/active-directory-manage-groups.md)bakın. OAuth belirteçlerinin nasıl çalıştığı hakkında daha fazla bilgi için [bkz.](../../active-directory/develop/v1-protocols-oauth-code.md)
@@ -44,7 +44,12 @@ REST proxy bitiş noktasına istekte bulunmadan önce, istemci uygulaması doğr
 ## <a name="prerequisites"></a>Ön koşullar
 
 1. Bir uygulamayı Azure AD'ye kaydedin. Kafka REST proxy ile etkileşim kurmak için yazdığınız istemci uygulamaları, Azure'a kimlik doğrulamak için bu uygulamanın kimliğini ve gizli sini kullanır.
-1. Bir Azure AD güvenlik grubu oluşturun ve Azure AD'de kaydettiğiniz uygulamayı güvenlik grubuna ekleyin. Bu güvenlik grubu, hangi uygulamaların REST proxy ile etkileşime girebilmek için izin verildiğini denetlemek için kullanılır. Azure REKLAM grupları oluşturma hakkında daha fazla bilgi için temel [bir grup oluştur ve Azure Etkin Dizini'ni kullanarak üye ekleyin'](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)e bakın.
+
+1. Bir Azure AD güvenlik grubu oluşturun ve Azure AD'de kaydettiğiniz uygulamayı grubun "üyesi" olarak güvenlik grubuna ekleyin. Bu güvenlik grubu, hangi uygulamaların REST proxy ile etkileşime girebilmek için izin verildiğini denetlemek için kullanılır. Azure REKLAM grupları oluşturma hakkında daha fazla bilgi için temel [bir grup oluştur ve Azure Etkin Dizini'ni kullanarak üye ekleyin'](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)e bakın.
+
+    Grubu doğrulama türü "Güvenlik" ![Güvenlik Grubu](./media/rest-proxy/rest-proxy-group.png)
+
+    Bu uygulamanın Grup ![ÜyeSayısı'nın üyesi olduğunu doğrulayın](./media/rest-proxy/rest-proxy-membergroup.png)
 
 ## <a name="create-a-kafka-cluster-with-rest-proxy-enabled"></a>REST proxy etkin leştirilmiş bir Kafka kümesi oluşturma
 
@@ -69,18 +74,18 @@ Kafka kümenizdeki REST proxy ile etkileşimde kalmak için aşağıdaki python 
 1. Örnek kodu Python yüklü bir makineye kaydedin.
 1. Yürütme `pip3 install adal` ve `pip install msrestazure`.
 1. Kod bölümünü *değiştirin Bu özellikleri yapılandırın* ve ortamınız için aşağıdaki özellikleri güncelleştirin:
-    1.  *Kiracı Kimliği* – Aboneliğinizin olduğu Azure kiracısı.
-    1.  *Müşteri Kimliği* – Güvenlik grubuna kaydettiğiniz başvurunun kimliği.
-    1.  *Client Secret* – Güvenlik grubuna kaydettiğiniz uygulamanın sırrı
-    1.  *Kafkarest_endpoint* – [dağıtım bölümünde](#create-a-kafka-cluster-with-rest-proxy-enabled)açıklandığı gibi küme genel bakış "özellikleri" sekmesinden bu değeri almak. Bu aşağıdaki biçimde olmalıdır -`https://<clustername>-kafkarest.azurehdinsight.net`
-3. Komut satırından, python dosyasını`python <filename.py>`
+    1.    *Kiracı Kimliği* – Aboneliğinizin olduğu Azure kiracısı.
+    1.    *Müşteri Kimliği* – Güvenlik grubuna kaydettiğiniz başvurunun kimliği.
+    1.    *Client Secret* – Güvenlik grubuna kaydettiğiniz uygulamanın sırrı
+    1.    *Kafkarest_endpoint* – [dağıtım bölümünde](#create-a-kafka-cluster-with-rest-proxy-enabled)açıklandığı gibi küme genel bakış "özellikleri" sekmesinden bu değeri almak. Bu aşağıdaki biçimde olmalıdır -`https://<clustername>-kafkarest.azurehdinsight.net`
+1. Komut satırından, python dosyasını`python <filename.py>`
 
 Bu kod aşağıdakileri yapar:
 
 1. Azure AD'den bir OAuth belirteci getirir
 1. Kafka REST proxy'ye nasıl istekte bulunulur gösterilmektedir
 
-Python'da OAuth belirteçleri alma hakkında daha fazla bilgi için [Python AuthenticationContext sınıfına](https://docs.microsoft.com/python/api/adal/adal.authentication_context.authenticationcontext?view=azure-python)bakın. Kafka REST proxy'si aracılığıyla oluşturulmayan veya silinmeyen konular burada yansıtılırken bir gecikme görebilirsiniz. Bu gecikme önbellek yenileme nedeniyle.
+Python'da OAuth belirteçleri alma hakkında daha fazla bilgi için [Python AuthenticationContext sınıfına](https://docs.microsoft.com/python/api/adal/adal.authentication_context.authenticationcontext?view=azure-python)bakın. Kafka REST proxy'si aracılığıyla oluşturulmayan veya silinmemiş konular burada yansıtılırken bir gecikme görebilirsiniz. Bu gecikme önbellek yenileme nedeniyle.
 
 ```python
 #Required python packages
@@ -124,6 +129,12 @@ request_url = kafkarest_endpoint + getstatus
 # sending get request and saving the response as response object
 response = requests.get(request_url, headers={'Authorization': accessToken})
 print(response.content)
+```
+
+Kıvırma komutunu kullanarak AZURE for REST proxy'den nasıl bir belirteç alacağınız hakkında başka bir örneği aşağıda bulabilirsiniz. Bir belirteç `resource=https://hib.azurehdinsight.net` alırken belirtilen lere ihtiyacımız olduğuna dikkat edin.
+
+```cmd
+curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=<clientid>&client_secret=<clientsecret>&grant_type=client_credentials&resource=https://hib.azurehdinsight.net' 'https://login.microsoftonline.com/<tenantid>/oauth2/token'
 ```
 
 ## <a name="next-steps"></a>Sonraki adımlar

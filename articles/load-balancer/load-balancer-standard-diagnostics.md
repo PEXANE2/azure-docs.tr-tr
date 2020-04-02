@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2019
 ms.author: allensu
-ms.openlocfilehash: d0e66cefac496f3a54690b17a1e3de705f39c7fb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 861961bb66adc7ed9509eab973516a964cb67492
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80337028"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521062"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>Ölçümler, uyarılar ve kaynak durumu ile Standart Load Balancer
 
@@ -71,6 +71,21 @@ Standart Yük Dengeleyici kaynaklarınızın ölçümlerini görüntülemek içi
 
 ### <a name="common-diagnostic-scenarios-and-recommended-views"></a><a name = "DiagnosticScenarios"></a>Yaygın tanılama senaryoları ve önerilen görünümler
 
+### <a name="configure-alerts-for-multi-dimensional-metrics"></a>Çok boyutlu ölçümler için uyarıları yapılandırma ###
+
+Azure Standart Yük Dengeleyicisi, çok boyutlu ölçümler için kolayca yapılandırılabilir uyarıları destekler. Dokunmadan kaynak izleme deneyimini güçlendirmek için farklı önem düzeylerinde uyarıları tetiklemek için belirli ölçümler için özel eşikleri yapılandırın.
+
+Uyarıları yapılandırmak için:
+1. Yük dengeleyicisi için uyarı alt bıçağına gidin
+1. Yeni uyarı kuralı oluşturma
+    1.  Uyarı koşulunu yapılandırma
+    1.  (İsteğe bağlı) Otomatik onarım için eylem grubu ekleme
+    1.  Sezgisel tepkiye olanak tanıyan uyarı önem derecesi, ad ve açıklama atama
+
+
+  >[!NOTE]
+  >Uyarı durumu yapılandırma penceresi sinyal geçmişi için zaman serisini gösterir. Backend IP gibi boyutlara göre bu zaman serisi filtrelemek için bir seçenek vardır. Bu, zaman serisi grafiğini filtreler, ancak uyarının kendisini **filtrelemez.** Belirli Backend IP adresleri için uyarıları yapılandıramazsınız.
+  
 #### <a name="is-the-data-path-up-and-available-for-my-load-balancer-vip"></a>Veri yolu yukarı ve benim yük dengeleyici VIP için kullanılabilir mi?
 
 VIP kullanılabilirlik ölçümü, bölgedeki veri yolunun durumunu, Sanal Bilgilerinizin bulunduğu bilgi işlem ana bilgisayara açıklar. Metrik, Azure altyapısının durumunun bir yansımasıdır. Ölçümü aşağıdakiler için kullanabilirsiniz:

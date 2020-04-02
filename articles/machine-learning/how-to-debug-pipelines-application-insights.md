@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: Eğitim ve toplu puanlama ardışık hatlarınıza günlüğe kaydetme ekleyin ve Uygulama Öngörüleri'nde günlüğe kaydedilmiş sonuçları görüntüleyin.
 services: machine-learning
 author: aburek
-ms.author: anrode
+ms.author: cgronlun
 ms.service: machine-learning
 ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/16/2020
 ms.custom: seodec18
-ms.openlocfilehash: 85dcd9ef98deb2ea0117f2db280e49c4a57bf00f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 217a89f6ede4e4b1d2182eed79b088808432044f
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76776306"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529372"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines-in-application-insights"></a>Application Insights'ta hata ayıklama ve sorun giderme makinesi öğrenme boru hatları
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]

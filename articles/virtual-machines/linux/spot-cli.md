@@ -1,27 +1,20 @@
 ---
-title: Azure Spot VM'lerini dağıtmak için CLI'yi kullanın (Önizleme)
+title: Azure Spot VM'lerini dağıtmak için CLI'yi kullanın
 description: Maliyetlerden tasarruf etmek için Azure Spot VM'lerini dağıtmak için CLI'yi nasıl kullanacağınızı öğrenin.
-services: virtual-machines-linux
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 02/11/2020
+ms.date: 03/25/2020
 ms.author: cynthn
-ms.openlocfilehash: 110e935671ab1d640b2ff3dc26c203b262e999fe
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5b6a07bfbcf56f3ca78fa4991e7741a3d44c25b9
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77163101"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80544349"
 ---
-# <a name="preview-deploy-spot-vms-using-the-azure-cli"></a>Önizleme: Azure CLI'yi kullanarak Spot VM'leri dağıtma
+# <a name="deploy-spot-vms-using-the-azure-cli"></a>Azure CLI'yi kullanarak Spot VM'leri dağıtma
 
 [Azure Spot VM'leri](spot-vms.md) kullanmak, önemli bir maliyet tasarrufu nda kullanılmayan kapasitemizden yararlanmanızı sağlar. Azure'un kapasiteye geri ihtiyacı olduğu herhangi bir zamanda, Azure altyapısı Spot VM'leri boşaltacaktır. Bu nedenle, Spot VM'ler toplu iş işleri, geliştirme/test ortamları, büyük bilgi işlem iş yükleri ve daha fazlası gibi kesintileri işleyebilir iş yükleri için idealdir.
 
@@ -30,12 +23,6 @@ Spot VM'ler için fiyatlandırma, bölgeye ve SKU'ya göre değişkendir. Daha f
 VM için saat başına ödemek istediğiniz maksimum fiyatı belirleme seçeneğiniz vardır. Spot VM'nin maksimum fiyatı, 5 ondalık basamak kullanılarak ABD doları (USD) olarak ayarlanabilir. Örneğin, değeri `0.98765`saatte 0,98765 USD maksimum fiyat olacaktır. Maksimum fiyatı olarak `-1`ayarlarsanız, VM fiyata göre tahliye olmaz. VM için fiyat Spot veya standart bir VM için fiyat olacak, hangi hiç daha az, sürece kapasite ve kota mevcuttur. Maksimum fiyatı ayarlama hakkında daha fazla bilgi için [Spot VM'ler - Fiyatlandırma'ya](spot-vms.md#pricing)bakın.
 
 Azure CLI'yi kullanarak Spot ile VM oluşturma [işlemi, hızlı başlangıç makalesinde](/azure/virtual-machines/linux/quick-create-cli)ayrıntılı olarak belirtildiği gibi. Sadece '--öncelikli Spot' parametresini ekleyin ve `-1`maksimum fiyat veya .
-
-> [!IMPORTANT]
-> Spot örnekleri şu anda genel önizlemede.
-> Bu önizleme sürümü üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için Microsoft [Azure Önizlemeleri için Ek Kullanım Koşulları'na](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)bakın.
->
-
 
 
 ## <a name="install-azure-cli"></a>Azure CLI'yı yükleme

@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: reference
 ms.date: 11/29/2018
 ms.author: sngun
-ms.openlocfilehash: 6bc636b751d12bdb576e54f26536ac0045839229
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 090446d286b38a0bfcbde4ed9e77235050b36417
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "70137335"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80547710"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>SQL API için Azure Cosmos DB Python SDK: Sürüm notları ve kaynakları
 > [!div class="op_single_selector"]
@@ -24,7 +24,7 @@ ms.locfileid: "70137335"
 > * [Async Java](sql-api-sdk-async-java.md)
 > * [Java](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
-> * [Geri kalanı](https://docs.microsoft.com/rest/api/cosmos-db/)
+> * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST Kaynak Sağlayıcısı](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
 > * [Toplu uygulayıcı - .NET](sql-api-sdk-bulk-executor-dot-net.md)
@@ -36,7 +36,7 @@ ms.locfileid: "70137335"
 |**API belgeleri**|[Python API başvuru belgeleri](https://docs.microsoft.com/python/api/azure-cosmos/?view=azure-python)|
 |**SDK kurulum talimatları**|[Python SDK yükleme talimatları](https://github.com/Azure/azure-cosmos-python)|
 |**SDK'ya Katkıda Bulunun**|[GitHub](https://github.com/Azure/azure-cosmos-python)|
-|**Kullanmaya başlayın**|[Python SDK ile başlayın](sql-api-python-application.md)|
+|**başlarken**|[Python SDK ile başlayın](sql-api-python-application.md)|
 |**Geçerli desteklenen platform**|[Python 2.7](https://www.python.org/downloads/) ve [Python 3.5](https://www.python.org/downloads/)|
 
 ## <a name="release-notes"></a>Sürüm notları
@@ -84,7 +84,7 @@ ms.locfileid: "70137335"
 
 ### <a name="210"></a><a name="2.1.0"/>2.1.0
 * Toplama sorguları (COUNT, MIN, MAX, SUM ve AVG) için destek eklendi.
-* Cosmos DB Emulator'a karşı çalışırken SSL doğrulamasını devre dışı bırakma seçeneği eklendi.
+* Cosmos DB Emulator'a karşı çalışırken TLS doğrulamasını devre dışı bırakma seçeneği eklendi.
 * Bağımlı istek modülünün tam olarak 2.10.0 olması kısıtlaması kaldırıldı.
 * 10.100 RU/s'den 2500 RU/s'ye kadar bölümlenmiş koleksiyonlarda minimum iş belini düşürür.
 * Depolanan yordam yürütme sırasında komut dosyası günlüğe kaydetmeyi etkinleştirmek için destek eklendi.
@@ -102,7 +102,7 @@ ms.locfileid: "70137335"
 ### <a name="190"></a><a name="1.9.0"/>1.9.0
 * Daraltılmış istekler için yeniden deneme ilkesi desteği eklendi. (Daraltılmış istekler çok büyük bir özel durum, hata kodu 429 bir istek oranı alır.) Varsayılan olarak, Azure Cosmos DB hata kodu 429 ile karşılaşıldığında her istek için dokuz kez yeniden çalışır ve yanıt üstbilgisinde yeniden denemeyi onurlandırır. Yeniden deneme aralığı, yeniden denemeler arasında sunucu tarafından döndürülen yeniden denemesüresini göz ardı etmek istiyorsanız, ConnectionPolicy nesnesi üzerindeki RetryOptions özelliğinin bir parçası olarak ayarlanabilir. Azure Cosmos DB artık daraltılmış olan her istek için en fazla 30 saniye bekler (yeniden deneme sayısına bakılmaksızın) ve yanıtı hata kodu 429 ile döndürür. Bu süre ConnectionPolicy nesnesi üzerindeki RetryOptions özelliğinde de geçersiz kılınabilir.
 * Cosmos DB şimdi x-ms-throttle-retry-count ve x-ms-throttle-retry-wait-time-ms'i, gaz yeniden deneme sayısını ve isteğin yeniden denemeler arasında beklediği kümülatif süreyi belirtmek için her istekteki yanıt başlıkları olarak döndürür.
-* Document_client sınıfında açığa çıkarılan RetryPolicy sınıfı ve ilgili özellik (retry_policy) kaldırıldı ve bunun yerine ConnectionPolicy sınıfında bazı geçersiz kılmak için kullanılabilecek RetryOptions özelliğini ortaya çıkaran bir RetryOptions sınıfı tanıtıldı varsayılan yeniden deneme seçenekleri.
+* RetryPolicy sınıfı ve ilgili özellik (retry_policy) document_client sınıfında açığa çıkarıldı ve bunun yerine, varsayılan yeniden deneme seçeneklerinden bazılarını geçersiz kılmak için kullanılabilecek ConnectionPolicy sınıfında RetryOptions özelliğini ortaya çıkaran bir RetryOptions sınıfı tanıttı.
 
 ### <a name="180"></a><a name="1.8.0"/>1.8.0
 * Çok bölgeli veritabanı hesapları için destek eklendi.

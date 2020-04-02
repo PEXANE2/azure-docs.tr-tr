@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: e7e7fc44d5f8b46a66c698d3a33ceeab5b8625c4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b707d67c88eb550d397134b2294c1c5b0e1f7f7d
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73810337"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80528208"
 ---
 # <a name="in-memory-sample"></a>Bellek içi örnek
 
@@ -41,7 +41,7 @@ Daha fazla bilgi için bkz.
 In-Memory OLTP için daha basit, ancak görsel olarak daha çekici bir performans demosu için bkz:
 
 - Yayın: [in-memory-oltp-demo-v1.0](https://github.com/Microsoft/sql-server-samples/releases/tag/in-memory-oltp-demo-v1.0)
-- Kaynak kodu: [in-memory-oltp-demo-kaynak kodu](https://github.com/Microsoft/sql-server-samples/tree/master/samples/features/in-memory/ticket-reservations)
+- Kaynak kodu: [in-memory-oltp-demo-kaynak kodu](https://github.com/microsoft/sql-server-samples/tree/master/samples/features/in-memory-database)
 
 #### <a name="installation-steps"></a>Yükleme adımları
 
@@ -413,7 +413,7 @@ P2 fiyatlandırma katmanına sahip bir veritabanında, geleneksel diziyle karş�
 
 #### <a name="tools"></a>Araçlar
 
-- [Azure portalında](https://portal.azure.com/)
+- [Azure portalı](https://portal.azure.com/)
 
 - [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx)
 

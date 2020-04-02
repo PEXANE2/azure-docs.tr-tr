@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-ms.date: 03/10/2020
-ms.openlocfilehash: d4762c86268353ff0464ff3919250cd86f0038d4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/30/2020
+ms.openlocfilehash: 7488fd5f8a572788933856f03bb0ad4351885704
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79214113"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80518219"
 ---
 # <a name="automatic-tuning-in-azure-sql-database"></a>Azure SQL Veritabanında otomatik ayar
 
@@ -69,7 +69,7 @@ Azure SQL Veritabanı'nda kullanılabilen otomatik ayar seçenekleri şunlardır
 
 Tek ve havuzlu veritabanları için otomatik **ayar,** veritabanı performansınızı optimize etmek için CREATE INDEX , **DROP INDEX**ve FORCE LAST **GOOD PLAN** veritabanı danışmanı önerilerini kullanır. Daha fazla bilgi için, Azure portalında , [PowerShell'de](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaserecommendedaction)ve [REST API'deki](https://docs.microsoft.com/rest/api/sql/serverautomatictuning) [Veritabanı danışmanı önerilerine](sql-database-advisor-portal.md)bakın.
 
-Azure portalını kullanarak ayar önerilerini el ile uygulayabilir veya otomatik ayarın sizin için otomatik ayar önerilerini bağımsız olarak uygulamasına izin verebilirsiniz. Sistemin sizin için otomatik olarak ayar önerileri uygulamasına izin vermenin yararları, iş yükü performansında olumlu bir kazanç olduğunu otomatik olarak doğrular ve önemli bir performans artışı algılanmazsa, ayar önerisini otomatik olarak tersine çevirin. Sık sık yürütülmeyen ayar önerilerinden etkilenen sorgularda doğrulama aşamasının tasarım gereği 72 saate kadar sürebileceğini lütfen unutmayın.
+Azure portalını kullanarak ayar önerilerini el ile uygulayabilir veya otomatik ayarın sizin için otomatik ayar önerilerini bağımsız olarak uygulamasına izin verebilirsiniz. Sistemin sizin için otomatik olarak ayar önerileri uygulamasına izin vermenin yararları, iş yükü performansında olumlu bir kazanç olduğunu otomatik olarak doğrular ve önemli bir performans iyileştirmesi algılanmazsa, ayar önerisini otomatik olarak geri alır. Sık sık yürütülmeyen ayar önerilerinden etkilenen sorgularda doğrulama aşamasının tasarım gereği 72 saate kadar sürebileceğini lütfen unutmayın.
 
 T-SQL üzerinden ayar önerileri uyguluyorsanız, otomatik performans doğrulama ve ters mekanizmalar kullanılamaz. Bu şekilde uygulanan öneriler etkin kalır ve 24-48 saat için ayarı önerileri listesinde gösterilir. sistem otomatik olarak geri çekmeden önce. Bir öneriyi daha erken kaldırmak isterseniz, öneriyi Azure portalından atabilirsiniz.
 
@@ -93,3 +93,4 @@ Yönetilen bir örnek dağıtım örneğin veritabanları için otomatik ayar sa
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Otomatik ayarda kullanılan yerleşik zeka hakkında bilgi edinmek için, [Yapay Zeka Azure SQL veritabanlarını ayarlıyor.](https://azure.microsoft.com/blog/artificial-intelligence-tunes-azure-sql-databases/)
+- Otomatik ayar ın kaputun altında nasıl çalıştığını öğrenmek için [bkz.](https://www.microsoft.com/en-us/research/uploads/prod/2019/02/autoindexing_azuredb.pdf)

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/04/2020
-ms.openlocfilehash: 1ca03cde57a9496054d0860fbb70bd286caabe46
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d52d8e6d0f6e3325b5c5cdc9a2e21654e6a2b621
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79533258"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520730"
 ---
 # <a name="log-analytics-agent-overview"></a>Log Analytics acentesine genel bakış
 Azure Log Analytics aracısı, sanal makineler arasında herhangi bir bulutta, şirket içi makinelerde ve [System Center Operations Manager](https://docs.microsoft.com/system-center/scom/)tarafından izlenen kapsamlı yönetim için geliştirilmiştir. Windows ve Linux aracıları, farklı kaynaklardan toplanan verileri Azure Monitor'daki Log Analytics çalışma alanınıza ve bir izleme çözümünde tanımlandığı gibi benzersiz günlüklere veya ölçümlere gönderir. Log Analytics aracısı, Azure Monitor'daki öngörüleri ve [VM'ler için Azure Monitor,](../insights/vminsights-enable-overview.md) [Azure Güvenlik Merkezi](/azure/security-center/)ve Azure [Otomasyonu](../../automation/automation-intro.md)gibi diğer hizmetleri de destekler.
@@ -156,23 +156,27 @@ Windows aracısı sadece 18 Mayıs 2020 tarihinde SHA-2 imza kullanmaya başlaya
 
 
 ## <a name="network-requirements"></a>Ağ gereksinimleri
-Linux ve Windows aracısı, TCP bağlantı noktası 443 üzerinden Azure Monitor hizmetine giden iletişim kurar ve makine Internet üzerinden iletişim kurmak için bir güvenlik duvarı veya proxy sunucusu üzerinden bağlanırsa, ağ yapılandırmasını anlamak için aşağıdaki gereksinimleri gözden geçirin Gerekli. BT güvenlik ilkeleriniz ağdaki bilgisayarların Internet'e bağlanmasına izin vermiyorsa, bir [Log Analytics ağ geçidi](gateway.md) ayarlayabilir ve aracıyı Azure Monitor günlüklerine ağ geçidinden bağlanacak şekilde yapılandırabilirsiniz. Aracı daha sonra yapılandırma bilgilerini alabilir ve çalışma alanınızda etkinleştirdiğiniz veri toplama kurallarına ve izleme çözümlerine bağlı olarak toplanan verileri gönderebilir.
+Linux ve Windows aracısı, TCP bağlantı noktası 443 üzerinden Azure Monitor hizmetine giden iletişim kurar ve makine Internet üzerinden iletişim kurmak için bir güvenlik duvarı veya proxy sunucusu üzerinden bağlanırsa, gerekli ağ yapılandırmasını anlamak için aşağıdaki gereksinimleri gözden geçirin. BT güvenlik ilkeleriniz ağdaki bilgisayarların Internet'e bağlanmasına izin vermiyorsa, bir [Log Analytics ağ geçidi](gateway.md) ayarlayabilir ve aracıyı Azure Monitor günlüklerine ağ geçidinden bağlanacak şekilde yapılandırabilirsiniz. Aracı daha sonra yapılandırma bilgilerini alabilir ve çalışma alanınızda etkinleştirdiğiniz veri toplama kurallarına ve izleme çözümlerine bağlı olarak toplanan verileri gönderebilir.
 
 ![Log Analytics aracıiletişim diyagramı](./media/log-analytics-agent/log-analytics-agent-01.png)
 
+Aşağıdaki tabloda, Linux ve Windows aracılarının Azure Monitor günlükleriyle iletişim kurması için gereken proxy ve güvenlik duvarı yapılandırma bilgileri listelenmektedir.
 
-## <a name="network-firewall-requirements"></a>Ağ güvenlik duvarı gereksinimleri
-Aşağıdaki bilgiler, Linux ve Windows aracısının Azure Monitor günlükleriyle iletişim kurması için gereken proxy ve güvenlik duvarı yapılandırma bilgilerini listelemektedir.  
+### <a name="firewall-requirements"></a>Güvenlik duvarı gereksinimleri
 
 |Aracı Kaynağı|Bağlantı Noktaları |Yön |HTTPS denetlemesini atlama|
 |------|---------|--------|--------|   
-|*.ods.opinsights.azure.com |Bağlantı Noktası 443 |Giden|Evet |  
-|*.oms.opinsights.azure.com |Bağlantı Noktası 443 |Giden|Evet |  
-|*.blob.core.windows.net |Bağlantı Noktası 443 |Giden|Evet |  
+|*.ods.opinsights.azure.com |Bağlantı Noktası 443 |Gelen ve Giden|Evet |  
+|*.oms.opinsights.azure.com |Bağlantı Noktası 443 |Gelen ve Giden|Evet |  
+|*.blob.core.windows.net |Bağlantı Noktası 443 |Gelen ve Giden|Evet |
+|*.azure-automation.net |Bağlantı Noktası 443 |Gelen ve Giden|Evet |
+|*.azure.com |Bağlantı Noktası 443|Gelen ve Giden|Evet |
 
 Azure Kamu için gerekli güvenlik duvarı bilgileri için Bkz. [Azure Kamu yönetimi.](../../azure-government/documentation-government-services-monitoringandmanagement.md#azure-monitor-logs) 
 
 Ortamınızdaki runbook'ları veya yönetim çözümlerini kullanmak için Otomasyon hizmetine bağlanmak ve ona kaydolmak için Azure Otomasyon Karma Runbook Worker'ı kullanmayı planlıyorsanız, bu hizmet noktası numarasına ve [Karma Runbook Çalışanı için ağınızı Yapılandırma'da](../../automation/automation-hybrid-runbook-worker.md#network-planning)açıklanan URL'lere erişimi olmalıdır. 
+
+### <a name="proxy-configuration"></a>Ara sunucu yapılandırması
 
 Windows ve Linux aracısı, HTTPS protokolünü kullanarak bir proxy sunucusu veya Log Analytics ağ geçidi aracılığıyla Azure Monitor'a iletişim kurmayı destekler.  Hem anonim hem de temel kimlik doğrulama (kullanıcı adı/parola) desteklenir.  Doğrudan hizmete bağlı Windows aracısı için proxy yapılandırması yükleme sırasında veya Denetim Masası'ndan dağıtım [sırasında](agent-manage.md#update-proxy-settings) veya PowerShell ile belirtilir.  
 

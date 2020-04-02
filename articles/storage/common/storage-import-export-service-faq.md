@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/12/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: dcf9a278bfc0ede844f8eb59e3a256e40a47c57d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 904f93aa705a4e327f29bbec109bdf3b937f6c70
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80282435"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80519477"
 ---
 # <a name="azure-importexport-service-frequently-asked-questions"></a>Azure İçe Alma/Dışa Aktarma hizmeti: sık sorulan sorular
 
@@ -99,15 +99,17 @@ FedEx, DHL, UPS veya ABD Posta Hizmeti gibi bilinen herhangi bir taşıyıcıyı
 > [!NOTE]
 > Hindistan'daki veri merkezleri, sürücüleri döndürmek için antetli kayınızda (teslimat challan) bir beyan mektubu gerektirir. Gerekli giriş kartını ayarlamak için, pick up'ı seçtiğiniz operatörle rezerve etmeli ve ayrıntıları veri merkeziyle paylaşmalısınız.
 
-### <a name="are-there-any-restrictions-with-shipping-my-drive-internationally"></a>Sürücümü uluslararası olarak gönderimde herhangi bir kısıtlama var mı?
+### <a name="are-there-any-restrictions-with-shipping-and-returning-my-drive-internationally"></a>Nakliye ve uluslararası benim sürücü dönen herhangi bir kısıtlama var mı?
 
 Sevk ettiğiniz fiziksel ortamın uluslararası sınırları geçmesi gerekebileceğini lütfen unutmayın. Fiziksel medyanızın ve verilerinizin yürürlükteki yasalara uygun olarak içe aktarılmasını ve/veya dışlanmasını sağlamaksizin sorumlusunuz. Fiziksel ortamı göndermeden önce, medyanızın ve verilerinizin yasal olarak tanımlanan veri merkezine gönderilebebileceğini doğrulamak için danışmanlarınıza danışın. Bu, microsoft'a zamanında ulaştığından emin olmaya yardımcı olur.
+
+Yükleme tamamlandıktan sonra, sürücü(ler) uluslararası bir adrese iade işlemi yerel gönderim için gereken tipik 2-3 günden daha uzun sürebilir. Veri Kutusu ekibi, Azure portalında Ambalaj olarak listelenen aşama boyunca, gönderinin çeşitli uluslararası ithalat ve ihracat gereksinimlerine uygun olmasını sağlamak için doğru belgelerin sağlanmasını sağlar.
 
 ### <a name="are-there-any-special-requirements-for-delivering-my-disks-to-a-datacenter"></a>Disklerimi bir veri merkezine teslim etmek için özel gereksinimler var mı?
 
 Gereksinimler belirli Azure veri merkezi kısıtlamalarına bağlıdır.
 
-- Güvenlik nedenleriyle pakete Microsoft veri merkezi Gelen Kimlik numarasının yazılmasını gerektiren birkaç site vardır. Sürücülerinizi veya disklerinizi veri merkezine göndermeden önce, buadbops@microsoft.comnumarayı almak için Azure DataBox İşlemleri () ile iletişime geçin. Bu numara olmadan paket reddedilir.
+- Avustralya, Almanya ve Uk South gibi, güvenlik nedenleriyle pakete Microsoft veri merkezi Gelen Kimlik numarasının yazılmasını gerektiren birkaç site vardır. Sürücülerinizi veya disklerinizi veri merkezine göndermeden önce, buadbops@microsoft.comnumarayı almak için Azure DataBox İşlemleri () ile iletişime geçin. Bu numara olmadan paket reddedilir.
 - Hindistan'daki veri merkezleri, sürücünün Kişisel Bilgilerini gerektirir, örneğin Devlet Kimlik Kartı veya Kanıt No. (örneğin, PAN, AADHAR, DL), adı, temas ve bir kapı giriş kartı almak için araç plaka numarası. Teslimat gecikmelerini önlemek için, taşıyıcınızı bu gereksinimler hakkında bilgilendirin.
 
 ### <a name="when-creating-a-job-the-shipping-address-is-a-location-that-is-different-from-my-storage-account-location-what-should-i-do"></a>Bir iş oluştururken, sevkiyat adresi depolama hesabı konumumdan farklı bir konumdur. Ne yapmalıyım?

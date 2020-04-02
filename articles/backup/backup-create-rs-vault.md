@@ -4,12 +4,12 @@ description: Bu makalede, yedeklemeleri ve kurtarma noktalarını depolayan Kurt
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: e722996f516d21445d8e0028df925ca44eb02bfc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 38f23ee458845b92c04af47307a2411b26c8ac81
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80295010"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529391"
 ---
 # <a name="create-a-recovery-services-vault"></a>Kurtarma Hizmetleri kasası oluşturma
 
@@ -90,6 +90,7 @@ Bu işlem için, depolama düzeyinde olduğu gibi fiyatlandırma etkileri vardı
 >- Desteklenen yönetilen türlerin ve bölgelerin listesi için [destek matrisini](backup-support-matrix.md#cross-region-restore) gözden geçirin.
 >- Çapraz Bölge Geri Yükleme (CRR) özelliği şu anda yalnızca aşağıdaki bölgelerde kullanılabilir: 
 >    - Orta Batı ABD
+>    - Batı ABD
 >    - Batı ABD 2
 >    - Orta Güney ABD
 >    - Doğu ABD
@@ -101,11 +102,14 @@ Bu işlem için, depolama düzeyinde olduğu gibi fiyatlandırma etkileri vardı
 >    - Güneydoğu Avustralya
 >    - Orta Hindistan
 >    - Güney Hindistan
+>    - Hindistan Batı
 >    - Doğu Japonya
 >    - Batı Japonya
 >    - Güneydoğu Asya
 >    - Güney Birleşik Krallık
 >    - Batı Birleşik Krallık
+>    - Batı Avrupa
+>    - Kuzey Avrupa
 >    - Orta Fransa
 >    - Güney Kore - Orta
 >    - Güney Kore - Güney

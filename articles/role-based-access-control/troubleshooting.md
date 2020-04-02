@@ -15,12 +15,12 @@ ms.date: 03/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: 8aedc78772858815a18425fb1e6cb36a4600f647
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 09d5b7a126a1b8832bfe40e2e25dd4000d5d9155
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80385104"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548281"
 ---
 # <a name="troubleshoot-azure-rbac"></a>Sorun Giderme Azure RBAC
 
@@ -80,7 +80,7 @@ $ras.Count
 
 ## <a name="access-denied-or-permission-errors"></a>Erişim reddedildi veya izin hataları
 
-- Bir kaynak oluşturmaya çalıştığınızda "Nesne kimliği olan istemcinin kapsam üzerinde işlem yapma yetkisi yoktur (kod: YetkilendirmeBaşarısız)" izinleri hatası alırsanız, şu anda atanmış bir rol ile oturum açmış durumda olup olmadığınızı denetleyin seçili kapsamda kaynak izni. Örneğin bir kaynak grubundaki sanal makineleri yönetmek için kaynak grubunda (veya üst kapsamda) [Sanal Makine Katılımcısı](built-in-roles.md#virtual-machine-contributor) rolüne sahip olmanız gerekir. Yerleşik rollerin izinlerinin yer aldığı liste için bkz. [Azure kaynakları için yerleşik roller](built-in-roles.md).
+- Bir kaynak oluşturmaya çalıştığınızda "Nesne kimliği ne olan istemcinin kapsam üzerinde işlem yapma yetkisi yoktur (kod: YetkilendirmeBaşarısız)" izinleri hatası alırsanız, şu anda seçili kapsamda kaynağa izin yazan bir rol atanmış bir kullanıcıyla oturum açmış durumda olup olmadığınızı denetleyin. Örneğin bir kaynak grubundaki sanal makineleri yönetmek için kaynak grubunda (veya üst kapsamda) [Sanal Makine Katılımcısı](built-in-roles.md#virtual-machine-contributor) rolüne sahip olmanız gerekir. Yerleşik rollerin izinlerinin yer aldığı liste için bkz. [Azure kaynakları için yerleşik roller](built-in-roles.md).
 - Bir destek bileti oluşturmaya veya güncelleştirmeye çalıştığınızda "Destek isteği oluşturma izniniz yok" izinleri hatası alırsanız, Destek `Microsoft.Support/supportTickets/write` [İsteği Katılımcısı](built-in-roles.md#support-request-contributor)gibi izni olan bir rol le şu anda oturum açmış durumda olup olmadığınızı kontrol edin.
 
 ## <a name="role-assignments-with-unknown-security-principal"></a>Bilinmeyen güvenlik ilkesiyle rol atamaları
@@ -179,7 +179,7 @@ Bu öğeler, web sitenize karşılık gelen **Uygulama Hizmeti planına** **yazm
 
 Bu öğeler, web sitenizi içeren tüm **Kaynak grubuna** **yazma** erişimi gerektirir:  
 
-* SSL Sertifikaları ve ciltlemeleri (SSL sertifikaları aynı kaynak grubundaki siteler ve coğrafi konum arasında paylaşılabilir)  
+* TLS/SSL Sertifikaları ve ciltlemeleri (TLS/SSL sertifikaları aynı kaynak grubundaki siteler ve coğrafi konum daki siteler arasında paylaşılabilir)  
 * Uyarı kuralları  
 * Otomatik ölçeklendirme ayarları  
 * Uygulama öngörüleri bileşenleri  
@@ -196,7 +196,7 @@ Bu öğeler **Sanal makineye** **yazma** erişimi gerektirir:
 * Uç Noktalar  
 * IP adresleri  
 * Diskler  
-* Uzantılar  
+* Uzantıları  
 
 Bunlar, hem Sanal **makineye**hem de içinde olduğu **Kaynak grubuna** (Etki Alanı adı ile birlikte) **yazma** erişimi gerektirir:  
 

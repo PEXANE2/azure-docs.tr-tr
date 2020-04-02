@@ -1,28 +1,23 @@
 ---
 title: include dosyası
 description: include dosyası
-services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/23/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 7cfa6e9810057493cc3007eec7fd1668a70c727e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d56964b7415e4ca5903950cd46c02b3c27f62d5e
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77179017"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80547400"
 ---
 Spot VM'leri kullanmak, önemli bir maliyet tasarrufu nda kullanılmayan kapasitemizden yararlanmanızı sağlar. Azure'un kapasiteye geri ihtiyacı olduğu herhangi bir zamanda, Azure altyapısı Spot VM'leri boşaltacaktır. Bu nedenle, Spot VM'ler toplu iş işleri, geliştirme/test ortamları, büyük bilgi işlem iş yükleri ve daha fazlası gibi kesintileri işleyebilir iş yükleri için idealdir.
 
 Kullanılabilir kapasite miktarı boyuta, bölgeye, günün saatine ve daha fazlana bağlı olarak değişebilir. Spot VM'leri dağıtırken, Azure kapasite varsa VM'leri ayırır, ancak bu VM'ler için SLA yoktur. Spot VM yüksek kullanılabilirlik garantisi sunmaz. Azure'un kapasiteye geri ihtiyacı olduğu herhangi bir zamanda, Azure altyapısı Spot VM'leri 30 saniye önceden haber verebecektir. 
 
-> [!IMPORTANT]
-> Spot örnekleri şu anda genel önizlemede.
-> Bu önizleme sürümü üretim iş yükleri için önerilmez. Bazı özellikler desteklenmiyor olabileceği gibi özellikleri sınırlandırılmış da olabilir. Daha fazla bilgi için Microsoft [Azure Önizlemeleri için Ek Kullanım Koşulları'na](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)bakın.
->
 
 ## <a name="eviction-policy"></a>Tahliye politikası
 

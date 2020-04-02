@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: ad8c05b3347ed4741d574a5e6bcc1d928db08411
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ad2a34691a00f217db6cf6835eefed18c8862d32
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79366845"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80547930"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>Azure Otomasyonu'nda runbook'ları yönetme
 
@@ -128,6 +128,19 @@ $RGName = "ResourceGroup"
 Publish-AzAutomationRunbook -AutomationAccountName $automationAccountName `
 -Name $runbookName -ResourceGroupName $RGName
 ```
+
+### <a name="schedule-a-runbook-in-the-azure-portal"></a>Azure portalında bir runbook zamanlama
+
+Runbook'unuzun yayımlandığı zaman, çalışma için zamanlayabilirsiniz.
+
+1. Azure portalında runbook'u açın.
+2. **Kaynaklar**altında **Zamanlamaları** seçin.
+3. **Zamanlama ekle'yi**seçin.
+4. Zamanlama Runbook bölmesinde, **bir zamanlamayı runbook'unuzun bağlantısına bağlayın'ı**seçin.
+5. Zamanlama bölmesinde **yeni bir zamanlama oluştur'u** seçin.
+6. Yeni zamanlama bölmesine bir ad, açıklama ve diğer parametreler girin. 
+7. Zamanlama oluşturulduktan sonra, vurgulayın ve **Tamam'ı**tıklatın. Şimdi runbook bağlı olmalıdır.
+8. Posta kutunuzda, runbook durumunu size bildirmek için bir e-posta arayın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

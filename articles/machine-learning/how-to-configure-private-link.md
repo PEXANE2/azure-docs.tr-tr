@@ -10,16 +10,18 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/13/2020
-ms.openlocfilehash: c6593a2746e628c89e20f6ef92a1430bd294e4fe
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: fb70600ad245968377cdebd23a7b531e552bb546
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80438313"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529312"
 ---
-# <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace"></a>Azure Machine Learning çalışma alanı için Azure Özel Bağlantısını Yapılandırma
+# <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace-preview"></a>Azure Machine Learning çalışma alanı için Azure Özel Bağlantısını Yapılandırma (Önizleme)
 
-Bu belgede, Azure Makine Öğrenimi çalışma alanınızla Azure Özel Bağlantısını nasıl kullanacağınızı öğrenirsiniz. Azure Özel Bağlantı, özel bir bitiş noktası kullanarak çalışma alanınıza bağlanmanızı sağlar. Özel bitiş noktası, sanal ağınızdaki özel IP adresleri kümesidir. Daha sonra çalışma alanınıza erişimi yalnızca özel IP adresleri üzerinden oluşacak şekilde sınırlandırabilirsiniz. Private Link, veri sızma riskini azaltmaya yardımcı olur. Özel uç noktalar hakkında daha fazla bilgi edinmek için [Azure Özel Bağlantı](/azure/private-link/private-link-overview) makalesine bakın.
+Bu belgede, Azure Makine Öğrenimi çalışma alanınızla Azure Özel Bağlantısını nasıl kullanacağınızı öğrenirsiniz. Bu özellik şu anda önizlemededir ve ABD Doğu, ABD Batı 2, ABD Güney Orta bölgelerinde mevcuttur. 
+
+Azure Özel Bağlantı, özel bir bitiş noktası kullanarak çalışma alanınıza bağlanmanızı sağlar. Özel bitiş noktası, sanal ağınızdaki özel IP adresleri kümesidir. Daha sonra çalışma alanınıza erişimi yalnızca özel IP adresleri üzerinden oluşacak şekilde sınırlandırabilirsiniz. Private Link, veri sızma riskini azaltmaya yardımcı olur. Özel uç noktalar hakkında daha fazla bilgi edinmek için [Azure Özel Bağlantı](/azure/private-link/private-link-overview) makalesine bakın.
 
 > [!IMPORTANT]
 > Azure Özel Bağlantısı, çalışma alanını silme veya bilgi işlem kaynaklarını yönetme gibi Azure denetim düzlemini (yönetim işlemleri) etkilemez. Örneğin, bir işlem hedefi oluşturma, güncelleştirme veya silme. Bu işlemler normal olarak genel Internet üzerinden gerçekleştirilir.

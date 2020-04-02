@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 10/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 05db717f5d3adc2429431503f588f2cc7f79aef6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e00fee8841a2d5a817a00b942bfe0733a80b2cfc
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79266786"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546335"
 ---
 # <a name="azure-disk-encryption-for-windows-vms"></a>Windows VM'ler için Azure Disk Şifrelemesi 
 
@@ -30,11 +30,13 @@ Windows için Azure Disk Şifrelemesinin temellerini, Azure CLI hızlı başlatm
 
 ## <a name="supported-vms-and-operating-systems"></a>Desteklenen VM'ler ve işletim sistemleri
 
-### <a name="supported-vm-sizes"></a>Desteklenen VM boyutları
+### <a name="supported-vms"></a>Desteklenen VM'ler
 
 Windows VM'ler [çeşitli boyutlarda](sizes-general.md)mevcuttur. Azure Disk Şifreleme, [Temel, A serisi SANAL Makinelerde](https://azure.microsoft.com/pricing/details/virtual-machines/series/)veya 2 GB'dan az belleğe sahip sanal makinelerde kullanılamaz.
 
 Azure Disk Şifrelemesi, birinci sınıf depolama alanına sahip VM'ler için de kullanılabilir.
+
+Azure Disk [Şifreleme, Nesil 2 VM'lerde](generation-2.md#generation-1-vs-generation-2-capabilities)ve [Lsv2 serisi VM'lerde](../lsv2-series.md)kullanılamaz). Daha fazla özel durum için [bkz: Azure Disk Şifrelemesi: Desteklenmeyen senaryolar.](disk-encryption-windows.md#unsupported-scenarios)
 
 ### <a name="supported-operating-systems"></a>Desteklenen işletim sistemleri
 

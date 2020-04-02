@@ -15,12 +15,12 @@ ms.date: 03/22/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: ba07a0b0d3be0366179bba14c786fafad8753dd7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2fe3b94463da07304f2c853910ac5d2a6771d070
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80280703"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80545650"
 ---
 # <a name="azure-built-in-roles"></a>Azure yerleşik rolleri
 
@@ -46,7 +46,7 @@ Aşağıdaki tablo, kısa bir açıklama ve her yerleşik rolün benzersiz kimli
 > | [Sanal Makine Yöneticisi Girişi](#virtual-machine-administrator-login) | Sanal Makineleri portalda görüntüleyin ve yönetici olarak giriş yapın | 1c0163c0-47e6-4577-8991-ea5c82e286e4 |
 > | [Sanal Makine Katılımcısı](#virtual-machine-contributor) | Sanal makineleri yönetmenize olanak tanır, ancak bunlara erişmez ve bağlı oldukları sanal ağ veya depolama hesabı nı değil. | 9980e02c-c2be-4d73-94e8-173b1dc7cf3c |
 > | [Sanal Makine Kullanıcı Girişi](#virtual-machine-user-login) | Sanal Makineleri portalda görüntüleyin ve normal bir kullanıcı olarak giriş yapın. | fb879df8-f326-4884-b1cf-06f3ad86be52 |
-> | **Ağ Oluşturma** |  |  |
+> | **Ağ** |  |  |
 > | [CDN Bitiş Noktası Katılımcısı](#cdn-endpoint-contributor) | CDN uç noktalarını yönetebilir, ancak diğer kullanıcılara erişim izni verilemez. | 426e0c7f-0c7e-4658-b36f-ff54d6c29b45 |
 > | [CDN Uç Nokta Okuyucu](#cdn-endpoint-reader) | CDN uç noktalarını görüntüleyebilir, ancak değişiklik yapamaz. | 871e35f6-b5c1-49cc-a043-bde969a0f2cd |
 > | [CDN Profil Katılımcısı](#cdn-profile-contributor) | CDN profillerini ve uç noktalarını yönetebilir, ancak diğer kullanıcılara erişim izni veremez. | ec156ff8-a8d1-4d15-830c-5b80698ca432 |
@@ -114,7 +114,7 @@ Aşağıdaki tablo, kısa bir açıklama ve her yerleşik rolün benzersiz kimli
 > | [HDInsight Etki Alanı Hizmetleri Katılımcısı](#hdinsight-domain-services-contributor) | HDInsight Kurumsal Güvenlik Paketi için gerekli Olan Etki Alanı Hizmetlerini Okuyabilir, Oluşturabilir, Değiştirebilir ve Silebilirsiniz | 8d8d5a11-05d3-4bda-a417-a08778121c7c |
 > | [Log Analytics Katkıda Bulunan](#log-analytics-contributor) | Log Analytics Katılımcısı tüm izleme verilerini okuyabilir ve izleme ayarlarını düzeltebilir. İzleme ayarlarını düzenleme, VM uzantısını VM'lere eklemeyi içerir; Azure Depolama'dan günlük koleksiyonunu yapılandırabilmek için depolama hesabı anahtarlarını okuma; Otomasyon hesapları oluşturma ve yapılandırma; çözümler ekleme; ve Azure tanılamalarını tüm Azure kaynaklarında yapılandırma. | 92aaf0da-9dab-42b6-94a3-d43ce8d16293 |
 > | [Log Analytics Okuyucusu](#log-analytics-reader) | Log Analytics Reader, Azure tanılama yapılandırmasını tüm Azure kaynaklarında görüntülemek de dahil olmak üzere tüm izleme verilerinin yanı sıra izleme ayarlarını görüntüleyebilir ve görüntüleyebilir. | 73c42c96-874c-492b-b04d-ab87d138a893 |
-> | **Blok Zinciri** |  |  |
+> | **Blok zinciri** |  |  |
 > | [Blockchain Üye Düğümü Erişimi (Önizleme)](#blockchain-member-node-access-preview) | Blockchain Üye düğümlerine erişim sağlar | 31a002a1-acaf-453e-8a5b-297c9ca1ea24 |
 > | **AI + makine öğrenimi** |  |  |
 > | [Bilişsel Hizmetler Katılımcısı](#cognitive-services-contributor) | Bilişsel Hizmetler'in anahtarlarını oluşturmanızı, okumanızı, güncellemenizi, silmenizi ve yönetmenize olanak tanır. | 25fbc0a9-bd7c-42a3-aa1a-3b75d497ee68 |
@@ -666,7 +666,7 @@ Sanal Makineleri portalda görüntüleyin ve normal bir kullanıcı olarak giri�
 }
 ```
 
-## <a name="networking"></a>Ağ Oluşturma
+## <a name="networking"></a>Ağ
 
 
 ### <a name="cdn-endpoint-contributor"></a>CDN Bitiş Noktası Katılımcısı
@@ -4644,7 +4644,7 @@ Hizmeti yönetebilir, ancak API'leri yönetemez
 > | Microsoft.ApiManagement/service/managedeployments/action | SKU/birimlerini değiştirin, API Yönetim Hizmetinin bölgesel dağıtımlarını ekleyin/kaldırın |
 > | Microsoft.ApiManagement/service/read | API Yönetim Hizmeti örneği için meta verileri okuyun |
 > | Microsoft.ApiManagement/service/restore/action | Kullanıcı tarafından sağlanan depolama hesabında belirtilen kapsayıcıdan API Yönetim Hizmeti geri yükleme |
-> | Microsoft.ApiManagement/service/updatecertificate/action | API Yönetim Hizmeti için SSL sertifikası yükleme |
+> | Microsoft.ApiManagement/service/updatecertificate/action | API Yönetim Hizmeti için TLS/SSL sertifikası yükleme |
 > | Microsoft.ApiManagement/service/updatehostname/action | API Yönetim Hizmeti için özel alan adları ayarlama, güncelleştirme veya kaldırma |
 > | Microsoft.ApiManagement/service/write | API Yönetim Hizmeti örneği oluşturma veya güncelleştirme |
 > | Microsoft.Authorization/*/oku | Rolleri ve rol ödevlerini okuma |

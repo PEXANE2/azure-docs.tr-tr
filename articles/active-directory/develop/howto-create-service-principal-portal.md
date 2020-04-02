@@ -8,16 +8,16 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
-ms.date: 02/26/2020
+ms.date: 04/01/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: c5f65adfe401f2f6e99234d08b8e8dabeff7d5db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d1ee8e90d1d690315b2727a050e0383d7d28dc03
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79264121"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546148"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Nasıl olunur: Kaynaklara erişebilen bir Azure AD uygulaması ve hizmet ilkesi oluşturmak için portalı kullanın
 
@@ -99,7 +99,7 @@ Bu sertifikayı, Windows Denetim Masası'ndan erişilebilen [Kullanıcı Sertifi
 
 1. Sertifikalarınızı görüntülemek **için, Sertifikalar altında - Sol** bölmedeki Geçerli Kullanıcı, **Kişisel** dizini genişletin.
 1. Oluşturduğunuz sertifikaya sağ tıklayın, **Tüm görevler->Dışa Aktarma'yı**seçin.
-1. Sertifika Dışa Aktarma sihirbazını izleyin.  Özel anahtarı dışa aktarın, sertifika dosyası için parola belirtin ve bir dosyaya dışa aktarın.
+1. Sertifika Dışa Aktarma sihirbazını izleyin.  Özel anahtarı dışa aktarmayın ve bir . CER dosyası.
 
 Sertifikayı yüklemek için:
 
@@ -148,7 +148,7 @@ Bir uygulamayı Azure AD kiracınıza kaydetmek ve uygulamaya Azure aboneliğini
 1. Sol bölmede Kullanıcı **ayarlarını**seçin.
 1. Uygulama **kayıtları** ayarını kontrol edin. Bu değer yalnızca bir yönetici tarafından ayarlanabilir. **Evet**olarak ayarlanırsa, Azure AD kiracısındaki herhangi bir kullanıcı bir uygulamayı kaydedebilir.
 
-Uygulama kayıtları ayarı **Hayır**olarak ayarlanmışsa, yalnızca yönetici rolü olan kullanıcılar bu tür uygulamaları kaydedebilir. Kullanılabilir yönetici rolleri ve Azure AD'de her role verilen belirli izinler hakkında bilgi edinmek için [kullanılabilir rolleri](../users-groups-roles/directory-assign-admin-roles.md#available-roles) ve [rol izinlerini](../users-groups-roles/directory-assign-admin-roles.md#role-permissions) görün. Hesabınıza Kullanıcı rolü atanmışsa, ancak uygulama kayıt ayarı yönetici kullanıcılarla sınırlıysa, yöneticinizden uygulama kayıtlarının tüm yönlerini oluşturabilecek ve yönetebilecek yönetici rollerinden birini atamasını veya kullanıcıların kaydolmasını sağlamasını isteyin Apps.
+Uygulama kayıtları ayarı **Hayır**olarak ayarlanmışsa, yalnızca yönetici rolü olan kullanıcılar bu tür uygulamaları kaydedebilir. Kullanılabilir yönetici rolleri ve Azure AD'de her role verilen belirli izinler hakkında bilgi edinmek için [kullanılabilir rolleri](../users-groups-roles/directory-assign-admin-roles.md#available-roles) ve [rol izinlerini](../users-groups-roles/directory-assign-admin-roles.md#role-permissions) görün. Hesabınıza Kullanıcı rolü atanmışsa, ancak uygulama kayıt ayarı yönetici kullanıcılarla sınırlıysa, yöneticinizden uygulama kayıtlarının tüm yönlerini oluşturup yönetebilecek yönetici rollerinden birini atamasını veya kullanıcıların uygulamaları kaydetmesini sağlamasını isteyin.
 
 ### <a name="check-azure-subscription-permissions"></a>Azure abonelik izinlerini denetleme
 
@@ -158,7 +158,7 @@ Abonelik izinlerinizi kontrol etmek için:
 
 1. **Abonelikleri**arayın ve seçin veya **Ana** Sayfa'daki **Abonelikleri** seçin.
 
-   ![Search](./media/howto-create-service-principal-portal/select-subscription.png)
+   ![Ara](./media/howto-create-service-principal-portal/select-subscription.png)
 
 1. Hizmet ilkesini oluşturmak istediğiniz aboneliği seçin.
 

@@ -7,12 +7,12 @@ ms.reviewer: dorcohen
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 03/15/2020
-ms.openlocfilehash: 796b37f98fed7e389fa71a15b5e6697a14db1a16
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: 1b9d593b0f0895e2ba75fae7ab7e78ea883c8907
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80397208"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521725"
 ---
 # <a name="microsoft-flow-connector-preview-usage-examples"></a>Microsoft Flow bağlayıcısı (Önizleme) kullanım örnekleri
 
@@ -24,8 +24,6 @@ Daha fazla bilgi için [Microsoft Flow bağlayıcısı (Önizleme)](flow.md)bak�
 * [Verileri Power BI veri kümesine itme](#push-data-to-power-bi-dataset)
 * [Koşullu sorgular](#conditional-queries)
 * [Birden çok Azure Veri Gezgini Akış grafiğini e-postayla gönder](#email-multiple-azure-data-explorer-flow-charts)
-* [Farklı kişilere farklı bir e-posta gönderme](#send-a-different-email-to-different-contacts)
-* [Özel bir HTML tablosu oluşturma](#create-a-custom-html-table)
 
 ## <a name="microsoft-flow-connector-and-sql"></a>Microsoft Flow konektörü ve SQL
 
@@ -101,23 +99,21 @@ Bu bilgileri pasta grafiği olarak görselleştirin ve ekibe e-posta yla gönder
 
 ## <a name="email-multiple-azure-data-explorer-flow-charts"></a>Birden çok Azure Veri Gezgini Akış grafiğini e-postayla gönder
 
-1. "Yineleme" tetikleyicisi ile yeni bir Akış oluşturun ve Akış aralığını ve frekansı tanımlayın. 
+1. Yineleme tetikleyicisi ile yeni bir Akış oluşturun ve Akış aralığını ve frekansı tanımlayın. 
 1. Bir veya daha fazla Kusto ile yeni bir adım ekleyin - Sorgu çalıştırın ve sonuç eylemlerini görselleştirin. 
 
     ![Akışta birkaç sorgu çalıştırma](./media/flow-usage/flow-severalqueries.png)
 1. Her Kusto - Sorguçalıştır ın ve sonucu görselleştirin, aşağıdaki alanları tanımlayın:
-    * Küme URL'si *(Küme Adı* alanında)
+    * Küme URL'si
     * Veritabanı Adı
-    * Sorgu ve Grafik Türü (HTML Tablo/ Pasta Grafiği/ Zaman Grafiği/ Çubuk Grafiği/ Özel Değer Girin).
+    * Sorgu ve Grafik Türü (HTML tablosu, pasta grafiği, zaman grafiği, çubuk grafiği veya özel bir değer girin).
 
     ![Birden çok ekile sonuçları görselleştirin](./media/flow-usage/flow-visualizeresultsmultipleattachments.png)
 
-    > [!IMPORTANT]
-    > Küme *Adı* alanlarına küme URL'sini girin.
-
-1. E-posta gönder eylemi ekleyin. 
-    * *Gövde* alanına, sorgunun görselleştirilmiş sonucunun e-postanın gövdesine dahil olması için gerekli gövdeyi ekleyin.
-    * E-postaya bir ek eklemek için Ek Adı ve Ek İçeriği ekleyin.
+1. E-posta gönder (v2) eylemi ekleyin: 
+    1. Gövde bölümünde kod görünümü simgesini seçin.
+    1. **Gövde** alanına, sorgunun görselleştirilmiş sonucunun e-postanın gövdesine dahil olması için gerekli BodyHtml'i ekleyin.
+    1. E-postaya bir ek eklemek için Ek Adı ve Ek İçeriği ekleyin.
     
     ![Birden çok eki e-postayla gönder](./media/flow-usage/flow-email-multiple-attachments.png)
 
@@ -128,68 +124,6 @@ Sonuçlar:
 [![](./media/flow-usage/flow-resultsmultipleattachments.png "Results of multiple attachments")](./media/flow-usage/flow-resultsmultipleattachments.png#lightbox)
 
 [![](./media/flow-usage/flow-resultsmultipleattachments2.png "Results of multiple attachments")](./media/flow-usage/flow-resultsmultipleattachments2.png#lightbox)
-
-## <a name="send-a-different-email-to-different-contacts"></a>Farklı kişilere farklı bir e-posta gönderme
-
-Farklı kişilere farklı özelleştirilmiş e-postalar göndermek için Microsoft Akışı'ndan yararlanabilirsiniz. E-posta adresleri ve e-posta içeriği Bir Kusto sorgusunun sonucu.
-
-Örnek:
-
-![Kusto sorgusu kullanarak dinamik e-posta](./media/flow-usage/flow-dynamicemailkusto.png)
-
-> [!IMPORTANT]
-> Küme *Adı* alanına küme URL'sini girin.
-
-![Akış eyleminde dinamik e-posta](./media/flow-usage/flow-dynamicemail.png)
-
-## <a name="create-a-custom-html-table"></a>Özel bir HTML tablosu oluşturma
-
-Özel HTML tablosu gibi özel HTML öğeleri oluşturmak ve kullanmak için Microsoft Akışı'ndan yararlanabilirsiniz.
-
-Aşağıdaki örnek, özel bir HTML tablosunun nasıl oluşturulabildiğini gösterir. HTML tablosunun satırları günlük düzeyine göre (Azure Veri Gezgini'ndekiyle aynı) göre renklendirilir.
-
-Benzer bir Akış oluşturmak için aşağıdaki yönergeleri izleyin:
-
-1. Yeni bir Kusto oluşturun - Sorgu çalıştırın ve sonuç eylemini listeleyin.
-
-    ![HTML tablosu nun sonuçlarını listele](./media/flow-usage/flow-listresultforhtmltable.png)
-
-> [!IMPORTANT]
-> Küme *Adı* alanına küme URL'sini girin.
-
-1. Sorgu sonuçlarını niçin döngüye sok ve HTML tablo gövdesini oluşturun: 
-    1. HTML dizesini tutmak için bir değişken oluşturmak için **Yeni adım'ı** seçin
-    1. **Eylem ekle'yi** ve Değişkenleri ara'yı seçin. 
-    1. Değişkenleri Seçin **- Değişkeni Başlatma**. 
-    1. Bir dize değişkenini aşağıdaki gibi başlatma:
-
-    ![Değişkeni başlatma](./media/flow-usage/flow-initializevariable.png)
-
-1. Sonuçlar üzerinde döngü:
-    1. **Yeni adım**'ı seçin.
-    1. **Eylem ekle**'yi seçin.
-    1. Değişkenleri ara. 
-    1. **Değişkenler'i seçin - String değişkenine ek.** 
-    1. Daha önce başharfe aldığınız değişken adını seçin ve sorgu sonuçlarını kullanarak HTML tablo satırlarını oluşturun. 
-    Sorgu sonuçlarını seçerken, Uygula her biri otomatik olarak eklenir.
-
-    Aşağıdaki örnekte, `if` ifade her satırın stilini tanımlamak için kullanılır:
-
-    ```if(equals(items('Apply_to_each')?['Level'], 'Warning'), 'Yellow', if(equals(items('Apply_to_each')?['Level'], 'Error'), 'red', 'white'))```
-
-    [![](./media/flow-usage/flow-createhtmltableloopcontent.png "Create HTML table loop content")](./media/flow-usage/flow-createhtmltableloopcontent.png#lightbox)
-
-1. Tam HTML içeriğini oluşturun: 
-    1. Her biri için Uygula dışında yeni bir eylem ekleyin. 
-    Aşağıdaki örnekte kullanılan eylem bir e-posta gönder'dir.
-    1. Önceki adımlardaki değişkeni kullanarak HTML tablonuzu tanımlayın. 
-    1. Bir e-posta gönderiyorsanız, **gelişmiş seçenekleri göster'i** seçin ve HTML altında **Evet'i**seçin.
-
-    ![Özel HTML tablo e-postası](./media/flow-usage/flow-customhtmltablemail.png)
-
-Sonuç:
-
-![Özel HTML tablo e-posta sonucu](./media/flow-usage/flow-customhtmltableresult.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

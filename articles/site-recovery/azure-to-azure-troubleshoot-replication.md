@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: troubleshooting
 ms.date: 8/2/2019
-ms.openlocfilehash: 67b68cc8a1db4a058675dc51fb3805093c455908
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: c5389c064e137358670aecabe97f1cea38dfbcbf
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80276674"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549267"
 ---
 # <a name="troubleshoot-replication-in-azure-vm-disaster-recovery"></a>Azure VM olağanüstü durum kurtarmada sorun giderme çoğaltma
 
@@ -81,7 +81,7 @@ Gecikmeyle ilgili bir sorun olup olmadığını kontrol etmek için [AzCopy'i](h
 
 ### <a name="network-connectivity"></a>Ağ bağlantısı
 
-Site Kurtarma çoğaltma çalışması için, belirli URL'lere veya IP aralıklarına giden bağlantı sağlamak için VM gerekir. VM'nizi bir güvenlik duvarının arkasında olabilir veya giden bağlantıyı denetlemek için ağ güvenlik grubu (NSG) kurallarını kullanabilirsiniz. Bu ysa, sorunlarla karşılaşabilirsiniz. Tüm URL'lerin bağlı olduğundan emin olmak [için, Site Kurtarma URL'leri için Giden bağlantıya](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-ip-address-ranges)bakın.
+Site Kurtarma çoğaltma çalışması için, belirli URL'lere veya IP aralıklarına giden bağlantı sağlamak için VM gerekir. VM'nizi bir güvenlik duvarının arkasında olabilir veya giden bağlantıyı denetlemek için ağ güvenlik grubu (NSG) kurallarını kullanabilirsiniz. Bu ysa, sorunlarla karşılaşabilirsiniz. Tüm URL'lerin bağlı olduğundan emin olmak [için, Site Kurtarma URL'leri için Giden bağlantıya](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-urls)bakın.
 
 ## <a name="error-id-153006---no-app-consistent-recovery-point-available-for-the-vm-in-the-past-x-minutes"></a>Hata Kimliği 153006 - Geçmiş "X" dakikalarında VM için uygulama tutarlı kurtarma noktası yok
 

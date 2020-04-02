@@ -5,14 +5,14 @@ author: roygara
 ms.service: storage
 ms.subservice: files
 ms.topic: conceptual
-ms.date: 03/24/2020
+ms.date: 04/01/2020
 ms.author: rogarana
-ms.openlocfilehash: b7820bc3d1b14e87064e4120edcffb6762041db9
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: dbcc204f71a9bfe4f48f51ab6af36014e130cb7f
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80411478"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548944"
 ---
 # <a name="enable-active-directory-authentication-over-smb-for-azure-file-shares"></a>Azure dosya paylaşımları için SMB üzerinden Etkin Dizin kimlik doğrulamasını etkinleştirme
 
@@ -63,11 +63,7 @@ Azure dosya paylaşımları için AD kimlik doğrulamasını etkinleştirmeden �
 
 ## <a name="regional-availability"></a>Bölgesel kullanılabilirlik
 
-Azure Files AD kimlik doğrulaması (önizleme) [çoğu ortak bölgede](https://azure.microsoft.com/global-infrastructure/regions/)kullanılabilir.
-
-Azure Files AD kimlik doğrulaması şu anda kullanılamıyor:
-- Batı ABD
-
+Azure Files AD kimlik doğrulaması (önizleme) [Genel Bulut'taki tüm bölgelerde](https://azure.microsoft.com/global-infrastructure/regions/)kullanılabilir.
 
 ## <a name="workflow-overview"></a>İş akışına genel bakış
 

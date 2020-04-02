@@ -3,7 +3,7 @@ title: Microsoft Azure Veri Şifreleme-at-Rest | Microsoft Dokümanlar
 description: Bu makalede, microsoft Azure veri şifrelemesi dinlenme sırasında genel bir bakış, genel özellikler ve genel hususlar.
 services: security
 documentationcenter: na
-author: barclayn
+author: msmbaldwin
 manager: barbkess
 editor: TomSh
 ms.assetid: 9dcb190e-e534-4787-bf82-8ce73bf47dba
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/23/2020
-ms.author: barclayn
-ms.openlocfilehash: d8aa643dcf9734ac983c9c4c0d53bda24ce4688d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: mbaldwin
+ms.openlocfilehash: 42b83963dc4996a7347d57be712451086fa79b26
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80125078"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548619"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure Veri Şifreleme-at-Rest
 
@@ -125,13 +125,13 @@ Dinlenme modellerindeki sunucu tarafı şifrelemesinin her biri, anahtar yöneti
 
 #### <a name="server-side-encryption-using-service-managed-keys"></a>Hizmet yönetilen anahtarları kullanarak sunucu tarafı şifreleme
 
-Birçok müşteri için temel gereksinim, verilerin istirahat olduğunda şifrelendiğinden emin olmaktır. Hizmet tarafından yönetilen Keys'i kullanarak sunucu tarafı şifrelemesi, müşterilerin şifreleme için belirli kaynağı (Depolama Hesabı, SQL DB, vb.) işaretlemesine izin vererek ve anahtar verme, döndürme ve Microsoft'a yedekleme gibi tüm temel yönetim yönlerini bırakarak bu modeli etkinleştiriyor . Şifrelemeyi uzaktan destekleyen çoğu Azure Hizmeti genellikle bu şifreleme anahtarlarını Azure'a devre dışı bıraketme modelini destekler. Azure kaynak sağlayıcısı anahtarları oluşturur, güvenli depolama alanına yerleştirir ve gerektiğinde alır. Bu, hizmetin anahtarlara tam erişime sahip olduğu ve hizmetin kimlik bilgisi yaşam döngüsü yönetimi üzerinde tam denetime sahip olduğu anlamına gelir.
+Birçok müşteri için temel gereksinim, verilerin istirahat olduğunda şifrelendiğinden emin olmaktır. Hizmet tarafından yönetilen Keys'i kullanarak sunucu tarafı şifrelemesi, müşterilerin şifreleme için belirli kaynağı (Depolama Hesabı, SQL DB, vb.) işaretlemesine izin vererek ve anahtar verme, döndürme ve Microsoft'a yedekleme gibi tüm temel yönetim yönlerini bırakarak bu modeli etkinleştirmektedir. Şifrelemeyi uzaktan destekleyen çoğu Azure Hizmeti genellikle bu şifreleme anahtarlarını Azure'a devre dışı bıraketme modelini destekler. Azure kaynak sağlayıcısı anahtarları oluşturur, güvenli depolama alanına yerleştirir ve gerektiğinde alır. Bu, hizmetin anahtarlara tam erişime sahip olduğu ve hizmetin kimlik bilgisi yaşam döngüsü yönetimi üzerinde tam denetime sahip olduğu anlamına gelir.
 
 ![Yönetilen](./media/encryption-atrest/azure-security-encryption-atrest-fig4.png)
 
 Bu nedenle, hizmet tarafından yönetilen anahtarları kullanarak sunucu tarafı şifreleme, müşteriye düşük ek yükü olan bir şekilde şifreleme gereksinimini hızlı bir şekilde giderer. Kullanılabilir olduğunda bir müşteri genellikle hedef abonelik ve kaynak sağlayıcısı için Azure portalını açar ve verilerin şifrelenmesini istediğinizi belirten bir kutuyu denetler. Bazı Kaynak Yöneticileri'nde hizmet yönetilen anahtarlara sahip sunucu tarafı şifrelemesi varsayılan olarak açıktır.
 
-Microsoft tarafından yönetilen anahtarlarla sunucu tarafı şifrelemesi, hizmetin anahtarları depolamak ve yönetmek için tam erişime sahip olduğu anlamına gelmez. Bazı müşteriler daha fazla güvenlik elde ettiklerini düşündükleri için anahtarları yönetmek isteseler de, bu modeli değerlendirirken özel bir anahtar depolama çözümüyle ilişkili maliyet ve risk göz önünde bulundurulmalıdır. Çoğu durumda, bir kuruluş, şirket içi bir çözümün kaynak kısıtlamalarının veya risklerinin, dinlenme tuşlarındaki şifrelemenin bulut yönetimi riskinden daha büyük olabileceğini belirleyebilir.  Ancak, bu model, şifreleme anahtarlarının oluşturulmasını veya yaşam döngüsünü denetlemesi veya bir hizmetin şifreleme anahtarlarını farklı personelin hizmeti yönetenlerden (diğer bir şekilde, ayrımcılık) yönetmesi için gereksinimleri olan kuruluşlar için yeterli olmayabilir hizmet için genel yönetim modelinden anahtar yönetimi).
+Microsoft tarafından yönetilen anahtarlarla sunucu tarafı şifrelemesi, hizmetin anahtarları depolamak ve yönetmek için tam erişime sahip olduğu anlamına gelmez. Bazı müşteriler daha fazla güvenlik elde ettiklerini düşündükleri için anahtarları yönetmek isteseler de, bu modeli değerlendirirken özel bir anahtar depolama çözümüyle ilişkili maliyet ve risk göz önünde bulundurulmalıdır. Çoğu durumda, bir kuruluş, şirket içi bir çözümün kaynak kısıtlamalarının veya risklerinin, dinlenme tuşlarındaki şifrelemenin bulut yönetimi riskinden daha büyük olabileceğini belirleyebilir.  Ancak, bu model, şifreleme anahtarlarının oluşturulmasını veya yaşam döngüsünü denetlemesi veya bir hizmetin şifreleme anahtarlarını yönetmesi için hizmeti yönetenlerden farklı personelin (diğer bir şekilde, hizmetin genel yönetim modelinden anahtar yönetiminin ayrılması) gereksinimi olan kuruluşlar için yeterli olmayabilir.
 
 ##### <a name="key-access"></a>Anahtar erişimi
 
@@ -287,8 +287,8 @@ Azure SQL Veritabanı verilerinin istemci tarafı şifrelemesi [Her Zaman Şifre
 | Sanal Makine Ölçek Seti        | Evet                | Evet, RSA 2048-bit  | -                  |
 | SAP HANA                         | Evet                | Evet, RSA 2048-bit  | -                  |
 | App Service                      | Evet                | Evet                | -                  |
-| Automation                       | Evet                | Evet                | -                  |
-| Azure Portalı                     | Evet                | Evet                | -                  |
+| Otomasyon                       | Evet                | Evet                | -                  |
+| Azure Portal                     | Evet                | Evet                | -                  |
 | Logic Apps                       | Evet                | Evet                | -                  |
 | Azure Yönetilen Uygulamalar       | Evet                | Evet                | -                  |
 | Service Bus                      | Evet                | Evet                | -                  |

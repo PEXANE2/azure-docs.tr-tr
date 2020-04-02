@@ -9,26 +9,29 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/31/2019
+ms.date: 03/31/2020
 ms.author: iainfou
-ms.openlocfilehash: 7abbdf03e85f425f65a45e6640b82529c2b9c84f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4b95a3e32bc2b8df3d02453e42fa9bbc3719134b
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77614062"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80519119"
 ---
 # <a name="create-an-organizational-unit-ou-in-an-azure-ad-domain-services-managed-domain"></a>Azure AD Etki Alanı Hizmetleri yönetilen etki alanında Kuruluş Birimi (OU) oluşturma
 
 Etkin Dizin Etki Alanı Hizmetleri'ndeki (AD DS) kuruluş birimleri (OSB), kullanıcı hesapları, hizmet hesapları veya bilgisayar hesapları gibi nesneleri mantıksal olarak gruplandırmanıza izin verir. Daha sonra belirli İş'lere yöneticiler atayabilir ve hedeflenen yapılandırma ayarlarını zorlamak için grup ilkesi uygulayabilirsiniz.
 
-Azure AD DS yönetilen etki alanları iki yerleşik OS- *AADDC Bilgisayar* ve *AADDC Kullanıcıları*içerir. *AADDC Computers* OU, yönetilen etki alanına birleştirilmiş tüm bilgisayarlar için bilgisayar nesneleri içerir. *AADDC Users* OU, Azure AD kiracısından senkronize edilen kullanıcıları ve grupları içerir. Azure AD DS kullanan iş yükleri oluşturup çalıştırırken, uygulamaların kimlik doğrulaması için hizmet hesapları oluşturmanız gerekebilir. Bu hizmet hesaplarını düzenlemek için, azure AD DS yönetilen etki alanında genellikle özel bir OU oluşturur ve ardından bu OU içinde hizmet hesapları oluşturursunuz.
+Azure AD DS yönetilen etki alanları aşağıdaki iki yerleşik OS'leri içerir:
+
+* *AADDC Computers* - yönetilen etki alanına birleştirilmiş tüm bilgisayarlar için bilgisayar nesneleri içerir.
+* *AADDC Kullanıcıları* - Azure AD kiracısından senkronize edilmiş kullanıcıları ve grupları içerir.
+
+Azure AD DS kullanan iş yükleri oluşturup çalıştırırken, uygulamaların kimlik doğrulaması için hizmet hesapları oluşturmanız gerekebilir. Bu hizmet hesaplarını düzenlemek için, azure AD DS yönetilen etki alanında genellikle özel bir OU oluşturur ve ardından bu OU içinde hizmet hesapları oluşturursunuz.
 
 Karma bir ortamda, şirket içi AD DS ortamında oluşturulan OS'ler Azure AD DS ile eşitlenmez. Azure AD DS yönetilen etki alanları düz bir OU yapısı kullanır. Tüm kullanıcı hesapları ve grupları, farklı şirket içi etki alanlarından veya ormanlardan senkronize edilmiş olsa bile, burada hiyerarşik bir OU yapısı yapılandırmış olsanız bile *AADDC Kullanıcıları* konteynerinde depolanır.
 
 Bu makalede, Azure AD DS yönetilen etki alanınızda nasıl ou oluşturabileceğiniz gösterilmektedir.
-
-[!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
@@ -68,19 +71,19 @@ Azure AD DS yönetilen bir etki alanında özel OSB oluşturduğunuzda, kullanı
 1. OS B'ler oluşturmak ve yönetmek için, yönetim araçları listesinden **Active Directory Administrative Center'ı** seçin.
 1. Sol bölmede, *aaddscontoso.com*gibi Azure AD DS yönetilen etki alanınızı seçin. Varolan İŞ VE kaynakların listesi gösterilir:
 
-    ![Etkin Dizin Yönetim Merkezi'nde Azure AD DS yönetilen etki alanınızı seçin](./media/active-directory-domain-services-admin-guide/create-ou-adac-overview.png)
+    ![Etkin Dizin Yönetim Merkezi'nde Azure AD DS yönetilen etki alanınızı seçin](./media/create-ou/create-ou-adac-overview.png)
 
 1. **Görevler** bölmesi Active Directory Administrative Center'ın sağ tarafında gösterilir. *etki*alanı altında, aaddscontoso.com gibi, Yeni > **Kuruluş Birimi**seçin.
 
-    ![Active Directory Administrative Center'da yeni bir OU oluşturma seçeneğini seçin](./media/active-directory-domain-services-admin-guide/create-ou-adac-new-ou.png)
+    ![Active Directory Administrative Center'da yeni bir OU oluşturma seçeneğini seçin](./media/create-ou/create-ou-adac-new-ou.png)
 
 1. Kuruluş **Birimi Oluştur** iletişim kutusunda, *MyCustomOu*gibi yeni OU için bir **Ad** belirtin. Hizmet hesapları için *Özel OU*gibi OU için kısa bir açıklama sağlayın. İstenirse, OU için **Yönetilen** Alan'ı da ayarlayabilirsiniz. Özel OU oluşturmak için **Tamam'ı**seçin.
 
-    ![Active Directory Administrative Center'dan özel bir OU oluşturma](./media/active-directory-domain-services-admin-guide/create-ou-dialog.png)
+    ![Active Directory Administrative Center'dan özel bir OU oluşturma](./media/create-ou/create-ou-dialog.png)
 
 1. Active Directory Administrative Center'da, özel OU artık listelenir ve kullanılabilir:
 
-    ![Active Directory Administrative Center'da kullanılmak üzere özel OU](./media/active-directory-domain-services-admin-guide/create-ou-done.png)
+    ![Active Directory Administrative Center'da kullanılmak üzere özel OU](./media/create-ou/create-ou-done.png)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

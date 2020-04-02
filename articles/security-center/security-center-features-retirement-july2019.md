@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: article
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: fda49ae31d7598497a3128a846a3f4e12e84ffe1
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 1f923db5c730f6dec15f4fc211ab7acbd009ac7f
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80435903"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521426"
 ---
 # <a name="retirement-of-security-center-features-july-2019"></a>Güvenlik Merkezi'nin emekliliği özellikleri (Temmuz 2019)
 
@@ -169,7 +169,7 @@ Mevcut bağlı çözümleriniz varsa, Azure Sentinel'e geçmenizi öneririz.
 
 Azure Güvenlik Merkezi, işletim sistemini güçlendirme amacıyla [150'den fazla önerilen kuraldan](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335) oluşan bir küme uygulayarak güvenlik yapılandırmalarını izler. Bu kurallar güvenlik duvarları, denetim, parola ilkeleri ve daha fazlası ile ilgilidir. Bir makinenin yapılandırmasında güvenlik açığı varsa Güvenlik Merkezi bu konuyla ilgili bir güvenlik önerisi oluşturur. [Güvenlik yapılandırmasını edit ekranı,](https://docs.microsoft.com/azure/security-center/security-center-customize-os-security-config) müşterilerin Güvenlik Merkezi'ndeki varsayılan işletim sistemi güvenlik yapılandırmasını özelleştirmelerine olanak tanır.
 
-Bu önizleme özelliğini kullanımdan aldık. Güvenlik yapılandırmalarınızı emeklilik tarihinden sonra varsayılan değerlerine sıfırlamak [için, bunu aşağıdaki yönergeleri](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20samples/Reset%20security%20configurations%20customization)kullanarak API veya Powershell aracılığıyla yapın.
+Bu önizleme özelliğini kullanımdan aldık. Güvenlik yapılandırmalarınızı emeklilik tarihinden sonra varsayılan değerlerine sıfırlamak [için, bunu aşağıdaki yönergeleri](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20scripts/Reset%20security%20configurations%20customization)kullanarak API veya Powershell aracılığıyla yapın.
 
 ![Güvenlik yapılandırmalarını düzenleme][17]
 

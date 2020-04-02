@@ -12,12 +12,12 @@ ms.date: 10/22/2018
 ms.author: mimart
 ms.reviewer: arvindh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5bd305d2943d1b12756171748f28d32300081d71
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 42337fe958a881ee263d16c866dda69f13fe09c1
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75443403"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80519619"
 ---
 # <a name="configure-how-end-users-consent-to-applications"></a>Son kullanıcıların uygulamalara nasıl onay verme sini yapılandırın
 
@@ -143,9 +143,53 @@ Grup sahiplerinin sahip oldukları gruplar için kuruluşunuz verilerine erişen
     }
     ```
 
+## <a name="configure-risk-based-step-up-consent"></a>Risk tabanlı adım adım onay belgesini yapılandırma
+
+Risk tabanlı adım adım onay, yasa dışı [onay talepleri](https://docs.microsoft.com/microsoft-365/security/office-365-security/detect-and-remediate-illicit-consent-grants)yapan kötü amaçlı uygulamalara kullanıcı maruziyetini azaltmaya yardımcı olur. Microsoft riskli bir son kullanıcı onayı isteği algılarsa, bu isteğyönetici onayı için bir "adım" gerektirir. Bu özellik varsayılan olarak etkinleştirilir, ancak yalnızca son kullanıcı onayı etkinleştirildiğinde bir davranış değişikliğine neden olur.
+
+Riskli bir onay isteği algılandığında, onay istemi yönetici onayı gerektiğini belirten bir ileti görüntüler. Yönetici [onayı isteği iş akışı](configure-admin-consent-workflow.md) etkinleştirilirse, kullanıcı isteği doğrudan onay isteminden daha fazla inceleme için bir yöneticiye gönderebilir. Etkinleştirilmezse, aşağıdaki ileti görüntülenir:
+
+* **AADSTS90094:** &lt;clientAppDisplayName'nin&gt; kuruluşunuzdaki kaynaklara erişmek için yalnızca bir yöneticinin verebileceği kaynaklara erişmesi için izin alması gerekir. Kullanabilmek için önce lütfen yöneticiden bu uygulamaya izin vermesini isteyin.
+
+Bu durumda, bir denetim olayı da "Uygulama Yönetimi", "Başvuru ya da onay" faaliyet türü ve "Riskli uygulama tespit" Durum Nedeni kategorisi ile günlüğe kaydedilir.
+
+> [!IMPORTANT]
+> Yöneticiler, özellikle Microsoft risk algıladığında, onaylamadan önce [tüm onay isteklerini](manage-consent-requests.md#evaluating-a-request-for-tenant-wide-admin-consent) dikkatle değerlendirmelidir.
+
+### <a name="disable-or-re-enable-risk-based-step-up-consent-using-powershell"></a>PowerShell'i kullanarak risk tabanlı adım adım onayı devre dışı veya yeniden etkinleştirme
+
+Microsoft'un riski algıladığı durumlarda gereken yönetici onayı adımlarını devre dışı etmek veya daha önce devre dışı bırakılmışsa yeniden etkinleştirmek için Azure AD PowerShell Preview modülünü[(AzureADPreview)](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview)kullanabilirsiniz.
+
+Bu [PowerShell kullanarak grup sahibi onayı yapılandırmak](#configure-group-owner-consent-using-powershell)için yukarıda gösterildiği gibi aynı adımları kullanarak yapılabilir , ancak farklı bir ayar değeri yerine. Adımlarda üç fark vardır: 
+
+1. Risk tabanlı adım adım onayı için ayar değerlerini anlayın:
+
+    | Ayar       | Tür         | Açıklama  |
+    | ------------- | ------------ | ------------ |
+    | _BlockUserConsentForriskyApps_   | Boole |  Riskli bir istek algılandığında kullanıcı onayına engellenip engellenmeyeceğini belirten bayrak. |
+
+2. Adım 3'te aşağıdaki değeri değiştirin:
+
+    ```powershell
+    $riskBasedConsentEnabledValue = $settings.Values | ? { $_.Name -eq "BlockUserConsentForRiskyApps" }
+    ```
+3. 5. adımda aşağıdakilerden birini değiştirin:
+
+    ```powershell
+    # Disable risk-based step-up consent entirely
+    $riskBasedConsentEnabledValue.Value = "False"
+    ```
+
+    ```powershell
+    # Re-enable risk-based step-up consent, if disabled previously
+    $riskBasedConsentEnabledValue.Value = "True"
+    ```
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 [Yönetici onayı iş akışını yapılandırma](configure-admin-consent-workflow.md)
+
+[Başvurulara izin verme nin nasıl yönetilenve onay isteklerini nasıl değerlendireceklerini öğrenin](manage-consent-requests.md)
 
 [Kiracı genelinde yönetici onayı verme](grant-admin-consent.md)
 

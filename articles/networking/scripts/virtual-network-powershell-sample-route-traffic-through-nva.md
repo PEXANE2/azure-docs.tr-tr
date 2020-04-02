@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell betiği örneği - Ağ sanal gereci aracılığıyla trafiği yönlendirme | Microsoft Docs
+title: Azure PowerShell komut dosyası örneği - Trafiği ağ sanal cihazı üzerinden yönlendirme
 description: Azure PowerShell betiği örneği - Güvenlik duvarı ağ sanal gereci aracılığıyla trafiği yönlendirme.
 services: virtual-network
 documentationcenter: virtual-network
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 05/16/2017
 ms.author: kumud
-ms.openlocfilehash: b31714e62ba0e7a0e4882d9b9fa830b3a14fe855
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 98509399c1f4bd66640152e8a9cb02cf396a1b62
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73888519"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521464"
 ---
 # <a name="route-traffic-through-a-network-virtual-appliance"></a>Bir ağ sanal gereci yoluyla trafiği yönlendirme
 

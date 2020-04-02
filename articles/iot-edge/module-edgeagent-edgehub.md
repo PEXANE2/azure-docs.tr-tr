@@ -8,12 +8,12 @@ ms.date: 06/17/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 4684daf2a1095a40c478170be37edcae788868ef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f2d6603c264c9da3f2700f460a8c61b24681fac6
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79284843"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546198"
 ---
 # <a name="properties-of-the-iot-edge-agent-and-iot-edge-hub-module-twins"></a>IoT Edge aracısının ve IoT Edge hub modülü ikizlerinin özellikleri
 
@@ -55,6 +55,7 @@ IoT Edge aracısının modül ikizi çağrılır `$edgeAgent` ve bir aygıtta ç
 | Modül. {moduleId}.status | {"çalışan" \| "durduruldu"} | Evet |
 | Modül. {moduleId}.restartPolicy | {"never" \| "on-failure" \| "on-sağlıksız" \| "her zaman"} | Evet |
 | Modül. {moduleId}.imagePullPolicy | {"on-create" \| "never"} | Hayır |
+| Modül. {moduleId}.env | Modüle geçirilen ortam değişkenlerinin listesi. Biçimi alır`"<name>": {"value": "<value>"}` | Hayır |
 | Modül. {moduleId}.settings.image | Uri modül görüntüsüne. | Evet |
 | Modül. {moduleId}.settings.createOptions | Modül kapsayıcısının oluşturulması için seçenekleri içeren dizilmiş Bir JSON. [Docker oluşturma seçenekleri](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) | Hayır |
 | Modül. {moduleId}.configuration.id | Bu modülü dağıtan dağıtımın kimliği. | IoT Hub, bildirim dağıtım kullanılarak uygulandığında bu özelliği ayarlar. Dağıtım bildiriminin bir parçası değil. |

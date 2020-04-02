@@ -2,20 +2,20 @@
 title: Azure Anahtar Kasası için güvenlik önerileri
 description: Azure Key Vault için güvenlik önerileri. Bu kılavuzun uygulanması, paylaşılan sorumluluk modelimizde açıklandığı gibi güvenlik yükümlülüklerinizin yerine getirilmesine yardımcı olacaktır
 services: key-vault
-author: barclayn
+author: msmbaldwin
 manager: rkarlin
 ms.service: key-vault
 ms.subservice: general
 ms.topic: article
 ms.date: 09/30/2019
-ms.author: barclayn
+ms.author: mbaldwin
 ms.custom: security-recommendations
-ms.openlocfilehash: 9fd41ae9b61a9c74fd5d99dd71199cfde06f5cb2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d18dca2d7c44ac9db5ebabc5cc10f2f0b3f2c069
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78192379"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546370"
 ---
 # <a name="security-recommendations-for-azure-key-vault"></a>Azure Anahtar Kasası için güvenlik önerileri
 
@@ -46,7 +46,7 @@ Bu makalede yer alan önerilerden bazıları Azure Güvenlik Merkezi tarafından
  Key Vault'taki tanılama günlükleri etkinleştirilmelidir | Günlükleri etkinleştirin ve bir yıla kadar saklayın. Bu, bir güvenlik olayı meydana geldiğinde veya ağınız tehlikeye girdiğinde, araştırma amacıyla etkinlik izlerini yeniden oluşturmanıza olanak tanır. | [Evet](../security-center/security-center-identity-access.md) |
 | Azure Anahtar kasa günlüklerinize kimlerin erişebileceğini kısıtlama | [Key Vault günlükleri,](key-vault-logging.md) kasanızın oluşturulması veya silinmesi, anahtarlar, sırlar gibi kasanızda gerçekleştirilen faaliyetler le ilgili bilgileri kaydeder ve bir soruşturma sırasında kullanılabilir |  - |
 
-## <a name="networking"></a>Ağ Oluşturma
+## <a name="networking"></a>Ağ
 
 | Öneri | Yorumlar | Güvenlik Merkezi |
 |-|----|--|

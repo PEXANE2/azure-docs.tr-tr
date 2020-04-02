@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/08/2020
-ms.openlocfilehash: 9f694f3f0ec740d0a4e8dc4e6bf8845c408802c8
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 61a85b2554bbd69541b3081f72525d2b7deed625
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75897851"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529227"
 ---
 # <a name="import-or-export-an-azure-sql-database-without-allowing-azure-services-to-access-the-server"></a>Azure hizmetlerinin sunucuya erişmesine izin vermeden azure SQL veritabanını alma veya dışa aktarma
 
@@ -61,7 +61,7 @@ Aşağıdaki adımlar, uzak bir masaüstü bağlantısı kullanarak sanal makine
 
 4. **Connect'i sanal makine formuna** kapatın.
 5. VM'nize bağlanmak için indirilen RDP dosyasını açın.
-6. İstendiğinde **Bağlan'ı**seçin. Mac bilgisayarlarda, Mac App Store’dan bu [Uzak Masaüstü İstemcisi](https://itunes.apple.com/us/app/microsoft-remote-desktop/id715768417?mt=12) gibi bir RDP istemcisi indirmeniz gerekir.
+6. İstendiğinde **Bağlan'ı**seçin. Mac bilgisayarlarda, Mac App Store’dan bu [Uzak Masaüstü İstemcisi](https://apps.apple.com/app/microsoft-remote-desktop-10/id1295203466?mt=12) gibi bir RDP istemcisi indirmeniz gerekir.
 
 7. Sanal makine oluştururken belirttiğiniz kullanıcı adı ve parolayı girin ve **ardından Tamam'ı**seçin.
 

@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/09/2018
 ms.author: kevidal
-ms.openlocfilehash: 2c1cb755b62812336a306994f6820573130815e6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 641297ea74a08dea163cf768b8e9b245348824a4
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80288368"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80544292"
 ---
 # <a name="saas-applications-offer-publishing-guide"></a>SaaS Uygulaması Teklifi Yayımlama Kılavuzu
 
@@ -25,8 +25,8 @@ SaaS uygulamaları her iki Azure Storefronts mevcuttur Aşağıdaki tablo geçer
 
 | Storefront seçeneği | Liste | Deneme/İşleme |  
 | --- | --- | --- |  
-| AppSource | Evet (Bana Ulaşın) | Evet (PowerBI/Dynamics) |
-| Azure pazar yeri | Hayır | Evet (SaaS Uygulamaları) |   
+| AppSource | Evet | Evet |
+| Azure pazar yeri | Hayır | Evet |   
 
 **Liste:**  Listeleme yayımlama seçeneği, Bir İletişim Beni teklif türünden oluşur ve Deneme veya İşlem düzeyinde bir katılım mümkün olmadığında kullanılır. Bu yaklaşımın yararı, pazarda bir çözüme sahip yayıncıların işinizi artırmak için fırsatlara dönüştürülebilecek müşteri adaylarını hemen almaya başlamalarını sağlamasıdır.  
 **Deneme/İşlem:**  Müşteri, çözümünüz için doğrudan bir deneme sürümü satın alma veya deneme isteğinde bulunma seçeneğine sahiptir. Deneme deneyimi sağlamak, müşterilere sunulan etkileşim düzeyini artırır ve müşterilerin satın almadan önce çözümünüzü keşfetmesini sağlar. Deneme deneyimi ile, vitrinlerde daha fazla promosyon şansınız olacak ve müşteri katılımlarından daha fazla ve daha zengin müşteri adayları beklemelisiniz. Denemeler, en azından deneme süresi boyunca ücretsiz destek içermelidir.  
@@ -95,7 +95,7 @@ Buna ek olarak, Azure Etkin Dizini, Hizmet Güncelleştirmelerini denetlemek iç
 
 ## <a name="using-azure-active-directory-to-enable-trials"></a>Denemeleri etkinleştirmek için Azure Etkin Dizini kullanma  
 
-Microsoft, Azure AD ile tüm Market kullanıcılarının kimliğini doğrular, bu nedenle kimlik doğrulaması yapılan bir kullanıcı Market'teki Deneme kaydınızı tıkladığında ve Deneme ortamınıza yönlendirildiğinde, kullanıcıyı bir deneme sürümüne gerek kalmadan doğrudan Deneme sürümüne sağlayabilirsiniz ek oturum açma adımı. Uygulamanızın kimlik doğrulama sırasında Azure AD'den aldığı belirteç, uygulamanızda bir kullanıcı hesabı oluşturmak için kullanabileceğiniz değerli kullanıcı bilgilerini içerir ve böylece sağlama deneyimini otomatikleştirebilmenizi ve dönüşüm olasılığını artırabilirsiniz. Belirteç hakkında daha fazla bilgi için [Örnek Belirteçler'e](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims) bakın.
+Microsoft, Azure AD ile tüm Market kullanıcılarının kimliğini doğrular, böylece kimlik doğrulaması yapılan bir kullanıcı Market'teki Deneme kaydınızı tıkladığında ve Deneme ortamınıza yönlendirildiğinde, kullanıcıyı ek bir oturum açma adımı gerektirmeden doğrudan Deneme Sürümü'ne sağlayabilirsiniz. Uygulamanızın kimlik doğrulama sırasında Azure AD'den aldığı belirteç, uygulamanızda bir kullanıcı hesabı oluşturmak için kullanabileceğiniz değerli kullanıcı bilgilerini içerir ve böylece sağlama deneyimini otomatikleştirebilmenizi ve dönüşüm olasılığını artırabilirsiniz. Belirteç hakkında daha fazla bilgi için [Örnek Belirteçler'e](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims) bakın.
 
 Uygulamanızda veya Deneme'nizde 1 tıklamayla kimlik doğrulamasını etkinleştirmek için Azure AD'yi kullanmak aşağıdakileri yapar:  
 * Pazardan Deneme'ye müşteri deneyimini kolaylaştırır.  

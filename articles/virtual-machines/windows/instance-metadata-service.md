@@ -11,15 +11,15 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 02/24/2020
+ms.date: 03/30/2020
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: 0fbe27fb5ed61cc187c679f9cb7420f0b444aa60
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f351bba9cd474eab0774efa5ffbd2b24499d105b
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77615929"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520962"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure Örneği Meta veri hizmeti
 
@@ -451,7 +451,7 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/meta
 
 Aşağıdaki API'ler meta veri bitiş noktası üzerinden kullanılabilir:
 
-Veri | Açıklama | Tanıtılan Sürüm
+Veriler | Açıklama | Tanıtılan Sürüm
 -----|-------------|-----------------------
 kanıtlanmıştır | Bkz. [Test Edilen Veriler](#attested-data) | 2018-10-01
 identity | Azure kaynakları için yönetilen kimlikler. Erişim [jetonu edinin](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) bkz. | 2018-02-01
@@ -465,7 +465,7 @@ Aşağıdaki İşlem kategorileri Örnek API'de kullanılabilir:
 > [!NOTE]
 > Meta veri bitiş noktası aracılığıyla, aşağıdaki kategorilere instance/compute aracılığıyla erişilir
 
-Veri | Açıklama | Tanıtılan Sürüm
+Veriler | Açıklama | Tanıtılan Sürüm
 -----|-------------|-----------------------
 azÇevre | VM'nin çalıştığı Azure Ortamı | 2018-10-01
 Customdata | Bu özellik şu anda devre dışı bırakılmıştır ve kullanılabilir olduğunda bu belgeyi güncelleştireceğiz | 2019-02-01
@@ -498,7 +498,7 @@ Aşağıdaki Ağ kategorileri Örnek API'de kullanılabilir:
 > [!NOTE]
 > Meta veri bitiş noktası aracılığıyla, aşağıdaki kategorilere örnek/ağ/arayüz üzerinden erişilir
 
-Veri | Açıklama | Tanıtılan Sürüm
+Veriler | Açıklama | Tanıtılan Sürüm
 -----|-------------|-----------------------
 ipv4/privateIpAddress | VM'nin yerel IPv4 adresi | 2017-04-02
 ipv4/publicIpAddress | VM'nin genel IPv4 adresi | 2017-04-02
@@ -820,7 +820,7 @@ Verification successful
 }
 ```
 
-Veri | Açıklama
+Veriler | Açıklama
 -----|------------
 Nonce | Kullanıcı isteğe bağlı dize isteği ile birlikte verilir. İstekte nonce sağlanmışsa, geçerli UTC zaman damgası döndürülür
 plan | Bir Azure Marketi Görüntüsünde VM [planı,](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) ad, ürün ve yayımcı içerir
@@ -856,11 +856,15 @@ openssl x509 -noout -issuer -in signer.pem
 openssl x509 -noout -subject -in intermediate.pem
 # Verify the issuer for the intermediate certificate
 openssl x509 -noout -issuer -in intermediate.pem
-# Verify the certificate chain
+# Verify the certificate chain, for Azure China 21Vianet the intermediate certificate will be from DigiCert Global Root CA
 openssl verify -verbose -CAfile /etc/ssl/certs/Baltimore_CyberTrust_Root.pem -untrusted intermediate.pem signer.pem
 ```
 
-Doğrulama sırasında ağ kısıtlamaları nedeniyle ara sertifikanın indirilemediği durumlarda, ara sertifika sabitlenebilir. Ancak Azure, standart PKI uygulamasına göre sertifikaları devreder. Sabitlenmiş sertifikaların devri yapıldığında güncelleştirilmeleri gerekir. Ara sertifikayı güncelleştirmek için bir değişiklik planlandığında, Azure blogu güncelleştirilir ve Azure müşterileri bildirilir. Ara sertifikalara [buradan](https://www.microsoft.com/pki/mscorp/cps/default.htm)ulabilirsiniz. Bölgelerin her biri için ara sertifikalar farklı olabilir.
+Doğrulama sırasında ağ kısıtlamaları nedeniyle ara sertifikanın indirilemediği durumlarda, ara sertifika sabitlenebilir. Ancak Azure, standart PKI uygulamasına göre sertifikaları devreder. Sabitlenmiş sertifikaların rollover olduğunda güncelleştirilmesi gerekir. Ara sertifikayı güncelleştirmek için bir değişiklik planlandığında, Azure blogu güncelleştirilir ve Azure müşterileri bildirilir. Ara sertifikalara [buradan](https://www.microsoft.com/pki/mscorp/cps/default.htm)ulabilirsiniz. Bölgelerin her biri için ara sertifikalar farklı olabilir.
+
+> [!NOTE]
+> Azure China 21Vianet'in ara sertifikası Baltimore yerine DigiCert Global Root CA'dan olacaktır.
+Ayrıca, kök zinciri yetkisi değişikliğinin bir parçası olarak Azure China için ara sertifikaları sabitlediyseniz, ara sertifikaların güncellenmesi gerekir.
 
 ### <a name="failover-clustering-in-windows-server"></a>Windows Server'da Failover Kümeleme
 
@@ -915,7 +919,7 @@ VM'nin depolama profili üç kategoriye ayrılır : resim başvurusu, işletim s
 
 Görüntü başvuru nesnesi işletim sistemi görüntüsü hakkında aşağıdaki bilgileri içerir:
 
-Veri    | Açıklama
+Veriler    | Açıklama
 --------|-----------------
 id      | Kaynak kimliği
 teklif   | Platform veya pazar görüntüsü teklifi
@@ -925,7 +929,7 @@ version | Platform veya pazar görüntüsünün sürümü
 
 Os disk nesnesi VM tarafından kullanılan işletim sistemi diski hakkında aşağıdaki bilgileri içerir:
 
-Veri    | Açıklama
+Veriler    | Açıklama
 --------|-----------------
 Önbelleğe alma | Önbelleğe alma gereksinimleri
 createOption | VM'nin nasıl oluşturulduğu hakkında bilgi
@@ -940,7 +944,7 @@ yazmaAcceleratorEtkin | Diskte hızlandırıcı yazıp etkinleştirilen olup olm
 
 Veri diskleri dizisi VM'ye iliştirilmiş veri disklerinin listesini içerir. Her veri disknesnesi aşağıdaki bilgileri içerir:
 
-Veri    | Açıklama
+Veriler    | Açıklama
 --------|-----------------
 Önbelleğe alma | Önbelleğe alma gereksinimleri
 createOption | VM'nin nasıl oluşturulduğu hakkında bilgi

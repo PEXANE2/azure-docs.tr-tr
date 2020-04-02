@@ -2,18 +2,18 @@
 title: include dosyası
 description: include dosyası
 services: virtual-machines
-author: barclayn
+author: msmbaldwin
 ms.service: virtual-machines
 ms.topic: include
 ms.date: 11/13/2019
-ms.author: barclayn
+ms.author: mbaldwin
 ms.custom: include file
-ms.openlocfilehash: d0ede337f2ae17f28cd02df7ed35919bd9955e7a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: df577ab2b5e9658fd55324c8fd6fd008621b4d46
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74048558"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80545893"
 ---
 Bu makale, Azure Sanal Makineleri için güvenlik önerileri içerir. Ortak sorumluluk için modelimizde açıklanan güvenlik yükümlülüklerini yerine getirmeye yardımcı olmak için bu önerileri uygulayın. Öneriler, web uygulaması çözümleriniz için genel güvenliği artırmanıza da yardımcı olur. Microsoft'un hizmet sağlayıcı sorumluluklarını yerine getirmek için ne yaptığı hakkında daha fazla bilgi için bulut [bilgi işlem için Paylaşılan sorumluluklara](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91)bakın.
 
@@ -53,7 +53,7 @@ Azure Güvenlik Merkezi hakkında genel bilgi için azure [güvenlik merkezi ned
 |-|----|--|
 | VM'lerinizi izleyin. | Azure Sanal M'lerinizin ve sanal makine ölçek kümelerinizin durumunu izlemek [için Sanal Makineler için Azure Monitörünü](../articles/azure-monitor/insights/vminsights-overview.md) kullanabilirsiniz. VM ile ilgili performans sorunları, kullanılabilirlik güvenlik ilkesini ihlal eden hizmet kesintisine neden olabilir. | - |
 
-## <a name="networking"></a>Ağ Oluşturma
+## <a name="networking"></a>Ağ
 
 | Öneri | Yorumlar | Güvenlik Merkezi |
 |-|----|--|

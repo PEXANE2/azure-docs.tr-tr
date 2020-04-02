@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: sngun
-ms.openlocfilehash: 89df941eb6ebaad6e078c278f1ed883db5528c7e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b892b1f4ff73679ab425d0e97f5361e0f3712252
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77152575"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549179"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-async-java"></a>Azure Cosmos DB ve Async Java için performans ipuçları
 
@@ -26,7 +26,7 @@ Azure Cosmos DB, garantili gecikme sonu ve iş ortası ile sorunsuz ölçeklendi
 
 "Veritabanı performansımı nasıl artırabilirim?" diye soruyorsanız. aşağıdaki seçenekleri göz önünde bulundurun:
 
-## <a name="networking"></a>Ağ Oluşturma
+## <a name="networking"></a>Ağ
 
 * **Bağlantı modu: Doğrudan modunu kullan**
 <a id="direct-connection"></a>
@@ -112,7 +112,7 @@ Azure Cosmos DB, garantili gecikme sonu ve iş ortası ile sorunsuz ölçeklendi
 
         + **Verimli TCP veri aktarımı için uygulamanızda çoklu iş parçacığı kullanın** - Bir istekte bulunduktan sonra, uygulamanız başka bir iş parçacığı üzerinde veri almak için abone olmalıdır. Bunu yapmamak istenmeyen "yarı çift yönlü" işlemi zorlar ve sonraki istekler önceki isteğin yanıtı için bekleyerek engellenir.
 
-        + **Özel bir iş parçacığı üzerinde bilgi işlem yoğun iş yükleri yürütmek** - Önceki uç benzer nedenlerle, karmaşık veri işleme gibi işlemler en iyi ayrı bir iş parçacığı yerleştirilir. Başka bir veri deposundan veri çeken bir istek (örneğin iş parçacığı Azure Cosmos DB ve Spark veri depolarını aynı anda kullanıyorsa) artan gecikme gecikmesi yaşayabilir ve diğerveriden yanıt bekleyen ek bir iş parçacığı oluşturmak önerilir veri deposu.
+        + **Özel bir iş parçacığı üzerinde bilgi işlem yoğun iş yükleri yürütmek** - Önceki uç benzer nedenlerle, karmaşık veri işleme gibi işlemler en iyi ayrı bir iş parçacığı yerleştirilir. Başka bir veri deposundan veri çeken bir istek (örneğin iş parçacığı Azure Cosmos DB ve Spark veri depolarını aynı anda kullanıyorsa) artan gecikme gecikmesi yaşayabilir ve diğer veri deposundan yanıt bekleyen ek bir iş parçacığı oluşturmak önerilir.
 
             + Async Java SDK temel ağ IO Netty tarafından yönetilir, [Netty IO konuları engellemek kodlama desenleri önlemek için](troubleshoot-java-async-sdk.md#invalid-coding-pattern-blocking-netty-io-thread)bu ipuçlarını görmek.
 
@@ -230,9 +230,9 @@ Azure Cosmos DB, garantili gecikme sonu ve iş ortası ile sorunsuz ölçeklendi
     * - nofile 100000
     ```
 
-* **Netty için yerel SSL uygulamasını kullanma**
+* **Netty için yerel TLS/SSL uygulamasını kullanma**
 
-    Netty, daha iyi performans elde etmek için OpenSSL'yi doğrudan SSL uygulama yığını için kullanabilir. Bu yapılandırma netty yokluğunda Java'nın varsayılan SSL uygulamasına geri düşecek.
+    Netty, daha iyi performans elde etmek için OpenSSL'yi doğrudan TLS uygulama yığını için kullanabilir. Bu yapılandırma netty yokluğunda Java'nın varsayılan TLS uygulamasına geri düşecek.
 
     Ubuntu üzerinde:
     ```bash

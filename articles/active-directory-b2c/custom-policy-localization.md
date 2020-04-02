@@ -10,18 +10,18 @@ ms.topic: reference
 ms.date: 03/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1401cbe1920c7c6df804aadbba1751612ba9cf06
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: be12bce8fa29076621bec35228838a4ebdd97433
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79126783"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80545861"
 ---
 # <a name="localize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Azure Active Directory B2C'de özel bir ilke kullanarak uygulamanızın kullanıcı arabirimini yerelleştirin
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory B2C'de (Azure AD B2C) dil özelleştirme, farklı dilleri müşterinizin ihtiyaçlarına göre barındırmanıza olanak tanır. Microsoft 36 dil için çeviri sağlar, ancak herhangi bir dil için kendi çevirilerinizi de sağlayabilirsiniz. Deneyiminiz yalnızca tek bir dil için sağlanmış olsa bile, sayfalardaki herhangi bir metni özelleştirebilirsiniz. 
+Azure Active Directory B2C'de (Azure AD B2C) dil özelleştirme, farklı dilleri müşterinizin ihtiyaçlarına göre barındırmanıza olanak tanır. Microsoft [36 dil](https://docs.microsoft.com/azure/active-directory-b2c/user-flow-language-customization#supported-languages)için çevirisağlar, ancak herhangi bir dil için kendi çevirilerinizi de sağlayabilirsiniz. Deneyiminiz yalnızca tek bir dil için sağlanmış olsa bile, sayfalardaki herhangi bir metni özelleştirebilirsiniz. 
 
 Bu makalede, kullanıcı yolculukları için ilkedeki birden çok yerel alanı veya dili nasıl destekleyeceğiniz gösterilmektedir. Yerelleştirme üç adım gerektirir: desteklenen dillerin açık listesini ayarlayın, dile özgü dizeleri ve koleksiyonları sağlayın ve sayfanın [içerik tanımını](contentdefinitions.md) güncelleyin. 
 

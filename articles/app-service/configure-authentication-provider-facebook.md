@@ -4,13 +4,15 @@ description: App Service veya Azure İşlevleri uygulamanız için kimlik sağla
 ms.assetid: b6b4f062-fcb4-47b3-b75a-ec4cb51a62fd
 ms.topic: article
 ms.date: 06/06/2019
-ms.custom: fasttrack-edit
-ms.openlocfilehash: 9a2d390a5647ed90284730e9186e981b8e699d10
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.custom:
+- seodec18
+- fasttrack-edit
+ms.openlocfilehash: b6aad323c0d6fa8f59c9fad203640c477b162503
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80438013"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80519953"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-facebook-login"></a>Facebook oturumunu kullanmak için Uygulama Hizmetinizi veya Azure İşlevleri uygulamanızı yapılandırın
 
@@ -78,4 +80,4 @@ Artık uygulamanızda kimlik doğrulama için Facebook'u kullanmaya hazırsını
 [Facebook Geliştiricileri]: https://go.microsoft.com/fwlink/p/?LinkId=268286
 [facebook.com]: https://go.microsoft.com/fwlink/p/?LinkId=268285
 [Get started with authentication]: /en-us/develop/mobile/tutorials/get-started-with-users-dotnet/
-[Azure portal]: https://portal.azure.com/
+[Azure portalı]: https://portal.azure.com/

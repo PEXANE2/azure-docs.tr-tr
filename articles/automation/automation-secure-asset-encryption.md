@@ -1,6 +1,6 @@
 ---
-title: Otomasyonda güvenli varlıkların şifrelemesi
-description: Azure otomasyonu, birden çok şifreleme düzeyi kullanarak güvenli varlıkları korur. Varsayılan olarak, şifreleme Microsoft tarafından yönetilen anahtarlar kullanılarak yapılır. Müşteriler otomasyon hesaplarını şifreleme için müşteri tarafından yönetilen anahtarları kullanacak şekilde yapılandırabilir. Bu makalede, her iki şifreleme modunun ayrıntıları ve ikisi arasında nasıl geçiş yapabileceğiniz açıklanmaktadır.
+title: Azure Otomasyonu'nda güvenli varlıkları şifreleme
+description: Azure Otomasyonu, birden çok şifreleme düzeyi kullanarak güvenli varlıkları korur. Varsayılan olarak, şifreleme Microsoft tarafından yönetilen anahtarlar kullanılarak yapılır. Müşteriler otomasyon hesaplarını şifreleme için müşteri tarafından yönetilen anahtarları kullanacak şekilde yapılandırabilir. Bu makalede, her iki şifreleme modunun ayrıntıları ve ikisi arasında nasıl geçiş yapabileceğiniz açıklanmaktadır.
 services: automation
 ms.service: automation
 ms.subservice: process-automation
@@ -9,18 +9,18 @@ ms.author: snmuvva
 ms.date: 01/11/2020
 ms.topic: conceptual
 manager: kmadnani
-ms.openlocfilehash: 3c21e2fcdde9bffac91af56d49dfa0bf336e8c0c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0b1d194209122fa71272243c80a2d4c57f6834a1
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78246244"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80547749"
 ---
-# <a name="secure-assets-in-azure-automation"></a>Azure Otomasyonu'nda güvenli varlıklar
+# <a name="encrypt-secure-assets-in-azure-automation"></a>Azure Otomasyonu'nda güvenli varlıkları şifreleme
 
 Azure Otomasyonu'ndaki güvenli varlıklar kimlik bilgilerini, sertifikaları, bağlantıları ve şifreli değişkenleri içerir. Bu varlıklar Azure Otomasyonu'nda birden çok şifreleme düzeyi kullanılarak korunur. Şifreleme için kullanılan üst düzey anahtara göre şifreleme için iki model vardır:
--   Microsoft tarafından yönetilen anahtarları kullanma
--   Müşteri tarafından yönetilen anahtarları kullanma
+-    Microsoft tarafından yönetilen anahtarları kullanma
+-    Müşteri tarafından yönetilen anahtarları kullanma
 
 ## <a name="microsoft-managed-keys"></a>Microsoft tarafından yönetilen Anahtarlar
 
@@ -40,7 +40,7 @@ Bir Otomasyon hesabı için müşteri tarafından yönetilen anahtarlarla şifre
 
 Yeni bir Otomasyon hesabı her zaman Microsoft tarafından yönetilen anahtarlar kullanılarak şifrelenir. Hesabın oluşturulduğu anda müşteri tarafından yönetilen anahtarları etkinleştirmek mümkün değildir. Müşteri tarafından yönetilen anahtarlar Azure Anahtar Kasası'nda depolanır ve anahtar kasası, Otomasyon hesabıyla ilişkili yönetilen kimliğe önemli izinler veren erişim ilkeleriyle birlikte sağlanmalıdır. Yönetilen kimlik yalnızca depolama hesabı oluşturulduktan sonra kullanılabilir.
 
-Azure Automation için kullanılan anahtarı değiştirdiğinizde, müşteri tarafından yönetilen anahtarları etkinleştirerek veya devre dışı bırakarak, anahtar sürümünü güncelleştirerek veya farklı bir anahtar belirterek, hesap şifreleme anahtarının şifrelemesi değişir, ancak güvenli varlıklar Azure Otomasyon hesabınızın yeniden şifrelemesi gerekmez.
+Azure Automation için kullanılan anahtarı değiştirdiğinizde, müşteri tarafından yönetilen anahtarları etkinleştirerek veya devre dışı bırakarak, anahtar sürümünü güncelleştirerek veya farklı bir anahtar belirterek, hesap şifreleme anahtarının şifrelemesi değişir, ancak Azure Otomasyon hesabınızdaki güvenli varlıkların yeniden şifrelenmesi gerekmez.
 
 Aşağıdaki üç bölüm, bir Otomasyon hesabı için müşteri tarafından yönetilen anahtarları etkinleştirme mekaniğini açıklar. 
 

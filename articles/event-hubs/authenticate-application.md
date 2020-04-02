@@ -8,12 +8,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: spelluru
-ms.openlocfilehash: a242da8cc98a21248c48a1b3981fa713706028ec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4cef49f138b96848b8e59cb5b2d0b185d4568aa9
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80064950"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520992"
 ---
 # <a name="authenticate-an-application-with-azure-active-directory-to-access-event-hubs-resources"></a>Etkinlik Hub'ları kaynaklarına erişmek için Azure Etkin Dizini ile uygulamanın kimliğini doğrula
 Microsoft Azure, Azure Etkin Dizini'ni (Azure AD) temel alan kaynaklar ve uygulamalar için tümleşik erişim denetimi yönetimi sağlar. Azure Etkinlik Hub'ları ile Azure AD kullanmanın önemli bir avantajı, kimlik bilgilerinizi artık kodda depolamanız gerekmemese de. Bunun yerine, Microsoft Identity platformundan Bir OAuth 2.0 erişim jetonu isteyebilirsiniz. Bir belirteç istemek için `https://eventhubs.azure.net/` kaynak adı (Kafka istemcileri için, `https://<namespace>.servicebus.windows.net`bir belirteç istemek için kaynak). Azure AD, uygulamayı çalıştıran güvenlik ilkesinin (kullanıcı, grup veya hizmet sorumlusu) kimliğini doğrular. Kimlik doğrulama başarılı olursa, Azure AD uygulamaya bir erişim belirteci döndürür ve uygulama daha sonra isteği Azure Olay Hub'ları kaynaklarına yetkilendirmek için erişim belirteci'ni kullanabilir.
@@ -106,7 +106,7 @@ Belirteçleri satın almanın desteklendiği senaryoların listesi için ,NET Gi
 ## <a name="samples"></a>Örnekler
 - [Microsoft.Azure.EventHubs örnekleri](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac). 
     
-    Bu örnekler eski **Microsoft.Azure.EventHubs** kitaplığını kullanır, ancak en son **Azure.Messaging.EventHubs** kitaplığını kullanarak kolayca güncelleştirebilirsiniz. Örneği eski kitaplığı kullanmaktan yenisine taşımak [için Microsoft.Azure.EventHub'larından Azure.Messaging.EventHubs'a geçiş kılavuzuna](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/migration-guide-from-v4.md)bakın.
+    Bu örnekler eski **Microsoft.Azure.EventHubs** kitaplığını kullanır, ancak en son **Azure.Messaging.EventHubs** kitaplığını kullanarak kolayca güncelleştirebilirsiniz. Örneği eski kitaplığı kullanmaktan yenisine taşımak [için Microsoft.Azure.EventHub'larından Azure.Messaging.EventHubs'a geçiş kılavuzuna](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md)bakın.
 - [Azure.Messaging.EventHubs örnekleri](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/ManagedIdentityWebApp)
 
     Bu örnek en son **Azure.Messaging.EventHubs** kitaplığını kullanacak şekilde güncelleştirildi.

@@ -1,6 +1,6 @@
 ---
 title: Apache Kafka için Apache Flink'i kullanma - Azure Etkinlik Hub'ları | Microsoft Dokümanlar
-description: Bu makalede, Apache Flink'in Apache Kafka etkin leştirilmiş bir Azure etkinlik hub'ına nasıl bağlanılabildiği hakkında bilgi
+description: Bu makalede, Apache Flink'in bir Azure etkinlik hub'ına nasıl bağlanılabildiği hakkında bilgi
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: db877279bcfa7e132841e342cfc25b66bb3ec384
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6ab542e1328bb986f53d31e2eca75007cf1e0c75
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80283608"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521794"
 ---
 # <a name="use-apache-flink-with-azure-event-hubs-for-apache-kafka"></a>Apache Kafka için Azure Event Hubs ile Apache Flink'i kullanma
 Bu öğretici, protokol istemcilerinizi değiştirmeden veya kendi kümelerinizi çalıştırmadan Apache Flink'i bir etkinlik merkezine nasıl bağlayabileceğinizi gösterir. Azure Etkinlik Hub'ları [Apache Kafka sürüm 1.0'ı destekler.](https://kafka.apache.org/10/documentation.html)
@@ -48,7 +48,7 @@ Bu öğreticiyi tamamlamak için aşağıdaki ön koşullara sahip olduğunuzdan
 
 ## <a name="create-an-event-hubs-namespace"></a>Event Hubs ad alanı oluşturma
 
-Herhangi bir Olay Hub'ı hizmetinden göndermek veya almak için olay hub'ları ad alanı gereklidir. Etkinlik Hub'ları Kafka bitiş noktası alma hakkında bilgi almak için [Kafka Etkin Etkinlik Hub'ları Oluştur'a](event-hubs-create.md) bakın. Daha sonra kullanmak üzere Olay Hub'ları bağlantı dizesini kopyaladığından emin olun.
+Herhangi bir Olay Hub'ı hizmetinden göndermek veya almak için olay hub'ları ad alanı gereklidir. Bkz. Ad alanı ve olay hub'ı oluşturmak için yönergeler için bir [olay hub'ı oluşturma.](event-hubs-create.md) Daha sonra kullanmak üzere Olay Hub'ları bağlantı dizesini kopyaladığından emin olun.
 
 ## <a name="clone-the-example-project"></a>Örnek projeyi kopyalama
 
@@ -88,11 +88,11 @@ mvn clean package
 mvn exec:java -Dexec.mainClass="FlinkTestProducer"
 ```
 
-Yapımcı şimdi kafka etkin Event Hub konu `test` ve stdout için olayları yazdırmaya olaylar göndermeye başlayacaktır.
+Üretici şimdi olay merkezine konu yla `test` ilgili etkinlikler göndermeye ve olayları stdout'a yazdırmaya başlayacaktır.
 
 ## <a name="run-flink-consumer"></a>Flink tüketici çalıştırın
 
-Sağlanan tüketici örneğini kullanarak Kafka etkin Etkinlik Hub'larından iletiler alın.
+Sağlanan tüketici örneğini kullanarak, olay merkezinden iletiler alın. 
 
 ### <a name="provide-an-event-hubs-kafka-endpoint"></a>Etkinlik Hub'ları Kafka bitiş noktası sağlayın
 
@@ -136,7 +136,7 @@ Event Hubs ve Kafka için Event Hubs hakkında daha fazla bilgi edinmek için a�
 
 - [Event Hubs hakkında bilgi edinin](event-hubs-what-is-event-hubs.md)
 - [Apache Kafka için Event Hubs](event-hubs-for-kafka-ecosystem-overview.md)
-- [Kafka özellikli Event Hubs oluşturma](event-hubs-create.md)
+- [Olay hub’ı oluşturma](event-hubs-create.md)
 - [Kafka uygulamalarınızdan Event Hubs'a akış yapma](event-hubs-quickstart-kafka-enabled-event-hubs.md)
 - [Bir olay hub'ında Kafka aracısı yansıtma](event-hubs-kafka-mirror-maker-tutorial.md)
 - [Apache Spark'ı bir olay hub'ına bağlama](event-hubs-kafka-spark-tutorial.md)

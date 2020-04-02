@@ -1,17 +1,17 @@
 ---
-title: Azure en iyi uygulamalarında yönetim çözümü | Microsoft Dokümanlar
-description: ''
+title: Azure en iyi uygulamalarında yönetim çözümü
+description: Bu makalede, bir yönetim çözümü dosyası oluşturmak için ipuçları öğrenin. Veri kaynakları, runbook'lar, görünümler ve uyarılarla nasıl çalışacağız üzerinde görün.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/27/2017
-ms.openlocfilehash: 837fb87d73698961ec1550b122840563d1707f8a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7cb300297336edcce4294b800520ad570b12bcde
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77663207"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548158"
 ---
 # <a name="best-practices-for-creating-management-solutions-in-azure-preview"></a>Azure'da yönetim çözümleri oluşturmak için en iyi uygulamalar (Önizleme)
 > [!NOTE]

@@ -1,15 +1,15 @@
 ---
 title: Azure Blockchain Hizmeti sınırları
 description: Azure Blockchain Hizmeti'nde hizmete ve işlevsel sınırlara genel bakış
-ms.date: 11/22/2019
+ms.date: 03/30/2020
 ms.topic: conceptual
-ms.reviewer: janders
-ms.openlocfilehash: f4001ee520f3f3136d1bac5ca047c80526fc92e6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.reviewer: ravastra
+ms.openlocfilehash: c728e617ac37795988cd596c7cb0c5025aac4ccf
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74455651"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529568"
 ---
 # <a name="limits-in-azure-blockchain-service"></a>Azure Blockchain Hizmetinde Sınırlar
 
@@ -17,14 +17,18 @@ Azure Blockchain Hizmeti, bir üyenin sahip olabileceği düğüm sayısı, kons
 
 ## <a name="pricing-tier"></a>Fiyatlandırma katmanı
 
-İşlemler ve geçerlidüğümlerle ilgili maksimum sınırlar, Temel veya Standart fiyatlandırma katmanlarında Azure Blockchain Hizmeti sağlayıp sağlamadığınıza bağlıdır.
+İşlemler ve geçerlidüğümlerle ilgili maksimum sınırlar, Azure Blockchain Hizmetini temel veya standart fiyatlandırma katmanlarında sağlayıp sağlamadığınıza bağlıdır.
 
 | Fiyatlandırma katmanı | Maksimum hareket düğümleri | Maksimum geçerlilik düğümleri |
 |:---|:---:|:---:|
 | Temel | 10 | 1 |
 | Standart | 10 | 2 |
 
-Üye oluşturulduktan sonra Temel ve Standart arasındaki fiyatlandırma katmanının değiştirilmesi desteklenmez.
+Konsorsiyum ağınızın en az iki Azure Blockchain Hizmeti standart katman düğümü olmalıdır. Standart katman düğümleri iki doğrulayıcı düğüm içerir. [İstanbul Bizans Fay Toleransı konsensüsünü](https://github.com/jpmorganchase/quorum/wiki/Quorum-Consensus)karşılamak için dört doğrulayıcı düğüm gereklidir.
+
+Temel katmanı kullanmak geliştirme, test ve kavramların kanıtı içindir. Üretim sınıfı dağıtımları için standart katmanı kullanın. Blockchain Data Manager kullanıyorsanız veya yüksek hacimli özel işlemler *gönderiyorsanız, Standart* katmanı da kullanmalısınız.
+
+Üye oluşturulduktan sonra temel ve standart arasındaki fiyatlandırma katmanının değiştirilmesi desteklenmez.
 
 ## <a name="storage-capacity"></a>Depolama kapasitesi
 

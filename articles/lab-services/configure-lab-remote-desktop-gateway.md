@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 88daecdf4490ffd4eef45e6cd664a16f86bad113
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2cdafa9a36a5f906151ca6946e18ef82bc7f1e01
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76170294"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529416"
 ---
 # <a name="configure-your-lab-in-azure-devtest-labs-to-use-a-remote-desktop-gateway"></a>Azure DevTest Labs'daki laboratuvarınızı uzak bir masaüstü ağ geçidi kullanacak şekilde yapılandırın
 Azure DevTest Labs'da, RDP bağlantı noktasını ortaya çıkarmak zorunda kalmadan laboratuvar sanal makinelerine (VM) güvenli erişim sağlamak için laboratuarınız için uzak bir masaüstü ağ geçidi yapılandırabilirsiniz. Laboratuvar, laboratuvar kullanıcılarınızın erişebildikleri tüm sanal makineleri görüntülemeleri ve bunlara bağlanmaları için merkezi bir yer sağlar. **Sanal Makine** sayfasındaki **Bağlan** düğmesi, makineye bağlanmak için açabileceğiniz makineye özgü bir RDP dosyası oluşturur. Laboratuvarınızı uzak bir masaüstü ağ geçidine bağlayarak RDP bağlantısını daha da özelleştirebilir ve güvene alabilirsiniz. 
@@ -43,7 +43,7 @@ Laboratuvar kullanıcısı doğrudan ağ geçidi makinesine doğruluğunu yaptı
 DevTest Labs belirteç kimlik doğrulama özelliğiyle çalışmak için ağ geçidi makineleri, etki alanı adı hizmetleri (DNS) ve işlevler için birkaç yapılandırma gereksinimi vardır.
 
 ### <a name="requirements-for-remote-desktop-gateway-machines"></a>Uzak masaüstü ağ geçidi makineleri için gereksinimler
-- HTTPS trafiğini işlemek için Ağ geçidi makinesine SSL sertifikası yüklenmelidir. Sertifika, yalnızca bir makine varsa, ağ geçidi çiftliği için yük dengeleyicisinin tam nitelikli alan adı (FQDN) veya makinenin fqdn'si ile eşleşmelidir. Joker kart SSL sertifikaları çalışmıyor.  
+- TLS/SSL sertifikası, HTTPS trafiğini işlemek için ağ geçidi makinesine yüklenmelidir. Sertifika, yalnızca bir makine varsa, ağ geçidi çiftliği için yük dengeleyicisinin tam nitelikli alan adı (FQDN) veya makinenin fqdn'si ile eşleşmelidir. Joker TLS/SSL sertifikaları çalışmıyor.  
 - Ağ geçidi makinesine (ler) yüklenen imza sertifikası. [Create-SigningCertificate.ps1](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/tools/Create-SigningCertificate.ps1) komut dosyalarını kullanarak bir imzalama sertifikası oluşturun.
 - Uzak masaüstü ağ geçidi için belirteç kimlik doğrulamasını destekleyen [Takılabilir Kimlik Doğrulama](https://code.msdn.microsoft.com/windowsdesktop/Remote-Desktop-Gateway-517d6273) modülünü yükleyin. Böyle bir modül `RDGatewayFedAuth.msi` bir örnek [System Center Virtual Machine Manager (VMM) görüntüleri](/system-center/vmm/install-console?view=sc-vmm-1807)ile birlikte geliyor. Sistem Merkezi hakkında daha fazla bilgi [için, Sistem Merkezi dokümantasyon](https://docs.microsoft.com/system-center/) ve [fiyatlandırma ayrıntılarına](https://www.microsoft.com/cloud-platform/system-center-pricing)bakın.  
 - Ağ geçidi `https://{gateway-hostname}/api/host/{lab-machine-name}/port/{port-number}`sunucusu' nun yaptığı istekler işleyebilir.
@@ -58,7 +58,7 @@ Azure işlevi isteği biçimiyle `https://{function-app-uri}/app/host/{lab-machi
 
 ## <a name="requirements-for-network"></a>Ağ gereksinimleri
 
-- Ağ geçidi makinelerine yüklenen SSL sertifikasıile ilişkili FQDN için DNS'ler trafiği ağ geçidi makinesine veya ağ geçidi makine çiftliğinin yük dengeleyicisine yönlendirmelidir.
+- Ağ geçidi makinelerine yüklenen TLS/SSL sertifikası ile ilişkili FQDN için DNS, trafiği ağ geçidi makinesine veya ağ geçidi makine çiftliğinin yük dengeleyicisine yönlendirmelidir.
 - Laboratuvar makinesi özel IP'ler kullanıyorsa, ağ geçidi makinesinden laboratuvar makinesine, aynı sanal ağı paylaşarak veya eşlenmiş sanal ağları kullanarak bir ağ yolu olmalıdır.
 
 ## <a name="configure-the-lab-to-use-token-authentication"></a>Laboratuvarda belirteç kimlik doğrulaması kullanacak şekilde yapılandırma 
@@ -79,7 +79,7 @@ Aşağıdaki adımları kullanarak belirteç kimlik doğrulamasını kullanacak 
 1. Laboratuvarlar listesinden, **laboratuvarınızı**seçin.
 1. Laboratuvarın sayfasında **Yapılandırma ve ilkeler'i**seçin.
 1. Sol menüde Ayarlar **bölümünde** Lab **ayarlarını**seçin.
-1. Uzak **masaüstü** bölümüne, **Ağ Geçidi ana bilgisayar adı** alanı için uzak masaüstü hizmetleri ağ geçidi makinesinin veya çiftliğinin tam nitelikli alan adı (FQDN) veya IP adresini girin. Bu değer, ağ geçidi makinelerinde kullanılan SSL sertifikasının FQDN'si ile eşleşmelidir.
+1. Uzak **masaüstü** bölümüne, **Ağ Geçidi ana bilgisayar adı** alanı için uzak masaüstü hizmetleri ağ geçidi makinesinin veya çiftliğinin tam nitelikli alan adı (FQDN) veya IP adresini girin. Bu değer, ağ geçidi makinelerinde kullanılan TLS/SSL sertifikasının FQDN'si ile eşleşmelidir.
 
     ![Laboratuar ayarlarında uzak masaüstü seçenekleri](./media/configure-lab-remote-desktop-gateway/remote-desktop-options-in-lab-settings.png)
 1. Uzak **masaüstü** bölümünde, **Ağ Geçidi belirteci** gizli için, daha önce oluşturulan sırrın adını girin. Bu değer işlev anahtarının kendisi değil, işlev anahtarını tutan laboratuvarın anahtar kasasındaki sırrın adıdır.
@@ -110,7 +110,7 @@ Burada sadece ilk laboratuvar makineleri ulaşmak için ağ geçidi geçer trafi
 Uzak masaüstü ağ geçidi çiftliği için örnek bir çözüm ayarlamak için aşağıdaki adımları izleyin.
 
 1. İmza sertifikası oluşturun.  [Oluştur-İmzaSertifikası.ps1](https://github.com/Azure/azure-devtestlab/blob/master/samples/DevTestLabs/GatewaySample/tools/Create-SigningCertificate.ps1)çalıştırın. Oluşturulan sertifikanın parmak izini, parolayı ve Base64 kodlamasını kaydedin.
-2. Bir SSL sertifikası alın. SSL sertifikasıyla ilişkili FQDN, kontrol ettiğiniz etki alanı için olmalıdır. Bu sertifika için parmak izini, parolayı ve Base64 kodlamasını kaydedin. PowerShell kullanarak parmak izi almak için aşağıdaki komutları kullanın.
+2. TLS/SSL sertifikası alın. TLS/SSL sertifikasıile ilişkili FQDN, kontrol ettiğiniz etki alanı için olmalıdır. Bu sertifika için parmak izini, parolayı ve Base64 kodlamasını kaydedin. PowerShell kullanarak parmak izi almak için aşağıdaki komutları kullanın.
 
     ```powershell
     $cer = New-Object System.Security.Cryptography.X509Certificates.X509Certificate;
@@ -132,9 +132,9 @@ Uzak masaüstü ağ geçidi çiftliği için örnek bir çözüm ayarlamak için
     - instanceCount – Oluşturulacak ağ geçidi makineleri sayısı.  
     - alwaysOn – Oluşturulan Azure İşlevler uygulamasını sıcak bir durumda tutup tutmayacağını gösterir. Azure İşlevleri uygulamasını tutmak, kullanıcıların ilk olarak laboratuvar VM'lerine bağlanmaya çalıştıklarında gecikmeleri önler, ancak bunun maliyet etkileri vardır.  
     - tokenLifetime – Oluşturulan belirteç süresi geçerli olacaktır. Biçim HH:MM:SS'dir.
-    - sslCertificate – Ağ geçidi makinesi için SSL sertifikasının Base64 kodlaması.
-    - sslCertificatePassword – Ağ geçidi makinesi için SSL sertifikasının şifresi.
-    - sslCertificateThumbprint - SSL sertifikasının yerel sertifika deposunda kimlik tespiti için sertifika parmak izi.
+    - sslCertificate – Ağ geçidi makinesi için TLS/SSL sertifikasının Base64 kodlaması.
+    - sslCertificatePassword – Ağ geçidi makinesi için TLS/SSL sertifikasının şifresi.
+    - sslCertificateThumbprint - TLS/SSL sertifikasının yerel sertifika deposunda kimlik tespiti için sertifika parmak izi.
     - signCertificate – Ağ geçidi makinesi için imza sertifikası için Base64 kodlama.
     - signCertificatePassword – Ağ geçidi makinesi için sertifika imzalama parolası.
     - signCertificateThumbprint - İmza sertifikasının yerel sertifika deposunda kimlik tespiti için sertifika parmak izi.
@@ -157,7 +157,7 @@ Uzak masaüstü ağ geçidi çiftliği için örnek bir çözüm ayarlamak için
         - {utc-son kullanma tarihi} UTC'de SAS belirteci süresinin dolacağı ve SAS belirtecinin artık depolama hesabına erişmek için kullanılamayacağı tarihtir.
 
     Şablon dağıtım çıktısından ağ geçidiFQDN ve gatewayIP değerlerini kaydedin. Ayrıca, [işlev uygulaması ayarları](../azure-functions/functions-how-to-use-azure-function-app-settings.md) sekmesinde bulunan yeni oluşturulan işlev için işlev anahtarının değerini kaydetmeniz gerekir.
-5. DNS'yi, SSL cert'inIn FQDN'sinin önceki adımdan gatewayIP'in IP adresine yönlendirecek şekilde yapılandırın.
+5. TlS/SSL sertifikasının FQDN'sinin önceki adımdan gatewayIP'in IP adresine yönlendirilen DNS'yi yapılandırın.
 
     Uzak Masaüstü Ağ Geçidi çiftliği oluşturulduktan ve uygun DNS güncelleştirmeleri yapıldıktan sonra, DevTest Labs'daki bir laboratuvar tarafından kullanılmaya hazırdır. **Ağ geçidi ana bilgisayar adı** ve ağ geçidi **belirteç gizli** ayarları, dağıttığınız ağ geçidi makinesini kullanacak şekilde yapılandırılmalıdır. 
 

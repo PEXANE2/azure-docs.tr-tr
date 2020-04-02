@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6dff3be9a9bc7fd897f340e5fe6a4775a4914810
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ea14e02920cf7ba6c5e0a7b415cb92137c915576
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "65824953"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80519700"
 ---
 # <a name="unexpected-error-when-performing-consent-to-an-application"></a>Bir uygulamaya onay verirken beklenmeyen hata
 
@@ -33,8 +33,11 @@ Bir kullanıcının bir uygulamanın gerektirdiği izinleri kabul edemesi için 
 
 ## <a name="requesting-not-authorized-permissions-error"></a>İzin sizizin hatası isteme
 * **AADSTS90093:** &lt;clientAppDisplayName,&gt; vermeye yetkili olmadığınız bir veya daha fazla izin talep ediyor. Bu başvuruyu sizin adınıza onaylayan bir yöneticiye başvurun.
+* **AADSTS90094:** &lt;clientAppDisplayName'nin&gt; kuruluşunuzdaki kaynaklara erişmek için yalnızca bir yöneticinin verebileceği kaynaklara erişmesi için izin alması gerekir. Kullanabilmek için önce lütfen yöneticiden bu uygulamaya izin vermesini isteyin.
 
 Bu hata, şirket yöneticisi olmayan bir kullanıcı yalnızca yöneticinin verebileceği izinleri isteyen bir uygulamayı kullanmaya çalıştığında oluşur. Bu hata, kendi kuruluşu adına uygulamaya erişim veren bir yönetici tarafından çözülebilir.
+
+Bu hata, Microsoft'un izin isteğinin riskli olduğunu algılaması nedeniyle bir kullanıcının bir uygulamayı onaylayarak kabul etmesi engellendiğinde de oluşabilir. Bu durumda, bir denetim olayı da "Uygulama Yönetimi", "Başvuru ya da onay" faaliyet türü ve "Riskli uygulama tespit" Durum Nedeni kategorisi ile günlüğe kaydedilir.
 
 ## <a name="policy-prevents-granting-permissions-error"></a>İlke, izin verme hatası nın engellenmesini
 * **AADSTS90093:** TenantDisplayName'nin &lt;&gt; bir yöneticisi, uygulamanın &lt;&gt; adını istediği izinleri vermenizi engelleyen bir ilke belirlemiştir. Sizin adınıza &lt;bu&gt;uygulamaya izin verebilecek kiracıDisplayName'nin bir yöneticisine başvurun.

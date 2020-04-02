@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: d9cff47c61fc08305427b25f949884b1ef089fd0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ca3a79b0d31cc18b8ff77f02ce4ce3d517d7a638
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80289673"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548693"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-mariadb"></a>MariaDB için Azure Veritabanı için Azure Güvenlik Taban Çizgisi
 
@@ -894,9 +894,9 @@ Key Vault kimlik doğrulaması yönetilen bir kimlikle nasıl sağlayacaksınız
 
 **Yönerge**: MariaDB sunucusu için Azure Veritabanı şu anda veritabanlarına erişmek için Azure Active Directory kimlik doğrulamasını desteklememektedir.  MariaDB sunucusu için Azure Veritabanı oluştururken, yönetici bir kullanıcı için kimlik bilgileri sağlarsınız. Bu yönetici, ek MariaDB kullanıcıları oluşturmak için kullanılabilir.  
 
-Azure Uygulama Hizmeti'nde çalışan Azure Sanal Makineleri veya MariaDB sunucusu için Azure Veritabanınıza erişmek için kullanılan web uygulamaları için, MariaDB için Azure Veritabanı kimlik bilgilerini depolamak ve almak için Azure Anahtar Kasası ile birlikte Yönetilen Hizmet Kimliğini kullanın Sunucu.  Key Vault Soft Delete etkin olduğundan emin olun.
+Azure Sanal Makineler veya Azure Uygulama Hizmeti'nde çalışan web uygulamaları için, MariaDB sunucusu için Azure Veritabanınıza erişmek için kullanılıyor, Yönetilen Hizmet Kimliğini Azure Key Vault ile birlikte kullanarak MariaDB sunucusu için Azure Veritabanı kimlik bilgilerini depolayın ve alın.  Key Vault Soft Delete etkin olduğundan emin olun.
 
-Azure Etkin Dizini'nde (AD) otomatik olarak yönetilen bir kimlikle Azure hizmetlerine yönetilen kimlik sağlamak için Yönetilen Kimlikler'i kullanın. Yönetilen Kimlikler, anahtarınızda herhangi bir kimlik belgesi olmadan Key Vault da dahil olmak üzere Azure AD kimlik doğrulamasını destekleyen tüm hizmetlere kimlik doğrulamanızı sağlar. Yönetilen Kimlikler nasıl yapılandırılatır: https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vmHow Azure Yönetilen Kimliklerle tümleştirme:https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
+Azure Etkin Dizini'nde (AD) otomatik olarak yönetilen bir kimlikle Azure hizmetlerine yönetilen kimlik sağlamak için Yönetilen Kimlikler'i kullanın. Yönetilen Kimlikler, anahtarınızda herhangi bir kimlik belgesi olmadan Key Vault da dahil olmak üzere Azure AD kimlik doğrulamasını destekleyen tüm hizmetlere kimlik doğrulamanızı sağlar. Yönetilen Kimlikler nasıl yapılandırılır: https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm. Azure Yönetilen Kimlikler ile https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identitytümleştirme: .
 
 
 

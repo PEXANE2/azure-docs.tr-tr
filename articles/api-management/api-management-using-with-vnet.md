@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/09/2020
 ms.author: apimpm
-ms.openlocfilehash: dcc2c38238f707a5d43cde03502c589add9461b7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 462a44f7766e0ec52ba7156d6de5ae5261e21376
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80335919"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80547361"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Sanal ağlar ile Azure API Management’ı kullanma
 Azure Sanal Ağları (VNET’ler) Azure kaynaklarınızdan herhangi birini, erişimini denetlediğiniz İnternet tabanlı olmayan ve yönlendirilebilir bir ağa yerleştirmenizi sağlar. Bu ağlar daha sonra çeşitli VPN teknolojileri kullanılarak şirket içi ağlarınıza bağlanabilir. Azure Sanal Ağlar hakkında daha fazla bilgi edinmek için buradaki bilgilerle başlayın: [Azure Sanal Ağa Genel Bakış.](../virtual-network/virtual-networks-overview.md)
@@ -102,7 +102,7 @@ Aşağıda, API Yönetimi hizmetini Sanal Ağa dağıtırken oluşabilecek yayg�
 * **Özel DNS sunucu kurulumu**: API Yönetimi hizmeti birkaç Azure hizmetine bağlıdır. API Yönetimi, özel bir DNS sunucusuna sahip bir VNET'te barındırıldığında, bu Azure hizmetlerinin ana bilgisayar adlarını çözmesi gerekir. Lütfen özel DNS kurulumu ile ilgili [bu](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) kılavuzu izleyin. Aşağıdaki bağlantı noktaları tablosuna ve başvuru için diğer ağ gereksinimlerine bakın.
 
 > [!IMPORTANT]
-> VNET için özel bir DNS Server(lar) kullanmayı planlıyorsanız, içine bir API Yönetimi hizmeti dağıtmadan **önce** bu sunucuyu ayarlamanız gerekir. Aksi takdirde, [Ağ Yapılandırma İşlemini Çalıştırarak](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/ApiManagementService/ApplyNetworkConfigurationUpdates) DNS Server(ları) her değiştirinizde API Yönetimi hizmetini güncelleştirmeniz gerekir
+> VNET için özel bir DNS Server(lar) kullanmayı planlıyorsanız, içine bir API Yönetimi hizmeti dağıtmadan **önce** bu sunucuyu ayarlamanız gerekir. Aksi takdirde, [Ağ Yapılandırma İşlemini Çalıştırarak](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/ApiManagementService/ApplyNetworkConfigurationUpdates) DNS Server(ları) her değiştirinizde API Yönetimi hizmetini güncelleştirmeniz gerekir
 
 * **API Yönetimi için gerekli bağlantı noktaları**: API Yönetimi'nin dağıtıldığı Subnet'e gelen ve giden trafik Ağ Güvenlik [Grubu][Network Security Group]kullanılarak denetlenebilir. Bu bağlantı noktalarından herhangi biri kullanılamıyorsa, API Yönetimi düzgün çalışmayabilir ve erişilemez hale gelebilir. Bu bağlantı noktalarından birinin veya daha fazlasının engellenmesi, Bir VNET ile API Yönetimi kullanırken başka bir yaygın yanlış yapılandırma sorunudur.
 
@@ -133,6 +133,8 @@ Aşağıda, API Yönetimi hizmetini Sanal Ağa dağıtırken oluşabilecek yayg�
 + **DNS Access : DNS**sunucuları ile iletişim için bağlantı noktası 53'te giden erişim gereklidir. VPN ağ geçidinin diğer ucunda özel bir DNS sunucusu varsa, DNS sunucusuna API Yönetimi barındırma alt ağlarından erişilebilmelidir.
 
 + **Ölçümler ve Sistem Durumu İzleme**: Aşağıdaki etki alanları altında çözüme kavuşturulan Azure İzleme uç noktalarına giden ağ bağlantısı:
+
++ **Bölgesel Hizmet Etiketleri**": Depolama, SQL ve EventHubs hizmet etiketlerine giden bağlantıya izin veren NSG kuralları, bu etiketlerin API Yönetimi örneğini içeren bölgeye karşılık gelen bölgesel sürümlerini kullanabilir (örneğin, Storage.WestUS, Batı ABD bölgesindeki bir API Yönetimi örneği için). Çok bölgeli dağıtımlarda, her bölgedeki NSG, o bölgenin hizmet etiketlerine trafik gönderilmesine izin vermelidir.
 
     | Azure Ortamı | Uç Noktalar                                                                                                                                                                                                                                                                                                                                                              |
     |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -170,7 +172,7 @@ Aşağıda, API Yönetimi hizmetini Sanal Ağa dağıtırken oluşabilecek yayg�
   > [!IMPORTANT]
   > Bağlantıyı doğruladıktan sonra, API Yönetimi'ni alt ağa dağıtmadan önce alt ağda dağıtılan tüm kaynakları kaldırdığınızdan emin olun.
 
-* **Artımlı Güncelleştirmeler**: Ağınızda değişiklik yaparken, API Yönetimi hizmetinin bağlı olduğu kritik kaynaklardan herhangi birinde erişimini kaybetmediğini doğrulamak için [NetworkStatus API'ye](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/networkstatus)bakın. Bağlantı durumu her 15 dakikada bir güncelleştirilmelidir.
+* **Artımlı Güncelleştirmeler**: Ağınızda değişiklik yaparken, API Yönetimi hizmetinin bağlı olduğu kritik kaynaklardan herhangi birinde erişimini kaybetmediğini doğrulamak için [NetworkStatus API'ye](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/networkstatus)bakın. Bağlantı durumu her 15 dakikada bir güncelleştirilmelidir.
 
 * **Kaynak Gezinme Bağlantıları**: Kaynak Yöneticisi stili vnet alt ağına dağıtılırken, API Yönetimi bir kaynak gezinti bağlantısı oluşturarak alt ağı ayırır. Alt ağ zaten farklı bir sağlayıcıdan bir kaynak içeriyorsa, dağıtım **başarısız**olur. Benzer şekilde, bir API Yönetimi hizmetini farklı bir alt ağa taşıdığınızda veya sildiğinizde, bu kaynak gezinti bağlantısını kaldırırız.
 

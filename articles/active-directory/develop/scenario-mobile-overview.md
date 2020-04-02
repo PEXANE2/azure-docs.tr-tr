@@ -1,6 +1,6 @@
 ---
 title: Web API'lerini çağıran bir mobil uygulama oluşturun | Azure
-titleSuffix: Microsoft identity platform
+titleSuffix: Microsoft identity platform | Azure
 description: Web API'lerini çağıran bir mobil uygulama oluşturmayı öğrenin (genel bakış)
 services: active-directory
 documentationcenter: dev-center-name
@@ -16,12 +16,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 6675d67299091325fcc3e12572a906716bf5b88d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: acd44298e401aabaef03f5ddd84f37f32a3d8bcd
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77132429"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80546085"
 ---
 # <a name="scenario-mobile-application-that-calls-web-apis"></a>Senaryo: Web API'lerini çağıran mobil uygulama
 
@@ -53,13 +53,14 @@ Mobil uygulamalar için dikkat edilecek noktalar:
 - **Kullanıcı deneyimi önemlidir**: Oturum açma talebinde bulunan dan önce kullanıcıların uygulamanızın değerini görmesine izin verin. Yalnızca gerekli izinleri isteyin.
 - **Tüm kullanıcı yapılandırmalarını destekleyin:** Birçok mobil işletme kullanıcısı koşullu erişim ilkelerine ve cihaz uyumluluğu ilkelerine uymalıdır. Bu önemli senaryoları desteklediğinden emin olun.
 - **Tek oturum açma (SSO) uygula**: MSAL ve Microsoft kimlik platformlarını kullanarak, cihazın tarayıcısı veya Microsoft Authenticator (ve Android'deki Intune Company Portal) aracılığıyla tek oturum açmayı etkinleştirebilirsiniz.
+- **Paylaşılan cihaz modunu uygulayın**: Uygulamanızın hastaneler, üretim, perakende ve finans gibi paylaşılan cihaz senaryolarında kullanılmasını etkinleştirin. [Paylaşılan aygıt modunu destekleme hakkında daha fazla bilgi edinin.](msal-shared-devices.md)
 
 ## <a name="specifics"></a>Özellikleri
 
 Microsoft kimlik platformunda bir mobil uygulama oluştururken aşağıdaki hususları göz önünde bulundurun:
 
 - Platforma bağlı olarak, kullanıcıların ilk oturum açaması için bazı kullanıcı etkileşimi gerekebilir. Örneğin, iOS, uygulamaların SSO'yu ilk kez Microsoft Authenticator (ve Android'deki Intune Company Portal) aracılığıyla kullandıklarında kullanıcı etkileşimini göstermesini gerektirir.
-- iOS ve Android'de, MSAL kullanıcıları oturum açmak için harici bir tarayıcı kullanabilir. Uygulamanızın üstünde harici tarayıcı görünebilir. Bunun yerine uygulama içi Web Görünümleri kullanmak için yapılandırmayı özelleştirebilirsiniz.
+- iOS ve Android'de, MSAL kullanıcıları oturum açmak için harici bir tarayıcı kullanabilir. Uygulamanızın üstünde harici tarayıcı görünebilir.
 - Mobil uygulamada asla bir sır kullanmayın. Bu uygulamalarda, sırlar tüm kullanıcılar tarafından erişilebilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar

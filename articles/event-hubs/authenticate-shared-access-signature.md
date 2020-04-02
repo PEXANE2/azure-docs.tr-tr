@@ -8,12 +8,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: spelluru
-ms.openlocfilehash: d17026dba26b3c1cb846d60967180c29563c425d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 82773ab6decfe15ee1a9d839a1f10a158ae72c42
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74545583"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521312"
 ---
 # <a name="authenticate-access-to-event-hubs-resources-using-shared-access-signatures-sas"></a>Paylaşılan erişim imzalarını (SAS) kullanarak Olay Hubkaynaklarına erişimi doğrulama
 Paylaşılan erişim imzası (SAS), paylaşılan erişim imzasına sahip istemcilere sağladığınız erişim türü üzerinde ayrıntılı denetim sağlar. SAS'ta ayarlayabildiğiniz denetimlerden bazıları şunlardır: 
@@ -33,7 +33,7 @@ Bu makalede, SAS kullanarak Olay Hub kaynaklarına erişim kimlik doğrulaması 
 
 
 ## <a name="configuring-for-sas-authentication"></a>SAS kimlik doğrulaması için yapılandırma
-EventHubs paylaşılan erişim yetkilendirme kuralını bir Olay Hub'ları ad alanında veya bir varlıkta (Olay hub örneği veya Kafka etkin ad alanı için olay hub'larında Kafka Topic) yapılandırabilirsiniz. Bir tüketici grubunda paylaşılan erişim yetkilendirme kuralını yapılandırmak şu anda desteklenmez, ancak tüketici grubuna erişimi güvence altına almak için ad alanı veya varlık üzerinde yapılandırılan kuralları kullanabilirsiniz. 
+EventHubs paylaşılan erişim yetkilendirme kuralını bir Olay Hub'ları ad alanında veya bir varlıkta (olay hub örneği veya kafka topic'te olay hub'ında) yapılandırabilirsiniz. Bir tüketici grubunda paylaşılan erişim yetkilendirme kuralını yapılandırmak şu anda desteklenmez, ancak tüketici grubuna erişimi güvence altına almak için ad alanı veya varlık üzerinde yapılandırılan kuralları kullanabilirsiniz. 
 
 Aşağıdaki resimde, yetkilendirme kurallarının örnek varlıklarüzerinde nasıl uygulandığı gösterilmektedir. 
 

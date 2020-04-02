@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6a1ea5e09dc70b2c523bf23b28f726cbe2c0818d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b7df3c07518a9211bd1abf785e3f4954c41ebffc
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80062680"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529460"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Linux VM'lerinde Azure Disk Şifrelemesi senaryoları
 
@@ -407,6 +407,7 @@ Azure Disk Şifrelemesi aşağıdaki Linux senaryoları, özellikleri ve teknolo
 - DFS, GFS, DRDB ve CephFS gibi paylaşılan/dağıtılmış dosya sistemlerinin şifrelemesi (ancak bununla sınırlı değildir):
 - Şifreli bir VM'yi başka bir aboneye taşıma.
 - Çekirdek Çökmesi Dökümü (kdump).
+- Lsv2 serisi VM'ler (bakınız: [Lsv2 serisi)](../lsv2-series.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

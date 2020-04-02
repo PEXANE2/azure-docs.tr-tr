@@ -1,15 +1,15 @@
 ---
 title: Azure portalını kullanarak Blockchain Veri Yöneticisi'ni yapılandırma - Azure Blockchain Hizmeti
 description: Azure portalını kullanarak Azure Blockchain Hizmeti için Blockchain Veri Yöneticisi oluşturun ve yönetin.
-ms.date: 11/04/2019
+ms.date: 03/30/2020
 ms.topic: article
-ms.reviewer: chroyal
-ms.openlocfilehash: 03c22a7a23f1579a846746f21ce048b3425399c3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.reviewer: ravastra
+ms.openlocfilehash: beacef0660a253c90afb507618e8a1742f0c9d2d
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79273169"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529608"
 ---
 # <a name="configure-blockchain-data-manager-using-the-azure-portal"></a>Azure portalını kullanarak Blok Zinciri Veri Yöneticisi'ni yapılandırma
 
@@ -22,7 +22,7 @@ Blockchain Veri Yöneticisi örneğini yapılandırmak için şunları
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* Tam [Hızlı Başlatma: Azure portalını veya Quickstart'ı kullanarak blockchain üyesi oluşturun:](create-member.md) [Azure CLI'yi kullanarak bir Azure Blockchain Hizmeti blockchain üyesi oluşturun](create-member-cli.md)
+* [Tam Hızlı Başlatma: Azure portalını veya Quickstart'ı kullanarak blockchain üyesi oluşturun:](create-member.md) [Azure CLI'yi kullanarak bir Azure Blockchain Hizmeti blockchain üyesi oluşturun.](create-member-cli.md) Blockchain Data Manager kullanılırken Azure Blockchain Service *Standard* katmanı önerilir.
 * Olay [Izgara Konusu](../../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic) Oluşturma
 * Azure [Etkinlik Kılavuz'undaki Olay işleyicileri](../../event-grid/event-handlers.md) hakkında bilgi edinin
 

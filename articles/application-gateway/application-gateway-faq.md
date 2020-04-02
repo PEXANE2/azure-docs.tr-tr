@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 03/24/2020
+ms.date: 04/01/2020
 ms.author: victorh
-ms.openlocfilehash: 290467d5d20a74f8b8b2c23f6da0dcadfd74cc56
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: d9691a6fd5c320242b9677776cbd08be4f800921
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80411023"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80544499"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Uygulama Ağ Geçidi hakkında sık sorulan sorular
 
@@ -112,7 +112,15 @@ v2 SKU kullanan dağıtımların çoğunun sağlanması yaklaşık 6 dakika sür
 
 ### <a name="can-i-use-exchange-server-as-a-backend-with-application-gateway"></a>Exchange Server'ı Application Gateway ile arka uç olarak kullanabilir miyim?
 
-Hayır. Uygulama Ağ Geçidi, SMTP, IMAP ve POP3 gibi e-posta protokollerini desteklemez. 
+Hayır. Uygulama Ağ Geçidi, SMTP, IMAP ve POP3 gibi e-posta protokollerini desteklemez.
+
+### <a name="is-there-guidance-available-to-migrate-from-the-v1-sku-to-the-v2-sku"></a>v1 SKU'dan v2 SKU'ya geçiş için kılavuz var mı?
+
+Evet. Ayrıntılar için bkz: [Azure Uygulama Ağ Geçidi'ni ve Web Uygulama Güvenlik Duvar'ı v1'den v2'ye geçirin.](migrate-v1-v2.md)
+
+### <a name="will-the-application-gateway-v1-sku-continue-to-be-supported"></a>Başvuru Ağ Geçidi v1 SKU desteklenmeye devam edecek mi?
+
+Evet. Uygulama Ağ Geçidi v1 SKU desteklenmeye devam edecektir. Ancak, bu SKU'daki özellik güncellemelerinden yararlanmak için v2'ye geçmeniz önerilir. Daha fazla bilgi için bkz: [Otomatik ölçekleme ve Bölge yedekli Uygulama Ağ Geçidi v2](application-gateway-autoscaling-zone-redundant.md).
 
 ## <a name="performance"></a>Performans
 
@@ -203,10 +211,6 @@ Evet. Bkz. [belirli kaynak IP'lerine erişimi kısıtlayın.](https://docs.micro
 ### <a name="can-i-use-the-same-port-for-both-public-facing-and-private-facing-listeners"></a>Aynı bağlantı noktasını hem kamuya açık hem de özel dinleyiciler için kullanabilir miyim?
 
 Hayır.
-
-### <a name="is-there-guidance-available-to-migrate-from-the-v1-sku-to-the-v2-sku"></a>v1 SKU'dan v2 SKU'ya geçiş için kılavuz var mı?
-
-Evet. Ayrıntılar için bkz: [Azure Uygulama Ağ Geçidi'ni ve Web Uygulama Güvenlik Duvar'ı v1'den v2'ye geçirin.](migrate-v1-v2.md)
 
 ### <a name="does-application-gateway-support-ipv6"></a>Uygulama Ağ Geçidi IPv6'yı destekliyor mu?
 
@@ -329,10 +333,6 @@ Daha fazla bilgi için Bkz. [OWASP top-10 güvenlik açıkları.](https://www.ow
 ### <a name="does-waf-support-ddos-protection"></a>WAF DDoS korumayı destekliyor mu?
 
 Evet. Uygulama ağ geçidinin dağıtıldığı sanal ağda DDoS korumasını etkinleştirebilirsiniz. Bu ayar, Azure DDoS Koruma hizmetinin uygulama ağ geçidi sanal IP'yi (VIP) de korumasını sağlar.
-
-### <a name="is-there-guidance-available-to-migrate-from-the-v1-sku-to-the-v2-sku"></a>v1 SKU'dan v2 SKU'ya geçiş için kılavuz var mı?
-
-Evet. Ayrıntılar için bkz: [Azure Uygulama Ağ Geçidi'ni ve Web Uygulama Güvenlik Duvar'ı v1'den v2'ye geçirin.](migrate-v1-v2.md)
 
 ## <a name="configuration---ingress-controller-for-aks"></a>Yapılandırma - AKS için giriş denetleyicisi
 

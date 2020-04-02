@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
-ms.openlocfilehash: f50115732940eab14db30842be85b47cb4a552e1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 88d25083a1105023279f3907a4573319fabe087c
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79299541"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80520761"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Azure yönetilen disklerin sunucu tarafı şifrelemesi
 
@@ -68,7 +68,7 @@ Müşteri tarafından yönetilen anahtarlara erişimi iptal etmek için [Azure K
 
 - Bu özellik diskiniz için etkinleştirilmişse, devre dışı kalamazsınız.
     Bu işi halletmeniz gerekiyorsa, tüm verileri müşteri tarafından yönetilen anahtarları kullanmayan tamamen farklı yönetilen bir diske [kopyalamanız](disks-upload-vhd-to-managed-disk-cli.md#copy-a-managed-disk) gerekir.
-- Sadece ["yumuşak" ve "sert" RSA boyutları](../../key-vault/about-keys-secrets-and-certificates.md#keys-and-key-types) 2080, başka anahtar lar veya boyutlarda desteklenir.
+- Sadece ["yumuşak" ve "sert" RSA boyutları](../../key-vault/about-keys-secrets-and-certificates.md#keys-and-key-types) 2048, başka anahtar lar veya boyutlarda desteklenir.
 - Sunucu tarafı şifrelemesi ve müşteri tarafından yönetilen anahtarlar kullanılarak şifrelenen özel görüntülerden oluşturulan diskler, aynı müşteri tarafından yönetilen anahtarlar kullanılarak şifrelenmelidir ve aynı abonelikte olmalıdır.
 - Sunucu tarafı şifreleme ve müşteri tarafından yönetilen anahtarlarla şifrelenen disklerden oluşturulan anlık görüntüler, aynı müşteri tarafından yönetilen anahtarlarla şifrelenmelidir.
 - Paylaşılan resim galerisinde sunucu tarafı şifrelemesi ve müşteri tarafından yönetilen anahtarlar kullanılarak şifrelenen özel görüntüler kullanılamaz.

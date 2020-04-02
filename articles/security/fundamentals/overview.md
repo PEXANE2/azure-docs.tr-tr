@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: TomSh
-ms.openlocfilehash: a1dbabafe32e013d526ed88a83e446ee765cdb7b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a3b738d95b5b777f1cf0329fb3c1bc3e2860421e
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76045869"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80545964"
 ---
 # <a name="introduction-to-azure-security"></a>Azure güvenliğe giriş
 ## <a name="overview"></a>Genel Bakış
@@ -88,7 +88,7 @@ Kilitlenmeler, hatalar veya performans sorunları varsa, nedenini tanılamak iç
 
 Azure Monitor günlükleri, esnek bir sorgu yaklaşımıyla güvenlikle ilgili büyük miktarda girişi hızlı bir şekilde aramanıza olanak sağladığından, adli tıp ve diğer güvenlik çözümlemelerinde yararlı bir araç olabilir. Ayrıca, şirket içi [güvenlik duvarı ve proxy günlükleri Azure'a aktarılabilir ve Azure Monitor günlüklerini kullanarak analiz edilebilebilir.](../../log-analytics/log-analytics-agent-windows.md)
 
-### <a name="azure-advisor"></a>Azure Danışmanı
+### <a name="azure-advisor"></a>Azure Advisor
 [Azure Danışmanı,](../../advisor/index.yml) Azure dağıtımlarınızı optimize etmenize yardımcı olan kişiselleştirilmiş bir bulut danışmanıdır. Kaynak yapılandırmanızı ve kullanım telemetrinizi çözümler. Daha [sonra, genel Azure harcamanızı azaltmak](../../advisor/advisor-cost-recommendations.md)için fırsatlar ararken, kaynaklarınızın [performansını,](../../advisor/advisor-performance-recommendations.md) [güvenliğini](../../advisor/advisor-security-recommendations.md)ve [yüksek kullanılabilirliğini](../../advisor/advisor-high-availability-recommendations.md) artırmaya yardımcı olacak çözümler önerir. Azure Danışmanı, Azure'da dağıttEttiğiniz çözümler için genel güvenlik duruşunuzu önemli ölçüde iyileştirebilen güvenlik önerileri sağlar. Bu öneriler, Azure Güvenlik [Merkezi](../../security-center/security-center-intro.md) tarafından gerçekleştirilen güvenlik çözümlemesi ile çizilir.
 
 ### <a name="azure-security-center"></a>Azure Güvenlik Merkezi
@@ -179,7 +179,7 @@ Birçok kuruluş için veri şifreleme, veri gizliliği, uyumluluk ve veri egeme
 
 Azure depolama hizmetleri artık CORS'u destekler, böylece hizmet için CORS kurallarını ayarladığınızda, hizmete karşı farklı bir etki alanından yapılan doğru kimlik doğrulaması isteği, belirttiğiniz kurallara göre izin verilip verilmediğini belirlemek için değerlendirilir.
 
-## <a name="networking"></a>Ağ Oluşturma
+## <a name="networking"></a>Ağ
 Bu bölümde, Azure ağ güvenliğindeki temel özellikler ve bu özelliklerle ilgili özet bilgiler le ilgili ek bilgiler sağlanmaktadır.
 
 ### <a name="network-layer-controls"></a>Ağ Katmanı Denetimleri
@@ -233,11 +233,11 @@ Microsoft [Azure Uygulama Ağ Geçidi,](../../application-gateway/overview.md) u
 
 ![Application Gateway](./media/overview/azure-security-fig2.png)
 
-CPU yoğun SSL sonlandırmasını Uygulama Ağ Geçidi'ne ("SSL boşaltma" veya "SSL köprüleme" olarak da bilinir) boşaltarak web çiftliği üretkenliğini optimize etmenizi sağlar. Ayrıca, gelen trafiğin round-robin dağıtımı, çerez tabanlı oturum yakınlığı, URL yol tabanlı yönlendirme ve tek bir Uygulama Ağ Geçidi arkasında birden çok web sitesi barındırma olanağı da dahil olmak üzere diğer Katman 7 yönlendirme özellikleri sağlar. Azure Application Gateway, bir katman 7 yük dengeleyicidir.
+CPU yoğun TLS sonlandırmayı Uygulama Ağ Geçidi'ne ("TLS boşaltma" veya "TLS köprüleme" olarak da bilinir) boşaltarak web çiftliği üretkenliğini optimize etmenizi sağlar. Ayrıca, gelen trafiğin round-robin dağıtımı, çerez tabanlı oturum yakınlığı, URL yol tabanlı yönlendirme ve tek bir Uygulama Ağ Geçidi arkasında birden çok web sitesi barındırma olanağı da dahil olmak üzere diğer Katman 7 yönlendirme özellikleri sağlar. Azure Application Gateway, bir katman 7 yük dengeleyicidir.
 
 Bulutta veya şirket içinde olmalarından bağımsız olarak, farklı sunucular arasında yük devretme ile HTTP istekleri için performans amaçlı yönlendirme sağlar.
 
-Uygulama, HTTP yük dengeleme, çerez tabanlı oturum yakınlığı, [Güvenli Soketkatmanı (SSL)](../../application-gateway/tutorial-restrict-web-traffic-powershell.md) boşaltma, özel sistem sondaları, çoklu site desteği ve diğerleri dahil olmak üzere birçok Uygulama Teslim Denetleyicisi (ADC) özellikleri sağlar.
+Uygulama, HTTP yük dengeleme, çerez tabanlı oturum yakınlığı, [TLS boşaltma,](../../application-gateway/tutorial-restrict-web-traffic-powershell.md)özel sağlık sondaları, çoklu site desteği ve diğerleri dahil olmak üzere birçok Uygulama Teslim Denetleyicisi (ADC) özellikleri sağlar.
 
 ### <a name="web-application-firewall"></a>Web Uygulaması Güvenlik Duvarı
 Web Application Firewall, standart Uygulama Teslim Denetimi (ADC) işlevleri için uygulama ağ geçidi kullanan web uygulamalarına koruma sağlayan [Azure Uygulama Ağ Geçidi'nin](../../application-gateway/overview.md) bir özelliğidir. Web uygulaması güvenlik duvarı bunu, uygulamaları OWASP tarafından sunulan en yaygın 10 web güvenlik açığının çoğuna karşı koruyarak gerçekleştirir.
@@ -323,7 +323,7 @@ Yama Güncelleştirmeleri, hem işletmenizde dağıtmanız gereken yazılım gü
 [Güvenlik Merkezi,](../../security-center/security-center-intro.md) tehditleri önlemenize, algılamanıza ve yanıt vermenize yardımcı olur ve Azure kaynaklarınızın güvenliği nde daha fazla görünürlük ve denetim sağlar. Azure aboneliklerinizde tümleşik Güvenlik izleme ve ilke yönetimi sağlar, aksi takdirde fark edilmeyecek tehditleri algılamaya yardımcı olur ve geniş bir güvenlik çözümleri ekosistemiyle çalışır.
 
 ## <a name="identity-and-access-management"></a>Kimlik ve erişim yönetimi
-Sistemleri, uygulamaları ve verileri güvence altına almak kimlik tabanlı erişim denetimleriyle başlar. Microsoft iş ürünleri ve hizmetlerinde yerleşik olan kimlik ve erişim yönetimi özellikleri, kuruluş ve kişisel bilgilerinizi yetkisiz erişimden korurken, yasal kullanıcıların her zaman ve her nerede olurlarsa olsunlar kullanımına sunulmasını sağlar buna ihtiyacım var.
+Sistemleri, uygulamaları ve verileri güvence altına almak kimlik tabanlı erişim denetimleriyle başlar. Microsoft iş ürünleri ve hizmetlerinde yerleşik olan kimlik ve erişim yönetimi özellikleri, kuruluş ve kişisel bilgilerinizi yetkisiz erişimden korurken, gerektiğinde ve nerede olursa olsun yasal kullanıcılara sunulmasını sağlar.
 
 ### <a name="secure-identity"></a>Güvenli Kimlik
 Microsoft, kimlik ve erişimi yönetmek için ürünleri ve hizmetleri genelinde birden çok güvenlik uygulaması ve teknolojisi kullanır.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 5da0297dd97c8263bdc47f1d5a3d7d2d1f835e4b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 82608c98fc8ea15167b690547906c2238b1b3c04
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80298825"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80544336"
 ---
 # <a name="storsimple-virtual-array-best-practices"></a>StorSimple Sanal Dizisi ile ilgili en iyi deneyimler
 
@@ -121,7 +121,7 @@ Bu nedenle, şunları yapmanızı öneririz:
 * Sanal dizinizin Active Directory için kendi kuruluş biriminde (OU) olduğundan emin olun.
 * Sanal dizinize grup ilkesi nesnelerinin (GPO' lar) uygulanmadığından emin olun. Sanal dizinin (alt düğüm) üst öğeden otomatik olarak gPO devralmadığından emin olmak için devralmayı engelleyebilirsiniz. Daha fazla bilgi [için, devralma yı engellemek](https://technet.microsoft.com/library/cc731076.aspx)için gidin.
 
-### <a name="networking"></a>Ağ Oluşturma
+### <a name="networking"></a>Ağ
 Sanal dizinizin ağ yapılandırması yerel web web web ui üzerinden yapılır. Sanal dizinin sağlandığı hipervizör aracılığıyla sanal ağ arabirimi etkinleştirilir. Sanal ağ arabirimi IP adresini, alt ağ adresini ve ağ geçidini yapılandırmak için [Ağ Ayarları](storsimple-virtual-array-deploy3-fs-setup.md) sayfasını kullanın.  Cihazınız Için birincil ve ikincil DNS sunucusunu, zaman ayarlarını ve isteğe bağlı proxy ayarlarını da yapılandırabilirsiniz. Ağ yapılandırmasının çoğu tek seferlik bir kurulumdur. Sanal diziyi dağıtmadan önce [StorSimple ağ gereksinimlerini](storsimple-ova-system-requirements.md#networking-requirements) gözden geçirin.
 
 Sanal dizinizi dağıtırken, aşağıdaki en iyi uygulamaları izlemenizi öneririz:
@@ -161,8 +161,8 @@ Sanal cihazınızda hisse veya birim sağlarken aşağıdaki en iyi uygulamalar�
 
 * Katmanlı bir paylaşımın sağlanan boyutuna göre dosya boyutları katmanlama performansını etkileyebilir. Büyük dosyalarla çalışmak yavaş bir katman çıkmasına neden olabilir. Büyük dosyalarla çalışırken, en büyük dosyanın paylaşım boyutunun %3'ünden daha küçük olduğunu öneririz.
 * Sanal dizide en fazla 16 birim/paylaşım oluşturulabilir. Yerel olarak sabitlenmiş ve katmanlı birimlerin/paylaşımların boyut sınırları için her zaman [StorSimple Virtual Array sınırlarına](storsimple-ova-limits.md)bakın.
-* Bir hacim oluştururken, beklenen veri tüketiminin yanı sıra gelecekteki büyümeyi de hesaba katın. Birim daha sonra genişletilemez.
-* Birim oluşturulduktan sonra StorSimple'daki birimin boyutunu küçültemezsiniz.
+* Bir hacim oluştururken, beklenen veri tüketiminin yanı sıra gelecekteki büyümeyi de hesaba katın. Birim veya pay daha sonra genişletilemez.
+* Birim/paylaşım oluşturulduktan sonra StorSimple'daki birimin/paylaşımın boyutunu küçültemezsiniz.
 * StorSimple'da katmanlı bir birimde yazarken, birim verileri belirli bir eşiğe ulaştığında (birim için ayrılmış yerel alana göre), IO daraltır. Bu sese yazmaya devam etmek IO'yu önemli ölçüde yavaşlatıyor. Katmanlı bir ses düzeyine, sağlanan kapasitenin ötesinde yazabiliyor olsanız da (kullanıcının verilen kapasitenin ötesinde yazmayı etkin olarak durdurmayız), aşırı abone olduğunuz etkiye ilişkin bir uyarı bildirimi görürsünüz. Uyarıyı bir kez gördüğünüzde, birim verilerini silme (birim genişletme şu anda desteklenmez) gibi düzeltici önlemler almanız zorunludur.
 * Olağanüstü durum kurtarma kullanım durumlarında, izin verilen hisse/birim sayısı 16 ve paralel olarak işlenebilecek maksimum hisse/birim sayısı da 16 olduğundan, hisse/birim sayısı Nın RPO ve RPO'nuzla bir ilgisi yoktur.
 

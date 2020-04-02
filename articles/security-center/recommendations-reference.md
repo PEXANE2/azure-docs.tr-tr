@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/11/2020
 ms.author: memildin
-ms.openlocfilehash: f0e74a366e8dbb515f2f50748eb4a5c76088a723
-ms.sourcegitcommit: 632e7ed5449f85ca502ad216be8ec5dd7cd093cb
+ms.openlocfilehash: 8f4703330190d3907e9a6e3aead8892fe69e7c13
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80398025"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521210"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>Güvenlik önerileri - bir başvuru kılavuzu
 
@@ -105,7 +105,7 @@ Güvenli Puanınız, tamamladığınız Güvenlik Merkezi önerilerinin sayısı
 |**Otomasyon hesabı değişkenleri şifrelenmelidir**|Hassas verileri depolarken Otomasyon hesabı değişken varlıklarının şifrelemesini etkinleştirin.<br>(İlgili ilke: Otomasyon hesap değişkenlerinde şifreleme etkinleştirilmelidir)|Yüksek|N|Hesaplama kaynakları (otomasyon hesabı)|
 |**Disk şifreleme sanal makinelerde uygulanmalıdır**|Hem Windows hem de Linux sanal makineleri için Azure Disk Şifreleme'yi kullanarak sanal disklerinizi şifreleyin. Azure Disk Şifrelemesi (ADE), verilerinizi korumaya ve korumaya yardımcı olmak ve müşteri Azure anahtar kasasında kuruluş güvenliği ve uyumluluk taahhütlerinizi karşılamaya yardımcı olmak için işletim sistemi ve veri diski şifrelemesi sağlamak ve windows'un endüstri standardı BitLocker özelliğinden ve Linux'un DM-Crypt özelliğinden yararlanır. Uyumluluk ve güvenlik gereksiniminiz, kısa ömürlü (yerel olarak bağlı geçici) diskin şifrelemesi de dahil olmak üzere şifreleme anahtarlarınızı kullanarak verilerin sonunu şifrelemenizi gerektirdiğinde, Azure disk şifrelemesini kullanın. Alternatif olarak, varsayılan olarak Yönetilen Diskler, şifreleme anahtarlarının Azure'da Microsoft tarafından yönetilen anahtarlar olduğu Azure Depolama Hizmeti Şifrelemesi kullanılarak varsayılan olarak başka bir yerde şifrelenir. Bu, uyumluluk ve güvenlik gereksinimlerinizi karşılıyorsa, gereksinimlerinizi karşılamak için varsayılan Yönetilen disk şifrelemesini kullanabilirsiniz.<br>(İlgili ilke: Disk şifreleme sanal makinelerde uygulanmalıdır)|Yüksek|N|Makine|
 |**Sanal makineler yeni Azure Kaynak Yöneticisi kaynaklarına geçirilmelidir**|Daha güçlü erişim denetimi (RBAC), daha iyi denetim, Kaynak Yöneticisi tabanlı dağıtım ve yönetim, yönetilen kimliklere erişim, sırlar için önemli kasaya erişim, Azure AD tabanlı kimlik doğrulama ve daha kolay güvenlik yönetimi için etiketler ve kaynak grupları desteği gibi güvenlik geliştirmeleri sağlamak için sanal makineleriniz için Azure Kaynak Yöneticisi'ni kullanın.<br>(İlgili ilke: Sanal makineler yeni Azure Kaynak Yöneticisi kaynaklarına geçirilmelidir)|Düşük|N|Makine|
-|**Güvenlik açığı değerlendirme çözümü sanal makinelerinize yüklenmeli**|Sanal makinelerinize bir güvenlik açığı değerlendirme çözümü yükleme<br>(İlgili politika: Güvenlik açığı değerlendirmesi sanal makinelere yüklenmelidir)|Orta|N|Makine|
+|**Güvenlik açığı değerlendirme çözümü sanal makinelerinize yüklenmeli**|Sanal makinelerinize bir güvenlik açığı değerlendirme çözümü yükleme<br>(İlgili politika: Güvenlik açıkları bir Güvenlik Açığı Değerlendirmesi çözümü tarafından düzeltilmelidir)|Orta|N|Makine|
 |**Güvenlik açıkları, Güvenlik Açığı Değerlendirmesi çözümü yle düzeltilmelidir**|Güvenlik açığı değerlendirmesi 3. Bu tür güvenlik açıkları bulunduğunda, bunlar önerinin bir parçası olarak daha fazla bilgi için kullanılabilir.<br>(İlgili politika: Güvenlik açıkları bir Güvenlik Açığı Değerlendirmesi çözümü tarafından düzeltilmelidir)|Yüksek|N|Makine|
 |**Makinelerinizdeki güvenlik yapılandırmasındaki güvenlik açıkları düzeltilmelidir**|Makinelerinizdeki güvenlik yapılandırmasındaki güvenlik açıklarını düzelterek saldırılara karşı koruyun.<br>(İlgili ilke: Makinelerinizdeki güvenlik yapılandırmasındaki güvenlik açıkları düzeltilmelidir)|Düşük|N|Makine|
 |**Kapsayıcı güvenlik yapılandırmalarında güvenlik açıkları düzeltilmelidir**|Docker yüklü makinelerde güvenlik yapılandırmasındaki güvenlik açıklarını saldırılardan korumak için düzeltin.<br>(İlgili ilke: Konteyner güvenlik yapılandırmalarında güvenlik açıkları düzeltilmelidir)|Yüksek|N|Makine|

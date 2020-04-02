@@ -6,14 +6,14 @@ ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
-ms.date: 03/24/2020
+ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 758e6123fd09df1e3f8b2e883a729b9fec4328d1
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: 8bcf59ee863bb2fd2a3213480372ad215c2fc00d
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80367297"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80528584"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>Bağlı Makine aracısını yönetme ve sürdürme
 
@@ -61,6 +61,9 @@ Kurulum Sihirbazı, önceki bir sürümün var olup olmadığını keşfeder ve 
 ### <a name="linux-agent"></a>Linux aracısı
 
 Bir Linux makinesindeki aracıyı en son sürüme güncellemek için iki komut içerir. Yerel paket dizini depolardan en son kullanılabilir paketlerin listesiyle güncelleştirmek için bir komut ve yerel paketi yükseltmek için bir komut. 
+
+> [!NOTE]
+> Aracıyı yükseltmek için *kök* erişim izinlerine veya Sudo'yu kullanarak hakları yüksek bir hesaba sahip olmalısınız.
 
 #### <a name="upgrade-ubuntu"></a>Yükseltme Ubuntu
 
@@ -112,13 +115,11 @@ Paketlerin yüklenmesi ve kaldırılması gibi [yum](https://access.redhat.com/a
 
 ## <a name="remove-the-agent"></a>Aracıyı kaldırma
 
-Bu bölümde açıklanan komut satırını veya kurulum sihirbazını kullanarak Windows veya Linux aracısını kaldırmak için aşağıdaki yordamlardan birini kullanın. Aracıyı yüklemeden önce, aşağıdaki adımları tamamlayarak sunucular için makineyi Azure Arc'tan (önizleme) çıkarın: 
-
-1. [Azure portalına](https://aka.ms/hybridmachineportal)giderek sunucular için Azure Arc'ı açın (önizleme).
-
-2. Listedeki makineyi seçin, elipsleri seçin (**...**), ve sonra **Sil'i**seçin.
+Windows veya Linux'a Bağlı Makine aracısını makineden kaldırmak için aşağıdaki yöntemlerden birini gerçekleştirin. Aracıyı kaldırmak, makineyi sunucular için Arc ile birlikte kaldırmaz (önizleme), bu, makineyi Azure'da yönetmeniz gerektiğinde gerçekleştirdiğiniz ayrı bir işlemdir.
 
 ### <a name="windows-agent"></a>Windows aracısı
+
+Aşağıdaki yöntemlerin her ikisi de aracıyı kaldırır, ancak makinedeki *C:\Program Files\AzureConnectedMachineAgent* klasörünü kaldırmaz.
 
 #### <a name="uninstall-from-control-panel"></a>Denetim Panelinden Kaldır
 
@@ -158,6 +159,9 @@ Aracıyı Komut İstemi'nden el ile kaldırmak veya komut dosyası gibi otomatik
 
 ### <a name="linux-agent"></a>Linux aracısı
 
+> [!NOTE]
+> Aracıyı kaldırmak için *kök* erişim izinlerine veya Sudo kullanarak hakları yüksek bir hesaba sahip olmalısınız.
+
 Linux aracısını kaldırmak için kullanılacak komut Linux işletim sistemine bağlıdır.
 
 - Ubuntu için aşağıdaki komutu çalıştırın:
@@ -177,3 +181,11 @@ Linux aracısını kaldırmak için kullanılacak komut Linux işletim sistemine
     ```bash
     sudo zypper remove azcmagent
     ```
+
+## <a name="unregister-machine"></a>Kayıt dışı makine
+
+Azure'da destekleyici hizmetlerle makineyi yönetmeyi durdurmayı planlıyorsanız, sunucular için Arc ile makinenin kaydını çıkarmak için aşağıdaki adımları gerçekleştirin (önizleme). Bağlı Makine aracısını makineden çıkarmadan önce veya sonra bu adımı gerçekleştirebilirsiniz.
+
+1. [Azure portalına](https://aka.ms/hybridmachineportal)giderek sunucular için Azure Arc'ı açın (önizleme).
+
+2. Listedeki makineyi seçin, elipsleri seçin (**...**), ve sonra **Sil'i**seçin.

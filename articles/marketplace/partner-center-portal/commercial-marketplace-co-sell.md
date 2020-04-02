@@ -7,26 +7,26 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/31/2020
-ms.openlocfilehash: f290b08d1f625600d03c9540b28c289e9b449471
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: e73ba110128f6d4f0bea008840b06572d7aee140
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/01/2020
-ms.locfileid: "80475163"
+ms.locfileid: "80517936"
 ---
 # <a name="co-sell-option-in-partner-center"></a>Partner Center'da ortak satış seçeneği
 
-Co-sell sekmesi hakkında bilgi sağlamak tamamen isteğe bağlıdır. Co-sell Ready ve IP Co-sell Ready durumunu elde etmek için gereklidir. Sağladığınız bilgiler, müşteri gereksinimlerine uygun unu değerlendirirken çözümünüz hakkında daha fazla bilgi edinmek için Microsoft satış ekipleri tarafından kullanılacaktır. Doğrudan müşteriler tarafından kullanılamaz. Daha fazla bilgi için [Microsoft üzerinden satış](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-saas-offer#sell-through-microsoft)bakın.
+Co-sell sekmesi hakkında bilgi sağlamak tamamen isteğe bağlıdır. Co-sell Ready ve IP Co-sell Ready durumunu elde etmek için gereklidir. Sağladığınız bilgiler, müşteri gereksinimlerine uygun unu değerlendirirken çözümünüz hakkında daha fazla bilgi edinmek için Microsoft satış ekipleri tarafından kullanılacaktır. Doğrudan müşteriler tarafından kullanılamaz. Daha fazla bilgi için [Microsoft üzerinden satış](https://partner.microsoft.com/membership/sell-with-microsoft)bakın.
 
 Ortak Merkezi'ndeki ortak satış seçeneği şu anda bazı teklif türleri için kullanılabilir. Ek teklif türleri için destek zaman içinde kullanılabilir olacaktır.
 
 | **Teklif Türü** | **Ortak Satış Sayfası İş Ortağı Merkezi'nde kullanılabilir** |
 |    -----------------------    |    -----------------------------  |
-| Hizmet Olarak Yazılım (SaaS) |     Nisan 2020 civarında genel kullanılabilirlik     |
+| Hizmet Olarak Yazılım (SaaS) |     Genel kullanılabilirlik Nisan 2020      |
 | PowerApps & Müşteri Katılımı için Dynamics 365      |     Kullanıma sunuldu      |
 | Dynamics 365 for Operations     |     Kullanıma sunuldu       |
-| Dynamics 365 Business Central      |  Nisan 2020 civarında genel kullanılabilirlik    |
-| Azure Uygulaması     |     Nisan 2020 civarında genel kullanılabilirlik     |
+| Dynamics 365 Business Central      |  Genel kullanılabilirlik Nisan 2020     |
+| Azure Uygulaması     |     Genel kullanılabilirlik Nisan 2020     |
 | Azure Sanal Makinesi      |     Duyurulacak       |
 | Azure Kapsayıcı     |     Duyurulacak       |
 | Danışmanlık Hizmetleri      |     Duyurulacak       |
@@ -66,8 +66,7 @@ Microsoft'un müşteri gereksinimlerinizi değerlendirmek için kullanması içi
 
 | **Belgeler**    | **Açıklama**  |
 | :------------------- | :-------------------|
-| *Müşteri tek çağrı cihazı* | Teklifinizin müşteriye hazır açıklaması. Microsoft satış ekipleri, teklifinizin uygun olup olmadığını belirlemeye ve müşteriye hazır olduğundan emin olmak için bu bilgileri müşterilerle paylaşabilir. <br> <br> İş Ortağı Merkezi'nde bulunan ilgili şablonlardan birini kullanın: <br> <ul> <li> Microsoft Azure tek çağrı cihazı şablonu </li> <li> Microsoft Dynamics 365 tek çağrı cihazı şablonu </li> <li> Office 365 tek çağrı cihazı şablonu </li> <li> Windows 10 tek çağrı cihazı şablonu </li> </ul>
- |
+| *Müşteri tek çağrı cihazı* | Teklifinizin müşteriye hazır açıklaması. Microsoft satış ekipleri, teklifinizin uygun olup olmadığını belirlemeye ve müşteriye hazır olduğundan emin olmak için bu bilgileri müşterilerle paylaşabilir. <br> <br> İş Ortağı Merkezi'nde bulunan ilgili şablonlardan birini kullanın: <br> <ul> <li> Microsoft Azure tek çağrı cihazı şablonu </li> <li> Microsoft Dynamics 365 tek çağrı cihazı şablonu </li> <li> Office 365 tek çağrı cihazı şablonu </li> <li> Windows 10 tek çağrı cihazı şablonu </li> </ul> |
 | *Müşteri sunumu* | Çözümünüzü ve değer teklifiniz için slayt destesi. Microsoft satış ekipleri, teklifinizin müşteriye hazır olmasını sağladıktan sonra, ortak bir çözüm dağıtırken her iki şirketin de getirdiği değeri ifade etmek için sunuyu müşterilerle paylaşabilir. Sunu, çözümünuzun ne işe yaradığı, müşterilere nasıl yardımcı olabileceği, çözümün hangi sektörler için olduğu ve rakip çözümlerle karşılaştırıldığında nasıl olduğu ele alınmalıdır. <br> <br> İş Ortağı Merkezi'nde bulunan şablonu kullanın.|
 | *Müşteri vaka çalışması* | Bu bilgiler, potansiyel bir müşteriye, sizin ve Microsoft'un bu çözümü önceki durumlarda nasıl başarıyla dağıtdığınızı gösterir. <br> <br> İş Ortağı Merkezi'nde bulunan şablonu kullanın. |
 | *Doğrulanabilir müşteri kazanır (isteğe bağlı)* | Çözümünüz dağıtıldıktan sonra müşteri başarılarının belirli örnekleri. |

@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 02/10/2020
-ms.openlocfilehash: 4025c620aea49dfb26ab203630c121d29d88d9d7
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: f02046d1e2ee558ca4ea4472a03fddb5d0a6a16f
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80474540"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80549318"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Azure Machine Learning veri kümeleri oluşturma
 
@@ -82,7 +82,7 @@ Python SDK'yı kullanarak bir [Azure veri deposundan](how-to-access-data.md) ver
 
 #### <a name="create-a-tabulardataset"></a>Bir TabularDataset oluşturma
 
-.csv `TabularDatasetFactory` veya .tsv biçimindeki dosyaları okumak ve kayıtdışı bir TabularDataset oluşturmak için sınıftaki [`from_delimited_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none-) yöntemi kullanın. Birden çok dosyadan okuyorsanız, sonuçlar tek bir satır gösteriminde toplanır. 
+.csv `TabularDatasetFactory` veya .tsv biçimindeki dosyaları okumak ve kayıtdışı bir TabularDataset oluşturmak için sınıftaki [`from_delimited_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none--support-multi-line-false-) yöntemi kullanın. Birden çok dosyadan okuyorsanız, sonuçlar tek bir satır gösteriminde toplanır. 
 
 ```Python
 from azureml.core import Workspace, Datastore, Dataset
@@ -164,7 +164,7 @@ sql_ds = Dataset.Tabular.from_sql_query((sql_datastore, 'SELECT * FROM my_table'
 
 TabularDatasets'te, bir zaman serisi özelliğini etkinleştirmek için verilerdeki bir sütundan veya yol deseni verilerinin depolanan yerden bir zaman damgası belirtebilirsiniz. Bu belirtim, zamana göre kolay ve verimli filtreleme sağlar.
 
-Zaman [`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-fine-grain-timestamp--coarse-grain-timestamp-none--validate-false-) damgası`TabularDataset` sütununuzu belirtmek ve zamana göre filtreleme yi etkinleştirmek için sınıftaki yöntemi kullanın. Daha fazla bilgi için [NOAA hava durumu verileriyle Tabular zaman serisiyle ilgili API](https://aka.ms/azureml-tsd-notebook)demosu'na bakın.
+Zaman [`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-) damgası`TabularDataset` sütununuzu belirtmek ve zamana göre filtreleme yi etkinleştirmek için sınıftaki yöntemi kullanın. Daha fazla bilgi için [NOAA hava durumu verileriyle Tabular zaman serisiyle ilgili API](https://aka.ms/azureml-tsd-notebook)demosu'na bakın.
 
 ```Python
 # create a TabularDataset with time series trait

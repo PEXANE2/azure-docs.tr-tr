@@ -6,14 +6,14 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/18/2019
+ms.date: 03/31/2020
 ms.author: tamram
-ms.openlocfilehash: 13adf6de420b54299d04a226dab81e75cbb9fef2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b4e91aa59168deb18375bf86ae77f655ca3dab47
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75975779"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521285"
 ---
 # <a name="manage-storage-account-access-keys"></a>Depolama hesabı erişim anahtarlarını yönetme
 
@@ -52,6 +52,8 @@ Depolama hesabı anahtarlarınızı döndürmek için aşağıdaki işlemi izley
 
 > [!NOTE]
 > Microsoft, tüm uygulamalarınızdaki anahtarlardan yalnızca birini aynı anda kullanmanızı önerir. Key 1'i bazı yerlerde, Key 2'yi bazı yerlerde kullanırsanız, bazı uygulamaların erişimini kaybetmeden anahtarlarınızı döndüremezsiniz.
+
+Bir hesabın erişim anahtarlarını döndürmek için, kullanıcının bir Hizmet Yöneticisi olması veya **Microsoft.Storage/storageAccounts/regeneratekey/action**içeren bir RBAC rolü atanması gerekir. Bu eylemi içeren bazı yerleşik RBAC rolleri **Sahibi,** **Katılımcısı**ve **Depolama Hesabı Anahtar Operatörü Hizmeti Rolü** rolleridir. Hizmet Yöneticisi rolü hakkında daha fazla bilgi için [Bkz. Klasik abonelik yöneticisi rolleri, Azure RBAC rolleri ve Azure REKLAM rolleri.](../../role-based-access-control/rbac-and-directory-admin-roles.md) Azure Depolama için yerleşik RBAC rolleri hakkında ayrıntılı bilgi için Azure [RBAC için Azure yerleşik rollerdeki](../../role-based-access-control/built-in-roles.md#storage) **Depolama** bölümüne bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

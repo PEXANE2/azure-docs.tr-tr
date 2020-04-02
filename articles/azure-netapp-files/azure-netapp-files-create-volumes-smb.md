@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/13/2020
+ms.date: 03/31/2020
 ms.author: b-juche
-ms.openlocfilehash: b2000c3fd3d64793f797e997d8f3c10eaed5d7aa
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9ad9e13667791c38a8bf8be01919bcdbd0032102
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79409616"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80519604"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Azure NetApp Files için SMB birimi oluşturma
 
@@ -74,6 +74,14 @@ Bir alt ağ Azure NetApp Dosyalarına devredilmelidir.
 
     Bkz. AD siteleri ve hizmetleri hakkında [site topolojisinin tasarlanması.](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/designing-the-site-topology) 
     
+* Azure NetApp Files DES, Kerberos AES 128 ve Kerberos AES 256 şifreleme türlerini destekler (en az güvenli olandan en güvenlisine kadar). Active Directory'ye katılmak için kullanılan kullanıcı kimlik bilgilerinin, Etkin Dizininiz için etkinleştirilen özelliklerle eşleşen en yüksek karşılık gelen hesap seçeneğine sahip olması gerekir.   
+
+    Örneğin, Etkin Dizininiz yalnızca AES-128 özelliğine sahipse, kullanıcı kimlik bilgileri için AES-128 hesap seçeneğini etkinleştirmeniz gerekir. Active Directory'nizde AES-256 özelliği varsa, AES-256 hesap seçeneğini etkinleştirmeniz gerekir (AES-128'i de destekler). Active Directory'nizde Herhangi bir Kerberos şifreleme özelliği yoksa, Azure NetApp Files varsayılan olarak DES kullanır.  
+
+    Etkin Dizin Kullanıcıları ve Bilgisayar MMC konsolunun özelliklerindeki hesap seçeneklerini etkinleştirebilirsiniz:   
+
+    ![Aktif Dizin Kullanıcıları ve BilgisayarMMC](../media/azure-netapp-files/ad-users-computers-mmc.png)
+
 Ek AD bilgileri hakkında Azure NetApp Dosyaları [Kobİ SSS'lerine](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-faqs#smb-faqs) bakın. 
 
 ## <a name="decide-which-domain-services-to-use"></a>Hangi Etki Alanı Hizmetlerini kullanacağına karar verin 

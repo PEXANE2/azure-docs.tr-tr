@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: article
-ms.date: 11/26/2019
+ms.date: 03/31/2020
 ms.author: iainfou
-ms.openlocfilehash: cc126af67a0d8627d61e595cee56f3df8973340d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 160873fe889d7eccc7efd08b4767854a5b24c484
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77613051"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80518966"
 ---
 # <a name="configure-scoped-synchronization-from-azure-ad-to-azure-active-directory-domain-services"></a>Azure AD'den Azure Etkin Dizin Etki Alanı Hizmetlerine kapsamlı eşitleme yapılandırma
 
@@ -42,18 +42,20 @@ Kapsamlı eşitleme ayarlarını yapılandırmak için Azure portalını veya Po
 
 | Eylem | | |
 |--|--|--|
-| Azure AD DS yönetilen etki alanı oluşturun ve kapsamlı eşitleme yapılandırma | [Azure portalında](#enable-scoped-synchronization-using-the-azure-portal) | [Powershell](#enable-scoped-synchronization-using-powershell) |
-| Kapsamlı eşitleme değiştirme | [Azure portalında](#modify-scoped-synchronization-using-the-azure-portal) | [Powershell](#modify-scoped-synchronization-using-powershell) |
-| Kapsamlı eşitlemeyi devre dışı | [Azure portalında](#disable-scoped-synchronization-using-the-azure-portal) | [Powershell](#disable-scoped-synchronization-using-powershell) |
+| Azure AD DS yönetilen etki alanı oluşturun ve kapsamlı eşitleme yapılandırma | [Azure portalı](#enable-scoped-synchronization-using-the-azure-portal) | [PowerShell](#enable-scoped-synchronization-using-powershell) |
+| Kapsamlı eşitleme değiştirme | [Azure portalı](#modify-scoped-synchronization-using-the-azure-portal) | [PowerShell](#modify-scoped-synchronization-using-powershell) |
+| Kapsamlı eşitlemeyi devre dışı | [Azure portalı](#disable-scoped-synchronization-using-the-azure-portal) | [PowerShell](#disable-scoped-synchronization-using-powershell) |
 
 > [!WARNING]
-> Eşitleme nin kapsamını değiştirmek, Azure AD DS yönetilen etki alanının tüm verileri yeniden eşitlemesi ne kadar önemli.
+> Eşitleme nin kapsamını değiştirmek, Azure AD DS yönetilen etki alanının tüm verileri yeniden eşitlemesi ne kadar önemli. Aşağıdaki noktalara dikkat edilmelidir:
 > 
 >  * Azure AD DS yönetilen bir etki alanının eşitleme kapsamını değiştirdiğinizde, tam bir yeniden eşitleme oluşur.
 >  * Azure AD DS yönetilen etki alanında artık gerekli olmayan nesneler silinir. Yönetilen etki alanında yeni nesneler oluşturulur.
 >  * Yeniden senkronizasyonun tamamlanması uzun sürebilir. Eşitleme süresi, Azure AD DS yönetilen etki alanı ve Azure AD dizinindeki kullanıcılar, gruplar ve grup üyelikleri gibi nesnelerin sayısına bağlıdır. Yüz binlerce nesneye sahip büyük dizinler için yeniden eşitleme birkaç gün sürebilir.
 
 ## <a name="enable-scoped-synchronization-using-the-azure-portal"></a>Azure portalını kullanarak kapsamlı eşitleme sağlama
+
+Azure portalında kapsamlı eşitleme sağlamak için aşağıdaki adımları tamamlayın:
 
 1. Bir [Azure AD DS örneği oluşturmak ve yapılandırmak için öğreticiyi](tutorial-create-instance-advanced.md)izleyin. Eşitleme kapsamı dışındaki tüm ön koşulları ve dağıtım adımlarını tamamlayın.
 1. Eşitleme adımında **Scoped'u** seçin ve ardından Azure AD DS örneğine eşitlemek için Azure REKLAM gruplarını seçin.
@@ -173,7 +175,7 @@ Write-Output "******************************************************************
 
 ## <a name="enable-scoped-synchronization-using-powershell"></a>PowerShell'i kullanarak kapsamlı eşitleme sağlama
 
-Bu adım kümesini tamamlamak için PowerShell'i kullanın. [PowerShell'i kullanarak Azure Active Directory Domain Services'ı etkinleştirmek](powershell-create-instance.md)için verilen talimatlara bakın. Bu makaledeki birkaç adım, kapsamlı eşitlemayı yapılandırmak için biraz değiştirilir.
+Aşağıdaki adımları tamamlamak için PowerShell'i kullanın. [PowerShell'i kullanarak Azure Active Directory Domain Services'ı etkinleştirmek](powershell-create-instance.md)için verilen talimatlara bakın. Bu makaledeki birkaç adım, kapsamlı eşitlemayı yapılandırmak için biraz değiştirilir.
 
 1. PowerShell'i kullanarak Azure AD DS'yi etkinleştirmek için makaleden aşağıdaki görevleri tamamlayın. Yönetilen etki alanını oluşturmak için adımda durun. Azure AD DS yönetilen etki alanını oluşturduğunuz kapsamlı eşitlemeyi yapılandırırsınız.
 

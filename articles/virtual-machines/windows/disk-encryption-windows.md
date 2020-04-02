@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: ed64ee3d0e024c32be08ed4e010a6933033c3f87
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7e96f9484c103ebe75e21705b94cf35b9e16c54f
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79476527"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80529329"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Windows VM'lerinde Azure Disk Şifrelemesi senaryoları
 
@@ -251,6 +251,8 @@ Azure Disk Şifrelemesi aşağıdaki senaryolar, özellikler ve teknoloji için 
 - Kısa ömürlü işletim sistemi diskleri.
 - DFS, GFS, DRDB ve CephFS gibi paylaşılan/dağıtılmış dosya sistemlerinin şifrelemesi (ancak bununla sınırlı değildir).
 - Şifreli bir VM'yi başka bir aboneye taşıma.
+- Gen2 VM'ler (bakınız: [Azure'da nesil 2 VM'ler için destek)](generation-2.md#generation-1-vs-generation-2-capabilities)
+- Lsv2 serisi VM'ler (bakınız: [Lsv2 serisi)](../lsv2-series.md)
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

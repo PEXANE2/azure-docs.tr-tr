@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 05/13/2019
+ms.date: 03/31/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 53bbee6dd75e045c2a7e95c88a0138c9859d12db
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ad36547b0cf9457d7ff4fdd919a0bb1362539eb5
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80374021"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80522700"
 ---
 Bu makalede, Azure Yönetilen Diskler ve Azure Premium SSD diskleri hakkında sık sorulan bazı sorular yanıtlanmaktadır.
 
@@ -409,11 +409,11 @@ Azure disklerde TRIM kullanımının premium veya standart disklerde kullanılma
 
 **Hangi bölgeler, geçerli premium SSD disk boyutu için patlama yeteneğini destekler?**
 
-Patlama özelliği şu anda Azure West Central US'ta desteklenmiştir.
+Patlama özelliği şu anda Azure Genel Bulut'taki tüm bölgelerde desteklenir ve yakında egemen bulutlar alacaktır. 
 
 **4/8/16 GİB Yönetilen Disk boyutları (P1/P2/P3, E1/E2/E3) hangi bölgelerde desteklenir?**
 
-Bu yeni disk boyutları şu anda Azure West Central US'ta destekleniyor.
+Bu yeni disk boyutları şu anda Azure Genel Bulut'taki tüm bölgelerde destekleniyor ve yakında egemen bulutlar alacaktır. 
 
 **P1/P2/P3 disk boyutları yönetilmeyen diskler veya sayfa lekeleri için destekleniyor mu?**
 

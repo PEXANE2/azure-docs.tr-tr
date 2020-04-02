@@ -6,13 +6,13 @@ ms.author: orspodek
 ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 03/17/2020
-ms.openlocfilehash: 99517e45892cd7a6167ae83ff3058edae1377b10
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.openlocfilehash: 95d943685cf511acb88f9e48d36a9dd43b0a27d2
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80109569"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548010"
 ---
 # <a name="install-and-use-lightingest"></a>LightIngest'i kurun ve kullanın
 
@@ -22,6 +22,9 @@ Yardımcı program, kaynak verilerini yerel bir klasörden veya Azure blob depol
 ## <a name="prerequisites"></a>Ön koşullar
 
 * LightIngest - [Microsoft.Azure.Kusto.Tools NuGet paketinin](https://www.nuget.org/packages/Microsoft.Azure.Kusto.Tools/) bir parçası olarak indirin
+
+    ![Lightingest indir](media/lightingest/lightingest-download-area.png)
+
 * WinRAR - [www.win-rar.com/download.html](http://www.win-rar.com/download.html) indirin
 
 ## <a name="install-lightingest"></a>LightIngest'i yükleyin
@@ -44,16 +47,20 @@ Yardımcı program, kaynak verilerini yerel bir klasörden veya Azure blob depol
     >
     >![Komut satırı Yardım](media/lightingest/lightingest-cmd-line-help.png)
 
-1. Azure `LightIngest` Veri Gezgini kümesine ve alım işlemini yönetecek bağlantı dizesini girin.
+1. Azure `ingest-` Veri Gezgini kümesine ve alım işlemini yönetecek bağlantı dizesini girin.
     Bağlantı dizesini çift tırnak içine alalım ve [Kusto bağlantı dizeleri belirtimini](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto)izleyin.
 
     Örnek:
     ```
-    LightIngest "Data Source=https://{Cluster name and region}.kusto.windows.net;AAD Federated Security=True"  -db:{Database} -table:Trips -source:"https://{Account}.blob.core.windows.net/{ROOT_CONTAINER};{StorageAccountKey}" -pattern:"*.csv.gz" -format:csv -limit:2 -ignoreFirst:true -cr:10.0 -dontWait:true
+    ingest-{Cluster name and region}.kusto.windows.net;AAD Federated Security=True -db:{Database} -table:Trips -source:"https://{Account}.blob.core.windows.net/{ROOT_CONTAINER};{StorageAccountKey}" -pattern:"*.csv.gz" -format:csv -limit:2 -ignoreFirst:true -cr:10.0 -dontWait:true
     ```
 
-* Önerilen yöntem, `LightIngest` `https://ingest-{yourClusterNameAndRegion}.kusto.windows.net`yutma bitiş noktası ile çalışmak için. Bu şekilde, Azure Veri Gezgini hizmeti yutma yükünü yönetebilir ve geçici hatalardan kolayca kurtulabilirsiniz. Ancak, doğrudan motor `LightIngest` bitiş noktası ile çalışmak için`https://{yourClusterNameAndRegion}.kusto.windows.net`yapılandırabilirsiniz ( ).
-* En iyi yutma performansı için LightIngest'in ham veri `LightIngest` boyutunu bilmesi önemlidir ve böylece yerel dosyaların sıkıştırılmamış boyutunu tahmin edecektir. Ancak, `LightIngest` ilk önce indirmeden sıkıştırılmış lekelerin ham boyutunu doğru tahmin etmek mümkün olmayabilir. Bu nedenle, sıkıştırılmış lekeleri sindirirken, blob meta verilerindeki `rawSizeBytes` özelliği baytlarda sıkıştırılmamış veri boyutuna ayarlayın.
+* Önerilen yöntem LightIngest için yutma bitiş noktası `https://ingest-{yourClusterNameAndRegion}.kusto.windows.net`ile çalışmaktır. Bu şekilde, Azure Veri Gezgini hizmeti yutma yükünü yönetebilir ve geçici hatalardan kolayca kurtulabilirsiniz. Ancak, lightingest'i doğrudan motor bitiş noktasıyla çalışacak`https://{yourClusterNameAndRegion}.kusto.windows.net`şekilde de yapılandırabilirsiniz ( ).
+
+> [!Note]
+> Doğrudan motor bitiş noktası ile yutmak, eklemek gerekmez `ingest-`, ancak motoru korumak ve yutma başarı oranını artırmak için bir DM özelliği olmayacaktır.
+
+* En iyi yutma performansı için LightIngest'in ham veri boyutunu bilmesi önemlidir ve bu nedenle LightIngest yerel dosyaların sıkıştırılmamış boyutunu tahmin eder. Ancak, LightIngest doğru ilk indirmeden sıkıştırılmış lekelerin ham boyutunu tahmin etmek mümkün olmayabilir. Bu nedenle, sıkıştırılmış lekeleri sindirirken, blob meta verilerindeki `rawSizeBytes` özelliği baytlarda sıkıştırılmamış veri boyutuna ayarlayın.
 
 ## <a name="general-command-line-arguments"></a>Genel komut satırı bağımsız değişkenleri
 
@@ -66,7 +73,7 @@ Yardımcı program, kaynak verilerini yerel bir klasörden veya Azure blob depol
 |-önek               |             |string  |İsteğe bağlı  |Yutulacak kaynak veriler blob depolamada bulunduğunda, bu URL öneki kapsayıcı adı hariç tüm blobs tarafından paylaşılır. <br>Örneğin, veriler içindeyse, `MyContainer/Dir1/Dir2`önek . `Dir1/Dir2` Çift tırnak içinde çevrelenen önerilir |
 |-desen              |             |string  |İsteğe bağlı  |Kaynak dosyalarının/blob'ların seçildiği desen. Joker karakterleri destekler. Örneğin, `"*.csv"`. Çift tırnak içine önerilir |
 |-zipPattern           |             |string  |İsteğe bağlı  |Zip arşivindeki hangi dosyaların yutulması gerektiğini seçerken kullanılacak normal ifade.<br>Arşivdeki diğer tüm dosyalar yoksayılır. Örneğin, `"*.csv"`. Çift tırnak içinde çevrelenebilmek için tavsiye edilir. |
-|-format               |-f           |string  |İsteğe bağlı  |Kaynak veri biçimi. [Desteklenen biçimlerden](https://docs.microsoft.com/azure/kusto/management/data-ingestion/#supported-data-formats) biri olmalı |
+|-format               |-f           |string  |İsteğe bağlı  |Kaynak veri biçimi. [Desteklenen biçimlerden](https://docs.microsoft.com/azure/data-explorer/ingestion-supported-formats) biri olmalı |
 |-yutmaMappingPath |-mappingPath |string  |İsteğe bağlı  |Yutma sütunu eşleme dosyasına giden yol (Json ve Avro biçimleri için zorunludur). [Veri eşlemelerine](https://docs.microsoft.com/azure/kusto/management/mappings) bakın |
 |-ingestionMappingRef  |-mappingRef  |string  |İsteğe bağlı  |Önceden oluşturulmuş bir yutma sütunu eşlemeadı (Json ve Avro biçimleri için zorunludur). [Veri eşlemelerine](https://docs.microsoft.com/azure/kusto/management/mappings) bakın |
 |-creationTimePattern  |             |string  |İsteğe bağlı  |Ayarlandığında, CreationTime özelliğini dosyadan veya blob yolundan ayıklamak için kullanılır. Bkz. [CreationTimePattern bağımsız değişkenini kullanma](#using-creationtimepattern-argument) |
@@ -76,11 +83,17 @@ Yardımcı program, kaynak verilerini yerel bir klasörden veya Azure blob depol
 
 ### <a name="using-creationtimepattern-argument"></a>CreationTimePattern bağımsız değişkenini kullanma
 
-Bağımsız `-creationTimePattern` değişken, CreationTime özelliğini dosya veya blob yolundan ayıklar. Desen, yalnızca kullanmak istediğiniz zaman damgasını çevreleyen bölümü, tüm öğe yolunu yansıtmak gerekmez.
-Bağımsız değişkenin değeri üç bölümden oluşmalıdır:
+Bağımsız `-creationTimePattern` değişken, CreationTime özelliğini dosya veya blob yolundan ayıklar. Desen, tüm öğe yolunu yansıtmak için değil, yalnızca kullanmak istediğiniz zaman damgasını çevreleyen bölümü.
+
+Bağımsız değişken değerleri şunları içermelidir:
 * Zaman damgasından hemen önce, tek tırnak içinde kapalı sabit test
 * Zaman damgası biçimi, standart [.NET DateTime gösteriminde](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)
-* Zaman damgasını hemen takip eden sabit metin Örneğin, blob adları 'historicalvalues19840101.parke' ile bitiyorsa (zaman damgası yıl için dört basamak, ay için iki `-creationTimePattern` basamak ve ayın günü için iki basamak), bağımsız değişkeniçin karşılık gelen değer 'tarihsel değerler'yyyyMDD'.parke'dir.
+* Zaman damgasını hemen izleyen sabit metin. Örneğin, blob adları ile `historicalvalues19840101.parquet` bitiyorsa (zaman damgası yıl için dört basamak, ay için iki basamak ve ayın günü `-creationTimePattern` için iki basamak) ile bitiyorsa, bağımsız değişkeniçin karşılık gelen değer şudur:
+
+```
+ingest-{Cluster name and region}.kusto.windows.net;AAD Federated Security=True -db:{Database} -table:Trips -source:"https://{Account}.blob.core.windows.net/{ROOT_CONTAINER};{StorageAccountKey}" -creationTimePattern:"'historicalvalues'yyyyMMdd'.parquet'"
+ -pattern:"*.csv.gz" -format:csv -limit:2 -ignoreFirst:true -cr:10.0 -dontWait:true
+```
 
 ### <a name="command-line-arguments-for-advanced-scenarios"></a>Gelişmiş senaryolar için komut satırı bağımsız değişkenleri
 
@@ -96,7 +109,7 @@ Bağımsız değişkenin değeri üç bölümden oluşmalıdır:
 |-devTracing           |-izleme       |string  |İsteğe bağlı  |Ayarlanırsa, tanılama günlükleri yerel bir dizine `RollingLogs` yazılır (varsayılan olarak geçerli dizinde veya anahtar değerini ayarlayarak değiştirilebilir) |
 
 ## <a name="blob-metadata-properties"></a>Blob meta veri özellikleri
-Azure lekeleri ile kullanıldığında, `LightIngest` yutma işlemini artırmak için belirli blob meta veri özelliklerini kullanır.
+Azure lekeleri ile kullanıldığında, LightIngest yutma işlemini artırmak için belirli blob meta veri özelliklerini kullanır.
 
 |Meta veri özelliği                            | Kullanım                                                                           |
 |---------------------------------------------|---------------------------------------------------------------------------------|

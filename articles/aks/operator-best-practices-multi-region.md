@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: thfalgou
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 894ec4e543f0c68cc652141d2c1578cda61d7f42
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3c1f0bb715b3c3bf9b3a3350ab11e26834aa84c8
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77594762"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80528654"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Hizmetinde (AKS) iş sürekliliği ve olağanüstü durum kurtarma için en iyi uygulamalar
 
@@ -59,7 +59,7 @@ Uç noktaların ve yönlendirmenin nasıl ayarlanış ı hakkında bilgi [için]
 
 ### <a name="layer-7-application-routing-with-azure-front-door-service"></a>Azure Ön Kapı Hizmeti ile Katman 7 uygulama yönlendirmesi
 
-Trafik Yöneticisi trafiği şekillendirmek için DNS (katman 3) kullanır. [Azure Ön Kapı Hizmeti,](https://docs.microsoft.com/azure/frontdoor/front-door-overview) http/HTTPS (katman 7) yönlendirme seçeneği sağlar. Azure Ön Kapı Hizmetinin ek özellikleri arasında SSL sonlandırma, özel alan adı, web uygulama güvenlik duvarı, URL Yeniden Yazma ve oturum yakınlığı yer almaktadır. Hangi çözümün en uygun olduğunu anlamak için uygulama trafiğinizin gereksinimlerini gözden geçirin.
+Trafik Yöneticisi trafiği şekillendirmek için DNS (katman 3) kullanır. [Azure Ön Kapı Hizmeti,](https://docs.microsoft.com/azure/frontdoor/front-door-overview) http/HTTPS (katman 7) yönlendirme seçeneği sağlar. Azure Ön Kapı Hizmetinin ek özellikleri arasında TLS sonlandırma, özel alan adı, web uygulama güvenlik duvarı, URL Yeniden Yazma ve oturum yakınlığı yer almaktadır. Hangi çözümün en uygun olduğunu anlamak için uygulama trafiğinizin gereksinimlerini gözden geçirin.
 
 ### <a name="interconnect-regions-with-global-virtual-network-peering"></a>Küresel sanal ağ eşlemeli bölgeleri birbirine bağlama
 
@@ -122,7 +122,7 @@ Tipik strateji, uygulamaların verilerini yazabileceği ortak bir depolama nokta
 Azure Yönetilen Diskler kullanıyorsanız, çoğaltma ve dr çözümlerini şu gibi seçebilirsiniz:
 
 * [Azure'da Velero](https://github.com/vmware-tanzu/velero-plugin-for-microsoft-azure/blob/master/README.md)
-* [Azure Site Kurtarma](https://azure.microsoft.com/blog/asr-managed-disks-between-azure-regions/)
+* [Azure Site Recovery](https://azure.microsoft.com/blog/asr-managed-disks-between-azure-regions/)
 
 ### <a name="application-based-asynchronous-replication"></a>Uygulama tabanlı asynchronous çoğaltma
 

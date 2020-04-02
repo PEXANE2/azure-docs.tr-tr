@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: sngun
-ms.openlocfilehash: 184fc65dae57292243be9abdca71a129512b3d0b
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f5a0b0f71a72ea76940450f73354fda230e09c5c
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78252046"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521041"
 ---
 # <a name="monitor-azure-cosmos-db-data-by-using-diagnostic-settings-in-azure"></a>Azure'da tanılama ayarlarını kullanarak Azure Cosmos DB verilerini izleme
 
@@ -34,25 +34,31 @@ Platform ölçümleri ve Etkinlik günlükleri otomatik olarak toplanır, ancak 
 
  * **DataPlaneRequests**: Azure Cosmos DB'deki SQL, Graph, MongoDB, Cassandra ve Table API hesaplarını içeren tüm API'lere arka uç isteklerini günlüğe kaydetmek için bu seçeneği belirleyin. Unutulmaması gereken temel `Requestcharge` `statusCode`özellikler `clientIPaddress`şunlardır: , , , ve `partitionID`.
 
-    ```
+    ```json
     { "time": "2019-04-23T23:12:52.3814846Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "DataPlaneRequests", "operationName": "ReadFeed", "properties": {"activityId": "66a0c647-af38-4b8d-a92a-c48a805d6460","requestResourceType": "Database","requestResourceId": "","collectionRid": "","statusCode": "200","duration": "0","userAgent": "Microsoft.Azure.Documents.Common/2.2.0.0","clientIpAddress": "10.0.0.24","requestCharge": "1.000000","requestLength": "0","responseLength": "372","resourceTokenUserRid": "","region": "East US","partitionId": "062abe3e-de63-4aa5-b9de-4a77119c59f8","keyType": "PrimaryReadOnlyMasterKey","databaseName": "","collectionName": ""}}
     ```
 
-* **MongoRequests**: Azure Cosmos DB'nin MongoDB için API'sine istekler sunmak için kullanıcı tarafından başlatılan istekleri ön uçtan günlüğe kaydetmek için bu seçeneği belirleyin, bu günlük türü diğer API hesapları için kullanılamaz. MongoDB istekleri MongoRequests yanı sıra DataPlaneRequests görünür. Dikkat edilmesi gereken `Requestcharge`önemli `opCode`özellikler şunlardır: , .
+* **MongoRequests**: Azure Cosmos DB'nin MongoDB için API'sine istekler sunmak için kullanıcı tarafından başlatılan istekleri ön uçtan günlüğe kaydetmek için bu seçeneği belirleyin. Bu günlük türü diğer API hesapları için kullanılamaz. Dikkat edilmesi gereken `Requestcharge`önemli `opCode`özellikler şunlardır: , . Tanılama günlüklerinde MongoRequests'u etkinleştirdiğinizde, DataPlaneRequests'i kapattığınızdan emin olun. API'de yapılan her istek için bir günlük görürsünüz.
 
-    ```
+    ```json
     { "time": "2019-04-10T15:10:46.7820998Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "MongoRequests", "operationName": "ping", "properties": {"activityId": "823cae64-0000-0000-0000-000000000000","opCode": "MongoOpCode_OP_QUERY","errorCode": "0","duration": "0","requestCharge": "0.000000","databaseName": "admin","collectionName": "$cmd","retryCount": "0"}}
     ```
 
+* **CassandraRequests**: Azure Cosmos DB'nin Cassandra api'sine istekler sunmak için kullanıcı tarafından başlatılan istekleri ön uçtan günlüğe kaydetmek için bu seçeneği belirleyin. Bu günlük türü diğer API hesapları için kullanılamaz. Unutulmaması gereken temel `operationName` `requestCharge`özellikler `piiCommandText`, , . Tanılama günlüklerinde CassandraRequests'ı etkinleştirdiğinizde, DataPlaneRequests'i kapattığınızdan emin olun. API'de yapılan her istek için bir günlük görürsünüz.
+
+   ```json
+   { "time": "2020-03-30T23:55:10.9579593Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "CassandraRequests", "operationName": "QuerySelect", "properties": {"activityId": "6b33771c-baec-408a-b305-3127c17465b6","opCode": "<empty>","errorCode": "-1","duration": "0.311900","requestCharge": "1.589237","databaseName": "system","collectionName": "local","retryCount": "<empty>","authorizationTokenType": "PrimaryMasterKey","address": "104.42.195.92","piiCommandText": "{"request":"SELECT key from system.local"}","userAgent": """"}}
+   ```
+
 * **QueryRuntimeStatistics**: Yürütülen sorgu metnini günlüğe kaydetmek için bu seçeneği seçin. Bu günlük türü yalnızca SQL API hesapları için kullanılabilir.
 
-    ```
+    ```json
     { "time": "2019-04-14T19:08:11.6353239Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "QueryRuntimeStatistics", "properties": {"activityId": "278b0661-7452-4df3-b992-8aa0864142cf","databasename": "Tasks","collectionname": "Items","partitionkeyrangeid": "0","querytext": "{"query":"SELECT *\nFROM c\nWHERE (c.p1__10 != true)","parameters":[]}"}}
     ```
 
 * **PartitionKeyStatistics**: Bölüm anahtarlarının istatistiklerini günlüğe kaydetmek için bu seçeneği seçin. Bu şu anda bölüm anahtarlarının depolama boyutu (KB) ile temsil edilir. Bu makalenin [Azure Tanılama sorguları bölümünü kullanarak Sorun Giderme sorunlarına](#diagnostic-queries) bakın. Örneğin "PartitionKeyStatistics" kullanan sorgular. Günlük, çoğu veri depolama alanı nın içinde olan ilk üç bölüm anahtarına karşı yayılır. Bu günlük, KB'de abonelik kimliği, bölge adı, veritabanı adı, koleksiyon adı, bölüm anahtarı ve depolama boyutu gibi verileri içerir.
 
-    ```
+    ```json
     { "time": "2019-10-11T02:33:24.2018744Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "PartitionKeyStatistics", "properties": {"subscriptionId": "<your_subscription_ID>","regionName": "West US 2","databaseName": "KustoQueryResults","collectionname": "CapacityMetrics","partitionkey": "["CapacityMetricsPartition.136"]","sizeKb": "2048270"}}
     ```
 

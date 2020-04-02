@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/01/2018
-ms.openlocfilehash: 4b1c1a963b065411f1a0ab84141bdf1835930ebb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0fe20c90cf857ce09a83c6ac53e6fe77eb512153
+ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74973552"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80528204"
 ---
 # <a name="public-data-sets-for-testing-and-prototyping"></a>Test ve prototipleme için genel veri kümeleri
 
@@ -31,7 +31,7 @@ Depolama ve analiz hizmetlerini ve çözümlerini prototiplemek ve test etmek i�
 | [NASA'dan dünya bilimi verileri](https://earthdata.nasa.gov/) | Tarım, atmosfer, biyosfer, iklim, kriyosfer, insan boyutları, hidrosfer, kara yüzeyi, okyanuslar, güneş-dünya etkileşimleri ve daha fazlasını kapsayan 32.000'den fazla veri koleksiyonu. | Veri kümeleri çeşitli biçimlerdedir. |
 | [Havayolu uçuş gecikmeleri ve diğer ulaşım verileri](https://www.transtats.bts.gov/OT_Delay/OT_DelayCause1.asp) | "ABD Ulaştırma Bakanlığı'nın (DOT) Ulaştırma İstatistikleri Bürosu (BTS), büyük havayolu şirketleri tarafından gerçekleştirilen iç hat uçuşlarının zamanında performansını takip ediyor. Zamanında, gecikmeli, iptal edilmiş ve yönlendirilmiş uçuş sayısına ilişkin özet bilgiler görünür... özet tablolar bu web sitesinde yayınlanmıştır." | Dosyalar CSV formatındadır. |
 | [Trafik ölümleri - ABD Fatality Analysis Reporting System (FARS)](https://www.nhtsa.gov/FARS) | "FARS NHTSA, Kongre ve motorlu araç trafik kazalarında uğradığı ölümcül yaralanmalar ile ilgili Amerikan kamu yıllık verileri sağlayan ülke çapında bir nüfus sayımı olduğunu." | "FARS Sorgu Sistemi'ni kullanarak çevrimiçi olarak çalışan kendi ölüm verilerinizi oluşturun. Veya 1975'ten FTP Sitesinden günümüze kadar tüm FARS verilerini indirin." |
-| [Toksik kimyasal veriler - EPA Toksisite ForeCaster (ToxCast™) verileri](https://www.epa.gov/chemical-research/toxicity-forecaster-toxcasttm-data) | "EPA en güncel, kamuya açık yüksek iş ittoksisite verileri kimyasalların binlerce. Bu veriler EPA'nın ToxCast araştırma çabası ile oluşturulur." | Veri kümeleri elektronik tablolar, R paketleri ve MySQL veritabanı dosyaları dahil olmak üzere çeşitli biçimlerde kullanılabilir. |
+| [Toksik kimyasal veriler - EPA Toksisite ForeCaster (ToxCast)&trade;verileri](https://www.epa.gov/chemical-research/toxicity-forecaster-toxcasttm-data) | "EPA en güncel, kamuya açık yüksek iş ittoksisite verileri kimyasalların binlerce. Bu veriler EPA'nın ToxCast araştırma çabası ile oluşturulur." | Veri kümeleri elektronik tablolar, R paketleri ve MySQL veritabanı dosyaları dahil olmak üzere çeşitli biçimlerde kullanılabilir. |
 | [Toksik kimyasal veriler - NIH Tox21 Data Challenge 2014](https://tripod.nih.gov/tox21/challenge/) | "2014 Tox21 veri mücadelesi, bilim insanlarının 21. | Veri kümeleri SMILES ve SDF formatlarında mevcuttur. Veriler "~ 10.000 bileşikler (Tox21 10K) Tox21 toplama üzerinde araştırma faaliyet verileri ve kimyasal yapılar sağlar." |
 | [NCBI'den biyoteknoloji ve genom verileri](https://www.ncbi.nlm.nih.gov/guide/data-software/) | Genleri, genomları ve proteinleri kapsayan çoklu veri kümeleri. | Veri kümeleri metin, XML, BLAST ve diğer biçimlerdedir. Bir BLAST uygulaması mevcuttur. |
 
@@ -41,7 +41,6 @@ Depolama ve analiz hizmetlerini ve çözümlerini prototiplemek ve test etmek i�
 |---|---|---|
 | [New York City taksi verileri](http://www.nyc.gov/html/tlc/html/about/trip_record_data.shtml) | "Taksi seyahati kayıtları, teslim alma ve bırakma tarihlerini/saatlerini, teslim alma ve bırakma yerlerini, seyahat mesafelerini, belirlenen ücretleri, fiyat türlerini, ödeme türlerini ve sürücü tarafından bildirilen yolcu sayılarını yakalayan alanları içerir." | Veri kümeleri her ay CSV dosyalarında bulunur. |
 | [Microsoft Research veri setleri - "Araştırma için Veri Bilimi"](https://www.microsoft.com/research/academic-program/data-science-microsoft-research/) | İnsan-bilgisayar etkileşimi, ses/video, veri madenciliği/bilgi alma, jeouzamsal/konum, doğal dil işleme ve robotik/bilgisayar vizyonunu kapsayan çoklu veri kümeleri. | Veri kümeleri, karşıdan yüklenebilir şekilde sıkıştırılmış çeşitli biçimlerdedir. |
-| [Genel genom verileri](https://www.completegenomics.com/public-data/) | "Tüm insan genomlarının çeşitli veri seti serbestçe herhangi bir genomik çalışma geliştirmek için kamu kullanımı için kullanılabilir ..." Sağlayıcı, Complete Genomics, kar amacı gütmeyen özel bir şirkettir. | Veri kümeleri, ayıklamadan sonra UNIX metin biçimindedir. Analiz araçları da mevcuttur. |
 | [Açık Bilim Veri Bulutu verileri](https://www.opensciencedatacloud.org/projects/) | "Açık Bilim Veri Bulutu, bilim camiasına terabayt ve petabayt ölçekli bilimsel veri kümelerini depolama, paylaşma ve analiz etme için kaynaklar sağlar."| Veri kümeleri çeşitli biçimlerdedir. |
 | [Küresel iklim verileri - WorldClim](https://worldclim.org/) | "WorldClim yaklaşık 1 km2 bir mekansal çözünürlüğe sahip küresel iklim katmanları (ızgaralı iklim verileri) kümesidir. Bu veriler haritalama ve mekansal modelleme için kullanılabilir." | Bu dosyalar jeouzamsal veriler içerir. Daha fazla bilgi için [Bkz. Veri biçimi.](https://worldclim.org/formats1) |
 | [İnsan toplumu hakkında veriler - GDELT Projesi](https://www.gdeltproject.org/data.html) | "GDELT Projesi, insan toplumunun şimdiye kadar yaratılmış en büyük, en kapsamlı ve en yüksek çözünürlüklü açık veritabanıdır." | Ham veri dosyaları CSV formatındadır. |

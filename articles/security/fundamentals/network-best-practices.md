@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/02/2019
 ms.author: TomSh
-ms.openlocfilehash: 3ded20f37a394e6adf726ad40c01aa36d41e4e8d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5e155758d19b45d977fcd087bff0ceb85898f8f8
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79299354"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80548296"
 ---
 # <a name="azure-best-practices-for-network-security"></a>Ağ güvenliği için Azure en iyi uygulamaları
 Bu makalede, ağ güvenliğinizi artırmak için azure en iyi uygulamaları koleksiyonu anlatılmaktadır. Bu en iyi uygulamalar, Azure ağı yla ilgili deneyimlerimizden ve sizin gibi müşterilerin deneyimlerinden elde edilir.
@@ -153,12 +153,12 @@ Yükleme dengelemeyi istediğiniz zaman ve hizmetleriniz için uygun olduğunca 
 - Yalnızca güvenli bir bağlantıyı kabul eder, bu nedenle sunucuya şifrelenmemiş iletişim kabul edilebilir bir seçenek değildir.
 - Aynı uzun süreli TCP bağlantısında birden fazla HTTP isteğinin yönlendirilmesi veya farklı arka uç sunucularına yüklenmesi gerekir.
 
-**Yük dengeleme seçeneği**: HTTP web trafik yük dengeleyicisi olan [Azure Application Gateway'i](/azure/application-gateway/application-gateway-introduction)kullanın. Uygulama Ağ Geçidi, ağ geçidinde uçtan uca SSL şifrelemesini ve [SSL sonlandırmayı](/azure/application-gateway/application-gateway-introduction) destekler. Web sunucuları daha sonra şifreleme ve şifre çözme yükü nden ve arka uç sunucularına şifrelenmemiş akan trafikten çıkarılabilir.
+**Yük dengeleme seçeneği**: HTTP web trafik yük dengeleyicisi olan [Azure Application Gateway'i](/azure/application-gateway/application-gateway-introduction)kullanın. Uygulama Ağ Geçidi, ağ geçidinde uçtan uca TLS şifrelemesini ve [TLS sonlandırmayı](/azure/application-gateway/application-gateway-introduction) destekler. Web sunucuları daha sonra şifreleme ve şifre çözme yükü nden ve arka uç sunucularına şifrelenmemiş akan trafikten çıkarılabilir.
 
 **Senaryo**: Bir Azure sanal ağında bulunan sunucularınız arasında internetten gelen bakiye bağlantılarını yüklemeniz gerekir. Senaryolar şunlardır:
 
 - Internet'ten gelen istekleri kabul eden devletsiz uygulamalara sahip.
-- Yapışkan oturumlar veya SSL boşaltma gerektirmez. Yapışkan oturumları sunucu afiyeti elde etmek için, Uygulama Yük Dengeleme ile kullanılan bir yöntemdir.
+- Yapışkan oturumlar veya TLS boşaltma gerektirmez. Yapışkan oturumları sunucu afiyeti elde etmek için, Uygulama Yük Dengeleme ile kullanılan bir yöntemdir.
 
 **Yük dengeleme seçeneği**: Daha yüksek bir kullanılabilirlik düzeyi sağlamak için gelen istekleri birden çok VM'ye yayan [harici bir yük dengeleyicisi oluşturmak](../../load-balancer/quickstart-load-balancer-standard-public-portal.md) için Azure portalını kullanın.
 

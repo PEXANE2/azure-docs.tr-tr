@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 75cef47c1ed2b6da054442a4a1215141e67ad1b0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0c994caf094918b39204437b5194d81a64affc66
+ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79498585"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80545668"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Azure Cosmos DB'deki farklı API'ler hakkında sık sorulan sorular
 
@@ -219,7 +219,7 @@ Azure Cosmos DB'nin MongoDB için API'si, uygulamaların MongoDB için mevcut, t
 
 Azure Cosmos DB'nin MongoDB api'si ile Cosmos veritabanına bağlanmanın en hızlı yolu [Azure portalına](https://portal.azure.com)geçmektir. Hesabınıza gidin ve ardından soldaki gezinme menüsünde **Hızlı Başlat'ı**tıklatın. Quickstart, veritabanınıza bağlanmak için kod parçacıkları elde etmenin en iyi yoludur.
 
-Azure Cosmos DB sıkı güvenlik gereksinimleri ve standartları uygular. Azure Cosmos DB hesapları SSL üzerinden kimlik doğrulama ve güvenli iletişim gerektirir, bu nedenle TLSv1.2 kullandığınızdan emin olun.
+Azure Cosmos DB sıkı güvenlik gereksinimleri ve standartları uygular. Azure Cosmos DB hesapları TLS üzerinden kimlik doğrulama ve güvenli iletişim gerektirir, bu nedenle TLSv1.2 kullandığınızdan emin olun.
 
 Daha fazla bilgi için Azure [Cosmos DB'nin MongoDB için API'si ile Cosmos veritabanınıza bağlanın.](connect-mongodb-account.md)
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2019
 ms.author: damaerte
-ms.openlocfilehash: 0aa71e4b78df8087093f183b146c525d2a8a0f99
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 78275211b77cb34cf9aa92e44778e5d4d81fffed
+ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79366249"
+ms.lasthandoff: 04/01/2020
+ms.locfileid: "80521005"
 ---
 # <a name="features--tools-for-azure-cloud-shell"></a>Azure Bulut Bulutu için özellikler & araçları
 
@@ -44,7 +44,7 @@ Dışındaki dosyalar `$HOME` ve makine durumu oturumları arasında kalıcı de
 
 ### <a name="azure-drive-azure"></a>Azure sürücüsü (Azure:)
 
-Cloud Shell'deki PowerShell sizi`Azure:`Azure sürücüsünde başlatır ( ).
+Cloud Shell'deki PowerShell,`Azure:`Azure sürücüsüsağlar ( ). Azure sürücüsüne ' le `cd Azure:` geçiş yapabilir ve `cd  ~`'' ile ev dizininize geri dönebilirsiniz.
 Azure sürücüsü, dosya sistemi gezintisine benzer şekilde İşlem, Ağ, Depolama vb. gibi Azure kaynaklarının kolayca keşfedilmesini ve gezinmesini sağlar.
 Bu kaynakları, içinde bulunduğunuz sürücüden bağımsız olarak yönetmek için tanıdık [Azure PowerShell cmdletlerini](https://docs.microsoft.com/powershell/azure) kullanmaya devam edebilirsiniz.
 Azure kaynaklarında doğrudan Azure portalında veya Azure PowerShell cmdlets aracılığıyla yapılan değişiklikler Azure sürücüsüne yansıtılır.  Kaynaklarınızı `dir -Force` yenilemek için çalıştırabilirsiniz.
