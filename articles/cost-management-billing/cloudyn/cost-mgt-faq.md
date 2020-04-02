@@ -1,24 +1,26 @@
 ---
-title: Azure'da Cloudyn için sık sorulan sorular | Microsoft Docs
+title: Azure’da Cloudyn için sık sorulan sorular
 description: Bu makalede Cloudyn ile ilgili sık sorulan soruların yanıtları sağlanmaktadır.
-keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/24/2020
-ms.topic: troubleshooting
+ms.date: 03/12/2020
+ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: benshy
 ms.custom: seodec18
-ms.openlocfilehash: 5c770d83d59edf0a56184f8eea0bda6b0603893c
-ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
+ROBOTS: NOINDEX
+ms.openlocfilehash: b1ec81ea135079defb390becc025f51cde2dad7f
+ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
 ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 01/31/2020
-ms.locfileid: "76770071"
+ms.lasthandoff: 03/31/2020
+ms.locfileid: "80411250"
 ---
 # <a name="frequently-asked-questions-for-cloudyn"></a>Cloudyn için sık sorulan sorular
 
 Bu makalede Cloudyn ile ilgili sık sorulan sorulara yer verilmiştir. Cloudyn hakkında sorularınız varsa [Cloudyn Hakkında SSS](https://social.msdn.microsoft.com/Forums/en-US/231bf072-2c71-4121-8339-ac9d868137b9/faqs-for-cloudyn-cost-management?forum=Cloudyn) sayfasından sorabilirsiniz.
+
+[!INCLUDE [cloudyn-note](../../../includes/cloudyn-note.md)]
 
 ## <a name="how-can-i-resolve-common-indirect-enterprise-setup-problems"></a>Genel dolaylı kurumsal kurulum sorunlarını nasıl çözebilirim?
 
@@ -58,13 +60,13 @@ Departman yöneticilerine, hesap sahiplerine ve kurumsal yöneticilere Faturalam
 
 Bir hesabı etkinleştirmek için:
 
-1.  Cloudyn portalında, sağ üst kısımdaki **Ayarlar**’a tıklayın ve **Bulut Hesapları**’nı seçin.
-2.  Microsoft Azure Hesapları sekmesinde **etkinleştirilmiş** aboneliğe sahip olan hesapları bulun.
-3.  Etkinleştirilmemiş hesabın sağ tarafındaki kaleme benzeyen **düzenleme** simgesine tıklayın.
-4.  Kiracı kimliğiniz ve ücret kimliğiniz otomatik olarak algılanır. **İleri**’ye tıklayın.
-5.  Azure portalına yeniden yönlendirilirsiniz. Portalda oturum açın ve Cloudyn Toplayıcısına Azure verilerinize erişim izni verin.
-6.  Sonraki adımda Cloudyn Hesapları yönetim sayfasına yeniden yönlendirilirsiniz ve aboneliğiniz **etkin** Hesap Durumu ile güncelleştirilir. Yanında yeşil renkli onay işareti gösterilir.
-7.  Aboneliklerden biri veya daha fazlası için yeşil bir onay işareti simgesi görmezseniz bu, abonelik için okuyucu uygulamasını (CloudynCollector) oluşturma izninizin olmadığı anlamına gelir. Abonelik için daha yüksek izinleri olan bir kullanıcının 3. ve 4. adımları yinelemesi gerekir.  
+1.    Cloudyn portalında, sağ üst kısımdaki **Ayarlar**’a tıklayın ve **Bulut Hesapları**’nı seçin.
+2.    Microsoft Azure Hesapları sekmesinde **etkinleştirilmiş** aboneliğe sahip olan hesapları bulun.
+3.    Etkinleştirilmemiş hesabın sağ tarafındaki kaleme benzeyen **düzenleme** simgesine tıklayın.
+4.    Kiracı kimliğiniz ve ücret kimliğiniz otomatik olarak algılanır. **İleri**’ye tıklayın.
+5.    Azure portalına yeniden yönlendirilirsiniz. Portalda oturum açın ve Cloudyn Toplayıcısına Azure verilerinize erişim izni verin.
+6.    Sonraki adımda Cloudyn Hesapları yönetim sayfasına yeniden yönlendirilirsiniz ve aboneliğiniz **etkin** Hesap Durumu ile güncelleştirilir. Yanında yeşil renkli onay işareti gösterilir.
+7.    Aboneliklerden biri veya daha fazlası için yeşil bir onay işareti simgesi görmezseniz, bu abonelik için okuyucu uygulamasını (CloudynCollector) oluşturma izninizin olmadığı anlamına gelir. Abonelik için daha yüksek izinleri olan bir kullanıcının 3. ve 4. adımları yinelemesi gerekir.  
 
 Yukarıdaki adımları tamamladıktan sonra, İyileştirici önerilerini bir veya iki gün içinde görüntüleyebilirsiniz. Ancak tam iyileştirme verilerinin kullanılabilir duruma gelmesi beş gün sürebilir.
 
@@ -95,7 +97,7 @@ Birinin kilitlenme ihtimaline karşı en az iki Cloudyn yönetici hesabı oluşt
 
 Cloudyn portalında oturum açamıyorsanız Cloudyn'de oturum açmak için doğru URL'yi kullandığınızdan emin olun. [https://azure.cloudyn.com](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/CloudynMainBlade) adresini kullanın.
 
-Doğrudan Cloudyn'in URL'sini (https://app.cloudyn.com ) kullanmaktan kaçının.
+Doğrudan Cloudyn'in URL'sini (`https://app.cloudyn.com`) kullanmaktan kaçının.
 
 ## <a name="how-do-i-activate-unactivated-accounts-with-azure-credentials"></a>Etkinleştirilmemiş hesapları Azure kimlik bilgileriyle nasıl etkinleştirebilirim?
 
