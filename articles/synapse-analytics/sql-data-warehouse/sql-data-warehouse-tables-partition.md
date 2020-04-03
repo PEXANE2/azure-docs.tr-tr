@@ -1,6 +1,6 @@
 ---
 title: Bölümleme tabloları
-description: SQL Analytics'te tablo bölümlerini kullanmak için öneriler ve örnekler
+description: Synapse SQL havuzunda tablo bölümlerini kullanmak için öneriler ve örnekler
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,36 +11,42 @@ ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: c40198225535fb79053773fb8c04d48253008912
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 4e19c20036d74752b75a668d6a37c46ef1b008e6
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351240"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583182"
 ---
-# <a name="partitioning-tables-in-sql-analytics"></a>SQL Analytics'te tabloları bölümleme
-SQL Analytics'te tablo bölümlerini kullanmak için öneriler ve örnekler.
+# <a name="partitioning-tables-in-synapse-sql-pool"></a>Synapse SQL havuzunda tabloları bölümleme
+
+Synapse SQL havuzunda tablo bölümlerini kullanmak için öneriler ve örnekler.
 
 ## <a name="what-are-table-partitions"></a>Tablo bölümleri nedir?
-Tablo bölümleri, verilerinizi daha küçük veri gruplarına bölmenize olanak tanır. Çoğu durumda, tablo bölümleri bir tarih sütununda oluşturulur. Bölümleme tüm SQL Analytics tablo türlerinde desteklenir; kümelenmiş sütun deposu, kümelenmiş dizin ve yığın dahil. Bölümleme, karma veya yuvarlak robin dağıtılan her ikisi de dahil olmak üzere tüm dağıtım türlerinde de desteklenir.  
+
+Tablo bölümleri, verilerinizi daha küçük veri gruplarına bölmenize olanak tanır. Çoğu durumda, tablo bölümleri bir tarih sütununda oluşturulur. Bölümleme tüm Synapse SQL bilardo tablosu türlerinde desteklenir; kümelenmiş sütun deposu, kümelenmiş dizin ve yığın dahil. Bölümleme, karma veya yuvarlak robin dağıtılan her ikisi de dahil olmak üzere tüm dağıtım türlerinde de desteklenir.  
 
 Bölümleme, veri bakımı ve sorgu performansından yararlanabilir. Her ikisine de veya yalnızca bir sütuna yarar sağlayıp sağlamadığı, verilerin nasıl yüklendiğine ve aynı sütunun her iki amaç için de kullanılıp kullanılamayacağına bağlıdır, çünkü bölümleme yalnızca bir sütunda yapılabilir.
 
 ### <a name="benefits-to-loads"></a>Yüklerin faydaları
-SQL Analytics'te bölümlemenin birincil yararı, bölüm silme, anahtarlama ve birleştirme kullanarak veri yüklemenin verimliliğini ve performansını artırmaktır. Çoğu durumda veriler, verilerin veritabanına yüklenme sırasına yakından bağlı bir tarih sütununa bölümlenir. Verileri korumak için bölümleri kullanmanın en büyük avantajlarından biri de işlem günlüğe kaydetmenin kaçınılmasıdır. Yalnızca veri ekleme, güncelleme veya silme, biraz düşünce ve çabayla en basit yaklaşım olabilirken, yükleme işleminiz sırasında bölümleme kullanmak performansı önemli ölçüde artırabilir.
+
+Synapse SQL havuzunda bölümlemenin birincil yararı, bölüm silme, anahtarlama ve birleştirme kullanarak veri yükleme verimliliğini ve performansını artırmaktır. Çoğu durumda veriler, verilerin veritabanına yüklenme sırasına yakından bağlı bir tarih sütununa bölümlenir. Verileri korumak için bölümleri kullanmanın en büyük avantajlarından biri de işlem günlüğe kaydetmenin kaçınılmasıdır. Yalnızca veri ekleme, güncelleme veya silme, biraz düşünce ve çabayla en basit yaklaşım olabilirken, yükleme işleminiz sırasında bölümleme kullanmak performansı önemli ölçüde artırabilir.
 
 Bölüm geçişi, tablonun bir bölümünü hızla kaldırmak veya değiştirmek için kullanılabilir.  Örneğin, bir satış olgu tablosu son 36 ay için yalnızca veri içerebilir. Her ayın sonunda, en eski satış ayı verileri tablodan silinir.  Bu veriler, en eski ay için verileri silmek için bir silme deyimi kullanılarak silinebilir. Ancak, büyük miktarda veriyi silme deyimiyle satır satır silmek çok fazla zaman alabilir ve bir şeyler ters giderse geri almak için uzun zaman alan büyük işlemler riski oluşturabilir. Daha iyi bir yaklaşım, en eski veri bölmesini bırakmaktır. Tek tek satırları silmenin saatler sürebileceği durumlarda, tüm bir bölümü silmesi saniyeler sürebilir.
 
 ### <a name="benefits-to-queries"></a>Sorguların yararları
+
 Bölümleme, sorgu performansını artırmak için de kullanılabilir. Bölümlenmiş verilere filtre uygulayan bir sorgu, tarakı yalnızca uygun bölümlerle sınırlayabilir. Bu filtreleme yöntemi tam tablo tonuönlemek ve sadece daha küçük bir veri alt kümesini tarayıp tarayıp, yalnızca. Kümelenmiş sütun deposu dizinlerinin getirilmesiyle, yüklem eliminasyon performansı yararları daha az yararlıdır, ancak bazı durumlarda sorguların bir yararı olabilir. Örneğin, satış tarihi tablosu satış tarihi alanını kullanarak 36 aya bölünürse, satış tarihinde filtre yi filtreleyen sorgular, filtreyle eşleşmez bölümlerde arama yapmayı atlayabilir.
 
 ## <a name="sizing-partitions"></a>Boyutlandırma bölümleri
+
 Bölümleme bazı senaryoların performansını artırmak için kullanılabilirken, **çok fazla** bölümiçeren bir tablo oluşturmak bazı durumlarda performansa zarar verebilir.  Bu endişeler özellikle kümelenmiş sütun deposu tabloları için geçerlidir. Bölümlemenin yararlı oltaması için, bölümlemenin ne zaman kullanılacağını ve oluşturulacak bölüm sayısını anlamak önemlidir. Kaç bölüm çok fazla olduğu gibi sabit bir hızlı kural yoktur, bu verilerinize bağlıdır ve aynı anda yükleme kaç bölüm. Başarılı bir bölümleme şeması genellikle binlerce değil, yüzlerce bölüm onlarca vardır.
 
-**Kümelenmiş sütun deposu** tablolarında bölümler oluştururken, her bölüme kaç satır ait olduğunu göz önünde bulundurmak önemlidir. Kümelenmiş sütun deposu tablolarının en iyi sıkıştırma ve performansı için, dağıtım ve bölüm başına en az 1 milyon satır gerekir. Bölümler oluşturulmadan önce, SQL Analytics zaten her tabloyu 60 dağıtılmış veritabanına böler. Tabloya eklenen tüm bölümler, arka planda oluşturulan dağıtımlara ek olarak gelir. Bu örneği kullanarak, satış olgu tablosunda 36 aylık bölüm varsa ve bir SQL Analytics veritabanında 60 dağıtım varsa, satış olgu tablosu ayda 60 milyon satır veya tüm aylar doldurulduğunda 2,1 milyar satır içermelidir. Bir tablo, bölüm başına önerilen minimum satır sayısından daha az satır içeriyorsa, bölüm başına satır sayısını artırmak için daha az bölüm kullanmayı düşünün. Daha fazla bilgi için, küme sütun deposu dizinlerinin kalitesini değerlendirebilecek sorguları içeren [Dizin oluşturma](sql-data-warehouse-tables-index.md) makalesine bakın.
+**Kümelenmiş sütun deposu** tablolarında bölümler oluştururken, her bölüme kaç satır ait olduğunu göz önünde bulundurmak önemlidir. Kümelenmiş sütun deposu tablolarının en iyi sıkıştırma ve performansı için, dağıtım ve bölüm başına en az 1 milyon satır gerekir. Bölümler oluşturulmadan önce, Synapse SQL havuzu zaten her tabloyu 60 dağıtılmış veritabanına böler. Tabloya eklenen tüm bölümler, arka planda oluşturulan dağıtımlara ek olarak gelir. Bu örneği kullanarak, satış olgu tablosunda 36 aylık bölüm varsa ve bir Synapse SQL havuzunun 60 dağıtıma sahip olduğu göz önüne alındığında, satış olgu tablosuayda 60 milyon satır veya tüm aylar doldurulduğunda 2,1 milyar satır içermelidir. Bir tablo, bölüm başına önerilen minimum satır sayısından daha az satır içeriyorsa, bölüm başına satır sayısını artırmak için daha az bölüm kullanmayı düşünün. Daha fazla bilgi için, küme sütun deposu dizinlerinin kalitesini değerlendirebilecek sorguları içeren [Dizin oluşturma](sql-data-warehouse-tables-index.md) makalesine bakın.
 
 ## <a name="syntax-differences-from-sql-server"></a>SQL Server'dan sözdizimi farklılıkları
-SQL Analytics, SQL Server'dan daha basit bölümleri tanımlamanın bir yolunu sunar. Bölümleme işlevleri ve şemaları SQL Analytics'te SQL Server'da olduğu gibi kullanılmaz. Bunun yerine, tek yapmanız gereken bölümlenmiş sütun ve sınır noktalarını tanımlamaktır. Bölümleme sözdizimi SQL Server'dan biraz farklı olsa da, temel kavramlar aynıdır. SQL Server ve SQL Analytics, tablo başına bir bölüm sütunu destekler ve bu sütun lar bölüm aralıklı olabilir. Bölümleme hakkında daha fazla bilgi edinmek için [Bölümlenmiş Tablolar ve Dizinler](/sql/relational-databases/partitions/partitioned-tables-and-indexes)bölümüne bakın.
+
+Synapse SQL havuzu, SQL Server'dan daha basit bölümleri tanımlamanın bir yolunu sunar. Bölümleme işlevleri ve düzenleri, SQL Server'da olduğu gibi Synapse SQL havuzunda kullanılmaz. Bunun yerine, tek yapmanız gereken bölümlenmiş sütun ve sınır noktalarını tanımlamaktır. Bölümleme sözdizimi SQL Server'dan biraz farklı olsa da, temel kavramlar aynıdır. SQL Server ve Synapse SQL havuzu, tablo başına bölüm aralığı na sahip bir bölüm sütununa destek sağlar. Bölümleme hakkında daha fazla bilgi edinmek için [Bölümlenmiş Tablolar ve Dizinler](/sql/relational-databases/partitions/partitioned-tables-and-indexes)bölümüne bakın.
 
 Aşağıdaki örnek, OrderDateKey sütunundaki FactInternetSales tablosunu bölmek için [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse) deyimini kullanır:
 
@@ -69,12 +75,13 @@ WITH
 ```
 
 ## <a name="migrating-partitioning-from-sql-server"></a>SQL Server'dan bölümleme
-SQL Server bölüm tanımlarını SQL Analytics'e geçirmek için:
+
+SQL Server bölüm tanımlarını Synapse SQL havuzuna geçirmek için:
 
 - SQL Server [bölümşemasını](/sql/t-sql/statements/create-partition-scheme-transact-sql)ortadan kaldırın.
 - CREATE TABLONUZA [bölüm işlevi](/sql/t-sql/statements/create-partition-function-transact-sql) tanımını ekleyin.
 
-Bir SQL Server örneğinden bölümlenmiş bir tabloyu geçişiyorsanız, aşağıdaki SQL her bölümdeki satır sayısını belirlemenize yardımcı olabilir. SQL Analytics'te aynı bölümleme parçalı lık kullanılırsa, bölüm başına satır sayısının 60 kat azaldığını unutmayın.  
+Bir SQL Server örneğinden bölümlenmiş bir tabloyu geçişiyorsanız, aşağıdaki SQL her bölümdeki satır sayısını belirlemenize yardımcı olabilir. Synapse SQL havuzunda aynı bölümleme parçalı lık kullanılırsa, bölüm başına satır sayısının 60 kat azaldığını unutmayın.  
 
 ```sql
 -- Partition information for a SQL Server Database
@@ -111,11 +118,13 @@ GROUP BY    s.[name]
 ```
 
 ## <a name="partition-switching"></a>Bölüm değiştirme
-SQL Analytics bölme bölmeyi, birleştirmeyi ve geçişi destekler. Bu işlevlerin her biri [ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql) deyimi kullanılarak yürütülür.
+
+Synapse SQL havuzu bölme, birleştirme ve geçiş desteklemektedir. Bu işlevlerin her biri [ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql) deyimi kullanılarak yürütülür.
 
 Bölümleri iki tablo arasında değiştirmek için, bölümlerin kendi sınırlarında hizalandığından ve tablo tanımlarının eşleştirdiğinden emin olmalısınız. Bir tablodaki değer aralığını zorlamak için denetim kısıtlamaları kullanılamadığından, kaynak tablonun hedef tabloyla aynı bölüm sınırlarını içermesi gerekir. Bölüm sınırları aynı değilse, bölüm meta verileri eşitlenmeyeceği için bölüm anahtarı başarısız olur.
 
 ### <a name="how-to-split-a-partition-that-contains-data"></a>Veri içeren bir bölümü bölme
+
 Zaten veri içeren bir bölümü bölmek için en `CTAS` etkili yöntem bir deyim kullanmaktır. Bölümlenmiş tablo kümelenmiş bir sütun deposuysa, bölünemeden önce tablo bölmesinin boş olması gerekir.
 
 Aşağıdaki örnek, bölümlenmiş bir sütun mağazası tablosu oluşturur. Her bölüme bir satır ekler:
@@ -227,7 +236,8 @@ UPDATE STATISTICS [dbo].[FactInternetSales];
 ```
 
 ### <a name="load-new-data-into-partitions-that-contain-data-in-one-step"></a>Tek adımda veri içeren bölümlere yeni veriler yükleme
-Bölüm anahtarlama ile bölümlere veri yükleme, kullanıcılar tarafından yeni veri anahtarı görülemez bir tabloda yeni veri aşaması uygun bir yoldur.  Bu bölüm anahtarlama ile ilişkili kilitleme çekişme ile başa çıkmak için meşgul sistemlerde zor olabilir.  Bir bölümdeki varolan verileri temizlemek `ALTER TABLE` için, verileri değiştirmek için kullanılan bir  Sonra `ALTER TABLE` başka bir yeni veri geçiş için gerekli oldu.  SQL Analytics'te `TRUNCATE_TARGET` seçenek komutta `ALTER TABLE` desteklenir.  `ALTER TABLE` Komut ile `TRUNCATE_TARGET` yeni verilerle bölmede varolan verileri üzerine yazar.  Aşağıda, varolan `CTAS` verilerle yeni bir tablo oluşturmak için kullanan, yeni veri ekler, sonra tüm verileri hedef tabloya geri döndürerek varolan verilerin üzerine yazmak için bir örnektir.
+
+Bölüm anahtarlama ile bölümlere veri yükleme, kullanıcılar tarafından yeni veri anahtarı görülemez bir tabloda yeni veri aşaması uygun bir yoldur.  Bu bölüm anahtarlama ile ilişkili kilitleme çekişme ile başa çıkmak için meşgul sistemlerde zor olabilir.  Bir bölümdeki varolan verileri temizlemek `ALTER TABLE` için, verileri değiştirmek için kullanılan bir  Sonra `ALTER TABLE` başka bir yeni veri geçiş için gerekli oldu.  Synapse SQL havuzunda `TRUNCATE_TARGET` seçenek komutta `ALTER TABLE` desteklenir.  `ALTER TABLE` Komut ile `TRUNCATE_TARGET` yeni verilerle bölmede varolan verileri üzerine yazar.  Aşağıda, varolan `CTAS` verilerle yeni bir tablo oluşturmak için kullanan, yeni veri ekler, sonra tüm verileri hedef tabloya geri döndürerek varolan verilerin üzerine yazmak için bir örnektir.
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales_NewSales]
@@ -252,6 +262,7 @@ ALTER TABLE dbo.FactInternetSales_NewSales SWITCH PARTITION 2 TO dbo.FactInterne
 ```
 
 ### <a name="table-partitioning-source-control"></a>Tablo bölümleme kaynak denetimi
+
 Kaynak kontrol sisteminizde tablo tanımınızın **paslanmamasını** önlemek için aşağıdaki yaklaşımı göz önünde bulundurmak isteyebilirsiniz:
 
 1. Tabloyu bölümlenmiş tablo olarak oluşturma, ancak bölüm değerleri olmadan
@@ -331,5 +342,6 @@ Kaynak kontrol sisteminizde tablo tanımınızın **paslanmamasını** önlemek 
 Bu yaklaşımla kaynak denetimindeki kod sabit kalır ve bölümleme sınır değerlerinin dinamik olması için izin verilir; zaman içinde veritabanı ile gelişen.
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
 Tablo geliştirme hakkında daha fazla bilgi için [Tablogenel Bakış'taki](sql-data-warehouse-tables-overview.md)makalelere bakın.
 

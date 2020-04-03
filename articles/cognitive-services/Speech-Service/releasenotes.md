@@ -1,27 +1,59 @@
 ---
-title: Yayın Notları - Konuşma hizmeti
+title: Yayın Notları - Konuşma Servisi
 titleSuffix: Azure Cognitive Services
 description: Konuşma Hizmeti özelliğinin çalışan günlüğü sürümleri, geliştirmeler, hata düzeltmeleri ve bilinen sorunlar.
 services: cognitive-services
-author: brianem
+author: oliversc
 manager: jhakulin
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.author: brianem
+ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: cbe9c7cbd0f402e38d1163050d77b055f89948ba
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7bab0a28ba2b75903b6bdf4708e6aa0a98bdc9e5
+ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79219648"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80607415"
 ---
 # <a name="release-notes"></a>Sürüm notları
+## <a name="speech-sdk-1110-2020-march-release"></a>Konuşma SDK 1.11.0: 2020-Mart açıklaması
+
+**Yeni özellikler**
+
+- Linux: Red Hat Enterprise Linux (RHEL)/CentOS 7 x64 için konuşma SDK için sistem yapılandırmak için nasıl [talimatlar](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-configure-rhel-centos-7) eklendi.
+- Linux: Linux ARM32 ve ARM64'te .NET Core C# desteği eklendi. [Burada](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk?tabs=linux)daha fazla bilgi edinin . 
+- C#, C++: `UtteranceId` `ConversationTranscriptionResult`Tüm ara ve son konuşma tanıma sonucu arasında tutarlı bir kimlik eklendi. [C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.transcription.conversationtranscriptionresult?view=azure-dotnet), [C++](https://docs.microsoft.com/cpp/cognitive-services/speech/transcription-conversationtranscriptionresult)için ayrıntılar.
+- Python: Için `Language ID`destek eklendi. Lütfen [github repo](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/python/console)speech_sample.py bakın.
+- Windows: Tüm win32 konsol uygulamaları için Windows platformuna sıkıştırılmış ses giriş biçimi desteği eklendi. Ayrıntılar [burada](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams). 
+- JavaScript: NodeJS'te konuşma sentezini (metinden konuşmaya) destekleyin. [Burada](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/node/text-to-speech) daha fazla bilgi edinin. 
+- JavaScript: Tüm gönderilen ve alınan iletilerin incelenmesini sağlamak için yeni API'ler ekleyin. [Burada](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript) daha fazla bilgi edinin. 
+        
+**Hata düzeltmeleri**
+
+- C#, C++: Bir `SendMessageAsync` sorun düzeltildi, böylece ikili ileti ikili tür olarak gönderildi. [C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.connection.sendmessageasync?view=azure-dotnet#Microsoft_CognitiveServices_Speech_Connection_SendMessageAsync_System_String_System_Byte___System_UInt32_), [C++](https://docs.microsoft.com/cpp/cognitive-services/speech/connection)için ayrıntılar.
+- C#, C++: Nesnenin `Connection MessageReceived` önüne `Connection` atılırsa `Recognizer` olay kullanımının çökmesine neden olabileceği bir sorun giderildi. [C#](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.connection.messagereceived?view=azure-dotnet), [C++](https://docs.microsoft.com/cpp/cognitive-services/speech/connection#messagereceived)için ayrıntılar.
+- Android: Mikrofondan gelen ses arabelleği boyutu, gecikme yi artırmak için 800m'den 100m'ye düşürüldü.
+- Android: Android Studio x86 Android emülatörü ile ilgili bir [sorun](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/563) giderildi.
+- JavaScript: `fromSubscription` API ile Çin'deki bölgeler için destek eklendi. Ayrıntılar [burada](https://docs.microsoft.com/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig?view=azure-node-latest#fromsubscription-string--string-). 
+- JavaScript: NodeJS'ten gelen bağlantı hataları için daha fazla hata bilgisi ekleyin.
+        
+**Örnekler**
+
+- Birlik: Niyet tanıma genel örnek, LUIS json ithalat başarısız olduğu sabittir. Ayrıntılar [burada](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/369).
+- Python: Örnek `Language ID`için eklendi. Ayrıntılar [burada](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/python/console/speech_sample.py).
+    
+**Covid19 kısaltılmış test**
+
+Son birkaç hafta içinde uzaktan çalışma nedeniyle, biz normalde yaptığımız kadar çok manuel cihaz doğrulama testi yapamadık. Bunun bir örneği, Linux, iOS ve macOS'ta mikrofon girişi ve hoparlör çıktısını test etmektir. Bu platformlarda herhangi bir değişiklik yapmamış olabilir ve otomatik testlerimiz geçti. Biz bir şey cevapsız olası olay, lütfen bize [GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?page=2&q=is%3Aissue+is%3Aopen)bildirin .<br> Sürekli destek için teşekkür ederiz. Her zaman olduğu gibi, [lütfen GitHub](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues?page=2&q=is%3Aissue+is%3Aopen) veya [Stack Overflow](https://stackoverflow.microsoft.com/questions/tagged/731)hakkında soru veya geri bildirim gönderin.<br>
+Sağlıklı kalın!
+
 ## <a name="speech-sdk-1100-2020-february-release"></a>Konuşma SDK 1.10.0: 2020-Şubat açıklaması
 
 **Yeni özellikler**
+
  - Python'un yeni 3.8 sürümüne destek olmak için Python paketleri eklendi.
  - Red Hat Enterprise Linux (RHEL)/CentOS 8 x64 desteği (C++, C#, Java, Python).
    > [!NOTE] 
@@ -33,6 +65,7 @@ ms.locfileid: "79219648"
  - Ortalama sözcük hata oranı %18,6 oranında azaltılması için 19 yerel bölge için güncelleştirilmiş konuşma tanıma modelleri (es-ES, es-MX, fr-CA, fr-FR, it-IT, ja-JP, ko-KR, pt-BR, zh-CN, zh-HK, nb-NO, fi-FL, ru-RU, pl-PL, ca-ES, zh-TW, th-TH, pt-pt-TR) Yeni modeller Dikte, Çağrı Merkezi Transkripsiyon ve Video Dizini senaryoları da dahil olmak üzere birden fazla etki alanında önemli iyileştirmeler getiriyor.
 
 **Hata düzeltmeleri**
+
  - Konuşma Transkripsiyonu JAVA API'lerinde düzgün beklemediği hata düzeltildi 
  - Xamarin [GitHub sorunu](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/363) için Android x86 emülatör düzeltme
  - Eksik ekle (Get| Set)AudioConfig özellik yöntemleri
@@ -41,9 +74,11 @@ ms.locfileid: "79219648"
  - Evrensel Windows Uygulamaları'nda kimlik oluşturma artık uygun benzersiz bir GUID algoritması kullanır; daha önce ve istemeden genellikle etkileşimleri büyük setleri üzerinde çakışma üretilen bir saptırılmış bir uygulama için varsayılan.
  
  **Örnekler**
+ 
  - [Unity mikrofon ve itme modu akışı](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/unity/from-unitymicrophone) ile Konuşma SDK kullanmak için birlik örneği
 
 **Diğer değişiklikler**
+
  - [Linux için güncellenen OpenSSL yapılandırma belgeleri](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-configure-openssl-linux)
 
 ## <a name="speech-sdk-190-2020-january-release"></a>Konuşma SDK 1.9.0: 2020-Ocak açıklaması
@@ -59,13 +94,11 @@ ms.locfileid: "79219648"
 - JavaScript: Prem `FromHost API` kapları ve egemen bulutlarla kullanımı kolaylaştırmak için destek eklendi. [Burada](speech-container-howto.md)belgelere bakın.
 - JavaScript: Şimdi `NODE_TLS_REJECT_UNAUTHORIZED` [orgads](https://github.com/orgads)bir katkı sayesinde onur . [Ayrıntılara buradan](https://github.com/microsoft/cognitive-services-speech-sdk-js/pull/75)bakın.
 
-
 **Yeni değişiklikler**
 
 - `OpenSSL`sürüm 1.1.1b olarak güncellenmiştir ve Linux için Konuşma SDK çekirdek kitaplığına statik olarak bağlıdır. Gelen kutunuz `OpenSSL` sistemdeki `/usr/lib/ssl` dizine yüklenmediyse, bu bir mola verebilir. Sorunu çözmek için lütfen Konuşma SDK dokümanları altındaki [belgelerimizi](how-to-configure-openssl-linux.md) kontrol edin.
 - C# `WordLevelTimingResult.Offset` `int` için döndürülen veri türünü, `long` konuşma verilerinin `WordLevelTimingResults` 2 dakikadan uzun olduğu zamana erişime izin vermek için değiştirdik.
 - `PushAudioInputStream`ve `PullAudioInputStream` şimdi wav üstbilgisini, oluşturulduklarında `AudioStreamFormat`isteğe bağlı olarak belirtilen konuşma hizmetine gönderin. Müşteriler artık [desteklenen ses giriş biçimini](how-to-use-audio-input-streams.md)kullanmalıdır. Diğer biçimler en uygun un altında tanıma sonuçları alır veya başka sorunlara neden olabilir. 
-
 
 **Hata düzeltmeleri**
 
@@ -81,13 +114,11 @@ ms.locfileid: "79219648"
 - JavaScript: 1,7'de eklendikçe hizmet özelliklerini ayarlamak için destek eklendi.
 - JavaScript: bağlantı hatasının sürekli, başarısız websocket yeniden bağlanma girişimlerine neden olabileceği bir sorunu düzeltti.
 
-
 **Örnekler**
 
 - [Burada](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/java/android/sdkdemo)Android için anahtar kelime tanıma örneği eklendi.
 - Sunucu senaryosu için [tts](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/csharp/sharedcontent/console/speech_synthesis_server_scenario_sample.cs)örneği burada eklendi.
 - C# ve C++ için çoklu cihaz lı konuşma hızlı başlangıçları [burada](quickstarts/multi-device-conversation.md)eklendi.
-
 
 **Diğer değişiklikler**
 

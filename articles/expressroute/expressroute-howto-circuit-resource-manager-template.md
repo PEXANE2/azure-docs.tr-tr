@@ -2,24 +2,23 @@
 title: 'Azure ExpressRoute Şablonu: ExpressRoute devresi oluşturma'
 description: Bir ExpressRoute devresi oluşturun, sağlama, silme ve silme.
 services: expressroute
-author: cherylmc
+author: charwen
 ms.service: expressroute
 ms.topic: article
 ms.date: 11/13/2019
-ms.author: cherylmc
-ms.reviewer: ganesr
-ms.openlocfilehash: 78da84a462566cca1a2800174849159ace8dd6dc
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: charwen
+ms.openlocfilehash: ac2fb2f884feb0fbe6fbb1731ebe7c8bdad5114b
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75981147"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80616522"
 ---
 # <a name="create-an-expressroute-circuit-by-using-azure-resource-manager-template"></a>Azure Kaynak Yöneticisi şablonu kullanarak ExpressRoute devresi oluşturma
 
 > [!div class="op_single_selector"]
-> * [Azure portalında](expressroute-howto-circuit-portal-resource-manager.md)
-> * [Powershell](expressroute-howto-circuit-arm.md)
+> * [Azure portalı](expressroute-howto-circuit-portal-resource-manager.md)
+> * [PowerShell](expressroute-howto-circuit-arm.md)
 > * [Azure CLI](howto-circuit-cli.md)
 > * [Azure Resource Manager şablonu](expressroute-howto-circuit-resource-manager-template.md)
 > * [Video - Azure portalı](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
@@ -64,7 +63,7 @@ Bir şablon dağıtarak bir ExpressRoute Devresi oluşturmak için:
     Write-Host "Press [ENTER] to continue ..."
     ```
 
-   * **SKU katmanı,** ExpressRoute devresi [Yerel,](expressroute-faqs.md#expressroute-local)Standart veya [Premium](expressroute-faqs.md#expressroute-premium)olup olmadığını belirler. *Yerel,* *Standart* veya *Premium*belirtebilirsiniz.
+   * **SKU katmanı,** ExpressRoute devresi [Yerel,](expressroute-faqs.md#expressroute-local)Standart veya [Premium](expressroute-faqs.md#expressroute-premium)olup olmadığını belirler. *Yerel*, *Standart veya *Premium*belirtebilirsiniz.
    * Fatura türünü **SKU ailesi** belirler. Tarifeli veri planı için *Ölçülü Verileri* ve sınırsız veri planı için Sınırsız *Veri* belirtebilirsiniz. Fatura türünü *Metereddata'dan* *Unlimiteddata'ya*değiştirebilirsiniz, ancak türü *Unlimiteddata'dan* *Metereddata'ya*değiştiremezsiniz. *Yerel* devre yalnızca *Sınırsız veridir.*
    * **Eşleyen Konum,** Microsoft ile birlikte bakacağınız fiziksel konumdur.
 

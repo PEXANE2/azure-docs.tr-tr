@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: juliako
-ms.openlocfilehash: f075362f976e6abb26c9781c4b0cdeb7912c0862
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 75363212684bb09e84a4bc4881af26e6d2a8e7e3
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76514043"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585281"
 ---
 # <a name="monitor-media-services-metrics-and-diagnostic-logs-via-azure-monitor"></a>Azure Monitor aracılığıyla Medya Hizmetleri ölçümlerini ve tanılama günlüklerini izleyin
 
@@ -54,7 +54,7 @@ Aşağıdaki hesap ölçümlerini izleyebilirsiniz.
 |StreamingPolicyQuota|Akış İlkesi kotası|Hesabınızda Akış İlkeleri kotası.|
 |StreamingPolicyQuotaUsedPercentage|Akış İlkesi kotası kullanılan yüzde|Zaten kullanılan Akış İlkesi kotasının yüzdesi.|
 
-[Hesap kotalarını ve sınırlamalarını](limits-quotas-constraints.md)da gözden geçirmelisiniz.
+Ayrıca hesap [kotaları ve limitleri](limits-quotas-constraints.md)gözden geçirmelisiniz.
 
 ### <a name="streaming-endpoint"></a>Akış Bitiş Noktası
 

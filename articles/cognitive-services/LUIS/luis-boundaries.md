@@ -1,22 +1,14 @@
 ---
 title: Limitler - LUIS
-titleSuffix: Azure Cognitive Services
 description: Bu makale, Azure Bilişsel Hizmetler Dil Anlayışının (LUIS) bilinen sınırlarını içerir. LUIS'in birkaç sınır alanı vardır. Model sınır, LUIS'teki amaçları, varlıkları ve özellikleri denetler. Anahtar türüne göre kota sınırları. Klavye kombinasyonu LUIS web sitesini kontrol eder.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 11/07/2019
-ms.author: diberry
-ms.custom: seodec18
-ms.openlocfilehash: 6c021e68f8b76d8b0d3e6e9ff21c242580f53313
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.date: 04/02/2020
+ms.openlocfilehash: 4aa69cb0fd36fe5bf4ea2928022aea602b8830d6
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80520953"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618862"
 ---
 # <a name="boundaries-for-your-luis-model-and-keys"></a>LUIS modeliniz ve anahtarlarınız için sınırlar
 LUIS'in birkaç sınır alanı vardır. Bunlardan ilki, LUIS'teki niyetleri, varlıkları ve özellikleri kontrol eden [model sınırıdır.](#model-boundaries) İkinci alan, anahtar türüne göre [kota sınırlarıdır.](#key-limits) Sınırların üçüncü bir alanı LUIS web sitesini kontrol etmek için [klavye kombinasyonudur.](#keyboard-controls) Dördüncü bir alan luis yazma web sitesi ve LUIS [uç nokta](luis-glossary.md#endpoint) API'ler arasında dünya bölgesi [haritalama](luis-reference-regions.md) olduğunu.
@@ -40,7 +32,7 @@ Uygulamanız LUIS model sınırlarını ve sınırlarını aşarsa, bir [LUIS g�
 | [Önizleme - Dinamik liste varlıkları](https://aka.ms/luis-api-v3-doc#dynamic-lists-passed-in-at-prediction-time)|Sorgu başına ~1k tahmin bitiş noktası isteği 2 listeleri|
 | [Desenler](luis-concept-patterns.md)|Uygulama başına 500 desen.<br>Desen maksimum uzunluğu 400 karakterdir.<br>3 Desen.desen başına herhangi bir varlıklar<br>Desende en fazla 2 iç içe isteğe bağlı metin|
 | [Desen.herhangi bir](./luis-concept-entity-types.md)|Uygulama başına 100, desen başına 3 desen.desen başına herhangi bir varlık |
-| [Tümcecik listesi][phrase-list]|500 ifade listesi. Özellik sınırı olarak model nedeniyle 10 genel ifade listesi. Değiştirilemez ifade listesi en fazla 5.000 tümcecike sahiptir. Değiştirilebilir İfade Listesi'nde en fazla 50.000 ifade vardır. 500.000 tümcecikuygulama başına toplam tümceciklerin maksimum sayısı.|
+| [Tümcecik listesi][phrase-list]|500 ifade listesi. Özellik sınırı olarak model nedeniyle 10 genel ifade listesi. Değiştirilemez tümcecik listesi en fazla 5.000 tümcecike sahiptir. Değiştirilebilir tümcecik listesi en fazla 50.000 tümcecike sahiptir. 500.000 tümcecikuygulama başına toplam tümceciklerin maksimum sayısı.|
 | [Önceden oluşturulmuş varlıklar](./luis-prebuilt-entities.md) | limitsiz|
 | [Normal ifade varlıkları](./luis-concept-entity-types.md)|20 varlık<br>500 karakter max. normal ifade varlık deseni başına|
 | [Roller](luis-concept-roles.md)|Uygulama başına 300 rol. Varlık başına 10 rol|
@@ -77,26 +69,41 @@ Aşağıdaki adlarda aşağıdaki karakterleri kullanmayın.
 |Amaç, varlık ve rol adları|`:`<br>`$` <br> `&`|
 |Sürüm adı|`\`<br> `/`<br> `:`<br> `?`<br> `&`<br> `=`<br> `*`<br> `+`<br> `(`<br> `)`<br> `%`<br> `@`<br> `$`<br> `~`<br> `!`<br> `#`|
 
-## <a name="key-usage"></a>Anahtar kullanımı
+## <a name="resource-usage-and-limits"></a>Kaynak kullanımı ve sınırları
 
-Language Understand'ın ayrı anahtarları, yazmak için bir türü ve tahmin bitiş noktasını sorgulamak için bir türü vardır. Anahtar türleri arasındaki farklar hakkında daha fazla bilgi edinmek [için, LUIS'te Yazma ve sorgu tahmin bitiş noktası anahtarlarına](luis-concept-keys.md)bakın.
+Language Understand ayrı kaynaklara, yazma için bir türüne ve tahmin bitiş noktasını sorgulamak için bir türüne sahiptir. Anahtar türleri arasındaki farklar hakkında daha fazla bilgi edinmek [için, LUIS'te Yazma ve sorgu tahmin bitiş noktası anahtarlarına](luis-concept-keys.md)bakın.
 
 <a name="key-limits"></a>
 
-## <a name="resource-key-limits"></a>Kaynak anahtar sınırları
+### <a name="authoring-resource-limits"></a>Kaynak sınırları yazma
 
-Kaynak anahtarlarının yazma ve bitiş noktası için farklı sınırları vardır. LUIS tahmin sorgusu bitiş noktası anahtarı yalnızca bitiş noktası sorguları için geçerlidir.
+Azure portalındaki `LUIS.Authoring`kaynakları filtrelerken bu _tür_, kullanın. LUIS, Azure yazma kaynağı başına 500 uygulamayı sınırlandırıyor.
 
-* Azure yazma kaynağı başına 500 uygulama
+|Kaynak yazma|TPS yazma|
+|--|--|
+|Başlangıç|1 milyon/ay, 5/saniye|
+|F0 - Ücretsiz katman |1 milyon/ay, 5/saniye|
 
-|Anahtar|Yazma|Uç Nokta|Amaç|
-|--|--|--|--|
-|Başlangıç|1 milyon/ay, 5/saniye|1/ay, 5/saniye|LUIS uygulamanızı yazma|
-|F0 - Ücretsiz katman |1 milyon/ay, 5/saniye|10 bin/ay, 5/saniye|LUIS bitiş noktanızı sorgulama|
-|S0 - Temel katman|-|50/saniye|LUIS bitiş noktanızı sorgulama|
-|S0 - Standart katman|-|50/saniye|LUIS bitiş noktanızı sorgulama|
-|[Duygusal analiz entegrasyonu](luis-how-to-publish-app.md#enable-sentiment-analysis)|-|-|Başka bir Azure kaynağı gerektirmeden anahtar tümcecik veri ayıklama dahil olmak üzere duyarlılık bilgileri ekleme sağlanır. |
-|[Konuşma entegrasyonu](../speech-service/how-to-recognize-intents-from-speech-csharp.md)|-|Birim maliyet başına 1 bin uç nokta isteği|Konuşulan söyleyiyi metin söyleyerek dönüştürün ve LUIS sonuçlarını döndürün|
+* TPS = Saniyedeki işlemler
+
+[Fiyatlandırma hakkında daha fazla bilgi edinin.][pricing]
+
+### <a name="query-prediction-resource-limits"></a>Sorgu tahmin kaynak sınırları
+
+Azure portalındaki `LUIS`kaynakları filtrelerken bu _tür_, kullanın. Çalışma zamanında kullanılan LUIS sorgusu tahmin bitiş noktası kaynağı yalnızca bitiş noktası sorguları için geçerlidir.
+
+|Sorgu Tahmin kaynağı|TPS sorgula|
+|--|--|
+|F0 - Ücretsiz katman |10 bin/ay, 5/saniye|
+|S0 - Standart katman|50/saniye|
+
+### <a name="sentiment-analysis"></a>Yaklaşım analizi
+
+Duyarlılık bilgisi sağlayan [duygu analizi tümleştirmesi,](luis-how-to-publish-app.md#enable-sentiment-analysis)başka bir Azure kaynağı gerektirmeden sağlanır.
+
+### <a name="speech-integration"></a>Konuşma entegrasyonu
+
+[Konuşma tümleştirmesi](../speech-service/how-to-recognize-intents-from-speech-csharp.md) birim maliyet başına 1bin uç nokta isteği sağlar.
 
 [Fiyatlandırma hakkında daha fazla bilgi edinin.][pricing]
 

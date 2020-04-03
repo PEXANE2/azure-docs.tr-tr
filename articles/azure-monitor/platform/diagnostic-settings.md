@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: fb2f9ff5af68575d9f9d29e9a6aca83d603395b3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6ff9e62ed145b7892d2997193dae8e171ae49c98
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77672421"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585377"
 ---
 # <a name="create-diagnostic-setting-to-collect-platform-logs-and-metrics-in-azure"></a>Azure'da platform günlüklerini ve ölçümlerini toplamak için tanılama ayarı oluşturun
 Azure Etkinliği günlüğü ve kaynak günlükleri de dahil olmak üzere Azure'daki [platform günlükleri,](platform-logs-overview.md) Azure kaynakları ve bağlı oldukları Azure platformu için ayrıntılı tanılama ve denetleme bilgileri sağlar. Bu makalede, farklı hedeflere platform günlükleri göndermek için tanılama ayarları oluşturma ve yapılandırma hakkında ayrıntılar sağlar.
@@ -37,7 +37,7 @@ Platform günlükleri aşağıdaki tablodaki hedeflere gönderilebilir. Her hede
 | Hedef | Açıklama |
 |:---|:---|
 | [Log Analytics çalışma alanı](resource-logs-collect-workspace.md) | Günlükleri bir Log Analytics çalışma alanında toplamak, bunları azure monitor tarafından toplanan diğer izleme verileriyle güçlü günlük sorgularını kullanarak analiz etmenizi ve ayrıca uyarılar ve görselleştirmeler gibi diğer Azure Monitor özelliklerinden yararlanmanızı sağlar. |
-| [Olay hub’ları](resource-logs-stream-event-hubs.md) | Günlükleri Olay Hub'larına göndermek, üçüncü taraf SIEM'ler ve diğer günlük analiz çözümleri gibi harici sistemlere veri akışı yapmanızı sağlar. |
+| [Etkinlik hub'ları](resource-logs-stream-event-hubs.md) | Günlükleri Olay Hub'larına göndermek, üçüncü taraf SIEM'ler ve diğer günlük analiz çözümleri gibi harici sistemlere veri akışı yapmanızı sağlar. |
 | [Azure depolama hesabı](resource-logs-collect-storage.md) | Bir Azure depolama hesabında günlükleri arşivlemek denetim, statik çözümleme veya yedekleme için yararlıdır. |
 
 ## <a name="create-diagnostic-settings-in-azure-portal"></a>Azure portalında tanı lama ayarları oluşturma
@@ -53,7 +53,7 @@ Azure portalındaki tanı ayarlarını Azure Monitörü menüsünden veya kaynak
     
         ![Tanılama ayarları](media/diagnostic-settings/menu-monitor.png)
 
-    - Etkinlik günlüğü için **Azure Monitörü** menüsünde **Etkinlik günlüğü** ve ardından **Tanılama ayarlarını**tıklatın. Etkinlik günlüğü için eski yapılandırmayı devre dışı bıraktığından emin olun. Ayrıntılar için [varolan ayarları devre dışı dışı](diagnostic-settings-legacy.md#disable-existing-settings) kındırı(
+    - Etkinlik günlüğü için **Azure Monitörü** menüsünde **Etkinlik günlüğü** ve ardından **Tanılama ayarlarını**tıklatın. Etkinlik günlüğü için eski yapılandırmayı devre dışı bıraktığından emin olun. Ayrıntılar için [varolan ayarları devre dışı dışı](/azure/azure-monitor/platform/activity-log-collect#collecting-activity-log) kındırı(
 
         ![Tanılama ayarları](media/diagnostic-settings/menu-activity-log.png)
 

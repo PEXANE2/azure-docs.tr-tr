@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/23/2018
 ms.author: memildin
-ms.openlocfilehash: 6edea1d0de53e2dc9f764de26209dc1f3110556e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: bf715d872fab421de30ebcb146a1981a7d008738
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75978612"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585983"
 ---
 # <a name="manage-user-data-in-azure-security-center"></a>Azure Güvenlik Merkezi'ndeki kullanıcı verilerini yönetme
 Bu makalede, Azure Güvenlik Merkezi'nde kullanıcı verilerini nasıl yönetebileceğiniz hakkında bilgi verilmektedir. Kullanıcı verilerini yönetmek, verilere erişme, silme veya dışa aktarma olanağını içerir.
@@ -98,6 +98,3 @@ Güvenlik Merkezi [kullanıcısı, güvenlik kişi verilerini](security-center-p
 
 ## <a name="auditing-and-reporting"></a>Denetim ve raporlama
 Güvenlik kişisinin denetim günlükleri, tam zamanında ve uyarı [güncelleştirmeleri Azure Etkinlik Günlükleri'nde](../azure-monitor/platform/platform-logs-overview.md)tutulur.
-
-## <a name="next-steps"></a>Sonraki adımlar
-Kullanıcı verilerini yönetme hakkında daha fazla bilgi için [bkz.](security-center-investigation-user-data.md)

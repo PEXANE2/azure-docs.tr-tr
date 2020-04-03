@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: markjbrown
 ms.author: mjbrown
 ms.date: 01/31/2020
-ms.openlocfilehash: 0c10ec94f6c089b5e5466f5dce73d32d6ce917b3
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 9650bb3214c22926427717569f718ca0426ed729
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80422831"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618740"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Yerel geliştirme ve test için Azure Cosmos Emülatörü'ni kullanın
 
@@ -99,7 +99,7 @@ Account key: C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZ
 > [!NOTE]
 > Emülatöre /Key seçeneğiyle başladıysanız, oluşturulan tuşu 'nun yerine `C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==`'yi kullanın. /Key seçeneği hakkında daha fazla bilgi için [Komut satırı araç başvurusuna bakın.](#command-line)
 
-Azure Cosmos DB'de olduğu gibi Azure Cosmos Emülatörü de yalnızca SSL üzerinden güvenli iletişimi destekler.
+Azure Cosmos DB'de olduğu gibi Azure Cosmos Emülatörü de yalnızca TLS üzerinden güvenli iletişimi destekler.
 
 ## <a name="running-on-a-local-network"></a>Yerel ağ üzerinde çalışma
 
@@ -215,17 +215,17 @@ Emülatöre bir yönetici komut isteminden "/EnableGremlinEndpoint" ile başlay�
   :> g.V()
   ```
 
-## <a name="export-the-ssl-certificate"></a>SSL sertifikasını dışarı aktarma
+## <a name="export-the-tlsssl-certificate"></a>TLS/SSL sertifikasını dışa aktarma
 
 .NET dilleri ve çalışma zamanı, Azure Cosmos DB yerel öykünücüsüne güvenli şekilde bağlanmak için Windows Sertifika Deposunu kullanır. Diğer dillerin kendi sertifikaları yönetme ve kullanma yöntemi vardır. Java kendi [sertifika deposunu](https://docs.oracle.com/cd/E19830-01/819-4712/ablqw/index.html) kullanırken Python ise [yuva sarmalayıcılarını](https://docs.python.org/2/library/ssl.html) kullanır.
 
 Windows Sertifika Deposu ile tümleştirilmeyen çalışma zamanları ve dillerle kullanmak üzere bir sertifika edinmek için Windows Sertifika Yöneticisi’ni kullanarak bunu dışarı aktarmanız gerekir. Certlm.msc çalıştırarak başlatabilir veya [Azure Kozmos Emülatör Sertifikalarını Dışa Aktar'da](./local-emulator-export-ssl-certificates.md)adım adım yönergeleri takip edebilirsiniz. Sertifika yöneticisi çalıştırıldıktan sonra aşağıda gösterildiği gibi Kişisel Sertifikaları açın ve sertifikayı BASE-64 kodlu X.509 (.cer) dosyası olarak "DocumentDBEmulatorCertificate" kolay adıyla dışarı aktarın.
 
-![Azure Cosmos DB yerel öykünücüsü SSL sertifikası](./media/local-emulator/database-local-emulator-ssl_certificate.png)
+![Azure Cosmos DB yerel emülatörü TLS/SSL sertifikası](./media/local-emulator/database-local-emulator-ssl_certificate.png)
 
 X.509 sertifikası, [Java CA Sertifika Deposuna Sertifika Ekleme](https://docs.microsoft.com/azure/java-add-certificate-ca-store) bölümündeki yönergeler izlenerek Java sertifika deposuna içeri aktarılabilir. Sertifika sertifika deposuna alındıktan sonra, SQL ve Azure Cosmos DB'nin MongoDB için API'si için istemciler Azure Cosmos Emülatörü'ne bağlanabilecektir.
 
-Python ve Node.js SDK’larından öykünücüye bağlanırken SSL doğrulaması devre dışı bırakılır.
+Python ve Node.js SDK'lardan emülatöre bağlanırken TLS doğrulaması devre dışı bırakılır.
 
 ## <a name="command-line-tool-reference"></a><a id="command-line"></a>Komut satırı aracı başvurusu
 Yükleme konumundan, emülatörbaşlatmak ve durdurmak, seçenekleri yapılandırmak ve diğer işlemleri gerçekleştirmek için komut satırı kullanabilirsiniz.
@@ -260,8 +260,8 @@ Seçenek listesini görüntülemek için komut satırına `Microsoft.Azure.Cosmo
 | StopTraces     | LOGMAN kullanarak hata ayıklama izleme günlüklerini toplamayı durdurun. | Microsoft.Azure.Cosmos.Emulator.exe /StopTraces  | |
 | BaşlangıçWprTraces  |  Windows Performans Kaydı aracını kullanarak hata ayıklama izleme günlükleri toplamaya başlayın. | Microsoft.Azure.Cosmos.Emulator.exe /StartWprTraces | |
 | StopWprTraces     | Windows Performans Kaydı aracını kullanarak hata ayıklama izleme günlüklerini toplamayı durdurun. | Microsoft.Azure.Cosmos.Emulator.exe /StopWprTraces  | |
-|FailOnSslCertificateNameMismatch | Varsayılan olarak Emülatör, sertifikanın SAN'ı Emülatör'ün etki alanı adını, yerel IPv4 adresini, 'localhost'u ve '127.0.0.1'i içermiyorsa, kendi imzaladığı SSL sertifikasını yeniler. Bu seçenekle, emülatör başlangıçta başarısız olur. Daha sonra /GenCert seçeneğini kullanarak yeni bir kendi imzalı SSL sertifikası oluşturup yüklemeniz gerekir. | Microsoft.Azure.Cosmos.Emulator.exe /FailOnSslCertificateNameMismatch  | |
-| GenCert | Kendi imzalı yeni bir SSL sertifikası oluşturun ve yükleyin. ağ üzerinden Emülatöre erişmek için virgülden ayrılmış ek DNS adlarının listesini içeren isteğe bağlı olarak. | Microsoft.Azure.Cosmos.Emulator.exe /GenCert=\<dns-names\> |\<dns-names\>: İsteğe bağlı virgülayrılmış ek dns adları listesi  |
+|FailOnSslCertificateNameMismatch | Varsayılan olarak Emülatör, sertifikanın SAN'ı Emülatör'ün etki alanı adını, yerel IPv4 adresini, 'localhost'u ve '127.0.0.1'i içermiyorsa, kendi imzaladığı TLS/SSL sertifikasını yeniler. Bu seçenekle, emülatör başlangıçta başarısız olur. Daha sonra yeni bir kendi imzalı TLS/SSL sertifikası oluşturmak ve yüklemek için /GenCert seçeneğini kullanmalısınız. | Microsoft.Azure.Cosmos.Emulator.exe /FailOnSslCertificateNameMismatch  | |
+| GenCert | Kendi imzalı yeni bir TLS/SSL sertifikası oluşturun ve yükleyin. ağ üzerinden Emülatöre erişmek için virgülden ayrılmış ek DNS adlarının listesini içeren isteğe bağlı olarak. | Microsoft.Azure.Cosmos.Emulator.exe /GenCert=\<dns-names\> |\<dns-names\>: İsteğe bağlı virgülayrılmış ek dns adları listesi  |
 | DirectPorts |Doğrudan bağlantı için kullanılacak bağlantı noktalarını belirtir. Varsayılan değerler: 10251,10252,10253,10254. | Microsoft.Azure.Cosmos.Emulator.exe /DirectPorts:\<directports\> | \<directports\>: 4 bağlantı noktasından oluşan virgülle ayrılmış liste |
 | Anahtar |Öykünücü için yetkilendirme anahtarı. Anahtar, 64 bayt vektörün base 64 kodlaması olmalıdır. | Microsoft.Azure.Cosmos.Emulator.exe /Key:\<anahtar\> | \<key\>: Anahtar, 64 bayt vektörün base 64 kodlaması olmalıdır|
 | EnableRateLimiting | İstek oranını sınırlama davranışının etkinleştirildiğini belirtir. |Microsoft.Azure.Cosmos.Emulator.exe /EnableRateLimiting | |
@@ -398,7 +398,7 @@ powershell .\importcert.ps1
 Starting interactive shell
 ```
 
-Şimdi istemcinizdeki yanıttan uç noktayı ve ana anahtar girişini kullanın ve SSL sertifikasını ana bilgisayarınıza içeri aktarın. SSL sertifikasını içeri aktarmak için, yönetici komut isteminden aşağıdakileri yapın:
+Şimdi müşterinizdeki yanıttan uç nokta ve ana anahtarı kullanın ve TLS/SSL sertifikasını ana bilgisayarınıza aktarın. TLS/SSL sertifikasını almak için bir yönetici komut isteminden aşağıdakileri yapın:
 
 Komut satırından:
 
@@ -527,7 +527,7 @@ Hata ayıklama izlemelerini toplamak için bir yönetici komut isteminden aşağ
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu öğreticide ücretsiz yerel geliştirme için yerel öykünücünün nasıl kullanılacağını öğrendiniz. Artık sonraki öğreticiye devam edebilir ve öykünücü SSL sertifikalarının nasıl dışarı aktarılacağını öğrenebilirsiniz.
+Bu öğreticide ücretsiz yerel geliştirme için yerel öykünücünün nasıl kullanılacağını öğrendiniz. Şimdi bir sonraki öğreticiye devam edebilir ve emülatör TLS/SSL sertifikalarını nasıl dışa aktarabileceğinizi öğrenebilirsiniz.
 
 > [!div class="nextstepaction"]
 > [Azure Cosmos Emülatör sertifikalarını dışa aktarma](local-emulator-export-ssl-certificates.md)

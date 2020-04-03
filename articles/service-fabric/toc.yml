@@ -404,8 +404,6 @@
           items:
             - name: Konuk tarafından yürütülebilir bir uygulama dağıtma
               href: service-fabric-deploy-existing-app.md
-            - name: Konuk tarafından yürütülebilir birden çok uygulama dağıtma
-              href: service-fabric-deploy-multiple-apps.md
         - name: Kapsayıcı hizmeti oluşturma
           items:
             - name: Docker Compose (önizleme)

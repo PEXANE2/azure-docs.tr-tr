@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: c98da4b41da183f56d80fad1e8c01706d1cfcf23
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b54f9f3466fe5f7e2da622077f53575d6f43f72d
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78970502"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585951"
 ---
 # <a name="azure-disk-encryption-sample-scripts"></a>Azure Disk Şifrelemesi örnek betikleri 
 
@@ -80,7 +80,7 @@ Aşağıdaki tablo, PowerShell komut dosyasında hangi parametrelerin kullanıla
 
 ### <a name="prerequisites-for-os-disk-encryption"></a>İşletim sistemi disk şifrelemesi için ön koşullar
 
-* VM, [Azure Disk Şifreleme destekli işletim sistemlerinde](disk-encryption-overview.md#supported-vm-sizes) listelenen işletim sistemi disk şifrelemesiyle uyumlu bir dağıtım kullanıyor olmalıdır 
+* VM, [Azure Disk Şifreleme destekli işletim sistemlerinde](disk-encryption-overview.md#supported-vms) listelenen işletim sistemi disk şifrelemesiyle uyumlu bir dağıtım kullanıyor olmalıdır 
 * VM, Azure Kaynak Yöneticisi'ndeki Market görüntüsünden oluşturulmalıdır.
 * En az 4 GB RAM'e sahip Azure VM (önerilen boyut 7 GB'dır).
 * (RHEL ve CentOS için) SELinux'u devre dışı kınla. SELinux'u devre dışı kalım için bkz: "4.4.2. SELinux'un VM'deki [SELinux Kullanıcı ve Yönetici Kılavuzu'nda](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/SELinux_Users_and_Administrators_Guide/sect-Security-Enhanced_Linux-Working_with_SELinux-Changing_SELinux_Modes.html#sect-Security-Enhanced_Linux-Enabling_and_Disabling_SELinux-Disabling_SELinux) devre dışı bırakılması.

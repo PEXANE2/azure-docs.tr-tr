@@ -11,20 +11,20 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 47fd30fbb6e6836d6edf18ac68164d515f3aeb93
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 8ac9ff1f46e1d2d0ddaa313499340b4723c7da07
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350742"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80584261"
 ---
 # <a name="workload-management-with-resource-classes-in-azure-synapse-analytics"></a>Azure Synapse Analytics'te kaynak sınıflarıyla iş yükü yönetimi
 
-Azure Sinaps'taki SQL Analytics sorguları için bellek ve eşzamanlılık yönetmek için kaynak sınıflarını kullanma kılavuzu.  
+Azure Synapse'deki Synapse SQL havuz sorguları için bellek ve eşzamanlılık yönetmek için kaynak sınıflarını kullanma kılavuzu.  
 
 ## <a name="what-are-resource-classes"></a>Kaynak sınıfları nelerdir
 
-Bir sorgunun performans kapasitesi kullanıcının kaynak sınıfı tarafından belirlenir.  Kaynak sınıfları, sql analytics'te bilgi işlem kaynaklarını ve sorgu yürütmeiçin eşzamanlılığı yöneten önceden belirlenmiş kaynak sınırlarıdır. Kaynak sınıfları, aynı anda çalışan sorgu sayısına ve her sorguya atanan bilgi işlem kaynaklarına sınırlar koyarak sorgularınızın kaynaklarını yapılandırmanıza yardımcı olabilir.  Hafıza ve eşzamanlılık arasında bir denge var.
+Bir sorgunun performans kapasitesi kullanıcının kaynak sınıfı tarafından belirlenir.  Kaynak sınıfları, synapse SQL havuzunda, sorgu yürütmesi için bilgi işlem kaynaklarını ve eşzamanlılığı yöneten önceden belirlenmiş kaynak sınırlarıdır. Kaynak sınıfları, aynı anda çalışan sorgu sayısına ve her sorguya atanan bilgi işlem kaynaklarına sınırlar koyarak sorgularınızın kaynaklarını yapılandırmanıza yardımcı olabilir.  Hafıza ve eşzamanlılık arasında bir denge var.
 
 - Daha küçük kaynak sınıfları sorgu başına maksimum belleği azaltır, ancak eşzamanlılığı artırır.
 - Daha büyük kaynak sınıfları sorgu başına maksimum belleği artırır, ancak eşzamanlılığı azaltır.
@@ -82,7 +82,7 @@ Her kaynak sınıfı için bellek ayırma aşağıdaki gibidir.
 
 Varsayılan olarak, her kullanıcı dinamik kaynak sınıfı **smallrc**üyesidir.
 
-Hizmet yöneticisinin kaynak sınıfı smallrc'de sabitlenir ve değiştirilemez.  Hizmet yöneticisi, sağlama işlemi sırasında oluşturulan kullanıcıdır.  Bu bağlamdaki hizmet yöneticisi, yeni bir sunucuyla yeni bir SQL Analytics örneği oluştururken "Sunucu yöneticisi girişi" için belirtilen oturum açmadır.
+Hizmet yöneticisinin kaynak sınıfı smallrc'de sabitlenir ve değiştirilemez.  Hizmet yöneticisi, sağlama işlemi sırasında oluşturulan kullanıcıdır.  Bu bağlamda hizmet yöneticisi, yeni bir sunucuile yeni bir Synapse SQL havuzu oluştururken "Sunucu yöneticisi girişi" için belirtilen giriştir.
 
 > [!NOTE]
 > Active Directory yöneticisi olarak tanımlanan kullanıcılar veya gruplar da hizmet yöneticileridir.
@@ -594,5 +594,5 @@ GO
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Veritabanı kullanıcılarını ve güvenliğini yönetme hakkında daha fazla bilgi için [SQL Analytics'te veritabanını güvenli](sql-data-warehouse-overview-manage-security.md)olarak ele abakın. Daha büyük kaynak sınıflarının kümelenmiş sütun deposu dizini kalitesini nasıl iyileştirebileceği hakkında daha fazla bilgi [için, sütun deposu sıkıştırma için Bellek optimizasyonlarına](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)bakın.
+Veritabanı kullanıcılarını ve güvenliğini yönetme hakkında daha fazla bilgi için [Synapse SQL'de güvenli veritabanı](sql-data-warehouse-overview-manage-security.md)na bakın. Daha büyük kaynak sınıflarının kümelenmiş sütun deposu dizini kalitesini nasıl iyileştirebileceği hakkında daha fazla bilgi [için, sütun deposu sıkıştırma için Bellek optimizasyonlarına](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)bakın.
 

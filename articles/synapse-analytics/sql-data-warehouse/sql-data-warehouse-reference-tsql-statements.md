@@ -1,6 +1,6 @@
 ---
 title: T-SQL bildirimleri
-description: SQL Analytics'te desteklenen T-SQL deyimleri için belgelere bağlantılar.
+description: Synapse SQL havuzunda desteklenen T-SQL deyimleri için belgelere bağlantılar.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,17 +11,19 @@ ms.date: 05/01/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 53609049f69f0a3d50430ef512a5bf4a8ffd6d82
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 011a850a44948bf5eee28a40d59dcf7672d866e8
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351348"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586362"
 ---
-# <a name="t-sql-statements-supported-in-sql-analytics"></a>SQL Analytics'te desteklenen T-SQL deyimleri
-SQL Analytics'te desteklenen T-SQL deyimleri için belgelere bağlantılar.
+# <a name="t-sql-statements-supported-in-synapse-sql-pool"></a>Synapse SQL havuzunda desteklenen T-SQL deyimleri
+
+Synapse SQL havuzunda desteklenen T-SQL deyimleri için belgelere bağlantılar.
 
 ## <a name="data-definition-language-ddl-statements"></a>Veri Tanımı Dili (DDL) deyimleri
+
 * [VERITABANıNı DEĞIŞTIR](https://msdn.microsoft.com/library/mt204042.aspx)
 * [ALTER INDEX](https://msdn.microsoft.com/library/ms188388.aspx)
 * [ALTER MATERIALIZED VIEW](/sql/t-sql/statements/alter-materialized-view-transact-sql?view=azure-sqldw-latest) (Önizleme) 
@@ -60,11 +62,13 @@ SQL Analytics'te desteklenen T-SQL deyimleri için belgelere bağlantılar.
 * [UPDATE STATISTICS](https://msdn.microsoft.com/library/ms187348.aspx)
 
 ## <a name="data-manipulation-language-dml-statements"></a>Veri Düzenleme Dili (DML) deyimleri
+
 * [DELETE](https://msdn.microsoft.com/library/ms189835.aspx)
 * [Ekle](https://msdn.microsoft.com/library/ms174335.aspx)
 * [Güncelleştirme](https://msdn.microsoft.com/library/ms177523.aspx)
 
 ## <a name="database-console-commands"></a>Veritabanı Konsol Komutları
+
 * [DBCC DROPCLEANBUFFERS](https://msdn.microsoft.com/library/ms187762.aspx)
 * [DBCC DROPRESULTSETCACHE](/sql/t-sql/database-console-commands/dbcc-dropresultsetcache-transact-sql?view=azure-sqldw-latest) (Önizleme)
 * [DBCC FREEPROCCACHE](https://msdn.microsoft.com/library/mt204018.aspx)
@@ -77,6 +81,7 @@ SQL Analytics'te desteklenen T-SQL deyimleri için belgelere bağlantılar.
 * [DBCC SHOW_STATISTICS](https://msdn.microsoft.com/library/mt204043.aspx)
 
 ## <a name="query-statements"></a>Sorgu ifadeleri
+
 * [Seçin](https://msdn.microsoft.com/library/ms189499.aspx)
 * [Common_table_expression](https://msdn.microsoft.com/library/ms175972.aspx)
 * [HARIÇ ve KESİşMe](https://msdn.microsoft.com/library/ms188055.aspx)
@@ -95,6 +100,7 @@ SQL Analytics'te desteklenen T-SQL deyimleri için belgelere bağlantılar.
 * [Alt sorgular](https://msdn.microsoft.com/library/mt631613.aspx)
 
 ## <a name="security-statements"></a>Güvenlik deyimleri
+
 * İzinler: [HIBE](https://msdn.microsoft.com/library/ms187965.aspx), [İNKAR](https://msdn.microsoft.com/library/ms188338.aspx), [İptal](https://msdn.microsoft.com/library/ms187728.aspx)
 * [YETKILENDIRMEYI DEĞIŞTIR](https://msdn.microsoft.com/library/ms187359.aspx)
 * [SERTIFIKAYI DEĞIŞTIR](https://msdn.microsoft.com/library/ms189511.aspx)
@@ -120,4 +126,5 @@ SQL Analytics'te desteklenen T-SQL deyimleri için belgelere bağlantılar.
 * [ANA ANAHTARı AÇ](https://msdn.microsoft.com/library/ms174433.aspx)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Daha fazla referans bilgisi için SQL [Analytics'teki T-SQL dil öğelerine](sql-data-warehouse-reference-tsql-language-elements.md)ve [SQL Analytics'teki Sistem görünümlerine](sql-data-warehouse-reference-tsql-system-views.md)bakın.
+
+Daha fazla başvuru bilgisi için [Synapse SQL havuzundaki T-SQL dil öğelerine](sql-data-warehouse-reference-tsql-language-elements.md)ve [Synapse SQL havuzundaki Sistem görünümlerine](sql-data-warehouse-reference-tsql-system-views.md)bakın.

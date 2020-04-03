@@ -9,16 +9,16 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: dapine
-ms.openlocfilehash: 692f70e4666416f34a6e3f32fd5804d4aeb63a5b
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: d7ce77404359b32effcc7a5da3f9429e9fdf7005
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80477834"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618570"
 ---
 # <a name="azure-cognitive-services-support-and-feedback-options"></a>Azure Bilişsel Hizmetler desteği ve geri bildirim seçenekleri
 
-Azure Bilişsel Hizmetleri'nin işlevselliğini keşfetmeye yeni mi başlıyorsunuz? Belki de uygulamanızda yeni bir özellik uyguluyorsunuz. Veya hizmeti kullandıktan sonra, nasıl geliştireceğiniz konusunda önerileriniz var mı? Burada destek alabileceğiniz, güncel kalabileceğiniz ve Bilişsel Hizmetler için geri bildirimde bulunma seçenekleriniz verilmiştir.
+Azure Bilişsel Hizmetleri'nin işlevselliğini keşfetmeye yeni mi başlıyorsunuz? Belki de uygulamanızda yeni bir özellik uyguluyorsunuz. Veya hizmeti kullandıktan sonra, nasıl geliştireceğiniz konusunda önerileriniz var mı? Burada destek alabileceğiniz, güncel kalabileceğiniz, geri bildirimde bulabileceğiniz ve Bilişsel Hizmetler için hataları bildirebileceğiniz seçenekler verilmiştir.
 
 ## <a name="get-support"></a>Destek alın
 
@@ -30,10 +30,10 @@ Azure Bilişsel Hizmetleri'nin işlevselliğini keşfetmeye yeni mi başlıyorsu
 
 İster bulut yolculuğunuza yeni başlayan bir geliştirici olun, ister iş açısından kritik, stratejik uygulamalar dağıtan büyük bir kuruluş olun, Azure destek seçenekleri yelpazesini keşfedin ve en uygun [planı seçin.](https://azure.microsoft.com/support/plans) Azure müşterileri Azure portalında destek istekleri oluşturabilir ve yönetebilir.
 
-* [Azure portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
+* [Azure portalı](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
 * [ABD hükümeti için Azure portalı](https://portal.azure.us)
 
-### <a name="search"></a>Ara
+### <a name="search"></a>Arama
 
 <div class='icon is-large'>
     <img alt='Search' src='https://docs.microsoft.com/media/common/i_search.svg'>
@@ -83,7 +83,7 @@ Bilişsel Hizmetler sürüm notları yeni sürümler kullanıma sunuldukça gün
 
  - [Özel Görüntü](custom-vision-service/release-notes.md)
  - [Yüz](face/releasenotes.md)
- - [Language Understanding (LUIS)](luis/whats-new.md)
+ - [Language Understanding (LUIS)](LUIS/whats-new.md)
  - [Konuşma Hizmetleri](speech-service/releasenotes.md)
  - [Konuşma Hizmetleri SDK](speech-service/devices-sdk-release-notes.md)
  - [Metin Analizi](text-analytics/whats-new.md)

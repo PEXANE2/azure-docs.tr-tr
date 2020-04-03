@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/26/2019
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: 3fe1d36b859884ab19a645e5693c7e7931fe5c2c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 119265efa7b6504f3faf2e89cb68b9e9bd70bf9f
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79368477"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80617252"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Hizmeti'nde (AKS) kendi IP adres aralıklarınız ile kubenet ağ larını kullanın
 
@@ -25,7 +25,7 @@ Bu makalede, bir AKS kümesi için sanal ağ alt ağı oluşturmak ve kullanmak 
 * AKS kümesi için sanal ağ giden internet bağlantısına izin vermelidir.
 * Aynı alt ağda birden fazla AKS kümesi oluşturmayın.
 * `169.254.0.0/16`AKS kümeleri Kubernetes `172.30.0.0/16` `172.31.0.0/16` `192.0.2.0/24` servis adresi aralığını kullanamaz.
-* AKS kümesi tarafından kullanılan hizmet sorumlusunun, sanal ağınızdaki alt ağda en az [Ağ Katılımcısı](../role-based-access-control/built-in-roles.md#network-contributor) izinleri olmalıdır. Yerleşik Ağ Katılımcısı rolünü kullanmak yerine özel bir [rol](../role-based-access-control/custom-roles.md) tanımlamak istiyorsanız, aşağıdaki izinler gereklidir:
+* AKS kümesi tarafından kullanılan hizmet ilkesi, sanal ağınızdaki alt ağda en az [Ağ Katılımcısı](../role-based-access-control/built-in-roles.md#network-contributor) rolüne sahip olmalıdır. Yerleşik Ağ Katılımcısı rolünü kullanmak yerine özel bir [rol](../role-based-access-control/custom-roles.md) tanımlamak istiyorsanız, aşağıdaki izinler gereklidir:
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
   * `Microsoft.Network/virtualNetworks/subnets/read`
 
@@ -195,7 +195,7 @@ az aks create \
     --client-secret <password>
 ```
 
-Bir AKS kümesi oluşturduğunuzda, bir ağ güvenlik grubu ve rota tablosu oluşturulur. Bu ağ kaynakları AKS denetim düzlemi tarafından yönetilir. Ağ güvenlik grubu düğümlerinizdeki sanal NIC'lerle otomatik olarak ilişkilidir. Rota tablosu sanal ağ alt ağıyla otomatik olarak ilişkilidir. Ağ güvenliği grubu kuralları ve rota tabloları ve siz hizmetleri oluştururken ve açığa çıkarırken otomatik olarak güncelleştirilir.
+Bir AKS kümesi oluşturduğunuzda, bir ağ güvenlik grubu ve rota tablosu oluşturulur. Bu ağ kaynakları AKS denetim düzlemi tarafından yönetilir. Ağ güvenlik grubu düğümlerinizdeki sanal NIC'lerle otomatik olarak ilişkilidir. Rota tablosu sanal ağ alt ağıyla otomatik olarak ilişkilidir. Ağ güvenlik grubu kuralları ve rota tabloları, siz hizmetleri oluştururken ve açığa çıkarırken otomatik olarak güncelleştirilir.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

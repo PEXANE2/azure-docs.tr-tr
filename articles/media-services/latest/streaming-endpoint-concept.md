@@ -12,18 +12,18 @@ ms.workload: ''
 ms.topic: article
 ms.date: 02/13/2020
 ms.author: juliako
-ms.openlocfilehash: a8674714451f3cc686acb74d6c66ac6800b75936
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 72cfdf172e4524e302ef2e22826d4f78ce32daf0
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478090"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80582722"
 ---
 # <a name="streaming-endpoints-origin-in-azure-media-services"></a>Azure Medya Hizmetlerinde Akış Uç Noktaları (Başlangıç)
 
 Microsoft Azure Medya Hizmetleri'nde, [Akış Bitiş Noktası,](https://docs.microsoft.com/rest/api/media/streamingendpoints) canlı ve isteğe bağlı içeriğinizi ortak akışlı ortam protokollerinden (HLS veya DASH) birini kullanarak doğrudan istemci oynatıcı uygulamasına sunabilen dinamik (tam zamanında) bir paketleme ve başlangıç hizmetini temsil eder. Buna ek olarak, **Akış Bitiş Noktası,** endüstri lideri DRM'lere dinamik (tam zamanında) şifreleme sağlar. 
 
-Bir Medya Hizmetleri hesabı oluşturduğunuzda, durmuş durumda sizin için **varsayılan** bir Akış Bitiş Noktası oluşturulur. **Varsayılan** Akış Bitiş Noktasını silemezsiniz. Hesap altında daha fazla Akış Bitiş Noktası oluşturulabilir [(bkz. Kotalar ve sınırlamalar).](limits-quotas-constraints.md)
+Bir Medya Hizmetleri hesabı oluşturduğunuzda, durmuş durumda sizin için **varsayılan** bir Akış Bitiş Noktası oluşturulur. **Varsayılan** Akış Bitiş Noktasını silemezsiniz. Hesap altında daha fazla Akış Bitiş Noktası oluşturulabilir [(bkz. Kotalar ve sınırlar).](limits-quotas-constraints.md)
 
 > [!NOTE]
 > Video akışına başlamak için, videoyu akışı istediğiniz **Akış Bitiş Noktasını** başlatmanız gerekir.

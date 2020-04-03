@@ -11,18 +11,20 @@ ms.date: 03/11/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 9d2a9bb0fcaab38f897987a1922e9c95497821d4
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 0b7accec9fdce1ad81a08aee17b37d655409948b
+ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350680"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80607566"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-synapse-analytics"></a>Azure Synapse Analytics'te kaynak kullanımı ve sorgu etkinliğini izleme
-Azure Synapse Analytics, veri ambarı iş yükünüzle ilgili yüzey öngörülerine Azure portalı içinde zengin bir izleme deneyimi sağlar. Azure portalı, ölçümler ve günlükler için yapılandırılabilir bekletme süreleri, uyarılar, öneriler ve özelleştirilebilir grafikler ve panolar sağladığı için veri ambarınızı izlerken önerilen araçtır. Portal ayrıca, yalnızca veri ambarınız için değil, tüm Azure analitik platformunuz için tüm Azure analiz platformunuz için bütünsel bir izleme deneyimi sağlamak için Azure Monitor (günlükler) gibi diğer Azure izleme hizmetleriyle Log analitiği ile tümleştirmenize olanak tanır izleme deneyimi. Bu dokümantasyon, SQL Analytics ile analiz platformunuzu optimize etmek ve yönetmek için hangi izleme yeteneklerinin kullanılabillerini açıklar. 
 
-## <a name="resource-utilization"></a>Kaynak kullanımı 
-Aşağıdaki ölçümler SQL Analytics için Azure portalında kullanılabilir. Bu ölçümler Azure [Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-collection#metrics)aracılığıyla su yüzüne çıkar.
+Azure Synapse Analytics, veri ambarı iş yükünüzle ilgili yüzey öngörülerine Azure portalı içinde zengin bir izleme deneyimi sağlar. Azure portalı, ölçümler ve günlükler için yapılandırılabilir bekletme süreleri, uyarılar, öneriler ve özelleştirilebilir grafikler ve panolar sağladığı için veri ambarınızı izlerken önerilen araçtır. Portal ayrıca, yalnızca veri ambarınız için değil, tüm Azure analiz platformunuz için tüm Azure analiz platformunuz için tümsel bir izleme deneyimi sağlamak için Azure Monitor (günlükler) gibi diğer Azure izleme hizmetleriyle log analitiği ile tümleştirmenize olanak tanır. Bu dokümantasyon, analiz platformunuzu optimize etmek ve yönetmek için hangi izleme yeteneklerinin kullanılabillerini açıklar. 
+
+## <a name="resource-utilization"></a>Kaynak kullanımı
+
+Aşağıdaki ölçümler Synapse SQL için Azure portalında kullanılabilir. Bu ölçümler Azure [Monitor](../../azure-monitor/platform/data-collection.md#metrics?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)aracılığıyla su yüzüne çıkar.
 
 
 | Metrik Adı             | Açıklama                                                  | Toplama Türü |
@@ -41,27 +43,28 @@ Aşağıdaki ölçümler SQL Analytics için Azure portalında kullanılabilir. 
 | Önbellek isabet yüzdesi    | (önbellek isabetleri / önbellek miss) * 100 nerede önbellek vurur yerel SSD önbellek ve önbellek miss tüm sütun mağaza segmentleri isabet toplamıdır yerel SSD önbelleğinde kalır sütun mağazası segmentleri tüm düğümleri arasında özetlenebilir | Avg, Min, Max    |
 | Önbellek kullanılan yüzde   | (kullanılan önbellek / önbellek kapasitesi) * Kullanılan önbelleğin tüm düğümler ve önbellek kapasitesi boyunca yerel SSD önbelleğindeki tüm baytların toplamı olduğu 100, tüm düğümler arasında yerel SSD önbelleğinin depolama kapasitesinin toplamıdır | Avg, Min, Max    |
 | Yerel tempdb yüzdesi | Tüm işlem düğümleri arasında yerel tempdb kullanımı - değerler her beş dakikada bir yayılır | Avg, Min, Max    |
-| Veri Depolama Boyutu | Veritabanına yüklenen toplam veri boyutu. Bu, CCI olmayan tabloların boyutunun toplam veritabanı dosya boyutuyla ölçüldüğü CCI ve CCI olmayan tablolarda bulunan verileri içerir | Toplam |
-| Olağanüstü Durum Kurtarma Boyutu | Her 24 saatte bir alınan coğrafi yedeklemenin toplam boyutu | Toplam |
-| Anlık Görüntü Depolama boyutu | Veritabanı geri yükleme noktaları sağlamak için alınan anlık görüntü toplam boyutu. Bu, otomatik ve kullanıcı tanımlı anlık görüntüleri içerir. | Toplam |
+| Veri Depolama Boyutu (GB) | Veritabanına yüklenen toplam veri boyutu. Bu, CCI olmayan tabloların boyutunun toplam veritabanı dosya boyutuyla ölçüldüğü CCI ve CCI olmayan tablolarda bulunan verileri içerir | Toplam |
+| Olağanüstü Durum Kurtarma Boyutu (GB) | Her 24 saatte bir alınan coğrafi yedeklemenin toplam boyutu | Toplam |
+| Anlık Görüntü Depolama boyutu (GB) | Veritabanı geri yükleme noktaları sağlamak için alınan anlık görüntü toplam boyutu. Bu, otomatik ve kullanıcı tanımlı anlık görüntüleri içerir. | Toplam |
 
 Ölçümleri görüntülerken ve uyarıları ayarlarken göz önünde bulundurulması gerekenler:
 
-- Kullanılan DWU, SQL havuzunda yalnızca üst düzey bir **kullanım temsilini** temsil eder ve kapsamlı bir kullanım göstergesi değildir. Yukarı veya aşağı ölçeklendirmek için, eşzamanlılık, bellek, tempdb ve uyarlanabilir önbellek kapasitesi gibi DWU tarafından etkilenebilir tüm faktörleri göz önünde bulundurun. İş yükünüzü, iş hedeflerinize ulaşmak için en iyi neyin işe yaradığını belirlemek için [farklı DWU ayarlarında çalıştırmanızı](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-manage-compute-overview#finding-the-right-size-of-data-warehouse-units) öneririz.
+- Kullanılan DWU, SQL havuzunda yalnızca üst düzey bir **kullanım temsilini** temsil eder ve kapsamlı bir kullanım göstergesi değildir. Yukarı veya aşağı ölçeklendirmek için, eşzamanlılık, bellek, tempdb ve uyarlanabilir önbellek kapasitesi gibi DWU tarafından etkilenebilir tüm faktörleri göz önünde bulundurun. İş yükünüzü, iş hedeflerinize ulaşmak için en iyi neyin işe yaradığını belirlemek için [farklı DWU ayarlarında çalıştırmanızı](sql-data-warehouse-manage-compute-overview.md#finding-the-right-size-of-data-warehouse-units) öneririz.
 - Belirli bir veri ambarı için başarısız ve başarılı bağlantılar bildirilir - mantıksal sunucu için değil
 - Bellek yüzdesi, veri ambarı boşta olsa bile kullanımı yansıtır - etkin iş yükü bellek tüketimini yansıtmaz. Ek önbellek kapasitesi için ölçeklemenin gereksinimlerinizi karşılamak için iş yükü performansını artırıp artıracağına ilişkin bütünsel bir karar vermek için bu ölçütünüzü başkalarıyla birlikte (tempdb, gen2 önbelleği) kullanın ve izleyin.
 
-
 ## <a name="query-activity"></a>Sorgu etkinliği
-T-SQL üzerinden SQL Analytics'i izlerken programlı bir deneyim için, hizmet dinamik yönetim görünümleri (DMV) kümesi sağlar. Bu görünümler, iş yükünüzle ilgili performans sorunlarını etkin olarak giderirken ve tanımlarken yararlıdır.
 
-SQL Analytics'in sağladığı DMV listesini görüntülemek için bu [belgelere](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-reference-tsql-system-views#sql-data-warehouse-dynamic-management-views-dmvs)bakın. 
+Synapse SQL'i T-SQL üzerinden izlerken programlı bir deneyim için, hizmet dinamik yönetim görünümleri (DMV) kümesi sağlar. Bu görünümler, iş yükünüzle ilgili performans sorunlarını etkin olarak giderirken ve tanımlarken yararlıdır.
+
+Synapse SQL için geçerli olan DMV listesini görüntülemek için bu [belgelere](sql-data-warehouse-reference-tsql-system-views.md#sql-data-warehouse-dynamic-management-views-dmvs)bakın. 
 
 ## <a name="metrics-and-diagnostics-logging"></a>Ölçümler ve tanılama günlükleri
-Hem ölçümler hem de günlükler Azure Monitor'a, özellikle [Azure Monitor günlükleri](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) bileşenine ihraç edilebilir ve [günlük sorguları](https://docs.microsoft.com/azure/log-analytics/log-analytics-tutorial-viewdata)aracılığıyla programlanabilir. SQL Analytics için günlük gecikmesi yaklaşık 10-15 dakikadır. Gecikme gecikmesini etkileyen faktörler hakkında daha fazla bilgi için aşağıdaki belgeleri ziyaret edin.
 
+Hem ölçümler hem de günlükler Azure Monitor'a, özellikle [Azure Monitor günlükleri](../../azure-monitor/log-query/log-query-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) bileşenine ihraç edilebilir ve [günlük sorguları](../../azure-monitor/log-query/get-started-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)aracılığıyla programlanabilir. Synapse SQL için günlük gecikmesi yaklaşık 10-15 dakikadır. Gecikme gecikmesini etkileyen faktörler hakkında daha fazla bilgi için aşağıdaki belgeleri ziyaret edin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
 Aşağıdaki Nasıl Yap'ı kullanma kılavuzları, veri ambarınızı izlerken ve yönetirken sık karşılaşılan senaryoları ve kullanım durumlarını açıklar:
 
-- [Veri ambarı iş yükünüzü DMV'lerle izleme](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-manage-monitor)
+- [Veri ambarı iş yükünüzü DMV'lerle izleme](/sql-data-warehouse/sql-data-warehouse-manage-monitor?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)  

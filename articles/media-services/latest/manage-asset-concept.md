@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 03/26/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: fcdb8af770fa0068e8413d4609a56223a9a20ce2
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 9136fd702fad5c12a8ec97a68ff8a592a203d7d2
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80345888"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80582207"
 ---
 # <a name="manage-assets"></a>Varlıkları yönetme
 
@@ -60,7 +60,7 @@ Dijital dosyalar depolama alanına yüklendikten ve bir Varlıkla ilişkilendiri
 
     **AssetContainerSas.listContainerSas,** üzerinde belirlediğiniz `expiryTime` [ListContainerSasInput](https://docs.microsoft.com/rest/api/media/assets/listcontainersas#listcontainersasinput) parametresini alır. Saat 24 saat < olarak ayarlanmalıdır.
 
-    [ListContainerSasInput,](https://docs.microsoft.com/rest/api/media/assets/listcontainersas#listcontainersasinput) her depolama hesabı için iki depolama hesabı anahtarı olduğundan birden çok SAS URL'si döndürür. Depolama hesabının iki anahtarı vardır, çünkü depolama hesabı anahtarlarının sorunsuz bir şekilde döndürülmesine izin verir (örneğin, birini diğerini kullanırken değiştirin ve sonra yeni anahtarı kullanmaya başlayın ve diğer anahtarı döndürün). 1. SAS URL depolama anahtarı1 ve ikinci bir depolama anahtarı2 temsil eder.
+    [ListContainerSasInput,](https://docs.microsoft.com/rest/api/media/assets/listcontainersas#listcontainersasinput) her depolama hesabı için iki depolama hesabı anahtarı olduğundan birden çok SAS URL'si döndürür. Depolama hesabının iki anahtarı vardır, çünkü depolama hesabı anahtarlarının başarısız ve sorunsuz bir şekilde döndürülmesine yardımcı olur. İlk SAS URL ilk depolama hesabı anahtarını, ikinci SAS URL'si ise ikinci anahtarı temsil eder.
 3. Varlık kapsayıcısına dosya yüklemek için Azure Depolama API'lerini veya SDK'larını (örneğin, [Storage REST API](../../storage/common/storage-rest-api-auth.md) veya [.NET SDK)](../../storage/blobs/storage-quickstart-blobs-dotnet.md)kullanın.
 4. Media Services v3 API'lerini kullanarak "input" Varlığınızı işlemek üzere bir Dönüşüm ve bir İş oluşturun. Daha fazla bilgi için [Dönüşümler ve İşler'e](transform-concept.md)bakın.
 5. İçeriği "çıktı" varlığından aktarın.

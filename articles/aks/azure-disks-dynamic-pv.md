@@ -4,12 +4,12 @@ description: Azure Kubernetes Hizmetinde (AKS) Azure diskleriyle kalıcı bir bi
 services: container-service
 ms.topic: article
 ms.date: 03/01/2019
-ms.openlocfilehash: 37fea36567866af69e832a1f7e3caff2a68477a9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f16a6134b1d2065668952ea11c0cab7398a3559a
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77596972"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80617465"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Hizmetinde (AKS) Azure diskleriyle dinamik olarak kalıcı bir birim oluşturun ve kullanın
 
@@ -26,14 +26,14 @@ Bu makalede, varolan bir AKS kümesi var sayıyor. AKS kümesine ihtiyacınız v
 
 Ayrıca Azure CLI sürüm 2.0.59 veya daha sonra yüklenmiş ve yapılandırılmış gerekir. Sürümü `az --version` bulmak için çalıştırın. Yüklemeniz veya yükseltmeniz gerekiyorsa, [Azure CLI'yi yükle'ye][install-azure-cli]bakın.
 
-## <a name="built-in-storage-classes"></a>Depolama sınıflarında yerleşik
+## <a name="built-in-storage-classes"></a>Yerleşik depolama sınıfları
 
 Depolama sınıfı, depolama biriminin kalıcı bir hacimle dinamik olarak nasıl oluşturulduğunu tanımlamak için kullanılır. Kubernetes depolama sınıfları hakkında daha fazla bilgi için [Kubernetes Depolama Sınıfları'na][kubernetes-storage-classes]bakın.
 
 Her AKS kümesi, her ikisi de Azure diskleriyle çalışacak şekilde yapılandırılan iki önceden oluşturulmuş depolama sınıfı içerir:
 
 * *Varsayılan* depolama sınıfı standart bir Azure diski sağlar.
-    * Standart depolama hdd'ler tarafından desteklenir ve hala performans gösterirken uygun maliyetli depolama sağlar. Standart diskler, uygun maliyetli bir geliştirme ve iş yükü testi için idealdir.
+    * Standart depolama hdd'ler tarafından desteklenir ve hala performans gösterirken uygun maliyetli depolama sağlar. Standart diskler uygun maliyetli bir dev ve test iş yükü için idealdir.
 * *Yönetilen premium* depolama sınıfı, birinci sınıf bir Azure diski sağlar.
     * Premium diskler SSD tabanlı, yüksek performanslı ve düşük gecikme süreli disk ile desteklenir. Üretim iş yükü çalıştıran VM'ler için son derece uygundur. Kümenizdeki AKS düğümleri premium depolamayı kullanıyorsa, *yönetilen premium* sınıfı seçin.
     

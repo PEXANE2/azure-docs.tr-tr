@@ -7,12 +7,12 @@ ms.service: virtual-network
 ms.topic: article
 ms.date: 03/26/2020
 ms.author: rambala
-ms.openlocfilehash: 78081329b70edff5ed2c728cb2f7c3e562a44e56
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: bcdd938365e50da1f5ae0e830e86692f1b915123
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80346281"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618923"
 ---
 # <a name="working-remotely-using-azure-networking-services"></a>Azure ağ hizmetlerini kullanarak uzaktan çalışma
 
@@ -29,8 +29,6 @@ Tüm ağlar (örneğin, özel WAN ve kurumsal çekirdek ağlar) en yüksek uzak 
 
 Ağ planlayıcıları, farklı trafik türlerinin farklı ağ işleme önceliklerine ve bazı akıllı yük yeniden yönlendirme/dağıtımına ihtiyaç duyduğunu göz önünde bulundurarak darboğazları hafifletmeye ve ağ tıkanıklığını hafifletmeye yardımcı olabilir. Örneğin, doktor-hasta etkileşiminin gerçek zamanlı tele-medecine trafiği yüksek öneme sahiptir ve gecikme/titremeye duyarlıdır. Oysa, depolama lar arasında aynı trafiğin çoğaltılması gecikme duyarlı değildir. Eski trafik, daha yüksek hizmet kalitesiyle en uygun ağ yolu üzerinden yönlendirilmelidir; oysa daha sonraki trafiği en uygun olmayan rota üzerinden yönlendirmek kabul edilebilir.
 
->[!NOTE] 
->Bu makalenin sonuna doğru, uzaktan çalışan kullanıcıları desteklemek için farklı Azure ağ özelliklerinden ve ekosistemlerden yararlanan makalelere bağlantılar listelenir.
 
 
 ## <a name="sharing-our-best-practices---azure-network-is-designed-for-elasticity-and-high-availability"></a>En iyi uygulamalarımızı paylaşmak - Azure ağı elastikiyet ve yüksek kullanılabilirlik için tasarlanmıştır
@@ -45,17 +43,18 @@ Microsoft ağı, Skype ve Takımlar için gecikmeye duyarlı multimedya trafiği
 
 ## <a name="enable-employees-to-work-remotely"></a>Çalışanların uzaktan çalışmasını sağlama
 
-Azure VPN ağ geçidi hem Siteden Siteye (P2S) hem de Siteden Siteye (S2S) VPN bağlantılarını destekler. Azure VPN ağ geçidini kullanarak çalışanınızın bağlantılarını ölçeklendirebilir ve hem Azure'a dağıtılan kaynaklarınıza hem de şirket içi kaynaklarınıza güvenli bir şekilde erişebilirsiniz. Daha fazla bilgi için, [kullanıcıların uzaktan çalışmasını nasıl etkinleştirin.](https://go.microsoft.com/fwlink/?linkid=2123770) 
+Azure VPN ağ geçidi hem Siteden Siteye (P2S) hem de Siteden Siteye (S2S) VPN bağlantılarını destekler. Azure VPN ağ geçidini kullanarak çalışanınızın bağlantılarını ölçeklendirebilir ve hem Azure'a dağıtılan kaynaklarınıza hem de şirket içi kaynaklarınıza güvenli bir şekilde erişebilirsiniz. Daha fazla bilgi için, [kullanıcıların uzaktan çalışmasını nasıl etkinleştirin.](../vpn-gateway/work-remotely-support.md) 
 
-Güvenli Sokettünel Protokolü (SSTP) kullanıyorsanız, eşzamanlı bağlantı sayısı 128 ile sınırlıdır. Daha fazla sayıda bağlantı elde etmek için OpenVPN veya IKEv2'ye geçiş yapmanızı öneririz. Daha fazla bilgi için Bkz. [OpenVPN protokolüne geçiş veya SSTP'den IKEv2.](https://go.microsoft.com/fwlink/?linkid=2124112)
+Güvenli Sokettünel Protokolü (SSTP) kullanıyorsanız, eşzamanlı bağlantı sayısı 128 ile sınırlıdır. Daha fazla sayıda bağlantı elde etmek için OpenVPN veya IKEv2'ye geçiş yapmanızı öneririz. Daha fazla bilgi için Bkz. [OpenVPN protokolüne geçiş veya SSTP'den IKEv2.](../vpn-gateway/ikev2-openvpn-from-sstp.md
+)
 
-Uzak geliştiriciler, Azure'da dağıtılan kaynaklarınıza erişmek için, VM'lerde genel IP'lere gerek kalmadan güvenli kabuk erişimi (RDP veya SSH) elde etmek için VPN bağlantısı yerine Azure Bastion çözümlerini kullanabilir. Daha fazla bilgi için Azure [Bastion'u kullanarak uzaktan Çalış'a](https://go.microsoft.com/fwlink/?linkid=2123939)bakın.
+Uzak geliştiriciler, Azure'da dağıtılan kaynaklarınıza erişmek için, VM'lerde genel IP'lere gerek kalmadan güvenli kabuk erişimi (RDP veya SSH) elde etmek için VPN bağlantısı yerine Azure Bastion çözümlerini kullanabilir. Daha fazla bilgi için Azure [Bastion'u kullanarak uzaktan Çalış'a](../bastion/work-remotely-support.md)bakın.
 
-Büyük ölçekli VPN bağlantısını toplamak için, farklı şirket içi küresel konumlardaki kaynaklar arasındaki bağlantıları desteklemek için, farklı bölgesel hub ve konuşan sanal ağlarda ve birden çok ev geniş bant adedinin kullanımını optimize etmek için Azure Virtual WAN'ı kullanabilirsiniz. Daha fazla bilgi için, [ev ihtiyaçları işe hitap etmek için Mücadele bakın? Azure Virtual WAN'ın burada yardımcı olabileceği yer burasıdır.](https://go.microsoft.com/fwlink/?linkid=2123769)
+Büyük ölçekli VPN bağlantısını bir araya getirmek, farklı şirket içi küresel konumlardaki kaynaklar arasındaki bağlantıları desteklemek, farklı bölgesel hub ve konuşan sanal ağlar da desteklemek ve birden çok ev geniş bant ağının kullanımını optimize etmek için Azure Virtual WAN'ı kullanabilirsiniz. Daha fazla bilgi için, [ev ihtiyaçları işe hitap etmek için Mücadele bakın? Azure Virtual WAN'ın burada yardımcı olabileceği yer burasıdır.](../virtual-wan/work-remotely-support.md)
 
 Uzak iş gücünü desteklemenin bir diğer yolu da Azure sanal ağınızda barındırılan ve Azure Güvenlik Duvarı ile güvenli bir Sanal Masaüstü Altyapısı (VDI) dağıtmaktır. Örneğin, Windows Sanal Masaüstü (WVD), Azure'da çalışan bir masaüstü ve uygulama sanallaştırma hizmetidir. Windows Sanal Masaüstü ile, ek ağ geçidi sunucuları çalıştırmaya gerek kalmadan Azure aboneliğinizde ölçeklenebilir ve esnek bir ortam ayarlayabilirsiniz. Sadece sanal ağınızdaki WVD sanal makinelerinden sorumlusunuz. Daha fazla bilgi için Azure [Güvenlik Duvarı uzaktan iş desteğine](../firewall/remote-work-support.md)bakın. 
 
-Azure'da zengin bir eko sistem ortakları kümesi de vardır. İş ortaklarımız Azure'daki Sanal Cihazlar Ağı da VPN bağlantısının ölçeklendirildirine yardımcı olabilir. Daha fazla bilgi için, [uzak çalışma için Ağ Sanal Cihaz (NVA) hususlar](https://go.microsoft.com/fwlink/?linkid=2123771)bakın.
+Azure'da zengin bir eko sistem ortakları kümesi de vardır. İş ortaklarımız Azure'daki Sanal Cihazlar Ağı da VPN bağlantısının ölçeklendirildirine yardımcı olabilir. Daha fazla bilgi için, [uzak çalışma için Ağ Sanal Cihaz (NVA) hususlar](../vpn-gateway/nva-work-remotely-support.md)bakın.
 
 ## <a name="extend-employees-connection-to-access-globally-distributed-resources"></a>Çalışanların bağlantısını genel olarak dağıtılan kaynaklara erişmek için genişletme
 
@@ -71,7 +70,7 @@ Aşağıdaki Azure hizmetleri, çalışanların genel olarak dağıtılan kaynak
 
 ## <a name="scale-customer-connectivity-to-frontend-resources"></a>Müşteri bağlantısını ön uç kaynaklarına ölçeklendirin
 
-Daha fazla kişinin çevrimiçi olduğu zamanlarda, birçok kurumsal web sitesi artan müşteri trafiğiyle karşılaşır. Azure Application Gateway, artırılmış bu ön uç iş yükünü yönetmenize yardımcı olabilir. Daha fazla bilgi için [Uygulama Ağ Geçidi yüksek trafik desteğine](https://go.microsoft.com/fwlink/?linkid=2123940)bakın.
+Daha fazla kişinin çevrimiçi olduğu zamanlarda, birçok kurumsal web sitesi artan müşteri trafiğiyle karşılaşır. Azure Application Gateway, artırılmış bu ön uç iş yükünü yönetmenize yardımcı olabilir. Daha fazla bilgi için [Uygulama Ağ Geçidi yüksek trafik desteğine](../application-gateway/high-traffic-support.md)bakın.
 
 ## <a name="microsoft-support-for-multi-cloud-traffic"></a>Çoklu bulut trafiği için Microsoft desteği
 
@@ -83,13 +82,13 @@ Aşağıdaki makalelerde, kullanıcıları uzaktan çalışacak şekilde ölçek
 
 | **Makale** | **Son güncelleştirme** |
 | --- | --- |
-| [Kullanıcıların uzaktan çalışmasını etkinleştirme](https://go.microsoft.com/fwlink/?linkid=2123770) | 23 Mart 2020 |
-| [Ev ihtiyaçları işe hitap etmek için mücadele? Azure Virtual WAN'ın burada yardımcı olabileceği yer burasıdır](https://go.microsoft.com/fwlink/?linkid=2123769) | 23 Mart 2020 |
-| [Uygulama Ağ Geçidi yüksek trafik desteği](https://go.microsoft.com/fwlink/?linkid=2123940) | 23 Mart 2020 |
-| [Ağ Sanal Cihaz (NVA) uzak çalışma için hususlar](https://go.microsoft.com/fwlink/?linkid=2123771)| 23 Mart 2020 |
+| [Kullanıcıların uzaktan çalışmasını etkinleştirme](../vpn-gateway/work-remotely-support.md) | 23 Mart 2020 |
+| [Ev ihtiyaçları işe hitap etmek için mücadele? Azure Virtual WAN'ın burada yardımcı olabileceği yer burasıdır](../virtual-wan/work-remotely-support.md) | 23 Mart 2020 |
+| [Application Gateway yüksek trafik desteği](../application-gateway/high-traffic-support.md) | 23 Mart 2020 |
+| [Ağ Sanal Cihaz (NVA) uzak çalışma için hususlar](../vpn-gateway/nva-work-remotely-support.md)| 23 Mart 2020 |
 | [SSTP'den OpenVPN protokolüne veya IKEv2'ye geçiş](https://go.microsoft.com/fwlink/?linkid=2124112) | 23 Mart 2020 |
-| [Azure Bastion'u kullanarak uzaktan çalışma](https://go.microsoft.com/fwlink/?linkid=2123939) | 23 Mart 2020 |
-| [Uzak kullanıcıları desteklemek için karma bağlantı oluşturmak için Azure ExpressRoute'u kullanma](https://go.microsoft.com/fwlink/?linkid=2123768) | 23 Mart 2020 |
+| [Azure Bastion'u kullanarak uzaktan çalışma](../bastion/work-remotely-support.md) | 23 Mart 2020 |
+| [Uzak kullanıcıları desteklemek için karma bağlantı oluşturmak için Azure ExpressRoute'u kullanma](../expressroute/work-remotely-support.md) | 23 Mart 2020 |
 | [Azure Güvenlik Duvarı uzaktan çalışma desteği](../firewall/remote-work-support.md)|25 Mart 2020|
 
 <!--Link References-->

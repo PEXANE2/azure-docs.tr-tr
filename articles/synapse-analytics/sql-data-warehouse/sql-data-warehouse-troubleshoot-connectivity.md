@@ -1,6 +1,6 @@
 ---
 title: Sorun giderme bağlantısı
-description: SQL Analytics'te sorun giderme bağlantısı.
+description: Synapse SQL havuzunda sorun giderme bağlantısı.
 services: synapse-analytics
 author: anumjs
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 03/27/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 689a2e549c2627c607b6549f164e55a73318f63e
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 2b0e144220e36de6157101190adb838ae651d7c4
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350038"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583319"
 ---
 # <a name="troubleshooting-connectivity-issues"></a>Bağlantı sorunlarını giderme
 
-Bu makalede, SQL Analytics veritabanınıza bağlanma konusunda sık karşılaşılan sorun giderme teknikleri listelanmaktadır.
+Bu makalede, Synapse SQL havuzunuza bağlanma konusunda sık karşılaşılan sorun giderme teknikleri listelanmaktadır.
 - [Hizmet kullanılabilirliğini denetleme](sql-data-warehouse-troubleshoot-connectivity.md#check-service-availability)
 - [Duraklatılmış veya ölçeklendirilen işlemleri denetleme](sql-data-warehouse-troubleshoot-connectivity.md#check-for-paused-or-scaling-operation)
 - [Güvenlik duvarı ayarlarını denetleme](sql-data-warehouse-troubleshoot-connectivity.md#check-your-firewall-settings)
@@ -32,33 +32,33 @@ Bu makalede, SQL Analytics veritabanınıza bağlanma konusunda sık karşılaş
 
 ## <a name="check-service-availability"></a>Hizmet kullanılabilirliğini denetleme
 
-Hizmetin kullanılabilir olup olmadığını kontrol edin. Azure portalında, bağlanmaya çalıştığınız SQL Analytics veritabanına gidin. Sol DAKI TOC panelinde **Tanıla'ya**tıklayın ve sorunları çözün.
+Hizmetin kullanılabilir olup olmadığını kontrol edin. Azure portalında, bağlanmaya çalıştığınız Synapse SQL havuzuna gidin. Sol DAKI TOC panelinde **Tanıla'ya**tıklayın ve sorunları çözün.
 
 ![Kaynak sistem durumunu seçin](./media/sql-data-warehouse-troubleshoot-connectivity/diagnostics-link.png)
 
-SQL Analytics'inizin durumu burada gösterilecek. Hizmet **Kullanılabilir**olarak görünmüyorsa, diğer adımları denetleyin.
+Synapse SQL havuzunuzun durumu burada gösterilir. Hizmet **Kullanılabilir**olarak görünmüyorsa, diğer adımları denetleyin.
 
 ![Hizmet Mevcut](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health.png)
 
-Kaynak sistem durumu, SQL Analytics örneğinizin duraklatılmış veya ölçeklenmiş olduğunu gösteriyorsa, örneğinize devam etmek için kılavuzu izleyin.
+Kaynak sistem durumu, Synapse SQL havuz örneğinizin duraklatılmış veya ölçeklenirolduğunu gösteriyorsa, örneğinizi devam ettirmek için kılavuzu izleyin.
 
 ![Hizmet Duraklatıldı](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health-pausing.png) Kaynak Durumu ile ilgili ek bilgilere buradan ulabilirsiniz.
 
 ## <a name="check-for-paused-or-scaling-operation"></a>Duraklatılmış veya ölçeklendirilen işlemleri denetleme
 
-SQL Analytics örneğinizin duraklatılmış mı yoksa ölçeklenebilir mi diye portalı denetleyin.
+Synapse SQL havuz örneğinizin duraklatılmış mı yoksa ölçeklenebilir mi diye portalı denetleyin.
 
 ![Servis Duraklatıldı](./media/sql-data-warehouse-troubleshoot-connectivity/overview-paused.png)
 
-Hizmetinizin duraklatAndığını veya ölçeklemediğini görürseniz, hizmetin bakım zamanlamanız sırasında olmadığını kontrol edin. SQL Analytics *Genel Bakış'ınız*için portalda, seçilen bakım programını görürsünüz.
+Hizmetinizin duraklatAndığını veya ölçeklemediğini görürseniz, hizmetin bakım zamanlamanız sırasında olmadığını kontrol edin. Synapse SQL havuzugenel *bakış*için portalda, seçilen bakım zamanlamasını görürsünüz.
 
 ![Genel Bakım Çizelgesi](./media/sql-data-warehouse-troubleshoot-connectivity/overview-maintance-schedule.png)
 
-Aksi takdirde, bu bakımın zamanlanmış bir olay olmadığını doğrulamak için BT yöneticinize danışın. SQL Analytics örneğini devam ettirmek için [burada](https://docs.microsoft.com/azure/sql-data-warehouse/pause-and-resume-compute-portal#resume-compute)belirtilen adımları izleyin.
+Aksi takdirde, bu bakımın zamanlanmış bir olay olmadığını doğrulamak için BT yöneticinize danışın. Synapse SQL havuz örneğini devam ettirmek için [burada](https://docs.microsoft.com/azure/sql-data-warehouse/pause-and-resume-compute-portal#resume-compute)özetlenen adımları izleyin.
 
 ## <a name="check-your-firewall-settings"></a>Güvenlik duvarı ayarlarını denetleme
 
-SQL Analytics veritabanı port 1433 üzerinden iletişim kurar.Bir şirket ağından bağlanmaya çalışıyorsanız ağınızın güvenlik duvarı tarafından 1433 numaralı bağlantı noktası üzerinden giden trafiğe izin verilmiyor olabilir. Bu durumda, BT departmanınız 1433 numaralı bağlantı noktasını açmadığı sürece Azure SQL Veritabanı sunucunuza bağlanamazsınız. Güvenlik duvarı yapılandırmaları hakkında ek bilgi [burada](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#create-and-manage-ip-firewall-rules)bulabilirsiniz.
+Synapse SQL havuzu port 1433 üzerinden iletişim kurar.Bir şirket ağından bağlanmaya çalışıyorsanız ağınızın güvenlik duvarı tarafından 1433 numaralı bağlantı noktası üzerinden giden trafiğe izin verilmiyor olabilir. Bu durumda, BT departmanınız 1433 numaralı bağlantı noktasını açmadığı sürece Azure SQL Veritabanı sunucunuza bağlanamazsınız. Güvenlik duvarı yapılandırmaları hakkında ek bilgi [burada](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#create-and-manage-ip-firewall-rules)bulabilirsiniz.
 
 ## <a name="check-your-vnetservice-endpoint-settings"></a>Sanal Ağ/Hizmet Uç Noktası ayarlarınızı denetleme
 
@@ -68,7 +68,7 @@ Hatalar 40914 ve 40615 alıyorsanız, [burada hata açıklaması ve çözümbak�
 
 ### <a name="software"></a>Yazılım
 
-SQL Analytics veritabanınıza bağlanmak için en son araçları kullandığınızdan emin olun:
+Synapse SQL havuzunuza bağlanmak için en son araçları kullandığınızdan emin olun:
 
 * SSMS
 * Azure Data Studio
@@ -113,7 +113,7 @@ jdbc:sqlserver://yourserver.database.windows.net:1433;database=yourdatabase;user
 
 ## <a name="intermittent-connection-issues"></a>Aralıklı bağlantı sorunları
 
-Sunucu üzerinde çok sayıda sıraya alınmış isteğin olduğu ağır yüklenme sorunu yaşayıp yaşamadığınızı denetleyin. Ek kaynaklar için SQL Analytics örneğini büyütmeniz gerekebilir.
+Sunucu üzerinde çok sayıda sıraya alınmış isteğin olduğu ağır yüklenme sorunu yaşayıp yaşamadığınızı denetleyin. Ek kaynaklar için Synapse SQL havuzunuzu ölçeklendirmeniz gerekebilir.
 
 ## <a name="common-error-messages"></a>Genel hata iletileri
 

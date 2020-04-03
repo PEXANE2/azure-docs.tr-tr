@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: b5a85f8ae1564d724b826c809261e56577f4783a
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 47502e693b897a57517d267924cc6c2752c10440
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80435538"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585334"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Azure Güvenlik Merkezi Sorun Giderme Kılavuzu
 
@@ -148,7 +148,6 @@ Bu belgede, Azure Güvenlik Merkezi'nde güvenlik ilkelerinin nasıl yapılandı
 * [Azure Güvenlik Merkezi'nde Uyarıları Doğrulama](security-center-alert-validation.md)
 * [Azure Güvenlik Merkezi'ndeki E-posta Önerileri](security-center-provide-security-contact-details.md)
 * [Azure Güvenlik Merkezi’nde Güvenlik Olaylarını İşleme](security-center-incident.md)
-* [Azure Güvenlik Merkezi'nde Olayları ve Uyarıları Araştırma](security-center-investigation.md)
 * [Azure Güvenlik Merkezi algılama özellikleri](security-center-detection-capabilities.md)
 * [Azure Güvenlik Merkezi ile iş ortağı çözümlerini izleme](security-center-partner-solutions.md) - İş ortağı çözümlerinizin sistem durumunu nasıl izleyeceğiniz hakkında bilgi edinin.
 * [Azure Güvenlik Merkezi SSSS](faq-general.md) - Hizmeti kullanma hakkında sık sorulan soruları bulma

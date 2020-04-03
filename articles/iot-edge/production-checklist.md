@@ -4,16 +4,16 @@ description: Cihazlarınızı uygun sertifikalarla ayarlama ve gelecekteki kod g
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 08/09/2019
+ms.date: 4/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 5320c9d7f1ea5ae882c67ee631f5bbafbf97b039
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dd24631f8e6b4f3f87438bf22654016dd7699950
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79530878"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618311"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>IoT Edge çözümünüzü üretime hazırlayın
 
@@ -134,11 +134,25 @@ Test senaryolarından üretim senaryolarına taşınırken, hata ayıklama yapı
   * Konteyner kayıt defterinize erişimi yönetme
   * Sürümleri yönetmek için etiketleri kullanma
 
-### <a name="manage-access-to-your-container-registry"></a>Konteyner kayıt defterinize erişimi yönetme
+### <a name="manage-access-to-your-container-registry-with-a-service-principal"></a>Bir servis müdürüyle konteyner kayıt defterinize erişimi yönetme
 
 Modülleri üretim IoT Edge aygıtlarına dağıtmadan önce, yabancıların konteyner görüntülerinize erişememesi veya bu resimlerde değişiklik yapamaması için konteyner kayıt defterinize erişimi kontrol ettiğinizden emin olun. Kapsayıcı görüntülerini yönetmek için herkese açık değil, özel bir kapsayıcı kayıt defteri kullanın.
 
-Öğreticilerde ve diğer belgelerde, geliştirme makinenizde kullandığınız gibi IoT Edge aygıtınızda aynı konteyner kayıt defteri kimlik bilgilerini kullanmanızı emrederiz. Bu yönergeler yalnızca test ve geliştirme ortamlarını daha kolay ayarlamanıza yardımcı olmak için tasarlanmıştır ve bir üretim senaryosunda izedilmemelidir. Azure Kapsayıcı Kayıt Defteri, uygulamalar veya hizmetler kapsayıcı görüntülerini IoT Edge aygıtlarının yaptıkları gibi otomatik veya başka bir şekilde çekmediğinde [servis ilkeleriyle](../container-registry/container-registry-auth-service-principal.md) kimlik doğrulaması yapmanızı önerir. Kapsayıcı kayıt defterinize salt okunur erişim sağlayan bir hizmet sorumlusu oluşturun ve dağıtım bildiriminde bu kullanıcı adı ve parolayı sağlayın.
+Öğreticilerde ve diğer belgelerde, geliştirme makinenizde kullandığınız gibi IoT Edge aygıtınızda aynı konteyner kayıt defteri kimlik bilgilerini kullanmanızı emrederiz. Bu yönergeler yalnızca test ve geliştirme ortamlarını daha kolay ayarlamanıza yardımcı olmak için tasarlanmıştır ve bir üretim senaryosunda izedilmemelidir. Azure Kapsayıcı Kayıt Defteri, uygulamalar veya hizmetler kapsayıcı görüntülerini IoT Edge aygıtlarının yaptıkları gibi otomatik veya gözetimsiz bir şekilde (başsız) çektiğinde [hizmet ilkeleriyle](../container-registry/container-registry-auth-service-principal.md) kimlik doğrulaması yapmanızı önerir.
+
+Bir hizmet ilkesi oluşturmak için, bir hizmet ilkesi oluşturmak açıklanan iki komut dosyası [çalıştırın.](../container-registry/container-registry-auth-aci.md#create-a-service-principal) Bu komut dosyaları aşağıdaki görevleri yapar:
+
+* İlk komut dosyası hizmet ilkesini oluşturur. Hizmet ana kimliğini ve Hizmet ana parolasını çıkartır. Bu değerleri kayıtlarınızda güvenli bir şekilde saklayın.
+
+* İkinci komut dosyası, gerekirse daha sonra çalıştırılabilen hizmet ilkesine vermek üzere rol atamaları oluşturur. Parametre için **acrPull** kullanıcı rolünü `role` uygulamanızı öneririz. Rollerin listesi için Azure [Kapsayıcı Kayıt Defteri rolleri ve izinleri](../container-registry/container-registry-roles.md) bölümüne bakın
+
+Bir hizmet sorumlusu kullanarak kimlik doğrulaması yapmak için, ilk komut dosyasından elde ettiğiniz hizmet temel kimliğini ve parolasını sağlayın.
+
+* Kullanıcı adı veya istemci kimliği için hizmet inadı asıl kimliğini belirtin.
+
+* Parola veya istemci sırrı için servis ana parolasını belirtin.
+
+Azure CLI ile kapsayıcı örneği başlatma örneği için [bkz.](../container-registry/container-registry-auth-aci.md#authenticate-using-the-service-principal)
 
 ### <a name="use-tags-to-manage-versions"></a>Sürümleri yönetmek için etiketleri kullanma
 
@@ -148,7 +162,7 @@ Etiketler, IoT Edge aygıtlarınızdaki güncelleştirmeleri uygulamanıza da ya
 
 Etiket kuralı örneği için [bkz.](how-to-update-iot-edge.md#understand-iot-edge-tags)
 
-## <a name="networking"></a>Ağ Oluşturma
+## <a name="networking"></a>Ağ
 
 * **Yararlı**
   * Giden/gelen yapılandırmayı gözden geçirme

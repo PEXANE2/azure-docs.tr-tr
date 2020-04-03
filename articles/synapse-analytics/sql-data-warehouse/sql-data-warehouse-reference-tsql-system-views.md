@@ -1,6 +1,6 @@
 ---
 title: Sistem görünümleri
-description: SQL Analytics'te desteklenen sistem görünümleri için belgelere bağlantılar.
+description: Synapse SQL havuzunda desteklenen sistem görünümleri için belgelere bağlantılar.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,17 +11,18 @@ ms.date: 01/06/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: b3089cfbd0abb4bafe160b07fd75df877d61741b
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 1cc6627599a533238aae742b0358c13e1a7eab8a
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350260"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586353"
 ---
-# <a name="system-views-supported-in-sql-analytics"></a>SQL Analytics'te desteklenen sistem görünümleri
-SQL Analytics'te desteklenen T-SQL deyimleri için belgelere bağlantılar.
+# <a name="system-views-supported-in-synapse-sql-pool"></a>Synapse SQL havuzunda desteklenen sistem görünümleri
 
-## <a name="sql-analytics-catalog-views"></a>SQL Analytics katalog görünümleri
+Synapse SQL havuzunda desteklenen T-SQL deyimleri için belgelere bağlantılar.
+
+## <a name="synapse-sql-pool-catalog-views"></a>Synapse SQL havuz katalog görünümleri
 * [sys.pdw_column_distribution_properties](https://msdn.microsoft.com/library/mt204022.aspx)
 * [sys.pdw_distributions](https://msdn.microsoft.com/library/mt203892.aspx)
 * [sys.pdw_index_mappings](https://msdn.microsoft.com/library/mt203912.aspx)
@@ -45,6 +46,7 @@ SQL Analytics'te desteklenen T-SQL deyimleri için belgelere bağlantılar.
 * [sys.workload_management_workload_classifiers](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifiers-transact-sql)
 
 ## <a name="sql-data-warehouse-dynamic-management-views-dmvs"></a>SQL Veri Ambarı dinamik yönetim görünümleri (DMV)
+
 * [sys.dm_pdw_dms_cores](https://msdn.microsoft.com/library/mt203911.aspx)
 * [sys.dm_pdw_dms_external_work](https://msdn.microsoft.com/library/mt204024.aspx)
 * [sys.dm_pdw_dms_workers](https://msdn.microsoft.com/library/mt203878.aspx)
@@ -65,14 +67,16 @@ SQL Analytics'te desteklenen T-SQL deyimleri için belgelere bağlantılar.
 * [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql)
 * [sys.dm_workload_management_workload_groups_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-workload-management-workload-group-stats-transact-sql) (Önizleme)
 
-## <a name="sql-server-dmvs-applicable-to-sql-analytics"></a>SQL Analytics için geçerli SQL Server DMVs
-Aşağıdaki DMV'ler SQL Analytics için geçerlidir, ancak **ana** veritabanına bağlanarak yürütülmesi gerekir.
+## <a name="sql-server-dmvs-applicable-to-synapse-sql-pool"></a>Synapse SQL havuzuna uygulanan SQL Server DMV'ler
+
+Aşağıdaki DMV'ler Synapse SQL havuzu için geçerlidir, ancak **ana** veritabanına bağlanarak yürütülmesi gerekir.
 
 * [sys.database_service_objectives](https://msdn.microsoft.com/library/mt712619.aspx)
 * [sys.dm_operation_status](https://msdn.microsoft.com/library/dn270022.aspx)
 * [sys.fn_helpcollations()](https://msdn.microsoft.com/library/ms187963.aspx)
 
 ## <a name="sql-server-catalog-views"></a>SQL Server katalog görünümleri
+
 * [sys.all_columns](https://msdn.microsoft.com/library/ms177522.aspx)
 * [sys.all_objects](https://msdn.microsoft.com/library/ms178618.aspx)
 * [sys.all_parameters](https://msdn.microsoft.com/library/ms190340.aspx)
@@ -145,17 +149,18 @@ Aşağıdaki DMV'ler SQL Analytics için geçerlidir, ancak **ana** veritabanın
 * [Types](https://msdn.microsoft.com/library/ms188021.aspx)
 * [sys.views](https://msdn.microsoft.com/library/ms190334.aspx)
 
-## <a name="sql-server-dmvs-available-in-sql-analytics"></a>SQL Server DMVs SQL Analytics mevcuttur
-SQL Analytics, SQL Server dinamik yönetim görünümlerinin (DMV) çoğunu ortaya çıkarır. Bu görünümler, SQL Analytics'te sorgulandığında, dağıtımlarda çalışan SQL Veritabanlarının durumunu bildirilir.
+## <a name="sql-server-dmvs-available-in-synapse-sql-pool"></a>Synapse SQL havuzunda bulunan SQL Server DMV'ler
 
-SQL Analytics ve Parallel Data Warehouse (PDW) aynı sistem görünümlerini kullanır. Her DMV'nin pdw_node_id adında bir sütunu vardır ve bu sütun, İşlem düğümünün tanımlayıcısıdır. 
+Synapse SQL havuzu, SQL Server dinamik yönetim görünümlerinin (DMV) çoğunu ortaya çıkarır. Bu görünümler, Synapse SQL havuzunda sorgulandığında, dağıtımlarda çalışan SQL Veritabanlarının durumunu bildirilir.
+
+Synapse SQL havuzu ve Paralel Veri Ambarı (PDW) aynı sistem görünümlerini kullanır. Her DMV'nin pdw_node_id adında bir sütunu vardır ve bu sütun, İşlem düğümünün tanımlayıcısıdır. 
 
 > [!NOTE]
 > Bu görünümleri kullanmak için, aşağıdaki tabloda gösterildiği gibi ada 'pdw_nodes_' ekleyin:
 > 
 > 
 
-| SQL Analytics'te DMV adı | SQL Server Transact-SQL makalesi|
+| Synapse SQL havuzunda DMV adı | SQL Server Transact-SQL makalesi|
 |:--- |:--- |
 | sys.dm_pdw_nodes_db_column_store_row_group_physical_stats | [sys.dm_db_column_store_row_group_physical_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql)| 
 | sys.dm_pdw_nodes_db_column_store_row_group_operational_stats | [sys.dm_db_column_store_row_group_operational_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-operational-stats-transact-sql)| 
@@ -217,8 +222,9 @@ SQL Analytics ve Parallel Data Warehouse (PDW) aynı sistem görünümlerini kul
 | sys.dm_pdw_nodes_tran_session_transactions |[sys.dm_tran_session_transactions](https://msdn.microsoft.com/library/ms188739.aspx) |
 | sys.dm_pdw_nodes_tran_top_version_generators |[sys.dm_tran_top_version_generators](https://msdn.microsoft.com/library/ms188778.aspx) |
 
-## <a name="sql-server-2016-polybase-dmvs-available-in-sql-analytics"></a>SQL Server 2016 PolyBase DMV'ler SQL Analytics'te mevcuttur
-Aşağıdaki DMV'ler SQL Analytics için geçerlidir, ancak **ana** veritabanına bağlanarak yürütülmesi gerekir.
+## <a name="sql-server-2016-polybase-dmvs-available-in-synapse-sql-pool"></a>SQL Server 2016 PolyBase DMV'ler Synapse SQL havuzunda mevcuttur
+
+Aşağıdaki DMV'ler Synapse SQL havuzu için geçerlidir, ancak **ana** veritabanına bağlanarak yürütülmesi gerekir.
 
 * [sys.dm_exec_compute_node_errors](https://msdn.microsoft.com/library/mt146380.aspx)
 * [sys.dm_exec_compute_node_status](https://msdn.microsoft.com/library/mt146382.aspx)
@@ -232,6 +238,7 @@ Aşağıdaki DMV'ler SQL Analytics için geçerlidir, ancak **ana** veritabanın
 * [sys.dm_exec_external_work](https://msdn.microsoft.com/library/mt146375.aspx)
 
 ## <a name="sql-server-information_schema-views"></a>SQL Server INFORMATION_SCHEMA görünümleri
+
 * [Check_constraınts](https://msdn.microsoft.com/library/ms189772.aspx)
 * [Sütun](https://msdn.microsoft.com/library/ms188348.aspx)
 * [Parametre](https://msdn.microsoft.com/library/ms173796.aspx)
@@ -243,4 +250,5 @@ Aşağıdaki DMV'ler SQL Analytics için geçerlidir, ancak **ana** veritabanın
 * [Görünümler](https://msdn.microsoft.com/library/ms181381.aspx)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Daha fazla referans bilgisi için SQL [Analytics'teki T-SQL deyimlerine](sql-data-warehouse-reference-tsql-statements.md)ve [SQL Analytics'teki T-SQL dil öğelerine](sql-data-warehouse-reference-tsql-language-elements.md)bakın.
+
+Daha fazla başvuru bilgisi için [Synapse SQL havuzundaki T-SQL deyimlerine](sql-data-warehouse-reference-tsql-statements.md)ve [Synapse SQL havuzundaki T-SQL dil öğelerine](sql-data-warehouse-reference-tsql-language-elements.md)bakın.

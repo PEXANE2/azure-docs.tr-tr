@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/19/2019
-ms.openlocfilehash: b0dc974185ad616d57327e9cc3743db9ecb20e54
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 803783eddfbffd5c3dbab7353ee00dd7f11a09e5
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78302738"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618896"
 ---
 # <a name="azure-hdinsight-cluster-creation-errors"></a>Azure HDInsight: Küme oluşturma hataları
 
@@ -157,7 +157,7 @@ Ağ trafiğini denetlemek için ağ güvenlik gruplarını kullanmayı planlıyo
 
 ---
 
-## <a name="error-code-storagepermissionsblockedformsi"></a>Hata kodu: StoragePermissionsBlockedForMsi  
+## <a name="error-code-storagepermissionsblockedformsi"></a>Hata kodu: StoragePermissionsBlockedForMsi
 
 ### <a name="error"></a>Hata
 
@@ -178,11 +178,11 @@ Daha fazla bilgi için [bkz.](hdinsight-hadoop-use-data-lake-storage-gen2.md)
 
 ---
 
-## <a name="error-code-invalidnetworksecuritygroupsecurityrules"></a>Hata kodu: GeçersizAğSecurityGroupSecurityRules  
+## <a name="error-code-invalidnetworksecuritygroupsecurityrules"></a>Hata kodu: GeçersizAğSecurityGroupSecurityRules
 
 ### <a name="error"></a>Hata
 
-"Ağ Güvenlik Grubu/abonelikler/ SubscriptionID\<\>/resourceGroups/<Kaynak Grubu\> \<adı varsayılan/sağlayıcılar/Microsoft.Network/networkSecurityGroups/\> Ağ Güvenliği Grup Adı\<alt\>net /abonelikler/ SubscriptionID /resourceGroups/\<Kaynak Grup adı\> RG-westeurope-vnet-tomtom-default/providers/Microsoft.Network/virtualNetworks/\<Virtual Ağ\>Adı /alt\<ağlar/\> Subnet Adı gerekli gelen ve/veya giden bağlantıya izin vermez. Daha fazla bilgi için lütfen [Azure HDInsight için sanal ağ planlayın](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment)veya desteğe başvurun."
+"Ağ Güvenlik\<Grubu/abonelikler/ SubscriptionID\>/resourceGroups/<Kaynak Grubu\> adı varsayılan/sağlayıcılar/Microsoft.Network/networkSecurityGroups/\<Ağ Güvenliği Grup Adı\> \<alt\>ağ /abonelikler/ SubscriptionID\</resourceGroups/ Kaynak Grup adı\> RG-westeurope-vnet-tomtom-default/providers/Microsoft.Network/virtualNetworks/\<Virtual Network Name/subnets/\>\<Subnet Name\> gerekli giriş ve/veya dış bağlantıya izin vermez. Daha fazla bilgi için lütfen [Azure HDInsight için sanal ağ planlayın](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment)veya desteğe başvurun."
 
 ### <a name="cause"></a>Nedeni
 
@@ -195,12 +195,12 @@ Ağ trafiğini denetlemek için ağ güvenlik gruplarını kullanmayı planlıyo
 - HDInsight için kullanmayı planladığınız Azure bölgesini belirleyin ve bölgeniz için IP adreslerinin güvenli bir listesini oluşturun. Daha fazla bilgi için Bkz. [Sağlık ve yönetim hizmetleri: Belirli bölgeler.](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses#health-and-management-services-specific-regions)
 - HDInsight'ın gerektirdiği IP adreslerini tanımlayın. Daha fazla bilgi için [HDInsight yönetimi IP adreslerine](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses)bakın.
 - HDInsight'ı yüklemeyi planladığınız alt ağ için ağ güvenlik gruplarını oluşturun veya değiştirin. Ağ güvenlik grupları için IP adreslerinden bağlantı noktası 443'te gelen trafiğe izin verin. Bu yapılandırma, HDInsight yönetim hizmetlerinin kümeye sanal ağ dışından ulaşmasını sağlar.
-  
+
 ---
 
 ## <a name="error-code-cluster-setup-failed-to-install-components-on-one-or-more-hosts"></a>Hata kodu: Küme kurulumu bileşenleri bir veya daha fazla ana bilgisayara yüklemeyi başaramadı
 
-###  <a name="error"></a>Hata
+### <a name="error"></a>Hata
 
 "Küme kurulumu bileşenleri bir veya daha fazla ana bilgisayara yüklemeyi başaramadı. Lütfen isteğinizi yeniden deneyin."
 
@@ -211,6 +211,42 @@ Genellikle, geçici bir sorun veya Azure kesintisi olduğunda bu hata oluşturul
 ### <a name="resolution"></a>Çözüm
 
 Küme dağıtımını etkileyebilecek azure kesintileri için [Azure durum](https://status.azure.com) sayfasını denetleyin. Kesinti yoksa küme dağıtımını yeniden deneyin.
+
+---
+
+## <a name="error-code-failedtoconnectwithclustererrorcode"></a>Hata Kodu: FailedtoConnectWithclusterErrorcode
+
+### <a name="error"></a>Hata
+
+Küme yönetimi bitiş noktasına bağlanamıyor. Lütfen daha sonra tekrar deneyin.
+
+### <a name="cause"></a>Nedeni
+
+HDInsight Hizmeti küme oluşturmaya çalışırken kümenize bağlanamaz
+
+### <a name="resolution"></a>Çözüm
+
+Özel VNet ağ güvenlik grubu (NSG' ler) ve kullanıcı tanımlı rotalar (ÜDS) kullanıyorsanız, kümenizin HDInsight yönetim hizmetleriyle iletişim kurabilmesini sağlayın. Daha fazla bilgi için [HDInsight yönetimi IP adreslerine](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses)bakın.
+
+---
+
+## <a name="error-code-deployments-failed-due-to-policy-violation-resource-resource-uri-was-disallowed-by-policy-policy-identifiers-policyassignmentnamepolicy-name-idprovidersmicrosoftmanagementmanagementgroupsmanagement-group-name-providersmicrosoftauthorizationpolicyassignmentspolicy-namepolicydefinition-policy-definition"></a>Hata Kodu: İlke ihlali nedeniyle dağıtımlar<Resource URI>başarısız oldu: 'Kaynak' ilkesi tarafından izin verilmedi. İlke tanımlayıcıları: '[{"policyAssignment":{"name":"<Policy Name> ","id":"/providers/Microsoft.Management/managementGroups/<Management Group Name> providers/Microsoft.Authorization/policyAssignments/<Policy Name>"},"policyDefinition":<Policy Definition>
+
+### <a name="cause"></a>Nedeni
+
+Abonelik tabanlı Azure ilkeleri, genel IP adreslerinin oluşturulmasını reddedebilir. HDInsight kümesi oluşturmak için iki genel IP gerekir.
+
+Aşağıdaki ilkeler genellikle küme oluşturmayı etkiler:
+
+* Abonelik içinde IP Adresleri veya Yük bakiyeleri oluşturulmasını engelleyen ilkeler.
+* Depolama hesapları oluşturmayı engelleyen ilke.
+* IP Adresleri veya Yük Dengeleyicileri gibi ağ kaynaklarının silen ilkesi.
+
+### <a name="resolution"></a>Çözüm
+
+HDInsight Cluster oluştururken abonelik tabanlı Azure ilkesini silin veya devre dışı kaltın.
+
+---
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

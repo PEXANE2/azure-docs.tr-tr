@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: juliako
-ms.openlocfilehash: 1db7009096635fc1279ce8a8358e0d8131209722
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 76ef9f92b6b6633982242ccafab1950e0ef5f410
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80372579"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80582793"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 sürüm notları
 
@@ -177,7 +177,7 @@ Daha fazla bilgi için [bkz.](azure-clouds-regions.md)
 
 Medya Hizmetleri performans iyileştirmeleri içeren güncelleştirmeler eklendi.
 
-* İşlem için desteklenen maksimum dosya boyutu güncelleştirildi. Bakınız, [Kotalar ve sınırlamalar.](limits-quotas-constraints.md)
+* İşlem için desteklenen maksimum dosya boyutu güncelleştirildi. Bakınız, [Kotalar ve limitler.](limits-quotas-constraints.md)
 * [Kodlama hızları iyileştirmeler.](media-reserved-units-cli-how-to.md#choosing-between-different-reserved-unit-types)
 
 ## <a name="april-2019"></a>Nisan 2019
@@ -321,7 +321,7 @@ Aşağıdaki Olay Izgara destek geliştirmelerini görebilirsiniz:
 
 CMAF'ı destekleyen Apple HLS (iOS 11+) ve MPEG-DASH oynatıcılar için CMAF ve 'cbcs' şifreleme desteği.
 
-### <a name="video-indexer"></a>Video Dizinleyici
+### <a name="video-indexer"></a>Video Indexer
 
 Video Indexer GA sürümü Ağustos ayında açıklandı. Şu anda desteklenen özellikler hakkında yeni bilgiler için [Video Dizinleyici nedir'e](../../cognitive-services/video-indexer/video-indexer-overview.md?toc=/azure/media-services/video-indexer/toc.json&bc=/azure/media-services/video-indexer/breadcrumb/toc.json)bakın. 
 

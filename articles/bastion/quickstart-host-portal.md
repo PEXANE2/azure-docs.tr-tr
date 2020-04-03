@@ -2,17 +2,17 @@
 title: 'Hızlı başlatma: Özel bir IP adresi kullanarak sanal bir makineye bağlanma: Azure Bastion'
 description: Bu makalede, sanal bir makineden Azure Bastion ana bilgisayarını nasıl oluşturup özel bir IP adresi kullanarak güvenli bir şekilde nasıl bağlanabilirsiniz öğrenin.
 services: bastion
-author: cherylmc
+author: charwen
 ms.service: bastion
 ms.topic: conceptual
 ms.date: 03/11/2020
-ms.author: cherylmc
-ms.openlocfilehash: 0b4f0a1fa4f9cce05aa544bb24e045209a6d24ef
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.author: charwen
+ms.openlocfilehash: a420a3253040fff8b767a81f298ede283c1d214b
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79137467"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619264"
 ---
 # <a name="quickstart-connect-to-a-virtual-machine-using-a-private-ip-address-and-azure-bastion"></a>Hızlı başlatma: Özel bir IP adresi ve Azure Kalesi kullanarak sanal makineye bağlanma
 

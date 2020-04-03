@@ -1,6 +1,6 @@
 ---
 title: İş yükünü izleyin - Azure portalı
-description: Azure portalını kullanarak SQL Analytics'i izleyin
+description: Azure portalını kullanarak Synapse SQL'i izleyin
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -10,16 +10,16 @@ ms.subservice: ''
 ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 344e2cd03408b5bd1e966abc8abb72bce6078acc
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 64e61b00ecebec82b465cb13c6df0e323f6c7777
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350339"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586548"
 ---
 # <a name="monitor-workload---azure-portal"></a>İş yükünü izleyin - Azure portalı
 
-Bu makalede, iş yükünüzü izlemek için Azure portalının nasıl kullanılacağı açıklanmaktadır. Buna, [SQL Analytics](https://azure.microsoft.com/blog/workload-insights-with-sql-data-warehouse-delivered-through-azure-monitor-diagnostic-logs-pass/)için günlük analitiğini kullanarak sorgu yürütmeve iş yükü eğilimlerini araştırmak için Azure Monitor Günlükleri'ni ayarlama yı içerir.
+Bu makalede, iş yükünüzü izlemek için Azure portalının nasıl kullanılacağı açıklanmaktadır. Buna, [Synapse SQL](https://azure.microsoft.com/blog/workload-insights-with-sql-data-warehouse-delivered-through-azure-monitor-diagnostic-logs-pass/)için günlük analitiğini kullanarak sorgu yürütmesini ve iş yükü eğilimlerini araştırmak için Azure Monitor Günlükleri'ni ayarlamayı içerir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 

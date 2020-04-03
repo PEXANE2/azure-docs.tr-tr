@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/24/2020
 ms.author: absha
-ms.openlocfilehash: f31c24c96732ec3311ea904fc9c63344e2d14109
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f08cfab8f8de9183e6bee241959f7feabc31c8e3
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80371247"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585915"
 ---
 # <a name="application-gateway-configuration-overview"></a>Uygulama Ağ Geçidi yapılandırmagenel bakış
 
@@ -168,8 +168,6 @@ HTTP veya HTTPS'yi seçin:
 
 - HTTP'yi seçerseniz, istemci ve uygulama ağ geçidi arasındaki trafik şifrelenmemiş olur.
 
-- [TLS sonlandırma](https://docs.microsoft.com/azure/application-gateway/overview#secure-sockets-layer-ssltls-termination) veya [uçlardan uca TLS şifrelemeistiyorsanız](https://docs.microsoft.com/azure/application-gateway/ssl-overview)HTTPS'yi seçin. İstemci ve uygulama ağ geçidi arasındaki trafik şifrelenir. Ve TLS bağlantısı uygulama ağ geçidinde sonlandırır. Uçlardan uca TLS şifreleme istiyorsanız, HTTPS'yi seçmeniz ve **arka uç HTTP** ayarını yapılandırmanız gerekir. Bu, uygulama ağ geçidinden arka uca geçerken trafiğin yeniden şifrelenmesini sağlar.
-
 - [TLS sonlandırma](features.md#secure-sockets-layer-ssltls-termination) veya [uçlardan uca TLS şifrelemeistiyorsanız](https://docs.microsoft.com/azure/application-gateway/ssl-overview)HTTPS'yi seçin. İstemci ve uygulama ağ geçidi arasındaki trafik şifrelenir. Ve TLS bağlantısı uygulama ağ geçidinde sonlandırır. Uçlardan uca TLS şifreleme istiyorsanız, HTTPS'yi seçmeniz ve **arka uç HTTP** ayarını yapılandırmanız gerekir. Bu, uygulama ağ geçidinden arka uca geçerken trafiğin yeniden şifrelenmesini sağlar.
 
 
@@ -296,7 +294,7 @@ Uygulama ağ geçidi, burada belirttiğiniz yapılandırmayı kullanarak trafiğ
 
 ### <a name="cookie-based-affinity"></a>Tanımlama bilgisi tabanlı benzeşim
 
-Azure Application Gateway, kullanıcı oturumlarını korumak için ağ geçidi tarafından yönetilen tanımlama bilgileri kullanır. Bir kullanıcı ilk isteği Uygulama Ağ Geçidi'ne gönderdiğinde, yanıtta oturum ayrıntılarını içeren karma bir değerle bir benzerlik tanımlama bilgisi ayarlar, böylece yakınlık çerezini taşıyan sonraki istekler aynı arka uç sunucusuna yapışkanlığını korumak. 
+Azure Application Gateway, kullanıcı oturumlarını korumak için ağ geçidi tarafından yönetilen tanımlama bilgileri kullanır. Bir kullanıcı ilk isteği Uygulama Ağ Geçidi'ne gönderdiğinde, yanıtta oturum ayrıntılarını içeren karma bir değerle bir yakınlık çerezi ayarlar, böylece yakınlık çerezini taşıyan sonraki istekler yapışkanlığı korumak için aynı arka uç sunucusuna yönlendirilecektir. 
 
 Bu özellik, bir kullanıcı oturumunu aynı sunucuda tutmak istediğinizde ve oturum durumu bir kullanıcı oturumu için sunucuda yerel olarak kaydedildiğinde yararlıdır. Uygulama çerez tabanlı yakınlığı işleyebilir, bu özelliği kullanamazsınız. Kullanmak için istemcilerin tanımlama bilgilerini desteklediğinden emin olun.
 

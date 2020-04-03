@@ -2,14 +2,14 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/12/2020
+ms.date: 04/02/2020
 ms.author: dacoulte
-ms.openlocfilehash: f4212ad8c4492cb975a0af14ba054b15cd7fa284
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 14ef9a4eeb5f3c906a2121b63413685df3bdbe50
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79381544"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80624044"
 ---
 |Adı |Açıklama |Etki(ler) |Sürüm |GitHub |
 |---|---|---|---|---|
@@ -19,4 +19,4 @@ ms.locfileid: "79381544"
 |[Depolama Hesapları için coğrafi yedekli depolama etkinleştirilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fbf045164-79ba-4215-8f95-f8048dc1780b) |Bu ilke, coğrafi yedekli depolama etkin değil herhangi bir Depolama Hesabı denetler. |Denetim, Engelli |1.0.0 |[Bağlantı](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/GeoRedundant_StorageAccounts_Audit.json)
 |[Depolama hesaplarına güvenli aktarım etkinleştirilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F404c3081-a854-4457-ae30-26a93ef643f9) |Depolama hesabınızda Güvenli transferin denetim gereksinimi. Güvenli aktarım, depolama hesabınızı yalnızca güvenli bağlantılardan (HTTPS) gelen istekleri kabul etmeye zorlayan bir seçenektir. HTTPS'nin kullanımı sunucu ve hizmet arasında kimlik doğrulaması sağlar ve aktarım sırasındaki verileri ortadaki adam, gizlice dinleme ve oturum kaçırma gibi ağ katmanı saldırılarına karşı korur |Denetim, Reddet, Devre Dışı Bırakma |1.0.1 |[Bağlantı](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/Storage_AuditForHTTPSEnabled_Audit.json)
 |[Depolama hesapları, güvenilen Microsoft hizmetlerinden erişime izin vermelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc9d007d0-c057-4772-b18c-01e546713bcd) |Depolama hesaplarıyla etkileşimde olan bazı Microsoft hizmetleri, ağ kuralları yla erişim verilmeyen ağlarda çalışır. Bu tür hizmetin beklendiği gibi çalışmasına yardımcı olmak için, güvenilen Microsoft hizmetleri kümesinin ağ kurallarını atlamesine izin verin. Bu hizmetler daha sonra depolama hesabına erişmek için güçlü kimlik doğrulaması kullanır. |Denetim, Reddet, Devre Dışı Bırakma |1.0.0 |[Bağlantı](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/StorageAccess_TrustedMicrosoftServices_Audit.json)
-|[Depolama hesapları yeni Azure Kaynak Yöneticisi kaynaklarına geçirilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F37e0d2fe-28a5-43d6-a273-67d37d1f5606) |Depolama hesaplarınız için yeni Azure Kaynak Yöneticisi'ni kullanın: daha güçlü erişim denetimi (RBAC), daha iyi denetim, Azure Kaynak Yöneticisi tabanlı dağıtım ve yönetim, yönetilen kimliklere erişim, önemli kasaya erişim daha kolay güvenlik yönetimi için sırlar, Azure AD tabanlı kimlik doğrulama ve etiketler ve kaynak grupları için destek |Denetim, Reddet, Devre Dışı Bırakma |1.0.0 |[Bağlantı](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/Classic_AuditForClassicStorages_Audit.json)
+|[Depolama hesapları yeni Azure Kaynak Yöneticisi kaynaklarına geçirilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F37e0d2fe-28a5-43d6-a273-67d37d1f5606) |Daha güçlü erişim denetimi (RBAC), daha iyi denetim, Azure Kaynak Yöneticisi tabanlı dağıtım ve yönetim, yönetilen kimliklere erişim, sırlar için önemli kasaya erişim, Azure AD tabanlı kimlik doğrulama ve daha kolay güvenlik yönetimi için etiketler ve kaynak grupları desteği gibi güvenlik geliştirmeleri sağlamak için depolama hesaplarınız için yeni Azure Kaynak Yöneticisi'ni kullanın |Denetim, Reddet, Devre Dışı Bırakma |1.0.0 |[Bağlantı](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/Classic_AuditForClassicStorages_Audit.json)

@@ -1,20 +1,23 @@
 ---
 title: Azure Monitor kaynak türüne göre desteklenen ölçümler
 description: Azure Monitor ile her kaynak türü için kullanılabilen ölçümlerin listesi.
-author: anirudhcavale
+author: rboucher
 services: azure-monitor
 ms.topic: reference
 ms.date: 03/17/2020
-ms.author: ancav
+ms.author: robb
 ms.subservice: metrics
-ms.openlocfilehash: 674321878cfce2d05189700a8b5118e233d9044d
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 79bae9712cea04425cc36414ec56fdddd4345eab
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80520699"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586034"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure Monitor ile desteklenen ölçümler
+
+> [!NOTE]
+> Bu liste büyük ölçüde Azure Monitor Ölçümleri REST API'sinden otomatik olarak oluşturulur. Github üzerinden bu listede yapılan herhangi bir değişiklik uyarı olmadan üzerine yazılabilir. Kalıcı güncelleştirmelerin nasıl yapılacağını öğrenmek için bu makalenin yazarına başvurun.
 
 Azure Monitor, ölçümleri portalda grafiklendirmek, REST API'den erişmek veya PowerShell veya CLI kullanarak sorgulamak gibi ölçümlerle etkileşim kurmanın çeşitli yollarını sağlar. Aşağıda, Şu anda Azure Monitor'un metrik ardışık boru hattıyla kullanılabilen tüm ölçümlerin tam listesi verilmiştir. Diğer ölçümler portalda veya eski API'ler kullanılarak kullanılabilir. Aşağıdaki liste yalnızca birleştirilmiş Azure Monitor metrik ardışık ardışık hattını kullanarak kullanılabilen ölçümleri içerir. Ölçümler ad alanına göre düzenlenir. Hizmetlerin listesi ve bunlara ait ad alanları [için Azure hizmetleri için Kaynak sağlayıcılarına](../../azure-resource-manager/management/azure-services-resource-providers.md)bakın. Bu ölçümleri programlı olarak sorgulamak ve bunlara erişmek için lütfen [2018-01-01 api sürümünü](https://docs.microsoft.com/rest/api/monitor/metricdefinitions) kullanın
 
@@ -24,10 +27,6 @@ Azure Monitor, ölçümleri portalda grafiklendirmek, REST API'den erişmek veya
 > *Örneğin*: Bir Olay Hub'ındaki 'Gelen İletiler' ölçümü, kuyruk düzeyi temelinde araştırılıp grafiği oluşturulabilir. Ancak, tanılama ayarları aracılığıyla dışarı aktarılan ölçüm, Olay Hub’ındaki tüm kuyruklarda tüm gelen iletiler halinde ifade edilir.
 >
 > Tanılama ayarları yla dışa aktarılabilen platform ölçümlerinin listesi için [bu makaleye](metrics-supported-export-diagnostic-settings.md)bakın.
-
-
-
-
 
 
 ## <a name="microsoftanalysisservicesservers"></a>Microsoft.AnalysisServices/sunucular
@@ -565,7 +564,7 @@ Azure Monitor, ölçümleri portalda grafiklendirmek, REST API'den erişmek veya
 |Disk Başına Bayt/sn Yazma|Veri Diski Yazma Bayt/Sn [(Amortismana Eritilmiş)](portal-disk-metrics-deprecation.md)|CountPerSecond|Ortalama|İzleme döneminde tek bir diske yazılan bayt/Sn|Tembellik|
 |Disk Başına Okuma İşlemleri/Sn|Veri Diski Okuma İşlemleri/Sn [(Amortismana Alındı)](portal-disk-metrics-deprecation.md)|CountPerSecond|Ortalama|İzleme süresi boyunca Tek bir diskten IOPS'yi okuyun|Tembellik|
 |Disk Başına Yazma İşlemleri/Sn|Veri Diski Yazma İşlemleri/Sn [(Amortismana Alındı)](portal-disk-metrics-deprecation.md)|CountPerSecond|Ortalama|İzleme süresi boyunca Tek bir diskten IOPS yazma|Tembellik|
-|Disk Başına QD|[Veri Diski QD [(Deprecated)](portal-disk-metrics-deprecation.md)](portal-disk-metrics-deprecation.md)|Sayı|Ortalama|Veri DiskI Sıra Derinliği(veya Sıra Uzunluğu)|Tembellik|
+|Disk Başına QD|Veri Diski QD [(Deprecated)](portal-disk-metrics-deprecation.md)](portal-disk-metrics-deprecation.md)|Sayı|Ortalama|Veri DiskI Sıra Derinliği(veya Sıra Uzunluğu)|Tembellik|
 |Disk Başına İşletim Sistemi Okuma Bayt/sn|İşletim Sistemi Disk Okuma Bayt/Sn [(Amortismana Ermiş)](portal-disk-metrics-deprecation.md)|CountPerSecond|Ortalama|İşletim sistemi diski için izleme süresi boyunca tek bir diskten okunan bayt/Sn|None|
 |Disk Başına İşletim Sistemi Bayt/sn Yazma|İşletim Sistemi Disk I Yazma Bayt/Sn [(Amortismana Ermiş)](portal-disk-metrics-deprecation.md)|CountPerSecond|Ortalama|İşletim sistemi diski için izleme süresi boyunca tek bir diske yazılan bayt/Sn|None|
 |Disk Başına İşletim Sistemi Okuma İşlemleri/Sn|İşletim Sistemi Disk Okuma İşlemleri/Sn [(Amortismana Uğradı)](portal-disk-metrics-deprecation.md)|CountPerSecond|Ortalama|Os diski için izleme süresi boyunca IOPS'yi tek bir diskten okuyun|None|
@@ -1974,8 +1973,6 @@ Azure Monitor, ölçümleri portalda grafiklendirmek, REST API'den erişmek veya
 
 
 
-
-
 ## <a name="microsoftsqlserversdatabases"></a>Microsoft.Sql/servers/veritabanları
 
 |Ölçüm|Metrik Görüntü Adı|Birim|Toplama Türü|Açıklama|Boyutlar|
@@ -2002,8 +1999,8 @@ Azure Monitor, ölçümleri portalda grafiklendirmek, REST API'den erişmek veya
 |dwu_used|Kullanılan DWU|Sayı|Maksimum|DWU kullanılır. Yalnızca veri ambarları için geçerlidir.|None|
 |cache_hit_percent|Önbellek isabet yüzdesi|Yüzde|Maksimum|Önbellek isabet yüzdesi. Yalnızca veri ambarları için geçerlidir.|None|
 |cache_used_percent|Önbellek kullanılan yüzde|Yüzde|Maksimum|Önbellek kullanılan yüzde. Yalnızca veri ambarları için geçerlidir.|None|
-|sqlserver_process_core_percent|SQL Server işlem çekirdek yüzdesi|Yüzde|Maksimum|SQL DB işleminin yüzdesi olarak CPU kullanımı. Veri ambarları için geçerli değildir.|None|
-|sqlserver_process_memory_percent|SQL Server işleme bellek yüzdesi|Yüzde|Maksimum|SQL DB işleminin yüzdesi olarak bellek kullanımı. Veri ambarları için geçerli değildir.|None|
+|sqlserver_process_core_percent|SQL Server işlem çekirdek yüzdesi|Yüzde|Maksimum|İşletim sistemi tarafından ölçülen SQL Server işlemi için CPU kullanım yüzdesi.|None|
+|sqlserver_process_memory_percent|SQL Server işleme bellek yüzdesi|Yüzde|Maksimum|İşletim sistemi tarafından ölçülen SQL Server işlemi için bellek kullanım yüzdesi.|None|
 |tempdb_data_size|Tempdb Veri Dosya Boyutu Kilobayt|Sayı|Maksimum|Tempdb Veri Dosya Boyutu Kilobayt. Veri ambarları için geçerli değildir.|None|
 |tempdb_log_size|Tempdb Log Dosya Boyutu Kilobayt|Sayı|Maksimum|Tempdb Log Dosya Boyutu Kilobayt. Veri ambarları için geçerli değildir.|None|
 |tempdb_log_used_percent|Tempdb Yüzde Günlük Kullanılan|Yüzde|Maksimum|Tempdb Yüzde Günlüğü Kullanılır. Veri ambarları için geçerli değildir.|None|
@@ -2060,8 +2057,8 @@ Azure Monitor, ölçümleri portalda grafiklendirmek, REST API'den erişmek veya
 |database_cpu_limit|CPU sınırı|Sayı|Ortalama|CPU sınırı|VeritabanıResourceId|
 |cpu_used|Kullanılan CPU|Sayı|Ortalama|CPU kullanılır. vCore tabanlı elastik havuzlar için geçerlidir.|None|
 |database_cpu_used|Kullanılan CPU|Sayı|Ortalama|Kullanılan CPU|VeritabanıResourceId|
-|sqlserver_process_core_percent|SQL Server işlem çekirdek yüzdesi|Yüzde|Maksimum|SQL DB işleminin yüzdesi olarak CPU kullanımı. Elastik havuzlar için geçerlidir.|None|
-|sqlserver_process_memory_percent|SQL Server işleme bellek yüzdesi|Yüzde|Maksimum|SQL DB işleminin yüzdesi olarak bellek kullanımı. Elastik havuzlar için geçerlidir.|None|
+|sqlserver_process_core_percent|SQL Server işlem çekirdek yüzdesi|Yüzde|Maksimum|İşletim sistemi tarafından ölçülen SQL Server işlemi için CPU kullanım yüzdesi. Elastik havuzlar için geçerlidir.|None|
+|sqlserver_process_memory_percent|SQL Server işleme bellek yüzdesi|Yüzde|Maksimum|İşletim sistemi tarafından ölçülen SQL Server işlemi için bellek kullanım yüzdesi. Elastik havuzlar için geçerlidir.|None|
 |tempdb_data_size|Tempdb Veri Dosya Boyutu Kilobayt|Sayı|Maksimum|Tempdb Veri Dosya Boyutu Kilobayt|None|
 |tempdb_log_size|Tempdb Log Dosya Boyutu Kilobayt|Sayı|Maksimum|Tempdb Log Dosya Boyutu Kilobayt|None|
 |tempdb_log_used_percent|Tempdb Yüzde Günlük Kullanılan|Yüzde|Maksimum|Tempdb Yüzde Günlük Kullanılan|None|
@@ -2351,15 +2348,6 @@ Azure Monitor, ölçümleri portalda grafiklendirmek, REST API'den erişmek veya
 |CPU yüzdesi|CPU yüzdesi|Yüzde|Ortalama|CPU kullanımı. Bu değer, sistemdeki tüm işlemci çekirdeklerini temsil eden %100 ile bildirilir. Örnek olarak, dört çekirdekli sistemin %50'sini kullanan 2 yönlü bir VM tamamen iki çekirdek kullanıyor.|None|
 |YüzdeCpuReady|Yüzde CPU Hazır|Milisaniye|Toplam|Hazır zaman, CPU'nun(lar) geçmiş güncelleştirme aralığında kullanılabilir olmasını bekleyerek geçen süredir.|None|
 
-
-
-
-
-
-
-
-
-
 ## <a name="microsoftwebserverfarms"></a>Microsoft.Web/serverfarms
 
 |Ölçüm|Metrik Görüntü Adı|Birim|Toplama Türü|Açıklama|Boyutlar|
@@ -2380,7 +2368,7 @@ Azure Monitor, ölçümleri portalda grafiklendirmek, REST API'den erişmek veya
 |TcpLastAck|TCP Son Ack|Sayı|Ortalama|TCP Son Ack|Örnek|
 |TcpTimeWait|TCP Zaman Bekle|Sayı|Ortalama|TCP Zaman Bekle|Örnek|
 
-## <a name="microsoftwebsites"></a>Microsoft.Web/siteler
+## <a name="microsoftwebsites-excluding-functions"></a>Microsoft.Web/siteler (işlevler hariç) 
 
 > [!NOTE]
 > **Dosya Sistemi Kullanımı,** genel olarak kullanıma çıkarılan yeni bir metriktir, özel önizleme için beyaz listeye alınmadıkça veri beklenmiyor.
@@ -2410,6 +2398,37 @@ Azure Monitor, ölçümleri portalda grafiklendirmek, REST API'den erişmek veya
 |AppConnections|Bağlantılar|Sayı|Ortalama|Bağlantılar|Örnek|
 |Handles|Tanıtıcı Sayısı|Sayı|Ortalama|Tanıtıcı Sayısı|Örnek|
 |İş Parçacıkları|Ilmekli|Sayı|Ortalama|Ilmekli|Örnek|
+|Özel Baytlar|Özel Baytlar|Bayt|Ortalama|Özel Baytlar|Örnek|
+|IoReadBytesPerSecond|IO Saniyede Bayt Oku|BaytPerİkinci|Toplam|IO Saniyede Bayt Oku|Örnek|
+|IoWriteBytesPerSecond|IO Saniyede Bayt Yaz|BaytPerİkinci|Toplam|IO Saniyede Bayt Yaz|Örnek|
+|IoOtherBytesPerSecond|IO Saniyede Diğer Baytlar|BaytPerİkinci|Toplam|IO Saniyede Diğer Baytlar|Örnek|
+|IoReadOperationsPerSecond|IO Saniyede Okuma İşlemleri|BaytPerİkinci|Toplam|IO Saniyede Okuma İşlemleri|Örnek|
+|IoWriteOperationsPerSecond|IO Saniyede Yazma İşlemleri|BaytPerİkinci|Toplam|IO Saniyede Yazma İşlemleri|Örnek|
+|IoOtherOperationsPerSecond|IO Saniyede Diğer İşlemler|BaytPerİkinci|Toplam|IO Saniyede Diğer İşlemler|Örnek|
+|RequestsInApplicationQueue|Uygulama Kuyruğundaki İstekler|Sayı|Ortalama|Uygulama Kuyruğundaki İstekler|Örnek|
+|Güncel Montajlar|Geçerli Meclisler|Sayı|Ortalama|Geçerli Meclisler|Örnek|
+|TotalAppDomains|Toplam Uygulama Etki Alanı|Sayı|Ortalama|Toplam Uygulama Etki Alanı|Örnek|
+|TotalAppDomainsUnloaded|Toplam Uygulama Etki Alanı Boşaltıldı|Sayı|Ortalama|Toplam Uygulama Etki Alanı Boşaltıldı|Örnek|
+|Gen0Koleksiyonlar|Gen 0 Çöp Koleksiyonları|Sayı|Toplam|Gen 0 Çöp Koleksiyonları|Örnek|
+|Gen1Koleksiyonlar|Gen 1 Çöp Koleksiyonları|Sayı|Toplam|Gen 1 Çöp Koleksiyonları|Örnek|
+|Gen2Koleksiyonlar|Gen 2 Çöp Koleksiyonları|Sayı|Toplam|Gen 2 Çöp Koleksiyonları|Örnek|
+|HealthCheckDurumu|Sağlık kontrolü durumu|Sayı|Ortalama|Sağlık kontrolü durumu|Örnek|
+|FileSystemUsage|Dosya Sistemi Kullanımı|Bayt|Ortalama|Dosya Sistemi Kullanımı|None|
+
+## <a name="microsoftwebsites-functions"></a>Microsoft.Web/siteler (işlevler)
+
+> [!NOTE]
+> **Dosya Sistemi Kullanımı,** genel olarak kullanıma çıkarılan yeni bir metriktir, özel önizleme için beyaz listeye alınmadıkça veri beklenmiyor.
+
+|Ölçüm|Metrik Görüntü Adı|Birim|Toplama Türü|Açıklama|Boyutlar|
+|---|---|---|---|---|---|
+|BaytAlınan|Veri In|Bayt|Toplam|Veri In|Örnek|
+|Baytgönderildi|Veri Çıkış|Bayt|Toplam|Veri Çıkış|Örnek|
+|Http5xx|Http Sunucu Hataları|Sayı|Toplam|Http Sunucu Hataları|Örnek|
+|MemoryWorkingSet|Bellek çalışma kümesi|Bayt|Ortalama|Bellek çalışma kümesi|Örnek|
+|OrtalamaMemoryWorkingSet|Ortalama bellek çalışma kümesi|Bayt|Ortalama|Ortalama bellek çalışma kümesi|Örnek|
+|Fonksiyonyürütme Birimleri|Fonksiyon Yürütme Birimleri|MB / Milisaniye|Toplam|[Fonksiyon Yürütme Birimleri](https://github.com/Azure/Azure-Functions/wiki/Consumption-Plan-Cost-Billing-FAQ#how-can-i-view-graphs-of-execution-count-and-gb-seconds)|Örnek|
+|FonksiyonYürütme Sayısı|İşlev Yürütme Sayısı|Sayı|Toplam|İşlev Yürütme Sayısı|Örnek|
 |Özel Baytlar|Özel Baytlar|Bayt|Ortalama|Özel Baytlar|Örnek|
 |IoReadBytesPerSecond|IO Saniyede Bayt Oku|BaytPerİkinci|Toplam|IO Saniyede Bayt Oku|Örnek|
 |IoWriteBytesPerSecond|IO Saniyede Bayt Yaz|BaytPerİkinci|Toplam|IO Saniyede Bayt Yaz|Örnek|
@@ -2510,3 +2529,4 @@ Azure Monitor, ölçümleri portalda grafiklendirmek, REST API'den erişmek veya
 * [Azure Monitor'da ölçümler hakkında bilgi edinin](data-platform.md)
 * [Ölçümler üzerinde uyarı oluşturma](alerts-overview.md)
 * [Ölçümleri depolama, Olay Merkezi veya Günlük Analizine aktarma](platform-logs-overview.md)
+

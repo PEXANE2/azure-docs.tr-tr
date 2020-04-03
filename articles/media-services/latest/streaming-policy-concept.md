@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 05/28/2019
 ms.author: juliako
-ms.openlocfilehash: a813c77e81e51bfe13e75ed6c8d0e24b4d0fa645
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9c80056fd62173ff1e5a6ed3979adba71b7706cc
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "66392919"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80582768"
 ---
 # <a name="streaming-policies"></a>Akış İlkeleri
 
@@ -34,7 +34,7 @@ Aşağıdaki "Karar ağacı" senaryonuz için önceden tanımlanmış bir Akış
 
 > [!IMPORTANT]
 > * Datetime türündeki **Akış İlkeleri'nin** özellikleri her zaman UTC biçimindedir.
-> * Medya Hizmeti hesabınız için sınırlı bir dizi ilke tasarlamalı ve aynı seçenekler gerektiğinde Akış Lı Konum belirleyicileriniz için yeniden kullanmalısınız. Daha fazla bilgi için [Kotalar ve sınırlamalar](limits-quotas-constraints.md)bölümüne bakın.
+> * Medya Hizmeti hesabınız için sınırlı bir dizi ilke tasarlamalı ve aynı seçenekler gerektiğinde Akış Lı Konum belirleyicileriniz için yeniden kullanmalısınız. Daha fazla bilgi için [Kotalar ve sınırlar](limits-quotas-constraints.md)abakın.
 
 ## <a name="decision-tree"></a>Karar ağacı
 

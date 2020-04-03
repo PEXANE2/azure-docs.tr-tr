@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: f2019f8538b6997d8fe802a1e90069e88274eb0c
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 8e0515727c2155b91f18398bd9def700f4a15b34
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80349131"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619401"
 ---
 # <a name="cheat-sheet-for-azure-synapse-analytics-formerly-sql-dw"></a>Azure Synapse Analytics için hile sayfası (eski adıyla SQL DW)
 
@@ -115,7 +115,7 @@ Kaynak grupları sorgulara bellek ayırmak için bir yol olarak kullanılır. So
 
 Sorguların çok uzun sürdüğünü fark ederseniz, kullanıcılarınızın büyük kaynak sınıflarında çalışmadığından emin olun. Büyük kaynak sınıfları birçok eşzamanlı yuva kullanır. Bunlar diğer sorguların kuyruğa alınmasına neden olabilir.
 
-Son olarak, SQL [havuzunun](sql-data-warehouse-overview-what-is.md#sql-analytics-and-sql-pool-in-azure-synapse)Gen2'sini kullanarak, her kaynak sınıfı Gen1'den 2,5 kat daha fazla bellek alır.
+Son olarak, SQL [havuzunun](sql-data-warehouse-overview-what-is.md#synapse-sql-pool-in-azure-synapse)Gen2'sini kullanarak, her kaynak sınıfı Gen1'den 2,5 kat daha fazla bellek alır.
 
 [Kaynak sınıfları ve eşzamanlılık](resource-classes-for-workload-management.md) ile çalışma hakkında daha fazla bilgi edinin.
 

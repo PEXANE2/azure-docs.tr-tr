@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 555d437fb0ee898473b37febb1774924b55bfa1d
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: c4920b2a5b4ff0b1a94fa8fa0e83f72761802b97
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350840"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583808"
 ---
 # <a name="quickstart-configure-workload-isolation-using-t-sql"></a>Quickstart: T-SQL kullanarak iş yükü yalıtımı yapılandırın
 
@@ -25,13 +25,13 @@ Bu hızlı başlatmada, veri yükleme için kaynak ayıracak bir iş yükü grub
 Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
 > [!NOTE]
-> Azure Synapse Analytics'te BIR SQL Analytics örneği oluşturmak, faturalandırılabilir yeni bir hizmetle sonuçlanabilir.  Daha fazla bilgi için Azure [Synapse Analytics fiyatlandırması](https://azure.microsoft.com/pricing/details/sql-data-warehouse/)bölümüne bakın.
+> Azure Synapse Analytics'te Synapse SQL havuzu oluşturmak, faturalandırılabilir yeni bir hizmetle sonuçlanabilir.  Daha fazla bilgi için Azure [Synapse Analytics fiyatlandırması](https://azure.microsoft.com/pricing/details/sql-data-warehouse/)bölümüne bakın.
 >
 >
 
 ## <a name="prerequisites"></a>Ön koşullar
  
-Bu hızlı başlatma, Azure Sinaps'ta zaten bir SQL Analytics örneğiniz olduğunu ve CONTROL DATABASE izinlerine sahip olduğunuzu varsayar. Gerekiyorsa **mySampleDataWarehouse** adlı bir veri ambarı oluşturmak için [Oluşturma ve Bağlanma - portal](create-data-warehouse-portal.md) bölümünü kullanabilirsiniz.
+Bu hızlı başlangıç, Azure Synapse'de zaten bir Synapse SQL havuzunuz olduğunu ve CONTROL DATABASE izinlerine sahip olduğunuzu varsayar. Gerekiyorsa **mySampleDataWarehouse** adlı bir veri ambarı oluşturmak için [Oluşturma ve Bağlanma - portal](create-data-warehouse-portal.md) bölümünü kullanabilirsiniz.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
@@ -39,7 +39,7 @@ Bu hızlı başlatma, Azure Sinaps'ta zaten bir SQL Analytics örneğiniz olduğ
 
 ## <a name="create-login-for-dataloads"></a>DataLoads için oturum açma oluşturma
 
-'ELTLogin' için CREATE `master` [LOGIN'i](/sql/t-sql/statements/create-login-transact-sql) kullanarak veritabanında bir SQL Server kimlik doğrulama girişi oluşturun.
+'ELTLogin' için CREATE `master` [LOGIN'i](/sql/t-sql/statements/create-login-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) kullanarak veritabanında bir SQL Server kimlik doğrulama girişi oluşturun.
 
 ```sql
 IF NOT EXISTS (SELECT * FROM sys.sql_logins WHERE name = 'ELTLogin')
@@ -51,7 +51,7 @@ END
 
 ## <a name="create-user"></a>Kullanıcı oluştur
 
-mySampleDataWarehouse'da "ELTLogin" [kullanıcısı oluşturun](/sql/t-sql/statements/create-user-transact-sql?view=azure-sqldw-latest)
+mySampleDataWarehouse'da "ELTLogin" [kullanıcısı oluşturun](/sql/t-sql/statements/create-user-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)
 
 ```sql
 IF NOT EXISTS (SELECT * FROM sys.database_principals WHERE name = 'ELTLogin')
@@ -62,7 +62,7 @@ END
 ```
 
 ## <a name="create-a-workload-group"></a>İş yükü grubu oluşturma
-DataLoads için %20 yalıtımlı bir [iş yükü grubu](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) oluşturun.
+DataLoads için %20 yalıtımlı bir [iş yükü grubu](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) oluşturun.
 ```sql
 CREATE WORKLOAD GROUP DataLoads
 WITH ( MIN_PERCENTAGE_RESOURCE = 20   
@@ -73,7 +73,7 @@ WITH ( MIN_PERCENTAGE_RESOURCE = 20
 
 ## <a name="create-a-workload-classifier"></a>İş yükü sınıflandırıcısı oluşturma
 
-ELTLogin'i DataLoads iş yükü grubuna eşlemek için bir [iş yükü sınıflandırıcısı](/sql/t-sql/statements/create-workload-classifier-transact-sql?view=azure-sqldw-latest) oluşturun.
+ELTLogin'i DataLoads iş yükü grubuna eşlemek için bir [iş yükü sınıflandırıcısı](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) oluşturun.
 
 ```sql
 CREATE WORKLOAD CLASSIFIER [wgcELTLogin]
@@ -128,5 +128,5 @@ Kaynakları temizlemek için aşağıdaki adımları izleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-- Şimdi bir iş yükü grubu oluşturdunuz. Nasıl performans gösterdiğini görmek için ELTLogin olarak birkaç sorgu çalıştırın. Sorguları ve atanan iş yükü grubunu görüntülemek için [sys.dm_pdw_exec_requests'a](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) bakın.
-- SQL Analytics iş yükü yönetimi hakkında daha fazla bilgi için iş [yükü yönetimi](sql-data-warehouse-workload-management.md) ve iş [yükü yalıtımı](sql-data-warehouse-workload-isolation.md)bölümüne bakın.
+- Şimdi bir iş yükü grubu oluşturdunuz. Nasıl performans gösterdiğini görmek için ELTLogin olarak birkaç sorgu çalıştırın. Sorguları ve atanan iş yükü grubunu görüntülemek için [sys.dm_pdw_exec_requests'a](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql/?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) bakın.
+- Synapse SQL iş yükü yönetimi hakkında daha fazla bilgi için iş [yükü yönetimi](sql-data-warehouse-workload-management.md) ve iş [yükü yalıtımı](sql-data-warehouse-workload-isolation.md)'na bakın.

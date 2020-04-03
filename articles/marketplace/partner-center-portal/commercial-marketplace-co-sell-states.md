@@ -1,26 +1,26 @@
 ---
-title: Ortak devlet kodları satmak | Azure Marketi
-description: Teklifinizin Co-sell sayfasında kişi bilgilerini sağlarken bu eyalet/bölge kodlarını kullanın.
+title: Ortak satış devlet ve il kodları | Azure Marketi
+description: Teklifinizin Co-sell sayfasında kişi bilgilerini sağlarken bu eyalet ve il kodlarını kullanın.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 08/27/2019
-ms.openlocfilehash: f87014a599afd6d1c56d175b92d4da1ea49d9470
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.openlocfilehash: 782f2d6facb28630989f086a68c551314e02e48e
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80277048"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619355"
 ---
-# <a name="co-sell-state-codes"></a>Ortak satış devlet kodları
+# <a name="co-sell-state-and-province-codes"></a>Ortak satış devlet ve il kodları
 
 Varsa, [teklifinizin Co-sell sayfasında iletişim bilgileri sağlarken](commercial-marketplace-co-sell.md#contacts)Eyalet/Eyalet bilgilerini sağlamak için bu kodları kullanın.
 
-## <a name="stateprovince-table"></a>Eyalet/Eyalet tablosu
+## <a name="us-states-and-territories"></a>ABD eyaletleri ve bölgeleri
 
-|   Eyalet/İl Adı               |   Kod    |
+|   Eyalet ve bölge adı          |   Kod    |
 |-------------------------------------|-----------|
 | Alabama                             | ABD-AL     |
 | Alaska                              | ABD-AK     |
@@ -78,7 +78,40 @@ Varsa, [teklifinizin Co-sell sayfasında iletişim bilgileri sağlarken](commerc
 | Kuzey Mariana Adaları            | ABD Milletvekili     |
 | Porto Riko                         | US-PR     |
 | Amerika Birleşik Devletleri Küçük Dış Adalar | ABD-UM    |
-|Virgin Adaları, ABD                 | ABD-VI     |
+| Virgin Adaları, ABD                 | ABD-VI    |
+
+## <a name="canadian-provinces-and-territories"></a>Kanada eyaletleri ve bölgeleri
+
+|   İl ve bölge adı       |   Kod    |
+|-------------------------------------|-----------|
+| Alberta                             |  CA-AB    |
+| British Columbia                    |  CA-BC    |
+| Manitoba                            |  CA-MB    |
+| New Brunswick                       |  CA-NB    |
+| Newfoundland and Labrador           |  CA-NL    |
+| Nova Scotia                         |  CA-NS    |
+| Ontario                             |  CA-ON    |
+| Prince Edward Island                |  CA-PE    |
+| Quebec                              |  CA-QC    |
+| Saskatchewan                        |  CA-SK    |
+| Northwest Territories               |  CA-NT    |
+| Nunavut                             |  CA-NU    |
+| Yukon                               |  CA-YT    |
+
+
+## <a name="australian-states-and-territories"></a>Avustralya eyaletleri ve bölgeleri
+
+|   Eyalet ve bölge adı          |   Kod    |
+|-------------------------------------|-----------|
+| New South Wales                     |  AU-NSW   |
+| Queensland                          |  AU-QLD   |
+| South Australia                     |  AU-SA    |
+| Tasmania                            |  AU-TAS   |
+| Victoria                            |  AU-VIC   |
+| Western Australia                   |  AU-WA    |
+| Australian Capital Territory        |  AU-ACT   |
+| Northern Territory                  |  AU-NT    |
+
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

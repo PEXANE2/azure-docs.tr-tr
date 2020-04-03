@@ -4,24 +4,24 @@ description: Uygulama Hizmeti Ortamında uygulamaları nasıl oluşturup yayınl
 author: ccompy
 ms.assetid: a22450c4-9b8b-41d4-9568-c4646f4cf66b
 ms.topic: article
-ms.date: 01/01/2020
+ms.date: 3/26/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 8a73c1998203a8696b67a5e7eb3af23898239265
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 4565580feeddc2df8f6ed3011302016bb39977b4
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80477627"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586128"
 ---
 # <a name="use-an-app-service-environment"></a>App Service Ortamını kullanma
 
 Uygulama Hizmet Ortamı (ASE), Azure Uygulama Hizmeti'nin müşterinin Azure Sanal Ağ örneğinde bir alt ağa dağıtımıdır. Bir ASE oluşur:
 
-- **Ön uçlar**: Http veya HTTPS'nin Bir Uygulama Hizmet Ortamında sona erdiği yer.
-- **Çalışanlar**: Uygulamalarınızı barındıran kaynaklar.
-- **Veritabanı**: Ortamı tanımlayan bilgileri tutar.
-- **Depolama**: Müşteri tarafından yayınlanan uygulamaları barındırmak için kullanılır.
+- **Ön uçlar**: Http veya HTTPS'nin Bir Uygulama Hizmet Ortamında sona erdiği yer
+- **Çalışanlar**: Uygulamalarınızı barındıran kaynaklar
+- **Veritabanı**: Çevreyi tanımlayan bilgileri tutar
+- **Depolama**: Müşteri tarafından yayınlanan uygulamaları barındırmak için kullanılır
 
 Uygulama erişimi için harici veya dahili sanal IP (VIP) içeren bir ASE dağıtabilirsiniz. Harici BIR VIP ile dağıtım genellikle *Harici ASE*denir. Dahili yük dengeleyici (ILB) kullandığından, dahili VIP'li bir dağıtıma *ILB ASE* denir. ILB ASE hakkında daha fazla bilgi edinmek için [bkz.][MakeILBASE]
 
@@ -120,6 +120,22 @@ ILB ASE nasıl oluşturulacak hakkında bilgi [için][MakeILBASE]bkz.
 
 SCM URL, Kudu konsoluna erişmek veya Web Dağıtımı'nı kullanarak uygulamanızı yayınlamak için kullanılır. Kudu konsolu hakkında daha fazla bilgi için [Azure Uygulama Hizmeti için Kudu konsoluna][Kudu]bakın. Kudu konsolu hata ayıklama, dosya yükleme, dosyaları düzenleme ve çok daha fazlası için bir web arabirimi verir.
 
+### <a name="dns-configuration"></a>DNS yapılandırması 
+
+Harici ASE kullandığınızda, ASE'nizde yapılan uygulamalar Azure DNS'ye kaydedilir. Bir ILB ASE ile kendi DNS'nizi yönetmelisiniz. 
+
+DNS'yi ILB ASE'nizle yapılandırmak için:
+
+    create a zone for <ASE name>.appserviceenvironment.net
+    create an A record in that zone that points * to the ILB IP address
+    create an A record in that zone that points @ to the ILB IP address
+    create a zone in <ASE name>.appserviceenvironment.net named scm
+    create an A record in the scm zone that points * to the ILB IP address
+
+ASE varsayılan etki alanı ekinizin DNS ayarları, uygulamalarınızı yalnızca bu adlarla erişilebilir olmakla sınırlamaz. ILB ASE'de uygulamalarınızda herhangi bir doğrulama olmadan özel bir etki alanı adı ayarlayabilirsiniz. Daha sonra *contoso.net*adında bir bölge oluşturmak istiyorsanız, bunu yapabilir ve ILB IP adresine yönlendirebilirsiniz. Özel alan adı uygulama istekleri için çalışır, ancak scm sitesi için çalışmaz. Scm sitesi sadece * &lt;appname&gt;.scm&lt; adresinde mevcuttur. asename&gt;.appserviceenvironment.net*. 
+
+Adlı bölge *&lt; . asename&gt;.appserviceenvironment.net* küresel olarak benzersizdir. Mayıs 2019'dan önce müşteriler ILB ASE'nin etki alanı sonekini belirtebildi. Etki alanı soneki için *.contoso.com* kullanmak isterseniz, bunu başardınız ve buna scm sitesi de dahil. Bu model de dahil olmak üzere zorluklar vardı; varsayılan SSL sertifikasını yönetme, scm sitesinde tek oturum açma eksikliği ve joker karakter sertifikası kullanma gereksinimi. ILB ASE varsayılan sertifika yükseltme işlemi de kesintiye uğradı ve uygulamanın yeniden başlatılmasına neden oldu. Bu sorunları çözmek için, ILB ASE davranışı, ASE'nin adını temel alan ve Microsoft'a ait bir sonek içeren bir etki alanı soneki kullanacak şekilde değiştirildi. ILB ASE davranışındaki değişiklik yalnızca Mayıs 2019'dan sonra yapılan ILB ASE'leri etkiler. Önceden varolan ILB'ler, ASE'nin varsayılan sertifikasını ve DNS yapılandırmasını yönetmeye devam etmelidir.
+
 ## <a name="publishing"></a>Yayımlama
 
 Bir ASE'de, çok kiracılı Uygulama Hizmetinde olduğu gibi, şu yöntemlerle yayınlayabilirsiniz:
@@ -132,7 +148,7 @@ Bir ASE'de, çok kiracılı Uygulama Hizmetinde olduğu gibi, şu yöntemlerle y
 
 Harici ASE ile bu yayımlama seçeneklerinin tümü aynı şekilde çalışır. Daha fazla bilgi için Azure [Uygulama Hizmetinde Dağıtım'a][AppDeploy]bakın.
 
-Yayımlama, yayımlama uç noktalarının yalnızca ILB aracılığıyla kullanılabildiği bir ILB ASE ile önemli ölçüde farklıdır. ILB, sanal ağdaki ASE alt ağında ki özel bir IP üzerindedir. ILB'ye ağ erişiminiz yoksa, bu ASE'de herhangi bir uygulama yayınlayamazsınız. [ILB ASE oluştur ve kullan,][MakeILBASE]sistemdeki uygulamalar için DNS yapılandırmanız gerekir. Bu gereksinim SCM bitiş noktasını içerir. Uç noktalar düzgün tanımlanmamışsa, yayımlayamazsınız. IDA'larınızın doğrudan yayınlamak için ILB'ye ağ erişimine de sahip olması gerekir.
+ILB ASE ile yayımlama bitiş noktaları yalnızca ILB üzerinden kullanılabilir. ILB, sanal ağdaki ASE alt ağında ki özel bir IP üzerindedir. ILB'ye ağ erişiminiz yoksa, bu ASE'de herhangi bir uygulama yayınlayamazsınız. [ILB ASE oluştur ve kullan,][MakeILBASE]sistemdeki uygulamalar için DNS yapılandırmanız gerekir. Bu gereksinim SCM bitiş noktasını içerir. Uç noktalar düzgün tanımlanmamışsa, yayımlayamazsınız. IDA'larınızın doğrudan yayınlamak için ILB'ye ağ erişimine de sahip olması gerekir.
 
 Ek değişiklikler olmadan, GitHub ve Azure DevOps gibi Internet tabanlı CI sistemleri, yayın bitiş noktası Internet'e erişilemediği için ILB ASE ile çalışmaz. ILB ASE içeren sanal ağa kendi kendine barındırılan bir sürüm aracısı yükleyerek Azure DevOps'ten bir ILB ASE'ye yayımlamayı etkinleştirebilirsiniz. Alternatif olarak, Dropbox gibi çekme modeli kullanan bir CI sistemi de kullanabilirsiniz.
 
@@ -169,7 +185,18 @@ ASE'nizde oturum açmayı etkinleştirmek için:
 
 ![ASE tanılama günlüğü ayarları][4]
 
-Log Analytics ile tümleşirseniz, ASE portalından **Günlükler** seçerek ve **AppServiceEnvironmentPlatformLogs'a**karşı bir sorgu oluşturarak günlükleri görebilirsiniz.
+Log Analytics ile tümleşirseniz, ASE portalından **Günlükler** seçerek ve **AppServiceEnvironmentPlatformLogs'a**karşı bir sorgu oluşturarak günlükleri görebilirsiniz. Günlükler yalnızca ASE'niz tarafından tetiklenecek bir olay olduğunda yayılır. ASE'nizde böyle bir olay yoksa, herhangi bir günlük olmayacaktır. Log Analytics çalışma alanınızdaki günlüklerin bir örneğini hızlı bir şekilde görmek için, ASE'nizdeki Uygulama Hizmeti planlarından biriyle bir ölçek işlemi gerçekleştirin. Daha sonra bu günlükleri görmek için **AppServiceEnvironmentPlatformLogs** karşı bir sorgu çalıştırabilirsiniz. 
+
+**Uyarı oluşturma**
+
+Günlüklerinize karşı bir uyarı oluşturmak için Azure [Monitor'u kullanarak günlük uyarılarını Oluştur, görüntüle ve yönet'deki][logalerts]yönergeleri izleyin. Kısaca:
+
+* ASE portalınızdaki Uyarılar sayfasını açın
+* **Yeni uyarı kuralını** seçin
+* Log Analytics çalışma alanınız olması için Kaynağınızı seçin
+* "AppServiceEnvironmentPlatformLogs | ResultDescription"ın "ölçekleme başladı" veya istediğiniz her şeyi içerdiği yer. Eşiği uygun şekilde ayarlayın. 
+* İstenildiği gibi bir eylem grubu ekleyin veya oluşturun. Eylem grubu, uyarıya verilen yanıtı e-posta veya SMS mesajı gönderme gibi tanımladığınız gruptur
+* Uyarınızı adlandırın ve kaydedin.
 
 ## <a name="upgrade-preference"></a>Yükseltme tercihi
 
@@ -245,3 +272,4 @@ BIR ASE'yi silmek için:
 [AppDeploy]: ../deploy-local-git.md
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
 [AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md
+[logalerts]: ../../azure-monitor/platform/alerts-log.md

@@ -1,6 +1,6 @@
 ---
-title: SQL Analytics önerileri
-description: SQL Analytics önerileri ve bunların nasıl oluşturulduğu hakkında bilgi edinin
+title: Synapse SQL önerileri
+description: Synapse SQL önerileri ve bunların nasıl oluşturulduğu hakkında bilgi edinin
 services: synapse-analytics
 author: kevinvngo
 manager: craigg-msft
@@ -11,18 +11,18 @@ ms.date: 02/05/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 6d57fdb035e076c75363d23fbf36d39eeb72bb3f
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: c4bbd98cc28b242be5310fab76521a80de8fcb7c
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350684"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80584117"
 ---
-# <a name="sql-analytics-recommendations"></a>SQL Analytics önerileri
+# <a name="synapse-sql-recommendations"></a>Synapse SQL önerileri
 
-Bu makalede, Azure Danışmanı aracılığıyla sunulan SQL Analytics önerileri açıklanmaktadır.  
+Bu makalede, Azure Danışmanı aracılığıyla sunulan Synapse SQL önerileri açıklanmaktadır.  
 
-SQL Analytics, veri ambarı iş yükünüzün performans için sürekli olarak optimize edilmesini sağlamak için öneriler sağlar. Öneriler, doğrudan [Azure portalında](https://aka.ms/Azureadvisor)en iyi uygulamaları sağlamak için [Azure Advisor](https://docs.microsoft.com/azure/advisor/advisor-performance-recommendations) ile sıkı bir şekilde entegre edilmiştir. SQL Analytics, aktif iş yükünüz için günlük iş yükünüz için telemetri ve yüzey önerileri toplar. Desteklenen öneri senaryoları, önerilen eylemlerin nasıl uygulanacağıyla birlikte aşağıda özetlenmiştir.
+Synapse SQL, veri ambarı iş yükünüzün performans için sürekli olarak optimize edilmesini sağlamak için öneriler sağlar. Öneriler, doğrudan [Azure portalında](https://aka.ms/Azureadvisor)en iyi uygulamaları sağlamak için [Azure Advisor](https://docs.microsoft.com/azure/advisor/advisor-performance-recommendations) ile sıkı bir şekilde entegre edilmiştir. Synapse SQL, günlük iş yükünüz için telemetri ve yüzey önerileri toplar. Desteklenen öneri senaryoları, önerilen eylemlerin nasıl uygulanacağıyla birlikte aşağıda özetlenmiştir.
 
 [Önerilerinizi](https://aka.ms/Azureadvisor) hemen kontrol edebilirsiniz! Şu anda bu özellik yalnızca Gen2 veri ambarları için geçerlidir. 
 

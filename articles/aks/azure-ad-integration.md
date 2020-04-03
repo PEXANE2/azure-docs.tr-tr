@@ -4,12 +4,12 @@ description: Azure Etkin Dizin etkin Azure Kubernetes Hizmeti (AKS) kümeleri na
 services: container-service
 ms.topic: article
 ms.date: 02/02/2019
-ms.openlocfilehash: 0476acadf5af3a3e2c470fe6c08ebbd355653e22
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: de57a46f92fab2486aa7722daf8745a01be1f4f6
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77596598"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80617590"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service"></a>Azure Active Directory'yi Azure Kubernetes Service ile tümleştirme
 
@@ -116,9 +116,9 @@ Bir AKS kümesi için Azure AD kimlik doğrulaması sağlamak için iki Azure AD
     c. URI'yi Yönlendirme türü için **Web'i** seçin ve uri *https://aksazureadclient*biçimli herhangi bir değer girin.
 
     >[!NOTE]
-    >Kapsayıcılar için Azure Monitor'u desteklemek için RBAC özellikli yeni bir küme oluşturuyorsanız, **web** uygulama türleri olarak bu listeye aşağıdaki iki ek yönlendirme URL'sini ekleyin. İlk temel URL değeri, `https://afd.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` ikinci temel URL `https://monitoring.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`değeri ise.
+    >Kapsayıcılar için Azure Monitor'u desteklemek için RBAC özellikli yeni bir küme oluşturuyorsanız, **web** uygulama türleri olarak bu listeye aşağıdaki iki ek yönlendirme URL'sini ekleyin. İlk temel URL değeri, `https://afd.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` ikinci temel URL değeri ise`https://monitoring.hosting.portal.azure.net/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`
     >
-    >Bu özelliği Azure China'da kullanıyorsanız, ilk temel `https://afd.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` URL değeri ve ikinci `https://monitoring.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`temel URL değeri olmalıdır.
+    >Bu özelliği Azure China'da kullanıyorsanız, ilk temel `https://afd.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html` URL değeri ve ikinci temel URL değeri`https://monitoring.hosting.azureportal.chinaloudapi.cn/monitoring/Content/iframe/infrainsights.app/web/base-libs/auth/auth.html`
     >
     >Daha fazla bilgi için, kapsayıcılar için Azure Monitor için [Canlı Veri (önizleme) özelliğini nasıl ayarları](../azure-monitor/insights/container-insights-livedata-setup.md) ve [Yapıl artırın AD tümleşik kimlik doğrulama](../azure-monitor/insights/container-insights-livedata-setup.md#configure-ad-integrated-authentication) sı altında kimlik doğrulamayı yapılandırma adımlarına bakın.
 

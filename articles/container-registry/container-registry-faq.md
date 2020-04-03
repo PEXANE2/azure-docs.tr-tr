@@ -3,14 +3,14 @@ title: Sık sorulan sorular
 description: Azure Konteyner Kayıt Defteri hizmetiyle ilgili sık sorulan soruların yanıtları
 author: sajayantony
 ms.topic: article
-ms.date: 07/02/2019
+ms.date: 03/18/2020
 ms.author: sajaya
-ms.openlocfilehash: c0d51c9c31e4e6859eaedce371efeafaa5fd4f46
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7452b5dd3c952a13a28566914d2fe513689d4751
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78403216"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618803"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Azure Konteyner Kayıt Defteri hakkında sık sorulan sorular
 
@@ -105,6 +105,7 @@ Güvenlik duvarı kuralı değişikliklerini yaymak biraz zaman alır. Güvenlik
 - [Azure Kapsayıcı Kayıt Defteri İçerik Güvenini destekliyor mu?](#does-azure-container-registry-support-content-trust)
 - [Kayıt defteri kaynağını yönetmek için izin almadan görüntüleri çekme veya itme iznine nasıl erişebilirim?](#how-do-i-grant-access-to-pull-or-push-images-without-permission-to-manage-the-registry-resource)
 - [Bir kayıt defteri için otomatik görüntü karantinasını nasıl etkinleştirebilirim?](#how-do-i-enable-automatic-image-quarantine-for-a-registry)
+- [Anonim çekme erişimini nasıl etkinleştirebilirim?](#how-do-i-enable-anonymous-pull-access)
 
 ### <a name="how-do-i-access-docker-registry-http-api-v2"></a>Docker Registry HTTP API V2'ye nasıl erişebilirim?
 
@@ -251,13 +252,18 @@ Yalnızca rolün `AcrPull` veya `AcrPush` rolün kullanımıyla, devralan kişi 
 
 Görüntü karantinası şu anda ACR bir önizleme özelliğidir. Yalnızca güvenlik tadına başarıyla geçmiş görüntülerin normal kullanıcılar tarafından görülebilmesi için bir kayıt defterinin karantina modunu etkinleştirebilirsiniz. Ayrıntılar için [ACR GitHub repo'ya](https://github.com/Azure/acr/tree/master/docs/preview/quarantine)bakın.
 
+### <a name="how-do-i-enable-anonymous-pull-access"></a>Anonim çekme erişimini nasıl etkinleştirebilirim?
+
+Anonim (genel) çekme erişimi için bir Azure kapsayıcı kayıt defteri ayarlama şu anda bir önizleme özelliğidir. Genel erişimi etkinleştirmek için lütfen https://aka.ms/acr/support/create-ticket.'dan bir destek bileti açın. Ayrıntılar için [Azure Geri Bildirim Forumu'na](https://feedback.azure.com/forums/903958-azure-container-registry/suggestions/32517127-enable-anonymous-access-to-registries)bakın.
+
+
 ## <a name="diagnostics-and-health-checks"></a>Teşhis ve sağlık kontrolleri
 
 - [Durumu kontrol edin`az acr check-health`](#check-health-with-az-acr-check-health)
 - [docker pull hatası ile başarısız olur: net/http: bağlantı beklerken istek iptal edildi (Client.Timeout üstbilgi beklerken aşıldı)](#docker-pull-fails-with-error-nethttp-request-canceled-while-waiting-for-connection-clienttimeout-exceeded-while-awaiting-headers)
 - [docker itme başarılı olur ancak docker çekme hatası ile başarısız olur: yetkisiz: kimlik doğrulama gerekli](#docker-push-succeeds-but-docker-pull-fails-with-error-unauthorized-authentication-required)
 - [`az acr login`başarılı olur, ancak docker komutları hata ile başarısız olur: yetkisiz: kimlik doğrulama gerekli](#az-acr-login-succeeds-but-docker-fails-with-error-unauthorized-authentication-required)
-- [Docker daemon'un hata ayıklama günlüklerini etkinleştirin ve alın](#enable-and-get-the-debug-logs-of-the-docker-daemon) 
+- [Docker daemon'un hata ayıklama günlüklerini etkinleştirin ve alın](#enable-and-get-the-debug-logs-of-the-docker-daemon)    
 - [Yeni kullanıcı izinleri güncelleştirilmeden hemen sonra etkili olmayabilir](#new-user-permissions-may-not-be-effective-immediately-after-updating)
 - [Kimlik doğrulama bilgileri doğrudan REST API aramalarında doğru biçimde verilmez](#authentication-information-is-not-given-in-the-correct-format-on-direct-rest-api-calls)
 - [Azure portalı neden tüm depolarımı veya etiketlerimi listelemiyor?](#why-does-the-azure-portal-not-list-all-my-repositories-or-tags)
@@ -323,13 +329,13 @@ Ayrıntıları `--signature-verification` çalıştırarak `man dockerd`bulunabi
 
 Örneğin, `docker push myregistry.azurecr.io/myimage:latest`kayıt defteri kaynak adı büyük harf veya karışık durumda olsa bile, tüm küçük `myRegistry`bir sunucu URL'sini kullandığınızdan emin olun.
 
-### <a name="enable-and-get-the-debug-logs-of-the-docker-daemon"></a>Docker daemon'un hata ayıklama günlüklerini etkinleştirin ve alın  
+### <a name="enable-and-get-the-debug-logs-of-the-docker-daemon"></a>Docker daemon'un hata ayıklama günlüklerini etkinleştirin ve alın    
 
 `debug` Seçenekle başla. `dockerd` İlk olarak, Docker daemon`/etc/docker/daemon.json`yapılandırma dosyası ( ) yoksa oluşturun `debug` ve seçeneği ekleyin:
 
 ```json
-{   
-    "debug": true   
+{    
+    "debug": true    
 }
 ```
 
@@ -339,12 +345,12 @@ Sonra daemon'u yeniden başlat. Örneğin, Ubuntu 14.04 ile:
 sudo service docker restart
 ```
 
-Ayrıntılar [Docker belgelerinde](https://docs.docker.com/engine/admin/#enable-debugging)bulunabilir. 
+Ayrıntılar [Docker belgelerinde](https://docs.docker.com/engine/admin/#enable-debugging)bulunabilir.    
 
- * Günlükler sisteminize bağlı olarak farklı konumlarda oluşturulabilir. Örneğin, Ubuntu 14.04 için. `/var/log/upstart/docker.log`   
+ * Günlükler sisteminize bağlı olarak farklı konumlarda oluşturulabilir. Örneğin, Ubuntu 14.04 için. `/var/log/upstart/docker.log`    
 Ayrıntılar için [Docker belgelerine](https://docs.docker.com/engine/admin/#read-the-logs) bakın.    
 
- * Windows için Docker için günlükler %LOCALAPPDATA%/docker/ altında oluşturulur. Ancak henüz tüm hata ayıklama bilgilerini içermeyebilir.   
+ * Windows için Docker için günlükler %LOCALAPPDATA%/docker/ altında oluşturulur. Ancak henüz tüm hata ayıklama bilgilerini içermeyebilir.    
 
    Tam daemon günlüğüne erişmek için bazı ek adımlar gerekebilir:
 

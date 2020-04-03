@@ -4,12 +4,12 @@ description: Kubernetes'in temel küme ve iş yükü bileşenlerini ve Bunların
 services: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: bcf56aa89a42d65fdb7bf03696faad13c64cbc8a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 019c886aba1c8fe34211e73e4d960b14e79303b9
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79259649"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80617433"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Hizmeti (AKS) için Kubernetes temel kavramları
 
@@ -96,7 +96,7 @@ Düğüm performansını ve işlevselliğini korumak için, kaynaklar AKS taraf�
 
 1. Kubelet daemon konteyner oluşturma ve sonlandırma yönetmek için tüm Kubernetes aracı düğümleri yüklü. AKS varsayılan olarak, bu daemon aşağıdaki tahliye kuralı vardır: *memory.available<750Mi*, bir düğüm her zaman her zaman en az 750 Mi tahsis olmalıdır anlamına gelir.  Bir ana bilgisayar kullanılabilir bellek eşiğinin altında olduğunda, kubelet çalışan bölmelerden birini sonlandırarak ana makinedeki belleği serbest ve korur. Kullanılabilir bellek 750Mi eşiğinin ötesine geçince bu reaktif bir eylemdir.
 
-2. İkinci değer düzgün çalışması için kubelet daemon (kube-ayrılmış) için bellek rezervasyonları aşamalı bir oranıdır.
+2. İkinci değer, kubelet daemonunun düzgün çalışması için bellek rezervasyonlarının gerileme oranıdır (kube-ayrılmış).
     - İlk 4 GB bellek%25'i
     - Sonraki 4 GB belleğin %20'si (8 GB'a kadar)
     - Sonraki 8 GB belleğin %10'u (16 GB'a kadar)
@@ -118,7 +118,7 @@ Kubernetes kendisi için rezervasyonları ek olarak, altta yatan düğüm os iş
 Aynı yapılandırmanın düğümleri düğüm *havuzlarında*birlikte gruplandırılır. Bir Kubernetes kümesi bir veya daha fazla düğüm havuzu içerir. Varsayılan düğüm *havuzu*oluşturan bir AKS kümesi oluşturduğunuzda ilk düğüm sayısı ve boyutu tanımlanır. AKS'deki bu varsayılan düğüm havuzu, aracı düğümünüzü çalıştıran temel VM'leri içerir.
 
 > [!NOTE]
-> Kümenizin güvenilir çalışmasını sağlamak için varsayılan düğüm havuzunda en az 2 (iki) düğüm çalıştırmanız gerekir.
+> Kümenizin güvenilir çalıştığından emin olmak için varsayılan düğüm havuzunda en az 2 (iki) düğüm çalıştırmalısınız.
 
 Bir AKS kümesini ölçeklediğinizde veya yükselttiğiniz de, eylem varsayılan düğüm havuzuna karşı gerçekleştirilir. Ayrıca, belirli bir düğüm havuzuna ölçeklendirmeyi veya yükseltmeyi de seçebilirsiniz. Yükseltme işlemleri için, çalışan kapsayıcılar tüm düğümler başarıyla yükseltilene kadar düğüm havuzundaki diğer düğümlerde zamanlanır.
 

@@ -1,6 +1,6 @@
 ---
 title: T-SQL dil öğeleri
-description: SQL Analytics'te desteklenen T-SQL deyimleri için belgelere bağlantılar.
+description: Synapse SQL havuzunda desteklenen T-SQL deyimleri için belgelere bağlantılar.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,17 +11,19 @@ ms.date: 06/13/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 040a6d519896d71227777168ea9de9612f97ca6e
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: f27a0a351e4a446dc950ac13f850bd14b2b3c65a
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351429"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586409"
 ---
-# <a name="t-sql-language-elements-supported-in-sql-analytics"></a>SQL Analytics'te desteklenen T-SQL dil öğeleri
-SQL Analytics'te desteklenen T-SQL dil öğeleri için belgelere bağlantılar.
+# <a name="t-sql-language-elements-supported-in-synapse-sql-pool"></a>Synapse SQL havuzunda desteklenen T-SQL dil öğeleri
+
+Synapse SQL havuzunda desteklenen T-SQL dil öğeleri için belgelere bağlantılar.
 
 ## <a name="core-elements"></a>Temel elemanlar
+
 * [sözdizimi kuralları](/sql/t-sql/language-elements/transact-sql-syntax-conventions-transact-sql)
 * [nesne adlandırma kuralları](https://msdn.microsoft.com/library/ms175874.aspx)
 * [ayrılmış anahtar kelimeler](https://msdn.microsoft.com/library/ms189822.aspx)
@@ -37,6 +39,7 @@ SQL Analytics'te desteklenen T-SQL dil öğeleri için belgelere bağlantılar.
 * [Kullanın](https://msdn.microsoft.com/library/ms188366.aspx)
 
 ## <a name="batches-control-of-flow-and-variables"></a>Toplu iş, akış kontrolü ve değişkenler
+
 * [Başlamak... Son -unda](https://msdn.microsoft.com/library/ms190487.aspx)
 * [Mola](https://msdn.microsoft.com/library/ms181271.aspx)
 * [Bildirmek@local_variable](https://msdn.microsoft.com/library/ms188927.aspx)
@@ -48,6 +51,7 @@ SQL Analytics'te desteklenen T-SQL dil öğeleri için belgelere bağlantılar.
 * [Süre](https://msdn.microsoft.com/library/ms178642.aspx)
 
 ## <a name="operators"></a>İşleçler
+
 * [+ (Ekle)](https://msdn.microsoft.com/library/ms178565.aspx)
 * [+ (Dize Birleştirme)](https://msdn.microsoft.com/library/ms177561.aspx)
 * [- (Negatif)](https://msdn.microsoft.com/library/ms189480.aspx)
@@ -57,6 +61,7 @@ SQL Analytics'te desteklenen T-SQL dil öğeleri için belgelere bağlantılar.
 * [Mod](https://msdn.microsoft.com/library/ms190279.aspx)
 
 ## <a name="wildcard-characters-to-match"></a>Joker karakter(ler) eşleşmek için
+
 * [= (Eşittir)](https://msdn.microsoft.com/library/ms175118.aspx)
 * [> (Büyük)](https://msdn.microsoft.com/library/ms178590.aspx)
 * [< (Daha Az)](https://msdn.microsoft.com/library/ms179873.aspx)
@@ -74,6 +79,7 @@ SQL Analytics'te desteklenen T-SQL dil öğeleri için belgelere bağlantılar.
 * [Veya](https://msdn.microsoft.com/library/ms188361.aspx)
 
 ### <a name="bitwise-operators"></a>Bit düzeyinde işleçler
+
 * [& (Bitwise AND)](https://msdn.microsoft.com/library/ms174965.aspx)
 * [| (Bitwise VEYA)](https://msdn.microsoft.com/library/ms186714.aspx)
 * [^ (Bitwise özel OR)](https://msdn.microsoft.com/library/ms190277.aspx)
@@ -83,6 +89,7 @@ SQL Analytics'te desteklenen T-SQL dil öğeleri için belgelere bağlantılar.
 * [&= (Bitwise VE EQUALS)](https://msdn.microsoft.com/library/cc627427.aspx)
 
 ## <a name="functions"></a>İşlevler
+
 * [@@DATEFIRST](https://msdn.microsoft.com/library/ms187766.aspx)
 * [@@ERROR](https://msdn.microsoft.com/library/ms188790.aspx)
 * [@@LANGUAGE](https://msdn.microsoft.com/library/ms177557.aspx)
@@ -227,12 +234,15 @@ SQL Analytics'te desteklenen T-SQL dil öğeleri için belgelere bağlantılar.
 * [Xact_state](https://msdn.microsoft.com/library/ms189797.aspx)
 
 ## <a name="transactions"></a>İşlemler
+
 * [Hareket](https://msdn.microsoft.com/library/mt204031.aspx)
 
 ## <a name="diagnostic-sessions"></a>Tanı lama seansları
+
 * [TANıLAMA OTURUMU OLUŞTUR](https://msdn.microsoft.com/library/mt204029.aspx)
 
 ## <a name="procedures"></a>Yordamlar
+
 * [Sp_addrolemember](https://msdn.microsoft.com/library/ms187750.aspx)
 * [sp_columns](https://msdn.microsoft.com/library/ms176077.aspx)
 * [Sp_configure](https://msdn.microsoft.com/library/ms188787.aspx)
@@ -256,6 +266,7 @@ SQL Analytics'te desteklenen T-SQL dil öğeleri için belgelere bağlantılar.
 * [sp_unprepare](https://msdn.microsoft.com/library/ff848735.aspx)
 
 ## <a name="set-statements"></a>SET deyimleri
+
 * [SET ANSI_DEFAULTS](https://msdn.microsoft.com/library/ms188340.aspx)
 * [SET ANSI_NULL_DFLT_OFF](https://msdn.microsoft.com/library/ms187356.aspx)
 * [SET ANSI_NULL_DFLT_ON](https://msdn.microsoft.com/library/ms187375.aspx)
@@ -278,5 +289,6 @@ SQL Analytics'te desteklenen T-SQL dil öğeleri için belgelere bağlantılar.
 * [SET XACT_ABORT](https://msdn.microsoft.com/library/ms188792.aspx)
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Daha fazla referans bilgisi için SQL [Analytics'teki T-SQL deyimlerine](sql-data-warehouse-reference-tsql-statements.md)ve [SQL Analytics'teki Sistem görünümlerine](sql-data-warehouse-reference-tsql-system-views.md)bakın.
+
+Daha fazla başvuru bilgisi için [Synapse SQL havuzundaki T-SQL deyimlerine](sql-data-warehouse-reference-tsql-statements.md)ve [Synapse SQL havuzundaki Sistem görünümlerine](sql-data-warehouse-reference-tsql-system-views.md)bakın.
 

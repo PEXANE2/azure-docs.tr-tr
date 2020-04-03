@@ -3,12 +3,12 @@ title: Azure Kapsayıcı Kayıt Defteri'nde depo kullanma izinleri
 description: Görüntüleri çekmek veya itmek veya başka eylemler gerçekleştirmek için kayıt defterindeki belirli depolara yönelik izinleri içeren bir belirteç oluşturma
 ms.topic: article
 ms.date: 02/13/2020
-ms.openlocfilehash: 7d390bf4d97561e374c70f184534ac4f98a40611
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9004c45401833d3070266055dd7eb99a2bb43bde
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77444340"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618839"
 ---
 # <a name="create-a-token-with-repository-scoped-permissions"></a>Depo kapsamı yla ilgili izinleri içeren bir belirteç oluşturma
 
@@ -27,6 +27,7 @@ Belirteç oluşturmak için senaryolar şunlardır:
 
 * Bu özellik yalnızca **Premium** konteyner kayıt defterinde kullanılabilir. Kayıt defteri hizmeti katmanları ve sınırları hakkında daha fazla bilgi için [Azure Konteyner Kayıt Defteri SK'leri'ne](container-registry-skus.md)bakın.
 * Şu anda bir hizmet yöneticisi veya yönetilen kimlik gibi bir Azure Etkin Dizin kimliğine depo kapsamı yla ilgili izinler atayamazsınız.
+* [Anonim çekme erişimi](container-registry-faq.md#how-do-i-enable-anonymous-pull-access)için etkin leştirilmiş bir kayıt defterinde kapsam eşlemi oluşturamazsınız.
 
 ## <a name="concepts"></a>Kavramlar
 

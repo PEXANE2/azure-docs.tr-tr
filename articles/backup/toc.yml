@@ -15,12 +15,12 @@
       href: quick-backup-vm-powershell.md
     - name: VM'yi Yedekleme - CLI
       href: quick-backup-vm-cli.md
-    - name: VM’yi Yedekleme - Resource Manager şablonu
-      displayName: ARM
+    - name: VM’yi Yedekleme - ARM şablonu
+      displayName: Resource Manager
       href: quick-backup-vm-template.md
 - name: Öğreticiler
   items:
-    - name: Azure VM'lerini ölçeğe göre yedekleme
+    - name: Birden fazla Azure sanal makinesini yedekleme
       href: tutorial-backup-vm-at-scale.md
     - name: Azure VM’lerini PowerShell ile yedekleme
       href: tutorial-backup-azure-vm.md
@@ -58,6 +58,8 @@
           href: backup-support-matrix-mabs-dpm.md
         - name: MARS aracısı destek matrisi
           href: backup-support-matrix-mars-agent.md
+        - name: SQL Server Yedekleme destek matrisi
+          href: sql-support-matrix.md
         - name: SAP HANA Backup destek matrisi
           href: sap-hana-backup-support-matrix.md
         - name: Azure İlkesi için desteklenen VM SKU’ları
@@ -164,10 +166,10 @@
           href: backup-azure-manage-mars.md
     - name: Azure Dosya paylaşımı yedekleme
       items:
+        - name: Genel Bakış
+          href: azure-file-share-backup-overview.md
         - name: Azure portalından
           items:
-            - name: Genel Bakış
-              href: azure-file-share-backup-overview.md
             - name: Backup
               href: backup-afs.md
             - name: Geri Yükleme
@@ -336,6 +338,8 @@
           href: backup-rm-template-samples.md
     - name: Güvenlik
       items:
+        - name: Genel Bakış
+          href: security-overview.md
         - name: Rol Tabanlı Access Control
           href: backup-rbac-rs-vault.md
         - name: Bulut iş yükleri için güvenlik
@@ -382,6 +386,8 @@
       href: /azure/templates/microsoft.recoveryservices/allversions
 - name: Kaynaklar
   items:
+    - name: Uyumluluk
+      href: compliance-offerings.md
     - name: Azure Yol Haritası
       href: 'https://azure.microsoft.com/roadmap/'
     - name: MSDN forumu

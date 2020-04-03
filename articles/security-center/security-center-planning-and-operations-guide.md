@@ -1,5 +1,5 @@
 ---
-title: Güvenlik Merkezi Planlama ve İşlemler Kılavuzu | Microsoft Belgeleri
+title: Güvenlik Merkezi Planlama ve Operasyon Rehberi
 description: Bu belge, Azure Güvenlik Merkezi'ni benimsemeden önce planlama ve günlük işlemlere ilişkin dikkat edilmesi gerekenler konusunda yardımcı olur.
 services: security-center
 author: memildin
@@ -8,14 +8,14 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 46994413ba765e18a826eebfe85a38bb65efc749
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 8244a0f164c8578bf9f79e4b66beb529b6a15f67
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80435610"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586008"
 ---
-# <a name="azure-security-center-planning-and-operations-guide"></a>Azure Güvenlik Merkezi planlama ve işlemler kılavuzu
+# <a name="planning-and-operations-guide"></a>Planlama ve operasyon rehberi
 Bu kılavuz, bilgi teknolojisi (BT) uzmanları, BT mimarları, bilgi güvenliği analistleri ve Azure Güvenlik Merkezi'ni kullanmayı planlayan bulut yöneticileri içindir.
 
 
@@ -135,7 +135,7 @@ Azure Güvenlik Merkezi, sanal makinelerinizden güvenlik verileri toplamak içi
 
 ### <a name="agent"></a>Aracı
 
-Güvenlik ilkesinde otomatik sağlama etkinleştirildiğinde, Log Analytics aracısı [(Windows](https://docs.microsoft.com/azure/log-analytics/log-analytics-windows-agents) veya [Linux](https://docs.microsoft.com/azure/log-analytics/log-analytics-linux-agents)için) desteklenen tüm Azure VM'lerine ve oluşturulan yeni bilgisayarlara yüklenir. VM veya bilgisayarda Log Analytics aracısı zaten yüklüyse, Azure Güvenlik Merkezi geçerli yüklü aracıdan yararlanır. Aracının işlemi müdahaleci olmayacak şekilde tasarlanmıştır ve VM performansı üzerinde çok az etki yapar.
+Güvenlik ilkesinde otomatik sağlama etkinleştirildiğinde, Log Analytics aracısı [(Windows](https://docs.microsoft.com/azure/log-analytics/log-analytics-windows-agents) veya [Linux](https://docs.microsoft.com/azure/log-analytics/log-analytics-linux-agents)için) desteklenen tüm Azure VM'lerine ve oluşturulan yeni bilgisayarlara yüklenir. VM veya bilgisayarda Log Analytics aracısı zaten yüklüyse, Azure Güvenlik Merkezi geçerli yüklü aracıdan yararlanır. Acentenin süreci non-invaziv ve VM performansı üzerinde çok az etkiye sahip olacak şekilde tasarlanmıştır.
 
 Windows için Log Analytics aracısı, TCP port 443'ün kullanılmasını gerektirir. Daha fazla bilgi için [Sorun giderme makalesine](security-center-troubleshooting-guide.md) bakın.
 
@@ -181,7 +181,7 @@ Tüm önerilere değindikten sonra değinilen tüm kaynaklar için **Önleme** b
 
 **Algılama** bölümü daha reaktiftir; bunlar, ya şu anda var olan veya geçmişte oluşan ya da Güvenlik Merkezi denetimleri ile 3. taraf sistemleri tarafından algılanan sorunlarla ilgili uyarılardır. Güvenlik Uyarıları döşemesi, her gün bulunan uyarı sayısını ve bunların farklı önem kategorileri (düşük, orta, yüksek) arasındaki dağılımlarını temsil eden çubuk grafikleri gösterir. Güvenlik Uyarıları hakkında daha fazla bilgi için bkz. [Azure Güvenlik Merkezi'nde güvenlik uyarılarını yönetme ve uyarılara yanıt verme](security-center-managing-and-responding-alerts.md)
 
-[Tehdit zekası](https://docs.microsoft.com/azure/security-center/security-center-threat-intel) seçeneğini ziyaret etmeyi günlük işlemlerinizin bir parçası haline getirin. Burada belirli bir bilgisayarın bir botnetin parçası olup olmadığını belirleme gibi ortamdaki güvenlik tehditlerini belirleyebilirsiniz.
+Tehdit zekası seçeneğini ziyaret etmeyi günlük işlemlerinizin bir parçası haline getirin. Burada belirli bir bilgisayarın bir botnetin parçası olup olmadığını belirleme gibi ortamdaki güvenlik tehditlerini belirleyebilirsiniz.
 
 ### <a name="monitoring-for-new-or-changed-resources"></a>Yeni veya değiştirilmiş kaynakları izleme
 Azure ortamlarının çoğu dinamiktir ve kaynaklar düzenli olarak oluşturulur, yukarı veya aşağı döndürülmez, yeniden yapılandırılır ve değiştirilir. Güvenlik Merkezi, bu yeni kaynakların güvenlik durumuyla ilgili görünürlüğe sahip olduğunuzdan emin olmanıza yardımcı olur.
@@ -213,7 +213,7 @@ Azure'da bulunan VM'lerinizde hangi uygulamaların çalıştırılabilen uygulam
 ## <a name="incident-response"></a>Olay yanıtı
 Güvenlik Merkezi, tehditler oluşunca algılar ve sizi tehditlere karşı uyarır. Kuruluşlar, yeni güvenlik uyarılarını izlemeli ve gerekirse daha fazla araştırmak veya saldırıyı düzeltmek için eyleme geçmelidir. Güvenlik Merkezi tehdit korumasının nasıl çalıştığı hakkında daha fazla bilgi için [Azure Güvenlik Merkezi'nin tehditleri nasıl algılayıp yanıtlayıştOkuduğunu](security-center-alerts-overview.md#detect-threats)okuyun.
 
-Bu makale kendi Olay Yanıtı planınızı oluşturmanıza yardımcı olmaya yönelik değildir, ancak olay yanıtı aşamalarının temeli olarak Bulut yaşam döngüsünde Microsoft Azure Güvenlik Yanıtı kullanılacaktır. Aşamalar aşağıdaki diyagramda gösterilmiştir:
+Bu makalede kendi Olay Yanıtı planınızı oluşturmanıza yardımcı olacak niyeti olmasa da, bulut yaşam döngüsünde Microsoft Azure Güvenlik Yanıtı'nı olay yanıt aşamalarının temeli olarak kullanacağız. Aşamalar aşağıdaki diyagramda gösterilmiştir:
 
 ![Şüpheli etkinlik](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig5-1.png)
 
@@ -235,7 +235,7 @@ Aşağıdaki örnek, gerçekleşmekte olan şüpheli bir RDP etkinliğini göste
 
 Bu sayfa, saldırının gerçekleştiği zaman, kaynak ana bilgisayar adı, hedef VM ile ilgili ayrıntıları gösterir ve ayrıca öneri adımları sunar. Bazı durumlarda, saldırının kaynak bilgileri boş olabilir. Bu türden bir davranış hakkında daha fazla bilgi için bkz. [Azure Güvenlik Merkezi Uyarıları'nda Eksik Kaynak Bilgileri](https://blogs.msdn.microsoft.com/azuresecurity/2016/03/25/missing-source-information-in-azure-security-center-alerts/).
 
-Bu sayfadan bir [araştırma](https://docs.microsoft.com/azure/security-center/security-center-investigation) başlatarak saldırının zaman çizelgesi, gerçekleşme şekli, gizliliği bozulmuş olabilecek sistemler ve kullanılan kimlik bilgileri hakkında bilgi edinebilir, saldırı zincirinin tamamını grafiklerle görebilirsiniz.
+Bu sayfadan bir araştırma başlatarak saldırının zaman çizelgesi, gerçekleşme şekli, gizliliği bozulmuş olabilecek sistemler ve kullanılan kimlik bilgileri hakkında bilgi edinebilir, saldırı zincirinin tamamını grafiklerle görebilirsiniz.
 
 Tehlikeye atılmış sistemi tanımladıktan sonra, daha önce oluşturulmuş bir [İş Akışı Otomasyonu](workflow-automation.md) çalıştırabilirsiniz. Bunlar, bir uyarı tarafından tetiklendikten sonra Güvenlik Merkezi'nden yürütülebilen yordamlar topluluğu.
 

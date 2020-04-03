@@ -1,6 +1,6 @@
 ---
 title: Entegre çözümler oluşturun
-description: SQL Analytics kullanılarak sağlanan bir veri ambarıyla tümleşen çözüm araçları ve iş ortakları.
+description: Synapse SQL havuzuyla tümleşen çözüm araçları ve iş ortakları.
 services: synapse-analytics
 author: mlee3gsd
 manager: craigg
@@ -11,15 +11,16 @@ ms.date: 04/17/2018
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 680e561c08c5113e3d7f26b00422f3696bb133e9
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: c8e3598e55d3f90ab2b7401380406677f56c0ce3
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350232"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586493"
 ---
-# <a name="integrate-other-services-with-a-sql-analytics-data-warehouse"></a>Diğer hizmetleri SQL Analytics veri ambarıyla tümleştirme 
-Azure Synapse Analytics'teki SQL Analytics özelliği, kullanıcıların Azure'daki diğer hizmetlerin çoğuyla tümleştirmelerine olanak tanır. SQL Analytics'i kullanarak, SQL Pool kaynağı üzerinden bir veri ambarı oluşturabilirsiniz ve bunlardan bazıları şunlardır:
+# <a name="integrate-other-services-with-a-synapse-sql-pool"></a>Diğer hizmetleri Synapse SQL havuzuyla tümleştirme
+
+Azure Synapse Analytics'teki Synapse SQL havuzu özelliği, kullanıcıların Azure'daki diğer hizmetlerin çoğuyla tümleştirmelerine olanak tanır. Synapse SQL'i kullanarak, SQL havuz kaynağı üzerinden bir veri ambarı oluşturabilirsiniz ve bunlardan bazıları şunlardır:
 
 * Power BI
 * Azure Data Factory

@@ -2,26 +2,26 @@
 title: "Quickstart: REST API'lerini kullanarak Python'da arama dizini oluşturma"
 titleSuffix: Azure Cognitive Search
 description: Python, Jupyter Notebook'lar ve Azure Bilişsel Arama REST API'sini kullanarak dizin oluşturmayı, verileri yüklemeyi ve sorguları çalıştırmayı açıklar.
-author: tchristiani
+author: HeidiSteen
 manager: nitinme
-ms.author: terrychr
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.devlang: rest-api
-ms.date: 02/10/2020
-ms.openlocfilehash: 93fb9ec735de1abf89eb217d0f4096fcfc0afe94
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.date: 04/01/2020
+ms.openlocfilehash: fd87dbe125e84c171cc35a2b242879c44bc50fd9
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78227107"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585924"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-python-using-jupyter-notebooks"></a>Quickstart: Jupyter dizüstü bilgisayarları kullanarak Python'da Azure Bilişsel Arama dizini oluşturma
 
 > [!div class="op_single_selector"]
 > * [Python (REST)](search-get-started-python.md)
 > * [PowerShell (REST)](search-create-index-rest-api.md)
-> * [C #](search-create-index-dotnet.md)
+> * [C#](search-create-index-dotnet.md)
 > * [Postacı (REST)](search-get-started-postman.md)
 > * [Portal](search-create-index-portal.md)
 > 
@@ -197,7 +197,7 @@ Belgeleri zorlamak için, dizininizin URL bitiş noktasına bir HTTP POST isteğ
         "@search.action": "upload",
         "HotelId": "3",
         "HotelName": "Triple Landscape Hotel",
-        "Description": "The Hotel stands out for its gastronomic excellence under the management of William Dough, who advises on and oversees all of the Hotel’s restaurant services.",
+        "Description": "The Hotel stands out for its gastronomic excellence under the management of William Dough, who advises on and oversees all of the Hotel's restaurant services.",
         "Description_fr": "L'hôtel est situé dans une place du XIXe siècle, qui a été agrandie et rénovée aux plus hautes normes architecturales pour créer un hôtel moderne, fonctionnel et de première classe dans lequel l'art et les éléments historiques uniques coexistent avec le confort le plus moderne.",
         "Category": "Resort and Spa",
         "Tags": [ "air conditioning", "bar", "continental breakfast" ],
@@ -256,45 +256,59 @@ Bu adım, Arama Belgeleri REST [API'yi](https://docs.microsoft.com/rest/api/sear
 
    ```python
    searchstring = '&search=*&$count=true'
-   ```
 
-1. Yeni bir hücrede, "oteller" ve "wifi" terimlerini aramak için aşağıdaki örneği sağlayın. Arama sonuçlarına hangi alanların dahil edileleyeceğini belirtmek için $select ekleyin.
-
-   ```python
-   searchstring = '&search=hotels wifi&$count=true&$select=HotelId,HotelName'
-   ```
-
-1. Başka bir hücrede, bir istek formüle. Bu GET isteği, otellerin hızlı başlatma dizininin doküman koleksiyonunu hedefler ve önceki adımda belirttiğiniz sorguyu bağlar.
-
-   ```python
    url = endpoint + "indexes/hotels-quickstart/docs" + api_version + searchstring
    response  = requests.get(url, headers=headers, json=searchstring)
    query = response.json()
    pprint(query)
    ```
 
-1. Her adımı çalıştırın. Sonuçlar aşağıdaki çıktıya benzer olmalıdır. 
+1. Yeni bir hücrede, "oteller" ve "wifi" terimlerini aramak için aşağıdaki örneği sağlayın. Arama sonuçlarına hangi alanların dahil edileleyeceğini belirtmek için $select ekleyin.
+
+   ```python
+   searchstring = '&search=hotels wifi&$count=true&$select=HotelId,HotelName'
+
+   url = endpoint + "indexes/hotels-quickstart/docs" + api_version + searchstring
+   response  = requests.get(url, headers=headers, json=searchstring)
+   query = response.json()
+   pprint(query)   
+   ```
+
+   Sonuçlar aşağıdaki çıktıya benzer olmalıdır. 
 
     ![Dizin arama](media/search-get-started-python/search-index.png "Dizin arama")
 
-1. Sözdizimini görmek için birkaç sorgu örneğini deneyin. Aşağıdaki `searchstring` örneklerle değiştirebilir ve ardından arama isteğini yeniden çalıştırabilirsiniz. 
-
-   Filtre uygulayın: 
+1. Ardından, yalnızca 4'ten büyük bir derecelendirmeye sahip otelleri seçen bir $filter ifadesi uygulayın. 
 
    ```python
    searchstring = '&search=*&$filter=Rating gt 4&$select=HotelId,HotelName,Description,Rating'
+
+   url = endpoint + "indexes/hotels-quickstart/docs" + api_version + searchstring
+   response  = requests.get(url, headers=headers, json=searchstring)
+   query = response.json()
+   pprint(query)     
    ```
 
-   İlk iki sonucu alın:
+1. Varsayılan olarak, arama motoru en iyi 50 belgeyi döndürür, ancak en üstte kullanabilir ve pagination eklemek için atlayabilir ve her sonuçta kaç belge olduğunu seçebilirsiniz. Bu sorgu, her sonuç kümesinde iki belge döndürür.
 
    ```python
-   searchstring = '&search=boutique&$top=2&$select=HotelId,HotelName,Description,Category'
+   searchstring = '&search=boutique&$top=2&$select=HotelId,HotelName,Description'
+
+   url = endpoint + "indexes/hotels-quickstart/docs" + api_version + searchstring
+   response  = requests.get(url, headers=headers, json=searchstring)
+   query = response.json()
+   pprint(query)
    ```
 
-    Belirli bir alana göre sipariş:
+1. Bu son örnekte, sonuçları şehre göre sıralamak için $orderby kullanın. Bu örnek, Adres koleksiyonundaki alanları içerir.
 
    ```python
-   searchstring = '&search=pool&$orderby=Address/City&$select=HotelId, HotelName, Address/City, Address/StateProvince, Tags'
+   searchstring = '&search=pool&$orderby=Address/City&$select=HotelId, HotelName, Address/City, Address/StateProvince'
+
+   url = endpoint + "indexes/hotels-quickstart/docs" + api_version + searchstring
+   response  = requests.get(url, headers=headers, json=searchstring)
+   query = response.json()
+   pprint(query)
    ```
 
 ## <a name="clean-up"></a>Temizleme

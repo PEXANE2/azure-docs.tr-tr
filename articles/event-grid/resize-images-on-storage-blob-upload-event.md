@@ -9,15 +9,15 @@ ms.service: event-grid
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/06/2020
+ms.date: 04/01/2020
 ms.author: spelluru
 ms.custom: mvc
-ms.openlocfilehash: d01d749300c6ad07e498c75c9487b554810e68cd
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 868c7e3956f20837b3774c0958842a7835579a04
+ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79454083"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80607510"
 ---
 # <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>Öğretici: Olay Izgara'yı kullanarak yüklenen görüntüleri yeniden boyutlandırmayı otomatikleştirin
 
@@ -213,7 +213,7 @@ Olay aboneliği, belirli bir uç noktaya gönderilmesini istediğiniz, sağlayı
     | **Kaynak** | Blob depolama hesabınız | Oluşturduğunuz Blob depolama hesabını seçin. |
     | **Olay türleri** | Oluşturulan blob | **Oluşturulan blob** dışındaki tüm türlerin işaretini kaldırın. Yalnızca `Microsoft.Storage.BlobCreated` türündeki olaylar işleve geçirilir. |
     | **Uç nokta türü** | otomatik oluşturulmuş | **Azure İşlevi**olarak önceden tanımlanmıştır. |
-    | **Uç Nokta** | otomatik oluşturulmuş | Sizin için oluşturulan uç nokta URL'sini kullanın. |
+    | **Uç Nokta** | otomatik oluşturulmuş | Fonksiyonun adı. Bu durumda, bu **Küçük Çivi.** |
 
 4. **Filtreler** sekmesine geçin ve aşağıdaki işlemleri yapın:
     1. **Konu filtreleme** seçeneğini etkinleştir'i seçin.

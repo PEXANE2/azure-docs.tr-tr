@@ -1,6 +1,6 @@
 ---
-title: Azure SQL Data Warehouse’a bağlanma
-description: Azure SQL Veri Ambarı'na bağlanın.
+title: Synapse SQL havuzuna bağlanın
+description: SQL havuzuna bağlanın.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,28 +11,30 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 72825f588ff92383858020cdbcd92c7de3078ed5
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 70dd1ae883ee1f44672dccb802c0e770d7676440
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350652"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619077"
 ---
-# <a name="connect-to-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse’a bağlanma
-Azure SQL Veri Ambarı'na bağlanın.
+# <a name="connect-to-synapse-sql-pool"></a>Synapse SQL havuzuna bağlanın
+SQL havuzuna bağlanın.
 
 ## <a name="find-your-server-name"></a>Sunucu adınızı bulma
-Aşağıdaki örnekteki sunucu adı samplesvr.database.windows.net. Tam sunucu adını bulmak için:
+Aşağıdaki örnekteki sunucu adı sqlpoolservername.database.windows.net. Tam sunucu adını bulmak için:
 
-1. [Azure portalına][Azure portal]gidin.
-2. **SQL veri ambarları**’na tıklayın.
-3. Bağlanmak istediğiniz veri ambarına tıklayın.
+1. [Azure portalına](https://portal.azure.com)gidin.
+2. Azure **Synapse Analytics'e**tıklayın.
+3. Bağlanmak istediğiniz SQL havuzuna tıklayın.
 4. Tam sunucu adını bulun.
    
     ![Tam sunucu adı](media/sql-data-warehouse-connect-overview/server-connect.PNG)
 
 ## <a name="supported-drivers-and-connection-strings"></a>Desteklenen sürücüler ve bağlantı dizeleri
-Azure SQL Veri Ambarı [ADO.NET][ADO.NET], [ODBC][ODBC], [PHP][PHP] ve [JDBC][JDBC]’yi destekler. En son sürümü ve belgeleri bulmak için, önceki sürücülerden birini tıklatın. Azure portalından kullandığınız sürücü için bağlantı dizesini otomatik olarak oluşturmak için, önceki örnekteki **veritabanı bağlantı dizelerini göster'i** tıklatın. Aşağıda ayrıca her sürücü için bir bağlantı dizesinin nasıl göründüğü ile ilgili bazı örnekler verilmiştir.
+SQL havuzu [ADO.NET,](https://msdn.microsoft.com/library/e80y5yhx(v=vs.110).aspx) [ODBC,](https://msdn.microsoft.com/library/jj730314.aspx) [PHP](https://msdn.microsoft.com/library/cc296172.aspx?f=255&MSPPError=-2147217396)ve [JDBC'yi](https://msdn.microsoft.com/library/mt484311(v=sql.110).aspx)destekler. En son sürümü ve belgeleri bulmak için, önceki sürücülerden birini tıklatın. 
+
+Azure portalından kullandığınız sürücü için bağlantı dizesini otomatik olarak oluşturmak için, önceki örnekteki **veritabanı bağlantı dizelerini göster'i** tıklatın. Aşağıda ayrıca her sürücü için bir bağlantı dizesinin nasıl göründüğü ile ilgili bazı örnekler verilmiştir.
 
 > [!NOTE]
 > Bağlantınızın kısa süreli kesintiler sırasında devam etmesi için bağlantı zaman aşımını 300 saniyeye ayarlayın.
@@ -60,36 +62,15 @@ jdbc:sqlserver://yourserver.database.windows.net:1433;database=yourdatabase;user
 ```
 
 ## <a name="connection-settings"></a>Bağlantı ayarları
-SQL Veri Ambarı, bağlantı ve nesne oluşturma sırasında bazı ayarları standart hale getirir. Bu ayarlar geçersiz kılınamaz ve şunları içerir:
+SQL havuzu, bağlantı ve nesne oluşturma sırasında bazı ayarları standartlaştırır. Bu ayarlar geçersiz kılınamaz ve şunları içerir:
 
 | Veritabanı Ayarı | Değer |
 |:--- |:--- |
-| [ANSI_NULLS][ANSI_NULLS] |AÇIK |
-| [QUOTED_IDENTIFIERS][QUOTED_IDENTIFIERS] |AÇIK |
-| [DATEFORMAT][DATEFORMAT] |mdy |
-| [DATEFIRST][DATEFIRST] |7 |
+| [ANSI_NULLS](https://msdn.microsoft.com/library/ms188048.aspx) |AÇIK |
+| [QUOTED_IDENTIFIERS](https://msdn.microsoft.com/library/ms174393.aspx) |AÇIK |
+| [DATEFORMAT](https://msdn.microsoft.com/library/ms189491.aspx) |mdy |
+| [DATEFIRST](https://msdn.microsoft.com/library/ms181598.aspx) |7 |
 
 ## <a name="next-steps"></a>Sonraki adımlar
-Visual Studio ile bağlantı kurmak ve sorgulamak için bkz. [Visual Studio ile Sorgulama][Query with Visual Studio]. Kimlik doğrulama seçenekleri hakkında daha fazla bilgi için bkz. [Azure SQL Veri Ambarı’nda kimlik doğrulama][Authentication to Azure SQL Data Warehouse].
-
-<!--Articles-->
-[Query with Visual Studio]:sql-data-warehouse-query-visual-studio.md
-[Authentication to Azure SQL Data Warehouse]:sql-data-warehouse-authentication.md
-
-<!--MSDN references-->
-[ADO.NET]: https://msdn.microsoft.com/library/e80y5yhx(v=vs.110).aspx
-[ODBC]: https://msdn.microsoft.com/library/jj730314.aspx
-[PHP]: https://msdn.microsoft.com/library/cc296172.aspx?f=255&MSPPError=-2147217396
-[JDBC]: https://msdn.microsoft.com/library/mt484311(v=sql.110).aspx
-[ANSI_NULLS]: https://msdn.microsoft.com/library/ms188048.aspx
-[QUOTED_IDENTIFIERS]: https://msdn.microsoft.com/library/ms174393.aspx
-[DATEFORMAT]: https://msdn.microsoft.com/library/ms189491.aspx
-[DATEFIRST]: https://msdn.microsoft.com/library/ms181598.aspx
-
-<!--Other-->
-[Azure portal]: https://portal.azure.com
-
-<!--Image references-->
-[1]: media/sql-data-warehouse-connect-overview/server-connect.PNG
-
+Visual Studio ile bağlantı kurmak ve sorgulamak için bkz. [Visual Studio ile Sorgulama](sql-data-warehouse-query-visual-studio.md). Kimlik doğrulama seçenekleri hakkında daha fazla bilgi edinmek için Azure [Synapse Analytics'e kimlik doğrulama](sql-data-warehouse-authentication.md)bölümüne bakın.
 

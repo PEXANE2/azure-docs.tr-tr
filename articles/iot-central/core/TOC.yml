@@ -81,14 +81,10 @@
           href: howto-create-personal-dashboards.md
         - name: İş çalıştırma
           href: howto-run-a-job.md
-        - name: Cihaz şablonu için sürüm oluşturma
-          href: howto-version-device-template.md
     - name: Dönüşüm
       items:
         - name: Azure’daki hedeflere veri aktarma
           href: howto-export-data.md
-        - name: IoT Central API’lerini keşfetme
-          href: 'https://docs.microsoft.com/learn/modules/manage-iot-central-apps-with-rest-api/'
         - name: Kurallar üzerinde web kancaları oluşturma
           href: howto-create-webhooks.md
         - name: Kurallar üzerinde Azure İzleyici eylem gruplarını bağlama
@@ -143,7 +139,7 @@
           href: ../healthcare/overview-iot-central-healthcare.md
     - name: Azure IoT hizmetleri
       items:
-        - name: IoT Hub’ı
+        - name: IoT Hub
           href: /azure/iot-hub
         - name: IoT Hub Cihazı Sağlama Hizmeti
           href: /azure/iot-dps
@@ -157,7 +153,7 @@
           href: /azure/iot-pnp
         - name: Azure Haritalar
           href: /azure/azure-maps
-        - name: Zaman Serisi Öngörüleri
+        - name: Time Series Insights
           href: /azure/time-series-insights
     - name: Azure IoT SDK’ları
       items:

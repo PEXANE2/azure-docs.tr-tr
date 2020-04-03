@@ -1,6 +1,6 @@
 ---
-title: Contoso perakende verilerini BIR SQL Analytics veri ambarına yükleyin
-description: Contoso perakende verilerinden Azure SQL Analytics'e iki tablo yüklemek için PolyBase ve T-SQL komutlarını kullanın.
+title: Contoso perakende verilerini Synapse SQL veri ambarına yükleyin
+description: Contoso perakende verilerinden Synapse SQL'e iki tablo yüklemek için PolyBase ve T-SQL komutlarını kullanın.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 62105b783577d70ae975cf514304d2c564357641
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 7460a59dd2a7a5906a483195929136391657fa50
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351473"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80584000"
 ---
-# <a name="load-contoso-retail-data-to-a-sql-analytics-data-warehouse"></a>Contoso perakende verilerini BIR SQL Analytics veri ambarına yükleyin
+# <a name="load-contoso-retail-data-to-a-synapse-sql-data-warehouse"></a>Contoso perakende verilerini Synapse SQL veri ambarına yükleyin
 
-Bu eğitimde, Contoso perakende verilerinden iki tabloyu SQL Analytics veri ambarına yüklemek için PolyBase ve T-SQL komutlarını kullanmayı öğrenirsiniz. 
+Bu eğitimde, Contoso perakende verilerinden iki tabloyu Synapse SQL veri ambarına yüklemek için PolyBase ve T-SQL komutlarını kullanmayı öğrenirsiniz.
 
 Bu eğitimde olacak:
 
@@ -30,11 +30,11 @@ Bu eğitimde olacak:
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Bu öğreticiyi çalıştırmak için, zaten bir SQL Analytics veri ambarı olan bir Azure hesabına ihtiyacınız vardır. Veri ambarı sağlanmış değilseniz, [bkz.](create-data-warehouse-portal.md)
+Bu öğreticiyi çalıştırmak için, synapse SQL veri ambarı olan bir Azure hesabına ihtiyacınız vardır. Veri ambarı sağlanmış değilseniz, [bkz.](create-data-warehouse-portal.md)
 
 ## <a name="configure-the-data-source"></a>Veri kaynağını yapılandırma
 
-PolyBase, dış verilerin konumunu ve özniteliklerini tanımlamak için T-SQL dış nesneleri kullanır. Dış nesne tanımları SQL Analytics veri ambarınızda depolanır. Veriler harici olarak depolanır.
+PolyBase, dış verilerin konumunu ve özniteliklerini tanımlamak için T-SQL dış nesneleri kullanır. Dış nesne tanımları Synapse SQL veri ambarınızda depolanır. Veriler harici olarak depolanır.
 
 ## <a name="create-a-credential"></a>Kimlik bilgisi oluşturma
 
@@ -121,7 +121,7 @@ GO
 
 ## <a name="create-the-external-tables"></a>Dış tabloları oluşturma
 
-DimProduct ve FactOnlineSales dış tabloları oluşturmak için aşağıdaki komut dosyasını çalıştırın. Burada yaptığınız tek şey sütun adlarını ve veri türlerini tanımlamak ve bunları Azure blob depolama dosyalarının konumuna ve biçimine bağlamaktır. Tanım SQL Analytics veri ambarında depolanır ve veriler hala Azure Depolama Blob'undadır.
+DimProduct ve FactOnlineSales dış tabloları oluşturmak için aşağıdaki komut dosyasını çalıştırın. Burada yaptığınız tek şey sütun adlarını ve veri türlerini tanımlamak ve bunları Azure blob depolama dosyalarının konumuna ve biçimine bağlamaktır. Tanım veri ambarında depolanır ve veriler hala Azure Depolama Blob'dadır.
 
 **KONUM** parametresi, Azure Depolama Blob'undaki kök klasörün altındaki klasördür. Her tablo farklı bir klasördedir.
 
@@ -274,7 +274,7 @@ ORDER BY
 
 ## <a name="optimize-columnstore-compression"></a>Sütun deposu sıkıştırmayı optimize edin
 
-Varsayılan olarak, SQL Analytics veri ambarı tabloyu kümelenmiş sütun deposu dizini olarak depolar. Yükleme tamamlandıktan sonra, bazı veri satırları sütun deposuna sıkıştırılmamış olabilir.  Bunun olmasının farklı nedenleri vardır. Daha fazla bilgi edinmek için [sütun mağazası dizinlerini yönet'e](sql-data-warehouse-tables-index.md)bakın.
+Varsayılan olarak, Synapse SQL veri ambarı tabloyu kümelenmiş sütun deposu dizini olarak depolar. Yükleme tamamlandıktan sonra, bazı veri satırları sütun deposuna sıkıştırılmamış olabilir.  Bunun olmasının farklı nedenleri vardır. Daha fazla bilgi edinmek için [sütun mağazası dizinlerini yönet'e](sql-data-warehouse-tables-index.md)bakın.
 
 Bir yükten sonra sorgu performansını ve sütun mağazası sıkıştırmasını en iyi duruma getirmek için, sütun deposu dizini tüm satırları sıkıştırmaya zorlamak için tabloyu yeniden oluşturun. 
 

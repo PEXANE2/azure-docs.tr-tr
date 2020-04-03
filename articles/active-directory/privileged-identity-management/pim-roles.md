@@ -10,20 +10,20 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 10/23/2019
+ms.date: 03/31/2020
 ms.author: curtand
 ms.custom: pim ; H1Hack27Feb2017;oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fac7074cf85a585c93ece60be9eea8ffb9a6345
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b6eaa50f57dd8037ef0ad96b69284f565bd3558f
+ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72895198"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80607534"
 ---
 # <a name="roles-you-cant-manage-in-privileged-identity-management"></a>Ayrıcalıklı Kimlik Yönetiminde Yönetilemediğiniz Roller
 
-Azure Etkin Dizin (Azure AD) Ayrıcalıklı Kimlik Yönetimi (PIM), tüm [Azure AD rollerini](../users-groups-roles/directory-assign-admin-roles.md) ve tüm Azure kaynak [rollerini](../../role-based-access-control/built-in-roles.md)yönetmenize olanak tanır. Bu roller, yönetim gruplarınıza, aboneliklerinize, kaynak gruplarınıza ve kaynaklarınıza bağlı özel rollerinizi de içerir. Ancak, yönetemeyeceğiniz birkaç rol vardır. Bu makalede, Ayrıcalıklı Kimlik Yönetimi'nde yönetemeyeceğiniz roller açıklanmaktadır.
+Azure Etkin Dizin (Azure AD) Ayrıcalıklı Kimlik Yönetimi (PIM), tüm [Azure AD rollerini](../users-groups-roles/directory-assign-admin-roles.md) ve tüm Azure [rollerini](../../role-based-access-control/built-in-roles.md)yönetmenize olanak tanır. Azure rolleri, yönetim gruplarınıza, aboneliklerinize, kaynak gruplarınıza ve kaynaklarınıza bağlı özel rollerinizi de içerebilir. Ancak, yönetemeyeceğiniz birkaç rol vardır. Bu makalede, Ayrıcalıklı Kimlik Yönetimi'nde yönetilemediğiniz roller açıklanmaktadır.
 
 ## <a name="classic-subscription-administrator-roles"></a>Klasik abonelik yönetici rolleri
 
@@ -37,10 +37,10 @@ Klasik abonelik yöneticisi rolleri hakkında daha fazla bilgi için [Bkz. Klasi
 
 ## <a name="what-about-office-365-admin-roles"></a>Peki ya Office 365 yönetici rolleri?
 
-Exchange Administrator ve SharePoint Administrator dışındaki Exchange Online veya SharePoint Online'daki roller Azure AD'de temsil edilmez ve bu nedenle Ayrıcalıklı Kimlik Yönetimi'nde yönetilemez. Bu Office 365 hizmetleri hakkında daha fazla bilgi için [Bkz. Office 365 yönetici rolleri.](https://docs.microsoft.com/office365/admin/add-users/about-admin-roles)
+Exchange Administrator ve SharePoint Administrator gibi Azure AD Rolleri ve Yöneticiler portalı deneyimindeki tüm Office365 rollerini destekliyoruz, ancak Exchange RBAC veya SharePoint RBAC içindeki belirli rolleri desteklemeyiz. Bu Office 365 hizmetleri hakkında daha fazla bilgi için [Bkz. Office 365 yönetici rolleri.](https://docs.microsoft.com/office365/admin/add-users/about-admin-roles)
 
 > [!NOTE]
-> SharePoint Administrator, SharePoint Online yönetici merkezi aracılığıyla SharePoint Online'a yönetim erişimine sahiptir ve SharePoint Online'da hemen hemen her görevi gerçekleştirebilir. Uygun kullanıcılar, Ayrıcalıklı Kimlik Yönetimi'ni etkinleştirdikten sonra SharePoint içinde bu rolü kullanırken gecikmeler yaşayabilir.
+> SharePoint Administrator rolü için uygun kullanıcılar ve Microsoft Güvenlik ve Uyumluluk Merkezi'ne erişmeye çalışan roller, rollerini etkinleştirdikten sonra birkaç saate kadar gecikmeler yaşayabilir. Sorunları çözmek için bu ekiplerle birlikte çalışıyoruz.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

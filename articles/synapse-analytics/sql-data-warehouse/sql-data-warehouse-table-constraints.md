@@ -1,6 +1,6 @@
 ---
 title: Birincil, yabancı ve benzersiz anahtarlar
-description: Azure Synapse Analytics'te SQL Analytics'te tablo kısıtlamaları desteği
+description: Azure Synapse Analytics'teki Synapse SQL havuzunda tablo kısıtlamaları desteği
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,28 +11,30 @@ ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: b9336a5e230e90e1abd7f2d40d431b988385c009
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 881e4f0110e3c0f35301e2ae6be40f2510f42539
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350028"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583487"
 ---
-# <a name="primary-key-foreign-key-and-unique-key-in-sql-analytics"></a>SQL Analytics'te birincil anahtar, yabancı anahtar ve benzersiz anahtar
+# <a name="primary-key-foreign-key-and-unique-key-in-synapse-sql-pool"></a>Synapse SQL havuzunda birincil anahtar, yabancı anahtar ve benzersiz anahtar
 
-Birincil anahtar, yabancı anahtar ve benzersiz anahtar dahil olmak üzere SQL Analytics'teki tablo kısıtlamaları hakkında bilgi edinin.
+Synapse SQL havuzunda birincil anahtar, yabancı anahtar ve benzersiz anahtar dahil olmak üzere tablo kısıtlamaları hakkında bilgi edinin.
 
-## <a name="table-constraints"></a>Tablo düzeyinde kısıtlamalar 
-SQL Analytics bu tablo kısıtlamalarını destekler: 
+## <a name="table-constraints"></a>Tablo düzeyinde kısıtlamalar
+
+Synapse SQL havuzu şu tablo kısıtlamalarını destekler: 
 - BIRINCIL ANAHTAR yalnızca CLUSTERED ve NOT ENFORCED her ikisi de kullanıldığında desteklenir.    
-- BENZERSIZ kısıtlama yalnızca NOT ENFORCED ile desteklenir kullanılır.   
+- BENZERSIZ kısıtlama yalnızca NOT ENFORCED ile desteklenir kullanılır.
 
-SQL Analytics'te FOREIGN KEY kısıtlaması desteklenmez.  
+Synapse SQL havuzunda FOREIGN KEY kısıtlaması desteklenmez.  
 
 ## <a name="remarks"></a>Açıklamalar
-Birincil anahtara ve/veya benzersiz anahtara sahip olmak, SQL Analytics altyapısının sorgu için en uygun yürütme planı oluşturmasına olanak tanır.  Birincil anahtar sütundaki veya benzersiz bir kısıtlama sütunundaki tüm değerler benzersiz olmalıdır. 
 
-SQL Analytics'te birincil anahtar veya benzersiz kısıtlamaiçeren bir tablo oluşturduktan sonra, kullanıcıların bu sütunlarda bulunan tüm değerlerin benzersiz olduğundan emin olması gerekir.  Bunun ihlali, sorgunun hatalı sonuç dönmesine neden olabilir.  Bu örnek, birincil anahtar veya benzersiz kısıtlama sütununda yinelenen değerler varsa, sorgunun nasıl hatalı sonuç verebileceğini gösterir.  
+Birincil anahtara ve/veya benzersiz anahtara sahip olmak, Synapse SQL havuz altyapısının sorgu için en uygun yürütme planı oluşturmasını sağlar.  Birincil anahtar sütundaki veya benzersiz bir kısıtlama sütunundaki tüm değerler benzersiz olmalıdır.
+
+Synapse SQL havuzunda birincil anahtar veya benzersiz kısıtlama içeren bir tablo oluşturduktan sonra, kullanıcıların bu sütunlarda bulunan tüm değerlerin benzersiz olduğundan emin olmanız gerekir.  Bunun ihlali, sorgunun hatalı sonuç dönmesine neden olabilir.  Bu örnek, birincil anahtar veya benzersiz kısıtlama sütununda yinelenen değerler varsa, sorgunun nasıl hatalı sonuç verebileceğini gösterir.  
 
 ```sql
  -- Create table t1
@@ -158,12 +160,13 @@ a1          total
 ```
 
 ## <a name="examples"></a>Örnekler
-Birincil anahtara sahip bir SQL Analytics tablosu oluşturun: 
+
+Birincil anahtara sahip bir Synapse SQL bilardo tablosu oluşturun: 
 
 ```sql 
 CREATE TABLE mytable (c1 INT PRIMARY KEY NONCLUSTERED NOT ENFORCED, c2 INT);
 ```
-Benzersiz bir kısıtlamaya sahip bir SQL Analytics tablosu oluşturun:
+Benzersiz bir kısıtlaması olan bir Synapse SQL bilardo tablosu oluşturun:
 
 ```sql
 CREATE TABLE t6 (c1 INT UNIQUE NOT ENFORCED, c2 INT);
@@ -171,4 +174,4 @@ CREATE TABLE t6 (c1 INT UNIQUE NOT ENFORCED, c2 INT);
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-SQL Analytics veritabanınız için tabloları oluşturduktan sonra, bir sonraki adım tabloya veri yüklemektir. Yükleme eğitimi için [bkz.](load-data-wideworldimportersdw.md)
+Synapse SQL havuzunuz için tabloları oluşturduktan sonra, bir sonraki adım tabloya veri yüklemektir. Yükleme eğitimi için [bkz.](load-data-wideworldimportersdw.md)

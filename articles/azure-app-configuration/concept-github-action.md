@@ -1,19 +1,19 @@
 ---
-title: Azure Uygulama Yapılandırma Senkronizasyonu ile GitHub Eylemlerini Kullanma
-description: GitHub deponuzu güncellediğinizde Uygulama Yapılandırma örneğiniz için bir güncelleştirmeyi tetiklemek için GitHub Eylemleri'ni kullanın
+title: GitHub deponuzu Uygulama Yapılandırması ile senkronize etme
+description: GitHub deponuzu güncellediğinizde Uygulama Yapılandırma örneğini otomatik olarak güncellemek için GitHub Eylemleri'ni kullanın.
 author: lisaguthrie
 ms.author: lcozzens
 ms.date: 02/20/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: 46d4aa4d4d37e9cac928e8d1a9e5e77ca0f30f18
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 602ccddf97938022df3c5903b573608558fe5d35
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80384067"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585489"
 ---
-# <a name="sync-your-app-configuration-instance-using-github-actions"></a>GitHub Actions kullanarak Uygulama Yapılandırması örneğinizi eşitleme
+# <a name="sync-your-github-repository-to-app-configuration"></a>GitHub deponuzu Uygulama Yapılandırması ile senkronize etme
 
 Mevcut kaynak denetim uygulamalarını kullanmaya devam etmek isteyen ekipler, GitHub depolarını Uygulama Yapılandırma depolarıyla otomatik olarak senkronize etmek için GitHub Eylemleri'ni kullanabilir. Bu, config dosyalarınızda normalde yaptığınız gibi değişiklik yapmanızı sağlarken, uygulama yapılandırması avantajlarından yararlanır: <br>
 &nbsp;&nbsp;&nbsp;&nbsp;• Kodunuzun dışında merkezi yapılandırma <br>

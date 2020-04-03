@@ -4,12 +4,12 @@ description: Azure Geçişi ile VMware VM'lerinin değerlendirilmesi/geçişi i�
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.custom: mvc
-ms.openlocfilehash: aecc82ff4403c044fae95eb9b7c8c7561fcb82b6
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 2e8aa72300c840832168138015e0a01ab054f954
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80336678"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619421"
 ---
 # <a name="prepare-vmware-vms-for-assessment-and-migration-to-azure"></a>VMware VM'lerini değerlendirme ve Azure'a geçiş için hazırlama
 
@@ -36,7 +36,7 @@ VMware VM'leri değerlendirebilmeniz veya geçirebilmeniz için bu görevler iç
 
 **Görev** | **Şey** 
 --- | --- 
-**Azure Geçiş projesi oluşturma** | Azure hesabınız, proje oluşturmak için ontributer veya Owner izinlerine ihtiyaç duyar. 
+**Azure Geçiş projesi oluşturma** | Azure hesabınız, proje oluşturmak için Katılımcı veya Sahip izinlerine ihtiyaç duyar. 
 **Kaynak sağlayıcılar kaydedin** | Azure Geçir, VMware VM'leri keşfetmek ve değerlendirmek ve Azure Geçir:Sunucu Değerlendirmesi ile Azure'a geçirmek için hafif bir Azure Geçir cihazı kullanır.<br/><br/> Cihaz kaydı sırasında, kaynak sağlayıcılar cihazda seçilen aboneye kaydedilir. [Daha fazla bilgi edinin](migrate-appliance-architecture.md#appliance-registration).<br/><br/> Kaynak sağlayıcılarını kaydetmek için abonelikte Bir Katılımcı veya Sahip rolüne ihtiyacınız var.
 **Azure AD uygulamaları oluşturma** | Azure Geçiş, cihazı kaydederken Azure Etkin Dizin (Azure AD) uygulamaları oluşturur. <br/><br/> - İlk uygulama, cihazüzerinde çalışan aracılar ile Azure'da çalışan ilgili hizmetleri arasındaki iletişim için kullanılır.<br/><br/> - İkinci uygulama yalnızca aracısız VMware VM geçişi için kullanıcının aboneliğinde oluşturulan KeyVault'a erişmek için kullanılır. [Daha fazla bilgi edinin](migrate-appliance-architecture.md#appliance-registration).<br/><br/> Azure AD uygulamaları (Uygulama Geliştiricisi'nde kullanılabilir) rolü oluşturmak için izinlere ihtiyacınız vardır.
 **Anahtar Kasası Oluşturma** | Aracısız geçiş kullanarak VMware VM'leri geçirmek için Azure Geçiş, aboneliğinizdeki çoğaltma depolama hesabının erişim anahtarlarını yönetmek için bir Anahtar Kasası oluşturur.<br/><br/> Kasa oluşturmak için, Azure Geçiş projesinin bulunduğu kaynak grubunda rol atama izinlerine ihtiyacınız vardır.

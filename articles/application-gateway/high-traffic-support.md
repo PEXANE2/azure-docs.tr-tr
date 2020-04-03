@@ -7,18 +7,21 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/24/2020
 ms.author: caya
-ms.openlocfilehash: e3f8445f68ec959ce1bb0d1ba4029807bd25907a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 65f404b52a5fc06d8fa5bb5aad291e57fde8caba
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80257436"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80617194"
 ---
-# <a name="application-gateway-high-traffic-support"></a>Uygulama Ağ Geçidi yüksek trafik desteği 
+# <a name="application-gateway-high-traffic-support"></a>Application Gateway yüksek trafik desteği
 
-Bu makalede, COVID-19 durumu gibi yüksek trafik hacmi senaryoları nedeniyle ek trafiği işlemek için Uygulama Ağ Geçidinizi ayarlamanıza yardımcı olacak önerilen birkaç yönerge açıklanmaktadır. Web uygulamalarınızdaki trafiği yönetmek için ölçeklenebilir ve güvenli bir yol için Web Uygulama Güvenlik Duvarı (WAF) ile Uygulama Ağ Geçidi'ni kullanabilirsiniz. 
+>[!NOTE]
+> Bu makalede, COVID-19 krizi nedeniyle oluşabilecek yüksek trafik hacmi nedeniyle ek trafiği işlemek için Uygulama Ağ Geçidinizi ayarlamanıza yardımcı olacak önerilen birkaç yönerge açıklanmaktadır.
 
-Aşağıdaki öneriler, ekstra trafiği işlemek için WAF ile Uygulama Ağ Geçidi'ni kurmanıza yardımcı olur. 
+Web uygulamalarınızdaki trafiği yönetmek için ölçeklenebilir ve güvenli bir yol için Web Uygulama Güvenlik Duvarı (WAF) ile Uygulama Ağ Geçidi'ni kullanabilirsiniz.
+
+Aşağıdaki öneriler, ekstra trafiği işlemek için WAF ile Uygulama Ağ Geçidi'ni kurmanıza yardımcı olur.
 
 ## <a name="use-the-v2-sku-over-v1-for-its-autoscaling-capabilities-and-performance-benefits"></a>Otomatik ölçekleme özellikleri ve performans avantajları için v1 üzerinden v2 SKU'yu kullanın
 v2 SKU, Trafik arttıkça Uygulama Ağ Geçidinizin ölçeklendirilebilmesini sağlamak için otomatik ölçeklendirme sunar. Ayrıca, v1 ile karşılaştırıldığında 5 kat daha iyi TLS boşaltma performansı, daha hızlı dağıtım ve güncelleştirme süreleri, bölge artıklığı ve daha fazlası gibi diğer önemli performans avantajları da sunar. Daha fazla bilgi için [v2 belgelerimize](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant)bakın. 

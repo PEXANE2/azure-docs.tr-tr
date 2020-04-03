@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 01/30/2019
 ms.author: maquaran
-ms.openlocfilehash: 9252e3e41d0c639231a2abe20202499c6b3ee32a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5820778d46f5701b82bb289192350a9e13739d37
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75444851"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619435"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET Değişim Beslemeİşlemi SDK: Notları indirin ve yayınla
 
@@ -26,7 +26,7 @@ ms.locfileid: "75444851"
 > * [Async Java](sql-api-sdk-async-java.md)
 > * [Java](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
-> * [Geri kalanı](https://docs.microsoft.com/rest/api/cosmos-db/)
+> * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST Kaynak Sağlayıcısı](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
 > * [Toplu uygulayıcı - .NET](sql-api-sdk-bulk-executor-dot-net.md)
@@ -36,7 +36,7 @@ ms.locfileid: "75444851"
 |---|---|
 |**SDK indir**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.ChangeFeedProcessor/)|
 |**API belgeleri**|[Özet Akışı İşlemci kitaplığı API başvuru belgelerini değiştirme](/dotnet/api/microsoft.azure.documents.changefeedprocessor?view=azure-dotnet)|
-|**Kullanmaya başlayın**|[Akış İşlemcisi .NET SDK'yı Değiştir ile başlayın](change-feed.md)|
+|**başlarken**|[Akış İşlemcisi .NET SDK'yı Değiştir ile başlayın](change-feed.md)|
 |**Geçerli desteklenen çerçeve**| [Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)</br> [Microsoft .NET Core](https://www.microsoft.com/net/download/core) |
 
 > [!NOTE]
@@ -45,6 +45,10 @@ ms.locfileid: "75444851"
 ## <a name="release-notes"></a>Sürüm notları
 
 ### <a name="v2-builds"></a>v2 oluşturur
+
+### <a name="230"></a><a name="2.3.0"/>2.3.0
+* Yeni bir `ChangeFeedProcessorBuilder.WithCheckpointPartitionProcessorFactory` yöntem ve `ICheckpointPartitionProcessorFactory`karşılık gelen ortak arabirim eklendi. Bu, `IPartitionProcessor` dahili denetim mekanizmasını kullanmak için arabirimin uygulanmasına olanak tanır. Yeni fabrika varolana `IPartitionProcessorFactory`benzer , `Create` yöntemi nin `ILeaseCheckpointer` de parametre alması dışında.
+* İki yöntemden yalnızca biri, ya `ChangeFeedProcessorBuilder.WithPartitionProcessorFactory` da `ChangeFeedProcessorBuilder.WithCheckpointPartitionProcessorFactory`, `ChangeFeedProcessorBuilder` aynı örnek için kullanılabilir.
 
 ### <a name="228"></a><a name="2.2.8"/>2.2.8
 * Kararlılık ve tanıyauygunluk iyileştirmeleri:
@@ -88,7 +92,7 @@ ms.locfileid: "75444851"
 
 ### <a name="220"></a><a name="2.2.0"/>2.2.0
 * Bölümlenmiş kira koleksiyonları için destek eklendi. Bölüm anahtarı /id olarak tanımlanmalıdır.
-* Küçük kırılma değişimi: IChangeFeedDocumentClient arabiriminin yöntemleri ve ChangeFeedDocumentClient sınıfı RequestOptions ve CancellationToken parametrelerini içerecek şekilde değiştirildi. IChangeFeedDocumentClient, Belge İstemci'sinin Değişim Akışı İşlemcisi ile özel bir uygulamasını sağlamanıza olanak tanıyan gelişmiş bir genişletilebilirlik noktasıdır, örneğin DocumentClient'ı dekore edin ve ekstra izleme, hata işleme yapmak için tüm çağrıları engelleme Vb. Bu güncelleştirmeyle, IChangeFeedDocumentClient'ı uygulayan kodun uygulamaya yeni parametreler içerecek şekilde değiştirilmesi gerekir.
+* Küçük kırılma değişimi: IChangeFeedDocumentClient arabiriminin yöntemleri ve ChangeFeedDocumentClient sınıfı RequestOptions ve CancellationToken parametrelerini içerecek şekilde değiştirildi. IChangeFeedDocumentClient, Document Client'ın Değişim Akışı İşlemcisi ile kullanmak üzere özel bir uygulama sağlamanızı sağlayan gelişmiş bir genişletilebilirlik noktasıdır, örneğin DocumentClient'ı dekore edin ve ekstra izleme, hata işleme, vb. yapmak için tüm çağrıları engellemektedir. Bu güncelleştirmeyle, IChangeFeedDocumentClient'ı uygulayan kodun uygulamaya yeni parametreler içerecek şekilde değiştirilmesi gerekir.
 * Küçük tanı lama iyileştirmeleri.
 
 ### <a name="210"></a><a name="2.1.0"/>2.1.0
@@ -182,6 +186,7 @@ Cosmos DB'ye emekli bir SDK kullanarak yapılan tüm istekler hizmet tarafından
 
 | Sürüm | Yayın Tarihi | Emeklilik Tarihi |
 | --- | --- | --- |
+| [2.3.0](#2.3.0) |2 Nisan 2020 |--- |
 | [2.2.8](#2.2.8) |Ekim 28, 2019 |--- |
 | [2.2.7](#2.2.7) |14 Mayıs 2019 |--- |
 | [2.2.6](#2.2.6) |Ocak 29, 2019 |--- |

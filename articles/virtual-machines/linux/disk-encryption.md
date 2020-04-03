@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
-ms.openlocfilehash: 88d25083a1105023279f3907a4573319fabe087c
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 912677a10d7098b891a4f6972b61761cd72cf292
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80520761"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585937"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Azure yönetilen disklerin sunucu tarafı şifrelemesi
 
@@ -34,7 +34,11 @@ Varsayılan olarak, yönetilen diskler platform tarafından yönetilen şifrelem
 
 ## <a name="customer-managed-keys"></a>Müşteri tarafından yönetilen anahtarlar
 
-Şifrelemeyi yönetilen her disk düzeyinde kendi anahtarlarınızla yönetmeyi seçebilirsiniz. Müşteri tarafından yönetilen anahtarlara sahip yönetilen diskler için sunucu tarafı şifrelemesi, Azure Key Vault ile entegre bir deneyim sunar. [RSA anahtarlarınızı](../../key-vault/key-vault-hsm-protected-keys.md) Key Vault'unuza aktarabilir veya Azure Key Vault'ta yeni RSA anahtarları oluşturabilirsiniz. Azure yönetilen [diskler, zarf şifrelemesini](../../storage/common/storage-client-side-encryption.md#encryption-and-decryption-via-the-envelope-technique)kullanarak şifreleme ve şifre çözme işlemlerini tamamen saydam bir şekilde işler. Verileri [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) 256 tabanlı veri şifreleme anahtarı (DEK) kullanarak şifreler ve bu da anahtarlarınızı kullanarak korunur. DEK'i şifrelemek ve şifresini çözmek için anahtarlarınızı kullanmak için Key Vault'unuzdaki yönetilen disklere erişim izni verebilirsiniz. Bu, verilerinizin ve anahtarlarınızın tam denetimini sağlar. Anahtarlarınızı devre dışı kılabilir veya yönetilen disklere erişimi istediğiniz zaman iptal edebilirsiniz. Yalnızca yönetilen disklerin veya diğer güvenilen Azure hizmetlerinin anahtarlarınıza erişdiğinden emin olmak için Şifreleme anahtarı kullanımını Azure Key Vault izleme ile de denetleyebilirsiniz.
+Şifrelemeyi yönetilen her disk düzeyinde kendi anahtarlarınızla yönetmeyi seçebilirsiniz. Müşteri tarafından yönetilen anahtarlara sahip yönetilen diskler için sunucu tarafı şifrelemesi, Azure Key Vault ile entegre bir deneyim sunar. [RSA anahtarlarınızı](../../key-vault/key-vault-hsm-protected-keys.md) Key Vault'unuza aktarabilir veya Azure Key Vault'ta yeni RSA anahtarları oluşturabilirsiniz. 
+
+Azure yönetilen [diskler, zarf şifrelemesini](../../storage/common/storage-client-side-encryption.md#encryption-and-decryption-via-the-envelope-technique)kullanarak şifreleme ve şifre çözme işlemlerini tamamen saydam bir şekilde işler. Verileri [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) 256 tabanlı veri şifreleme anahtarı (DEK) kullanarak şifreler ve bu da anahtarlarınızı kullanarak korunur. Depolama hizmeti veri şifreleme anahtarları oluşturur ve RSA şifrelemekullanarak müşteri tarafından yönetilen anahtarlarla şifreler. Zarf şifreleme, anahtarlarınızı VM'lerinizi etkilemeden uyumluluk ilkelerinize göre düzenli aralıklarla döndürmenize (değiştirmenize) olanak tanır. Anahtarlarınızı döndürdüğünüzde, Depolama hizmeti veri şifreleme anahtarlarını yeni müşteri tarafından yönetilen anahtarlarla yeniden şifreler. 
+
+DEK'i şifrelemek ve şifresini çözmek için anahtarlarınızı kullanmak için Key Vault'unuzdaki yönetilen disklere erişim izni verebilirsiniz. Bu, verilerinizin ve anahtarlarınızın tam denetimini sağlar. Anahtarlarınızı devre dışı kılabilir veya yönetilen disklere erişimi istediğiniz zaman iptal edebilirsiniz. Yalnızca yönetilen disklerin veya diğer güvenilen Azure hizmetlerinin anahtarlarınıza erişdiğinden emin olmak için Şifreleme anahtarı kullanımını Azure Key Vault izleme ile de denetleyebilirsiniz.
 
 Birinci sınıf SSD'ler, standart SSD'ler ve standart HDD'ler için: Anahtarınızı devre dışı kaldırdığınızda veya sildiğinizde, bu anahtarı kullanan disklere sahip tüm VM'ler otomatik olarak kapanır. Bundan sonra, anahtar yeniden etkinleştirilmedikçe veya yeni bir anahtar atamadıkça VM'ler kullanılabilir olmayacaktır.
 
@@ -187,6 +191,32 @@ az disk create -n $diskName -g $rgName -l $location --encryption-type Encryption
 diskId=$(az disk show -n $diskName -g $rgName --query [id] -o tsv)
 
 az vm disk attach --vm-name $vmName --lun $diskLUN --ids $diskId 
+
+```
+
+#### <a name="change-the-key-of-a-diskencryptionset-to-rotate-the-key-for-all-the-resources-referencing-the-diskencryptionset"></a>DiskEncryptionSet'e başvuran tüm kaynaklar için anahtarı döndürmek için Bir DiskEncryptionSet'in anahtarını değiştirme
+
+```azurecli
+
+rgName=yourResourceGroupName
+keyVaultName=yourKeyVaultName
+keyName=yourKeyName
+diskEncryptionSetName=yourDiskEncryptionSetName
+
+
+keyVaultId=$(az keyvault show --name $keyVaultName--query [id] -o tsv)
+
+keyVaultKeyUrl=$(az keyvault key show --vault-name $keyVaultName --name $keyName --query [key.kid] -o tsv)
+
+az disk-encryption-set update -n keyrotationdes -g keyrotationtesting --key-url $keyVaultKeyUrl --source-vault $keyVaultId
+
+```
+
+#### <a name="find-the-status-of-server-side-encryption-of-a-disk"></a>Bir diskin sunucu tarafı şifreleme durumunu bulma
+
+```azurecli
+
+az disk show -g yourResourceGroupName -n yourDiskName --query [encryption.type] -o tsv
 
 ```
 

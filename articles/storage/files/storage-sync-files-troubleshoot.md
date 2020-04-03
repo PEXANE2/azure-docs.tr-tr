@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 1/22/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: ebe5ddf72e13b1a66ded7a90976e0b6209a26dfd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d46f513fccf9921d4cf47835bc9d5be4c6ffe241
+ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80060958"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80607485"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure Dosya Eşitleme ile ilgili sorunları giderme
 Kuruluşunuzun dosya paylaşımlarını Azure Dosyaları'nda merkezileştirmek ve şirket içi bir dosya sunucusunun esnekliğini, performansını ve uyumluluğunu korumak için Azure Dosya Eşitlemeyi'ni kullanın. Azure Dosya Eşitleme, Windows Server’ı Azure dosya paylaşımınızın hızlı bir önbelleğine dönüştürür. SMB, NFS ve FTPS dahil olmak üzere verilerinize yerel olarak erişmek için Windows Server'da kullanılabilen tüm protokolleri kullanabilirsiniz. Dünya çapında ihtiyacınız olduğu kadar önbelleke sahip olabilirsiniz.
@@ -187,7 +187,7 @@ Set-AzStorageSyncServerEndpoint `
 
 Depolama Eşitleme Monitörü işlemi (AzureStorageSyncMonitor.exe) çalışmıyorsa veya sunucu Azure Dosya Eşitleme hizmetine erişemiyorsa bu sorun oluşabilir.
 
-Portalda "Çevrimdışı görünür" olarak gösterilen sunucuda, sunucunun Azure Dosya Eşitlemesi'ne neden erişemediğini belirlemek için Telemetri olay günlüğündeki (Uygulamalar ve Hizmetler\Microsoft\FileSync\Agent in Event Viewer altında bulunan) Event ID 9301'e bakın Hizmet. 
+Portalda "Çevrimdışı görünür" olarak gösterilen sunucuda, sunucunun Azure Dosya Eşitleme hizmetine neden erişemediğini belirlemek için Telemetri etkinlik günlüğündeki (Uygulamalar ve Hizmetler\Microsoft\FileSync\Agent in Event Viewer altında bulunan) Event ID 9301'e bakın. 
 
 - **GetNextJob durumla tamamlanırsa: 0** günlüğe kaydedilirse, sunucu Azure Dosya Eşitleme hizmetiyle iletişim kurabilir. 
     - Sunucuda Görev Yöneticisi'ni açın ve Depolama Eşitleme İzleyicisi (AzureStorageSyncMonitor.exe) işleminin çalıştığından emin olun. İşlem çalışmıyorsa önce sunucuyu yeniden başlatmayı deneyin. Sunucunun yeniden başlatılması sorunu çözmezse en son Azure Dosya Eşitleme [aracısı sürümüne](https://docs.microsoft.com/azure/storage/files/storage-files-release-notes) yükseltin. 
@@ -588,7 +588,7 @@ Bu hata birkaç saatten uzun süre devam ederse, bir destek isteği oluşturun v
 | **Hata dizesi** | CERT_E_UNTRUSTEDROOT |
 | **Düzeltme gerekli** | Evet |
 
-Kuruluşunuz SSL sonlandıran bir ara sunucu kullanıyorsa veya kötü amaçlı bir varlık, sunucunuz ile Azure Dosya Eşitleme hizmeti arasındaki trafiği kesiyorsa bu hata oluşabilir. Bunun olabileceğinden eminseniz (kuruluşunuz bir SSL sonlandırma ara sunucusu kullandığı için), kayıt defteri geçersiz kılmasıyla sertifika doğrulamayı atlayabilirsiniz.
+Bu hata, kuruluşunuz TLS sonlandırma proxy'si kullanıyorsa veya kötü amaçlı bir varlık sunucunuzla Azure Dosya Eşitleme hizmeti arasındaki trafiği engellenebiliyorsa olabilir. Bunun beklendiğinden eminseniz (kuruluşunuz TLS sonlandırma proxy'si kullandığından), bir kayıt defteri geçersiz kılınarak sertifika doğrulamasını atlarsınız.
 
 1. SkipVerifyingPinnedRootCertificate kayıt defteri değerini oluşturun.
 
@@ -602,7 +602,7 @@ Kuruluşunuz SSL sonlandıran bir ara sunucu kullanıyorsa veya kötü amaçlı 
     Restart-Service -Name FileSyncSvc -Force
     ```
 
-Bu kayıt defteri değeri ayarlandığında Azure Dosya Eşitleme aracısı, verileri sunucu ile bulut hizmeti arasında aktarırken yerel olarak güvenilen herhangi bir SSL sertifikasını kabul eder.
+Bu kayıt defteri değerini ayarlayarak, Azure Dosya Eşitleme aracısı, sunucu ve bulut hizmeti arasında veri aktarırken yerel olarak güvenilen TLS/SSL sertifikasını kabul eder.
 
 <a id="-2147012894"></a>**Hizmetle bağlantı kurulamadı.**  
 
@@ -894,7 +894,7 @@ Bu hata, bir veri alma işlemi zaman aşımını aştığında oluşur. Eşitlem
 4. Bağlantılı depolama hesabını seçin. Bu bağlantı başarısız olursa, başvurulan depolama hesabı kaldırıldı.
     ![Depolama hesabına bağlantı içeren bulut uç nokta ayrıntı bölmesini gösteren ekran görüntüsü.](media/storage-sync-files-troubleshoot/file-share-inaccessible-1.png)
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 ```powershell
 # Variables for you to populate based on your configuration
 $region = "<Az_Region>"
@@ -975,7 +975,7 @@ if ($storageAccount -eq $null) {
 2. Dosya paylaşımları listesini görüntülemek için **Dosyalar'ı** seçin.
 3. Bulut bitiş noktası tarafından başvurulan dosya paylaşımının dosya paylaşımları listesinde göründüğünü doğrulayın (bunu yukarıdaki adım 1'de belirtmiş olmalısınız).
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 ```powershell
 $fileShare = Get-AzStorageShare -Context $storageAccount.Context | Where-Object {
     $_.Name -eq $cloudEndpoint.AzureFileShareName -and
@@ -1002,7 +1002,7 @@ if ($fileShare -eq $null) {
     - **Rol** alanında Okuyucu **ve Veri Erişimi'ni**seçin.
     - **Select** **alanında, Microsoft.StorageSync**yazın, rolü seçin ve **Kaydet'i**tıklatın.
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 ```powershell    
 $role = Get-AzRoleAssignment -Scope $storageAccount.Id | Where-Object { $_.DisplayName -eq "Microsoft.StorageSync" }
 

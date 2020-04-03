@@ -6,36 +6,35 @@ author: rajani-janaki-ram
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 10/24/2019
+ms.date: 04/02/2020
 ms.author: rajanaki
-ms.openlocfilehash: 3a9b0717368fa67f5a7dd477e018a68e048b6740
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 67298ecf0c17feee2d36bb8774cae37b1ca81381
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75451400"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618968"
 ---
 # <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Azure'dan Azure'a çoğaltmada Mobilite hizmetinin otomatik olarak güncellemesi
 
-Azure Site Kurtarma, sorunları gidermek ve varolan özellikleri geliştirmek veya yenilerini eklemek için aylık bir sürüm sürümü kullanır. Hizmette güncel kalmak için, her ay yama dağıtımı için plan yapmak gerekir. Her yükseltmeyle ilişkili ek yükü önlemek için, bunun yerine Site Kurtarma'nın bileşen güncelleştirmelerini yönetmesine izin verebilirsiniz.
+Azure Site Kurtarma, sorunları gidermek ve varolan özellikleri geliştirmek veya yenilerini eklemek için aylık bir sürüm sürümü kullanır. Hizmette güncel kalmak için, her ay yama dağıtımı için plan yapmak gerekir. Her yükseltmeyle ilişkili ek yükü önlemek için Site Kurtarma'nın bileşen güncelleştirmelerini yönetmesine izin verebilirsiniz.
 
-[Azure'dan Azure'a olağanüstü durum kurtarma mimarisinde](azure-to-azure-architecture.md)de belirtildiği gibi, Etkinleştirme hizmeti çoğaltmanın etkin olduğu tüm Azure sanal makinelerine (VM) yüklenirken, VM'leri bir Azure bölgesinden diğerine çoğaltır. Otomatik güncelleştirmeleri kullandığınızda, her yeni sürüm Mobilite hizmet uzantısını güncelleştirir.
- 
+[Azure'dan Azure'a olağanüstü durum kurtarma mimarisinde](azure-to-azure-architecture.md)belirtildiği gibi, Mobilite hizmeti, bir Azure bölgesinden diğerine çoğaltma özelliğine sahip tüm Azure sanal makinelerine (VM) yüklenir. Otomatik güncelleştirmeleri kullandığınızda, her yeni sürüm Mobilite hizmet uzantısını güncelleştirir.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="how-automatic-updates-work"></a>Otomatik güncelleştirmeler nasıl çalışır?
 
-Güncelleştirmeleri yönetmek için Site Kurtarma'yı kullandığınızda, kasayla aynı abonelikte oluşturulan bir otomasyon hesabı üzerinden genel bir runbook (Azure hizmetleri tarafından kullanılır) dağıtılır. Her kasada bir otomasyon hesabı vardır. Runbook, etkin otomatik güncelleştirmeler için kasadaki her VM'yi denetler ve daha yeni bir sürüm varsa Mobilite hizmet uzantısını yükseltir.
+Güncelleştirmeleri yönetmek için Site Kurtarma'yı kullandığınızda, kasayla aynı abonelikte oluşturulan bir otomasyon hesabı üzerinden genel bir runbook (Azure hizmetleri tarafından kullanılır) dağıtılır. Her kasada bir otomasyon hesabı vardır. Kasadaki her VM için, runbook etkin otomatik güncelleştirmeleri denetler. Mobilite hizmeti uzantısının daha yeni bir sürümü varsa, güncelleştirme yüklenir.
 
-Varsayılan runbook zamanlaması, çoğaltılan VM'nin coğrafi saat diliminde günlük 12:00'de yinelenir. Ayrıca, otomasyon hesabı üzerinden runbook zamanlamasını da değiştirebilirsiniz.
+Varsayılan runbook zamanlaması, çoğaltılan VM'nin coğrafyasının saat diliminde her gün SAAT 12:00'de gerçekleşir. Ayrıca, otomasyon hesabı üzerinden runbook zamanlamasını da değiştirebilirsiniz.
 
 > [!NOTE]
-> Güncelleştirme Rollup 35'ten başlayarak, güncelleştirmeler için kullanmak üzere varolan bir otomasyon hesabı seçebilirsiniz. Bu güncelleştirmeden önce, Site Kurtarma varsayılan olarak bu hesabı oluşturdu. Bu seçeneği yalnızca Bir VM için çoğaltmayı etkinleştirdiğinizde seçebileceğinizi unutmayın. Çoğaltma VM için kullanılamaz. Seçtiğiniz ayar, aynı kasada korunan tüm Azure VM'leri için geçerli olacaktır.
- 
-> Otomatik güncelleştirmeleri açmak Azure VM'lerinizin yeniden başlatılmasını gerektirmez veya devam eden çoğaltmayı etkiler.
+> Güncelleştirme [Rollup 35](site-recovery-whats-new.md#updates-march-2019)ile başlayarak, güncelleştirmeler için kullanmak üzere varolan bir otomasyon hesabı seçebilirsiniz. Rollup 35'i güncelleştirmeden önce, Site Kurtarma varsayılan olarak otomasyon hesabını oluşturdu. Bu seçeneği yalnızca VM için çoğaltmayı etkinleştirdiğinizde seçebilirsiniz. Çoğaltma etkinleştirilmiş bir VM için kullanılamaz. Seçtiğiniz ayar, aynı kasada korunan tüm Azure VM'leri için geçerlidir.
 
-> Otomasyon hesabındaki iş faturalandırması, bir ay içinde kullanılan iş çalışma zamanı dakikalarının sayısına bağlıdır. Varsayılan olarak, 500 dakika bir otomasyon hesabı için ücretsiz birimler olarak dahildir. İş yürütme yaklaşık bir dakika her gün birkaç saniye sürer ve ücretsiz birimler olarak kaplıdır.
+Otomatik güncelleştirmeleri açmak Azure VM'lerinizin yeniden başlatılmasını gerektirmez veya devam eden çoğaltmayı etkiler.
+
+Otomasyon hesabındaki iş faturalandırması, bir ay içinde kullanılan iş çalışma zamanı dakikalarının sayısına bağlıdır. İş yürütme yaklaşık bir dakika her gün birkaç saniye sürer ve ücretsiz birimler olarak kaplıdır. Varsayılan olarak, 500 dakika, aşağıdaki tabloda gösterildiği gibi, bir otomasyon hesabı için ücretsiz birimler olarak dahil edilir:
 
 | Ücretsiz birimler dahil (her ay) | Fiyat |
 |---|---|
@@ -43,31 +42,38 @@ Varsayılan runbook zamanlaması, çoğaltılan VM'nin coğrafi saat diliminde g
 
 ## <a name="enable-automatic-updates"></a>Otomatik güncelleştirmeleri etkinleştirme
 
-Site Kurtarma'nın güncelleştirmeleri aşağıdaki şekillerde yönetmesine izin verebilirsiniz.
+Site Kurtarma'nın uzantı güncelleştirmelerini yönetmesinin birkaç yolu vardır:
+
+- [Etkinleştirme çoğaltma adımının bir parçası olarak yönetme](#manage-as-part-of-the-enable-replication-step)
+- [Kasanın içindeki uzantı güncelleştirme ayarlarını değiştirme](#toggle-the-extension-update-settings-inside-the-vault)
+- [Güncelleştirmeleri el ile yönetme](#manage-updates-manually)
 
 ### <a name="manage-as-part-of-the-enable-replication-step"></a>Etkinleştirme çoğaltma adımının bir parçası olarak yönetme
 
 [VM görünümünden](azure-to-azure-quickstart.md) veya [kurtarma hizmetleri kasasından](azure-to-azure-how-to-enable-replication.md)başlayarak bir VM için çoğaltmayı etkinleştirdiğinizde, Site Kurtarma uzantısı güncelleştirmelerini yönetmesine veya el ile yönetmesine izin verebilirsiniz.
 
-![Uzantı ayarları](./media/azure-to-azure-autoupdate/enable-rep.png)
+:::image type="content" source="./media/azure-to-azure-autoupdate/enable-rep.png" alt-text="Uzantı ayarları":::
 
 ### <a name="toggle-the-extension-update-settings-inside-the-vault"></a>Kasanın içindeki uzantı güncelleştirme ayarlarını değiştirme
 
-1. Kasanın içinde,**Site Kurtarma Altyapısını** **Yönet'e** > gidin.
-2. **Azure Sanal Makineler** > **Uzantısı Güncelleştirme Ayarları**için, geçiş yapmak için **Site Kurtarma'ya İzin Ver'i** açın. El ile yönetmek için kapatın. 
-3. **Kaydet'i**seçin.
+1. Kurtarma Hizmetleri kasasından Site**Kurtarma Altyapısını** **Yönet'e** > gidin.
+1. **Azure Sanal Makineler** > için**Uzantı Güncelleme Ayarları,** > **Site Kurtarma'nın yönetilmesine izin verir**, **On'u**seçin.
 
-![Uzantı güncelleştirme ayarları](./media/azure-to-azure-autoupdate/vault-toggle.png)
+   Uzantıyı el ile yönetmek için **Kapalı'yı**seçin.
 
-> [!Important]
-> **Site Kurtarma'yı yönetmeye izin ver'i**seçtiğinizde, ayar ilgili kasadaki tüm VM'lere uygulanır.
+1. **Kaydet'i**seçin.
 
-
-> [!Note]
-> Her iki seçenek de güncelleştirmeleri yönetmek için kullanılan otomasyon hesabını size iletilir. Bu özelliği ilk kez bir kasada kullanıyorsanız, varsayılan olarak yeni bir otomasyon hesabı oluşturulur. Alternatif olarak, ayarı özelleştirebilir ve varolan bir otomasyon hesabı seçebilirsiniz. Sonraki tüm etkinleştirme çoğaltmaları aynı tonoz da daha önce oluşturulan bir kullanın. Şu anda açılır yalnızca kasayla aynı Kaynak Grubunda bulunan Otomasyon hesaplarını listeleyecektir.  
+:::image type="content" source="./media/azure-to-azure-autoupdate/vault-toggle.png" alt-text="Uzantı güncelleştirme ayarları":::
 
 > [!IMPORTANT]
-> Aşağıdaki komut dosyasının özel bir otomasyon hesabı için bir otomasyon hesabı bağlamında çalıştırılması gerekir, aşağıdaki komut dosyasını kullanın:
+> **Site Kurtarma'yı yönetmeye izin ver'i**seçtiğinizde, ayar kasadaki tüm VM'lere uygulanır.
+
+> [!NOTE]
+> Her iki seçenek de güncelleştirmeleri yönetmek için kullanılan otomasyon hesabını size iletilir. Bu özelliği ilk kez bir kasada kullanıyorsanız, varsayılan olarak yeni bir otomasyon hesabı oluşturulur. Alternatif olarak, ayarı özelleştirebilir ve varolan bir otomasyon hesabı seçebilirsiniz. Aynı kasada çoğaltmayı etkinleştirmek için sonraki tüm taks'lar daha önce oluşturulmuş otomasyon hesabını kullanır. Şu anda, açılır menüyalnızca kasayla aynı Kaynak Grubunda bulunan otomasyon hesaplarını listeler.
+
+> [!IMPORTANT]
+> Aşağıdaki komut dosyasının bir otomasyon hesabı bağlamında çalıştırılması gerekir.
+Özel bir otomasyon hesabı için aşağıdaki komut dosyasını kullanın:
 
 ```azurepowershell
 param(
@@ -96,32 +102,32 @@ $Timeout = "160"
 
 function Throw-TerminatingErrorMessage
 {
-    Param
+        Param
     (
         [Parameter(Mandatory=$true)]
         [String]
         $Message
-    )
+        )
 
     throw ("Message: {0}, TaskId: {1}.") -f $Message, $TaskId
 }
 
 function Write-Tracing
 {
-    Param
+        Param
     (
-        [Parameter(Mandatory=$true)]      
+        [Parameter(Mandatory=$true)]
         [ValidateSet("Informational", "Warning", "ErrorLevel", "Succeeded", IgnoreCase = $true)]
-        [String]
+                [String]
         $Level,
 
         [Parameter(Mandatory=$true)]
         [String]
         $Message,
 
-        [Switch]
+            [Switch]
         $DisplayMessageToUser
-    )
+        )
 
     Write-Output $Message
 
@@ -129,12 +135,12 @@ function Write-Tracing
 
 function Write-InformationTracing
 {
-    Param
+        Param
     (
         [Parameter(Mandatory=$true)]
         [String]
         $Message
-    )
+        )
 
     Write-Tracing -Message $Message -Level Informational -DisplayMessageToUser
 }
@@ -183,14 +189,14 @@ function Initialize-SubscriptionId()
         $Tokens = $VaultResourceId.SubString(1).Split("/")
 
         $Count = 0
-        $ArmResources = @{}
+                $ArmResources = @{}
         while($Count -lt $Tokens.Count)
         {
             $ArmResources[$Tokens[$Count]] = $Tokens[$Count+1]
             $Count = $Count + 2
         }
-        
-        return $ArmResources["subscriptions"]
+
+                return $ArmResources["subscriptions"]
     }
     catch
     {
@@ -207,7 +213,7 @@ function Invoke-InternalRestMethod($Uri, $Headers, [ref]$Result)
     {
         try
         {
-            $ResultObject = Invoke-RestMethod -Uri $Uri -Headers $Headers    
+            $ResultObject = Invoke-RestMethod -Uri $Uri -Headers $Headers
             ($Result.Value) += ($ResultObject)
             break
         }
@@ -253,7 +259,7 @@ function Invoke-InternalWebRequest($Uri, $Headers, $Method, $Body, $ContentType,
 }
 
 function Get-Header([ref]$Header, $AadAudience, $AadAuthority, $RunAsConnectionName){
-    try 
+    try
     {
         $RunAsConnection = Get-AutomationConnection -Name $RunAsConnectionName
         $TenantId = $RunAsConnection.TenantId
@@ -284,14 +290,14 @@ function Get-Header([ref]$Header, $AadAudience, $AadAuthority, $RunAsConnectionN
 
 function Get-ProtectionContainerToBeModified([ref] $ContainerMappingList)
 {
-    try 
+    try
     {
         Write-InformationTracing ("Get protection container mappings : {0}." -f $VaultResourceId)
         $ContainerMappingListUrl = $ArmEndPoint + $VaultResourceId + "/replicationProtectionContainerMappings" + "?api-version=" + $AsrApiVersion
-        
+
         Write-InformationTracing ("Getting the bearer token and the header.")
         Get-Header ([ref]$Header) $AadAudience $AadAuthority $RunAsConnectionName
-        
+
         $Result = @()
         Invoke-InternalRestMethod -Uri $ContainerMappingListUrl -Headers $header -Result ([ref]$Result)
         $ContainerMappings = $Result[0]
@@ -389,7 +395,7 @@ try
     try {
             $UpdateUrl = $ArmEndPoint + $Mapping + "?api-version=" + $AsrApiVersion
             Get-Header ([ref]$Header) $AadAudience $AadAuthority $RunAsConnectionName
-            
+
             $Result = @()
             Invoke-InternalWebRequest -Uri $UpdateUrl -Headers $Header -Method 'PATCH' `
                 -Body $InputJson  -ContentType "application/json" -Result ([ref]$Result)
@@ -479,7 +485,7 @@ catch
 {
     $ErrorMessage = ("Tracking modify cloud pairing jobs failed with [Exception: {0}]." -f $_.Exception)
     Write-Tracing -Level ErrorLevel -Message $ErrorMessage  -DisplayMessageToUser
-    Throw-TerminatingErrorMessage -Message $ErrorMessage 
+    Throw-TerminatingErrorMessage -Message $ErrorMessage
 }
 
 Write-InformationTracing ("Tracking modify cloud pairing jobs completed.")
@@ -491,7 +497,7 @@ Write-InformationTracing ("Modify cloud pairing jobs timedout: {0}." -f $JobsTim
 if($JobsTimedOut -gt  0)
 {
     $ErrorMessage = "One or more modify cloud pairing jobs has timedout."
-    Write-Tracing -Level ErrorLevel -Message ($ErrorMessage)   
+    Write-Tracing -Level ErrorLevel -Message ($ErrorMessage)
     Throw-TerminatingErrorMessage -Message $ErrorMessage
 }
 elseif($JobsCompletedSuccessList.Count -ne $ContainerMappingList.Count)
@@ -506,44 +512,44 @@ Write-Tracing -Level Succeeded -Message ("Modify cloud pairing completed.") -Dis
 
 ### <a name="manage-updates-manually"></a>Güncelleştirmeleri el ile yönetme
 
-1. VM'lerinizde yüklü olan Mobilite hizmeti için yeni güncelleştirmeler varsa, aşağıdaki bildirimi görürsünüz: "Yeni Site Kurtarma çoğaltma aracısı güncelleştirmesi kullanılabilir. Yüklemek için tıklayın"
+1. VM'lerinizde yüklü olan Mobilite hizmeti için yeni güncelleştirmeler varsa, aşağıdaki bildirimi görürsünüz: **Yeni Site Kurtarma çoğaltma aracısı güncelleştirmesi kullanılabilir. Yüklemek için tıklatın.**
 
-     ![Çoğaltılan öğeler penceresi](./media/vmware-azure-install-mobility-service/replicated-item-notif.png)
-2. VM seçim sayfasını açmak için bildirimi seçin.
-3. Yükseltmek istediğiniz VM'leri seçin ve ardından **Tamam'ı**seçin. Seçilen her VM için Mobiliteyi Güncelleştir hizmeti başlatılacaktır.
+   :::image type="content" source="./media/vmware-azure-install-mobility-service/replicated-item-notif.png" alt-text="Çoğaltılan öğeler penceresi":::
 
-     ![Çoğaltılan öğeler VM listesi](./media/vmware-azure-install-mobility-service/update-okpng.png)
+1. VM seçim sayfasını açmak için bildirimi seçin.
+1. Yükseltmek istediğiniz VM'leri seçin ve ardından **Tamam'ı**seçin. Seçilen her VM için Mobiliteyi Güncelleştir hizmeti başlatılacaktır.
 
+   :::image type="content" source="./media/vmware-azure-install-mobility-service/update-okpng.png" alt-text="Çoğaltılan öğeler VM listesi":::
 
 ## <a name="common-issues-and-troubleshooting"></a>Sık karşılaşılan sorunlar ve sorun giderme
 
 Otomatik güncelleştirmelerle ilgili bir sorun varsa, kasa panosunda **Yapılandırma sorunları** altında bir hata bildirimi görürsünüz.
 
-Otomatik güncelleştirmeleri etkinleştiremediyseniz, aşağıdaki yaygın hatalara ve önerilen eylemlere bakın:
+Otomatik güncelleştirmeleri etkinleştiremezseniz, aşağıdaki yaygın hatalara ve önerilen eylemlere bakın:
 
 - **Hata**: Bir Azure Run As hesabı (hizmet sorumlusu) oluşturmak ve Katılımcı rolünü hizmet sorumlusuna vermek için izininiz yoktur.
 
-   **Önerilen eylem**: Oturum açan hesabın Katılımcı olarak atandığından emin olun ve yeniden deneyin. İzin atama hakkında daha fazla bilgi için [kaynaklara erişebilen bir Azure REKLAM uygulaması ve hizmet ilkesi oluşturmak için portalı kullan'daki](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#required-permissions) gerekli izinler bölümüne bakın.
- 
-   Otomatik güncelleştirmeleri etkinleştirdikten sonra çoğu sorunu gidermek için **Onarım'ı**seçin. Onarım düğmesi kullanılamıyorsa, uzantı güncelleştirme ayarları bölmesinde görüntülenen hata iletisine bakın.
+  **Önerilen eylem**: Oturum açan hesabın Katılımcı olarak atandığından emin olun ve yeniden deneyin. İzin atama hakkında daha fazla bilgi için, nasıl kullanılır: [Kaynaklara erişebilen bir Azure AD uygulaması ve hizmet ilkesi oluşturmak için portalı kullanın'](/azure/azure-resource-manager/resource-group-create-service-principal-portal#required-permissions)ın gerekli izinler bölümüne bakın.
 
-   ![Uzantı güncelleştirme ayarlarında Site Kurtarma hizmeti onarım düğmesi](./media/azure-to-azure-autoupdate/repair.png)
+  Otomatik güncelleştirmeleri etkinleştirdikten sonra çoğu sorunu gidermek için **Onarım'ı**seçin. Onarım düğmesi kullanılamıyorsa, uzantı güncelleştirme ayarları bölmesinde görüntülenen hata iletisine bakın.
+
+  :::image type="content" source="./media/azure-to-azure-autoupdate/repair.png" alt-text="Uzantı güncelleştirme ayarlarında Site Kurtarma hizmeti onarım düğmesi":::
 
 - **Hata**: Çalıştır Hesabının kurtarma hizmetleri kaynağına erişim izni yoktur.
 
-    **Önerilen eylem**: Çalıştır hesabını sil ve sonra [yeniden oluştur.](https://docs.microsoft.com/azure/automation/automation-create-runas-account) Veya, Otomasyon Hesabı Olarak Çalıştır'ın Azure Etkin Dizin uygulamasının kurtarma hizmetleri kaynağına erişebilmesini unutmayın.
+  **Önerilen eylem**: Çalıştır hesabını sil ve sonra [yeniden oluştur.](/azure/automation/automation-create-runas-account) Veya, Otomasyon Hesabı olarak çalıştırın Azure Etkin Dizin uygulamasının kurtarma hizmetleri kaynağına erişebilmesini unutmayın.
 
-- **Hata**: Run As Hesabı bulunamadı. Bunlardan biri silinmiş veya oluşturulmadı - Azure Active Directory Application, Service Principal, Role, Automation Certificate varlık, Otomasyon Bağlantısı varlığı - veya Thumbprint Sertifika ve Bağlantı arasında aynı değildir. 
+- **Hata**: Run As Hesabı bulunamadı. Bunlardan biri silinmiş veya oluşturulmadı - Azure Active Directory Application, Service Principal, Role, Automation Certificate varlık, Otomasyon Bağlantısı varlığı - veya Thumbprint Sertifika ve Bağlantı arasında aynı değildir.
 
-    **Önerilen eylem**: Çalıştır hesabını sil ve sonra [yeniden oluştur.](https://docs.microsoft.com/azure/automation/automation-create-runas-account)
+  **Önerilen eylem**: Çalıştır hesabını sil ve sonra [yeniden oluştur.](/azure/automation/automation-create-runas-account)
 
--  **Hata**: Otomasyon hesabı tarafından kullanılan Sertifika Olarak Azure Çalıştır'ın süresi dolmak üzeredir. 
+- **Hata**: Otomasyon hesabı tarafından kullanılan Sertifika Olarak Azure Çalıştır'ın süresi dolmak üzeredir.
 
-    Run As hesabı için oluşturulan kendi imzalı sertifikanın süresi, oluşturulma tarihinden itibaren bir yıl sonra sona erer. Sertifikayı süresi dolmadan önce herhangi bir zamanda yenileyebilirsiniz. E-posta bildirimleri için kaydolduysanız, sizin tarafınızdan bir eylem gerektiğinde de e-posta alırsınız. Bu hata, son kullanma tarihinden iki ay önce gösterilir ve sertifikanın süresi dolmuşsa kritik bir hataya dönüşecektir. Sertifikanın süresi dolduktan sonra, siz aynı sertifikayı yenileyene kadar otomatik güncelleştirme işlevsel olmayacaktır.
+  Run As hesabı için oluşturulan kendi imzalı sertifikanın süresi, oluşturulma tarihinden itibaren bir yıl sonra sona erer. Sertifikayı süresi dolmadan önce herhangi bir zamanda yenileyebilirsiniz. E-posta bildirimleri için kaydolduysanız, sizin tarafınızdan bir eylem gerektiğinde de e-posta alırsınız. Bu hata, son kullanma tarihinden iki ay önce gösterilir ve sertifikanın süresi dolmuşsa kritik bir hataya dönüşecektir. Sertifikanın süresi dolduktan sonra, siz aynı sertifikayı yenileyene kadar otomatik güncelleştirme işlevsel olmayacaktır.
 
-   **Önerilen eylem**: Bu sorunu çözmek için 'Onarım'a ve ardından 'Sertifika Yenile'ye tıklayın.
-    
-   ![yenileme-sertifika](media/azure-to-azure-autoupdate/automation-account-renew-runas-certificate.PNG)
+  **Önerilen eylem**: Bu sorunu gidermek için **Onarım'ı** seçin ve ardından **Sertifikayı Yenile'yi**seçin.
 
-> [!NOTE]
-> Sertifikayı yeniledikten sonra, geçerli durumun güncellenmesi için lütfen sayfayı yenileyin.
+  :::image type="content" source="./media/azure-to-azure-autoupdate/automation-account-renew-runas-certificate.PNG" alt-text="yenileme-sertifika":::
+
+  > [!NOTE]
+  > Sertifikayı yeniledikten sonra, geçerli durumu görüntülemek için sayfayı yenileyin.

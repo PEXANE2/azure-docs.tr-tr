@@ -1,6 +1,6 @@
 ---
-title: Azure Medya Hizmetleri'nde kotalar ve sınırlamalar
-description: Bu konu, Microsoft Azure Medya Hizmetleri'ndeki kotaları ve sınırlamaları açıklar.
+title: Azure Medya Hizmetlerinde kotalar ve sınırlar
+description: Bu konu, Microsoft Azure Medya Hizmetleri'ndeki kotaları ve sınırları açıklar.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/31/2020
+ms.date: 04/01/2020
 ms.author: juliako
-ms.openlocfilehash: 6fb2f8f9172533a2c7f4aa03e99bd08e16a1f1dc
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 2d4f5f83335f6f115362bcf66cf69d7f9de7eaa5
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/02/2020
-ms.locfileid: "80545922"
+ms.locfileid: "80582313"
 ---
 # <a name="azure-media-services-quotas-and-limits"></a>Azure Medya Hizmetleri kotaları ve sınırları
 
@@ -79,7 +79,7 @@ Toplam kayıt sayısı maksimum kotanın altında olsa bile, hesabınızdaki 90 
 | Canlı Etkinlik Başına Canlı Çıktılar |3 <sup>(5)</sup> |
 | Max Canlı Çıkış süresi | 25 saat |
 
-<sup>4</sup> Live Event sınırlamaları hakkında ayrıntılı bilgi için [Bkz. Canlı Etkinlik türleri karşılaştırması ve sınırlamaları.](live-event-types-comparison.md)
+<sup>4</sup> Live Event sınırları hakkında ayrıntılı bilgi için [Canlı Etkinlik türleri karşılaştırması ve limitlerine](live-event-types-comparison.md)bakın.
 
 <sup>5</sup> Canlı Çıktılar oluşturmayla başlar ve silindiğinde durur.
 
@@ -87,7 +87,7 @@ Toplam kayıt sayısı maksimum kotanın altında olsa bile, hesabınızdaki 90 
 
 | Kaynak | Varsayılan Sınır | 
 | --- | --- | 
-| Medya Hizmetleri hesabı başına [Akış Uç Noktaları](streaming-endpoint-concept.md) (durduruldu veya çalışıyor)|2 (sabit)|
+| Medya Hizmetleri hesabı başına [Akış Uç Noktaları](streaming-endpoint-concept.md) (durduruldu veya çalışıyor)|2 |
 | [Dinamik Bildirim Filtreleri](filters-dynamic-manifest-overview.md)|100|
 | [Akış İlkeleri](streaming-policy-concept.md) | 100 <sup>(6)</sup> |
 | Bir Varlıkla aynı anda ilişkili Benzersiz [Akış Konumbelirleyicileri](streaming-locators-concept.md) | 100<sup>(7)</sup> (sabit) |

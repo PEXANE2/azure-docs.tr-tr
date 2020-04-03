@@ -1,6 +1,6 @@
 ---
 title: Kapasite sınırları - Azure Synapse Analytics (eski adıyla SQL DW)
-description: Azure Synapse'de SQL Analytics'in çeşitli bileşenleri için izin verilen maksimum değerler.
+description: Azure Synapse'deki Synapse SQL havuzunun çeşitli bileşenleri için izin verilen maksimum değerler.
 services: synapse-analytics
 author: mlee3gsd
 manager: craigg
@@ -11,12 +11,12 @@ ms.date: 2/19/2020
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: a0343dd55149fa3c2c17af1f246595a56e4c6ec2
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: f35a5da15ca1a672046844282626a6cb7b8ecbdf
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350072"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583526"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-capacity-limits"></a>Azure Synapse Analytics (eski adıyla SQL DW) kapasite sınırları
 
@@ -38,7 +38,7 @@ Azure Synapse'nin çeşitli bileşenleri için izin verilen maksimum değerler.
 
 | Kategori | Açıklama | Maksimum |
 |:--- |:--- |:--- |
-| Database |Maksimum boyut | Gen1: 240 TB diske sıkıştırılmış. Bu alan tempdb veya günlük alanı bağımsızdır ve bu nedenle bu alan kalıcı tablolara ayrılmıştır.  Kümelenmiş sütun deposu sıkıştırma 5X olarak tahmin edilmektedir.  Bu sıkıştırma, tüm tablolar sütun deposu (varsayılan tablo türü) kümelenmiş olduğunda veritabanının yaklaşık 1 PB'ye kadar büyümesine olanak tanır. <br/><br/> Gen2: Sütun mağaza tabloları için sınırsız depolama.  Veritabanının Rowstore bölümü hala diskte sıkıştırılmış 240 TB ile sınırlıdır. |
+| Veritabanı |Maksimum boyut | Gen1: 240 TB diske sıkıştırılmış. Bu alan tempdb veya günlük alanı bağımsızdır ve bu nedenle bu alan kalıcı tablolara ayrılmıştır.  Kümelenmiş sütun deposu sıkıştırma 5X olarak tahmin edilmektedir.  Bu sıkıştırma, tüm tablolar sütun deposu (varsayılan tablo türü) kümelenmiş olduğunda veritabanının yaklaşık 1 PB'ye kadar büyümesine olanak tanır. <br/><br/> Gen2: Sütun mağaza tabloları için sınırsız depolama.  Veritabanının Rowstore bölümü hala diskte sıkıştırılmış 240 TB ile sınırlıdır. |
 | Tablo |Maksimum boyut |Sütun mağaza tabloları için sınırsız boyut. <br>Diske sıkıştırılmış rowstore tabloları için 60 TB. |
 | Tablo |Veritabanı başına tablolar | 100.000 |
 | Tablo |Tablo başına sütunlar |1024 sütun |
@@ -54,7 +54,7 @@ Azure Synapse'nin çeşitli bileşenleri için izin verilen maksimum değerler.
 | İstatistikler |İstatistik nesnesi başına sütunlar. |32 |
 | İstatistikler |Tablo başına sütunlar üzerinde oluşturulan istatistikler. |30,000 |
 | Saklı Yordamlar |Maksimum yuvalama seviyesi. |8 |
-| Görünüm |Görünüm başına sütunlar |1,024 |
+| Görüntüle |Görünüm başına sütunlar |1,024 |
 ||||
 
 ## <a name="loads"></a>Yükler

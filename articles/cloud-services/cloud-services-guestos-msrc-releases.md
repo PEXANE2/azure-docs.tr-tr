@@ -10,34 +10,31 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 03/14/2020
+ms.date: 04/2/2020
 ms.author: raiye
-ms.openlocfilehash: 51c46414b5fe39da13b6ffff53c9509b482fa0d3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2b929481af3df8bc3bc6a9a6955e8277e3de3298
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79408310"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618672"
 ---
 # <a name="azure-guest-os"></a>Azure Konuk İşletim Sistemi
 Aşağıdaki tablolar, Azure Konuk İşletim Sistemi'ne uygulanan Microsoft Güvenlik Yanıt Merkezi (MSRC) güncelleştirmelerini gösterir. Belirli bir güncelleştirmenin kullanmakta olduğunuz Konuk İşletim Sistemi için geçerli olup olmadığını belirlemek için bu makaleyi arayın. Güncelleştirmeler, tanıtıldıkları belirli [aile][family-explain] için her zaman ileriye taşır.
 
 ## <a name="march-2020-guest-os"></a>Mart 2020 Konuk İşletim Sistemi
 
->[!NOTE]
->Mart Konuk İşletim Sistemi şu anda otomatik güncelleştirmeler için yapılandırılan Bulut Hizmeti VM'lerine dağıtılıyor. Kullanıma sunulması tamamlandığında, bu sürüm Azure portalı ve yapılandırma dosyaları üzerinden manuel güncelleştirmeler için kullanılabilir hale getirilir. Aşağıdaki düzeltme emaları March Guest OS'de yer alabıdır. Bu liste değiştirilebilir.
-
 | Ürün Kategorisi | Veli KB Makalesi | Güvenlik Açığı Açıklaması | Konuk işletim sistemi | İlk Tanıtılan Tarih |
 | --- | --- | --- | --- | --- |
-|  Rel 20-03  |  [4541500]  |  Windows Güvenlik  | 2.96 | Mar 10, 2020 |
-|  Rel 20-03  |  [4540671]  |  Internet Explorer  | 2.96, 3.83, 4.76 | Mar 10, 2020 |
-|  Rel 20-03  |  [4540694]  |  Windows Güvenlik  | 3.83 | Mar 10, 2020 |
-|  Rel 20-03  |  [4541505]  |  Windows Güvenlik  | 4.76 | Mar 10, 2020 |
-|  Rel 20-03  |  [4540670]  |  En Son Kümülatif Güncelleme(LCU)  | 5.41 | Mar 10, 2020 |
-|  Rel 20-03  |  [4538461]  |  En Son Kümülatif Güncelleme(LCU)  | 6.17 | Mar 10, 2020 |
-|  Rel 20-03  |  [4537820]  |  Aylık Toplama  | 2.96 | Şub 11, 2020 |
-|  Rel 20-03  |  [4537814]  |  Aylık Toplama  | 3.83 | Şub 11, 2020 |
-|  Rel 20-03  |  [4537821]  |  Aylık Toplama  | 4.76 | Şub 11, 2020 |
+|  Rel 20-03  |  [4541500]  |  Windows Güvenlik  | [2.96] | Mar 10, 2020 |
+|  Rel 20-03  |  [4540671]  |  Internet Explorer  | [2,96], [3,83], [4,76] | Mar 10, 2020 |
+|  Rel 20-03  |  [4540694]  |  Windows Güvenlik  | [3.83] | Mar 10, 2020 |
+|  Rel 20-03  |  [4541505]  |  Windows Güvenlik  | [4.76] | Mar 10, 2020 |
+|  Rel 20-03  |  [4540670]  |  En Son Kümülatif Güncelleme(LCU)  | [5.41] | Mar 10, 2020 |
+|  Rel 20-03  |  [4538461]  |  En Son Kümülatif Güncelleme(LCU)  | [6.17] | Mar 10, 2020 |
+|  Rel 20-03  |  [4537820]  |  Aylık Toplama  | [2.96] | Şub 11, 2020 |
+|  Rel 20-03  |  [4537814]  |  Aylık Toplama  | [3.83] | Şub 11, 2020 |
+|  Rel 20-03  |  [4537821]  |  Aylık Toplama  | [4.76] | Şub 11, 2020 |
 
 [4541500]: https://support.microsoft.com/kb/4541500 
 [4540671]: https://support.microsoft.com/kb/4540671 

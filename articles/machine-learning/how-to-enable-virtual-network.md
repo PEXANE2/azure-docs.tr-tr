@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 03/13/2020
-ms.openlocfilehash: 6e300bbec097201b33f0c576db91c2ca720fb921
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: 4d845514965a8d60c636902660ce838926cbf3c9
+ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80437431"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80607608"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Azure Sanal Ağı'nda Azure ML deneme ve çıkarım işlerini güvenli hale
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -32,7 +32,7 @@ Bu makalede, gelişmiş *güvenlik ayarları*hakkında ayrıntılı bilgi sağla
 > Özel olarak çağrıldığı sürece, sanal ağ içindeki depolama hesapları veya bilgi işlem hedefleri gibi kaynakların kullanılması hem makine öğrenimi ardışık hatlarıyla hem de komut dosyası çalıştırmaları gibi boru hattı olmayan iş akışlarıyla çalışır.
 
 > [!WARNING]
-> Microsoft, Azure Machine Learning tasarımcısını veya otomatik makine öğrenimini (stüdyodan) sanal ağ daki kaynaklarla kullanmayı desteklemez.
+> Microsoft, temel depolama alanı sanal ağ etkinse Otomatik ML, Datasets, Datalabeling, Designer ve Notebooks gibi Azure Machine Learning Studio özelliklerini kullanmayı desteklemez.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -510,7 +510,7 @@ Ağ kuralını yapılandırma hakkında daha fazla bilgi için Azure [Güvenlik 
 
 1. Çalışma alanınız için Azure Kapsayıcı Kayıt Defteri'nin adını bulmak için aşağıdaki yöntemlerden birini kullanın:
 
-    __Azure portal__
+    __Azure portalı__
 
     Çalışma alanınızın genel bakış bölümünden, __Kayıt Defteri__ değeri Azure Kapsayıcı Kayıt Defteri'ne bağlantılar bağlar.
 

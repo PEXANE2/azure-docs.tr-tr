@@ -11,12 +11,12 @@ ms.date: 11/22/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: a7f27215c7ba053933d9d12658253ea92aefa526
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: ace4bc2e46d9e1926da18dedb163657d4f343979
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351121"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586322"
 ---
 # <a name="data-warehouse-units-dwus"></a>Veri Ambarı Birimleri (DWUs)
 
@@ -24,7 +24,7 @@ Fiyat ve performansı optimize etmek için ideal veri ambarı birimi (DWUs) say�
 
 ## <a name="what-are-data-warehouse-units"></a>Veri Ambarı Birimleri nedir
 
-[SQL havuzu,](sql-data-warehouse-overview-what-is.md#sql-analytics-and-sql-pool-in-azure-synapse) [SQL Analytics'i](sql-data-warehouse-overview-what-is.md#sql-analytics-and-sql-pool-in-azure-synapse)kullanırken sağlanan analitik kaynakların bir koleksiyonunu temsil eder. Analitik kaynaklar CPU, bellek ve IO'nun bir kombinasyonu olarak tanımlanır. Bu üç kaynak, Veri Ambarı Birimleri (DWUs) adı verilen bilgi işlem ölçeği birimlerine paketlenir. DWU, hesaplama kaynakları ve performansının soyut, normalleştirilmiş bir ölçümünü temsil eder. Hizmet düzeyinizdeki bir değişiklik, sisteminizin performansını ve maliyetini ayarlayan, sistemin kullanabileceği DW'lerin sayısını değiştirir.
+[Synapse SQL havuzu,](sql-data-warehouse-overview-what-is.md#synapse-sql-pool-in-azure-synapse) sağlanan analitik kaynaklar koleksiyonunu temsil eder. Analitik kaynaklar CPU, bellek ve IO'nun bir kombinasyonu olarak tanımlanır. Bu üç kaynak, Veri Ambarı Birimleri (DWUs) adı verilen bilgi işlem ölçeği birimlerine paketlenir. DWU, hesaplama kaynakları ve performansının soyut, normalleştirilmiş bir ölçümünü temsil eder. Hizmet düzeyinizdeki bir değişiklik, sisteminizin performansını ve maliyetini ayarlayan, sistemin kullanabileceği DW'lerin sayısını değiştirir.
 
 Daha yüksek performans için veri ambarı birimlerinin sayısını artırabilirsiniz. Daha az performans için veri ambarı birimlerini azaltın. Depolama ve hesaplama maliyetleri ayrıca faturalandırılır, yani veri ambarı birimlerini değiştirmek depolama maliyetlerini etkilemez.
 
@@ -99,7 +99,7 @@ JOIN    sys.databases                     AS db ON ds.database_id = db.database_
 
 ## <a name="change-data-warehouse-units"></a>Veri ambarı birimlerini değiştirme
 
-### <a name="azure-portal"></a>Azure portalında
+### <a name="azure-portal"></a>Azure portal
 
 DWUs'ları değiştirmek için:
 

@@ -1,6 +1,6 @@
 ---
-title: Kimlik doğrulaması
-description: Azure Active Directory (AAD) veya SQL Server kimlik doğrulaması kullanarak Azure Synapse Analytics'e nasıl kimlik doğrulaması yapılacağını öğrenin.
+title: Kimlik Doğrulaması
+description: Azure Active Directory (Azure AD) veya SQL Server kimlik doğrulaması kullanarak Azure Synapse Analytics'e nasıl kimlik doğrulaması yapılacağını öğrenin.
 services: synapse-analytics
 author: julieMSFT
 manager: craigg
@@ -12,21 +12,23 @@ ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tag: azure-synapse
-ms.openlocfilehash: c998e3789a29d3cfeaf18a583913871f7edc5af1
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: ccc5db828a03c37d3fc4f49b13883ac3eeda2368
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350719"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80584226"
 ---
 # <a name="authenticate-to-azure-synapse-analytics"></a>Azure Synapse Analytics'e kimlik doğrulama
-Azure Active Directory (AAD) veya SQL Server kimlik doğrulaması kullanarak Azure Sinaps'ta SQL Analytics'e nasıl kimlik doğrulaması yapılacağını öğrenin.
+
+Azure Active Directory (Azure AD) veya SQL Server kimlik doğrulaması kullanarak Azure Synapse'de Synapse SQL poool'a nasıl kimlik doğrulaması yapılacağını öğrenin.
 
 BIR SQL havuzuna bağlanmak için kimlik doğrulama amacıyla güvenlik kimlik bilgilerini geçmeniz gerekir. Bağlantı kurduktan sonra, sorgu oturumunuzu kurmanın bir parçası olarak belirli bağlantı ayarları yapılandırılır.  
 
 Güvenlik ve veri ambarınıza bağlantıları etkinleştirme hakkında daha fazla bilgi için [bir veritabanı belgesinin güvenliğini sağlama](sql-data-warehouse-overview-manage-security.md)bilgisine bakın.
 
 ## <a name="sql-authentication"></a>SQL kimlik doğrulaması
+
 SQL havuzuna bağlanmak için aşağıdaki bilgileri sağlamanız gerekir:
 
 * Tam nitelikli sunucu adı
@@ -45,16 +47,18 @@ Varsayılan olarak, bağlantınız kullanıcı veritabanınıza *değil, ana* ve
 > 
 > 
 
-## <a name="azure-active-directory-aad-authentication"></a>Azure Etkin Dizin (AAD) kimlik doğrulaması
+## <a name="azure-active-directory-azure-ad-authentication"></a>Azure Etkin Dizin (Azure AD) kimlik doğrulaması
+
 [Azure Etkin Dizin](../../active-directory/fundamentals/active-directory-whatis.md) kimlik doğrulaması, Azure Etkin Dizin'de (Azure AD) kimlikleri kullanarak SQL havuzuna bağlanma mekanizmasıdır. Azure Active Directory kimlik doğrulaması ile veritabanı kullanıcılarının ve diğer Microsoft hizmetlerinin kimliklerini merkezi olarak tek bir merkezi konumda yönetebilirsiniz. Merkezi kimlik yönetimi, Azure Synapse kullanıcılarını yönetmek için tek bir yer sağlar ve izin yönetimini kolaylaştırır. 
 
 ### <a name="benefits"></a>Avantajlar
+
 Azure Etkin Dizin avantajları şunlardır:
 
 * SQL Server kimlik doğrulamasına alternatif sağlar.
 * Veritabanı sunucuları arasında kullanıcı kimliklerinin çoğalmasını durdurmaya yardımcı olur.
 * Tek konumda parola dönüşüne olanak sağlar
-* Dış (AAD) gruplarını kullanarak veritabanı izinlerini yönetin.
+* Dış (Azure AD) gruplarını kullanarak veritabanı izinlerini yönetin.
 * Azure Active Directory tarafından desteklenen tümleşik Windows kimlik doğrulaması ve diğer kimlik doğrulama biçimlerini etkinleştirerek parola depolamayı ortadan kaldırır.
 * Veritabanı düzeyinde kimlikleri doğrulamak için veritabanı kullanıcıları içeren kullanır.
 * SQL havuzuna bağlanan uygulamalar için belirteç tabanlı kimlik doğrulamasını destekler.
@@ -66,6 +70,7 @@ Azure Etkin Dizin avantajları şunlardır:
 > 
 
 ### <a name="configuration-steps"></a>Yapılandırma adımları
+
 Azure Etkin Dizin kimlik doğrulamasını yapılandırmak için aşağıdaki adımları izleyin.
 
 1. Azure Etkin Dizin oluşturma ve doldurma
@@ -78,8 +83,10 @@ Azure Etkin Dizin kimlik doğrulamasını yapılandırmak için aşağıdaki ad�
 Şu anda Azure Etkin Dizin kullanıcıları SSDT Object Explorer'da gösterilmez. Geçici çözüm olarak, [sys.database_principals'deki](https://msdn.microsoft.com/library/ms187328.aspx)kullanıcıları görüntüleyin.
 
 ### <a name="find-the-details"></a>Ayrıntıları bulun
-* Azure Active Directory kimlik doğrulamasını yapılandırma ve kullanma adımları, Azure Sinaps'taki Azure SQL Veritabanı ve SQL Analytics için hemen hemen aynıdır. [Azure Active Directory Authentication'ı kullanarak SQL Veritabanına veya SQL Havuzuna Bağlanma](../../sql-database/sql-database-aad-authentication.md)konusundaki ayrıntılı adımları izleyin.
+
+* Azure Active Directory kimlik doğrulamasını yapılandırma ve kullanma adımları, Azure Sinaps'taki Azure SQL Veritabanı ve Synapse SQL havuzu için hemen hemen aynıdır. [Azure Active Directory Authentication'ı kullanarak SQL Veritabanına veya SQL Havuzuna Bağlanma](../../sql-database/sql-database-aad-authentication.md)konusundaki ayrıntılı adımları izleyin.
 * Özel veritabanı rolleri oluşturun ve rolleri kullanıcılarekleyin. Ardından rollere ayrıntılı izinler tanıyın. Daha fazla bilgi için veritabanı [altyapısı izinleri ile başlarken](https://msdn.microsoft.com/library/mt667986.aspx)bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
 Visual Studio ve diğer uygulamalarla sorgulamaya başlamak için [Visual Studio ile Sorgula'ya](sql-data-warehouse-query-visual-studio.md)bakın.

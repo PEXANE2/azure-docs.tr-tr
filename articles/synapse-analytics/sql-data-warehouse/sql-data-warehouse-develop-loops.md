@@ -1,6 +1,6 @@
 ---
 title: T-SQL döngülerini kullanma
-description: T-SQL döngülerini kullanmak ve çözümler geliştirmek için Azure SQL Veri Ambarı'ndaki imleçleri değiştirmek için ipuçları.
+description: T-SQL döngülerini kullanarak ve Synapse SQL havuzunda imleçlerin değiştirilmesi için ipuçları.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,24 +11,28 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: afb2160cb9b4e34d3d17db86bac9cd3be79886d0
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 4cec4801f2a15ebf858f50377c9718fdacac4e29
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351583"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618994"
 ---
-# <a name="using-t-sql-loops-in-sql-data-warehouse"></a>SQL Veri Ambarında T-SQL döngülerini kullanma
-T-SQL döngülerini kullanmak ve çözümler geliştirmek için Azure SQL Veri Ambarı'ndaki imleçleri değiştirmek için ipuçları.
+# <a name="using-t-sql-loops-in-synapse-sql-pool"></a>Synapse SQL havuzunda T-SQL döngülerini kullanma
+Bu makalede, T-SQL döngüleri kullanarak ve imleçlerin değiştirilmesi için SQL havuzu çözüm geliştirme ipuçları dahildir.
 
 ## <a name="purpose-of-while-loops"></a>WHILE döngülerinin amacı
 
-SQL Veri Ambarı, ifade bloklarını tekrar tekrar yürütmek için [WHILE](/sql/t-sql/language-elements/while-transact-sql) döngüsüne destek sağlar. Bu WHILE döngüsü, belirtilen koşullar doğru olduğu sürece veya kod özellikle BREAK anahtar sözcük kullanarak döngüyü sonlandırAna kadar devam eder. Döngüler, SQL kodunda tanımlanan imleçleri değiştirmek için yararlıdır. Neyse ki, SQL koduyla yazılmış hemen hemen tüm imleçler hızlı ileri, salt okunur çeşitlidir. Bu nedenle, [WHILE] döngüleri imleçleri değiştirmek için harika bir alternatiftir.
+Synapse SQL havuzu, deyim bloklarını tekrar tekrar yürütmek için [WHILE](https://docs.microsoft.com/sql/t-sql/language-elements/while-transact-sql?view=sql-server-ver15) döngüsüne destek sağlar. Bu WHILE döngüsü, belirtilen koşullar doğru olduğu sürece veya kod özellikle BREAK anahtar sözcük kullanarak döngüyü sonlandırAna kadar devam eder. 
 
-## <a name="replacing-cursors-in-sql-data-warehouse"></a>SQL Veri Ambarında imleçlerin değiştirilmesi
-Ancak, kafa dalış önce kendinize şu soruyu sormalısınız: "Bu imleç set tabanlı işlemleri kullanmak için yeniden yazılmış olabilir mi?." Birçok durumda, cevap evet ve genellikle en iyi yaklaşımdır. Küme tabanlı bir işlem genellikle yinelemeli, satır satır yaklaşımdaha hızlı gerçekleştirir.
+Döngüler, SQL kodunda tanımlanan imleçleri değiştirmek için yararlıdır. Neyse ki, SQL koduyla yazılmış hemen hemen tüm imleçler hızlı ileri, salt okunur çeşitlidir. Yani, WHILE döngüleri imleçler yerine harika bir alternatiftir.
 
-Hızlı ileri okuma imleci kolayca bir döngü yapısı ile değiştirilebilir. Aşağıdaki basit bir örnektir. Bu kod örneği, veritabanındaki her tablonun istatistiklerini güncelleştirir. Döngüdeki tabloların üzerine yineleyerek, her komut sırayla yürütülür.
+## <a name="replacing-cursors-in-synapse-sql-pool"></a>Synapse SQL havuzunda imleçlerin değiştirilmesi
+Ancak, kafaya dalmadan önce kendinize şu soruyu sormalısınız: "Bu imleç set tabanlı işlemleri kullanmak için yeniden yazılabilir mi?" 
+
+Birçok durumda, cevap evet ve sık sık en iyi yaklaşımdır. Küme tabanlı bir işlem genellikle yinelemeli, satır satır yaklaşımdaha hızlı gerçekleştirir.
+
+Hızlı ileri okuma imleci kolayca bir döngü yapısı ile değiştirilebilir. Aşağıdaki örnek basit bir örnektir. Bu kod örneği, veritabanındaki her tablonun istatistiklerini güncelleştirir. Döngüdeki tabloların üzerine yineleyerek, her komut sırayla yürütülür.
 
 İlk olarak, tek tek ifadeleri tanımlamak için kullanılan benzersiz bir satır numarası içeren geçici bir tablo oluşturun:
 

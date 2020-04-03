@@ -6,12 +6,12 @@ ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
-ms.openlocfilehash: 7e00d03a8b3ec7ef56935ff7714fd932bc343cd3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 02d9ce87d45c5f1c9a123aae18f7d710b268f03e
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79277446"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80582248"
 ---
 # <a name="azure-service-bus-output-binding-for-azure-functions"></a>Azure İşveri Çıkışı, Azure İşlevleri için bağlayıcı
 
@@ -21,7 +21,7 @@ Kurulum ve yapılandırma ayrıntıları hakkında daha fazla bilgi için [genel
 
 ## <a name="example"></a>Örnek
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Aşağıdaki örnekte, Hizmet Veri Servisi sıra iletisi gönderen bir [C# işlevi](functions-dotnet-class-library.md) gösterilmektedir:
 
@@ -227,7 +227,7 @@ Java işlevleri de bir Servis Veri Servisi konusuna yazabilirsiniz. Aşağıdaki
 
 ## <a name="attributes-and-annotations"></a>Öznitelikler ve ek açıklamalar
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 [C# sınıfı kitaplıklarda](functions-dotnet-class-library.md) [ServiceBusAttribute'ı](https://github.com/Azure/azure-functions-servicebus-extension/blob/master/src/Microsoft.Azure.WebJobs.Extensions.ServiceBus/ServiceBusAttribute.cs)kullanın.
 
@@ -295,7 +295,7 @@ Aşağıdaki *tabloda, function.json* dosyasında ayarladığınız bağlama `Se
 
 Azure İşlevler 1.x'te, çalışma zamanı yoksa ve siz `accessRights` `manage`de 'ye ayarlamışsanız, çalışma zamanı sırayı oluşturur. Fonksiyonlar sürüm 2.x ve üstü, sıra veya konu zaten var olmalıdır; var olmayan bir sıra veya konu belirtirseniz, işlev başarısız olur. 
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Çıktı bağlama için aşağıdaki parametre türlerini kullanın:
 
@@ -383,6 +383,7 @@ Bu bölümde, bu bağlama için 2.x ve üstü sürümlerde kullanılabilen genel
 
 |Özellik  |Varsayılan | Açıklama |
 |---------|---------|---------|
+|prefetchCount|0|İleti alıcısının aynı anda isteyebileceği ileti sayısını alır veya ayarlar.|
 |maxAutoRenewDuration|00:05:00|İleti kilidinin otomatik olarak yenileneceği maksimum süre.|
 |Autocomplete|true|Tetikleyicinin iletiyi hemen tam (otomatik tamamlama) olarak mı işaretlemesi yoksa işlevin başarılı bir şekilde çıkmasını bekleyip beklememesi.|
 |Maxconcurrentcalls|16|İleti pompasının başlatması gereken geri aramaiçin en fazla eşzamanlı çağrı sayısı. Varsayılan olarak, İşlevler çalışma zamanı aynı anda birden çok iletiyi işler. Çalışma zamanını tek bir sıra veya konu iletisini aynı `maxConcurrentCalls` anda işlemek üzere yönlendirmek için 1 olarak ayarlayın. |

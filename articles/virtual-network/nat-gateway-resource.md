@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: allensu
-ms.openlocfilehash: 8234bb82ba1f4ff9bd7aea9887121d9c703ac4a3
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 405d9bc09462f2940567080ec86775baf066d70d
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80473299"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80584563"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources"></a>NAT ağ geçidi kaynaklarıyla sanal ağlar tasarlama
 
@@ -67,19 +67,18 @@ Aşağıdaki örnek, Azure Kaynak Yöneticisi şablonundan bir kesittir.  Bu şa
 - **natgatewayname** - NAT ağ geçidinin adı.
 - **konum** - Kaynağın bulunduğu Azure bölgesi.
 - **publicipname** - NAT ağ geçidi ile ilişkili giden genel IP adı.
-- **publicipprefixname** - NAT ağ geçidiyle ilişkili giden genel IP önekinin adı.
 - **vnetname** - Sanal ağın adı.
 - **subnetname** - NAT ağ geçidiyle ilişkili alt ağın adı.
 
 Tüm IP adresi ve önek kaynakları tarafından sağlanan toplam IP adresi sayısı toplam 16 IP adresini geçemez. 1 ile 16 arasında herhangi bir sayıda IP adresine izin verilir.
 
-:::code language="json" source="~/quickstart-templates/101-nat-gateway-1-vm/azuredeploy.json" range="256-281":::
+:::code language="json" source="~/quickstart-templates/101-nat-gateway-vnet/azuredeploy.json" range="81-96":::
 
 NAT ağ geçidi kaynağı oluşturulduğunda, sanal bir ağın bir veya daha fazla alt ağında kullanılabilir. Bu NAT ağ geçidi kaynağını hangi alt ağların kullanacağını belirtin. Bir NAT ağ geçidi birden fazla sanal ağa yayılamaz. Aynı NAT ağ geçidini sanal ağın tüm alt ağlarına atamanız gerekmez. Tek tek alt ağlar farklı NAT ağ geçidi kaynaklarıyla yapılandırılabilir.
 
 Kullanılabilirlik bölgelerini kullanmayan senaryolar bölgesel (bölge belirtilmemiş) olacaktır. Kullanılabilirlik bölgelerini kullanıyorsanız, NAT'yi belirli bir bölgeye yalıtmak için bir bölge belirtebilirsiniz. Bölge artıklığı desteklenmez. NAT [kullanılabilirlik bölgelerini](#availability-zones)gözden geçirin.
 
-:::code language="json" source="~/quickstart-templates/101-nat-gateway-1-vm/azuredeploy.json" range="225-255" highlight="239-251":::
+:::code language="json" source="~/quickstart-templates/101-nat-gateway-vnet/azuredeploy.json" range="1-146" highlight="81-96":::
 
 NAT ağ geçitleri, sanal ağ daki bir alt ağdaki bir özellik ile tanımlanır. Sanal ağ **vnetname** **alt net adı** üzerinde sanal makineler tarafından oluşturulan akışları NAT ağ geçidi kullanır. Tüm giden bağlantı kaynak IP adresi olarak **natgatewayname** ile ilişkili IP adreslerini kullanır.
 

@@ -1,6 +1,6 @@
 ---
 title: Yönetilebilirlik ve izleme - genel bakış
-description: SQL havuzu ile kaynak kullanımı, günlük ve sorgu etkinliği, öneriler ve veri koruma (yedekleme ve geri yükleme) için izleme ve yönetilebilirlik genel bakış.
+description: Synapse SQL havuzu ile kaynak kullanımı, günlük ve sorgu etkinliği, öneriler ve veri koruma (yedekleme ve geri yükleme) için izleme ve yönetilebilirlik genel bakış.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 08/27/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 26e74b7b2cabfe7080c624569b5e2189a86770ea
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: e41bf003af7d0926aab04ffed86bf6ec5031c4f7
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350303"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586410"
 ---
-# <a name="manageability-and-monitoring-with-sql-pool"></a>SQL havuzu ile yönetilebilirlik ve izleme
+# <a name="manageability-and-monitoring-with-synapse-sql-pool"></a>Synapse SQL havuzu ile yönetilebilirlik ve izleme
 
-SQL Analytics, SQL havuzu üzerinden bir veri ambarı sağlamanıza olanak tanır. İzleyen makaleler, veri ambarınızı yönetmenize ve izlemenize yardımcı olur. Ayrıca, veri ambarının kullanımını ve performansını optimize etmenin yollarını da öğreneceksiniz.
+Synapse SQL, SQL havuzu üzerinden bir veri ambarı sağlamanızı sağlar. İzleyen makaleler, veri ambarınızı yönetmenize ve izlemenize yardımcı olur. Ayrıca, veri ambarının kullanımını ve performansını optimize etmenin yollarını da öğreneceksiniz.
 
 ## <a name="overview"></a>Genel Bakış
 

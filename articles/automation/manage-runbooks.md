@@ -5,21 +5,21 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: ad2a34691a00f217db6cf6835eefed18c8862d32
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 29ac9239b8dc87b1ed12fc8333bf5201fe8fa204
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/02/2020
-ms.locfileid: "80547930"
+ms.locfileid: "80617138"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>Azure Otomasyonu'nda runbook'ları yönetme
 
-Yeni bir runbook [oluşturarak](#create-a-runbook) veya bir dosyadan veya [Runbook Galerisi'nden](automation-runbook-gallery.md)varolan bir kitabı içe [aktararak](#import-a-runbook) Azure Otomasyonu'na bir runbook ekleyebilirsiniz. Bu makalede, bir dosyadan runbook oluşturma ve alma hakkında bilgi sağlar. [Azure Otomasyonu için Runbook ve modül galerilerinde](automation-runbook-gallery.md)topluluk runbook'larına ve modüllerine erişmenin tüm ayrıntılarını alabilirsiniz.
+Yeni bir runbook [oluşturarak](#creating-a-runbook) veya bir dosyadan veya [Runbook Galerisi'nden](automation-runbook-gallery.md)varolan bir kitabı içe [aktararak](#importing-a-runbook) Azure Otomasyonu'na bir runbook ekleyebilirsiniz. Bu makalede, bir dosyadan runbook oluşturma ve alma hakkında bilgi sağlar. [Azure Otomasyonu için Runbook ve modül galerilerinde](automation-runbook-gallery.md)topluluk runbook'larına ve modüllerine erişmenin tüm ayrıntılarını alabilirsiniz.
 
 >[!NOTE]
 >Bu makale yeni Azure PowerShell Az modülünü kullanacak şekilde güncelleştirilmiştir. En azından Aralık 2020'ye kadar hata düzeltmeleri almaya devam edecek olan AzureRM modülünü de kullanmaya devam edebilirsiniz. Yeni Az modülüyle AzureRM'nin uyumluluğu hakkında daha fazla bilgi edinmek için bkz. [Yeni Azure PowerShell Az modülüne giriş](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Karma Runbook Worker'ınızdaki Az modül yükleme yönergeleri için Azure [PowerShell Modül'üne](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0)bakın. Otomasyon hesabınız için, Azure Otomasyonu'nda Azure [PowerShell modüllerini nasıl güncelleştirebileceğinizi](automation-update-azure-modules.md)kullanarak modüllerinizi en son sürüme güncelleştirebilirsiniz.
 
-## <a name="create-a-runbook"></a>Runbook oluşturma
+## <a name="creating-a-runbook"></a>Runbook oluşturma
 
 Azure portallarından birini veya Windows PowerShell'i kullanarak Azure Otomasyonu'nda yeni bir runbook oluşturabilirsiniz. Runbook oluşturulduktan sonra, [Öğrenme PowerShell İş Akışı](automation-powershell-workflow.md) ve Azure [Otomasyonu'nda Grafik sel](automation-graphical-authoring-intro.md)yazma bilgileri kullanarak kitabı yeniden ayarlayabilirsiniz.
 
@@ -42,9 +42,9 @@ New-AzAutomationRunbook -AutomationAccountName MyAccount `
 -Name NewRunbook -ResourceGroupName MyResourceGroup -Type PowerShell
 ```
 
-## <a name="import-a-runbook"></a>Runbook alma
+## <a name="importing-a-runbook"></a>Runbook alma
 
-Bir PowerShell komut dosyası veya PowerShell İş Akışı **(.ps1),** dışa aktarılan grafik runbook **(.graphrunbook)** veya Python 2 komut dosyası (**.py)** içe aktararak Azure Otomasyonu'nda yeni bir runbook oluşturabilirsiniz.  Alma sırasında oluşturulan [runbook türünü](automation-runbook-types.md) aşağıdaki hususları dikkate alarak belirtmeniz gerekir.
+Bir PowerShell komut dosyası veya PowerShell İş Akışı **(.ps1),** dışa aktarılan grafik runbook **(.graphrunbook)** veya Python2 komut dosyası (**.py)** içe aktararak Azure Otomasyonu'nda yeni bir runbook oluşturabilirsiniz.  Alma sırasında oluşturulan [runbook türünü](automation-runbook-types.md) aşağıdaki hususları dikkate alarak belirtmeniz gerekir.
 
 * İş akışı içermeyen bir **.ps1** dosyası [PowerShell runbook](automation-runbook-types.md#powershell-runbooks) veya [PowerShell Workflow runbook'a](automation-runbook-types.md#powershell-workflow-runbooks)aktarılabilir. Bir PowerShell İş Akışı runbook içine içe aktarSanız, bir iş akışına dönüştürülür. Bu durumda, yapılan değişiklikleri açıklamak için açıklamalar runbook'a dahil edilir.
 
@@ -68,7 +68,7 @@ Bir komut dosyası dosyasını Azure Otomasyonuna almak için aşağıdaki yorda
 5. **Ad** alanı etkinse, runbook adını değiştirme seçeneğiniz olur. Ad bir harfle başlamalı ve harfler, sayılar, alt çizerler ve tireler içerebilir.
 6. [Runbook türü](automation-runbook-types.md) otomatik olarak seçilir, ancak geçerli kısıtlamaları dikkate aldıktan sonra türü değiştirebilirsiniz.
 7. **Oluştur'u**tıklatın. Yeni runbook, Otomasyon hesabının runbook'ları listesinde görünür.
-8. Çalıştıramadan önce [runbook'u yayımlamanız](#publish-a-runbook) gerekir.
+8. Çalıştıramadan önce [runbook'u yayımlamanız](#publishing-a-runbook) gerekir.
 
 > [!NOTE]
 > Bir grafik çalışma kitabı veya grafiksel PowerShell İş Akışı çalışma kitabı aldıktan sonra, bunu başka bir türe dönüştürebilirsiniz. Ancak, bu grafik çalışma kitaplarından birini metin çalışması kitabına dönüştüremezsiniz.
@@ -90,9 +90,9 @@ Import-AzAutomationRunbook -Name $runbookName -Path $scriptPath `
 -Type PowerShellWorkflow
 ```
 
-## <a name="test-a-runbook"></a>Bir runbook'u test etme
+## <a name="testing-a-runbook"></a>Çalışma kitabını test etme
 
-Bir runbook sınadığınızda, [Taslak sürümü](#publish-a-runbook) yürütülür ve gerçekleştirdiği tüm eylemler tamamlanır. İş geçmişi oluşturulmaz, ancak [Çıktı](automation-runbook-output-and-messages.md#output-stream) ve [Uyarı ve Hata](automation-runbook-output-and-messages.md#message-streams) akışları Test çıktı bölmesinde görüntülenir. [Verbose akışına](automation-runbook-output-and-messages.md#message-streams) iletiler yalnızca `VerbosePreference` değişken](otomasyon-runbook-output-and-messages.md#preference-variables) Devam olarak ayarlanmışsa Çıktı bölmesinde görüntülenir.
+Bir runbook sınadığınızda, [Taslak sürümü](#publishing-a-runbook) yürütülür ve gerçekleştirdiği tüm eylemler tamamlanır. İş geçmişi oluşturulmaz, ancak [Çıktı](automation-runbook-output-and-messages.md#output-stream) ve [Uyarı ve Hata](automation-runbook-output-and-messages.md#message-streams) akışları Test çıktı bölmesinde görüntülenir. [Verbose akışına](automation-runbook-output-and-messages.md#message-streams) iletiler, yalnızca [VerbosePreference](automation-runbook-output-and-messages.md#preference-variables) değişkeni `Continue`.
 
 Taslak sürüm çalıştırılsa bile, runbook yine de normal olarak yürütülür ve ortamdaki kaynaklara karşı herhangi bir eylem gerçekleştirir. Bu nedenle, çalışma kitaplarını yalnızca üretim dışı kaynaklarda sınamalısınız.
 
@@ -106,7 +106,7 @@ Her [runbook türünü](automation-runbook-types.md) sınamak için yordam aynı
 1. Test edilirken [PowerShell İş Akışını](automation-runbook-types.md#powershell-workflow-runbooks) veya [grafik çalışma](automation-runbook-types.md#graphical-runbooks) kitabını durdurmak veya askıya almak için Çıktı bölmesinin altındaki düğmeleri kullanabilirsiniz. Bir runbook'u askıya aldığınızda, askıya alınmadan önce geçerli etkinliği tamamlar. Runbook askıya alındığında, durdurabilir veya yeniden başlatabilirsiniz.
 1. Çıktı bölmesinde runbook'tan çıktıyı inceleyin.
 
-## <a name="publish-a-runbook"></a>Runbook yayımlama
+## <a name="publishing-a-runbook"></a>Runbook yayımlama
 
 Yeni bir runbook oluşturduğunuzda veya içe aktardığınızda, çalıştıramadan önce kitabı yayımlamanız gerekir. Azure Otomasyonu'ndaki her runbook'un taslak sürümü ve Yayımlanmış sürümü vardır. Yalnızca Yayımlanan sürüm çalıştırılabilir ve yalnızca Taslak sürüm düzenlenebilir. Yayımlanan sürüm Taslak sürümdeki herhangi bir değişiklikten etkilenmez. Taslak sürümü kullanıma sunulduğunda, geçerli Yayımlanmış sürümün üzerine Taslak sürümüyle birlikte yayınlanır.
 
@@ -129,7 +129,7 @@ Publish-AzAutomationRunbook -AutomationAccountName $automationAccountName `
 -Name $runbookName -ResourceGroupName $RGName
 ```
 
-### <a name="schedule-a-runbook-in-the-azure-portal"></a>Azure portalında bir runbook zamanlama
+## <a name="scheduling-a-runbook-in-the-azure-portal"></a>Azure portalında bir runbook zamanlama
 
 Runbook'unuzun yayımlandığı zaman, çalışma için zamanlayabilirsiniz.
 

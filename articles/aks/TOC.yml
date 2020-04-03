@@ -314,10 +314,6 @@
                   maintainContext: true
         - name: Helm ile uygulamaları çalıştırma
           href: kubernetes-helm.md
-        - name: Azure için Açık Hizmet Aracısı’nı kullanma
-          href: integrate-azure.md
-        - name: OSBA ile MongoDB için Cosmos DB API'sini kullanma
-          href: use-cosmosdb-osba-mongo-app.md
         - name: OpenFaaS kullanma
           href: openfaas.md
         - name: Spark işleri çalıştırma

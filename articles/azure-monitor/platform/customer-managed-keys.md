@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 03/26/2020
-ms.openlocfilehash: c8743385f8c3c801b2f06e4a30a8672d1d80acc4
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 18c926d16319eb8a8736a51d5f10e434b94d0ebe
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80422525"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80582494"
 ---
 # <a name="azure-monitor-customer-managed-key-configuration"></a>Azure Monitör müşteri tarafından yönetilen anahtar yapılandırması 
 
@@ -50,11 +50,11 @@ Son 14 gün içinde alınan veriler, verimli sorgu motoru çalışması için s�
 
 Azure Monitor, Azure Anahtar Kasanıza erişim sağlamak için sistem tarafından atanmış yönetilen kimliklerden yararlanır.Sistem tarafından atanan yönetilen kimlik yalnızca tek bir Azure kaynağıyla ilişkilendirilebilir. Azure Monitor veri deposunun (ADX kümesi) kimliği küme düzeyinde desteklenir ve bu, CMK özelliğinin özel bir ADX kümesinde teslim edilmesini belirler. CMK'yı birden çok çalışma alanlarında desteklemek için, yeni bir Log Analytics kaynağı *(Cluster)* Key Vault'unuz la Log Analytics çalışma alanlarınız arasında ara kimlik bağlantısı olarak gerçekleştirir. Bu kavram Sistem tarafından atanan kimlik kısıtlamasına uygundur ve kimlik ADX kümesi ile Log Analytics *Cluster* kaynağı arasında korunurken, ilişkili tüm çalışma alanlarının verileri Key Vault anahtarınızla korunur. Alttaki ADX küme depolama alanı,\'Azure Etkin Dizini aracılığıyla Azure Anahtar Kasanızın kimliğini doğrulamak ve erişmek için *Küme* kaynağıyla ilişkili yönetilen kimliği kullanır.
 
-![CMK Genel Bakış](media/customer-managed-keys/cmk-overview.png)
-1.  Müşterinin Anahtar Kasası.
-2.  Key Vault izinleri ile yönetilen kimliğe sahip müşterinin Log Analytics *Cluster* kaynağı – Kimlik veri deposu (ADX kümesi) düzeyinde desteklenir.
-3.  Azure Monitor özel ADX kümesi.
-4.  CMK şifrelemesi için *Cluster* kaynağıyla ilişkili müşterinin çalışma alanları.
+![CMK Genel Bakış](media/customer-managed-keys/cmk-overview-8bit.png)
+1.    Müşterinin Anahtar Kasası.
+2.    Key Vault izinleri ile yönetilen kimliğe sahip müşterinin Log Analytics *Cluster* kaynağı – Kimlik veri deposu (ADX kümesi) düzeyinde desteklenir.
+3.    Azure Monitor özel ADX kümesi.
+4.    CMK şifrelemesi için *Cluster* kaynağıyla ilişkili müşterinin çalışma alanları.
 
 ## <a name="encryption-keys-management"></a>Şifreleme anahtarları yönetimi
 
@@ -210,7 +210,7 @@ Anahtar Kasanızı *Küme* kaynağınıza izin veren yeni bir erişim ilkesiyle 
 - Anahtar izinleri: 'Al', 'Anahtarı Sart' ve 'Anahtarı Aç' izinlerini seçin.
 - Anapara seçin: önceki adımda yanıt döndürülen asıl kimlik değerini girin.
 
-![Anahtar Kasa izinleri vermek](media/customer-managed-keys/grant-key-vault-permissions.png)
+![Anahtar Kasa izinleri vermek](media/customer-managed-keys/grant-key-vault-permissions-8bit.png)
 
 Anahtar Kasanızın anahtarınızı ve Azure Monitör verilerinize erişimi korumak için kurtarılabilir olarak yapılandırıldığını doğrulamak için *Alma* izni gereklidir.
 
@@ -224,7 +224,7 @@ Bu adım, Key Vault'unuzdaki ilk ve gelecekteki anahtar sürüm güncelleştirme
 
 Anahtar Tanımlayıcı ayrıntılarıyla *Cluster* kaynak KeyVaultProperties'i güncelleştirin.
 
-**Güncelleştirme**
+**Güncelleştir**
 
 >[!Warning]
 > *Kimlik,* *sku*, *KeyVaultProperties* ve *konum*içeren *Küme* kaynak güncelleştirmesinde tam bir gövde sağlamanız gerekir. *KeyVaultProperties* ayrıntılarının eksik kümesi *kaynaktan* anahtar tanımlayıcısı kaldırılır ve [anahtar iptaline](#cmk-kek-revocation)neden olur.

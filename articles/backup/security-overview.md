@@ -3,12 +3,12 @@ title: Güvenlik özelliklerine genel bakış
 description: Yedekleme verilerinizi korumanıza ve işletmenizin güvenlik gereksinimlerini karşılamanıza yardımcı olan Azure Yedekleme'deki güvenlik yetenekleri hakkında bilgi edinin.
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: 91a0f29862b0c9c35e562c143e28ebbc6c39cf94
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 2eec3ee50f1de695b5432ee50b0900e35b81a6eb
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80423190"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585830"
 ---
 # <a name="overview-of-security-features-in-azure-backup"></a>Azure Yedekleme'de güvenlik özelliklerine genel bakış
 
@@ -66,6 +66,8 @@ Azure Yedekleme hizmeti, dosyaları, klasörleri ve birim durumunu şirket içi 
 * Parolayı değiştirmek gibi kritik bir işlem yapıldığında ek bir kimlik doğrulama katmanı eklenir. Bu doğrulama, bu tür işlemlerin yalnızca geçerli Azure kimlik bilgilerine sahip kullanıcılar tarafından gerçekleştirilebilmesini sağlamak içindir. [Saldırıları önleyen özellikler hakkında daha fazla bilgi edinin.](https://docs.microsoft.com/azure/backup/backup-azure-security-feature#prevent-attacks)
 
 * Silinen yedekleme verileri silinme tarihinden itibaren 14 gün daha saklanır. Bu, belirli bir süre içinde verilerin kurtarılabilirliğini sağlar, böylece bir saldırı gerçekleşse bile veri kaybı olmaz. Ayrıca, bozuk verilere karşı korumak için daha fazla sayıda minimum kurtarma noktası korunur. [Silinen yedekleme verilerini kurtarma hakkında daha fazla bilgi edinin.](https://docs.microsoft.com/azure/backup/backup-azure-security-feature#recover-deleted-backup-data)
+
+* Microsoft Azure Kurtarma Hizmetleri (MARS) aracısını kullanarak yedeklenen veriler için, verilerin Azure Yedekleme'ye yüklenmeden önce şifrelendiğinden ve yalnızca Azure Yedekleme'den indirildikten sonra şifrenin çözülmesini sağlamak için bir parola kullanılır. Parola ayrıntıları yalnızca parolayı oluşturan kullanıcı ve onunla yapılandırılan aracı için kullanılabilir. Hiçbir şey hizmetle paylaşılmaz veya paylaşılmaz. Bu, yanlışlıkla açığa çıkan tüm verilerin (ağdaki ortadaki adam saldırısı gibi) parola olmadan kullanılamaz hale getirildiği ve parolanın ağda gönderilmemesi nedeniyle verilerinizin tam güvenliğini sağlar.
 
 ## <a name="compliance-with-standardized-security-requirements"></a>Standart güvenlik gereksinimlerine uygunluk
 

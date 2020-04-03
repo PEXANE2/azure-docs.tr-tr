@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/31/2020
-ms.openlocfilehash: 22a24d01f606cd3f76a0de950351feb3d964da54
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 2db7a25f3f463e9210544354395c9d33a75f633c
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80478924"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619371"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Bilinen sorunlar ve Azure Machine Learning sorun giderme
 
@@ -48,16 +48,6 @@ Azure Machine Learning ile çalışırken karşılaşabileceğiniz [kaynak kotal
     pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML
     ```
 
-* **Hata iletisi: Azureml-dataprep-native için eşleşen dağılım bulunamadı**
-
-    Anaconda'nın Python 3.7.4 dağıtımı azureml-sdk yüklemesini bozan bir hataya sahiptir. Bu sorun bu [GitHub Sorunu'nda](https://github.com/ContinuumIO/anaconda-issues/issues/11195) ele alınmıştır
-    
-    Bu komutu kullanarak yeni bir Conda Ortamı oluşturarak bu geçici olarak işlenebilir:
-    ```bash
-    conda create -n <env-name> python=3.7.3
-    ```
-    Python 3.7.3 kullanarak bir Conda Ortamı oluşturur, 3.7.4'te yükleme sorunu yoktur.
-
 * **Paketleri yüklerken veri tuğlaları hatası**
 
     Azure Machine Learning SDK yüklemesi, daha fazla paket yüklendiğinde Azure Databricks'te başarısız olur. Bazı paketler, `psutil`örneğin, çakışmalara neden olabilir. Yükleme hatalarını önlemek için kitaplık sürümünü dondurarak paketleri yükleyin. Bu sorun Azure Machine Learning SDK ile değil, Databricks ile ilgilidir. Bu sorunu diğer kitaplıklarla da yaşayabilirsiniz. Örnek:
@@ -89,10 +79,9 @@ Azure Machine Learning ile çalışırken karşılaşabileceğiniz [kaynak kotal
 
 * **Databricks FailToSendFeather**: Azure `FailToSendFeather` Databricks kümesindeki verileri okurken bir hata görürseniz, aşağıdaki çözümlere bakın:
     
-        * Upgrade `azureml-sdk[automl]` package to the latest version.
-        * Add `azureml-dataprep` version 1.1.8 or above.
-        * Add `pyarrow` version 0.11 or above.
-        `
+    * Paketi `azureml-sdk[automl]` en son sürüme yükseltin.
+    * Sürüm `azureml-dataprep` 1.1.8 veya üzeri ekleyin.
+    * Sürüm `pyarrow` 0.11 veya üzeri ekleyin.
 
 ## <a name="create-and-manage-workspaces"></a>Çalışma alanları oluşturma ve yönetme
 
@@ -113,9 +102,7 @@ Bir hata `Unable to upload project files to working directory in AzureFile becau
 
 Veri aktarımı gibi diğer iş yükleri için dosya paylaşımı kullanıyorsanız, sorun göndermek için dosya paylaşımının ücretsiz olması için öneri blobs kullanmaktır. İş yükünü iki farklı çalışma alanı arasında da bölebilirsiniz.
 
-### <a name="datasets-and-data-preparation"></a>Veri Kümeleri ve Veri Hazırlama
-
-Bunlar Azure Machine Learning Datasets için bilinen sorunlardır.
+### <a name="passing-data-as-input"></a>Verileri girdi olarak aktarma
 
 *  **TypeError: FileNotFound: Böyle bir dosya veya dizin**yok : Sağladığınız dosya yolu dosyanın bulunduğu yerde değilse bu hata oluşur. Dosyaya başvurma şeklinizin, veri kümenizi bilgi işlem hedefinize monte ettiğiniz yerle tutarlı olduğundan emin olmanız gerekir. Deterministik bir durum sağlamak için, bir veri kümesini bir bilgi işlem hedefine monte ederken soyut yolu kullanmanızı öneririz. Örneğin, aşağıdaki kodda veri kümesini bilgi işlem hedefinin dosya sisteminin kökü `/tmp`ne söktürür, . 
     
@@ -128,8 +115,7 @@ Bunlar Azure Machine Learning Datasets için bilinen sorunlardır.
 
     Önde gelen ileri eğik çizgiyi '/' eklemezseniz, veri kümesinin nereye monte `/mnt/batch/.../tmp/dataset` edilip atılmasını istediğinizi belirtmek için bilgi işlem hedefinde örneğin çalışma dizinini öne eklemeniz gerekir.
 
-### <a name="data-labeling-projects-issues"></a>Veri etiketleme projeleri sorunları
-
+### <a name="data-labeling-projects"></a>Veri etiketleme projeleri
 
 |Sorun  |Çözüm  |
 |---------|---------|
@@ -138,9 +124,9 @@ Bunlar Azure Machine Learning Datasets için bilinen sorunlardır.
 |Görüntüleri gözden geçirirken, yeni etiketlenen görüntüler gösterilmez     |   Etiketli tüm görüntüleri yüklemek için **İlk** düğmesini seçin. **İlk** düğme sizi listenin önüne geri götürür, ancak etiketli tüm verileri yükler.      |
 |Nesne algılama için etiketleme yaparken Esc tuşuna basıldığında sol üst köşede sıfır boyutu etiketi oluşturulur. Bu durumda etiket gönderme başarısız olur.     |   Yanındaki çapraz işareti tıklatarak etiketi silin.  |
 
-## <a name="azure-machine-learning-designer-issues"></a>Azure Machine Learning tasarımcı sorunları
+## <a name="azure-machine-learning-designer"></a>Azure Machine Learning tasarımcısı
 
-Tasarımcı ile bilinen sorunlar.
+Bilinen sorunlar:
 
 * **Uzun işlem hazırlama süresi**: Bir işlem hedefine ilk bağlandığınızda veya oluşturduğunuzda birkaç dakika veya daha uzun olabilir. 
 

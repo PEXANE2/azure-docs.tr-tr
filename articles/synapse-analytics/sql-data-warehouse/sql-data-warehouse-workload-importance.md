@@ -1,6 +1,6 @@
 ---
 title: İş yükü önem düzeyi
-description: Azure Synapse Analytics'te SQL Analytics sorgularına önem belirleme kılavuzu.
+description: Azure Synapse Analytics'te Synapse SQL havuz sorguları için önem belirleme kılavuzu.
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 3dde2ad4af17313bcfce28964f8be1e831317a5a
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 84f432c45729091be1264bff85d1e32fac10f3ef
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80349956"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583151"
 ---
 # <a name="azure-synapse-analytics-workload-importance"></a>Azure Synapse Analytics iş yükü önemi
 
-Bu makalede, iş yükü önemi Azure Synapse'deki SQL Analytics istekleriiçin yürütme sırasını nasıl etkileyebileceği açıklanmaktadır.
+Bu makalede, iş yükü önemi Azure Synapse'deki Synapse SQL havuz isteklerinin yürütme sırasını nasıl etkileyebileceği açıklanmaktadır.
 
 ## <a name="importance"></a>Önem
 
@@ -38,7 +38,7 @@ Satış ve hava durumu verileriyle yukarıda açıklanan temel önem senaryosunu
 
 ### <a name="locking"></a>Kilitleme
 
-Okuma ve yazma etkinliği için kilitlere erişim doğal çekişme bir alandır. [Bölüm değiştirme](/azure/sql-data-warehouse/sql-data-warehouse-tables-partition) veya [RENAME OBJECT](/sql/t-sql/statements/rename-transact-sql?view=azure-sqldw-latest) gibi etkinlikler yükseltilmiş kilitler gerektirir.  Azure Synapse'deki SQL Analytics, iş yükü açısından önem kaybetmeden, iş gücü için en iyi duruma getirilir. İş kaynağı için optimizasyon, çalışan ve sıraya giren istekler aynı kilitleme gereksinimlerine sahipken ve kaynaklar kullanılabilirken, sıralanmış isteklerin istek kuyruğuna daha önce gelen daha yüksek kilitleme gereksinimleriolan istekleri atlayabileceği anlamına gelir. Daha yüksek kilitleme gereksinimleri olan isteklere iş yükü önemi uygulandıktan sonra. Daha yüksek öneme sahip istek, daha düşük öneme sahip istekten önce yürütülecektir.
+Okuma ve yazma etkinliği için kilitlere erişim doğal çekişme bir alandır. [Bölüm değiştirme](/azure/sql-data-warehouse/sql-data-warehouse-tables-partition) veya [RENAME OBJECT](/sql/t-sql/statements/rename-transact-sql?view=azure-sqldw-latest) gibi etkinlikler yükseltilmiş kilitler gerektirir.  Azure Synapse'deki Synapse SQL havuzu, iş yükü açısından önem kaybetmeden, iş ortası için en iyi duruma getirilir. İş kaynağı için optimizasyon, çalışan ve sıraya giren istekler aynı kilitleme gereksinimlerine sahipken ve kaynaklar kullanılabilirken, sıralanmış isteklerin istek kuyruğuna daha önce gelen daha yüksek kilitleme gereksinimleriolan istekleri atlayabileceği anlamına gelir. Daha yüksek kilitleme gereksinimleri olan isteklere iş yükü önemi uygulandıktan sonra. Daha yüksek öneme sahip istek, daha düşük öneme sahip istekten önce yürütülecektir.
 
 Aşağıdaki örneği inceleyin:
 
@@ -50,7 +50,7 @@ Q2 ve Q3 aynı öneme sahipse ve Q1 hala yürütülmeye devam ediyorsa, Q3 yür�
 
 ### <a name="non-uniform-requests"></a>Tektip olmayan istekler
 
-Önemin sorgu taleplerini karşılamaya yardımcı olabileceği başka bir senaryo da, farklı kaynak sınıfları olan isteklerin gönderilmesidir.  Daha önce de belirtildiği gibi, aynı önem altında, Azure Synapse'deki SQL Analytics, iş için en iyi duruma getirmektedir. Karma boyut istekleri (smallrc veya mediumrc gibi) sıraya girdiğinde, SQL Analytics kullanılabilir kaynaklara uyan en erken gelen isteği seçer. İş yükü önemi uygulanırsa, sonraki en yüksek önem isteği zamanlanır.
+Önemin sorgu taleplerini karşılamaya yardımcı olabileceği başka bir senaryo da, farklı kaynak sınıfları olan isteklerin gönderilmesidir.  Daha önce de belirtildiği gibi, aynı önem altında, Azure Synapse Synapse Synapse SQL havuzu iş için optimize eder. Karışık boyut istekleri (smallrc veya mediumrc gibi) sıraya girdiğinde, Synapse SQL havuzu kullanılabilir kaynaklara uyan en erken gelen isteği seçer. İş yükü önemi uygulanırsa, sonraki en yüksek önem isteği zamanlanır.
   
 DW500c aşağıdaki örneği göz önünde bulundurun:
 

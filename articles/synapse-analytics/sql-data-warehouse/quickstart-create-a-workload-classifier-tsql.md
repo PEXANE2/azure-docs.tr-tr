@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 9d41aa3447caebfeeffc05c36b5073f57c3e16cd
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 6354390c44c0991b0d6bf36cba8efd4272f9c73d
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350815"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583760"
 ---
 # <a name="quickstart-create-a-workload-classifier-using-t-sql"></a>Quickstart: T-SQL kullanarak iş yükü sınıflandırıcısı oluşturma
 
@@ -25,7 +25,7 @@ Bu hızlı başlangıçta, kuruluşunuzun CEO'su için büyük önem taşıyan b
 Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/) bir hesap oluşturun.
 
 > [!NOTE]
-> Azure Synapse Analytics'te BIR SQL Analytics örneği oluşturmak, faturalandırılabilir yeni bir hizmetle sonuçlanabilir.  Daha fazla bilgi için Azure [Synapse Analytics fiyatlandırması](https://azure.microsoft.com/pricing/details/sql-data-warehouse/)bölümüne bakın.
+> Azure Synapse Analytics'te Synapse SQL havuzu örneği oluşturmak, faturalandırılabilir yeni bir hizmete neden olabilir.  Daha fazla bilgi için Azure [Synapse Analytics fiyatlandırması](https://azure.microsoft.com/pricing/details/sql-data-warehouse/)bölümüne bakın.
 >
 >
 
@@ -109,5 +109,5 @@ Kaynakları temizlemek için aşağıdaki adımları izleyin.
 ## <a name="next-steps"></a>Sonraki adımlar
 
 - Şimdi bir iş yükü sınıflandırıcı oluşturduk. Nasıl performans gösterdiğini görmek için CEO olarak birkaç sorgu çalıştırın. Sorguları ve atanan önemi görüntülemek için [sys.dm_pdw_exec_requests'a](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) bakın.
-- SQL Analytics iş yükü yönetimi hakkında daha fazla bilgi için iş [yükü önemi](sql-data-warehouse-workload-importance.md) ve Iş [Yükü Sınıflandırması'na](sql-data-warehouse-workload-classification.md)bakın.
+- Synapse SQL iş yükü yönetimi hakkında daha [Workload Classification](sql-data-warehouse-workload-classification.md)fazla bilgi için [bkz.](sql-data-warehouse-workload-importance.md)
 - [İş Yükü Önemini Yapılandırmak](sql-data-warehouse-how-to-configure-workload-importance.md) ve İş Yükü Yönetimini Nasıl [Yönetecek ve İzleyecek](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md)makalelere bakın.

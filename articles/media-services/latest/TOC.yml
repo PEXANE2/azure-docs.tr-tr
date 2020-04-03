@@ -401,7 +401,7 @@
           href: 'https://aka.ms/ams-v3-ruby-sdk'
     - name: Azure Media Services Gezgini
       href: 'https://github.com/Azure/Azure-Media-Services-Explorer'
-    - name: Kotalar ve sınırlamalar
+    - name: Kotalar ve sınırlar
       href: limits-quotas-constraints.md
     - name: Azure bulutları ve bölgeleri
       href: azure-clouds-regions.md

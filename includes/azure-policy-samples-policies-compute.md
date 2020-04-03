@@ -2,14 +2,14 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 03/12/2020
+ms.date: 04/02/2020
 ms.author: dacoulte
-ms.openlocfilehash: 1acbcdf1aeed383591626c083f3335d9d7cf61c1
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 0fb6bd68026684599d94270906f1792e084ec5f6
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "79381977"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80624096"
 ---
 |Adı |Açıklama |Etki(ler) |Sürüm |GitHub |
 |---|---|---|---|---|
@@ -23,4 +23,4 @@ ms.locfileid: "79381977"
 |[Yalnızca onaylanmış VM uzantıları yüklenmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc0e996f8-39cf-4af9-9f45-83fbde810432) |Bu ilke, onaylanmayan sanal makine uzantılarını yönetir. |Denetim, Reddet, Devre Dışı Bırakma |1.0.0 |[Bağlantı](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/VirtualMachines_ApprovedExtensions_Audit.json)
 |[Sanal Makine Ölçeği Kümelerinde otomatik işletim sistemi görüntü yaması gerektirme](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F465f0161-0087-490a-9ad9-ad6217f4f43a) |Bu ilke, sanal makine ölçek kümelerinde otomatik işletim sistemi görüntü yaması etkinleştirerek sanal makineleri her ay güvenli bir şekilde uygulayarak sanal makineleri her zaman güvende tutmaya zorlar. |Inkar |1.0.0 |[Bağlantı](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/VMSSOSUpgradeHealthCheck_Deny.json)
 |[Eklenmemiş diskler şifrelenmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2c89a2e5-7285-40fe-afe0-ae8654b92fb2) |Bu ilke, şifreleme etkin olmadan herhangi bir eklenmemiş disk denetler. |Denetim, Engelli |1.0.0 |[Bağlantı](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/UnattachedDisk_Encryption_Audit.json)
-|[Sanal makineler yeni Azure Kaynak Yöneticisi kaynaklarına geçirilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1d84d5fb-01f6-4d12-ba4f-4a26081d403d) |Daha güçlü erişim denetimi (RBAC), daha iyi denetim, Azure Kaynak Yöneticisi tabanlı dağıtım ve yönetim, yönetilen kimliklere erişim, önemli kasaya erişim gibi güvenlik geliştirmeleri sağlamak için sanal makineleriniz için yeni Azure Kaynak Yöneticisi'ni kullanın daha kolay güvenlik yönetimi için sırlar, Azure AD tabanlı kimlik doğrulama ve etiketler ve kaynak grupları için destek |Denetim, Reddet, Devre Dışı Bırakma |1.0.0 |[Bağlantı](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/ClassicCompute_Audit.json)
+|[Sanal makineler yeni Azure Kaynak Yöneticisi kaynaklarına geçirilmelidir](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1d84d5fb-01f6-4d12-ba4f-4a26081d403d) |Daha güçlü erişim denetimi (RBAC), daha iyi denetim, Azure Kaynak Yöneticisi tabanlı dağıtım ve yönetim, yönetilen kimliklere erişim, sırlar için anahtar kasasına erişim, Azure AD tabanlı kimlik doğrulama ve daha kolay güvenlik yönetimi için etiketler ve kaynak grupları desteği gibi güvenlik geliştirmeleri sağlamak için sanal makineleriniz için yeni Azure Kaynak Yöneticisi'ni kullanın |Denetim, Reddet, Devre Dışı Bırakma |1.0.0 |[Bağlantı](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/ClassicCompute_Audit.json)

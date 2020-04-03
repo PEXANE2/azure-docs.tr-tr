@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/20/2018
 ms.author: memildin
-ms.openlocfilehash: 9e4c6577f0b8b18aff343ac54b31ff292632f5d0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: aa262b0be3902f6e143a53f8f1302156fc5aede6
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75979236"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80582976"
 ---
 # <a name="manage-user-data-found-in-an-azure-security-center-investigation"></a>Azure Güvenlik Merkezi soruşturmasında bulunan kullanıcı verilerini yönetme
 Bu makalede, Azure Güvenlik Merkezi'nin araştırma özelliğinde bulunan kullanıcı verilerinin nasıl yönetilenekadar yönetilene ilişkin bilgiler verilmektedir. Araştırma verileri Azure [Monitor günlüklerinde](../log-analytics/log-analytics-overview.md) depolanır ve Güvenlik Merkezi'nde açığa çıkarır. Kullanıcı verilerini yönetmek, verileri silme veya dışa aktarma olanağı nı içerir.
@@ -26,7 +26,7 @@ Bu makalede, Azure Güvenlik Merkezi'nin araştırma özelliğinde bulunan kulla
 [!INCLUDE [gdpr-intro-sentence.md](../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="searching-for-and-identifying-personal-data"></a>Kişisel verileri arama ve tanımlama
-Azure portalında, kişisel verileri aramak için Güvenlik Merkezi'nin [araştırma özelliğini](../security-center/security-center-investigation.md) kullanabilirsiniz. Araştırma özelliği Güvenlik **Uyarıları**altında kullanılabilir.
+Azure portalında, kişisel verileri aramak için Güvenlik Merkezi'nin araştırma özelliğini kullanabilirsiniz. Araştırma özelliği Güvenlik **Uyarıları**altında kullanılabilir.
 
 Araştırma özelliği, **Varlıklar** sekmesi altındaki tüm varlıkları, kullanıcı bilgilerini ve verileri gösterir.
 

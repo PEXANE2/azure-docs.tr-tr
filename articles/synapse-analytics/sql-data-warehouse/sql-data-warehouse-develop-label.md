@@ -1,6 +1,6 @@
 ---
 title: Araç sorgularında etiketleri kullanma
-description: Çözümler geliştirmek için Azure SQL Veri Ambarı'ndaki araç sorgularına etiketler kullanma ipuçları.
+description: Çözümler geliştirmek için Synapse SQL havuzundaki araç sorgularına etiketler kullanma ipuçları.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,19 +11,19 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 828e4a406cd0fb12877af44263ab1f338c20850c
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: c1a4ffcab3d10f1dc91ce036e995ae0026a0d718
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351670"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619026"
 ---
-# <a name="using-labels-to-instrument-queries-in-azure-sql-data-warehouse"></a>Azure SQL Veri Ambarı'nda araç sorguları için etiketleri kullanma
-Çözümler geliştirmek için Azure SQL Veri Ambarı'ndaki araç sorgularına etiketler kullanma ipuçları.
+# <a name="using-labels-to-instrument-queries-in-synapse-sql-pool"></a>Synapse SQL havuzunda enstrüman sorguları için etiketleri kullanma
+Bu makalede, SQL havuzunda araç sorguları için etiketleri kullanarak çözümler geliştirmek için ipuçları verilmiştir.
 
 
 ## <a name="what-are-labels"></a>Etiketler nedir?
-SQL Veri Ambarı sorgu etiketleri adlı bir kavramı destekler. Herhangi bir derinliğe girmeden önce, bir örneğe bakalım:
+SQL havuzu sorgu etiketleri adlı bir kavramı destekler. Herhangi bir derinliğe girmeden önce, bir örneğe bakalım:
 
 ```sql
 SELECT *
@@ -32,11 +32,13 @@ OPTION (LABEL = 'My Query Label')
 ;
 ```
 
-Son satır, sorguya 'Sorgu Etiketim' dizesini etiketler. Etiket DMV'ler aracılığıyla sorgulanabilir olduğundan, bu etiket özellikle yararlıdır. Etiketler için sorgulama, sorun sorgularını bulmak ve ELT çalışmasında ilerlemeyi belirlemeye yardımcı olmak için bir mekanizma sağlar.
+Son satır, sorguya 'Sorgu Etiketim' dizesini etiketler. Etiket DMV'ler aracılığıyla sorgulanabilir olduğundan bu etiket yararlıdır. 
 
-İyi bir adlandırma kongresi gerçekten yardımcı olur. Örneğin, etiketi PROJECT, PROCEDURE, STATEMENT veya COMMENT ile başlatmak, kaynak denetimindeki tüm kodlar arasında sorguyu benzersiz olarak tanımlamaya yardımcı olur.
+Etiketler için sorgulama, sorun sorgularını bulmak ve ELT çalışmasında ilerlemeyi belirlemeye yardımcı olmak için bir mekanizma sağlar.
 
-Aşağıdaki sorgu, etikete göre arama yapmak için dinamik bir yönetim görünümü kullanır.
+İyi bir adlandırma kongresi gerçekten yardımcı olur. Örneğin, etiketin PROJECT, PROCEDURE, STATEMENT veya COMMENT ile başlatılması, sorguyu kaynak denetimindeki tüm kodlar arasında benzersiz olarak tanımlar.
+
+Aşağıdaki sorgu etikete göre arama yapmak için dinamik bir yönetim görünümü kullanır:
 
 ```sql
 SELECT  *

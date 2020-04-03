@@ -16,12 +16,12 @@ ms.date: 03/22/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 477bb5430214b497f90e3cb6d5df69f9fcf4035f
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 65100e8584eba5c31edc2f9fd8c57ad8bd14c0d1
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/02/2020
-ms.locfileid: "80546152"
+ms.locfileid: "80582537"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Azure AD yetkilendirme yönetimi nedir?
 
@@ -43,7 +43,7 @@ Bu sorunlar, tedarik zinciri kuruluşlarından veya diğer iş ortaklarından ge
 - Hiç bir kişi, diğer kuruluşun dizinlerindeki belirli kişilerin tümünün onları davet edebilmesi için tanımayabilir.
 - Bu kullanıcıları davet edebilseler bile, bu kuruluştaki hiç kimse kullanıcının tüm erişimini tutarlı bir şekilde yönetmeyi hatırlayabilir
 
-Azure AD yetkilendirme yönetimi bu zorlukların üstesinden gelinmede yardımcı olabilir.  Müşterilerin Azure AD yetkilendirme yönetimini nasıl kullandıkları hakkında daha fazla bilgi edinmek için [Avanade örnek olay incelemesini](https://aka.ms/AvanadeELMCase) ve [Centrica örnek olay incelemesini](https://aka.ms/CentricaELMCase)okuyabilirsiniz.  Bu video, yetkilendirme yönetimine ve değerine genel bir bakış sağlar:
+Azure AD yetkilendirme yönetimi bu zorlukların üstesinden gelinmede yardımcı olabilir.  Müşterilerin Azure AD yetkilendirme yönetimini nasıl kullandıkları hakkında daha fazla bilgi edinmek için [Avanade örnek olay incelemesini](https://customers.microsoft.com/story/avanade-professional-services-azure-canada) ve [Centrica örnek olay incelemesini](https://customers.microsoft.com/story/757467-centrica-energy-azure)okuyabilirsiniz.  Bu video, yetkilendirme yönetimine ve değerine genel bir bakış sağlar:
 
 >[!VIDEO https://www.youtube.com/embed/_Lss6bFrnQ8]
 

@@ -11,15 +11,16 @@ ms.date: 04/17/2018
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 05d5e4f7334c6a9ef7a4f9e8ce7acbdf007a6a44
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: f3d5076b8ca4e1c79451bfe3bcd1dbe554b17a88
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351444"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586467"
 ---
 # <a name="azure-synapse-analytics-data-management-partners"></a>Azure Synapse Analytics veri yönetimi ortakları
-Azure Synapse'nin SQL Analytics özelliğini kullanarak veri ambarı çözümünüzü oluşturmak için, aralarından seçim yapabileceğiniz çok çeşitli sektör lideri araçlara sahipsiniz. Bu makalede, Azure Sinaps'ı destekleyen veri yönetimi araçları ve çözümleri yle Microsoft iş ortağı şirketler vurgulanmaktadır.
+
+Azure Synapse'nin Synapse SQL havuzu özelliğini kullanarak veri ambarı çözümünüzü oluşturmak için, aralarından seçim yapabileceğiniz çok çeşitli sektör lideri araçlara sahipsiniz. Bu makalede, Azure Sinaps'ı destekleyen veri yönetimi araçları ve çözümleri yle Microsoft iş ortağı şirketler vurgulanmaktadır.
 
 ## <a name="data-management-partners"></a>Veri yönetimi ortakları
 | İş Ortağı | Açıklama | Web sitesi/Ürün bağlantısı |

@@ -11,20 +11,20 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: a382ef2d93f10e69569ecbbed1399f256a7afbb3
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: d10a642f9309e4bb93368564488fc75be15fa27c
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351212"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586072"
 ---
 # <a name="analyze-your-workload-in-azure-synapse-analytics"></a>Azure Synapse Analytics'te iş yükünüzü analiz edin
 
-Azure Synapse Analytics'te SQL Analytics iş yükünüzü analiz etme teknikleri.
+Azure Synapse Analytics'te Synapse SQL iş yükünüzü analiz etme teknikleri.
 
 ## <a name="resource-classes"></a>Kaynak Sınıfları
 
-SQL Analytics, sorgulara sistem kaynakları atamak için kaynak sınıfları sağlar.  Kaynak sınıfları hakkında daha fazla bilgi için kaynak [sınıfları & iş yükü yönetimine](resource-classes-for-workload-management.md)bakın.  Sorguya atanan kaynak sınıfışu kullanılabilir olandan daha fazla kaynağa ihtiyaç duyarsa sorgular bekleyecektir.
+Synapse SQL, sorgulara sistem kaynakları atamak için kaynak sınıfları sağlar.  Kaynak sınıfları hakkında daha fazla bilgi için kaynak [sınıfları & iş yükü yönetimine](resource-classes-for-workload-management.md)bakın.  Sorguya atanan kaynak sınıfışu kullanılabilir olandan daha fazla kaynağa ihtiyaç duyarsa sorgular bekleyecektir.
 
 ## <a name="queued-query-detection-and-other-dmvs"></a>Sıralı sorgu algılama ve diğer DMV'ler
 
@@ -63,7 +63,7 @@ WHERE   r.name IN ('mediumrc','largerc','xlargerc')
 ;
 ```
 
-SQL Analytics aşağıdaki bekleme türlerine sahiptir:
+Synapse SQL aşağıdaki bekleme türlerine sahiptir:
 
 * **LocalQueriesConcurrencyResourceType**: Eşzamanlılık yuvası çerçevesinin dışında yer alan sorgular. DMV sorguları ve sistem `SELECT @@VERSION` işlevleri gibi yerel sorguörnekleridir.
 * **UserConcurrencyResourceType**: Eşzamanlılık yuvası çerçevesi içinde yer alan sorgular. Son kullanıcı tablolarına yönelik sorgular, bu kaynak türünü kullanacak örnekleri temsil eder.
@@ -153,4 +153,4 @@ FROM    sys.dm_pdw_wait_stats w
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Veritabanı kullanıcılarını ve güvenliğini yönetme hakkında daha fazla bilgi için [SQL Analytics'te veritabanını güvenli](sql-data-warehouse-overview-manage-security.md)olarak ele abakın. Daha büyük kaynak sınıflarının kümelenmiş sütun deposu dizini kalitesini nasıl iyileştirebileceği hakkında daha fazla bilgi [için](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality)bkz.
+Veritabanı kullanıcılarını ve güvenliğini yönetme hakkında daha fazla bilgi için [Synapse SQL'de güvenli veritabanı](sql-data-warehouse-overview-manage-security.md)na bakın. Daha büyük kaynak sınıflarının kümelenmiş sütun deposu dizini kalitesini nasıl iyileştirebileceği hakkında daha fazla bilgi [için](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality)bkz.

@@ -1,7 +1,6 @@
 ---
 title: Veritabanını güvenli hale
-description: SQL Analytics'in SQL havuz kaynağında veritabanını güvence altına almak ve çözümler geliştirmek için ipuçları.
-services: synapse-analytics
+description: Synapse SQL havuz kaynağında veritabanını güvence altına almak ve çözümler geliştirmek için ipuçları.
 author: julieMSFT
 manager: craigg
 ms.service: synapse-analytics
@@ -12,25 +11,27 @@ ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 6ae9580803563971764eec4bd18fcc2430cee06d
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 46d32fdca615833bd602480ac182585da898ab98
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350196"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586436"
 ---
 # <a name="secure-a-database-in-azure-synapse"></a>Azure Synapse'de veritabanını güvenli hale
+
 > [!div class="op_single_selector"]
 > * [Güvenliğe Genel Bakış](sql-data-warehouse-overview-manage-security.md)
-> * [Kimlik doğrulaması](sql-data-warehouse-authentication.md)
+> * [Kimlik Doğrulaması](sql-data-warehouse-authentication.md)
 > * [Şifreleme (Portal)](sql-data-warehouse-encryption-tde.md)
 > * [Şifreleme (T-SQL)](sql-data-warehouse-encryption-tde-tsql.md)
 > 
 > 
 
-Bu makale, SQL Analytics içinde SQL havuzugüvence temelleri size yol açacaktır. Özellikle, bu makalede, erişim sınırlama, verileri koruma ve SQL havuzu kullanılarak sağlanan bir veritabanında etkinlikleri izleme kaynakları ile başlar.
+Bu makalede, Synapse SQL havuzu güvenliğini temelleri size yol verecektir. Özellikle, bu makalede, erişim sınırlama, verileri koruma ve SQL havuzu kullanılarak sağlanan bir veritabanında etkinlikleri izleme kaynakları ile başlar.
 
 ## <a name="connection-security"></a>Bağlantı güvenliği
+
 Bağlantı Güvenliği, veritabanı bağlantılarını güvenlik duvarı kuralları ve bağlantı şifrelemesi kullanarak kısıtlamayı ve bu bağlantıların güvenliğini sağlamayı kapsar.
 
 Güvenlik duvarı kuralları, açıkça beyaz listeye alınmamış IP adreslerinden gelen bağlantı girişimlerini reddetmek için hem sunucu hem de veritabanı tarafından kullanılır. Uygulamanızın veya istemci makinenizin genel IP adresinden bağlantılara izin vermek için, öncelikle Azure portalı, REST API veya PowerShell'i kullanarak sunucu düzeyinde bir güvenlik duvarı kuralı oluşturmanız gerekir. 
@@ -41,7 +42,8 @@ Azure Synapse Analytics sunucu düzeyinde IP güvenlik duvarı kurallarını kul
 
 SQL havuzunuza bağlantılar varsayılan olarak şifrelenir.  Şifrelemeyi devre dışı kakacak bağlantı ayarlarını değiştirmek göz ardı edilir.
 
-## <a name="authentication"></a>Kimlik doğrulaması
+## <a name="authentication"></a>Kimlik Doğrulaması
+
 Kimlik doğrulaması, veritabanına bağlanırken kimliğinizi nasıl kanıtlayacağınızı belirtir. SQL havuzu şu anda bir kullanıcı adı ve parola yla ve Azure Active Directory ile SQL Server Authentication'ı destekler. 
 
 Veritabanınıza ait mantıksal sunucuyu oluşturduktan sonra kullanıcı adı ve parola belirleyerek "sunucu yöneticisi" oturum açma bilgisi oluşturdunuz. Bu kimlik bilgilerini kullanarak, veritabanı sahibi olarak o sunucudaki herhangi bir veritabanına veya SQL Server Authentication aracılığıyla "dbo" kimlik doğrulaması yapabilirsiniz.

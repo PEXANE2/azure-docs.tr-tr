@@ -1,6 +1,6 @@
 ---
 title: Dağıtılmış tablolar tasarım kılavuzu
-description: SQL Analytics'te karma dağıtılmış ve yuvarlak robin dağıtılmış tablolar tasarlamaönerileri.
+description: Synapse SQL havuzunda karma dağıtılmış ve yuvarlak robin dağıtılmış tablolar tasarlamaönerileri.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,19 +11,21 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 35106e73a3a4a143bf22c72c4fe8ac6798ac5219
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 8a93f3ada8e56853b78321bdc7d99a667cee6158
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351328"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583511"
 ---
-# <a name="guidance-for-designing-distributed-tables-in-sql-analytics"></a>SQL Analytics'te dağıtılmış tablolar tasarlama kılavuzu
-SQL Analytics'te karma dağıtılmış ve yuvarlak robin dağıtılmış tablolar tasarlamaönerileri.
+# <a name="guidance-for-designing-distributed-tables-in-synapse-sql-pool"></a>Synapse SQL havuzunda dağıtılmış tablolar tasarlama kılavuzu
 
-Bu makalede, SQL Analytics'te veri dağıtımı ve veri hareketi kavramlarına aşina olduğunuzu varsayar.Daha fazla bilgi için SQL [Analytics'e büyük ölçüde paralel işleme (MPP) mimarisi](massively-parallel-processing-mpp-architecture.md)bölümüne bakın. 
+Synapse SQL havuzlarında karma dağıtılmış ve yuvarlak robin dağıtılmış tablolar tasarlamaönerileri.
+
+Bu makalede, Synapse SQL havuzunda veri dağıtımı ve veri hareketi kavramları aşina olduğunuzu varsayar.Daha fazla bilgi için Azure [Synapse Analytics'e büyük ölçüde paralel işleme (MPP) mimarisi](massively-parallel-processing-mpp-architecture.md)bölümüne bakın. 
 
 ## <a name="what-is-a-distributed-table"></a>Dağıtılmış tablo nedir?
+
 Dağıtılmış bir tablo tek bir tablo olarak görünür, ancak satırlar gerçekte 60 dağıtım arasında depolanır. Satırlar karma veya round-robin algoritması ile dağıtılır.  
 
 **Karma dağıtılmış tablolar,** büyük olgu tablolarında sorgu performansını artırır ve bu makalenin odak noktasıdır. **Round-robin tablolar** yükleme hızını artırmak için yararlıdır. Bu tasarım seçenekleri, sorgu ve yükleme performansını artırmada önemli bir etkiye sahiptir.
@@ -34,15 +36,16 @@ Tablo tasarımının bir parçası olarak, verileriniz ve verilerinizin nasıl s
 
 - Masa ne kadar büyük?   
 - Tablo ne sıklıkta yenilenir?   
-- SQL Analytics veritabanında gerçek ve boyut tabloları var mı?   
+- Synapse SQL havuzunda gerçek ve boyut tabloları var mı?   
 
 
 ### <a name="hash-distributed"></a>Karma dağıtıldı
+
 Karma dağıtılmış bir tablo, her satırı bir [dağıtıma](massively-parallel-processing-mpp-architecture.md#distributions)atamak için deterministik karma işlevi kullanarak Tablo satırlarını İşlem düğümleri arasında dağıtır. 
 
 ![Dağıtılmış tablo](./media/sql-data-warehouse-tables-distribute/hash-distributed-table.png "Dağıtılmış tablo")  
 
-Aynı değerler her zaman aynı dağıtımla aynı şekilde olduğundan, SQL Analytics satır konumları hakkında yerleşik bilgiye sahiptir. SQL Analytics sorgusırasında veri hareketini en aza indirmek için bu bilgileri kullanır ve bu da sorgu performansını artırır. 
+Aynı değerler her zaman aynı dağıtıma göre karma olduğundan, veri ambarı satır konumları hakkında yerleşik bilgiye sahiptir. Synapse SQL havuzunda bu bilgi sorgu sırasında veri hareketini en aza indirmek için kullanılır ve bu da sorgu performansını artırır. 
 
 Haşhaş dağıtılan tablolar, yıldız şemasındaki büyük gerçek tablolar için iyi çalışır. Onlar satır çok sayıda olabilir ve hala yüksek performans elde. Elbette, dağıtılmış sistemin sağlamak üzere tasarladığı performansı elde etmenize yardımcı olan bazı tasarım konuları vardır. İyi bir dağıtım sütunu seçmek, bu makalede açıklanan bu tür bir husustur. 
 
@@ -52,6 +55,7 @@ Haşhaş dağıtılan tablolar, yıldız şemasındaki büyük gerçek tablolar 
 - Tabloda sık sık ekleme, güncelleştirme ve silme işlemleri vardır. 
 
 ### <a name="round-robin-distributed"></a>Round-robin dağıtıldı
+
 Round-robin dağıtılmış tablo tüm dağıtımlar arasında eşit tablo satırları dağıtır. Satırların dağılımlara atanması rasgeledir. Karma dağıtılmış tabloların aksine, eşit değerlere sahip satırların aynı dağıtıma atanması garanti edilmez. 
 
 Sonuç olarak, sistem bazen bir sorgu çözebilir önce verilerinizi daha iyi düzenlemek için bir veri hareketi işlemi çağırmak gerekir.  Bu ek adım sorgularınızı yavaşlatabilir. Örneğin, bir round-robin tablosuna katılmak genellikle bir performans isabet satırları, reshuffling gerektirir.
@@ -65,7 +69,7 @@ Aşağıdaki senaryolarda tablonuz için round-robin dağılımını kullanmayı
 - Birleştirme sorgudaki diğer birleştirmelerden daha az önemliyse
 - Tablo geçici bir evreleme tablosu olduğunda
 
-Load [New York taksi verileri,](load-data-from-azure-blob-storage-using-polybase.md#load-the-data-into-your-data-warehouse) SQL Analytics'te verileri yuvarlak-robin evreleme tablosuna yüklemenin bir örneğini verir.
+Öğretici [Load New York taksi verileri,](load-data-from-azure-blob-storage-using-polybase.md#load-the-data-into-your-data-warehouse) verileri yuvarlak-robin evreleme tablosuna yüklemenin bir örneğini verir.
 
 
 ## <a name="choosing-a-distribution-column"></a>Dağıtım sütunu seçme
@@ -109,7 +113,7 @@ Paralel işlemedengelemek için, aşağıdakileri içeren bir dağıtım sütunu
 
 ### <a name="choose-a-distribution-column-that-minimizes-data-movement"></a>Veri hareketini en aza indiren bir dağıtım sütunu seçin
 
-Doğru sorgu sonucunu almak için sorgular verileri bir İşlem düğümünden diğerine taşıyabilir. Veri hareketi genellikle sorgular dağıtılmış tablolarda birleşince ve toplandıklarında gerçekleşir. Veri hareketini en aza indirmeye yardımcı olan bir dağıtım sütunu seçmek, SQL Analytics veritabanınızın performansını optimize etmek için en önemli stratejilerden biridir.
+Doğru sorgu sonucunu almak için sorgular verileri bir İşlem düğümünden diğerine taşıyabilir. Veri hareketi genellikle sorgular dağıtılmış tablolarda birleşince ve toplandıklarında gerçekleşir. Veri hareketini en aza indirmeye yardımcı olan bir dağıtım sütunu seçmek, Synapse SQL havuzunuzun performansını optimize etmek için en önemli stratejilerden biridir.
 
 Veri hareketini en aza indirmek için, şu larına sahip bir dağıtım sütunu seçin:
 
@@ -217,7 +221,7 @@ RENAME OBJECT [dbo].[FactInternetSales_CustomerKey] TO [FactInternetSales];
 
 Dağıtılmış bir tablo oluşturmak için şu ifadelerden birini kullanın:
 
-- [CREATE TABLE (SQL Analytics)](https://docs.microsoft.com/sql/t-sql/statements/create-table-azure-sql-data-warehouse)
-- [SELECT OLARAK TABLO OLUŞTUR (SQL Analytics)](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)
+- [CREATE TABLE (Synapse SQL havuzu)](https://docs.microsoft.com/sql/t-sql/statements/create-table-azure-sql-data-warehouse)
+- [SELECT OLARAK TABLO OLUŞTUR (Synapse SQL havuzu)](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)
 
 

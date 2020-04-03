@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: article
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 1f923db5c730f6dec15f4fc211ab7acbd009ac7f
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 4a760fe1e5df7cf614a68f8fa8a05926326d3edf
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80521426"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583228"
 ---
 # <a name="retirement-of-security-center-features-july-2019"></a>Güvenlik Merkezi'nin emekliliği özellikleri (Temmuz 2019)
 
@@ -97,7 +97,7 @@ Log Analytics'teki **Identity & Access** panosunun tüm özelliklerine Güvenlik
 
 ## <a name="security-events-map"></a>Güvenlik olayları haritası<a name="menu_securityeventsmap"></a>
 
-Güvenlik Merkezi, güvenlik [tehditlerini](https://docs.microsoft.com/azure/security-center/security-center-threat-intel) belirlemenize yardımcı olacak bir güvenlik uyarıları haritası sağlar. Bu haritadaki **güvenlik olaylarına git eşlemi** düğmesi, seçilen çalışma alanında ham güvenlik olaylarını görüntülemenize olanak tanıyan bir pano açar.
+Güvenlik Merkezi, güvenlik tehditlerini belirlemenize yardımcı olacak bir güvenlik uyarıları haritası sağlar. Bu haritadaki **güvenlik olaylarına git eşlemi** düğmesi, seçilen çalışma alanında ham güvenlik olaylarını görüntülemenize olanak tanıyan bir pano açar.
 
 **Güvenlik olayları haritasını** ve çalışma alanı başına panosuna git düğmesini kaldırdık.
 
@@ -136,7 +136,7 @@ Azure Sentinel'i kullanmak istemiyorsanız, Azure Monitor günlük uyarılarıyl
 
 ## <a name="security-alerts-investigation"></a>Güvenlik uyarıları soruşturma<a name="menu_investigate"></a>
 
-Güvenlik [Merkezi'ndeki İnceleme özelliği,](https://docs.microsoft.com/azure/security-center/security-center-investigation) olası bir güvenlik olayını eşlemenize yardımcı olur. Bu özellik, bir olayın kapsamını anlamanızı ve bunun temel nedenini izlemenizi sağlar. [Azure Sentinel'de](https://azure.microsoft.com/services/azure-sentinel/)geliştirilmiş bir deneyimle değiştirilmediği için bu özelliği Güvenlik Merkezi'nden kaldırdık.
+Güvenlik Merkezi'ndeki İnceleme özelliği, olası bir güvenlik olayını eşlemenize yardımcı olur. Bu özellik, bir olayın kapsamını anlamanızı ve bunun temel nedenini izlemenizi sağlar. [Azure Sentinel'de](https://azure.microsoft.com/services/azure-sentinel/)geliştirilmiş bir deneyimle değiştirilmediği için bu özelliği Güvenlik Merkezi'nden kaldırdık.
 
 ![Güvenlik olayı][14]
 

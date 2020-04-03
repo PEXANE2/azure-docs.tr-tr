@@ -9,14 +9,17 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 55e6bbc338c1ac6f9ef935b4a3a05c32f2b5e9f5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 225221635f978e3d70cec4ce7e9d78d6b100b4fd
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72755218"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618767"
 ---
 # <a name="secure-azure-cosmos-keys-using-azure-key-vault"></a>Azure Key Vault kullanarak Azure Cosmos anahtarlarının güvenliğini sağlama 
+
+>[!IMPORTANT]
+> Azure Cosmos DB tuşlarına erişmek için önerilen [çözüm, sisteme atanmış yönetilen](managed-identity-based-authentication.md)bir kimlik kullanmaktır. Hizmetiniz yönetilen kimliklerden yararlanamıyorsa, [sertifika tabanlı çözümü](certificate-based-authentication.md)kullanın. Hem yönetilen kimlik çözümü hem de sertifika tabanlı çözüm ihtiyaçlarınızı karşılamazsa, lütfen aşağıdaki anahtar kasa çözümlerini kullanın.
 
 Uygulamalarınız için Azure Cosmos DB kullanırken, uygulamanın yapılandırma dosyasındaki bitiş noktasını ve anahtarı kullanarak veritabanına, koleksiyonlara, belgelere erişebilirsiniz.  Ancak, tüm kullanıcılara açık metin biçiminde kullanılabilir olduğundan, anahtarları ve URL'yi doğrudan uygulama koduna koymak güvenli değildir. Uç noktanın ve anahtarların sağlanmasını ama güvenli bir mekanizma üzerinden sağlanmasını istersiniz. İşte bu noktada Azure Key Vault uygulama gizli dizilerini güvenle depolamanıza ve yönetmenize yardımcı olabilir.
 
@@ -30,7 +33,7 @@ Key Vault'tan Azure Cosmos DB erişim anahtarlarını depolamak ve okumak için 
 
 ## <a name="create-a-key-vault"></a>Anahtar kasası oluşturma
 
-1. [Azure Portalı'nda](https://portal.azure.com/)oturum açın.  
+1. [Azure portalında](https://portal.azure.com/)oturum açın.  
 2. **Güvenlik > Anahtar Kasası > kaynak oluştur'u**seçin.  
 3. **Anahtar kasası oluşturma** bölümünde aşağıdaki bilgileri sağlayın:  
    * **Adı:** Key Vault için benzersiz bir ad sağlayın.  

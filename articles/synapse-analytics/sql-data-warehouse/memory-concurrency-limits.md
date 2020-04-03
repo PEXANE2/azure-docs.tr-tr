@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: c868d8c159bca0c8462acde48225dc45003cf84e
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: c427c832eb613dddbff33ef6e67af63112e2f136
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350997"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586061"
 ---
 # <a name="memory-and-concurrency-limits-for-azure-synapse-analytics"></a>Azure Synapse Analytics için bellek ve eşzamanlılık sınırları
 Azure Synapse Analytics'teki çeşitli performans düzeylerine ve kaynak sınıflarına ayrılan bellek ve eşzamanlılık sınırlarını görüntüleyin.  
@@ -73,7 +73,7 @@ Maksimum hizmet düzeyi, 60 İşlem düğümü ve İşlem düğümü başına bi
 ||||
 
 ## <a name="concurrency-maximums-for-resource-classes"></a>Kaynak sınıfları için eşzamanlılık maksimumları
-Her sorgunun verimli bir şekilde yürütülmesi için yeterli kaynağa sahip olduğundan emin olmak için, Azure Synapse'deki SQL Analytics, her sorguya eşzamanlılık yuvaları atayarak kaynak kullanımını izler. Sistem sorguları önem ve eşzamanlılık yuvalarına göre sıraya koyar. Sorgular, yeterli eşzamanlılık yuvası kullanılabilir olana kadar kuyrukta bekler. [Önem](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-workload-importance) ve eşzamanlılık yuvaları CPU önceliklendirmesi belirler. Daha fazla bilgi için [bkz.](analyze-your-workload.md)
+Her sorgunun verimli bir şekilde yürütülmesi için yeterli kaynağa sahip olduğundan emin olmak için, kaynak kullanımı her sorguya eşzamanlılık yuvaları atayarak izlenir. Sistem sorguları önem ve eşzamanlılık yuvalarına göre sıraya koyar. Sorgular, yeterli eşzamanlılık yuvası kullanılabilir olana kadar kuyrukta bekler. [Önem](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-workload-importance) ve eşzamanlılık yuvaları CPU önceliklendirmesi belirler. Daha fazla bilgi için [bkz.](analyze-your-workload.md)
 
 **Statik kaynak sınıfları**
 

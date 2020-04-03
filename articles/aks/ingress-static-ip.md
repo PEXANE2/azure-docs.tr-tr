@@ -4,12 +4,12 @@ description: Azure Kubernetes Hizmeti (AKS) kümesinde statik genel IP adresine 
 services: container-service
 ms.topic: article
 ms.date: 05/24/2019
-ms.openlocfilehash: 10422595b85c71020225df694778e6b8ae7e0185
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3e79bbe76a751097acd5c9d3c42dbd4020b6866b
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78191359"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80617284"
 ---
 # <a name="create-an-ingress-controller-with-a-static-public-ip-address-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Hizmeti'nde (AKS) statik genel IP adresine sahip bir giriş denetleyicisi oluşturma
 
@@ -48,7 +48,12 @@ Ardından, [az ağı public-ip oluşturma][az-network-public-ip-create] komutunu
 az network public-ip create --resource-group MC_myResourceGroup_myAKSCluster_eastus --name myAKSPublicIP --sku Standard --allocation-method static --query publicIp.ipAddress -o tsv
 ```
 
-Şimdi Helm ile *nginx-ingress* grafik dağıtmak. Parametreyi `--set controller.service.loadBalancerIP` ekleyin ve önceki adımda oluşturulan kendi genel IP adresinizi belirtin. Daha fazla yedeklilik sağlamak için `--set controller.replicaCount` parametresiyle iki NGINX giriş denetleyicisi çoğaltması dağıtılır. Giriş denetleyicisinin yinelemelerini çalıştıran kopyalardan tam olarak yararlanmak için AKS kümenizde birden fazla düğüm olduğundan emin olun.
+Şimdi Helm ile *nginx-ingress* grafik dağıtmak. Daha fazla yedeklilik sağlamak için `--set controller.replicaCount` parametresiyle iki NGINX giriş denetleyicisi çoğaltması dağıtılır. Giriş denetleyicisinin yinelemelerini çalıştıran kopyalardan tam olarak yararlanmak için AKS kümenizde birden fazla düğüm olduğundan emin olun.
+
+Giriş denetleyicisi, giriş denetleyici hizmetine tahsis edilecek yük dengeleyicisinin statik IP adresinin ve kamu IP adresi kaynağına uygulanan DNS ad etiketinin haberdar olması için Miğfer sürümüne iki ek parametre geçirmeniz gerekir. HTTPS sertifikalarının doğru çalışması için, giriş denetleyicisi IP adresi için bir FQDN yapılandırmak için bir DNS ad etiketi kullanılır.
+
+1. Parametreyi `--set controller.service.loadBalancerIP` ekleyin. Önceki adımda oluşturulan kendi genel IP adresinizi belirtin.
+1. Parametreyi `--set controller.service.annotations."service\.beta\.kubernetes\.io/azure-dns-label-name"` ekleyin. Önceki adımda oluşturulan genel IP adresine uygulanacak bir DNS ad etiketi belirtin.
 
 Ayrıca giriş denetleyicisinin bir Linux düğümü üzerinde zamanlanması gerekir. Windows Server düğümleri (şu anda AKS önizlemede) giriş denetleyicisini çalıştırmamalıdır. Kubernetes zamanlayıcısına NGINX giriş denetleyicisini Linux tabanlı bir düğümde çalıştırmasını söylemek için `--set nodeSelector` parametresi kullanılarak bir düğüm seçici belirtilir.
 
@@ -57,6 +62,8 @@ Ayrıca giriş denetleyicisinin bir Linux düğümü üzerinde zamanlanması ger
 
 > [!TIP]
 > Kümenizdeki kapsayıcılara gelen istekler için istemci kaynağı IP `--set controller.service.externalTrafficPolicy=Local` [korumasını][client-source-ip] etkinleştirmek istiyorsanız, Helm install komutuna ekleyin. İstemci kaynağı IP, *X-Forwarded-For*altında istek üstbilgisinde depolanır. İstemci kaynağı IP koruma etkin leştirilmiş bir giriş denetleyicisi kullanırken, SSL geçişi çalışmaz.
+
+Giriş denetleyicinizin **IP adresi** ve FQDN öneki için kullanmak istediğiniz benzersiz bir **ad** ile aşağıdaki komut dosyasını güncelleştirin:
 
 ```console
 # Create a namespace for your ingress resources
@@ -69,6 +76,7 @@ helm install nginx-ingress stable/nginx-ingress \
     --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux \
     --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux \
     --set controller.service.loadBalancerIP="40.121.63.72"
+    --set controller.service.annotations."service\.beta\.kubernetes\.io/azure-dns-label-name"="demo-aks-ingress"
 ```
 
 NGINX giriş denetleyicisi için Kubernetes yük dengeleyici hizmeti oluşturulduğunda, aşağıdaki örnek çıktıda gösterildiği gibi statik IP adresiniz atanır:
@@ -83,27 +91,14 @@ nginx-ingress-default-backend               ClusterIP      10.0.95.248   <none> 
 
 Henüz giriş kuralları oluşturulmadı, bu nedenle ortak IP adresine göz atarsanız NGINX giriş denetleyicisinin varsayılan 404 sayfası görüntülenir. Giriş kuralları aşağıdaki adımlarda yapılandırılır.
 
-## <a name="configure-a-dns-name"></a>DNS adını yapılandırma
-
-HTTPS sertifikalarının doğru çalışması için giriş denetleyicisi IP adresi için bir FQDN yapılandırın. Giriş denetleyicinizin IP adresi ve FQDN için kullanmak istediğiniz benzersiz bir ad ile aşağıdaki komut dosyasını güncelleştirin:
+Genel IP adresindeki FQDN sorgulayarak DNS ad etiketinin uygulandığını doğrulayabilirsiniz:
 
 ```azurecli-interactive
 #!/bin/bash
-
-# Public IP address of your ingress controller
-IP="40.121.63.72"
-
-# Name to associate with public IP address
-DNSNAME="demo-aks-ingress"
-
-# Get the resource-id of the public ip
-PUBLICIPID=$(az network public-ip list --query "[?ipAddress!=null]|[?contains(ipAddress, '$IP')].[id]" --output tsv)
-
-# Update public ip address with DNS name
-az network public-ip update --ids $PUBLICIPID --dns-name $DNSNAME
+az network public-ip list --resource-group MC_myResourceGroup_myAKSCluster_eastus --query $("[?name=='myAKSPublicIP'].[dnsSettings.fqdn]") -o tsv
 ```
 
-Giriş denetleyicisi artık FQDN üzerinden erişilebilir.
+Giriş denetleyicisi artık IP adresi veya FQDN üzerinden erişilebilir.
 
 ## <a name="install-cert-manager"></a>cert-manager denetleyicisini yükleme
 

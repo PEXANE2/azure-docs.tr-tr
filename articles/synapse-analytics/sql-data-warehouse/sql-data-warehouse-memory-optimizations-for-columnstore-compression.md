@@ -11,12 +11,12 @@ ms.date: 03/22/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: a640f2f260c94cd7502aa79badb32bd26abebb11
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 81191fd3b654f612f2621757f3006268276477de
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350316"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586545"
 ---
 # <a name="maximizing-rowgroup-quality-for-columnstore"></a>Sütun mağazası için satır grubu kalitesini en üst düzeye çıkarma
 
@@ -89,7 +89,7 @@ kısa dize sütunları <= 32 bayt ve uzun dize-sütunlar > 32 bayt dize veri tü
 
 Uzun dizeleri metin sıkıştırma için tasarlanmış bir sıkıştırma yöntemi ile sıkıştırılır. Bu sıkıştırma yöntemi metin desenleri depolamak için bir *sözlük* kullanır. Sözlüğün maksimum boyutu 16 MB'dır. Satır grubundaki her uzun dize sütunu için yalnızca bir sözlük vardır.
 
-Sütun mağazası bellek gereksinimlerini derinlemesine tartışmak için video [SQL Analytics ölçekleme bölümüne bakın: yapılandırma ve kılavuz.](https://channel9.msdn.com/Events/Ignite/2016/BRK3291)
+Sütun deposu bellek gereksinimlerini derinlemesine tartışmak için [synapse SQL ölçekleme](https://channel9.msdn.com/Events/Ignite/2016/BRK3291)videosuna bakın: yapılandırma ve kılavuz.
 
 ## <a name="ways-to-reduce-memory-requirements"></a>Bellek gereksinimlerini azaltmanın yolları
 
@@ -141,4 +141,4 @@ DWU boyutu ve kullanıcı kaynak sınıfı birlikte bir kullanıcı sorgusu içi
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-SQL Analytics için performansı artırmanın daha fazla yolunu bulmak için [Performansa genel bakış'a](cheat-sheet.md)bakın.
+Synapse SQL için performansı artırmak için daha fazla yol bulmak için [Performansa genel bakış'a](cheat-sheet.md)bakın.

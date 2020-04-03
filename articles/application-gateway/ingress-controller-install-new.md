@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: a0bc6aef1becd53217be0eeb8c865b5c78a5d69f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b46c9f8b0cad74f3a4e9be8903270a60993c01f4
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80239458"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585892"
 ---
 # <a name="how-to-install-an-application-gateway-ingress-controller-agic-using-a-new-application-gateway"></a>Yeni Bir Uygulama Ağ Geçidi Kullanarak Uygulama Ağ Geçidi Denetleyicisi (AGIC) Nasıl Yüklenir?
 
@@ -71,7 +71,7 @@ Azure Etkin Dizin (AAD) [hizmet ana nesnesi](https://docs.microsoft.com/azure/ac
 ## <a name="deploy-components"></a>Bileşenleri Dağıt
 Bu adım, aboneliğinize aşağıdaki bileşenleri ekler:
 
-- [Azure Kubernetes Servisi](https://docs.microsoft.com/azure/aks/intro-kubernetes)
+- [Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/intro-kubernetes)
 - [Uygulama Ağ Geçidi](https://docs.microsoft.com/azure/application-gateway/overview) v2
 - 2 alt [ağlı](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) [Sanal Ağ](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)
 - [Genel IP Adresi](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address)
@@ -263,7 +263,7 @@ Kümenize AAD Pod Kimliğini yüklemek için:
 
 
    > [!NOTE]
-   > Kimlik `identityResourceID` `identityClientID` [Oluşturma](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/072626cb4e37f7b7a1b0c4578c38d1eadc3e8701/docs/setup/install-new.md#create-an-identity) adımları sırasında oluşturulan ve aşağıdaki komut kullanılarak yeniden elde edilebilen değerler şunlardır:
+   > Bileşenleri `identityResourceID` `identityClientID` [Dağıt](ingress-controller-install-new.md#deploy-components) adımları sırasında oluşturulan ve değerler aşağıdaki komutkullanılarak yeniden elde edilebilir:
    > ```azurecli
    > az identity show -g <resource-group> -n <identity-name>
    > ```

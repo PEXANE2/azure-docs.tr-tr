@@ -13,12 +13,12 @@ ms.date: 02/03/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: f8f5ab99086ee38e2f56247ce31f8ac0e7affc81
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6191e67f097b5ab471c5b31eff11a0e570d1c990
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80128998"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80617034"
 ---
 # <a name="authentication-basics"></a>Kimlik doğrulaması temel bilgileri
 
@@ -32,7 +32,7 @@ Bu makalede, korumalı web uygulamaları, web API'leri veya korumalı Web API'le
 
 Uygulamalar, birden çok uygulama üzerinden kullanıcı eklemeniz veya kaldırmanız gerektiğinde yüksek bir yönetim yükü oluşturan, her birinin kendi kullanıcı adı ve parola bilgilerini saklayan uygulamalar oluşturmak yerine, bu sorumluluğu merkezi bir kimlik sağlayıcısına devredebilir.
 
-Azure Etkin Dizin (Azure AD), bulutta merkezi bir kimlik sağlayıcısıdır. Kimlik doğrulaması ve yetkilendirmesini devretmek, kullanıcının belirli bir konumda olmasını gerektiren Koşullu Erişim ilkeleri, çok faktörlü kimlik doğrulamakullanımı gibi senaryoların yanı sıra bir kullanıcının oturum açmasını ve ardından otomatik olarak oturum açmasını sağlar aynı merkezi dizini paylaşan tüm web uygulamalarında oturum açın. Bu özellik, Tek İşaret Açma (SSO) olarak adlandırılır.
+Azure Etkin Dizin (Azure AD), bulutta merkezi bir kimlik sağlayıcısıdır. Kimlik doğrulaması ve yetkilendirmesini ona devretmek, kullanıcının belirli bir konumda olmasını gerektiren Koşullu Erişim ilkeleri, çok faktörlü kimlik doğrulamanın kullanımı gibi senaryoların yanı sıra bir kullanıcının bir kez oturum açmasını ve aynı merkezi dizini paylaşan tüm web uygulamalarında otomatik olarak oturum açmasını sağlar. Bu özellik, Tek İşaret Açma (SSO) olarak adlandırılır.
 
 Merkezi bir kimlik sağlayıcısı, dünyanın dört bir yanında bulunan ve kuruluşun ağında oturum açmamış olan uygulamalar için daha da önemlidir. Azure AD, kullanıcıların kimliğini doğrular ve erişim belirteçleri sağlar. [Erişim belirteci,](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#access-token) yetkilendirme sunucusu tarafından verilen bir güvenlik belirtecidir. Kullanıcı ve belirteç amaçlandığı uygulama hakkında bilgi içerir; Web API'lerine ve diğer korumalı kaynaklara erişmek için kullanılabilir.
 
@@ -170,7 +170,7 @@ Bu öznitelik, ASP.NET kullanıcının kimliğini içeren bir oturum çerezinin 
 Kullanıcı kimlik doğrulaması tarayıcı üzerinden gerçekleşir. OpenID protokolü standart HTTP iletişim kuralı iletilerini kullanır.
 * Web uygulaması, Azure AD'yi kullanmak için tarayıcıya bir HTTP 302 (yönlendirme) gönderir.
 * Kullanıcının kimliği doğrulandığında, Azure AD tarayıcı üzerinden yönlendirme kullanarak belirteci web uygulamasına gönderir.
-* Yönlendirme, web uygulaması tarafından yeniden yönlendirme URI şeklinde sağlanır. Bu yeniden yönlendirme URI, Azure AD uygulama nesnesi ile kaydedilir. Uygulama birkaç URL'de dağıtılabileceğinden, birkaç yeniden yönlendirme URI'sı olabilir. Yani web uygulaması da kullanmak için uri yönlendirme belirtmek gerekir.
+* Yönlendirme, web uygulaması tarafından yeniden yönlendirme URI şeklinde sağlanır. Bu yeniden yönlendirme URI, Azure AD uygulama nesnesi ile kaydedilir. Uygulama birkaç URL'de dağıtılabileceğinden, birkaç yeniden yönlendirme URI'sı olabilir. Bu nedenle web uygulamasının kullanmak için URI'yi yeniden yönlendirmesini de belirtmeniz gerekir.
 * Azure AD, web uygulaması tarafından gönderilen yeniden yönlendirme URI'nin uygulama için kayıtlı yönlendirme URI'lerinden biri olduğunu doğrular.
 
 ## <a name="desktop-and-mobile-app-sign-in-flow-with-azure-ad"></a>Azure AD ile masaüstü ve mobil uygulama oturum açma akışı

@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 97ea98fc38fc8d06dc1bc65ee057241da6f15488
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 73a9680cc570179c47b527a4844488da69193cb3
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78851385"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586090"
 ---
 # <a name="troubleshoot-the-startstop-vms-during-off-hours-solution"></a>Mesai saatleri dışında Başlat/Durdur vm'leri çözümlemesini giderme
 
@@ -137,7 +137,7 @@ Bu hata aşağıdaki nedenlerden biri neden olabilir:
 
 Sorununuzun veya bakılaman Gereken yerlerin olası çözümleri için aşağıdaki listeyi gözden geçirin:
 
-* Mesai saatleri dışında VM'nin [dizi senaryosunu](../automation-solution-vm-management.md#scenario-2-startstop-vms-in-sequence-by-using-tags) kullanmadan, başlatmak veya durdurmak istediğiniz her VM'nin uygun etikete sahip olduğundan emin olmalısınız. Başlatmak istediğiniz VM'lerin etikete `sequencestart` ve durdurmak istediğiniz VM'lerin `sequencestop` etikete sahip olduğundan emin olun. Her iki etiket de pozitif tamsayı değeri gerektirir. Etiketleri ve değerlerini içeren tüm VM'leri aramak için aşağıdaki örneğe benzer bir sorgu kullanabilirsiniz.
+* Mesai saatleri dışında VM'nin [dizi senaryosunu](../automation-solution-vm-management.md) kullanmadan, başlatmak veya durdurmak istediğiniz her VM'nin uygun etikete sahip olduğundan emin olmalısınız. Başlatmak istediğiniz VM'lerin etikete `sequencestart` ve durdurmak istediğiniz VM'lerin `sequencestop` etikete sahip olduğundan emin olun. Her iki etiket de pozitif tamsayı değeri gerektirir. Etiketleri ve değerlerini içeren tüm VM'leri aramak için aşağıdaki örneğe benzer bir sorgu kullanabilirsiniz.
 
   ```powershell-interactive
   Get-AzureRmResource | ? {$_.Tags.Keys -contains "SequenceStart" -or $_.Tags.Keys -contains "SequenceStop"} | ft Name,Tags
@@ -187,7 +187,7 @@ Bunun nedeni, VM'lerde yanlış etiketlemedir.
 2. Başlatılacak veya durdurulacak VM'ler için kaynak `External_Start_ResourceGroupNames` `External_Stop_ResourceGroupNames` gruplarının durumunuza bağlı olarak değişkenlerde olduğundan emin olun.
 3. Değişikliklerinizi önizlemek `SequencedStartStop_Parent` için True için WHATIF parametresi ayarlanmış olan runbook'u çalıştırarak değişikliklerinizi test edin.
 
-VM'leri sırayla başlatmak ve durdurmak için çözümün nasıl kullanılacağına ilişkin daha ayrıntılı ve ek talimatlar [için, sırayla Başlat/Durdur VM'leri'ne](../automation-solution-vm-management.md#scenario-2-startstop-vms-in-sequence-by-using-tags)bakın.
+VM'leri sırayla başlatmak ve durdurmak için çözümün nasıl kullanılacağına ilişkin daha ayrıntılı ve ek talimatlar [için, sırayla Başlat/Durdur VM'leri'ne](../automation-solution-vm-management.md)bakın.
 
 ## <a name="scenario-startstop-vm-job-fails-with-403-forbidden-status"></a><a name="403"></a>Senaryo: Başlat/Durdur VM işi 403 yasak durumuyla başarısız olur
 

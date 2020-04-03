@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/31/2020
+ms.date: 03/24/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ab129315f398061eaa427f05f3bd4b1cabff0dc3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 35f8172d418cb9926ba0be2de945ff559fba14cf
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77046782"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583099"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-box"></a>Öğretici: Kutu ile Azure Active Directory tek oturum açma (SSO) tümleştirmesi
 
@@ -87,6 +87,8 @@ Azure portalında Azure AD SSO'yu etkinleştirmek için aşağıdaki adımları 
     a. URL metin kutusunda **Oturum Aç** kutusuna, aşağıdaki deseni kullanarak bir URL yazın:`https://<SUBDOMAIN>.account.box.com`
 
     b. Tanımlayıcı **(Entity ID)** metin kutusuna bir URL yazın:`box.net`
+
+    c. **Yanıtla URL** metin kutusuna bir URL yazın:`https://sso.services.box.net/sp/ACS.saml2`
 
     > [!NOTE]
     > Oturum açma URL değeri gerçek değildir. Değeri gerçek Oturum Açma URL'si ile güncelleştirin. Değeri almak için [Box Client destek ekibine](https://community.box.com/t5/custom/page/page-id/submit_sso_questionaire) başvurun. Azure portalındaki **Temel SAML Yapılandırması** bölümünde gösterilen desenlere de bakabilirsiniz.

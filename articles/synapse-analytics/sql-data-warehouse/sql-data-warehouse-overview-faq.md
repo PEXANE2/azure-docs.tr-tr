@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 766615a92e616a254cca4b2b3ce1ccde40118275
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 9ce87bac6fbcc3833684dc540c542bc14c9b4955
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350244"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586521"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-frequently-asked-questions"></a>Azure Synapse Analytics (eski adıyla SQL DW) Sık sorulan sorular
 
@@ -29,9 +29,9 @@ S. Azure SQL Veri Ambarı'na ne oldu?
 
 A. Azure Synapse, Azure SQL Veri Ambarı'dır (SQL DW) geliştirildi. Aynı endüstri lideri veri ambarını yepyeni bir performans ve yetenek düzeyine taşıdık. Mevcut veri ambarı iş yüklerinizi Azure Synapse ile üretimde çalıştırmaya devam edebilir ve önizlemede bulunan yeni özelliklerden otomatik olarak yararlanabilirsiniz. Daha fazla bilgi için Azure [Synapse Analytics nedir'e](sql-data-warehouse-overview-what-is.md)bakın.
 
-S. SQL Analytics nedir?
+S. Synapse SQL havuzu nedir?
 
-A. SQL Analytics, genellikle Azure Synapse ile kullanılabilen kurumsal veri depolama özelliklerini ifade eder. Daha fazla bilgi için bkz: [Azure Synapse Analytics nedir.](sql-data-warehouse-overview-what-is.md)
+A. Synapse SQL havuzu, genellikle Azure Synapse ile kullanılabilen kurumsal veri depolama özelliklerini ifade eder. Daha fazla bilgi için bkz: [Azure Synapse Analytics nedir.](sql-data-warehouse-overview-what-is.md)
 
 S. Azure Synapse'ye nasıl başlarım?
 
@@ -49,7 +49,7 @@ S. Power BI'ye bağlanabilir miyim?
 
 A. Evet! Power BI, Azure Synapse ile doğrudan sorguyı desteklese de, çok sayıda kullanıcı veya gerçek zamanlı veri için tasarlanmamıştır. Power BI performansını daha da optimize etmek için Azure Analiz Hizmetleri veya Analiz Hizmeti IaaS'ın üzerinde Power BI'yi kullanmayı düşünün.
 
-S. SQL Analytics kapasite sınırları nelerdir?
+S. Synapse SQL havuz kapasite sınırları nelerdir?
 
 A. Geçerli [kapasite limitleri](sql-data-warehouse-service-capacity-limits.md) sayfamıza bakın. 
 
@@ -83,16 +83,15 @@ A. Birçok özellik desteklenir. [Desteklenmeyen Tablo Özellikleri'nde destekle
 
 ## <a name="tooling-and-administration"></a>Takım lama ve yönetim
 
-S. SQL Analytics REST API'lerini destekliyor mu?
+S. Synapse SQL havuzu REST API'lerini destekliyor mu?
 
-A. Evet. SQL Veritabanı ile kullanılabilecek rest işlevlerinin çoğu SQL Analytics ile de kullanılabilir. API bilgilerini REST dokümantasyon sayfalarında veya [MSDN'de](https://msdn.microsoft.com/library/azure/mt163685.aspx)bulabilirsiniz.
-
+A. Evet. SQL Veritabanı ile kullanılabilecek rest işlevlerinin çoğu Synapse SQL havuzunda da kullanılabilir. API bilgilerini REST dokümantasyon sayfalarında veya [MSDN'de](https://msdn.microsoft.com/library/azure/mt163685.aspx)bulabilirsiniz.
 
 ## <a name="loading"></a>Yükleme
 
 S. Hangi istemci sürücüleri destekliyorsunuz?
 
-A. SQL Analytics için sürücü desteği [Bağlantı Dizeleri](sql-data-warehouse-connection-strings.md) sayfasında bulunabilir
+A. Synapse SQL havuzu için sürücü desteği [Bağlantı Dizeleri](sql-data-warehouse-connection-strings.md) sayfasında bulunabilir
 
 S: Hangi dosya biçimleri PolyBase tarafından desteklenir?
 
@@ -108,7 +107,8 @@ C: Hayır, PolyBase yalnızca depolama bileşenleriyle etkileşime geçer.
 
 S: HDI'ye bağlanabilir miyim?
 
-C: HDI, ADFS katmanı olarak ADLS veya WASB'yi kullanabilir. HDFS katmanınız olarak varsa, bu verileri bir SQL Analytics veri ambarına yükleyebilirsiniz. Ancak, HDI örneğine pushdown hesaplama oluşturamazsınız. 
+C: HDI, ADFS katmanı olarak ADLS veya WASB'yi kullanabilir. HDFS katmanınız olarak varsa, bu verileri bir Synapse SQL havuzuna yükleyebilirsiniz. Ancak, HDI örneğine pushdown hesaplama oluşturamazsınız. 
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
 Azure Sinapse hakkında daha fazla bilgi için [Genel Bakış](sql-data-warehouse-overview-faq.md) sayfamıza bakın.

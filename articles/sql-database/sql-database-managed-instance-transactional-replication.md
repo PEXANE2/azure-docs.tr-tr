@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 02/08/2019
-ms.openlocfilehash: 41dd336bdb74fbe745ab48ebd3c168af0492ae2c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 2a048ddefbcd76193436da13cd3ba68b8b6ffb0a
+ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75691012"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80607589"
 ---
 # <a name="transactional-replication-with-single-pooled-and-instance-databases-in-azure-sql-database"></a>Azure SQL Veritabanı'nda tek, havuzlu ve örnek veritabanları ile işlem çoğaltma
 
@@ -95,7 +95,7 @@ ms.locfileid: "75691012"
 - Bağlantı, çoğaltma katılımcıları arasında SQL Kimlik Doğrulaması kullanır. 
 - Çoğaltma tarafından kullanılan çalışma dizini için bir Azure Depolama Hesabı paylaşımı. 
 - Azure dosya paylaşımına erişmek için yönetilen örnek alt netin güvenlik kurallarında Bağlantı Noktası 445 'in (TCP giden) açık olması gerekir. 
-- Yayımcı/Dağıtıcı yönetilen bir durumdaysa ve abone şirket içindeyse Bağlantı Noktası 1433 (TCP giden) açılması gerekir.
+- Yayımcı/Dağıtıcı yönetilen bir durumdaysa ve abone değilse Bağlantı Noktası 1433 (TCP giden) açılmalıdır. Ayrıca, bağlantı noktası 1433 **Hedef Hizmeti** `virtualnetwork` etiketi `allow_linkedserver_outbound` için yönetilen örnek NSG giden `internet`güvenlik kuralını da değiştirmeniz gerekebilir. 
 - Her tür çoğaltma katılımcısı (Publisher, Distributor, Pull Subscriber ve Push Subscriber) yönetilen örneklere yerleştirilebilir, ancak yayımcı ve dağıtıcı hem bulutta hem de şirket içinde olmalıdır.
 - Yayımcı, dağıtıcı ve/veya abone farklı sanal ağlarda varsa, yayıncı ve dağıtıcı arasında VPN eşleme olması ve/veya dağıtıcı ile abone arasında VPN eşlemeolması gibi her bir varlık arasında VPN eşlemesi kurulmalıdır. 
 
@@ -124,7 +124,7 @@ Yayımcı ve dağıtıcı, tek bir yönetilen örnek içinde yapılandırılır 
 
 ### <a name="publisher-with-remote-distributor-on-a-managed-instance"></a>Yönetilen bir örnekte uzak dağıtıcılı yayımcı
 
-Bu yapılandırmada, yönetilen bir örnek, yönetilen örnek, tek veritabanı, havuzlu veritabanı veya yönetilen örnekteki bir veya birden çok hedefe değişiklik dağıtabilen başka bir yönetilen örneğe yerleştirilen dağıtıcıdeğişiklikleri yayımlar veya SQL Server.
+Bu yapılandırmada, yönetilen bir örnek, yönetilen örnek, tek veritabanı, havuzlu veritabanı veya SQL Server'da birçok kaynak yönetilen örneğe hizmet verebilen ve değişiklikleri yönetilen bir veya birden çok hedefe dağıtabilen başka bir yönetilen örneğin üzerine yerleştirilen dağıtıcıdeğişiklikleri yayımlar.
 
 ![Publisher ve Distributor için ayrı örnekler](media/replication-with-sql-database-managed-instance/02-separate-instances-asdbmi-pubdist.png)
 

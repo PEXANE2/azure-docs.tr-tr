@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 145439ebedd2ddf7c081339146010c66f37fe1af
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6c9933e75a39af43af9e2745d5f7732d40027b34
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79136543"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80582466"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>Azure Etkin Dizini'nde parolasız kimlik doğrulama dağıtımı planlama
 
@@ -59,7 +59,7 @@ Microsoft'un parolasız kimlik doğrulama yöntemleri farklı senaryolar sağlar
 | **Web uygulaması oturum açma**: <br> mobil veya windows olmayan bir cihazdan | **Evet** | **Hayır** | **Hayır** |
 | **Bilgisayar oturum açma:** <br> Windows dışı bilgisayar | **Hayır** | **Hayır** | **Hayır** |
 
-Kuruluşunuz için en iyi yöntemi seçme hakkında bilgi [için](https://docs.microsoft.com/azure/security/fundamentals/ad-passwordless#deciding-a-passwordless-method)bkz.
+Kuruluşunuz için en iyi yöntemi seçme hakkında bilgi [için](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-passwordless#choose-a-passwordless-method)bkz.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
@@ -132,7 +132,7 @@ Dağıtım planları [sayfasındaki bir pilot için en iyi uygulamalara](https:/
 
 Microsoft Authenticator uygulaması, Google Play veya Apple App Store'dan ücretsiz olarak indirilebilir. [Microsoft Authenticator uygulamasını indirme hakkında daha fazla bilgi edinin.](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6) Kullanıcıların Microsoft Authenticator uygulamasını indirmesini sağlar. ve telefon oturum açmayı etkinleştirmek için yönergeleri izleyin. 
 
-Herhangi bir iOS veya Android telefonu güçlü, şifresiz bir kimlik bilgisine dönüştürür. Kullanıcılar telefonlarına bir bildirim alarak, ekranda görüntülenen bir numarayı telefonlarındaki yle eşleştirerek ve onaylamak için biyometri veya PIN kullanarak herhangi bir platformda veya tarayıcıda oturum açarak oturum açarak oturum açarak oturum açarak herhangi bir platformda veya tarayıcıda oturum açarak oturum açarak, telefonlarına bir bildirimde bulunularak oturum açarak oturum açarak, telefonlarına bir bildirimde bulunan bir numarayı kullanırlar. [Microsoft Authenticator uygulamasının nasıl çalıştığıyla ilgili ayrıntılara bakın.](https://docs.microsoft.com/azure/security/fundamentals/ad-passwordless#user-using-microsoft-authenticator-for-passwordless-sign-in) 
+Herhangi bir iOS veya Android telefonu güçlü, şifresiz bir kimlik bilgisine dönüştürür. Kullanıcılar telefonlarına bir bildirim alarak, ekranda görüntülenen bir numarayı telefonlarındaki yle eşleştirerek ve onaylamak için biyometri veya PIN kullanarak herhangi bir platformda veya tarayıcıda oturum açarak oturum açarak oturum açarak oturum açarak herhangi bir platformda veya tarayıcıda oturum açarak oturum açarak, telefonlarına bir bildirimde bulunularak oturum açarak oturum açarak, telefonlarına bir bildirimde bulunan bir numarayı kullanırlar. [Microsoft Authenticator uygulamasının nasıl çalıştığıyla ilgili ayrıntılara bakın.](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-passwordless#microsoft-authenticator-app)
 
 ![Authenticator uygulaması ile oturum açın](./media/howto-authentication-passwordless-deployment/passwordless-dp-sign-in.png)
 

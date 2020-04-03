@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 06/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: b285daa465c8d069b359e94c9203c1ffbea24c06
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0f3d6580b738a77de9654de0df9b4ce1120fc6eb
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78970677"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80584030"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>IaaS VMs SSS için Azure Disk Şifrelemesi
 
@@ -37,7 +37,7 @@ Başlamak için Azure [Disk Şifrelemesi'ne genel bakışı](disk-encryption-ove
 
 ## <a name="what-vm-sizes-and-operating-systems-support-azure-disk-encryption"></a>Hangi VM boyutları ve işletim sistemleri Azure Disk Şifreleme'yi destekler?
 
-[Azure Disk Şifreleme'ye genel bakış](disk-encryption-overview.md) makalesinde Azure Disk Şifrelemesini destekleyen [VM boyutları](disk-encryption-overview.md#supported-vm-sizes) ve [VM işletim sistemleri](disk-encryption-overview.md#supported-operating-systems) listelemektedir.
+[Azure Disk Şifreleme'ye genel bakış](disk-encryption-overview.md) makalesinde Azure Disk Şifrelemesini destekleyen [VM boyutları](disk-encryption-overview.md#supported-vms) ve [VM işletim sistemleri](disk-encryption-overview.md#supported-operating-systems) listelemektedir.
 
 ## <a name="can-i-encrypt-both-boot-and-data-volumes-with-azure-disk-encryption"></a>Azure Disk Şifreleme ile hem önyükleme hem de veri birimlerini şifreleyebilir miyim?
 
@@ -93,7 +93,7 @@ Azure Disk Şifrelemesini yapılandırmak için Azure PowerShell SDK'nın en son
 > [!NOTE]
 > Linux Azure disk şifreleme önizleme uzantısı "Microsoft.OSTCExtension.AzureDiskEncryptionForLinux" amortismana tabidir. Bu uzantı, Azure disk şifreleme önizleme sürümü için yayımlandı. Deneme veya üretim dağıtımınızda uzantının önizleme sürümünü kullanmamalısınız.
 
-> Linux IaaS VM'nizde şifreleme sağlamak için Linux VM için Azure disk şifreleme uzantısıdağıtmanız gereken Azure Kaynak Yöneticisi (ARM) gibi dağıtım senaryolarında Azure disk şifreleme destekli uzantıyı kullanmanız gerekir" Microsoft.Azure.Security.AzureDiskEncryptionforLinux".
+> Linux IaaS VM'nizde şifreleme sağlamak için Linux VM için Azure disk şifreleme uzantısıdağıtmanız gereken Azure Kaynak Yöneticisi (ARM) gibi dağıtım senaryolarında, Azure disk şifreleme satımı destekli "Microsoft.Azure.Security.AzureDiskEncryptionForLinux" uzantısını kullanmanız gerekir.
 
 ## <a name="can-i-apply-azure-disk-encryption-on-my-custom-linux-image"></a>Azure Disk Şifreleme'yi özel Linux resmime uygulayabilir miyim?
 

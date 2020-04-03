@@ -4,12 +4,12 @@ description: Bir AKS kümesini varolan bir sanal ağa ve alt ağa dağıtmak da 
 services: container-service
 ms.topic: article
 ms.date: 06/03/2019
-ms.openlocfilehash: 400d5a46ad62f8ac391c573eb64a7eb22dc4062c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6f194cb97850fcb24e4789ac0ba39b6f03d99e6e
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80048002"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80617393"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Hizmetinde (AKS) Azure CNI ağlarını yapılandırma
 
@@ -27,6 +27,7 @@ Bu makalede, bir AKS kümesi için sanal ağ alt ağı oluşturmak ve kullanmak 
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
   * `Microsoft.Network/virtualNetworks/subnets/read`
 * Hizmet sorumlusu yerine, yönetilen kimlik atanan sistemi izinler için kullanabilirsiniz. Daha fazla bilgi için [bkz.](use-managed-identity.md)
+* AKS düğüm havuzuna atanan alt ağ [devredilen](../virtual-network/subnet-delegation-overview.md)bir alt ağ olamaz.
 
 ## <a name="plan-ip-addressing-for-your-cluster"></a>Kümeniz için IP adresleme planı
 
@@ -70,7 +71,7 @@ Yalnızca *küme dağıtım zamanında*düğüm başına en fazla bölme sayıs�
 
 Küme durumu için kritik olan sistem bölmeleri için alanı garanti etmek için düğüm başına maksimum bölme için minimum değer uygulanır. Her düğüm havuzunun yapılandırmasının en az 30 pod için alanı varsa, her düğüm başına maksimum bölme için ayarlanabilecek minimum değer 10'dur. Örneğin, düğüm başına en büyük bölmeleri en az 10'a ayarlamak, her bir düğüm havuzunun en az 3 düğüm e sahip olmasını gerektirir. Bu gereksinim oluşturulan her yeni düğüm havuzu için de geçerlidir, bu nedenle 10 düğüm başına maksimum bölme olarak tanımlanırsa, sonraki düğüm havuzu eklenen en az 3 düğüm olmalıdır.
 
-| Ağ Oluşturma | Minimum | Maksimum |
+| Ağ | Minimum | Maksimum |
 | -- | :--: | :--: |
 | Azure CNI | 10 | 250 |
 | Kubenet | 10 | 110 |

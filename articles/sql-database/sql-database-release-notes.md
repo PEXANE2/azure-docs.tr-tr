@@ -9,12 +9,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: sstein
-ms.openlocfilehash: 2df83e3b62994381895315b2ef100299e40b745e
-ms.sourcegitcommit: 07d62796de0d1f9c0fa14bfcc425f852fdb08fb1
+ms.openlocfilehash: 9fa93af72c2869efd7b6d2f1e8b96b0e667f8b16
+ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80366514"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80607545"
 ---
 # <a name="sql-database-release-notes"></a>SQL Veritabanı sürüm notları
 
@@ -78,6 +78,7 @@ H1 2019'da Yönetilen örnek dağıtım modelinde aşağıdaki özellikler etkin
 
 |Sorun  |Keşfedilen tarih  |Durum  |Çözülen tarih  |
 |---------|---------|---------|---------|
+|[Yönetilen Örnek'e uygulanmayan kaynak grubundaki izinler](#permissions-on-resource-group-not-applied-to-managed-instance)|Şub 2020|Geçici Çözüm Var||
 |[Failover grupları için portal üzerinden manuel failover sınırlaması](#limitation-of-manual-failover-via-portal-for-failover-groups)|Ocak 2020|Geçici Çözüm Var||
 |[SQL Agent rolleri olmayan sysadmin girişleri için açık EXECUTE izinleri gerekir](#in-memory-oltp-memory-limits-are-not-applied)|Aralık 2019|Geçici Çözüm Var||
 |[SQL Agent işleri Agent process restart tarafından kesilebilir](#sql-agent-jobs-can-be-interrupted-by-agent-process-restart)|Aralık 2019|Geçici Çözüm Yok|Mar 2020|
@@ -101,6 +102,12 @@ H1 2019'da Yönetilen örnek dağıtım modelinde aşağıdaki özellikler etkin
 |Kaynak veritabanı bellek içi OLTP nesneleri içeriyorsa, Business Critical katmanından Genel Amaç katmanına zaman içinde veritabanı geri yüklemesi başarılı olmaz.||Çözümlendi|Eki 2019|
 |Güvenli bağlantı kullanan harici (Azure olmayan) posta sunucuları ile Veritabanı Posta özelliği||Çözümlendi|Eki 2019|
 |Yönetilen örnekte desteklenmeyen veritabanları içerdiği||Çözümlendi|Ağu 2019|
+
+### <a name="permissions-on-resource-group-not-applied-to-managed-instance"></a>Yönetilen örneğe uygulanmayan kaynak grubundaki izinler
+
+Yönetilen Örnek Katılımcı RBAC rolü bir kaynak grubuna (RG) uygulandığında Yönetilen Örnek'e uygulanmaz ve hiçbir etkisi yoktur.
+
+**Geçici Çözüm**: Abonelik düzeyindeki kullanıcılar için Kurulum Yönetilen Örnek Katılımcı rolü.
 
 ### <a name="limitation-of-manual-failover-via-portal-for-failover-groups"></a>Failover grupları için portal üzerinden manuel failover sınırlaması
 

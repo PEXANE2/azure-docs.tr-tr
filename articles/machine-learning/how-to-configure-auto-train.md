@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.custom: seodec18
-ms.openlocfilehash: 4cf940e38a84ea2eeb1896c8f7c628c8d5734374
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 03e1d4aa74d2f71ab2f32ac55f4ad3d46f672f5c
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80247138"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618547"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Python’da otomatik ML denemelerini yapılandırma
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -166,7 +166,7 @@ Bazı örnekler:
       automl_regressor = AutoMLConfig(
       task='regression',
       experiment_timeout_minutes=60,
-      whitelist_models=['kNN regressor'],
+      whitelist_models=['KNN'],
       primary_metric='r2_score',
       training_data=train_data,
       label_column_name=label,
@@ -245,7 +245,7 @@ automl_config = AutoMLConfig(task = 'forecasting',
 
 ### <a name="ensemble-configuration"></a><a name="ensemble"></a>Topluluk yapılandırması
 
-Topluluk modelleri varsayılan olarak etkinleştirilir ve otomatik bir makine öğrenimi çalışmasında son çalıştırma yinelemeleri olarak görünür. Şu anda desteklenen topluluk yöntemleri oy ve istifleme vardır. Oylama ağırlıklı ortalamalar kullanılarak yumuşak oylama olarak uygulanır ve istifleme uygulaması, ilk katmanın oylama topluluğuyla aynı modellere sahip olduğu iki katmanlı bir uygulama kullanır ve ikinci katman modeli en uygun kombinasyonu bulmak için kullanılır ilk katmandan modelleri. ONNX modellerini kullanıyorsanız **veya** model açıklanabilirliği etkinleştirilmişse, istifleme devre dışı bırakılır ve yalnızca oylamadan yararlanılır.
+Topluluk modelleri varsayılan olarak etkinleştirilir ve otomatik bir makine öğrenimi çalışmasında son çalıştırma yinelemeleri olarak görünür. Şu anda desteklenen topluluk yöntemleri oy ve istifleme vardır. Oylama ağırlıklı ortalamalar kullanılarak yumuşak oylama olarak uygulanır ve istifleme uygulaması, ilk katmanda oy topluluğuyla aynı modellere sahip olan iki katmanlı bir uygulama kullanır ve ikinci katman modeli, ilk katmandaki modellerin en uygun kombinasyonunu bulmak için kullanılır. ONNX modellerini kullanıyorsanız **veya** model açıklanabilirliği etkinleştirilmişse, istifleme devre dışı bırakılır ve yalnızca oylamadan yararlanılır.
 
 Varsayılan yığın topluluğu davranışını değiştirmek `kwargs` için `AutoMLConfig` bir nesnede olduğu gibi sağlanabilir birden çok varsayılan bağımsız değişken vardır.
 

@@ -10,12 +10,12 @@ ms.author: migreene
 ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 1a77a366ee8e06b2d8c47eb3b47eeaf9ae809598
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 644ea1c00af7e71ff56852298fff18e5293c137b
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76028294"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585566"
 ---
 # <a name="configuration-data-at-scale"></a>Uygun ölçekte yapılandırma verileri
 
@@ -45,7 +45,7 @@ Bu bilgiler tercih ettiğiniz dosya biçiminde (JSON, Yaml veya PSD1) düzenleni
 Daha sonra cmdlets bir sunucu veya sunucu rolü tek bir görünüm için her dosyadaki [bilgileri birleştirerek](https://github.com/gaelcolas/Datum#datum-tree) yapılandırma veri dosyaları oluşturmak için sağlanır.
 
 Veri dosyaları oluşturulduktan sonra, MOF dosyaları oluşturmak ve [MOF dosyalarını Azure Otomasyonu'na yüklemek için](/azure/automation/tutorial-configure-servers-desired-state#create-and-upload-a-configuration-to-azure-automation) [bunları DSC Configuration komut dosyalarıyla](/powershell/scripting/dsc/configurations/write-compile-apply-configuration) kullanabilirsiniz.
-Ardından yapılandırmaları çekmek için sunucularınızı [şirket içinde](/azure/automation/automation-dsc-onboarding#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure-including-aws-ec2-instances) veya [Azure'dan](/azure/automation/automation-dsc-onboarding#azure-virtual-machines) kaydedin.
+Ardından yapılandırmaları çekmek için sunucularınızı [şirket içinde](/azure/automation/automation-dsc-onboarding#onboarding-physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure-including-aws-ec2-instances) veya [Azure'dan](/azure/automation/automation-dsc-onboarding#onboarding-azure-vms) kaydedin.
 
 Datum'u denemek için [PowerShell Galerisi'ni](https://www.powershellgallery.com/packages/datum/) ziyaret edin ve çözümü indirin veya [belgeleri](https://github.com/gaelcolas/Datum#2-getting-started--concepts)görüntülemek için "Proje Sitesi"ne tıklayın.
 

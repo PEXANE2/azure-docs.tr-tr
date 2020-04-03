@@ -6,22 +6,22 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: sngun
-ms.openlocfilehash: f57b274715eb1c8a4d517f5655c09c366574d412
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f99c4d096bcbe1fbdc42cac80a491d6017266cb2
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75445213"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583577"
 ---
 # <a name="use-mongodb-extension-commands-to-manage-data-stored-in-azure-cosmos-dbs-api-for-mongodb"></a>Azure Cosmos DB'nin MongoDB apisinde depolanan verileri yönetmek için MongoDB uzantı komutlarını kullanın 
 
-Azure Cosmos DB, Microsoft'un genel olarak dağıtılmış çok modelli veritabanı hizmetidir. Açık kaynak [MongoDB istemci sürücülerinden](https://docs.mongodb.org/ecosystem/drivers)herhangi birini kullanarak Azure Cosmos DB'nin MongoDB api'si ile iletişim kurabilirsiniz. Azure Cosmos DB'nin MongoDB için API'si, [MongoDB tel protokolüne](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol)bağlı kalarak varolan istemci sürücülerin kullanılmasını sağlar.
+Azure Cosmos DB, Microsoft'un genel olarak dağıtılmış çok modelli veritabanı hizmetidir. Açık kaynak kodlu [MongoDB istemci sürücülerinden](https://docs.mongodb.org/ecosystem/drivers)herhangi birini kullanarak Azure Cosmos DB'nin MongoDB api'si ile iletişim kurabilirsiniz. Azure Cosmos DB'nin MongoDB için API'si, [MongoDB tel protokolüne](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol)bağlı kalarak varolan istemci sürücülerin kullanılmasını sağlar.
 
-Azure Cosmos DB'nin MongoDB için API'sini kullanarak, yatırımlarınızı korurken küresel dağıtım, otomatik parçalama, yüksek kullanılabilirlik, gecikme sonu garantileri, otomatik, şifreleme, yedekleme ve daha birçok şey gibi Cosmos DB avantajlarından yararlanabilirsiniz MongoDB uygulamanızda.
+MongoDB için Azure Cosmos DB'nin API'sini kullanarak, MongoDB uygulamanızdaki yatırımlarınızı korurken küresel dağıtım, otomatik parçalama, yüksek kullanılabilirlik, gecikme sonu garantileri, otomatik, şifreleme, yedekleme ve daha birçok şey gibi Cosmos DB avantajlarından yararlanabilirsiniz.
 
 ## <a name="mongodb-protocol-support"></a>MongoDB protokol desteği
 
-Varsayılan olarak, Azure Cosmos DB'nin MongoDB api'si MongoDB sunucu sürümü 3.2 ile uyumludur, daha fazla ayrıntı için [desteklenen özelliklere ve sözdizimine](mongodb-feature-support.md)bakın. MongoDB sürüm 3.4'e eklenen özellikler veya sorgu işleçleri şu anda Azure Cosmos DB'nin MongoDB için API'sinde önizleme olarak kullanılabilir. Aşağıdaki uzantı komutları, Azure Cosmos DB'nin MongoDB için API'sinde depolanan verilerde CRUD işlemleri gerçekleştirirken Azure Cosmos DB'ye özgü işlevselliği destekler:
+Varsayılan olarak, Azure Cosmos DB'nin MongoDB api'si MongoDB sunucu sürümü 3.2 ile uyumludur, daha fazla ayrıntı için [desteklenen özelliklere ve sözdizimine](mongodb-feature-support.md)bakın. MongoDB sürüm 3.4'e eklenen özellikler veya sorgu işleçleri şu anda Azure Cosmos DB'nin MongoDB için API'sinde önizleme olarak kullanılabilir. Aşağıdaki uzantı komutları, Azure Cosmos DB'nin MongoDB için API'sinde depolanan verilerde CRUD işlemleri gerçekleştirirken belirli Azure Cosmos DB işlevselliğini destekler:
 
 * [Veritabanı oluşturma](#create-database)
 * [Veritabanını güncelleştirme](#update-database)
@@ -160,12 +160,12 @@ Koleksiyon uzantısı oluşturma komutu yeni bir MongoDB koleksiyonu oluşturur.
 
 Aşağıdaki tabloda komut içindeki parametreler açıklanmaktadır:
 
-|**Alan**|**Tür** |**Açıklama** |
-|---------|---------|---------|
-| customAction    | string | Özel komutun adı. "CreateCollection" olmalıdır     |
-|  koleksiyonu      | string | Koleksiyonun adı                                   |
-| teklifThroughput | int    | Veritabanında ayarlamak için Sağlanan ThroughPut. İsteğe bağlı bir parametre. |
-| shardKey        | string | Parçalanmış bir koleksiyon oluşturmak için Shard Key yolu. İsteğe bağlı bir parametre. |
+| **Alan** | **Tür** | **Gerekli** | **Açıklama** |
+|---------|---------|---------|---------|
+| customAction | string | Gerekli | Özel komutun adı. "CreateCollection" olmalıdır.|
+|  koleksiyonu | string | Gerekli | Koleksiyonun adı. Özel karakterlere izin verilmez.|
+| teklifThroughput | int | İsteğe bağlı* | Veritabanında ayarlamak için sağlanan iş verme. Bu parametre sağlanmazsa, varsayılan olarak en az 400 RU/s olacaktır. * 10.000 RU/s'nin ötesinde `shardKey` iş milis belirtebilmek için parametre gereklidir.|
+| shardKey | string | İsteğe bağlı* | Parçalanmış koleksiyon için Shard Key'e giden yol. 10.000'den fazla RU/s'yi ayarlarsanız `offerThroughput`bu parametre gereklidir.  Belirtilirse, eklenen tüm belgeler bu değeri gerektirir. |
 
 ### <a name="output"></a>Çıktı
 
@@ -184,7 +184,7 @@ db.runCommand({customAction: "CreateCollection", collection: "testCollection", o
 
 **Kırık bir koleksiyon oluşturma**
 
-"testCollection" adı ve 1000 RUs'lu bir leştirilmiş iş bölümü oluşturmak için aşağıdaki komutu kullanın:
+"testCollection" adı ve 1000 RUs'luk bir iş bölümü ve "a.b" adlı basılı bir koleksiyon oluşturmak için aşağıdaki komutu kullanın:
 
 ```shell
 use test

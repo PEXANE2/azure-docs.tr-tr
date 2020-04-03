@@ -69,6 +69,8 @@
   items:
     - name: Batch hesaplarını yönetme
       items:
+        - name: Hesabınızı yönetme
+          href: batch-manage-account-basics.md
         - name: Portal ile Batch hesaplarını yönetme
           href: batch-account-create-portal.md
         - name: Toplu İşlem Yönetimi .NET ile Batch hesaplarını yönetme
@@ -83,8 +85,12 @@
           href: batch-aad-auth-management.md
         - name: Batch ile Key Vault’a güvenli erişim
           href: credential-access-key-vault.md
+    - name: Uygulama paketlerini kullanma
+      href: batch-application-packages.md
     - name: Dosyaları ve uygulamaları havuz düğümlerine kopyalama
       items:
+        - name: Uygulama ve verileri havuz düğümlerine kopyalama
+          href: batch-applications-to-pool-nodes.md
         - name: Uygulama paketlerini kullanma
           href: batch-application-packages.md
         - name: Kaynak dosyalarını oluşturma

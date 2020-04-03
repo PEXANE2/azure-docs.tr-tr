@@ -3,7 +3,7 @@
   items:
     - name: Genel Bakış
       items:
-        - name: Azure Dev Spaces Hakkında
+        - name: Azure Dev Spaces nedir?
           href: about.md
     - name: Hızlı Başlangıçlar
       items:
