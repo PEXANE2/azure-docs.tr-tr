@@ -1,6 +1,6 @@
 ---
-title: Azure NetApp Dosyaları ile RHEL'de SAP NW için Azure VM'ler yüksek kullanılabilirlik| Microsoft Dokümanlar
-description: Red Hat Enterprise Linux'ta SAP NetWeaver için Azure Sanal Makineler yüksek kullanılabilirlik
+title: Azure VM 'Leri Azure NetApp Files ile RHEL 'de SAP NW için yüksek kullanılabilirlik | Microsoft Docs
+description: Red Hat Enterprise Linux SAP NetWeaver için Azure sanal makineleri yüksek kullanılabilirliği
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: rdeltcheva
@@ -12,16 +12,16 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 03/26/2020
+ms.date: 02/26/2020
 ms.author: radeltch
-ms.openlocfilehash: 11119d193cd08944bdff4737e8182cc7bece0abc
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
-ms.translationtype: MT
+ms.openlocfilehash: b58c24fdd7912b3e424a493932fe09b1a1f058c5
+ms.sourcegitcommit: 747a20b40b12755faa0a69f0c373bd79349f39e3
+ms.translationtype: HT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351255"
+ms.lasthandoff: 02/27/2020
+ms.locfileid: "77661286"
 ---
-# <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux-with-azure-netapp-files-for-sap-applications"></a>Azure Sanal Makineler, SAP uygulamaları için Azure NetApp Dosyaları ile Red Hat Enterprise Linux'ta SAP NetWeaver için yüksek kullanılabilirlik
+# <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux-with-azure-netapp-files-for-sap-applications"></a>SAP NetWeaver için Azure sanal makineler yüksek kullanılabilirlik, SAP uygulamaları için Azure NetApp Files Red Hat Enterprise Linux
 
 [dbms-guide]:dbms-guide.md
 [deployment-guide]:deployment-guide.md
@@ -32,14 +32,14 @@ ms.locfileid: "80351255"
 [anf-register]:https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register
 [anf-sap-applications-azure]:https://www.netapp.com/us/media/tr-4746.pdf
 
-[2002167]:https://launchpad.support.sap.com/#/notes/2002167
-[2009879]:https://launchpad.support.sap.com/#/notes/2009879
-[1928533]:https://launchpad.support.sap.com/#/notes/1928533
-[2015553]:https://launchpad.support.sap.com/#/notes/2015553
-[2178632]:https://launchpad.support.sap.com/#/notes/2178632
-[2191498]:https://launchpad.support.sap.com/#/notes/2191498
-[2243692]:https://launchpad.support.sap.com/#/notes/2243692
-[1999351]:https://launchpad.support.sap.com/#/notes/1999351
+[2002167]: https://launchpad.support.sap.com/#/notes/2002167
+[2009879]: https://launchpad.support.sap.com/#/notes/2009879
+[1928533]: https://launchpad.support.sap.com/#/notes/1928533
+[2015553]: https://launchpad.support.sap.com/#/notes/2015553
+[2178632]: https://launchpad.support.sap.com/#/notes/2178632
+[2191498]: https://launchpad.support.sap.com/#/notes/2191498
+[2243692]: https://launchpad.support.sap.com/#/notes/2243692
+[1999351]: https://launchpad.support.sap.com/#/notes/1999351
 [1410736]:https://launchpad.support.sap.com/#/notes/1410736
 
 [sap-swcenter]:https://support.sap.com/en/my-support/software-downloads.html
@@ -49,221 +49,224 @@ ms.locfileid: "80351255"
 [sap-hana-ha]:sap-hana-high-availability-rhel.md
 [glusterfs-ha]:high-availability-guide-rhel-glusterfs.md
 
-Bu makalede, [Azure NetApp Dosyalarını](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-introduction/)kullanarak sanal makinelerin nasıl dağıtılancaösin, sanal makineleri yapılandırmanın, küme çerçevesini nasıl yükleyeceğimiz ve yüksek oranda kullanılabilir bir SAP NetWeaver 7.50 sistemi nasıl yükleneceğiz açıklanmaktadır.
-Örnek yapılandırmalarda, yükleme komutlarında vb. ASCS örneği 00 sayısı, ERS örneği 01, Birincil Uygulama örneği (PAS) 02 ve Uygulama örneği (AAS) 03'dür. SAP Sistem Kimliği QAS kullanılır. 
+Bu makalede, [Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-introduction/)kullanarak sanal makinelerin nasıl dağıtılacağı, sanal makinelerin nasıl yapılandırılacağı, küme çerçevesinin nasıl yükleneceği ve yüksek oranda KULLANILABILIR bir SAP NetWeaver 7,50 sisteminin nasıl yükleneceği açıklanır.
+Örnek yapılandırmalarda, yükleme komutları vb. ASCS örneği 00, ERS örneği 01, birincil uygulama örneği (PAS) 02 ve uygulama örneği (AAS) 03 ' dir. SAP sistem KIMLIĞI QAS kullanılır. 
 
-Veritabanı katmanı bu makalede ayrıntılı olarak ele alınmıyor.  
+Veritabanı katmanı Bu makalede ayrıntılı olarak ele alınmıyor.  
 
-Önce aşağıdaki SAP Notlarını ve bildirilerini okuyun:
+Önce aşağıdaki SAP notlarını ve kağıtları okuyun:
 
-* [Azure NetApp Dosyaları belgeleri][anf-azure-doc] 
-* SAP Note [1928533], olan:
-  * SAP yazılımının dağıtımı için desteklenen Azure VM boyutları listesi
+* [Azure NetApp Files belgeleri][anf-azure-doc] 
+* SAP Note [1928533], şunları içerir:
+  * SAP yazılımının dağıtımı için desteklenen Azure VM boyutlarının listesi
   * Azure VM boyutları için önemli kapasite bilgileri
-  * Desteklenen SAP yazılımı ve işletim sistemi (OS) ve veritabanı kombinasyonları
-  * Microsoft Azure'da Windows ve Linux için gerekli SAP çekirdeği sürümü
+  * Desteklenen SAP yazılımı ve işletim sistemi (OS) ve veritabanı birleşimleri
+  * Microsoft Azure 'de Windows ve Linux için gereken SAP Kernel sürümü
 
-* SAP Note [2015553,] Azure'da SAP destekli SAP yazılım dağıtımları için ön koşulları listeler.
-* SAP Note [2002167] Red Hat Enterprise Linux için işletim sistemi ayarlarını tavsiye etti
-* SAP Not [2009879] Red Hat Enterprise Linux için SAP HANA Yönergeleri vardır
-* SAP Note [2178632,] Azure'da SAP için bildirilen tüm izleme ölçümleri hakkında ayrıntılı bilgilere sahiptir.
-* SAP Note [2191498,] Azure'da Linux için gerekli SAP Host Agent sürümüne sahiptir.
-* SAP Note [2243692,] Azure'da Linux'ta SAP lisanslama hakkında bilgi edinmiştir.
-* SAP Note [1999351,] SAP için Azure Gelişmiş İzleme Uzantısı için ek sorun giderme bilgilerine sahiptir.
-* [SAP Community WIKI](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) Linux için gerekli tüm SAP Notları'na sahiptir.
-* [Linux'ta SAP için Azure Sanal Makineler planlaması ve uygulaması][planning-guide]
-* [Linux'ta SAP için Azure Sanal Makineler dağıtımı][deployment-guide]
-* [Linux'ta SAP için Azure Sanal Makineler DBMS dağıtımı][dbms-guide]
-* [SAP Netweaver kalp pili kümesinde](https://access.redhat.com/articles/3150081)
+* SAP Note [2015553] , Azure 'da SAP tarafından desteklenen SAP yazılım dağıtımları için önkoşulları listeler.
+* SAP Note [2002167] Red Hat Enterprise Linux için önerilen işletim sistemi ayarlarına sahiptir
+* SAP Note [2009879] , Red Hat Enterprise Linux Için SAP HANA yönergelerine sahiptir
+* SAP Note [2178632] , Azure 'da SAP için raporlanan tüm izleme ölçümleriyle ilgili ayrıntılı bilgiler içerir.
+* SAP Note [2191498] , Azure 'da Linux IÇIN gereken SAP konak Aracısı sürümüne sahiptir.
+* SAP Note [2243692] , Azure 'da LINUX üzerinde SAP lisanslama hakkında bilgi içerir.
+* SAP Note [1999351] , SAP Için Azure Gelişmiş izleme uzantısı için ek sorun giderme bilgilerine sahiptir.
+* [SAP COMMUNITY WIKI](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) 'nin Linux için gereklı tüm sap notları vardır.
+* [Linux 'ta SAP için Azure sanal makineleri planlama ve uygulama][planning-guide]
+* [Linux 'ta SAP için Azure sanal makineleri dağıtımı][deployment-guide]
+* [Linux üzerinde SAP için Azure sanal makineleri DBMS dağıtımı][dbms-guide]
+* [Pacemaker kümesinde SAP NetWeaver](https://access.redhat.com/articles/3150081)
 * Genel RHEL belgeleri
-  * [Yüksek Kullanılabilirlik Eklentisi Genel Bakış](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index)
-  * [Yüksek Kullanılabilirlik Eklenti Yönetimi](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)
-  * [Yüksek Kullanılabilirlik Eklenti Başvurusu](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
-  * [RHEL 7.5'te bağımsız kaynaklarla SAP Netweaver için ASCS/ERS yapılandırması](https://access.redhat.com/articles/3569681)
-  * [RHEL'de Pacemaker'da SAP S/4HANA ASCS/ERS'i Tek Başına Enqueue Server 2 (ENSA2) ile yapılandırın](https://access.redhat.com/articles/3974941)
-* Azure'a özel RHEL belgeleri:
-  * [RHEL Yüksek Kullanılabilirlik Kümeleri için Destek İlkeleri - Küme Üyesi Olarak Microsoft Azure Sanal Makineleri](https://access.redhat.com/articles/3131341)
-  * [Microsoft Azure'da Red Hat Enterprise Linux 7.4 (ve sonrası) Yüksek Kullanılabilirlik Kümesi'ni yükleme ve yapılandırma](https://access.redhat.com/articles/3252491)
-* [Azure NetApp Dosyalarını Kullanarak Microsoft Azure'daki NetApp SAP Uygulamaları][anf-sap-applications-azure]
+  * [Yüksek kullanılabilirlik eklentisi genel bakış](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_overview/index)
+  * [Yüksek kullanılabilirlik eklentisi Yönetimi](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)
+  * [Yüksek kullanılabilirlik eklentisi başvurusu](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
+  * [RHEL 7,5 ' de tek başına kaynaklarla SAP NetWeaver için yoks/ERS yapılandırma](https://access.redhat.com/articles/3569681)
+  * [RHEL üzerinde pacemaker 'da tek başına sıraya alma sunucu 2 (ENSA2) ile SAP S/4HANA yoks/ERS yapılandırma](https://access.redhat.com/articles/3974941)
+* Azure 'a özgü RHEL belgeleri:
+  * [RHEL yüksek kullanılabilirlik kümeleri için destek Ilkeleri-küme üyesi olarak Microsoft Azure Sanal Makineler](https://access.redhat.com/articles/3131341)
+  * [Microsoft Azure üzerinde Red Hat Enterprise Linux 7,4 (ve üzeri) yüksek kullanılabilirlik kümesi yükleme ve yapılandırma](https://access.redhat.com/articles/3252491)
+* [Microsoft Azure Azure NetApp Files kullanarak NetApp SAP uygulamaları][anf-sap-applications-azure]
 
 ## <a name="overview"></a>Genel Bakış
 
-SAP Netweaver merkezi hizmetleri için yüksek kullanılabilirlik (HA) paylaşılan depolama gerektirir.
-Red Hat Linux'ta bunu başarmak için şimdiye kadar ayrı yüksek kullanılabilir GlusterFS kümesi oluşturmak gerekiyordu. 
+SAP NetWeaver Merkezi Hizmetleri için yüksek kullanılabilirlik (HA), paylaşılan depolama gerektirir.
+Şimdiye kadar Red Hat Linux 'ta bu işlemi gerçekleştirmek için yüksek oranda kullanılabilir GlusterFS kümesi oluşturulması gerekir. 
 
-Artık Azure NetApp Dosyalarında dağıtılan paylaşılan depolama alanını kullanarak SAP Netweaver HA'ya ulaşmak mümkün. Paylaşılan depolama alanı için Azure NetApp Dosyalarını kullanmak ek [GlusterFS kümesi](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-glusterfs)ne kadar gereksinimi ortadan kaldırır. Kalp pili hala SAP Netweaver merkezi hizmetleri (ASCS / SCS) HA için gereklidir.
+Artık Azure NetApp Files dağıtılan paylaşılan depolamayı kullanarak SAP NetWeaver HA elde etmek mümkündür. Paylaşılan depolama için Azure NetApp Files kullanmak, ek [GlusterFS kümesi](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-glusterfs)gereksinimini ortadan kaldırır. SAP NetWeaver Merkezi Hizmetleri (yoks/SCS) HA için pacemaker hala gereklidir.
 
-![SAP NetWeaver Yüksek Kullanılabilirlik genel bakış](./media/high-availability-guide-rhel/high-availability-guide-rhel-anf.png)
+![SAP NetWeaver yüksek kullanılabilirliğe genel bakış](./media/high-availability-guide-rhel/high-availability-guide-rhel-anf.png)
 
-SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver ERS ve SAP HANA veritabanı sanal ana bilgisayar adı ve sanal IP adresleri kullanır. Azure'da, sanal bir IP adresi kullanmak için bir yük dengeleyicisi gereklidir. [Standart yük dengeleyicisi](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal)kullanmanızı öneririz. Aşağıdaki liste, (A)SCS ve ERS için ayrı ön uç IP'leri ile yük dengeleyicisinin yapılandırmasını gösterir.
+SAP NetWeaver yoks, SAP NetWeaver SCS, SAP NetWeaver ERS ve SAP HANA veritabanı sanal konak adı ve sanal IP adreslerini kullanır. Azure 'da bir sanal IP adresi kullanmak için bir yük dengeleyici gereklidir. [Standart yük dengeleyici](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal)kullanmanızı öneririz. Aşağıdaki listede, (A) SCS ve ERS için ayrı ön uç IP 'Leri ile yük dengeleyicinin yapılandırması gösterilmektedir.
 
-### <a name="ascs"></a>(A) Scs
+### <a name="ascs"></a>(A)SCS
 
-* Frontend yapılandırması
+* Ön uç yapılandırması
   * IP adresi 192.168.14.9
-* Sonda Bağlantı Noktası
-  * Bağlantı noktası 620<strong>&lt;nr&gt;</strong>
-* Yük dengeleme kuralları
-  * Standart Yük Dengeleyicisi kullanıyorsanız, **HA bağlantı noktalarını** seçin
-  * 32<strong>&lt;nr&gt; </strong> TCP
-  * 36<strong>&lt;nr&gt; </strong> TCP
-  * 39<strong>&lt;nr&gt; </strong> TCP
-  * 81<strong>&lt;nr&gt; </strong> TCP
-  * 5<strong>&lt;nr&gt;</strong>13 TCP
-  * 5<strong>&lt;nr&gt;</strong>14 TCP
-  * 5<strong>&lt;nr&gt;</strong>16 TCP
-
-### <a name="ers"></a>Ers
-
-* Frontend yapılandırması
-  * IP adresi 192.168.14.10
-* Sonda Bağlantı Noktası
-  * Bağlantı noktası 621<strong>&lt;nr&gt;</strong>
-* Yük dengeleme kuralları
-  * Standart Yük Dengeleyicisi kullanıyorsanız, **HA bağlantı noktalarını** seçin
-  * 32<strong>&lt;nr&gt; </strong> TCP
-  * 33<strong>&lt;nr&gt; </strong> TCP
-  * 5<strong>&lt;nr&gt;</strong>13 TCP
-  * 5<strong>&lt;nr&gt;</strong>14 TCP
-  * 5<strong>&lt;nr&gt;</strong>16 TCP
-
 * Arka uç yapılandırması
-  * (A)SCS/ERS kümesinin bir parçası olması gereken tüm sanal makinelerin birincil ağ arabirimlerine bağlı
+  * (A) SCS/ERS kümesinin parçası olması gereken tüm sanal makinelerin birincil ağ arabirimlerine bağlanıldı
+* Araştırma bağlantı noktası
+  * Bağlantı noktası 620<strong>&lt;nr&gt;</strong>
+* Yük Dengeleme kuralları
+  * Standart Load Balancer kullanıyorsanız **ha bağlantı noktaları** ' nı seçin.
+  * 32<strong>&lt;nr&gt;</strong> TCP
+  * 36<strong>&lt;nr&gt;</strong> TCP
+  * 39<strong>&lt;nr&gt;</strong> TCP
+  * 81<strong>&lt;nr&gt;</strong> TCP
+  * 5<strong>&lt;nr&gt;</strong>13 TCP
+  * 5<strong>&lt;nr&gt;</strong>14 TCP
+  * 5<strong>&lt;nr&gt;</strong>16 TCP
 
-## <a name="setting-up-the-azure-netapp-files-infrastructure"></a>Azure NetApp Dosyaları altyapısını ayarlama 
+### <a name="ers"></a>SÖZCÜKLERI
 
-SAP NetWeaver, taşıma ve profil dizini için paylaşılan depolama gerektirir.  Azure NetApp dosyaları altyapısının kurulumuna geçmeden önce Azure [NetApp Dosyaları belgelerini][anf-azure-doc]edin. Seçtiğiniz Azure bölgesinin Azure NetApp Dosyaları sunsun da olmadığını kontrol edin. Aşağıdaki bağlantı, Azure bölgesine göre Azure NetApp Dosyalarının kullanılabilirliğini gösterir: [Azure Bölgesine göre Azure NetApp Dosyaları Kullanılabilirliği.][anf-avail-matrix]
+* Ön uç yapılandırması
+  * IP adresi 192.168.14.10
+* Arka uç yapılandırması
+  * (A) SCS/ERS kümesinin parçası olması gereken tüm sanal makinelerin birincil ağ arabirimlerine bağlanıldı
+* Araştırma bağlantı noktası
+  * Bağlantı noktası 621<strong>&lt;nr&gt;</strong>
+* Yük Dengeleme kuralları
+  * Standart Load Balancer kullanıyorsanız **ha bağlantı noktaları** ' nı seçin.
+  * 32<strong>&lt;nr&gt;</strong> TCP
+  * 33<strong>&lt;nr&gt;</strong> TCP
+  * 5<strong>&lt;nr&gt;</strong>13 TCP
+  * 5<strong>&lt;nr&gt;</strong>14 TCP
+  * 5<strong>&lt;nr&gt;</strong>16 TCP
 
-Azure NetApp dosyaları çeşitli [Azure bölgelerinde](https://azure.microsoft.com/global-infrastructure/services/?products=netapp)kullanılabilir. Azure NetApp Dosyalarını dağıtmadan önce, [Azure NetApp dosyaları için Kaydol yönergelerini][anf-register]izleyerek Azure NetApp Dosyalarına binme isteğinde bulunun. 
+## <a name="setting-up-the-azure-netapp-files-infrastructure"></a>Azure NetApp Files altyapısını ayarlama 
 
-### <a name="deploy-azure-netapp-files-resources"></a>Azure NetApp Dosyaları kaynaklarını dağıtma  
+SAP NetWeaver, aktarım ve profil dizini için paylaşılan depolama gerektirir.  Azure NetApp dosyaları altyapısına yönelik kuruluma devam etmeden önce [Azure NetApp Files belgelerini inceleyin][anf-azure-doc]. Seçtiğiniz Azure bölgesinin Azure NetApp Files sunmadığını denetleyin. Aşağıdaki bağlantıda Azure bölgesine göre Azure NetApp Files kullanılabilirliği gösterilmektedir: [Azure bölgesine göre Azure NetApp Files kullanılabilirliği][anf-avail-matrix].
 
-Adımlar, [Azure Sanal Ağı'nı](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)zaten dağıtmış olduğunuzu varsayar. Azure NetApp Dosyaları kaynakları ve Azure NetApp Dosyaları kaynaklarının monte edildiği Sanal Kaynaklar aynı Azure Sanal Ağ'da veya eşlenen Azure Sanal Ağlarda dağıtılmalıdır.  
+Azure NetApp dosyaları çeşitli [Azure bölgelerinde](https://azure.microsoft.com/global-infrastructure/services/?products=netapp)kullanılabilir. Azure NetApp Files dağıtılmadan önce, [Azure NetApp dosyaları Için kaydolmayı][anf-register]izleyerek Azure NetApp Files ekleme isteği yapın. 
 
-1. Bunu daha önce yapmadıysanız, [Azure NetApp Dosyalarına binme](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register)isteğinde bulunun.  
-2. [NetApp Hesabı](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-netapp-account)oluşturma yönergelerini izleyerek, seçili Azure bölgesinde NetApp hesabını oluşturun.  
-3. Azure NetApp Dosyaları kapasite havuzunu nasıl ayarlayabildiğini anlatan yönergeleri izleyerek [Azure NetApp Dosyaları kapasite havuzunu ayarlayın.](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-set-up-capacity-pool)  
-Bu makalede sunulan SAP Netweaver mimarisinde tek bir Azure NetApp Files kapasite havuzu olan Premium SKU kullanır. Azure'daki SAP Netweaver uygulaması iş yükü için Azure NetApp Files Premium SKU öneririz.  
-4. Bir alt ağı, yönergelerde açıklandığı gibi [Azure NetApp dosyalarına bir alt net olarak devredin.](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet)  
+### <a name="deploy-azure-netapp-files-resources"></a>Azure NetApp Files kaynaklarını dağıtma  
 
-5. [Azure NetApp Dosyaları için bir birim oluşturmak için yönergeleri izleyerek](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes)Azure NetApp Dosyaları birimlerini dağıtın. Birimleri belirlenen Azure NetApp Dosyaları [alt ağına](https://docs.microsoft.com/rest/api/virtualnetwork/subnets)dağıtın. Azure NetApp Dosyaları kaynaklarının ve Azure Sanal M'lerinin aynı Azure Sanal Ağ'da veya eşlenen Azure Sanal Ağlarda olması gerektiğini unutmayın. Bu örnekte iki Azure NetApp Files ciltleri kullanıyoruz: sap<b>QAS</b> ve transSAP. Karşılık gelen montaj noktalarına monte edilen dosya yolları /usrsap<b>qas</b>/sapmnt<b>QAS</b>, /usrsap<b>qas</b>/usrsap<b>QAS</b>sys, vb.  
+Adımlarda zaten [Azure sanal ağını](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)dağıttığınız varsayılmaktadır. Azure NetApp Files kaynaklarının bağlanmasının gerektiği Azure NetApp Files kaynakları ve VM 'Ler aynı Azure sanal ağında veya eşlenmiş Azure sanal ağlarında dağıtılmalıdır.  
 
-   1. hacim sap<b>QAS</b> (nfs://192.168.24.5/usrsap<b>qas</b>/ sapmnt<b>QAS</b>)
-   2. hacim sap<b>QAS</b> (nfs://192.168.24.5/usrsap<b>qas</b>/ usrsap<b>QAS</b>ascs)
-   3. hacim sap<b>QAS</b> (nfs://192.168.24.5/usrsap<b>qas</b>/ usrsap<b>QAS</b>sys)
-   4. hacim sap<b>QAS</b> (nfs://192.168.24.5/usrsap<b>qas</b>/ usrsap<b>QAS</b>ers)
-   5. hacim transSAP (nfs://192.168.24.4/transSAP)
-   6. hacim sap<b>QAS</b> (nfs://192.168.24.5/usrsap<b>qas</b>/ usrsap<b>QAS</b>pas)
-   7. hacim sap<b>QAS</b> (nfs://192.168.24.5/usrsap<b>qas</b>/ usrsap<b>QAS</b>aas)
+1. Henüz yapmadıysanız, [Azure NetApp Files ekleme](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register)isteyin.  
+2. [Newtapp hesabını oluşturma yönergelerini](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-netapp-account)izleyerek, seçili Azure bölgesinde NetApp hesabını oluşturun.  
+3. [Azure NetApp Files kapasite havuzunu ayarlama yönergelerini](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-set-up-capacity-pool)izleyerek Azure NetApp Files kapasite havuzunu ayarlayın.  
+Bu makalede sunulan SAP NetWeaver mimarisi, tek Azure NetApp Files kapasite havuzu, Premium SKU kullanır. Azure 'da SAP NetWeaver uygulama iş yükü için Premium SKU Azure NetApp Files önerilir.  
+4. [Azure NetApp Files için bir alt ağ temsilcisine yönelik yönergeler](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet)bölümünde açıklandığı gibi Azure NetApp dosyalarına bir alt ağ atayın.  
+
+5. [Azure NetApp Files için bir birim oluşturma yönergelerini](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes)izleyerek Azure NetApp Files birimleri dağıtın. Birimleri belirlenen Azure NetApp Files [alt ağına](https://docs.microsoft.com/rest/api/virtualnetwork/subnets)dağıtın. Azure NetApp Files kaynaklarının ve Azure VM 'lerinin aynı Azure sanal ağında veya eşlenmiş Azure sanal ağlarında olması gerektiğini unutmayın. Bu örnekte iki Azure NetApp Files birimi kullanıyoruz: SAP<b>QAS</b> ve transsap. Karşılık gelen bağlama noktalarına bağlanan dosya yolları/usrsap<b>QAS</b>/sapmnt<b>QAS</b>,/usrsap<b>QAS/usrsap</b><b>QAS</b>sys, vb. ' dir.  
+
+   1. toplu SAP<b>QAS</b> (NFS://192.168.24.5/usrsap<b>QAS</b>/Sapmnt<b>QAS</b>)
+   2. toplu SAP<b>QAS</b> (NFS://192.168.24.5/usrsap<b>QAS</b>/usrsap<b>QAS</b>ascs)
+   3. toplu SAP<b>QAS</b> (NFS://192.168.24.5/usrsap<b>QAS</b>/usrsap<b>QAS</b>sys)
+   4. toplu SAP<b>QAS</b> (NFS://192.168.24.5/usrsap<b>QAS</b>/usrsap<b>QAS</b>ERS)
+   5. birim transSAP (nfs://192.168.24.4/transSAP)
+   6. toplu SAP<b>QAS</b> (NFS://192.168.24.5/usrsap<b>QAS</b>/usrsap<b>QAS</b>pas)
+   7. toplu SAP<b>QAS</b> (NFS://192.168.24.5/usrsap<b>QAS</b>/usrsap<b>QAS</b>AAS)
   
-Bu örnekte, Azure NetApp Dosyalarının nasıl kullanılabileceğini göstermek için tüm SAP Netweaver dosya sistemleri için Azure NetApp Dosyalarını kullandık. NFS üzerinden monte edilmesi gerekmeyen SAP dosya sistemleri de [Azure disk depolama](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#premium-ssd) olarak dağıtılabilir. Bu örnekte <b>a-e</b> Azure NetApp Files ve <b>f-g</b> (yani, /usr/sap/<b>QAS</b>/D<b>02</b>, /usr/sap/<b>QAS</b>/D<b>03)</b>üzerinde olmalıdır) Azure disk depolama alanı olarak dağıtılabilir. 
+Bu örnekte, Azure NetApp Files nasıl kullanılabileceğini göstermek üzere tüm SAP NetWeaver dosya sistemleri için Azure NetApp Files kullandık. NFS aracılığıyla bağlanması gerekmeyen SAP dosya sistemleri de [Azure disk depolama](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#premium-ssd) olarak dağıtılabilir. Bu örnekte <b>bir-e</b> 'nin Azure NetApp Files olması gerekir ve <b>f-g</b> (diğer bir deyişle,/usr/SAP/<b>QAS</b>/d<b>02</b>,/usr/SAP/<b>QAS</b>/d<b>03</b>) Azure disk depolama olarak dağıtılabilir. 
 
 ### <a name="important-considerations"></a>Önemli noktalar
 
-Sap Netweaver için Azure NetApp Dosyalarını SUSE Yüksek Kullanılabilirlik mimarisinde değerlendirirken, aşağıdaki önemli hususlara dikkat edin:
+SUSE yüksek kullanılabilirlik mimarisinde SAP NetWeaver için Azure NetApp Files düşünürken, aşağıdaki önemli noktalara dikkat edin:
 
-- Minimum kapasite havuzu 4 TiB'dir. Kapasite havuzu boyutu 1 TiB artışlarla artırılabilir.
-- Minimum hacim 100 GiB'dir
-- Azure NetApp Dosyaları ve Azure NetApp Dosyaları birimlerinin monte edildiği tüm sanal makineler aynı Azure Sanal Ağ'da veya aynı bölgedeki [eşlenen sanal ağlarda](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) olmalıdır. Azure NetApp Files'ın aynı bölgedeki VNET'ten erişimi artık desteklendi. Azure NetApp erişimi küresel bakışüzerinden henüz desteklenmedi.
-- Seçili sanal ağın Azure NetApp Dosyaları'na devredilen bir alt ağı olmalıdır.
-- Azure NetApp Files [dışa aktarma politikası](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-configure-export-policy)sunar: izin verilen istemcileri, erişim türünü (Yalnızca Okuma&, Yalnızca Oku vb.) kontrol edebilirsiniz. 
-- Azure NetApp Files özelliği henüz bölge farkında değil. Şu anda Azure NetApp Dosyaları özelliği, bir Azure bölgesindeki tüm Kullanılabilirlik bölgelerinde dağıtılmaz. Bazı Azure bölgelerindeki olası gecikme sonu etkilerine dikkat edin. 
-- Azure NetApp Dosyaları birimleri NFSv3 veya NFSv4.1 birimleri olarak dağıtılabilir. Her iki protokol de SAP uygulama katmanı (ASCS/ERS, SAP uygulama sunucuları) için desteklenir. 
+- En düşük kapasite havuzu 4 TiB 'dir. Kapasite havuzu boyutu 1 TiB 'lik artışlarla artırılabilir.
+- Minimum birim 100 GiB 'dir
+- Azure NetApp Files ve Azure NetApp Files birimlerinin takılabileceği tüm sanal makineler aynı bölgedeki aynı Azure sanal ağında veya eşlenmiş [sanal ağlarda](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) olmalıdır. Aynı bölgedeki VNET eşlemesi üzerinden Azure NetApp Files erişim artık desteklenir. Azure NetApp erişimi genel eşleme üzerinden henüz desteklenmiyor.
+- Seçilen sanal ağ, Azure NetApp Files atanmış bir alt ağa sahip olmalıdır.
+- Azure NetApp Files, [dışarı aktarma ilkesi](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-configure-export-policy)sunar: izin verilen istemcileri, erişim türünü (okuma & yazma, salt okuma, vb.) denetleyebilirsiniz. 
+- Azure NetApp Files Özellik henüz bölge farkında değildir. Şu anda Azure NetApp Files özelliği bir Azure bölgesindeki tüm kullanılabilirlik bölgelerinde dağıtılmaz. Bazı Azure bölgelerindeki olası gecikme etkilerine yönelik etkileri göz önünde bulundurun. 
+- Azure NetApp Files birimler, NFSv3 veya NFSv 4.1 birimleri olarak dağıtılabilir. SAP uygulama katmanı (ASCS/ERS, SAP uygulama sunucuları) için her iki protokol de desteklenir. 
 
-## <a name="setting-up-ascs"></a>(A)SCS kurulumu
+## <a name="setting-up-ascs"></a>(A) SCS ayarlama
 
-Bu örnekte, kaynaklar [Azure portalı](https://portal.azure.com/#home)üzerinden el ile dağıtıldı.
+Bu örnekte, kaynaklar [Azure Portal](https://portal.azure.com/#home)aracılığıyla el ile dağıtıldı.
 
-### <a name="deploy-linux-manually-via-azure-portal"></a>Azure portalı üzerinden Linux'u el ile dağıtın
+### <a name="deploy-linux-manually-via-azure-portal"></a>Linux 'u Azure portal aracılığıyla el ile dağıtın
 
-Öncelikle Azure NetApp Dosyaları ciltlerini oluşturmanız gerekir. VM'leri dağıtın. Daha sonra, bir yük dengeleyici oluşturmak ve arka uç havuzunda sanal makineleri kullanın.
+Öncelikle Azure NetApp Files birimleri oluşturmanız gerekir. VM 'Leri dağıtın. Daha sonra, bir yük dengeleyici oluşturur ve arka uç havuzlarındaki sanal makineleri kullanırsınız.
 
-1. Yük dengeleyici (dahili, standart):  
+1. Yük dengeleyici oluşturma (iç, standart):  
    1. Ön uç IP adreslerini oluşturma
-      1. ASCS için IP adresi 192.168.14.9
-         1. Yük bakiyesini açın, frontend IP havuzunu seçin ve Ekle'yi tıklatın
-         1. Yeni ön uç IP havuzunun adını girin (örneğin **frontend. Qas. ASCS**)
-         1. Atamayı Statik olarak ayarlayın ve IP adresini girin (örneğin **192.168.14.9**)
-         1. Tamam'ı tıklatın
-      1. ASCS ERS için IP adresi 192.168.14.10
-         * ERS için bir IP adresi oluşturmak için yukarıdaki adımları "a" altında tekrarlayın (örneğin **192.168.14.10** ve **frontend. Qas. ERS**)
-   1. Arka uç havuzunu oluşturma
-      1. Yük bakiyesini açın, arka uç havuzlarını seçin ve Ekle'yi tıklatın
-      1. Yeni arka uç havuzunun adını girin (örneğin **arka uç. QAS**)
-      1. Sanal makine ekle'yi tıklatın.
-      1. Sanal makine'yi seçin. 
-      1. (A)SCS kümesinin sanal makinelerini ve IP adreslerini seçin.
-      1. Ekle'ye tıklayın.
-   1. Sağlık sondalarını oluşturma
-      1. ASCS için Bağlantı Noktası 620**00**
-         1. Yük bakiyesini açın, sistem durumu sondalarını seçin ve Ekle'yi tıklatın
-         1. Yeni sağlık sondasının adını girin (örneğin **sağlık. Qas. ASCS**)
-         1. Protokol olarak TCP'yi seçin, bağlantı noktası 620**00,** Aralık 5'i ve Sağlıksız eşiği 2'yi koruyun
-         1. Tamam'ı tıklatın
-      1. ASCS ERS için Port 621**01**
-            * ERS için bir sağlık sondası oluşturmak için yukarıdaki adımları "c" altında tekrarlayın (örneğin 621**01** ve **sağlık. Qas. ERS**)
-   1. Yük dengeleme kuralları
-      1. ASCS için yük dengeleme kuralları
-         1. Yük bakiyesini açın, Yük dengeleme kurallarını seçin ve Ekle'yi tıklatın
-         1. Yeni yük dengeleyici kuralının adını girin (örneğin **lb. Qas. ASCS**)
-         1. Daha önce oluşturduğunuz ASCS, arka uç havuzu ve sistem durumu sondası için ön uç IP adresini seçin (örneğin **ön uç. Qas. ASCS**, **arka uç. QAS** ve **sağlık. Qas. ASCS**)
-         1. **HA bağlantı noktalarını** seçin
-         1. Boşta kalma süresini 30 dakikaya çıkarma
-         1. **Kayan IP'yi etkinleştirdiğinden emin olun**
-         1. Tamam'ı tıklatın
-         * ERS için yük dengeleme kuralları oluşturmak için yukarıdaki adımları yineleyin (örneğin **lb. Qas. ERS**)
-1. Alternatif olarak, senaryonuz temel yük dengeleyicisi (dahili) gerektiriyorsa, aşağıdaki adımları izleyin:  
+      1. YOKS için IP adresi 192.168.14.9
+         1. Yük dengeleyiciyi açın, ön uç IP havuzu ' nu seçin ve Ekle ' ye tıklayın
+         1. Yeni ön uç IP havuzunun adını girin (örneğin **ön uç. QAS. YOKS**)
+         1. Atamayı statik olarak ayarlayın ve IP adresini girin (örneğin, **192.168.14.9**)
+         1. Tamam’a tıklayın.
+      1. YOKLAR için IP adresi 192.168.14.10
+         * "A" altında bulunan adımları tekrarlar için bir IP adresi oluşturmak için (örneğin, **192.168.14.10** ve **ön uç). QAS. ERS**)
+   1. Arka uç havuzlarını oluşturma
+      1. YOKS için bir arka uç havuzu oluşturun
+         1. Yük dengeleyiciyi açın, arka uç havuzları ' nı seçin ve Ekle ' ye tıklayın
+         1. Yeni arka uç havuzunun adını girin (örneğin, **arka uç. QAS**)
+         1. Sanal makine Ekle ' ye tıklayın.
+         1. Sanal makineyi seçin. 
+         1. (A) SCS kümesinin sanal makinelerini ve IP adreslerini seçin.
+         1. Ekle'ye tıklayın.
+   1. Sistem durumu araştırmalarını oluşturma
+      1. YOKS için bağlantı noktası 620**00**
+         1. Yük dengeleyiciyi açın, sistem durumu Araştırmaları ' nı seçin ve Ekle ' ye tıklayın
+         1. Yeni sistem durumu araştırmasının adını (örneğin, **sistem durumu) girin. QAS. YOKS**)
+         1. TCP as Protocol, bağlantı noktası 620**00**, zaman aralığını 5 ve sağlıksız eşik 2 ' yi seçin
+         1. Tamam’a tıklayın.
+      1. YOKLAR için bağlantı noktası 621**01**
+            * ERS için bir sistem durumu araştırması oluşturmak için yukarıdaki adımları "c" altında yineleyin (örneğin, 621**01** ve **sistem durumu). QAS. ERS**)
+   1. Yük Dengeleme kuralları
+      1. YOKS için Yük Dengeleme kuralları
+         1. Yük dengeleyiciyi açın, Yük Dengeleme kuralları ' nı seçin ve Ekle ' ye tıklayın.
+         1. Yeni yük dengeleyici kuralının adını girin (örneğin, **lb. QAS. YOKS**)
+         1. Daha önce oluşturduğunuz Ass, arka uç havuzu ve sistem durumu araştırması için ön uç IP adresini seçin (örneğin **ön uç. QAS. YOKLAR**, **arka uç. QAS** ve **sağlık. QAS. YOKS**)
+         1. **Ha bağlantı noktalarını** seçin
+         1. Boşta kalma zaman aşımını 30 dakikaya yükselt
+         1. **Kayan IP 'yi etkinleştirdiğinizden emin olun**
+         1. Tamam’a tıklayın.
+         * ÇÖZÜMLEYICILER için Yük Dengeleme kuralları oluşturmak için yukarıdaki adımları tekrarlayın (örneğin, **lb. QAS. ERS**)
+1. Alternatif olarak, senaryonuz temel yük dengeleyici (iç) gerektiriyorsa, şu adımları izleyin:  
    1. Ön uç IP adreslerini oluşturma
-      1. ASCS için IP adresi 192.168.14.9
-         1. Yük bakiyesini açın, frontend IP havuzunu seçin ve Ekle'yi tıklatın
-         1. Yeni ön uç IP havuzunun adını girin (örneğin **frontend. Qas. ASCS**)
-         1. Atamayı Statik olarak ayarlayın ve IP adresini girin (örneğin **192.168.14.9**)
-         1. Tamam'ı tıklatın
-      1. ASCS ERS için IP adresi 192.168.14.10
-         * ERS için bir IP adresi oluşturmak için yukarıdaki adımları "a" altında tekrarlayın (örneğin **192.168.14.10** ve **frontend. Qas. ERS**)
-   1. Arka uç havuzunu oluşturma
-      1. Yük bakiyesini açın, arka uç havuzlarını seçin ve Ekle'yi tıklatın
-      1. Yeni arka uç havuzunun adını girin (örneğin **arka uç. QAS**)
-      1. Sanal makine ekle'yi tıklatın.
-      1. ASCS için daha önce oluşturduğunuz Kullanılabilirlik Kümesini seçin 
-      1. (A)SCS kümesinin sanal makinelerini seçin
-      1. Tamam'ı tıklatın
-   1. Sağlık sondalarını oluşturma
-      1. ASCS için Bağlantı Noktası 620**00**
-         1. Yük bakiyesini açın, sistem durumu sondalarını seçin ve Ekle'yi tıklatın
-         1. Yeni sağlık sondasının adını girin (örneğin **sağlık. Qas. ASCS**)
-         1. Protokol olarak TCP'yi seçin, bağlantı noktası 620**00,** Aralık 5'i ve Sağlıksız eşiği 2'yi koruyun
-         1. Tamam'ı tıklatın
-      1. ASCS ERS için Port 621**01**
-            * ERS için bir sağlık sondası oluşturmak için yukarıdaki adımları "c" altında tekrarlayın (örneğin 621**01** ve **sağlık. Qas. ERS**)
-   1. Yük dengeleme kuralları
-      1. ASCS için 32**00** TCP
-         1. Yük bakiyesini açın, Yük dengeleme kurallarını seçin ve Ekle'yi tıklatın
-         1. Yeni yük dengeleyici kuralının adını girin (örneğin **lb. Qas. ASCS.3200**)
-         1. Daha önce oluşturduğunuz ASCS, arka uç havuzu ve sistem durumu sondası için ön uç IP adresini seçin (örneğin **ön uç. Qas. ASCS**)
-         1. Protokol **TCP**tutun , port **3200** girin
-         1. Boşta kalma süresini 30 dakikaya çıkarma
-         1. **Kayan IP'yi etkinleştirdiğinden emin olun**
-         1. Tamam'ı tıklatın
-      1. ASCS için ek bağlantı noktaları
-         * ASCS için 36**00**, 39**00**, 81**00**, 5**00**13, 5**00**14, 5**00**16 ve TCP bağlantı noktaları için yukarıdaki adımları tekrarlayın
-      1. ASCS ERS için ek bağlantı noktaları
-         * ASCS ERS için 32**01**, 33**01**, 5**01**13, 5**01**14, 5**01**16 ve TCP bağlantı noktaları için yukarıdaki adımları "d" altında tekrarlayın
+      1. YOKS için IP adresi 192.168.14.9
+         1. Yük dengeleyiciyi açın, ön uç IP havuzu ' nu seçin ve Ekle ' ye tıklayın
+         1. Yeni ön uç IP havuzunun adını girin (örneğin **ön uç. QAS. YOKS**)
+         1. Atamayı statik olarak ayarlayın ve IP adresini girin (örneğin, **192.168.14.9**)
+         1. Tamam’a tıklayın.
+      1. YOKLAR için IP adresi 192.168.14.10
+         * "A" altında bulunan adımları tekrarlar için bir IP adresi oluşturmak için (örneğin, **192.168.14.10** ve **ön uç). QAS. ERS**)
+   1. Arka uç havuzlarını oluşturma
+      1. YOKS için bir arka uç havuzu oluşturun
+         1. Yük dengeleyiciyi açın, arka uç havuzları ' nı seçin ve Ekle ' ye tıklayın
+         1. Yeni arka uç havuzunun adını girin (örneğin, **arka uç. QAS**)
+         1. Sanal makine Ekle ' ye tıklayın.
+         1. Daha önce yoks için oluşturduğunuz kullanılabilirlik kümesini seçin 
+         1. (A) SCS kümesinin sanal makinelerini seçin
+         1. Tamam’a tıklayın.
+   1. Sistem durumu araştırmalarını oluşturma
+      1. YOKS için bağlantı noktası 620**00**
+         1. Yük dengeleyiciyi açın, sistem durumu Araştırmaları ' nı seçin ve Ekle ' ye tıklayın
+         1. Yeni sistem durumu araştırmasının adını (örneğin, **sistem durumu) girin. QAS. YOKS**)
+         1. TCP as Protocol, bağlantı noktası 620**00**, zaman aralığını 5 ve sağlıksız eşik 2 ' yi seçin
+         1. Tamam’a tıklayın.
+      1. YOKLAR için bağlantı noktası 621**01**
+            * ERS için bir sistem durumu araştırması oluşturmak için yukarıdaki adımları "c" altında yineleyin (örneğin, 621**01** ve **sistem durumu). QAS. ERS**)
+   1. Yük Dengeleme kuralları
+      1. YOKS için 32**00** TCP
+         1. Yük dengeleyiciyi açın, Yük Dengeleme kuralları ' nı seçin ve Ekle ' ye tıklayın.
+         1. Yeni yük dengeleyici kuralının adını girin (örneğin, **lb. QAS. YOKS. 3200**)
+         1. Daha önce oluşturduğunuz Ass, arka uç havuzu ve sistem durumu araştırması için ön uç IP adresini seçin (örneğin **ön uç. QAS. YOKS**)
+         1. Protokol **TCP**'yi tut, bağlantı noktası **3200** girin
+         1. Boşta kalma zaman aşımını 30 dakikaya yükselt
+         1. **Kayan IP 'yi etkinleştirdiğinizden emin olun**
+         1. Tamam’a tıklayın.
+      1. YOKS için ek bağlantı noktaları
+         * 36**00**, 39**00**, 81**00**, 5**00**13, 5**00**14, 5**00**16 ve TCP bağlantı noktaları için yukarıdaki adımları "d" altında yineleyin
+      1. YOKLAR için ek bağlantı noktaları
+         * 32**01**, 33**01**, 5**01**13, 5**01**14, 5**01**16 ve d/sn için TCP bağlantı noktaları için yukarıdaki adımları yineleyin
 
       > [!Note]
-      > Ortak IP adresi olmayan VM'ler dahili (genel IP adresi yok) Standart Azure yük bakiyesi arka uç havuzuna yerleştirildiğinde, ortak bitiş noktalarına yönlendirmeye izin verecek ek yapılandırma yapılmadığı sürece giden internet bağlantısı olmaz. Giden bağlantının nasıl elde edilene ilişkin ayrıntılar [için, SAP yüksek kullanılabilirlik senaryolarında Azure Standart Yük Dengeleyicisini kullanan Sanal Makineler için Genel uç nokta bağlantısına](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)bakın.  
+      > Ortak IP adresleri olmayan VM 'Ler, iç (genel IP adresi olmayan) standart Azure yük dengeleyicisine yerleştirildiğinde, genel uç noktalara yönlendirmeye izin vermek için ek yapılandırma gerçekleştirilmediği takdirde giden internet bağlantısı olmaz. Giden bağlantıyı elde etme hakkında daha fazla bilgi için bkz. [Azure Standart Load Balancer kullanan sanal makineler Için genel uç nokta BAĞLANTıSı SAP yüksek kullanılabilirlik senaryolarında](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections).  
 
       > [!IMPORTANT]
-      > Azure Yük Bakiyesi'nin arkasına yerleştirilen Azure VM'lerinde TCP zaman damgalarını etkinleştirme. TCP zaman damgalarını etkinleştirmek sistem durumu sondalarının başarısız lığa neden olur. Parametre **net.ipv4.tcp_timestamps** **0**'a ayarlayın. Ayrıntılar için [Bkz. Yük Dengeleyici sağlık probları.](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)
+      > Azure Load Balancer arkasına yerleştirilmiş Azure VM 'lerinde TCP zaman damgalarını etkinleştirmeyin. TCP zaman damgalarını etkinleştirmek, sistem durumu araştırmalarının başarısız olmasına neden olur. **Net. IPv4. tcp_timestamps** parametresini **0**olarak ayarlayın. Ayrıntılar için bkz. [Load Balancer sistem durumu araştırmaları](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview).
 
-## <a name="disable-id-mapping-if-using-nfsv41"></a>Kimlik eşlemi devre dışı (NFSv4.1 kullanıyorsanız)
+## <a name="disable-id-mapping-if-using-nfsv41"></a>KIMLIK eşlemesini devre dışı bırak (NFSv 4.1 kullanılıyorsa)
 
-Bu bölümdeki talimatlar yalnızca NFSv4.1 protokolüne sahip Azure NetApp Files birimleri kullanılarak uygulanabilir. Azure NetApp Files NFSv4.1 birimlerinin monte edileceği tüm VM'lerde yapılandırmayı gerçekleştirin.  
+Bu bölümdeki yönergeler yalnızca NFSv 4.1 protokolüyle Azure NetApp Files birimleri kullanılıyorsa geçerlidir. Azure NetApp Files NFSv 4.1 birimlerinin takılmasını gerektiren tüm VM 'lerde yapılandırmayı gerçekleştirin.  
 
-1. NFS etki alanı ayarını doğrulayın. Etki alanının varsayılan Azure NetApp Files etki alanı olarak yapılandırıldığından, yani **`defaultv4iddomain.com`** eşlemenin hiç **kimseye**ayarlı olmadığından emin olun.  
+1. NFS etki alanı ayarını doğrulayın. Etki alanının varsayılan Azure NetApp Files etki alanı olarak yapılandırıldığından emin olun, yani **`defaultv4iddomain.com`** ve eşleme **hiç kimse**olarak ayarlanmıştır.  
 
     > [!IMPORTANT]
-    > NFS etki alanını `/etc/idmapd.conf` Azure NetApp Dosyaları'ndaki varsayılan etki alanı yapılandırmasına **`defaultv4iddomain.com`** uyacak şekilde VM'de ayarladığından emin olun: . NFS istemcisindeki etki alanı yapılandırması (yani VM) ile NFS sunucusu, yani Azure NetApp yapılandırması arasında bir uyuşmazlık varsa, Azure NetApp birimlerinde VM'lere monte `nobody`edilen dosyaların izinleri görüntülenir.  
+    > VM üzerinde `/etc/idmapd.conf` NFS etki alanını Azure NetApp Files varsayılan etki alanı yapılandırmasıyla eşleşecek şekilde ayarladığınızdan emin olun: **`defaultv4iddomain.com`** . NFS istemcisindeki (yani VM) ve NFS sunucusunun etki alanı yapılandırması arasında uyuşmazlık varsa (örneğin, Azure NetApp yapılandırması), VM 'Lere bağlı Azure NetApp birimlerinde dosya izinleri `nobody`olarak görüntülenir.  
 
     <pre><code>
     sudo cat /etc/idmapd.conf
@@ -275,7 +278,7 @@ Bu bölümdeki talimatlar yalnızca NFSv4.1 protokolüne sahip Azure NetApp File
     Nobody-Group = <b>nobody</b>
     </code></pre>
 
-4. **[A]** `nfs4_disable_idmapping`Doğrula. **Y**olarak ayarlanmalıdır. Bulunduğu yerdeki `nfs4_disable_idmapping` dizin yapısını oluşturmak için montaj komutunu çalıştırın. /sys/modules altında dizini el ile oluşturamazsınız, çünkü erişim çekirdek / sürücüler için ayrılmıştır.  
+4. **[A]** `nfs4_disable_idmapping`doğrulayın. **Y**olarak ayarlanmalıdır. `nfs4_disable_idmapping` bulunduğu dizin yapısını oluşturmak için Mount komutunu yürütün. Erişim çekirdek/sürücü için ayrıldığından,/sys/modules altında dizini el ile oluşturamazsınız.  
 
     <pre><code>
     # Check nfs4_disable_idmapping 
@@ -289,26 +292,26 @@ Bu bölümdeki talimatlar yalnızca NFSv4.1 protokolüne sahip Azure NetApp File
     echo "options nfs nfs4_disable_idmapping=Y" >> /etc/modprobe.d/nfs.conf
     </code></pre>
 
-   Parametrenin nasıl değiştirilebildiğini `nfs4_disable_idmapping` https://access.redhat.com/solutions/1749883hakkında daha fazla bilgi için bkz.
+   `nfs4_disable_idmapping` parametrenin nasıl değiştirileceği hakkında daha fazla bilgi için bkz. https://access.redhat.com/solutions/1749883.
 
-### <a name="create-pacemaker-cluster"></a>Kalp Pili kümesi ni oluştur
+### <a name="create-pacemaker-cluster"></a>Pacemaker kümesi oluşturma
 
-Bu (A)SCS sunucusu için temel bir Pacemaker kümesi oluşturmak için [Azure'da Red Hat Enterprise Linux'ta Pacemaker'ı ayarlama](high-availability-guide-rhel-pacemaker.md) adımlarını izleyin.
+Bu (A) SCS sunucusu için temel bir Paceoluşturucu kümesi oluşturmak üzere [Azure 'daki Red Hat Enterprise Linux Paceyapıcısı ayarlama](high-availability-guide-rhel-pacemaker.md) bölümündeki adımları izleyin.
 
-### <a name="prepare-for-sap-netweaver-installation"></a>SAP NetWeaver kurulumu için hazırlanın
+### <a name="prepare-for-sap-netweaver-installation"></a>SAP NetWeaver yüklemesi için hazırlanma
 
-Aşağıdaki öğeler, tüm düğümler için geçerli olan **[A]** ile önceden belirlenmiştir, **[1] -** yalnızca düğüm 1 veya **[2]** için geçerlidir - yalnızca düğüm 2 için geçerlidir.
+Şu öğeler, **[A]** ön eki olan tüm düğümlere uygulanabilir, **[1]** -yalnızca düğüm 1 veya **[2]** için geçerlidir-yalnızca node 2 için geçerlidir.
 
-1. **[A]** Kurulum ana bilgisayar ad çözümü
+1. **[A]** kurulum konak adı çözümlemesi
 
-   Bir DNS sunucusu kullanabilir veya tüm düğümlerde /etc/hosts'ı değiştirebilirsiniz. Bu örnek, /etc/hosts dosyasının nasıl kullanılacağını gösterir.
-   Aşağıdaki komutlarda IP adresini ve ana bilgisayar adını değiştirme
+   Bir DNS sunucusu kullanabilir veya/etc/hosts tüm düğümlerde değiştirin. Bu örnek/Etc/Hosts dosyasının nasıl kullanılacağını gösterir.
+   Aşağıdaki komutlarda IP adresini ve ana bilgisayar adını değiştirin
 
     ```
     sudo vi /etc/hosts
     ```
 
-   /etc/hosts'a aşağıdaki satırları ekleyin. IP adresini ve ana bilgisayar adını ortamınıza uyacak şekilde değiştirme
+   / Etc/hosts aşağıdaki satırları ekleyin. IP adresi ve ana bilgisayar adını, ortamınızla eşleşecek şekilde değiştirin.
 
     ```
     # IP address of cluster node 1
@@ -321,8 +324,8 @@ Aşağıdaki öğeler, tüm düğümler için geçerli olan **[A]** ile önceden
     192.168.14.10    anftstsapers
     ```
 
-1. **[1]** Azure NetApp Dosyaları hacminde SAP dizinleri oluşturun.  
-   Azure NetApp Dosyaları hacmini geçici olarak VM'lerden birine monte edin ve SAP dizinlerini (dosya yolları) oluşturun.  
+1. **[1]** Azure NetApp FILES biriminde sap dizinleri oluşturun.  
+   VM 'lerden birine Azure NetApp Files birimi geçici olarak bağlayın ve SAP dizinlerini (dosya yolları) oluşturun.  
 
     ```
      # mount temporarily the volume
@@ -345,7 +348,7 @@ Aşağıdaki öğeler, tüm düğümler için geçerli olan **[A]** ile önceden
      sudo rmdir /saptmp
     ``` 
 
-1. **[A]** Paylaşılan dizinleri oluşturma
+1. **[A]** paylaşılan dizinler oluşturma
 
    ```
    sudo mkdir -p /sapmnt/QAS
@@ -361,15 +364,15 @@ Aşağıdaki öğeler, tüm düğümler için geçerli olan **[A]** ile önceden
    sudo chattr +i /usr/sap/QAS/ERS01
    ```
 
-1. **[A]** NFS istemcisi ve diğer gereksinimleri yükleyin
+1. **[A]** NFS istemcisini ve diğer gereksinimleri yükler
 
    ```
    sudo yum -y install nfs-utils resource-agents resource-agents-sap
    ```
 
-1. **[A]** Kaynak-aracılar-sap sürümünü denetleyin
+1. **[A]** kaynak-aracıların denetim sürümü-SAP
 
-   Yüklenen kaynak-aracılar-sap paketinin sürümünün en az 3.9.5-124.el7 olduğundan emin olun
+   Yüklü kaynak-Agents-SAP paketinin sürümünün en az 3.9.5 -124. EL7 olduğundan emin olun
    ```
    sudo yum info resource-agents-sap
    
@@ -392,7 +395,7 @@ Aşağıdaki öğeler, tüm düğümler için geçerli olan **[A]** ile önceden
    ```
 
 
-1. **[A]** Montaj girişleri ekleme
+1. **[A]** bağlama girdileri ekleme
 
    NFSv3 kullanıyorsanız:
    ```
@@ -404,7 +407,7 @@ Aşağıdaki öğeler, tüm düğümler için geçerli olan **[A]** ile önceden
     192.168.24.4:/transSAP /usr/sap/trans nfs rw,hard,rsize=65536,wsize=65536,vers=3
    ```
 
-   NFSv4.1 kullanıyorsanız:
+   NFSv 4.1 kullanılıyorsa:
    ```
    sudo vi /etc/fstab
    
@@ -415,15 +418,15 @@ Aşağıdaki öğeler, tüm düğümler için geçerli olan **[A]** ile önceden
    ```
 
    > [!NOTE]
-   > Birimleri monte ederken Azure NetApp Dosyaları birimlerinin NFS protokol sürümüyle eşleştiğinden emin olun. Azure NetApp Dosyaları birimleri NFSv3 birimleri olarak oluşturulursa, ilgili NFSv3 yapılandırmasını kullanın. Azure NetApp Dosyaları birimleri NFSv4.1 birimleri olarak oluşturulursa, kimlik eşlemesini devre dışı bırakıp ilgili NFSv4.1 yapılandırmasını kullandığınızdan emin olun yönergeleri izleyin. Bu örnekte Azure NetApp Dosyaları birimleri NFSv3 birimleri olarak oluşturulmuştur.  
+   > Birimleri bağlama sırasında Azure NetApp Files birimlerinin NFS protokol sürümüyle eşleştiğinden emin olun. Azure NetApp Files birimleri NFSv3 birimleri olarak oluşturulduysa, ilgili NFSv3 yapılandırmasını kullanın. Azure NetApp Files birimleri NFSv 4.1 birimleri olarak oluşturulduysa, KIMLIK eşlemesini devre dışı bırakmak için yönergeleri izleyin ve karşılık gelen NFSv 4.1 yapılandırmasını kullandığınızdan emin olun. Bu örnekte Azure NetApp Files birimleri NFSv3 birimleri olarak oluşturulmuştur.  
 
-   Yeni paylaşımları monte edin
+   Yeni paylaşımları bağlama
 
    ```
    sudo mount -a  
    ```
 
-1. **[A]** SWAP dosyalarını yapılandırma
+1. **[A]** takas dosyası yapılandırma
 
    ```
    sudo vi /etc/waagent.conf
@@ -438,7 +441,7 @@ Aşağıdaki öğeler, tüm düğümler için geçerli olan **[A]** ile önceden
    ResourceDisk.SwapSizeMB=2000
    ```
 
-   Değişikliği etkinleştirmek için Aracıyı yeniden başlatın
+   Değişikliği etkinleştirmek için aracıyı yeniden başlatın
 
    ```
    sudo service waagent restart
@@ -446,11 +449,11 @@ Aşağıdaki öğeler, tüm düğümler için geçerli olan **[A]** ile önceden
 
 1. **[A]** RHEL yapılandırması
 
-   SAP Note [2002167'de] açıklandığı şekilde RHEL'i yapılandırın
+   SAP Note [2002167] ' de açıklandığı gibi RHEL 'yi yapılandırma
 
-### <a name="installing-sap-netweaver-ascsers"></a>SAP NetWeaver ASCS/ERS kurulumu
+### <a name="installing-sap-netweaver-ascsers"></a>SAP NetWeaver yoks/ERS yükleme
 
-1. **[1]** ASCS örneği için sanal bir IP kaynağı ve sistem durumu sondası oluşturma
+1. **[1]** ascs örneği için BIR sanal IP kaynağı ve sistem durumu araştırması oluşturun
 
    ```
    sudo pcs node standby anftstsapcl2
@@ -474,7 +477,7 @@ Aşağıdaki öğeler, tüm düğümler için geçerli olan **[A]** ile önceden
      --group g-QAS_ASCS
    ```
 
-   Küme durumunun iyi olduğundan ve tüm kaynakların başlatıldıkolduğundan emin olun. Hangi düğümün hangi düğümün çalıştığının önemli değildir.
+   Küme durumunun tamam olduğundan ve tüm kaynakların başlatıldığından emin olun. Kaynakların hangi düğümde çalıştığı önemli değildir.
 
    ```
    sudo pcs status
@@ -491,11 +494,11 @@ Aşağıdaki öğeler, tüm düğümler için geçerli olan **[A]** ile önceden
    #      vip_QAS_ASCS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl1
    ```
 
-1. **[1]** SAP NetWeaver ASCS yükleyin  
+1. **[1]** SAP NetWeaver yoks 'yi yükler  
 
-   SAP NetWeaver ASCS'yi, ascs için yük dengeleyici ön uç yapılandırmasının IP adresine eşleyen sanal bir ana bilgisayar adı kullanarak ilk düğüme kök olarak yükleyin, örneğin <b>anftstsapvh</b>, <b>192.168.14.9</b> ve yük bakiyesi probiçin kullandığınız örnek numarası, örneğin <b>00</b>.
+   Ass için yük dengeleyici ön uç yapılandırmasının IP adresiyle eşlenen bir sanal ana bilgisayar <b>adını ve örneğin</b> <b>00</b>gibi yük dengeleyicinin araştırması için KULLANDıĞıNıZ örnek numarasını kullanarak SAP NetWeaver yoks <b>'yi ilk</b>düğümde kök olarak yükleyin.
 
-   Kök olmayan bir kullanıcının sapinst'e bağlanmasına izin vermek için SAPINST_REMOTE_ACCESS_USER sapinst parametresini kullanabilirsiniz.
+   Kök olmayan bir kullanıcının sapinst 'ya bağlanmasına izin vermek için sapinst parametresini SAPINST_REMOTE_ACCESS_USER kullanabilirsiniz.
 
    ```
    # Allow access to SWPM. This rule is not permanent. If you reboot the machine, you have to run the command again.
@@ -504,14 +507,14 @@ Aşağıdaki öğeler, tüm düğümler için geçerli olan **[A]** ile önceden
    sudo <swpm>/sapinst SAPINST_REMOTE_ACCESS_USER=sapadmin SAPINST_USE_HOSTNAME=<virtual_hostname>
    ```
 
-   Yükleme /usr/sap/**QAS**/ASCS**00'da**bir alt klasör oluşturamazsa, ASCS**00** klasörünün sahibini ve grubunu ayarlamayı deneyin ve yeniden deneyin.
+   Yükleme/usr/SAP/**QAS**/ascs**00**' da bir alt klasör oluşturamazsa, Ass**00** klasörünün sahibini ve grubunu ayarlamayı deneyin ve yeniden deneyin.
 
    ```
    sudo chown qasadm /usr/sap/QAS/ASCS00
    sudo chgrp sapsys /usr/sap/QAS/ASCS00
    ```
 
-1. **[1]** ERS örneği için sanal bir IP kaynağı ve sistem durumu sondası oluşturma
+1. **[1]** ers örneği için BIR sanal IP kaynağı ve sistem durumu araştırması oluşturun
 
    ```
    sudo pcs node unstandby anftstsapcl2
@@ -537,7 +540,7 @@ Aşağıdaki öğeler, tüm düğümler için geçerli olan **[A]** ile önceden
     --group g-QAS_AERS
    ```
  
-   Küme durumunun iyi olduğundan ve tüm kaynakların başlatıldıkolduğundan emin olun. Hangi düğümün hangi düğümün çalıştığının önemli değildir.
+   Küme durumunun tamam olduğundan ve tüm kaynakların başlatıldığından emin olun. Kaynakların hangi düğümde çalıştığı önemli değildir.
 
    ```
    sudo pcs status
@@ -558,11 +561,11 @@ Aşağıdaki öğeler, tüm düğümler için geçerli olan **[A]** ile önceden
    #      vip_QAS_AERS       (ocf::heartbeat:IPaddr2):       Started anftstsapcl2
    ```
 
-1. **[2]** SAP NetWeaver ERS'i yükleyin  
+1. **[2]** SAP NetWeaver iciler 'ı yükler  
 
-   SAP NetWeaver ERS'i, örneğin <b>anftstsapers</b>, <b>192.168.14.10</b> ve yük dengeleyicisinin sondası için kullandığınız örnek numarası, örneğin <b>01</b>.
+   SAP NetWeaver <b>ers 'ı,</b>ers için yük dengeleyici ön uç yapılandırmasının IP adresiyle eşlenen bir sanal ana bilgisayar adı ve örneğin <b>01</b>gibi yük dengeleyicinin araştırması için kullandığınız örnek <b>numarası ile ikinci</b> düğüme kök olarak yükleyin.
 
-   Kök olmayan bir kullanıcının sapinst'e bağlanmasına izin vermek için SAPINST_REMOTE_ACCESS_USER sapinst parametresini kullanabilirsiniz.
+   Kök olmayan bir kullanıcının sapinst 'ya bağlanmasına izin vermek için sapinst parametresini SAPINST_REMOTE_ACCESS_USER kullanabilirsiniz.
 
    ```
    # Allow access to SWPM. This rule is not permanent. If you reboot the machine, you have to run the command again.
@@ -571,16 +574,16 @@ Aşağıdaki öğeler, tüm düğümler için geçerli olan **[A]** ile önceden
    sudo <swpm>/sapinst SAPINST_REMOTE_ACCESS_USER=sapadmin SAPINST_USE_HOSTNAME=<virtual_hostname>
    ```
 
-   Yükleme /usr/sap/**QAS**/ERS**01'de**bir alt klasör oluşturamazsa, ERS**01** klasörünün sahibini ve grubunu ayarlamayı deneyin ve yeniden deneyin.
+   Yükleme/usr/SAP/**QAS**/ers**01**' de bir alt klasör oluşturamazsa, ers**01** klasörünün sahibini ve grubunu ayarlamayı deneyin ve yeniden deneyin.
 
    ```
    sudo chown qaadm /usr/sap/QAS/ERS01
    sudo chgrp sapsys /usr/sap/QAS/ERS01
    ```
 
-1. **[1]** ASCS/SCS ve ERS örnek profillerini uyarlama
+1. **[1]** yoks/SCS ve ers örnek profillerini uyarlayın
 
-   * ASCS/SCS profili
+   * YOKS/SCS profili
 
    ```
    sudo vi /sapmnt/QAS/profile/QAS_ASCS00_anftstsapvh
@@ -607,20 +610,20 @@ Aşağıdaki öğeler, tüm düğümler için geçerli olan **[A]** ile önceden
    ```
 
 
-1. **[A]** Canlı Tutun'u Yapılandır
+1. **[A]** canlı tutmayı yapılandırma
 
-   SAP NetWeaver uygulama sunucusu ile ASCS/SCS arasındaki iletişim bir yazılım yük dengeleyicisi aracılığıyla yönlendirilir. Yük dengeleyici, yapılandırılabilir bir zaman anından sonra etkin olmayan bağlantıları keser. Bunu önlemek için SAP NetWeaver ASCS/SCS profilinde bir parametre ayarlamanız ve Linux sistem ayarlarını değiştirmeniz gerekir. Daha fazla bilgi için [SAP Note 1410736'yı][1410736] okuyun.
+   SAP NetWeaver uygulama sunucusu ve yoks/SCS arasındaki iletişim, bir yazılım yük dengeleyici aracılığıyla yönlendirilir. Yük dengeleyici, yapılandırılabilir bir zaman aşımından sonra etkin olmayan bağlantıları keser. Bunu engellemek için SAP NetWeaver ASCS/SCS profilinde bir parametre ayarlamanız ve Linux sistem ayarlarını değiştirmeniz gerekir. Daha fazla bilgi için [SAP Note 1410736][1410736] makalesini okuyun.
 
-   ASCS/SCS profil parametresi enque/encni/set_so_keepalive zaten son adımda eklendi.
+   Ass/SCS profil parametresi EnQue/encnı/set_so_keepalive son adımla zaten eklendi.
 
    ```
    # Change the Linux system configuration
    sudo sysctl net.ipv4.tcp_keepalive_time=120
    ```
 
-1. **[A]** /usr/sap/sapservices dosyasını güncelleştir
+1. **[A]** /usr/SAP/sapservices dosyasını güncelleştirme
 
-   Sapinit başlangıç komut dosyası tarafından örneklerin başlatılmasını önlemek için, Pacemaker tarafından yönetilen tüm örnekler /usr/sap/sapservices dosyasından yorumlanmalıdır. HANA SR ile kullanılacaksa SAP HANA örneğini açıklamayın.
+   Sapinit başlangıç betiğinin örneklerinin başlamasını engellemek için, pacemaker tarafından yönetilen tüm örneklere/usr/SAP/sapservices dosyasından açıklama eklenmelidir. HANA SR ile birlikte kullanılacaksa SAP HANA örneğini açıklama olarak kullanmayın.
 
    ```
    sudo vi /usr/sap/sapservices
@@ -634,7 +637,7 @@ Aşağıdaki öğeler, tüm düğümler için geçerli olan **[A]** ile önceden
 
 1. **[1]** SAP küme kaynaklarını oluşturma
 
-   Enqueue server 1 mimarisi (ENSA1) kullanıyorsanız, kaynakları aşağıdaki gibi tanımlayın:
+   Sıraya alma sunucusu 1 mimarisini (ENSA1) kullanıyorsanız, kaynakları aşağıdaki gibi tanımlayın:
 
    ```
    sudo pcs property set maintenance-mode=true
@@ -661,8 +664,8 @@ Aşağıdaki öğeler, tüm düğümler için geçerli olan **[A]** ile önceden
     sudo pcs property set maintenance-mode=false
     ```
 
-   SAP, SAP NW 7.52 itibariyle çoğaltma da dahil olmak üzere enqueue server 2 için destek sundu. ABAP Platform 1809 ile başlayarak, enqueue server 2 varsayılan olarak yüklenir. Enqueue server 2 desteği için SAP note [2630416'ya](https://launchpad.support.sap.com/#/notes/2630416) bakın.
-   Enqueue server 2 mimarisi[(ENSA2)](https://help.sap.com/viewer/cff8531bc1d9416d91bb6781e628d4e0/1709%20001/en-US/6d655c383abf4c129b0e5c8683e7ecd8.html)kullanıyorsanız, kaynak aracısı kaynak-aracı-sap-4.1.1-12.el7.x86_64 veya daha yeni yükleyin ve kaynakları aşağıdaki gibi tanımlayın:
+   SAP, SAP NW 7,52 itibariyle çoğaltma dahil olmak üzere sıraya alma sunucusu 2 için destek sunmuştur. ABAP platform 1809 ' den başlayarak, sıraya alma sunucusu 2 varsayılan olarak yüklenir. Sıraya alma sunucusu 2 desteği için bkz. SAP Note [2630416](https://launchpad.support.sap.com/#/notes/2630416) .
+   Sıraya alma sunucusu 2 mimarisini ([ENSA2](https://help.sap.com/viewer/cff8531bc1d9416d91bb6781e628d4e0/1709%20001/en-US/6d655c383abf4c129b0e5c8683e7ecd8.html)) kullanıyorsanız, Resource Agent Resource-Agents-sap-4.1.1 -12. el7. x86_64 veya sonraki bir sürümünü yükleyip kaynakları aşağıdaki gibi tanımlayın:
 
     ```
     sudo pcs property set maintenance-mode=true
@@ -689,12 +692,12 @@ Aşağıdaki öğeler, tüm düğümler için geçerli olan **[A]** ile önceden
     sudo pcs property set maintenance-mode=false
     ```
 
-   Eski bir sürümden yükseltiyor ve enqueue server 2'ye geçiyorsanız, SAP note [2641322'ye](https://launchpad.support.sap.com/#/notes/2641322)bakın. 
+   Daha eski bir sürümden yükseltiyorsanız ve sıraya alma sunucusu 2 ' ye geçiş yapıyorsanız bkz. SAP Note [2641322](https://launchpad.support.sap.com/#/notes/2641322). 
 
    > [!NOTE]
-   > Yukarıdaki yapılandırmadaki zaman ekmeleri yalnızca örneklerdir ve belirli SAP kurulumuna uyarlanmış olması gerekebilir. 
+   > Yukarıdaki yapılandırmadaki zaman aşımları yalnızca örnektir ve belirli SAP kurulumuna uyarlanmasını gerektirebilir. 
 
-   Küme durumunun iyi olduğundan ve tüm kaynakların başlatıldıkolduğundan emin olun. Hangi düğümün hangi düğümün çalıştığının önemli değildir.
+   Küme durumunun tamam olduğundan ve tüm kaynakların başlatıldığından emin olun. Kaynakların hangi düğümde çalıştığı önemli değildir.
 
     ```
     sudo pcs status
@@ -716,7 +719,7 @@ Aşağıdaki öğeler, tüm düğümler için geçerli olan **[A]** ile önceden
     #      rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    ```
 
-1. **[A]** Her iki düğümde DE ASCS ve ERS için güvenlik duvarı kuralları ekleyin Her iki düğümde de ASCS ve ERS için güvenlik duvarı kurallarını ekleyin.
+1. **[A]** her iki düğümdeki yoks ve ers için güvenlik duvarı kuralları ekleme her iki düğümdeki yoks ve ers için güvenlik duvarı kuralları ekleyin.
    ```
    # Probe Port of ASCS
    sudo firewall-cmd --zone=public --add-port=62000/tcp --permanent
@@ -748,22 +751,22 @@ Aşağıdaki öğeler, tüm düğümler için geçerli olan **[A]** ile önceden
    sudo firewall-cmd --zone=public --add-port=50116/tcp
    ```
 
-## <a name="sap-netweaver-application-server-preparation"></a><a name="2d6008b0-685d-426c-b59e-6cd281fd45d7"></a>SAP NetWeaver uygulama sunucusu hazırlama
+## <a name="sap-netweaver-application-server-preparation"></a><a name="2d6008b0-685d-426c-b59e-6cd281fd45d7"></a>SAP NetWeaver uygulama sunucusu hazırlığı
 
-   Bazı veritabanları veritabanı örneği yüklemebir uygulama sunucusunda yürütülmesini gerektirir. Bu gibi durumlarda bunları kullanabilmek için uygulama sunucusu sanal makineleri hazırlayın.  
+   Bazı veritabanları, veritabanı örneği yüklemesinin bir uygulama sunucusunda yürütülmesini gerektirir. Uygulama sunucusu sanal makinelerini bu durumlarda kullanabilecek şekilde hazırlayın.  
 
-   Adım ları körüklüyor, uygulama sunucusunu ASCS/SCS ve HANA sunucularından farklı bir sunucuya yüklediğinizi varsayar. Aksi takdirde aşağıdaki adımlardan bazıları (ana bilgisayar ad çözümlemesi yapılandırma gibi) gerekli değildir.  
+   Bu adımlar, uygulama sunucusunu yoks/SCS ve HANA sunucularından farklı bir sunucuya yüklediğinizi varsaymaktadır. Aksi takdirde, aşağıdaki adımlardan bazıları (konak adı çözümlemesini yapılandırma gibi) gerekli değildir.  
 
-   Aşağıdaki öğeler, hem PAS hem de AAS için geçerli olan **[A]** ile önceden belirlenmiştir, **[P] -** yalnızca PAS veya **[S]** için geçerlidir - yalnızca AAS için geçerlidir.  
+   Şu öğeler için **[A]** ön eki **EKLENDI-hem** pas hem de AAS Için geçerlidir, **[P]**  
 
-1. **[A]** Kurulum ana bilgisayar ad çözünürlüğü Bir DNS sunucusu kullanabilir veya tüm düğümlerde /etc/hosts'ı değiştirebilirsiniz. Bu örnek, /etc/hosts dosyasının nasıl kullanılacağını gösterir.
+1. **[A]** kurulum konak adı ÇÖZÜMLEMESI bir DNS sunucusu kullanabilir ya da tüm düğümlerdeki/etc/konaklarınızı değiştirebilirsiniz. Bu örnek/Etc/Hosts dosyasının nasıl kullanılacağını gösterir.
    Aşağıdaki komutlarda IP adresini ve ana bilgisayar adını değiştirin:  
 
    ```
    sudo vi /etc/hosts
    ```
 
-   /etc/hosts'a aşağıdaki satırları ekleyin. IP adresini ve ana bilgisayar adını ortamınıza uyacak şekilde değiştirin.
+   / Etc/hosts aşağıdaki satırları ekleyin. IP adresini ve ana bilgisayar adını ortamınızla eşleşecek şekilde değiştirin.
 
    ```
    # IP address of the load balancer frontend configuration for SAP NetWeaver ASCS
@@ -774,7 +777,7 @@ Aşağıdaki öğeler, tüm düğümler için geçerli olan **[A]** ile önceden
    192.168.14.8 anftstsapa02
    ```
 
-1. **[A]** Sapmnt dizini oluşturun Sapmnt dizini oluşturun.
+1. **[A]** sapmnt dizinini oluşturma sapmnt dizinini oluşturun.
    ```
    sudo mkdir -p /sapmnt/QAS
    sudo mkdir -p /usr/sap/trans
@@ -783,13 +786,13 @@ Aşağıdaki öğeler, tüm düğümler için geçerli olan **[A]** ile önceden
    sudo chattr +i /usr/sap/trans
    ```
 
-1. **[A]** NFS istemcisi ve diğer gereksinimleri yükleyin  
+1. **[A]** NFS istemcisini ve diğer gereksinimleri yükler  
 
    ```
    sudo yum -y install nfs-utils uuidd
    ```
 
-1. **[A]** Montaj girişleri ekleme  
+1. **[A]** bağlama girdileri ekleme  
    NFSv3 kullanıyorsanız:
    ```
    sudo vi /etc/fstab
@@ -799,7 +802,7 @@ Aşağıdaki öğeler, tüm düğümler için geçerli olan **[A]** ile önceden
    192.168.24.4:/transSAP /usr/sap/trans nfs rw,hard,rsize=65536,wsize=65536,vers=3
    ```
 
-   NFSv4.1 kullanıyorsanız:
+   NFSv 4.1 kullanılıyorsa:
    ```
    sudo vi /etc/fstab
    
@@ -808,13 +811,13 @@ Aşağıdaki öğeler, tüm düğümler için geçerli olan **[A]** ile önceden
    192.168.24.4:/transSAP /usr/sap/trans nfs rw,hard,rsize=65536,wsize=65536,vers=4.1,sec=sys
    ```
 
-   Yeni paylaşımları monte edin
+   Yeni paylaşımları bağlama
 
    ```
    sudo mount -a
    ```
 
-1. **[P]** PAS dizinini oluşturun ve monte edin  
+1. **[P]** pas dizinini oluşturma ve bağlama  
    NFSv3 kullanıyorsanız:
    ```
    sudo mkdir -p /usr/sap/QAS/D02
@@ -828,7 +831,7 @@ Aşağıdaki öğeler, tüm düğümler için geçerli olan **[A]** ile önceden
    sudo mount -a
    ```
 
-   NFSv4.1 kullanıyorsanız:
+   NFSv 4.1 kullanılıyorsa:
    ```
    sudo mkdir -p /usr/sap/QAS/D02
    sudo chattr +i /usr/sap/QAS/D02
@@ -841,7 +844,7 @@ Aşağıdaki öğeler, tüm düğümler için geçerli olan **[A]** ile önceden
    sudo mount -a
    ```
 
-1. **[S]** AAS dizinini oluşturun ve monte edin  
+1. **[S]** AAS dizinini oluşturma ve bağlama  
    NFSv3 kullanıyorsanız:
    ```
    sudo mkdir -p /usr/sap/QAS/D03
@@ -855,7 +858,7 @@ Aşağıdaki öğeler, tüm düğümler için geçerli olan **[A]** ile önceden
    sudo mount -a
    ```
 
-   NFSv4.1 kullanıyorsanız:
+   NFSv 4.1 kullanılıyorsa:
    ```
    sudo mkdir -p /usr/sap/QAS/D03
    sudo chattr +i /usr/sap/QAS/D03
@@ -868,7 +871,7 @@ Aşağıdaki öğeler, tüm düğümler için geçerli olan **[A]** ile önceden
    sudo mount -a
    ```
 
-1. **[A]** SWAP dosyalarını yapılandırma
+1. **[A]** takas dosyası yapılandırma
  
    ```
    sudo vi /etc/waagent.conf
@@ -883,55 +886,55 @@ Aşağıdaki öğeler, tüm düğümler için geçerli olan **[A]** ile önceden
    ResourceDisk.SwapSizeMB=2000
    ```
 
-   Değişikliği etkinleştirmek için Aracıyı yeniden başlatın
+   Değişikliği etkinleştirmek için aracıyı yeniden başlatın
 
    ```
    sudo service waagent restart
    ```
 
-## <a name="install-database"></a>Veritabanını yükleme
+## <a name="install-database"></a>Veritabanını yükler
 
-Bu örnekte, SAP NetWeaver SAP HANA'ya yüklenir. Bu yükleme için desteklenen tüm veritabanını kullanabilirsiniz. AZURE'da SAP HANA'nın nasıl yüklenir hakkında daha fazla bilgi için Red Hat Enterprise Linux'taki. For a list of supported databases, see [SAP Note 1928533][1928533] [Azure VM'lerinde SAP HANA'nın yüksek kullanılabilirliği][sap-hana-ha]bölümüne bakın.
+Bu örnekte, SAP HANA SAP NetWeaver yüklüdür. Bu yükleme için desteklenen her veritabanını kullanabilirsiniz. SAP HANA Azure 'da nasıl yükleyeceğiniz hakkında daha fazla bilgi için Red Hat Enterprise Linux. For a list of supported databases, see [SAP Note 1928533][1928533][Azure VM 'lerinde SAP HANA yüksek kullanılabilirlik][sap-hana-ha] bölümüne bakın.
 
-1. SAP veritabanı örneği yüklemesini çalıştırma
+1. SAP veritabanı örnek yüklemesini çalıştırma
 
-   SAP NetWeaver veritabanı örneğini, veritabanı için yük dengeleyici ön uç yapılandırmasının IP adresine eşleyen sanal bir ana bilgisayar adı kullanarak kök olarak yükleyin.
+   SAP NetWeaver veritabanı örneğini, veritabanı için yük dengeleyici ön uç yapılandırmasının IP adresiyle eşlenen bir sanal ana bilgisayar adını kullanarak kök olarak yükleyin.
 
-   Kök olmayan bir kullanıcının sapinst'e bağlanmasına izin vermek için SAPINST_REMOTE_ACCESS_USER sapinst parametresini kullanabilirsiniz.
+   Kök olmayan bir kullanıcının sapinst 'ya bağlanmasına izin vermek için sapinst parametresini SAPINST_REMOTE_ACCESS_USER kullanabilirsiniz.
 
    ```
    sudo <swpm>/sapinst SAPINST_REMOTE_ACCESS_USER=sapadmin
    ```
 
-## <a name="sap-netweaver-application-server-installation"></a>SAP NetWeaver uygulama sunucusu kurulumu
+## <a name="sap-netweaver-application-server-installation"></a>SAP NetWeaver uygulama sunucusu yüklemesi
 
 SAP uygulama sunucusu yüklemek için aşağıdaki adımları izleyin.
 
-1. Uygulama sunucusu hazırlama
+1. Uygulama sunucusunu hazırla
 
-   Uygulama sunucusu hazırlamak için yukarıdaki bölümde [SAP NetWeaver uygulama sunucusu hazırlama](high-availability-guide-rhel.md#2d6008b0-685d-426c-b59e-6cd281fd45d7) adımları izleyin.
+   Uygulama sunucusunu hazırlamak için yukarıdaki Bölüm [SAP NetWeaver uygulama sunucusu hazırlama](high-availability-guide-rhel.md#2d6008b0-685d-426c-b59e-6cd281fd45d7) bölümündeki adımları izleyin.
 
-1. SAP NetWeaver uygulama sunucusunu kurun
+1. SAP NetWeaver uygulama sunucusunu yükler
 
-   Birincil veya ek SAP NetWeaver uygulamaları sunucusu yükleyin.
+   Birincil veya ek SAP NetWeaver uygulamaları sunucusu yükler.
 
-   Kök olmayan bir kullanıcının sapinst'e bağlanmasına izin vermek için SAPINST_REMOTE_ACCESS_USER sapinst parametresini kullanabilirsiniz.
+   Kök olmayan bir kullanıcının sapinst 'ya bağlanmasına izin vermek için sapinst parametresini SAPINST_REMOTE_ACCESS_USER kullanabilirsiniz.
 
    ```
    sudo <swpm>/sapinst SAPINST_REMOTE_ACCESS_USER=sapadmin
    ```
 
-1. SAP HANA güvenli mağazayı güncelleştirin
+1. SAP HANA güvenli depoyu Güncelleştir
 
-   SAP HANA güvenli deposunu, SAP HANA Sistem Çoğaltma kurulumunun sanal adını belirtmek için güncelleştirin.
+   SAP HANA güvenli mağazayı, SAP HANA sistem çoğaltması kurulumunun sanal adını gösterecek şekilde güncelleştirin.
 
-   Girişleri sapsid>adm \<olarak listelemek için aşağıdaki komutu çalıştırın
+   Girdileri \<sapsıd > adm olarak listelemek için aşağıdaki komutu çalıştırın
 
    ```
    hdbuserstore List
    ```
 
-   Bu, tüm girişleri listelemelidir ve
+   Bu, tüm girdileri listelemelidir ve şuna benzer görünmelidir
    ```
    DATA FILE       : /home/qasadm/.hdb/anftstsapa01/SSFS_HDB.DAT
    KEY FILE        : /home/qasadm/.hdb/anftstsapa01/SSFS_HDB.KEY
@@ -942,16 +945,16 @@ SAP uygulama sunucusu yüklemek için aşağıdaki adımları izleyin.
      DATABASE: QAS
    ```
 
-   Çıktı, varsayılan girişin IP adresinin yük bakiyesinin IP adresine değil, sanal makineyi işaret ettiğini gösterir. Bu giriş, yük bakiyesi sanal ana bilgisayar adını işaret etmek için değiştirilmesi gerekir. Aynı bağlantı noktası (yukarıdaki çıktıda**30313)** ve veritabanı adını (yukarıdaki çıktıda**QAS)** kullandığınızdan emin olun!
+   Çıktı, varsayılan girdinin IP adresinin, yük dengeleyicinin IP adresine değil, sanal makineye işaret ettiği gösterir. Bu girdinin, yük dengeleyicinin sanal ana bilgisayar adına işaret eden şekilde değiştirilmesi gerekir. Aynı bağlantı noktasını (yukarıdaki çıktıda**30313** ) ve veritabanı adını (yukarıdaki çıktıda**QAS** ) kullandığınızdan emin olun!
 
    ```
    su - qasadm
    hdbuserstore SET DEFAULT qasdb:30313@QAS SAPABAP1 <password of ABAP schema>
    ```
 
-## <a name="test-the-cluster-setup"></a>Küme kurulumını test edin
+## <a name="test-the-cluster-setup"></a>Küme kurulumunu test etme
 
-1. ASCS örneğini el ile geçirin
+1. ASCS örneğini el ile geçirme
 
    Teste başlamadan önce kaynak durumu:
 
@@ -996,7 +999,7 @@ SAP uygulama sunucusu yüklemek için aşağıdaki adımları izleyin.
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    ```
 
-1. Düğüm çökmesini simüle edin
+1. Düğüm kilitlenmesinin benzetimini yap
 
    Teste başlamadan önce kaynak durumu:
 
@@ -1014,13 +1017,13 @@ SAP uygulama sunucusu yüklemek için aşağıdaki adımları izleyin.
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    ```
 
-   ASCS örneğinin çalıştığı düğümde aşağıdaki komutu kök olarak çalıştırın
+   ASCS örneğinin çalıştırıldığı düğümde kök olarak aşağıdaki komutu çalıştırın
 
    ```
    [root@anftstsapcl2 ~]# echo b > /proc/sysrq-trigger
    ```
 
-   Düğüm yeniden başlatıldıktan sonraki durum aşağıdaki gibi görünmelidir.
+   Düğüm yeniden başlatıldıktan sonra durum şöyle görünmelidir.
 
    ```
    Online: [ anftstsapcl1 anftstsapcl2 ]
@@ -1043,7 +1046,7 @@ SAP uygulama sunucusu yüklemek için aşağıdaki adımları izleyin.
    * rsc_sap_QAS_ERS01_monitor_11000 on anftstsapcl1 'not running' (7): call=45, status=complete, exitreason='',
    ```
 
-   Başarısız kaynakları temizlemek için aşağıdaki komutu kullanın.
+   Hatalı kaynakları temizlemek için aşağıdaki komutu kullanın.
 
    ```
    [root@anftstsapcl1 ~]# pcs resource cleanup rsc_sap_QAS_ERS01
@@ -1065,7 +1068,7 @@ SAP uygulama sunucusu yüklemek için aşağıdaki adımları izleyin.
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    ```
 
-1. İleti sunucusu işlemini öldürme
+1. İleti sunucusu işlemini Sonlandır
 
    Teste başlamadan önce kaynak durumu:
 
@@ -1083,13 +1086,13 @@ SAP uygulama sunucusu yüklemek için aşağıdaki adımları izleyin.
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    ```
    
-   İleti sunucusunun işlemini tanımlamak ve öldürmek için aşağıdaki komutları kök olarak çalıştırın.
+   İleti sunucusu sürecini belirlemek ve sonlandırmak için aşağıdaki komutları kök olarak çalıştırın.
 
    ```
    [root@anftstsapcl1 ~]# pgrep ms.sapQAS | xargs kill -9
    ```
 
-   İleti sunucusunu yalnızca bir kez öldürürseniz, `sapstart`ileti sunucu tarafından yeniden başlatılır. Yeterince sık öldürürseniz, Pacemaker sonunda diğer düğüm için ASCS örneğini taşıyacak. Testten sonra ASCS ve ERS örneğinin kaynak durumunu temizlemek için aşağıdaki komutları kök olarak çalıştırın.
+   İleti sunucusunu yalnızca bir kez sonlandırdıysanız, `sapstart`tarafından yeniden başlatılır. Bunu yeterince fazla sonlandırdıysanız, Paceyapıcısı sonunda yoks örneğini diğer düğüme taşıyacaktır. Testten sonra Ass ve ERS örneğinin kaynak durumunu temizlemek için aşağıdaki komutları kök olarak çalıştırın.
 
    ```
    [root@anftstsapcl1 ~]# pcs resource cleanup rsc_sap_QAS_ASCS00
@@ -1112,7 +1115,7 @@ SAP uygulama sunucusu yüklemek için aşağıdaki adımları izleyin.
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    ```
 
-1. Enqueue sunucu işlemini öldür
+1. Sıraya alma sunucusu işlemini Sonlandır
 
    Teste başlamadan önce kaynak durumu:
 
@@ -1130,13 +1133,13 @@ SAP uygulama sunucusu yüklemek için aşağıdaki adımları izleyin.
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    ```
 
-   Aşağıdaki komutları, ASCS örneğinin enqueue sunucusunu öldürmek için çalıştığı düğümde kök olarak çalıştırın.
+   Sıraya alma sunucusunu sonlandırmak için ASCS örneğinin çalıştırıldığı düğümde kök olarak aşağıdaki komutları çalıştırın.
 
    ```
    [root@anftstsapcl2 ~]# pgrep en.sapQAS | xargs kill -9
    ```
 
-   ASCS örneği hemen diğer düğüm üzerinde başarısız olmalıdır. ASCS örneği başladıktan sonra ERS örneği de başarısız olmalıdır. Testten sonra ASCS ve ERS örneğinin kaynak durumunu temizlemek için aşağıdaki komutları kök olarak çalıştırın.
+   ASCS örneği hemen diğer düğüme yük devreder. Ass örneği başlatıldıktan sonra, ERS örneği de yük devreder. Testten sonra Ass ve ERS örneğinin kaynak durumunu temizlemek için aşağıdaki komutları kök olarak çalıştırın.
 
    ```
    [root@anftstsapcl2 ~]# pcs resource cleanup rsc_sap_QAS_ASCS00
@@ -1159,7 +1162,7 @@ SAP uygulama sunucusu yüklemek için aşağıdaki adımları izleyin.
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    ```
 
-1. Enqueue çoğaltma sunucu işlemini öldür
+1. Sıraya alma çoğaltma sunucusu işlemini Sonlandır
 
    Teste başlamadan önce kaynak durumu:
 
@@ -1177,13 +1180,13 @@ SAP uygulama sunucusu yüklemek için aşağıdaki adımları izleyin.
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    ```
 
-   Aşağıdaki komutu, ERS örneğinin enqueue çoğaltma sunucu işlemini öldürmek için çalıştığı düğümde kök olarak çalıştırın.
+   Sıraya alma çoğaltma sunucusu işlemini sonlandırmak için ERS örneğinin çalıştırıldığı düğümde kök olarak aşağıdaki komutu çalıştırın.
 
    ```
    [root@anftstsapcl2 ~]# pgrep er.sapQAS | xargs kill -9
    ```
 
-   Komutu yalnızca bir kez `sapstart` çalıştırsanız, işlemi yeniden başlatın. Yeterince sık çalıştırArsanız, `sapstart` işlemi yeniden başlatmaz ve kaynak durdurulmuş durumda olur. Testten sonra ERS örneğinin kaynak durumunu temizlemek için aşağıdaki komutları kök olarak çalıştırın.
+   Komutu yalnızca bir kez çalıştırırsanız `sapstart` işlem yeniden başlatılır. Bunu yeterince sık çalıştırırsanız, `sapstart` işlemi yeniden başlatmaz ve kaynak durdurulmuş durumda olur. Testten sonra ERS örneğinin kaynak durumunu temizlemek için aşağıdaki komutları kök olarak çalıştırın.
 
    ```
    [root@anftstsapcl2 ~]# pcs resource cleanup rsc_sap_QAS_ERS01
@@ -1205,7 +1208,7 @@ SAP uygulama sunucusu yüklemek için aşağıdaki adımları izleyin.
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    ```
 
-1. Enqueue sapstartsrv işlemini öldür
+1. Sıraya alma sapstartsrv işlemini Sonlandır
 
    Teste başlamadan önce kaynak durumu:
 
@@ -1223,7 +1226,7 @@ SAP uygulama sunucusu yüklemek için aşağıdaki adımları izleyin.
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    ```
 
-   ASCS'nin çalıştığı düğümde aşağıdaki komutları kök olarak çalıştırın.
+   ASCS 'nin çalıştığı düğümde kök olarak aşağıdaki komutları çalıştırın.
 
    ```
    [root@anftstsapcl1 ~]# pgrep -fl ASCS00.*sapstartsrv
@@ -1232,7 +1235,7 @@ SAP uygulama sunucusu yüklemek için aşağıdaki adımları izleyin.
    [root@anftstsapcl1 ~]# kill -9 59545
    ```
 
-   Sapstartsrv işlemi her zaman izlemenin bir parçası olarak Pacemaker kaynak aracısı tarafından yeniden başlatılmalıdır. Testten sonra kaynak durumu:
+   Sapstartsrv işlemi, izlemenin bir parçası olarak her zaman pacemaker kaynak Aracısı tarafından yeniden başlatılmalıdır. Testten sonra kaynak durumu:
 
    ```
    rsc_st_azure    (stonith:fence_azure_arm):      Started anftstsapcl1
@@ -1250,9 +1253,9 @@ SAP uygulama sunucusu yüklemek için aşağıdaki adımları izleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-* [SAP uygulamaları multi-SID kılavuzu için RHEL'de Azure VM'lerde SAP NW için HA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-multi-sid)
-* [AZURE Sanal Makineler SAP için planlama ve uygulama][planning-guide]
-* [SAP için Azure Sanal Makineler dağıtımı][deployment-guide]
-* [SAP için Azure Sanal Makineler DBMS dağıtımı][dbms-guide]
-* Yüksek kullanılabilirlik oluşturmayı ve AZURE'da SAP HANA'nın olağanüstü durum kurtarmasını nasıl planlayabilirsiniz (büyük örnekler), Bkz. [SAP HANA (büyük örnekler) yüksek kullanılabilirlik ve Azure'da olağanüstü durum kurtarma.](hana-overview-high-availability-disaster-recovery.md)
-* Azure Sanal M'lerde SAP HANA'nın yüksek kullanılabilirlik oluşturmasını ve olağanüstü kurtarma yı planlamayı öğrenmek için Azure [Sanal Makinelerde (VM) SAP HANA'nın Yüksek Kullanılabilirliği bölümüne][sap-hana-ha] bakın
+* [RHEL for SAP için Azure VM 'lerinde SAP NW için HA, çoklu SID Kılavuzu](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-multi-sid)
+* [SAP için Azure sanal makineleri planlama ve uygulama][planning-guide]
+* [SAP için Azure sanal makineleri dağıtımı][deployment-guide]
+* [SAP için Azure sanal makineleri DBMS dağıtımı][dbms-guide]
+* Azure 'da SAP HANA olağanüstü durum kurtarma için yüksek kullanılabilirlik ve plan (büyük örnekler) oluşturma hakkında bilgi edinmek için bkz. [Azure 'da SAP HANA (büyük örnekler) yüksek kullanılabilirlik ve olağanüstü durum kurtarma](hana-overview-high-availability-disaster-recovery.md).
+* Azure VM 'lerinde SAP HANA olağanüstü durum kurtarma için yüksek kullanılabilirlik ve plan planı oluşturma hakkında bilgi edinmek için bkz. [Azure sanal makinelerinde (VM) SAP HANA yüksek kullanılabilirliği][sap-hana-ha]
