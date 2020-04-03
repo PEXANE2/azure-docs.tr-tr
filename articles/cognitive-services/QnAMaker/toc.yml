@@ -22,6 +22,8 @@
       href: Quickstarts/quickstart-sdk.md
 - name: Öğreticiler
   items:
+    - name: Power Virtual Agent ile tümleştirme
+      href: Tutorials/integrate-with-power-virtual-assistant-fallback-topic.md
     - name: Toplu iş dosyasıyla test etme
       href: Quickstarts/batch-testing.md
 - name: Kavramlar
