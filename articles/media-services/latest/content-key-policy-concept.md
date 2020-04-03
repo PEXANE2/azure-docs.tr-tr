@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 07/26/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 7ddef1e78b4f8f62145e10b4cabc4537e28aba2f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 85a9cad80156dc6ac40e78610c91805d485ff3df
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74969913"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585987"
 ---
 # <a name="content-key-policies"></a>İçerik Anahtar İlkeleri
 
@@ -32,7 +32,7 @@ Genellikle, içerik anahtarı ilkenizi [Akış lı Bulucunuzla](streaming-locato
 > [!IMPORTANT]
 > Lütfen aşağıdaki önerileri gözden geçirin.
 
-* Medya Hizmeti hesabınız için sınırlı bir ilke kümesi tasarlamalı ve aynı seçenekler gerektiğinde akış bulucularınız için yeniden kullanmalısınız. Daha fazla bilgi için [Kotalar ve sınırlamalar](limits-quotas-constraints.md)bölümüne bakın.
+* Medya Hizmeti hesabınız için sınırlı bir ilke kümesi tasarlamalı ve aynı seçenekler gerektiğinde akış bulucularınız için yeniden kullanmalısınız. Daha fazla bilgi için [Kotalar ve sınırlar](limits-quotas-constraints.md)abakın.
 * İçerik anahtar ilkeleri güncellenir. Anahtar teslim önbelleklerin güncelleştirilmiş ilkeyi güncelleştirmesi ve alması 15 dakika kadar sürebilir. 
 
    İlkeyi güncelleştirerek, önbelleğe alınmış içeriği kullanan müşteriler için oynatma sorununa neden olabilecek varolan CDN önbelleğinin üzerine binmiş olursunuz.  

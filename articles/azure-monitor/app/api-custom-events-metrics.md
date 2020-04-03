@@ -3,12 +3,12 @@ title: Özel olaylar ve ölçümler için Uygulama Öngörüleri API ' si | Micr
 description: Kullanımı izlemek ve sorunları tanılamak için cihazınıza veya masaüstü uygulamanıza, web sayfanıza veya hizmetinize birkaç satır kod ekleyin.
 ms.topic: conceptual
 ms.date: 03/27/2019
-ms.openlocfilehash: 4275d3ea3a340f0a4083ab929eb7f7872f3311e6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 06bd8bd0958afd26e1256a010b08c908c59aaf7d
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80295024"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585874"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Özel olaylar ve ölçümler için Application Insights API
 
@@ -58,9 +58,9 @@ Bir örneğini `TelemetryClient` alın (web sayfalarındajavaScript hariç):
 
 ASP.NET [Core](asp-net-core.md#how-can-i-track-telemetry-thats-not-automatically-collected) uygulamaları ve [.NET/.NET Core uygulamaları için NON HTTP/Worker](worker-service.md#how-can-i-track-telemetry-thats-not-automatically-collected) `TelemetryClient` için, bağımlılık enjeksiyon kabının bir örneğini kendi belgelerinde açıklandığı şekilde almaları önerilir.
 
-AzureFunctions v2+ veya Azure WebJobs v3+ kullanıyorsanız, aşağıdaki belgeyi izleyin:https://docs.microsoft.com/azure/azure-functions/functions-monitoring#version-2x-3
+AzureFunctions v2+ veya Azure WebJobs v3+ kullanıyorsanız, aşağıdaki belgeyi izleyin:https://docs.microsoft.com/azure/azure-functions/functions-monitoring#version-2x-and-higher
 
-*C #*
+*C#*
 
 ```csharp
 private TelemetryClient telemetry = new TelemetryClient();
@@ -89,7 +89,7 @@ TelemetryClient iş parçacığı için güvenlidir.
 
 ASP.NET ve Java projeleri için gelen HTTP İstekleri otomatik olarak yakalanır. Uygulamanızın diğer modülü için TelemetryClient'un ek örneklerini oluşturmak isteyebilirsiniz. Örneğin, iş mantığı olaylarını bildirmek için ara yazılım sınıfınızda bir TelemetryClient örneğiniz olabilir. Makineyi tanımlamak için UserId ve DeviceId gibi özellikleri ayarlayabilirsiniz. Bu bilgiler, örneğin gönderdiği tüm olaylara eklenir.
 
-*C #*
+*C#*
 
 ```csharp
 TelemetryClient.Context.User.Id = "...";
@@ -119,7 +119,7 @@ Uygulama Öngörüleri'nde özel bir *olay,* [Metrikler](../../azure-monitor/app
 appInsights.trackEvent({name:"WinGame"});
 ```
 
-*C #*
+*C#*
 
 ```csharp
 telemetry.TrackEvent("WinGame");
@@ -153,7 +153,7 @@ Telemetri, Application `customEvents` [Insights Analytics'teki](analytics.md)tab
 
 ### <a name="examples"></a>Örnekler
 
-*C #*
+*C#*
 
 ```csharp
 namespace User.Namespace.Example01
@@ -263,7 +263,7 @@ Tek bir metrik değer göndermek için:
 appInsights.trackMetric("queueLength", 42.0);
  ```
 
-*C #*
+*C#*
 
 ```csharp
 var sample = new MetricTelemetry();
@@ -305,7 +305,7 @@ Kullanıcı ve oturum verileri sayfa görünümleriyle birlikte özellik olarak 
 appInsights.trackPageView("tab1");
 ```
 
-*C #*
+*C#*
 
 ```csharp
 telemetry.TrackPageView("GameReviewPage");
@@ -398,7 +398,7 @@ Korelasyon hakkında daha fazla bilgi için [Uygulama Öngörüleri'ndeki Teleme
 
 Telemetriyi el ile takip ederken, bu deseni kullanarak telemetri korelasyonundan emin olmanın en kolay yolu:
 
-*C #*
+*C#*
 
 ```csharp
 // Establish an operation context and associated telemetry item:
@@ -448,7 +448,7 @@ Uygulama Öngörüleri'ne özel durumlar gönderin:
 
 Raporlar yığın izlerini içerir.
 
-*C #*
+*C#*
 
 ```csharp
 try
@@ -543,7 +543,7 @@ Application Insights'a bir "kırıntı izi" göndererek sorunları tanılamaya y
 
 [Log4J gibi Standart loggers](../../azure-monitor/app/java-trace-logs.md) için Java'da, Portala üçüncü taraf günlükleri göndermek için Uygulama Öngörüleri Log4j veya Logback Appenders kullanın.
 
-*C #*
+*C#*
 
 ```csharp
 telemetry.TrackTrace(message, SeverityLevel.Warning, properties);
@@ -586,7 +586,7 @@ TrackTrace'in bir avantajı, iletiye nispeten uzun veriler koyabiliyor olmasıd�
 
 Ayrıca, iletinize önem düzeyi ekleyebilirsiniz. Ayrıca, diğer telemetriler gibi, farklı izleme kümelerini filtrelemenize veya aramanıza yardımcı olacak özellik değerleri ekleyebilirsiniz. Örnek:
 
-*C #*
+*C#*
 
 ```csharp
 var telemetry = new Microsoft.ApplicationInsights.TelemetryClient();
@@ -615,7 +615,7 @@ telemetry.trackTrace("Slow Database response", SeverityLevel.Warning, properties
 
 Harici bir kod parçasına yapılan çağrıların yanıt sürelerini ve başarı oranlarını izlemek için TrackDependency çağrısını kullanın. Sonuçlar portaldaki bağımlılık grafiklerinde görünür. Aşağıdaki kod parçacığının bağımlılık çağrısının yapıldığı her yere eklenmesi gerekir.
 
-*C #*
+*C#*
 
 ```csharp
 var success = false;
@@ -706,7 +706,7 @@ dependencies
 
 Normalde, SDK verileri sabit aralıklarla (genellikle 30 saniye) veya arabellek tam olduğunda (genellikle 500 öğe) gönderir. Ancak, bazı durumlarda arabelleği sifonu çekmek isteyebilirsiniz,örneğin, sdk'yı kapanan bir uygulamada kullanıyorsanız.
 
-*C #*
+*C#*
 
  ```csharp
 telemetry.Flush();
@@ -812,7 +812,7 @@ appInsights.trackPageView
         );
 ```
 
-*C #*
+*C#*
 
 ```csharp
 // Set up some properties and metrics:
@@ -913,7 +913,7 @@ requests
 
 Bazen bir eylemi gerçekleştirmenin ne kadar sürdüğünü grafiklemek istersiniz. Örneğin, kullanıcıların bir oyunda seçimleri dikkate almaları ne kadar zaman alabilir diyebilirsiniz. Bunun için ölçüm parametresini kullanabilirsiniz.
 
-*C #*
+*C#*
 
 ```csharp
 var stopwatch = System.Diagnostics.Stopwatch.StartNew();
@@ -956,7 +956,7 @@ telemetry.trackEvent("SignalProcessed", properties, metrics);
 
 Yazdığınız bazı özel olaylar için varsayılan özellik değerlerini ayarlamak istiyorsanız, bunları Bir TelemetryClient örneğinde ayarlayabilirsiniz. Bu istemciden gönderilen her telemetri öğesine eklenirler.
 
-*C #*
+*C#*
 
 ```csharp
 using Microsoft.ApplicationInsights.DataContracts;
@@ -1022,7 +1022,7 @@ Uygulayarak `ITelemetryInitializer`telemetriye [özellikler ekleyin.](../../azur
 
 *Dinamik olarak durdurmak ve* telemetri toplama ve iletim başlatmak için:
 
-*C #*
+*C#*
 
 ```csharp
 using  Microsoft.ApplicationInsights.Extensibility;
@@ -1062,7 +1062,7 @@ Bu toplayıcıları başlatmadan sonra devre dışı kullanabilirsiniz, Yapılan
 
 Hata ayıklama sırasında, sonuçları hemen görebilmeniz için telemetrinizin boru hattında hızlandırılmasını sağlamak yararlıdır. Ayrıca, telemetri ile ilgili sorunları izlemenize yardımcı olacak ek iletiler de alırsınız. Uygulamada kapatın, çünkü uygulamanızı yavaşlatabilir.
 
-*C #*
+*C#*
 
 ```csharp
 TelemetryConfiguration.Active.TelemetryChannel.DeveloperMode = true;
@@ -1087,7 +1087,7 @@ applicationInsights.defaultClient.config.maxBatchSize = 0;
 
 ## <a name="setting-the-instrumentation-key-for-selected-custom-telemetry"></a><a name="ikey"></a>Seçili özel telemetri için enstrümantasyon anahtarını ayarlama
 
-*C #*
+*C#*
 
 ```csharp
 var telemetry = new TelemetryClient();
@@ -1101,7 +1101,7 @@ Geliştirme, test ve üretim ortamlarından telemetriyi karıştırmayı önleme
 
 Enstrümantasyon anahtarını yapılandırma dosyasından almak yerine, kodunuza ayarlayabilirsiniz. Anahtarı, ASP.NET hizmetinde global.aspx.cs gibi bir başlatma yönteminde ayarlayın:
 
-*C #*
+*C#*
 
 ```csharp
 protected void Application_Start()

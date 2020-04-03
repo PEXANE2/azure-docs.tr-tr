@@ -1,6 +1,6 @@
 ---
 title: Seçeneklere göre grup kullanma
-description: Çözümler geliştirmek için Azure SQL Veri Ambarı'nda seçeneklere göre grup uygulama ipuçları.
+description: Synapse SQL havuzunda seçeneklere göre grup uygulama ipuçları.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,28 +11,28 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f77445e80e701053b7fbfa1aa559248cf505353c
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 28ac075d043f7605b6dfdac6879063fbe9308123
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350522"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619055"
 ---
-# <a name="group-by-options-in-sql-data-warehouse"></a>SQL Veri Ambarı'ndaki seçeneklere göre gruplandırma
-Çözümler geliştirmek için Azure SQL Veri Ambarı'nda seçeneklere göre grup uygulama ipuçları.
+# <a name="group-by-options-in-synapse-sql-pool"></a>Synapse SQL havuzundaki seçeneklere göre gruplandırma
+
+Bu makalede, SQL havuzunda grup seçeneklerine göre grup uygulama ipuçları bulacaksınız.
 
 ## <a name="what-does-group-by-do"></a>GROUP BY ne yapar?
 
-[GROUP BY](/sql/t-sql/queries/select-group-by-transact-sql) T-SQL yan tümcesi verileri bir özet satır kümesine toplar. GROUP BY, SQL Veri Ambarı'nın desteklemediği bazı seçeneklere sahiptir. Bu seçeneklerin geçici geçici çözümlerini vardır.
-
-Bu seçenekler,
+[GROUP BY](/sql/t-sql/queries/select-group-by-transact-sql) T-SQL yan tümcesi verileri bir özet satır kümesine toplar. GROUP BY, SQL havuzunun desteklemediği bazı seçeneklere sahiptir. Bu seçenekleraşağıdaki gibi geçici çözüm vardır:
 
 * ROLLUP ile GRUP
 * GRUPLANDıRMA KÜMELerİ
 * KÜP İlE GRUP LA
 
 ## <a name="rollup-and-grouping-sets-options"></a>Toplama ve gruplandırma seçenekleri kümeler
-Buradaki en basit seçenek, açık sözdizimine güvenmek yerine toplamayı gerçekleştirmek için UNION ALL'ı kullanmaktır. Sonuç tam olarak aynıdır
+
+Buradaki en basit seçenek, açık sözdizimine güvenmek yerine toplamayı gerçekleştirmek için UNION ALL'ı kullanmaktır. Sonuç tamamen aynıdır.
 
 ROLLUP seçeneği ile GROUP BY deyimini kullanarak aşağıdaki örnek:
 ```sql
@@ -84,11 +84,11 @@ JOIN  dbo.DimSalesTerritory t     ON s.SalesTerritoryKey       = t.SalesTerritor
 GRUPLAMA KÜMELERİnİnİ DEĞIŞTIRMEK IÇIN örnek ilkesi uygulanır. Yalnızca görmek istediğiniz toplama düzeyleri için UNION ALL bölümleri oluşturmanız gerekir.
 
 ## <a name="cube-options"></a>Küp seçenekleri
-UNION ALL yaklaşımını kullanarak KÜP İlE Bİr GRUP OLUŞTURMAK MÜMKÜNDÜR. Sorun, kodun hızlı bir şekilde hantal ve hantal hale gelebiliyor olmasıdır. Bunu azaltmak için, bu daha gelişmiş yaklaşımı kullanabilirsiniz.
+UNION ALL yaklaşımını kullanarak KÜP İlE Bİr GRUP OLUŞTURMAK MÜMKÜNDÜR. Sorun, kodun hızlı bir şekilde hantal ve hantal hale gelebiliyor olmasıdır. Bu sorunu azaltmak için bu daha gelişmiş yaklaşımı kullanabilirsiniz.
 
-Yukarıdaki örneği kullanalım.
+Önceki örneği kullanarak, ilk adım oluşturmak istediğimiz tüm toplama düzeylerini tanımlayan 'küp'ü tanımlamaktır. 
 
-İlk adım, oluşturmak istediğimiz tüm toplama düzeylerini tanımlayan 'küp'ü tanımlamaktır. Türemiş iki tablonun ÇAPRAZ BİrLEŞTİrME'sine dikkat etmek önemlidir. Bu bizim için tüm seviyeleri oluşturur. Kodun geri kalanı gerçekten biçimlendirme için orada.
+Bu bizim için tüm düzeyleri oluşturur beri iki türetilmiş tabloların CROSS JOIN not alın. Kodun geri kalanı biçimlendirme için vardır:
 
 ```sql
 CREATE TABLE #Cube
@@ -119,7 +119,7 @@ SELECT Cols
 FROM GrpCube;
 ```
 
-Aşağıdaki CTAS sonuçlarını gösterir:
+Aşağıdaki resim CTAS sonuçlarını gösterir:
 
 ![Küpe göre gruplandırma](./media/sql-data-warehouse-develop-group-by-options/sql-data-warehouse-develop-group-by-cube.png)
 
@@ -146,7 +146,7 @@ WITH
 ;
 ```
 
-Üçüncü adım, toplama gerçekleştiren sütunküpümüz üzerinde döngü. Sorgu, #Cube geçici tablosundaki her satır için bir kez çalışacak ve sonuçları #Results geçici tablosunda saklar
+Üçüncü adım, toplama gerçekleştiren sütunküpümüz üzerinde döngü. Sorgu, #Cube geçici tablosundaki her satır için bir kez çalışır. Sonuçlar #Results geçici tablosunda saklanır:
 
 ```sql
 SET @nbr =(SELECT MAX(Seq) FROM #Cube);
@@ -170,7 +170,7 @@ BEGIN
 END
 ```
 
-Son olarak, sadece #Results geçici tablodan okuyarak sonuçları döndürebilirsiniz
+Son olarak, #Results geçici tablodan okuyarak sonuçları döndürebilirsiniz:
 
 ```sql
 SELECT *

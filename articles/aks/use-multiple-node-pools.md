@@ -4,12 +4,12 @@ description: Azure Kubernetes Hizmeti'nde (AKS) bir küme için birden çok dü�
 services: container-service
 ms.topic: article
 ms.date: 03/10/2020
-ms.openlocfilehash: 607419787bc0bab243d6cc2b8cbaa0ec22921e87
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 87f066ed17e5274439082956803d269bdd5853f5
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80422322"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80616511"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Hizmeti'nde (AKS) bir küme için birden çok düğüm havuzu oluşturma ve yönetme
 
@@ -420,7 +420,7 @@ Kubernetes zamanlayıcısı, düğümlerde hangi iş yüklerinin çalıştırıl
 
 Gelişmiş Kubernetes zamanlanmış özelliklerinin nasıl kullanılacağı hakkında daha fazla bilgi [için, AKS'deki gelişmiş zamanlayıcı özellikleri için en iyi uygulamalara][taints-tolerations] bakın
 
-Bu örnekte, --düğüm-taints komutunu kullanarak GPU tabanlı düğümünüze bir leke uygulayın. Önceki `kubectl get nodes` komutun çıktısından GPU tabanlı düğümünüzün adını belirtin. Leke *bir anahtar: değer* ve daha sonra bir zamanlama seçeneği olarak uygulanır. Aşağıdaki *örneksku=gpu* çiftini kullanır ve bölmeleri tanımlar aksi takdirde *NoSchedule* özelliğine sahiptir:
+Bu örnekte, --düğüm-taints komutunu kullanarak GPU tabanlı düğümünüze bir leke uygulayın. Önceki `kubectl get nodes` komutun çıktısından GPU tabanlı düğümünüzün adını belirtin. Leke *bir anahtar=değer* çifti ve daha sonra bir zamanlama seçeneği olarak uygulanır. Aşağıdaki *örneksku=gpu* çiftini kullanır ve bölmeleri tanımlar aksi takdirde *NoSchedule* özelliğine sahiptir:
 
 ```console
 az aks nodepool add --node-taints aks-gpunodepool-28993262-vmss000000 sku=gpu:NoSchedule
@@ -480,7 +480,7 @@ Events:
   Normal  Started    4m40s  kubelet, aks-gpunodepool-28993262-vmss000000  Started container
 ```
 
-Yalnızca bu lekeyi uygulayan bölmeler *gpunodepool'daki*düğümlerde zamanlanabilir. Başka bir bölme *düğümhavuzunda* zamanlanır. Ek düğüm havuzları oluşturursanız, bu düğüm kaynaklarında zamanlanabilecek bölmeleri sınırlamak için ek leke ve tolere kullanabilirsiniz.
+Yalnızca bu tolere uygulanan bölmeler *gpunodepool'daki*düğümlerde zamanlanabilir. Başka bir bölme *düğümhavuzunda* zamanlanır. Ek düğüm havuzları oluşturursanız, bu düğüm kaynaklarında zamanlanabilecek bölmeleri sınırlamak için ek leke ve tolere kullanabilirsiniz.
 
 ## <a name="specify-a-taint-label-or-tag-for-a-node-pool"></a>Düğüm havuzu için bir leke, etiket veya etiket belirtin
 

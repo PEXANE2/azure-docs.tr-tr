@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: c8ef6a87e839e6d8dfb296e7b24f3d0d95843d1c
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 97551ac63066f7064c16a001d9ce1f6bc31465ec
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "78675472"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586571"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>Quickstart: C# proxy uygulaması (önizleme) kullanarak IoT Hub aygıt akışı üzerinden SSH ve RDP'yi etkinleştirme
 
@@ -30,7 +30,7 @@ Bu makalede, önce SSH (bağlantı noktası 22 kullanarak) için kurulum açıkl
 
 Aşağıdaki şekilde, bu örnekteki aygıt yerel ve hizmet yerel proxy uygulamalarının SSH istemcisi ile SSH daemon işlemleri arasında uçlardan uca bağlantıyı nasıl sağladığı gösteriş tir. Burada, daemon aygıt yerel proxy uygulaması ile aynı cihazda çalıştığını varsayıyoruz.
 
-![Yerel proxy uygulama kurulumu](./media/quickstart-device-streams-proxy-csharp/device-stream-proxy-diagram.svg)
+![Yerel proxy uygulama kurulumu](./media/quickstart-device-streams-proxy-csharp/device-stream-proxy-diagram.png)
 
 1. Hizmet yerel proxy uygulaması IoT hub'ına bağlanır ve hedef aygıta bir aygıt akışı başlatır.
 

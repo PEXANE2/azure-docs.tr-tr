@@ -10,19 +10,19 @@ ms.subservice: ''
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: a118d028cc85eb858dd0dc1fa6d5d2268f7db43b
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 3363c4f5828f412bd11ca57e3c5f9013910a8055
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350399"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586459"
 ---
 # <a name="what-is-azure-synapse-analytics-formerly-sql-dw"></a>Azure Synapse Analytics (eski adıyla SQL DW) nedir?
 
 Azure Synapse kurumsal veri ambarı özellikleriyle Büyük Veri analizini bir araya getiren sınırsız bir analiz hizmetidir. Her ölçekte sunucusuz isteğe bağlı veya sağlanmış kaynakları kullanarak, kendi koşullarınızla verileri sorgulama özgürlüğü getirir. Azure Synapse, anında BI ve makine öğrenimi ihtiyaçları için verileri yutmak, hazırlamak, yönetmek ve sunmak için bu iki dünyayı birleşik bir deneyimle bir araya getiriyor
 
 Azure Synapse'nin dört bileşeni vardır:
-- SQL Analytics: T-SQL tabanlı analitik - Genel Olarak Kullanılabilir
+- Synapse SQL: T-SQL tabanlı analizi tamamlayın – Genel Olarak Kullanılabilir
     - SQL havuzu (DWU başına ödeme) 
     - İsteğe bağlı SQL (işlenen TB başına ödeme) – (Önizleme)
 - Kıvılcım: Derinentegre Apache Spark (Önizleme) 
@@ -32,13 +32,13 @@ Azure Synapse'nin dört bileşeni vardır:
 > [!NOTE]
 > Azure Synapse'nin önizleme özelliklerine erişmek için [buradan](https://aka.ms/synapsepreview)erişim isteyin. Microsoft tüm istekleri ni triyaj ve en kısa sürede yanıt verecektir.
 
-## <a name="sql-analytics-and-sql-pool-in-azure-synapse"></a>Azure Synapse'de SQL Analytics ve SQL havuzu
+## <a name="synapse-sql-pool-in-azure-synapse"></a>Azure Synapse'de Synapse SQL havuzu
 
-SQL Analytics, genellikle Azure Synapse'de bulunan kurumsal veri depolama özelliklerini ifade eder. 
+Synapse SQL havuzu, genellikle Azure Synapse'de bulunan kurumsal veri depolama özelliklerini ifade eder. 
 
-SQL havuzu, SQL Analytics kullanırken sağlanan analitik kaynakların bir koleksiyonunu temsil eder. SQL havuzunun boyutu Veri Depolama Birimleri (DWU) tarafından belirlenir.
+SQL havuzu, Synapse SQL kullanırken sağlanan analitik kaynakların bir koleksiyonunu temsil eder. SQL havuzunun boyutu Veri Depolama Birimleri (DWU) tarafından belirlenir.
 
-Basit [PolyBase](/sql/relational-databases/polybase/polybase-guide?view=sql-server-2017&viewFallbackFrom=azure-sqldw-latest) T-SQL sorgularıyla büyük verileri içe aktarın ve ardından yüksek performanslı analizleri çalıştırmak için MPP'nin gücünü kullanın. Siz tümleştirip analiz ettikçe, SQL Analytics, işletmenizin daha hızlı ve daha sağlam öngörüler için güvenebileceği tek bir doğruluk sürümü haline gelecektir.  
+Basit [PolyBase](/sql/relational-databases/polybase/polybase-guide?view=sql-server-2017&viewFallbackFrom=azure-sqldw-latest) T-SQL sorgularıyla büyük verileri içe aktarın ve ardından yüksek performanslı analizleri çalıştırmak için MPP'nin gücünü kullanın. Siz tümleştirip analiz ettikçe, Synapse SQL havuzu işletmenizin daha hızlı ve daha sağlam öngörüler için güvenebileceği tek bir gerçek sürümü haline gelecektir.  
 
 ## <a name="key-component-of-a-big-data-solution"></a>Büyük bir veri çözümünün temel bileşeni
 
@@ -46,9 +46,9 @@ Veri depolama, bulut tabanlı, uçtan uca büyük veri çözümünün önemli bi
 
 ![Veri ambarı çözümü](./media/sql-data-warehouse-overview-what-is/data-warehouse-solution.png) 
 
-Bulut veri çözümünde veriler farklı veri kaynaklarından büyük veri depolarına alınır. Büyük veri depolarına giren veriler Hadoop, Spark ve makine öğrenimi algoritmaları tarafından hazırlanır ve eğitilir. Veriler karmaşık analiz için hazır olduğunda SQL Analiz, PolyBase'i kullanarak büyük veri depolarını sorgular. PolyBase, verileri SQL Analiz tablolarına getirmek için standart T-SQL sorgularını kullanır.
+Bulut veri çözümünde veriler farklı veri kaynaklarından büyük veri depolarına alınır. Büyük veri depolarına giren veriler Hadoop, Spark ve makine öğrenimi algoritmaları tarafından hazırlanır ve eğitilir. Veriler karmaşık çözümleme için hazır olduğunda, Synapse SQL havuzu büyük veri depolarını sorgulamak için PolyBase'i kullanır. PolyBase, verileri Synapse SQL bilardo tablolarına getirmek için standart T-SQL sorgularını kullanır.
  
-SQL Analytics verileri sütunlar halindeki ilişkisel tablolarda depolar. Bu biçim veri depolama maliyetlerini önemli ölçüde düşürürken sorgu performansını artırır. Veriler depolandıktan sonra geniş ölçekte analiz işlemleri gerçekleştirebilirsiniz. Analizler geleneksel veri sistemlerine kıyasla dakikalar yerine saniyeler, günler yerine saatler içinde tamamlanır. 
+Synapse SQL havuzu verileri columnar depolama ile ilişkisel tablolarda depolar. Bu biçim veri depolama maliyetlerini önemli ölçüde düşürürken sorgu performansını artırır. Veriler depolandıktan sonra geniş ölçekte analiz işlemleri gerçekleştirebilirsiniz. Analizler geleneksel veri sistemlerine kıyasla dakikalar yerine saniyeler, günler yerine saatler içinde tamamlanır. 
 
 Analiz sonuçları dünya çapındaki raporlama veritabanlarına veya uygulamalarına iletilebilir. Ardından iş analistleri işlerle ilgili destekli kararlar almak üzere öngörü sahibi olabilir.
 

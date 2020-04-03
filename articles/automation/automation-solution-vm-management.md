@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: cef3176c99cd57ae229b602feb3c825081fcfe3e
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 906c7728365cc902549bd46c57972e1c90af979c
+ms.sourcegitcommit: 515482c6348d5bef78bb5def9b71c01bb469ed80
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/02/2020
-ms.locfileid: "80548366"
+ms.locfileid: "80607468"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Azure Otomasyonu'nda VM’leri çalışma saatleri dışında Başlatma/Durdurma çözümü
 
@@ -112,9 +112,9 @@ Tüm üst runbook'lar _WhatIf_ parametresini içerir. **True**olarak ayarlandı�
 |AutoStop_CreateAlert_Child | VMObject <br> AlertAction <br> WebHookURI | Üst çalışma kitabından çağrılır. Bu runbook, Otomatik Durdurma senaryosu için kaynak başına uyarılar oluşturur.|
 |AutoStop_CreateAlert_Parent | VMList<br> WhatIf: Doğru veya Yanlış  | Hedeflenen abonelik veya kaynak gruplarında VM'lerde Azure uyarı kuralları oluşturur veya güncelleştirir. <br> VMList: Virgülden ayrılmış VM listesi. Örneğin, _vm1, vm2, vm3_.<br> *WhatIf* yürütmeden runbook mantığını doğrular.|
 |AutoStop_Disable | yok | Otomatik Stop uyarılarını ve varsayılan zamanlamayı devre dışı bırakır.|
-|AutoStop_VM_Child | WebHookData | Üst çalışma kitabından çağrılır. Uyarı kuralları klasik VM'yi durdurmak için bu runbook'u çağırır.|
+|AutoStop_VM_Child | WebHookData | Üst çalışma kitabından çağrılır. Uyarı kuralları Klasik VM'yi durdurmak için bu runbook'u çağırır.|
 |AutoStop_VM_Child_ARM | WebHookData |Üst çalışma kitabından çağrılır. Uyarı kuralları VM'yi durdurmak için bu runbook'u çağırır.  |
-|ScheduledStartStop_Base_Classic | CloudServiceName<br> Eylem: Başlat veya Durdur<br> VMList  | Bu runbook Bulut Hizmetleri tarafından klasik VM grubunda eylem başlatma veya durdurmak gerçekleştirmek için kullanılır.<br> VMList: Virgülden ayrılmış VM listesi. Örneğin, _vm1, vm2, vm3_. |
+|ScheduledStartStop_Base_Classic | CloudServiceName<br> Eylem: Başlat veya Durdur<br> VMList  | Bu runbook Bulut Hizmetleri tarafından Klasik VM grubunda eylem başlatma veya durdurmak gerçekleştirmek için kullanılır.<br> VMList: Virgülden ayrılmış VM listesi. Örneğin, _vm1, vm2, vm3_. |
 |ScheduledStartStop_Child | VMName <br> Eylem: Başlat veya Durdur <br> ResourceGroupName | Üst çalışma kitabından çağrılır. Zamanlanan durak için bir başlatma veya durdurma eylemini yürütür.|
 |ScheduledStartStop_Child_Classic | VMName<br> Eylem: Başlat veya Durdur<br> ResourceGroupName | Üst çalışma kitabından çağrılır. Klasik VM'ler için zamanlanan durak için bir başlatma veya durdurma eylemi yürütür. |
 |ScheduledStartStop_Parent | Eylem: Başlat veya Durdur <br>VMList <br> WhatIf: Doğru veya Yanlış | Bu ayar, abonelikteki tüm VM'leri etkiler. Yalnızca bu hedeflenen kaynak gruplarında yürütmek için **External_Start_ResourceGroupNames** ve **External_Stop_ResourceGroupNames'yi** edin. **External_ExcludeVMNames** değişkenini güncelleyerek belirli VM'leri de dışlayabilirsiniz.<br> VMList: Virgülden ayrılmış VM listesi. Örneğin, _vm1, vm2, vm3_.<br> _WhatIf_ yürütmeden runbook mantığını doğrular.|
@@ -140,8 +140,8 @@ Aşağıdaki tabloda Otomasyon hesabınızda oluşturulan değişkenler listelen
 |External_Stop_ResourceGroupNames | Durdurma eylemleri için hedeflenen virgül kullanarak değerleri ayıran bir veya daha fazla kaynak grubu belirtir.|
 |External_WaitTimeForVMRetrySeconds |Sıralı başlat/durdur runbook için VM'lerde yapılacak eylemlerin saniye cinsinden bekleme süresi.<br> Varsayılan değer 2100 saniyedir ve en yüksek 10800 veya üç saatlik bir değere yapılandırmayı destekler.|
 |Internal_AutomationAccountName | Otomasyon hesabının adını belirtir.|
-|Internal_AutoSnooze_ARM_WebhookURI | Webhook URI'nin klasik VM'ler için AutoStop senaryosu için çağrıda bulunmasını belirtir.|
-|Internal_AutoSnooze_WebhookUri | AutoStop senaryosu için çağrılan Webhook URI'yi belirtir.|
+|Internal_AutoSnooze_ARM_WebhookURI | Webhook URI'nin VM'ler için AutoStop senaryosu için çağırdığını belirtir.|
+|Internal_AutoSnooze_WebhookUri | Webhook URI'nin Klasik VM'ler için AutoStop senaryosu için çağırdığını belirtir.|
 |Internal_AzureSubscriptionId | Azure Abonelik Kimliğini belirtir.|
 |Internal_ResourceGroupName | Otomasyon hesabı kaynak grup adını belirtir.|
 

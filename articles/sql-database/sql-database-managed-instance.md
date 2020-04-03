@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
-ms.date: 01/21/2020
-ms.openlocfilehash: b9fdd1b25e53e1cdc8aa76564304a61adaa8d804
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/02/2020
+ms.openlocfilehash: 06242af6cb00e3adebbc80da722898fb8e348e36
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79268788"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585366"
 ---
 # <a name="what-is-azure-sql-database-managed-instance"></a>Azure SQL Veritabanı yönetilen örneği nedir?
 
@@ -67,7 +67,7 @@ Yönetilen örneklerin temel özellikleri aşağıdaki tabloda gösterilmiştir:
 | Portal desteği | Evet|
 | Dahili Entegrasyon Hizmeti (SSIS) | Hayır - SSIS, [Azure Veri Fabrikası PaaS'ın](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure) bir parçasıdır |
 | Dahili Analiz Hizmeti (SSAS) | Hayır - SSAS ayrı [PaaS](https://docs.microsoft.com/azure/analysis-services/analysis-services-overview) olduğunu |
-| Dahili Raporlama Hizmeti (SSRS) | Hayır - Power BI veya SSRS IaaS kullanın |
+| Dahili Raporlama Hizmeti (SSRS) | Hayır - Bunun yerine [Power BI paginated raporları](https://docs.microsoft.com/power-bi/paginated-reports/paginated-reports-report-builder-power-bi) kullanın veya Azure VM'de SSRS'yi barındırın. Yönetilen Örnek SSRS'yi bir hizmet olarak çalıştıramaz, ancak SQL Server kimlik doğrulaması kullanarak harici bir raporlama sunucusu için SSRS 2019 katalog veritabanlarını barındırabilir. |
 |||
 
 ## <a name="vcore-based-purchasing-model"></a>Sanal çekirdek tabanlı satın alma modeli
@@ -150,7 +150,7 @@ Aşağıdaki tabloişlemleri ve tipik genel süreleri özetler:
 |Dağıtım |Boş olmayan bir alt ağdaki başka bir donanım oluşturma nın ilk örneği (örneğin, Gen 4 örnekleriolan bir alt ağdaki ilk Gen 5 örneği)|Sanal küme oluşturma*|Operasyonların %90'ı 4 saatte bitiyor|
 |Dağıtım |Boş veya boş olmayan bir alt ağda 4 vCore'un ilk örneği oluşturulması|Sanal küme oluşturma**|Operasyonların %90'ı 4 saatte bitiyor|
 |Dağıtım |Boş olmayan alt ağ içinde sonraki örnek oluşturma (2., 3. vb. örnek)|Sanal küme yeniden boyutlandırma|Operasyonların %90'ı 2,5 saatte bitiyor|
-|**Güncelleştirme** |Örnek özellik değişikliği (yönetici parolası, AAD girişi, Azure Karma Avantaj bayrağı)|Yok|1 dakikaya kadar|
+|**Güncelleştir** |Örnek özellik değişikliği (yönetici parolası, AAD girişi, Azure Karma Avantaj bayrağı)|Yok|1 dakikaya kadar|
 |Güncelleştirme |Örnek depolama ölçekleme yukarı/aşağı (Genel Amaçlı hizmet katmanı)|Veritabanı dosyalarını ekleme|Operasyonların %90'ı 5 dakikada bitiyor|
 |Güncelleştirme |Örnek depolama ölçeklendirme yukarı/aşağı (İş Kritik hizmet katmanı)|- Sanal küme yeniden boyutlandırma<br>- Her zaman kullanılabilirlik grup tohumlama|İşlemlerin %90'ı 2,5 saat içinde sona erdirin + tüm veritabanlarını tohumlamak için zaman (220 GB / saat)|
 |Güncelleştirme |Örnek hesaplama (vCores) yukarı ve aşağı ölçekleme (Genel Amaç)|- Sanal küme yeniden boyutlandırma<br>- Veritabanı dosyalarını ekleme|Operasyonların %90'ı 2,5 saatte bitiyor|
@@ -247,7 +247,7 @@ Azure SQL Veritabanı, verilerinizi korumak için kullanılabilecek bir dizi gel
 
 ## <a name="azure-active-directory-integration"></a>Azure Etkin Dizin Tümleştirmesi
 
-Yönetilen örnek dağıtım seçeneği, Azure Active Directory (AAD) ile tümleşik geleneksel SQL server Database engine logins ve girişleri destekler. Azure AD sunucu ilkeleri (oturum açmalar)**(genel önizleme),** şirket içi ortamınızda kullandığınız şirket içi veritabanı girişlerinin Azure bulut sürümüdür. Azure AD sunucu ilkeleri (oturum açmalar), Azure Active Directory kiracınızdaki kullanıcıları ve grupları, aynı yönetilen veritabanı sorguları da dahil olmak üzere, örnek düzeyinde herhangi bir işlemi gerçekleştirebilen gerçek örnek kapsamlı ilkeler olarak belirtmenize olanak tanır Örnek.
+Yönetilen örnek dağıtım seçeneği, Azure Active Directory (AAD) ile tümleşik geleneksel SQL server Database engine logins ve girişleri destekler. Azure AD sunucu ilkeleri (oturum açmalar)**(genel önizleme),** şirket içi ortamınızda kullandığınız şirket içi veritabanı girişlerinin Azure bulut sürümüdür. Azure AD sunucu ilkeleri (oturum açmalar), Azure Active Directory kiracınızdaki kullanıcıları ve grupları, aynı yönetilen örnek teki veritabanı sorguları da dahil olmak üzere herhangi bir örnek düzeyinde işlem gerçekleştirebilen gerçek örnek kapsamlı ilkeler olarak belirtmenize olanak tanır.
 
 **External Provider'dan**Azure AD sunucu ilkeleri (oturum açmalar) oluşturmak için yeni bir sözdizimi tanıtıldı. Sözdizimi hakkında daha fazla bilgi için <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN'e</a>bakın ve [yönetilen örnek makaleniz için Azure Etkin Dizin yöneticisi hükmünü gözden geçirin.](sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance)
 
@@ -255,7 +255,7 @@ Yönetilen örnek dağıtım seçeneği, Azure Active Directory (AAD) ile tümle
 
 Yönetilen örnek dağıtım seçeneği, [Azure Active Directory tümleştirmesi](sql-database-aad-authentication.md)ile veritabanı kullanıcısının ve diğer Microsoft hizmetlerinin kimliklerini merkezi olarak yönetmenize olanak tanır. Bu özellik, izin yönetimini kolaylaştırırken güvenliği artırır. Azure Active Directory, veri ve uygulama güvenliğini artırmak için [çok faktörlü kimlik doğrulamasını](sql-database-ssms-mfa-authentication-configure.md) (MFA) ve çoklu oturum açma işlemini destekler.
 
-### <a name="authentication"></a>Kimlik doğrulaması
+### <a name="authentication"></a>Kimlik Doğrulaması
 
 Yönetilen örnek kimlik doğrulaması, kullanıcıların veritabanına bağlanırken kimliklerini nasıl kanıtladığını ifade eder. SQL Veritabanı iki kimlik doğrulaması türünü destekler:  
 

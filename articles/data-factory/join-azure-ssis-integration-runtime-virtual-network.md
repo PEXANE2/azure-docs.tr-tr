@@ -11,12 +11,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: 4819eaf2a65cf542029cf36f262d0cea5be75f2e
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: e94eef3072b9636c8022a5949b05519c1554cb9e
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80521956"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585785"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Azure-SSIS Integration Runtime'ı sanal ağa bağlama
 
@@ -229,11 +229,12 @@ Güvenlik duvarı cihazının giden trafiğe izin verebilmesi için, giden bağl
 -   Azure Bulut hizmetleri olarak hedefe sahip Port 443.
 
     Azure Güvenlik Duvarı kullanıyorsanız, AzureCloud Hizmet Etiketi ile ağ kuralını belirtebilirsiniz. Diğer tür güvenlik duvarı için, yalnızca 443 nolu bağlantı noktası için hedef olarak izin verebilir veya Azure ortamınızın türüne bağlı olarak FQDN'lerin altında izin verebilirsiniz:
+
     | Azure Ortamı | Uç Noktalar                                                                                                                                                                                                                                                                                                                                                              |
     |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-    | Azure Genel      | <ul><li><b>Azure Veri Fabrikası (Yönetim)</b></li><li style="list-style-type:none"><ul><li>\*.frontend.clouddatahub.net</li></ul></li><li><b>Azure Depolama (Yönetim)</b></li><li style="list-style-type:none"><ul><li>\*.blob.core.windows.net</li><li>\*.table.core.windows.net</li></ul></li><li><b>Azure Kapsayıcı Kayıt Defteri (Özel Kurulum)</b></li><li style="list-style-type:none"><ul><li>\*.azurecr.io</li></ul></li><li><b>Olay Merkezi (Günlük)</b></li><li style="list-style-type:none"><ul><li>\*.servicebus.windows.net</li></ul></li><li><b>Microsoft Günlük hizmeti (Dahili Kullanım)</b></li><li style="list-style-type:none"><ul><li>gcs.prod.monitoring.core.windows.net</li><li>prod.warmpath.msftcloudes.com</li><li>azurewatsonanalysis-prod.core.windows.net</li></ul></li></ul> |
-    | Azure Kamu  | <ul><li><b>Azure Veri Fabrikası (Yönetim)</b></li><li style="list-style-type:none"><ul><li>\*.frontend.datamovement.azure.us</li></ul></li><li><b>Azure Depolama (Yönetim)</b></li><li style="list-style-type:none"><ul><li>\*.blob.core.usgovcloudapi.net</li><li>\*.table.core.usgovcloudapi.net</li></ul></li><li><b>Azure Kapsayıcı Kayıt Defteri (Özel Kurulum)</b></li><li style="list-style-type:none"><ul><li>\*.azurecr.us</li></ul></li><li><b>Olay Merkezi (Günlük)</b></li><li style="list-style-type:none"><ul><li>\*.servicebus.usgovcloudapi.net</li></ul></li><li><b>Microsoft Günlük hizmeti (Dahili Kullanım)</b></li><li style="list-style-type:none"><ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>azurewatsonanalysis.usgovcloudapp.net</li></ul></li></ul> |
-    | Azure Çin 21Vianet     | <ul><li><b>Azure Veri Fabrikası (Yönetim)</b></li><li style="list-style-type:none"><ul><li>\*.frontend.datamovement.azure.cn</li></ul></li><li><b>Azure Depolama (Yönetim)</b></li><li style="list-style-type:none"><ul><li>\*.blob.core.chinacloudapi.cn</li><li>\*.table.core.chinacloudapi.cn</li></ul></li><li><b>Azure Kapsayıcı Kayıt Defteri (Özel Kurulum)</b></li><li style="list-style-type:none"><ul><li>\*.azurecr.cn</li></ul></li><li><b>Olay Merkezi (Günlük)</b></li><li style="list-style-type:none"><ul><li>\*.servicebus.chinacloudapi.cn</li></ul></li><li><b>Microsoft Günlük hizmeti (Dahili Kullanım)</b></li><li style="list-style-type:none"><ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>azurewatsonanalysis.chinacloudapp.cn</li></ul></li></ul>
+    | Azure Genel      | <ul><li><b>Azure Veri Fabrikası (Yönetim)</b><ul><li>\*.frontend.clouddatahub.net</li></ul></li><li><b>Azure Depolama (Yönetim)</b><ul><li>\*.blob.core.windows.net</li><li>\*.table.core.windows.net</li></ul></li><li><b>Azure Kapsayıcı Kayıt Defteri (Özel Kurulum)</b><ul><li>\*.azurecr.io</li></ul></li><li><b>Olay Merkezi (Günlük)</b><ul><li>\*.servicebus.windows.net</li></ul></li><li><b>Microsoft Günlük hizmeti (Dahili Kullanım)</b><ul><li>gcs.prod.monitoring.core.windows.net</li><li>prod.warmpath.msftcloudes.com</li><li>azurewatsonanalysis-prod.core.windows.net</li></ul></li></ul> |
+    | Azure Kamu  | <ul><li><b>Azure Veri Fabrikası (Yönetim)</b><ul><li>\*.frontend.datamovement.azure.us</li></ul></li><li><b>Azure Depolama (Yönetim)</b><ul><li>\*.blob.core.usgovcloudapi.net</li><li>\*.table.core.usgovcloudapi.net</li></ul></li><li><b>Azure Kapsayıcı Kayıt Defteri (Özel Kurulum)</b><ul><li>\*.azurecr.us</li></ul></li><li><b>Olay Merkezi (Günlük)</b><ul><li>\*.servicebus.usgovcloudapi.net</li></ul></li><li><b>Microsoft Günlük hizmeti (Dahili Kullanım)</b><ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>azurewatsonanalysis.usgovcloudapp.net</li></ul></li></ul> |
+    | Azure Çin 21Vianet     | <ul><li><b>Azure Veri Fabrikası (Yönetim)</b><ul><li>\*.frontend.datamovement.azure.cn</li></ul></li><li><b>Azure Depolama (Yönetim)</b><ul><li>\*.blob.core.chinacloudapi.cn</li><li>\*.table.core.chinacloudapi.cn</li></ul></li><li><b>Azure Kapsayıcı Kayıt Defteri (Özel Kurulum)</b><ul><li>\*.azurecr.cn</li></ul></li><li><b>Olay Merkezi (Günlük)</b><ul><li>\*.servicebus.chinacloudapi.cn</li></ul></li><li><b>Microsoft Günlük hizmeti (Dahili Kullanım)</b><ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>azurewatsonanalysis.chinacloudapp.cn</li></ul></li></ul> |
 
     Azure Depolama, Azure Kapsayıcı Kayıt Defteri ve Etkinlik Hub'ının FQDN'lerine gelince, sanal ağınız için aşağıdaki hizmet bitiş noktalarını etkinleştirmeyi de seçebilirsiniz, böylece bu uç noktalara giden ağ trafiği güvenlik duvarı aygıtınıza yönlendirilmek yerine Azure omurga ağından geçer:
     -  Microsoft.Storage

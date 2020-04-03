@@ -10,12 +10,12 @@ ms.author: migreene
 ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 05f0a81a738688df15ea9060071d9e266b54b7d2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a39b038d31d1b4a614ff0acf7df2586706bb0404
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79136664"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585524"
 ---
 # <a name="convert-configurations-to-composite-resources"></a>Yapılandırmaları bileşik kaynaklara dönüştürme
 
@@ -50,7 +50,7 @@ Cmdlet yapılandırmanızın içeriğini yükleyecek, parametrelerin listesini a
 Bir modül oluşturduktan sonra, sürümü artırıp her değişiklik yaptığınızda sürüm notları ekleyebilir ve kendi [PowerShellGet deponuzda](https://powershellexplained.com/2018-03-03-Powershell-Using-a-NuGet-server-for-a-PSRepository/?utm_source=blog&utm_medium=blog&utm_content=psscriptrepo)yayınlayabilirsiniz.
 
 Yapılandırmanızı (veya birden çok yapılandırmanızı) içeren bir bileşik kaynak modülü oluşturduktan sonra, bunları Azure'daki [Tek Kullanılabilir Yazma Deneyimi'nde](/azure/automation/compose-configurationwithcompositeresources) kullanabilir veya MOF dosyaları oluşturmak ve [MOF dosyalarını Azure Otomasyonuna yüklemek](/azure/automation/tutorial-configure-servers-desired-state#create-and-upload-a-configuration-to-azure-automation)için [DSC Yapılandırma komut dosyalarına](/powershell/scripting/dsc/configurations/configurations) ekleyebilirsiniz.
-Ardından yapılandırmaları çekmek için sunucularınızı [şirket içinde](/azure/automation/automation-dsc-onboarding#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure-including-aws-ec2-instances) veya [Azure'dan](/azure/automation/automation-dsc-onboarding#azure-virtual-machines) kaydedin.
+Ardından yapılandırmaları çekmek için sunucularınızı [şirket içinde](/azure/automation/automation-dsc-onboarding#onboarding-physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure-including-aws-ec2-instances) veya [Azure'dan](/azure/automation/automation-dsc-onboarding#onboarding-azure-vms) kaydedin.
 Projeyle ilgili son güncelleme, PowerShell Galerisi'nden yapılandırma alma işlemini otomatikleştirmek için Azure Automation için [runbook'lar](https://www.powershellgallery.com/packages?q=DscGallerySamples) da yayımladı.
 
 DSC için bileşik kaynakların otomatikleştirilmiş oluşturulmasını denemek için [PowerShell Galerisi'ni](https://www.powershellgallery.com/packages/compositeresource/) ziyaret edin ve çözümü indirin veya [belgeleri](https://github.com/microsoft/compositeresource)görüntülemek için "Proje Sitesi"ne tıklayın.

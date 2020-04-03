@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: c8eba538a7015648611e6054ce85b381dcfc9105
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a80fb97810fee04a4eb50c43178c168e66f29173
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76761007"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618721"
 ---
 # <a name="enable-diagnostics-logs-for-service-bus"></a>Servis Veri Servisi için tanılama günlüklerini etkinleştirme
 
@@ -76,10 +76,10 @@ Aşağıdaki yönetim işlemleri operasyonel günlüklerde yakalanır:
 
 | Kapsam | İşlem|
 |-------| -------- |
-| Ad Alanı | <ul> <li> Ad Alanı Oluşturma</li> <li> Ad Alanını Güncelleştir </li> <li> Ad Alanını Sil </li>  </ul> | 
-| Kuyruk | <ul> <li> Sıra Oluştur</li> <li> Sırayı Güncelleştir</li> <li> Sırayı Sil </li> </ul> | 
-| Konu başlığı | <ul> <li> Konu Oluştur </li> <li> Konuyu Güncelle </li> <li> Konuyu Sil </li> </ul> |
-| Abonelik | <ul> <li> Abonelik Oluşturma </li> <li> Aboneliği Güncelle </li> <li> Aboneliği Sil </li> </ul> |
+| Ad Alanı | <ul> <li> Ad Alanı Oluşturma</li> <li> Ad Alanını Güncelleştir </li> <li> Ad Alanını Sil </li> <li> Ad Alanı Paylaşılan Erişim İlkesi'ni Güncelleştir </li> </ul> | 
+| Kuyruk | <ul> <li> Sıra Oluştur</li> <li> Sırayı Güncelleştir</li> <li> Sırayı Sil </li> <li> OtomatikSil Sil Sırası </li> </ul> | 
+| Konu başlığı | <ul> <li> Konu Oluştur </li> <li> Konuyu Güncelle </li> <li> Konuyu Sil </li> <li> OtomatikDelete Konuyu Sil </li> </ul> |
+| Abonelik | <ul> <li> Abonelik Oluşturma </li> <li> Aboneliği Güncelle </li> <li> Aboneliği Sil </li> <li> OtomatikDelete Aboneliği Sil </li> </ul> |
 
 > [!NOTE]
 > Şu anda, *Read* işlemleri işlem günlüklerinde izlenmemektedir.

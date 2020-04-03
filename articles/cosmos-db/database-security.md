@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: mjbrown
-ms.openlocfilehash: 30991f17970eefe1a140cdd70e1f6b305160349c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 345fc329df1c57cab7dd66c609bf3701fa3a6124
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79537338"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619139"
 ---
 # <a name="security-in-azure-cosmos-db---overview"></a>Azure Cosmos DB’de güvenlik - genel bakış
 
@@ -48,7 +48,7 @@ Veritabanı sistemlerini karşılaştırmak için aşağıdaki gereksinimlerin d
 Ve her ne kadar açık gibi görünse [de,](https://thehackernews.com/2017/01/mongodb-database-security.html) son büyük ölçekli veritabanı ihlalleri aşağıdaki gereksinimlerin basit ama kritik önemini bize hatırlatıyor:
 
 - Güncel tutulan yamalı sunucular
-- Varsayılan/SSL şifrelemesi ile HTTPS
+- Varsayılan/TLS şifrelemesi ile HTTPS
 - Güçlü parolalara sahip yönetim hesapları
 
 ## <a name="how-does-azure-cosmos-db-secure-my-database"></a>Azure Cosmos DB veritabanımı nasıl güvence altına alar
@@ -76,7 +76,7 @@ Her birini ayrıntılı olarak inceleyelim.
 |HTTPS/SSL/TLS şifreleme|Azure Cosmos DB'ye tüm bağlantılar HTTPS'yi destekler. Azure Cosmos DB, TLS 1.2'yi de destekler.<br>En az TLS sürümü sunucu tarafı zorlamak mümkündür. Bunu yapmak için [azurecosmosdbtls@service.microsoft.com](mailto:azurecosmosdbtls@service.microsoft.com)lütfen .|
 |Bekleme sırasında şifreleme|Azure Cosmos DB'de depolanan tüm veriler istirahatte şifrelenir. [Azure Cosmos DB şifreleme](./database-encryption-at-rest.md) hakkında daha fazla bilgi edinin|
 |Yamalı sunucular|Azure Cosmos DB, yönetilen bir veritabanı olarak, sunucuları otomatik olarak sizin için yapılan sunucuları yönetme ve yama gereksinimini ortadan kaldırır.|
-|Güçlü parolalara sahip yönetim hesapları|Bu gereksinimden bahsetmemiz gerektiğine inanmak bile zor, ancak bazı rakiplerimizin aksine, Azure Cosmos DB'de şifresi olmayan bir idari hesaba sahip olmak imkansızdır.<br><br> SSL ve HMAC gizli tabanlı kimlik doğrulama sıyrık üzerinden güvenlik varsayılan olarak pişirilir.|
+|Güçlü parolalara sahip yönetim hesapları|Bu gereksinimden bahsetmemiz gerektiğine inanmak bile zor, ancak bazı rakiplerimizin aksine, Azure Cosmos DB'de şifresi olmayan bir idari hesaba sahip olmak imkansızdır.<br><br> TLS ve HMAC gizli tabanlı kimlik doğrulama sıyrık üzerinden güvenlik varsayılan olarak pişirilir.|
 |Güvenlik ve veri koruma sertifikaları| En güncel sertifikalar listesi için genel Azure [Uyumluluk sitesine](https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings) ve tüm sertifikalara sahip en son [Azure Uyumluluk Belgesi'ne](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) bakın (Cosmos'u arayın). Daha odaklı bir okuma için 25 Nisan 2018 gönderisine göz atın [Azure #CosmosDB: Güvenli, özel, SOCS 1/2 Type 2, HITRUST, PCI DSS Level 1, ISO 27001, HIPAA, FedRAMP High ve daha birçok larını içeren uyumlu.
 
 Aşağıdaki ekran görüntüsü, hesabınızı izlemek için denetim günlüğünü ve ![etkinlik günlüklerini nasıl kullanabileceğinizi gösterir: Azure Cosmos DB için etkinlik günlükleri](./media/database-security/nosql-database-security-application-logging.png)

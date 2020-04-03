@@ -4,18 +4,18 @@ description: Azure Monitor'da eylem kurallarının ne olduğunu ve bunları nas�
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.subservice: alerts
-ms.openlocfilehash: 0498325984641641d6dfc9ee6b89f66800b5c7d2
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 6585890395d7656f239ac3098cd374ecd4757842
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: tr-TR
 ms.lasthandoff: 04/02/2020
-ms.locfileid: "80546475"
+ms.locfileid: "80618983"
 ---
 # <a name="action-rules-preview"></a>Eylem kuralları (önizleme)
 
 Eylem kuralları, herhangi bir Azure Kaynak Yöneticisi kapsamındaki eylemleri (Azure aboneliği, kaynak grubu veya hedef kaynak) tanımlamanıza veya bastırmanıza yardımcı olur. Bunlar, harekete geçmenize yardımcı olan uyarı örneklerinin belirli alt kümesini daraltmama yardımcı olan çeşitli filtrelere sahiptir.
 
-> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4qXeL]
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4rBZ2]
 
 ## <a name="why-and-when-should-you-use-action-rules"></a>Neden ve ne zaman eylem kurallarını kullanmalısınız?
 

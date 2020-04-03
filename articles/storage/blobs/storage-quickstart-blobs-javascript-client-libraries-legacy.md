@@ -9,12 +9,12 @@ ms.author: mhopkins
 ms.date: 01/24/2020
 ms.topic: quickstart
 ms.subservice: blobs
-ms.openlocfilehash: da5db7d956b1ba8aa1ac245b77fe0d4cb31909c1
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 5219af0ec343a6e7f87a07e4a7280ac5f4e85cd3
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80061458"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619122"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -90,7 +90,7 @@ Her parametreden sonraki değer serisini biraz şifreli bulabilirsiniz. Bu param
 Artık SAS oluşturulduğuna göre, iade değerini kopyalayın ve gelecek adımda kullanılmak üzere bir yere kaydedin. SAS'ınızı Azure CLI dışında bir yöntem kullanarak oluşturduysanız, varsa `?` ilk harfini kaldırmanız gerekir. Bu karakter, SAS'ın kullanıldığı bu konuda daha sonra URL şablonunda zaten sağlanan bir URL ayırıcısıdır.
 
 > [!IMPORTANT]
-> Üretimde her zaman SSL kullanarak SAS belirteçlerini geçirin. Ayrıca, SAS belirteçleri sunucu üzerinde oluşturulmalı ve Azure Blob Depolama’ya geri geçirmek için HTML sayfasına gönderilmelidir. Düşünebileceğiniz bir yaklaşım, SAS belirteçleri oluşturmak için bir sunucusuz bir işlev kullanmaktır. Azure Portal, bir JavaScript işlevi ile SAS oluşturma özelliğine sahip işlev şablonları içerir.
+> Üretimde, HER ZAMAN TLS kullanarak SAS belirteçleri geçmek. Ayrıca, SAS belirteçleri sunucu üzerinde oluşturulmalı ve Azure Blob Depolama’ya geri geçirmek için HTML sayfasına gönderilmelidir. Düşünebileceğiniz bir yaklaşım, SAS belirteçleri oluşturmak için bir sunucusuz bir işlev kullanmaktır. Azure Portal, bir JavaScript işlevi ile SAS oluşturma özelliğine sahip işlev şablonları içerir.
 
 ## <a name="implement-the-html-page"></a>HTML sayfasını uygulama
 

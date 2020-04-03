@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: quickstart
 ms.date: 12/26/2018
-ms.openlocfilehash: c717a8d5baa57ce780fbbc0d25e67c2509ca86fc
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 94be0ec16aedc317f1be41998356bc52b66f7e86
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75441959"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619206"
 ---
 # <a name="quickstart-build-a-console-app-using-azure-cosmos-dbs-api-for-mongodb-and-golang-sdk"></a>Hızlı başlangıç: MongoDB ve Golang SDK için Azure Cosmos DB'nin API'yi kullanarak bir konsol uygulaması oluşturun
 
@@ -93,7 +93,7 @@ Aşağıdaki kod parçacıklarının tamamı, main.go dosyasından alınmıştı
 
 ### <a name="connecting-the-go-app-to-cosmos-db"></a>Go uygulamasını Cosmos DB'ye bağlama
 
-Azure Cosmos DB'nin MongoDB için API'si SSL özellikli bağlantıyı destekler. Bağlanmak için mgo'da **DialServer** işlevini tanımlamanız [gerekir. DialInfo](https://godoc.org/gopkg.in/mgo.v2#DialInfo), ve [tls yararlanmak.* *](https://golang.org/pkg/crypto/tls#Dial) Bağlantıyı gerçekleştirmek için arama işlevi.
+Azure Cosmos DB'nin MongoDB için API'si TLS özellikli bağlantıyı destekler. Bağlanmak için mgo'da **DialServer** işlevini tanımlamanız [gerekir. DialInfo](https://godoc.org/gopkg.in/mgo.v2#DialInfo), ve [tls yararlanmak.* *](https://golang.org/pkg/crypto/tls#Dial) Bağlantıyı gerçekleştirmek için arama işlevi.
 
 Aşağıdaki Golang kodu snippet, Go uygulamasını Azure Cosmos DB'nin MongoDB api'si ile bağlar. *DialInfo* sınıfı oturum oluşturmak için seçenekler tutar.
 
@@ -129,7 +129,7 @@ defer session.Close()
 session.SetSafe(&mgo.Safe{})
 ```
 
-SSL bağlantısı yoksa **mgo.Dial()** yöntemi kullanılır. SSL bağlantısı için **mgo.DialWithInfo()** yöntemi gerekir.
+**Mgo. **TLS bağlantısı olmadığında dial() yöntemi kullanılır. TLS bağlantısı **için, mgo. DialWithInfo()** yöntemi gereklidir.
 
 Oturum nesnesini oluşturmak için **DialWIthInfo{} ** nesnesinin bir örneği kullanılır. Oturum bağlantısı kurulduktan sonra aşağıdaki kod parçacığını kullanarak koleksiyona erişebilirsiniz:
 

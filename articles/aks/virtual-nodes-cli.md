@@ -4,12 +4,12 @@ description: Bölmeleri çalıştırmak için sanal düğümler kullanan bir Azu
 services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 31e8b5aceb356ca1415419650a9df3070462bde0
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 05e32b6b0017e945044bc7593d4d6dbc543a5b64
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79475536"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80616475"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>Azure CLI'yi kullanarak sanal düğümler kullanmak için bir Azure Kubernetes Hizmetleri (AKS) kümesi oluşturun ve yapılandırma
 
@@ -19,7 +19,7 @@ Bu makalede, sanal ağ kaynaklarını ve AKS kümesini nasıl oluşturup yapıla
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
-Sanal düğümler, ACI ve AKS kümesinde çalışan bölmeler arasındaki ağ iletişimini sağlar. Bu iletişimi sağlamak için bir sanal ağ alt ağı oluşturulur ve temsilci izinleri atanır. Sanal düğümler yalnızca *gelişmiş* ağ kullanılarak oluşturulan AKS kümeleriyle çalışır. Varsayılan olarak, AKS kümeleri *temel* ağ ile oluşturulur. Bu makalede, sanal ağ ve alt ağlar nasıl oluşturulacak, ardından gelişmiş ağ kullanan bir AKS kümesi dağıtılanın.
+Sanal düğümler, Azure Kapsayıcı Örnekleri 'nde (ACI) çalışan bölmeler ile AKS kümesi arasında ağ iletişimini sağlar. Bu iletişimi sağlamak için bir sanal ağ alt ağı oluşturulur ve temsilci izinleri atanır. Sanal düğümler yalnızca *gelişmiş* ağ kullanılarak oluşturulan AKS kümeleriyle çalışır. Varsayılan olarak, AKS kümeleri *temel* ağ ile oluşturulur. Bu makalede, sanal ağ ve alt ağlar nasıl oluşturulacak, ardından gelişmiş ağ kullanan bir AKS kümesi dağıtılanın.
 
 Daha önce ACI kullanmadıysanız, hizmet sağlayıcısını aboneliğinize kaydedin. Aşağıdaki örnekte gösterildiği gibi az sağlayıcı [listesi][az-provider-list] komutunu kullanarak ACI sağlayıcı kaydının durumunu kontrol edebilirsiniz:
 
@@ -30,9 +30,9 @@ az provider list --query "[?contains(namespace,'Microsoft.ContainerInstance')]" 
 *Microsoft.ContainerInstance* sağlayıcısı, aşağıdaki örnek çıktıda gösterildiği gibi *Kayıtlı*olarak rapor vermelidir:
 
 ```output
-Namespace                    RegistrationState
----------------------------  -------------------
-Microsoft.ContainerInstance  Registered
+Namespace                    RegistrationState    RegistrationPolicy
+---------------------------  -------------------  --------------------
+Microsoft.ContainerInstance  Registered           RegistrationRequired
 ```
 
 Sağlayıcı *NotRegistered*olarak gösterirse, aşağıdaki örnekte gösterildiği gibi [az sağlayıcı kaydını][az-provider-register] kullanarak sağlayıcıyı kaydedin:
@@ -155,7 +155,7 @@ Bir önceki adımda oluşturulan AKS alt ağına bir AKS kümesi dağıtabilirsi
 az network vnet subnet show --resource-group myResourceGroup --vnet-name myVnet --name myAKSSubnet --query id -o tsv
 ```
 
-AKS kümesi oluşturmak için [az aks create][az-aks-create] komutunu kullanın. Aşağıdaki örnekte, bir düğüm ile *myAKSCluster* adlı bir küme oluşturulmuştur. Önceki `<subnetId>` adımda elde edilen `<password>` kimlikle `<appId>` değiştirin ve ardından 
+AKS kümesi oluşturmak için [az aks create][az-aks-create] komutunu kullanın. Aşağıdaki örnekte, bir düğüm ile *myAKSCluster* adlı bir küme oluşturulmuştur. Önceki `<subnetId>` adımda ve ardından `<appId>` önceki bölümde `<password>` toplanan değerlerle birlikte alınan kimlikle değiştirin.
 
 ```azurecli-interactive
 az aks create \
@@ -302,7 +302,7 @@ Artık sanal düğümler kullanmak istemiyorsanız, [az aks devre dışı-addons
 
 Gerekirse tarayıcınızda [https://shell.azure.com](https://shell.azure.com) Azure Bulut Su Larını açmaya gidin.
 
-İlk olarak, sanal düğüm üzerinde çalışan helloworld pod silin:
+İlk olarak, `aci-helloworld` sanal düğüm üzerinde çalışan bölmeyi silin:
 
 ```console
 kubectl delete -f virtual-node.yaml

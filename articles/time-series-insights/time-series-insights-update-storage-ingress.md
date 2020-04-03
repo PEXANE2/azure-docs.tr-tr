@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.custom: seodec18
-ms.openlocfilehash: 2f12cf303c58f0fa614c59ffe643c6c2ee5d2415
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8987cbe6860422ff92119a9f3b13a0a365e6d1a4
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78246196"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618315"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Azure Time Series Öngörüleri Önizlemesinde veri depolama ve giriş
 
@@ -91,7 +91,7 @@ Genel olarak, giriş oranları kuruluşunuzdaki aygıt sayısı, olay emisyon s�
 
 *  **Cihaz sayısı** × **Olay emisyon frekansı** × **Her olayın boyutu**.
 
-Varsayılan olarak, Time Series Insights önizlemesi gelen verileri **Time Series Insights ortamı başına saniyede en fazla 1 megabayt (MBp)** oranında yutabilir.
+Varsayılan olarak, Time Series Insights önizlemesi gelen verileri **Time Series Insights ortamı başına saniyede en fazla 1 megabayt (MBp)** oranında yutabilir. Hub bölümü [başına](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-storage-ingress#hub-partitions-and-per-partition-limits)ek sınırlamalar vardır.
 
 > [!TIP] 
 > * 16 MBps'ye kadar olan hızların alınması için çevre desteği istek üzerine sağlanabilir.
@@ -99,7 +99,7 @@ Varsayılan olarak, Time Series Insights önizlemesi gelen verileri **Time Serie
  
 * **Örnek 1:**
 
-    Contoso Shipping dakikada üç kez bir olay yontmak 100.000 cihazlar vardır. Bir olayın boyutu 200 bayttır. Time Series Insights etkinlik kaynağı olarak dört bölümden bir Olay Hub'ı kullanıyorlar.
+    Contoso Shipping dakikada üç kez bir olay yontmak 100.000 cihazlar vardır. Bir olayın boyutu 200 bayttır. Time Series Insights etkinlik kaynağı olarak dört bölümlü bir Iot Hub kullanıyorlar.
 
     * Onların Time Series Insights ortamı için yutma oranı olacaktır: **100.000 cihazlar * 200 bayt / olay * (3/60 olay / sn) = 1 MBps**.
     * Bölüm başına yutma oranı 0,25 MBps olacaktır.
@@ -107,11 +107,11 @@ Varsayılan olarak, Time Series Insights önizlemesi gelen verileri **Time Serie
 
 * **Örnek 2:**
 
-    Contoso Fleet Analytics'te her saniye bir etkinlik yalayan 60.000 cihaz bulunmaktadır. Zaman Serisi Öngörüleri etkinlik kaynağı olarak 4'lük IoT Hub 24 bölüm sayısını kullanıyorlar. Bir olayın boyutu 200 bayttır.
+    Contoso Fleet Analytics'te her saniye bir etkinlik yalayan 60.000 cihaz bulunmaktadır. Zaman Serisi Öngörüleri etkinlik kaynağı olarak bölüm sayısı 4 olan bir Olay Hub'ı kullanıyorlar. Bir olayın boyutu 200 bayttır.
 
-    * Çevre yeme oranı olacaktır: **20.000 cihazlar * 200 bayt/olay * 1 olay/sn = 4 MBps**.
-    * Bölüm başına oranı 1 MBps olacaktır.
-    * Contoso Fleet Analytics, ortamları için alım oranını artırmak için Azure portalı aracılığıyla Time Series Insights'a bir istek gönderebilir.
+    * Çevre yeme oranı olacaktır: **60.000 cihazlar * 200 bayt/olay * 1 olay/sn = 12 MBps**.
+    * Bölüm başına oranı 3 MBps olacaktır.
+    * Contoso Fleet Analytics'in yutma oranı çevre ve bölüm sınırlarının üzerindedir. Ortamları için alım oranını artırmak için Azure portalı aracılığıyla Time Series Öngörüleri'ne bir istek gönderebilir ve Önizleme sınırları içinde daha fazla bölüm içeren bir Etkinlik Hub'ı oluşturabilirler.
 
 #### <a name="hub-partitions-and-per-partition-limits"></a>Hub bölümleri ve bölüm başına sınırları
 

@@ -9,18 +9,18 @@ ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 11/17/2019
 ms.author: yelevin
-ms.openlocfilehash: 7d42ff28ddd2d883feb25139096d781efe64d50f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: b82ddfef57efaaca0ae43750cd306a63a772b911
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77588578"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80616819"
 ---
 # <a name="connect-data-from-azure-ad-identity-protection"></a>Azure AD Kimlik Koruması'ndan veri bağlama
 
 
 
-Panoları görüntülemek, özel uyarılar oluşturmak ve araştırmayı iyileştirmek için uyarıları Azure Sentinel'e aktarmak için [Azure AD Identity Protection'dan](https://docs.microsoft.com/azure/information-protection/reports-aip) Azure Sentinel'e günlük akışı sağlayabilirsiniz. Azure Active Directory Identity Protection, risk kullanıcılarına, risk algılamalarına ve güvenlik açıklarına yönelik konsolide bir görünüm sağlar, riskleri hemen düzeltebilir ve gelecekteki olayları otomatik olarak düzeltmek için ilkeler belirler. Hizmet, Microsoft'un tüketici kimliklerini koruma deneyimi üzerine kuruludur ve günde 13 milyardan fazla oturum açma sinyalinden muazzam doğruluk elde eder. 
+Panoları görüntülemek, özel uyarılar oluşturmak ve araştırmayı iyileştirmek için uyarıları Azure Sentinel'e aktarmak için [Azure AD Identity Protection'dan](https://docs.microsoft.com/azure/active-directory/identity-protection/overview-identity-protection) Azure Sentinel'e günlük akışı sağlayabilirsiniz. Azure Active Directory Identity Protection, risk kullanıcılarına, risk algılamalarına ve güvenlik açıklarına yönelik konsolide bir görünüm sağlar, riskleri hemen düzeltebilir ve gelecekteki olayları otomatik olarak düzeltmek için ilkeler belirler. Hizmet, Microsoft'un tüketici kimliklerini koruma deneyimi üzerine kuruludur ve günde 13 milyardan fazla oturum açma sinyalinden muazzam doğruluk elde eder. 
 
 
 ## <a name="prerequisites"></a>Ön koşullar

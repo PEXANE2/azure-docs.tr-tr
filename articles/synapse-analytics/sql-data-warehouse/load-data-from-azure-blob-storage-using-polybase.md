@@ -1,6 +1,6 @@
 ---
 title: 'Öğretici: Yük New York Taxicab veri'
-description: Tutorial, SQL Analytics için küresel bir Azure blob'undan New York Taxicab verilerini yüklemek için Azure portalını ve SQL Server Management Studio'u kullanır.
+description: Tutorial, Synapse SQL için küresel bir Azure blob'undan New York Taxicab verilerini yüklemek için Azure portalını ve SQL Server Management Studio'u kullanır.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: f1614538f6ab735720d090f66fee0e017e96cf72
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: e17b5be0f4f3d568bd5ec836659c4444b384b2fa
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80346737"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80583742"
 ---
 # <a name="tutorial-load-the-new-york-taxicab-dataset"></a>Öğretici: Yük New York Taxicab veri seti
 
@@ -148,7 +148,7 @@ Bu bölümde Azure SQL sunucunuzla bağlantı kurmak için [SQL Server Managemen
     | -------------- | ------------------------------------------ | ------------------------------------------------------------ |
     | Sunucu türü    | Veritabanı altyapısı                            | Bu değer gereklidir                                       |
     | Sunucu adı    | Tam sunucu adı            | Adı böyle bir şey olmalıdır: **mynewserver-20180430.database.windows.net**. |
-    | Kimlik doğrulaması | SQL Server Kimlik Doğrulaması                  | Bu öğreticide yapılandırdığımız tek kimlik doğrulaması türü SQL Kimlik Doğrulamasıdır. |
+    | Kimlik Doğrulaması | SQL Server Kimlik Doğrulaması                  | Bu öğreticide yapılandırdığımız tek kimlik doğrulaması türü SQL Kimlik Doğrulamasıdır. |
     | Oturum Aç          | Sunucu yöneticisi hesabı                   | Bu, sunucuyu oluştururken belirttiğiniz hesaptır. |
     | Parola       | Sunucu yöneticisi hesabınızın parolası | Bu, sunucuyu oluştururken belirttiğiniz paroladır. |
 

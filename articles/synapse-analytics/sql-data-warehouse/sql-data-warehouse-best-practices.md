@@ -10,16 +10,16 @@ ms.subservice: ''
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: d0b32fb2b52d2dbb126053247cff83f05781ba5e
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 44dbc03a41cfde94c344ae331b21d7536778050c
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350878"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80619111"
 ---
 # <a name="best-practices-for-sql-analytics-in-azure-synapse-analytics-formerly-sql-dw"></a>Azure Synapse Analytics'te SQL Analytics için en iyi uygulamalar (eski adıyla SQL DW)
 
-Bu makale, [SQL Analytics](sql-data-warehouse-overview-what-is.md#sql-analytics-and-sql-pool-in-azure-synapse) dağıtımınızdan en iyi performansı elde etmenize yardımcı olacak en iyi uygulamalar topluluğudur.  Bu makalenin amacı, bazı temel rehberlik vermek ve odak önemli alanları vurgulamak.  Her bölüm sizi bir kavramla tanıştırır ve daha sonra konsepti daha derinlemesine kapsayan daha ayrıntılı makalelere işaret eder. Konuların sırası önem sırasına göredir. 
+Bu makale, [SQL Analytics](sql-data-warehouse-overview-what-is.md#synapse-sql-pool-in-azure-synapse) dağıtımınızdan en iyi performansı elde etmenize yardımcı olacak en iyi uygulamalar topluluğudur.  Bu makalenin amacı, bazı temel rehberlik vermek ve odak önemli alanları vurgulamak.  Her bölüm sizi bir kavramla tanıştırır ve daha sonra konsepti daha derinlemesine kapsayan daha ayrıntılı makalelere işaret eder. Konuların sırası önem sırasına göredir. 
 
 ## <a name="reduce-cost-with-pause-and-scale"></a>Duraklatma ve ölçeklendirme ile maliyetleri azaltın
 
@@ -115,7 +115,7 @@ Satırlar columnstore tablolarına bellek baskısı altında yazıldığında, s
 
 Yüksek kaliteli sütun deposu segmentleri önemli olduğundan, veri yüklemek için orta veya büyük kaynak sınıfında bulunan kullanıcı sözcülerini kullanmak iyi bir fikirdir. Daha düşük [veri ambarı birimlerini](what-is-a-data-warehouse-unit-dwu-cdwu.md) kullanmak, yükleme kullanıcınıza daha büyük bir kaynak sınıfı atamak istediğiniz anlamına gelir.
 
-Sütun deposu tabloları genellikle tablo başına 1 milyondan fazla satır olana ve her SQL Analytics tablosu 60 tabloya bölünene kadar verileri sıkıştırılmış bir sütun mağazası segmentine itmediğinden, sütun lu tablolar bir kural olarak, sütun mağazası tabloları bir sorgudan yararlanamaz. tabloda 60 milyondan fazla satır vardır.  60 milyondan az satıra sahip tablolarda columnstore dizini kullanmaya gerek olmayabilir.  Kullanmanın da bir zararı olmayacaktır.  
+Sütun deposu tabloları genellikle tablo başına 1 milyondan fazla satır olana ve her SQL Analytics tablosu 60 tabloya bölünene kadar sıkıştırılmış sütun mağazası segmentine veri itmediğinden, sütun lu tablo, tabloda 60 milyondan fazla satır olmadığı sürece sorgudan yararlanamaz.  60 milyondan az satıra sahip tablolarda columnstore dizini kullanmaya gerek olmayabilir.  Kullanmanın da bir zararı olmayacaktır.  
 
 Ayrıca, verilerinizi bölümlemeniz halinde her bir bölümün kümelenmiş columnstore dizini kullanabilmesi için en az 1 milyon satıra ihtiyaç duyacağını unutmayın.  100 bölüme sahip bir tablonun kümelenmiş columnstore kullanabilmesi için en az 6 milyar satıra sahip olması gerekir (60 dağıtım * 100 bölüm * 1 milyon satır).  
 

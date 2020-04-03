@@ -58,8 +58,6 @@
       href: sql-database-managed-instance-quickstart-guide.md
 - name: Kavramlar
   items:
-    - name: Ortak özellikler belgeleri
-      href: sql-database-paas-index.yml
     - name: Özellik karşılaştırması
       href: sql-database-features.md
     - name: Nasıl yapılır kılavuzu
@@ -280,8 +278,6 @@
                   href: sql-database-xevent-code-ring-buffer.md
     - name: Ölçeklenebilirlik
       items:
-        - name: Ölçeklenebilirlik belgeleri
-          href: sql-database-scalability-index.yml
         - name: Ölçeği Artırma/Azaltma
           href: sql-database-scale-resources.md
         - name: Okuma Amaçlı Ölçeği Genişletme
@@ -310,8 +306,6 @@
           href: sql-database-elastic-transactions-overview.md
     - name: Veritabanı özellikleri
       items:
-        - name: Veritabanı özellik belgeleri
-          href: sql-database-features-index.yml
         - name: Çok modelli özellikler
           href: sql-database-multi-model-features.md
         - name: Bellek içi
@@ -685,7 +679,6 @@
         - name: Kod örnekleri
           href: 'https://azure.microsoft.com/resources/samples/?service=sql-database'
 - name: SQL yönetilen örneği
-  href: sql-database-managed-instance-index.yml
   items:
     - name: Genel Bakış
       items:

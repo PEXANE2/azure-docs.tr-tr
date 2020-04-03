@@ -9,12 +9,12 @@ ms.author: migreene
 ms.topic: conceptual
 ms.date: 07/17/2019
 manager: nirb
-ms.openlocfilehash: a6c7639cb4988eb13dfaa1c151085cda6e53b5d3
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: f4ca76f4be9d00e185f8774fc33296d1af1aeece
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "68614504"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80585493"
 ---
 # <a name="remediate-non-compliant-dsc-servers"></a>Uyumlu olmayan DSC sunucularını düzeltme
 
@@ -40,7 +40,7 @@ Update-DscConfiguration -Wait -Verbose
 Benzer işlevler şu anda Linux sunucuları için kullanılamıyor.
 Tek seçenek kayıt işlemini tekrarlamaktır.
 Azure düğümleri için, sürüklenme düzeltme portalından veya Az Automation cmdlets kullanılarak yapılabilir.
-Bu işlemle ilgili ayrıntılar [Azure Otomasyon Durumu Yapılandırması tarafından yönetilmeleri için Onboarding makineleri](/azure/automation/automation-dsc-onboarding#azure-portal)sayfasında belgelenmiştir.
+Bu işlemle ilgili ayrıntılar [Azure Otomasyon Durumu Yapılandırması tarafından yönetilmeleri için Onboarding makineleri](/azure/automation/automation-dsc-onboarding#onboard-a-vm-using-azure-portal)sayfasında belgelenmiştir.
 Hibrit düğümler için, drift düzeltme dahil Python komut dosyaları kullanılarak yapılabilir.
 [Linux repo için PowerShell DSC dokümantasyon](https://github.com/Microsoft/PowerShell-DSC-for-Linux#performing-dsc-operations-from-the-linux-computer)bakın.
 

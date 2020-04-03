@@ -5,12 +5,12 @@ author: kavyako
 ms.topic: conceptual
 ms.date: 08/10/2017
 ms.author: kavyako
-ms.openlocfilehash: 4cfeaf34a39231ffa91ea970a61f66632bae40c7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 61a8d1e766ea576f7d2984add239b0da7e2e8183
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79282256"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80617120"
 ---
 # <a name="connect-to-a-secure-service-with-the-reverse-proxy"></a>Ters proxy ile güvenli bir hizmete bağlanma
 
@@ -77,7 +77,7 @@ Sonraki bölümde, bu seçeneklerin her biri için yapılandırma ayrıntıları
 
    Hizmet ortak adı ve veren parmak izlerinin listesini belirtmek için, aşağıda gösterildiği gibi **fabricSettings**altında bir [**ApplicationGateway/Http/ServiceCommonNameAndIssuer**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttpservicecommonnameandissuer) bölümünü ekleyin. **Parametreler** dizisine birden çok sertifika ortak adı ve veren parmak izi çiftleri eklenebilir. 
 
-   Bitiş noktası ters proxy ortak adı ve veren parmak izi burada belirtilen değerlerden herhangi biriyle eşleşen bir sertifika sunar bağlanırsa, SSL kanalı oluşturulur. 
+   Bitiş noktası ters proxy ortak adı ve veren parmak izi burada belirtilen değerlerden herhangi biriyle eşleşen bir sertifika sunar a bağlanıyorsa, bir TLS kanalı oluşturulur.
    Sertifika ayrıntılarıeşleştirememesi üzerine, ters proxy istemcinin isteğini 502 (Kötü Ağ Geçidi) durum koduyla başarısızlığa uğratTır. HTTP durum satırında "Geçersiz SSL Sertifikası" ibaresi de bulunur. 
 
    ```json
@@ -143,7 +143,7 @@ Sonraki bölümde, bu seçeneklerin her biri için yapılandırma ayrıntıları
    }
    ```
 
-   Sunucu sertifikasının parmak izi bu config girişinde listelenmişse, ters proxy SSL bağlantısının yerini alar. Aksi takdirde, bağlantıyı sona erdirir ve istemcinin isteğini 502 (Kötü Ağ Geçidi) ile başarısız olur. HTTP durum satırında "Geçersiz SSL Sertifikası" ibaresi de bulunur.
+   Sunucu sertifikasının parmak izi bu config girişinde listelenmişse, ters proxy TLS bağlantısını başarır. Aksi takdirde, bağlantıyı sona erdirir ve istemcinin isteğini 502 (Kötü Ağ Geçidi) ile başarısız olur. HTTP durum satırında "Geçersiz SSL Sertifikası" ibaresi de bulunur.
 
 ## <a name="endpoint-selection-logic-when-services-expose-secure-as-well-as-unsecured-endpoints"></a>Hizmetler güvenli ve güvenli olmayan uç noktaları ortaya çıkardığında bitiş noktası seçim mantığı
 Hizmet dokusu, bir hizmet için birden çok uç nokta yapılandırmayı destekler. Daha fazla bilgi için [bkz.](service-fabric-service-manifest-resources.md)
@@ -173,12 +173,12 @@ Ters [proxy, hizmet URI'deki](./service-fabric-reverseproxy.md#uri-format-for-ad
 > **SecureOnlyMode'da**çalışırken, istemci BIR HTTP(güvenli olmayan) bitiş noktasına karşılık gelen bir **Dinleyici Adı** belirtmişse, ters proxy isteği 404 (Bulunamadı) HTTP durum koduyla başarısız olur.
 
 ## <a name="setting-up-client-certificate-authentication-through-the-reverse-proxy"></a>Ters proxy üzerinden istemci sertifikası kimlik doğrulaması ayarlama
-SSL sonlandırma ters proxy olur ve tüm istemci sertifikası verileri kaybolur. Hizmetlerin istemci sertifikası kimlik doğrulaması gerçekleştirmek için [**ApplicationGateway/Http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) bölümünde **ForwardClientCertificate** ayarını belirtin.
+TLS sonlandırma ters proxy'de gerçekleşir ve tüm istemci sertifikası verileri kaybolur. Hizmetlerin istemci sertifikası kimlik doğrulaması gerçekleştirmek için [**ApplicationGateway/Http**](./service-fabric-cluster-fabric-settings.md#applicationgatewayhttp) bölümünde **ForwardClientCertificate** ayarını belirtin.
 
-1. **ForwardClientCertificate** **false**olarak ayarlandığında, ters proxy istemci ile SSL el sıkışma sırasında istemci sertifikası istemeyeceksiniz.
+1. **ForwardClientCertificate** **false**olarak ayarlandığında, ters proxy istemci ile TLS el sıkışma sırasında istemci sertifikası talep etmez.
 Bu varsayılan davranıştır.
 
-2. **ForwardClientCertificate** **doğru**ayarlandığında, ters proxy istemci ile SSL el sıkışma sırasında istemcinin sertifikasını ister.
+2. **ForwardClientCertificate** **doğru**ayarlandığında, ters proxy istemci ile TLS el sıkışma sırasında istemcinin sertifikasını ister.
 Daha sonra istemci sertifika verilerini **X-Client-Certificate**adlı özel bir HTTP üstbilgisinde iletir. Üstbilgi değeri, istemcisertifikasının base64 kodlanmış PEM biçimi dizesidir. Hizmet, sertifika verilerini inceledikten sonra uygun durum koduyla isteği gerçekleştirebilir/başarısız olabilir.
 İstemci bir sertifika sunmuyorsa, proxy'yi geri alet boş bir üstbilgi iletin ve servisin servisin servisin işlemesine izin verir.
 

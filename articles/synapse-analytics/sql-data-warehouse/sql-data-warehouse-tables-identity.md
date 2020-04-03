@@ -1,6 +1,6 @@
 ---
 title: Vekil anahtarları oluşturmak için KİmLİk kullanma
-description: SQL Analytics'teki tablolarda vekil anahtarları oluşturmak için KİmLİk özelliğini kullanmak için öneriler ve örnekler.
+description: Synapse SQL havuzundaki tablolarda vekil anahtarlar oluşturmak için KİmLİk özelliğini kullanmak için öneriler ve örnekler.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,24 +11,24 @@ ms.date: 04/30/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: ab8f4a64f7273f0fa15c20f324e132003d5afe32
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: d4a9880ed7ab26d0127026f49c0bc781cfc2a941
+ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351303"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80586326"
 ---
-# <a name="using-identity-to-create-surrogate-keys-in-sql-analytics"></a>SQL Analytics'te vekil anahtarları oluşturmak için KİmLİk kullanma
+# <a name="using-identity-to-create-surrogate-keys-in-synapse-sql-pool"></a>Synapse SQL havuzunda vekil anahtarları oluşturmak için KİmLİk kullanma
 
-SQL Analytics'teki tablolarda vekil anahtarları oluşturmak için KİmLİk özelliğini kullanmak için öneriler ve örnekler.
+Synapse SQL havuzundaki tablolarda vekil anahtarlar oluşturmak için KİmLİk özelliğini kullanmak için öneriler ve örnekler.
 
 ## <a name="what-is-a-surrogate-key"></a>Vekil anahtar nedir
 
-Tablodaki vekil anahtarı, her satır için benzersiz bir tanımlayıcısı olan bir sütundur. Anahtar tablo verilerinden oluşturulmadı. Veri modelleyicileri, SQL Analytics modellerini tasarlarken tablolarında vekil anahtarlar oluşturmayı severler. Yük performansını etkilemeden bu amaca ulaşmak için KİmLİk özelliğini kullanabilirsiniz.  
+Tablodaki vekil anahtarı, her satır için benzersiz bir tanımlayıcısı olan bir sütundur. Anahtar tablo verilerinden oluşturulmadı. Veri modelleyicileri, veri ambarı modellerini tasarlarken tablolarında vekil anahtarları oluşturmayı severler. Yük performansını etkilemeden bu amaca ulaşmak için KİmLİk özelliğini kullanabilirsiniz.  
 
 ## <a name="creating-a-table-with-an-identity-column"></a>KİmLİk sütunu içeren tablo oluşturma
 
-IDENTITY özelliği, yük performansını etkilemeden SQL Analytics veritabanındaki tüm dağıtımları ölçeklendirmek üzere tasarlanmıştır. Bu nedenle, KİmLİk uygulaması bu hedeflere ulaşmaya yöneliktir.
+IDENTITY özelliği, yük performansını etkilemeden Synapse SQL havuzundaki tüm dağıtımları ölçeklendirmek üzere tasarlanmıştır. Bu nedenle, KİmLİk uygulaması bu hedeflere ulaşmaya yöneliktir.
 
 Aşağıdaki ifadeye benzer sözdizimi kullanarak tabloyu ilk oluşturduğunuzda, tabloyu KİmLİk özelliğine sahip olarak tanımlayabilirsiniz:
 
@@ -50,7 +50,7 @@ Bu bölümün geri kalanı, bunları daha tam olarak anlamanıza yardımcı olma
 
 ### <a name="allocation-of-values"></a>Değerlerin tahsisi
 
-KİmLİk özelliği, SQL Server ve Azure SQL Veritabanı'nın davranışını yansıtan vekil değerlerinin ayrılma sırasını garanti etmez. Ancak, SQL Analytics'te bir garantinin olmaması daha belirgindir.
+KİmLİk özelliği, SQL Server ve Azure SQL Veritabanı'nın davranışını yansıtan vekil değerlerinin ayrılma sırasını garanti etmez. Ancak, Synapse SQL havuzunda, bir garantinin yokluğu daha belirgindir.
 
 Aşağıdaki örnek bir örnektir:
 
@@ -100,7 +100,7 @@ CREATE TABLE AS SELECT (CTAS) SELECT için belgelenen aynı SQL Server davranı�
 
 ## <a name="explicitly-inserting-values-into-an-identity-column"></a>Kimlik sütununa değerleri açıkça ekleme
 
-SQL Analytics `SET IDENTITY_INSERT <your table> ON|OFF` sözdizimini destekler. Bu sözdizimini, kimlik sütununa açıkça değer eklemek için kullanabilirsiniz.
+Synapse SQL `SET IDENTITY_INSERT <your table> ON|OFF` havuzu sözdizimini destekler. Bu sözdizimini, kimlik sütununa açıkça değer eklemek için kullanabilirsiniz.
 
 Birçok veri modelleyicisi, boyutlarındaki belirli satırlar için önceden tanımlanmış negatif değerleri kullanmayı sever. Örnek -1 veya "bilinmeyen üye" satırıdır.
 
@@ -161,7 +161,7 @@ DBCC PDW_SHOWSPACEUSED('dbo.T1');
 > Kimlik sütunu olan `CREATE TABLE AS SELECT` bir tabloya veri yüklerken şu anda kullanmak mümkün değildir.
 >
 
-Veri yükleme hakkında daha fazla bilgi için, [SQL Analytics için Ekstresi, Yükleme ve Dönüştürme (ELT) Tasarlama](design-elt-data-loading.md) ve [En iyi uygulamaları yükleme](guidance-for-loading-data.md)bölümüne bakın.
+Veri yükleme hakkında daha fazla bilgi için, [Synapse SQL havuzu için Ekstresi, Yükleme ve Dönüştürme (ELT) Tasarlama](design-elt-data-loading.md) ve [en iyi uygulamaları yükleme](guidance-for-loading-data.md)bölümüne bakın.
 
 ## <a name="system-views"></a>Sistem görünümleri
 
@@ -195,7 +195,7 @@ KİmLİk özelliği kullanılamaz:
 - Sütun da dağıtım anahtarı olduğunda
 - Tablo harici bir tablo olduğunda
 
-Aşağıdaki ilgili işlevler SQL Analytics'te desteklenmez:
+Synapse SQL havuzunda aşağıdaki ilgili işlevler desteklenmez:
 
 - [KİmLİk()](/sql/t-sql/functions/identity-function-transact-sql)
 - [@@IDENTITY](/sql/t-sql/functions/identity-transact-sql)

@@ -5,18 +5,18 @@ services: container-service
 manager: gwallace
 ms.topic: article
 ms.date: 02/25/2020
-ms.openlocfilehash: f83faf05eb7099557d5b653e0b24591062c44d11
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 514cc25e1959145c65fe60cd3054cec4ed28f44d
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79368460"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80617415"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Azure Kubernetes Service'ten Azure Container Registry ile Kimlik Doğrulaması Yapma
 
-Azure Kubernetes Hizmeti (AKS) ile Azure Kapsayıcı Kayıt Defteri'ni (ACR) kullanırken, bir kimlik doğrulama mekanizmasının oluşturulması gerekir. Bu makalede, bu iki Azure hizmeti arasında kimlik doğrulamayapılandırmak için örnekler verilmektedir.
+Azure Kubernetes Hizmeti (AKS) ile Azure Kapsayıcı Kayıt Defteri'ni (ACR) kullanırken, bir kimlik doğrulama mekanizmasının oluşturulması gerekir. Bu makalede, bu iki Azure hizmeti arasında kimlik doğrulamayapılandırmak için örnekler verilmektedir. 
 
-AKS'den ACR tümleştirmesine Azure CLI ile birkaç basit komutta ayarlayabilirsiniz.
+AKS'den ACR tümleştirmesine Azure CLI ile birkaç basit komutta ayarlayabilirsiniz. Bu tümleştirme, AkS Kümesi'yle ilişkili hizmet ilkesine AcrPull rolünü atar.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
@@ -33,7 +33,7 @@ AKS kümenizin ilk oluşturulması sırasında AKS ve ACR tümleştirmesini ayar
 
 ```azurecli
 # set this to the name of your Azure Container Registry.  It must be globally unique
-MYACR=myContainerRegistry
+$MYACR=myContainerRegistry
 
 # Run the following line to create an Azure Container Registry if you do not already have one
 az acr create -n $MYACR -g myContainerRegistryResourceGroup --sku basic

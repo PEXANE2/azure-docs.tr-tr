@@ -1,6 +1,6 @@
 ---
 title: Saklı yordamları kullanma
-description: Çözümler geliştirmek için Azure SQL Veri Ambarı'nda depolanan yordamları uygulama ipuçları.
+description: Synapse SQL havuzunda depolanan yordamları uygulayarak çözümler geliştirmek için ipuçları.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,34 +11,39 @@ ms.date: 04/02/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 83c3187c580bda33df8780a0e36f0fb9f2a4f484
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: a8350f8027a78ae5692e12661f2e0d2013ab4c46
+ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351553"
+ms.lasthandoff: 04/02/2020
+ms.locfileid: "80618943"
 ---
-# <a name="using-stored-procedures-in-sql-data-warehouse"></a>SQL Veri Ambarı'nda depolanan yordamları kullanma
-Çözümler geliştirmek için Azure SQL Veri Ambarı'nda depolanan yordamları uygulama ipuçları.
+# <a name="using-stored-procedures-in-synapse-sql-pool"></a>Synapse SQL havuzunda depolanan yordamları kullanma
+Bu makalede, depolanan yordamları uygulayarak SQL havuzu çözümleri geliştirmek için ipuçları sağlar.
 
 ## <a name="what-to-expect"></a>Ne beklenebilir
 
-SQL Veri Ambarı, SQL Server'da kullanılan T-SQL özelliklerinin çoğunu destekler. Daha da önemlisi, çözümünuzun performansını en üst düzeye çıkarmak için kullanabileceğiniz ölçeklendirilebilir özel özellikler vardır.
+SQL havuzu, SQL Server'da kullanılan T-SQL özelliklerinin çoğunu destekler. Daha da önemlisi, çözümünuzun performansını en üst düzeye çıkarmak için kullanabileceğiniz ölçeklendirilebilir özel özellikler vardır.
 
-Ancak, SQL Veri Ambarı ölçeğini ve performansını korumak için davranış farklılıkları ve desteklenmeyen diğerleri olan bazı özellikler ve işlevler de vardır.
+Ayrıca, SQL havuzunun ölçeğini ve performansını korumanıza yardımcı olmak için davranış farklılıkları olan ek özellikler ve işlevler vardır.
 
 
 ## <a name="introducing-stored-procedures"></a>Depolanan yordamları tanıtma
-Depolanan yordamlar, SQL kodunuzu kapsüllemenin harika bir yoludur; verilerinize yakın bir yerde veri ambarında depolamak. Depolanan yordamlar, geliştiricilerin kodu yönetilebilir birimlere kapsülleyerek çözümlerini modüle etmelerine yardımcı olur; kodun daha fazla yeniden kullanılabilirliğini kolaylaştırır. Depolanan her yordam, parametreleri daha da esnek hale getirmek için de kabul edebilir.
+Depolanan yordamlar, SQL havuz verilerinizin yakınında depolanan SQL kodunuzu kapsüllemek için harika bir yoldur. Depolanan yordamlar, geliştiricilerin kodu yönetilebilir birimlere kapsülleyerek çözümlerini modüle etmelerine yardımcı olur ve böylece kodun yeniden kullanılabilirliğini kolaylaştırır. Depolanan her yordam, parametreleri daha da esnek hale getirmek için de kabul edebilir.
 
-SQL Veri Ambarı basitleştirilmiş ve basitleştirilmiş bir saklı yordam uygulaması sağlar. SQL Server ile karşılaştırıldığında en büyük fark, depolanan yordamın önceden derlenmiş kod olmamasıdır. Veri ambarlarında, derleme süresi, sorguları büyük veri hacimlerine karşı çalıştırmak için gereken süreyle karşılaştırıldığında küçüktür. Depolanan yordam kodunun büyük sorgular için doğru şekilde optimize edilmesini sağlamak daha önemlidir. Amaç milisaniye değil, saat, dakika ve saniye kaydetmektir. Bu nedenle, depolanan yordamları SQL mantığı için kapsayıcılar olarak düşünmek daha yararlıdır.     
+SQL havuzu basitleştirilmiş ve basitleştirilmiş bir saklı yordam uygulaması sağlar. SQL Server ile karşılaştırıldığında en büyük fark, depolanan yordamın önceden derlenmiş kod olmamasıdır. 
 
-SQL Veri Ambarı depolanan yordamınızı çalıştırdığında, SQL deyimleri ayrıştı, çevrilmiş ve çalışma zamanında optimize edilir. Bu işlem sırasında, her deyim dağıtılmış sorgulara dönüştürülür. Verilere karşı yürütülen SQL kodu gönderilen sorgudan farklıdır.
+Genel olarak, veri ambarları için derleme süresi, sorguları büyük veri hacimlerine karşı çalıştırmak için gereken süreyle karşılaştırıldığında küçüktür. Depolanan yordam kodunun büyük sorgular için doğru şekilde optimize edilmesini sağlamak daha önemlidir. 
+
+> [!TIP]
+> Amaç milisaniye değil, saat, dakika ve saniye kaydetmektir. Bu nedenle, depolanan yordamları SQL mantığı için kapsayıcılar olarak düşünmek yararlıdır.     
+
+SQL havuzu depolanan yordamınızı çalıştırdığında, SQL deyimleri ayrıştı, çevrilmiş ve çalışma zamanında optimize edilir. Bu işlem sırasında, her deyim dağıtılmış sorgulara dönüştürülür. Verilere karşı yürütülen SQL kodu gönderilen sorgudan farklıdır.
 
 ## <a name="nesting-stored-procedures"></a>İç içe depolanan yordamlar
 Depolanan yordamlar diğer depolanan yordamları aradığında veya dinamik SQL'i çalıştırdığında, iç depolanan yordamın veya kod çağırmanın iç içe olduğu söylenir.
 
-SQL Veri Ambarı en fazla sekiz iç içe geçme düzeyi destekler. Bu, SQL Server'dan biraz farklıdır. SQL Server'daki yuva düzeyi 32'dir.
+SQL havuzu en fazla sekiz iç içe geçme düzeyi destekler. Buna karşılık, SQL Server'daki yuva düzeyi 32'dir.
 
 Üst düzey depolanan yordam çağrısı yuva düzeyi 1 eşittir.
 
@@ -64,15 +69,13 @@ GO
 EXEC prc_nesting
 ```
 
-Not, SQL Veri Ambarı şu anda [@@NESTLEVEL](/sql/t-sql/functions/nestlevel-transact-sql)desteklemiyor. Yuva seviyesini izlemeniz gerekiyor. Sekiz yuva düzeyi sınırını aşmanız olası değildir, ancak bunu yaparsanız, iç içe geçme düzeylerini bu sınıra sığdırmak için kodunuzu yeniden çalışmanız gerekir.
+SQL havuzu şu anda [@@NESTLEVEL](/sql/t-sql/functions/nestlevel-transact-sql)desteklemiyor. Bu nedenle, yuva düzeyini izlemeniz gerekir. Sekiz yuva düzeyi sınırını aşmanız pek olası değil. Ancak, bunu yaparsanız, iç içe geçme düzeylerine bu sınır adedine uyacak şekilde kodunuzu yeniden çalışmanız gerekir.
 
 ## <a name="insertexecute"></a>Ekle.. Yürütmek
-SQL Veri Ambarı, depolanan yordamın sonuç kümesini insert deyimiyle tüketmenize izin vermez. Ancak, kullanabileceğiniz alternatif bir yaklaşım vardır. Örneğin, [geçici tablolardaki](sql-data-warehouse-tables-temporary.md)makaleye bakın. 
+SQL havuzu, insert deyimiyle depolanan yordamın sonuç kümesini tüketmenize izin vermez. Ancak, kullanabileceğiniz alternatif bir yaklaşım vardır. Örneğin, [geçici tablolardaki](sql-data-warehouse-tables-temporary.md)makaleye bakın. 
 
 ## <a name="limitations"></a>Sınırlamalar
-Transact-SQL depolanan yordamlarının SQL Veri Ambarı'nda uygulanmayan bazı yönleri vardır.
-
-Bunlar:
+Sql havuzunda uygulanmayan Transact-SQL depolanmış yordamlarının bazı yönleri şunlardır:
 
 * geçici saklı yordamlar
 * numaralı saklı yordamlar
