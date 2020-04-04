@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: 62826b209b37e5abe5d33455809ba1b894ddb85f
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 5925e3374634dd4db4bdc6855949dc3880d8de7c
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80476456"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80655523"
 ---
 # <a name="compare-self-managed-active-directory-domain-services-azure-active-directory-and-managed-azure-active-directory-domain-services"></a>Kendi kendini yöneten Active Directory Etki Alanı Hizmetlerini, Azure Etkin Dizini ve yönetilen Azure Etkin Dizin Etki Alanı Hizmetlerini karşılaştırın
 
@@ -25,12 +25,16 @@ Active Directory tabanlı üç kimlik çözümü ortak bir ad ve teknolojiyi pay
 
 * **Active Directory Domain Services (AD DS)** - Kimlik ve kimlik doğrulama, bilgisayar nesnesi yönetimi, grup ilkesi ve güvenler gibi temel özellikleri sağlayan kurumsal kullanıma hazır hafif dizin erişim protokolü (LDAP) sunucusu.
     * AD DS, şirket içi BT ortamına sahip birçok kuruluşta merkezi bir bileşendir ve temel kullanıcı hesabı kimlik doğrulaması ve bilgisayar yönetimi özellikleri sağlar.
+    * Daha fazla bilgi için [Windows Server belgelerinde Active Directory Etki Alanı Hizmetlerine genel bakış bilgisine][overview-adds]bakın.
 * **Azure Etkin Dizin (Azure AD)** - Office 365, Azure portalı veya SaaS uygulamaları gibi kaynaklar için kullanıcı hesabı ve kimlik doğrulama hizmetleri sağlayan bulut tabanlı kimlik ve mobil aygıt yönetimi.
     * Azure AD, bulutta yerel olarak çalışan kullanıcılara tek bir kimlik sağlamak için şirket içi BIR AD DS ortamıyla senkronize edilebilir.
+    * Azure AD hakkında daha fazla bilgi için Azure [Etkin Dizin nedir?][whatis-azuread]
 * **Azure Active Directory Domain Services (Azure AD DS)** - Etki alanı birleştirme, grup ilkesi, LDAP ve Kerberos / NTLM kimlik doğrulaması gibi tam uyumlu geleneksel AD DS özelliklerinin bir alt kümesiyle yönetilen etki alanı hizmetleri sağlar.
     * Azure AD DS, şirket içi AD DS ortamıyla senkronize edilebilen Azure AD ile tümleşir. Bu yetenek, merkezi kimlik kullanım kılıflarını, kaldırma ve kaydırma stratejisinin bir parçası olarak Azure'da çalışan geleneksel web uygulamalarına genişletir.
 
 Bu genel bakış makalesi, bu kimlik çözümlerinin birlikte nasıl çalışabileceğini veya kuruluşunuzun gereksinimlerine bağlı olarak bağımsız olarak nasıl kullanılacağını karşılaştırır ve karşılaştırır.
+
+Başlamak için, [Azure portalını kullanarak Azure AD DS yönetilen bir etki alanı oluşturun.][tutorial-create]
 
 ## <a name="azure-ad-ds-and-self-managed-ad-ds"></a>Azure AD DS ve kendi kendini yöneten AD DS
 
@@ -118,3 +122,5 @@ Azure AD DS'yi kullanmaya başlamak için, [Azure portalını kullanarak Bir Azu
 [manage-gpos]: manage-group-policy.md
 [tutorial-ldaps]: tutorial-configure-ldaps.md
 [tutorial-create]: tutorial-create-instance.md
+[whatis-azuread]: ../active-directory/fundamentals/active-directory-whatis.md
+[overview-adds]: /windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview

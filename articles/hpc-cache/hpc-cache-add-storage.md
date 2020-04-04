@@ -4,18 +4,18 @@ description: Azure HPC Önbelleğinizin şirket içi NFS sisteminizi veya Azure 
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 12/30/2019
+ms.date: 04/03/2020
 ms.author: rohogue
-ms.openlocfilehash: a68bf06bad995f71bedf6a5bdedcb676737a8c61
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3fbc4e683c2b0e72c3a084a59793dbf9eb4b658c
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79271895"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80657414"
 ---
 # <a name="add-storage-targets"></a>Depolama hedefleri ekleme
 
-*Depolama hedefleri,* Azure HPC Önbelleği örneği aracılığıyla erişilen dosyalar için arka uç depolama alanıdır. NFS depolama (şirket içi donanım sistemi gibi) ekleyebilir veya verileri Azure Blob'da depolayabilirsiniz.
+*Depolama hedefleri,* Azure HPC Önbelleği aracılığıyla erişilen dosyalar için arka uç depolama alanıdır. NFS depolama (şirket içi donanım sistemi gibi) ekleyebilir veya verileri Azure Blob'da depolayabilirsiniz.
 
 Bir önbellek için en fazla on farklı depolama hedefi tanımlayabilirsiniz. Önbellek, tüm depolama hedeflerini tek bir toplu ad alanında sunar.
 
@@ -35,9 +35,9 @@ Yeni bir Blob depolama hedefinin boş bir Blob kapsayıcısına veya Azure HPC �
 
 Eklemeden önce bu sayfadan yeni bir kapsayıcı oluşturabilirsiniz.
 
-Azure Blob kapsayıcısı tanımlamak için bu bilgileri girin.
-
 ![yeni bir Azure Blob depolama hedefi için bilgilerle doldurulan depolama alanı hedef sayfasının ekran görüntüsü](media/hpc-cache-add-blob.png)
+
+Azure Blob kapsayıcısı tanımlamak için bu bilgileri girin.
 
 * **Depolama hedef adı** - Azure HPC Önbelleğinde bu depolama hedefini tanımlayan bir ad ayarlayın.
 * **Hedef türü** - **Blob**seçin.
@@ -91,7 +91,10 @@ RBAC rollerini eklemek için adımlar:
 
 Bir NFS depolama hedefi, Blob depolama hedefinden daha fazla alana sahiptir. Bu alanlar, depolama dışa nasıl erişeceğini ve verilerini verimli bir şekilde nasıl önbelleceğini belirtir. Ayrıca, NFS depolama hedefi, NFS ana bilgisayarının birden fazla dış agünüş leri varsa birden çok ad alanı yolu oluşturmanıza olanak tanır.
 
-![NFS hedefi tanımlanmış depolama hedef sayfası ekle ekran görüntüsü](media/hpc-cache-add-nfs-target.png)
+![NFS hedefi tanımlanmış depolama hedef sayfası ekle ekran görüntüsü](media/add-nfs-target.png)
+
+> [!NOTE]
+> Bir NFS depolama hedefi oluşturmadan önce, depolama sisteminize Azure HPC Önbelleğinden erişilebildiğinden ve izin gereksinimlerini karşıladığından emin olun. Önbellek depolama sistemine erişemezse depolama hedef oluşturma başarısız olur. Ayrıntılar için [NFS depolama gereksinimlerini](hpc-cache-prereqs.md#nfs-storage-requirements) okuyun ve [NAS yapılandırmasını ve NFS depolama hedef sorunlarını giderin.](troubleshoot-nas.md)
 
 NFS destekli bir depolama hedefi için bu bilgileri sağlayın:
 
@@ -126,7 +129,7 @@ Tamamlandığında, depolama hedefini eklemek için **Tamam'ı** tıklatın.
 ### <a name="choose-a-usage-model"></a>Bir kullanım modeli seçin
 <!-- referenced from GUI - update aka.ms link if you change this heading -->
 
-Bir NFS depolama sistemine işaret eden bir depolama hedefi oluşturduğunuzda, bu hedef için *kullanım modelini* seçmeniz gerekir. Bu model, verilerinizin nasıl önbelleğe alınır belirler.
+Bir NFS depolama sistemine işaret eden bir depolama hedefi oluşturduğunuzda, bu hedef için kullanım modelini seçmeniz gerekir. Bu model, verilerinizin nasıl önbelleğe alınır belirler.
 
 Üç seçenek vardır:
 
@@ -138,7 +141,7 @@ Bir NFS depolama sistemine işaret eden bir depolama hedefi oluşturduğunuzda, 
 
 * **%15'ten fazla yazar** - Bu seçenek hem okuma hem de yazma performansını hızlandırUr. Bu seçeneği kullanırken, tüm istemcilerin arka uç depolama alanını doğrudan monte etmek yerine Azure HPC Önbelleği aracılığıyla dosyalara erişmesi gerekir. Önbelleğe alınan dosyaların arka uçta depolanamayan son değişiklikleri olur.
 
-  Bu kullanım modelinde, önbellekteki dosyalar arka uç depolamadaki dosyalarla karşılaştırılmez. Dosyanın önbelleğe alınmış sürümünün daha geçerli olduğu varsayılır. Önbellekteki değiştirilmiş bir dosya, ek değişiklik olmadan yalnızca bir saat boyunca önbellekte kaldıktan sonra arka uç depolama sistemine yazılır.
+  Bu kullanım modelinde, önbellekteki dosyalar arka uç depolamadaki dosyalarla karşılaştırılmez. Dosyanın önbelleğe alınmış sürümünün daha geçerli olduğu varsayılır. Önbellekteki değiştirilmiş bir dosya, ek bellekte bir saat boyunca ekbellekte kaldıktan sonra arka uç depolama sistemine yazılır.
 
 * **İstemciler önbelleği atlayarak NFS hedefine yazın** - İş akışınızdaki herhangi bir istemci önbelleğe yazmadan verileri doğrudan depolama sistemine yazarsa bu seçeneği belirleyin. İstenilen dosyaların istediği önbelleğe alınır, ancak istemciden gelen dosyalarda yapılan değişiklikler hemen arka uç depolama sistemine aktarılır.
 

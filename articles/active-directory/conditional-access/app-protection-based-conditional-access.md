@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: article
-ms.date: 03/04/2020
+ms.date: 04/02/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol, rosssmi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9859c884f6a1e22a1ac2bd21106ef51ead23fa41
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6b282962cc713487b8ee5113b02b8533a1538fff
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79080074"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631890"
 ---
 # <a name="how-to-require-app-protection-policy-and-an-approved-client-app-for-cloud-app-access-with-conditional-access"></a>Nasıl yapilir: Koşullu Erişim ile bulut uygulamasıerişimi için uygulama koruma ilkesini ve onaylı bir istemci uygulaması na ihtiyaç duyma
 
@@ -59,7 +59,7 @@ Kuruluşların, mobil cihazlarda onaylı bir istemci uygulamasının kullanılma
 1. **Access denetimleri** > altında**Hibe,** aşağıdaki seçenekleri seçin:
    - **Onaylı istemci uygulaması gerektirir**
    - **Uygulama koruma ilkesi (önizleme) gerektirir**
-   - **Seçili denetimlerden birini gerektirir**
+   - **Seçili tüm denetimleri gerektirir**
 1. Ayarlarınızı onaylayın ve Etkinleştir **ilkesini** **A'ya**ayarlayın.
 1. İlkenizin oluşturulması ve etkin olması için **Oluştur'u** seçin.
 
@@ -138,7 +138,7 @@ Android ve iOS için uygulama koruma ilkeleri oluşturma adımları için [uygul
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[Koşullu Erişim Nedir?](overview.md)
+[Koşullu Erişim nedir?](overview.md)
 
 [Koşullu erişim bileşenleri](concept-conditional-access-policies.md)
 

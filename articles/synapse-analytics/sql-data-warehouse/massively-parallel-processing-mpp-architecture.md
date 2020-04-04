@@ -10,21 +10,23 @@ ms.subservice: ''
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: a42ec523bb1f77c48f7382283a52565c9c9273b6
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: e321df3f27defdceab31fe3b425a4169928ba3f6
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80584491"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631946"
 ---
-# <a name="azure-synapse-analytics-formerly-sql-dw-architecture"></a>Azure Synapse Analytics (eski adıyla SQL DW) mimarisi 
+# <a name="azure-synapse-analytics-formerly-sql-dw-architecture"></a>Azure Synapse Analytics (eski adıyla SQL DW) mimarisi
 
 Azure Synapse kurumsal veri ambarı özellikleriyle Büyük Veri analizini bir araya getiren sınırsız bir analiz hizmetidir. Her ölçekte sunucusuz isteğe bağlı veya sağlanmış kaynakları kullanarak, kendi koşullarınızla verileri sorgulama özgürlüğü getirir. Azure Synapse, anında BI ve makine öğrenimi ihtiyaçları için verileri yutmak, hazırlamak, yönetmek ve sunmak için bu iki dünyayı birleşik bir deneyimle bir araya getirir.
 
  Azure Synapse'nin dört bileşeni vardır:
-- Synapse SQL: T-SQL tabanlı analitik 
-    - SQL havuzu (DWU başına ödeme) – Genellikle Kullanılabilir
-    - İsteğe bağlı SQL (işlenen TB başına ödeme) – (Önizleme)
+
+- SQL Analytics: T-SQL tabanlı analitik
+
+  - SQL havuzu (DWU başına ödeme) – Genellikle Kullanılabilir
+  - İsteğe bağlı SQL (işlenen TB başına ödeme) – (Önizleme)
 - Kıvılcım: Derinentegre Apache Spark (Önizleme)
 - Veri Tümleştirmesi: Karma veri tümleştirmesi (Önizleme)
 - Stüdyo: birleşik kullanıcı deneyimi.  (Önizleme)
@@ -37,24 +39,24 @@ Azure Synapse kurumsal veri ambarı özellikleriyle Büyük Veri analizini bir a
 
 ![Synapse SQL mimarisi](./media/massively-parallel-processing-mpp-architecture/massively-parallel-processing-mpp-architecture.png)
 
-Synapse SQL düğüm tabanlı bir mimari kullanır. Uygulamalar, Synapse SQL havuzunun tek giriş noktası olan Bir Denetim düğümüne T-SQL komutlarını bağlar ve sorun. Denetim düğümü, paralel işleme sorgularını en iyi duruma getiren MPP altyapısını çalıştırır ve daha sonra işlerini paralel olarak yapmak için işlemleri İşlem düğümlerine geçirir. 
+SQL Analytics düğüm tabanlı bir mimari kullanır. Uygulamalar, T-SQL komutlarını SQL Analytics'in tek giriş noktası olan Bir Denetim düğümüne bağlar ve sorun. Denetim düğümü, paralel işleme sorgularını en iyi duruma getiren MPP altyapısını çalıştırır ve daha sonra işlerini paralel olarak yapmak için işlemleri İşlem düğümlerine geçirir.
 
-İşlem düğümleri tüm kullanıcı verilerini Azure Depolama’da depolar ve paralel sorgular çalıştırır. Veri Taşıma Hizmeti (DMS), sorguları paralel olarak çalıştırmak ve doğru sonuçlar döndürmek için verileri düğümler arasında taşıyan, sistem düzeyindeki bir dahili hizmettir. 
+İşlem düğümleri tüm kullanıcı verilerini Azure Depolama’da depolar ve paralel sorgular çalıştırır. Veri Taşıma Hizmeti (DMS), sorguları paralel olarak çalıştırmak ve doğru sonuçlar döndürmek için verileri düğümler arasında taşıyan, sistem düzeyindeki bir dahili hizmettir.
 
 Ayrılmış depolama ve işlem ile, Synapse SQL havuzu kullanırken bir olabilir:
 
-* Depolama gereksinimlerinize bakılmaksızın bağımsız boyut hesaplama gücü.
-* Verileri taşımadan, bir SQL havuzu (veri ambarı) içinde bilgi işlem gücünü büyütün veya küçültün.
-* Verileri olduğu gibi bırakıp işlem kapasitesini duraklatır, böylece yalnızca depolama için ödeme yaparsınız.
-* Çalışma saatleri içinde işlem kapasitesini sürdürür.
+- Depolama gereksinimlerinize bakılmaksızın bağımsız boyut hesaplama gücü.
+- Verileri taşımadan, bir SQL havuzu (veri ambarı) içinde bilgi işlem gücünü büyütün veya küçültün.
+- Verileri olduğu gibi bırakıp işlem kapasitesini duraklatır, böylece yalnızca depolama için ödeme yaparsınız.
+- Çalışma saatleri içinde işlem kapasitesini sürdürür.
 
 ### <a name="azure-storage"></a>Azure Storage
 
 Synapse SQL, kullanıcı verilerinizi güvende tutmak için Azure Depolama'dan yararlanır.  Verileriniz Azure Depolama tarafından depolanıp yönetildiği için, depolama tüketiminiz için ayrı bir ücret ödenir. Veriler, sistemin performansını optimize etmek için **dağıtımlara** ayrılmıştır. Tabloyu tanımlarken verileri dağıtmak için hangi parçalama deseni kullanacağınızı seçebilirsiniz. Bu parçalama desenleri desteklenir:
 
-* Karma
-* Hepsini Bir Kez Deneme
-* Çoğaltma
+- Karma
+- Hepsini Bir Kez Deneme
+- Çoğaltma
 
 ### <a name="control-node"></a>Denetim düğümü
 
@@ -68,27 +70,29 @@ Her İşlem düğümünde sistem görünümlerinde görünen bir düğüm kimli�
 
 ### <a name="data-movement-service"></a>Veri Taşıma Hizmeti
 
-Veri Hareketi Hizmeti (DMS), Bilgi İşlem düğümleri arasındaki veri hareketini koordine eden veri aktarım teknolojisidir. Bazı sorgular, paralel sorguların doğru sonuçları döndürmesini sağlamak için veri hareketi gerektirir. Veri hareketi gerektiğinde, DMS doğru verilerin doğru konuma ulaştığından emin olur. 
+Veri Hareketi Hizmeti (DMS), Bilgi İşlem düğümleri arasındaki veri hareketini koordine eden veri aktarım teknolojisidir. Bazı sorgular, paralel sorguların doğru sonuçları döndürmesini sağlamak için veri hareketi gerektirir. Veri hareketi gerektiğinde, DMS doğru verilerin doğru konuma ulaştığından emin olur.
 
 ## <a name="distributions"></a>Dağıtım
 
-Dağıtım, dağıtılmış veriler üzerinde çalışan paralel sorgular için temel depolama ve işleme birimidir. Bir sorgu çalıştırıldığında, çalışma paralel olarak çalışan 60 küçük sorguya bölünür. 
+Dağıtım, dağıtılmış veriler üzerinde çalışan paralel sorgular için temel depolama ve işleme birimidir. SQL Analytics bir sorgu çalıştırdığında, çalışma paralel olarak çalışan 60 küçük sorguya ayrılır.
 
 60 küçük sorgunun her biri veri dağıtımlarından birinde çalışır. Her İşlemci düğümü 60 dağıtımdan birini veya daha fazlasını yönetir. Maksimum işlem kaynağına sahip bir SQL havuzunun Işlem düğümü başına bir dağıtımı vardır. En az işlem kaynaklarına sahip bir SQL havuzu, tek bir işlem düğümündeki tüm dağılımlara sahiptir.  
 
 ## <a name="hash-distributed-tables"></a>Karma dağıtılmış tablolar
 
-Karma dağıtılmış bir tablo, büyük tablolarsa birleştirmeler ve toplamalar için en yüksek sorgu performansını sunabilir. 
+Karma dağıtılmış bir tablo, büyük tablolarsa birleştirmeler ve toplamalar için en yüksek sorgu performansını sunabilir.
+
+Karma dağıtılmış bir tablo, büyük tablolarsa birleştirmeler ve toplamalar için en yüksek sorgu performansını sunabilir.
 
 Verileri karma dağıtılmış bir tabloya parçalamak için, her satırı deterministically bir dağıtıma atamak için karma işlev kullanılır. Tablo tanımında sütunlardan biri dağıtım sütunu olarak atanır. Karma işlevi, her satırı bir dağıtıma atamak için dağıtım sütunundaki değerleri kullanır.
 
-Aşağıdaki diyagram, tam (dağıtılmamış tablonun) karma dağıtılmış tablo olarak nasıl depolandığını göstermektedir. 
+Aşağıdaki diyagram, tam (dağıtılmamış tablonun) karma dağıtılmış tablo olarak nasıl depolandığını göstermektedir.
 
 ![Dağıtılmış tablo](./media/massively-parallel-processing-mpp-architecture/hash-distributed-table.png "Dağıtılmış tablo")  
 
-* Her satır bir dağıtıma aittir.  
-* Deterministik karma algoritmaher satırı bir dağıtıma atar.  
-* Dağıtı başına tablo satırlarının sayısı tabloların farklı boyutlarına göre gösterildiği gibi değişir.
+- Her satır bir dağıtıma aittir.  
+- Deterministik karma algoritmaher satırı bir dağıtıma atar.  
+- Dağıtı başına tablo satırlarının sayısı tabloların farklı boyutlarına göre gösterildiği gibi değişir.
 
 Bir dağıtım sütununun seçimi için fark, veri eğriliği ve sistemde çalışan sorgu türleri gibi performans konuları vardır.
 
@@ -106,8 +110,17 @@ Hepsini bir kez deneme dağıtılmış tablosu, verileri tabloda eşit olarak da
 
 Aşağıdaki diyagram, her bir işlem düğümünde ilk dağıtımda önbelleğe alınmış çoğaltılmış bir tabloyu gösterir.  
 
-![Çoğaltılmış tablo](./media/massively-parallel-processing-mpp-architecture/replicated-table.png "Çoğaltılmış tablo") 
+![Çoğaltılmış tablo](./media/massively-parallel-processing-mpp-architecture/replicated-table.png "Çoğaltılmış tablo")
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Azure Synapse hakkında biraz bilgi edindiğinize göre, hızlı bir şekilde [SQL havuzu oluşturmayı](create-data-warehouse-portal.md) ve [örnek verileri nasıl yükleyin](load-data-from-azure-blob-storage-using-polybase.md)öğrenin. Azure’da yeniyseniz yeni terimlerle karşılaşabileceğinizi için [Azure sözlüğünü](../../azure-glossary-cloud-terminology.md) yararlı bulabilirsiniz. Veya diğer Azure Synapse Kaynaklarından bazılarına bakın.  
+Azure Synapse hakkında biraz bilgi edindiğinize göre, hızlı bir şekilde [SQL havuzu oluşturmayı](create-data-warehouse-portal.md) ve [örnek verileri nasıl yükleyin](load-data-from-azure-blob-storage-using-polybase.md)öğrenin. Azure’da yeniyseniz yeni terimlerle karşılaşabileceğinizi için [Azure sözlüğünü](../../azure-glossary-cloud-terminology.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) yararlı bulabilirsiniz. Veya diğer Azure Synapse Kaynaklarından bazılarına bakın.  
+
+- [Başarı hikayeleri](https://azure.microsoft.com/case-studies/?service=sql-data-warehouse)
+- [Bloglar](https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/)
+- [Özellik istekleri](https://feedback.azure.com/forums/307516-sql-data-warehouse)
+- [Videolar](https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse)
+- [Destek bileti oluşturun](sql-data-warehouse-get-started-create-support-ticket.md)
+- [MSDN forumu](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureSQLDataWarehouse)
+- [Stack Overflow forumu](https://stackoverflow.com/questions/tagged/azure-sqldw)
+- [Twitter](https://twitter.com/hashtag/SQLDW)

@@ -8,16 +8,16 @@ ms.assetid: ef2797d7-d440-4a9a-a648-db32ad137494
 ms.service: active-directory
 ms.topic: reference
 ms.workload: identity
-ms.date: 04/01/2020
+ms.date: 04/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01956c2fee1c15bc86e8d80aa05c70db647bf593
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 60dca30496aa17ad7add00ca4eca914cb58fddd7
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80616873"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80655973"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Sürüm yayın geçmişi
 Azure Etkin Dizin (Azure AD) ekibi, Azure AD Connect'i yeni özellikler ve işlevlerle düzenli olarak güncelleştirir. Tüm eklemeler tüm izleyiciler için geçerli değildir.
@@ -57,7 +57,7 @@ Azure AD Connect'in tüm sürümleri otomatik yükseltme için kullanılamaz. S�
 ### <a name="functional-changes-adsyncautoupgrade"></a>Fonksiyonel değişiklikler ADSyncAutoUpgrade 
 
 - Grup nesneleri için mS-DS-ConsistencyGuid özelliği için destek eklendi. Bu, ad grubu objectID'nin değiştiği , örneğin bir REKLAM sunucusu bir felaketten sonra yeniden oluşturulduğunda, AD'deki gruplar arası grupları ormanlar veya AD'deki gruplar arasında yeniden bağlamanızı sağlar. Daha fazla bilgi için [ormanlar arasında taşıma gruplarına](how-to-connect-migrate-groups.md)bakın.
-- mS-DS-ConsistencyGuid özniteliği otomatik olarak al senkronize gruplara ayarlanır ve bu özelliği etkinleştirmek için hiçbir şey yapmanız gerekmez. 
+- mS-DS-ConsistencyGuid özniteliği otomatik olarak eşitlenen tüm gruplarüzerinde ayarlanır ve bu özelliği etkinleştirmek için hiçbir şey yapmanız gerekmez. 
 - Artık kullanımda olmadığı için Get-ADSyncRunProfile kaldırıldı. 
 - Daha fazla bağlam sağlamak için AD DS bağlayıcı hesabı için Kurumsal Yönetici veya Etki Alanı Yöneticisi hesabı kullanmaya çalışırken gördüğünüz uyarıyı değiştirdiniz. 
 - Eski CSDelete.exe aracı kaldırılır ve yeni Remove-ADSyncCSObject cmdlet ile değiştirilir bağlayıcı alan nesneleri kaldırmak için yeni bir cmdlet eklendi. Remove-ADSyncCSObject cmdlet giriş olarak bir CsObject alır. Bu nesne Get-ADSyncCSObject cmdlet kullanılarak alınabilir.

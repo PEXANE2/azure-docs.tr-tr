@@ -8,12 +8,12 @@ ms.subservice: data-science-vm
 ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
-ms.openlocfilehash: 5c184e7f1dc828c3f9ff8d449d29ab3aaa4d1cf6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 830668a78929a5e6a7e131ade5c62b81e6d725c3
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77525830"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631361"
 ---
 # <a name="reference-ubuntu-linux-data-science-virtual-machine"></a>Referans: Ubuntu (Linux) Veri Bilimi Sanal Makine
 
@@ -239,9 +239,9 @@ VM'de aşağıdaki Azure araçları yüklenir:
 
 ## <a name="azure-machine-learning"></a>Azure Machine Learning
 
-Azure Machine Learning, tahmine dayalı analitik çözümleri oluşturmanıza, dağıtmanıza ve paylaşmanıza olanak tanıyan tam olarak yönetilen bir bulut hizmetidir. Denemelerinizi ve modellerinizi Azure Machine Learning Studio'dan (klasik) oluşturabilirsiniz. [Microsoft Azure Machine Learning'i](https://studio.azureml.net)ziyaret ederek Veri Bilimi Sanal Makine'deki bir web tarayıcısından erişebilirsiniz.
+Azure Machine Learning, tahmine dayalı analitik çözümleri oluşturmanıza, dağıtmanıza ve paylaşmanıza olanak tanıyan tam olarak yönetilen bir bulut hizmetidir. Denemelerinizi ve modellerinizi Azure Machine Learning stüdyosunda oluşturabilirsiniz (önizleme). [Microsoft Azure Machine Learning'i](https://ml.azure.com)ziyaret ederek Veri Bilimi Sanal Makine'deki bir web tarayıcısından erişebilirsiniz.
 
-Azure Machine Learning Studio'da (klasik) oturum imzaladıktan sonra, makine öğrenimi algoritmaları için mantıksal bir akış oluşturmak için bir deneme tuvali kullanabilirsiniz. Ayrıca Azure Machine Learning'de barındırılan ve Azure Machine Learning Studio'daki (klasik) deneylerle sorunsuz bir şekilde çalışabilen bir Jupyter dizüstü bilgisayara da erişebilirsiniz. 
+Azure Machine Learning stüdyosunda oturum imzaladıktan sonra, makine öğrenme algoritmaları için mantıksal bir akış oluşturmak için bir deneme tuvali kullanabilirsiniz. Ayrıca Azure Machine Learning'de barındırılan ve Azure Machine Learning stüdyosundaki denemelerle sorunsuz bir şekilde çalışabilen bir Jupyter dizüstü bilgisayarına da erişebilirsiniz. 
 
 Bir web hizmeti arabirimine sararak oluşturduğunuz makine öğrenimi modellerini operasyonel hale getirin. Makine öğrenimi modellerinin operasyonelleştirilmesi, herhangi bir dilde yazılmış istemcilerin bu modellerden öngörüler çağırmasına olanak tanır. Daha fazla bilgi için [Machine Learning belgelerine](https://azure.microsoft.com/documentation/services/machine-learning/)bakın.
 

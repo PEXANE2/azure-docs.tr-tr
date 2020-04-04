@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: d35c96657f48905f37c9ebe246d81ebb9545cf27
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1392f69bea09996e46ad4c112474f9067ff5a63d
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79283140"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656907"
 ---
 # <a name="lucene-query-syntax-in-azure-cognitive-search"></a>Azure Bilişsel Arama'da Lucene sorgu sözdizimi
 
@@ -161,16 +161,17 @@ Aşağıdaki örnek, farklılıkların ortaya önüne gibi yardımcı olur. Beli
 ##  <a name="regular-expression-search"></a><a name="bkmk_regex"></a>Düzenli ifade araması  
  Normal bir ifade [araması, RegExp sınıfında](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/util/automaton/RegExp.html)belgelenen "/" ileri eğik çizgileri arasındaki içeriği temel alan bir eşleşme bulur.  
 
- Örneğin, "motel" veya "otel" içeren belgeleri `/[mh]otel/`bulmak için, belirtin.  Normal ifade aramaları tek sözcüklerle eşleşir.   
+ Örneğin, "motel" veya "otel" içeren belgeleri `/[mh]otel/`bulmak için, belirtin. Normal ifade aramaları tek sözcüklerle eşleşir.
 
 ##  <a name="wildcard-search"></a><a name="bkmk_wildcard"></a>Joker karakter arama  
- Birden çok (*) veya tek (?) karakter joker karakter aramaları için genel olarak tanınan sözdizimini kullanabilirsiniz. Lucene sorgu arayıcının bu sembollerin bir tümcecikle değil, tek bir terimle kullanımını desteklediğini unutmayın.  
+ Birden çok (*) veya tek (?) karakter joker karakter aramaları için genel olarak tanınan sözdizimini kullanabilirsiniz. Lucene sorgu arayıcının bu sembollerin bir tümcecikle değil, tek bir terimle kullanımını desteklediğini unutmayın.
 
- Örneğin, "not" veya "not defteri" öneki olan sözcükleri içeren belgeleri bulmak için "not*" belirtin.  
+Önek arama da yıldız (`*`) karakterini kullanır. Örneğin, "not defteri" veya "not defteri" döndürür `search=note*` bir sorgu ifadesi. Önek araması için tam Lucene sözdizimi gerekli değildir. Basit sözdizimi bu senaryoyu destekler.
+
+Soneki arama, `*` `?` nerede veya dize önce, tam Lucene sözdizimi ve düzenli bir ifade gerektirir (bir * veya kullanamazsınız ? bir aramanın ilk karakteri olarak sembol). "Alfanümerik" terimi göz önüne alındığında,`search=/.*numeric.*/`bir sorgu ifadesi ( ) eşleşmeyi bulur.
 
 > [!NOTE]  
->  Bir * veya kullanamazsınız? bir aramanın ilk karakteri olarak sembol.  
->  Joker karakter arama sorgularında metin çözümlemesi yapılmaz. Sorgu zamanında joker karakter sorgu terimleri arama dizinindeki çözümlenmiş terimlerle karşılaştırılır ve genişletilir.
+> Sorgu ayrıştırma sırasında, önek, sonek, joker karakter veya normal ifadeler olarak formüle edilen sorgular, [sözlü çözümlemesi](search-lucene-query-architecture.md#stage-2-lexical-analysis)atlayarak sorgu ağacına olduğu gibi aktarılır. Eşleşmeler yalnızca dizin, sorgunuzun belirttiği biçimdeki dizeleri içeriyorsa bulunur. Çoğu durumda, kısmi terim ve desen eşleştirme başarılı olacak şekilde dize bütünlüğünü koruyan dizinleme sırasında alternatif bir çözümleyici gerekir. Daha fazla bilgi için Azure [Bilişsel Arama sorgularında Kısmi süreli arama'ya](search-query-partial-matching.md)bakın.
 
 ## <a name="see-also"></a>Ayrıca bkz.  
 

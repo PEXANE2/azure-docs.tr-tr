@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/22/2017
-ms.openlocfilehash: 110a684cf6ad21c13411d3bc2ada84750744f00e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5e0dcd478c6eb6696a0e07d35d4dccddac68ac1c
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77191401"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656228"
 ---
 # <a name="increase-security-for-calls-to-custom-apis-from-azure-logic-apps"></a>Azure Logic Apps'tan özel API'lere yapılan aramalar için güvenliği artırın
 
@@ -179,7 +179,7 @@ Bölüm 1'deki adımları da takip edebilirsiniz, ancak web uygulamanızı veya 
 
 Boş bir web uygulamasını ve bir mantık uygulamasını Azure Active Directory kimlik doğrulaması ile otomatik olarak dağıtmak için [şablonun tamamını buradan görüntüleyin](https://github.com/Azure/azure-quickstart-templates/tree/master/201-logic-app-custom-api/azuredeploy.json)veya burada **Azure'a Dağıt'ı** tıklatın:
 
-[![Azure'a Dağıt](media/logic-apps-custom-api-authentication/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-logic-app-custom-api%2Fazuredeploy.json)
+[![Azure’a dağıtma](media/logic-apps-custom-api-authentication/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-logic-app-custom-api%2Fazuredeploy.json)
 
 #### <a name="part-3-populate-the-authorization-section-in-your-logic-app"></a>Bölüm 3: Mantık uygulamanızda Yetkilendirme bölümünü doldurma
 
@@ -250,7 +250,7 @@ Mantık uygulamanızdan gelen istekleri web uygulamanıza veya API uygulamanıza
 
 | Özellik | Gerekli | Açıklama |
 | -------- | -------- | ----------- |
-| `type` | Evet | Kimlik doğrulama türü. SSL istemci sertifikaları için değer `ClientCertificate`. |
+| `type` | Evet | Kimlik doğrulama türü. TLS/SSL istemci sertifikaları için değer `ClientCertificate`. |
 | `password` | Hayır | İstemci sertifikasına (PFX dosyası) erişmek için parola |
 | `pfx` | Evet | İstemci sertifikasının temel 64 kodlanmış içeriği (PFX dosyası) |
 ||||

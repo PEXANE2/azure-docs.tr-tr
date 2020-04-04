@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: dapine
-ms.openlocfilehash: d7ce77404359b32effcc7a5da3f9429e9fdf7005
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 5f9ad827fa947e645f7eb4850f90a73c61a45cd3
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80618570"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637116"
 ---
 # <a name="azure-cognitive-services-support-and-feedback-options"></a>Azure Bilişsel Hizmetler desteği ve geri bildirim seçenekleri
 
@@ -30,7 +30,7 @@ Azure Bilişsel Hizmetleri'nin işlevselliğini keşfetmeye yeni mi başlıyorsu
 
 İster bulut yolculuğunuza yeni başlayan bir geliştirici olun, ister iş açısından kritik, stratejik uygulamalar dağıtan büyük bir kuruluş olun, Azure destek seçenekleri yelpazesini keşfedin ve en uygun [planı seçin.](https://azure.microsoft.com/support/plans) Azure müşterileri Azure portalında destek istekleri oluşturabilir ve yönetebilir.
 
-* [Azure portalı](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
+* [Azure portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
 * [ABD hükümeti için Azure portalı](https://portal.azure.us)
 
 ### <a name="search"></a>Arama
@@ -87,6 +87,7 @@ Bilişsel Hizmetler sürüm notları yeni sürümler kullanıma sunuldukça gün
  - [Konuşma Hizmetleri](speech-service/releasenotes.md)
  - [Konuşma Hizmetleri SDK](speech-service/devices-sdk-release-notes.md)
  - [Metin Analizi](text-analytics/whats-new.md)
+ - [Video Indexer](../media-services/video-indexer/release-notes.md)
 
 ### <a name="azure-blog"></a>Azure blogu
 

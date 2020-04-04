@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: 8543894f3f518df6b9b0054973ca1683b82e38f1
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: df80668f5e4a31d6247e9e9806e3de0667fd9036
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80549002"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656005"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>Azure Bilişsel Arama'da arama sonuçlarıyla çalışma
 
@@ -39,7 +39,7 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2019-05-06
 > [!NOTE]
 > Resim dosyalarını ürün fotoğrafı veya logo gibi bir sonuca eklemek istiyorsanız, bunları Azure Bilişsel Arama'nın dışında saklayın, ancak arama belgesindeki resim URL'sine başvurmak için dizininize bir alan ekleyin. Sonuçlarda görüntüleri destekleyen örnek dizinler **emlak-örnek-us** demo, bu [quickstart](search-create-app-portal.md)özellikli ve [New York City Jobs demo uygulaması](https://aka.ms/azjobsdemo)içerir.
 
-## <a name="results-returned"></a>Döndürülen sonuçlar
+## <a name="paging-results"></a>Disk belleği sonuçları
 
 Varsayılan olarak, arama motoru, sorgu tam metin arama ysa veya tam eşleme sorguları için rasgele bir sırada arama puanına göre belirlendiği gibi ilk 50 eşleşmeye kadar geri döner.
 
@@ -74,19 +74,19 @@ Belge 2'nin iki kez getirili olduğuna dikkat edin. Bunun nedeni, yeni belge 5'i
 
 ## <a name="ordering-results"></a>Sonuçları sıralama
 
-Tam metin arama sorguları için sonuçlar, bir belgedeki terim sıklığı ve yakınlığına göre hesaplanan bir arama puanına göre otomatik olarak sıralanır ve daha yüksek puanlar bir arama teriminde daha fazla veya daha güçlü eşleşmelere sahip belgelere giderek sıralanır. Arama puanları, aynı sonuç kümesindeki diğer belgelere göre genel alaka düzeyi duygusunu taşır ve bir sorgudan diğerine tutarlı olması garanti edilmez.
+Tam metin arama sorguları için sonuçlar, bir belgedeki terim sıklığı ve yakınlığına göre hesaplanan bir arama puanına göre otomatik olarak sıralanır ve daha yüksek puanlar bir arama teriminde daha fazla veya daha güçlü eşleşmelere sahip belgelere giderek sıralanır. 
 
-Sorgularla çalışırken, sıralı sonuçlarda küçük tutarsızlıklar fark edebilirsiniz. Bunun neden oluşabileceğinin çeşitli açıklamaları vardır.
+Arama puanları, aynı sonuç kümesindeki diğer belgelerle karşılaştırıldığında eşleşmenin gücünü yansıtan genel alaka düzeyi duygusunu taşır. Puanlar her zaman bir sorgudan diğerine tutarlı değildir, bu nedenle sorgularla çalışırken, arama belgelerinin nasıl sıralandırılına İlişkin küçük tutarsızlıklar fark edebilirsiniz. Bunun neden oluşabileceğinin çeşitli açıklamaları vardır.
 
-| Koşul | Açıklama |
+| Nedeni | Açıklama |
 |-----------|-------------|
-| Veri volatilitesi | Belgeleri ekledikçe, değiştirdiğinizde veya sildiğinizde dizinin içeriği değişir. Dizin güncelleştirmeleri zaman içinde işlendikçe dönem frekansları değişir ve eşleşen belgelerin arama puanlarını etkiler. |
-| Yürütme konumunu sorgula | Birden çok yineleme kullanan hizmetler için sorgular her yinelemeye paralel olarak verilir. Arama puanını hesaplamak için kullanılan dizin istatistikleri, yineleme başına hesaplanır ve sonuçlar sorgu yanıtında birleştirilir ve sıralanır. Yinelemeler çoğunlukla birbirlerinin aynalarıdır, ancak durumdaki küçük farklılıklar nedeniyle istatistikler farklılık gösterir. Örneğin, bir yineleme, istatistiklerine katkıda bulunan ve diğer yinelemelerden birleştirilen belgeleri silmiş olabilir. Genellikle, çoğaltma başına istatistikteki farklılıklar daha küçük dizinlerde daha belirgindir. |
-| Aynı arama puanları arasında bir kravat kırma | Arama belgeleri aynı puanlara sahip olduğunda, sıralı sonuçlardaki tutarsızlıklar da oluşabilir. Bu durumda, aynı sorguyu yeniden çalıştırdığınızda, önce hangi belgenin görüneceğinin garantisi yoktur. |
+| Veri volatilitesi | Dizin içeriği, belgeleri ekledikçe, değiştirdikçe veya silerken değişir. Dizin güncelleştirmeleri zaman içinde işlendikçe dönem frekansları değişir ve eşleşen belgelerin arama puanlarını etkiler. |
+| Birden çok yineleme | Birden çok yineleme kullanan hizmetler için sorgular her yinelemeye paralel olarak verilir. Arama puanını hesaplamak için kullanılan dizin istatistikleri, yineleme başına hesaplanır ve sonuçlar sorgu yanıtında birleştirilir ve sıralanır. Yinelemeler çoğunlukla birbirlerinin aynalarıdır, ancak durumdaki küçük farklılıklar nedeniyle istatistikler farklılık gösterir. Örneğin, bir yineleme, istatistiklerine katkıda bulunan ve diğer yinelemelerden birleştirilen belgeleri silmiş olabilir. Genellikle, çoğaltma başına istatistikteki farklılıklar daha küçük dizinlerde daha belirgindir. |
+| Aynı skorlar | Birden çok belge aynı puana sahipse, bunlardan herhangi biri önce görünebilir.  |
 
 ### <a name="consistent-ordering"></a>Tutarlı sıralama
 
-Arama puanlamasındaki esneklik göz önüne alındığında, sonuç emirlerinde tutarlılık bir uygulama gereksinimiyse diğer seçenekleri de keşfetmek isteyebilirsiniz. En kolay yaklaşım, derecelendirme veya tarih gibi bir alan değerine göre sıralamadır. Derecelendirme veya tarih gibi belirli bir alana göre sıralamak istediğiniz senaryolar için, Sıralanabilir olarak dizine eklenmiş herhangi bir alana uygulanabilecek bir [ `$orderby` ifadeyi](query-odata-filter-orderby-syntax.md)açıkça **tanımlayabilirsiniz.**
+Sonuç sıralamasındaki esneklik göz önüne alındığında, tutarlılık bir uygulama gereksinimiyse diğer seçenekleri de keşfetmek isteyebilirsiniz. En kolay yaklaşım, derecelendirme veya tarih gibi bir alan değerine göre sıralamadır. Derecelendirme veya tarih gibi belirli bir alana göre sıralamak istediğiniz senaryolar için, Sıralanabilir olarak dizine eklenmiş herhangi bir alana uygulanabilecek bir [ `$orderby` ifadeyi](query-odata-filter-orderby-syntax.md)açıkça **tanımlayabilirsiniz.**
 
 Başka bir seçenek özel bir [puanlama profili](index-add-scoring-profiles.md)kullanıyor. Puanlama profilleri, belirli alanlarda bulunan eşleşmeleri artırma olanağıyla, arama sonuçlarındaki öğelerin sıralaması üzerinde daha fazla denetim sağlar. Ek puanlama mantığı, her belgenin arama puanları birbirinden daha uzak olduğundan, yinelemeler arasındaki küçük farklılıkları geçersiz kılmaya yardımcı olabilir. Bu yaklaşım için [sıralama algoritmasını](index-ranking-similarity.md) öneririz.
 

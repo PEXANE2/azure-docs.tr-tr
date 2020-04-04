@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/04/2020
-ms.openlocfilehash: cc349e5851627ee830196982509f91a83198dfe0
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 4fc4960eb3af8a3d3c9902c9b24505bb5610b709
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80349590"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80657168"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Azure Logic Apps'ta güvenli erişim ve veri
 
@@ -27,7 +27,7 @@ Azure Logic Apps'taki verileri denetlemek ve verileri korumak için şu alanlard
 
 ## <a name="access-to-request-based-triggers"></a>İstek tabanlı tetikleyicilere erişim
 
-Mantık uygulamanız, [Istek](../connectors/connectors-native-reqres.md) veya [Webhook](../connectors/connectors-native-webhook.md) tetikleyicisi gibi gelen çağrıları veya istekleri alan istek tabanlı bir tetikleyici kullanıyorsa, erişimi yalnızca yetkili istemcilerin mantık uygulamanızı arayabilmeleri için sınırlandırabilirsiniz. Bir mantık uygulaması tarafından alınan tüm istekler, Güvenli Soket katmanı (SSL) protokolü ile şifrelenir ve güvenli hale alınır.
+Mantık uygulamanız, [Istek](../connectors/connectors-native-reqres.md) veya [Webhook](../connectors/connectors-native-webhook.md) tetikleyicisi gibi gelen çağrıları veya istekleri alan istek tabanlı bir tetikleyici kullanıyorsa, erişimi yalnızca yetkili istemcilerin mantık uygulamanızı arayabilmeleri için sınırlandırabilirsiniz. Bir mantık uygulaması tarafından alınan tüm istekler, daha önce Güvenli Soketkatmanı (SSL) protokolü olarak bilinen Transport Layer Security (TLS) ile şifrelenir ve güvenli hale alınır.
 
 Bu tetikleyici türüne erişimi güvenli hale almanıza yardımcı olabilecek seçenekler şunlardır:
 
@@ -624,7 +624,7 @@ HTTP ve HTTPS uç noktaları çeşitli kimlik doğrulama türlerini destekler. G
 
 | Özellik (tasarımcı) | Emlak (JSON) | Gerekli | Değer | Açıklama |
 |---------------------|-----------------|----------|-------|-------------|
-| **Kimlik doğrulaması** | `type` | Evet | Temel | Kullanılacak kimlik doğrulama türü |
+| **Kimlik Doğrulaması** | `type` | Evet | Temel | Kullanılacak kimlik doğrulama türü |
 | **Username** | `username` | Evet | <*kullanıcı adı*>| Hedef hizmet bitiş noktasına erişimin doğruluğunu doğrulamak için kullanıcı adı |
 | **Parola** | `password` | Evet | <*Parola*> | Hedef hizmet bitiş noktasına erişim kimlik doğrulaması için parola |
 ||||||
@@ -655,7 +655,7 @@ HTTP ve HTTPS uç noktaları çeşitli kimlik doğrulama türlerini destekler. G
 
 | Özellik (tasarımcı) | Emlak (JSON) | Gerekli | Değer | Açıklama |
 |---------------------|-----------------|----------|-------|-------------|
-| **Kimlik doğrulaması** | `type` | Evet | **Müşteri Sertifikası** <br>or <br>`ClientCertificate` | Güvenli Soketkatmanı (SSL) istemci sertifikaları için kullanılacak kimlik doğrulama türü. Kendi imzalı sertifikalar desteklenirken, SSL için kendi imzalı sertifikalar desteklenmez. |
+| **Kimlik Doğrulaması** | `type` | Evet | **Müşteri Sertifikası** <br>or <br>`ClientCertificate` | TLS/SSL istemci sertifikaları için kullanılacak kimlik doğrulama türü. Kendi imzalı sertifikalar desteklenirken, TLS/SSL için kendi imzalı sertifikalar desteklenmez. |
 | **Pfx** | `pfx` | Evet | <*kodlanmış-pfx-dosya-içerik*> | Kişisel Bilgi Alışverişi (PFX) dosyasından temel 64 kodlanmış içerik <p><p>PFX dosyasını base64 kodlanmış biçime dönüştürmek için aşağıdaki adımları izleyerek PowerShell'i kullanabilirsiniz: <p>1. Sertifika içeriğini bir değişkene kaydedin: <p>   `$pfx_cert = get-content 'c:\certificate.pfx' -Encoding Byte` <p>2. İşlevi kullanarak sertifika `ToBase64String()` içeriğini dönüştürün ve bu içeriği bir metin dosyasına kaydedin: <p>   `[System.Convert]::ToBase64String($pfx_cert) | Out-File 'pfx-encoded-bytes.txt'` |
 | **Parola** | `password`| Hayır | <*pfx dosyası için şifre*> | PFX dosyasına erişmek için parola |
 |||||
@@ -684,7 +684,7 @@ HTTP ve HTTPS uç noktaları çeşitli kimlik doğrulama türlerini destekler. G
 * [Azure API Yönetimi'nde istemci sertifikası kimlik doğrulamasını kullanarak arka uç hizmetlerinin güvenliğini artırın](../api-management/api-management-howto-mutual-certificates.md)
 * [İstemci sertifikalarını kullanarak RESTfuL hizmetinizin güvenliğini artırın](../active-directory-b2c/secure-rest-api.md)
 * [Uygulama kimlik doğrulaması için sertifika kimlik bilgileri](../active-directory/develop/active-directory-certificate-credentials.md)
-* [Azure Uygulama Hizmeti'nde uygulama kodunuzda bir SSL sertifikası kullanma](../app-service/configure-ssl-certificate-in-code.md)
+* [Azure Uygulama Hizmeti'nde kodunuzda TLS/SSL sertifikası kullanma](../app-service/configure-ssl-certificate-in-code.md)
 
 <a name="azure-active-directory-oauth-authentication"></a>
 
@@ -694,7 +694,7 @@ Active [Directory OAuth](../active-directory/develop/about-microsoft-identity-pl
 
 | Özellik (tasarımcı) | Emlak (JSON) | Gerekli | Değer | Açıklama |
 |---------------------|-----------------|----------|-------|-------------|
-| **Kimlik doğrulaması** | `type` | Evet | **Aktif Dizin OAuth** <br>or <br>`ActiveDirectoryOAuth` | Kullanılacak kimlik doğrulama türü. Mantık Uygulamaları şu anda [OAuth 2.0 protokolünü](../active-directory/develop/v2-overview.md)takip etmektedir. |
+| **Kimlik Doğrulaması** | `type` | Evet | **Aktif Dizin OAuth** <br>or <br>`ActiveDirectoryOAuth` | Kullanılacak kimlik doğrulama türü. Mantık Uygulamaları şu anda [OAuth 2.0 protokolünü](../active-directory/develop/v2-overview.md)takip etmektedir. |
 | **Yetkili** | `authority` | Hayır | <*Yetki için URL-belirteç veren*> | Kimlik doğrulama belirteci sağlayan yetkili nin URL'si. Varsayılan olarak, bu `https://login.windows.net`değer . |
 | **Kiracı** | `tenant` | Evet | <*kiracı kimliği*> | Azure AD kiracısının kiracı kimliği |
 | **Hedef kitle** | `audience` | Evet | <*kaynak-yetkilendirme*> | Yetkilendirme için kullanmak istediğiniz kaynak, örneğin,`https://management.core.windows.net/` |
@@ -748,7 +748,7 @@ Ham kimlik doğrulamasını destekleyen tetikleyici veya eylemde şu özellik de
 
 | Özellik (tasarımcı) | Emlak (JSON) | Gerekli | Değer | Açıklama |
 |---------------------|-----------------|----------|-------|-------------|
-| **Kimlik doğrulaması** | `type` | Evet | Ham | Kullanılacak kimlik doğrulama türü |
+| **Kimlik Doğrulaması** | `type` | Evet | Ham | Kullanılacak kimlik doğrulama türü |
 | **Değer** | `value` | Evet | <*yetkilendirme-üstbilgi-değer*> | Kimlik doğrulama için kullanılacak yetkilendirme üstbilgi değeri |
 ||||||
 
@@ -783,7 +783,7 @@ Yönetilen [Kimlik](../active-directory/managed-identities-azure-resources/overv
 
    | Özellik (tasarımcı) | Emlak (JSON) | Gerekli | Değer | Açıklama |
    |---------------------|-----------------|----------|-------|-------------|
-   | **Kimlik doğrulaması** | `type` | Evet | **Yönetilen Kimlik** <br>or <br>`ManagedServiceIdentity` | Kullanılacak kimlik doğrulama türü |
+   | **Kimlik Doğrulaması** | `type` | Evet | **Yönetilen Kimlik** <br>or <br>`ManagedServiceIdentity` | Kullanılacak kimlik doğrulama türü |
    | **Yönetilen Kimlik** | `identity` | Evet | * **Yönetilen Kimlik Atanan Sistem** <br>or <br>`SystemAssigned` <p><p>* <*kullanıcı tarafından atanan-kimlik-adı*> | Kullanılacak yönetilen kimlik |
    | **Hedef kitle** | `audience` | Evet | <*hedef-kaynak-ID*> | Erişmek istediğiniz hedef kaynağın kaynak kimliği. <p>Örneğin, `https://storage.azure.com/` kimlik doğrulama için erişim belirteçleri tüm depolama hesapları için geçerli kılar. Ancak, belirli bir depolama hesabı gibi `https://fabrikamstorageaccount.blob.core.windows.net` bir kök hizmet URL'si de belirtebilirsiniz. <p>**Not**: **Hedef Kitle** özelliği bazı tetikleyicilerde veya eylemlerde gizlenmiş olabilir. Bu özelliği görünür hale getirmek için tetikleyici veya eylemde **yeni parametre** ekle listesini açın ve **Hedef Kitle'yi**seçin. <p><p>**Önemli**: Bu hedef kaynak kimliğinin, gerekli sondaki kesikler de dahil olmak üzere Azure AD'nin beklediği değerle *tam olarak eşleştiğinden* emin olun. Bu nedenle, tüm Azure Blob Depolama hesaplarının `https://storage.azure.com/` kaynak kimliği, sondalı bir kesik gerektirir. Ancak, belirli bir depolama hesabının kaynak kimliği, sondalı bir kesik gerektirmez. Bu kaynak adlarını bulmak için [Azure AD'yi destekleyen Azure hizmetlerine](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)bakın. |
    |||||

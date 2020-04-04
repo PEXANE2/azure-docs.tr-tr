@@ -3,12 +3,12 @@ title: Azure İşlevleri için uygulama ayarları başvurusu
 description: Azure İşlevleri uygulama ayarları veya ortam değişkenleri için başvuru belgeleri.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 3853ccbfd492bfaf4a82d62e6d31ab938285ee2e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e2d168d8828d17e13f875e3b2555c7db0d4ba32d
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79277836"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656797"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure İşlevleri için uygulama ayarları başvurusu
 
@@ -20,11 +20,19 @@ Bir işlev uygulamasındaki uygulama ayarları, o işlev uygulamasının tüm i�
 
 ## <a name="appinsights_instrumentationkey"></a>APPINSIGHTS_INSTRUMENTATIONKEY
 
-Application Insights kullanıyorsanız, Application Insights enstrümantasyon anahtarı. Bkz. [Azure İşlerini İzle](functions-monitoring.md).
+Uygulama Öngörüleri için enstrümantasyon anahtarı. Sadece birini `APPINSIGHTS_INSTRUMENTATIONKEY` kullanın `APPLICATIONINSIGHTS_CONNECTIONSTRING`ya da . Daha fazla bilgi için [bkz.](functions-monitoring.md) 
 
 |Anahtar|Örnek değer|
 |---|------------|
-|APPINSIGHTS_INSTRUMENTATIONKEY|5dbdd5e9-af77-484b-9032-64f83bb83bb|
+|APPINSIGHTS_INSTRUMENTATIONKEY|555555555-af77-484b-9032-64f83bb83bb|
+
+## <a name="applicationinsights_connectionstring"></a>APPLICATIONINSIGHTS_CONNECTIONSTRING
+
+Application Insights için bağlantı dizesi. İşlev `APPINSIGHTS_INSTRUMENTATIONKEY` uygulamanızın bağlantı dizesini kullanarak desteklenen ek özelleştirmeleri gerektirmesi yerine kullanın. `APPLICATIONINSIGHTS_CONNECTIONSTRING` Daha fazla bilgi için [Bağlantı dizeleri'ne](../azure-monitor/app/sdk-connection-string.md)bakın. 
+
+|Anahtar|Örnek değer|
+|---|------------|
+|APPLICATIONINSIGHTS_CONNECTIONSTRING|InstrumentationKey=[key];IngestionEndpoint=[url]; LiveEndpoint=[url]; ProfilerEndpoint=[url]; SnapshotEndpoint=[url];|
 
 ## <a name="azure_functions_environment"></a>AZURE_FUNCTIONS_ENVIRONMENT
 

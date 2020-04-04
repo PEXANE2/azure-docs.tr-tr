@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 01/10/2020
 ms.author: vlvinogr
 ms.custom: include file
-ms.openlocfilehash: 2d4c8c2c831bd6ef16f60c34a6353f4a742798f7
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 5608683578a796ae0fffff7544a749043e8698fd
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "76159673"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656197"
 ---
 | Kaynak | Sınır |
 | ---------------------------------------------------------------------- | -------------------------- |
@@ -38,7 +38,7 @@ ms.locfileid: "76159673"
 <sup>2.000</sup> Birim önbellek boyutu başına fiyatlandırma katmanına bağlıdır. Fiyatlandırma katmanlarını ve ölçeklendirme sınırlarını görmek için [API Yönetimi fiyatlandırmasına](https://azure.microsoft.com/pricing/details/api-management/)bakın.<br/>
 <sup>3.2.2</sup> Bağlantılar, arka uç tarafından açıkça kapatılmadığı sürece bir araya getirilir ve yeniden kullanılır.<br/>
 <sup>4.2.2</sup> Bu sınır, Temel, Standart ve Premium katmanların birimi başına dır. Geliştirici katmanı 1.024 ile sınırlıdır. Bu sınır Tüketim katmanı için geçerli değildir.<br/>
-<sup>5.000</sup> Bu sınır Temel, Standart ve Premium katmanlar için geçerlidir. Tüketim katmanında, ilke belge boyutu 4 KiB ile sınırlıdır.<br/>
+<sup>5.000</sup> Bu sınır Temel, Standart ve Premium katmanlar için geçerlidir. Tüketim katmanında, ilke belge boyutu 16 KiB ile sınırlıdır.<br/>
 <sup>6.000</sup> Bu kaynak yalnızca Premium katmanında kullanılabilir.<br/>
 <sup>7.000</sup> Bu kaynak yalnızca Tüketim katmanı için geçerlidir.<br/>
 <sup>8.000</sup> Yalnızca Tüketim katmanı için geçerlidir. 2048'e kadar bayt uzun sorgu dizesi içerir.<br/>

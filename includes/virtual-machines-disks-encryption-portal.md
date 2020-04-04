@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 03/11/2020
+ms.date: 03/23/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 6077db0a09b09f7e4bfb859902da53b173845e55
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: b8073240bdda38757a5e4feee66c9f54746966c4
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80520752"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632067"
 ---
 ### <a name="portal"></a>Portal
 
@@ -21,7 +21,7 @@ Diskleriniz için müşteri tarafından yönetilen anahtarları ayarlamak, bunu 
 
 #### <a name="setting-up-your-azure-key-vault"></a>Azure Anahtar Kasanızı Ayarlama
 
-1. [Azure portalında](https://portal.azure.com/) oturum açın ve Key Vault'u arayın
+1. [Azure portalında](https://portal.azure.com/)oturum açın.
 1. **Anahtar Kasalarını**arayın ve seçin.
 
     [![sse-key-vault-portal-search.png](media/virtual-machines-disk-encryption-portal/sse-key-vault-portal-search.png)](media/virtual-machines-disk-encryption-portal/sse-key-vault-portal-search-expanded.png#lightbox)
@@ -30,7 +30,7 @@ Diskleriniz için müşteri tarafından yönetilen anahtarları ayarlamak, bunu 
     > Azure anahtar kasanız, disk şifreleme setiniz, VM'leriniz, disklerinizin ve anlık görüntülerinizin başarılı olması için tüm bunların aynı bölgede ve dağıtım aboneliğinde olması gerekir.
 
 1. Yeni bir Anahtar Kasası oluşturmak için **+Ekle'yi** seçin.
-1. Yeni bir kaynak grubu oluşturma
+1. Yeni bir kaynak grubu oluşturun.
 1. Anahtar kasa adı girin, bir bölge seçin ve bir fiyatlandırma katmanı seçin.
 1. **Gözden Geçir + Oluştur'u**seçin, seçimlerinizi doğrulayın, ardından **Oluştur'u**seçin.
 
@@ -38,7 +38,7 @@ Diskleriniz için müşteri tarafından yönetilen anahtarları ayarlamak, bunu 
 
 1. Anahtar kasanız dağıtımı tamamladıktan sonra, seçin.
 1. **Ayarlar**altında **Tuşları** seçin.
-1. **Oluştur/İçe Al'ı** Seçin
+1. **Oluştur/İçe Aktar'ı**seçin.
 
     ![Key Vault kaynak ayarları bölmesinin ekran görüntüsü. Ayarlar içinde oluşturma/alma düğmesini gösterir.](media/virtual-machines-disk-encryption-portal/sse-key-vault-generate-settings.png)
 
@@ -49,15 +49,8 @@ Diskleriniz için müşteri tarafından yönetilen anahtarları ayarlamak, bunu 
 
 #### <a name="setting-up-your-disk-encryption-set"></a>Disk şifreleme ayarınızı ayarlama
 
-Disk şifreleme kümeleri oluşturmak ve yapılandırmak için https://aka.ms/diskencryptionsetsaşağıdaki bağlantıyı kullanmanız gerekir: . Microsoft Azure Kamu bölgelerindeyseniz, bunun yerine şu bağlantıyı [https://aka.ms/diskencryptionsetsff](https://aka.ms/diskencryptionsetsff)kullanmanız gerekir: . Disk şifreleme kümesi oluşturma, genel Azure portalında henüz kullanıma sunulmadı.
-
-1. Bölgenize uygun disk şifreleme ayarlarını açın:
-
-    Genel bölgeler:[https://aka.ms/diskencryptionsets](https://aka.ms/diskencryptionsets)
-
-    Azure Devlet bölgeleri:[https://aka.ms/diskencryptionsetsff](https://aka.ms/diskencryptionsetsff)
-    
-1. **+Ekle'yi**seçin.
+1. Disk **Şifreleme Kümelerini** arayın ve seçin.
+1. Disk **Şifreleme Setleri'nde** bıçak seçin **+Ekle**.
 
     ![Disk şifreleme portalı ana ekranının ekran görüntüsü. Ekle düğmesini vurgulama](media/virtual-machines-disk-encryption-portal/sse-create-disk-encryption-set.png)
 
@@ -82,12 +75,6 @@ Disk şifreleme kümeleri oluşturmak ve yapılandırmak için https://aka.ms/di
 Artık anahtar kasanızı ve disk şifreleme setinizi oluşturup kurduğunuza göre, şifrelemeyi kullanarak bir VM dağıtabilirsiniz.
 VM dağıtım işlemi standart dağıtım işlemine benzer, tek fark, VM'yi diğer kaynaklarla aynı bölgede dağıtmanız ve müşteri yönetilen bir anahtarı kullanmayı tercih etmenizdir.
 
-1. Bölgenize uygun disk şifreleme ayarlarını açın:
-
-    Genel bölgeler:[https://aka.ms/diskencryptionsets](https://aka.ms/diskencryptionsets)
-
-    Azure Devlet bölgeleri:[https://aka.ms/diskencryptionsetsff](https://aka.ms/diskencryptionsetsff)
-
 1. Sanal **Makineleri** arayın ve VM oluşturmak için **+ Ekle'yi** seçin.
 1. **Temel** sekmesinde, disk şifreleme kümenizle ve Azure Anahtar Kasası ile aynı bölgeyi seçin.
 1. **Temel** sekmesindeki diğer değerleri istediğiniz gibi doldurun.
@@ -102,16 +89,8 @@ VM dağıtım işlemi standart dağıtım işlemine benzer, tek fark, VM'yi diğ
 
 #### <a name="enable-on-an-existing-disk"></a>Varolan bir diskte etkinleştirme
 
-Varolan disklerinizde disk şifrelemeyi yönetmek ve yapılandırmak için https://aka.ms/diskencryptionsetsaşağıdaki bağlantıyı kullanmanız gerekir: . Varolan disklerde müşteri tarafından yönetilen anahtarları etkinleştirmek henüz genel Azure portalında kullanılamıyor.
-
 > [!CAUTION]
 > VM'ye bağlı tüm disklerde disk şifrelemesini etkinleştirmek, VM'yi durdurmanızı gerektirir.
-
-1. Bölgenize uygun disk şifreleme ayarlarını açın:
-
-    Genel bölgeler:[https://aka.ms/diskencryptionsets](https://aka.ms/diskencryptionsets)
-
-    Azure Devlet bölgeleri:[https://aka.ms/diskencryptionsetsff](https://aka.ms/diskencryptionsetsff)
     
 1. Disk şifreleme kümelerinizden biriyle aynı bölgede bulunan bir VM'ye gidin.
 1. VM'yi açın ve **Durdur'u**seçin.

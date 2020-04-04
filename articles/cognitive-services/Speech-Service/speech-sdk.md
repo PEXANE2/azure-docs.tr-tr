@@ -1,126 +1,139 @@
 ---
 title: Konuşma SDK Hakkında - Konuşma hizmeti
 titleSuffix: Azure Cognitive Services
-description: Konuşma Yazılımı Geliştirme Kiti (SDK), uygulamalarınıza Konuşma hizmetinin işlevlerine yerel erişim sağlayarak yazılım geliştirmeyi kolaylaştırır. Bu makalede, Windows, Linux ve Android için SDK hakkında ek ayrıntılar verilmektedir.
+description: Konuşma yazılım geliştirme kiti (SDK), Konuşma hizmeti özelliklerinin çoğunu ortaya çıkararak konuşma özellikli uygulamaların geliştirilmesini kolaylaştırır.
 services: cognitive-services
 author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 04/03/2020
 ms.author: dapine
-ms.openlocfilehash: 984d2dfe07faa22756b4be167aa86a69806b1a84
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a2ff4a94c1b2941f645cd7032ef476d33dffdb00
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78331102"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656616"
 ---
 # <a name="about-the-speech-sdk"></a>Konuşma SDK'sı hakkında
 
-Konuşma Yazılımı Geliştirme Kiti (SDK), uygulamalarınıza Konuşma hizmetinin işlevlerine erişim sağlayarak konuşma özellikli yazılım geliştirmeyi kolaylaştırır. Şu anda, SDK'lar **konuşma-to-metin,** **metin-konuşma,** **konuşma çevirisi,** **niyet tanıma**ve **Bot Framework's Direct Line Konuşma kanalına**erişim sağlar.
-
-Mikrofondan kolayca ses yakalayabilir, bir akıştan okuyabilir veya Speech SDK ile depolamadan ses dosyalarına erişebilirsiniz. Konuşma SDK WAV/PCM 16-bit, 16 kHz/8 kHz, konuşma tanıma için tek kanallı ses destekler. Ek ses biçimleri [konuşma-to-metin REST bitiş noktası](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) veya [toplu transkripsiyon hizmeti](https://docs.microsoft.com/azure/cognitive-services/speech-service/batch-transcription#supported-formats)kullanılarak desteklenir.
-
-Özellikler ve desteklenen platformlar hakkında genel bir genel bakış belge [giriş sayfasında](https://aka.ms/csspeech)bulunabilir.
+Konuşma yazılım geliştirme kiti (SDK), konuşma özellikli uygulamalar geliştirmenizi sağlamak için Konuşma hizmeti yeteneklerinin çoğunu ortaya çıkarır. Konuşma SDK birçok programlama dilleri ve tüm platformlarda mevcuttur.
 
 [!INCLUDE [Speech SDK Platforms](../../../includes/cognitive-services-speech-service-speech-sdk-platforms.md)]
 
-[!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
+## <a name="scenario-capabilities"></a>Senaryo yetenekleri
 
-## <a name="get-the-sdk"></a>SDK'yı alın
+Konuşma SDK Konuşma hizmetibirçok özellikleri ortaya çıkarır, ancak hepsi değil. Konuşma SDK yetenekleri genellikle senaryolar ile ilişkilidir. Speech SDK, yerel aygıtlar, dosyalar, Azure blob depolama alanı ve hatta giriş ve çıkış akışlarını kullanarak hem gerçek zamanlı hem de gerçek zamanlı olmayan senaryolar için idealdir. Konuşma SDK ile bir senaryo elde edilemediğinde, REST API alternatifi arayın.
+
+### <a name="speech-to-text"></a>Konuşmayı metne dönüştürme
+
+[Konuşma-metin](speech-to-text.md) *(konuşma tanıma*olarak da bilinir) ses akışlarını uygulamalarınızın, araçlarınızın veya aygıtlarınızın tüketebileceği veya görüntüleyebileceği metne çevirir. Kullanıcı niyetlerini yazılı konuşmalardan elde etmek ve sesli komutlarla hareket etmek için [Dil Bilgisi (LUIS)](../luis/index.yml) ile metinden metne kullanın. Konuşma girişini tek bir çağrıyla farklı bir dile çevirmek için [Konuşma Çevirisi'ni](speech-translation.md) kullanın. Daha fazla bilgi için [metinden metne temelleri'ne](speech-to-text-basics.md)bakın.
+
+### <a name="text-to-speech"></a>Metin okuma
+
+[Metinden konuşmaya](text-to-speech.md) *(konuşma sentezi*olarak da bilinir) metni insan benzeri sentezlenmiş konuşmaya dönüştürür. Giriş metni ya dize literals veya [Konuşma Sentezi Biçimlendirme Dili (SSML)](speech-synthesis-markup.md)kullanarak. Standart veya sinirsel sesler hakkında daha fazla bilgi için [Metinden konuşmaya dil ve ses desteğine](language-support.md#text-to-speech)bakın.
+
+### <a name="voice-assistants"></a>Ses yardımcıları
+
+Konuşma SDK'sını kullanan sesli asistanlar, geliştiricilerin uygulamaları ve deneyimleri için doğal, insana benzer konuşma arabirimleri oluşturmalarına olanak tanır. Ses asistanı hizmeti, aygıt ve asistan arasında hızlı ve güvenilir etkileşim sağlar. Uygulama, görevin tamamlanması için Bot Framework'ün Doğrudan Satır Konuşması kanalını veya tümleşik Özel Komutlar (Önizleme) hizmetini kullanır. Ayrıca, benzersiz bir ses deneyimi oluşturmak için [Özel Ses Portalı](https://aka.ms/customvoice) kullanılarak sesli asistanlar oluşturulabilir.
+
+#### <a name="keyword-spotting"></a>Anahtar kelime tespit
+
+[Anahtar kelime tespit](speech-devices-sdk-create-kws.md) kavramı Konuşma SDK desteklenir. Anahtar kelime tespit, konuşmada bir anahtar kelimeyi tanımlama eylemidir ve ardından anahtar kelimenin işitilmesi üzerine bir eylem dir. Örneğin, "Hey Cortana" Cortana yardımcısını etkinleştirir.
+
+### <a name="meeting-scenarios"></a>Toplantı senaryoları
+
+Konuşma SDK, ister tek bir cihazdan ister çok cihazlı konuşmadan olsun, toplantı senaryolarını yazıya geçirmek için idealdir.
+
+#### <a name="conversation-transcription"></a>Konuşma Transkripsiyonu
+
+[Konuşma Transkripsiyonu](conversation-transcription.md) gerçek zamanlı (ve eşzamanlı) konuşma tanıma, hoparlör tanımlama ve her konuşmacıya cümle atıfta *(ayrıca ishal*olarak da bilinir) sağlar. Hoparlörleri ayırt etme yeteneğiyle bizzat toplantılar yapmak için idealdir.
+
+#### <a name="multi-device-conversation"></a>Çok cihazlı Konuşma
+
+[Çoklu aygıtlı Konuşma](multi-device-conversation.md)ile, bir konuşmada birden çok aygıtı veya istemciyi bağlayarak konuşma tabanlı veya metin tabanlı iletiler gönderin ve transkripsiyon ve çeviri için kolay destek sağlayın.
+
+### <a name="custom--agent-scenarios"></a>Özel / aracı senaryoları
+
+Konuşma SDK, telefon verilerinin oluşturulduğu çağrı merkezi senaryolarını çevirmek için kullanılabilir.
+
+#### <a name="call-center-transcription"></a>Çağrı merkezi Transkripsiyonu
+
+[Çağrı Merkezi Transkripsiyonu,](call-center-transcription.md) Etkileşimli Sesli Yanıt (IVR) gibi çeşitli sistemlerden gelebilecek büyük hacimli telefon verilerini aktarmak için konuşma-metin için yaygın bir senaryodur. Konuşma hizmetinin en son konuşma tanıma modelleri, verilerin anlaşılmasının zor olduğu durumlarda bile bu telefon verilerini aktarmada başarılı olur.
+
+### <a name="codec-compressed-audio-input"></a>Codec sıkıştırılmış ses girişi
+
+Konuşma SDK programlama dillerinin bir çoğu codec sıkıştırılmış ses giriş akışlarını destekler. Daha fazla bilgi için <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams" target="_blank">sıkıştırılmış ses <span class="docon docon-navigate-external x-hidden-focus"> </span>giriş biçimleri kullanın. </a>
+
+## <a name="rest-api"></a>REST API
+
+Konuşma SDK Konuşma Hizmeti'nin birçok özellik özelliğini kapsarken, bazı senaryolar için REST API'sini kullanmak isteyebilirsiniz. Örnek olarak, uç nokta yönetimi yalnızca REST API ile ortaya çıkarır.
+
+> [!TIP]
+> REST API'sine güvendiğinizde, istemci kitaplıklarını otomatik olarak oluşturmak için Swagger Düzenleyicisi'ni kullanın. Örneğin, Toplu İşlem istemcisi kitaplığı oluşturmak için.
+> 1. Aşağıdaki örnek URL'yi kopyalayın:
+>     ```http
+>     https://westus.cris.ai/docs/v2.0/swagger
+>     ```
+> 1. <a href="https://editor.swagger.io/" target="_blank">Swagger <span class="docon docon-navigate-external x-hidden-focus"></span> Düzenleyicisine</a> Git
+> 1. **Dosya** > **Alma URL'sini** seçin ve URL'yi yapıştırın
+> 1. **İstemciyi Oluştur'u** seçin ve istediğiniz programlama dilini seçin
+
+### <a name="batch-transcription"></a>Toplu iş transkripsiyonu
+
+[Toplu transkripsiyon,](batch-transcription.md) büyük hacimli verilerin eş zamanlı olarak konuşmadan metne transkripsiyonuna olanak tanır. Toplu transkripsiyon sadece REST API mümkündür.
+
+## <a name="customization"></a>Özelleştirme
+
+Konuşma Hizmeti, konuşmadan metne, metinden konuşmaya ve konuşma çevirisinde varsayılan modelleri ile harika işlevsellik sunar. Bazen benzersiz kullanım kılıfınızla daha iyi çalışmak için temel performansı artırmak isteyebilirsiniz. Konuşma Hizmeti, kolaylaştıran ve kendi verilerinize dayalı özel modellerle rekabet avantajı oluşturmanıza olanak tanıyan çeşitli kodsuz özelleştirme araçlarına sahiptir. Bu modeller yalnızca sizin ve kuruluşunuz için kullanılabilir olacaktır.
+
+### <a name="custom-speech-to-text"></a>Özel Konuşma-metin
+
+Benzersiz bir ortamda tanıma ve transkripsiyon için konuşma-metin kullanırken, ortam gürültüsünü veya sektöre özgü kelime dağarcığını gidermek için özel akustik, dil ve telaffuz modelleri oluşturabilir ve eğitebilirsiniz. No-code Özel Konuşma modelleri oluşturma ve yönetimi [Özel Konuşma Portalı](https://aka.ms/customspeech)üzerinden kullanılabilir. Özel Konuşma modeli yayımlandıktan sonra Konuşma SDK tarafından tüketilebilir.
+
+### <a name="custom-text-to-speech"></a>Özel Metinden konuşmaya
+
+Özel metinden konuşmaya, özel ses olarak da bilinir, markanız için tanınabilir, türünün tek bir sesi oluşturmanıza olanak tanıyan çevrimiçi araçlar kümesidir. No-code Özel Ses modelleri oluşturma ve yönetimi [Özel Ses Portalı](https://aka.ms/customvoice)üzerinden kullanılabilir. Özel Ses modeli yayınlandıktan sonra Konuşma SDK tarafından tüketilebilir.
+
+## <a name="get-the-speech-sdk"></a>Konuşma SDK alın
 
 # <a name="windows"></a>[Windows](#tab/windows)
 
-> [!WARNING]
-> Konuşma SDK, Windows 10 veya sonraki sürümleri destekler. Önceki Windows sürümleri **desteklenmez.**
-
-Windows için aşağıdaki dilleri destekliyoruz:
-
-* C# (UWP ve .NET), C++: Konuşma SDK NuGet paketimizin en son sürümüne başvuruyapabilir ve kullanabilirsiniz. Paket, 32 bit ve 64 bit istemci kitaplıkları ve yönetilen (.NET) kitaplıklarını içerir. SDK Visual Studio NuGet, [Microsoft.CognitiveServices.Speech](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech)kullanılarak yüklenebilir.
-
-* Java: Yalnızca Windows x64'ü destekleyen Konuşma SDK Maven paketimizin en son sürümüne başvurup kullanabilirsiniz. Maven projenizde, `https://csspeechstorage.blob.core.windows.net/maven/` bağımlılık olarak ek bir depo `com.microsoft.cognitiveservices.speech:client-sdk:1.8.0` ve başvuru olarak ekleyin.
+[!INCLUDE [Get the Speech SDK](includes/get-speech-sdk-windows.md)]
 
 # <a name="linux"></a>[Linux](#tab/linux)
 
-> [!NOTE]
-> Şu anda sadece Ubuntu 16.04, Ubuntu 18.04, Debian 9, Red Hat Enterprise Linux (RHEL) 8 ve CentOS 8'i aşağıdaki hedef mimarilerde destekliyoruz:
-> - x86 (Debian/Ubuntu), x64, ARM32 (Debian/Ubuntu) ve Arm64 (Debian/Ubuntu) C++ gelişimi için
-> - x64, ARM32 (Debian/Ubuntu) ve JAVA için ARM64 (Debian/Ubuntu)
-> - .NET Çekirdek ve Python için x64
+[!INCLUDE [Get the Speech SDK](includes/get-speech-sdk-linux.md)]
 
-Aşağıdaki kabuk komutlarını çalıştırarak gerekli kitaplıklara sahip olduğundan emin olun:
+# <a name="ios"></a>[iOS](#tab/ios)
 
-Ubuntu üzerinde:
+[!INCLUDE [Get the Speech SDK](includes/get-speech-sdk-ios.md)]
 
-```sh
-sudo apt-get update
-sudo apt-get install libssl1.0.0 libasound2
-```
+# <a name="macos"></a>[Macos](#tab/macos)
 
-Debian 9'da:
-
-```sh
-sudo apt-get update
-sudo apt-get install libssl1.0.2 libasound2
-```
-
-RHEL/CentOS 8'de:
-
-```sh
-sudo yum update
-sudo yum install alsa-lib openssl
-```
-
-> [!NOTE]
-> RHEL/CentOS 8'de [OpenSSL'in Linux için nasıl yapılandırılacağı](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md)yla ilgili talimatları uygulayın.
-
-* C#: Konuşma SDK NuGet paketimizin en son sürümüne başvuruyapabilir ve kullanabilirsiniz. SDK'ya başvurmak için projenize aşağıdaki paket başvurularını ekleyin:
-
-  ```xml
-  <PackageReference Include="Microsoft.CognitiveServices.Speech" Version="1.8.0" />
-  ```
-
-* Java: Konuşma SDK Maven paketimizin en son sürümüne başvuruyapabilir ve kullanabilirsiniz. Maven projenizde, `https://csspeechstorage.blob.core.windows.net/maven/` bağımlılık olarak ek bir depo `com.microsoft.cognitiveservices.speech:client-sdk:1.7.0` ve başvuru olarak ekleyin.
-
-* C++: SDK'yı [.katran paketi](https://aka.ms/csspeech/linuxbinary) olarak indirin ve dosyaları seçtiğiniz bir dizinde boşaltın. Aşağıdaki tabloSDK klasör yapısını gösterir:
-
-  |Yol|Açıklama|
-  |-|-|
-  |`license.md`|Lisans|
-  |`ThirdPartyNotices.md`|Üçüncü taraf bildirimleri|
-  |`include`|C ve C++ için üstbilgi dosyaları|
-  |`lib/x64`|Uygulamanızla bağlantı için yerel x64 kitaplığı|
-  |`lib/x86`|Uygulamanızla bağlantı için yerel x86 kitaplığı|
-
-  Bir uygulama oluşturmak için, gerekli ikilileri (ve kitaplıkları) geliştirme ortamınıza kopyalayın veya taşıyın. Bunları yapı sürecinize gerektiği gibi ekleyin.
+[!INCLUDE [Get the Speech SDK](includes/get-speech-sdk-macos.md)]
 
 # <a name="android"></a>[Android](#tab/android)
 
-Android için Java SDK, gerekli kitaplıkları ve gerekli Android izinlerini içeren bir [AAR (Android Kütüphanesi)](https://developer.android.com/studio/projects/android-library)olarak paketlenmiştir. Maven deposunda paket `https://csspeechstorage.blob.core.windows.net/maven/` `com.microsoft.cognitiveservices.speech:client-sdk:1.7.0`olarak barındırılan.
+[!INCLUDE [Get the Speech SDK](includes/get-speech-sdk-android.md)]
 
-Android Studio projenizdeki paketi tüketmek için aşağıdaki değişiklikleri yapın:
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
-* Proje düzeyinde build.gradle dosyasında, `repository` bölüme aşağıdakileri ekleyin:
+[!INCLUDE [Get the Node.js Speech SDK](includes/get-speech-sdk-nodejs.md)]
 
-  ```gradle
-  maven { url 'https://csspeechstorage.blob.core.windows.net/maven/' }
-  ```
+# <a name="browser"></a>[Tarayıcı](#tab/browser)
 
-* Modül düzeyinde build.gradle dosyasında, `dependencies` bölüme aşağıdakileri ekleyin:
-
-  ```gradle
-  implementation 'com.microsoft.cognitiveservices.speech:client-sdk:1.7.0'
-  ```
-
-Java SDK da Konuşma [Cihazları SDK](speech-devices-sdk.md)parçasıdır.
+[!INCLUDE [Get the Browser Speech SDK](includes/get-speech-sdk-browser.md)]
 
 ---
 
-[!INCLUDE [Get the samples](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
+[!INCLUDE [License notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
+
+[!INCLUDE [Sample source code](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
 * [Konuşma deneme aboneliğinizi alın](https://azure.microsoft.com/try/cognitive-services/)
-* [C'deki konuşmayı nasıl tanıyacağınızı görme #](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)
+* [C'deki konuşmayı nasıl tanıyacağınızı görme #](quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)

@@ -8,15 +8,15 @@ ms.assetid: 1a14637e-b3d0-4fd9-ba7a-576b8df62ff2
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: cc1863ff4200ee4cca94f18e3adfffa7ea42db96
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: b14fed07c9bd9b5fcb6a5489719481902351fc0d
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80475999"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80654881"
 ---
 # <a name="password-and-account-lockout-policies-on-managed-domains"></a>Yönetilen etki alanlarında parola ve hesap kilitleme ilkeleri
 
@@ -45,6 +45,11 @@ Bu makaleyi tamamlamak için aşağıdaki kaynaklara ve ayrıcalıklara ihtiyac�
 ## <a name="default-password-policy-settings"></a>Varsayılan parola ilkesi ayarları
 
 Ayrıntılı parola ilkeleri (FGPPs), bir etki alanında farklı kullanıcılara parola ve hesap kilitleme ilkeleri için belirli kısıtlamalar uygulamanıza izin verir. Örneğin, ayrıcalıklı hesapların güvenliğini sağlamak için normal ayrıcalıklı olmayan hesaplara göre daha sıkı hesap kilitleme ayarları uygulayabilirsiniz. Azure AD DS yönetilen bir etki alanında birden çok FGPP oluşturabilir ve bunları kullanıcılara uygulamak için öncelik sırasını belirtebilirsiniz.
+
+Parola ilkeleri ve Active Directory Administration Center'ı kullanma hakkında daha fazla bilgi için aşağıdaki makalelere bakın:
+
+* [İnce taneli parola ilkeleri hakkında bilgi edinin](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc770394(v=ws.10))
+* [AD Yönetim Merkezi'ni kullanarak ince taneli parola ilkelerini yapılandırma](/windows-server/identity/ad-ds/get-started/adac/introduction-to-active-directory-administrative-center-enhancements--level-100-#fine_grained_pswd_policy_mgmt)
 
 İlkeler, Azure AD DS yönetilen bir etki alanında grup ilişkilendirme yoluyla dağıtılır ve yaptığınız tüm değişiklikler bir sonraki kullanıcı oturum açma sırasında uygulanır. İlkenin değiştirilmesi, zaten kilitlenmiş bir kullanıcı hesabının kilidini açmaz.
 

@@ -16,17 +16,17 @@ ms.workload: identity
 ms.date: 03/05/2020
 ms.author: hahamil
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: d08cb09b343300a667ea821ee75847f1fd9b1c13
-ms.sourcegitcommit: 7581df526837b1484de136cf6ae1560c21bf7e73
+ms.openlocfilehash: 81ade6f02b38a0a4d5ed04c8190b99216638c45d
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80423091"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637843"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application-spa"></a>Oturum açın ve Açısal tek sayfalı bir uygulamadan (SPA) Microsoft Graph API'yi arayın
 
 > [!IMPORTANT]
-> Bu özellik şu anda önizleme sürümündedir. Önizlemeler, [tamamlayıcı kullanım koşullarını][kullanım koşulları]'nı kabul etmeniz koşuluyla kullanıma sunulmuştur. Bu özelliğin bazı yönleri genel kullanıma açılmadan önce değişebilir.
+> Bu özellik şu anda önizleme sürümündedir. Önizlemeler, [ek kullanım koşullarını](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) kabul etmeniz şartıyla kullanımınıza sunulur. Bu özelliğin bazı yönleri genel kullanıma açılmadan önce değişebilir.
 
 Bu kılavuz, açısal tek sayfalı bir uygulamanın (SPA) nasıl
 - Kişisel hesapların yanı sıra iş ve okul hesaplarında oturum açın

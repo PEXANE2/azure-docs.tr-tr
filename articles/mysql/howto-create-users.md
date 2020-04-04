@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: c4e95164badaf0b255f5ee76d0fec7686c2abf8b
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.date: 4/2/2020
+ms.openlocfilehash: 99b614de87c666d1cb1fb8a34eaafadf6fa82849
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80382877"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632558"
 ---
 # <a name="create-users-in-azure-database-for-mysql-server"></a>MySQL sunucusu için Azure Veritabanı'nda kullanıcı oluşturma
 
@@ -19,9 +19,12 @@ Bu makalede, MySQL sunucusu için bir Azure Veritabanı'nda nasıl kullanıcı o
 
 MySQL için Azure Veritabanınızı ilk oluşturduğunuzda, bir sunucu yöneticisi giriş kullanıcı adı ve parola sağladınız. Daha fazla bilgi için [Quickstart'ı](quickstart-create-mysql-server-database-using-azure-portal.md)takip edebilirsiniz. Azure portalından sunucu yönetici giriş kullanıcı adınızı bulabilirsiniz.
 
-Sunucu yöneticisi kullanıcı listelenen sunucunuz için belirli ayrıcalıklar alır: SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, RELOAD, PROCESS, REFERENCES, INDEX, ALTER, SHOW DATABASES, CREATE TEMPORARY TABLES, LOCK TABLOLARI, EXECUTE, REPLICATION SLAVE, REPLICATION İSTEMCI, GÖRÜNÜM OLUŞTUR, GÖRÜNÜMÜ GÖSTER, RUTIN OLUŞTUR, RUTINI DEĞIŞTIRME, KULLANıCı OLUŞTURMA, OLAY, TETIKLEYICI
+Sunucu yöneticisi kullanıcı listelenen sunucunuz için belirli ayrıcalıklar alır: SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, RELOAD, PROCESS, REFERENCES, INDEX, ALTER, SHOW DATABASES, CREATE TEMPORARY TABLES, LOCK TABLES, EXECUTE, REPLICATION SLAVE, REPLICATION CLIENT, CREATE VIEW, SHOW VIEW, CREATE ROUTINE, ALTER ROUTINE, CREATE USER, EVENT, TRIGGER
 
 MySQL sunucusu için Azure Veritabanı oluşturulduktan sonra, ek kullanıcılar oluşturmak ve yöneticierişimi vermek için ilk sunucu yöneticisi kullanıcı hesabını kullanabilirsiniz. Ayrıca, sunucu yöneticisi hesabı tek tek veritabanı şemalarına erişimi olan daha az ayrıcalıklı kullanıcılar oluşturmak için kullanılabilir.
+
+> [!NOTE]
+> SUPER ayrıcalığı ve DBA rolü desteklenmez. Hizmette desteklenmeyenleri anlamak için sınırlamalar makalesindeki [ayrıcalıkları](concepts-limits.md#privilege-support) gözden geçirin.
 
 ## <a name="how-to-create-additional-admin-users-in-azure-database-for-mysql"></a>MySQL için Azure Veritabanı'nda ek yönetici kullanıcıları nasıl oluşturulur?
 

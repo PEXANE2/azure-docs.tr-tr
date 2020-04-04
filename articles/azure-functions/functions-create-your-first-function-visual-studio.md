@@ -1,22 +1,22 @@
 ---
 title: "Quickstart: Visual Studio'u kullanarak Azure'da ilk işlevinizi oluşturun"
-description: Bu hızlı başlangıçta, Visual Studio'yu kullanarak HTTP tarafından tetiklenen bir Azure İşi oluşturmayı ve yayımlamayı öğrenirsiniz.
+description: Bu hızlı başlangıçta, Visual Studio'yu kullanarak bir HTTP tetikleyici Azure İşi oluşturmayı ve yayımlamayı öğrenirsiniz.
 ms.assetid: 82db1177-2295-4e39-bd42-763f6082e796
 ms.topic: quickstart
 ms.date: 03/06/2020
 ms.custom: mvc, devcenter, vs-azure, 23113853-34f2-4f
-ms.openlocfilehash: 13a03ca6820229fc90467236e0c23f236664d73f
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: dadb705e8b756418be40d738aa81b3e77961aead
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80056667"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80657584"
 ---
 # <a name="quickstart-create-your-first-function-in-azure-using-visual-studio"></a>Quickstart: Visual Studio'u kullanarak Azure'da ilk işlevinizi oluşturun
 
 Azure İşlevler, önce bir VM oluşturmanıza veya bir web uygulaması yayımlamak zorunda kalmadan kodunuzu sunucusuz bir ortamda çalıştırmanızı sağlar.
 
-Bu hızlı başlangıçta, Visual Studio 2019'u kullanarak Azure'da yayımladığınızda yerel olarak tetiklenen HTTP tarafından tetiklenen bir "merhaba dünyası" C# işlevi uygulamasını oluşturmayı ve test etmeyi öğrenirsiniz. 
+Bu hızlı başlangıçta, Visual Studio 2019'u yerel olarak oluşturmak ve test etmek için Visual Studio 2019'u kullanmayı öğrenirsiniz, daha sonra Azure'da yayımladığınızda bir "merhaba dünyası" HTTP tetik C# işlevi uygulaması. 
 
 ![Tarayıcıdaki işlev localhost yanıtı](./media/functions-create-your-first-function-visual-studio/functions-create-your-first-function-visual-studio-browser-local-final.png)
 
@@ -38,7 +38,7 @@ Visual Studio, HTTP tetikleyici işlev türü için ortak kod içeren bir proje 
 
 Yönteme uygun öznitelikleri uygulayarak giriş ve çıkış bağlamaları ile işlevinizin yeteneklerini genişletin. Daha fazla bilgi için, [Azure İşlevleri C# geliştirici başvurusu](functions-dotnet-class-library.md) konusunun [Tetikleyiciler ve bağlayıcılar](functions-dotnet-class-library.md#triggers-and-bindings) bölümüne göz atın.
 
-İşlev projenizi ve HTTP ile tetiklenen işlev oluşturduğunuza göre, artık bunu yerel bilgisayarınızda test edebilirsiniz.
+Artık işlev projenizi ve bir HTTP tetikleyici işlevini oluşturduğunuza göre, bunu yerel bilgisayarınızda sınayabilirsiniz.
 
 ## <a name="run-the-function-locally"></a>İşlevi yerel olarak çalıştırma
 
@@ -58,7 +58,7 @@ Projenizi yayımlayamadan önce Azure aboneliğinizde bir işlev uygulamanız ol
 
 1. İşlev uygulamasının temel URL'sini **Profil Yayımla** sayfasından kopyalayın. İşlevi `localhost:port` yerel olarak test etmek için kullandığınız URL'nin yeni temel URL ile değiştirme. Sorgu dizesini `?name=<YOUR_NAME>` bu URL'ye ekleyin ve isteği çalıştırın.
 
-    HTTP tetikleme işlevinizi çağıran URL aşağıdaki biçimdedir:
+    HTTP tetikleyici işlevinizi çağıran URL aşağıdaki biçimdedir:
 
     `http://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>?name=<YOUR_NAME>`
 
@@ -72,7 +72,7 @@ Projenizi yayımlayamadan önce Azure aboneliğinizde bir işlev uygulamanız ol
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-Bu hızlı başlangıçta, Visual Studio'yu kullanarak Azure'da basit bir HTTP tetikleme işlevine sahip bir C# işlevi uygulaması oluşturup yayımladınız. 
+Bu hızlı başlangıçta, Visual Studio'yu kullanarak Azure'da basit bir HTTP tetikleyici işlevine sahip bir C# işlevi uygulaması oluşturup yayımladınız. 
 
 İşlevinize nasıl bir Azure Depolama kuyruğu ekleyeceğinizi öğrenmek için bir sonraki makaleye ilerleyin:
 > [!div class="nextstepaction"]

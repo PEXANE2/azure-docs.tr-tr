@@ -13,18 +13,18 @@ ms.topic: quickstart
 ms.date: 08/22/2019
 ms.author: bwren
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: b3949159d939a043fd4ccc820bc1cdad14da7751
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: 6435535ee14450c590a79ea68c8855c29df8bd9a
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80528391"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637877"
 ---
 # <a name="collect-data-from-a-windows-computer-in-a-hybrid-environment-with-azure-monitor"></a>Azure Monitor ile karma ortamda bir Windows bilgisayarından veri toplama
 
 [Azure Monitor,](../overview.md) ortamınızdaki fiziksel veya sanal Windows bilgisayarlarınızdan doğrudan veri toplayıp ayrıntılı analiz ve korelasyon için Log Analytics çalışma alanına aktarabilir. Log [Analytics aracısının](../platform/log-analytics-agent.md) yüklenmesi, Azure Monitor'un veri merkezinden veya başka bir bulut ortamından veri toplamasına olanak tanır. Bu hızlı başlangıçta birkaç kolay adımda Windows bilgisayarınızı nasıl yapılandırabileceğiniz ve veri toplayabileceğiniz gösterilmektedir. Azure Windows SANAL MM'leri hakkında bilgi [için](../../azure-monitor/learn/quick-collect-azurevm.md)bkz.  
 
-Desteklenen yapılandırmayı anlamak için [bkz.](../../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems) [Network firewall configuration](../../azure-monitor/platform/log-analytics-agent.md#firewall-requirements)
+Desteklenen yapılandırmayı anlamak için [bkz.](../../azure-monitor/platform/log-analytics-agent.md#supported-windows-operating-systems) [Network firewall configuration](../../azure-monitor/platform/log-analytics-agent.md#network-requirements)
  
 Azure aboneliğiniz yoksa, başlamadan önce [ücretsiz](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) bir hesap oluşturun.
 

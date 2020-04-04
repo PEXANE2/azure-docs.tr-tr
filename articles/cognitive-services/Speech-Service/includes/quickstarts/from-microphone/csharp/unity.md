@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-ms.date: 12/17/2019
+ms.date: 04/02/2020
 ms.author: erhopf
-ms.openlocfilehash: be8497cb07bd3c761c59bfc55e773b5dcc937c50
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 209242f723032c9e93f3dd6b20fac77c6a2badce
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78924877"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80659535"
 ---
 > [!NOTE]
 > Unity için Konuşma SDK Windows Masaüstü (x86 ve x64) veya Evrensel Windows Platformu (x86, x64, ARM/ARM64), Android (x86, ARM32/64) ve iOS (x64 simülatörü, ARM32 ve ARM64) destekler
@@ -133,4 +133,4 @@ Daha fazla bilgi için [örnek depomuza](https://aka.ms/csspeech/samples)bakın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[!INCLUDE [footer](./footer.md)]
+[!INCLUDE [footer](../footer.md)]

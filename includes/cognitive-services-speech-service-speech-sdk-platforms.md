@@ -1,24 +1,32 @@
 ---
-author: wolfma61
+author: IEvangelist
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 02/08/2019
-ms.author: wolfma
-ms.openlocfilehash: 62a1c682b770f06b4a01fa937f945d68541f5bfd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 03/26/2020
+ms.author: dapine
+ms.openlocfilehash: 85dfedc75807e273240066460a58b79380050e58
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "67132993"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656720"
 ---
-| Programlama dili | Platform | API başvurusu |
-| -------------------- | -------- | ------------- |
-| C/C++ | Windows, Linux, macOS | [Gözat](https://aka.ms/csspeech/cppref) |
-| C# | Windows, UWP, .NET Framework (Windows), .NET Core, Unity | [Gözat](https://aka.ms/csspeech/csharpref) |
-| Java | Android, Windows, Linux, macOS | [Gözat](https://aka.ms/csspeech/javaref) |
-| Java\* | [Konuşma Cihazları SDK’sı](../articles/cognitive-services/speech-service/speech-devices-sdk.md) | [Gözat](https://aka.ms/csspeech/javaref) |
-| JavaScript/Node.js | Tarayıcı, Windows, Linux, macOS | [Gözat](https://aka.ms/csspeech/javascriptref) |
-| Objective-C | iOS, macOS | [Gözat](https://aka.ms/csspeech/objectivecref) |
-| Python | Windows, Linux, macOS | [Gözat](https://aka.ms/csspeech/pythonref)  |
+| Programlama dili | Platform                                                                           | SDK başvurusu              |
+|----------------------|------------------------------------------------------------------------------------|----------------------------|
+| C# <sup>1</sup>      | Windows, Linux, macOS, Mono, Xamarin.iOS, Xamarin.Mac, Xamarin.Android, UWP, Birlik | [.NET SDK][net-sdk]        |
+| C++                  | Windows, Linux, macOS                                                              | [C++ SDK][cpp-sdk]         |
+| Java <sup>2</sup>    | Android, Windows, Linux, macOS                                                     | [Java SDK][javasdk]        |
+| JavaScript           | Tarayıcı, Düğüm.js                                                                   | [JavaScript SDK'sı][ecmasdk]  |
+| Amaç-C / Swift  | iOS, macOS                                                                         | [Amaç-C SDK][obj-sdk] |
+| Python               | Windows, Linux, macOS                                                              | [Python SDK'sı][pyt-sdk]      |
 
-\**Java SDK de Konuşma Cihazları [SDK](../articles/cognitive-services/speech-service/speech-devices-sdk.md)bir parçası olarak kullanılabilir.*
+<sup>1 .NET Konuşma SDK .NET Standart 2.0'a dayanmaktadır, bu nedenle birçok platformu destekler. Daha fazla bilgi için <a href="https://docs.microsoft.com/dotnet/standard/net-standard#net-implementation-support" target="_blank">bkz. <span class="docon docon-navigate-external x-hidden-focus"> </span> </a></sup>
+
+<sup>2 Java Konuşma SDK de Konuşma [Cihazları SDK](../articles/cognitive-services/speech-service/speech-devices-sdk.md)bir parçası olarak kullanılabilir.</sup>
+
+[net-sdk]: https://aka.ms/csspeech/csharpref
+[cpp-sdk]: https://aka.ms/csspeech/cppref
+[javasdk]: https://aka.ms/csspeech/javaref
+[ecmasdk]: https://aka.ms/csspeech/javascriptref
+[obj-sdk]: https://aka.ms/csspeech/objectivecref
+[pyt-sdk]: https://aka.ms/csspeech/pythonref

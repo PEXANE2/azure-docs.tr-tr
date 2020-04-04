@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 84f432c45729091be1264bff85d1e32fac10f3ef
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 2c8617cffaa81da6423011a494b8dbc82c42d218
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80583151"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632450"
 ---
 # <a name="azure-synapse-analytics-workload-importance"></a>Azure Synapse Analytics iş yükü önemi
 
@@ -64,6 +64,6 @@ Q5 mediumrc olduğundan, iki eşzamanlılık yuvası gerektirir. Q5'in çalışa
 
 - Sınıflandırıcı oluşturma hakkında daha fazla bilgi için [CREATE WORKLOAD CLASSIFIER (Transact-SQL)](/sql/t-sql/statements/create-workload-classifier-transact-sql)'ye bakın.  
 - İş yükü sınıflandırması hakkında daha fazla bilgi için [bkz.](sql-data-warehouse-workload-classification.md)  
-- İş yükü [sınıflandırıcısı](quickstart-create-a-workload-classifier-tsql.md) oluşturmak için Hızlı Başlangıç Oluşturma iş yükü sınıflandırıcısına bakın. 
+- İş yükü [sınıflandırıcısı](quickstart-create-a-workload-classifier-tsql.md) oluşturmak için Hızlı Başlangıç Oluşturma iş yükü sınıflandırıcısına bakın.
 - [İş Yükü Önemini Yapılandırmak](sql-data-warehouse-how-to-configure-workload-importance.md) ve İş Yükü Yönetimini Nasıl [Yönetecek ve İzleyecek](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md)makalelere bakın.
 - Sorguları ve atanan önemi görüntülemek için [sys.dm_pdw_exec_requests'a](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=azure-sqldw-latest) bakın.

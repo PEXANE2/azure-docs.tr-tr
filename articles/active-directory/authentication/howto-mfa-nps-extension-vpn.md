@@ -4,19 +4,19 @@ description: Microsoft Azure için Ağ Politikası Sunucusu uzantısını kullan
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/21/2019
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f446f1549b3efcd5f27752fac972dfd80c8650d6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ec8d5b66c71c558e56f3d1f48cec96d7cc487552
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75425394"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80654120"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>Azure için Ağ Politikası Sunucusu uzantısını kullanarak VPN altyapınızı Azure MFA ile tümleştirin
 
@@ -108,8 +108,8 @@ NPS uzantısı, Ağ İlkesi ve Erişim Hizmetleri rolü yüklü olan Windows Ser
 
 Aşağıdaki kitaplıklar NPS uzantısı ile otomatik olarak yüklenir:
 
--   [Visual Studio 2013 Için Visual C++ Yeniden Dağıtılabilir Paketler (X64)](https://www.microsoft.com/download/details.aspx?id=40784)
--   [Windows PowerShell sürüm 1.1.166.0 için Microsoft Azure Active Directory Modülü](https://connect.microsoft.com/site1164/Downloads/DownloadDetails.aspx?DownloadID=59185)
+-    [Visual Studio 2013 Için Visual C++ Yeniden Dağıtılabilir Paketler (X64)](https://www.microsoft.com/download/details.aspx?id=40784)
+-    [Windows PowerShell sürüm 1.1.166.0 için Microsoft Azure Active Directory Modülü](https://connect.microsoft.com/site1164/Downloads/DownloadDetails.aspx?DownloadID=59185)
 
 Microsoft Azure Active Directory PowerShell Modülü zaten mevcut değilse, kurulum işleminin bir parçası olarak çalıştırdığınız bir yapılandırma komut dosyasıyla yüklenir. Modül zaten yüklenmediyse, modülü önceden yüklemenize gerek yoktur.
 

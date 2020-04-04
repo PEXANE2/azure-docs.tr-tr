@@ -4,19 +4,19 @@ description: Bu, nasıl Azure MFA ve AD FS 2.0 kullanmaya başlayacağınızı a
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/11/2018
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e71c1d28a90af72890b2399d5da24d08885f3cce
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4c79a42bbd60d7a1857649cffc97ed7f0103fa16
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80051205"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80653510"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-20"></a>Azure Multi-Factor Authentication Sunucusunu AD FS 2.0 ile çalışacak şekilde yapılandırma
 
@@ -59,7 +59,7 @@ Ara sunucu ile AD FS 2.0’ı güvenli hale getirmek için ADFS ara sunucusuna A
 13. Tamamlandığında Form Tabanlı Web Sitesi Ekle iletişim kutusuna dönmek için **Tamam**’a tıklayın.
 14. **Tamam**’a tıklayarak iletişim kutusunu kapatın.
 15. URL ve sayfa değişkenleri algılandığında veya girildiğinde, web sitesi verileri Form Tabanlı panelde görüntülenir.
-16. IIS eklentisini istediğiniz düzeyde etkinleştirmek için **Yerel Modül** sekmesine tıklayın ve sunucuyu, AD FS ara sunucusunun altında çalıştığı web sitesini (“Varsayılan Web Sitesi” gibi) veya AD FS ara sunucu uygulamasını (“adfs” altındaki “ls” gibi) seçin.
+16. **IIS** eklentisini istenilen düzeyde etkinleştirmek için Yerel Modül sekmesini tıklatın ve sunucuyu, AD FS proxy'sinin altında çalıştırdığı web sitesini ("Varsayılan Web Sitesi" gibi) veya AD FS proxy uygulamasını ("adfs" altındaki "ls" gibi) seçin.
 17. Ekranın üst kısmındaki **IIS kimlik doğrulamasını etkinleştir** kutusunu tıklatın.
 
 IIS kimlik doğrulaması şimdi etkinleştirildi.
@@ -85,8 +85,8 @@ IIS kimlik doğrulamasını etkinleştirdiniz, ancak LDAP aracılığıyla Activ
 
 1. Ardından, **Şirket Ayarları** simgesini tıklatın ve Kullanıcı Adı **Çözüm sekmesini** seçin.
 2. Kullanıcı adları radyo düğmesini **eşleştirmek için LDAP benzersiz tanımlayıcı özniteliğini kullanın.**
-3. Kullanıcılar, kullanıcı adlarını “etki alanı\kullanıcı adı” biçiminde girerse Sunucunun, LDAP sorgusunu oluşturduğunda etki alanını kullanıcı adından çıkarabilmesi gerekir. Bu, bir kayıt defteri ayarı aracılığıyla yapılabilir.
-4. Kayıt defteri düzenleyicisini açın ve 64 bit sunucuda HKEY_LOCAL_MACHINE/SOFTWARE/Wow6432Node/Positive Networks/PhoneFactor öğesine gidin. 32 bit sunucuda, “Wow6432Node” öğesini yoldan çıkarın. “UsernameCxz_stripPrefixDomain” adlı bir DWORD kayıt defteri anahtarı oluşturun ve değeri 1 olarak ayarlayın. Azure Multi-Factor Authentication artık AD FS ara sunucusunu güvenli hale getirir.
+3. Kullanıcılar kullanıcı adlarını "etki alanı\kullanıcı adı" biçiminde girerse, Sunucu'nun LDAP sorgusunu oluştururken etki alanını kullanıcı adından çıkarabilmesi gerekir. Bu, bir kayıt defteri ayarı aracılığıyla yapılabilir.
+4. Kayıt defteri düzenleyicisini açın ve 64 bit sunucuda HKEY_LOCAL_MACHINE/SOFTWARE/Wow6432Node/Positive Networks/PhoneFactor öğesine gidin. 32 bit sunucuda ise, "Wow6432Node"yi yoldan alın. "UsernameCxz_stripPrefixDomain" adlı bir DWORD kayıt defteri anahtarı oluşturun ve değeri 1 olarak ayarlayın. Azure Multi-Factor Authentication artık AD FS ara sunucusunu güvenli hale getirir.
 
 Kullanıcıların Active Directory’den Sunucuya aktarıldığından emin olun. Bu konumlardan web sitesinde oturum açken iki aşamalı doğrulama gerektirmemesi için dahili IP adreslerine izin vermek istiyorsanız [Güvenilir IP'ler bölümüne](#trusted-ips) bakın.
 
@@ -107,7 +107,7 @@ AD FS ara sunucusu kullanılmadığında AD FS’yi güvenli hale getirebilirsin
    ![Ara sunucu olmadan AD FS 2.0 Direct](./media/howto-mfaserver-adfs-2/noproxy.png)
 
 8. **Tamam**'a tıklayın.
-9. IIS eklentisini istediğiniz düzeyde etkinleştirmek için **Yerel Modül** sekmesine tıklayın ve sunucuyu, web sitesini (“Varsayılan Web Sitesi” gibi) veya AD FS uygulamasını (“adfs” altındaki “ls” gibi) seçin.
+9. IIS eklentisini istenilen düzeyde etkinleştirmek için **Yerel Modül** sekmesini tıklatın ve sunucuyu, web sitesini ("Varsayılan Web Sitesi" gibi) veya AD FS uygulamasını ("adfs" altında "ls" gibi) seçin.
 10. Ekranın üst kısmındaki **IIS kimlik doğrulamasını etkinleştir** kutusunu tıklatın.
 
 Azure Multi-Factor Authentication artık AD FS’yi güvenli hale getirir.

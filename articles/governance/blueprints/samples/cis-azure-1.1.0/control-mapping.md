@@ -3,12 +3,12 @@ title: BDT Microsoft Azure Vakıflar Kıyaslama planı örnek denetimleri
 description: BDT Microsoft Azure Temelleri Kıyaslama planı örneğinin Azure Politikası için öneri eşlemesi.
 ms.date: 11/04/2019
 ms.topic: sample
-ms.openlocfilehash: 34d38f34dcd4233706f9b4578bc2dc2a644e4c2c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ea61ae4ea05b34c785485cbb5fd39c8a772565e3
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74707424"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656961"
 ---
 # <a name="recommendation-mapping-of-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>BDT Microsoft Azure Vakıflar Kıyaslama planı örneğinin öneri eşlemesi
 
@@ -245,7 +245,7 @@ Bu plan, SQL sunucuları için saydam veri şifreli koruyucunun ve SQL yönetile
 
 ## <a name="411-ensure-enforce-ssl-connection-is-set-to-enabled-for-mysql-database-server"></a>4.11 MySQL Database Server için 'SSL bağlantısını uygula' olarak ayarlandığından emin olun
 
-Bu plan, MySQL veritabanı sunucularının SSL bağlantılarını zorlamanıza yardımcı olan bir [Azure İlkesi](../../../policy/overview.md) tanımı atar.
+Bu plan, MySQL veritabanı sunucularının TLS/SSL bağlantılarını zorlamanıza yardımcı olan bir [Azure İlkesi](../../../policy/overview.md) tanımı atar.
 
 - MySQL veritabanı sunucuları için SSL bağlantısını zorla
 
@@ -257,7 +257,7 @@ Bu plan, PostgreSQL veritabanı sunucularının denetim noktalarını günlüğe
 
 ## <a name="413-ensure-enforce-ssl-connection-is-set-to-enabled-for-postgresql-database-server"></a>4.13 PostgreSQL Veritabanı Sunucusu için 'SSL bağlantısını uygula' olarak ayarlandığından emin olun
 
-Bu plan, PostgreSQL veritabanı sunucularının SSL bağlantılarını zorlamanıza yardımcı olan bir [Azure İlkesi](../../../policy/overview.md) tanımı atar.
+Bu plan, PostgreSQL veritabanı sunucularının TLS/SSL bağlantılarını zorlamanıza yardımcı olan bir [Azure İlkesi](../../../policy/overview.md) tanımı atar.
 
 - PostgreSQL veritabanı sunucuları için SSL bağlantısını uygulayın etkinleştirilmelidir
 

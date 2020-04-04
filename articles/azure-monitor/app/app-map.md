@@ -4,12 +4,12 @@ description: Uygulama haritası ile karmaşık uygulama topolojilerini izleme
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.reviewer: sdash
-ms.openlocfilehash: dce2fdbe7e0c390309be38d2ebab4c73dbb4ed2e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0823dd5d880c778f9b7a231ac14f1cbba1940927
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77666284"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80657385"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Uygulama Haritası: Triyaj Dağıtılmış Uygulamalar
 
@@ -85,7 +85,7 @@ Etkin uyarıları ve uyarıların tetiklenemesine neden olan temel kuralları g�
 
 Uygulama Haritası, haritadaki bileşenleri tanımlamak için **bulut rol adı** özelliğini kullanır. Application Insights SDK, bileşenler tarafından yayılan telemetriye bulut rol adı özelliğini otomatik olarak ekler. Örneğin, SDK bulut rol adı özelliğine bir web sitesi adı veya hizmet rol adı ekler. Ancak, varsayılan değeri geçersiz kılmak isteyebileceğiniz durumlar vardır. Bulut rol adını geçersiz kılmak ve Uygulama Haritası'nda görüntülenenleri değiştirmek için:
 
-### <a name="netnet-core"></a>.NET/.NET Çekirdek
+# <a name="netnetcore"></a>[.NET/.NetCore](#tab/net)
 
 **Aşağıdaki gibi özel TelemetryInitializer yazın.**
 
@@ -153,7 +153,26 @@ web uygulamalarını ASP.NET için alternatif bir yöntem, koddaki baş harfleri
 }
 ```
 
-### <a name="nodejs"></a>Node.js
+# <a name="java"></a>[Java](#tab/java)
+
+Application Insights Java SDK 2.5.0 ile başlayarak, dosyanıza `<RoleName>` `ApplicationInsights.xml` örneğin.
+
+```XML
+<?xml version="1.0" encoding="utf-8"?>
+<ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings" schemaVersion="2014-05-30">
+   <InstrumentationKey>** Your instrumentation key **</InstrumentationKey>
+   <RoleName>** Your role name **</RoleName>
+   ...
+</ApplicationInsights>
+```
+
+Uygulama Öngörüleri İlkbahar Önyükleme başlatıcısı ile Bahar Önyükleme kullanıyorsanız, gerekli olan tek değişiklik application.properties dosyasındaki uygulama için özel adınızı ayarlamaktır.
+
+`spring.application.name=<name-of-app>`
+
+İlkbahar Önyükleme başlatıcısı, spring.application.name özelliği için girdiğiniz değere otomatik olarak bulut rol adı atar.
+
+# <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
 ```javascript
 var appInsights = require("applicationinsights");
@@ -174,26 +193,7 @@ appInsights.defaultClient.addTelemetryProcessor(envelope => {
 });
 ```
 
-### <a name="java"></a>Java
-
-Application Insights Java SDK 2.5.0 ile başlayarak, dosyanıza `<RoleName>` `ApplicationInsights.xml` örneğin.
-
-```XML
-<?xml version="1.0" encoding="utf-8"?>
-<ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings" schemaVersion="2014-05-30">
-   <InstrumentationKey>** Your instrumentation key **</InstrumentationKey>
-   <RoleName>** Your role name **</RoleName>
-   ...
-</ApplicationInsights>
-```
-
-Uygulama Öngörüleri İlkbahar Önyükleme başlatıcısı ile Bahar Önyükleme kullanıyorsanız, gerekli olan tek değişiklik application.properties dosyasındaki uygulama için özel adınızı ayarlamaktır.
-
-`spring.application.name=<name-of-app>`
-
-İlkbahar Önyükleme başlatıcısı, spring.application.name özelliği için girdiğiniz değere otomatik olarak bulut rol adı atar.
-
-### <a name="clientbrowser-side-javascript"></a>İstemci/tarayıcı tarafı JavaScript
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 appInsights.queue.push(() => {
@@ -203,6 +203,7 @@ appInsights.addTelemetryInitializer((envelope) => {
 });
 });
 ```
+---
 
 ### <a name="understanding-cloud-role-name-within-the-context-of-the-application-map"></a>Uygulama Haritası bağlamında bulut rol adının anlaşılması
 
@@ -254,7 +255,7 @@ Uygulama Haritası'nın beklendiği gibi çalışmasını sağlamakta sorun yaş
 
 Uygulama Haritası, istek telemetrinizde bulunan her benzersiz bulut rol adı için bir uygulama düğümü ve bağımlılık telemetrinizde tür, hedef ve bulut rol adının her benzersiz birleşimi için bir bağımlılık düğümü oluşturur. Telemetrinizde 10.000'den fazla düğüm varsa, Uygulama Haritası tüm düğümleri ve bağlantıları getiremez, bu nedenle haritanız eksik kalır. Bu durumda, haritayı görüntülerken bir uyarı iletisi görüntülenir.
 
-Buna ek olarak, Uygulama Haritası yalnızca aynı anda işlenen en fazla 1000 ayrı gruplandırılmamış düğümü destekler. Uygulama Haritası, aynı türve arayanlara sahip bağımlılıkları gruplayarak görsel karmaşıklığı azaltır, ancak telemetrinizde çok fazla benzersiz bulut rol adı veya çok fazla bağımlılık türü varsa, bu gruplandırma yetersiz kalır ve harita Render.
+Buna ek olarak, Uygulama Haritası yalnızca aynı anda işlenen en fazla 1000 ayrı gruplandırılmamış düğümü destekler. Uygulama Eşlemi, aynı türve arayanlara sahip bağımlılıkları gruplayarak görsel karmaşıklığı azaltır, ancak telemetrinizde çok fazla benzersiz bulut rol adı veya çok fazla bağımlılık türü varsa, bu gruplandırma yetersiz kalır ve harita işleyemez.
 
 Bunu düzeltmek için, bulut rol adını, bağımlılık türünü ve bağımlılık hedef alanlarını düzgün bir şekilde ayarlamak için enstrümantasyonunuzu değiştirmeniz gerekir.
 

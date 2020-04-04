@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 06/03/2019
-ms.openlocfilehash: b48c37a6e607d121416ebae4d74e58f39670b79a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1dbcf953ad5f70c6ddf2a73eef2ea712f1e1278c
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73821918"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632076"
 ---
 # <a name="email-notifications-for-automatic-tuning"></a>Otomatik ayar için e-posta bildirimleri
 
@@ -69,7 +69,7 @@ Bir sonraki adım, azure otomasyonu içinde ayar önerileri nin alınması için
 Yeni bir Azure Otomasyonu runbook oluşturmak için aşağıdaki adımları izleyin:
 
 - Önceki adımda oluşturduğunuz Azure Otomasyon hesabına erişin
-- Otomasyon hesap bölmesine girince, PowerShell komut dosyasıyla yeni bir Azure Otomasyonu runbook'u oluşturmak için sol taraftaki "**Runbook**" menü öğesine tıklayın. Otomasyon runbook'ları oluşturma hakkında daha fazla bilgi edinmek için [bkz.](../automation/manage-runbooks.md#create-a-runbook)
+- Otomasyon hesap bölmesine girince, PowerShell komut dosyasıyla yeni bir Azure Otomasyonu runbook'u oluşturmak için sol taraftaki "**Runbook**" menü öğesine tıklayın. Otomasyon runbook'ları oluşturma hakkında daha fazla bilgi edinmek için [bkz.](../automation/manage-runbooks.md#creating-a-runbook)
 - Yeni bir runbook eklemek için "**+Runbook ekle**" menüsü seçeneğine tıklayın ve ardından "**Hızlı oluştur – Yeni bir runbook Oluştur**" seçeneğine tıklayın.
 - Runbook bölmesinde, runbook'unuzun adını yazın (bu örneğin amacı için "**AutomaticTuningEmailAutomation**" kullanılır), **PowerShell** olarak runbook türünü seçin ve amacını açıklamak için bu runbook'un açıklamasını yazın.
 - Yeni bir runbook oluşturmayı bitirmek için **Oluştur** düğmesine tıklayın
@@ -88,7 +88,7 @@ Birkaç abonelik olması durumunda, bunları komut dosyasının üstbilgisindeki
 ```powershell
 # PowerShell script to retrieve Azure SQL Database Automatic tuning recommendations.
 #
-# Provided “as-is” with no implied warranties or support.
+# Provided "as-is" with no implied warranties or support.
 # The script is released to the public domain.
 #
 # Replace <SUBSCRIPTION_ID_WITH_DATABASES> in the header with your Azure subscription ID.
@@ -225,7 +225,7 @@ Bir sonraki adım, yeni oluşturulan yinelenen akışa üç iş eklemektir (olu�
    - "**Akışı kaydet**" düğmesine tıklayarak bu eylemi oluşturmayı tamamlama
 
 > [!TIP]
-> Farklı alıcılara otomatik e-postalar göndermek için ayrı akışlar oluşturun. Bu ek akışlarda, "To" alanında alıcı e-posta adresini ve "Konu" alanındaki e-posta konu satırını değiştirin. Azure Otomasyonu'nda özelleştirilmiş PowerShell komut dosyalarıyla (Azure abonelik kimliğinin değiştirilmesi gibi) yeni runbook'lar oluşturmak, otomatik senaryoların daha da özelleştirilmesini sağlar ( örneğin otomatik tuning'de ayrı alıcılara e-posta gönder ayrı abonelikler için öneriler.
+> Farklı alıcılara otomatik e-postalar göndermek için ayrı akışlar oluşturun. Bu ek akışlarda, "To" alanında alıcı e-posta adresini ve "Konu" alanındaki e-posta konu satırını değiştirin. Azure Otomasyonu'nda özelleştirilmiş PowerShell komut dosyalarıyla (Azure abonelik kimliğinin değiştirilmesi gibi) yeni runbook'lar oluşturmak, otomatik senaryoların daha da özelleştirilmesini sağlar, örneğin ayrı abonelikler için Otomatik tuning önerileri için ayrı alıcılara e-posta gönderebilirsiniz.
 >
 
 Yukarıdaki e-posta teslim iş akışını yapılandırmak için gerekli adımları sonuçlandırır. Yapılan üç eylemden oluşan tüm akış aşağıdaki resimde gösterilmiştir.

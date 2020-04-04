@@ -5,12 +5,12 @@ ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 ms.date: 09/03/2019
 ms.custom: seodec18, fasttrack-edit
-ms.openlocfilehash: 4b42f0966288e4ee72b689ddce6313a41e91f13e
-ms.sourcegitcommit: ced98c83ed25ad2062cc95bab3a666b99b92db58
+ms.openlocfilehash: dbbe58df4f1cfe93555b494e525fad18f5b02664
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80438027"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632579"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>Azure AD oturum unu kullanmak için Uygulama Hizmetinizi veya Azure İşlevleri uygulamanızı yapılandırın
 
@@ -78,7 +78,7 @@ Aşağıdaki adımları uygulayın:
 1. Uygulama kaydı oluşturulduktan **sonra, Uygulama (istemci) kimliğini** ve **Dizin (kiracı) kimliğini** daha sonra kopyalayın.
 1. **Kimlik Doğrulaması**'nı seçin. **Örtülü hibe**kapsamında, Uygulama Hizmeti'nden OpenID Connect kullanıcı oturum açmalarına izin vermek için **kimlik belirteçlerini** etkinleştirin.
 1. (İsteğe bağlı) **Markaseçin.** **Giriş sayfası URL'sinde,** Uygulama Hizmeti uygulamanızın URL'sini girin ve **Kaydet'i**seçin.
-1.  >  **API Kümesini Ortaya Çıkar'ı**seçin.**Set** Uygulama Hizmeti uygulamanızın URL'sini yapıştırın ve **Kaydet'i**seçin.
+1.  >  **API Kümesini Ortaya Çıkar'ı**seçin.**Set** Tek kiracılı uygulama için, App Service uygulamanızın URL'sini yapıştırın ve **Kaydet'i** seçin ve çok kiracılı uygulamayı seçin, kiracı onaylı etki alanlarından birini temel alan URL'ye yapıştırın ve ardından **Kaydet'i**seçin.
 
    > [!NOTE]
    > Bu değer, uygulama kaydının Uygulama Kimliği URI'sidir. **Application ID URI** Web uygulamanız buluttaki bir API'ye erişim gerektiriyorsa, bulut Uygulama Hizmeti kaynağını yapılandırırken web uygulamasının **Uygulama Kimliği URI'sine** ihtiyacınız vardır. Örneğin, bulut hizmetinin web uygulamasına açıkça erişim izni vermesini istiyorsanız bunu kullanabilirsiniz.

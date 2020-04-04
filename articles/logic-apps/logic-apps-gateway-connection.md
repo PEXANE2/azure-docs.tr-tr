@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: arthii, logicappspm
 ms.topic: article
-ms.date: 11/06/2019
-ms.openlocfilehash: 29c1aaf18ea45d869d32a8817aeb03faa3b67c32
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 02/14/2020
+ms.openlocfilehash: 096943ff796f9c12c7f8715cadce5c3085965d4d
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75456581"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80657133"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Azure Logic Apps'ten şirket içi veri kaynaklarına bağlanma
 
@@ -59,6 +59,9 @@ Azure Logic Apps, veri ağ geçidi üzerinden okuma ve yazma işlemlerini destek
 * Ağ geçidi yüklemeniz başka bir Azure ağ geçidi kaynağı tarafından zaten kaydedilmemiş ve talep edilmemiş.
 
   Azure portalında bir ağ geçidi kaynağı oluşturduğunuzda, ağ geçidi kaynağınıza ve yalnızca bu ağ geçidi kaynağına bağlantı veren bir ağ geçidi yüklemesi seçersiniz. Azure Logic Apps'ta şirket içi tetikleyiciler ve eylemler, şirket içi veri kaynaklarına bağlanmak için ağ geçidi kaynağını kullanır. Bu tetikleyiciler ve eylemlerde, Azure aboneliğinizi ve kullanmak istediğiniz ilişkili ağ geçidi kaynağını seçersiniz. Her ağ geçidi kaynağı yalnızca bir Azure hesabına bağlanan tek bir ağ geçidi yüklemesine bağlanır.
+
+  > [!NOTE]
+  > Azure portalında ağ geçidi kaynağını yalnızca ağ geçidi yöneticisi oluşturabilir. Şu anda, hizmet ilkeleri desteklenmiyor. 
 
 <a name="create-gateway-resource"></a>
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ea9bfd21e7f3b92c99600a2492a809a0fc051ed9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8b9b33076a2c2cea27fea181b760a721488682c9
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80159624"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80657013"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>Windows Virtual masaüstünde Microsoft Ekipleri'ni kullanma
 
@@ -33,15 +33,25 @@ Microsoft Ekiplerini Windows Sanal Masaüstünde kullanabilmeniz için önce şu
 
 Windows Sanal Masaüstü ortamlarınızda optimize edilmemiş Microsoft Ekiplerini, Microsoft Teams'in tam sohbet ve işbirliği özelliklerinin yanı sıra sesli arama dan yararlanmak için kullanabilirsiniz. En iyi duruma getirilmemiş aramalar ana bilgisayar CPU'nuzdan daha fazlasını kullandığından, aramalardaki ses kalitesi ana bilgisayar yapılandırmanıza göre değişir.
 
+### <a name="prepare-your-image-for-teams"></a>Resminizi Takımlara hazırlayın
+
+Makine başına ekipler yüklemesini etkinleştirmek için, ana bilgisayarda aşağıdaki kayıt defteri anahtarını ayarlayın:
+
+```shell
+  [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Teams\IsWVDEnvironment]
+  Type: REG_DWORD
+  Value: 0x1
+```
+
 ### <a name="install-microsoft-teams"></a>Microsoft Ekiplerini Yükleme
 
-Microsoft Ekiplerini Windows Sanal Masaüstü ortamınıza yüklemek için:
+Ekipler masaüstü uygulamasını makine başına yükleme yi kullanarak dağıtabilirsiniz. Microsoft Ekiplerini Windows Sanal Masaüstü ortamınıza yüklemek için:
 
 1. Ortamınızla eşleşen [Takımlar MSI paketini](https://docs.microsoft.com/microsoftteams/teams-for-vdi#deploy-the-teams-desktop-app-to-the-vm) indirin. 64 bit işletim sisteminde 64 bit yükleyici kullanmanızı öneririz.
 2. MSI'ı ana bilgisayar VM'ye yüklemek için bu komutu çalıştırın.
 
       ```shell
-      msiexec /i <msi_name> /l*v < install_logfile_name> ALLUSER=1
+      msiexec /i <msi_name> /l*v < install_logfile_name> ALLUSERS=1
       ```
 
       Bu, Takımlar'ı Program Dosyaları'na veya Program Dosyalarına (x86) yükler. Bir sonraki oturum açtığınızda ve Takımlar'ı başlattığınızda, uygulama kimlik bilgilerinizi ister.
@@ -56,4 +66,4 @@ Microsoft Ekiplerini Windows Sanal Masaüstü ortamınıza yüklemek için:
       ```
 
       > [!NOTE]
-      > ALLUSER=1 ayarlı MSI ayarlı Takımlar yüklerseniz, otomatik güncelleştirmeler devre dışı bırakılır. Takımları ayda en az bir kez güncellediğinden emin olmamızı öneririz.
+      > ALLUSERS=1 ayarlı MSI ayarlı Takımlar yüklerseniz, otomatik güncelleştirmeler devre dışı bırakılır. Takımları ayda en az bir kez güncellediğinden emin olmamızı öneririz.

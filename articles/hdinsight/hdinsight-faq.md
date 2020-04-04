@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/20/2019
-ms.openlocfilehash: b05b83086cc9d8449d9517897f347b6e2685aa95
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8a37e1b9bc4a0b953dc727dbab2813dd938ed576
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76720359"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80652229"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight: Sık sorulan sorular
 
@@ -135,7 +135,7 @@ Evet, bir Hive metastore'u ESP'den ESP olmayan bir kümeye geçirebilirsiniz.
 
 ### <a name="how-can-i-estimate-the-size-of-a-hive-metastore-database"></a>Hive metastore veritabanının boyutunu nasıl tahmin edebilirim?
 
-Hive metadeposu, hive sunucusu tarafından kullanılan veri kaynakları için meta verileri depolamak için kullanılır. Boyut gereksinimleri kısmen Kovan veri kaynaklarınızın sayısına ve karmaşıklığına bağlıdır ve önceden tahmin edilemez. [Hive metastore en iyi uygulamaları](hdinsight-use-external-metadata-stores.md#hive-metastore-best-practices)belirtildiği gibi, 50 DTU ve 250 GB depolama sağlayan bir S2 katmanı ile başlayabilirsiniz, ve bir darboğaz görürseniz, veritabanı ölçeklendirebilirsiniz.
+Hive metadeposu, hive sunucusu tarafından kullanılan veri kaynakları için meta verileri depolamak için kullanılır. Boyut gereksinimleri kısmen Kovan veri kaynaklarınızın sayısına ve karmaşıklığına bağlıdır ve önceden tahmin edilemez. [Hive metastore yönergelerinde](hdinsight-use-external-metadata-stores.md#hive-metastore-guidelines)belirtildiği gibi, 50 DTU ve 250 GB depolama alanı sağlayan bir S2 katmanıyla başlayabilirsiniz ve bir darboğaz görürseniz veritabanını ölçeklendirebilirsiniz.
 
 ### <a name="do-you-support-any-other-database-other-than-azure-sql-database-as-an-external-metastore"></a>Harici bir metastore olarak Azure SQL Veritabanı dışında başka bir veritabanını destekliyor musunuz?
 
