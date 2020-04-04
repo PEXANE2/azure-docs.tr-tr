@@ -8,12 +8,12 @@ ms.date: 12/08/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6ddda38d887cdfe30b449847e2f625ba17f33898
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ff9415ca20b859468528b56d27355430c4fc5a0f
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76510813"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80652060"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>Aşağı akış cihazını Azure IoT Edge ağ geçidine bağlama
 
@@ -182,7 +182,7 @@ Bu bölümde, bir Azure IoT Java aygıt istemcisini bir IoT Edge ağ geçidine b
 
 Bu bölümde, Bir Azure IoT Python aygıt istemcisini bir IoT Edge ağ geçidine bağlamak için örnek bir uygulama tanıtılıyor.
 
-1. [Python örnekleri için Azure IoT aygıtı SDK'dan](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/advanced-edge-scenarios) **send_message** örneğini alın.
+1. [Python örnekleri için Azure IoT aygıtı SDK'dan](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/async-edge-scenarios) **send_message** örneğini alın.
 2. Bir IoT Edge kapsayıcısında veya hata ayıklama senaryosunda çalışırken `EdgeHubConnectionString` ve `EdgeModuleCACertificateFile` ortam değişkenlerini ayarladığınızdan emin olun.
 3. Örneğin cihazınızda nasıl çalıştırılalaacağına ilişkin talimatlar için SDK belgelerine bakın.
 

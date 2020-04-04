@@ -4,19 +4,19 @@ description: Kullanıcıların Azure Çok Faktörlü Kimlik Doğrulaması taraf�
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/21/2019
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3bc0f0dbcd08df887b2484be6ca8c92a85962c1c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6f3b5af972ad6dd15b7c992d5e264ede97bd1dde
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74848298"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80653624"
 ---
 # <a name="azure-multi-factor-authentication-user-data-collection"></a>Azure Çok Faktörlü Kimlik Doğrulama kullanıcı veri toplama
 
@@ -141,7 +141,7 @@ MFA Server sürüm 8.0 veya üzeri için aşağıdaki işlem yöneticilerin kull
 - Kullanıcı `C:\Program Files\Multi-Factor Authentication Server\Logs\MultiFactorAuthSvc.log` kaydının eklenen\<veya değiştirilen tüm örneklerini bulmak için " kullanıcı adı>" (aramadaki teklifleri içerir) için yapılan yedeklemeler.
    - Bu kayıtlar, MFA Server UX, Günlük bölümü, Günlük Dosyaları sekmesindeki **"Kullanıcı değişikliklerini günlüğe kaydetme"** işaretlerini kaldırarak sınırlandırılabilir (ancak ortadan kaldırılmaz).
    - Syslog yapılandırılırsa ve MFA Server UX, Günlük bölümü, Syslog sekmesinde **"Kullanıcı değişikliklerini kaydet"** işaretlenirse, günlük girişleri bunun yerine syslog'dan toplanabilir.
-- MultiFactorAuthSvc.log ve kimlik doğrulama girişimleri ile ilgili diğer MFA Server günlük dosyaları kullanıcı adının diğer oluşumları multiFactorAuthGdpr.exe ihracat veya Web Hizmeti SDK kullanılarak sağlanan bilgilere operasyonel ve yinelemeli olarak kabul edilir KullanıcıGdpr alın.
+- MultiFactorAuthSvc.log ve kimlik doğrulama girişimleri ile ilgili diğer MFA Server günlük dosyaları kullanıcı adının diğer oluşumları operasyonel ve MultiFactorAuthGdpr.exe dışa aktarma veya Web Hizmeti SDK GetUserGdpr kullanılarak sağlanan bilgilere çoğaltılabilir olarak kabul edilir.
 
 ## <a name="delete-data-from-mfa-server"></a>MFA Server'dan veri silme
 

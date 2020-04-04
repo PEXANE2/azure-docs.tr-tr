@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 03/12/2020
 ms.author: jispar
 ms.reviewer: kumud
-ms.openlocfilehash: 568fc880711d42941fd9aef2ea19b8ac3123793a
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 7da20a0bf87b33f05ea7f1d457157c5b7ee2ec7b
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80384254"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631524"
 ---
 # <a name="virtual-network-service-tags"></a>Sanal ağ hizmeti etiketleri
 <a name="network-service-tags"></a>
@@ -79,7 +79,7 @@ Varsayılan olarak, hizmet etiketleri tüm bulutun aralıklarını yansıtır. B
 | **AzureSiteKurtarma** | Azure Site Kurtarma.<br/><br/>*Not:* Bu etiket, **AzureActiveDirectory,** **AzureKeyVault,** **EventHub,****GuestAndHybridManagement** ve **Storage** etiketlerini bağımlı hale getirir. | Giden | Hayır | Hayır |
 | **AzureTrafficManager** | Azure Trafik Yöneticisi IP adreslerini yoklar.<br/><br/>Trafik Yöneticisi sondası IP adresleri hakkında daha fazla bilgi için [Azure Trafik Yöneticisi SSS](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs)bölümüne bakın. | Gelen | Hayır | Evet |  
 | **BatchNodeManagement** | Azure Toplu İş'e adanmış dağıtımlar için yönetim trafiği. | Her ikisi de | Hayır | Evet |
-| **BilişselHizmetlerYönetimi** | Azure Bilişsel Hizmetleri için trafik aralığı. | Giden | Hayır | Hayır |
+| **BilişselHizmetlerYönetimi** | Azure Bilişsel Hizmetleri için trafik aralığı. | Her ikisi de | Hayır | Hayır |
 | **DataFactory**  | Azure Data Factory | Her ikisi de | Hayır | Hayır |
 | **DataFactoryManagement** | Azure Veri Fabrikası için yönetim trafiği. | Giden | Hayır | Hayır |
 | **Dynamics365ForMarketingEmail** | Dynamics 365'in pazarlama e-posta hizmetinin adres aralıkları. | Giden | Evet | Hayır |
@@ -124,7 +124,7 @@ Varsayılan olarak, hizmet etiketleri tüm bulutun aralıklarını yansıtır. B
 ### <a name="use-the-service-tag-discovery-api-public-preview"></a>Hizmet Etiketi Bulma API'sini (genel önizleme) kullanma
 Ip adresi aralığı ayrıntılarıyla birlikte geçerli hizmet etiketleri listesini programlı olarak alabilirsiniz:
 
-- [Geri kalanı](https://docs.microsoft.com/rest/api/virtualnetwork/servicetags/list)
+- [REST](https://docs.microsoft.com/rest/api/virtualnetwork/servicetags/list)
 - [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.network/Get-AzNetworkServiceTag?view=azps-2.8.0&viewFallbackFrom=azps-2.3.2)
 - [Azure CLI](https://docs.microsoft.com/cli/azure/network?view=azure-cli-latest#az-network-list-service-tags)
 

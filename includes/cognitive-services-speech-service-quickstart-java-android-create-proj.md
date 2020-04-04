@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/10/2020
 ms.author: travisw
-ms.openlocfilehash: 270a8316ee7c23ebb54c7d0633fb9159ef33acbd
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 8b187e058299f8aa8b762231c0ed1e708e5ad9d1
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78384075"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80659338"
 ---
 1. Android Studio'yu başlatın ve **Hoş Geldiniz** penceresinde yeni bir Android Studio **projesi başlat'ı** seçin.
 
@@ -27,7 +27,7 @@ Android Studio’nun yeni Android projenizi hazırlaması biraz zaman alır. Ard
 
 [!INCLUDE [License notice](cognitive-services-speech-service-license-notice.md)]
 
-Bilişsel Hizmetler Konuşma SDK geçerli sürümü 1.10.0 olduğunu.
+Bilişsel Hizmetler Konuşma SDK geçerli sürümü 1.11.0 olduğunu.
 
 Android için Konuşma SDK bir [AAR (Android Kütüphanesi)](https://developer.android.com/studio/projects/android-library)olarak paketlenmiştir, gerekli kütüphaneler ve gerekli Android izinleri içerir.
 Https:\//csspeechstorage.blob.core.windows.net/maven/ adresindeki Bir Maven deposunda barındırılan.'s.
@@ -42,7 +42,7 @@ Konuşma SDK’sını kullanmak için projenizi ayarlayın. Android Studio menü
 
    ![Kitaplık bağımlılığının ekran görüntüsü](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-07-add-module-dependency.png)
 
-1. Görünen pencereye, Android için Konuşma SDK adını ve sürümünü girin, *com.microsoft.cognitiveservices.speech:client-sdk:1.10.0*. Sonra **Tamam**’ı seçin.
+1. Görünen pencereye, Android için Konuşma SDK adını ve sürümünü girin, *com.microsoft.cognitiveservices.speech:client-sdk:1.11.0*. Sonra **Tamam**’ı seçin.
    Konuşma SDK şimdi, gösterildiği gibi bağımlılıklar listesine eklenmelidir:
 
    ![Bağımlılıklar listesinde Konuşma SDK ekran görüntüsü](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-08-dependency-added-1.0.0.png)

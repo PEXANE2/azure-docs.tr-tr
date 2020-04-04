@@ -1,6 +1,6 @@
 ---
 title: Sorun Giderme - Azure Automation Karma Runbook İşçileri
-description: Bu makale, Azure Otomasyon Karma Runbook Çalışanları bilgi sorun giderme sağlar
+description: Bu makalede, Sorun Giderme Azure Otomasyon Karma Runbook Çalışanları için bilgi sağlar.
 services: automation
 ms.service: automation
 ms.subservice: ''
@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 11/25/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 33e3e162892f1e2a148258273160ca26fa9c2efd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d2587af0ada18b5c4271e7411783fe60211a3479
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80153531"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637854"
 ---
 # <a name="troubleshoot-hybrid-runbook-workers"></a>Sorun Giderme Hibrid Runbook İşçileri
 
@@ -131,7 +131,9 @@ Karma Runbook Worker'ınız bir Azure VM'siyse, Bunun yerine [Azure kaynakları 
 #### <a name="cause"></a>Nedeni
 
 Olası nedenler şunlardır:
+
 * Aracının ayarlarında yanlış yazılmış bir çalışma alanı kimliği veya çalışma alanı anahtarı (birincil) vardır. 
+
 * Karma Runbook Çalışanı yapılandırmayı karşıdan yükleyemez ve hesap bağlama hatasına neden olur. Azure çözümleri etkinleştirdiğinde, Bir Log Analytics çalışma alanını ve Otomasyon hesabını bağlamak için yalnızca belirli bölgeleri destekler. Bilgisayarda yanlış bir tarih ve/veya saat ayarlanmış olabilir. Geçerli zamana +/-15 dakika mesafede ise, onboarding başarısız olur.
 
 #### <a name="resolution"></a>Çözüm
@@ -143,7 +145,7 @@ Aracının çalışma alanı kimliği veya çalışma alanı anahtarının yanl�
 
 Log Analytics çalışma alanı ve Otomasyon hesabınız bağlantılı bir bölgede olmalıdır. Desteklenen bölgelerin listesi için [Azure Otomasyonu ve Günlük Analizi çalışma alanı eşlemelerine](../how-to/region-mappings.md)bakın.
 
-Ayrıca bilgisayarınızın tarih ve saat dilimini güncelleştirmeniz gerekebilir. Özel bir zaman aralığı seçerseniz, aralığın yerel saat diliminizden farklı olabilecek UTC'de olduğundan emin olun.
+Ayrıca bilgisayarınızın tarih ve/veya saat dilimini güncelleştirmeniz gerekebilir. Özel bir zaman aralığı seçerseniz, aralığın yerel saat diliminizden farklı olabilecek UTC'de olduğundan emin olun.
 
 ## <a name="linux"></a>Linux
 
@@ -220,6 +222,35 @@ Bu sorun, proxy'nizin veya ağ güvenlik duvarının Microsoft Azure ile iletiş
 Günlükler **C:\ProgramData\Microsoft\System Center\Orchestrator\7.2\SMA\Sandboxes'da**her karma işçide yerel olarak depolanır. **Uygulama ve Hizmet Günlükleri\Microsoft-SMA\İşlemler** ve **Uygulama ve Hizmet Günlükleri\Operations Manager** olay günlüklerinde herhangi bir uyarı veya hata olayı olup olmadığını doğrulayabilirsiniz. Bu günlükler, rolün Azure Otomasyonu'na kayda alımını etkileyen bir bağlantı veya başka bir sorun türünü veya normal işlemler altında karşılaşılan bir sorunu gösterir. Log Analytics aracısıyla ilgili ek yardım sorun giderme sorunları için, [Log Analytics Windows aracısıyla ilgili Sorun Giderme sorunlarına](../../azure-monitor/platform/agent-windows-troubleshoot.md)bakın.
 
 Karma çalışanlar, Bulutta çalışan runbook işlerinin çıktı ve ileti gönderdiği gibi Azure Otomasyonu'na [Runbook çıktısı ve iletigönderir.](../automation-runbook-output-and-messages.md) Tıpkı runbook'larda yaptığınız gibi Verbose ve Progress akışlarını etkinleştirebilirsiniz.
+
+### <a name="scenario-orchestratorsandboxexe-cant-connect-to-office-365-through-proxy"></a><a name="no-orchestrator-sandbox-connect-O365"></a>Senaryo: Orchestrator.Sandbox.exe proxy üzerinden Office 365'e bağlanamıyor
+
+#### <a name="issue"></a>Sorun
+
+Windows Karma Runbook Worker üzerinde çalışan bir komut dosyası, Bir Orchestrator kum havuzunda Office 365'e beklendiği gibi bağlanamıyor. Komut dosyası bağlantı için [Connect-MsolService](https://docs.microsoft.com/powershell/module/msonline/connect-msolservice?view=azureadps-1.0) kullanıyor. 
+
+Proxy ve baypas listesini ayarlamak için **Orchestrator.Sandbox.exe.config** ayarlarsanız, sandbox hala düzgün bağlanmaz. Aynı proxy ve bypass listesi ayarlarına sahip **bir Powershell_ise.exe.config** dosyası beklediğiniz gibi çalışıyor gibi görünüyor. Service Management Automation (SMA) günlükleri ve PowerShell günlükleri proxy ile ilgili herhangi bir bilgi sağlamaz.
+
+#### <a name="cause"></a>Nedeni
+
+Sunucudaki Active Directory Federation Services (ADFS) bağlantısı proxy'yi atlayamamaktadır. Bir PowerShell kum havuzunun günlüğe kaydedilmiş kullanıcı olarak çalıştığını unutmayın. Ancak, bir Orchestrator sandbox ağır özelleştirilmiş ve **Orchestrator.Sandbox.exe.config** dosya ayarlarını yok sayabilir. Bu işleme makinesi veya MMA proxy ayarları için özel bir kodu vardır, ancak diğer özel proxy ayarlarını işlemek için değil. 
+
+#### <a name="resolution"></a>Çözüm
+
+PowerShell cmdlets için MSOnline modülü yerine Azure AD modüllerini kullanmak üzere komut dosyanızı geçirerek Orchestrator kum havuzu sorununu çözebilirsiniz. Bkz. [Orkestratörden Azure Otomasyonuna Geçiş (Beta)](https://docs.microsoft.com/azure/automation/automation-orchestrator-migration).
+
+MSOnline modül cmdlets kullanmaya devam etmek istiyorsanız, [Invoke-Command](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/invoke-command?view=powershell-7)kullanmak için komut değiştirin. Parametreler ve `ComputerName` parametreler `Credential` için değerleri belirtin. 
+
+```powershell
+$Credential = Get-AutomationPSCredential -Name MyProxyAccessibleCredential
+Invoke-Command -ComputerName $env:COMPUTERNAME -Credential $Credential 
+{ Connect-MsolService … }
+```
+
+Bu kod değişikliği, belirtilen kimlik bilgileri bağlamında tamamen yeni bir PowerShell oturumu başlatır. Trafiğin etkin kullanıcının kimliğini doğrulayan bir proxy sunucusu ndan akmasını sağlamalıdır.
+
+>[!NOTE]
+>Bu çözüm, sandbox yapılandırma dosyasını manipüle etmeyi gereksiz kılar. Yapılandırma dosyasının komut dosyanızla çalışmasını sağlamada başarılı olsanız bile, Karma Runbook Worker aracısı her güncelleştirildiğinde dosya silinir.
 
 ### <a name="scenario-hybrid-runbook-worker-not-reporting"></a><a name="corrupt-cache"></a>Senaryo: Karma Runbook Worker raporlama değil
 

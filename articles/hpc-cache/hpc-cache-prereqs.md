@@ -4,14 +4,14 @@ description: Azure HPC Önbelleğini kullanmak için ön koşullar
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 02/20/2020
+ms.date: 04/03/2020
 ms.author: rohogue
-ms.openlocfilehash: 40d282ad30a800a5e5a36a8d2211ec8da7ce63ec
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6da35cb60dc5f22be01ae25393bd62327db64867
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79271856"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80655652"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Azure HPC Önbelleği için Ön Koşullar
 
@@ -113,7 +113,7 @@ Bir NFS depolama sistemi (örneğin, şirket içi donanım NAS sistemi) kullanı
 
   ``rpcinfo`` Sorgu tarafından döndürülen tüm bağlantı noktalarının Azure HPC Önbelleği'nin alt netinden sınırsız trafiğe izin verdiğinden emin olun.
 
-  * Komut tarafından döndürülen bağlantı `rpcinfo` noktalarına ek olarak, bu yaygın olarak kullanılan bağlantı noktalarının gelen ve giden trafiğe izin verdiğinden emin olun:
+  * Komutu `rpcinfo` kullanamıyorsanız, sık kullanılan bu bağlantı noktalarının gelen ve giden trafiğe izin verdiğinden emin olun:
 
     | Protokol | Bağlantı noktası  | Hizmet  |
     |----------|-------|----------|
@@ -122,6 +122,8 @@ Bir NFS depolama sistemi (örneğin, şirket içi donanım NAS sistemi) kullanı
     | TCP/UDP  | 4045  | nlockmgr |
     | TCP/UDP  | 4046  | monte   |
     | TCP/UDP  | 4047  | durum   |
+
+    Bazı sistemler bu hizmetler için farklı bağlantı noktası numaraları kullanır - emin olmak için depolama sisteminizin belgelerine başvurun.
 
   * Gerekli tüm bağlantı noktalarında trafiğe izin verdiklerinden emin olmak için güvenlik duvarı ayarlarını denetleyin. Azure'da kullanılan güvenlik duvarlarını ve veri merkezinizdeki şirket içi güvenlik duvarlarını kontrol ettiğinizden emin olun.
 
@@ -132,7 +134,7 @@ Bir NFS depolama sistemi (örneğin, şirket içi donanım NAS sistemi) kullanı
 
   NFS depolama hedef [sorun giderme makalesinde](troubleshoot-nas.md#enable-export-listing)dizin listesi erişimi hakkında daha fazla bilgi edinin.
 
-* **Kök erişimi:** Önbellek, kullanıcı kimliği 0 olarak arka uç sistemine bağlanır. Depolama sisteminizdeki bu ayarları kontrol edin:
+* **Kök erişimi** (okuma/yazma): Önbellek arka uç sistemine kullanıcı kimliği 0 olarak bağlanır. Depolama sisteminizdeki bu ayarları kontrol edin:
   
   * Etkinleştirin. `no_root_squash` Bu seçenek, uzak kök kullanıcıkök ait dosyalara erişebilmesini sağlar.
 

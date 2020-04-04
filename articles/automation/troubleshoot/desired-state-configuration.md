@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 99220fdf5dfb47f235637f83ba9be4ec015758bd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 9f33dc9528d5f7043dda2c6fad207a9a51347a2b
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80294433"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631488"
 ---
 # <a name="troubleshoot-issues-with-azure-automation-desired-state-configuration-dsc"></a>Azure Otomasyonu İstenen Durum Yapılandırması (DSC) ile sorun giderme
 
@@ -48,7 +48,7 @@ xDscDiagnostics'i kullanma hakkında bilgi [için](/powershell/scripting/dsc/tro
 
 ### <a name="3-ensure-that-nodes-and-the-automation-workspace-have-required-modules"></a>3. Düğümlerin ve Otomasyon çalışma alanının gerekli modüllere sahip olduğundan emin olun
 
-DSC düğüme yüklenen modüllere bağlıdır. Azure Otomasyon Durumu Yapılandırması'nı kullanırken, [İçe Aktarma Modüllerinde](../shared-resources/modules.md#import-modules)listelenen adımları kullanarak gerekli modülleri Otomasyon hesabınıza aktarın. Yapılandırmalar, modüllerin belirli sürümlerine de bağımlılık sağlayabilir. Daha fazla bilgi için [Sorun Giderme Modülleri'ne](shared-resources.md#modules)bakın.
+DSC düğüme yüklenen modüllere bağlıdır. Azure Otomasyon Durumu Yapılandırması'nı kullanırken, [İçe Aktarma Modüllerinde](../shared-resources/modules.md#importing-modules)listelenen adımları kullanarak gerekli modülleri Otomasyon hesabınıza aktarın. Yapılandırmalar, modüllerin belirli sürümlerine de bağımlılık sağlayabilir. Daha fazla bilgi için [Sorun Giderme Modülleri'ne](shared-resources.md#modules)bakın.
 
 ## <a name="common-errors-when-working-with-dsc"></a>DSC ile çalışırken sık karşılaşılan hatalar
 

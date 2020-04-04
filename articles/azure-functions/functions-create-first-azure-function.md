@@ -3,14 +3,14 @@ title: Azure portalında ilk işlevinizi oluşturma
 description: Azure portalını kullanarak sunucusuz yürütme için ilk Azure İşlevinizi oluşturma hakkında bilgi edinin.
 ms.assetid: 96cf87b9-8db6-41a8-863a-abb828e3d06d
 ms.topic: quickstart
-ms.date: 03/06/2020
+ms.date: 03/26/2020
 ms.custom: mvc, devcenter, cc996988-fb4f-47
-ms.openlocfilehash: e7bb5e7b387c3ab1140a3fe475911bd0e428e2a5
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 417ad96dc3dea25e322dbdb4d81c034a9b9c1e80
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80057204"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656831"
 ---
 # <a name="create-your-first-function-in-the-azure-portal"></a>Azure portalında ilk işlevinizi oluşturma
 
@@ -34,27 +34,29 @@ Ardından, yeni işlev uygulamasında bir işlev oluşturun.
 
 ## <a name="create-an-http-triggered-function"></a><a name="create-function"></a>HTTP ile tetiklenen bir işlev oluşturma
 
-1. Yeni işlev uygulamanızı **+** genişletin, **Fonksiyonlar'ın**yanındaki düğmeyi seçin, **Portal Içi'ni**seçin ve sonra **Devam et'i**seçin.
+1. **Fonksiyonlar** penceresinin sol menüsünden **Fonksiyonlar'ı**seçin ve üst menüden **Ekle'yi** seçin. 
+ 
+1. Yeni **İşlev** penceresinden **Http tetikleyicisini**seçin.
 
-    ![Bir platform seçmek için işlevler hızlı başlatın.](./media/functions-create-first-azure-function/function-app-quickstart-choose-portal.png)
+    ![HTTP tetikleme işlevini seçin](./media/functions-create-first-azure-function/function-app-select-http-trigger.png)
 
-1. **WebHook + API'yi**seçin ve ardından **Oluştur'u**seçin.
+1. Yeni **İşlev** penceresinde, **Yeni İşlev**için varsayılan adı kabul edin veya yeni bir ad girin. 
 
-    ![Azure portalındaki İşlevler hızlı başlangıcı.](./media/functions-create-first-azure-function/function-app-quickstart-node-webhook.png)
+1. **Yetkilendirme düzeyi** açılır listesinden **Anonim'i** seçin ve ardından **İşlev Oluştur'u**seçin.
 
-   Dile özgü HTTP ile tetiklenen işlev şablonu kullanılarak bir işlev oluşturulur.
-
-Artık bir HTTP isteği göndererek yeni işlevi çalıştırabilirsiniz.
+    Azure, HTTP tetikleyici işlevini oluşturur. Artık bir HTTP isteği göndererek yeni işlevi çalıştırabilirsiniz.
 
 ## <a name="test-the-function"></a>İşlevi test etme
 
-1. Yeni işlevinizde sağ üstteki **</> İşlev URL'sini** alın'ı seçin. 
+1. Yeni HTTP tetikleyici işlevinizde, sol menüden **Kod + Test'i** seçin ve ardından üst menüden **işlev URL'sini al'ı** seçin.
 
-1. **İşlev** URL'si Al iletişim kutusunda, açılan listeden **varsayılan (İşlev tuşu)** seçeneğini belirleyin ve ardından **Kopyala'yı**seçin. 
+    ![İşlev URL'si Al'ı seçin](./media/functions-create-first-azure-function/function-app-select-get-function-url.png)
+
+1. **İşlev** URL'si Al iletişim kutusunda, açılan listeden **varsayılan ı** seçin ve ardından **pano simgesine** Kopyala'yı seçin. 
 
     ![Azure portalından işlev URL’sini kopyalama](./media/functions-create-first-azure-function/function-app-develop-tab-testing.png)
 
-1. İşlev URL'sini tarayıcınızın adres çubuğuna yapıştırın. Bu URL'nin `&name=<your_name>` sonuna sorgu dizesi değerini ekleyin ve isteği çalıştırmak için Enter tuşuna basın. 
+1. İşlev URL'sini tarayıcınızın adres çubuğuna yapıştırın. Bu URL'nin `?name=<your_name>` sonuna sorgu dizesi değerini ekleyin ve isteği çalıştırmak için Enter tuşuna basın. 
 
     Aşağıdaki örnekte tarayıcıdaki yanıt gösterilmektedir:
 
@@ -62,7 +64,7 @@ Artık bir HTTP isteği göndererek yeni işlevi çalıştırabilirsiniz.
 
     İstek URL’si, işlevinize HTTP üzerinden erişmek için varsayılan olarak gerekli olan bir anahtar içerir.
 
-1. İşleviniz çalıştığında, izleme bilgileri günlüklere yazılır. Önceki yürütmeden gelen izleme çıktısını görmek için, portaldaki işlevinize dönün ve **Günlükleri**genişletmek için ekranın altındaki oku seçin.
+1. İşleviniz çalıştığında, izleme bilgileri günlüklere yazılır. İzleme çıktısını görmek için portaldaki **Kod + Test** sayfasına dönün ve sayfanın altındaki **Günlükler** okunu genişletin.
 
    ![Azure portalında İşlevler günlük görüntüleyicisi.](./media/functions-create-first-azure-function/function-view-logs.png)
 

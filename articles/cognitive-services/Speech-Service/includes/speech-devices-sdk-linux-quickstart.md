@@ -5,12 +5,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
 ms.author: dapine
-ms.openlocfilehash: 81c77b2f6ae0c4f8497716c168a937657ceb57dd
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: d14760147e202491546982254aa8288bc0184eef
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78383871"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80658511"
 ---
 Bu hızlı başlangıçta, konuşma özellikli bir ürün oluşturmak veya [Konuşma Transkripsiyon](../conversation-transcription-service.md) aygıtı olarak kullanmak için Linux için Konuşma Aygıtları SDK'yı nasıl kullanacağınızı öğreneceksiniz. Şu anda yalnızca [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/) desteklenir.
 
@@ -99,7 +99,7 @@ Bu amaçları kullanmayı planlıyorsanız, bir [Dil Anlama Hizmeti (LUIS)](http
         <dependency>
              <groupId>com.microsoft.cognitiveservices.speech</groupId>
              <artifactId>client-sdk</artifactId>
-             <version>1.10.0</version>
+             <version>1.11.0</version>
         </dependency>
     </dependencies>
    ```

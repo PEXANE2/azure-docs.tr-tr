@@ -10,22 +10,22 @@ ms.subservice: ''
 ms.date: 08/23/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 9898addfa840752e27de8716d2185e767aac809b
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 0ffa33811957af95fc10396ffecef0b3de7959fe
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350100"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633013"
 ---
 # <a name="source-control-integration-for-sql-pool"></a>SQL havuzu için Kaynak Denetim Entegrasyonu
 
-Bu öğretici, SQL Server Data araçları (SSDT) veritabanı projenizi kaynak denetimiyle nasıl tümleştirilene özetler.  Kaynak denetimi tümleştirmesi, Azure Synapse Analytics'teki SQL havuz kaynağıyla sürekli tümleştirme ve dağıtım ardışık alan ınızın oluşturulmasının ilk adımıdır. 
+Bu öğretici, SQL Server Data araçları (SSDT) veritabanı projenizi kaynak denetimiyle nasıl tümleştirilene özetler.  Kaynak denetimi tümleştirmesi, Azure Synapse Analytics'teki SQL havuz kaynağıyla sürekli tümleştirme ve dağıtım ardışık alan ınızın oluşturulmasının ilk adımıdır.
 
 ## <a name="before-you-begin"></a>Başlamadan önce
 
 - [Azure DevOps kuruluşuna](https://azure.microsoft.com/services/devops/) kaydolun
-- [Oluştur ve Bağla](https://docs.microsoft.com/azure/sql-data-warehouse/create-data-warehouse-portal) öğreticisini gözden geçirin
--  [Visual Studio 2019'u Yükle](https://visualstudio.microsoft.com/vs/older-downloads/) 
+- [Oluştur ve Bağla](create-data-warehouse-portal.md) öğreticisini gözden geçirin
+- [Visual Studio 2019'u Yükle](https://visualstudio.microsoft.com/vs/older-downloads/)
 
 ## <a name="set-up-and-connect-to-azure-devops"></a>Azure DevOps'leri ayarlama ve bu tür lere bağlanma
 
@@ -53,7 +53,7 @@ Bu öğretici, SQL Server Data araçları (SSDT) veritabanı projenizi kaynak de
 
    ![İthalat Projesi](./media/sql-data-warehouse-source-control-integration/6-import-new-project.png "İthalat Projesi")  
 
-3. Visual Studio'daki takım gezgininde, tüm değişikliklerinizi yerel Git deponuzda gerçekleştirin 
+3. Visual Studio'daki takım gezgininde, tüm değişikliklerinizi yerel Git deponuzda gerçekleştirin
 
    ![İşleme](./media/sql-data-warehouse-source-control-integration/6.5-commit-push-changes.png "İşleme")  
 

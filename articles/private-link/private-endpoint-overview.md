@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: allensu
-ms.openlocfilehash: fd389c1e909e6875ead8410b5ca692b82c79e0de
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6782d745bfced576fe06019b0d41af86c8c63ed4
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80063067"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656267"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Azure Özel Bitiş Noktası nedir?
 
@@ -55,8 +55,8 @@ Azure Özel Uç Noktası sizi Azure Özel Bağlantı ile desteklenen bir hizmete
 |**Özel Bağlantı Hizmeti** (Kendi hizmetiniz)   |  Microsoft.Network/privateLinkServices       | empty |
 |**Azure SQL Veritabanı** | Microsoft.Sql/sunucular    |  Sql Server (sqlServer)        |
 |**Azure Synapse Analytics** | Microsoft.Sql/sunucular    |  Sql Server (sqlServer)        | 
-|**Azure Depolama**  | Microsoft.Storage/storageHesapları    |  Blob (blob, blob_secondary)<BR> Tablo (tablo, table_secondary)<BR> Sıra (sıra, queue_secondary)<BR> Dosya (dosya, file_secondary)<BR> Web (web, web_secondary)        |
-|**Azure Data Lake Storage 2. Nesil**  | Microsoft.Storage/storageHesapları    |  Blob (blob, blob_secondary)<BR> Veri Gölü Dosya Sistemi Gen2 (dfs, dfs_secondary)       |
+|**Azure Storage**  | Microsoft.Storage/storageHesapları    |  Blob (blob, blob_secondary)<BR> Tablo (tablo, table_secondary)<BR> Sıra (sıra, queue_secondary)<BR> Dosya (dosya, file_secondary)<BR> Web (web, web_secondary)        |
+|**Azure Data Lake Storage Gen2**  | Microsoft.Storage/storageHesapları    |  Blob (blob, blob_secondary)<BR> Veri Gölü Dosya Sistemi Gen2 (dfs, dfs_secondary)       |
 |**Azure Cosmos DB** | Microsoft.AzureCosmosDB/databaseHesapları | Sql, MongoDB, Cassandra, Gremlin, Tablo|
 |**PostgreSQL için Azure Veritabanı -Tek sunucu** | Microsoft.DBforPostgreSQL/sunucular   | postgresqlServer |
 |**MySQL için Azure Veritabanı** | Microsoft.DBforMySQL/sunucular    | mysqlServer |
@@ -68,11 +68,13 @@ Azure Özel Uç Noktası sizi Azure Özel Bağlantı ile desteklenen bir hizmete
 |**Azure Uygulama Yapılandırması** | Microsoft.Appconfiguration/configurationStores   | configurationStore |
 |**Azure Backup** | Microsoft.RecoveryServices/vaults   | kasa |
 |**Azure Event Hub** | Microsoft.EventHub/namespaces    | ad alanı |
-|**Azure Servis Veri Servisi** | Microsoft.ServiceBus/namespaces | ad alanı |
+|**Azure Service Bus** | Microsoft.ServiceBus/namespaces | ad alanı |
 |**Azure Geçişi** | Microsoft.Relay/namespaces | ad alanı |
 |**Azure Event Grid** | Microsoft.EventGrid/konular  | konu başlığı |
 |**Azure Event Grid** | Microsoft.EventGrid/etki alanları | etki alanı |
-|**Azure WebApps** | Microsoft.Web/siteler    | Siteler |
+|**Azure WebApps** | Microsoft.Web/siteler    | Site |
+|**Azure Makine Öğrenimi** | Microsoft.MachineLearningServices/çalışma alanları  | çalışma alanı |
+  
  
 ## <a name="network-security-of-private-endpoints"></a>Özel uç noktalarının ağ güvenliği 
 Azure hizmetleri için özel uç noktaları kullanırken, trafik belirli bir özel bağlantı kaynağına sabitlenir. Platform, yalnızca belirtilen özel bağlantı kaynağına ulaşan ağ bağlantılarını doğrulamak için bir erişim denetimi gerçekleştirir. Aynı Azure hizmetinde ek kaynaklara erişmek için ek özel uç noktalar gerekir. 
@@ -143,6 +145,7 @@ Azure hizmetleri için, aşağıdaki tabloda açıklandığı gibi önerilen bö
 |Azure Olay Kılavuz (Microsoft.EventGrid/konular)   | konu başlığı | Konu. {region}.privatelink.eventgrid.azure.net|
 |Azure Olay Grid (Microsoft.EventGrid/etki alanları) | etki alanı | Etki alanı. {region}.privatelink.eventgrid.azure.net |
 |Azure WebApps (Microsoft.Web/siteler) | Site | privatelink.azurewebsites.net |
+|Azure Machine Learning (Microsoft.MachineLearningServices/çalışma alanları)   | çalışma alanı | privatelink.api.azureml.ms |
  
 Azure, çözümü önerilen alan adlarına yönlendirmek için ortak DNS'de bir dns adı (CNAME) oluşturur. Özel uç noktalarınızın özel IP adresiyle çözünürlüğü geçersiz kılabilirsiniz. 
  

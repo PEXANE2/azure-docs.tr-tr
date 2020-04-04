@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 147f43148c0f804adf70f1a792ba1b8a772fdae4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8da8cd7110cd17d0aadd52cce1263c7c0fcfdf5c
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80294483"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632164"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Windows Veri Bilimi Sanal Makine'de yapabileceğiniz on şey
 
@@ -803,16 +803,6 @@ pd.read_sql(queryString, connection)
 ```
 
 ![Tablodan üst veri satırları](./media/vm-do-ten-things/DownSample_Data_For_Modeling_v2.PNG)
-
-#### <a name="read-data-from-hdi-by-using-azure-machine-learning-studio-classic-reader-module"></a>Azure Machine Learning Studio (klasik): okuyucu modüllerini kullanarak HDI'deki verileri okuyun
-
-Bir Hadoop kümesindeki veritabanına erişmek için Azure Machine Learning Studio'daki (klasik) okuyucu modüllerini de kullanabilirsiniz. HDI kümelerinde bir veritabanı kullanarak makine öğrenimi modelleri oluşturmayı etkinleştirmek için HDI kümelerinizin ve Azure depolama hesabınızın kimlik bilgilerini takın.
-
-![Okuyucu modülü özellikleri](./media/vm-do-ten-things/AML_Reader_Hive.PNG)
-
-Daha sonra puanlanan veri kümesini görüntüleyebilirsiniz:
-
-![Puanlanan veri kümesini görüntüleme](./media/vm-do-ten-things/AML_Model_Results.PNG)
 
 ### <a name="azure-sql-data-warehouse-and-databases"></a>Azure SQL Veri Ambarı ve veritabanları
 Azure SQL Veri Ambarı, kurumsal sınıf BIR SQL Server deneyimine sahip bir hizmet olarak esnek bir veri ambarıdır.

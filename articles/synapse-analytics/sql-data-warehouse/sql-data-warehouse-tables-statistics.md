@@ -1,6 +1,6 @@
 ---
 title: İstatistik oluşturma, güncelleme
-description: Azure SQL Veri Ambarı'ndaki tablolarda sorgu optimizasyonu istatistikleri oluşturma ve güncelleştirme önerileri ve örnekleri.
+description: Synapse SQL havuzundaki tablolarda sorgu optimizasyonu istatistikleri oluşturmak ve güncelleştirmek için öneriler ve örnekler.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,33 +11,42 @@ ms.date: 05/09/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: a6bdf9bcf2dfbb28244162bc7d88ced9194d0ac6
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 8ecd0909176560e6b51bcb8449cb681558d96f90
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80351178"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80628645"
 ---
-# <a name="table-statistics-in-azure-sql-data-warehouse"></a>Azure SQL Veri Ambarı'ndaki tablo istatistikleri
+# <a name="table-statistics-in-synapse-sql-pool"></a>Synapse SQL havuzunda tablo istatistikleri
 
-Azure SQL Veri Ambarı'ndaki tablolarda sorgu optimizasyonu istatistikleri oluşturma ve güncelleştirme önerileri ve örnekleri.
+Bu makalede, SQL havuzundaki tablolarda sorgu optimizasyonu istatistikleri oluşturmak ve güncelleştirmek için öneriler ve örnekler bulacaksınız.
 
 ## <a name="why-use-statistics"></a>İstatistikleri neden kullanır?
 
-Azure SQL Veri Ambarı verilerinizi ne kadar çok bilirse, karşı sorguları o kadar hızlı yürütebilir. VERILERI SQL Veri Ambarı'na yükledikten sonra, verilerinizle ilgili istatistikleri toplamak sorgularınızı en iyi duruma getirmek için yapabileceğiniz en önemli şeylerden biridir. SQL Veri Ambarı sorgu iyileştiricisi maliyet tabanlı bir iyileştiricidir. Çeşitli sorgu planlarının maliyetini karşılaştırır ve ardından planı en düşük maliyetle seçer. Çoğu durumda, en hızlı yürütecek planı seçer. Örneğin, en iyi duruma getirici, sorgunuzun filtrelenediğini tahmin ederse bir satır döndürür ve bir plan seçer. Seçili tarihin 1 milyon satır döndüreceğini tahmin ederse, farklı bir plan döndürecektir.
+SQL havuzu verileriniz hakkında ne kadar çok şey bilirse, karşı sorguları o kadar hızlı yürütebilir. VERILERI SQL havuzuna yükledikten sonra, verilerinizle ilgili istatistikler toplamak sorgularınızı en iyi duruma getirmek için yapabileceğiniz en önemli şeylerden biridir.
+
+SQL havuz sorgu optimize edici maliyet tabanlı bir optimizer olduğunu. Çeşitli sorgu planlarının maliyetini karşılaştırır ve ardından planı en düşük maliyetle seçer. Çoğu durumda, en hızlı yürütecek planı seçer.
+
+Örneğin, en iyi duruma getirici, sorgunuzun filtrelenediğini tahmin ederse bir satır döndürür ve bir plan seçer. Seçili tarihin 1 milyon satır döndüreceğini tahmin ederse, farklı bir plan döndürecektir.
 
 ## <a name="automatic-creation-of-statistic"></a>İstatistiklerin otomatik oluşturulması
 
-Veritabanı AUTO_CREATE_STATISTICS seçeneği olduğunda, SQL Veri Ambarı eksik istatistikler için gelen kullanıcı sorgularını analiz eder. İstatistikler eksikse, sorgu optimize edici, sorgu planının önemli lik tahminlerini iyileştirmek için sorgu yüklemindeki tek tek sütunlar veya birleştirme koşulu yla ilgili istatistikler oluşturur. İstatistiklerin otomatik oluşturulması şu anda varsayılan olarak açık.
+Veritabanı AUTO_CREATE_STATISTICS seçeneği anızda, SQL havuzu eksik istatistikler için gelen kullanıcı sorgularını çözümler.
 
-Veri ambarınızın AUTO_CREATE_STATISTICS aşağıdaki komutu çalıştırarak yapılandırılıp yapılandırılmamalarını denetleyebilirsiniz:
+İstatistikler eksikse, sorgu optimize edici, sorgu planının önemli lik tahminlerini iyileştirmek için sorgu yüklemindeki tek tek sütunlar veya birleştirme koşulu yla ilgili istatistikler oluşturur.
+
+> [!NOTE]
+> İstatistiklerin otomatik oluşturulması şu anda varsayılan olarak açık.
+
+SQL havuzunuzun AUTO_CREATE_STATISTICS aşağıdaki komutu çalıştırarak yapılandırılıp yapılandırılmadınızı kontrol edebilirsiniz:
 
 ```sql
 SELECT name, is_auto_create_stats_on
 FROM sys.databases
 ```
 
-Veri ambarınızda AUTO_CREATE_STATISTICS yapılandırılmamışsa, aşağıdaki komutu çalıştırarak bu özelliği etkinleştirmenizi öneririz:
+SQL havuzunuzda AUTO_CREATE_STATISTICS yapılandırılmamışsa, aşağıdaki komutu çalıştırarak bu özelliği etkinleştirmenizi öneririz:
 
 ```sql
 ALTER DATABASE <yourdatawarehousename>
@@ -56,7 +65,9 @@ Bu ifadeler istatistiklerin otomatik oluşturulmasını tetikler:
 > [!NOTE]
 > İstatistiklerin otomatik oluşturulması geçici veya dış tablolarda oluşturulmaz.
 
-İstatistiklerin otomatik olarak oluşturulması eşzamanlı olarak yapılır, bu nedenle sütunlarınız istatistikleri eksikse biraz bozulmuş sorgu performansına maruz kalabilirsiniz. Tek bir sütun için istatistik oluşturma zamanı tablonun boyutuna bağlıdır. Ölçülebilir performans bozulmasını önlemek için, özellikle performans kıyaslama, sistem profiloluşturmadan önce kıyaslama iş yükünü çalıştırarak önce istatistiklerin oluşturulduğundan emin olmalısınız.
+İstatistiklerin otomatik olarak oluşturulması eşzamanlı olarak yapılır, bu nedenle sütunlarınız istatistikleri eksikse biraz bozulmuş sorgu performansına maruz kalabilirsiniz. Tek bir sütun için istatistik oluşturma zamanı tablonun boyutuna bağlıdır.
+
+Ölçülebilir performans bozulmasını önlemek için, sistem profil oluşturmadan önce kıyaslama iş yükünü çalıştırarak önce istatistiklerin oluşturulduğundan emin olmalısınız.
 
 > [!NOTE]
 > İstatistiklerin oluşturulması farklı bir kullanıcı bağlamında [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=azure-sqldw-latest) günlüğe kaydedilir.
@@ -67,11 +78,15 @@ Otomatik istatistikler oluşturulduğunda, onlar formu alır: _hex_>_ 8 haneli s
 DBCC SHOW_STATISTICS (<table_name>, <target>)
 ```
 
-table_name, görüntülenecek istatistikleri içeren tablonun adıdır. Bu harici bir tablo olamaz. Hedef, istatistik bilgilerini görüntülemek için hedef dizinin, istatistiklerin veya sütunun adıdır.
+table_name, görüntülenecek istatistikleri içeren tablonun adıdır. Bu tablo harici bir tablo olamaz. Hedef, istatistik bilgilerini görüntülemek için hedef dizinin, istatistiklerin veya sütunun adıdır.
 
-## <a name="updating-statistics"></a>İstatistikleri güncelleştirme
+## <a name="update-statistics"></a>İstatistikleri güncelleştirme
 
-En iyi uygulama, yeni tarihler eklendikçe tarih sütunlarına ilişkin istatistikleri her gün güncelleştirmektir. Veri ambarına her yeni satır yüklendiğinde, yeni yükleme tarihleri veya hareket tarihleri eklenir. Bunlar veri dağıtımını değiştirir ve istatistikleri güncel hale getirin. Tersine, bir müşteri tablosundaki ülke/bölge sütunundaki istatistiklerin güncelleştirilmesi gerekmeyebilir, çünkü değerlerin dağıtımı genellikle değişmez. Dağıtımın müşteriler arasında sabit olduğunu varsayarsak, tablo varyasyonuna yeni satırlar eklemek veri dağıtımını değiştirmez. Ancak, veri ambarınız yalnızca bir ülke/bölge içeriyorsa ve yeni bir ülkeden/bölgeden veri getiriyorsanız ve bu da birden çok ülkeden/bölgeden gelen verilerin depolanmasıyla sonuçlanırsa, ülke/bölge sütunundaki istatistikleri güncelleştirmeniz gerekir.
+En iyi uygulama, yeni tarihler eklendikçe tarih sütunlarına ilişkin istatistikleri her gün güncelleştirmektir. Sql havuzuna her yeni satır yüklendiğinde, yeni yükleme tarihleri veya hareket tarihleri eklenir. Bu eklemeler veri dağıtımını değiştirir ve istatistikleri güncel hale getirin.
+
+Değer dağılımı genellikle değişmediğinden, müşteri tablosundaki ülke/bölge sütunundaki istatistiklerin hiçbir zaman güncelleştirilmesi gerekmeyebilir. Dağıtımın müşteriler arasında sabit olduğunu varsayarsak, tablo varyasyonuna yeni satırlar eklemek veri dağıtımını değiştirmez.
+
+Ancak, SQL havuzunuzyalnızca bir ülke/bölge içeriyorsa ve yeni bir ülkeden/bölgeden veri getiriyorsanız ve bu da birden çok ülkeden/bölgeden verilerin depolanmasına neden oluyorsa, ülke/bölge sütunundaki istatistikleri güncelleştirmeniz gerekir.
 
 İstatistikleri güncelleyen öneriler şunlardır:
 
@@ -82,9 +97,14 @@ En iyi uygulama, yeni tarihler eklendikçe tarih sütunlarına ilişkin istatist
 
 Sorgusorunu giderirken sormanız gereken ilk sorulardan biri **şudur: "İstatistikler güncel mi?"**
 
-Bu soru, verilerin yaşına göre cevaplanabilecek bir soru değildir. Temel verilerde herhangi bir maddi değişiklik yoksa, güncel bir istatistik nesnesi eski olabilir. Satır sayısı önemli ölçüde değiştiğinde veya bir sütuniçin değerlerin dağılımında önemli bir değişiklik *olduğunda,* istatistikleri güncelleştirme zamanı gelmiştir.
+Bu soru, verilerin yaşına göre cevaplanabilecek bir soru değildir. Temel verilerde herhangi bir maddi değişiklik yoksa, güncel bir istatistik nesnesi eski olabilir.
 
-İstatistikler son kez güncelleştirilip güncelleştirilmediğinden beri tablo içindeki verilerin değişip değişmediğini belirlemek için dinamik bir yönetim görünümü yoktur. İstatistiklerinizin yaşını bilmek, resmin bir kısmını sağlayabilir. İstatistiklerinizin her tabloda en son ne zaman güncelleştirileni belirlemek için aşağıdaki sorguyu kullanabilirsiniz.
+> [!TIP]
+> Satır sayısı önemli ölçüde değiştiğinde veya bir sütuniçin değerlerin dağılımında önemli bir değişiklik *olduğunda,* istatistikleri güncelleştirme zamanı gelmiştir.
+
+İstatistikler son kez güncelleştirilip güncelleştirilmediğinden beri tablo içindeki verilerin değişip değişmediğini belirlemek için dinamik bir yönetim görünümü yoktur. İstatistiklerinizin yaşını bilmek, resmin bir kısmını sağlayabilir.
+
+İstatistiklerinizin her tabloda en son ne zaman güncelleştirileni belirlemek için aşağıdaki sorguyu kullanabilirsiniz.
 
 > [!NOTE]
 > Bir sütuniçin değerlerin dağılımında önemli bir değişiklik varsa, istatistikleri en son ne zaman güncelleştirildiklerine bakılmaksızın güncelleştirmeniz gerekir.
@@ -116,21 +136,27 @@ WHERE
     st.[user_created] = 1;
 ```
 
-Örneğin, bir veri ambarındaki **tarih sütunları** genellikle sık sık istatistik güncelleştirmeleri gerekir. Veri ambarına her yeni satır yüklendiğinde, yeni yükleme tarihleri veya hareket tarihleri eklenir. Bunlar veri dağıtımını değiştirir ve istatistikleri güncel hale getirin. Tersine, müşteri tablosundaki cinsiyet sütunundaki istatistiklerin hiçbir zaman güncelleştirilmesi gerekmeyebilir. Dağıtımın müşteriler arasında sabit olduğunu varsayarsak, tablo varyasyonuna yeni satırlar eklemek veri dağıtımını değiştirmez. Ancak, veri ambarınız yalnızca bir cinsiyet içeriyorsa ve yeni bir gereksinim birden çok cinsiyetle sonuçalıyorsa, cinsiyet sütunundaki istatistikleri güncelleştirmeniz gerekir.
+Örneğin, BIR SQL havuzundaki **tarih sütunları** genellikle sık sık istatistik güncelleştirmeleri gerekir. Sql havuzuna her yeni satır yüklendiğinde, yeni yükleme tarihleri veya hareket tarihleri eklenir. Bu eklemeler veri dağıtımını değiştirir ve istatistikleri güncel hale getirin.
+
+Tersine, müşteri tablosundaki cinsiyet sütunundaki istatistiklerin hiçbir zaman güncelleştirilmesi gerekmeyebilir. Dağıtımın müşteriler arasında sabit olduğunu varsayarsak, tablo varyasyonuna yeni satırlar eklemek veri dağıtımını değiştirmez.
+
+SQL havuzunuz yalnızca bir cinsiyet içeriyorsa ve birden çok cinsiyette yeni bir gereksinim sonuç alıyorsa, cinsiyet sütunundaki istatistikleri güncelleştirmeniz gerekir.
 
 Daha fazla bilgi için [İstatistikler](/sql/relational-databases/statistics/statistics)için genel kılavuza bakın.
 
 ## <a name="implementing-statistics-management"></a>İstatistik yönetiminin uygulanması
 
-İstatistiklerin yükün sonunda güncelleştirilmesini sağlamak için veri yükleme işlemini genişletmek genellikle iyi bir fikirdir. Veri yükü, tabloların boyutlarını ve/veya değer dağılımlarını en sık değiştirdiği zamandır. Bu nedenle, bu bazı yönetim süreçlerini uygulamak için mantıklı bir yerdir.
+İstatistiklerin yükün sonunda güncelleştirilmesini sağlamak için veri yükleme işlemini genişletmek genellikle iyi bir fikirdir.
+
+Veri yükü, tabloların boyutlarını ve/veya değer dağılımlarını en sık değiştirdiği zamandır. Veri yükleme, bazı yönetim süreçlerini uygulamak için mantıklı bir yerdir.
 
 Yükleme işlemi sırasında istatistiklerinizi güncelleştirmek için aşağıdaki kılavuz ilkeler sağlanır:
 
-* Yüklenen her tabloda en az bir istatistik nesnesi güncelleştirdiğinden emin olun. Bu, istatistik güncelleştirmesinin bir parçası olarak tablo boyutunu (satır sayısı ve sayfa sayısı) bilgilerini güncelleştirir.
-* JOIN, GROUP BY, ORDER BY ve DISTINCT yan tümcelerine katılan sütunlara odaklanın.
-* Bu değerler histogram istatistiklerine dahil edilmeyeceğine göre, işlem tarihleri gibi "artan anahtar" sütunlarını daha sık güncelleştirmeyi düşünün.
-* Statik dağıtım sütunlarını daha az sıklıkta güncelleştirmeyi düşünün.
-* Unutmayın, her istatistik nesnesi sırayla güncelleştirilir. Özellikle çok `UPDATE STATISTICS <TABLE_NAME>` sayıda istatistik nesnesi olan geniş tablolar için, uygulama her zaman ideal değildir.
+- Yüklenen her tabloda en az bir istatistik nesnesi güncelleştirdiğinden emin olun. Bu, istatistik güncelleştirmesinin bir parçası olarak tablo boyutunu (satır sayısı ve sayfa sayısı) bilgilerini güncelleştirir.
+- JOIN, GROUP BY, ORDER BY ve DISTINCT yan tümcelerine katılan sütunlara odaklanın.
+- Bu değerler histogram istatistiklerine dahil edilmeyeceğine göre, işlem tarihleri gibi "artan anahtar" sütunlarını daha sık güncelleştirmeyi düşünün.
+- Statik dağıtım sütunlarını daha az sıklıkta güncelleştirmeyi düşünün.
+- Unutmayın, her istatistik nesnesi sırayla güncelleştirilir. Özellikle çok `UPDATE STATISTICS <TABLE_NAME>` sayıda istatistik nesnesi olan geniş tablolar için, uygulama her zaman ideal değildir.
 
 Daha fazla bilgi için [Kardinallik Tahmini'ne](/sql/relational-databases/performance/cardinality-estimation-sql-server)bakın.
 
@@ -140,9 +166,9 @@ Bu örnekler, istatistik oluşturmak için çeşitli seçeneklerin nasıl kullan
 
 ### <a name="create-single-column-statistics-with-default-options"></a>Varsayılan seçenekleri olan tek sütunlu istatistikler oluşturma
 
-Bir sütunda istatistik oluşturmak için, istatistik nesnesi ve sütunun adı için bir ad sağlamanız yeterlidir.
+Bir sütunda istatistik oluşturmak için, istatistik nesnesi ve sütunun adı için bir ad sağlayın.
 
-Bu sözdizimi tüm varsayılan seçenekleri kullanır. Varsayılan olarak, SQL Veri Ambarı istatistik oluştururken tablonun **yüzde 20'sini** örnekler.
+Bu sözdizimi tüm varsayılan seçenekleri kullanır. Varsayılan olarak, SQL havuzu istatistik oluştururken tablonun **yüzde 20'sini** örnekler.
 
 ```sql
 CREATE STATISTICS [statistics_name] ON [schema_name].[table_name]([column_name]);
@@ -205,7 +231,7 @@ Tam başvuru için, CREATE [STATISTICS'a](/sql/t-sql/statements/create-statistic
 
 ### <a name="create-multi-column-statistics"></a>Çok sütunlu istatistikler oluşturma
 
-Çok sütunlu istatistik nesnesi oluşturmak için önceki örnekleri kullanmanız, ancak daha fazla sütun belirtin.
+Çok sütunlu istatistik nesnesi oluşturmak için önceki örnekleri kullanın, ancak daha fazla sütun belirtin.
 
 > [!NOTE]
 > Sorgu sonucundaki satır sayısını tahmin etmek için kullanılan histogram, yalnızca istatistik nesnesi tanımında listelenen ilk sütun için kullanılabilir.
@@ -242,9 +268,9 @@ CREATE STATISTICS stats_col3 on dbo.table3 (col3);
 
 ### <a name="use-a-stored-procedure-to-create-statistics-on-all-columns-in-a-database"></a>Veritabanındaki tüm sütunlarda istatistik oluşturmak için depolanmış yordamı kullanma
 
-SQL Veri Ambarı'nda SQL Server'da sp_create_stats eşdeğer bir sistem depolanan yordamı yoktur. Bu depolanan yordam, veritabanının zaten istatistikleri olmayan her sütununda tek bir sütun istatistik nesnesi oluşturur.
+SQL havuzunda SQL Server'da sp_create_stats eşdeğer bir sistem depolanan yordamı yoktur. Bu depolanan yordam, veritabanının zaten istatistikleri olmayan her sütununda tek bir sütun istatistik nesnesi oluşturur.
 
-Aşağıdaki örnek, veritabanı tasarımınıza başlamanıza yardımcı olacaktır. İhtiyaçlarınıza göre uyarlamakiçin çekinmeyin:
+Aşağıdaki örnek, veritabanı tasarımınıza başlamanıza yardımcı olacaktır. İhtiyaçlarınıza göre uyarlamakiçin çekinmeyin.
 
 ```sql
 CREATE PROCEDURE    [dbo].[prc_sqldw_create_stats]
@@ -338,19 +364,17 @@ Varsayılanları kullanarak tablodaki tüm sütunlarda istatistik oluşturmak i�
 EXEC [dbo].[prc_sqldw_create_stats] 1, NULL;
 ```
 
-Tam scan kullanarak tablodaki tüm sütunlarda istatistik oluşturmak için şu yordamı arayın:
+Tam scan kullanarak tablodaki tüm sütunlar üzerinde istatistik oluşturmak için bu yordamı arayın.
 
 ```sql
 EXEC [dbo].[prc_sqldw_create_stats] 2, NULL;
 ```
 
-Tablodaki tüm sütunlarda örneklenmiş istatistikler oluşturmak için 3 ve örnek yüzdesi girin. Bu yordamlar yüzde 20 örnek oranı kullanır.
+Tablodaki tüm sütunlarda örneklenmiş istatistikler oluşturmak için 3 ve örnek yüzdesi girin. Bu yordam yüzde 20 örnek oranı kullanır.
 
 ```sql
 EXEC [dbo].[prc_sqldw_create_stats] 3, 20;
 ```
-
-Tüm sütunlarda örneklenmiş istatistikler oluşturmak için
 
 ## <a name="examples-update-statistics"></a>Örnekler: İstatistikleri güncelleştir
 
@@ -373,7 +397,7 @@ UPDATE STATISTICS [schema_name].[table_name]([stat_name]);
 UPDATE STATISTICS [dbo].[table1] ([stats_col1]);
 ```
 
-Belirli istatistik nesnelerini güncelleştirerek, istatistikleri yönetmek için gereken zamanı ve kaynakları en aza indirebilirsiniz. Bu, güncelleştirmek için en iyi istatistik nesnelerini seçmek için bazı düşünce gerektirir.
+Belirli istatistik nesnelerini güncelleştirerek, istatistikleri yönetmek için gereken zamanı ve kaynakları en aza indirebilirsiniz. Bunu yapmak için güncellemek için en iyi istatistik nesneleri seçmek için bazı düşünce gerektirir.
 
 ### <a name="update-all-statistics-on-a-table"></a>Tablodaki tüm istatistikleri güncelleştirme
 
@@ -392,7 +416,7 @@ UPDATE STATISTICS dbo.table1;
 UPDATE İstATİstİkler deyiminin kullanımı kolaydır. Yalnızca, masadaki *tüm* istatistikleri günceller ve bu nedenle gerekenden daha fazla iş gerçekleştirebileceğini unutmayın. Performans bir sorun değilse, istatistiklerin güncel olduğunu garanti etmenin en kolay ve en eksiksiz yoludur.
 
 > [!NOTE]
-> Bir tablodaki tüm istatistikleri güncellerken, SQL Veri Ambarı her istatistik nesnesi için tabloyu örneklemek için bir taramaya yapar. Tablo büyükse ve çok sayıda sütun ve çok sayıda istatistik varsa, tek tek istatistikleri ihtiyaca göre güncelleştirmek daha verimli olabilir.
+> Bir tablodaki tüm istatistikleri güncellerken, SQL havuzu her istatistik nesnesi için tabloyu örneklemek için bir taramaya yapar. Tablo büyükse ve çok sayıda sütun ve çok sayıda istatistik varsa, tek tek istatistikleri ihtiyaca göre güncelleştirmek daha verimli olabilir.
 
 Yordamın `UPDATE STATISTICS` uygulanması için [Geçici Tablolar'a](sql-data-warehouse-tables-temporary.md)bakın. Uygulama yöntemi önceki `CREATE STATISTICS` yordamdan biraz farklıdır, ancak sonuç aynıdır.
 
@@ -473,7 +497,10 @@ DBCC SHOW_STATISTICS() bir istatistik nesnesi içinde tutulan verileri gösterir
 - Yoğunluk vektörü
 - Histogram
 
-İstatistikler hakkında üstbilgi meta verileri. Histogram, istatistik nesnesinin ilk anahtar sütunundaki değerlerin dağılımını görüntüler. Yoğunluk vektörü çapraz sütun bağıntısını ölçer. SQL Veri Ambarı, istatistik nesnesindeki verilerden herhangi biriyle kardinallik tahminlerini hesaplar.
+İstatistikler hakkında üstbilgi meta verileri. Histogram, istatistik nesnesinin ilk anahtar sütunundaki değerlerin dağılımını görüntüler. Yoğunluk vektörü çapraz sütun bağıntısını ölçer.
+
+> [!NOTE]
+> SQL havuzu, istatistik nesnesindeki verilerden herhangi biriyle kardinallik tahminlerini hesaplar.
 
 ### <a name="show-header-density-and-histogram"></a>Üstbilgi, yoğunluk ve histogramı göster
 
@@ -505,7 +532,7 @@ DBCC SHOW_STATISTICS (dbo.table1, stats_col1) WITH histogram, density_vector
 
 ## <a name="dbcc-show_statistics-differences"></a>DBCC SHOW_STATISTICS() farkları
 
-DBCC SHOW_STATISTICS() SQL Veri Ambarı'nda SQL Server'a göre daha sıkı bir şekilde uygulanır:
+DBCC SHOW_STATISTICS() SQL Server'a göre SQL havuzunda daha sıkı bir şekilde uygulanır:
 
 - Belgelenmemiş özellikler desteklenmez.
 - Stats_stream kullanamaz.

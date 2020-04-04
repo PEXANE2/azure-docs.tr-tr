@@ -11,12 +11,12 @@ ms.date: 05/28/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 5d5b2509b212172758fa867d9f27b829f43aeeaa
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 685d6970b0e88032fe503bf97a139c0b8c0f8a73
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80349108"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631344"
 ---
 # <a name="quickstart-create-and-query-a-synapse-sql-pool-using-the-azure-portal"></a>Hızlı başlatma: Azure portalını kullanarak bir Synapse SQL havuzu oluşturma ve sorgula
 
@@ -29,7 +29,7 @@ Azure portalını kullanarak Azure Synapse Analytics'te (eski adıyla SQL DW) bi
    > [!NOTE]
    > Azure Synapse'de SQL havuzu oluşturmak, faturalandırılabilir yeni bir hizmete neden olabilir. Daha fazla bilgi için Azure [Synapse Analytics fiyatlandırması](https://azure.microsoft.com/pricing/details/synapse-analytics/)bölümüne bakın.
 
-2. [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)’nun (SSMS) en yeni sürümünü indirin ve yükleyin.
+2. [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)’nun (SSMS) en yeni sürümünü indirin ve yükleyin.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portalında oturum açın
 
@@ -37,7 +37,7 @@ Azure portalını kullanarak Azure Synapse Analytics'te (eski adıyla SQL DW) bi
 
 ## <a name="create-a-sql-pool"></a>SQL havuzu oluşturma
 
-Veri ambarları, Azure Synapse Analytics'teki SQL havuzu kullanılarak oluşturulur. Tanımlı bir [işlem kaynakları](memory-concurrency-limits.md)kümesiyle bir SQL havuzu oluşturulur. Veritabanı bir [Azure kaynak grubu](../../azure-resource-manager/management/overview.md) ve bir [Azure SQL mantıksal sunucusu](../../sql-database/sql-database-servers.md) içinde oluşturulur.
+Veri ambarları, Azure Synapse Analytics'teki SQL havuzu kullanılarak oluşturulur. Tanımlı bir [işlem kaynakları](memory-concurrency-limits.md)kümesiyle bir SQL havuzu oluşturulur. Veritabanı bir [Azure kaynak grubu](../../azure-resource-manager/management/overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) ve bir [Azure SQL mantıksal sunucusu](../../sql-database/sql-database-servers.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) içinde oluşturulur.
 
 **AdventureWorksDW** örnek verilerini içeren bir SQL havuzu oluşturmak için aşağıdaki adımları izleyin.
 
@@ -54,9 +54,9 @@ Veri ambarları, Azure Synapse Analytics'teki SQL havuzu kullanılarak oluşturu
    | Ayar | Önerilen değer | Açıklama |
    | :------ | :-------------- | :---------- |
    | **Abonelik** | Aboneliğiniz | Abonelikleriniz hakkında daha ayrıntılı bilgi için bkz. [Abonelikler](https://account.windowsazure.com/Subscriptions). |
-   | **Kaynak grubu** | myResourceGroup | Geçerli kaynak grubu adları için bkz. [Adlandırma kuralları ve kısıtlamalar](/azure/architecture/best-practices/resource-naming). |
-   | **SQL havuz adı** | Herhangi bir küresel benzersiz adı (Bir örnek *mySampleDataWarehouse*olduğunu) | Geçerli veritabanı adları için bkz. [Veritabanı Tanımlayıcıları](/sql/relational-databases/databases/database-identifiers). Not, SQL havuzu veritabanı bir türüdür. |
-   | **Sunucu** | Genel olarak benzersiz bir ad | Varolan sunucuseçin veya yeni bir sunucu adı oluşturun, **yeni oluştur'u**seçin. Geçerli sunucu adları için bkz. [Adlandırma kuralları ve kısıtlamalar](/azure/architecture/best-practices/resource-naming). |
+   | **Kaynak grubu** | myResourceGroup | Geçerli kaynak grubu adları için bkz. [Adlandırma kuralları ve kısıtlamalar](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). |
+   | **SQL havuz adı** | Herhangi bir küresel benzersiz adı (Bir örnek *mySampleDataWarehouse*olduğunu) | Geçerli veritabanı adları için bkz. [Veritabanı Tanımlayıcıları](/sql/relational-databases/databases/database-identifiers?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest). Not, SQL havuzu veritabanı bir türüdür. |
+   | **Sunucu** | Genel olarak benzersiz bir ad | Varolan sunucuseçin veya yeni bir sunucu adı oluşturun, **yeni oluştur'u**seçin. Geçerli sunucu adları için bkz. [Adlandırma kuralları ve kısıtlamalar](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). |
 
    ![veri ambarı temel ayrıntıları oluşturma](./media/create-data-warehouse-portal/create-sql-pool-basics.png)
 
@@ -78,7 +78,7 @@ Veri ambarları, Azure Synapse Analytics'teki SQL havuzu kullanılarak oluşturu
 
 ## <a name="create-a-server-level-firewall-rule"></a>Sunucu düzeyinde bir güvenlik duvarı kuralı oluşturma
 
-Azure Synapse hizmeti sunucu düzeyinde bir güvenlik duvarı oluşturur. Bu güvenlik duvarı, harici uygulamaların ve araçların sunucuya veya sunucudaki veritabanlarına bağlanmasını engeller. Bağlantıyı etkinleştirmek için, belirli IP adresleri için bağlantıyı etkinleştiren güvenlik duvarı kuralları ekleyebilirsiniz. İstemcinizin IP adresine yönelik bir [sunucu düzeyi güvenlik duvarı kuralı](../../sql-database/sql-database-firewall-configure.md) oluşturmak için bu adımları izleyin.
+Azure Synapse hizmeti sunucu düzeyinde bir güvenlik duvarı oluşturur. Bu güvenlik duvarı, harici uygulamaların ve araçların sunucuya veya sunucudaki veritabanlarına bağlanmasını engeller. Bağlantıyı etkinleştirmek için, belirli IP adresleri için bağlantıyı etkinleştiren güvenlik duvarı kuralları ekleyebilirsiniz. İstemcinizin IP adresine yönelik bir [sunucu düzeyi güvenlik duvarı kuralı](../../sql-database/sql-database-firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) oluşturmak için bu adımları izleyin.
 
 > [!NOTE]
 > Azure Synapse bağlantı noktası 1433 üzerinden iletişim kurar. Kurumsal ağ içinden bağlanmaya çalışıyorsanız, ağınızın güvenlik duvarı tarafından 1433 numaralı bağlantı noktası üzerinden giden trafiğe izin verilmiyor olabilir. Bu durumda BT departmanınız 1433 numaralı bağlantı noktasını açmadığı sürece Azure SQL Veritabanı sunucunuza bağlanamazsınız.
@@ -124,7 +124,7 @@ SQL sunucunuzun tam sunucu adını Azure portalından alabilirsiniz. Daha sonra 
 
 ## <a name="connect-to-the-server-as-server-admin"></a>Sunucu yöneticisi olarak sunucuya bağlanma
 
-Bu bölümde Azure SQL sunucunuzla bağlantı kurmak için [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) kullanılmaktadır.
+Bu bölümde Azure SQL sunucunuzla bağlantı kurmak için [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS) kullanılmaktadır.
 
 1. SQL Server Management Studio’yu açın.
 
@@ -134,18 +134,18 @@ Bu bölümde Azure SQL sunucunuzla bağlantı kurmak için [SQL Server Managemen
    | :------ | :-------------- | :---------- |
    | Sunucu türü | Veritabanı altyapısı | Bu değer gereklidir |
    | Sunucu adı | Tam sunucu adı | İşte bir örnek: **sqlpoolservername.database.windows.net**. |
-   | Kimlik doğrulaması | SQL Server Kimlik Doğrulaması | Bu öğreticide yapılandırılan tek kimlik doğrulaması türü SQL Kimlik Doğrulamasıdır. |
+   | Kimlik Doğrulaması | SQL Server Kimlik Doğrulaması | Bu öğreticide yapılandırılan tek kimlik doğrulaması türü SQL Kimlik Doğrulamasıdır. |
    | Oturum Aç | Sunucu yöneticisi hesabı | Sunucuyu oluşturduğunuzda belirttiğiniz hesap. |
    | Parola | Sunucu yöneticisi hesabınızın parolası | Sunucuyu oluşturduğunuzda belirttiğiniz parola. |
    ||||
 
    ![sunucuya bağlan](./media/create-data-warehouse-portal/connect-to-server-ssms.png)
 
-3. **Connect'i**seçin. SSMS’te Nesne Gezgini penceresi açılır. 
+3. **Connect'i**seçin. SSMS’te Nesne Gezgini penceresi açılır.
 
 4. Nesne Gezgini’nde, **Veritabanları**’nı genişletin. Daha sonra yeni veritabanınızdaki nesneleri görüntülemek için **mySampleDatabase**’i genişletin.
 
-   ![veritabanı nesneleri](./media/create-data-warehouse-portal/connected-ssms.png) 
+   ![veritabanı nesneleri](./media/create-data-warehouse-portal/connected-ssms.png)
 
 ## <a name="run-some-queries"></a>Sorgular çalıştırma
 
@@ -163,7 +163,7 @@ SQL Veri Ambarı sorgu dili olarak T-SQL kullanır. Bir sorgu penceresi açıp T
 
    ![Sorgu veritabanları](./media/create-data-warehouse-portal/query-databases.png)
 
-4. Verilere bakmak için, Adams soyadına sahip ve üç çocuğu olan müşteri sayısını görmek için aşağıdaki komutu kullanın. Sonuçlarda altı müşteri listelenir. 
+4. Verilere bakmak için, Adams soyadına sahip ve üç çocuğu olan müşteri sayısını görmek için aşağıdaki komutu kullanın. Sonuçlarda altı müşteri listelenir.
 
     ```sql
     SELECT LastName, FirstName FROM dbo.dimCustomer
@@ -196,4 +196,4 @@ Artık ihtiyacınız olmayan kaynakları temizlemek için aşağıdaki adımlar�
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-SQL havuzunuza veri yükleme hakkında daha fazla bilgi edinmek [için, verileri SQL havuzu makalesine yüklemeye](load-data-from-azure-blob-storage-using-polybase.md) devam edin. 
+SQL havuzunuza veri yükleme hakkında daha fazla bilgi edinmek [için, verileri SQL havuzu makalesine yüklemeye](load-data-from-azure-blob-storage-using-polybase.md) devam edin.

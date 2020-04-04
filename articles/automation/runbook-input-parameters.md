@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: 17be351d4af3d277242af70ea96e8735a5f68bc9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3741adbab6bcbc68f266c331e3056013afc0105e
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78329094"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656021"
 ---
 # <a name="runbook-input-parameters"></a>Runbook giriş parametreleri
 
@@ -33,7 +33,7 @@ Azure Otomasyonu'ndaki PowerShell ve PowerShell İş Akışı çalışma kitapla
 |:--- |:--- |
 | Tür |Gereklidir. Parametre değeri için beklenen veri türü. Herhangi bir .NET türü geçerlidir. |
 | Adı |Gereklidir. Parametrenin adı. Bu ad runbook içinde benzersiz olmalıdır, bir harf ile başlamalı ve yalnızca harfler, sayılar veya alt çizgi karakterleri içerebilir. |
-| Zorunlu |İsteğe bağlı. Parametrenin bir değer gerektirip gerektirmeyini belirten Boolean değeri. Bunu **doğru**ayarlarsanız, runbook başlatıldığında bir değer sağlanmalıdır. Bunu **false**olarak ayarlarsanız, bir değer isteğe bağlıdır. **Zorunlu** özellik için bir değer belirtmezseniz, PowerShell varsayılan olarak isteğe bağlı giriş parametresini dikkate alır. |
+| Zorunlu |İsteğe bağlı. Parametrenin bir değer gerektirip gerektirmeyini belirten Boolean değeri. Bunu True olarak ayarlarsanız, runbook başlatıldığında bir değer sağlanmalıdır. Bunu False olarak ayarlarsanız, bir değer isteğe bağlıdır. `Mandatory` Özellik için bir değer belirtmezseniz, PowerShell varsayılan olarak isteğe bağlı giriş parametresini dikkate alır. |
 | Varsayılan değer |İsteğe bağlı. Runbook başlatıldığında giriş değeri geçirilirse parametre için kullanılan değer. Runbook herhangi bir parametre için varsayılan bir değer ayarlayabilir. |
 
 Windows PowerShell, doğrulama, diğer ad ve parametre kümeleri gibi yukarıda listelenenlerden daha fazla giriş parametreleri özniteliklerini destekler. Ancak Azure Otomasyonu şu anda yalnızca listelenen giriş parametresi özelliklerini destekler.
@@ -51,13 +51,13 @@ Param
 )
 ```
 
-Şimdi, tek bir VM veya kaynak grubundaki tüm VM'ler gibi sanal makinelerle ilgili ayrıntıları ortaya koyan powershell iş akışı çalışma kitabının giriş parametrelerini yapılandıralım. Bu runbook aşağıdaki ekran görüntüsünde gösterildiği gibi iki parametre vardır: sanal makinenin adı (*VMName*) ve kaynak grubunun adı (*resourceGroupName*).
+Şimdi, tek bir VM veya kaynak grubundaki tüm VM'ler gibi sanal makinelerle ilgili ayrıntıları ortaya koyan powershell iş akışı çalışma kitabının giriş parametrelerini yapılandıralım. Bu runbook aşağıdaki ekran görüntüsünde gösterildiği gibi iki parametre`VMName`vardır: sanal makinenin adı`resourceGroupName`( ) ve kaynak grubunun adı ( ).
 
 ![Otomasyon PowerShell İş Akışı](media/automation-runbook-input-parameters/automation-01-powershellworkflow.png)
 
 Bu parametre tanımında, giriş parametreleri tip dizesinin basit parametreleridir.
 
-PowerShell ve PowerShell İş Akışı runbook'ların giriş parametreleri için **nesne** veya **PSCredential** gibi tüm basit türleri ve karmaşık türleri desteklediğini unutmayın. Runbook'unuzda nesne giriş parametresi varsa, bir değerde geçmek için ad değeri çiftleri içeren bir PowerShell karma tablosu kullanmanız gerekir. Örneğin, bir runbook'ta aşağıdaki parametreye sahipsiniz.
+PowerShell ve PowerShell İş Akışı runbook'ların giriş parametreleri `Object` `PSCredential` gibi tüm basit türleri ve karmaşık türleri desteklediğini unutmayın. Runbook'unuzda nesne giriş parametresi varsa, bir değerde geçmek için ad değeri çiftleri içeren bir PowerShell karma tablosu kullanmanız gerekir. Örneğin, bir runbook'ta aşağıdaki parametreye sahipsiniz.
 
 ```powershell
 [Parameter (Mandatory = $true)]
@@ -71,7 +71,7 @@ Bu durumda, aşağıdaki değeri parametreye geçirebilirsiniz.
 ```
 
 > [!NOTE]
-> Bir değeri null varsayılan değeri olan isteğe bağlı String parametresine geçirmediğinizde, parametrenin değeri **Null**yerine boş bir dizedir.
+> Bir değeri null varsayılan değeri olan isteğe bağlı Bir String parametresine geçirmediğinizde, parametrenin değeri Null yerine boş bir dizeolur.
 
 ### <a name="configure-input-parameters-in-graphical-runbooks"></a>Grafik çalışma kitaplarında giriş parametrelerini yapılandırma
 
@@ -83,19 +83,19 @@ Grafik çalışma kitabı şu büyük runbook etkinliklerini kullanır:
 * VM özelliklerini almak için [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm?view=azps-3.5.0) cmdlet tanımı.
 * VM adlarını çıktılamak için [Yazma-Çıktı](/powershell/module/microsoft.powershell.utility/write-output) etkinliğinin kullanımı. 
 
-**Get-AzVM** etkinliği iki girişi tanımlar: VM adı ve kaynak grubu adı. Runbook her başlatılında bu adlar farklı olabileceğinden, bu girişleri kabul etmek için runbook'unuza giriş parametreleri eklemeniz gerekir. Azure [Otomasyonunda Grafiksel yazarlık](automation-graphical-authoring-intro.md)kitabına bakın.
+Etkinlik `Get-AzVM` iki giriş tanımlar, VM adı ve kaynak grubu adı. Runbook her başlatılında bu adlar farklı olabileceğinden, bu girişleri kabul etmek için runbook'unuza giriş parametreleri eklemeniz gerekir. Azure [Otomasyonunda Grafiksel yazarlık](automation-graphical-authoring-intro.md)kitabına bakın.
 
 Giriş parametrelerini yapılandırmak için aşağıdaki adımları izleyin.
 
-1. **Runbook** sayfasından grafik runbook'u seçin ve ardından **Edit'i**tıklatın.
+1. Runbook sayfasından grafik runbook'u seçin ve ardından **Edit'i**tıklatın.
 2. Grafik düzenleyicisinde, Giriş **ve çıktı** düğmesini tıklatın ve runbook Giriş Parametresi bölmesini açmak için **giriş ekleyin.**
 
    ![Otomasyon grafik runbook](media/automation-runbook-input-parameters/automation-02-graphical-runbok-editor.png)
 
-3. Giriş ve Çıktı denetimi, runbook için tanımlanan giriş parametrelerinin listesini görüntüler. Burada yeni bir giriş parametresi ekleyebilir veya varolan bir giriş parametresinin yapılandırmasını düzenlemeyapabilirsiniz. Runbook için yeni bir parametre eklemek için, [Azure Otomasyonunda Grafik yazmada](automation-graphical-authoring-intro.md)tanımlanan özellikleri kullanarak parametreleri yapılandırabileceğiniz **Runbook giriş parametre** bıçaklarını açmak için **giriş** ekle'yi tıklatın.
+3. Giriş ve Çıktı denetimi, runbook için tanımlanan giriş parametrelerinin listesini görüntüler. Burada yeni bir giriş parametresi ekleyebilir veya varolan bir giriş parametresinin yapılandırmasını düzenlemeyapabilirsiniz. Runbook için yeni bir parametre eklemek için, [Azure Otomasyonunda Grafik yazmada](automation-graphical-authoring-intro.md)tanımlanan özellikleri kullanarak parametreleri yapılandırabileceğiniz **Runbook giriş parametresi** bıçak'ı açmak için **giriş** ekle'yi tıklatın.
 
     ![Yeni giriş ekleme](media/automation-runbook-input-parameters/automation-runbook-input-parameter-new.png)
-4. **Get-AzVM** etkinliği tarafından kullanılacak aşağıdaki özelliklere sahip iki parametre oluşturun ve ardından **Tamam'ı**tıklatın.
+4. `Get-AzVM` Etkinlik tarafından kullanılacak aşağıdaki özelliklere sahip iki parametre oluşturun ve ardından **Tamam'ı**tıklatın.
 
    * Parametre 1:
         * **Adı** -- **VMName**
@@ -115,7 +115,7 @@ Giriş parametrelerini yapılandırmak için aşağıdaki adımları izleyin.
 
 ### <a name="configure-input-parameters-in-python-runbooks"></a>Python çalışma kitaplarında giriş parametrelerini yapılandırma
 
-PowerShell, PowerShell İş Akışı ve grafik çalışma kitaplarının aksine, Python runbook'ları adlandırılmış parametreleri almaz. Runbook düzenleyicisi tüm giriş parametrelerini bağımsız değişken değerleri dizisi olarak ayrıştırır. **Sys** modüllerini Python komut dosyanıza aktarıp **sys.argv** dizisini kullanarak diziye erişebilirsiniz. Dizinin ilk öğesinin `sys.argv[0]`komut dosyasının adı olduğunu belirtmek önemlidir. Bu nedenle ilk gerçek giriş parametresi *sys.argv[1]* olduğunu.
+PowerShell, PowerShell İş Akışı ve grafik çalışma kitaplarının aksine, Python runbook'ları adlandırılmış parametreleri almaz. Runbook düzenleyicisi tüm giriş parametrelerini bağımsız değişken değerleri dizisi olarak ayrıştırır. `sys` Modülü Python komut dosyanıza aktarıp sonra diziyi kullanarak `sys.argv` diziye erişebilirsiniz. Dizinin ilk öğesinin `sys.argv[0]`komut dosyasının adı olduğunu belirtmek önemlidir. Bu nedenle ilk gerçek giriş `sys.argv[1]`parametresi .
 
 Python runbook'ta giriş parametrelerinin nasıl kullanılacağına bir örnek için Azure [Otomasyonundaki Ilk Python çalışma kitabım](automation-first-runbook-textual-python2.md)bölümüne bakın.
 
@@ -141,7 +141,7 @@ Azure portalında [runbook'u başlattığınızda,](start-runbooks.md#start-a-ru
 Giriş kutusunun altındaki etikette, parametre özniteliklerini (örneğin zorunlu veya isteğe bağlı, tür, varsayılan değer) tanımlamak üzere ayarlanmış özellikleri görebilirsiniz. Parametre adının yanındaki yardım balonu, parametre giriş değerleri hakkında karar vermek için gereken temel bilgileri de tanımlar. 
 
 > [!NOTE]
-> String parametreleri String tipiboş değerleri destekler. Giriş parametresi kutusuna **[EmptyString]** girilmesi boş bir dizeyi parametreye geçirir. Ayrıca, dize parametreleri Null'u desteklemez. Herhangi bir değeri dize parametresine geçirmezseniz, PowerShell bunu Null olarak yorumlar.
+> String parametreleri String tipiboş değerleri destekler. Giriş `[EmptyString]` parametre kutusuna girdiğinizde boş bir dize parametreye geçer. Ayrıca, dize parametreleri Null'u desteklemez. Herhangi bir değeri dize parametresine geçirmezseniz, PowerShell bunu Null olarak yorumlar.
 
 #### <a name="start-a-published-runbook-using-powershell-cmdlets-and-assign-parameters"></a>PowerShell cmdlets kullanarak yayınlanmış bir runbook başlatın ve parametreleri atama
 
@@ -163,11 +163,11 @@ Giriş kutusunun altındaki etikette, parametre özniteliklerini (örneğin zoru
    ```
 
 > [!NOTE]
-> PowerShell cmdlets kullanarak bir runbook başlattığınızda, varsayılan bir parametre, *MicrosoftApplicationManagementStartedBy*, **değeri PowerShell**ile oluşturulur. Bu parametreyi İş ayrıntıları bölmesinde görüntüleyebilirsiniz.  
+> PowerShell cmdlets kullanarak bir runbook başlattığınızda, `MicrosoftApplicationManagementStartedBy`varsayılan parametre, `PowerShell`değeri ile oluşturulur. Bu parametreyi İş ayrıntıları bölmesinde görüntüleyebilirsiniz.  
 
 #### <a name="start-a-runbook-using-an-sdk-and-assign-parameters"></a>SDK kullanarak runbook başlatın ve parametreleri atama
 
-* **Azure Kaynak Yöneticisi yöntemi:** Bir programlama dilinin SDK'sını kullanarak bir runbook başlatabilirsiniz. Aşağıda, Otomasyon hesabınızda bir runbook başlatmak için bir C# kodu snippet'i yer almaktadır. Tüm kodu [GitHub depomuzda](https://github.com/Azure/azure-sdk-for-net/blob/master/src/ResourceManagement/Automation/Automation.Tests/TestSupport/AutomationTestBase.cs)görüntüleyebilirsiniz.  
+* **Azure Kaynak Yöneticisi yöntemi:** Bir programlama dilinin SDK'sını kullanarak bir runbook başlatabilirsiniz. Aşağıda, Otomasyon hesabınızda bir runbook başlatmak için bir C# kodu snippet'i yer almaktadır. Tüm kodu [GitHub depomuzda](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/automation/Microsoft.Azure.Management.Automation/tests/TestSupport/AutomationTestBase.cs)görüntüleyebilirsiniz.
 
    ```csharp
    public Job StartRunbook(string runbookName, IDictionary<string, string> parameters = null)
@@ -187,7 +187,7 @@ Giriş kutusunun altındaki etikette, parametre özniteliklerini (örneğin zoru
       }
    ```
 
-* **Azure klasik dağıtım modeli yöntemi:** Bir programlama dilinin SDK'sını kullanarak bir runbook başlatabilirsiniz. Aşağıda, Otomasyon hesabınızda bir runbook başlatmak için bir C# kodu snippet'i yer almaktadır. Tüm kodu [GitHub depomuzda](https://github.com/Azure/azure-sdk-for-net/blob/master/src/ServiceManagement/Automation/Automation.Tests/TestSupport/AutomationTestBase.cs)görüntüleyebilirsiniz.
+* **Azure klasik dağıtım modeli yöntemi:** Bir programlama dilinin SDK'sını kullanarak bir runbook başlatabilirsiniz. Aşağıda, Otomasyon hesabınızda bir runbook başlatmak için bir C# kodu snippet'i yer almaktadır. Tüm kodu [GitHub depomuzda](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/automation/Microsoft.Azure.Management.Automation/tests/TestSupport/AutomationTestBase.cs)görüntüleyebilirsiniz.
 
    ```csharp
   public Job StartRunbook(string runbookName, IDictionary<string, string> parameters = null)
@@ -207,7 +207,7 @@ Giriş kutusunun altındaki etikette, parametre özniteliklerini (örneğin zoru
     }
    ```
 
-   Bu yöntemi başlatmak için, runbook parametrelerini *VMName* ve *resourceGroupName* ve değerlerini depolamak için bir sözlük oluşturun. O zaman runbook'u başlat. Aşağıda yukarıda tanımlanan yöntemi aramak için C# kodu snippet olduğunu.
+   Bu yöntemi başlatmak için, runbook `VMName` parametrelerini `resourceGroupName` ve değerlerini depolamak için bir sözlük oluşturun. O zaman runbook'u başlat. Aşağıda yukarıda tanımlanan yöntemi aramak için C# kodu snippet olduğunu.
 
    ```csharp
    IDictionary<string, string> RunbookParameters = new Dictionary<string, string>();
@@ -222,21 +222,21 @@ Giriş kutusunun altındaki etikette, parametre özniteliklerini (örneğin zoru
 
 #### <a name="start-a-runbook-using-the-rest-api-and-assign-parameters"></a>REST API'sini kullanarak bir runbook başlatın ve parametreleri atayın
 
-Aşağıdaki istek URI ile **PUT** yöntemini kullanarak Azure Automation REST API ile bir runbook işi oluşturabilir ve başlatabilirsiniz:`https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobs/{jobName}?api-version=2017-05-15-preview`
+Aşağıdaki istek URI ile `PUT` yöntemi kullanarak Azure Automation REST API ile bir runbook işi oluşturabilir ve başlatabilirsiniz:`https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/jobs/{jobName}?api-version=2017-05-15-preview`
 
 Uri isteğinde aşağıdaki parametreleri değiştirin:
 
-* *subscriptionId*: Azure abonelik kimliğiniz.  
-* *resourceGroupName*: Otomasyon hesabıiçin kaynak grubunun adı.
-* *automationAccountName*: Belirtilen bulut hizmeti içinde barındırılan Otomasyon hesabının adıdır.  
-* *jobName*: İş için GUID. PowerShell'deki GUID'ler kullanılarak `[GUID]::NewGuid().ToString()*`oluşturulabilir.
+* `subscriptionId`: Azure abonelik kimliğiniz.  
+* `resourceGroupName`: Otomasyon hesabı için kaynak grubunun adı.
+* `automationAccountName`: Belirtilen bulut hizmeti içinde barındırılan Otomasyon hesabının adı.  
+* `jobName`: İş için GUID. PowerShell'deki GUID'ler kullanılarak `[GUID]::NewGuid().ToString()*`oluşturulabilir.
 
 Parametreleri runbook işine geçirmek için istek gövdesini kullanın. JSON formatında sağlanan aşağıdaki bilgileri alır:
 
 * Runbook adı: Gerekli. İş başlatmak için runbook adı.  
 * Runbook parametreleri: İsteğe bağlı. Ad Dize türü ve değeri herhangi bir geçerli JSON değeri olabilir (ad, değer) biçiminde parametre listesi sözlüğü.
 
-*VMName* ve *resourceGroupName* ile daha önce oluşturulan **Get-AzureVMTextual** runbook'u parametre olarak başlatmak istiyorsanız, istek gövdesi için aşağıdaki JSON biçimini kullanın.
+Daha önce parametre yle `VMName` birlikte ve `resourceGroupName` parametreler olarak oluşturulan **Get-AzureVMTextual** runbook'u başlatmak istiyorsanız, istek gövdesi için aşağıdaki JSON biçimini kullanın.
 
 ```json
     {
@@ -254,7 +254,7 @@ Parametreleri runbook işine geçirmek için istek gövdesini kullanın. JSON fo
 
 ### <a name="test-a-runbook-and-assign-parameters"></a>Çalışma kitabını test edin ve parametreleri atayın
 
-Test seçeneğini kullanarak [runbook'unuzun taslak sürümünü test](automation-testing-runbook.md) **ettiğinizde, Test** sayfası açılır. Oluşturduğunuz parametrelerin değerlerini yapılandırmak için bu sayfayı kullanın.
+Test seçeneğini kullanarak [runbook'unuzun taslak sürümünü test](automation-testing-runbook.md) ettiğinizde, Test sayfası açılır. Oluşturduğunuz parametrelerin değerlerini yapılandırmak için bu sayfayı kullanın.
 
 ![Parametreleri test edin ve atayın](media/automation-runbook-input-parameters/automation-06-testandassignparameters.png)
 
@@ -270,7 +270,7 @@ Runbook'unuz için bir [webhook](automation-webhooks.md) oluşturabilir ve runbo
 
 ![Webhook oluşturma ve parametreleri atama](media/automation-runbook-input-parameters/automation-08-createwebhookandassignparameters.png)
 
-Bir runbook'u bir webhook kullanarak çalıştırdığınızda, önceden tanımlanmış giriş parametresi *[WebhookData,](automation-webhooks.md)* tanımladığınız giriş parametreleriyle birlikte gönderilir. 
+Bir runbook'u bir webhook kullanarak çalıştırdığınızda, `[WebhookData](automation-webhooks.md)` tanımladığınız giriş parametreleriyle birlikte önceden tanımlanmış giriş parametresi gönderilir. 
 
 ![WebhookData parametresi](media/automation-runbook-input-parameters/automation-09-webhook-data-parameters.png)
 
@@ -282,7 +282,7 @@ Bu bölümde, PowerShell komut dosyasının Bir PowerShell runbook'u başlatmak 
 
 ### <a name="create-the-json-file"></a>JSON dosyasını oluşturma
 
-Bir metin dosyasına aşağıdaki kodu yazın `test.json` ve yerel bilgisayarınızda bir yere kaydedin.
+Bir metin dosyasına aşağıdaki kodu yazın ve yerel bilgisayarınızda bir yere **test.json** olarak kaydedin.
 
 ```json
 {
@@ -328,9 +328,9 @@ Artık Azure PowerShell'i kullanarak yerel makinenizden runbook'u arayabilirsini
    ```
 
     >[!NOTE]
-    >PowerShell runbook'ları için **Add-AzAccount** ve **Add-AzureRMAccount,** **Connect-AzAccount**takma adlarıdır. Bu diğer adların grafik çalışma kitapları için kullanılamadığını unutmayın. Grafik çalışma kitabı yalnızca **Connect-AzAccount'ı** kullanabilir.
+    >PowerShell runbook'ları için `Add-AzAccount` ve `Add-AzureRMAccount` `Connect-AzAccount`diğer adlar . Bu diğer adların grafik çalışma kitapları için kullanılamadığını unutmayın. Grafik çalışma kitabı yalnızca `Connect-AzAccount` kendisini kullanabilir.
 
-1. Kaydedilen JSON dosyasının içeriğini alın ve bir dize dönüştürün. `JsonPath`JSON dosyasını kaydettiğiniz yoldur.
+1. Kaydedilen JSON dosyasının içeriğini alın ve bir dize dönüştürün. `JsonPath`JSON dosyasını kaydettiğiniz yolu gösterir.
 
    ```powershell
    $json =  (Get-content -path 'JsonPath\test.json' -Raw) | Out-string
@@ -342,7 +342,7 @@ Artık Azure PowerShell'i kullanarak yerel makinenizden runbook'u arayabilirsini
    $JsonParams = @{"json"=$json}
    ```
 
-1. **Start-AzAutomationRunbook**parametreleri için bir karma tablo oluşturun. 
+1. `Start-AzAutomationRunbook`Parametreler için bir karma tablo oluşturun. 
 
    ```powershell
    $RBParams = @{
@@ -353,7 +353,7 @@ Artık Azure PowerShell'i kullanarak yerel makinenizden runbook'u arayabilirsini
    }
    ```
 
-   *Parametrelerin* değerini JSON dosyasındaki değerleri içeren PowerShell nesnesine ayarladığınıza dikkat edin.
+   JSON dosyasındaki değerleri içeren `Parameters` PowerShell nesnesinin değerini ayarladığınıza dikkat edin.
 1. Runbook'u başlatın.
 
    ```powershell

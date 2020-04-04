@@ -7,23 +7,23 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: estfan, logicappspm
 ms.topic: article
-ms.date: 08/16/2018
-ms.openlocfilehash: fb9f9cfdba07ebe0bc5800def6d93950869e9727
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/01/2020
+ms.openlocfilehash: 0ab9297e772a3b75a077da1c2ae74e5058b2731f
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75456635"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80657295"
 ---
 # <a name="perform-advanced-json-transformations-with-liquid-templates-in-azure-logic-apps"></a>Azure Logic Apps'ta Sıvı şablonları ile gelişmiş JSON dönüşümleri gerçekleştirin
 
-Mantıksal uygulamalarınızda temel JSON **dönüşümlerini, Compose** veya **Parse JSON**gibi yerel veri işlem eylemleri ile gerçekleştirebilirsiniz. Gelişmiş JSON dönüşümleri gerçekleştirmek için, esnek web uygulamaları için açık kaynak kodlu bir şablon dili olan [Liquid](https://shopify.github.io/liquid/)ile şablonlar veya haritalar oluşturabilirsiniz. Sıvı şablonu JSON çıktısını nasıl dönüştüreceklerini tanımlar ve yinelemeler, denetim akışları, değişkenler gibi daha karmaşık JSON dönüşümlerini destekler. 
+Mantıksal uygulamalarınızda temel JSON **dönüşümlerini, Compose** veya **Parse JSON**gibi yerel veri işlem eylemleri ile gerçekleştirebilirsiniz. Gelişmiş JSON dönüşümleri gerçekleştirmek için, esnek web uygulamaları için açık kaynak kodlu bir şablon dili olan [Liquid](https://shopify.github.io/liquid/)ile şablonlar veya haritalar oluşturabilirsiniz. Sıvı şablonu JSON çıktısını nasıl dönüştüreceklerini tanımlar ve yinelemeler, denetim akışları, değişkenler gibi daha karmaşık JSON dönüşümlerini destekler.
 
-Mantık uygulamanızda Sıvı dönüşümü gerçekleştirmeden önce JSON-JSON eşlemesi ile Sıvı şablonu tanımlamanız ve bu haritayı entegrasyon hesabınızda saklamanız gerekir. Bu makalede, bu Sıvı şablonu veya haritasını nasıl oluşturabileceğinizve kullanacağınız gösterilmektedir. 
+Mantık uygulamanızda Sıvı dönüşümü gerçekleştirmeden önce JSON-JSON eşlemesi ile Sıvı şablonu tanımlamanız ve bu haritayı entegrasyon hesabınızda saklamanız gerekir. Bu makalede, bu Sıvı şablonu veya haritasını nasıl oluşturabileceğinizve kullanacağınız gösterilmektedir.
 
 ## <a name="prerequisites"></a>Ön koşullar
 
-* Azure aboneliği. Aboneliğiniz yoksa, [ücretsiz bir Azure hesabıyla başlayabilirsiniz.](https://azure.microsoft.com/free/) Veya, [Bir You-As-You-Go aboneliği için kaydolun.](https://azure.microsoft.com/pricing/purchase-options/)
+* Azure aboneliği. Aboneliğiniz yoksa, [ücretsiz bir Azure hesabı için kaydolun](https://azure.microsoft.com/free/).
 
 * [Mantık uygulamaları oluşturma](../logic-apps/quickstart-create-first-logic-app-workflow.md) hakkında temel bilgiler
 
@@ -33,7 +33,7 @@ Mantık uygulamanızda Sıvı dönüşümü gerçekleştirmeden önce JSON-JSON 
 
 ## <a name="create-liquid-template-or-map-for-your-integration-account"></a>Entegrasyon hesabınız için Sıvı şablonu veya harita oluşturma
 
-1. Bu örnekte, bu adımda açıklanan örnek Sıvı şablonu oluşturun. Sıvı şablonunuzda, [DotLiquid](https://dotliquidmarkup.org/) ve C# adlandırma kurallarını kullanan [Sıvı filtreleri](https://shopify.github.io/liquid/basics/introduction/#filters)kullanabilirsiniz. 
+1. Bu örnekte, bu adımda açıklanan örnek Sıvı şablonu oluşturun. Sıvı şablonunuzda, [DotLiquid](https://dotliquidmarkup.org/) ve C# adlandırma kurallarını kullanan [Sıvı filtreleri](https://shopify.github.io/liquid/basics/introduction/#filters)kullanabilirsiniz.
 
    > [!NOTE]
    > Filtre adlarının şablonunuzda *cümle kılıfı* kullandığından emin olun. Aksi takdirde, filtreler çalışmaz. Ayrıca, haritalar [dosya boyutu sınırları](../logic-apps/logic-apps-limits-and-config.md#artifact-capacity-limits)var.
@@ -57,41 +57,40 @@ Mantık uygulamanızda Sıvı dönüşümü gerçekleştirmeden önce JSON-JSON 
    }
    ```
 
-2. [Azure portalında](https://portal.azure.com)oturum açın. Ana Azure menüsünde **Tüm kaynakları**seçin. Arama kutusunda, entegrasyon hesabınızı bulun ve seçin.
+1. Azure [portalında,](https://portal.azure.com)Azure arama kutusundan, `integration accounts` **Tümleştirme hesaplarını**girin ve seçin.
+
+   !["Tümleştirme hesapları" bul](./media/logic-apps-enterprise-integration-liquid-transform/find-integration-accounts.png)
+
+1. Entegrasyon hesabınızı bulun ve seçin.
 
    ![Entegrasyon hesabını seçin](./media/logic-apps-enterprise-integration-liquid-transform/select-integration-account.png)
 
-3.  **Bileşenler**altında, **Haritalar'ı**seçin.
+1. Genel **Bakış** bölmesinde, **Bileşenler** **altında, Haritalar'ı**seçin.
 
-    ![Haritaları seçin](./media/logic-apps-enterprise-integration-liquid-transform/add-maps.png)
+    !["Haritalar" döşemesi seçin](./media/logic-apps-enterprise-integration-liquid-transform/select-maps-tile.png)
 
-4. **Haritanız** için ekle'yi seçin ve bu ayrıntıları sağlayın:
+1. **Haritalar** bölmesinde, **Ekle'yi** seçin ve haritanız için şu ayrıntıları sağlayın:
 
    | Özellik | Değer | Açıklama | 
    |----------|-------|-------------|
-   | **Adı** | JsonToJsonTemplate | Bu örnekte "JsonToJsonTemplate" olan haritanızın adı | 
+   | **Adı** | `JsonToJsonTemplate` | Bu örnekte "JsonToJsonTemplate" olan haritanızın adı | 
    | **Harita türü** | **Sıvı** | Haritanızın türü. JSON JSON dönüşümü için, **sıvı**seçmeniz gerekir. | 
-   | **Harita** | "SimpleJsonToJsonTemplate.sıvı" | Bu örnekte "SimpleJsonToJsonTemplate.liquid" olan dönüşüm için kullanılacak varolan bir Sıvı şablonu veya harita dosyası. Bu dosyayı bulmak için dosya seçiciyi kullanabilirsiniz. Eşboyutu sınırları için [Sınırlar ve yapılandırmaya](../logic-apps/logic-apps-limits-and-config.md#artifact-capacity-limits)bakın. |
+   | **Harita** | `SimpleJsonToJsonTemplate.liquid` | Bu örnekte "SimpleJsonToJsonTemplate.liquid" olan dönüşüm için kullanılacak varolan bir Sıvı şablonu veya harita dosyası. Bu dosyayı bulmak için dosya seçiciyi kullanabilirsiniz. Eşboyutu sınırları için [Sınırlar ve yapılandırmaya](../logic-apps/logic-apps-limits-and-config.md#artifact-capacity-limits)bakın. |
    ||| 
 
-   ![Sıvı şablonu ekleme](./media/logic-apps-enterprise-integration-liquid-transform/add-liquid-template.png)
+   ![Sıvı şablonu ekle](./media/logic-apps-enterprise-integration-liquid-transform/add-liquid-template.png)
     
 ## <a name="add-the-liquid-action-for-json-transformation"></a>JSON dönüşümü için Sıvı eylem ekle
 
 1. Azure portalında, [boş bir mantık uygulaması oluşturmak](../logic-apps/quickstart-create-first-logic-app-workflow.md)için aşağıdaki adımları izleyin.
 
-2. Logic App Designer'da mantık uygulamanıza [İstek tetikleyicisini](../connectors/connectors-native-reqres.md#add-request) ekleyin.
+1. Logic App Designer'da mantık uygulamanıza [İstek tetikleyicisini](../connectors/connectors-native-reqres.md#add-request) ekleyin.
 
-3. Tetikleyicinin altında **Yeni adımı**seçin. 
-   Arama kutusuna filtreniz olarak "sıvı" girin ve şu eylemi seçin: **JSON'u JSON'a dönüştürün - Sıvı**
+1. Tetikleyicinin altında **Yeni adımı**seçin. Arama kutusuna filtreniz olarak girin `liquid` ve şu eylemi seçin: **JSON'u JSON'a dönüştürün - Sıvı**
 
    ![Sıvı eylemini bulma ve seçme](./media/logic-apps-enterprise-integration-liquid-transform/search-action-liquid.png)
 
-4. Dinamik içerik listesinin görünmesi için **İçerik** kutusunun içini tıklatın ve **Gövde** belirteci'ni seçin.
-  
-   ![Gövde seçin](./media/logic-apps-enterprise-integration-liquid-transform/select-body.png)
- 
-5. **Harita** listesinden, bu örnekte "JsonToJsonTemplate" olan Sıvı şablonunuzu seçin.
+1. **Harita** listesini açın ve bu örnekte "JsonToJsonTemplate" olan Sıvı şablonunuzu seçin.
 
    ![Harita seçin](./media/logic-apps-enterprise-integration-liquid-transform/select-map.png)
 
@@ -100,9 +99,21 @@ Mantık uygulamanızda Sıvı dönüşümü gerçekleştirmeden önce JSON-JSON 
 
    1. Mantık uygulaması menüsünde **İş Akışı ayarlarını**seçin.
 
-   2. **Tümleştirme hesabı seç** listesinden, tümleştirme hesabınızı seçin ve **Kaydet'i**seçin.
+   1. **Tümleştirme hesabı seç** listesinden, entegrasyon hesabınızı seçin ve **Kaydet'i**seçin.
 
       ![Mantık uygulamasını entegrasyon hesabına bağlama](./media/logic-apps-enterprise-integration-liquid-transform/link-integration-account.png)
+
+1. Şimdi bu eyleme **İçerik** özelliğini ekleyin. Yeni **parametre** ekle listesini açın ve **İçerik'i**seçin.
+
+   ![Eyleme "İçerik" özelliği ekleme](./media/logic-apps-enterprise-integration-liquid-transform/add-content-property-to-action.png)
+
+1. **İçerik** özellik değerini ayarlamak için, dinamik içerik listesinin görünmesi için **İçerik** kutusunun içini tıklatın. Tetikden vücut içeriği çıktısını temsil eden **Gövde** belirteci'ni seçin.
+
+   !["İçerik" özellik değeri için "Gövde" belirteci'ni seçin](./media/logic-apps-enterprise-integration-liquid-transform/select-body.png)
+
+   İşlem tamamlandığında eylem şu örnekteki gibi görünür:
+
+   !["Transform JSON to JSON" eylemi tamamlandı](./media/logic-apps-enterprise-integration-liquid-transform/finished-transform-action.png)
 
 ## <a name="test-your-logic-app"></a>Mantık uygulamanızı test edin
 

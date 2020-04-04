@@ -7,12 +7,12 @@ ms.reviewers: klam, logicappspm
 ms.topic: conceptual
 ms.date: 03/12/2020
 tags: connectors
-ms.openlocfilehash: d65b81f18d4dcb0ee97a21a7edec885e308bd8d4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1885d7f8713b3801ce0c9846b7a8509b3864032a
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79297313"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656295"
 ---
 # <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>Azure Logic Apps'ta gelen HTTPS isteklerini alma ve yanıtlama
 
@@ -25,7 +25,7 @@ ms.locfileid: "79297313"
 > [!NOTE]
 > İstek tetikleyicisi, gelen aramalar için *yalnızca* Aktarım Katmanı Güvenliği (TLS) 1.2'yi destekler. Giden aramalar TLS 1.0, 1.1 ve 1.2'yi desteklemeye devam eder. Daha fazla bilgi için [TLS 1.0 sorununu çözme ye](https://docs.microsoft.com/security/solving-tls1-problem)bakın.
 >
-> SSL el sıkışma hataları görürseniz, TLS 1.2 kullandığınızdan emin olun. Gelen aramalar için desteklenen şifreleme paketleri şunlardır:
+> TLS el sıkışma hataları görürseniz, TLS 1.2 kullandığınızdan emin olun. Gelen aramalar için desteklenen şifreleme paketleri şunlardır:
 >
 > * TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
 > * TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256

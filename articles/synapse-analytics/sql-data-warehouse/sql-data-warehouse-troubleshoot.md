@@ -11,18 +11,19 @@ ms.date: 02/04/2019
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 47ee6f7627602732800949bcb9701045fcbff1a8
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: b24706943cdf59fba89a8007c4914b628b9e34d5
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80583169"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632975"
 ---
-# <a name="troubleshooting-synapse-sql-pool-in-azure-synapse-analytics"></a>Azure Synapse Analytics'te Sorun Giderme Synapse SQL havuzu
+# <a name="troubleshooting-sql-analytics-in-azure-synapse"></a>Azure Synapse'de SQL Analytics'te Sorun Giderme
 
 Bu makalede, sık karşılaşılan sorun giderme sorusu listelenebis.
 
 ## <a name="connecting"></a>Bağlanma
+
 | Sorun                                                        | Çözüm                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | 'NT AUTHORITY\ANONYMOUS LOGON' kullanıcısı için oturum açma başarısız oldu. (Microsoft SQL Server, Hata: 18456) | Bu hata, bir Azure AD kullanıcısı ana veritabanına bağlanmaya çalıştığında, ancak ana veritabanında bir kullanıcı olmadığında oluşur.  Bu sorunu düzeltmek için, bağlantı sırasında bağlanmak istediğiniz SQL havuzunu belirtin veya kullanıcıyı ana veritabanına ekleyin.  Daha fazla ayrıntı için [Güvenlik genel bakış](sql-data-warehouse-overview-manage-security.md) makalesine bakın. |
@@ -32,6 +33,7 @@ Bu makalede, sık karşılaşılan sorun giderme sorusu listelenebis.
 | Araç veya sürücüyle bağlanamıyor                           | Synapse SQL havuzu, Visual Studio için [SSMS](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15), [Visual Studio için SSDT](sql-data-warehouse-install-visual-studio.md)veya verilerinizi sorgulamak için [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md) kullanmanızı önerir. Sürücüler ve Azure Synapse'ye bağlanma hakkında daha fazla bilgi için Azure [Synapse sürücüleri](sql-data-warehouse-connection-strings.md) ve Azure [Synapse makalelerine bağlan'a](sql-data-warehouse-connect-overview.md) bakın. |
 
 ## <a name="tools"></a>Araçlar
+
 | Sorun                                                        | Çözüm                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | Visual Studio nesne gezgini Azure AD kullanıcıları eksik           | Bu bilinen bir sorundur.  Geçici çözüm olarak, [sys.database_principals'deki](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql?view=sql-server-ver15)kullanıcıları görüntüleyin.  Synapse SQL havuzuile Azure Active Directory'yi kullanma hakkında daha fazla bilgi edinmek için [Azure Synapse'ye kimlik doğrulama](sql-data-warehouse-authentication.md) bilgisini edinin. |
@@ -39,6 +41,7 @@ Bu makalede, sık karşılaşılan sorun giderme sorusu listelenebis.
 | SSMS'te komut dosyaları oluşturma başarısız olur                               | Synapse SQL havuzu için komut dosyası oluşturma seçeneği "Bağımlı nesneler için komut dosyası oluşturma" seçeneği "True" olarak ayarlanırsa başarısız olur. Geçici çözüm olarak, kullanıcılar araçlara el ile gitmeli **-> Seçenekleri -sql server object explorer >-> Bağımlı seçenekler için komut dosyası oluşturma ve yanlış olarak ayarlanmalıdır** |
 
 ## <a name="performance"></a>Performans
+
 | Sorun                                                        | Çözüm                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | Performans sorun giderme sorgula                            | Belirli bir sorguyu gidermeye çalışıyorsanız, [sorgularınızı nasıl izleyeceğinizi öğrenme](sql-data-warehouse-manage-monitor.md#monitor-query-execution)ile başlayın. |
@@ -50,15 +53,16 @@ Bu makalede, sık karşılaşılan sorun giderme sorusu listelenebis.
 | Düşük dizin kalitesi sonucu düşük sorgu performansı     | Bazı zamanlar sorguları Kötü [sütun deposu dizin kalitesi](sql-data-warehouse-tables-index.md#causes-of-poor-columnstore-index-quality)nedeniyle yavaşlayabilirsiniz.  Daha fazla bilgi ve segment kalitesini artırmak için [dizinleri nasıl yeniden oluştureceğiniz](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality)için bu makaleye bakın. |
 
 ## <a name="system-management"></a>Sistem yönetimi
+
 | Sorun                                                        | Çözüm                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | Msg 40847: Sunucu izin verilen 45000 Veritabanı İşlem Birimi kotasını aşacağı için işlemi gerçekleştiremedi. | Oluşturmaya çalıştığınız veritabanının [DWU'yu](what-is-a-data-warehouse-unit-dwu-cdwu.md) azaltın veya [kota artışı isteyin.](sql-data-warehouse-get-started-create-support-ticket.md) |
-| Alan kullanımını araştırma                              | Sisteminizin alan kullanımını anlamak için [Tablo boyutlarına]( ../../sql-data-warehouse/sql-data-warehouse-tables-overview.md#table-size-queries) bakın. |
+| Alan kullanımını araştırma                              | Sisteminizin alan kullanımını anlamak için [Tablo boyutlarına](sql-data-warehouse-tables-overview.md#table-size-queries) bakın. |
 | Tabloları yönetme konusunda yardım                                    | Tablolarınızı yönetmekonusunda yardım için [Tabloya genel bakış](sql-data-warehouse-tables-overview.md) makalesine bakın.  Bu makalede ayrıca Tablo veri [türleri](sql-data-warehouse-tables-data-types.md)gibi daha ayrıntılı konulara bağlantılar içerir , [tablo dağıtma](sql-data-warehouse-tables-distribute.md), [tablo dizinleme](sql-data-warehouse-tables-index.md), [Tablo bölümleme](sql-data-warehouse-tables-partition.md), [tablo istatistikleri](sql-data-warehouse-tables-statistics.md) ve Geçici [tablolar](sql-data-warehouse-tables-temporary.md)bakımı . |
 | Saydam veri şifreleme (TDE) ilerleme çubuğu Azure portalında güncelleştirmiyor | Powershell ile TDE durumunu [powershell](/powershell/module/az.sql/get-azsqldatabasetransparentdataencryption)görüntüleyebilirsiniz. |
 
-
 ## <a name="differences-from-sql-database"></a>SQL Veritabanından Farklar
+
 | Sorun                                 | Çözüm                                                   |
 | :------------------------------------ | :----------------------------------------------------------- |
 | Desteklenmeyen SQL Veritabanı özellikleri     | [Desteklenmeyen tablo özelliklerine](sql-data-warehouse-tables-overview.md#unsupported-table-features)bakın. |
@@ -69,6 +73,7 @@ Bu makalede, sık karşılaşılan sorun giderme sorusu listelenebis.
 | UDF'ler SELECT ifadelerini destekletmiyor | Bu, UDF'lerimizin geçerli bir sınırlamasıdır.  Desteklediğimiz sözdizimi için [CREATE FONKSIYONU'na](https://docs.microsoft.com/sql/t-sql/statements/create-function-sql-data-warehouse?view=aps-pdw-2016-au7) bakın. |
 
 ## <a name="next-steps"></a>Sonraki adımlar
+
 Sorununuza çözüm bulmakonusunda daha fazla yardım için, deneyebileceğiniz diğer bazı kaynaklar aşağıda veda edebilirsiniz.
 
 * [Bloglar](https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/)

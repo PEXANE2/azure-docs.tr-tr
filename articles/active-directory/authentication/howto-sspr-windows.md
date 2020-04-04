@@ -4,19 +4,19 @@ description: Windows giriş ekranında unuttum parolasını kullanarak self serv
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/21/2019
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1f0e5242d87bc68efd92a52619e8d48cff9ac87
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0a8675756aeef1140dbebd94023d7f7fb4c7af99
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77370061"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80652250"
 ---
 # <a name="how-to-enable-password-reset-from-the-windows-login-screen"></a>Nasıl yapılır: Windows oturum açma ekranından parola sıfırlamayı etkinleştirme
 
@@ -141,8 +141,8 @@ Ek günlüğe kaydetme gerekiyorsa, makinedeki bir kayıt defteri anahtarı, ayr
 
 `HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\Credential Providers\{86D2F0AC-2171-46CF-9998-4E33B3D7FD4F}`
 
-- Ayrıntılı günlüğe kaydetmeyi etkinleştirmek için bir `REG_DWORD: “EnableLogging”`,
-- Ayrıntılı günlüğe kaydetmeyi devre dışı `REG_DWORD: “EnableLogging”` kılabilir, 0 olarak değiştirin.
+- Ayrıntılı günlüğe kaydetmeyi etkinleştirmek için bir `REG_DWORD: "EnableLogging"`,
+- Ayrıntılı günlüğe kaydetmeyi devre dışı `REG_DWORD: "EnableLogging"` kılabilir, 0 olarak değiştirin.
 
 ## <a name="what-do-users-see"></a>Kullanıcıların ne görecek
 

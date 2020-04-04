@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 64e61b00ecebec82b465cb13c6df0e323f6c7777
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 9eacb813c3ddce028fcd9b24c86c6d32ed7a7584
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80586548"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633219"
 ---
 # <a name="monitor-workload---azure-portal"></a>İş yükünü izleyin - Azure portalı
 
@@ -24,11 +24,11 @@ Bu makalede, iş yükünüzü izlemek için Azure portalının nasıl kullanıla
 ## <a name="prerequisites"></a>Ön koşullar
 
 - Azure aboneliği: Azure aboneliğiniz yoksa, başlamadan önce ücretsiz bir [hesap](https://azure.microsoft.com/free/) oluşturun.
-- SQL havuzu: Bir SQL havuzu için günlükleri topluyor olacağız. Sql havuzu sağlanmış değilseniz, [SQL havuzu oluştur'daki](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-tutorial)yönergeleri görün.
+- SQL havuzu: Bir SQL havuzu için günlükleri topluyor olacağız. Sql havuzu sağlanmış değilseniz, [SQL havuzu oluştur'daki](load-data-from-azure-blob-storage-using-polybase.md)yönergeleri görün.
 
 ## <a name="create-a-log-analytics-workspace"></a>Log Analytics çalışma alanı oluşturma
 
-Log Analytics çalışma alanları için gözatma bıçağına gidin ve bir çalışma alanı oluşturun 
+Log Analytics çalışma alanları için gözatma bıçağına gidin ve bir çalışma alanı oluşturun
 
 ![Log Analytics çalışma alanları](./media/sql-data-warehouse-monitor-workload-portal/log_analytics_workspaces.png)
 
@@ -36,7 +36,7 @@ Log Analytics çalışma alanları için gözatma bıçağına gidin ve bir çal
 
 ![Analitik çalışma alanı ekle](./media/sql-data-warehouse-monitor-workload-portal/add_analytics_workspace_2.png)
 
-Çalışma alanları hakkında daha fazla bilgi için aşağıdaki belgeleri ziyaret [edin.](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace#create-a-workspace)
+Çalışma alanları hakkında daha fazla bilgi için aşağıdaki belgeleri ziyaret [edin.](../../azure-monitor/learn/quick-create-workspace.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.jsond#create-a-workspace)
 
 ## <a name="turn-on-diagnostic-logs"></a>Tanılama günlüklerini açma
 
@@ -47,7 +47,6 @@ SQL havuzunuzdan günlükler yayarlar için tanılama ayarlarını yapılandır�
 - [sys.dm_pdw_dms_workers](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-dms-workers-transact-sql?view=aps-pdw-2016-au7)
 - [sys.dm_pdw_waits](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?view=aps-pdw-2016-au7)
 - [sys.dm_pdw_sql_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-sql-requests-transact-sql?view=aps-pdw-2016-au7)
-
 
 ![Tanılama günlüklerini etkinleştirme](./media/sql-data-warehouse-monitor-workload-portal/enable_diagnostic_logs.png)
 
@@ -64,39 +63,38 @@ Aşağıdakileri yapabileceğiniz Log Analytics çalışma alanınıza gidin:
 - Günlük uyarıları oluşturma
 - Sorgu sonuçlarını panoya sabitleme
 
-Günlük sorgularının özellikleri hakkında ayrıntılı bilgi için aşağıdaki belgeleri ziyaret [edin.](https://docs.microsoft.com/azure/azure-monitor/log-query/query-language)
+Günlük sorgularının özellikleri hakkında ayrıntılı bilgi için aşağıdaki belgeleri ziyaret [edin.](../../azure-monitor/log-query/query-language.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)
 
 ![Log Analytics çalışma alanı düzenleyicisi](./media/sql-data-warehouse-monitor-workload-portal/log_analytics_workspace_editor.png)
-
-
 
 ![Günlük Analytics çalışma alanı sorguları](./media/sql-data-warehouse-monitor-workload-portal/log_analytics_workspace_queries.png)
 
 ## <a name="sample-log-queries"></a>Örnek günlük sorguları
 
-
-
 ```Kusto
-//List all queries 
+//List all queries
 AzureDiagnostics
 | where Category contains "ExecRequests"
 | project TimeGenerated, StartTime_t, EndTime_t, Status_s, Command_s, ResourceClass_s, duration=datetime_diff('millisecond',EndTime_t, StartTime_t)
 ```
+
 ```Kusto
 //Chart the most active resource classes
 AzureDiagnostics
 | where Category contains "ExecRequests"
 | where Status_s == "Completed"
 | summarize totalQueries = dcount(RequestId_s) by ResourceClass_s
-| render barchart 
+| render barchart
 ```
+
 ```Kusto
 //Count of all queued queries
 AzureDiagnostics
-| where Category contains "waits" 
+| where Category contains "waits"
 | where Type_s == "UserConcurrencyResourceType"
 | summarize totalQueuedQueries = dcount(RequestId_s)
 ```
+
 ## <a name="next-steps"></a>Sonraki adımlar
 
 Azure monitör günlüklerini ayarladığınızda ve yapılandırdığınıza göre, Azure panolarını ekibinizde paylaşacak şekilde [özelleştirin.](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards)

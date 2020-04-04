@@ -1,17 +1,17 @@
 ---
 title: Azure Kubernetes Hizmeti (AKS) ile Bir Apache Spark işi çalıştırın
-description: Apache Spark işini çalıştırmak için Azure Kubernetes Hizmetini (AKS) kullanın
+description: Büyük ölçekli veri işleme için bir Apache Spark işi oluşturmak ve çalıştırmak için Azure Kubernetes Hizmeti'ni (AKS) kullanın.
 author: lenadroid
 ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: alehall
 ms.custom: mvc
-ms.openlocfilehash: 4b3248cb9ab61a158f70b5a2d6ae9dd846501816
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 8ebd8990a2fdd43b243f5dd6feb632d782fdeb0b
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79473634"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632700"
 ---
 # <a name="running-apache-spark-jobs-on-aks"></a>AKS'de Apache Spark işleri çalıştırmak
 

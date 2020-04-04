@@ -1,53 +1,42 @@
 ---
-title: 'Quickstart: Bir mikrofondan konuşmayı tanıma, C++ (Windows) - Konuşma hizmeti'
-titleSuffix: Azure Cognitive Services
-description: Konuşma SDK'sını kullanarak Windows Desktop'da C++'daki konuşmayı nasıl tanıyabilirsiniz öğrenin
-services: cognitive-services
-author: wolfma61
-manager: nitinme
+author: IEvangelist
 ms.service: cognitive-services
-ms.subservice: speech-service
 ms.topic: include
-ms.date: 12/17/2019
-ms.author: wolfma
-ms.openlocfilehash: 416c2893ebf07cd638f3f1c06c709db2586245d1
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.date: 04/03/2020
+ms.author: dapine
+ms.openlocfilehash: 9e7716acfe95371c9e9734b6962b66c405bd47e4
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "78924729"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80658861"
 ---
 ## <a name="prerequisites"></a>Ön koşullar
 
 Başlamadan önce:
 
 > [!div class="checklist"]
-> * [Azure Konuşma Kaynağı Oluşturma](../../../../get-started.md)
+> * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices" target="_blank">Azure Konuşma kaynağı oluşturma<span class="docon docon-navigate-external x-hidden-focus"></span></a>
 > * [Geliştirme ortamınızı kurup boş bir proje oluşturun](../../../../quickstarts/setup-platform.md?tabs=windows)
 > * Ses çekimi için mikrofona erişebildiğinizden emin olun
 
-## <a name="add-sample-code"></a>Örnek kod ekleme
+## <a name="source-code"></a>Kaynak kod
 
-1. **helloworld.cpp** kaynak dosyasını açın.
+*Helloworld.cpp*adında bir C++ kaynak dosyası oluşturun ve aşağıdaki kodu yapıştırın.
 
-1. Tüm kodu aşağıdaki parçacıkla değiştirin:
+[!code-cpp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/from-microphone/helloworld/helloworld.cpp#code)]
 
-   [!code-cpp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/from-microphone/helloworld/helloworld.cpp#code)]
+[!INCLUDE [replace key and region](../replace-key-and-region.md)]
 
-1. Aynı dosyada, `YourSubscriptionKey` dizesini abonelik anahtarınızla değiştirin.
+## <a name="code-explanation"></a>Kod açıklaması
 
-1. Dizeyi `YourServiceRegion` aboneliğinizle ilişkili [bölgeden](https://aka.ms/speech/sdkregion) Bölge `westus` **tanımlayıcısıyla** değiştirin (örneğin, ücretsiz deneme aboneliği için).
+[!INCLUDE [code explanation](../code-explanation.md)]
 
-1. Menü çubuğundan **Dosya** > **Yı Tümle'yi kaydet'i**seçin.
-
-> [!NOTE]
-> Konuşma SDK dil için en-us kullanarak tanıma varsayılan olacaktır, kaynak dil seçimi hakkında bilgi [için metin konuşma için kaynak dil belirtin](../../../../how-to-specify-source-language.md) bakın.
-
-## <a name="build-and-run-the-application"></a>Uygulamayı derleme ve çalıştırma
+## <a name="build-and-run-app"></a>Uygulama oluşturma ve çalıştırma
 
 1. Menü çubuğundan, uygulamayı oluşturmak için **Yapı** > **Çözümü'nü** seçin. Kodun artık hatasız derlenmesi gerekir.
 
-1. **Helloworld** uygulamasını başlatmak için **Hata** > **Ayıklama Başlatma Hata Ayıklama'yı** (veya **F5**tuşuna basın) seçin.
+1. **Helloworld** uygulamasını başlatmak için **Hata** > **Ayıklama Başlatma Hata Ayıklama'yı** (veya <kbd>F5</kbd>tuşuna basın) seçin.
 
 1. İngilizce bir deyim ya da cümle söyleyin. Uygulama konuşmanızı metne dönüştüren konuşma hizmetine iletir ve görüntülenmek üzere uygulamaya geri gönderir.
 
@@ -55,4 +44,4 @@ Başlamadan önce:
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-[!INCLUDE [footer](./footer.md)]
+[!INCLUDE [footer](../footer.md)]

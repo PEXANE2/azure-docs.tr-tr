@@ -11,12 +11,12 @@ ms.date: 01/08/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11c57065e21c48a23148cacd91a42737edc13538
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 1e60c35a32152d4adec72fb507becc0db535036f
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80049401"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631718"
 ---
 # <a name="what-is-azure-ad-connect"></a>Azure AD Connect nedir?
 
@@ -26,7 +26,7 @@ Azure AD Connect, Microsoft'un karma kimlik hedeflerinizi karşılamak ve gerçe
 - [Geçiş kimlik doğrulaması](how-to-connect-pta.md) - Kullanıcıların aynı parolayı şirket içinde ve bulutta kullanmasına olanak tanıyan, ancak federe ortamın ek altyapısını gerektirmeyen oturum açma yöntemi.
 - [Federasyon tümleştirmesi](how-to-connect-fed-whatis.md) - Federasyon Azure AD Connect'in isteğe bağlı bir parçasıdır ve şirket içi AD FS altyapısını kullanarak karma ortamı yapılandırmak için kullanılabilir. Ayrıca, sertifika yenileme ve ek AD FS sunucu dağıtımları gibi AD FS yönetim özellikleri de sağlar.
 - [Eşitleme](how-to-connect-sync-whatis.md) - Kullanıcıları, grupları ve diğer nesneleri oluşturmaktan sorumludur.  Ayrıca, şirket içi kullanıcılarınız ve gruplarınız için kimlik bilgilerinin bulutla eşleştirdiğinden emin olun.  Bu eşitleme, parola işlemesi de içerir.
--      [Sistem Durumu İzleme](whatis-hybrid-identity-health.md) - Azure AD Connect Health sağlam izleme sağlayabilir ve bu etkinliği görüntülemek için Azure portalında merkezi bir konum sağlayabilir. 
+- [Sistem Durumu İzleme](whatis-hybrid-identity-health.md) - Azure AD Connect Health sağlam izleme sağlayabilir ve bu etkinliği görüntülemek için Azure portalında merkezi bir konum sağlayabilir. 
 
 
 ![Azure AD Connect nedir?](./media/whatis-hybrid-identity/arch.png)

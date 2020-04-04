@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/24/2020
 ms.author: absha
-ms.openlocfilehash: f08cfab8f8de9183e6bee241959f7feabc31c8e3
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 89d894a5125a16f95e6ef8a15c2503d48f3a8e55
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80585915"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632183"
 ---
 # <a name="application-gateway-configuration-overview"></a>Uygulama Ağ Geçidi yapılandırmagenel bakış
 
@@ -118,7 +118,7 @@ Bu senaryo için, Uygulama Ağ Geçidi alt netinde NSG'leri kullanın. Bu öncel
 
   **Senaryo 1**: Sanal Cihazlar için UDR
 
-  0.0.0.0/0'ın herhangi bir sanal cihaz, hub/spoke sanal ağ veya şirket içi (zorunlu tünelleme) üzerinden yönlendirilmesi gereken tüm senaryolar v2 genel önizlemesi için desteklenmez. 
+  0.0.0.0/0'ın herhangi bir sanal cihaz, hub/spoke sanal ağ veya şirket içi (zorunlu tünelleme) üzerinden yönlendirilmesi gereken tüm senaryolar V2 için desteklenmez.
 
 ## <a name="front-end-ip"></a>Ön uç IP
 

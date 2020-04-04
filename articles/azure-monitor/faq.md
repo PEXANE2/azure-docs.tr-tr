@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/26/2020
-ms.openlocfilehash: 306d847c2bc5af72d37dbf8bf472a5bae63e9fd5
-ms.sourcegitcommit: c5661c5cab5f6f13b19ce5203ac2159883b30c0e
+ms.openlocfilehash: db63ce2d56eb78bf6b361d530511b6902c1cb6d5
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80528494"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637779"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitörü Sık Sorulan Sorular
 
@@ -177,7 +177,7 @@ Günlük uyarısı ölçütleri ile eşleştiğinde, 15 dakikadan uzun süredir 
 
 
 ### <a name="what-are-the-firewall-requirements-for-azure-monitor-agents"></a>Azure Monitor aracıları için güvenlik duvarı gereksinimleri nelerdir?
-Güvenlik duvarı gereksinimleriyle ilgili ayrıntılar için [Ağ güvenlik duvarı gereksinimlerine](platform/log-analytics-agent.md#firewall-requirements)bakın.
+Güvenlik duvarı gereksinimleriyle ilgili ayrıntılar için [Ağ güvenlik duvarı gereksinimlerine](platform/log-analytics-agent.md#network-requirements)bakın.
 
 
 ## <a name="visualizations"></a>Görsel öğeler
@@ -284,7 +284,7 @@ Diğer kaynaklardan, bunları yapılandırarak:
 
 * [Azure tanılama](platform/diagnostics-extension-to-application-insights.md)
 * [Analytics'e İthalat](platform/data-collector-api.md)
-* [Günlük Analizi](platform/data-collector-api.md)
+* [Log Analytics](platform/data-collector-api.md)
 * [Logstash](platform/data-collector-api.md)
 
 ### <a name="can-i-filter-out-or-modify-some-telemetry"></a>Bazı telemetrileri filtreleyebilir veya değiştirebilir miyim?
@@ -718,7 +718,7 @@ Bu koşulda, VM'yi açtığınızda ve VM'ye yüklendikten sonra bile sol bölme
 ## <a name="next-steps"></a>Sonraki adımlar
 Sorunuz burada yanıtlanmamışsa, aşağıdaki forumlara ek sorular ve yanıtlar için başvurabilirsiniz.
 
-- [Günlük Analizi](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights)
+- [Log Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights)
 - [Uygulama Bilgileri](https://social.msdn.microsoft.com/Forums/vstudio/home?forum=ApplicationInsights)
 
 Azure Monitor hakkında genel geri bildirim için lütfen [geri bildirim forumuna](https://feedback.azure.com/forums/34192--general-feedback)katılın.

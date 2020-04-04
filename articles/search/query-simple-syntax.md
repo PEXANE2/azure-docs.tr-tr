@@ -7,7 +7,7 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/10/2020
+ms.date: 04/03/2020
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: fc1eb1836badc3ced688750bbc7c7a164773d022
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3d5a4ddf863115747c27efbca1808d51444aac8c
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77152678"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656160"
 ---
 # <a name="simple-query-syntax-in-azure-cognitive-search"></a>Azure Bilişsel Arama'da basit sorgu sözdizimi
 
@@ -68,9 +68,15 @@ NOT işleci eksi işaretidir. Örneğin, `wifi –luxury` `wifi` terimi olan ve/
 > [!NOTE]  
 >  Seçenek, `searchMode` NOT işleci ile bir terimin ANDed veya ORed sorguda bir `+` veya `|` işleç yokluğunda diğer terimler ile olup olmadığını denetler. (varsayılan) veya `searchMode` `any` `all`. olarak ayarlanabilen geri çağırma Kullanırsanız, `any`daha fazla sonuç ekleyerek sorguların geri çağrılması `-` artar ve varsayılan olarak "VEYA Değİl" olarak yorumlanır. Örneğin, `wifi -luxury` terimi `wifi` içeren veya terimi `luxury`içermeyen belgelereşleşir. Kullanırsanız, `all`daha az sonuç ekleyerek sorguların kesinliğini artırır ve varsayılan olarak "VE Değİl" olarak yorumlanır. Örneğin, `wifi -luxury` terimi `wifi` içeren ve "lüks" terimini içermeyen belgeler eşleşir. Bu operatör için `-` tartışmasız daha sezgisel bir davranıştır. Bu nedenle, aramaları `searchMode=all` geri `searchMode=any` çağırmak yerine kesinlik için optimize etmek *and* istiyorsanız kullanmayı düşünmelisiniz `-` ve kullanıcılarınız aramalarda operatörü sık sık kullanır.
 
-## <a name="suffix-operator"></a>Sonek işleci
+<a name="prefix-search"></a>
 
-Sonek işleci bir yıldız `*`işaretidir. Örneğin, `lux*` "büyük/küçük/ yoksayma" `lux`ile başlayan bir terimi olan belgeleri arar.  
+## <a name="suffix--operator-for-prefix-search"></a>Önek `*` araması için sonek işleci
+
+Sonek işleci bir yıldız `*`işaretidir. Örneğin, `cap*` "büyük/küçük/ yoksayma" `cap`ile başlayan bir terimi olan belgeleri arar. 
+
+Filtrelere benzer şekilde, önek sorgusu tam bir eşleşme arar. Bu nedenle, alaka düzeyi puanlama yoktur (tüm sonuçlar 1.0 arama puanı alır). Önek sorguları, özellikle dizin büyükse ve önek az sayıda karakterden oluşuyorsa, yavaş olabilir. 
+
+Dize son bölümünde eşleşen bir sonek sorgusu yürütmek istiyorsanız, bir [joker karakter arama](query-lucene-syntax.md#bkmk_wildcard) ve tam Lucene sözdizimi kullanın.
 
 ## <a name="phrase-search-operator"></a>İfade arama operatörü
 

@@ -6,15 +6,15 @@ manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/22/2020
 ms.author: iainfou
-ms.openlocfilehash: e7caacf23cb489da6f9f85748ae839bc4babff8e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6acf9301367ae2c6947f6935c43f420d3d7cac65
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77917314"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80655003"
 ---
 # <a name="migrate-azure-ad-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>Azure AD Etki Alanı Hizmetlerini Klasik sanal ağ modelinden Kaynak Yöneticisi'ne geçirin
 
@@ -158,7 +158,7 @@ Kaynak Yöneticisi dağıtım modeline ve sanal ağa geçiş 5 ana adıma ayrıl
 
 | Adım    | Üzerinden gerçekleştirilen  | Tahmini süre  | Downtime  | Geri dön/Geri Yükleme? |
 |---------|--------------------|-----------------|-----------|-------------------|
-| [Adım 1 - Yeni sanal ağı güncelleştirin ve bulun](#update-and-verify-virtual-network-settings) | Azure portalında | 15 dakika | Kapalı kalma süresi gerekmez | Yok |
+| [Adım 1 - Yeni sanal ağı güncelleştirin ve bulun](#update-and-verify-virtual-network-settings) | Azure portal | 15 dakika | Kapalı kalma süresi gerekmez | Yok |
 | [Adım 2 - Azure AD DS yönetilen etki alanını geçiş için hazırlama](#prepare-the-managed-domain-for-migration) | PowerShell | 15 - Ortalama 30 dakika | Azure AD DS'nin kapalı kalma süresi, bu komut tamamlandıktan sonra başlar. | Geri dön ve kullanılabilir geri yükleyin. |
 | [Adım 3 - Azure AD DS yönetilen etki alanını varolan bir sanal ağa taşıma](#migrate-the-managed-domain) | PowerShell | 1 – Ortalama 3 saat | Bu komut tamamlandıktan ve kapalı kalma süresi sona erdiğinde bir etki alanı denetleyicisi kullanılabilir. | Hata da, hem geri alma (self servis) hem de geri yükleme kullanılabilir. |
 | [Adım 4 - Test edin ve çoğaltma etki alanı denetleyicisini bekleyin](#test-and-verify-connectivity-after-the-migration)| PowerShell ve Azure portalı | Test sayısına bağlı olarak 1 saat veya daha fazla | Her iki etki alanı denetleyicisi de kullanılabilir ve normal çalışması gerekir. | Yok. İlk VM başarıyla geçirildikten sonra geri alma veya geri yükleme seçeneği yoktur. |

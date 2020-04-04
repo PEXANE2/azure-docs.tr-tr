@@ -4,18 +4,18 @@ description: Azure kaynakları ve Azure AD kimlik doğrulaması için yönetilen
 services: active-directory
 author: MarkusVi
 ms.author: markvi
-ms.date: 03/13/2020
+ms.date: 04/03/2020
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: msi
 manager: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9e01f1f5abfc0f76926ce503fae058c196c6e64
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 4c7a65df100cd58561ce12ac2ae01281eebd419a
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80282112"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656042"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Azure kaynakları için yönetilen kimlikleri destekleyen hizmetler
 
@@ -37,11 +37,11 @@ Aşağıdaki Azure hizmetleri Azure kaynakları için yönetilen kimlikleri dest
 
 Azure Sanal Makineleri için yönetilen kimliği yapılandırmak için aşağıdaki listeye bakın (kullanılabilen bölgelerde):
 
-- [Azure portalında](qs-configure-portal-windows-vm.md)
-- [Powershell](qs-configure-powershell-windows-vm.md)
+- [Azure portal](qs-configure-portal-windows-vm.md)
+- [PowerShell](qs-configure-powershell-windows-vm.md)
 - [Azure CLI](qs-configure-cli-windows-vm.md)
-- [Azure Kaynak Yöneticisi şablonları](qs-configure-template-windows-vm.md)
-- [Geri kalanı](qs-configure-rest-vm.md)
+- [Azure Resource Manager şablonları](qs-configure-template-windows-vm.md)
+- [REST](qs-configure-rest-vm.md)
 
 ### <a name="azure-virtual-machine-scale-sets"></a>Azure Sanal Makine Ölçek Kümeleri
 
@@ -52,11 +52,11 @@ Azure Sanal Makineleri için yönetilen kimliği yapılandırmak için aşağıd
 
 Azure Sanal Makine Ölçek Kümeleri için yönetilen kimliği yapılandırmak için aşağıdaki listeye bakın (kullanılabilen bölgelerde):
 
-- [Azure portalında](qs-configure-portal-windows-vm.md)
-- [Powershell](qs-configure-powershell-windows-vm.md)
+- [Azure portal](qs-configure-portal-windows-vm.md)
+- [PowerShell](qs-configure-powershell-windows-vm.md)
 - [Azure CLI](qs-configure-cli-windows-vm.md)
-- [Azure Kaynak Yöneticisi şablonları](qs-configure-template-windows-vm.md)
-- [Geri kalanı](qs-configure-rest-vm.md)
+- [Azure Resource Manager şablonları](qs-configure-template-windows-vm.md)
+- [REST](qs-configure-rest-vm.md)
 
 ### <a name="azure-app-service"></a>Azure App Service
 
@@ -67,10 +67,10 @@ Azure Sanal Makine Ölçek Kümeleri için yönetilen kimliği yapılandırmak i
 
 Azure Uygulama Hizmeti için yönetilen kimliği yapılandırmak için aşağıdaki listeye bakın (kullanılabilen bölgelerde):
 
-- [Azure portalında](/azure/app-service/overview-managed-identity#using-the-azure-portal)
+- [Azure portal](/azure/app-service/overview-managed-identity#using-the-azure-portal)
 - [Azure CLI](/azure/app-service/overview-managed-identity#using-the-azure-cli)
 - [Azure PowerShell](/azure/app-service/overview-managed-identity#using-azure-powershell)
-- [Azure Resource Manager şablonu](/azure/app-service/overview-managed-identity#using-an-azure-resource-manager-template)
+- [Azure Kaynak Yöneticisi şablonu](/azure/app-service/overview-managed-identity#using-an-azure-resource-manager-template)
 
 ### <a name="azure-blueprints"></a>Azure Blueprints
 
@@ -93,10 +93,10 @@ Yönetilen kimlik türü |Tüm Genel Olarak Kullanılabilir<br>Genel Azure Bölg
 
 Azure İşlevleri için yönetilen kimliği yapılandırmak için aşağıdaki listeye bakın (kullanılabilen bölgelerde):
 
-- [Azure portalında](/azure/app-service/overview-managed-identity#using-the-azure-portal)
+- [Azure portal](/azure/app-service/overview-managed-identity#using-the-azure-portal)
 - [Azure CLI](/azure/app-service/overview-managed-identity#using-the-azure-cli)
 - [Azure PowerShell](/azure/app-service/overview-managed-identity#using-azure-powershell)
-- [Azure Resource Manager şablonu](/azure/app-service/overview-managed-identity#using-an-azure-resource-manager-template)
+- [Azure Kaynak Yöneticisi şablonu](/azure/app-service/overview-managed-identity#using-an-azure-resource-manager-template)
 
 ### <a name="azure-logic-apps"></a>Azure Logic Apps
 
@@ -108,8 +108,8 @@ Yönetilen kimlik türü | Tüm Genel Olarak Kullanılabilir<br>Genel Azure Böl
 
 Azure Logic Apps için yönetilen kimliği yapılandırmak için aşağıdaki listeye bakın (kullanılabilen bölgelerde):
 
-- [Azure portalında](/azure/logic-apps/create-managed-service-identity#enable-system-assigned-identity-in-azure-portal)
-- [Azure Resource Manager şablonu](/azure/app-service/overview-managed-identity)
+- [Azure portal](/azure/logic-apps/create-managed-service-identity#enable-system-assigned-identity-in-azure-portal)
+- [Azure Kaynak Yöneticisi şablonu](/azure/app-service/overview-managed-identity)
 
 ### <a name="azure-data-factory-v2"></a>Azure Data Factory V2
 
@@ -120,21 +120,21 @@ Yönetilen kimlik türü | Tüm Genel Olarak Kullanılabilir<br>Genel Azure Böl
 
 Azure Veri Fabrikası V2 için yönetilen kimliği yapılandırmak için aşağıdaki listeye bakın (kullanılabilen bölgelerde):
 
-- [Azure portalında](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity)
-- [Powershell](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity-using-powershell)
-- [Geri kalanı](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity-using-rest-api)
+- [Azure portal](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity)
+- [PowerShell](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity-using-powershell)
+- [REST](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity-using-rest-api)
 - [SDK](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity-using-sdk)
 
 ### <a name="azure-api-management"></a>Azure API Management
 
 Yönetilen kimlik türü | Tüm Genel Olarak Kullanılabilir<br>Genel Azure Bölgeleri | Azure Kamu | Azure Almanya | Azure Çin 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| Atanan sistem | ![Kullanılabilir][check] | ![Kullanılabilir][check] | Kullanılamaz | Kullanılamaz |
-| Atanan kullanıcı | Kullanılamaz | Kullanılamaz | Kullanılamaz | Kullanılamaz |
+| Atanan sistem | ![Kullanılabilir][check] | ![Kullanılabilir][check] | Kullanılamaz | ![Kullanılabilir][check] |
+| Atanan kullanıcı | Önizleme | Önizleme | Kullanılamaz | Önizleme |
 
 Azure API Yönetimi için yönetilen kimliği yapılandırmak için aşağıdaki listeye bakın (kullanılabilen bölgelerde):
 
-- [Azure Resource Manager şablonu](/azure/api-management/api-management-howto-use-managed-service-identity)
+- [Azure Kaynak Yöneticisi şablonu](/azure/api-management/api-management-howto-use-managed-service-identity)
 
 ### <a name="azure-container-instances"></a>Azure Container Instances
 
@@ -146,7 +146,7 @@ Yönetilen kimlik türü | Tüm Genel Olarak Kullanılabilir<br>Genel Azure Böl
 Azure Kapsayıcı Örnekleri için yönetilen kimliği yapılandırmak için aşağıdaki listeye bakın (kullanılabilen bölgelerde):
 
 - [Azure CLI](~/articles/container-instances/container-instances-managed-identity.md)
-- [Azure Resource Manager şablonu](~/articles/container-instances/container-instances-managed-identity.md#enable-managed-identity-using-resource-manager-template)
+- [Azure Kaynak Yöneticisi şablonu](~/articles/container-instances/container-instances-managed-identity.md#enable-managed-identity-using-resource-manager-template)
 - [YAML](~/articles/container-instances/container-instances-managed-identity.md#enable-managed-identity-using-yaml-file)
 
 ### <a name="azure-container-registry-tasks"></a>Azure Container Registry Görevleri
@@ -169,7 +169,7 @@ Yönetilen kimlik türü | Tüm Genel Olarak Kullanılabilir<br>Genel Azure Böl
 | Atanan kullanıcı | ![Kullanılabilir][check] | Kullanılamaz | Kullanılamaz |Kullanılamaz |
 
 Tüm bölgelerdeki Azure Hizmet Kumaşı uygulamaları için yönetilen kimliği yapılandırmak için aşağıdaki listeye bakın:
-- [Azure Resource Manager şablonu](https://github.com/Azure-Samples/service-fabric-managed-identity/tree/anmenard-docs)
+- [Azure Kaynak Yöneticisi şablonu](https://github.com/Azure-Samples/service-fabric-managed-identity/tree/anmenard-docs)
 
 ## <a name="azure-services-that-support-azure-ad-authentication"></a>Azure AD kimlik doğrulamasını destekleyen Azure hizmetleri
 

@@ -4,19 +4,19 @@ description: RADIUS Kimlik Doğrulaması ve Azure Multi-Factor Authentication Su
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/21/2019
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b38341613c98bf85df8cb47ccafc3df5709a1fd4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 552226c35d4d129f73b96b689871708950b7ffb1
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75425211"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80652957"
 ---
 # <a name="integrate-radius-authentication-with-azure-multi-factor-authentication-server"></a>RADIUS kimlik doğrulamasını ve Azure Multi-Factor Authentication Sunucusuyla tümleştirme
 
@@ -77,9 +77,9 @@ Azure Multi-Factor Authentication Sunucusu’nu başarıyla yapılandırdınız.
 
 RADIUS istemcisini yapılandırmak için yönergeleri kullanın:
 
-* Gerecinizi/sunucunuzu, RADIUS sunucusu olarak görev yapan Azure Multi-Factor Authentication Sunucusu’nun IP adresi için RADIUS aracılığıyla kimlik doğrulaması yapacak şekilde yapılandırın.
+* Cihazınızı/sunucunuzu RADIUS üzerinden, RADIUS sunucusu gibi davranan Azure Çok Faktörlü Authentication Server'ın IP adresine doğru doğrulayabilmek için yapılandırın.
 * Daha önce yapılandırılanla aynı paylaşılan gizli diziyi kullanın.
-* Kullanıcının kimlik bilgilerini doğrulama, iki aşamalı kimlik doğrulaması gerçekleştirme, bunların yanıtını alma ve sonra RADIUS erişim isteğini yanıtlamaya yetecek kadar zaman olması için RADIUS zaman aşımını 30-60 saniye olarak yapılandırın.
+* Kullanıcının kimlik bilgilerini doğrulamak, iki aşamalı doğrulama gerçekleştirmek, yanıtlarını almak ve sonra RADIUS erişim isteğine yanıt vermek için zaman olacak şekilde RADIUS zaman aşımını 30-60 saniyeye yapılandırın.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 

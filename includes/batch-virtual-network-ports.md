@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: ''
-ms.date: 03/04/2020
+ms.date: 04/03/2020
 ms.author: labrenne
 ms.custom: include file
-ms.openlocfilehash: e9460108499ca76d1b149b61cebe3d3081bf6544
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: dc08dcded6418208751edbffcb5d263db059ec01
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79086269"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80657495"
 ---
 ### <a name="general-requirements"></a>Genel gereksinimler
 
@@ -65,7 +65,7 @@ Alt ağ, Iş yükünüzün gerektirdiği şekilde Azure Depolama veya diğer kay
 
 #### <a name="network-security-groups-specifying-subnet-level-rules"></a>Ağ güvenlik grupları: Alt ağ düzeyindeki kuralları belirtme
 
-Toplu iş kendi NSG'lerini yapılandırdığından sanal ağ alt net düzeyinde NSG belirtmek gerekmez (yukarıya bakın). Toplu işlem düğümlerinin dağıtıldığı alt netle ilişkili bir NSG'niz varsa veya uygulanan varsayılanları geçersiz kılmak için özel NSG kuralları uygulamak istiyorsanız, bu NSG'yi aşağıdaki lerde gösterildiği gibi en az gelen ve giden güvenlik kurallarıyla yapılandırmanız gerekir Tablo.
+Toplu iş kendi NSG'lerini yapılandırdığından sanal ağ alt net düzeyinde NSG belirtmek gerekmez (yukarıya bakın). Toplu işlem düğümlerinin dağıtıldığı alt ağla ilişkili bir NSG'niz varsa veya uygulanan varsayılanları geçersiz kılmak için özel NSG kuralları uygulamak istiyorsanız, bu NSG'yi aşağıdaki tablolarda gösterildiği gibi en az gelen ve giden güvenlik kurallarıyla yapılandırmanız gerekir.
 
 Yalnızca dış kaynaklardan gelen bilgi işlem düğümlerine uzaktan erişime izin vermek zorundaysanız, gelen trafiği 3389 (Windows) veya 22 (Linux) bağlantı noktasında yapılandırın. Belirli MPI çalışma sürelerine sahip çok örnekli görevler için destek gerekiyorsa, Linux'taki bağlantı noktası 22 kurallarını etkinleştirmeniz gerekebilir. Bu bağlantı noktalarındaki trafiğin havuz hesaplama düğümlerinin kullanılabilir olması için kesinlikle gerekli değildir.
 
@@ -75,6 +75,9 @@ Yalnızca dış kaynaklardan gelen bilgi işlem düğümlerine uzaktan erişime 
 | --- | --- | --- | --- | --- | --- | --- |
 | Yok | `BatchNodeManagement`[Hizmet etiketi](../articles/virtual-network/security-overview.md#service-tags) (bölgesel varyant kullanıyorsanız, Toplu Iş hesabınızla aynı bölgede) | * | Herhangi biri | 29876-29877 | TCP | İzin Ver |
 | Gerekirse Linux çok örnekli görevler için bilgi işlem düğümlerine ve/veya bilgi işlem düğümü alt ağına uzaktan erişmek için kullanıcı kaynağı IP'leri. | Yok | * | Herhangi biri | 3389 (Windows), 22 (Linux) | TCP | İzin Ver |
+
+> [!WARNING]
+> Toplu servis IP adresleri zaman içinde değişebilir. Bu nedenle, NSG kuralları `BatchNodeManagement` için hizmet etiketini (veya bölgesel varyantı) kullanmanız önerilir. NSG kurallarını toplu servis IP adresleriyle doğrudan doldurmak önerilmez.
 
 **Giden güvenlik kuralları**
 

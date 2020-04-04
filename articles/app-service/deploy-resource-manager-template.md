@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 01/03/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: dfdfa9f69e00aa644c21fc96cb70e9fa460ca0c1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0a282a412823207e5f662441158000e8c6121796
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77211707"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637920"
 ---
 # <a name="guidance-on-deploying-web-apps-by-using-azure-resource-manager-templates"></a>Azure Kaynak Yöneticisi şablonlarını kullanarak web uygulamalarını dağıtma kılavuzu
 
@@ -109,7 +109,7 @@ Web uygulamanızın adı genel olarak benzersiz olmalıdır. Benzersiz olması m
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Şablonunuz SSL bağlama için bir [Microsoft.Web/sertifika](/azure/templates/microsoft.web/certificates) kaynağı içeriyorsa ve sertifika Bir Anahtar Kasası'nda depolanmışsa, Uygulama Hizmeti kimliğinin sertifikaya erişebileceğinden emin olmalısınız.
+Şablonunuz TLS/SSL bağlama için bir [Microsoft.Web/sertifika](/azure/templates/microsoft.web/certificates) kaynağı içeriyorsa ve sertifika Bir Key Vault'ta depolanmışsa, Uygulama Hizmeti kimliğinin sertifikaya erişebileceğinden emin olmalısınız.
 
 Genel Azure'da, App Service hizmet sorumlusu **abfa0a7c-a6b6-4736-8310-5855508787cd**kimliğine sahiptir. App Service servis sorumlusu için Key Vault'a erişim sağlamak için şunları kullanın:
 

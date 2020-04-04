@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
-ms.date: 3/11/2020
-ms.openlocfilehash: 00b9da150569db2972289468b1405e5087ee3321
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.date: 4/3/2020
+ms.openlocfilehash: 07f29a01ae0128ba0a35504dea54ba1ae2dde944
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80549148"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80657071"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL Veritabanı sunucusuz
 
@@ -151,13 +151,13 @@ Sunucusuz bir veritabanını otomatik olarak otomatik olarak devam ettirmek ve o
 
 ### <a name="customer-managed-transparent-data-encryption-byok"></a>Müşteri tarafından yönetilen şeffaf veri şifreleme (BYOK)
 
-Müşteri [tarafından yönetilen saydam veri şifreleme](transparent-data-encryption-byok-azure-sql.md) (BYOK) ve sunucusuz veritabanı anahtar silme veya iptal gerçekleştiğinde otomatik olarak duraklatılmışsa, veritabanı otomatik duraklatma durumunda kalır.  Bu durumda, veritabanı sonraki devam edildikten sonra, veritabanına yaklaşık 10 dakika içinde erişilemez hale gelir.  Veritabanına erişilemiyor olduğunda, kurtarma işlemi, sağlanan işlem veritabanlarıyla aynıdır.  Anahtar silme veya iptal gerçekleştiğinde sunucusuz veritabanı çevrimiçiyse, veritabanına yaklaşık 10 dakika veya daha kısa bir süre sonra, sağlanan bilgi işlem veritabanlarında olduğu gibi erişilemez hale gelir.
+Müşteri [tarafından yönetilen saydam veri şifreleme](transparent-data-encryption-byok-azure-sql.md) (BYOK) ve sunucusuz veritabanı anahtar silme veya iptal gerçekleştiğinde otomatik olarak duraklatılmışsa, veritabanı otomatik duraklatma durumunda kalır.  Bu durumda, veritabanı sonraki devam edildikten sonra, veritabanına yaklaşık 10 dakika içinde erişilemez hale gelir.  Veritabanına erişilemiyor olduğunda, kurtarma işlemi, sağlanan işlem veritabanlarıyla aynıdır.  Anahtar silme veya iptal gerçekleştiğinde sunucusuz veritabanı çevrimiçiyse, veritabanına da sağlanan işlem veritabanlarında olduğu gibi yaklaşık 10 dakika içinde erişilemez hale gelir.
 
 ## <a name="onboarding-into-serverless-compute-tier"></a>Sunucusuz bilgi işlem katmanına binme
 
 Yeni bir veritabanı oluşturma veya varolan bir veritabanını sunucusuz bir bilgi işlem katmanına taşıma, verilen işlem katmanında yeni bir veritabanı oluşturmakla aynı deseni izler ve aşağıdaki iki adımı içerir.
 
-1. Hizmet hedef adını belirtin. Hizmet hedefi, hizmet katmanı, donanım oluşturma ve maksimum vCores reçete. Aşağıdaki tabloda hizmet amacı seçenekleri gösterilmektedir:
+1. Hizmet hedefini belirtin. Hizmet hedefi, hizmet katmanı, donanım oluşturma ve maksimum vCores reçete. Aşağıdaki tabloda hizmet amacı seçenekleri gösterilmektedir:
 
    |Hizmet hedef adı|Hizmet katmanı|Donanım üretimi|Maksimum vCores|
    |---|---|---|---|
@@ -176,12 +176,12 @@ Yeni bir veritabanı oluşturma veya varolan bir veritabanını sunucusuz bir bi
    |Parametre|Değer seçenekleri|Varsayılan değer|
    |---|---|---|---|
    |Min vCores|Yapılandırılan maksimum vCores bağlıdır - [kaynak sınırlarına](sql-database-vcore-resource-limits-single-databases.md#general-purpose---serverless-compute---gen5)bakın.|0,5 vCores|
-   |Otomatik duraklatma gecikmesi|Minimum: 60 dakika (1 saat)<br>Maksimum: 10080 dakika (7 gün)<br>Artışlar: 60 dakika<br>Otomatik duraklat'ı devre dışı: -1|60 dakika|
+   |Otomatik duraklatma gecikmesi|Minimum: 60 dakika (1 saat)<br>Maksimum: 10080 dakika (7 gün)<br>Artışlar: 10 dakika<br>Otomatik duraklat'ı devre dışı: -1|60 dakika|
 
 
 ### <a name="create-new-database-in-serverless-compute-tier"></a>Sunucusuz bilgi işlem katmanında yeni veritabanı oluşturma 
 
-Aşağıdaki örnekler, sunucusuz bilgi işlem katmanında yeni bir veritabanı oluşturur. Örnekler açıkça min vCores, max vCores ve otomatik duraklatma gecikme belirtin.
+Aşağıdaki örnekler, sunucusuz bilgi işlem katmanında yeni bir veritabanı oluşturur.
 
 #### <a name="use-azure-portal"></a>Azure portalı kullanma
 
@@ -205,7 +205,7 @@ az sql db create -g $resourceGroupName -s $serverName -n $databaseName `
 
 #### <a name="use-transact-sql-t-sql"></a>Transact-SQL (T-SQL) kullanın
 
-Aşağıdaki örnek, sunucusuz bilgi işlem katmanında yeni bir veritabanı oluşturur.
+T-SQL kullanırken, min vcores ve autopause gecikme için varsayılan değerler uygulanır.
 
 ```sql
 CREATE DATABASE testdb
@@ -216,7 +216,7 @@ Ayrıntılar için CREATE [DATABASE'e](/sql/t-sql/statements/create-database-tra
 
 ### <a name="move-database-from-provisioned-compute-tier-into-serverless-compute-tier"></a>Veritabanını sağlanan bilgi işlem katmanından sunucusuz bilgi işlem katmanına taşıma
 
-Aşağıdaki örnekler, bir veritabanını sağlanan bilgi işlem katmanından sunucusuz bilgi işlem katmanına taşır. Örnekler açıkça min vCores, max vCores ve otomatik duraklatma gecikme belirtin.
+Aşağıdaki örnekler, bir veritabanını sağlanan bilgi işlem katmanından sunucusuz bilgi işlem katmanına taşır.
 
 #### <a name="use-powershell"></a>PowerShell kullanma
 
@@ -237,7 +237,7 @@ az sql db update -g $resourceGroupName -s $serverName -n $databaseName `
 
 #### <a name="use-transact-sql-t-sql"></a>Transact-SQL (T-SQL) kullanın
 
-Aşağıdaki örnek, bir veritabanını sağlanan bilgi işlem katmanından sunucusuz bilgi işlem katmanına taşır.
+T-SQL kullanırken, min vcores ve autopause gecikme için varsayılan değerler uygulanır.
 
 ```sql
 ALTER DATABASE testdb 

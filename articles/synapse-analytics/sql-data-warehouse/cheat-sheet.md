@@ -10,16 +10,16 @@ ms.subservice: ''
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 8e0515727c2155b91f18398bd9def700f4a15b34
-ms.sourcegitcommit: bc738d2986f9d9601921baf9dded778853489b16
+ms.openlocfilehash: 55b00af9afeafb2a3fa7992cc457819dc1dcb2b2
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80619401"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631278"
 ---
 # <a name="cheat-sheet-for-azure-synapse-analytics-formerly-sql-dw"></a>Azure Synapse Analytics için hile sayfası (eski adıyla SQL DW)
 
-Bu hile sayfası, Azure Synapse çözümleri oluşturmak için yararlı ipuçları ve en iyi uygulamalar sağlar. 
+Bu hile sayfası, Azure Synapse çözümleri oluşturmak için yararlı ipuçları ve en iyi uygulamalar sağlar.
 
 Aşağıdaki grafikte, veri ambarı tasarlama işlemi gösterilmektedir:
 
@@ -28,6 +28,7 @@ Aşağıdaki grafikte, veri ambarı tasarlama işlemi gösterilmektedir:
 ## <a name="queries-and-operations-across-tables"></a>Tablolardaki sorgular ve işlemler
 
 Veri ambarınızda çalıştırılacak birincil işlemleri ve sorguları önceden bildiğinizde, bu işlemler için veri ambarı mimarinizi öncelik sırasına koyabilirsiniz. Bu sorgular ve işlemler şunları içerebilir:
+
 * Bir veya iki olgu tablosunu boyut tabloları ile birleştirme, birleşik tabloyu filtreleme ve sonra sonuçları bir veri reyonuna ekleme.
 * Olgu satışınıza yönelik büyük veya küçük güncelleştirmeler yapma.
 * Tablolarınıza yalnızca veri ekleme.
@@ -36,7 +37,7 @@ Veri ambarınızda çalıştırılacak birincil işlemleri ve sorguları öncede
 
 ## <a name="data-migration"></a>Veri geçişi
 
-İlk olarak, verilerinizi [Azure Veri Gölü Depolama](../../data-factory/connector-azure-data-lake-store.md) veya Azure Blob Depolama'ya yükleyin. Ardından, verilerinizi hazırlama tablolarına yüklemek için PolyBase'i kullanın. Aşağıdaki yapılandırmayı kullanın:
+İlk olarak, verilerinizi [Azure Veri Gölü Depolama](../../data-factory/connector-azure-data-lake-store.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) veya Azure Blob Depolama'ya yükleyin. Ardından, verilerinizi hazırlama tablolarına yüklemek için PolyBase'i kullanın. Aşağıdaki yapılandırmayı kullanın:
 
 | Tasarım | Öneri |
 |:--- |:--- |
@@ -45,7 +46,7 @@ Veri ambarınızda çalıştırılacak birincil işlemleri ve sorguları öncede
 | Bölümleme | None |
 | Kaynak Sınıfı | largerc veya xlargerc |
 
-[Veri geçişi](https://blogs.msdn.microsoft.com/sqlcat/20../../migrating-data-to-azure-sql-data-warehouse-in-practice/), [veri yükleme](design-elt-data-loading.md) ve [Ayıklama, Yükleme ve Dönüştürme (ELT) işlemi](design-elt-data-loading.md) hakkında daha fazla bilgi edinin. 
+[Veri geçişi](https://blogs.msdn.microsoft.com/sqlcat/20../../migrating-data-to-azure-sql-data-warehouse-in-practice/), [veri yükleme](design-elt-data-loading.md) ve [Ayıklama, Yükleme ve Dönüştürme (ELT) işlemi](design-elt-data-loading.md) hakkında daha fazla bilgi edinin.
 
 ## <a name="distributed-or-replicated-tables"></a>Dağıtılmış veya çoğaltılmış tablolar
 
@@ -58,12 +59,13 @@ Tablo özelliklerini bağlı olarak aşağıdaki stratejileri kullanın:
 | Karma | * Olgu tabloları<br></br>* Büyük boyutlu tablolar |* Dağıtım anahtarı güncelleştirilemez |
 
 **İpuçları:**
+
 * Hepsini Bir Kez Deneme ile başlayın, ancak yüksek düzeyde paralel bir mimariden yararlanmak için karma dağıtım stratejisini amaçlayın.
 * Genel karma anahtarların aynı veri biçimine sahip olduğundan emin olun.
 * Varchar formatında dağıtmayın.
 * Sık birleştirme işlemleri ile bir olgu tablosuna yönelik genel karma anahtar içeren boyut tabloları karma dağıtılmış olabilir.
-* Verilerdeki eğrilikleri analiz etmek için *[sys.dm_pdw_nodes_db_partition_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-partition-stats-transact-sql)* komutunu kullanın.
-* Sorguların ardındaki veri hareketlerini analiz etmek, yayın ve karıştırma işlemlerinin aldığı süreyi izlemek için *[sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql)* komutunu kullanın. Bu, dağıtım stratejinizi gözden geçirmek için faydalıdır.
+* Verilerdeki eğrilikleri analiz etmek için *[sys.dm_pdw_nodes_db_partition_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-partition-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)* komutunu kullanın.
+* Sorguların ardındaki veri hareketlerini analiz etmek, yayın ve karıştırma işlemlerinin aldığı süreyi izlemek için *[sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)* komutunu kullanın. Bu, dağıtım stratejinizi gözden geçirmek için faydalıdır.
 
 [Çoğaltılmış tablolar](design-guidance-for-replicated-tables.md) ve [dağıtılmış tablolar](sql-data-warehouse-tables-distribute.md) hakkında daha fazla bilgi edinin.
 
@@ -78,7 +80,8 @@ Dizinleme, tabloların hızlı şekilde okunması için faydalıdır. Gereksinim
 | Kümelenmiş columnstore dizini (CCI) (varsayılan) | * Büyük tablolar (100 milyondan fazla satır) | * Çoğaltılmış bir tabloda kullanılır<br></br>* Masanızda büyük güncelleme işlemleri yaparsınız<br></br>* Tablonuza aşırı bölme: satır grupları farklı dağıtım düğümleri ve bölümleri arasında yayılmaz |
 
 **İpuçları:**
-* Kümelenmiş bir dizin üzerinde, filtreleme için yoğun şekilde kullanılan bir sütuna kümelenmemiş bir dizin eklemek isteyebilirsiniz. 
+
+* Kümelenmiş bir dizin üzerinde, filtreleme için yoğun şekilde kullanılan bir sütuna kümelenmemiş bir dizin eklemek isteyebilirsiniz.
 * CCI ile bir tablodaki belleği nasıl yöneteceğiniz konusunda dikkatli olun. Veri yüklediğinizde, kullanıcının (veya sorgunun) büyük bir kaynak sınıfından avantaj elde etmesini istersiniz. Kırpmadan ve çok sayıda küçük sıkıştırılmış satır grupları oluşturmaktan kaçınmaya dikkat edin.
 * Gen2’de, CCI tabloları performansı en üst düzeye çıkarmak için işlem düğümlerinde yerel olarak önbelleğe alınır.
 * CCI için, satır gruplarınızın sıkıştırmasının zayıf olması nedeniyle düşük performans gerçekleşebilir. Bu durumda CCI’nizi yeniden derleyin veya yeniden düzenleyin. Sıkıştırılmış satır grubu başına en az 100.000 satır istiyorsunuz. Bir satır grubunda 1 milyon satır olması idealdir.
@@ -88,6 +91,7 @@ Dizinleme, tabloların hızlı şekilde okunması için faydalıdır. Gereksinim
 [Dizinler](sql-data-warehouse-tables-index.md) hakkında daha fazla bilgi edinin.
 
 ## <a name="partitioning"></a>Bölümleme
+
 Büyük bir olgu tablonuz (1 milyardan fazla satır) olduğunda tablonuzu bölümleyebilirsiniz. Durumların yüzde 99’unda bölüm anahtarı, tarihi temel almalıdır. Özellikle de kümelenmiş bir columnstore dizininiz olduğunda aşırı bölümleme yapmamaya dikkat edin.
 
 ELT gerektiren hazırlama tabloları ile bölümlemeden yararlanabilirsiniz. Bu, veri yaşam döngüsü yönetimini kolaylaştırır.
@@ -104,13 +108,15 @@ ELT ardışık hatlarınızı veri ambarınıza otomatikleştirmek için PolyBas
 Geçmiş verilerinizdeki büyük bir güncelleştirme grubu için, INSERT, UPDATE ve DELETE kullanmak yerine tabloda tutmak istediğiniz verileri yazmak için [CTAS](sql-data-warehouse-develop-ctas.md) kullanmayı düşünün.
 
 ## <a name="maintain-statistics"></a>İstatistiklerin bakımını yapın
- Otomatik istatistikler genel olarak kullanılabilir olana kadar, istatistiklerin manuel olarak bakımı gereklidir. Verilerinizde *önemli* değişiklikler olacağından, istatistiklerin güncelleştirilmesi önemlidir. Bu, sorgu planlarınızın iyileştirilmesine yardımcı olur. Tüm istatistiklerinizi tutmanız çok uzun sürerse, hangi sütunlarda istatistikler olduğu konusunda daha seçici olun. 
+
+ Otomatik istatistikler genel olarak kullanılabilir olana kadar, istatistiklerin manuel olarak bakımı gereklidir. Verilerinizde *önemli* değişiklikler olacağından, istatistiklerin güncelleştirilmesi önemlidir. Bu, sorgu planlarınızın iyileştirilmesine yardımcı olur. Tüm istatistiklerinizi tutmanız çok uzun sürerse, hangi sütunlarda istatistikler olduğu konusunda daha seçici olun.
 
 Güncelleştirmelerin sıklığını da tanımlayabilirsiniz. Örneğin, yeni değerlerin eklenme ihtimali olan tarih sütunlarını her gün güncelleştirmeyi tercih edebilirsiniz. En çok faydayı, birleştirmelerin bulunduğu sütunlar, WHERE yan tümcesinde kullanılan sütunlar ve GROUP BY içinde bulunan sütunlar için istatistik tutarak elde edebilirsiniz.
 
 [İstatistikler](sql-data-warehouse-tables-statistics.md) hakkında daha fazla bilgi edinin.
 
 ## <a name="resource-class"></a>Kaynak sınıfı
+
 Kaynak grupları sorgulara bellek ayırmak için bir yol olarak kullanılır. Sorgu veya yükleme hızını artırmak için daha fazla bellek gerekiyorsa, daha yüksek kaynak sınıfları ayırmanız gerekir. Çevirme tarafında büyük kaynak sınıfları kullanılması, eşzamanlılığı etkiler. Tüm kullanıcılarınızı büyük bir kaynak sınıfına taşımadan önce bunu dikkate almak istersiniz.
 
 Sorguların çok uzun sürdüğünü fark ederseniz, kullanıcılarınızın büyük kaynak sınıflarında çalışmadığından emin olun. Büyük kaynak sınıfları birçok eşzamanlı yuva kullanır. Bunlar diğer sorguların kuyruğa alınmasına neden olabilir.
@@ -120,10 +126,8 @@ Son olarak, SQL [havuzunun](sql-data-warehouse-overview-what-is.md#synapse-sql-p
 [Kaynak sınıfları ve eşzamanlılık](resource-classes-for-workload-management.md) ile çalışma hakkında daha fazla bilgi edinin.
 
 ## <a name="lower-your-cost"></a>Maliyetinizi düşürme
-Azure Synapse'nin önemli bir [özelliği, hesaplama kaynaklarını yönetebilme](sql-data-warehouse-manage-compute-overview.md)yeteneğidir. Kullanmadığınızda SQL havuzunu duraklatabilirsiniz, bu da işlem kaynaklarının faturalandırmasını durdurur. Performans taleplerinizi karşılamak için kaynakları ölçeklendirebilirsiniz. Duraklatmak için [Azure portalını](../../synapse-analytics/sql-data-warehouse/pause-and-resume-compute-portal.md) veya [PowerShell](../../synapse-analytics/sql-data-warehouse/pause-and-resume-compute-powershell.md)’i kullanın. Ölçeklendirmek için [Azure portalını](quickstart-scale-compute-portal.md), [Powershell](quickstart-scale-compute-powershell.md)’i, [T-SQL](quickstart-scale-compute-tsql.md)’i veya [REST API](sql-data-warehouse-manage-compute-rest-api.md#scale-compute)’sini kullanın.
 
-
-Azure Synapse'nin önemli bir [özelliği, hesaplama kaynaklarını yönetebilme](sql-data-warehouse-manage-compute-overview.md)yeteneğidir. Kullanmadığınızda SQL havuzunu duraklatabilirsiniz, bu da işlem kaynaklarının faturalandırmasını durdurur. Performans taleplerinizi karşılamak için kaynakları ölçeklendirebilirsiniz. Duraklatmak için [Azure portalını](../../sql-data-warehouse/pause-and-resume-compute-portal.md) veya [PowerShell](../../sql-data-warehouse/pause-and-resume-compute-powershell.md)’i kullanın. Ölçeklendirmek için [Azure portalını](quickstart-scale-compute-portal.md), [Powershell](quickstart-scale-compute-powershell.md)’i, [T-SQL](quickstart-scale-compute-tsql.md)’i veya [REST API](sql-data-warehouse-manage-compute-rest-api.md#scale-compute)’sini kullanın.
+Azure Synapse'nin önemli bir [özelliği, hesaplama kaynaklarını yönetebilme](sql-data-warehouse-manage-compute-overview.md)yeteneğidir. Kullanmadığınızda SQL havuzunu duraklatabilirsiniz, bu da işlem kaynaklarının faturalandırmasını durdurur. Performans taleplerinizi karşılamak için kaynakları ölçeklendirebilirsiniz. Duraklatmak için [Azure portalını](pause-and-resume-compute-portal.md) veya [PowerShell](pause-and-resume-compute-powershell.md)’i kullanın. Ölçeklendirmek için [Azure portalını](quickstart-scale-compute-portal.md), [Powershell](quickstart-scale-compute-powershell.md)’i, [T-SQL](quickstart-scale-compute-tsql.md)’i veya [REST API](sql-data-warehouse-manage-compute-rest-api.md#scale-compute)’sini kullanın.
 
 Azure İşlevleri ile istediğiniz anda otomatik ölçeklendirme yapın:
 

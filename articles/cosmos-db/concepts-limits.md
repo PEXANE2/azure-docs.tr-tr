@@ -5,13 +5,13 @@ author: abhijitpai
 ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/27/2020
-ms.openlocfilehash: bd384f2b4dd879c30fafd2b765dd9ba0efb12447
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.date: 04/03/2020
+ms.openlocfilehash: 343e94fe681d398b695e0e24c22544bca470d75a
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80348402"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80652183"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB hizmet kotaları
 
@@ -152,6 +152,9 @@ Cosmos [DB, SQL](how-to-sql-query.md)kullanarak öğeleri sorgulamayı destekler
 | Sorgu başına maksimum JO| 5<sup>*</sup>|
 | Sorgu başına maksimum UDF'ler| 10<sup>*</sup>|
 | Çokgen başına maksimum puan| 4096 |
+| Kapsayıcı başına en fazla dahil edilmiş yollar| 500 |
+| Kapsayıcı başına en fazla dışlanmış yollar| 500 |
+| Bileşik dizindeki maksimum özellikler| 8 |
 
 <sup>*</sup>Azure Destek'e başvurarak bu SQL sorgu sınırlarını artırabilirsiniz.
 
@@ -163,7 +166,7 @@ Aşağıdaki tabloda MongoDB özellik desteğine özgü sınırlar listeleneb.) 
 
 | Kaynak | Varsayılan limit |
 | --- | --- |
-| Maksimum MongoDB sorgu bellek boyutu | 40 MB |
+| Maksimum MongoDB sorgu bellek boyutu (Bu sınırlama sadece 3.2 sunucu sürümü içindir) | 40 MB |
 | MongoDB operasyonları için maksimum yürütme süresi| 30s |
 | Sunucu yan bağlantı kapatma için boşta bağlantı zaman amı* | 30 dakika |
 

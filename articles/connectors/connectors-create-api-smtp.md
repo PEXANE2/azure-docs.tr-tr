@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 08/25/2018
 tags: connectors
-ms.openlocfilehash: 60acd128495176cd0a90418c61edf53bdcd88e5a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1cfc53dcd730262101c0e879e0419ba3f2db4d38
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77647573"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656995"
 ---
 # <a name="send-email-from-your-smtp-account-with-azure-logic-apps"></a>Azure Logic Apps ile SMTP hesabınızdan e-posta gönderme
 
@@ -56,7 +56,7 @@ Azure Logic Apps ve Basit Posta Aktarım Protokolü (SMTP) bağlayıcısı ile S
    | **Kullanıcı Adı** | Evet | SMTP hesabınız için kullanıcı adınız | 
    | **Parola** | Evet | SMTP hesabınız için parolanız | 
    | **SMTP Sunucu Bağlantı Noktası** | Hayır | Kullanmak istediğiniz SMTP sunucunuzda belirli bir bağlantı noktası | 
-   | **SSL etkinleştirin?** | Hayır | SSL şifrelemeyi açın veya kapatın. | 
+   | **SSL etkinleştirin?** | Hayır | TLS/SSL şifrelemeyi açın veya kapatın. | 
    |||| 
 
 1. Seçtiğiniz eylem için gerekli ayrıntıları sağlayın. 

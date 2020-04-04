@@ -1,17 +1,17 @@
 ---
 title: Taslak ile Azure Kubernetes Hizmetinde (AKS) geliştirin
-description: TASLAK'ı AKS ve Azure Konteyner Kayıt Defteri ile kullanma
+description: Bir kümedeki uygulama kapsayıcılarını paketlemek ve çalıştırmak için AKS ve Azure Kapsayıcı Kayıt Defteri ile Taslak'ı kullanın.
 services: container-service
 author: zr-msft
 ms.topic: article
 ms.date: 06/20/2019
 ms.author: zarhoads
-ms.openlocfilehash: b03256ee65a3c40d8a64d70b877c49e44e68f822
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 820af2d8ddf03997eea559fbc5270e84f30a805a
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77595230"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632889"
 ---
 # <a name="quickstart-develop-on-azure-kubernetes-service-aks-with-draft"></a>Quickstart: Taslak ile Azure Kubernetes Hizmeti (AKS) geliştirme
 

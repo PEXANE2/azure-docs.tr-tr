@@ -8,20 +8,20 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 525c20f5b6e24811ab092a63fa84fe6ebbd7b618
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 42ace2444c7d8e790c7575a7c1a7b3b1219d090a
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "72808198"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656416"
 ---
 # <a name="create-a-simple-query-in-azure-cognitive-search"></a>Azure Bilişsel Arama'da basit bir sorgu oluşturma
 
-Azure Bilişsel Arama'da, [basit sorgu sözdizimi,](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) tam metin arama sorgularını bir dizin karşısında yürütmek için varsayılan sorgu arasını çağırır. Bu ayrıştırıcı hızlıdır ve tam metin arama, filtrelenmiş ve yönlü arama ve coğrafi arama gibi yaygın senaryoları işler. 
+Azure Bilişsel Arama'da, [basit sorgu sözdizimi,](query-simple-syntax.md) tam metin arama sorgularını bir dizin karşısında yürütmek için varsayılan sorgu arasını çağırır. Bu ayrıştırıcı hızlıdır ve tam metin arama, filtrelenmiş ve yönlü arama ve coğrafi arama gibi yaygın senaryoları işler. 
 
 Bu makalede, basit sözdizimini göstermek için örnekler kullanırız.
 
-Alternatif bir sorgu sözdizimi [Full Lucene,](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)bulanık ve joker karakter arama gibi daha karmaşık sorgu yapıları destekleyen, işlemek için ek zaman alabilir. Tam sözdizimini gösteren daha fazla bilgi ve örnekler [için](search-query-lucene-examples.md)bkz.
+Alternatif bir sorgu sözdizimi [Full Lucene,](query-lucene-syntax.md)bulanık ve joker karakter arama gibi daha karmaşık sorgu yapıları destekleyen, işlemek için ek zaman alabilir. Tam sözdizimini gösteren daha fazla bilgi ve örnekler [için](search-query-lucene-examples.md)bkz.
 
 ## <a name="formulate-requests-in-postman"></a>Postacı'daki istekleri formüle edin
 

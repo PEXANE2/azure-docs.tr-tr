@@ -5,12 +5,12 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0a54d7490fb306bfbc8e1b111e7b7d64c09d2292
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 92ac0417e9d8adca168dd68e1721a1c9c890de1c
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79276614"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656954"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure İşlevleri’ni ölçeklendirme ve barındırma
 
@@ -109,7 +109,7 @@ Always On etkin olsa bile, tek tek işlevler `functionTimeout` için yürütme z
 
 ## <a name="determine-the-hosting-plan-of-an-existing-application"></a>Varolan bir uygulamanın barındırma planını belirleme
 
-İşlev uygulamanız tarafından kullanılan barındırma planını belirlemek için, [Azure portalındaki](https://portal.azure.com)işlev uygulamasına **genel bakış** sekmesinde Uygulama Hizmeti planı / **fiyatlandırma katmanına** bakın. App Service planları için fiyatlandırma katmanı da belirtilir.
+İşlev uygulamanız tarafından kullanılan barındırma planını belirlemek için, [Azure portalındaki](https://portal.azure.com)işlev uygulamasıiçin **Genel Bakış** sekmesinde Uygulama **Hizmeti planına** bakın. Fiyatlandırma katmanını görmek için Uygulama **Hizmet Planı'nın**adını seçin ve ardından sol bölmeden **Özellikler'i** seçin.
 
 ![Portaldaki ölçekleme planını görüntüleme](./media/functions-scale/function-app-overview-portal.png)
 
@@ -124,7 +124,7 @@ Bu komuttan çıktı `dynamic`olduğunda, işlev uygulamanız Tüketim planında
 
 ## <a name="storage-account-requirements"></a>Depolama hesabı gereksinimleri
 
-Herhangi bir planda, bir işlev uygulaması Azure Blob, Kuyruk, Dosyalar ve Tablo depolama destekleyen genel bir Azure Depolama hesabı gerektirir. Bunun nedeni, Işlevlerin tetikleyicileri yönetme ve işlev yürütmelerini günlüğe kaydetme gibi işlemler için Azure Depolama'ya dayanmasa da, bazı depolama hesapları kuyrukları ve tabloları desteklemez. Yalnızca blob depolama hesaplarını (premium depolama dahil) ve bölge yedekli depolama çoğaltma içeren genel amaçlı depolama hesaplarını içeren bu hesaplar, bir işlev uygulaması oluşturduğunuzda mevcut **Depolama Hesabı** seçimlerinizden filtrelenir.
+Herhangi bir planda, bir işlev uygulaması Azure Blob, Kuyruk, Dosyalar ve Tablo depolama destekleyen genel bir Azure Depolama hesabı gerektirir. Bunun nedeni, Azure İşlevlerinin tetikleyicileri yönetme ve işlev yürütmelerini günlüğe kaydetme gibi işlemler için Azure Depolama'ya dayanmasa da, bazı depolama hesapları kuyrukları ve tabloları desteklemez. Yalnızca blob depolama hesaplarını (premium depolama dahil) ve bölge yedekli depolama çoğaltma içeren genel amaçlı depolama hesaplarını içeren bu hesaplar, bir işlev uygulaması oluşturduğunuzda mevcut **Depolama Hesabı** seçimlerinizden filtrelenir.
 
 İşlev uygulamanız tarafından kullanılan aynı depolama hesabı, uygulama verilerinizi depolamak için tetikleyicileriniz ve bağlamalarınız tarafından da kullanılabilir. Ancak, depolama yoğun işlemler için ayrı bir depolama hesabı kullanmanız gerekir.  
 
@@ -134,7 +134,7 @@ Birden çok işlevli uygulamanın herhangi bir sorun olmadan aynı depolama hesa
 
 Depolama hesabı türleri hakkında daha fazla bilgi edinmek için Azure [Depolama hizmetlerini tanıtma 'ya](../storage/common/storage-introduction.md#azure-storage-services)bakın.
 
-## <a name="how-the-consumption-and-premium-plans-work"></a>Tüketim ve premium planlar nasıl çalışır?
+## <a name="how-the-consumption-and-premium-plans-work"></a>Tüketim ve Premium planları nasıl çalışır?
 
 Tüketim ve Premium planlarında, Azure İşlevler altyapısı, işlevlerinin tetiklediği olay sayısına bağlı olarak, Işlevler ana bilgisayarınek ek örnekleri ekleyerek CPU ve bellek kaynaklarını ölçeklendirin. Tüketim planındaki İşlevler ana bilgisayarınher örneği 1,5 GB bellek ve bir CPU ile sınırlıdır.  Ana bilgisayar, bir işlev uygulaması içindeki tüm işlevlerin aynı anda bir örnek ve ölçek içindeki tüm işlevlerin olması anlamına gelen işlev uygulamasının bir örneğidir. Aynı Tüketim planını paylaşan işlev uygulamaları bağımsız olarak ölçeklendirilir.  Premium planda, plan boyutunuz, bu durumda bu plandaki tüm uygulamalar için kullanılabilir belleği ve CPU'yu belirler.  
 

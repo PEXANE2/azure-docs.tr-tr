@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/24/2020
+ms.date: 04/03/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 90ac6f35cafbe63e8c6cdb77450089d00c0e3099
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 221ed3169fff78a2721e91023036593570fbd723
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79264355"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637787"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -125,7 +125,7 @@ Aşağıdaki örnek, *B2C_1A_signup_signin* ilkesi dosyasında bir **RelyingPart
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Kapsam | Evet | Tek oturum açma davranışının kapsamı. Olası `Suppressed`değerler: `Tenant` `Application`, `Policy`, , veya . Değer, `Suppressed` davranışın bastırılmış olduğunu gösterir. Örneğin, tek bir oturum açma oturumu söz konusu olduğunda, kullanıcı için oturum yapılmaz ve kullanıcıdan her zaman bir kimlik sağlayıcı seçimi istenir. Değer, `TrustFramework` davranışın güven çerçevesindeki tüm ilkeler için uygulandığını gösterir. Örneğin, bir güven çerçevesi için iki ilke yolculuğunda gezinen bir kullanıcıdan kimlik sağlayıcı seçimi istenmez. Değer, `Tenant` davranışın kiracıdaki tüm ilkelere uygulandığını gösterir. Örneğin, bir kiracı için iki ilke yolculuğu boyunca gezinen bir kullanıcı, kimlik sağlayıcı seçimi için istenmez. Değer, `Application` davranışın isteği oluşturan uygulama için tüm ilkelere uygulandığını gösterir. Örneğin, bir uygulama için iki ilke yolculuğunda gezinen bir kullanıcı, kimlik sağlayıcı seçimi için istenmez. Değer, `Policy` davranışın yalnızca bir ilke için geçerli olduğunu gösterir. Örneğin, bir güven çerçevesi için iki ilke yolculuğunda gezinen bir kullanıcı, ilkeler arasında geçiş yaparken kimlik sağlayıcı seçimi için istenir. |
+| Kapsam | Evet | Tek oturum açma davranışının kapsamı. Olası `Suppressed`değerler: `Tenant` `Application`, `Policy`, , veya . Değer, `Suppressed` davranışın bastırılmış olduğunu ve kullanıcıdan her zaman bir kimlik sağlayıcı seçimi istendiğini gösterir.  Değer, `Tenant` davranışın kiracıdaki tüm ilkelere uygulandığını gösterir. Örneğin, bir kiracı için iki ilke yolculuğu boyunca gezinen bir kullanıcı, kimlik sağlayıcı seçimi için istenmez. Değer, `Application` davranışın isteği oluşturan uygulama için tüm ilkelere uygulandığını gösterir. Örneğin, bir uygulama için iki ilke yolculuğunda gezinen bir kullanıcı, kimlik sağlayıcı seçimi için istenmez. Değer, `Policy` davranışın yalnızca bir ilke için geçerli olduğunu gösterir. Örneğin, bir güven çerçevesi için iki ilke yolculuğunda gezinen bir kullanıcı, ilkeler arasında geçiş yaparken kimlik sağlayıcı seçimi için istenir. |
 | KeepAliveInDays | Evet | Kullanıcının oturum da ne kadar süreyle oturum açmış olduğunu denetler. Değeri 0 olarak ayarlamak KMSI işlevselliğini kapatır. Daha fazla bilgi için [bkz.](custom-policy-keep-me-signed-in.md) |
 |EnforceIdTokenHintOnLogout| Hayır|  Son kullanıcının istemciyle geçerli kimlik doğrulama oturumu hakkında ipucu olarak oturum sonu noktasına daha önce verilmiş bir kimlik belirteci geçmeye zorlar. Olası değerler: `false` (varsayılan) veya `true`. Daha fazla bilgi için [OpenID Connect ile Web oturum açma'ya](openid-connect.md)bakın.  |
 
@@ -190,7 +190,7 @@ Daha fazla bilgi için bkz: [Özel ilkeler kullanarak kullanıcı arabirimi'ni d
 
 | Öznitelik | Gerekli | Açıklama |
 | --------- | -------- | ----------- |
-| Adı | Evet | Teknik profilin bir parçası olarak kullanılan Azure AD B2C tarafından desteklenen geçerli bir protokolün adı. Olası `OpenIdConnect` değerler: `SAML2`veya . Değer, `OpenIdConnect` OpenID temel belirtimine göre OpenID Connect 1.0 protokol standardını temsil eder. OASIS `SAML2` belirtimi uyarınca SAML 2.0 protokol standardını temsil eder. Üretimde SAML belirteci kullanmayın. |
+| Adı | Evet | Teknik profilin bir parçası olarak kullanılan Azure AD B2C tarafından desteklenen geçerli bir protokolün adı. Olası `OpenIdConnect` değerler: `SAML2`veya . Değer, `OpenIdConnect` OpenID temel belirtimine göre OpenID Connect 1.0 protokol standardını temsil eder. OASIS `SAML2` belirtimi uyarınca SAML 2.0 protokol standardını temsil eder. |
 
 ## <a name="outputclaims"></a>Çıktılar Talepleri
 

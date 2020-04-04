@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 08/01/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 72aefb8de57e27718b14dba6a6d82deb8b63466f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3bbfe26f336a25ee85f2223226d6eb513ae21736
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79367287"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632150"
 ---
 # <a name="editing-textual-runbooks-in-azure-automation"></a>Azure Otomasyonu'nda metin seli çalışma kitaplarını düzenleme
 
@@ -22,7 +22,7 @@ Azure Otomasyonu'ndaki metin düzenleyicisi [PowerShell runbook'larını](automa
 
 Metin düzenleyicisi, cmdlets, varlıklar ve alt runbook'lar için kod eklemek için bir özellik içerir. Kodu kendiniz yazmak yerine, kullanılabilir kaynaklar listesinden seçim yapabilirsiniz ve düzenleyici runbook'a uygun kodu ekler.
 
-Azure Otomasyonu'ndaki her runbook'un Taslak ve Yayımlanmış olmak üzere iki sürümü vardır. Runbook'un Taslak sürümünü ve yürütülebilmeleri için yayımlarsınız. Yayımlanan sürüm düzenlenemez. Daha fazla bilgi için [runbook Yayımlama'ya](manage-runbooks.md#publish-a-runbook)bakın.
+Azure Otomasyonu'ndaki her runbook'un Taslak ve Yayımlanmış olmak üzere iki sürümü vardır. Runbook'un Taslak sürümünü ve yürütülebilmeleri için yayımlarsınız. Yayımlanan sürüm düzenlenemez. Daha fazla bilgi için [runbook Yayımlama'ya](manage-runbooks.md#publishing-a-runbook)bakın.
 
 Bu makalede, bu düzenleyici ile farklı işlevleri gerçekleştirmek için ayrıntılı adımlar sağlar. Bunlar [grafik çalışma kitapları](automation-runbook-types.md#graphical-runbooks)için geçerli değildir. Bu runbook'larla çalışmak için [Azure Otomasyonu'nda Grafik selyazma kitabına](automation-graphical-authoring-intro.md)bakın.
 
@@ -84,7 +84,7 @@ Export-AzAutomationRunbook -Name $runbookName -AutomationAccountName $automation
 
 ### <a name="change-the-contents-of-a-runbook-using-windows-powershell"></a>Windows PowerShell kullanarak bir runbook'un içeriğini değiştirme
 
-Aşağıdaki örnek komutlar, bir runbook'un varolan içeriğini komut dosyası dosyasının içeriğiyle nasıl değiştirilen gösterir. Bu, [Windows PowerShell olan bir komut dosyası dosyasından bir runbook almak için](manage-runbooks.md#import-a-runbook)aynı örnek yordamdır.
+Aşağıdaki örnek komutlar, bir runbook'un varolan içeriğini komut dosyası dosyasının içeriğiyle nasıl değiştirilen gösterir. Bu, [Windows PowerShell olan bir komut dosyası dosyasından bir runbook almak için](manage-runbooks.md#importing-a-runbook)aynı örnek yordamdır.
 
 ```powershell-interactive
 $resourceGroupName = "MyResourceGroup"

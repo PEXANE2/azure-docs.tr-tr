@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: jaredro
-ms.openlocfilehash: 76de7a8854a58deb924cbbe3177ad5a7b5fd57a2
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 587a17659a412d6f894faf5a744a7d9c444935c8
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74083461"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656739"
 ---
 # <a name="configure-expressroute-global-reach"></a>ExpressRoute Global Reach’i yapılandırma
 
@@ -38,7 +38,7 @@ Yapılandırmayı başlatmadan önce aşağıdakileri onaylayın:
 1. Yapılandırmayı başlatmak için Azure hesabınızda oturum açın ve kullanmak istediğiniz aboneliği seçin.
 
    [!INCLUDE [sign in](../../includes/expressroute-cloud-shell-connect.md)]
-2. Kullanmak istediğiniz ExpressRoute devrelerini tanımlayın. ExpressRoute Global Reach'i, desteklenen ülkelerde/bölgelerde bulundukları ve farklı konumlarda oluşturuldukları sürece, herhangi iki ExpressRoute devresi arasında etkinleştirebilirsiniz. 
+2. Kullanmak istediğiniz ExpressRoute devrelerini tanımlayın. ExpressRoute Global Reach'i, desteklenen ülkelerde/bölgelerde bulundukları ve farklı konumlarda oluşturuldukları sürece, herhangi iki ExpressRoute devresinin özel bakışları arasında etkinleştirebilirsiniz. 
 
    * Aboneliğiniz her iki devreye de sahipse, aşağıdaki bölümlerde yapılandırmayı çalıştırmak için her iki devreyi de seçebilirsiniz.
    * İki devre farklı Azure aboneliklerindeyse, bir Azure aboneliğinden yetkilendirme yapmanız gerekir. Ardından, diğer Azure aboneliğinde yapılandırma komutunu çalıştırdığınızda yetkilendirme anahtarını geçersiniz.

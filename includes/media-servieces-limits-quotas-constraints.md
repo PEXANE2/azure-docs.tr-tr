@@ -4,12 +4,12 @@ ms.service: media-services
 ms.topic: include
 ms.date: 03/31/2020
 ms.author: juliako
-ms.openlocfilehash: 654af2c9e57bca9368eb0a5cdf32e692852ba522
-ms.sourcegitcommit: 980c3d827cc0f25b94b1eb93fd3d9041f3593036
+ms.openlocfilehash: 99aeb5384b317d1b4d291c769b5402e829247b30
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80573228"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656186"
 ---
 > [!NOTE]
 > Sabit olmayan kaynaklar için, kotalarda artış istemek için bir destek bileti açın. Daha yüksek sınırlar elde etmek için ek Azure Medya Hizmetleri hesapları oluşturmayın.
@@ -26,7 +26,7 @@ ms.locfileid: "80573228"
 | --- | --- | 
 | Medya Hizmetleri hesabı başına varlıklar | 1.000.000|
 
-### <a name="storage-limits"></a>Depolama limitleri
+### <a name="storage-media-limits"></a>Depolama (ortam) sınırları
 
 | Kaynak | Varsayılan Sınır | 
 | --- | --- | 

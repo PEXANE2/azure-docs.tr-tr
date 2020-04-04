@@ -6,13 +6,13 @@ tags: azure-service-management
 ms.topic: sample
 ms.date: 01/04/2019
 ms.author: tomfitz
-ms.custom: mvc
-ms.openlocfilehash: b1d5f20ccd2f2c637d7db668af10ef331947d018
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: mvc, fasttrack-edit
+ms.openlocfilehash: 2d77dcbd07a67e3ba50d70770515416b45fbc7a3
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74971205"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637918"
 ---
 # <a name="azure-resource-manager-templates-for-app-service"></a>Uygulama Hizmeti için Azure Kaynak Yöneticisi şablonları
 
@@ -28,11 +28,12 @@ Uygulama Hizmetleri kaynaklarının JSON sözdizimi ve özellikleri hakkında bi
 | [GitHub deposuna bağlı uygulama](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-github-deploy)| GitHub'dan kod çeken bir Uygulama Hizmeti uygulaması dağıtıyor. |
 | [Özel dağıtım yuvaları ile uygulama](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-custom-deployment-slots)| Özel dağıtım yuvaları/ortamları olan bir Uygulama Hizmeti uygulaması dağıtıyor. |
 |**Uygulamayı yapılandırma**||
-| [Key Vault'tan uygulama sertifikası](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-certificate-from-key-vault)| Bir Azure Key Vault sırrından bir Uygulama Hizmeti uygulama sertifikası dağıtıyor ve SSL bağlama için kullanır. |
+| [Key Vault'tan uygulama sertifikası](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-certificate-from-key-vault)| Bir Azure Key Vault sırrından bir Uygulama Hizmeti uygulama sertifikası dağıtıyor ve TLS/SSL bağlama için kullanır. |
 | [Özel etki alanına sahip uygulama](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-custom-domain)| Özel ana bilgisayar adı olan bir Uygulama Hizmeti uygulaması dağıtıyor. |
-| [Özel etki alanı ve SSL ile uygulama](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-custom-domain-and-ssl)| Özel ana bilgisayar adı olan bir Uygulama Hizmeti uygulaması dağıtlar ve SSL bağlama için Key Vault'tan bir uygulama sertifikası alır. |
+| [Özel etki alanı ve SSL ile uygulama](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-custom-domain-and-ssl)| Özel ana bilgisayar adı olan bir Uygulama Hizmeti uygulaması dağıtlar ve TLS/SSL bağlama için Key Vault'tan bir uygulama sertifikası alır. |
 | [GoLang uzantılı uygulama](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webapp-with-golang)| Golang site uzantısı ile bir Uygulama Hizmeti uygulaması dağıtıyor. Daha sonra Azure’da Golang üzerinde geliştirilmiş web uygulamalarını çalıştırabilirsiniz. |
 | [Java 8 ve Tomcat 8 ile uygulama](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-java-tomcat)| Java 8 ve Tomcat 8 etkin leştirilmiş bir Uygulama Hizmeti uygulaması dağıtıyor. Daha sonra Azure'da Java uygulamaları çalıştırabilirsiniz. |
+| [Bölgesel VNet entegrasyonu ile uygulama](https://github.com/Azure/azure-quickstart-templates/tree/master/101-app-service-regional-vnet-integration)| Bölgesel VNet tümleştirmesi etkinleştirilmiş bir Uygulama Hizmeti uygulaması dağıtıyor. |
 |**Uygulamayı koruma**||
 | [Azure Uygulama Ağ Geçidi ile entegre uygulama](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-with-app-gateway-v2)| Bir Uygulama Hizmeti uygulaması ve Uygulama Ağ Geçidi dağır ve hizmet bitiş noktası ve erişim kısıtlamalarını kullanarak trafiği yalıtar. |
 |**Bağlı kaynaklara sahip Linux uygulaması**||
@@ -47,5 +48,5 @@ Uygulama Hizmetleri kaynaklarının JSON sözdizimi ve özellikleri hakkında bi
 |**App Service Ortamı**||
 | [App Service ortamı v2 oluşturma](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-asev2-create) | Sanal ağınızda bir App Service ortamı v2 oluşturur. |
 | [ILB adresli bir App Service ortamı v2 oluşturma](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-asev2-ilb-create/) | Sanal ağınızda özel bir iç yük dengeleyici adresine sahip App Service ortamı v2 oluşturur. |
-| [Bir ILB App Service ortamı veya ILB App Service ortamı v2 için varsayılan SSL sertifikasını yapılandırma](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-ase-ilb-configure-default-ssl) | Bir ILB App Service ortamı veya ILB App Service ortamı v2 için varsayılan SSL sertifikasını yapılandırır. |
+| [Bir ILB App Service ortamı veya ILB App Service ortamı v2 için varsayılan SSL sertifikasını yapılandırma](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-ase-ilb-configure-default-ssl) | Varsayılan TLS/SSL sertifikasını Bir ILB App Service ortamı veya ILB App Service ortamı v2 için yapılandırır. |
 | | |

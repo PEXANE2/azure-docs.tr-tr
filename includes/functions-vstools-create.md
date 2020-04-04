@@ -5,25 +5,25 @@ services: functions
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
-ms.date: 03/06/2020
+ms.date: 03/26/2020
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 034e966d259f1ca5f22eec5935013de32c883b59
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 477f3cf270377bc1341e65ab500093e05277afa8
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80056631"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80657593"
 ---
 Visual Studio'daki Azure İşlevler proje şablonu, Azure'daki bir işlev uygulamasında yayınlayabileceğiniz bir proje oluşturur. Daha kolay yönetim, dağıtım, ölçekleme ve kaynakların paylaşımı için işlevleri mantıksal bir birim olarak gruplandırmak için bir işlev uygulaması kullanabilirsiniz.
 
-1. Visual Studio'da Dosya **menüsünde** **Yeni** > **Proje'yi**seçin.
+1. Visual Studio menüsünden **Yeni** > **New** > Dosya**Projesi'ni**seçin.
 
-1. **Yeni bir proje oluştur'da,** arama kutusuna *işlevleri* girin ve ardından **Azure İşlevler** şablonunu seçin.
+1. **Yeni bir proje oluştur'da,** arama kutusuna *işlevleri* girin, **Azure İşlevler** şablonunu seçin ve sonra **İleri'yi**seçin.
 
 1. **Yeni projenizi Yapılandır'da,** projeniz için bir **Proje adı** girin ve ardından **Oluştur'u**seçin. İşlev uygulamasının adı, bir C# ad alanı olarak geçerli olmalıdır; bu nedenle alt çizgi, kısa çizgi veya alfasayısal olmayan herhangi bir karakter kullanmayın.
 
-1. Proje **adı &lt;&gt; ayarlarınız olan Yeni Proje** için aşağıdaki tablodaki değerleri kullanın:
+1. Yeni **bir Azure İşlevi Uygulaması Oluştur** ayarları için aşağıdaki tablodaki değerleri kullanın:
 
     | Ayar      | Değer  | Açıklama                      |
     | ------------ |  ------- |----------------------------------------- |
@@ -38,4 +38,4 @@ Visual Studio'daki Azure İşlevler proje şablonu, Azure'daki bir işlev uygula
 
     **Erişim haklarını** **Anonymous**olarak ayarladığınızdan emin olun. **Varsayılan Işlev**düzeyini seçerseniz, işlev bitiş noktanıza erişmek için isteklerde [işlev anahtarını](../articles/azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) sunmanız gerekir.
 
-1. İşlev projesini ve HTTP tetiklenen işlevi oluşturmak için **Tamam'ı** seçin.
+1. İşlev projesini ve HTTP tetikleyici işlevini oluşturmak için **Oluştur'u** seçin.

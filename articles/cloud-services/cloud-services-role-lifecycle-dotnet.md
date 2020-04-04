@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
-ms.openlocfilehash: 0a9c32affc50a6d357d4160e00486c896d762e3f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a6030cbb756525137497834ac911835033858401
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75385822"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80652086"
 ---
 # <a name="customize-the-lifecycle-of-a-web-or-worker-role-in-net"></a>.NET'te Bir Web veya İşçi rolünün Yaşam Döngüsünü özelleştirin
 Bir alt rol oluşturduğunuzda, yaşam döngüsü olaylarına yanıt vermenize izin veren yöntemleri geçersiz kılmanız için gereken yöntemleri sağlayan [RoleEntryPoint](/previous-versions/azure/reference/ee758619(v=azure.100)) sınıfını genişletirsiniz. Web rolleri için bu sınıf isteğe bağlıdır, bu nedenle yaşam döngüsü olaylarına yanıt vermek için kullanmanız gerekir.
@@ -23,7 +23,7 @@ Bir alt rol oluşturduğunuzda, yaşam döngüsü olaylarına yanıt vermenize i
 
 **RoleEntryPoint'i**genişletirken, yöntemlerin aşağıdaki davranışlarına dikkat etmeniz gerekir:
 
-* [OnStart](/previous-versions/azure/reference/ee772851(v=azure.100)) ve [OnStop](/previous-versions/azure/reference/ee772844(v=azure.100)) yöntemleri boolean değerini döndürür, bu nedenle bu yöntemlerden **yanlış** dönmek mümkündür.
+* [OnStart](/previous-versions/azure/reference/ee772851(v=azure.100)) yöntemi boolean değerini döndürür, bu nedenle bu yöntemden **yanlış** dönmek mümkündür.
   
    Kodunuz **yanlış**döndürürse, rol işlemi, herhangi bir kapatma sırası çalıştırmadan aniden sonlandırılır. Genel olarak, **OnStart** yönteminden **false** dönmekten kaçınmalısınız.
 * **RoleEntryPoint** yönteminin aşırı yüklenmesi nde yakalanmamış herhangi bir özel durum işlenmemiş bir özel durum olarak kabul edilir.

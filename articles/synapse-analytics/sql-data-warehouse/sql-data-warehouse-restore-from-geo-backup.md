@@ -11,12 +11,12 @@ ms.date: 07/12/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 4390ed39c86e041d3fbd776415f0ffbe71f605bd
-ms.sourcegitcommit: 8a9c54c82ab8f922be54fb2fcfd880815f25de77
+ms.openlocfilehash: 68d53d2a33b7ab705dfa88f03618a5d5a3d1bced
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "80350159"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80633036"
 ---
 # <a name="geo-restore-for-sql-pool"></a>SQL havuzu için coğrafi geri yükleme
 
@@ -38,12 +38,12 @@ Bir coğrafi yedeklemeden geri yüklemek için [Get-AzSqlDatabaseGeoBackup](http
 
 1. Başlamadan önce [Azure PowerShell'i yüklediğinizden](https://docs.microsoft.com/powershell/azure/overview)emin olun.
 2. PowerShell’i açın.
-2. Azure hesabınıza bağlanın ve hesabınızla ilişkili tüm abonelikleri listele.
-3. Geri yüklenecek veri ambarını içeren aboneliği seçin.
-4. Kurtarmak istediğiniz veri ambarını alın.
-5. Veri ambarı için kurtarma isteğini oluşturun.
-6. Coğrafi olarak geri yüklenen veri ambarının durumunu doğrulayın.
-7. Geri yükleme tamamlandıktan sonra veri ambarınızı yapılandırmak için [bkz.]( ../../sql-database/sql-database-disaster-recovery.md#configure-your-database-after-recovery)
+3. Azure hesabınıza bağlanın ve hesabınızla ilişkili tüm abonelikleri listele.
+4. Geri yüklenecek veri ambarını içeren aboneliği seçin.
+5. Kurtarmak istediğiniz veri ambarını alın.
+6. Veri ambarı için kurtarma isteğini oluşturun.
+7. Coğrafi olarak geri yüklenen veri ambarının durumunu doğrulayın.
+8. Geri yükleme tamamlandıktan sonra veri ambarınızı yapılandırmak için [bkz.]( ../../sql-database/sql-database-disaster-recovery.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#configure-your-database-after-recovery)
 
 ```Powershell
 $SubscriptionName="<YourSubscriptionName>"
@@ -77,24 +77,25 @@ Kurtarılan veritabanı, kaynak veritabanı TDE etkinse TDE etkin olur.
 Bir SQL havuzunu coğrafi yedeklemeden geri yüklemek için aşağıda özetlenen adımları izleyin:
 
 1. [Azure portal](https://portal.azure.com/) hesabınızda oturum açın.
-1. + **Kaynak oluştur'u**tıklatın. 
+2. + **Kaynak oluştur'u**tıklatın.
 
-![Yeni DW](./media/sql-data-warehouse-restore-from-geo-backup/georestore-new.png)
+   ![Yeni DW](./media/sql-data-warehouse-restore-from-geo-backup/georestore-new.png)
 
 3. **Veritabanları'nı** ve ardından **Azure Synapse Analytics 'i (eski adıyla SQL DW) tıklatın**
 
-![Yeni DW 2](./media/sql-data-warehouse-restore-from-geo-backup/georestore-new-02.png)
+   ![Yeni DW 2](./media/sql-data-warehouse-restore-from-geo-backup/georestore-new-02.png)
 
 4. **Temel bilgiler** sekmesinde istenen bilgileri doldurun ve **İleri: Ek ayarları**tıklatın.
 
-![Temel Bilgiler](./media/sql-data-warehouse-restore-from-geo-backup/georestore-dw-1.png)
+   ![Temel Bilgiler](./media/sql-data-warehouse-restore-from-geo-backup/georestore-dw-1.png)
 
 5. **Varolan veri** parametresini kullanmak için **Yedekleme'yi** seçin ve kaydırma seçeneklerinden uygun yedeklemeyi seçin. **Gözden Geçir + Oluştur'a**tıklayın.
- 
-![yedekleme](./media/sql-data-warehouse-restore-from-geo-backup/georestore-select.png)
+
+   ![yedekleme](./media/sql-data-warehouse-restore-from-geo-backup/georestore-select.png)
 
 6. Veri ambarı geri yüklendikten **sonra, Durum'un** Çevrimiçi olup olmadığını denetleyin.
 
 ## <a name="next-steps"></a>Sonraki Adımlar
+
 - [Varolan bir SQL havuzunun geri yüklemesi](sql-data-warehouse-restore-active-paused-dw.md)
 - [Silinen bir SQL havuzunun geri yüklemesi](sql-data-warehouse-restore-deleted-dw.md)

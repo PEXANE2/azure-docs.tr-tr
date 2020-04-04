@@ -12,12 +12,12 @@ ms.author: mathoma
 ms.reviewer: sashan, carlrab
 manager: jroth
 ms.date: 08/27/2019
-ms.openlocfilehash: bf83155e971061f22e5f5fc33d216b58621c9249
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 0f1a56fa6ea38acd8061180407eb47fe416b61e9
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77462658"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80631709"
 ---
 # <a name="tutorial-add-a-sql-database-managed-instance-to-a-failover-group"></a>Öğretici: Başarısız bir gruba SQL Veritabanı yönetilen örnek ekleme
 
@@ -42,7 +42,7 @@ Bu öğreticiyi tamamlamak için şunlar sahip olduğunuzdan emin olun:
 - Azure aboneliği. Zaten hesabınız yoksa [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/)
 
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 Öğreticiyi tamamlamak için aşağıdaki öğelere sahip olduğunuzdan emin olun:
 
 - Azure aboneliği. Zaten hesabınız yoksa [ücretsiz bir hesap oluşturun.](https://azure.microsoft.com/free/)
@@ -75,7 +75,7 @@ Azure portalını kullanarak kaynak grubunu ve birincil yönetilen örneğini ol
 1. Ayarların geri kalanını varsayılan değerlere bırakın ve yönetilen örnek ayarlarınızı gözden geçirmek için **Gözden Geçir + oluştur'u** seçin. 
 1. Birincil yönetilen örneğini oluşturmak için **Oluştur'u** seçin. 
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 PowerShell'i kullanarak kaynak grubunuzu ve birincil yönetilen örneği oluşturun. 
 
@@ -433,7 +433,7 @@ Sanal ağ oluşturmak için aşağıdaki adımları izleyin:
 
     ![İkincil sanal ağ değerleri](media/sql-database-managed-instance-failover-group-tutorial/secondary-virtual-network.png)
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Bu adım yalnızca yönetilen örneğini dağıtmak için Azure portalını kullanıyorsanız gereklidir. PowerShell kullanıyorsanız adım 3'e geçin. 
 
@@ -482,7 +482,7 @@ Azure portalını kullanarak ikincil yönetilen örneği oluşturun.
 1. İkincil yönetilen örneğinizin ayarlarını incelemek için **Gözden Geçir + oluştur'u** seçin. 
 1. İkincil yönetilen örneğini oluşturmak için **Oluştur'u** seçin. 
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 PowerShell'i kullanarak ikincil yönetilen örneği oluşturun. 
 
@@ -756,7 +756,7 @@ Azure portalını kullanarak birincil yönetilen örneğinizin sanal ağı için
     | --- | --- |
     | **Abonelik** |  Birincil yönetilen örneğinizin olduğu abonelik. |
     | **Adı** | Sanal ağ ağ ağ geçidinizin adı, örneğin. `primary-mi-gateway` | 
-    | **Bölge** | İkincil yönetilen örneğinizin olduğu bölge. |
+    | **Bölge** | Birincil yönetilen örneğinizin olduğu bölge. |
     | **Ağ geçidi türü** | **VPN'i**seçin. |
     | **VPN Türü** | **Rota Tabanlı'yı** seçin |
     | **Sku**| Varsayılan ı `VpnGw1`bırakın. |
@@ -773,7 +773,7 @@ Azure portalını kullanarak birincil yönetilen örneğinizin sanal ağı için
 1. Yeni sanal ağ ağ ağınızı oluşturmak için **Oluştur'u** seçin. 
 
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 PowerShell'i kullanarak birincil yönetilen örneğinizin sanal ağı için ağ geçidi oluşturun. 
 
@@ -851,7 +851,7 @@ Azure portalını kullanarak, ikincil yönetilen örnek için sanal ağ alt ağ�
    ![İkincil ağ geçidi ayarları](media/sql-database-managed-instance-failover-group-tutorial/settings-for-secondary-gateway.png)
 
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 PowerShell'i kullanarak ikincil yönetilen örneğin sanal ağı için ağ geçidi oluşturun. 
 
@@ -933,7 +933,7 @@ Azure portalını kullanarak iki ağ geçidini bağlayın.
 1. **Özet** sekmesinde, çift yönlü bağlantınızın ayarlarını gözden geçirin ve ardından bağlantınızı oluşturmak için **Tamam'ı** seçin. 
 
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 PowerShell'i kullanarak iki ağ geçidini bağlayın. 
 
@@ -984,7 +984,7 @@ Azure portalını kullanarak başarısız grubu oluşturun.
 1. Başarısız grup dağıtımı tamamlandıktan sonra **Failover grup** sayfasına geri götürülür. 
 
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 PowerShell'i kullanarak başarısız grubu oluşturun. 
 
    ```powershell-interactive
@@ -1027,7 +1027,7 @@ Azure portalını kullanarak başarısız olun.
 1. Yeni _ikincil_ yönetilen örneğe gidin ve birincil örneği birincil role geri başarısız olmak için **failover'ı** bir kez daha seçin. 
 
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 PowerShell kullanarak başarısız lık testi yapın. 
 
    ```powershell-interactive
@@ -1083,7 +1083,7 @@ Failover grubunu birincil sunucuya geri döndürün:
 1. Kalan kaynakları silin. Kaynağı `yes` silmek istediğinizi doğrulamak için metin kutusuna yazın ve sonra **Sil'i**seçin. 
 1. **Kaynak grubunu sil'i**seçerek kaynak grubunu sil, kaynak `myResourceGroup`grubunun adını yazarak ve sonra **Sil'i**seçerek kaynak grubunu silin. 
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Kaynak grubunu iki kez kaldırmanız gerekir. Kaynak grubunu ilk kez kaldırma yönetilen örnek ve sanal kümeleri kaldırır, ancak `Remove-AzResourceGroup : Long running operation failed with status 'Conflict'.`daha sonra hata iletisi ile başarısız olur. Kaynak grubunun yanı sıra kalan kaynakları kaldırmak için Remove-AzResourceGroup komutunu ikinci kez çalıştırın.
 
@@ -1104,7 +1104,7 @@ Write-host "Removing residual resources and resouce group..."
 
 ## <a name="full-script"></a>Tam betik
 
-# <a name="powershell"></a>[Powershell](#tab/azure-powershell)
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 [!code-powershell-interactive[main](../../powershell_scripts/sql-database/failover-groups/add-managed-instance-to-failover-group-az-ps.ps1 "Add managed instance to a failover group")]
 
 Bu betik aşağıdaki komutları kullanır. Tablodaki her komut, komuta özgü belgelere yönlendirir.

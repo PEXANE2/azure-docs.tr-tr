@@ -1,160 +1,194 @@
 ---
-title: Azure Site Kurtarma f ile Sorun Giderme Mobilite Hizmeti push yükleme
+title: Azure Site Kurtarma ile Mobilite Hizmeti push yüklemesini giderme
 description: Azure Site Kurtarma ile olağanüstü durum kurtarma için çoğaltmayı etkinleştirirken Mobility Services yükleme hatalarını giderin.
 author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.author: ramamill
-ms.date: 09/11/2019
-ms.openlocfilehash: 3646499ad2104566cb82f3f26c6b55d05f84dc7d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/03/2020
+ms.openlocfilehash: 1afd931249d4dbeda2b4b25f822837e2a564f959
+ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73953788"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80656316"
 ---
-# <a name="troubleshoot-mobility-service-push-installation"></a>Sorun Giderme Mobilite Hizmeti push yükleme 
+# <a name="troubleshoot-mobility-service-push-installation"></a>Sorun Giderme Mobilite hizmeti push kurulumu
 
-Etkinleştir çoğaltma sırasında Mobilite hizmetinin yüklenmesi önemli bir adımdır. Bu adımın başarısı yalnızca ön koşulları karşılamaya ve desteklenen yapılandırmalarla çalışmaya bağlıdır. Mobilite hizmeti yükleme sırasında karşılaştığınız en yaygın hatalar şunlardır:
+Mobilite hizmeti yüklemeçoğaltma etkinleştirmek için önemli bir adımdır. Bu adımın başarısı, ön koşulların karşılanmasına ve desteklenen yapılandırmalarla çalışmaya bağlıdır. Mobilite hizmeti yüklemesi sırasında karşılaşabileceğiniz en yaygın hatalar şunlardır:
 
 * [Kimlik bilgisi/ayrıcalık hataları](#credentials-check-errorid-95107--95108)
 * [Giriş hataları](#login-failures-errorid-95519-95520-95521-95522)
 * [Bağlantı hataları](#connectivity-failure-errorid-95117--97118)
 * [Dosya ve yazıcı paylaşım hataları](#file-and-printer-sharing-services-check-errorid-95105--95106)
-* [WMI hataları](#windows-management-instrumentation-wmi-configuration-check-error-code-95103)
-* [Desteklenmeyen İşletim sistemleri](#unsupported-operating-systems)
-* [Desteklenmeyen Önyükleme yapılandırmaları](#unsupported-boot-disk-configurations-errorid-95309-95310-95311)
-* [VSS yükleme hataları](#vss-installation-failures)
+* [Windows Yönetim Araçları (WMI) hataları](#windows-management-instrumentation-wmi-configuration-check-error-code-95103)
+* [Desteklenmeyen işletim sistemleri](#unsupported-operating-systems)
+* [Desteklenmeyen önyükleme yapılandırmaları](#unsupported-boot-disk-configurations-errorid-95309-95310-95311)
+* [Birim Gölge kopyalama Hizmeti (VSS) yükleme hataları](#vss-installation-failures)
 * [Aygıt UUID yerine GRUB yapılandırmasında aygıt adı](#enable-protection-failed-as-device-name-mentioned-in-the-grub-configuration-instead-of-uuid-errorid-95320)
-* [LVM hacmi](#lvm-support-from-920-version)
+* [Mantıksal Birim Yöneticisi (LVM) hacmi](#lvm-support-from-920-version)
 * [Uyarıları yeniden başlat](#install-mobility-service-completed-with-warning-to-reboot-errorid-95265--95266)
 
-Çoğaltmayı etkinleştirdiğinizde, Azure Site Kurtarma sanal makinenizde mobilite servis aracısını yüklemeyi zorlamaya çalışır. Bunun bir parçası olarak, Configuration sunucusu sanal makineye bağlanmaya ve Aracıyı kopyalamaya çalışır. Başarılı bir yükleme sağlamak için, aşağıda verilen adım sorun giderme kılavuzunu adım adım izleyin.
+Çoğaltmayı etkinleştirdiğinizde, Azure Site Kurtarma sanal makinenizde (VM) Mobilite servis aracısını yüklemeye çalışır. Bu işlemin bir parçası olarak, yapılandırma sunucusu sanal makineye bağlanmaya ve aracıyı kopyalamaya çalışır. Başarılı yükleme yi etkinleştirmek için adım adım sorun giderme kılavuzunu izleyin.
 
 ## <a name="credentials-check-errorid-95107--95108"></a>Kimlik bilgileri denetimi (ErrorID: 95107 & 95108)
 
-* Etkinleştirme çoğaltma sırasında seçilen kullanıcı hesabının **geçerli, doğru**olup olmadığını doğrulayın.
-* Azure Site Kurtarma, itme yüklemesi gerçekleştirmek için **yönetici ayrıcalıklarına** sahip **ROOT** hesabı veya kullanıcı hesabı gerektirir. Aksi takdirde, itme yüklemekaynak makinede engellenir.
-  * Windows **(hata 95107)** için, kullanıcı hesabının kaynak makinede yerel veya etki alanı yla ilgili yönetim erişimi olup olmadığını doğrulayın.
-  * Etki alanı hesabı kullanmıyorsanız, yerel bilgisayarda Uzaktan Kullanıcı Erişimi denetimini devre dışı bmalısınız.
-    * Uzaktan Kullanıcı Erişimi denetimini devre dışı HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System registry tuşu altında, yeni bir DWORD ekleyin: LocalAccountTokenFilterPolicy. Değeri 1 olarak ayarlayın. Bu adımı yürütmek için komut isteminden aşağıdaki komutu çalıştırın:
+Etkinleştirme çoğaltma sırasında seçilen kullanıcı hesabının geçerli ve doğru olup olmadığını doğrulayın. Azure Site Kurtarma, anında yükleme gerçekleştirmek için **yönetici ayrıcalıklarına** sahip **kök** hesap veya kullanıcı hesabı gerektirir. Aksi takdirde, itme yüklemesi kaynak makinede engellenir.
 
-         `REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1`
-  * Linux için **(hata 95108),** mobilite aracısının başarılı bir şekilde yüklenmesi için kök hesabı seçmeniz gerekir. Ayrıca, SFTP hizmetleri çalışıyor olmalıdır. sshd_config dosyasında SFTP alt sistemi ve parola kimlik doğrulamasını etkinleştirmek için:
-    1. Kök kullanıcı olarak oturum açın.
-    2. /etc/ssh/sshd_config dosyasına gidin, PasswordAuthentication ile başlayan satırı bulun.
-    3. Satırı açıklamadan bırakın ve değeri evet olarak değiştirin.
-    4. Alt sistemle başlayan satırı bulun ve satırı açıklamayı bırakın.
-    5. sshd hizmetini yeniden başlatın.
+Windows **(hata 95107)** için, kullanıcı hesabının kaynak bilgisayarda yerel bir hesap veya etki alanı hesabıyla birlikte yönetim erişimi olduğunu doğrulayın. Bir etki alanı hesabı kullanmıyorsanız, yerel bilgisayarda Uzaktan Kullanıcı Erişimi denetimini devre dışı bmalısınız.
 
-Seçilen kullanıcı hesabının kimlik bilgilerini değiştirmek istiyorsanız, [burada](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation)verilen yönergeleri izleyin.
+* Uzaktan Kullanıcı Erişimi denetimini devre dışı eden bir kayıt defteri anahtarını el ile eklemek için:
+
+  * `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System`
+  * Yeni `DWORD`bir ekle :`LocalAccountTokenFilterPolicy`
+  * Değeri ayarlama`1`
+
+* Bir komut isteminden kayıt defteri anahtarını eklemek için aşağıdaki komutu çalıştırın:
+
+  `REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1`
+
+Linux için **(hata 95108),** Mobilite servis aracısının başarılı bir şekilde yüklenmesi için **kök** hesabı seçmeniz gerekir. Ayrıca, SSH Dosya Aktarım Protokolü (SFTP) hizmetleri çalışıyor olmalıdır. sshd_config dosyasında SFTP alt sistemini ve parola kimlik doğrulamasını etkinleştirmek _için:_
+
+1. **Kök** kullanıcı olarak oturum açın.
+1. _/etc/ssh/sshd_config dosyasına_gidin, ile `PasswordAuthentication`başlayan satırı bulun.
+1. Satırı açıklamayı bırakın ve değeri `yes`' le değiştirin.
+1. `Subsystem`Ile başlayan satırı bulun ve satırı açıklamayı bırakın.
+1. Hizmeti yeniden `sshd` başlatın.
+
+Seçilen kullanıcı hesabının kimlik bilgilerini değiştirmek istiyorsanız, [aşağıdaki yönergeleri](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation)izleyin.
 
 ## <a name="insufficient-privileges-failure-errorid-95517"></a>Yetersiz ayrıcalık hatası (ErrorID: 95517)
 
-Mobilite aracısını yüklemeyi seçen kullanıcının yönetici ayrıcalıkları yoksa, Configuration server/scale-out process server'ın mobilite aracısı yazılımını kaynak makineye kopyalamasına izin verilmez. Bu nedenle, bu hata erişim reddedilen hatanın bir sonucudur. Kullanıcı hesabının yönetici ayrıcalıklarına sahip olduğundan emin olun.
+Mobilite aracısını yüklemeyi seçen kullanıcının yönetici ayrıcalıkları olmadığında, yapılandırma sunucusu/ölçeklendirme işlem sunucusunun Mobilite aracısı yazılımını kaynak makinesine kopyalamasına izin verilmez. Bu hata, erişim reddedilen bir hatanın bir sonucudur. Kullanıcı hesabının yönetici ayrıcalıklarına sahip olduğundan emin olun.
 
-Seçilen kullanıcı hesabının kimlik bilgilerini değiştirmek istiyorsanız, [burada](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation)verilen yönergeleri izleyin.
+Seçilen kullanıcı hesabının kimlik bilgilerini değiştirmek istiyorsanız, [aşağıdaki yönergeleri](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation)izleyin.
 
 ## <a name="insufficient-privileges-failure-errorid-95518"></a>Yetersiz ayrıcalık hatası (ErrorID: 95518)
 
-Birincil etki alanı ve iş istasyonu arasındaki etki alanı güven ilişkisi kurulması kaynak makinede oturum açmaya çalışırken başarısız olduğunda, mobilite aracısı yükleme hata kimliği 95518 ile başarısız olur. Bu nedenle, mobilite aracısını yüklemek için kullanılan kullanıcı hesabının kaynak makinenin birincil etki alanında oturum açmaları için yönetim ayrıcalıklarına sahip olduğundan emin olun.
+Birincil etki alanı ve iş istasyonu arasındaki etki alanı güven ilişkisi kurulması kaynak makinede oturum açmaya çalışırken başarısız olduğunda, Mobilite aracısı yüklemehata kimliği 95518 ile başarısız olur. Mobilite aracısını yüklemek için kullanılan kullanıcı hesabının kaynak makinenin birincil etki alanında oturum açmanın yönetim ayrıcalıklarına sahip olduğundan emin olun.
 
-Seçilen kullanıcı hesabının kimlik bilgilerini değiştirmek istiyorsanız, [burada](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation)verilen yönergeleri izleyin.
+Seçilen kullanıcı hesabının kimlik bilgilerini değiştirmek istiyorsanız, [aşağıdaki yönergeleri](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation)izleyin.
 
-## <a name="login-failures-errorid-95519-95520-95521-95522"></a>Giriş Hataları (ErrorID: 95519, 95520, 95521, 95522)
+## <a name="login-failures-errorid-95519-95520-95521-95522"></a>Giriş hataları (ErrorID: 95519, 95520, 95521, 95522)
+
+Bu bölümde kimlik bilgileri ve giriş hatası iletileri açıklanmaktadır.
 
 ### <a name="credentials-of-the-user-account-have-been-disabled-errorid-95519"></a>Kullanıcı hesabının kimlik bilgileri devre dışı bırakıldı (ErrorID: 95519)
 
-Çoğaltmayı Etkinleştir sırasında seçilen kullanıcı hesabı devre dışı bırakıldı. Kullanıcı hesabını etkinleştirmek [için, buradaki](https://aka.ms/enable_login_user) makaleye bakın veya metin *kullanıcı adını* gerçek kullanıcı adı ile değiştirerek aşağıdaki komutu çalıştırın.
+Etkinleştirme çoğaltma sırasında seçilen kullanıcı hesabı devre dışı bırakıldı. Kullanıcı hesabını etkinleştirmek için, metin _kullanıcı adını_ gerçek kullanıcı adı ile değiştirerek [bu makaleye](/powershell/module/Microsoft.PowerShell.LocalAccounts/Enable-LocalUser) başvurun veya aşağıdaki komutu çalıştırın.
+
 `net user 'username' /active:yes`
 
-### <a name="credentials-locked-out-due-to-multiple-failed-login-attempts-errorid-95520"></a>Birden çok başarısız oturum açma denemesi nedeniyle kilitlendi (ErrorID: 95520)
+### <a name="credentials-locked-out-because-of-multiple-failed-login-attempts-errorid-95520"></a>Birden çok başarısız oturum açma denemesi nedeniyle kilitlendi kimlik bilgileri (ErrorID: 95520)
 
 Bir makineye erişmek için birden çok başarısız yeniden deneme çabası kullanıcı hesabını kilitler. Hata nın nedeni şu olabilir:
 
-* Yapılandırma kurulumu sırasında sağlanan kimlik bilgileri yanlış veya
-* Çoğaltmayı Etkinleştir sırasında seçilen kullanıcı hesabı yanlış
+* Yapılandırma kurulumu sırasında sağlanan kimlik bilgileri yanlıştır.
+* Etkinleştirme çoğaltma sırasında seçilen kullanıcı hesabı yanlıştır.
 
-Bu nedenle, [burada](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation) verilen yönergeleri izleyerek seçilen kimlik bilgilerini değiştirin ve bir süre sonra işlemi yeniden deneyin.
+[Bu yönergeleri](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation) izleyerek seçilen kimlik bilgilerini değiştirin ve işlemi yeniden deneyin.
 
-### <a name="logon-servers-are-not-available-on-the-source-machine-errorid-95521"></a>Giriş sunucuları kaynak makinede kullanılamaz (ErrorID: 95521)
+### <a name="logon-servers-arent-available-on-the-source-machine-errorid-95521"></a>Giriş sunucuları kaynak makinede kullanılamaz (ErrorID: 95521)
 
-Bu hata, oturum açma sunucuları kaynak makinede kullanılamadığında oluşur. Oturum açma sunucularının kullanılamaması, oturum açma isteğinin başarısızlığa yol açacağından mobilite aracısı yüklenemez. Başarılı Oturum açmak için, Logon sunucularının kaynak makinede mevcut olduğundan emin olun ve Logon hizmetini başlatın. Ayrıntılı talimatlar için KB [139410](https://support.microsoft.com/en-in/help/139410/err-msg-there-are-currently-no-logon-servers-available) Err Msg: Şu anda Oturum Açma Sunucusu Bulunmamaktadır.
+Bu hata, giriş sunucuları kaynak makinede kullanılamadığında oluşur. Oturum açma sunucuları kullanılamıyorsa, oturum açma istekleri başarısız olur ve Mobilite aracısı yüklenemez. Başarılı bir oturum açmak için, giriş sunucularının kaynak makinede mevcut olduğundan emin olun ve Netlogon hizmetini başlatın. Daha fazla bilgi için [Windows Oturum Açma Senaryoları'na](/windows-server/security/windows-authentication/windows-logon-scenarios)bakın.
 
 ### <a name="logon-service-isnt-running-on-the-source-machine-errorid-95522"></a>Giriş hizmeti kaynak makinede çalışmıyor (ErrorID: 95522)
 
-Giriş hizmeti kaynak makinenizde çalışmıyor ve oturum açma isteğinin başarısızlığa yol açmasına neden oluyor. Bu nedenle, mobilite aracısı yüklenemez. Çözmek için, Logon hizmetinin başarılı Giriş için kaynak makinede çalıştığını sağlayın. Oturum açma hizmetini başlatmak için komut isteminden "net start Logon" komutunu çalıştırın veya görev yöneticisinden "NetLogon" hizmetini başlatın.
+Giriş hizmeti kaynak makinenizde çalışmıyor ve oturum açma isteğinin başarısızlığa yol açmasına neden oluyor. Mobilite aracısı yüklenemez. Hatayı gidermek için, `Netlogon` hizmeti kaynak makinede başlatmak için aşağıdaki yöntemlerden birini kullanın:
 
-## <a name="connectivity-failure-errorid-95117--97118"></a>**Bağlantı hatası (ErrorID: 95117 & 97118)**
+* `Netlogon` Hizmeti komut isteminden başlatmak için komutu `net start Netlogon`çalıştırın.
+* Görev Yöneticisi'nden `Netlogon` hizmeti başlatın.
 
-Configuration server/ scale-out process server, Mobility aracısını yüklemek için kaynak VM'ye bağlanmaya çalışır. Bu hata, kaynak makineye ağ bağlantısı sorunları nedeniyle erişilemediğinde oluşur. Çözmek için,
+## <a name="connectivity-failure-errorid-95117--97118"></a>Bağlantı hatası (ErrorID: 95117 & 97118)
 
-* Kaynak makinenizi Yapılandırma sunucusundan pingleyebildiğinizden emin olun. Etkinleştirme çoğaltma sırasında ölçeklendirme işlem sunucusu seçtiyseniz, Kaynak makinenizi işlem sunucusundan pinglebildiğinizden emin olun.
-  * Source Server makine komut satırından, ağ bağlantısı sorunları veya güvenlik duvarı bağlantı noktası engelleme sorunları olup olmadığını görmek için aşağıda gösterildiği gibi https bağlantı noktası (135) ile yapılandırma sunucusu/ ölçeklendirme işlem sunucusu ping Telnet kullanın.
+Configuration server/scale-out process server, Mobilite aracısını yüklemek için kaynak VM'ye bağlanmaya çalışır. Bu hata, ağ bağlantısı sorunları olduğundan kaynak makineye erişilemezse oluşur.
 
-     `telnet <CS/ scale-out PS IP address> <135>`
-* Ayrıca, **Linux VM**için,
-  * En son openssh, openssh-server ve openssl paketlerinin yüklü olup olmadığını denetleyin.
+Hatayı gidermek için:
+
+* Kaynak makinenizi yapılandırma sunucusundan pinglebildiğinizden emin olun. Etkinleştirme çoğaltma sırasında ölçeklendirme işlem sunucusunu seçtiyseniz, kaynak makinenizi işlem sunucusundan pinglebildiğinizden emin olun.
+
+* Kaynak sunucu makine komut satırından, aşağıdaki komutta gösterildiği gibi, https bağlantı noktası 135'teki yapılandırma sunucusunu veya ölçeklendirme işlem sunucusunu pinglemek için kullanın. `Telnet` Bu komut, ağ bağlantısı sorunları veya güvenlik duvarı bağlantı noktası engelleme sorunları olup olmadığını denetler.
+
+  `telnet <CS/ scale-out PS IP address> <135>`
+
+* Ayrıca, bir Linux VM için:
+  * En son OpenSSH, OpenSSH Server ve OpenSSL paketlerinin yüklü olup olmadığını kontrol edin.
   * Secure Shell'in (SSH) etkin olduğundan ve bağlantı noktası 22'de çalıştığını kontrol edin ve kontrol edin.
-  * SFTP hizmetleri çalışıyor olmalıdır. sshd_config dosyasında SFTP alt sistemi ve parola kimlik doğrulamasını etkinleştirmek için,
-    * Kök kullanıcı olarak oturum açın.
-    * /etc/ssh/sshd_config dosyasına gidin, PasswordAuthentication ile başlayan satırı bulun.
-    * Satırı açıklamayı bırakın ve değeri evet olarak değiştirin
-    * Alt sistemle başlayan satırı bulun ve satırı açıklamayı bırakın
-    * sshd hizmetini yeniden başlatın.
-* Bir süre sonra uygun bir yanıt yoksa bağlantı girişimi başarısız olmuş olabilir veya bağlı ana bilgisayar yanıt vermediği için kurulan bağlantı başarısız olabilir.
-* Bağlantı/ağ/etki alanı yla ilgili bir sorun olabilir. Ayrıca DNS adı çözme sorunu veya TCP bağlantı noktası tükenme sorunu nedeniyle olabilir. Etki alanınızda bu tür bilinen sorunlar olup olmadığını denetleyin.
+  * SFTP hizmetleri çalışıyor olmalıdır. _sshd_config_ dosyasında SFTP alt sistemi ve parola kimlik doğrulamasını etkinleştirmek için:
+
+    1. **Kök** kullanıcı olarak oturum açın.
+    1. _/etc/ssh/sshd_config_ dosyasına gidin, ile `PasswordAuthentication`başlayan satırı bulun.
+    1. Satırı açıklamayı bırakın ve değeri `yes`' le değiştirin.
+    1. ' ile `Subsystem`başlayan satırı bulun ve satırı açıklama
+    1. Hizmeti yeniden `sshd` başlatın.
+
+* Bir süre sonra uygun yanıt yoksa bağlantı girişimi başarısız olabilir veya bağlı bir ana bilgisayar yanıt veremediği için kurulan bir bağlantı başarısız oldu.
+* Bağlantı/ağ/etki alanı yla ilgili bir sorun olabilir. DNS adı sorunu veya TCP bağlantı noktası tükenme sorunu çözme çünkü de olabilir. Etki alanınızda bu tür bilinen sorunlar olup olmadığını denetleyin.
 
 ## <a name="connectivity-failure-errorid-95523"></a>Bağlantı hatası (ErrorID: 95523)
 
-Bu hata, kaynak makinenin bulunduğu ağ bulunamıyorsa veya silinmiş veya artık kullanılamadığında oluşur. Hatayı gidermenin tek yolu, ağın var olduğundan emin olmaktır.
+Bu hata, kaynak makinenin bulunduğu ağ bulunamazsa, silinmiş veya artık kullanılamadığında oluşur. Hatayı gidermenin tek yolu, ağın var olduğundan emin olmaktır.
 
 ## <a name="file-and-printer-sharing-services-check-errorid-95105--95106"></a>Dosya ve Yazıcı paylaşım hizmetleri denetimi (ErrorID: 95105 & 95106)
 
-Bağlantı denetiminden sonra, sanal makinenizde Dosya ve yazıcı paylaşım hizmetinin etkinleştirilip etkinleştirilen olmadığını doğrulayın. Bu ayarlarıkaynak makineye Mobility aracıkopyalamak için gereklidir.
+Bağlantı denetiminden sonra, Sanal makinenizde Dosya ve Yazıcı paylaşım hizmetinin etkin olup olmadığını doğrulayın. Bu ayarlarıkaynak makineye Mobility aracıkopyalamak için gereklidir.
 
-**Windows 2008 R2 ve önceki sürümler**için,
+**Windows 2008 R2 ve önceki sürümleri için:**
 
 * Windows Güvenlik Duvarı üzerinden dosya ve yazdırma paylaşımını etkinleştirmek için,
-  * Sol bölmede Windows Güvenlik Duvarı > > -> kontrol > paneli açın, Gelişmiş ayarlar -konsol ağacında Gelen Kurallar'ı tıklatın > tıklatın.
-  * Kuralları Bul Dosya ve Yazıcı Paylaşımı (NB-Oturum-In) ve Dosya ve Yazıcı Paylaşımı (SMB-In). Her kural için kuralı sağ tıklatın ve ardından **Kuralı Etkinleştir'i**tıklatın.
-* Grup İlkesi ile dosya paylaşımını etkinleştirmek için,
-  * Başlangıç'a gidin, gpmc.msc yazın ve arayın.
-  * Gezinti bölmesinde aşağıdaki klasörleri açın: Yerel Bilgisayar İlkesi, Kullanıcı Yapılandırması, Yönetim Şablonları, Windows Bileşenleri ve Ağ Paylaşımı.
-  * Ayrıntılar bölmesinde, **kullanıcıların profillerinde dosya paylaşmalarını**engelleyin'i çift tıklatın. Grup İlkesi ayarını devre dışı bırakıp kullanıcının dosyaları paylaşmasını sağlamak için Devre Dışı'yı tıklatın. Değişikliklerinizi kaydetmek için Tamam’a tıklayın. Daha fazla bilgi edinmek için [bkz.](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754359(v=ws.10))
+  1. Açık **Kontrol Panel** > **Sistemi ve Güvenlik** > **Windows Güvenlik Duvarı**. Sol bölmede, konsol ağacında **Gelişmiş ayarlar** > **Gelen Kurallar'ı** seçin.
+  1. Kuralları Bul Dosya ve Yazıcı Paylaşımı (NB-Oturum-In) ve Dosya ve Yazıcı Paylaşımı (SMB-In).
+  1. Her kural için kuralı sağ tıklatın ve ardından **Kuralı Etkinleştir'i**tıklatın.
 
-**Daha sonraki sürümler**için, dosya ve yazıcı paylaşımını etkinleştirmek [için VMware VM'lerinin ve fiziksel sunucuların olağanüstü kurtarma durumu için Mobilite hizmetini yükleyin](vmware-azure-install-mobility-service.md) yönergeleriizleyin.
+* Grup İlkesi ile dosya paylaşımını etkinleştirmek için:
+  1. **Başlangıç**ekranına `gpmc.msc` git, yazın ve ara.
+  1. Gezinti bölmesinde aşağıdaki klasörleri açın: **Yerel Bilgisayar İlkesi** > **Kullanıcı Yapılandırması** > **Yönetim Şablonları** > **Windows Bileşenleri** > **Ağ Paylaşımı.**
+  1. Ayrıntılar bölmesinde, **kullanıcıların profillerinde dosya paylaşmalarını**engelleyin'i çift tıklatın.
+
+     Grup İlkesi ayarını devre dışı bırakıp kullanıcının dosya paylaşmasını sağlamak için **Devre Dışı' yı**seçin.
+
+  1. Değişikliklerinizi kaydetmek için **Tamam**’ı seçin.
+
+  Daha fazla bilgi edinmek için [bkz.](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754359(v=ws.10))
+
+Windows veya Linux'un sonraki sürümleri için dosya ve yazıcı paylaşımını etkinleştirmek [için, VMware VM'lerinin ve fiziksel sunucuların olağanüstü kurtarma durumu için Mobilite hizmetini yükleyin yönergeleriizleyin.](vmware-azure-install-mobility-service.md)
 
 ## <a name="windows-management-instrumentation-wmi-configuration-check-error-code-95103"></a>Windows Yönetim Araçları (WMI) yapılandırma denetimi (Hata kodu: 95103)
 
-Dosya ve yazıcı hizmetleri kontrol edildikten sonra, güvenlik duvarı aracılığıyla özel, genel ve etki alanı profilleri için WMI hizmetini etkinleştirin. Bu ayarları kaynak makinede uzaktan yürütme tamamlamak için gereklidir. Etkinleştirmek için,
+Dosya ve yazıcı hizmetleri kontrol edildikten sonra, güvenlik duvarı aracılığıyla özel, genel ve etki alanı profilleri için WMI hizmetini etkinleştirin. Bu ayarları kaynak makinede uzaktan yürütme tamamlamak için gereklidir.
 
-* Denetim Masası'na gidin, Güvenlik'i tıklatın ve ardından Windows Güvenlik Duvarı'nı tıklatın.
-* Ayarları Değiştir'i ve ardından Özel Durumlar sekmesini tıklatın.
-* Özel Durumlar penceresinde, WMI trafiğini güvenlik duvarından geçirmek için Windows Yönetim Araçları (WMI) onay kutusunu seçin. 
+WMI'yi etkinleştirmek için:
 
-Komut isteminde güvenlik duvarından WMI trafiğini de etkinleştirebilirsiniz. Aşağıdaki komutu kullanın`netsh advfirewall firewall set rule group="windows management instrumentation (wmi)" new enable=yes`
+1. Denetim **Masası** > **Güvenliği'ne** gidin ve **Windows Güvenlik Duvarı'nı**seçin.
+1. **Ayarları Değiştir'i** ve ardından **Özel Durumlar** sekmesini seçin.
+1. Özel **Durumlar** penceresinde, WMI trafiğini güvenlik duvarından geçirmek için Windows Yönetim Araçları (WMI) onay kutusunu seçin.
+
+WMI trafiğini aşağıdaki komutla komut isteminden güvenlik duvarından da etkinleştirebilirsiniz:
+
+`netsh advfirewall firewall set rule group="windows management instrumentation (wmi)" new enable=yes`
+
 Diğer WMI sorun giderme makaleleri aşağıdaki makalelerde bulunabilir.
 
 * [Temel WMI testi](https://blogs.technet.microsoft.com/askperf/2007/06/22/basic-wmi-testing/)
-* [WMI sorun giderme](https://msdn.microsoft.com/library/aa394603(v=vs.85).aspx)
-* [WMI komut dosyaları ve WMI hizmetleriyle ilgili sorun giderme sorunları](https://technet.microsoft.com/library/ff406382.aspx#H22)
+* [WMI sorun giderme](/windows/win32/wmisdk/wmi-troubleshooting)
+* [WMI komut dosyaları ve WMI hizmetleriyle ilgili sorun giderme sorunları](/previous-versions/tn-archive/ff406382(v=msdn.10))
 
-## <a name="unsupported-operating-systems"></a>Desteklenmeyen İşletim Sistemleri
+## <a name="unsupported-operating-systems"></a>Desteklenmeyen işletim sistemleri
 
-Hatanın bir diğer yaygın nedeni de desteklenmeyen işletim sistemi olabilir. Mobilite hizmetinin başarılı bir şekilde yüklenmesi için desteklenen İşletim Sistemi/Kernel sürümünde olduğunuzdan emin olun. Özel yama kullanımından kaçının.
-Azure Site Kurtarma tarafından desteklenen işletim sistemleri ve çekirdek sürümleri listesini görüntülemek için [destek matris belgemize](vmware-physical-azure-support-matrix.md#replicated-machines)bakın.
+Başarısızlığın bir diğer yaygın nedeni de desteklenmeyen bir işletim sistemi olabilir. Mobilite hizmetinin başarılı bir şekilde yüklenmesi için desteklenen bir işletim sistemi ve çekirdek sürümünü kullanın. Özel yamalar kullanmaktan kaçının.
+
+Azure Site Kurtarma tarafından desteklenen işletim sistemleri ve çekirdek sürümleri listesini görüntülemek için [destek matrisi belgesine](vmware-physical-azure-support-matrix.md#replicated-machines)bakın.
 
 ## <a name="unsupported-boot-disk-configurations-errorid-95309-95310-95311"></a>Desteklenmeyen önyükleme diski yapılandırmaları (ErrorID: 95309, 95310, 95311)
 
-### <a name="boot-and-system-partitions--volumes-are-not-the-same-disk-errorid-95309"></a>Önyükleme ve sistem bölümleri / birimleri aynı disk değildir (ErrorID: 95309)
+### <a name="boot-and-system-partitions--volumes-arent-the-same-disk-errorid-95309"></a>Önyükleme ve sistem bölümleri / birimleri aynı disk değildir (ErrorID: 95309)
 
-9.20 sürümüönce, farklı disklerde önyükleme ve sistem bölümleri / birimleri desteklenmeyen bir yapılandırma oldu. [9.20 sürümünden](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery)itibaren, bu yapılandırma desteklenir. Bu destek için en son sürümü kullanın.
+9.20 sürümünden önce, farklı disklerde önyükleme ve sistem bölümleri/birimleri desteklenmeyen bir yapılandırmaydı. [9.20 sürümü](https://support.microsoft.com/help/4478871/update-rollup-31-for-azure-site-recovery)ile başlayarak, bu yapılandırma desteklenir.
 
-### <a name="the-boot-disk-is-not-available-errorid-95310"></a>Önyükleme diski kullanılamıyor (ErrorID: 95310)
+### <a name="the-boot-disk-isnt-available-errorid-95310"></a>Önyükleme diski kullanılamıyor (ErrorID: 95310)
 
-Önyükleme diski olmayan sanal bir makine korunamıyor. Bu, başarısız çalışma sırasında sanal makinenin sorunsuz bir şekilde kurtarılmasını sağlamaktır. Önyükleme diskinin yokluğu, makinenin başarısız olduktan sonra önyükleme de başarısız lığa neden olmaz. Sanal makinenin önyükleme diski içerdiğinden emin olun ve işlemi yeniden deneyin. Ayrıca, aynı makinedeki birden çok önyükleme diskinin desteklenmediğini unutmayın.
+Önyükleme diski olmayan sanal bir makine korunamaz. Önyükleme diski, bir arıza işlemi sırasında sanal bir makinenin sorunsuz bir şekilde kurtarılmasını sağlar. Önyükleme diskinin yokluğu, makinenin başarısız olduktan sonra önyükleme de başarısız lığa yol gösterir. Sanal makinenin bir önyükleme diski içerdiğinden emin olun ve işlemi yeniden deneyin. Ayrıca, aynı makinedeki birden çok önyükleme diski desteklenmez.
 
 ### <a name="multiple-boot-disks-present-on-the-source-machine-errorid-95311"></a>Kaynak makinede birden çok Önyükleme diski bulunur (ErrorID: 95311)
 
@@ -162,188 +196,202 @@ Birden çok önyükleme diski olan sanal bir makine desteklenen bir [yapılandı
 
 ## <a name="system-partition-on-multiple-disks-errorid-95313"></a>Birden çok diskte sistem bölümü (ErrorID: 95313)
 
-9.20 sürümünden önce, birden çok diske konan kök bölümleme veya birim desteklenmeyen bir yapılandırmaydı. [9.20 sürümünden](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery)itibaren, bu yapılandırma desteklenir. Bu destek için en son sürümü kullanın.
+9.20 sürümünden önce, birden çok diskte kök bölümleme veya birim kurulumu desteklenmeyen bir yapılandırmaydı. [9.20 sürümü](https://support.microsoft.com/help/4478871/update-rollup-31-for-azure-site-recovery)ile başlayarak, bu yapılandırma desteklenir.
 
 ## <a name="enable-protection-failed-as-device-name-mentioned-in-the-grub-configuration-instead-of-uuid-errorid-95320"></a>UUID yerine GRUB yapılandırmasında adı geçen aygıt adı olarak korumayı etkinleştirme (ErrorID: 95320)
 
-**Olası Neden:** </br>
-GRUB yapılandırma dosyaları ("/boot/grub/menu.lst", "boot/grub/grub.cfg", "/boot/grub2/grub.cfg" veya "/etc/default/grub") **parametrelerinin** değerini içerebilir ve UUID yerine gerçek aygıt adları olarak **devam edebilir.** Site Kurtarma, aygıtların adı VM'nin yeniden başlatılmasında değişebileceğinden, VM'nin sorunlarla sonuçlanan başarısız lıkta aynı adla gelememesi nedeniyle UUID yaklaşımını zorunlu kılabilir. Örnek: </br>
+### <a name="possible-cause"></a>Olası nedeni
 
+Grand Unified Bootloader (GRUB) yapılandırma dosyaları (_/boot/grub/menu.lst,_ _/boot/grub.cfg_, _/boot/grub2/grub.cfg_, veya _/etc/default/grub_) **evrensel** olarak benzersiz bir tanımlayıcı (UUID) yerine gerçek aygıt adları **olarak** kök parametrelerinin değerini içerebilir. Site Kurtarma, aygıt adları VM'nin yeniden başlatılmasında değişebileceğinden UUID yaklaşımını zorunlu kılabilir. Örneğin, VM başarısız lıkta aynı adla çevrimiçi olmayabilir ve bu sorunlarla sonuçlanır.
 
-- Aşağıdaki satır GRUB **dosyasından / boot/grub2/grub.cfg**. <br>
-  *linux /boot/vmlinuz-3.12.49-11-default **root=/dev/sda2** ${extra_cmdline} **resume=/dev/sda1** splash=silent silent showopts*
+Örnek:
 
+- Aşağıdaki satır GRUB _dosyasından / boot/grub2/grub.cfg:_
 
-- Aşağıdaki satır GRUB **dosyasından /boot/grub/menu.lst**
-  *çekirdek /boot/vmlinuz-3.0.101-63-default **root=/dev/sda2** **resume=/dev/sda1** splash=silent crashkernel=256M-:128M showopts vga=0x314*
+  `linux /boot/vmlinuz-3.12.49-11-default root=/dev/sda2  ${extra_cmdline} resume=/dev/sda1 splash=silent quiet showopts`
 
-Yukarıdaki kalın dizeyi gözlemlerseniz, GRUB'un UUID yerine "root" ve "resume" parametreleri için gerçek aygıt adları vardır.
- 
-**Nasıl Düzeltilir:**<br>
-Cihaz adları karşılık gelen UUID ile değiştirilmelidir.<br>
+- Aşağıdaki satır GRUB dosyasından _/boot/grub/menu.lst:_
 
+  `kernel /boot/vmlinuz-3.0.101-63-default root=/dev/sda2 resume=/dev/sda1 splash=silent crashkernel=256M-:128M showopts vga=0x314`
 
-1. "Blkid \<device name>" komutunu çalıştırarak aygıtın UUID'sini bulun. Örnek:<br>
-   ```
+> [!NOTE]
+> GRUB satırları, UUID yerine **parametrelerin kök** ve **devamı** için gerçek aygıt adlarını içerir.
+
+### <a name="how-to-fix"></a>Nasıl Düzeltilir?
+
+Cihaz adları karşılık gelen UUID ile değiştirilmelidir.
+
+1. Komutu `blkid \<device name>`çalıştırarak aygıtın UUID'sini bulun.
+
+   Örnek:
+
+   ```shell
    blkid /dev/sda1
    /dev/sda1: UUID="6f614b44-433b-431b-9ca1-4dd2f6f74f6b" TYPE="swap"
-   blkid /dev/sda2 
-   /dev/sda2: UUID="62927e85-f7ba-40bc-9993-cc1feeb191e4" TYPE="ext3" 
+   blkid /dev/sda2
+   /dev/sda2: UUID="62927e85-f7ba-40bc-9993-cc1feeb191e4" TYPE="ext3"
    ```
 
-2. Şimdi aygıt adını "root=UUID=\<UUID>" gibi biçimde UUID ile değiştirin. Örneğin, "/boot/grub2/grub.cfg", "/boot/grub2/grub.cfg" veya "/etc/default/grub" dosyalarında yukarıda belirtilen kök ve özgeçmiş parametresi için cihaz adlarını UUID ile değiştirirsek: dosyalardaki satırlar benzer. <br>
-   *çekirdek /boot/vmlinuz-3.0.101-63-default **root=UUID=62927e85-f7ba-40bc-9993-cc1feeb191e4 resume=UUID=UUID=62927e85** **6f614b44-433b-431b-9ca1-4dd2f6f74f6b** sıçrama=sessiz crashkernel=256M-:128M showopts vga=0x314*
-3. Korumayı yeniden başlatın
+1. Şimdi gibi `root=UUID=\<UUID>`biçiminde uUID ile cihaz adı değiştirin. Örneğin, _/boot/grub2/grub.cfg_, _/boot/grub2/grub.cfg_, veya _/etc/default/grub_ dosyalarında belirtilen kök ve özgeçmiş parametresi için cihaz adlarını UUID ile değiştirirsek, dosyalardaki satırlar aşağıdaki satıra benzer:
 
-## <a name="install-mobility-service-completed-with-warning-to-reboot-errorid-95265--95266"></a>Yeniden başlatma uyarısı ile tamamlanan Mobilite Hizmetini Yükleyin (ErrorID: 95265 & 95266)
+   `kernel /boot/vmlinuz-3.0.101-63-default root=UUID=62927e85-f7ba-40bc-9993-cc1feeb191e4 resume=UUID=6f614b44-433b-431b-9ca1-4dd2f6f74f6b splash=silent crashkernel=256M-:128M showopts vga=0x314`
 
-Site Kurtarma mobilite hizmeti, biri filtre sürücüsü olarak adlandırılan birçok bileşene sahiptir. Filtre sürücüsü yalnızca sistemin yeniden başlatıldıği bir zamanda sistem bellene yüklenir. Bu, filtre sürücüsü düzeltmelerinin yalnızca yeni bir filtre sürücüsü yüklendiğinde gerçekleşebileceği anlamına gelir; bu da yalnızca sistemin yeniden başlatılması sırasında gerçekleşebilir.
+1. Korumayı yeniden başlatın.
 
-Bunun bir uyarı olduğunu ve varolan çoğaltmanın yeni aracı güncelleştirmeden sonra bile çalışacağını **lütfen unutmayın.** Yeni filtre sürücüsünün avantajlarından yararlanmak istediğiniz zaman yeniden başlatmayı seçebilirsiniz, ancak eski filtre sürücüsüyeniden başlatmazsanız çalışmaya devam eder. Yani, yeniden başlatmadan bir güncelleştirmeden sonra, filtre sürücüsü dışında, **diğer geliştirmeler ve mobilite hizmeti düzeltmeleri yararları gerçekleştirilir**. Bu nedenle, tavsiye rağmen, her yükseltmeden sonra yeniden başlatmak için zorunlu değildir. Yeniden başlatmanın ne zaman zorunlu olduğu hakkında bilgi için, Azure Site Kurtarma'daki Hizmet güncelleştirmelerinde [mobilite aracısı yükseltme](https://aka.ms/v2a_asr_reboot) bölümünden sonra kaynak makinenin yeniden başlatılmasını ayarlayın.
+## <a name="install-mobility-service-completed-with-warning-to-reboot-errorid-95265--95266"></a>Yeniden başlatma uyarısı ile tamamlanan Mobilite hizmetini yükleyin (ErrorID: 95265 & 95266)
+
+Site Kurtarma Mobilite hizmeti, biri filtre sürücüsü olarak adlandırılan birçok bileşene sahiptir. Filtre sürücüsü yalnızca sistem yeniden başlatma sırasında sistem bellene yüklenir. Filtre sürücüsü düzeltmeleri yalnızca sistem yeniden başlatıldığında yeni bir filtre sürücüsü yüklendiğinde gerçekleştirilebilir.
+
+> [!IMPORTANT]
+> Bu bir uyarıdır ve varolan çoğaltma yeni aracı güncelleştirmesi sonra bile çalışacaktır. Yeni filtre sürücüsünün avantajlarından yararlanmak istediğiniz de yeniden başlatmayı seçebilirsiniz, ancak yeniden başlatmazsanız, eski filtre sürücüsü çalışmaya devam eder. Yani, bir yeniden başlatma olmadan bir güncelleştirmeden sonra, filtre sürücüsü dışında, **Diğer geliştirmeler ve Mobilite hizmeti düzeltmeleri yararları gerçekleştirilir**. Önerilen rağmen, her yükseltmeden sonra yeniden başlatılması zorunlu değildir. Yeniden başlatmanın ne zaman zorunlu olduğu hakkında bilgi için, Azure Site Kurtarma'daki Hizmet güncelleştirmelerinde [Mobilite hizmeti yükseltmesi](service-updates-how-to.md#reboot-after-mobility-service-upgrade) bölümünden sonra Yeniden Başlat'ı ayarlayın.
 
 > [!TIP]
->Bakım pencereniz sırasında yükseltmeleri zamanlamayla ilgili en iyi uygulamalar için Azure Site Kurtarma'daki Hizmet güncelleştirmelerinde [en son işletim sistemi/çekirdek sürümleri için Destek'e](https://aka.ms/v2a_asr_upgrade_practice) bakın.
+>Bakım pencereniz sırasında yükseltmeleri zamanlamayla ilgili en iyi uygulamalar için Azure Site Kurtarma'daki Hizmet güncelleştirmelerinde [en son işletim sistemi/çekirdeği için Destek'e](service-updates-how-to.md#support-for-latest-operating-systemskernels) bakın.
 
 ## <a name="lvm-support-from-920-version"></a>9.20 sürümünden LVM desteği
 
-9.20 sürümüönce, LVM yalnızca veri diskleri için desteklendi. /boot bir disk bölümü üzerinde olmalı ve bir LVM hacmi olmamalıdır.
+9.20 sürümünden önce, Mantıksal Birim Yöneticisi (LVM) yalnızca veri diskleri için desteklenmiştir. Bölüm `/boot` bir disk bölümü değil, bir LVM ses olmalıdır.
 
-[9.20 sürümünden](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery) [itibaren, LVM işletim sistemi diski](vmware-physical-azure-support-matrix.md#linux-file-systemsguest-storage) desteklenir. Bu destek için en son sürümü kullanın.
+[9.20 sürümüile](https://support.microsoft.com/help/4478871/update-rollup-31-for-azure-site-recovery)başlayarak, [LVM işletim sistemi diski](vmware-physical-azure-support-matrix.md#linux-file-systemsguest-storage) desteklenir.
 
 ## <a name="insufficient-space-errorid-95524"></a>Yetersiz alan (ErrorID: 95524)
 
-Mobilite aracısı kaynak makineye kopyalandığında, en az 100 MB boş alan gereklidir. Bu nedenle, kaynak makinenizin boş alana ihtiyaç duyduğundan emin olun ve işlemi yeniden deneyin.
+Mobilite aracısı kaynak makineye kopyalandığında, en az 100 MB boş alan gereklidir. Kaynak makinenizin gerekli miktarda boş alana sahip olduğundan emin olun ve işlemi yeniden deneyin.
 
 ## <a name="vss-installation-failures"></a>VSS Kurulum hataları
 
-VSS yüklemesi, mobility aracısı yüklemesinin bir parçasıdır. Bu hizmet, uygulamayla tutarlı kurtarma noktası oluşturma sürecinde kullanılır. VSS yüklemesi sırasında ki hatalar birden çok nedenden dolayı oluşabilir. Tam hataları tanımlamak için **c:\ProgramData\ASRSetupLogs\ASRUnifiedAgentInstaller.log'a**bakın. Birkaç yaygın hata ve çözüm adımları aşağıdaki bölümde vurgulanır.
+Volume Shadow kopyalama Hizmeti (VSS) yüklemesi, Mobilite aracıyüklemesinin bir parçasıdır. Bu hizmet, uygulama tutarlı kurtarma noktaları oluşturmak için işlemde kullanılır. VSS yüklemesi sırasında ki hatalar birden çok nedenden dolayı oluşabilir. Tam hataları tanımlamak için _C:\ProgramData\ASRSetupLogs\ASRUnifiedAgentInstaller.log'a_bakın. Bazı sık karşılaşılan hatalar ve çözüm adımları aşağıdaki bölümde vurgulanır.
 
 ### <a name="vss-error--2147023170-0x800706be---exit-code-511"></a>VSS hatası -2147023170 [0x800706BE] - çıkış kodu 511
 
-Bu sorun çoğunlukla virüsten koruma yazılımı Azure Site Kurtarma hizmetlerinin işlemlerini engellediği nde görülür. Bu sorunu çözmek için:
+Bu sorun genellikle virüsten koruma yazılımı Azure Site Kurtarma hizmetlerinin işlemlerini engellediği nde görülür.
 
-1. [Burada](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program)belirtilen tüm klasörleri hariç tut.
-2. Windows'da DLL kaydının engelini kaldırmak için virüsten koruma sağlayıcınız tarafından yayınlanan yönergeleri izleyin.
+Bu sorunu çözmek için:
+
+1. [Antivirus programından klasör dışlamaları](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program)listesini gözden geçirin.
+1. Windows'da DLL kaydının engelini kaldırmak için virüsten koruma sağlayıcınız tarafından yayınlanan yönergeleri izleyin.
 
 ### <a name="vss-error-7-0x7---exit-code-511"></a>VSS hatası 7 [0x7] - çıkış kodu 511
 
-Bu bir çalışma zamanı hatasıdır ve VSS yüklemek için yetersiz bellek nedeniyle kaynaklanır. Bu işlemin başarılı bir şekilde tamamlanması için disk alanını artırdığından emin olun.
+Bu hata, VSS'yi yüklemek için yeterli bellek olmadığından kaynaklanan bir çalışma zamanı hatasıdır. Bu işlemin başarılı bir şekilde tamamlanması için disk alanını artırın.
 
 ### <a name="vss-error--2147023824-0x80070430---exit-code-517"></a>VSS hatası -2147023824 [0x80070430] - çıkış kodu 517
 
-Bu hata, Azure Site Kurtarma VSS Sağlayıcısı hizmeti [silinmesi için işaretlendiğinde](https://msdn.microsoft.com/library/ms838153.aspx)oluşur. Aşağıdaki komut satırını çalıştırarak VSS'yi kaynak makineye el ile yüklemeyi deneyin
+Bu hata, Azure Site Kurtarma VSS Sağlayıcısı hizmeti [silinmesi için işaretlendiğinde](/previous-versions/ms838153(v=msdn.10))oluşur. Aşağıdaki komutu çalıştırarak VSS'yi kaynak makineye el ile yüklemeyi deneyin:
 
-`C:\Program Files (x86)\Microsoft Azure Site Recovery\agent>"C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd"`
+`"C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd"`
 
 ### <a name="vss-error--2147023841-0x8007041f---exit-code-512"></a>VSS hatası -2147023841 [0x8007041F] - çıkış kodu 512
 
-Bu hata, Azure Site Kurtarma VSS Sağlayıcısı hizmet veritabanı [kilitlendiğinde](https://msdn.microsoft.com/library/ms833798.aspx)oluşur. Aşağıdaki komut satırını çalıştırarak VSS'yi kaynak makineye el ile yüklemeyi deneyin
+Bu hata, Azure Site Kurtarma VSS Sağlayıcısı hizmet veritabanı [kilitlendiğinde](/previous-versions/ms833798(v=msdn.10))oluşur. Aşağıdaki komut isteminden aşağıdaki komutu çalıştırarak VSS'yi kaynak makineye el ile yüklemeyi deneyin:
 
-`C:\Program Files (x86)\Microsoft Azure Site Recovery\agent>"C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd"`
+`"C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd"`
 
-Arıza durumunda, herhangi bir virüsten koruma programının veya diğer hizmetlerin "Başlangıç" durumunda takılıp takılmadığını kontrol edin. Bu veritabanı hizmetleri kilit tutabilir. Bu VSS sağlayıcısı yükleme de hatalara yol açacaktır. Hiçbir hizmetin "Başlangıç" durumunda olmadığından emin olun ve ardından yukarıdaki işlemi yeniden deneyin.
+Bir hata olduğunda, herhangi bir virüsten koruma programının veya diğer hizmetlerin **Başlangıç** durumunda takılıp takılmadığını denetleyin. **Başlangıç** durumundaki bir işlem veritabanı hizmetlerindeki kilidi tutabilir. Bu VSS sağlayıcısı yükleme de hatalara yol açacaktır. Hiçbir hizmetin **Başlangıç** durumunda olmadığından emin olun ve ardından yukarıdaki işlemi yeniden deneyin.
 
 ### <a name="vss-exit-code-806"></a>VSS çıkış kodu 806
 
-Bu hata, yükleme için kullanılan kullanıcı hesabının CSScript komutunu yürütme izinleri olmadığında oluşur. Komut dosyasını çalıştırmak ve işlemi yeniden denemek için kullanıcı hesabına gerekli izinleri sağlayın.
+Bu hata, yükleme için kullanılan kullanıcı hesabının `CSScript` komutu yürütmek için izinleri olmadığında oluşur. Komut dosyasını çalıştırmak ve işlemi yeniden denemek için kullanıcı hesabına gerekli izinleri sağlayın.
 
 ### <a name="other-vss-errors"></a>Diğer VSS hataları
 
-Aşağıdaki komut satırını çalıştırarak VSS sağlayıcı hizmetini kaynak makineye el ile yüklemeyi deneyin
+Aşağıdaki komut isteminden aşağıdaki komutu çalıştırarak VSS sağlayıcı hizmetini kaynak makineye el ile yüklemeyi deneyin:
 
-`C:\Program Files (x86)\Microsoft Azure Site Recovery\agent>"C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd"`
-
-
+`"C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd"`
 
 ## <a name="vss-error---0x8004e00f"></a>VSS hatası - 0x8004E00F
 
-Bu hata genellikle DCOM sorunları nedeniyle hareketlilik aracısı kurulumu sırasında karşılaşılan ve DCOM kritik bir durumda.
+Bu hata genellikle, sorunlar nedeniyle Mobilite aracısının `DCOM` `DCOM` yüklenmesi sırasında oluşur ve kritik bir durumdadır.
 
 Hatanın nedenini belirlemek için aşağıdaki yordamı kullanın.
 
-**Yükleme günlüklerini inceleyin**
+### <a name="examine-the-installation-logs"></a>Yükleme günlüklerini inceleyin
 
-1. c:\ProgramData\ASRSetupLogs\ASRUnifiedAgentInstaller.log adresinde bulunan yükleme günlüğünü açın.
+1. _C:\ProgramData\ASRSetupLogs\ASRUnifiedAgentInstaller.log_adresinde bulunan yükleme günlüğünü açın.
 2. Aşağıdaki hatanın varlığı bu sorunu gösterir:
 
-    Varolan uygulamanın kaydını silme...  Katalog nesnesini oluşturun Uygulamalar koleksiyonunu alın 
+    ```Output
+    Unregistering the existing application...
+    Create the catalogue object
+    Get the collection of Applications
 
-    Hata:
+    ERROR:
 
-    - Hata kodu: -2147164145 [0x8004E00F]
-    - Çıkış kodu: 802
+    - Error code: -2147164145 [0x8004E00F]
+    - Exit code: 802
+    ```
 
 Sorunu gidermek için:
 
 DCOM sorununu çözme konusunda yardım almak için [Microsoft Windows platform ekibine](https://aka.ms/Windows_Support) başvurun.
 
-DCOM sorunu çözüldüğünde, aşağıdaki komutu kullanarak Azure Site Kurtarma VSS Sağlayıcısını el ile yeniden yükleyin:
- 
-**C:\Program Files (x86)\Microsoft Azure Site Kurtarma\aracı>"C:\Program Dosyaları (x86)\Microsoft Azure Site Kurtarma\agent\InMageVSSProvider_Install.cmd**
-  
-Uygulama tutarlılığı Olağanüstü Durum Kurtarma gereksinimleriniz için kritik değilse, VSS Sağlayıcı yüklemesini atlayabilirsiniz. 
+DCOM sorunu çözüldüğünde, komut isteminden aşağıdaki komutu kullanarak Azure Site Kurtarma VSS Sağlayıcısını el ile yeniden yükleyin:
+
+`"C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd"`
+
+Uygulama tutarlılığı olağanüstü durum kurtarma gereksinimleriniz için kritik değilse, VSS Sağlayıcı yüklemesini atlayabilirsiniz.
 
 Azure Site Kurtarma VSS Sağlayıcısı yüklemesini atlamak ve Azure Site Kurtarma VSS Sağlayıcısı sonrası yüklemeyi el ile yüklemek için:
 
-1. Mobilite hizmetini yükleyin. 
-   > [!Note]
-   > 
-   > Yükleme 'Post install configuration' adımında başarısız olur. 
-2. VSS yüklemesini atlamak için:
+1. Mobilite hizmetini yükleyin. Yükleme adımda başarısız olur: **Post install yapılandırması.**
+1. VSS yüklemesini atlamak için:
    1. Şu adreste bulunan Azure Sitesi Kurtarma Mobilite Hizmeti yükleme dizinini açın:
-   
-      C:\Program Dosyaları (x86)\Microsoft Azure Site Kurtarma\aracı
-   2. Aşağıdaki satırları ekleyerek her zaman başarılı olmak için Azure Site Kurtarma VSS Sağlayıcısı yükleme komut **nMageVSSProvider_Install** ve **InMageVSSProvider_Uninstall.cmd'yi** değiştirin:
-    
-      ```     
+
+      _C:\Program Dosyaları (x86)\Microsoft Azure Site Kurtarma\aracı_
+
+   1. Aşağıdaki satırları ekleyerek her zaman başarılı olmak için Azure Site Kurtarma VSS Sağlayıcısı yükleme komut _InMageVSSProvider_Install_ ve _InMageVSSProvider_Uninstall.cmd'yi_ değiştirin:
+
+      ```plaintext
       rem @echo off
       setlocal
       exit /B 0
       ```
 
-3. Mobilite Aracısı yüklemesini el ile yeniden çalıştırın. 
-4. Yükleme başarılı olduğunda ve bir sonraki adıma geçtiğinde, Eklediğiniz satırları **kaldır, yapılandırın.**
-5. VSS sağlayıcısını yüklemek için Yönetici olarak bir komut istemi açın ve aşağıdaki komutu çalıştırın:
-   
-    **C:\Program Dosyaları (x86)\Microsoft Azure Site Kurtarma\aracısı> .\InMageVSSProvider_Install.cmd**
+1. Mobilite Aracısı'nın manuel kurulumunu yapın.
+1. Yükleme başarılı olduğunda ve bir sonraki adıma geçtiğinde, Eklediğiniz satırları **kaldırın, yapılandırın.**
+1. VSS sağlayıcısını yüklemek için yönetici olarak bir komut istemi açın ve aşağıdaki komutu çalıştırın:
 
-9. ASR VSS Sağlayıcısının Windows Hizmetleri'nde hizmet olarak yüklü olduğunu doğrulayın ve ASR VSS Sağlayıcısının listelendiğinden doğrulamak için Bileşen Hizmeti MMC'sini açın.
-10. VSS Sağlayıcı yüklemesi başarısız olmaya devam ederse, CAPI2'deki izin hatalarını gidermek için CX ile çalışın.
+   `"C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd"`
 
-## <a name="vss-provider-installation-fails-due-to-the-cluster-service-being-enabled-on-non-cluster-machine"></a>VSS Sağlayıcı yüklemesi küme dışı makinede etkinleştirilen küme hizmeti nedeniyle başarısız olur
+1. Azure Site Kurtarma VSS Sağlayıcısının Windows Hizmetleri'nde hizmet olarak yüklenmiş olduğunu doğrulayın. VSS Sağlayıcısının listeli olduğunu doğrulamak için Bileşen Hizmeti MMC'sini açın.
+1. VSS Sağlayıcısı yüklemesi başarısız olmaya devam ederse, Şifreleme Uygulama Programlama Arabirimi'ndeki (CAPI2) izin hatalarını gidermek için teknik destekle çalışın.
 
-Bu sorun, COM+ ile vss sağlayıcısının yüklenmesini engelleyen bir sorun nedeniyle ASAzure Site RecoveryR VSS Sağlayıcı yükleme adımı sırasında Azure Site Kurtarma Mobilite Aracısı yüklemesinin başarısız olmasını sağlar.
- 
+## <a name="vss-provider-installation-fails-because-the-cluster-service-being-enabled-on-non-cluster-machine"></a>Küme hizmeti küme olmayan makinede etkin olduğundan VSS Sağlayıcı yüklemesi başarısız olur
+
+Bu sorun, Azure Site Kurtarma Mobilite Aracısı yüklemesinin Azure Site Kurtarma VSS Sağlayıcısı yüklemesi sırasında başarısız olmasını sağlar. Hata, VSS sağlayıcı yüklemesini `COM+` engelleyen bir sorun olmasıdır.
+
 ### <a name="to-identify-the-issue"></a>Sorunu tanımlamak için
 
-C:\ProgramData\ASRSetupLogs\UploadedLogs\<tarih>UA_InstallLogFile.log'da yapılandırma sunucusunda bulunan günlükte aşağıdaki özel durumu bulacaksınız:
+_C:\ProgramData\ASRSetupLogs\UploadedLogs\<tarih-saati>UA_InstallLogFile.log'da_ bulunan günlükte aşağıdaki özel durumu bulacaksınız:
 
-COM+, Microsoft Dağıtılmış İşlem Koordinatörü (HRESULT'dan İstisna: 0x8004E00F) ile konuşamadı
+```plaintext
+COM+ was unable to talk to the Microsoft Distributed Transaction Coordinator (Exception from HRESULT: 0x8004E00F)
+```
 
 Sorunu gidermek için:
 
-1.  Bu makinenin küme dışı bir makine olduğunu ve küme bileşenlerinin kullanılmadığını doğrulayın.
-3.  Bileşenler kullanılıyorsa, küme bileşenlerini makineden kaldırın.
+1. Bu makinenin küme dışı bir makine olduğunu ve küme bileşenlerinin kullanılmadığını doğrulayın.
+1. Bileşenler kullanılıyorsa, küme bileşenlerini makineden kaldırın.
 
-## <a name="drivers-are-missing-on-the-source-server"></a>Kaynak Sunucu'da sürücüler eksik
+## <a name="drivers-are-missing-on-the-source-server"></a>Sürücüler kaynak sunucuda eksik
 
-Mobilite Aracısı yüklemesi başarısız olursa, bazı kontrol kümelerinde gerekli sürücülerden bazılarının eksik olup olmadığını belirlemek için C:\ProgramData\ASRSetupLogs altındaki günlükleri inceleyin.
- 
+Mobilite Aracısı yüklemesi başarısız olursa, bazı kontrol kümelerinde gerekli sürücülerden bazılarının eksik olup olmadığını belirlemek için _C:\ProgramData\ASRSetupLogs_ altındaki günlükleri inceleyin.
+
 Sorunu gidermek için:
-  
-1. Regedit.msc gibi bir kayıt defteri düzenleyicisi kullanarak, kayıt defterini açın.
-2. HKEY_LOCAL_MACHINE\System düğümlerini açın.
-3. SİsteM düğümünde, kontrol kümelerini bulun.
-4. Her denetim kümesini açın ve aşağıdaki Windows sürücülerinin mevcut olduğunu doğrulayın:
 
-   - Atapı
-   - Vmbus
-   - Storflt
-   - Storvsc
-   - intelide
- 
-Eksik sürücüleri yeniden yükleyin.
+1. Kayıt defteri düzenleyicisi `regedit.msc`gibi bir kullanarak, kayıt defterini açın.
+1. `HKEY_LOCAL_MACHINE\SYSTEM` Düğümü açın.
+1. Düğümde, `SYSTEM` denetim kümelerini bulun.
+1. Her denetim kümesini açın ve aşağıdaki Windows sürücülerinin mevcut olduğunu doğrulayın:
+
+   * Atapı
+   * Vmbus
+   * Storflt
+   * Storvsc
+   * Intelide
+
+1. Eksik sürücüleri yeniden yükleyin.
 
 ## <a name="next-steps"></a>Sonraki adımlar
 
-VMware VM'ler için olağanüstü durum kurtarmayı [nasıl](vmware-azure-tutorial.md) ayarlayacağım öğrenin.
+VMware VM'ler için olağanüstü durum kurtarma yı nasıl ayarlayabildiğini [öğrenin.](vmware-azure-tutorial.md)

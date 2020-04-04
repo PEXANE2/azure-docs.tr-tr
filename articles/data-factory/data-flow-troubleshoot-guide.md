@@ -7,13 +7,13 @@ author: kromerm
 manager: anandsub
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 02/04/2020
-ms.openlocfilehash: e2e1ddd031041f49107545cd0b3d3de4eaebcd6d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/02/2020
+ms.openlocfilehash: a5244086c185c111762496086f8044f12f52be14
+ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77472137"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80632586"
 ---
 # <a name="troubleshoot-data-flows-in-azure-data-factory"></a>Azure Veri Fabrikası'nda veri akışlarını giderme
 
@@ -55,6 +55,18 @@ Bu makalede, Azure Veri Fabrikası'nda veri akışları için yaygın sorun gide
 - **İleti**: Sütun adı sorguda belirtilmelidir, sql işlevi kullanıyorsanız bir takma ad ayarlama
 - **Nedenleri**: Sütun adı belirtilmedi
 - **Öneri**: Min()/max(), vb. gibi bir SQL işlevi kullanıyorsanız bir diğer ad ayarlayın.
+
+### <a name="error-code-getcommand-outputasync-failed"></a>Hata kodu: GetCommand OutputAsync başarısız oldu
+
+- **İleti**: Veri Akışı hata ayıklama ve veri önizlemesi sırasında: GetCommand OutputAsync ile başarısız oldu ...
+- **Nedenleri**: Bu bir arka uç hizmet hatasıdır. İşlemi yeniden deneyebilir ve hata ayıklama oturumunuzu yeniden başlatabilirsiniz.
+- **Öneri**: Yeniden deneyin ve yeniden başlatın sorunu çözmezse, müşteri desteğine başvurun.
+
+### <a name="error-code-hit-unexpected-exception-and-execution-failed"></a>Hata kodu: Beklenmeyen özel durum isabet ve yürütme başarısız oldu
+
+- **İleti**: Veri Akışı etkinlik yürütme sırasında: Hit beklenmeyen özel durum ve yürütme başarısız oldu.
+- **Nedenleri**: Bu bir arka uç hizmet hatasıdır. İşlemi yeniden deneyebilir ve hata ayıklama oturumunuzu yeniden başlatabilirsiniz.
+- **Öneri**: Yeniden deneyin ve yeniden başlatın sorunu çözmezse, müşteri desteğine başvurun.
 
 ## <a name="general-troubleshooting-guidance"></a>Genel sorun giderme kılavuzu
 

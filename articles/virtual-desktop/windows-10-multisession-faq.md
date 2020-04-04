@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 4301aaed0152e07eb2a941b56637239b66c33878
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d7ea99e2ee8e2882c211ee17acec70222dc058a8
+ms.sourcegitcommit: 0450ed87a7e01bbe38b3a3aea2a21881f34f34dd
 ms.translationtype: MT
 ms.contentlocale: tr-TR
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79127364"
+ms.lasthandoff: 04/03/2020
+ms.locfileid: "80637093"
 ---
 # <a name="windows-10-enterprise-multi-session-faq"></a>Windows 10 Enterprise çoklu oturum hakkında SSS
 
@@ -39,7 +39,7 @@ Windows 10 Enterprise çoklu oturumu, Azure için Windows Sanal Masaüstü hizme
 
 Windows 10 Windows 10 Enterprise çoklu oturumlu Azure'da sanal bir makine (VM) başlatabilir ve LOB uygulamalarını yükleyerek özelleştirebilir, sysprep/genelleme yapabilir ve Azure portalını kullanarak bir resim oluşturabilirsiniz.  
  
-Başlamak için Windows 10 Windows 10 Enterprise çoklu oturumu yla Azure'da bir VM oluşturun. VM'yi Azure'da başlatmak yerine, VHD'yi doğrudan indirebilirsiniz. Bundan sonra, Hyper-V etkin bir Windows 10 pc'de yeni bir Nesil 1 VM oluşturmak için indirdiğiniz VHD'yi kullanabilirsiniz.
+Başlamak için Windows 10 Enterprise çoklu oturumlu Azure'da bir VM oluşturun. VM'yi Azure'da başlatmak yerine, VHD'yi doğrudan indirebilirsiniz. Bundan sonra, Hyper-V etkin bir Windows 10 pc'de yeni bir Nesil 1 VM oluşturmak için indirdiğiniz VHD'yi kullanabilirsiniz.
 
 LOB uygulamalarını yükleyerek görüntüyü ihtiyaçlarınıza göre özelleştirin ve görüntüyü sysprep. Özelleştirmeyi bitirdiğinizde, içindeki VHD ile görüntüyü Azure'a yükleyin. Bundan sonra, Azure Marketi'nden Windows Sanal Masaüstü'nü alın ve özelleştirilmiş görüntüyle yeni bir ana bilgisayar havuzu dağıtmak için kullanın.
  
